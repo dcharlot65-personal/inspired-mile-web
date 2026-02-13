@@ -1,0 +1,558 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import '../styles/global.css';
+import { CARD_CATALOG, RARITY_COLORS, type Card, type Rarity } from '../lib/cards';
+---
+
+<BaseLayout title="Playground" description="Earn digital cards through mini-games, trivia, challenges, and more. Build your Shakespeare collection.">
+
+  <section class="section-padding">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-12">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold-500/10 border border-gold-500/20 mb-6">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span class="text-gold-400 text-xs font-medium tracking-wide uppercase">Digital Playground</span>
+        </div>
+        <h1 class="text-4xl sm:text-5xl font-display font-bold mb-4">
+          The <span class="text-gradient">Playground</span>
+        </h1>
+        <p class="text-obsidian-400 max-w-2xl mx-auto">
+          Earn digital cards through mini-games, trivia, and challenges.
+          Every card you win is yours to keep, collect, and trade.
+        </p>
+      </div>
+
+      <!-- Player Stats Bar -->
+      <div class="card-glass p-4 mb-10 flex flex-wrap items-center justify-between gap-4">
+        <div class="flex items-center gap-6 text-sm">
+          <div>
+            <span class="text-xs text-obsidian-500 block">Cards Owned</span>
+            <span id="stat-cards" class="text-lg font-display font-bold text-gold-400">0</span>
+            <span class="text-xs text-obsidian-500"> / {CARD_CATALOG.length}</span>
+          </div>
+          <div class="w-px h-8 bg-obsidian-700"></div>
+          <div>
+            <span class="text-xs text-obsidian-500 block">Battle Wins</span>
+            <span id="stat-wins" class="text-lg font-display font-bold text-crimson-400">0</span>
+          </div>
+          <div class="w-px h-8 bg-obsidian-700"></div>
+          <div>
+            <span class="text-xs text-obsidian-500 block">Trivia Score</span>
+            <span id="stat-trivia" class="text-lg font-display font-bold text-emerald-400">0</span>
+          </div>
+        </div>
+        <a href="/collection" class="btn-secondary text-xs">View Collection</a>
+      </div>
+
+      <!-- Acquisition Grid -->
+      <div class="grid sm:grid-cols-2 gap-6 mb-12">
+
+        <!-- Card Packs -->
+        <div class="card-glass p-6 hover:border-gold-500/30 transition-all">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-lg bg-gold-500/10 border border-gold-500/20 flex items-center justify-center">
+              <span class="text-xl">&#127183;</span>
+            </div>
+            <div>
+              <h2 class="font-display text-lg font-bold text-obsidian-100">Card Packs</h2>
+              <p class="text-xs text-obsidian-500">Open packs to reveal cards</p>
+            </div>
+          </div>
+          <div class="space-y-3">
+            <button id="starter-pack-btn" class="w-full card-glass p-3 text-left hover:border-gold-500/30 transition-all flex items-center justify-between">
+              <div>
+                <span class="text-sm font-semibold text-gold-300">Starter Pack</span>
+                <p class="text-xs text-obsidian-500">3 cards to begin your collection</p>
+              </div>
+              <span id="starter-badge" class="text-xs px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">FREE</span>
+            </button>
+            <button id="daily-pack-btn" class="w-full card-glass p-3 text-left hover:border-gold-500/30 transition-all flex items-center justify-between">
+              <div>
+                <span class="text-sm font-semibold text-blue-300">Daily Pack</span>
+                <p class="text-xs text-obsidian-500">1 free card every 24 hours</p>
+              </div>
+              <span id="daily-badge" class="text-xs px-2 py-0.5 rounded-full bg-blue-500/20 text-blue-400 border border-blue-500/30">FREE</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Battle Rewards -->
+        <div class="card-glass p-6 hover:border-crimson-500/30 transition-all">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-lg bg-crimson-500/10 border border-crimson-500/20 flex items-center justify-center">
+              <span class="text-xl">&#9876;</span>
+            </div>
+            <div>
+              <h2 class="font-display text-lg font-bold text-obsidian-100">Battle Arena</h2>
+              <p class="text-xs text-obsidian-500">Win rap battles to earn cards</p>
+            </div>
+          </div>
+          <p class="text-sm text-obsidian-400 mb-4">
+            Challenge the Master Thespian in a Shakespeare rap battle.
+            Win a round and earn a random card from the collection.
+          </p>
+          <a href="/battle" class="btn-danger text-sm w-full justify-center">
+            Enter the Arena
+            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+          </a>
+        </div>
+
+        <!-- Trivia Mini-Game -->
+        <div class="card-glass p-6 hover:border-emerald-500/30 transition-all">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center">
+              <span class="text-xl">&#129504;</span>
+            </div>
+            <div>
+              <h2 class="font-display text-lg font-bold text-obsidian-100">Shakespeare Trivia</h2>
+              <p class="text-xs text-obsidian-500">Test your knowledge, earn cards</p>
+            </div>
+          </div>
+          <p class="text-sm text-obsidian-400 mb-4">
+            Answer 5 questions about Shakespeare. Score 3 or more to earn a card.
+          </p>
+          <button id="trivia-start-btn" class="btn-primary text-sm w-full justify-center">
+            Start Trivia
+          </button>
+        </div>
+
+        <!-- Quote Challenge -->
+        <div class="card-glass p-6 hover:border-purple-500/30 transition-all">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-lg bg-purple-500/10 border border-purple-500/20 flex items-center justify-center">
+              <span class="text-xl">&#128220;</span>
+            </div>
+            <div>
+              <h2 class="font-display text-lg font-bold text-obsidian-100">Quote Challenge</h2>
+              <p class="text-xs text-obsidian-500">Complete the famous quote</p>
+            </div>
+          </div>
+          <p class="text-sm text-obsidian-400 mb-4">
+            Fill in the missing words from a Shakespeare quote. Get it right, earn a card.
+          </p>
+          <button id="challenge-start-btn" class="btn-secondary text-sm w-full justify-center border-purple-500/30 text-purple-300 hover:bg-purple-500/10">
+            Start Challenge
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trivia Modal -->
+  <div id="trivia-modal" class="fixed inset-0 bg-obsidian-950/90 z-50 hidden flex items-center justify-center p-4">
+    <div class="card-glass max-w-lg w-full p-6 max-h-[90vh] overflow-y-auto">
+      <div class="flex items-center justify-between mb-6">
+        <h3 class="font-display text-xl font-bold text-gold-300">Shakespeare Trivia</h3>
+        <button id="trivia-close" class="text-obsidian-500 hover:text-obsidian-200 transition-colors">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      <div class="mb-4 flex items-center gap-2">
+        <span id="trivia-progress" class="text-xs font-mono text-obsidian-500">Question 1 / 5</span>
+        <div class="flex-1 h-1 rounded-full bg-obsidian-800 overflow-hidden">
+          <div id="trivia-bar" class="h-full bg-gold-400 rounded-full transition-all duration-300" style="width: 20%"></div>
+        </div>
+        <span id="trivia-score-display" class="text-xs font-mono text-emerald-400">0 correct</span>
+      </div>
+      <div id="trivia-content">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Challenge Modal -->
+  <div id="challenge-modal" class="fixed inset-0 bg-obsidian-950/90 z-50 hidden flex items-center justify-center p-4">
+    <div class="card-glass max-w-lg w-full p-6">
+      <div class="flex items-center justify-between mb-6">
+        <h3 class="font-display text-xl font-bold text-purple-300">Quote Challenge</h3>
+        <button id="challenge-close" class="text-obsidian-500 hover:text-obsidian-200 transition-colors">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      <div id="challenge-content">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Card Reveal Modal -->
+  <div id="reveal-modal" class="fixed inset-0 bg-obsidian-950/90 z-50 hidden flex items-center justify-center p-4">
+    <div class="card-glass max-w-md w-full p-8 text-center">
+      <h3 id="reveal-title" class="font-display text-2xl font-bold text-gold-300 mb-6">Card Revealed!</h3>
+      <div id="reveal-cards" class="space-y-4">
+        <!-- Populated by JS -->
+      </div>
+      <button id="reveal-close" class="btn-primary mt-6">Collect</button>
+    </div>
+  </div>
+
+  <script>
+    import { CARD_CATALOG, RARITY_COLORS, drawRandomCard, drawPack, type Card, type Rarity } from '../lib/cards';
+    import {
+      addCard, getStats, isStarterClaimed, claimStarter,
+      isDailyAvailable, claimDaily, recordTriviaCorrect, recordChallengeComplete,
+    } from '../lib/inventory';
+    import { getRandomQuestions, type TriviaQuestion } from '../lib/trivia';
+    import { getRandomChallenge, checkAnswers, type QuoteChallenge } from '../lib/challenges';
+    import { initAudio, isInitialized, playMusic, playSfx, playRarityFanfare, preloadSfx, type Rarity as AudioRarity } from '../lib/audio-manager';
+    import { isContentGenAvailable, generateTriviaSet, generateChallenge } from '../lib/content-gen';
+    import { TRIVIA_BANK } from '../lib/trivia';
+
+    // Start playground music on first interaction
+    document.addEventListener('click', () => {
+      if (!isInitialized()) initAudio();
+      playMusic('playground-ambient', 1000);
+      preloadSfx(['pack-open', 'card-flip', 'fanfare-common', 'fanfare-rare', 'fanfare-legendary', 'trivia-correct', 'trivia-wrong', 'challenge-win', 'challenge-lose', 'ui-click']);
+    }, { once: true });
+
+    // --- Stats ---
+    function updateStats() {
+      const stats = getStats();
+      document.getElementById('stat-cards')!.textContent = String(stats.uniqueCards);
+      document.getElementById('stat-wins')!.textContent = String(stats.battleWins);
+      document.getElementById('stat-trivia')!.textContent = String(stats.triviaCorrect);
+    }
+    updateStats();
+
+    // --- Card Packs ---
+    const starterBtn = document.getElementById('starter-pack-btn')!;
+    const starterBadge = document.getElementById('starter-badge')!;
+    const dailyBtn = document.getElementById('daily-pack-btn')!;
+    const dailyBadge = document.getElementById('daily-badge')!;
+
+    if (isStarterClaimed()) {
+      starterBadge.textContent = 'CLAIMED';
+      starterBadge.className = 'text-xs px-2 py-0.5 rounded-full bg-obsidian-700/50 text-obsidian-500 border border-obsidian-700';
+      starterBtn.classList.add('opacity-50', 'pointer-events-none');
+    }
+
+    if (!isDailyAvailable()) {
+      dailyBadge.textContent = 'CLAIMED';
+      dailyBadge.className = 'text-xs px-2 py-0.5 rounded-full bg-obsidian-700/50 text-obsidian-500 border border-obsidian-700';
+      dailyBtn.classList.add('opacity-50', 'pointer-events-none');
+    }
+
+    starterBtn.addEventListener('click', () => {
+      if (isStarterClaimed()) return;
+      const cards = drawPack(3);
+      cards.forEach(c => addCard(c.id, 'starter'));
+      claimStarter();
+      starterBadge.textContent = 'CLAIMED';
+      starterBadge.className = 'text-xs px-2 py-0.5 rounded-full bg-obsidian-700/50 text-obsidian-500 border border-obsidian-700';
+      starterBtn.classList.add('opacity-50', 'pointer-events-none');
+      playSfx('pack-open');
+      showReveal('Starter Pack!', cards);
+      const bestRarity = cards.reduce((best, c) => {
+        const order = ['Common', 'Uncommon', 'Rare', 'Epic', 'Legendary'];
+        return order.indexOf(c.rarity) > order.indexOf(best) ? c.rarity : best;
+      }, cards[0].rarity);
+      setTimeout(() => playRarityFanfare(bestRarity as AudioRarity), 600);
+      updateStats();
+    });
+
+    dailyBtn.addEventListener('click', () => {
+      if (!isDailyAvailable()) return;
+      const card = drawRandomCard();
+      addCard(card.id, 'daily');
+      claimDaily();
+      dailyBadge.textContent = 'CLAIMED';
+      dailyBadge.className = 'text-xs px-2 py-0.5 rounded-full bg-obsidian-700/50 text-obsidian-500 border border-obsidian-700';
+      dailyBtn.classList.add('opacity-50', 'pointer-events-none');
+      playSfx('pack-open');
+      showReveal('Daily Card!', [card]);
+      setTimeout(() => playRarityFanfare(card.rarity as AudioRarity), 600);
+      updateStats();
+    });
+
+    // --- Card Reveal ---
+    const revealModal = document.getElementById('reveal-modal')!;
+    const revealTitle = document.getElementById('reveal-title')!;
+    const revealCards = document.getElementById('reveal-cards')!;
+    const revealClose = document.getElementById('reveal-close')!;
+
+    function showReveal(title: string, cards: Card[]) {
+      revealTitle.textContent = title;
+      revealCards.innerHTML = cards.map(card => {
+        const rarityClass = RARITY_COLORS[card.rarity as Rarity] || '';
+        const artHtml = card.image
+          ? `<img src="${card.image}" alt="${card.name}" class="w-16 h-16 object-cover rounded-lg">`
+          : `<div class="text-3xl">${card.icon}</div>`;
+        return `
+          <div class="card-glass p-4 bg-gradient-to-br ${card.gradient} ${card.border} animate-float" style="animation-delay: ${Math.random() * 0.5}s">
+            <div class="flex items-center gap-4">
+              ${artHtml}
+              <div class="text-left">
+                <h4 class="font-display font-bold text-obsidian-100">${card.name}</h4>
+                <p class="text-xs text-obsidian-400">${card.house} &middot; ${card.element}</p>
+                <span class="inline-block mt-1 px-2 py-0.5 text-xs rounded-full ${rarityClass}">${card.rarity}</span>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+      revealModal.classList.remove('hidden');
+    }
+
+    revealClose.addEventListener('click', () => {
+      revealModal.classList.add('hidden');
+    });
+
+    // --- Trivia ---
+    const triviaModal = document.getElementById('trivia-modal')!;
+    const triviaClose = document.getElementById('trivia-close')!;
+    const triviaContent = document.getElementById('trivia-content')!;
+    const triviaProgress = document.getElementById('trivia-progress')!;
+    const triviaBar = document.getElementById('trivia-bar')!;
+    const triviaScoreDisplay = document.getElementById('trivia-score-display')!;
+    const triviaStartBtn = document.getElementById('trivia-start-btn')!;
+
+    let triviaQuestions: TriviaQuestion[] = [];
+    let triviaIndex = 0;
+    let triviaScore = 0;
+
+    triviaStartBtn.addEventListener('click', async () => {
+      playSfx('ui-click');
+      triviaIndex = 0;
+      triviaScore = 0;
+      triviaModal.classList.remove('hidden');
+
+      // Show loading if AI is available
+      if (isContentGenAvailable()) {
+        triviaContent.innerHTML = `
+          <div class="text-center py-8">
+            <div class="text-2xl mb-3 animate-pulse">&#129504;</div>
+            <p class="text-sm text-obsidian-400">Generating questions...</p>
+          </div>
+        `;
+        const aiQuestions = await generateTriviaSet(5);
+        if (aiQuestions.length >= 3) {
+          triviaQuestions = aiQuestions;
+          // Pad with hardcoded if AI generated fewer than 5
+          while (triviaQuestions.length < 5) {
+            const fallbacks = getRandomQuestions(1);
+            triviaQuestions.push(fallbacks[0]);
+          }
+        } else {
+          triviaQuestions = getRandomQuestions(5);
+        }
+      } else {
+        triviaQuestions = getRandomQuestions(5);
+      }
+
+      showTriviaQuestion();
+    });
+
+    triviaClose.addEventListener('click', () => {
+      triviaModal.classList.add('hidden');
+    });
+
+    function showTriviaQuestion() {
+      if (triviaIndex >= triviaQuestions.length) {
+        showTriviaResult();
+        return;
+      }
+
+      const q = triviaQuestions[triviaIndex];
+      triviaProgress.textContent = `Question ${triviaIndex + 1} / ${triviaQuestions.length}`;
+      triviaBar.style.width = `${((triviaIndex + 1) / triviaQuestions.length) * 100}%`;
+      triviaScoreDisplay.textContent = `${triviaScore} correct`;
+
+      const isAI = !TRIVIA_BANK.some(bq => bq.question === q.question);
+      const aiBadge = isAI
+        ? '<span class="inline-block px-2 py-0.5 text-xs rounded-full bg-purple-500/20 text-purple-400 border border-purple-500/20 ml-2">AI Generated</span>'
+        : '';
+
+      triviaContent.innerHTML = `
+        <p class="text-sm text-obsidian-200 mb-4 leading-relaxed">${q.question}${aiBadge}</p>
+        <div class="space-y-2">
+          ${q.options.map((opt, i) => `
+            <button class="trivia-option w-full text-left card-glass p-3 text-sm text-obsidian-200 hover:border-gold-500/30 transition-all" data-index="${i}">
+              ${opt}
+            </button>
+          `).join('')}
+        </div>
+      `;
+
+      triviaContent.querySelectorAll('.trivia-option').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const selected = parseInt((btn as HTMLElement).dataset.index || '0');
+          const correct = selected === q.correctIndex;
+
+          // Highlight correct/wrong
+          triviaContent.querySelectorAll('.trivia-option').forEach((b, i) => {
+            const el = b as HTMLElement;
+            el.classList.add('pointer-events-none');
+            if (i === q.correctIndex) {
+              el.classList.add('border-emerald-500/50', 'bg-emerald-500/10');
+            } else if (i === selected && !correct) {
+              el.classList.add('border-crimson-500/50', 'bg-crimson-500/10');
+            }
+          });
+
+          if (correct) {
+            triviaScore++;
+            recordTriviaCorrect();
+            playSfx('trivia-correct');
+          } else {
+            playSfx('trivia-wrong');
+          }
+
+          setTimeout(() => {
+            triviaIndex++;
+            showTriviaQuestion();
+          }, 1200);
+        });
+      });
+    }
+
+    function showTriviaResult() {
+      triviaProgress.textContent = 'Complete!';
+      triviaBar.style.width = '100%';
+      triviaScoreDisplay.textContent = `${triviaScore} / ${triviaQuestions.length}`;
+
+      const won = triviaScore >= 3;
+
+      if (won) {
+        const card = drawRandomCard();
+        addCard(card.id, 'trivia');
+        updateStats();
+        playSfx('challenge-win');
+        setTimeout(() => playRarityFanfare(card.rarity as AudioRarity), 400);
+
+        const rarityClass = RARITY_COLORS[card.rarity as Rarity] || '';
+        triviaContent.innerHTML = `
+          <div class="text-center">
+            <div class="text-4xl mb-3">&#127881;</div>
+            <p class="text-lg font-display font-bold text-emerald-400 mb-2">You scored ${triviaScore} / ${triviaQuestions.length}!</p>
+            <p class="text-sm text-obsidian-400 mb-4">You earned a card:</p>
+            <div class="card-glass p-4 bg-gradient-to-br ${card.gradient} ${card.border} inline-block">
+              ${card.image ? `<img src="${card.image}" alt="${card.name}" class="w-20 h-20 object-cover rounded-lg mx-auto mb-2">` : `<div class="text-3xl mb-2">${card.icon}</div>`}
+              <h4 class="font-display font-bold text-obsidian-100">${card.name}</h4>
+              <span class="inline-block mt-1 px-2 py-0.5 text-xs rounded-full ${rarityClass}">${card.rarity}</span>
+            </div>
+            <button class="btn-primary mt-4 w-full" onclick="document.getElementById('trivia-modal').classList.add('hidden')">Collect</button>
+          </div>
+        `;
+      } else {
+        playSfx('challenge-lose');
+        triviaContent.innerHTML = `
+          <div class="text-center">
+            <div class="text-4xl mb-3">&#128172;</div>
+            <p class="text-lg font-display font-bold text-crimson-400 mb-2">You scored ${triviaScore} / ${triviaQuestions.length}</p>
+            <p class="text-sm text-obsidian-400 mb-4">You need at least 3 correct to earn a card. Try again!</p>
+            <button class="btn-secondary mt-2 w-full" onclick="document.getElementById('trivia-modal').classList.add('hidden')">Close</button>
+          </div>
+        `;
+      }
+    }
+
+    // --- Quote Challenge ---
+    const challengeModal = document.getElementById('challenge-modal')!;
+    const challengeClose = document.getElementById('challenge-close')!;
+    const challengeContent = document.getElementById('challenge-content')!;
+    const challengeStartBtn = document.getElementById('challenge-start-btn')!;
+
+    challengeStartBtn.addEventListener('click', async () => {
+      playSfx('ui-click');
+      challengeModal.classList.remove('hidden');
+
+      let challenge: QuoteChallenge;
+
+      if (isContentGenAvailable()) {
+        challengeContent.innerHTML = `
+          <div class="text-center py-8">
+            <div class="text-2xl mb-3 animate-pulse">&#128220;</div>
+            <p class="text-sm text-obsidian-400">Crafting challenge...</p>
+          </div>
+        `;
+        const aiChallenge = await generateChallenge();
+        challenge = aiChallenge || getRandomChallenge();
+      } else {
+        challenge = getRandomChallenge();
+      }
+
+      showChallenge(challenge);
+    });
+
+    challengeClose.addEventListener('click', () => {
+      challengeModal.classList.add('hidden');
+    });
+
+    function showChallenge(challenge: QuoteChallenge) {
+      const blankCount = challenge.missingWords.length;
+
+      challengeContent.innerHTML = `
+        <div class="mb-4">
+          <p class="text-xs text-obsidian-500 mb-1">${challenge.play} — ${challenge.character}</p>
+          <span class="inline-block px-2 py-0.5 text-xs rounded-full ${
+            challenge.difficulty === 'easy' ? 'bg-emerald-500/20 text-emerald-400' :
+            challenge.difficulty === 'medium' ? 'bg-gold-500/20 text-gold-400' :
+            'bg-crimson-500/20 text-crimson-400'
+          }">${challenge.difficulty}</span>
+        </div>
+        <p class="text-lg text-obsidian-200 font-display leading-relaxed mb-6 italic">
+          "${challenge.displayQuote}"
+        </p>
+        <div class="space-y-3 mb-4">
+          ${challenge.missingWords.map((_, i) => `
+            <div class="flex items-center gap-2">
+              <span class="text-xs text-obsidian-500 w-16">Blank ${i + 1}:</span>
+              <input type="text" class="challenge-input flex-1 bg-obsidian-800 border border-obsidian-700 rounded-lg px-3 py-2 text-sm text-obsidian-100 placeholder-obsidian-500 focus:outline-none focus:border-purple-500/50 transition-colors" placeholder="Missing word..." data-index="${i}" />
+            </div>
+          `).join('')}
+        </div>
+        <button id="challenge-submit" class="btn-primary w-full">Check Answer</button>
+        <p class="text-xs text-obsidian-500 mt-2 text-center">Hint: Think about the original Shakespeare quote</p>
+      `;
+
+      document.getElementById('challenge-submit')!.addEventListener('click', () => {
+        const inputs = challengeContent.querySelectorAll('.challenge-input') as NodeListOf<HTMLInputElement>;
+        const answers = Array.from(inputs).map(i => i.value);
+        const correct = checkAnswers(challenge, answers);
+
+        if (correct) {
+          recordChallengeComplete();
+          const card = drawRandomCard();
+          addCard(card.id, 'challenge');
+          updateStats();
+          playSfx('challenge-win');
+          setTimeout(() => playRarityFanfare(card.rarity as AudioRarity), 400);
+
+          const rarityClass = RARITY_COLORS[card.rarity as Rarity] || '';
+          challengeContent.innerHTML = `
+            <div class="text-center">
+              <div class="text-4xl mb-3">&#127881;</div>
+              <p class="text-sm text-obsidian-400 mb-2">The full quote:</p>
+              <p class="text-sm text-obsidian-200 italic mb-4">"${challenge.fullQuote}"</p>
+              <p class="text-lg font-display font-bold text-emerald-400 mb-4">Correct! You earned a card:</p>
+              <div class="card-glass p-4 bg-gradient-to-br ${card.gradient} ${card.border} inline-block">
+                ${card.image ? `<img src="${card.image}" alt="${card.name}" class="w-20 h-20 object-cover rounded-lg mx-auto mb-2">` : `<div class="text-3xl mb-2">${card.icon}</div>`}
+                <h4 class="font-display font-bold text-obsidian-100">${card.name}</h4>
+                <span class="inline-block mt-1 px-2 py-0.5 text-xs rounded-full ${rarityClass}">${card.rarity}</span>
+              </div>
+              <button class="btn-primary mt-4 w-full" onclick="document.getElementById('challenge-modal').classList.add('hidden')">Collect</button>
+            </div>
+          `;
+        } else {
+          playSfx('challenge-lose');
+          challengeContent.innerHTML = `
+            <div class="text-center">
+              <div class="text-4xl mb-3">&#128172;</div>
+              <p class="text-lg font-display font-bold text-crimson-400 mb-2">Not quite!</p>
+              <p class="text-sm text-obsidian-400 mb-2">The answer was:</p>
+              <p class="text-sm text-obsidian-200 italic mb-4">"${challenge.fullQuote}"</p>
+              <p class="text-xs text-obsidian-500 mb-4">${challenge.play} — ${challenge.character}</p>
+              <button class="btn-secondary w-full" onclick="document.getElementById('challenge-modal').classList.add('hidden')">Try Again Later</button>
+            </div>
+          `;
+        }
+      });
+    }
+  </script>
+</BaseLayout>

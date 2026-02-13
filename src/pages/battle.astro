@@ -1,0 +1,648 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import '../styles/global.css';
+---
+
+<BaseLayout title="Battle Arena" description="Challenge the Master Thespian — an AI-powered Shakespeare battle rapper — in the Inspired Mile arena.">
+
+  <section class="section-padding">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-12">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-crimson-500/10 border border-crimson-500/20 mb-6">
+          <span class="w-2 h-2 rounded-full bg-crimson-500 animate-pulse"></span>
+          <span class="text-crimson-400 text-xs font-medium tracking-wide uppercase">Live Arena</span>
+        </div>
+        <h1 class="text-4xl sm:text-5xl font-display font-bold mb-4">
+          Battle <span class="text-gradient">Arena</span>
+        </h1>
+        <p class="text-obsidian-400 max-w-2xl mx-auto">
+          Challenge the Master Thespian — a real AI trained in the art of Shakespearean rap.
+          Everything runs in your browser. Private. No server. No data leaves your device.
+        </p>
+      </div>
+
+      <!-- Loading Screen (shown first) -->
+      <div id="loading-screen" class="card-glass p-8 text-center">
+        <div class="w-20 h-20 rounded-full bg-gold-500/10 border border-gold-500/20 flex items-center justify-center mx-auto mb-6">
+          <span class="text-4xl">&#9876;</span>
+        </div>
+        <h2 class="font-display text-2xl font-bold text-gold-300 mb-3">Summoning the Master Thespian</h2>
+        <p id="loading-status" class="text-sm text-obsidian-400 mb-4">Checking WebGPU support...</p>
+        <div class="max-w-sm mx-auto mb-4">
+          <div class="w-full h-2 rounded-full bg-obsidian-800 overflow-hidden">
+            <div id="loading-bar" class="h-full bg-gradient-to-r from-gold-500 to-gold-400 rounded-full transition-all duration-300" style="width: 0%"></div>
+          </div>
+        </div>
+        <p id="loading-detail" class="text-xs text-obsidian-500">First load downloads the AI model (~1.8GB). Cached for future visits.</p>
+
+        <!-- No WebGPU fallback -->
+        <div id="no-webgpu" class="hidden mt-6">
+          <div class="card-glass p-4 bg-crimson-500/5 border-crimson-500/20">
+            <p class="text-sm text-crimson-400 mb-2 font-semibold">WebGPU Not Available</p>
+            <p class="text-xs text-obsidian-400 mb-3">
+              Your browser doesn't support WebGPU, which is required for the in-browser AI.
+              Please use Chrome 113+ or Edge 113+.
+            </p>
+            <button id="fallback-mode-btn" class="btn-secondary text-xs">
+              Use Demo Mode Instead
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Battle Interface (hidden until loaded) -->
+      <div id="battle-arena" class="hidden">
+        <div class="card-glass overflow-hidden">
+          <!-- Battle Header -->
+          <div class="bg-gradient-to-r from-crimson-500/10 via-obsidian-900 to-gold-500/10 p-4 border-b border-obsidian-700/50">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-crimson-500/20 border border-crimson-500/30 flex items-center justify-center">
+                  <span class="text-lg">&#128100;</span>
+                </div>
+                <div>
+                  <p class="text-sm font-semibold text-obsidian-200">You</p>
+                  <p class="text-xs text-obsidian-500">Challenger</p>
+                </div>
+              </div>
+
+              <div class="text-center">
+                <span class="text-xs font-mono text-crimson-400 tracking-wider">VS</span>
+                <div class="flex items-center gap-1 mt-1">
+                  <span id="player-score" class="text-sm font-mono text-obsidian-300">0</span>
+                  <span class="text-xs text-obsidian-600">-</span>
+                  <span id="ai-score" class="text-sm font-mono text-gold-400">0</span>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-3">
+                <div class="text-right">
+                  <p class="text-sm font-semibold text-gold-300">Master Thespian</p>
+                  <p id="ai-model-badge" class="text-xs text-obsidian-500">AI Bard</p>
+                </div>
+                <div class="w-10 h-10 rounded-full bg-gold-500/20 border border-gold-500/30 flex items-center justify-center animate-pulse-glow">
+                  <span class="text-lg">&#9876;</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Battle Chat -->
+          <div id="battle-log" class="h-96 overflow-y-auto p-6 space-y-4">
+            <div class="text-center">
+              <span class="text-xs font-mono text-obsidian-500 bg-obsidian-800/50 px-3 py-1 rounded-full">
+                The Master Thespian awaits your challenge
+              </span>
+            </div>
+          </div>
+
+          <!-- Battle Mode Selection -->
+          <div id="mode-select" class="p-4 border-t border-obsidian-700/50 bg-obsidian-900/50">
+            <p class="text-xs text-obsidian-500 text-center mb-3">Choose your battle mode:</p>
+            <div class="grid grid-cols-3 gap-3">
+              <button class="mode-btn card-glass p-3 text-center hover:border-gold-500/30 transition-all" data-mode="freestyle">
+                <div class="text-xl mb-1">&#127908;</div>
+                <span class="text-xs font-semibold text-obsidian-200">Freestyle</span>
+                <p class="text-xs text-obsidian-500 mt-0.5">Open rap battle</p>
+              </button>
+              <button class="mode-btn card-glass p-3 text-center hover:border-gold-500/30 transition-all" data-mode="sonnet">
+                <div class="text-xl mb-1">&#128220;</div>
+                <span class="text-xs font-semibold text-obsidian-200">Sonnet Duel</span>
+                <p class="text-xs text-obsidian-500 mt-0.5">Complete the verse</p>
+              </button>
+              <button class="mode-btn card-glass p-3 text-center hover:border-gold-500/30 transition-all" data-mode="quote">
+                <div class="text-xl mb-1">&#9997;</div>
+                <span class="text-xs font-semibold text-obsidian-200">Quote Battle</span>
+                <p class="text-xs text-obsidian-500 mt-0.5">Adapt a classic</p>
+              </button>
+            </div>
+          </div>
+
+          <!-- Battle Input (hidden until mode selected) -->
+          <div id="battle-input" class="hidden p-4 border-t border-obsidian-700/50 bg-obsidian-900/50">
+            <div class="flex gap-3">
+              <button id="mic-btn" class="px-3 py-3 rounded-lg bg-obsidian-800 border border-obsidian-700 text-obsidian-400 hover:text-gold-400 hover:border-gold-500/30 transition-colors" title="Speak your bars">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-14 0m14 0a7 7 0 00-14 0m14 0v1a7 7 0 01-14 0v-1m7 8v4m-4 0h8M12 1a3 3 0 00-3 3v7a3 3 0 006 0V4a3 3 0 00-3-3z" />
+                </svg>
+              </button>
+              <input
+                id="player-input"
+                type="text"
+                placeholder="Drop your bars here..."
+                class="flex-1 bg-obsidian-800 border border-obsidian-700 rounded-lg px-4 py-3 text-sm text-obsidian-100 placeholder-obsidian-500 focus:outline-none focus:border-gold-500/50 transition-colors"
+              />
+              <button id="send-btn" class="btn-primary px-6">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                </svg>
+              </button>
+            </div>
+            <div class="flex items-center justify-between mt-2">
+              <p id="battle-hint" class="text-xs text-obsidian-500"></p>
+              <button id="voice-toggle" class="text-xs text-obsidian-500 hover:text-gold-400 transition-colors flex items-center gap-1">
+                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+                </svg>
+                <span id="voice-label">Voice: Off</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Battle Stats -->
+        <div class="grid grid-cols-3 gap-4 mt-8">
+          <div class="card-glass p-4 text-center">
+            <span class="text-2xl font-display font-bold text-gold-400" id="rounds-played">0</span>
+            <p class="text-xs text-obsidian-500 mt-1">Rounds</p>
+          </div>
+          <div class="card-glass p-4 text-center">
+            <span class="text-2xl font-display font-bold text-crimson-400" id="battles-total">0</span>
+            <p class="text-xs text-obsidian-500 mt-1">Total Battles</p>
+          </div>
+          <div class="card-glass p-4 text-center">
+            <span class="text-2xl font-display font-bold text-emerald-400" id="win-rate">--%</span>
+            <p class="text-xs text-obsidian-500 mt-1">Win Rate</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    import {
+      isWebGPUAvailable,
+      loadThespian,
+      chat,
+      setMode,
+      isLoaded,
+      getModelName,
+      judgeBattle,
+      type BattleJudgment,
+    } from '../lib/thespian-llm';
+    import { loadVoice, speak, stopSpeaking, isVoiceLoaded, isSpeaking } from '../lib/thespian-voice';
+    import { drawRandomCard, RARITY_COLORS, type Card, type Rarity } from '../lib/cards';
+    import { addCard, recordBattleWin } from '../lib/inventory';
+    import { initAudio, isInitialized, playMusic, playSfx, playRarityFanfare, preloadSfx, duckMusic, unduckMusic, type Rarity as AudioRarity } from '../lib/audio-manager';
+
+    // --- State ---
+    let currentMode = '';
+    let round = 0;
+    let aiThinking = false;
+    let voiceEnabled = false;
+    let demoMode = false;
+    let lastAIResponse = '';
+
+    // --- DOM ---
+    const loadingScreen = document.getElementById('loading-screen')!;
+    const battleArena = document.getElementById('battle-arena')!;
+    const loadingStatus = document.getElementById('loading-status')!;
+    const loadingDetail = document.getElementById('loading-detail')!;
+    const loadingBar = document.getElementById('loading-bar')!;
+    const noWebgpu = document.getElementById('no-webgpu')!;
+    const fallbackModeBtn = document.getElementById('fallback-mode-btn')!;
+
+    const modeSelect = document.getElementById('mode-select')!;
+    const battleInput = document.getElementById('battle-input')!;
+    const battleLog = document.getElementById('battle-log')!;
+    const playerInput = document.getElementById('player-input') as HTMLInputElement;
+    const sendBtn = document.getElementById('send-btn')!;
+    const battleHint = document.getElementById('battle-hint')!;
+    const micBtn = document.getElementById('mic-btn')!;
+    const voiceToggle = document.getElementById('voice-toggle')!;
+    const voiceLabel = document.getElementById('voice-label')!;
+    const aiModelBadge = document.getElementById('ai-model-badge')!;
+
+    // --- Demo mode fallback responses ---
+    const demoResponses: Record<string, string[]> = {
+      freestyle: [
+        "Thou thinkest thy rhymes are fire?\nNay, they're but a candle's dim glow.\nMy verses are a funeral pyre —\nBurning every bar thou dost throw!",
+        "I've battled wits with kings and fools,\nFrom Stratford stages to these digital halls.\nThy words are blunt, like broken tools —\nWhile mine echo through eternity's walls!",
+        "Impressive, mortal, thou hast some skill,\nBut I've been spitting bars since 1594.\nShakespeare's ghost guides my quill —\nAnd thy flow? I've heard better from a bore!",
+      ],
+      sonnet: [
+        "Complete this, if thou canst:\n\n\"When in disgrace with fortune and men's eyes,\nI all alone beweep my outcast state...\"\n\nGive me thy next two lines, wordsmith.",
+        "Try this one:\n\n\"My mistress' eyes are nothing like the sun;\nCoral is far more red than her lips' red...\"\n\nMatch that wit, challenger!",
+        "Here's thy challenge:\n\n\"Shall I compare thee to a summer's day?\nThou art more lovely and more temperate...\"\n\nCan thy tongue keep pace with mine?",
+      ],
+      quote: [
+        "Thou tookest the words and gave them new life!\nBut my adaptation cuts deeper than thy knife:\n\n\"To ghost or not to ghost — that's the real question.\nWhether 'tis drippier to suffer the DMs of outrageous trolling...\"",
+        "Not bad, not bad at all!\nBut check this adaptation, let it fall:\n\n\"Friends, Romans, countrymen — slide into my DMs!\nI come to roast Caesar, not to praise him.\nThe L's that men take live after them...\"",
+        "A worthy attempt at adaptation!\nBut here's mine with no hesitation:\n\n\"All the world's a feed, and all the men and women merely posting.\nThey have their exits and their entrances,\nAnd one account in its time plays many roles...\"",
+      ],
+    };
+
+    // --- TTS with music ducking ---
+    function speakWithDuck(text: string) {
+      duckMusic();
+      speak(text);
+      const checkDone = setInterval(() => {
+        if (!isSpeaking()) {
+          clearInterval(checkDone);
+          unduckMusic();
+        }
+      }, 200);
+    }
+
+    // --- Init ---
+    async function init() {
+      const hasWebGPU = await isWebGPUAvailable();
+
+      if (!hasWebGPU) {
+        loadingStatus.textContent = 'WebGPU not detected in this browser.';
+        loadingDetail.textContent = '';
+        noWebgpu.classList.remove('hidden');
+
+        fallbackModeBtn.addEventListener('click', () => {
+          demoMode = true;
+          aiModelBadge.textContent = 'Demo Mode';
+          showArena();
+        });
+        return;
+      }
+
+      loadingStatus.textContent = 'Downloading AI model...';
+
+      // Load LLM + TTS in parallel
+      const llmReady = loadThespian((progress) => {
+        loadingStatus.textContent = progress.text;
+        // Parse progress percentage from text if available
+        const match = progress.text.match(/(\d+)%/);
+        if (match) {
+          loadingBar.style.width = `${match[1]}%`;
+        }
+      });
+
+      // Start TTS loading alongside (non-blocking)
+      loadVoice((progress) => {
+        loadingDetail.textContent = progress.text;
+      });
+
+      const success = await llmReady;
+
+      if (success) {
+        const model = getModelName();
+        const shortName = model.includes('3B') ? 'Llama 3B' : 'Llama 1B';
+        aiModelBadge.textContent = `AI Bard · ${shortName}`;
+        showArena();
+      } else {
+        loadingStatus.textContent = 'Failed to load AI model.';
+        loadingDetail.textContent = 'Try refreshing the page or use Demo Mode.';
+        noWebgpu.classList.remove('hidden');
+
+        fallbackModeBtn.addEventListener('click', () => {
+          demoMode = true;
+          aiModelBadge.textContent = 'Demo Mode';
+          showArena();
+        });
+      }
+    }
+
+    function showArena() {
+      loadingScreen.classList.add('hidden');
+      battleArena.classList.remove('hidden');
+      // Start battle beat on first interaction within arena
+      battleArena.addEventListener('click', () => {
+        if (!isInitialized()) initAudio();
+        playMusic('battle-beat', 800);
+        preloadSfx(['ui-whoosh', 'battle-victory', 'battle-defeat', 'fanfare-common', 'fanfare-rare', 'fanfare-legendary', 'ui-click']);
+      }, { once: true });
+    }
+
+    // --- Mode Selection ---
+    const modeHints: Record<string, string> = {
+      freestyle: 'Spit your best bars — the Thespian will respond in kind.',
+      sonnet: 'The Thespian gives you two lines — complete the couplet.',
+      quote: 'Adapt a Shakespeare quote into modern slang. Best remix wins.',
+    };
+
+    document.querySelectorAll('.mode-btn').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        playSfx('ui-whoosh');
+        currentMode = (btn as HTMLElement).dataset.mode || 'freestyle';
+        modeSelect.classList.add('hidden');
+        battleInput.classList.remove('hidden');
+        battleHint.textContent = modeHints[currentMode] || '';
+
+        addSystemMessage(`Battle mode: ${currentMode.charAt(0).toUpperCase() + currentMode.slice(1)} — Round 1`);
+
+        // Get AI opening verse
+        if (!demoMode && isLoaded()) {
+          setMode(currentMode as 'freestyle' | 'sonnet' | 'quote');
+
+          const modePrompts: Record<string, string> = {
+            freestyle: 'A challenger approaches for a freestyle rap battle. Introduce yourself with a 4-line opening verse. Be theatrical and intimidating.',
+            sonnet: 'A challenger wants a Sonnet Duel. Give them the first two lines of a Shakespeare sonnet and challenge them to complete the couplet.',
+            quote: 'A challenger wants a Quote Battle. Present a famous Shakespeare quote and challenge them to remix it into modern slang. Give your own remix as an example.',
+          };
+
+          addTypingIndicator();
+
+          try {
+            let fullText = '';
+            const response = await chat(modePrompts[currentMode], (token) => {
+              fullText += token;
+              updateTypingIndicator(fullText);
+            });
+            removeTypingIndicator();
+            addAIMessage(response);
+
+            if (voiceEnabled) speakWithDuck(response);
+          } catch {
+            removeTypingIndicator();
+            addAIMessage("Hark! Who dares approach my stage?\nStep forth and test thy wordplay!");
+          }
+        } else {
+          // Demo mode opening
+          addAIMessage("Hark! Who dares approach my stage?\nStep forth, mortal, and test thy wordplay.\nIn iambic fire or freestyle rage —\nI'll match thee, bar for bar, today!");
+        }
+      });
+    });
+
+    // --- Send Message ---
+    async function sendMessage() {
+      const text = playerInput.value.trim();
+      if (!text || aiThinking) return;
+
+      playSfx('ui-click');
+      addPlayerMessage(text);
+      playerInput.value = '';
+      playerInput.disabled = true;
+      sendBtn.setAttribute('disabled', '');
+      aiThinking = true;
+
+      if (!demoMode && isLoaded()) {
+        // Real AI response
+        addTypingIndicator();
+
+        try {
+          let fullText = '';
+          const response = await chat(text, (token) => {
+            fullText += token;
+            updateTypingIndicator(fullText);
+          });
+          removeTypingIndicator();
+          addAIMessage(response);
+          lastAIResponse = response;
+
+          if (voiceEnabled) speakWithDuck(response);
+        } catch (err) {
+          removeTypingIndicator();
+          const fallback = "*The Master Thespian pauses, gathering his thoughts...*\nForgive me — my muse falters. Try again, challenger!";
+          addAIMessage(fallback);
+          lastAIResponse = fallback;
+        }
+      } else {
+        // Demo mode response
+        await new Promise(r => setTimeout(r, 1500));
+        const responses = demoResponses[currentMode] || demoResponses.freestyle;
+        const response = responses[round % responses.length];
+        addAIMessage(response);
+        lastAIResponse = response;
+      }
+
+      round++;
+      document.getElementById('rounds-played')!.textContent = String(round);
+
+      // LLM-Judged Scoring
+      const pScore = document.getElementById('player-score')!;
+      const aScore = document.getElementById('ai-score')!;
+      let playerWon = false;
+
+      if (!demoMode && isLoaded()) {
+        addSystemMessage('The judge deliberates...');
+        const judgment = await judgeBattle(text, lastAIResponse);
+
+        if (judgment) {
+          showJudgment(judgment);
+          playerWon = judgment.playerWins;
+        } else {
+          // Fallback to random if judging fails
+          playerWon = Math.random() > 0.55;
+        }
+      } else {
+        // Demo mode: random scoring
+        playerWon = Math.random() > 0.55;
+      }
+
+      if (playerWon) {
+        pScore.textContent = String(Number(pScore.textContent) + 1);
+        playSfx('battle-victory');
+        recordBattleWin();
+        const card = drawRandomCard();
+        addCard(card.id, 'battle');
+        showBattleReward(card);
+        setTimeout(() => playRarityFanfare(card.rarity as AudioRarity), 300);
+      } else {
+        aScore.textContent = String(Number(aScore.textContent) + 1);
+        playSfx('battle-defeat');
+      }
+
+      playerInput.disabled = false;
+      sendBtn.removeAttribute('disabled');
+      playerInput.focus();
+      aiThinking = false;
+    }
+
+    function showJudgment(judgment: BattleJudgment) {
+      const div = document.createElement('div');
+      div.className = 'text-center my-3';
+      const winnerLabel = judgment.playerWins ? 'You win this round!' : 'The Thespian takes this round!';
+      const winnerColor = judgment.playerWins ? 'text-emerald-400' : 'text-crimson-400';
+      div.innerHTML = `
+        <div class="card-glass p-4 max-w-md mx-auto bg-obsidian-900/80">
+          <div class="text-xs font-mono text-obsidian-500 mb-2 uppercase tracking-wider">Judge's Verdict</div>
+          <p class="text-sm font-display font-bold ${winnerColor} mb-2">${winnerLabel}</p>
+          <p class="text-xs text-obsidian-400 italic mb-3">"${judgment.reason}"</p>
+          <div class="grid grid-cols-2 gap-3 text-xs">
+            <div>
+              <span class="text-obsidian-500 block mb-1">You</span>
+              <div class="space-y-0.5">
+                <div class="flex justify-between"><span class="text-obsidian-400">Wordplay</span><span class="text-crimson-400">${judgment.playerScore.wordplay}/10</span></div>
+                <div class="flex justify-between"><span class="text-obsidian-400">Shakespeare</span><span class="text-crimson-400">${judgment.playerScore.shakespeare}/10</span></div>
+                <div class="flex justify-between"><span class="text-obsidian-400">Flow</span><span class="text-crimson-400">${judgment.playerScore.flow}/10</span></div>
+                <div class="flex justify-between"><span class="text-obsidian-400">Wit</span><span class="text-crimson-400">${judgment.playerScore.wit}/10</span></div>
+                <div class="flex justify-between border-t border-obsidian-700 pt-0.5 mt-0.5"><span class="text-obsidian-300 font-semibold">Total</span><span class="text-crimson-300 font-semibold">${judgment.playerScore.total}/40</span></div>
+              </div>
+            </div>
+            <div>
+              <span class="text-obsidian-500 block mb-1">Thespian</span>
+              <div class="space-y-0.5">
+                <div class="flex justify-between"><span class="text-obsidian-400">Wordplay</span><span class="text-gold-400">${judgment.aiScore.wordplay}/10</span></div>
+                <div class="flex justify-between"><span class="text-obsidian-400">Shakespeare</span><span class="text-gold-400">${judgment.aiScore.shakespeare}/10</span></div>
+                <div class="flex justify-between"><span class="text-obsidian-400">Flow</span><span class="text-gold-400">${judgment.aiScore.flow}/10</span></div>
+                <div class="flex justify-between"><span class="text-obsidian-400">Wit</span><span class="text-gold-400">${judgment.aiScore.wit}/10</span></div>
+                <div class="flex justify-between border-t border-obsidian-700 pt-0.5 mt-0.5"><span class="text-obsidian-300 font-semibold">Total</span><span class="text-gold-300 font-semibold">${judgment.aiScore.total}/40</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+      battleLog.appendChild(div);
+      battleLog.scrollTop = battleLog.scrollHeight;
+    }
+
+    function showBattleReward(card: Card) {
+      const rarityClass = RARITY_COLORS[card.rarity as Rarity] || '';
+      const div = document.createElement('div');
+      div.className = 'text-center my-2';
+      div.innerHTML = `
+        <div class="inline-block card-glass p-3 bg-gradient-to-r from-gold-500/10 to-emerald-500/10 border-gold-500/30">
+          <span class="text-xs text-emerald-400 font-semibold">CARD EARNED!</span>
+          <div class="flex items-center gap-2 mt-1">
+            ${card.image ? `<img src="${card.image}" alt="${card.name}" class="w-10 h-10 object-cover rounded">` : `<span class="text-lg">${card.icon}</span>`}
+            <span class="text-sm font-display font-bold text-obsidian-100">${card.name}</span>
+            <span class="px-1.5 py-0.5 text-xs rounded-full ${rarityClass}">${card.rarity}</span>
+          </div>
+        </div>
+      `;
+      battleLog.appendChild(div);
+      battleLog.scrollTop = battleLog.scrollHeight;
+    }
+
+    sendBtn.addEventListener('click', sendMessage);
+    playerInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') sendMessage();
+    });
+
+    // --- Voice Toggle ---
+    voiceToggle.addEventListener('click', async () => {
+      voiceEnabled = !voiceEnabled;
+      voiceLabel.textContent = voiceEnabled ? 'Voice: On' : 'Voice: Off';
+
+      if (voiceEnabled && !isVoiceLoaded()) {
+        voiceLabel.textContent = 'Loading...';
+        const ok = await loadVoice();
+        voiceLabel.textContent = ok ? 'Voice: On' : 'Voice: Off (failed)';
+        if (!ok) voiceEnabled = false;
+      }
+
+      if (!voiceEnabled) stopSpeaking();
+    });
+
+    // --- Microphone (Web Speech API) ---
+    let recognition: any = null;
+
+    micBtn.addEventListener('click', () => {
+      if (recognition) {
+        recognition.stop();
+        recognition = null;
+        micBtn.classList.remove('border-crimson-500', 'text-crimson-400');
+        return;
+      }
+
+      const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+      if (!SpeechRecognition) {
+        addSystemMessage('Speech recognition not supported in this browser.');
+        return;
+      }
+
+      recognition = new SpeechRecognition();
+      recognition.continuous = false;
+      recognition.interimResults = true;
+      recognition.lang = 'en-US';
+
+      micBtn.classList.add('border-crimson-500', 'text-crimson-400');
+
+      recognition.onresult = (event: any) => {
+        const transcript = Array.from(event.results)
+          .map((r: any) => r[0].transcript)
+          .join('');
+        playerInput.value = transcript;
+      };
+
+      recognition.onend = () => {
+        micBtn.classList.remove('border-crimson-500', 'text-crimson-400');
+        recognition = null;
+      };
+
+      recognition.onerror = () => {
+        micBtn.classList.remove('border-crimson-500', 'text-crimson-400');
+        recognition = null;
+      };
+
+      recognition.start();
+    });
+
+    // --- Chat UI Helpers ---
+    function addPlayerMessage(text: string) {
+      const div = document.createElement('div');
+      div.className = 'flex gap-3 justify-end';
+      div.innerHTML = `
+        <div class="card-glass p-4 max-w-md bg-crimson-500/5 border-crimson-500/20">
+          <p class="text-sm text-obsidian-200 leading-relaxed">
+            <span class="text-crimson-400 font-display font-semibold">You:</span><br>
+            ${text.replace(/</g, '&lt;').replace(/>/g, '&gt;')}
+          </p>
+        </div>
+        <div class="w-8 h-8 rounded-full bg-crimson-500/20 border border-crimson-500/30 flex items-center justify-center flex-shrink-0 mt-1">
+          <span class="text-sm">&#128100;</span>
+        </div>
+      `;
+      battleLog.appendChild(div);
+      battleLog.scrollTop = battleLog.scrollHeight;
+    }
+
+    function addAIMessage(text: string) {
+      const div = document.createElement('div');
+      div.className = 'flex gap-3';
+      div.innerHTML = `
+        <div class="w-8 h-8 rounded-full bg-gold-500/20 border border-gold-500/30 flex items-center justify-center flex-shrink-0 mt-1">
+          <span class="text-sm">&#9876;</span>
+        </div>
+        <div class="card-glass p-4 max-w-md">
+          <p class="text-sm text-obsidian-200 leading-relaxed">
+            <span class="text-gold-400 font-display font-semibold">Master Thespian:</span><br>
+            ${text.replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\n/g, '<br>')}
+          </p>
+        </div>
+      `;
+      battleLog.appendChild(div);
+      battleLog.scrollTop = battleLog.scrollHeight;
+    }
+
+    function addSystemMessage(text: string) {
+      const div = document.createElement('div');
+      div.className = 'text-center';
+      div.innerHTML = `<span class="text-xs font-mono text-obsidian-500 bg-obsidian-800/50 px-3 py-1 rounded-full">${text}</span>`;
+      battleLog.appendChild(div);
+      battleLog.scrollTop = battleLog.scrollHeight;
+    }
+
+    function addTypingIndicator() {
+      const div = document.createElement('div');
+      div.id = 'typing-indicator';
+      div.className = 'flex gap-3';
+      div.innerHTML = `
+        <div class="w-8 h-8 rounded-full bg-gold-500/20 border border-gold-500/30 flex items-center justify-center flex-shrink-0 mt-1">
+          <span class="text-sm">&#9876;</span>
+        </div>
+        <div class="card-glass p-4 max-w-md">
+          <p class="text-sm text-obsidian-200 leading-relaxed">
+            <span class="text-gold-400 font-display font-semibold">Master Thespian:</span><br>
+            <span id="typing-text" class="text-obsidian-400 italic">composing verse...</span>
+          </p>
+        </div>
+      `;
+      battleLog.appendChild(div);
+      battleLog.scrollTop = battleLog.scrollHeight;
+    }
+
+    function updateTypingIndicator(text: string) {
+      const el = document.getElementById('typing-text');
+      if (el) {
+        el.className = 'text-obsidian-200';
+        el.style.fontStyle = 'normal';
+        el.innerHTML = text.replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\n/g, '<br>');
+      }
+      battleLog.scrollTop = battleLog.scrollHeight;
+    }
+
+    function removeTypingIndicator() {
+      document.getElementById('typing-indicator')?.remove();
+    }
+
+    // --- Start ---
+    init();
+  </script>
+</BaseLayout>

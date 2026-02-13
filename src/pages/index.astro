@@ -1,0 +1,245 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import '../styles/global.css';
+
+const features = [
+  {
+    icon: '&#9813;',
+    title: 'Digital Cards',
+    description: 'Collectible digital cards with tiered rarity, unique art, and AI-powered experiences built into every one.',
+  },
+  {
+    icon: '&#9876;',
+    title: 'AI Battle Arena',
+    description: 'Challenge the Master Thespian — an AI-powered Shakespeare battle rapper — in melodic combat.',
+  },
+  {
+    icon: '&#127183;',
+    title: 'Earn & Collect',
+    description: 'Win cards through mini-games, trivia, challenges, and battle victories. Build your collection.',
+  },
+  {
+    icon: '&#128279;',
+    title: 'Own & Trade',
+    description: 'Your cards are yours. Optionally mint them as NFTs on-chain for true digital ownership and trading.',
+  },
+];
+
+const houses = [
+  { name: 'House Montague', play: 'Romeo & Juliet', color: 'from-crimson-500 to-crimson-700', count: 12 },
+  { name: 'House Capulet', play: 'Romeo & Juliet', color: 'from-blue-500 to-blue-700', count: 12 },
+  { name: 'Danish Court', play: 'Hamlet', color: 'from-purple-500 to-purple-700', count: 10 },
+  { name: 'Forest of Arden', play: 'As You Like It', color: 'from-emerald-500 to-emerald-700', count: 8 },
+];
+---
+
+<BaseLayout title="Home" description="Inspired Mile — Where Physical Cards Meet Digital Worlds. AI-powered Shakespeare battle cards with AR experiences.">
+
+  <!-- Hero Section -->
+  <section class="relative min-h-[90vh] flex items-center overflow-hidden">
+    <!-- Background effects -->
+    <div class="absolute inset-0">
+      <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-gold-500/5 rounded-full blur-3xl"></div>
+      <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-crimson-500/5 rounded-full blur-3xl"></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-obsidian-950 via-transparent to-obsidian-950"></div>
+    </div>
+
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <!-- Left: Text -->
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold-500/10 border border-gold-500/20 mb-6">
+            <span class="w-2 h-2 rounded-full bg-gold-400 animate-pulse"></span>
+            <span class="text-gold-400 text-xs font-medium tracking-wide uppercase">Shakespeare on the Go</span>
+          </div>
+
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-display font-bold leading-tight mb-6">
+            Where Cards
+            <span class="block text-gradient">Come Alive</span>
+          </h1>
+
+          <p class="text-lg text-obsidian-300 leading-relaxed mb-8 max-w-lg">
+            Digital collectible cards that unlock AI-powered augmented reality experiences.
+            Battle the Master Thespian, collect Shakespeare's greatest characters,
+            and join the next evolution of trading card games.
+          </p>
+
+          <div class="flex flex-wrap gap-4">
+            <a href="/playground" class="btn-primary">
+              Enter the Playground
+              <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </a>
+            <a href="/collection" class="btn-secondary">
+              View Collection
+            </a>
+          </div>
+
+          <div class="flex items-center gap-8 mt-10 text-sm text-obsidian-400">
+            <div>
+              <span class="block text-2xl font-display font-bold text-gold-400">10K+</span>
+              Cards in Collection
+            </div>
+            <div class="w-px h-10 bg-obsidian-700"></div>
+            <div>
+              <span class="block text-2xl font-display font-bold text-gold-400">6</span>
+              Shakespeare Houses
+            </div>
+            <div class="w-px h-10 bg-obsidian-700"></div>
+            <div>
+              <span class="block text-2xl font-display font-bold text-gold-400">AR</span>
+              Powered
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Card Preview -->
+        <div class="flex justify-center lg:justify-end">
+          <div class="relative">
+            <!-- Glow effect -->
+            <div class="absolute inset-0 bg-gold-500/20 blur-3xl rounded-full scale-75"></div>
+
+            <!-- Main card -->
+            <div class="relative w-72 h-[420px] rounded-2xl overflow-hidden animate-float glow-gold">
+              <div class="absolute inset-0 bg-gradient-to-br from-obsidian-800 via-obsidian-900 to-obsidian-950 border-2 border-gold-500/30 rounded-2xl">
+                <!-- Card header -->
+                <div class="p-4 flex items-center justify-between">
+                  <span class="text-xs font-mono text-gold-500/60">SM-001</span>
+                  <span class="text-xs font-mono text-crimson-400">ATK 95</span>
+                </div>
+
+                <!-- Card art area -->
+                <div class="mx-4 h-48 rounded-lg bg-gradient-to-br from-gold-500/10 to-crimson-500/10 border border-gold-500/20 overflow-hidden">
+                  <img src="/images/cards/sm-001.webp" alt="The Sonnet Man" class="w-full h-full object-cover" />
+                </div>
+
+                <!-- Card info -->
+                <div class="p-4">
+                  <h3 class="font-display text-lg font-bold text-gold-300">The Sonnet Man</h3>
+                  <p class="text-xs text-obsidian-400 mt-1">Master Thespian &middot; Legendary</p>
+                  <div class="mt-3 flex items-center gap-2">
+                    <span class="px-2 py-0.5 text-xs rounded bg-crimson-500/20 text-crimson-400 border border-crimson-500/30">Fire</span>
+                    <span class="px-2 py-0.5 text-xs rounded bg-gold-500/20 text-gold-400 border border-gold-500/30">Bard</span>
+                  </div>
+                  <p class="text-xs text-obsidian-400 mt-3 italic leading-relaxed">
+                    "Shall I compare thee to a summer's day? Thou art more lovely and more temperate..."
+                  </p>
+                </div>
+
+                <!-- Card footer -->
+                <div class="absolute bottom-0 left-0 right-0 p-3 flex items-center justify-between bg-obsidian-950/80">
+                  <div class="flex items-center gap-3 text-xs text-obsidian-500">
+                    <span>HP 100</span>
+                    <span>DEF 80</span>
+                  </div>
+                  <div class="flex items-center gap-1">
+                    <span class="w-1.5 h-1.5 rounded-full bg-gold-400"></span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-gold-400"></span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-gold-400"></span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-gold-400/30"></span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-gold-400/30"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Secondary floating cards -->
+            <div class="absolute -left-12 top-16 w-48 h-72 rounded-xl bg-gradient-to-br from-obsidian-800 to-obsidian-900 border border-crimson-500/20 rotate-[-12deg] opacity-40 -z-10"></div>
+            <div class="absolute -right-8 top-24 w-48 h-72 rounded-xl bg-gradient-to-br from-obsidian-800 to-obsidian-900 border border-blue-500/20 rotate-[8deg] opacity-30 -z-10"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="section-padding">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl sm:text-4xl font-display font-bold mb-4">
+          The <span class="text-gradient">Platform</span>
+        </h2>
+        <p class="text-obsidian-400 max-w-2xl mx-auto">
+          Digital cards, AI experiences, and a marketplace — coming together to create something entirely new.
+        </p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {features.map((feature) => (
+          <div class="card-glass p-6 hover:border-gold-500/30 transition-all duration-300 group">
+            <div class="text-3xl mb-4 group-hover:scale-110 transition-transform" set:html={feature.icon} />
+            <h3 class="font-display text-lg font-semibold text-obsidian-100 mb-2">{feature.title}</h3>
+            <p class="text-sm text-obsidian-400 leading-relaxed">{feature.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Houses Section -->
+  <section class="section-padding bg-obsidian-900/30">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl sm:text-4xl font-display font-bold mb-4">
+          Shakespeare's <span class="text-gradient">Houses</span>
+        </h2>
+        <p class="text-obsidian-400 max-w-2xl mx-auto">
+          Choose your allegiance. Each house draws from a different Shakespeare play, with unique characters, abilities, and strategies.
+        </p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {houses.map((house) => (
+          <div class="card-glass p-6 hover:border-gold-500/30 transition-all duration-300 group cursor-pointer">
+            <div class={`w-12 h-12 rounded-lg bg-gradient-to-br ${house.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
+              <span class="text-white font-display font-bold text-lg">{house.name[0]}</span>
+            </div>
+            <h3 class="font-display text-lg font-semibold text-obsidian-100 mb-1">{house.name}</h3>
+            <p class="text-xs text-obsidian-500 mb-3 italic">{house.play}</p>
+            <div class="flex items-center justify-between">
+              <span class="text-xs text-obsidian-400">{house.count} cards</span>
+              <svg class="w-4 h-4 text-obsidian-500 group-hover:text-gold-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section-padding">
+    <div class="max-w-4xl mx-auto text-center">
+      <div class="card-glass p-10 sm:p-16 glow-gold">
+        <h2 class="text-3xl sm:text-4xl font-display font-bold mb-4">
+          Ready to <span class="text-gradient">Battle</span>?
+        </h2>
+        <p class="text-obsidian-300 mb-8 max-w-lg mx-auto">
+          Challenge the Master Thespian in a Shakespeare rap battle, earn digital cards, and build your collection.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="/battle" class="btn-danger">
+            Enter the Arena
+            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+          </a>
+          <a href="/playground" class="btn-secondary">
+            Earn Cards
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    import { initAudio, isInitialized, playMusic } from '../lib/audio-manager';
+
+    document.addEventListener('click', () => {
+      if (!isInitialized()) initAudio();
+      playMusic('landing-ambient', 2000);
+    }, { once: true });
+  </script>
+</BaseLayout>

@@ -1,0 +1,225 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import '../styles/global.css';
+
+const lastUpdated = 'February 13, 2026';
+---
+
+<BaseLayout title="Privacy Policy & Legal" description="Privacy policy, terms of use, and digital asset disclaimers for Inspired Mile.">
+
+  <section class="section-padding">
+    <div class="max-w-3xl mx-auto">
+      <h1 class="text-4xl sm:text-5xl font-display font-bold mb-4">
+        Privacy Policy & <span class="text-gradient">Legal</span>
+      </h1>
+      <p class="text-obsidian-500 text-sm mb-12">Last updated: {lastUpdated}</p>
+
+      <!-- Company Identity -->
+      <div class="card-glass p-6 mb-8">
+        <h2 class="font-display text-lg font-bold text-obsidian-100 mb-2">Company Information</h2>
+        <p class="text-sm text-obsidian-400 leading-relaxed">
+          Inspired Mile is a product of <strong class="text-obsidian-200">Voyage Tracable, LLC</strong>,
+          a limited liability company registered in the state of Florida.
+          All references to "Inspired Mile," "we," "us," or "our" on this website refer to
+          Voyage Tracable, LLC operating under the DBA "Inspired Mile."
+        </p>
+        <p class="text-xs text-obsidian-500 mt-2">Sarasota, FL &middot; United States</p>
+      </div>
+
+      <!-- Privacy Policy -->
+      <div class="space-y-8">
+        <div>
+          <h2 class="font-display text-xl font-bold text-gold-300 mb-4">1. Privacy Policy</h2>
+
+          <h3 class="font-display text-sm font-semibold text-obsidian-200 mb-2 mt-6">1.1 Data Collection</h3>
+          <p class="text-sm text-obsidian-400 leading-relaxed mb-3">
+            Inspired Mile is designed with privacy as a core principle. Our AI features (including the
+            Master Thespian battle system, text-to-speech, and speech-to-text) run <strong class="text-obsidian-200">entirely
+            in your browser</strong> using WebGPU and WebAssembly. No conversation data, voice recordings,
+            or AI interactions are transmitted to our servers or any third party.
+          </p>
+          <p class="text-sm text-obsidian-400 leading-relaxed mb-3">
+            We collect minimal data necessary to operate the platform:
+          </p>
+          <ul class="text-sm text-obsidian-400 space-y-1 ml-4 list-disc">
+            <li>Basic analytics (page views, anonymized usage patterns)</li>
+            <li>Wallet addresses if you voluntarily connect a wallet for NFT features</li>
+            <li>Email address if you voluntarily subscribe to updates</li>
+          </ul>
+
+          <h3 class="font-display text-sm font-semibold text-obsidian-200 mb-2 mt-6">1.2 Local Storage</h3>
+          <p class="text-sm text-obsidian-400 leading-relaxed mb-3">
+            Your card inventory, game progress, and preferences are stored locally in your browser
+            using localStorage and IndexedDB. This data remains on your device and is not transmitted
+            to our servers. Clearing your browser data will delete this information.
+          </p>
+
+          <h3 class="font-display text-sm font-semibold text-obsidian-200 mb-2 mt-6">1.3 AI Model Data</h3>
+          <p class="text-sm text-obsidian-400 leading-relaxed mb-3">
+            AI models are downloaded once from public model repositories and cached in your browser.
+            All inference (text generation, speech synthesis, speech recognition) happens locally on
+            your device. <strong class="text-obsidian-200">No prompts, conversations, or audio data are sent to any server.</strong>
+          </p>
+
+          <h3 class="font-display text-sm font-semibold text-obsidian-200 mb-2 mt-6">1.4 Third-Party Services</h3>
+          <p class="text-sm text-obsidian-400 leading-relaxed">
+            If you connect a third-party wallet (e.g., Phantom, Solflare) or interact with
+            blockchain networks, those interactions are governed by the respective third-party
+            privacy policies. We do not control and are not responsible for the data practices
+            of third-party wallet providers or blockchain networks.
+          </p>
+        </div>
+
+        <!-- Digital Assets / NFT Disclaimers -->
+        <div>
+          <h2 class="font-display text-xl font-bold text-gold-300 mb-4">2. Digital Asset Disclaimers</h2>
+
+          <div class="card-glass p-5 bg-crimson-500/5 border-crimson-500/20 mb-6">
+            <p class="text-sm text-crimson-300 font-semibold mb-2">Important Notice Regarding Digital Assets</p>
+            <p class="text-xs text-obsidian-400 leading-relaxed">
+              Please read this section carefully before using any digital asset or NFT features
+              on the Inspired Mile platform.
+            </p>
+          </div>
+
+          <h3 class="font-display text-sm font-semibold text-obsidian-200 mb-2 mt-6">2.1 Not a Cryptocurrency Creator</h3>
+          <p class="text-sm text-obsidian-400 leading-relaxed mb-3">
+            Voyage Tracable, LLC (DBA Inspired Mile) <strong class="text-obsidian-200">does not create, issue, or manage
+            any cryptocurrency, token, or coin</strong>. We do not operate a token sale, initial coin offering
+            (ICO), or any form of securities offering. The digital cards within our platform are
+            digital collectibles (non-fungible tokens / NFTs) intended for entertainment and gameplay
+            purposes only.
+          </p>
+
+          <h3 class="font-display text-sm font-semibold text-obsidian-200 mb-2 mt-6">2.2 Not a Custodian</h3>
+          <p class="text-sm text-obsidian-400 leading-relaxed mb-3">
+            Voyage Tracable, LLC <strong class="text-obsidian-200">is not a custodian, trustee, or fiduciary</strong> of any
+            user's digital assets, cryptocurrency, or NFTs. When you mint a card as an NFT,
+            ownership and control of that asset transfers to your personal wallet. We do not
+            hold, store, manage, or have access to your wallet, private keys, or on-chain assets.
+          </p>
+          <p class="text-sm text-obsidian-400 leading-relaxed mb-3">
+            You are solely responsible for:
+          </p>
+          <ul class="text-sm text-obsidian-400 space-y-1 ml-4 list-disc">
+            <li>Safeguarding your wallet credentials and private keys</li>
+            <li>Any transactions you initiate from your wallet</li>
+            <li>Understanding the risks associated with blockchain transactions</li>
+            <li>Complying with applicable laws and tax obligations in your jurisdiction</li>
+          </ul>
+
+          <h3 class="font-display text-sm font-semibold text-obsidian-200 mb-2 mt-6">2.3 Nature of Digital Collectibles</h3>
+          <p class="text-sm text-obsidian-400 leading-relaxed mb-3">
+            Digital cards within Inspired Mile are collectible game items. When optionally minted
+            as NFTs, they represent proof of ownership of a unique digital item on a public blockchain.
+            They are <strong class="text-obsidian-200">not</strong>:
+          </p>
+          <ul class="text-sm text-obsidian-400 space-y-1 ml-4 list-disc">
+            <li>Securities, investment contracts, or financial instruments</li>
+            <li>Currency, stablecoins, or stores of value</li>
+            <li>Guaranteed to hold, increase, or maintain any monetary value</li>
+            <li>Redeemable for cash, fiat currency, or cryptocurrency from Voyage Tracable, LLC</li>
+          </ul>
+
+          <h3 class="font-display text-sm font-semibold text-obsidian-200 mb-2 mt-6">2.4 No Investment Advice</h3>
+          <p class="text-sm text-obsidian-400 leading-relaxed mb-3">
+            Nothing on this platform constitutes financial, investment, legal, or tax advice.
+            Digital assets, including NFTs, are speculative and carry significant risk. Values
+            can fluctuate dramatically and you may lose some or all of your purchase value.
+            Consult a qualified professional before making any financial decisions related to
+            digital assets.
+          </p>
+
+          <h3 class="font-display text-sm font-semibold text-obsidian-200 mb-2 mt-6">2.5 Blockchain Risks</h3>
+          <p class="text-sm text-obsidian-400 leading-relaxed mb-3">
+            Blockchain transactions are irreversible. Once a transaction is confirmed on-chain,
+            it cannot be undone, reversed, or refunded by Voyage Tracable, LLC. You acknowledge
+            and accept the inherent risks of blockchain technology, including but not limited to:
+          </p>
+          <ul class="text-sm text-obsidian-400 space-y-1 ml-4 list-disc">
+            <li>Smart contract vulnerabilities or bugs</li>
+            <li>Network congestion, delays, or failures</li>
+            <li>Changes to blockchain protocols or consensus mechanisms</li>
+            <li>Regulatory changes that may affect the legality or usability of digital assets</li>
+            <li>Loss of access due to lost private keys or wallet credentials</li>
+          </ul>
+
+          <h3 class="font-display text-sm font-semibold text-obsidian-200 mb-2 mt-6">2.6 Marketplace</h3>
+          <p class="text-sm text-obsidian-400 leading-relaxed mb-3">
+            Any marketplace features provided by Inspired Mile facilitate peer-to-peer transactions
+            between users. Voyage Tracable, LLC acts as a <strong class="text-obsidian-200">platform provider only</strong> and is not
+            a party to transactions between buyers and sellers. We do not guarantee the completion,
+            accuracy, or legality of any transaction conducted through the platform. Marketplace
+            fees, if any, will be clearly disclosed before each transaction.
+          </p>
+        </div>
+
+        <!-- Intellectual Property -->
+        <div>
+          <h2 class="font-display text-xl font-bold text-gold-300 mb-4">3. Intellectual Property</h2>
+          <p class="text-sm text-obsidian-400 leading-relaxed mb-3">
+            The Inspired Mile brand, logo, card designs, AI character personas (including the
+            "Master Thespian"), and original artwork are the property of Voyage Tracable, LLC.
+            Shakespeare's original works are in the public domain.
+          </p>
+          <p class="text-sm text-obsidian-400 leading-relaxed">
+            Purchasing or earning a digital card grants you a personal, non-exclusive, non-transferable
+            license to display and use the card within the Inspired Mile platform for personal,
+            non-commercial purposes. Minting a card as an NFT grants ownership of the token but
+            does not transfer copyright or commercial rights to the underlying artwork or content.
+          </p>
+        </div>
+
+        <!-- Terms of Use -->
+        <div>
+          <h2 class="font-display text-xl font-bold text-gold-300 mb-4">4. Terms of Use</h2>
+
+          <h3 class="font-display text-sm font-semibold text-obsidian-200 mb-2 mt-6">4.1 Eligibility</h3>
+          <p class="text-sm text-obsidian-400 leading-relaxed mb-3">
+            You must be at least 13 years of age to use the Inspired Mile platform. Users under 18
+            should obtain parental or guardian consent before interacting with any digital asset or
+            NFT features. NFT minting, purchasing, and trading features require users to be at
+            least 18 years of age or the age of majority in their jurisdiction.
+          </p>
+
+          <h3 class="font-display text-sm font-semibold text-obsidian-200 mb-2 mt-6">4.2 Acceptable Use</h3>
+          <p class="text-sm text-obsidian-400 leading-relaxed mb-3">
+            You agree not to use the platform to:
+          </p>
+          <ul class="text-sm text-obsidian-400 space-y-1 ml-4 list-disc">
+            <li>Manipulate or exploit game mechanics, marketplace pricing, or ranking systems</li>
+            <li>Engage in money laundering, fraud, or other illegal activities</li>
+            <li>Harass, abuse, or harm other users</li>
+            <li>Infringe upon intellectual property rights</li>
+            <li>Reverse engineer, decompile, or tamper with the platform's systems</li>
+          </ul>
+
+          <h3 class="font-display text-sm font-semibold text-obsidian-200 mb-2 mt-6">4.3 Limitation of Liability</h3>
+          <p class="text-sm text-obsidian-400 leading-relaxed mb-3">
+            The Inspired Mile platform is provided "as is" without warranties of any kind. To the
+            maximum extent permitted by law, Voyage Tracable, LLC shall not be liable for any
+            indirect, incidental, special, consequential, or punitive damages arising from your
+            use of the platform, including but not limited to loss of digital assets, loss of
+            data, or inability to access your cards or NFTs.
+          </p>
+
+          <h3 class="font-display text-sm font-semibold text-obsidian-200 mb-2 mt-6">4.4 Governing Law</h3>
+          <p class="text-sm text-obsidian-400 leading-relaxed">
+            These terms are governed by and construed in accordance with the laws of the State
+            of Florida, without regard to its conflict of law provisions.
+          </p>
+        </div>
+
+        <!-- Contact -->
+        <div>
+          <h2 class="font-display text-xl font-bold text-gold-300 mb-4">5. Contact</h2>
+          <p class="text-sm text-obsidian-400 leading-relaxed">
+            For questions about this privacy policy, terms of use, or digital asset practices,
+            please contact Voyage Tracable, LLC at the information provided on our
+            <a href="/about" class="text-gold-400 hover:text-gold-300 transition-colors">About</a> page.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

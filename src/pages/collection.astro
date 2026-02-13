@@ -1,0 +1,200 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import '../styles/global.css';
+import { CARD_CATALOG, RARITY_COLORS } from '../lib/cards';
+---
+
+<BaseLayout title="My Collection" description="Browse your Inspired Mile card collection — characters, relics, and potions from Shakespeare's greatest works.">
+
+  <!-- Header -->
+  <section class="section-padding pb-8">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-8">
+        <h1 class="text-4xl sm:text-5xl font-display font-bold mb-4">
+          My <span class="text-gradient">Collection</span>
+        </h1>
+        <p class="text-obsidian-400 max-w-2xl mx-auto">
+          Your Shakespeare card collection. Locked cards can be earned in the
+          <a href="/playground" class="text-gold-400 hover:text-gold-300 underline">Playground</a>.
+        </p>
+        <p class="text-sm text-obsidian-500 mt-2">
+          <span id="owned-count" class="text-gold-400 font-mono">0</span> / {CARD_CATALOG.length} cards owned
+        </p>
+      </div>
+
+      <!-- Filters -->
+      <div class="flex flex-wrap justify-center gap-3 mb-12" id="filters">
+        <button data-filter="all" class="filter-btn active px-4 py-2 text-sm rounded-lg bg-gold-500/20 text-gold-400 border border-gold-500/30 hover:bg-gold-500/30 transition-all">All</button>
+        <button data-filter="Character" class="filter-btn px-4 py-2 text-sm rounded-lg bg-obsidian-800 text-obsidian-300 border border-obsidian-700 hover:border-gold-500/30 transition-all">Characters</button>
+        <button data-filter="Relic" class="filter-btn px-4 py-2 text-sm rounded-lg bg-obsidian-800 text-obsidian-300 border border-obsidian-700 hover:border-gold-500/30 transition-all">Relics</button>
+        <button data-filter="Potion" class="filter-btn px-4 py-2 text-sm rounded-lg bg-obsidian-800 text-obsidian-300 border border-obsidian-700 hover:border-gold-500/30 transition-all">Potions</button>
+        <button data-filter="owned" class="filter-btn px-4 py-2 text-sm rounded-lg bg-obsidian-800 text-obsidian-300 border border-obsidian-700 hover:border-gold-500/30 transition-all">Owned</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Card Grid -->
+  <section class="px-4 sm:px-6 lg:px-8 pb-24">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="card-grid">
+        {CARD_CATALOG.map((card) => (
+          <div
+            class={`card-item card-glass p-0 overflow-hidden transition-all duration-300 group cursor-pointer ${card.border}`}
+            data-type={card.type}
+            data-id={card.id}
+            data-rarity={card.rarity}
+          >
+            <!-- Card Art -->
+            <div class={`h-48 bg-gradient-to-br ${card.gradient} flex items-center justify-center relative overflow-hidden`}>
+              {card.image ? (
+                <img
+                  src={card.image}
+                  alt={card.name}
+                  class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                  loading="lazy"
+                />
+              ) : (
+                <div class="card-icon text-5xl opacity-80 group-hover:scale-110 transition-transform duration-300">
+                  {card.icon}
+                </div>
+              )}
+              <span class={`absolute top-3 right-3 px-2 py-0.5 text-xs rounded-full font-medium ${RARITY_COLORS[card.rarity]}`}>
+                {card.rarity}
+              </span>
+              <span class="absolute top-3 left-3 text-xs font-mono text-obsidian-400/60">{card.id}</span>
+
+              <!-- Lock overlay (toggled by JS) -->
+              <div class="lock-overlay absolute inset-0 bg-obsidian-950/70 flex items-center justify-center hidden">
+                <div class="text-center">
+                  <svg class="w-8 h-8 text-obsidian-500 mx-auto mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                  </svg>
+                  <span class="text-xs text-obsidian-500">Locked</span>
+                </div>
+              </div>
+
+              <!-- Mint badge (future, shown on minted cards) -->
+              <div class="mint-badge absolute bottom-3 right-3 hidden items-center gap-1 text-xs text-emerald-400/80 bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20">
+                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                On-chain
+              </div>
+            </div>
+
+            <!-- Card Info -->
+            <div class="p-4">
+              <div class="flex items-center justify-between mb-1">
+                <h3 class="font-display text-lg font-semibold text-obsidian-100">{card.name}</h3>
+              </div>
+              <p class="text-xs text-obsidian-500 mb-3">{card.house} &middot; {card.element}</p>
+
+              {card.type === 'Character' && (
+                <div class="flex items-center gap-4 mb-3 text-xs">
+                  <span class="text-crimson-400">ATK {card.atk}</span>
+                  <span class="text-blue-400">DEF {card.def}</span>
+                  <span class="text-emerald-400">HP {card.hp}</span>
+                </div>
+              )}
+
+              <p class="text-xs text-obsidian-400 italic leading-relaxed line-clamp-2">"{card.quote}"</p>
+
+              <!-- Duplicate count -->
+              <div class="dup-badge hidden mt-2">
+                <span class="text-xs text-obsidian-500">x<span class="dup-count">1</span></span>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <script>
+    import { getOwnedCardIds, getDuplicateCount } from '../lib/inventory';
+    import { initAudio, isInitialized, playMusic, playSfx } from '../lib/audio-manager';
+
+    // Start browse music on first interaction
+    document.addEventListener('click', () => {
+      if (!isInitialized()) initAudio();
+      playMusic('collection-browse', 1000);
+    }, { once: true });
+
+    // --- Ownership state ---
+    function updateOwnership() {
+      const ownedIds = getOwnedCardIds();
+      const cardItems = document.querySelectorAll('.card-item');
+      let ownedCount = 0;
+
+      cardItems.forEach(item => {
+        const el = item as HTMLElement;
+        const id = el.dataset.id || '';
+        const lockOverlay = el.querySelector('.lock-overlay') as HTMLElement;
+        const dupBadge = el.querySelector('.dup-badge') as HTMLElement;
+        const dupCount = el.querySelector('.dup-count') as HTMLElement;
+
+        if (ownedIds.has(id)) {
+          ownedCount++;
+          el.classList.add('hover:border-gold-500/30');
+          el.dataset.owned = 'true';
+          lockOverlay?.classList.add('hidden');
+
+          const count = getDuplicateCount(id);
+          if (count > 1 && dupBadge && dupCount) {
+            dupBadge.classList.remove('hidden');
+            dupCount.textContent = String(count);
+          }
+        } else {
+          el.classList.add('opacity-60');
+          el.dataset.owned = 'false';
+          lockOverlay?.classList.remove('hidden');
+        }
+      });
+
+      document.getElementById('owned-count')!.textContent = String(ownedCount);
+    }
+
+    updateOwnership();
+
+    // --- Filters ---
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const cardItems = document.querySelectorAll('.card-item');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        playSfx('ui-click');
+        filterBtns.forEach(b => {
+          b.classList.remove('bg-gold-500/20', 'text-gold-400', 'border-gold-500/30', 'active');
+          b.classList.add('bg-obsidian-800', 'text-obsidian-300', 'border-obsidian-700');
+        });
+        btn.classList.add('bg-gold-500/20', 'text-gold-400', 'border-gold-500/30', 'active');
+        btn.classList.remove('bg-obsidian-800', 'text-obsidian-300', 'border-obsidian-700');
+
+        const filter = btn.getAttribute('data-filter');
+        cardItems.forEach(card => {
+          const el = card as HTMLElement;
+          if (filter === 'all') {
+            el.style.display = '';
+          } else if (filter === 'owned') {
+            el.style.display = el.dataset.owned === 'true' ? '' : 'none';
+          } else {
+            el.style.display = el.dataset.type === filter ? '' : 'none';
+          }
+        });
+      });
+    });
+
+    // --- Card click → details or playground redirect ---
+    cardItems.forEach(card => {
+      card.addEventListener('click', () => {
+        const el = card as HTMLElement;
+        if (el.dataset.owned === 'false') {
+          playSfx('ui-click');
+          window.location.href = '/playground';
+        } else {
+          playSfx('card-shimmer');
+        }
+      });
+    });
+  </script>
+</BaseLayout>
