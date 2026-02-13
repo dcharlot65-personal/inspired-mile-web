@@ -354,7 +354,9 @@ import '../styles/global.css';
           }
         } else {
           // Demo mode opening
-          addAIMessage("Hark! Who dares approach my stage?\nStep forth, mortal, and test thy wordplay.\nIn iambic fire or freestyle rage —\nI'll match thee, bar for bar, today!");
+          const demoOpening = "Hark! Who dares approach my stage?\nStep forth, mortal, and test thy wordplay.\nIn iambic fire or freestyle rage —\nI'll match thee, bar for bar, today!";
+          addAIMessage(demoOpening);
+          if (voiceEnabled) speakWithDuck(demoOpening);
         }
       });
     });
@@ -399,6 +401,7 @@ import '../styles/global.css';
         const response = responses[round % responses.length];
         addAIMessage(response);
         lastAIResponse = response;
+        if (voiceEnabled) speakWithDuck(response);
       }
 
       round++;

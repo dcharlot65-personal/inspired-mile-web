@@ -55,6 +55,19 @@ export async function speak(text: string, voice?: string): Promise<void> {
   // Stop any currently playing audio
   stopSpeaking();
 
+  // If TTS is still loading, wait briefly for it to finish
+  if (!tts && loading) {
+    await new Promise<void>((resolve) => {
+      const start = Date.now();
+      const check = setInterval(() => {
+        if (tts || !loading || Date.now() - start > 8000) {
+          clearInterval(check);
+          resolve();
+        }
+      }, 200);
+    });
+  }
+
   if (!tts) {
     // Fallback to browser speech synthesis
     return speakFallback(text);
