@@ -15,6 +15,16 @@ const currentPath = Astro.url.pathname;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <meta property="og:title" content={`${title} | Inspired Mile`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/images/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={`${title} | Inspired Mile`} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="/images/og-image.png" />
     <title>{title} | Inspired Mile</title>
   </head>
   <body class="min-h-screen flex flex-col">
@@ -83,6 +93,9 @@ const currentPath = Astro.url.pathname;
       </div>
     </nav>
 
+    <!-- Achievement Toast Container -->
+    <div id="achievement-toasts" class="fixed top-20 right-4 z-[100] flex flex-col gap-3 pointer-events-none"></div>
+
     <!-- Main Content -->
     <main class="flex-1 pt-16">
       <slot />
@@ -142,7 +155,12 @@ const currentPath = Astro.url.pathname;
     </footer>
 
     <script>
-      import { initAudio, toggleMute, getPrefs, isInitialized } from '../lib/audio-manager';
+      import { initAudio, toggleMute, getPrefs, isInitialized, stopMusic } from '../lib/audio-manager';
+
+      // Fade out music when navigating away for smoother transitions
+      window.addEventListener('beforeunload', () => {
+        stopMusic(200);
+      });
 
       // Mobile menu toggle
       const btn = document.getElementById('mobile-menu-btn');
@@ -173,12 +191,59 @@ const currentPath = Astro.url.pathname;
         if (!isInitialized()) initAudio();
       }, { once: true });
 
+      // Fade music out on internal navigation for smoother transitions
+      document.querySelectorAll('a[href^="/"]').forEach(link => {
+        link.addEventListener('click', () => {
+          if (isInitialized()) stopMusic(300);
+        });
+      });
+
       audioToggle?.addEventListener('click', (e) => {
         e.stopPropagation();
         if (!isInitialized()) initAudio();
         toggleMute();
         updateAudioIcon();
       });
+    </script>
+
+    <script>
+      // Achievement toast notifications
+      const TIER_COLORS: Record<string, string> = {
+        bronze: 'from-amber-700 to-amber-900 border-amber-600',
+        silver: 'from-gray-400 to-gray-600 border-gray-300',
+        gold: 'from-gold-400 to-gold-600 border-gold-300',
+      };
+
+      window.addEventListener('achievement-unlocked', ((e: CustomEvent) => {
+        const a = e.detail;
+        const container = document.getElementById('achievement-toasts');
+        if (!container) return;
+
+        const toast = document.createElement('div');
+        const colors = TIER_COLORS[a.tier] || TIER_COLORS.bronze;
+        toast.className = `pointer-events-auto flex items-center gap-3 px-4 py-3 rounded-xl bg-gradient-to-r ${colors} border shadow-2xl transform translate-x-full opacity-0 transition-all duration-500 max-w-sm`;
+        toast.innerHTML = `
+          <span class="text-2xl">${a.icon}</span>
+          <div class="flex-1 min-w-0">
+            <div class="text-xs font-semibold uppercase tracking-wider text-white/70">Achievement Unlocked</div>
+            <div class="font-display font-bold text-white truncate">${a.name}</div>
+            <div class="text-xs text-white/80">${a.description}</div>
+          </div>
+        `;
+        container.appendChild(toast);
+
+        // Animate in
+        requestAnimationFrame(() => {
+          toast.classList.remove('translate-x-full', 'opacity-0');
+          toast.classList.add('translate-x-0', 'opacity-100');
+        });
+
+        // Animate out after 4s
+        setTimeout(() => {
+          toast.classList.add('translate-x-full', 'opacity-0');
+          setTimeout(() => toast.remove(), 500);
+        }, 4000);
+      }) as EventListener);
     </script>
   </body>
 </html>

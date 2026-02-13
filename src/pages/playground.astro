@@ -140,6 +140,23 @@ import { CARD_CATALOG, RARITY_COLORS, type Card, type Rarity } from '../lib/card
     </div>
   </section>
 
+  <!-- Onboarding Overlay -->
+  <div id="onboarding-overlay" class="fixed inset-0 bg-obsidian-950/80 z-[90] hidden items-center justify-center">
+    <div id="onboarding-tooltip" class="absolute bg-obsidian-900 border border-gold-500/40 rounded-xl p-5 max-w-xs shadow-2xl shadow-gold-500/10 transition-all duration-500">
+      <div class="flex items-center gap-2 mb-2">
+        <span id="onboarding-step" class="text-xs font-mono text-gold-500/60">1 / 3</span>
+      </div>
+      <h4 id="onboarding-title" class="font-display font-bold text-gold-300 mb-1"></h4>
+      <p id="onboarding-desc" class="text-sm text-obsidian-300 mb-4"></p>
+      <div class="flex items-center justify-between">
+        <button id="onboarding-skip" class="text-xs text-obsidian-500 hover:text-obsidian-300 transition-colors">Skip</button>
+        <button id="onboarding-next" class="btn-primary text-xs px-4 py-2">Next</button>
+      </div>
+      <!-- Arrow pointer -->
+      <div id="onboarding-arrow" class="absolute w-3 h-3 bg-obsidian-900 border-gold-500/40 transform rotate-45"></div>
+    </div>
+  </div>
+
   <!-- Trivia Modal -->
   <div id="trivia-modal" class="fixed inset-0 bg-obsidian-950/90 z-50 hidden flex items-center justify-center p-4">
     <div class="card-glass max-w-lg w-full p-6 max-h-[90vh] overflow-y-auto">
@@ -203,6 +220,8 @@ import { CARD_CATALOG, RARITY_COLORS, type Card, type Rarity } from '../lib/card
     import { initAudio, isInitialized, playMusic, playSfx, playRarityFanfare, preloadSfx, type Rarity as AudioRarity } from '../lib/audio-manager';
     import { isContentGenAvailable, generateTriviaSet, generateChallenge } from '../lib/content-gen';
     import { TRIVIA_BANK } from '../lib/trivia';
+    import { incrementStat, syncCardStats, getPlayerStats } from '../lib/achievements';
+    import { getUniqueOwnedCount, getOwnedCards } from '../lib/inventory';
 
     // Start playground music on first interaction
     document.addEventListener('click', () => {
@@ -243,6 +262,8 @@ import { CARD_CATALOG, RARITY_COLORS, type Card, type Rarity } from '../lib/card
       const cards = drawPack(3);
       cards.forEach(c => addCard(c.id, 'starter'));
       claimStarter();
+      incrementStat('packsOpened');
+      syncCardStats(getUniqueOwnedCount(), getOwnedCards().length);
       starterBadge.textContent = 'CLAIMED';
       starterBadge.className = 'text-xs px-2 py-0.5 rounded-full bg-obsidian-700/50 text-obsidian-500 border border-obsidian-700';
       starterBtn.classList.add('opacity-50', 'pointer-events-none');
@@ -261,6 +282,8 @@ import { CARD_CATALOG, RARITY_COLORS, type Card, type Rarity } from '../lib/card
       const card = drawRandomCard();
       addCard(card.id, 'daily');
       claimDaily();
+      incrementStat('packsOpened');
+      syncCardStats(getUniqueOwnedCount(), getOwnedCards().length);
       dailyBadge.textContent = 'CLAIMED';
       dailyBadge.className = 'text-xs px-2 py-0.5 rounded-full bg-obsidian-700/50 text-obsidian-500 border border-obsidian-700';
       dailyBtn.classList.add('opacity-50', 'pointer-events-none');
@@ -398,6 +421,7 @@ import { CARD_CATALOG, RARITY_COLORS, type Card, type Rarity } from '../lib/card
           if (correct) {
             triviaScore++;
             recordTriviaCorrect();
+            incrementStat('triviaCorrect');
             playSfx('trivia-correct');
           } else {
             playSfx('trivia-wrong');
@@ -417,10 +441,14 @@ import { CARD_CATALOG, RARITY_COLORS, type Card, type Rarity } from '../lib/card
       triviaScoreDisplay.textContent = `${triviaScore} / ${triviaQuestions.length}`;
 
       const won = triviaScore >= 3;
+      if (triviaScore === triviaQuestions.length) {
+        incrementStat('triviaPerfect');
+      }
 
       if (won) {
         const card = drawRandomCard();
         addCard(card.id, 'trivia');
+        syncCardStats(getUniqueOwnedCount(), getOwnedCards().length);
         updateStats();
         playSfx('challenge-win');
         setTimeout(() => playRarityFanfare(card.rarity as AudioRarity), 400);
@@ -518,8 +546,10 @@ import { CARD_CATALOG, RARITY_COLORS, type Card, type Rarity } from '../lib/card
 
         if (correct) {
           recordChallengeComplete();
+          incrementStat('challengesCompleted');
           const card = drawRandomCard();
           addCard(card.id, 'challenge');
+          syncCardStats(getUniqueOwnedCount(), getOwnedCards().length);
           updateStats();
           playSfx('challenge-win');
           setTimeout(() => playRarityFanfare(card.rarity as AudioRarity), 400);
@@ -554,5 +584,131 @@ import { CARD_CATALOG, RARITY_COLORS, type Card, type Rarity } from '../lib/card
         }
       });
     }
+    // --- Onboarding ---
+    const ONBOARDING_KEY = 'inspired-mile-onboarding-done';
+
+    function startOnboarding() {
+      if (localStorage.getItem(ONBOARDING_KEY)) return;
+
+      const overlay = document.getElementById('onboarding-overlay')!;
+      const tooltip = document.getElementById('onboarding-tooltip')!;
+      const arrow = document.getElementById('onboarding-arrow')!;
+      const title = document.getElementById('onboarding-title')!;
+      const desc = document.getElementById('onboarding-desc')!;
+      const step = document.getElementById('onboarding-step')!;
+      const nextBtn = document.getElementById('onboarding-next')!;
+      const skipBtn = document.getElementById('onboarding-skip')!;
+
+      const steps = [
+        {
+          target: '#starter-pack-btn',
+          title: 'Claim Your Starter Pack',
+          desc: 'Start here! Open your free starter pack to get your first 3 cards.',
+          position: 'bottom' as const,
+        },
+        {
+          target: '#trivia-start-btn',
+          title: 'Test Your Knowledge',
+          desc: 'Play trivia and quote challenges to earn more cards for your collection.',
+          position: 'top' as const,
+        },
+        {
+          target: 'a[href="/battle"]',
+          title: 'Enter the Battle Arena',
+          desc: 'Challenge the AI Master Thespian to a Shakespeare rap battle. Win rounds, win cards!',
+          position: 'top' as const,
+        },
+      ];
+
+      let currentStep = 0;
+
+      function showStep(i: number) {
+        if (i >= steps.length) {
+          finishOnboarding();
+          return;
+        }
+
+        const s = steps[i];
+        const target = document.querySelector(s.target) as HTMLElement;
+        if (!target) { finishOnboarding(); return; }
+
+        step.textContent = `${i + 1} / ${steps.length}`;
+        title.textContent = s.title;
+        desc.textContent = s.desc;
+        nextBtn.textContent = i === steps.length - 1 ? 'Got it!' : 'Next';
+
+        // Highlight target element
+        target.style.position = 'relative';
+        target.style.zIndex = '91';
+        target.style.boxShadow = '0 0 0 4px rgba(212,175,55,0.4), 0 0 20px rgba(212,175,55,0.2)';
+        target.style.borderRadius = '12px';
+
+        // Position tooltip near target
+        const rect = target.getBoundingClientRect();
+        const ttWidth = 288; // max-w-xs
+        const padding = 16;
+
+        if (s.position === 'bottom') {
+          tooltip.style.top = `${rect.bottom + window.scrollY + padding}px`;
+          tooltip.style.left = `${Math.max(padding, Math.min(rect.left + rect.width / 2 - ttWidth / 2, window.innerWidth - ttWidth - padding))}px`;
+          arrow.style.top = '-6px';
+          arrow.style.left = '50%';
+          arrow.style.transform = 'translateX(-50%) rotate(45deg)';
+          arrow.style.borderTop = '1px solid rgba(212,175,55,0.4)';
+          arrow.style.borderLeft = '1px solid rgba(212,175,55,0.4)';
+          arrow.style.borderBottom = 'none';
+          arrow.style.borderRight = 'none';
+        } else {
+          tooltip.style.top = `${rect.top + window.scrollY - padding - 140}px`;
+          tooltip.style.left = `${Math.max(padding, Math.min(rect.left + rect.width / 2 - ttWidth / 2, window.innerWidth - ttWidth - padding))}px`;
+          arrow.style.bottom = '-6px';
+          arrow.style.top = 'auto';
+          arrow.style.left = '50%';
+          arrow.style.transform = 'translateX(-50%) rotate(45deg)';
+          arrow.style.borderBottom = '1px solid rgba(212,175,55,0.4)';
+          arrow.style.borderRight = '1px solid rgba(212,175,55,0.4)';
+          arrow.style.borderTop = 'none';
+          arrow.style.borderLeft = 'none';
+        }
+
+        // Scroll target into view
+        target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+
+      function clearHighlights() {
+        steps.forEach(s => {
+          const el = document.querySelector(s.target) as HTMLElement;
+          if (el) {
+            el.style.position = '';
+            el.style.zIndex = '';
+            el.style.boxShadow = '';
+            el.style.borderRadius = '';
+          }
+        });
+      }
+
+      function finishOnboarding() {
+        clearHighlights();
+        overlay.classList.add('hidden');
+        overlay.classList.remove('flex');
+        localStorage.setItem(ONBOARDING_KEY, '1');
+      }
+
+      nextBtn.addEventListener('click', () => {
+        clearHighlights();
+        currentStep++;
+        showStep(currentStep);
+      });
+
+      skipBtn.addEventListener('click', finishOnboarding);
+
+      // Show onboarding
+      overlay.classList.remove('hidden');
+      overlay.classList.add('flex');
+      showStep(0);
+    }
+
+    // Delay slightly so DOM is settled
+    setTimeout(startOnboarding, 500);
   </script>
 </BaseLayout>

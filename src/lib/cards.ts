@@ -5,7 +5,7 @@
 
 export type CardType = 'Character' | 'Relic' | 'Potion';
 export type Rarity = 'Common' | 'Uncommon' | 'Rare' | 'Epic' | 'Legendary';
-export type House = 'Montague' | 'Capulet' | 'Danish Court' | 'Forest of Arden' | 'Legendary' | 'Relic' | 'Potion';
+export type House = 'Montague' | 'Capulet' | 'Danish Court' | 'Forest of Arden' | 'Verona Court' | 'The Tempest' | 'Legendary' | 'Relic' | 'Potion';
 
 export interface Card {
   id: string;
@@ -132,6 +132,123 @@ export const CARD_CATALOG: Card[] = [
     gradient: 'from-green-500/20 to-lime-500/20', border: 'border-green-700/30',
     icon: '\u2696',
     scene: 'A bubbling cauldron belches green smoke. Three shadowy figures circle it, chanting. Eyes glow from the dark woods beyond.',
+    image: '/images/cards/pt-002.webp',
+  },
+
+  // --- V1: Verona Court ---
+  {
+    id: 'VC-001', name: 'Prince Escalus', house: 'Verona Court', type: 'Character',
+    atk: 70, def: 85, hp: 95, rarity: 'Epic', element: 'Justice',
+    quote: 'If ever you disturb our streets again, your lives shall pay the forfeit of the peace.',
+    gradient: 'from-amber-500/20 to-yellow-500/20', border: 'border-amber-500/30',
+    icon: '\u{1F451}',
+    scene: 'The Prince stands on the steps of Verona\'s palace, his voice commanding silence over the feuding crowd. A golden scepter burns with authority.',
+    image: '/images/cards/vc-001.webp',
+  },
+  {
+    id: 'VC-002', name: 'Friar Lawrence', house: 'Verona Court', type: 'Character',
+    atk: 35, def: 80, hp: 90, rarity: 'Uncommon', element: 'Earth',
+    quote: 'These violent delights have violent ends.',
+    gradient: 'from-stone-500/20 to-amber-500/20', border: 'border-stone-500/30',
+    icon: '\u{1F33F}',
+    scene: 'A candlelit cell in a monastery. The Friar tends his garden of herbs and poisons, wisdom etched into his weathered face.',
+    image: '/images/cards/vc-002.webp',
+  },
+  {
+    id: 'VC-003', name: 'The Nurse', house: 'Verona Court', type: 'Character',
+    atk: 30, def: 70, hp: 85, rarity: 'Common', element: 'Loyalty',
+    quote: 'I am the drudge and toil in your delight.',
+    gradient: 'from-rose-500/20 to-stone-500/20', border: 'border-rose-500/30',
+    icon: '\u{1F9D1}',
+    scene: 'A warm kitchen in the Capulet house. The Nurse bustles with fierce devotion, a secret letter tucked in her apron.',
+    image: '/images/cards/vc-003.webp',
+  },
+
+  // --- V1: The Tempest ---
+  {
+    id: 'TP-001', name: 'Prospero', house: 'The Tempest', type: 'Character',
+    atk: 90, def: 85, hp: 90, rarity: 'Epic', element: 'Storm',
+    quote: 'We are such stuff as dreams are made on.',
+    gradient: 'from-blue-500/20 to-indigo-500/20', border: 'border-blue-500/30',
+    icon: '\u{26A1}',
+    scene: 'An island shrouded in tempest. Prospero raises his hands as lightning obeys his will, the sea churning at his command.',
+    image: '/images/cards/tp-001.webp',
+  },
+  {
+    id: 'TP-002', name: 'Ariel', house: 'The Tempest', type: 'Character',
+    atk: 70, def: 75, hp: 65, rarity: 'Rare', element: 'Air',
+    quote: 'All hail, great master! Grave sir, hail!',
+    gradient: 'from-sky-500/20 to-cyan-500/20', border: 'border-sky-500/30',
+    icon: '\u{1F4A8}',
+    scene: 'A shimmering spirit dissolves into wind and light, reforming as music. Ariel dances between the visible and invisible.',
+    image: '/images/cards/tp-002.webp',
+  },
+  {
+    id: 'TP-003', name: 'Caliban', house: 'The Tempest', type: 'Character',
+    atk: 75, def: 45, hp: 80, rarity: 'Uncommon', element: 'Beast',
+    quote: 'This island\'s mine, by Sycorax my mother.',
+    gradient: 'from-stone-500/20 to-green-500/20', border: 'border-stone-700/30',
+    icon: '\u{1F43A}',
+    scene: 'A cave mouth on a wild shore. Caliban crouches among the rocks, eyes burning with resentment and primal intelligence.',
+    image: '/images/cards/tp-003.webp',
+  },
+
+  // --- V1: Existing Houses Expanded ---
+  {
+    id: 'MO-003', name: 'Benvolio', house: 'Montague', type: 'Character',
+    atk: 55, def: 70, hp: 75, rarity: 'Common', element: 'Peace',
+    quote: 'I do but keep the peace. Put up thy sword.',
+    gradient: 'from-sky-500/20 to-blue-500/20', border: 'border-sky-500/30',
+    icon: '\u{1F54A}',
+    scene: 'A Verona plaza at dawn. Benvolio stands between drawn swords, his open hands the only weapon against the gathering storm.',
+    image: '/images/cards/mo-003.webp',
+  },
+  {
+    id: 'CA-002', name: 'Tybalt', house: 'Capulet', type: 'Character',
+    atk: 88, def: 50, hp: 70, rarity: 'Rare', element: 'Fire',
+    quote: 'What, drawn, and talk of peace? I hate the word.',
+    gradient: 'from-red-500/20 to-orange-500/20', border: 'border-red-500/30',
+    icon: '\u{1F525}',
+    scene: 'A Verona alley ablaze with torchlight. Tybalt draws his rapier with lethal grace, his eyes fixed on his enemy.',
+    image: '/images/cards/ca-002.webp',
+  },
+  {
+    id: 'DC-003', name: 'King Claudius', house: 'Danish Court', type: 'Character',
+    atk: 80, def: 60, hp: 85, rarity: 'Rare', element: 'Poison',
+    quote: 'My words fly up, my thoughts remain below.',
+    gradient: 'from-emerald-500/20 to-yellow-500/20', border: 'border-emerald-700/30',
+    icon: '\u{1F40D}',
+    scene: 'The throne room of Elsinore, draped in false splendor. Claudius grips the crown, a vial of poison hidden in his robes.',
+    image: '/images/cards/dc-003.webp',
+  },
+  {
+    id: 'FA-003', name: 'Oberon', house: 'Forest of Arden', type: 'Character',
+    atk: 75, def: 80, hp: 85, rarity: 'Epic', element: 'Moonlight',
+    quote: 'Ill met by moonlight, proud Titania.',
+    gradient: 'from-violet-500/20 to-indigo-500/20', border: 'border-violet-500/30',
+    icon: '\u{1F319}',
+    scene: 'A moonlit glade deep in the enchanted forest. Oberon materializes from shadow, his crown of antlers catching silver light.',
+    image: '/images/cards/fa-003.webp',
+  },
+
+  // --- V1: New Relics & Potions ---
+  {
+    id: 'RL-003', name: 'Dagger of the Mind', house: 'Relic', type: 'Relic',
+    atk: 0, def: 0, hp: 0, rarity: 'Uncommon', element: 'Illusion',
+    quote: 'Is this a dagger which I see before me?',
+    gradient: 'from-red-500/20 to-gray-500/20', border: 'border-red-700/30',
+    icon: '\u{1F5E1}',
+    scene: 'A spectral dagger floats in darkness, its blade dripping with phantom blood. Macbeth\'s hand reaches but can never grasp it.',
+    image: '/images/cards/rl-003.webp',
+  },
+  {
+    id: 'PT-003', name: "Puck's Flower Juice", house: 'Potion', type: 'Potion',
+    atk: 0, def: 0, hp: 0, rarity: 'Common', element: 'Mischief',
+    quote: 'I\'ll put a girdle round about the earth in forty minutes.',
+    gradient: 'from-violet-500/20 to-fuchsia-500/20', border: 'border-violet-500/30',
+    icon: '\u{1F33C}',
+    scene: 'A crushed purple flower drips iridescent nectar into a waiting palm. Wherever it falls, eyes change — and hearts follow.',
+    image: '/images/cards/pt-003.webp',
   },
 ];
 

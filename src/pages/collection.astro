@@ -110,6 +110,21 @@ import { CARD_CATALOG, RARITY_COLORS } from '../lib/cards';
     </div>
   </section>
 
+  <!-- Achievements Section -->
+  <section class="px-4 sm:px-6 lg:px-8 pb-24">
+    <div class="max-w-7xl mx-auto">
+      <div class="border-t border-obsidian-800/50 pt-12">
+        <h2 class="text-2xl sm:text-3xl font-display font-bold text-center mb-2">
+          <span class="text-gradient">Achievements</span>
+        </h2>
+        <p class="text-obsidian-400 text-center text-sm mb-8">
+          <span id="achievement-count" class="text-gold-400 font-mono">0</span> / <span id="achievement-total" class="font-mono">0</span> unlocked
+        </p>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4" id="achievement-grid"></div>
+      </div>
+    </div>
+  </section>
+
   <script>
     import { getOwnedCardIds, getDuplicateCount } from '../lib/inventory';
     import { initAudio, isInitialized, playMusic, playSfx } from '../lib/audio-manager';
@@ -196,5 +211,49 @@ import { CARD_CATALOG, RARITY_COLORS } from '../lib/cards';
         }
       });
     });
+
+    // --- Achievements ---
+    import { ACHIEVEMENTS, getAchievementProgress } from '../lib/achievements';
+
+    const TIER_BG: Record<string, string> = {
+      bronze: 'from-amber-700/20 to-amber-900/20 border-amber-700/30',
+      silver: 'from-gray-400/20 to-gray-600/20 border-gray-400/30',
+      gold: 'from-gold-400/20 to-gold-600/20 border-gold-400/30',
+    };
+
+    function renderAchievements() {
+      const grid = document.getElementById('achievement-grid');
+      const countEl = document.getElementById('achievement-count');
+      const totalEl = document.getElementById('achievement-total');
+      if (!grid) return;
+
+      const progress = getAchievementProgress();
+      const unlockedCount = progress.filter(p => p.unlocked).length;
+
+      if (countEl) countEl.textContent = String(unlockedCount);
+      if (totalEl) totalEl.textContent = String(ACHIEVEMENTS.length);
+
+      grid.innerHTML = progress.map(({ achievement: a, unlocked, unlockedAt }) => {
+        const bg = TIER_BG[a.tier] || TIER_BG.bronze;
+        const opacity = unlocked ? '' : 'opacity-40';
+        const date = unlockedAt ? new Date(unlockedAt).toLocaleDateString() : '';
+        return `
+          <div class="card-glass p-4 rounded-xl bg-gradient-to-br ${bg} border ${opacity} transition-opacity">
+            <div class="flex items-center gap-3 mb-2">
+              <span class="text-2xl">${a.icon}</span>
+              <div>
+                <h4 class="font-display font-semibold text-obsidian-100 text-sm">${a.name}</h4>
+                <span class="text-xs text-obsidian-500 capitalize">${a.tier}</span>
+              </div>
+              ${unlocked ? '<span class="ml-auto text-emerald-400 text-xs">&#10003;</span>' : ''}
+            </div>
+            <p class="text-xs text-obsidian-400">${a.description}</p>
+            ${unlocked && date ? `<p class="text-xs text-obsidian-600 mt-1">Unlocked ${date}</p>` : ''}
+          </div>
+        `;
+      }).join('');
+    }
+
+    renderAchievements();
   </script>
 </BaseLayout>

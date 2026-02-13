@@ -183,6 +183,8 @@ import '../styles/global.css';
     import { loadVoice, speak, stopSpeaking, isVoiceLoaded, isSpeaking } from '../lib/thespian-voice';
     import { drawRandomCard, RARITY_COLORS, type Card, type Rarity } from '../lib/cards';
     import { addCard, recordBattleWin } from '../lib/inventory';
+    import { incrementStat, setHighScore, syncCardStats, getPlayerStats } from '../lib/achievements';
+    import { getUniqueOwnedCount, getOwnedCards } from '../lib/inventory';
     import { initAudio, isInitialized, playMusic, playSfx, playRarityFanfare, preloadSfx, duckMusic, unduckMusic, type Rarity as AudioRarity } from '../lib/audio-manager';
 
     // --- State ---
@@ -192,6 +194,15 @@ import '../styles/global.css';
     let voiceEnabled = true;
     let demoMode = false;
     let lastAIResponse = '';
+
+    // Load persistent stats on init
+    function updateBattleStatsDisplay() {
+      const ps = getPlayerStats();
+      document.getElementById('rounds-played')!.textContent = String(ps.totalRounds);
+      document.getElementById('battles-total')!.textContent = String(ps.totalBattles);
+      const rate = ps.totalRounds > 0 ? Math.round((ps.battleWins / ps.totalRounds) * 100) : 0;
+      document.getElementById('win-rate')!.textContent = `${rate}%`;
+    }
 
     // --- DOM ---
     const loadingScreen = document.getElementById('loading-screen')!;
@@ -212,6 +223,9 @@ import '../styles/global.css';
     const voiceToggle = document.getElementById('voice-toggle')!;
     const voiceLabel = document.getElementById('voice-label')!;
     const aiModelBadge = document.getElementById('ai-model-badge')!;
+
+    // Load persistent stats on page load
+    updateBattleStatsDisplay();
 
     // --- Demo mode fallback responses ---
     const demoResponses: Record<string, string[]> = {
@@ -322,6 +336,7 @@ import '../styles/global.css';
         currentMode = (btn as HTMLElement).dataset.mode || 'freestyle';
         modeSelect.classList.add('hidden');
         battleInput.classList.remove('hidden');
+        incrementStat('totalBattles');
         battleHint.textContent = modeHints[currentMode] || '';
 
         addSystemMessage(`Battle mode: ${currentMode.charAt(0).toUpperCase() + currentMode.slice(1)} — Round 1`);
@@ -366,6 +381,18 @@ import '../styles/global.css';
       const text = playerInput.value.trim();
       if (!text || aiThinking) return;
 
+      // Add round divider between rounds
+      if (round > 0) {
+        const divider = document.createElement('div');
+        divider.className = 'flex items-center gap-3 my-4';
+        divider.innerHTML = `
+          <div class="flex-1 h-px bg-obsidian-700"></div>
+          <span class="text-xs font-mono text-obsidian-500 uppercase tracking-wider">Round ${round + 1}</span>
+          <div class="flex-1 h-px bg-obsidian-700"></div>
+        `;
+        battleLog.appendChild(divider);
+      }
+
       playSfx('ui-click');
       addPlayerMessage(text);
       playerInput.value = '';
@@ -405,7 +432,6 @@ import '../styles/global.css';
       }
 
       round++;
-      document.getElementById('rounds-played')!.textContent = String(round);
 
       // LLM-Judged Scoring
       const pScore = document.getElementById('player-score')!;
@@ -419,6 +445,7 @@ import '../styles/global.css';
         if (judgment) {
           showJudgment(judgment);
           playerWon = judgment.playerWins;
+          setHighScore(judgment.playerScore.total);
         } else {
           // Fallback to random if judging fails
           playerWon = Math.random() > 0.55;
@@ -428,12 +455,17 @@ import '../styles/global.css';
         playerWon = Math.random() > 0.55;
       }
 
+      // Track round completion for achievements
+      incrementStat('totalRounds');
+
       if (playerWon) {
         pScore.textContent = String(Number(pScore.textContent) + 1);
         playSfx('battle-victory');
         recordBattleWin();
+        incrementStat('battleWins');
         const card = drawRandomCard();
         addCard(card.id, 'battle');
+        syncCardStats(getUniqueOwnedCount(), getOwnedCards().length);
         showBattleReward(card);
         setTimeout(() => playRarityFanfare(card.rarity as AudioRarity), 300);
       } else {
@@ -441,6 +473,7 @@ import '../styles/global.css';
         playSfx('battle-defeat');
       }
 
+      updateBattleStatsDisplay();
       playerInput.disabled = false;
       sendBtn.removeAttribute('disabled');
       playerInput.focus();
@@ -482,7 +515,7 @@ import '../styles/global.css';
         </div>
       `;
       battleLog.appendChild(div);
-      battleLog.scrollTop = battleLog.scrollHeight;
+      battleLog.lastElementChild?.scrollIntoView({ behavior: 'smooth', block: 'end' });
     }
 
     function showBattleReward(card: Card) {
@@ -500,7 +533,7 @@ import '../styles/global.css';
         </div>
       `;
       battleLog.appendChild(div);
-      battleLog.scrollTop = battleLog.scrollHeight;
+      battleLog.lastElementChild?.scrollIntoView({ behavior: 'smooth', block: 'end' });
     }
 
     sendBtn.addEventListener('click', sendMessage);
@@ -583,7 +616,7 @@ import '../styles/global.css';
         </div>
       `;
       battleLog.appendChild(div);
-      battleLog.scrollTop = battleLog.scrollHeight;
+      battleLog.lastElementChild?.scrollIntoView({ behavior: 'smooth', block: 'end' });
     }
 
     function addAIMessage(text: string) {
@@ -601,7 +634,7 @@ import '../styles/global.css';
         </div>
       `;
       battleLog.appendChild(div);
-      battleLog.scrollTop = battleLog.scrollHeight;
+      battleLog.lastElementChild?.scrollIntoView({ behavior: 'smooth', block: 'end' });
     }
 
     function addSystemMessage(text: string) {
@@ -609,7 +642,7 @@ import '../styles/global.css';
       div.className = 'text-center';
       div.innerHTML = `<span class="text-xs font-mono text-obsidian-500 bg-obsidian-800/50 px-3 py-1 rounded-full">${text}</span>`;
       battleLog.appendChild(div);
-      battleLog.scrollTop = battleLog.scrollHeight;
+      battleLog.lastElementChild?.scrollIntoView({ behavior: 'smooth', block: 'end' });
     }
 
     function addTypingIndicator() {
@@ -628,7 +661,7 @@ import '../styles/global.css';
         </div>
       `;
       battleLog.appendChild(div);
-      battleLog.scrollTop = battleLog.scrollHeight;
+      battleLog.lastElementChild?.scrollIntoView({ behavior: 'smooth', block: 'end' });
     }
 
     function updateTypingIndicator(text: string) {
@@ -638,7 +671,7 @@ import '../styles/global.css';
         el.style.fontStyle = 'normal';
         el.innerHTML = text.replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\n/g, '<br>');
       }
-      battleLog.scrollTop = battleLog.scrollHeight;
+      battleLog.lastElementChild?.scrollIntoView({ behavior: 'smooth', block: 'end' });
     }
 
     function removeTypingIndicator() {
