@@ -45,34 +45,42 @@ const currentPath = Astro.url.pathname;
           </a>
 
           <!-- Desktop Navigation -->
-          <div class="hidden md:flex items-center gap-8">
+          <div class="hidden md:flex items-center gap-6">
             <a href="/" class:list={["text-sm font-medium transition-colors", currentPath === "/" ? "text-gold-400" : "text-obsidian-300 hover:text-gold-400"]}>
               Home
             </a>
             <a href="/collection" class:list={["text-sm font-medium transition-colors", currentPath === "/collection" ? "text-gold-400" : "text-obsidian-300 hover:text-gold-400"]}>
               Collection
             </a>
-            <a href="/playground" class:list={["text-sm font-medium transition-colors", currentPath === "/playground" ? "text-gold-400" : "text-obsidian-300 hover:text-gold-400"]}>
-              Playground
-            </a>
-            <a href="/battle" class:list={["text-sm font-medium transition-colors", currentPath === "/battle" ? "text-gold-400" : "text-obsidian-300 hover:text-gold-400"]}>
-              Battle Arena
-            </a>
-            <a href="/multiplayer" class:list={["text-sm font-medium transition-colors", currentPath === "/multiplayer" ? "text-gold-400" : "text-obsidian-300 hover:text-gold-400"]}>
-              Multiplayer
-            </a>
-            <a href="/marketplace" class:list={["text-sm font-medium transition-colors", currentPath === "/marketplace" ? "text-gold-400" : "text-obsidian-300 hover:text-gold-400"]}>
-              Marketplace
-            </a>
-            <a href="/tournaments" class:list={["text-sm font-medium transition-colors", currentPath === "/tournaments" ? "text-gold-400" : "text-obsidian-300 hover:text-gold-400"]}>
-              Tournaments
-            </a>
-            <a href="/vr" class:list={["text-sm font-medium transition-colors", currentPath === "/vr" ? "text-gold-400" : "text-obsidian-300 hover:text-gold-400"]}>
-              VR
-            </a>
-            <a href="/world-map" class:list={["text-sm font-medium transition-colors", currentPath === "/world-map" ? "text-gold-400" : "text-obsidian-300 hover:text-gold-400"]}>
-              World Map
-            </a>
+            <!-- Play dropdown -->
+            <div class="relative group">
+              <button class:list={["text-sm font-medium transition-colors flex items-center gap-1", ["/playground","/battle","/multiplayer","/tournaments"].includes(currentPath) ? "text-gold-400" : "text-obsidian-300 hover:text-gold-400"]}>
+                Play
+                <svg class="w-3 h-3 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+              </button>
+              <div class="absolute left-1/2 -translate-x-1/2 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150">
+                <div class="w-44 bg-obsidian-900/95 backdrop-blur-lg border border-obsidian-700 rounded-xl shadow-2xl py-2">
+                  <a href="/playground" class:list={["block px-4 py-2 text-sm transition-colors", currentPath === "/playground" ? "text-gold-400 bg-gold-500/5" : "text-obsidian-300 hover:text-gold-400 hover:bg-obsidian-800/50"]}>Playground</a>
+                  <a href="/battle" class:list={["block px-4 py-2 text-sm transition-colors", currentPath === "/battle" ? "text-gold-400 bg-gold-500/5" : "text-obsidian-300 hover:text-gold-400 hover:bg-obsidian-800/50"]}>Battle Arena</a>
+                  <a href="/multiplayer" class:list={["block px-4 py-2 text-sm transition-colors", currentPath === "/multiplayer" ? "text-gold-400 bg-gold-500/5" : "text-obsidian-300 hover:text-gold-400 hover:bg-obsidian-800/50"]}>Multiplayer</a>
+                  <a href="/tournaments" class:list={["block px-4 py-2 text-sm transition-colors", currentPath === "/tournaments" ? "text-gold-400 bg-gold-500/5" : "text-obsidian-300 hover:text-gold-400 hover:bg-obsidian-800/50"]}>Tournaments</a>
+                </div>
+              </div>
+            </div>
+            <!-- Explore dropdown -->
+            <div class="relative group">
+              <button class:list={["text-sm font-medium transition-colors flex items-center gap-1", ["/world-map","/marketplace","/vr"].includes(currentPath) ? "text-gold-400" : "text-obsidian-300 hover:text-gold-400"]}>
+                Explore
+                <svg class="w-3 h-3 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+              </button>
+              <div class="absolute left-1/2 -translate-x-1/2 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150">
+                <div class="w-44 bg-obsidian-900/95 backdrop-blur-lg border border-obsidian-700 rounded-xl shadow-2xl py-2">
+                  <a href="/world-map" class:list={["block px-4 py-2 text-sm transition-colors", currentPath === "/world-map" ? "text-gold-400 bg-gold-500/5" : "text-obsidian-300 hover:text-gold-400 hover:bg-obsidian-800/50"]}>World Map</a>
+                  <a href="/marketplace" class:list={["block px-4 py-2 text-sm transition-colors", currentPath === "/marketplace" ? "text-gold-400 bg-gold-500/5" : "text-obsidian-300 hover:text-gold-400 hover:bg-obsidian-800/50"]}>Marketplace</a>
+                  <a href="/vr" class:list={["block px-4 py-2 text-sm transition-colors", currentPath === "/vr" ? "text-gold-400 bg-gold-500/5" : "text-obsidian-300 hover:text-gold-400 hover:bg-obsidian-800/50"]}>VR Gallery</a>
+                </div>
+              </div>
+            </div>
             <a href="/about" class:list={["text-sm font-medium transition-colors", currentPath === "/about" ? "text-gold-400" : "text-obsidian-300 hover:text-gold-400"]}>
               About
             </a>
@@ -157,17 +165,21 @@ const currentPath = Astro.url.pathname;
 
       <!-- Mobile menu -->
       <div id="mobile-menu" class="hidden md:hidden border-t border-obsidian-800/50 bg-obsidian-950/95 backdrop-blur-lg">
-        <div class="px-4 py-4 space-y-3">
+        <div class="px-4 py-4 space-y-1">
           <a href="/" class:list={["block text-sm font-medium py-2", currentPath === "/" ? "text-gold-400" : "text-obsidian-300"]}>Home</a>
           <a href="/collection" class:list={["block text-sm font-medium py-2", currentPath === "/collection" ? "text-gold-400" : "text-obsidian-300"]}>Collection</a>
-          <a href="/playground" class:list={["block text-sm font-medium py-2", currentPath === "/playground" ? "text-gold-400" : "text-obsidian-300"]}>Playground</a>
-          <a href="/battle" class:list={["block text-sm font-medium py-2", currentPath === "/battle" ? "text-gold-400" : "text-obsidian-300"]}>Battle Arena</a>
-          <a href="/multiplayer" class:list={["block text-sm font-medium py-2", currentPath === "/multiplayer" ? "text-gold-400" : "text-obsidian-300"]}>Multiplayer</a>
-          <a href="/marketplace" class:list={["block text-sm font-medium py-2", currentPath === "/marketplace" ? "text-gold-400" : "text-obsidian-300"]}>Marketplace</a>
-          <a href="/tournaments" class:list={["block text-sm font-medium py-2", currentPath === "/tournaments" ? "text-gold-400" : "text-obsidian-300"]}>Tournaments</a>
-          <a href="/vr" class:list={["block text-sm font-medium py-2", currentPath === "/vr" ? "text-gold-400" : "text-obsidian-300"]}>VR Gallery</a>
-          <a href="/world-map" class:list={["block text-sm font-medium py-2", currentPath === "/world-map" ? "text-gold-400" : "text-obsidian-300"]}>World Map</a>
-          <a href="/about" class:list={["block text-sm font-medium py-2", currentPath === "/about" ? "text-gold-400" : "text-obsidian-300"]}>About</a>
+          <div class="pt-2 pb-1"><span class="text-[10px] font-mono text-obsidian-600 uppercase tracking-widest">Play</span></div>
+          <a href="/playground" class:list={["block text-sm font-medium py-2 pl-3", currentPath === "/playground" ? "text-gold-400" : "text-obsidian-300"]}>Playground</a>
+          <a href="/battle" class:list={["block text-sm font-medium py-2 pl-3", currentPath === "/battle" ? "text-gold-400" : "text-obsidian-300"]}>Battle Arena</a>
+          <a href="/multiplayer" class:list={["block text-sm font-medium py-2 pl-3", currentPath === "/multiplayer" ? "text-gold-400" : "text-obsidian-300"]}>Multiplayer</a>
+          <a href="/tournaments" class:list={["block text-sm font-medium py-2 pl-3", currentPath === "/tournaments" ? "text-gold-400" : "text-obsidian-300"]}>Tournaments</a>
+          <div class="pt-2 pb-1"><span class="text-[10px] font-mono text-obsidian-600 uppercase tracking-widest">Explore</span></div>
+          <a href="/world-map" class:list={["block text-sm font-medium py-2 pl-3", currentPath === "/world-map" ? "text-gold-400" : "text-obsidian-300"]}>World Map</a>
+          <a href="/marketplace" class:list={["block text-sm font-medium py-2 pl-3", currentPath === "/marketplace" ? "text-gold-400" : "text-obsidian-300"]}>Marketplace</a>
+          <a href="/vr" class:list={["block text-sm font-medium py-2 pl-3", currentPath === "/vr" ? "text-gold-400" : "text-obsidian-300"]}>VR Gallery</a>
+          <div class="border-t border-obsidian-800/50 mt-2 pt-2">
+            <a href="/about" class:list={["block text-sm font-medium py-2", currentPath === "/about" ? "text-gold-400" : "text-obsidian-300"]}>About</a>
+          </div>
         </div>
       </div>
     </nav>
