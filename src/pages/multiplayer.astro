@@ -159,7 +159,10 @@ import '../styles/global.css';
           resetMatchmaking();
         }
       } catch (e: any) {
-        matchError.textContent = e.message || 'Failed to join queue';
+        const isOffline = !e.message || e.message.includes('Failed to fetch') || e.message.includes('NetworkError');
+        matchError.textContent = isOffline
+          ? 'Multiplayer coming soon — the backend service is being set up.'
+          : (e.message || 'Failed to join queue');
         matchError.classList.remove('hidden');
         resetMatchmaking();
       }

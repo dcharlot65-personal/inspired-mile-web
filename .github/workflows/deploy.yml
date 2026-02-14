@@ -22,19 +22,62 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Deploy to EC2
+      - name: Setup SSH
         env:
           SSH_KEY: ${{ secrets.EC2_SSH_KEY }}
           EC2_HOST: ${{ secrets.EC2_HOST }}
-          EC2_USER: ${{ secrets.EC2_USER }}
         run: |
           mkdir -p ~/.ssh
           echo "$SSH_KEY" > ~/.ssh/deploy_key
           chmod 600 ~/.ssh/deploy_key
           ssh-keyscan -H "$EC2_HOST" >> ~/.ssh/known_hosts 2>/dev/null
 
+      - name: Deploy frontend
+        env:
+          EC2_HOST: ${{ secrets.EC2_HOST }}
+          EC2_USER: ${{ secrets.EC2_USER }}
+        run: |
           ssh -i ~/.ssh/deploy_key "${EC2_USER}@${EC2_HOST}" "mkdir -p /Volumes/DataVolume/inspired-mile-web"
 
           rsync -az --delete \
             -e "ssh -i ~/.ssh/deploy_key" \
             dist/ "${EC2_USER}@${EC2_HOST}:/Volumes/DataVolume/inspired-mile-web/"
+
+      - name: Deploy backend
+        env:
+          EC2_HOST: ${{ secrets.EC2_HOST }}
+          EC2_USER: ${{ secrets.EC2_USER }}
+        run: |
+          REMOTE_BACKEND="/Volumes/DataVolume/inspired-mile-web/backend"
+
+          ssh -i ~/.ssh/deploy_key "${EC2_USER}@${EC2_HOST}" "mkdir -p $REMOTE_BACKEND"
+
+          rsync -az \
+            --exclude='target/' \
+            --exclude='.env' \
+            --exclude='*.log' \
+            -e "ssh -i ~/.ssh/deploy_key" \
+            backend/ "${EC2_USER}@${EC2_HOST}:${REMOTE_BACKEND}/"
+
+      - name: Build and restart backend
+        env:
+          EC2_HOST: ${{ secrets.EC2_HOST }}
+          EC2_USER: ${{ secrets.EC2_USER }}
+        run: |
+          ssh -i ~/.ssh/deploy_key "${EC2_USER}@${EC2_HOST}" 'bash -l -c "
+            set -e
+            cd /Volumes/DataVolume/inspired-mile-web/backend
+            cargo build --release 2>&1
+            launchctl bootout gui/$(id -u) /Library/LaunchAgents/com.inspiredmile.api.plist 2>/dev/null || true
+            sleep 1
+            launchctl bootstrap gui/$(id -u) /Library/LaunchAgents/com.inspiredmile.api.plist
+          "'
+
+      - name: Health check
+        env:
+          EC2_HOST: ${{ secrets.EC2_HOST }}
+          EC2_USER: ${{ secrets.EC2_USER }}
+        run: |
+          sleep 3
+          ssh -i ~/.ssh/deploy_key "${EC2_USER}@${EC2_HOST}" \
+            "curl -sf http://localhost:3849/api/v1/health" || echo "Warning: API health check failed — may still be starting"

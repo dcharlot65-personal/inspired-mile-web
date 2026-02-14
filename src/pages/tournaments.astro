@@ -105,8 +105,11 @@ import '../styles/global.css';
         tournaments = await listTournaments();
         renderTournaments();
         populateBracketSelect();
-      } catch {
-        listContainer.innerHTML = '<div class="text-center py-12"><p class="text-sm text-crimson-400">Failed to load tournaments.</p></div>';
+      } catch (e: any) {
+        const isOffline = !e.message || e.message.includes('Failed to fetch') || e.message.includes('NetworkError');
+        listContainer.innerHTML = isOffline
+          ? '<div class="text-center py-12"><div class="w-16 h-16 rounded-full bg-obsidian-800 border border-obsidian-700 flex items-center justify-center mx-auto mb-4"><span class="text-2xl">&#127942;</span></div><p class="text-sm text-obsidian-300 font-display font-bold mb-2">Tournaments Coming Soon</p><p class="text-xs text-obsidian-500">The backend service is being set up. Check back shortly.</p></div>'
+          : '<div class="text-center py-12"><p class="text-sm text-crimson-400">Failed to load tournaments.</p></div>';
       }
     }
 
