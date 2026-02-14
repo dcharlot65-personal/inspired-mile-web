@@ -13,7 +13,7 @@ mod variants;
 use std::sync::Arc;
 use axum::{
     middleware,
-    routing::{get, post},
+    routing::get,
     Extension, Router,
 };
 use tower_http::cors::{AllowOrigin, CorsLayer};
@@ -49,6 +49,15 @@ async fn main() {
         tournaments::scheduler::run_scheduler(scheduler_pool, scheduler_rooms).await;
     });
 
+    // Start wallet nonce cleanup background task
+    let nonce_pool = pool.clone();
+    tokio::spawn(async move {
+        loop {
+            tokio::time::sleep(std::time::Duration::from_secs(300)).await;
+            auth::cleanup_expired_nonces(&nonce_pool).await;
+        }
+    });
+
     // Public routes (no auth required)
     let public_routes = Router::new()
         .route("/health", get(|| async { "ok" }))
@@ -57,7 +66,6 @@ async fn main() {
 
     // Protected routes (auth required)
     let protected_routes = Router::new()
-        .route("/auth/link-wallet", post(auth::link_wallet))
         .nest("/inventory", inventory::router())
         .nest("/variants", variants::router())
         .nest("/stats", stats::router())

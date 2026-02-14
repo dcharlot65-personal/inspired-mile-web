@@ -35,31 +35,41 @@ export class ApiError extends Error {
 }
 
 // ---------------------------------------------------------------------------
-// Auth
+// Auth (Google + Wallet)
 // ---------------------------------------------------------------------------
 
 export interface UserResponse {
   id: string;
   username: string;
-  email: string;
+  email: string | null;
   display_name: string | null;
+  wallet_address: string | null;
+  auth_provider: string;
+  avatar_url: string | null;
 }
 
 export interface AuthResponse {
   user: UserResponse;
 }
 
-export async function register(username: string, email: string, password: string, displayName?: string): Promise<AuthResponse> {
-  return request('/auth/register', {
+export async function googleSignIn(idToken: string): Promise<AuthResponse> {
+  return request('/auth/google', {
     method: 'POST',
-    body: JSON.stringify({ username, email, password, display_name: displayName }),
+    body: JSON.stringify({ id_token: idToken }),
   });
 }
 
-export async function login(username: string, password: string): Promise<AuthResponse> {
-  return request('/auth/login', {
+export async function requestWalletNonce(walletAddress: string): Promise<{ message: string }> {
+  return request('/auth/wallet/nonce', {
     method: 'POST',
-    body: JSON.stringify({ username, password }),
+    body: JSON.stringify({ wallet_address: walletAddress }),
+  });
+}
+
+export async function walletSignIn(walletAddress: string, signature: string): Promise<AuthResponse> {
+  return request('/auth/wallet/verify', {
+    method: 'POST',
+    body: JSON.stringify({ wallet_address: walletAddress, signature }),
   });
 }
 
@@ -69,13 +79,6 @@ export async function logout(): Promise<void> {
 
 export async function getMe(): Promise<AuthResponse> {
   return request('/auth/me');
-}
-
-export async function linkWallet(walletAddress: string): Promise<{ wallet_address: string | null }> {
-  return request('/auth/link-wallet', {
-    method: 'POST',
-    body: JSON.stringify({ wallet_address: walletAddress }),
-  });
 }
 
 // ---------------------------------------------------------------------------

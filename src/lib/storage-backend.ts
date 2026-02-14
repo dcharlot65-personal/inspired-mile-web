@@ -83,14 +83,14 @@ export function deactivateServerMode(): void {
 // Auth Convenience Methods
 // ---------------------------------------------------------------------------
 
-export async function registerUser(username: string, email: string, password: string, displayName?: string): Promise<UserResponse> {
-  const { user } = await api.register(username, email, password, displayName);
+export async function googleSignInUser(idToken: string): Promise<UserResponse> {
+  const { user } = await api.googleSignIn(idToken);
   activateServerMode(user);
   return user;
 }
 
-export async function loginUser(username: string, password: string): Promise<UserResponse> {
-  const { user } = await api.login(username, password);
+export async function walletSignInUser(walletAddress: string, signature: string): Promise<UserResponse> {
+  const { user } = await api.walletSignIn(walletAddress, signature);
   activateServerMode(user);
   return user;
 }

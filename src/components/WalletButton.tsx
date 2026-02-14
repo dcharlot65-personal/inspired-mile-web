@@ -9,7 +9,7 @@ import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
 import SolanaWalletProvider from './WalletProvider';
 
 function WalletButtonInner() {
-  const { publicKey, connected, connecting } = useWallet();
+  const { publicKey, connected, connecting, signMessage } = useWallet();
 
   useEffect(() => {
     window.dispatchEvent(
@@ -18,10 +18,11 @@ function WalletButtonInner() {
           connected,
           connecting,
           address: publicKey?.toBase58() ?? null,
+          signMessage: signMessage ?? null,
         },
       }),
     );
-  }, [connected, connecting, publicKey]);
+  }, [connected, connecting, publicKey, signMessage]);
 
   return (
     <div className="wallet-button-wrapper">

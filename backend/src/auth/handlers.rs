@@ -10,31 +10,47 @@ use serde::{Deserialize, Serialize};
 use sqlx::{PgPool, Row};
 use uuid::Uuid;
 
+use super::google;
 use super::jwt::{create_token, Claims};
+use super::wallet;
 use crate::config::Config;
 
 const COOKIE_NAME: &str = "im_token";
 
+// ---------------------------------------------------------------------------
+// Request / Response types
+// ---------------------------------------------------------------------------
+
 #[derive(Deserialize)]
-pub struct RegisterRequest {
-    username: String,
-    email: String,
-    password: String,
-    display_name: Option<String>,
+pub struct GoogleSignInRequest {
+    id_token: String,
 }
 
 #[derive(Deserialize)]
-pub struct LoginRequest {
-    username: String,
-    password: String,
+pub struct WalletNonceRequest {
+    wallet_address: String,
+}
+
+#[derive(Serialize)]
+pub struct NonceResponse {
+    message: String,
+}
+
+#[derive(Deserialize)]
+pub struct WalletSignInRequest {
+    wallet_address: String,
+    signature: String,
 }
 
 #[derive(Serialize)]
 pub struct UserResponse {
     id: Uuid,
     username: String,
-    email: String,
+    email: Option<String>,
     display_name: Option<String>,
+    wallet_address: Option<String>,
+    auth_provider: String,
+    avatar_url: Option<String>,
 }
 
 #[derive(Serialize)]
@@ -42,104 +58,176 @@ pub struct AuthResponse {
     user: UserResponse,
 }
 
+// ---------------------------------------------------------------------------
+// Router
+// ---------------------------------------------------------------------------
+
 pub fn router() -> Router<(PgPool, Config)> {
     Router::new()
-        .route("/register", post(register))
-        .route("/login", post(login))
+        .route("/google", post(google_sign_in))
+        .route("/wallet/nonce", post(wallet_nonce))
+        .route("/wallet/verify", post(wallet_sign_in))
         .route("/logout", post(logout))
         .route("/me", get(me))
 }
 
-async fn register(
+// ---------------------------------------------------------------------------
+// Google Sign-In
+// ---------------------------------------------------------------------------
+
+async fn google_sign_in(
     State((pool, config)): State<(PgPool, Config)>,
-    Json(body): Json<RegisterRequest>,
+    Json(body): Json<GoogleSignInRequest>,
 ) -> Result<(CookieJar, Json<AuthResponse>), (StatusCode, String)> {
-    if body.username.len() < 3 || body.username.len() > 32 {
-        return Err((StatusCode::BAD_REQUEST, "Username must be 3-32 characters".into()));
-    }
-    if body.password.len() < 8 {
-        return Err((StatusCode::BAD_REQUEST, "Password must be at least 8 characters".into()));
+    if config.google_client_id.is_empty() {
+        return Err((
+            StatusCode::SERVICE_UNAVAILABLE,
+            "Google sign-in not configured".into(),
+        ));
     }
 
-    let password_hash = hash_password(&body.password)
-        .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, e))?;
+    let info = google::verify_google_token(&body.id_token, &config.google_client_id)
+        .await
+        .map_err(|e| (StatusCode::UNAUTHORIZED, e))?;
+
+    // Look up existing user by google_id
+    let existing = sqlx::query(
+        "SELECT id, username, email, display_name, wallet_address, auth_provider, avatar_url
+         FROM users WHERE google_id = $1",
+    )
+    .bind(&info.sub)
+    .fetch_optional(&pool)
+    .await
+    .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?;
+
+    if let Some(row) = existing {
+        // Existing user — issue token
+        let user_id: Uuid = row.get("id");
+        let username: String = row.get("username");
+        let token = create_token(user_id, &username, &config.jwt_secret)
+            .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, e))?;
+        let jar = CookieJar::new().add(build_cookie(token));
+        return Ok((jar, Json(AuthResponse { user: row_to_user(&row) })));
+    }
+
+    // New user — create from Google profile
+    let username = generate_username_from_email(&info.email);
+    let unique_username = ensure_unique_username(&pool, &username).await?;
 
     let row = sqlx::query(
-        "INSERT INTO users (username, email, password_hash, display_name)
-         VALUES ($1, $2, $3, $4)
-         RETURNING id, username, email, display_name",
+        "INSERT INTO users (username, email, display_name, google_id, google_email, avatar_url, auth_provider)
+         VALUES ($1, $2, $3, $4, $5, $6, 'google')
+         RETURNING id, username, email, display_name, wallet_address, auth_provider, avatar_url",
     )
-    .bind(&body.username)
-    .bind(&body.email)
-    .bind(&password_hash)
-    .bind(&body.display_name)
+    .bind(&unique_username)
+    .bind(&info.email)
+    .bind(&info.name)
+    .bind(&info.sub)
+    .bind(&info.email)
+    .bind(&info.picture)
     .fetch_one(&pool)
     .await
-    .map_err(|e| {
-        if e.to_string().contains("duplicate key") {
-            (StatusCode::CONFLICT, "Username or email already taken".into())
-        } else {
-            (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}"))
-        }
-    })?;
+    .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?;
 
     let user_id: Uuid = row.get("id");
-    let username: String = row.get("username");
+
+    // Initialize player stats
+    let _ = sqlx::query("INSERT INTO player_stats (user_id) VALUES ($1)")
+        .bind(user_id)
+        .execute(&pool)
+        .await;
+
+    let token = create_token(user_id, &unique_username, &config.jwt_secret)
+        .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, e))?;
+    let jar = CookieJar::new().add(build_cookie(token));
+
+    Ok((jar, Json(AuthResponse { user: row_to_user(&row) })))
+}
+
+// ---------------------------------------------------------------------------
+// Wallet Sign-In (nonce + verify)
+// ---------------------------------------------------------------------------
+
+async fn wallet_nonce(
+    State((pool, _)): State<(PgPool, Config)>,
+    Json(body): Json<WalletNonceRequest>,
+) -> Result<Json<NonceResponse>, (StatusCode, String)> {
+    if body.wallet_address.len() < 32 || body.wallet_address.len() > 44 {
+        return Err((StatusCode::BAD_REQUEST, "Invalid wallet address".into()));
+    }
+
+    let message = wallet::create_nonce(&pool, &body.wallet_address)
+        .await
+        .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, e))?;
+
+    Ok(Json(NonceResponse { message }))
+}
+
+async fn wallet_sign_in(
+    State((pool, config)): State<(PgPool, Config)>,
+    Json(body): Json<WalletSignInRequest>,
+) -> Result<(CookieJar, Json<AuthResponse>), (StatusCode, String)> {
+    wallet::verify_wallet_signature(&pool, &body.wallet_address, &body.signature)
+        .await
+        .map_err(|e| (StatusCode::UNAUTHORIZED, e))?;
+
+    // Look up existing user by wallet_address
+    let existing = sqlx::query(
+        "SELECT id, username, email, display_name, wallet_address, auth_provider, avatar_url
+         FROM users WHERE wallet_address = $1",
+    )
+    .bind(&body.wallet_address)
+    .fetch_optional(&pool)
+    .await
+    .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?;
+
+    if let Some(row) = existing {
+        let user_id: Uuid = row.get("id");
+        let username: String = row.get("username");
+        let token = create_token(user_id, &username, &config.jwt_secret)
+            .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, e))?;
+        let jar = CookieJar::new().add(build_cookie(token));
+        return Ok((jar, Json(AuthResponse { user: row_to_user(&row) })));
+    }
+
+    // New user from wallet
+    let short_addr = &body.wallet_address[..8.min(body.wallet_address.len())];
+    let unique_username = ensure_unique_username(&pool, short_addr).await?;
+    let display_name = format!(
+        "{}...{}",
+        &body.wallet_address[..4],
+        &body.wallet_address[body.wallet_address.len().saturating_sub(4)..]
+    );
+
+    let row = sqlx::query(
+        "INSERT INTO users (username, display_name, wallet_address, wallet_linked_at, auth_provider)
+         VALUES ($1, $2, $3, NOW(), 'wallet')
+         RETURNING id, username, email, display_name, wallet_address, auth_provider, avatar_url",
+    )
+    .bind(&unique_username)
+    .bind(&display_name)
+    .bind(&body.wallet_address)
+    .fetch_one(&pool)
+    .await
+    .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?;
+
+    let user_id: Uuid = row.get("id");
 
     let _ = sqlx::query("INSERT INTO player_stats (user_id) VALUES ($1)")
         .bind(user_id)
         .execute(&pool)
         .await;
 
-    let token = create_token(user_id, &username, &config.jwt_secret)
+    let token = create_token(user_id, &unique_username, &config.jwt_secret)
         .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, e))?;
-
     let jar = CookieJar::new().add(build_cookie(token));
 
-    Ok((jar, Json(AuthResponse {
-        user: UserResponse {
-            id: user_id,
-            username,
-            email: row.get("email"),
-            display_name: row.get("display_name"),
-        },
-    })))
+    Ok((jar, Json(AuthResponse { user: row_to_user(&row) })))
 }
 
-async fn login(
-    State((pool, config)): State<(PgPool, Config)>,
-    Json(body): Json<LoginRequest>,
-) -> Result<(CookieJar, Json<AuthResponse>), (StatusCode, String)> {
-    let row = sqlx::query(
-        "SELECT id, username, email, display_name, password_hash FROM users WHERE username = $1",
-    )
-    .bind(&body.username)
-    .fetch_optional(&pool)
-    .await
-    .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?
-    .ok_or((StatusCode::UNAUTHORIZED, "Invalid credentials".into()))?;
-
-    let password_hash: String = row.get("password_hash");
-    verify_password(&body.password, &password_hash)
-        .map_err(|_| (StatusCode::UNAUTHORIZED, "Invalid credentials".to_string()))?;
-
-    let user_id: Uuid = row.get("id");
-    let username: String = row.get("username");
-
-    let token = create_token(user_id, &username, &config.jwt_secret)
-        .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, e))?;
-
-    let jar = CookieJar::new().add(build_cookie(token));
-
-    Ok((jar, Json(AuthResponse {
-        user: UserResponse {
-            id: user_id,
-            username,
-            email: row.get("email"),
-            display_name: row.get("display_name"),
-        },
-    })))
-}
+// ---------------------------------------------------------------------------
+// Logout + Me (mostly unchanged)
+// ---------------------------------------------------------------------------
 
 async fn logout() -> CookieJar {
     let cookie = Cookie::build((COOKIE_NAME, ""))
@@ -155,7 +243,8 @@ async fn me(
     State((pool, _)): State<(PgPool, Config)>,
 ) -> Result<Json<AuthResponse>, (StatusCode, String)> {
     let row = sqlx::query(
-        "SELECT id, username, email, display_name FROM users WHERE id = $1",
+        "SELECT id, username, email, display_name, wallet_address, auth_provider, avatar_url
+         FROM users WHERE id = $1",
     )
     .bind(claims.sub)
     .fetch_optional(&pool)
@@ -163,69 +252,76 @@ async fn me(
     .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?
     .ok_or((StatusCode::NOT_FOUND, "User not found".into()))?;
 
-    Ok(Json(AuthResponse {
-        user: UserResponse {
-            id: row.get("id"),
-            username: row.get("username"),
-            email: row.get("email"),
-            display_name: row.get("display_name"),
-        },
-    }))
-}
-
-fn hash_password(password: &str) -> Result<String, String> {
-    use argon2::{
-        password_hash::{rand_core::OsRng, SaltString},
-        Argon2, PasswordHasher,
-    };
-    let salt = SaltString::generate(&mut OsRng);
-    Argon2::default()
-        .hash_password(password.as_bytes(), &salt)
-        .map(|h| h.to_string())
-        .map_err(|e| format!("Hash error: {e}"))
-}
-
-fn verify_password(password: &str, hash: &str) -> Result<(), String> {
-    use argon2::{password_hash::PasswordHash, Argon2, PasswordVerifier};
-    let parsed = PasswordHash::new(hash).map_err(|e| format!("Parse error: {e}"))?;
-    Argon2::default()
-        .verify_password(password.as_bytes(), &parsed)
-        .map_err(|_| "Invalid password".into())
+    Ok(Json(AuthResponse { user: row_to_user(&row) }))
 }
 
 // ---------------------------------------------------------------------------
-// Wallet linking
+// Helpers
 // ---------------------------------------------------------------------------
 
-#[derive(Deserialize)]
-pub struct LinkWalletRequest {
-    wallet_address: String,
-}
-
-#[derive(Serialize)]
-pub struct WalletResponse {
-    wallet_address: Option<String>,
-}
-
-pub async fn link_wallet(
-    Extension(claims): Extension<Claims>,
-    State((pool, _)): State<(PgPool, Config)>,
-    Json(body): Json<LinkWalletRequest>,
-) -> Result<Json<WalletResponse>, (StatusCode, String)> {
-    if body.wallet_address.len() < 32 || body.wallet_address.len() > 64 {
-        return Err((StatusCode::BAD_REQUEST, "Invalid wallet address".into()));
+fn row_to_user(row: &sqlx::postgres::PgRow) -> UserResponse {
+    UserResponse {
+        id: row.get("id"),
+        username: row.get("username"),
+        email: row.get("email"),
+        display_name: row.get("display_name"),
+        wallet_address: row.get("wallet_address"),
+        auth_provider: row.get("auth_provider"),
+        avatar_url: row.get("avatar_url"),
     }
+}
 
-    sqlx::query("UPDATE users SET wallet_address = $1 WHERE id = $2")
-        .bind(&body.wallet_address)
-        .bind(claims.sub)
-        .execute(&pool)
+fn generate_username_from_email(email: &str) -> String {
+    email
+        .split('@')
+        .next()
+        .unwrap_or("user")
+        .chars()
+        .filter(|c| c.is_alphanumeric() || *c == '.' || *c == '_' || *c == '-')
+        .take(32)
+        .collect()
+}
+
+async fn ensure_unique_username(
+    pool: &PgPool,
+    base: &str,
+) -> Result<String, (StatusCode, String)> {
+    let base = if base.len() < 3 {
+        format!("{base}user")
+    } else {
+        base.to_string()
+    };
+
+    // Check if base username is available
+    let exists: bool = sqlx::query_scalar("SELECT EXISTS(SELECT 1 FROM users WHERE username = $1)")
+        .bind(&base)
+        .fetch_one(pool)
         .await
         .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?;
 
-    Ok(Json(WalletResponse {
-        wallet_address: Some(body.wallet_address),
-    }))
+    if !exists {
+        return Ok(base);
+    }
+
+    // Append random suffix
+    for _ in 0..10 {
+        let suffix: u16 = rand::random();
+        let candidate = format!("{}{}", &base[..base.len().min(28)], suffix);
+        let exists: bool =
+            sqlx::query_scalar("SELECT EXISTS(SELECT 1 FROM users WHERE username = $1)")
+                .bind(&candidate)
+                .fetch_one(pool)
+                .await
+                .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?;
+        if !exists {
+            return Ok(candidate);
+        }
+    }
+
+    Err((
+        StatusCode::CONFLICT,
+        "Could not generate unique username".into(),
+    ))
 }
 
 fn build_cookie(token: String) -> Cookie<'static> {
