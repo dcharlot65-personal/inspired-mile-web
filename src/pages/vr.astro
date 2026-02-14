@@ -1,0 +1,119 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import '../styles/global.css';
+---
+
+<BaseLayout title="VR Gallery" description="Experience your Shakespearean card collection in virtual reality.">
+
+  <section class="section-padding">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-8">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/20 mb-6">
+          <span class="w-2 h-2 rounded-full bg-purple-500 animate-pulse"></span>
+          <span class="text-purple-400 text-xs font-medium tracking-wide uppercase">VR Experience</span>
+        </div>
+        <h1 class="text-4xl sm:text-5xl font-display font-bold mb-4">
+          Card <span class="text-gradient">Gallery</span>
+        </h1>
+        <p class="text-obsidian-400 max-w-2xl mx-auto">
+          Walk through your collection in 3D. Supports Quest 3 and Vision Pro via WebXR,
+          or explore with mouse on desktop.
+        </p>
+      </div>
+
+      <!-- Controls -->
+      <div class="flex items-center justify-center gap-3 mb-4">
+        <button id="enter-vr-btn" class="btn-primary px-6 py-2 text-sm">
+          Enter VR
+        </button>
+        <button id="reset-camera-btn" class="text-xs text-obsidian-400 hover:text-gold-400 border border-obsidian-700 rounded-lg px-4 py-2 transition-colors">
+          Reset Camera
+        </button>
+      </div>
+
+      <!-- Status bar -->
+      <div class="text-center mb-4">
+        <span id="vr-status" class="text-xs font-mono text-obsidian-500">Loading 3D engine...</span>
+      </div>
+
+      <!-- WebXR fallback message -->
+      <div id="vr-fallback" class="hidden text-center mb-4">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-obsidian-800 border border-obsidian-700 text-xs text-obsidian-400">
+          <span>&#9432;</span>
+          WebXR not available on this device. Using 3D viewer mode — orbit with mouse, scroll to zoom.
+        </div>
+      </div>
+
+      <!-- Canvas -->
+      <div class="card-glass overflow-hidden rounded-xl">
+        <canvas id="vr-canvas" class="w-full" style="height: 600px; display: block;"></canvas>
+      </div>
+
+      <!-- Instructions -->
+      <div class="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div class="card-glass p-4 text-center">
+          <div class="text-2xl mb-2">&#128433;</div>
+          <h3 class="text-sm font-display font-bold text-obsidian-200 mb-1">Desktop</h3>
+          <p class="text-xs text-obsidian-400">Click and drag to orbit. Scroll to zoom. Click a card to select.</p>
+        </div>
+        <div class="card-glass p-4 text-center">
+          <div class="text-2xl mb-2">&#127759;</div>
+          <h3 class="text-sm font-display font-bold text-obsidian-200 mb-1">Quest 3</h3>
+          <p class="text-xs text-obsidian-400">Click "Enter VR" for full immersive experience. Use controllers to teleport and interact.</p>
+        </div>
+        <div class="card-glass p-4 text-center">
+          <div class="text-2xl mb-2">&#128065;</div>
+          <h3 class="text-sm font-display font-bold text-obsidian-200 mb-1">Vision Pro</h3>
+          <p class="text-xs text-obsidian-400">WebXR VR mode. Gaze at a card and pinch to select.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    import { VRCardEngine } from '../lib/vr-engine';
+
+    const canvas = document.getElementById('vr-canvas') as HTMLCanvasElement;
+    const statusEl = document.getElementById('vr-status')!;
+    const enterVRBtn = document.getElementById('enter-vr-btn')!;
+    const resetBtn = document.getElementById('reset-camera-btn')!;
+    const fallbackEl = document.getElementById('vr-fallback')!;
+
+    let vrEngine: VRCardEngine | null = null;
+
+    async function init() {
+      try {
+        vrEngine = new VRCardEngine({
+          canvas,
+          onStatusChange: (msg) => { statusEl.textContent = msg; },
+          onError: (err) => { statusEl.textContent = err; },
+        });
+
+        vrEngine.start();
+
+        // Try enabling WebXR
+        const vrAvailable = await vrEngine.enableVR();
+        if (!vrAvailable) {
+          fallbackEl.classList.remove('hidden');
+          enterVRBtn.classList.add('hidden');
+        }
+      } catch (e: any) {
+        statusEl.textContent = `Failed to initialize: ${e.message}`;
+      }
+    }
+
+    enterVRBtn.addEventListener('click', () => {
+      // WebXR enter is handled by Babylon's built-in UI button
+      statusEl.textContent = 'Use the VR button in the bottom-right corner of the canvas.';
+    });
+
+    resetBtn.addEventListener('click', () => {
+      if (vrEngine) {
+        vrEngine.dispose();
+        init();
+      }
+    });
+
+    init();
+  </script>
+</BaseLayout>

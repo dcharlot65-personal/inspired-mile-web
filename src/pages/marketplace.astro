@@ -1,0 +1,310 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import '../styles/global.css';
+---
+
+<BaseLayout title="Marketplace" description="Trade and buy Shakespearean collectible cards from other players.">
+
+  <section class="section-padding">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-12">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 mb-6">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span class="text-emerald-400 text-xs font-medium tracking-wide uppercase">Marketplace</span>
+        </div>
+        <h1 class="text-4xl sm:text-5xl font-display font-bold mb-4">
+          Card <span class="text-gradient">Marketplace</span>
+        </h1>
+        <p class="text-obsidian-400 max-w-2xl mx-auto">
+          Buy and trade cards with other players. List your duplicates for sale or find the cards you need.
+        </p>
+      </div>
+
+      <!-- Tabs -->
+      <div class="flex gap-2 mb-8 justify-center">
+        <button id="tab-browse" class="px-6 py-2 text-sm font-medium rounded-lg bg-gold-500/10 text-gold-400 border border-gold-500/20 transition-colors">
+          Browse
+        </button>
+        <button id="tab-my" class="px-6 py-2 text-sm font-medium rounded-lg text-obsidian-400 border border-obsidian-700 hover:border-obsidian-600 transition-colors">
+          My Listings
+        </button>
+        <button id="tab-sell" class="px-6 py-2 text-sm font-medium rounded-lg text-obsidian-400 border border-obsidian-700 hover:border-obsidian-600 transition-colors">
+          Sell / Trade
+        </button>
+      </div>
+
+      <!-- Browse Panel -->
+      <div id="panel-browse">
+        <!-- Filters -->
+        <div class="flex flex-wrap gap-3 mb-6">
+          <select id="filter-type" class="bg-obsidian-800 border border-obsidian-700 rounded-lg px-3 py-2 text-xs text-obsidian-200 focus:outline-none focus:border-gold-500/50">
+            <option value="">All Types</option>
+            <option value="sale">For Sale</option>
+            <option value="trade">For Trade</option>
+          </select>
+          <input id="filter-search" type="text" placeholder="Search cards..." class="bg-obsidian-800 border border-obsidian-700 rounded-lg px-3 py-2 text-xs text-obsidian-200 focus:outline-none focus:border-gold-500/50 w-48" />
+          <button id="refresh-btn" class="text-xs text-obsidian-400 hover:text-gold-400 transition-colors border border-obsidian-700 rounded-lg px-3 py-2 hover:border-gold-500/30">
+            Refresh
+          </button>
+        </div>
+
+        <!-- Listings Grid -->
+        <div id="listings-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div class="col-span-full text-center py-12">
+            <div class="w-6 h-6 border-2 border-gold-500 border-t-transparent rounded-full animate-spin mx-auto mb-3"></div>
+            <p class="text-sm text-obsidian-500">Loading listings...</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- My Listings Panel -->
+      <div id="panel-my" class="hidden">
+        <div id="my-listings-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div class="col-span-full text-center py-12">
+            <p class="text-sm text-obsidian-500">Sign in to see your listings.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sell / Trade Panel -->
+      <div id="panel-sell" class="hidden">
+        <div class="card-glass p-8 max-w-lg mx-auto">
+          <h2 class="font-display text-xl font-bold text-obsidian-200 mb-6">Create a Listing</h2>
+
+          <div class="space-y-4">
+            <div>
+              <label class="block text-xs text-obsidian-400 mb-1">Card</label>
+              <select id="sell-card" class="w-full bg-obsidian-800 border border-obsidian-700 rounded-lg px-3 py-2 text-sm text-obsidian-200 focus:outline-none focus:border-gold-500/50">
+                <option value="">Select a card to list...</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-xs text-obsidian-400 mb-1">Listing Type</label>
+              <div class="flex gap-3">
+                <label class="flex items-center gap-2 cursor-pointer">
+                  <input type="radio" name="listing-type" value="sale" checked class="accent-gold-500" />
+                  <span class="text-sm text-obsidian-200">Sale</span>
+                </label>
+                <label class="flex items-center gap-2 cursor-pointer">
+                  <input type="radio" name="listing-type" value="trade" class="accent-gold-500" />
+                  <span class="text-sm text-obsidian-200">Trade</span>
+                </label>
+              </div>
+            </div>
+
+            <div id="price-field">
+              <label class="block text-xs text-obsidian-400 mb-1">Price (credits)</label>
+              <input id="sell-price" type="number" min="1" placeholder="100" class="w-full bg-obsidian-800 border border-obsidian-700 rounded-lg px-3 py-2 text-sm text-obsidian-200 focus:outline-none focus:border-gold-500/50" />
+            </div>
+
+            <div id="wanted-field" class="hidden">
+              <label class="block text-xs text-obsidian-400 mb-1">Wanted Cards (comma-separated IDs)</label>
+              <input id="sell-wanted" type="text" placeholder="MO-001, CA-001" class="w-full bg-obsidian-800 border border-obsidian-700 rounded-lg px-3 py-2 text-sm text-obsidian-200 focus:outline-none focus:border-gold-500/50" />
+            </div>
+
+            <button id="create-listing-btn" class="w-full btn-primary py-3">
+              Create Listing
+            </button>
+            <p id="sell-error" class="hidden text-xs text-crimson-400 text-center"></p>
+            <p id="sell-success" class="hidden text-xs text-emerald-400 text-center"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    import { browseListings, createListing, cancelListing, buyListing, myListings, type Listing } from '../lib/marketplace-client';
+    import { isLoggedIn } from '../lib/storage-backend';
+
+    // Tabs
+    const tabs = ['browse', 'my', 'sell'] as const;
+    tabs.forEach(tab => {
+      document.getElementById(`tab-${tab}`)!.addEventListener('click', () => {
+        tabs.forEach(t => {
+          document.getElementById(`panel-${t}`)!.classList.toggle('hidden', t !== tab);
+          const btn = document.getElementById(`tab-${t}`)!;
+          if (t === tab) {
+            btn.className = 'px-6 py-2 text-sm font-medium rounded-lg bg-gold-500/10 text-gold-400 border border-gold-500/20 transition-colors';
+          } else {
+            btn.className = 'px-6 py-2 text-sm font-medium rounded-lg text-obsidian-400 border border-obsidian-700 hover:border-obsidian-600 transition-colors';
+          }
+        });
+        if (tab === 'my') loadMyListings();
+      });
+    });
+
+    // Listing type toggle
+    document.querySelectorAll<HTMLInputElement>('input[name="listing-type"]').forEach(radio => {
+      radio.addEventListener('change', () => {
+        document.getElementById('price-field')!.classList.toggle('hidden', radio.value === 'trade');
+        document.getElementById('wanted-field')!.classList.toggle('hidden', radio.value === 'sale');
+      });
+    });
+
+    // Browse
+    const listingsGrid = document.getElementById('listings-grid')!;
+    const filterType = document.getElementById('filter-type') as HTMLSelectElement;
+    const filterSearch = document.getElementById('filter-search') as HTMLInputElement;
+
+    let allListings: Listing[] = [];
+
+    async function loadListings() {
+      try {
+        allListings = await browseListings();
+        renderListings();
+      } catch {
+        listingsGrid.innerHTML = '<div class="col-span-full text-center py-12"><p class="text-sm text-crimson-400">Failed to load listings.</p></div>';
+      }
+    }
+
+    function renderListings() {
+      let filtered = allListings;
+      const typeFilter = filterType.value;
+      const searchFilter = filterSearch.value.toLowerCase();
+
+      if (typeFilter) filtered = filtered.filter(l => l.listing_type === typeFilter);
+      if (searchFilter) filtered = filtered.filter(l => l.card_id.toLowerCase().includes(searchFilter) || l.seller_username.toLowerCase().includes(searchFilter));
+
+      if (filtered.length === 0) {
+        listingsGrid.innerHTML = '<div class="col-span-full text-center py-12"><p class="text-sm text-obsidian-500">No listings found.</p></div>';
+        return;
+      }
+
+      listingsGrid.innerHTML = filtered.map(l => `
+        <div class="card-glass p-5 hover:border-gold-500/30 transition-colors">
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-xs font-mono ${l.listing_type === 'sale' ? 'text-emerald-400 bg-emerald-500/10' : 'text-purple-400 bg-purple-500/10'} px-2 py-0.5 rounded-full">
+              ${l.listing_type === 'sale' ? 'FOR SALE' : 'FOR TRADE'}
+            </span>
+            <span class="text-xs text-obsidian-500">${new Date(l.created_at).toLocaleDateString()}</span>
+          </div>
+          <h3 class="font-display font-bold text-obsidian-200 mb-1">${l.card_id}</h3>
+          <p class="text-xs text-obsidian-400 mb-3">by ${l.seller_username}</p>
+          ${l.listing_type === 'sale' && l.price_credits != null
+            ? `<p class="text-sm font-semibold text-gold-400 mb-3">${l.price_credits} credits</p>`
+            : l.wanted_card_ids.length > 0
+              ? `<p class="text-xs text-obsidian-400 mb-3">Wants: ${l.wanted_card_ids.join(', ')}</p>`
+              : ''
+          }
+          <button class="buy-btn w-full btn-primary text-xs py-2" data-id="${l.id}" data-type="${l.listing_type}">
+            ${l.listing_type === 'sale' ? 'Buy' : 'Offer Trade'}
+          </button>
+        </div>
+      `).join('');
+
+      listingsGrid.querySelectorAll('.buy-btn').forEach(btn => {
+        btn.addEventListener('click', async () => {
+          if (!isLoggedIn()) { alert('Sign in to buy cards.'); return; }
+          const id = (btn as HTMLElement).dataset.id!;
+          try {
+            await buyListing(id);
+            alert('Purchase successful!');
+            loadListings();
+          } catch (e: any) {
+            alert(e.message || 'Purchase failed');
+          }
+        });
+      });
+    }
+
+    filterType.addEventListener('change', renderListings);
+    filterSearch.addEventListener('input', renderListings);
+    document.getElementById('refresh-btn')!.addEventListener('click', loadListings);
+
+    // My Listings
+    const myGrid = document.getElementById('my-listings-grid')!;
+
+    async function loadMyListings() {
+      if (!isLoggedIn()) {
+        myGrid.innerHTML = '<div class="col-span-full text-center py-12"><p class="text-sm text-obsidian-500">Sign in to see your listings.</p></div>';
+        return;
+      }
+      try {
+        const listings = await myListings();
+        if (listings.length === 0) {
+          myGrid.innerHTML = '<div class="col-span-full text-center py-12"><p class="text-sm text-obsidian-500">You have no active listings.</p></div>';
+          return;
+        }
+        myGrid.innerHTML = listings.map(l => `
+          <div class="card-glass p-5">
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs font-mono ${l.listing_type === 'sale' ? 'text-emerald-400' : 'text-purple-400'} bg-obsidian-800 px-2 py-0.5 rounded-full">
+                ${l.listing_type.toUpperCase()}
+              </span>
+              <span class="text-xs font-mono ${l.status === 'active' ? 'text-emerald-400' : 'text-obsidian-500'}">
+                ${l.status}
+              </span>
+            </div>
+            <h3 class="font-display font-bold text-obsidian-200 mb-1">${l.card_id}</h3>
+            ${l.price_credits != null ? `<p class="text-sm text-gold-400 mb-3">${l.price_credits} credits</p>` : ''}
+            ${l.status === 'active' ? `<button class="cancel-btn w-full text-xs text-obsidian-400 hover:text-crimson-400 py-2 border border-obsidian-700 rounded-lg transition-colors" data-id="${l.id}">Cancel Listing</button>` : ''}
+          </div>
+        `).join('');
+
+        myGrid.querySelectorAll('.cancel-btn').forEach(btn => {
+          btn.addEventListener('click', async () => {
+            const id = (btn as HTMLElement).dataset.id!;
+            try {
+              await cancelListing(id);
+              loadMyListings();
+            } catch (e: any) {
+              alert(e.message || 'Cancel failed');
+            }
+          });
+        });
+      } catch {
+        myGrid.innerHTML = '<div class="col-span-full text-center py-12"><p class="text-sm text-crimson-400">Failed to load your listings.</p></div>';
+      }
+    }
+
+    // Create Listing
+    document.getElementById('create-listing-btn')!.addEventListener('click', async () => {
+      if (!isLoggedIn()) { alert('Sign in to create a listing.'); return; }
+
+      const cardId = (document.getElementById('sell-card') as HTMLSelectElement).value;
+      const type = (document.querySelector<HTMLInputElement>('input[name="listing-type"]:checked'))!.value as 'sale' | 'trade';
+      const price = type === 'sale' ? Number((document.getElementById('sell-price') as HTMLInputElement).value) : undefined;
+      const wantedRaw = (document.getElementById('sell-wanted') as HTMLInputElement).value;
+      const wanted = type === 'trade' && wantedRaw ? wantedRaw.split(',').map(s => s.trim()).filter(Boolean) : undefined;
+      const errEl = document.getElementById('sell-error')!;
+      const successEl = document.getElementById('sell-success')!;
+
+      errEl.classList.add('hidden');
+      successEl.classList.add('hidden');
+
+      if (!cardId) { errEl.textContent = 'Select a card.'; errEl.classList.remove('hidden'); return; }
+      if (type === 'sale' && (!price || price < 1)) { errEl.textContent = 'Enter a valid price.'; errEl.classList.remove('hidden'); return; }
+
+      try {
+        await createListing(cardId, type, price, wanted);
+        successEl.textContent = 'Listing created!';
+        successEl.classList.remove('hidden');
+        (document.getElementById('sell-card') as HTMLSelectElement).value = '';
+      } catch (e: any) {
+        errEl.textContent = e.message || 'Failed to create listing';
+        errEl.classList.remove('hidden');
+      }
+    });
+
+    // Populate sell card dropdown with owned cards
+    async function populateSellCards() {
+      const select = document.getElementById('sell-card') as HTMLSelectElement;
+      try {
+        const { getInventory } = await import('../lib/inventory');
+        const inv = getInventory();
+        inv.ownedCardIds.forEach((id: string) => {
+          const opt = document.createElement('option');
+          opt.value = id;
+          opt.textContent = id;
+          select.appendChild(opt);
+        });
+      } catch {}
+    }
+
+    // Init
+    loadListings();
+    populateSellCards();
+  </script>
+</BaseLayout>

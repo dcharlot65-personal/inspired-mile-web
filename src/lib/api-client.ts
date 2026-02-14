@@ -71,6 +71,13 @@ export async function getMe(): Promise<AuthResponse> {
   return request('/auth/me');
 }
 
+export async function linkWallet(walletAddress: string): Promise<{ wallet_address: string | null }> {
+  return request('/auth/link-wallet', {
+    method: 'POST',
+    body: JSON.stringify({ wallet_address: walletAddress }),
+  });
+}
+
 // ---------------------------------------------------------------------------
 // Inventory
 // ---------------------------------------------------------------------------

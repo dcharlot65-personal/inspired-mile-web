@@ -96,6 +96,38 @@ import '../styles/global.css';
             </div>
           </div>
 
+          <!-- Deck Selection -->
+          <div id="deck-select" class="p-3 border-t border-obsidian-700/50 bg-obsidian-900/30">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <span class="text-xs text-obsidian-500">Active Deck:</span>
+                <span id="active-deck-label" class="text-xs font-semibold text-gold-400">None</span>
+              </div>
+              <button id="change-deck-btn" class="text-xs text-obsidian-400 hover:text-gold-400 transition-colors border border-obsidian-700 rounded px-2 py-1 hover:border-gold-500/30">
+                Change Deck
+              </button>
+            </div>
+            <div id="deck-picker" class="hidden mt-3 max-h-48 overflow-y-auto space-y-1"></div>
+            <div id="deck-synergies" class="hidden mt-2 space-y-0.5"></div>
+          </div>
+
+          <!-- Active Character Selection (shown when deck is active) -->
+          <div id="character-select" class="hidden p-3 border-t border-obsidian-700/50 bg-obsidian-900/30">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="text-xs text-obsidian-500">Battle as:</span>
+              <span id="active-char-label" class="text-xs font-semibold text-obsidian-300">Select character</span>
+            </div>
+            <div id="character-picker" class="flex flex-wrap gap-2"></div>
+          </div>
+
+          <!-- Use Item Button -->
+          <div id="item-panel" class="hidden p-3 border-t border-obsidian-700/50 bg-obsidian-900/30">
+            <div class="flex items-center gap-2 flex-wrap">
+              <span class="text-xs text-obsidian-500">Items:</span>
+              <div id="item-buttons" class="flex gap-2 flex-wrap"></div>
+            </div>
+          </div>
+
           <!-- Variant Equip (World Card bonus) -->
           <div id="variant-equip" class="hidden p-3 border-t border-obsidian-700/50 bg-obsidian-900/30">
             <div class="flex items-center justify-between">
@@ -213,8 +245,19 @@ import '../styles/global.css';
       getCityByCode,
       awardRandomVariant,
     } from '../lib/variants';
-    import { CARD_CATALOG } from '../lib/cards';
+    import { CARD_CATALOG, getCardById as getCard } from '../lib/cards';
     import { getOwnedCardIds as getOwnedCardIdSet } from '../lib/inventory';
+    import {
+      calculateBattleModifiers,
+      cardStatModifier,
+      applyItemEffect,
+      getActiveSynergies as getDeckSynergies,
+      ITEM_EFFECTS,
+      CHARACTER_ABILITIES,
+      type BattleModifiers,
+      type Deck,
+    } from '../lib/battle-rules';
+    import { getSavedDecks, getActiveDeck, getActiveDeckName, setActiveDeck } from '../lib/deck-manager';
 
     // --- State ---
     let currentMode = '';
@@ -226,6 +269,12 @@ import '../styles/global.css';
     let equippedVariantAbility: CityAbility | null = null;
     let equippedVariantLabel = '';
     let consecutiveWins = 0;
+
+    // Deck / Character / Item state
+    let activeDeck: Deck | null = null;
+    let activeCharId = '';
+    let itemUsesThisBattle: Record<string, number> = {};
+    let deckModifiers: BattleModifiers = { wordplay: 0, shakespeare: 0, flow: 0, wit: 0 };
 
     // Load persistent stats on init
     function updateBattleStatsDisplay() {
@@ -338,6 +387,146 @@ import '../styles/global.css';
     }
 
     initVariantEquipUI();
+
+    // --- Deck Selection UI ---
+    const deckSelectPanel = document.getElementById('deck-select')!;
+    const activeDeckLabel = document.getElementById('active-deck-label')!;
+    const changeDeckBtn = document.getElementById('change-deck-btn')!;
+    const deckPicker = document.getElementById('deck-picker')!;
+    const deckSynergiesEl = document.getElementById('deck-synergies')!;
+    const characterSelectPanel = document.getElementById('character-select')!;
+    const activeCharLabel = document.getElementById('active-char-label')!;
+    const characterPicker = document.getElementById('character-picker')!;
+    const itemPanel = document.getElementById('item-panel')!;
+    const itemButtons = document.getElementById('item-buttons')!;
+
+    function initDeckUI() {
+      const decks = getSavedDecks();
+      const savedActive = getActiveDeck();
+      if (savedActive) {
+        selectDeck(savedActive);
+      }
+
+      // Build deck picker
+      changeDeckBtn.addEventListener('click', () => {
+        const allDecks = getSavedDecks();
+        deckPicker.innerHTML = '';
+        const noneBtn = document.createElement('button');
+        noneBtn.className = 'w-full text-left text-xs p-2 rounded hover:bg-obsidian-800 text-obsidian-400';
+        noneBtn.textContent = 'No deck (no bonuses)';
+        noneBtn.addEventListener('click', () => {
+          activeDeck = null;
+          activeCharId = '';
+          deckModifiers = { wordplay: 0, shakespeare: 0, flow: 0, wit: 0 };
+          activeDeckLabel.textContent = 'None';
+          activeDeckLabel.className = 'text-xs font-semibold text-obsidian-400';
+          characterSelectPanel.classList.add('hidden');
+          itemPanel.classList.add('hidden');
+          deckSynergiesEl.classList.add('hidden');
+          deckPicker.classList.add('hidden');
+        });
+        deckPicker.appendChild(noneBtn);
+
+        for (const d of allDecks) {
+          const btn = document.createElement('button');
+          btn.className = 'w-full text-left text-xs p-2 rounded hover:bg-obsidian-800 text-obsidian-300';
+          btn.textContent = `${d.name} (${d.characters.length}C / ${d.relics.length}R / ${d.potions.length}P)`;
+          btn.addEventListener('click', () => {
+            setActiveDeck(d.name);
+            selectDeck(d);
+            deckPicker.classList.add('hidden');
+          });
+          deckPicker.appendChild(btn);
+        }
+
+        deckPicker.classList.toggle('hidden');
+      });
+    }
+
+    function selectDeck(deck: Deck) {
+      activeDeck = deck;
+      activeDeckLabel.textContent = deck.name;
+      activeDeckLabel.className = 'text-xs font-semibold text-gold-400';
+      itemUsesThisBattle = {};
+
+      // Show synergies
+      const synergies = getDeckSynergies(deck.characters);
+      if (synergies.length > 0) {
+        deckSynergiesEl.classList.remove('hidden');
+        deckSynergiesEl.innerHTML = synergies.map(s =>
+          `<p class="text-[10px] text-obsidian-400"><span class="text-gold-400">&#10003;</span> ${s.description}</p>`
+        ).join('');
+      } else {
+        deckSynergiesEl.classList.add('hidden');
+      }
+
+      // Show character picker
+      characterSelectPanel.classList.remove('hidden');
+      characterPicker.innerHTML = '';
+      for (const cid of deck.characters) {
+        const card = getCard(cid);
+        if (!card) continue;
+        const btn = document.createElement('button');
+        btn.className = 'p-1.5 rounded-lg border border-obsidian-700 hover:border-gold-500/30 transition-all text-center';
+        btn.dataset.charId = cid;
+        btn.innerHTML = `
+          ${card.image ? `<img src="${card.image}" alt="${card.name}" class="w-10 h-10 rounded object-cover mx-auto">` : `<span class="text-lg">${card.icon}</span>`}
+          <p class="text-[10px] text-obsidian-300 mt-0.5 truncate max-w-[60px]">${card.name}</p>
+        `;
+        btn.addEventListener('click', () => {
+          activeCharId = cid;
+          activeCharLabel.textContent = card.name;
+          characterPicker.querySelectorAll('button').forEach(b => b.classList.remove('border-gold-500/50', 'bg-gold-500/10'));
+          btn.classList.add('border-gold-500/50', 'bg-gold-500/10');
+
+          // Recalculate modifiers
+          deckModifiers = calculateBattleModifiers(deck, cid);
+          const statMods = cardStatModifier(card);
+          deckModifiers.wordplay += statMods.wordplay;
+          deckModifiers.shakespeare += statMods.shakespeare;
+          deckModifiers.flow += statMods.flow;
+          deckModifiers.wit += statMods.wit;
+        });
+        characterPicker.appendChild(btn);
+      }
+
+      // Auto-select first character
+      if (deck.characters.length > 0) {
+        const firstBtn = characterPicker.querySelector('button') as HTMLElement;
+        firstBtn?.click();
+      }
+
+      // Show item buttons
+      const items = [...deck.relics, ...deck.potions];
+      if (items.length > 0) {
+        itemPanel.classList.remove('hidden');
+        itemButtons.innerHTML = '';
+        for (const itemId of items) {
+          const effect = ITEM_EFFECTS[itemId];
+          if (!effect) continue;
+          const btn = document.createElement('button');
+          btn.className = 'text-xs px-2 py-1 rounded border border-obsidian-700 text-obsidian-300 hover:border-purple-500/30 hover:text-purple-400 transition-all';
+          btn.dataset.itemId = itemId;
+          btn.textContent = `${effect.name} (${effect.usesPerBattle}x)`;
+          btn.addEventListener('click', () => {
+            const used = itemUsesThisBattle[itemId] || 0;
+            if (used >= effect.usesPerBattle) return;
+            itemUsesThisBattle[itemId] = used + 1;
+            deckModifiers = applyItemEffect(itemId, deckModifiers);
+            btn.textContent = `${effect.name} (${effect.usesPerBattle - used - 1}x)`;
+            if (used + 1 >= effect.usesPerBattle) {
+              btn.classList.add('opacity-40', 'cursor-not-allowed');
+            }
+            playSfx('ui-click');
+          });
+          itemButtons.appendChild(btn);
+        }
+      } else {
+        itemPanel.classList.add('hidden');
+      }
+    }
+
+    initDeckUI();
 
     // --- Demo mode fallback responses ---
     const demoResponses: Record<string, string[]> = {
@@ -555,18 +744,27 @@ import '../styles/global.css';
         const judgment = await judgeBattle(text, lastAIResponse);
 
         if (judgment) {
+          // Apply deck modifiers (character ability + house synergy + card stats + items)
+          if (activeDeck && activeCharId) {
+            judgment.playerScore.wordplay = Math.min(10, judgment.playerScore.wordplay + deckModifiers.wordplay);
+            judgment.playerScore.shakespeare = Math.min(10, judgment.playerScore.shakespeare + deckModifiers.shakespeare);
+            judgment.playerScore.flow = Math.min(10, judgment.playerScore.flow + deckModifiers.flow);
+            judgment.playerScore.wit = Math.min(10, judgment.playerScore.wit + deckModifiers.wit);
+          }
+
           // Apply city bonus from equipped variant
           if (equippedVariantAbility) {
             const axis = equippedVariantAbility.axis as keyof typeof judgment.playerScore;
             const original = judgment.playerScore[axis];
             judgment.playerScore[axis] = Math.min(10, original + equippedVariantAbility.bonus);
-            judgment.playerScore.total = judgment.playerScore.wordplay
-              + judgment.playerScore.shakespeare
-              + judgment.playerScore.flow
-              + judgment.playerScore.wit;
-            // Re-evaluate winner
-            judgment.playerWins = judgment.playerScore.total > judgment.aiScore.total;
           }
+
+          // Recalculate total and winner
+          judgment.playerScore.total = judgment.playerScore.wordplay
+            + judgment.playerScore.shakespeare
+            + judgment.playerScore.flow
+            + judgment.playerScore.wit;
+          judgment.playerWins = judgment.playerScore.total > judgment.aiScore.total;
           showJudgment(judgment);
           playerWon = judgment.playerWins;
           setHighScore(judgment.playerScore.total);

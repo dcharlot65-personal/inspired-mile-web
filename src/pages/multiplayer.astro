@@ -1,0 +1,324 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import '../styles/global.css';
+---
+
+<BaseLayout title="Multiplayer" description="Battle other players in real-time Shakespearean rap battles.">
+
+  <section class="section-padding">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-12">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/20 mb-6">
+          <span class="w-2 h-2 rounded-full bg-purple-500 animate-pulse"></span>
+          <span class="text-purple-400 text-xs font-medium tracking-wide uppercase">Multiplayer</span>
+        </div>
+        <h1 class="text-4xl sm:text-5xl font-display font-bold mb-4">
+          Multiplayer <span class="text-gradient">Arena</span>
+        </h1>
+        <p class="text-obsidian-400 max-w-2xl mx-auto">
+          Battle real players in Shakespearean rap duels. Server-side AI judging ensures fair scoring.
+          Requires an account.
+        </p>
+      </div>
+
+      <!-- Matchmaking -->
+      <div id="matchmaking-panel" class="card-glass p-8 text-center">
+        <div class="w-20 h-20 rounded-full bg-purple-500/10 border border-purple-500/20 flex items-center justify-center mx-auto mb-6">
+          <span class="text-4xl">&#9876;</span>
+        </div>
+        <h2 class="font-display text-2xl font-bold text-obsidian-200 mb-3">Find an Opponent</h2>
+        <p class="text-sm text-obsidian-400 mb-6">Join the matchmaking queue to be paired with another player.</p>
+        <button id="find-match-btn" class="btn-primary px-8 py-3 text-lg">
+          Find Match
+        </button>
+        <div id="queue-status" class="hidden mt-6">
+          <div class="flex items-center justify-center gap-3 mb-2">
+            <div class="w-6 h-6 border-2 border-gold-500 border-t-transparent rounded-full animate-spin"></div>
+            <span class="text-sm text-obsidian-300">Searching for opponent...</span>
+          </div>
+          <button id="cancel-queue-btn" class="text-xs text-obsidian-500 hover:text-crimson-400 transition-colors mt-2">Cancel</button>
+        </div>
+        <p id="match-error" class="hidden text-sm text-crimson-400 mt-4"></p>
+      </div>
+
+      <!-- Battle Arena (hidden until matched) -->
+      <div id="mp-arena" class="hidden">
+        <div class="card-glass overflow-hidden">
+          <!-- Battle Header -->
+          <div class="bg-gradient-to-r from-purple-500/10 via-obsidian-900 to-gold-500/10 p-4 border-b border-obsidian-700/50">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-purple-500/20 border border-purple-500/30 flex items-center justify-center">
+                  <span class="text-lg">&#128100;</span>
+                </div>
+                <div>
+                  <p class="text-sm font-semibold text-obsidian-200">You</p>
+                  <p id="mp-player-name" class="text-xs text-obsidian-500">Player</p>
+                </div>
+              </div>
+              <div class="text-center">
+                <span class="text-xs font-mono text-purple-400 tracking-wider">VS</span>
+                <div class="flex items-center gap-1 mt-1">
+                  <span id="mp-player-score" class="text-sm font-mono text-obsidian-300">0</span>
+                  <span class="text-xs text-obsidian-600">-</span>
+                  <span id="mp-opponent-score" class="text-sm font-mono text-gold-400">0</span>
+                </div>
+              </div>
+              <div class="flex items-center gap-3">
+                <div class="text-right">
+                  <p id="mp-opponent-name" class="text-sm font-semibold text-gold-300">Opponent</p>
+                  <p class="text-xs text-obsidian-500">Challenger</p>
+                </div>
+                <div class="w-10 h-10 rounded-full bg-gold-500/20 border border-gold-500/30 flex items-center justify-center">
+                  <span class="text-lg">&#128100;</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Round indicator -->
+          <div class="text-center p-2 bg-obsidian-900/50 border-b border-obsidian-700/50">
+            <span id="mp-round-label" class="text-xs font-mono text-obsidian-500">Round 1 / 3</span>
+          </div>
+
+          <!-- Battle Log -->
+          <div id="mp-battle-log" class="h-96 overflow-y-auto p-6 space-y-4">
+            <div class="text-center">
+              <span class="text-xs font-mono text-obsidian-500 bg-obsidian-800/50 px-3 py-1 rounded-full">
+                Waiting for match...
+              </span>
+            </div>
+          </div>
+
+          <!-- Input -->
+          <div class="p-4 border-t border-obsidian-700/50 bg-obsidian-900/50">
+            <div class="flex gap-3">
+              <input
+                id="mp-input"
+                type="text"
+                placeholder="Drop your bars here..."
+                class="flex-1 bg-obsidian-800 border border-obsidian-700 rounded-lg px-4 py-3 text-sm text-obsidian-100 placeholder-obsidian-500 focus:outline-none focus:border-purple-500/50 transition-colors"
+              />
+              <button id="mp-send-btn" class="btn-primary px-6">Send</button>
+            </div>
+            <div class="flex items-center justify-between mt-2">
+              <p id="mp-hint" class="text-xs text-obsidian-500"></p>
+              <button id="mp-forfeit-btn" class="text-xs text-obsidian-500 hover:text-crimson-400 transition-colors">Forfeit</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    import { MultiplayerClient, joinQueue, type ServerEvent } from '../lib/multiplayer-client';
+    import { isLoggedIn } from '../lib/storage-backend';
+
+    const matchmakingPanel = document.getElementById('matchmaking-panel')!;
+    const findMatchBtn = document.getElementById('find-match-btn')!;
+    const queueStatus = document.getElementById('queue-status')!;
+    const cancelQueueBtn = document.getElementById('cancel-queue-btn')!;
+    const matchError = document.getElementById('match-error')!;
+    const mpArena = document.getElementById('mp-arena')!;
+    const mpBattleLog = document.getElementById('mp-battle-log')!;
+    const mpInput = document.getElementById('mp-input') as HTMLInputElement;
+    const mpSendBtn = document.getElementById('mp-send-btn')!;
+    const mpForfeitBtn = document.getElementById('mp-forfeit-btn')!;
+    const mpOpponentName = document.getElementById('mp-opponent-name')!;
+    const mpRoundLabel = document.getElementById('mp-round-label')!;
+    const mpPlayerScore = document.getElementById('mp-player-score')!;
+    const mpOpponentScore = document.getElementById('mp-opponent-score')!;
+    const mpHint = document.getElementById('mp-hint')!;
+
+    let client: MultiplayerClient | null = null;
+    let searching = false;
+
+    findMatchBtn.addEventListener('click', async () => {
+      if (!isLoggedIn()) {
+        matchError.textContent = 'Sign in to play multiplayer.';
+        matchError.classList.remove('hidden');
+        return;
+      }
+
+      matchError.classList.add('hidden');
+      searching = true;
+      queueStatus.classList.remove('hidden');
+      findMatchBtn.classList.add('hidden');
+
+      try {
+        const result = await joinQueue();
+
+        if (result.status === 'matched' && result.room_id) {
+          await startMatch(result.room_id);
+        } else if (result.status === 'timeout') {
+          matchError.textContent = 'No opponents found. Try again later.';
+          matchError.classList.remove('hidden');
+          resetMatchmaking();
+        } else {
+          resetMatchmaking();
+        }
+      } catch (e: any) {
+        matchError.textContent = e.message || 'Failed to join queue';
+        matchError.classList.remove('hidden');
+        resetMatchmaking();
+      }
+    });
+
+    cancelQueueBtn.addEventListener('click', () => {
+      searching = false;
+      resetMatchmaking();
+    });
+
+    function resetMatchmaking() {
+      searching = false;
+      queueStatus.classList.add('hidden');
+      findMatchBtn.classList.remove('hidden');
+    }
+
+    async function startMatch(roomId: string) {
+      matchmakingPanel.classList.add('hidden');
+      mpArena.classList.remove('hidden');
+
+      const wsBase = window.location.origin;
+      client = new MultiplayerClient(wsBase);
+
+      client.onEvent(handleServerEvent);
+
+      try {
+        await client.connect();
+        client.joinRoom(roomId);
+      } catch {
+        addSystemMsg('Failed to connect to server.');
+      }
+    }
+
+    function handleServerEvent(event: ServerEvent) {
+      switch (event.type) {
+        case 'room_joined':
+          mpOpponentName.textContent = event.opponent;
+          mpRoundLabel.textContent = `Round ${event.round} / ${event.total_rounds}`;
+          addSystemMsg(`Matched with ${event.opponent}! Battle begins.`);
+          break;
+
+        case 'round_start':
+          mpRoundLabel.textContent = `Round ${event.round} / ${event.total_rounds}`;
+          addSystemMsg(`Round ${event.round} — drop your bars!`);
+          mpInput.disabled = false;
+          mpSendBtn.removeAttribute('disabled');
+          break;
+
+        case 'opponent_submitted':
+          mpHint.textContent = 'Opponent has submitted. Your turn!';
+          break;
+
+        case 'round_result':
+          addRoundResult(event);
+          if (event.player_wins) {
+            mpPlayerScore.textContent = String(Number(mpPlayerScore.textContent) + 1);
+          } else {
+            mpOpponentScore.textContent = String(Number(mpOpponentScore.textContent) + 1);
+          }
+          break;
+
+        case 'match_complete':
+          addSystemMsg(`Match over! Winner: ${event.winner}`);
+          mpInput.disabled = true;
+          mpSendBtn.setAttribute('disabled', '');
+          break;
+
+        case 'opponent_disconnected':
+          addSystemMsg('Opponent disconnected. You win!');
+          break;
+
+        case 'error':
+          addSystemMsg(`Error: ${event.message}`);
+          break;
+      }
+    }
+
+    mpSendBtn.addEventListener('click', submitVerse);
+    mpInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') submitVerse();
+    });
+
+    function submitVerse() {
+      const text = mpInput.value.trim();
+      if (!text || !client) return;
+
+      addPlayerMsg(text);
+      client.submitVerse(text);
+      mpInput.value = '';
+      mpInput.disabled = true;
+      mpSendBtn.setAttribute('disabled', '');
+      mpHint.textContent = 'Waiting for opponent...';
+    }
+
+    mpForfeitBtn.addEventListener('click', () => {
+      if (client) {
+        client.forfeit();
+        addSystemMsg('You forfeited the match.');
+        client.disconnect();
+      }
+    });
+
+    function addSystemMsg(text: string) {
+      const div = document.createElement('div');
+      div.className = 'text-center';
+      div.innerHTML = `<span class="text-xs font-mono text-obsidian-500 bg-obsidian-800/50 px-3 py-1 rounded-full">${text}</span>`;
+      mpBattleLog.appendChild(div);
+      div.scrollIntoView({ behavior: 'smooth', block: 'end' });
+    }
+
+    function addPlayerMsg(text: string) {
+      const div = document.createElement('div');
+      div.className = 'flex gap-3 justify-end';
+      div.innerHTML = `
+        <div class="card-glass p-4 max-w-md bg-purple-500/5 border-purple-500/20">
+          <p class="text-sm text-obsidian-200 leading-relaxed">${text.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</p>
+        </div>
+      `;
+      mpBattleLog.appendChild(div);
+      div.scrollIntoView({ behavior: 'smooth', block: 'end' });
+    }
+
+    function addRoundResult(event: Extract<ServerEvent, { type: 'round_result' }>) {
+      const winLabel = event.player_wins ? 'You win this round!' : 'Opponent takes this round!';
+      const winColor = event.player_wins ? 'text-emerald-400' : 'text-crimson-400';
+
+      const div = document.createElement('div');
+      div.className = 'text-center my-3';
+      div.innerHTML = `
+        <div class="card-glass p-4 max-w-md mx-auto bg-obsidian-900/80">
+          <div class="text-xs font-mono text-obsidian-500 mb-2 uppercase tracking-wider">Round ${event.round} Verdict</div>
+          <p class="text-sm font-display font-bold ${winColor} mb-2">${winLabel}</p>
+          <p class="text-xs text-obsidian-400 italic mb-3">"${event.reason}"</p>
+          <div class="grid grid-cols-2 gap-3 text-xs">
+            <div>
+              <span class="text-obsidian-500 block mb-1">You</span>
+              <div class="space-y-0.5">
+                <div class="flex justify-between"><span class="text-obsidian-400">Wordplay</span><span class="text-purple-400">${event.player_score.wordplay}/10</span></div>
+                <div class="flex justify-between"><span class="text-obsidian-400">Shakespeare</span><span class="text-purple-400">${event.player_score.shakespeare}/10</span></div>
+                <div class="flex justify-between"><span class="text-obsidian-400">Flow</span><span class="text-purple-400">${event.player_score.flow}/10</span></div>
+                <div class="flex justify-between"><span class="text-obsidian-400">Wit</span><span class="text-purple-400">${event.player_score.wit}/10</span></div>
+                <div class="flex justify-between border-t border-obsidian-700 pt-0.5 mt-0.5"><span class="font-semibold">Total</span><span class="font-semibold text-purple-300">${event.player_score.total}/40</span></div>
+              </div>
+            </div>
+            <div>
+              <span class="text-obsidian-500 block mb-1">Opponent</span>
+              <div class="space-y-0.5">
+                <div class="flex justify-between"><span class="text-obsidian-400">Wordplay</span><span class="text-gold-400">${event.opponent_score.wordplay}/10</span></div>
+                <div class="flex justify-between"><span class="text-obsidian-400">Shakespeare</span><span class="text-gold-400">${event.opponent_score.shakespeare}/10</span></div>
+                <div class="flex justify-between"><span class="text-obsidian-400">Flow</span><span class="text-gold-400">${event.opponent_score.flow}/10</span></div>
+                <div class="flex justify-between"><span class="text-obsidian-400">Wit</span><span class="text-gold-400">${event.opponent_score.wit}/10</span></div>
+                <div class="flex justify-between border-t border-obsidian-700 pt-0.5 mt-0.5"><span class="font-semibold">Total</span><span class="font-semibold text-gold-300">${event.opponent_score.total}/40</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+      mpBattleLog.appendChild(div);
+      div.scrollIntoView({ behavior: 'smooth', block: 'end' });
+    }
+  </script>
+</BaseLayout>

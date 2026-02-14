@@ -1,0 +1,270 @@
+use axum::{
+    extract::{Extension, Path, State},
+    http::StatusCode,
+    routing::{get, post},
+    Json, Router,
+};
+use serde::{Deserialize, Serialize};
+use sqlx::{PgPool, Row};
+use uuid::Uuid;
+
+use crate::auth::Claims;
+use crate::config::Config;
+
+#[derive(Serialize)]
+pub struct TournamentResponse {
+    id: Uuid,
+    name: String,
+    description: Option<String>,
+    format: String,
+    max_players: i32,
+    status: String,
+    player_count: i64,
+    starts_at: String,
+    created_at: String,
+}
+
+#[derive(Serialize)]
+pub struct BracketMatch {
+    id: Uuid,
+    round: i32,
+    match_order: i32,
+    player1_id: Option<Uuid>,
+    player1_name: Option<String>,
+    player2_id: Option<Uuid>,
+    player2_name: Option<String>,
+    winner_id: Option<Uuid>,
+    status: String,
+}
+
+#[derive(Serialize)]
+pub struct LeaderboardEntry {
+    user_id: Uuid,
+    username: String,
+    wins: i64,
+    losses: i64,
+}
+
+#[derive(Deserialize)]
+pub struct CreateTournamentRequest {
+    name: String,
+    description: Option<String>,
+    format: Option<String>,
+    max_players: Option<i32>,
+    starts_at: String,
+}
+
+pub fn router() -> Router<(PgPool, Config)> {
+    Router::new()
+        .route("/", get(list_tournaments))
+        .route("/create", post(create_tournament))
+        .route("/{id}", get(get_tournament))
+        .route("/{id}/register", post(register_tournament))
+        .route("/{id}/bracket", get(get_bracket))
+        .route("/{id}/leaderboard", get(get_leaderboard))
+}
+
+async fn list_tournaments(
+    State((pool, _)): State<(PgPool, Config)>,
+) -> Result<Json<Vec<TournamentResponse>>, (StatusCode, String)> {
+    let rows = sqlx::query(
+        "SELECT t.id, t.name, t.description, t.format, t.max_players, t.status, t.starts_at, t.created_at,
+                (SELECT COUNT(*) FROM tournament_entries WHERE tournament_id = t.id) as player_count
+         FROM tournaments t
+         ORDER BY t.starts_at DESC
+         LIMIT 50",
+    )
+    .fetch_all(&pool)
+    .await
+    .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?;
+
+    let tournaments = rows.iter().map(|r| TournamentResponse {
+        id: r.get("id"),
+        name: r.get("name"),
+        description: r.get("description"),
+        format: r.get("format"),
+        max_players: r.get("max_players"),
+        status: r.get("status"),
+        player_count: r.get("player_count"),
+        starts_at: r.get::<chrono::DateTime<chrono::Utc>, _>("starts_at").to_rfc3339(),
+        created_at: r.get::<chrono::DateTime<chrono::Utc>, _>("created_at").to_rfc3339(),
+    }).collect();
+
+    Ok(Json(tournaments))
+}
+
+async fn get_tournament(
+    Path(id): Path<Uuid>,
+    State((pool, _)): State<(PgPool, Config)>,
+) -> Result<Json<TournamentResponse>, (StatusCode, String)> {
+    let row = sqlx::query(
+        "SELECT t.id, t.name, t.description, t.format, t.max_players, t.status, t.starts_at, t.created_at,
+                (SELECT COUNT(*) FROM tournament_entries WHERE tournament_id = t.id) as player_count
+         FROM tournaments t
+         WHERE t.id = $1",
+    )
+    .bind(id)
+    .fetch_optional(&pool)
+    .await
+    .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?
+    .ok_or((StatusCode::NOT_FOUND, "Tournament not found".into()))?;
+
+    Ok(Json(TournamentResponse {
+        id: row.get("id"),
+        name: row.get("name"),
+        description: row.get("description"),
+        format: row.get("format"),
+        max_players: row.get("max_players"),
+        status: row.get("status"),
+        player_count: row.get("player_count"),
+        starts_at: row.get::<chrono::DateTime<chrono::Utc>, _>("starts_at").to_rfc3339(),
+        created_at: row.get::<chrono::DateTime<chrono::Utc>, _>("created_at").to_rfc3339(),
+    }))
+}
+
+async fn create_tournament(
+    Extension(claims): Extension<Claims>,
+    State((pool, _)): State<(PgPool, Config)>,
+    Json(body): Json<CreateTournamentRequest>,
+) -> Result<Json<TournamentResponse>, (StatusCode, String)> {
+    let format = body.format.unwrap_or_else(|| "single_elimination".into());
+    let max_players = body.max_players.unwrap_or(16);
+
+    let starts_at: chrono::DateTime<chrono::Utc> = body.starts_at.parse()
+        .map_err(|_| (StatusCode::BAD_REQUEST, "Invalid starts_at datetime".into()))?;
+
+    let row = sqlx::query(
+        "INSERT INTO tournaments (name, description, format, max_players, starts_at)
+         VALUES ($1, $2, $3, $4, $5)
+         RETURNING id, created_at",
+    )
+    .bind(&body.name)
+    .bind(&body.description)
+    .bind(&format)
+    .bind(max_players)
+    .bind(starts_at)
+    .fetch_one(&pool)
+    .await
+    .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?;
+
+    Ok(Json(TournamentResponse {
+        id: row.get("id"),
+        name: body.name,
+        description: body.description,
+        format,
+        max_players,
+        status: "registration".into(),
+        player_count: 0,
+        starts_at: starts_at.to_rfc3339(),
+        created_at: row.get::<chrono::DateTime<chrono::Utc>, _>("created_at").to_rfc3339(),
+    }))
+}
+
+async fn register_tournament(
+    Extension(claims): Extension<Claims>,
+    Path(id): Path<Uuid>,
+    State((pool, _)): State<(PgPool, Config)>,
+) -> Result<Json<serde_json::Value>, (StatusCode, String)> {
+    // Check tournament exists and is in registration
+    let tournament = sqlx::query("SELECT status, max_players FROM tournaments WHERE id = $1")
+        .bind(id)
+        .fetch_optional(&pool)
+        .await
+        .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?
+        .ok_or((StatusCode::NOT_FOUND, "Tournament not found".into()))?;
+
+    let status: String = tournament.get("status");
+    if status != "registration" {
+        return Err((StatusCode::BAD_REQUEST, "Tournament is not accepting registrations".into()));
+    }
+
+    let max: i32 = tournament.get("max_players");
+    let count: i64 = sqlx::query_scalar("SELECT COUNT(*) FROM tournament_entries WHERE tournament_id = $1")
+        .bind(id)
+        .fetch_one(&pool)
+        .await
+        .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?;
+
+    if count >= max as i64 {
+        return Err((StatusCode::BAD_REQUEST, "Tournament is full".into()));
+    }
+
+    sqlx::query(
+        "INSERT INTO tournament_entries (tournament_id, user_id, seed)
+         VALUES ($1, $2, $3)
+         ON CONFLICT (tournament_id, user_id) DO NOTHING",
+    )
+    .bind(id)
+    .bind(claims.sub)
+    .bind((count + 1) as i32)
+    .execute(&pool)
+    .await
+    .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?;
+
+    Ok(Json(serde_json::json!({ "registered": true })))
+}
+
+async fn get_bracket(
+    Path(id): Path<Uuid>,
+    State((pool, _)): State<(PgPool, Config)>,
+) -> Result<Json<Vec<BracketMatch>>, (StatusCode, String)> {
+    let rows = sqlx::query(
+        "SELECT m.id, m.round, m.match_order, m.player1_id, m.player2_id, m.winner_id, m.status,
+                u1.username as p1_name, u2.username as p2_name
+         FROM tournament_matches m
+         LEFT JOIN users u1 ON u1.id = m.player1_id
+         LEFT JOIN users u2 ON u2.id = m.player2_id
+         WHERE m.tournament_id = $1
+         ORDER BY m.round, m.match_order",
+    )
+    .bind(id)
+    .fetch_all(&pool)
+    .await
+    .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?;
+
+    let matches = rows.iter().map(|r| BracketMatch {
+        id: r.get("id"),
+        round: r.get("round"),
+        match_order: r.get("match_order"),
+        player1_id: r.get("player1_id"),
+        player1_name: r.get("p1_name"),
+        player2_id: r.get("player2_id"),
+        player2_name: r.get("p2_name"),
+        winner_id: r.get("winner_id"),
+        status: r.get("status"),
+    }).collect();
+
+    Ok(Json(matches))
+}
+
+async fn get_leaderboard(
+    Path(id): Path<Uuid>,
+    State((pool, _)): State<(PgPool, Config)>,
+) -> Result<Json<Vec<LeaderboardEntry>>, (StatusCode, String)> {
+    let rows = sqlx::query(
+        "SELECT u.id as user_id, u.username,
+                COUNT(CASE WHEN m.winner_id = u.id THEN 1 END) as wins,
+                COUNT(CASE WHEN m.winner_id IS NOT NULL AND m.winner_id != u.id THEN 1 END) as losses
+         FROM tournament_entries e
+         JOIN users u ON u.id = e.user_id
+         LEFT JOIN tournament_matches m ON m.tournament_id = e.tournament_id
+           AND (m.player1_id = u.id OR m.player2_id = u.id)
+           AND m.status = 'completed'
+         WHERE e.tournament_id = $1
+         GROUP BY u.id, u.username
+         ORDER BY wins DESC, losses ASC",
+    )
+    .bind(id)
+    .fetch_all(&pool)
+    .await
+    .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?;
+
+    let entries = rows.iter().map(|r| LeaderboardEntry {
+        user_id: r.get("user_id"),
+        username: r.get("username"),
+        wins: r.get("wins"),
+        losses: r.get("losses"),
+    }).collect();
+
+    Ok(Json(entries))
+}

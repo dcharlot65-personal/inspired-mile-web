@@ -2,19 +2,25 @@ mod auth;
 mod config;
 mod db;
 mod inventory;
+mod marketplace;
 mod migration;
+mod multiplayer;
+mod nft;
 mod stats;
+mod tournaments;
 mod variants;
 
+use std::sync::Arc;
 use axum::{
     middleware,
-    routing::get,
+    routing::{get, post},
     Extension, Router,
 };
 use tower_http::cors::{AllowOrigin, CorsLayer};
 use tower_http::trace::TraceLayer;
 
 use config::Config;
+use multiplayer::{RoomManager, MatchmakingQueue};
 
 #[tokio::main]
 async fn main() {
@@ -32,17 +38,35 @@ async fn main() {
 
     let state = (pool.clone(), config.clone());
 
+    // Multiplayer shared state
+    let rooms = Arc::new(RoomManager::new());
+    let queue = Arc::new(MatchmakingQueue::new());
+
+    // Start tournament scheduler background task
+    let scheduler_pool = pool.clone();
+    let scheduler_rooms = rooms.clone();
+    tokio::spawn(async move {
+        tournaments::scheduler::run_scheduler(scheduler_pool, scheduler_rooms).await;
+    });
+
     // Public routes (no auth required)
     let public_routes = Router::new()
         .route("/health", get(|| async { "ok" }))
-        .nest("/auth", auth::router());
+        .nest("/auth", auth::router())
+        .nest("/nft", nft::router());
 
     // Protected routes (auth required)
     let protected_routes = Router::new()
+        .route("/auth/link-wallet", post(auth::link_wallet))
         .nest("/inventory", inventory::router())
         .nest("/variants", variants::router())
         .nest("/stats", stats::router())
         .nest("/migrate", migration::router())
+        .nest("/multiplayer", multiplayer::router(rooms.clone(), queue.clone()))
+        .nest("/marketplace", marketplace::router())
+        .nest("/tournaments", tournaments::router())
+        .layer(Extension(rooms))
+        .layer(Extension(queue))
         .layer(middleware::from_fn(auth::auth_middleware))
         .layer(Extension(config.jwt_secret.clone()));
 

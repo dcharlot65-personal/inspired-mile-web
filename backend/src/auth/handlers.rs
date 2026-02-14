@@ -193,6 +193,41 @@ fn verify_password(password: &str, hash: &str) -> Result<(), String> {
         .map_err(|_| "Invalid password".into())
 }
 
+// ---------------------------------------------------------------------------
+// Wallet linking
+// ---------------------------------------------------------------------------
+
+#[derive(Deserialize)]
+pub struct LinkWalletRequest {
+    wallet_address: String,
+}
+
+#[derive(Serialize)]
+pub struct WalletResponse {
+    wallet_address: Option<String>,
+}
+
+pub async fn link_wallet(
+    Extension(claims): Extension<Claims>,
+    State((pool, _)): State<(PgPool, Config)>,
+    Json(body): Json<LinkWalletRequest>,
+) -> Result<Json<WalletResponse>, (StatusCode, String)> {
+    if body.wallet_address.len() < 32 || body.wallet_address.len() > 64 {
+        return Err((StatusCode::BAD_REQUEST, "Invalid wallet address".into()));
+    }
+
+    sqlx::query("UPDATE users SET wallet_address = $1 WHERE id = $2")
+        .bind(&body.wallet_address)
+        .bind(claims.sub)
+        .execute(&pool)
+        .await
+        .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?;
+
+    Ok(Json(WalletResponse {
+        wallet_address: Some(body.wallet_address),
+    }))
+}
+
 fn build_cookie(token: String) -> Cookie<'static> {
     Cookie::build((COOKIE_NAME, token))
         .path("/")

@@ -6,6 +6,8 @@ pub struct Config {
     pub jwt_secret: String,
     pub port: u16,
     pub cors_origin: String,
+    pub llm_api_key: Option<String>,
+    pub llm_api_url: String,
 }
 
 impl Config {
@@ -21,6 +23,9 @@ impl Config {
                 .unwrap_or(3849),
             cors_origin: env::var("CORS_ORIGIN")
                 .unwrap_or_else(|_| "http://localhost:4321".into()),
+            llm_api_key: env::var("LLM_API_KEY").ok(),
+            llm_api_url: env::var("LLM_API_URL")
+                .unwrap_or_else(|_| "https://api.anthropic.com/v1/messages".into()),
         }
     }
 }

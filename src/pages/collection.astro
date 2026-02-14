@@ -133,6 +133,88 @@ import { CARD_CATALOG, RARITY_COLORS } from '../lib/cards';
     </div>
   </section>
 
+  <!-- Deck Builder Section -->
+  <section class="px-4 sm:px-6 lg:px-8 pb-12" id="deck-builder-section">
+    <div class="max-w-7xl mx-auto">
+      <div class="border-t border-obsidian-800/50 pt-12">
+        <h2 class="text-2xl sm:text-3xl font-display font-bold text-center mb-2">
+          <span class="text-gradient">Deck Builder</span>
+        </h2>
+        <p class="text-obsidian-400 text-center text-sm mb-8">
+          Build a deck of 3–5 characters + up to 2 relics + up to 2 potions (7 max). Click owned cards above to add them.
+        </p>
+
+        <!-- Deck Controls -->
+        <div class="flex flex-wrap items-center gap-3 mb-6">
+          <input id="deck-name" type="text" placeholder="Deck name..."
+            class="flex-1 min-w-[200px] bg-obsidian-800 border border-obsidian-700 rounded-lg px-4 py-2 text-sm text-obsidian-100 placeholder-obsidian-500 focus:outline-none focus:border-gold-500/50" />
+          <button id="save-deck-btn" class="btn-primary px-4 py-2 text-sm">Save Deck</button>
+          <button id="clear-deck-btn" class="btn-secondary px-4 py-2 text-sm">Clear</button>
+        </div>
+
+        <!-- Deck Slots -->
+        <div class="grid md:grid-cols-3 gap-6 mb-6">
+          <div>
+            <h3 class="text-sm font-display font-semibold text-obsidian-300 mb-2">
+              Characters <span id="char-count" class="text-obsidian-500">(0/5)</span>
+            </h3>
+            <div id="deck-characters" class="space-y-2 min-h-[80px] p-3 rounded-lg border border-dashed border-obsidian-700 bg-obsidian-900/30">
+              <p class="deck-placeholder text-xs text-obsidian-600 text-center py-4">Click owned characters to add</p>
+            </div>
+          </div>
+          <div>
+            <h3 class="text-sm font-display font-semibold text-obsidian-300 mb-2">
+              Relics <span id="relic-count" class="text-obsidian-500">(0/2)</span>
+            </h3>
+            <div id="deck-relics" class="space-y-2 min-h-[80px] p-3 rounded-lg border border-dashed border-obsidian-700 bg-obsidian-900/30">
+              <p class="deck-placeholder text-xs text-obsidian-600 text-center py-4">Click owned relics to add</p>
+            </div>
+          </div>
+          <div>
+            <h3 class="text-sm font-display font-semibold text-obsidian-300 mb-2">
+              Potions <span id="potion-count" class="text-obsidian-500">(0/2)</span>
+            </h3>
+            <div id="deck-potions" class="space-y-2 min-h-[80px] p-3 rounded-lg border border-dashed border-obsidian-700 bg-obsidian-900/30">
+              <p class="deck-placeholder text-xs text-obsidian-600 text-center py-4">Click owned potions to add</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Synergy Preview -->
+        <div id="synergy-preview" class="hidden card-glass p-4 mb-6">
+          <h3 class="text-sm font-display font-semibold text-gold-400 mb-2">Active Synergies</h3>
+          <div id="synergy-list" class="space-y-1"></div>
+        </div>
+
+        <!-- Deck Errors -->
+        <div id="deck-errors" class="hidden text-sm text-crimson-400 mb-4 card-glass p-3 bg-crimson-500/5 border-crimson-500/20"></div>
+
+        <!-- Saved Decks -->
+        <div class="mt-6">
+          <h3 class="text-sm font-display font-semibold text-obsidian-300 mb-3">Saved Decks</h3>
+          <div id="saved-decks-list" class="space-y-2">
+            <p class="text-xs text-obsidian-600">No saved decks yet.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Card Detail Modal -->
+  <div id="card-detail-modal" class="fixed inset-0 z-50 hidden">
+    <div class="absolute inset-0 bg-obsidian-950/90 backdrop-blur-sm" id="modal-backdrop"></div>
+    <div class="relative flex items-center justify-center min-h-screen p-4">
+      <div class="card-glass max-w-lg w-full max-h-[90vh] overflow-y-auto relative">
+        <button id="modal-close" class="absolute top-4 right-4 text-obsidian-400 hover:text-obsidian-200 z-10">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+        <div id="modal-content"></div>
+      </div>
+    </div>
+  </div>
+
   <!-- Achievements Section -->
   <section class="px-4 sm:px-6 lg:px-8 pb-24">
     <div class="max-w-7xl mx-auto">
@@ -159,8 +241,11 @@ import { CARD_CATALOG, RARITY_COLORS } from '../lib/cards';
       decodeVariantId,
       getCityByCode,
     } from '../lib/variants';
-    import { CARD_CATALOG } from '../lib/cards';
+    import { CARD_CATALOG, getCardById } from '../lib/cards';
     import { initAudio, isInitialized, playMusic, playSfx } from '../lib/audio-manager';
+    import { hasARModel, getARModel, isARLikelySupported } from '../lib/ar-viewer';
+    import { CHARACTER_ABILITIES, ITEM_EFFECTS, getActiveSynergies, DECK_RULES, type Deck } from '../lib/battle-rules';
+    import { getSavedDecks, saveDeck, deleteDeck, setActiveDeck, getActiveDeckName } from '../lib/deck-manager';
 
     // Start browse music on first interaction
     document.addEventListener('click', () => {
@@ -232,15 +317,23 @@ import { CARD_CATALOG, RARITY_COLORS } from '../lib/cards';
       });
     });
 
-    // --- Card click → details or playground redirect ---
+    // --- Card click → detail modal or deck add ---
+    let deckBuildMode = false;
+
     cardItems.forEach(card => {
       card.addEventListener('click', () => {
         const el = card as HTMLElement;
+        const cardId = el.dataset.id || '';
         if (el.dataset.owned === 'false') {
           playSfx('ui-click');
           window.location.href = '/playground';
+          return;
+        }
+        playSfx('card-shimmer');
+        if (deckBuildMode) {
+          toggleCardInDeck(cardId);
         } else {
-          playSfx('card-shimmer');
+          openCardModal(cardId);
         }
       });
     });
@@ -359,5 +452,302 @@ import { CARD_CATALOG, RARITY_COLORS } from '../lib/cards';
     }
 
     renderWorldCards();
+
+    // --- Card Detail Modal ---
+    const modal = document.getElementById('card-detail-modal')!;
+    const modalContent = document.getElementById('modal-content')!;
+    const modalClose = document.getElementById('modal-close')!;
+    const modalBackdrop = document.getElementById('modal-backdrop')!;
+    let modelViewerLoaded = false;
+
+    async function loadModelViewer() {
+      if (modelViewerLoaded) return;
+      await import('@google/model-viewer');
+      modelViewerLoaded = true;
+    }
+
+    function openCardModal(cardId: string) {
+      const card = getCardById(cardId);
+      if (!card) return;
+
+      const ability = CHARACTER_ABILITIES[cardId];
+      const itemEffect = ITEM_EFFECTS[cardId];
+      const arModel = getARModel(cardId);
+      const arSupported = isARLikelySupported();
+
+      let abilityHtml = '';
+      if (ability) {
+        abilityHtml = `
+          <div class="mt-4 card-glass p-3 bg-gold-500/5 border-gold-500/20">
+            <p class="text-xs text-gold-400 font-semibold mb-1">Passive: ${ability.name}</p>
+            <p class="text-xs text-obsidian-400">${ability.description}</p>
+          </div>`;
+      }
+      if (itemEffect) {
+        abilityHtml = `
+          <div class="mt-4 card-glass p-3 bg-purple-500/5 border-purple-500/20">
+            <p class="text-xs text-purple-400 font-semibold mb-1">${itemEffect.name}</p>
+            <p class="text-xs text-obsidian-400">${itemEffect.description}</p>
+            <p class="text-xs text-obsidian-500 mt-1">Uses per battle: ${itemEffect.usesPerBattle}</p>
+          </div>`;
+      }
+
+      let viewerHtml = '';
+      if (arModel) {
+        viewerHtml = `
+          <div class="mt-4" id="model-viewer-container">
+            <model-viewer
+              src="${arModel.glbPath}"
+              ${arModel.iosSrc ? `ios-src="${arModel.iosSrc}"` : ''}
+              ar
+              ar-modes="webxr scene-viewer quick-look"
+              camera-orbit="${arModel.cameraOrbit}"
+              auto-rotate
+              camera-controls
+              poster="${arModel.posterPath}"
+              shadow-intensity="1"
+              style="width: 100%; height: 300px; --poster-color: transparent;"
+            >
+              ${arSupported ? '<button slot="ar-button" class="btn-primary text-xs px-3 py-1.5 absolute bottom-3 left-1/2 -translate-x-1/2">View in AR</button>' : ''}
+            </model-viewer>
+          </div>`;
+      }
+
+      const statsHtml = card.type === 'Character' ? `
+        <div class="flex items-center gap-4 mt-3 text-sm">
+          <span class="text-crimson-400 font-mono">ATK ${card.atk}</span>
+          <span class="text-blue-400 font-mono">DEF ${card.def}</span>
+          <span class="text-emerald-400 font-mono">HP ${card.hp}</span>
+        </div>` : '';
+
+      modalContent.innerHTML = `
+        <div class="h-56 bg-gradient-to-br ${card.gradient} flex items-center justify-center relative overflow-hidden rounded-t-xl">
+          ${card.image ? `<img src="${card.image}" alt="${card.name}" class="w-full h-full object-cover">` : `<div class="text-6xl">${card.icon}</div>`}
+        </div>
+        <div class="p-6">
+          <div class="flex items-center justify-between mb-1">
+            <h2 class="font-display text-2xl font-bold text-obsidian-100">${card.name}</h2>
+            <span class="text-xs font-mono text-obsidian-500">${card.id}</span>
+          </div>
+          <p class="text-sm text-obsidian-400">${card.house} &middot; ${card.element} &middot; ${card.rarity}</p>
+          ${statsHtml}
+          ${abilityHtml}
+          ${viewerHtml}
+          <p class="mt-4 text-sm text-obsidian-400 italic">"${card.quote}"</p>
+          <p class="mt-2 text-xs text-obsidian-500 leading-relaxed">${card.scene}</p>
+          <button class="mt-4 btn-secondary text-xs w-full" id="modal-add-to-deck">Add to Deck</button>
+        </div>`;
+
+      modal.classList.remove('hidden');
+
+      // Load model-viewer if needed
+      if (arModel) loadModelViewer();
+
+      // Add-to-deck button
+      document.getElementById('modal-add-to-deck')?.addEventListener('click', () => {
+        toggleCardInDeck(cardId);
+        closeModal();
+      });
+    }
+
+    function closeModal() {
+      modal.classList.add('hidden');
+      modalContent.innerHTML = '';
+    }
+
+    modalClose.addEventListener('click', closeModal);
+    modalBackdrop.addEventListener('click', closeModal);
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeModal();
+    });
+
+    // --- Deck Builder ---
+    const deckNameInput = document.getElementById('deck-name') as HTMLInputElement;
+    const saveDeckBtn = document.getElementById('save-deck-btn')!;
+    const clearDeckBtn = document.getElementById('clear-deck-btn')!;
+    const deckCharsEl = document.getElementById('deck-characters')!;
+    const deckRelicsEl = document.getElementById('deck-relics')!;
+    const deckPotionsEl = document.getElementById('deck-potions')!;
+    const charCountEl = document.getElementById('char-count')!;
+    const relicCountEl = document.getElementById('relic-count')!;
+    const potionCountEl = document.getElementById('potion-count')!;
+    const synergyPreview = document.getElementById('synergy-preview')!;
+    const synergyList = document.getElementById('synergy-list')!;
+    const deckErrorsEl = document.getElementById('deck-errors')!;
+    const savedDecksListEl = document.getElementById('saved-decks-list')!;
+
+    let currentDeck: Deck = { name: '', characters: [], relics: [], potions: [] };
+
+    function toggleCardInDeck(cardId: string) {
+      const card = getCardById(cardId);
+      if (!card) return;
+      const owned = getOwnedCardIds();
+      if (!owned.has(cardId)) return;
+
+      if (card.type === 'Character') {
+        const idx = currentDeck.characters.indexOf(cardId);
+        if (idx >= 0) {
+          currentDeck.characters.splice(idx, 1);
+        } else if (currentDeck.characters.length < DECK_RULES.maxCharacters) {
+          currentDeck.characters.push(cardId);
+        }
+      } else if (card.type === 'Relic') {
+        const idx = currentDeck.relics.indexOf(cardId);
+        if (idx >= 0) {
+          currentDeck.relics.splice(idx, 1);
+        } else if (currentDeck.relics.length < DECK_RULES.maxRelics) {
+          currentDeck.relics.push(cardId);
+        }
+      } else if (card.type === 'Potion') {
+        const idx = currentDeck.potions.indexOf(cardId);
+        if (idx >= 0) {
+          currentDeck.potions.splice(idx, 1);
+        } else if (currentDeck.potions.length < DECK_RULES.maxPotions) {
+          currentDeck.potions.push(cardId);
+        }
+      }
+
+      renderDeckSlots();
+    }
+
+    function renderDeckSlots() {
+      renderSlot(deckCharsEl, currentDeck.characters, 'Click owned characters to add');
+      renderSlot(deckRelicsEl, currentDeck.relics, 'Click owned relics to add');
+      renderSlot(deckPotionsEl, currentDeck.potions, 'Click owned potions to add');
+
+      charCountEl.textContent = `(${currentDeck.characters.length}/${DECK_RULES.maxCharacters})`;
+      relicCountEl.textContent = `(${currentDeck.relics.length}/${DECK_RULES.maxRelics})`;
+      potionCountEl.textContent = `(${currentDeck.potions.length}/${DECK_RULES.maxPotions})`;
+
+      // Synergy preview
+      const allIds = [...currentDeck.characters, ...currentDeck.relics, ...currentDeck.potions];
+      const synergies = getActiveSynergies(currentDeck.characters);
+      if (synergies.length > 0) {
+        synergyPreview.classList.remove('hidden');
+        synergyList.innerHTML = synergies.map(s =>
+          `<p class="text-xs text-obsidian-300"><span class="text-gold-400">&#10003;</span> ${s.description}</p>`
+        ).join('');
+      } else {
+        synergyPreview.classList.add('hidden');
+      }
+
+      // Highlight cards in grid that are in the deck
+      document.querySelectorAll('.card-item').forEach(el => {
+        const htmlEl = el as HTMLElement;
+        const id = htmlEl.dataset.id || '';
+        if (allIds.includes(id)) {
+          htmlEl.classList.add('ring-2', 'ring-gold-500/50');
+        } else {
+          htmlEl.classList.remove('ring-2', 'ring-gold-500/50');
+        }
+      });
+    }
+
+    function renderSlot(container: HTMLElement, cardIds: string[], placeholder: string) {
+      if (cardIds.length === 0) {
+        container.innerHTML = `<p class="deck-placeholder text-xs text-obsidian-600 text-center py-4">${placeholder}</p>`;
+        return;
+      }
+      container.innerHTML = cardIds.map(id => {
+        const card = getCardById(id);
+        if (!card) return '';
+        return `
+          <div class="flex items-center gap-2 p-2 rounded-lg bg-obsidian-800/50 border border-obsidian-700/50 group/slot cursor-pointer" data-remove-id="${id}">
+            ${card.image ? `<img src="${card.image}" alt="${card.name}" class="w-8 h-8 rounded object-cover">` : `<span class="text-lg">${card.icon}</span>`}
+            <span class="text-xs text-obsidian-200 flex-1">${card.name}</span>
+            <span class="text-xs text-obsidian-600 group-hover/slot:text-crimson-400 transition-colors">&times;</span>
+          </div>`;
+      }).join('');
+
+      container.querySelectorAll('[data-remove-id]').forEach(el => {
+        el.addEventListener('click', () => {
+          const removeId = (el as HTMLElement).dataset.removeId || '';
+          toggleCardInDeck(removeId);
+        });
+      });
+    }
+
+    saveDeckBtn.addEventListener('click', () => {
+      const name = deckNameInput.value.trim();
+      if (!name) {
+        showDeckError('Enter a deck name');
+        return;
+      }
+      currentDeck.name = name;
+      const result = saveDeck(currentDeck);
+      if (result.success) {
+        playSfx('ui-click');
+        deckErrorsEl.classList.add('hidden');
+        renderSavedDecks();
+      } else {
+        showDeckError(result.errors.join('. '));
+      }
+    });
+
+    clearDeckBtn.addEventListener('click', () => {
+      currentDeck = { name: '', characters: [], relics: [], potions: [] };
+      deckNameInput.value = '';
+      deckErrorsEl.classList.add('hidden');
+      renderDeckSlots();
+    });
+
+    function showDeckError(msg: string) {
+      deckErrorsEl.textContent = msg;
+      deckErrorsEl.classList.remove('hidden');
+    }
+
+    function renderSavedDecks() {
+      const decks = getSavedDecks();
+      const activeName = getActiveDeckName();
+      if (decks.length === 0) {
+        savedDecksListEl.innerHTML = '<p class="text-xs text-obsidian-600">No saved decks yet.</p>';
+        return;
+      }
+      savedDecksListEl.innerHTML = decks.map(d => {
+        const isActive = d.name === activeName;
+        const total = d.characters.length + d.relics.length + d.potions.length;
+        return `
+          <div class="flex items-center gap-3 p-3 card-glass ${isActive ? 'border-gold-500/30 bg-gold-500/5' : ''}">
+            <div class="flex-1 min-w-0">
+              <p class="text-sm font-display font-semibold text-obsidian-200 truncate">${d.name}</p>
+              <p class="text-xs text-obsidian-500">${d.characters.length} chars, ${d.relics.length} relics, ${d.potions.length} potions (${total} total)</p>
+            </div>
+            ${isActive ? '<span class="text-xs text-gold-400 font-semibold">ACTIVE</span>' : `<button class="deck-activate text-xs text-obsidian-400 hover:text-gold-400 border border-obsidian-700 rounded px-2 py-1" data-deck-name="${d.name}">Activate</button>`}
+            <button class="deck-load text-xs text-obsidian-400 hover:text-obsidian-200 border border-obsidian-700 rounded px-2 py-1" data-deck-name="${d.name}">Edit</button>
+            <button class="deck-delete text-xs text-obsidian-400 hover:text-crimson-400 border border-obsidian-700 rounded px-2 py-1" data-deck-name="${d.name}">&times;</button>
+          </div>`;
+      }).join('');
+
+      savedDecksListEl.querySelectorAll('.deck-activate').forEach(btn => {
+        btn.addEventListener('click', () => {
+          setActiveDeck((btn as HTMLElement).dataset.deckName || '');
+          renderSavedDecks();
+        });
+      });
+
+      savedDecksListEl.querySelectorAll('.deck-load').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const name = (btn as HTMLElement).dataset.deckName || '';
+          const deck = decks.find(d => d.name === name);
+          if (deck) {
+            currentDeck = { ...deck, characters: [...deck.characters], relics: [...deck.relics], potions: [...deck.potions] };
+            deckNameInput.value = deck.name;
+            renderDeckSlots();
+          }
+        });
+      });
+
+      savedDecksListEl.querySelectorAll('.deck-delete').forEach(btn => {
+        btn.addEventListener('click', () => {
+          deleteDeck((btn as HTMLElement).dataset.deckName || '');
+          renderSavedDecks();
+        });
+      });
+    }
+
+    // Enable deck-build mode — clicking cards adds/removes from deck
+    deckBuildMode = true;
+    renderDeckSlots();
+    renderSavedDecks();
   </script>
 </BaseLayout>
