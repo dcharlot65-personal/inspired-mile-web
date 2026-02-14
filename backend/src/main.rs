@@ -75,8 +75,18 @@ async fn main() {
             config.cors_origin.parse().unwrap_or_else(|_| "http://localhost:4321".parse().unwrap()),
         ))
         .allow_credentials(true)
-        .allow_headers(tower_http::cors::Any)
-        .allow_methods(tower_http::cors::Any);
+        .allow_headers([
+            axum::http::header::CONTENT_TYPE,
+            axum::http::header::AUTHORIZATION,
+            axum::http::header::ACCEPT,
+        ])
+        .allow_methods([
+            axum::http::Method::GET,
+            axum::http::Method::POST,
+            axum::http::Method::PUT,
+            axum::http::Method::DELETE,
+            axum::http::Method::OPTIONS,
+        ]);
 
     let app = Router::new()
         .nest("/api/v1", public_routes.merge(protected_routes))

@@ -68,9 +68,10 @@ jobs:
             set -e
             cd /Volumes/DataVolume/inspired-mile-web/backend
             cargo build --release 2>&1
-            launchctl bootout gui/$(id -u) /Library/LaunchAgents/com.inspiredmile.api.plist 2>/dev/null || true
+            sudo launchctl unload /Library/LaunchDaemons/com.inspiredmile.api.plist 2>/dev/null || true
+            pkill -f inspired-mile-api 2>/dev/null || true
             sleep 1
-            launchctl bootstrap gui/$(id -u) /Library/LaunchAgents/com.inspiredmile.api.plist
+            sudo launchctl load /Library/LaunchDaemons/com.inspiredmile.api.plist
           "'
 
       - name: Health check
