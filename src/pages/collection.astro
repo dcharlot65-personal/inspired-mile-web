@@ -110,6 +110,29 @@ import { CARD_CATALOG, RARITY_COLORS } from '../lib/cards';
     </div>
   </section>
 
+  <!-- World Cards Section -->
+  <section class="px-4 sm:px-6 lg:px-8 pb-12">
+    <div class="max-w-7xl mx-auto">
+      <div class="border-t border-obsidian-800/50 pt-12">
+        <h2 class="text-2xl sm:text-3xl font-display font-bold text-center mb-2">
+          <span class="text-gradient">World Cards</span>
+        </h2>
+        <p class="text-obsidian-400 text-center text-sm mb-2">
+          Your characters travel the globe. Win battles and ace trivia to unlock city variants.
+        </p>
+        <p class="text-sm text-obsidian-500 text-center mb-8">
+          <span id="variant-count" class="text-gold-400 font-mono">0</span> variants unlocked
+          &middot;
+          <span id="city-count" class="text-gold-400 font-mono">0</span> / 12 cities discovered
+        </p>
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4" id="city-grid">
+        </div>
+        <div id="variant-list" class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Achievements Section -->
   <section class="px-4 sm:px-6 lg:px-8 pb-24">
     <div class="max-w-7xl mx-auto">
@@ -127,6 +150,16 @@ import { CARD_CATALOG, RARITY_COLORS } from '../lib/cards';
 
   <script>
     import { getOwnedCardIds, getDuplicateCount } from '../lib/inventory';
+    import {
+      CITY_CATALOG,
+      getAllCities,
+      getOwnedVariants,
+      getUnlockedCities,
+      getVariantCount,
+      decodeVariantId,
+      getCityByCode,
+    } from '../lib/variants';
+    import { CARD_CATALOG } from '../lib/cards';
     import { initAudio, isInitialized, playMusic, playSfx } from '../lib/audio-manager';
 
     // Start browse music on first interaction
@@ -255,5 +288,76 @@ import { CARD_CATALOG, RARITY_COLORS } from '../lib/cards';
     }
 
     renderAchievements();
+
+    // --- World Cards ---
+    function renderWorldCards() {
+      const cities = getAllCities();
+      const unlockedCities = getUnlockedCities();
+      const owned = getOwnedVariants();
+      const variantCount = getVariantCount();
+
+      document.getElementById('variant-count')!.textContent = String(variantCount);
+      document.getElementById('city-count')!.textContent = String(unlockedCities.size);
+
+      // City grid
+      const cityGrid = document.getElementById('city-grid')!;
+      cityGrid.innerHTML = '';
+      for (const city of cities) {
+        const config = CITY_CATALOG[city];
+        const isUnlocked = unlockedCities.has(city);
+        const cityVariants = owned.filter(v => {
+          const d = decodeVariantId(v.variantId);
+          return d && getCityByCode(d.cityCode) === city;
+        });
+
+        const el = document.createElement('div');
+        el.className = `card-glass p-3 text-center transition-all ${isUnlocked ? 'border-gold-500/30' : 'opacity-50'}`;
+        el.innerHTML = `
+          <div class="text-2xl mb-1">${isUnlocked ? '&#127758;' : '&#128274;'}</div>
+          <p class="text-xs font-display font-semibold ${isUnlocked ? 'text-gold-400' : 'text-obsidian-500'}">${city}</p>
+          <p class="text-[10px] text-obsidian-500">${config.region}</p>
+          <p class="text-[10px] mt-1 ${isUnlocked ? 'text-emerald-400' : 'text-obsidian-600'}">${cityVariants.length} variant${cityVariants.length !== 1 ? 's' : ''}</p>
+          <p class="text-[10px] text-obsidian-600">+${config.ability.bonus} ${config.ability.axis}</p>
+        `;
+        cityGrid.appendChild(el);
+      }
+
+      // Variant list
+      const variantList = document.getElementById('variant-list')!;
+      variantList.innerHTML = '';
+      if (owned.length === 0) {
+        variantList.innerHTML = `
+          <div class="col-span-full text-center py-8">
+            <p class="text-obsidian-500 text-sm">No variants yet. Win 3 battles in a row or get a perfect trivia score to unlock your first World Card!</p>
+          </div>
+        `;
+        return;
+      }
+
+      for (const v of owned) {
+        const decoded = decodeVariantId(v.variantId);
+        if (!decoded) continue;
+        const city = getCityByCode(decoded.cityCode);
+        if (!city) continue;
+        const card = CARD_CATALOG.find(c => c.id === v.baseCardId);
+        if (!card) continue;
+        const config = CITY_CATALOG[city];
+
+        const el = document.createElement('div');
+        el.className = 'card-glass p-3 flex items-center gap-3';
+        el.innerHTML = `
+          ${card.image ? `<img src="${card.image}" alt="${card.name}" class="w-12 h-12 rounded object-cover">` : `<span class="text-2xl">${card.icon}</span>`}
+          <div class="flex-1 min-w-0">
+            <p class="text-sm font-display font-semibold text-obsidian-200 truncate">${card.name}</p>
+            <p class="text-xs text-gold-400">${city}</p>
+            <p class="text-[10px] text-obsidian-500">+${config.ability.bonus} ${config.ability.axis} &middot; ${config.attireOptions[decoded.attireIdx]?.replace(/-/g, ' ') || 'classic'}</p>
+          </div>
+          <div class="text-xs text-obsidian-500">${v.source.replace('-', ' ')}</div>
+        `;
+        variantList.appendChild(el);
+      }
+    }
+
+    renderWorldCards();
   </script>
 </BaseLayout>

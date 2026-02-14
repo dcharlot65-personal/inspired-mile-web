@@ -1,0 +1,3962 @@
+{
+  "version": "2.0",
+  "generatedAt": "2026-02-14T01:43:48.345Z",
+  "stats": {
+    "characters": 18,
+    "cities": 12,
+    "heroVariants": 216,
+    "totalCombinations": 20736
+  },
+  "cities": {
+    "Tokyo": {
+      "code": "TKY",
+      "region": "Asia",
+      "ability": {
+        "city": "Tokyo",
+        "axis": "wordplay",
+        "bonus": 2,
+        "name": "Neon Precision",
+        "description": "Tokyo's precision culture: +2 Wordplay"
+      },
+      "attireOptions": [
+        "streetwear",
+        "techwear",
+        "harajuku",
+        "formal-kimono"
+      ],
+      "hairstyleOptions": [
+        "top-knot",
+        "visual-kei",
+        "buzzcut",
+        "flowing"
+      ]
+    },
+    "Lagos": {
+      "code": "LGS",
+      "region": "West Africa",
+      "ability": {
+        "city": "Lagos",
+        "axis": "flow",
+        "bonus": 2,
+        "name": "Afrobeat Flow",
+        "description": "Lagos Afrobeats rhythm: +2 Flow"
+      },
+      "attireOptions": [
+        "afro-punk",
+        "agbada-modern",
+        "ankara-streetwear",
+        "lagos-tech"
+      ],
+      "hairstyleOptions": [
+        "natural-afro",
+        "braids",
+        "faded",
+        "locs"
+      ]
+    },
+    "Brooklyn": {
+      "code": "BKN",
+      "region": "North America",
+      "ability": {
+        "city": "Brooklyn",
+        "axis": "wit",
+        "bonus": 2,
+        "name": "Borough Boss",
+        "description": "NYC roast culture, battle rap birthplace: +2 Wit"
+      },
+      "attireOptions": [
+        "hip-hop-classic",
+        "brooklyn-streetwear",
+        "fitted-cap-era",
+        "artsy-williamsburg"
+      ],
+      "hairstyleOptions": [
+        "high-top-fade",
+        "cornrows",
+        "caesar",
+        "freeform-locs"
+      ]
+    },
+    "London": {
+      "code": "LDN",
+      "region": "Europe",
+      "ability": {
+        "city": "London",
+        "axis": "shakespeare",
+        "bonus": 2,
+        "name": "Bard's Home Turf",
+        "description": "Home of Shakespeare: +2 Shakespeare"
+      },
+      "attireOptions": [
+        "grime-streetwear",
+        "savile-row-modern",
+        "punk-heritage",
+        "tracksuit-uk"
+      ],
+      "hairstyleOptions": [
+        "skin-fade",
+        "textured-crop",
+        "dreadlocks",
+        "slicked-back"
+      ]
+    },
+    "Mumbai": {
+      "code": "MUM",
+      "region": "South Asia",
+      "ability": {
+        "city": "Mumbai",
+        "axis": "flow",
+        "bonus": 2,
+        "name": "Bollywood Rhythm",
+        "description": "Mumbai's poetic traditions: +2 Flow"
+      },
+      "attireOptions": [
+        "gully-streetwear",
+        "kurta-modern",
+        "bollywood-glam",
+        "mumbai-tech"
+      ],
+      "hairstyleOptions": [
+        "undercut",
+        "wavy-medium",
+        "buzz-pattern",
+        "long-flowing"
+      ]
+    },
+    "Paris": {
+      "code": "PAR",
+      "region": "Europe",
+      "ability": {
+        "city": "Paris",
+        "axis": "wordplay",
+        "bonus": 2,
+        "name": "Haute Verse",
+        "description": "French literary tradition: +2 Wordplay"
+      },
+      "attireOptions": [
+        "haute-streetwear",
+        "parisian-chic",
+        "banlieue-style",
+        "avant-garde"
+      ],
+      "hairstyleOptions": [
+        "french-crop",
+        "messy-curls",
+        "shaved-sides",
+        "afro-parisian"
+      ]
+    },
+    "Sao Paulo": {
+      "code": "SAO",
+      "region": "South America",
+      "ability": {
+        "city": "Sao Paulo",
+        "axis": "wit",
+        "bonus": 2,
+        "name": "Favela Fire",
+        "description": "Brazilian humor and improv: +2 Wit"
+      },
+      "attireOptions": [
+        "favela-streetwear",
+        "carnival-inspired",
+        "brazilian-skate",
+        "tropical-formal"
+      ],
+      "hairstyleOptions": [
+        "tight-curls",
+        "mohawk",
+        "braided-back",
+        "natural-volume"
+      ]
+    },
+    "Seoul": {
+      "code": "SEO",
+      "region": "East Asia",
+      "ability": {
+        "city": "Seoul",
+        "axis": "flow",
+        "bonus": 2,
+        "name": "K-Wave Cadence",
+        "description": "K-pop precision and rap scene: +2 Flow"
+      },
+      "attireOptions": [
+        "k-streetwear",
+        "idol-stage",
+        "hanbok-modern",
+        "seoul-techwear"
+      ],
+      "hairstyleOptions": [
+        "two-block",
+        "dyed-platinum",
+        "comma-hair",
+        "mullet-modern"
+      ]
+    },
+    "Nairobi": {
+      "code": "NRB",
+      "region": "East Africa",
+      "ability": {
+        "city": "Nairobi",
+        "axis": "shakespeare",
+        "bonus": 2,
+        "name": "Storyteller's Gift",
+        "description": "East African oral storytelling tradition: +2 Shakespeare"
+      },
+      "attireOptions": [
+        "nairobi-streetwear",
+        "maasai-modern",
+        "afro-futurism",
+        "safari-chic"
+      ],
+      "hairstyleOptions": [
+        "short-natural",
+        "bantu-knots",
+        "sisterlocks",
+        "tapered-fade"
+      ]
+    },
+    "Berlin": {
+      "code": "BER",
+      "region": "Europe",
+      "ability": {
+        "city": "Berlin",
+        "axis": "wit",
+        "bonus": 2,
+        "name": "Cabaret Edge",
+        "description": "Berlin cabaret tradition and dry humor: +2 Wit"
+      },
+      "attireOptions": [
+        "techno-streetwear",
+        "brutalist-fashion",
+        "berlin-punk",
+        "minimalist-german"
+      ],
+      "hairstyleOptions": [
+        "industrial-buzz",
+        "asymmetric-cut",
+        "bleached-spikes",
+        "long-straight"
+      ]
+    },
+    "Mexico City": {
+      "code": "MEX",
+      "region": "Central America",
+      "ability": {
+        "city": "Mexico City",
+        "axis": "wordplay",
+        "bonus": 2,
+        "name": "Corrido Craft",
+        "description": "Mexican poetic tradition: +2 Wordplay"
+      },
+      "attireOptions": [
+        "cdmx-streetwear",
+        "lucha-inspired",
+        "charro-modern",
+        "muralism-fashion"
+      ],
+      "hairstyleOptions": [
+        "slicked-pompadour",
+        "curly-fringe",
+        "shaved-design",
+        "long-braided"
+      ]
+    },
+    "Cairo": {
+      "code": "CAI",
+      "region": "North Africa",
+      "ability": {
+        "city": "Cairo",
+        "axis": "shakespeare",
+        "bonus": 2,
+        "name": "Scribe's Wisdom",
+        "description": "Ancient literary tradition: +2 Shakespeare"
+      },
+      "attireOptions": [
+        "cairo-streetwear",
+        "pharaonic-modern",
+        "desert-tech",
+        "arabic-formal"
+      ],
+      "hairstyleOptions": [
+        "close-crop",
+        "textured-waves",
+        "headwrap-style",
+        "natural-thick"
+      ]
+    }
+  },
+  "heroVariants": [
+    {
+      "variantId": "SM-001-TKY-00-00-02",
+      "baseCardId": "SM-001",
+      "city": "Tokyo",
+      "attire": "streetwear",
+      "hairstyle": "top-knot",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Tokyo",
+        "axis": "wordplay",
+        "bonus": 2,
+        "name": "Neon Precision",
+        "description": "Tokyo's precision culture: +2 Wordplay"
+      },
+      "scene": "Neon-lit Shibuya crossing at night, towering LED screens, rain-slicked streets. The Sonnet Man from Shakespeare, reimagined in modern hip-hop style. Wearing streetwear clothing, top knot hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/SM-001-TKY-00-00-02.webp"
+    },
+    {
+      "variantId": "SM-001-LGS-00-00-02",
+      "baseCardId": "SM-001",
+      "city": "Lagos",
+      "attire": "afro-punk",
+      "hairstyle": "natural-afro",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Lagos",
+        "axis": "flow",
+        "bonus": 2,
+        "name": "Afrobeat Flow",
+        "description": "Lagos Afrobeats rhythm: +2 Flow"
+      },
+      "scene": "Vibrant Lagos market street at golden hour, colorful murals, bustling energy. The Sonnet Man from Shakespeare, reimagined in modern hip-hop style. Wearing afro punk clothing, natural afro hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/SM-001-LGS-00-00-02.webp"
+    },
+    {
+      "variantId": "SM-001-BKN-00-00-02",
+      "baseCardId": "SM-001",
+      "city": "Brooklyn",
+      "attire": "hip-hop-classic",
+      "hairstyle": "high-top-fade",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Brooklyn",
+        "axis": "wit",
+        "bonus": 2,
+        "name": "Borough Boss",
+        "description": "NYC roast culture, battle rap birthplace: +2 Wit"
+      },
+      "scene": "Brooklyn rooftop at sunset, Manhattan skyline behind, graffiti-covered water towers. The Sonnet Man from Shakespeare, reimagined in modern hip-hop style. Wearing hip hop classic clothing, high top fade hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/SM-001-BKN-00-00-02.webp"
+    },
+    {
+      "variantId": "SM-001-LDN-00-00-02",
+      "baseCardId": "SM-001",
+      "city": "London",
+      "attire": "grime-streetwear",
+      "hairstyle": "skin-fade",
+      "skinTone": "medium",
+      "ability": {
+        "city": "London",
+        "axis": "shakespeare",
+        "bonus": 2,
+        "name": "Bard's Home Turf",
+        "description": "Home of Shakespeare: +2 Shakespeare"
+      },
+      "scene": "Moody London alley near the Globe Theatre, fog and neon, brick and steel. The Sonnet Man from Shakespeare, reimagined in modern hip-hop style. Wearing grime streetwear clothing, skin fade hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/SM-001-LDN-00-00-02.webp"
+    },
+    {
+      "variantId": "SM-001-MUM-00-00-02",
+      "baseCardId": "SM-001",
+      "city": "Mumbai",
+      "attire": "gully-streetwear",
+      "hairstyle": "undercut",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Mumbai",
+        "axis": "flow",
+        "bonus": 2,
+        "name": "Bollywood Rhythm",
+        "description": "Mumbai's poetic traditions: +2 Flow"
+      },
+      "scene": "Neon-lit Mumbai street at night, auto-rickshaws, Dharavi art meets Bollywood glamour. The Sonnet Man from Shakespeare, reimagined in modern hip-hop style. Wearing gully streetwear clothing, undercut hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/SM-001-MUM-00-00-02.webp"
+    },
+    {
+      "variantId": "SM-001-PAR-00-00-02",
+      "baseCardId": "SM-001",
+      "city": "Paris",
+      "attire": "haute-streetwear",
+      "hairstyle": "french-crop",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Paris",
+        "axis": "wordplay",
+        "bonus": 2,
+        "name": "Haute Verse",
+        "description": "French literary tradition: +2 Wordplay"
+      },
+      "scene": "Parisian rooftop overlooking the Eiffel Tower at dusk, street art and high fashion. The Sonnet Man from Shakespeare, reimagined in modern hip-hop style. Wearing haute streetwear clothing, french crop hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/SM-001-PAR-00-00-02.webp"
+    },
+    {
+      "variantId": "SM-001-SAO-00-00-02",
+      "baseCardId": "SM-001",
+      "city": "Sao Paulo",
+      "attire": "favela-streetwear",
+      "hairstyle": "tight-curls",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Sao Paulo",
+        "axis": "wit",
+        "bonus": 2,
+        "name": "Favela Fire",
+        "description": "Brazilian humor and improv: +2 Wit"
+      },
+      "scene": "Sao Paulo street corner, vivid graffiti murals, tropical trees meeting concrete. The Sonnet Man from Shakespeare, reimagined in modern hip-hop style. Wearing favela streetwear clothing, tight curls hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/SM-001-SAO-00-00-02.webp"
+    },
+    {
+      "variantId": "SM-001-SEO-00-00-02",
+      "baseCardId": "SM-001",
+      "city": "Seoul",
+      "attire": "k-streetwear",
+      "hairstyle": "two-block",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Seoul",
+        "axis": "flow",
+        "bonus": 2,
+        "name": "K-Wave Cadence",
+        "description": "K-pop precision and rap scene: +2 Flow"
+      },
+      "scene": "Neon Seoul district at night, K-pop billboards, cherry blossoms meet cyberpunk. The Sonnet Man from Shakespeare, reimagined in modern hip-hop style. Wearing k streetwear clothing, two block hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/SM-001-SEO-00-00-02.webp"
+    },
+    {
+      "variantId": "SM-001-NRB-00-00-02",
+      "baseCardId": "SM-001",
+      "city": "Nairobi",
+      "attire": "nairobi-streetwear",
+      "hairstyle": "short-natural",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Nairobi",
+        "axis": "shakespeare",
+        "bonus": 2,
+        "name": "Storyteller's Gift",
+        "description": "East African oral storytelling tradition: +2 Shakespeare"
+      },
+      "scene": "Nairobi skyline at golden hour, acacia trees, modern glass towers meet red earth. The Sonnet Man from Shakespeare, reimagined in modern hip-hop style. Wearing nairobi streetwear clothing, short natural hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/SM-001-NRB-00-00-02.webp"
+    },
+    {
+      "variantId": "SM-001-BER-00-00-02",
+      "baseCardId": "SM-001",
+      "city": "Berlin",
+      "attire": "techno-streetwear",
+      "hairstyle": "industrial-buzz",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Berlin",
+        "axis": "wit",
+        "bonus": 2,
+        "name": "Cabaret Edge",
+        "description": "Berlin cabaret tradition and dry humor: +2 Wit"
+      },
+      "scene": "Berlin warehouse district, industrial art, concrete and neon, the Wall in the background. The Sonnet Man from Shakespeare, reimagined in modern hip-hop style. Wearing techno streetwear clothing, industrial buzz hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/SM-001-BER-00-00-02.webp"
+    },
+    {
+      "variantId": "SM-001-MEX-00-00-02",
+      "baseCardId": "SM-001",
+      "city": "Mexico City",
+      "attire": "cdmx-streetwear",
+      "hairstyle": "slicked-pompadour",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Mexico City",
+        "axis": "wordplay",
+        "bonus": 2,
+        "name": "Corrido Craft",
+        "description": "Mexican poetic tradition: +2 Wordplay"
+      },
+      "scene": "Mexico City zocalo at twilight, Day of the Dead murals, colonial meets modern. The Sonnet Man from Shakespeare, reimagined in modern hip-hop style. Wearing cdmx streetwear clothing, slicked pompadour hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/SM-001-MEX-00-00-02.webp"
+    },
+    {
+      "variantId": "SM-001-CAI-00-00-02",
+      "baseCardId": "SM-001",
+      "city": "Cairo",
+      "attire": "cairo-streetwear",
+      "hairstyle": "close-crop",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Cairo",
+        "axis": "shakespeare",
+        "bonus": 2,
+        "name": "Scribe's Wisdom",
+        "description": "Ancient literary tradition: +2 Shakespeare"
+      },
+      "scene": "Cairo at dusk, pyramids in the distance, bustling modern streets, golden sand tones. The Sonnet Man from Shakespeare, reimagined in modern hip-hop style. Wearing cairo streetwear clothing, close crop hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/SM-001-CAI-00-00-02.webp"
+    },
+    {
+      "variantId": "MO-001-TKY-00-00-02",
+      "baseCardId": "MO-001",
+      "city": "Tokyo",
+      "attire": "streetwear",
+      "hairstyle": "top-knot",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Tokyo",
+        "axis": "wordplay",
+        "bonus": 2,
+        "name": "Neon Precision",
+        "description": "Tokyo's precision culture: +2 Wordplay"
+      },
+      "scene": "Neon-lit Shibuya crossing at night, towering LED screens, rain-slicked streets. Romeo from Shakespeare, reimagined in modern hip-hop style. Wearing streetwear clothing, top knot hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/MO-001-TKY-00-00-02.webp"
+    },
+    {
+      "variantId": "MO-001-LGS-00-00-02",
+      "baseCardId": "MO-001",
+      "city": "Lagos",
+      "attire": "afro-punk",
+      "hairstyle": "natural-afro",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Lagos",
+        "axis": "flow",
+        "bonus": 2,
+        "name": "Afrobeat Flow",
+        "description": "Lagos Afrobeats rhythm: +2 Flow"
+      },
+      "scene": "Vibrant Lagos market street at golden hour, colorful murals, bustling energy. Romeo from Shakespeare, reimagined in modern hip-hop style. Wearing afro punk clothing, natural afro hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/MO-001-LGS-00-00-02.webp"
+    },
+    {
+      "variantId": "MO-001-BKN-00-00-02",
+      "baseCardId": "MO-001",
+      "city": "Brooklyn",
+      "attire": "hip-hop-classic",
+      "hairstyle": "high-top-fade",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Brooklyn",
+        "axis": "wit",
+        "bonus": 2,
+        "name": "Borough Boss",
+        "description": "NYC roast culture, battle rap birthplace: +2 Wit"
+      },
+      "scene": "Brooklyn rooftop at sunset, Manhattan skyline behind, graffiti-covered water towers. Romeo from Shakespeare, reimagined in modern hip-hop style. Wearing hip hop classic clothing, high top fade hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/MO-001-BKN-00-00-02.webp"
+    },
+    {
+      "variantId": "MO-001-LDN-00-00-02",
+      "baseCardId": "MO-001",
+      "city": "London",
+      "attire": "grime-streetwear",
+      "hairstyle": "skin-fade",
+      "skinTone": "medium",
+      "ability": {
+        "city": "London",
+        "axis": "shakespeare",
+        "bonus": 2,
+        "name": "Bard's Home Turf",
+        "description": "Home of Shakespeare: +2 Shakespeare"
+      },
+      "scene": "Moody London alley near the Globe Theatre, fog and neon, brick and steel. Romeo from Shakespeare, reimagined in modern hip-hop style. Wearing grime streetwear clothing, skin fade hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/MO-001-LDN-00-00-02.webp"
+    },
+    {
+      "variantId": "MO-001-MUM-00-00-02",
+      "baseCardId": "MO-001",
+      "city": "Mumbai",
+      "attire": "gully-streetwear",
+      "hairstyle": "undercut",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Mumbai",
+        "axis": "flow",
+        "bonus": 2,
+        "name": "Bollywood Rhythm",
+        "description": "Mumbai's poetic traditions: +2 Flow"
+      },
+      "scene": "Neon-lit Mumbai street at night, auto-rickshaws, Dharavi art meets Bollywood glamour. Romeo from Shakespeare, reimagined in modern hip-hop style. Wearing gully streetwear clothing, undercut hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/MO-001-MUM-00-00-02.webp"
+    },
+    {
+      "variantId": "MO-001-PAR-00-00-02",
+      "baseCardId": "MO-001",
+      "city": "Paris",
+      "attire": "haute-streetwear",
+      "hairstyle": "french-crop",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Paris",
+        "axis": "wordplay",
+        "bonus": 2,
+        "name": "Haute Verse",
+        "description": "French literary tradition: +2 Wordplay"
+      },
+      "scene": "Parisian rooftop overlooking the Eiffel Tower at dusk, street art and high fashion. Romeo from Shakespeare, reimagined in modern hip-hop style. Wearing haute streetwear clothing, french crop hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/MO-001-PAR-00-00-02.webp"
+    },
+    {
+      "variantId": "MO-001-SAO-00-00-02",
+      "baseCardId": "MO-001",
+      "city": "Sao Paulo",
+      "attire": "favela-streetwear",
+      "hairstyle": "tight-curls",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Sao Paulo",
+        "axis": "wit",
+        "bonus": 2,
+        "name": "Favela Fire",
+        "description": "Brazilian humor and improv: +2 Wit"
+      },
+      "scene": "Sao Paulo street corner, vivid graffiti murals, tropical trees meeting concrete. Romeo from Shakespeare, reimagined in modern hip-hop style. Wearing favela streetwear clothing, tight curls hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/MO-001-SAO-00-00-02.webp"
+    },
+    {
+      "variantId": "MO-001-SEO-00-00-02",
+      "baseCardId": "MO-001",
+      "city": "Seoul",
+      "attire": "k-streetwear",
+      "hairstyle": "two-block",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Seoul",
+        "axis": "flow",
+        "bonus": 2,
+        "name": "K-Wave Cadence",
+        "description": "K-pop precision and rap scene: +2 Flow"
+      },
+      "scene": "Neon Seoul district at night, K-pop billboards, cherry blossoms meet cyberpunk. Romeo from Shakespeare, reimagined in modern hip-hop style. Wearing k streetwear clothing, two block hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/MO-001-SEO-00-00-02.webp"
+    },
+    {
+      "variantId": "MO-001-NRB-00-00-02",
+      "baseCardId": "MO-001",
+      "city": "Nairobi",
+      "attire": "nairobi-streetwear",
+      "hairstyle": "short-natural",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Nairobi",
+        "axis": "shakespeare",
+        "bonus": 2,
+        "name": "Storyteller's Gift",
+        "description": "East African oral storytelling tradition: +2 Shakespeare"
+      },
+      "scene": "Nairobi skyline at golden hour, acacia trees, modern glass towers meet red earth. Romeo from Shakespeare, reimagined in modern hip-hop style. Wearing nairobi streetwear clothing, short natural hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/MO-001-NRB-00-00-02.webp"
+    },
+    {
+      "variantId": "MO-001-BER-00-00-02",
+      "baseCardId": "MO-001",
+      "city": "Berlin",
+      "attire": "techno-streetwear",
+      "hairstyle": "industrial-buzz",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Berlin",
+        "axis": "wit",
+        "bonus": 2,
+        "name": "Cabaret Edge",
+        "description": "Berlin cabaret tradition and dry humor: +2 Wit"
+      },
+      "scene": "Berlin warehouse district, industrial art, concrete and neon, the Wall in the background. Romeo from Shakespeare, reimagined in modern hip-hop style. Wearing techno streetwear clothing, industrial buzz hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/MO-001-BER-00-00-02.webp"
+    },
+    {
+      "variantId": "MO-001-MEX-00-00-02",
+      "baseCardId": "MO-001",
+      "city": "Mexico City",
+      "attire": "cdmx-streetwear",
+      "hairstyle": "slicked-pompadour",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Mexico City",
+        "axis": "wordplay",
+        "bonus": 2,
+        "name": "Corrido Craft",
+        "description": "Mexican poetic tradition: +2 Wordplay"
+      },
+      "scene": "Mexico City zocalo at twilight, Day of the Dead murals, colonial meets modern. Romeo from Shakespeare, reimagined in modern hip-hop style. Wearing cdmx streetwear clothing, slicked pompadour hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/MO-001-MEX-00-00-02.webp"
+    },
+    {
+      "variantId": "MO-001-CAI-00-00-02",
+      "baseCardId": "MO-001",
+      "city": "Cairo",
+      "attire": "cairo-streetwear",
+      "hairstyle": "close-crop",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Cairo",
+        "axis": "shakespeare",
+        "bonus": 2,
+        "name": "Scribe's Wisdom",
+        "description": "Ancient literary tradition: +2 Shakespeare"
+      },
+      "scene": "Cairo at dusk, pyramids in the distance, bustling modern streets, golden sand tones. Romeo from Shakespeare, reimagined in modern hip-hop style. Wearing cairo streetwear clothing, close crop hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/MO-001-CAI-00-00-02.webp"
+    },
+    {
+      "variantId": "CA-001-TKY-00-00-02",
+      "baseCardId": "CA-001",
+      "city": "Tokyo",
+      "attire": "streetwear",
+      "hairstyle": "top-knot",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Tokyo",
+        "axis": "wordplay",
+        "bonus": 2,
+        "name": "Neon Precision",
+        "description": "Tokyo's precision culture: +2 Wordplay"
+      },
+      "scene": "Neon-lit Shibuya crossing at night, towering LED screens, rain-slicked streets. Juliet from Shakespeare, reimagined in modern hip-hop style. Wearing streetwear clothing, top knot hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/CA-001-TKY-00-00-02.webp"
+    },
+    {
+      "variantId": "CA-001-LGS-00-00-02",
+      "baseCardId": "CA-001",
+      "city": "Lagos",
+      "attire": "afro-punk",
+      "hairstyle": "natural-afro",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Lagos",
+        "axis": "flow",
+        "bonus": 2,
+        "name": "Afrobeat Flow",
+        "description": "Lagos Afrobeats rhythm: +2 Flow"
+      },
+      "scene": "Vibrant Lagos market street at golden hour, colorful murals, bustling energy. Juliet from Shakespeare, reimagined in modern hip-hop style. Wearing afro punk clothing, natural afro hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/CA-001-LGS-00-00-02.webp"
+    },
+    {
+      "variantId": "CA-001-BKN-00-00-02",
+      "baseCardId": "CA-001",
+      "city": "Brooklyn",
+      "attire": "hip-hop-classic",
+      "hairstyle": "high-top-fade",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Brooklyn",
+        "axis": "wit",
+        "bonus": 2,
+        "name": "Borough Boss",
+        "description": "NYC roast culture, battle rap birthplace: +2 Wit"
+      },
+      "scene": "Brooklyn rooftop at sunset, Manhattan skyline behind, graffiti-covered water towers. Juliet from Shakespeare, reimagined in modern hip-hop style. Wearing hip hop classic clothing, high top fade hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/CA-001-BKN-00-00-02.webp"
+    },
+    {
+      "variantId": "CA-001-LDN-00-00-02",
+      "baseCardId": "CA-001",
+      "city": "London",
+      "attire": "grime-streetwear",
+      "hairstyle": "skin-fade",
+      "skinTone": "medium",
+      "ability": {
+        "city": "London",
+        "axis": "shakespeare",
+        "bonus": 2,
+        "name": "Bard's Home Turf",
+        "description": "Home of Shakespeare: +2 Shakespeare"
+      },
+      "scene": "Moody London alley near the Globe Theatre, fog and neon, brick and steel. Juliet from Shakespeare, reimagined in modern hip-hop style. Wearing grime streetwear clothing, skin fade hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/CA-001-LDN-00-00-02.webp"
+    },
+    {
+      "variantId": "CA-001-MUM-00-00-02",
+      "baseCardId": "CA-001",
+      "city": "Mumbai",
+      "attire": "gully-streetwear",
+      "hairstyle": "undercut",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Mumbai",
+        "axis": "flow",
+        "bonus": 2,
+        "name": "Bollywood Rhythm",
+        "description": "Mumbai's poetic traditions: +2 Flow"
+      },
+      "scene": "Neon-lit Mumbai street at night, auto-rickshaws, Dharavi art meets Bollywood glamour. Juliet from Shakespeare, reimagined in modern hip-hop style. Wearing gully streetwear clothing, undercut hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/CA-001-MUM-00-00-02.webp"
+    },
+    {
+      "variantId": "CA-001-PAR-00-00-02",
+      "baseCardId": "CA-001",
+      "city": "Paris",
+      "attire": "haute-streetwear",
+      "hairstyle": "french-crop",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Paris",
+        "axis": "wordplay",
+        "bonus": 2,
+        "name": "Haute Verse",
+        "description": "French literary tradition: +2 Wordplay"
+      },
+      "scene": "Parisian rooftop overlooking the Eiffel Tower at dusk, street art and high fashion. Juliet from Shakespeare, reimagined in modern hip-hop style. Wearing haute streetwear clothing, french crop hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/CA-001-PAR-00-00-02.webp"
+    },
+    {
+      "variantId": "CA-001-SAO-00-00-02",
+      "baseCardId": "CA-001",
+      "city": "Sao Paulo",
+      "attire": "favela-streetwear",
+      "hairstyle": "tight-curls",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Sao Paulo",
+        "axis": "wit",
+        "bonus": 2,
+        "name": "Favela Fire",
+        "description": "Brazilian humor and improv: +2 Wit"
+      },
+      "scene": "Sao Paulo street corner, vivid graffiti murals, tropical trees meeting concrete. Juliet from Shakespeare, reimagined in modern hip-hop style. Wearing favela streetwear clothing, tight curls hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/CA-001-SAO-00-00-02.webp"
+    },
+    {
+      "variantId": "CA-001-SEO-00-00-02",
+      "baseCardId": "CA-001",
+      "city": "Seoul",
+      "attire": "k-streetwear",
+      "hairstyle": "two-block",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Seoul",
+        "axis": "flow",
+        "bonus": 2,
+        "name": "K-Wave Cadence",
+        "description": "K-pop precision and rap scene: +2 Flow"
+      },
+      "scene": "Neon Seoul district at night, K-pop billboards, cherry blossoms meet cyberpunk. Juliet from Shakespeare, reimagined in modern hip-hop style. Wearing k streetwear clothing, two block hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/CA-001-SEO-00-00-02.webp"
+    },
+    {
+      "variantId": "CA-001-NRB-00-00-02",
+      "baseCardId": "CA-001",
+      "city": "Nairobi",
+      "attire": "nairobi-streetwear",
+      "hairstyle": "short-natural",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Nairobi",
+        "axis": "shakespeare",
+        "bonus": 2,
+        "name": "Storyteller's Gift",
+        "description": "East African oral storytelling tradition: +2 Shakespeare"
+      },
+      "scene": "Nairobi skyline at golden hour, acacia trees, modern glass towers meet red earth. Juliet from Shakespeare, reimagined in modern hip-hop style. Wearing nairobi streetwear clothing, short natural hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/CA-001-NRB-00-00-02.webp"
+    },
+    {
+      "variantId": "CA-001-BER-00-00-02",
+      "baseCardId": "CA-001",
+      "city": "Berlin",
+      "attire": "techno-streetwear",
+      "hairstyle": "industrial-buzz",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Berlin",
+        "axis": "wit",
+        "bonus": 2,
+        "name": "Cabaret Edge",
+        "description": "Berlin cabaret tradition and dry humor: +2 Wit"
+      },
+      "scene": "Berlin warehouse district, industrial art, concrete and neon, the Wall in the background. Juliet from Shakespeare, reimagined in modern hip-hop style. Wearing techno streetwear clothing, industrial buzz hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/CA-001-BER-00-00-02.webp"
+    },
+    {
+      "variantId": "CA-001-MEX-00-00-02",
+      "baseCardId": "CA-001",
+      "city": "Mexico City",
+      "attire": "cdmx-streetwear",
+      "hairstyle": "slicked-pompadour",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Mexico City",
+        "axis": "wordplay",
+        "bonus": 2,
+        "name": "Corrido Craft",
+        "description": "Mexican poetic tradition: +2 Wordplay"
+      },
+      "scene": "Mexico City zocalo at twilight, Day of the Dead murals, colonial meets modern. Juliet from Shakespeare, reimagined in modern hip-hop style. Wearing cdmx streetwear clothing, slicked pompadour hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/CA-001-MEX-00-00-02.webp"
+    },
+    {
+      "variantId": "CA-001-CAI-00-00-02",
+      "baseCardId": "CA-001",
+      "city": "Cairo",
+      "attire": "cairo-streetwear",
+      "hairstyle": "close-crop",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Cairo",
+        "axis": "shakespeare",
+        "bonus": 2,
+        "name": "Scribe's Wisdom",
+        "description": "Ancient literary tradition: +2 Shakespeare"
+      },
+      "scene": "Cairo at dusk, pyramids in the distance, bustling modern streets, golden sand tones. Juliet from Shakespeare, reimagined in modern hip-hop style. Wearing cairo streetwear clothing, close crop hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/CA-001-CAI-00-00-02.webp"
+    },
+    {
+      "variantId": "DC-001-TKY-00-00-02",
+      "baseCardId": "DC-001",
+      "city": "Tokyo",
+      "attire": "streetwear",
+      "hairstyle": "top-knot",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Tokyo",
+        "axis": "wordplay",
+        "bonus": 2,
+        "name": "Neon Precision",
+        "description": "Tokyo's precision culture: +2 Wordplay"
+      },
+      "scene": "Neon-lit Shibuya crossing at night, towering LED screens, rain-slicked streets. Hamlet from Shakespeare, reimagined in modern hip-hop style. Wearing streetwear clothing, top knot hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/DC-001-TKY-00-00-02.webp"
+    },
+    {
+      "variantId": "DC-001-LGS-00-00-02",
+      "baseCardId": "DC-001",
+      "city": "Lagos",
+      "attire": "afro-punk",
+      "hairstyle": "natural-afro",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Lagos",
+        "axis": "flow",
+        "bonus": 2,
+        "name": "Afrobeat Flow",
+        "description": "Lagos Afrobeats rhythm: +2 Flow"
+      },
+      "scene": "Vibrant Lagos market street at golden hour, colorful murals, bustling energy. Hamlet from Shakespeare, reimagined in modern hip-hop style. Wearing afro punk clothing, natural afro hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/DC-001-LGS-00-00-02.webp"
+    },
+    {
+      "variantId": "DC-001-BKN-00-00-02",
+      "baseCardId": "DC-001",
+      "city": "Brooklyn",
+      "attire": "hip-hop-classic",
+      "hairstyle": "high-top-fade",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Brooklyn",
+        "axis": "wit",
+        "bonus": 2,
+        "name": "Borough Boss",
+        "description": "NYC roast culture, battle rap birthplace: +2 Wit"
+      },
+      "scene": "Brooklyn rooftop at sunset, Manhattan skyline behind, graffiti-covered water towers. Hamlet from Shakespeare, reimagined in modern hip-hop style. Wearing hip hop classic clothing, high top fade hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/DC-001-BKN-00-00-02.webp"
+    },
+    {
+      "variantId": "DC-001-LDN-00-00-02",
+      "baseCardId": "DC-001",
+      "city": "London",
+      "attire": "grime-streetwear",
+      "hairstyle": "skin-fade",
+      "skinTone": "medium",
+      "ability": {
+        "city": "London",
+        "axis": "shakespeare",
+        "bonus": 2,
+        "name": "Bard's Home Turf",
+        "description": "Home of Shakespeare: +2 Shakespeare"
+      },
+      "scene": "Moody London alley near the Globe Theatre, fog and neon, brick and steel. Hamlet from Shakespeare, reimagined in modern hip-hop style. Wearing grime streetwear clothing, skin fade hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/DC-001-LDN-00-00-02.webp"
+    },
+    {
+      "variantId": "DC-001-MUM-00-00-02",
+      "baseCardId": "DC-001",
+      "city": "Mumbai",
+      "attire": "gully-streetwear",
+      "hairstyle": "undercut",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Mumbai",
+        "axis": "flow",
+        "bonus": 2,
+        "name": "Bollywood Rhythm",
+        "description": "Mumbai's poetic traditions: +2 Flow"
+      },
+      "scene": "Neon-lit Mumbai street at night, auto-rickshaws, Dharavi art meets Bollywood glamour. Hamlet from Shakespeare, reimagined in modern hip-hop style. Wearing gully streetwear clothing, undercut hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/DC-001-MUM-00-00-02.webp"
+    },
+    {
+      "variantId": "DC-001-PAR-00-00-02",
+      "baseCardId": "DC-001",
+      "city": "Paris",
+      "attire": "haute-streetwear",
+      "hairstyle": "french-crop",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Paris",
+        "axis": "wordplay",
+        "bonus": 2,
+        "name": "Haute Verse",
+        "description": "French literary tradition: +2 Wordplay"
+      },
+      "scene": "Parisian rooftop overlooking the Eiffel Tower at dusk, street art and high fashion. Hamlet from Shakespeare, reimagined in modern hip-hop style. Wearing haute streetwear clothing, french crop hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/DC-001-PAR-00-00-02.webp"
+    },
+    {
+      "variantId": "DC-001-SAO-00-00-02",
+      "baseCardId": "DC-001",
+      "city": "Sao Paulo",
+      "attire": "favela-streetwear",
+      "hairstyle": "tight-curls",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Sao Paulo",
+        "axis": "wit",
+        "bonus": 2,
+        "name": "Favela Fire",
+        "description": "Brazilian humor and improv: +2 Wit"
+      },
+      "scene": "Sao Paulo street corner, vivid graffiti murals, tropical trees meeting concrete. Hamlet from Shakespeare, reimagined in modern hip-hop style. Wearing favela streetwear clothing, tight curls hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/DC-001-SAO-00-00-02.webp"
+    },
+    {
+      "variantId": "DC-001-SEO-00-00-02",
+      "baseCardId": "DC-001",
+      "city": "Seoul",
+      "attire": "k-streetwear",
+      "hairstyle": "two-block",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Seoul",
+        "axis": "flow",
+        "bonus": 2,
+        "name": "K-Wave Cadence",
+        "description": "K-pop precision and rap scene: +2 Flow"
+      },
+      "scene": "Neon Seoul district at night, K-pop billboards, cherry blossoms meet cyberpunk. Hamlet from Shakespeare, reimagined in modern hip-hop style. Wearing k streetwear clothing, two block hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/DC-001-SEO-00-00-02.webp"
+    },
+    {
+      "variantId": "DC-001-NRB-00-00-02",
+      "baseCardId": "DC-001",
+      "city": "Nairobi",
+      "attire": "nairobi-streetwear",
+      "hairstyle": "short-natural",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Nairobi",
+        "axis": "shakespeare",
+        "bonus": 2,
+        "name": "Storyteller's Gift",
+        "description": "East African oral storytelling tradition: +2 Shakespeare"
+      },
+      "scene": "Nairobi skyline at golden hour, acacia trees, modern glass towers meet red earth. Hamlet from Shakespeare, reimagined in modern hip-hop style. Wearing nairobi streetwear clothing, short natural hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/DC-001-NRB-00-00-02.webp"
+    },
+    {
+      "variantId": "DC-001-BER-00-00-02",
+      "baseCardId": "DC-001",
+      "city": "Berlin",
+      "attire": "techno-streetwear",
+      "hairstyle": "industrial-buzz",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Berlin",
+        "axis": "wit",
+        "bonus": 2,
+        "name": "Cabaret Edge",
+        "description": "Berlin cabaret tradition and dry humor: +2 Wit"
+      },
+      "scene": "Berlin warehouse district, industrial art, concrete and neon, the Wall in the background. Hamlet from Shakespeare, reimagined in modern hip-hop style. Wearing techno streetwear clothing, industrial buzz hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/DC-001-BER-00-00-02.webp"
+    },
+    {
+      "variantId": "DC-001-MEX-00-00-02",
+      "baseCardId": "DC-001",
+      "city": "Mexico City",
+      "attire": "cdmx-streetwear",
+      "hairstyle": "slicked-pompadour",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Mexico City",
+        "axis": "wordplay",
+        "bonus": 2,
+        "name": "Corrido Craft",
+        "description": "Mexican poetic tradition: +2 Wordplay"
+      },
+      "scene": "Mexico City zocalo at twilight, Day of the Dead murals, colonial meets modern. Hamlet from Shakespeare, reimagined in modern hip-hop style. Wearing cdmx streetwear clothing, slicked pompadour hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/DC-001-MEX-00-00-02.webp"
+    },
+    {
+      "variantId": "DC-001-CAI-00-00-02",
+      "baseCardId": "DC-001",
+      "city": "Cairo",
+      "attire": "cairo-streetwear",
+      "hairstyle": "close-crop",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Cairo",
+        "axis": "shakespeare",
+        "bonus": 2,
+        "name": "Scribe's Wisdom",
+        "description": "Ancient literary tradition: +2 Shakespeare"
+      },
+      "scene": "Cairo at dusk, pyramids in the distance, bustling modern streets, golden sand tones. Hamlet from Shakespeare, reimagined in modern hip-hop style. Wearing cairo streetwear clothing, close crop hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/DC-001-CAI-00-00-02.webp"
+    },
+    {
+      "variantId": "DC-002-TKY-00-00-02",
+      "baseCardId": "DC-002",
+      "city": "Tokyo",
+      "attire": "streetwear",
+      "hairstyle": "top-knot",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Tokyo",
+        "axis": "wordplay",
+        "bonus": 2,
+        "name": "Neon Precision",
+        "description": "Tokyo's precision culture: +2 Wordplay"
+      },
+      "scene": "Neon-lit Shibuya crossing at night, towering LED screens, rain-slicked streets. Ophelia from Shakespeare, reimagined in modern hip-hop style. Wearing streetwear clothing, top knot hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/DC-002-TKY-00-00-02.webp"
+    },
+    {
+      "variantId": "DC-002-LGS-00-00-02",
+      "baseCardId": "DC-002",
+      "city": "Lagos",
+      "attire": "afro-punk",
+      "hairstyle": "natural-afro",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Lagos",
+        "axis": "flow",
+        "bonus": 2,
+        "name": "Afrobeat Flow",
+        "description": "Lagos Afrobeats rhythm: +2 Flow"
+      },
+      "scene": "Vibrant Lagos market street at golden hour, colorful murals, bustling energy. Ophelia from Shakespeare, reimagined in modern hip-hop style. Wearing afro punk clothing, natural afro hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/DC-002-LGS-00-00-02.webp"
+    },
+    {
+      "variantId": "DC-002-BKN-00-00-02",
+      "baseCardId": "DC-002",
+      "city": "Brooklyn",
+      "attire": "hip-hop-classic",
+      "hairstyle": "high-top-fade",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Brooklyn",
+        "axis": "wit",
+        "bonus": 2,
+        "name": "Borough Boss",
+        "description": "NYC roast culture, battle rap birthplace: +2 Wit"
+      },
+      "scene": "Brooklyn rooftop at sunset, Manhattan skyline behind, graffiti-covered water towers. Ophelia from Shakespeare, reimagined in modern hip-hop style. Wearing hip hop classic clothing, high top fade hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/DC-002-BKN-00-00-02.webp"
+    },
+    {
+      "variantId": "DC-002-LDN-00-00-02",
+      "baseCardId": "DC-002",
+      "city": "London",
+      "attire": "grime-streetwear",
+      "hairstyle": "skin-fade",
+      "skinTone": "medium",
+      "ability": {
+        "city": "London",
+        "axis": "shakespeare",
+        "bonus": 2,
+        "name": "Bard's Home Turf",
+        "description": "Home of Shakespeare: +2 Shakespeare"
+      },
+      "scene": "Moody London alley near the Globe Theatre, fog and neon, brick and steel. Ophelia from Shakespeare, reimagined in modern hip-hop style. Wearing grime streetwear clothing, skin fade hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/DC-002-LDN-00-00-02.webp"
+    },
+    {
+      "variantId": "DC-002-MUM-00-00-02",
+      "baseCardId": "DC-002",
+      "city": "Mumbai",
+      "attire": "gully-streetwear",
+      "hairstyle": "undercut",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Mumbai",
+        "axis": "flow",
+        "bonus": 2,
+        "name": "Bollywood Rhythm",
+        "description": "Mumbai's poetic traditions: +2 Flow"
+      },
+      "scene": "Neon-lit Mumbai street at night, auto-rickshaws, Dharavi art meets Bollywood glamour. Ophelia from Shakespeare, reimagined in modern hip-hop style. Wearing gully streetwear clothing, undercut hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/DC-002-MUM-00-00-02.webp"
+    },
+    {
+      "variantId": "DC-002-PAR-00-00-02",
+      "baseCardId": "DC-002",
+      "city": "Paris",
+      "attire": "haute-streetwear",
+      "hairstyle": "french-crop",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Paris",
+        "axis": "wordplay",
+        "bonus": 2,
+        "name": "Haute Verse",
+        "description": "French literary tradition: +2 Wordplay"
+      },
+      "scene": "Parisian rooftop overlooking the Eiffel Tower at dusk, street art and high fashion. Ophelia from Shakespeare, reimagined in modern hip-hop style. Wearing haute streetwear clothing, french crop hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/DC-002-PAR-00-00-02.webp"
+    },
+    {
+      "variantId": "DC-002-SAO-00-00-02",
+      "baseCardId": "DC-002",
+      "city": "Sao Paulo",
+      "attire": "favela-streetwear",
+      "hairstyle": "tight-curls",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Sao Paulo",
+        "axis": "wit",
+        "bonus": 2,
+        "name": "Favela Fire",
+        "description": "Brazilian humor and improv: +2 Wit"
+      },
+      "scene": "Sao Paulo street corner, vivid graffiti murals, tropical trees meeting concrete. Ophelia from Shakespeare, reimagined in modern hip-hop style. Wearing favela streetwear clothing, tight curls hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/DC-002-SAO-00-00-02.webp"
+    },
+    {
+      "variantId": "DC-002-SEO-00-00-02",
+      "baseCardId": "DC-002",
+      "city": "Seoul",
+      "attire": "k-streetwear",
+      "hairstyle": "two-block",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Seoul",
+        "axis": "flow",
+        "bonus": 2,
+        "name": "K-Wave Cadence",
+        "description": "K-pop precision and rap scene: +2 Flow"
+      },
+      "scene": "Neon Seoul district at night, K-pop billboards, cherry blossoms meet cyberpunk. Ophelia from Shakespeare, reimagined in modern hip-hop style. Wearing k streetwear clothing, two block hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/DC-002-SEO-00-00-02.webp"
+    },
+    {
+      "variantId": "DC-002-NRB-00-00-02",
+      "baseCardId": "DC-002",
+      "city": "Nairobi",
+      "attire": "nairobi-streetwear",
+      "hairstyle": "short-natural",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Nairobi",
+        "axis": "shakespeare",
+        "bonus": 2,
+        "name": "Storyteller's Gift",
+        "description": "East African oral storytelling tradition: +2 Shakespeare"
+      },
+      "scene": "Nairobi skyline at golden hour, acacia trees, modern glass towers meet red earth. Ophelia from Shakespeare, reimagined in modern hip-hop style. Wearing nairobi streetwear clothing, short natural hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/DC-002-NRB-00-00-02.webp"
+    },
+    {
+      "variantId": "DC-002-BER-00-00-02",
+      "baseCardId": "DC-002",
+      "city": "Berlin",
+      "attire": "techno-streetwear",
+      "hairstyle": "industrial-buzz",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Berlin",
+        "axis": "wit",
+        "bonus": 2,
+        "name": "Cabaret Edge",
+        "description": "Berlin cabaret tradition and dry humor: +2 Wit"
+      },
+      "scene": "Berlin warehouse district, industrial art, concrete and neon, the Wall in the background. Ophelia from Shakespeare, reimagined in modern hip-hop style. Wearing techno streetwear clothing, industrial buzz hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/DC-002-BER-00-00-02.webp"
+    },
+    {
+      "variantId": "DC-002-MEX-00-00-02",
+      "baseCardId": "DC-002",
+      "city": "Mexico City",
+      "attire": "cdmx-streetwear",
+      "hairstyle": "slicked-pompadour",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Mexico City",
+        "axis": "wordplay",
+        "bonus": 2,
+        "name": "Corrido Craft",
+        "description": "Mexican poetic tradition: +2 Wordplay"
+      },
+      "scene": "Mexico City zocalo at twilight, Day of the Dead murals, colonial meets modern. Ophelia from Shakespeare, reimagined in modern hip-hop style. Wearing cdmx streetwear clothing, slicked pompadour hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/DC-002-MEX-00-00-02.webp"
+    },
+    {
+      "variantId": "DC-002-CAI-00-00-02",
+      "baseCardId": "DC-002",
+      "city": "Cairo",
+      "attire": "cairo-streetwear",
+      "hairstyle": "close-crop",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Cairo",
+        "axis": "shakespeare",
+        "bonus": 2,
+        "name": "Scribe's Wisdom",
+        "description": "Ancient literary tradition: +2 Shakespeare"
+      },
+      "scene": "Cairo at dusk, pyramids in the distance, bustling modern streets, golden sand tones. Ophelia from Shakespeare, reimagined in modern hip-hop style. Wearing cairo streetwear clothing, close crop hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/DC-002-CAI-00-00-02.webp"
+    },
+    {
+      "variantId": "MO-002-TKY-00-00-02",
+      "baseCardId": "MO-002",
+      "city": "Tokyo",
+      "attire": "streetwear",
+      "hairstyle": "top-knot",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Tokyo",
+        "axis": "wordplay",
+        "bonus": 2,
+        "name": "Neon Precision",
+        "description": "Tokyo's precision culture: +2 Wordplay"
+      },
+      "scene": "Neon-lit Shibuya crossing at night, towering LED screens, rain-slicked streets. Mercutio from Shakespeare, reimagined in modern hip-hop style. Wearing streetwear clothing, top knot hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/MO-002-TKY-00-00-02.webp"
+    },
+    {
+      "variantId": "MO-002-LGS-00-00-02",
+      "baseCardId": "MO-002",
+      "city": "Lagos",
+      "attire": "afro-punk",
+      "hairstyle": "natural-afro",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Lagos",
+        "axis": "flow",
+        "bonus": 2,
+        "name": "Afrobeat Flow",
+        "description": "Lagos Afrobeats rhythm: +2 Flow"
+      },
+      "scene": "Vibrant Lagos market street at golden hour, colorful murals, bustling energy. Mercutio from Shakespeare, reimagined in modern hip-hop style. Wearing afro punk clothing, natural afro hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/MO-002-LGS-00-00-02.webp"
+    },
+    {
+      "variantId": "MO-002-BKN-00-00-02",
+      "baseCardId": "MO-002",
+      "city": "Brooklyn",
+      "attire": "hip-hop-classic",
+      "hairstyle": "high-top-fade",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Brooklyn",
+        "axis": "wit",
+        "bonus": 2,
+        "name": "Borough Boss",
+        "description": "NYC roast culture, battle rap birthplace: +2 Wit"
+      },
+      "scene": "Brooklyn rooftop at sunset, Manhattan skyline behind, graffiti-covered water towers. Mercutio from Shakespeare, reimagined in modern hip-hop style. Wearing hip hop classic clothing, high top fade hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/MO-002-BKN-00-00-02.webp"
+    },
+    {
+      "variantId": "MO-002-LDN-00-00-02",
+      "baseCardId": "MO-002",
+      "city": "London",
+      "attire": "grime-streetwear",
+      "hairstyle": "skin-fade",
+      "skinTone": "medium",
+      "ability": {
+        "city": "London",
+        "axis": "shakespeare",
+        "bonus": 2,
+        "name": "Bard's Home Turf",
+        "description": "Home of Shakespeare: +2 Shakespeare"
+      },
+      "scene": "Moody London alley near the Globe Theatre, fog and neon, brick and steel. Mercutio from Shakespeare, reimagined in modern hip-hop style. Wearing grime streetwear clothing, skin fade hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/MO-002-LDN-00-00-02.webp"
+    },
+    {
+      "variantId": "MO-002-MUM-00-00-02",
+      "baseCardId": "MO-002",
+      "city": "Mumbai",
+      "attire": "gully-streetwear",
+      "hairstyle": "undercut",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Mumbai",
+        "axis": "flow",
+        "bonus": 2,
+        "name": "Bollywood Rhythm",
+        "description": "Mumbai's poetic traditions: +2 Flow"
+      },
+      "scene": "Neon-lit Mumbai street at night, auto-rickshaws, Dharavi art meets Bollywood glamour. Mercutio from Shakespeare, reimagined in modern hip-hop style. Wearing gully streetwear clothing, undercut hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/MO-002-MUM-00-00-02.webp"
+    },
+    {
+      "variantId": "MO-002-PAR-00-00-02",
+      "baseCardId": "MO-002",
+      "city": "Paris",
+      "attire": "haute-streetwear",
+      "hairstyle": "french-crop",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Paris",
+        "axis": "wordplay",
+        "bonus": 2,
+        "name": "Haute Verse",
+        "description": "French literary tradition: +2 Wordplay"
+      },
+      "scene": "Parisian rooftop overlooking the Eiffel Tower at dusk, street art and high fashion. Mercutio from Shakespeare, reimagined in modern hip-hop style. Wearing haute streetwear clothing, french crop hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/MO-002-PAR-00-00-02.webp"
+    },
+    {
+      "variantId": "MO-002-SAO-00-00-02",
+      "baseCardId": "MO-002",
+      "city": "Sao Paulo",
+      "attire": "favela-streetwear",
+      "hairstyle": "tight-curls",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Sao Paulo",
+        "axis": "wit",
+        "bonus": 2,
+        "name": "Favela Fire",
+        "description": "Brazilian humor and improv: +2 Wit"
+      },
+      "scene": "Sao Paulo street corner, vivid graffiti murals, tropical trees meeting concrete. Mercutio from Shakespeare, reimagined in modern hip-hop style. Wearing favela streetwear clothing, tight curls hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/MO-002-SAO-00-00-02.webp"
+    },
+    {
+      "variantId": "MO-002-SEO-00-00-02",
+      "baseCardId": "MO-002",
+      "city": "Seoul",
+      "attire": "k-streetwear",
+      "hairstyle": "two-block",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Seoul",
+        "axis": "flow",
+        "bonus": 2,
+        "name": "K-Wave Cadence",
+        "description": "K-pop precision and rap scene: +2 Flow"
+      },
+      "scene": "Neon Seoul district at night, K-pop billboards, cherry blossoms meet cyberpunk. Mercutio from Shakespeare, reimagined in modern hip-hop style. Wearing k streetwear clothing, two block hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/MO-002-SEO-00-00-02.webp"
+    },
+    {
+      "variantId": "MO-002-NRB-00-00-02",
+      "baseCardId": "MO-002",
+      "city": "Nairobi",
+      "attire": "nairobi-streetwear",
+      "hairstyle": "short-natural",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Nairobi",
+        "axis": "shakespeare",
+        "bonus": 2,
+        "name": "Storyteller's Gift",
+        "description": "East African oral storytelling tradition: +2 Shakespeare"
+      },
+      "scene": "Nairobi skyline at golden hour, acacia trees, modern glass towers meet red earth. Mercutio from Shakespeare, reimagined in modern hip-hop style. Wearing nairobi streetwear clothing, short natural hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/MO-002-NRB-00-00-02.webp"
+    },
+    {
+      "variantId": "MO-002-BER-00-00-02",
+      "baseCardId": "MO-002",
+      "city": "Berlin",
+      "attire": "techno-streetwear",
+      "hairstyle": "industrial-buzz",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Berlin",
+        "axis": "wit",
+        "bonus": 2,
+        "name": "Cabaret Edge",
+        "description": "Berlin cabaret tradition and dry humor: +2 Wit"
+      },
+      "scene": "Berlin warehouse district, industrial art, concrete and neon, the Wall in the background. Mercutio from Shakespeare, reimagined in modern hip-hop style. Wearing techno streetwear clothing, industrial buzz hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/MO-002-BER-00-00-02.webp"
+    },
+    {
+      "variantId": "MO-002-MEX-00-00-02",
+      "baseCardId": "MO-002",
+      "city": "Mexico City",
+      "attire": "cdmx-streetwear",
+      "hairstyle": "slicked-pompadour",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Mexico City",
+        "axis": "wordplay",
+        "bonus": 2,
+        "name": "Corrido Craft",
+        "description": "Mexican poetic tradition: +2 Wordplay"
+      },
+      "scene": "Mexico City zocalo at twilight, Day of the Dead murals, colonial meets modern. Mercutio from Shakespeare, reimagined in modern hip-hop style. Wearing cdmx streetwear clothing, slicked pompadour hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/MO-002-MEX-00-00-02.webp"
+    },
+    {
+      "variantId": "MO-002-CAI-00-00-02",
+      "baseCardId": "MO-002",
+      "city": "Cairo",
+      "attire": "cairo-streetwear",
+      "hairstyle": "close-crop",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Cairo",
+        "axis": "shakespeare",
+        "bonus": 2,
+        "name": "Scribe's Wisdom",
+        "description": "Ancient literary tradition: +2 Shakespeare"
+      },
+      "scene": "Cairo at dusk, pyramids in the distance, bustling modern streets, golden sand tones. Mercutio from Shakespeare, reimagined in modern hip-hop style. Wearing cairo streetwear clothing, close crop hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/MO-002-CAI-00-00-02.webp"
+    },
+    {
+      "variantId": "FA-001-TKY-00-00-02",
+      "baseCardId": "FA-001",
+      "city": "Tokyo",
+      "attire": "streetwear",
+      "hairstyle": "top-knot",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Tokyo",
+        "axis": "wordplay",
+        "bonus": 2,
+        "name": "Neon Precision",
+        "description": "Tokyo's precision culture: +2 Wordplay"
+      },
+      "scene": "Neon-lit Shibuya crossing at night, towering LED screens, rain-slicked streets. Puck from Shakespeare, reimagined in modern hip-hop style. Wearing streetwear clothing, top knot hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/FA-001-TKY-00-00-02.webp"
+    },
+    {
+      "variantId": "FA-001-LGS-00-00-02",
+      "baseCardId": "FA-001",
+      "city": "Lagos",
+      "attire": "afro-punk",
+      "hairstyle": "natural-afro",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Lagos",
+        "axis": "flow",
+        "bonus": 2,
+        "name": "Afrobeat Flow",
+        "description": "Lagos Afrobeats rhythm: +2 Flow"
+      },
+      "scene": "Vibrant Lagos market street at golden hour, colorful murals, bustling energy. Puck from Shakespeare, reimagined in modern hip-hop style. Wearing afro punk clothing, natural afro hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/FA-001-LGS-00-00-02.webp"
+    },
+    {
+      "variantId": "FA-001-BKN-00-00-02",
+      "baseCardId": "FA-001",
+      "city": "Brooklyn",
+      "attire": "hip-hop-classic",
+      "hairstyle": "high-top-fade",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Brooklyn",
+        "axis": "wit",
+        "bonus": 2,
+        "name": "Borough Boss",
+        "description": "NYC roast culture, battle rap birthplace: +2 Wit"
+      },
+      "scene": "Brooklyn rooftop at sunset, Manhattan skyline behind, graffiti-covered water towers. Puck from Shakespeare, reimagined in modern hip-hop style. Wearing hip hop classic clothing, high top fade hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/FA-001-BKN-00-00-02.webp"
+    },
+    {
+      "variantId": "FA-001-LDN-00-00-02",
+      "baseCardId": "FA-001",
+      "city": "London",
+      "attire": "grime-streetwear",
+      "hairstyle": "skin-fade",
+      "skinTone": "medium",
+      "ability": {
+        "city": "London",
+        "axis": "shakespeare",
+        "bonus": 2,
+        "name": "Bard's Home Turf",
+        "description": "Home of Shakespeare: +2 Shakespeare"
+      },
+      "scene": "Moody London alley near the Globe Theatre, fog and neon, brick and steel. Puck from Shakespeare, reimagined in modern hip-hop style. Wearing grime streetwear clothing, skin fade hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/FA-001-LDN-00-00-02.webp"
+    },
+    {
+      "variantId": "FA-001-MUM-00-00-02",
+      "baseCardId": "FA-001",
+      "city": "Mumbai",
+      "attire": "gully-streetwear",
+      "hairstyle": "undercut",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Mumbai",
+        "axis": "flow",
+        "bonus": 2,
+        "name": "Bollywood Rhythm",
+        "description": "Mumbai's poetic traditions: +2 Flow"
+      },
+      "scene": "Neon-lit Mumbai street at night, auto-rickshaws, Dharavi art meets Bollywood glamour. Puck from Shakespeare, reimagined in modern hip-hop style. Wearing gully streetwear clothing, undercut hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/FA-001-MUM-00-00-02.webp"
+    },
+    {
+      "variantId": "FA-001-PAR-00-00-02",
+      "baseCardId": "FA-001",
+      "city": "Paris",
+      "attire": "haute-streetwear",
+      "hairstyle": "french-crop",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Paris",
+        "axis": "wordplay",
+        "bonus": 2,
+        "name": "Haute Verse",
+        "description": "French literary tradition: +2 Wordplay"
+      },
+      "scene": "Parisian rooftop overlooking the Eiffel Tower at dusk, street art and high fashion. Puck from Shakespeare, reimagined in modern hip-hop style. Wearing haute streetwear clothing, french crop hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/FA-001-PAR-00-00-02.webp"
+    },
+    {
+      "variantId": "FA-001-SAO-00-00-02",
+      "baseCardId": "FA-001",
+      "city": "Sao Paulo",
+      "attire": "favela-streetwear",
+      "hairstyle": "tight-curls",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Sao Paulo",
+        "axis": "wit",
+        "bonus": 2,
+        "name": "Favela Fire",
+        "description": "Brazilian humor and improv: +2 Wit"
+      },
+      "scene": "Sao Paulo street corner, vivid graffiti murals, tropical trees meeting concrete. Puck from Shakespeare, reimagined in modern hip-hop style. Wearing favela streetwear clothing, tight curls hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/FA-001-SAO-00-00-02.webp"
+    },
+    {
+      "variantId": "FA-001-SEO-00-00-02",
+      "baseCardId": "FA-001",
+      "city": "Seoul",
+      "attire": "k-streetwear",
+      "hairstyle": "two-block",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Seoul",
+        "axis": "flow",
+        "bonus": 2,
+        "name": "K-Wave Cadence",
+        "description": "K-pop precision and rap scene: +2 Flow"
+      },
+      "scene": "Neon Seoul district at night, K-pop billboards, cherry blossoms meet cyberpunk. Puck from Shakespeare, reimagined in modern hip-hop style. Wearing k streetwear clothing, two block hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/FA-001-SEO-00-00-02.webp"
+    },
+    {
+      "variantId": "FA-001-NRB-00-00-02",
+      "baseCardId": "FA-001",
+      "city": "Nairobi",
+      "attire": "nairobi-streetwear",
+      "hairstyle": "short-natural",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Nairobi",
+        "axis": "shakespeare",
+        "bonus": 2,
+        "name": "Storyteller's Gift",
+        "description": "East African oral storytelling tradition: +2 Shakespeare"
+      },
+      "scene": "Nairobi skyline at golden hour, acacia trees, modern glass towers meet red earth. Puck from Shakespeare, reimagined in modern hip-hop style. Wearing nairobi streetwear clothing, short natural hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/FA-001-NRB-00-00-02.webp"
+    },
+    {
+      "variantId": "FA-001-BER-00-00-02",
+      "baseCardId": "FA-001",
+      "city": "Berlin",
+      "attire": "techno-streetwear",
+      "hairstyle": "industrial-buzz",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Berlin",
+        "axis": "wit",
+        "bonus": 2,
+        "name": "Cabaret Edge",
+        "description": "Berlin cabaret tradition and dry humor: +2 Wit"
+      },
+      "scene": "Berlin warehouse district, industrial art, concrete and neon, the Wall in the background. Puck from Shakespeare, reimagined in modern hip-hop style. Wearing techno streetwear clothing, industrial buzz hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/FA-001-BER-00-00-02.webp"
+    },
+    {
+      "variantId": "FA-001-MEX-00-00-02",
+      "baseCardId": "FA-001",
+      "city": "Mexico City",
+      "attire": "cdmx-streetwear",
+      "hairstyle": "slicked-pompadour",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Mexico City",
+        "axis": "wordplay",
+        "bonus": 2,
+        "name": "Corrido Craft",
+        "description": "Mexican poetic tradition: +2 Wordplay"
+      },
+      "scene": "Mexico City zocalo at twilight, Day of the Dead murals, colonial meets modern. Puck from Shakespeare, reimagined in modern hip-hop style. Wearing cdmx streetwear clothing, slicked pompadour hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/FA-001-MEX-00-00-02.webp"
+    },
+    {
+      "variantId": "FA-001-CAI-00-00-02",
+      "baseCardId": "FA-001",
+      "city": "Cairo",
+      "attire": "cairo-streetwear",
+      "hairstyle": "close-crop",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Cairo",
+        "axis": "shakespeare",
+        "bonus": 2,
+        "name": "Scribe's Wisdom",
+        "description": "Ancient literary tradition: +2 Shakespeare"
+      },
+      "scene": "Cairo at dusk, pyramids in the distance, bustling modern streets, golden sand tones. Puck from Shakespeare, reimagined in modern hip-hop style. Wearing cairo streetwear clothing, close crop hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/FA-001-CAI-00-00-02.webp"
+    },
+    {
+      "variantId": "FA-002-TKY-00-00-02",
+      "baseCardId": "FA-002",
+      "city": "Tokyo",
+      "attire": "streetwear",
+      "hairstyle": "top-knot",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Tokyo",
+        "axis": "wordplay",
+        "bonus": 2,
+        "name": "Neon Precision",
+        "description": "Tokyo's precision culture: +2 Wordplay"
+      },
+      "scene": "Neon-lit Shibuya crossing at night, towering LED screens, rain-slicked streets. Titania from Shakespeare, reimagined in modern hip-hop style. Wearing streetwear clothing, top knot hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/FA-002-TKY-00-00-02.webp"
+    },
+    {
+      "variantId": "FA-002-LGS-00-00-02",
+      "baseCardId": "FA-002",
+      "city": "Lagos",
+      "attire": "afro-punk",
+      "hairstyle": "natural-afro",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Lagos",
+        "axis": "flow",
+        "bonus": 2,
+        "name": "Afrobeat Flow",
+        "description": "Lagos Afrobeats rhythm: +2 Flow"
+      },
+      "scene": "Vibrant Lagos market street at golden hour, colorful murals, bustling energy. Titania from Shakespeare, reimagined in modern hip-hop style. Wearing afro punk clothing, natural afro hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/FA-002-LGS-00-00-02.webp"
+    },
+    {
+      "variantId": "FA-002-BKN-00-00-02",
+      "baseCardId": "FA-002",
+      "city": "Brooklyn",
+      "attire": "hip-hop-classic",
+      "hairstyle": "high-top-fade",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Brooklyn",
+        "axis": "wit",
+        "bonus": 2,
+        "name": "Borough Boss",
+        "description": "NYC roast culture, battle rap birthplace: +2 Wit"
+      },
+      "scene": "Brooklyn rooftop at sunset, Manhattan skyline behind, graffiti-covered water towers. Titania from Shakespeare, reimagined in modern hip-hop style. Wearing hip hop classic clothing, high top fade hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/FA-002-BKN-00-00-02.webp"
+    },
+    {
+      "variantId": "FA-002-LDN-00-00-02",
+      "baseCardId": "FA-002",
+      "city": "London",
+      "attire": "grime-streetwear",
+      "hairstyle": "skin-fade",
+      "skinTone": "medium",
+      "ability": {
+        "city": "London",
+        "axis": "shakespeare",
+        "bonus": 2,
+        "name": "Bard's Home Turf",
+        "description": "Home of Shakespeare: +2 Shakespeare"
+      },
+      "scene": "Moody London alley near the Globe Theatre, fog and neon, brick and steel. Titania from Shakespeare, reimagined in modern hip-hop style. Wearing grime streetwear clothing, skin fade hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/FA-002-LDN-00-00-02.webp"
+    },
+    {
+      "variantId": "FA-002-MUM-00-00-02",
+      "baseCardId": "FA-002",
+      "city": "Mumbai",
+      "attire": "gully-streetwear",
+      "hairstyle": "undercut",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Mumbai",
+        "axis": "flow",
+        "bonus": 2,
+        "name": "Bollywood Rhythm",
+        "description": "Mumbai's poetic traditions: +2 Flow"
+      },
+      "scene": "Neon-lit Mumbai street at night, auto-rickshaws, Dharavi art meets Bollywood glamour. Titania from Shakespeare, reimagined in modern hip-hop style. Wearing gully streetwear clothing, undercut hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/FA-002-MUM-00-00-02.webp"
+    },
+    {
+      "variantId": "FA-002-PAR-00-00-02",
+      "baseCardId": "FA-002",
+      "city": "Paris",
+      "attire": "haute-streetwear",
+      "hairstyle": "french-crop",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Paris",
+        "axis": "wordplay",
+        "bonus": 2,
+        "name": "Haute Verse",
+        "description": "French literary tradition: +2 Wordplay"
+      },
+      "scene": "Parisian rooftop overlooking the Eiffel Tower at dusk, street art and high fashion. Titania from Shakespeare, reimagined in modern hip-hop style. Wearing haute streetwear clothing, french crop hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/FA-002-PAR-00-00-02.webp"
+    },
+    {
+      "variantId": "FA-002-SAO-00-00-02",
+      "baseCardId": "FA-002",
+      "city": "Sao Paulo",
+      "attire": "favela-streetwear",
+      "hairstyle": "tight-curls",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Sao Paulo",
+        "axis": "wit",
+        "bonus": 2,
+        "name": "Favela Fire",
+        "description": "Brazilian humor and improv: +2 Wit"
+      },
+      "scene": "Sao Paulo street corner, vivid graffiti murals, tropical trees meeting concrete. Titania from Shakespeare, reimagined in modern hip-hop style. Wearing favela streetwear clothing, tight curls hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/FA-002-SAO-00-00-02.webp"
+    },
+    {
+      "variantId": "FA-002-SEO-00-00-02",
+      "baseCardId": "FA-002",
+      "city": "Seoul",
+      "attire": "k-streetwear",
+      "hairstyle": "two-block",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Seoul",
+        "axis": "flow",
+        "bonus": 2,
+        "name": "K-Wave Cadence",
+        "description": "K-pop precision and rap scene: +2 Flow"
+      },
+      "scene": "Neon Seoul district at night, K-pop billboards, cherry blossoms meet cyberpunk. Titania from Shakespeare, reimagined in modern hip-hop style. Wearing k streetwear clothing, two block hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/FA-002-SEO-00-00-02.webp"
+    },
+    {
+      "variantId": "FA-002-NRB-00-00-02",
+      "baseCardId": "FA-002",
+      "city": "Nairobi",
+      "attire": "nairobi-streetwear",
+      "hairstyle": "short-natural",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Nairobi",
+        "axis": "shakespeare",
+        "bonus": 2,
+        "name": "Storyteller's Gift",
+        "description": "East African oral storytelling tradition: +2 Shakespeare"
+      },
+      "scene": "Nairobi skyline at golden hour, acacia trees, modern glass towers meet red earth. Titania from Shakespeare, reimagined in modern hip-hop style. Wearing nairobi streetwear clothing, short natural hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/FA-002-NRB-00-00-02.webp"
+    },
+    {
+      "variantId": "FA-002-BER-00-00-02",
+      "baseCardId": "FA-002",
+      "city": "Berlin",
+      "attire": "techno-streetwear",
+      "hairstyle": "industrial-buzz",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Berlin",
+        "axis": "wit",
+        "bonus": 2,
+        "name": "Cabaret Edge",
+        "description": "Berlin cabaret tradition and dry humor: +2 Wit"
+      },
+      "scene": "Berlin warehouse district, industrial art, concrete and neon, the Wall in the background. Titania from Shakespeare, reimagined in modern hip-hop style. Wearing techno streetwear clothing, industrial buzz hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/FA-002-BER-00-00-02.webp"
+    },
+    {
+      "variantId": "FA-002-MEX-00-00-02",
+      "baseCardId": "FA-002",
+      "city": "Mexico City",
+      "attire": "cdmx-streetwear",
+      "hairstyle": "slicked-pompadour",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Mexico City",
+        "axis": "wordplay",
+        "bonus": 2,
+        "name": "Corrido Craft",
+        "description": "Mexican poetic tradition: +2 Wordplay"
+      },
+      "scene": "Mexico City zocalo at twilight, Day of the Dead murals, colonial meets modern. Titania from Shakespeare, reimagined in modern hip-hop style. Wearing cdmx streetwear clothing, slicked pompadour hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/FA-002-MEX-00-00-02.webp"
+    },
+    {
+      "variantId": "FA-002-CAI-00-00-02",
+      "baseCardId": "FA-002",
+      "city": "Cairo",
+      "attire": "cairo-streetwear",
+      "hairstyle": "close-crop",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Cairo",
+        "axis": "shakespeare",
+        "bonus": 2,
+        "name": "Scribe's Wisdom",
+        "description": "Ancient literary tradition: +2 Shakespeare"
+      },
+      "scene": "Cairo at dusk, pyramids in the distance, bustling modern streets, golden sand tones. Titania from Shakespeare, reimagined in modern hip-hop style. Wearing cairo streetwear clothing, close crop hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/FA-002-CAI-00-00-02.webp"
+    },
+    {
+      "variantId": "VC-001-TKY-00-00-02",
+      "baseCardId": "VC-001",
+      "city": "Tokyo",
+      "attire": "streetwear",
+      "hairstyle": "top-knot",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Tokyo",
+        "axis": "wordplay",
+        "bonus": 2,
+        "name": "Neon Precision",
+        "description": "Tokyo's precision culture: +2 Wordplay"
+      },
+      "scene": "Neon-lit Shibuya crossing at night, towering LED screens, rain-slicked streets. Prince Escalus from Shakespeare, reimagined in modern hip-hop style. Wearing streetwear clothing, top knot hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/VC-001-TKY-00-00-02.webp"
+    },
+    {
+      "variantId": "VC-001-LGS-00-00-02",
+      "baseCardId": "VC-001",
+      "city": "Lagos",
+      "attire": "afro-punk",
+      "hairstyle": "natural-afro",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Lagos",
+        "axis": "flow",
+        "bonus": 2,
+        "name": "Afrobeat Flow",
+        "description": "Lagos Afrobeats rhythm: +2 Flow"
+      },
+      "scene": "Vibrant Lagos market street at golden hour, colorful murals, bustling energy. Prince Escalus from Shakespeare, reimagined in modern hip-hop style. Wearing afro punk clothing, natural afro hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/VC-001-LGS-00-00-02.webp"
+    },
+    {
+      "variantId": "VC-001-BKN-00-00-02",
+      "baseCardId": "VC-001",
+      "city": "Brooklyn",
+      "attire": "hip-hop-classic",
+      "hairstyle": "high-top-fade",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Brooklyn",
+        "axis": "wit",
+        "bonus": 2,
+        "name": "Borough Boss",
+        "description": "NYC roast culture, battle rap birthplace: +2 Wit"
+      },
+      "scene": "Brooklyn rooftop at sunset, Manhattan skyline behind, graffiti-covered water towers. Prince Escalus from Shakespeare, reimagined in modern hip-hop style. Wearing hip hop classic clothing, high top fade hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/VC-001-BKN-00-00-02.webp"
+    },
+    {
+      "variantId": "VC-001-LDN-00-00-02",
+      "baseCardId": "VC-001",
+      "city": "London",
+      "attire": "grime-streetwear",
+      "hairstyle": "skin-fade",
+      "skinTone": "medium",
+      "ability": {
+        "city": "London",
+        "axis": "shakespeare",
+        "bonus": 2,
+        "name": "Bard's Home Turf",
+        "description": "Home of Shakespeare: +2 Shakespeare"
+      },
+      "scene": "Moody London alley near the Globe Theatre, fog and neon, brick and steel. Prince Escalus from Shakespeare, reimagined in modern hip-hop style. Wearing grime streetwear clothing, skin fade hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/VC-001-LDN-00-00-02.webp"
+    },
+    {
+      "variantId": "VC-001-MUM-00-00-02",
+      "baseCardId": "VC-001",
+      "city": "Mumbai",
+      "attire": "gully-streetwear",
+      "hairstyle": "undercut",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Mumbai",
+        "axis": "flow",
+        "bonus": 2,
+        "name": "Bollywood Rhythm",
+        "description": "Mumbai's poetic traditions: +2 Flow"
+      },
+      "scene": "Neon-lit Mumbai street at night, auto-rickshaws, Dharavi art meets Bollywood glamour. Prince Escalus from Shakespeare, reimagined in modern hip-hop style. Wearing gully streetwear clothing, undercut hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/VC-001-MUM-00-00-02.webp"
+    },
+    {
+      "variantId": "VC-001-PAR-00-00-02",
+      "baseCardId": "VC-001",
+      "city": "Paris",
+      "attire": "haute-streetwear",
+      "hairstyle": "french-crop",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Paris",
+        "axis": "wordplay",
+        "bonus": 2,
+        "name": "Haute Verse",
+        "description": "French literary tradition: +2 Wordplay"
+      },
+      "scene": "Parisian rooftop overlooking the Eiffel Tower at dusk, street art and high fashion. Prince Escalus from Shakespeare, reimagined in modern hip-hop style. Wearing haute streetwear clothing, french crop hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/VC-001-PAR-00-00-02.webp"
+    },
+    {
+      "variantId": "VC-001-SAO-00-00-02",
+      "baseCardId": "VC-001",
+      "city": "Sao Paulo",
+      "attire": "favela-streetwear",
+      "hairstyle": "tight-curls",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Sao Paulo",
+        "axis": "wit",
+        "bonus": 2,
+        "name": "Favela Fire",
+        "description": "Brazilian humor and improv: +2 Wit"
+      },
+      "scene": "Sao Paulo street corner, vivid graffiti murals, tropical trees meeting concrete. Prince Escalus from Shakespeare, reimagined in modern hip-hop style. Wearing favela streetwear clothing, tight curls hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/VC-001-SAO-00-00-02.webp"
+    },
+    {
+      "variantId": "VC-001-SEO-00-00-02",
+      "baseCardId": "VC-001",
+      "city": "Seoul",
+      "attire": "k-streetwear",
+      "hairstyle": "two-block",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Seoul",
+        "axis": "flow",
+        "bonus": 2,
+        "name": "K-Wave Cadence",
+        "description": "K-pop precision and rap scene: +2 Flow"
+      },
+      "scene": "Neon Seoul district at night, K-pop billboards, cherry blossoms meet cyberpunk. Prince Escalus from Shakespeare, reimagined in modern hip-hop style. Wearing k streetwear clothing, two block hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/VC-001-SEO-00-00-02.webp"
+    },
+    {
+      "variantId": "VC-001-NRB-00-00-02",
+      "baseCardId": "VC-001",
+      "city": "Nairobi",
+      "attire": "nairobi-streetwear",
+      "hairstyle": "short-natural",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Nairobi",
+        "axis": "shakespeare",
+        "bonus": 2,
+        "name": "Storyteller's Gift",
+        "description": "East African oral storytelling tradition: +2 Shakespeare"
+      },
+      "scene": "Nairobi skyline at golden hour, acacia trees, modern glass towers meet red earth. Prince Escalus from Shakespeare, reimagined in modern hip-hop style. Wearing nairobi streetwear clothing, short natural hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/VC-001-NRB-00-00-02.webp"
+    },
+    {
+      "variantId": "VC-001-BER-00-00-02",
+      "baseCardId": "VC-001",
+      "city": "Berlin",
+      "attire": "techno-streetwear",
+      "hairstyle": "industrial-buzz",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Berlin",
+        "axis": "wit",
+        "bonus": 2,
+        "name": "Cabaret Edge",
+        "description": "Berlin cabaret tradition and dry humor: +2 Wit"
+      },
+      "scene": "Berlin warehouse district, industrial art, concrete and neon, the Wall in the background. Prince Escalus from Shakespeare, reimagined in modern hip-hop style. Wearing techno streetwear clothing, industrial buzz hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/VC-001-BER-00-00-02.webp"
+    },
+    {
+      "variantId": "VC-001-MEX-00-00-02",
+      "baseCardId": "VC-001",
+      "city": "Mexico City",
+      "attire": "cdmx-streetwear",
+      "hairstyle": "slicked-pompadour",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Mexico City",
+        "axis": "wordplay",
+        "bonus": 2,
+        "name": "Corrido Craft",
+        "description": "Mexican poetic tradition: +2 Wordplay"
+      },
+      "scene": "Mexico City zocalo at twilight, Day of the Dead murals, colonial meets modern. Prince Escalus from Shakespeare, reimagined in modern hip-hop style. Wearing cdmx streetwear clothing, slicked pompadour hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/VC-001-MEX-00-00-02.webp"
+    },
+    {
+      "variantId": "VC-001-CAI-00-00-02",
+      "baseCardId": "VC-001",
+      "city": "Cairo",
+      "attire": "cairo-streetwear",
+      "hairstyle": "close-crop",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Cairo",
+        "axis": "shakespeare",
+        "bonus": 2,
+        "name": "Scribe's Wisdom",
+        "description": "Ancient literary tradition: +2 Shakespeare"
+      },
+      "scene": "Cairo at dusk, pyramids in the distance, bustling modern streets, golden sand tones. Prince Escalus from Shakespeare, reimagined in modern hip-hop style. Wearing cairo streetwear clothing, close crop hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/VC-001-CAI-00-00-02.webp"
+    },
+    {
+      "variantId": "VC-002-TKY-00-00-02",
+      "baseCardId": "VC-002",
+      "city": "Tokyo",
+      "attire": "streetwear",
+      "hairstyle": "top-knot",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Tokyo",
+        "axis": "wordplay",
+        "bonus": 2,
+        "name": "Neon Precision",
+        "description": "Tokyo's precision culture: +2 Wordplay"
+      },
+      "scene": "Neon-lit Shibuya crossing at night, towering LED screens, rain-slicked streets. Friar Lawrence from Shakespeare, reimagined in modern hip-hop style. Wearing streetwear clothing, top knot hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/VC-002-TKY-00-00-02.webp"
+    },
+    {
+      "variantId": "VC-002-LGS-00-00-02",
+      "baseCardId": "VC-002",
+      "city": "Lagos",
+      "attire": "afro-punk",
+      "hairstyle": "natural-afro",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Lagos",
+        "axis": "flow",
+        "bonus": 2,
+        "name": "Afrobeat Flow",
+        "description": "Lagos Afrobeats rhythm: +2 Flow"
+      },
+      "scene": "Vibrant Lagos market street at golden hour, colorful murals, bustling energy. Friar Lawrence from Shakespeare, reimagined in modern hip-hop style. Wearing afro punk clothing, natural afro hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/VC-002-LGS-00-00-02.webp"
+    },
+    {
+      "variantId": "VC-002-BKN-00-00-02",
+      "baseCardId": "VC-002",
+      "city": "Brooklyn",
+      "attire": "hip-hop-classic",
+      "hairstyle": "high-top-fade",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Brooklyn",
+        "axis": "wit",
+        "bonus": 2,
+        "name": "Borough Boss",
+        "description": "NYC roast culture, battle rap birthplace: +2 Wit"
+      },
+      "scene": "Brooklyn rooftop at sunset, Manhattan skyline behind, graffiti-covered water towers. Friar Lawrence from Shakespeare, reimagined in modern hip-hop style. Wearing hip hop classic clothing, high top fade hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/VC-002-BKN-00-00-02.webp"
+    },
+    {
+      "variantId": "VC-002-LDN-00-00-02",
+      "baseCardId": "VC-002",
+      "city": "London",
+      "attire": "grime-streetwear",
+      "hairstyle": "skin-fade",
+      "skinTone": "medium",
+      "ability": {
+        "city": "London",
+        "axis": "shakespeare",
+        "bonus": 2,
+        "name": "Bard's Home Turf",
+        "description": "Home of Shakespeare: +2 Shakespeare"
+      },
+      "scene": "Moody London alley near the Globe Theatre, fog and neon, brick and steel. Friar Lawrence from Shakespeare, reimagined in modern hip-hop style. Wearing grime streetwear clothing, skin fade hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/VC-002-LDN-00-00-02.webp"
+    },
+    {
+      "variantId": "VC-002-MUM-00-00-02",
+      "baseCardId": "VC-002",
+      "city": "Mumbai",
+      "attire": "gully-streetwear",
+      "hairstyle": "undercut",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Mumbai",
+        "axis": "flow",
+        "bonus": 2,
+        "name": "Bollywood Rhythm",
+        "description": "Mumbai's poetic traditions: +2 Flow"
+      },
+      "scene": "Neon-lit Mumbai street at night, auto-rickshaws, Dharavi art meets Bollywood glamour. Friar Lawrence from Shakespeare, reimagined in modern hip-hop style. Wearing gully streetwear clothing, undercut hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/VC-002-MUM-00-00-02.webp"
+    },
+    {
+      "variantId": "VC-002-PAR-00-00-02",
+      "baseCardId": "VC-002",
+      "city": "Paris",
+      "attire": "haute-streetwear",
+      "hairstyle": "french-crop",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Paris",
+        "axis": "wordplay",
+        "bonus": 2,
+        "name": "Haute Verse",
+        "description": "French literary tradition: +2 Wordplay"
+      },
+      "scene": "Parisian rooftop overlooking the Eiffel Tower at dusk, street art and high fashion. Friar Lawrence from Shakespeare, reimagined in modern hip-hop style. Wearing haute streetwear clothing, french crop hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/VC-002-PAR-00-00-02.webp"
+    },
+    {
+      "variantId": "VC-002-SAO-00-00-02",
+      "baseCardId": "VC-002",
+      "city": "Sao Paulo",
+      "attire": "favela-streetwear",
+      "hairstyle": "tight-curls",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Sao Paulo",
+        "axis": "wit",
+        "bonus": 2,
+        "name": "Favela Fire",
+        "description": "Brazilian humor and improv: +2 Wit"
+      },
+      "scene": "Sao Paulo street corner, vivid graffiti murals, tropical trees meeting concrete. Friar Lawrence from Shakespeare, reimagined in modern hip-hop style. Wearing favela streetwear clothing, tight curls hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/VC-002-SAO-00-00-02.webp"
+    },
+    {
+      "variantId": "VC-002-SEO-00-00-02",
+      "baseCardId": "VC-002",
+      "city": "Seoul",
+      "attire": "k-streetwear",
+      "hairstyle": "two-block",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Seoul",
+        "axis": "flow",
+        "bonus": 2,
+        "name": "K-Wave Cadence",
+        "description": "K-pop precision and rap scene: +2 Flow"
+      },
+      "scene": "Neon Seoul district at night, K-pop billboards, cherry blossoms meet cyberpunk. Friar Lawrence from Shakespeare, reimagined in modern hip-hop style. Wearing k streetwear clothing, two block hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/VC-002-SEO-00-00-02.webp"
+    },
+    {
+      "variantId": "VC-002-NRB-00-00-02",
+      "baseCardId": "VC-002",
+      "city": "Nairobi",
+      "attire": "nairobi-streetwear",
+      "hairstyle": "short-natural",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Nairobi",
+        "axis": "shakespeare",
+        "bonus": 2,
+        "name": "Storyteller's Gift",
+        "description": "East African oral storytelling tradition: +2 Shakespeare"
+      },
+      "scene": "Nairobi skyline at golden hour, acacia trees, modern glass towers meet red earth. Friar Lawrence from Shakespeare, reimagined in modern hip-hop style. Wearing nairobi streetwear clothing, short natural hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/VC-002-NRB-00-00-02.webp"
+    },
+    {
+      "variantId": "VC-002-BER-00-00-02",
+      "baseCardId": "VC-002",
+      "city": "Berlin",
+      "attire": "techno-streetwear",
+      "hairstyle": "industrial-buzz",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Berlin",
+        "axis": "wit",
+        "bonus": 2,
+        "name": "Cabaret Edge",
+        "description": "Berlin cabaret tradition and dry humor: +2 Wit"
+      },
+      "scene": "Berlin warehouse district, industrial art, concrete and neon, the Wall in the background. Friar Lawrence from Shakespeare, reimagined in modern hip-hop style. Wearing techno streetwear clothing, industrial buzz hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/VC-002-BER-00-00-02.webp"
+    },
+    {
+      "variantId": "VC-002-MEX-00-00-02",
+      "baseCardId": "VC-002",
+      "city": "Mexico City",
+      "attire": "cdmx-streetwear",
+      "hairstyle": "slicked-pompadour",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Mexico City",
+        "axis": "wordplay",
+        "bonus": 2,
+        "name": "Corrido Craft",
+        "description": "Mexican poetic tradition: +2 Wordplay"
+      },
+      "scene": "Mexico City zocalo at twilight, Day of the Dead murals, colonial meets modern. Friar Lawrence from Shakespeare, reimagined in modern hip-hop style. Wearing cdmx streetwear clothing, slicked pompadour hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/VC-002-MEX-00-00-02.webp"
+    },
+    {
+      "variantId": "VC-002-CAI-00-00-02",
+      "baseCardId": "VC-002",
+      "city": "Cairo",
+      "attire": "cairo-streetwear",
+      "hairstyle": "close-crop",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Cairo",
+        "axis": "shakespeare",
+        "bonus": 2,
+        "name": "Scribe's Wisdom",
+        "description": "Ancient literary tradition: +2 Shakespeare"
+      },
+      "scene": "Cairo at dusk, pyramids in the distance, bustling modern streets, golden sand tones. Friar Lawrence from Shakespeare, reimagined in modern hip-hop style. Wearing cairo streetwear clothing, close crop hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/VC-002-CAI-00-00-02.webp"
+    },
+    {
+      "variantId": "VC-003-TKY-00-00-02",
+      "baseCardId": "VC-003",
+      "city": "Tokyo",
+      "attire": "streetwear",
+      "hairstyle": "top-knot",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Tokyo",
+        "axis": "wordplay",
+        "bonus": 2,
+        "name": "Neon Precision",
+        "description": "Tokyo's precision culture: +2 Wordplay"
+      },
+      "scene": "Neon-lit Shibuya crossing at night, towering LED screens, rain-slicked streets. The Nurse from Shakespeare, reimagined in modern hip-hop style. Wearing streetwear clothing, top knot hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/VC-003-TKY-00-00-02.webp"
+    },
+    {
+      "variantId": "VC-003-LGS-00-00-02",
+      "baseCardId": "VC-003",
+      "city": "Lagos",
+      "attire": "afro-punk",
+      "hairstyle": "natural-afro",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Lagos",
+        "axis": "flow",
+        "bonus": 2,
+        "name": "Afrobeat Flow",
+        "description": "Lagos Afrobeats rhythm: +2 Flow"
+      },
+      "scene": "Vibrant Lagos market street at golden hour, colorful murals, bustling energy. The Nurse from Shakespeare, reimagined in modern hip-hop style. Wearing afro punk clothing, natural afro hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/VC-003-LGS-00-00-02.webp"
+    },
+    {
+      "variantId": "VC-003-BKN-00-00-02",
+      "baseCardId": "VC-003",
+      "city": "Brooklyn",
+      "attire": "hip-hop-classic",
+      "hairstyle": "high-top-fade",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Brooklyn",
+        "axis": "wit",
+        "bonus": 2,
+        "name": "Borough Boss",
+        "description": "NYC roast culture, battle rap birthplace: +2 Wit"
+      },
+      "scene": "Brooklyn rooftop at sunset, Manhattan skyline behind, graffiti-covered water towers. The Nurse from Shakespeare, reimagined in modern hip-hop style. Wearing hip hop classic clothing, high top fade hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/VC-003-BKN-00-00-02.webp"
+    },
+    {
+      "variantId": "VC-003-LDN-00-00-02",
+      "baseCardId": "VC-003",
+      "city": "London",
+      "attire": "grime-streetwear",
+      "hairstyle": "skin-fade",
+      "skinTone": "medium",
+      "ability": {
+        "city": "London",
+        "axis": "shakespeare",
+        "bonus": 2,
+        "name": "Bard's Home Turf",
+        "description": "Home of Shakespeare: +2 Shakespeare"
+      },
+      "scene": "Moody London alley near the Globe Theatre, fog and neon, brick and steel. The Nurse from Shakespeare, reimagined in modern hip-hop style. Wearing grime streetwear clothing, skin fade hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/VC-003-LDN-00-00-02.webp"
+    },
+    {
+      "variantId": "VC-003-MUM-00-00-02",
+      "baseCardId": "VC-003",
+      "city": "Mumbai",
+      "attire": "gully-streetwear",
+      "hairstyle": "undercut",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Mumbai",
+        "axis": "flow",
+        "bonus": 2,
+        "name": "Bollywood Rhythm",
+        "description": "Mumbai's poetic traditions: +2 Flow"
+      },
+      "scene": "Neon-lit Mumbai street at night, auto-rickshaws, Dharavi art meets Bollywood glamour. The Nurse from Shakespeare, reimagined in modern hip-hop style. Wearing gully streetwear clothing, undercut hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/VC-003-MUM-00-00-02.webp"
+    },
+    {
+      "variantId": "VC-003-PAR-00-00-02",
+      "baseCardId": "VC-003",
+      "city": "Paris",
+      "attire": "haute-streetwear",
+      "hairstyle": "french-crop",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Paris",
+        "axis": "wordplay",
+        "bonus": 2,
+        "name": "Haute Verse",
+        "description": "French literary tradition: +2 Wordplay"
+      },
+      "scene": "Parisian rooftop overlooking the Eiffel Tower at dusk, street art and high fashion. The Nurse from Shakespeare, reimagined in modern hip-hop style. Wearing haute streetwear clothing, french crop hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/VC-003-PAR-00-00-02.webp"
+    },
+    {
+      "variantId": "VC-003-SAO-00-00-02",
+      "baseCardId": "VC-003",
+      "city": "Sao Paulo",
+      "attire": "favela-streetwear",
+      "hairstyle": "tight-curls",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Sao Paulo",
+        "axis": "wit",
+        "bonus": 2,
+        "name": "Favela Fire",
+        "description": "Brazilian humor and improv: +2 Wit"
+      },
+      "scene": "Sao Paulo street corner, vivid graffiti murals, tropical trees meeting concrete. The Nurse from Shakespeare, reimagined in modern hip-hop style. Wearing favela streetwear clothing, tight curls hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/VC-003-SAO-00-00-02.webp"
+    },
+    {
+      "variantId": "VC-003-SEO-00-00-02",
+      "baseCardId": "VC-003",
+      "city": "Seoul",
+      "attire": "k-streetwear",
+      "hairstyle": "two-block",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Seoul",
+        "axis": "flow",
+        "bonus": 2,
+        "name": "K-Wave Cadence",
+        "description": "K-pop precision and rap scene: +2 Flow"
+      },
+      "scene": "Neon Seoul district at night, K-pop billboards, cherry blossoms meet cyberpunk. The Nurse from Shakespeare, reimagined in modern hip-hop style. Wearing k streetwear clothing, two block hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/VC-003-SEO-00-00-02.webp"
+    },
+    {
+      "variantId": "VC-003-NRB-00-00-02",
+      "baseCardId": "VC-003",
+      "city": "Nairobi",
+      "attire": "nairobi-streetwear",
+      "hairstyle": "short-natural",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Nairobi",
+        "axis": "shakespeare",
+        "bonus": 2,
+        "name": "Storyteller's Gift",
+        "description": "East African oral storytelling tradition: +2 Shakespeare"
+      },
+      "scene": "Nairobi skyline at golden hour, acacia trees, modern glass towers meet red earth. The Nurse from Shakespeare, reimagined in modern hip-hop style. Wearing nairobi streetwear clothing, short natural hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/VC-003-NRB-00-00-02.webp"
+    },
+    {
+      "variantId": "VC-003-BER-00-00-02",
+      "baseCardId": "VC-003",
+      "city": "Berlin",
+      "attire": "techno-streetwear",
+      "hairstyle": "industrial-buzz",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Berlin",
+        "axis": "wit",
+        "bonus": 2,
+        "name": "Cabaret Edge",
+        "description": "Berlin cabaret tradition and dry humor: +2 Wit"
+      },
+      "scene": "Berlin warehouse district, industrial art, concrete and neon, the Wall in the background. The Nurse from Shakespeare, reimagined in modern hip-hop style. Wearing techno streetwear clothing, industrial buzz hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/VC-003-BER-00-00-02.webp"
+    },
+    {
+      "variantId": "VC-003-MEX-00-00-02",
+      "baseCardId": "VC-003",
+      "city": "Mexico City",
+      "attire": "cdmx-streetwear",
+      "hairstyle": "slicked-pompadour",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Mexico City",
+        "axis": "wordplay",
+        "bonus": 2,
+        "name": "Corrido Craft",
+        "description": "Mexican poetic tradition: +2 Wordplay"
+      },
+      "scene": "Mexico City zocalo at twilight, Day of the Dead murals, colonial meets modern. The Nurse from Shakespeare, reimagined in modern hip-hop style. Wearing cdmx streetwear clothing, slicked pompadour hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/VC-003-MEX-00-00-02.webp"
+    },
+    {
+      "variantId": "VC-003-CAI-00-00-02",
+      "baseCardId": "VC-003",
+      "city": "Cairo",
+      "attire": "cairo-streetwear",
+      "hairstyle": "close-crop",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Cairo",
+        "axis": "shakespeare",
+        "bonus": 2,
+        "name": "Scribe's Wisdom",
+        "description": "Ancient literary tradition: +2 Shakespeare"
+      },
+      "scene": "Cairo at dusk, pyramids in the distance, bustling modern streets, golden sand tones. The Nurse from Shakespeare, reimagined in modern hip-hop style. Wearing cairo streetwear clothing, close crop hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/VC-003-CAI-00-00-02.webp"
+    },
+    {
+      "variantId": "TP-001-TKY-00-00-02",
+      "baseCardId": "TP-001",
+      "city": "Tokyo",
+      "attire": "streetwear",
+      "hairstyle": "top-knot",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Tokyo",
+        "axis": "wordplay",
+        "bonus": 2,
+        "name": "Neon Precision",
+        "description": "Tokyo's precision culture: +2 Wordplay"
+      },
+      "scene": "Neon-lit Shibuya crossing at night, towering LED screens, rain-slicked streets. Prospero from Shakespeare, reimagined in modern hip-hop style. Wearing streetwear clothing, top knot hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/TP-001-TKY-00-00-02.webp"
+    },
+    {
+      "variantId": "TP-001-LGS-00-00-02",
+      "baseCardId": "TP-001",
+      "city": "Lagos",
+      "attire": "afro-punk",
+      "hairstyle": "natural-afro",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Lagos",
+        "axis": "flow",
+        "bonus": 2,
+        "name": "Afrobeat Flow",
+        "description": "Lagos Afrobeats rhythm: +2 Flow"
+      },
+      "scene": "Vibrant Lagos market street at golden hour, colorful murals, bustling energy. Prospero from Shakespeare, reimagined in modern hip-hop style. Wearing afro punk clothing, natural afro hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/TP-001-LGS-00-00-02.webp"
+    },
+    {
+      "variantId": "TP-001-BKN-00-00-02",
+      "baseCardId": "TP-001",
+      "city": "Brooklyn",
+      "attire": "hip-hop-classic",
+      "hairstyle": "high-top-fade",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Brooklyn",
+        "axis": "wit",
+        "bonus": 2,
+        "name": "Borough Boss",
+        "description": "NYC roast culture, battle rap birthplace: +2 Wit"
+      },
+      "scene": "Brooklyn rooftop at sunset, Manhattan skyline behind, graffiti-covered water towers. Prospero from Shakespeare, reimagined in modern hip-hop style. Wearing hip hop classic clothing, high top fade hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/TP-001-BKN-00-00-02.webp"
+    },
+    {
+      "variantId": "TP-001-LDN-00-00-02",
+      "baseCardId": "TP-001",
+      "city": "London",
+      "attire": "grime-streetwear",
+      "hairstyle": "skin-fade",
+      "skinTone": "medium",
+      "ability": {
+        "city": "London",
+        "axis": "shakespeare",
+        "bonus": 2,
+        "name": "Bard's Home Turf",
+        "description": "Home of Shakespeare: +2 Shakespeare"
+      },
+      "scene": "Moody London alley near the Globe Theatre, fog and neon, brick and steel. Prospero from Shakespeare, reimagined in modern hip-hop style. Wearing grime streetwear clothing, skin fade hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/TP-001-LDN-00-00-02.webp"
+    },
+    {
+      "variantId": "TP-001-MUM-00-00-02",
+      "baseCardId": "TP-001",
+      "city": "Mumbai",
+      "attire": "gully-streetwear",
+      "hairstyle": "undercut",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Mumbai",
+        "axis": "flow",
+        "bonus": 2,
+        "name": "Bollywood Rhythm",
+        "description": "Mumbai's poetic traditions: +2 Flow"
+      },
+      "scene": "Neon-lit Mumbai street at night, auto-rickshaws, Dharavi art meets Bollywood glamour. Prospero from Shakespeare, reimagined in modern hip-hop style. Wearing gully streetwear clothing, undercut hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/TP-001-MUM-00-00-02.webp"
+    },
+    {
+      "variantId": "TP-001-PAR-00-00-02",
+      "baseCardId": "TP-001",
+      "city": "Paris",
+      "attire": "haute-streetwear",
+      "hairstyle": "french-crop",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Paris",
+        "axis": "wordplay",
+        "bonus": 2,
+        "name": "Haute Verse",
+        "description": "French literary tradition: +2 Wordplay"
+      },
+      "scene": "Parisian rooftop overlooking the Eiffel Tower at dusk, street art and high fashion. Prospero from Shakespeare, reimagined in modern hip-hop style. Wearing haute streetwear clothing, french crop hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/TP-001-PAR-00-00-02.webp"
+    },
+    {
+      "variantId": "TP-001-SAO-00-00-02",
+      "baseCardId": "TP-001",
+      "city": "Sao Paulo",
+      "attire": "favela-streetwear",
+      "hairstyle": "tight-curls",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Sao Paulo",
+        "axis": "wit",
+        "bonus": 2,
+        "name": "Favela Fire",
+        "description": "Brazilian humor and improv: +2 Wit"
+      },
+      "scene": "Sao Paulo street corner, vivid graffiti murals, tropical trees meeting concrete. Prospero from Shakespeare, reimagined in modern hip-hop style. Wearing favela streetwear clothing, tight curls hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/TP-001-SAO-00-00-02.webp"
+    },
+    {
+      "variantId": "TP-001-SEO-00-00-02",
+      "baseCardId": "TP-001",
+      "city": "Seoul",
+      "attire": "k-streetwear",
+      "hairstyle": "two-block",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Seoul",
+        "axis": "flow",
+        "bonus": 2,
+        "name": "K-Wave Cadence",
+        "description": "K-pop precision and rap scene: +2 Flow"
+      },
+      "scene": "Neon Seoul district at night, K-pop billboards, cherry blossoms meet cyberpunk. Prospero from Shakespeare, reimagined in modern hip-hop style. Wearing k streetwear clothing, two block hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/TP-001-SEO-00-00-02.webp"
+    },
+    {
+      "variantId": "TP-001-NRB-00-00-02",
+      "baseCardId": "TP-001",
+      "city": "Nairobi",
+      "attire": "nairobi-streetwear",
+      "hairstyle": "short-natural",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Nairobi",
+        "axis": "shakespeare",
+        "bonus": 2,
+        "name": "Storyteller's Gift",
+        "description": "East African oral storytelling tradition: +2 Shakespeare"
+      },
+      "scene": "Nairobi skyline at golden hour, acacia trees, modern glass towers meet red earth. Prospero from Shakespeare, reimagined in modern hip-hop style. Wearing nairobi streetwear clothing, short natural hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/TP-001-NRB-00-00-02.webp"
+    },
+    {
+      "variantId": "TP-001-BER-00-00-02",
+      "baseCardId": "TP-001",
+      "city": "Berlin",
+      "attire": "techno-streetwear",
+      "hairstyle": "industrial-buzz",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Berlin",
+        "axis": "wit",
+        "bonus": 2,
+        "name": "Cabaret Edge",
+        "description": "Berlin cabaret tradition and dry humor: +2 Wit"
+      },
+      "scene": "Berlin warehouse district, industrial art, concrete and neon, the Wall in the background. Prospero from Shakespeare, reimagined in modern hip-hop style. Wearing techno streetwear clothing, industrial buzz hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/TP-001-BER-00-00-02.webp"
+    },
+    {
+      "variantId": "TP-001-MEX-00-00-02",
+      "baseCardId": "TP-001",
+      "city": "Mexico City",
+      "attire": "cdmx-streetwear",
+      "hairstyle": "slicked-pompadour",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Mexico City",
+        "axis": "wordplay",
+        "bonus": 2,
+        "name": "Corrido Craft",
+        "description": "Mexican poetic tradition: +2 Wordplay"
+      },
+      "scene": "Mexico City zocalo at twilight, Day of the Dead murals, colonial meets modern. Prospero from Shakespeare, reimagined in modern hip-hop style. Wearing cdmx streetwear clothing, slicked pompadour hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/TP-001-MEX-00-00-02.webp"
+    },
+    {
+      "variantId": "TP-001-CAI-00-00-02",
+      "baseCardId": "TP-001",
+      "city": "Cairo",
+      "attire": "cairo-streetwear",
+      "hairstyle": "close-crop",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Cairo",
+        "axis": "shakespeare",
+        "bonus": 2,
+        "name": "Scribe's Wisdom",
+        "description": "Ancient literary tradition: +2 Shakespeare"
+      },
+      "scene": "Cairo at dusk, pyramids in the distance, bustling modern streets, golden sand tones. Prospero from Shakespeare, reimagined in modern hip-hop style. Wearing cairo streetwear clothing, close crop hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/TP-001-CAI-00-00-02.webp"
+    },
+    {
+      "variantId": "TP-002-TKY-00-00-02",
+      "baseCardId": "TP-002",
+      "city": "Tokyo",
+      "attire": "streetwear",
+      "hairstyle": "top-knot",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Tokyo",
+        "axis": "wordplay",
+        "bonus": 2,
+        "name": "Neon Precision",
+        "description": "Tokyo's precision culture: +2 Wordplay"
+      },
+      "scene": "Neon-lit Shibuya crossing at night, towering LED screens, rain-slicked streets. Ariel from Shakespeare, reimagined in modern hip-hop style. Wearing streetwear clothing, top knot hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/TP-002-TKY-00-00-02.webp"
+    },
+    {
+      "variantId": "TP-002-LGS-00-00-02",
+      "baseCardId": "TP-002",
+      "city": "Lagos",
+      "attire": "afro-punk",
+      "hairstyle": "natural-afro",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Lagos",
+        "axis": "flow",
+        "bonus": 2,
+        "name": "Afrobeat Flow",
+        "description": "Lagos Afrobeats rhythm: +2 Flow"
+      },
+      "scene": "Vibrant Lagos market street at golden hour, colorful murals, bustling energy. Ariel from Shakespeare, reimagined in modern hip-hop style. Wearing afro punk clothing, natural afro hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/TP-002-LGS-00-00-02.webp"
+    },
+    {
+      "variantId": "TP-002-BKN-00-00-02",
+      "baseCardId": "TP-002",
+      "city": "Brooklyn",
+      "attire": "hip-hop-classic",
+      "hairstyle": "high-top-fade",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Brooklyn",
+        "axis": "wit",
+        "bonus": 2,
+        "name": "Borough Boss",
+        "description": "NYC roast culture, battle rap birthplace: +2 Wit"
+      },
+      "scene": "Brooklyn rooftop at sunset, Manhattan skyline behind, graffiti-covered water towers. Ariel from Shakespeare, reimagined in modern hip-hop style. Wearing hip hop classic clothing, high top fade hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/TP-002-BKN-00-00-02.webp"
+    },
+    {
+      "variantId": "TP-002-LDN-00-00-02",
+      "baseCardId": "TP-002",
+      "city": "London",
+      "attire": "grime-streetwear",
+      "hairstyle": "skin-fade",
+      "skinTone": "medium",
+      "ability": {
+        "city": "London",
+        "axis": "shakespeare",
+        "bonus": 2,
+        "name": "Bard's Home Turf",
+        "description": "Home of Shakespeare: +2 Shakespeare"
+      },
+      "scene": "Moody London alley near the Globe Theatre, fog and neon, brick and steel. Ariel from Shakespeare, reimagined in modern hip-hop style. Wearing grime streetwear clothing, skin fade hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/TP-002-LDN-00-00-02.webp"
+    },
+    {
+      "variantId": "TP-002-MUM-00-00-02",
+      "baseCardId": "TP-002",
+      "city": "Mumbai",
+      "attire": "gully-streetwear",
+      "hairstyle": "undercut",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Mumbai",
+        "axis": "flow",
+        "bonus": 2,
+        "name": "Bollywood Rhythm",
+        "description": "Mumbai's poetic traditions: +2 Flow"
+      },
+      "scene": "Neon-lit Mumbai street at night, auto-rickshaws, Dharavi art meets Bollywood glamour. Ariel from Shakespeare, reimagined in modern hip-hop style. Wearing gully streetwear clothing, undercut hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/TP-002-MUM-00-00-02.webp"
+    },
+    {
+      "variantId": "TP-002-PAR-00-00-02",
+      "baseCardId": "TP-002",
+      "city": "Paris",
+      "attire": "haute-streetwear",
+      "hairstyle": "french-crop",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Paris",
+        "axis": "wordplay",
+        "bonus": 2,
+        "name": "Haute Verse",
+        "description": "French literary tradition: +2 Wordplay"
+      },
+      "scene": "Parisian rooftop overlooking the Eiffel Tower at dusk, street art and high fashion. Ariel from Shakespeare, reimagined in modern hip-hop style. Wearing haute streetwear clothing, french crop hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/TP-002-PAR-00-00-02.webp"
+    },
+    {
+      "variantId": "TP-002-SAO-00-00-02",
+      "baseCardId": "TP-002",
+      "city": "Sao Paulo",
+      "attire": "favela-streetwear",
+      "hairstyle": "tight-curls",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Sao Paulo",
+        "axis": "wit",
+        "bonus": 2,
+        "name": "Favela Fire",
+        "description": "Brazilian humor and improv: +2 Wit"
+      },
+      "scene": "Sao Paulo street corner, vivid graffiti murals, tropical trees meeting concrete. Ariel from Shakespeare, reimagined in modern hip-hop style. Wearing favela streetwear clothing, tight curls hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/TP-002-SAO-00-00-02.webp"
+    },
+    {
+      "variantId": "TP-002-SEO-00-00-02",
+      "baseCardId": "TP-002",
+      "city": "Seoul",
+      "attire": "k-streetwear",
+      "hairstyle": "two-block",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Seoul",
+        "axis": "flow",
+        "bonus": 2,
+        "name": "K-Wave Cadence",
+        "description": "K-pop precision and rap scene: +2 Flow"
+      },
+      "scene": "Neon Seoul district at night, K-pop billboards, cherry blossoms meet cyberpunk. Ariel from Shakespeare, reimagined in modern hip-hop style. Wearing k streetwear clothing, two block hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/TP-002-SEO-00-00-02.webp"
+    },
+    {
+      "variantId": "TP-002-NRB-00-00-02",
+      "baseCardId": "TP-002",
+      "city": "Nairobi",
+      "attire": "nairobi-streetwear",
+      "hairstyle": "short-natural",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Nairobi",
+        "axis": "shakespeare",
+        "bonus": 2,
+        "name": "Storyteller's Gift",
+        "description": "East African oral storytelling tradition: +2 Shakespeare"
+      },
+      "scene": "Nairobi skyline at golden hour, acacia trees, modern glass towers meet red earth. Ariel from Shakespeare, reimagined in modern hip-hop style. Wearing nairobi streetwear clothing, short natural hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/TP-002-NRB-00-00-02.webp"
+    },
+    {
+      "variantId": "TP-002-BER-00-00-02",
+      "baseCardId": "TP-002",
+      "city": "Berlin",
+      "attire": "techno-streetwear",
+      "hairstyle": "industrial-buzz",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Berlin",
+        "axis": "wit",
+        "bonus": 2,
+        "name": "Cabaret Edge",
+        "description": "Berlin cabaret tradition and dry humor: +2 Wit"
+      },
+      "scene": "Berlin warehouse district, industrial art, concrete and neon, the Wall in the background. Ariel from Shakespeare, reimagined in modern hip-hop style. Wearing techno streetwear clothing, industrial buzz hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/TP-002-BER-00-00-02.webp"
+    },
+    {
+      "variantId": "TP-002-MEX-00-00-02",
+      "baseCardId": "TP-002",
+      "city": "Mexico City",
+      "attire": "cdmx-streetwear",
+      "hairstyle": "slicked-pompadour",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Mexico City",
+        "axis": "wordplay",
+        "bonus": 2,
+        "name": "Corrido Craft",
+        "description": "Mexican poetic tradition: +2 Wordplay"
+      },
+      "scene": "Mexico City zocalo at twilight, Day of the Dead murals, colonial meets modern. Ariel from Shakespeare, reimagined in modern hip-hop style. Wearing cdmx streetwear clothing, slicked pompadour hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/TP-002-MEX-00-00-02.webp"
+    },
+    {
+      "variantId": "TP-002-CAI-00-00-02",
+      "baseCardId": "TP-002",
+      "city": "Cairo",
+      "attire": "cairo-streetwear",
+      "hairstyle": "close-crop",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Cairo",
+        "axis": "shakespeare",
+        "bonus": 2,
+        "name": "Scribe's Wisdom",
+        "description": "Ancient literary tradition: +2 Shakespeare"
+      },
+      "scene": "Cairo at dusk, pyramids in the distance, bustling modern streets, golden sand tones. Ariel from Shakespeare, reimagined in modern hip-hop style. Wearing cairo streetwear clothing, close crop hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/TP-002-CAI-00-00-02.webp"
+    },
+    {
+      "variantId": "TP-003-TKY-00-00-02",
+      "baseCardId": "TP-003",
+      "city": "Tokyo",
+      "attire": "streetwear",
+      "hairstyle": "top-knot",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Tokyo",
+        "axis": "wordplay",
+        "bonus": 2,
+        "name": "Neon Precision",
+        "description": "Tokyo's precision culture: +2 Wordplay"
+      },
+      "scene": "Neon-lit Shibuya crossing at night, towering LED screens, rain-slicked streets. Caliban from Shakespeare, reimagined in modern hip-hop style. Wearing streetwear clothing, top knot hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/TP-003-TKY-00-00-02.webp"
+    },
+    {
+      "variantId": "TP-003-LGS-00-00-02",
+      "baseCardId": "TP-003",
+      "city": "Lagos",
+      "attire": "afro-punk",
+      "hairstyle": "natural-afro",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Lagos",
+        "axis": "flow",
+        "bonus": 2,
+        "name": "Afrobeat Flow",
+        "description": "Lagos Afrobeats rhythm: +2 Flow"
+      },
+      "scene": "Vibrant Lagos market street at golden hour, colorful murals, bustling energy. Caliban from Shakespeare, reimagined in modern hip-hop style. Wearing afro punk clothing, natural afro hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/TP-003-LGS-00-00-02.webp"
+    },
+    {
+      "variantId": "TP-003-BKN-00-00-02",
+      "baseCardId": "TP-003",
+      "city": "Brooklyn",
+      "attire": "hip-hop-classic",
+      "hairstyle": "high-top-fade",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Brooklyn",
+        "axis": "wit",
+        "bonus": 2,
+        "name": "Borough Boss",
+        "description": "NYC roast culture, battle rap birthplace: +2 Wit"
+      },
+      "scene": "Brooklyn rooftop at sunset, Manhattan skyline behind, graffiti-covered water towers. Caliban from Shakespeare, reimagined in modern hip-hop style. Wearing hip hop classic clothing, high top fade hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/TP-003-BKN-00-00-02.webp"
+    },
+    {
+      "variantId": "TP-003-LDN-00-00-02",
+      "baseCardId": "TP-003",
+      "city": "London",
+      "attire": "grime-streetwear",
+      "hairstyle": "skin-fade",
+      "skinTone": "medium",
+      "ability": {
+        "city": "London",
+        "axis": "shakespeare",
+        "bonus": 2,
+        "name": "Bard's Home Turf",
+        "description": "Home of Shakespeare: +2 Shakespeare"
+      },
+      "scene": "Moody London alley near the Globe Theatre, fog and neon, brick and steel. Caliban from Shakespeare, reimagined in modern hip-hop style. Wearing grime streetwear clothing, skin fade hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/TP-003-LDN-00-00-02.webp"
+    },
+    {
+      "variantId": "TP-003-MUM-00-00-02",
+      "baseCardId": "TP-003",
+      "city": "Mumbai",
+      "attire": "gully-streetwear",
+      "hairstyle": "undercut",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Mumbai",
+        "axis": "flow",
+        "bonus": 2,
+        "name": "Bollywood Rhythm",
+        "description": "Mumbai's poetic traditions: +2 Flow"
+      },
+      "scene": "Neon-lit Mumbai street at night, auto-rickshaws, Dharavi art meets Bollywood glamour. Caliban from Shakespeare, reimagined in modern hip-hop style. Wearing gully streetwear clothing, undercut hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/TP-003-MUM-00-00-02.webp"
+    },
+    {
+      "variantId": "TP-003-PAR-00-00-02",
+      "baseCardId": "TP-003",
+      "city": "Paris",
+      "attire": "haute-streetwear",
+      "hairstyle": "french-crop",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Paris",
+        "axis": "wordplay",
+        "bonus": 2,
+        "name": "Haute Verse",
+        "description": "French literary tradition: +2 Wordplay"
+      },
+      "scene": "Parisian rooftop overlooking the Eiffel Tower at dusk, street art and high fashion. Caliban from Shakespeare, reimagined in modern hip-hop style. Wearing haute streetwear clothing, french crop hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/TP-003-PAR-00-00-02.webp"
+    },
+    {
+      "variantId": "TP-003-SAO-00-00-02",
+      "baseCardId": "TP-003",
+      "city": "Sao Paulo",
+      "attire": "favela-streetwear",
+      "hairstyle": "tight-curls",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Sao Paulo",
+        "axis": "wit",
+        "bonus": 2,
+        "name": "Favela Fire",
+        "description": "Brazilian humor and improv: +2 Wit"
+      },
+      "scene": "Sao Paulo street corner, vivid graffiti murals, tropical trees meeting concrete. Caliban from Shakespeare, reimagined in modern hip-hop style. Wearing favela streetwear clothing, tight curls hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/TP-003-SAO-00-00-02.webp"
+    },
+    {
+      "variantId": "TP-003-SEO-00-00-02",
+      "baseCardId": "TP-003",
+      "city": "Seoul",
+      "attire": "k-streetwear",
+      "hairstyle": "two-block",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Seoul",
+        "axis": "flow",
+        "bonus": 2,
+        "name": "K-Wave Cadence",
+        "description": "K-pop precision and rap scene: +2 Flow"
+      },
+      "scene": "Neon Seoul district at night, K-pop billboards, cherry blossoms meet cyberpunk. Caliban from Shakespeare, reimagined in modern hip-hop style. Wearing k streetwear clothing, two block hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/TP-003-SEO-00-00-02.webp"
+    },
+    {
+      "variantId": "TP-003-NRB-00-00-02",
+      "baseCardId": "TP-003",
+      "city": "Nairobi",
+      "attire": "nairobi-streetwear",
+      "hairstyle": "short-natural",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Nairobi",
+        "axis": "shakespeare",
+        "bonus": 2,
+        "name": "Storyteller's Gift",
+        "description": "East African oral storytelling tradition: +2 Shakespeare"
+      },
+      "scene": "Nairobi skyline at golden hour, acacia trees, modern glass towers meet red earth. Caliban from Shakespeare, reimagined in modern hip-hop style. Wearing nairobi streetwear clothing, short natural hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/TP-003-NRB-00-00-02.webp"
+    },
+    {
+      "variantId": "TP-003-BER-00-00-02",
+      "baseCardId": "TP-003",
+      "city": "Berlin",
+      "attire": "techno-streetwear",
+      "hairstyle": "industrial-buzz",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Berlin",
+        "axis": "wit",
+        "bonus": 2,
+        "name": "Cabaret Edge",
+        "description": "Berlin cabaret tradition and dry humor: +2 Wit"
+      },
+      "scene": "Berlin warehouse district, industrial art, concrete and neon, the Wall in the background. Caliban from Shakespeare, reimagined in modern hip-hop style. Wearing techno streetwear clothing, industrial buzz hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/TP-003-BER-00-00-02.webp"
+    },
+    {
+      "variantId": "TP-003-MEX-00-00-02",
+      "baseCardId": "TP-003",
+      "city": "Mexico City",
+      "attire": "cdmx-streetwear",
+      "hairstyle": "slicked-pompadour",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Mexico City",
+        "axis": "wordplay",
+        "bonus": 2,
+        "name": "Corrido Craft",
+        "description": "Mexican poetic tradition: +2 Wordplay"
+      },
+      "scene": "Mexico City zocalo at twilight, Day of the Dead murals, colonial meets modern. Caliban from Shakespeare, reimagined in modern hip-hop style. Wearing cdmx streetwear clothing, slicked pompadour hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/TP-003-MEX-00-00-02.webp"
+    },
+    {
+      "variantId": "TP-003-CAI-00-00-02",
+      "baseCardId": "TP-003",
+      "city": "Cairo",
+      "attire": "cairo-streetwear",
+      "hairstyle": "close-crop",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Cairo",
+        "axis": "shakespeare",
+        "bonus": 2,
+        "name": "Scribe's Wisdom",
+        "description": "Ancient literary tradition: +2 Shakespeare"
+      },
+      "scene": "Cairo at dusk, pyramids in the distance, bustling modern streets, golden sand tones. Caliban from Shakespeare, reimagined in modern hip-hop style. Wearing cairo streetwear clothing, close crop hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/TP-003-CAI-00-00-02.webp"
+    },
+    {
+      "variantId": "MO-003-TKY-00-00-02",
+      "baseCardId": "MO-003",
+      "city": "Tokyo",
+      "attire": "streetwear",
+      "hairstyle": "top-knot",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Tokyo",
+        "axis": "wordplay",
+        "bonus": 2,
+        "name": "Neon Precision",
+        "description": "Tokyo's precision culture: +2 Wordplay"
+      },
+      "scene": "Neon-lit Shibuya crossing at night, towering LED screens, rain-slicked streets. Benvolio from Shakespeare, reimagined in modern hip-hop style. Wearing streetwear clothing, top knot hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/MO-003-TKY-00-00-02.webp"
+    },
+    {
+      "variantId": "MO-003-LGS-00-00-02",
+      "baseCardId": "MO-003",
+      "city": "Lagos",
+      "attire": "afro-punk",
+      "hairstyle": "natural-afro",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Lagos",
+        "axis": "flow",
+        "bonus": 2,
+        "name": "Afrobeat Flow",
+        "description": "Lagos Afrobeats rhythm: +2 Flow"
+      },
+      "scene": "Vibrant Lagos market street at golden hour, colorful murals, bustling energy. Benvolio from Shakespeare, reimagined in modern hip-hop style. Wearing afro punk clothing, natural afro hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/MO-003-LGS-00-00-02.webp"
+    },
+    {
+      "variantId": "MO-003-BKN-00-00-02",
+      "baseCardId": "MO-003",
+      "city": "Brooklyn",
+      "attire": "hip-hop-classic",
+      "hairstyle": "high-top-fade",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Brooklyn",
+        "axis": "wit",
+        "bonus": 2,
+        "name": "Borough Boss",
+        "description": "NYC roast culture, battle rap birthplace: +2 Wit"
+      },
+      "scene": "Brooklyn rooftop at sunset, Manhattan skyline behind, graffiti-covered water towers. Benvolio from Shakespeare, reimagined in modern hip-hop style. Wearing hip hop classic clothing, high top fade hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/MO-003-BKN-00-00-02.webp"
+    },
+    {
+      "variantId": "MO-003-LDN-00-00-02",
+      "baseCardId": "MO-003",
+      "city": "London",
+      "attire": "grime-streetwear",
+      "hairstyle": "skin-fade",
+      "skinTone": "medium",
+      "ability": {
+        "city": "London",
+        "axis": "shakespeare",
+        "bonus": 2,
+        "name": "Bard's Home Turf",
+        "description": "Home of Shakespeare: +2 Shakespeare"
+      },
+      "scene": "Moody London alley near the Globe Theatre, fog and neon, brick and steel. Benvolio from Shakespeare, reimagined in modern hip-hop style. Wearing grime streetwear clothing, skin fade hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/MO-003-LDN-00-00-02.webp"
+    },
+    {
+      "variantId": "MO-003-MUM-00-00-02",
+      "baseCardId": "MO-003",
+      "city": "Mumbai",
+      "attire": "gully-streetwear",
+      "hairstyle": "undercut",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Mumbai",
+        "axis": "flow",
+        "bonus": 2,
+        "name": "Bollywood Rhythm",
+        "description": "Mumbai's poetic traditions: +2 Flow"
+      },
+      "scene": "Neon-lit Mumbai street at night, auto-rickshaws, Dharavi art meets Bollywood glamour. Benvolio from Shakespeare, reimagined in modern hip-hop style. Wearing gully streetwear clothing, undercut hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/MO-003-MUM-00-00-02.webp"
+    },
+    {
+      "variantId": "MO-003-PAR-00-00-02",
+      "baseCardId": "MO-003",
+      "city": "Paris",
+      "attire": "haute-streetwear",
+      "hairstyle": "french-crop",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Paris",
+        "axis": "wordplay",
+        "bonus": 2,
+        "name": "Haute Verse",
+        "description": "French literary tradition: +2 Wordplay"
+      },
+      "scene": "Parisian rooftop overlooking the Eiffel Tower at dusk, street art and high fashion. Benvolio from Shakespeare, reimagined in modern hip-hop style. Wearing haute streetwear clothing, french crop hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/MO-003-PAR-00-00-02.webp"
+    },
+    {
+      "variantId": "MO-003-SAO-00-00-02",
+      "baseCardId": "MO-003",
+      "city": "Sao Paulo",
+      "attire": "favela-streetwear",
+      "hairstyle": "tight-curls",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Sao Paulo",
+        "axis": "wit",
+        "bonus": 2,
+        "name": "Favela Fire",
+        "description": "Brazilian humor and improv: +2 Wit"
+      },
+      "scene": "Sao Paulo street corner, vivid graffiti murals, tropical trees meeting concrete. Benvolio from Shakespeare, reimagined in modern hip-hop style. Wearing favela streetwear clothing, tight curls hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/MO-003-SAO-00-00-02.webp"
+    },
+    {
+      "variantId": "MO-003-SEO-00-00-02",
+      "baseCardId": "MO-003",
+      "city": "Seoul",
+      "attire": "k-streetwear",
+      "hairstyle": "two-block",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Seoul",
+        "axis": "flow",
+        "bonus": 2,
+        "name": "K-Wave Cadence",
+        "description": "K-pop precision and rap scene: +2 Flow"
+      },
+      "scene": "Neon Seoul district at night, K-pop billboards, cherry blossoms meet cyberpunk. Benvolio from Shakespeare, reimagined in modern hip-hop style. Wearing k streetwear clothing, two block hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/MO-003-SEO-00-00-02.webp"
+    },
+    {
+      "variantId": "MO-003-NRB-00-00-02",
+      "baseCardId": "MO-003",
+      "city": "Nairobi",
+      "attire": "nairobi-streetwear",
+      "hairstyle": "short-natural",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Nairobi",
+        "axis": "shakespeare",
+        "bonus": 2,
+        "name": "Storyteller's Gift",
+        "description": "East African oral storytelling tradition: +2 Shakespeare"
+      },
+      "scene": "Nairobi skyline at golden hour, acacia trees, modern glass towers meet red earth. Benvolio from Shakespeare, reimagined in modern hip-hop style. Wearing nairobi streetwear clothing, short natural hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/MO-003-NRB-00-00-02.webp"
+    },
+    {
+      "variantId": "MO-003-BER-00-00-02",
+      "baseCardId": "MO-003",
+      "city": "Berlin",
+      "attire": "techno-streetwear",
+      "hairstyle": "industrial-buzz",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Berlin",
+        "axis": "wit",
+        "bonus": 2,
+        "name": "Cabaret Edge",
+        "description": "Berlin cabaret tradition and dry humor: +2 Wit"
+      },
+      "scene": "Berlin warehouse district, industrial art, concrete and neon, the Wall in the background. Benvolio from Shakespeare, reimagined in modern hip-hop style. Wearing techno streetwear clothing, industrial buzz hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/MO-003-BER-00-00-02.webp"
+    },
+    {
+      "variantId": "MO-003-MEX-00-00-02",
+      "baseCardId": "MO-003",
+      "city": "Mexico City",
+      "attire": "cdmx-streetwear",
+      "hairstyle": "slicked-pompadour",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Mexico City",
+        "axis": "wordplay",
+        "bonus": 2,
+        "name": "Corrido Craft",
+        "description": "Mexican poetic tradition: +2 Wordplay"
+      },
+      "scene": "Mexico City zocalo at twilight, Day of the Dead murals, colonial meets modern. Benvolio from Shakespeare, reimagined in modern hip-hop style. Wearing cdmx streetwear clothing, slicked pompadour hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/MO-003-MEX-00-00-02.webp"
+    },
+    {
+      "variantId": "MO-003-CAI-00-00-02",
+      "baseCardId": "MO-003",
+      "city": "Cairo",
+      "attire": "cairo-streetwear",
+      "hairstyle": "close-crop",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Cairo",
+        "axis": "shakespeare",
+        "bonus": 2,
+        "name": "Scribe's Wisdom",
+        "description": "Ancient literary tradition: +2 Shakespeare"
+      },
+      "scene": "Cairo at dusk, pyramids in the distance, bustling modern streets, golden sand tones. Benvolio from Shakespeare, reimagined in modern hip-hop style. Wearing cairo streetwear clothing, close crop hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/MO-003-CAI-00-00-02.webp"
+    },
+    {
+      "variantId": "CA-002-TKY-00-00-02",
+      "baseCardId": "CA-002",
+      "city": "Tokyo",
+      "attire": "streetwear",
+      "hairstyle": "top-knot",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Tokyo",
+        "axis": "wordplay",
+        "bonus": 2,
+        "name": "Neon Precision",
+        "description": "Tokyo's precision culture: +2 Wordplay"
+      },
+      "scene": "Neon-lit Shibuya crossing at night, towering LED screens, rain-slicked streets. Tybalt from Shakespeare, reimagined in modern hip-hop style. Wearing streetwear clothing, top knot hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/CA-002-TKY-00-00-02.webp"
+    },
+    {
+      "variantId": "CA-002-LGS-00-00-02",
+      "baseCardId": "CA-002",
+      "city": "Lagos",
+      "attire": "afro-punk",
+      "hairstyle": "natural-afro",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Lagos",
+        "axis": "flow",
+        "bonus": 2,
+        "name": "Afrobeat Flow",
+        "description": "Lagos Afrobeats rhythm: +2 Flow"
+      },
+      "scene": "Vibrant Lagos market street at golden hour, colorful murals, bustling energy. Tybalt from Shakespeare, reimagined in modern hip-hop style. Wearing afro punk clothing, natural afro hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/CA-002-LGS-00-00-02.webp"
+    },
+    {
+      "variantId": "CA-002-BKN-00-00-02",
+      "baseCardId": "CA-002",
+      "city": "Brooklyn",
+      "attire": "hip-hop-classic",
+      "hairstyle": "high-top-fade",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Brooklyn",
+        "axis": "wit",
+        "bonus": 2,
+        "name": "Borough Boss",
+        "description": "NYC roast culture, battle rap birthplace: +2 Wit"
+      },
+      "scene": "Brooklyn rooftop at sunset, Manhattan skyline behind, graffiti-covered water towers. Tybalt from Shakespeare, reimagined in modern hip-hop style. Wearing hip hop classic clothing, high top fade hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/CA-002-BKN-00-00-02.webp"
+    },
+    {
+      "variantId": "CA-002-LDN-00-00-02",
+      "baseCardId": "CA-002",
+      "city": "London",
+      "attire": "grime-streetwear",
+      "hairstyle": "skin-fade",
+      "skinTone": "medium",
+      "ability": {
+        "city": "London",
+        "axis": "shakespeare",
+        "bonus": 2,
+        "name": "Bard's Home Turf",
+        "description": "Home of Shakespeare: +2 Shakespeare"
+      },
+      "scene": "Moody London alley near the Globe Theatre, fog and neon, brick and steel. Tybalt from Shakespeare, reimagined in modern hip-hop style. Wearing grime streetwear clothing, skin fade hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/CA-002-LDN-00-00-02.webp"
+    },
+    {
+      "variantId": "CA-002-MUM-00-00-02",
+      "baseCardId": "CA-002",
+      "city": "Mumbai",
+      "attire": "gully-streetwear",
+      "hairstyle": "undercut",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Mumbai",
+        "axis": "flow",
+        "bonus": 2,
+        "name": "Bollywood Rhythm",
+        "description": "Mumbai's poetic traditions: +2 Flow"
+      },
+      "scene": "Neon-lit Mumbai street at night, auto-rickshaws, Dharavi art meets Bollywood glamour. Tybalt from Shakespeare, reimagined in modern hip-hop style. Wearing gully streetwear clothing, undercut hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/CA-002-MUM-00-00-02.webp"
+    },
+    {
+      "variantId": "CA-002-PAR-00-00-02",
+      "baseCardId": "CA-002",
+      "city": "Paris",
+      "attire": "haute-streetwear",
+      "hairstyle": "french-crop",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Paris",
+        "axis": "wordplay",
+        "bonus": 2,
+        "name": "Haute Verse",
+        "description": "French literary tradition: +2 Wordplay"
+      },
+      "scene": "Parisian rooftop overlooking the Eiffel Tower at dusk, street art and high fashion. Tybalt from Shakespeare, reimagined in modern hip-hop style. Wearing haute streetwear clothing, french crop hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/CA-002-PAR-00-00-02.webp"
+    },
+    {
+      "variantId": "CA-002-SAO-00-00-02",
+      "baseCardId": "CA-002",
+      "city": "Sao Paulo",
+      "attire": "favela-streetwear",
+      "hairstyle": "tight-curls",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Sao Paulo",
+        "axis": "wit",
+        "bonus": 2,
+        "name": "Favela Fire",
+        "description": "Brazilian humor and improv: +2 Wit"
+      },
+      "scene": "Sao Paulo street corner, vivid graffiti murals, tropical trees meeting concrete. Tybalt from Shakespeare, reimagined in modern hip-hop style. Wearing favela streetwear clothing, tight curls hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/CA-002-SAO-00-00-02.webp"
+    },
+    {
+      "variantId": "CA-002-SEO-00-00-02",
+      "baseCardId": "CA-002",
+      "city": "Seoul",
+      "attire": "k-streetwear",
+      "hairstyle": "two-block",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Seoul",
+        "axis": "flow",
+        "bonus": 2,
+        "name": "K-Wave Cadence",
+        "description": "K-pop precision and rap scene: +2 Flow"
+      },
+      "scene": "Neon Seoul district at night, K-pop billboards, cherry blossoms meet cyberpunk. Tybalt from Shakespeare, reimagined in modern hip-hop style. Wearing k streetwear clothing, two block hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/CA-002-SEO-00-00-02.webp"
+    },
+    {
+      "variantId": "CA-002-NRB-00-00-02",
+      "baseCardId": "CA-002",
+      "city": "Nairobi",
+      "attire": "nairobi-streetwear",
+      "hairstyle": "short-natural",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Nairobi",
+        "axis": "shakespeare",
+        "bonus": 2,
+        "name": "Storyteller's Gift",
+        "description": "East African oral storytelling tradition: +2 Shakespeare"
+      },
+      "scene": "Nairobi skyline at golden hour, acacia trees, modern glass towers meet red earth. Tybalt from Shakespeare, reimagined in modern hip-hop style. Wearing nairobi streetwear clothing, short natural hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/CA-002-NRB-00-00-02.webp"
+    },
+    {
+      "variantId": "CA-002-BER-00-00-02",
+      "baseCardId": "CA-002",
+      "city": "Berlin",
+      "attire": "techno-streetwear",
+      "hairstyle": "industrial-buzz",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Berlin",
+        "axis": "wit",
+        "bonus": 2,
+        "name": "Cabaret Edge",
+        "description": "Berlin cabaret tradition and dry humor: +2 Wit"
+      },
+      "scene": "Berlin warehouse district, industrial art, concrete and neon, the Wall in the background. Tybalt from Shakespeare, reimagined in modern hip-hop style. Wearing techno streetwear clothing, industrial buzz hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/CA-002-BER-00-00-02.webp"
+    },
+    {
+      "variantId": "CA-002-MEX-00-00-02",
+      "baseCardId": "CA-002",
+      "city": "Mexico City",
+      "attire": "cdmx-streetwear",
+      "hairstyle": "slicked-pompadour",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Mexico City",
+        "axis": "wordplay",
+        "bonus": 2,
+        "name": "Corrido Craft",
+        "description": "Mexican poetic tradition: +2 Wordplay"
+      },
+      "scene": "Mexico City zocalo at twilight, Day of the Dead murals, colonial meets modern. Tybalt from Shakespeare, reimagined in modern hip-hop style. Wearing cdmx streetwear clothing, slicked pompadour hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/CA-002-MEX-00-00-02.webp"
+    },
+    {
+      "variantId": "CA-002-CAI-00-00-02",
+      "baseCardId": "CA-002",
+      "city": "Cairo",
+      "attire": "cairo-streetwear",
+      "hairstyle": "close-crop",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Cairo",
+        "axis": "shakespeare",
+        "bonus": 2,
+        "name": "Scribe's Wisdom",
+        "description": "Ancient literary tradition: +2 Shakespeare"
+      },
+      "scene": "Cairo at dusk, pyramids in the distance, bustling modern streets, golden sand tones. Tybalt from Shakespeare, reimagined in modern hip-hop style. Wearing cairo streetwear clothing, close crop hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/CA-002-CAI-00-00-02.webp"
+    },
+    {
+      "variantId": "DC-003-TKY-00-00-02",
+      "baseCardId": "DC-003",
+      "city": "Tokyo",
+      "attire": "streetwear",
+      "hairstyle": "top-knot",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Tokyo",
+        "axis": "wordplay",
+        "bonus": 2,
+        "name": "Neon Precision",
+        "description": "Tokyo's precision culture: +2 Wordplay"
+      },
+      "scene": "Neon-lit Shibuya crossing at night, towering LED screens, rain-slicked streets. King Claudius from Shakespeare, reimagined in modern hip-hop style. Wearing streetwear clothing, top knot hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/DC-003-TKY-00-00-02.webp"
+    },
+    {
+      "variantId": "DC-003-LGS-00-00-02",
+      "baseCardId": "DC-003",
+      "city": "Lagos",
+      "attire": "afro-punk",
+      "hairstyle": "natural-afro",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Lagos",
+        "axis": "flow",
+        "bonus": 2,
+        "name": "Afrobeat Flow",
+        "description": "Lagos Afrobeats rhythm: +2 Flow"
+      },
+      "scene": "Vibrant Lagos market street at golden hour, colorful murals, bustling energy. King Claudius from Shakespeare, reimagined in modern hip-hop style. Wearing afro punk clothing, natural afro hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/DC-003-LGS-00-00-02.webp"
+    },
+    {
+      "variantId": "DC-003-BKN-00-00-02",
+      "baseCardId": "DC-003",
+      "city": "Brooklyn",
+      "attire": "hip-hop-classic",
+      "hairstyle": "high-top-fade",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Brooklyn",
+        "axis": "wit",
+        "bonus": 2,
+        "name": "Borough Boss",
+        "description": "NYC roast culture, battle rap birthplace: +2 Wit"
+      },
+      "scene": "Brooklyn rooftop at sunset, Manhattan skyline behind, graffiti-covered water towers. King Claudius from Shakespeare, reimagined in modern hip-hop style. Wearing hip hop classic clothing, high top fade hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/DC-003-BKN-00-00-02.webp"
+    },
+    {
+      "variantId": "DC-003-LDN-00-00-02",
+      "baseCardId": "DC-003",
+      "city": "London",
+      "attire": "grime-streetwear",
+      "hairstyle": "skin-fade",
+      "skinTone": "medium",
+      "ability": {
+        "city": "London",
+        "axis": "shakespeare",
+        "bonus": 2,
+        "name": "Bard's Home Turf",
+        "description": "Home of Shakespeare: +2 Shakespeare"
+      },
+      "scene": "Moody London alley near the Globe Theatre, fog and neon, brick and steel. King Claudius from Shakespeare, reimagined in modern hip-hop style. Wearing grime streetwear clothing, skin fade hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/DC-003-LDN-00-00-02.webp"
+    },
+    {
+      "variantId": "DC-003-MUM-00-00-02",
+      "baseCardId": "DC-003",
+      "city": "Mumbai",
+      "attire": "gully-streetwear",
+      "hairstyle": "undercut",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Mumbai",
+        "axis": "flow",
+        "bonus": 2,
+        "name": "Bollywood Rhythm",
+        "description": "Mumbai's poetic traditions: +2 Flow"
+      },
+      "scene": "Neon-lit Mumbai street at night, auto-rickshaws, Dharavi art meets Bollywood glamour. King Claudius from Shakespeare, reimagined in modern hip-hop style. Wearing gully streetwear clothing, undercut hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/DC-003-MUM-00-00-02.webp"
+    },
+    {
+      "variantId": "DC-003-PAR-00-00-02",
+      "baseCardId": "DC-003",
+      "city": "Paris",
+      "attire": "haute-streetwear",
+      "hairstyle": "french-crop",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Paris",
+        "axis": "wordplay",
+        "bonus": 2,
+        "name": "Haute Verse",
+        "description": "French literary tradition: +2 Wordplay"
+      },
+      "scene": "Parisian rooftop overlooking the Eiffel Tower at dusk, street art and high fashion. King Claudius from Shakespeare, reimagined in modern hip-hop style. Wearing haute streetwear clothing, french crop hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/DC-003-PAR-00-00-02.webp"
+    },
+    {
+      "variantId": "DC-003-SAO-00-00-02",
+      "baseCardId": "DC-003",
+      "city": "Sao Paulo",
+      "attire": "favela-streetwear",
+      "hairstyle": "tight-curls",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Sao Paulo",
+        "axis": "wit",
+        "bonus": 2,
+        "name": "Favela Fire",
+        "description": "Brazilian humor and improv: +2 Wit"
+      },
+      "scene": "Sao Paulo street corner, vivid graffiti murals, tropical trees meeting concrete. King Claudius from Shakespeare, reimagined in modern hip-hop style. Wearing favela streetwear clothing, tight curls hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/DC-003-SAO-00-00-02.webp"
+    },
+    {
+      "variantId": "DC-003-SEO-00-00-02",
+      "baseCardId": "DC-003",
+      "city": "Seoul",
+      "attire": "k-streetwear",
+      "hairstyle": "two-block",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Seoul",
+        "axis": "flow",
+        "bonus": 2,
+        "name": "K-Wave Cadence",
+        "description": "K-pop precision and rap scene: +2 Flow"
+      },
+      "scene": "Neon Seoul district at night, K-pop billboards, cherry blossoms meet cyberpunk. King Claudius from Shakespeare, reimagined in modern hip-hop style. Wearing k streetwear clothing, two block hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/DC-003-SEO-00-00-02.webp"
+    },
+    {
+      "variantId": "DC-003-NRB-00-00-02",
+      "baseCardId": "DC-003",
+      "city": "Nairobi",
+      "attire": "nairobi-streetwear",
+      "hairstyle": "short-natural",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Nairobi",
+        "axis": "shakespeare",
+        "bonus": 2,
+        "name": "Storyteller's Gift",
+        "description": "East African oral storytelling tradition: +2 Shakespeare"
+      },
+      "scene": "Nairobi skyline at golden hour, acacia trees, modern glass towers meet red earth. King Claudius from Shakespeare, reimagined in modern hip-hop style. Wearing nairobi streetwear clothing, short natural hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/DC-003-NRB-00-00-02.webp"
+    },
+    {
+      "variantId": "DC-003-BER-00-00-02",
+      "baseCardId": "DC-003",
+      "city": "Berlin",
+      "attire": "techno-streetwear",
+      "hairstyle": "industrial-buzz",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Berlin",
+        "axis": "wit",
+        "bonus": 2,
+        "name": "Cabaret Edge",
+        "description": "Berlin cabaret tradition and dry humor: +2 Wit"
+      },
+      "scene": "Berlin warehouse district, industrial art, concrete and neon, the Wall in the background. King Claudius from Shakespeare, reimagined in modern hip-hop style. Wearing techno streetwear clothing, industrial buzz hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/DC-003-BER-00-00-02.webp"
+    },
+    {
+      "variantId": "DC-003-MEX-00-00-02",
+      "baseCardId": "DC-003",
+      "city": "Mexico City",
+      "attire": "cdmx-streetwear",
+      "hairstyle": "slicked-pompadour",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Mexico City",
+        "axis": "wordplay",
+        "bonus": 2,
+        "name": "Corrido Craft",
+        "description": "Mexican poetic tradition: +2 Wordplay"
+      },
+      "scene": "Mexico City zocalo at twilight, Day of the Dead murals, colonial meets modern. King Claudius from Shakespeare, reimagined in modern hip-hop style. Wearing cdmx streetwear clothing, slicked pompadour hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/DC-003-MEX-00-00-02.webp"
+    },
+    {
+      "variantId": "DC-003-CAI-00-00-02",
+      "baseCardId": "DC-003",
+      "city": "Cairo",
+      "attire": "cairo-streetwear",
+      "hairstyle": "close-crop",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Cairo",
+        "axis": "shakespeare",
+        "bonus": 2,
+        "name": "Scribe's Wisdom",
+        "description": "Ancient literary tradition: +2 Shakespeare"
+      },
+      "scene": "Cairo at dusk, pyramids in the distance, bustling modern streets, golden sand tones. King Claudius from Shakespeare, reimagined in modern hip-hop style. Wearing cairo streetwear clothing, close crop hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/DC-003-CAI-00-00-02.webp"
+    },
+    {
+      "variantId": "FA-003-TKY-00-00-02",
+      "baseCardId": "FA-003",
+      "city": "Tokyo",
+      "attire": "streetwear",
+      "hairstyle": "top-knot",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Tokyo",
+        "axis": "wordplay",
+        "bonus": 2,
+        "name": "Neon Precision",
+        "description": "Tokyo's precision culture: +2 Wordplay"
+      },
+      "scene": "Neon-lit Shibuya crossing at night, towering LED screens, rain-slicked streets. Oberon from Shakespeare, reimagined in modern hip-hop style. Wearing streetwear clothing, top knot hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/FA-003-TKY-00-00-02.webp"
+    },
+    {
+      "variantId": "FA-003-LGS-00-00-02",
+      "baseCardId": "FA-003",
+      "city": "Lagos",
+      "attire": "afro-punk",
+      "hairstyle": "natural-afro",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Lagos",
+        "axis": "flow",
+        "bonus": 2,
+        "name": "Afrobeat Flow",
+        "description": "Lagos Afrobeats rhythm: +2 Flow"
+      },
+      "scene": "Vibrant Lagos market street at golden hour, colorful murals, bustling energy. Oberon from Shakespeare, reimagined in modern hip-hop style. Wearing afro punk clothing, natural afro hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/FA-003-LGS-00-00-02.webp"
+    },
+    {
+      "variantId": "FA-003-BKN-00-00-02",
+      "baseCardId": "FA-003",
+      "city": "Brooklyn",
+      "attire": "hip-hop-classic",
+      "hairstyle": "high-top-fade",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Brooklyn",
+        "axis": "wit",
+        "bonus": 2,
+        "name": "Borough Boss",
+        "description": "NYC roast culture, battle rap birthplace: +2 Wit"
+      },
+      "scene": "Brooklyn rooftop at sunset, Manhattan skyline behind, graffiti-covered water towers. Oberon from Shakespeare, reimagined in modern hip-hop style. Wearing hip hop classic clothing, high top fade hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/FA-003-BKN-00-00-02.webp"
+    },
+    {
+      "variantId": "FA-003-LDN-00-00-02",
+      "baseCardId": "FA-003",
+      "city": "London",
+      "attire": "grime-streetwear",
+      "hairstyle": "skin-fade",
+      "skinTone": "medium",
+      "ability": {
+        "city": "London",
+        "axis": "shakespeare",
+        "bonus": 2,
+        "name": "Bard's Home Turf",
+        "description": "Home of Shakespeare: +2 Shakespeare"
+      },
+      "scene": "Moody London alley near the Globe Theatre, fog and neon, brick and steel. Oberon from Shakespeare, reimagined in modern hip-hop style. Wearing grime streetwear clothing, skin fade hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/FA-003-LDN-00-00-02.webp"
+    },
+    {
+      "variantId": "FA-003-MUM-00-00-02",
+      "baseCardId": "FA-003",
+      "city": "Mumbai",
+      "attire": "gully-streetwear",
+      "hairstyle": "undercut",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Mumbai",
+        "axis": "flow",
+        "bonus": 2,
+        "name": "Bollywood Rhythm",
+        "description": "Mumbai's poetic traditions: +2 Flow"
+      },
+      "scene": "Neon-lit Mumbai street at night, auto-rickshaws, Dharavi art meets Bollywood glamour. Oberon from Shakespeare, reimagined in modern hip-hop style. Wearing gully streetwear clothing, undercut hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/FA-003-MUM-00-00-02.webp"
+    },
+    {
+      "variantId": "FA-003-PAR-00-00-02",
+      "baseCardId": "FA-003",
+      "city": "Paris",
+      "attire": "haute-streetwear",
+      "hairstyle": "french-crop",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Paris",
+        "axis": "wordplay",
+        "bonus": 2,
+        "name": "Haute Verse",
+        "description": "French literary tradition: +2 Wordplay"
+      },
+      "scene": "Parisian rooftop overlooking the Eiffel Tower at dusk, street art and high fashion. Oberon from Shakespeare, reimagined in modern hip-hop style. Wearing haute streetwear clothing, french crop hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/FA-003-PAR-00-00-02.webp"
+    },
+    {
+      "variantId": "FA-003-SAO-00-00-02",
+      "baseCardId": "FA-003",
+      "city": "Sao Paulo",
+      "attire": "favela-streetwear",
+      "hairstyle": "tight-curls",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Sao Paulo",
+        "axis": "wit",
+        "bonus": 2,
+        "name": "Favela Fire",
+        "description": "Brazilian humor and improv: +2 Wit"
+      },
+      "scene": "Sao Paulo street corner, vivid graffiti murals, tropical trees meeting concrete. Oberon from Shakespeare, reimagined in modern hip-hop style. Wearing favela streetwear clothing, tight curls hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/FA-003-SAO-00-00-02.webp"
+    },
+    {
+      "variantId": "FA-003-SEO-00-00-02",
+      "baseCardId": "FA-003",
+      "city": "Seoul",
+      "attire": "k-streetwear",
+      "hairstyle": "two-block",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Seoul",
+        "axis": "flow",
+        "bonus": 2,
+        "name": "K-Wave Cadence",
+        "description": "K-pop precision and rap scene: +2 Flow"
+      },
+      "scene": "Neon Seoul district at night, K-pop billboards, cherry blossoms meet cyberpunk. Oberon from Shakespeare, reimagined in modern hip-hop style. Wearing k streetwear clothing, two block hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/FA-003-SEO-00-00-02.webp"
+    },
+    {
+      "variantId": "FA-003-NRB-00-00-02",
+      "baseCardId": "FA-003",
+      "city": "Nairobi",
+      "attire": "nairobi-streetwear",
+      "hairstyle": "short-natural",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Nairobi",
+        "axis": "shakespeare",
+        "bonus": 2,
+        "name": "Storyteller's Gift",
+        "description": "East African oral storytelling tradition: +2 Shakespeare"
+      },
+      "scene": "Nairobi skyline at golden hour, acacia trees, modern glass towers meet red earth. Oberon from Shakespeare, reimagined in modern hip-hop style. Wearing nairobi streetwear clothing, short natural hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/FA-003-NRB-00-00-02.webp"
+    },
+    {
+      "variantId": "FA-003-BER-00-00-02",
+      "baseCardId": "FA-003",
+      "city": "Berlin",
+      "attire": "techno-streetwear",
+      "hairstyle": "industrial-buzz",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Berlin",
+        "axis": "wit",
+        "bonus": 2,
+        "name": "Cabaret Edge",
+        "description": "Berlin cabaret tradition and dry humor: +2 Wit"
+      },
+      "scene": "Berlin warehouse district, industrial art, concrete and neon, the Wall in the background. Oberon from Shakespeare, reimagined in modern hip-hop style. Wearing techno streetwear clothing, industrial buzz hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/FA-003-BER-00-00-02.webp"
+    },
+    {
+      "variantId": "FA-003-MEX-00-00-02",
+      "baseCardId": "FA-003",
+      "city": "Mexico City",
+      "attire": "cdmx-streetwear",
+      "hairstyle": "slicked-pompadour",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Mexico City",
+        "axis": "wordplay",
+        "bonus": 2,
+        "name": "Corrido Craft",
+        "description": "Mexican poetic tradition: +2 Wordplay"
+      },
+      "scene": "Mexico City zocalo at twilight, Day of the Dead murals, colonial meets modern. Oberon from Shakespeare, reimagined in modern hip-hop style. Wearing cdmx streetwear clothing, slicked pompadour hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/FA-003-MEX-00-00-02.webp"
+    },
+    {
+      "variantId": "FA-003-CAI-00-00-02",
+      "baseCardId": "FA-003",
+      "city": "Cairo",
+      "attire": "cairo-streetwear",
+      "hairstyle": "close-crop",
+      "skinTone": "medium",
+      "ability": {
+        "city": "Cairo",
+        "axis": "shakespeare",
+        "bonus": 2,
+        "name": "Scribe's Wisdom",
+        "description": "Ancient literary tradition: +2 Shakespeare"
+      },
+      "scene": "Cairo at dusk, pyramids in the distance, bustling modern streets, golden sand tones. Oberon from Shakespeare, reimagined in modern hip-hop style. Wearing cairo streetwear clothing, close crop hairstyle, medium skin tone. Collectible card game art, dramatic lighting, detailed character portrait.",
+      "image": "/images/variants/FA-003-CAI-00-00-02.webp"
+    }
+  ]
+}

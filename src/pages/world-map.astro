@@ -1,0 +1,193 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import '../styles/global.css';
+---
+
+<BaseLayout title="World Map" description="Explore 12 global cities and discover World Card variants for your Shakespeare characters.">
+
+  <section class="section-padding">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-12">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold-500/10 border border-gold-500/20 mb-6">
+          <span class="w-2 h-2 rounded-full bg-gold-500 animate-pulse"></span>
+          <span class="text-gold-400 text-xs font-medium tracking-wide uppercase">World Cards</span>
+        </div>
+        <h1 class="text-4xl sm:text-5xl font-display font-bold mb-4">
+          World <span class="text-gradient">Map</span>
+        </h1>
+        <p class="text-obsidian-400 max-w-2xl mx-auto">
+          Shakespeare's characters travel the globe. Each city grants a unique battle ability.
+          Unlock variants through battles, trivia, and exploration.
+        </p>
+        <p class="text-sm text-obsidian-500 mt-3">
+          <span id="total-variants" class="text-gold-400 font-mono">0</span> variants unlocked
+          &middot;
+          <span id="total-cities" class="text-gold-400 font-mono">0</span> / 12 cities discovered
+          &middot;
+          20,736 possible combinations
+        </p>
+      </div>
+
+      <!-- City Cards Grid -->
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" id="world-grid">
+      </div>
+
+      <!-- City Detail Modal -->
+      <div id="city-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-obsidian-950/80 backdrop-blur-sm p-4">
+        <div class="card-glass max-w-lg w-full max-h-[80vh] overflow-y-auto p-6">
+          <div class="flex items-center justify-between mb-4">
+            <h3 id="modal-city-name" class="text-xl font-display font-bold text-gold-400"></h3>
+            <button id="modal-close" class="text-obsidian-400 hover:text-obsidian-200 text-xl">&times;</button>
+          </div>
+          <p id="modal-region" class="text-xs text-obsidian-500 mb-2"></p>
+          <div id="modal-ability" class="card-glass p-3 bg-gold-500/5 border-gold-500/20 mb-4"></div>
+          <h4 class="text-sm font-semibold text-obsidian-300 mb-2">Attire Styles</h4>
+          <div id="modal-attire" class="flex flex-wrap gap-2 mb-4"></div>
+          <h4 class="text-sm font-semibold text-obsidian-300 mb-2">Hairstyles</h4>
+          <div id="modal-hair" class="flex flex-wrap gap-2 mb-4"></div>
+          <h4 class="text-sm font-semibold text-obsidian-300 mb-2">Your Variants in This City</h4>
+          <div id="modal-variants" class="space-y-2"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    import {
+      CITY_CATALOG,
+      getAllCities,
+      getOwnedVariants,
+      getUnlockedCities,
+      getVariantCount,
+      decodeVariantId,
+      getCityByCode,
+      type WorldCity,
+    } from '../lib/variants';
+    import { CARD_CATALOG } from '../lib/cards';
+    import { initAudio, isInitialized, playMusic } from '../lib/audio-manager';
+
+    document.addEventListener('click', () => {
+      if (!isInitialized()) initAudio();
+      playMusic('collection-browse', 1000);
+    }, { once: true });
+
+    const cities = getAllCities();
+    const unlockedCities = getUnlockedCities();
+    const owned = getOwnedVariants();
+
+    document.getElementById('total-variants')!.textContent = String(getVariantCount());
+    document.getElementById('total-cities')!.textContent = String(unlockedCities.size);
+
+    const worldGrid = document.getElementById('world-grid')!;
+
+    // Ability axis → emoji
+    const axisEmoji: Record<string, string> = {
+      wordplay: '\u270D\uFE0F',
+      shakespeare: '\uD83C\uDFAD',
+      flow: '\uD83C\uDFB5',
+      wit: '\u26A1',
+    };
+
+    for (const city of cities) {
+      const config = CITY_CATALOG[city];
+      const isUnlocked = unlockedCities.has(city);
+      const cityVariants = owned.filter(v => {
+        const d = decodeVariantId(v.variantId);
+        return d && getCityByCode(d.cityCode) === city;
+      });
+
+      const el = document.createElement('div');
+      el.className = `card-glass p-5 transition-all cursor-pointer group ${isUnlocked ? 'hover:border-gold-500/30' : 'opacity-60'}`;
+      el.dataset.city = city;
+      el.innerHTML = `
+        <div class="flex items-start justify-between mb-3">
+          <div>
+            <h3 class="font-display font-bold text-lg ${isUnlocked ? 'text-obsidian-100' : 'text-obsidian-400'}">${city}</h3>
+            <p class="text-xs text-obsidian-500">${config.region}</p>
+          </div>
+          <span class="text-2xl">${isUnlocked ? '\uD83C\uDF0D' : '\uD83D\uDD12'}</span>
+        </div>
+        <div class="card-glass p-2 bg-obsidian-900/50 mb-3">
+          <div class="flex items-center gap-2">
+            <span class="text-sm">${axisEmoji[config.ability.axis] || ''}</span>
+            <div>
+              <p class="text-xs font-semibold ${isUnlocked ? 'text-gold-400' : 'text-obsidian-500'}">${config.ability.name}</p>
+              <p class="text-[10px] text-obsidian-500">${config.ability.description}</p>
+            </div>
+          </div>
+        </div>
+        <div class="flex items-center justify-between text-xs">
+          <span class="text-obsidian-500">${cityVariants.length} variant${cityVariants.length !== 1 ? 's' : ''} unlocked</span>
+          <span class="text-obsidian-600 group-hover:text-gold-400 transition-colors">View &rarr;</span>
+        </div>
+      `;
+      worldGrid.appendChild(el);
+    }
+
+    // Modal
+    const modal = document.getElementById('city-modal')!;
+    const modalClose = document.getElementById('modal-close')!;
+
+    worldGrid.addEventListener('click', (e) => {
+      const card = (e.target as HTMLElement).closest('[data-city]') as HTMLElement | null;
+      if (!card) return;
+      const city = card.dataset.city as WorldCity;
+      openCityModal(city);
+    });
+
+    modalClose.addEventListener('click', () => modal.classList.add('hidden'));
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) modal.classList.add('hidden');
+    });
+
+    function openCityModal(city: WorldCity) {
+      const config = CITY_CATALOG[city];
+      document.getElementById('modal-city-name')!.textContent = city;
+      document.getElementById('modal-region')!.textContent = config.region;
+      document.getElementById('modal-ability')!.innerHTML = `
+        <p class="text-sm font-semibold text-gold-400">${config.ability.name}</p>
+        <p class="text-xs text-obsidian-400">${config.ability.description}</p>
+      `;
+
+      // Attire
+      const attireEl = document.getElementById('modal-attire')!;
+      attireEl.innerHTML = config.attireOptions.map(a =>
+        `<span class="px-2 py-1 text-xs rounded bg-obsidian-800 text-obsidian-300 border border-obsidian-700">${a.replace(/-/g, ' ')}</span>`
+      ).join('');
+
+      // Hair
+      const hairEl = document.getElementById('modal-hair')!;
+      hairEl.innerHTML = config.hairstyleOptions.map(h =>
+        `<span class="px-2 py-1 text-xs rounded bg-obsidian-800 text-obsidian-300 border border-obsidian-700">${h.replace(/-/g, ' ')}</span>`
+      ).join('');
+
+      // Variants
+      const variantsEl = document.getElementById('modal-variants')!;
+      const cityVariants = owned.filter(v => {
+        const d = decodeVariantId(v.variantId);
+        return d && getCityByCode(d.cityCode) === city;
+      });
+
+      if (cityVariants.length === 0) {
+        variantsEl.innerHTML = `<p class="text-xs text-obsidian-500">No variants unlocked in ${city} yet.</p>`;
+      } else {
+        variantsEl.innerHTML = cityVariants.map(v => {
+          const card = CARD_CATALOG.find(c => c.id === v.baseCardId);
+          const decoded = decodeVariantId(v.variantId);
+          const attire = decoded ? config.attireOptions[decoded.attireIdx]?.replace(/-/g, ' ') : '';
+          return `
+            <div class="card-glass p-2 flex items-center gap-2">
+              ${card?.image ? `<img src="${card.image}" class="w-8 h-8 rounded object-cover">` : `<span>${card?.icon || ''}</span>`}
+              <div class="flex-1">
+                <p class="text-xs font-semibold text-obsidian-200">${card?.name || 'Unknown'}</p>
+                <p class="text-[10px] text-obsidian-500">${attire}</p>
+              </div>
+            </div>
+          `;
+        }).join('');
+      }
+
+      modal.classList.remove('hidden');
+    }
+  </script>
+</BaseLayout>

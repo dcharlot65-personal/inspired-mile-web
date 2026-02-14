@@ -96,6 +96,24 @@ import '../styles/global.css';
             </div>
           </div>
 
+          <!-- Variant Equip (World Card bonus) -->
+          <div id="variant-equip" class="hidden p-3 border-t border-obsidian-700/50 bg-obsidian-900/30">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <span class="text-xs text-obsidian-500">World Card:</span>
+                <span id="equipped-variant-label" class="text-xs font-semibold text-gold-400">None equipped</span>
+              </div>
+              <button id="equip-variant-btn" class="text-xs text-obsidian-400 hover:text-gold-400 transition-colors border border-obsidian-700 rounded px-2 py-1 hover:border-gold-500/30">
+                Equip Variant
+              </button>
+            </div>
+            <div id="variant-picker" class="hidden mt-3 max-h-48 overflow-y-auto space-y-1">
+              <button class="variant-pick w-full text-left text-xs p-2 rounded hover:bg-obsidian-800 text-obsidian-400" data-variant-id="">
+                No variant (no bonus)
+              </button>
+            </div>
+          </div>
+
           <!-- Battle Mode Selection -->
           <div id="mode-select" class="p-4 border-t border-obsidian-700/50 bg-obsidian-900/50">
             <p class="text-xs text-obsidian-500 text-center mb-3">Choose your battle mode:</p>
@@ -186,6 +204,17 @@ import '../styles/global.css';
     import { incrementStat, setHighScore, syncCardStats, getPlayerStats } from '../lib/achievements';
     import { getUniqueOwnedCount, getOwnedCards } from '../lib/inventory';
     import { initAudio, isInitialized, playMusic, playSfx, playRarityFanfare, preloadSfx, duckMusic, unduckMusic, type Rarity as AudioRarity } from '../lib/audio-manager';
+    import {
+      type CardVariant,
+      type CityAbility,
+      CITY_CATALOG,
+      getOwnedVariants,
+      decodeVariantId,
+      getCityByCode,
+      awardRandomVariant,
+    } from '../lib/variants';
+    import { CARD_CATALOG } from '../lib/cards';
+    import { getOwnedCardIds as getOwnedCardIdSet } from '../lib/inventory';
 
     // --- State ---
     let currentMode = '';
@@ -194,6 +223,9 @@ import '../styles/global.css';
     let voiceEnabled = true;
     let demoMode = false;
     let lastAIResponse = '';
+    let equippedVariantAbility: CityAbility | null = null;
+    let equippedVariantLabel = '';
+    let consecutiveWins = 0;
 
     // Load persistent stats on init
     function updateBattleStatsDisplay() {
@@ -226,6 +258,86 @@ import '../styles/global.css';
 
     // Load persistent stats on page load
     updateBattleStatsDisplay();
+
+    // --- Variant Equip UI ---
+    const variantEquipPanel = document.getElementById('variant-equip')!;
+    const equippedVariantLabelEl = document.getElementById('equipped-variant-label')!;
+    const equipVariantBtn = document.getElementById('equip-variant-btn')!;
+    const variantPicker = document.getElementById('variant-picker')!;
+
+    function initVariantEquipUI() {
+      const owned = getOwnedVariants();
+      if (owned.length === 0) return; // No variants — hide the panel
+
+      variantEquipPanel.classList.remove('hidden');
+
+      // Build picker options
+      const frag = document.createDocumentFragment();
+      // "None" option
+      const noneBtn = document.createElement('button');
+      noneBtn.className = 'variant-pick w-full text-left text-xs p-2 rounded hover:bg-obsidian-800 text-obsidian-400';
+      noneBtn.dataset.variantId = '';
+      noneBtn.textContent = 'No variant (no bonus)';
+      frag.appendChild(noneBtn);
+
+      for (const v of owned) {
+        const decoded = decodeVariantId(v.variantId);
+        if (!decoded) continue;
+        const city = getCityByCode(decoded.cityCode);
+        if (!city) continue;
+        const config = CITY_CATALOG[city];
+        const card = CARD_CATALOG.find(c => c.id === v.baseCardId);
+        if (!card) continue;
+
+        const btn = document.createElement('button');
+        btn.className = 'variant-pick w-full text-left text-xs p-2 rounded hover:bg-obsidian-800 text-obsidian-300 flex items-center justify-between';
+        btn.dataset.variantId = v.variantId;
+        btn.dataset.city = city;
+        btn.innerHTML = `
+          <span>${card.name} <span class="text-obsidian-500">in</span> ${city}</span>
+          <span class="text-gold-500 text-[10px]">+${config.ability.bonus} ${config.ability.axis}</span>
+        `;
+        frag.appendChild(btn);
+      }
+
+      variantPicker.innerHTML = '';
+      variantPicker.appendChild(frag);
+
+      // Toggle picker
+      equipVariantBtn.addEventListener('click', () => {
+        variantPicker.classList.toggle('hidden');
+      });
+
+      // Handle selection
+      variantPicker.addEventListener('click', (e) => {
+        const btn = (e.target as HTMLElement).closest('.variant-pick') as HTMLElement | null;
+        if (!btn) return;
+        const vid = btn.dataset.variantId || '';
+        if (!vid) {
+          equippedVariantAbility = null;
+          equippedVariantLabel = '';
+          equippedVariantLabelEl.textContent = 'None equipped';
+          equippedVariantLabelEl.className = 'text-xs font-semibold text-obsidian-400';
+        } else {
+          const decoded = decodeVariantId(vid);
+          if (decoded) {
+            const city = getCityByCode(decoded.cityCode);
+            if (city) {
+              const config = CITY_CATALOG[city];
+              equippedVariantAbility = config.ability;
+              const card = CARD_CATALOG.find(c => c.id === decoded.cityCode.length ? '' : '')
+                || CARD_CATALOG.find(c => c.id === vid.split('-').slice(0, 2).join('-'));
+              equippedVariantLabel = `${city} (+${config.ability.bonus} ${config.ability.axis})`;
+              equippedVariantLabelEl.textContent = equippedVariantLabel;
+              equippedVariantLabelEl.className = 'text-xs font-semibold text-gold-400';
+            }
+          }
+        }
+        variantPicker.classList.add('hidden');
+      });
+    }
+
+    initVariantEquipUI();
 
     // --- Demo mode fallback responses ---
     const demoResponses: Record<string, string[]> = {
@@ -443,6 +555,18 @@ import '../styles/global.css';
         const judgment = await judgeBattle(text, lastAIResponse);
 
         if (judgment) {
+          // Apply city bonus from equipped variant
+          if (equippedVariantAbility) {
+            const axis = equippedVariantAbility.axis as keyof typeof judgment.playerScore;
+            const original = judgment.playerScore[axis];
+            judgment.playerScore[axis] = Math.min(10, original + equippedVariantAbility.bonus);
+            judgment.playerScore.total = judgment.playerScore.wordplay
+              + judgment.playerScore.shakespeare
+              + judgment.playerScore.flow
+              + judgment.playerScore.wit;
+            // Re-evaluate winner
+            judgment.playerWins = judgment.playerScore.total > judgment.aiScore.total;
+          }
           showJudgment(judgment);
           playerWon = judgment.playerWins;
           setHighScore(judgment.playerScore.total);
@@ -463,14 +587,25 @@ import '../styles/global.css';
         playSfx('battle-victory');
         recordBattleWin();
         incrementStat('battleWins');
+        consecutiveWins++;
         const card = drawRandomCard();
         addCard(card.id, 'battle');
         syncCardStats(getUniqueOwnedCount(), getOwnedCards().length);
         showBattleReward(card);
         setTimeout(() => playRarityFanfare(card.rarity as AudioRarity), 300);
+
+        // Variant reward on every 3rd consecutive win
+        if (consecutiveWins > 0 && consecutiveWins % 3 === 0) {
+          const variant = awardRandomVariant(getOwnedCardIdSet(), 'battle-streak');
+          if (variant) {
+            showVariantReward(variant);
+            initVariantEquipUI(); // Refresh equip picker
+          }
+        }
       } else {
         aScore.textContent = String(Number(aScore.textContent) + 1);
         playSfx('battle-defeat');
+        consecutiveWins = 0;
       }
 
       updateBattleStatsDisplay();
@@ -485,6 +620,17 @@ import '../styles/global.css';
       div.className = 'text-center my-3';
       const winnerLabel = judgment.playerWins ? 'You win this round!' : 'The Thespian takes this round!';
       const winnerColor = judgment.playerWins ? 'text-emerald-400' : 'text-crimson-400';
+
+      // Build bonus annotation for the boosted axis
+      const bonusAxis = equippedVariantAbility?.axis || '';
+      const bonusAmt = equippedVariantAbility?.bonus || 0;
+      const bonusCity = equippedVariantAbility?.city || '';
+      function scoreLabel(axis: string, score: number, color: string): string {
+        const isBoosted = axis.toLowerCase() === bonusAxis && bonusAmt > 0;
+        const bonusTag = isBoosted ? ` <span class="text-gold-400 text-[10px]">(+${bonusAmt} ${bonusCity})</span>` : '';
+        return `<div class="flex justify-between"><span class="text-obsidian-400">${axis}</span><span class="${color}">${score}/10${bonusTag}</span></div>`;
+      }
+
       div.innerHTML = `
         <div class="card-glass p-4 max-w-md mx-auto bg-obsidian-900/80">
           <div class="text-xs font-mono text-obsidian-500 mb-2 uppercase tracking-wider">Judge's Verdict</div>
@@ -494,10 +640,10 @@ import '../styles/global.css';
             <div>
               <span class="text-obsidian-500 block mb-1">You</span>
               <div class="space-y-0.5">
-                <div class="flex justify-between"><span class="text-obsidian-400">Wordplay</span><span class="text-crimson-400">${judgment.playerScore.wordplay}/10</span></div>
-                <div class="flex justify-between"><span class="text-obsidian-400">Shakespeare</span><span class="text-crimson-400">${judgment.playerScore.shakespeare}/10</span></div>
-                <div class="flex justify-between"><span class="text-obsidian-400">Flow</span><span class="text-crimson-400">${judgment.playerScore.flow}/10</span></div>
-                <div class="flex justify-between"><span class="text-obsidian-400">Wit</span><span class="text-crimson-400">${judgment.playerScore.wit}/10</span></div>
+                ${scoreLabel('Wordplay', judgment.playerScore.wordplay, 'text-crimson-400')}
+                ${scoreLabel('Shakespeare', judgment.playerScore.shakespeare, 'text-crimson-400')}
+                ${scoreLabel('Flow', judgment.playerScore.flow, 'text-crimson-400')}
+                ${scoreLabel('Wit', judgment.playerScore.wit, 'text-crimson-400')}
                 <div class="flex justify-between border-t border-obsidian-700 pt-0.5 mt-0.5"><span class="text-obsidian-300 font-semibold">Total</span><span class="text-crimson-300 font-semibold">${judgment.playerScore.total}/40</span></div>
               </div>
             </div>
@@ -530,6 +676,26 @@ import '../styles/global.css';
             <span class="text-sm font-display font-bold text-obsidian-100">${card.name}</span>
             <span class="px-1.5 py-0.5 text-xs rounded-full ${rarityClass}">${card.rarity}</span>
           </div>
+        </div>
+      `;
+      battleLog.appendChild(div);
+      battleLog.lastElementChild?.scrollIntoView({ behavior: 'smooth', block: 'end' });
+    }
+
+    function showVariantReward(variant: CardVariant) {
+      const card = CARD_CATALOG.find(c => c.id === variant.baseCardId);
+      const div = document.createElement('div');
+      div.className = 'text-center my-2';
+      div.innerHTML = `
+        <div class="inline-block card-glass p-3 bg-gradient-to-r from-gold-500/20 to-purple-500/20 border-gold-500/30">
+          <span class="text-xs text-gold-400 font-semibold">WORLD CARD UNLOCKED!</span>
+          <div class="flex items-center gap-2 mt-1">
+            <span class="text-lg">&#127758;</span>
+            <span class="text-sm font-display font-bold text-obsidian-100">${card?.name || 'Unknown'}</span>
+            <span class="text-xs text-obsidian-400">in</span>
+            <span class="text-sm font-semibold text-gold-300">${variant.city}</span>
+          </div>
+          <div class="text-xs text-obsidian-500 mt-1">+${variant.ability.bonus} ${variant.ability.axis} in battle</div>
         </div>
       `;
       battleLog.appendChild(div);

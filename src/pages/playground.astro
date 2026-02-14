@@ -221,7 +221,8 @@ import { CARD_CATALOG, RARITY_COLORS, type Card, type Rarity } from '../lib/card
     import { isContentGenAvailable, generateTriviaSet, generateChallenge } from '../lib/content-gen';
     import { TRIVIA_BANK } from '../lib/trivia';
     import { incrementStat, syncCardStats, getPlayerStats } from '../lib/achievements';
-    import { getUniqueOwnedCount, getOwnedCards } from '../lib/inventory';
+    import { getUniqueOwnedCount, getOwnedCards, getOwnedCardIds } from '../lib/inventory';
+    import { awardRandomVariant, CITY_CATALOG } from '../lib/variants';
 
     // Start playground music on first interaction
     document.addEventListener('click', () => {
@@ -443,6 +444,13 @@ import { CARD_CATALOG, RARITY_COLORS, type Card, type Rarity } from '../lib/card
       const won = triviaScore >= 3;
       if (triviaScore === triviaQuestions.length) {
         incrementStat('triviaPerfect');
+        // Award a World Card variant for perfect trivia
+        const variant = awardRandomVariant(getOwnedCardIds(), 'trivia-mastery');
+        if (variant) {
+          setTimeout(() => {
+            alert(`World Card Unlocked! ${variant.city}: +${variant.ability.bonus} ${variant.ability.axis}`);
+          }, 1500);
+        }
       }
 
       if (won) {

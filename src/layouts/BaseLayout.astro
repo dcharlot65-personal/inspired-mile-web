@@ -56,13 +56,69 @@ const currentPath = Astro.url.pathname;
             <a href="/battle" class:list={["text-sm font-medium transition-colors", currentPath === "/battle" ? "text-gold-400" : "text-obsidian-300 hover:text-gold-400"]}>
               Battle Arena
             </a>
+            <a href="/world-map" class:list={["text-sm font-medium transition-colors", currentPath === "/world-map" ? "text-gold-400" : "text-obsidian-300 hover:text-gold-400"]}>
+              World Map
+            </a>
             <a href="/about" class:list={["text-sm font-medium transition-colors", currentPath === "/about" ? "text-gold-400" : "text-obsidian-300 hover:text-gold-400"]}>
               About
             </a>
           </div>
 
-          <!-- Audio toggle + Mobile menu button -->
+          <!-- Auth + Audio toggle + Mobile menu button -->
           <div class="flex items-center gap-2">
+            <!-- Auth: Login/User button -->
+            <div id="auth-container" class="relative">
+              <button id="auth-btn" class="hidden text-xs font-medium text-obsidian-300 hover:text-gold-400 transition-colors border border-obsidian-700 rounded-lg px-3 py-1.5 hover:border-gold-500/30">
+                Sign In
+              </button>
+              <div id="user-badge" class="hidden flex items-center gap-2 cursor-pointer">
+                <div class="w-7 h-7 rounded-full bg-gold-500/20 border border-gold-500/30 flex items-center justify-center">
+                  <span id="user-initial" class="text-xs font-bold text-gold-400">?</span>
+                </div>
+                <span id="user-name" class="hidden md:inline text-xs font-medium text-obsidian-300"></span>
+              </div>
+              <!-- Auth dropdown -->
+              <div id="auth-dropdown" class="hidden absolute right-0 top-full mt-2 w-72 card-glass bg-obsidian-900/95 backdrop-blur-lg border border-obsidian-700 rounded-xl shadow-2xl z-50 p-4">
+                <!-- Login form (default) -->
+                <div id="auth-login-form">
+                  <h3 class="text-sm font-display font-bold text-obsidian-200 mb-3">Sign In</h3>
+                  <input id="auth-username" type="text" placeholder="Username" class="w-full bg-obsidian-800 border border-obsidian-700 rounded-lg px-3 py-2 text-xs text-obsidian-100 mb-2 focus:outline-none focus:border-gold-500/50" />
+                  <input id="auth-password" type="password" placeholder="Password" class="w-full bg-obsidian-800 border border-obsidian-700 rounded-lg px-3 py-2 text-xs text-obsidian-100 mb-3 focus:outline-none focus:border-gold-500/50" />
+                  <button id="auth-login-submit" class="w-full btn-primary text-xs py-2">Sign In</button>
+                  <p class="text-xs text-obsidian-500 mt-2 text-center">
+                    No account? <button id="auth-show-register" class="text-gold-400 hover:underline">Create one</button>
+                  </p>
+                  <p id="auth-error" class="hidden text-xs text-crimson-400 mt-2 text-center"></p>
+                </div>
+                <!-- Register form -->
+                <div id="auth-register-form" class="hidden">
+                  <h3 class="text-sm font-display font-bold text-obsidian-200 mb-3">Create Account</h3>
+                  <input id="reg-username" type="text" placeholder="Username (3-32 chars)" class="w-full bg-obsidian-800 border border-obsidian-700 rounded-lg px-3 py-2 text-xs text-obsidian-100 mb-2 focus:outline-none focus:border-gold-500/50" />
+                  <input id="reg-email" type="email" placeholder="Email" class="w-full bg-obsidian-800 border border-obsidian-700 rounded-lg px-3 py-2 text-xs text-obsidian-100 mb-2 focus:outline-none focus:border-gold-500/50" />
+                  <input id="reg-password" type="password" placeholder="Password (8+ chars)" class="w-full bg-obsidian-800 border border-obsidian-700 rounded-lg px-3 py-2 text-xs text-obsidian-100 mb-3 focus:outline-none focus:border-gold-500/50" />
+                  <button id="auth-register-submit" class="w-full btn-primary text-xs py-2">Create Account</button>
+                  <p class="text-xs text-obsidian-500 mt-2 text-center">
+                    Already have an account? <button id="auth-show-login" class="text-gold-400 hover:underline">Sign in</button>
+                  </p>
+                  <p id="reg-error" class="hidden text-xs text-crimson-400 mt-2 text-center"></p>
+                </div>
+                <!-- User menu (when logged in) -->
+                <div id="auth-user-menu" class="hidden">
+                  <div class="flex items-center gap-3 mb-3 pb-3 border-b border-obsidian-700">
+                    <div class="w-10 h-10 rounded-full bg-gold-500/20 border border-gold-500/30 flex items-center justify-center">
+                      <span id="menu-user-initial" class="text-lg font-bold text-gold-400">?</span>
+                    </div>
+                    <div>
+                      <p id="menu-user-name" class="text-sm font-semibold text-obsidian-200"></p>
+                      <p class="text-xs text-emerald-400">Synced to server</p>
+                    </div>
+                  </div>
+                  <button id="auth-logout-btn" class="w-full text-xs text-obsidian-400 hover:text-crimson-400 py-2 text-center transition-colors">
+                    Sign Out
+                  </button>
+                </div>
+              </div>
+            </div>
             <button id="audio-toggle" class="text-obsidian-400 hover:text-gold-400 transition-colors p-2 rounded-lg hover:bg-obsidian-800/50" aria-label="Toggle audio" title="Toggle audio">
               <svg id="audio-icon-on" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
@@ -88,6 +144,7 @@ const currentPath = Astro.url.pathname;
           <a href="/collection" class:list={["block text-sm font-medium py-2", currentPath === "/collection" ? "text-gold-400" : "text-obsidian-300"]}>Collection</a>
           <a href="/playground" class:list={["block text-sm font-medium py-2", currentPath === "/playground" ? "text-gold-400" : "text-obsidian-300"]}>Playground</a>
           <a href="/battle" class:list={["block text-sm font-medium py-2", currentPath === "/battle" ? "text-gold-400" : "text-obsidian-300"]}>Battle Arena</a>
+          <a href="/world-map" class:list={["block text-sm font-medium py-2", currentPath === "/world-map" ? "text-gold-400" : "text-obsidian-300"]}>World Map</a>
           <a href="/about" class:list={["block text-sm font-medium py-2", currentPath === "/about" ? "text-gold-400" : "text-obsidian-300"]}>About</a>
         </div>
       </div>
@@ -122,6 +179,7 @@ const currentPath = Astro.url.pathname;
               <li><a href="/collection" class="hover:text-gold-400 transition-colors">Card Collection</a></li>
               <li><a href="/playground" class="hover:text-gold-400 transition-colors">Playground</a></li>
               <li><a href="/battle" class="hover:text-gold-400 transition-colors">Battle Arena</a></li>
+              <li><a href="/world-map" class="hover:text-gold-400 transition-colors">World Map</a></li>
             </ul>
           </div>
           <div>
@@ -244,6 +302,110 @@ const currentPath = Astro.url.pathname;
           setTimeout(() => toast.remove(), 500);
         }, 4000);
       }) as EventListener);
+    </script>
+
+    <script>
+      // Auth UI logic
+      import { initStorageBackend, isLoggedIn, getCurrentUser, registerUser, loginUser, logoutUser } from '../lib/storage-backend';
+
+      const authBtn = document.getElementById('auth-btn')!;
+      const userBadge = document.getElementById('user-badge')!;
+      const authDropdown = document.getElementById('auth-dropdown')!;
+      const loginForm = document.getElementById('auth-login-form')!;
+      const registerForm = document.getElementById('auth-register-form')!;
+      const userMenu = document.getElementById('auth-user-menu')!;
+
+      function updateAuthUI() {
+        if (isLoggedIn()) {
+          const user = getCurrentUser()!;
+          authBtn.classList.add('hidden');
+          userBadge.classList.remove('hidden');
+          userBadge.classList.add('flex');
+          document.getElementById('user-initial')!.textContent = user.username[0].toUpperCase();
+          document.getElementById('user-name')!.textContent = user.username;
+          document.getElementById('menu-user-initial')!.textContent = user.username[0].toUpperCase();
+          document.getElementById('menu-user-name')!.textContent = user.username;
+          loginForm.classList.add('hidden');
+          registerForm.classList.add('hidden');
+          userMenu.classList.remove('hidden');
+        } else {
+          authBtn.classList.remove('hidden');
+          userBadge.classList.add('hidden');
+          loginForm.classList.remove('hidden');
+          registerForm.classList.add('hidden');
+          userMenu.classList.add('hidden');
+        }
+      }
+
+      // Toggle dropdown
+      function toggleDropdown() {
+        authDropdown.classList.toggle('hidden');
+      }
+      authBtn.addEventListener('click', toggleDropdown);
+      userBadge.addEventListener('click', toggleDropdown);
+
+      // Close on outside click
+      document.addEventListener('click', (e) => {
+        const container = document.getElementById('auth-container')!;
+        if (!container.contains(e.target as Node)) {
+          authDropdown.classList.add('hidden');
+        }
+      });
+
+      // Switch forms
+      document.getElementById('auth-show-register')?.addEventListener('click', () => {
+        loginForm.classList.add('hidden');
+        registerForm.classList.remove('hidden');
+      });
+      document.getElementById('auth-show-login')?.addEventListener('click', () => {
+        registerForm.classList.add('hidden');
+        loginForm.classList.remove('hidden');
+      });
+
+      // Login
+      document.getElementById('auth-login-submit')?.addEventListener('click', async () => {
+        const username = (document.getElementById('auth-username') as HTMLInputElement).value.trim();
+        const password = (document.getElementById('auth-password') as HTMLInputElement).value;
+        const errEl = document.getElementById('auth-error')!;
+        errEl.classList.add('hidden');
+
+        try {
+          await loginUser(username, password);
+          updateAuthUI();
+          authDropdown.classList.add('hidden');
+        } catch (e: any) {
+          errEl.textContent = e.body || e.message || 'Login failed';
+          errEl.classList.remove('hidden');
+        }
+      });
+
+      // Register
+      document.getElementById('auth-register-submit')?.addEventListener('click', async () => {
+        const username = (document.getElementById('reg-username') as HTMLInputElement).value.trim();
+        const email = (document.getElementById('reg-email') as HTMLInputElement).value.trim();
+        const password = (document.getElementById('reg-password') as HTMLInputElement).value;
+        const errEl = document.getElementById('reg-error')!;
+        errEl.classList.add('hidden');
+
+        try {
+          await registerUser(username, email, password);
+          updateAuthUI();
+          authDropdown.classList.add('hidden');
+        } catch (e: any) {
+          errEl.textContent = e.body || e.message || 'Registration failed';
+          errEl.classList.remove('hidden');
+        }
+      });
+
+      // Logout
+      document.getElementById('auth-logout-btn')?.addEventListener('click', async () => {
+        await logoutUser();
+        updateAuthUI();
+        authDropdown.classList.add('hidden');
+      });
+
+      // Init on load
+      initStorageBackend().then(() => updateAuthUI());
     </script>
   </body>
 </html>

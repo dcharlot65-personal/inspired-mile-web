@@ -6,7 +6,10 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "test": "playwright test",
+    "test:v1": "playwright test v1-flows",
+    "test:v2": "playwright test v2-world-cards"
   },
   "dependencies": {
     "@astrojs/tailwind": "^6.0.2",
@@ -14,5 +17,8 @@
     "astro": "^5.17.1",
     "kokoro-js": "^1.2.1",
     "tailwindcss": "^3.4.17"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.58.2"
   }
 }
