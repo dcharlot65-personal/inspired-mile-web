@@ -68,10 +68,11 @@ jobs:
             set -e
             cd /Volumes/DataVolume/inspired-mile-web/backend
             cargo build --release 2>&1
-            sudo launchctl unload /Library/LaunchDaemons/com.inspiredmile.api.plist 2>/dev/null || true
             pkill -f inspired-mile-api 2>/dev/null || true
-            sleep 1
-            sudo launchctl load /Library/LaunchDaemons/com.inspiredmile.api.plist
+            sleep 2
+            source .env
+            nohup ./target/release/inspired-mile-api > /tmp/inspired-mile-api.log 2>&1 &
+            disown
           "'
 
       - name: Health check
@@ -79,6 +80,6 @@ jobs:
           EC2_HOST: ${{ secrets.EC2_HOST }}
           EC2_USER: ${{ secrets.EC2_USER }}
         run: |
-          sleep 3
+          sleep 5
           ssh -i ~/.ssh/deploy_key "${EC2_USER}@${EC2_HOST}" \
             "curl -sf http://localhost:3849/api/v1/health" || echo "Warning: API health check failed — may still be starting"
