@@ -32,12 +32,32 @@ import '../styles/global.css';
 
       <!-- Tournament List -->
       <div id="panel-list">
-        <div id="tournament-list" class="space-y-4">
-          <div class="text-center py-12">
-            <div class="w-6 h-6 border-2 border-gold-500 border-t-transparent rounded-full animate-spin mx-auto mb-3"></div>
-            <p class="text-sm text-obsidian-500">Loading tournaments...</p>
-          </div>
+        <!-- Loading Skeleton -->
+        <div id="loading-skeleton" class="space-y-4 animate-pulse">
+          {Array(4).fill(null).map(() => (
+            <div class="card-glass p-6">
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div class="flex-1 space-y-3">
+                  <div class="flex items-center gap-3">
+                    <div class="bg-obsidian-800 rounded h-6 w-48"></div>
+                    <div class="bg-obsidian-800 rounded-full h-5 w-20"></div>
+                  </div>
+                  <div class="flex gap-4">
+                    <div class="bg-obsidian-800 rounded h-3 w-24"></div>
+                    <div class="bg-obsidian-800 rounded h-3 w-24"></div>
+                    <div class="bg-obsidian-800 rounded h-3 w-32"></div>
+                  </div>
+                </div>
+                <div class="flex gap-2">
+                  <div class="bg-obsidian-800 rounded-lg h-9 w-24"></div>
+                  <div class="bg-obsidian-800 rounded-lg h-9 w-32"></div>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
+
+        <div id="tournament-list" class="space-y-4 hidden"></div>
       </div>
 
       <!-- Bracket View -->
@@ -106,6 +126,11 @@ import '../styles/global.css';
         renderTournaments();
         populateBracketSelect();
       } catch (e: any) {
+        // Hide skeleton on error
+        const skeleton = document.getElementById('loading-skeleton');
+        if (skeleton) skeleton.style.display = 'none';
+        listContainer.classList.remove('hidden');
+
         const isOffline = !e.message || e.message.includes('Failed to fetch') || e.message.includes('NetworkError');
         listContainer.innerHTML = isOffline
           ? '<div class="text-center py-12"><div class="w-16 h-16 rounded-full bg-obsidian-800 border border-obsidian-700 flex items-center justify-center mx-auto mb-4"><span class="text-2xl">&#127942;</span></div><p class="text-sm text-obsidian-300 font-display font-bold mb-2">Tournaments Coming Soon</p><p class="text-xs text-obsidian-500">The backend service is being set up. Check back shortly.</p></div>'
@@ -114,6 +139,11 @@ import '../styles/global.css';
     }
 
     function renderTournaments() {
+      // Hide skeleton and show content
+      const skeleton = document.getElementById('loading-skeleton');
+      if (skeleton) skeleton.style.display = 'none';
+      listContainer.classList.remove('hidden');
+
       if (tournaments.length === 0) {
         listContainer.innerHTML = '<div class="text-center py-12"><p class="text-sm text-obsidian-500">No tournaments available yet. Check back soon!</p></div>';
         return;

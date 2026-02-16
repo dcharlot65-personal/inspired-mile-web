@@ -1,0 +1,225 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import '../styles/global.css';
+---
+
+<BaseLayout title="Story Mode" description="Journey through Shakespeare's worlds in this single-player campaign.">
+
+  <section class="section-padding">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-12">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 mb-6">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span class="text-emerald-400 text-xs font-medium tracking-wide uppercase">Campaign</span>
+        </div>
+        <h1 class="text-4xl sm:text-5xl font-display font-bold mb-4">
+          <span class="text-gradient">Story Mode</span>
+        </h1>
+        <p class="text-obsidian-400 text-lg max-w-2xl mx-auto">
+          Journey through 5 acts across Shakespeare's greatest works. Face iconic characters in verse battles and uncover the secrets of the Globe.
+        </p>
+      </div>
+
+      <!-- Progress Overview -->
+      <div class="card-glass p-6 rounded-2xl mb-8">
+        <div class="flex items-center justify-between">
+          <div>
+            <h3 class="text-lg font-display font-bold text-obsidian-200">Your Journey</h3>
+            <p class="text-xs text-obsidian-500" id="progress-text">0 / 19 encounters completed</p>
+          </div>
+          <div class="text-right">
+            <span class="text-2xl font-display font-bold text-gold-400" id="total-stars">0</span>
+            <span class="text-xs text-obsidian-500 block">Stars</span>
+          </div>
+        </div>
+        <div class="w-full h-2 bg-obsidian-800 rounded-full overflow-hidden mt-3">
+          <div id="story-progress-bar" class="h-full bg-gradient-to-r from-emerald-500 to-gold-400 rounded-full transition-all duration-500" style="width: 0%"></div>
+        </div>
+      </div>
+
+      <!-- Acts -->
+      <div id="acts-container" class="space-y-6">
+        <!-- Act 1 -->
+        <div class="card-glass p-6 rounded-2xl border-l-4 border-amber-500/50">
+          <div class="flex items-center justify-between mb-3">
+            <div>
+              <span class="text-xs text-amber-400 font-mono uppercase tracking-wider">Act I</span>
+              <h3 class="text-lg font-display font-bold text-obsidian-200">The Streets of Verona</h3>
+            </div>
+            <span class="text-2xl">&#x1F3DB;&#xFE0F;</span>
+          </div>
+          <p class="text-sm text-obsidian-400 mb-4">Begin your journey in the sun-drenched streets where Montagues and Capulets clash.</p>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+            <div class="bg-obsidian-800/50 rounded-lg p-3 text-center cursor-pointer hover:bg-obsidian-700/50 transition-colors encounter-card" data-encounter="1-1">
+              <span class="text-xs font-bold text-obsidian-300">Street Brawl</span>
+              <div class="mt-1"><span class="text-[10px] text-emerald-400">Easy</span></div>
+            </div>
+            <div class="bg-obsidian-800/50 rounded-lg p-3 text-center cursor-pointer hover:bg-obsidian-700/50 transition-colors encounter-card" data-encounter="1-2">
+              <span class="text-xs font-bold text-obsidian-300">The Nurse's Riddle</span>
+              <div class="mt-1"><span class="text-[10px] text-emerald-400">Easy</span></div>
+            </div>
+            <div class="bg-obsidian-800/50 rounded-lg p-3 text-center cursor-pointer hover:bg-obsidian-700/50 transition-colors encounter-card" data-encounter="1-3">
+              <span class="text-xs font-bold text-obsidian-300">Mercutio's Challenge</span>
+              <div class="mt-1"><span class="text-[10px] text-amber-400">Medium</span></div>
+            </div>
+            <div class="bg-obsidian-800/50 rounded-lg p-3 text-center cursor-pointer hover:bg-obsidian-700/50 transition-colors encounter-card" data-encounter="1-4">
+              <span class="text-xs font-bold text-obsidian-300">The Prince's Judgment</span>
+              <div class="mt-1"><span class="text-[10px] text-amber-400">Medium</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Act 2 -->
+        <div class="card-glass p-6 rounded-2xl border-l-4 border-indigo-500/50">
+          <div class="flex items-center justify-between mb-3">
+            <div>
+              <span class="text-xs text-indigo-400 font-mono uppercase tracking-wider">Act II</span>
+              <h3 class="text-lg font-display font-bold text-obsidian-200">The Halls of Elsinore</h3>
+            </div>
+            <span class="text-2xl">&#x1F451;</span>
+          </div>
+          <p class="text-sm text-obsidian-400 mb-4">Something is rotten in the state of Denmark. Unravel the court's dark secrets.</p>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+            <div class="bg-obsidian-800/50 rounded-lg p-3 text-center encounter-card" data-encounter="2-1">
+              <span class="text-xs font-bold text-obsidian-300">The Ghost's Warning</span>
+              <div class="mt-1"><span class="text-[10px] text-amber-400">Medium</span></div>
+            </div>
+            <div class="bg-obsidian-800/50 rounded-lg p-3 text-center encounter-card" data-encounter="2-2">
+              <span class="text-xs font-bold text-obsidian-300">Ophelia's Garden</span>
+              <div class="mt-1"><span class="text-[10px] text-emerald-400">Easy</span></div>
+            </div>
+            <div class="bg-obsidian-800/50 rounded-lg p-3 text-center encounter-card" data-encounter="2-3">
+              <span class="text-xs font-bold text-obsidian-300">The Mousetrap</span>
+              <div class="mt-1"><span class="text-[10px] text-red-400">Hard</span></div>
+            </div>
+            <div class="bg-obsidian-800/50 rounded-lg p-3 text-center encounter-card" data-encounter="2-4">
+              <span class="text-xs font-bold text-obsidian-300">Hamlet's Soliloquy</span>
+              <div class="mt-1"><span class="text-[10px] text-red-400">Hard</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Act 3 -->
+        <div class="card-glass p-6 rounded-2xl border-l-4 border-emerald-500/50">
+          <div class="flex items-center justify-between mb-3">
+            <div>
+              <span class="text-xs text-emerald-400 font-mono uppercase tracking-wider">Act III</span>
+              <h3 class="text-lg font-display font-bold text-obsidian-200">The Enchanted Forest</h3>
+            </div>
+            <span class="text-2xl">&#x1F33F;</span>
+          </div>
+          <p class="text-sm text-obsidian-400 mb-4">Wander through a magical wood where fairies play and mortals dream.</p>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+            <div class="bg-obsidian-800/50 rounded-lg p-3 text-center encounter-card" data-encounter="3-1">
+              <span class="text-xs font-bold text-obsidian-300">Puck's Pranks</span>
+              <div class="mt-1"><span class="text-[10px] text-emerald-400">Easy</span></div>
+            </div>
+            <div class="bg-obsidian-800/50 rounded-lg p-3 text-center encounter-card" data-encounter="3-2">
+              <span class="text-xs font-bold text-obsidian-300">Bottom's Dream</span>
+              <div class="mt-1"><span class="text-[10px] text-amber-400">Medium</span></div>
+            </div>
+            <div class="bg-obsidian-800/50 rounded-lg p-3 text-center encounter-card" data-encounter="3-3">
+              <span class="text-xs font-bold text-obsidian-300">Titania's Court</span>
+              <div class="mt-1"><span class="text-[10px] text-amber-400">Medium</span></div>
+            </div>
+            <div class="bg-obsidian-800/50 rounded-lg p-3 text-center encounter-card" data-encounter="3-4">
+              <span class="text-xs font-bold text-obsidian-300">Oberon's Trial</span>
+              <div class="mt-1"><span class="text-[10px] text-red-400">Hard</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Act 4 -->
+        <div class="card-glass p-6 rounded-2xl border-l-4 border-cyan-500/50">
+          <div class="flex items-center justify-between mb-3">
+            <div>
+              <span class="text-xs text-cyan-400 font-mono uppercase tracking-wider">Act IV</span>
+              <h3 class="text-lg font-display font-bold text-obsidian-200">Tempest Island</h3>
+            </div>
+            <span class="text-2xl">&#x26A1;</span>
+          </div>
+          <p class="text-sm text-obsidian-400 mb-4">Shipwrecked on a mysterious island ruled by a powerful sorcerer.</p>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+            <div class="bg-obsidian-800/50 rounded-lg p-3 text-center encounter-card" data-encounter="4-1">
+              <span class="text-xs font-bold text-obsidian-300">Caliban's Rage</span>
+              <div class="mt-1"><span class="text-[10px] text-amber-400">Medium</span></div>
+            </div>
+            <div class="bg-obsidian-800/50 rounded-lg p-3 text-center encounter-card" data-encounter="4-2">
+              <span class="text-xs font-bold text-obsidian-300">Ariel's Song</span>
+              <div class="mt-1"><span class="text-[10px] text-amber-400">Medium</span></div>
+            </div>
+            <div class="bg-obsidian-800/50 rounded-lg p-3 text-center encounter-card" data-encounter="4-3">
+              <span class="text-xs font-bold text-obsidian-300">Miranda's Wonder</span>
+              <div class="mt-1"><span class="text-[10px] text-emerald-400">Easy</span></div>
+            </div>
+            <div class="bg-obsidian-800/50 rounded-lg p-3 text-center encounter-card" data-encounter="4-4">
+              <span class="text-xs font-bold text-obsidian-300">Prospero's Test</span>
+              <div class="mt-1"><span class="text-[10px] text-red-400">Hard</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Act 5 -->
+        <div class="card-glass p-6 rounded-2xl border-l-4 border-gold-500/50">
+          <div class="flex items-center justify-between mb-3">
+            <div>
+              <span class="text-xs text-gold-400 font-mono uppercase tracking-wider">Act V</span>
+              <h3 class="text-lg font-display font-bold text-obsidian-200">The Globe Theatre</h3>
+            </div>
+            <span class="text-2xl">&#x1F3AD;</span>
+          </div>
+          <p class="text-sm text-obsidian-400 mb-4">The final act. Face Shakespeare's greatest characters on the world's stage.</p>
+          <div class="grid grid-cols-2 md:grid-cols-3 gap-2">
+            <div class="bg-obsidian-800/50 rounded-lg p-3 text-center encounter-card" data-encounter="5-1">
+              <span class="text-xs font-bold text-obsidian-300">The Scottish King</span>
+              <div class="mt-1"><span class="text-[10px] text-red-400">Hard</span></div>
+            </div>
+            <div class="bg-obsidian-800/50 rounded-lg p-3 text-center encounter-card" data-encounter="5-2">
+              <span class="text-xs font-bold text-obsidian-300">Rome's Betrayal</span>
+              <div class="mt-1"><span class="text-[10px] text-red-400">Hard</span></div>
+            </div>
+            <div class="bg-obsidian-800/50 rounded-lg p-3 text-center encounter-card" data-encounter="5-3">
+              <span class="text-xs font-bold text-obsidian-300">The Final Bow</span>
+              <div class="mt-1"><span class="text-[10px] text-red-400">Hard</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <script>
+    import { getStoryProgress, getTotalEncounters, isEncounterUnlocked } from '../lib/story-mode';
+
+    const progress = getStoryProgress();
+    const total = getTotalEncounters();
+
+    // Update progress display
+    const progressText = document.getElementById('progress-text');
+    const totalStars = document.getElementById('total-stars');
+    const progressBar = document.getElementById('story-progress-bar');
+
+    if (progressText) progressText.textContent = `${progress.completedEncounters.length} / ${total} encounters completed`;
+    if (totalStars) totalStars.textContent = String(progress.totalStars);
+    if (progressBar) progressBar.style.width = `${(progress.completedEncounters.length / total) * 100}%`;
+
+    // Mark completed/locked encounters
+    document.querySelectorAll('.encounter-card').forEach(card => {
+      const id = card.getAttribute('data-encounter');
+      if (!id) return;
+
+      if (progress.completedEncounters.includes(id)) {
+        card.classList.add('border', 'border-emerald-500/30', 'bg-emerald-500/5');
+        const check = document.createElement('span');
+        check.className = 'text-emerald-400 text-[10px] ml-1';
+        check.textContent = '\u2713';
+        card.querySelector('span:first-child')?.after(check);
+      } else if (!isEncounterUnlocked(id)) {
+        card.classList.add('opacity-40', 'pointer-events-none');
+        card.classList.remove('cursor-pointer', 'hover:bg-obsidian-700/50');
+      }
+    });
+  </script>
+
+</BaseLayout>

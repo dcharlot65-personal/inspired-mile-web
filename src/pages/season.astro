@@ -1,0 +1,86 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import '../styles/global.css';
+---
+
+<BaseLayout title="Season Pass" description="Level up your Season Pass to unlock exclusive rewards in Inspired Mile.">
+
+  <section class="section-padding">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-12">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/20 mb-6">
+          <span class="w-2 h-2 rounded-full bg-purple-500 animate-pulse"></span>
+          <span class="text-purple-400 text-xs font-medium tracking-wide uppercase">Season 1</span>
+        </div>
+        <h1 class="text-4xl sm:text-5xl font-display font-bold mb-4">
+          <span class="text-gradient">Season Pass</span>
+        </h1>
+        <p class="text-obsidian-400 text-lg max-w-2xl mx-auto">
+          Play battles, trivia, and challenges to earn XP. Level up to unlock exclusive cards, credits, and titles.
+        </p>
+      </div>
+
+      <!-- Season Progress Bar -->
+      <div id="season-progress" class="card-glass p-6 rounded-2xl mb-8">
+        <div class="flex items-center justify-between mb-3">
+          <div>
+            <h3 class="text-lg font-display font-bold text-obsidian-200" id="season-name">Loading...</h3>
+            <p class="text-xs text-obsidian-500" id="season-dates"></p>
+          </div>
+          <div class="text-right">
+            <span class="text-2xl font-display font-bold text-gold-400" id="season-level">1</span>
+            <span class="text-xs text-obsidian-500 block">Level</span>
+          </div>
+        </div>
+        <div class="w-full h-3 bg-obsidian-800 rounded-full overflow-hidden">
+          <div id="xp-bar" class="h-full bg-gradient-to-r from-purple-500 to-gold-400 rounded-full transition-all duration-500" style="width: 0%"></div>
+        </div>
+        <div class="flex justify-between mt-1">
+          <span class="text-[10px] text-obsidian-500" id="xp-current">0 XP</span>
+          <span class="text-[10px] text-obsidian-500" id="xp-next">Next: 200 XP</span>
+        </div>
+      </div>
+
+      <!-- XP Rates -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8">
+        <div class="card-glass p-4 rounded-xl text-center">
+          <span class="text-2xl">&#x2694;&#xFE0F;</span>
+          <p class="text-sm font-bold text-obsidian-200 mt-1">Battle</p>
+          <p class="text-xs text-purple-400">+100 XP</p>
+        </div>
+        <div class="card-glass p-4 rounded-xl text-center">
+          <span class="text-2xl">&#x1F9E0;</span>
+          <p class="text-sm font-bold text-obsidian-200 mt-1">Trivia</p>
+          <p class="text-xs text-purple-400">+50 XP</p>
+        </div>
+        <div class="card-glass p-4 rounded-xl text-center">
+          <span class="text-2xl">&#x1F4DC;</span>
+          <p class="text-sm font-bold text-obsidian-200 mt-1">Challenge</p>
+          <p class="text-xs text-purple-400">+40 XP</p>
+        </div>
+        <div class="card-glass p-4 rounded-xl text-center">
+          <span class="text-2xl">&#x2B50;</span>
+          <p class="text-sm font-bold text-obsidian-200 mt-1">Daily</p>
+          <p class="text-xs text-purple-400">+25 XP</p>
+        </div>
+      </div>
+
+      <!-- Reward Track -->
+      <h2 class="text-xl font-display font-bold text-obsidian-200 mb-4">Reward Track</h2>
+      <div id="reward-track" class="space-y-2 mb-8">
+        <div class="card-glass p-4 rounded-xl animate-pulse">
+          <div class="bg-obsidian-800 rounded h-4 w-1/3"></div>
+        </div>
+      </div>
+
+      <!-- Sign In Prompt -->
+      <div id="season-signin" class="hidden card-glass p-8 rounded-2xl text-center">
+        <p class="text-obsidian-400 mb-4">Sign in to track your Season Pass progress across devices.</p>
+        <button class="btn-primary text-sm px-6 py-2" onclick="document.getElementById('auth-btn')?.click()">
+          Sign In
+        </button>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

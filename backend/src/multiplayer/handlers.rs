@@ -25,6 +25,8 @@ pub fn router() -> Router<(PgPool, Config)> {
         .route("/ws", get(ws_handler))
         .route("/queue", post(join_queue))
         .route("/rooms", get(list_rooms))
+        .route("/create-private", post(create_private_room))
+        .route("/join/{token}", get(join_private_room))
 }
 
 #[derive(Serialize)]
@@ -94,6 +96,62 @@ async fn list_rooms(
             })
             .collect(),
     )
+}
+
+// --- Challenge-a-Friend: Private Rooms ---
+
+#[derive(Serialize)]
+struct PrivateRoomResponse {
+    room_id: Uuid,
+    token: String,
+}
+
+async fn create_private_room(
+    Extension(claims): Extension<Claims>,
+    Extension(rooms): Extension<Arc<RoomManager>>,
+) -> Result<Json<PrivateRoomResponse>, (StatusCode, String)> {
+    let room_id = rooms.create_room(3).await;
+
+    // Add the creator as the first player
+    if let Some(room_arc) = rooms.get_room(room_id).await {
+        let mut room = room_arc.lock().await;
+        room.add_player(claims.sub, claims.username.clone());
+    }
+
+    // Use the room_id as the shareable token (simple but effective)
+    let token = room_id.to_string();
+
+    Ok(Json(PrivateRoomResponse { room_id, token }))
+}
+
+#[derive(Serialize)]
+struct JoinPrivateResponse {
+    room_id: Uuid,
+    status: String,
+}
+
+async fn join_private_room(
+    Extension(claims): Extension<Claims>,
+    Extension(rooms): Extension<Arc<RoomManager>>,
+    axum::extract::Path(token): axum::extract::Path<String>,
+) -> Result<Json<JoinPrivateResponse>, (StatusCode, String)> {
+    let room_id: Uuid = token.parse()
+        .map_err(|_| (StatusCode::BAD_REQUEST, "Invalid room token".into()))?;
+
+    let room_arc = rooms.get_room(room_id).await
+        .ok_or((StatusCode::NOT_FOUND, "Room not found or expired".into()))?;
+
+    let mut room = room_arc.lock().await;
+    if room.players.len() >= 2 {
+        return Err((StatusCode::BAD_REQUEST, "Room is full".into()));
+    }
+
+    room.add_player(claims.sub, claims.username.clone());
+
+    Ok(Json(JoinPrivateResponse {
+        room_id,
+        status: "joined".into(),
+    }))
 }
 
 async fn ws_handler(
@@ -181,6 +239,15 @@ async fn handle_socket(
             }
 
             ClientEvent::SubmitVerse { text: verse } => {
+                // Input validation: verse length
+                if verse.is_empty() || verse.len() > 2000 {
+                    let err = ServerEvent::Error {
+                        message: "Verse must be between 1 and 2000 characters".into(),
+                    };
+                    let _ = ws_tx.lock().await.send(Message::Text(serde_json::to_string(&err).unwrap().into())).await;
+                    continue;
+                }
+
                 let room_id = match current_room_id {
                     Some(id) => id,
                     None => continue,

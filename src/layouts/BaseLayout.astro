@@ -22,6 +22,7 @@ const currentPath = Astro.url.pathname;
     <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="32x32" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
     <meta property="og:title" content={`${title} | Inspired Mile`} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
@@ -32,6 +33,7 @@ const currentPath = Astro.url.pathname;
     <meta name="twitter:image" content="/images/cards/sm-001.webp" />
     <title>{title} | Inspired Mile</title>
     <script is:inline src="https://accounts.google.com/gsi/client" async defer></script>
+    <script is:inline defer data-domain="inspiredmile.com" src="https://plausible.io/js/script.js"></script>
   </head>
   <body class="min-h-screen flex flex-col">
     <!-- Navigation -->
@@ -634,6 +636,14 @@ const currentPath = Astro.url.pathname;
       window.addEventListener('load', () => {
         if (!isLoggedIn()) initGoogleSignIn();
       });
+    </script>
+    <!-- Service Worker Registration -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js').catch(() => {});
+        });
+      }
     </script>
     <!-- Tamper Guard -->
     <script>

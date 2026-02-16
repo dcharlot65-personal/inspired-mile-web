@@ -5,8 +5,8 @@
  * and grants a passive city ability in battle. Variants are defined by 4 axes:
  * City, Attire, Hairstyle, and Skin Tone.
  *
- * Only Character cards (18) get variants — Relics and Potions do not.
- * Combinatorial space: 18 chars × 12 cities × 4 attires × 4 hairstyles × 6 tones = 20,736
+ * Only Character cards get variants — Relics and Potions do not.
+ * Combinatorial space: chars × 20 cities × 4 attires × 4 hairstyles × 6 tones
  */
 
 import type { Card } from './cards';
@@ -21,7 +21,9 @@ export type { BattleAxis };
 export type WorldCity =
   | 'Tokyo' | 'Lagos' | 'Brooklyn' | 'London'
   | 'Mumbai' | 'Paris' | 'Sao Paulo' | 'Seoul'
-  | 'Nairobi' | 'Berlin' | 'Mexico City' | 'Cairo';
+  | 'Nairobi' | 'Berlin' | 'Mexico City' | 'Cairo'
+  | 'Accra' | 'Johannesburg' | 'Manila' | 'Istanbul'
+  | 'Toronto' | 'Sydney' | 'Osaka' | 'Kingston';
 
 export type SkinTone = 'light' | 'light-medium' | 'medium' | 'medium-dark' | 'dark' | 'deep';
 
@@ -264,6 +266,126 @@ export const CITY_CATALOG: Record<WorldCity, CityConfig> = {
     attireOptions: ['cairo-streetwear', 'pharaonic-modern', 'desert-tech', 'arabic-formal'],
     hairstyleOptions: ['close-crop', 'textured-waves', 'headwrap-style', 'natural-thick'],
     scenePrefix: 'Cairo at dusk, pyramids in the distance, bustling modern streets, golden sand tones.',
+  },
+
+  Accra: {
+    code: 'ACC',
+    region: 'West Africa',
+    ability: {
+      city: 'Accra',
+      axis: 'wit',
+      bonus: 2,
+      name: 'Highlife Humor',
+      description: 'Ghanaian highlife and sharp wit: +2 Wit',
+    },
+    attireOptions: ['kente-streetwear', 'accra-urban', 'afro-modern', 'gold-coast-chic'],
+    hairstyleOptions: ['flat-top', 'twisted-locs', 'shape-up', 'natural-curls'],
+    scenePrefix: 'Accra beachfront at sunset, colorful fishing boats, vibrant market stalls, palm trees.',
+  },
+
+  Johannesburg: {
+    code: 'JHB',
+    region: 'Southern Africa',
+    ability: {
+      city: 'Johannesburg',
+      axis: 'wordplay',
+      bonus: 2,
+      name: 'Jozi Bars',
+      description: 'Johannesburg rap scene intensity: +2 Wordplay',
+    },
+    attireOptions: ['jozi-streetwear', 'madiba-modern', 'soweto-chic', 'gold-rush-style'],
+    hairstyleOptions: ['high-fade', 'box-braids', 'clean-shave', 'afro-pick'],
+    scenePrefix: 'Johannesburg skyline, mining headgear silhouettes, vibrant Maboneng street art.',
+  },
+
+  Manila: {
+    code: 'MNL',
+    region: 'Southeast Asia',
+    ability: {
+      city: 'Manila',
+      axis: 'flow',
+      bonus: 2,
+      name: 'FlipTop Flow',
+      description: 'Filipino rap battle culture: +2 Flow',
+    },
+    attireOptions: ['manila-streetwear', 'barong-modern', 'jeepney-punk', 'pacific-island'],
+    hairstyleOptions: ['undercut-textured', 'slicked-side', 'crew-cut', 'long-layered'],
+    scenePrefix: 'Manila at night, neon jeepneys, street vendors, colonial architecture meets urban grit.',
+  },
+
+  Istanbul: {
+    code: 'IST',
+    region: 'Eurasia',
+    ability: {
+      city: 'Istanbul',
+      axis: 'shakespeare',
+      bonus: 2,
+      name: 'Crossroads Verse',
+      description: 'Where East meets West in poetry: +2 Shakespeare',
+    },
+    attireOptions: ['istanbul-streetwear', 'ottoman-modern', 'bazaar-chic', 'bosphorus-formal'],
+    hairstyleOptions: ['tapered-sides', 'curly-medium', 'swept-back', 'textured-fringe'],
+    scenePrefix: 'Istanbul at golden hour, minarets and modern skyline, the Bosphorus glittering below.',
+  },
+
+  Toronto: {
+    code: 'TOR',
+    region: 'North America',
+    ability: {
+      city: 'Toronto',
+      axis: 'flow',
+      bonus: 2,
+      name: 'Six Flow',
+      description: 'Toronto hip-hop dynasty: +2 Flow',
+    },
+    attireOptions: ['toronto-streetwear', 'six-varsity', 'canadian-techwear', 'multicultural-blend'],
+    hairstyleOptions: ['line-up', 'curly-top', 'braided-crown', 'buzz-fade'],
+    scenePrefix: 'Toronto CN Tower at twilight, Drake-era vibes, snow-dusted streets meet urban heat.',
+  },
+
+  Sydney: {
+    code: 'SYD',
+    region: 'Oceania',
+    ability: {
+      city: 'Sydney',
+      axis: 'wit',
+      bonus: 2,
+      name: 'Harbour Hustle',
+      description: 'Australian irreverent humor: +2 Wit',
+    },
+    attireOptions: ['sydney-streetwear', 'surf-urban', 'outback-modern', 'harbour-formal'],
+    hairstyleOptions: ['beach-waves', 'undercut-long', 'cropped-natural', 'bleached-tips'],
+    scenePrefix: 'Sydney Opera House at dusk, harbour bridge lights, street art laneways, coastal energy.',
+  },
+
+  Osaka: {
+    code: 'OSA',
+    region: 'Asia',
+    ability: {
+      city: 'Osaka',
+      axis: 'wit',
+      bonus: 2,
+      name: 'Kansai Comedy',
+      description: 'Osaka comedy tradition and wordplay: +2 Wit',
+    },
+    attireOptions: ['osaka-streetwear', 'dotonbori-neon', 'kansai-casual', 'takoyaki-punk'],
+    hairstyleOptions: ['wolf-cut', 'dyed-accent', 'messy-natural', 'shaggy-layers'],
+    scenePrefix: 'Osaka Dotonbori at night, giant neon signs, bustling food stalls, river reflections.',
+  },
+
+  Kingston: {
+    code: 'KGN',
+    region: 'Caribbean',
+    ability: {
+      city: 'Kingston',
+      axis: 'flow',
+      bonus: 2,
+      name: 'Dancehall Rhythm',
+      description: 'Jamaican dancehall and dub poetry: +2 Flow',
+    },
+    attireOptions: ['kingston-streetwear', 'rasta-modern', 'dancehall-glam', 'caribbean-casual'],
+    hairstyleOptions: ['dreadlocks', 'finger-coils', 'temple-fade', 'free-form-natural'],
+    scenePrefix: 'Kingston waterfront, Blue Mountains in the background, sound system speakers, tropical colors.',
   },
 };
 

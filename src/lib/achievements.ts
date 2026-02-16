@@ -135,10 +135,10 @@ export const ACHIEVEMENTS: Achievement[] = [
   {
     id: 'completionist',
     name: 'Completionist',
-    description: 'Collect all 24 unique cards',
+    description: 'Collect all 48 unique cards',
     tier: 'gold',
     icon: '\uD83D\uDC51',
-    check: (s) => s.uniqueCards >= 24,
+    check: (s) => s.uniqueCards >= 48,
   },
   {
     id: 'master-thespian',
@@ -171,6 +171,126 @@ export const ACHIEVEMENTS: Achievement[] = [
     tier: 'gold',
     icon: '\uD83C\uDFAF',
     check: (s) => s.totalRounds >= 100,
+  },
+
+  // --- V2: Expanded Achievements ---
+
+  // Bronze — New early milestones
+  {
+    id: 'first-pack',
+    name: 'Unboxing Day',
+    description: 'Open your first card pack',
+    tier: 'bronze',
+    icon: '\uD83C\uDF81',
+    check: (s) => s.packsOpened >= 1,
+  },
+  {
+    id: 'trivia-starter',
+    name: 'Curious Mind',
+    description: 'Answer 1 trivia question correctly',
+    tier: 'bronze',
+    icon: '\u2753',
+    check: (s) => s.triviaCorrect >= 1,
+  },
+  {
+    id: 'first-challenge',
+    name: 'Quote Seeker',
+    description: 'Complete your first quote challenge',
+    tier: 'bronze',
+    icon: '\uD83D\uDCDC',
+    check: (s) => s.challengesCompleted >= 1,
+  },
+
+  // Silver — New intermediate achievements
+  {
+    id: 'battle-master',
+    name: 'Battle Master',
+    description: 'Win 10 battles',
+    tier: 'silver',
+    icon: '\u2694\uFE0F',
+    check: (s) => s.battleWins >= 10,
+  },
+  {
+    id: 'relic-hunter',
+    name: 'Relic Hunter',
+    description: 'Collect 5 relic cards',
+    tier: 'silver',
+    icon: '\uD83D\uDD2E',
+    check: (s) => s.uniqueCards >= 15,
+  },
+  {
+    id: 'trivia-enthusiast',
+    name: 'Trivia Enthusiast',
+    description: 'Answer 25 trivia questions correctly',
+    tier: 'silver',
+    icon: '\uD83E\uDDE0',
+    check: (s) => s.triviaCorrect >= 25,
+  },
+  {
+    id: 'challenge-adept',
+    name: 'Challenge Adept',
+    description: 'Complete 20 quote challenges',
+    tier: 'silver',
+    icon: '\uD83D\uDCD6',
+    check: (s) => s.challengesCompleted >= 20,
+  },
+  {
+    id: 'pack-collector',
+    name: 'Pack Collector',
+    description: 'Open 25 card packs',
+    tier: 'silver',
+    icon: '\uD83D\uDCE6',
+    check: (s) => s.packsOpened >= 25,
+  },
+
+  // Gold — New expert milestones
+  {
+    id: 'legend-50-wins',
+    name: 'Legend of the Stage',
+    description: 'Win 50 battles',
+    tier: 'gold',
+    icon: '\uD83C\uDFC6',
+    check: (s) => s.battleWins >= 50,
+  },
+  {
+    id: 'trivia-champion',
+    name: 'Trivia Champion',
+    description: 'Answer 100 trivia questions correctly',
+    tier: 'gold',
+    icon: '\uD83C\uDF1F',
+    check: (s) => s.triviaCorrect >= 100,
+  },
+  {
+    id: 'challenge-legend',
+    name: 'Challenge Legend',
+    description: 'Complete 50 quote challenges',
+    tier: 'gold',
+    icon: '\uD83D\uDCDC',
+    check: (s) => s.challengesCompleted >= 50,
+  },
+  {
+    id: 'pack-addict',
+    name: 'Pack Addict',
+    description: 'Open 50 card packs',
+    tier: 'gold',
+    icon: '\uD83C\uDF89',
+    check: (s) => s.packsOpened >= 50,
+  },
+  {
+    id: 'half-collection',
+    name: 'Half the Globe',
+    description: 'Collect 24 unique cards',
+    tier: 'silver',
+    icon: '\uD83C\uDF0D',
+    check: (s) => s.uniqueCards >= 24,
+  },
+  {
+    id: 'perfect-scholar',
+    name: 'Perfect Scholar',
+    description: 'Get 5 perfect trivia scores',
+    tier: 'gold',
+    icon: '\uD83C\uDF93',
+    check: (s) => s.triviaPerfect >= 5,
   },
 ];
 

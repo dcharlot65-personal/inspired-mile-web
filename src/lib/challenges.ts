@@ -1,6 +1,6 @@
 /**
  * Quote Completion Challenges — Fill in the missing words.
- * V1: Expanded to 42 challenges across easy/medium/hard.
+ * V2: Expanded to 104 challenges across easy/medium/hard.
  */
 
 export interface QuoteChallenge {
@@ -275,6 +275,390 @@ export const CHALLENGE_BANK: QuoteChallenge[] = [
     displayQuote: 'Be not ___ of greatness. Some are born great, some ___ greatness, and others have greatness thrust upon them.',
     missingWords: ['afraid', 'achieve'],
     play: 'Twelfth Night', character: 'Malvolio', difficulty: 'hard',
+  },
+
+  // ========================================
+  // EASY — Expansion (16 new)
+  // ========================================
+  {
+    fullQuote: 'We know what we are, but know not what we may be.',
+    displayQuote: 'We know what we ___, but know not what we may ___.',
+    missingWords: ['are', 'be'],
+    play: 'Hamlet', character: 'Ophelia', difficulty: 'easy',
+  },
+  {
+    fullQuote: 'Frailty, thy name is woman!',
+    displayQuote: 'Frailty, thy name is ___!',
+    missingWords: ['woman'],
+    play: 'Hamlet', character: 'Hamlet', difficulty: 'easy',
+  },
+  {
+    fullQuote: 'Off with his head!',
+    displayQuote: 'Off with his ___!',
+    missingWords: ['head'],
+    play: 'Richard III', character: 'Richard III', difficulty: 'easy',
+  },
+  {
+    fullQuote: 'Once more unto the breach, dear friends, once more.',
+    displayQuote: 'Once more unto the ___, dear friends, once more.',
+    missingWords: ['breach'],
+    play: 'Henry V', character: 'King Henry', difficulty: 'easy',
+  },
+  {
+    fullQuote: 'But soft, what light through yonder window breaks?',
+    displayQuote: 'But soft, what ___ through yonder window breaks?',
+    missingWords: ['light'],
+    play: 'Romeo and Juliet', character: 'Romeo', difficulty: 'easy',
+  },
+  {
+    fullQuote: 'Cry havoc, and let slip the dogs of war!',
+    displayQuote: 'Cry ___, and let slip the dogs of ___!',
+    missingWords: ['havoc', 'war'],
+    play: 'Julius Caesar', character: 'Mark Antony', difficulty: 'easy',
+  },
+  {
+    fullQuote: 'Love all, trust a few, do wrong to none.',
+    displayQuote: '___ all, trust a few, do wrong to ___.',
+    missingWords: ['love', 'none'],
+    play: 'All\'s Well That Ends Well', character: 'Countess', difficulty: 'easy',
+  },
+  {
+    fullQuote: 'Beware the ides of March.',
+    displayQuote: 'Beware the ___ of March.',
+    missingWords: ['ides'],
+    play: 'Julius Caesar', character: 'Soothsayer', difficulty: 'easy',
+  },
+  {
+    fullQuote: 'I come to bury Caesar, not to praise him.',
+    displayQuote: 'I come to ___ Caesar, not to ___ him.',
+    missingWords: ['bury', 'praise'],
+    play: 'Julius Caesar', character: 'Mark Antony', difficulty: 'easy',
+  },
+  {
+    fullQuote: 'Give me my robe, put on my crown.',
+    displayQuote: 'Give me my ___, put on my ___.',
+    missingWords: ['robe', 'crown'],
+    play: 'Antony and Cleopatra', character: 'Cleopatra', difficulty: 'easy',
+  },
+  {
+    fullQuote: 'This was the noblest Roman of them all.',
+    displayQuote: 'This was the ___ Roman of them all.',
+    missingWords: ['noblest'],
+    play: 'Julius Caesar', character: 'Mark Antony', difficulty: 'easy',
+  },
+  {
+    fullQuote: 'Something is rotten in the state of Denmark.',
+    displayQuote: 'Something is ___ in the state of ___.',
+    missingWords: ['rotten', 'Denmark'],
+    play: 'Hamlet', character: 'Marcellus', difficulty: 'easy',
+  },
+  {
+    fullQuote: 'Sweets to the sweet.',
+    displayQuote: '___ to the ___.',
+    missingWords: ['sweets', 'sweet'],
+    play: 'Hamlet', character: 'Gertrude', difficulty: 'easy',
+  },
+  {
+    fullQuote: 'If you prick us, do we not bleed?',
+    displayQuote: 'If you ___ us, do we not ___?',
+    missingWords: ['prick', 'bleed'],
+    play: 'The Merchant of Venice', character: 'Shylock', difficulty: 'easy',
+  },
+  {
+    fullQuote: 'My kingdom for a horse!',
+    displayQuote: 'My ___ for a ___!',
+    missingWords: ['kingdom', 'horse'],
+    play: 'Richard III', character: 'Richard III', difficulty: 'easy',
+  },
+  {
+    fullQuote: 'There are more things in heaven and earth, Horatio, than are dreamt of in your philosophy.',
+    displayQuote: 'There are more things in heaven and ___, Horatio, than are dreamt of in your ___.',
+    missingWords: ['earth', 'philosophy'],
+    play: 'Hamlet', character: 'Hamlet', difficulty: 'easy',
+  },
+
+  // ========================================
+  // MEDIUM — Expansion (22 new)
+  // ========================================
+  {
+    fullQuote: 'When we are born, we cry that we are come to this great stage of fools.',
+    displayQuote: 'When we are born, we ___ that we are come to this great stage of ___.',
+    missingWords: ['cry', 'fools'],
+    play: 'King Lear', character: 'Lear', difficulty: 'medium',
+  },
+  {
+    fullQuote: 'I will wear my heart upon my sleeve for daws to peck at.',
+    displayQuote: 'I will wear my ___ upon my ___ for daws to peck at.',
+    missingWords: ['heart', 'sleeve'],
+    play: 'Othello', character: 'Iago', difficulty: 'medium',
+  },
+  {
+    fullQuote: 'We few, we happy few, we band of brothers.',
+    displayQuote: 'We ___, we happy few, we band of ___.',
+    missingWords: ['few', 'brothers'],
+    play: 'Henry V', character: 'King Henry', difficulty: 'medium',
+  },
+  {
+    fullQuote: 'I am a man more sinned against than sinning.',
+    displayQuote: 'I am a man more ___ against than ___.',
+    missingWords: ['sinned', 'sinning'],
+    play: 'King Lear', character: 'Lear', difficulty: 'medium',
+  },
+  {
+    fullQuote: 'Who ever loved that loved not at first sight?',
+    displayQuote: 'Who ever ___ that loved not at first ___?',
+    missingWords: ['loved', 'sight'],
+    play: 'As You Like It', character: 'Phoebe', difficulty: 'medium',
+  },
+  {
+    fullQuote: 'What a piece of work is a man! How noble in reason! How infinite in faculty!',
+    displayQuote: 'What a piece of work is a ___! How noble in ___! How infinite in faculty!',
+    missingWords: ['man', 'reason'],
+    play: 'Hamlet', character: 'Hamlet', difficulty: 'medium',
+  },
+  {
+    fullQuote: 'The robbed that smiles steals something from the thief.',
+    displayQuote: 'The robbed that ___ steals something from the ___.',
+    missingWords: ['smiles', 'thief'],
+    play: 'Othello', character: 'Duke of Venice', difficulty: 'medium',
+  },
+  {
+    fullQuote: 'I wasted time, and now doth time waste me.',
+    displayQuote: 'I wasted ___, and now doth time ___ me.',
+    missingWords: ['time', 'waste'],
+    play: 'Richard II', character: 'Richard II', difficulty: 'medium',
+  },
+  {
+    fullQuote: 'Sigh no more, ladies, sigh no more, men were deceivers ever.',
+    displayQuote: 'Sigh no more, ladies, sigh no more, men were ___ ever.',
+    missingWords: ['deceivers'],
+    play: 'Much Ado About Nothing', character: 'Balthasar', difficulty: 'medium',
+  },
+  {
+    fullQuote: 'I pray you, do not fall in love with me, for I am falser than vows made in wine.',
+    displayQuote: 'I pray you, do not fall in love with me, for I am ___ than vows made in ___.',
+    missingWords: ['falser', 'wine'],
+    play: 'As You Like It', character: 'Rosalind', difficulty: 'medium',
+  },
+  {
+    fullQuote: 'Misery acquaints a man with strange bedfellows.',
+    displayQuote: '___ acquaints a man with strange ___.',
+    missingWords: ['misery', 'bedfellows'],
+    play: 'The Tempest', character: 'Trinculo', difficulty: 'medium',
+  },
+  {
+    fullQuote: 'Men at some time are masters of their fates.',
+    displayQuote: 'Men at some time are ___ of their ___.',
+    missingWords: ['masters', 'fates'],
+    play: 'Julius Caesar', character: 'Cassius', difficulty: 'medium',
+  },
+  {
+    fullQuote: 'The fool doth think he is wise, but the wise man knows himself to be a fool.',
+    displayQuote: 'The ___ doth think he is wise, but the wise man knows himself to be a ___.',
+    missingWords: ['fool', 'fool'],
+    play: 'As You Like It', character: 'Touchstone', difficulty: 'medium',
+  },
+  {
+    fullQuote: 'Blow, blow, thou winter wind, thou art not so unkind as man\'s ingratitude.',
+    displayQuote: 'Blow, blow, thou winter ___, thou art not so ___ as man\'s ingratitude.',
+    missingWords: ['wind', 'unkind'],
+    play: 'As You Like It', character: 'Amiens', difficulty: 'medium',
+  },
+  {
+    fullQuote: 'Have more than thou showest, speak less than thou knowest.',
+    displayQuote: 'Have more than thou ___, speak less than thou ___.',
+    missingWords: ['showest', 'knowest'],
+    play: 'King Lear', character: 'Fool', difficulty: 'medium',
+  },
+  {
+    fullQuote: 'I must be cruel only to be kind.',
+    displayQuote: 'I must be ___ only to be ___.',
+    missingWords: ['cruel', 'kind'],
+    play: 'Hamlet', character: 'Hamlet', difficulty: 'medium',
+  },
+  {
+    fullQuote: 'Nothing will come of nothing.',
+    displayQuote: '___ will come of ___.',
+    missingWords: ['nothing', 'nothing'],
+    play: 'King Lear', character: 'Lear', difficulty: 'medium',
+  },
+  {
+    fullQuote: 'The first thing we do, let\'s kill all the lawyers.',
+    displayQuote: 'The first thing we do, let\'s ___ all the ___.',
+    missingWords: ['kill', 'lawyers'],
+    play: 'Henry VI, Part 2', character: 'Dick the Butcher', difficulty: 'medium',
+  },
+  {
+    fullQuote: 'Some rise by sin, and some by virtue fall.',
+    displayQuote: 'Some rise by ___, and some by ___ fall.',
+    missingWords: ['sin', 'virtue'],
+    play: 'Measure for Measure', character: 'Escalus', difficulty: 'medium',
+  },
+  {
+    fullQuote: 'Our doubts are traitors, and make us lose the good we oft might win by fearing to attempt.',
+    displayQuote: 'Our ___ are traitors, and make us lose the good we oft might win by fearing to ___.',
+    missingWords: ['doubts', 'attempt'],
+    play: 'Measure for Measure', character: 'Lucio', difficulty: 'medium',
+  },
+  {
+    fullQuote: 'They say best men are moulded out of faults.',
+    displayQuote: 'They say best men are ___ out of ___.',
+    missingWords: ['moulded', 'faults'],
+    play: 'Measure for Measure', character: 'Mariana', difficulty: 'medium',
+  },
+  {
+    fullQuote: 'Wisely and slow; they stumble that run fast.',
+    displayQuote: 'Wisely and ___; they stumble that run ___.',
+    missingWords: ['slow', 'fast'],
+    play: 'Romeo and Juliet', character: 'Friar Lawrence', difficulty: 'medium',
+  },
+
+  // ========================================
+  // HARD — Expansion (24 new)
+  // ========================================
+  {
+    fullQuote: 'Put out the light, and then put out the light.',
+    displayQuote: 'Put out the ___, and then put out the ___.',
+    missingWords: ['light', 'light'],
+    play: 'Othello', character: 'Othello', difficulty: 'hard',
+  },
+  {
+    fullQuote: 'It is a tale told by an idiot, full of sound and fury, signifying nothing.',
+    displayQuote: 'It is a tale told by an ___, full of sound and ___, signifying nothing.',
+    missingWords: ['idiot', 'fury'],
+    play: 'Macbeth', character: 'Macbeth', difficulty: 'hard',
+  },
+  {
+    fullQuote: 'Reputation is an idle and most false imposition; oft got without merit, and lost without deserving.',
+    displayQuote: '___ is an idle and most false imposition; oft got without ___, and lost without deserving.',
+    missingWords: ['reputation', 'merit'],
+    play: 'Othello', character: 'Iago', difficulty: 'hard',
+  },
+  {
+    fullQuote: 'O, what a rogue and peasant slave am I!',
+    displayQuote: 'O, what a ___ and ___ slave am I!',
+    missingWords: ['rogue', 'peasant'],
+    play: 'Hamlet', character: 'Hamlet', difficulty: 'hard',
+  },
+  {
+    fullQuote: 'The rest is silence.',
+    displayQuote: 'The ___ is ___.',
+    missingWords: ['rest', 'silence'],
+    play: 'Hamlet', character: 'Hamlet', difficulty: 'hard',
+  },
+  {
+    fullQuote: 'As flies to wanton boys are we to the gods; they kill us for their sport.',
+    displayQuote: 'As ___ to wanton boys are we to the gods; they kill us for their ___.',
+    missingWords: ['flies', 'sport'],
+    play: 'King Lear', character: 'Gloucester', difficulty: 'hard',
+  },
+  {
+    fullQuote: 'My salad days, when I was green in judgment.',
+    displayQuote: 'My ___ days, when I was green in ___.',
+    missingWords: ['salad', 'judgment'],
+    play: 'Antony and Cleopatra', character: 'Cleopatra', difficulty: 'hard',
+  },
+  {
+    fullQuote: 'I cannot tell what the dickens his name is.',
+    displayQuote: 'I cannot tell what the ___ his name is.',
+    missingWords: ['dickens'],
+    play: 'The Merry Wives of Windsor', character: 'Mistress Page', difficulty: 'hard',
+  },
+  {
+    fullQuote: 'They do not love that do not show their love.',
+    displayQuote: 'They do not ___ that do not ___ their love.',
+    missingWords: ['love', 'show'],
+    play: 'The Two Gentlemen of Verona', character: 'Julia', difficulty: 'hard',
+  },
+  {
+    fullQuote: 'I dare do all that may become a man; who dares do more is none.',
+    displayQuote: 'I dare do all that may ___ a man; who dares do more is ___.',
+    missingWords: ['become', 'none'],
+    play: 'Macbeth', character: 'Macbeth', difficulty: 'hard',
+  },
+  {
+    fullQuote: 'Age cannot wither her, nor custom stale her infinite variety.',
+    displayQuote: 'Age cannot ___ her, nor custom ___ her infinite variety.',
+    missingWords: ['wither', 'stale'],
+    play: 'Antony and Cleopatra', character: 'Enobarbus', difficulty: 'hard',
+  },
+  {
+    fullQuote: 'My tongue will tell the anger of my heart, or else my heart concealing it will break.',
+    displayQuote: 'My tongue will tell the ___ of my heart, or else my heart ___ it will break.',
+    missingWords: ['anger', 'concealing'],
+    play: 'The Taming of the Shrew', character: 'Katharina', difficulty: 'hard',
+  },
+  {
+    fullQuote: 'No legacy is so rich as honesty.',
+    displayQuote: 'No ___ is so rich as ___.',
+    missingWords: ['legacy', 'honesty'],
+    play: 'All\'s Well That Ends Well', character: 'Mariana', difficulty: 'hard',
+  },
+  {
+    fullQuote: 'This blessed plot, this earth, this realm, this England.',
+    displayQuote: 'This blessed ___, this earth, this ___, this England.',
+    missingWords: ['plot', 'realm'],
+    play: 'Richard II', character: 'John of Gaunt', difficulty: 'hard',
+  },
+  {
+    fullQuote: 'Come what come may, time and the hour runs through the roughest day.',
+    displayQuote: 'Come what come may, ___ and the hour runs through the ___ day.',
+    missingWords: ['time', 'roughest'],
+    play: 'Macbeth', character: 'Macbeth', difficulty: 'hard',
+  },
+  {
+    fullQuote: 'Speak low, if you speak love.',
+    displayQuote: 'Speak ___, if you speak ___.',
+    missingWords: ['low', 'love'],
+    play: 'Much Ado About Nothing', character: 'Don Pedro', difficulty: 'hard',
+  },
+  {
+    fullQuote: 'Thou know\'st the mask of night is on my face, else would a maiden blush bepaint my cheek.',
+    displayQuote: 'Thou know\'st the mask of ___ is on my face, else would a maiden ___ bepaint my cheek.',
+    missingWords: ['night', 'blush'],
+    play: 'Romeo and Juliet', character: 'Juliet', difficulty: 'hard',
+  },
+  {
+    fullQuote: 'For I am nothing if not critical.',
+    displayQuote: 'For I am ___ if not ___.',
+    missingWords: ['nothing', 'critical'],
+    play: 'Othello', character: 'Iago', difficulty: 'hard',
+  },
+  {
+    fullQuote: 'Exit, pursued by a bear.',
+    displayQuote: 'Exit, ___ by a ___.',
+    missingWords: ['pursued', 'bear'],
+    play: 'The Winter\'s Tale', character: 'Stage Direction', difficulty: 'hard',
+  },
+  {
+    fullQuote: 'O, she doth teach the torches to burn bright!',
+    displayQuote: 'O, she doth teach the ___ to burn ___!',
+    missingWords: ['torches', 'bright'],
+    play: 'Romeo and Juliet', character: 'Romeo', difficulty: 'hard',
+  },
+  {
+    fullQuote: 'The wheel is come full circle; I am here.',
+    displayQuote: 'The ___ is come full ___; I am here.',
+    missingWords: ['wheel', 'circle'],
+    play: 'King Lear', character: 'Edmund', difficulty: 'hard',
+  },
+  {
+    fullQuote: 'I had rather have a fool to make me merry than experience to make me sad.',
+    displayQuote: 'I had rather have a ___ to make me merry than ___ to make me sad.',
+    missingWords: ['fool', 'experience'],
+    play: 'As You Like It', character: 'Rosalind', difficulty: 'hard',
+  },
+  {
+    fullQuote: 'A light heart lives long.',
+    displayQuote: 'A light ___ lives ___.',
+    missingWords: ['heart', 'long'],
+    play: 'Love\'s Labour\'s Lost', character: 'Katharine', difficulty: 'hard',
+  },
+  {
+    fullQuote: 'What is past is prologue.',
+    displayQuote: 'What is past is ___.',
+    missingWords: ['prologue'],
+    play: 'The Tempest', character: 'Antonio', difficulty: 'hard',
   },
 ];
 

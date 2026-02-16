@@ -146,6 +146,17 @@ async fn update_stats(
     State((pool, _)): State<(PgPool, Config)>,
     Json(body): Json<UpdateStatsRequest>,
 ) -> Result<Json<PlayerStats>, (StatusCode, String)> {
+    // Input validation: all stat values must be non-negative and bounded
+    let max_val = 999_999;
+    for val in [body.battle_wins, body.total_battles, body.total_rounds, body.highest_score,
+                body.trivia_correct, body.trivia_perfect, body.challenges_completed, body.packs_opened] {
+        if let Some(v) = val {
+            if v < 0 || v > max_val {
+                return Err((StatusCode::BAD_REQUEST, format!("Stat values must be between 0 and {max_val}")));
+            }
+        }
+    }
+
     let row = sqlx::query(
         "UPDATE player_stats SET
            battle_wins = GREATEST(battle_wins, COALESCE($2, battle_wins)),
@@ -222,6 +233,16 @@ async fn check_achievements(
     State((pool, _)): State<(PgPool, Config)>,
     Json(body): Json<CheckAchievementsRequest>,
 ) -> Result<Json<Vec<String>>, (StatusCode, String)> {
+    // Input validation
+    if body.achievement_ids.len() > 50 {
+        return Err((StatusCode::BAD_REQUEST, "Maximum 50 achievements per request".into()));
+    }
+    for id in &body.achievement_ids {
+        if id.len() > 32 || !id.chars().all(|c| c.is_alphanumeric() || c == '-' || c == '_') {
+            return Err((StatusCode::BAD_REQUEST, format!("Invalid achievement ID: {id}")));
+        }
+    }
+
     let mut newly_unlocked = Vec::new();
 
     for achievement_id in &body.achievement_ids {

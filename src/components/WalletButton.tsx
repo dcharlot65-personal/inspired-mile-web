@@ -7,6 +7,7 @@ import { useEffect } from 'react';
 import { useWallet } from '@solana/wallet-adapter-react';
 import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
 import SolanaWalletProvider from './WalletProvider';
+import ErrorBoundary from './ErrorBoundary';
 
 function WalletButtonInner() {
   const { publicKey, connected, connecting, signMessage, wallet } = useWallet();
@@ -45,8 +46,10 @@ function WalletButtonInner() {
 
 export default function WalletButton() {
   return (
-    <SolanaWalletProvider>
-      <WalletButtonInner />
-    </SolanaWalletProvider>
+    <ErrorBoundary fallbackMessage="Wallet unavailable">
+      <SolanaWalletProvider>
+        <WalletButtonInner />
+      </SolanaWalletProvider>
+    </ErrorBoundary>
   );
 }

@@ -45,6 +45,29 @@ export const CHARACTER_ABILITIES: Record<string, PassiveAbility> = {
   'CA-002': { id: 'firebrand', name: 'Firebrand', description: '+3 Wit (always active)', axis: 'wit', bonus: 3 },
   'DC-003': { id: 'usurper', name: 'Usurper', description: '+2 Wordplay, +1 Shakespeare', axis: 'wordplay', bonus: 2 },
   'FA-003': { id: 'moonlight-king', name: 'Moonlight King', description: '+2 Shakespeare, +1 Flow', axis: 'shakespeare', bonus: 2 },
+
+  // V2: Scottish Court
+  'SC-001': { id: 'vaulting-ambition', name: 'Vaulting Ambition', description: '+3 Wit when HP below 50%', axis: 'wit', bonus: 3, condition: 'low-hp' },
+  'SC-002': { id: 'unsex-me', name: 'Unsex Me Here', description: '+2 Wordplay, +1 Wit', axis: 'wordplay', bonus: 2 },
+  'SC-003': { id: 'prophecy', name: 'Prophecy', description: '+2 Shakespeare (always active)', axis: 'shakespeare', bonus: 2 },
+
+  // V2: Illyria
+  'IL-001': { id: 'disguise', name: 'Disguise', description: '+2 Flow, +1 Wit', axis: 'flow', bonus: 2 },
+  'IL-002': { id: 'self-love', name: 'Self-Love', description: '+2 Wordplay (always active)', axis: 'wordplay', bonus: 2 },
+  'IL-003': { id: 'mourning-veil', name: 'Mourning Veil', description: '+2 Shakespeare (always active)', axis: 'shakespeare', bonus: 2 },
+
+  // V2: Rome
+  'RM-001': { id: 'honorable-man', name: 'Honorable Man', description: '+2 Shakespeare, +1 Wordplay', axis: 'shakespeare', bonus: 2 },
+  'RM-002': { id: 'lean-hungry', name: 'Lean and Hungry', description: '+3 Wit (always active)', axis: 'wit', bonus: 3 },
+  'RM-003': { id: 'lend-ears', name: 'Lend Me Your Ears', description: '+3 Wordplay (always active)', axis: 'wordplay', bonus: 3 },
+
+  // V2: Existing Houses Expansion
+  'MO-004': { id: 'patriarch', name: 'Patriarch', description: '+1 to all axes', axis: undefined, bonus: 1 },
+  'CA-003': { id: 'matriarch', name: 'Matriarch', description: '+2 Shakespeare (always active)', axis: 'shakespeare', bonus: 2 },
+  'DC-004': { id: 'faithful-friend', name: 'Faithful Friend', description: '+2 Flow, +1 Shakespeare', axis: 'flow', bonus: 2 },
+  'FA-004': { id: 'translated', name: 'Translated', description: '+2 Wit (always active)', axis: 'wit', bonus: 2 },
+  'VC-004': { id: 'suitor', name: 'Noble Suitor', description: '+1 to all axes', axis: undefined, bonus: 1 },
+  'TP-004': { id: 'wonder', name: 'Brave New World', description: '+2 Flow (always active)', axis: 'flow', bonus: 2 },
 };
 
 /** Apply a character's passive ability to battle modifiers */
@@ -93,6 +116,9 @@ export const HOUSE_SYNERGIES: HouseSynergy[] = [
   { house: 'Forest of Arden', minCards: 2, axis: 'flow', bonus: 2, description: '2+ Forest of Arden: +2 Flow' },
   { house: 'Verona Court', minCards: 2, axis: 'shakespeare', bonus: 1, description: '2+ Verona Court: +1 Shakespeare' },
   { house: 'The Tempest', minCards: 2, axis: 'wordplay', bonus: 1, description: '2+ Tempest: +1 Wordplay' },
+  { house: 'Scottish Court', minCards: 2, axis: 'wit', bonus: 2, description: '2+ Scottish Court: +2 Wit' },
+  { house: 'Illyria', minCards: 2, axis: 'flow', bonus: 2, description: '2+ Illyria: +2 Flow' },
+  { house: 'Rome', minCards: 2, axis: 'wordplay', bonus: 2, description: '2+ Rome: +2 Wordplay' },
 ];
 
 /** Calculate house synergy bonuses for a set of card IDs */
@@ -148,6 +174,22 @@ export const ITEM_EFFECTS: Record<string, ItemEffect> = {
   'PT-001': { cardId: 'PT-001', name: 'Love Potion', description: '+3 Flow for one round', usesPerBattle: 2, type: 'boost', axis: 'flow', amount: 3 },
   'PT-002': { cardId: 'PT-002', name: "Witches' Brew", description: '+3 Wordplay for one round', usesPerBattle: 2, type: 'boost', axis: 'wordplay', amount: 3 },
   'PT-003': { cardId: 'PT-003', name: "Puck's Flower Juice", description: 'Reroll lowest axis score', usesPerBattle: 1, type: 'reroll', amount: 0 },
+
+  // V2: New Relics
+  'RL-004': { cardId: 'RL-004', name: "Romeo's Ring", description: '+3 Flow for one round', usesPerBattle: 1, type: 'boost', axis: 'flow', amount: 3 },
+  'RL-005': { cardId: 'RL-005', name: "Portia's Casket", description: '+2 Shakespeare, +1 Wordplay', usesPerBattle: 1, type: 'boost', axis: 'shakespeare', amount: 2 },
+  'RL-006': { cardId: 'RL-006', name: "Macbeth's Crown", description: '+3 Wit for one round', usesPerBattle: 1, type: 'boost', axis: 'wit', amount: 3 },
+  'RL-007': { cardId: 'RL-007', name: 'The Tempest Codex', description: '+2 to all axes for one round', usesPerBattle: 1, type: 'boost', amount: 2 },
+  'RL-008': { cardId: 'RL-008', name: "Cordelia's Tears", description: '+3 Shakespeare for one round', usesPerBattle: 1, type: 'boost', axis: 'shakespeare', amount: 3 },
+  'RL-009': { cardId: 'RL-009', name: "Bottom's Mask", description: 'Reroll lowest axis score', usesPerBattle: 1, type: 'reroll', amount: 0 },
+
+  // V2: New Potions
+  'PT-004': { cardId: 'PT-004', name: 'Mandrake Root', description: '+2 Wordplay for one round', usesPerBattle: 2, type: 'boost', axis: 'wordplay', amount: 2 },
+  'PT-005': { cardId: 'PT-005', name: "Oberon's Dew", description: '+3 Flow for one round', usesPerBattle: 1, type: 'boost', axis: 'flow', amount: 3 },
+  'PT-006': { cardId: 'PT-006', name: 'Hemlock Tincture', description: 'Reduce opponent total by 3', usesPerBattle: 1, type: 'reduce_opponent', amount: 3 },
+  'PT-007': { cardId: 'PT-007', name: 'Mistletoe Extract', description: '+2 Shakespeare for one round', usesPerBattle: 2, type: 'boost', axis: 'shakespeare', amount: 2 },
+  'PT-008': { cardId: 'PT-008', name: "Mermaid's Tears", description: '+2 to all axes for one round', usesPerBattle: 1, type: 'boost', amount: 2 },
+  'PT-009': { cardId: 'PT-009', name: "Apothecary's Elixir", description: '+3 Wit for one round', usesPerBattle: 2, type: 'boost', axis: 'wit', amount: 3 },
 };
 
 /** Apply an item effect to battle modifiers */

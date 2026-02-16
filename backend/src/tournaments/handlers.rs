@@ -142,6 +142,11 @@ async fn create_tournament(
     State((pool, _)): State<(PgPool, Config)>,
     Json(body): Json<CreateTournamentRequest>,
 ) -> Result<Json<TournamentResponse>, (StatusCode, String)> {
+    // Input validation
+    if body.name.is_empty() || body.name.len() > 128 {
+        return Err((StatusCode::BAD_REQUEST, "Tournament name must be between 1 and 128 characters".into()));
+    }
+
     let format = body.format.unwrap_or_else(|| "single_elimination".into());
     if format != "single_elimination" && format != "round_robin" {
         return Err((StatusCode::BAD_REQUEST, "Format must be 'single_elimination' or 'round_robin'".into()));

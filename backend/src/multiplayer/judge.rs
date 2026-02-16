@@ -52,16 +52,26 @@ pub async fn judge_battle(
         }]
     });
 
-    let client = reqwest::Client::new();
-    let response = client
-        .post(&config.llm_api_url)
-        .header("x-api-key", api_key)
-        .header("anthropic-version", "2023-06-01")
-        .header("content-type", "application/json")
-        .json(&body)
-        .send()
-        .await
-        .map_err(|e| format!("HTTP error: {e}"))?;
+    let client = reqwest::Client::builder()
+        .timeout(std::time::Duration::from_secs(10))
+        .build()
+        .map_err(|e| format!("Client build error: {e}"))?;
+
+    let response = match tokio::time::timeout(
+        std::time::Duration::from_secs(15),
+        client
+            .post(&config.llm_api_url)
+            .header("x-api-key", api_key)
+            .header("anthropic-version", "2023-06-01")
+            .header("content-type", "application/json")
+            .json(&body)
+            .send(),
+    )
+    .await
+    {
+        Ok(result) => result.map_err(|e| format!("HTTP error: {e}"))?,
+        Err(_) => return Ok(judge_fallback()),
+    };
 
     if !response.status().is_success() {
         let status = response.status();

@@ -77,6 +77,16 @@ async fn create_listing(
     State((pool, _)): State<(PgPool, Config)>,
     Json(body): Json<CreateListingRequest>,
 ) -> Result<Json<ListingResponse>, (StatusCode, String)> {
+    // Input validation
+    if body.card_id.is_empty() || body.card_id.len() > 32 || !body.card_id.chars().all(|c| c.is_alphanumeric() || c == '-') {
+        return Err((StatusCode::BAD_REQUEST, "Invalid card ID".into()));
+    }
+    if let Some(price) = body.price_credits {
+        if price < 1 || price > 100_000 {
+            return Err((StatusCode::BAD_REQUEST, "Price must be between 1 and 100000".into()));
+        }
+    }
+
     // Verify the user owns the card
     let owns = sqlx::query("SELECT 1 FROM owned_cards WHERE user_id = $1 AND card_id = $2 LIMIT 1")
         .bind(claims.sub)

@@ -1,5 +1,6 @@
 use std::collections::HashMap;
 use std::sync::Arc;
+use std::time::{Duration, Instant};
 use tokio::sync::{broadcast, Mutex};
 use serde::{Deserialize, Serialize};
 use uuid::Uuid;
@@ -90,6 +91,7 @@ pub struct GameRoom {
     pub total_rounds: u32,
     pub submissions: Vec<RoundSubmission>,
     pub tx: broadcast::Sender<ServerEvent>,
+    pub created_at: Instant,
 }
 
 impl GameRoom {
@@ -102,6 +104,7 @@ impl GameRoom {
             total_rounds,
             submissions: Vec::new(),
             tx,
+            created_at: Instant::now(),
         }
     }
 
@@ -191,5 +194,33 @@ impl RoomManager {
                 Err(_) => (*id, RoomState::InProgress, 2), // locked = active battle
             }
         }).collect()
+    }
+
+    pub async fn cleanup_stale_rooms(&self, max_age: Duration) {
+        let mut rooms = self.rooms.lock().await;
+        let stale_ids: Vec<Uuid> = rooms
+            .iter()
+            .filter_map(|(id, room_arc)| {
+                match room_arc.try_lock() {
+                    Ok(room) => {
+                        let age = room.created_at.elapsed();
+                        if room.state == RoomState::Completed || age > max_age {
+                            Some(*id)
+                        } else {
+                            None
+                        }
+                    }
+                    Err(_) => None, // locked = active, skip
+                }
+            })
+            .collect();
+
+        let count = stale_ids.len();
+        for id in stale_ids {
+            rooms.remove(&id);
+        }
+        if count > 0 {
+            tracing::info!(removed = count, "Cleaned up stale game rooms");
+        }
     }
 }

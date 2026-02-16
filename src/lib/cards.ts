@@ -5,7 +5,7 @@
 
 export type CardType = 'Character' | 'Relic' | 'Potion';
 export type Rarity = 'Common' | 'Uncommon' | 'Rare' | 'Epic' | 'Legendary';
-export type House = 'Montague' | 'Capulet' | 'Danish Court' | 'Forest of Arden' | 'Verona Court' | 'The Tempest' | 'Legendary' | 'Relic' | 'Potion';
+export type House = 'Montague' | 'Capulet' | 'Danish Court' | 'Forest of Arden' | 'Verona Court' | 'The Tempest' | 'Scottish Court' | 'Illyria' | 'Rome' | 'Legendary' | 'Relic' | 'Potion';
 
 export interface Card {
   id: string;
@@ -250,6 +250,261 @@ export const CARD_CATALOG: Card[] = [
     scene: 'A crushed purple flower drips iridescent nectar into a waiting palm. Wherever it falls, eyes change — and hearts follow.',
     image: '/images/cards/pt-003.webp',
   },
+
+  // --- V2: Scottish Court (Macbeth) ---
+  {
+    id: 'SC-001', name: 'Macbeth', house: 'Scottish Court', type: 'Character',
+    atk: 88, def: 65, hp: 90, rarity: 'Epic', element: 'Ambition',
+    quote: 'I dare do all that may become a man; who dares do more is none.',
+    gradient: 'from-red-500/20 to-stone-500/20', border: 'border-red-700/30',
+    icon: '\u{1F451}',
+    scene: 'A bloodstained throne room in Dunsinane. Macbeth grips his sword with trembling hands, the crown heavy on his brow. Birnam Wood stirs on the distant hill.',
+    image: '/images/cards/sc-001.webp',
+  },
+  {
+    id: 'SC-002', name: 'Lady Macbeth', house: 'Scottish Court', type: 'Character',
+    atk: 80, def: 55, hp: 75, rarity: 'Rare', element: 'Darkness',
+    quote: 'Come, you spirits that tend on mortal thoughts, unsex me here.',
+    gradient: 'from-zinc-500/20 to-red-500/20', border: 'border-zinc-500/30',
+    icon: '\u{1F56F}',
+    scene: 'A candlelit chamber in the Scottish castle. Lady Macbeth paces the cold stones, wringing phantom bloodstains from her hands. Shadows cling to her like a second skin.',
+    image: '/images/cards/sc-002.webp',
+  },
+  {
+    id: 'SC-003', name: 'Banquo', house: 'Scottish Court', type: 'Character',
+    atk: 65, def: 75, hp: 80, rarity: 'Uncommon', element: 'Prophecy',
+    quote: 'Thou shalt get kings, though thou be none.',
+    gradient: 'from-slate-500/20 to-blue-500/20', border: 'border-slate-500/30',
+    icon: '\u{1F47B}',
+    scene: 'A misty Scottish heath at twilight. Banquo stands resolute as three spectral figures whisper destinies into the wind. His ghost will haunt the living.',
+    image: '/images/cards/sc-003.webp',
+  },
+
+  // --- V2: Illyria (Twelfth Night) ---
+  {
+    id: 'IL-001', name: 'Viola', house: 'Illyria', type: 'Character',
+    atk: 70, def: 80, hp: 85, rarity: 'Rare', element: 'Disguise',
+    quote: 'I am not what I am.',
+    gradient: 'from-teal-500/20 to-blue-500/20', border: 'border-teal-500/30',
+    icon: '\u{1F3AD}',
+    scene: 'A windswept Illyrian shore. Viola pulls a sailor\'s cap over her cropped hair, twin identities shimmering in her eyes. The sea whispers secrets of her lost brother.',
+    image: '/images/cards/il-001.webp',
+  },
+  {
+    id: 'IL-002', name: 'Malvolio', house: 'Illyria', type: 'Character',
+    atk: 50, def: 65, hp: 70, rarity: 'Uncommon', element: 'Vanity',
+    quote: 'Some are born great, some achieve greatness, and some have greatness thrust upon them.',
+    gradient: 'from-yellow-500/20 to-amber-500/20', border: 'border-yellow-500/30',
+    icon: '\u{1F9E6}',
+    scene: 'A sunlit garden in Olivia\'s estate. Malvolio struts in garish yellow stockings, cross-gartered and grinning, clutching a forged love letter to his chest.',
+    image: '/images/cards/il-002.webp',
+  },
+  {
+    id: 'IL-003', name: 'Olivia', house: 'Illyria', type: 'Character',
+    atk: 55, def: 85, hp: 90, rarity: 'Rare', element: 'Grace',
+    quote: 'Love sought is good, but given unsought, is better.',
+    gradient: 'from-indigo-500/20 to-cyan-500/20', border: 'border-indigo-500/30',
+    icon: '\u{1F338}',
+    scene: 'A veiled countess in mourning lifts her veil to reveal breathtaking beauty. Olivia\'s garden blooms with jasmine and lavender as the disguised messenger steals her heart.',
+    image: '/images/cards/il-003.webp',
+  },
+
+  // --- V2: Rome (Julius Caesar) ---
+  {
+    id: 'RM-001', name: 'Brutus', house: 'Rome', type: 'Character',
+    atk: 80, def: 75, hp: 90, rarity: 'Epic', element: 'Honor',
+    quote: 'Not that I loved Caesar less, but that I loved Rome more.',
+    gradient: 'from-amber-500/20 to-stone-500/20', border: 'border-amber-700/30',
+    icon: '\u{1F3DB}',
+    scene: 'The Roman Senate, marble pillars stained crimson. Brutus stands among the conspirators, his blade still trembling. The weight of the republic rests on his bloodied hands.',
+    image: '/images/cards/rm-001.webp',
+  },
+  {
+    id: 'RM-002', name: 'Cassius', house: 'Rome', type: 'Character',
+    atk: 85, def: 55, hp: 75, rarity: 'Rare', element: 'Envy',
+    quote: 'The fault, dear Brutus, is not in our stars, but in ourselves.',
+    gradient: 'from-emerald-500/20 to-zinc-500/20', border: 'border-emerald-700/30',
+    icon: '\u{1F5E1}',
+    scene: 'A torchlit Roman alley at midnight. Cassius leans close, whispering sedition with a lean and hungry look. Forged letters spill from his toga.',
+    image: '/images/cards/rm-002.webp',
+  },
+  {
+    id: 'RM-003', name: 'Mark Antony', house: 'Rome', type: 'Character',
+    atk: 90, def: 70, hp: 85, rarity: 'Epic', element: 'Rhetoric',
+    quote: 'Friends, Romans, countrymen, lend me your ears!',
+    gradient: 'from-red-500/20 to-amber-500/20', border: 'border-red-500/30',
+    icon: '\u{1F525}',
+    scene: 'The Roman Forum erupts in fury. Mark Antony holds Caesar\'s bloodied cloak aloft before the mob, his words turning grief into fire. The republic crumbles with every syllable.',
+    image: '/images/cards/rm-003.webp',
+  },
+
+  // --- V2: Existing Houses Expanded ---
+  {
+    id: 'MO-004', name: 'Lord Montague', house: 'Montague', type: 'Character',
+    atk: 45, def: 60, hp: 70, rarity: 'Common', element: 'Authority',
+    quote: 'Many a morning hath he there been seen, with tears augmenting the fresh morning dew.',
+    gradient: 'from-blue-500/20 to-slate-500/20', border: 'border-blue-500/30',
+    icon: '\u{1F3F0}',
+    scene: 'The Montague estate at dawn. Lord Montague watches from a high window as his son wanders the misty orchards below, lovesick and unreachable.',
+    image: '/images/cards/mo-004.webp',
+  },
+  {
+    id: 'CA-003', name: 'Lady Capulet', house: 'Capulet', type: 'Character',
+    atk: 50, def: 70, hp: 75, rarity: 'Uncommon', element: 'Ambition',
+    quote: 'Marry, that marry is the very theme I came to talk of.',
+    gradient: 'from-fuchsia-500/20 to-rose-500/20', border: 'border-fuchsia-500/30',
+    icon: '\u{1F48D}',
+    scene: 'The Capulet great hall draped in silk. Lady Capulet arranges her daughter\'s fate like flowers in a vase, ambition glittering behind every gracious smile.',
+    image: '/images/cards/ca-003.webp',
+  },
+  {
+    id: 'DC-004', name: 'Horatio', house: 'Danish Court', type: 'Character',
+    atk: 50, def: 80, hp: 85, rarity: 'Uncommon', element: 'Loyalty',
+    quote: 'Now cracks a noble heart. Good night, sweet prince.',
+    gradient: 'from-slate-500/20 to-purple-500/20', border: 'border-slate-500/30',
+    icon: '\u{1F91D}',
+    scene: 'The battlements of Elsinore in the cold hour before dawn. Horatio stands vigil beside Hamlet, the one true friend in a court of serpents.',
+    image: '/images/cards/dc-004.webp',
+  },
+  {
+    id: 'FA-004', name: 'Bottom', house: 'Forest of Arden', type: 'Character',
+    atk: 40, def: 55, hp: 65, rarity: 'Common', element: 'Comedy',
+    quote: 'I have had a most rare vision. I have had a dream, past the wit of man.',
+    gradient: 'from-amber-500/20 to-green-500/20', border: 'border-amber-500/30',
+    icon: '\u{1F434}',
+    scene: 'A forest clearing aglow with fairy light. Bottom wears an ass\'s head with bewildered dignity as Titania drapes him in garlands. The fairies stifle their laughter.',
+    image: '/images/cards/fa-004.webp',
+  },
+  {
+    id: 'VC-004', name: 'Paris', house: 'Verona Court', type: 'Character',
+    atk: 60, def: 65, hp: 70, rarity: 'Uncommon', element: 'Duty',
+    quote: 'These times of woe afford no time to woo.',
+    gradient: 'from-sky-500/20 to-amber-500/20', border: 'border-sky-500/30',
+    icon: '\u{1F396}',
+    scene: 'The churchyard of Verona at dusk. Paris lays flowers at Juliet\'s tomb, unaware of the desperate lover who approaches from the shadows.',
+    image: '/images/cards/vc-004.webp',
+  },
+  {
+    id: 'TP-004', name: 'Miranda', house: 'The Tempest', type: 'Character',
+    atk: 45, def: 75, hp: 80, rarity: 'Uncommon', element: 'Innocence',
+    quote: 'O brave new world, that has such people in it!',
+    gradient: 'from-cyan-500/20 to-rose-500/20', border: 'border-cyan-500/30',
+    icon: '\u{1F31F}',
+    scene: 'A pristine beach on Prospero\'s island. Miranda sees the shipwrecked sailors for the first time, her eyes wide with wonder at a world she never knew existed.',
+    image: '/images/cards/tp-004.webp',
+  },
+
+  // --- V2: New Relics ---
+  {
+    id: 'RL-004', name: "Romeo's Ring", house: 'Relic', type: 'Relic',
+    atk: 0, def: 0, hp: 0, rarity: 'Rare', element: 'Devotion',
+    quote: 'My bounty is as boundless as the sea, my love as deep.',
+    gradient: 'from-rose-500/20 to-gold-500/20', border: 'border-rose-500/30',
+    icon: '\u{1F48D}',
+    scene: 'A golden ring rests on a stone balcony ledge, catching moonlight. Inscribed inside is a vow that outlasts death itself. Rose petals spiral around it in an unseen wind.',
+    image: '/images/cards/rl-004.webp',
+  },
+  {
+    id: 'RL-005', name: "Portia's Casket", house: 'Relic', type: 'Relic',
+    atk: 0, def: 0, hp: 0, rarity: 'Uncommon', element: 'Wisdom',
+    quote: 'All that glisters is not gold.',
+    gradient: 'from-amber-500/20 to-zinc-500/20', border: 'border-amber-500/30',
+    icon: '\u{1F4E6}',
+    scene: 'Three caskets gleam in a candlelit chamber -- gold, silver, and lead. The lead casket hums with quiet truth, rewarding those wise enough to see past appearances.',
+    image: '/images/cards/rl-005.webp',
+  },
+  {
+    id: 'RL-006', name: "Macbeth's Crown", house: 'Relic', type: 'Relic',
+    atk: 0, def: 0, hp: 0, rarity: 'Epic', element: 'Power',
+    quote: 'Uneasy lies the head that wears a crown.',
+    gradient: 'from-red-500/20 to-yellow-500/20', border: 'border-red-700/30',
+    icon: '\u{1F451}',
+    scene: 'A tarnished Scottish crown sits on a bloodstained pillow. It pulses with dark ambition, whispering promises of glory to any hand that dares reach for it.',
+    image: '/images/cards/rl-006.webp',
+  },
+  {
+    id: 'RL-007', name: 'The Tempest Codex', house: 'Relic', type: 'Relic',
+    atk: 0, def: 0, hp: 0, rarity: 'Rare', element: 'Knowledge',
+    quote: 'I\'ll drown my book.',
+    gradient: 'from-indigo-500/20 to-blue-500/20', border: 'border-indigo-500/30',
+    icon: '\u{1F4D6}',
+    scene: 'An ancient tome bound in sea-weathered leather floats above a stone altar. Its pages turn by themselves, each one summoning a different storm.',
+    image: '/images/cards/rl-007.webp',
+  },
+  {
+    id: 'RL-008', name: "Cordelia's Tears", house: 'Relic', type: 'Relic',
+    atk: 0, def: 0, hp: 0, rarity: 'Rare', element: 'Compassion',
+    quote: 'O dear father, it is thy business that I go about.',
+    gradient: 'from-cyan-500/20 to-blue-500/20', border: 'border-cyan-500/30',
+    icon: '\u{1F4A7}',
+    scene: 'A crystal vial holds tears that shimmer like captured starlight. Each drop carries the sorrow of a daughter who loved too truly and spoke too plainly.',
+    image: '/images/cards/rl-008.webp',
+  },
+  {
+    id: 'RL-009', name: "Bottom's Mask", house: 'Relic', type: 'Relic',
+    atk: 0, def: 0, hp: 0, rarity: 'Uncommon', element: 'Transformation',
+    quote: 'Bless thee, Bottom! Thou art translated!',
+    gradient: 'from-amber-500/20 to-emerald-500/20', border: 'border-amber-500/30',
+    icon: '\u{1F3AD}',
+    scene: 'A donkey-headed mask hangs from a mossy branch in the fairy wood. Whoever dons it sees the world through enchanted eyes -- and becomes irresistible to fairy queens.',
+    image: '/images/cards/rl-009.webp',
+  },
+
+  // --- V2: New Potions ---
+  {
+    id: 'PT-004', name: 'Mandrake Root', house: 'Potion', type: 'Potion',
+    atk: 0, def: 0, hp: 0, rarity: 'Common', element: 'Earth',
+    quote: 'Not poppy, nor mandragora, nor all the drowsy syrups of the world.',
+    gradient: 'from-stone-500/20 to-green-500/20', border: 'border-stone-500/30',
+    icon: '\u{1FAB4}',
+    scene: 'A gnarled root shaped like a screaming figure is unearthed by candlelight. Soil crumbles away to reveal its twisted, ancient power. The apothecary handles it with trembling reverence.',
+    image: '/images/cards/pt-004.webp',
+  },
+  {
+    id: 'PT-005', name: "Oberon's Dew", house: 'Potion', type: 'Potion',
+    atk: 0, def: 0, hp: 0, rarity: 'Rare', element: 'Enchantment',
+    quote: 'Fetch me that flower; the herb I showed thee once.',
+    gradient: 'from-violet-500/20 to-emerald-500/20', border: 'border-violet-500/30',
+    icon: '\u{2728}',
+    scene: 'A dewdrop clings to a moonlit orchid, glowing with otherworldly violet light. One drop upon sleeping eyelids and the dreamer falls in love with the first creature they see.',
+    image: '/images/cards/pt-005.webp',
+  },
+  {
+    id: 'PT-006', name: 'Hemlock Tincture', house: 'Potion', type: 'Potion',
+    atk: 0, def: 0, hp: 0, rarity: 'Uncommon', element: 'Poison',
+    quote: 'Upon my secure hour thy uncle stole, with juice of cursed hebona in a vial.',
+    gradient: 'from-green-500/20 to-zinc-500/20', border: 'border-green-700/30',
+    icon: '\u{2620}',
+    scene: 'A black glass vial weeps green vapor in a darkened corridor. The tincture within has toppled kings and shattered dynasties, one silent drop at a time.',
+    image: '/images/cards/pt-006.webp',
+  },
+  {
+    id: 'PT-007', name: 'Mistletoe Extract', house: 'Potion', type: 'Potion',
+    atk: 0, def: 0, hp: 0, rarity: 'Common', element: 'Nature',
+    quote: 'In the cauldron boil and bake; eye of newt and toe of frog.',
+    gradient: 'from-lime-500/20 to-green-500/20', border: 'border-lime-500/30',
+    icon: '\u{1F33F}',
+    scene: 'Pale berries glisten among dark evergreen leaves, harvested under a winter moon. The extract hums with the quiet, persistent magic of the natural world.',
+    image: '/images/cards/pt-007.webp',
+  },
+  {
+    id: 'PT-008', name: "Mermaid's Tears", house: 'Potion', type: 'Potion',
+    atk: 0, def: 0, hp: 0, rarity: 'Rare', element: 'Ocean',
+    quote: 'Full fathom five thy father lies; of his bones are coral made.',
+    gradient: 'from-blue-500/20 to-cyan-500/20', border: 'border-blue-500/30',
+    icon: '\u{1F30A}',
+    scene: 'A pearl-stoppered flask holds luminous blue liquid that shifts like a living sea. Within it, tiny coral formations grow and dissolve. It smells of salt and forgotten voyages.',
+    image: '/images/cards/pt-008.webp',
+  },
+  {
+    id: 'PT-009', name: "Apothecary's Elixir", house: 'Potion', type: 'Potion',
+    atk: 0, def: 0, hp: 0, rarity: 'Uncommon', element: 'Alchemy',
+    quote: 'Put this in any liquid thing you will, and drink it off; and, if you had the strength of twenty men, it would dispatch you straight.',
+    gradient: 'from-amber-500/20 to-red-500/20', border: 'border-amber-700/30',
+    icon: '\u{2697}',
+    scene: 'A dusty apothecary shop in Mantua\'s poorest quarter. A desperate elixir glows amber in a cracked vial, potent enough to bridge the gap between life and death.',
+    image: '/images/cards/pt-009.webp',
+  },
 ];
 
 export const RARITY_COLORS: Record<Rarity, string> = {
@@ -310,5 +565,47 @@ export function drawPack(count: number): Card[] {
   for (let i = 0; i < count; i++) {
     cards.push(drawRandomCard());
   }
+  return cards;
+}
+
+// --- Premium Pack Tiers ---
+
+export type PackTier = 'standard' | 'rare' | 'epic';
+
+export interface PackTierInfo {
+  tier: PackTier;
+  name: string;
+  cardCount: number;
+  guaranteedRarity: Rarity | null;
+  cost: number; // in credits
+  description: string;
+}
+
+export const PACK_TIERS: PackTierInfo[] = [
+  { tier: 'standard', name: 'Standard Pack', cardCount: 3, guaranteedRarity: null, cost: 50, description: '3 random cards' },
+  { tier: 'rare', name: 'Rare Pack', cardCount: 5, guaranteedRarity: 'Rare', cost: 150, description: '5 cards, 1 Rare guaranteed' },
+  { tier: 'epic', name: 'Epic Pack', cardCount: 5, guaranteedRarity: 'Epic', cost: 400, description: '5 cards, 1 Epic guaranteed' },
+];
+
+/** Draw a pack by tier with guaranteed rarity */
+export function drawPackByTier(tier: PackTier): Card[] {
+  const info = PACK_TIERS.find(t => t.tier === tier);
+  if (!info) return drawPack(3);
+
+  const cards: Card[] = [];
+
+  // Add guaranteed card first
+  if (info.guaranteedRarity) {
+    const pool = getCardsByRarity(info.guaranteedRarity);
+    if (pool.length > 0) {
+      cards.push(pool[Math.floor(Math.random() * pool.length)]);
+    }
+  }
+
+  // Fill remaining slots with random cards
+  while (cards.length < info.cardCount) {
+    cards.push(drawRandomCard());
+  }
+
   return cards;
 }

@@ -36,7 +36,26 @@ import { CARD_CATALOG, RARITY_COLORS } from '../lib/cards';
   <!-- Card Grid -->
   <section class="px-4 sm:px-6 lg:px-8 pb-24">
     <div class="max-w-7xl mx-auto">
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="card-grid">
+      <!-- Loading Skeleton -->
+      <div id="loading-skeleton" class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        {Array(8).fill(null).map(() => (
+          <div class="card-glass rounded-xl overflow-hidden animate-pulse">
+            <div class="bg-obsidian-800 h-48"></div>
+            <div class="p-4 space-y-3">
+              <div class="bg-obsidian-800 rounded h-5 w-3/4"></div>
+              <div class="bg-obsidian-800 rounded h-3 w-1/2"></div>
+              <div class="flex gap-4">
+                <div class="bg-obsidian-800 rounded h-3 w-12"></div>
+                <div class="bg-obsidian-800 rounded h-3 w-12"></div>
+                <div class="bg-obsidian-800 rounded h-3 w-12"></div>
+              </div>
+              <div class="bg-obsidian-800 rounded h-3 w-full"></div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 hidden" id="card-grid">
         {CARD_CATALOG.map((card) => (
           <div
             class={`card-item card-glass p-0 overflow-hidden transition-all duration-300 group cursor-pointer ${card.border}`}
@@ -776,5 +795,15 @@ import { CARD_CATALOG, RARITY_COLORS } from '../lib/cards';
     deckBuildMode = true;
     renderDeckSlots();
     renderSavedDecks();
+
+    // Hide loading skeleton once content is ready
+    window.addEventListener('load', () => {
+      const skeleton = document.getElementById('loading-skeleton');
+      const cardGrid = document.getElementById('card-grid');
+      if (skeleton && cardGrid) {
+        skeleton.style.display = 'none';
+        cardGrid.style.display = 'grid';
+      }
+    });
   </script>
 </BaseLayout>

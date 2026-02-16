@@ -56,6 +56,8 @@ pub struct UserResponse {
 #[derive(Serialize)]
 pub struct AuthResponse {
     user: UserResponse,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    founding_player: Option<bool>,
 }
 
 // ---------------------------------------------------------------------------
@@ -107,7 +109,7 @@ async fn google_sign_in(
         let token = create_token(user_id, &username, &config.jwt_secret)
             .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, e))?;
         let jar = CookieJar::new().add(build_cookie(token));
-        return Ok((jar, Json(AuthResponse { user: row_to_user(&row) })));
+        return Ok((jar, Json(AuthResponse { user: row_to_user(&row), founding_player: None })));
     }
 
     // New user — create from Google profile
@@ -142,7 +144,7 @@ async fn google_sign_in(
         .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, e))?;
     let jar = CookieJar::new().add(build_cookie(token));
 
-    Ok((jar, Json(AuthResponse { user: row_to_user(&row) })))
+    Ok((jar, Json(AuthResponse { user: row_to_user(&row), founding_player: None })))
 }
 
 // ---------------------------------------------------------------------------
@@ -188,7 +190,7 @@ async fn wallet_sign_in(
         let token = create_token(user_id, &username, &config.jwt_secret)
             .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, e))?;
         let jar = CookieJar::new().add(build_cookie(token));
-        return Ok((jar, Json(AuthResponse { user: row_to_user(&row) })));
+        return Ok((jar, Json(AuthResponse { user: row_to_user(&row), founding_player: None })));
     }
 
     // New user from wallet
@@ -224,7 +226,7 @@ async fn wallet_sign_in(
         .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, e))?;
     let jar = CookieJar::new().add(build_cookie(token));
 
-    Ok((jar, Json(AuthResponse { user: row_to_user(&row) })))
+    Ok((jar, Json(AuthResponse { user: row_to_user(&row), founding_player: None })))
 }
 
 // ---------------------------------------------------------------------------
@@ -242,10 +244,10 @@ async fn logout() -> CookieJar {
 
 async fn me(
     Extension(claims): Extension<Claims>,
-    State((pool, _)): State<(PgPool, Config)>,
+    State((pool, config)): State<(PgPool, Config)>,
 ) -> Result<Json<AuthResponse>, (StatusCode, String)> {
     let row = sqlx::query(
-        "SELECT id, username, email, display_name, wallet_address, auth_provider, avatar_url
+        "SELECT id, username, email, display_name, wallet_address, auth_provider, avatar_url, created_at
          FROM users WHERE id = $1",
     )
     .bind(claims.sub)
@@ -254,7 +256,27 @@ async fn me(
     .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?
     .ok_or((StatusCode::NOT_FOUND, "User not found".into()))?;
 
-    Ok(Json(AuthResponse { user: row_to_user(&row) }))
+    // Check founding player status
+    let founding = if let Ok(launch) = chrono::NaiveDate::parse_from_str(&config.launch_date, "%Y-%m-%d") {
+        let created: chrono::DateTime<chrono::Utc> = row.get("created_at");
+        if created.date_naive() < launch {
+            // Grant founding player rewards (idempotent)
+            sqlx::query(
+                "UPDATE player_stats SET credits = GREATEST(credits, 500) WHERE user_id = $1 AND credits < 500",
+            )
+            .bind(claims.sub)
+            .execute(&pool)
+            .await
+            .ok();
+            Some(true)
+        } else {
+            Some(false)
+        }
+    } else {
+        None
+    };
+
+    Ok(Json(AuthResponse { user: row_to_user(&row), founding_player: founding }))
 }
 
 // ---------------------------------------------------------------------------

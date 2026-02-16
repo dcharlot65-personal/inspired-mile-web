@@ -109,6 +109,15 @@ export function isDailyAvailable(): boolean {
   return now - inv.lastDailyPack >= oneDay;
 }
 
+/** Get milliseconds until the next daily pack is available */
+export function getTimeUntilNextDaily(): number {
+  const inv = getInventory();
+  if (inv.lastDailyPack === 0) return 0;
+  const oneDay = 24 * 60 * 60 * 1000;
+  const elapsed = Date.now() - inv.lastDailyPack;
+  return Math.max(0, oneDay - elapsed);
+}
+
 /** Mark daily pack as claimed */
 export function claimDaily(): void {
   const inv = getInventory();
