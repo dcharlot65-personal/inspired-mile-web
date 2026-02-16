@@ -204,7 +204,9 @@ export function getPlayerStats(): PlayerStats {
 
 function savePlayerStats(stats: PlayerStats): void {
   if (typeof window === 'undefined') return;
-  localStorage.setItem(STATS_KEY, JSON.stringify(stats));
+  try {
+    localStorage.setItem(STATS_KEY, JSON.stringify(stats));
+  } catch { /* quota exceeded — stats persist in memory until next successful write */ }
 }
 
 export function updateStats(partial: Partial<PlayerStats>): PlayerStats {
@@ -256,7 +258,9 @@ export function getUnlockedAchievements(): UnlockedAchievement[] {
 
 function saveUnlockedAchievements(unlocked: UnlockedAchievement[]): void {
   if (typeof window === 'undefined') return;
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(unlocked));
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(unlocked));
+  } catch { /* quota exceeded */ }
 }
 
 export function isAchievementUnlocked(id: string): boolean {
@@ -297,6 +301,16 @@ export function checkNewAchievements(stats?: PlayerStats): Achievement[] {
       if (typeof window !== 'undefined') {
         window.dispatchEvent(new CustomEvent('achievement-unlocked', { detail: a }));
       }
+    }
+    // Sync to server if logged in
+    if (typeof window !== 'undefined') {
+      import('./storage-backend').then(({ getStorageMode }) => {
+        if (getStorageMode() === 'server') {
+          import('./api-client').then(({ checkAchievements }) => {
+            checkAchievements(newlyUnlocked.map(a => a.id)).catch(() => {});
+          }).catch(() => {});
+        }
+      }).catch(() => {});
     }
   }
 

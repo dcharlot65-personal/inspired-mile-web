@@ -12,7 +12,8 @@ export type SfxName =
   | 'ui-click' | 'ui-whoosh'
   | 'pack-open' | 'challenge-win' | 'challenge-lose';
 
-export type Rarity = 'Common' | 'Uncommon' | 'Rare' | 'Epic' | 'Legendary';
+import type { Rarity } from './cards';
+export type { Rarity };
 
 export interface AudioPrefs {
   muted: boolean;
@@ -105,8 +106,8 @@ export function setMusicEnabled(enabled: boolean): void {
 }
 
 function applyVolumes(): void {
-  if (!masterGain || !musicGain || !sfxGain) return;
-  const now = audioCtx!.currentTime;
+  if (!audioCtx || !masterGain || !musicGain || !sfxGain) return;
+  const now = audioCtx.currentTime;
   const master = prefs.muted ? 0 : prefs.masterVolume;
   masterGain.gain.setTargetAtTime(master, now, 0.05);
   if (!ducking) {

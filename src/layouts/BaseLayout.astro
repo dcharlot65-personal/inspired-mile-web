@@ -15,18 +15,21 @@ const currentPath = Astro.url.pathname;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#D4A017" />
+    <meta name="color-scheme" content="dark" />
     <meta name="description" content={description} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <meta property="og:title" content={`${title} | Inspired Mile`} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="/images/og-image.png" />
+    <meta property="og:image" content="/images/cards/sm-001.webp" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={`${title} | Inspired Mile`} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content="/images/og-image.png" />
+    <meta name="twitter:image" content="/images/cards/sm-001.webp" />
     <title>{title} | Inspired Mile</title>
     <script is:inline src="https://accounts.google.com/gsi/client" async defer></script>
   </head>
@@ -70,7 +73,7 @@ const currentPath = Astro.url.pathname;
             </div>
             <!-- Explore dropdown -->
             <div class="relative group">
-              <button class:list={["text-sm font-medium transition-colors flex items-center gap-1", ["/world-map","/marketplace","/vr"].includes(currentPath) ? "text-gold-400" : "text-obsidian-300 hover:text-gold-400"]}>
+              <button class:list={["text-sm font-medium transition-colors flex items-center gap-1", ["/world-map","/marketplace","/vr","/viewer"].includes(currentPath) ? "text-gold-400" : "text-obsidian-300 hover:text-gold-400"]}>
                 Explore
                 <svg class="w-3 h-3 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
               </button>
@@ -79,11 +82,15 @@ const currentPath = Astro.url.pathname;
                   <a href="/world-map" class:list={["block px-4 py-2 text-sm transition-colors", currentPath === "/world-map" ? "text-gold-400 bg-gold-500/5" : "text-obsidian-300 hover:text-gold-400 hover:bg-obsidian-800/50"]}>World Map</a>
                   <a href="/marketplace" class:list={["block px-4 py-2 text-sm transition-colors", currentPath === "/marketplace" ? "text-gold-400 bg-gold-500/5" : "text-obsidian-300 hover:text-gold-400 hover:bg-obsidian-800/50"]}>Marketplace</a>
                   <a href="/vr" class:list={["block px-4 py-2 text-sm transition-colors", currentPath === "/vr" ? "text-gold-400 bg-gold-500/5" : "text-obsidian-300 hover:text-gold-400 hover:bg-obsidian-800/50"]}>VR Gallery</a>
+                  <a href="/viewer" class:list={["block px-4 py-2 text-sm transition-colors", currentPath === "/viewer" ? "text-gold-400 bg-gold-500/5" : "text-obsidian-300 hover:text-gold-400 hover:bg-obsidian-800/50"]}>3D Viewer</a>
                 </div>
               </div>
             </div>
             <a href="/about" class:list={["text-sm font-medium transition-colors", currentPath === "/about" ? "text-gold-400" : "text-obsidian-300 hover:text-gold-400"]}>
               About
+            </a>
+            <a href="/profile" class:list={["text-sm font-medium transition-colors", currentPath === "/profile" ? "text-gold-400" : "text-obsidian-300 hover:text-gold-400"]}>
+              Profile
             </a>
           </div>
 
@@ -95,7 +102,7 @@ const currentPath = Astro.url.pathname;
             </div>
             <!-- Auth: Login/User button -->
             <div id="auth-container" class="relative">
-              <button id="auth-btn" class="hidden text-xs font-medium text-obsidian-300 hover:text-gold-400 transition-colors border border-obsidian-700 rounded-lg px-3 py-1.5 hover:border-gold-500/30">
+              <button id="auth-btn" class="text-xs font-medium text-obsidian-300 hover:text-gold-400 transition-colors border border-obsidian-700 rounded-lg px-3 py-1.5 hover:border-gold-500/30">
                 Sign In
               </button>
               <div id="user-badge" class="hidden flex items-center gap-2 cursor-pointer">
@@ -143,6 +150,9 @@ const currentPath = Astro.url.pathname;
                       <p id="menu-user-provider" class="text-xs text-emerald-400">Synced to server</p>
                     </div>
                   </div>
+                  <a href="/profile" class="block text-xs text-obsidian-400 hover:text-gold-400 py-2 text-center transition-colors">
+                    View Profile
+                  </a>
                   <button id="auth-logout-btn" class="w-full text-xs text-obsidian-400 hover:text-crimson-400 py-2 text-center transition-colors">
                     Sign Out
                   </button>
@@ -181,8 +191,11 @@ const currentPath = Astro.url.pathname;
           <a href="/world-map" class:list={["block text-sm font-medium py-2 pl-3", currentPath === "/world-map" ? "text-gold-400" : "text-obsidian-300"]}>World Map</a>
           <a href="/marketplace" class:list={["block text-sm font-medium py-2 pl-3", currentPath === "/marketplace" ? "text-gold-400" : "text-obsidian-300"]}>Marketplace</a>
           <a href="/vr" class:list={["block text-sm font-medium py-2 pl-3", currentPath === "/vr" ? "text-gold-400" : "text-obsidian-300"]}>VR Gallery</a>
+          <a href="/viewer" class:list={["block text-sm font-medium py-2 pl-3", currentPath === "/viewer" ? "text-gold-400" : "text-obsidian-300"]}>3D Viewer</a>
           <div class="border-t border-obsidian-800/50 mt-2 pt-2">
             <a href="/about" class:list={["block text-sm font-medium py-2", currentPath === "/about" ? "text-gold-400" : "text-obsidian-300"]}>About</a>
+            <a href="/profile" class:list={["block text-sm font-medium py-2", currentPath === "/profile" ? "text-gold-400" : "text-obsidian-300"]}>Profile</a>
+            <button id="mobile-auth-btn" class="block text-sm font-medium py-2 text-gold-400">Sign In</button>
           </div>
         </div>
       </div>
@@ -190,6 +203,17 @@ const currentPath = Astro.url.pathname;
 
     <!-- Achievement Toast Container -->
     <div id="achievement-toasts" class="fixed top-20 right-4 z-[100] flex flex-col gap-3 pointer-events-none"></div>
+
+    <!-- Data Migration Banner -->
+    <div id="migration-banner" class="hidden fixed top-20 left-1/2 -translate-x-1/2 z-[90] card-glass p-4 max-w-md bg-obsidian-900/95 backdrop-blur-lg border-gold-500/30 shadow-2xl rounded-xl">
+      <h4 class="text-sm font-display font-bold text-gold-300 mb-1">Sync Your Data?</h4>
+      <p class="text-xs text-obsidian-400 mb-3">We found local game progress. Sync it to your account so it's saved across devices.</p>
+      <div class="flex gap-2">
+        <button id="migrate-yes" class="btn-primary text-xs px-4 py-1.5">Sync Data</button>
+        <button id="migrate-no" class="btn-secondary text-xs px-4 py-1.5">Skip</button>
+      </div>
+      <p id="migration-result" class="hidden text-xs mt-2"></p>
+    </div>
 
     <!-- Main Content -->
     <main class="flex-1 pt-16">
@@ -221,6 +245,7 @@ const currentPath = Astro.url.pathname;
               <li><a href="/marketplace" class="hover:text-gold-400 transition-colors">Marketplace</a></li>
               <li><a href="/tournaments" class="hover:text-gold-400 transition-colors">Tournaments</a></li>
               <li><a href="/world-map" class="hover:text-gold-400 transition-colors">World Map</a></li>
+              <li><a href="/profile" class="hover:text-gold-400 transition-colors">Profile</a></li>
             </ul>
           </div>
           <div>
@@ -306,7 +331,50 @@ const currentPath = Astro.url.pathname;
     </script>
 
     <script>
-      // Achievement toast notifications
+      // ---- Toast notification system ----
+      type ToastType = 'success' | 'error' | 'info' | 'warning';
+
+      const TOAST_STYLES: Record<ToastType, string> = {
+        success: 'bg-emerald-500/15 border-emerald-500/40 text-emerald-300',
+        error: 'bg-crimson-500/15 border-crimson-500/40 text-crimson-300',
+        info: 'bg-purple-500/15 border-purple-500/40 text-purple-300',
+        warning: 'bg-gold-500/15 border-gold-500/40 text-gold-300',
+      };
+
+      const TOAST_ICONS: Record<ToastType, string> = {
+        success: '\u2713',
+        error: '\u2717',
+        info: '\u24D8',
+        warning: '\u26A0',
+      };
+
+      function showToast(message: string, type: ToastType = 'info', duration = 4000) {
+        const container = document.getElementById('achievement-toasts');
+        if (!container) return;
+
+        const toast = document.createElement('div');
+        toast.className = `pointer-events-auto flex items-center gap-3 px-4 py-3 rounded-xl border backdrop-blur-lg shadow-2xl transform translate-x-full opacity-0 transition-all duration-500 max-w-sm ${TOAST_STYLES[type]}`;
+        toast.innerHTML = `
+          <span class="text-lg font-bold">${TOAST_ICONS[type]}</span>
+          <p class="text-sm flex-1">${message}</p>
+        `;
+        container.appendChild(toast);
+
+        requestAnimationFrame(() => {
+          toast.classList.remove('translate-x-full', 'opacity-0');
+          toast.classList.add('translate-x-0', 'opacity-100');
+        });
+
+        setTimeout(() => {
+          toast.classList.add('translate-x-full', 'opacity-0');
+          setTimeout(() => toast.remove(), 500);
+        }, duration);
+      }
+
+      // Expose globally so page scripts can use it
+      (window as any).showToast = showToast;
+
+      // ---- Achievement toast notifications ----
       const TIER_COLORS: Record<string, string> = {
         bronze: 'from-amber-700 to-amber-900 border-amber-600',
         silver: 'from-gray-400 to-gray-600 border-gray-300',
@@ -331,13 +399,11 @@ const currentPath = Astro.url.pathname;
         `;
         container.appendChild(toast);
 
-        // Animate in
         requestAnimationFrame(() => {
           toast.classList.remove('translate-x-full', 'opacity-0');
           toast.classList.add('translate-x-0', 'opacity-100');
         });
 
-        // Animate out after 4s
         setTimeout(() => {
           toast.classList.add('translate-x-full', 'opacity-0');
           setTimeout(() => toast.remove(), 500);
@@ -348,8 +414,9 @@ const currentPath = Astro.url.pathname;
     <script>
       // Auth UI logic — Google OAuth + Solana Wallet sign-in
       import { initStorageBackend, isLoggedIn, getCurrentUser, googleSignInUser, walletSignInUser, logoutUser } from '../lib/storage-backend';
-      import { requestWalletNonce } from '../lib/api-client';
+      import { requestWalletNonce, getMigrationStatus, syncMigration, type MigrationPayload } from '../lib/api-client';
       import { getWalletAddress, isConnected as isWalletConnected, signAuthMessage } from '../lib/wallet';
+      import { getPlayerStats } from '../lib/achievements';
 
       const authBtn = document.getElementById('auth-btn')!;
       const userBadge = document.getElementById('user-badge')!;
@@ -368,10 +435,12 @@ const currentPath = Astro.url.pathname;
 
       function updateAuthUI() {
         clearError();
+        const mobileAuthBtn = document.getElementById('mobile-auth-btn');
         if (isLoggedIn()) {
           const user = getCurrentUser()!;
           const initial = (user.display_name || user.username)[0].toUpperCase();
           authBtn.classList.add('hidden');
+          if (mobileAuthBtn) mobileAuthBtn.classList.add('hidden');
           userBadge.classList.remove('hidden');
           userBadge.classList.add('flex');
           document.getElementById('user-initial')!.textContent = initial;
@@ -384,6 +453,7 @@ const currentPath = Astro.url.pathname;
           userMenu.classList.remove('hidden');
         } else {
           authBtn.classList.remove('hidden');
+          if (mobileAuthBtn) mobileAuthBtn.classList.remove('hidden');
           userBadge.classList.add('hidden');
           signInOptions.classList.remove('hidden');
           userMenu.classList.add('hidden');
@@ -396,6 +466,7 @@ const currentPath = Astro.url.pathname;
       }
       authBtn.addEventListener('click', toggleDropdown);
       userBadge.addEventListener('click', toggleDropdown);
+      document.getElementById('mobile-auth-btn')?.addEventListener('click', toggleDropdown);
 
       // Close on outside click
       document.addEventListener('click', (e) => {
@@ -421,6 +492,7 @@ const currentPath = Astro.url.pathname;
           await googleSignInUser(response.credential);
           updateAuthUI();
           authDropdown.classList.add('hidden');
+          offerMigrationIfNeeded();
         } catch (e: any) {
           showError(e.body || e.message || 'Google sign-in failed');
         }
@@ -459,6 +531,7 @@ const currentPath = Astro.url.pathname;
           await walletSignInUser(walletAddress, signature);
           updateAuthUI();
           authDropdown.classList.add('hidden');
+          offerMigrationIfNeeded();
         } catch (e: any) {
           showError(e.body || e.message || 'Wallet sign-in failed');
         }
@@ -471,6 +544,86 @@ const currentPath = Astro.url.pathname;
         authDropdown.classList.add('hidden');
       });
 
+      // --- Data Migration ---
+      async function offerMigrationIfNeeded() {
+        if (!isLoggedIn()) return;
+
+        // Check if user has localStorage data worth migrating
+        const localInventory = localStorage.getItem('inspired-mile-inventory');
+        const localStats = localStorage.getItem('inspired-mile-stats');
+        const localAchievements = localStorage.getItem('inspired-mile-achievements');
+        if (!localInventory && !localStats && !localAchievements) return;
+
+        try {
+          const status = await getMigrationStatus();
+          if (status.migrated) return;
+        } catch {
+          return; // Server unreachable
+        }
+
+        document.getElementById('migration-banner')?.classList.remove('hidden');
+      }
+
+      document.getElementById('migrate-yes')?.addEventListener('click', async () => {
+        const btn = document.getElementById('migrate-yes') as HTMLButtonElement;
+        btn.textContent = 'Syncing...';
+        btn.disabled = true;
+
+        try {
+          const inventory = JSON.parse(localStorage.getItem('inspired-mile-inventory') || '{"cards":[]}');
+          const stats = getPlayerStats();
+          const achievements = JSON.parse(localStorage.getItem('inspired-mile-achievements') || '[]');
+          const variants = JSON.parse(localStorage.getItem('inspired-mile-variants') || '[]');
+
+          const payload: MigrationPayload = {
+            cards: (inventory.cards || []).map((c: any) => ({
+              card_id: c.cardId || c.card_id,
+              acquired_at: c.acquiredAt || null,
+              source: c.source || 'migration',
+            })),
+            stats: {
+              battle_wins: stats.battleWins || 0,
+              total_battles: stats.totalBattles || 0,
+              total_rounds: stats.totalRounds || 0,
+              highest_score: stats.highestScore || 0,
+              trivia_correct: stats.triviaCorrect || 0,
+              trivia_perfect: stats.triviaPerfect || 0,
+              challenges_completed: stats.challengesCompleted || 0,
+              unique_cards: stats.uniqueCards || 0,
+              total_cards: stats.totalCards || 0,
+              packs_opened: stats.packsOpened || 0,
+            },
+            achievements: achievements.map((a: any) => a.id || a),
+            variants: variants.map((v: any) => ({
+              variant_id: v.variantId || v.variant_id,
+              base_card_id: v.baseCardId || v.base_card_id,
+              acquired_at: v.acquiredAt || null,
+              source: v.source || 'migration',
+            })),
+          };
+
+          const result = await syncMigration(payload);
+          const resultEl = document.getElementById('migration-result')!;
+          resultEl.classList.remove('hidden');
+          resultEl.classList.add('text-emerald-400');
+          resultEl.textContent = `Synced ${result.cards_synced} cards, ${result.achievements_synced} achievements.`;
+          setTimeout(() => {
+            document.getElementById('migration-banner')?.classList.add('hidden');
+          }, 3000);
+        } catch (e: any) {
+          const resultEl = document.getElementById('migration-result')!;
+          resultEl.classList.remove('hidden');
+          resultEl.classList.add('text-crimson-400');
+          resultEl.textContent = 'Sync failed. You can try again later.';
+          btn.textContent = 'Sync Data';
+          btn.disabled = false;
+        }
+      });
+
+      document.getElementById('migrate-no')?.addEventListener('click', () => {
+        document.getElementById('migration-banner')?.classList.add('hidden');
+      });
+
       // --- Init ---
       initStorageBackend().then(() => {
         updateAuthUI();
@@ -481,6 +634,11 @@ const currentPath = Astro.url.pathname;
       window.addEventListener('load', () => {
         if (!isLoggedIn()) initGoogleSignIn();
       });
+    </script>
+    <!-- Tamper Guard -->
+    <script>
+      import { initTamperGuard } from '../scripts/tamper-guard';
+      initTamperGuard();
     </script>
   </body>
 </html>

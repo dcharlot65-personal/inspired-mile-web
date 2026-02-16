@@ -10,25 +10,17 @@ use axum::{
     Json, Router,
 };
 use futures::{SinkExt, StreamExt};
-use serde::{Deserialize, Serialize};
+use serde::Serialize;
 use sqlx::PgPool;
 use uuid::Uuid;
 
 use crate::auth::Claims;
 use crate::config::Config;
-use super::game_room::{ClientEvent, GameRoom, RoomManager, RoomState, ServerEvent, AxisScores};
+use super::game_room::{ClientEvent, RoomManager, RoomState, ServerEvent, AxisScores};
 use super::judge;
 use super::matchmaking::MatchmakingQueue;
 
-/// App state that includes room manager and matchmaking queue.
-pub struct AppState {
-    pub pool: PgPool,
-    pub config: Config,
-    pub rooms: Arc<RoomManager>,
-    pub queue: Arc<MatchmakingQueue>,
-}
-
-pub fn router(rooms: Arc<RoomManager>, queue: Arc<MatchmakingQueue>) -> Router<(PgPool, Config)> {
+pub fn router() -> Router<(PgPool, Config)> {
     Router::new()
         .route("/ws", get(ws_handler))
         .route("/queue", post(join_queue))
@@ -57,7 +49,7 @@ async fn join_queue(
             if let Some(room) = rooms.get_room(room_id).await {
                 let mut room = room.lock().await;
                 room.add_player(claims.sub, claims.username.clone());
-                room.add_player(Uuid::new_v4(), result.opponent_username); // placeholder
+                room.add_player(result.opponent_user_id, result.opponent_username);
             }
 
             Ok(Json(QueueResponse {
@@ -108,7 +100,7 @@ async fn ws_handler(
     ws: WebSocketUpgrade,
     Extension(claims): Extension<Claims>,
     Extension(rooms): Extension<Arc<RoomManager>>,
-    State((pool, config)): State<(PgPool, Config)>,
+    State((_pool, config)): State<(PgPool, Config)>,
 ) -> impl IntoResponse {
     ws.on_upgrade(move |socket| handle_socket(socket, claims, rooms, config))
 }
@@ -119,7 +111,9 @@ async fn handle_socket(
     rooms: Arc<RoomManager>,
     config: Config,
 ) {
-    let (mut ws_tx, mut ws_rx) = socket.split();
+    let (ws_tx, mut ws_rx) = socket.split();
+    let ws_tx = Arc::new(tokio::sync::Mutex::new(ws_tx));
+    let mut current_room_id: Option<Uuid> = None;
 
     while let Some(Ok(msg)) = ws_rx.next().await {
         let text = match msg {
@@ -134,7 +128,7 @@ async fn handle_socket(
                 let err = ServerEvent::Error {
                     message: "Invalid message format".into(),
                 };
-                let _ = ws_tx.send(Message::Text(serde_json::to_string(&err).unwrap().into())).await;
+                let _ = ws_tx.lock().await.send(Message::Text(serde_json::to_string(&err).unwrap().into())).await;
                 continue;
             }
         };
@@ -147,27 +141,37 @@ async fn handle_socket(
                         let err = ServerEvent::Error {
                             message: "Room not found".into(),
                         };
-                        let _ = ws_tx.send(Message::Text(serde_json::to_string(&err).unwrap().into())).await;
+                        let _ = ws_tx.lock().await.send(Message::Text(serde_json::to_string(&err).unwrap().into())).await;
                         continue;
                     }
                 };
 
                 let mut room = room_arc.lock().await;
                 room.add_player(claims.sub, claims.username.clone());
+                current_room_id = Some(room_id);
 
-                let opponent_name = room
-                    .get_opponent(claims.sub)
-                    .map(|p| p.username.clone())
-                    .unwrap_or_default();
-
+                // Send join confirmation directly (before subscribing to avoid echo)
                 let joined = ServerEvent::RoomJoined {
                     room_id,
-                    opponent: opponent_name,
+                    opponent: room.get_opponent(claims.sub).map(|p| p.username.clone()).unwrap_or_default(),
                     round: room.current_round,
                     total_rounds: room.total_rounds,
                 };
-                let _ = ws_tx.send(Message::Text(serde_json::to_string(&joined).unwrap().into())).await;
+                let _ = ws_tx.lock().await.send(Message::Text(serde_json::to_string(&joined).unwrap().into())).await;
 
+                // Subscribe to room broadcasts and forward to this player's WebSocket
+                let mut rx = room.subscribe();
+                let fwd_tx = ws_tx.clone();
+                tokio::spawn(async move {
+                    while let Ok(event) = rx.recv().await {
+                        let json = serde_json::to_string(&event).unwrap();
+                        if fwd_tx.lock().await.send(Message::Text(json.into())).await.is_err() {
+                            break;
+                        }
+                    }
+                });
+
+                // If both players joined, broadcast round start (received by both via subscription)
                 if room.players.len() == 2 {
                     room.broadcast(ServerEvent::RoundStart {
                         round: room.current_round,
@@ -177,113 +181,113 @@ async fn handle_socket(
             }
 
             ClientEvent::SubmitVerse { text: verse } => {
-                // Find which room this player is in (simplified — iterate all rooms)
-                let all_rooms = rooms.list_rooms().await;
-                for (rid, _, _) in &all_rooms {
-                    if let Some(room_arc) = rooms.get_room(*rid).await {
-                        let mut room = room_arc.lock().await;
-                        if room.players.iter().any(|p| p.user_id == claims.sub) {
-                            room.submit_verse(claims.sub, verse.clone());
+                let room_id = match current_room_id {
+                    Some(id) => id,
+                    None => continue,
+                };
+                let room_arc = match rooms.get_room(room_id).await {
+                    Some(r) => r,
+                    None => continue,
+                };
 
-                            // Notify opponent
-                            room.broadcast(ServerEvent::OpponentSubmitted);
+                let mut room = room_arc.lock().await;
+                room.submit_verse(claims.sub, verse);
+                room.broadcast(ServerEvent::OpponentSubmitted);
 
-                            // If both submitted, judge
-                            if room.both_submitted() {
-                                let subs = room.take_submissions();
-                                let s1 = &subs[0];
-                                let s2 = &subs[1];
+                if room.both_submitted() {
+                    let subs = room.take_submissions();
+                    let s1 = &subs[0];
+                    let s2 = &subs[1];
 
-                                let result = match judge::judge_battle(&s1.text, &s2.text, &config).await {
-                                    Ok(r) => r,
-                                    Err(_) => judge::judge_fallback(),
-                                };
+                    let result = match judge::judge_battle(&s1.text, &s2.text, &config).await {
+                        Ok(r) => r,
+                        Err(_) => judge::judge_fallback(),
+                    };
 
-                                // Update scores
-                                for p in room.players.iter_mut() {
-                                    if p.user_id == s1.user_id {
-                                        if result.player1_wins { p.score += 1; }
-                                    } else {
-                                        if !result.player1_wins { p.score += 1; }
-                                    }
-                                }
-
-                                let round = room.current_round;
-
-                                // Send result to both (each player sees their own scores as "player")
-                                room.broadcast(ServerEvent::RoundResult {
-                                    round,
-                                    player_score: AxisScores {
-                                        wordplay: result.player1_score.wordplay,
-                                        shakespeare: result.player1_score.shakespeare,
-                                        flow: result.player1_score.flow,
-                                        wit: result.player1_score.wit,
-                                        total: result.player1_score.total,
-                                    },
-                                    opponent_score: AxisScores {
-                                        wordplay: result.player2_score.wordplay,
-                                        shakespeare: result.player2_score.shakespeare,
-                                        flow: result.player2_score.flow,
-                                        wit: result.player2_score.wit,
-                                        total: result.player2_score.total,
-                                    },
-                                    player_wins: result.player1_wins,
-                                    reason: result.reason,
-                                });
-
-                                room.advance_round();
-
-                                if room.state == RoomState::Completed {
-                                    let winner = room.players.iter()
-                                        .max_by_key(|p| p.score)
-                                        .map(|p| p.username.clone())
-                                        .unwrap_or_default();
-
-                                    room.broadcast(ServerEvent::MatchComplete {
-                                        winner,
-                                        player_total: room.players.first().map(|p| p.score).unwrap_or(0),
-                                        opponent_total: room.players.last().map(|p| p.score).unwrap_or(0),
-                                    });
-                                } else {
-                                    room.broadcast(ServerEvent::RoundStart {
-                                        round: room.current_round,
-                                        total_rounds: room.total_rounds,
-                                    });
-                                }
-                            }
-                            break;
+                    // Update scores
+                    for p in room.players.iter_mut() {
+                        if p.user_id == s1.user_id {
+                            if result.player1_wins { p.score += 1; }
+                        } else {
+                            if !result.player1_wins { p.score += 1; }
                         }
+                    }
+
+                    let round = room.current_round;
+
+                    room.broadcast(ServerEvent::RoundResult {
+                        round,
+                        player_score: AxisScores {
+                            wordplay: result.player1_score.wordplay,
+                            shakespeare: result.player1_score.shakespeare,
+                            flow: result.player1_score.flow,
+                            wit: result.player1_score.wit,
+                            total: result.player1_score.total,
+                        },
+                        opponent_score: AxisScores {
+                            wordplay: result.player2_score.wordplay,
+                            shakespeare: result.player2_score.shakespeare,
+                            flow: result.player2_score.flow,
+                            wit: result.player2_score.wit,
+                            total: result.player2_score.total,
+                        },
+                        player_wins: result.player1_wins,
+                        reason: result.reason,
+                    });
+
+                    room.advance_round();
+
+                    if room.state == RoomState::Completed {
+                        let winner = room.players.iter()
+                            .max_by_key(|p| p.score)
+                            .map(|p| p.username.clone())
+                            .unwrap_or_default();
+
+                        room.broadcast(ServerEvent::MatchComplete {
+                            winner,
+                            player_total: room.players.first().map(|p| p.score).unwrap_or(0),
+                            opponent_total: room.players.last().map(|p| p.score).unwrap_or(0),
+                        });
+                    } else {
+                        room.broadcast(ServerEvent::RoundStart {
+                            round: room.current_round,
+                            total_rounds: room.total_rounds,
+                        });
                     }
                 }
             }
 
             ClientEvent::Forfeit => {
-                // Find and clean up the room
-                let all_rooms = rooms.list_rooms().await;
-                for (rid, _, _) in &all_rooms {
-                    if let Some(room_arc) = rooms.get_room(*rid).await {
+                if let Some(room_id) = current_room_id {
+                    if let Some(room_arc) = rooms.get_room(room_id).await {
                         let room = room_arc.lock().await;
-                        if room.players.iter().any(|p| p.user_id == claims.sub) {
-                            let opponent = room.get_opponent(claims.sub)
-                                .map(|p| p.username.clone())
-                                .unwrap_or_default();
+                        let opponent = room.get_opponent(claims.sub)
+                            .map(|p| p.username.clone())
+                            .unwrap_or_default();
 
-                            room.broadcast(ServerEvent::MatchComplete {
-                                winner: opponent,
-                                player_total: 0,
-                                opponent_total: 3,
-                            });
-                            drop(room);
-                            rooms.remove_room(*rid).await;
-                            break;
-                        }
+                        room.broadcast(ServerEvent::MatchComplete {
+                            winner: opponent,
+                            player_total: 0,
+                            opponent_total: 3,
+                        });
+                        drop(room);
+                        rooms.remove_room(room_id).await;
+                        current_room_id = None;
                     }
                 }
             }
 
-            ClientEvent::UseItem { item_id } => {
-                // Item effects are applied client-side to modifiers; server just acknowledges
+            ClientEvent::UseItem { .. } => {
+                // Item effects are applied client-side; no server-side action needed
             }
+        }
+    }
+
+    // Player disconnected — notify opponent
+    if let Some(room_id) = current_room_id {
+        if let Some(room_arc) = rooms.get_room(room_id).await {
+            let room = room_arc.lock().await;
+            room.broadcast(ServerEvent::OpponentDisconnected);
         }
     }
 }

@@ -158,7 +158,7 @@ import { CARD_CATALOG, RARITY_COLORS, type Card, type Rarity } from '../lib/card
   </div>
 
   <!-- Trivia Modal -->
-  <div id="trivia-modal" class="fixed inset-0 bg-obsidian-950/90 z-50 hidden flex items-center justify-center p-4">
+  <div id="trivia-modal" role="dialog" aria-modal="true" aria-label="Shakespeare Trivia" class="fixed inset-0 bg-obsidian-950/90 z-50 hidden flex items-center justify-center p-4">
     <div class="card-glass max-w-lg w-full p-6 max-h-[90vh] overflow-y-auto">
       <div class="flex items-center justify-between mb-6">
         <h3 class="font-display text-xl font-bold text-gold-300">Shakespeare Trivia</h3>
@@ -182,7 +182,7 @@ import { CARD_CATALOG, RARITY_COLORS, type Card, type Rarity } from '../lib/card
   </div>
 
   <!-- Challenge Modal -->
-  <div id="challenge-modal" class="fixed inset-0 bg-obsidian-950/90 z-50 hidden flex items-center justify-center p-4">
+  <div id="challenge-modal" role="dialog" aria-modal="true" aria-label="Quote Challenge" class="fixed inset-0 bg-obsidian-950/90 z-50 hidden flex items-center justify-center p-4">
     <div class="card-glass max-w-lg w-full p-6">
       <div class="flex items-center justify-between mb-6">
         <h3 class="font-display text-xl font-bold text-purple-300">Quote Challenge</h3>
@@ -448,7 +448,7 @@ import { CARD_CATALOG, RARITY_COLORS, type Card, type Rarity } from '../lib/card
         const variant = awardRandomVariant(getOwnedCardIds(), 'trivia-mastery');
         if (variant) {
           setTimeout(() => {
-            alert(`World Card Unlocked! ${variant.city}: +${variant.ability.bonus} ${variant.ability.axis}`);
+            (window as any).showToast(`World Card Unlocked! ${variant.city}: +${variant.ability.bonus} ${variant.ability.axis}`, 'success', 5000);
           }, 1500);
         }
       }

@@ -6,7 +6,7 @@ use axum::{
 };
 use axum_extra::extract::CookieJar;
 
-use super::jwt::{verify_token, Claims};
+use super::jwt::verify_token;
 
 const COOKIE_NAME: &str = "im_token";
 

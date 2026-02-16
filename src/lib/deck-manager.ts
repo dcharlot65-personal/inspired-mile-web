@@ -38,7 +38,9 @@ export function saveDeck(deck: Deck): { success: boolean; errors: string[] } {
     decks.push(deck);
   }
 
-  localStorage.setItem(DECK_STORAGE_KEY, JSON.stringify(decks));
+  try {
+    localStorage.setItem(DECK_STORAGE_KEY, JSON.stringify(decks));
+  } catch { /* quota exceeded */ }
   return { success: true, errors: [] };
 }
 

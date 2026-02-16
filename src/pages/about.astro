@@ -30,9 +30,19 @@ const team = [
   },
   {
     name: 'Arrocito del Diablo',
+    aka: 'Paul Rice',
     role: 'Game Design & Strategy',
     bio: 'Card game mechanics, battle system design, and competitive strategy. Deep knowledge of TCG ecosystems from Pokemon to Magic: The Gathering.',
     icon: '&#127917;',
+  },
+  {
+    name: 'Treston Knight',
+    role: 'Operations & Organizational Leadership',
+    bio: 'Operational strategy and organizational leadership. Builds the systems and processes that keep teams aligned and moving forward.',
+    icon: '&#9881;',
+    socials: {
+      linkedin: 'https://www.linkedin.com/in/treston',
+    },
   },
 ];
 
@@ -99,7 +109,7 @@ const timeline = [
       <h2 class="text-3xl font-display font-bold text-center mb-12">
         The <span class="text-gradient">Team</span>
       </h2>
-      <div class="grid md:grid-cols-3 gap-6">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {team.map((member) => (
           <div class="card-glass p-6 text-center hover:border-gold-500/30 transition-all">
             <div class="w-16 h-16 rounded-full bg-gold-500/10 border border-gold-500/20 flex items-center justify-center mx-auto mb-4">

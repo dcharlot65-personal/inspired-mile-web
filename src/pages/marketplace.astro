@@ -199,14 +199,14 @@ import '../styles/global.css';
 
       listingsGrid.querySelectorAll('.buy-btn').forEach(btn => {
         btn.addEventListener('click', async () => {
-          if (!isLoggedIn()) { alert('Sign in to buy cards.'); return; }
+          if (!isLoggedIn()) { (window as any).showToast('Sign in to buy cards.', 'warning'); return; }
           const id = (btn as HTMLElement).dataset.id!;
           try {
             await buyListing(id);
-            alert('Purchase successful!');
+            (window as any).showToast('Purchase successful!', 'success');
             loadListings();
           } catch (e: any) {
-            alert(e.message || 'Purchase failed');
+            (window as any).showToast(e.message || 'Purchase failed', 'error');
           }
         });
       });
@@ -253,7 +253,7 @@ import '../styles/global.css';
               await cancelListing(id);
               loadMyListings();
             } catch (e: any) {
-              alert(e.message || 'Cancel failed');
+              (window as any).showToast(e.message || 'Cancel failed', 'error');
             }
           });
         });
@@ -264,7 +264,7 @@ import '../styles/global.css';
 
     // Create Listing
     document.getElementById('create-listing-btn')!.addEventListener('click', async () => {
-      if (!isLoggedIn()) { alert('Sign in to create a listing.'); return; }
+      if (!isLoggedIn()) { (window as any).showToast('Sign in to create a listing.', 'warning'); return; }
 
       const cardId = (document.getElementById('sell-card') as HTMLSelectElement).value;
       const type = (document.querySelector<HTMLInputElement>('input[name="listing-type"]:checked'))!.value as 'sale' | 'trade';
@@ -295,15 +295,19 @@ import '../styles/global.css';
     async function populateSellCards() {
       const select = document.getElementById('sell-card') as HTMLSelectElement;
       try {
-        const { getInventory } = await import('../lib/inventory');
-        const inv = getInventory();
-        inv.ownedCardIds.forEach((id: string) => {
+        const { getOwnedCardIds } = await import('../lib/inventory');
+        const { CARD_CATALOG } = await import('../lib/cards');
+        const ownedIds = getOwnedCardIds();
+        const cardMap = new Map(CARD_CATALOG.map(c => [c.id, c.name]));
+        for (const id of ownedIds) {
           const opt = document.createElement('option');
           opt.value = id;
-          opt.textContent = id;
+          opt.textContent = `${cardMap.get(id) || id} (${id})`;
           select.appendChild(opt);
-        });
-      } catch {}
+        }
+      } catch (e) {
+        console.error('[marketplace] Failed to load owned cards:', e);
+      }
     }
 
     // Init

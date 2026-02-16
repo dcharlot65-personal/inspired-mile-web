@@ -1,4 +1,3 @@
-use std::sync::Arc;
 use tokio::sync::{Mutex, oneshot};
 use uuid::Uuid;
 
@@ -12,6 +11,7 @@ pub struct QueueEntry {
 /// Result sent back to a queued player when matched.
 pub struct MatchResult {
     pub room_id: Uuid,
+    pub opponent_user_id: Uuid,
     pub opponent_username: String,
 }
 
@@ -40,6 +40,7 @@ impl MatchmakingQueue {
             // Notify the waiting player
             let _ = opponent.tx.send(MatchResult {
                 room_id,
+                opponent_user_id: user_id,
                 opponent_username: username.clone(),
             });
 
@@ -47,6 +48,7 @@ impl MatchmakingQueue {
             let (tx2, rx2) = oneshot::channel();
             let _ = tx2.send(MatchResult {
                 room_id,
+                opponent_user_id: opponent.user_id,
                 opponent_username: opponent.username,
             });
 

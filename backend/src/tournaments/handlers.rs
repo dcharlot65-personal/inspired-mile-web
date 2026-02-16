@@ -54,6 +54,20 @@ pub struct CreateTournamentRequest {
     starts_at: String,
 }
 
+#[derive(Deserialize)]
+pub struct CompleteMatchRequest {
+    winner_id: Uuid,
+    battle_room_id: Option<Uuid>,
+}
+
+#[derive(Serialize)]
+pub struct MatchCompletionResponse {
+    match_id: Uuid,
+    winner_id: Uuid,
+    tournament_completed: bool,
+    next_match_id: Option<Uuid>,
+}
+
 pub fn router() -> Router<(PgPool, Config)> {
     Router::new()
         .route("/", get(list_tournaments))
@@ -62,6 +76,7 @@ pub fn router() -> Router<(PgPool, Config)> {
         .route("/{id}/register", post(register_tournament))
         .route("/{id}/bracket", get(get_bracket))
         .route("/{id}/leaderboard", get(get_leaderboard))
+        .route("/{id}/matches/{match_id}/complete", post(complete_match))
 }
 
 async fn list_tournaments(
@@ -128,14 +143,17 @@ async fn create_tournament(
     Json(body): Json<CreateTournamentRequest>,
 ) -> Result<Json<TournamentResponse>, (StatusCode, String)> {
     let format = body.format.unwrap_or_else(|| "single_elimination".into());
+    if format != "single_elimination" && format != "round_robin" {
+        return Err((StatusCode::BAD_REQUEST, "Format must be 'single_elimination' or 'round_robin'".into()));
+    }
     let max_players = body.max_players.unwrap_or(16);
 
     let starts_at: chrono::DateTime<chrono::Utc> = body.starts_at.parse()
         .map_err(|_| (StatusCode::BAD_REQUEST, "Invalid starts_at datetime".into()))?;
 
     let row = sqlx::query(
-        "INSERT INTO tournaments (name, description, format, max_players, starts_at)
-         VALUES ($1, $2, $3, $4, $5)
+        "INSERT INTO tournaments (name, description, format, max_players, starts_at, created_by)
+         VALUES ($1, $2, $3, $4, $5, $6)
          RETURNING id, created_at",
     )
     .bind(&body.name)
@@ -143,6 +161,7 @@ async fn create_tournament(
     .bind(&format)
     .bind(max_players)
     .bind(starts_at)
+    .bind(claims.sub)
     .fetch_one(&pool)
     .await
     .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?;
@@ -267,4 +286,169 @@ async fn get_leaderboard(
     }).collect();
 
     Ok(Json(entries))
+}
+
+async fn complete_match(
+    Extension(claims): Extension<Claims>,
+    Path((tournament_id, match_id)): Path<(Uuid, Uuid)>,
+    State((pool, _)): State<(PgPool, Config)>,
+    Json(body): Json<CompleteMatchRequest>,
+) -> Result<Json<MatchCompletionResponse>, (StatusCode, String)> {
+    // Fetch the match
+    let m = sqlx::query(
+        "SELECT id, round, match_order, player1_id, player2_id, winner_id, status
+         FROM tournament_matches WHERE id = $1 AND tournament_id = $2",
+    )
+    .bind(match_id)
+    .bind(tournament_id)
+    .fetch_optional(&pool)
+    .await
+    .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?
+    .ok_or((StatusCode::NOT_FOUND, "Match not found".into()))?;
+
+    let status: String = m.get("status");
+    if status != "pending" && status != "in_progress" {
+        return Err((StatusCode::BAD_REQUEST, format!("Match is already {status}")));
+    }
+
+    let p1: Option<Uuid> = m.get("player1_id");
+    let p2: Option<Uuid> = m.get("player2_id");
+
+    // Authorization: only a match participant can complete the match
+    if Some(claims.sub) != p1 && Some(claims.sub) != p2 {
+        return Err((StatusCode::FORBIDDEN, "Only match participants can complete a match".into()));
+    }
+
+    if Some(body.winner_id) != p1 && Some(body.winner_id) != p2 {
+        return Err((StatusCode::BAD_REQUEST, "winner_id must be player1 or player2".into()));
+    }
+
+    let round: i32 = m.get("round");
+    let match_order: i32 = m.get("match_order");
+
+    // Determine loser
+    let loser_id = if Some(body.winner_id) == p1 { p2 } else { p1 };
+
+    // Update the match as completed
+    sqlx::query(
+        "UPDATE tournament_matches
+         SET winner_id = $1, status = 'completed', room_id = $2, completed_at = NOW()
+         WHERE id = $3",
+    )
+    .bind(body.winner_id)
+    .bind(body.battle_room_id)
+    .bind(match_id)
+    .execute(&pool)
+    .await
+    .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?;
+
+    // Mark loser as eliminated
+    if let Some(loser) = loser_id {
+        sqlx::query(
+            "UPDATE tournament_entries SET eliminated = true
+             WHERE tournament_id = $1 AND user_id = $2",
+        )
+        .bind(tournament_id)
+        .bind(loser)
+        .execute(&pool)
+        .await
+        .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?;
+    }
+
+    // Bracket advancement: slot winner into next round
+    let next_round = round + 1;
+    let next_match_order = (match_order + 1) / 2; // pairs fold: 1,2→1  3,4→2  etc.
+    let is_first_slot = match_order % 2 == 1; // odd match_order → player1, even → player2
+
+    // Check if a next-round match already exists
+    let next_match = sqlx::query(
+        "SELECT id, player1_id, player2_id FROM tournament_matches
+         WHERE tournament_id = $1 AND round = $2 AND match_order = $3",
+    )
+    .bind(tournament_id)
+    .bind(next_round)
+    .bind(next_match_order)
+    .fetch_optional(&pool)
+    .await
+    .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?;
+
+    let next_match_id: Option<Uuid> = if let Some(nm) = next_match {
+        let nm_id: Uuid = nm.get("id");
+        // Update existing next-round match with the winner
+        let col = if is_first_slot { "player1_id" } else { "player2_id" };
+        sqlx::query(&format!(
+            "UPDATE tournament_matches SET {col} = $1 WHERE id = $2"
+        ))
+        .bind(body.winner_id)
+        .bind(nm_id)
+        .execute(&pool)
+        .await
+        .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?;
+        Some(nm_id)
+    } else {
+        // Check if this was the final match (no more matches expected in next round)
+        // Count total matches in the current round
+        let matches_in_round: i64 = sqlx::query_scalar(
+            "SELECT COUNT(*) FROM tournament_matches WHERE tournament_id = $1 AND round = $2",
+        )
+        .bind(tournament_id)
+        .bind(round)
+        .fetch_one(&pool)
+        .await
+        .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?;
+
+        if matches_in_round > 1 {
+            // More matches in this round → create next-round match
+            let (p1_val, p2_val): (Option<Uuid>, Option<Uuid>) = if is_first_slot {
+                (Some(body.winner_id), None)
+            } else {
+                (None, Some(body.winner_id))
+            };
+
+            let row = sqlx::query(
+                "INSERT INTO tournament_matches (tournament_id, round, match_order, player1_id, player2_id, status)
+                 VALUES ($1, $2, $3, $4, $5, 'pending')
+                 RETURNING id",
+            )
+            .bind(tournament_id)
+            .bind(next_round)
+            .bind(next_match_order)
+            .bind(p1_val)
+            .bind(p2_val)
+            .fetch_one(&pool)
+            .await
+            .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?;
+            Some(row.get("id"))
+        } else {
+            None // This was the final — no next match
+        }
+    };
+
+    // Check if tournament is complete (no pending/in_progress matches remain)
+    let remaining: i64 = sqlx::query_scalar(
+        "SELECT COUNT(*) FROM tournament_matches
+         WHERE tournament_id = $1 AND status IN ('pending', 'in_progress')",
+    )
+    .bind(tournament_id)
+    .fetch_one(&pool)
+    .await
+    .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?;
+
+    let tournament_completed = remaining == 0;
+    if tournament_completed {
+        sqlx::query(
+            "UPDATE tournaments SET status = 'completed', completed_at = NOW() WHERE id = $1",
+        )
+        .bind(tournament_id)
+        .execute(&pool)
+        .await
+        .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?;
+    }
+
+    Ok(Json(MatchCompletionResponse {
+        match_id,
+        winner_id: body.winner_id,
+        tournament_completed,
+        next_match_id,
+    }))
 }

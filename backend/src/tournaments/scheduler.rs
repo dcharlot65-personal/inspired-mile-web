@@ -16,7 +16,7 @@ pub async fn run_scheduler(pool: PgPool, rooms: Arc<RoomManager>) {
     }
 }
 
-async fn check_tournaments(pool: &PgPool, rooms: &Arc<RoomManager>) -> Result<(), String> {
+async fn check_tournaments(pool: &PgPool, _rooms: &Arc<RoomManager>) -> Result<(), String> {
     // Find tournaments that should start (registration period ended)
     let rows = sqlx::query(
         "SELECT id, format, max_players FROM tournaments

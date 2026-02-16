@@ -50,7 +50,9 @@ export function getInventory(): InventoryData {
 
 function saveInventory(inv: InventoryData): void {
   if (typeof window === 'undefined') return;
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(inv));
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(inv));
+  } catch { /* quota exceeded */ }
 }
 
 export function addCard(cardId: string, source: AcquisitionSource): OwnedCard {

@@ -11,6 +11,8 @@
 
 import type { Card } from './cards';
 import { CARD_CATALOG } from './cards';
+import type { BattleAxis } from './battle-rules';
+export type { BattleAxis };
 
 // ---------------------------------------------------------------------------
 // Types
@@ -20,8 +22,6 @@ export type WorldCity =
   | 'Tokyo' | 'Lagos' | 'Brooklyn' | 'London'
   | 'Mumbai' | 'Paris' | 'Sao Paulo' | 'Seoul'
   | 'Nairobi' | 'Berlin' | 'Mexico City' | 'Cairo';
-
-export type BattleAxis = 'wordplay' | 'shakespeare' | 'flow' | 'wit';
 
 export type SkinTone = 'light' | 'light-medium' | 'medium' | 'medium-dark' | 'dark' | 'deep';
 
@@ -440,7 +440,9 @@ function getVariantInventory(): OwnedVariant[] {
 
 function saveVariantInventory(variants: OwnedVariant[]): void {
   if (typeof window === 'undefined') return;
-  localStorage.setItem(VARIANT_STORAGE_KEY, JSON.stringify(variants));
+  try {
+    localStorage.setItem(VARIANT_STORAGE_KEY, JSON.stringify(variants));
+  } catch { /* quota exceeded */ }
 }
 
 /**

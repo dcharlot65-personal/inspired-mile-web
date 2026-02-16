@@ -132,10 +132,11 @@ async fn google_sign_in(
     let user_id: Uuid = row.get("id");
 
     // Initialize player stats
-    let _ = sqlx::query("INSERT INTO player_stats (user_id) VALUES ($1)")
+    sqlx::query("INSERT INTO player_stats (user_id) VALUES ($1) ON CONFLICT DO NOTHING")
         .bind(user_id)
         .execute(&pool)
-        .await;
+        .await
+        .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("Failed to init stats: {e}")))?;
 
     let token = create_token(user_id, &unique_username, &config.jwt_secret)
         .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, e))?;
@@ -213,10 +214,11 @@ async fn wallet_sign_in(
 
     let user_id: Uuid = row.get("id");
 
-    let _ = sqlx::query("INSERT INTO player_stats (user_id) VALUES ($1)")
+    sqlx::query("INSERT INTO player_stats (user_id) VALUES ($1) ON CONFLICT DO NOTHING")
         .bind(user_id)
         .execute(&pool)
-        .await;
+        .await
+        .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("Failed to init stats: {e}")))?;
 
     let token = create_token(user_id, &unique_username, &config.jwt_secret)
         .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, e))?;

@@ -13,7 +13,6 @@ pub fn generate_single_elimination(
 
     // Find next power of 2
     let bracket_size = n.next_power_of_two();
-    let byes = bracket_size - n;
 
     let mut matches = Vec::new();
     let mut match_order: i32 = 0;

@@ -4,19 +4,20 @@
  */
 
 import { createUmi } from '@metaplex-foundation/umi-bundle-defaults';
-import { walletAdapterIdentity } from '@metaplex-foundation/umi-web3js-adapters';
+import { fromWeb3JsPublicKey } from '@metaplex-foundation/umi-web3js-adapters';
 import { mintV1, mplBubblegum } from '@metaplex-foundation/mpl-bubblegum';
-import { publicKey, none } from '@metaplex-foundation/umi';
+import { publicKey, none, signerIdentity, type Signer, type Transaction, type TransactionSignature } from '@metaplex-foundation/umi';
 import type { WalletAdapter } from '@solana/wallet-adapter-base';
-import { clusterApiUrl } from '@solana/web3.js';
+import { clusterApiUrl, PublicKey } from '@solana/web3.js';
 import type { Card } from './cards';
 
 // Merkle tree address — created by scripts/create-merkle-tree.ts
-// TODO: Replace with actual tree address after running the creation script
-const MERKLE_TREE_ADDRESS = '11111111111111111111111111111111';
+const MERKLE_TREE_ADDRESS = import.meta.env.PUBLIC_MERKLE_TREE_ADDRESS || '11111111111111111111111111111111';
 
-// Collection mint — TODO: Create collection NFT and set address
-const COLLECTION_MINT = '11111111111111111111111111111111';
+// Collection mint — created by scripts/create-collection.ts
+const COLLECTION_MINT = import.meta.env.PUBLIC_COLLECTION_MINT || '11111111111111111111111111111111';
+
+const PLACEHOLDER_ADDRESS = '11111111111111111111111111111111';
 
 const NETWORK = 'devnet';
 
@@ -64,10 +65,24 @@ export async function mintCardAsNFT(
   card: Card,
   walletAdapter: WalletAdapter,
 ): Promise<MintResult> {
+  if (MERKLE_TREE_ADDRESS === PLACEHOLDER_ADDRESS) {
+    return { success: false, error: 'NFT minting not yet configured. Merkle tree address not set.' };
+  }
   try {
     const endpoint = clusterApiUrl(NETWORK);
     const umi = createUmi(endpoint).use(mplBubblegum());
-    umi.use(walletAdapterIdentity(walletAdapter));
+
+    // Create a UMI signer from the wallet adapter
+    const walletPubkey = walletAdapter.publicKey;
+    if (!walletPubkey) throw new Error('Wallet not connected');
+    const umiPublicKey = fromWeb3JsPublicKey(walletPubkey);
+    const signer: Signer = {
+      publicKey: umiPublicKey,
+      signMessage: async (message: Uint8Array) => message, // Not used for tx signing
+      signTransaction: async (tx: Transaction) => tx, // Wallet signs via sendAndConfirm
+      signAllTransactions: async (txs: Transaction[]) => txs,
+    };
+    umi.use(signerIdentity(signer));
 
     const metadata = buildCardMetadata(card);
 

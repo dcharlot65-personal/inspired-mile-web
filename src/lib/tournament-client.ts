@@ -10,7 +10,7 @@ async function request<T>(path: string, options: RequestInit = {}): Promise<T> {
     headers: { 'Content-Type': 'application/json', ...options.headers },
     ...options,
   });
-  if (!response.ok) throw new Error(await response.text());
+  if (!response.ok) throw new Error(`API ${response.status}: ${await response.text()}`);
   return response.json();
 }
 
@@ -64,4 +64,26 @@ export async function getBracket(id: string): Promise<BracketMatch[]> {
 
 export async function getLeaderboard(id: string): Promise<LeaderboardEntry[]> {
   return request(`/${id}/leaderboard`);
+}
+
+export interface MatchCompletionResponse {
+  match_id: string;
+  winner_id: string;
+  tournament_completed: boolean;
+  next_match_id: string | null;
+}
+
+export async function completeMatch(
+  tournamentId: string,
+  matchId: string,
+  winnerId: string,
+  battleRoomId?: string,
+): Promise<MatchCompletionResponse> {
+  return request(`/${tournamentId}/matches/${matchId}/complete`, {
+    method: 'POST',
+    body: JSON.stringify({
+      winner_id: winnerId,
+      battle_room_id: battleRoomId ?? null,
+    }),
+  });
 }

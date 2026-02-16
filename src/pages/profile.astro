@@ -1,0 +1,357 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import '../styles/global.css';
+import { ACHIEVEMENTS } from '../lib/achievements';
+---
+
+<BaseLayout title="Profile" description="View your player stats, achievements, collection, and leaderboard ranking.">
+
+  <section class="section-padding">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-12">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/20 mb-6">
+          <span class="w-2 h-2 rounded-full bg-purple-500 animate-pulse"></span>
+          <span class="text-purple-400 text-xs font-medium tracking-wide uppercase">Profile</span>
+        </div>
+        <h1 class="text-4xl sm:text-5xl font-display font-bold mb-4">
+          Player <span class="text-gradient">Profile</span>
+        </h1>
+        <p class="text-obsidian-400 max-w-2xl mx-auto">
+          Track your progress, achievements, and collection across the Inspired Mile universe.
+        </p>
+      </div>
+
+      <!-- Player Info -->
+      <div id="player-info" class="card-glass p-6 mb-8">
+        <div class="flex items-center gap-4">
+          <div id="player-avatar" class="w-16 h-16 rounded-full bg-obsidian-800 border border-obsidian-700 flex items-center justify-center text-2xl text-obsidian-500">
+            &#128100;
+          </div>
+          <div>
+            <h2 id="player-name" class="font-display text-xl font-bold text-obsidian-200">Guest Player</h2>
+            <p id="player-auth" class="text-xs text-obsidian-500">Playing locally &mdash; sign in to sync your progress</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats Grid -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-8">
+        <div class="card-glass p-5 text-center">
+          <p class="text-2xl font-display font-bold text-gold-400" id="stat-wins">0</p>
+          <p class="text-xs text-obsidian-500 mt-1">Battle Wins</p>
+        </div>
+        <div class="card-glass p-5 text-center">
+          <p class="text-2xl font-display font-bold text-obsidian-200" id="stat-battles">0</p>
+          <p class="text-xs text-obsidian-500 mt-1">Total Battles</p>
+        </div>
+        <div class="card-glass p-5 text-center">
+          <p class="text-2xl font-display font-bold text-emerald-400" id="stat-winrate">0%</p>
+          <p class="text-xs text-obsidian-500 mt-1">Win Rate</p>
+        </div>
+        <div class="card-glass p-5 text-center">
+          <p class="text-2xl font-display font-bold text-purple-400" id="stat-highscore">0</p>
+          <p class="text-xs text-obsidian-500 mt-1">Highest Score</p>
+        </div>
+        <div class="card-glass p-5 text-center">
+          <p class="text-2xl font-display font-bold text-obsidian-200" id="stat-cards">0 / 0</p>
+          <p class="text-xs text-obsidian-500 mt-1">Cards (unique / total)</p>
+        </div>
+        <div class="card-glass p-5 text-center">
+          <p class="text-2xl font-display font-bold text-crimson-400" id="stat-trivia">0</p>
+          <p class="text-xs text-obsidian-500 mt-1">Trivia Correct</p>
+        </div>
+      </div>
+
+      <!-- Achievements -->
+      <div class="mb-8">
+        <h2 class="font-display text-xl font-bold text-obsidian-200 mb-4">Achievements</h2>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3" id="achievements-grid">
+          {ACHIEVEMENTS.map(a => (
+            <div
+              class="card-glass p-4 text-center opacity-40 transition-all"
+              data-achievement-id={a.id}
+              data-tier={a.tier}
+            >
+              <div class="text-2xl mb-2">{a.icon}</div>
+              <p class="text-xs font-display font-bold text-obsidian-300 mb-1">{a.name}</p>
+              <p class="text-[10px] text-obsidian-500">{a.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Collection Summary -->
+      <div class="mb-8">
+        <h2 class="font-display text-xl font-bold text-obsidian-200 mb-4">Collection</h2>
+        <div class="card-glass p-6">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <!-- Cards by House -->
+            <div>
+              <h3 class="text-xs text-obsidian-500 uppercase tracking-wider mb-3">Cards by House</h3>
+              <div id="house-bars" class="space-y-2">
+                <p class="text-xs text-obsidian-600">Collect cards to see breakdown</p>
+              </div>
+            </div>
+            <!-- Cards by Rarity -->
+            <div>
+              <h3 class="text-xs text-obsidian-500 uppercase tracking-wider mb-3">Cards by Rarity</h3>
+              <div id="rarity-bars" class="space-y-2">
+                <p class="text-xs text-obsidian-600">Collect cards to see breakdown</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Global Leaderboard -->
+      <div class="mb-8">
+        <h2 class="font-display text-xl font-bold text-obsidian-200 mb-4">Global Leaderboard</h2>
+        <div id="leaderboard-container" class="card-glass overflow-hidden">
+          <div class="text-center py-12">
+            <div class="w-6 h-6 border-2 border-gold-500 border-t-transparent rounded-full animate-spin mx-auto mb-3"></div>
+            <p class="text-sm text-obsidian-500">Loading leaderboard...</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recent Activity -->
+      <div>
+        <h2 class="font-display text-xl font-bold text-obsidian-200 mb-4">Recent Activity</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="card-glass p-5">
+            <h3 class="text-xs text-obsidian-500 uppercase tracking-wider mb-3">Latest Cards</h3>
+            <div id="recent-cards" class="space-y-2">
+              <p class="text-xs text-obsidian-600">No cards acquired yet.</p>
+            </div>
+          </div>
+          <div class="card-glass p-5">
+            <h3 class="text-xs text-obsidian-500 uppercase tracking-wider mb-3">Latest Achievements</h3>
+            <div id="recent-achievements" class="space-y-2">
+              <p class="text-xs text-obsidian-600">No achievements unlocked yet.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    import { getPlayerStats, getAchievementProgress, getUnlockedAchievements, ACHIEVEMENTS } from '../lib/achievements';
+    import { getOwnedCards, getOwnedCardIds } from '../lib/inventory';
+    import { CARD_CATALOG } from '../lib/cards';
+    import { isLoggedIn, getCurrentUser } from '../lib/storage-backend';
+    import { getLeaderboard } from '../lib/api-client';
+
+    // --- Player Info ---
+    const user = getCurrentUser();
+    if (user) {
+      const avatarEl = document.getElementById('player-avatar')!;
+      if (user.avatar_url) {
+        avatarEl.innerHTML = `<img src="${user.avatar_url}" alt="${user.username}" class="w-16 h-16 rounded-full object-cover" />`;
+      }
+      document.getElementById('player-name')!.textContent = user.display_name || user.username;
+      const provider = user.auth_provider === 'google' ? 'Google' : user.auth_provider === 'wallet' ? 'Solana Wallet' : user.auth_provider;
+      document.getElementById('player-auth')!.textContent = `Signed in via ${provider}`;
+    }
+
+    // --- Stats ---
+    const stats = getPlayerStats();
+    const ownedIds = getOwnedCardIds();
+    const ownedCards = getOwnedCards();
+
+    document.getElementById('stat-wins')!.textContent = String(stats.battleWins);
+    document.getElementById('stat-battles')!.textContent = String(stats.totalBattles);
+    document.getElementById('stat-winrate')!.textContent = stats.totalBattles > 0
+      ? `${Math.round((stats.battleWins / stats.totalBattles) * 100)}%`
+      : '0%';
+    document.getElementById('stat-highscore')!.textContent = String(stats.highestScore);
+    document.getElementById('stat-cards')!.textContent = `${ownedIds.size} / ${ownedCards.length}`;
+    document.getElementById('stat-trivia')!.textContent = String(stats.triviaCorrect);
+
+    // --- Achievements ---
+    const progress = getAchievementProgress();
+    const tierBorderColors: Record<string, string> = {
+      bronze: 'border-amber-500/60',
+      silver: 'border-gray-400/60',
+      gold: 'border-gold-500/60',
+    };
+
+    progress.forEach(({ achievement, unlocked }) => {
+      const el = document.querySelector(`[data-achievement-id="${achievement.id}"]`) as HTMLElement | null;
+      if (!el) return;
+      if (unlocked) {
+        el.classList.remove('opacity-40');
+        el.classList.add('opacity-100');
+        const tier = el.dataset.tier || 'bronze';
+        const borderClass = tierBorderColors[tier] || 'border-obsidian-700';
+        el.classList.remove('border-obsidian-700/50');
+        el.classList.add(borderClass);
+      }
+    });
+
+    // --- Collection Summary ---
+    const cardMap = new Map(CARD_CATALOG.map(c => [c.id, c]));
+
+    if (ownedIds.size > 0) {
+      // House breakdown
+      const houseCounts = new Map<string, number>();
+      for (const id of ownedIds) {
+        const card = cardMap.get(id);
+        if (card) {
+          houseCounts.set(card.house, (houseCounts.get(card.house) || 0) + 1);
+        }
+      }
+      const maxHouse = Math.max(...houseCounts.values(), 1);
+      const houseColors: Record<string, string> = {
+        Montague: 'bg-crimson-500', Capulet: 'bg-purple-500', 'Danish Court': 'bg-blue-500',
+        'Forest of Arden': 'bg-emerald-500', 'Verona Court': 'bg-rose-500', 'The Tempest': 'bg-cyan-500',
+        Legendary: 'bg-gold-500', Relic: 'bg-amber-600', Potion: 'bg-emerald-600',
+      };
+
+      const houseBars = document.getElementById('house-bars')!;
+      houseBars.innerHTML = [...houseCounts.entries()]
+        .sort((a, b) => b[1] - a[1])
+        .map(([house, count]) => {
+          const pct = Math.round((count / maxHouse) * 100);
+          const color = houseColors[house] || 'bg-obsidian-600';
+          return `<div class="flex items-center gap-2">
+            <span class="text-[10px] text-obsidian-400 w-24 text-right shrink-0">${house}</span>
+            <div class="flex-1 bg-obsidian-800 rounded-full h-2 overflow-hidden">
+              <div class="${color} h-full rounded-full" style="width: ${pct}%"></div>
+            </div>
+            <span class="text-[10px] text-obsidian-500 w-6">${count}</span>
+          </div>`;
+        }).join('');
+
+      // Rarity breakdown
+      const rarityCounts = new Map<string, number>();
+      for (const id of ownedIds) {
+        const card = cardMap.get(id);
+        if (card) {
+          rarityCounts.set(card.rarity, (rarityCounts.get(card.rarity) || 0) + 1);
+        }
+      }
+      const maxRarity = Math.max(...rarityCounts.values(), 1);
+      const rarityColors: Record<string, string> = {
+        Common: 'bg-obsidian-500', Uncommon: 'bg-emerald-500', Rare: 'bg-blue-500',
+        Epic: 'bg-purple-500', Legendary: 'bg-gold-500',
+      };
+      const rarityOrder = ['Common', 'Uncommon', 'Rare', 'Epic', 'Legendary'];
+
+      const rarityBars = document.getElementById('rarity-bars')!;
+      rarityBars.innerHTML = rarityOrder
+        .filter(r => rarityCounts.has(r))
+        .map(rarity => {
+          const count = rarityCounts.get(rarity)!;
+          const pct = Math.round((count / maxRarity) * 100);
+          const color = rarityColors[rarity] || 'bg-obsidian-600';
+          return `<div class="flex items-center gap-2">
+            <span class="text-[10px] text-obsidian-400 w-24 text-right shrink-0">${rarity}</span>
+            <div class="flex-1 bg-obsidian-800 rounded-full h-2 overflow-hidden">
+              <div class="${color} h-full rounded-full" style="width: ${pct}%"></div>
+            </div>
+            <span class="text-[10px] text-obsidian-500 w-6">${count}</span>
+          </div>`;
+        }).join('');
+    }
+
+    // --- Global Leaderboard ---
+    const leaderboardContainer = document.getElementById('leaderboard-container')!;
+
+    async function loadLeaderboard() {
+      try {
+        const entries = await getLeaderboard();
+        if (entries.length === 0) {
+          leaderboardContainer.innerHTML = '<div class="text-center py-12"><p class="text-sm text-obsidian-500">No leaderboard data yet. Win battles to appear here!</p></div>';
+          return;
+        }
+
+        const currentUserId = user?.id;
+
+        leaderboardContainer.innerHTML = `
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="text-xs text-obsidian-500 uppercase tracking-wider border-b border-obsidian-700/50">
+                <th class="text-left px-4 py-3">#</th>
+                <th class="text-left px-4 py-3">Player</th>
+                <th class="text-center px-4 py-3">Wins</th>
+                <th class="text-center px-4 py-3">Battles</th>
+                <th class="text-center px-4 py-3">Best</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${entries.map(e => {
+                const isMe = currentUserId && e.user_id === currentUserId;
+                return `
+                  <tr class="border-b border-obsidian-800/50 ${isMe ? 'bg-gold-500/5' : ''}">
+                    <td class="px-4 py-3 font-mono ${e.rank <= 3 ? 'text-gold-400 font-bold' : 'text-obsidian-500'}">${e.rank}</td>
+                    <td class="px-4 py-3">
+                      <div class="flex items-center gap-2">
+                        ${e.avatar_url
+                          ? `<img src="${e.avatar_url}" alt="" class="w-6 h-6 rounded-full object-cover" />`
+                          : `<div class="w-6 h-6 rounded-full bg-obsidian-700 flex items-center justify-center text-[10px] text-obsidian-500">&#128100;</div>`
+                        }
+                        <span class="text-obsidian-200 font-medium ${isMe ? 'text-gold-400' : ''}">${e.username}${isMe ? ' (you)' : ''}</span>
+                      </div>
+                    </td>
+                    <td class="px-4 py-3 text-center text-emerald-400">${e.battle_wins}</td>
+                    <td class="px-4 py-3 text-center text-obsidian-400">${e.total_battles}</td>
+                    <td class="px-4 py-3 text-center text-purple-400">${e.highest_score}</td>
+                  </tr>
+                `;
+              }).join('')}
+            </tbody>
+          </table>
+        `;
+      } catch (e: any) {
+        const isOffline = !e.message || e.message.includes('Failed to fetch') || e.message.includes('NetworkError');
+        leaderboardContainer.innerHTML = isOffline
+          ? '<div class="text-center py-12"><div class="w-16 h-16 rounded-full bg-obsidian-800 border border-obsidian-700 flex items-center justify-center mx-auto mb-4"><span class="text-2xl">&#127942;</span></div><p class="text-sm text-obsidian-300 font-display font-bold mb-2">Leaderboard Unavailable</p><p class="text-xs text-obsidian-500">The backend service is being set up. Check back shortly.</p></div>'
+          : '<div class="text-center py-12"><p class="text-sm text-crimson-400">Failed to load leaderboard.</p></div>';
+      }
+    }
+
+    // --- Recent Activity ---
+    // Last 5 cards acquired
+    const recentCardsEl = document.getElementById('recent-cards')!;
+    const sortedCards = [...ownedCards].sort((a, b) => b.acquiredAt - a.acquiredAt).slice(0, 5);
+    if (sortedCards.length > 0) {
+      recentCardsEl.innerHTML = sortedCards.map(c => {
+        const card = cardMap.get(c.cardId);
+        const name = card?.name || c.cardId;
+        const rarity = card?.rarity || 'Common';
+        const rarityColor: Record<string, string> = { Common: 'text-obsidian-400', Uncommon: 'text-emerald-400', Rare: 'text-blue-400', Epic: 'text-purple-400', Legendary: 'text-gold-400' };
+        return `<div class="flex items-center justify-between">
+          <span class="text-xs text-obsidian-300">${name}</span>
+          <div class="flex items-center gap-2">
+            <span class="text-[10px] ${rarityColor[rarity] || 'text-obsidian-500'}">${rarity}</span>
+            <span class="text-[10px] text-obsidian-600">${new Date(c.acquiredAt).toLocaleDateString()}</span>
+          </div>
+        </div>`;
+      }).join('');
+    }
+
+    // Last 5 achievements unlocked
+    const recentAchEl = document.getElementById('recent-achievements')!;
+    const unlocked = getUnlockedAchievements();
+    const sortedAch = [...unlocked].sort((a, b) => b.unlockedAt - a.unlockedAt).slice(0, 5);
+    if (sortedAch.length > 0) {
+      const achMap = new Map(ACHIEVEMENTS.map(a => [a.id, a]));
+      recentAchEl.innerHTML = sortedAch.map(u => {
+        const ach = achMap.get(u.id);
+        if (!ach) return '';
+        const tierColor: Record<string, string> = { bronze: 'text-amber-400', silver: 'text-gray-400', gold: 'text-gold-400' };
+        return `<div class="flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <span class="text-sm">${ach.icon}</span>
+            <span class="text-xs text-obsidian-300">${ach.name}</span>
+          </div>
+          <span class="text-[10px] ${tierColor[ach.tier] || 'text-obsidian-500'}">${ach.tier}</span>
+        </div>`;
+      }).join('');
+    }
+
+    // --- Init ---
+    loadLeaderboard();
+  </script>
+</BaseLayout>

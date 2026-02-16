@@ -1,0 +1,198 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import '../styles/global.css';
+---
+
+<BaseLayout title="3D Viewer" description="View performance art card models as Gaussian splats and GLB meshes.">
+
+  <section class="section-padding">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-8">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/20 mb-6">
+          <span class="w-2 h-2 rounded-full bg-purple-500 animate-pulse"></span>
+          <span class="text-purple-400 text-xs font-medium tracking-wide uppercase">3D Models</span>
+        </div>
+        <h1 class="text-4xl sm:text-5xl font-display font-bold mb-4">
+          Card <span class="text-gradient">Viewer</span>
+        </h1>
+        <p class="text-obsidian-400 max-w-2xl mx-auto">
+          Explore your cards as 3D models. Toggle between Gaussian splat rendering and GLB mesh view.
+          Orbit with mouse, scroll to zoom.
+        </p>
+      </div>
+
+      <!-- Controls -->
+      <div class="flex flex-wrap items-center justify-center gap-3 mb-4">
+        <!-- Card selector -->
+        <select id="card-select" class="bg-obsidian-900 border border-obsidian-700 text-obsidian-200 text-sm rounded-lg px-4 py-2 focus:border-gold-500/50 focus:outline-none">
+          <option value="">Select a card...</option>
+        </select>
+
+        <!-- View mode toggle -->
+        <div class="flex rounded-lg border border-obsidian-700 overflow-hidden">
+          <button id="mode-splat" class="px-4 py-2 text-xs font-medium bg-gold-500/20 text-gold-400 border-r border-obsidian-700">
+            Splat
+          </button>
+          <button id="mode-glb" class="px-4 py-2 text-xs font-medium text-obsidian-400 hover:text-gold-400 transition-colors">
+            GLB
+          </button>
+        </div>
+
+        <button id="reset-camera-btn" class="text-xs text-obsidian-400 hover:text-gold-400 border border-obsidian-700 rounded-lg px-4 py-2 transition-colors">
+          Reset Camera
+        </button>
+      </div>
+
+      <!-- Status bar -->
+      <div class="text-center mb-4 flex items-center justify-center gap-4">
+        <span id="viewer-status" class="text-xs font-mono text-obsidian-500">Initializing 3D viewer...</span>
+        <span id="fps-counter" class="text-xs font-mono text-obsidian-600 hidden"></span>
+      </div>
+
+      <!-- Viewer container -->
+      <div class="card-glass overflow-hidden rounded-xl relative">
+        <!-- Babylon.js canvas for splat mode -->
+        <canvas id="splat-canvas" class="w-full" style="height: 600px; display: block;"></canvas>
+
+        <!-- model-viewer container for GLB mode (hidden by default) -->
+        <div id="glb-container" class="hidden w-full" style="height: 600px;"></div>
+
+        <!-- Loading overlay -->
+        <div id="loading-overlay" class="hidden absolute inset-0 bg-obsidian-950/80 flex items-center justify-center">
+          <div class="text-center">
+            <div class="w-8 h-8 border-2 border-gold-400 border-t-transparent rounded-full animate-spin mx-auto mb-2"></div>
+            <span class="text-xs text-obsidian-400">Loading 3D model...</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Instructions -->
+      <div class="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div class="card-glass p-4 text-center">
+          <div class="text-2xl mb-2">&#128270;</div>
+          <h3 class="text-sm font-display font-bold text-obsidian-200 mb-1">Splat View</h3>
+          <p class="text-xs text-obsidian-400">Gaussian splat rendering via Babylon.js. Orbit, zoom, pan for a photorealistic 3D view of the model.</p>
+        </div>
+        <div class="card-glass p-4 text-center">
+          <div class="text-2xl mb-2">&#127922;</div>
+          <h3 class="text-sm font-display font-bold text-obsidian-200 mb-1">GLB View</h3>
+          <p class="text-xs text-obsidian-400">Standard mesh via model-viewer. Supports AR on mobile devices for augmented reality placement.</p>
+        </div>
+        <div class="card-glass p-4 text-center">
+          <div class="text-2xl mb-2">&#128241;</div>
+          <h3 class="text-sm font-display font-bold text-obsidian-200 mb-1">Mobile AR</h3>
+          <p class="text-xs text-obsidian-400">In GLB mode, tap "View in AR" on mobile for augmented reality card viewing.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    import { SplatViewer } from '../lib/splat-viewer';
+    import { AR_MODELS, buildModelViewerHTML } from '../lib/ar-viewer';
+    import { CARD_CATALOG } from '../lib/cards';
+
+    // DOM refs
+    const canvas = document.getElementById('splat-canvas') as HTMLCanvasElement;
+    const statusEl = document.getElementById('viewer-status')!;
+    const cardSelect = document.getElementById('card-select') as HTMLSelectElement;
+    const modeSplatBtn = document.getElementById('mode-splat')!;
+    const modeGlbBtn = document.getElementById('mode-glb')!;
+    const resetBtn = document.getElementById('reset-camera-btn')!;
+    const glbContainer = document.getElementById('glb-container')!;
+    const loadingOverlay = document.getElementById('loading-overlay')!;
+
+    let viewer: SplatViewer | null = null;
+    let currentMode: 'splat' | 'glb' = 'splat';
+    let currentCardId: string | null = null;
+
+    // Populate card selector from catalog (characters only — they have 3D models)
+    const characterCards = CARD_CATALOG.filter(c => c.type === 'Character');
+    characterCards.forEach(card => {
+      const opt = document.createElement('option');
+      opt.value = card.id;
+      opt.textContent = `${card.id} — ${card.name}`;
+      cardSelect.appendChild(opt);
+    });
+
+    const fpsEl = document.getElementById('fps-counter')!;
+
+    // Initialize Babylon splat viewer
+    function initViewer() {
+      viewer = new SplatViewer({
+        canvas,
+        onStatusChange: (msg) => { statusEl.textContent = msg; },
+        onError: (err) => { statusEl.textContent = `Error: ${err}`; loadingOverlay.classList.add('hidden'); },
+        onFpsUpdate: (fps) => {
+          fpsEl.classList.remove('hidden');
+          fpsEl.textContent = `${fps.toFixed(0)} fps`;
+          fpsEl.className = `text-xs font-mono ${fps >= 30 ? 'text-emerald-500' : fps >= 15 ? 'text-yellow-500' : 'text-crimson-400'}`;
+        },
+      });
+      viewer.start();
+    }
+
+    // Load a card's 3D model in the current mode
+    async function loadCard(cardId: string) {
+      currentCardId = cardId;
+      loadingOverlay.classList.remove('hidden');
+
+      if (currentMode === 'splat') {
+        const plyPath = `/models/splats/${cardId.toLowerCase()}.ply`;
+        await viewer?.loadSplat(plyPath);
+      } else {
+        const config = AR_MODELS[cardId];
+        if (config) {
+          glbContainer.innerHTML = buildModelViewerHTML(config);
+          statusEl.textContent = `GLB loaded — ${cardId}`;
+        } else {
+          statusEl.textContent = `No GLB model configured for ${cardId}`;
+        }
+      }
+
+      loadingOverlay.classList.add('hidden');
+    }
+
+    // Card selector
+    cardSelect.addEventListener('change', () => {
+      if (cardSelect.value) loadCard(cardSelect.value);
+    });
+
+    // Mode toggle styling
+    const ACTIVE_CLASS = 'px-4 py-2 text-xs font-medium bg-gold-500/20 text-gold-400';
+    const INACTIVE_CLASS = 'px-4 py-2 text-xs font-medium text-obsidian-400 hover:text-gold-400 transition-colors';
+
+    function setMode(mode: 'splat' | 'glb') {
+      currentMode = mode;
+
+      if (mode === 'splat') {
+        canvas.style.display = 'block';
+        glbContainer.classList.add('hidden');
+        modeSplatBtn.className = ACTIVE_CLASS + ' border-r border-obsidian-700';
+        modeGlbBtn.className = INACTIVE_CLASS;
+      } else {
+        canvas.style.display = 'none';
+        glbContainer.classList.remove('hidden');
+        modeSplatBtn.className = INACTIVE_CLASS + ' border-r border-obsidian-700';
+        modeGlbBtn.className = ACTIVE_CLASS;
+      }
+
+      // Reload current card in new mode
+      if (currentCardId) loadCard(currentCardId);
+    }
+
+    modeSplatBtn.addEventListener('click', () => setMode('splat'));
+    modeGlbBtn.addEventListener('click', () => setMode('glb'));
+
+    // Reset camera
+    resetBtn.addEventListener('click', () => {
+      viewer?.resetCamera();
+    });
+
+    // Init
+    initViewer();
+  </script>
+
+  <!-- model-viewer web component (lazy-loaded for GLB mode) -->
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
+</BaseLayout>

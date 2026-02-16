@@ -3,13 +3,13 @@
  * Dispatches CustomEvents so non-React code (Astro scripts) can react to wallet state.
  */
 
-import { useEffect, useCallback } from 'react';
+import { useEffect } from 'react';
 import { useWallet } from '@solana/wallet-adapter-react';
 import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
 import SolanaWalletProvider from './WalletProvider';
 
 function WalletButtonInner() {
-  const { publicKey, connected, connecting, signMessage } = useWallet();
+  const { publicKey, connected, connecting, signMessage, wallet } = useWallet();
 
   useEffect(() => {
     window.dispatchEvent(
@@ -19,10 +19,11 @@ function WalletButtonInner() {
           connecting,
           address: publicKey?.toBase58() ?? null,
           signMessage: signMessage ?? null,
+          adapter: wallet?.adapter ?? null,
         },
       }),
     );
-  }, [connected, connecting, publicKey, signMessage]);
+  }, [connected, connecting, publicKey, signMessage, wallet]);
 
   return (
     <div className="wallet-button-wrapper">

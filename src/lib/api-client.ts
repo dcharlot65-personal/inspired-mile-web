@@ -182,6 +182,24 @@ export async function checkAchievements(achievementIds: string[]): Promise<strin
 }
 
 // ---------------------------------------------------------------------------
+// Leaderboard (public — no auth required)
+// ---------------------------------------------------------------------------
+
+export interface LeaderboardEntry {
+  rank: number;
+  user_id: string;
+  username: string;
+  avatar_url: string | null;
+  battle_wins: number;
+  total_battles: number;
+  highest_score: number;
+}
+
+export async function getLeaderboard(): Promise<LeaderboardEntry[]> {
+  return request('/stats/leaderboard');
+}
+
+// ---------------------------------------------------------------------------
 // Migration
 // ---------------------------------------------------------------------------
 

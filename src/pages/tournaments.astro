@@ -88,7 +88,7 @@ import '../styles/global.css';
     // Status colors
     function statusColor(status: string): string {
       switch (status) {
-        case 'open': return 'text-emerald-400 bg-emerald-500/10';
+        case 'registration': return 'text-emerald-400 bg-emerald-500/10';
         case 'in_progress': return 'text-purple-400 bg-purple-500/10';
         case 'completed': return 'text-obsidian-400 bg-obsidian-800';
         default: return 'text-obsidian-400 bg-obsidian-800';
@@ -121,7 +121,7 @@ import '../styles/global.css';
 
       listContainer.innerHTML = tournaments.map(t => {
         const startsAt = new Date(t.starts_at);
-        const isOpen = t.status === 'open';
+        const isOpen = t.status === 'registration';
         const entryCount = t.entry_count ?? 0;
 
         return `
@@ -154,14 +154,14 @@ import '../styles/global.css';
       // Register buttons
       listContainer.querySelectorAll('.register-btn').forEach(btn => {
         btn.addEventListener('click', async () => {
-          if (!isLoggedIn()) { alert('Sign in to register.'); return; }
+          if (!isLoggedIn()) { (window as any).showToast('Sign in to register.', 'warning'); return; }
           const id = (btn as HTMLElement).dataset.id!;
           try {
             await registerForTournament(id);
-            alert('Registered successfully!');
+            (window as any).showToast('Registered successfully!', 'success');
             loadTournaments();
           } catch (e: any) {
-            alert(e.message || 'Registration failed');
+            (window as any).showToast(e.message || 'Registration failed', 'error');
           }
         });
       });

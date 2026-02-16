@@ -56,6 +56,58 @@ pub fn router() -> Router<(PgPool, Config)> {
         .route("/achievements", get(list_achievements).post(check_achievements))
 }
 
+pub fn public_router() -> Router<(PgPool, Config)> {
+    Router::new()
+        .route("/leaderboard", get(get_leaderboard))
+}
+
+#[derive(Serialize)]
+pub struct LeaderboardEntry {
+    pub rank: i32,
+    pub user_id: String,
+    pub username: String,
+    pub avatar_url: Option<String>,
+    pub battle_wins: i32,
+    pub total_battles: i32,
+    pub highest_score: i32,
+}
+
+async fn get_leaderboard(
+    State((pool, _)): State<(PgPool, Config)>,
+) -> Result<Json<Vec<LeaderboardEntry>>, (StatusCode, String)> {
+    let rows = sqlx::query(
+        "SELECT u.id, u.username, u.avatar_url,
+                ps.battle_wins, ps.total_battles, ps.highest_score
+         FROM player_stats ps
+         JOIN users u ON u.id = ps.user_id
+         WHERE ps.battle_wins > 0
+         ORDER BY ps.battle_wins DESC, ps.highest_score DESC
+         LIMIT 50",
+    )
+    .fetch_all(&pool)
+    .await
+    .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?;
+
+    let entries: Vec<LeaderboardEntry> = rows
+        .iter()
+        .enumerate()
+        .map(|(i, r)| {
+            let id: uuid::Uuid = r.get("id");
+            LeaderboardEntry {
+                rank: (i + 1) as i32,
+                user_id: id.to_string(),
+                username: r.get("username"),
+                avatar_url: r.get("avatar_url"),
+                battle_wins: r.get("battle_wins"),
+                total_battles: r.get("total_battles"),
+                highest_score: r.get("highest_score"),
+            }
+        })
+        .collect();
+
+    Ok(Json(entries))
+}
+
 async fn get_stats(
     Extension(claims): Extension<Claims>,
     State((pool, _)): State<(PgPool, Config)>,

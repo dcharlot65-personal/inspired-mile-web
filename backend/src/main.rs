@@ -62,7 +62,8 @@ async fn main() {
     let public_routes = Router::new()
         .route("/health", get(|| async { "ok" }))
         .nest("/auth", auth::router())
-        .nest("/nft", nft::router());
+        .nest("/nft", nft::router())
+        .nest("/stats", stats::public_router());
 
     // Protected routes (auth required)
     let protected_routes = Router::new()
@@ -70,7 +71,7 @@ async fn main() {
         .nest("/variants", variants::router())
         .nest("/stats", stats::router())
         .nest("/migrate", migration::router())
-        .nest("/multiplayer", multiplayer::router(rooms.clone(), queue.clone()))
+        .nest("/multiplayer", multiplayer::router())
         .nest("/marketplace", marketplace::router())
         .nest("/tournaments", tournaments::router())
         .layer(Extension(rooms))

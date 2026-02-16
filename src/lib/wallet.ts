@@ -4,12 +4,14 @@
  */
 
 import bs58 from 'bs58';
+import type { WalletAdapter } from '@solana/wallet-adapter-base';
 
 export type WalletState = 'disconnected' | 'connecting' | 'connected';
 
 let state: WalletState = 'disconnected';
 let address: string | null = null;
 let signMessageFn: ((message: Uint8Array) => Promise<Uint8Array>) | null = null;
+let walletAdapter: WalletAdapter | null = null;
 
 // Listen for state changes from the React wallet component
 if (typeof window !== 'undefined') {
@@ -19,19 +21,23 @@ if (typeof window !== 'undefined') {
       connecting: boolean;
       address: string | null;
       signMessage?: (message: Uint8Array) => Promise<Uint8Array>;
+      adapter?: WalletAdapter | null;
     };
     if (detail.connected && detail.address) {
       state = 'connected';
       address = detail.address;
       signMessageFn = detail.signMessage ?? null;
+      walletAdapter = detail.adapter ?? null;
     } else if (detail.connecting) {
       state = 'connecting';
       address = null;
       signMessageFn = null;
+      walletAdapter = null;
     } else {
       state = 'disconnected';
       address = null;
       signMessageFn = null;
+      walletAdapter = null;
     }
   }) as EventListener);
 }
@@ -55,6 +61,10 @@ export function getExplorerUrl(mintAddress: string): string {
 /**
  * Sign a message with the connected wallet and return base58-encoded signature.
  */
+export function getWalletAdapter(): WalletAdapter | null {
+  return walletAdapter;
+}
+
 export async function signAuthMessage(message: string): Promise<string> {
   if (!signMessageFn) {
     throw new Error('Wallet not connected or signMessage not supported');

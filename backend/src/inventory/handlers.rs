@@ -73,6 +73,9 @@ async fn add_card(
     State((pool, _)): State<(PgPool, Config)>,
     Json(body): Json<AddCardRequest>,
 ) -> Result<Json<OwnedCard>, (StatusCode, String)> {
+    if body.card_id.len() > 20 || !body.card_id.chars().all(|c| c.is_ascii_alphanumeric() || c == '-') {
+        return Err((StatusCode::BAD_REQUEST, "Invalid card_id format".into()));
+    }
     let row = sqlx::query(
         "INSERT INTO owned_cards (user_id, card_id, source)
          VALUES ($1, $2, $3)

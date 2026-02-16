@@ -60,6 +60,7 @@ pub enum ServerEvent {
 pub enum ClientEvent {
     JoinRoom { room_id: Uuid },
     SubmitVerse { text: String },
+    #[allow(dead_code)] // Field exists in wire protocol for future use
     UseItem { item_id: String },
     Forfeit,
 }
@@ -83,7 +84,6 @@ pub struct RoundSubmission {
 
 /// A game room.
 pub struct GameRoom {
-    pub id: Uuid,
     pub state: RoomState,
     pub players: Vec<RoomPlayer>,
     pub current_round: u32,
@@ -93,10 +93,9 @@ pub struct GameRoom {
 }
 
 impl GameRoom {
-    pub fn new(id: Uuid, total_rounds: u32) -> Self {
+    pub fn new(total_rounds: u32) -> Self {
         let (tx, _) = broadcast::channel(64);
         Self {
-            id,
             state: RoomState::Waiting,
             players: Vec::new(),
             current_round: 1,
@@ -171,7 +170,7 @@ impl RoomManager {
 
     pub async fn create_room(&self, total_rounds: u32) -> Uuid {
         let id = Uuid::new_v4();
-        let room = GameRoom::new(id, total_rounds);
+        let room = GameRoom::new(total_rounds);
         self.rooms.lock().await.insert(id, Arc::new(Mutex::new(room)));
         id
     }
@@ -187,8 +186,10 @@ impl RoomManager {
     pub async fn list_rooms(&self) -> Vec<(Uuid, RoomState, usize)> {
         let rooms = self.rooms.lock().await;
         rooms.iter().map(|(id, room_arc)| {
-            // We can't await inside the iterator, so we return what we can
-            (*id, RoomState::Waiting, 0) // simplified
+            match room_arc.try_lock() {
+                Ok(room) => (*id, room.state.clone(), room.players.len()),
+                Err(_) => (*id, RoomState::InProgress, 2), // locked = active battle
+            }
         }).collect()
     }
 }

@@ -27,7 +27,7 @@ Rules:
 - Do NOT include any text outside the JSON object
 - Do NOT use markdown formatting`;
 
-export async function generateTriviaQuestion(
+async function generateTriviaQuestion(
   difficulty?: 'easy' | 'medium' | 'hard',
 ): Promise<TriviaQuestion | null> {
   const engine = getEngine();

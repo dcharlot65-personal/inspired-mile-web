@@ -227,32 +227,45 @@ async fn buy_listing(
 
     let card_id: String = listing.get("card_id");
 
-    // Transfer card: add to buyer, mark listing as sold
+    // Transfer card atomically: mark listing as sold, add card to buyer, record trade
+    let mut tx = pool.begin().await
+        .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?;
+
+    // Atomically claim the listing (prevents double-buy race condition)
+    let updated = sqlx::query(
+        "UPDATE card_listings SET status = 'sold', updated_at = NOW()
+         WHERE id = $1 AND status = 'active'",
+    )
+    .bind(id)
+    .execute(&mut *tx)
+    .await
+    .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?;
+
+    if updated.rows_affected() == 0 {
+        return Err((StatusCode::CONFLICT, "Listing is no longer active".into()));
+    }
+
     sqlx::query(
         "INSERT INTO owned_cards (user_id, card_id, source, state)
          VALUES ($1, $2, 'purchase', 'owned')",
     )
     .bind(claims.sub)
     .bind(&card_id)
-    .execute(&pool)
+    .execute(&mut *tx)
     .await
     .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?;
 
-    sqlx::query("UPDATE card_listings SET status = 'sold', updated_at = NOW() WHERE id = $1")
-        .bind(id)
-        .execute(&pool)
-        .await
-        .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?;
-
-    // Record trade
     sqlx::query(
         "INSERT INTO trades (listing_id, buyer_id) VALUES ($1, $2)",
     )
     .bind(id)
     .bind(claims.sub)
-    .execute(&pool)
+    .execute(&mut *tx)
     .await
-    .ok();
+    .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?;
+
+    tx.commit().await
+        .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?;
 
     Ok(Json(serde_json::json!({ "status": "purchased", "card_id": card_id })))
 }

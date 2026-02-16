@@ -4,5 +4,6 @@ import tailwind from '@astrojs/tailwind';
 import react from '@astrojs/react';
 
 export default defineConfig({
+  compressHTML: true,
   integrations: [tailwind(), react()],
 });
