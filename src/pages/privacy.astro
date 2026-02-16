@@ -2,95 +2,186 @@
 import Layout from '../layouts/BaseLayout.astro';
 ---
 
-<Layout title="Privacy Policy" description="Privacy Policy for Inspired Mile — how we handle your data and protect your privacy.">
+<Layout title="Privacy Policy" description="Privacy Policy for Inspired Mile — how we collect, use, and protect your data.">
   <section class="pt-32 pb-20 px-6">
     <div class="max-w-3xl mx-auto">
       <h1 class="text-4xl font-display font-bold text-white mb-4">Privacy Policy</h1>
-      <p class="text-brand-gray text-sm mb-12">Last updated: February 15, 2026</p>
+      <p class="text-brand-gray text-sm mb-12">Last updated: February 16, 2026</p>
 
       <div class="space-y-8 text-brand-slate text-[15px] leading-relaxed">
         <div>
           <h2 class="text-xl font-display font-semibold text-white mb-3">Overview</h2>
           <p>
-            Inspired Mile (<a href="https://inspiredmile.com" class="text-accent hover:text-accent-light transition-colors">inspiredmile.com</a>) is operated by Voyage Tracable, LLC. We are committed to protecting your privacy. This policy explains what data we collect (almost none) and how we handle it.
+            Inspired Mile (<a href="https://sonnetman.inspiredmile.com" class="text-accent hover:text-accent-light transition-colors">sonnetman.inspiredmile.com</a>) is operated by Voyage Tracable, LLC, a Florida limited liability company. This policy describes what personal data we collect, why we collect it, how we store it, and your rights regarding that data.
           </p>
         </div>
 
         <div>
           <h2 class="text-xl font-display font-semibold text-white mb-3">Data We Collect</h2>
-          <p class="mb-3"><strong class="text-white">We do not collect any personal data.</strong> Specifically:</p>
+
+          <h3 class="text-md font-semibold text-obsidian-200 mt-4 mb-2">Account Data</h3>
+          <p class="mb-2">When you create an account, we collect:</p>
+          <ul class="list-disc list-inside space-y-1 ml-2">
+            <li><strong class="text-white">Google Sign-In:</strong> your name, email address, and profile picture (provided by Google OAuth)</li>
+            <li><strong class="text-white">Wallet Sign-In:</strong> your Solana public key (wallet address)</li>
+            <li><strong class="text-white">Display name and username</strong> derived from your sign-in method</li>
+          </ul>
+
+          <h3 class="text-md font-semibold text-obsidian-200 mt-4 mb-2">Gameplay Data</h3>
+          <p class="mb-2">As you use the platform, we collect and store:</p>
+          <ul class="list-disc list-inside space-y-1 ml-2">
+            <li>Card collection, deck configurations, and inventory</li>
+            <li>Game statistics (battle wins, trivia scores, challenges completed, packs opened)</li>
+            <li>Achievement progress and unlocks</li>
+            <li>Credits balance and transaction history (virtual currency only)</li>
+            <li>World Card variants and city discoveries</li>
+            <li>Tournament participation and results</li>
+            <li>Marketplace listings and trades</li>
+            <li>Season pass progress and reward claims</li>
+          </ul>
+
+          <h3 class="text-md font-semibold text-obsidian-200 mt-4 mb-2">User-Generated Content</h3>
+          <p class="mb-2">In multiplayer battles, you submit creative writing (verses) that are:</p>
+          <ul class="list-disc list-inside space-y-1 ml-2">
+            <li>Sent to our server for AI judging during battle sessions</li>
+            <li>Shared with your opponent in real-time</li>
+            <li>Not permanently stored after the battle session ends</li>
+          </ul>
+
+          <h3 class="text-md font-semibold text-obsidian-200 mt-4 mb-2">Classroom Data</h3>
+          <p class="mb-2">If you use Classroom Mode:</p>
+          <ul class="list-disc list-inside space-y-1 ml-2">
+            <li>Classroom names, join codes, and membership</li>
+            <li>Assignment titles and types</li>
+            <li>Student progress within classroom assignments</li>
+          </ul>
+
+          <h3 class="text-md font-semibold text-obsidian-200 mt-4 mb-2">Referral Data</h3>
+          <p>If you use our referral system, we store your referral code and track which accounts were referred by you, solely for the purpose of issuing referral rewards.</p>
+        </div>
+
+        <div>
+          <h2 class="text-xl font-display font-semibold text-white mb-3">Cookies &amp; Local Storage</h2>
           <ul class="list-disc list-inside space-y-2 ml-2">
-            <li>No cookies are set or read</li>
-            <li>No analytics or tracking scripts are used</li>
-            <li>No user accounts or login systems exist</li>
-            <li>No forms collect personal information</li>
-            <li>No advertising networks are present</li>
-            <li>No third-party scripts are loaded</li>
+            <li><strong class="text-white">Authentication cookie (<code class="text-xs bg-obsidian-800 px-1 rounded">im_token</code>):</strong> A secure, HTTP-only JWT cookie used to maintain your login session. This cookie is essential for the service to function and cannot be disabled while logged in.</li>
+            <li><strong class="text-white">Local Storage:</strong> We store game state (card inventory, stats, achievements, preferences) in your browser's local storage. This data stays on your device and is synced to our server only when you create an account.</li>
+            <li><strong class="text-white">Service Worker:</strong> We use a service worker to cache static assets for offline access and faster loading. No personal data is cached.</li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="text-xl font-display font-semibold text-white mb-3">Analytics</h2>
+          <p>
+            We use <a href="https://plausible.io" target="_blank" rel="noopener noreferrer" class="text-accent hover:text-accent-light transition-colors">Plausible Analytics</a>, a privacy-focused analytics service. Plausible does not use cookies, does not collect personal data, and does not track you across websites. It provides us only with aggregate statistics (page views, referral sources, device types). Plausible is fully compliant with GDPR, CCPA, and PECR.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-xl font-display font-semibold text-white mb-3">Third-Party Services</h2>
+          <ul class="list-disc list-inside space-y-2 ml-2">
+            <li><strong class="text-white">Google Sign-In:</strong> When you sign in with Google, your authentication is handled by Google's Identity Services. Google's <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" class="text-accent hover:text-accent-light transition-colors">Privacy Policy</a> applies to that interaction.</li>
+            <li><strong class="text-white">Google Fonts:</strong> We load fonts from Google Fonts, which means your browser makes requests to Google's servers. Google's <a href="https://developers.google.com/fonts/faq/privacy" target="_blank" rel="noopener noreferrer" class="text-accent hover:text-accent-light transition-colors">Fonts Privacy FAQ</a> applies.</li>
+            <li><strong class="text-white">Plausible Analytics:</strong> Privacy-focused analytics as described above.</li>
+            <li><strong class="text-white">Hugging Face:</strong> Our in-browser AI assistant downloads models from Hugging Face. No user data is sent to Hugging Face.</li>
           </ul>
         </div>
 
         <div>
           <h2 class="text-xl font-display font-semibold text-white mb-3">AI Assistant</h2>
           <p>
-            This site includes an AI assistant that runs <strong class="text-white">entirely in your browser</strong> using WebLLM technology. The AI model is downloaded to your device and all processing happens locally. No conversations, prompts, or responses are sent to any server. Your interactions with the AI assistant are completely private.
+            This site includes an AI assistant that runs <strong class="text-white">entirely in your browser</strong> using WebLLM technology. The AI model is downloaded to your device and all inference happens locally. No conversations, prompts, or responses are sent to any server. Your interactions with the AI assistant are completely private.
           </p>
         </div>
 
         <div>
-          <h2 class="text-xl font-display font-semibold text-white mb-3">Fonts &amp; Assets</h2>
+          <h2 class="text-xl font-display font-semibold text-white mb-3">Virtual Economy</h2>
           <p>
-            All fonts and assets are self-hosted on our servers. No requests are made to Google Fonts, CDNs, or any other third-party services. This means your IP address is never shared with external font or asset providers.
+            Inspired Mile features an in-game virtual currency ("Credits") and virtual items (card packs, cards). These have <strong class="text-white">no real-world monetary value</strong> and cannot be redeemed for cash. Credits are earned through gameplay activities. We track your Credits balance and transaction history to prevent abuse and ensure fair play. For full details on the virtual economy, see our <a href="/terms" class="text-accent hover:text-accent-light transition-colors">Terms of Service</a>.
           </p>
         </div>
 
         <div>
           <h2 class="text-xl font-display font-semibold text-white mb-3">Server Logs</h2>
           <p>
-            Our web server may automatically log standard access information (IP address, page requested, timestamp, browser type) as part of normal server operation. These logs are used solely for security monitoring and are not shared with any third party. They are retained for no more than 30 days.
+            Our web server (Caddy) automatically logs standard access information (IP address, page requested, timestamp, browser type) as part of normal server operation. These logs are used solely for security monitoring and debugging. They are retained for no more than 30 days and are not shared with any third party.
           </p>
         </div>
 
         <div>
-          <h2 class="text-xl font-display font-semibold text-white mb-3">External Links</h2>
+          <h2 class="text-xl font-display font-semibold text-white mb-3">Data Storage &amp; Security</h2>
+          <ul class="list-disc list-inside space-y-2 ml-2">
+            <li>Account and gameplay data is stored in a PostgreSQL database on our secured server infrastructure</li>
+            <li>All connections are encrypted via TLS (HTTPS)</li>
+            <li>Authentication tokens are signed with a server-side secret key</li>
+            <li>Passwords are never stored (we use third-party authentication only)</li>
+            <li>We do not sell, rent, or share your personal data with third parties for marketing purposes</li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="text-xl font-display font-semibold text-white mb-3">Data Retention</h2>
+          <ul class="list-disc list-inside space-y-2 ml-2">
+            <li><strong class="text-white">Account data:</strong> Retained as long as your account is active. You may request deletion at any time.</li>
+            <li><strong class="text-white">Gameplay data:</strong> Retained as long as your account is active and deleted upon account deletion.</li>
+            <li><strong class="text-white">Battle verses:</strong> Exist only during active battle sessions and are not permanently stored.</li>
+            <li><strong class="text-white">Server logs:</strong> Retained for up to 30 days.</li>
+            <li><strong class="text-white">Classroom data:</strong> Retained as long as the classroom exists. Teachers may delete classrooms at any time.</li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="text-xl font-display font-semibold text-white mb-3">Children&rsquo;s Privacy (COPPA)</h2>
+          <p class="mb-3">
+            Inspired Mile is not directed at children under the age of 13. We do not knowingly collect personal information from children under 13. Users must verify they are at least 13 years old before creating an account.
+          </p>
+          <p class="mb-3">
+            Users between the ages of 13 and 17 may use the service with parental or guardian consent. Parents or guardians may contact us to review, delete, or restrict the processing of their child's data.
+          </p>
           <p>
-            This site may contain links to external websites. We are not responsible for the privacy practices of those sites. We encourage you to review the privacy policies of any external site you visit.
+            If we learn that we have collected personal information from a child under 13 without verifiable parental consent, we will delete that information promptly. If you believe a child under 13 has provided us with personal data, please contact us immediately.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-xl font-display font-semibold text-white mb-3">Classroom &amp; Educational Use (FERPA)</h2>
+          <p>
+            When Inspired Mile is used in an educational setting through Classroom Mode, the teacher acts as the data controller for their students' classroom data. We process this data solely as directed by the teacher. We do not use student educational records for advertising or any purpose other than providing the educational service. Teachers must obtain appropriate consent from parents or guardians before enrolling students under 18 in a classroom.
           </p>
         </div>
 
         <div>
           <h2 class="text-xl font-display font-semibold text-white mb-3">Your Rights</h2>
           <p class="mb-3">
-            Under regulations including the EU General Data Protection Regulation (GDPR) and the California Consumer Privacy Act (CCPA), you have the right to:
+            Under applicable regulations including the EU General Data Protection Regulation (GDPR) and the California Consumer Privacy Act (CCPA), you have the right to:
           </p>
           <ul class="list-disc list-inside space-y-2 ml-2">
-            <li>Know what personal data we collect (we collect none)</li>
-            <li>Request deletion of your personal data (there is none to delete)</li>
-            <li>Opt out of the sale of your personal data (we do not sell any data)</li>
+            <li><strong class="text-white">Access:</strong> Request a copy of the personal data we hold about you</li>
+            <li><strong class="text-white">Rectification:</strong> Request correction of inaccurate data</li>
+            <li><strong class="text-white">Deletion:</strong> Request deletion of your personal data and account</li>
+            <li><strong class="text-white">Portability:</strong> Request your data in a machine-readable format</li>
+            <li><strong class="text-white">Opt-out:</strong> We do not sell your personal data. There is nothing to opt out of.</li>
+            <li><strong class="text-white">Restriction:</strong> Request that we limit processing of your data</li>
           </ul>
           <p class="mt-3">
-            Since we do not collect, store, or process any personal data, these rights are satisfied by default.
-          </p>
-        </div>
-
-        <div>
-          <h2 class="text-xl font-display font-semibold text-white mb-3">Children&rsquo;s Privacy</h2>
-          <p>
-            This site does not knowingly collect any information from children under the age of 13 (COPPA) or 16 (GDPR). Since we collect no personal data from any visitor, this requirement is met by default.
+            To exercise any of these rights, contact us at the email below. We will respond within 30 days.
           </p>
         </div>
 
         <div>
           <h2 class="text-xl font-display font-semibold text-white mb-3">Changes to This Policy</h2>
           <p>
-            If we make changes to this privacy policy, we will update the &ldquo;Last updated&rdquo; date at the top of this page. We encourage you to review this page periodically.
+            If we make material changes to this privacy policy, we will notify you by updating the "Last updated" date at the top of this page and displaying a notice on the platform. Continued use of the service after changes constitutes acceptance of the revised policy.
           </p>
         </div>
 
         <div>
           <h2 class="text-xl font-display font-semibold text-white mb-3">Contact</h2>
           <p>
-            If you have questions about this privacy policy, contact us at
+            If you have questions about this privacy policy or wish to exercise your data rights, contact us at
             <a href="mailto:david@davidjcharlot.com" class="text-accent hover:text-accent-light transition-colors">david@davidjcharlot.com</a>.
+          </p>
+          <p class="mt-2 text-obsidian-500 text-sm">
+            Voyage Tracable, LLC &middot; Sarasota, FL, United States
           </p>
         </div>
       </div>

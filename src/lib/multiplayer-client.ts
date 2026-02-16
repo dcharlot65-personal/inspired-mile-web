@@ -129,3 +129,15 @@ export async function listRooms(): Promise<{ id: string; state: string; player_c
   if (!response.ok) throw new Error('Failed to list rooms');
   return response.json();
 }
+
+/** Report inappropriate content from a multiplayer session */
+export async function reportContent(roomId: string, reason: string): Promise<{ status: string }> {
+  const response = await fetch('/api/v1/multiplayer/report', {
+    method: 'POST',
+    credentials: 'include',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ room_id: roomId, reason }),
+  });
+  if (!response.ok) throw new Error('Failed to submit report');
+  return response.json();
+}

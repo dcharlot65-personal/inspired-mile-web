@@ -16,6 +16,7 @@ use uuid::Uuid;
 
 use crate::auth::Claims;
 use crate::config::Config;
+use super::content_filter;
 use super::game_room::{ClientEvent, RoomManager, RoomState, ServerEvent, AxisScores};
 use super::judge;
 use super::matchmaking::MatchmakingQueue;
@@ -27,6 +28,51 @@ pub fn router() -> Router<(PgPool, Config)> {
         .route("/rooms", get(list_rooms))
         .route("/create-private", post(create_private_room))
         .route("/join/{token}", get(join_private_room))
+        .route("/report", post(report_content))
+}
+
+// --- Content Report ---
+
+#[derive(serde::Deserialize)]
+struct ReportRequest {
+    room_id: Uuid,
+    reason: String,
+}
+
+#[derive(Serialize)]
+struct ReportResponse {
+    status: String,
+}
+
+async fn report_content(
+    Extension(claims): Extension<Claims>,
+    State((pool, _config)): State<(PgPool, Config)>,
+    Json(body): Json<ReportRequest>,
+) -> Result<Json<ReportResponse>, (StatusCode, String)> {
+    if body.reason.is_empty() || body.reason.len() > 500 {
+        return Err((StatusCode::BAD_REQUEST, "Reason must be 1-500 characters".into()));
+    }
+
+    sqlx::query(
+        "INSERT INTO content_reports (reporter_id, room_id, reason) VALUES ($1, $2, $3)"
+    )
+    .bind(claims.sub)
+    .bind(body.room_id.to_string())
+    .bind(&body.reason)
+    .execute(&pool)
+    .await
+    .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("Failed to submit report: {e}")))?;
+
+    tracing::warn!(
+        reporter = %claims.sub,
+        room_id = %body.room_id,
+        reason = %body.reason,
+        "Content report submitted"
+    );
+
+    Ok(Json(ReportResponse {
+        status: "reported".into(),
+    }))
 }
 
 #[derive(Serialize)]
@@ -243,6 +289,16 @@ async fn handle_socket(
                 if verse.is_empty() || verse.len() > 2000 {
                     let err = ServerEvent::Error {
                         message: "Verse must be between 1 and 2000 characters".into(),
+                    };
+                    let _ = ws_tx.lock().await.send(Message::Text(serde_json::to_string(&err).unwrap().into())).await;
+                    continue;
+                }
+
+                // Content moderation filter
+                let filter_result = content_filter::check_content(&verse);
+                if !filter_result.allowed {
+                    let err = ServerEvent::Error {
+                        message: filter_result.reason.unwrap_or_else(|| "Content rejected by moderation filter.".into()),
                     };
                     let _ = ws_tx.lock().await.send(Message::Text(serde_json::to_string(&err).unwrap().into())).await;
                     continue;

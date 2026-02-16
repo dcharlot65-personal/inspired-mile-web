@@ -36,6 +36,80 @@ const currentPath = Astro.url.pathname;
     <script is:inline defer data-domain="inspiredmile.com" src="https://plausible.io/js/script.js"></script>
   </head>
   <body class="min-h-screen flex flex-col">
+    <!-- Age Gate Modal -->
+    <div id="age-gate" class="fixed inset-0 z-[200] bg-obsidian-950 flex items-center justify-center p-4 hidden">
+      <div class="card-glass max-w-md w-full p-8 text-center bg-obsidian-900/95 backdrop-blur-xl border border-obsidian-700 rounded-2xl shadow-2xl">
+        <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-gold-400 to-gold-600 flex items-center justify-center mx-auto mb-6">
+          <span class="text-obsidian-950 font-display font-bold text-2xl">IM</span>
+        </div>
+        <h2 class="font-display text-2xl font-bold text-white mb-2">Welcome to Inspired Mile</h2>
+        <p class="text-obsidian-400 text-sm mb-6">Please confirm your age to continue.</p>
+
+        <div id="age-gate-form">
+          <label class="block text-left text-xs text-obsidian-400 mb-2">Date of Birth</label>
+          <div class="flex gap-2 mb-4">
+            <select id="age-month" class="flex-1 bg-obsidian-800 border border-obsidian-700 rounded-lg px-3 py-2.5 text-sm text-obsidian-200 focus:border-gold-500/50 focus:outline-none">
+              <option value="">Month</option>
+              <option value="1">January</option>
+              <option value="2">February</option>
+              <option value="3">March</option>
+              <option value="4">April</option>
+              <option value="5">May</option>
+              <option value="6">June</option>
+              <option value="7">July</option>
+              <option value="8">August</option>
+              <option value="9">September</option>
+              <option value="10">October</option>
+              <option value="11">November</option>
+              <option value="12">December</option>
+            </select>
+            <select id="age-day" class="w-20 bg-obsidian-800 border border-obsidian-700 rounded-lg px-3 py-2.5 text-sm text-obsidian-200 focus:border-gold-500/50 focus:outline-none">
+              <option value="">Day</option>
+            </select>
+            <select id="age-year" class="w-24 bg-obsidian-800 border border-obsidian-700 rounded-lg px-3 py-2.5 text-sm text-obsidian-200 focus:border-gold-500/50 focus:outline-none">
+              <option value="">Year</option>
+            </select>
+          </div>
+          <button id="age-gate-submit" class="btn-primary w-full py-3 font-display font-bold">Continue</button>
+          <p id="age-gate-error" class="text-crimson-400 text-xs mt-3 hidden"></p>
+        </div>
+
+        <div id="age-gate-minor" class="hidden">
+          <div class="w-12 h-12 rounded-full bg-crimson-500/20 border border-crimson-500/30 flex items-center justify-center mx-auto mb-4">
+            <svg class="w-6 h-6 text-crimson-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+          </div>
+          <h3 class="font-display text-lg font-bold text-crimson-400 mb-2">Age Requirement Not Met</h3>
+          <p class="text-obsidian-400 text-sm">
+            You must be at least 13 years old to use Inspired Mile. Please come back when you meet the age requirement.
+          </p>
+        </div>
+
+        <div id="age-gate-teen" class="hidden">
+          <div class="w-12 h-12 rounded-full bg-gold-500/20 border border-gold-500/30 flex items-center justify-center mx-auto mb-4">
+            <svg class="w-6 h-6 text-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <h3 class="font-display text-lg font-bold text-gold-400 mb-2">Parental Consent Required</h3>
+          <p class="text-obsidian-400 text-sm mb-4">
+            Since you are under 18, you need parental or guardian consent to use Inspired Mile.
+          </p>
+          <label class="flex items-start gap-3 text-left mb-4 cursor-pointer">
+            <input type="checkbox" id="parental-consent" class="mt-1 w-4 h-4 rounded border-obsidian-600 bg-obsidian-800 text-gold-500 focus:ring-gold-500/50" />
+            <span class="text-xs text-obsidian-300 leading-relaxed">
+              I confirm that my parent or legal guardian has reviewed the
+              <a href="/terms" class="text-gold-400 hover:text-gold-300">Terms of Service</a> and
+              <a href="/privacy" class="text-gold-400 hover:text-gold-300">Privacy Policy</a>
+              and consents to my use of Inspired Mile.
+            </span>
+          </label>
+          <button id="teen-continue" class="btn-primary w-full py-3 font-display font-bold opacity-50 pointer-events-none">Continue with Consent</button>
+        </div>
+
+        <p class="text-[10px] text-obsidian-600 mt-6">
+          By continuing, you agree to our <a href="/terms" class="text-obsidian-500 hover:text-gold-400">Terms of Service</a> and <a href="/privacy" class="text-obsidian-500 hover:text-gold-400">Privacy Policy</a>.
+        </p>
+      </div>
+    </div>
+
     <!-- Navigation -->
     <nav class="fixed top-0 w-full z-50 bg-obsidian-950/80 backdrop-blur-lg border-b border-obsidian-800/50">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -138,7 +212,7 @@ const currentPath = Astro.url.pathname;
                   </button>
                   <p id="auth-error" class="hidden text-xs text-crimson-400 mt-2 text-center"></p>
                   <p class="text-[10px] text-obsidian-600 mt-3 text-center leading-relaxed">
-                    By signing in, you agree to our <a href="/privacy" class="text-obsidian-400 hover:text-gold-400">Privacy Policy</a>.
+                    By signing in, you agree to our <a href="/terms" class="text-obsidian-400 hover:text-gold-400">Terms of Service</a> and <a href="/privacy" class="text-obsidian-400 hover:text-gold-400">Privacy Policy</a>.
                   </p>
                 </div>
                 <!-- User menu (when logged in) -->
@@ -255,7 +329,8 @@ const currentPath = Astro.url.pathname;
             <ul class="space-y-2 text-sm text-obsidian-400">
               <li><a href="/about" class="hover:text-gold-400 transition-colors">About Us</a></li>
               <li><a href="https://sonnetman.com" target="_blank" rel="noopener noreferrer" class="hover:text-gold-400 transition-colors">The Sonnet Man</a></li>
-              <li><a href="/privacy" class="hover:text-gold-400 transition-colors">Privacy & Legal</a></li>
+              <li><a href="/privacy" class="hover:text-gold-400 transition-colors">Privacy Policy</a></li>
+              <li><a href="/terms" class="hover:text-gold-400 transition-colors">Terms of Service</a></li>
             </ul>
             <div class="flex items-center gap-3 mt-4">
               <a href="https://www.youtube.com/TheSonnetManTV" target="_blank" rel="noopener noreferrer" class="text-obsidian-500 hover:text-gold-400 transition-colors" aria-label="YouTube">
@@ -275,7 +350,11 @@ const currentPath = Astro.url.pathname;
         </div>
         <div class="mt-8 pt-8 border-t border-obsidian-800/50 text-center text-obsidian-500 text-xs">
           <p>&copy; {new Date().getFullYear()} Voyage Tracable, LLC (DBA Inspired Mile). All rights reserved. Sarasota, FL.</p>
-          <p class="mt-1"><a href="/privacy" class="hover:text-gold-400 transition-colors">Privacy Policy & Legal</a></p>
+          <p class="mt-1">
+            <a href="/privacy" class="hover:text-gold-400 transition-colors">Privacy Policy</a>
+            <span class="mx-1">&middot;</span>
+            <a href="/terms" class="hover:text-gold-400 transition-colors">Terms of Service</a>
+          </p>
         </div>
       </div>
     </footer>
@@ -649,6 +728,105 @@ const currentPath = Astro.url.pathname;
     <script>
       import { initTamperGuard } from '../scripts/tamper-guard';
       initTamperGuard();
+    </script>
+    <!-- Age Gate -->
+    <script is:inline>
+      (function() {
+        var AGE_KEY = 'inspired-mile-age-verified';
+        var stored = localStorage.getItem(AGE_KEY);
+
+        // Skip age gate on legal pages so users can read them
+        var legalPages = ['/privacy', '/terms', '/about'];
+        if (legalPages.indexOf(window.location.pathname) >= 0) return;
+
+        if (stored === 'adult' || stored === 'teen-consented') return;
+        if (stored === 'blocked') {
+          // User was under 13 — keep blocking
+          document.getElementById('age-gate').classList.remove('hidden');
+          document.getElementById('age-gate-form').classList.add('hidden');
+          document.getElementById('age-gate-minor').classList.remove('hidden');
+          return;
+        }
+
+        // Show the age gate
+        var gate = document.getElementById('age-gate');
+        gate.classList.remove('hidden');
+
+        // Populate day/year dropdowns
+        var daySelect = document.getElementById('age-day');
+        for (var d = 1; d <= 31; d++) {
+          var opt = document.createElement('option');
+          opt.value = d;
+          opt.textContent = d;
+          daySelect.appendChild(opt);
+        }
+
+        var yearSelect = document.getElementById('age-year');
+        var currentYear = new Date().getFullYear();
+        for (var y = currentYear; y >= currentYear - 100; y--) {
+          var opt = document.createElement('option');
+          opt.value = y;
+          opt.textContent = y;
+          yearSelect.appendChild(opt);
+        }
+
+        // Submit handler
+        document.getElementById('age-gate-submit').addEventListener('click', function() {
+          var month = parseInt(document.getElementById('age-month').value);
+          var day = parseInt(document.getElementById('age-day').value);
+          var year = parseInt(document.getElementById('age-year').value);
+          var errorEl = document.getElementById('age-gate-error');
+
+          if (!month || !day || !year) {
+            errorEl.textContent = 'Please select your full date of birth.';
+            errorEl.classList.remove('hidden');
+            return;
+          }
+
+          var dob = new Date(year, month - 1, day);
+          var today = new Date();
+          var age = today.getFullYear() - dob.getFullYear();
+          var monthDiff = today.getMonth() - dob.getMonth();
+          if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < dob.getDate())) {
+            age--;
+          }
+
+          if (age < 13) {
+            // Block access
+            localStorage.setItem(AGE_KEY, 'blocked');
+            document.getElementById('age-gate-form').classList.add('hidden');
+            document.getElementById('age-gate-minor').classList.remove('hidden');
+          } else if (age < 18) {
+            // Show parental consent
+            document.getElementById('age-gate-form').classList.add('hidden');
+            document.getElementById('age-gate-teen').classList.remove('hidden');
+          } else {
+            // Adult — proceed
+            localStorage.setItem(AGE_KEY, 'adult');
+            gate.classList.add('hidden');
+          }
+        });
+
+        // Parental consent checkbox
+        var checkbox = document.getElementById('parental-consent');
+        var teenBtn = document.getElementById('teen-continue');
+        if (checkbox && teenBtn) {
+          checkbox.addEventListener('change', function() {
+            if (checkbox.checked) {
+              teenBtn.classList.remove('opacity-50', 'pointer-events-none');
+            } else {
+              teenBtn.classList.add('opacity-50', 'pointer-events-none');
+            }
+          });
+
+          teenBtn.addEventListener('click', function() {
+            if (checkbox.checked) {
+              localStorage.setItem(AGE_KEY, 'teen-consented');
+              gate.classList.add('hidden');
+            }
+          });
+        }
+      })();
     </script>
   </body>
 </html>
