@@ -1,8 +1,8 @@
 -- Content moderation reports table
 CREATE TABLE IF NOT EXISTS content_reports (
     id SERIAL PRIMARY KEY,
-    reporter_id INT NOT NULL REFERENCES users(id),
-    room_id VARCHAR(64) NOT NULL,
+    reporter_id UUID NOT NULL REFERENCES users(id),
+    room_id UUID NOT NULL,
     reason VARCHAR(500) NOT NULL,
     status VARCHAR(20) NOT NULL DEFAULT 'pending',
     reviewed_at TIMESTAMPTZ,

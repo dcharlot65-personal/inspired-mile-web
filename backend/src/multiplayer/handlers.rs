@@ -57,7 +57,7 @@ async fn report_content(
         "INSERT INTO content_reports (reporter_id, room_id, reason) VALUES ($1, $2, $3)"
     )
     .bind(claims.sub)
-    .bind(body.room_id.to_string())
+    .bind(body.room_id)
     .bind(&body.reason)
     .execute(&pool)
     .await
