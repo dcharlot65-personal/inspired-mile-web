@@ -31,10 +31,12 @@ pub enum ServerEvent {
         opponent: String,
         round: u32,
         total_rounds: u32,
+        difficulty: String,
     },
     RoundStart {
         round: u32,
         total_rounds: u32,
+        theme: Option<String>,
     },
     OpponentSubmitted,
     RoundResult {
@@ -43,6 +45,9 @@ pub enum ServerEvent {
         opponent_score: AxisScores,
         player_wins: bool,
         reason: String,
+    },
+    AuthenticityWarning {
+        message: String,
     },
     MatchComplete {
         winner: String,
@@ -66,13 +71,14 @@ pub enum ClientEvent {
     Forfeit,
 }
 
-/// 4-axis scoring.
+/// 5-axis scoring (includes authenticity).
 #[derive(Clone, Debug, Serialize, Deserialize, Default)]
 pub struct AxisScores {
     pub wordplay: i32,
     pub shakespeare: i32,
     pub flow: i32,
     pub wit: i32,
+    pub authenticity: i32,
     pub total: i32,
 }
 
@@ -81,7 +87,16 @@ pub struct AxisScores {
 pub struct RoundSubmission {
     pub user_id: Uuid,
     pub text: String,
+    pub submitted_after: Duration,
 }
+
+/// Battle themes for intermediate difficulty.
+pub const BATTLE_THEMES: &[&str] = &[
+    "Jealousy", "Ambition", "Love Unrequited", "Betrayal", "The Storm",
+    "Revenge", "Forbidden Love", "Madness", "Honor", "Fate vs Free Will",
+    "Power", "Mortality", "Deception", "Loyalty", "Exile",
+    "The Supernatural", "Justice", "Sacrifice", "Pride", "Transformation",
+];
 
 /// A game room.
 pub struct GameRoom {
@@ -92,6 +107,9 @@ pub struct GameRoom {
     pub submissions: Vec<RoundSubmission>,
     pub tx: broadcast::Sender<ServerEvent>,
     pub created_at: Instant,
+    pub round_started_at: Option<Instant>,
+    pub difficulty: String,
+    pub theme: Option<String>,
 }
 
 impl GameRoom {
@@ -105,6 +123,25 @@ impl GameRoom {
             submissions: Vec::new(),
             tx,
             created_at: Instant::now(),
+            round_started_at: None,
+            difficulty: "advanced".into(),
+            theme: None,
+        }
+    }
+
+    pub fn new_with_difficulty(total_rounds: u32, difficulty: String) -> Self {
+        let (tx, _) = broadcast::channel(64);
+        Self {
+            state: RoomState::Waiting,
+            players: Vec::new(),
+            current_round: 1,
+            total_rounds,
+            submissions: Vec::new(),
+            tx,
+            created_at: Instant::now(),
+            round_started_at: None,
+            difficulty,
+            theme: None,
         }
     }
 
@@ -127,8 +164,23 @@ impl GameRoom {
         if self.submissions.iter().any(|s| s.user_id == user_id) {
             return false;
         }
-        self.submissions.push(RoundSubmission { user_id, text });
+        let submitted_after = self.round_started_at
+            .map(|t| t.elapsed())
+            .unwrap_or(Duration::from_secs(60));
+        self.submissions.push(RoundSubmission { user_id, text, submitted_after });
         true
+    }
+
+    /// Start round timing and pick a theme for intermediate difficulty.
+    pub fn start_round(&mut self) {
+        self.round_started_at = Some(Instant::now());
+        if self.difficulty == "intermediate" {
+            use rand::Rng;
+            let idx = rand::thread_rng().gen_range(0..BATTLE_THEMES.len());
+            self.theme = Some(BATTLE_THEMES[idx].to_string());
+        } else {
+            self.theme = None;
+        }
     }
 
     pub fn both_submitted(&self) -> bool {

@@ -10,15 +10,17 @@ export interface AxisScores {
   shakespeare: number;
   flow: number;
   wit: number;
+  authenticity: number;
   total: number;
 }
 
 // Server → Client events
 export type ServerEvent =
-  | { type: 'room_joined'; room_id: string; opponent: string; round: number; total_rounds: number }
-  | { type: 'round_start'; round: number; total_rounds: number }
+  | { type: 'room_joined'; room_id: string; opponent: string; round: number; total_rounds: number; difficulty: string }
+  | { type: 'round_start'; round: number; total_rounds: number; theme: string | null }
   | { type: 'opponent_submitted' }
   | { type: 'round_result'; round: number; player_score: AxisScores; opponent_score: AxisScores; player_wins: boolean; reason: string }
+  | { type: 'authenticity_warning'; message: string }
   | { type: 'match_complete'; winner: string; player_total: number; opponent_total: number }
   | { type: 'opponent_disconnected' }
   | { type: 'error'; message: string };
@@ -111,11 +113,12 @@ export class MultiplayerClient {
 }
 
 /** Join the matchmaking queue via REST API */
-export async function joinQueue(): Promise<{ room_id: string | null; status: string }> {
+export async function joinQueue(difficulty: 'beginner' | 'intermediate' | 'advanced' = 'advanced'): Promise<{ room_id: string | null; status: string }> {
   const response = await fetch('/api/v1/multiplayer/queue', {
     method: 'POST',
     credentials: 'include',
     headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ difficulty }),
   });
   if (!response.ok) throw new Error('Failed to join queue');
   return response.json();

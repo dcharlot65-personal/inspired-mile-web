@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://sonnetman.inspiredmile.com/sitemap.xml

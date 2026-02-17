@@ -35,7 +35,27 @@ import '../styles/global.css';
           <span class="text-4xl">&#9876;</span>
         </div>
         <h2 class="font-display text-2xl font-bold text-obsidian-200 mb-3">Find an Opponent</h2>
-        <p class="text-sm text-obsidian-400 mb-6">Join the matchmaking queue to be paired with another player.</p>
+        <p class="text-sm text-obsidian-400 mb-4">Choose your difficulty level and join the queue.</p>
+
+        <!-- Difficulty Selector -->
+        <div id="difficulty-selector" class="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto mb-6">
+          <button data-difficulty="beginner" class="diff-btn flex-1 card-glass p-3 border-2 border-transparent hover:border-emerald-500/30 rounded-xl transition-all group">
+            <div class="text-2xl mb-1">&#127793;</div>
+            <div class="text-sm font-display font-bold text-emerald-400">Beginner</div>
+            <div class="text-xs text-obsidian-500 mt-1">Templates + Word Bank</div>
+          </button>
+          <button data-difficulty="intermediate" class="diff-btn flex-1 card-glass p-3 border-2 border-transparent hover:border-gold-500/30 rounded-xl transition-all group">
+            <div class="text-2xl mb-1">&#9876;</div>
+            <div class="text-sm font-display font-bold text-gold-400">Intermediate</div>
+            <div class="text-xs text-obsidian-500 mt-1">Themes + Rhyme Help</div>
+          </button>
+          <button data-difficulty="advanced" class="diff-btn flex-1 card-glass p-3 border-2 border-purple-500/30 rounded-xl transition-all group">
+            <div class="text-2xl mb-1">&#128081;</div>
+            <div class="text-sm font-display font-bold text-purple-400">Advanced</div>
+            <div class="text-xs text-obsidian-500 mt-1">Freestyle Battle</div>
+          </button>
+        </div>
+
         <button id="find-match-btn" class="btn-primary px-8 py-3 text-lg">
           Find Match
         </button>
@@ -98,19 +118,47 @@ import '../styles/global.css';
             </div>
           </div>
 
+          <!-- Theme Banner (intermediate mode) -->
+          <div id="mp-theme-banner" class="hidden px-4 py-2 bg-gold-500/10 border-t border-gold-500/20 text-center">
+            <span class="text-xs text-obsidian-400">Theme: </span>
+            <span id="mp-theme-name" class="text-sm font-display font-bold text-gold-400"></span>
+          </div>
+
+          <!-- Beginner: Writing Template -->
+          <div id="mp-template-panel" class="hidden px-4 py-3 bg-emerald-500/5 border-t border-emerald-500/20">
+            <p class="text-xs text-emerald-400 font-medium mb-2">Template (fill in the blanks):</p>
+            <p id="mp-template-text" class="text-sm text-obsidian-300 italic leading-relaxed font-mono"></p>
+          </div>
+
+          <!-- Beginner: Word Bank -->
+          <div id="mp-word-bank" class="hidden px-4 py-3 bg-emerald-500/5 border-t border-emerald-500/10">
+            <p class="text-xs text-emerald-400 font-medium mb-2">Shakespearean Word Bank (click to insert):</p>
+            <div class="flex flex-wrap gap-1.5" id="word-bank-grid"></div>
+          </div>
+
+          <!-- Intermediate: Rhyme Helper -->
+          <div id="mp-rhyme-panel" class="hidden px-4 py-3 bg-gold-500/5 border-t border-gold-500/10">
+            <p class="text-xs text-gold-400 font-medium mb-2">Rhyme palette:</p>
+            <div class="flex flex-wrap gap-2" id="rhyme-grid"></div>
+            <p class="text-xs text-obsidian-500 mt-2 italic">Tip: Try iambic pentameter (da-DUM da-DUM da-DUM da-DUM da-DUM)</p>
+          </div>
+
           <!-- Input -->
           <div class="p-4 border-t border-obsidian-700/50 bg-obsidian-900/50">
             <div class="flex gap-3">
-              <input
+              <textarea
                 id="mp-input"
-                type="text"
+                rows="3"
                 placeholder="Drop your bars here..."
-                class="flex-1 bg-obsidian-800 border border-obsidian-700 rounded-lg px-4 py-3 text-sm text-obsidian-100 placeholder-obsidian-500 focus:outline-none focus:border-purple-500/50 transition-colors"
-              />
-              <button id="mp-send-btn" class="btn-primary px-6">Send</button>
+                class="flex-1 bg-obsidian-800 border border-obsidian-700 rounded-lg px-4 py-3 text-sm text-obsidian-100 placeholder-obsidian-500 focus:outline-none focus:border-purple-500/50 transition-colors resize-none"
+              ></textarea>
+              <button id="mp-send-btn" class="btn-primary px-6 self-end">Send</button>
             </div>
             <div class="flex items-center justify-between mt-2">
-              <p id="mp-hint" class="text-xs text-obsidian-500"></p>
+              <div class="flex items-center gap-3">
+                <p id="mp-hint" class="text-xs text-obsidian-500"></p>
+                <span id="mp-char-count" class="text-xs text-obsidian-600"></span>
+              </div>
               <button id="mp-forfeit-btn" class="text-xs text-obsidian-500 hover:text-crimson-400 transition-colors">Forfeit</button>
             </div>
           </div>
@@ -130,7 +178,7 @@ import '../styles/global.css';
     const matchError = document.getElementById('match-error')!;
     const mpArena = document.getElementById('mp-arena')!;
     const mpBattleLog = document.getElementById('mp-battle-log')!;
-    const mpInput = document.getElementById('mp-input') as HTMLInputElement;
+    const mpInput = document.getElementById('mp-input') as HTMLTextAreaElement;
     const mpSendBtn = document.getElementById('mp-send-btn')!;
     const mpForfeitBtn = document.getElementById('mp-forfeit-btn')!;
     const mpOpponentName = document.getElementById('mp-opponent-name')!;
@@ -138,10 +186,120 @@ import '../styles/global.css';
     const mpPlayerScore = document.getElementById('mp-player-score')!;
     const mpOpponentScore = document.getElementById('mp-opponent-score')!;
     const mpHint = document.getElementById('mp-hint')!;
+    const mpCharCount = document.getElementById('mp-char-count')!;
 
     let client: MultiplayerClient | null = null;
     let searching = false;
+    let selectedDifficulty: 'beginner' | 'intermediate' | 'advanced' = 'advanced';
+    let activeDifficulty = 'advanced';
 
+    // --- Difficulty selector ---
+    const diffBtns = document.querySelectorAll('.diff-btn');
+    diffBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        diffBtns.forEach(b => b.classList.remove('border-emerald-500/30', 'border-gold-500/30', 'border-purple-500/30'));
+        diffBtns.forEach(b => b.classList.add('border-transparent'));
+        const diff = (btn as HTMLElement).dataset.difficulty as typeof selectedDifficulty;
+        selectedDifficulty = diff;
+        const colorMap: Record<string, string> = { beginner: 'border-emerald-500/30', intermediate: 'border-gold-500/30', advanced: 'border-purple-500/30' };
+        btn.classList.remove('border-transparent');
+        btn.classList.add(colorMap[diff]);
+      });
+    });
+
+    // --- Word bank data ---
+    const WORD_BANK = [
+      'forsooth', 'doth', 'hark', 'prithee', 'methinks', 'anon', 'verily', 'fie',
+      'thou', 'thee', 'thy', 'hath', 'ere', 'hence', 'whence', 'yonder',
+      'perchance', 'alas', 'nay', 'aye', 'villain', 'knave', 'scoundrel', 'maiden',
+      'sovereign', 'tempest', 'plague', 'jest', 'mirth', 'woe',
+    ];
+
+    const TEMPLATES = [
+      "Shall I compare thee to a ___'s ___?\nThou art more ___ and more ___.\nRough winds do shake the ___ buds of ___,\nAnd ___'s lease hath all too short a date.",
+      "O ___, ___, wherefore art thou ___?\nDeny thy ___ and refuse thy ___;\nOr, if thou wilt not, be but sworn my ___,\nAnd I'll no longer be a ___.",
+      "To ___ or not to ___, that is the ___:\nWhether 'tis nobler in the ___ to suffer\nThe slings and arrows of outrageous ___,\nOr to take arms against a sea of ___.",
+    ];
+
+    const RHYME_SETS: Record<string, string[][]> = {
+      'Jealousy': [['green','scene','keen','between'], ['heart','apart','art','start'], ['eye','lie','spy','deny']],
+      'Ambition': [['power','tower','hour','devour'], ['throne','alone','stone','own'], ['rise','wise','prize','demise']],
+      'Love Unrequited': [['love','above','dove','thereof'], ['pain','vain','rain','refrain'], ['heart','apart','dart','start']],
+      'Betrayal': [['trust','dust','must','unjust'], ['knife','life','strife','wife'], ['false','waltz','faults','halts']],
+      'The Storm': [['thunder','under','wonder','asunder'], ['rain','pain','wane','domain'], ['lightning','frightening','tightening','brightening']],
+      'default': [['night','light','fight','sight'], ['love','above','dove','thereof'], ['fate','great','late','state']],
+    };
+
+    function setupWordBank() {
+      const grid = document.getElementById('word-bank-grid')!;
+      grid.innerHTML = '';
+      WORD_BANK.forEach(word => {
+        const btn = document.createElement('button');
+        btn.className = 'px-2 py-1 text-xs bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 rounded hover:bg-emerald-500/20 transition-colors';
+        btn.textContent = word;
+        btn.addEventListener('click', () => {
+          const pos = mpInput.selectionStart;
+          const before = mpInput.value.substring(0, pos);
+          const after = mpInput.value.substring(pos);
+          const needSpace = before.length > 0 && !before.endsWith(' ') && !before.endsWith('\n');
+          mpInput.value = before + (needSpace ? ' ' : '') + word + after;
+          mpInput.focus();
+          mpInput.selectionStart = mpInput.selectionEnd = pos + word.length + (needSpace ? 1 : 0);
+          updateCharCount();
+        });
+        grid.appendChild(btn);
+      });
+    }
+
+    function showTemplate(round: number) {
+      const tpl = TEMPLATES[(round - 1) % TEMPLATES.length];
+      document.getElementById('mp-template-text')!.textContent = tpl;
+    }
+
+    function showRhymes(theme: string | null) {
+      const grid = document.getElementById('rhyme-grid')!;
+      grid.innerHTML = '';
+      const sets = RHYME_SETS[theme || ''] || RHYME_SETS['default'];
+      sets.forEach(group => {
+        const span = document.createElement('span');
+        span.className = 'text-xs bg-gold-500/10 border border-gold-500/20 text-gold-300 rounded-full px-3 py-1';
+        span.textContent = group.join(' / ');
+        grid.appendChild(span);
+      });
+    }
+
+    function updateScaffolding(round: number, theme: string | null) {
+      if (activeDifficulty === 'beginner') {
+        document.getElementById('mp-template-panel')!.classList.remove('hidden');
+        document.getElementById('mp-word-bank')!.classList.remove('hidden');
+        document.getElementById('mp-rhyme-panel')!.classList.add('hidden');
+        document.getElementById('mp-theme-banner')!.classList.add('hidden');
+        showTemplate(round);
+        setupWordBank();
+      } else if (activeDifficulty === 'intermediate') {
+        document.getElementById('mp-template-panel')!.classList.add('hidden');
+        document.getElementById('mp-word-bank')!.classList.add('hidden');
+        document.getElementById('mp-rhyme-panel')!.classList.remove('hidden');
+        if (theme) {
+          document.getElementById('mp-theme-banner')!.classList.remove('hidden');
+          document.getElementById('mp-theme-name')!.textContent = theme;
+        }
+        showRhymes(theme);
+      } else {
+        document.getElementById('mp-template-panel')!.classList.add('hidden');
+        document.getElementById('mp-word-bank')!.classList.add('hidden');
+        document.getElementById('mp-rhyme-panel')!.classList.add('hidden');
+        document.getElementById('mp-theme-banner')!.classList.add('hidden');
+      }
+    }
+
+    function updateCharCount() {
+      const len = mpInput.value.length;
+      mpCharCount.textContent = len > 0 ? `${len}/2000` : '';
+    }
+    mpInput.addEventListener('input', updateCharCount);
+
+    // --- Matchmaking ---
     findMatchBtn.addEventListener('click', async () => {
       if (!isLoggedIn()) {
         matchError.textContent = 'Sign in to play multiplayer.';
@@ -155,7 +313,7 @@ import '../styles/global.css';
       findMatchBtn.classList.add('hidden');
 
       try {
-        const result = await joinQueue();
+        const result = await joinQueue(selectedDifficulty);
 
         if (result.status === 'matched' && result.room_id) {
           await startMatch(result.room_id);
@@ -209,7 +367,8 @@ import '../styles/global.css';
         case 'room_joined':
           mpOpponentName.textContent = event.opponent;
           mpRoundLabel.textContent = `Round ${event.round} / ${event.total_rounds}`;
-          addSystemMsg(`Matched with ${event.opponent}! Battle begins.`);
+          activeDifficulty = event.difficulty;
+          addSystemMsg(`Matched with ${event.opponent}! Battle begins. (${activeDifficulty} mode)`);
           break;
 
         case 'round_start':
@@ -217,6 +376,7 @@ import '../styles/global.css';
           addSystemMsg(`Round ${event.round} — drop your bars!`);
           mpInput.disabled = false;
           mpSendBtn.removeAttribute('disabled');
+          updateScaffolding(event.round, event.theme);
           break;
 
         case 'opponent_submitted':
@@ -230,6 +390,10 @@ import '../styles/global.css';
           } else {
             mpOpponentScore.textContent = String(Number(mpOpponentScore.textContent) + 1);
           }
+          break;
+
+        case 'authenticity_warning':
+          addSystemMsg(`⚠ ${event.message}`);
           break;
 
         case 'match_complete':
@@ -250,7 +414,10 @@ import '../styles/global.css';
 
     mpSendBtn.addEventListener('click', submitVerse);
     mpInput.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') submitVerse();
+      if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
+        submitVerse();
+      }
     });
 
     function submitVerse() {
@@ -263,6 +430,7 @@ import '../styles/global.css';
       mpInput.disabled = true;
       mpSendBtn.setAttribute('disabled', '');
       mpHint.textContent = 'Waiting for opponent...';
+      updateCharCount();
     }
 
     mpForfeitBtn.addEventListener('click', () => {
@@ -286,7 +454,7 @@ import '../styles/global.css';
       div.className = 'flex gap-3 justify-end';
       div.innerHTML = `
         <div class="card-glass p-4 max-w-md bg-purple-500/5 border-purple-500/20">
-          <p class="text-sm text-obsidian-200 leading-relaxed">${text.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</p>
+          <p class="text-sm text-obsidian-200 leading-relaxed whitespace-pre-wrap">${text.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</p>
         </div>
       `;
       mpBattleLog.appendChild(div);
@@ -296,6 +464,7 @@ import '../styles/global.css';
     function addRoundResult(event: Extract<ServerEvent, { type: 'round_result' }>) {
       const winLabel = event.player_wins ? 'You win this round!' : 'Opponent takes this round!';
       const winColor = event.player_wins ? 'text-emerald-400' : 'text-crimson-400';
+      const authColor = (score: number) => score >= 7 ? 'text-emerald-400' : score >= 4 ? 'text-gold-400' : 'text-crimson-400';
 
       const div = document.createElement('div');
       div.className = 'text-center my-3';
@@ -312,7 +481,8 @@ import '../styles/global.css';
                 <div class="flex justify-between"><span class="text-obsidian-400">Shakespeare</span><span class="text-purple-400">${event.player_score.shakespeare}/10</span></div>
                 <div class="flex justify-between"><span class="text-obsidian-400">Flow</span><span class="text-purple-400">${event.player_score.flow}/10</span></div>
                 <div class="flex justify-between"><span class="text-obsidian-400">Wit</span><span class="text-purple-400">${event.player_score.wit}/10</span></div>
-                <div class="flex justify-between border-t border-obsidian-700 pt-0.5 mt-0.5"><span class="font-semibold">Total</span><span class="font-semibold text-purple-300">${event.player_score.total}/40</span></div>
+                <div class="flex justify-between"><span class="text-obsidian-400">Originality</span><span class="${authColor(event.player_score.authenticity)}">${event.player_score.authenticity}/10</span></div>
+                <div class="flex justify-between border-t border-obsidian-700 pt-0.5 mt-0.5"><span class="font-semibold">Total</span><span class="font-semibold text-purple-300">${event.player_score.total}/50</span></div>
               </div>
             </div>
             <div>
@@ -322,7 +492,8 @@ import '../styles/global.css';
                 <div class="flex justify-between"><span class="text-obsidian-400">Shakespeare</span><span class="text-gold-400">${event.opponent_score.shakespeare}/10</span></div>
                 <div class="flex justify-between"><span class="text-obsidian-400">Flow</span><span class="text-gold-400">${event.opponent_score.flow}/10</span></div>
                 <div class="flex justify-between"><span class="text-obsidian-400">Wit</span><span class="text-gold-400">${event.opponent_score.wit}/10</span></div>
-                <div class="flex justify-between border-t border-obsidian-700 pt-0.5 mt-0.5"><span class="font-semibold">Total</span><span class="font-semibold text-gold-300">${event.opponent_score.total}/40</span></div>
+                <div class="flex justify-between"><span class="text-obsidian-400">Originality</span><span class="${authColor(event.opponent_score.authenticity)}">${event.opponent_score.authenticity}/10</span></div>
+                <div class="flex justify-between border-t border-obsidian-700 pt-0.5 mt-0.5"><span class="font-semibold">Total</span><span class="font-semibold text-gold-300">${event.opponent_score.total}/50</span></div>
               </div>
             </div>
           </div>

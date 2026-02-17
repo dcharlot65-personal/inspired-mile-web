@@ -4,10 +4,12 @@ import WalletButton from '../components/WalletButton';
 interface Props {
   title: string;
   description?: string;
+  ogImage?: string;
 }
 
-const { title, description = 'Inspired Mile — Digital Collectible Cards Powered by AI and AR' } = Astro.props;
+const { title, description = 'Inspired Mile — Digital Collectible Cards Powered by AI and AR', ogImage = '/images/cards/sm-001.webp' } = Astro.props;
 const currentPath = Astro.url.pathname;
+const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
 ---
 
 <!DOCTYPE html>
@@ -23,17 +25,46 @@ const currentPath = Astro.url.pathname;
     <link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="32x32" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/manifest.json" />
+    <link rel="canonical" href={canonicalUrl} />
     <meta property="og:title" content={`${title} | Inspired Mile`} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="/images/cards/sm-001.webp" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={ogImage} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={`${title} | Inspired Mile`} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content="/images/cards/sm-001.webp" />
+    <meta name="twitter:image" content={ogImage} />
     <title>{title} | Inspired Mile</title>
     <script is:inline src="https://accounts.google.com/gsi/client" async defer></script>
     <script is:inline defer data-domain="inspiredmile.com" src="https://plausible.io/js/script.js"></script>
+    <script is:inline type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Inspired Mile",
+      "alternateName": "Sonnet Man",
+      "url": "https://sonnetman.inspiredmile.com",
+      "description": "Shakespeare-themed collectible card game with AI-judged poetry battles, classroom mode, and multiplayer arena.",
+      "applicationCategory": "GameApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "Inspired Mile"
+      },
+      "genre": ["Educational", "Card Game", "Literature"],
+      "audience": {
+        "@type": "EducationalAudience",
+        "educationalRole": "student",
+        "suggestedMinAge": 13
+      }
+    }
+    </script>
   </head>
   <body class="min-h-screen flex flex-col">
     <!-- Age Gate Modal -->
@@ -573,6 +604,7 @@ const currentPath = Astro.url.pathname;
           await googleSignInUser(response.credential);
           updateAuthUI();
           authDropdown.classList.add('hidden');
+          syncAgeTier();
           offerMigrationIfNeeded();
         } catch (e: any) {
           showError(e.body || e.message || 'Google sign-in failed');
@@ -612,6 +644,7 @@ const currentPath = Astro.url.pathname;
           await walletSignInUser(walletAddress, signature);
           updateAuthUI();
           authDropdown.classList.add('hidden');
+          syncAgeTier();
           offerMigrationIfNeeded();
         } catch (e: any) {
           showError(e.body || e.message || 'Wallet sign-in failed');
@@ -705,10 +738,26 @@ const currentPath = Astro.url.pathname;
         document.getElementById('migration-banner')?.classList.add('hidden');
       });
 
+      // --- Sync age tier to server ---
+      function syncAgeTier() {
+        const ageState = localStorage.getItem('inspired-mile-age-verified');
+        if (!ageState || !isLoggedIn()) return;
+        const tier = ageState === 'adult' ? 'adult' : ageState === 'teen-consented' ? 'teen' : null;
+        if (!tier) return;
+        // Fire-and-forget
+        fetch('/api/v1/credits/age-verify', {
+          method: 'POST',
+          credentials: 'include',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ age_tier: tier }),
+        }).catch(() => {});
+      }
+
       // --- Init ---
       initStorageBackend().then(() => {
         updateAuthUI();
         initGoogleSignIn();
+        syncAgeTier();
       });
 
       // Re-init Google after GIS script loads (it may load after our script)
@@ -826,6 +875,78 @@ const currentPath = Astro.url.pathname;
             }
           });
         }
+      })();
+    </script>
+
+    <!-- PWA Install Prompt -->
+    <div id="pwa-install-banner" class="fixed bottom-0 left-0 right-0 z-[150] bg-gradient-to-r from-gold-600 to-gold-500 text-obsidian-950 p-3 flex items-center justify-center gap-3 hidden shadow-lg">
+      <span class="text-sm font-medium">Install Inspired Mile for the best experience</span>
+      <button id="pwa-install-btn" class="px-4 py-1.5 bg-obsidian-900 text-gold-400 rounded-lg text-xs font-bold hover:bg-obsidian-800 transition-colors">Install</button>
+      <button id="pwa-dismiss-btn" class="text-obsidian-800 hover:text-obsidian-950 transition-colors">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+      </button>
+    </div>
+
+    <!-- Offline Indicator -->
+    <div id="offline-banner" class="fixed top-0 left-0 right-0 z-[180] bg-crimson-600 text-white text-center py-2 text-xs font-medium hidden">
+      You're offline — Collection and Trivia still work. Multiplayer requires internet.
+    </div>
+
+    <script is:inline>
+      // PWA Install Prompt
+      (function() {
+        var deferredPrompt = null;
+        var banner = document.getElementById('pwa-install-banner');
+        var dismissed = localStorage.getItem('im-install-dismissed');
+        if (dismissed) return;
+
+        window.addEventListener('beforeinstallprompt', function(e) {
+          e.preventDefault();
+          deferredPrompt = e;
+          if (window.innerWidth < 768) {
+            banner.classList.remove('hidden');
+          }
+        });
+
+        var installBtn = document.getElementById('pwa-install-btn');
+        if (installBtn) {
+          installBtn.addEventListener('click', function() {
+            if (deferredPrompt) {
+              deferredPrompt.prompt();
+              deferredPrompt.userChoice.then(function() {
+                deferredPrompt = null;
+                banner.classList.add('hidden');
+              });
+            }
+          });
+        }
+
+        var dismissBtn = document.getElementById('pwa-dismiss-btn');
+        if (dismissBtn) {
+          dismissBtn.addEventListener('click', function() {
+            localStorage.setItem('im-install-dismissed', '1');
+            banner.classList.add('hidden');
+          });
+        }
+      })();
+
+      // Offline detection
+      (function() {
+        var offlineBanner = document.getElementById('offline-banner');
+        function updateOnlineStatus() {
+          if (navigator.onLine) {
+            offlineBanner.classList.add('hidden');
+            document.body.style.paddingTop = '';
+            document.body.classList.remove('is-offline');
+          } else {
+            offlineBanner.classList.remove('hidden');
+            document.body.style.paddingTop = '32px';
+            document.body.classList.add('is-offline');
+          }
+        }
+        window.addEventListener('online', updateOnlineStatus);
+        window.addEventListener('offline', updateOnlineStatus);
+        updateOnlineStatus();
       })();
     </script>
   </body>

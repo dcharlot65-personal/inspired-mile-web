@@ -198,6 +198,98 @@ import '../styles/global.css';
     </div>
   </section>
 
+  <!-- Teacher Onboarding Wizard -->
+  <div id="teacher-wizard" class="fixed inset-0 z-[100] bg-obsidian-950/85 hidden items-center justify-center p-4">
+    <div class="card-glass max-w-md w-full p-6 bg-obsidian-900/95 backdrop-blur-xl border border-gold-500/20 rounded-2xl shadow-2xl">
+      <div class="flex items-center justify-between mb-4">
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded-lg bg-gold-500/10 border border-gold-500/20 flex items-center justify-center">
+            <svg class="w-4 h-4 text-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+          </div>
+          <span id="wizard-step" class="text-xs font-mono text-gold-500/60">Step 1 of 4</span>
+        </div>
+        <button id="wizard-skip" class="text-xs text-obsidian-500 hover:text-obsidian-300 transition-colors">Skip Tour</button>
+      </div>
+
+      <div id="wizard-content">
+        <!-- Step 1 -->
+        <div class="wizard-page" data-step="1">
+          <h3 class="font-display text-lg font-bold text-gold-300 mb-2">Create Your Classroom</h3>
+          <p class="text-sm text-obsidian-300 mb-3">Click "Create Classroom" and give it a name (e.g. "Period 3 ELA" or "Shakespeare 101"). Each classroom gets a unique 6-letter join code.</p>
+          <div class="card-glass p-3 bg-obsidian-800/50 rounded-lg text-center">
+            <span class="font-mono text-2xl tracking-widest text-gold-400">ABCDEF</span>
+            <p class="text-[10px] text-obsidian-500 mt-1">Example join code</p>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="wizard-page hidden" data-step="2">
+          <h3 class="font-display text-lg font-bold text-gold-300 mb-2">Share with Students</h3>
+          <p class="text-sm text-obsidian-300 mb-3">Give students the 6-letter code. They select "I'm a Student", confirm consent, and enter the code to join. No email required.</p>
+          <div class="flex gap-2 justify-center">
+            <div class="card-glass px-3 py-2 rounded-lg text-center">
+              <span class="text-xs text-obsidian-400">Write on board</span>
+            </div>
+            <div class="card-glass px-3 py-2 rounded-lg text-center">
+              <span class="text-xs text-obsidian-400">Share via LMS</span>
+            </div>
+            <div class="card-glass px-3 py-2 rounded-lg text-center">
+              <span class="text-xs text-obsidian-400">Print handout</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="wizard-page hidden" data-step="3">
+          <h3 class="font-display text-lg font-bold text-gold-300 mb-2">Assign Activities</h3>
+          <p class="text-sm text-obsidian-300 mb-3">Create assignments for your class: Shakespeare Trivia (knowledge checks), Quote Challenges (fill-in-the-blank), or Battle Arena (creative writing).</p>
+          <div class="space-y-2">
+            <div class="card-glass p-2 rounded-lg flex items-center gap-2">
+              <span class="text-emerald-400 text-xs w-16">Trivia</span>
+              <span class="text-xs text-obsidian-400">5 multiple-choice Shakespeare questions</span>
+            </div>
+            <div class="card-glass p-2 rounded-lg flex items-center gap-2">
+              <span class="text-purple-400 text-xs w-16">Challenge</span>
+              <span class="text-xs text-obsidian-400">Complete missing words in famous quotes</span>
+            </div>
+            <div class="card-glass p-2 rounded-lg flex items-center gap-2">
+              <span class="text-crimson-400 text-xs w-16">Battle</span>
+              <span class="text-xs text-obsidian-400">AI-judged Shakespearean rap battles</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="wizard-page hidden" data-step="4">
+          <h3 class="font-display text-lg font-bold text-gold-300 mb-2">Track Progress</h3>
+          <p class="text-sm text-obsidian-300 mb-3">View each student's completion status, scores, and earned cards. All data stays within the classroom — students see their own progress, you see everyone's.</p>
+          <div class="card-glass p-3 bg-obsidian-800/50 rounded-lg">
+            <div class="flex items-center justify-between text-xs mb-2">
+              <span class="text-obsidian-300">Student progress visibility</span>
+              <span class="text-emerald-400">FERPA compliant</span>
+            </div>
+            <div class="h-2 rounded-full bg-obsidian-700 overflow-hidden">
+              <div class="h-full bg-emerald-400 rounded-full" style="width: 75%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex items-center justify-between mt-5 pt-4 border-t border-obsidian-800">
+        <div class="flex gap-1.5">
+          <div class="wizard-dot w-2 h-2 rounded-full bg-gold-400" data-dot="1"></div>
+          <div class="wizard-dot w-2 h-2 rounded-full bg-obsidian-600" data-dot="2"></div>
+          <div class="wizard-dot w-2 h-2 rounded-full bg-obsidian-600" data-dot="3"></div>
+          <div class="wizard-dot w-2 h-2 rounded-full bg-obsidian-600" data-dot="4"></div>
+        </div>
+        <div class="flex gap-2">
+          <button id="wizard-prev" class="text-xs text-obsidian-500 hover:text-obsidian-300 transition-colors hidden">Back</button>
+          <button id="wizard-next" class="btn-primary text-xs px-4 py-2">Next</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script>
     import { createClassroom, listClassrooms, joinClassroom, listMembers, listAssignments, createAssignment } from '../lib/classroom';
     import type { Classroom } from '../lib/classroom';
@@ -248,6 +340,7 @@ import '../styles/global.css';
       localStorage.setItem(CONSENT_KEY, 'teacher');
       teacherConsent.classList.add('hidden');
       classroomActions.classList.remove('hidden');
+      startTeacherWizard();
     });
 
     // Student checkbox logic
@@ -455,6 +548,62 @@ import '../styles/global.css';
           openClassroom(id); // refresh
         } catch { /* */ }
       };
+    }
+
+    // --- Teacher Onboarding Wizard ---
+    const WIZARD_KEY = 'inspired-mile-teacher-wizard-done';
+
+    function startTeacherWizard() {
+      if (localStorage.getItem(WIZARD_KEY)) return;
+
+      const wizard = document.getElementById('teacher-wizard')!;
+      const pages = wizard.querySelectorAll('.wizard-page') as NodeListOf<HTMLElement>;
+      const dots = wizard.querySelectorAll('.wizard-dot') as NodeListOf<HTMLElement>;
+      const stepLabel = document.getElementById('wizard-step')!;
+      const prevBtn = document.getElementById('wizard-prev')!;
+      const nextBtn = document.getElementById('wizard-next')!;
+      let step = 1;
+
+      wizard.classList.remove('hidden');
+      wizard.classList.add('flex');
+
+      function showStep(n: number) {
+        step = n;
+        pages.forEach(p => p.classList.add('hidden'));
+        dots.forEach(d => d.classList.remove('bg-gold-400'));
+        dots.forEach(d => d.classList.add('bg-obsidian-600'));
+
+        const page = wizard.querySelector(`[data-step="${n}"]`) as HTMLElement;
+        if (page) page.classList.remove('hidden');
+        const dot = wizard.querySelector(`[data-dot="${n}"]`) as HTMLElement;
+        if (dot) { dot.classList.remove('bg-obsidian-600'); dot.classList.add('bg-gold-400'); }
+
+        stepLabel.textContent = `Step ${n} of 4`;
+        prevBtn.classList.toggle('hidden', n === 1);
+        nextBtn.textContent = n === 4 ? 'Get Started' : 'Next';
+      }
+
+      nextBtn.addEventListener('click', () => {
+        if (step >= 4) {
+          closeWizard();
+        } else {
+          showStep(step + 1);
+        }
+      });
+
+      prevBtn.addEventListener('click', () => {
+        if (step > 1) showStep(step - 1);
+      });
+
+      document.getElementById('wizard-skip')!.addEventListener('click', closeWizard);
+
+      function closeWizard() {
+        localStorage.setItem(WIZARD_KEY, '1');
+        wizard.classList.add('hidden');
+        wizard.classList.remove('flex');
+      }
+
+      showStep(1);
     }
 
     loadClassrooms();

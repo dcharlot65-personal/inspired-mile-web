@@ -260,6 +260,7 @@ async fn handle_socket(
                     opponent: room.get_opponent(claims.sub).map(|p| p.username.clone()).unwrap_or_default(),
                     round: room.current_round,
                     total_rounds: room.total_rounds,
+                    difficulty: room.difficulty.clone(),
                 };
                 let _ = ws_tx.lock().await.send(Message::Text(serde_json::to_string(&joined).unwrap().into())).await;
 
@@ -277,9 +278,11 @@ async fn handle_socket(
 
                 // If both players joined, broadcast round start (received by both via subscription)
                 if room.players.len() == 2 {
+                    room.start_round();
                     room.broadcast(ServerEvent::RoundStart {
                         round: room.current_round,
                         total_rounds: room.total_rounds,
+                        theme: room.theme.clone(),
                     });
                 }
             }
@@ -322,7 +325,23 @@ async fn handle_socket(
                     let s1 = &subs[0];
                     let s2 = &subs[1];
 
-                    let result = match judge::judge_battle(&s1.text, &s2.text, &config).await {
+                    // Build timing notes for AI authenticity detection
+                    let mut timing_notes = String::new();
+                    let s1_secs = s1.submitted_after.as_secs();
+                    let s2_secs = s2.submitted_after.as_secs();
+                    if s1.text.len() > 200 && s1_secs < 8 {
+                        timing_notes.push_str(&format!(
+                            "Note: Player 1 submitted {} chars in {} seconds (possible copy-paste). ", s1.text.len(), s1_secs
+                        ));
+                    }
+                    if s2.text.len() > 200 && s2_secs < 8 {
+                        timing_notes.push_str(&format!(
+                            "Note: Player 2 submitted {} chars in {} seconds (possible copy-paste). ", s2.text.len(), s2_secs
+                        ));
+                    }
+
+                    let difficulty = room.difficulty.clone();
+                    let result = match judge::judge_battle(&s1.text, &s2.text, &config, &difficulty, &timing_notes).await {
                         Ok(r) => r,
                         Err(_) => judge::judge_fallback(),
                     };
@@ -345,6 +364,7 @@ async fn handle_socket(
                             shakespeare: result.player1_score.shakespeare,
                             flow: result.player1_score.flow,
                             wit: result.player1_score.wit,
+                            authenticity: result.player1_score.authenticity,
                             total: result.player1_score.total,
                         },
                         opponent_score: AxisScores {
@@ -352,11 +372,19 @@ async fn handle_socket(
                             shakespeare: result.player2_score.shakespeare,
                             flow: result.player2_score.flow,
                             wit: result.player2_score.wit,
+                            authenticity: result.player2_score.authenticity,
                             total: result.player2_score.total,
                         },
                         player_wins: result.player1_wins,
                         reason: result.reason,
                     });
+
+                    // Warn if authenticity is suspiciously low
+                    if result.player1_score.authenticity < 4 || result.player2_score.authenticity < 4 {
+                        room.broadcast(ServerEvent::AuthenticityWarning {
+                            message: "A verse in this round may not be original. Battles are more fun when you write your own!".into(),
+                        });
+                    }
 
                     room.advance_round();
 
@@ -372,9 +400,11 @@ async fn handle_socket(
                             opponent_total: room.players.last().map(|p| p.score).unwrap_or(0),
                         });
                     } else {
+                        room.start_round();
                         room.broadcast(ServerEvent::RoundStart {
                             round: room.current_round,
                             total_rounds: room.total_rounds,
+                            theme: room.theme.clone(),
                         });
                     }
                 }

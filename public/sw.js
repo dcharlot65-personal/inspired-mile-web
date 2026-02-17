@@ -1,12 +1,17 @@
 /**
- * Service Worker — Cache-first static assets, network-first API.
+ * Service Worker v2 — Enhanced cache-first static assets, network-first API.
+ * Adds offline fallback page and broader pre-caching.
  */
 
-const CACHE_NAME = 'inspired-mile-v1';
+const CACHE_NAME = 'inspired-mile-v2';
 const STATIC_ASSETS = [
   '/',
   '/collection',
   '/battle',
+  '/playground',
+  '/about',
+  '/privacy',
+  '/terms',
   '/profile',
   '/fonts/inter-latin.woff2',
   '/favicon.svg',
@@ -14,10 +19,14 @@ const STATIC_ASSETS = [
   '/icon-512.png',
 ];
 
-// Install — pre-cache static assets
+const OFFLINE_PAGE = '/offline.html';
+
+// Install — pre-cache static assets + offline fallback
 self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => cache.addAll(STATIC_ASSETS))
+    caches.open(CACHE_NAME).then((cache) =>
+      cache.addAll([...STATIC_ASSETS, OFFLINE_PAGE])
+    )
   );
   self.skipWaiting();
 });
@@ -79,7 +88,7 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // Network-first for HTML pages
+  // Network-first for HTML pages, offline fallback if both fail
   event.respondWith(
     fetch(event.request)
       .then((response) => {
@@ -89,6 +98,33 @@ self.addEventListener('fetch', (event) => {
         }
         return response;
       })
-      .catch(() => caches.match(event.request))
+      .catch(() =>
+        caches.match(event.request).then((cached) => {
+          if (cached) return cached;
+          // Serve offline fallback for navigation requests
+          if (event.request.mode === 'navigate') {
+            return caches.match(OFFLINE_PAGE);
+          }
+          return new Response('Offline', { status: 503 });
+        })
+      )
   );
+});
+
+// On first visit to /collection, pre-cache card images
+self.addEventListener('message', (event) => {
+  if (event.data && event.data.type === 'CACHE_CARDS') {
+    const urls = event.data.urls || [];
+    caches.open(CACHE_NAME).then((cache) => {
+      urls.forEach((url) => {
+        cache.match(url).then((existing) => {
+          if (!existing) {
+            fetch(url).then((response) => {
+              if (response.ok) cache.put(url, response);
+            }).catch(() => {});
+          }
+        });
+      });
+    });
+  }
 });

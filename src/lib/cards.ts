@@ -5,7 +5,8 @@
 
 export type CardType = 'Character' | 'Relic' | 'Potion';
 export type Rarity = 'Common' | 'Uncommon' | 'Rare' | 'Epic' | 'Legendary';
-export type House = 'Montague' | 'Capulet' | 'Danish Court' | 'Forest of Arden' | 'Verona Court' | 'The Tempest' | 'Scottish Court' | 'Illyria' | 'Rome' | 'Legendary' | 'Relic' | 'Potion';
+export type House = 'Montague' | 'Capulet' | 'Danish Court' | 'Forest of Arden' | 'Verona Court' | 'The Tempest' | 'Scottish Court' | 'Illyria' | 'Rome' | 'Legendary' | 'Relic' | 'Potion' | 'Lake District' | 'Gothic Circle' | 'Olympus' | 'Underworld';
+export type LiteraryEra = 'shakespeare' | 'romantic' | 'mythology';
 
 export interface Card {
   id: string;
@@ -23,6 +24,8 @@ export interface Card {
   icon: string;
   scene: string;
   image?: string;
+  /** Literary era — defaults to 'shakespeare' if omitted */
+  era?: LiteraryEra;
 }
 
 export const CARD_CATALOG: Card[] = [
@@ -505,6 +508,204 @@ export const CARD_CATALOG: Card[] = [
     scene: 'A dusty apothecary shop in Mantua\'s poorest quarter. A desperate elixir glows amber in a cracked vial, potent enough to bridge the gap between life and death.',
     image: '/images/cards/pt-009.webp',
   },
+
+  // =========================================================================
+  // ERA EXPANSION: Romantic Poets
+  // =========================================================================
+
+  // --- Lake District (Wordsworth, Coleridge, Keats) ---
+  {
+    id: 'LD-001', name: 'William Wordsworth', house: 'Lake District', type: 'Character',
+    atk: 55, def: 85, hp: 90, rarity: 'Uncommon', element: 'Nature',
+    quote: 'I wandered lonely as a cloud that floats on high o\'er vales and hills.',
+    gradient: 'from-emerald-500/20 to-sky-500/20', border: 'border-emerald-500/30',
+    icon: '\u{1F33B}',
+    scene: 'A carpet of golden daffodils stretches along the shores of a still lake. Wordsworth walks among them, notebook in hand, the Cumberland fells rising behind him.',
+    era: 'romantic',
+  },
+  {
+    id: 'LD-002', name: 'Samuel Coleridge', house: 'Lake District', type: 'Character',
+    atk: 70, def: 70, hp: 80, rarity: 'Uncommon', element: 'Vision',
+    quote: 'Water, water, every where, nor any drop to drink.',
+    gradient: 'from-blue-500/20 to-gray-500/20', border: 'border-blue-700/30',
+    icon: '\u{1F30A}',
+    scene: 'A becalmed ship drifts on a painted ocean. The Ancient Mariner stares at the albatross around his neck as spectral figures rise from the glassy sea.',
+    era: 'romantic',
+  },
+  {
+    id: 'LD-003', name: 'John Keats', house: 'Lake District', type: 'Character',
+    atk: 65, def: 75, hp: 70, rarity: 'Rare', element: 'Beauty',
+    quote: 'A thing of beauty is a joy for ever: its loveliness increases.',
+    gradient: 'from-rose-500/20 to-amber-500/20', border: 'border-rose-500/30',
+    icon: '\u{1F33A}',
+    scene: 'A Hampstead garden in autumn. Keats sits beneath a plum tree, writing feverishly as a nightingale sings from the darkening branches above.',
+    era: 'romantic',
+  },
+
+  // --- Gothic Circle (Byron, Mary Shelley, Poe, Blake) ---
+  {
+    id: 'GC-001', name: 'Lord Byron', house: 'Gothic Circle', type: 'Character',
+    atk: 85, def: 60, hp: 80, rarity: 'Rare', element: 'Rebellion',
+    quote: 'She walks in beauty, like the night of cloudless climes and starry skies.',
+    gradient: 'from-violet-500/20 to-red-500/20', border: 'border-violet-500/30',
+    icon: '\u{1F525}',
+    scene: 'A Venetian palazzo at midnight. Byron stands on the balcony, cape billowing, gazing across the dark canal. A half-finished manuscript burns in the fireplace behind him.',
+    era: 'romantic',
+  },
+  {
+    id: 'GC-002', name: 'Mary Shelley', house: 'Gothic Circle', type: 'Character',
+    atk: 80, def: 75, hp: 85, rarity: 'Epic', element: 'Creation',
+    quote: 'Beware; for I am fearless, and therefore powerful.',
+    gradient: 'from-zinc-500/20 to-emerald-500/20', border: 'border-zinc-500/30',
+    icon: '\u{26A1}',
+    scene: 'A candlelit study in Geneva during a thunderstorm. Mary writes by lightning flash as the creature stirs in the shadows behind her. Science and horror become one.',
+    era: 'romantic',
+  },
+  {
+    id: 'GC-003', name: 'Edgar Allan Poe', house: 'Gothic Circle', type: 'Character',
+    atk: 75, def: 65, hp: 75, rarity: 'Rare', element: 'Darkness',
+    quote: 'Once upon a midnight dreary, while I pondered, weak and weary.',
+    gradient: 'from-gray-500/20 to-purple-500/20', border: 'border-gray-700/30',
+    icon: '\u{1F426}',
+    scene: 'A dim chamber lit by a dying fire. Poe sits hunched at his desk as a raven alights on the bust of Pallas. The word "Nevermore" echoes in the shadows.',
+    era: 'romantic',
+  },
+  {
+    id: 'GC-004', name: 'William Blake', house: 'Gothic Circle', type: 'Character',
+    atk: 70, def: 80, hp: 85, rarity: 'Rare', element: 'Prophecy',
+    quote: 'To see a World in a Grain of Sand and a Heaven in a Wild Flower.',
+    gradient: 'from-amber-500/20 to-indigo-500/20', border: 'border-amber-500/30',
+    icon: '\u{1F31F}',
+    scene: 'A London printing workshop ablaze with visionary light. Blake etches a tiger into copper as the beast materializes from the plate, burning bright in the forests of the night.',
+    era: 'romantic',
+  },
+
+  // --- Romantic-era Relics & Potions ---
+  {
+    id: 'GC-005', name: 'Percy Bysshe Shelley', house: 'Gothic Circle', type: 'Character',
+    atk: 75, def: 70, hp: 75, rarity: 'Epic', element: 'Revolution',
+    quote: 'If Winter comes, can Spring be far behind?',
+    gradient: 'from-sky-500/20 to-red-500/20', border: 'border-sky-500/30',
+    icon: '\u{1F343}',
+    scene: 'A windswept Italian clifftop. Shelley faces the storm, arms wide, as the west wind tears pages from his notebook and scatters them across the Mediterranean.',
+    era: 'romantic',
+  },
+  {
+    id: 'LD-004', name: 'Elizabeth Barrett Browning', house: 'Lake District', type: 'Character',
+    atk: 60, def: 80, hp: 85, rarity: 'Uncommon', element: 'Devotion',
+    quote: 'How do I love thee? Let me count the ways.',
+    gradient: 'from-rose-500/20 to-purple-500/20', border: 'border-rose-500/30',
+    icon: '\u{1F4DC}',
+    scene: 'A sunlit room in Florence. Elizabeth writes at a window overlooking the Arno, her spaniel at her feet. Love letters from Robert lie open on the desk.',
+    era: 'romantic',
+  },
+  {
+    id: 'LD-005', name: 'Christina Rossetti', house: 'Lake District', type: 'Character',
+    atk: 50, def: 75, hp: 70, rarity: 'Common', element: 'Sorrow',
+    quote: 'Remember me when I am gone away, gone far away into the silent land.',
+    gradient: 'from-slate-500/20 to-rose-500/20', border: 'border-slate-500/30',
+    icon: '\u{1F54A}',
+    scene: 'A Pre-Raphaelite garden in fading autumn light. Christina sits among fallen leaves, composing verses that ache with beauty and quiet resignation.',
+    era: 'romantic',
+  },
+
+  // =========================================================================
+  // ERA EXPANSION: Greek Mythology
+  // =========================================================================
+
+  // --- Olympus ---
+  {
+    id: 'OL-001', name: 'Zeus', house: 'Olympus', type: 'Character',
+    atk: 95, def: 85, hp: 100, rarity: 'Legendary', element: 'Thunder',
+    quote: 'I am the cloud-gatherer, lord of the wide heavens.',
+    gradient: 'from-gold-500/20 to-blue-500/20', border: 'border-gold-500/40',
+    icon: '\u{26A1}',
+    scene: 'Mount Olympus splits the sky. Zeus sits on a throne of clouds, lightning arcing between his fingers. Below, the mortal world trembles at his gaze.',
+    era: 'mythology',
+  },
+  {
+    id: 'OL-002', name: 'Athena', house: 'Olympus', type: 'Character',
+    atk: 85, def: 90, hp: 90, rarity: 'Epic', element: 'Wisdom',
+    quote: 'The owl of wisdom takes flight only at dusk.',
+    gradient: 'from-amber-500/20 to-gray-500/20', border: 'border-amber-500/30',
+    icon: '\u{1F989}',
+    scene: 'The Parthenon gleams in golden light. Athena stands in full armor, her owl perched on her shield, her grey eyes seeing through every mortal deception.',
+    era: 'mythology',
+  },
+  {
+    id: 'OL-003', name: 'Apollo', house: 'Olympus', type: 'Character',
+    atk: 80, def: 70, hp: 85, rarity: 'Uncommon', element: 'Light',
+    quote: 'I am the god of song, of healing, and of the radiant sun.',
+    gradient: 'from-yellow-500/20 to-orange-500/20', border: 'border-yellow-500/30',
+    icon: '\u{2600}',
+    scene: 'A golden chariot races across the dawn sky. Apollo plays his lyre as sunlight pours from the wheels, painting the world in color.',
+    era: 'mythology',
+  },
+  {
+    id: 'OL-004', name: 'Aphrodite', house: 'Olympus', type: 'Character',
+    atk: 60, def: 80, hp: 85, rarity: 'Uncommon', element: 'Love',
+    quote: 'Even the gods cannot resist the power of love.',
+    gradient: 'from-pink-500/20 to-rose-500/20', border: 'border-pink-500/30',
+    icon: '\u{1F338}',
+    scene: 'The shores of Cyprus at dawn. Aphrodite rises from sea foam, doves circling above as waves lay pearls at her feet. The world holds its breath.',
+    era: 'mythology',
+  },
+  {
+    id: 'OL-005', name: 'Hermes', house: 'Olympus', type: 'Character',
+    atk: 75, def: 65, hp: 70, rarity: 'Uncommon', element: 'Speed',
+    quote: 'Swift as thought, I carry the words of gods to mortal ears.',
+    gradient: 'from-cyan-500/20 to-amber-500/20', border: 'border-cyan-500/30',
+    icon: '\u{1F4E8}',
+    scene: 'A blur of winged sandals across the sky. Hermes weaves between thunderbolts, a divine message clutched in one hand and a thief\'s grin on his face.',
+    era: 'mythology',
+  },
+
+  // --- Underworld ---
+  {
+    id: 'UW-001', name: 'Hades', house: 'Underworld', type: 'Character',
+    atk: 90, def: 80, hp: 95, rarity: 'Rare', element: 'Death',
+    quote: 'All souls come to me in the end. I am patient.',
+    gradient: 'from-zinc-500/20 to-purple-500/20', border: 'border-zinc-700/30',
+    icon: '\u{1F480}',
+    scene: 'The throne room of the Underworld, lit by rivers of pale fire. Hades sits with Cerberus at his feet, his helm of darkness on the armrest. The dead file past in endless silence.',
+    era: 'mythology',
+  },
+  {
+    id: 'UW-002', name: 'Persephone', house: 'Underworld', type: 'Character',
+    atk: 70, def: 85, hp: 90, rarity: 'Epic', element: 'Rebirth',
+    quote: 'Six seeds I ate, and bound myself between two worlds forever.',
+    gradient: 'from-emerald-500/20 to-purple-500/20', border: 'border-emerald-500/30',
+    icon: '\u{1F33E}',
+    scene: 'A throne split between spring and shadow. Persephone holds a pomegranate in one hand and a crown of flowers in the other, queen of two realms.',
+    era: 'mythology',
+  },
+  {
+    id: 'OL-006', name: 'Odysseus', house: 'Olympus', type: 'Character',
+    atk: 80, def: 75, hp: 85, rarity: 'Rare', element: 'Cunning',
+    quote: 'Tell me, O Muse, of the man of many ways, who wandered far.',
+    gradient: 'from-teal-500/20 to-amber-500/20', border: 'border-teal-500/30',
+    icon: '\u{1F6A2}',
+    scene: 'A storm-battered ship rounds a rocky headland. Odysseus lashes himself to the mast as the Sirens sing from the cliffs. His eyes burn with the memory of Ithaca.',
+    era: 'mythology',
+  },
+  {
+    id: 'UW-003', name: 'Medusa', house: 'Underworld', type: 'Character',
+    atk: 85, def: 60, hp: 75, rarity: 'Rare', element: 'Petrification',
+    quote: 'Look upon me, if you dare. My gaze is the last thing you will see.',
+    gradient: 'from-green-500/20 to-stone-500/20', border: 'border-green-700/30',
+    icon: '\u{1F40D}',
+    scene: 'A ruined temple at the edge of the world. Medusa turns, her serpent hair hissing. Stone warriors litter the floor, frozen in their final charge.',
+    era: 'mythology',
+  },
+  {
+    id: 'OL-007', name: 'Achilles', house: 'Olympus', type: 'Character',
+    atk: 95, def: 50, hp: 80, rarity: 'Rare', element: 'Glory',
+    quote: 'I would rather live a short life of glory than a long life forgotten.',
+    gradient: 'from-red-500/20 to-gold-500/20', border: 'border-red-500/30',
+    icon: '\u{1F6E1}',
+    scene: 'The plains of Troy at dawn. Achilles charges in blazing armor, his war cry splitting the air. Behind him, Greek ships burn on the shore.',
+    era: 'mythology',
+  },
 ];
 
 export const RARITY_COLORS: Record<Rarity, string> = {
@@ -524,6 +725,11 @@ export const RARITY_WEIGHTS: Record<Rarity, number> = {
   Legendary: 1,
 };
 
+/** Get the literary era for a card (defaults to 'shakespeare') */
+export function getCardEra(card: Card): LiteraryEra {
+  return card.era || 'shakespeare';
+}
+
 export function getCardById(id: string): Card | undefined {
   return CARD_CATALOG.find(c => c.id === id);
 }
@@ -539,6 +745,16 @@ export function getCardsByHouse(house: House): Card[] {
 export function getCardsByRarity(rarity: Rarity): Card[] {
   return CARD_CATALOG.filter(c => c.rarity === rarity);
 }
+
+export function getCardsByEra(era: LiteraryEra): Card[] {
+  return CARD_CATALOG.filter(c => getCardEra(c) === era);
+}
+
+export const ERA_LABELS: Record<LiteraryEra, string> = {
+  shakespeare: 'Shakespeare',
+  romantic: 'Romantic Poets',
+  mythology: 'Greek Mythology',
+};
 
 /** Pick a random card weighted by rarity */
 export function drawRandomCard(): Card {

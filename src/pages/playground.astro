@@ -23,7 +23,7 @@ import { CARD_CATALOG, RARITY_COLORS, type Card, type Rarity } from '../lib/card
       </div>
 
       <!-- Player Stats Bar -->
-      <div class="card-glass p-4 mb-10 flex flex-wrap items-center justify-between gap-4">
+      <div class="card-glass p-4 mb-4 flex flex-wrap items-center justify-between gap-4">
         <div class="flex items-center gap-6 text-sm">
           <div>
             <span class="text-xs text-obsidian-500 block">Cards Owned</span>
@@ -42,6 +42,17 @@ import { CARD_CATALOG, RARITY_COLORS, type Card, type Rarity } from '../lib/card
           </div>
         </div>
         <a href="/collection" class="btn-secondary text-xs">View Collection</a>
+      </div>
+
+      <!-- Spending Limit Banner (teen users only) -->
+      <div id="spending-limit-banner" class="hidden card-glass p-3 mb-6 border-gold-500/20 bg-gold-500/5 flex items-center justify-between gap-3">
+        <div class="flex items-center gap-2 text-xs">
+          <svg class="w-4 h-4 text-gold-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <span class="text-obsidian-300">Daily spending: <strong id="spent-today" class="text-gold-400">0</strong> / <strong class="text-gold-400">200</strong> credits</span>
+        </div>
+        <div class="h-1.5 flex-1 max-w-[120px] rounded-full bg-obsidian-800 overflow-hidden">
+          <div id="spending-bar" class="h-full rounded-full bg-gold-400 transition-all duration-300" style="width: 0%"></div>
+        </div>
       </div>
 
       <!-- Acquisition Grid -->
@@ -287,6 +298,34 @@ import { CARD_CATALOG, RARITY_COLORS, type Card, type Rarity } from '../lib/card
     import { incrementStat, syncCardStats, getPlayerStats } from '../lib/achievements';
     import { getUniqueOwnedCount, getOwnedCards, getOwnedCardIds } from '../lib/inventory';
     import { awardRandomVariant, CITY_CATALOG } from '../lib/variants';
+
+    // --- Spending limit check (teen users) ---
+    async function checkSpendingLimits() {
+      try {
+        const res = await fetch('/api/v1/credits/limits', { credentials: 'include' });
+        if (!res.ok) return;
+        const data = await res.json();
+        if (data.daily_limit !== null) {
+          const banner = document.getElementById('spending-limit-banner');
+          const spentEl = document.getElementById('spent-today');
+          const bar = document.getElementById('spending-bar');
+          if (banner && spentEl && bar) {
+            banner.classList.remove('hidden');
+            spentEl.textContent = String(data.spent_today);
+            const pct = Math.min(100, (data.spent_today / data.daily_limit) * 100);
+            bar.style.width = `${pct}%`;
+            if (pct >= 100) {
+              bar.classList.remove('bg-gold-400');
+              bar.classList.add('bg-crimson-400');
+            } else if (pct >= 75) {
+              bar.classList.remove('bg-gold-400');
+              bar.classList.add('bg-orange-400');
+            }
+          }
+        }
+      } catch { /* not logged in or server unreachable */ }
+    }
+    checkSpendingLimits();
 
     // Start playground music on first interaction
     document.addEventListener('click', () => {
