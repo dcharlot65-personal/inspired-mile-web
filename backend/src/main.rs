@@ -7,7 +7,6 @@ mod inventory;
 mod marketplace;
 mod migration;
 mod multiplayer;
-mod nft;
 mod rate_limit;
 mod referral;
 mod seasons;
@@ -60,15 +59,6 @@ async fn main() {
         tournaments::scheduler::run_scheduler(scheduler_pool, scheduler_rooms).await;
     });
 
-    // Start wallet nonce cleanup background task
-    let nonce_pool = pool.clone();
-    tokio::spawn(async move {
-        loop {
-            tokio::time::sleep(std::time::Duration::from_secs(300)).await;
-            auth::cleanup_expired_nonces(&nonce_pool).await;
-        }
-    });
-
     // Start room cleanup background task
     let cleanup_rooms = rooms.clone();
     tokio::spawn(async move {
@@ -85,7 +75,6 @@ async fn main() {
     let public_routes = Router::new()
         .route("/health", get(|| async { "ok" }))
         .nest("/auth", auth::router())
-        .nest("/nft", nft::router())
         .nest("/stats", stats::public_router());
 
     // Protected routes (auth required)

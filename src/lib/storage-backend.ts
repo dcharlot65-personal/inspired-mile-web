@@ -89,12 +89,6 @@ export async function googleSignInUser(idToken: string): Promise<UserResponse> {
   return user;
 }
 
-export async function walletSignInUser(walletAddress: string, signature: string): Promise<UserResponse> {
-  const { user } = await api.walletSignIn(walletAddress, signature);
-  activateServerMode(user);
-  return user;
-}
-
 export async function logoutUser(): Promise<void> {
   try {
     await api.logout();

@@ -171,8 +171,7 @@ import { ACHIEVEMENTS } from '../lib/achievements';
         avatarEl.innerHTML = `<img src="${user.avatar_url}" alt="${user.username}" class="w-16 h-16 rounded-full object-cover" />`;
       }
       document.getElementById('player-name')!.textContent = user.display_name || user.username;
-      const provider = user.auth_provider === 'google' ? 'Google' : user.auth_provider === 'wallet' ? 'Solana Wallet' : user.auth_provider;
-      document.getElementById('player-auth')!.textContent = `Signed in via ${provider}`;
+      document.getElementById('player-auth')!.textContent = `Signed in via Google`;
     }
 
     // --- Stats ---

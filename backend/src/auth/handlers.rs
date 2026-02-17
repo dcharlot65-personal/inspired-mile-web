@@ -12,7 +12,6 @@ use uuid::Uuid;
 
 use super::google;
 use super::jwt::{create_token, Claims};
-use super::wallet;
 use crate::config::Config;
 
 const COOKIE_NAME: &str = "im_token";
@@ -26,29 +25,12 @@ pub struct GoogleSignInRequest {
     id_token: String,
 }
 
-#[derive(Deserialize)]
-pub struct WalletNonceRequest {
-    wallet_address: String,
-}
-
-#[derive(Serialize)]
-pub struct NonceResponse {
-    message: String,
-}
-
-#[derive(Deserialize)]
-pub struct WalletSignInRequest {
-    wallet_address: String,
-    signature: String,
-}
-
 #[derive(Serialize)]
 pub struct UserResponse {
     id: Uuid,
     username: String,
     email: Option<String>,
     display_name: Option<String>,
-    wallet_address: Option<String>,
     auth_provider: String,
     avatar_url: Option<String>,
 }
@@ -67,8 +49,6 @@ pub struct AuthResponse {
 pub fn router() -> Router<(PgPool, Config)> {
     Router::new()
         .route("/google", post(google_sign_in))
-        .route("/wallet/nonce", post(wallet_nonce))
-        .route("/wallet/verify", post(wallet_sign_in))
         .route("/logout", post(logout))
         .route("/me", get(me))
 }
@@ -94,7 +74,7 @@ async fn google_sign_in(
 
     // Look up existing user by google_id
     let existing = sqlx::query(
-        "SELECT id, username, email, display_name, wallet_address, auth_provider, avatar_url
+        "SELECT id, username, email, display_name, auth_provider, avatar_url
          FROM users WHERE google_id = $1",
     )
     .bind(&info.sub)
@@ -119,7 +99,7 @@ async fn google_sign_in(
     let row = sqlx::query(
         "INSERT INTO users (username, email, display_name, google_id, google_email, avatar_url, auth_provider)
          VALUES ($1, $2, $3, $4, $5, $6, 'google')
-         RETURNING id, username, email, display_name, wallet_address, auth_provider, avatar_url",
+         RETURNING id, username, email, display_name, auth_provider, avatar_url",
     )
     .bind(&unique_username)
     .bind(&info.email)
@@ -148,89 +128,7 @@ async fn google_sign_in(
 }
 
 // ---------------------------------------------------------------------------
-// Wallet Sign-In (nonce + verify)
-// ---------------------------------------------------------------------------
-
-async fn wallet_nonce(
-    State((pool, _)): State<(PgPool, Config)>,
-    Json(body): Json<WalletNonceRequest>,
-) -> Result<Json<NonceResponse>, (StatusCode, String)> {
-    if body.wallet_address.len() < 32 || body.wallet_address.len() > 44 {
-        return Err((StatusCode::BAD_REQUEST, "Invalid wallet address".into()));
-    }
-
-    let message = wallet::create_nonce(&pool, &body.wallet_address)
-        .await
-        .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, e))?;
-
-    Ok(Json(NonceResponse { message }))
-}
-
-async fn wallet_sign_in(
-    State((pool, config)): State<(PgPool, Config)>,
-    Json(body): Json<WalletSignInRequest>,
-) -> Result<(CookieJar, Json<AuthResponse>), (StatusCode, String)> {
-    wallet::verify_wallet_signature(&pool, &body.wallet_address, &body.signature)
-        .await
-        .map_err(|e| (StatusCode::UNAUTHORIZED, e))?;
-
-    // Look up existing user by wallet_address
-    let existing = sqlx::query(
-        "SELECT id, username, email, display_name, wallet_address, auth_provider, avatar_url
-         FROM users WHERE wallet_address = $1",
-    )
-    .bind(&body.wallet_address)
-    .fetch_optional(&pool)
-    .await
-    .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?;
-
-    if let Some(row) = existing {
-        let user_id: Uuid = row.get("id");
-        let username: String = row.get("username");
-        let token = create_token(user_id, &username, &config.jwt_secret)
-            .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, e))?;
-        let jar = CookieJar::new().add(build_cookie(token));
-        return Ok((jar, Json(AuthResponse { user: row_to_user(&row), founding_player: None })));
-    }
-
-    // New user from wallet
-    let short_addr = &body.wallet_address[..8.min(body.wallet_address.len())];
-    let unique_username = ensure_unique_username(&pool, short_addr).await?;
-    let display_name = format!(
-        "{}...{}",
-        &body.wallet_address[..4],
-        &body.wallet_address[body.wallet_address.len().saturating_sub(4)..]
-    );
-
-    let row = sqlx::query(
-        "INSERT INTO users (username, display_name, wallet_address, wallet_linked_at, auth_provider)
-         VALUES ($1, $2, $3, NOW(), 'wallet')
-         RETURNING id, username, email, display_name, wallet_address, auth_provider, avatar_url",
-    )
-    .bind(&unique_username)
-    .bind(&display_name)
-    .bind(&body.wallet_address)
-    .fetch_one(&pool)
-    .await
-    .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?;
-
-    let user_id: Uuid = row.get("id");
-
-    sqlx::query("INSERT INTO player_stats (user_id) VALUES ($1) ON CONFLICT DO NOTHING")
-        .bind(user_id)
-        .execute(&pool)
-        .await
-        .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("Failed to init stats: {e}")))?;
-
-    let token = create_token(user_id, &unique_username, &config.jwt_secret)
-        .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, e))?;
-    let jar = CookieJar::new().add(build_cookie(token));
-
-    Ok((jar, Json(AuthResponse { user: row_to_user(&row), founding_player: None })))
-}
-
-// ---------------------------------------------------------------------------
-// Logout + Me (mostly unchanged)
+// Logout + Me
 // ---------------------------------------------------------------------------
 
 async fn logout() -> CookieJar {
@@ -247,7 +145,7 @@ async fn me(
     State((pool, config)): State<(PgPool, Config)>,
 ) -> Result<Json<AuthResponse>, (StatusCode, String)> {
     let row = sqlx::query(
-        "SELECT id, username, email, display_name, wallet_address, auth_provider, avatar_url, created_at
+        "SELECT id, username, email, display_name, auth_provider, avatar_url, created_at
          FROM users WHERE id = $1",
     )
     .bind(claims.sub)
@@ -289,7 +187,6 @@ fn row_to_user(row: &sqlx::postgres::PgRow) -> UserResponse {
         username: row.get("username"),
         email: row.get("email"),
         display_name: row.get("display_name"),
-        wallet_address: row.get("wallet_address"),
         auth_provider: row.get("auth_provider"),
         avatar_url: row.get("avatar_url"),
     }

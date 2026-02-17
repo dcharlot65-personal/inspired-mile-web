@@ -4,14 +4,10 @@
  */
 
 export type AcquisitionSource = 'starter' | 'daily' | 'pack' | 'battle' | 'trivia' | 'challenge' | 'purchase';
-export type CardOwnershipState = 'owned' | 'minted'; // 'minted' = on-chain NFT (future)
-
 export interface OwnedCard {
   cardId: string;
   acquiredAt: number; // timestamp
   source: AcquisitionSource;
-  state: CardOwnershipState;
-  mintAddress?: string; // Solana address if minted (future)
 }
 
 export interface InventoryData {

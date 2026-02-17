@@ -35,7 +35,7 @@ export class ApiError extends Error {
 }
 
 // ---------------------------------------------------------------------------
-// Auth (Google + Wallet)
+// Auth (Google)
 // ---------------------------------------------------------------------------
 
 export interface UserResponse {
@@ -43,7 +43,6 @@ export interface UserResponse {
   username: string;
   email: string | null;
   display_name: string | null;
-  wallet_address: string | null;
   auth_provider: string;
   avatar_url: string | null;
 }
@@ -56,20 +55,6 @@ export async function googleSignIn(idToken: string): Promise<AuthResponse> {
   return request('/auth/google', {
     method: 'POST',
     body: JSON.stringify({ id_token: idToken }),
-  });
-}
-
-export async function requestWalletNonce(walletAddress: string): Promise<{ message: string }> {
-  return request('/auth/wallet/nonce', {
-    method: 'POST',
-    body: JSON.stringify({ wallet_address: walletAddress }),
-  });
-}
-
-export async function walletSignIn(walletAddress: string, signature: string): Promise<AuthResponse> {
-  return request('/auth/wallet/verify', {
-    method: 'POST',
-    body: JSON.stringify({ wallet_address: walletAddress, signature }),
   });
 }
 

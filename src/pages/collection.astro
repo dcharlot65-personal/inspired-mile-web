@@ -92,13 +92,6 @@ import { CARD_CATALOG, RARITY_COLORS } from '../lib/cards';
                 </div>
               </div>
 
-              <!-- Mint badge (future, shown on minted cards) -->
-              <div class="mint-badge absolute bottom-3 right-3 hidden items-center gap-1 text-xs text-emerald-400/80 bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20">
-                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                On-chain
-              </div>
             </div>
 
             <!-- Card Info -->
@@ -265,8 +258,6 @@ import { CARD_CATALOG, RARITY_COLORS } from '../lib/cards';
     import { hasARModel, getARModel, isARLikelySupported } from '../lib/ar-viewer';
     import { CHARACTER_ABILITIES, ITEM_EFFECTS, getActiveSynergies, DECK_RULES, type Deck } from '../lib/battle-rules';
     import { getSavedDecks, saveDeck, deleteDeck, setActiveDeck, getActiveDeckName } from '../lib/deck-manager';
-    import { mintCardAsNFT } from '../lib/nft-mint';
-    import { isConnected as isWalletConnected, getWalletAdapter } from '../lib/wallet';
 
     // Start browse music on first interaction
     document.addEventListener('click', () => {
@@ -557,7 +548,6 @@ import { CARD_CATALOG, RARITY_COLORS } from '../lib/cards';
           <p class="mt-4 text-sm text-obsidian-400 italic">"${card.quote}"</p>
           <p class="mt-2 text-xs text-obsidian-500 leading-relaxed">${card.scene}</p>
           <button class="mt-4 btn-secondary text-xs w-full" id="modal-add-to-deck">Add to Deck</button>
-          ${ownedIds.has(cardId) ? '<button class="mt-2 btn-secondary text-xs w-full border-emerald-500/30 text-emerald-300 hover:bg-emerald-500/10" id="modal-mint-nft">Mint as NFT</button>' : ''}
         </div>`;
 
       modal.classList.remove('hidden');
@@ -571,29 +561,6 @@ import { CARD_CATALOG, RARITY_COLORS } from '../lib/cards';
         closeModal();
       });
 
-      // Mint-as-NFT button
-      document.getElementById('modal-mint-nft')?.addEventListener('click', async () => {
-        if (!isWalletConnected()) {
-          (window as any).showToast('Connect your wallet first using the wallet button in the header.', 'warning');
-          return;
-        }
-        const adapter = getWalletAdapter();
-        if (!adapter) {
-          (window as any).showToast('Wallet adapter not available. Please reconnect your wallet.', 'warning');
-          return;
-        }
-        const btn = document.getElementById('modal-mint-nft') as HTMLButtonElement;
-        btn.textContent = 'Minting...';
-        btn.disabled = true;
-        const result = await mintCardAsNFT(card, adapter);
-        if (result.success) {
-          btn.textContent = 'Minted!';
-          btn.classList.add('border-emerald-500/50', 'bg-emerald-500/10');
-        } else {
-          btn.textContent = result.error || 'Mint Failed';
-          setTimeout(() => { btn.textContent = 'Mint as NFT'; btn.disabled = false; }, 3000);
-        }
-      });
     }
 
     function closeModal() {
