@@ -40,6 +40,7 @@ jobs:
           ssh -i ~/.ssh/deploy_key "${EC2_USER}@${EC2_HOST}" "mkdir -p /Volumes/DataVolume/inspired-mile-web"
 
           rsync -az --delete \
+            --exclude='backend/' \
             -e "ssh -i ~/.ssh/deploy_key" \
             dist/ "${EC2_USER}@${EC2_HOST}:/Volumes/DataVolume/inspired-mile-web/"
 
