@@ -70,7 +70,6 @@ jobs:
             cargo build --release 2>&1
             pkill -f inspired-mile-api 2>/dev/null || true
             sleep 2
-            source .env
             nohup ./target/release/inspired-mile-api > /tmp/inspired-mile-api.log 2>&1 &
             disown
           "'
