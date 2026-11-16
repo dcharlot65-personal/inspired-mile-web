@@ -11,8 +11,14 @@
  *   judge = this side's share of JUDGE_POOL, from comparing the two verses
  *
  * A verse that is empty, too thin to be a verse (text.ts `substance`) or taken
- * from the other side's verse (text.ts `similarity`) is void: it lands nothing
- * and its craft is 0. A player's copied verse also forfeits the judge.
+ * from the other side's verse (text.ts `copyOf`) is void: it lands nothing and
+ * its craft is 0. A player's copied verse also forfeits the judge.
+ *
+ * Form points scale with the share of the verse that is words of its language
+ * (FormScore.scale), and the multiplier's bonuses with what the verse says
+ * beyond the words that land its device and signature (VerseScore.substance),
+ * so tokens laid out in a form's shape, or a chant that is only its device,
+ * cannot multiply themselves into a winning score.
  *
  * Everything in this file is pure and seeded: the same seed, deck and verses
  * always produce the same plan and the same scores. No randomness is applied
@@ -35,7 +41,7 @@ import {
 } from './devices';
 import { formsFor, scoreForm, type Form, type FormContext, type FormScore } from './forms';
 import { getPack } from './packs';
-import { cleanVerse, similarity, wordsOf } from './text';
+import { cleanVerse, copyOf, ownContent, wordsOf } from './text';
 
 export const ROUNDS = 3;
 export const START_INK = 2;
@@ -44,8 +50,24 @@ export const RELIC_COST = 1;
 export const POTION_COST = 1;
 /** Points the judge shares between the two verses each round. */
 export const JUDGE_POOL = 24;
-/** A verse this similar to the other side's (text.ts `similarity`) is a copy, not an answer. */
-export const COPY_THRESHOLD = 0.5;
+/**
+ * A verse is a copy, not an answer, when at least COPY_THRESHOLD of its content words follow
+ * the other side's verse in order (text.ts `copyOf`), and either more than three of them do
+ * (COPY_MIN_TAKEN: the Riposte asks for two or three thrown back) or the verse has no
+ * content word of its own. A verse with too few content words to tell is measured on all
+ * its words, the little ones too, by the same rule: a short verse retouched until one
+ * content word is left is still the other's verse. Set from measurement (review.test.ts,
+ * finding 24): see docs/language/RULES-MEASUREMENTS.md for the lowest mechanical copy and
+ * the highest honest pair in each language.
+ */
+export const COPY_THRESHOLD = 0.7;
+/**
+ * Content words of its own, beyond those that land its device and signature, that a verse
+ * needs per line its form asks for before its multiplier's bonuses apply in full (scoreVerse).
+ * Measured in review.test.ts (finding 25) against the bank's honest verses.
+ */
+export const OWN_WORDS_PER_LINE = 1.5;
+export const COPY_MIN_TAKEN = 4;
 
 export interface DuelDeck {
   characters: string[];
@@ -117,6 +139,11 @@ export interface VerseScore {
   powerWords?: { used: string[]; met: boolean; bonus: number };
   /** The curse by id; its name is the message `curse.<id>.name`. */
   curse?: { id: string; violations: number; penalty: number };
+  /**
+   * How far the multiplier's bonuses apply, from 0 to 1: the verse's own content words beyond
+   * those that land its device and signature, one a line the form asks for (text.ts ownContent).
+   */
+  substance: number;
   craft: number;
   /**
    * Set when the verse earns nothing: it is empty, too thin to be a verse, or
@@ -318,16 +345,28 @@ export interface ScoreInput {
 
 const CHARACTER_NAMES = invocationNames(CARD_CATALOG.filter((c) => c.type === 'Character').map((c) => c.name));
 
+/** Is `verse` a copy of `answered` (see COPY_THRESHOLD)? */
+export function isCopy(verse: string, answered: string, lang: string): boolean {
+  if (!answered) return false;
+  const rule = (c: ReturnType<typeof copyOf>) => c.share >= COPY_THRESHOLD && (c.taken >= COPY_MIN_TAKEN || (c.own === 0 && c.taken >= 2));
+  const content = copyOf(verse, answered, lang);
+  if (rule(content)) return true;
+  // Too few content words taken to tell: every word counts, the little ones too.
+  return content.taken < COPY_MIN_TAKEN && rule(copyOf(verse, answered, lang, { all: true }));
+}
+
 /** Why a verse earns nothing, or undefined when it is a verse of the writer's own. */
 function voidReason(verse: string, form: FormScore, lang: string, answered: string): VerseScore['voided'] {
   if (!verse || !wordsOf(verse, lang).length) return 'empty';
   if (form.thin) return 'thin';
-  if (answered && similarity(verse, answered, lang) >= COPY_THRESHOLD) return 'copied';
+  if (isCopy(verse, answered, lang)) return 'copied';
   return undefined;
 }
 
 export function scoreVerse(input: ScoreInput): VerseScore {
   const verse = cleanVerse(input.verse);
+  // A curse reads the verse as typed: a word that mixes alphabets is itself the trick (text.ts wordsAsRead).
+  const typed = cleanVerse(input.verse, { unmix: false });
   const form = scoreForm(input.form, verse, input.ctx);
   const lang = input.ctx.lang;
   const answered = input.opponentVerse ? cleanVerse(input.opponentVerse) : '';
@@ -341,7 +380,13 @@ export function scoreVerse(input: ScoreInput): VerseScore {
 
   const sameHouse = input.deckCharacters.filter((id) => getCardById(id)?.house === input.card.house).length;
   const synergy = device.met && sameHouse >= 2;
-  const multiplier = 1 + (device.met ? 0.5 : 0) + (signature.met ? 0.5 : 0) + (synergy ? 0.25 : 0);
+  // A multiplier multiplies what the verse says: its own content words beyond those that land the
+  // device and the signature, one a line the form asks for. "Dare / Dare me / Dare me, who dares" is
+  // its device and its signature and nothing else, so it multiplies nothing.
+  const used = [...(device.met ? device.words ?? [] : []), ...(signature.met ? signature.words ?? [] : [])];
+  const substance = voided ? 0 : Math.min(1, ownContent(verse, lang, used) / (OWN_WORDS_PER_LINE * Math.max(1, input.form.lines(input.ctx))));
+  const bonus = (device.met ? 0.5 : 0) + (signature.met ? 0.5 : 0) + (synergy ? 0.25 : 0);
+  const multiplier = 1 + Math.round(bonus * substance * 100) / 100;
 
   let power: VerseScore['powerWords'];
   if (input.lent) {
@@ -352,14 +397,14 @@ export function scoreVerse(input: ScoreInput): VerseScore {
   let curse: VerseScore['curse'];
   if (input.curse) {
     const c = CURSES[input.curse.curseId];
-    const violations = c.violations(verse, input.curse.param, lang);
+    const violations = c.violations(typed, input.curse.param, lang);
     curse = { id: c.id, violations, penalty: Math.min(CURSE_PENALTY_CAP, violations * CURSE_PENALTY) };
   }
 
   // A void verse earns nothing, whatever the cards say.
   const base = voided ? 0 : form.earned + (power?.bonus ?? 0);
   const craft = Math.max(0, Math.round(base * multiplier) - (curse?.penalty ?? 0));
-  return { form, device, signature, synergy, multiplier, powerWords: power, curse, craft, ...(voided ? { voided } : {}) };
+  return { form, device, signature, synergy, multiplier, powerWords: power, curse, substance, craft, ...(voided ? { voided } : {}) };
 }
 
 /** The judge's split when a verse is a copy: every criterion goes to the other side. */
@@ -384,7 +429,8 @@ export function resolveRound(
   const opponentVerse = cleanVerse(opponentVerseRaw);
 
   const player = scoreVerse({
-    verse: playerVerse,
+    // As typed, so a curse can see a word that mixes alphabets; scoreVerse cleans it.
+    verse: playerVerseRaw,
     form,
     ctx: plan.ctx,
     card: getCardById(move.charId)!,

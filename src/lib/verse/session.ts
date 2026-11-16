@@ -14,6 +14,7 @@ import {
 } from './duel';
 import { getForm } from './forms';
 import { writeOpponentVerse, type Difficulty } from './opponent';
+import { judgeLines } from './judge';
 import { referee } from './referee';
 import { loadSound } from './sound';
 import { cleanVerse } from './text';
@@ -184,6 +185,21 @@ export class DuelSession {
     });
   }
 
+  /** Is a model judging this duel's rounds (and so reading the verse without the lines that address it)? */
+  get modelJudges(): boolean {
+    return this.opts.useModel && isBrainLoaded();
+  }
+
+  /**
+   * The lines of the verse being written (from 1) that the judge model will not read, because
+   * they hold a number or address the judge (judge.ts judgeLines). Empty when no model judges:
+   * the rule-based judge reads every line. Shown in the live checklist.
+   */
+  judgeUnread(): number[] {
+    if (!this.modelJudges || !cleanVerse(this.verse)) return [];
+    return judgeLines(this.verse, this.duel.lang).left;
+  }
+
   /** Why the verse cannot be submitted yet, or null when it can. */
   blocked(): Blocked | null {
     if (this.phase !== 'player-turn') return 'not-your-turn';
@@ -199,14 +215,18 @@ export class DuelSession {
     this.changed();
     const playerVerse = cleanVerse(this.verse);
     const previous = this.results.at(-1)?.playerVerse;
+    // The judge compares comebacks only when the opponent's verse answers the player's last one,
+    // which a model's does and the written opponent's never does (judge.ts rulesJudge).
+    const answered = this.opponentSource === 'model' ? previous : undefined;
     const judge = this.opts.useModel
-      ? await referee(playerVerse, this.opponentVerse, this.duel.lang, previous)
-      : (await import('./judge')).rulesJudge(playerVerse, this.opponentVerse, this.duel.lang, (await import('./referee')).allusionLexicon(), previous);
+      ? await referee(playerVerse, this.opponentVerse, this.duel.lang, answered)
+      : (await import('./judge')).rulesJudge(playerVerse, this.opponentVerse, this.duel.lang, (await import('./referee')).allusionLexicon(), answered);
 
     // The opponent's verse this round was written under the curse carried in, if any.
     const carried = this.carried;
     const duel = carried ? { ...this.duel, playerCurses: { ...this.duel.playerCurses, __carried: carried } } : this.duel;
-    const result = resolveRound(duel, this.roundIndex, { ...this.move, potionId: carried ? '__carried' : undefined }, playerVerse, this.opponentVerse, judge, previous);
+    // The verse as typed: a curse reads a word that mixes alphabets as the trick it is (duel.ts scoreVerse).
+    const result = resolveRound(duel, this.roundIndex, { ...this.move, potionId: carried ? '__carried' : undefined }, this.verse, this.opponentVerse, judge, previous);
 
     this.results.push(result);
     this.moves.push({ ...this.move });

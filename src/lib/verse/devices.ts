@@ -28,6 +28,12 @@ export interface DeviceResult {
   detail: string;
   /** For the signature: why it stands as it does ('none', 'hint', 'hint-two', 'quoted', 'echoed'). */
   code?: string;
+  /**
+   * The verse's words that landed it, folded (the repeated word, the rhyming pair, the name):
+   * what the verse says beyond them is what a multiplier multiplies (duel.ts). Empty for a
+   * device of shape (a question, a line length).
+   */
+  words?: string[];
 }
 
 export interface Device {
@@ -79,14 +85,18 @@ export const DEVICES: Record<string, Device> = {
         const k = initial(w, lang);
         counts.set(k, (counts.get(k) ?? 0) + 1);
       }
-      for (const [k, n] of counts) if (n >= 3) return { met: true, detail: `${k} ×${n}` };
+      for (const [k, n] of counts) {
+        if (n < 3) continue;
+        const words = [...new Set(wordsOf(line, lang).map(fold))].filter((w) => wordSpan(w) >= min && !isStopWord(w, lang) && initial(w, lang) === k);
+        return { met: true, detail: `${k} ×${n}`, words };
+      }
     }
     return { met: false, detail: '' };
   }),
   repetition: d('repetition', (v, ctx) => {
     const counts = new Map<string, number>();
     for (const w of contentWords(v, langOf(ctx))) if (!isStopWord(w, langOf(ctx))) counts.set(fold(w), (counts.get(fold(w)) ?? 0) + 1);
-    for (const [w, n] of counts) if (n >= 3) return { met: true, detail: `${w} ×${n}` };
+    for (const [w, n] of counts) if (n >= 3) return { met: true, detail: `${w} ×${n}`, words: [w] };
     return { met: false, detail: '' };
   }),
   'internal-rhyme': d('internal-rhyme', (v, ctx) => {
@@ -96,7 +106,7 @@ export const DEVICES: Record<string, Device> = {
       const ws = wordsOf(line, lang).filter((w) => wordSpan(w) >= min && !isStopWord(w, lang));
       for (let i = 0; i < ws.length; i++) {
         for (let j = i + 1; j < ws.length; j++) {
-          if (rhymes(ws[i], ws[j], lang)) return { met: true, detail: `${ws[i]} / ${ws[j]}` };
+          if (rhymes(ws[i], ws[j], lang)) return { met: true, detail: `${ws[i]} / ${ws[j]}`, words: [fold(ws[i]), fold(ws[j])] };
         }
       }
     }
@@ -110,7 +120,7 @@ export const DEVICES: Record<string, Device> = {
       const min = rulesFor(lang).riposte;
       const theirs = new Set(wordsOf(ctx.opponentVerse, lang).filter((w) => wordSpan(w) >= min && !isStopWord(w, lang)).map(fold));
       const hit = wordsOf(v, lang).map(fold).find((w) => theirs.has(w));
-      return { met: !!hit, detail: hit ?? '' };
+      return { met: !!hit, detail: hit ?? '', words: hit ? [hit] : [] };
     },
     (lang) => msg('device.riposte.brief', { n: rulesFor(lang).riposte }),
   ),
@@ -149,7 +159,7 @@ export const DEVICES: Record<string, Device> = {
       if (!ls.length) return { met: false, detail: '' };
       const a = edgeUnit(ls[0], lang, 'first');
       const b = edgeUnit(ls[ls.length - 1], lang, 'last');
-      return { met: !!a && a === b && lineLength(v.replace(/\n/g, ' '), lang) > 2, detail: `${a} … ${b}` };
+      return { met: !!a && a === b && lineLength(v.replace(/\n/g, ' '), lang) > 2, detail: `${a} … ${b}`, words: a ? [a] : [] };
     },
     (lang) => msg(unitKey('device.ring.brief', lang)),
   ),
@@ -157,7 +167,7 @@ export const DEVICES: Record<string, Device> = {
     // Words run together with single spaces, so a phrase ("sonnet man") is found only as a phrase.
     const said = ` ${wordsOf(v, langOf(ctx)).map(fold).join(' ')} `;
     const hit = (ctx.names ?? []).find((n) => said.includes(` ${wordsOf(n, 'en').map(fold).join(' ')} `));
-    return { met: !!hit, detail: hit ?? '' };
+    return { met: !!hit, detail: hit ?? '', words: hit ? wordsOf(hit, 'en').map(fold) : [] };
   }),
   grandeur: d(
     'grandeur',
@@ -166,7 +176,7 @@ export const DEVICES: Record<string, Device> = {
       const min = rulesFor(lang).grand;
       // Each part of a hyphenated chain is its own word: "o-o-o-o-o-o-o-o-o" is not a grand one.
       const big = [...new Set(wordParts(v, lang).filter((w) => letterCount(w) >= min).map(fold))];
-      return { met: big.length >= 2, detail: big.slice(0, 3).join(', ') };
+      return { met: big.length >= 2, detail: big.slice(0, 3).join(', '), words: big.slice(0, 2) };
     },
     (lang) => msg('device.grandeur.brief', { n: rulesFor(lang).grand }),
   ),
@@ -174,7 +184,7 @@ export const DEVICES: Record<string, Device> = {
     const lang = langOf(ctx);
     const ends = linesOf(v).map((l) => lastWord(l, lang));
     const met = ends.length >= 2 && ends.every((w, i) => i === 0 || rhymes(ends[0], w, lang));
-    return { met, detail: ends.join(' · ') };
+    return { met, detail: ends.join(' · '), words: met ? ends.map(fold) : [] };
   }),
 };
 
@@ -273,23 +283,32 @@ function tellingWords(card: Card): string[] {
 
 /**
  * The words of a card's line that a verse can echo: those of four letters or
- * more that are not everyday grammar. A line with none ("I am not what I am.")
- * falls back to its two longest words, and then both are needed.
+ * more that are not everyday grammar. A line with none of those ("I am not what
+ * I am.", Viola's) is all little words, and no single one of them is an echo: a
+ * verse echoes it by its longest two words said together, in the line's order,
+ * as one phrase ("not what"). A signature is never one stop word.
  */
 export function signatureWords(card: Card): string[] {
   const telling = tellingWords(card);
   if (telling.length) return telling;
-  return [...new Set(quoteWords(card))].filter((w) => letterCount(w) >= 3).sort((a, b) => letterCount(b) - letterCount(a)).slice(0, 2);
+  const quote = quoteWords(card);
+  let best = -1;
+  let at = -1;
+  for (let i = 0; i + 1 < quote.length; i++) {
+    const n = letterCount(quote[i]) + letterCount(quote[i + 1]);
+    if (quote[i] !== quote[i + 1] && n > best) [best, at] = [n, i];
+  }
+  return at < 0 ? [] : [`${quote[at]} ${quote[at + 1]}`];
 }
 
 /**
  * How many signature words a verse must use. One everyday word is not an echo,
  * so a line with three or more telling words needs two of them; a line with one
- * or two needs one; a line with none needs both of its fallback words.
+ * or two needs one; a line with none needs its phrase.
  */
 export function signatureNeeded(card: Card): number {
   const sig = signatureWords(card);
-  return !tellingWords(card).length ? sig.length : sig.length >= 3 ? 2 : Math.min(1, sig.length);
+  return sig.length >= 3 ? 2 : Math.min(1, sig.length);
 }
 
 /**
@@ -306,7 +325,9 @@ export function checkSignature(card: Card, verse: string, lang = 'en'): DeviceRe
   // The quotation is English; the verse is read both by its own language's words and by English ones.
   const spoken = wordParts(verse, 'en').map(stem);
   const said = new Set([...wordsOf(verse, lang).map(stem), ...spoken]);
-  const echoed = sig.filter((w) => said.has(w));
+  // A phrase is echoed when its words are said together, in its order, within a line.
+  const lines = linesOf(verse).map((l) => ` ${wordParts(l, 'en').map(stem).join(' ')} `);
+  const echoed = sig.filter((w) => (w.includes(' ') ? lines.some((l) => l.includes(` ${w} `)) : said.has(w)));
   if (echoed.length < needed) return { met: false, detail: sig.slice(0, 5).join(', '), code: needed > 1 ? 'hint-two' : 'hint' };
   // A quotation is four of the quote's words in a row, compared word by word:
   // "maybe or not today" does not contain "be or not to".
@@ -318,7 +339,7 @@ export function checkSignature(card: Card, verse: string, lang = 'en'): DeviceRe
       }
     }
   }
-  return { met: true, detail: echoed.slice(0, needed).join(', '), code: 'echoed' };
+  return { met: true, detail: echoed.slice(0, needed).join(', '), code: 'echoed', words: echoed.flatMap((w) => w.split(' ')) };
 }
 
 // --- Curses (potions) ---
@@ -340,10 +361,12 @@ export const CURSES: Record<string, Curse> = {
   'forbidden-letter': curse(
     'forbidden-letter',
     (p) => msg('curse.forbidden-letter.brief', { letter: p.toUpperCase() }),
-    // Read as a person reads it (text.ts wordsAsRead): a look-alike letter of another alphabet or a
-    // digit standing in for the letter counts, and a stand-in that cannot be read ("?") is taken for the worst.
+    // Read as a person reads it (text.ts wordsAsRead), from the verse as typed: a look-alike letter of
+    // another alphabet (Unicode's confusables) or a digit standing in for the letter counts, a word that
+    // mixes alphabets or a stand-in that cannot be read ("?") is taken for the worst, and an honest
+    // number ("2nd", "6pm") is a number.
     (v, p, lang = 'en') => {
-      const letter = letterAsRead(p);
+      const letter = letterAsRead(p, lang);
       return wordsAsRead(v, lang).filter((w) => w.includes(letter) || w.includes('?')).length;
     },
   ),

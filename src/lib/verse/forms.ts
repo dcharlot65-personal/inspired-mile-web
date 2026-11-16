@@ -14,7 +14,7 @@
 import { baseLang, unitKey } from './lang';
 import { msg, type Msg } from './msg';
 import { rhymeChecked, rhymeEnds, rhymes } from './rhyme';
-import { countsSyllables, edgeUnit, fold, graphemes, hiragana, lineLength, linesOf, substance, syllableSpan, wordsOf } from './text';
+import { FULL_KNOWN_SHARE, countsSyllables, edgeUnit, fold, graphemes, hiragana, lineLength, linesOf, substance, syllableSpan, wordsOf } from './text';
 
 export { countsSyllables };
 
@@ -98,9 +98,10 @@ function syllableKey(key: string, lang: string): string {
  *
  * In English a word can be said more than one way ("fire" in one syllable or
  * two, "every" in two or three), so a line has a range of counts and keeps the
- * form when the target is inside it. And a line with a word the pronunciation
- * table does not have, whose count is a guess from its spelling, is allowed one
- * either way: the detail then starts with "~".
+ * form when the target is inside it. A word the pronunciation table does not
+ * have is counted by its spelling, and the detail then starts with "~"; it buys
+ * no slack, or any made-up word would ("Zorblatt is long gone now" is six by
+ * spelling, not five). The game's own names are in the table.
  */
 function syllables(index: number, target: number, tolerance: number, points: number): Requirement {
   return {
@@ -112,7 +113,7 @@ function syllables(index: number, target: number, tolerance: number, points: num
       const span = syllableSpan(lines[index], ctx.lang);
       // "?": this line holds something that cannot be counted (kanji in a Japanese haiku, a foreign script).
       if (span === null) return { met: false, detail: '?' };
-      const slack = Math.max(tolerance, span.guessed ? 1 : 0);
+      const slack = tolerance;
       const count = span.min === span.max ? `${span.min}` : `${span.min}–${span.max}`;
       return { met: target >= span.min - slack && target <= span.max + slack, detail: `${span.guessed ? '~' : ''}${count}/${target}` };
     },
@@ -369,6 +370,11 @@ export interface FormScore {
   kept: boolean;
   /** The text is too thin to be a verse (text.ts `substance`): no requirement is met and nothing is earned. */
   thin?: boolean;
+  /**
+   * The share of the points kept, from the share of the verse that is words of its language
+   * (text.ts substance `known`): 1 at FULL_KNOWN_SHARE and above, less below it.
+   */
+  scale: number;
 }
 
 export function scoreForm(form: Form, verse: string, ctx: FormContext): FormScore {
@@ -381,7 +387,9 @@ export function scoreForm(form: Form, verse: string, ctx: FormContext): FormScor
     const { met, detail } = lines.length === 0 ? { met: false, detail: '' } : thin ? { met: false, detail: `${body.distinct}/${body.needed}` } : r.check(lines, ctx);
     return { id: r.id, label: r.label(ctx), points: r.points, earned: met ? r.points : 0, met, detail };
   });
-  if (thin) return { formId: form.id, checks, earned: 0, kept: false, thin };
-  const earned = checks.reduce((s, c) => s + c.earned, 0);
-  return { formId: form.id, checks, earned, kept: checks.every((c) => c.met) };
+  if (thin) return { formId: form.id, checks, earned: 0, kept: false, thin, scale: 0 };
+  // Points are for words: where a lexicon says part of the verse is not words, that part earns nothing.
+  const scale = lines.length === 0 ? 1 : Math.min(1, body.known / FULL_KNOWN_SHARE);
+  const earned = Math.round(checks.reduce((s, c) => s + c.earned, 0) * scale);
+  return { formId: form.id, checks, earned, kept: checks.every((c) => c.met), scale };
 }

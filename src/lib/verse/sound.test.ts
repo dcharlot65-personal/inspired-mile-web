@@ -151,17 +151,18 @@ describe('similarity: how much of a verse is taken from another', () => {
     expect(text.similarity(source, source)).toBe(1);
     expect(text.similarity(source.toUpperCase().replace(/,/g, ' !'), source)).toBe(1);
     expect(text.similarity(source.split('\n').reverse().join('\n'), source)).toBe(1);
-    // One whole line taken, the other the writer's own: still a copied line.
-    expect(text.similarity('Mine is the sun, and thou hast lost the light\nSo says the mirror I hold up tonight', source)).toBe(1);
+    // A filler between every two words adds one word of the verse's own, not half the verse.
+    expect(text.similarity(source.split(' ').join(' yea '), source)).toBeGreaterThan(0.85);
   });
   it('is high for a retouched copy and low for an answer', () => {
     const retouched = 'Thy rhymes are candles guttering in the dark\nMine is the sun, and thou hast lost the spark';
-    expect(text.similarity(retouched, source)).toBeGreaterThanOrEqual(0.5);
+    expect(text.similarity(retouched, source)).toBeGreaterThanOrEqual(0.7);
     const answer = 'Who lit these candles? Not the sun, I think\nI put the question while thy verses sink';
-    expect(text.similarity(answer, source)).toBeLessThan(0.2);
-    // Throwing a phrase back is an answer, not a copy.
+    expect(text.similarity(answer, source)).toBeLessThan(0.3);
+    // Throwing a phrase back is an answer, not a copy, and so is one whole line taken with an answer of one's own.
     const quoting = 'Thou sayest I have "lost the light"? Then hear\nHow darkness sings when better bards are near';
     expect(text.similarity(quoting, source)).toBeLessThan(0.5);
+    expect(text.similarity('Mine is the sun, and thou hast lost the light\nSo says the mirror I hold up tonight', source)).toBeLessThan(0.5);
     expect(text.similarity('Anything at all', '')).toBe(0);
     expect(text.similarity('', source)).toBe(0);
   });
@@ -184,7 +185,7 @@ describe('substance: a verse, or tokens laid out like one', () => {
     for (const real of ['Never fear\nNever yield\nNever kneel', 'Kneel\nWeep, fool\nThy doom has come', 'A candle?\nThen I snuff it', 'To be or not to be', 'Bold\nAnd\nRash\nDeeds', 'I\nI rise\nI rise again', 'O!\nRomeo, wherefore art thou', 'Oh Rome, oh Rome\nThy walls are tall\nOh Rome, oh Rome\nThy walls shall fall']) {
       expect([real, text.substance(real, 'en').ok]).toEqual([real, true]);
     }
-    expect(text.substance('Never\nNever\nNever')).toEqual({ ok: false, distinct: 1, needed: 3 });
+    expect(text.substance('Never\nNever\nNever')).toEqual({ ok: false, distinct: 1, needed: 3, known: 1 });
   });
   it('counts characters where lines are counted in characters', () => {
     const hao = String.fromCodePoint(0x597d);

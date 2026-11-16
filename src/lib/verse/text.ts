@@ -20,10 +20,14 @@
  *   table does not have.
  */
 import { baseLang, rulesFor } from './lang';
-import { pronounce } from './pronounce';
-import { soundReady } from './sound';
-import { japaneseMorae } from './sound/kana';
+import { CARD_CATALOG } from '../cards';
+import { functionKey, functionWords } from './function-words';
+import { getPack } from './packs';
+import { pronounce, pronunciationLoaded } from './pronounce';
+import { soundOf, soundReady } from './sound';
+import { japaneseMorae, japaneseWords } from './sound/kana';
 import { countOverride, frenchSound, germanSound, hindiSyllablesByRule, thaiSyllables } from './sound/lookup';
+import CONFUSABLE_PAIRS from './confusables';
 
 /** Longest verse the game accepts. Also bounds what a judge prompt can carry. */
 export const MAX_VERSE_CHARS = 600;
@@ -45,6 +49,8 @@ export const MAX_VERSE_LINES = 8;
 //   5. combining marks with no letter under them are removed, and a pile of them is cut short;
 //   6. inside a word that mixes alphabets, a letter of another alphabet that is drawn
 //      like one of the word's own is read as that letter ("r" + Cyrillic "o" + "se" is "rose").
+//      Which letters are drawn alike is Unicode's data (UTS #39 confusables, ./confusables).
+// Cleaning a clean verse changes nothing: cleanVerse(cleanVerse(x)) === cleanVerse(x).
 
 const LINE_BREAKS = /\r\n?|[\u000b\u000c\u0085\u2028\u2029]/g;
 const BLANKS = /[\t\u115f\u1160\u3164\uffa0\u2800\p{Zs}]/gu;
@@ -55,56 +61,135 @@ const MAX_MARKS = 4;
 const MARK_PILE = new RegExp(`(\\p{M}{${MAX_MARKS}})\\p{M}+`, 'gu');
 const NOT_THAI_LAO = /[^\u0e00-\u0eff]+/g;
 
-/** Cyrillic and Greek letters that are drawn like a Latin letter, by the Latin letter they look like. */
-const TO_LATIN: Record<string, string> = {
-  а: 'a', е: 'e', о: 'o', р: 'p', с: 'c', х: 'x', у: 'y', і: 'i', ј: 'j', ѕ: 's', ԁ: 'd', һ: 'h', ӏ: 'l', ԛ: 'q', ԝ: 'w',
-  А: 'A', В: 'B', Е: 'E', К: 'K', М: 'M', Н: 'H', О: 'O', Р: 'P', С: 'C', Т: 'T', Х: 'X', У: 'Y', Ѕ: 'S', І: 'I', Ј: 'J',
-  α: 'a', ο: 'o', ν: 'v', ρ: 'p', ι: 'i', κ: 'k', υ: 'u',
-  Α: 'A', Β: 'B', Ε: 'E', Ζ: 'Z', Η: 'H', Ι: 'I', Κ: 'K', Μ: 'M', Ν: 'N', Ο: 'O', Ρ: 'P', Τ: 'T', Υ: 'Y', Χ: 'X',
-};
-/** The same pairs the other way: the Latin letters a Cyrillic word can be faked with. */
-const TO_CYRILLIC: Record<string, string> = {};
-for (const [from, to] of Object.entries(TO_LATIN)) if (/\p{Script=Cyrillic}/u.test(from) && !(to in TO_CYRILLIC)) TO_CYRILLIC[to] = from;
+// --- Letters drawn alike (UTS #39) ---
 
-/** A word as its look-alike letters read in Latin: the common ground for comparing across alphabets. */
-function latinised(word: string): string {
-  return [...word].map((ch) => TO_LATIN[ch] ?? ch).join('');
+/** Each letter of ./confusables and the Latin letter Unicode gives as its prototype. */
+const PROTOTYPE = new Map<string, string>();
+{
+  const cs = [...CONFUSABLE_PAIRS];
+  for (let i = 0; i + 1 < cs.length; i += 2) PROTOTYPE.set(cs[i], cs[i + 1]);
+}
+
+/** The prototype of a letter: what Unicode says it is drawn like (itself, for most letters). */
+export function prototypeOf(letter: string): string {
+  return PROTOTYPE.get(letter) ?? letter;
+}
+
+/** Scripts a letter can be in, for telling a word that mixes alphabets. The rest are "Other". */
+const SCRIPTS = [
+  'Latin', 'Cyrillic', 'Greek', 'Armenian', 'Coptic', 'Georgian', 'Cherokee', 'Hebrew', 'Arabic', 'Lisu', 'Canadian_Aboriginal',
+  'Tifinagh', 'Vai', 'Ethiopic', 'Han', 'Hiragana', 'Katakana', 'Hangul', 'Bopomofo', 'Thai', 'Lao', 'Devanagari', 'Bengali',
+  'Gurmukhi', 'Gujarati', 'Oriya', 'Tamil', 'Telugu', 'Kannada', 'Malayalam', 'Sinhala', 'Myanmar', 'Khmer', 'Tibetan', 'Mongolian',
+  'Syriac', 'Thaana', 'Nko', 'Osage', 'Adlam', 'Deseret', 'Glagolitic', 'Gothic', 'Runic', 'Ogham', 'Old_Italic', 'Javanese', 'Yi',
+] as const;
+const SCRIPT_RES = SCRIPTS.map((name) => [name, new RegExp(`^\\p{Script=${name}}$`, 'u')] as const);
+const scriptCache = new Map<string, string>();
+
+/** The script of one character: a name from SCRIPTS, 'Mark' for a combining mark, 'Other' for anything else. */
+export function scriptOf(ch: string): string {
+  let s = scriptCache.get(ch);
+  if (s === undefined) {
+    s = /^\p{M}$/u.test(ch) ? 'Mark' : (SCRIPT_RES.find(([, re]) => re.test(ch))?.[0] ?? 'Other');
+    scriptCache.set(ch, s);
+  }
+  return s;
+}
+
+/** Letters by prototype and script: which letter of a given alphabet is drawn like a given one. */
+const BY_PROTOTYPE = new Map<string, Map<string, string[]>>();
+{
+  const add = (letter: string) => {
+    const proto = prototypeOf(letter);
+    let byScript = BY_PROTOTYPE.get(proto);
+    if (!byScript) BY_PROTOTYPE.set(proto, (byScript = new Map()));
+    const script = scriptOf(letter);
+    const list = byScript.get(script) ?? [];
+    if (!list.includes(letter)) list.push(letter);
+    byScript.set(script, list);
+  };
+  for (let c = 0x41; c <= 0x7a; c++) if (/[A-Za-z]/.test(String.fromCharCode(c))) add(String.fromCharCode(c));
+  for (const letter of PROTOTYPE.keys()) add(letter);
+  // The plainest first: ASCII, then the lowest code point (the basic block of each alphabet).
+  for (const byScript of BY_PROTOTYPE.values()) for (const list of byScript.values()) list.sort((a, b) => a.codePointAt(0)! - b.codePointAt(0)!);
+}
+
+/** The letter of `script` that is drawn like `letter`, in the same case where there is a choice; or undefined. */
+function twinIn(letter: string, script: string): string | undefined {
+  const list = BY_PROTOTYPE.get(prototypeOf(letter))?.get(script);
+  if (!list?.length) return undefined;
+  const upper = letter !== letter.toLowerCase();
+  return list.find((l) => (l !== l.toLowerCase()) === upper) ?? list[0];
 }
 
 /**
  * In a word that mixes alphabets, read the strays as letters of the word's own
  * alphabet. Which alphabet that is, is told by the letters that could not be
- * strays: those with no look-alike ("r" and "s" in "rose", the Cyrillic m, l
- * and k of "moloko"). Where those do not settle it, the alphabet most of the
- * word's letters are in; and Latin if that is even.
+ * strays: those with no look-alike in the other alphabets present ("r" and "s"
+ * in "rose", the Cyrillic m, l and k of "moloko"). Where those do not settle it,
+ * the alphabet most of the word's letters are in; and Latin if that is even. A
+ * stray with no look-alike in the word's alphabet is left as it is.
  */
 function unmixScripts(line: string): string {
   return line.replace(/[\p{L}\p{M}]+/gu, (word) => {
     const letters = [...word];
-    const latin = letters.filter((ch) => /\p{Script=Latin}/u.test(ch));
-    const cyrillic = letters.filter((ch) => /\p{Script=Cyrillic}/u.test(ch));
-    const greek = letters.filter((ch) => /\p{Script=Greek}/u.test(ch));
-    if ((latin.length ? 1 : 0) + (cyrillic.length ? 1 : 0) + (greek.length ? 1 : 0) < 2) return word;
-    const ownLatin = latin.filter((ch) => !(ch in TO_CYRILLIC)).length;
-    const ownCyrillic = cyrillic.filter((ch) => !(ch in TO_LATIN)).length;
-    const toCyrillic = ownCyrillic !== ownLatin ? ownCyrillic > ownLatin : cyrillic.length > latin.length;
-    if (toCyrillic && cyrillic.length >= greek.length) return letters.map((ch) => TO_CYRILLIC[TO_LATIN[ch] ?? ch] ?? ch).join('');
-    if (latin.length >= greek.length || !cyrillic.length) return latin.length ? latinised(word) : word;
-    return word;
+    const scripts = letters.map(scriptOf);
+    const present = [...new Set(scripts.filter((s) => s !== 'Mark' && s !== 'Other'))];
+    if (present.length < 2) return word;
+    let main = present[0];
+    let best = [-1, -1, -1];
+    for (const s of present) {
+      const mine = letters.filter((_, i) => scripts[i] === s);
+      const own = mine.filter((ch) => present.every((t) => t === s || !twinIn(ch, t))).length;
+      const score = [own, mine.length, s === 'Latin' ? 1 : 0];
+      if (score[0] > best[0] || (score[0] === best[0] && (score[1] > best[1] || (score[1] === best[1] && score[2] > best[2])))) [main, best] = [s, score];
+    }
+    return letters.map((ch, i) => (scripts[i] === main || scripts[i] === 'Mark' || scripts[i] === 'Other' ? ch : (twinIn(ch, main) ?? ch))).join('');
   });
 }
 
-/** Normalise a verse (see above), collapse blank lines, cap the length. */
-export function cleanVerse(raw: string): string {
+function cleanOnce(raw: string, unmix: boolean): string {
   const lines = raw
     .replace(LINE_BREAKS, '\n')
     .replace(NOT_THAI_LAO, (run) => run.normalize('NFKC'))
     .replace(BLANKS, ' ')
     .split('\n')
-    .map((l) => unmixScripts(l.replace(INVISIBLE, '').replace(ORPHAN_MARKS, '$1').replace(MARK_PILE, '$1')).replace(/\s+/g, ' ').trim())
+    .map((l) => {
+      let line = l.replace(INVISIBLE, '').replace(ORPHAN_MARKS, '$1').replace(MARK_PILE, '$1');
+      if (unmix) line = unmixScripts(line);
+      // Removing a character can bring a letter and its mark together; compose them as NFKC would.
+      return line.replace(NOT_THAI_LAO, (run) => run.normalize('NFKC')).replace(/\s+/g, ' ').trim();
+    })
     .filter((l) => l.length > 0)
     .slice(0, MAX_VERSE_LINES);
-  return lines.join('\n').slice(0, MAX_VERSE_CHARS);
+  let out = lines.join('\n');
+  if (out.length > MAX_VERSE_CHARS) {
+    // Cut between characters, never inside a surrogate pair, and drop marks left without their letter's company.
+    const cs = [...out];
+    let n = 0;
+    let keep = 0;
+    while (keep < cs.length && n + cs[keep].length <= MAX_VERSE_CHARS) n += cs[keep++].length;
+    out = cs.slice(0, keep).join('');
+  }
+  return out;
+}
+
+/**
+ * Normalise a verse (see above), collapse blank lines, cap the length. With
+ * `unmix: false` the letters of other alphabets are left as typed: that is how a
+ * curse reads a verse (wordsAsRead), since a word that mixes alphabets is itself
+ * the trick.
+ */
+export function cleanVerse(raw: string, opts: { unmix?: boolean } = {}): string {
+  const unmix = opts.unmix ?? true;
+  // A cut at the length cap, or a mark brought next to a letter, can leave something the next
+  // pass would change; pass again until nothing changes (two passes in practice).
+  let v = cleanOnce(raw, unmix);
+  for (let i = 0; i < 4; i++) {
+    const again = cleanOnce(v, unmix);
+    if (again === v) break;
+    v = again;
+  }
+  return v;
 }
 
 export function linesOf(verse: string): string[] {
@@ -610,19 +695,139 @@ function loneLetter(unit: string, lang: string): boolean {
   return rulesFor(lang).unit !== 'char' && letterCount(unit) === 1 && /^[\p{Script=Latin}\p{Script=Cyrillic}\p{Script=Greek}]/u.test(unit);
 }
 
+// --- Is it a word? ---
+//
+// The substance floor and the rule judge count words, not strings, so they ask the
+// language's own lexicon, where the engine has one loaded for the duel's language: the CMU
+// table for English (./pronounce), the readings of Chinese characters (Unihan and CC-CEDICT,
+// ./sound), and kuromoji's dictionary for Japanese. Nothing extra is fetched: these are the
+// data the duel's rhyme and syllable rules already loaded. The other tables are not
+// lexicons: Spanish, Italian, Portuguese, Hindi and Indonesian list only the words their
+// spelling rule gets wrong, and the French, German and Russian tables, measured against the
+// published verse of the phonetics corpora (review.test.ts), lack too many inflected and old
+// forms: a couplet of Pushkin's had a third of its words in the Russian table, one of Busch's
+// half of them in the German. There every word counts, as before. Names from the cards and
+// the game's own words (each pack's acrostic and power words) always count.
+
+/** Languages whose sound data is a lexicon: a word it lacks is, as far as the engine knows, not a word. */
+const LEXICON_LANGS = new Set(['en', 'zh', 'ja']);
+
+let cardNames: Set<string> | null = null;
+const packWords = new Map<string, Set<string>>();
+
+/** Words that count whatever the lexicon says: the parts of every card's name, and the language's acrostic and power words. */
+function gameWords(lang: string): Set<string> {
+  cardNames ??= new Set(CARD_CATALOG.flatMap((c) => wordParts(c.name, 'en').map(fold)));
+  const b = baseLang(lang);
+  let words = packWords.get(b);
+  if (!words) {
+    words = new Set(cardNames);
+    try {
+      const pack = getPack(b);
+      for (const w of [...pack.acrostic, ...Object.values(pack.relics).flat()]) for (const part of wordParts(w, b)) words.add(fold(part));
+      packWords.set(b, words);
+    } catch {
+      // The pack is not loaded yet: card names alone, and ask again next time.
+    }
+  }
+  return words;
+}
+
+/**
+ * Is this a word of the language, as far as the engine's data can say? True or false where
+ * the duel's language has a lexicon loaded (see above); null where it has none, and then
+ * every word counts. A hyphenated word is a word when each part is.
+ */
+export function lexiconHas(word: string, lang = 'en'): boolean | null {
+  const b = baseLang(lang);
+  // Chinese and Japanese are measured in characters (knownUnits); only English has a word list here.
+  if (b !== 'en' || !pronunciationLoaded()) return null;
+  const w = fold(word);
+  if (gameWords(b).has(w)) return true;
+  const parts = w.split('-').filter((part) => HAS_LETTER.test(part));
+  if (parts.length > 1) return parts.every((part) => lexiconHas(part, b) === true);
+  // An abbreviation the dictionary only spells out ("cd", "tv") is not a word.
+  return !!pronounce(w) && !pronounce(w)!.spelled;
+}
+
+/**
+ * For each unit of a line (unitsOf), whether it is a word of the language: null where the
+ * language has no lexicon loaded. Chinese and Japanese are measured in characters: a
+ * character counts when the reading tables know it (Chinese) or when the dictionary
+ * recognises the word it is part of (Japanese).
+ */
+function knownUnits(line: string, lang: string): boolean[] | null {
+  const b = baseLang(lang);
+  const units = unitsOf(line, lang).filter((u) => letterCount(u) > 0);
+  if (b === 'zh') {
+    if (!soundReady('zh')) return null;
+    return units.map((ch) => !/\p{Script=Han}/u.test(ch) || soundOf('zh', ch) !== undefined || gameWords(b).has(ch));
+  }
+  if (b === 'ja') {
+    const words = japaneseWords(line);
+    if (!words) return null;
+    const flags: boolean[] = [];
+    for (const w of words) for (const ch of lettersOf(hiragana(fold(w.surface)))) flags.push(w.known);
+    return flags.length === units.length ? flags : null;
+  }
+  if (!LEXICON_LANGS.has(b)) return null;
+  const flags = units.map((u) => lexiconHas(u, b));
+  return flags.some((f) => f === null) ? null : (flags as boolean[]);
+}
+
+/** Chinese particles that make a word a modifier or mark its aspect: "我的" is "my", "不过" is "but". */
+const ZH_PARTICLE_END = /[的地得了着过]$/u;
+
+/**
+ * A word that carries meaning, for the copy measure and the substance a multiplier
+ * multiplies: one that is not among the language's little words (English: STOP_WORDS;
+ * the others: ./function-words, from stopwords-iso). A Japanese word in kana alone must be
+ * two characters or more (the particles are one); a letter alone is not a content word in
+ * an alphabet; Chinese words must be two characters or
+ * more and not end in a structural or aspect particle. A language whose list is not loaded falls back to the length a content
+ * word needs in it (lang.ts `content`).
+ */
+export function isContentWord(word: string, lang = 'en'): boolean {
+  if (!HAS_LETTER.test(word)) return false;
+  const b = baseLang(lang);
+  // A letter alone is a letter ("w", "t"), not a word that means something; "I" and "a" are little words anyway.
+  if (!UNSPACED.has(b) && rulesFor(b).unit === 'word' && letterCount(word) < 2) return false;
+  if (b === 'en') return !STOP_WORDS.has(fold(word));
+  // The language's little words (./function-words), compared as written and, outside
+  // Vietnamese (whose accents tell words apart), also without accents, as players type them.
+  const list = functionWords(b);
+  if (list && (list.has(functionKey(word)) || (b !== 'vi' && list.has(fold(word))))) return false;
+  if (b === 'ja') return /[\p{Script=Han}\p{Script=Katakana}]/u.test(word) ? !/^[ー]+$/.test(word) : [...word].length >= 2;
+  if (b === 'zh') return [...word].length >= 2 && !ZH_PARTICLE_END.test(word);
+  return list ? true : wordSpan(word) >= rulesFor(lang).content;
+}
+
 export interface Substance {
   ok: boolean;
-  /** Different words (or characters) found, and how many the verse needs. */
+  /** Different words (or characters) found that are words of the language, and how many the verse needs. */
   distinct: number;
   needed: number;
+  /** Share of the verse's words (or characters) that are words of its language: 1 where it has no lexicon. */
+  known: number;
 }
 
 /** Fewest different words anything that calls itself a verse can have. */
 export const MIN_DISTINCT_WORDS = 3;
 
 /**
+ * Below this share of real words a verse is tokens, not verse, and is void. Set from
+ * measurement (findings.test.ts "substance"): every honest verse of the banks, the packs and
+ * the test fixtures is at or above FULL_KNOWN_SHARE; random letter pairs, keyboard mash and
+ * two-letter tokens fall below this.
+ */
+export const MIN_KNOWN_SHARE = 0.6;
+/** At and above this share of real words a verse keeps its full form points; between the two they scale down. */
+export const FULL_KNOWN_SHARE = 0.7;
+
+/**
  * Is this a verse, or tokens arranged to satisfy a checker? The floor every
- * form, device and judge shares:
+ * form, device and judge shares, counting only words of the language (see
+ * lexiconHas: where the language has no lexicon, every word):
  *   - every line holds at least one word, and
  *   - the verse has at least as many different words as it has lines, and never
  *     fewer than MIN_DISTINCT_WORDS. Lone letters, however many different ones,
@@ -630,95 +835,299 @@ export const MIN_DISTINCT_WORDS = 3;
  *     not a vocabulary;
  *   - more than half of its lines are different lines: a line said again (same
  *     words, whatever the case and punctuation) counts once. A refrain may come
- *     back; a verse that is one line said over and over is one line.
- * "Never / Never / Never", "a / a a / a a a", "w / i / t", a single word and
- * "Never the night falls" said three times fail it; the shortest honest verses
- * ("I / I rise / I rise again", an acrostic of one word to a line, a quatrain
- * whose first line returns as its third) keep it. Where lines are counted in
- * characters, "words" here are characters.
+ *     back; a verse that is one line said over and over is one line;
+ *   - at least MIN_KNOWN_SHARE of what it is made of are words.
+ * "Never / Never / Never", "a / a a / a a a", "w / i / t", "wa / ib / tc",
+ * "ab cd ga / ef gh ha" and "Never the night falls" said three times fail it; the
+ * shortest honest verses ("I rise / I rise again / I rise again and louder", an
+ * acrostic of one word to a line, a quatrain whose first line returns as its
+ * third) keep it. Where lines are counted in characters, "words" here are characters.
  */
 export function substance(verse: string, lang = 'en'): Substance {
   const ls = linesOf(verse);
   const perLine = ls.map((l) => unitsOf(l, lang).filter((u) => letterCount(u) > 0));
+  const flags = ls.map((l, i) => knownUnits(l, lang) ?? perLine[i].map(() => true));
+  const real = perLine.flatMap((units, i) => units.filter((_, k) => flags[i][k]));
   const all = perLine.flat();
-  const distinct = new Set(all.filter((u) => !loneLetter(u, lang))).size + (all.some((u) => loneLetter(u, lang)) ? 1 : 0);
+  const distinct = new Set(real.filter((u) => !loneLetter(u, lang))).size + (real.some((u) => loneLetter(u, lang)) ? 1 : 0);
   const needed = Math.max(ls.length, MIN_DISTINCT_WORDS);
   const differentLines = new Set(perLine.map((units) => units.join(' '))).size;
-  const ok = ls.length > 0 && perLine.every((units) => units.length > 0) && distinct >= needed && differentLines * 2 > ls.length;
-  return { ok, distinct, needed };
+  const known = all.length ? real.length / all.length : 0;
+  const ok =
+    ls.length > 0 && flags.every((f) => f.some(Boolean)) && distinct >= needed && differentLines * 2 > ls.length && known >= MIN_KNOWN_SHARE;
+  return { ok, distinct, needed, known };
 }
 
 /**
- * How much of `verse` is taken from `source`, from 0 (nothing) to 1 (all of it).
- *
- * The measure is the share of the verse's word pairs (two words running, within
- * a line) that also run together somewhere in the source; a whole line of three
- * words or more repeated from the source counts as 1 outright. Word pairs, not
- * single words, so throwing one word back (the Riposte) or quoting a short
- * phrase scores low, while a verse pasted back, reordered or lightly retouched
- * scores high. Case, accents and punctuation are ignored. Where lines are
- * counted in characters, the pairs are pairs of characters.
+ * Distinct content words of the verse (isContentWord, and words of its language) that are not
+ * among `used`: what the verse says beyond the words that land its device and signature.
+ * duel.ts scales a multiplier by it, so a verse that is only its device cannot multiply itself.
  */
-export function similarity(verse: string, source: string, lang = 'en'): number {
-  const seq = (text: string) => linesOf(text).map((l) => unitsOf(l, lang)).filter((u) => u.length > 0);
-  const mine = seq(verse);
-  const theirs = seq(source);
-  if (!mine.length || !theirs.length) return 0;
-  const theirLines = new Set(theirs.map((u) => u.join(' ')));
-  if (mine.some((u) => u.length >= 3 && theirLines.has(u.join(' ')))) return 1;
-  const pairs = (ls: string[][]) => ls.flatMap((u) => u.slice(1).map((x, i) => `${u[i]} ${x}`));
-  const myPairs = pairs(mine);
-  if (!myPairs.length) {
-    // One-word lines have no pairs; fall back to the words themselves.
-    const theirWords = new Set(theirs.flat());
-    const myWords = mine.flat();
-    return myWords.filter((w) => theirWords.has(w)).length / myWords.length;
+export function ownContent(verse: string, lang: string, used: Iterable<string>): number {
+  const taken = new Set([...used].map(fold));
+  const mine = new Set<string>();
+  for (const w of wordParts(verse, lang)) {
+    const f = fold(w);
+    if (isContentWord(w, lang) && !taken.has(f) && lexiconHas(w, lang) !== false) mine.add(f);
   }
-  const theirPairs = new Set(pairs(theirs));
-  return myPairs.filter((p) => theirPairs.has(p)).length / myPairs.length;
+  return mine.size;
+}
+
+// --- Copying ---
+
+/**
+ * The words of a line, in order, for the copy measure: its content words (or, with `all`,
+ * every word), folded. Where words are written without spaces (Chinese, Japanese, Thai) a
+ * line is read in the words of the verse it is compared with first (`known`: the longest of
+ * them that starts at each point), and the rest by the engine's segmentation: a segmenter
+ * cuts a line differently once two of its words have changed places, and a copy must not
+ * escape by that.
+ */
+function copyWords(line: string, lang: string, known: Set<string>, all = false): string[] {
+  const keep = (w: string) => HAS_LETTER.test(w) && (all || isContentWord(w, lang));
+  if (!UNSPACED.has(baseLang(lang))) return wordParts(line, lang).filter(keep).map(fold);
+  if (!known.size) return segmentedWords(line, lang).filter(keep).map(fold);
+  const cs = [...line];
+  const out: string[] = [];
+  let rest = '';
+  const flush = () => {
+    if (rest) out.push(...segmentedWords(rest, lang));
+    rest = '';
+  };
+  for (let i = 0; i < cs.length; ) {
+    let hit = '';
+    for (let n = Math.min(8, cs.length - i); n >= 2 && !hit; n--) if (known.has(cs.slice(i, i + n).join(''))) hit = cs.slice(i, i + n).join('');
+    if (hit) {
+      flush();
+      out.push(hit);
+      i += [...hit].length;
+    } else rest += cs[i++];
+  }
+  flush();
+  return out.filter(keep).map(fold);
+}
+
+/**
+ * The longest common subsequence of `a` in `b`, where two neighbours of `a` swapped
+ * ("night dark" for "dark night") still match both: which items of `a` it takes, and which
+ * items of `b` they are. Items of `b` already in `used` are not available.
+ */
+function takenInOrder(a: string[], b0: string[], used: boolean[]): { taken: boolean[]; at: number[] } {
+  // The source without what earlier lines took, remembering where each item came from.
+  const at0 = b0.map((_, j) => j).filter((j) => !used[j]);
+  const b = at0.map((j) => b0[j]);
+  const n = a.length;
+  const m = b.length;
+  const L: number[][] = Array.from({ length: n + 1 }, () => new Array<number>(m + 1).fill(0));
+  for (let i = 1; i <= n; i++) {
+    for (let j = 1; j <= m; j++) {
+      let v = Math.max(L[i - 1][j], L[i][j - 1]);
+      if (a[i - 1] === b[j - 1]) v = Math.max(v, L[i - 1][j - 1] + 1);
+      if (i > 1 && j > 1 && a[i - 1] === b[j - 2] && a[i - 2] === b[j - 1] && a[i - 1] !== a[i - 2]) v = Math.max(v, L[i - 2][j - 2] + 2);
+      L[i][j] = v;
+    }
+  }
+  const taken = new Array<boolean>(n).fill(false);
+  const at: number[] = [];
+  let i = n;
+  let j = m;
+  while (i > 0 && j > 0) {
+    if (a[i - 1] === b[j - 1] && L[i][j] === L[i - 1][j - 1] + 1) {
+      taken[i - 1] = true;
+      at.push(at0[j - 1]);
+      i--;
+      j--;
+    } else if (i > 1 && j > 1 && a[i - 1] === b[j - 2] && a[i - 2] === b[j - 1] && a[i - 1] !== a[i - 2] && L[i][j] === L[i - 2][j - 2] + 2) {
+      taken[i - 1] = taken[i - 2] = true;
+      at.push(at0[j - 1], at0[j - 2]);
+      i -= 2;
+      j -= 2;
+    } else if (L[i - 1][j] >= L[i][j - 1]) i--;
+    else j--;
+  }
+  return { taken, at };
+}
+
+export interface CopyMeasure {
+  /** Content words of the verse that follow the source's in its order (counted per line, against the whole source). */
+  taken: number;
+  /** Different content words of the verse's own: words the source does not have, each counted once however often said. */
+  own: number;
+  /** taken / (taken + own): 0 when the verse takes nothing, 1 when it adds nothing. */
+  share: number;
+}
+
+/**
+ * How much of `verse` is taken from `source`: its content words (isContentWord) that
+ * follow the source's content words in order, as a share of the verse's content words.
+ *
+ * Each line of the verse is matched against the whole source, its lines run together, so
+ * a copy is found however its lines are reordered or re-broken; each word of the source
+ * can be taken once; two neighbours swapped still match; a dropped word only leaves the
+ * rest matched; case, accents and punctuation are folded away, and the little words are
+ * not counted at all. A word of the verse's own
+ * counts once however often it is said, so a filler put between every two copied words
+ * adds one word, not half the verse. Words of the source said out of its order count on
+ * neither side. Where words are written without spaces (Chinese, Japanese, Thai) the words
+ * are the engine's segmentation (wordsOf), the verse read in the source's words (copyWords).
+ * With `all: true` every word counts, the little ones too: for a verse that keeps too few
+ * content words to tell (duel.ts isCopy).
+ */
+/**
+ * The words of a line by the engine's best segmentation: for Japanese the dictionary's
+ * (kuromoji, the same on every device) when it is loaded, otherwise wordsOf.
+ */
+export function segmentedWords(line: string, lang = 'en'): string[] {
+  if (baseLang(lang) === 'ja') {
+    const ws = japaneseWords(line);
+    if (ws) return ws.map((w) => w.surface.toLowerCase()).filter((w) => HAS_LETTER.test(w));
+  }
+  return wordsOf(line, lang);
+}
+
+export function copyOf(verse: string, source: string, lang = 'en', opts: { all?: boolean } = {}): CopyMeasure {
+  const all = opts.all ?? false;
+  const known = new Set(UNSPACED.has(baseLang(lang)) ? linesOf(source).flatMap((l) => segmentedWords(l, lang)).filter((w) => [...w].length >= 2) : []);
+  const mine = linesOf(verse).map((l) => copyWords(l, lang, known, all)).filter((ws) => ws.length > 0);
+  const theirs = linesOf(source).flatMap((l) => copyWords(l, lang, new Set(), all));
+  if (!mine.length || !theirs.length) return { taken: 0, own: 0, share: 0 };
+  const theirSet = new Set(theirs);
+  // Each word of the source is taken once: a verse that says the opponent's "stage" in every line took one word.
+  const used = new Array<boolean>(theirs.length).fill(false);
+  let taken = 0;
+  const own = new Set<string>();
+  for (const line of mine) {
+    const t = takenInOrder(line, theirs, used);
+    for (const j of t.at) used[j] = true;
+    line.forEach((w, k) => {
+      if (t.taken[k]) taken++;
+      else if (!theirSet.has(w)) own.add(w);
+    });
+  }
+  return { taken, own: own.size, share: taken + own.size ? taken / (taken + own.size) : 0 };
+}
+
+/** copyOf(verse, source, lang).share: how much of `verse` is taken from `source`, from 0 to 1. */
+export function similarity(verse: string, source: string, lang = 'en'): number {
+  return copyOf(verse, source, lang).share;
 }
 
 // --- Words as a curse reads them ---
 
 /** Digits and signs that stand in for a Latin letter inside a word ("r0se", "ro$e"). */
 const STAND_INS: Record<string, string> = { '0': 'o', '1': 'l', '3': 'e', '4': 'a', '5': 's', '7': 't', '8': 'b', $: 's', '@': 'a', '€': 'e', '£': 'l', '!': 'i', '|': 'l', '+': 't' };
-const DISGUISED_RE = /[\p{L}\p{M}\p{N}$@€£|+]+(?:['\u2019\-!][\p{L}\p{M}\p{N}$@€£|+]+)*/gu;
+const DISGUISED_RE = /[\p{L}\p{M}\p{N}$@€£|+]+(?:['’\-!][\p{L}\p{M}\p{N}$@€£|+]+)*/gu;
+/** A number with a short ending of letters: "2nd", "6pm", "1990s", "3D", "1er", "3ème", "1-й", "5km", "2번". */
+const NUMBER_THEN_LETTERS = /^\p{N}+(?:[.,:]\p{N}+)*['’\-]?\p{L}{1,3}$/u;
+/** Letters, then a number: "ke-2" (Indonesian ordinals), "No.5" read as "no" and "5". */
+const LETTERS_THEN_NUMBER = /^\p{L}{1,3}['’\-]\p{N}+$/u;
 
 /**
- * Words as a curse reads them: what a word looks like, not which code points
- * spell it. Each comes back folded, with look-alike letters of another alphabet
- * read as Latin (so a Cyrillic "о" and a Latin "o" are the same letter here,
- * whichever the curse names), and with a digit or sign written inside a word in
- * place of a letter read as the Latin letter it stands for. A stand-in that
- * stands for nothing we know, or one inside a word that is not in Latin
- * letters, is kept as "?": a curse takes it for the worst case.
+ * Is this token an honest number (digits with an ordinal, unit or plural ending, in any
+ * language), not a word with digits standing in for its letters? One digit that reads as a
+ * letter (STAND_INS) and so spells a word of four letters or more the lexicon knows ("1ove")
+ * is a disguise; "1st", "2nd", "10th" and "3D" spell nothing and are numbers.
+ */
+function honestNumber(token: string, lang: string): boolean {
+  if (LETTERS_THEN_NUMBER.test(token)) return true;
+  if (!NUMBER_THEN_LETTERS.test(token)) return false;
+  const digits = /^\p{N}+/u.exec(token)![0];
+  if (digits.length > 1 || !STAND_INS[digits]) return true;
+  const read = STAND_INS[digits] + token.slice(digits.length).replace(/^['’\-]/, '');
+  return !(letterCount(read) >= 4 && lexiconHas(read, lang) === true);
+}
+
+const nativeCache = new Map<string, Set<string>>();
+
+/** The letters of the duel's alphabet: every letter its pack is written in, folded. */
+function nativeLetters(lang: string): Set<string> {
+  const b = baseLang(lang);
+  let set = nativeCache.get(b);
+  if (!set) {
+    set = new Set<string>();
+    let pack;
+    try {
+      pack = getPack(b);
+    } catch {
+      pack = getPack('en');
+    }
+    const texts = [...pack.acrostic, ...pack.forbidden, ...Object.values(pack.relics).flat(), ...Object.values(pack.written).flat(), ...Object.values(pack.spare ?? {}).flat(), ...Object.values(pack.acrosticLines).flat()];
+    for (const t of texts) for (const ch of fold(t)) if (HAS_LETTER.test(ch)) set.add(ch);
+    if (pack.lang === b) nativeCache.set(b, set);
+  }
+  return set;
+}
+
+/** A folded letter as it reads in the duel's alphabet: itself, or the letter of the alphabet it is drawn like (UTS #39). */
+function readLetter(ch: string, native: Set<string>): string {
+  if (native.has(ch)) return ch;
+  const proto = prototypeOf(ch);
+  const lower = proto.toLowerCase();
+  if (native.has(proto)) return proto;
+  if (native.has(lower)) return lower;
+  for (const byScript of [BY_PROTOTYPE.get(proto), BY_PROTOTYPE.get(lower)]) {
+    for (const list of byScript?.values() ?? []) for (const l of list) if (native.has(l)) return l;
+  }
+  return ch;
+}
+
+/** Scripts written together within one word in these languages: no mix, only their writing. */
+const SAME_WRITING: Record<string, string[]> = { ja: ['Han', 'Hiragana', 'Katakana'], ko: ['Hangul', 'Han'], zh: ['Han', 'Bopomofo'] };
+
+/** Does a word mix alphabets (beyond what its language writes together)? */
+function mixesScripts(word: string, lang: string): boolean {
+  const together = SAME_WRITING[baseLang(lang)] ?? [];
+  const scripts = new Set([...word].filter((ch) => HAS_LETTER.test(ch)).map(scriptOf).map((s) => (together.includes(s) ? together[0] : s)));
+  return scripts.size > 1;
+}
+
+/**
+ * Words as a curse reads them: what a word looks like, not which code points spell it.
+ * `text` is the verse as typed (cleanVerse with `unmix: false`). Each word comes back folded,
+ * each letter read in the duel's alphabet: itself, or the letter of the alphabet that Unicode
+ * says it is drawn like (UTS #39 confusables), so a Cyrillic "о", an Armenian "օ", a small
+ * capital "ᴏ" and "ø" are all "o" in an English duel, and a Latin "o" is "о" in a Russian one.
+ *   - A word that mixes alphabets is a disguise, and a curse takes it at its worst: it gets
+ *     a "?", which every forbidden letter counts.
+ *   - A digit or sign written inside a word in place of a letter is read as the Latin letter
+ *     it stands for ("r0se", "ro$e"); one that stands for nothing we know, or one inside a
+ *     word not in Latin letters, is "?".
+ *   - An honest number is not a disguise: "2nd", "6pm", "1990s", "3D", "1er", "1-й", "ke-2"
+ *     keep their digits as digits, and only their letters are read.
  *
  * For Chinese, Japanese and Thai the words are the segmenter's, as everywhere else.
  */
 export function wordsAsRead(text: string, lang = 'en'): string[] {
-  if (UNSPACED.has(baseLang(lang))) return wordsOf(text, lang).map((w) => latinised(fold(w)));
+  const native = nativeLetters(lang);
+  const read = (w: string) => [...fold(w)].map((ch) => (HAS_LETTER.test(ch) ? readLetter(ch, native) : ch)).join('') + (mixesScripts(w, lang) ? '?' : '');
+  if (UNSPACED.has(baseLang(lang))) return wordsOf(text, lang).map(read);
   const out: string[] = [];
   for (const token of text.match(DISGUISED_RE) ?? []) {
     if (!HAS_LETTER.test(token)) continue;
-    const seen = [...latinised(fold(token))];
+    if (honestNumber(token, lang)) {
+      out.push(read(token));
+      continue;
+    }
+    const seen = [...read(token)];
     const latin = seen.every((ch) => !HAS_LETTER.test(ch) || /\p{Script=Latin}/u.test(ch));
-    out.push(seen.map((ch) => (/[\p{L}\p{M}'\-]/u.test(ch) ? ch : (latin && STAND_INS[ch]) || '?')).join(''));
+    out.push(seen.map((ch) => (/[\p{L}\p{M}'\-?]/u.test(ch) ? ch : (latin && STAND_INS[ch]) || '?')).join(''));
   }
   return out;
 }
 
 /**
  * The length of each word as a curse reads it: its letters, and any digit or
- * sign written inside it in place of one ("w0nd3rful" is nine letters long).
+ * sign written inside it in place of one ("w0nd3rful" is nine letters long). An
+ * honest number ("1990s") is as long as its letters.
  */
 export function wordLengthsAsRead(text: string, lang = 'en'): number[] {
   if (UNSPACED.has(baseLang(lang))) return wordsOf(text, lang).map(letterCount);
   return (text.match(DISGUISED_RE) ?? [])
     .filter((token) => HAS_LETTER.test(token))
-    .map((token) => [...token.normalize('NFC')].filter((ch) => /[\p{L}\p{N}$@€£|+!]/u.test(ch)).length);
+    .map((token) => (honestNumber(token, lang) ? letterCount(token) : [...token.normalize('NFC')].filter((ch) => /[\p{L}\p{N}$@€£|+!]/u.test(ch)).length));
 }
 
-/** A letter as a curse compares it: folded and read as Latin where it has a Latin look-alike. */
-export function letterAsRead(letter: string): string {
-  return latinised(fold(letter));
+/** A letter as a curse compares it: folded and read in the duel's alphabet (see wordsAsRead). */
+export function letterAsRead(letter: string, lang = 'en'): string {
+  return [...fold(letter)].map((ch) => (HAS_LETTER.test(ch) ? readLetter(ch, nativeLetters(lang)) : ch)).join('');
 }

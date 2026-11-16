@@ -9,6 +9,8 @@ export interface KuromojiToken {
   reading?: string;
   pronunciation?: string;
   pos: string;
+  /** 'KNOWN' for a word of the dictionary, 'UNKNOWN' for a run the analyser guessed at. */
+  word_type?: string;
 }
 
 export interface JaToken {
@@ -64,6 +66,18 @@ export function japaneseTokens(text: string): JaToken[] | null {
     out.push({ surface: s, kana, spoken });
   }
   return out;
+}
+
+/**
+ * The words of a text as the dictionary reads them, each with whether the dictionary knows
+ * it (a run of letters it only guessed at is not known). Null when the analyser is not
+ * loaded: then nothing can be said about what is a word. Punctuation is left out.
+ */
+export function japaneseWords(text: string): Array<{ surface: string; known: boolean }> | null {
+  if (!analyse) return null;
+  return analyse(text.normalize('NFKC'))
+    .filter((tok) => HAS_LETTER.test(tok.surface_form) || /ー/.test(tok.surface_form))
+    .map((tok) => ({ surface: tok.surface_form, known: tok.word_type !== 'UNKNOWN' }));
 }
 
 /** Sounds (morae) in a kana string: small ya, yu, yo and small vowels ride on the sound before them. */
