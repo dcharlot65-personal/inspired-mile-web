@@ -10,7 +10,8 @@ is compared with the English source by the cosine similarity of sentence embeddi
 
   backtranslate.py --pairs strings-pairs.json --out bt.json [--lang ar,hi] [--limit N]
 
-Input: [{id, lang, text, english}]. Output: the same, with `back`, `cos`, and `controlCos`.
+Input: [{id, lang, text, english}]. Output: the same, with `back`, `cos`, `controlCos` and
+`chrf` (character F-score of the back-translation against the English, sacrebleu).
 
 Nothing here decides what is wrong. It writes scores; a person reads the low ones
 (docs/language/pages-rest.md says which were read and what was changed).
@@ -38,22 +39,31 @@ ap.add_argument('--batch', type=int, default=16)
 args = ap.parse_args()
 
 import ctranslate2
-from transformers import AutoTokenizer
+import sentencepiece as spm
 from sentence_transformers import SentenceTransformer
+from sacrebleu.metrics import CHRF
 
-tok = AutoTokenizer.from_pretrained(args.model)
+# The model's own SentencePiece file, as CTranslate2's MADLAD-400 recipe and branch
+# lang/qa-pipeline use it. A first run of this script went through transformers'
+# AutoTokenizer, which warned of "an incorrect regex pattern ... incorrect tokenization"
+# for this model; that run was stopped and its output thrown away.
+sp = spm.SentencePieceProcessor(model_file=os.path.join(args.model, 'spiece.model'))
 translator = ctranslate2.Translator(args.model, device='cpu', compute_type='int8', inter_threads=1, intra_threads=args.threads)
 embedder = SentenceTransformer(args.embedder, device='cpu')
+chrf = CHRF()
 
 
-def back(texts):
+def back(texts, label=''):
     out = []
+    t = time.time()
     for i in range(0, len(texts), args.batch):
         chunk = texts[i:i + args.batch]
-        src = [tok.convert_ids_to_tokens(tok.encode('<2en> ' + t)) for t in chunk]
+        src = [sp.encode('<2en> ' + x, out_type=str) + ['</s>'] for x in chunk]
         res = translator.translate_batch(src, beam_size=4, max_decoding_length=256, repetition_penalty=1.1)
         for r in res:
-            out.append(tok.decode(tok.convert_tokens_to_ids(r.hypotheses[0]), skip_special_tokens=True).strip())
+            out.append(sp.decode([w for w in r.hypotheses[0] if w not in ('</s>', '<pad>')]).strip())
+        if (i // args.batch) % 5 == 0:
+            print(f'  {label} {len(out)}/{len(texts)} ({time.time() - t:.0f}s)', file=sys.stderr, flush=True)
     return out
 
 
@@ -91,11 +101,11 @@ for lang in langs:
     mine = [p for p in pairs if p['lang'] == lang]
     if args.limit:
         mine = mine[:args.limit]
-    bts = back([p['text'] for p in mine])
+    bts = back([p['text'] for p in mine], lang)
     right = cosines(bts, [p['english'] for p in mine])
     wrong = cosines(bts, [mine[(i + 1) % len(mine)]['english'] for i in range(len(mine))])
     for p, bt, r, w in zip(mine, bts, right, wrong):
-        p.update(back=bt, cos=r, controlCos=w)
+        p.update(back=bt, cos=r, controlCos=w, chrf=round(chrf.sentence_score(bt, [p['english']]).score, 1))
     done.extend(mine)
     json.dump(done, open(args.out, 'w', encoding='utf8'), ensure_ascii=False, indent=1)
     rs = sorted(right)

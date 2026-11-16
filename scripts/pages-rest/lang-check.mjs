@@ -201,26 +201,37 @@ async function languageTool(code, text) {
 }
 
 export async function grammar(strings) {
-  const out = { tool: 'LanguageTool (shared install), level picky', languages: {} };
+  const out = { tool: 'LanguageTool (shared install), level picky; each language sent as one text, one string per paragraph', languages: {} };
   for (const locale of LOCALES) {
     const code = LT[locale];
     if (!code) {
       out.languages[locale] = { checked: false, why: 'LanguageTool has no rules for this language' };
       continue;
     }
-    const hits = [];
-    let n = 0;
-    for (const [key, item] of Object.entries(strings.locales[locale])) {
-      n++;
-      for (const m of await languageTool(code, item.text)) {
-        const word = item.text.slice(m.offset, m.offset + m.length);
-        // A complaint about a value that was filled in (a name, a file, a card number) is not about the translation.
-        if (item.filled.some((f) => f.includes(word) && word.trim()) || KNOWN.has(word)) continue;
-        hits.push({ key, rule: m.rule.id, category: m.rule.category.id, message: m.message, text: item.text, at: word, suggestions: m.replacements.slice(0, 3).map((r) => r.value) });
-      }
+    // One request per language, not per string: the host answers each request in a second or
+    // more when it is loaded. Strings are paragraphs of their own (a blank line between), and
+    // each match is given back to the string its offset falls in.
+    const items = Object.entries(strings.locales[locale]);
+    const starts = [];
+    let text = '';
+    for (const [, item] of items) {
+      starts.push(text.length);
+      text += item.text.replace(/\n+/g, ' ') + '\n\n';
     }
-    out.languages[locale] = { checked: true, code, strings: n, hits };
-    console.error(`${locale}: ${n} strings, ${hits.length} hits`);
+    const hits = [];
+    for (const m of await languageTool(code, text)) {
+      let i = starts.length - 1;
+      while (i > 0 && starts[i] > m.offset) i--;
+      const [key, item] = items[i];
+      const at = m.offset - starts[i];
+      if (at + m.length > item.text.length) continue; // a match across two strings is about neither
+      const word = item.text.slice(at, at + m.length);
+      // A complaint about a value that was filled in (a name, a file, a card number) is not about the translation.
+      if (item.filled.some((f) => f.includes(word) && word.trim()) || KNOWN.has(word)) continue;
+      hits.push({ key, rule: m.rule.id, category: m.rule.category.id, message: m.message, text: item.text, at: word, suggestions: m.replacements.slice(0, 3).map((r) => r.value) });
+    }
+    out.languages[locale] = { checked: true, code, strings: items.length, hits };
+    console.error(`${locale}: ${items.length} strings, ${hits.length} hits`);
   }
   return out;
 }
@@ -248,6 +259,33 @@ export async function selftest() {
       const matches = await languageTool(LT[locale], sentence);
       console.log(`${matches.length ? 'CAUGHT ' : 'MISSED '} grammar ${locale}: "${sentence}" -> ${matches.map((m) => m.rule.id).join(', ') || 'nothing'}`);
       if (!matches.length) wrong++;
+    }
+    // The way grammar() really asks: one text per language. The bad sentence sits between two
+    // strings of the language's own pwa area, and its match must come back to it.
+    const pwa = (await import(path.join(ROOT, 'src/i18n/pages/pwa/de.ts'))).default;
+    for (const [locale, [sentence]] of Object.entries(BAD_SENTENCE)) {
+      const own = (await import(path.join(ROOT, 'src/i18n/pages/pwa', `${locale}.ts`))).default;
+      const fake = { locales: Object.fromEntries(LOCALES.map((l) => [l, {}])) };
+      fake.locales[locale] = {
+        before: { text: own['pwa.install.dismiss'] ?? pwa['pwa.install.dismiss'], filled: [] },
+        bad: { text: sentence, filled: [] },
+        after: { text: own['pwa.install.accept'] ?? pwa['pwa.install.accept'], filled: [] },
+      };
+      const only = { ...fake, locales: { [locale]: fake.locales[locale] } };
+      const saved = LOCALES.slice();
+      LOCALES.length = 0;
+      LOCALES.push(locale);
+      let result;
+      try {
+        result = await grammar(only);
+      } finally {
+        LOCALES.length = 0;
+        LOCALES.push(...saved);
+      }
+      const keys = result.languages[locale].hits.map((h) => h.key);
+      const ok = keys.includes('bad');
+      console.log(`${ok ? 'CAUGHT ' : 'MISSED '} grammar, batched, ${locale}: hits on [${keys.join(', ') || 'nothing'}]`);
+      if (!ok) wrong++;
     }
   } else {
     console.log('SKIPPED grammar: no LT_URL');

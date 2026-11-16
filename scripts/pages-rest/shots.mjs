@@ -21,6 +21,7 @@ const VIEWPORTS = { phone: { width: 390, height: 844 }, desktop: { width: 1280, 
 mkdirSync(out, { recursive: true });
 
 const settle = (page) => page.waitForTimeout(700);
+const IPHONE = 'Mozilla/5.0 (iPhone; CPU iPhone OS 26_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.1 Mobile/15E148 Safari/604.1';
 const asTeacher = (page) => page.addInitScript(() => {
   localStorage.setItem('inspired-mile-classroom-consent', 'teacher');
   localStorage.setItem('inspired-mile-teacher-wizard-done', '1');
@@ -44,6 +45,8 @@ const VIEWS = [
   { name: 'viewer', path: '/viewer' },
   { name: 'vr', path: '/vr' },
   { name: 'offline', path: '/offline.html', screen: true },
+  // The install guidance as Safari on an iPhone gets it (src/lib/pwa.ts), over the season page.
+  { name: 'install-ios', path: '/season', screen: true, context: { userAgent: IPHONE, hasTouch: true }, act: async (p) => { await p.locator('#pwa-install').waitFor(); } },
 ];
 
 const browser = await chromium.launch();
@@ -54,8 +57,9 @@ for (const locale of localeArg.split(',')) {
       // A context of its own for each view: what one view stores (the consent given, the tour
       // seen) must not change the next. No service worker: the requests it makes are not seen
       // by page.route, and the fixtures would be lost.
-      const context = await browser.newContext({ viewport: VIEWPORTS[width], serviceWorkers: 'block' });
+      const context = await browser.newContext({ viewport: VIEWPORTS[width], serviceWorkers: 'block', ...(view.context ?? {}) });
       const page = await context.newPage();
+      page.setDefaultTimeout(15000);
       try {
         await startIn(page, locale);
         await mockApi(page);
@@ -87,7 +91,9 @@ for (const locale of localeArg.split(',')) {
         }
       } catch (err) {
         trouble++;
-        console.log(`FAILED ${locale} ${width} ${view.name}: ${String(err).split('\n')[0]}`);
+        console.log(`FAILED ${locale} ${width} ${view.name}: ${String(err).split('\n').slice(0, 6).join(' | ')}`);
+        // What was on screen when it failed, to see what was in the way.
+        await page.screenshot({ path: `${out}/${locale}-${width}-${view.name}-FAILED.png` }).catch(() => {});
       } finally {
         await context.close();
       }
