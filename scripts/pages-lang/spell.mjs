@@ -32,10 +32,15 @@ function rejects(dict, words) {
   return new Set(r.stdout.split('\n').filter(Boolean));
 }
 
+// Italian and French elide an article or a preposition onto the next word (dell’Africa, l’arène). The
+// elided forms are a closed class: the word after one is spelled on its own. Anything else with an
+// apostrophe is spelled whole, so a misspelled prefix is still seen.
+const ELIDED = { it: /^(?:l|un|dell|nell|all|dall|sull|coll|quell|quest|bell|sant|d|c|s|m|t|v|n)['’]/iu, fr: /^(?:l|d|j|m|n|s|t|c|qu|jusqu|lorsqu|puisqu|quoiqu)['’]/iu };
+
 function wordsOf(text, lang) {
   if (lang === 'th') return [...new Intl.Segmenter('th', { granularity: 'word' }).segment(text)].filter((s) => s.isWordLike && /\p{Script=Thai}/u.test(s.segment)).map((s) => s.segment);
   // Letters and combining marks, with an apostrophe or hyphen inside a word.
-  return (text.normalize('NFC').match(/[\p{L}\p{M}]+(?:['’\-][\p{L}\p{M}]+)*/gu) ?? []).filter((w) => !/^\p{Script=Latin}+$/u.test(w) || lang === 'en' || ['es', 'fr', 'de', 'it', 'pt', 'pl', 'vi', 'id'].includes(lang));
+  return (text.normalize('NFC').match(/[\p{L}\p{M}]+(?:['’\-][\p{L}\p{M}]+)*/gu) ?? []).map((w) => (ELIDED[lang] ? w.replace(ELIDED[lang], '') : w)).filter((w) => !/^\p{Script=Latin}+$/u.test(w) || lang === 'en' || ['es', 'fr', 'de', 'it', 'pt', 'pl', 'vi', 'id'].includes(lang));
 }
 
 // Proof that the tool can flag something: a misspelling must be rejected and the right word accepted.
