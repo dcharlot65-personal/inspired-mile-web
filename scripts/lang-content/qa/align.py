@@ -19,7 +19,7 @@ here = os.path.dirname(os.path.abspath(__file__))
 # The English options, as pairs.mjs wrote them (every pair carries its English).
 english = {}
 rows = []
-for f in sorted(glob.glob(os.path.join(src, 'bt*-*.json'))):
+for f in sorted(glob.glob(os.path.join(src, 'bt-[0-9]-*.json')) + glob.glob(os.path.join(src, 'bto-[0-9]-*.json'))):
     engine = 'opus' if os.path.basename(f).startswith('bto-') else 'madlad'
     for r in json.load(open(f, encoding='utf8')):
         m = re.fullmatch(r'(?:alignctl:)?trivia\.(\d+)\.o(\d)', r['id'])

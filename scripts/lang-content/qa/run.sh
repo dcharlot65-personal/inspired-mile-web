@@ -6,6 +6,8 @@
 #   bash scripts/lang-content/qa/run.sh install-opus     OPUS-MT models into $TASK/opus (this task's own directory), under memguard
 #   bash scripts/lang-content/qa/run.sh detach-opus      back-translate every language with OPUS-MT, detached, under memguard -> $OUT/bto-<lang>.json
 #   bash scripts/lang-content/qa/run.sh align            does each translated option still mean its own English option? -> $OUT/align.json
+#   bash scripts/lang-content/qa/run.sh requeue          after the pairs changed: restart both, reusing every unchanged result
+#   bash scripts/lang-content/qa/run.sh stop
 #   bash scripts/lang-content/qa/run.sh status
 # MADLAD, the embedder, Hunspell and the Python environment are the shared language pipeline's
 # installation (LANGQA_HOME), used read-only. The OPUS-MT models are this task's own ($TASK/opus),
@@ -20,7 +22,20 @@ HERE=$(cd "$(dirname "$0")" && pwd)
 mkdir -p "$OUT"
 case "${1:-}" in
   pairs) rm -f "$OUT"/pairs-*.json; node "$HERE/pairs.mjs" "$OUT" ;;
-  stop) touch "$OUT/STOP"; [ -f "$OUT/meaning.pid" ] && pkill -P "$(cat "$OUT/meaning.pid")" 2>/dev/null; kill "$(cat "$OUT/meaning.pid")" 2>/dev/null; sleep 1; rm -f "$OUT/STOP" "$OUT"/*.tmp; echo stopped ;;
+  stop)
+    # This task's two jobs only, by the pids their own start wrote (and their children).
+    touch "$OUT/STOP"
+    for e in meaning opus; do
+      [ -f "$OUT/$e.pid" ] || continue
+      p=$(cat "$OUT/$e.pid"); for c in $(pgrep -P "$p" 2>/dev/null); do pkill -P "$c" 2>/dev/null; kill "$c" 2>/dev/null; done; kill "$p" 2>/dev/null
+    done
+    sleep 2; rm -f "$OUT/STOP" "$OUT"/*.tmp; echo stopped ;;
+  requeue)
+    # After the pairs changed: stop both jobs, keep what they did as bt-old-* / bto-old-* (bt.py reuses any
+    # result whose text has not changed), and start both again on the new pairs.
+    bash "$0" stop
+    for f in "$OUT"/bt-[0-9]-*.json "$OUT"/bto-[0-9]-*.json; do [ -e "$f" ] || continue; b=$(basename "$f"); mv "$f" "$OUT/${b%%-*}-old-${b#*-}"; done
+    bash "$0" detach-meaning; bash "$0" detach-opus ;;
   spell)
     ls "$LANGQA_HOME/dict" | tr '\n' ' '; echo
     for f in "$OUT"/text-*.txt; do
