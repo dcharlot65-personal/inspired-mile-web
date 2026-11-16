@@ -13,3 +13,150 @@ hi	spell:*	not usable	not usable as run: Hunspell splits Devanagari words at com
 ko	spell:*	not usable	not usable as run: every word with a particle attached (셰익스피어의, 햄릿은) is unknown to the dictionary; nothing concluded from it
 th	spell:*	not usable	not usable as run: Thai is written without spaces between words, so Hunspell reads whole phrases as one word; nothing concluded from it
 th	trivia.170.q	ok	พายุพิโรธ is Wikidata's Thai label of The Tempest; MADLAD renders it word by word ("Storm Pyro")
+th	trivia.10.q	ok	reads: "…" comes from which play; the flag is OPUS-MT th-en's
+th	trivia.102.o3	ok	reads: นักบวช: a monk, a priest; the flag is OPUS-MT th-en's
+th	trivia.107.o1	ok	reads: จดหมาย: a letter; the flag is OPUS-MT th-en's
+th	trivia.107.o3	ok	reads: ภาพเหมือน: a portrait; the flag is OPUS-MT th-en's
+th	trivia.110.o0	ok	reads: burned down during a performance; the flag is OPUS-MT th-en's
+th	trivia.110.o2	ok	reads: collapsed because of a storm; the flag is OPUS-MT th-en's
+th	trivia.110.o3	ok	reads: demolished to be built again; the flag is OPUS-MT th-en's
+th	trivia.114.o3	ok	reads: with a short knife: a dagger; the flag is OPUS-MT th-en's
+th	trivia.119.q	ok	reads: before which battle the St Crispin's Day speech is given; the flag is OPUS-MT th-en's
+th	trivia.121.o0	ok	reads: หีบตะกั่ว: the lead casket; the flag is OPUS-MT th-en's
+th	trivia.121.o2	ok	reads: the silver casket; the flag is OPUS-MT th-en's
+th	trivia.121.o3	ok	reads: the bronze casket; the flag is OPUS-MT th-en's
+th	trivia.124.o1	ok	reads: their plans for ruling; the flag is OPUS-MT th-en's
+th	trivia.124.o2	ok	reads: their chances of marriage; the flag is OPUS-MT th-en's
+th	trivia.124.o3	ok	reads: their military strength; the flag is OPUS-MT th-en's
+th	trivia.128.o1	ok	reads: a harvest dance; the flag is OPUS-MT th-en's
+th	trivia.128.o3	ok	reads: a midsummer revel; the flag is OPUS-MT th-en's
+th	trivia.130.q	ok	reads: which character leads the amateur actors; the flag is OPUS-MT th-en's
+th	trivia.132.o1	ok	reads: claims to be the island's creator; the flag is OPUS-MT th-en's
+th	trivia.132.o2	ok	reads: claims to be the island's protector; the flag is OPUS-MT th-en's
+th	trivia.138.o1	ok	reads: ยานอนหลับ: a sleeping draught; the flag is OPUS-MT th-en's
+th	trivia.141.q	ok	reads: in which play the bumbling constable Dogberry appears; the flag is OPUS-MT th-en's
+th	trivia.142.o3	ok	reads: is executed; the flag is OPUS-MT th-en's
+th	trivia.143.o3	ok	reads: สาวใช้: a maidservant; the flag is OPUS-MT th-en's
+th	trivia.143.q	ok	reads: who Hermione is; the flag is OPUS-MT th-en's
+th	trivia.149.q	ok	reads: the name of the duke who disguises himself as a cleric; the flag is OPUS-MT th-en's
+th	trivia.153.o1	ok	reads: written in free verse instead of iambic pentameter; the flag is OPUS-MT th-en's
+th	trivia.154.o0	ok	reads: หลังค่อม: a hunched back; the flag is OPUS-MT th-en's
+th	trivia.155.q	ok	reads: who Sycorax is in พายุพิโรธ (Wikidata's Thai label of The Tempest); the flag is OPUS-MT th-en's
+th	trivia.156.q	ok	reads: the rhyme scheme of a Shakespearean sonnet; the flag is OPUS-MT th-en's
+th	trivia.157.q	ok	reads: in which play the stage direction "Exit, pursued by a bear" appears; the flag is OPUS-MT th-en's
+th	trivia.170.o3	ok	reads: the narrator; the flag is OPUS-MT th-en's
+th	trivia.170.q	ok	reads: who speaks the epilogue at the end of พายุพิโรธ; the flag is OPUS-MT th-en's
+th	trivia.172.o1	ok	reads: means only a convent; the flag is OPUS-MT th-en's
+th	trivia.172.q	ok	reads: the double meaning of "nunnery"; the flag is OPUS-MT th-en's
+th	trivia.174.o3	ok	reads: ไปเป็นฤๅษี: becomes a hermit; the flag is OPUS-MT th-en's
+th	trivia.177.o0	ok	reads: ความหึงหวง: jealousy; the flag is OPUS-MT th-en's
+th	trivia.178.q	ok	reads: what play the craftsmen perform at the wedding; the flag is OPUS-MT th-en's
+th	trivia.179.o3	ok	reads: boys acted only in comedies; the flag is OPUS-MT th-en's
+th	trivia.180.q	ok	reads: in which play the exiled duke says "…" (Duke Senior is the exiled duke); the flag is OPUS-MT th-en's
+th	trivia.181.o1	ok	reads: tragicomedy; the flag is OPUS-MT th-en's
+th	trivia.181.o2	ok	reads: ละครชนบท: country (pastoral) plays; the flag is OPUS-MT th-en's
+th	trivia.181.o3	ok	reads: ละครหน้ากาก: masque plays; the flag is OPUS-MT th-en's
+th	trivia.181.q	ok	reads: what the late plays are called; the flag is OPUS-MT th-en's
+th	trivia.183.o3	ok	reads: ไม่มีใครเลย: none of them; the flag is OPUS-MT th-en's
+th	trivia.185.o1	ok	reads: a large sum of money; the flag is OPUS-MT th-en's
+th	trivia.185.o3	ok	reads: that she leave the convent; the flag is OPUS-MT th-en's
+th	trivia.186.q	ok	reads: who says "…"; the flag is OPUS-MT th-en's
+th	trivia.187.o1	ok	reads: storage under the stage; the flag is OPUS-MT th-en's
+th	trivia.187.o2	ok	reads: backstage for the actors; the flag is OPUS-MT th-en's
+th	trivia.187.o3	ok	reads: seats for the musicians; the flag is OPUS-MT th-en's
+th	trivia.187.q	ok	reads: what the pit or yard was; the flag is OPUS-MT th-en's
+th	trivia.188.o0	ok	reads: the poem itself ("…"); the flag is OPUS-MT th-en's
+th	trivia.188.o3	ok	reads: a painting of the beloved; the flag is OPUS-MT th-en's
+th	trivia.19.q	ok	reads: which character is the queen of the fairies (ภูต); the flag is OPUS-MT th-en's
+th	trivia.190.o0	ok	reads: must choose the right casket of three (gold, silver, lead); the flag is OPUS-MT th-en's
+th	trivia.190.o1	ok	reads: must defeat one another in a fight; the flag is OPUS-MT th-en's
+th	trivia.190.o2	ok	reads: must solve a riddle; the flag is OPUS-MT th-en's
+th	trivia.191.o1	ok	reads: พ่อเฒ่ากาลเวลา: Father Time; the flag is OPUS-MT th-en's
+th	trivia.194.o1	ok	reads: เพดานผ้า: a cloth ceiling, the canopy; the flag is OPUS-MT th-en's
+th	trivia.194.o2	ok	reads: ฟากฟ้า: the firmament; the flag is OPUS-MT th-en's
+th	trivia.195.q	ok	reads: in which play a character asks the oracle at Delphi; the flag is OPUS-MT th-en's
+th	trivia.197.o2	ok	reads: a jester's cap; the flag is OPUS-MT th-en's
+th	trivia.199.o2	ok	reads: ฝูงชน: the mob; the flag is OPUS-MT th-en's
+th	trivia.199.q	ok	reads: what the standing audience in the yard was called; the flag is OPUS-MT th-en's
+th	trivia.22.o1	ok	reads: มีดสั้น: a dagger; the flag is OPUS-MT th-en's
+th	trivia.27.q	ok	reads: what Shylock demands as his bond; the flag is OPUS-MT th-en's
+th	trivia.3.q	ok	reads: which character says "…"; the flag is OPUS-MT th-en's
+th	trivia.31.q	ok	reads: in which play Beatrice and Benedick appear; the flag is OPUS-MT th-en's
+th	trivia.32.o0	ok	reads: มีดสั้น: a dagger; the flag is OPUS-MT th-en's
+th	trivia.4.o2	ok	reads: มหากาพย์: epics; the flag is OPUS-MT th-en's
+th	trivia.41.o0	ok	reads: นายทหารถือธง: the officer who bears the flag, ensign; the flag is OPUS-MT th-en's
+th	trivia.41.o3	ok	reads: รองแม่ทัพ: the deputy commander, Cassio's lieutenancy; the flag is OPUS-MT th-en's
+th	trivia.46.q	ok	reads: which character says "…"; the flag is OPUS-MT th-en's
+th	trivia.48.o0	ok	reads: the pansy (love-in-idleness); the flag is OPUS-MT th-en's
+th	trivia.52.o3	ok	reads: ละครปัญหา: the problem plays; the flag is OPUS-MT th-en's
+th	trivia.53.q	ok	reads: which character says "…"; the flag is OPUS-MT th-en's
+th	trivia.60.o0	ok	reads: drinking a sleeping potion; the flag is OPUS-MT th-en's
+th	trivia.66.o3	ok	reads: he has no opinion; the flag is OPUS-MT th-en's
+th	trivia.68.o0	ok	reads: ลา: a donkey (the checker read it as "goodbye"); the flag is OPUS-MT th-en's
+th	trivia.72.q	ok	reads: which play has a character named Shylock; the flag is OPUS-MT th-en's
+th	trivia.75.o0	ok	reads: เธนแห่งกลามิส: Thane of Glamis; the flag is OPUS-MT th-en's
+th	trivia.75.o3	ok	reads: Earl of Northumberland; the flag is OPUS-MT th-en's
+th	trivia.75.q	ok	reads: what rank (บรรดาศักดิ์) Macbeth holds at the start; the flag is OPUS-MT th-en's
+th	trivia.83.o3	ok	reads: Cicero and Casca; the flag is OPUS-MT th-en's
+th	trivia.84.o0	ok	reads: สุขนาฏกรรม: comedy; the flag is OPUS-MT th-en's
+th	trivia.90.o1	ok	reads: Thane of Glamis; the flag is OPUS-MT th-en's
+th	trivia.94.o1	ok	reads: a dagger; the flag is OPUS-MT th-en's
+th	trivia.97.q	ok	reads: what the shrew is called; the flag is OPUS-MT th-en's
+th	trivia.132.o0	fixed	said Caliban claims to be the island's rightful owner (เจ้าของ); the English says ruler: now ผู้ปกครอง
+th	trivia.40.q	fixed	ungrammatical (กลายเป็นมีหัวเป็นลา); now ตัวละครถูกเปลี่ยนให้มีหัวเป็นลา, a character is given a donkey's head
+hi	trivia.107.o0	ok	reads: with a handkerchief; the flag is OPUS-MT hi-en's
+hi	trivia.110.o3	ok	reads: it was pulled down to be built again; the flag is OPUS-MT hi-en's
+hi	trivia.110.q	ok	reads: what happened to the Globe Theatre in 1613; the flag is OPUS-MT hi-en's
+hi	trivia.114.o2	ok	reads: by drowning; the flag is OPUS-MT hi-en's
+hi	trivia.121.o0	ok	reads: सीसे की पेटी: the lead casket; the flag is OPUS-MT hi-en's
+hi	trivia.121.o3	ok	reads: the bronze casket; the flag is OPUS-MT hi-en's
+hi	trivia.125.o1	ok	reads: Hamlet in Hamlet; the flag is OPUS-MT hi-en's
+hi	trivia.128.o3	ok	reads: a midsummer celebration; the flag is OPUS-MT hi-en's
+hi	trivia.135.o2	ok	reads: (on a charge) of murder; the flag is OPUS-MT hi-en's
+hi	trivia.135.o3	ok	reads: (on a charge) of treason; the flag is OPUS-MT hi-en's
+hi	trivia.136.q	ok	reads: the name of the clown in Twelfth Night; the flag is OPUS-MT hi-en's
+hi	trivia.14.o0	ok	reads: मॉन्टेग्यू: Montague (a name); the flag is OPUS-MT hi-en's
+hi	trivia.143.o1	ok	reads: a shepherdess; the flag is OPUS-MT hi-en's
+hi	trivia.143.o3	ok	reads: a maidservant; the flag is OPUS-MT hi-en's
+hi	trivia.148.q	ok	reads: which sonnet begins "…"; the flag is OPUS-MT hi-en's
+hi	trivia.151.o1	ok	reads: Goneril, Rosalind and Cordelia (the table's forms); the flag is OPUS-MT hi-en's
+hi	trivia.153.o3	ok	reads: it was printed apart from the other sonnets; the flag is OPUS-MT hi-en's
+hi	trivia.154.o0	ok	reads: कूबड़: a hump; the flag is OPUS-MT hi-en's
+hi	trivia.154.o2	ok	reads: टेढ़ा पैर: a club foot; the flag is OPUS-MT hi-en's
+hi	trivia.158.o1	ok	reads: Hamlet, as a given name; the flag is OPUS-MT hi-en's
+hi	trivia.158.o2	ok	reads: Edmund, as a given name; the flag is OPUS-MT hi-en's
+hi	trivia.160.q	ok	reads: which character goes among his soldiers in disguise before the battle; the flag is OPUS-MT hi-en's
+hi	trivia.170.o3	ok	reads: सूत्रधार: the narrator; the flag is OPUS-MT hi-en's
+hi	trivia.172.q	ok	reads: the double meaning of "nunnery"; the flag is OPUS-MT hi-en's
+hi	trivia.174.o1	ok	reads: flees to France; the flag is OPUS-MT hi-en's
+hi	trivia.174.o3	ok	reads: becomes an ascetic, a hermit; the flag is OPUS-MT hi-en's
+hi	trivia.176.q	ok	reads: how much time passes between Acts 3 and 4; the flag is OPUS-MT hi-en's
+hi	trivia.177.o1	ok	reads: ambition; the flag is OPUS-MT hi-en's
+hi	trivia.177.o3	ok	reads: revenge; the flag is OPUS-MT hi-en's
+hi	trivia.181.o1	ok	reads: tragicomedy; the flag is OPUS-MT hi-en's
+hi	trivia.181.o3	ok	reads: मास्क: masque (the genre); the flag is OPUS-MT hi-en's
+hi	trivia.187.o3	ok	reads: the musicians' place; the flag is OPUS-MT hi-en's
+hi	trivia.191.o2	ok	reads: दैववाणी: the oracle; the flag is OPUS-MT hi-en's
+hi	trivia.193.q	ok	reads: what trick Maria and Sir Toby play on Malvolio; the flag is OPUS-MT hi-en's
+hi	trivia.194.o1	ok	reads: चँदोवा: the canopy; the flag is OPUS-MT hi-en's
+hi	trivia.194.o2	ok	reads: आकाशमंडल: the firmament; the flag is OPUS-MT hi-en's
+hi	trivia.198.q	ok	reads: which play has the "band of brothers" speech; the flag is OPUS-MT hi-en's
+hi	trivia.22.o1	ok	reads: with a dagger; the flag is OPUS-MT hi-en's
+hi	trivia.26.q	ok	reads: which character is told "…"; the flag is OPUS-MT hi-en's
+hi	trivia.27.q	ok	reads: what Shylock asks as surety; the flag is OPUS-MT hi-en's
+hi	trivia.4.o2	ok	reads: epics; the flag is OPUS-MT hi-en's
+hi	trivia.41.o3	ok	reads: lieutenant; the flag is OPUS-MT hi-en's
+hi	trivia.46.q	ok	reads: which character says "…"; the flag is OPUS-MT hi-en's
+hi	trivia.48.o0	ok	reads: the pansy (love-in-idleness); the flag is OPUS-MT hi-en's
+hi	trivia.48.o3	ok	reads: बनफ़शा: the violet; the flag is OPUS-MT hi-en's
+hi	trivia.53.q	ok	reads: which character says "…"; the flag is OPUS-MT hi-en's
+hi	trivia.60.o0	ok	reads: by drinking a sleeping draught; the flag is OPUS-MT hi-en's
+hi	trivia.60.o2	ok	reads: by holding her breath; the flag is OPUS-MT hi-en's
+hi	trivia.63.o1	ok	reads: Montague (a name); the flag is OPUS-MT hi-en's
+hi	trivia.64.q	ok	reads: in which country most of the comedies are set; the flag is OPUS-MT hi-en's
+hi	trivia.68.o0	ok	reads: a donkey's; the flag is OPUS-MT hi-en's
+hi	trivia.77.o1	ok	reads: she is poisoned; the flag is OPUS-MT hi-en's
+hi	trivia.83.o3	ok	reads: Cicero and Casca; the flag is OPUS-MT hi-en's
+hi	trivia.9.o0	ok	reads: बालकनी में: on the balcony; the flag is OPUS-MT hi-en's
+hi	trivia.94.o0	ok	reads: with a pillow (smothering her); the flag is OPUS-MT hi-en's
+hi	trivia.94.o1	ok	reads: with a dagger; the flag is OPUS-MT hi-en's

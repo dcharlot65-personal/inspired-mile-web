@@ -18,7 +18,7 @@ mkdirSync(DATA, { recursive: true });
 const reviewed = new Set(readTsv(join(HERE, 'qa', 'review.tsv')).map((r) => `${r[0]}/${r[1]}`));
 
 const ENGINES = { madlad: 'bt', opus: 'bto' };
-const summary = { models: 'google/madlad400-3b-mt (CTranslate2 int8); Helsinki-NLP OPUS-MT <lang>-en, Portuguese through opus-mt-ROMANCE-en (CTranslate2 int8); embedder sentence-transformers/all-MiniLM-L6-v2', threshold: T, engines: {} };
+const summary = { thresholdRule: 'per language and engine: the lower of --threshold and the best control score + 0.05', models: 'google/madlad400-3b-mt (CTranslate2 int8); Helsinki-NLP OPUS-MT <lang>-en, Portuguese through opus-mt-ROMANCE-en (CTranslate2 int8); embedder sentence-transformers/all-MiniLM-L6-v2', threshold: T, engines: {} };
 for (const [engine, prefix] of Object.entries(ENGINES)) {
   summary.engines[engine] = {};
   for (const l of LANGS) {
@@ -27,9 +27,14 @@ for (const [engine, prefix] of Object.entries(ENGINES)) {
     const rows = files.flatMap((f) => JSON.parse(readFileSync(join(dir, f), 'utf8')));
     const real = rows.filter((r) => !r.id.includes('control:') && !r.id.startsWith('alignctl:'));
     const controls = rows.filter((r) => r.id.startsWith('control:'));
-    const flagged = real.filter((r) => r.cos < T).sort((a, b) => a.cos - b.cos);
+    // The controls say what an unrelated sentence scores in this language with this model. Where the model
+    // translates poorly (OPUS-MT hi-en: median 0.55 for correct questions) a fixed threshold flags half the
+    // content; a string is flagged when it scores no better than the best control did (+0.05), or under T.
+    const maxControl = Math.max(...controls.map((r) => r.cos));
+    const Tl = Math.min(T, Math.round((maxControl + 0.05) * 100) / 100);
+    const flagged = real.filter((r) => r.cos < Tl).sort((a, b) => a.cos - b.cos);
     const cos = real.map((r) => r.cos).sort((a, b) => a - b);
-    summary.engines[engine][l] = { covered: files.length === 2 ? 'all strings' : files[0].includes('-1-') ? 'trivia only' : 'all but trivia', strings: real.length, flagged: flagged.length, flaggedTrivia: flagged.filter((r) => r.id.startsWith('trivia.')).length, controlsCaught: controls.filter((r) => r.cos < T).length, controls: controls.length, medianCos: cos[Math.floor(cos.length / 2)], beams: [...new Set(rows.map((r) => r.beam ?? 4))], flaggedIds: flagged.map((r) => r.id) };
+    summary.engines[engine][l] = { covered: files.length === 2 ? 'all strings' : files[0].includes('-1-') ? 'trivia only' : 'all but trivia', strings: real.length, flagged: flagged.length, flaggedTrivia: flagged.filter((r) => r.id.startsWith('trivia.')).length, controlsCaught: controls.filter((r) => r.cos < Tl).length, controls: controls.length, threshold: Tl, maxControl, medianCos: cos[Math.floor(cos.length / 2)], beams: [...new Set(rows.map((r) => r.beam ?? 4))], flaggedIds: flagged.map((r) => r.id) };
     if (list === l && (!only || only === engine)) for (const r of flagged) console.log(`${reviewed.has(`${l}/${r.id}`) ? '  ' : '* '}${engine} ${r.cos.toFixed(2)} ${r.id}\n   ${r.text}\n   BACK: ${r.back}\n   EN:   ${r.english}`);
   }
 }

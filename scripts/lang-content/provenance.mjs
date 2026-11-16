@@ -136,9 +136,11 @@ P('## Checks', '', 'What the tools that did not write the text found, and what w
 P('**Mechanical** (`npx vitest run src/i18n/pages`): the same keys and {placeholders} as English in every area; every question with its four options; quotations and numbers kept; every name option its source\'s name or a listed form; no question whose script gives the answer away; the player addressed as each core locale says (du, vous, ты, kamu, 해요체, …); every challenge\'s missing words in its line, in order, filling back to the line; generated files what their sources make. Each rule is also fed a known-bad input and must object.', '');
 if (bt) {
   P('**Back-translation** (each string into English by a translation model, compared with the English source by sentence embedding; a string under the threshold is flagged and read). Twelve controls per language pair a translation with the wrong English sentence and must be flagged.', '',
-    '| Language | Engine | Strings | Flagged (trivia) | Controls caught | Median similarity |', '|---|---|---|---|---|---|');
-  for (const [eng, langs] of Object.entries(bt.engines)) for (const [l, s] of Object.entries(langs)) P(`| ${l} | ${eng} | ${s.status ?? s.strings} | ${s.status ? '' : `${s.flagged} (${s.flaggedTrivia})`} | ${s.status ? '' : `${s.controlsCaught}/${s.controls}`} | ${s.medianCos ?? ''} |`);
-  P('', `Models: ${bt.models}. Threshold ${bt.threshold}.`, '');
+    '| Language | Engine | Strings | Threshold | Flagged (trivia) | Controls caught | Median similarity |', '|---|---|---|---|---|---|---|');
+  for (const [eng, langs] of Object.entries(bt.engines)) for (const [l, s] of Object.entries(langs)) if (!s.status) P(`| ${l} | ${eng} | ${s.strings} (${s.covered}) | ${s.threshold} | ${s.flagged} (${s.flaggedTrivia}) | ${s.controlsCaught}/${s.controls} | ${s.medianCos} |`);
+  const notRun = Object.entries(bt.engines).flatMap(([eng, langs]) => Object.entries(langs).filter(([, s]) => s.status).map(([l]) => `${l} (${eng})`));
+  if (notRun.length) P('', `Not run: ${notRun.join(', ')}.`);
+  P('', `Models: ${bt.models}. Threshold: ${bt.thresholdRule}, at most ${bt.threshold}. A threshold under the controls' scores would flag nothing they could not; where a model translates a language poorly, the threshold falls to what an unrelated sentence scores, and below it a string cannot be told from one.`, '');
 } else P('**Back-translation**: not run to completion; see the report of this branch.', '');
 if (al) {
   P('**Answers** (`qa/align.py`): the back-translation of each translated option, compared with all four English options of its question. Misplaced means closer to another option than to its own: a changed answer, or a swap. Ten controls per language file one option\'s translation under another\'s place and must come out misplaced.', '',
