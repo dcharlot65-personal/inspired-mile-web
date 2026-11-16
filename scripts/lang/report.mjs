@@ -35,6 +35,9 @@ const grammarFirst = opt(`${R}grammar-first.json`);
 const bt = opt(`${R}bt.json`);
 const review = opt(`${R}review.json`);
 const adoption = opt(`${R}adoption.json`);
+// What the engineer decided, reading each correction that survived the tools (and the rest): { languages: { lang: { key: { decision, note } } } }.
+const reading = opt(`${R}adoption-reading.json`);
+const readOf = (lang) => reading?.languages?.[lang] ?? {};
 const now = await allStrings();
 const helpers = { parseMessage, argumentNames, pluralBlocks };
 const THRESHOLD = 0.6;
@@ -118,7 +121,7 @@ p('What this report can and cannot say. A tool that covers a language can show t
 p('## Summary by language', '');
 p('Strings: interface strings (the six Shakespeare quotations, which are the source text, are not counted) + player-facing strings in the language pack (verse lines, power words, acrostic words).', '');
 p(`"Changed" and "before" are measured against \`${baselineFile.ref}\` at \`${baselineFile.commit.slice(0, 10)}\` (\`docs/language/baseline.json\`, made by \`node scripts/lang/baseline.mjs\`): the strings as they stand without this work.`, '');
-p('| Language | Strings (interface + pack) | Changed | Mechanical: before → now (accepted) | Glossary: before → now | LanguageTool: first run → now (accepted / open) | Hunspell: first run → now (accepted / open) | Meaning: flagged (accepted / open) | Second model: corrections proposed / adopted |');
+p('| Language | Strings (interface + pack) | Changed | Mechanical: before → now (accepted) | Glossary: before → now | LanguageTool: first run → now (accepted / open) | Hunspell: first run → now (accepted / open) | Meaning: flagged (accepted / open) | Second model: proposed / survived the tools / adopted after reading |');
 p('|---|---|---|---|---|---|---|---|---|');
 for (const lang of LOCALES) {
   const g = grammar?.languages?.[lang];
@@ -130,8 +133,9 @@ for (const lang of LOCALES) {
   const mt = lang === 'en' ? 'source' : !bt ? 'not run' : m.missing ? 'not run' : `${m.flagged.length} of ${m.scored} (${m.accepted} / ${m.open.length})${m.notScored ? `; ${m.notScored} not scored since changed` : ''}`;
   const rv = review?.languages?.[lang];
   const proposed = rv ? Object.values(rv.reviewed).filter((r) => r.verdict === 'fix').length : null;
-  const adopted = adoption?.languages?.[lang]?.adopted?.length ?? null;
-  const rt = lang === 'en' ? 'source' : !rv ? 'not run' : `${proposed} / ${adopted ?? 'not decided'} (of ${Object.keys(rv.reviewed).length} reviewed)`;
+  const survived = adoption?.languages?.[lang]?.adopted ?? null;
+  const taken = survived ? survived.filter((a) => readOf(lang)[a.key]?.decision === 'adopt').length : null;
+  const rt = lang === 'en' ? 'source' : !rv ? 'not run' : `${proposed} / ${survived ? survived.length : 'not decided'} / ${taken ?? 'not read'} (of ${Object.keys(rv.reviewed).length} reviewed)`;
   const ui = Object.keys(now[lang].ui).length - Object.keys(HOUSE_QUOTES).length;
   p(`| ${NAME[lang]} (${lang}) | ${ui} + ${Object.keys(now[lang].pack).length} | ${changes[lang].ui.length} + ${changes[lang].pack.length} | ${mech[lang].before ? mech[lang].before.length : 'n/a'} → ${mech[lang].open.length} (${mech[lang].accepted}) | ${lang === 'en' ? '—' : `${mech[lang].glossBefore.length} → ${mech[lang].gloss.length}`} | ${lt} | ${hs} | ${mt} | ${rt} |`);
 }
@@ -167,11 +171,12 @@ if (bt) {
   p('| Language | Scored | Under the threshold by back-translation alone | Flagged (both signals) | Mismatched control pairs the rule catches |');
   p('|---|---|---|---|---|');
   for (const lang of LOCALES) if (lang !== 'en') p(`| ${NAME[lang]} | ${meaning[lang].missing ? 'not run' : meaning[lang].scored} | ${meaning[lang].missing ? '—' : meaning[lang].backOnly} | ${meaning[lang].missing ? '—' : meaning[lang].flagged.length} | ${meaning[lang].control === null ? '—' : meaning[lang].control + '%'} |`);
-  p('', 'Back-translation finds a changed meaning; it does not find a translation that is faithful and clumsy, and it is unreliable on one-word labels, where the translation model has no context.', '');
+  p('', 'Back-translation finds a changed meaning; it does not find a translation that is faithful and clumsy, and it is unreliable on one-word labels, where the translation model has no context. What is scored: every interface string, and each relic\'s power words against the English word they translate. The written opponent\'s verses and the acrostic words are not: each language\'s were written to keep a form, with no English line to compare.', '');
+  p(`Every flagged string was read, and either changed (then scored again) or accepted with its reason in \`docs/language/allow/meaning.json\` (${allowMeaning.entries.length} entries). Most flags are names and one-word labels that MADLAD copies through or reads in another sense (Spanish *Mazo* came back as 'Mazo', Arabic الخصم, the opponent, as 'discount'). The reader was the engineer doing this work, a language model, not a native speaker: an accepted flag means a second reading found the string right, not that a native speaker did.`, '');
 } else p('**Back-translation was not run** (no `docs/language/results/bt.json`). Nothing is claimed about meaning beyond the mechanical and glossary checks.', '');
 
 if (review) {
-  p(`Second opinion: ${review.server?.model ?? review.model ?? 'a local model'} under llama.cpp, asked per language to review each string as a native-speaking localisation reviewer. Its control (planted errors it must catch, a correct line it must pass):`, '');
+  p(`Second opinion: ${String(review.server?.model ?? review.model ?? 'a local model').split('/').pop()} (see PROVENANCE.md for the repository, revision and checksum) under llama.cpp ${review.server?.build ?? ''}, asked per language to review each string as a native-speaking localisation reviewer. Its control (planted errors it must catch, a correct line it must pass):`, '');
   p('| Language | Passed the correct line | Caught the wrong word | Caught text left in English | Caught the broken grammar | Reviewed | Proposed corrections | No answer |');
   p('|---|---|---|---|---|---|---|---|');
   for (const lang of LOCALES) {
@@ -180,9 +185,9 @@ if (review) {
     const c = r.control ?? {};
     const yn = (b) => (b ? 'yes' : '**no**');
     const vals = Object.values(r.reviewed);
-    p(`| ${NAME[lang]} | ${yn(c.passedGood)} | ${yn(c.caughtWrongWord)} | ${yn(c.caughtEnglish)} | ${yn(c.caughtGrammar)} | ${vals.length} | ${vals.filter((v) => v.verdict === 'fix').length} | ${vals.filter((v) => v.verdict === 'no answer').length}${r.failedBatches ? ` (+${r.failedBatches} failed batches)` : ''} |`);
+    p(`| ${NAME[lang]} | ${yn(c.passedGood)} | ${yn(c.caughtWrongWord)} | ${yn(c.caughtEnglish)} | ${yn(c.caughtGrammar)} | ${vals.length} | ${vals.filter((v) => v.verdict === 'fix').length} | ${vals.filter((v) => v.verdict === 'no answer').length}${r.failedBatches ? ` (${r.failedBatches} failed batch${r.failedBatches > 1 ? 'es' : ''}, asked again on a later run)` : ''} |`);
   }
-  p('', 'A correction was adopted only if it passed the mechanical checks and the glossary, raised no new LanguageTool or Hunspell hit, and back-translated at least as close to the English as the text it replaced. A model\'s "ok" is not counted as verification anywhere in this report.', '');
+  p('', 'A correction was adopted only if it passed the mechanical checks and the glossary, raised no new LanguageTool or Hunspell hit, was not flagged by the meaning check nor further from the English than the text it replaced, and then read as right (the section on the second model\'s corrections, below). A model\'s "ok" is not counted as verification anywhere in this report.', '');
 } else p('**The second-model review was not run** (no `docs/language/results/review.json`).', '');
 
 // ---------- per language ----------
@@ -221,7 +226,9 @@ for (const lang of LOCALES) {
     const rv = review?.languages?.[lang];
     if (rv) {
       const a = adoption?.languages?.[lang];
-      p(`- Second model: ${Object.values(rv.reviewed).filter((r) => r.verdict === 'fix').length} corrections proposed${a ? `; ${a.adopted.length} adopted, ${a.rejected.length} rejected` : '; adoption not decided'}.`);
+      const stage1 = a ? a.rejected.filter((r) => /^(mechanical|glossary|no change|stale)/.test(r.why)).length : 0;
+      const taken = a ? a.adopted.filter((x) => readOf(lang)[x.key]?.decision === 'adopt').length : 0;
+      p(`- Second model: ${Object.values(rv.reviewed).filter((r) => r.verdict === 'fix').length} corrections proposed${a ? `; ${stage1} stopped at the mechanical or glossary check, ${a.rejected.length - stage1} by LanguageTool, Hunspell or the meaning check, ${a.adopted.length} survived the tools; ${taken} adopted after reading` : '; adoption not decided'}.`);
     } else p('- Second model: not run.');
     p(`- Strings changed: ${changes[lang].ui.length} interface, ${changes[lang].pack.length} pack.`);
   }
@@ -253,6 +260,22 @@ p(`${names.length} names × 15 languages = ${names.length * 15}. ${names.length 
 p('| Name | Language | Text | Why it is not sourced |', '|---|---|---|---|');
 for (const u of unsourced) p(`| ${code(u.key)} | ${u.lang} | ${cell(u.value)} | ${cell(u.source)} |`);
 p('');
+
+// ---------- second-model corrections, as read ----------
+if (adoption) {
+  p('## The second model\'s corrections, as read', '');
+  p('Surviving the tools is necessary, not sufficient: a correction that passes LanguageTool, Hunspell and the meaning check can still be wrong (in Hindi, Arabic and German the reviewer turned the theatre company\'s *player*, an actor, into a games *player*). Every survivor was read against the English and where the string appears, and adopted or not with a reason, in `docs/language/results/adoption-reading.json`. The reader was the engineer doing this work, a language model, not a native speaker. Strings changed for reasons of the engineer\'s own (a fault the reviewer pointed near, or one the meaning check showed) were put through the same tools and are in the list of every change below.', '');
+  for (const lang of LOCALES) {
+    const a = adoption.languages?.[lang];
+    if (!a) continue;
+    const taken = a.adopted.filter((x) => readOf(lang)[x.key]?.decision === 'adopt');
+    const left = a.adopted.filter((x) => readOf(lang)[x.key]?.decision !== 'adopt');
+    p(`### ${NAME[lang]} (${lang}): ${taken.length} adopted of ${a.adopted.length} that survived the tools`, '');
+    for (const x of taken) p(`- adopted ${code(x.key)}: ${code(x.old)} → ${code(x.new)}. ${cell(readOf(lang)[x.key].note)}`);
+    for (const x of left) p(`- not adopted ${code(x.key)}: ${code(x.new)}. ${cell(readOf(lang)[x.key]?.note ?? 'not read')}`);
+    p('');
+  }
+}
 
 // ---------- human review ----------
 const human = `${D}HUMAN-REVIEW.md`;

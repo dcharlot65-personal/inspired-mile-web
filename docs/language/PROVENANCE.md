@@ -120,3 +120,13 @@ gender hedges, and the wording unified by the glossary. They have been checked
 by the tools listed above to the extent each tool covers the language
 (`QA-REPORT.md` says how far that is, per language). They have not been read by
 a native speaker.
+
+Eighteen strings were changed to a correction the second model (Gemma 4 26B-A4B)
+proposed, each one only after it survived LanguageTool, Hunspell and the meaning
+check and was then read against the English (`results/adoption-reading.json`).
+Those are a generative model's text too, checked the same way. The changes made in
+the second pass that no model proposed (`git log` on this branch, 2026-11-16 from
+6a8dd01) were written by the engineer doing this work, also a language model, and
+put through the same tools; where one rests on a published source (Android's
+'%1$s 个通行密钥', Google's help headings) the glossary cites it and the unit tests
+check the quotation is in the fetched file.
