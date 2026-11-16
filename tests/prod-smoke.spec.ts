@@ -84,7 +84,8 @@ test('a Japanese duel loads its analyser and dictionary from the built site', as
   page.on('response', (r) => {
     // base.dat.gz in dev; base.dat.<hash>.gz (or -<hash>) when built.
     if (!/\/[a-z_]+\.dat[^/]*\.gz(\?|$)/.test(r.url())) return;
-    pending.push(r.body().then((b) => void files.push({ url: r.url(), status: r.status(), bytes: b.length }), () => void files.push({ url: r.url(), status: r.status(), bytes: -1 })));
+    // The size the network layer saw: Chromium does not keep a body this large for body().
+    pending.push(r.request().sizes().then((z) => void files.push({ url: r.url(), status: r.status(), bytes: z.responseBodySize }), () => void files.push({ url: r.url(), status: r.status(), bytes: -1 })));
   });
   await page.goto('/battle?seed=11&brain=rules&lang=ja');
   await expect(page.locator('#start-duel')).toBeEnabled();
