@@ -42,8 +42,8 @@ use uuid::Uuid;
 use super::client_ip::client_addr;
 use super::email_code::{
     check_code, check_rate, expiry_from, generate_code, guessing_allowed, hash_code,
-    hash_requester, is_requester_token, new_requester_token, normalize_email, CodeCheck,
-    CodeRecord, Failures, Issued, RateLimit, CODE_TTL_MINUTES, FAILURE_WINDOW_HOURS,
+    hash_requester, inbox_key, is_requester_token, new_requester_token, normalize_email,
+    CodeCheck, CodeRecord, Failures, Issued, RateLimit, CODE_TTL_MINUTES, FAILURE_WINDOW_HOURS,
     REQUESTER_COOKIE_MINUTES, REQUEST_WINDOW_MINUTES,
 };
 use super::error::ApiError;
@@ -133,12 +133,12 @@ fn requester_cookie(jar: &CookieJar, config: &Config) -> (String, CookieJar) {
 }
 
 /// Wrong guesses in the failure window: at this address by this network and by everyone,
-/// and by this network at any address.
+/// and by this network at any address (less the misses it was forgiven).
 async fn failures(conn: &mut sqlx::PgConnection, email: &str, net_key: &str) -> Result<Failures, ApiError> {
     let row = sqlx::query(
         "SELECT COUNT(*) FILTER (WHERE email = $1 AND net_key = $2) AS at_address_by_network,
                 COUNT(*) FILTER (WHERE email = $1) AS at_address_by_everyone,
-                COUNT(*) FILTER (WHERE net_key = $2) AS by_network
+                COUNT(*) FILTER (WHERE net_key = $2 AND NOT forgiven) AS by_network
          FROM email_code_failures
          WHERE (email = $1 OR net_key = $2) AND created_at > NOW() - make_interval(hours => $3)",
     )
@@ -155,16 +155,17 @@ async fn failures(conn: &mut sqlx::PgConnection, email: &str, net_key: &str) -> 
 }
 
 /// Take, for the rest of the transaction, the locks that make the email-code caps hold
-/// under parallel requests: first the address's, then the network's. Always in that order,
+/// under parallel requests: first the inbox's (`inbox_key` of the address, so every
+/// spelling of one inbox waits for the others), then the network's. Always in that order,
 /// so two requests can never each hold the lock the other waits for. `redeem_code` takes
 /// the same two, so counting misses and counting codes for an address never interleave.
-async fn lock_address_and_network(
+async fn lock_inbox_and_network(
     tx: &mut Transaction<'_, Postgres>,
     email: &str,
     net_key: &str,
 ) -> Result<(), ApiError> {
     sqlx::query("SELECT pg_advisory_xact_lock(hashtextextended('email-code:' || $1, 0))")
-        .bind(email)
+        .bind(inbox_key(email))
         .execute(&mut **tx)
         .await?;
     sqlx::query("SELECT pg_advisory_xact_lock(hashtextextended('email-code-net:' || $1, 0))")
@@ -174,24 +175,24 @@ async fn lock_address_and_network(
     Ok(())
 }
 
-/// Codes issued in the request window: to this address by this network and by anyone, and
-/// by this network to any address. Every code counts, whatever it was for.
-async fn issued(conn: &mut sqlx::PgConnection, email: &str, net_key: &str) -> Result<Issued, ApiError> {
+/// Codes issued in the request window: to this inbox by this network and by anyone, and by
+/// this network to any address. Every code counts, whatever it was for.
+async fn issued(conn: &mut sqlx::PgConnection, inbox: &str, net_key: &str) -> Result<Issued, ApiError> {
     let row = sqlx::query(
-        "SELECT COUNT(*) FILTER (WHERE email = $1 AND ip = $2) AS to_address_by_network,
-                COUNT(*) FILTER (WHERE email = $1) AS to_address,
+        "SELECT COUNT(*) FILTER (WHERE inbox = $1 AND ip = $2) AS to_inbox_by_network,
+                COUNT(*) FILTER (WHERE inbox = $1) AS to_inbox,
                 COUNT(*) FILTER (WHERE ip = $2) AS by_network
          FROM email_login_codes
-         WHERE (email = $1 OR ip = $2) AND created_at > NOW() - make_interval(mins => $3)",
+         WHERE (inbox = $1 OR ip = $2) AND created_at > NOW() - make_interval(mins => $3)",
     )
-    .bind(email)
+    .bind(inbox)
     .bind(net_key)
     .bind(REQUEST_WINDOW_MINUTES as i32)
     .fetch_one(conn)
     .await?;
     Ok(Issued {
-        to_address_by_network: row.get("to_address_by_network"),
-        to_address: row.get("to_address"),
+        to_inbox_by_network: row.get("to_inbox_by_network"),
+        to_inbox: row.get("to_inbox"),
         by_network: row.get("by_network"),
     })
 }
@@ -200,9 +201,9 @@ async fn issued(conn: &mut sqlx::PgConnection, email: &str, net_key: &str) -> Re
 /// code for an address and purpose is live; codes other browsers asked for are untouched.
 ///
 /// The caps and what they guarantee are at the top of `email_code.rs`. The checks and the
-/// insert they allow run in one transaction under the address's and the network's locks,
+/// insert they allow run in one transaction under the inbox's and the network's locks,
 /// so parallel requests are counted one after another. The mail is sent after the commit:
-/// no lock is held while the mail service answers.
+/// no lock is held while the mail service answers. `ip` is the client's `network_key`.
 #[allow(clippy::too_many_arguments)]
 async fn issue_code(
     pool: &PgPool,
@@ -215,14 +216,15 @@ async fn issue_code(
     purpose: &str,
     user_id: Option<Uuid>,
 ) -> Result<(), ApiError> {
+    let inbox = inbox_key(email);
     let mut tx = pool.begin().await?;
-    lock_address_and_network(&mut tx, email, ip).await?;
+    lock_inbox_and_network(&mut tx, email, ip).await?;
 
     // No mail for a code that could not be redeemed anyway.
     if !guessing_allowed(failures(&mut tx, email, ip).await?) {
         return Err(too_many_attempts());
     }
-    match check_rate(issued(&mut tx, email, ip).await?) {
+    match check_rate(issued(&mut tx, &inbox, ip).await?) {
         RateLimit::Allowed => {}
         refused => {
             tracing::info!(?refused, "email code refused by a request cap");
@@ -254,8 +256,8 @@ async fn issue_code(
     .await?;
     let code_id: Uuid = sqlx::query_scalar(
         "INSERT INTO email_login_codes
-             (email, code_hash, ip, age_tier, purpose, user_id, created_at, expires_at, requester)
-         VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING id",
+             (email, code_hash, ip, age_tier, purpose, user_id, created_at, expires_at, requester, inbox)
+         VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING id",
     )
     .bind(email)
     .bind(hash_code(&config.email_code_key, email, &code))
@@ -266,6 +268,7 @@ async fn issue_code(
     .bind(now)
     .bind(expiry_from(now))
     .bind(requester)
+    .bind(&inbox)
     .fetch_one(&mut *tx)
     .await?;
     tx.commit().await?;
@@ -299,7 +302,7 @@ enum Redeemed {
 /// Judge a submitted code against the newest one that THIS browser (`requester`) asked for,
 /// for this address, purpose and (for `add`) account. The caller commits whatever comes back.
 ///
-/// The address's and the network's locks make "count the misses, check, then mark used or
+/// The inbox's and the network's locks make "count the misses, check, then mark used or
 /// count a miss" atomic: two requests racing with the same code cannot both be accepted,
 /// and a burst of parallel guesses, at one address or at many from one network, cannot
 /// slip past the caps.
@@ -315,7 +318,7 @@ async fn redeem_code(
     net_key: &str,
 ) -> Result<Redeemed, ApiError> {
     let now = Utc::now();
-    lock_address_and_network(tx, email, net_key).await?;
+    lock_inbox_and_network(tx, email, net_key).await?;
 
     if !guessing_allowed(failures(tx, email, net_key).await?) {
         return Ok(Redeemed::Locked);
@@ -356,6 +359,17 @@ async fn redeem_code(
                 .bind(now)
                 .execute(&mut **tx)
                 .await?;
+            // This network's misses at this address were the owner mistyping: they no longer
+            // count against everyone else behind the network (MAX_FAILED_BY_NETWORK_PER_DAY).
+            // They still count for the address itself, so the per-account bound stays exact.
+            sqlx::query(
+                "UPDATE email_code_failures SET forgiven = TRUE
+                 WHERE email = $1 AND net_key = $2 AND NOT forgiven",
+            )
+            .bind(email)
+            .bind(net_key)
+            .execute(&mut **tx)
+            .await?;
             Ok(Redeemed::Accepted(row.get("age_tier")))
         }
         CodeCheck::Wrong => {
@@ -394,7 +408,7 @@ pub async fn request_code(
     let age_tier = age_tier_from(body.age_tier.as_deref())?;
     let email = normalize_email(&body.email)
         .ok_or_else(|| ApiError::bad_request("invalid_email", "Enter a valid email address."))?;
-    let ip = client_addr(&headers, Some(peer), &config.trusted_proxies).limit_key();
+    let ip = client_addr(&headers, Some(peer), &config.trusted_proxies).network_key();
     let (token, cookies) = requester_cookie(&jar, &config);
     let requester = hash_requester(&config.email_code_key, &token);
     issue_code(&pool, &config, &ctx, &email, &ip, &requester, age_tier, LOGIN, None).await?;
@@ -412,7 +426,7 @@ pub async fn verify_code(
         return Err(unavailable());
     }
     let email = normalize_email(&body.email).ok_or_else(invalid_code)?;
-    let net_key = client_addr(&headers, Some(peer), &config.trusted_proxies).limit_key();
+    let net_key = client_addr(&headers, Some(peer), &config.trusted_proxies).network_key();
     let requester = requester_token(&jar, &config).map(|t| hash_requester(&config.email_code_key, &t));
 
     let mut tx = pool.begin().await?;
@@ -527,7 +541,7 @@ pub async fn add_request(
     let age_tier = age_tier_from(Some(stored_tier.as_str()))?;
     let email = normalize_email(&body.email)
         .ok_or_else(|| ApiError::bad_request("invalid_email", "Enter a valid email address."))?;
-    let ip = client_addr(&headers, Some(peer), &config.trusted_proxies).limit_key();
+    let ip = client_addr(&headers, Some(peer), &config.trusted_proxies).network_key();
     let (token, cookies) = requester_cookie(&jar, &config);
     let requester = hash_requester(&config.email_code_key, &token);
     // Sent whether or not the address is already someone's: that is only said at verify,
@@ -548,7 +562,7 @@ pub async fn add_verify(
         return Err(unavailable());
     }
     let email = normalize_email(&body.email).ok_or_else(invalid_code)?;
-    let net_key = client_addr(&headers, Some(peer), &config.trusted_proxies).limit_key();
+    let net_key = client_addr(&headers, Some(peer), &config.trusted_proxies).network_key();
     let requester = requester_token(&jar, &config).map(|t| hash_requester(&config.email_code_key, &t));
 
     let mut tx = pool.begin().await?;

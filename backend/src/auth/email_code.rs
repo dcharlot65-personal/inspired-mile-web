@@ -1,42 +1,62 @@
 //! One-time email sign-in codes: the rules, kept free of I/O so they can be tested directly.
 //!
-//! "Network" below is the key `client_ip::ClientAddr::limit_key` gives, as everywhere else
-//! in the API: one IPv4 address, or one IPv6 /64.
+//! Two words below have exact meanings.
 //!
-//! THE GUARANTEE, for any one address and any 60 minutes (`REQUEST_WINDOW_MINUTES`):
+//! "Network" is `client_ip::ClientAddr::network_key`: one IPv4 address, or one IPv6 /48.
+//! (A /64 is too narrow: one home line is given a /56 or a /48, that is 256 or 65,536 /64s,
+//! so a share per /64 could be multiplied by anyone with one connection.)
 //!
-//!   1. Its inbox gets at most `MAX_CODES_PER_ADDRESS` (10) codes, whoever asks and from
-//!      however many networks, for sign-in and for "add this recovery email" together.
-//!   2. One network can have at most `MAX_CODES_PER_ADDRESS_PER_NETWORK` (3) of those ten.
-//!      A network that asks for more is refused its own excess, and only that. So one
-//!      network can never stop another from getting a code for the address, and nor can
-//!      any three together (3 x 3 = 9 < 10): using up an address's codes for an hour takes
-//!      at least `NETWORKS_TO_USE_UP_AN_ADDRESS` (4) networks, each spending its whole share
-//!      inside the same hour. (Every network also has its own cap over all addresses,
-//!      `MAX_CODES_PER_NETWORK`, which touches nobody else.)
-//!   3. Wrong guesses at the address's codes, over any 24 hours (`FAILURE_WINDOW_HOURS`):
+//! "Inbox" is `inbox_key`: the address lower-cased, with any `+tag` taken off the part before
+//! the `@`, and for gmail.com and googlemail.com (one service, where dots in the name are
+//! ignored) with the dots taken out too. viola+1@gmail.com, viola+2@gmail.com and
+//! v.iola@googlemail.com are one inbox. Elsewhere dots are kept: v.iola@example.com and
+//! viola@example.com can be two people.
+//!
+//! THE GUARANTEE, for any one inbox and any 60 minutes (`REQUEST_WINDOW_MINUTES`):
+//!
+//!   1. It gets at most `MAX_CODES_PER_INBOX` (10) codes, whoever asks, from however many
+//!      networks, at whichever of its spellings, for sign-in and for "add this recovery
+//!      email" together.
+//!   2. One network can have at most `MAX_CODES_PER_INBOX_PER_NETWORK` (3) of those ten. A
+//!      network that asks for more is refused its own excess, and only that. So one network
+//!      can never stop another from getting a code for the inbox, and nor can any three
+//!      together (3 x 3 = 9 < 10): using up an inbox's codes for an hour takes at least
+//!      `NETWORKS_TO_USE_UP_AN_INBOX` (4) networks, that is four IPv4 addresses or four IPv6
+//!      /48s, each spending its whole share inside the same hour. (Every network also has
+//!      its own cap over all addresses, `MAX_CODES_PER_NETWORK`, which touches nobody else.)
+//!   3. Wrong guesses at one address's codes, over any 24 hours (`FAILURE_WINDOW_HOURS`):
 //!      at most `MAX_FAILED_PER_NETWORK_PER_DAY` (10) from one network and
 //!      `MAX_FAILED_PER_EMAIL_PER_DAY` (50) from everyone together, after which no code is
 //!      sent to the address and no guess is judged. Again one network cannot reach the
 //!      ceiling: that takes five. 50 guesses at one in a million each is the hard bound on
 //!      online guessing against one account, whatever the attacker's means.
 //!   4. Over all addresses, one network may make `MAX_FAILED_BY_NETWORK_PER_DAY` (30) wrong
-//!      guesses a day, so it cannot guess at a thousand accounts at ten guesses each.
+//!      guesses a day, so it cannot guess at a thousand accounts at ten guesses each. A miss
+//!      is FORGIVEN for this count (only this one) once the same network signs in with a
+//!      code for that address: it was the owner mistyping. So a class behind one school
+//!      address whose pupils mistype and then get in does not lock the school out.
 //!
-//! All of it holds under parallel requests: `email.rs` takes the address's advisory lock
-//! and then the network's, and holds both from the first count to the insert (or to the
-//! miss being recorded), in one transaction.
+//! All of it holds under parallel requests: `email.rs` takes the inbox's advisory lock and
+//! then the network's, and holds both from the first count to the insert (or to the miss
+//! being recorded), in one transaction.
 //!
 //! What keeps one party out of another's way besides the shares: a code is tied to the
 //! browser that asked for it (a random cookie, `requester`). A guess is only ever compared
 //! with the code that the guessing browser itself requested. So a stranger can neither use
 //! up the attempts of your code nor withdraw it by asking for another.
 //!
-//! What this cannot do, said plainly: somebody with four or more networks who is set on it
-//! can stop one address from getting codes for an hour at a time (and with five, from
-//! signing in by email for a day, through the guessing ceiling). They cannot get in, and a
-//! passkey sign-in is not affected. Any limit that protects an inbox or an account from
-//! guessing can be spent by the attacker; the shares make that take several networks.
+//! What this cannot do, said plainly:
+//!   - Somebody with four or more networks who is set on it can stop one inbox from getting
+//!     codes for an hour at a time (and with five, one address from signing in by email for
+//!     a day, through the guessing ceiling). They cannot get in, and a passkey sign-in is not
+//!     affected. Any limit that protects an inbox or an account from guessing can be spent
+//!     by the attacker; the shares make that take several networks.
+//!   - Everyone behind one network shares its caps. Somebody behind a school's or a mobile
+//!     carrier's shared IPv4 address can use up that address's 10 codes an hour (as on main)
+//!     or its 30 unforgiven misses a day, and then nobody behind it gets a code by email
+//!     until the window moves on. Passkeys are not affected.
+//!   - The inbox rule knows Gmail's dots and `+tags`, nothing else: a provider's other
+//!     aliases (another domain of the same mailbox, a catch-all) are separate inboxes here.
 
 use chrono::{DateTime, Duration, Utc};
 use hmac::{Hmac, KeyInit, Mac};
@@ -50,19 +70,19 @@ pub const CODE_TTL_MINUTES: i64 = 10;
 pub const MAX_ATTEMPTS: i32 = 5;
 /// The window every request cap counts over.
 pub const REQUEST_WINDOW_MINUTES: i64 = 60;
-/// Codes sent to one address in the window, whoever asks: the bound on its inbox.
-pub const MAX_CODES_PER_ADDRESS: i64 = 10;
-/// Codes one network may have sent to one address in the window: its share of the above.
-pub const MAX_CODES_PER_ADDRESS_PER_NETWORK: i64 = 3;
+/// Codes sent to one inbox in the window, whoever asks: the bound on it.
+pub const MAX_CODES_PER_INBOX: i64 = 10;
+/// Codes one network may have sent to one inbox in the window: its share of the above.
+pub const MAX_CODES_PER_INBOX_PER_NETWORK: i64 = 3;
 /// Codes one network may ask for in the window, to any addresses.
 pub const MAX_CODES_PER_NETWORK: i64 = 10;
-/// The fewest networks that can use up one address's codes in the window together.
-pub const NETWORKS_TO_USE_UP_AN_ADDRESS: i64 =
-    (MAX_CODES_PER_ADDRESS + MAX_CODES_PER_ADDRESS_PER_NETWORK - 1) / MAX_CODES_PER_ADDRESS_PER_NETWORK;
+/// The fewest networks that can use up one inbox's codes in the window together.
+pub const NETWORKS_TO_USE_UP_AN_INBOX: i64 =
+    (MAX_CODES_PER_INBOX + MAX_CODES_PER_INBOX_PER_NETWORK - 1) / MAX_CODES_PER_INBOX_PER_NETWORK;
 // The guarantee in the module comment, checked when the crate is compiled: one network's
-// share is less than the address's cap, and it takes at least four networks to use it up.
-const _: () = assert!(MAX_CODES_PER_ADDRESS_PER_NETWORK < MAX_CODES_PER_ADDRESS);
-const _: () = assert!(NETWORKS_TO_USE_UP_AN_ADDRESS >= 4);
+// share is less than the inbox's cap, and it takes at least four networks to use it up.
+const _: () = assert!(MAX_CODES_PER_INBOX_PER_NETWORK < MAX_CODES_PER_INBOX);
+const _: () = assert!(NETWORKS_TO_USE_UP_AN_INBOX >= 4);
 /// Wrong guesses one network may make at one address's codes inside `FAILURE_WINDOW_HOURS`.
 pub const MAX_FAILED_PER_NETWORK_PER_DAY: i64 = 10;
 /// Wrong guesses everyone together may make at one address's codes in the same window.
@@ -99,6 +119,25 @@ pub fn normalize_email(raw: &str) -> Option<String> {
         return None;
     }
     Some(email)
+}
+
+/// The inbox a normalised address delivers to, as far as this server can tell: the part
+/// before the `@` up to any `+`, and, for gmail.com and googlemail.com, without dots and
+/// under gmail.com. What the inbox caps count (see the top of this file).
+pub fn inbox_key(email: &str) -> String {
+    let Some((local, domain)) = email.rsplit_once('@') else {
+        return email.to_string();
+    };
+    let local = local.split('+').next().unwrap_or(local);
+    let (local, domain) = match domain {
+        "gmail.com" | "googlemail.com" => (local.replace('.', ""), "gmail.com"),
+        _ => (local.to_string(), domain),
+    };
+    // "+tag@x" alone has nothing before the tag: keep the address as it is.
+    if local.is_empty() {
+        return email.to_string();
+    }
+    format!("{local}@{domain}")
 }
 
 /// A uniformly random code of `CODE_DIGITS` digits, leading zeros kept.
@@ -141,7 +180,8 @@ pub struct Failures {
     pub at_address_by_network: i64,
     /// At this address's codes, by everyone.
     pub at_address_by_everyone: i64,
-    /// At any address's codes, by this network.
+    /// At any address's codes, by this network, leaving out the misses it was forgiven
+    /// (its own later sign-in with a code for the same address).
     pub by_network: i64,
 }
 
@@ -237,10 +277,10 @@ pub fn expiry_from(now: DateTime<Utc>) -> DateTime<Utc> {
 /// Codes already issued inside `REQUEST_WINDOW_MINUTES`.
 #[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]
 pub struct Issued {
-    /// To this address, at this network's request.
-    pub to_address_by_network: i64,
-    /// To this address, at anyone's request.
-    pub to_address: i64,
+    /// To this inbox, at this network's request.
+    pub to_inbox_by_network: i64,
+    /// To this inbox, at anyone's request.
+    pub to_inbox: i64,
     /// To any address, at this network's request.
     pub by_network: i64,
 }
@@ -248,23 +288,23 @@ pub struct Issued {
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum RateLimit {
     Allowed,
-    /// This network has had its share of this address's codes.
+    /// This network has had its share of this inbox's codes.
     NetworkShareUsed,
-    /// The address's inbox has had its codes for the hour, from several networks.
-    AddressFull,
+    /// The inbox has had its codes for the hour, from several networks.
+    InboxFull,
     /// This network has asked for its codes for the hour, to any addresses.
     NetworkLimited,
 }
 
 /// Decide whether one more code may be sent. The network's own caps are looked at first,
-/// so a network that is over its share hears about its share, not about the address.
+/// so a network that is over its share hears about its share, not about the inbox.
 pub fn check_rate(issued: Issued) -> RateLimit {
-    if issued.to_address_by_network >= MAX_CODES_PER_ADDRESS_PER_NETWORK {
+    if issued.to_inbox_by_network >= MAX_CODES_PER_INBOX_PER_NETWORK {
         RateLimit::NetworkShareUsed
     } else if issued.by_network >= MAX_CODES_PER_NETWORK {
         RateLimit::NetworkLimited
-    } else if issued.to_address >= MAX_CODES_PER_ADDRESS {
-        RateLimit::AddressFull
+    } else if issued.to_inbox >= MAX_CODES_PER_INBOX {
+        RateLimit::InboxFull
     } else {
         RateLimit::Allowed
     }
@@ -303,6 +343,28 @@ mod tests {
         }
         let long = format!("{}@example.com", "a".repeat(65));
         assert_eq!(normalize_email(&long), None);
+    }
+
+    #[test]
+    fn one_inbox_is_one_inbox_at_any_of_its_spellings() {
+        // Gmail: tags and dots are the same mailbox, under either of its domains.
+        for alias in ["viola@gmail.com", "viola+1@gmail.com", "viola+2@gmail.com", "v.iola@gmail.com", "v.i.o.l.a+x@googlemail.com"] {
+            assert_eq!(inbox_key(alias), "viola@gmail.com", "{alias}");
+        }
+        // Elsewhere a tag is the same mailbox, but a dot may be another person.
+        assert_eq!(inbox_key("viola+games@example.com"), "viola@example.com");
+        assert_eq!(inbox_key("v.iola@example.com"), "v.iola@example.com");
+        assert_ne!(inbox_key("v.iola@example.com"), inbox_key("viola@example.com"));
+        // A different domain is a different inbox.
+        assert_ne!(inbox_key("viola@gmail.com"), inbox_key("viola@example.com"));
+        // Nothing before the tag: the address as it is.
+        assert_eq!(inbox_key("+x@example.com"), "+x@example.com");
+        // Every normalised address has one, and it is itself normalised.
+        for raw in ["Viola+Tag@Example.COM", "a.b+c+d@mail.example.org"] {
+            let email = normalize_email(raw).unwrap();
+            let inbox = inbox_key(&email);
+            assert_eq!(normalize_email(&inbox).as_deref(), Some(inbox.as_str()), "{raw}");
+        }
     }
 
     #[test]
@@ -404,22 +466,22 @@ mod tests {
         assert_eq!(check_code(&rec, SECRET, EMAIL, "111222", now), CodeCheck::Accepted);
     }
 
-    fn issued(to_address_by_network: i64, to_address: i64, by_network: i64) -> Issued {
-        Issued { to_address_by_network, to_address, by_network }
+    fn issued(to_inbox_by_network: i64, to_inbox: i64, by_network: i64) -> Issued {
+        Issued { to_inbox_by_network, to_inbox, by_network }
     }
 
     #[test]
     fn rate_limits_trip_at_their_thresholds() {
         assert_eq!(check_rate(issued(0, 0, 0)), RateLimit::Allowed);
         assert_eq!(
-            check_rate(issued(MAX_CODES_PER_ADDRESS_PER_NETWORK - 1, MAX_CODES_PER_ADDRESS - 1, MAX_CODES_PER_NETWORK - 1)),
+            check_rate(issued(MAX_CODES_PER_INBOX_PER_NETWORK - 1, MAX_CODES_PER_INBOX - 1, MAX_CODES_PER_NETWORK - 1)),
             RateLimit::Allowed
         );
-        assert_eq!(check_rate(issued(MAX_CODES_PER_ADDRESS_PER_NETWORK, 3, 3)), RateLimit::NetworkShareUsed);
+        assert_eq!(check_rate(issued(MAX_CODES_PER_INBOX_PER_NETWORK, 3, 3)), RateLimit::NetworkShareUsed);
         assert_eq!(check_rate(issued(0, 0, MAX_CODES_PER_NETWORK)), RateLimit::NetworkLimited);
-        assert_eq!(check_rate(issued(0, MAX_CODES_PER_ADDRESS, 0)), RateLimit::AddressFull);
-        assert_eq!(MAX_CODES_PER_ADDRESS_PER_NETWORK, 3);
-        assert_eq!(MAX_CODES_PER_ADDRESS, 10);
+        assert_eq!(check_rate(issued(0, MAX_CODES_PER_INBOX, 0)), RateLimit::InboxFull);
+        assert_eq!(MAX_CODES_PER_INBOX_PER_NETWORK, 3);
+        assert_eq!(MAX_CODES_PER_INBOX, 10);
         assert_eq!(MAX_CODES_PER_NETWORK, 10);
         assert_eq!(REQUEST_WINDOW_MINUTES, 60);
     }
@@ -443,9 +505,9 @@ mod tests {
                     }
                 }
             }
-            assert!(total <= MAX_CODES_PER_ADDRESS, "{networks} networks: {total} codes");
-            assert!(per_network.iter().all(|&c| c <= MAX_CODES_PER_ADDRESS_PER_NETWORK), "{per_network:?}");
-            if networks as i64 <= NETWORKS_TO_USE_UP_AN_ADDRESS {
+            assert!(total <= MAX_CODES_PER_INBOX, "{networks} networks: {total} codes");
+            assert!(per_network.iter().all(|&c| c <= MAX_CODES_PER_INBOX_PER_NETWORK), "{per_network:?}");
+            if networks as i64 <= NETWORKS_TO_USE_UP_AN_INBOX {
                 assert!(per_network.iter().all(|&c| c >= 1), "{networks} networks: {per_network:?}");
             }
         }
@@ -456,13 +518,13 @@ mod tests {
                 mine += 1;
             }
         }
-        assert_eq!(mine, MAX_CODES_PER_ADDRESS_PER_NETWORK);
+        assert_eq!(mine, MAX_CODES_PER_INBOX_PER_NETWORK);
         assert_eq!(check_rate(issued(0, mine, 0)), RateLimit::Allowed, "the owner's network still gets one");
         // Three networks at their shares: the fourth still gets one, the fifth does not.
-        let three = 3 * MAX_CODES_PER_ADDRESS_PER_NETWORK;
+        let three = 3 * MAX_CODES_PER_INBOX_PER_NETWORK;
         assert_eq!(check_rate(issued(0, three, 0)), RateLimit::Allowed);
-        assert_eq!(check_rate(issued(0, three + 1, 0)), RateLimit::AddressFull);
-        assert_eq!(NETWORKS_TO_USE_UP_AN_ADDRESS, 4);
+        assert_eq!(check_rate(issued(0, three + 1, 0)), RateLimit::InboxFull);
+        assert_eq!(NETWORKS_TO_USE_UP_AN_INBOX, 4);
     }
 
     fn failed(at_address_by_network: i64, at_address_by_everyone: i64, by_network: i64) -> Failures {
