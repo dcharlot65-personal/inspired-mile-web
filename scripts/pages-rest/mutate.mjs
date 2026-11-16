@@ -1,0 +1,136 @@
+// Proves the checks of the localised pages can fail. Run on the build host, in a checkout
+// that can be thrown away:
+//
+//   node scripts/pages-rest/mutate.mjs            the unit tests (vitest)
+//   node scripts/pages-rest/mutate.mjs --browser  the browser tests too (needs the E2E_* ports of your own run)
+//
+// Each mutation breaks one thing, runs the test file that should notice, expects it to go
+// red with a message that names the damage, and puts the file back. A mutation that leaves
+// the tests green is reported as MISSED and the script exits 1: the check it was aimed at
+// proves nothing.
+import { execSync } from 'node:child_process';
+import { readFileSync, writeFileSync } from 'node:fs';
+
+const UNIT = 'src/i18n/pages-rest.test.ts';
+const ERRORS = 'src/lib/api-errors.test.ts';
+const BROWSER = 'tests/pages-rest.spec.ts';
+
+/** [what is broken, file, find, replace, test file, text the failure must contain] */
+const UNIT_MUTATIONS = [
+  ['a key missing from one language', 'src/i18n/pages/classroom/th.ts', /^  'classroom\.join\.title': .*\n/m, '', UNIT, 'missing classroom.join.title'],
+  ['an empty value', 'src/i18n/pages/marketplace/ko.ts', /('market\.buy': )'[^']*'/, "$1' '", UNIT, 'empty market.buy'],
+  ['a placeholder renamed', 'src/i18n/pages/tournaments/ru.ts', "'tour.round': 'Раунд {n}'", "'tour.round': 'Раунд {m}'", UNIT, 'tour.round has {m}'],
+  ['a placeholder dropped', 'src/i18n/pages/classroom/de.ts', 'Du bist „{name}“ beigetreten.', 'Du bist beigetreten.', UNIT, 'classroom.join.done has {}'],
+  ['a stray brace', 'src/i18n/pages/season/it.ts', "'season.level': 'Livello'", "'season.level': 'Livello}'", UNIT, 'stray brace in season.level'],
+  ['a plural form the language needs is gone', 'src/i18n/pages/shared/pl.ts', /^  'credits\.few': .*\n/m, '', UNIT, 'credits lacks the "few" form'],
+  ['an Arabic plural form is gone', 'src/i18n/pages/classroom/ar.ts', /^  'classroom\.members\.two': .*\n/m, '', UNIT, 'classroom.members lacks the "two" form'],
+  ['a string left in English', 'src/i18n/pages/viewer/ja.ts', /('viewer\.reset': )'[^']*'/, "$1'Reset the camera'", UNIT, 'viewer.reset is still English'],
+  ['a French colon without its no-break space', 'src/i18n/pages/classroom/fr.ts', "'classroom.list.code': 'Code\\u00a0:'", "'classroom.list.code': 'Code :'", UNIT, 'needs a no-break space before :'],
+  ['a Hindi sentence ended with a full stop', 'src/i18n/pages/shared/hi.ts', 'पहले साइन इन करें।', 'पहले साइन इन करें.', UNIT, 'danda'],
+  ['a Cyrillic letter hiding in a Latin word', 'src/i18n/pages/shared/es.ts', "'activity.challenge': 'Desafío'", "'activity.challenge': 'Dеsafío'", UNIT, 'mixes Latin and Cyrillic'],
+  ['a key that the core locale already has', 'src/i18n/pages/shared/en.ts', "  'activity.trivia': 'Trivia',", "  'activity.trivia': 'Trivia',\n  'nav.home': 'Home',", UNIT, 'nav.home'],
+  ['a nav name that differs from the core locale', 'src/i18n/pages/shared/fr.ts', "'offline.link.home': 'Accueil'", "'offline.link.home': 'Maison'", UNIT, 'Maison'],
+  ['a page asks for a key nobody has', 'src/pages/season.astro', 'data-i18n="season.track"', 'data-i18n="season.trakc"', UNIT, 'season.trakc'],
+  ['a script asks for a key nobody has', 'src/pages/tournaments.astro', "t('tour.bye')", "t('tour.byee')", UNIT, 'tour.byee'],
+  ['a viewer library goes back to an English sentence', 'src/lib/splat-viewer.ts', "this.options.onStatusChange?.(msg('viewer.status.loading'));", "this.options.onStatusChange?.('Loading splat model...' as any);", UNIT, 'splat-viewer'],
+  ['the offline page is stale', 'public/offline.html', 'data-k="title">You are offline<', 'data-k="title">You are Offline<', UNIT, 'public/offline.html is out of date'],
+  ['the manifest lost a language', 'public/manifest.json', /^\s*"th": "Inspired Mile[^\n]*\n/m, '', UNIT, 'public/manifest.json is out of date'],
+  ['loadArea stops filling in English for a missing string', 'src/i18n/index.ts', "for (const code of l === 'en' ? ['en'] : ['en', l])", "for (const code of [l])", UNIT, "'Join'"],
+  ['a page redraws before its areas are in the new language', 'src/i18n/page.ts', 'void areasReady().then(() => {', 'void Promise.resolve().then(() => {', UNIT, 'season.claim'],
+  ['the server gains an answer nobody mapped', 'backend/src/classroom/handlers.rs', '"Invalid join code".into()', '"That join code has expired".into()', ERRORS, 'That join code has expired'],
+  ['the server gains a code nobody translated', 'backend/src/auth/email.rs', '"email_in_use"', '"email_is_taken"', ERRORS, 'no message for "email_is_taken"'],
+  ['a language loses an error sentence', 'src/i18n/pages/shared/vi.ts', /^  'error\.tournament_full': .*\n/m, '', ERRORS, 'vi: no message for "tournament_full"'],
+  ['an error sentence left in English', 'src/i18n/pages/shared/hi.ts', /('error\.listing_own': )'[^']*'/, "$1'You cannot buy your own listing.'", ERRORS, 'hi: the message for "listing_own" is still English'],
+  ['an error sentence needs a variable nothing supplies', 'src/i18n/pages/shared/es.ts', 'Este torneo está completo.', 'Este torneo está completo: {max}.', ERRORS, 'needs {max}'],
+  ['the page shows the server’s text again', 'src/lib/api-errors.ts', '  const code = apiErrorCode(e);\n  const vars', '  if (e instanceof ApiError && e.body && !e.code) return e.body;\n  const code = apiErrorCode(e);\n  const vars', ERRORS, 'relation'],
+  ['a client library throws a sentence again', 'src/lib/tournament-client.ts', 'throw new ApiError(response.status, await response.text())', 'throw new Error(`API ${response.status}: ${await response.text()}`)', ERRORS, 'tournament-client'],
+  ['the Rust scan stops finding anything', 'src/lib/api-errors.test.ts', "const SKIP_DIRS = ['multiplayer'];", "const SKIP_DIRS = ['multiplayer', 'classroom', 'marketplace', 'tournaments', 'seasons', 'credits', 'auth', 'stats', 'referral', 'variants', 'inventory', 'migration'];", ERRORS, 'toBeGreaterThan'],
+];
+
+// A date without a time used to be shown a day early west of Greenwich. The mutation that
+// undoes the fix can only be seen from such a time zone, so it is tried only there.
+if (new Date(2026, 10, 1).getTimezoneOffset() > 0) {
+  UNIT_MUTATIONS.push(['a date without a time read as midnight UTC', 'src/i18n/fmt.ts', "const day = typeof d === 'string' ?", "const day = typeof d === 'no' ?", UNIT, 'Nov 1, 2026']);
+} else {
+  console.log('SKIPPED the date-only mutation: this machine is not west of Greenwich, where the fault shows');
+}
+
+/** The same for the browser tests: [what, file, find, replace, test title that must go red] */
+const BROWSER_MUTATIONS = [
+  ['English left in the Spanish marketplace', 'src/i18n/pages/marketplace/es.ts', /('market\.sell\.title': )'[^']*'/, "$1'Create a listing'", 'marketplace: every language'],
+  ['an element of the classroom page without its key', 'src/pages/classroom.astro', ' data-i18n="classroom.gate.title">', '>', 'classroom: every language'],
+  ['a placeholder never filled on the season page', 'src/pages/season.astro', "t('season.next', { n: num(progress.xpToNext) })", "t('season.next')", 'season: every language'],
+  ['a key shown as text on the tournaments page', 'src/pages/tournaments.astro', "esc(t('tour.viewBracket'))", "esc(t('tour.viewBrackets'))", 'tournaments: every language'],
+  ['a block wider than a phone on the viewer page', 'src/pages/viewer.astro', '<p class="text-obsidian-400 max-w-2xl mx-auto" data-i18n="viewer.intro">', '<p class="text-obsidian-400 w-[640px]" data-i18n="viewer.intro">', 'viewer: every language'],
+  ['Arabic no longer right to left on the offline page', 'public/offline.html', "RTL.indexOf(locale) >= 0 ? 'rtl' : 'ltr'", "'ltr'", 'speaks the language the player chose'],
+  ['the server’s text shown when the API fails', 'src/i18n/page.ts', '  return apiErrorMessage(e, t, has, num);', "  return (e as any)?.body || apiErrorMessage(e, t, has, num);", 'a broken server is reported'],
+  ['a classroom name run as markup', 'src/pages/classroom.astro', '<bdi>${esc(c.name)}</bdi>', '<bdi>${c.name}</bdi>', 'never run as markup'],
+  ['the status of a tournament shown as the server spells it', 'src/pages/tournaments.astro', "const statusName = (status: string) => (has(`tour.status.${status}`) ? t(`tour.status.${status}`) : status.replace(/_/g, ' '));", "const statusName = (status: string) => status.replace(/_/g, ' ');", 'tournaments: states, formats'],
+];
+
+function run(command) {
+  try {
+    return { ok: true, out: execSync(`${command} 2>&1`, { encoding: 'utf8', maxBuffer: 256e6 }) };
+  } catch (err) {
+    return { ok: false, out: String(err.stdout ?? '') + String(err.stderr ?? '') };
+  }
+}
+
+function mutate(file, find, replace) {
+  const before = readFileSync(file, 'utf8');
+  const after = before.replace(find, replace);
+  if (after === before) throw new Error(`${file}: ${String(find).slice(0, 80)} is no longer there; update this mutation`);
+  writeFileSync(file, after);
+  return () => writeFileSync(file, before);
+}
+
+let wrong = 0;
+
+// First, unbroken: a suite that is already red cannot show that a mutation turned it red.
+for (const file of [UNIT, ERRORS]) {
+  const clean = run(`npx vitest run ${file}`);
+  console.log(`${clean.ok ? 'GREEN  ' : 'RED    '} ${file} before any mutation`);
+  if (!clean.ok) {
+    console.log(clean.out.split('\n').slice(-40).join('\n'));
+    process.exit(1);
+  }
+}
+
+for (const [what, file, find, replace, test, expected] of UNIT_MUTATIONS) {
+  const restore = mutate(file, find, replace);
+  let result;
+  try {
+    result = run(`npx vitest run ${test}`);
+  } finally {
+    restore();
+  }
+  const caught = !result.ok && result.out.includes(expected);
+  console.log(`${caught ? 'CAUGHT ' : result.ok ? 'MISSED ' : 'RED, BUT NOT FOR THIS '} ${what}`);
+  if (!caught) {
+    wrong++;
+    console.log(result.out.split('\n').filter((l) => /AssertionError|Error:|expected|✗|×|FAIL/.test(l)).slice(0, 12).join('\n'));
+  }
+}
+
+if (process.argv.includes('--browser')) {
+  const line = (out, name) => out.split('\n').filter((l) => l.includes(name) && /[✓✘×]|\bok\b|failed/.test(l));
+  for (const [what, file, find, replace, title] of BROWSER_MUTATIONS) {
+    const restore = mutate(file, find, replace);
+    let result;
+    try {
+      result = run(`npx playwright test ${BROWSER} --reporter=list -g "${title.replace(/"/g, '\\"')}"`);
+    } finally {
+      restore();
+    }
+    const lines = line(result.out, title);
+    const caught = !result.ok && lines.some((l) => /✘|×/.test(l));
+    console.log(`${caught ? 'CAUGHT ' : 'MISSED '} ${what}`);
+    if (!caught) {
+      wrong++;
+      console.log(result.out.split('\n').slice(-15).join('\n'));
+    }
+  }
+}
+
+console.log(wrong ? `${wrong} mutation(s) were not caught` : 'every mutation was caught');
+process.exit(wrong ? 1 : 0);
