@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<!-- Written by scripts/pages-rest/build-static.mjs from src/i18n/pages/shared. Edit the strings there, not here. -->
+<html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +8,7 @@
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', sans-serif;
       background: #0a0a0f;
       color: #a0a0b0;
       min-height: 100vh;
@@ -17,7 +18,7 @@
       text-align: center;
       padding: 2rem;
     }
-    .container { max-width: 400px; }
+    .container { max-width: 400px; width: 100%; overflow-wrap: anywhere; }
     .icon { font-size: 3rem; margin-bottom: 1rem; }
     h1 {
       font-size: 1.5rem;
@@ -35,11 +36,13 @@
     }
     .available h2 {
       font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
       color: rgba(212, 175, 55, 0.7);
       margin-bottom: 0.5rem;
     }
+    /* Capitals and wide spacing suit the scripts that have capitals; they break the ones whose letters join. */
+    html:lang(en) .available h2, html:lang(es) .available h2, html:lang(fr) .available h2, html:lang(de) .available h2,
+    html:lang(it) .available h2, html:lang(pt) .available h2, html:lang(pl) .available h2, html:lang(ru) .available h2,
+    html:lang(vi) .available h2, html:lang(id) .available h2 { text-transform: uppercase; letter-spacing: 0.05em; }
     .available ul { list-style: none; font-size: 0.85rem; }
     .available li { padding: 0.25rem 0; }
     .available a { color: rgba(212, 175, 55, 0.9); text-decoration: none; }
@@ -59,18 +62,50 @@
 </head>
 <body>
   <div class="container">
-    <div class="icon">&#9889;</div>
-    <h1>You're Offline</h1>
-    <p>Some features are unavailable without an internet connection. Check your connection and try again.</p>
+    <div class="icon" aria-hidden="true">&#9889;</div>
+    <h1 data-k="title">You are offline</h1>
+    <p data-k="body">Some parts of the game need an internet connection. Check your connection and try again.</p>
     <div class="available">
-      <h2>Still available offline</h2>
+      <h2 data-k="available">Still available offline</h2>
       <ul>
-        <li><a href="/collection">Collection Browsing</a></li>
-        <li><a href="/battle">Single-Player Trivia</a></li>
-        <li><a href="/">Card Viewer</a></li>
+        <li><a href="/" data-k="home">Home</a></li>
+        <li><a href="/collection" data-k="collection">Collection</a></li>
+        <li><a href="/battle" data-k="battle">Battle Arena</a></li>
       </ul>
     </div>
-    <a href="/" class="retry-btn" onclick="location.reload(); return false;">Retry Connection</a>
+    <a href="/" class="retry-btn" id="retry" data-k="retry">Try again</a>
   </div>
+  <script>
+    // The language the player chose on the site, else the browser's first language that we have, else English.
+    (function () {
+      var M = {"en":{"pageTitle":"Offline","title":"You are offline","body":"Some parts of the game need an internet connection. Check your connection and try again.","available":"Still available offline","home":"Home","collection":"Collection","battle":"Battle Arena","retry":"Try again"},"es":{"pageTitle":"Sin conexión","title":"Estás sin conexión","body":"Algunas partes del juego necesitan conexión a internet. Comprueba tu conexión e inténtalo de nuevo.","available":"Sigue disponible sin conexión","home":"Inicio","collection":"Colección","battle":"Arena de batalla","retry":"Reintentar"},"fr":{"pageTitle":"Hors ligne","title":"Vous êtes hors ligne","body":"Certaines parties du jeu ont besoin d’une connexion à Internet. Vérifiez votre connexion et réessayez.","available":"Toujours disponible hors ligne","home":"Accueil","collection":"Collection","battle":"Arène de combat","retry":"Réessayer"},"de":{"pageTitle":"Offline","title":"Du bist offline","body":"Einige Teile des Spiels brauchen eine Internetverbindung. Prüf deine Verbindung und versuch es noch einmal.","available":"Weiterhin offline verfügbar","home":"Start","collection":"Sammlung","battle":"Kampfarena","retry":"Noch einmal versuchen"},"it":{"pageTitle":"Offline","title":"Sei offline","body":"Alcune parti del gioco hanno bisogno di una connessione a internet. Controlla la connessione e riprova.","available":"Ancora disponibile offline","home":"Home","collection":"Collezione","battle":"Arena di battaglia","retry":"Riprova"},"pt":{"pageTitle":"Offline","title":"Você está offline","body":"Algumas partes do jogo precisam de conexão com a internet. Verifique sua conexão e tente de novo.","available":"Continua disponível offline","home":"Início","collection":"Coleção","battle":"Arena de batalha","retry":"Tentar de novo"},"pl":{"pageTitle":"Offline","title":"Jesteś offline","body":"Niektóre części gry wymagają połączenia z internetem. Sprawdź połączenie i spróbuj ponownie.","available":"Nadal dostępne offline","home":"Start","collection":"Kolekcja","battle":"Arena bitwy","retry":"Spróbuj ponownie"},"ru":{"pageTitle":"Нет сети","title":"Нет подключения к сети","body":"Некоторым частям игры нужен интернет. Проверь соединение и попробуй ещё раз.","available":"По-прежнему доступно без сети","home":"Главная","collection":"Коллекция","battle":"Арена битв","retry":"Повторить"},"ar":{"pageTitle":"غير متصل","title":"أنت غير متصل","body":"بعض أجزاء اللعبة تحتاج إلى اتصال بالإنترنت. تحقق من اتصالك وحاول مجددًا.","available":"ما زال متاحًا دون اتصال","home":"الرئيسية","collection":"المجموعة","battle":"حلبة النزال","retry":"إعادة المحاولة"},"hi":{"pageTitle":"ऑफ़लाइन","title":"आप ऑफ़लाइन हैं","body":"खेल के कुछ हिस्सों को इंटरनेट कनेक्शन चाहिए। अपना कनेक्शन जाँचकर फिर कोशिश करें।","available":"ऑफ़लाइन भी उपलब्ध","home":"मुखपृष्ठ","collection":"संग्रह","battle":"युद्ध अखाड़ा","retry":"फिर कोशिश करें"},"zh":{"pageTitle":"离线","title":"你已离线","body":"游戏的部分内容需要联网。请检查网络后再试。","available":"离线时仍可使用","home":"首页","collection":"收藏","battle":"对战竞技场","retry":"重试"},"ja":{"pageTitle":"オフライン","title":"オフラインです","body":"ゲームの一部は、インターネット接続が必要です。接続を確認して、もう一度お試しください。","available":"オフラインでも使えます","home":"ホーム","collection":"コレクション","battle":"バトルアリーナ","retry":"再試行"},"ko":{"pageTitle":"오프라인","title":"오프라인이에요","body":"게임의 일부는 인터넷 연결이 필요해요. 연결을 확인하고 다시 시도해 주세요.","available":"오프라인에서도 쓸 수 있어요","home":"홈","collection":"컬렉션","battle":"배틀 아레나","retry":"다시 시도"},"vi":{"pageTitle":"Ngoại tuyến","title":"Bạn đang ngoại tuyến","body":"Một số phần của trò chơi cần có kết nối internet. Hãy kiểm tra mạng rồi thử lại.","available":"Vẫn dùng được khi ngoại tuyến","home":"Trang chủ","collection":"Bộ sưu tập","battle":"Đấu trường","retry":"Thử lại"},"th":{"pageTitle":"ออฟไลน์","title":"คุณออฟไลน์อยู่","body":"บางส่วนของเกมต้องใช้การเชื่อมต่ออินเทอร์เน็ต โปรดตรวจการเชื่อมต่อแล้วลองอีกครั้ง","available":"ยังใช้ได้ขณะออฟไลน์","home":"หน้าแรก","collection":"คอลเลกชัน","battle":"สังเวียนประชัน","retry":"ลองอีกครั้ง"},"id":{"pageTitle":"Luring","title":"Kamu sedang luring","body":"Beberapa bagian permainan memerlukan koneksi internet. Periksa koneksimu dan coba lagi.","available":"Tetap tersedia saat luring","home":"Beranda","collection":"Koleksi","battle":"Arena pertarungan","retry":"Coba lagi"}};
+      var RTL = ["ar"];
+      function pick() {
+        var stored = null;
+        try { stored = localStorage.getItem('inspired-mile-locale'); } catch (e) { /* no storage: ask the browser */ }
+        if (stored && M[stored]) return stored;
+        var asked = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || 'en'];
+        for (var i = 0; i < asked.length; i++) {
+          var base = String(asked[i]).toLowerCase().split('-')[0];
+          if (M[base]) return base;
+        }
+        return 'en';
+      }
+      var locale = pick();
+      var m = M[locale];
+      document.documentElement.lang = locale;
+      document.documentElement.dir = RTL.indexOf(locale) >= 0 ? 'rtl' : 'ltr';
+      document.title = m.pageTitle + ' — Inspired Mile';
+      var nodes = document.querySelectorAll('[data-k]');
+      for (var j = 0; j < nodes.length; j++) {
+        var text = m[nodes[j].getAttribute('data-k')];
+        if (text) nodes[j].textContent = text;
+      }
+      document.getElementById('retry').addEventListener('click', function (event) {
+        event.preventDefault();
+        location.reload();
+      });
+    })();
+  </script>
 </body>
 </html>

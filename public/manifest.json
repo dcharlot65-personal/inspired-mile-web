@@ -1,11 +1,46 @@
 {
   "name": "Inspired Mile — Shakespeare Card Game",
+  "lang": "en",
+  "name_localized": {
+    "es": "Inspired Mile: el juego de cartas de Shakespeare",
+    "fr": "Inspired Mile : le jeu de cartes Shakespeare",
+    "de": "Inspired Mile: das Shakespeare-Kartenspiel",
+    "it": "Inspired Mile: il gioco di carte di Shakespeare",
+    "pt": "Inspired Mile: o jogo de cartas de Shakespeare",
+    "pl": "Inspired Mile: szekspirowska gra karciana",
+    "ru": "Inspired Mile: карточная игра по Шекспиру",
+    "ar": "Inspired Mile: لعبة بطاقات شكسبير",
+    "hi": "Inspired Mile: शेक्सपियर कार्ड गेम",
+    "zh": "Inspired Mile：莎士比亚卡牌游戏",
+    "ja": "Inspired Mile：シェイクスピアのカードゲーム",
+    "ko": "Inspired Mile: 셰익스피어 카드 게임",
+    "vi": "Inspired Mile: trò chơi thẻ bài Shakespeare",
+    "th": "Inspired Mile: เกมการ์ดเชกสเปียร์",
+    "id": "Inspired Mile: permainan kartu Shakespeare"
+  },
   "short_name": "Inspired Mile",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#0d0b09",
   "theme_color": "#D4A017",
   "description": "Digital collectible cards powered by AI and augmented reality. Interactive experiences that bring Shakespeare to life.",
+  "description_localized": {
+    "es": "Cartas coleccionables digitales con IA y realidad aumentada. Experiencias interactivas que dan vida a Shakespeare.",
+    "fr": "Des cartes à collectionner numériques, animées par l’IA et la réalité augmentée. Des expériences interactives qui donnent vie à Shakespeare.",
+    "de": "Digitale Sammelkarten mit KI und erweiterter Realität. Interaktive Erlebnisse, die Shakespeare lebendig machen.",
+    "it": "Carte collezionabili digitali con IA e realtà aumentata. Esperienze interattive che danno vita a Shakespeare.",
+    "pt": "Cartas colecionáveis digitais com IA e realidade aumentada. Experiências interativas que dão vida a Shakespeare.",
+    "pl": "Cyfrowe karty kolekcjonerskie napędzane SI i rozszerzoną rzeczywistością. Interaktywne doświadczenia, które ożywiają Szekspira.",
+    "ru": "Цифровые коллекционные карты с ИИ и дополненной реальностью. Интерактивные истории, в которых оживает Шекспир.",
+    "ar": "بطاقات رقمية للاقتناء يحرّكها الذكاء الاصطناعي والواقع المعزَّز. تجارب تفاعلية تبعث الحياة في شكسبير.",
+    "hi": "एआई और ऑगमेंटेड रियलिटी से चलने वाले डिजिटल संग्रहणीय कार्ड। ऐसे इंटरैक्टिव अनुभव जो शेक्सपियर को जीवंत कर देते हैं।",
+    "zh": "由人工智能和增强现实驱动的数字收藏卡牌。让莎士比亚活起来的互动体验。",
+    "ja": "AIと拡張現実で動くデジタルコレクションカード。シェイクスピアを生き生きとよみがえらせるインタラクティブな体験。",
+    "ko": "AI와 증강 현실로 움직이는 디지털 수집 카드. 셰익스피어를 되살리는 인터랙티브 경험.",
+    "vi": "Thẻ bài sưu tầm kỹ thuật số với AI và thực tế tăng cường. Những trải nghiệm tương tác làm Shakespeare sống dậy.",
+    "th": "การ์ดสะสมดิจิทัลที่ขับเคลื่อนด้วย AI และความจริงเสริม ประสบการณ์เชิงโต้ตอบที่ปลุกเชกสเปียร์ให้มีชีวิต",
+    "id": "Kartu koleksi digital bertenaga AI dan realitas tertambah. Pengalaman interaktif yang menghidupkan Shakespeare."
+  },
   "icons": [
     {
       "src": "/icon-192.png",
@@ -24,6 +59,10 @@
       "purpose": "maskable"
     }
   ],
-  "categories": ["games", "education", "entertainment"],
+  "categories": [
+    "games",
+    "education",
+    "entertainment"
+  ],
   "orientation": "any"
 }
