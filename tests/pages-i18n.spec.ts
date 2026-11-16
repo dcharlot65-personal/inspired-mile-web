@@ -310,6 +310,40 @@ test.describe('Translated pages: what a script draws', () => {
     await expect(page.locator('#rarity-bars')).toContainText('Légendaire');
   });
 
+  test('a count out of a total reads left to right on the Arabic pages, as numbers do', async ({ page }) => {
+    // "Cards owned: 11 / 71": with spaces round the slash, the bidirectional algorithm laid the two
+    // numbers out right to left on an Arabic page, and the screen said 71 / 11 (screenshots, 2026-11-16).
+    // Read where the two numbers really are: the count must stand left of the total.
+    const countLeftOfTotal = (id: string, plantSpaced = false) =>
+      page.evaluate(([numId, spaced]) => {
+        const n = document.getElementById(numId as string)!;
+        const after = n.parentElement!.nextSibling as Text; // the text after the accent span: "/71", or "/" then the total's own span
+        if (spaced) after.data = after.data.replace(/^\s*\/\s*/, ' / ');
+        const m = after.data.match(/[\d٠-٩][\d٠-٩.,٬]*/);
+        let total: DOMRect;
+        if (m) {
+          const r = document.createRange();
+          r.setStart(after, m.index!);
+          r.setEnd(after, m.index! + m[0].length);
+          total = r.getBoundingClientRect();
+        } else total = (after.nextSibling as Element).getBoundingClientRect();
+        return n.getBoundingClientRect().left < total.left;
+      }, [id, plantSpaced] as const);
+    await seed(page);
+    await page.goto('/collection');
+    for (const l of ['ar', 'en'] as const) {
+      await show(page, '/collection', l);
+      expect([l, 'owned', await countLeftOfTotal('owned-count')]).toEqual([l, 'owned', true]);
+      expect([l, 'achievements', await countLeftOfTotal('achievement-count')]).toEqual([l, 'achievements', true]);
+      expect([l, 'cities', await countLeftOfTotal('city-count')]).toEqual([l, 'cities', true]);
+      await show(page, '/world-map', l);
+      expect([l, 'world map', await countLeftOfTotal('total-cities')]).toEqual([l, 'world map', true]);
+    }
+    // The check can fail: put the spaces back on the Arabic page and the numbers swap sides.
+    await show(page, '/world-map', 'ar');
+    expect(await countLeftOfTotal('total-cities', true)).toBe(false);
+  });
+
   test('an unlocked achievement is announced in the language', async ({ page }) => {
     await seed(page);
     await page.goto('/');
@@ -341,7 +375,11 @@ test.describe('Translated pages: what a script draws', () => {
     for (const p of PAGES_ELSEWHERE) {
       for (const l of LOCALES) {
         const where = `${p.path} [${l}]`;
-        await show(page, p.path, l);
+        // Not show(): data-i18n-ready belongs to the page areas' runtime, which these two pages do not use.
+        await page.evaluate((code) => localStorage.setItem('inspired-mile-locale', code), l);
+        await page.goto(p.path);
+        await expect(page.locator('html'), where).toHaveAttribute('data-title-locale', l);
+        await expect(page.locator('html'), where).toHaveAttribute('lang', l);
         const title = `${await p.title(l)} | Inspired Mile`;
         const description = (await messages('core', '', l))[p.descriptionKey];
         expect([where, title.length > 16, (description ?? '').length > 20]).toEqual([where, true, true]);

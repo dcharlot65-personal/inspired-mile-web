@@ -7,7 +7,9 @@
 const messages: Record<string, string> = {
   'variants.unlocked': 'النسخ المفتوحة: <b>{n}</b>',
   'variants.count': 'النسخ: {n}',
-  'variants.cities': 'المدن المكتشفة: <b>{n}</b> / {total}',
+  // No spaces around the slash: with them the bidirectional algorithm lays the two numbers out right to left
+  // ("11 / 71" showed as 71 / 11, screenshots of 2026-11-16); written 11/71 they stay one left-to-right number.
+  'variants.cities': 'المدن المكتشفة: <b>{n}</b>/{total}',
   'variants.source.city-quest': 'مهمة مدينة',
   'variants.source.battle-streak': 'سلسلة انتصارات',
   'variants.source.trivia-mastery': 'إتقان المسابقة',

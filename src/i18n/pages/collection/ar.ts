@@ -9,7 +9,9 @@ const messages: Record<string, string> = {
   'collection.meta.description': 'تصفّح مجموعة بطاقاتك في Inspired Mile: شخصيات وآثار وجرعات من أعظم أعمال شكسبير.',
   'collection.title': '<b>مجموعتي</b>',
   'collection.intro': 'مجموعة بطاقاتك من عالم شكسبير. البطاقات المقفلة تُكسَب في <a>ساحة اللعب</a>.',
-  'collection.owned': 'البطاقات التي تملكها: <b>{owned}</b> / {total}',
+  // No spaces around the slash: with them the bidirectional algorithm lays the two numbers out right to left
+  // ("11 / 71" showed as 71 / 11, screenshots of 2026-11-16); written 11/71 they stay one left-to-right number.
+  'collection.owned': 'البطاقات التي تملكها: <b>{owned}</b>/{total}',
   'collection.filter.all': 'الكل',
   'collection.filter.owned': 'ما أملكه',
   'collection.locked': 'مقفلة',
@@ -40,7 +42,9 @@ const messages: Record<string, string> = {
   'collection.modal.add': 'أضف إلى الرزمة',
   'collection.modal.close': 'إغلاق',
   'collection.achievements.title': 'الإنجازات',
-  'collection.achievements.count': 'المفتوح منها: <b>{n}</b> / {total}',
+  // No spaces around the slash: with them the bidirectional algorithm lays the two numbers out right to left
+  // ("11 / 71" showed as 71 / 11, screenshots of 2026-11-16); written 11/71 they stay one left-to-right number.
+  'collection.achievements.count': 'المفتوح منها: <b>{n}</b>/{total}',
 };
 
 export default messages;
