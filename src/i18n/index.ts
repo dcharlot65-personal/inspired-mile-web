@@ -167,12 +167,10 @@ export function loadArea(name: string, l: Locale = current): Promise<void> {
   return pending;
 }
 
-/**
- * Fill every element under `root` that carries a data-i18n key. A key nobody has yet (a page
- * area still on its way) is left alone: the markup keeps its own text rather than show the key.
- */
+/** Fill every element under `root` that carries a data-i18n key. */
 export function applyTranslations(root: ParentNode = document): void {
   root.querySelectorAll<HTMLElement>('[data-i18n]').forEach((el) => {
+    // A key nobody has yet (a page area still on its way) is left alone: the markup keeps its own text rather than show the key.
     if (has(el.dataset.i18n!)) el.textContent = t(el.dataset.i18n!);
   });
   root.querySelectorAll<HTMLElement>('[data-i18n-placeholder]').forEach((el) => {
