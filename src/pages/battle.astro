@@ -4,29 +4,31 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 <BaseLayout title="Battle Arena" description="A duel of verses: play your cards, keep the form, and out-write an AI that runs entirely in your browser.">
 
+  <!-- Every visible string on this page is a message key (src/i18n). The English here is what
+       shows until the script has run; data-i18n fills it in the visitor's language. -->
   <section class="section-padding">
     <div class="max-w-4xl mx-auto">
       <div class="text-center mb-10">
         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-crimson-500/10 border border-crimson-500/20 mb-6">
           <span class="w-2 h-2 rounded-full bg-crimson-500 animate-pulse"></span>
-          <span class="text-crimson-400 text-xs font-medium tracking-wide uppercase">Live Arena</span>
+          <span class="text-crimson-400 text-xs font-medium tracking-wide uppercase" data-i18n="battle.badge">Live Arena</span>
         </div>
-        <h1 class="font-display text-4xl sm:text-5xl font-bold text-obsidian-100 mb-4">Battle <span class="text-gradient">Arena</span></h1>
-        <p class="text-obsidian-300 max-w-xl mx-auto">
+        <h1 class="font-display text-4xl sm:text-5xl font-bold text-obsidian-100 mb-4"><span data-i18n="battle.titleA">Battle</span> <span class="text-gradient" data-i18n="battle.titleB">Arena</span></h1>
+        <p class="text-obsidian-300 max-w-xl mx-auto" data-i18n="battle.intro">
           Three rounds, three forms. Your cards decide what your verse must do. The opponent runs in your browser: nothing you write leaves this device.
         </p>
       </div>
 
       <!-- Setup -->
       <div id="duel-setup" class="card-glass p-6 sm:p-8">
-        <h2 class="font-display text-2xl font-bold text-gold-400 mb-1">Prepare your duel</h2>
-        <p class="text-sm text-obsidian-400 mb-6">Each character can take the stage once. Relics and potions cost ink.</p>
+        <h2 class="font-display text-2xl font-bold text-gold-400 mb-1" data-i18n="battle.prepare">Prepare your duel</h2>
+        <p class="text-sm text-obsidian-400 mb-6" data-i18n="battle.prepareNote">Each character can take the stage once. Relics and potions cost ink.</p>
 
         <div class="grid sm:grid-cols-2 gap-6">
           <div>
             <div class="flex items-center justify-between mb-2">
-              <span class="text-xs uppercase tracking-wider text-obsidian-500">Deck</span>
-              <a href="/collection" class="text-xs text-obsidian-400 hover:text-gold-400 underline">Build a deck</a>
+              <span class="text-xs uppercase tracking-wider text-obsidian-500" data-i18n="battle.deck">Deck</span>
+              <a href="/collection" class="text-xs text-obsidian-400 hover:text-gold-400 underline" data-i18n="battle.buildDeck">Build a deck</a>
             </div>
             <p id="deck-name" class="text-sm font-semibold text-gold-400 mb-2"></p>
             <div id="deck-cards" class="flex flex-wrap gap-2"></div>
@@ -34,15 +36,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
           <div class="space-y-4">
             <label class="block">
-              <span class="text-xs uppercase tracking-wider text-obsidian-500">Opponent</span>
+              <span class="text-xs uppercase tracking-wider text-obsidian-500" data-i18n="battle.opponent">Opponent</span>
               <select id="difficulty" class="mt-1 w-full bg-obsidian-900 border border-obsidian-700 rounded-lg px-3 py-2 text-sm text-obsidian-100">
-                <option value="apprentice">Apprentice: writes one draft</option>
-                <option value="player" selected>Player: picks the better of two drafts</option>
-                <option value="master">Master: picks the best of three drafts</option>
+                <option value="apprentice" data-i18n="battle.difficulty.apprentice">Apprentice: writes one draft</option>
+                <option value="player" selected data-i18n="battle.difficulty.player">Player: picks the better of two drafts</option>
+                <option value="master" data-i18n="battle.difficulty.master">Master: picks the best of three drafts</option>
               </select>
             </label>
             <label class="block">
-              <span class="text-xs uppercase tracking-wider text-obsidian-500">Language of the duel</span>
+              <span class="text-xs uppercase tracking-wider text-obsidian-500" data-i18n="battle.duelLanguage">Language of the duel</span>
               <select id="language" class="mt-1 w-full bg-obsidian-900 border border-obsidian-700 rounded-lg px-3 py-2 text-sm text-obsidian-100"></select>
             </label>
           </div>
@@ -52,35 +54,35 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <div id="variant-equip" class="hidden mt-6 p-3 rounded-lg border border-obsidian-700/50 bg-obsidian-900/30">
           <div class="flex items-center justify-between">
             <div>
-              <span class="text-xs uppercase tracking-wider text-obsidian-500">World card</span>
-              <span id="equipped-variant-label" class="ml-2 text-xs font-semibold text-obsidian-400">None equipped</span>
+              <span class="text-xs uppercase tracking-wider text-obsidian-500" data-i18n="battle.worldCard">World card</span>
+              <span id="equipped-variant-label" class="ms-2 text-xs font-semibold text-obsidian-400"></span>
             </div>
-            <button id="equip-variant-btn" class="text-xs text-obsidian-400 hover:text-gold-400 transition-colors border border-obsidian-700 rounded-sm px-2 py-1">Equip</button>
+            <button id="equip-variant-btn" class="text-xs text-obsidian-400 hover:text-gold-400 transition-colors border border-obsidian-700 rounded-sm px-2 py-1" data-i18n="battle.equip">Equip</button>
           </div>
           <div id="variant-picker" class="hidden mt-3 max-h-48 overflow-y-auto space-y-1"></div>
         </div>
 
         <!-- Brain -->
         <div class="mt-6 p-4 rounded-lg border border-obsidian-700/50 bg-obsidian-900/30">
-          <span class="text-xs uppercase tracking-wider text-obsidian-500">Your opponent's mind</span>
+          <span class="text-xs uppercase tracking-wider text-obsidian-500" data-i18n="battle.mind">Your opponent's mind</span>
           <p id="brain-status" class="text-sm text-obsidian-300 mt-1">Checking what this device can run…</p>
           <div id="brain-choices" class="hidden mt-3 flex flex-wrap gap-3">
             <button id="brain-model-btn" class="btn-primary text-sm"></button>
             <button id="brain-other-btn" class="hidden btn-secondary text-sm"></button>
-            <button id="brain-rules-btn" class="btn-secondary text-sm">Play now without a download</button>
+            <button id="brain-rules-btn" class="btn-secondary text-sm" data-i18n="brain.playNow">Play now without a download</button>
           </div>
           <div id="loading-screen" class="hidden mt-3">
             <p id="loading-status" class="text-sm text-obsidian-400 mb-2"></p>
             <div class="h-2 rounded-full bg-obsidian-800 overflow-hidden">
               <div id="loading-bar" class="h-full bg-linear-to-r from-gold-500 to-gold-400 rounded-full transition-all duration-300" style="width:0%"></div>
             </div>
-            <p id="loading-detail" class="text-xs text-obsidian-500 mt-2">Downloaded once and kept by your browser. Nothing is sent anywhere.</p>
+            <p id="loading-detail" class="text-xs text-obsidian-500 mt-2" data-i18n="brain.kept">Downloaded once and kept by your browser. Nothing is sent anywhere.</p>
           </div>
         </div>
 
         <div class="mt-6 flex items-center justify-between gap-4">
           <p id="setup-note" class="text-xs text-obsidian-500"></p>
-          <button id="start-duel" class="btn-primary px-8" disabled>Begin the duel</button>
+          <button id="start-duel" class="btn-primary px-8" disabled data-i18n="battle.begin">Begin the duel</button>
         </div>
       </div>
 
@@ -92,8 +94,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               <p id="round-label" class="text-xs font-mono uppercase tracking-wider text-obsidian-500"></p>
               <p id="form-name" class="font-display text-xl font-bold text-gold-400"></p>
             </div>
-            <div class="text-right">
-              <p class="text-xs text-obsidian-500">You <span id="player-score" class="font-mono text-obsidian-200">0</span> · <span id="ai-score" class="font-mono text-gold-400">0</span> Opponent</p>
+            <div class="text-end">
+              <p class="text-xs text-obsidian-500"><span data-i18n="battle.you">You</span> <span id="player-score" class="font-mono text-obsidian-200">0</span> · <span id="ai-score" class="font-mono text-gold-400">0</span> <span data-i18n="battle.opponent">Opponent</span></p>
               <p id="ai-model-badge" class="text-xs text-obsidian-500"></p>
             </div>
           </div>
@@ -106,41 +108,42 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               <div class="flex items-start gap-3">
                 <div id="opponent-portrait" class="w-14 h-14 rounded-sm overflow-hidden shrink-0 flex items-center justify-center bg-obsidian-800 text-2xl"></div>
                 <div class="min-w-0 flex-1">
-                  <p class="text-xs uppercase tracking-wider text-obsidian-500">Your opponent plays</p>
+                  <p class="text-xs uppercase tracking-wider text-obsidian-500" data-i18n="round.opponentPlays">Your opponent plays</p>
                   <p id="opponent-name" class="font-display font-bold text-obsidian-100"></p>
                   <p id="opponent-device" class="text-xs text-obsidian-400"></p>
                 </div>
               </div>
               <p id="opponent-curse" class="hidden mt-3 text-sm text-crimson-300 border border-crimson-500/30 bg-crimson-500/10 rounded-sm px-3 py-2"></p>
-              <blockquote id="opponent-verse" class="mt-3 whitespace-pre-line font-display text-lg text-obsidian-100 border-l-2 border-gold-500/40 pl-4 min-h-[3rem]"></blockquote>
+              <!-- The verse is in the duel's language, which may read the other way from the interface. -->
+              <blockquote id="opponent-verse" dir="auto" class="mt-3 whitespace-pre-line font-display text-lg text-obsidian-100 border-s-2 border-gold-500/40 ps-4 min-h-[3rem]"></blockquote>
             </div>
 
             <!-- Your move -->
             <div id="move-panel" class="space-y-4">
               <div>
                 <div class="flex items-center justify-between mb-2">
-                  <span class="text-xs uppercase tracking-wider text-obsidian-500">Who answers?</span>
-                  <span class="text-xs text-obsidian-400">Ink <span id="ink" class="font-mono text-gold-400"></span></span>
+                  <span class="text-xs uppercase tracking-wider text-obsidian-500" data-i18n="round.whoAnswers">Who answers?</span>
+                  <span class="text-xs text-obsidian-400"><span data-i18n="round.ink">Ink</span> <span id="ink" class="font-mono text-gold-400"></span></span>
                 </div>
                 <div id="hand-characters" class="flex flex-wrap gap-2"></div>
               </div>
               <div id="hand-items-wrap" class="hidden">
-                <span class="text-xs uppercase tracking-wider text-obsidian-500">Relics and potions (1 ink each)</span>
+                <span class="text-xs uppercase tracking-wider text-obsidian-500" data-i18n="round.items">Relics and potions (1 ink each)</span>
                 <div id="hand-items" class="flex flex-wrap gap-2 mt-2"></div>
                 <p id="item-note" class="mt-2 text-xs text-obsidian-400 min-h-[1rem]"></p>
               </div>
 
               <div class="grid md:grid-cols-5 gap-4">
                 <div class="md:col-span-3">
-                  <label for="verse-input" class="text-xs uppercase tracking-wider text-obsidian-500">Your verse</label>
-                  <textarea id="verse-input" rows="5" maxlength="600" spellcheck="true"
+                  <label for="verse-input" class="text-xs uppercase tracking-wider text-obsidian-500" data-i18n="round.yourVerse">Your verse</label>
+                  <textarea id="verse-input" rows="5" maxlength="600" spellcheck="true" dir="auto"
                     class="mt-2 w-full bg-obsidian-900 border border-obsidian-700 rounded-lg px-4 py-3 text-obsidian-100 font-display text-lg leading-relaxed focus:border-gold-500/50 focus:outline-hidden"
-                    placeholder="One line of verse per line…"></textarea>
+                    placeholder="One line of verse per line…" data-i18n-placeholder="round.versePlaceholder"></textarea>
                 </div>
                 <div class="md:col-span-2">
-                  <span class="text-xs uppercase tracking-wider text-obsidian-500">What your verse must do</span>
+                  <span class="text-xs uppercase tracking-wider text-obsidian-500" data-i18n="round.mustDo">What your verse must do</span>
                   <ul id="live-checks" class="mt-2 space-y-1.5 text-sm"></ul>
-                  <p class="mt-3 text-xs text-obsidian-500">Craft so far: <span id="live-craft" class="font-mono text-gold-400">0</span></p>
+                  <p class="mt-3 text-xs text-obsidian-500"><span data-i18n="round.craftSoFar">Craft so far:</span> <span id="live-craft" class="font-mono text-gold-400">0</span></p>
                 </div>
               </div>
 
@@ -159,22 +162,22 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <div id="verdict" class="hidden"></div>
           </div>
         </div>
-        <p class="text-center text-xs text-obsidian-600 mt-3">Match seed <span id="seed-label" class="font-mono"></span>: the same seed and deck draw the same forms.</p>
+        <p class="text-center text-xs text-obsidian-600 mt-3"><span data-i18n="round.seedLabel">Match seed</span> <span id="seed-label" class="font-mono"></span>. <span data-i18n="round.seedNote">The same seed and deck draw the same forms.</span></p>
       </div>
 
       <!-- Stats -->
       <div class="grid grid-cols-3 gap-4 mt-8">
         <div class="card-glass p-4 text-center">
           <span class="text-2xl font-display font-bold text-gold-400" id="rounds-played">0</span>
-          <p class="text-xs text-obsidian-500 mt-1">Rounds played</p>
+          <p class="text-xs text-obsidian-500 mt-1" data-i18n="stats.rounds">Rounds played</p>
         </div>
         <div class="card-glass p-4 text-center">
           <span class="text-2xl font-display font-bold text-crimson-400" id="battles-total">0</span>
-          <p class="text-xs text-obsidian-500 mt-1">Duels</p>
+          <p class="text-xs text-obsidian-500 mt-1" data-i18n="stats.duels">Duels</p>
         </div>
         <div class="card-glass p-4 text-center">
           <span class="text-2xl font-display font-bold text-emerald-400" id="win-rate">--%</span>
-          <p class="text-xs text-obsidian-500 mt-1">Rounds won</p>
+          <p class="text-xs text-obsidian-500 mt-1" data-i18n="stats.won">Rounds won</p>
         </div>
       </div>
     </div>
@@ -189,17 +192,21 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     import { getActiveDeck } from '../lib/deck-manager';
     import { CITY_CATALOG, decodeVariantId, getCityByCode, getOwnedVariants, type CityAbility } from '../lib/variants';
     import { isSpeaking, isVoiceLoaded, loadVoice, speak, stopSpeaking } from '../lib/thespian-voice';
-    import { CURSES, HOUSE_DEVICE, POTION_CURSE, deviceForHouse } from '../lib/verse/devices';
+    import { POTION_CURSE, POWER_WORD_BONUS, deviceForHouse, houseWhy } from '../lib/verse/devices';
     import {
       JUDGE_POOL, ROUNDS, createDuel, illegalMove, inkAt, matchWinner, moveCost, resolveRound, scoreVerse, starterDeck,
       type Duel, type DuelDeck, type PlayerMove, type RoundResult, type VerseScore,
     } from '../lib/verse/duel';
     import { cancelListening, EAR_MEGABYTES, isEarLoaded, isListening, loadEar, startListening, stopListening } from '../lib/ear';
-    import { getForm } from '../lib/verse/forms';
+    import { FORM_POINTS, getForm } from '../lib/verse/forms';
     import { CRITERIA } from '../lib/verse/judge';
-    import { LANGUAGE_NAMES, writeOpponentVerse, type Difficulty } from '../lib/verse/opponent';
+    import { writeOpponentVerse, type Difficulty } from '../lib/verse/opponent';
+    import { PACK_LANGS, hasPack, loadPack } from '../lib/verse/packs';
     import { referee } from '../lib/verse/referee';
     import { cleanVerse } from '../lib/verse/text';
+    import { initI18n, languageName, locale, onLocaleChange, t, tm } from '../i18n';
+    import { criterionName, curseName, curseRule, curseRuleTheirs, deviceBrief, deviceName, signatureText } from '../i18n/duel';
+    import type { Msg } from '../lib/verse/msg';
 
     const $ = <T extends HTMLElement = HTMLElement>(id: string) => document.getElementById(id) as T;
     const el = (tag: string, cls = '', text = '') => {
@@ -209,10 +216,20 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       return e;
     };
 
+    // A line of status that must follow the interface language: the element remembers the
+    // message it shows, so a change of language can say it again.
+    const shown = new Map<HTMLElement, Msg | null>();
+    function say$(target: HTMLElement, key: string | null, vars?: Msg['vars']) {
+      shown.set(target, key ? { key, vars } : null);
+      target.textContent = key ? t(key, vars) : '';
+    }
+    function resay() {
+      for (const [target, m] of shown) target.textContent = m ? tm(m) : '';
+    }
+
     // --- State ---
     const params = new URLSearchParams(location.search);
     let deck: DuelDeck;
-    let deckName = '';
     let duel: Duel | null = null;
     let roundIndex = 0;
     let moves: PlayerMove[] = [];
@@ -220,10 +237,19 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     let move: PlayerMove = { charId: '' };
     let opponentVerse = '';
     let busy = false;
+    let judging = false;
     let tier: Tier = 'none';
     let useModel = false;
     let voiceEnabled = false;
     let variantAbility: CityAbility | null = null;
+    let equippedCity = '';
+    /** What the arena is showing, so a change of language can draw it again. */
+    let view: 'setup' | 'round' | 'verdict' | 'finished' = 'setup';
+    let matchResult: 'player' | 'opponent' | null = null;
+    let reward: Card | null = null;
+
+    /** The language verses are measured in: the duel's, or the one chosen for the next duel. */
+    const duelLang = () => duel?.lang ?? langSelect.value ?? 'en';
 
     // --- Stats ---
     function showStats() {
@@ -246,12 +272,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         pic.appendChild(img);
       } else pic.textContent = card.icon;
       b.appendChild(pic);
-      const t = el('div', 'min-w-0');
-      t.appendChild(el('p', 'text-xs font-semibold text-obsidian-100 truncate', card.name));
+      const text = el('div', 'min-w-0');
+      // Card names stay in English: they are the characters' names.
+      text.appendChild(el('p', 'text-xs font-semibold text-obsidian-100 truncate', card.name));
+      const curse = POTION_CURSE[card.id];
       const sub =
-        card.type === 'Character' ? deviceForHouse(card.house).name : card.type === 'Potion' ? CURSES[POTION_CURSE[card.id]]?.name ?? 'Curse' : 'Power words';
-      t.appendChild(el('p', 'text-[10px] text-obsidian-400 truncate', sub));
-      b.appendChild(t);
+        card.type === 'Character' ? tm(deviceForHouse(card.house, duelLang()).name) : card.type === 'Potion' ? (curse ? curseName(curse) : t('chip.curse')) : t('chip.powerWords');
+      text.appendChild(el('p', 'text-[10px] text-obsidian-400 truncate', sub));
+      b.appendChild(text);
       return b;
     }
 
@@ -260,12 +288,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       const valid = saved && saved.characters.filter((id) => getCardById(id)).length >= ROUNDS;
       if (valid) {
         deck = { characters: saved!.characters, relics: saved!.relics, potions: saved!.potions };
-        deckName = saved!.name;
+        $('deck-name').textContent = saved!.name;
       } else {
         deck = starterDeck(getOwnedCardIds());
-        deckName = 'Starter deck';
+        $('deck-name').textContent = t('battle.starterDeck');
       }
-      $('deck-name').textContent = deckName;
       const wrap = $('deck-cards');
       wrap.replaceChildren();
       for (const id of [...deck.characters, ...deck.relics, ...deck.potions]) {
@@ -273,32 +300,46 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         if (c) wrap.appendChild(cardChip(c));
       }
     }
-    loadDeck();
 
-    // --- Language ---
+    // --- Language of the duel ---
     const langSelect = $<HTMLSelectElement>('language');
-    function fillLanguages(codes: string[]) {
-      const want = params.get('lang') ?? localStorage.getItem('inspired-mile-duel-lang') ?? navigator.language.split('-')[0];
+    let offered: string[] = [...PACK_LANGS];
+    function fillLanguages(codes: string[], prefer?: string) {
+      // Only languages the game has verse data for; with a model, only those it names.
+      offered = codes.filter((c) => hasPack(c));
+      const want = prefer ?? params.get('lang') ?? localStorage.getItem('inspired-mile-duel-lang') ?? locale();
       langSelect.replaceChildren();
-      for (const code of codes) {
+      for (const code of offered) {
         const o = document.createElement('option');
         o.value = code;
-        o.textContent = LANGUAGE_NAMES[code] ?? code;
+        o.textContent = languageName(code);
         langSelect.appendChild(o);
       }
-      langSelect.value = codes.includes(want) ? want : 'en';
+      langSelect.value = offered.includes(want) ? want : offered.includes('en') ? 'en' : offered[0];
     }
-    fillLanguages(['en']);
-    langSelect.addEventListener('change', () => localStorage.setItem('inspired-mile-duel-lang', langSelect.value));
+    langSelect.addEventListener('change', () => {
+      localStorage.setItem('inspired-mile-duel-lang', langSelect.value);
+      loadDeck();
+    });
 
     // --- World card ---
-    function initVariants() {
+    function renderEquipped() {
+      const label = $('equipped-variant-label');
+      if (variantAbility) {
+        label.textContent = `${equippedCity} (${t('variant.bonus', { n: variantAbility.bonus, criterion: criterionName(variantAbility.axis) })})`;
+        label.className = 'ms-2 text-xs font-semibold text-gold-400';
+      } else {
+        label.textContent = t('battle.noneEquipped');
+        label.className = 'ms-2 text-xs font-semibold text-obsidian-400';
+      }
+    }
+    function renderVariantPicker() {
       const owned = getOwnedVariants();
       if (!owned.length) return;
       $('variant-equip').classList.remove('hidden');
       const picker = $('variant-picker');
       picker.replaceChildren();
-      const none = el('button', 'variant-pick w-full text-left text-xs p-2 rounded-sm hover:bg-obsidian-800 text-obsidian-400', 'No world card');
+      const none = el('button', 'variant-pick w-full text-start text-xs p-2 rounded-sm hover:bg-obsidian-800 text-obsidian-400', t('battle.noWorldCard'));
       none.dataset.variantId = '';
       picker.appendChild(none);
       for (const v of owned) {
@@ -307,40 +348,43 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         const card = CARD_CATALOG.find((c) => c.id === v.baseCardId);
         if (!city || !card) continue;
         const cfg = CITY_CATALOG[city];
-        const b = el('button', 'variant-pick w-full text-left text-xs p-2 rounded-sm hover:bg-obsidian-800 text-obsidian-300 flex items-center justify-between');
+        const b = el('button', 'variant-pick w-full text-start text-xs p-2 rounded-sm hover:bg-obsidian-800 text-obsidian-300 flex items-center justify-between');
         b.dataset.variantId = v.variantId;
-        b.appendChild(el('span', '', `${card.name} in ${city}`));
-        b.appendChild(el('span', 'text-gold-500 text-[10px]', `+${cfg.ability.bonus} ${cfg.ability.axis}`));
+        b.appendChild(el('span', '', t('battle.cardInCity', { card: card.name, city })));
+        b.appendChild(el('span', 'text-gold-500 text-[10px]', t('variant.bonus', { n: cfg.ability.bonus, criterion: criterionName(cfg.ability.axis) })));
         picker.appendChild(b);
       }
-      $('equip-variant-btn').addEventListener('click', () => picker.classList.toggle('hidden'));
-      picker.addEventListener('click', (e) => {
-        const b = (e.target as HTMLElement).closest('.variant-pick') as HTMLElement | null;
-        if (!b) return;
-        const label = $('equipped-variant-label');
-        const decoded = b.dataset.variantId ? decodeVariantId(b.dataset.variantId) : null;
-        const city = decoded && getCityByCode(decoded.cityCode);
-        if (city) {
-          variantAbility = CITY_CATALOG[city].ability;
-          label.textContent = `${city} (+${variantAbility.bonus} ${variantAbility.axis})`;
-          label.className = 'ml-2 text-xs font-semibold text-gold-400';
-        } else {
-          variantAbility = null;
-          label.textContent = 'None equipped';
-          label.className = 'ml-2 text-xs font-semibold text-obsidian-400';
-        }
-        picker.classList.add('hidden');
-      });
+      renderEquipped();
     }
-    initVariants();
+    $('equip-variant-btn').addEventListener('click', () => $('variant-picker').classList.toggle('hidden'));
+    $('variant-picker').addEventListener('click', (e) => {
+      const b = (e.target as HTMLElement).closest('.variant-pick') as HTMLElement | null;
+      if (!b) return;
+      const decoded = b.dataset.variantId ? decodeVariantId(b.dataset.variantId) : null;
+      const city = decoded && getCityByCode(decoded.cityCode);
+      variantAbility = city ? CITY_CATALOG[city].ability : null;
+      equippedCity = city || '';
+      renderEquipped();
+      $('variant-picker').classList.add('hidden');
+    });
 
     // --- Brain ---
     const startBtn = $<HTMLButtonElement>('start-duel');
     const BRAIN_KEY = 'inspired-mile-brain';
+    const size = (mb: number) => (mb >= 1000 ? `${(mb / 1000).toFixed(1)} GB` : `${mb} MB`);
 
-    function ready(note: string) {
-      $('setup-note').textContent = note;
+    function ready(noteKey: string | null) {
+      say$($('setup-note'), noteKey);
       startBtn.disabled = false;
+    }
+
+    /** The model loader reports its progress in English; say it in the interface language. */
+    function progressText(raw: string): string {
+      const down = raw.match(/^Downloading (.+): (\d+) of (\d+) MB$/);
+      if (down) return t('brain.downloading', { model: down[1], done: down[2], total: down[3] });
+      const done = raw.match(/^(.+) ready$/);
+      if (done) return t('brain.ready', { model: done[1] });
+      return raw;
     }
 
     async function summon(which: Tier = tier) {
@@ -348,9 +392,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       tier = which;
       $('brain-choices').classList.add('hidden');
       $('loading-screen').classList.remove('hidden');
-      $('loading-status').textContent = 'Summoning your opponent…';
+      say$($('loading-status'), 'brain.summoning');
       const ok = await loadBrain(tier, (p) => {
-        $('loading-status').textContent = p.text;
+        shown.delete($('loading-status'));
+        $('loading-status').textContent = progressText(p.text);
         $('loading-bar').style.width = `${p.percent}%`;
       });
       $('loading-screen').classList.add('hidden');
@@ -358,15 +403,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         const info = brainInfo()!;
         useModel = true;
         localStorage.setItem(BRAIN_KEY, info.tier);
-        $('brain-status').textContent = info.writes
-          ? `${info.label} is loaded and running on this device.`
-          : `${info.label} is loaded on this device. It is small: it judges the verses, and the opponent plays written verse.`;
-        fillLanguages(info.languages);
-        ready('');
+        say$($('brain-status'), info.writes ? 'brain.loaded' : 'brain.loadedJudgeOnly', { model: info.label });
+        fillLanguages(info.languages, langSelect.value);
+        loadDeck();
+        ready(null);
       } else {
         useModel = false;
-        $('brain-status').textContent = 'The model could not start on this device. You can still play against the written opponent.';
-        ready('Playing without a model.');
+        say$($('brain-status'), 'brain.failed');
+        ready('brain.noModel');
       }
     }
 
@@ -375,24 +419,21 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       const cap = await detectCapability();
       tier = forced === 'rules' ? 'none' : chooseTier(cap);
       if (tier === 'none') {
-        $('brain-status').textContent = cap.webgpu
-          ? 'Playing against the written opponent.'
-          : 'This browser has no WebGPU, so the opponent plays from written verses and the judging is by rule. Everything else works.';
-        ready('Playing without a model.');
+        say$($('brain-status'), cap.webgpu ? 'brain.written' : 'brain.noWebgpu');
+        ready('brain.noModel');
         return;
       }
       // Where the device can take it, Gemma is offered first: it writes better verse,
       // judges more reliably and, measured on Apple Metal, answers faster than LFM3.
-      const size = (mb: number) => (mb >= 1000 ? `${(mb / 1000).toFixed(1)} GB` : `${mb} MB`);
       const first = canOfferGrand(cap) ? MODELS.grand : MODELS[tier];
       const second = canOfferGrand(cap) ? MODELS.standard : null;
-      $('brain-status').textContent = `This device can run ${first.label} in the browser. It is a ${size(first.megabytes)} download the first time, then it is kept.`;
-      $('brain-model-btn').textContent = `Summon ${first.label} (${size(first.megabytes)})`;
+      say$($('brain-status'), 'brain.canRun', { model: first.label, size: size(first.megabytes) });
+      say$($('brain-model-btn'), 'brain.summon', { model: first.label, size: size(first.megabytes) });
       $('brain-choices').classList.remove('hidden');
       $('brain-model-btn').addEventListener('click', () => summon(first.tier));
       if (second) {
         const g = $('brain-other-btn');
-        g.textContent = `Summon ${second.label} (${size(second.megabytes)}): a lighter download`;
+        say$(g, 'brain.summonLighter', { model: second.label, size: size(second.megabytes) });
         g.classList.remove('hidden');
         g.addEventListener('click', () => summon(second.tier));
       }
@@ -400,8 +441,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         useModel = false;
         localStorage.setItem(BRAIN_KEY, 'rules');
         $('brain-choices').classList.add('hidden');
-        $('brain-status').textContent = 'Playing against the written opponent. You can summon the model any time by reloading.';
-        ready('Playing without a model.');
+        say$($('brain-status'), 'brain.writtenReload');
+        ready('brain.noModel');
       });
       // Someone who has already downloaded the model does not need asking again.
       // ?brain=grand|standard|lite picks a model outright (used by the model tests).
@@ -412,28 +453,27 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         else if (before === 'grand' || before === 'standard' || before === 'lite' || forced === 'model') summon(tier);
       }
     }
-    initBrain();
 
     // --- Voice ---
     function say(text: string) {
       if (!voiceEnabled) return;
       duckMusic();
       speak(text, undefined, duel?.lang ?? 'en');
-      const t = setInterval(() => {
+      const timer = setInterval(() => {
         if (!isSpeaking()) {
-          clearInterval(t);
+          clearInterval(timer);
           unduckMusic();
         }
       }, 200);
     }
+    const voiceLabel = $('voice-label');
     $('voice-toggle').addEventListener('click', async () => {
       voiceEnabled = !voiceEnabled;
-      const label = $('voice-label');
       if (voiceEnabled && !isVoiceLoaded()) {
-        label.textContent = 'Voice: loading…';
+        say$(voiceLabel, 'voice.loading');
         voiceEnabled = await loadVoice();
       }
-      label.textContent = voiceEnabled ? 'Voice: On' : 'Voice: Off';
+      say$(voiceLabel, voiceEnabled ? 'voice.on' : 'voice.off');
       if (!voiceEnabled) stopSpeaking();
     });
 
@@ -441,7 +481,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     const micBtn = $<HTMLButtonElement>('mic-btn');
     const micLabel = $('mic-label');
     async function finishTake() {
-      micLabel.textContent = 'Transcribing…';
+      say$(micLabel, 'mic.transcribing');
       micBtn.disabled = true;
       try {
         const said = await stopListening(duel?.lang ?? 'en');
@@ -450,10 +490,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           renderChecks();
           updateSubmit();
         }
-        micLabel.textContent = said ? 'Speak it' : 'Heard nothing; try again';
+        say$(micLabel, said ? 'mic.speak' : 'mic.heardNothing');
       } catch (err) {
         console.error('[mic]', err);
-        micLabel.textContent = 'Could not transcribe';
+        say$(micLabel, 'mic.failed');
       }
       micBtn.disabled = false;
       micBtn.setAttribute('aria-pressed', 'false');
@@ -462,29 +502,33 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     micBtn.addEventListener('click', async () => {
       if (isListening()) return finishTake();
       if (!navigator.mediaDevices?.getUserMedia) {
-        micLabel.textContent = 'No microphone here';
+        say$(micLabel, 'mic.none');
         return;
       }
       try {
         if (!isEarLoaded()) {
           micBtn.disabled = true;
-          micLabel.textContent = `Loading the ear (${EAR_MEGABYTES} MB, once)…`;
-          const ok = await loadEar((t) => { micLabel.textContent = t; });
+          say$(micLabel, 'mic.loadingEar', { mb: EAR_MEGABYTES });
+          const ok = await loadEar((raw) => {
+            // The ear reports "Loading the ear: 42%" in English.
+            const pct = raw.match(/(\d+)%/);
+            if (pct) say$(micLabel, 'mic.loadingEarProgress', { percent: pct[1] });
+          });
           micBtn.disabled = false;
           if (!ok) {
-            micLabel.textContent = 'The ear could not load';
+            say$(micLabel, 'mic.earFailed');
             return;
           }
         }
         await startListening(finishTake);
-        micLabel.textContent = 'Listening… tap to stop';
+        say$(micLabel, 'mic.listening');
         micBtn.setAttribute('aria-pressed', 'true');
         micBtn.classList.add('border-crimson-500', 'text-crimson-400');
       } catch (err) {
         console.error('[mic]', err);
         cancelListening();
         micBtn.disabled = false;
-        micLabel.textContent = 'Microphone not allowed';
+        say$(micLabel, 'mic.denied');
       }
     });
 
@@ -510,10 +554,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     function checkRow(met: boolean, label: string, detail: string, tone = 'gold'): HTMLElement {
       const li = el('li', 'flex gap-2 items-start');
       li.appendChild(el('span', met ? `text-${tone === 'crimson' ? 'crimson' : 'emerald'}-400 shrink-0` : 'text-obsidian-600 shrink-0', met ? (tone === 'crimson' ? '✗' : '✓') : '○'));
-      const t = el('span', met && tone !== 'crimson' ? 'text-obsidian-100' : tone === 'crimson' && met ? 'text-crimson-300' : 'text-obsidian-400');
-      t.textContent = label;
-      if (detail) t.appendChild(el('span', 'block text-[11px] text-obsidian-500', detail));
-      li.appendChild(t);
+      const text = el('span', met && tone !== 'crimson' ? 'text-obsidian-100' : tone === 'crimson' && met ? 'text-crimson-300' : 'text-obsidian-400');
+      text.textContent = label;
+      // The detail is evidence from the verse (its words, its counts), so it takes the verse's direction.
+      if (detail) {
+        const d = el('span', 'block text-[11px] text-obsidian-500', detail);
+        d.dir = 'auto';
+        text.appendChild(d);
+      }
+      li.appendChild(text);
       return li;
     }
 
@@ -521,33 +570,41 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       const list = $('live-checks');
       list.replaceChildren();
       const s = currentScore();
-      if (!s) {
-        list.appendChild(el('li', 'text-obsidian-500', 'Choose who answers.'));
+      if (!s || !duel) {
+        list.appendChild(el('li', 'text-obsidian-500', t('live.chooseWho')));
         $('live-craft').textContent = '0';
         return;
       }
       const written = verseInput.value.trim().length > 0;
-      for (const c of s.form.checks) list.appendChild(checkRow(c.met, `${c.label} (+${c.points})`, written ? c.detail : ''));
+      for (const c of s.form.checks) list.appendChild(checkRow(c.met, t('live.points', { label: tm(c.label), points: c.points }), written ? c.detail : ''));
       const card = getCardById(move.charId)!;
-      list.appendChild(checkRow(s.device.met, `${s.device.name} (+½ craft): ${deviceForHouse(card.house).brief}`, written ? s.device.detail : ''));
-      list.appendChild(checkRow(s.signature.met, `Signature (+½ craft): echo ${card.name}'s line without quoting it`, s.signature.detail));
+      list.appendChild(checkRow(s.device.met, t('live.device', { name: deviceName(s.device.id), brief: deviceBrief(s.device.id, duel.lang) }), written ? s.device.detail : ''));
+      list.appendChild(checkRow(s.signature.met, t('live.signature', { card: card.name }), signatureText(s.signature)));
       if (s.powerWords) {
-        const lent = duel!.playerRelics[move.relicId!];
-        list.appendChild(checkRow(s.powerWords.met, `Power words (+6): use two of ${lent.words.join(', ')}`, s.powerWords.used.length ? `used ${s.powerWords.used.join(', ')}` : ''));
+        const lent = duel.playerRelics[move.relicId!];
+        list.appendChild(checkRow(s.powerWords.met, t('live.power', { bonus: POWER_WORD_BONUS, words: lent.words.join(', ') }), s.powerWords.used.length ? t('live.powerUsed', { words: s.powerWords.used.join(', ') }) : ''));
       }
-      if (s.curse) list.appendChild(checkRow(s.curse.violations > 0, `Curse: ${s.curse.name}`, s.curse.violations ? `broken ${s.curse.violations}× (−${s.curse.penalty})` : 'holding', 'crimson'));
+      if (s.curse) {
+        list.appendChild(checkRow(
+          s.curse.violations > 0,
+          t('live.curse', { name: curseName(s.curse.id) }),
+          s.curse.violations ? t('live.curseBroken', { n: s.curse.violations, penalty: s.curse.penalty }) : t('live.curseHolding'),
+          'crimson',
+        ));
+      }
       $('live-craft').textContent = String(s.craft);
     }
 
     function renderHand() {
       if (!duel) return;
+      const d = duel;
       const spent = moves.reduce((n, m) => n + moveCost(m), 0);
       const ink = inkAt(roundIndex, spent) - moveCost(move);
       $('ink').textContent = String(ink);
 
       const chars = $('hand-characters');
       chars.replaceChildren();
-      for (const id of duel.player.characters) {
+      for (const id of d.player.characters) {
         const card = getCardById(id);
         if (!card) continue;
         const used = moves.some((m) => m.charId === id);
@@ -555,14 +612,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         const b = cardChip(card, `cursor-pointer transition-all ${chosen ? 'border-gold-500/70 bg-gold-500/10' : ''} ${used ? 'opacity-30 pointer-events-none' : 'hover:border-gold-500/40'}`);
         b.setAttribute('role', 'button');
         b.dataset.charId = id;
-        b.title = HOUSE_DEVICE[card.house]?.why ?? '';
+        const why = houseWhy(card.house, d.lang);
+        b.title = why ? tm(why) : '';
         if (!used) b.addEventListener('click', () => { move.charId = id; playSfx('ui-click'); renderHand(); renderChecks(); updateSubmit(); });
         chars.appendChild(b);
       }
 
       const items = $('hand-items');
       items.replaceChildren();
-      const all = [...duel.player.relics.map((id) => ({ id, kind: 'relic' as const })), ...duel.player.potions.map((id) => ({ id, kind: 'potion' as const }))];
+      const all = [...d.player.relics.map((id) => ({ id, kind: 'relic' as const })), ...d.player.potions.map((id) => ({ id, kind: 'potion' as const }))];
       $('hand-items-wrap').classList.toggle('hidden', all.length === 0);
       for (const { id, kind } of all) {
         const card = getCardById(id);
@@ -573,10 +631,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         const b = cardChip(card, `cursor-pointer transition-all ${chosen ? 'border-purple-500/70 bg-purple-500/10' : ''} ${used || cantAfford ? 'opacity-30 pointer-events-none' : 'hover:border-purple-500/40'}`);
         b.setAttribute('role', 'button');
         b.dataset.itemId = id;
-        if (kind === 'relic') b.title = `Lends: ${duel.playerRelics[id].words.join(', ')}`;
+        if (kind === 'relic') b.title = t('hand.lends', { words: d.playerRelics[id].words.join(', ') });
         else {
-          const cast = duel.playerCurses[id];
-          b.title = `Curses your opponent: ${CURSES[cast.curseId].brief(cast.param)}`;
+          const cast = d.playerCurses[id];
+          b.title = t('hand.curses', { rule: curseRuleTheirs(cast.curseId, cast.param, d.lang) });
         }
         if (!used && !cantAfford) {
           b.addEventListener('click', () => {
@@ -591,27 +649,49 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       }
       // Say in plain sight what the chosen items do; a tooltip is no use on a phone.
       const notes: string[] = [];
-      if (move.relicId) notes.push(`${getCardById(move.relicId)!.name} lends you: ${duel.playerRelics[move.relicId].words.join(', ')}.`);
+      if (move.relicId) notes.push(t('hand.relicNote', { card: getCardById(move.relicId)!.name, words: d.playerRelics[move.relicId].words.join(', ') }));
       if (move.potionId) {
-        const cast = duel.playerCurses[move.potionId];
+        const cast = d.playerCurses[move.potionId];
+        const card = getCardById(move.potionId)!.name;
         notes.push(roundIndex + 1 < ROUNDS
-          ? `${getCardById(move.potionId)!.name} curses your opponent's next verse: ${CURSES[cast.curseId].brief(cast.param).replace('Your verse', 'their verse')}`
-          : `${getCardById(move.potionId)!.name} would curse the opponent's next verse, but this is the last round.`);
+          ? t('hand.potionNote', { card, rule: curseRuleTheirs(cast.curseId, cast.param, d.lang) })
+          : t('hand.potionLastRound', { card }));
       }
       $('item-note').textContent = notes.join(' ');
     }
 
     function updateSubmit() {
       submitBtn.disabled = busy || !move.charId || cleanVerse(verseInput.value).length === 0;
+      submitBtn.textContent = judging ? t('round.deliberating') : t('round.submit');
     }
 
     verseInput.addEventListener('input', () => { renderChecks(); updateSubmit(); });
 
-    async function beginRound() {
+    /** The header of a round: its number, its form, the opponent's card and any curse. */
+    function renderRoundHeader() {
       if (!duel) return;
       const plan = duel.rounds[roundIndex];
       const form = getForm(plan.formId);
       const card = getCardById(plan.opponent.charId)!;
+      $('round-label').textContent = t('round.label', { n: roundIndex + 1, total: ROUNDS });
+      $('form-name').textContent = tm(form.name);
+      $('form-brief').textContent = tm(form.brief(plan.ctx));
+      $('opponent-name').textContent = card.name;
+      const device = deviceForHouse(card.house, duel.lang);
+      $('opponent-device').textContent = t('round.device', { name: tm(device.name), brief: tm(device.brief(duel.lang)) });
+      const curse = $('opponent-curse');
+      if (plan.opponent.curse) {
+        const c = plan.opponent.curse;
+        curse.textContent = t('round.cursesYou', { card: card.name, name: curseName(c.curseId), rule: curseRule(c.curseId, c.param, duel.lang) });
+        curse.classList.remove('hidden');
+      } else curse.classList.add('hidden');
+    }
+
+    async function beginRound() {
+      if (!duel) return;
+      const plan = duel.rounds[roundIndex];
+      const card = getCardById(plan.opponent.charId)!;
+      view = 'round';
       move = { charId: '' };
       opponentVerse = '';
       verseInput.value = '';
@@ -619,11 +699,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       $('verdict').replaceChildren();
       $('move-panel').classList.remove('hidden');
 
-      $('round-label').textContent = `Round ${roundIndex + 1} of ${ROUNDS}`;
-      $('form-name').textContent = form.name;
-      $('form-brief').textContent = form.brief(plan.ctx);
-      $('opponent-name').textContent = card.name;
-      $('opponent-device').textContent = `${deviceForHouse(card.house).name}: ${deviceForHouse(card.house).brief}`;
+      renderRoundHeader();
       const portrait = $('opponent-portrait');
       portrait.replaceChildren();
       if (card.image) {
@@ -633,13 +709,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         img.className = 'w-full h-full object-cover';
         portrait.appendChild(img);
       } else portrait.textContent = card.icon;
-
-      const curse = $('opponent-curse');
-      if (plan.opponent.curse) {
-        const c = CURSES[plan.opponent.curse.curseId];
-        curse.textContent = `${card.name} curses you with ${c.name}: ${c.brief(plan.opponent.curse.param)}`;
-        curse.classList.remove('hidden');
-      } else curse.classList.add('hidden');
 
       renderHand();
       renderChecks();
@@ -657,10 +726,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         previousPlayerVerse: results.at(-1)?.playerVerse,
         difficulty: ($<HTMLSelectElement>('difficulty').value as Difficulty) ?? 'player',
         generate: useModel && isBrainLoaded() && brainInfo()?.writes ? (m, o) => generate(m, { maxTokens: o.maxTokens, temperature: o.temperature }) : undefined,
-        onDraft: (n, of) => { verseEl.textContent = of > 1 ? `${card.name} is composing… draft ${n} of ${of}` : `${card.name} is composing…`; },
+        onDraft: (n, of) => { verseEl.textContent = of > 1 ? t('round.composingDraft', { card: card.name, n, total: of }) : t('round.composing', { card: card.name }); },
       });
       opponentVerse = written.verse;
       verseEl.textContent = opponentVerse;
+      verseEl.lang = duel.lang;
       verseEl.dataset.source = written.source;
       say(opponentVerse);
       busy = false;
@@ -682,19 +752,19 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         r.appendChild(el('span', cls, v));
         box.appendChild(r);
       };
-      row('Form', `${s.form.earned} / 20${s.form.kept ? ' ✓' : ''}`);
-      if (s.powerWords) row('Power words', s.powerWords.met ? `+${s.powerWords.bonus}` : 'not used');
-      row(`${s.device.name}`, s.device.met ? '+½' : 'missed');
-      row('Signature', s.signature.met ? '+½' : 'missed');
-      if (s.synergy) row('House synergy', '+¼');
-      row('Multiplier', `×${s.multiplier}`);
-      if (s.curse) row(`Curse: ${s.curse.name}`, s.curse.penalty ? `−${s.curse.penalty}` : 'held', s.curse.penalty ? 'text-crimson-400' : 'text-emerald-400');
-      row('Craft', String(s.craft), 'text-obsidian-100 font-semibold');
-      row('Judge', `${judge} / ${JUDGE_POOL}`, 'text-obsidian-100 font-semibold');
-      const t = el('div', 'flex justify-between gap-2 border-t border-obsidian-700 pt-1 mt-1');
-      t.appendChild(el('span', 'text-obsidian-300 font-semibold', 'Round score'));
-      t.appendChild(el('span', `${tone} font-bold text-sm`, String(total)));
-      box.appendChild(t);
+      row(t('verdict.form'), `${s.form.earned} / ${FORM_POINTS}${s.form.kept ? ' ✓' : ''}`);
+      if (s.powerWords) row(t('verdict.powerWords'), s.powerWords.met ? `+${s.powerWords.bonus}` : t('verdict.notUsed'));
+      row(deviceName(s.device.id), s.device.met ? '+½' : t('verdict.missed'));
+      row(t('verdict.signature'), s.signature.met ? '+½' : t('verdict.missed'));
+      if (s.synergy) row(t('verdict.synergy'), '+¼');
+      row(t('verdict.multiplier'), `×${s.multiplier}`);
+      if (s.curse) row(t('verdict.curse', { name: curseName(s.curse.id) }), s.curse.penalty ? `−${s.curse.penalty}` : t('verdict.held'), s.curse.penalty ? 'text-crimson-400' : 'text-emerald-400');
+      row(t('verdict.craft'), String(s.craft), 'text-obsidian-100 font-semibold');
+      row(t('verdict.judge'), `${judge} / ${JUDGE_POOL}`, 'text-obsidian-100 font-semibold');
+      const sum = el('div', 'flex justify-between gap-2 border-t border-obsidian-700 pt-1 mt-1');
+      sum.appendChild(el('span', 'text-obsidian-300 font-semibold', t('verdict.roundScore')));
+      sum.appendChild(el('span', `${tone} font-bold text-sm`, String(total)));
+      box.appendChild(sum);
       return box;
     }
 
@@ -702,12 +772,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       if (!duel || busy) return;
       const bad = illegalMove(duel, roundIndex, move, moves);
       if (bad) {
-        $('setup-note').textContent = bad;
+        say$($('setup-note'), `illegal.${bad}`);
         return;
       }
       busy = true;
+      judging = true;
       updateSubmit();
-      submitBtn.textContent = 'The judge deliberates…';
       const playerVerse = cleanVerse(verseInput.value);
       const judge = await referee(playerVerse, opponentVerse, duel.lang);
 
@@ -746,94 +816,128 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       $('player-score').textContent = String(results.filter((r) => r.winner === 'player').length);
       $('ai-score').textContent = String(results.filter((r) => r.winner === 'opponent').length);
       showStats();
-      showVerdict(scored);
-      submitBtn.textContent = 'Speak your verse';
       busy = false;
+      judging = false;
+      updateSubmit();
+      view = 'verdict';
+      showVerdict(scored, true);
     }
     submitBtn.addEventListener('click', submit);
 
-    function showVerdict(r: RoundResult) {
+    function showVerdict(r: RoundResult, scroll: boolean) {
+      if (!duel) return;
       $('move-panel').classList.add('hidden');
       const v = $('verdict');
       v.replaceChildren();
       v.classList.remove('hidden');
       v.dataset.winner = r.winner;
 
-      const mine = el('blockquote', 'whitespace-pre-line font-display text-lg text-obsidian-100 border-l-2 border-crimson-500/40 pl-4 mb-4', r.playerVerse);
-      v.appendChild(el('p', 'text-xs uppercase tracking-wider text-obsidian-500 mb-1', 'Your answer'));
+      const mine = el('blockquote', 'whitespace-pre-line font-display text-lg text-obsidian-100 border-s-2 border-crimson-500/40 ps-4 mb-4', r.playerVerse);
+      mine.dir = 'auto';
+      v.appendChild(el('p', 'text-xs uppercase tracking-wider text-obsidian-500 mb-1', t('verdict.yourAnswer')));
       v.appendChild(mine);
 
-      v.appendChild(el('p', `font-display text-2xl font-bold mb-3 ${r.winner === 'player' ? 'text-emerald-400' : 'text-crimson-400'}`, r.winner === 'player' ? 'The round is yours.' : `${getCardById(duel!.rounds[r.index].opponent.charId)!.name} takes the round.`));
+      const theirCard = getCardById(duel.rounds[r.index].opponent.charId)!.name;
+      v.appendChild(el('p', `font-display text-2xl font-bold mb-3 ${r.winner === 'player' ? 'text-emerald-400' : 'text-crimson-400'}`, r.winner === 'player' ? t('verdict.roundYours') : t('verdict.roundTheirs', { card: theirCard })));
 
       const grid = el('div', 'grid sm:grid-cols-2 gap-3');
-      grid.appendChild(side('You', r.player, r.judge.player, r.playerTotal, 'text-crimson-300'));
-      grid.appendChild(side('Opponent', r.opponent, r.judge.opponent, r.opponentTotal, 'text-gold-300'));
+      grid.appendChild(side(t('battle.you'), r.player, r.judge.player, r.playerTotal, 'text-crimson-300'));
+      grid.appendChild(side(t('battle.opponent'), r.opponent, r.judge.opponent, r.opponentTotal, 'text-gold-300'));
       v.appendChild(grid);
 
       const crit = el('div', 'mt-3 flex flex-wrap gap-2 text-[11px]');
       for (const c of CRITERIA) {
-        const who = r.judge.criteria[c];
-        crit.appendChild(el('span', `px-2 py-0.5 rounded-full border ${who === 'player' ? 'border-emerald-500/40 text-emerald-300' : who === 'opponent' ? 'border-gold-500/40 text-gold-300' : 'border-obsidian-700 text-obsidian-400'}`, `${c}: ${who === 'player' ? 'you' : who === 'opponent' ? 'opponent' : 'split'}`));
+        const who = r.judge.criteria[c] ?? 'split';
+        crit.appendChild(el(
+          'span',
+          `px-2 py-0.5 rounded-full border ${who === 'player' ? 'border-emerald-500/40 text-emerald-300' : who === 'opponent' ? 'border-gold-500/40 text-gold-300' : 'border-obsidian-700 text-obsidian-400'}`,
+          t('verdict.criterion', { criterion: criterionName(c), who: t(`verdict.who.${who}`) }),
+        ));
       }
       v.appendChild(crit);
-      v.appendChild(el('p', 'mt-2 text-[11px] text-obsidian-500', r.judge.source === 'model'
-        ? `Judged by ${brainInfo()?.label ?? 'the model'} on this device, ${brainInfo()?.judge === 'grade' ? 'grading each verse on its own' : 'reading the verses in both orders'}.`
-        : 'Judged by rule (variety, allusion, sound and comeback), because no model is running.'));
+      const info = brainInfo();
+      v.appendChild(el('p', 'mt-2 text-[11px] text-obsidian-500', r.judge.source === 'model' && info
+        ? t(info.judge === 'grade' ? 'verdict.judgedGrade' : 'verdict.judgedCompare', { model: info.label })
+        : t('verdict.judgedRules')));
 
       const winner = matchWinner(results);
       const done = winner !== null || results.length >= ROUNDS;
-      const next = el('button', 'btn-primary mt-5 px-8', done ? 'See the result' : 'Next round');
+      const next = el('button', 'btn-primary mt-5 px-8', done ? t('verdict.seeResult') : t('verdict.next'));
       next.id = 'next-round';
+      next.dataset.done = String(done);
       next.addEventListener('click', () => {
         if (done) return finish(winner ?? (results.filter((x) => x.winner === 'player').length * 2 > results.length ? 'player' : 'opponent'));
         roundIndex++;
         beginRound();
       });
       v.appendChild(next);
-      next.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      if (scroll) next.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
 
     function finish(winner: 'player' | 'opponent') {
+      view = 'finished';
+      matchResult = winner;
+      reward = null;
+      if (winner === 'player') {
+        reward = drawRandomCard();
+        addCard(reward.id, 'battle');
+        syncCardStats(getUniqueOwnedCount(), getOwnedCards().length);
+        const rarity = reward.rarity as AudioRarity;
+        setTimeout(() => playRarityFanfare(rarity), 300);
+      }
+      renderFinish();
+    }
+
+    function renderFinish() {
+      const winner = matchResult;
+      if (!winner) return;
       const v = $('verdict');
       v.replaceChildren();
       v.dataset.match = winner;
-      $('round-label').textContent = 'The duel is over';
-      $('form-name').textContent = winner === 'player' ? 'Victory' : 'Defeat';
+      $('round-label').textContent = t('end.over');
+      $('form-name').textContent = winner === 'player' ? t('end.victory') : t('end.defeat');
       $('form-brief').textContent = '';
-      v.appendChild(el('p', `font-display text-3xl font-bold mb-2 ${winner === 'player' ? 'text-emerald-400' : 'text-crimson-400'}`, winner === 'player' ? 'You won the duel.' : 'The stage is theirs tonight.'));
-      v.appendChild(el('p', 'text-sm text-obsidian-400 mb-4', `Rounds: you ${results.filter((r) => r.winner === 'player').length}, opponent ${results.filter((r) => r.winner === 'opponent').length}. Your total: ${results.reduce((s, r) => s + r.playerTotal, 0)}.`));
+      v.appendChild(el('p', `font-display text-3xl font-bold mb-2 ${winner === 'player' ? 'text-emerald-400' : 'text-crimson-400'}`, winner === 'player' ? t('end.won') : t('end.lost')));
+      v.appendChild(el('p', 'text-sm text-obsidian-400 mb-4', t('end.tally', {
+        you: results.filter((r) => r.winner === 'player').length,
+        them: results.filter((r) => r.winner === 'opponent').length,
+        total: results.reduce((s, r) => s + r.playerTotal, 0),
+      })));
 
-      if (winner === 'player') {
-        const card = drawRandomCard();
-        addCard(card.id, 'battle');
-        syncCardStats(getUniqueOwnedCount(), getOwnedCards().length);
-        const reward = el('div', 'inline-flex items-center gap-3 card-glass p-3 border-gold-500/30 mb-4');
-        reward.id = 'battle-reward';
-        reward.appendChild(cardChip(card));
-        reward.appendChild(el('span', `px-1.5 py-0.5 text-xs rounded-full ${RARITY_COLORS[card.rarity as Rarity] ?? ''}`, card.rarity));
-        v.appendChild(el('p', 'text-xs text-emerald-400 font-semibold', 'CARD EARNED'));
-        v.appendChild(reward);
-        setTimeout(() => playRarityFanfare(card.rarity as AudioRarity), 300);
+      if (reward) {
+        const box = el('div', 'inline-flex items-center gap-3 card-glass p-3 border-gold-500/30 mb-4');
+        box.id = 'battle-reward';
+        box.appendChild(cardChip(reward));
+        box.appendChild(el('span', `px-1.5 py-0.5 text-xs rounded-full ${RARITY_COLORS[reward.rarity as Rarity] ?? ''}`, t(`rarity.${String(reward.rarity).toLowerCase()}`)));
+        v.appendChild(el('p', 'text-xs text-emerald-400 font-semibold', t('end.cardEarned')));
+        v.appendChild(box);
       }
-      const again = el('button', 'btn-primary px-8 block', 'Duel again');
+      const again = el('button', 'btn-primary px-8 block', t('end.again'));
       again.id = 'duel-again';
       again.addEventListener('click', () => start(Math.floor(Math.random() * 2 ** 31)));
       v.appendChild(again);
     }
 
-    function start(seed: number) {
-      loadDeck();
+    function renderBadge() {
+      const info = useModel ? brainInfo() : null;
+      $('ai-model-badge').textContent = info ? t(info.writes ? 'badge.onDevice' : 'badge.writtenJudged', { model: info.label }) : t('badge.written');
+    }
+
+    async function start(seed: number) {
       const lang = langSelect.value || 'en';
-      duel = createDuel(seed, lang, deck);
+      startBtn.disabled = true;
+      // The verses, acrostic words and power words of the duel's language.
+      await loadPack(lang);
+      duel = createDuel(seed, lang, (loadDeck(), deck));
       roundIndex = 0;
       moves = [];
       results = [];
+      matchResult = null;
       castCarry = castApplied = undefined;
       $('seed-label').textContent = String(seed);
       $('player-score').textContent = '0';
       $('ai-score').textContent = '0';
-      const info = useModel ? brainInfo() : null;
-      $('ai-model-badge').textContent = info ? (info.writes ? `${info.label} · on this device` : `Written opponent · judged by ${info.label}`) : 'Written opponent';
+      renderBadge();
       $('duel-setup').classList.add('hidden');
       $('battle-arena').classList.remove('hidden');
       incrementStat('totalBattles');
@@ -847,6 +951,41 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     startBtn.addEventListener('click', () => {
       const s = Number(params.get('seed'));
       start(Number.isFinite(s) && s > 0 ? s : Math.floor(Math.random() * 2 ** 31));
+    });
+
+    /** Draw again everything that was built with t(): called when the interface language changes. */
+    function redraw() {
+      resay();
+      const chosen = langSelect.value;
+      fillLanguages(offered, chosen);
+      loadDeck();
+      renderVariantPicker();
+      updateSubmit();
+      if (!duel) return;
+      renderBadge();
+      if (view === 'finished') return renderFinish();
+      renderRoundHeader();
+      renderHand();
+      renderChecks();
+      if (view === 'verdict' && results.length) showVerdict(results[results.length - 1], false);
+    }
+
+    // --- Start-up: the interface language first, then everything that speaks it ---
+    initI18n().then(() => {
+      say$($('brain-status'), 'brain.checking');
+      say$(micLabel, 'mic.speak');
+      say$(voiceLabel, 'voice.off');
+      fillLanguages([...PACK_LANGS]);
+      loadDeck();
+      renderVariantPicker();
+      updateSubmit();
+      initBrain();
+      onLocaleChange((l) => {
+        // A visitor who changes the interface language most likely wants to duel in it:
+        // make it the duel's language too, where it is on offer and no duel is under way.
+        if (!duel && offered.includes(l)) langSelect.value = l;
+        redraw();
+      });
     });
   </script>
 </BaseLayout>
