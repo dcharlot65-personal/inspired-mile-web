@@ -81,7 +81,7 @@ MADLAD-400 is Apache 2.0 and the newer of the two. The 3B size was chosen
 because it runs on CPU beside the host's other work. For the second opinion the
 model had to be a different one from the model that wrote the translations
 (Claude), strong in all sixteen languages, open, and runnable locally:
-Gemma 4 31B, the largest open-weights Gemma current on 2026-11-16.
+Gemma 4 31B, the largest Gemma 4 model listed on Hugging Face on 2026-11-16.
 
 All three run on the build host only, with no network at run time
 (`HF_HUB_OFFLINE=1`). No text of the game was sent to any service.

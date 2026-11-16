@@ -261,4 +261,22 @@ for (const lang of LOCALES) {
   p('');
 }
 writeFileSync(`${D}QA-REPORT.md`, out.join('\n') + '\n');
+
+// ---------- the glossary, readable ----------
+const g = [];
+g.push('# Glossary', '', 'Generated from `glossary.json` by `node scripts/lang/report.mjs`; edit the JSON, not this file. The check that holds every string to it is `scripts/lang/lib/glossary.mjs` (unit test `src/i18n/quality.test.ts`).', '');
+g.push('## Terms', '');
+const langs = LOCALES.filter((l) => l !== 'en');
+for (const [id, t] of Object.entries(glossary.terms)) {
+  g.push(`### ${t.english}`, '', t.note, '', '| Language | Term | Also accepted (stems) | Source |', '|---|---|---|---|');
+  for (const l of langs) g.push(`| ${l} | ${cell(t.langs[l].term)} | ${cell((t.langs[l].accept ?? []).join(', '))} | ${cell(t.langs[l].source)} |`);
+  g.push('');
+}
+g.push('## Names of forms and devices', '');
+for (const [key, n] of Object.entries(glossary.names)) {
+  g.push(`### ${n.english} (\`${key}\`, Wikidata ${n.wikidata})`, '', '| Language | Name | Where it comes from |', '|---|---|---|');
+  for (const l of langs) g.push(`| ${l} | ${cell(n.langs[l].value)} | ${cell(n.langs[l].source)} |`);
+  g.push('');
+}
+writeFileSync(`${D}GLOSSARY.md`, g.join('\n') + '\n');
 console.log(`${D}QA-REPORT.md: ${out.length} lines`);
