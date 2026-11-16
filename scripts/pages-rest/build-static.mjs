@@ -22,7 +22,7 @@ import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 
 export const LOCALES = ['en', 'es', 'fr', 'de', 'it', 'pt', 'pl', 'ru', 'ar', 'hi', 'zh', 'ja', 'ko', 'vi', 'th', 'id'];
-const RTL = ['ar'];
+export const RTL = ['ar'];
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 
 /** What the offline page says, and which key each piece comes from. */
@@ -179,13 +179,18 @@ export function renderOffline(shared) {
 /** Which key of the shared area names each shortcut of the manifest, by the shortcut's url. */
 export const SHORTCUT_KEYS = { '/battle': 'app.shortcut.battle', '/theatre': 'app.shortcut.theatre' };
 
-/** One member's translations, the English left out (it is the member itself). */
-function translations(shared, key) {
+/**
+ * One member's translations, the English left out (it is the member itself). A right-to-left
+ * language's value is an object that says so ({ value, dir: 'rtl' }, the text-localization form
+ * of the *_localized members): the Arabic name begins with the Latin "Sonnet Man", so a
+ * browser left to infer the direction from the text could lay it out left to right.
+ */
+export function translations(shared, key) {
   const out = {};
   for (const l of LOCALES) {
     const value = shared[l]?.[key];
     if (typeof value !== 'string' || !value.trim()) throw new Error(`${l}: no "${key}" for the manifest`);
-    if (l !== 'en') out[l] = value;
+    if (l !== 'en') out[l] = RTL.includes(l) ? { value, dir: 'rtl' } : value;
   }
   return out;
 }

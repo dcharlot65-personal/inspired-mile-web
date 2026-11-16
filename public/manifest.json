@@ -10,7 +10,10 @@
     "pt": "Sonnet Man: o duelo de estrofes",
     "pl": "Sonnet Man: pojedynek na strofy",
     "ru": "Sonnet Man: дуэль строф",
-    "ar": "Sonnet Man: مبارزة الأبيات",
+    "ar": {
+      "value": "Sonnet Man: مبارزة الأبيات",
+      "dir": "rtl"
+    },
     "hi": "Sonnet Man: पदों का द्वंद्व",
     "zh": "Sonnet Man：诗的对决",
     "ja": "Sonnet Man：詩の決闘",
@@ -29,7 +32,10 @@
     "pt": "Um jogo de cartas de batalha de rap shakespeariana, da Inspired Mile. Jogue suas cartas, respeite a forma e escreva melhor que um adversário que roda inteiramente no seu dispositivo.",
     "pl": "Szekspirowska gra karciana w stylu battle rapu od Inspired Mile. Zagraj kartami, zachowaj formę i napisz lepiej niż rywal, który działa w całości na twoim urządzeniu.",
     "ru": "Карточная игра по Шекспиру в духе рэп-баттла от Inspired Mile. Разыгрывай карты, держи форму и напиши лучше соперника, который работает целиком на твоём устройстве.",
-    "ar": "لعبة بطاقات شكسبيرية على طريقة الباتل راب، من Inspired Mile. العب بطاقاتك، والتزم بالقالب، واكتب أفضل من خصم يعمل بالكامل على جهازك.",
+    "ar": {
+      "value": "لعبة بطاقات شكسبيرية على طريقة الباتل راب، من Inspired Mile. العب بطاقاتك، والتزم بالقالب، واكتب أفضل من خصم يعمل بالكامل على جهازك.",
+      "dir": "rtl"
+    },
     "hi": "Inspired Mile का शेक्सपियर रैप-बैटल कार्ड गेम। अपने कार्ड खेलें, छंद-रूप निभाएँ, और ऐसे प्रतिद्वंद्वी से बेहतर लिखें जो पूरी तरह आपके डिवाइस पर चलता है।",
     "zh": "Inspired Mile 出品的莎士比亚说唱对战卡牌游戏。打出你的卡牌，守住诗体，写得比完全运行在你设备上的对手更好。",
     "ja": "Inspired Mileのシェイクスピア風MCバトル・カードゲーム。カードを出し、詩形を守り、あなたの端末だけで動く対戦相手よりも良い詩を書きましょう。",
@@ -80,7 +86,10 @@
         "pt": "Arena de batalha",
         "pl": "Arena bitwy",
         "ru": "Арена битв",
-        "ar": "حلبة النزال",
+        "ar": {
+          "value": "حلبة النزال",
+          "dir": "rtl"
+        },
         "hi": "युद्ध अखाड़ा",
         "zh": "对战竞技场",
         "ja": "バトルアリーナ",
@@ -101,7 +110,10 @@
         "pt": "O Teatro",
         "pl": "Nasz Teatr",
         "ru": "Наш Театр",
-        "ar": "قاعة المسرح",
+        "ar": {
+          "value": "قاعة المسرح",
+          "dir": "rtl"
+        },
         "hi": "हमारी रंगशाला",
         "zh": "立体剧场",
         "ja": "立体シアター",

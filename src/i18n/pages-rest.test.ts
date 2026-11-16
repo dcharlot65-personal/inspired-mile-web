@@ -16,7 +16,7 @@ import { PLURAL_CATEGORIES, date, dateRange, dateTime, intlLocale, list, num, pl
 import { initPage, onPageLocaleChange } from './page';
 import en from './locales/en';
 // @ts-ignore a plain .mjs script, shared with the command line
-import { OFFLINE_KEYS, SHORTCUT_KEYS, localiseManifest, renderOffline } from '../../scripts/pages-rest/build-static.mjs';
+import { OFFLINE_KEYS, RTL, SHORTCUT_KEYS, localiseManifest, renderOffline } from '../../scripts/pages-rest/build-static.mjs';
 // @ts-ignore a plain module, shared with the browser test
 import { SAME_AS_ENGLISH as SAME_AS_ENGLISH_LIST } from '../../tests/pages-rest.fixtures.mjs';
 
@@ -50,6 +50,24 @@ const placeholders = (s: string) => [...s.matchAll(/\{([a-zA-Z_]+)\}/g)].map((m)
 function pluralParts(key: string): [string, string | null] {
   for (const c of PLURAL_CATEGORIES) if (key.endsWith(`.${c}`)) return [key.slice(0, -c.length - 1), c];
   return [key, null];
+}
+/**
+ * The one whole number a plural category stands for in a language, or null when it stands for
+ * more than one (Unicode CLDR, through Intl.PluralRules, counted up to 10 000). English "one" is
+ * only 1, so "one credit" may be written out; Russian "one" is also 21, 31, 101, …, and French
+ * "one" is 0 as well as 1, so there the number must stay.
+ */
+const onlyNumberCache = new Map<string, number | null>();
+function onlyNumber(l: string, category: string): number | null {
+  const id = `${l} ${category}`;
+  if (!onlyNumberCache.has(id)) {
+    const rules = new Intl.PluralRules(l);
+    let found: number | null = null;
+    let count = 0;
+    for (let n = 0; n <= 10000 && count < 2; n++) if (rules.select(n) === category) { found = n; count++; }
+    onlyNumberCache.set(id, count === 1 ? found : null);
+  }
+  return onlyNumberCache.get(id)!;
 }
 const plainKeys = (m: Messages) => Object.keys(m).filter((k) => pluralParts(k)[1] === null).sort();
 const pluralBases = (m: Messages) => [...new Set(Object.keys(m).filter((k) => pluralParts(k)[1] !== null).map((k) => pluralParts(k)[0]))].sort();
@@ -87,8 +105,9 @@ describe('page areas: every language has every string', () => {
           if (english !== undefined) {
             const mine = placeholders(v);
             const theirs = placeholders(english);
-            // "one credit" may be written out, without the number; nothing else may drop or add a variable.
-            const writtenOut = category !== null && ['zero', 'one', 'two'].includes(category) && mine.every((p) => theirs.includes(p));
+            // A form that stands for one number only (Arabic "two" is 2) may write it out ("نقطتان"),
+            // without {n}; nothing else may drop or add a variable.
+            const writtenOut = category !== null && onlyNumber(l, category) !== null && mine.every((p) => theirs.includes(p));
             if (mine.join() !== theirs.join() && !writtenOut) problems.push(`${a}/${l}: ${k} has {${mine}} but English has {${theirs}}`);
           }
           // A brace that is not a placeholder is a typo that would be shown to the player.
@@ -102,15 +121,21 @@ describe('page areas: every language has every string', () => {
     expect(problems, problems.join('\n')).toEqual([]);
   });
 
-  it('has, for every counted message, each plural form the language uses (Unicode CLDR, through Intl.PluralRules)', () => {
+  it('has, for every counted message, exactly the plural forms the language uses (Unicode CLDR, through Intl.PluralRules)', () => {
     const problems: string[] = [];
     for (const a of AREAS) {
       for (const l of LOCALES) {
         const m = area(a, l);
-        const needed = new Intl.PluralRules(l).resolvedOptions().pluralCategories;
+        const needed = new Intl.PluralRules(l).resolvedOptions().pluralCategories as string[];
         for (const base of pluralBases(m)) {
           if (!(`${base}.other` in m)) problems.push(`${a}/${l}: ${base} has no "other" form`);
           for (const c of needed) if (!(`${base}.${c}` in m)) problems.push(`${a}/${l}: ${base} lacks the "${c}" form`);
+          // plural() asks only for a category the language has: any other form is never shown, and
+          // says the language has a form it has not.
+          for (const k of Object.keys(m)) {
+            const [b, c] = pluralParts(k);
+            if (b === base && c !== null && !needed.includes(c)) problems.push(`${a}/${l}: ${base} has a "${c}" form, which CLDR does not give ${l} (it has ${needed.join(', ')})`);
+          }
         }
       }
     }
@@ -178,6 +203,9 @@ describe('page areas: every language has every string', () => {
           if (l === 'ar') {
             if (/\p{Script=Arabic}\s?[,;?]|[,;?]\s?\p{Script=Arabic}/u.test(v)) bad('Arabic writes ، ؛ ؟');
             if (/ـ/.test(v)) bad('tatweel in text');
+            // "and" is a prefix: written on the word it joins, a Latin name too (وiPad), as Apple's
+            // Arabic pages write it (docs/language/sources/pages-rest-apple-arabic-wa.json).
+            if (/(?:^|[\s(«])و[\s\u00a0]+\p{Script=Latin}/u.test(v)) bad('و stands apart from the Latin word it joins; write it on the word (وiPad)');
           } else if (/[،؛؟]/.test(v)) bad('Arabic punctuation outside Arabic');
           if (l === 'hi') {
             if (/\p{Script=Devanagari}\.(?:\s|$)/u.test(v)) bad('a Hindi sentence ends with the danda (।)');
@@ -385,6 +413,8 @@ describe('numbers, dates and counts come from Intl', () => {
       ['ru', 3, 'classroom.members', '3 участника'],
       ['ru', 11, 'classroom.members', '11 участников'],
       ['ru', 21, 'classroom.members', '21 участник'],
+      ['ru', 21, 'credits', '21 кредит'], // "one" in Russian is 21 too: the number stays
+      ['fr', 0, 'classroom.members', '0 membre'],
       ['ar', 0, 'classroom.members', 'لا أعضاء'],
       ['ar', 1, 'classroom.members', 'عضو واحد'],
       ['ar', 2, 'classroom.members', 'عضوان'],
@@ -482,20 +512,25 @@ describe('the generated static files', () => {
     expect(onDisk === localiseManifest(onDisk, shared), 'public/manifest.json is out of date: run node scripts/pages-rest/build-static.mjs').toBe(true);
     const manifest = JSON.parse(onDisk);
     expect(manifest.lang).toBe('en');
+    // A right-to-left language says so ({ value, dir: 'rtl' }): the Arabic name begins with the
+    // Latin "Sonnet Man", and a browser left to guess could lay it out left to right.
+    const localized = (l: string, value: string) => (RTL.includes(l) ? { value, dir: 'rtl' } : value);
+    expect(RTL).toEqual(['ar']);
     for (const l of LOCALES) {
       if (l === 'en') continue;
-      expect([l, manifest.name_localized[l]]).toEqual([l, shared[l]['app.name']]);
-      expect([l, manifest.description_localized[l]]).toEqual([l, shared[l]['app.description']]);
+      expect([l, manifest.name_localized[l]]).toEqual([l, localized(l, shared[l]['app.name'])]);
+      expect([l, manifest.description_localized[l]]).toEqual([l, localized(l, shared[l]['app.description'])]);
     }
     expect(Object.keys(manifest.name_localized).sort()).toEqual(LOCALES.filter((l) => l !== 'en').sort());
     // The product name is not translated.
     for (const l of LOCALES) expect([l, shared[l]['app.name'].startsWith('Sonnet Man')]).toEqual([l, true]);
+    expect(manifest.name_localized.ar.dir, 'the Arabic name must carry dir: rtl').toBe('rtl');
     // Each shortcut has its name in every language, from the key its url names.
     expect(manifest.shortcuts.length).toBeGreaterThan(0);
     for (const shortcut of manifest.shortcuts) {
       const key = SHORTCUT_KEYS[shortcut.url as keyof typeof SHORTCUT_KEYS];
       expect([shortcut.url, shortcut.name]).toEqual([shortcut.url, shared.en[key]]);
-      for (const l of LOCALES.filter((x) => x !== 'en')) expect([shortcut.url, l, shortcut.name_localized[l]]).toEqual([shortcut.url, l, shared[l][key]]);
+      for (const l of LOCALES.filter((x) => x !== 'en')) expect([shortcut.url, l, shortcut.name_localized[l]]).toEqual([shortcut.url, l, localized(l, shared[l][key])]);
     }
   });
 
