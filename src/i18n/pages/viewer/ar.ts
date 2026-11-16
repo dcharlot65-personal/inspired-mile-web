@@ -2,11 +2,11 @@
 // Page area "viewer": the 3D viewer and the VR gallery (/viewer, /vr).
 // Where each term comes from and how these strings were checked: docs/language/pages-rest.md
 const messages: Record<string, string> = {
-  'viewer.meta.description': 'شاهد النماذج ثلاثية الأبعاد للبطاقات، بتقنية Gaussian Splat أو كشبكات GLB.',
+  'viewer.meta.description': 'شاهد النماذج ثلاثية الأبعاد للبطاقات، بتقنية Gaussian Splat أو بشبكات GLB.',
   'viewer.badge': 'نماذج ثلاثية الأبعاد',
   'viewer.titleA': 'عارض ',
   'viewer.titleB': 'البطاقات',
-  'viewer.intro': 'استكشف بطاقاتك كنماذج ثلاثية الأبعاد. بدّل بين عرض Splat وشبكة GLB. اسحب لتدير النموذج، ومرّر للتكبير.',
+  'viewer.intro': 'استكشف بطاقاتك في صورة نماذج ثلاثية الأبعاد. بدّل بين عرض Splat وشبكة GLB. اسحب لتدير النموذج، ومرّر للتكبير.',
   'viewer.select': 'اختر بطاقة…',
   'viewer.modeLabel': 'نوع النموذج',
   'viewer.reset': 'إعادة ضبط الكاميرا',

@@ -29,7 +29,7 @@ const messages: Record<string, string> = {
   'error.tournament_closed': 'التسجيل في هذه البطولة مغلق.',
   'error.tournament_full': 'هذه البطولة مكتملة العدد.',
   'error.match_not_found': 'هذه المباراة لم تعد موجودة.',
-  'error.match_finished': 'هذه المباراة حُسمت بالفعل.',
+  'error.match_finished': 'سبق أن حُسمت هذه المباراة.',
   'error.no_active_season': 'لا يوجد موسم جارٍ الآن.',
   'error.level_not_reached': 'لم تبلغ هذا المستوى بعد.',
   'error.reward_unavailable': 'هذه المكافأة استُلمت من قبل.',

@@ -37,7 +37,7 @@ const messages: Record<string, string> = {
   'market.sell.wanted': 'Cartes recherchées (numéros de carte, séparés par des virgules)',
   'market.sell.submit': 'Créer l’annonce',
   'market.sell.needCard': 'Choisissez une carte.',
-  'market.sell.needPrice': 'Saisissez un prix d’au moins 1 crédit.',
+  'market.sell.needPrice': 'Saisissez un prix d’au moins un crédit.',
   'market.sell.done': 'L’annonce a été créée.',
   'market.toast.signInSell': 'Connectez-vous pour créer une annonce.',
 };

@@ -27,6 +27,7 @@ const UNIT_MUTATIONS = [
   ['an Arabic plural form is gone', 'src/i18n/pages/classroom/ar.ts', /^  'classroom\.members\.two': .*\n/m, '', UNIT, 'classroom.members lacks the "two" form'],
   ['a string left in English', 'src/i18n/pages/viewer/ja.ts', /('viewer\.reset': )'[^']*'/, "$1'Reset the camera'", UNIT, 'viewer.reset is still English'],
   ['a French colon without its no-break space', 'src/i18n/pages/classroom/fr.ts', "'classroom.list.code': 'Code\\u00a0:'", "'classroom.list.code': 'Code :'", UNIT, 'needs a no-break space before :'],
+  ['a German ellipsis without its no-break space', 'src/i18n/pages/marketplace/de.ts', "'Karten suchen\\u00a0…'", "'Karten suchen…'", UNIT, 'German puts a no-break space before'],
   ['a Hindi sentence ended with a full stop', 'src/i18n/pages/shared/hi.ts', 'पहले साइन इन करें।', 'पहले साइन इन करें.', UNIT, 'danda'],
   ['a Cyrillic letter hiding in a Latin word', 'src/i18n/pages/shared/es.ts', "'activity.challenge': 'Desafío'", "'activity.challenge': 'Dеsafío'", UNIT, 'mixes Latin and Cyrillic'],
   ['a key that the core locale already has', 'src/i18n/pages/shared/en.ts', "  'activity.trivia': 'Trivia',", "  'activity.trivia': 'Trivia',\n  'nav.home': 'Home',", UNIT, 'nav.home'],

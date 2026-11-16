@@ -175,7 +175,12 @@ describe('page areas: every language has every string', () => {
               bad(`"${m[1]}${m[2]}" needs a no-break space before ${m[2]}`);
             }
             if (/«[^\u00a0\u202f]/u.test(v)) bad('a no-break space is needed after «');
-          } else if (/[\u00a0\u202f]/.test(v)) bad('a no-break space outside French');
+          } else if (/[\u00a0\u202f]/.test(l === 'de' ? v.replace(/\u00a0…/g, '…') : v)) {
+            // German sets one before an ellipsis that stands for omitted words (as branch
+            // lang/qa-pipeline writes the core locale); nowhere else.
+            bad('a no-break space outside French, and outside German before …');
+          }
+          if (l === 'de' && /[^\s\u00a0]…/.test(v)) bad('German puts a no-break space before …');
           if (l === 'es') {
             if (v.split('?').length !== v.split('¿').length || v.split('!').length !== v.split('¡').length) bad('¿…? or ¡…! do not pair');
           } else if (/[¿¡]/.test(v)) bad('¿ or ¡ outside Spanish');

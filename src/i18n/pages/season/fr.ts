@@ -6,7 +6,7 @@ const messages: Record<string, string> = {
   'season.meta.description': 'Faites monter le niveau de votre Passe de saison pour débloquer des récompenses dans Inspired Mile.',
   'season.badge': 'Saison {n}',
   'season.title': 'Passe de saison',
-  'season.intro': 'Jouez des combats, des quiz et des défis pour gagner de l’XP. Chaque nouveau niveau débloque des cartes, des crédits et des titres.',
+  'season.intro': 'Jouez des combats, des quiz et des défis pour gagner des points d’expérience (XP). Chaque nouveau niveau débloque des cartes, des crédits et des titres.',
   'season.loading': 'Chargement…',
   'season.level': 'Niveau',
   'season.xp': '{n} XP',
