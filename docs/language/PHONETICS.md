@@ -433,10 +433,11 @@ written twice (".ˈ") is also counted once now.
 | ru | table | 3.72 MB | 515 kB |
 | ja | analyser code and twelve dictionary files | 17.8 MB | 17.8 MB (already compressed) |
 
-These are the generated modules. In a production build (measured on the earlier tables,
-before the 2026-11-16 rebuild, which changed each by under 1%) the chunks were within a few
-per cent of these gzip figures, and the Japanese dictionary was eight files as assets and
-the four smallest inlined in the analyser's chunk.
+These are the generated modules; the production chunks of this branch's build are in the
+branch report. In the production build of 2026-11-16 the Japanese dictionary is eight files
+emitted as assets, 17,788,982 bytes in all (`tid_pos` 5.9 MB, `base` 4.0 MB, `check` 3.1 MB,
+`cc` 1.7 MB, `tid` 1.6 MB, `tid_map` 1.5 MB, `unk` and `unk_pos` 11 kB each), and the four
+smallest inlined in the analyser's chunk.
 
 Time for `loadSound(lang)` to resolve in headless Chromium, measured by `tests/sound.spec.ts`
 against the dev server on the build host: see the branch report for the run of 2026-11-16;
