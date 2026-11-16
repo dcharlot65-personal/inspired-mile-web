@@ -184,7 +184,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   </section>
 
   <script>
-    import { brainInfo, canOfferGrand, chooseTier, detectCapability, generate, isBrainLoaded, loadBrain, MODELS, type Tier } from '../lib/brain';
+    import { brainInfo, canOfferGrand, chooseTier, detectCapability, loadBrain, MODELS, type Tier } from '../lib/brain';
     import { CARD_CATALOG, drawRandomCard, getCardById, RARITY_COLORS, type Card, type Rarity } from '../lib/cards';
     import { addCard, getOwnedCardIds, getOwnedCards, getUniqueOwnedCount, recordBattleWin } from '../lib/inventory';
     import { getPlayerStats, incrementStat, setHighScore, syncCardStats } from '../lib/achievements';
@@ -192,18 +192,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     import { getActiveDeck } from '../lib/deck-manager';
     import { CITY_CATALOG, decodeVariantId, getCityByCode, getOwnedVariants, type CityAbility } from '../lib/variants';
     import { isSpeaking, isVoiceLoaded, loadVoice, speak, stopSpeaking } from '../lib/thespian-voice';
-    import { POTION_CURSE, POWER_WORD_BONUS, deviceForHouse, houseWhy } from '../lib/verse/devices';
-    import {
-      JUDGE_POOL, ROUNDS, createDuel, illegalMove, inkAt, matchWinner, moveCost, resolveRound, scoreVerse, starterDeck,
-      type Duel, type DuelDeck, type PlayerMove, type RoundResult, type VerseScore,
-    } from '../lib/verse/duel';
+    import { POTION_CURSE, POWER_WORD_BONUS, deviceForHouse, deviceInPlay, houseWhy } from '../lib/verse/devices';
+    import { JUDGE_POOL, ROUNDS, normalizeSeed, starterDeck, type DuelDeck, type RoundResult, type VerseScore, type WorldCard } from '../lib/verse/duel';
     import { cancelListening, EAR_MEGABYTES, isEarLoaded, isListening, loadEar, startListening, stopListening } from '../lib/ear';
-    import { FORM_POINTS, getForm } from '../lib/verse/forms';
+    import { FORM_POINTS } from '../lib/verse/forms';
     import { CRITERIA } from '../lib/verse/judge';
-    import { writeOpponentVerse, type Difficulty } from '../lib/verse/opponent';
+    import type { Difficulty } from '../lib/verse/opponent';
     import { PACK_LANGS, hasPack, loadPack } from '../lib/verse/packs';
-    import { referee } from '../lib/verse/referee';
-    import { cleanVerse } from '../lib/verse/text';
+    import { loadPronunciation } from '../lib/verse/pronounce';
+    import { DuelSession } from '../lib/verse/session';
     import { initI18n, languageName, locale, onLocaleChange, t, tm } from '../i18n';
     import { criterionName, curseName, curseRule, curseRuleTheirs, deviceBrief, deviceName, signatureText } from '../i18n/duel';
     import type { Msg } from '../lib/verse/msg';
@@ -230,14 +227,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     // --- State ---
     const params = new URLSearchParams(location.search);
     let deck: DuelDeck;
-    let duel: Duel | null = null;
-    let roundIndex = 0;
-    let moves: PlayerMove[] = [];
-    let results: RoundResult[] = [];
-    let move: PlayerMove = { charId: '' };
-    let opponentVerse = '';
-    let busy = false;
-    let judging = false;
+    // The duel itself (order of play, moves, scoring) is a DuelSession, the same one the
+    // theatre plays; this page only draws it and passes on what the player does.
+    let session: DuelSession | null = null;
     let tier: Tier = 'none';
     let useModel = false;
     let voiceEnabled = false;
@@ -249,7 +241,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     let reward: Card | null = null;
 
     /** The language verses are measured in: the duel's, or the one chosen for the next duel. */
-    const duelLang = () => duel?.lang ?? langSelect.value ?? 'en';
+    const duelLang = () => session?.duel.lang ?? langSelect.value ?? 'en';
 
     // --- Stats ---
     function showStats() {
@@ -458,7 +450,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     function say(text: string) {
       if (!voiceEnabled) return;
       duckMusic();
-      speak(text, undefined, duel?.lang ?? 'en');
+      speak(text, undefined, session?.duel.lang ?? 'en');
       const timer = setInterval(() => {
         if (!isSpeaking()) {
           clearInterval(timer);
@@ -484,11 +476,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       say$(micLabel, 'mic.transcribing');
       micBtn.disabled = true;
       try {
-        const said = await stopListening(duel?.lang ?? 'en');
+        const said = await stopListening(session?.duel.lang ?? 'en');
         if (said) {
           verseInput.value = verseInput.value.trim() ? `${verseInput.value.trim()}\n${said}` : said;
-          renderChecks();
-          updateSubmit();
+          session?.setVerse(verseInput.value);
         }
         say$(micLabel, said ? 'mic.speak' : 'mic.heardNothing');
       } catch (err) {
@@ -536,21 +527,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     const verseInput = $<HTMLTextAreaElement>('verse-input');
     const submitBtn = $<HTMLButtonElement>('submit-verse');
 
-    function currentScore(): VerseScore | null {
-      if (!duel || !move.charId) return null;
-      const plan = duel.rounds[roundIndex];
-      return scoreVerse({
-        verse: verseInput.value,
-        form: getForm(plan.formId),
-        ctx: plan.ctx,
-        card: getCardById(move.charId)!,
-        deckCharacters: duel.player.characters,
-        opponentVerse,
-        curse: plan.opponent.curse,
-        lent: move.relicId ? duel.playerRelics[move.relicId] : undefined,
-      });
-    }
-
     function checkRow(met: boolean, label: string, detail: string, tone = 'gold'): HTMLElement {
       const li = el('li', 'flex gap-2 items-start');
       li.appendChild(el('span', met ? `text-${tone === 'crimson' ? 'crimson' : 'emerald'}-400 shrink-0` : 'text-obsidian-600 shrink-0', met ? (tone === 'crimson' ? '✗' : '✓') : '○'));
@@ -569,19 +545,21 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     function renderChecks() {
       const list = $('live-checks');
       list.replaceChildren();
-      const s = currentScore();
-      if (!s || !duel) {
+      const s = session?.preview();
+      if (!session || !s) {
         list.appendChild(el('li', 'text-obsidian-500', t('live.chooseWho')));
         $('live-craft').textContent = '0';
         return;
       }
+      const lang = session.duel.lang;
       const written = verseInput.value.trim().length > 0;
       for (const c of s.form.checks) list.appendChild(checkRow(c.met, t('live.points', { label: tm(c.label), points: c.points }), written ? c.detail : ''));
-      const card = getCardById(move.charId)!;
-      list.appendChild(checkRow(s.device.met, t('live.device', { name: deviceName(s.device.id), brief: deviceBrief(s.device.id, duel.lang) }), written ? s.device.detail : ''));
+      const card = getCardById(session.move.charId)!;
+      list.appendChild(checkRow(s.device.met, t('live.device', { name: deviceName(s.device.id), brief: deviceBrief(s.device.id, lang) }), written ? s.device.detail : ''));
+      // A void verse lands no signature; show what would echo the line all the same.
       list.appendChild(checkRow(s.signature.met, t('live.signature', { card: card.name }), signatureText(s.signature)));
       if (s.powerWords) {
-        const lent = duel.playerRelics[move.relicId!];
+        const lent = session.duel.playerRelics[session.move.relicId!];
         list.appendChild(checkRow(s.powerWords.met, t('live.power', { bonus: POWER_WORD_BONUS, words: lent.words.join(', ') }), s.powerWords.used.length ? t('live.powerUsed', { words: s.powerWords.used.join(', ') }) : ''));
       }
       if (s.curse) {
@@ -592,29 +570,38 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           'crimson',
         ));
       }
+      // Copied from the opponent, or too little to be a verse: say so, since it scores nothing.
+      if (written && s.voided && s.voided !== 'empty') list.appendChild(checkRow(true, t('void.label'), t(`void.${s.voided}`), 'crimson'));
       $('live-craft').textContent = String(s.craft);
     }
 
-    function renderHand() {
-      if (!duel) return;
-      const d = duel;
-      const spent = moves.reduce((n, m) => n + moveCost(m), 0);
-      const ink = inkAt(roundIndex, spent) - moveCost(move);
+    /** What the hand was last drawn from: it changes with the move, not with every letter typed. */
+    let handDrawn = '';
+    function renderHand(force = false) {
+      if (!session) return;
+      const s = session;
+      const d = s.duel;
+      const ink = s.ink;
+      const key = JSON.stringify([d.seed, s.roundIndex, s.phase, s.move, s.moves.length, ink]);
+      if (!force && key === handDrawn) return;
+      handDrawn = key;
       $('ink').textContent = String(ink);
 
       const chars = $('hand-characters');
       chars.replaceChildren();
+      // Cards can be played once the opponent's verse is on the table; until then the hand is shown but waits.
+      const waiting = s.phase !== 'player-turn' ? 'pointer-events-none' : '';
       for (const id of d.player.characters) {
         const card = getCardById(id);
         if (!card) continue;
-        const used = moves.some((m) => m.charId === id);
-        const chosen = move.charId === id;
-        const b = cardChip(card, `cursor-pointer transition-all ${chosen ? 'border-gold-500/70 bg-gold-500/10' : ''} ${used ? 'opacity-30 pointer-events-none' : 'hover:border-gold-500/40'}`);
+        const used = s.characterUsed(id);
+        const chosen = s.move.charId === id;
+        const b = cardChip(card, `cursor-pointer transition-all ${waiting} ${chosen ? 'border-gold-500/70 bg-gold-500/10' : ''} ${used ? 'opacity-30 pointer-events-none' : 'hover:border-gold-500/40'}`);
         b.setAttribute('role', 'button');
         b.dataset.charId = id;
         const why = houseWhy(card.house, d.lang);
         b.title = why ? tm(why) : '';
-        if (!used) b.addEventListener('click', () => { move.charId = id; playSfx('ui-click'); renderHand(); renderChecks(); updateSubmit(); });
+        if (!used) b.addEventListener('click', () => { if (s.chooseCharacter(id)) playSfx('ui-click'); });
         chars.appendChild(b);
       }
 
@@ -622,128 +609,125 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       items.replaceChildren();
       const all = [...d.player.relics.map((id) => ({ id, kind: 'relic' as const })), ...d.player.potions.map((id) => ({ id, kind: 'potion' as const }))];
       $('hand-items-wrap').classList.toggle('hidden', all.length === 0);
+      // Say in plain sight what the items do; a tooltip is no use on a phone.
+      const notes: string[] = [];
       for (const { id, kind } of all) {
         const card = getCardById(id);
         if (!card) continue;
-        const used = moves.some((m) => (kind === 'relic' ? m.relicId : m.potionId) === id);
-        const chosen = (kind === 'relic' ? move.relicId : move.potionId) === id;
-        const cantAfford = !chosen && ink < 1;
-        const b = cardChip(card, `cursor-pointer transition-all ${chosen ? 'border-purple-500/70 bg-purple-500/10' : ''} ${used || cantAfford ? 'opacity-30 pointer-events-none' : 'hover:border-purple-500/40'}`);
+        const used = s.itemUsed(id);
+        const chosen = (kind === 'relic' ? s.move.relicId : s.move.potionId) === id;
+        // In the last round a potion has no verse left to curse; the session will not take it.
+        const refused = s.itemRefused(id);
+        const cantPlay = !chosen && (ink < 1 || !!refused);
+        const b = cardChip(card, `cursor-pointer transition-all ${waiting} ${chosen ? 'border-purple-500/70 bg-purple-500/10' : ''} ${used || cantPlay ? 'opacity-30 pointer-events-none' : 'hover:border-purple-500/40'}`);
         b.setAttribute('role', 'button');
         b.dataset.itemId = id;
-        if (kind === 'relic') b.title = t('hand.lends', { words: d.playerRelics[id].words.join(', ') });
+        if (refused) b.title = t(`illegal.${refused}`);
+        else if (kind === 'relic') b.title = t('hand.lends', { words: d.playerRelics[id].words.join(', ') });
         else {
           const cast = d.playerCurses[id];
           b.title = t('hand.curses', { rule: curseRuleTheirs(cast.curseId, cast.param, d.lang) });
         }
-        if (!used && !cantAfford) {
-          b.addEventListener('click', () => {
-            if (kind === 'relic') move.relicId = chosen ? undefined : id;
-            else move.potionId = chosen ? undefined : id;
-            playSfx('ui-click');
-            renderHand();
-            renderChecks();
-          });
-        }
+        if (!used && !cantPlay) b.addEventListener('click', () => { if (s.toggleItem(id)) playSfx('ui-click'); });
+        if (refused === 'potion-last-round' && !used) notes.push(t('hand.potionLastRound', { card: card.name }));
         items.appendChild(b);
       }
-      // Say in plain sight what the chosen items do; a tooltip is no use on a phone.
-      const notes: string[] = [];
-      if (move.relicId) notes.push(t('hand.relicNote', { card: getCardById(move.relicId)!.name, words: d.playerRelics[move.relicId].words.join(', ') }));
-      if (move.potionId) {
-        const cast = d.playerCurses[move.potionId];
-        const card = getCardById(move.potionId)!.name;
-        notes.push(roundIndex + 1 < ROUNDS
-          ? t('hand.potionNote', { card, rule: curseRuleTheirs(cast.curseId, cast.param, d.lang) })
-          : t('hand.potionLastRound', { card }));
+      if (s.move.relicId) notes.push(t('hand.relicNote', { card: getCardById(s.move.relicId)!.name, words: d.playerRelics[s.move.relicId].words.join(', ') }));
+      if (s.move.potionId) {
+        const cast = d.playerCurses[s.move.potionId];
+        notes.push(t('hand.potionNote', { card: getCardById(s.move.potionId)!.name, rule: curseRuleTheirs(cast.curseId, cast.param, d.lang) }));
+        // From the round that can decide the match, a potion may never get its verse to curse.
+        if (s.potionAtRisk()) notes.push(t('hand.potionGamble'));
       }
       $('item-note').textContent = notes.join(' ');
     }
 
     function updateSubmit() {
-      submitBtn.disabled = busy || !move.charId || cleanVerse(verseInput.value).length === 0;
-      submitBtn.textContent = judging ? t('round.deliberating') : t('round.submit');
+      submitBtn.disabled = !session || session.blocked() !== null;
+      submitBtn.textContent = session?.phase === 'judging' ? t('round.deliberating') : t('round.submit');
     }
 
-    verseInput.addEventListener('input', () => { renderChecks(); updateSubmit(); });
+    verseInput.addEventListener('input', () => session?.setVerse(verseInput.value));
 
     /** The header of a round: its number, its form, the opponent's card and any curse. */
     function renderRoundHeader() {
-      if (!duel) return;
-      const plan = duel.rounds[roundIndex];
-      const form = getForm(plan.formId);
-      const card = getCardById(plan.opponent.charId)!;
-      $('round-label').textContent = t('round.label', { n: roundIndex + 1, total: ROUNDS });
-      $('form-name').textContent = tm(form.name);
-      $('form-brief').textContent = tm(form.brief(plan.ctx));
+      if (!session) return;
+      const s = session;
+      const plan = s.plan;
+      const card = s.opponentCard;
+      $('round-label').textContent = t('round.label', { n: s.roundIndex + 1, total: ROUNDS });
+      $('form-name').textContent = tm(s.form.name);
+      $('form-brief').textContent = tm(s.form.brief(plan.ctx));
       $('opponent-name').textContent = card.name;
-      const device = deviceForHouse(card.house, duel.lang);
-      $('opponent-device').textContent = t('round.device', { name: tm(device.name), brief: tm(device.brief(duel.lang)) });
+      // A Riposte house that opens the duel has nothing to turn back; it is held to its opening device.
+      const device = deviceInPlay(card.house, s.duel.lang, s.roundIndex > 0);
+      $('opponent-device').textContent = t('round.device', { name: tm(device.name), brief: tm(device.brief(s.duel.lang)) });
       const curse = $('opponent-curse');
       if (plan.opponent.curse) {
         const c = plan.opponent.curse;
-        curse.textContent = t('round.cursesYou', { card: card.name, name: curseName(c.curseId), rule: curseRule(c.curseId, c.param, duel.lang) });
+        curse.textContent = t('round.cursesYou', { card: card.name, name: curseName(c.curseId), rule: curseRule(c.curseId, c.param, s.duel.lang) });
         curse.classList.remove('hidden');
       } else curse.classList.add('hidden');
+
+      const portrait = $('opponent-portrait');
+      if (portrait.dataset.card !== card.id) {
+        portrait.dataset.card = card.id;
+        portrait.replaceChildren();
+        if (card.image) {
+          const img = document.createElement('img');
+          img.src = card.image;
+          img.alt = '';
+          img.className = 'w-full h-full object-cover';
+          portrait.appendChild(img);
+        } else portrait.textContent = card.icon;
+      }
+
+      // The opponent's verse, or that it is still being written.
+      const verseEl = $('opponent-verse');
+      if (s.phase === 'opponent-writing') {
+        verseEl.textContent = !s.drafting
+          ? '…'
+          : s.drafting.of > 1
+            ? t('round.composingDraft', { card: card.name, n: s.drafting.draft, total: s.drafting.of })
+            : t('round.composing', { card: card.name });
+      } else {
+        verseEl.textContent = s.opponentVerse;
+        verseEl.lang = s.duel.lang;
+        verseEl.dataset.source = s.opponentSource;
+      }
     }
 
-    async function beginRound() {
-      if (!duel) return;
-      const plan = duel.rounds[roundIndex];
-      const card = getCardById(plan.opponent.charId)!;
+    /** Draw the round from the session. Called on every change it reports while a round is being played. */
+    function render() {
+      if (!session || view !== 'round') return;
+      renderRoundHeader();
+      renderHand();
+      renderChecks();
+      updateSubmit();
+    }
+
+    /**
+     * Start a round on screen and let the session play its opening. `advance` is what
+     * moves the session on: its first round, or the next one.
+     */
+    async function beginRound(advance: () => Promise<void>) {
+      const s = session;
+      if (!s) return;
       view = 'round';
-      move = { charId: '' };
-      opponentVerse = '';
       verseInput.value = '';
       $('verdict').classList.add('hidden');
       $('verdict').replaceChildren();
       $('move-panel').classList.remove('hidden');
-
-      renderRoundHeader();
-      const portrait = $('opponent-portrait');
-      portrait.replaceChildren();
-      if (card.image) {
-        const img = document.createElement('img');
-        img.src = card.image;
-        img.alt = '';
-        img.className = 'w-full h-full object-cover';
-        portrait.appendChild(img);
-      } else portrait.textContent = card.icon;
-
-      renderHand();
-      renderChecks();
-      busy = true;
-      updateSubmit();
-
-      // The opponent opens. It is written before the player commits a potion, so a
-      // curse cast this round binds the opponent's NEXT verse; see castCarry below.
-      const verseEl = $('opponent-verse');
-      verseEl.textContent = '…';
-      const written = await writeOpponentVerse({
-        duel,
-        roundIndex,
-        curse: castCarry,
-        previousPlayerVerse: results.at(-1)?.playerVerse,
-        difficulty: ($<HTMLSelectElement>('difficulty').value as Difficulty) ?? 'player',
-        generate: useModel && isBrainLoaded() && brainInfo()?.writes ? (m, o) => generate(m, { maxTokens: o.maxTokens, temperature: o.temperature }) : undefined,
-        onDraft: (n, of) => { verseEl.textContent = of > 1 ? t('round.composingDraft', { card: card.name, n, total: of }) : t('round.composing', { card: card.name }); },
-      });
-      opponentVerse = written.verse;
-      verseEl.textContent = opponentVerse;
-      verseEl.lang = duel.lang;
-      verseEl.dataset.source = written.source;
-      say(opponentVerse);
-      busy = false;
-      renderChecks();
-      updateSubmit();
+      // The opponent opens. It writes before the player commits a potion, so a potion
+      // played this round curses the opponent's NEXT verse (the session carries it over).
+      await advance();
+      if (session !== s || s.phase !== 'player-turn') return;
+      render();
+      say(s.opponentVerse);
       verseInput.focus();
     }
 
-    /** A potion played this round curses the opponent's next verse. */
-    let castCarry: Duel['playerCurses'][string] | undefined;
-    let castApplied: Duel['playerCurses'][string] | undefined;
-
-    function side(title: string, s: VerseScore, judge: number, total: number, tone: string): HTMLElement {
+    function side(title: string, s: VerseScore, judge: number, total: number, tone: string, bonus?: RoundResult['bonus']): HTMLElement {
       const box = el('div', 'rounded-lg border border-obsidian-700/60 bg-obsidian-900/50 p-3 text-xs space-y-1');
       box.appendChild(el('p', `font-display font-bold text-sm ${tone}`, title));
       const row = (k: string, v: string, cls = 'text-obsidian-300') => {
@@ -759,8 +743,17 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       if (s.synergy) row(t('verdict.synergy'), '+¼');
       row(t('verdict.multiplier'), `×${s.multiplier}`);
       if (s.curse) row(t('verdict.curse', { name: curseName(s.curse.id) }), s.curse.penalty ? `−${s.curse.penalty}` : t('verdict.held'), s.curse.penalty ? 'text-crimson-400' : 'text-emerald-400');
+      if (s.voided && s.voided !== 'empty') row(t('void.label'), t(`void.${s.voided}`), 'text-crimson-400 text-end');
       row(t('verdict.craft'), String(s.craft), 'text-obsidian-100 font-semibold');
       row(t('verdict.judge'), `${judge} / ${JUDGE_POOL}`, 'text-obsidian-100 font-semibold');
+      // The world card's bonus is part of the round score, so it has a row of its own.
+      if (bonus) {
+        row(
+          t('verdict.worldCard', { city: bonus.label }),
+          bonus.points ? t('variant.bonus', { n: bonus.points, criterion: criterionName(bonus.criterion) }) : t('verdict.notTaken', { criterion: criterionName(bonus.criterion) }),
+          bonus.points ? 'text-gold-300 font-semibold' : 'text-obsidian-400',
+        );
+      }
       const sum = el('div', 'flex justify-between gap-2 border-t border-obsidian-700 pt-1 mt-1');
       sum.appendChild(el('span', 'text-obsidian-300 font-semibold', t('verdict.roundScore')));
       sum.appendChild(el('span', `${tone} font-bold text-sm`, String(total)));
@@ -769,42 +762,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     }
 
     async function submit() {
-      if (!duel || busy) return;
-      const bad = illegalMove(duel, roundIndex, move, moves);
+      const s = session;
+      if (!s) return;
+      const bad = s.blocked();
       if (bad) {
-        say$($('setup-note'), `illegal.${bad}`);
+        // Only an illegal move has words of its own; the button is disabled for the rest.
+        if (bad !== 'not-your-turn' && bad !== 'choose-character' && bad !== 'write-verse') say$($('setup-note'), `illegal.${bad}`);
         return;
       }
-      busy = true;
-      judging = true;
-      updateSubmit();
-      const playerVerse = cleanVerse(verseInput.value);
-      const judge = await referee(playerVerse, opponentVerse, duel.lang);
-
-      // The opponent's verse this round was written under the curse carried in, if any.
-      const applied = castApplied;
-      const scored = resolveRound(
-        { ...duel, playerCurses: applied ? { ...duel.playerCurses, __carried: applied } : duel.playerCurses },
-        roundIndex,
-        { ...move, potionId: applied ? '__carried' : undefined },
-        playerVerse,
-        opponentVerse,
-        judge,
-        results.at(-1)?.playerVerse,
-      );
-
-      // World card: bonus craft when you take its criterion from the judge.
-      if (variantAbility) {
-        const criterion = variantAbility.axis === 'shakespeare' ? 'allusion' : variantAbility.axis;
-        if (judge.criteria[criterion] === 'player') {
-          scored.playerTotal += variantAbility.bonus;
-          scored.winner = scored.playerTotal >= scored.opponentTotal ? 'player' : 'opponent';
-        }
-      }
-
-      results.push(scored);
-      moves.push({ ...move });
-      castApplied = castCarry = move.potionId ? duel.playerCurses[move.potionId] : undefined;
+      const scored = await s.submit();
+      if (!scored || session !== s) return;
 
       incrementStat('totalRounds');
       if (scored.winner === 'player') {
@@ -813,19 +780,18 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         playSfx('battle-victory');
       } else playSfx('battle-defeat');
       setHighScore(scored.playerTotal);
-      $('player-score').textContent = String(results.filter((r) => r.winner === 'player').length);
-      $('ai-score').textContent = String(results.filter((r) => r.winner === 'opponent').length);
+      $('player-score').textContent = String(s.playerRounds);
+      $('ai-score').textContent = String(s.opponentRounds);
       showStats();
-      busy = false;
-      judging = false;
-      updateSubmit();
       view = 'verdict';
+      updateSubmit();
       showVerdict(scored, true);
     }
     submitBtn.addEventListener('click', submit);
 
     function showVerdict(r: RoundResult, scroll: boolean) {
-      if (!duel) return;
+      if (!session) return;
+      const s = session;
       $('move-panel').classList.add('hidden');
       const v = $('verdict');
       v.replaceChildren();
@@ -837,11 +803,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       v.appendChild(el('p', 'text-xs uppercase tracking-wider text-obsidian-500 mb-1', t('verdict.yourAnswer')));
       v.appendChild(mine);
 
-      const theirCard = getCardById(duel.rounds[r.index].opponent.charId)!.name;
+      const theirCard = getCardById(s.duel.rounds[r.index].opponent.charId)!.name;
       v.appendChild(el('p', `font-display text-2xl font-bold mb-3 ${r.winner === 'player' ? 'text-emerald-400' : 'text-crimson-400'}`, r.winner === 'player' ? t('verdict.roundYours') : t('verdict.roundTheirs', { card: theirCard })));
 
       const grid = el('div', 'grid sm:grid-cols-2 gap-3');
-      grid.appendChild(side(t('battle.you'), r.player, r.judge.player, r.playerTotal, 'text-crimson-300'));
+      grid.appendChild(side(t('battle.you'), r.player, r.judge.player, r.playerTotal, 'text-crimson-300', r.bonus));
       grid.appendChild(side(t('battle.opponent'), r.opponent, r.judge.opponent, r.opponentTotal, 'text-gold-300'));
       v.appendChild(grid);
 
@@ -856,19 +822,24 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       }
       v.appendChild(crit);
       const info = brainInfo();
-      v.appendChild(el('p', 'mt-2 text-[11px] text-obsidian-500', r.judge.source === 'model' && info
+      const copied = r.player.voided === 'copied' || r.opponent.voided === 'copied';
+      v.appendChild(el('p', 'mt-2 text-[11px] text-obsidian-500', (r.judge.source === 'model' && info
         ? t(info.judge === 'grade' ? 'verdict.judgedGrade' : 'verdict.judgedCompare', { model: info.label })
-        : t('verdict.judgedRules')));
+        : t('verdict.judgedRules')) + (copied ? ` ${t('verdict.copyForfeits')}` : '')));
 
-      const winner = matchWinner(results);
-      const done = winner !== null || results.length >= ROUNDS;
+      // The session has already decided whether the match is over.
+      const done = s.winner !== null;
       const next = el('button', 'btn-primary mt-5 px-8', done ? t('verdict.seeResult') : t('verdict.next'));
       next.id = 'next-round';
       next.dataset.done = String(done);
-      next.addEventListener('click', () => {
-        if (done) return finish(winner ?? (results.filter((x) => x.winner === 'player').length * 2 > results.length ? 'player' : 'opponent'));
-        roundIndex++;
-        beginRound();
+      next.addEventListener('click', async () => {
+        if (session !== s) return;
+        next.setAttribute('disabled', '');
+        if (done) {
+          await s.next();
+          return finish(s.winner!);
+        }
+        beginRound(() => s.next());
       });
       v.appendChild(next);
       if (scroll) next.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
@@ -890,7 +861,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
     function renderFinish() {
       const winner = matchResult;
-      if (!winner) return;
+      if (!winner || !session) return;
+      const results = session.results;
       const v = $('verdict');
       v.replaceChildren();
       v.dataset.match = winner;
@@ -901,7 +873,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       v.appendChild(el('p', 'text-sm text-obsidian-400 mb-4', t('end.tally', {
         you: results.filter((r) => r.winner === 'player').length,
         them: results.filter((r) => r.winner === 'opponent').length,
-        total: results.reduce((s, r) => s + r.playerTotal, 0),
+        total: results.reduce((sum, r) => sum + r.playerTotal, 0),
       })));
 
       if (reward) {
@@ -926,15 +898,26 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     async function start(seed: number) {
       const lang = langSelect.value || 'en';
       startBtn.disabled = true;
-      // The verses, acrostic words and power words of the duel's language.
+      // The verses, acrostic words and power words of the duel's language; and, for English,
+      // the table its words are measured by (the session waits for it too, before it scores).
       await loadPack(lang);
-      duel = createDuel(seed, lang, (loadDeck(), deck));
-      roundIndex = 0;
-      moves = [];
-      results = [];
+      // The world card's bonus is scored with the round, by the same code on every front end.
+      const worldCard: WorldCard | undefined = variantAbility
+        ? { label: equippedCity, criterion: variantAbility.axis === 'shakespeare' ? 'allusion' : variantAbility.axis, bonus: variantAbility.bonus }
+        : undefined;
+      const s = new DuelSession({
+        seed,
+        lang,
+        deck: (loadDeck(), deck),
+        difficulty: ($<HTMLSelectElement>('difficulty').value as Difficulty) ?? 'player',
+        useModel,
+        worldCard,
+        onChange: render,
+      });
+      session = s;
       matchResult = null;
-      castCarry = castApplied = undefined;
-      $('seed-label').textContent = String(seed);
+      // The seed as the rules use it, which is not always the number typed (duel.ts normalizeSeed).
+      $('seed-label').textContent = String(s.duel.seed);
       $('player-score').textContent = '0';
       $('ai-score').textContent = '0';
       renderBadge();
@@ -945,12 +928,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       if (!isInitialized()) initAudio();
       playMusic('battle-beat', 800);
       preloadSfx(['ui-whoosh', 'battle-victory', 'battle-defeat', 'fanfare-common', 'fanfare-rare', 'fanfare-legendary', 'ui-click']);
-      beginRound();
+      beginRound(() => s.beginRound());
     }
 
     startBtn.addEventListener('click', () => {
-      const s = Number(params.get('seed'));
-      start(Number.isFinite(s) && s > 0 ? s : Math.floor(Math.random() * 2 ** 31));
+      const s = normalizeSeed(Number(params.get('seed')));
+      start(s > 0 ? s : Math.floor(Math.random() * 2 ** 31));
     });
 
     /** Draw again everything that was built with t(): called when the interface language changes. */
@@ -961,13 +944,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       loadDeck();
       renderVariantPicker();
       updateSubmit();
-      if (!duel) return;
+      if (!session) return;
       renderBadge();
       if (view === 'finished') return renderFinish();
       renderRoundHeader();
-      renderHand();
+      renderHand(true);
       renderChecks();
-      if (view === 'verdict' && results.length) showVerdict(results[results.length - 1], false);
+      const last = session.results.at(-1);
+      if (view === 'verdict' && last) showVerdict(last, false);
     }
 
     // --- Start-up: the interface language first, then everything that speaks it ---
@@ -980,10 +964,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       renderVariantPicker();
       updateSubmit();
       initBrain();
+      // English verse is measured by sound. Fetch the table while the player sets up, so the
+      // first round does not wait for it; it is a separate file, not part of this page's load.
+      void loadPronunciation();
       onLocaleChange((l) => {
         // A visitor who changes the interface language most likely wants to duel in it:
         // make it the duel's language too, where it is on offer and no duel is under way.
-        if (!duel && offered.includes(l)) langSelect.value = l;
+        if (!session && offered.includes(l)) langSelect.value = l;
         redraw();
       });
     });

@@ -58,7 +58,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     import { cancelListening, isListening, loadEar, startListening, stopListening } from '../lib/ear';
     import { getOwnedCardIds } from '../lib/inventory';
     import { incrementStat } from '../lib/achievements';
-    import { ROUNDS, starterDeck, type DuelDeck } from '../lib/verse/duel';
+    import { ROUNDS, normalizeSeed, starterDeck, type DuelDeck } from '../lib/verse/duel';
     import { hasPack, loadPack } from '../lib/verse/packs';
     import { DuelSession } from '../lib/verse/session';
     import { Theatre, type Action } from '../lib/xr/theatre';
@@ -221,8 +221,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           redraw();
         });
       }
-      const s = Number(params.get('seed'));
-      start(Number.isFinite(s) && s > 0 ? s : Math.floor(Math.random() * 2 ** 31));
+      // The seed as the rules use it: a whole number; anything else typed is brought to one.
+      const s = normalizeSeed(Number(params.get('seed')));
+      start(s > 0 ? s : Math.floor(Math.random() * 2 ** 31));
     }
     initI18n().then(() => {
       status('theatre.raising');

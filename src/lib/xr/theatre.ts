@@ -33,7 +33,7 @@ import { Rectangle } from '@babylonjs/gui/2D/controls/rectangle';
 import { TextBlock } from '@babylonjs/gui/2D/controls/textBlock';
 
 import { getCardById, type Card } from '../cards';
-import { POTION_CURSE, deviceForHouse } from '../verse/devices';
+import { POTION_CURSE, deviceForHouse, deviceInPlay } from '../verse/devices';
 import { JUDGE_POOL, ROUNDS, type RoundResult, type VerseScore } from '../verse/duel';
 import { FORM_POINTS } from '../verse/forms';
 // Everything written on the stage is a message in the interface language (src/i18n).
@@ -269,7 +269,8 @@ export class Theatre {
     x += 0.06 - (step - itemStep) / 2;
     for (const card of items) {
       const chosen = s.move.relicId === card.id || s.move.potionId === card.id;
-      const state = s.itemUsed(card.id) || (!chosen && s.ink < 1) ? 'spent' : chosen ? 'chosen' : 'ready';
+      // Out of reach: used, no ink for it, or a potion with no verse left to curse.
+      const state = s.itemUsed(card.id) || (!chosen && (s.ink < 1 || !!s.itemRefused(card.id))) ? 'spent' : chosen ? 'chosen' : 'ready';
       const cast = POTION_CURSE[card.id];
       const sub = card.type === 'Relic' ? t('chip.powerWords') : cast ? curseName(cast) : t('chip.curse');
       this.hand.push(this.cardMesh(card, new Vector3(x, 0.915, 0.78), { type: 'item', id: card.id }, state, sub, 0.75));
@@ -289,6 +290,7 @@ export class Theatre {
     ];
     if (v.powerWords) lines.push(`${t('verdict.powerWords')}: ${v.powerWords.met ? `+${v.powerWords.bonus}` : t('verdict.notUsed')}`);
     if (v.curse) lines.push(`${t('verdict.curse', { name: curseName(v.curse.id) })}: ${v.curse.penalty ? `−${v.curse.penalty}` : t('verdict.held')}`);
+    if (v.voided && v.voided !== 'empty') lines.push(`${t('void.label')}: ${t(`void.${v.voided}`)}`);
     lines.push(`${t('verdict.craft')} ${v.craft}  +  ${t('verdict.judge')} ${judge}/${JUDGE_POOL}  =  ${total}`);
     return lines.join('\n');
   }
@@ -328,7 +330,8 @@ export class Theatre {
     const curse = s.plan.opponent.curse;
     this.panels.opponent.text.text = [
       `${opp.name}`,
-      `${tm(deviceForHouse(opp.house, s.duel.lang).name)}`,
+      // A Riposte house that opens the duel has nothing to turn back; it is held to its opening device.
+      `${tm(deviceInPlay(opp.house, s.duel.lang, s.roundIndex > 0).name)}`,
       curse ? `\n${t('theatre.cursesYou', { rule: curseRule(curse.curseId, curse.param, s.duel.lang) })}` : '',
       '',
       s.phase === 'opponent-writing'
@@ -346,6 +349,8 @@ export class Theatre {
       checks.push(`${preview.signature.met ? '✓' : '○'} ${t('verdict.signature')}: ${signatureText(preview.signature)}`);
       if (preview.powerWords) checks.push(`${preview.powerWords.met ? '✓' : '○'} ${t('verdict.powerWords')}: ${s.duel.playerRelics[s.move.relicId!].words.join(', ')}`);
       if (preview.curse) checks.push(`${preview.curse.violations ? '✗' : '✓'} ${t('live.curse', { name: curseName(preview.curse.id) })}`);
+      if (preview.voided && preview.voided !== 'empty') checks.push(`✗ ${t('void.label')}: ${t(`void.${preview.voided}`)}`);
+      if (s.potionAtRisk()) checks.push(`! ${t('hand.potionGamble')}`);
       checks.push(`${t('round.craftSoFar')} ${preview.craft}`);
     } else checks.push(t('theatre.pick'));
     this.panels.round.text.text = [
