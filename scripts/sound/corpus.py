@@ -117,12 +117,75 @@ def ru():
 
 def de():
     url, date = meta('de')
-    t = read('de.txt')
     lines = []
-    for block in re.findall(r'<poem>(.*?)</poem>', t, re.S):
-        lines += verse_lines(block)
-    yes, no = couplets(lines, 48)
-    write('de', {'title': 'Max und Moritz, Erster Streich', 'author': 'Wilhelm Busch', 'year': 1865, 'form': 'paired rhyme AABB', 'source': url, 'fetched': date, 'licence': PD}, yes, no, DROP.get('de', ()))
+    for name in ('de.txt', 'de2.txt', 'de3.txt'):
+        for block in re.findall(r'<poem>(.*?)</poem>', read(name), re.S):
+            ls = verse_lines(block)
+            lines += ls[:len(ls) // 2 * 2]
+    yes, no = couplets(lines, 60)
+    write('de', {'title': 'Max und Moritz, Erster, Zweiter und Dritter Streich', 'author': 'Wilhelm Busch', 'year': 1865, 'form': 'paired rhyme AABB', 'source': url, 'fetched': date, 'licence': PD}, yes, no, DROP.get('de', ()))
+
+
+def zh():
+    url, date = meta('zh')
+    yes, no, poems = [], [], []
+    n = len([f for f in os.listdir(os.path.join(SRC, 'zh')) if f.endswith('.txt')])
+    for i in range(1, n + 1):
+        t = read(f'zh/p{i}.txt')
+        m = re.search(r'<poem>(.*?)</poem>', t, re.S)
+        title = re.search(r'\|\s*title\s*=\s*(.*)', t)
+        author = re.search(r'\|\s*author\s*=\s*(.*)', t)
+        if not m or not title or not author:
+            continue
+        body = re.sub(r'<ref[^>]*>.*?</ref>|<ref[^>]*/>', '', m.group(1), flags=re.S)
+        body = re.sub(r'\{\{另\|([^|{}]*)\|[^{}]*\}\}', r'\1', body)
+        body = re.sub(r'\{\{[^{}]*\}\}|<[^>]+>', '', body)
+        clauses = re.findall(r'[\u3400-\u9fff\U00020000-\U0002ffff]+', body)
+        # A quatrain: four lines, all of five characters or all of seven.
+        if len(clauses) != 4 or len(set(len(c) for c in clauses)) != 1 or len(clauses[0]) not in (5, 7):
+            continue
+        name = re.sub(r'\{\{另\|([^|{}]*)\|[^{}]*\}\}', r'\1', title.group(1))
+        name = re.sub(r'\{\{[^{}]*\}\}', '', name).strip()
+        poems.append({'title': name, 'author': author.group(1).strip(), 'source': read(f'zh/p{i}.url').split('\n')[0]})
+        yes.append([clauses[1], clauses[3]])
+        no.append([clauses[2], clauses[3]])
+    write('zh', {'title': f'唐詩三百首：五言絕句、七言絕句（{len(poems)} 首）', 'author': '孫洙 編；唐代諸家', 'year': 1763, 'form': 'jueju: the second and fourth lines rhyme; the third never does', 'source': url, 'fetched': date, 'licence': PD, 'note': 'The rhymes are those of Tang Chinese. The engine reads modern Mandarin, so a rhyme that sound change has undone is counted here as missed, not excused.', 'poems': poems}, yes, no)
+
+
+def es():
+    url, date = meta('es')
+    lines = [l for l in verse_lines(read('es.txt').replace('<br>', '\n'))]
+    start = next(i for i, l in enumerate(lines) if l.startswith('Hombres necios'))
+    yes, no = stanzas_fixed(lines[start:], 4, 17, [(0, 3), (1, 2)], [(0, 1), (2, 3)])
+    url2, _ = meta('es2_r')
+    song = rendered_lines('es2_r.txt')
+    at = lambda text: next(l for l in song if l.startswith(text))
+    # Canción del pirata: octavillas, where lines 2-3 and 6-7 rhyme and line 4 rhymes with line 8.
+    for a, b in [('Viento en popa', 'No corta el mar'), ('Mi velero bergantin', 'Del uno al otro confin'), ('Por su bravura', 'En todo mar conocido'),
+                 ('En la lona gime', 'Y alza en blando'), ('Olas de plata', 'Y allá á su frente'), ('Cantando alegre', 'Asia á un lado'),
+                 ('Hemos hecho', 'A despecho'), ('Del inglés', 'A mis piés'), ('Sus pendones', 'Cien naciones')]:
+        yes.append([at(a), re.sub(r'\[$', '', at(b))])
+    for a, b in [('Con diez cañones', 'Viento en popa'), ('No corta el mar', 'Mi velero bergantin'), ('La luna en el mar', 'En la lona gime'), ('Y alza en blando', 'Olas de plata')]:
+        no.append([at(a), at(b)])
+    write('es', {'title': 'Redondillas («Hombres necios que acusáis»); Canción del pirata, tres estrofas', 'author': 'Sor Juana Inés de la Cruz; José de Espronceda', 'year': 1689, 'form': 'redondillas ABBA; octavillas (lines 2-3 and 6-7 rhyme, line 4 with line 8)', 'source': url, 'fetched': date, 'licence': PD, 'poems': [{'title': 'Redondillas', 'author': 'Sor Juana Inés de la Cruz', 'source': url}, {'title': 'Canción del pirata', 'author': 'José de Espronceda', 'source': url2}]}, yes, no)
+
+
+def hi():
+    url, date = meta('hi_k')
+    lines = rendered_lines('hi_k.txt') + ['—'] + rendered_lines('hi_k2.txt')
+    yes, no, prev2 = [], [], None
+    for a, b in zip(lines, lines[1:]):
+        if len(yes) >= 48:
+            break
+        # A sakhi: two lines, the second closed by its number between double bars.
+        if re.search(r'॥\s*[०-९]+\s*॥\s*$', b) and re.search(r'[।॥]\s*$', a) and not re.search(r'[—=]', a + b):
+            l1 = re.sub(r'[।॥\s]+$', '', a)
+            l2 = re.sub(r'॥\s*[०-९]+\s*॥\s*$', '', b).rstrip('।॥ ')
+            yes.append([l1, l2])
+            if prev2:
+                no.append([prev2, l1])
+            prev2 = l2
+    write('hi', {'title': 'कबीर ग्रंथावली, साखी: (१) गुरुदेव कौ अंग, (२) सुमिरन कौ अंग (first 48 sakhis)', 'author': 'कबीर', 'year': 1500, 'form': 'sakhi (doha): the two lines of each couplet rhyme', 'source': url, 'fetched': date, 'licence': PD, 'note': 'Kabir wrote in the old mixed Hindi of the sants, not today\'s standard Hindi; the script and its rhyme are the same.'}, yes, no, DROP.get('hi', ()))
 
 
 def idn():
@@ -218,9 +281,9 @@ def pl():
 
 
 # "No" pairs that share a rhyme by chance, by their index in the list printed with SHOW=1.
-DROP = {'id': (28, 29, 39), 'ar': (17, 19)}
+DROP = {'id': (28, 29, 39), 'ar': (17, 19), 'hi': (1, 28)}
 
-JOBS = {'fr': fr, 'pl': pl, 'pt': pt, 'it': it, 'ru': ru, 'de': de, 'id': idn, 'vi': vi, 'th': th, 'ar': ar}
+JOBS = {'es': es, 'fr': fr, 'pl': pl, 'zh': zh, 'hi': hi, 'pt': pt, 'it': it, 'ru': ru, 'de': de, 'id': idn, 'vi': vi, 'th': th, 'ar': ar}
 for name, job in JOBS.items():
     if ONLY and name not in ONLY:
         continue

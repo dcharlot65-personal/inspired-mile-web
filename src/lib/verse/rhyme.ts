@@ -613,7 +613,10 @@ function arabicRhyme(a: string, b: string): boolean | null {
 function hindiKey(word: string): string[] | null {
   const aks = hindiAksharas(word);
   if (aks === null) return null;
-  const s = aks.map((a) => a.c + a.v).join('').replace(/I/g, 'i').replace(/U/g, 'u');
+  // Merged, as Hindi verse has always rhymed them: a breathed consonant with its plain partner
+  // ("मूठि / फूटि"), the retroflex n with n ("कान / बाण"), and the three s sounds ("महेस / उपदेश").
+  const plain: Record<string, string> = { 'ख': 'क', 'घ': 'ग', 'छ': 'च', 'झ': 'ज', 'ठ': 'ट', 'ढ': 'ड', 'थ': 'त', 'ध': 'द', 'फ': 'प', 'भ': 'ब', 'ण': 'न', 'श': 'स', 'ष': 'स' };
+  const s = aks.map((a) => (plain[a.c] ?? a.c) + a.v).join('').replace(/I/g, 'i').replace(/U/g, 'u');
   const isV = (c: string) => /[aAiueEoOr]/.test(c);
   const idx: number[] = [];
   for (let i = 0; i < s.length; i++) if (isV(s[i])) idx.push(i);
@@ -784,7 +787,7 @@ function thaiRhyme(a: string, b: string): boolean | null {
  */
 export function nearKey(lang: string, key: string): string {
   if (lang === 'fr') return key.replace(/ɑ/g, 'a').replace(/œ̃/g, 'ɛ̃');
-  if (lang === 'de') return key.replace(/ː/g, '').replace(/[yʏ]/g, 'i').replace(/[øœ]/g, 'e').replace(/ɔɪ/g, 'aɪ').replace(/ɪ/g, 'i').replace(/ʊ/g, 'u').replace(/ɛ/g, 'e').replace(/ɔ/g, 'o');
+  if (lang === 'de') return key.replace(/ː/g, '').replace(/ɔ[ʏɪ]/g, 'aɪ').replace(/[yʏ]/g, 'i').replace(/[øœ]/g, 'e').replace(/ɪ/g, 'i').replace(/ʊ/g, 'u').replace(/ɛ/g, 'e').replace(/ɔ/g, 'o');
   return key;
 }
 

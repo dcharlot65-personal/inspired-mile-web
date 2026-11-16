@@ -10,6 +10,7 @@
 //   fra_latn_broad.tsv       WikiPron                                    (fr)
 //   tha_thai_broad.tsv       WikiPron                                    (th)
 //   unihan/Unihan_Readings.txt, cedict.txt                               (zh)
+//   kaikki_pl.tsv, kor_hang_narrow.tsv, vie_latn_hanoi_narrow.tsv, JMdict_e   (test sets only)
 //
 // It writes one module per language and docs/language/measurements.json. The tables are data:
 // the same sources give the same bytes. A light script: it reads a few megabytes per language.
@@ -30,6 +31,22 @@ const OUT = 'src/lib/verse/sound/data';
 mkdirSync(OUT, { recursive: true });
 const MEASURES_FILE = 'docs/language/measurements.json';
 const measures = existsSync(MEASURES_FILE) ? JSON.parse(readFileSync(MEASURES_FILE, 'utf8')) : {};
+
+const SYLL_FILE = 'src/lib/verse/sound/corpus/syllables.json';
+const syllSets = existsSync(SYLL_FILE) ? JSON.parse(readFileSync(SYLL_FILE, 'utf8')) : {};
+
+/**
+ * Keep sixty words with their dictionary counts as that language's syllable test set: the
+ * dictionary's words of 2 to 14 characters in sorted order, taken at even steps, so the set
+ * is the same on every build and nobody chose its words.
+ */
+function syllableSet(lang, source, unit, pairs) {
+  const seen = new Set();
+  const all = pairs.filter(([w, n]) => [...w].length >= 2 && [...w].length <= 14 && n > 0 && !seen.has(w) && seen.add(w)).sort((a, b) => (a[0] < b[0] ? -1 : a[0] > b[0] ? 1 : 0));
+  const words = [];
+  for (let i = 0; i < 60 && all.length >= 60; i++) words.push(all[Math.floor(((i + 0.5) * all.length) / 60)]);
+  syllSets[lang] = { source, unit, words };
+}
 
 const b36 = (n) => Math.min(35, n).toString(36);
 const pct = (a, b) => (b ? Math.round((1000 * a) / b) / 10 : null);
@@ -171,6 +188,7 @@ function romance(lang) {
   const entries = new Map();
   const m = { words: 0, countAgree: 0, stressChecked: 0, stressAgree: 0, unaligned: 0 };
   const seen = new Set();
+  const cands = [];
   for (const [word, ipas] of kaikki(lang)) {
     const w = word.toLowerCase().normalize('NFC');
     if (seen.has(w) || !/^\p{L}+$/u.test(w)) continue;
@@ -183,6 +201,7 @@ function romance(lang) {
     m.words++;
     if (n === rule) m.countAgree++;
     const t = stressedTail(text, ipa);
+    if (t !== null) cands.push([w, n]);
     const starts = romanceStressByRule(w, lang) ?? [];
     let tailCode = '0';
     if (t === null) m.unaligned++;
@@ -199,12 +218,14 @@ function romance(lang) {
     if (countCode !== '0' || tailCode !== '0') entries.set(w, countCode + tailCode);
   }
   const size = writeTable(lang, entries, `${lang}: words whose syllable count or stress the spelling rule gets wrong. Source: Wiktionary (CC BY-SA 4.0) via kaikki.org.`);
+  syllableSet(lang, 'Wiktionary (syllabified IPA) via kaikki.org', 'syllables', cands);
   measures[lang] = { ...measures[lang], source: 'Wiktionary via kaikki.org', dictionaryWords: m.words, ruleSyllablesAgree: pct(m.countAgree, m.words), ruleStressAgree: pct(m.stressAgree, m.stressChecked), stressChecked: m.stressChecked, notAligned: m.unaligned, table: size };
 }
 
 // --- Indonesian, Hindi: exceptions to the syllable rule ---
 
 function countExceptions(lang, script, ruleFn) {
+  const cands = [];
   const entries = new Map();
   let words = 0;
   let agree = 0;
@@ -216,11 +237,13 @@ function countExceptions(lang, script, ruleFn) {
     if (rule === null) continue;
     seen.add(w);
     const n = syllablesOf(ipas[0].replace(/ᵊ/g, ''));
+    cands.push([w, n]);
     words++;
     if (n === rule) agree++;
     else if (n > 0 && n < 36) entries.set(w, b36(n));
   }
   const size = writeTable(lang, entries, `${lang}: words whose syllable count the spelling rule gets wrong. Source: Wiktionary (CC BY-SA 4.0) via kaikki.org.`);
+  syllableSet(lang, 'Wiktionary (IPA) via kaikki.org', 'syllables', cands);
   measures[lang] = { ...measures[lang], source: 'Wiktionary via kaikki.org', dictionaryWords: words, ruleSyllablesAgree: pct(agree, words), table: size };
 }
 
@@ -229,6 +252,7 @@ function countExceptions(lang, script, ruleFn) {
 function russian() {
   const RU_IPA_VOWELS = 'aæeɛiɨoɵuʉɐəɪʊᵻ';
   const stress = new Map();
+  const cands = [];
   let words = 0;
   let skipped = 0;
   const add = (w, k) => {
@@ -247,6 +271,7 @@ function russian() {
       if (at < 0) continue;
       const count = (s) => [...s].filter((c) => RU_IPA_VOWELS.includes(c)).length;
       if (count(ipa) !== vowels.length) continue;
+      cands.push([w, count(ipa)]);
       const k = count(ipa.slice(at));
       if (k < 1 || k > 9) continue;
       any = true;
@@ -256,6 +281,7 @@ function russian() {
     if (!any) skipped++;
   }
   const size = writeTable('ru', stress, 'ru: the stressed vowel of each word, counted from the end. Source: Wiktionary (CC BY-SA 4.0) via kaikki.org.');
+  syllableSet('ru', 'Wiktionary (IPA: one vowel sound a syllable) via kaikki.org', 'syllables', cands);
   measures.ru = { ...measures.ru, source: 'Wiktionary via kaikki.org', dictionaryWords: words, notAligned: skipped, table: size };
 }
 
@@ -283,6 +309,7 @@ function french() {
   const entries = new Map();
   for (const [w, e] of by) entries.set(w, b36(e.n) + (e.mute ? '+' : '') + e.keys.join('|'));
   const size = writeTable('fr', entries, 'fr: syllables as spoken, "+" for a closing mute e, and the rhyme (last vowel on). Source: Wiktionary (CC BY-SA 4.0) via WikiPron.');
+  syllableSet('fr', 'Wiktionary (IPA) via WikiPron; a word alone, so a closing mute e is silent', 'syllables', [...by].map(([w, e]) => [w, e.n]));
   measures.fr = { ...measures.fr, source: 'Wiktionary via WikiPron', dictionaryWords: by.size, table: size };
 }
 
@@ -325,6 +352,7 @@ function german() {
   let agree = 0;
   for (const [w, e] of by) if (syllablesByRule(w, 'de') === e.n) agree++;
   const size = writeTable('de', entries, 'de: syllables, and the rhyme (last stressed vowel on). Source: Wiktionary (CC BY-SA 4.0) via kaikki.org.');
+  syllableSet('de', 'Wiktionary (IPA) via kaikki.org', 'syllables', [...by].map(([w, e]) => [w, e.n]));
   measures.de = { ...measures.de, source: 'Wiktionary via kaikki.org', dictionaryWords: by.size, ruleSyllablesAgree: pct(agree, by.size), table: size };
 }
 
@@ -372,6 +400,7 @@ function thai() {
     }
   }
   const size = writeTable('th', entries, 'th: syllables, and the rime of the last syllable. Source: Wiktionary (CC BY-SA 4.0) via WikiPron.');
+  syllableSet('th', 'Wiktionary (IPA: one tone a syllable) via WikiPron', 'syllables', [...by].map(([w, e]) => [w, e.n]));
   measures.th = { ...measures.th, source: 'Wiktionary via WikiPron', dictionaryWords: by.size, spellingRuleRimeAgree: pct(ruleAll, by.size), oneSyllableWords: mono, spellingRuleRimeAgreeOneSyllable: pct(ruleMono, mono), table: size };
 }
 
@@ -420,17 +449,20 @@ function chinese() {
   for (const l of lines('unihan/Unihan_Readings.txt')) {
     if (l[0] === '#') continue;
     const [cp, field, value] = l.split('\t');
-    if (!['kMandarin', 'kTGHZ2013', 'kXHC1983'].includes(field)) continue;
+    if (!['kMandarin', 'kTGHZ2013', 'kXHC1983', 'kHanyuPinlu'].includes(field)) continue;
     const ch = String.fromCodePoint(parseInt(cp.slice(2), 16));
     const f = fields.get(ch) ?? {};
-    f[field] = value.split(' ').map((x) => x.replace(/^.*:/, ''));
+    f[field] = value.split(' ').map((x) => x.replace(/^.*:/, '').replace(/\(\d+\)$/, ''));
     fields.set(ch, f);
   }
   const entries = new Map();
   const groupsOf = new Map();
   let several = 0;
   for (const [ch, f] of fields) {
-    const readings = [...(f.kMandarin ?? []), ...(f.kTGHZ2013 ?? f.kXHC1983 ?? [])];
+    // The customary reading first. Then, for a common character, the readings counted in running
+    // speech (kHanyuPinlu); for any other, those of the standard dictionaries. A common character's
+    // rare dictionary readings are left out: 無 is wú, and its mó of 南無 let "雪 / 無" through.
+    const readings = [...(f.kMandarin ?? []), ...(f.kHanyuPinlu ?? f.kTGHZ2013 ?? f.kXHC1983 ?? [])];
     const codes = [...new Set(readings.map(pinyinCode).filter(Boolean))];
     if (!codes.length) continue;
     entries.set(ch, codes.join(''));
@@ -462,8 +494,66 @@ function chinese() {
     words++;
   }
   const size = writeTable('zh', entries, 'zh: rhyme group (a-p, 中华通韵) and tone of each reading of a character; for a word, of its last character. Sources: Unicode Unihan 18.0 (Unicode licence), CC-CEDICT (CC BY-SA 4.0).');
-  measures.zh = { ...measures.zh, source: 'Unihan kMandarin/kTGHZ2013/kXHC1983; CC-CEDICT', characters: chars, charactersWithSeveralRhymeGroups: several, wordsThatSettleAReading: words, table: size };
+  const zhc = [];
+  for (const l of lines('cedict.txt')) {
+    const m = /^(\S+) (\S+) \[([^\]]+)\]/.exec(l);
+    if (m && !/\br5\b|xx5/.test(m[3]) && [...m[2]].every((c) => /\p{Script=Han}/u.test(c))) zhc.push([m[2], m[3].split(' ').length]);
+  }
+  syllableSet('zh', 'CC-CEDICT (pinyin syllables)', 'syllables', zhc);
+  measures.zh = { ...measures.zh, source: 'Unihan kMandarin/kHanyuPinlu/kTGHZ2013/kXHC1983; CC-CEDICT', characters: chars, charactersWithSeveralRhymeGroups: several, wordsThatSettleAReading: words, table: size };
 }
+
+// --- Languages with no table: test sets and measurements only ---
+
+function polish() {
+  const cands = [];
+  let agree = 0;
+  const seen = new Set();
+  for (const [word, ipas] of kaikki('pl')) {
+    const w = word.toLowerCase().normalize('NFC');
+    if (seen.has(w) || !/^[a-ząćęłńóśźż]+$/.test(w)) continue;
+    seen.add(w);
+    const n = syllablesOf(ipas[0]);
+    cands.push([w, n]);
+    if (syllablesByRule(w, 'pl') === n) agree++;
+  }
+  syllableSet('pl', 'Wiktionary (syllabified IPA) via kaikki.org', 'syllables', cands);
+  measures.pl = { ...measures.pl, source: 'Wiktionary via kaikki.org', dictionaryWords: cands.length, ruleSyllablesAgree: pct(agree, cands.length) };
+}
+
+function wikipronCounts(lang, file, script, countPhones, unit, source) {
+  const cands = [];
+  let agree = 0;
+  for (const l of lines(file)) {
+    const [word, pron] = l.split('\t');
+    const w = word.normalize('NFC').toLowerCase();
+    if (!pron || !script.test(w)) continue;
+    const n = countPhones(pron.normalize('NFC').split(' '));
+    cands.push([w, n]);
+    const rule = w.split(' ').reduce((sum, part) => sum + (syllablesByRule(part, lang) ?? NaN), 0);
+    if (rule === n) agree++;
+  }
+  syllableSet(lang, source, unit, cands);
+  measures[lang] = { ...measures[lang], source, dictionaryWords: cands.length, ruleSyllablesAgree: pct(agree, cands.length) };
+}
+
+function japanese() {
+  // JMdict: common entries with one kanji spelling and one reading. The count is the reading's morae.
+  const xml = readFileSync(join(SRC, 'JMdict_e'), 'utf8');
+  const cands = [];
+  const small = 'ゃゅょぁぃぅぇぉゎャュョァィゥェォヮ';
+  for (const e of xml.split('<entry>').slice(1)) {
+    const kebs = [...e.matchAll(/<keb>([^<]+)<\/keb>/g)].map((m) => m[1]);
+    const rebs = [...e.matchAll(/<reb>([^<]+)<\/reb>/g)].map((m) => m[1]);
+    if (kebs.length !== 1 || rebs.length !== 1 || !/<ke_pri>(ichi1|news1)<\/ke_pri>/.test(e)) continue;
+    if (!/^[\p{Script=Han}]+$/u.test(kebs[0]) || !/^[ぁ-ゖァ-ヶー]+$/.test(rebs[0])) continue;
+    cands.push([kebs[0], [...rebs[0]].filter((c) => !small.includes(c)).length]);
+  }
+  syllableSet('ja', 'JMdict (EDRDG): the kana reading of common words written in kanji', 'morae', cands);
+  measures.ja = { ...measures.ja, source: 'JMdict (EDRDG)', dictionaryWords: cands.length };
+}
+
+const VOWEL_PHONE = (p) => isVowel(p.normalize('NFD')[0]);
 
 const JOBS = {
   es: () => romance('es'),
@@ -476,6 +566,11 @@ const JOBS = {
   de: german,
   th: thai,
   zh: chinese,
+  pl: polish,
+  ko: () => wikipronCounts('ko', 'kor_hang_narrow.tsv', /^[가-힣]+$/, (ps) => ps.filter(VOWEL_PHONE).length, 'syllables', 'Wiktionary (IPA: one vowel sound a syllable) via WikiPron'),
+  // Every syllable has a vowel letter: this leaves out initialisms ("CPU"), which are read letter by letter.
+  vi: () => wikipronCounts('vi', 'vie_latn_hanoi_narrow.tsv', /^(?:[\p{L}]*[aeiouyăâêôơưàáảãạằắẳẵặầấẩẫậèéẻẽẹềếểễệìíỉĩịòóỏõọồốổỗộờớởỡợùúủũụừứửữựỳýỷỹỵ][\p{L}]*)(?: [\p{L}]*[aeiouyăâêôơưàáảãạằắẳẵặầấẩẫậèéẻẽẹềếểễệìíỉĩịòóỏõọồốổỗộờớởỡợùúủũụừứửữựỳýỷỹỵ][\p{L}]*)*$/u, (ps) => ps.filter((x) => /^[˥˦˧˨˩ˀ]+$/.test(x)).length, 'syllables', 'Wiktionary (IPA: one tone a syllable) via WikiPron'),
+  ja: japanese,
 };
 
 for (const [lang, job] of Object.entries(JOBS)) {
@@ -484,3 +579,5 @@ for (const [lang, job] of Object.entries(JOBS)) {
 }
 mkdirSync('docs/language', { recursive: true });
 writeFileSync(MEASURES_FILE, JSON.stringify(measures, null, 2) + '\n');
+mkdirSync('src/lib/verse/sound/corpus', { recursive: true });
+writeFileSync(SYLL_FILE, JSON.stringify(syllSets, null, 1) + '\n');

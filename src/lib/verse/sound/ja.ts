@@ -61,16 +61,13 @@ async function dictFile(name: string): Promise<ArrayBuffer> {
   return gunzip(new Uint8Array(await res.arrayBuffer()));
 }
 
-/** Total bytes of the dictionary as fetched, for the size report. */
-export const JA_DICT_FILES = FILES;
-
-export function japaneseLoaded(): boolean {
-  return tokenizer !== null;
-}
-
 /** Build the analyser. Resolves true when it is ready; throws if a dictionary file cannot be had. */
 export async function loadJapanese(): Promise<boolean> {
-  if (tokenizer) return true;
+  if (tokenizer) {
+    const ready = tokenizer;
+    setJapaneseAnalyser((text) => ready.tokenize(text));
+    return true;
+  }
   const b: Record<string, ArrayBuffer> = {};
   await Promise.all(FILES.map(async (f) => (b[f] = await dictFile(f))));
   const dic = new DynamicDictionaries();

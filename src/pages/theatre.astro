@@ -60,6 +60,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     import { incrementStat } from '../lib/achievements';
     import { ROUNDS, starterDeck, type DuelDeck } from '../lib/verse/duel';
     import { hasPack, loadPack } from '../lib/verse/packs';
+    import { loadSound } from '../lib/verse/sound';
     import { DuelSession } from '../lib/verse/session';
     import { Theatre, type Action } from '../lib/xr/theatre';
     import { initI18n, onLocaleChange, t } from '../i18n';
@@ -163,7 +164,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       // The duel is fought in the language chosen on the battle page; its verse data loads first.
       const stored = localStorage.getItem('inspired-mile-duel-lang');
       const lang = stored && hasPack(stored) ? stored : 'en';
-      await loadPack(lang);
+      await Promise.all([loadPack(lang), loadSound(lang)]);
       session = new DuelSession({
         seed,
         lang,

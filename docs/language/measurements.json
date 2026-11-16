@@ -34,14 +34,14 @@
     }
   },
   "zh": {
-    "source": "Unihan kMandarin/kTGHZ2013/kXHC1983; CC-CEDICT",
+    "source": "Unihan kMandarin/kHanyuPinlu/kTGHZ2013/kXHC1983; CC-CEDICT",
     "characters": 44358,
-    "charactersWithSeveralRhymeGroups": 312,
-    "wordsThatSettleAReading": 11419,
+    "charactersWithSeveralRhymeGroups": 226,
+    "wordsThatSettleAReading": 4120,
     "table": {
-      "entries": 55777,
-      "bytes": 598571,
-      "gzipBytes": 191704
+      "entries": 48478,
+      "bytes": 511610,
+      "gzipBytes": 166162
     }
   },
   "ru": {
@@ -79,15 +79,34 @@
   },
   "pt": {
     "source": "Wiktionary via kaikki.org",
-    "dictionaryWords": 6453,
-    "ruleSyllablesAgree": 85.8,
-    "ruleStressAgree": 92.3,
-    "stressChecked": 5972,
-    "notAligned": 481,
+    "dictionaryWords": 37313,
+    "ruleSyllablesAgree": 87.8,
+    "ruleStressAgree": 96.1,
+    "stressChecked": 36193,
+    "notAligned": 1120,
     "table": {
-      "entries": 457,
-      "bytes": 5584,
-      "gzipBytes": 2074
+      "entries": 1418,
+      "bytes": 16996,
+      "gzipBytes": 5259
     }
+  },
+  "ko": {
+    "source": "Wiktionary (IPA: one vowel sound a syllable) via WikiPron",
+    "dictionaryWords": 45562,
+    "ruleSyllablesAgree": 99.9
+  },
+  "vi": {
+    "source": "Wiktionary (IPA: one tone a syllable) via WikiPron",
+    "dictionaryWords": 27553,
+    "ruleSyllablesAgree": 98.2
+  },
+  "ja": {
+    "source": "JMdict (EDRDG)",
+    "dictionaryWords": 8769
+  },
+  "pl": {
+    "source": "Wiktionary via kaikki.org",
+    "dictionaryWords": 84525,
+    "ruleSyllablesAgree": 98.8
   }
 }

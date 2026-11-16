@@ -13,6 +13,10 @@ export default defineConfig({
   integrations: [react()],
   vite: {
     plugins: [tailwindcss()],
+    // The Japanese analyser's source modules are CommonJS and are imported lazily (a Japanese
+    // duel only). Naming them here lets the dev server prepare them at start-up instead of
+    // reloading the page the first time one is asked for.
+    optimizeDeps: { include: ['kuromoji/src/Tokenizer.js', 'kuromoji/src/dict/DynamicDictionaries.js'] },
     server: {
       proxy: {
         '/api': { target: apiTarget, changeOrigin: false, ws: true },
