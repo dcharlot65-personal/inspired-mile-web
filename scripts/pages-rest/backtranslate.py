@@ -36,6 +36,10 @@ ap.add_argument('--model', default=os.environ.get('MADLAD_DIR', ''))
 ap.add_argument('--embedder', default=os.environ.get('MINILM_DIR', ''))
 ap.add_argument('--threads', type=int, default=int(os.environ.get('BT_THREADS', '6')))
 ap.add_argument('--batch', type=int, default=16)
+# mps (the Mac's GPU) did about 4 strings a second on the build host, the CPU about 0.2 when
+# the host is loaded (branch lang/qa-pipeline measured both; this script's first CPU run
+# matched). int8 is a CPU format; on the GPU the model's own precision is used.
+ap.add_argument('--device', default=os.environ.get('BT_DEVICE', 'cpu'))
 args = ap.parse_args()
 
 import ctranslate2
@@ -48,7 +52,7 @@ from sacrebleu.metrics import CHRF
 # AutoTokenizer, which warned of "an incorrect regex pattern ... incorrect tokenization"
 # for this model; that run was stopped and its output thrown away.
 sp = spm.SentencePieceProcessor(model_file=os.path.join(args.model, 'spiece.model'))
-translator = ctranslate2.Translator(args.model, device='cpu', compute_type='int8', inter_threads=1, intra_threads=args.threads)
+translator = ctranslate2.Translator(args.model, device=args.device, compute_type='int8' if args.device == 'cpu' else 'default', inter_threads=1, intra_threads=args.threads)
 embedder = SentenceTransformer(args.embedder, device='cpu')
 chrf = CHRF()
 

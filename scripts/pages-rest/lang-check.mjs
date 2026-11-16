@@ -192,6 +192,9 @@ export function spell(strings) {
 
 // --- Grammar ----------------------------------------------------------------
 
+/** Languages whose LanguageTool rules were shown to miss a bad sentence inside a longer text. */
+const UNBATCHED = new Set(['zh', 'ja']);
+
 async function languageTool(code, text) {
   const { LT_URL } = process.env;
   if (!LT_URL) throw new Error('set LT_URL (scripts/pages-rest/lang-host.sh does)');
@@ -201,7 +204,7 @@ async function languageTool(code, text) {
 }
 
 export async function grammar(strings) {
-  const out = { tool: 'LanguageTool (shared install), level picky; each language sent as one text, one string per paragraph', languages: {} };
+  const out = { tool: 'LanguageTool (shared install), level picky; each language sent as one text, one string per paragraph (zh and ja one string at a time)', languages: {} };
   for (const locale of LOCALES) {
     const code = LT[locale];
     if (!code) {
@@ -210,20 +213,29 @@ export async function grammar(strings) {
     }
     // One request per language, not per string: the host answers each request in a second or
     // more when it is loaded. Strings are paragraphs of their own (a blank line between), and
-    // each match is given back to the string its offset falls in.
+    // each match is given back to the string its offset falls in. Not for Chinese and Japanese:
+    // the self-test showed their rules miss a bad sentence inside such a text (2026-11-16), so
+    // they are asked one string at a time.
     const items = Object.entries(strings.locales[locale]);
-    const starts = [];
-    let text = '';
-    for (const [, item] of items) {
-      starts.push(text.length);
-      text += item.text.replace(/\n+/g, ' ') + '\n\n';
+    const located = [];
+    if (UNBATCHED.has(locale)) {
+      for (let i = 0; i < items.length; i++) for (const m of await languageTool(code, items[i][1].text)) located.push([i, m.offset, m]);
+    } else {
+      const starts = [];
+      let text = '';
+      for (const [, item] of items) {
+        starts.push(text.length);
+        text += item.text.replace(/\n+/g, ' ') + '\n\n';
+      }
+      for (const m of await languageTool(code, text)) {
+        let i = starts.length - 1;
+        while (i > 0 && starts[i] > m.offset) i--;
+        located.push([i, m.offset - starts[i], m]);
+      }
     }
     const hits = [];
-    for (const m of await languageTool(code, text)) {
-      let i = starts.length - 1;
-      while (i > 0 && starts[i] > m.offset) i--;
+    for (const [i, at, m] of located) {
       const [key, item] = items[i];
-      const at = m.offset - starts[i];
       if (at + m.length > item.text.length) continue; // a match across two strings is about neither
       const word = item.text.slice(at, at + m.length);
       // A complaint about a value that was filled in (a name, a file, a card number) is not about the translation.

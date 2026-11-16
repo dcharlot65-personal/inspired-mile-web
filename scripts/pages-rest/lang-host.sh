@@ -6,7 +6,7 @@
 #   selftest     prove Hunspell and LanguageTool flag a known-bad input in each language
 #   spell        Hunspell over every string                      -> $OUT/spell.json
 #   grammar      LanguageTool over every string                  -> $OUT/grammar.json
-#   bt-start     translate every string back to English (MADLAD-400), detached: it is long
+#   bt-start     translate every string back to English (MADLAD-400), detached (BT_DEVICE=mps: minutes, not hours)
 #   bt-status    is it running, and the tail of its log          -> $OUT/bt.json when done
 #
 # The tools are the ones branch lang/qa-pipeline installed on the host
@@ -30,7 +30,7 @@ STEP=${1:-}
 
 PIDS=()
 kill_tree() { local c; for c in $(pgrep -P "$1" 2>/dev/null); do kill_tree "$c"; done; kill "$1" 2>/dev/null || true; }
-cleanup() { for p in "${PIDS[@]:-}"; do [ -n "$p" ] && kill_tree "$p"; done; }
+cleanup() { for p in "${PIDS[@]:-}"; do if [ -n "$p" ]; then kill_tree "$p"; fi; done; }
 trap cleanup EXIT
 
 start_languagetool() {
@@ -44,7 +44,7 @@ start_languagetool() {
 }
 
 case "$STEP" in
-  selftest) start_languagetool; node scripts/pages-rest/lang-check.mjs selftest ;;
+  selftest) start_languagetool; node scripts/pages-rest/lang-check.mjs selftest 2>&1 | tee "$MINE/logs/selftest.log" ;;
   spell)
     node scripts/pages-rest/lang-check.mjs extract "$OUT/strings.json"
     node scripts/pages-rest/lang-check.mjs spell "$OUT/strings.json" "$OUT/spell.json"
@@ -61,7 +61,9 @@ case "$STEP" in
     cp scripts/pages-rest/backtranslate.py "$MINE/work/scripts/pages-rest/"
     cp "$OUT/strings-pairs.json" "$MINE/work/pairs.json"
     trap - EXIT
-    (cd "$MINE/work" && nohup nice -n 15 "$MEMGUARD" --max-gb 14 -- "$LANGQA_HOME/venv/bin/python" scripts/pages-rest/backtranslate.py --pairs pairs.json --out "$OUT/bt.json" ${BT_ARGS:-} >"$MINE/logs/bt.log" 2>&1 &)
+    # Every descriptor of the detached job goes to the log or /dev/null: a job that holds the
+    # ssh session's output keeps rb waiting until it ends (seen 2026-11-16).
+    (cd "$MINE/work" && exec nohup nice -n 15 "$MEMGUARD" --max-gb 14 -- "$LANGQA_HOME/venv/bin/python" scripts/pages-rest/backtranslate.py --pairs pairs.json --out "$OUT/bt.json" ${BT_ARGS:-} >"$MINE/logs/bt.log" 2>&1 </dev/null) >/dev/null 2>&1 </dev/null &
     echo "started; log $MINE/logs/bt.log, result $OUT/bt.json" ;;
   bt-status)
     pgrep -fl "scripts/pages-rest/backtranslate.py --pairs pairs.json" || echo "not running"
