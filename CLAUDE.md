@@ -84,7 +84,10 @@ left behind by a killed run is found by its port: `lsof -nP -iTCP:<port> -sTCP:L
   the UI hides email), `EMAIL_FROM`, `RATE_LIMIT_PER_MINUTE` (per client, default 600),
   `TRUSTED_PROXIES` (peers whose `CF-Connecting-IP` / `X-Forwarded-For` are believed; default
   `127.0.0.1,::1,10.10.10.1,100.64.224.0`; from any other peer the socket address is the
-  client, and the API logs a warning naming the peer it ignored),
+  client, and the API logs a warning naming the peer it ignored. **Check this on every
+  deploy:** the Caddy on 10.10.10.1 forwards to `100.64.224.0:3849` over the tailnet, so the
+  API most likely sees .1's own Tailscale address, which the default does not list; if it is
+  missing, every visitor shares one allowance. Add the address the warning names),
   `SIGNUP_GLOBAL_PER_HOUR` (default 300; hitting it logs `SIGN-UP CEILING HIT`),
   `UNUSED_ACCOUNT_PURGE_DAYS` (default 30, 0 = never: passkey-only accounts that never played
   are deleted, see `purge_unused_accounts` in `auth/passkeys.rs`).
