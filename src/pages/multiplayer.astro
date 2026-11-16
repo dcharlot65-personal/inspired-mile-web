@@ -167,13 +167,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       MultiplayerClient, auditRound, checkInvitation, createPrivateRoom, joinQueue, leaveQueue, planMatchesSeed, reportContent,
       type MatchStart, type RoundView, type ServerEvent, type WireSide,
     } from '../lib/multiplayer-client';
-    import { ONLINE_DECK_MAX, ONLINE_LANG, onlineCraft, onlineDeckProblem } from '../lib/multiplayer-rules';
+    import { ONLINE_DECK_MAX, ONLINE_LANG, onlineDeckProblem, previewCraft, settleVerse } from '../lib/multiplayer-rules';
     import { deviceForHouse, deviceInPlay, houseWhy } from '../lib/verse/devices';
     import { JUDGE_POOL, ROUNDS, starterDeck, type VerseScore } from '../lib/verse/duel';
     import { getForm } from '../lib/verse/forms';
     import { CRITERIA } from '../lib/verse/judge';
     import { loadPronunciation } from '../lib/verse/pronounce';
-    import { cleanVerse } from '../lib/verse/text';
 
     const $ = <T extends HTMLElement = HTMLElement>(id: string) => document.getElementById(id) as T;
     const el = (tag: string, cls = '', text = '') => {
@@ -559,11 +558,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       }
     }
 
-    /** The craft this verse would earn, by the same rules the server applies. */
+    /** The craft this verse would earn: the server's rules, on the text the server will score (settleVerse). */
     function preview(): VerseScore | null {
       if (!start || !charId) return null;
       const plan = start.rounds[round];
-      return onlineCraft(
+      return previewCraft(
         { index: plan.index, formId: plan.form_id, acrostic: plan.acrostic },
         { charId, deck: start.you.deck, verse: verseInput.value, previousOpponentVerse: previousOpponentVerse() },
       );
@@ -606,7 +605,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     }
 
     function updateSubmit() {
-      const ready = !!start && !over && !submitted && !!charId && cleanVerse(verseInput.value).length > 0 && !!client?.connected;
+      const ready = !!start && !over && !submitted && !!charId && settleVerse(verseInput.value).length > 0 && !!client?.connected;
       sendBtn.disabled = !ready;
       verseInput.disabled = submitted || over;
     }
@@ -615,9 +614,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
     sendBtn.addEventListener('click', () => {
       if (!client || !start || submitted || !charId) return;
-      // Sent as the rules will read it: cleaned, capped, and without half a character at the cut.
-      const cleaned = cleanVerse(verseInput.value);
-      const text = typeof cleaned.toWellFormed === 'function' ? cleaned.toWellFormed() : cleaned;
+      // Sent as the server will hold it and the preview scored it: settled (cleaned until
+      // cleaning changes nothing), capped, and without half a character at the cut.
+      const text = settleVerse(verseInput.value);
       if (!text) return;
       if (!client.submitVerse(round, charId, text)) {
         $('mp-hint').textContent = 'Not connected. Your verse will be kept here; try again in a moment.';

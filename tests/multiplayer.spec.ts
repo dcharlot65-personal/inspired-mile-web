@@ -1,6 +1,7 @@
 import { test, expect, type Browser, type BrowserContext, type Page } from '@playwright/test';
 import { E2E } from './e2e-env';
 import { auditRound, type MatchStart, type RoundView, type ServerEvent } from '../src/lib/multiplayer-client';
+import { onlineCraft, previewCraft, type OnlineRoundPlan, type OnlineSide } from '../src/lib/multiplayer-rules';
 import PRON from '../src/lib/verse/pron-en';
 import { installPronunciation } from '../src/lib/verse/pronounce';
 import { isStopWord, wordSpan, wordsOf } from '../src/lib/verse/text';
@@ -132,6 +133,22 @@ async function shown(page: Page, round: number) {
 
 const mirrored = (w: string | null) => (w === 'you' ? 'opponent' : w === 'opponent' ? 'you' : w);
 
+/**
+ * The verse with a zero-width space and a combining accent pasted in somewhere, at the first
+ * place where that makes the text as typed score differently from the text the page sends
+ * (cleanVerse composes the accent only on a second pass). A page that previewed the textarea
+ * itself, instead of the settled verse it sends, would show the wrong craft for it. Null if
+ * no such place exists in this verse under this form.
+ */
+function pastedVariant(plan: OnlineRoundPlan, side: Omit<OnlineSide, 'verse'>, verse: string): string | null {
+  const points = Array.from(verse);
+  for (let at = 1; at < points.length; at++) {
+    const pasted = [...points.slice(0, at), '\u200b\u0301', ...points.slice(at)].join('');
+    if (onlineCraft(plan, { ...side, verse: pasted }).craft !== previewCraft(plan, { ...side, verse: pasted }).craft) return pasted;
+  }
+  return null;
+}
+
 test.describe('Online duel', () => {
   test('two signed-in players play a whole match; both see the same server scores, equal to the preview', async ({ browser }) => {
     test.setTimeout(180000);
@@ -174,6 +191,7 @@ test.describe('Online duel', () => {
       const seenAnn: RoundView[] = [];
       const seenBob: RoundView[] = [];
       let anyCraft = 0;
+      let pastedChecked = false;
       let round = 0;
       for (; round < 3; round++) {
         const plan = startAnn.rounds[round];
@@ -193,6 +211,17 @@ test.describe('Online duel', () => {
         for (const [who, verse, char] of [[ann, annVerse, annChar], [bob, bobVerse, bobChar]] as const) {
           await expect(who.page.locator('#mp-send-btn')).toBeDisabled();
           await who.page.locator(`#mp-hand [data-char-id="${char}"]`).click();
+          if (who === ann && !pastedChecked) {
+            // Pasted text first: the live craft must be the server's, not the raw text's.
+            const rules: OnlineRoundPlan = { index: plan.index, formId: plan.form_id, acrostic: plan.acrostic };
+            const side = { charId: char, deck: startAnn.you.deck, previousOpponentVerse: round > 0 ? seenAnn[round - 1].opponent.verse : undefined };
+            const pasted = pastedVariant(rules, side, verse);
+            if (pasted) {
+              await who.page.locator('#mp-input').fill(pasted);
+              await expect(who.page.locator('#mp-live-craft'), `round ${round + 1}: the preview of a pasted verse`).toHaveText(String(previewCraft(rules, { ...side, verse: pasted }).craft));
+              pastedChecked = true;
+            }
+          }
           await who.page.locator('#mp-input').fill(verse);
           await expect(who.page.locator('#mp-live-checks li').first()).toHaveAttribute('data-met', /true|false/);
           previews.push(Number(await who.page.locator('#mp-live-craft').textContent()));
@@ -271,6 +300,10 @@ test.describe('Online duel', () => {
       // The verses Ann wrote keep their forms: a server and a preview that both answered
       // nought to everything would have agreed with each other all the way here.
       expect(anyCraft, "Ann's craft over the match").toBeGreaterThan(0);
+      // Whether a pasted verse was found that only a settled preview gets right. If cleanVerse
+      // ever becomes idempotent there is none, and that check had nothing to tell apart.
+      test.info().annotations.push({ type: 'pasted-preview', description: pastedChecked ? 'checked' : 'no pasted verse scored differently' });
+      console.log(`pasted-preview: ${pastedChecked ? 'checked' : 'none found'}`);
 
       // Nothing a browser sent was a score.
       for (const message of [...ann.sent, ...bob.sent]) {
