@@ -20,7 +20,7 @@ language model, whose opinion is only ever a proposal.
 | 5. Terminology | One word per game term per language; platform terms as the vendors publish them. | `npx vitest run`; `node scripts/lang/glossary.mjs` | yes |
 | 6. Form names | The name of each verse form is the one recorded in the glossary, with its source. | `npx vitest run` | yes |
 | 2. Grammar and spelling | LanguageTool and Hunspell over every string as a rendered sentence, each string on its own (joined into one text, LanguageTool's text-level rules judged a string by its neighbours). Thai is cut into words by ICU first, and a rejected piece counts only if no join with the pieces touching it is a known word. | build host: `run.sh grammar` | yes (exit 1 on an unlisted hit, or on an exception that no longer matches anything) |
-| 3. Meaning | Back-translation with MADLAD-400, scored against the English. | build host: `run.sh meaning`, then `node scripts/lang/meaning.mjs` | yes (exit 1 on an unreviewed flag or a string changed since it was scored) |
+| 3. Meaning | Back-translation with MADLAD-400 scored against the English (MiniLM cosine), and LaBSE scoring the translation against the English directly. Flagged when both are under 0.6; a control scores each against the wrong English sentence with the same rule. | build host: `run.sh meaning`, then `node scripts/lang/meaning.mjs` | yes (exit 1 on an unreviewed flag or a string changed since it was scored) |
 | 4. Second opinion | A different model, run locally, reviews each string as a native-speaking reviewer. | build host: `run.sh review` | no: it proposes, steps 2 and 3 decide |
 
 Steps 1, 5, 6 and 7 need nothing but Node and run with the unit tests, so they
@@ -63,7 +63,7 @@ and `llama-server` listen on 127.0.0.1, on ports of their own (`LT_PORT`,
 
 ## When a check complains
 
-- **Fix the string** if the complaint is right. `node scripts/lang/apply.mjs changes.json`
+- **Fix the string** if the complaint is right. A string fixed after a run is checked again on the next one: back-translation and review translate or ask again only what changed. `node scripts/lang/apply.mjs changes.json`
   writes new text for keys into the locale files.
 - **Record an exception** if it is not, in `docs/language/allow/`, with the reason:
   `mechanical.json` and `untranslated.json` (unit tests), `grammar.json` (a LanguageTool
