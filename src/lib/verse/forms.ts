@@ -14,7 +14,7 @@
 import { baseLang, unitKey } from './lang';
 import { msg, type Msg } from './msg';
 import { rhymeChecked, rhymeEnds, rhymes } from './rhyme';
-import { countsSyllables, edgeUnit, fold, graphemes, hiragana, lineLength, linesOf, syllablesInLine, wordsOf } from './text';
+import { countsSyllables, edgeUnit, fold, graphemes, hiragana, lineLength, linesOf, substance, syllableSpan, wordsOf } from './text';
 
 export { countsSyllables };
 
@@ -93,6 +93,15 @@ function syllableKey(key: string, lang: string): string {
   return b === 'zh' ? `${key}.char` : b === 'ja' ? `${key}.kana` : key;
 }
 
+/**
+ * A line of `target` syllables. `tolerance` widens the target by design ("about ten").
+ *
+ * In English a word can be said more than one way ("fire" in one syllable or
+ * two, "every" in two or three), so a line has a range of counts and keeps the
+ * form when the target is inside it. And a line with a word the pronunciation
+ * table does not have, whose count is a guess from its spelling, is allowed one
+ * either way: the detail then starts with "~".
+ */
 function syllables(index: number, target: number, tolerance: number, points: number): Requirement {
   return {
     id: `syllables-${index + 1}`,
@@ -100,10 +109,12 @@ function syllables(index: number, target: number, tolerance: number, points: num
     points,
     check: (lines, ctx) => {
       if (lines.length <= index) return { met: false, detail: MISSING };
-      const n = syllablesInLine(lines[index], ctx.lang);
+      const span = syllableSpan(lines[index], ctx.lang);
       // "?": this line holds something that cannot be counted (kanji in a Japanese haiku, a foreign script).
-      if (n === null) return { met: false, detail: '?' };
-      return { met: Math.abs(n - target) <= tolerance, detail: `${n}/${target}` };
+      if (span === null) return { met: false, detail: '?' };
+      const slack = Math.max(tolerance, span.guessed ? 1 : 0);
+      const count = span.min === span.max ? `${span.min}` : `${span.min}–${span.max}`;
+      return { met: target >= span.min - slack && target <= span.max + slack, detail: `${span.guessed ? '~' : ''}${count}/${target}` };
     },
   };
 }
@@ -356,14 +367,21 @@ export interface FormScore {
   earned: number;
   /** Every requirement met. */
   kept: boolean;
+  /** The text is too thin to be a verse (text.ts `substance`): no requirement is met and nothing is earned. */
+  thin?: boolean;
 }
 
 export function scoreForm(form: Form, verse: string, ctx: FormContext): FormScore {
   const lines = linesOf(verse);
+  // A form is kept by a verse, not by tokens laid out in its shape.
+  const body = substance(verse, ctx.lang);
+  const thin = lines.length > 0 && !body.ok;
   const checks: CheckResult[] = form.requirements.map((r) => {
-    const { met, detail } = lines.length === 0 ? { met: false, detail: '' } : r.check(lines, ctx);
+    // A thin verse shows why: how many different words it has against how many it needs.
+    const { met, detail } = lines.length === 0 ? { met: false, detail: '' } : thin ? { met: false, detail: `${body.distinct}/${body.needed}` } : r.check(lines, ctx);
     return { id: r.id, label: r.label(ctx), points: r.points, earned: met ? r.points : 0, met, detail };
   });
+  if (thin) return { formId: form.id, checks, earned: 0, kept: false, thin };
   const earned = checks.reduce((s, c) => s + c.earned, 0);
   return { formId: form.id, checks, earned, kept: checks.every((c) => c.met) };
 }

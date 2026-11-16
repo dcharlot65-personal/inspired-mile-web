@@ -97,7 +97,9 @@ export function transcriptToVerse(text: string): string {
   return text
     .replace(/\s+/g, ' ')
     .trim()
-    .split(/(?<=[.!?;:,،。！？、])\s+/)
+    // After Western and Arabic punctuation a line ends at the space that follows. Chinese and
+    // Japanese are written without spaces, so their marks end a line on their own.
+    .split(/(?<=[.!?;:,،])\s+|(?<=[。！？；，、])\s*/)
     .map((l) => l.trim())
     .filter(Boolean)
     .join('\n');

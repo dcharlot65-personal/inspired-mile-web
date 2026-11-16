@@ -4,21 +4,27 @@
  */
 import { CARD_CATALOG } from '../cards';
 import { answerScores, brainInfo, isBrainLoaded } from '../brain';
+import { invocationNames, signatureWords } from './devices';
 import type { JudgeSplit } from './duel';
 import {
   CRITERIA, GRADE_ANSWERS, combineGrades, combineMargins, compareMessages, expectedGrade, gradeMessages, rulesJudge, type Margins,
 } from './judge';
 import { languageName } from './opponent';
-import { contentWords, fold, wordSpan, wordsOf } from './text';
+import { STOP_WORDS, fold, letterCount } from './text';
 
-/** Words that count as literary allusion for the rule-based judge: names and quotation words. */
+/**
+ * Words that count as literary allusion for the rule-based judge: the names a
+ * character is called by, and the telling words of every card's line. Everyday
+ * words in those lines ("that", "this", "with", "have") are not allusions.
+ */
 let lexicon: Set<string> | null = null;
 export function allusionLexicon(): Set<string> {
   if (!lexicon) {
     lexicon = new Set<string>();
+    const names = invocationNames(CARD_CATALOG.filter((c) => c.type === 'Character').map((c) => c.name));
+    for (const n of names) if (!n.includes(' ') && letterCount(n) >= 4) lexicon.add(fold(n));
     for (const c of CARD_CATALOG) {
-      for (const w of wordsOf(c.name)) if (wordSpan(w) >= 4) lexicon.add(fold(w));
-      for (const w of contentWords(c.quote)) lexicon.add(fold(w));
+      for (const w of signatureWords(c)) if (letterCount(w) >= 4 && !STOP_WORDS.has(w)) lexicon.add(w);
     }
   }
   return lexicon;
@@ -39,7 +45,8 @@ async function grades(verse: string, lang: string): Promise<Margins> {
   return out;
 }
 
-export async function referee(playerVerse: string, opponentVerse: string, lang: string): Promise<JudgeSplit> {
+/** `previousPlayerVerse` is what the opponent's verse answers; the rule-based judge reads it for the comeback. */
+export async function referee(playerVerse: string, opponentVerse: string, lang: string, previousPlayerVerse?: string): Promise<JudgeSplit> {
   if (isBrainLoaded()) {
     try {
       if (brainInfo()?.judge === 'grade') {
@@ -52,5 +59,5 @@ export async function referee(playerVerse: string, opponentVerse: string, lang: 
       console.error('[referee] model judging failed; using the rules', err);
     }
   }
-  return rulesJudge(playerVerse, opponentVerse, lang, allusionLexicon());
+  return rulesJudge(playerVerse, opponentVerse, lang, allusionLexicon(), previousPlayerVerse);
 }

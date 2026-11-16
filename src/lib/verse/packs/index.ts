@@ -26,6 +26,12 @@ export interface LanguagePack {
   relics: Record<string, string[]>;
   /** Verses that keep each form, keyed by form id. Every form offered in the language has at least two. */
   written: Record<string, string[]>;
+  /**
+   * Verses held back for a cursed opponent, keyed by form id: short lines, short
+   * words, nothing said twice, so each holds Short Breath, Tongue-Tied and No
+   * Echoes. Optional: a language without them answers a curse from `written` alone.
+   */
+  spare?: Record<string, string[]>;
   /** Lines for acrostics, keyed by the unit each opens on. Every unit of every acrostic word has at least two. */
   acrosticLines: Record<string, string[]>;
 }
