@@ -1,0 +1,66 @@
+{
+ "source": "https://raw.githubusercontent.com/mozilla-l10n/firefox-l10n/bb61adaeeaefe5db067571d42d0eb7a1c2309b1a/<locale>/browser/browser/sync.ftl",
+ "english": "https://raw.githubusercontent.com/mozilla-firefox/firefox/main/browser/locales/en-US/browser/sync.ftl",
+ "commit": "bb61adaeeaefe5db067571d42d0eb7a1c2309b1a",
+ "licence": "Mozilla Public License 2.0 (Firefox localization)",
+ "fetched": "2026-11-16T18:40:05.210Z",
+ "locales": {
+  "es": "es-ES",
+  "fr": "fr",
+  "de": "de",
+  "it": "it",
+  "pt": "pt-BR",
+  "pl": "pl",
+  "ru": "ru",
+  "ar": "ar",
+  "hi": "hi-IN",
+  "zh": "zh-CN",
+  "ja": "ja",
+  "ko": "ko",
+  "vi": "vi",
+  "th": "th",
+  "id": "id"
+ },
+ "terms": {
+  "fxa-menu-sign-out": {
+   "text": {
+    "en": "Sign Out…",
+    "es": "Cerrar sesión…",
+    "fr": "Se déconnecter…",
+    "de": "Abmelden…",
+    "it": "Disconnetti…",
+    "pt": "Desconectar…",
+    "pl": "Wyloguj się…",
+    "ru": "Выйти…",
+    "ar": "اخرج…",
+    "hi": "साइन आउट…",
+    "zh": "退出登录…",
+    "ja": "ログアウト...",
+    "ko": "로그아웃…",
+    "vi": "Đăng xuất…",
+    "th": "ลงชื่อออก…",
+    "id": "Keluar…"
+   }
+  },
+  "fxa-signout-dialog2-button": {
+   "text": {
+    "en": "Sign out",
+    "es": "Cerrar sesión",
+    "fr": "Déconnexion",
+    "de": "Abmelden",
+    "it": "Disconnetti",
+    "pt": "Desconectar",
+    "pl": "Wyloguj się",
+    "ru": "Выйти",
+    "ar": "اخرج",
+    "hi": "साइन आउट करें",
+    "zh": "退出",
+    "ja": "ログアウト",
+    "ko": "로그아웃",
+    "vi": "Đăng xuất",
+    "th": "ลงชื่อออก",
+    "id": "Keluar"
+   }
+  }
+ }
+}

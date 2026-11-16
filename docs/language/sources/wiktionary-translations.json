@@ -1,0 +1,474 @@
+{
+ "source": "English Wiktionary, the Translations section of each page (wikitext through index.php?action=raw)",
+ "licence": "CC BY-SA 4.0 (Wiktionary text); one word per language quoted as evidence of a term",
+ "fetched": "2026-11-16",
+ "note": "A page with no translation table, or none for a language, is recorded as such. A word under another sense of the English word is kept with that sense, and is not evidence for the poetic one.",
+ "concepts": {
+  "couplet": {
+   "page": "couplet",
+   "url": "https://en.wiktionary.org/w/index.php?title=couplet&action=raw",
+   "exists": true,
+   "tables": [
+    {
+     "sense": "in poetry, a pair of lines with rhyming end words",
+     "langs": {
+      "zh": [
+       "對句"
+      ],
+      "fr": [
+       "couplet"
+      ],
+      "de": [
+       "Couplet"
+      ],
+      "id": [
+       "bait",
+       "kuplet",
+       "untai"
+      ],
+      "it": [
+       "distico"
+      ],
+      "ja": [
+       "対句"
+      ],
+      "ko": [
+       "대구(對句)"
+      ],
+      "pl": [
+       "dwuwiersz",
+       "dystych"
+      ],
+      "pt": [
+       "parelha"
+      ],
+      "ru": [
+       "куплет",
+       "двустишие"
+      ],
+      "vi": [
+       "đối",
+       "câu đối"
+      ]
+     }
+    }
+   ]
+  },
+  "distich": {
+   "page": "distich",
+   "url": "https://en.wiktionary.org/w/index.php?title=distich&action=raw",
+   "exists": true,
+   "tables": [
+    {
+     "sense": "a two line stanza making complete sense",
+     "langs": {
+      "fr": [
+       "distique"
+      ],
+      "de": [
+       "Distichon"
+      ],
+      "it": [
+       "distico"
+      ],
+      "pl": [
+       "dwuwiersz",
+       "dystych"
+      ],
+      "pt": [
+       "dístico"
+      ],
+      "ru": [
+       "двустишие"
+      ]
+     }
+    }
+   ]
+  },
+  "quatrain": {
+   "page": "quatrain",
+   "url": "https://en.wiktionary.org/w/index.php?title=quatrain&action=raw",
+   "exists": true,
+   "tables": [
+    {
+     "sense": "a stanza of four lines",
+     "langs": {
+      "ar": [
+       "رُبَاعِيّ"
+      ],
+      "zh": [
+       "四行詩",
+       "四行連"
+      ],
+      "fr": [
+       "quatrain"
+      ],
+      "de": [
+       "Quartett"
+      ],
+      "id": [
+       "caturlarik",
+       "pantun",
+       "sajak empat baris"
+      ],
+      "it": [
+       "quartina"
+      ],
+      "ja": [
+       "四行連",
+       "クウォートレイン",
+       "クワトレイン"
+      ],
+      "pl": [
+       "czterowiersz",
+       "tetrastych",
+       "kwartyna"
+      ],
+      "pt": [
+       "quarteto",
+       "quadra"
+      ],
+      "ru": [
+       "четверостишие",
+       "катрен"
+      ],
+      "es": [
+       "cuarteto",
+       "cuarteta",
+       "redondilla",
+       "serventesio"
+      ],
+      "vi": [
+       "thơ bốn câu"
+      ]
+     }
+    }
+   ]
+  },
+  "tercet": {
+   "page": "tercet",
+   "url": "https://en.wiktionary.org/w/index.php?title=tercet&action=raw",
+   "exists": true,
+   "tables": [
+    {
+     "sense": "three-line stanza in a poem",
+     "langs": {
+      "de": [
+       "Terzett",
+       "Terzine"
+      ],
+      "it": [
+       "terzina"
+      ],
+      "pl": [
+       "tercyna"
+      ],
+      "pt": [
+       "terceto"
+      ],
+      "ru": [
+       "терцет"
+      ],
+      "es": [
+       "terceto"
+      ]
+     }
+    }
+   ]
+  },
+  "anaphora": {
+   "page": "anaphora",
+   "url": "https://en.wiktionary.org/w/index.php?title=anaphora&action=raw",
+   "exists": true,
+   "tables": [
+    {
+     "sense": "rhetoric: repetition of a phrase used for emphasis",
+     "langs": {
+      "fr": [
+       "anaphore"
+      ],
+      "de": [
+       "Anapher"
+      ],
+      "id": [
+       "anafora"
+      ],
+      "it": [
+       "anafora"
+      ],
+      "pl": [
+       "anafora"
+      ],
+      "pt": [
+       "anáfora"
+      ],
+      "ru": [
+       "анафора"
+      ],
+      "es": [
+       "anáfora"
+      ]
+     }
+    },
+    {
+     "sense": "linguistics: an expression refers to a preceding expression",
+     "langs": {
+      "ar": [
+       "إِحَالَة"
+      ],
+      "fr": [
+       "anaphore"
+      ],
+      "de": [
+       "Anapher"
+      ],
+      "it": [
+       "anafora"
+      ],
+      "pl": [
+       "anafora"
+      ],
+      "pt": [
+       "anáfora"
+      ],
+      "ru": [
+       "анафора"
+      ],
+      "es": [
+       "anáfora"
+      ]
+     }
+    },
+    {
+     "sense": "Christianity: part of the Divine Liturgy",
+     "langs": {
+      "pl": [
+       "anafora"
+      ]
+     }
+    }
+   ]
+  },
+  "epistrophe": {
+   "page": "epistrophe",
+   "url": "https://en.wiktionary.org/w/index.php?title=epistrophe&action=raw",
+   "exists": true,
+   "tables": []
+  },
+  "acrostic": {
+   "page": "acrostic",
+   "url": "https://en.wiktionary.org/w/index.php?title=acrostic&action=raw",
+   "exists": true,
+   "tables": [
+    {
+     "sense": "poem or text in which certain letters spell out a name or message",
+     "langs": {
+      "zh": [
+       "藏頭詩"
+      ],
+      "fr": [
+       "acrostiche"
+      ],
+      "de": [
+       "Akrostichon"
+      ],
+      "it": [
+       "acrostico"
+      ],
+      "ko": [
+       "아크로스틱"
+      ],
+      "pl": [
+       "akrostych"
+      ],
+      "pt": [
+       "acróstico"
+      ],
+      "ru": [
+       "акростих"
+      ],
+      "es": [
+       "acróstico"
+      ]
+     }
+    },
+    {
+     "sense": "poem in Hebrew in which successive lines or verses start with consecutive letters of the alphabet",
+     "langs": {}
+    },
+    {
+     "sense": "kind of word puzzle",
+     "langs": {}
+    },
+    {
+     "sense": "of or pertaining to acrostics",
+     "langs": {}
+    }
+   ]
+  },
+  "alliteration": {
+   "page": "alliteration",
+   "url": "https://en.wiktionary.org/w/index.php?title=alliteration&action=raw",
+   "exists": true,
+   "tables": [
+    {
+     "sense": "the repetition of letters or sounds",
+     "langs": {
+      "zh": [
+       "頭韻",
+       "雙聲"
+      ],
+      "fr": [
+       "allitération"
+      ],
+      "de": [
+       "Alliteration"
+      ],
+      "hi": [
+       "अनुप्रास"
+      ],
+      "id": [
+       "aliterasi"
+      ],
+      "it": [
+       "allitterazione"
+      ],
+      "ja": [
+       "頭韻"
+      ],
+      "ko": [
+       "두운"
+      ],
+      "pl": [
+       "aliteracja"
+      ],
+      "pt": [
+       "aliteração"
+      ],
+      "ru": [
+       "аллитерация"
+      ],
+      "es": [
+       "aliteración"
+      ]
+     }
+    }
+   ]
+  },
+  "heroic-couplet": {
+   "page": "heroic couplet",
+   "url": "https://en.wiktionary.org/w/index.php?title=heroic_couplet&action=raw",
+   "exists": true,
+   "tables": []
+  },
+  "internal-rhyme": {
+   "page": "internal rhyme",
+   "url": "https://en.wiktionary.org/w/index.php?title=internal_rhyme&action=raw",
+   "exists": true,
+   "tables": []
+  },
+  "jueju": {
+   "page": "jueju",
+   "url": "https://en.wiktionary.org/w/index.php?title=jueju&action=raw",
+   "exists": false,
+   "tables": []
+  },
+  "luc-bat": {
+   "page": "lục bát",
+   "url": "https://en.wiktionary.org/w/index.php?title=l%E1%BB%A5c_b%C3%A1t&action=raw",
+   "exists": true,
+   "tables": []
+  },
+  "haiku": {
+   "page": "haiku",
+   "url": "https://en.wiktionary.org/w/index.php?title=haiku&action=raw",
+   "exists": true,
+   "tables": [
+    {
+     "sense": "Japanese poem of a specific form",
+     "langs": {
+      "ar": [
+       "هَايْكُو"
+      ],
+      "zh": [
+       "俳句"
+      ],
+      "fr": [
+       "haïku"
+      ],
+      "de": [
+       "Haiku"
+      ],
+      "hi": [
+       "हाइकु"
+      ],
+      "id": [
+       "haiku"
+      ],
+      "ja": [
+       "俳句"
+      ],
+      "ko": [
+       "하이쿠"
+      ],
+      "pl": [
+       "haiku"
+      ],
+      "pt": [
+       "haiku",
+       "haicai"
+      ],
+      "ru": [
+       "хайку",
+       "хокку"
+      ],
+      "es": [
+       "haiku",
+       "haikú"
+      ]
+     }
+    },
+    {
+     "sense": "poem of similar structure",
+     "langs": {
+      "ar": [
+       "هَايْكُو"
+      ],
+      "zh": [
+       "俳句"
+      ],
+      "fr": [
+       "haïku"
+      ],
+      "de": [
+       "Haiku"
+      ],
+      "hi": [
+       "हाइकु"
+      ],
+      "id": [
+       "haiku"
+      ],
+      "ja": [
+       "俳句"
+      ],
+      "ko": [
+       "하이쿠"
+      ],
+      "pl": [
+       "haiku"
+      ],
+      "pt": [
+       "haiku",
+       "haicai"
+      ],
+      "ru": [
+       "хайку",
+       "хокку"
+      ]
+     }
+    }
+   ]
+  }
+ }
+}

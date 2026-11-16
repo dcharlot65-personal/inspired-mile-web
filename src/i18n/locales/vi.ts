@@ -7,9 +7,9 @@ const vi: Record<string, string> = {
   // Thể thơ
   'form.couplet.name': 'Câu đối vần',
   'form.couplet.brief': 'Hai dòng hiệp vần với nhau.',
-  'form.quatrain-aabb.name': 'Tứ tuyệt vần liền',
+  'form.quatrain-aabb.name': 'Thơ bốn câu vần liền',
   'form.quatrain-aabb.brief': 'Bốn dòng: hai dòng đầu hiệp vần, hai dòng cuối hiệp vần.',
-  'form.quatrain-abab.name': 'Tứ tuyệt vần chéo',
+  'form.quatrain-abab.name': 'Thơ bốn câu vần chéo',
   'form.quatrain-abab.brief': 'Bốn dòng: dòng 1 vần với dòng 3, dòng 2 vần với dòng 4.',
   'form.tercet.name': 'Khổ ba dòng',
   'form.tercet.brief': 'Ba dòng; dòng đầu và dòng cuối hiệp vần.',

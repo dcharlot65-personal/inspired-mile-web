@@ -1751,6 +1751,94 @@
     }
    }
   },
+  "sign-out": {
+   "english": "sign out",
+   "match": "\\bsign(s|ed|ing)? out\\b",
+   "note": "Platform term. References: Mozilla's shipped Firefox translation of the account menu's Sign Out, and the heading of Google's own help page on signing out of Gmail, in each language. The Android strings fetched have no sign-out string.",
+   "langs": {
+    "es": {
+     "term": "cerrar sesión",
+     "accept": [
+      "cierra sesión"
+     ],
+     "source": "Mozilla Firefox (sources/mozilla-terms.json, fxa-menu-sign-out): Cerrar sesión…; Google Help, Gmail answer 8154 (sources/google-help.json): Cerrar la sesión de Gmail."
+    },
+    "fr": {
+     "term": "se déconnecter",
+     "accept": [
+      "déconnect"
+     ],
+     "source": "Mozilla Firefox (sources/mozilla-terms.json, fxa-menu-sign-out): Se déconnecter…; Google Help, Gmail answer 8154 (sources/google-help.json): Se déconnecter de Gmail."
+    },
+    "de": {
+     "term": "abmelden",
+     "accept": [
+      "melde dich ab"
+     ],
+     "source": "Mozilla Firefox (sources/mozilla-terms.json, fxa-menu-sign-out): Abmelden…; Google Help, Gmail answer 8154 (sources/google-help.json): Aus Gmail abmelden."
+    },
+    "it": {
+     "term": "esci",
+     "accept": [
+      "uscire"
+     ],
+     "source": "Mozilla Firefox (sources/mozilla-terms.json, fxa-menu-sign-out): Disconnetti…; Google Help, Gmail answer 8154 (sources/google-help.json): Uscire da Gmail. Mozilla writes Disconnetti; Google’s uscire (imperative Esci) is kept."
+    },
+    "pt": {
+     "term": "sair",
+     "accept": [
+      "saia"
+     ],
+     "source": "Mozilla Firefox (sources/mozilla-terms.json, fxa-menu-sign-out): Desconectar…; Google Help, Gmail answer 8154 (sources/google-help.json): Sair do Gmail. Mozilla writes Desconectar; Google’s Sair is kept."
+    },
+    "pl": {
+     "term": "wyloguj",
+     "source": "Mozilla Firefox (sources/mozilla-terms.json, fxa-menu-sign-out): Wyloguj się…; Google Help, Gmail answer 8154 (sources/google-help.json): Wylogowywanie się z Gmaila."
+    },
+    "ru": {
+     "term": "выйти",
+     "accept": [
+      "выйди"
+     ],
+     "source": "Mozilla Firefox (sources/mozilla-terms.json, fxa-menu-sign-out): Выйти…; Google Help, Gmail answer 8154 (sources/google-help.json): Как выйти из аккаунта Gmail."
+    },
+    "ar": {
+     "term": "تسجيل الخروج",
+     "accept": [
+      "الخروج"
+     ],
+     "source": "Mozilla Firefox (sources/mozilla-terms.json, fxa-menu-sign-out): اخرج…; Google Help, Gmail answer 8154 (sources/google-help.json): تسجيل الخروج من Gmail. Mozilla writes the imperative اخرج; Google’s تسجيل الخروج is kept."
+    },
+    "hi": {
+     "term": "साइन आउट",
+     "source": "Mozilla Firefox (sources/mozilla-terms.json, fxa-menu-sign-out): साइन आउट…; Google Help, Gmail answer 8154 (sources/google-help.json): Gmail से साइन आउट करना."
+    },
+    "zh": {
+     "term": "退出登录",
+     "source": "Mozilla Firefox (sources/mozilla-terms.json, fxa-menu-sign-out): 退出登录…; Google Help, Gmail answer 8154 (sources/google-help.json): 退出 Gmail."
+    },
+    "ja": {
+     "term": "サインアウト",
+     "source": "Mozilla Firefox (sources/mozilla-terms.json, fxa-menu-sign-out): ログアウト...; Google Help, Gmail answer 8154 (sources/google-help.json): Gmail からログアウトする. Both vendors here write ログアウト. The game keeps サインアウト to pair with サインイン, Apple’s word for sign in (sources/apple-passkeys.json). For a native reader."
+    },
+    "ko": {
+     "term": "로그아웃",
+     "source": "Mozilla Firefox (sources/mozilla-terms.json, fxa-menu-sign-out): 로그아웃…; Google Help, Gmail answer 8154 (sources/google-help.json): Gmail에서 로그아웃하기."
+    },
+    "vi": {
+     "term": "đăng xuất",
+     "source": "Mozilla Firefox (sources/mozilla-terms.json, fxa-menu-sign-out): Đăng xuất…; Google Help, Gmail answer 8154 (sources/google-help.json): Đăng xuất khỏi Gmail."
+    },
+    "th": {
+     "term": "ออกจากระบบ",
+     "source": "Mozilla Firefox (sources/mozilla-terms.json, fxa-menu-sign-out): ลงชื่อออก…; Google Help, Gmail answer 8154 (sources/google-help.json): ออกจากระบบ Gmail. Mozilla writes ลงชื่อออก; Google’s ออกจากระบบ is kept (it pairs with เข้าสู่ระบบ, the game’s sign in)."
+    },
+    "id": {
+     "term": "keluar",
+     "source": "Mozilla Firefox (sources/mozilla-terms.json, fxa-menu-sign-out): Keluar…; Google Help, Gmail answer 8154 (sources/google-help.json): Logout dari Gmail. Google’s help writes the loanword Logout; Mozilla’s Keluar is kept (it pairs with Masuk, the game’s sign in)."
+    }
+   }
+  },
   "microphone": {
    "english": "microphone",
    "match": "\\bmicrophone",
@@ -2020,11 +2108,11 @@
     },
     "pt": {
      "value": "Dístico",
-     "source": "pt Wikipedia article Dístico (Wikidata Q4779829)"
+     "source": "pt Wikipedia article Dístico (Wikidata Q4779829) (English Wiktionary's translation table gives parelha; the Wikipedia title is kept.)"
     },
     "pl": {
      "value": "Dystych",
-     "source": "Title of the pl Wikipedia article Dystych (Wikidata Q906442, distich); the couplet item itself has no Polish article."
+     "source": "Title of the pl Wikipedia article Dystych (Wikidata Q906442, distich); the couplet item itself has no Polish article. (English Wiktionary's translation table gives dwuwiersz; the Wikipedia title is kept.)"
     },
     "ru": {
      "value": "Двустишие",
@@ -2044,11 +2132,11 @@
     },
     "ja": {
      "value": "二行連",
-     "source": "ja Wikipedia article 二行連 (Wikidata Q4779829)"
+     "source": "ja Wikipedia article 二行連 (Wikidata Q4779829) (English Wiktionary's translation table gives 対句; the Wikipedia title is kept.)"
     },
     "ko": {
      "value": "쿠플레",
-     "source": "ko Wikipedia article 쿠플레 (Wikidata Q4779829)"
+     "source": "ko Wikipedia article 쿠플레 (Wikidata Q4779829) (English Wiktionary's translation table gives 대구(對句); the Wikipedia title is kept.)"
     },
     "vi": {
      "value": "Câu đối vần",
@@ -2060,7 +2148,7 @@
     },
     "id": {
      "value": "Kuplet",
-     "source": "Wikidata links the Indonesian article Bait (sastra); bait is the everyday Indonesian word for a stanza, so it was not adopted. Kuplet is not an article title. Not sourced: for a native reader."
+     "source": "English Wiktionary (docs/language/sources/wiktionary-translations.json), couplet, sense 'in poetry, a pair of lines with rhyming end words': Indonesian bait, kuplet, untai. Kuplet is taken because bait is also the everyday word for a stanza, which is what Wikidata's link (the id article Bait (sastra)) is about."
     }
    }
   },
@@ -2091,7 +2179,7 @@
     },
     "pl": {
      "value": "Czterowiersz parzysty",
-     "source": "Czterowiersz + the rhyme pattern. Czterowiersz: not an article title (the article is Tetrastych); the everyday Polish word, not sourced"
+     "source": "Czterowiersz + the rhyme pattern. Czterowiersz: English Wiktionary (docs/language/sources/wiktionary-translations.json), quatrain, 'a stanza of four lines': Polish czterowiersz (also tetrastych, kwartyna). The rhyme-pattern words are not sourced."
     },
     "ru": {
      "value": "Катрен с парной рифмой",
@@ -2118,8 +2206,8 @@
      "source": "4행시 + the rhyme pattern. 4행시: not sourced"
     },
     "vi": {
-     "value": "Tứ tuyệt vần liền",
-     "source": "Tứ tuyệt + the rhyme pattern. Tứ tuyệt: not sourced; tứ tuyệt usually names the Chinese-style quatrain: for a native reader"
+     "value": "Thơ bốn câu vần liền",
+     "source": "Thơ bốn câu + the rhyme pattern (vần liền, consecutive rhyme). Thơ bốn câu: English Wiktionary (docs/language/sources/wiktionary-translations.json), quatrain, 'a stanza of four lines': Vietnamese thơ bốn câu. Replaces Tứ tuyệt, which names the Chinese four-line jueju (the game's own Tuyệt cú form, whose brief calls it bài tứ tuyệt). The rhyme-pattern words are not sourced."
     },
     "th": {
      "value": "กลอนสี่สัมผัสคู่",
@@ -2158,7 +2246,7 @@
     },
     "pl": {
      "value": "Czterowiersz krzyżowy",
-     "source": "Czterowiersz + the rhyme pattern. Czterowiersz: not an article title (the article is Tetrastych); the everyday Polish word, not sourced"
+     "source": "Czterowiersz + the rhyme pattern. Czterowiersz: English Wiktionary (docs/language/sources/wiktionary-translations.json), quatrain, 'a stanza of four lines': Polish czterowiersz (also tetrastych, kwartyna). The rhyme-pattern words are not sourced."
     },
     "ru": {
      "value": "Катрен с перекрёстной рифмой",
@@ -2185,8 +2273,8 @@
      "source": "4행시 + the rhyme pattern. 4행시: not sourced"
     },
     "vi": {
-     "value": "Tứ tuyệt vần chéo",
-     "source": "Tứ tuyệt + the rhyme pattern. Tứ tuyệt: not sourced; tứ tuyệt usually names the Chinese-style quatrain: for a native reader"
+     "value": "Thơ bốn câu vần chéo",
+     "source": "Thơ bốn câu + the rhyme pattern (vần chéo, crossed rhyme). Thơ bốn câu: English Wiktionary (docs/language/sources/wiktionary-translations.json), quatrain, 'a stanza of four lines': Vietnamese thơ bốn câu. Replaces Tứ tuyệt, which names the Chinese four-line jueju (the game's own Tuyệt cú form). The rhyme-pattern words are not sourced."
     },
     "th": {
      "value": "กลอนสี่สัมผัสไขว้",
@@ -2225,7 +2313,7 @@
     },
     "pl": {
      "value": "Tercet",
-     "source": "pl Wikipedia article Tercet (literatura) (Wikidata Q1353779)"
+     "source": "pl Wikipedia article Tercet (literatura) (Wikidata Q1353779) (English Wiktionary's translation table gives tercyna; the Wikipedia title is kept.)"
     },
     "ru": {
      "value": "Терцет",
@@ -2328,7 +2416,7 @@
     },
     "id": {
      "value": "Anafora",
-     "source": "The id Wikipedia article Anafora (Q262575) is about the eucharistic prayer; the rhetorical term has no article. Not sourced."
+     "source": "English Wiktionary (docs/language/sources/wiktionary-translations.json), anaphora, sense 'rhetoric: repetition of a phrase used for emphasis': Indonesian anafora. (The id Wikipedia article Anafora, Q262575, is about the eucharistic prayer, so Wikidata gives no sitelink for the rhetorical sense.)"
     }
    }
   },
@@ -2375,7 +2463,7 @@
     },
     "zh": {
      "value": "藏头诗",
-     "source": "The common word. The zh article is 離合詩 (离合诗); Wikidata lists 離合藏頭詩 as an alias. 藏头诗 itself is not an article title: for a native reader."
+     "source": "English Wiktionary (docs/language/sources/wiktionary-translations.json), acrostic, sense 'poem or text in which certain letters spell out a name or message': Mandarin 藏頭詩, written 藏头诗 in simplified characters. The zh Wikipedia article is 離合詩 (离合诗), with 離合藏頭詩 among Wikidata's aliases."
     },
     "ja": {
      "value": "折句",
@@ -2383,7 +2471,7 @@
     },
     "ko": {
      "value": "이합체시",
-     "source": "ko Wikipedia article 이합체시 (Wikidata Q173287)"
+     "source": "ko Wikipedia article 이합체시 (Wikidata Q173287) (English Wiktionary's translation table gives 아크로스틱; the Wikipedia title is kept.)"
     },
     "vi": {
      "value": "Thơ khoán thủ",
