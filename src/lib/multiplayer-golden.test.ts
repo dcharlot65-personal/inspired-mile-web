@@ -28,20 +28,30 @@ import {
   ONLINE_LANG, onlineLexicon, onlineMatchWinner, onlinePlan, resolveOnlineRound, type OnlineRoundOutcome,
 } from './multiplayer-rules';
 import {
-  CURSES, CURSE_PENALTY, CURSE_PENALTY_CAP, DEVICES, FORBIDDEN_LETTERS, HOUSE_DEVICE, POTION_CURSE, POWER_WORDS_NEEDED,
-  POWER_WORD_BONUS, RELIC_WORDS, checkPowerWords, checkSignature,
+  CURSES, CURSE_PENALTY, CURSE_PENALTY_CAP, DEVICES, HOUSE_DEVICE, POTION_CURSE, POWER_WORDS_NEEDED, POWER_WORD_BONUS,
+  checkPowerWords, checkSignature,
 } from './verse/devices';
 import {
   JUDGE_POOL, ROUNDS, createDuel, matchWinner, resolveRound, rng, scoreVerse, type CastCurse, type LentWords,
   type PlayerMove, type RoundResult, type VerseScore,
 } from './verse/duel';
-import { ACROSTIC_WORDS, FORMS, FORM_POINTS, formsFor, getForm, scoreForm } from './verse/forms';
+import { FORM_POINTS, formsFor, getForm, scoreForm } from './verse/forms';
 import { CRITERIA, rulesJudge } from './verse/judge';
+import { rulesFor } from './verse/lang';
 import { writtenVerse } from './verse/opponent';
+import { getPack } from './verse/packs';
+import { rhymeEnds, rhymeKey, rhymes } from './verse/rhyme';
 import {
-  MAX_VERSE_CHARS, MAX_VERSE_LINES, cleanVerse, contentWords, firstWord, fold, initial, lastWord, linesOf, rhymeKey, rhymes,
-  syllablesInLine, syllablesInWord, wordsOf,
+  MAX_VERSE_CHARS, MAX_VERSE_LINES, cleanVerse, contentWords, edgeUnit, firstWord, fold, initial, lastWord, letterCount, lineLength,
+  linesOf, syllablesInLine, syllablesInWord, wordSpan, wordsOf,
 } from './verse/text';
+
+/** The server scores English only: the forms, words and letters an English duel draws on. */
+const FORMS = formsFor(ONLINE_LANG);
+const PACK = getPack(ONLINE_LANG);
+const ACROSTIC_WORDS = { en: PACK.acrostic };
+const RELIC_WORDS = { en: PACK.relics };
+const FORBIDDEN_LETTERS = { en: PACK.forbidden };
 
 const WRITE = process.env.WRITE_GOLDEN === '1';
 const ROOT = process.cwd();
@@ -358,6 +368,7 @@ function tablesJson(): string {
       requirements: f.requirements.map((q) => ({ id: q.id, points: q.points })),
     })),
     formsForEnglish: formsFor('en').map((f) => f.id),
+    rules: rulesFor('en'),
     devices: Object.keys(DEVICES),
     houseDevice: Object.fromEntries(Object.entries(HOUSE_DEVICE).map(([house, v]) => [house, v.device])),
     curses: Object.keys(CURSES),
@@ -384,19 +395,26 @@ function textJson(): string {
       lines: linesOf(clean).map(wf),
       words: wordsOf(clean),
       content: contentWords(clean),
-      first: linesOf(clean).map(firstWord),
-      last: linesOf(clean).map(lastWord),
+      first: linesOf(clean).map((l) => firstWord(l)),
+      last: linesOf(clean).map((l) => lastWord(l)),
+      lengths: linesOf(clean).map((l) => lineLength(l, 'en')),
+      edges: linesOf(clean).map((l) => [edgeUnit(l, 'en', 'first'), edgeUnit(l, 'en', 'last')]),
       syllables: linesOf(clean).map((l) => syllablesInLine(l, 'en')),
     };
   });
   const allWords = [...new Set([...VOCAB, ...CORPUS.flatMap((v) => wordsOf(v))])];
-  const words = allWords.map((w) => ({ w, fold: fold(w), syllables: syllablesInWord(w, 'en'), key: units(rhymeKey(w)), initial: initial(w) }));
+  const words = allWords.map((w) => ({ w, fold: fold(w), span: wordSpan(w), letters: letterCount(w), syllables: syllablesInWord(w, 'en'), key: units(rhymeKey(w)), initial: initial(w) }));
   const r = rng(77);
   const pairs: Array<[string, string]> = [];
   for (const fam of FAMILIES) for (const a of fam) for (const b of fam) pairs.push([a, b]);
   for (let i = 0; i < 3000; i++) pairs.push([pick(r, allWords), pick(r, allWords)]);
   const rhymePairs = pairs.map(([a, b]) => ({ a, b, rhymes: rhymes(a, b) }));
-  return block({ verses, words, rhymes: rhymePairs });
+  // The two words a pair of lines is compared on for rhyme.
+  const ends = Array.from({ length: 400 }, () => {
+    const [a, b] = [pick(r, CORPUS), pick(r, CORPUS)].map((v) => linesOf(cleanVerse(v))[0] ?? '');
+    return { a: wf(a), b: wf(b), ends: rhymeEnds(a, b, 'en') };
+  });
+  return block({ verses, words, rhymes: rhymePairs, ends });
 }
 
 function checksJson(): string {
@@ -412,7 +430,7 @@ function checksJson(): string {
   );
   // A riposte that throws a word back, for each hand-written verse with a long word in it.
   for (const theirs of HAND) {
-    const word = wordsOf(theirs).find((w) => [...w].length >= 5);
+    const word = wordsOf(theirs).find((w) => wordSpan(w) >= rulesFor('en').riposte);
     if (!word) continue;
     const verse = `Thy ${word.toUpperCase()} is nothing to me`;
     devices.push({ id: 'riposte', verse, opponentVerse: theirs, met: DEVICES.riposte.check(verse, { opponentVerse: theirs, names: CHARACTER_NAMES }).met });
@@ -479,7 +497,7 @@ function flatScore(s: VerseScore) {
     synergy: s.synergy,
     multiplier: s.multiplier,
     power: s.powerWords ? { used: s.powerWords.used, met: s.powerWords.met, bonus: s.powerWords.bonus } : null,
-    curse: s.curse ? { violations: s.curse.violations, penalty: s.curse.penalty } : null,
+    curse: s.curse ? { id: s.curse.id, violations: s.curse.violations, penalty: s.curse.penalty } : null,
     craft: s.craft,
   };
 }

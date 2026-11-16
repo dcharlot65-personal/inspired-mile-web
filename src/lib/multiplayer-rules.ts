@@ -23,9 +23,10 @@
  */
 import { CARD_CATALOG, getCardById } from './cards';
 import { ROUNDS, rng, scoreVerse, type VerseScore } from './verse/duel';
-import { ACROSTIC_WORDS, formsFor, getForm } from './verse/forms';
+import { formsFor, getForm } from './verse/forms';
 import { CRITERIA, rulesJudge } from './verse/judge';
-import { cleanVerse, contentWords, fold, wordsOf } from './verse/text';
+import { getPack } from './verse/packs';
+import { cleanVerse, contentWords, fold, wordSpan, wordsOf } from './verse/text';
 
 /** The one language online play is scored in, for now. */
 export const ONLINE_LANG = 'en';
@@ -58,7 +59,7 @@ function pick<T>(r: () => number, items: T[]): T {
 export function onlinePlan(seed: number): OnlineRoundPlan[] {
   const r = rng(seed);
   const forms = shuffled(r, formsFor(ONLINE_LANG)).slice(0, ROUNDS);
-  const words = ACROSTIC_WORDS[ONLINE_LANG];
+  const words = getPack(ONLINE_LANG).acrostic;
   return forms.map((f, index) => ({ index, formId: f.id, acrostic: f.id === 'acrostic' ? pick(r, words) : null }));
 }
 
@@ -72,7 +73,7 @@ export function onlineLexicon(): Set<string> {
   if (!lexicon) {
     lexicon = new Set<string>();
     for (const c of CARD_CATALOG) {
-      for (const w of wordsOf(c.name)) if ([...w].length >= 4) lexicon.add(fold(w));
+      for (const w of wordsOf(c.name)) if (wordSpan(w) >= 4) lexicon.add(fold(w));
       for (const w of contentWords(c.quote)) lexicon.add(fold(w));
     }
   }

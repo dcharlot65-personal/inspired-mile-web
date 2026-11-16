@@ -5,7 +5,9 @@ use std::sync::LazyLock;
 
 use serde::Serialize;
 
-use super::text::{first_word, initial, last_word, lines_of, rhymes, syllables_in_line, words_of};
+use super::text::{
+    first_unit, fold, hiragana, is_js_space, js_trim, line_length, lines_of, rhyme_ends, rhymes, syllables_in_line,
+};
 
 pub const FORM_POINTS: u32 = 20;
 
@@ -140,13 +142,37 @@ pub struct FormScore {
     pub kept: bool,
 }
 
+/// What each line of an acrostic must open with: one letter per line, or, for a phrase
+/// written with spaces, one word per line (`acrosticUnits`; the Hindi rule is not ported).
+pub fn acrostic_units(word: &str) -> Vec<String> {
+    let w = js_trim(word);
+    if w.is_empty() {
+        Vec::new()
+    } else if w.chars().any(is_js_space) {
+        w.split(is_js_space).filter(|part| !part.is_empty()).map(String::from).collect()
+    } else {
+        w.chars().map(String::from).collect()
+    }
+}
+
+/// The letters and marks a text opens with, folded, for matching an acrostic (`opening`).
+fn opening(text: &str) -> String {
+    static NOT_LETTER_OR_MARK: LazyLock<regex::Regex> =
+        LazyLock::new(|| regex::Regex::new(r"[^\p{L}\p{M}]").expect("opening pattern"));
+    NOT_LETTER_OR_MARK.replace_all(&hiragana(&fold(text)), "").into_owned()
+}
+
 fn check(rule: &Rule, lines: &[&str], ctx: &FormContext) -> bool {
     let acrostic = ctx.acrostic.unwrap_or("");
     match rule {
         Rule::Lines(n) => lines.len() == *n,
-        Rule::AcrosticLines => lines.len() == acrostic.chars().count(),
+        Rule::AcrosticLines => lines.len() == acrostic_units(acrostic).len(),
         Rule::RhymePair(a, b) => {
-            lines.len() > *a.max(b) && rhymes(&last_word(lines[*a]), &last_word(lines[*b]))
+            if lines.len() <= *a.max(b) {
+                return false;
+            }
+            let (wa, wb) = rhyme_ends(lines[*a], lines[*b]);
+            rhymes(&wa, &wb)
         }
         Rule::Syllables { index, target, tolerance } => {
             if lines.len() <= *index {
@@ -158,17 +184,22 @@ fn check(rule: &Rule, lines: &[&str], ctx: &FormContext) -> bool {
             }
         }
         Rule::SameOpening => {
-            let firsts: Vec<String> = lines.iter().map(|l| first_word(l)).collect();
+            let firsts: Vec<String> = lines.iter().map(|l| first_unit(l)).collect();
             lines.len() >= 2 && firsts.iter().all(|w| !w.is_empty() && *w == firsts[0])
         }
         Rule::Spells => {
-            // initial() of a single character: its first letter once folded.
-            let want: String = acrostic.chars().map(|c| initial(&c.to_string())).collect();
-            let got: String = lines.iter().map(|l| initial(&first_word(l))).collect();
-            !want.is_empty() && got == want
+            // Each line must open with its unit of the word; a unit that folds to no letter
+            // can be opened by nothing.
+            let units = acrostic_units(acrostic);
+            !units.is_empty()
+                && lines.len() == units.len()
+                && lines.iter().zip(&units).all(|(line, unit)| {
+                    let want = opening(unit);
+                    !want.is_empty() && opening(line).starts_with(&want)
+                })
         }
         Rule::Growing => {
-            let counts: Vec<usize> = lines.iter().map(|l| words_of(l).len()).collect();
+            let counts: Vec<usize> = lines.iter().map(|l| line_length(l)).collect();
             counts.len() >= 2 && counts.windows(2).all(|w| w[1] > w[0])
         }
     }

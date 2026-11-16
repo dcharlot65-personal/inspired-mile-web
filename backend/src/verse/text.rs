@@ -1,6 +1,11 @@
-//! Text measurement for verse: lines, words, syllables, rhyme.
+//! Text measurement for verse: lines, words, letters, syllables, rhyme.
 //!
-//! A port of `src/lib/verse/text.ts`. Where JavaScript and Rust differ, this file follows
+//! A port, for English, of `src/lib/verse/text.ts` and of the English rule in
+//! `src/lib/verse/rhyme.ts`. The TypeScript measures sixteen languages; the server scores
+//! English only, so every function here is the `lang = 'en'` path of its original, and the
+//! thresholds are those of `rulesFor('en')` in `lang.ts` ([`rules`]).
+//!
+//! Where JavaScript and Rust differ, this file follows
 //! JavaScript, because the browser's preview and the server's score must be the same number:
 //!
 //! - JavaScript strings are UTF-16. `cleanVerse` caps a verse at 600 UTF-16 units and
@@ -98,10 +103,31 @@ pub fn lines_of(verse: &str) -> Vec<&str> {
     verse.split('\n').map(js_trim).filter(|l| !l.is_empty()).collect()
 }
 
+/// What "a long word" or "a short line" means in English (`rulesFor('en')` in lang.ts).
+pub mod rules {
+    /// Letters that make a word strong enough to count for repetition and echoes.
+    pub const CONTENT: usize = 4;
+    /// Letters a word needs before throwing it back counts as a riposte.
+    pub const RIPOSTE: usize = 5;
+    /// Letters that make a word grand.
+    pub const GRAND: usize = 9;
+    /// Longest word the Tongue-Tied curse allows, in letters.
+    pub const SHORT_WORD: usize = 6;
+    /// Longest line Brevity allows, in words.
+    pub const BREVITY: usize = 6;
+    /// Longest line the Short Breath curse allows, in words.
+    pub const SHORT_LINE: usize = 5;
+}
+
 static WORD_RE: LazyLock<Regex> =
     LazyLock::new(|| Regex::new(r"[\p{L}\p{M}]+(?:['’\-][\p{L}\p{M}]+)*").expect("word pattern"));
+static LETTER_RE: LazyLock<Regex> = LazyLock::new(|| Regex::new(r"\p{L}").expect("letter pattern"));
 static MARK_RE: LazyLock<Regex> = LazyLock::new(|| Regex::new(r"\p{M}").expect("mark pattern"));
 static NON_LETTER_RE: LazyLock<Regex> = LazyLock::new(|| Regex::new(r"[^\p{L}]").expect("letter pattern"));
+/// An accent on a Latin or Greek letter: the letter is kept, the accents go.
+static ACCENTED_RE: LazyLock<Regex> =
+    LazyLock::new(|| Regex::new(r"([\p{Latin}\p{Greek}])[\x{300}-\x{36f}]+").expect("accent pattern"));
+static LATIN_WORD_RE: LazyLock<Regex> = LazyLock::new(|| Regex::new(r"^[\p{Latin}'’\-]+$").expect("latin pattern"));
 
 /// Lower-cased words of a line or verse. Apostrophes and hyphens stay inside a word.
 pub fn words_of(text: &str) -> Vec<String> {
@@ -116,30 +142,87 @@ pub fn first_word(line: &str) -> String {
     words_of(line).into_iter().next().unwrap_or_default()
 }
 
-/// Remove accents so "café" and "cafe" compare equal.
+/// Fold a word for comparison: lower case, without the accents of Latin and Greek letters
+/// or the optional vowel marks of Arabic, and with the spellings people type either way
+/// merged (œ and oe, æ and ae, ß and ss, Russian ё and е, the Devanagari nukta).
 pub fn fold(word: &str) -> String {
     let decomposed: String = word.nfd().collect();
-    MARK_RE.replace_all(&decomposed, "").to_lowercase()
+    let bare = ACCENTED_RE.replace_all(&decomposed, "$1");
+    let lowered = bare
+        .chars()
+        .filter(|c| !matches!(*c as u32, 0x640 | 0x64b..=0x65f | 0x670 | 0x93c))
+        .nfc()
+        .collect::<String>()
+        .to_lowercase();
+    let mut out = String::with_capacity(lowered.len());
+    for c in lowered.chars() {
+        match c {
+            'ё' => out.push('е'),
+            'œ' => out.push_str("oe"),
+            'æ' => out.push_str("ae"),
+            'ß' => out.push_str("ss"),
+            _ => out.push(c),
+        }
+    }
+    out
+}
+
+/// Katakana to hiragana, so the two kana spellings of a sound compare equal (`hiragana`).
+/// Only the acrostic reads through it in English, and only if a verse holds katakana.
+pub fn hiragana(text: &str) -> String {
+    text.chars()
+        .map(|c| if ('ァ'..='ヶ').contains(&c) { char::from_u32(c as u32 - 0x60).unwrap_or(c) } else { c })
+        .collect()
+}
+
+/// Letters in a word: marks, apostrophes and hyphens are not letters (`letterCount`).
+pub fn letter_count(word: &str) -> usize {
+    let mut buf = [0u8; 4];
+    word.nfc().filter(|c| LETTER_RE.is_match(c.encode_utf8(&mut buf))).count()
+}
+
+/// A word's length as the "of N letters or more" rules count it: every character but the
+/// marks that sit on a letter, an inner apostrophe or hyphen included (`wordSpan`).
+pub fn word_span(word: &str) -> usize {
+    let mut buf = [0u8; 4];
+    word.nfc().filter(|c| !MARK_RE.is_match(c.encode_utf8(&mut buf))).count()
+}
+
+/// A line's length in words (`lineLength` for a language that counts in words).
+pub fn line_length(line: &str) -> usize {
+    words_of(line).len()
+}
+
+/// What a line opens with, folded: its first word (`edgeUnit(line, 'en', 'first')`).
+pub fn first_unit(line: &str) -> String {
+    fold(&first_word(line))
+}
+
+/// What a line closes on, folded: its last word (`edgeUnit(line, 'en', 'last')`).
+pub fn last_unit(line: &str) -> String {
+    fold(&last_word(line))
 }
 
 fn is_vowel(b: u8) -> bool {
     b"aeiouy".contains(&b)
 }
 
-/// `/^[a-z'’\-]+$/` on the folded word.
+/// The word is written in the Latin script throughout (apostrophes and hyphens allowed).
 fn is_latin(word: &str) -> bool {
-    let f = fold(word);
-    !f.is_empty() && f.chars().all(|c| c.is_ascii_lowercase() || c == '\'' || c == '’' || c == '-')
+    LATIN_WORD_RE.is_match(word)
 }
 
-/// Syllables in a word, or `None` when the script is not one we can count.
+/// Syllables in an English word, or `None` when it is not in a script we can count.
+/// `lang` is kept in the signature because the TypeScript takes one; only English is ported.
 pub fn syllables_in_word(word: &str, lang: &str) -> Option<u32> {
+    debug_assert!(lang.to_lowercase().split('-').next() == Some("en"), "only English is ported");
+    if !is_latin(word) {
+        // A word with letters of another script cannot be counted; one with no letters has none.
+        return if letter_count(word) > 0 { None } else { Some(0) };
+    }
     let w: Vec<u8> = fold(word).bytes().filter(u8::is_ascii_lowercase).collect();
     if w.is_empty() {
-        return if is_latin(word) { Some(0) } else { None };
-    }
-    if !is_latin(word) {
-        return None;
+        return Some(0);
     }
     let mut groups: i32 = 0;
     let mut in_vowel = false;
@@ -150,7 +233,7 @@ pub fn syllables_in_word(word: &str, lang: &str) -> Option<u32> {
         }
         in_vowel = v;
     }
-    if lang.starts_with("en") {
+    {
         let n = w.len();
         // Silent final e ("stage"), but not "-le" after a consonant ("candle").
         if n > 2 && w.ends_with(b"e") && !w.ends_with(b"le") && !is_vowel(w[n - 2]) {
@@ -256,24 +339,20 @@ pub fn rhymes(a: &str, b: &str) -> bool {
     long.ends_with(short)
 }
 
-/// Letters in a word, as JavaScript's `[...word].length`.
-pub fn letters(word: &str) -> usize {
-    word.chars().count()
+/// The two words a pair of lines is compared on for rhyme: the last word of each
+/// (`rhymeEnds`; the Hindi rule for a repeated closing word is not ported).
+pub fn rhyme_ends(line_a: &str, line_b: &str) -> (String, String) {
+    (last_word(line_a), last_word(line_b))
 }
 
 /// Words that carry meaning: four letters or more.
 pub fn content_words(text: &str) -> Vec<String> {
-    words_of(text).into_iter().filter(|w| letters(w) >= 4).collect()
+    words_of(text).into_iter().filter(|w| word_span(w) >= rules::CONTENT).collect()
 }
 
 /// First letter of a word, folded; empty when folding leaves nothing.
 pub fn initial(word: &str) -> String {
     fold(word).chars().next().map(String::from).unwrap_or_default()
-}
-
-/// A word without its apostrophes and hyphens, measured in letters.
-pub fn bare_letters(word: &str) -> usize {
-    word.chars().filter(|c| !matches!(c, '\'' | '’' | '-')).count()
 }
 
 #[cfg(test)]

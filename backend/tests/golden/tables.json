@@ -173,6 +173,15 @@
   "haiku",
   "heroic-couplet"
  ],
+ "rules": {
+  "unit": "word",
+  "content": 4,
+  "riposte": 5,
+  "grand": 9,
+  "shortWord": 6,
+  "brevity": 6,
+  "shortLine": 5
+ },
  "devices": [
   "question",
   "exclaim",

@@ -23,8 +23,9 @@ use inspired_mile_api::verse::forms::{
 };
 use inspired_mile_api::verse::judge::{rules_judge, JudgeSplit, Verdict, CRITERIA, JUDGE_POOL, LEXICON};
 use inspired_mile_api::verse::text::{
-    clean_verse, content_words, first_word, fold, initial, last_word, lines_of, rhyme_key, rhymes, syllables_in_line,
-    syllables_in_word, words_of, MAX_VERSE_CHARS, MAX_VERSE_LINES,
+    clean_verse, content_words, first_unit, first_word, fold, initial, last_unit, last_word, letter_count, line_length,
+    lines_of, rhyme_ends, rhyme_key, rhymes, rules, syllables_in_line, syllables_in_word, word_span, words_of,
+    MAX_VERSE_CHARS, MAX_VERSE_LINES,
 };
 use serde_json::{json, Value};
 
@@ -114,7 +115,7 @@ fn score_json(s: &VerseScore) -> Value {
         "synergy": s.synergy,
         "multiplier_quarters": quarters(s.multiplier),
         "power": s.power_words.as_ref().map(|p| json!({ "used": p.used, "met": p.met, "bonus": p.bonus })),
-        "curse": s.curse.as_ref().map(|c| json!({ "violations": c.violations, "penalty": c.penalty })),
+        "curse": s.curse.as_ref().map(|c| json!({ "id": c.id, "violations": c.violations, "penalty": c.penalty })),
         "craft": s.craft,
     })
 }
@@ -237,6 +238,17 @@ fn tables_and_constants_match() {
     r.same(|| "acrostic words".into(), &ACROSTIC_WORDS.map(String::from).to_vec(), &strings(&t["acrosticWords"]));
     r.same(|| "forbidden letters".into(), &FORBIDDEN_LETTERS.map(String::from).to_vec(), &strings(&t["forbiddenLetters"]));
     r.same(|| "criteria".into(), &CRITERIA.map(String::from).to_vec(), &strings(&t["criteria"]));
+    // What "long" and "short" mean in English (rulesFor('en') in lang.ts).
+    let english_rules = json!({
+        "unit": "word",
+        "content": rules::CONTENT,
+        "riposte": rules::RIPOSTE,
+        "grand": rules::GRAND,
+        "shortWord": rules::SHORT_WORD,
+        "brevity": rules::BREVITY,
+        "shortLine": rules::SHORT_LINE,
+    });
+    r.same(|| "the English thresholds".into(), &english_rules, &t["rules"]);
 
     for sample in t["rng"].as_array().expect("rng samples") {
         let seed = sample["seed"].as_u64().expect("seed") as u32;
@@ -272,6 +284,12 @@ fn text_measurement_matches() {
         r.same(|| format!("contentWords({})", at()), &content_words(&clean), &strings(&v["content"]));
         r.same(|| format!("firstWord per line of {}", at()), &lines.iter().map(|l| first_word(l)).collect::<Vec<_>>(), &strings(&v["first"]));
         r.same(|| format!("lastWord per line of {}", at()), &lines.iter().map(|l| last_word(l)).collect::<Vec<_>>(), &strings(&v["last"]));
+        let lengths: Vec<u64> = lines.iter().map(|l| line_length(l) as u64).collect();
+        let want: Vec<u64> = v["lengths"].as_array().expect("lengths").iter().map(|n| n.as_u64().expect("length")).collect();
+        r.same(|| format!("lineLength per line of {}", at()), &lengths, &want);
+        let edges: Vec<Vec<String>> = lines.iter().map(|l| vec![first_unit(l), last_unit(l)]).collect();
+        let want: Vec<Vec<String>> = v["edges"].as_array().expect("edges").iter().map(strings).collect();
+        r.same(|| format!("edgeUnit first and last per line of {}", at()), &edges, &want);
         let syllables: Vec<Option<u64>> = lines.iter().map(|l| syllables_in_line(l, "en").map(u64::from)).collect();
         let want: Vec<Option<u64>> = v["syllables"].as_array().expect("syllables").iter().map(Value::as_u64).collect();
         r.same(|| format!("syllablesInLine per line of {}", at()), &syllables, &want);
@@ -279,6 +297,8 @@ fn text_measurement_matches() {
     for w in t["words"].as_array().expect("words") {
         let word = text(&w["w"]);
         r.same(|| format!("fold({word:?})"), &fold(word).as_str(), &text(&w["fold"]));
+        r.same(|| format!("wordSpan({word:?})"), &(word_span(word) as u64), &w["span"].as_u64().expect("span"));
+        r.same(|| format!("letterCount({word:?})"), &(letter_count(word) as u64), &w["letters"].as_u64().expect("letters"));
         r.same(|| format!("syllablesInWord({word:?})"), &syllables_in_word(word, "en").map(u64::from), &w["syllables"].as_u64());
         let key: Vec<u64> = rhyme_key(word).into_iter().map(u64::from).collect();
         let want: Vec<u64> = w["key"].as_array().expect("key").iter().map(|u| u.as_u64().expect("unit")).collect();
@@ -288,6 +308,11 @@ fn text_measurement_matches() {
     for p in t["rhymes"].as_array().expect("rhymes") {
         let (a, b) = (text(&p["a"]), text(&p["b"]));
         r.same(|| format!("rhymes({a:?}, {b:?})"), &rhymes(a, b), &p["rhymes"].as_bool().expect("rhymes"));
+    }
+    for p in t["ends"].as_array().expect("ends") {
+        let (a, b) = (text(&p["a"]), text(&p["b"]));
+        let (ea, eb) = rhyme_ends(a, b);
+        r.same(|| format!("rhymeEnds({}, {})", short(a), short(b)), &vec![ea, eb], &strings(&p["ends"]));
     }
     r.finish(8000);
 }

@@ -9,7 +9,8 @@ use regex::Regex;
 
 use super::cards::Card;
 use super::text::{
-    bare_letters, content_words, first_word, fold, initial, last_word, letters, lines_of, rhymes, words_of,
+    content_words, first_unit, fold, initial, last_unit, last_word, letter_count, line_length, lines_of, rhymes, rules,
+    word_span, words_of,
 };
 
 /// What a device check may look at besides the verse.
@@ -31,12 +32,12 @@ pub const DEVICE_IDS: [&str; 13] = [
 const JS_SPACE: &str = r"[\t\n\x0B\x0C\r \x{A0}\x{1680}\x{2000}-\x{200A}\x{2028}\x{2029}\x{202F}\x{205F}\x{3000}\x{FEFF}]";
 
 static QUESTION_END: LazyLock<Regex> =
-    LazyLock::new(|| Regex::new(&format!(r#"[?？؟]{JS_SPACE}*["'”’)]*$"#)).expect("question pattern"));
+    LazyLock::new(|| Regex::new(&format!(r#"[?？؟]{JS_SPACE}*["'”’)»」』]*$"#)).expect("question pattern"));
 static EXCLAIM_END: LazyLock<Regex> =
-    LazyLock::new(|| Regex::new(&format!(r#"[!！]{JS_SPACE}*["'”’)]*$"#)).expect("exclaim pattern"));
+    LazyLock::new(|| Regex::new(&format!(r#"[!！]{JS_SPACE}*["'”’)»」』]*$"#)).expect("exclaim pattern"));
 
 fn word_counts(verse: &str) -> Vec<usize> {
-    lines_of(verse).iter().map(|l| words_of(l).len()).collect()
+    lines_of(verse).iter().map(|l| line_length(l)).collect()
 }
 
 /// Whether a verse lands a device. `None` for a device id that does not exist.
@@ -47,7 +48,7 @@ pub fn check_device(id: &str, verse: &str, ctx: &DeviceContext) -> Option<bool> 
         "alliteration" => lines_of(verse).iter().any(|line| {
             let mut counts: HashMap<String, usize> = HashMap::new();
             for w in words_of(line) {
-                if letters(&w) < 3 {
+                if word_span(&w) < rules::CONTENT.min(3) {
                     continue;
                 }
                 *counts.entry(initial(&w)).or_default() += 1;
@@ -62,7 +63,7 @@ pub fn check_device(id: &str, verse: &str, ctx: &DeviceContext) -> Option<bool> 
             counts.values().any(|n| *n >= 3)
         }
         "internal-rhyme" => lines_of(verse).iter().any(|line| {
-            let ws: Vec<String> = words_of(line).into_iter().filter(|w| letters(w) >= 3).collect();
+            let ws: Vec<String> = words_of(line).into_iter().filter(|w| word_span(w) >= rules::CONTENT.min(3)).collect();
             (0..ws.len()).any(|i| (i + 1..ws.len()).any(|j| rhymes(&ws[i], &ws[j])))
         }),
         "riposte" => match ctx.opponent_verse {
@@ -70,7 +71,7 @@ pub fn check_device(id: &str, verse: &str, ctx: &DeviceContext) -> Option<bool> 
             None | Some("") => false,
             Some(theirs) => {
                 let theirs: HashSet<String> =
-                    words_of(theirs).iter().filter(|w| letters(w) >= 5).map(|w| fold(w)).collect();
+                    words_of(theirs).iter().filter(|w| word_span(w) >= rules::RIPOSTE).map(|w| fold(w)).collect();
                 // `!!hit`: a word that folds to nothing is not a hit even if it is "found".
                 words_of(verse).iter().map(|w| fold(w)).find(|w| theirs.contains(w)).is_some_and(|w| !w.is_empty())
             }
@@ -78,7 +79,7 @@ pub fn check_device(id: &str, verse: &str, ctx: &DeviceContext) -> Option<bool> 
         "brevity" => {
             let counts = word_counts(verse);
             let longest = counts.iter().copied().max().unwrap_or(0);
-            !counts.is_empty() && longest <= 6 && longest > 0
+            !counts.is_empty() && longest <= rules::BREVITY && longest > 0
         }
         "swell" => {
             let counts = word_counts(verse);
@@ -95,9 +96,11 @@ pub fn check_device(id: &str, verse: &str, ctx: &DeviceContext) -> Option<bool> 
             let ls = lines_of(verse);
             match (ls.first(), ls.last()) {
                 (Some(first), Some(last)) => {
-                    let a = fold(&first_word(first));
-                    let b = fold(&last_word(last));
-                    !a.is_empty() && a == b && words_of(verse).len() > 2
+                    let a = first_unit(first);
+                    let b = last_unit(last);
+                    // The TypeScript counts the verse's words with its line breaks read as spaces;
+                    // a word never runs across a line break, so the count is the same.
+                    !a.is_empty() && a == b && line_length(verse) > 2
                 }
                 _ => false,
             }
@@ -108,7 +111,7 @@ pub fn check_device(id: &str, verse: &str, ctx: &DeviceContext) -> Option<bool> 
             ctx.names.iter().find(|n| said.contains(&fold(n))).is_some_and(|n| !n.is_empty())
         }
         "grandeur" => {
-            let big: HashSet<String> = words_of(verse).into_iter().filter(|w| bare_letters(w) >= 9).collect();
+            let big: HashSet<String> = words_of(verse).into_iter().filter(|w| letter_count(w) >= rules::GRAND).collect();
             big.len() >= 2
         }
         "monorhyme" => {
@@ -193,12 +196,12 @@ pub fn curse_violations(id: &str, verse: &str, param: &str) -> Option<u32> {
             let letter = fold(param);
             words_of(verse).iter().filter(|w| fold(w).contains(&letter)).count()
         }
-        "short-words" => words_of(verse).iter().filter(|w| bare_letters(w) > 6).count(),
+        "short-words" => words_of(verse).iter().filter(|w| letter_count(w) > rules::SHORT_WORD).count(),
         "no-repeats" => {
             let mut seen = HashSet::new();
             content_words(verse).iter().map(|w| fold(w)).filter(|w| !seen.insert(w.clone())).count()
         }
-        "short-lines" => lines_of(verse).iter().filter(|l| words_of(l).len() > 5).count(),
+        "short-lines" => lines_of(verse).iter().filter(|l| line_length(l) > rules::SHORT_LINE).count(),
         _ => return None,
     };
     Some(n as u32)
@@ -245,9 +248,20 @@ pub struct PowerWords {
     pub met: bool,
 }
 
+/// Is a power word in the verse (`usesWord` for English)? English asks for the word itself;
+/// a power phrase of several words must appear as written.
+fn uses_word(power: &str, said: &[String]) -> bool {
+    let want: Vec<String> = words_of(power).iter().map(|w| fold(w)).collect();
+    match want.as_slice() {
+        [] => false,
+        [one] => said.contains(one),
+        many => format!(" {} ", said.join(" ")).contains(&format!(" {} ", many.join(" "))),
+    }
+}
+
 pub fn check_power_words(words: &[String], verse: &str) -> PowerWords {
-    let said: HashSet<String> = words_of(verse).iter().map(|w| fold(w)).collect();
-    let used: Vec<String> = words.iter().filter(|w| said.contains(&fold(w))).cloned().collect();
+    let said: Vec<String> = words_of(verse).iter().map(|w| fold(w)).collect();
+    let used: Vec<String> = words.iter().filter(|w| uses_word(w, &said)).cloned().collect();
     let met = used.len() >= POWER_WORDS_NEEDED;
     PowerWords { used, met }
 }

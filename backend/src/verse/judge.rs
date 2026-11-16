@@ -9,7 +9,8 @@ use serde::Serialize;
 
 use super::cards::CARDS;
 use super::text::{
-    clean_verse, content_words, fold, last_word, letters, lines_of, rhymes, syllables_in_line, words_of,
+    clean_verse, content_words, fold, line_length, lines_of, rhyme_ends, rhymes, rules, syllables_in_line, word_span,
+    words_of,
 };
 
 /// Points the judge shares between the two verses each round.
@@ -41,7 +42,7 @@ pub static LEXICON: LazyLock<HashSet<String>> = LazyLock::new(|| {
     let mut lexicon = HashSet::new();
     for card in CARDS.iter() {
         for w in words_of(&card.name) {
-            if letters(&w) >= 4 {
+            if word_span(&w) >= 4 {
                 lexicon.insert(fold(&w));
             }
         }
@@ -72,14 +73,15 @@ fn sound_score(verse: &str, lang: &str) -> f64 {
     let mut rhymed = 0u32;
     for i in 0..ls.len() {
         for j in i + 1..ls.len() {
-            if rhymes(&last_word(ls[i]), &last_word(ls[j])) {
+            let (a, b) = rhyme_ends(ls[i], ls[j]);
+            if rhymes(&a, &b) {
                 rhymed += 1;
             }
         }
     }
     let lens: Vec<f64> = ls
         .iter()
-        .map(|l| syllables_in_line(l, lang).map(|n| n as usize).unwrap_or_else(|| words_of(l).len()) as f64)
+        .map(|l| syllables_in_line(l, lang).map(|n| n as usize).unwrap_or_else(|| line_length(l)) as f64)
         .collect();
     let n = lens.len() as f64;
     let mean = lens.iter().fold(0.0, |a, b| a + b) / n;
@@ -87,14 +89,17 @@ fn sound_score(verse: &str, lang: &str) -> f64 {
     f64::from(rhymed) * 2.0 - spread / mean.max(1.0)
 }
 
+// The lexicon is the card catalogue's names and quotation words; the verse is read for
+// them as written, short words included.
 fn allusion_score(verse: &str, lexicon: &HashSet<String>) -> f64 {
-    content_words(verse).iter().map(|w| fold(w)).filter(|w| lexicon.contains(w)).collect::<HashSet<_>>().len() as f64
+    words_of(verse).iter().map(|w| fold(w)).filter(|w| lexicon.contains(w)).collect::<HashSet<_>>().len() as f64
 }
 
 fn wit_score(verse: &str, other: &str) -> f64 {
-    let theirs: HashSet<String> = words_of(other).iter().filter(|w| letters(w) >= 5).map(|w| fold(w)).collect();
+    let theirs: HashSet<String> =
+        words_of(other).iter().filter(|w| word_span(w) >= rules::RIPOSTE).map(|w| fold(w)).collect();
     let thrown = words_of(verse).iter().map(|w| fold(w)).filter(|w| theirs.contains(w)).collect::<HashSet<_>>().len();
-    let marks = verse.chars().filter(|c| matches!(c, '?' | '!' | '？' | '！')).count();
+    let marks = verse.chars().filter(|c| matches!(c, '?' | '!' | '？' | '！' | '؟')).count();
     (thrown * 2 + marks.min(2)) as f64
 }
 
