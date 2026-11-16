@@ -102,3 +102,108 @@ c.malvolio	ru	Мальволио	as in the Russian translations; the item has no
 b.alexandria	ru	Битва при Александрии	the item has no Russian label
 c.toby	ru	Сэр Тоби Белч
 h.field	ru	Ричард Филд
+c.macbeth	zh	麦克白	the character's label is 马克白; this is the play's label, so the quiz says one name
+c.mercutio	zh	茂丘西奥	the label is the English name in lower case; this is Zhu Shenghao's form
+c.titania	zh	提泰妮娅	the label is the English name in lower case; this is Zhu Shenghao's form
+c.hamlet	zh	哈姆雷特
+c.claudius	zh	克劳迪
+c.juliet	zh	朱丽叶
+c.paris	zh	帕里斯
+c.duncan	zh	邓肯
+c.bottom	zh	波顿
+c.flute	zh	弗鲁特
+c.rosguil#0	zh	罗生克兰
+c.rosguil#1	zh	盖登思邓
+h.shakespeare#1	zh	莎士比亚
+h.hamnet	zh	哈姆内特
+h.brutus	zh	布鲁图
+h.cassius	zh	卡西乌斯
+h.calpurnia	zh	卡尔普尼亚
+h.cornelia	zh	科涅莉亚
+h.octavia	zh	屋大薇
+l.navarre	zh	纳瓦拉
+l.sicily	zh	西西里
+p.errors	zh	错误的喜剧	the label is the English title in lower case; this is Zhu Shenghao's title
+p.henry6b	zh	亨利六世中篇	the label lacks the part; this is Zhu Shenghao's title
+l.elsinore	zh	厄耳锡诺	the label is the modern town's; this is Zhu Shenghao's form
+l.arden	zh	亚登森林	Zhu Shenghao's form; the label (雅顿) is of the real forest
+c.nurse	zh	奶妈	the label (护士) means a hospital nurse; the item's alias is 奶媽
+c.ariel	zh	爱丽儿	Zhu Shenghao's form; the item has no Chinese label
+c.banquo	zh	班柯	Zhu Shenghao's form
+c.viola	zh	薇奥拉	Zhu Shenghao's form; the item has no Chinese label
+c.goneril	zh	高纳里尔	Zhu Shenghao's form; the item has no Chinese label
+c.regan	zh	里根	Zhu Shenghao's form; the item has no Chinese label
+c.cassio	zh	凯西奥	Zhu Shenghao's form; the item has no Chinese label
+c.orlando	zh	奥兰多	Zhu Shenghao's form; the item has no Chinese label
+c.benedick	zh	培尼狄克	Zhu Shenghao's form; the item has no Chinese label
+c.petruchio	zh	彼特鲁乔	Zhu Shenghao's form; the item has no Chinese label
+c.lear	zh	李尔	as in the play's label 李尔王
+c.yorick	zh	郁利克	Zhu Shenghao's form; the item has no Chinese label
+h.field	zh	Richard Field
+c.romeo	zh	罗密欧
+h.shakespeare#1	ja	シェイクスピア
+h.hamnet	ja	ハムネット
+h.caesar	ja	ジュリアス・シーザー	the name the Japanese translations of the play use (and the play's label); the person's label is ガイウス・ユリウス・カエサル
+h.caesar#1	ja	シーザー	as above
+h.brutus	ja	ブルータス	the name the Japanese translations of the play use; the person's label is マルクス・ユニウス・ブルトゥス
+h.cassius	ja	キャシアス	the name the Japanese translations of the play use
+h.antony	ja	マーク・アントニー	the name the Japanese translations of the play use
+h.calpurnia	ja	カルパーニア	the name the Japanese translations of the play use
+h.porcia	ja	ポーシャ	the name the Japanese translations of the play use
+h.octavia	ja	オクテーヴィア	the name the Japanese translations use
+h.cornelia	ja	コルネリア
+c.juliet	ja	ジュリエット
+c.rosguil#0	ja	ローゼンクランツ
+c.rosguil#1	ja	ギルデンスターン
+c.bottom	ja	ボトム
+c.flute	ja	フルート
+c.duncan	ja	ダンカン
+l.elsinore	ja	エルシノア	the label is the modern town's; this is the form of the Japanese translations
+l.dunsinane	ja	ダンシネイン
+l.sicily	ja	シチリア
+l.navarre	ja	ナバラ
+h.field	ja	リチャード・フィールド
+h.shakespeare#1	ko	셰익스피어
+h.caesar	ko	줄리어스 시저	the name the Korean translations of the play use (and the play's label)
+h.caesar#1	ko	시저	as above
+h.brutus	ko	브루투스
+h.cassius	ko	카시우스
+h.casca	ko	카스카
+h.octavia	ko	옥타비아
+c.claudius	ko	클라우디우스
+c.laurence	ko	로렌스 신부	the label transliterates the English word Friar
+c.falstaff	ko	팔스타프
+l.navarre	ko	나바라
+l.elsinore	ko	엘시노어	the label is the modern town's
+h.field	ko	Richard Field
+c.romeo	ja	ロミオ
+c.mercutio	ja	マキューシオ	the form of the Japanese translations; the item has no Japanese label
+c.benvolio	ja	ベンヴォーリオ	the form of the Japanese translations; the item has no Japanese label
+c.paris	ja	パリス	the form of the Japanese translations; the item has no Japanese label
+c.ferdinand	ja	ファーディナンド	the form of the Japanese translations; the item has no Japanese label
+c.stephano	ja	ステファノー	the form of the Japanese translations; the item has no Japanese label
+c.alonso	ja	アロンゾー	the form of the Japanese translations; the item has no Japanese label
+c.miranda	ja	ミランダ	the form of the Japanese translations; the item has no Japanese label
+c.lear	ja	リア	as in the play's label リア王
+h.octavius	ja	オクテイヴィアス	the name the Japanese translations of the plays use
+c.toby	ja	サー・トービー・ベルチ
+c.paris	ko	패리스	the usual Korean form; the item has no Korean label
+c.puck	ko	퍽	the usual Korean form; the item has no Korean label
+c.caliban	ko	캘리번	the usual Korean form; the item has no Korean label
+c.cordelia	ko	코델리아	the usual Korean form; the item has no Korean label
+c.rosguil#0	ko	로젠크란츠	the usual Korean form; the item has no Korean label
+c.rosguil#1	ko	길든스턴	the usual Korean form; the item has no Korean label
+c.bottom	ko	보텀	the usual Korean form; the item has no Korean label
+c.edmund	ko	에드먼드	the usual Korean form; the item has no Korean label
+c.fortinbras	ko	포틴브라스	the usual Korean form; the item has no Korean label
+p.pericles	ko	페리클레스	the usual Korean title; the item has no Korean label
+p.cymbeline	ko	심벨린	the usual Korean title; the item has no Korean label
+p.faustus	ko	포스터스 박사	the usual Korean title; the item has no Korean label
+c.tuck	ko	터크 수사	the usual Korean form; the item has no Korean label
+c.alonso	ko	알론소	the usual Korean form; the item has no Korean label
+l.dunsinane	ko	던시네인	the usual Korean form; the item has no Korean label
+l.rose	ko	로즈 극장	the item has no Korean label
+l.swan	ko	스완 극장	the item has no Korean label
+b.alexandria	ko	알렉산드리아 전투	the item has no Korean label
+w.pyramus	ko	피라모스와 티스베	the item has no Korean label
+w.hero	ko	헤로와 레안드로스	the item has no Korean label
