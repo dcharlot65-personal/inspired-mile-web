@@ -107,7 +107,8 @@ elif cmd == 'take':
     sid, lang, title, rx = sys.argv[2:6]
     r = get(lang, title)
     hits = [l for l in r['lines'] if re.search(rx, l, re.I)]
-    if len(hits) != 1: raise SystemExit(f'{len(hits)} lines match; narrow the pattern:\n' + '\n'.join(hits[:6]))
+    # The same line said more than once (a refrain) is one quotation.
+    if len(set(hits)) != 1: raise SystemExit(f'{len(hits)} lines match; narrow the pattern:\n' + '\n'.join(hits[:6]))
     os.makedirs(os.path.join(HERE, 'challenges', 'evidence'), exist_ok=True)
     out = os.path.join(HERE, 'challenges', 'evidence', sid + '.txt')
     url = f'https://{lang}.wikisource.org/w/index.php?title={urllib.parse.quote(r["title"].replace(" ", "_"))}&oldid={r["revid"]}' + (f'&variant={r["variant"]}' if r.get('variant') else '')
