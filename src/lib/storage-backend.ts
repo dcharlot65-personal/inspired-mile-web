@@ -83,11 +83,8 @@ export function deactivateServerMode(): void {
 // Auth Convenience Methods
 // ---------------------------------------------------------------------------
 
-export async function googleSignInUser(idToken: string): Promise<UserResponse> {
-  const { user } = await api.googleSignIn(idToken);
-  activateServerMode(user);
-  return user;
-}
+// Signing in lives in ./passwordless.ts (passkeys and email codes); it calls
+// activateServerMode() once the server has set the session cookie.
 
 export async function logoutUser(): Promise<void> {
   try {
