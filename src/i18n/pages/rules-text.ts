@@ -47,7 +47,7 @@ export function cardRule(card: Card, lang: string): CardRule {
   const cost = tn('rules.cost', { n: INK_COST });
   if (card.type === 'Relic') {
     const words = relicWords(card.id, lang);
-    return { kind: 'relic', name: card.name, usesPerBattle: 1, lines: [tn('rules.relic', { words: list(words, 'unit'), n: POWER_WORDS_NEEDED, bonus: POWER_WORD_BONUS }), cost] };
+    return { kind: 'relic', name: card.name, usesPerBattle: 1, lines: [tn('rules.relic', { words: list(words), n: POWER_WORDS_NEEDED, bonus: POWER_WORD_BONUS }), cost] };
   }
   const id = POTION_CURSE[card.id];
   const name = curseName(id);

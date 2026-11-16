@@ -1,13 +1,13 @@
 import { describe, expect, it } from 'vitest';
 import { LOCALES, loadArea, loadMessages, setLocale, t, type Locale, type Messages } from './index';
 import { compareMessages } from './pages/check';
-import { isolated, quoted, quoteMarks, rich, tn } from './pages/runtime';
+import { isolated, list, quoted, quoteMarks, rich, tn } from './pages/runtime';
 import { cardRule, deckProblems, synergyLine } from './pages/rules-text';
 import { abilityBonus, achievementDescription, achievementName, cityName, cityRegion, elementName, houseName, initialOf, typeName } from './pages/terms';
 import { ACHIEVEMENTS, type PlayerStats } from '../lib/achievements';
 import { CARD_CATALOG } from '../lib/cards';
 import { CITY_CATALOG, type WorldCity } from '../lib/variants';
-import { loadPack } from '../lib/verse/packs';
+import { getPack, loadPack } from '../lib/verse/packs';
 import sourced from '../../docs/language/pages-core/sourced-names.json';
 import cldrQuotes from '../../docs/language/pages-core/cldr-quotes.json';
 
@@ -183,6 +183,25 @@ describe('quotation marks', () => {
   it('wrap the quoted text in <bdi> and escape it', () => {
     expect(quoted('To be, or not to be?', 'ja')).toBe('<span data-qo>「</span><bdi>To be, or not to be?</bdi><span data-qc>」</span>');
     expect(quoted('<i>x</i>', 'en')).toContain('<bdi>&lt;i&gt;x&lt;/i&gt;</bdi>');
+  });
+});
+
+describe('a list of words', () => {
+  it('keeps its words apart in every language, and a relic names its power words one by one', async () => {
+    for (const l of LOCALES) {
+      await setLocale(l as Locale, { persist: false });
+      await loadArea('rules');
+      await loadPack(l);
+      // Intl's "unit" lists put nothing between items in Chinese and Japanese: 髑髏冗談墓笑い塵.
+      const joined = list(['髑髏', '冗談', '墓']);
+      expect([l, joined.includes('髑髏冗談') || joined.includes('冗談墓')]).toEqual([l, false]);
+      const relic = CARD_CATALOG.find((c) => c.type === 'Relic')!;
+      const words = getPack(l).relics[relic.id] ?? [];
+      const line = cardRule(relic, l).lines[0];
+      expect([l, words.length >= 2]).toEqual([l, true]);
+      for (let i = 0; i + 1 < words.length; i++) expect([l, line.includes(words[i] + words[i + 1])]).toEqual([l, false]);
+    }
+    await setLocale('en', { persist: false });
   });
 });
 

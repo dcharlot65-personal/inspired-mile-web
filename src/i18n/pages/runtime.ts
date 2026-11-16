@@ -55,9 +55,13 @@ export function yearOnly(year: number): string {
   return new Intl.NumberFormat(locale(), { useGrouping: false }).format(year);
 }
 
-/** "a, b and c" as the language joins a list. */
-export function list(items: string[], type: 'conjunction' | 'unit' = 'conjunction'): string {
-  return new Intl.ListFormat(locale(), { style: type === 'unit' ? 'narrow' : 'long', type }).format(items);
+/**
+ * "a, b and c" as the language joins a list of words. Not Intl's "unit" lists: those are for
+ * measurements ("5 ft 2 in"), and Chinese and Japanese write them with nothing between the items,
+ * so a relic's power words showed as one run of characters (髑髏冗談墓笑い塵).
+ */
+export function list(items: string[]): string {
+  return new Intl.ListFormat(locale(), { style: 'long', type: 'conjunction' }).format(items);
 }
 
 /**
