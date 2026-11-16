@@ -25,6 +25,8 @@ const MUTATIONS = [
   ['src/i18n/pages/profile/pl.ts', null, 'COPY:src/i18n/pages/profile/en.ts', 'pl'],
   // An area that names a key outside itself.
   ['src/i18n/pages/rules/en.ts', "'rules.landIt':", "'nav.home':", 'nav.home'],
+  // German quotation marks swapped for French ones: no longer what CLDR records.
+  ['src/i18n/pages/runtime.ts', "de: ['„', '“']", "de: ['«', '»']", 'quotation marks'],
 ];
 
 let unnoticed = 0;

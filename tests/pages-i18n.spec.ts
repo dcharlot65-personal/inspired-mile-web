@@ -263,6 +263,9 @@ test.describe('Translated pages: what a script draws', () => {
     await expect(page.locator('#modal-content')).toContainText('Leiht Machtworte:');
     await page.evaluate(() => (window as any).__collection.openCardModal('PT-002'));
     await expect(page.locator('#modal-content')).toContainText('Verflucht die nächste Strophe deines Gegners');
+    // The quotation in German marks (CLDR), the line itself as the card data gives it.
+    await expect(page.locator('#modal-content [data-qo]')).toHaveText('„');
+    await expect(page.locator('#modal-content [data-qc]')).toHaveText('“');
     await page.evaluate(() => (window as any).__collection.closeModal());
 
     // A deck that cannot be saved says why in the language, and says it again in the next one.
@@ -275,6 +278,8 @@ test.describe('Translated pages: what a script draws', () => {
     await expect(page.locator('html')).toHaveAttribute('data-i18n-ready', 'fr');
     await expect(page.locator('#deck-errors')).toHaveText('Personnages dans un jeu : au moins 3.');
     await expect(page.locator('#deck-characters')).toContainText('Cliquez sur vos personnages pour les ajouter');
+    await expect(page.locator('.card-item[data-id="MO-001"] [data-qo]')).toHaveText('«');
+    await expect(page.locator('.card-item[data-id="MO-001"] [data-qc]')).toHaveText('»');
   });
 
   test('numbers, dates and regions come from the browser in the language', async ({ page }) => {

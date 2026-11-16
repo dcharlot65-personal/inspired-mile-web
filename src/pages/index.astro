@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import T from '../components/T.astro';
 import { loadArea, t } from '../i18n';
-import { num } from '../i18n/pages/runtime';
+import { num, quoted } from '../i18n/pages/runtime';
 import { elementName, houseName, rarityName } from '../i18n/pages/terms';
 import { CARD_CATALOG } from '../lib/cards';
 
@@ -108,9 +108,7 @@ const houseCount = new Set(CARD_CATALOG.filter((c) => c.type === 'Character').ma
                     <span class="px-2 py-0.5 text-xs rounded-sm bg-crimson-500/20 text-crimson-400 border border-crimson-500/30" data-i18n-html="card-terms.element.fire">{elementName(sonnetMan.element)}</span>
                     <T k="home.card.bard" class="px-2 py-0.5 text-xs rounded-sm bg-gold-500/20 text-gold-400 border border-gold-500/30" />
                   </div>
-                  <p class="text-xs text-obsidian-400 mt-3 italic leading-relaxed" data-card-text>
-                    "{sonnetMan.quote}"
-                  </p>
+                  <p class="text-xs text-obsidian-400 mt-3 italic leading-relaxed" data-card-text set:html={quoted(sonnetMan.quote, 'en')} />
                 </div>
 
                 <!-- Card footer -->

@@ -1,0 +1,104 @@
+{
+ "source": "https://raw.githubusercontent.com/unicode-org/cldr-json/49.0.0/cldr-json/cldr-misc-full/main/<lang>/delimiters.json",
+ "version": "49.0.0",
+ "licence": "Unicode License v3 (https://www.unicode.org/license.txt)",
+ "fetched": "2026-11-16T18:45:13.368Z",
+ "languages": {
+  "en": {
+   "quotationStart": "“",
+   "quotationEnd": "”",
+   "alternateQuotationStart": "‘",
+   "alternateQuotationEnd": "’"
+  },
+  "es": {
+   "quotationStart": "“",
+   "quotationEnd": "”",
+   "alternateQuotationStart": "‘",
+   "alternateQuotationEnd": "’"
+  },
+  "fr": {
+   "quotationStart": "«",
+   "quotationEnd": "»",
+   "alternateQuotationStart": "«",
+   "alternateQuotationEnd": "»"
+  },
+  "de": {
+   "quotationStart": "„",
+   "quotationEnd": "“",
+   "alternateQuotationStart": "‚",
+   "alternateQuotationEnd": "‘"
+  },
+  "it": {
+   "quotationStart": "«",
+   "quotationEnd": "»",
+   "alternateQuotationStart": "“",
+   "alternateQuotationEnd": "”"
+  },
+  "pt": {
+   "quotationStart": "“",
+   "quotationEnd": "”",
+   "alternateQuotationStart": "‘",
+   "alternateQuotationEnd": "’"
+  },
+  "pl": {
+   "quotationStart": "„",
+   "quotationEnd": "”",
+   "alternateQuotationStart": "«",
+   "alternateQuotationEnd": "»"
+  },
+  "ru": {
+   "quotationStart": "«",
+   "quotationEnd": "»",
+   "alternateQuotationStart": "„",
+   "alternateQuotationEnd": "“"
+  },
+  "ar": {
+   "quotationStart": "”",
+   "quotationEnd": "“",
+   "alternateQuotationStart": "’",
+   "alternateQuotationEnd": "‘"
+  },
+  "hi": {
+   "quotationStart": "“",
+   "quotationEnd": "”",
+   "alternateQuotationStart": "‘",
+   "alternateQuotationEnd": "’"
+  },
+  "zh": {
+   "quotationStart": "“",
+   "quotationEnd": "”",
+   "alternateQuotationStart": "‘",
+   "alternateQuotationEnd": "’"
+  },
+  "ja": {
+   "quotationStart": "「",
+   "quotationEnd": "」",
+   "alternateQuotationStart": "『",
+   "alternateQuotationEnd": "』"
+  },
+  "ko": {
+   "quotationStart": "“",
+   "quotationEnd": "”",
+   "alternateQuotationStart": "‘",
+   "alternateQuotationEnd": "’"
+  },
+  "vi": {
+   "quotationStart": "“",
+   "quotationEnd": "”",
+   "alternateQuotationStart": "‘",
+   "alternateQuotationEnd": "’"
+  },
+  "th": {
+   "quotationStart": "“",
+   "quotationEnd": "”",
+   "alternateQuotationStart": "‘",
+   "alternateQuotationEnd": "’"
+  },
+  "id": {
+   "quotationStart": "“",
+   "quotationEnd": "”",
+   "alternateQuotationStart": "‘",
+   "alternateQuotationEnd": "’"
+  }
+ }
+}

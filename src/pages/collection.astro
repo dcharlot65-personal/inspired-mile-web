@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import T from '../components/T.astro';
 import { loadArea, t } from '../i18n';
-import { num } from '../i18n/pages/runtime';
+import { num, quoted } from '../i18n/pages/runtime';
 import { elementName, houseName, rarityName, typesName } from '../i18n/pages/terms';
 import { DECK_RULES } from '../lib/battle-rules';
 import { CARD_CATALOG, RARITY_COLORS } from '../lib/cards';
@@ -114,7 +114,7 @@ const count = 'text-gold-400 font-mono';
                 </div>
               )}
 
-              <p class="text-xs text-obsidian-400 italic leading-relaxed line-clamp-2" data-card-text>"{card.quote}"</p>
+              <p class="text-xs text-obsidian-400 italic leading-relaxed line-clamp-2" data-card-text set:html={quoted(card.quote, 'en')} />
 
               <!-- Duplicate count -->
               <div class="dup-badge hidden mt-2">
@@ -254,7 +254,7 @@ const count = 'text-gold-400 font-mono';
     import { ACHIEVEMENTS, getAchievementProgress } from '../lib/achievements';
     import { loadPack } from '../lib/verse/packs';
     import { locale, t } from '../i18n';
-    import { day, escapeHtml as esc, initPage, list, num, setVars, tn } from '../i18n/pages/runtime';
+    import { day, escapeHtml as esc, initPage, list, num, quoted, setVars, tn } from '../i18n/pages/runtime';
     import { cardRule, deckProblems, synergyLine } from '../i18n/pages/rules-text';
     import {
       abilityBonus, achievementDescription, achievementName, applyTerms, cityName, cityRegion,
@@ -528,7 +528,7 @@ const count = 'text-gold-400 font-mono';
           ${statsHtml}
           ${ruleHtml}
           ${viewerHtml}
-          <p class="mt-4 text-sm text-obsidian-400 italic" data-card-text>"${esc(card.quote)}"</p>
+          <p class="mt-4 text-sm text-obsidian-400 italic" data-card-text>${quoted(card.quote)}</p>
           <p class="mt-2 text-xs text-obsidian-500 leading-relaxed" data-card-text>${esc(card.scene)}</p>
           <button class="mt-4 btn-secondary text-xs w-full" id="modal-add-to-deck">${esc(t('collection.modal.add'))}</button>
         </div>`;

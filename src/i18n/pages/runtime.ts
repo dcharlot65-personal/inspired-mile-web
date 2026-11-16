@@ -21,6 +21,7 @@
  *                          data-var-ids='{"n":"count"}' wraps {n} in <span id="count">.
  *   data-i18n-attr="placeholder:key aria-label:key"   attributes
  *   data-num="75"          a number, written the way the language writes it
+ *   data-qo / data-qc      the opening and closing quotation marks of the language (quoted())
  *
  * This file sits beside the area folders, not in one: the loader only reads
  * ./pages/<area>/<locale>.ts.
@@ -57,6 +58,32 @@ export function yearOnly(year: number): string {
 /** "a, b and c" as the language joins a list. */
 export function list(items: string[], type: 'conjunction' | 'unit' = 'conjunction'): string {
   return new Intl.ListFormat(locale(), { style: type === 'unit' ? 'narrow' : 'long', type }).format(items);
+}
+
+/**
+ * Quotation marks, by language: Unicode CLDR 49.0.0, cldr-misc-full/main/<lang>/delimiters.json
+ * (quotationStart, quotationEnd), Unicode License v3, read 2026-11-16 (the values lang/qa-pipeline
+ * records in docs/language/sources/cldr.json). Arabic opens with ” and closes with “, as CLDR has
+ * it. French adds the no-break space French typography sets inside « » (CLDR gives the marks only).
+ */
+const QUOTES: Record<string, readonly [string, string]> = {
+  en: ['“', '”'], es: ['“', '”'], fr: ['«\u00a0', '\u00a0»'], de: ['„', '“'], it: ['«', '»'], pt: ['“', '”'],
+  pl: ['„', '”'], ru: ['«', '»'], ar: ['”', '“'], hi: ['“', '”'], zh: ['“', '”'], ja: ['「', '」'],
+  ko: ['“', '”'], vi: ['“', '”'], th: ['“', '”'], id: ['“', '”'],
+};
+
+/** The opening and closing quotation marks of a language. */
+export function quoteMarks(l: string = locale()): readonly [string, string] {
+  return QUOTES[l] ?? QUOTES.en;
+}
+
+/**
+ * A quotation in the language's marks, as HTML. The quoted text sits in <bdi>: an English line
+ * on an Arabic page keeps its own direction, so its closing "?" or "!" stays at its end.
+ */
+export function quoted(text: string, l: string = locale()): string {
+  const [open, close] = quoteMarks(l);
+  return `<span data-qo>${open}</span><bdi>${escapeHtml(text)}</bdi><span data-qc>${close}</span>`;
 }
 
 /** t(), with every number among the variables written through num(). */
@@ -144,6 +171,9 @@ export function applyRich(root: ParentNode = document): void {
     const n = Number(el.dataset.num);
     if (Number.isFinite(n)) el.textContent = num(n);
   });
+  const [open, close] = quoteMarks();
+  root.querySelectorAll<HTMLElement>('[data-qo]').forEach((el) => (el.textContent = open));
+  root.querySelectorAll<HTMLElement>('[data-qc]').forEach((el) => (el.textContent = close));
 }
 
 /**
