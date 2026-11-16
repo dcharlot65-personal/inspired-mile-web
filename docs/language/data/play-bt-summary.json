@@ -1,0 +1,288 @@
+{
+ "thresholdRule": "per language and engine: the lower of --threshold and the best control score + 0.05",
+ "models": "google/madlad400-3b-mt (CTranslate2 int8); Helsinki-NLP OPUS-MT <lang>-en, Portuguese through opus-mt-ROMANCE-en (CTranslate2 int8); embedder sentence-transformers/all-MiniLM-L6-v2",
+ "threshold": 0.6,
+ "engines": {
+  "madlad": {
+   "es": {
+    "status": "not run"
+   },
+   "fr": {
+    "status": "not run"
+   },
+   "de": {
+    "status": "not run"
+   },
+   "it": {
+    "status": "not run"
+   },
+   "pt": {
+    "status": "not run"
+   },
+   "pl": {
+    "status": "not run"
+   },
+   "ru": {
+    "status": "not run"
+   },
+   "ar": {
+    "status": "not run"
+   },
+   "hi": {
+    "status": "not run"
+   },
+   "zh": {
+    "status": "not run"
+   },
+   "ja": {
+    "status": "not run"
+   },
+   "ko": {
+    "status": "not run"
+   },
+   "vi": {
+    "status": "not run"
+   },
+   "th": {
+    "covered": "trivia only",
+    "strings": 200,
+    "flagged": 1,
+    "flaggedTrivia": 1,
+    "controlsCaught": 12,
+    "controls": 12,
+    "threshold": 0.6,
+    "maxControl": 0.5553,
+    "medianCos": 0.9361,
+    "beams": [
+     4
+    ],
+    "flaggedIds": [
+     "trivia.170.q"
+    ]
+   },
+   "id": {
+    "status": "not run"
+   }
+  },
+  "opus": {
+   "es": {
+    "status": "not run"
+   },
+   "fr": {
+    "status": "not run"
+   },
+   "de": {
+    "status": "not run"
+   },
+   "it": {
+    "status": "not run"
+   },
+   "pt": {
+    "status": "not run"
+   },
+   "pl": {
+    "status": "not run"
+   },
+   "ru": {
+    "status": "not run"
+   },
+   "ar": {
+    "status": "not run"
+   },
+   "hi": {
+    "covered": "trivia only",
+    "strings": 451,
+    "flagged": 56,
+    "flaggedTrivia": 56,
+    "controlsCaught": 12,
+    "controls": 12,
+    "threshold": 0.3,
+    "maxControl": 0.2476,
+    "medianCos": 0.5971,
+    "beams": [
+     1
+    ],
+    "flaggedIds": [
+     "trivia.9.o0",
+     "trivia.60.o0",
+     "trivia.194.o1",
+     "trivia.154.o0",
+     "trivia.94.o0",
+     "trivia.107.o0",
+     "trivia.143.o3",
+     "trivia.128.o3",
+     "trivia.148.q",
+     "trivia.174.o1",
+     "trivia.53.q",
+     "trivia.48.o3",
+     "trivia.143.o1",
+     "trivia.174.o3",
+     "trivia.154.o2",
+     "trivia.26.q",
+     "trivia.158.o1",
+     "trivia.172.q",
+     "trivia.177.o3",
+     "trivia.170.o3",
+     "trivia.60.o2",
+     "trivia.125.o1",
+     "trivia.41.o3",
+     "trivia.187.o3",
+     "trivia.191.o2",
+     "trivia.22.o1",
+     "trivia.94.o1",
+     "trivia.14.o0",
+     "trivia.63.o1",
+     "trivia.4.o2",
+     "trivia.77.o1",
+     "trivia.194.o2",
+     "trivia.153.o3",
+     "trivia.48.o0",
+     "trivia.114.o2",
+     "trivia.27.q",
+     "trivia.121.o3",
+     "trivia.177.o1",
+     "trivia.181.o3",
+     "trivia.83.o3",
+     "trivia.121.o0",
+     "trivia.68.o0",
+     "trivia.64.q",
+     "trivia.110.o3",
+     "trivia.198.q",
+     "trivia.160.q",
+     "trivia.135.o3",
+     "trivia.151.o1",
+     "trivia.46.q",
+     "trivia.176.q",
+     "trivia.136.q",
+     "trivia.135.o2",
+     "trivia.158.o2",
+     "trivia.110.q",
+     "trivia.181.o1",
+     "trivia.193.q"
+    ]
+   },
+   "zh": {
+    "status": "not run"
+   },
+   "ja": {
+    "status": "not run"
+   },
+   "ko": {
+    "status": "not run"
+   },
+   "vi": {
+    "status": "not run"
+   },
+   "th": {
+    "covered": "trivia only",
+    "strings": 445,
+    "flagged": 91,
+    "flaggedTrivia": 91,
+    "controlsCaught": 12,
+    "controls": 12,
+    "threshold": 0.6,
+    "maxControl": 0.5794,
+    "medianCos": 0.8087,
+    "beams": [
+     1
+    ],
+    "flaggedIds": [
+     "trivia.174.o3",
+     "trivia.84.o0",
+     "trivia.107.o3",
+     "trivia.53.q",
+     "trivia.181.o1",
+     "trivia.68.o0",
+     "trivia.181.o3",
+     "trivia.185.o3",
+     "trivia.142.o3",
+     "trivia.194.o2",
+     "trivia.157.q",
+     "trivia.128.o3",
+     "trivia.97.q",
+     "trivia.52.o3",
+     "trivia.138.o1",
+     "trivia.41.o0",
+     "trivia.27.q",
+     "trivia.181.o2",
+     "trivia.72.q",
+     "trivia.191.o1",
+     "trivia.124.o3",
+     "trivia.170.o3",
+     "trivia.154.o0",
+     "trivia.46.q",
+     "trivia.199.o2",
+     "trivia.180.q",
+     "trivia.40.q",
+     "trivia.121.o3",
+     "trivia.124.o2",
+     "trivia.153.o1",
+     "trivia.114.o3",
+     "trivia.197.o2",
+     "trivia.132.o2",
+     "trivia.190.o0",
+     "trivia.110.o0",
+     "trivia.185.o1",
+     "trivia.187.o3",
+     "trivia.48.o0",
+     "trivia.3.q",
+     "trivia.199.q",
+     "trivia.132.o0",
+     "trivia.155.q",
+     "trivia.190.o2",
+     "trivia.60.o0",
+     "trivia.31.q",
+     "trivia.10.q",
+     "trivia.41.o3",
+     "trivia.179.o3",
+     "trivia.183.o3",
+     "trivia.102.o3",
+     "trivia.110.o2",
+     "trivia.172.o1",
+     "trivia.181.q",
+     "trivia.132.o1",
+     "trivia.22.o1",
+     "trivia.32.o0",
+     "trivia.94.o1",
+     "trivia.75.q",
+     "trivia.75.o0",
+     "trivia.90.o1",
+     "trivia.170.q",
+     "trivia.156.q",
+     "trivia.188.o0",
+     "trivia.177.o0",
+     "trivia.187.o1",
+     "trivia.107.o1",
+     "trivia.141.q",
+     "trivia.188.o3",
+     "trivia.4.o2",
+     "trivia.83.o3",
+     "trivia.187.q",
+     "trivia.121.o2",
+     "trivia.143.q",
+     "trivia.194.o1",
+     "trivia.149.q",
+     "trivia.124.o1",
+     "trivia.195.q",
+     "trivia.130.q",
+     "trivia.19.q",
+     "trivia.75.o3",
+     "trivia.186.q",
+     "trivia.66.o3",
+     "trivia.190.o1",
+     "trivia.187.o2",
+     "trivia.178.q",
+     "trivia.128.o1",
+     "trivia.172.q",
+     "trivia.143.o3",
+     "trivia.121.o0",
+     "trivia.119.q",
+     "trivia.110.o3"
+    ]
+   },
+   "id": {
+    "status": "not run"
+   }
+  }
+ }
+}

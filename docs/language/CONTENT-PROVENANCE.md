@@ -35,6 +35,14 @@ This covers the playground and story pages, the trivia bank (200 questions), the
 | zh-zhu-tempest | zh | The Tempest (Q86440) | 朱生豪 (Zhu Shenghao) (1944) | https://zh.wikisource.org/wiki/暴風雨 | Public domain: translator died 1944; public domain in China (50 years after death) at home on 1 January 1996, never published in the US before, so not restored under the URAA, as the licence notice on the Wikisource page states; quoted in Simplified characters as zh.wikisource serves the page (variant=zh-hans) |
 | zh-zhu-dream | zh | A Midsummer Night's Dream (Q104871) | 朱生豪 (Zhu Shenghao) (1944) | https://zh.wikisource.org/wiki/莎士比亞戲劇全集_(朱生豪)/仲夏夜之夢 | Public domain: translator died 1944; public domain in China (50 years after death) at home on 1 January 1996, never published in the US before, so not restored under the URAA, as the licence notice on the Wikisource page states; 莎士比亚戏剧全集, 第一辑第一种, 世界书局, as the page names its edition; quoted in Simplified characters as zh.wikisource serves the page (variant=zh-hans) |
 | ja-tsubouchi-romeo | ja | Romeo and Juliet (Q83186) | 坪内逍遙 (Tsubouchi Shōyō) (1935) | https://www.aozora.gr.jp/cards/000264/card42773.html | Public domain: translator died 1935; public domain in Japan at home on 1 January 1996, so not restored under the URAA; Aozora Bunko (a library of public-domain texts), from 新修シェークスピヤ全集 第二十五卷, 中央公論社, 1933, in its old orthography (旧字旧仮名) as Aozora gives it, ruby readings left out |
+| fr-hugo-romeo | fr | Romeo and Juliet (Q83186) | François-Victor Hugo (1873) | https://fr.wikisource.org/wiki/Roméo_et_Juliette_(trad._Hugo) | Public domain: translator died 1873; Œuvres complètes de Shakespeare, Pagnerre, Paris, 1868, tome VII (Wikisource: textes validés) |
+| es-mp-romeo | es | Romeo and Juliet (Q83186) | Marcelino Menéndez y Pelayo (1912) | https://es.wikisource.org/wiki/Romeo_y_Julieta_(Menéndez_y_Pelayo_tr.) | Public domain: translator died 1912; Dramas de Guillermo Shakespeare, 1881, in its spelling (dejaria, á) |
+| es-mp-macbeth | es | Macbeth (Q130283) | Marcelino Menéndez y Pelayo (1912) | https://es.wikisource.org/wiki/Macbeth_(Menéndez_y_Pelayo_tr.) | Public domain: translator died 1912; Dramas de Guillermo Shakespeare, 1881, in its spelling |
+| es-mp-otelo | es | Othello (Q26833) | Marcelino Menéndez y Pelayo (1912) | https://es.wikisource.org/wiki/Otelo_(Menéndez_y_Pelayo_tr.) | Public domain: translator died 1912; Dramas de Guillermo Shakespeare, 1881, in its spelling |
+| de-schlegel-romeo | de | Romeo and Juliet (Q83186) | August Wilhelm von Schlegel (1845) | https://de.wikisource.org/wiki/Romeo_und_Julia_(Übersetzung_Schlegel) | Public domain: translator died 1845; text of W. Shakespeare's dramatische Werke, ed. Wilhelm Oechelhäuser (d. 1902), Deutsche Verlags-Anstalt, Stuttgart, 1891 |
+| ru-grigoryev-romeo | ru | Romeo and Juliet (Q83186) | Аполлон Григорьев (1864) | https://ru.wikisource.org/wiki/Ромео_и_Джульетта_(Шекспир;_Григорьев)/1929 | Public domain: translator died 1864; first published 1864; text of the 1929 edition (Собрание сочинений, кн. 3, «Красная газета», Ленинград) in its modern spelling |
+| pl-ulrich-romeo | pl | Romeo and Juliet (Q83186) | Leon Ulrich (1885) | https://pl.wikisource.org/wiki/Romeo_i_Julia_(Shakespeare,_tłum._Ulrich,_1895) | Public domain: translator died 1885; Dzieła dramatyczne Williama Shakespeare, tom V, 1895, in its spelling (innem) |
+| it-rusconi-romeo | it | Romeo and Juliet (Q83186) | Carlo Rusconi (1889) | https://it.wikisource.org/wiki/Giulietta_e_Romeo | Public domain: translator died 1889; Teatro completo di Shakspeare, 1858 |
 
 ## Names
 
@@ -727,6 +735,27 @@ Allowances: F.-V. Hugo's prose marks the original's verse lines with " — "; a 
 | 57 | There are more things in heaven and earth, Horatio, than are dreamt of in your philosophy. | en el cielo y en la tierra hay más de lo que puede soñar tu filosofía. | tierra, filosofía | https://es.wikisource.org/w/index.php?title=Hamlet_%28Inarco_Celenio_trad.%29/Acto_I&oldid=1564601 |
 | 63 | What a piece of work is a man! How noble in reason! How infinite in faculty! | ¡Que admirable fábrica es la del hombre! ¡Qué noble su razón! | hombre, razón | https://es.wikisource.org/w/index.php?title=Hamlet_%28Inarco_Celenio_trad.%29/Acto_II&oldid=1564603 |
 | 84 | The rest is silence. | Para mí solo queda ya... silencio eterno. | silencio | https://es.wikisource.org/w/index.php?title=Hamlet_%28Inarco_Celenio_trad.%29/Acto_V&oldid=1589732 |
+| 4 | Romeo, Romeo, wherefore art thou Romeo? | ¡Romeo, Romeo! ¿Por qué eres tú Romeo? | Por qué | https://es.wikisource.org/w/index.php?title=Romeo_y_Julieta_%28Men%C3%A9ndez_y_Pelayo_tr.%29/Acto_II&oldid=1642361 |
+| 35 | What's in a name? That which we call a rose by any other name would smell as sweet. | ¿Porqué no tomas otro nombre? La rosa no dejaria de ser rosa, y de esparcir su aroma, aunque se llamase de otro modo. | nombre, rosa | https://es.wikisource.org/w/index.php?title=Romeo_y_Julieta_%28Men%C3%A9ndez_y_Pelayo_tr.%29/Acto_II&oldid=1642361 |
+| 6 | A rose by any other name would smell as sweet. | La rosa no dejaria de ser rosa, y de esparcir su aroma, aunque se llamase de otro modo. | rosa, aroma | https://es.wikisource.org/w/index.php?title=Romeo_y_Julieta_%28Men%C3%A9ndez_y_Pelayo_tr.%29/Acto_II&oldid=1642361 |
+| 2 | Parting is such sweet sorrow. | Triste es la ausencia y tan dulce la despedida | Triste, despedida | https://es.wikisource.org/w/index.php?title=Romeo_y_Julieta_%28Men%C3%A9ndez_y_Pelayo_tr.%29/Acto_II&oldid=1642361 |
+| 19 | Good night, good night! Parting is such sweet sorrow, that I shall say good night till it be morrow. | ¡Adios, adios! Triste es la ausencia y tan dulce la despedida, que no sé cómo arrancarme de los hierros de esta ventana. | ausencia, despedida | https://es.wikisource.org/w/index.php?title=Romeo_y_Julieta_%28Men%C3%A9ndez_y_Pelayo_tr.%29/Acto_II&oldid=1642361 |
+| 12 | A plague on both your houses! | ¡Mala peste á Capuletos y Móntescos! | peste | https://es.wikisource.org/w/index.php?title=Romeo_y_Julieta_%28Men%C3%A9ndez_y_Pelayo_tr.%29/Acto_III&oldid=1642362 |
+| 34 | These violent delights have violent ends. | Nada violento es duradero | violento, duradero | https://es.wikisource.org/w/index.php?title=Romeo_y_Julieta_%28Men%C3%A9ndez_y_Pelayo_tr.%29/Acto_II&oldid=1642361 |
+| 46 | But soft, what light through yonder window breaks? | ¿Pero qué luz es la que asoma por allí? | luz | https://es.wikisource.org/w/index.php?title=Romeo_y_Julieta_%28Men%C3%A9ndez_y_Pelayo_tr.%29/Acto_II&oldid=1642361 |
+| 96 | Thou know'st the mask of night is on my face, else would a maiden blush bepaint my cheek. | Si el manto de la noche no me cubriera, el rubor de vírgen subiría á mis mejillas | noche, rubor | https://es.wikisource.org/w/index.php?title=Romeo_y_Julieta_%28Men%C3%A9ndez_y_Pelayo_tr.%29/Acto_II&oldid=1642361 |
+| 7 | Double, double toil and trouble; fire burn and cauldron bubble. | Aumente el trabajo: crezca la labor: hierva la caldera. | trabajo, labor | https://es.wikisource.org/w/index.php?title=Macbeth_%28Men%C3%A9ndez_y_Pelayo_tr.%29/Acto_IV&oldid=1177538 |
+| 11 | Out, damned spot! Out, I say! | ¡Lejos de mí esta horrible mancha! | mancha | https://es.wikisource.org/w/index.php?title=Macbeth_%28Men%C3%A9ndez_y_Pelayo_tr.%29/Acto_V&oldid=1177543 |
+| 22 | Is this a dagger which I see before me, the handle toward my hand? | ¡Me parece estar viendo el puño de una daga vuelta hacia mí! | puño, daga | https://es.wikisource.org/w/index.php?title=Macbeth_%28Men%C3%A9ndez_y_Pelayo_tr.%29/Acto_II&oldid=1177534 |
+| 39 | Tomorrow, and tomorrow, and tomorrow, creeps in this petty pace from day to day. | Esa engañosa palabra mañana, mañana, mañana nos va llevando por dias al sepulcro | llevando, dias | https://es.wikisource.org/w/index.php?title=Macbeth_%28Men%C3%A9ndez_y_Pelayo_tr.%29/Acto_V&oldid=1177543 |
+| 40 | Life's but a walking shadow, a poor player that struts and frets his hour upon the stage. | ¿Qué es la vida sino una sombra, un histrion que pasa por el teatro, y á quien se olvida despues | sombra, teatro | https://es.wikisource.org/w/index.php?title=Macbeth_%28Men%C3%A9ndez_y_Pelayo_tr.%29/Acto_V&oldid=1177543 |
+| 81 | It is a tale told by an idiot, full of sound and fury, signifying nothing. | la vana y ruidosa fábula de un necio | ruidosa, necio | https://es.wikisource.org/w/index.php?title=Macbeth_%28Men%C3%A9ndez_y_Pelayo_tr.%29/Acto_V&oldid=1177543 |
+| 89 | I dare do all that may become a man; who dares do more is none. | Me atrevo á hacer lo que cualquiera otro hombre haría, pero esto no es humano. | hombre, humano | https://es.wikisource.org/w/index.php?title=Macbeth_%28Men%C3%A9ndez_y_Pelayo_tr.%29/Acto_I&oldid=1263631 |
+| 37 | I am not what I am. | No soy lo que parezco. | soy, parezco | https://es.wikisource.org/w/index.php?title=Otelo_%28Men%C3%A9ndez_y_Pelayo_tr.%29/Acto_I&oldid=1109125 |
+| 59 | I will wear my heart upon my sleeve for daws to peck at. | colgarla de la manga mi corazón para pasto de grajos | manga, corazón | https://es.wikisource.org/w/index.php?title=Otelo_%28Men%C3%A9ndez_y_Pelayo_tr.%29/Acto_I&oldid=1109125 |
+| 64 | The robbed that smiles steals something from the thief. | Quien se ria del ladron podrá robarle | ria, ladron | https://es.wikisource.org/w/index.php?title=Otelo_%28Men%C3%A9ndez_y_Pelayo_tr.%29/Acto_I&oldid=1109125 |
+| 80 | Put out the light, and then put out the light. | Apagaré esta luz... y luego aquella. | luz, aquella | https://es.wikisource.org/w/index.php?title=Otelo_%28Men%C3%A9ndez_y_Pelayo_tr.%29/Acto_V&oldid=1109131 |
+| 82 | Reputation is an idle and most false imposition; oft got without merit, and lost without deserving. | La fama no es sino vano ruido y falsedad é impostura, que las más veces se gana sin mérito y se pierde sin culpa. | fama, mérito | https://es.wikisource.org/w/index.php?title=Otelo_%28Men%C3%A9ndez_y_Pelayo_tr.%29/Acto_II&oldid=1109128 |
 
 ### fr
 
@@ -743,6 +772,17 @@ Allowances: F.-V. Hugo's prose marks the original's verse lines with " — "; a 
 | 73 | I must be cruel only to be kind. | Il faut que je sois cruel, rien que pour être humain. | cruel, humain | https://fr.wikisource.org/w/index.php?title=Le_second_Hamlet_%28trad._Hugo%29&oldid=15966629 |
 | 83 | O, what a rogue and peasant slave am I! | Ô misérable rustre, maroufle que je suis ! | rustre, maroufle | https://fr.wikisource.org/w/index.php?title=Le_second_Hamlet_%28trad._Hugo%29&oldid=15966629 |
 | 84 | The rest is silence. | Le reste… c’est… silence. | reste, silence | https://fr.wikisource.org/w/index.php?title=Le_second_Hamlet_%28trad._Hugo%29&oldid=15966629 |
+| 4 | Romeo, Romeo, wherefore art thou Romeo? | Ô Roméo ! Roméo ! pourquoi es-tu Roméo ? | pourquoi | https://fr.wikisource.org/w/index.php?title=Rom%C3%A9o_et_Juliette_%28trad._Hugo%29&oldid=15966892 |
+| 35 | What's in a name? That which we call a rose by any other name would smell as sweet. | Qu’y a-t-il dans un nom ? Ce que nous appelons une rose embaumerait autant sous un autre nom. | nom, rose | https://fr.wikisource.org/w/index.php?title=Rom%C3%A9o_et_Juliette_%28trad._Hugo%29&oldid=15966892 |
+| 6 | A rose by any other name would smell as sweet. | Ce que nous appelons une rose embaumerait autant sous un autre nom. | rose, embaumerait | https://fr.wikisource.org/w/index.php?title=Rom%C3%A9o_et_Juliette_%28trad._Hugo%29&oldid=15966892 |
+| 2 | Parting is such sweet sorrow. | Si douce est la tristesse de nos adieux | tristesse, adieux | https://fr.wikisource.org/w/index.php?title=Rom%C3%A9o_et_Juliette_%28trad._Hugo%29&oldid=15966892 |
+| 19 | Good night, good night! Parting is such sweet sorrow, that I shall say good night till it be morrow. | Bonne nuit ! bonne nuit ! Si douce est la tristesse de nos adieux que je te dirais : bonne nuit ! jusqu’à ce qu’il soit jour. | tristesse, jour | https://fr.wikisource.org/w/index.php?title=Rom%C3%A9o_et_Juliette_%28trad._Hugo%29&oldid=15966892 |
+| 12 | A plague on both your houses! | Malédiction sur les deux maisons ! | Malédiction, maisons | https://fr.wikisource.org/w/index.php?title=Rom%C3%A9o_et_Juliette_%28trad._Hugo%29&oldid=15966892 |
+| 34 | These violent delights have violent ends. | Ces joies violentes ont des fins violentes | joies, fins | https://fr.wikisource.org/w/index.php?title=Rom%C3%A9o_et_Juliette_%28trad._Hugo%29&oldid=15966892 |
+| 46 | But soft, what light through yonder window breaks? | Mais doucement ! Quelle lumière jaillit par cette fenêtre ? | lumière | https://fr.wikisource.org/w/index.php?title=Rom%C3%A9o_et_Juliette_%28trad._Hugo%29&oldid=15966892 |
+| 79 | Wisely and slow; they stumble that run fast. | Allons sagement et doucement : trébuche qui court vite | doucement, vite | https://fr.wikisource.org/w/index.php?title=Rom%C3%A9o_et_Juliette_%28trad._Hugo%29&oldid=15966892 |
+| 96 | Thou know'st the mask of night is on my face, else would a maiden blush bepaint my cheek. | Tu sais que le masque de la nuit est sur mon visage ; sans cela, tu verrais une virginale couleur colorer ma joue | nuit, couleur | https://fr.wikisource.org/w/index.php?title=Rom%C3%A9o_et_Juliette_%28trad._Hugo%29&oldid=15966892 |
+| 99 | O, she doth teach the torches to burn bright! | Oh ! elle apprend aux flambeaux à illuminer ! | flambeaux, illuminer | https://fr.wikisource.org/w/index.php?title=Rom%C3%A9o_et_Juliette_%28trad._Hugo%29&oldid=15966892 |
 
 ### de
 
@@ -760,6 +800,17 @@ Allowances: F.-V. Hugo's prose marks the original's verse lines with " — "; a 
 | 63 | What a piece of work is a man! How noble in reason! How infinite in faculty! | Welch ein Meisterwerk ist der Mensch! Wie edel durch Vernunft! | Mensch, Vernunft | https://de.wikisource.org/w/index.php?title=Hamlet/Zweiter_Aufzug&oldid=2004413 |
 | 83 | O, what a rogue and peasant slave am I! | O, welch ein Schurk und niedrer Sklav bin ich! | Schurk, Sklav | https://de.wikisource.org/w/index.php?title=Hamlet/Zweiter_Aufzug&oldid=2004413 |
 | 84 | The rest is silence. | Der Rest ist Schweigen. | Rest, Schweigen | https://de.wikisource.org/w/index.php?title=Hamlet/F%C3%BCnfter_Aufzug&oldid=2004416 |
+| 4 | Romeo, Romeo, wherefore art thou Romeo? | O Romeo! warum denn Romeo? | warum | https://de.wikisource.org/w/index.php?title=Romeo_und_Julia_%28%C3%9Cbersetzung_Schlegel%29/Zweiter_Aufzug&oldid=1730815 |
+| 35 | What's in a name? That which we call a rose by any other name would smell as sweet. | Was ist ein Name? Was uns Rose heißt, | Name, Rose | https://de.wikisource.org/w/index.php?title=Romeo_und_Julia_%28%C3%9Cbersetzung_Schlegel%29/Zweiter_Aufzug&oldid=1730815 |
+| 6 | A rose by any other name would smell as sweet. | Wie es auch hieße, würde lieblich duften; | hieße, duften | https://de.wikisource.org/w/index.php?title=Romeo_und_Julia_%28%C3%9Cbersetzung_Schlegel%29/Zweiter_Aufzug&oldid=1730815 |
+| 2 | Parting is such sweet sorrow. | So süß ist Trennungswehe | süß, Trennungswehe | https://de.wikisource.org/w/index.php?title=Romeo_und_Julia_%28%C3%9Cbersetzung_Schlegel%29/Zweiter_Aufzug&oldid=1730815 |
+| 19 | Good night, good night! Parting is such sweet sorrow, that I shall say good night till it be morrow. | Ich rief’ wohl gute Nacht, bis ich den Morgen sähe. | Nacht, Morgen | https://de.wikisource.org/w/index.php?title=Romeo_und_Julia_%28%C3%9Cbersetzung_Schlegel%29/Zweiter_Aufzug&oldid=1730815 |
+| 12 | A plague on both your houses! | Hol der Henker eure beiden Häuser! | Henker, Häuser | https://de.wikisource.org/w/index.php?title=Romeo_und_Julia_%28%C3%9Cbersetzung_Schlegel%29/Dritter_Aufzug&oldid=4062134 |
+| 34 | These violent delights have violent ends. | So wilde Freude nimmt ein wildes Ende | Freude, Ende | https://de.wikisource.org/w/index.php?title=Romeo_und_Julia_%28%C3%9Cbersetzung_Schlegel%29/Zweiter_Aufzug&oldid=1730815 |
+| 46 | But soft, what light through yonder window breaks? | Doch still, was schimmert durch das Fenster dort? | schimmert | https://de.wikisource.org/w/index.php?title=Romeo_und_Julia_%28%C3%9Cbersetzung_Schlegel%29/Zweiter_Aufzug&oldid=1730815 |
+| 79 | Wisely and slow; they stumble that run fast. | Wer hastig läuft, der fällt: drum eile nur mit Weil’. | hastig, fällt | https://de.wikisource.org/w/index.php?title=Romeo_und_Julia_%28%C3%9Cbersetzung_Schlegel%29/Zweiter_Aufzug&oldid=1730815 |
+| 96 | Thou know'st the mask of night is on my face, else would a maiden blush bepaint my cheek. | Du weißt, die Nacht verschleiert mein Gesicht, | Nacht, Gesicht | https://de.wikisource.org/w/index.php?title=Romeo_und_Julia_%28%C3%9Cbersetzung_Schlegel%29/Zweiter_Aufzug&oldid=1730815 |
+| 99 | O, she doth teach the torches to burn bright! | O, sie nur lehrt die Kerzen, hell zu glühn! | Kerzen, hell | https://de.wikisource.org/w/index.php?title=Romeo_und_Julia_%28%C3%9Cbersetzung_Schlegel%29/Erster_Aufzug&oldid=4062133 |
 
 ### it
 
@@ -775,6 +826,14 @@ Allowances: F.-V. Hugo's prose marks the original's verse lines with " — "; a 
 | 63 | What a piece of work is a man! How noble in reason! How infinite in faculty! | Qual capolavoro è l’uomo! Come nobile nell’intelletto! | uomo, intelletto | https://it.wikisource.org/w/index.php?title=Amleto_%28Rusconi%29/Atto_secondo/Scena_II&oldid=3794684 |
 | 73 | I must be cruel only to be kind. | debbo essere crudele solo per essere pietoso. | crudele, pietoso | https://it.wikisource.org/w/index.php?title=Amleto_%28Rusconi%29/Atto_terzo/Scena_IV&oldid=3841656 |
 | 84 | The rest is silence. | Il resto è silenzio. | resto, silenzio | https://it.wikisource.org/w/index.php?title=Amleto_%28Rusconi%29/Atto_quinto/Scena_II&oldid=3794683 |
+| 4 | Romeo, Romeo, wherefore art thou Romeo? | Romeo! Romeo! perchè sei tu Romeo? | perchè | https://it.wikisource.org/w/index.php?title=Giulietta_e_Romeo/Atto_secondo&oldid=3803530 |
+| 35 | What's in a name? That which we call a rose by any other name would smell as sweet. | Or che è un nome per te? Il fiore che chiamiam rosa, con ogni altro nome rosa pure sarebbe | nome, rosa | https://it.wikisource.org/w/index.php?title=Giulietta_e_Romeo/Atto_secondo&oldid=3803530 |
+| 6 | A rose by any other name would smell as sweet. | Il fiore che chiamiam rosa, con ogni altro nome rosa pure sarebbe, e con profumi egualmente eletti empirebbe le aure. | rosa, profumi | https://it.wikisource.org/w/index.php?title=Giulietta_e_Romeo/Atto_secondo&oldid=3803530 |
+| 2 | Parting is such sweet sorrow. | in quest’addio è infusa tanta dolcezza | addio, dolcezza | https://it.wikisource.org/w/index.php?title=Giulietta_e_Romeo/Atto_secondo&oldid=3803530 |
+| 19 | Good night, good night! Parting is such sweet sorrow, that I shall say good night till it be morrow. | Addio, addio; e in quest’addio è infusa tanta dolcezza, che lo ripeterei finchè il mattino ne venisse a sorprendere. | dolcezza, mattino | https://it.wikisource.org/w/index.php?title=Giulietta_e_Romeo/Atto_secondo&oldid=3803530 |
+| 34 | These violent delights have violent ends. | Questi violenti trasporti terminano fra violenti dolori | trasporti, dolori | https://it.wikisource.org/w/index.php?title=Giulietta_e_Romeo/Atto_secondo&oldid=3803530 |
+| 79 | Wisely and slow; they stumble that run fast. | Affrettiamoci, ma con savia fretta; chè chi troppo corre, sovente precipita. | savia, corre | https://it.wikisource.org/w/index.php?title=Giulietta_e_Romeo/Atto_secondo&oldid=3803530 |
+| 99 | O, she doth teach the torches to burn bright! | Oh! la sua bellezza offusca il chiarore di tutte queste faci | chiarore, faci | https://it.wikisource.org/w/index.php?title=Giulietta_e_Romeo/Atto_primo&oldid=3803527 |
 
 ### pl
 
@@ -789,6 +848,12 @@ Allowances: F.-V. Hugo's prose marks the original's verse lines with " — "; a 
 | 63 | What a piece of work is a man! How noble in reason! How infinite in faculty! | Jak doskonałym tworem jest człowiek! | tworem, człowiek | https://pl.wikisource.org/w/index.php?title=Hamlet_%28Shakespeare%2C_t%C5%82um._Paszkowski%2C_1909%29/Akt_drugi&oldid=3257285 |
 | 73 | I must be cruel only to be kind. | Chcąc być powolnym, okrutnym być muszę. | okrutnym | https://pl.wikisource.org/w/index.php?title=Hamlet_%28Shakespeare%2C_t%C5%82um._Paszkowski%2C_1909%29/Akt_trzeci&oldid=3257288 |
 | 84 | The rest is silence. | Reszta jest milczeniem. | Reszta, milczeniem | https://pl.wikisource.org/w/index.php?title=Hamlet_%28Shakespeare%2C_t%C5%82um._Paszkowski%2C_1909%29/Akt_pi%C4%85ty&oldid=3257287 |
+| 4 | Romeo, Romeo, wherefore art thou Romeo? | Romeo, czemuż ty jesteś Romeem! | czemuż | https://pl.wikisource.org/w/index.php?title=Romeo_i_Julia_%28Shakespeare%2C_t%C5%82um._Ulrich%2C_1895%29/Akt_drugi&oldid=3285360 |
+| 35 | What's in a name? That which we call a rose by any other name would smell as sweet. | Cóż jest w nazwisku? Co różą zowiemy, | nazwisku, różą | https://pl.wikisource.org/w/index.php?title=Romeo_i_Julia_%28Shakespeare%2C_t%C5%82um._Ulrich%2C_1895%29/Akt_drugi&oldid=3285360 |
+| 6 | A rose by any other name would smell as sweet. | Pod innem mianem dawną woń zachowa; | mianem, woń | https://pl.wikisource.org/w/index.php?title=Romeo_i_Julia_%28Shakespeare%2C_t%C5%82um._Ulrich%2C_1895%29/Akt_drugi&oldid=3285360 |
+| 12 | A plague on both your houses! | Na oba domy zaraza niech padnie! | domy, zaraza | https://pl.wikisource.org/w/index.php?title=Romeo_i_Julia_%28Shakespeare%2C_t%C5%82um._Ulrich%2C_1895%29/Akt_trzeci&oldid=3285363 |
+| 46 | But soft, what light through yonder window breaks? | Lecz cicho! Jakież światło z okna błyska? | światło | https://pl.wikisource.org/w/index.php?title=Romeo_i_Julia_%28Shakespeare%2C_t%C5%82um._Ulrich%2C_1895%29/Akt_drugi&oldid=3285360 |
+| 96 | Thou know'st the mask of night is on my face, else would a maiden blush bepaint my cheek. | Gdyby mi nocy maska lic nie kryła, | nocy, maska | https://pl.wikisource.org/w/index.php?title=Romeo_i_Julia_%28Shakespeare%2C_t%C5%82um._Ulrich%2C_1895%29/Akt_drugi&oldid=3285360 |
 
 ### ru
 
@@ -804,6 +869,14 @@ Allowances: F.-V. Hugo's prose marks the original's verse lines with " — "; a 
 | 63 | What a piece of work is a man! How noble in reason! How infinite in faculty! | Какое образцовое создание человек! Как благороден разумом! | человек, разумом | https://ru.wikisource.org/w/index.php?title=%D0%93%D0%B0%D0%BC%D0%BB%D0%B5%D1%82_%28%D0%A8%D0%B5%D0%BA%D1%81%D0%BF%D0%B8%D1%80%3B_%D0%9A%D1%80%D0%BE%D0%BD%D0%B5%D0%B1%D0%B5%D1%80%D0%B3%29/%D0%9F%D0%A1%D0%A1_1902_%28%D0%92%D0%A2%3A%D0%81%29/%D0%94%D0%B5%D0%B9%D1%81%D1%82%D0%B2%D0%B8%D0%B5_II&oldid=3719740 |
 | 83 | O, what a rogue and peasant slave am I! | Какой злодей, какой я раб презренный! | злодей, раб | https://ru.wikisource.org/w/index.php?title=%D0%93%D0%B0%D0%BC%D0%BB%D0%B5%D1%82_%28%D0%A8%D0%B5%D0%BA%D1%81%D0%BF%D0%B8%D1%80%3B_%D0%9A%D1%80%D0%BE%D0%BD%D0%B5%D0%B1%D0%B5%D1%80%D0%B3%29/%D0%9F%D0%A1%D0%A1_1902_%28%D0%92%D0%A2%3A%D0%81%29/%D0%94%D0%B5%D0%B9%D1%81%D1%82%D0%B2%D0%B8%D0%B5_II&oldid=3719740 |
 | 84 | The rest is silence. | конец — молчанье. | конец, молчанье | https://ru.wikisource.org/w/index.php?title=%D0%93%D0%B0%D0%BC%D0%BB%D0%B5%D1%82_%28%D0%A8%D0%B5%D0%BA%D1%81%D0%BF%D0%B8%D1%80%3B_%D0%9A%D1%80%D0%BE%D0%BD%D0%B5%D0%B1%D0%B5%D1%80%D0%B3%29/%D0%9F%D0%A1%D0%A1_1902_%28%D0%92%D0%A2%3A%D0%81%29/%D0%94%D0%B5%D0%B9%D1%81%D1%82%D0%B2%D0%B8%D0%B5_V&oldid=3719752 |
+| 4 | Romeo, Romeo, wherefore art thou Romeo? | О Ромео, Ромео! Отчего, зачем | Отчего, зачем | https://ru.wikisource.org/w/index.php?title=%D0%A0%D0%BE%D0%BC%D0%B5%D0%BE_%D0%B8_%D0%94%D0%B6%D1%83%D0%BB%D1%8C%D0%B5%D1%82%D1%82%D0%B0_%28%D0%A8%D0%B5%D0%BA%D1%81%D0%BF%D0%B8%D1%80%3B_%D0%93%D1%80%D0%B8%D0%B3%D0%BE%D1%80%D1%8C%D0%B5%D0%B2%29/1929&oldid=5658970 |
+| 35 | What's in a name? That which we call a rose by any other name would smell as sweet. | И что такое имя? Что зовем мы розой, | имя, розой | https://ru.wikisource.org/w/index.php?title=%D0%A0%D0%BE%D0%BC%D0%B5%D0%BE_%D0%B8_%D0%94%D0%B6%D1%83%D0%BB%D1%8C%D0%B5%D1%82%D1%82%D0%B0_%28%D0%A8%D0%B5%D0%BA%D1%81%D0%BF%D0%B8%D1%80%3B_%D0%93%D1%80%D0%B8%D0%B3%D0%BE%D1%80%D1%8C%D0%B5%D0%B2%29/1929&oldid=5658970 |
+| 6 | A rose by any other name would smell as sweet. | Зовись она иначе, запах тот же! | иначе, запах | https://ru.wikisource.org/w/index.php?title=%D0%A0%D0%BE%D0%BC%D0%B5%D0%BE_%D0%B8_%D0%94%D0%B6%D1%83%D0%BB%D1%8C%D0%B5%D1%82%D1%82%D0%B0_%28%D0%A8%D0%B5%D0%BA%D1%81%D0%BF%D0%B8%D1%80%3B_%D0%93%D1%80%D0%B8%D0%B3%D0%BE%D1%80%D1%8C%D0%B5%D0%B2%29/1929&oldid=5658970 |
+| 12 | A plague on both your houses! | Чума на оба ваши дома | Чума, дома | https://ru.wikisource.org/w/index.php?title=%D0%A0%D0%BE%D0%BC%D0%B5%D0%BE_%D0%B8_%D0%94%D0%B6%D1%83%D0%BB%D1%8C%D0%B5%D1%82%D1%82%D0%B0_%28%D0%A8%D0%B5%D0%BA%D1%81%D0%BF%D0%B8%D1%80%3B_%D0%93%D1%80%D0%B8%D0%B3%D0%BE%D1%80%D1%8C%D0%B5%D0%B2%29/1929&oldid=5658970 |
+| 34 | These violent delights have violent ends. | Насильственным страстям - насильственный конец | страстям, конец | https://ru.wikisource.org/w/index.php?title=%D0%A0%D0%BE%D0%BC%D0%B5%D0%BE_%D0%B8_%D0%94%D0%B6%D1%83%D0%BB%D1%8C%D0%B5%D1%82%D1%82%D0%B0_%28%D0%A8%D0%B5%D0%BA%D1%81%D0%BF%D0%B8%D1%80%3B_%D0%93%D1%80%D0%B8%D0%B3%D0%BE%D1%80%D1%8C%D0%B5%D0%B2%29/1929&oldid=5658970 |
+| 46 | But soft, what light through yonder window breaks? | Но тише! Что за свет в окне мелькнул? | свет | https://ru.wikisource.org/w/index.php?title=%D0%A0%D0%BE%D0%BC%D0%B5%D0%BE_%D0%B8_%D0%94%D0%B6%D1%83%D0%BB%D1%8C%D0%B5%D1%82%D1%82%D0%B0_%28%D0%A8%D0%B5%D0%BA%D1%81%D0%BF%D0%B8%D1%80%3B_%D0%93%D1%80%D0%B8%D0%B3%D0%BE%D1%80%D1%8C%D0%B5%D0%B2%29/1929&oldid=5658970 |
+| 79 | Wisely and slow; they stumble that run fast. | Осторожно-медленный шаг всегда верней. | медленный, верней | https://ru.wikisource.org/w/index.php?title=%D0%A0%D0%BE%D0%BC%D0%B5%D0%BE_%D0%B8_%D0%94%D0%B6%D1%83%D0%BB%D1%8C%D0%B5%D1%82%D1%82%D0%B0_%28%D0%A8%D0%B5%D0%BA%D1%81%D0%BF%D0%B8%D1%80%3B_%D0%93%D1%80%D0%B8%D0%B3%D0%BE%D1%80%D1%8C%D0%B5%D0%B2%29/1929&oldid=5658970 |
+| 96 | Thou know'st the mask of night is on my face, else would a maiden blush bepaint my cheek. | Ты знаешь, маска тьмы теперь скрывает | маска, тьмы | https://ru.wikisource.org/w/index.php?title=%D0%A0%D0%BE%D0%BC%D0%B5%D0%BE_%D0%B8_%D0%94%D0%B6%D1%83%D0%BB%D1%8C%D0%B5%D1%82%D1%82%D0%B0_%28%D0%A8%D0%B5%D0%BA%D1%81%D0%BF%D0%B8%D1%80%3B_%D0%93%D1%80%D0%B8%D0%B3%D0%BE%D1%80%D1%8C%D0%B5%D0%B2%29/1929&oldid=5658970 |
 
 ### zh
 
@@ -853,13 +926,13 @@ The English bank has 104 quote challenges. A language has only those listed abov
 
 | Language | Has | Dropped | Plays |
 |---|---|---|---|
-| es | 8 | 96 | its own 8 |
-| fr | 11 | 93 | its own 11 |
-| de | 12 | 92 | its own 12 |
-| it | 10 | 94 | its own 10 |
+| es | 29 | 75 | its own 29 |
+| fr | 22 | 82 | its own 22 |
+| de | 23 | 81 | its own 23 |
+| it | 18 | 86 | its own 18 |
 | pt | 0 | 104 | the English originals (104) |
-| pl | 9 | 95 | its own 9 |
-| ru | 10 | 94 | its own 10 |
+| pl | 15 | 89 | its own 15 |
+| ru | 18 | 86 | its own 18 |
 | ar | 0 | 104 | the English originals (104) |
 | hi | 0 | 104 | the English originals (104) |
 | zh | 22 | 82 | its own 22 |
@@ -869,7 +942,7 @@ The English bank has 104 quote challenges. A language has only those listed abov
 | th | 0 | 104 | the English originals (104) |
 | id | 0 | 104 | the English originals (104) |
 
-Why so many are dropped. What was searched: *Hamlet* in one translation per language on Wikisource (es, fr, de, it, pl, ru); for Chinese, every one of Zhu Shenghao's translations zh.wikisource has (*Hamlet*, *The Tempest*, *A Midsummer Night's Dream*; the other links of its Shakespeare portal are pages not yet made); for Japanese, Tsubouchi Shōyō's *Romeo and Juliet* on Aozora Bunko (his *Hamlet* is still in preparation there and is not on ja.wikisource). A line not found whole in one line of the source was left out, not stitched together; one found was left out for Japanese because its words are archaic forms a player could not type (79, 'they stumble that run fast': 賢う徐うぢゃ。馳出す者は蹉躓くわい). Not searched, so no finding either way: the other works in es, fr, de, it, pl and ru; Portuguese, whose Wikisource has the *Hamlet* of King Luís I (1877) and of Bulhão Pato (1879) only as page scans. No public-domain translation is known to the author for Korean, Arabic, Hindi, Vietnamese, Thai or Indonesian; that was not researched.
+Why so many are dropped. What was searched, on Wikisource unless said otherwise: *Hamlet* in one translation per language (es, fr, de, it, pl, ru); *Romeo and Juliet* in French (Hugo), German (Schlegel), Italian (Rusconi), Spanish (Menéndez y Pelayo), Russian (Grigoryev) and Polish (Ulrich); Menéndez y Pelayo's *Macbeth* and *Otelo*; for Chinese, every one of Zhu Shenghao's translations zh.wikisource has (*Hamlet*, *The Tempest*, *A Midsummer Night's Dream*; the other links of its Shakespeare portal are pages not yet made); for Japanese, Tsubouchi Shōyō's *Romeo and Juliet* on Aozora Bunko (his *Hamlet* is still in preparation there and is not on ja.wikisource). A line not found whole in one line or verse of the source was left out, not stitched together (many prose translations of the 1880s abridge or paraphrase); one found was left out for Japanese because its words are archaic forms a player could not type (79, 'they stumble that run fast': 賢う徐うぢゃ。馳出す者は蹉躓くわい). Not searched, so no finding either way: the other works in these languages; Portuguese, whose Wikisource has the *Hamlet* of King Luís I (1877) and of Bulhão Pato (1879) only as page scans. No public-domain translation is known to the author for Korean, Arabic, Hindi, Vietnamese, Thai or Indonesian; that was not researched.
 
 The Japanese lines are in the old orthography of the 1933 edition (旧字旧仮名), as Aozora gives them; the missing words were chosen among those written the same today, so that a player can type them.
 
@@ -883,7 +956,47 @@ What the tools that did not write the text found, and what was done about it. Th
 
 **Mechanical** (`npx vitest run src/i18n/pages`): the same keys and {placeholders} as English in every area; every question with its four options; quotations and numbers kept; every name option its source's name or a listed form; no question whose script gives the answer away; the player addressed as each core locale says (du, vous, ты, kamu, 해요체, …); every challenge's missing words in its line, in order, filling back to the line; generated files what their sources make. Each rule is also fed a known-bad input and must object.
 
-**Back-translation**: not run to completion; see the report of this branch.
+**Back-translation** (each string into English by a translation model, compared with the English source by sentence embedding; a string under the threshold is flagged and read). Twelve controls per language pair a translation with the wrong English sentence and must be flagged.
 
-**Read by hand**: 14 flagged strings. 11 ok, 3 not usable. *ok* means the translation says what the English says and the flag came from the checking model (a title it renders literally, a word it does not know); *fixed* means the translation was wrong and was changed; the note says how.
+| Language | Engine | Strings | Threshold | Flagged (trivia) | Controls caught | Median similarity |
+|---|---|---|---|---|---|---|
+| th | madlad | 200 (trivia only) | 0.6 | 1 (1) | 12/12 | 0.9361 |
+| hi | opus | 451 (trivia only) | 0.3 | 56 (56) | 12/12 | 0.5971 |
+| th | opus | 445 (trivia only) | 0.6 | 91 (91) | 12/12 | 0.8087 |
+
+Not run: es (madlad), fr (madlad), de (madlad), it (madlad), pt (madlad), pl (madlad), ru (madlad), ar (madlad), hi (madlad), zh (madlad), ja (madlad), ko (madlad), vi (madlad), id (madlad), es (opus), fr (opus), de (opus), it (opus), pt (opus), pl (opus), ru (opus), ar (opus), zh (opus), ja (opus), ko (opus), vi (opus), id (opus).
+
+Models: google/madlad400-3b-mt (CTranslate2 int8); Helsinki-NLP OPUS-MT <lang>-en, Portuguese through opus-mt-ROMANCE-en (CTranslate2 int8); embedder sentence-transformers/all-MiniLM-L6-v2. Threshold: per language and engine: the lower of --threshold and the best control score + 0.05, at most 0.6. A threshold under the controls' scores would flag nothing they could not; where a model translates a language poorly, the threshold falls to what an unrelated sentence scores, and below it a string cannot be told from one.
+
+**Answers** (`qa/align.py`): the back-translation of each translated option, compared with all four English options of its question. Misplaced means closer to another option than to its own: a changed answer, or a swap. Ten controls per language file one option's translation under another's place and must come out misplaced.
+
+| Language | Engine | Options | Misplaced | Controls caught |
+|---|---|---|---|---|
+
+**Spelling** (Hunspell 1.7 (the shared pipeline build), dictionaries of the shared language pipeline): words the dictionary does not know, after names are set aside. Every one was read.
+
+| Language | Dictionary | Unknown words | Of them, real errors (fixed) |
+|---|---|---|---|
+| es | es | 18 | 0 |
+| fr | fr | 9 | 0 |
+| de | de | 6 | 0 |
+| it | it | 14 | 0 |
+| pt | pt-BR | 7 | 0 |
+| pl | pl | 6 | 0 |
+| ru | ru | 13 | 0 |
+| ar | ar | 63 | 0 |
+| hi | hi (not usable: Devanagari split at combining marks) |  | 0 |
+| zh | none |  |  |
+| ja | none |  |  |
+| ko | ko (not usable: particles attached to every word) |  | 0 |
+| vi | vi | 16 | 0 |
+| th | th (not usable: no spaces between words) |  | 0 |
+| id | id | 32 | 0 |
+
+**Read by hand**: 161 flagged strings. 156 ok, 3 not usable, 2 fixed. *ok* means the translation says what the English says and the flag came from the checking model (a title it renders literally, a word it does not know); *fixed* means the translation was wrong and was changed; the note says how.
+
+Fixed:
+
+- th `trivia.132.o0`: said Caliban claims to be the island's rightful owner (เจ้าของ); the English says ruler: now ผู้ปกครอง
+- th `trivia.40.q`: ungrammatical (กลายเป็นมีหัวเป็นลา); now ตัวละครถูกเปลี่ยนให้มีหัวเป็นลา, a character is given a donkey's head
 
