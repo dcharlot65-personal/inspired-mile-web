@@ -26,7 +26,7 @@ use uuid::Uuid;
 
 use inspired_mile_api::verse::judge::Verdict;
 use inspired_mile_api::verse::{
-    card_by_id, clean_verse, online_deck_problem, online_match_winner, online_plan, resolve_online_round, MatchWinner,
+    card_by_id, online_deck_problem, online_match_winner, online_plan, resolve_online_round, settle_verse, MatchWinner,
     OnlineSide, RoundPlan, RoundWinner, VerseScore, LANG, MAX_VERSE_CHARS, MAX_VERSE_LINES, ONLINE_DECK_MAX,
     ONLINE_DECK_MIN,
 };
@@ -35,7 +35,7 @@ use super::content_filter;
 
 /// Longest verse text a client may send, in bytes. A cleaned verse is at most
 /// `MAX_VERSE_CHARS` UTF-16 units, which is never more than 1800 bytes of UTF-8; the page
-/// sends the cleaned verse, so anything longer than this did not come from the page.
+/// sends the settled (cleaned) verse, so anything longer than this did not come from the page.
 pub const MAX_VERSE_BYTES: usize = 2000;
 /// Events that may wait for one player's connection before it is dropped as too slow.
 pub const EVENT_BUFFER: usize = 32;
@@ -620,8 +620,9 @@ impl GameRoom {
         Ok((conn, effects))
     }
 
-    /// A player submits their verse for a round. `text` is cleaned and capped here; the
-    /// score is worked out from it and from nothing else the client said.
+    /// A player submits their verse for a round. `text` is settled here (cleaned until
+    /// cleaning changes nothing, and capped: `settle_verse`); the score is worked out from it
+    /// and from nothing else the client said.
     pub fn submit(&mut self, user_id: Uuid, round: usize, char_id: &str, text: &str) -> Result<Vec<Effect>, RoomError> {
         let seat = self.seat_of(user_id).ok_or(RoomError::NotInRoom)?;
         if self.state != RoomState::InProgress {
@@ -642,7 +643,7 @@ impl GameRoom {
         if self.seats[seat].used.iter().any(|id| id == char_id) {
             return Err(RoomError::CharacterUsed);
         }
-        let verse = clean_verse(text);
+        let verse = settle_verse(text);
         if verse.is_empty() {
             return Err(RoomError::EmptyVerse);
         }
@@ -936,7 +937,8 @@ impl RoomManager {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use inspired_mile_api::verse::ROUNDS;
+    use inspired_mile_api::verse::duel::online_craft;
+    use inspired_mile_api::verse::{clean_verse, ROUNDS};
 
     const DECK_A: [&str; 3] = ["DC-001", "MO-001", "CA-001"];
     const DECK_B: [&str; 3] = ["MO-002", "CA-002", "DC-002"];
@@ -1135,6 +1137,31 @@ mod tests {
         let r = result_of(&events);
         assert_eq!(r.you.verse, "Hidden marks go\nsecond line");
         assert_eq!(r.opponent.verse.encode_utf16().count(), MAX_VERSE_CHARS);
+    }
+
+    #[test]
+    fn a_pasted_verse_is_settled_before_it_is_scored_so_the_preview_is_the_score() {
+        // A letter, a zero-width space and a combining accent: one cleaning leaves the accent
+        // apart and a second composes it (a syllable count can change with it). The room keeps the
+        // settled text, which no later cleaning changes, and scores exactly that: the craft
+        // the page previewed for the same settled text. Sent raw and sent settled alike.
+        let pasted = "Step upe\u{200b}\u{301}, poor player, strut thy little hour\nThen watch thy verses wither like a flower";
+        let settled = settle_verse(pasted);
+        assert_eq!(clean_verse(&settled), settled);
+        for sent in [pasted.to_string(), settled.clone()] {
+            let mut t = table(1);
+            t.room.submit(t.a, 0, "DC-001", &sent).unwrap();
+            t.room.submit(t.b, 0, "MO-002", PLAIN).unwrap();
+            let events = drain(&mut t.rx_a);
+            let r = result_of(&events);
+            assert_eq!(r.you.verse, settled);
+            let da = deck(&DECK_A);
+            let preview = online_craft(
+                &online_plan(1)[0],
+                &OnlineSide { card: card_by_id("DC-001").unwrap(), deck: &da, verse: &settled, previous_opponent_verse: None },
+            );
+            assert_eq!(r.you.score, preview);
+        }
     }
 
     #[test]

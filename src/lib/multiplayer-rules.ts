@@ -91,6 +91,35 @@ export function onlineLexicon(): Set<string> {
   return lexicon;
 }
 
+/** Most cleaning passes settleVerse makes. */
+export const SETTLE_PASSES = 8;
+
+/** Half a surrogate pair becomes U+FFFD, as a Rust string (and JSON the server reads) holds it. */
+const wellFormed = (s: string): string => (typeof s.toWellFormed === 'function' ? s.toWellFormed() : s);
+
+/**
+ * A verse as online play holds it: cleaned again and again until cleaning changes nothing
+ * more (at most SETTLE_PASSES times), and well-formed.
+ *
+ * cleanVerse is not idempotent. It applies NFKC before it takes out invisible characters,
+ * so a letter, a zero-width space and a combining accent become one composed letter only
+ * on a second pass, and a syllable count can change with it; a cut at the length limit can
+ * leave a space that a second pass trims. The server cleans what it receives, and scoring
+ * cleans again, so a preview of the verse as typed could differ from the server's score.
+ * The page therefore sends and previews this text, the server applies the same steps to
+ * whatever arrives (settle_verse in backend/src/verse/duel.rs), and every cleaning after it
+ * changes nothing: the preview, the server and the page's audit all score the same text.
+ */
+export function settleVerse(text: string): string {
+  let s = text;
+  for (let i = 0; i < SETTLE_PASSES; i++) {
+    const next = wellFormed(cleanVerse(s));
+    if (next === s) return s;
+    s = next;
+  }
+  return s;
+}
+
 export interface OnlineSide {
   charId: string;
   /** Every character in this side's deck, for house synergy. */
@@ -115,6 +144,15 @@ export function onlineCraft(plan: OnlineRoundPlan, side: OnlineSide): VerseScore
     deckCharacters: side.deck,
     opponentVerse: side.previousOpponentVerse || undefined,
   });
+}
+
+/**
+ * The craft the server will award for a verse as the player typed it: the craft of the
+ * settled verse, which is the text the page sends and the server scores (see settleVerse).
+ * The page's live checklist shows this, never onlineCraft of the raw text.
+ */
+export function previewCraft(plan: OnlineRoundPlan, side: OnlineSide): VerseScore {
+  return onlineCraft(plan, { ...side, verse: settleVerse(side.verse) });
 }
 
 export type OnlineVerdict = 'a' | 'b' | 'split';

@@ -25,7 +25,8 @@ import path from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { CARD_CATALOG, getCardById } from './cards';
 import {
-  ONLINE_LANG, onlineLexicon, onlineMatchWinner, onlinePlan, onlineWit, resolveOnlineRound, type OnlineRoundOutcome,
+  ONLINE_LANG, SETTLE_PASSES, onlineLexicon, onlineMatchWinner, onlinePlan, onlineWit, previewCraft, resolveOnlineRound,
+  settleVerse, type OnlineRoundOutcome,
 } from './multiplayer-rules';
 import {
   CURSES, CURSE_PENALTY, CURSE_PENALTY_CAP, DEVICES, HOUSE_DEVICE, POTION_CURSE, POWER_WORDS_NEEDED, POWER_WORD_BONUS,
@@ -396,7 +397,45 @@ const wf = (s: string) => s.toWellFormed();
  * second cleaning would strip a half pair that the server never had.
  */
 const sent = (s: string) => wf(cleanVerse(s));
+/**
+ * A verse as online play holds it: the text the page sends and the server keeps, cleaned
+ * until cleaning changes nothing more (settleVerse). The cases for online rounds use this.
+ */
+const held = (s: string) => settleVerse(s);
 const units = (s: string) => Array.from({ length: s.length }, (_, i) => s.charCodeAt(i));
+
+/**
+ * Pasted text: what a verse copied from elsewhere can carry. cleanVerse is not idempotent
+ * on some of it (a letter, a zero-width space and a combining accent compose into one
+ * letter only on a second pass, and a syllable count can change with it), which is why
+ * online play settles a verse. Inserted between code points, never inside one.
+ */
+const PASTE_NOISE = [
+  '\u200b\u0301', 'e\u200b\u0301', 'e\u0301', '\u200b', '\u0301', '\u00a0', '\ufeff', '\u2060', '\u00ad',
+  '\ufb01', '\u338f', '\uff46\uff55\uff4c\uff4c', '\u043e', '\u0455', '\u3164', '\u2800', 'A\u030a', '\u212b',
+  '\u01c5', '\u017f', '\u216b', '\u2460', '\ufe0f', '\u{e0061}', '\uff8a\uff9f', '\u1100\u200b\u1161', '\r\n',
+  '  ', '\t', '\u202e',
+];
+const PASTED: string[] = (() => {
+  const r = rng(9191);
+  const out: string[] = [];
+  for (const base of [...HAND, ...writtenVerses()]) {
+    for (let k = 0; k < 4; k++) {
+      const points = Array.from(base);
+      const n = 1 + int(r, 5);
+      for (let i = 0; i < n; i++) points.splice(int(r, points.length + 1), 0, pick(r, PASTE_NOISE));
+      out.push(points.join(''));
+    }
+  }
+  // Pasted text that runs past the length limit, so the cut lands on a space, a line break or a pair.
+  for (const pad of [596, 598, 599, 600]) {
+    const body = 'I put the question to thy empty rage '.repeat(20).slice(0, pad);
+    out.push(`${body} tail`, `${body}\nnext`, `${body}\u{1F600} after`, `${body}e\u200b\u0301 x`);
+  }
+  const unique = [...new Set(out)].filter((v) => !CORPUS.includes(v));
+  for (const v of unique) if (!v.isWellFormed()) throw new Error('a pasted verse holds a lone surrogate');
+  return unique;
+})();
 
 // ---------------------------------------------------------------------------
 // The files
@@ -424,7 +463,7 @@ function tablesJson(): string {
   return JSON.stringify({
     constants: {
       MAX_VERSE_CHARS, MAX_VERSE_LINES, FORM_POINTS, JUDGE_POOL, ROUNDS, CURSE_PENALTY, CURSE_PENALTY_CAP, POWER_WORD_BONUS, POWER_WORDS_NEEDED,
-      MIN_DISTINCT_WORDS, COPY_THRESHOLD,
+      MIN_DISTINCT_WORDS, COPY_THRESHOLD, SETTLE_PASSES,
     },
     forms: FORMS.map((f) => ({
       id: f.id,
@@ -814,12 +853,13 @@ function onlineCases() {
   const shapedFor = (formId: string) => (formId === 'acrostic' ? [] : HAND);
   for (let i = 0; i < 420; i++) {
     const plan = pick(r, plans).plan[int(r, ROUNDS)];
-    const pool = chance(r, 0.5) ? [...shapedFor(plan.formId), ...writtenVerses()] : CORPUS;
+    const pool = chance(r, 0.5) ? [...shapedFor(plan.formId), ...writtenVerses()] : chance(r, 0.7) ? CORPUS : PASTED;
+    // As the server holds them: settled (see `held`).
     const side = () => {
       const charId = pick(r, CHARACTERS).id;
-      const previousOpponentVerse = chance(r, 0.6) ? sent(pick(r, CORPUS)) : null;
+      const previousOpponentVerse = chance(r, 0.6) ? held(pick(r, CORPUS)) : null;
       // Now and then a player pastes back the verse the other side wrote the round before.
-      const verse = previousOpponentVerse && chance(r, 0.15) ? previousOpponentVerse : sent(pick(r, pool));
+      const verse = previousOpponentVerse && chance(r, 0.15) ? previousOpponentVerse : held(pick(r, pool));
       return { charId, deck: randomDeck(r, charId), verse, previousOpponentVerse };
     };
     const a = side();
@@ -845,7 +885,9 @@ function onlineCases() {
     for (const winner of outcomes) for (const [totalA, totalB] of totals) walk([...soFar, { winner, totalA, totalB }]);
   };
   walk([]);
-  return { plans, rounds, matches };
+  // What online play makes of a verse before anything scores it (settleVerse).
+  const settle = [...CORPUS, ...PASTED].map((raw) => ({ raw, settled: held(raw) }));
+  return { plans, rounds, matches, settle };
 }
 
 const built = (() => {
@@ -1010,5 +1052,37 @@ describe('online rules', () => {
     const other = { charId: 'DC-001', deck: ['DC-001', 'MO-001', 'CA-001'], verse: 'A candle now' };
     expect(resolveOnlineRound(plan, side, other).a.score.device.met).toBe(false);
     expect(resolveOnlineRound(plan, { ...side, previousOpponentVerse: 'My candle gutters' }, other).a.score.device.met).toBe(true);
+  });
+
+  it('a settled verse is one that cleaning leaves alone, so no later cleaning changes what is scored', () => {
+    const unsettled: string[] = [];
+    for (const raw of [...CORPUS, ...PASTED]) {
+      const s = settleVerse(raw);
+      if (wf(cleanVerse(s)) !== s) unsettled.push(JSON.stringify(raw).slice(0, 160));
+    }
+    expect(unsettled, `not settled within ${SETTLE_PASSES} passes`).toEqual([]);
+  });
+
+  it('the live preview of a verse as typed is exactly what the server scores for the text the page sends', () => {
+    const r = rng(9292);
+    const other = { charId: 'MO-002', deck: ['MO-002', 'CA-002', 'DC-002'], verse: held('The sun is up above the quiet hills\nThe day is here') };
+    let compared = 0;
+    for (const [i, raw] of [...PASTED, ...CORPUS].entries()) {
+      const plan = onlinePlan(int(r, 1000))[int(r, ROUNDS)];
+      const charId = pick(r, CHARACTERS).id;
+      const side = { charId, deck: randomDeck(r, charId), verse: raw, previousOpponentVerse: chance(r, 0.5) ? held(pick(r, CORPUS)) : undefined };
+      // The page: its checklist shows previewCraft of the textarea, and it sends settleVerse of it.
+      const preview = previewCraft(plan, side);
+      // The server (game_room.rs): settles what it receives, refuses it if nothing is left, resolves the round.
+      const kept = settleVerse(settleVerse(raw));
+      if (!kept) continue;
+      const round = resolveOnlineRound(plan, { ...side, verse: kept }, other);
+      expect([i, raw, flatScore(round.a.score)]).toEqual([i, raw, flatScore(preview)]);
+      // The page's audit recomputes the round from the verses the server sends back: the same numbers again.
+      const audit = resolveOnlineRound(plan, { ...side, verse: round.a.verse }, { ...other, verse: round.b.verse });
+      expect([i, flatScore(audit.a.score), audit.a.total, audit.b.total, audit.winner]).toEqual([i, flatScore(round.a.score), round.a.total, round.b.total, round.winner]);
+      compared++;
+    }
+    expect(compared).toBeGreaterThan(1000);
   });
 });

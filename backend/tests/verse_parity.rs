@@ -15,8 +15,9 @@ use inspired_mile_api::verse::devices::{
     FORBIDDEN_LETTERS, HOUSE_DEVICE, POTION_CURSE, POWER_WORDS_NEEDED, POWER_WORD_BONUS, RELIC_WORDS,
 };
 use inspired_mile_api::verse::duel::{
-    match_winner, online_match_winner, online_plan, resolve_online_round, resolve_round, score_verse, Curse, DuelSide,
-    MatchWinner, OnlineSide, Rng, RoundPlan, RoundWinner, ScoreInput, VerseScore, Voided, COPY_THRESHOLD, ROUNDS,
+    match_winner, online_match_winner, online_plan, resolve_online_round, resolve_round, score_verse, settle_verse, Curse,
+    DuelSide, MatchWinner, OnlineSide, Rng, RoundPlan, RoundWinner, ScoreInput, VerseScore, Voided, COPY_THRESHOLD, ROUNDS,
+    SETTLE_PASSES,
 };
 use inspired_mile_api::verse::forms::{
     forms_for_english, get_form, score_form, FormContext, FormScore, ACROSTIC_WORDS, FORMS, FORM_POINTS,
@@ -210,6 +211,7 @@ fn tables_and_constants_match() {
         ("POWER_WORD_BONUS", u64::from(POWER_WORD_BONUS)),
         ("POWER_WORDS_NEEDED", POWER_WORDS_NEEDED as u64),
         ("MIN_DISTINCT_WORDS", MIN_DISTINCT_WORDS as u64),
+        ("SETTLE_PASSES", SETTLE_PASSES as u64),
     ] {
         r.same(|| format!("constant {name}"), &Some(rust), &c[name].as_u64());
     }
@@ -597,5 +599,13 @@ fn online_plans_rounds_and_matches_match() {
         });
         r.same(|| format!("onlineMatchWinner({rounds:?})"), &got, &opt_text(&m["winner"]));
     }
-    r.finish(1000);
+    // What online play makes of a verse before anything scores it: the page sends this text
+    // and the room keeps it (settleVerse), so it must be the same text on both sides.
+    let settle = t["settle"].as_array().expect("settle");
+    assert!(settle.len() >= 1000, "online.json has only {} settle cases", settle.len());
+    for c in settle {
+        let raw = text(&c["raw"]);
+        r.same(|| format!("settleVerse({})", short(raw)), &settle_verse(raw), &text(&c["settled"]).to_string());
+    }
+    r.finish(2000);
 }

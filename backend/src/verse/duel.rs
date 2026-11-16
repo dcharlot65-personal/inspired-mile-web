@@ -331,6 +331,30 @@ pub fn online_plan(seed: u32) -> Vec<RoundPlan> {
         .collect()
 }
 
+/// Most cleaning passes `settle_verse` makes (`SETTLE_PASSES`).
+pub const SETTLE_PASSES: usize = 8;
+
+/// A verse as online play holds it (`settleVerse`): cleaned again and again until cleaning
+/// changes nothing more, at most `SETTLE_PASSES` times.
+///
+/// `clean_verse`, like the TypeScript `cleanVerse` it ports, is not idempotent: NFKC runs
+/// before invisible characters are taken out, so a letter, a zero-width space and a
+/// combining accent become one composed letter only on a second pass, and a syllable count
+/// can change with it. The page sends and previews the settled text, the room settles
+/// whatever arrives, and every cleaning after that is a no-op, so the preview, the server
+/// and the page's audit all score the same text.
+pub fn settle_verse(text: &str) -> String {
+    let mut s = text.to_string();
+    for _ in 0..SETTLE_PASSES {
+        let next = clean_verse(&s);
+        if next == s {
+            return s;
+        }
+        s = next;
+    }
+    s
+}
+
 /// One side of an online round.
 #[derive(Debug, Clone, Copy)]
 pub struct OnlineSide<'a> {

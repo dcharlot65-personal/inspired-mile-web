@@ -10,7 +10,8 @@
   "POWER_WORD_BONUS": 6,
   "POWER_WORDS_NEEDED": 2,
   "MIN_DISTINCT_WORDS": 3,
-  "COPY_THRESHOLD": 0.5
+  "COPY_THRESHOLD": 0.5,
+  "SETTLE_PASSES": 8
  },
  "forms": [
   {

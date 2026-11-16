@@ -26,8 +26,9 @@ pub mod text;
 
 pub use cards::{card_by_id, Card, CARDS};
 pub use duel::{
-    online_deck_problem, online_match_winner, online_plan, resolve_online_round, score_verse, MatchWinner, OnlineRound,
-    OnlineSide, RoundPlan, RoundWinner, ScoreInput, VerseScore, Voided, ONLINE_DECK_MAX, ONLINE_DECK_MIN, ROUNDS,
+    online_deck_problem, online_match_winner, online_plan, resolve_online_round, score_verse, settle_verse, MatchWinner,
+    OnlineRound, OnlineSide, RoundPlan, RoundWinner, ScoreInput, VerseScore, Voided, ONLINE_DECK_MAX, ONLINE_DECK_MIN,
+    ROUNDS, SETTLE_PASSES,
 };
 pub use text::{clean_verse, MAX_VERSE_CHARS, MAX_VERSE_LINES};
 
