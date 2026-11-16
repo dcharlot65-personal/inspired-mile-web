@@ -105,9 +105,11 @@ Read this before treating any language as finished.
   Taiwan form, converted to Simplified characters (the mainland form is 麦克白); Romans carry their Latin
   names (Japanese ブルトゥス for Brutus, where the stage tradition says ブルータス); some poets carry a full
   formal name (Vietnamese and Thai Byron). Brand-new translated relic names follow these labels.
-- **The stop-word list is broad.** stopwords-iso counts some content words as stop words (Portuguese
-  "questão"), so a few lines have no telling word of their own in a language; the test suite prints which.
-  For those cards the English words decide, as before.
+- **The stop-word list is broad.** stopwords-iso counts some content words as stop words. Two were taken
+  off it because they are the one telling word of Hamlet's line: Portuguese "questão" and Russian "вопрос"
+  (`NOT_STOP` in the build script). Otherwise the lists are used as published. "I am not what I am" has no
+  telling word in English and has none in most languages either; the test suite prints every line that has
+  none. For those cards the English words decide, as before.
 - The telling words of a line depend on `Intl.Segmenter` for Chinese, Japanese and Thai, so they can differ
   slightly between browsers and Node versions.
 

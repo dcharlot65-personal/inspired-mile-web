@@ -48,6 +48,9 @@ ELEMENTS = ('Fire|Passion|Grace|Shadow|Water|Wind|Trickster|Nature|Death|Arcane|
             'Peace|Poison|Moonlight|Illusion|Mischief|Ambition|Darkness|Prophecy|Disguise|Vanity|Honor|Envy|Rhetoric|Authority|Comedy|Duty|'
             'Innocence|Devotion|Wisdom|Power|Knowledge|Compassion|Transformation|Alchemy|Ocean|Vision|Beauty|Rebellion|Creation|Revolution|'
             'Sorrow|Thunder|Light|Love|Speed|Rebirth|Cunning|Petrification|Glory').split('|')
+# Words that stopwords-iso lists but that carry a card's line: without them "To be, or not to be" has no telling word.
+# They are taken off the stop list for that language; the list is otherwise used as published.
+NOT_STOP = {'pt': ['questão'], 'ru': ['вопрос']}
 TYPES = ['Character', 'Relic', 'Potion']
 RARITIES = ['Common', 'Uncommon', 'Rare', 'Epic', 'Legendary']
 # Where each English line comes from.
@@ -227,7 +230,7 @@ def main():
         qpath = os.path.join(SRC, f'quotes-{lang}.json')
         pub = json.load(open(qpath, encoding='utf8')) if os.path.exists(qpath) else {}
         pack = {'lang': lang, 'cards': {}, 'houses': {}, 'elements': dict(zip(ELEMENTS, tr['elements'])), 'rarities': rarity_names(lang),
-                'types': dict(zip(TYPES, tr['types'])), 'stop': sorted(set(w for w in stop.get(lang, []) if re.search(r'[^\W\d_]', w)))}
+                'types': dict(zip(TYPES, tr['types'])), 'stop': sorted(set(w for w in stop.get(lang, []) if re.search(r'[^\W\d_]', w) and w not in NOT_STOP.get(lang, [])))}
         p = prov['langs'][lang] = {'cards': {}, 'houses': {}}
         for h, t in zip(HOUSES_T, tr['houses']):
             pack['houses'][h] = t

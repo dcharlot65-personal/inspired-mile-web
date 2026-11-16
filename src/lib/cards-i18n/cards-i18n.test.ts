@@ -136,7 +136,10 @@ describe('the signature in the language of the duel', () => {
     // A line whose every word is short or on the stop list has no telling word of its own ("I am not what I am" has none
     // in English either); the English words then decide, as before. These are few, and each is reported by name.
     if (none.length) console.warn(`[cards-i18n] lines with no telling word of their own: ${none.join(', ')}`);
-    expect(none.length).toBeLessThanOrEqual(8);
+    // Where the English line has telling words, the line in another language should too: at most a handful may not.
+    const lost = none.filter((key) => signatureWords(card(key.split(' ')[1])).length > 0);
+    expect([lost.length <= 3, lost]).toEqual([true, lost]);
+    expect(none.length).toBeLessThanOrEqual(20);
     for (const key of none) {
       const [lang, id] = key.split(' ');
       const c = card(id);

@@ -1012,7 +1012,6 @@ const pack: CardTextPack = {
   "queremas",
   "queres",
   "quero",
-  "questão",
   "quieto",
   "quinta",
   "quinto",
