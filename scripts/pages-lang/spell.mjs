@@ -39,7 +39,9 @@ function wordsOf(text, lang) {
 }
 
 // Proof that the tool can flag something: a misspelling must be rejected and the right word accepted.
-const SELFTEST = { en: ['recieve', 'receive'], es: ['coleccion', 'colección'], fr: ['personage', 'personnage'], de: ['Samlung', 'Sammlung'], it: ['colezione', 'collezione'], pt: ['colecao', 'coleção'], pl: ['kolekcia', 'kolekcja'], ru: ['колекция', 'коллекция'], ar: ['مجموعه', 'مجموعة'], hi: ['संगरह', 'संग्रह'], ko: ['컬랙션', '컬렉션'], vi: ['bộ sưu tâp', 'sưu'], th: ['ตัวลคร', 'ตัวละคร'], id: ['koleksii', 'koleksi'] };
+// Arabic: the dictionary accepts مجموعه for مجموعة (ه for ة), so that pair proved nothing; a doubled
+// letter (lang/qa-pipeline's pair) is what it rejects. It will not catch a ه/ة confusion.
+const SELFTEST = { en: ['recieve', 'receive'], es: ['coleccion', 'colección'], fr: ['personage', 'personnage'], de: ['Samlung', 'Sammlung'], it: ['colezione', 'collezione'], pt: ['colecao', 'coleção'], pl: ['kolekcia', 'kolekcja'], ru: ['колекция', 'коллекция'], ar: ['مدرسسة', 'مدرسة'], hi: ['संगरह', 'संग्रह'], ko: ['컬랙션', '컬렉션'], vi: ['bộ sưu tâp', 'sưu'], th: ['ตัวลคร', 'ตัวละคร'], id: ['koleksii', 'koleksi'] };
 
 const result = { tool: 'Hunspell (hspell)', dictDir: DICT_DIR, languages: {} };
 let failed = false;

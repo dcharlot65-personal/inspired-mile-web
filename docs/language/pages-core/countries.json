@@ -1,0 +1,1222 @@
+{
+ "fetched": "2026-11-16T18:56:59.917Z",
+ "cldr": {
+  "source": "https://cdn.jsdelivr.net/npm/cldr-localenames-full@46.0.0/main/<lang>/territories.json",
+  "version": "46.0.0",
+  "licence": "Unicode License v3"
+ },
+ "wikidata": {
+  "property": "P1549 (demonym)",
+  "licence": "CC0 1.0",
+  "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q155|Q96|Q117|Q928|Q408|Q766|Q142&props=claims&format=json",
+  "namesUrl": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q155|Q96|Q117|Q928|Q408|Q766|Q142|Q35765|Q60&props=labels|aliases&languages=en|es|fr|de|it|pt|pl|ru|ar|hi|zh|ja|ko|vi|th|id|zh-cn|zh-hans|pt-br&format=json"
+ },
+ "countries": {
+  "BR": {
+   "qid": "Q155",
+   "cldr": {
+    "en": "Brazil",
+    "es": "Brasil",
+    "fr": "Brésil",
+    "de": "Brasilien",
+    "it": "Brasile",
+    "pt": "Brasil",
+    "pl": "Brazylia",
+    "ru": "Бразилия",
+    "ar": "البرازيل",
+    "hi": "ब्राज़ील",
+    "zh": "巴西",
+    "ja": "ブラジル",
+    "ko": "브라질",
+    "vi": "Brazil",
+    "th": "บราซิล",
+    "id": "Brasil"
+   },
+   "demonyms": {
+    "en": [
+     "Brazilian",
+     "Brazilians"
+    ],
+    "pt": [
+     "brasileiro",
+     "brasileira"
+    ],
+    "ar": [
+     "برازيلي",
+     "برازيلية",
+     "برازيليون"
+    ],
+    "ru": [
+     "бразилец",
+     "бразильянка",
+     "бразильцы"
+    ],
+    "it": [
+     "brasiliano",
+     "brasiliana",
+     "brasiliani",
+     "brasiliane"
+    ],
+    "es": [
+     "brasileño",
+     "brasileña"
+    ],
+    "fr": [
+     "Brésilien",
+     "Brésilienne"
+    ],
+    "de": [
+     "Brasilianerin",
+     "Brasilianer"
+    ]
+   }
+  },
+  "MX": {
+   "qid": "Q96",
+   "cldr": {
+    "en": "Mexico",
+    "es": "México",
+    "fr": "Mexique",
+    "de": "Mexiko",
+    "it": "Messico",
+    "pt": "México",
+    "pl": "Meksyk",
+    "ru": "Мексика",
+    "ar": "المكسيك",
+    "hi": "मैक्सिको",
+    "zh": "墨西哥",
+    "ja": "メキシコ",
+    "ko": "멕시코",
+    "vi": "Mexico",
+    "th": "เม็กซิโก",
+    "id": "Meksiko"
+   },
+   "demonyms": {
+    "fr": [
+     "Mexicain",
+     "Mexicaine"
+    ],
+    "en": [
+     "Mexican",
+     "Mexicans"
+    ],
+    "ja": [
+     "メキシコ人"
+    ],
+    "es": [
+     "mexicano",
+     "mexicana",
+     "mexicanos",
+     "mexicanas"
+    ],
+    "ar": [
+     "مكسيكي",
+     "مكسيكية",
+     "مكسيكيون"
+    ],
+    "ru": [
+     "мексиканцы",
+     "мексиканец",
+     "мексиканка"
+    ],
+    "it": [
+     "messicano",
+     "messicana",
+     "messicani",
+     "messicane"
+    ],
+    "de": [
+     "Mexikanerin",
+     "Mexikaner"
+    ]
+   }
+  },
+  "GH": {
+   "qid": "Q117",
+   "cldr": {
+    "en": "Ghana",
+    "es": "Ghana",
+    "fr": "Ghana",
+    "de": "Ghana",
+    "it": "Ghana",
+    "pt": "Gana",
+    "pl": "Ghana",
+    "ru": "Гана",
+    "ar": "غانا",
+    "hi": "घाना",
+    "zh": "加纳",
+    "ja": "ガーナ",
+    "ko": "가나",
+    "vi": "Ghana",
+    "th": "กานา",
+    "id": "Ghana"
+   },
+   "demonyms": {
+    "en": [
+     "Ghanaian"
+    ],
+    "ar": [
+     "غاني",
+     "غانية",
+     "غانيون",
+     "غانيات",
+     "غانيين"
+    ],
+    "it": [
+     "ghanese",
+     "ghanesi"
+    ],
+    "de": [
+     "Ghanaer",
+     "Ghanaerin"
+    ],
+    "fr": [
+     "Ghanéenne",
+     "Ghanéen"
+    ]
+   }
+  },
+  "PH": {
+   "qid": "Q928",
+   "cldr": {
+    "en": "Philippines",
+    "es": "Filipinas",
+    "fr": "Philippines",
+    "de": "Philippinen",
+    "it": "Filippine",
+    "pt": "Filipinas",
+    "pl": "Filipiny",
+    "ru": "Филиппины",
+    "ar": "الفلبين",
+    "hi": "फ़िलिपींस",
+    "zh": "菲律宾",
+    "ja": "フィリピン",
+    "ko": "필리핀",
+    "vi": "Philippines",
+    "th": "ฟิลิปปินส์",
+    "id": "Filipina"
+   },
+   "demonyms": {
+    "ar": [
+     "فلبيني",
+     "فلبينية",
+     "فلبينيون"
+    ],
+    "de": [
+     "Filipino",
+     "Filipina"
+    ],
+    "en": [
+     "Filipino",
+     "Philippine",
+     "Filipina"
+    ],
+    "fr": [
+     "Philippin",
+     "Philippine"
+    ],
+    "it": [
+     "filippino",
+     "filippini",
+     "filippina",
+     "filippine"
+    ],
+    "ru": [
+     "филиппинцы"
+    ]
+   }
+  },
+  "AU": {
+   "qid": "Q408",
+   "cldr": {
+    "en": "Australia",
+    "es": "Australia",
+    "fr": "Australie",
+    "de": "Australien",
+    "it": "Australia",
+    "pt": "Austrália",
+    "pl": "Australia",
+    "ru": "Австралия",
+    "ar": "أستراليا",
+    "hi": "ऑस्ट्रेलिया",
+    "zh": "澳大利亚",
+    "ja": "オーストラリア",
+    "ko": "오스트레일리아",
+    "vi": "Australia",
+    "th": "ออสเตรเลีย",
+    "id": "Australia"
+   },
+   "demonyms": {
+    "en": [
+     "Australian",
+     "Australians",
+     "Aussie",
+     "Aussies"
+    ],
+    "ru": [
+     "австралийцы",
+     "австралиец",
+     "австралийка"
+    ],
+    "ar": [
+     "أسترالي",
+     "أسترالية",
+     "أستراليون"
+    ],
+    "it": [
+     "australiano",
+     "australiana",
+     "australiani",
+     "australiane"
+    ],
+    "es": [
+     "australiano",
+     "australiana"
+    ],
+    "fr": [
+     "Australien",
+     "Australienne"
+    ],
+    "de": [
+     "Australierin",
+     "Australier"
+    ]
+   }
+  },
+  "JM": {
+   "qid": "Q766",
+   "cldr": {
+    "en": "Jamaica",
+    "es": "Jamaica",
+    "fr": "Jamaïque",
+    "de": "Jamaika",
+    "it": "Giamaica",
+    "pt": "Jamaica",
+    "pl": "Jamajka",
+    "ru": "Ямайка",
+    "ar": "جامايكا",
+    "hi": "जमैका",
+    "zh": "牙买加",
+    "ja": "ジャマイカ",
+    "ko": "자메이카",
+    "vi": "Jamaica",
+    "th": "จาเมกา",
+    "id": "Jamaika"
+   },
+   "demonyms": {
+    "de": [
+     "Jamaikaner",
+     "Jamaikanerin"
+    ],
+    "en": [
+     "Jamaican"
+    ],
+    "es": [
+     "jamaicano"
+    ],
+    "ar": [
+     "جمايكي",
+     "جمايكية",
+     "جمايكيون"
+    ],
+    "it": [
+     "giamaicano",
+     "giamaicana",
+     "giamaicani",
+     "giamaicane"
+    ],
+    "fr": [
+     "Jamaïcaine",
+     "Jamaïquain",
+     "Jamaïcain",
+     "Jamaïquaine"
+    ]
+   }
+  },
+  "FR": {
+   "qid": "Q142",
+   "cldr": {
+    "en": "France",
+    "es": "Francia",
+    "fr": "France",
+    "de": "Frankreich",
+    "it": "Francia",
+    "pt": "França",
+    "pl": "Francja",
+    "ru": "Франция",
+    "ar": "فرنسا",
+    "hi": "फ़्रांस",
+    "zh": "法国",
+    "ja": "フランス",
+    "ko": "프랑스",
+    "vi": "Pháp",
+    "th": "ฝรั่งเศส",
+    "id": "Prancis"
+   },
+   "demonyms": {
+    "ru": [
+     "француз",
+     "француженка",
+     "французы"
+    ],
+    "fr": [
+     "Français",
+     "Française",
+     "françaises"
+    ],
+    "pt": [
+     "francês",
+     "francesa"
+    ],
+    "ja": [
+     "フランス人"
+    ],
+    "en": [
+     "French"
+    ],
+    "es": [
+     "francés",
+     "francesa"
+    ],
+    "ar": [
+     "فرنسي",
+     "فرنسية",
+     "فرنسيون"
+    ],
+    "zh": [
+     "法国人"
+    ],
+    "it": [
+     "francese",
+     "francesi"
+    ],
+    "de": [
+     "Franzose",
+     "Franzosen",
+     "Französin",
+     "Französinnen"
+    ]
+   }
+  }
+ },
+ "names": {
+  "BR": {
+   "qid": "Q155",
+   "labels": {
+    "en": "Brazil",
+    "es": "Brasil",
+    "fr": "Brésil",
+    "de": "Brasilien",
+    "it": "Brasile",
+    "pt": "Brasil",
+    "pl": "Brazylia",
+    "ru": "Бразилия",
+    "ar": "البرازيل",
+    "hi": "ब्राज़ील",
+    "zh": "巴西",
+    "ja": "ブラジル",
+    "ko": "브라질",
+    "vi": "Brasil",
+    "th": "ประเทศบราซิล",
+    "id": "Brasil"
+   },
+   "aliases": {
+    "en": [
+     "Federative Republic of Brazil"
+    ],
+    "es": [
+     "República Federativa de Brasil",
+     "República Federativa del Brasil"
+    ],
+    "fr": [
+     "République fédérative du Brésil",
+     "Brésilienne",
+     "Brésilien",
+     "Brézil",
+     "Amérique lusophone",
+     "Auriverde",
+     "République des États-Unis du Brésil",
+     "Brazil",
+     "la République fédérative du Brésil",
+     "Brés.",
+     "Bré.",
+     "Bresil"
+    ],
+    "de": [
+     "Föderative Republik Brasilien"
+    ],
+    "it": [
+     "Repubblica Federativa del Brasile"
+    ],
+    "pt": [
+     "República Federativa do Brasil",
+     "Pindorama"
+    ],
+    "pl": [],
+    "ru": [
+     "Estados Unidos del Brazil",
+     "Федеративная Республика Бразилия"
+    ],
+    "ar": [
+     "برازيلي",
+     "برازيل",
+     "برازيلية",
+     "البرازيلي",
+     "شرق أمريكا الجنوبية",
+     "جمهورية البرازيل الإتحادية",
+     "جمهورية البرازيل الاتحادية",
+     "البرازیل",
+     "برازیل",
+     "الجمهورية البرازيلية"
+    ],
+    "hi": [],
+    "zh": [],
+    "ja": [
+     "ブラジル連邦共和国",
+     "伯国",
+     "伯剌西爾"
+    ],
+    "ko": [],
+    "vi": [
+     "Brazil",
+     "Ba Tây"
+    ],
+    "th": [
+     "สหพันธ์สาธารณรัฐบราซิล",
+     "บราซิล"
+    ],
+    "id": [
+     "Republik Federatif Brasil",
+     "Republik Federatif Brazil"
+    ]
+   }
+  },
+  "MX": {
+   "qid": "Q96",
+   "labels": {
+    "en": "Mexico",
+    "es": "México",
+    "fr": "Mexique",
+    "de": "Mexiko",
+    "it": "Messico",
+    "pt": "México",
+    "pl": "Meksyk",
+    "ru": "Мексика",
+    "ar": "المكسيك",
+    "hi": "मेक्सिको",
+    "zh": "墨西哥",
+    "ja": "メキシコ",
+    "ko": "멕시코",
+    "vi": "México",
+    "th": "ประเทศเม็กซิโก",
+    "id": "Meksiko"
+   },
+   "aliases": {
+    "en": [
+     "Mexican United States",
+     "Mexican Republic",
+     "US of M",
+     "United States of Mexico",
+     "mx",
+     "United Mexican States",
+     "MXN"
+    ],
+    "es": [
+     "Méjico",
+     "Estados Unidos Mexicanos",
+     "República Mexicana",
+     "Estados Unidos Mejicanos",
+     "República Mejicana",
+     "MXN"
+    ],
+    "fr": [
+     "États-Unis mexicains",
+     "États-Unis du Mexique",
+     "Mex."
+    ],
+    "de": [
+     "Vereinigte Mexikanische Staaten",
+     "Mexihco",
+     "México"
+    ],
+    "it": [
+     "Stati Uniti Messicani"
+    ],
+    "pt": [
+     "Estados Unidos Mexicanos",
+     "República Mexicana",
+     "mx"
+    ],
+    "pl": [],
+    "ru": [
+     "Мексиканские Соединённые Штаты"
+    ],
+    "ar": [
+     "الولايات المتحدة المكسيكية"
+    ],
+    "hi": [
+     "संयुक्त मेक्सिकी राज्य"
+    ],
+    "zh": [
+     "墨西哥合众国",
+     "墨西哥合眾國"
+    ],
+    "ja": [
+     "メキシコ合衆国",
+     "メヒコ",
+     "墨西哥",
+     "墨"
+    ],
+    "ko": [
+     "멕시코 합중국"
+    ],
+    "vi": [
+     "Mê-xi-cô",
+     "Mễ Tây Cơ",
+     "Mễ",
+     "Mê-hi-cô"
+    ],
+    "th": [],
+    "id": []
+   }
+  },
+  "GH": {
+   "qid": "Q117",
+   "labels": {
+    "en": "Ghana",
+    "es": "Ghana",
+    "fr": "Ghana",
+    "de": "Ghana",
+    "it": "Ghana",
+    "pt": "Gana",
+    "pl": "Ghana",
+    "ru": "Гана",
+    "ar": "غانا",
+    "hi": "घाना",
+    "zh": "加纳",
+    "ja": "ガーナ",
+    "ko": "가나",
+    "vi": "Ghana",
+    "th": "ประเทศกานา",
+    "id": "Ghana"
+   },
+   "aliases": {
+    "en": [],
+    "es": [
+     "República de Ghana"
+    ],
+    "fr": [
+     "République du Ghana",
+     "la République du Ghana"
+    ],
+    "de": [
+     "Republik Ghana"
+    ],
+    "it": [
+     "Repubblica del Ghana",
+     "Gana"
+    ],
+    "pt": [
+     "República de Gana"
+    ],
+    "pl": [],
+    "ru": [
+     "Республика Гана"
+    ],
+    "ar": [
+     "جمهورية غانا"
+    ],
+    "hi": [],
+    "zh": [
+     "加纳",
+     "加納",
+     "迦納共和國",
+     "加纳共和国"
+    ],
+    "ja": [
+     "ガーナ共和国"
+    ],
+    "ko": [],
+    "vi": [],
+    "th": [],
+    "id": []
+   }
+  },
+  "PH": {
+   "qid": "Q928",
+   "labels": {
+    "en": "Philippines",
+    "es": "Filipinas",
+    "fr": "Philippines",
+    "de": "Philippinen",
+    "it": "Filippine",
+    "pt": "Filipinas",
+    "pl": "Filipiny",
+    "ru": "Филиппины",
+    "ar": "الفلبين",
+    "hi": "फ़िलीपीन्स",
+    "zh": "菲律宾",
+    "ja": "フィリピン",
+    "ko": "필리핀",
+    "vi": "Philippines",
+    "th": "ประเทศฟิลิปปินส์",
+    "id": "Filipina"
+   },
+   "aliases": {
+    "en": [
+     "Republic of the Philippines",
+     "The Philippines",
+     "Philippine Islands",
+     "RP"
+    ],
+    "es": [
+     "República de Filipinas"
+    ],
+    "fr": [
+     "République des Philippines",
+     "Îles Philippines",
+     "RP",
+     "la République des Philippines",
+     "Phil."
+    ],
+    "de": [
+     "die Philippinen",
+     "Republik der Philippinen"
+    ],
+    "it": [],
+    "pt": [
+     "República das Filipinas"
+    ],
+    "pl": [],
+    "ru": [
+     "Республика Филиппины"
+    ],
+    "ar": [
+     "جمهورية الفلبين"
+    ],
+    "hi": [],
+    "zh": [
+     "菲律宾共和国",
+     "菲律賓共和國",
+     "菲律宾",
+     "比島"
+    ],
+    "ja": [
+     "フィリピン共和国"
+    ],
+    "ko": [
+     "필리핀 공화국"
+    ],
+    "vi": [
+     "Cộng hòa Philippines",
+     "Cộng hoà Philippines"
+    ],
+    "th": [
+     "สาธารณรัฐฟิลิปปินส์"
+    ],
+    "id": []
+   }
+  },
+  "AU": {
+   "qid": "Q408",
+   "labels": {
+    "en": "Australia",
+    "es": "Australia",
+    "fr": "Australie",
+    "de": "Australien",
+    "it": "Australia",
+    "pt": "Austrália",
+    "pl": "Australia",
+    "ru": "Австралия",
+    "ar": "أستراليا",
+    "hi": "ऑस्ट्रेलिया",
+    "zh": "澳大利亚",
+    "ja": "オーストラリア",
+    "ko": "오스트레일리아",
+    "vi": "Úc",
+    "th": "ประเทศออสเตรเลีย",
+    "id": "Australia"
+   },
+   "aliases": {
+    "en": [
+     "Commonwealth of Australia",
+     "Straya",
+     "Aussieland",
+     "Oz",
+     "Stralia",
+     "New Holland",
+     "New Hollandia",
+     "Nova Hollandia",
+     "Down Under",
+     "Stria",
+     "The Commonwealth of Australia",
+     "'Straya"
+    ],
+    "es": [
+     "Mancomunidad de Australia"
+    ],
+    "fr": [
+     "Commonwealth d'Australie",
+     "Nouvelle-Hollande",
+     "l'Australie"
+    ],
+    "de": [
+     "Commonwealth von Australien"
+    ],
+    "it": [
+     "Commonwealth dell'Australia"
+    ],
+    "pt": [
+     "Comunidade da Austrália"
+    ],
+    "pl": [],
+    "ru": [
+     "Австралийский Союз",
+     "Австралийский союз"
+    ],
+    "ar": [
+     "أوستراليا",
+     "كومنولث أستراليا",
+     "كومنولث أوستراليا"
+    ],
+    "hi": [],
+    "zh": [
+     "澳大利亚联邦",
+     "澳洲",
+     "澳大利亞",
+     "澳大利亞聯邦",
+     "澳州联邦",
+     "澳州聯邦",
+     "澳"
+    ],
+    "ja": [
+     "豪州",
+     "オーストラリア連邦"
+    ],
+    "ko": [
+     "호주"
+    ],
+    "vi": [
+     "Australia",
+     "Úc Đại Lợi",
+     "Úc Châu",
+     "Ô-xtrây-li-a",
+     "Ôxtrâylia",
+     "nước Úc"
+    ],
+    "th": [
+     "ออสเตรเลีย",
+     "เครือรัฐออสเตรเลีย"
+    ],
+    "id": [
+     "Persemakmuran Australia",
+     "Australi"
+    ]
+   }
+  },
+  "JM": {
+   "qid": "Q766",
+   "labels": {
+    "en": "Jamaica",
+    "es": "Jamaica",
+    "fr": "Jamaïque",
+    "de": "Jamaika",
+    "it": "Giamaica",
+    "pt": "Jamaica",
+    "pl": "Jamajka",
+    "ru": "Ямайка",
+    "ar": "جامايكا",
+    "hi": "जमैका",
+    "zh": "牙买加",
+    "ja": "ジャマイカ",
+    "ko": "자메이카",
+    "vi": "Jamaica",
+    "th": "ประเทศจาเมกา",
+    "id": "Jamaika"
+   },
+   "aliases": {
+    "en": [
+     "JA",
+     "Commonwealth of Jamaica"
+    ],
+    "es": [],
+    "fr": [
+     "Jamaique",
+     "la Jamaïque"
+    ],
+    "de": [
+     "JA"
+    ],
+    "it": [],
+    "pt": [
+     "JA",
+     "jm",
+     "🇯🇲"
+    ],
+    "pl": [],
+    "ru": [
+     "Джамейка"
+    ],
+    "ar": [
+     "جاميكا",
+     "جمايكا",
+     "جامايكي"
+    ],
+    "hi": [
+     "जमैका राष्ट्रमंडल"
+    ],
+    "zh": [
+     "牙买加"
+    ],
+    "ja": [],
+    "ko": [],
+    "vi": [],
+    "th": [],
+    "id": []
+   }
+  },
+  "FR": {
+   "qid": "Q142",
+   "labels": {
+    "en": "France",
+    "es": "Francia",
+    "fr": "France",
+    "de": "Frankreich",
+    "it": "Francia",
+    "pt": "França",
+    "pl": "Francja",
+    "ru": "Франция",
+    "ar": "فرنسا",
+    "hi": "फ़्रान्स",
+    "zh": "法国",
+    "ja": "フランス",
+    "ko": "프랑스",
+    "vi": "Pháp",
+    "th": "ประเทศฝรั่งเศส",
+    "id": "Prancis"
+   },
+   "aliases": {
+    "en": [
+     "French Republic"
+    ],
+    "es": [
+     "República Francesa"
+    ],
+    "fr": [
+     "RF",
+     "la République française",
+     "Fr.",
+     "La France",
+     "L'Hexagone",
+     "Franquistan",
+     "Afrance",
+     "Whallaland"
+    ],
+    "de": [
+     "Französische Republik",
+     "RF"
+    ],
+    "it": [
+     "Repubblica francese",
+     "Repubblica Francese"
+    ],
+    "pt": [
+     "República Francesa",
+     "República da França"
+    ],
+    "pl": [
+     "Republika Francji",
+     "Republika Francuska",
+     "Francji"
+    ],
+    "ru": [
+     "Французская Республика",
+     "ФР",
+     "Французская республика",
+     "Республика Франция",
+     "Пятая Французская Республика"
+    ],
+    "ar": [],
+    "hi": [
+     "फ़्राँस",
+     "फ्रांस",
+     "फ्रान्स",
+     "फ़्रांस",
+     "फ्राँस"
+    ],
+    "zh": [
+     "法兰西共和国",
+     "法兰西",
+     "法蘭西共和國",
+     "法蘭西",
+     "法国"
+    ],
+    "ja": [
+     "法朗西",
+     "フランス共和国",
+     "仏蘭西",
+     "佛蘭西",
+     "仏国",
+     "仏",
+     "佛"
+    ],
+    "ko": [
+     "프랑스 공화국",
+     "법국",
+     "불란서"
+    ],
+    "vi": [
+     "Cộng hòa Pháp",
+     "nước Pháp",
+     "Pháp Lan Tây",
+     "Pha-lang-sa",
+     "Phú Lang Sa"
+    ],
+    "th": [
+     "สาธารณรัฐฝรั่งเศส",
+     "ฝรั่งเศส"
+    ],
+    "id": [
+     "La France"
+    ]
+   }
+  },
+  "OSA": {
+   "qid": "Q35765",
+   "labels": {
+    "en": "Osaka",
+    "es": "Osaka",
+    "fr": "Osaka",
+    "de": "Osaka",
+    "it": "Osaka",
+    "pt": "Osaka",
+    "pl": "Osaka",
+    "ru": "Осака",
+    "ar": "أوساكا",
+    "hi": "ओसाका",
+    "zh": "大阪市",
+    "ja": "大阪市",
+    "ko": "오사카시",
+    "vi": "Ōsaka",
+    "th": "โอซากะ",
+    "id": "Osaka"
+   },
+   "aliases": {
+    "en": [
+     "Osaka City",
+     "Ōsaka City"
+    ],
+    "es": [
+     "Namba",
+     "Ósaka",
+     "大阪",
+     "Nishi-ku"
+    ],
+    "fr": [
+     "ville d'Osaka",
+     "Naniwa"
+    ],
+    "de": [],
+    "it": [],
+    "pt": [],
+    "pl": [],
+    "ru": [],
+    "ar": [
+     "اوساكا",
+     "أوساكا، أوساكا",
+     "أوزاكا",
+     "مدينة أوساكا"
+    ],
+    "hi": [],
+    "zh": [
+     "大阪",
+     "大坂"
+    ],
+    "ja": [
+     "水の都",
+     "天下の台所",
+     "東洋のマンチェスター",
+     "煙の都",
+     "大大阪"
+    ],
+    "ko": [
+     "오사까",
+     "오오사카",
+     "오사카",
+     "대판시",
+     "대판",
+     "대판 시"
+    ],
+    "vi": [
+     "Thành phố Ōsaka",
+     "Thành phố Osaka",
+     "Đại Phản thị"
+    ],
+    "th": [
+     "โอซาก้า"
+    ],
+    "id": []
+   }
+  },
+  "NYC": {
+   "qid": "Q60",
+   "labels": {
+    "en": "New York City",
+    "es": "Nueva York",
+    "fr": "New York",
+    "de": "New York City",
+    "it": "New York",
+    "pt": "Nova Iorque",
+    "pl": "Nowy Jork",
+    "ru": "Нью-Йорк",
+    "ar": "نيويورك",
+    "hi": "न्यूयॉर्क नगर",
+    "zh": "纽约",
+    "ja": "ニューヨーク",
+    "ko": "뉴욕",
+    "vi": "Thành phố New York",
+    "th": "นครนิวยอร์ก",
+    "id": "Kota New York"
+   },
+   "aliases": {
+    "en": [
+     "the five boroughs",
+     "City of New York",
+     "NY City",
+     "New York City, New York",
+     "New York, NY",
+     "New York City, NY",
+     "Capital of the World",
+     "New York City (NYC)",
+     "New York (city)",
+     "city of New York",
+     "Center of the Universe",
+     "New York City, USA",
+     "New York City, United States of America",
+     "New York, New York, USA",
+     "New York (NY)",
+     "New York, N.Y.",
+     "NY, NY",
+     "New York City, United States",
+     "N. Y., N. Y.",
+     "New York City, New York, United States",
+     "Empire City"
+    ],
+    "es": [
+     "La Gran Manzana",
+     "NY Ciudad",
+     "Capital del Mundo",
+     "Ciudad de Nueva York (NYC)",
+     "La Ciudad Tan Bonita Que La Nombraron Dos Veces",
+     "Los Cinco Distritos",
+     "Ciudad de Nueva York",
+     "Centro del Universo"
+    ],
+    "fr": [
+     "Ville de New York",
+     "New-York",
+     "Ville de New-York",
+     "La Grosse Pomme"
+    ],
+    "de": [
+     "Neu-Amsterdam",
+     "Neuyork",
+     "Newyork",
+     "Die Stadt, die niemals schläft",
+     "Stadt, die niemals schläft",
+     "Neu York, New York"
+    ],
+    "it": [
+     "The City of New York",
+     "La grande mela",
+     "New York (New York)",
+     "Nuova York",
+     "New York City, New York",
+     "Città di New York",
+     "New York, NY"
+    ],
+    "pt": [
+     "Nova York",
+     "cidade de Nova York",
+     "cidade de Nova Iorque",
+     "Cidade de Nova Iorque",
+     "Cidade de Nova York",
+     "City of New York",
+     "Cidade de New York",
+     "NY City",
+     "Cidade de NY",
+     "Nova Iorque, Nova Iorque",
+     "Cidade de Nova Iorque, Nova Iorque",
+     "Nova York, Nova York",
+     "Cidade de Nova York, Nova York",
+     "Nova York, NY",
+     "New York City (NYC)",
+     "Nova York (cidade)",
+     "Cidade de Nova York, NY",
+     "Caput Mundi",
+     "Capital do Mundo",
+     "Nova Orca"
+    ],
+    "pl": [
+     "Nowy York"
+    ],
+    "ru": [
+     "Нью-Йорк Сити",
+     "Большое яблоко",
+     "Новый Амстердам",
+     "Нью-Йорк-Сити",
+     "город Нью-Йорк",
+     "Столица мира",
+     "Город большого яблока"
+    ],
+    "ar": [
+     "نيو يورك",
+     "نيورك"
+    ],
+    "hi": [
+     "न्यूयॉर्क शहर"
+    ],
+    "zh": [
+     "纽约市",
+     "紐約",
+     "不眠之城",
+     "世界首都",
+     "大蘋果",
+     "帝國市"
+    ],
+    "ja": [
+     "ニューヨーク市",
+     "ニューヨーク、ニューヨーク",
+     "ニュー・ヨルク",
+     "ビッグ・アップル",
+     "ゴッサム",
+     "眠らない町",
+     "世界の首都",
+     "エンパイア・シティ",
+     "紐育市"
+    ],
+    "ko": [
+     "뉴욕 시",
+     "뉴욕시",
+     "뉴요크시"
+    ],
+    "vi": [
+     "Thành phố Nữu Ước",
+     "Nữu Ước",
+     "Thành phố Niu Oóc",
+     "Niu Oóc"
+    ],
+    "th": [
+     "เมืองนิวยอร์ก",
+     "นครนิวยอร์ค",
+     "มหานครนิวยอร์ก",
+     "เมืองนิวยอร์ค",
+     "นิวยอร์กซิตี",
+     "นิวยอร์กซิตี้",
+     "นิวยอร์คซิตี"
+    ],
+    "id": []
+   }
+  }
+ }
+}

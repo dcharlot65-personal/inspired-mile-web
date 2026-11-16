@@ -31,7 +31,7 @@ const messages: Record<string, string> = {
   'achievements.verse-veteran.description': 'Rodadas de batalha concluídas: {n}',
   'achievements.challenge-master.name': 'Mestre dos desafios',
   'achievements.challenge-master.description': 'Desafios de citações concluídos: {n}',
-  'achievements.completionist.name': 'Complecionista',
+  'achievements.completionist.name': 'Completista',
   'achievements.completionist.description': 'Cartas diferentes colecionadas: {n}',
   'achievements.master-thespian.name': 'Mestre do palco',
   'achievements.master-thespian.description': 'Batalhas vencidas: {n}',

@@ -42,7 +42,7 @@ const messages: Record<string, string> = {
   'variants.ability.JHB.name': 'जोज़ी की पंक्तियाँ',
   'variants.ability.JHB.why': 'जोहांसबर्ग के रैप जगत की तीव्रता',
   'variants.ability.MNL.name': 'FlipTop प्रवाह',
-  'variants.ability.MNL.why': 'फ़िलीपींस की रैप बैटल संस्कृति',
+  'variants.ability.MNL.why': 'फ़िलिपींस की रैप बैटल संस्कृति',
   'variants.ability.IST.name': 'चौराहे का पद',
   'variants.ability.IST.why': 'जहाँ कविता में पूरब और पश्चिम मिलते हैं',
   'variants.ability.TOR.name': 'सिक्स का प्रवाह',
