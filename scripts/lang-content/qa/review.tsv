@@ -220,3 +220,80 @@ ar	trivia.83.o2	ok	reads: Calpurnia and Portia; the flag is OPUS-MT ar-en's
 ar	trivia.83.o3	ok	reads: Cicero and Casca; the flag is OPUS-MT ar-en's
 ar	trivia.97.q	ok	reads: in ترويض النمرة what "the shrew" is called; the flag is OPUS-MT ar-en's
 ar	trivia.90.o0	ok	reads: أمير كودور, "lord (amir) of Cawdor" for Thane of Cawdor: the bank renders thane as أمير throughout (75, 90), beside دوق and إيرل; no source held here gives Arabic for the title, so this is the translator's rendering, not a sourced one
+ko	trivia.102.o0	ok	reads: 남자 법학자: a male lawyer; the flag is OPUS-MT ko-en's
+ko	trivia.103.q	ok	reads: who fakes her death in '헛소동'; the flag is OPUS-MT ko-en's
+ko	trivia.108.q	ok	reads: which play ends with "The rest is silence"; the flag is OPUS-MT ko-en's
+ko	trivia.109.o2	ok	reads: 피비: Phebe (now the English name: no source has the Korean form); the flag is OPUS-MT ko-en's
+ko	trivia.117.o1	ok	reads: 칼: a sword; the flag is OPUS-MT ko-en's
+ko	trivia.121.o3	ok	reads: 청동 상자: the bronze casket; the flag is OPUS-MT ko-en's
+ko	trivia.124.o1	ok	reads: how to rule the country; the flag is OPUS-MT ko-en's
+ko	trivia.125.o3	ok	reads: Viola in '십이야'; the flag is OPUS-MT ko-en's
+ko	trivia.128.o3	ok	reads: 한여름 잔치: a midsummer feast; the flag is OPUS-MT ko-en's
+ko	trivia.135.o3	ok	reads: 반역: treason; the flag is OPUS-MT ko-en's
+ko	trivia.135.q	ok	reads: what crime Claudio is arrested for in '자에는 자로'; the flag is OPUS-MT ko-en's
+ko	trivia.138.o1	ok	reads: 잠드는 약: a sleeping draught; the flag is OPUS-MT ko-en's
+ko	trivia.139.o0	ok	reads: Cornwall (now the English name); the flag is OPUS-MT ko-en's
+ko	trivia.139.o3	ok	reads: Oswald (now the English name); the flag is OPUS-MT ko-en's
+ko	trivia.141.q	ok	reads: in which play the bumbling constable Dogberry appears; the flag is OPUS-MT ko-en's
+ko	trivia.147.o2	ok	reads: Oswald (now the English name); the flag is OPUS-MT ko-en's
+ko	trivia.147.o3	ok	reads: Cornwall (now the English name); the flag is OPUS-MT ko-en's
+ko	trivia.149.q	ok	reads: the name of the duke who disguises himself as a friar; the flag is OPUS-MT ko-en's
+ko	trivia.153.o1	ok	reads: written in free verse, not iambic pentameter; the flag is OPUS-MT ko-en's
+ko	trivia.154.o0	ok	reads: 굽은 등: a bent back; the flag is OPUS-MT ko-en's
+ko	trivia.154.o2	ok	reads: 내반족: a club foot; the flag is OPUS-MT ko-en's
+ko	trivia.162.q	ok	reads: the name of the man who watches the play in the frame story; the flag is OPUS-MT ko-en's
+ko	trivia.167.o1	ok	reads: 전집: the complete works; the flag is OPUS-MT ko-en's
+ko	trivia.167.o2	ok	reads: 사절판 모음집: the quarto collection; the flag is OPUS-MT ko-en's
+ko	trivia.170.o3	ok	reads: 해설자: the narrator; the flag is OPUS-MT ko-en's
+ko	trivia.174.o0	ok	reads: disguised as a servant called Caius, stays near Lear; the flag is OPUS-MT ko-en's
+ko	trivia.174.o3	ok	reads: 은둔자가 된다: becomes a hermit; the flag is OPUS-MT ko-en's
+ko	trivia.181.o1	ok	reads: 희비극: tragicomedy; the flag is OPUS-MT ko-en's
+ko	trivia.181.o2	ok	reads: 목가극: pastoral play; the flag is OPUS-MT ko-en's
+ko	trivia.181.o3	ok	reads: 가면극: masque; the flag is OPUS-MT ko-en's
+ko	trivia.182.q	ok	reads: who says "…"; the flag is OPUS-MT ko-en's
+ko	trivia.185.o0	ok	reads: 자신과 동침할 것: that she sleep with him; the flag is OPUS-MT ko-en's
+ko	trivia.187.o3	ok	reads: 악단석: the musicians' seats; the flag is OPUS-MT ko-en's
+ko	trivia.190.o0	ok	reads: must choose the right one of three caskets (gold, silver, lead); the flag is OPUS-MT ko-en's
+ko	trivia.191.o1	ok	reads: 시간 영감: old man Time, Father Time; the flag is OPUS-MT ko-en's
+ko	trivia.191.o2	ok	reads: 신탁: the oracle; the flag is OPUS-MT ko-en's
+ko	trivia.193.o3	ok	reads: make him believe he is going deaf; the flag is OPUS-MT ko-en's
+ko	trivia.194.o1	ok	reads: 닫집: the canopy; the flag is OPUS-MT ko-en's
+ko	trivia.194.o2	ok	reads: 창공: the firmament; the flag is OPUS-MT ko-en's
+ko	trivia.197.o2	ok	reads: 광대 모자: a jester's cap; the flag is OPUS-MT ko-en's
+ko	trivia.199.o2	ok	reads: 오합지졸: the rabble; the flag is OPUS-MT ko-en's
+ko	trivia.3.q	ok	reads: who says "…"; the flag is OPUS-MT ko-en's
+ko	trivia.31.q	ok	reads: in which play Beatrice and Benedick appear (sourced Korean names); the flag is OPUS-MT ko-en's
+ko	trivia.34.o2	ok	reads: 혹은 실수 연발: "or, The Comedy of Errors" (실수 연발 is Wikidata's Korean label); the flag is OPUS-MT ko-en's
+ko	trivia.34.o3	ok	reads: 혹은 끝이 좋으면: "or, All's Well"; the flag is OPUS-MT ko-en's
+ko	trivia.34.q	ok	reads: the subtitle of '십이야'; the flag is OPUS-MT ko-en's
+ko	trivia.4.o1	ok	reads: 장편소설: novels; the flag is OPUS-MT ko-en's
+ko	trivia.41.o0	ok	reads: 기수: the standard-bearer, ensign; the flag is OPUS-MT ko-en's
+ko	trivia.48.o0	ok	reads: 삼색제비꽃 (love-in-idleness): the pansy; the flag is OPUS-MT ko-en's
+ko	trivia.48.o3	ok	reads: 제비꽃: the violet; the flag is OPUS-MT ko-en's
+ko	trivia.52.o1	ok	reads: 사극: history plays; the flag is OPUS-MT ko-en's
+ko	trivia.53.o3	ok	reads: 영주: the lord of the city (the Prince); the flag is OPUS-MT ko-en's
+ko	trivia.53.q	ok	reads: who says "…"; the flag is OPUS-MT ko-en's
+ko	trivia.66.o0	ok	reads: he is dying and can say no more; the flag is OPUS-MT ko-en's
+ko	trivia.68.o0	ok	reads: 당나귀: a donkey; the flag is OPUS-MT ko-en's
+ko	trivia.75.o0	ok	reads: 글래미스의 영주: Thane of Glamis; the flag is OPUS-MT ko-en's
+ko	trivia.75.o3	ok	reads: Earl of Northumberland; the flag is OPUS-MT ko-en's
+ko	trivia.75.q	ok	reads: Macbeth's title at the start; the flag is OPUS-MT ko-en's
+ko	trivia.83.o2	ok	reads: Calpurnia and Portia; the flag is OPUS-MT ko-en's
+ko	trivia.83.o3	ok	reads: Cicero and Casca; the flag is OPUS-MT ko-en's
+ko	trivia.84.o2	ok	reads: 사극: a history play; the flag is OPUS-MT ko-en's
+ko	trivia.9.o0	ok	reads: 발코니: the balcony; the flag is OPUS-MT ko-en's
+ko	trivia.90.o0	ok	reads: 코더의 영주: Thane of Cawdor; the flag is OPUS-MT ko-en's
+ko	trivia.90.o1	ok	reads: 글래미스의 영주: Thane of Glamis; the flag is OPUS-MT ko-en's
+ko	trivia.91.q	ok	reads: Viola's name in disguise; the flag is OPUS-MT ko-en's
+ko	trivia.94.o0	ok	reads: 베개(질식시킨다): a pillow (smothering); the flag is OPUS-MT ko-en's
+ko	trivia.94.o3	ok	reads: 밧줄: a rope; the flag is OPUS-MT ko-en's
+ko	trivia.97.o0	ok	reads: Katherina (Kate) (now the English name); the flag is OPUS-MT ko-en's
+ko	trivia.97.q	ok	reads: the shrew's name; the flag is OPUS-MT ko-en's
+ko	trivia.103.o3	fixed	Ursula was 어설라, a form no source has; now 어슐라, as the ko.wikipedia cast list of 헛소동 writes her (names-evidence.tsv)
+ru	names:outside-the-table	fixed	names in options that Wikidata has no item for (Wikidata search finds only opera characters): Friar John, Friar Francis, Aaron, Lucio: Russian forms in no article held here, now in English
+ar	names:outside-the-table	fixed	names in options that Wikidata has no item for (Wikidata search finds only opera characters): Montague, and the names of Friar John and Friar Francis: in English (the title الراهب kept); Duke Senior kept as الدوق المنفي, a description
+hi	names:outside-the-table	fixed	names in options that Wikidata has no item for (Wikidata search finds only opera characters): Montague, Capulet, Friar John, Friar Francis: Hindi forms in no article held here, now in English
+ja	names:outside-the-table	fixed	names in options that Wikidata has no item for (Wikidata search finds only opera characters): Adriana, Claribel, Escalus, Phebe, Friar John, Friar Francis: in no article held here, now in English; Duke Senior kept as 老公爵, a description; the other 24 confirmed in the plays' ja.wikipedia articles
+ko	names:outside-the-table	fixed	names in options that Wikidata has no item for (Wikidata search finds only opera characters): Aaron, Adriana, Autolycus, Capulet, Claribel, Cornwall, Escalus, Katherina, Kent, Montague, Oswald, Phebe, Vincentio, Friar John, Friar Francis: in no ko.wikipedia article held here, now in English; Ursula 어슐라 from the cast list of 헛소동
+zh	names:outside-the-table	fixed	names in options that Wikidata has no item for (Wikidata search finds only opera characters): Aaron in English; Friar Francis 法兰西斯神父, the name as zh.wikipedia glosses it
+th	names:outside-the-table	fixed	names in options that Wikidata has no item for (Wikidata search finds only opera characters): Duke Senior kept as ดยุกผู้ถูกเนรเทศ, a description; the other names were already in English
