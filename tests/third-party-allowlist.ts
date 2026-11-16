@@ -74,8 +74,8 @@ export const THIRD_PARTY_ALLOWLIST: AllowedRequest[] = [
  */
 export const NOT_PAGE_REQUESTS = [
   { name: 'Cloudflare', where: 'network', reason: 'Carries all traffic to the site and terminates TLS; the browser only ever talks to the site\'s own origin.' },
-  // Anthropic is not listed: backend/src/multiplayer/judge.rs can call it only when LLM_API_KEY is set,
-  // production has never set it (checked 2026-11-16), and that call is being removed.
+  // No AI company is listed: multiplayer verses are scored on our server by fixed rules
+  // (backend/src/verse/); the cloud judge and LLM_API_KEY are gone.
   { name: 'Resend', where: 'backend/src/auth/email.rs', reason: 'Delivers sign-in codes for accounts that gave an email address. Server to server.' },
   { name: 'Google Scene Viewer', where: 'src/lib/ar-viewer.ts, src/pages/collection.astro (ar-modes="scene-viewer")', reason: 'On Android, tapping "View in AR" opens Google\'s app with the model\'s address. A hand-off on a tap, not a request by the page.' },
   { name: 'Outbound links', where: 'src/layouts/BaseLayout.astro footer, src/pages/about.astro', reason: 'Ordinary links (YouTube, X, LinkedIn, Facebook, Southern Shakespeare Festival). Nothing is sent unless followed.' },
