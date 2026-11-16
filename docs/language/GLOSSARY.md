@@ -437,10 +437,10 @@ Platform term. Reference: Android's own translation (AOSP CredentialManager stri
 | ru | ключ доступа | ключ | Android (AOSP CredentialManager): ключ доступа / ключи доступа |
 | ar | مفتاح المرور | مفتاح مرور, مفاتيح المرور, مفاتيح مرور, مفتاح | Android (AOSP CredentialManager): مفتاح المرور / مفاتيح المرور |
 | hi | पासकी |  | Android (AOSP CredentialManager): पासकी / पासकी |
-| zh | 通行密钥 |  | Android (AOSP CredentialManager): 通行密钥 / 通行密钥 |
+| zh | 通行密钥 |  | Android (AOSP CredentialManager): 通行密钥 / 通行密钥. Counted with 个, as Android counts them: Android (AOSP CredentialManager, more_options_usage_passkeys): %1$s 个通行密钥. The game had written 一把 / 这把 (the measure word of a key with a handle); the reviewer model objected in two strings, and all fifteen now take 个. |
 | ja | パスキー |  | Android (AOSP CredentialManager): パスキー / パスキー |
 | ko | 패스키 |  | Android (AOSP CredentialManager): 패스키 / 패스키 |
-| vi | khóa truy cập |  | Android (AOSP CredentialManager): khoá đăng nhập / khoá truy cập |
+| vi | khoá truy cập |  | Android (AOSP CredentialManager): khoá đăng nhập / khoá truy cập. Written with Android's tone-mark placement (khoá, not khóa), which the LibreOffice vi_VN dictionary also uses. |
 | th | พาสคีย์ |  | Android (AOSP CredentialManager): พาสคีย์ / พาสคีย์ |
 | id | kunci sandi |  | Android (AOSP CredentialManager): kunci sandi / kunci sandi |
 
@@ -454,17 +454,39 @@ Platform term. Reference: Android's translation of the 'Sign in' button (AOSP co
 | fr | connexion | connect | Android (AOSP core, kg_login_submit_button): Connexion |
 | de | anmelden | anmeld, meld | Android (AOSP core, kg_login_submit_button): Anmelden |
 | it | accedi | acced, accesso | Android (AOSP core, kg_login_submit_button): Accedi |
-| pt | entrar | entra, entre, conectado | Android (AOSP core, kg_login_submit_button): Fazer login |
+| pt | entrar | entra, entre, conectado | Mozilla Firefox (sources/mozilla-terms.json, fxa-menu-sign-in-promo-button): Entrar. Android (kg_login_submit_button) and Google's help write Fazer login; the game keeps Mozilla's Entrar. |
 | pl | zaloguj | logow, logując, loguj | Android (AOSP core, kg_login_submit_button): Zaloguj się |
 | ru | войти | вход, войд, входи | Android (AOSP core, kg_login_submit_button): Войти |
 | ar | تسجيل الدخول | الدخول, دخول, ادخل, تدخل | Android (AOSP core, kg_login_submit_button): تسجيل الدخول |
 | hi | साइन इन |  | Android (AOSP core, kg_login_submit_button): साइन इन करें |
 | zh | 登录 |  | Android (AOSP core, kg_login_submit_button): 登录 |
-| ja | サインイン |  | Android (AOSP core, kg_login_submit_button): ログイン |
+| ja | サインイン |  | Apple's word (sources/apple-passkeys.json). Android (kg_login_submit_button: ログイン), Google Help (ログイン) and Mozilla (ログイン) all write ログイン; the game keeps Apple's サインイン. For a native reader. |
 | ko | 로그인 |  | Android (AOSP core, kg_login_submit_button): 로그인 |
 | vi | đăng nhập |  | Android (AOSP core, kg_login_submit_button): Đăng nhập |
-| th | เข้าสู่ระบบ |  | Android (AOSP core, kg_login_submit_button): ลงชื่อเข้าใช้ |
-| id | masuk |  | Android (AOSP core, kg_login_submit_button): Login |
+| th | ลงชื่อเข้าใช้ |  | Android (AOSP core, kg_login_submit_button): ลงชื่อเข้าใช้; Google Help, Gmail answer 8494 (sources/google-help.json): ลงชื่อเข้าใช้. (The game had written เข้าสู่ระบบ, which no vendor fetched uses; Mozilla writes ลงชื่อเข้า.) Pairs with ออกจากระบบ, Google's sign out. |
+| id | masuk |  | Not vendor-sourced: Android (kg_login_submit_button) and Google Help (answer 8494) write the loanword Login; Mozilla has no Indonesian sign-in string. The game keeps the Indonesian word Masuk, paired with Keluar, Mozilla's sign out. For a native reader. |
+
+### sign out
+
+Platform term. References: Mozilla's shipped Firefox translation of the account menu's Sign Out, and the heading of Google's own help page on signing out of Gmail, in each language. The Android strings fetched have no sign-out string.
+
+| Language | Term | Also accepted (stems) | Source |
+|---|---|---|---|
+| es | cerrar sesión | cierra sesión | Mozilla Firefox (sources/mozilla-terms.json, fxa-menu-sign-out): Cerrar sesión…; Google Help, Gmail answer 8154 (sources/google-help.json): Cerrar la sesión de Gmail. |
+| fr | se déconnecter | déconnect | Mozilla Firefox (sources/mozilla-terms.json, fxa-menu-sign-out): Se déconnecter…; Google Help, Gmail answer 8154 (sources/google-help.json): Se déconnecter de Gmail. |
+| de | abmelden | melde dich ab | Mozilla Firefox (sources/mozilla-terms.json, fxa-menu-sign-out): Abmelden…; Google Help, Gmail answer 8154 (sources/google-help.json): Aus Gmail abmelden. |
+| it | esci | uscire | Mozilla Firefox (sources/mozilla-terms.json, fxa-menu-sign-out): Disconnetti…; Google Help, Gmail answer 8154 (sources/google-help.json): Uscire da Gmail. Mozilla writes Disconnetti; Google’s uscire (imperative Esci) is kept. |
+| pt | sair | saia | Mozilla Firefox (sources/mozilla-terms.json, fxa-menu-sign-out): Desconectar…; Google Help, Gmail answer 8154 (sources/google-help.json): Sair do Gmail. Mozilla writes Desconectar; Google’s Sair is kept. |
+| pl | wyloguj |  | Mozilla Firefox (sources/mozilla-terms.json, fxa-menu-sign-out): Wyloguj się…; Google Help, Gmail answer 8154 (sources/google-help.json): Wylogowywanie się z Gmaila. |
+| ru | выйти | выйди | Mozilla Firefox (sources/mozilla-terms.json, fxa-menu-sign-out): Выйти…; Google Help, Gmail answer 8154 (sources/google-help.json): Как выйти из аккаунта Gmail. |
+| ar | تسجيل الخروج | الخروج | Mozilla Firefox (sources/mozilla-terms.json, fxa-menu-sign-out): اخرج…; Google Help, Gmail answer 8154 (sources/google-help.json): تسجيل الخروج من Gmail. Mozilla writes the imperative اخرج; Google’s تسجيل الخروج is kept. |
+| hi | साइन आउट |  | Mozilla Firefox (sources/mozilla-terms.json, fxa-menu-sign-out): साइन आउट…; Google Help, Gmail answer 8154 (sources/google-help.json): Gmail से साइन आउट करना. |
+| zh | 退出登录 |  | Mozilla Firefox (sources/mozilla-terms.json, fxa-menu-sign-out): 退出登录…; Google Help, Gmail answer 8154 (sources/google-help.json): 退出 Gmail. |
+| ja | サインアウト |  | Mozilla Firefox (sources/mozilla-terms.json, fxa-menu-sign-out): ログアウト...; Google Help, Gmail answer 8154 (sources/google-help.json): Gmail からログアウトする. Both vendors here write ログアウト. The game keeps サインアウト to pair with サインイン, Apple’s word for sign in (sources/apple-passkeys.json). For a native reader. |
+| ko | 로그아웃 |  | Mozilla Firefox (sources/mozilla-terms.json, fxa-menu-sign-out): 로그아웃…; Google Help, Gmail answer 8154 (sources/google-help.json): Gmail에서 로그아웃하기. |
+| vi | đăng xuất |  | Mozilla Firefox (sources/mozilla-terms.json, fxa-menu-sign-out): Đăng xuất…; Google Help, Gmail answer 8154 (sources/google-help.json): Đăng xuất khỏi Gmail. |
+| th | ออกจากระบบ |  | Mozilla Firefox (sources/mozilla-terms.json, fxa-menu-sign-out): ลงชื่อออก…; Google Help, Gmail answer 8154 (sources/google-help.json): ออกจากระบบ Gmail. Mozilla writes ลงชื่อออก; Google’s ออกจากระบบ is kept: Google’s help pairs it with ลงชื่อเข้าใช้, the game’s sign in (answer 8494). |
+| id | keluar |  | Mozilla Firefox (sources/mozilla-terms.json, fxa-menu-sign-out): Keluar…; Google Help, Gmail answer 8154 (sources/google-help.json): Logout dari Gmail. Google’s help writes the loanword Logout; Mozilla’s Keluar is kept (it pairs with Masuk, the game’s sign in). |
 
 ### microphone
 
@@ -484,7 +506,7 @@ Platform term. Reference: Android's permission-group label (AOSP core strings, p
 | zh | 麦克风 |  | Android (AOSP core, permgrouplab_microphone): 麦克风 |
 | ja | マイク |  | Android (AOSP core, permgrouplab_microphone): マイク |
 | ko | 마이크 |  | Android (AOSP core, permgrouplab_microphone): 마이크 |
-| vi | micro |  | Android (AOSP core, permgrouplab_microphone): Micrô |
+| vi | micrô |  | Android (AOSP core, permgrouplab_microphone, and SystemUI, screenrecord_mic_label): Micrô. The game had written micro. (The LibreOffice vi_VN Hunspell list knows neither spelling: it holds Vietnamese syllables only.) |
 | th | ไมโครโฟน |  | Android (AOSP core, permgrouplab_microphone): ไมโครโฟน |
 | id | mikrofon |  | Android (AOSP core, permgrouplab_microphone): Mikrofon |
 
@@ -518,19 +540,63 @@ Platform term. Reference: Android's 'Screen lock' (AOSP core strings, screen_loc
 |---|---|---|---|
 | es | bloqueo de pantalla |  | Android (AOSP core, screen_lock): Bloqueo de pantalla |
 | fr | verrouillage de l’écran | verrouillage | Android (AOSP core, screen_lock): Verrouillage de l'écran |
-| de | Bildschirmsperre |  | Android (AOSP core, screen_lock): Displaysperre |
+| de | Displaysperre |  | Android (AOSP core, screen_lock; CredentialManager, passkey_creation_intro_body_fingerprint): Displaysperre. (The game had written Bildschirmsperre, which no vendor string fetched uses.) |
 | it | blocco schermo | blocco dello schermo | Android (AOSP core, screen_lock): Blocco schermo |
-| pt | bloqueio de tela |  | Android (AOSP core, screen_lock): Bloquear tela |
+| pt | bloqueio de tela |  | Android (AOSP CredentialManager, passkey_creation_intro_body_fingerprint): 'o bloqueio de tela' (core screen_lock is the verb phrase Bloquear tela). |
 | pl | blokada ekranu | blokad | Android (AOSP core, screen_lock): Blokada ekranu |
 | ru | блокировка экрана | блокировк | Android (AOSP core, screen_lock): Блокировка экрана |
 | ar | قفل الشاشة |  | Android (AOSP core, screen_lock): قفل الشاشة |
-| hi | स्क्रीन लॉक |  | Android (AOSP core, screen_lock): स्‍क्रीन लॉक |
+| hi | स्क्रीन लॉक |  | Android (AOSP core, screen_lock): स्‍क्रीन लॉक (Android's spelling carries a zero-width joiner, स्‍क्रीन; the same word.) |
 | zh | 屏幕锁 |  | Android (AOSP core, screen_lock): 屏幕锁定 |
-| ja | 画面ロック |  | Android (AOSP core, screen_lock): 画面をロック |
+| ja | 画面ロック |  | Android (AOSP CredentialManager, passkey_creation_intro_body_fingerprint): 画面ロック (core screen_lock is the verb phrase 画面をロック). |
 | ko | 화면 잠금 |  | Android (AOSP core, screen_lock): 화면 잠금 |
-| vi | khóa màn hình | khoá màn hình | Android (AOSP core, screen_lock): Phương thức khoá màn hình |
+| vi | khoá màn hình |  | Android (AOSP core, screen_lock): Phương thức khoá màn hình |
 | th | ล็อกหน้าจอ |  | Android (AOSP core, screen_lock): ล็อกหน้าจอ |
 | id | kunci layar |  | Android (AOSP core, screen_lock): Kunci layar |
+
+### Shakespeare
+
+A person's name, as Wikidata records it in the language (sources/wikidata-names.json, fetch-wikidata-names.mjs).
+
+| Language | Term | Also accepted (stems) | Source |
+|---|---|---|---|
+| es | Shakespeare |  | The name as the es Wikipedia article title writes it (William Shakespeare; Wikidata Q692, which has no separate es label). |
+| fr | Shakespeare |  | The name as the fr Wikipedia article title writes it (William Shakespeare; Wikidata Q692, which has no separate fr label). |
+| de | Shakespeare |  | The name as the de Wikipedia article title writes it (William Shakespeare; Wikidata Q692, which has no separate de label). |
+| it | Shakespeare |  | The name as the it Wikipedia article title writes it (William Shakespeare; Wikidata Q692, which has no separate it label). |
+| pt | Shakespeare |  | The name as the pt Wikipedia article title writes it (William Shakespeare; Wikidata Q692, which has no separate pt label). |
+| pl | Szekspir |  | Wikidata alias (Q692): Szekspir; the label is William Shakespeare. |
+| ru | Шекспир |  | Wikidata label (Q692): Уильям Шекспир; Wikipedia article Шекспир, Уильям. |
+| ar | شكسبير |  | Wikidata label (Q692): وليم شكسبير; Wikipedia article وليم شكسبير. |
+| hi | शेक्सपीयर |  | Wikidata label (Q692): विलियम शेक्सपीयर; Wikipedia article विलियम शेक्सपीयर. Changed from शेक्सपियर to the label. |
+| zh | 莎士比亚 |  | Wikidata label (Q692): 威廉·莎士比亚; Wikipedia article 威廉·莎士比亚. |
+| ja | シェイクスピア |  | Wikidata label (Q692): ウィリアム・シェイクスピア; Wikipedia article ウィリアム・シェイクスピア. |
+| ko | 셰익스피어 |  | Wikidata label (Q692): 윌리엄 셰익스피어; Wikipedia article 윌리엄 셰익스피어. |
+| vi | Shakespeare |  | Wikidata label (Q692): William Shakespeare; Wikipedia article William Shakespeare. |
+| th | เชกสเปียร์ |  | Wikidata label (Q692): วิลเลียม เชกสเปียร์; Wikipedia article วิลเลียม เชกสเปียร์. |
+| id | Shakespeare |  | The name as the id Wikipedia article title writes it (William Shakespeare; Wikidata Q692, which has no separate id label). |
+
+### Mercutio
+
+A character's name, as Wikidata records it in the language (sources/wikidata-names.json). Where Wikidata has nothing, the entry says so.
+
+| Language | Term | Also accepted (stems) | Source |
+|---|---|---|---|
+| es | Mercucio |  | Wikidata label (Q1767900): Mercucio; Wikipedia article Mercucio. |
+| fr | Mercutio |  | Wikidata label (Q1767900): Mercutio; Wikipedia article Mercutio. |
+| de | Mercutio |  | Wikidata label (Q1767900): Mercutio; Wikipedia article Mercutio. |
+| it | Mercuzio |  | Wikidata label (Q1767900): Mercuzio; Wikipedia article Mercuzio. |
+| pt | Mercúcio |  | Not sourced: Wikidata has no pt label or alias that contains it (Q1767900). |
+| pl | Merkuc |  | Wikidata label (Q1767900): Merkucjo; Wikipedia article Merkucjo. Stem Merkuc, so the genitive Merkucja passes. |
+| ru | Меркуцио |  | Wikidata label (Q1767900): Меркуцио; Wikipedia article Меркуцио. |
+| ar | ماركيشيو |  | Wikidata label (Q1767900): ماركيشيو; Wikipedia article ماركيشيو. Changed from مركوشيو to the label. |
+| hi | मरकूशियो |  | Wikidata label (Q1767900): मरकूशियो. Changed from मर्क्यूशियो to the label. |
+| zh | 茂丘西奥 |  | Wikidata alias (Q1767900): 茂丘西奧, written in simplified characters; kept over the label 莫枯修, which has no Simplified-Chinese (zh-hans) counterpart, because it is the form the game already used. For a native reader. |
+| ja | マキューシオ |  | Not sourced: Wikidata has no ja label or alias that contains it (Q1767900). |
+| ko | 머큐시오 |  | Wikidata label (Q1767900): 머큐시오. Changed from the alias 머큐쇼 to the label. |
+| vi | Mercutio |  | Not sourced in this language (Wikidata Q1767900 has no label); the original name, as the English label writes it. |
+| th | เมอร์คิวชิโอ |  | Not sourced: Wikidata has no th label or alias that contains it (Q1767900). |
+| id | Mercutio |  | Not sourced in this language (Wikidata Q1767900 has no label); the original name, as the English label writes it. |
 
 ## Names of forms and devices
 
@@ -542,17 +608,17 @@ Platform term. Reference: Android's 'Screen lock' (AOSP core strings, screen_loc
 | fr | Distique | fr Wikipedia article Distique (littérature) (Wikidata Q4779829) |
 | de | Zweizeiler | de Wikipedia article Zweizeiler (Verslehre) (Wikidata Q4779829) |
 | it | Distico | it Wikipedia article Distico (Wikidata Q4779829) |
-| pt | Dístico | pt Wikipedia article Dístico (Wikidata Q4779829) |
-| pl | Dystych | Title of the pl Wikipedia article Dystych (Wikidata Q906442, distich); the couplet item itself has no Polish article. |
+| pt | Dístico | pt Wikipedia article Dístico (Wikidata Q4779829) (English Wiktionary's translation table gives parelha; the Wikipedia title is kept.) |
+| pl | Dystych | Title of the pl Wikipedia article Dystych (Wikidata Q906442, distich); the couplet item itself has no Polish article. (English Wiktionary's translation table gives dwuwiersz; the Wikipedia title is kept.) |
 | ru | Двустишие | ru Wikipedia article Двустишие (Wikidata Q4779829) |
 | ar | بيتان مقفّيان | A description (two rhymed lines), not a term. Wikidata links the Arabic article مربع (شعر) to this concept; it was not adopted because, to the translator's knowledge, مربع names a four-part stanza in Arabic prosody. Not verified: for a native reader. |
 | hi | दोहा | दोहा is the rhymed couplet of the Hindi tradition (hi Wikipedia article दोहा, Wikidata Q5288532). A doha also has a fixed metre, which the game does not check. Replaces the coined दोहा-युग्म. |
 | zh | 对句 | zh Wikipedia article 对句 (Wikidata Q4779829) |
-| ja | 二行連 | ja Wikipedia article 二行連 (Wikidata Q4779829) |
-| ko | 쿠플레 | ko Wikipedia article 쿠플레 (Wikidata Q4779829) |
+| ja | 二行連 | ja Wikipedia article 二行連 (Wikidata Q4779829) (English Wiktionary's translation table gives 対句; the Wikipedia title is kept.) |
+| ko | 쿠플레 | ko Wikipedia article 쿠플레 (Wikidata Q4779829) (English Wiktionary's translation table gives 대구(對句); the Wikipedia title is kept.) |
 | vi | Câu đối vần | No article for this concept. Câu đối (vi Wikipedia, Q1168671) is the antithetical couplet, a different form; the name here adds vần (rhyme). Coined: for a native reader. |
 | th | กลอนคู่ | No article for this concept and none titled กลอนคู่. Not sourced: for a native reader. |
-| id | Kuplet | Wikidata links the Indonesian article Bait (sastra); bait is the everyday Indonesian word for a stanza, so it was not adopted. Kuplet is not an article title. Not sourced: for a native reader. |
+| id | Kuplet | English Wiktionary (docs/language/sources/wiktionary-translations.json), couplet, sense 'in poetry, a pair of lines with rhyming end words': Indonesian bait, kuplet, untai. Kuplet is taken because bait is also the everyday word for a stanza, which is what Wikidata's link (the id article Bait (sastra)) is about. |
 
 ### Paired Quatrain (`form.quatrain-aabb.name`, Wikidata Q570948)
 
@@ -563,14 +629,14 @@ Platform term. Reference: Android's 'Screen lock' (AOSP core strings, screen_loc
 | de | Vierzeiler im Paarreim | Vierzeiler + the rhyme pattern. Vierzeiler: de Wikipedia article Vierzeiler (Wikidata Q570948) |
 | it | Quartina a rima baciata | Quartina + the rhyme pattern. Quartina: it Wikipedia article Quartina (metrica) (Wikidata Q570948) |
 | pt | Quadra de rimas emparelhadas | Quadra + the rhyme pattern. Quadra: Wikidata alias quadra |
-| pl | Czterowiersz parzysty | Czterowiersz + the rhyme pattern. Czterowiersz: not an article title (the article is Tetrastych); the everyday Polish word, not sourced |
+| pl | Czterowiersz parzysty | Czterowiersz + the rhyme pattern. Czterowiersz: English Wiktionary (docs/language/sources/wiktionary-translations.json), quatrain, 'a stanza of four lines': Polish czterowiersz (also tetrastych, kwartyna). The rhyme-pattern words are not sourced. |
 | ru | Катрен с парной рифмой | Катрен + the rhyme pattern. Катрен: ru Wikipedia article Катрен (Wikidata Q570948) |
 | ar | رباعية مزدوجة القافية | رباعية + the rhyme pattern. رباعية: ar Wikipedia article رباعية (شعر) (Wikidata Q570948) |
 | hi | जोड़ीदार चौपदी | चौपदी + the rhyme pattern. चौपदी: not sourced: for a native reader |
 | zh | 连韵四行诗 | 四行诗 + the rhyme pattern. 四行诗: zh Wikipedia article 四行诗 (Wikidata Q570948) |
 | ja | 対韻の四行連 | 四行連 + the rhyme pattern. 四行連: ja Wikipedia article 四行連 (Wikidata Q570948) |
 | ko | 짝운 4행시 | 4행시 + the rhyme pattern. 4행시: not sourced |
-| vi | Tứ tuyệt vần liền | Tứ tuyệt + the rhyme pattern. Tứ tuyệt: not sourced; tứ tuyệt usually names the Chinese-style quatrain: for a native reader |
+| vi | Thơ bốn câu vần liền | Thơ bốn câu + the rhyme pattern (vần liền, consecutive rhyme). Thơ bốn câu: English Wiktionary (docs/language/sources/wiktionary-translations.json), quatrain, 'a stanza of four lines': Vietnamese thơ bốn câu. Replaces Tứ tuyệt, which names the Chinese four-line jueju (the game's own Tuyệt cú form, whose brief calls it bài tứ tuyệt). The rhyme-pattern words are not sourced. |
 | th | กลอนสี่สัมผัสคู่ | กลอนสี่ + the rhyme pattern. กลอนสี่: not an article title; not sourced |
 | id | Sajak empat baris berpasangan | Sajak empat baris + the rhyme pattern. Sajak empat baris: id Wikipedia article Sajak empat baris (Wikidata Q570948) |
 
@@ -583,14 +649,14 @@ Platform term. Reference: Android's 'Screen lock' (AOSP core strings, screen_loc
 | de | Vierzeiler im Kreuzreim | Vierzeiler + the rhyme pattern. Vierzeiler: de Wikipedia article Vierzeiler (Wikidata Q570948) |
 | it | Quartina a rima alternata | Quartina + the rhyme pattern. Quartina: it Wikipedia article Quartina (metrica) (Wikidata Q570948) |
 | pt | Quadra de rimas cruzadas | Quadra + the rhyme pattern. Quadra: Wikidata alias quadra |
-| pl | Czterowiersz krzyżowy | Czterowiersz + the rhyme pattern. Czterowiersz: not an article title (the article is Tetrastych); the everyday Polish word, not sourced |
+| pl | Czterowiersz krzyżowy | Czterowiersz + the rhyme pattern. Czterowiersz: English Wiktionary (docs/language/sources/wiktionary-translations.json), quatrain, 'a stanza of four lines': Polish czterowiersz (also tetrastych, kwartyna). The rhyme-pattern words are not sourced. |
 | ru | Катрен с перекрёстной рифмой | Катрен + the rhyme pattern. Катрен: ru Wikipedia article Катрен (Wikidata Q570948) |
 | ar | رباعية متقاطعة القافية | رباعية + the rhyme pattern. رباعية: ar Wikipedia article رباعية (شعر) (Wikidata Q570948) |
 | hi | एकांतर चौपदी | चौपदी + the rhyme pattern. चौपदी: not sourced: for a native reader |
 | zh | 交韵四行诗 | 四行诗 + the rhyme pattern. 四行诗: zh Wikipedia article 四行诗 (Wikidata Q570948) |
 | ja | 交差韻の四行連 | 四行連 + the rhyme pattern. 四行連: ja Wikipedia article 四行連 (Wikidata Q570948) |
 | ko | 교차운 4행시 | 4행시 + the rhyme pattern. 4행시: not sourced |
-| vi | Tứ tuyệt vần chéo | Tứ tuyệt + the rhyme pattern. Tứ tuyệt: not sourced; tứ tuyệt usually names the Chinese-style quatrain: for a native reader |
+| vi | Thơ bốn câu vần chéo | Thơ bốn câu + the rhyme pattern (vần chéo, crossed rhyme). Thơ bốn câu: English Wiktionary (docs/language/sources/wiktionary-translations.json), quatrain, 'a stanza of four lines': Vietnamese thơ bốn câu. Replaces Tứ tuyệt, which names the Chinese four-line jueju (the game's own Tuyệt cú form). The rhyme-pattern words are not sourced. |
 | th | กลอนสี่สัมผัสไขว้ | กลอนสี่ + the rhyme pattern. กลอนสี่: not an article title; not sourced |
 | id | Sajak empat baris bersilang | Sajak empat baris + the rhyme pattern. Sajak empat baris: id Wikipedia article Sajak empat baris (Wikidata Q570948) |
 
@@ -603,7 +669,7 @@ Platform term. Reference: Android's 'Screen lock' (AOSP core strings, screen_loc
 | de | Terzett | de Wikipedia article Terzett (Verslehre) (Wikidata Q1353779) |
 | it | Terzina | it Wikipedia article Terzina (metrica) (Wikidata Q1353779) |
 | pt | Terceto | pt Wikipedia article Terceto (Wikidata Q1353779) |
-| pl | Tercet | pl Wikipedia article Tercet (literatura) (Wikidata Q1353779) |
+| pl | Tercet | pl Wikipedia article Tercet (literatura) (Wikidata Q1353779) (English Wiktionary's translation table gives tercyna; the Wikipedia title is kept.) |
 | ru | Терцет | ru Wikipedia article Терцет (Wikidata Q1353779) |
 | ar | ثلاثية | Not sourced: no article for this concept in this language. For a native reader. |
 | hi | त्रिपदी | No article for this concept. The hi Wikipedia article त्रिपदी is about the trinomial in algebra. Not sourced: for a native reader. |
@@ -632,7 +698,7 @@ Platform term. Reference: Android's 'Screen lock' (AOSP core strings, screen_loc
 | ko | 첫말 반복 | No ko article. A plain description (repeat the first word), chosen over the earlier 두운 반복, which used the word for alliteration. Not sourced. |
 | vi | Điệp đầu | Wikidata's vi sitelink is the untranslated 'Anaphora (tu từ học)'. Điệp đầu is not sourced: for a native reader. |
 | th | ซ้ำคำขึ้นต้น | Not sourced: no article for this concept in this language. For a native reader. |
-| id | Anafora | The id Wikipedia article Anafora (Q262575) is about the eucharistic prayer; the rhetorical term has no article. Not sourced. |
+| id | Anafora | English Wiktionary (docs/language/sources/wiktionary-translations.json), anaphora, sense 'rhetoric: repetition of a phrase used for emphasis': Indonesian anafora. (The id Wikipedia article Anafora, Q262575, is about the eucharistic prayer, so Wikidata gives no sitelink for the rhetorical sense.) |
 
 ### Acrostic (`form.acrostic.name`, Wikidata Q173287)
 
@@ -647,9 +713,9 @@ Platform term. Reference: Android's 'Screen lock' (AOSP core strings, screen_loc
 | ru | Акростих | ru Wikipedia article Акростих (Wikidata Q173287) |
 | ar | التطريز | Title of the ar Wikipedia article تطريز (شعر) (Wikidata Q40376349). Wikidata links a different article, تتويج (شعر), to the acrostic item. Which is the better name is for a native reader. |
 | hi | एक्रोस्टिक कविता | hi Wikipedia article एक्रोस्टिक कविता (Wikidata Q173287) |
-| zh | 藏头诗 | The common word. The zh article is 離合詩 (离合诗); Wikidata lists 離合藏頭詩 as an alias. 藏头诗 itself is not an article title: for a native reader. |
+| zh | 藏头诗 | English Wiktionary (docs/language/sources/wiktionary-translations.json), acrostic, sense 'poem or text in which certain letters spell out a name or message': Mandarin 藏頭詩, written 藏头诗 in simplified characters. The zh Wikipedia article is 離合詩 (离合诗), with 離合藏頭詩 among Wikidata's aliases. |
 | ja | 折句 | ja Wikipedia article 折句 (Wikidata Q173287) |
-| ko | 이합체시 | ko Wikipedia article 이합체시 (Wikidata Q173287) |
+| ko | 이합체시 | ko Wikipedia article 이합체시 (Wikidata Q173287) (English Wiktionary's translation table gives 아크로스틱; the Wikipedia title is kept.) |
 | vi | Thơ khoán thủ | No vi article for this concept and none titled Thơ khoán thủ. Not sourced: for a native reader. |
 | th | กลอนกระทู้ | Wikidata links the Thai article อักษรกล. The game's Thai acrostic is word by word, which is the กระทู้ form of Thai verse; กลอนกระทู้ is not an article title: for a native reader. |
 | id | Akrostik | id Wikipedia article Akrostik (Wikidata Q173287) |

@@ -24,13 +24,38 @@
    "lang": "ar",
    "rule": "AR_DIACRITICS_REPLACE",
    "id": "*",
-   "reason": "The rule only asks for vowel marks (تشكيل) to fix how an ambiguous word is read (مَعْرِض, الخَصْم, حَلَبة); Arabic interface text is written unvocalised, and the context decides."
+   "reason": "The rule only asks for vowel marks (تشكيل) to fix how an ambiguous word is read (مَعْرِض, الخَصْم, حَلَبة); Arabic interface text is written unvocalised, and the context decides.",
+   "at": [
+    "البذرة",
+    "الجمهور",
+    "الخصم",
+    "العتمة",
+    "المسودة",
+    "الملف",
+    "بدء",
+    "بذرة",
+    "تجارب",
+    "تجربة",
+    "جمهور",
+    "خصم",
+    "دم",
+    "رزمة",
+    "رصاص",
+    "قفل",
+    "مسمار",
+    "معرض",
+    "من الآن"
+   ]
   },
   {
    "lang": "ar",
    "rule": "AR_HOMOPHONES_REPLACE",
    "id": "*",
-   "reason": "The rule only asks for vowel marks (تشكيل) to fix how an ambiguous word is read (مَعْرِض, الخَصْم, حَلَبة); Arabic interface text is written unvocalised, and the context decides."
+   "reason": "The rule only asks for vowel marks (تشكيل) to fix how an ambiguous word is read (مَعْرِض, الخَصْم, حَلَبة); Arabic interface text is written unvocalised, and the context decides.",
+   "at": [
+    "الجلسة",
+    "حلبة"
+   ]
   },
   {
    "lang": "ar",
@@ -168,31 +193,90 @@
    "lang": "ar",
    "rule": "grammar_0000_jar_plural",
    "id": "*",
-   "reason": "The rule is about a sound masculine plural after a preposition; خمسة، سبعة، ستة، ثمانية here are numbers, not plurals."
+   "reason": "The rule is about a sound masculine plural after a preposition; خمسة، سبعة، ستة، ثمانية here are numbers, not plurals.",
+   "at": [
+    "من ثمانية",
+    "من خمسة",
+    "من سبعة",
+    "من ستة"
+   ]
   },
   {
    "lang": "ar",
    "rule": "grammar_0011_notjazem_lam_nafia",
    "id": "*",
-   "reason": "لا here negates a present-tense verb (لا يجوز، لا يدعم، لا نطلب، لا يُرسَل), a correct negation; the rule's lā of prohibition, which would change the verb's ending, does not apply."
+   "reason": "لا here negates a present-tense verb (لا يجوز، لا يدعم، لا نطلب، لا يُرسَل), a correct negation; the rule's lā of prohibition, which would change the verb's ending, does not apply.",
+   "at": [
+    "لا نطلب",
+    "لا يتوفر",
+    "لا يجوز",
+    "لا يدعم",
+    "لا يذكر",
+    "لا يشرح",
+    "لا يُرسَل"
+   ]
   },
   {
    "lang": "ar",
    "rule": "number_under_10_feminin",
    "id": "*",
-   "reason": "The counted nouns are masculine (أسطر from سطر, قوالب from قالب), and a number from three to ten takes the opposite gender of the singular: ثلاثة أسطر is right, and the suggested ثلاث would be wrong. All 13 hits read."
+   "reason": "The counted nouns are masculine (أسطر from سطر, قوالب from قالب), and a number from three to ten takes the opposite gender of the singular: ثلاثة أسطر is right, and the suggested ثلاث would be wrong. All 13 hits read.",
+   "at": [
+    "أربعة",
+    "ثلاثة"
+   ]
   },
   {
    "lang": "ar",
    "rule": "syntax_0002_as_ka_1",
    "id": "*",
-   "reason": "The rule misreads كلمة (word) as the particle كـ joined to لمة; its suggestions (كلمتة) are not words."
+   "reason": "The rule misreads a word that begins with ك as the particle كـ joined to the rest: كلمة (word) as كـ + لمة, and in one verse line كريم (generous) as كـ + ريم; its suggestions (كلمتة) are not words.",
+   "at": [
+    "أسطر خصمك على كلمة",
+    "أسطرك على 0 كلمة",
+    "أسطرك على 100 كلمة",
+    "أسطرك على 11 كلمة",
+    "أكثر من 0 كلمة",
+    "أكثر من 100 كلمة",
+    "أكثر من 11 كلمة",
+    "أن تزيد أي كلمة",
+    "أن تكرّر أي كلمة",
+    "أن يكرّر أي كلمة",
+    "تكوّن كلمة",
+    "خصمك على 0 كلمة",
+    "خصمك على 100 كلمة",
+    "خصمك على 11 كلمة",
+    "خصمك كلمة",
+    "سطر أكثر من كلمة",
+    "سطر لكل كلمة",
+    "كرّر كلمة",
+    "من أسطرك على كلمة",
+    "وأنا كريم",
+    "وكل كلمة",
+    "يجب أن تكوّن كلمة",
+    "يزن كل كلمة"
+   ]
   },
   {
    "lang": "ar",
    "rule": "syntax_0002_as_ka_2",
    "id": "*",
-   "reason": "The rule misreads كلمات and كلمتين (words) as the particle كـ joined to the rest; its suggestions (لمات، لمتين) are not words."
+   "reason": "The rule misreads كلمات and كلمتين (words) as the particle كـ joined to the rest; its suggestions (لمات، لمتين) are not words.",
+   "at": [
+    "أسطر خصمك على كلمتين",
+    "أسطرك على 3 كلمات",
+    "أكثر من 3 كلمات",
+    "أو في مدير كلمات",
+    "أو مدير كلمات",
+    "ابدأ ثلاث كلمات",
+    "اجعل كلمتين",
+    "استعمل كلمتين",
+    "خصمك على 3 كلمات",
+    "سطر أكثر من كلمتين",
+    "في كل سطر كلمات",
+    "من أسطرك على كلمتين",
+    "من كلمات"
+   ]
   },
   {
    "lang": "ar",
@@ -235,7 +319,10 @@
    "lang": "ar",
    "rule": "wrong_adj_use",
    "id": "*",
-   "reason": "A purist objection to a word in standard Modern Standard Arabic use (جاهز, بالفعل, مباشرة as 'live', الرئيسية as in 'home page'); the word is kept."
+   "reason": "A purist objection to a word in standard Modern Standard Arabic use (جاهز, بالفعل, مباشرة as 'live', الرئيسية as in 'home page'); the word is kept.",
+   "at": [
+    "الرئيسية"
+   ]
   },
   {
    "lang": "de",
@@ -825,7 +912,10 @@
    "lang": "fr",
    "rule": "NOMBRES_EN_LETTRES_2_IMPROVED",
    "id": "ui:auth.*",
-   "reason": "A number on screen next to what it counts (a code of 6 digits, line 1 and line 3), written in figures as its English is; the rule is a style preference for running prose."
+   "reason": "A number on screen next to what it counts (a code of 6 digits, line 1 and line 3), written in figures as its English is; the rule is a style preference for running prose.",
+   "at": [
+    "6"
+   ]
   },
   {
    "lang": "fr",
@@ -1122,7 +1212,10 @@
    "lang": "it",
    "rule": "ST_03_001",
    "id": "ui:auth.*",
-   "reason": "Raised by the sample value the check filled in (the address a@example.com, the card name Hamlet), not by the translation. ('ad' before a vowel is optional, and a real address starts with any letter.)"
+   "reason": "Raised by the sample value the check filled in (the address a@example.com, the card name Hamlet), not by the translation. ('ad' before a vowel is optional, and a real address starts with any letter.)",
+   "at": [
+    "a a@example.com"
+   ]
   },
   {
    "lang": "it",
@@ -1297,7 +1390,11 @@
    "lang": "pl",
    "rule": "NIETYPOWA_KOMBINACJA_DUZYCH_I_MALYCH_LITER",
    "id": "*",
-   "reason": "A proper name (a product, platform, browser, model, person or character, or a verse form's name sourced in docs/language/glossary.json), not a word of the language."
+   "reason": "A proper name (a product, platform, browser, model, person or character, or a verse form's name sourced in docs/language/glossary.json), not a word of the language.",
+   "at": [
+    "WebGPU",
+    "visionOS"
+   ]
   },
   {
    "lang": "pl",
@@ -1399,7 +1496,12 @@
    "lang": "pt",
    "rule": "EU_NÓS_REMOVAL",
    "id": "pack:*",
-   "reason": "Verse: the subject pronoun kept for emphasis (Eu respondo… tu és…), which the style rule would drop."
+   "reason": "Verse: the subject pronoun kept for emphasis (Eu respondo… tu és…), which the style rule would drop.",
+   "at": [
+    "Eu chamo",
+    "Eu respondo",
+    "eu respondo"
+   ]
   },
   {
    "lang": "pt",
@@ -1523,7 +1625,10 @@
    "lang": "pt",
    "rule": "REGARDS_COMMA",
    "id": "pack:relics.*",
-   "reason": "A pack string read on its own: a line of the written opponent's verse (a verse line is not a sentence and has no full stop or sentence capital of its own) or one word of a word list (acrostic and power words, shown in capitals or matched as typed)."
+   "reason": "A pack string read on its own: a line of the written opponent's verse (a verse line is not a sentence and has no full stop or sentence capital of its own) or one word of a word list (acrostic and power words, shown in capitals or matched as typed).",
+   "at": [
+    "beijo"
+   ]
   },
   {
    "lang": "pt",
@@ -1693,13 +1798,20 @@
    "lang": "ru",
    "rule": "PARTICLE_JE",
    "id": "pack:*",
-   "reason": "Verse: the particle же gives the imperative its force ('Так говори же', 'Слушай же'); the rule calls it redundant."
+   "reason": "Verse: the particle же gives the imperative its force ('Так говори же', 'Слушай же'); the rule calls it redundant.",
+   "at": [
+    "Слушай же",
+    "говори же"
+   ]
   },
   {
    "lang": "ru",
    "rule": "PNN_ON_END",
    "id": "*",
-   "reason": "A style rule (a pronoun at the end): 'Потеряется он — потеряется и она' is a deliberate parallel, the account (она) lost with the key (он)."
+   "reason": "A style rule (a pronoun at the end): 'Потеряется он — потеряется и она' is a deliberate parallel, the account (она) lost with the key (он).",
+   "at": [
+    "она."
+   ]
   },
   {
    "lang": "ru",
@@ -1777,7 +1889,11 @@
    "lang": "ru",
    "rule": "missing_noun_at_end",
    "id": "*",
-   "reason": "A style rule (a noun left out at the end); the noun is understood from the same sentence (строку … самой длинной; код … новый), as Russian normally leaves it."
+   "reason": "A style rule (a noun left out at the end); the noun is understood from the same sentence (строку … самой длинной; код … новый), as Russian normally leaves it.",
+   "at": [
+    "длинной.",
+    "новый."
+   ]
   },
   {
    "lang": "zh",
@@ -1789,13 +1905,10 @@
    "lang": "zh",
    "rule": "wa2",
    "id": "*",
-   "reason": "下一首 means 'the next (verse)'; 下 is not the locative word the rule assumes, so 对手的下一首诗 is right."
-  },
-  {
-   "lang": "zh",
-   "rule": "wa3",
-   "id": "*",
-   "reason": "把 here is the measure word of a key (一把通行密钥, 这把通行密钥), not the 把-construction the rule assumes."
+   "reason": "下一首 means 'the next (verse)'; 下 is not the locative word the rule assumes, so 对手的下一首诗 is right.",
+   "at": [
+    "的"
+   ]
   },
   {
    "lang": "zh",

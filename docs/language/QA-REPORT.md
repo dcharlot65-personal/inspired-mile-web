@@ -8,176 +8,281 @@ What this report can and cannot say. A tool that covers a language can show that
 
 Strings: interface strings (the six Shakespeare quotations, which are the source text, are not counted) + player-facing strings in the language pack (verse lines, power words, acrostic words).
 
-| Language | Strings (interface + pack) | Changed | Mechanical: before → now (accepted) | Glossary: before → now | LanguageTool hits (accepted / open) | Hunspell hits (accepted / open) | Back-translation flagged (accepted / open) | Second-model corrections (proposed / adopted) |
+"Changed" and "before" are measured against `main` at `61a3e95a07` (`docs/language/baseline.json`, made by `node scripts/lang/baseline.mjs`): the strings as they stand without this work.
+
+| Language | Strings (interface + pack) | Changed | Mechanical: before → now (accepted) | Glossary: before → now | LanguageTool: first run → now (accepted / open) | Hunspell: first run → now (accepted / open) | Meaning: flagged (accepted / open) | Second model: proposed / survived the tools / adopted after reading |
 |---|---|---|---|---|---|---|---|---|
-| English (en) | 417 + 139 | 19 + 0 | 19 → 0 (0) | — | not run | not run | source | source |
-| Spanish (es) | 417 + 128 | 20 + 0 | 23 → 0 (4) | 2 → 0 | not run | not run | not run | not run |
-| French (fr) | 417 + 128 | 67 + 4 | 84 → 0 (11) | 1 → 0 | not run | not run | not run | not run |
-| German (de) | 417 + 132 | 22 + 0 | 27 → 0 (9) | 4 → 0 | not run | not run | not run | not run |
-| Italian (it) | 417 + 128 | 19 + 0 | 24 → 0 (5) | 1 → 0 | not run | not run | not run | not run |
-| Portuguese (Brazil) (pt) | 417 + 130 | 20 + 0 | 22 → 0 (3) | 2 → 0 | not run | not run | not run | not run |
-| Polish (pl) | 417 + 126 | 21 + 0 | 27 → 0 (8) | 2 → 0 | not run | not run | not run | not run |
-| Russian (ru) | 417 + 130 | 23 + 0 | 26 → 0 (7) | 4 → 0 | not run | not run | not run | not run |
-| Arabic (ar) | 417 + 115 | 23 + 0 | 23 → 0 (4) | 6 → 0 | not run | not run | not run | not run |
-| Hindi (hi) | 417 + 120 | 27 + 0 | 23 → 0 (4) | 12 → 0 | not run | not run | not run | not run |
-| Chinese (Simplified) (zh) | 417 + 107 | 7 + 0 | 4 → 0 (4) | 7 → 0 | not run | not run | not run | not run |
-| Japanese (ja) | 417 + 103 | 5 + 0 | 4 → 0 (4) | 5 → 0 | not run | not run | not run | not run |
-| Korean (ko) | 417 + 127 | 8 + 0 | 4 → 0 (4) | 8 → 0 | not run | not run | not run | not run |
-| Vietnamese (vi) | 417 + 131 | 18 + 0 | 21 → 0 (2) | 0 → 0 | not run | not run | not run | not run |
-| Thai (th) | 417 + 91 | 0 + 0 | 4 → 0 (4) | 0 → 0 | not run | not run | not run | not run |
-| Indonesian (id) | 417 + 129 | 3 + 0 | 4 → 0 (4) | 3 → 0 | not run | not run | not run | not run |
+| English (en) | 417 + 139 | 24 + 0 | 20 → 0 (0) | — | 25 → 25 (25 / 0) | 17 → 17 (17 / 0) | source | source |
+| Spanish (es) | 417 + 128 | 27 + 0 | 23 → 0 (4) | 2 → 0 | 28 → 28 (28 / 0) | 41 → 41 (41 / 0) | 28 of 462 (28 / 0) | 29 / 11 / 0 (of 417 reviewed) |
+| French (fr) | 417 + 128 | 72 + 6 | 84 → 0 (11) | 1 → 0 | 42 → 40 (40 / 0) | 16 → 16 (16 / 0) | 19 of 462 (19 / 0) | 32 / 12 / 1 (of 417 reviewed) |
+| German (de) | 417 + 132 | 49 + 1 | 44 → 0 (9) | 6 → 0 | 42 → 42 (42 / 0) | 83 → 83 (83 / 0) | 16 of 462 (16 / 0) | 32 / 24 / 6 (of 417 reviewed) |
+| Italian (it) | 417 + 128 | 26 + 0 | 24 → 0 (5) | 1 → 0 | 84 → 84 (84 / 0) | 73 → 73 (73 / 0) | 28 of 462 (28 / 0) | 37 / 11 / 0 (of 417 reviewed) |
+| Portuguese (Brazil) (pt) | 417 + 130 | 27 + 0 | 22 → 0 (3) | 2 → 0 | 133 → 132 (132 / 0) | 33 → 33 (33 / 0) | 24 of 462 (24 / 0) | 36 / 11 / 0 (of 417 reviewed) |
+| Polish (pl) | 417 + 126 | 27 + 1 | 27 → 0 (8) | 2 → 0 | 188 → 187 (187 / 0) | 16 → 16 (16 / 0) | 32 of 462 (32 / 0) | 41 / 13 / 0 (of 417 reviewed) |
+| Russian (ru) | 417 + 130 | 31 + 1 | 26 → 0 (7) | 4 → 0 | 32 → 32 (32 / 0) | 44 → 44 (44 / 0) | 22 of 462 (22 / 0) | 46 / 28 / 1 (of 417 reviewed) |
+| Arabic (ar) | 417 + 115 | 33 + 0 | 23 → 0 (4) | 7 → 0 | 174 → 175 (175 / 0) | 38 → 38 (38 / 0) | 40 of 462 (40 / 0) | 45 / 24 / 5 (of 417 reviewed) |
+| Hindi (hi) | 417 + 120 | 35 + 0 | 23 → 0 (4) | 15 → 0 | **no module** | 107 → 107 (107 / 0) | 37 of 462 (37 / 0) | 43 / 25 / 1 (of 417 reviewed) |
+| Chinese (Simplified) (zh) | 417 + 107 | 22 + 0 | 4 → 0 (4) | 20 → 0 | 10 → 7 (7 / 0) | **no dictionary** | 33 of 462 (33 / 0) | 23 / 9 / 2 (of 417 reviewed) |
+| Japanese (ja) | 417 + 103 | 6 + 0 | 4 → 0 (4) | 5 → 0 | 0 → 0 (0 / 0) | **no dictionary** | 37 of 462 (37 / 0) | 19 / 13 / 0 (of 417 reviewed) |
+| Korean (ko) | 417 + 127 | 12 + 0 | 4 → 0 (4) | 9 → 0 | **no module** | 82 → 82 (82 / 0) | 46 of 462 (46 / 0) | 33 / 10 / 1 (of 417 reviewed) |
+| Vietnamese (vi) | 417 + 131 | 61 + 2 | 57 → 0 (2) | 39 → 0 | **no module** | 36 → 36 (36 / 0) | 43 of 462 (43 / 0) | 43 / 22 / 0 (of 417 reviewed) |
+| Thai (th) | 417 + 91 | 20 + 0 | 4 → 0 (4) | 18 → 0 | **no module** | 46 → 46 (46 / 0) | 61 of 462 (61 / 0) | 33 / 17 / 1 (of 417 reviewed) |
+| Indonesian (id) | 417 + 129 | 5 + 0 | 4 → 0 (4) | 3 → 0 | **no module** | 126 → 124 (124 / 0) | 33 of 462 (33 / 0) | 36 / 18 / 0 (of 417 reviewed) |
+
+"First run → now": hits on the first full run (2026-11-16, after the earlier mechanical and plural fixes, before this triage) and on the final run; a hit that is gone was fixed in the string. Every hit still there is accepted, with its reason, in `docs/language/allow/`.
 
 "Mechanical: before" is the text as it stood before this work, measured with today's rules (so it counts the strings that had no plural forms). "Accepted" means listed, with a reason, in `docs/language/allow/`. "Open" should be zero; an open hit fails the run.
 
 ## What each tool covers
 
-**LanguageTool and Hunspell were not run** (no `docs/language/results/grammar.json`). Nothing is claimed about grammar or spelling.
+LanguageTool 6.6 (server reports 60 language variants) and International Ispell Version 3.2.06 (but really Hunspell 1.7.2), run 2026-11-16. Before the run, each tool was given known-bad input in each language; the table records what it did with it, because a checker that cannot flag a wrong sentence says nothing by staying silent.
 
-**Back-translation was not run** (no `docs/language/results/bt.json`). Nothing is claimed about meaning beyond the mechanical and glossary checks.
+| Language | LanguageTool | Known-bad sentences it flagged | Hunspell dictionary | Rejects a misspelling |
+|---|---|---|---|---|
+| English | en-US | 4 of 4 | en | yes |
+| Spanish | es | 4 of 4 | es | yes |
+| French | fr | 4 of 4 | fr | yes |
+| German | de-DE | 4 of 4 | de | yes |
+| Italian | it | 0 of 4 | it | yes |
+| Portuguese (Brazil) | pt-BR | 3 of 4 | pt-BR | yes |
+| Polish | pl-PL | 0 of 4 | pl | yes |
+| Russian | ru-RU | 3 of 4 | ru | yes |
+| Arabic | ar | 2 of 4 | ar | yes |
+| Hindi | **no module** | — | hi | yes |
+| Chinese (Simplified) | zh-CN | 1 of 4 | **none** | — |
+| Japanese | ja-JP | 1 of 4 | **none** | — |
+| Korean | **no module** | — | ko | yes |
+| Vietnamese | **no module** | — | vi | yes |
+| Thai | **no module** | — | th | yes |
+| Indonesian | **no module** | — | id | yes |
 
-**The second-model review was not run** (no `docs/language/results/review.json`).
+In plain words:
+
+- **No grammar checker at all** for Hindi, Korean, Vietnamese, Thai, Indonesian. LanguageTool has no module for them. Their grammar has been read by the second model only, which is a generative model's opinion and not a verification.
+- **A weak grammar checker** for Italian (flagged 0 of 4 plainly wrong sentences), Portuguese (Brazil) (flagged 3 of 4 plainly wrong sentences), Polish (flagged 0 of 4 plainly wrong sentences), Russian (flagged 3 of 4 plainly wrong sentences), Arabic (flagged 2 of 4 plainly wrong sentences), Chinese (Simplified) (flagged 1 of 4 plainly wrong sentences), Japanese (flagged 1 of 4 plainly wrong sentences). A clean LanguageTool run in these languages rules out less than it does in the others.
+- **No spelling dictionary** for Chinese (Simplified), Japanese: Hunspell works on words separated by spaces and has no dictionary for them.
+- Thai is written without spaces; its words are found with the ICU word segmenter (`Intl.Segmenter`) before they are put to the dictionary, so a Thai "misspelling" can also be a segmentation the dictionary does not know.
+- Neither tool reads verse as verse. The pack lines (the written opponent's verses) are checked for spelling and for outright grammar errors only.
+
+Back-translation: google/madlad400-3b-mt (CTranslate2 int8: Nextcloud-AI/madlad400-3b-mt-ct2-int8), on mps (default) (beam 4); similarity by sentence-transformers/all-MiniLM-L6-v2. Second signal: sentence-transformers/LaBSE, which scores each translation against its English directly, with no back-translation in between. A string is flagged when the back-translation scores under 0.6 **and** LaBSE scores it under 0.6: alone, back-translation flags short labels by the dozen, because the translation model copies a one-word label through untranslated ('Mazo' came back as 'Mazo'). The control: every back-translation and every translation is also scored against the wrong English sentence (the next key's), with the same rule.
+
+| Language | Scored | Under the threshold by back-translation alone | Flagged (both signals) | Mismatched control pairs the rule catches |
+|---|---|---|---|---|
+| Spanish | 462 | 89 | 28 | 86% |
+| French | 462 | 88 | 19 | 87% |
+| German | 462 | 71 | 16 | 84% |
+| Italian | 462 | 94 | 28 | 85% |
+| Portuguese (Brazil) | 462 | 85 | 24 | 86% |
+| Polish | 462 | 103 | 32 | 87% |
+| Russian | 462 | 70 | 22 | 87% |
+| Arabic | 462 | 130 | 40 | 87% |
+| Hindi | 462 | 102 | 37 | 86% |
+| Chinese (Simplified) | 462 | 110 | 33 | 87% |
+| Japanese | 462 | 97 | 37 | 86% |
+| Korean | 462 | 109 | 46 | 86% |
+| Vietnamese | 462 | 122 | 43 | 87% |
+| Thai | 462 | 138 | 61 | 88% |
+| Indonesian | 462 | 100 | 33 | 86% |
+
+Back-translation finds a changed meaning; it does not find a translation that is faithful and clumsy, and it is unreliable on one-word labels, where the translation model has no context. What is scored: every interface string, and each relic's power words against the English word they translate. The written opponent's verses and the acrostic words are not: each language's were written to keep a form, with no English line to compare.
+
+Every flagged string was read, and either changed (then scored again) or accepted with its reason in `docs/language/allow/meaning.json` (499 entries). Most flags are names and one-word labels that MADLAD copies through or reads in another sense (Spanish *Mazo* came back as 'Mazo', Arabic الخصم, the opponent, as 'discount'). The reader was the engineer doing this work, a language model, not a native speaker: an accepted flag means a second reading found the string right, not that a native speaker did.
+
+Second opinion: gemma-4-26B_q4_0-it.gguf (see PROVENANCE.md for the repository, revision and checksum) under llama.cpp b12359-b1b770d90, asked per language to review each string as a native-speaking localisation reviewer. Its control (planted errors it must catch, a correct line it must pass):
+
+| Language | Passed the correct line | Caught the wrong word | Caught text left in English | Caught the broken grammar | Reviewed | Proposed corrections | No answer |
+|---|---|---|---|---|---|---|---|
+| Spanish | yes | yes | yes | yes | 417 | 29 | 0 |
+| French | yes | yes | yes | yes | 417 | 32 | 0 |
+| German | yes | yes | yes | yes | 417 | 32 | 0 (1 failed batch, asked again on a later run) |
+| Italian | yes | yes | yes | yes | 417 | 37 | 0 |
+| Portuguese (Brazil) | yes | yes | yes | yes | 417 | 36 | 0 |
+| Polish | yes | **no** | yes | yes | 417 | 41 | 0 |
+| Russian | yes | yes | yes | yes | 417 | 46 | 0 |
+| Arabic | yes | yes | yes | yes | 417 | 45 | 0 |
+| Hindi | yes | yes | yes | yes | 417 | 43 | 0 |
+| Chinese (Simplified) | yes | yes | yes | yes | 417 | 23 | 0 |
+| Japanese | yes | yes | yes | yes | 417 | 19 | 0 |
+| Korean | yes | yes | yes | yes | 417 | 33 | 0 |
+| Vietnamese | yes | yes | yes | yes | 417 | 43 | 0 |
+| Thai | yes | yes | yes | yes | 417 | 33 | 0 |
+| Indonesian | yes | yes | yes | yes | 417 | 36 | 0 |
+
+A correction was adopted only if it passed the mechanical checks and the glossary, raised no new LanguageTool or Hunspell hit, was not flagged by the meaning check nor further from the English than the text it replaced, and then read as right (the section on the second model's corrections, below). A model's "ok" is not counted as verification anywhere in this report.
 
 ## Per language
 
 ### English (en)
 
 - Plural categories (CLDR 49.0.0): one, other. Strings with a count: 18.
-- Mechanical checks before: 19 (plural-missing 19). Now open: 0; accepted exceptions: 0.
+- Mechanical checks before: 20 (plural-missing 19, ascii-ellipsis 1). Now open: 0; accepted exceptions: 0.
+- LanguageTool (en-US): 25 hits on 574 rendered sentences; 25 accepted with a reason, 0 open. By rule: UPPERCASE_SENTENCE_START 11, MORFOLOGIK_RULE_EN_US 9, COMMA_PARENTHESIS_WHITESPACE 2, COMMA_COMPOUND_SENTENCE_2 1, ALL_MOST_SOME_OF_NOUN 1, PUNCTUATION_PARAGRAPH_END 1.
+- Hunspell (en): 17 hits on 574 rendered sentences; 17 accepted with a reason, 0 open.
 
 ### Spanish (es)
 
 - Plural categories (CLDR 49.0.0): one, many, other. Strings with a count: 18.
 - Mechanical checks before: 23 (plural-missing 19, same-as-english 4). Now open: 0; accepted exceptions: 4.
 - Glossary: 2 strings strayed from the glossary before, 0 now.
-- Back-translation: not run.
-- Second model: not run.
-- Strings changed: 20 interface, 0 pack.
+- LanguageTool (es): 28 hits on 563 rendered sentences; 28 accepted with a reason, 0 open. By rule: UPPERCASE_SENTENCE_START 15, MORFOLOGIK_RULE_ES 9, COMMA_PARENTHESIS_WHITESPACE 2, AGREEMENT_DET_ADJ 1, EL_TILDE 1.
+- Hunspell (es): 41 hits on 563 rendered sentences; 41 accepted with a reason, 0 open.
+- Back-translation: 462 scored, 89 under 0.6 by back-translation alone, 28 flagged by both signals; 28 read and accepted with a reason, 0 open.
+- Second model: 29 corrections proposed; 17 stopped at the mechanical or glossary check, 1 by LanguageTool, Hunspell or the meaning check, 11 survived the tools; 0 adopted after reading.
+- Strings changed: 27 interface, 0 pack.
 
 ### French (fr)
 
 - Plural categories (CLDR 49.0.0): one, many, other. Strings with a count: 18.
 - Mechanical checks before: 84 (fr-nbsp 54, plural-missing 19, same-as-english 11). Now open: 0; accepted exceptions: 11.
 - Glossary: 1 strings strayed from the glossary before, 0 now.
-- Back-translation: not run.
-- Second model: not run.
-- Strings changed: 67 interface, 4 pack.
+- LanguageTool (fr): 40 hits on 563 rendered sentences; 40 accepted with a reason, 0 open. By rule: UPPERCASE_SENTENCE_START 14, FR_SPELLING_RULE 4, NOMBRES_EN_LETTRES_2_IMPROVED 4, POINTS_2 3, COMMA_PARENTHESIS_WHITESPACE 2, POINT 2, PAS_DE_VIRGULE_STYLE 2, NOMBRES_EN_LETTRES 1.
+- Hunspell (fr): 16 hits on 563 rendered sentences; 16 accepted with a reason, 0 open.
+- Back-translation: 462 scored, 88 under 0.6 by back-translation alone, 19 flagged by both signals; 19 read and accepted with a reason, 0 open.
+- Second model: 32 corrections proposed; 15 stopped at the mechanical or glossary check, 5 by LanguageTool, Hunspell or the meaning check, 12 survived the tools; 1 adopted after reading.
+- Strings changed: 72 interface, 6 pack.
 
 ### German (de)
 
 - Plural categories (CLDR 49.0.0): one, other. Strings with a count: 18.
-- Mechanical checks before: 27 (plural-missing 19, same-as-english 8). Now open: 0; accepted exceptions: 9.
-- Glossary: 4 strings strayed from the glossary before, 0 now.
-- Back-translation: not run.
-- Second model: not run.
-- Strings changed: 22 interface, 0 pack.
+- Mechanical checks before: 44 (plural-missing 19, de-ellipsis-space 17, same-as-english 8). Now open: 0; accepted exceptions: 9.
+- Glossary: 6 strings strayed from the glossary before, 0 now.
+- LanguageTool (de-DE): 42 hits on 567 rendered sentences; 42 accepted with a reason, 0 open. By rule: GERMAN_SPELLER_RULE 21, UPPERCASE_SENTENCE_START 11, ERSTE_PERSON_SIN_OHNE_E 4, COMMA_PARENTHESIS_WHITESPACE 2, DE_VERBAGREEMENT 1, DE_AGREEMENT 1, PUNCTUATION_PARAGRAPH_END 1, NACH_HAUS 1.
+- Hunspell (de): 83 hits on 567 rendered sentences; 83 accepted with a reason, 0 open.
+- Back-translation: 462 scored, 71 under 0.6 by back-translation alone, 16 flagged by both signals; 16 read and accepted with a reason, 0 open.
+- Second model: 32 corrections proposed; 5 stopped at the mechanical or glossary check, 3 by LanguageTool, Hunspell or the meaning check, 24 survived the tools; 6 adopted after reading.
+- Strings changed: 49 interface, 1 pack.
 
 ### Italian (it)
 
 - Plural categories (CLDR 49.0.0): one, many, other. Strings with a count: 18.
 - Mechanical checks before: 24 (plural-missing 19, same-as-english 5). Now open: 0; accepted exceptions: 5.
 - Glossary: 1 strings strayed from the glossary before, 0 now.
-- Back-translation: not run.
-- Second model: not run.
-- Strings changed: 19 interface, 0 pack.
+- LanguageTool (it): 84 hits on 563 rendered sentences; 84 accepted with a reason, 0 open. By rule: MORFOLOGIK_RULE_IT_IT 63, UPPERCASE_SENTENCE_START 17, COMMA_PARENTHESIS_WHITESPACE 2, ST_03_001 2.
+- Hunspell (it): 73 hits on 563 rendered sentences; 73 accepted with a reason, 0 open.
+- Back-translation: 462 scored, 94 under 0.6 by back-translation alone, 28 flagged by both signals; 28 read and accepted with a reason, 0 open.
+- Second model: 37 corrections proposed; 20 stopped at the mechanical or glossary check, 6 by LanguageTool, Hunspell or the meaning check, 11 survived the tools; 0 adopted after reading.
+- Strings changed: 26 interface, 0 pack.
 
 ### Portuguese (Brazil) (pt)
 
 - Plural categories (CLDR 49.0.0): one, many, other. Strings with a count: 18.
 - Mechanical checks before: 22 (plural-missing 19, same-as-english 3). Now open: 0; accepted exceptions: 3.
 - Glossary: 2 strings strayed from the glossary before, 0 now.
-- Back-translation: not run.
-- Second model: not run.
-- Strings changed: 20 interface, 0 pack.
+- LanguageTool (pt-BR): 132 hits on 565 rendered sentences; 132 accepted with a reason, 0 open. By rule: FINAL_STOPS 87, MORFOLOGIK_RULE_PT_BR 16, UPPERCASE_SENTENCE_START 14, EU_NÓS_REMOVAL 3, COMMA_PARENTHESIS_WHITESPACE 2, SIMPLIFICAR_CONVERTER_PARA_VERBO_INFINITIVO 1, PT_WORDINESS_REPLACE_DENTRO_DE_UM 1, INIMIGO_ADVERSÁRIO_ALIADO_OPONENTE 1.
+- Hunspell (pt-BR): 33 hits on 565 rendered sentences; 33 accepted with a reason, 0 open.
+- Back-translation: 462 scored, 85 under 0.6 by back-translation alone, 24 flagged by both signals; 24 read and accepted with a reason, 0 open.
+- Second model: 36 corrections proposed; 21 stopped at the mechanical or glossary check, 4 by LanguageTool, Hunspell or the meaning check, 11 survived the tools; 0 adopted after reading.
+- Strings changed: 27 interface, 0 pack.
 
 ### Polish (pl)
 
 - Plural categories (CLDR 49.0.0): one, few, many, other. Strings with a count: 18.
 - Mechanical checks before: 27 (plural-missing 19, ending 3, same-as-english 5). Now open: 0; accepted exceptions: 8.
 - Glossary: 2 strings strayed from the glossary before, 0 now.
-- Back-translation: not run.
-- Second model: not run.
-- Strings changed: 21 interface, 0 pack.
+- LanguageTool (pl-PL): 187 hits on 597 rendered sentences; 187 accepted with a reason, 0 open. By rule: BRAK_KROPKI 159, MORFOLOGIK_RULE_PL_PL 12, UPPERCASE_SENTENCE_START 11, COMMA_PARENTHESIS_WHITESPACE 2, NIETYPOWA_KOMBINACJA_DUZYCH_I_MALYCH_LITER 2, ZDANIE_PODRZEDNE_Z_KTORY_LUB_JAKI 1.
+- Hunspell (pl): 16 hits on 597 rendered sentences; 16 accepted with a reason, 0 open.
+- Back-translation: 462 scored, 103 under 0.6 by back-translation alone, 32 flagged by both signals; 32 read and accepted with a reason, 0 open.
+- Second model: 41 corrections proposed; 24 stopped at the mechanical or glossary check, 4 by LanguageTool, Hunspell or the meaning check, 13 survived the tools; 0 adopted after reading.
+- Strings changed: 27 interface, 1 pack.
 
 ### Russian (ru)
 
 - Plural categories (CLDR 49.0.0): one, few, many, other. Strings with a count: 18.
 - Mechanical checks before: 26 (plural-missing 19, no-native-script 2, ending 3, same-as-english 2). Now open: 0; accepted exceptions: 7.
 - Glossary: 4 strings strayed from the glossary before, 0 now.
-- Back-translation: not run.
-- Second model: not run.
-- Strings changed: 23 interface, 0 pack.
+- LanguageTool (ru-RU): 32 hits on 601 rendered sentences; 32 accepted with a reason, 0 open. By rule: UPPERCASE_SENTENCE_START 12, MORFOLOGIK_RULE_RU_RU 10, missing_noun_at_end 2, COMMA_PARENTHESIS_WHITESPACE 2, PNN_ON_END 2, AllCaps 2, PARTICLE_JE 2.
+- Hunspell (ru): 44 hits on 601 rendered sentences; 44 accepted with a reason, 0 open.
+- Back-translation: 462 scored, 70 under 0.6 by back-translation alone, 22 flagged by both signals; 22 read and accepted with a reason, 0 open.
+- Second model: 46 corrections proposed; 15 stopped at the mechanical or glossary check, 3 by LanguageTool, Hunspell or the meaning check, 28 survived the tools; 1 adopted after reading.
+- Strings changed: 31 interface, 1 pack.
 
 ### Arabic (ar)
 
 - Plural categories (CLDR 49.0.0): zero, one, two, few, many, other. Strings with a count: 18.
 - Mechanical checks before: 23 (plural-missing 19, no-native-script 2, same-as-english 2). Now open: 0; accepted exceptions: 4.
-- Glossary: 6 strings strayed from the glossary before, 0 now.
-- Back-translation: not run.
-- Second model: not run.
-- Strings changed: 23 interface, 0 pack.
+- Glossary: 7 strings strayed from the glossary before, 0 now.
+- LanguageTool (ar): 175 hits on 622 rendered sentences; 175 accepted with a reason, 0 open. By rule: AR_DIACRITICS_REPLACE 37, HUNSPELL_RULE_AR 26, syntax_0002_as_ka_1 24, grammar_0011_notjazem_lam_nafia 18, number_under_10_feminin 13, syntax_0002_as_ka_2 13, typo_000_tanwin_nasb2 10, AR_SIMPLE_REPLACE 8.
+- Hunspell (ar): 38 hits on 622 rendered sentences; 38 accepted with a reason, 0 open.
+- Back-translation: 462 scored, 130 under 0.6 by back-translation alone, 40 flagged by both signals; 40 read and accepted with a reason, 0 open.
+- Second model: 45 corrections proposed; 15 stopped at the mechanical or glossary check, 6 by LanguageTool, Hunspell or the meaning check, 24 survived the tools; 5 adopted after reading.
+- Strings changed: 33 interface, 0 pack.
 
 ### Hindi (hi)
 
 - Plural categories (CLDR 49.0.0): one, other. Strings with a count: 18.
 - Mechanical checks before: 23 (plural-missing 19, no-native-script 2, same-as-english 2). Now open: 0; accepted exceptions: 4.
-- Glossary: 12 strings strayed from the glossary before, 0 now.
-- Back-translation: not run.
-- Second model: not run.
-- Strings changed: 27 interface, 0 pack.
+- Glossary: 15 strings strayed from the glossary before, 0 now.
+- LanguageTool: **does not cover this language.**
+- Hunspell (hi): 107 hits on 555 rendered sentences; 107 accepted with a reason, 0 open.
+- Back-translation: 462 scored, 102 under 0.6 by back-translation alone, 37 flagged by both signals; 37 read and accepted with a reason, 0 open.
+- Second model: 43 corrections proposed; 7 stopped at the mechanical or glossary check, 11 by LanguageTool, Hunspell or the meaning check, 25 survived the tools; 1 adopted after reading.
+- Strings changed: 35 interface, 0 pack.
 
 ### Chinese (Simplified) (zh)
 
 - Plural categories (CLDR 49.0.0): other. Strings with a count: 0.
 - Mechanical checks before: 4 (no-native-script 2, same-as-english 2). Now open: 0; accepted exceptions: 4.
-- Glossary: 7 strings strayed from the glossary before, 0 now.
-- Back-translation: not run.
-- Second model: not run.
-- Strings changed: 7 interface, 0 pack.
+- Glossary: 20 strings strayed from the glossary before, 0 now.
+- LanguageTool (zh-CN): 7 hits on 524 rendered sentences; 7 accepted with a reason, 0 open. By rule: wa5 3, wa2 2, s5 1, wb4 1.
+- Hunspell: **does not cover this language.**
+- Back-translation: 462 scored, 110 under 0.6 by back-translation alone, 33 flagged by both signals; 33 read and accepted with a reason, 0 open.
+- Second model: 23 corrections proposed; 10 stopped at the mechanical or glossary check, 4 by LanguageTool, Hunspell or the meaning check, 9 survived the tools; 2 adopted after reading.
+- Strings changed: 22 interface, 0 pack.
 
 ### Japanese (ja)
 
 - Plural categories (CLDR 49.0.0): other. Strings with a count: 0.
 - Mechanical checks before: 4 (no-native-script 2, same-as-english 2). Now open: 0; accepted exceptions: 4.
 - Glossary: 5 strings strayed from the glossary before, 0 now.
-- Back-translation: not run.
-- Second model: not run.
-- Strings changed: 5 interface, 0 pack.
+- LanguageTool (ja-JP): 0 hits on 520 rendered sentences; 0 accepted with a reason, 0 open.
+- Hunspell: **does not cover this language.**
+- Back-translation: 462 scored, 97 under 0.6 by back-translation alone, 37 flagged by both signals; 37 read and accepted with a reason, 0 open.
+- Second model: 19 corrections proposed; 6 stopped at the mechanical or glossary check, 0 by LanguageTool, Hunspell or the meaning check, 13 survived the tools; 0 adopted after reading.
+- Strings changed: 6 interface, 0 pack.
 
 ### Korean (ko)
 
 - Plural categories (CLDR 49.0.0): other. Strings with a count: 0.
 - Mechanical checks before: 4 (no-native-script 2, same-as-english 2). Now open: 0; accepted exceptions: 4.
-- Glossary: 8 strings strayed from the glossary before, 0 now.
-- Back-translation: not run.
-- Second model: not run.
-- Strings changed: 8 interface, 0 pack.
+- Glossary: 9 strings strayed from the glossary before, 0 now.
+- LanguageTool: **does not cover this language.**
+- Hunspell (ko): 82 hits on 544 rendered sentences; 82 accepted with a reason, 0 open.
+- Back-translation: 462 scored, 109 under 0.6 by back-translation alone, 46 flagged by both signals; 46 read and accepted with a reason, 0 open.
+- Second model: 33 corrections proposed; 16 stopped at the mechanical or glossary check, 7 by LanguageTool, Hunspell or the meaning check, 10 survived the tools; 1 adopted after reading.
+- Strings changed: 12 interface, 0 pack.
 
 ### Vietnamese (vi)
 
 - Plural categories (CLDR 49.0.0): one, other. Strings with a count: 18.
-- Mechanical checks before: 21 (plural-missing 19, same-as-english 2). Now open: 0; accepted exceptions: 2.
-- Glossary: 0 strings strayed from the glossary before, 0 now.
-- Back-translation: not run.
-- Second model: not run.
-- Strings changed: 18 interface, 0 pack.
+- Mechanical checks before: 57 (plural-missing 19, vi-tone-placement 36, same-as-english 2). Now open: 0; accepted exceptions: 2.
+- Glossary: 39 strings strayed from the glossary before, 0 now.
+- LanguageTool: **does not cover this language.**
+- Hunspell (vi): 36 hits on 566 rendered sentences; 36 accepted with a reason, 0 open.
+- Back-translation: 462 scored, 122 under 0.6 by back-translation alone, 43 flagged by both signals; 43 read and accepted with a reason, 0 open.
+- Second model: 43 corrections proposed; 11 stopped at the mechanical or glossary check, 10 by LanguageTool, Hunspell or the meaning check, 22 survived the tools; 0 adopted after reading.
+- Strings changed: 61 interface, 2 pack.
 
 ### Thai (th)
 
 - Plural categories (CLDR 49.0.0): other. Strings with a count: 0.
 - Mechanical checks before: 4 (no-native-script 2, same-as-english 2). Now open: 0; accepted exceptions: 4.
-- Glossary: 0 strings strayed from the glossary before, 0 now.
-- Back-translation: not run.
-- Second model: not run.
-- Strings changed: 0 interface, 0 pack.
+- Glossary: 18 strings strayed from the glossary before, 0 now.
+- LanguageTool: **does not cover this language.**
+- Hunspell (th): 46 hits on 508 rendered sentences; 46 accepted with a reason, 0 open.
+- Back-translation: 462 scored, 138 under 0.6 by back-translation alone, 61 flagged by both signals; 61 read and accepted with a reason, 0 open.
+- Second model: 33 corrections proposed; 11 stopped at the mechanical or glossary check, 5 by LanguageTool, Hunspell or the meaning check, 17 survived the tools; 1 adopted after reading.
+- Strings changed: 20 interface, 0 pack.
 
 ### Indonesian (id)
 
 - Plural categories (CLDR 49.0.0): other. Strings with a count: 0.
 - Mechanical checks before: 4 (same-as-english 4). Now open: 0; accepted exceptions: 4.
 - Glossary: 3 strings strayed from the glossary before, 0 now.
-- Back-translation: not run.
-- Second model: not run.
-- Strings changed: 3 interface, 0 pack.
+- LanguageTool: **does not cover this language.**
+- Hunspell (id): 124 hits on 546 rendered sentences; 124 accepted with a reason, 0 open.
+- Back-translation: 462 scored, 100 under 0.6 by back-translation alone, 33 flagged by both signals; 33 read and accepted with a reason, 0 open.
+- Second model: 36 corrections proposed; 14 stopped at the mechanical or glossary check, 4 by LanguageTool, Hunspell or the meaning check, 18 survived the tools; 0 adopted after reading.
+- Strings changed: 5 interface, 0 pack.
 
 ## What remains flagged, and why
 
@@ -185,13 +290,100 @@ Every exception is one line in a checked-in file with its reason; a run fails on
 
 - Mechanical (`allow/mechanical.json`): 8 entries, plus two extra quotation-mark pairs (Spanish « », Arabic « »; reasons in the file).
 - Same as English (`allow/untranslated.json`): 37 entries (names, loanwords, forms whose name is the same).
-- LanguageTool (`allow/grammar.json`): 0 entries.
-- Hunspell (`allow/spelling.json`): 0 words.
-- Back-translation (`allow/meaning.json`): 0 entries.
+- LanguageTool (`allow/grammar.json`): 286 entries.
+- Hunspell (`allow/spelling.json`): 301 words.
+- Back-translation (`allow/meaning.json`): 499 entries.
+
+LanguageTool exceptions by reason:
+
+- 60 × A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is. (de UPPERCASE_SENTENCE_START; en UPPERCASE_SENTENCE_START; es UPPERCASE_SENTENCE_START; fr UPPERCASE_SENTENCE_START; it UPPERCASE_SENTENCE_START; pl UPPERCASE_SENTENCE_START; pt UPPERCASE_SENTENCE_START; ru UPPERCASE_SENTENCE_START)
+- 44 × A piece of a sentence the page assembles around links (the age gate's consent and the sign-in terms: '… the Terms of Service and the Privacy Policy.'); it starts in lower case, or is the closing full stop, because the sentence continues across the link. (ar ARABIC_SC_WHITESPACE; de COMMA_PARENTHESIS_WHITESPACE; de UPPERCASE_SENTENCE_START; en COMMA_PARENTHESIS_WHITESPACE; en UPPERCASE_SENTENCE_START; es COMMA_PARENTHESIS_WHITESPACE; es UPPERCASE_SENTENCE_START; fr COMMA_PARENTHESIS_WHITESPACE; fr UPPERCASE_SENTENCE_START; it COMMA_PARENTHESIS_WHITESPACE; it UPPERCASE_SENTENCE_START; pl COMMA_PARENTHESIS_WHITESPACE; …)
+- 30 × A proper name (a product, platform, browser, model, person or character, or a verse form's name sourced in docs/language/glossary.json), not a word of the language. (ar HUNSPELL_RULE_AR; de GERMAN_SPELLER_RULE; en MORFOLOGIK_RULE_EN_US; es MORFOLOGIK_RULE_ES; fr FR_SPELLING_RULE; it MORFOLOGIK_RULE_IT_IT; pl MORFOLOGIK_RULE_PL_PL; pl NIETYPOWA_KOMBINACJA_DUZYCH_I_MALYCH_LITER; pt MORFOLOGIK_RULE_PT_BR; ru MORFOLOGIK_RULE_RU_RU)
+- 25 × A word of a verse form's or device's name, taken from a published source (docs/language/glossary.json, 'names'), which the speller does not know. (ar HUNSPELL_RULE_AR; de GERMAN_SPELLER_RULE; es MORFOLOGIK_RULE_ES; fr FR_SPELLING_RULE; it MORFOLOGIK_RULE_IT_IT; pl MORFOLOGIK_RULE_PL_PL; pt MORFOLOGIK_RULE_PT_BR; ru MORFOLOGIK_RULE_RU_RU)
+- 18 × Shown straight after other text on screen (a character's name, or the words before an ellipsis): it continues that text, so it starts in lower case. (de UPPERCASE_SENTENCE_START; en UPPERCASE_SENTENCE_START; es UPPERCASE_SENTENCE_START; fr UPPERCASE_SENTENCE_START; it UPPERCASE_SENTENCE_START; pl UPPERCASE_SENTENCE_START; pt UPPERCASE_SENTENCE_START; ru UPPERCASE_SENTENCE_START)
+- 8 × A pack string read on its own: a line of the written opponent's verse (a verse line is not a sentence and has no full stop or sentence capital of its own) or one word of a word list (acrostic and power words, shown in capitals or matched as typed). (de PUNCTUATION_PARAGRAPH_END; en PUNCTUATION_PARAGRAPH_END; fr POINT; fr POINTS_2; pl BRAK_KROPKI; pt FINAL_STOPS; pt PUNCTUATION_PARAGRAPH_END; pt REGARDS_COMMA)
+- 5 × A style suggestion at LanguageTool's 'picky' level (concision, a set phrase, an explicit pronoun), not an error; the wording is natural Brazilian Portuguese and is kept. (pt PT_CLICHE_REPLACE_AO_PÉ_DA_LETRA; pt PT_REDUNDANCY_REPLACE_TODO_O_RESTO; pt PT_WORDINESS_REPLACE_AINDA_ESTÃO; pt PT_WORDINESS_REPLACE_DENTRO_DE_UM; pt SIMPLIFICAR_CONVERTER_PARA_VERBO_INFINITIVO)
+- 4 × A purist objection to a word in standard Modern Standard Arabic use (جاهز, بالفعل, مباشرة as 'live', الرئيسية as in 'home page'); the word is kept. (ar AR_SIMPLE_REPLACE; ar wrong_adj_use)
+- 3 × The rule forbids opening a sentence with an indefinite noun; these are labels and headings (سطران على قافية واحدة، سطران بالضبط، حُكم بالقواعد، ملتزَم بها، لعنة عليك) or begin with an imperative verb (عُد، تحقق) that the rule took for a noun. (ar syntax_125_mobtadaa_nakira_1; ar syntax_125_mobtadaa_nakira_2; ar syntax_125_mobtadaa_nakira_3)
+- 3 × Kana, the Japanese syllabaries: a loanword. (de GERMAN_SPELLER_RULE; it MORFOLOGIK_RULE_IT_IT; pt MORFOLOGIK_RULE_PT_BR)
+- 3 × Passthrough: the headset's camera view of the room, as Meta names it on Quest, written as one word. (en MORFOLOGIK_RULE_EN_US; it MORFOLOGIK_RULE_IT_IT; pt MORFOLOGIK_RULE_PT_BR)
+- 3 × An interface label, button, heading or checklist line, written without a closing full stop, as its English is. The mechanical check 'ending' (src/i18n/quality.test.ts) already holds every string's closing punctuation to the English's. (fr POINTS_2; pl BRAK_KROPKI; pt FINAL_STOPS)
+- 3 × A loanword in ordinary Italian use for software and games. (it MORFOLOGIK_RULE_IT_IT)
+- 2 × The rule only asks for vowel marks (تشكيل) to fix how an ambiguous word is read (مَعْرِض, الخَصْم, حَلَبة); Arabic interface text is written unvocalised, and the context decides. (ar AR_DIACRITICS_REPLACE; ar AR_HOMOPHONES_REPLACE)
+- 2 × Verse: sehn and stehn for sehen and stehen, the poetic elision that keeps the line's metre and rhyme. (de GERMAN_SPELLER_RULE)
+- 2 × An imperative without its -e (tipp, prüf, renn, verbeug dich), standard in du-address. (de GERMAN_SPELLER_RULE)
+- 2 × An archaic second-person verb form (thou comest, thou standest): the written opponent speaks in Shakespeare's register. (en MORFOLOGIK_RULE_EN_US)
+- 2 × A number on screen next to what it counts (a code of 6 digits, line 1 and line 3), written in figures as its English is; the rule is a style preference for running prose. (fr NOMBRES_EN_LETTRES; fr NOMBRES_EN_LETTRES_2_IMPROVED)
+- 2 × Passkey: Android's Italian term (AOSP CredentialManager, recorded in docs/language/glossary.json); the dictionaries predate it. (it MORFOLOGIK_RULE_IT_IT)
+- 1 × 'إن ضاع ضاع الحساب' (if it is lost, the account is lost): the verb is repeated on purpose, once in the condition and once in the answer. (ar ARABIC_WORD_REPEAT_RULE)
+- 1 × 'كل ما قلته' is كل + ما (everything that you said); the suggested كلّما means 'whenever'. (ar AR_SIMPLE_REPLACE)
+- 1 × بالكانا: بـ + كانا (kana, the Japanese syllabaries), a loanword. (ar HUNSPELL_RULE_AR)
+- 1 × سونيتاته: his sonnets (سونيتة, a loanword, with the pronoun). (ar HUNSPELL_RULE_AR)
+- 1 × Mercutio as Wikidata's Arabic label and the Arabic Wikipedia write it (docs/language/sources/wikidata-names.json). (ar HUNSPELL_RULE_AR)
+- 1 × مزحة (a joke): a standard Arabic word, missing from the speller's list. (ar HUNSPELL_RULE_AR)
+- 1 × 'مفتاح المرور هذا' (this passkey): هذا follows the masculine noun it points to; the rule paired it with وسيلتك instead. (ar gender_0001_hadha)
+- 1 × The rule is about a sound masculine plural after a preposition; خمسة، سبعة، ستة، ثمانية here are numbers, not plurals. (ar grammar_0000_jar_plural)
+- 1 × لا here negates a present-tense verb (لا يجوز، لا يدعم، لا نطلب، لا يُرسَل), a correct negation; the rule's lā of prohibition, which would change the verb's ending, does not apply. (ar grammar_0011_notjazem_lam_nafia)
+- 1 × The counted nouns are masculine (أسطر from سطر, قوالب from قالب), and a number from three to ten takes the opposite gender of the singular: ثلاثة أسطر is right, and the suggested ثلاث would be wrong. All 13 hits read. (ar number_under_10_feminin)
+- 1 × The rule misreads a word that begins with ك as the particle كـ joined to the rest: كلمة (word) as كـ + لمة, and in one verse line كريم (generous) as كـ + ريم; its suggestions (كلمتة) are not words. (ar syntax_0002_as_ka_1)
+- 1 × The rule misreads كلمات and كلمتين (words) as the particle كـ joined to the rest; its suggestions (لمات، لمتين) are not words. (ar syntax_0002_as_ka_2)
+- 1 × توسّل أن + verb (to beg to) is ordinary modern usage; the rule holds the classical construction with بـ or إلى. (ar trans_429_twsl)
+- 1 × The rule suggests writing the tanwīn of the accusative (ـًا); the written opponent's verse is unvocalised throughout, so the mark is left out there as every other vowel mark is. (ar typo_000_tanwin_nasb2)
+- 1 × 'فما فوق' (and above) is فـ + ما, not a noun to take tanwīn. (ar typo_000_tanwin_nasb2)
+- 1 × Verse word order: 'als deiner Lärm nur war' = 'when yours was only noise' (deiner is the pronoun, Lärm the predicate); the rule read 'deiner Lärm' as article and noun. (de DE_AGREEMENT)
+- 1 × A verse line read alone: its subject, du, is in the line before ('Du kommst … / Und nennst …'). (de DE_VERBAGREEMENT)
+- 1 × Verse: the first person without its -e (ich lass, ich nenn, ich dreh, ich sag), the ordinary spoken form, which German verse uses for metre. (de ERSTE_PERSON_SIN_OHNE_E)
+- 1 × The fencing term (a counter-thrust), a loanword in German, as the device's name. (de GERMAN_SPELLER_RULE)
+- 1 × A word of the acrostic list, stored in lower case for matching and shown in capitals (acrosticDisplay in src/lib/verse/forms.ts, so the player reads MOND). (de GERMAN_SPELLER_RULE)
+- 1 × Verse: 'nach Haus' for 'nach Hause', the old short dative, for the line's metre. (de NACH_HAUS)
+- 1 × 'All of five characters' means 'each made of five characters' (of = consisting of); the suggested 'all seven' would change the meaning. (en ALL_MOST_SOME_OF_NOUN)
+- 1 × Here 'so' means 'so that' (purpose), which takes no comma; the rule reads it as joining two independent clauses. (en COMMA_COMPOUND_SENTENCE_2)
+- 1 × British spelling, used throughout the game (its 3D stage is the Theatre). (en MORFOLOGIK_RULE_EN_US)
+- 1 × 'Primero' is an adverb here ('remove one first'), not an adjective agreeing with 'una'. (es AGREEMENT_DET_ADJ)
+- 1 × The article of the two-part heading 'El' + 'Teatro' (theatre.titleA, theatre.titleB), not the pronoun él. (es EL_TILDE)
+- 1 × Kana, the Japanese syllabaries the haiku is counted in: a loanword. (es MORFOLOGIK_RULE_ES)
+- 1 × The acronym VR as headset makers brand it, kept as in the English menu (the Spanish acronym would be RV): a product label, not prose. (es MORFOLOGIK_RULE_ES)
+- 1 × Verse: 'Voici que tombe le rideau, et le silence' agrees with the nearest subject, the second one set off by a comma as an afterthought, which French allows. (fr ACCORD_SUJET_VERBE)
+- 1 × 'Rien … n'est envoyé': rien is masculine, so envoyé agrees with it; the rule took a feminine noun earlier in the sentence for the subject. (fr ETRE_VPPA_OU_ADJ)
+- 1 × 'Tu viens armé': venir with an attribute ('you come armed'); the rule took viens for a modal before an infinitive. (fr FAIRE_VPPA)
+- 1 × 'la' is the article before the linked title ('… et de la Politique de confidentialité'), in a piece of the sentence the page assembles around links. (fr LA_LA)
+- 1 × 'Jamais on n'a': the ne of the negation with jamais, not a liaison written out. (fr ON_N_A)
+- 1 × The comma sets 'et le silence' apart on purpose (the afterthought above); a verse line's pause. (fr PAS_DE_VIRGULE)
+- 1 × A style suggestion: the comma marks a pause in the verse line. (fr PAS_DE_VIRGULE_STYLE)
+- 1 × A style suggestion (the future for a formal announcement); the present for a scheduled expiry ('expire dans 10 minutes') is standard French. (fr PRES_FUTU)
+- 1 × 'Nul ne s'est jamais tu': tu is the past participle of se taire, not the pronoun. (fr PRONSUJ_NONVERBE)
+- 1 × The usual Italian word in games for multiplayer. (it MORFOLOGIK_RULE_IT_IT)
+- 1 × Collezionabile, the ordinary adjective of 'carte collezionabili' (collectible cards). (it MORFOLOGIK_RULE_IT_IT)
+- 1 × The plural of dio, written dèi to tell it from the preposition dei. (it MORFOLOGIK_RULE_IT_IT)
+- 1 × Immersivo, -a, in ordinary use for immersive sessions (WebXR 'immersive-vr'). (it MORFOLOGIK_RULE_IT_IT)
+- 1 × Raised by the sample value the check filled in (the address a@example.com, the card name Hamlet), not by the translation. ('ad' before a vowel is optional, and a real address starts with any letter.) (it ST_03_001)
+- 1 × The acronym VR as headset makers brand it, kept as in the English menu: a product label. (pl MORFOLOGIK_RULE_PL_PL)
+- 1 × 'Dwóch słów, z których każde': których refers to słów (genitive plural), and każde to each of them; the rule found no noun to match. (pl ZDANIE_PODRZEDNE_Z_KTORY_LUB_JAKI)
+- 1 × 'Oferecer passthrough a páginas da web': the preposition a with no article, for web pages in general. (pt A_WORD)
+- 1 × 'Sem citá-la': in Brazilian Portuguese an infinitive after a preposition takes the pronoun after it; the rule's 'sem a citar' is the European order. (pt COLOCACAO_PRONOMINAL_COM_ATRATOR_SIMPLES)
+- 1 × Verse: the subject pronoun kept for emphasis (Eu respondo… tu és…), which the style rule would drop. (pt EU_NÓS_REMOVAL)
+- 1 × A style suggestion at LanguageTool's 'picky' level (concision, a set phrase, an explicit pronoun), not an error; the wording is natural Brazilian Portuguese and is kept. (It proposes a feminine form; the game's word for the opponent is adversário throughout, see the glossary.) (pt INIMIGO_ADVERSÁRIO_ALIADO_OPONENTE)
+- 1 × Candeia (an oil lamp), plural candeias: a dictionary word of literary use, missing from the speller's list. (pt MORFOLOGIK_RULE_PT_BR)
+- 1 × A loanword in ordinary Brazilian use for headsets and games. (pt MORFOLOGIK_RULE_PT_BR)
+- 1 × A banner in capitals, as its English is (CARD EARNED). (ru AllCaps)
+- 1 × Рипост: the fencing term (a counter-thrust), a loanword, as the device's name. (ru MORFOLOGIK_RULE_RU_RU)
+- 1 × Веб-страница: an ordinary word (web page), which the speller's list lacks in this case form. (ru MORFOLOGIK_RULE_RU_RU)
+- 1 × Каной: the instrumental of кана (the Japanese syllabaries), a loanword. (ru MORFOLOGIK_RULE_RU_RU)
+- 1 × Один-единственный: a set compound of ordinary Russian ('one and only'), which the speller's list lacks. (ru MORFOLOGIK_RULE_RU_RU)
+- 1 × Реплика-подпись: the game's compound for the signature line (a line that is a signature), hyphenated as Russian writes such pairs. (ru MORFOLOGIK_RULE_RU_RU)
+- 1 × Verse: the particle же gives the imperative its force ('Так говори же', 'Слушай же'); the rule calls it redundant. (ru PARTICLE_JE)
+- 1 × A style rule (a pronoun at the end): 'Потеряется он — потеряется и она' is a deliberate parallel, the account (она) lost with the key (он). (ru PNN_ON_END)
+- 1 × A style rule (a noun left out at the end); the noun is understood from the same sentence (строку … самой длинной; код … новый), as Russian normally leaves it. (ru missing_noun_at_end)
+- 1 × 另一台 modifies 设备 only, and the list reads plainly as three alternatives; the rule warns of an ambiguity that is not there. (zh s5)
+- 1 × 下一首 means 'the next (verse)'; 下 is not the locative word the rule assumes, so 对手的下一首诗 is right. (zh wa2)
+- 1 × 一颗钉子: 颗 is a measure word in common use for nails; the rule's list lacks it. (zh wa5)
+- 1 × 一声响: 声 is the measure word (一声), so none is missing. (zh wa5)
+- 1 × 一韵到底 (one rhyme to the end) is the set phrase of Chinese prosody for monorhyme; 韵 needs no measure word in it. (zh wa5)
+- 1 × 新的通行密钥 (a new passkey): 新的 is an adjective before a noun; the rule took 通行 for a verb and asked for 地. (zh wb4)
 
 ## Form names: where each comes from
 
-13 names × 15 languages = 195. 132 are an article title, label or alias found through Wikidata (the record is `docs/language/glossary.json`, with the fetched data in `docs/language/sources/`). **63 have no such source** and are listed here for a native reader:
+13 names × 15 languages = 195. 134 are an article title, label or alias found through Wikidata (the record is `docs/language/glossary.json`, with the fetched data in `docs/language/sources/`). **61 have no such source** and are listed here for a native reader:
 
 | Name | Language | Text | Why it is not sourced |
 |---|---|---|---|
@@ -199,16 +391,15 @@ Every exception is one line in a checked-in file with its reason; a run fails on
 | `form.couplet.name` | hi | दोहा | दोहा is the rhymed couplet of the Hindi tradition (hi Wikipedia article दोहा, Wikidata Q5288532). A doha also has a fixed metre, which the game does not check. Replaces the coined दोहा-युग्म. |
 | `form.couplet.name` | vi | Câu đối vần | No article for this concept. Câu đối (vi Wikipedia, Q1168671) is the antithetical couplet, a different form; the name here adds vần (rhyme). Coined: for a native reader. |
 | `form.couplet.name` | th | กลอนคู่ | No article for this concept and none titled กลอนคู่. Not sourced: for a native reader. |
-| `form.couplet.name` | id | Kuplet | Wikidata links the Indonesian article Bait (sastra); bait is the everyday Indonesian word for a stanza, so it was not adopted. Kuplet is not an article title. Not sourced: for a native reader. |
-| `form.quatrain-aabb.name` | pl | Czterowiersz parzysty | Czterowiersz + the rhyme pattern. Czterowiersz: not an article title (the article is Tetrastych); the everyday Polish word, not sourced |
+| `form.quatrain-aabb.name` | pl | Czterowiersz parzysty | Czterowiersz + the rhyme pattern. Czterowiersz: English Wiktionary (docs/language/sources/wiktionary-translations.json), quatrain, 'a stanza of four lines': Polish czterowiersz (also tetrastych, kwartyna). The rhyme-pattern words are not sourced. |
 | `form.quatrain-aabb.name` | hi | जोड़ीदार चौपदी | चौपदी + the rhyme pattern. चौपदी: not sourced: for a native reader |
 | `form.quatrain-aabb.name` | ko | 짝운 4행시 | 4행시 + the rhyme pattern. 4행시: not sourced |
-| `form.quatrain-aabb.name` | vi | Tứ tuyệt vần liền | Tứ tuyệt + the rhyme pattern. Tứ tuyệt: not sourced; tứ tuyệt usually names the Chinese-style quatrain: for a native reader |
+| `form.quatrain-aabb.name` | vi | Thơ bốn câu vần liền | Thơ bốn câu + the rhyme pattern (vần liền, consecutive rhyme). Thơ bốn câu: English Wiktionary (docs/language/sources/wiktionary-translations.json), quatrain, 'a stanza of four lines': Vietnamese thơ bốn câu. Replaces Tứ tuyệt, which names the Chinese four-line jueju (the game's own Tuyệt cú form, whose brief calls it bài tứ tuyệt). The rhyme-pattern words are not sourced. |
 | `form.quatrain-aabb.name` | th | กลอนสี่สัมผัสคู่ | กลอนสี่ + the rhyme pattern. กลอนสี่: not an article title; not sourced |
-| `form.quatrain-abab.name` | pl | Czterowiersz krzyżowy | Czterowiersz + the rhyme pattern. Czterowiersz: not an article title (the article is Tetrastych); the everyday Polish word, not sourced |
+| `form.quatrain-abab.name` | pl | Czterowiersz krzyżowy | Czterowiersz + the rhyme pattern. Czterowiersz: English Wiktionary (docs/language/sources/wiktionary-translations.json), quatrain, 'a stanza of four lines': Polish czterowiersz (also tetrastych, kwartyna). The rhyme-pattern words are not sourced. |
 | `form.quatrain-abab.name` | hi | एकांतर चौपदी | चौपदी + the rhyme pattern. चौपदी: not sourced: for a native reader |
 | `form.quatrain-abab.name` | ko | 교차운 4행시 | 4행시 + the rhyme pattern. 4행시: not sourced |
-| `form.quatrain-abab.name` | vi | Tứ tuyệt vần chéo | Tứ tuyệt + the rhyme pattern. Tứ tuyệt: not sourced; tứ tuyệt usually names the Chinese-style quatrain: for a native reader |
+| `form.quatrain-abab.name` | vi | Thơ bốn câu vần chéo | Thơ bốn câu + the rhyme pattern (vần chéo, crossed rhyme). Thơ bốn câu: English Wiktionary (docs/language/sources/wiktionary-translations.json), quatrain, 'a stanza of four lines': Vietnamese thơ bốn câu. Replaces Tứ tuyệt, which names the Chinese four-line jueju (the game's own Tuyệt cú form). The rhyme-pattern words are not sourced. |
 | `form.quatrain-abab.name` | th | กลอนสี่สัมผัสไขว้ | กลอนสี่ + the rhyme pattern. กลอนสี่: not an article title; not sourced |
 | `form.tercet.name` | ar | ثلاثية | Not sourced: no article for this concept in this language. For a native reader. |
 | `form.tercet.name` | hi | त्रिपदी | No article for this concept. The hi Wikipedia article त्रिपदी is about the trinomial in algebra. Not sourced: for a native reader. |
@@ -222,7 +413,6 @@ Every exception is one line in a checked-in file with its reason; a run fails on
 | `form.anaphora.name` | ko | 첫말 반복 | No ko article. A plain description (repeat the first word), chosen over the earlier 두운 반복, which used the word for alliteration. Not sourced. |
 | `form.anaphora.name` | vi | Điệp đầu | Wikidata's vi sitelink is the untranslated 'Anaphora (tu từ học)'. Điệp đầu is not sourced: for a native reader. |
 | `form.anaphora.name` | th | ซ้ำคำขึ้นต้น | Not sourced: no article for this concept in this language. For a native reader. |
-| `form.anaphora.name` | id | Anafora | The id Wikipedia article Anafora (Q262575) is about the eucharistic prayer; the rhetorical term has no article. Not sourced. |
 | `form.acrostic.name` | vi | Thơ khoán thủ | No vi article for this concept and none titled Thơ khoán thủ. Not sourced: for a native reader. |
 | `form.epistrophe.name` | hi | अंत-आवृत्ति | Not sourced: no article for this concept in this language. For a native reader. |
 | `form.epistrophe.name` | zh | 尾语重复 | Not sourced: no article for this concept in this language. For a native reader. |
@@ -259,24 +449,333 @@ Every exception is one line in a checked-in file with its reason; a run fails on
 | `device.internal-rhyme.name` | vi | Vần lưng | Not sourced: no article for this concept in this language. For a native reader. |
 | `device.internal-rhyme.name` | id | Rima dalam | Not sourced: no article for this concept in this language. For a native reader. |
 
+## The second model's corrections, as read
+
+Surviving the tools is necessary, not sufficient: a correction that passes LanguageTool, Hunspell and the meaning check can still be wrong (in Hindi, Arabic and German the reviewer turned the theatre company's *player*, an actor, into a games *player*). Every survivor was read against the English and where the string appears, and adopted or not with a reason, in `docs/language/results/adoption-reading.json`. The reader was the engineer doing this work, a language model, not a native speaker. Strings changed for reasons of the engineer's own (a fault the reviewer pointed near, or one the meaning check showed) were put through the same tools and are in the list of every change below.
+
+### Spanish (es): 0 adopted of 11 that survived the tools
+
+- not adopted `form.jueju.brief`: `Cuatro versos, todos de cinco caracteres o todos de siete, la forma de una cuarteta clásica.`. 'china' says what the English leaves to the form's name; no error.
+- not adopted `check.spells.words`: `Versos abiertos, en orden, con {word}`. Wrong: 'Versos abiertos' means 'open lines'; the line says the verses begin with these words.
+- not adopted `auth.emailHint`: `¿En un dispositivo sin tu llave de acceso? Inicia sesión por correo, si tu cuenta tiene uno.`. entrar is one of the glossary's accepted forms for sign in (auth.emailHeading uses it too); no error.
+- not adopted `battle.titleA`: `Batalla`. Half of the heading 'Arena de batalla', Spanish order.
+- not adopted `battle.titleB`: `Arena`. As battle.titleA.
+- not adopted `round.cursesYou`: `{card} te lanza la maldición {name}: {rule}`. Deliberate: Spanish goes on in lower case after a colon, so the rule, a full sentence, follows a full stop (commit 3bfe45e).
+- not adopted `verdict.notUsed`: `no utilizado`. sin usar is correct.
+- not adopted `verdict.missed`: `fallido`. fallado is correct.
+- not adopted `verdict.held`: `mantenida`. Wrong: 'held' means the curse's rule was obeyed, cumplida; mantenida means kept in force.
+- not adopted `badge.writtenJudged`: `Rival de versos escritos · juzgado por {model}`. 'juzga {model}' ({model} judges) is correct and clear.
+- not adopted `theatre.judgedRules`: `Juzgado por regla: no hay ningún modelo en ejecución.`. Both wordings are correct.
+
+### French (fr): 1 adopted of 12 that survived the tools
+
+- adopted `theatre.submit`: `La dire` → `Dites-la`. The same English 'Speak it' is 'Dites-la' on the battle page (mic.speak); 'La dire' was the odd one out.
+- not adopted `check.spells.words`: `Vers ouverts, dans l'ordre, avec {word}`. Wrong: 'Vers ouverts' means 'open lines'; the line says the verses begin with these words.
+- not adopted `device.ring.brief.char`: `Terminez votre strophe par le caractère qui l’a commencée.`. ouvrir une strophe (to open a stanza) is correct French.
+- not adopted `auth.createWarning`: `Si vous perdez la clé d’accès, nous ne pourrons pas vous laisser entrer. Ajoutez ensuite une seconde clé d’accès ou un e-mail pour pouvoir revenir.`. 'une seconde clé' after 'la clé d’accès' in the same sentence is a normal ellipsis.
+- not adopted `auth.createWarningNoEmail`: `Si vous perdez la clé d’accès, nous ne pourrons pas vous laisser entrer. Ajoutez ensuite une seconde clé d’accès pour pouvoir revenir.`. As auth.createWarning.
+- not adopted `auth.nudgeBody`: `Pour l’instant, une seule clé d’accès ouvre ce compte. Si elle est perdue, le compte l’est aussi. Ajoutez une seconde clé d’accès ou un e-mail pour pouvoir revenir.`. As auth.createWarning.
+- not adopted `auth.nudgeBodyNoEmail`: `Pour l’instant, une seule clé d’accès ouvre ce compte. Si elle est perdue, le compte l’est aussi. Ajoutez une seconde clé d’accès pour pouvoir revenir.`. As auth.createWarning.
+- not adopted `brain.checking`: `Vérification de la compatibilité de cet appareil…`. Correct; 'compatibilité' would say less.
+- not adopted `signature.none`: `cette carte n’a pas de réplique signature`. 'réplique de signature' is correct.
+- not adopted `verdict.notUsed`: `non utilisé`. The plural agrees with what it describes in the table; no error found.
+- not adopted `verdict.missed`: `manqué`. The feminine agrees with la signature; no error.
+- not adopted `badge.written`: `Adversaire écrit`. 'Adversaire écrit' ('a written opponent') loses what is written (the verses).
+
+### German (de): 6 adopted of 24 that survived the tools
+
+- adopted `auth.createWarning`: `Wenn du den Passkey verlierst, können wir dich nicht wieder hereinlassen. Füge danach einen zweiten Passkey oder eine E-Mail hinzu, damit du zurückkommst.` → `Wenn du den Passkey verlierst, können wir dich nicht wieder hereinlassen. Füge danach einen zweiten Passkey oder eine E-Mail hinzu, damit du wieder Zugriff hast.`. 'damit du zurückkommst' (so that you come back) says returning, not getting back into the account; 'damit du wieder Zugriff hast' says it. Applied to the six strings with the phrase.
+- adopted `auth.createWarningNoEmail`: `Wenn du den Passkey verlierst, können wir dich nicht wieder hereinlassen. Füge danach einen zweiten Passkey hinzu, damit du zurückkommst.` → `Wenn du den Passkey verlierst, können wir dich nicht wieder hereinlassen. Füge danach einen zweiten Passkey hinzu, damit du wieder Zugriff hast.`. As auth.createWarning.
+- adopted `auth.nudgeBody`: `Im Moment ist ein einziger Passkey der einzige Zugang zu diesem Konto. Geht er verloren, ist das Konto verloren. Füge einen zweiten Passkey oder eine E-Mail hinzu, damit du zurückkommst.` → `Im Moment ist ein einziger Passkey der einzige Zugang zu diesem Konto. Geht er verloren, ist das Konto verloren. Füge einen zweiten Passkey oder eine E-Mail hinzu, damit du wieder Zugriff hast.`. As auth.createWarning.
+- adopted `auth.nudgeBodyNoEmail`: `Im Moment ist ein einziger Passkey der einzige Zugang zu diesem Konto. Geht er verloren, ist das Konto verloren. Füge einen zweiten Passkey hinzu, damit du zurückkommst.` → `Im Moment ist ein einziger Passkey der einzige Zugang zu diesem Konto. Geht er verloren, ist das Konto verloren. Füge einen zweiten Passkey hinzu, damit du wieder Zugriff hast.`. As auth.createWarning.
+- adopted `auth.recoveryWarning`: `Ein einziger Passkey ist dein einziger Zugang. Füge einen zweiten Passkey oder eine E-Mail hinzu, damit du zurückkommst.` → `Ein einziger Passkey ist dein einziger Zugang. Füge einen zweiten Passkey oder eine E-Mail hinzu, damit du wieder Zugriff hast.`. As auth.createWarning.
+- adopted `auth.recoveryWarningNoEmail`: `Ein einziger Passkey ist dein einziger Zugang. Füge einen zweiten Passkey hinzu, damit du zurückkommst.` → `Ein einziger Passkey ist dein einziger Zugang. Füge einen zweiten Passkey hinzu, damit du wieder Zugriff hast.`. As auth.createWarning.
+- not adopted `check.spells.words`: `Zeilen beginnen fortlaufend mit {word}`. A rewording of a correct line.
+- not adopted `check.luc-bat-rhyme`: `Die sechste Silbe jeder Zeile reimt sich`. A lục bát pair is two lines; 'of both lines' says the same as the English.
+- not adopted `device.riposte.brief`: `Wende ein Wort mit {n, plural, one {# Buchstaben} other {# Buchstaben}} oder mehr aus der letzten Strophe deines Gegners gegen ihn.`. 'mit 1 oder mehr Buchstaben' is correct German; a rewording.
+- not adopted `device.grandeur.brief`: `Verwende zwei Wörter mit {n, plural, one {# Buchstabe} other {# Buchstaben}} oder mehr.`. Wrong: after mit the noun is dative, Buchstaben, not Buchstabe.
+- not adopted `curse.no-repeats.brief`: `Du darfst kein Wort mit {n, plural, one {# Buchstaben} other {# Buchstaben}} oder mehr zweimal verwenden.`. As device.riposte.brief.
+- not adopted `curse.no-repeats.theirs`: `Sie dürfen kein Wort mit {n, plural, one {# Buchstaben} other {# Buchstaben}} oder mehr zweimal verwenden.`. er stands for der Gegner, the opponent; Sie dürfen would read as the formal 'you'.
+- not adopted `auth.error.email_in_use`: `Diese Adresse ist bereits mit einem anderen Konto verknüpft. Melde dich ab und stattdessen mit diesem Konto an.`. Changes the meaning: one signs in with the address (damit), not with 'this account'.
+- not adopted `battle.titleA`: `Kampf`. Half of the heading 'Die Kampfarena'.
+- not adopted `battle.difficulty.player`: `Spieler: wählt den besseren von zwei Entwürfen`. Wrong: the levels are a theatre company's ranks (apprentice, player, master); a player there is an actor, Schauspieler.
+- not adopted `battle.worldCard`: `Weltkarte`. Wrong: Weltkarte means a map of the world, which is why it was changed (commit 47ad9b3).
+- not adopted `end.lost`: `Heute Nacht gehört die Bühne ihnen.`. dem Gegner (the opponent) is who 'they' are; ihnen would read as a plural.
+- not adopted `badge.written`: `Geschriebener Gegner`. 'Geschriebener Gegner' ('a written opponent') loses what is written (the verses).
+- not adopted `theatre.intro`: `Dasselbe Duell auf einer Bühne um dich herum. Zeig oder kneif, um eine Karte zu spielen, drück das Mikrofon und sprich deine Strophe. Sie wird auf diesem Gerät transkribiert und bewertet.`. The comma sets off a fragment as the English does; 'drück auf das Mikrofon' is correct.
+- not adopted `age.errorDob`: `Bitte wähle dein vollständiges Geburtsdatum aus.`. wählen and auswählen are both correct here.
+- not adopted `age.minorBody`: `Du musst mindestens 13 Jahre alt sein, um Inspired Mile zu nutzen. Bitte komm wieder, wenn du das erforderliche Alter erreicht hast.`. A change of register; the interface speaks to the player with du throughout.
+- not adopted `age.consentAnd`: `und`. A piece of a sentence split around links; the article belongs to the second linked title. Left for a native reader (HUMAN-REVIEW item 7).
+- not adopted `age.agreeBefore`: `Indem du fortfährst, stimmst du unseren`. As age.consentAnd; 'zustimmen' would need the dative for titles the page does not decline.
+- not adopted `age.agreeAnd`: `und`. As age.consentAnd.
+
+### Italian (it): 0 adopted of 11 that survived the tools
+
+- not adopted `check.spells.words`: `Versi aperti, in ordine, con {word}`. Wrong: 'Versi aperti' means 'open lines'; the line says the verses begin with these words.
+- not adopted `check.luc-bat-rhyme`: `La sesta sillaba di ogni verso rima`. A lục bát pair is two lines; 'of the two lines' says the same as the English.
+- not adopted `age.consentAnd`: `e`. A piece of a sentence split around links; 'e la relativa' belongs to the second linked title. Left for a native reader (HUMAN-REVIEW item 7).
+- not adopted `battle.titleB`: `Arena`. As battle.titleA.
+- not adopted `brain.failed`: `Il modello non è riuscito ad avviarsi su questo dispositivo. Puoi comunque giocare contro l’avversario scritto.`. Changes the glossary's term for the written opponent.
+- not adopted `brain.written`: `Giochi contro l’avversario scritto.`. As brain.failed.
+- not adopted `round.items`: `Reliquie e pozioni (1 inchiostro ciascuna)`. '1 di inchiostro' (one of ink) is the partitive Italian uses for a game resource; no error.
+- not adopted `signature.none`: `questa carta non ha una battuta firma`. 'battuta di firma' is correct.
+- not adopted `verdict.held`: `mantenuta`. Wrong: 'held' means the curse was obeyed, rispettata; mantenuta means kept in force.
+- not adopted `badge.writtenJudged`: `Avversario scritto · giudicato da {model}`. Changes the glossary's term for the written opponent; 'giudica {model}' ({model} judges) is correct.
+- not adopted `theatre.judgedRules`: `Giudicato secondo le regole: nessun modello è in funzione.`. 'secondo regole' (by rules, as the English 'by rule') is used in all three such strings; with the article it would read 'according to the rules'. Not clearly an error; left as it is.
+
+### Portuguese (Brazil) (pt): 0 adopted of 11 that survived the tools
+
+- not adopted `check.spells.words`: `Versos abertos, em ordem, com {word}`. Wrong: 'Versos abertos' means 'open lines'; the line says the verses begin with these words.
+- not adopted `check.luc-bat-rhyme`: `A sexta sílaba de cada verso rima`. A lục bát pair is two lines; 'of the two lines' says the same as the English.
+- not adopted `nav.toggleAudio`: `Alternar áudio`. A label read out for a toggle button; 'turn on or off' is what it does.
+- not adopted `nav.toggleMenu`: `Alternar menu`. As nav.toggleAudio.
+- not adopted `auth.nudgeBody`: `Por enquanto, uma única chave de acesso é a única forma de entrar nesta conta. Se ela for perdida, a conta será perdida. Adicione uma segunda chave de acesso ou um e-mail para poder voltar.`. The English repeats 'one … only' too; a rewording of a correct sentence.
+- not adopted `auth.nudgeBodyNoEmail`: `Por enquanto, uma única chave de acesso é a única forma de entrar nesta conta. Se ela for perdida, a conta será perdida. Adicione uma segunda chave de acesso para poder voltar.`. As auth.nudgeBody.
+- not adopted `verdict.notUsed`: `não utilizadas`. usadas and utilizadas are both correct.
+- not adopted `badge.written`: `Adversário escrito`. 'Adversário escrito' ('a written opponent') loses what is written (the verses).
+- not adopted `theatre.judgedRules`: `Julgado por regra: nenhum modelo está em execução.`. rodando is the ordinary Brazilian word for a program running.
+- not adopted `theatre.cursesYou`: `Amaldiçoa você: {rule}`. Deliberate: Portuguese goes on in lower case after a colon, so the rule, a full sentence, follows a full stop (commit 3bfe45e).
+- not adopted `theatre.submit`: `Diga-o`. Wrong gender: the thing spoken is a estrofe (feminine), so it would be Diga-a; the infinitive button label Dizer is ordinary Brazilian UI.
+
+### Polish (pl): 0 adopted of 13 that survived the tools
+
+- not adopted `check.spells.words`: `Wersy otwierane kolejno przez {word}`. A rewording; but the reviewer's attention to this line found a real fault: 'od {word}' needs the genitive, which a word put in as written does not have. Fixed instead as 'od słów: {word}' (with the words:), checked by the same tools.
+- not adopted `age.agreeBefore`: `Przechodząc dalej, akceptujesz nasze`. Deliberate: the sentence ends on 'the documents:' so the linked titles need not be declined (HUMAN-REVIEW item 7).
+- not adopted `battle.titleA`: `Bitwa`. Half of the heading 'Arena bitwy' (the arena of battle), Polish order.
+- not adopted `battle.titleB`: `Arena`. As battle.titleA.
+- not adopted `battle.cardInCity`: `{card} w {city}`. Wrong: 'w {city}' needs the city's locative (w Weronie), which a name put in as written does not have; the comma avoids that.
+- not adopted `round.opponentPlays`: `Twój rywal gra`. The heading introduces the opponent's character card; no error.
+- not adopted `round.versePlaceholder`: `Jeden wers w każdej linii…`. linijka is the ordinary word for a line of text in a box; no error.
+- not adopted `variant.bonus`: `+{n} {criterion}`. A colon between the bonus and its criterion is correct.
+- not adopted `signature.none`: `ta karta nie ma kwestii sygnatury`. kwestia-sygnatura is a hyphenated apposition, both parts declined (kwestii-sygnatury), as Polish writes such compounds.
+- not adopted `verdict.notUsed`: `nieużywane`. nieużyte (not used, this time) is correct.
+- not adopted `verdict.held`: `utrzymana`. Wrong: 'held' means the curse's condition was kept (dotrzymana), not that a curse was maintained on someone.
+- not adopted `badge.written`: `Gotowy rywal`. 'Gotowy rywal' (a ready opponent) loses what is written (the verses).
+- not adopted `theatre.micLoading`: `Wczytywanie dźwięku…`. Changes the meaning: what loads is the speech model, which the English calls 'the ear' on purpose; 'loading sound' is something else.
+
+### Russian (ru): 1 adopted of 28 that survived the tools
+
+- adopted `device.ring.brief.char`: `Закончи строфу тем же знаком, каким она началась.` → `Закончи строфу тем же знаком, с которого она началась.`. начинаться с + genitive is the construction: 'тем же знаком, с которого она началась'; 'каким она началась' is not. The word version, device.ring.brief, had the same fault and is fixed the same way, checked by the same tools.
+- not adopted `form.epistrophe.brief.char`: `Три строки, и все заканчиваются одним и тем же знаком.`. кончаются and заканчиваются are both correct.
+- not adopted `check.luc-bat-rhyme`: `Шестые слоги в строках рифмуются`. A lục bát pair is two lines; 'of both lines' says the same as the English.
+- not adopted `nav.explore`: `Исследовать`. A heading over a group of menu links; Обзор suits it, the verb Исследовать does not.
+- not adopted `nav.toggleAudio`: `Выключить звук`. A label read out for a toggle button; 'turn on or off' is what it does.
+- not adopted `nav.toggleMenu`: `Открыть меню`. As nav.toggleAudio.
+- not adopted `age.intro`: `Пожалуйста, подтвердите свой возраст, чтобы продолжить.`. A change of register: the Russian interface addresses the player as ты throughout (its file header says so).
+- not adopted `age.errorDob`: `Пожалуйста, выберите полную дату рождения.`. As age.intro.
+- not adopted `age.minorBody`: `Для использования Inspired Mile вам должно быть не менее 13 лет. Пожалуйста, вернитесь, когда вы будете соответствовать возрастным требованиям.`. As age.intro.
+- not adopted `age.teenBody`: `Так как вам нет 18 лет, для использования Inspired Mile требуется согласие родителей или опекунов.`. As age.intro.
+- not adopted `age.agreeBefore`: `Продолжая, вы соглашаетесь с нашими`. As age.intro; the sentence ends on 'документы:' so the linked titles need not be declined (HUMAN-REVIEW item 7).
+- not adopted `migrate.body`: `На этом устройстве найден локальный прогресс. Синхронизируй его с учётной записью, чтобы он был доступен на всех устройствах.`. A rewording of a correct sentence.
+- not adopted `pwa.install`: `Установите Inspired Mile для лучшего игрового опыта`. As age.intro.
+- not adopted `auth.emailHint`: `Нет ключа доступа на этом устройстве? Войдите по почте, если она привязана к учётной записи.`. As age.intro.
+- not adopted `auth.codeHeading`: `Введите код`. As age.intro.
+- not adopted `auth.legalBefore`: `Входя в систему, вы принимаете наши `. As age.agreeBefore.
+- not adopted `auth.offerBody`: `В следующий раз войдите с помощью отпечатка пальца, лица или блокировки экрана. Без кода и ожидания письма.`. As age.intro.
+- not adopted `auth.passkeysEmpty`: `Ключей доступа пока нет. Добавьте один, чтобы входить без кода из письма.`. As age.intro.
+- not adopted `auth.error.email_in_use`: `Этот адрес уже привязан к другой учётной записи. Выйдите и войдите с ним.`. As age.intro; принадлежит (belongs to) is what the English says.
+- not adopted `battle.cardInCity`: `{card} в {city}`. Wrong: 'в {city}' needs the city's prepositional case (в Вероне), which a name put in as written does not have; the comma avoids that.
+- not adopted `round.items`: `Реликвии и зелья (по 1 чернилам)`. 'по 1 чернилам' is not better; how a counted amount of ink (a plural-only noun) is written is listed for a native reader.
+- not adopted `hand.potionLastRound`: `{card} наложила бы проклятие на следующую строфу соперника, но это последний раунд.`. Wrong: the feminine verb would not agree with a masculine card name (Hamlet); the current wording avoids the agreement on purpose.
+- not adopted `variant.bonus`: `+{n} {criterion}`. A colon between the bonus and its criterion is correct.
+- not adopted `verdict.notUsed`: `не использовалось`. The plural agrees with what it describes in the table; no error found.
+- not adopted `verdict.missed`: `промах`. мимо (missed, as a shot) is a correct terse label.
+- not adopted `verdict.held`: `удержано`. Wrong: 'held' means the curse was obeyed, соблюдено; удержано means 'retained'.
+- not adopted `verdict.seeResult`: `Посмотреть результат`. итог and результат are both correct.
+- not adopted `badge.written`: `Готовый соперник`. 'Готовый соперник' (a ready opponent) loses what is written (the verses).
+
+### Arabic (ar): 5 adopted of 24 that survived the tools
+
+- adopted `check.spells.words`: `الأسطر تبدأ، على الترتيب، بـ {word}` → `الأسطر تبدأ، بالترتيب، بـ {word}`. على الترتيب means 'respectively'; 'in order' is بالترتيب.
+- adopted `auth.emailHint`: `على جهاز ليس فيه مفتاح مرورك؟ ادخل بالبريد الإلكتروني إن كان لحسابك بريد.` → `على جهاز لا يتوفر فيه مفتاح مرورك؟ سجل الدخول بالبريد الإلكتروني إذا كان لحسابك بريد.`. سجّل الدخول, the imperative of the platform term (Android and Google write تسجيل الدخول), for the colloquial ادخل. The shadda of سجّل, which the proposal left out, is written as in the other sign-in strings.
+- adopted `auth.offerBody`: `في المرة القادمة ادخل ببصمة إصبعك أو وجهك أو قفل الشاشة. بلا رمز وبلا انتظار بريد.` → `في المرة القادمة، سجّل الدخول ببصمة إصبعك أو وجهك أو قفل الشاشة. بلا رمز وبلا انتظار بريد إلكتروني.`. As auth.emailHint, and البريد الإلكتروني for the bare بريد (post).
+- adopted `auth.passkeyAdded`: `أُضيف مفتاح المرور. يمكنك الدخول به من الآن.` → `تمت إضافة مفتاح المرور. يمكنك تسجيل الدخول به من الآن فصاعدًا.`. تسجيل الدخول, the platform term, for الدخول.
+- adopted `auth.error.passkey_not_accepted`: `لم يُقبل مفتاح المرور هذا. ادخل برمز بريدي ثم أضف مفتاح مرور جديدًا.` → `لم يُقبل مفتاح المرور هذا. سجّل الدخول باستخدام رمز مرسل عبر البريد الإلكتروني، ثم أضف مفتاح مرور جديدًا.`. رمز بريدي means a postal code; the proposal says a code sent by email.
+- not adopted `check.growing`: `كل سطر يحتوي كلمات أكثر من السطر الذي قبله`. A correct nominal sentence with the predicate first; the proposal rewords it.
+- not adopted `check.growing.char`: `كل سطر يحتوي أحرفًا أكثر من السطر الذي قبله`. As check.growing.
+- not adopted `check.jueju-length`: `كل سطر من خمسة أحرف، أو كل سطر من سبعة أحرف`. The ellipsis 'or every line of seven' is as complete as the English; no error.
+- not adopted `check.luc-bat-rhyme`: `المقطع السادس من كل سطر له قافية`. A lục bát pair is two lines; 'in the two lines' says the same as the English.
+- not adopted `device.swell.brief`: `اجعل سطرك الأخير هو الأطول.`. أطول الأسطر is a correct superlative; no error.
+- not adopted `auth.nudgeBody`: `الآن مفتاح مرور واحد هو السبيل الوحيد لهذا الحساب. إن ضاع ضاع الحساب. أضف مفتاح مرور ثانيًا أو بريدًا إلكترونيًا لتتمكن من العودة.`. السبيل الوحيد إلى هذا الحساب is correct; no error.
+- not adopted `auth.nudgeBodyNoEmail`: `الآن مفتاح مرور واحد هو السبيل الوحيد لهذا الحساب. إن ضاع ضاع الحساب. أضف مفتاح مرور ثانيًا لتتمكن من العودة.`. As auth.nudgeBody.
+- not adopted `auth.passkeysEmpty`: `لا توجد مفاتيح مرور بعد. أضف مفتاحًا لتسجيل الدخول دون الحاجة لرمز بريدي.`. Not adopted after a second reading: the proposal still says رمز بريدي (a postal code). Fixed instead as the sibling string auth.passkeyUnsupported words it, رمز يصلك بالبريد الإلكتروني (a code that reaches you by email), with سجّل الدخول, checked by the same tools.
+- not adopted `auth.passkeyRemoveConfirm`: `إزالة؟`. أتريد الإزالة؟ is a correct confirmation question.
+- not adopted `battle.titleA`: `معركة`. Half of the heading حلبة النزال (the arena of combat), Arabic order; the proposal would make it 'Battle Arena' word for word.
+- not adopted `battle.titleB`: `حلبة`. As battle.titleA.
+- not adopted `battle.difficulty.player`: `اللاعب: يختار الأفضل من مسودتين`. Wrong: the levels are a theatre company's ranks (apprentice, player, master); a player there is an actor, الممثل.
+- not adopted `hand.relicNote`: `{card} تمنحك: {words}.`. The English says lends; يعيرك says it.
+- not adopted `hand.potionNote`: `{card} تضع لعنة على أبيات خصمك القادمة: {rule}`. The proposal makes the verb feminine, but {card} is a character's name (Hamlet). The verb's agreement with card names is left for the names work and a native reader.
+- not adopted `hand.potionLastRound`: `{card} كانت ستضع لعنة على أبيات الخصم القادمة، لكن هذه هي الجولة الأخيرة.`. As hand.potionNote.
+- not adopted `variant.bonus`: `+{n} {criterion}`. +{n} في {criterion} (plus n in wit) is natural Arabic.
+- not adopted `end.lost`: `المسرح له الليلة.`. A rewording of a correct line.
+- not adopted `theatre.declined`: `هذا الجهاز لا يدعم الجلسات الغامرة.`. Changes the meaning: a device that declines a session may support it.
+- not adopted `theatre.judgedRules`: `التحكيم حسب القواعد: لا يوجد نموذج يعمل.`. حُكم بالقواعد (it was judged by rule) is correct.
+
+### Hindi (hi): 1 adopted of 25 that survived the tools
+
+- adopted `round.cursesYou`: `{card} ने आप पर शाप डाला है, “{name}”: {rule}` → `{card} ने आप पर {name} का शाप डाला है: {rule}`. '{card} ने आप पर {name} का शाप डाला है' (cast the curse of {name} on you) is the natural construction; the comma and quoted name were not.
+- not adopted `check.spells.words`: `पंक्तियाँ {word} से शुरू होकर क्रम में खुलती हैं`. A rewording of a correct line ('open' rendered literally as खुलती).
+- not adopted `check.growing`: `हर पंक्ति में पिछली पंक्ति से ज़्यादा शब्द हैं`. 'पिछली से' (than the last) is a normal ellipsis in Hindi; no error.
+- not adopted `check.growing.char`: `हर पंक्ति में पिछली पंक्ति से ज़्यादा अक्षर हैं`. As check.growing.
+- not adopted `check.luc-bat-rhyme`: `प्रत्येक पंक्ति का छठा शब्दांश तुक मिलाता है`. A lục bát pair is two lines; 'of both lines' says the same as the English.
+- not adopted `device.riposte.brief`: `प्रतिद्वंद्वी के पिछले पद से {n, plural, one {# अक्षर} other {# अक्षर}} या उससे अधिक का कोई शब्द लेकर उसी पर लौटा दें।`. Both wordings are correct; no error.
+- not adopted `device.brevity.brief`: `हर पंक्ति में {n, plural, one {# शब्द} other {# शब्द}} या उससे कम शब्द रखें।`. 'No line may have more than # words' is the same rule as 'keep every line to # or fewer'.
+- not adopted `device.brevity.brief.char`: `हर पंक्ति में {n, plural, one {# अक्षर} other {# अक्षर}} या उससे कम अक्षर रखें।`. As device.brevity.brief.
+- not adopted `curse.short-lines.brief`: `आपकी किसी भी पंक्ति में {n, plural, one {# शब्द} other {# शब्द}} से अधिक शब्द नहीं हो सकते।`. The current text is correct; the proposal rewords it.
+- not adopted `curse.short-lines.brief.char`: `आपकी किसी भी पंक्ति में {n, plural, one {# अक्षर} other {# अक्षर}} से अधिक अक्षर नहीं हो सकते।`. As curse.short-lines.brief.
+- not adopted `curse.short-lines.theirs`: `प्रतिद्वंद्वी की किसी भी पंक्ति में {n, plural, one {# शब्द} other {# शब्द}} से अधिक शब्द नहीं हो सकते।`. As curse.short-lines.brief.
+- not adopted `curse.short-lines.theirs.char`: `प्रतिद्वंद्वी की किसी भी पंक्ति में {n, plural, one {# अक्षर} other {# अक्षर}} से अधिक अक्षर नहीं हो सकते।`. As curse.short-lines.brief.
+- not adopted `age.consentAfter`: `और मेरे Inspired Mile के इस्तेमाल के लिए अपनी सहमति देते हैं।`. A piece of a sentence split around links; the proposal drops 'have read', which the assembled sentence needs. Left for a native reader (HUMAN-REVIEW item 7).
+- not adopted `battle.difficulty.player`: `खिलाड़ी: दो मसौदों में से बेहतर चुनता है`. Wrong: the three levels are a theatre company's ranks (apprentice, player, master), and a player there is an actor, which every language translates.
+- not adopted `round.versePlaceholder`: `प्रति पंक्ति एक पद की पंक्ति…`. Both wordings are awkward; the proposal is no better.
+- not adopted `live.curseHolding`: `पकड़ में`. Wrong: 'holding' means the curse is being obeyed (निभ रहा है); पकड़ में means 'caught'.
+- not adopted `verdict.missed`: `छूटा`. चूक is a correct terse label for a missed bonus.
+- not adopted `criterion.allusion`: `प्रसंग`. संकेत is a usual rendering of a literary allusion; प्रसंग means context. No clear error.
+- not adopted `badge.writtenJudged`: `लिखे हुए प्रतिद्वंद्वी · {model} द्वारा निर्णायक`. 'लिखे हुए प्रतिद्वंद्वी' loses what is written (the verses).
+- not adopted `theatre.titleA`: `द`. Half of the heading 'हमारी रंगशाला' (our theatre); the proposal would leave a transliterated English article.
+- not adopted `theatre.intro`: `वही द्वंद्व, आपके चारों ओर एक मंच पर। कार्ड खेलने के लिए इशारा करें या चुटकी भरें, माइक्रोफ़ोन दबाएँ और अपना पद बोलें। इसे इसी डिवाइस पर लिखा और परखा जाता है।`. सुनाएँ (recite) suits a verse better than बोलें (speak); the rest is rewording.
+- not adopted `theatre.questBody`: `पासथ्रू में खुलता है, जिससे मंच आपके कमरे में दिखाई देता है। कंट्रोलर से इशारा करें या हाथ से चुटकी भरें।`. A rewording of a correct line.
+- not adopted `theatre.visionBody`: `पूरे मंच के रूप में खुलता है। किसी कार्ड को देखें और चुटकी भरें। visionOS पर Safari वेब पेजों के लिए पासथ्रू की सुविधा नहीं देता।`. A rewording of a correct line.
+- not adopted `theatre.writtenHint`: `लिखे हुए प्रतिद्वंद्वी से खेल रहे हैं। यहाँ मुकाबला करने के लिए युद्ध पेज पर एक मॉडल बुलाएँ।`. Changes the glossary's term for the written opponent.
+- not adopted `theatre.declined`: `इस डिवाइस ने इमर्सिव सत्र को अस्वीकार कर दिया है।`. Both wordings are correct.
+
+### Chinese (Simplified) (zh): 2 adopted of 9 that survived the tools
+
+- adopted `auth.passkeysEmpty`: `还没有通行密钥。添加一把，就能不用邮件验证码登录。` → `还没有通行密钥。添加一个，就能不用邮件验证码登录。`. The measure word: Android's Chinese writes '%1$s 个通行密钥' (CredentialManager more_options_usage_passkeys, sources/aosp-terms.json); 把 is for a key with a handle. Applied to every passkey string, not only the two the reviewer saw.
+- adopted `auth.passkeysAdd`: `再添加一把通行密钥` → `再添加一个通行密钥`. As auth.passkeysEmpty.
+- not adopted `check.luc-bat-rhyme`: `每行的第六个音节押韵`. A lục bát pair is two lines; 'of the two lines' says the same as the English.
+- not adopted `device.alliteration.brief`: `在同一行中，让三个词以相同的字母开头。`. Wrong for Chinese, which has no letters: a Chinese duel counts characters (字), as the game does.
+- not adopted `device.riposte.brief`: `从对手上一首诗中取一个不少于{n}个字母的词，回敬给对手。`. As device.alliteration.brief.
+- not adopted `live.curseHolding`: `持有`. Wrong: 'holding' means the curse is being obeyed (未触犯); 持有 means 'possesses'.
+- not adopted `end.lost`: `今夜的舞台属于他们。`. 对手 (the opponent) is who 'they' are; a rewording.
+- not adopted `badge.written`: `预先写好的对手`. 预先写好的对手 loses what is written (the verses).
+- not adopted `theatre.versePrompt`: `你的诗句会显示在这里。按下麦克风并开始吟诵，请一口气读完一行。`. A rewording of a correct line.
+
+### Japanese (ja): 0 adopted of 13 that survived the tools
+
+- not adopted `check.luc-bat-rhyme`: `各行の6番目の音節が韻を踏む`. A lục bát pair is two lines; 'of both lines' says the same as the English.
+- not adopted `age.consentBefore`: `親または法定保護者が以下の内容を`. A piece of a sentence split around links; changing one piece alone can break the assembled sentence. Left for a native reader (HUMAN-REVIEW item 7).
+- not adopted `age.consentAnd`: `および`. As age.consentBefore.
+- not adopted `age.consentAfter`: `私がInspired Mileを利用することに同意していることを確認します。`. As age.consentBefore; the proposal drops を確認し, which the assembled sentence needs.
+- not adopted `auth.legalBefore`: `サインインすることで、以下の `. As age.consentBefore.
+- not adopted `round.opponentPlays`: `相手がプレイ中`. Wrong: the heading introduces the opponent's card, so 相手が出したカード (the card the opponent played) is right.
+- not adopted `round.versePlaceholder`: `一行につき詩を一行…`. A rewording of a correct line.
+- not adopted `hand.potionLastRound`: `{card}は相手の次の詩に呪いをかけますが、これが最後のラウンドです。`. The proposal drops the 'would' of the English; ものですが keeps it.
+- not adopted `verdict.missed`: `失敗`. 不成立 (did not come off) is a correct label for a missed bonus.
+- not adopted `badge.onDevice`: `{model} · このデバイスで対戦`. Changes the meaning: the badge says where the model runs (この端末で動作), not that a duel is played.
+- not adopted `badge.written`: `書かれた相手`. 書かれた相手 ('a written opponent') loses what is written (the verses).
+- not adopted `theatre.declined`: `このデバイスは没入型セッションをサポートしていません。`. Changes the meaning: a device that declines a session may support it.
+- not adopted `theatre.judgedRules`: `ルールによる判定：モデルは実行されていません。`. Both wordings are correct.
+
+### Korean (ko): 1 adopted of 10 that survived the tools
+
+- adopted `hand.potionLastRound`: `{card}은(는) 상대의 다음 시에 저주를 걸지만, 지금이 마지막 라운드예요.` → `{card}은(는) 상대의 다음 시에 저주를 걸 수 있지만, 지금이 마지막 라운드예요.`. '걸 수 있지만' (could curse, but) keeps the English 'would'; '걸지만' says the curse is cast.
+- not adopted `check.luc-bat-rhyme`: `각 행의 여섯째 음절이 운을 이룸`. A lục bát pair is two lines; 'of the two lines' says the same as the English.
+- not adopted `age.consentBefore`: `부모님 또는 법정 보호자가 다음 내용을`. A piece of a sentence split around links; changing one piece alone can break the assembled sentence. Left for a native reader (HUMAN-REVIEW item 7).
+- not adopted `age.consentAfter`: `제가 Inspired Mile을 이용하는 것에 동의했음을 확인합니다.`. As age.consentBefore; the proposal drops 을(를) 읽었으며 (have read), which the assembled sentence needs.
+- not adopted `live.signature`: `시그니처 (기교 +½): {card}의 대사를 인용하지 않고 반영하기`. A change of register (the interface speaks 해요체 throughout); not an error.
+- not adopted `verdict.notUsed`: `해당 없음`. Changes the meaning: 'not used' (쓰지 않음) is not 'not applicable' (해당 없음).
+- not adopted `verdict.held`: `보유`. Wrong: 'held' means the curse was obeyed (지킴); 보유 means 'possession'.
+- not adopted `end.over`: `결투가 종료되었습니다`. A change of register; the interface speaks 해요체 throughout.
+- not adopted `badge.written`: `쓰인 상대`. 쓰인 상대 ('a written opponent') loses what is written (the verses).
+- not adopted `theatre.cursesYou`: `당신에게 걸린 저주: {rule}`. Wrong: 내게 걸린 저주 (the curse on me) is the player speaking, as the Korean interface does throughout; it is the curse placed on the player.
+
+### Vietnamese (vi): 0 adopted of 22 that survived the tools
+
+- not adopted `form.luc-bat.brief`: `Một dòng sáu âm tiết, rồi một dòng tám âm tiết mà âm tiết thứ sáu hiệp vần với âm tiết cuối dòng trên.`. tiếng is the traditional word for the syllables a lục bát counts; no error.
+- not adopted `check.luc-bat-rhyme`: `Âm tiết thứ sáu của mỗi dòng hiệp vần`. A lục bát pair is two lines; 'of the two lines' says the same as the English.
+- not adopted `device.riposte.brief`: `Dùng lại một từ có {n, plural, one {# chữ cái} other {# chữ cái}} trở lên từ bài thơ vừa rồi của đối thủ để đáp trả.`. 'mà ném trả lại' (and throw it back) is idiomatic; a rewording.
+- not adopted `device.swell.brief`: `Hãy để dòng cuối là dòng dài nhất.`. 'Cho X là Y' (let X be Y) is a correct instruction; a rewording.
+- not adopted `device.balance.brief.char`: `Hãy để mọi dòng có cùng số chữ.`. As device.balance.brief.
+- not adopted `device.grandeur.brief`: `Sử dụng hai từ có {n, plural, one {# chữ cái} other {# chữ cái}} trở lên.`. Dùng and sử dụng are both correct.
+- not adopted `curse.no-repeats.brief`: `Bạn không được dùng bất cứ từ nào có {n, plural, one {# chữ cái} other {# chữ cái}} trở lên quá hai lần.`. Wrong: 'quá hai lần' (more than twice) changes the rule, which forbids using a word twice.
+- not adopted `curse.no-repeats.theirs`: `Đối thủ không được dùng bất cứ từ nào có {n, plural, one {# chữ cái} other {# chữ cái}} trở lên quá hai lần.`. As curse.no-repeats.brief.
+- not adopted `auth.createIntro`: `Tài khoản của bạn là một khoá truy cập được lưu trên thiết bị này hoặc trong trình quản lý mật khẩu. Chúng tôi không yêu cầu tên, email hay mật khẩu.`. A rewording of a correct sentence.
+- not adopted `auth.createWarning`: `Nếu bạn làm mất khoá truy cập, chúng tôi không thể giúp bạn đăng nhập lại. Sau bước này, hãy thêm một khoá thứ hai hoặc một email để có thể đăng nhập lại.`. 'cho bạn vào lại' says what the English says (let you back in); a rewording.
+- not adopted `auth.nudgeBody`: `Hiện tại, một khoá truy cập là cách duy nhất để vào tài khoản này. Nếu mất khoá, tài khoản sẽ bị mất vĩnh viễn. Hãy thêm một khoá thứ hai hoặc một email để có thể đăng nhập lại.`. A rewording; 'vĩnh viễn' (for ever) adds what the English does not say.
+- not adopted `auth.nudgeBodyNoEmail`: `Hiện tại, một khoá truy cập là cách duy nhất để vào tài khoản này. Nếu mất khoá, tài khoản sẽ bị mất vĩnh viễn. Hãy thêm một khoá thứ hai để có thể đăng nhập lại.`. As auth.nudgeBody.
+- not adopted `auth.recoveryWarning`: `Một khoá truy cập là cách duy nhất để đăng nhập. Hãy thêm một khoá thứ hai hoặc một email để có thể đăng nhập lại.`. A rewording of a correct sentence.
+- not adopted `auth.emailHint`: `Đang dùng thiết bị không có khoá truy cập? Hãy đăng nhập qua email, nếu tài khoản có email.`. A rewording of a correct sentence.
+- not adopted `auth.legalAfter`: `.`. Wrong: 'của chúng tôi.' (our) closes the sentence that Vietnamese word order puts after the links.
+- not adopted `auth.passkeyAddedOn`: `Thêm vào {date}`. The point is right ('Thêm ngày {date}' can read as 'add the date'), but 'Thêm vào {date}' can read as 'add to'. Fixed instead as 'Đã thêm vào {date}' (added on), checked by the same tools.
+- not adopted `battle.titleA`: `Trận đấu`. Half of the heading 'Đấu trường thơ' (the arena of verse); no error.
+- not adopted `brain.downloading`: `Đang tải {model}: {done}/{total} MB`. '{done} trên {total} MB' is correct.
+- not adopted `verdict.notUsed`: `chưa sử dụng`. dùng and sử dụng are both correct.
+- not adopted `verdict.missed`: `bỏ lỡ`. trượt (missed, as a shot misses) is a correct label.
+- not adopted `badge.written`: `Đối thủ viết sẵn`. 'Đối thủ viết sẵn' loses what is written (the verses).
+- not adopted `theatre.xrFailed`: `Không thể bắt đầu phiên trong kính.`. Both wordings are correct.
+
+### Thai (th): 1 adopted of 17 that survived the tools
+
+- adopted `age.errorDob`: `โปรดเลือกวันเกิดให้ครบ` → `โปรดเลือกวันเดือนปีเกิดให้ครบถ้วน`. วันเดือนปีเกิด (day, month and year of birth) says 'full date of birth'; วันเกิด alone can be read as the birthday without the year, which the age gate needs.
+- not adopted `check.luc-bat-rhyme`: `พยางค์ที่หกของแต่ละบรรทัดมีสัมผัสกัน`. A lục bát pair is two lines, so 'of both lines' says the same as the English; no error.
+- not adopted `nav.multiplayer`: `เล่นหลายคน`. ผู้เล่นหลายคน is the usual Thai label for a multiplayer mode; no error.
+- not adopted `nav.viewer`: `เครื่องมือดู 3 มิติ`. ตัวดู is an ordinary Thai word for a software viewer; a different wording, not a correction.
+- not adopted `auth.emailHint`: `ใช้อุปกรณ์ที่ไม่มีพาสคีย์ของคุณอยู่หรือ? ลงชื่อเข้าใช้ด้วยอีเมล หากบัญชีของคุณมีอีเมลผูกไว้`. Adds a question mark and rewords a sentence that was correct.
+- not adopted `auth.legalAfter`: `.`. Wrong: ของเรา ('our') closes the sentence 'you accept our Terms and Privacy Policy', which Thai word order puts after the links.
+- not adopted `battle.intro`: `สามยก สามฉันทลักษณ์ การ์ดของคุณกำหนดว่าบทกลอนของคุณต้องทำอะไร คู่ต่อสู้รันอยู่ในเบราว์เซอร์ของคุณ: สิ่งที่คุณเขียนจะไม่ถูกส่งออกจากอุปกรณ์เครื่องนี้`. ทำงานอยู่ในเบราว์เซอร์ is correct Thai for 'runs in your browser'; the rest is a rewording.
+- not adopted `battle.mind`: `จิตใจของคู่ต่อสู้`. The label picks the model that powers the opponent; สมอง (brain) suits that, and จิตใจ (spirit) does not.
+- not adopted `brain.downloading`: `กำลังดาวน์โหลด {model}: {done}/{total} MB`. '{done} จาก {total} MB' is correct; a slash is a style choice.
+- not adopted `round.whoAnswers`: `ใครจะตอบโต้?`. Thai does not need a question mark here; no error.
+- not adopted `mic.loadingEar`: `กำลังโหลดระบบรับเสียง ({mb} MB, ครั้งเดียว)…`. The English calls the speech model 'the ear' on purpose, and every language keeps the figure; the reviewer finds หู odd here, which is listed for a native reader (HUMAN-REVIEW) rather than changed in one language alone.
+- not adopted `verdict.yourAnswer`: `คำตอบของคุณ`. In a duel of verses the answer is a retort; คำตอบโต้ is right.
+- not adopted `verdict.held`: `ถือครอง`. Wrong: 'held' means the curse was obeyed (ไม่ผิดคำสาป); ถือครอง means 'possesses'.
+- not adopted `end.lost`: `คืนนี้เวทีเป็นของพวกเขา`. เขา is the singular 'they' of the English; no error.
+- not adopted `badge.written`: `คู่ต่อสู้แบบเขียนไว้`. The shorter 'opponent, written kind' loses what is written (verses).
+- not adopted `theatre.cursesYou`: `คุณถูกสาปด้วย: {rule}`. A rewording of a correct line.
+- not adopted `theatre.versePrompt`: `บทกลอนของคุณจะปรากฏที่นี่ กดไมโครโฟนแล้วขับกลอนออกมา โดยอ่านหนึ่งบรรทัดต่อหนึ่งลมหายใจ`. A rewording of a correct line.
+
+### Indonesian (id): 0 adopted of 18 that survived the tools
+
+- not adopted `check.spells.words`: `Baris terbuka, berurutan, dengan {word}`. Wrong: 'Baris terbuka' means 'open lines'; 'dibuka dengan {word}' (are opened with) is what the English says.
+- not adopted `check.growing`: `Setiap baris memiliki lebih banyak kata dari sebelumnya`. punya and memiliki are both correct; a rewording.
+- not adopted `check.growing.char`: `Setiap baris memiliki lebih banyak aksara dari sebelumnya`. As check.growing.
+- not adopted `check.luc-bat-rhyme`: `Suku kata keenam di setiap baris berima`. A lục bát pair is two lines; 'in both lines' says the same as the English.
+- not adopted `nav.toggleAudio`: `Atur suara`. A label read out for a toggle button; 'turn on or off' is what it does.
+- not adopted `nav.toggleMenu`: `Buka/tutup menu`. As nav.toggleAudio.
+- not adopted `auth.error.invalid_email`: `Itu tidak terlihat seperti alamat email.`. tampak and terlihat are both correct.
+- not adopted `battle.badge`: `Arena Langsung`. Sentence case is the interface's style for badges; no error.
+- not adopted `battle.titleA`: `Pertarungan`. Half of the heading 'Arena Pertarungan'; Indonesian order.
+- not adopted `battle.titleB`: `Arena`. As battle.titleA.
+- not adopted `battle.prepareNote`: `Setiap aksara hanya bisa naik panggung satu kali. Relik dan ramuan memakan tinta.`. Wrong: here a character is a character card (tokoh), not the unit of writing (aksara).
+- not adopted `brain.failed`: `Model tidak dapat berjalan di perangkat ini. Anda tetap bisa bermain melawan lawan tertulis.`. Changes the register (Anda for the interface's kamu) and the glossary's term for the written opponent.
+- not adopted `hand.relicNote`: `{card} memberikanmu: {words}.`. The English says lends; meminjami says it.
+- not adopted `hand.potionNote`: `{card} mengutuk syair lawan berikutnya: {rule}`. lawanmu (your opponent) is what the English says.
+- not adopted `signature.none`: `kartu ini tidak memiliki dialog tanda tangan`. punya is the interface's register; no error.
+- not adopted `badge.written`: `Lawan tertulis`. 'Lawan tertulis' ('a written opponent') loses what is written (the verses).
+- not adopted `theatre.titleA`: `The`. The proposal is English. Whether 'Sang Teater' reads well is left for a native reader.
+- not adopted `theatre.pick`: `Pilih aksara dari tanganmu.`. Wrong: here a character is a character card (tokoh), not the unit of writing (aksara).
+
 ## What a native-speaking reviewer should look at first
 
 No tool certifies verse or tone, and for five of the languages no tool checks grammar at all. In the order that would repay a reader's time:
 
 1. **The written opponent's verses** (`src/lib/verse/packs/<lang>.ts`, `written` and `acrosticLines`). These are original verse in each language, held to their form by code (line count, rhyme as `rhyme.ts` hears it, syllable count) and to nothing else. Whether they scan, rhyme to a native ear, and are funny rather than odd is exactly what the tools cannot say. Thai, Hindi, Arabic and Vietnamese first.
 2. **Thai, Hindi, Vietnamese, Korean and Indonesian interface text.** LanguageTool has no module for any of them, so their grammar has been seen by Hunspell (spelling only) and by a second language model. Thai most of all: it is the language the translator was least sure of, its spelling check depends on automatic word segmentation, and it ends sentences with no mark, so there is less for a rule to hold on to.
-3. **Form names marked "not sourced"** in the table above. Where a language's Wikipedia has no article for a form (most of Hindi, Thai, Vietnamese and Korean, and the compound names of the two quatrains everywhere), the name is the translator's. A reader who knows the tradition may know the real one. In particular: Arabic *couplet* and *acrostic*, Hindi *couplet* (दोहा) and the quatrains, Vietnamese *couplet* and the quatrains (tứ tuyệt), Chinese *acrostic* (藏头诗 against the article title 離合詩), Korean *couplet* (쿠플레, the article title, against plainer words).
+3. **Form names marked "not sourced"** in the table above. Where a language's Wikipedia has no article for a form (most of Hindi, Thai, Vietnamese and Korean, and the compound names of the two quatrains everywhere), the name is the translator's. A reader who knows the tradition may know the real one. In particular: Arabic *couplet* and *acrostic*, Hindi *couplet* (दोहा) and the quatrains, Vietnamese *couplet*, and the quatrains, now *thơ bốn câu* (Wiktionary) with the rhyme-pattern words *vần liền* / *vần chéo* (the textbook term for the crossed pattern may be *vần cách*), Chinese *acrostic* (藏头诗, which Wiktionary gives, against the article title 離合詩), Korean *couplet* (쿠플레, the article title, against plainer words).
 4. **Arabic counted nouns.** Each count now has six forms by rule (سطر واحد, سطران, 3 أسطر, 11 سطرًا, 100 سطر). The rule decides which form is used; the forms themselves, and the case of the dual after a preposition (سطرين), were written by the translator.
 5. **Polish and Russian case after a number.** Four forms each, in the case its sentence needs (genitive after *około* / *около* and *не больше*, accusative after *ma*). Same caveat: the rule picks, the translator wrote.
 6. **Register and address.** German and Italian use *du* / *tu*, French *vous*, Spanish *tú*, Portuguese *você*, Japanese です・ます, Korean 해요체, Hindi आप. A consistent choice, made once by the translator; whether it is the right voice for this game in each market is a product decision as much as a linguistic one.
 7. **The legal sentences of the age gate and sign-in** (`age.*`, `auth.legal*`). They are split around links, which is hard to do well in languages that decline or reorder (Polish and Russian end the first part on "the documents:" to avoid declining the titles). A lawyer or a native reader should read the assembled sentence on the page.
-8. **Terms where the platform vendors differ.** Italian *passkey* (Android) against *chiave d'accesso* (Apple); Russian *ключ доступа* against *ключ входа*; Vietnamese *khóa truy cập* against *mã khóa*; Japanese サインイン (Apple) against ログイン (Android); German *Bildschirmsperre* against Android's *Displaysperre*. The game uses one; `glossary.json` records both.
+8. **Terms where the platform vendors differ.** Italian *passkey* (Android) against *chiave d'accesso* (Apple); Russian *ключ доступа* against *ключ входа*; Vietnamese *khoá truy cập* against *mã khoá*; Japanese サインイン / サインアウト (Apple's pair, kept) against ログイン / ログアウト (Android, Google's help and Mozilla all agree on these); Indonesian *Masuk* / *Keluar* (kept; Mozilla's *Keluar*) against Google's and Android's loanwords *Login* / *Logout*. Changed to follow the vendors: German *Displaysperre* (Android; was *Bildschirmsperre*), Thai ลงชื่อเข้าใช้ (Android and Google; was เข้าสู่ระบบ), Vietnamese *micrô* (Android; was *micro*). `glossary.json` records every source.
+9. **Vietnamese tone-mark placement.** The game now writes *khoá, hoá, thuỷ* (the mark on the second vowel), as Android's Vietnamese strings and the LibreOffice dictionary do; *khóa, hóa, thủy* is the other placement in common use. Both are correct Vietnamese; a reader may prefer the other for this audience, and the mechanical check `vi-tone-placement` then needs changing with it.
+10. **Names taken from Wikidata labels that a reader may know otherwise.** Hindi मरकूशियो and Arabic ماركيشيو (Mercutio) replace the translator's मर्क्यूशियो and مركوشيو; Korean 머큐시오 replaces the alias 머큐쇼. The Chinese 茂丘西奥 is a Wikidata alias kept over the label 莫枯修. Portuguese *Mercúcio*, Japanese マキューシオ and Thai เมอร์คิวชิโอ have no source at all.
+11. **The Portuguese verses use *tu* and European turns of phrase** (*à espera*, *Retira-te*, *pavoneia a tua hora*) while the interface speaks Brazilian *você*. Literary Brazilian verse does use *tu*; whether this reads as verse or as Portugal is for a Brazilian reader.
+12. **"World card"** (a city variant of a card, picked before a duel) was *Weltkarte*, *Карта мира* and *carte du monde*, each of which a native reader takes for "world map"; back-translation brought all three back as "map of the world". They are now *Welt-Spielkarte*, *Игральная карта мира* and *Carte Monde* (the card-type style of French card games). Spanish, Portuguese, Italian and Polish keep *carta* / *karta*, which in a card game reads as a card. A designer may prefer other words; the meaning is now unambiguous.
+13. **Korean particles after a name.** A particle that depends on how the word before it ends is written in both forms after a placeholder: `{card}이(가)`, `{model}을(를)`, `{word}(으)로`. It is the common convention of Korean software, and it reads as a hedge. Card and model names are English today (Hamlet, Gemma), so the right particle cannot be chosen by rule; once card names come in Hangul (the names-and-quotations work), the particle can be chosen from the last syllable (whether it has a final consonant), which is arithmetic on the code point. One string had no hedge and was wrong for half of all names: `auth.nudgeName`, 당신의 이름은 {name}이에요, now 당신은 {name} 님이에요 (님 makes the copula the same for every name).
+14. **Verb agreement with a card's name.** In Arabic, Hindi, Russian and Polish a past verb or participle agrees with its subject, and `{card}` is a character's name (Hamlet, Lady Macbeth). Russian avoids it on purpose (`{card}: проклятие легло бы…`); Arabic uses the masculine throughout (`{card} يلعن`). The second model proposed feminine forms for Arabic, which would be wrong for Hamlet; they were not taken. A reader should decide how these sentences should read with both kinds of name.
+15. **"The ear".** The English calls the speech-recognition model "the ear" (`mic.loadingEar`, `theatre.micLoading`), and every language keeps the figure (Thai หู, Polish *ucho*). The second model found it odd in Thai and Polish; it was kept so that one language does not drop the game's voice alone. A reader may want it plainer everywhere.
+16. **Counting ink**, a resource the HUD shows as a number beside a label (`round.items`, "1 ink each"). Russian *чернила* has no singular in ordinary use (1 чернила), Polish uses the partitive (*1 atramentu*, as Polish card games write *1 many*), Spanish, Italian, French and Portuguese *1 de tinta* / *1 di inchiostro* / *1 d'encre*. Each may be the best that can be done; a reader should say.
+17. **Rarity names.** Korean follows its games' ladder (일반, 고급, 희귀, 영웅, 전설), Japanese prints アンコモン as Magic's Japanese editions do, Vietnamese *Sử thi* for epic as its games do. Hindi *असाधारण* (extraordinary) for uncommon, which ranked it above rare, became *असामान्य* (unusual). Hindi *महाकाव्य* (an epic poem) for the epic tier was kept: the second model proposed *अति-दुर्लभ* (very rare), and the meaning check refused it, since 'very rare' is far from the English word 'Epic'; a reader should choose. Thai มหากาพย์ (an epic poem) for epic was kept; whether Thai players say it so is for a reader.
+18. **Thai loanwords for technical terms**: ซีด (seed), แมตช์ (match) in `round.seedLabel` and `round.seedNote`; ซีด is also the Thai word for "pale", and back-translation read it so.
+19. **The second model's habits**, worth knowing before trusting its "ok" anywhere: in nearly every language it proposed that a device which *declined* an immersive session "does not support" one (a different statement); it read the scoring words *held* and *holding* (a curse obeyed) as "possessed" or "kept in force"; it turned the theatre company's *player* (an actor) into a games player; and it proposed dropping the words that say what the written opponent writes. None of those was adopted.
+20. **Four corrections that read as right but that the tools refused**, so they were not made (the rule is that a model's correction is taken only if it survives the tools): Thai `mic.none` ไม่พบไมโครโฟน (no microphone found), Chinese `house.legendary.why` 始终押一个韵，一路到底, Korean `verdict.who.split` 무승부 (a draw, for 반반), Hindi `rarity.epic` अति-दुर्लभ. The Korean and Hindi ones scored under 0.6 on both meaning signals; the Thai and Chinese ones scored further from the English than the text they would replace. A native reader can overrule the tools here.
 
 ## Every string changed
 
 Old text first, new text second. ⍽ marks a no-break space. A key with a dotted number is a pack string (a verse line, a power word).
 
-### English (en): 19
+### English (en): 24
 
 - `form.luc-bat.name`
   - old: `Six-Eight`
@@ -332,11 +831,26 @@ Old text first, new text second. ⍽ marks a no-break space. A key with a dotted
 - `curse.short-lines.theirs.char`
   - old: `No line of theirs may be longer than {n} characters.`
   - new: `No line of theirs may be longer than {n, plural, one {# character} other {# characters}}.`
+- `migrate.syncing`
+  - old: `Syncing...`
+  - new: `Syncing…`
 - `migrate.done`
   - old: `Synced {cards} cards, {achievements} achievements.`
   - new: `Synced {cards, plural, one {# card} other {# cards}}, {achievements, plural, one {# achievement} other {# achievements}}.`
+- `auth.signInIntro`
+  - old: `No password to remember. A passkey signs you in with your fingerprint, face or screen lock.`
+  - new: `No password to remember. A passkey signs you in with your fingerprint, face, or screen lock.`
+- `auth.createIntro`
+  - old: `Your account is a passkey saved on this device or in your password manager. We do not ask for a name, an email or a password.`
+  - new: `Your account is a passkey saved on this device or in your password manager. We do not ask for a name, an email, or a password.`
+- `auth.offerBody`
+  - old: `Next time, sign in with your fingerprint, face or screen lock. No code, no waiting for an email.`
+  - new: `Next time, sign in with your fingerprint, face, or screen lock. No code, no waiting for an email.`
+- `verdict.judgedRules`
+  - old: `Judged by rule (variety, allusion, sound and comeback), because no model is running.`
+  - new: `Judged by rule (variety, allusion, sound, and comeback), because no model is running.`
 
-### Spanish (es): 20
+### Spanish (es): 27
 
 - `form.heroic-couplet.name`
   - old: `Pareado heroico`
@@ -398,8 +912,29 @@ Old text first, new text second. ⍽ marks a no-break space. A key with a dotted
 - `migrate.done`
   - old: `Sincronizadas {cards} cartas y {achievements} logros.`
   - new: `Sincronización completa: {cards, plural, one {# carta} many {# cartas} other {# cartas}} y {achievements, plural, one {# logro} many {# logros} other {# logros}}.`
+- `brain.ready`
+  - old: `{model} listo`
+  - new: `Modelo {model} listo`
+- `brain.loaded`
+  - old: `{model} está cargado y funciona en este dispositivo.`
+  - new: `El modelo {model} está cargado y funciona en este dispositivo.`
+- `brain.loadedJudgeOnly`
+  - old: `{model} está cargado en este dispositivo. Es pequeño: juzga las estrofas, y el rival recita versos ya escritos.`
+  - new: `El modelo {model} está cargado en este dispositivo. Es pequeño: juzga las estrofas, y el rival recita versos ya escritos.`
+- `round.cursesYou`
+  - old: `{card} te lanza la maldición {name}: {rule}`
+  - new: `{card} te lanza la maldición {name}. {rule}`
+- `hand.curses`
+  - old: `Maldice a tu rival: {rule}`
+  - new: `Maldice a tu rival. {rule}`
+- `hand.potionNote`
+  - old: `{card} maldice la próxima estrofa de tu rival: {rule}`
+  - new: `{card} maldice la próxima estrofa de tu rival. {rule}`
+- `theatre.cursesYou`
+  - old: `Te maldice: {rule}`
+  - new: `Te maldice. {rule}`
 
-### French (fr): 71
+### French (fr): 78
 
 - `form.quatrain-aabb.brief`
   - old: `Quatre vers : les deux premiers riment, et les deux derniers aussi.`
@@ -506,12 +1041,24 @@ Old text first, new text second. ⍽ marks a no-break space. A key with a dotted
 - `battle.difficulty.master`
   - old: `Maître : garde le meilleur de trois jets`
   - new: `Maître⍽: garde le meilleur de trois jets`
+- `battle.worldCard`
+  - old: `Carte du monde`
+  - new: `Carte Monde`
+- `battle.noWorldCard`
+  - old: `Sans carte du monde`
+  - new: `Sans carte Monde`
 - `brain.downloading`
   - old: `Téléchargement de {model} : {done} sur {total} Mo`
   - new: `Téléchargement de {model}⍽: {done} sur {total} Mo`
+- `brain.ready`
+  - old: `{model} prêt`
+  - new: `Modèle {model} prêt`
+- `brain.loaded`
+  - old: `{model} est chargé et tourne sur cet appareil.`
+  - new: `Le modèle {model} est chargé et tourne sur cet appareil.`
 - `brain.loadedJudgeOnly`
   - old: `{model} est chargé sur cet appareil. Il est petit : il juge les strophes, et l’adversaire joue des strophes déjà écrites.`
-  - new: `{model} est chargé sur cet appareil. Il est petit⍽: il juge les strophes, et l’adversaire joue des strophes déjà écrites.`
+  - new: `Le modèle {model} est chargé sur cet appareil. Il est petit⍽: il juge les strophes, et l’adversaire joue des strophes déjà écrites.`
 - `brain.noWebgpu`
   - old: `Ce navigateur n’a pas WebGPU : l’adversaire joue des strophes déjà écrites et le jugement se fait par règles. Tout le reste fonctionne.`
   - new: `Ce navigateur n’a pas WebGPU⍽: l’adversaire joue des strophes déjà écrites et le jugement se fait par règles. Tout le reste fonctionne.`
@@ -523,7 +1070,7 @@ Old text first, new text second. ⍽ marks a no-break space. A key with a dotted
   - new: `{name}⍽: {brief}`
 - `round.cursesYou`
   - old: `{card} vous jette la malédiction {name} : {rule}`
-  - new: `{card} vous jette la malédiction {name}⍽: {rule}`
+  - new: `{card} vous jette la malédiction {name}. {rule}`
 - `round.whoAnswers`
   - old: `Qui répond ?`
   - new: `Qui répond⍽?`
@@ -535,13 +1082,13 @@ Old text first, new text second. ⍽ marks a no-break space. A key with a dotted
   - new: `Prête⍽: {words}`
 - `hand.curses`
   - old: `Maudit votre adversaire : {rule}`
-  - new: `Maudit votre adversaire⍽: {rule}`
+  - new: `Maudit votre adversaire. {rule}`
 - `hand.relicNote`
   - old: `{card} vous prête : {words}.`
   - new: `{card} vous prête⍽: {words}.`
 - `hand.potionNote`
   - old: `{card} maudit la prochaine strophe de votre adversaire : {rule}`
-  - new: `{card} maudit la prochaine strophe de votre adversaire⍽: {rule}`
+  - new: `{card} maudit la prochaine strophe de votre adversaire. {rule}`
 - `live.device`
   - old: `{name} (+½ de métier) : {brief}`
   - new: `{name} (+½ de métier)⍽: {brief}`
@@ -601,10 +1148,19 @@ Old text first, new text second. ⍽ marks a no-break space. A key with a dotted
   - new: `Jugé par règles⍽: aucun modèle ne tourne.`
 - `theatre.cursesYou`
   - old: `Vous maudit : {rule}`
-  - new: `Vous maudit⍽: {rule}`
+  - new: `Malédiction sur vous. {rule}`
+- `theatre.submit`
+  - old: `La dire`
+  - new: `Dites-la`
+- `pack:written.quatrain-aabb.1.3`
+  - old: `Moi je réponds aux orages, toi aux roses`
+  - new: `Moi, je réponds aux orages, toi aux roses`
 - `pack:written.tercet.1.0`
   - old: `Tu appelles ça un vers ? J’appelle ça une erreur`
   - new: `Tu appelles ça un vers⍽? J’appelle ça une erreur`
+- `pack:acrosticLines.u.1`
+  - old: `Une fois encore tu ouvres la bouche pour rien`
+  - new: `Une fois encore, tu ouvres la bouche pour rien`
 - `pack:acrosticLines.e.0`
   - old: `Encore toi ? La foule a déjà tranché`
   - new: `Encore toi⍽? La foule a déjà tranché`
@@ -615,7 +1171,7 @@ Old text first, new text second. ⍽ marks a no-break space. A key with a dotted
   - old: `Ainsi finit la leçon ; emporte-la chez toi`
   - new: `Ainsi finit la leçon⍽; emporte-la chez toi`
 
-### German (de): 22
+### German (de): 50
 
 - `form.couplet.name`
   - old: `Reimpaar`
@@ -680,11 +1236,95 @@ Old text first, new text second. ⍽ marks a no-break space. A key with a dotted
 - `curse.short-lines.theirs.char`
   - old: `Keine seiner Zeilen darf länger als {n} Zeichen sein.`
   - new: `Keine seiner Zeilen darf länger als {n, plural, one {# Zeichen} other {# Zeichen}} sein.`
+- `migrate.syncing`
+  - old: `Synchronisiere…`
+  - new: `Synchronisiere⍽…`
 - `migrate.done`
   - old: `{cards} Karten und {achievements} Erfolge synchronisiert.`
   - new: `{cards, plural, one {# Karte} other {# Karten}} und {achievements, plural, one {# Erfolg} other {# Erfolge}} synchronisiert.`
+- `auth.signInIntro`
+  - old: `Kein Passwort zum Merken. Ein Passkey meldet dich mit Fingerabdruck, Gesicht oder Bildschirmsperre an.`
+  - new: `Kein Passwort zum Merken. Ein Passkey meldet dich mit Fingerabdruck, Gesicht oder Displaysperre an.`
+- `auth.createWarning`
+  - old: `Wenn du den Passkey verlierst, können wir dich nicht wieder hereinlassen. Füge danach einen zweiten Passkey oder eine E-Mail hinzu, damit du zurückkommst.`
+  - new: `Wenn du den Passkey verlierst, können wir dich nicht wieder hereinlassen. Füge danach einen zweiten Passkey oder eine E-Mail hinzu, damit du wieder Zugriff hast.`
+- `auth.createWarningNoEmail`
+  - old: `Wenn du den Passkey verlierst, können wir dich nicht wieder hereinlassen. Füge danach einen zweiten Passkey hinzu, damit du zurückkommst.`
+  - new: `Wenn du den Passkey verlierst, können wir dich nicht wieder hereinlassen. Füge danach einen zweiten Passkey hinzu, damit du wieder Zugriff hast.`
+- `auth.nudgeBody`
+  - old: `Im Moment ist ein einziger Passkey der einzige Zugang zu diesem Konto. Geht er verloren, ist das Konto verloren. Füge einen zweiten Passkey oder eine E-Mail hinzu, damit du zurückkommst.`
+  - new: `Im Moment ist ein einziger Passkey der einzige Zugang zu diesem Konto. Geht er verloren, ist das Konto verloren. Füge einen zweiten Passkey oder eine E-Mail hinzu, damit du wieder Zugriff hast.`
+- `auth.nudgeBodyNoEmail`
+  - old: `Im Moment ist ein einziger Passkey der einzige Zugang zu diesem Konto. Geht er verloren, ist das Konto verloren. Füge einen zweiten Passkey hinzu, damit du zurückkommst.`
+  - new: `Im Moment ist ein einziger Passkey der einzige Zugang zu diesem Konto. Geht er verloren, ist das Konto verloren. Füge einen zweiten Passkey hinzu, damit du wieder Zugriff hast.`
+- `auth.recoveryWarning`
+  - old: `Ein einziger Passkey ist dein einziger Zugang. Füge einen zweiten Passkey oder eine E-Mail hinzu, damit du zurückkommst.`
+  - new: `Ein einziger Passkey ist dein einziger Zugang. Füge einen zweiten Passkey oder eine E-Mail hinzu, damit du wieder Zugriff hast.`
+- `auth.recoveryWarningNoEmail`
+  - old: `Ein einziger Passkey ist dein einziger Zugang. Füge einen zweiten Passkey hinzu, damit du zurückkommst.`
+  - new: `Ein einziger Passkey ist dein einziger Zugang. Füge einen zweiten Passkey hinzu, damit du wieder Zugriff hast.`
+- `auth.offerBody`
+  - old: `Melde dich beim nächsten Mal mit Fingerabdruck, Gesicht oder Bildschirmsperre an. Kein Code, kein Warten auf eine E-Mail.`
+  - new: `Melde dich beim nächsten Mal mit Fingerabdruck, Gesicht oder Displaysperre an. Kein Code, kein Warten auf eine E-Mail.`
+- `auth.working`
+  - old: `Einen Moment…`
+  - new: `Einen Moment⍽…`
+- `battle.worldCard`
+  - old: `Weltkarte`
+  - new: `Welt-Spielkarte`
+- `battle.noWorldCard`
+  - old: `Keine Weltkarte`
+  - new: `Keine Welt-Spielkarte`
+- `brain.checking`
+  - old: `Prüfe, was dieses Gerät ausführen kann…`
+  - new: `Prüfe, was dieses Gerät ausführen kann⍽…`
+- `brain.summoning`
+  - old: `Dein Gegner wird beschworen…`
+  - new: `Dein Gegner wird beschworen⍽…`
+- `round.composing`
+  - old: `{card} dichtet…`
+  - new: `{card} dichtet⍽…`
+- `round.composingDraft`
+  - old: `{card} dichtet… Entwurf {n} von {total}`
+  - new: `{card} dichtet⍽… Entwurf {n} von {total}`
+- `round.versePlaceholder`
+  - old: `Eine Verszeile pro Zeile…`
+  - new: `Eine Verszeile pro Zeile⍽…`
+- `round.deliberating`
+  - old: `Der Richter berät…`
+  - new: `Der Richter berät⍽…`
+- `mic.transcribing`
+  - old: `Wird transkribiert…`
+  - new: `Wird transkribiert⍽…`
+- `mic.loadingEar`
+  - old: `Das Ohr wird geladen ({mb} MB, einmalig)…`
+  - new: `Das Ohr wird geladen ({mb} MB, einmalig)⍽…`
+- `mic.listening`
+  - old: `Ich höre zu… zum Beenden tippen`
+  - new: `Ich höre zu⍽… zum Beenden tippen`
+- `voice.loading`
+  - old: `Stimme: lädt…`
+  - new: `Stimme: lädt⍽…`
+- `theatre.raising`
+  - old: `Der Vorhang hebt sich…`
+  - new: `Der Vorhang hebt sich⍽…`
+- `theatre.micLoading`
+  - old: `Das Ohr wird geladen…`
+  - new: `Das Ohr wird geladen⍽…`
+- `theatre.composing`
+  - old: `dichtet…`
+  - new: `dichtet⍽…`
+- `theatre.composingDraft`
+  - old: `dichtet… Entwurf {n} von {total}`
+  - new: `dichtet⍽… Entwurf {n} von {total}`
+- `theatre.judging`
+  - old: `Wird bewertet…`
+  - new: `Wird bewertet⍽…`
+- `pack:acrosticLines.e.0`
+  - old: `Es reicht: das Publikum hat längst entschieden`
+  - new: `Es reicht: Das Publikum hat längst entschieden`
 
-### Italian (it): 19
+### Italian (it): 26
 
 - `form.luc-bat.name`
   - old: `Sei-otto`
@@ -743,8 +1383,29 @@ Old text first, new text second. ⍽ marks a no-break space. A key with a dotted
 - `migrate.done`
   - old: `Sincronizzate {cards} carte e {achievements} obiettivi.`
   - new: `Sincronizzazione completata: {cards, plural, one {# carta} many {# carte} other {# carte}} e {achievements, plural, one {# obiettivo} many {# obiettivi} other {# obiettivi}}.`
+- `brain.ready`
+  - old: `{model} pronto`
+  - new: `Modello {model} pronto`
+- `brain.loaded`
+  - old: `{model} è caricato e gira su questo dispositivo.`
+  - new: `Il modello {model} è caricato e gira su questo dispositivo.`
+- `brain.loadedJudgeOnly`
+  - old: `{model} è caricato su questo dispositivo. È piccolo: giudica le strofe, e l’avversario recita strofe già scritte.`
+  - new: `Il modello {model} è caricato su questo dispositivo. È piccolo: giudica le strofe, e l’avversario recita strofe già scritte.`
+- `round.cursesYou`
+  - old: `{card} ti lancia la maledizione {name}: {rule}`
+  - new: `{card} ti lancia la maledizione {name}. {rule}`
+- `hand.curses`
+  - old: `Maledice il tuo avversario: {rule}`
+  - new: `Maledice il tuo avversario. {rule}`
+- `hand.potionNote`
+  - old: `{card} maledice la prossima strofa del tuo avversario: {rule}`
+  - new: `{card} maledice la prossima strofa del tuo avversario. {rule}`
+- `theatre.cursesYou`
+  - old: `Ti maledice: {rule}`
+  - new: `Ti maledice. {rule}`
 
-### Portuguese (Brazil) (pt): 20
+### Portuguese (Brazil) (pt): 27
 
 - `form.epistrophe.name`
   - old: `Epífora`
@@ -806,9 +1467,33 @@ Old text first, new text second. ⍽ marks a no-break space. A key with a dotted
 - `migrate.done`
   - old: `{cards} cartas e {achievements} conquistas sincronizadas.`
   - new: `Sincronização concluída: {cards, plural, one {# carta} many {# cartas} other {# cartas}} e {achievements, plural, one {# conquista} many {# conquistas} other {# conquistas}}.`
+- `brain.ready`
+  - old: `{model} pronto`
+  - new: `Modelo {model} pronto`
+- `brain.loaded`
+  - old: `{model} está carregado e rodando neste dispositivo.`
+  - new: `O modelo {model} está carregado e rodando neste dispositivo.`
+- `brain.loadedJudgeOnly`
+  - old: `{model} está carregado neste dispositivo. Ele é pequeno: julga as estrofes, e o adversário recita estrofes já escritas.`
+  - new: `O modelo {model} está carregado neste dispositivo. Ele é pequeno: julga as estrofes, e o adversário recita estrofes já escritas.`
+- `round.cursesYou`
+  - old: `{card} lança sobre você a maldição {name}: {rule}`
+  - new: `{card} lança sobre você a maldição {name}. {rule}`
+- `hand.curses`
+  - old: `Amaldiçoa seu adversário: {rule}`
+  - new: `Amaldiçoa seu adversário. {rule}`
+- `hand.potionNote`
+  - old: `{card} amaldiçoa a próxima estrofe do seu adversário: {rule}`
+  - new: `{card} amaldiçoa a próxima estrofe do seu adversário. {rule}`
+- `theatre.cursesYou`
+  - old: `Amaldiçoa você: {rule}`
+  - new: `Amaldiçoa você. {rule}`
 
-### Polish (pl): 21
+### Polish (pl): 28
 
+- `form.acrostic.brief.words`
+  - old: `Jeden wers na słowo: wersy muszą zaczynać się kolejno od {word}.`
+  - new: `Jeden wers na słowo; wersy muszą zaczynać się kolejno od słów: {word}.`
 - `form.luc-bat.name`
   - old: `Sześć-osiem`
   - new: `Lục bát`
@@ -827,6 +1512,9 @@ Old text first, new text second. ⍽ marks a no-break space. A key with a dotted
 - `check.syllables.kana`
   - old: `Wers {line}: liczba dźwięków {n}, kaną`
   - new: `Wers {line}: {n, plural, one {# dźwięk} few {# dźwięki} many {# dźwięków} other {# dźwięku}}, kaną`
+- `check.spells.words`
+  - old: `Wersy zaczynają się kolejno od {word}`
+  - new: `Wersy zaczynają się kolejno od słów: {word}`
 - `device.riposte.brief`
   - old: `Obróć przeciw rywalowi słowo z jego ostatniej strofy, które ma co najmniej tyle liter: {n}.`
   - new: `Obróć przeciw rywalowi słowo z jego ostatniej strofy, które ma co najmniej {n, plural, one {# literę} few {# litery} many {# liter} other {# litery}}.`
@@ -872,8 +1560,23 @@ Old text first, new text second. ⍽ marks a no-break space. A key with a dotted
 - `brain.loadedJudgeOnly`
   - old: `Model {model} jest wczytany na tym urządzeniu. Jest mały: ocenia strofy, a rywal gra strofami napisanymi wcześniej.`
   - new: `Model {model} jest wczytany na tym urządzeniu. Jest mały: ocenia strofy, a rywal gra gotowymi strofami.`
+- `round.cursesYou`
+  - old: `{card} rzuca na ciebie klątwę {name}: {rule}`
+  - new: `{card} rzuca na ciebie klątwę {name}. {rule}`
+- `hand.curses`
+  - old: `Rzuca klątwę na rywala: {rule}`
+  - new: `Rzuca klątwę na rywala. {rule}`
+- `hand.potionNote`
+  - old: `{card} rzuca klątwę na następną strofę rywala: {rule}`
+  - new: `{card} rzuca klątwę na następną strofę rywala. {rule}`
+- `theatre.cursesYou`
+  - old: `Klątwa na ciebie: {rule}`
+  - new: `Klątwa na ciebie. {rule}`
+- `pack:acrosticLines.r.0`
+  - old: `Rymować to fechtować, a ty przyszedłeś z łyżką`
+  - new: `Rymować to fechtować się, a ty przyszedłeś z łyżką`
 
-### Russian (ru): 23
+### Russian (ru): 32
 
 - `form.quatrain-aabb.name`
   - old: `Четверостишие с парной рифмой`
@@ -908,6 +1611,12 @@ Old text first, new text second. ⍽ marks a no-break space. A key with a dotted
 - `device.brevity.brief.char`
   - old: `В каждой строке знаков не больше {n}.`
   - new: `В каждой строке не больше {n, plural, one {# знака} few {# знаков} many {# знаков} other {# знака}}.`
+- `device.ring.brief`
+  - old: `Закончи строфу тем же словом, каким она началась.`
+  - new: `Закончи строфу тем же словом, с которого она началась.`
+- `device.ring.brief.char`
+  - old: `Закончи строфу тем же знаком, каким она началась.`
+  - new: `Закончи строфу тем же знаком, с которого она началась.`
 - `device.grandeur.brief`
   - old: `Используй два слова, в каждом букв не меньше {n}.`
   - new: `Используй два слова, каждое длиной не меньше {n, plural, one {# буквы} few {# букв} many {# букв} other {# буквы}}.`
@@ -941,15 +1650,39 @@ Old text first, new text second. ⍽ marks a no-break space. A key with a dotted
 - `migrate.done`
   - old: `Синхронизировано. Карты: {cards}, достижения: {achievements}.`
   - new: `Синхронизировано: {cards, plural, one {# карта} few {# карты} many {# карт} other {# карты}}, {achievements, plural, one {# достижение} few {# достижения} many {# достижений} other {# достижения}}.`
+- `battle.worldCard`
+  - old: `Карта мира`
+  - new: `Игральная карта мира`
+- `battle.noWorldCard`
+  - old: `Без карты мира`
+  - new: `Без игральной карты мира`
 - `brain.loadedJudgeOnly`
   - old: `Модель {model} загружена на этом устройстве. Она мала: судит строфы, а соперник читает заранее написанные.`
   - new: `Модель {model} загружена на этом устройстве. Она мала: судит строфы, а соперник читает готовые строфы.`
+- `round.cursesYou`
+  - old: `{card} налагает на тебя проклятие «{name}»: {rule}`
+  - new: `{card} налагает на тебя проклятие «{name}». {rule}`
+- `hand.curses`
+  - old: `Проклинает соперника: {rule}`
+  - new: `Проклинает соперника. {rule}`
+- `hand.potionNote`
+  - old: `{card} проклинает следующую строфу соперника: {rule}`
+  - new: `{card} проклинает следующую строфу соперника. {rule}`
+- `theatre.cursesYou`
+  - old: `Проклятие на тебе: {rule}`
+  - new: `Проклятие на тебе. {rule}`
+- `pack:relics.RL-006.2`
+  - old: `гордыня`
+  - new: `честолюбие`
 
-### Arabic (ar): 23
+### Arabic (ar): 33
 
 - `form.anaphora.name`
   - old: `تكرار الاستهلال`
   - new: `تكرار الصدارة`
+- `form.acrostic.brief.words`
+  - old: `سطر لكل كلمة: يجب أن تبدأ الأسطر، على الترتيب، بـ {word}.`
+  - new: `سطر لكل كلمة: يجب أن تبدأ الأسطر، بالترتيب، بـ {word}.`
 - `form.epistrophe.name`
   - old: `تكرار الختام`
   - new: `تكرار النهاية`
@@ -974,6 +1707,9 @@ Old text first, new text second. ⍽ marks a no-break space. A key with a dotted
 - `check.syllables.kana`
   - old: `السطر {line}: عدد الأصوات {n}، بالكانا`
   - new: `السطر {line}: {n, plural, zero {# صوت} one {صوت واحد} two {صوتان} few {# أصوات} many {# صوتًا} other {# صوت}}، بالكانا`
+- `check.spells.words`
+  - old: `الأسطر تبدأ، على الترتيب، بـ {word}`
+  - new: `الأسطر تبدأ، بالترتيب، بـ {word}`
 - `check.jueju-length`
   - old: `كل سطر من خمسة رموز، أو كل سطر من سبعة`
   - new: `كل سطر من خمسة أحرف، أو كل سطر من سبعة`
@@ -1013,11 +1749,35 @@ Old text first, new text second. ⍽ marks a no-break space. A key with a dotted
 - `curse.short-lines.theirs.char`
   - old: `لا يجوز أن يزيد أي سطر من أسطر خصمك على {n} أحرف.`
   - new: `لا يجوز أن يزيد أي سطر من أسطر خصمك على {n, plural, zero {# حرف} one {حرف واحد} two {حرفين} few {# أحرف} many {# حرفًا} other {# حرف}}.`
+- `house.montague.why`
+  - old: `لسان مركوشيو السريع يقفّي في منتصف السطر.`
+  - new: `لسان ماركيشيو السريع يقفّي في منتصف السطر.`
 - `migrate.done`
   - old: `تمت المزامنة. البطاقات: {cards}، الإنجازات: {achievements}.`
   - new: `تمت المزامنة: {cards, plural, zero {# بطاقة} one {بطاقة واحدة} two {بطاقتان} few {# بطاقات} many {# بطاقة} other {# بطاقة}}، {achievements, plural, zero {# إنجاز} one {إنجاز واحد} two {إنجازان} few {# إنجازات} many {# إنجازًا} other {# إنجاز}}.`
+- `auth.emailHint`
+  - old: `على جهاز ليس فيه مفتاح مرورك؟ ادخل بالبريد الإلكتروني إن كان لحسابك بريد.`
+  - new: `على جهاز لا يتوفر فيه مفتاح مرورك؟ سجّل الدخول بالبريد الإلكتروني إذا كان لحسابك بريد.`
+- `auth.offerBody`
+  - old: `في المرة القادمة ادخل ببصمة إصبعك أو وجهك أو قفل الشاشة. بلا رمز وبلا انتظار بريد.`
+  - new: `في المرة القادمة، سجّل الدخول ببصمة إصبعك أو وجهك أو قفل الشاشة. بلا رمز وبلا انتظار بريد إلكتروني.`
+- `auth.passkeysEmpty`
+  - old: `لا مفاتيح مرور بعد. أضف واحدًا لتدخل بلا رمز بريدي.`
+  - new: `لا توجد مفاتيح مرور بعد. أضف مفتاحًا لتسجيل الدخول دون رمز يصلك بالبريد الإلكتروني.`
+- `auth.passkeyAdded`
+  - old: `أُضيف مفتاح المرور. يمكنك الدخول به من الآن.`
+  - new: `تمت إضافة مفتاح المرور. يمكنك تسجيل الدخول به من الآن فصاعدًا.`
+- `auth.error.email_in_use`
+  - old: `هذا العنوان تابع لحساب آخر. سجّل الخروج ثم ادخل به.`
+  - new: `هذا العنوان تابع لحساب آخر. سجّل الخروج ثم سجّل الدخول به.`
+- `auth.error.passkey_not_accepted`
+  - old: `لم يُقبل مفتاح المرور هذا. ادخل برمز بريدي ثم أضف مفتاح مرور جديدًا.`
+  - new: `لم يُقبل مفتاح المرور هذا. سجّل الدخول باستخدام رمز مرسل عبر البريد الإلكتروني، ثم أضف مفتاح مرور جديدًا.`
+- `mic.failed`
+  - old: `تعذّر التدوين`
+  - new: `تعذّر تحويل الكلام إلى نص`
 
-### Hindi (hi): 27
+### Hindi (hi): 35
 
 - `form.couplet.name`
   - old: `दोहा-युग्म`
@@ -1033,7 +1793,7 @@ Old text first, new text second. ⍽ marks a no-break space. A key with a dotted
   - new: `5, 7 और 5 अक्षरों की तीन पंक्तियाँ।`
 - `form.heroic-couplet.brief`
   - old: `तुक वाली दो पंक्तियाँ, हर एक में लगभग दस अक्षर (सिलेबल), जैसे शेक्सपियर अपने सॉनेट समाप्त करते थे।`
-  - new: `तुक वाली दो पंक्तियाँ, हर एक में लगभग दस शब्दांश, जैसे शेक्सपियर अपने सॉनेट समाप्त करते थे।`
+  - new: `तुक वाली दो पंक्तियाँ, हर एक में लगभग दस शब्दांश, जैसे शेक्सपीयर अपने सॉनेट समाप्त करते थे।`
 - `form.jueju.brief`
   - old: `चार पंक्तियाँ, सब पाँच चिह्नों की या सब सात की: चीनी शास्त्रीय चौपदी का ढाँचा।`
   - new: `चार पंक्तियाँ, सब पाँच अक्षरों की या सब सात की: चीनी शास्त्रीय चौपदी का ढाँचा।`
@@ -1097,15 +1857,84 @@ Old text first, new text second. ⍽ marks a no-break space. A key with a dotted
 - `curse.short-lines.theirs.char`
   - old: `प्रतिद्वंद्वी की किसी भी पंक्ति में {n} से ज़्यादा अक्षर नहीं हो सकते।`
   - new: `प्रतिद्वंद्वी की किसी भी पंक्ति में {n, plural, one {# से ज़्यादा अक्षर} other {# से ज़्यादा अक्षर}} नहीं हो सकते।`
+- `house.montague.why`
+  - old: `मर्क्यूशियो की तेज़ ज़ुबान पंक्ति के बीच में ही तुक मिला देती है।`
+  - new: `मरकूशियो की तेज़ ज़ुबान पंक्ति के बीच में ही तुक मिला देती है।`
+- `footer.tagline`
+  - old: `एआई और ऑगमेंटेड रियलिटी से चलने वाले डिजिटल संग्रहणीय कार्ड। ऐसे इंटरैक्टिव अनुभव जो शेक्सपियर को जीवंत कर देते हैं।`
+  - new: `एआई और ऑगमेंटेड रियलिटी से चलने वाले डिजिटल संग्रहणीय कार्ड। ऐसे इंटरैक्टिव अनुभव जो शेक्सपीयर को जीवंत कर देते हैं।`
 - `migrate.done`
   - old: `सिंक हो गया। कार्ड: {cards}, उपलब्धियाँ: {achievements}।`
   - new: `सिंक हो गया: {cards, plural, one {# कार्ड} other {# कार्ड}}, {achievements, plural, one {# उपलब्धि} other {# उपलब्धियाँ}}।`
+- `brain.downloading`
+  - old: `{model} डाउनलोड हो रहा है: {total} MB में से {done}`
+  - new: `मॉडल {model} डाउनलोड हो रहा है: {total} MB में से {done}`
+- `brain.loaded`
+  - old: `{model} लोड हो गया है और इसी डिवाइस पर चल रहा है।`
+  - new: `मॉडल {model} लोड हो गया है और इसी डिवाइस पर चल रहा है।`
+- `brain.loadedJudgeOnly`
+  - old: `{model} इस डिवाइस पर लोड हो गया है। यह छोटा है: यह पदों का निर्णय करता है, और प्रतिद्वंद्वी पहले से लिखे पद सुनाता है।`
+  - new: `मॉडल {model} इस डिवाइस पर लोड हो गया है। यह छोटा है: यह पदों का निर्णय करता है, और प्रतिद्वंद्वी पहले से लिखे पद सुनाता है।`
+- `round.cursesYou`
+  - old: `{card} ने आप पर शाप डाला है, “{name}”: {rule}`
+  - new: `{card} ने आप पर {name} का शाप डाला है: {rule}`
+- `rarity.uncommon`
+  - old: `असाधारण`
+  - new: `असामान्य`
+- `theatre.running`
+  - old: `{model} इसी डिवाइस पर चल रहा है।`
+  - new: `मॉडल {model} इसी डिवाइस पर चल रहा है।`
 
-### Chinese (Simplified) (zh): 7
+### Chinese (Simplified) (zh): 22
 
 - `device.alliteration.name`
   - old: `头韵`
   - new: `头韵法`
+- `auth.createIntro`
+  - old: `你的账户就是一把通行密钥，保存在这台设备或你的密码管理器里。我们不要姓名、邮箱，也不要密码。`
+  - new: `你的账户就是一个通行密钥，保存在这台设备或你的密码管理器里。我们不要姓名、邮箱，也不要密码。`
+- `auth.createWarning`
+  - old: `如果你丢了通行密钥，我们就无法让你再进来。创建之后，请再添加一把通行密钥或一个邮箱，以便找回。`
+  - new: `如果你丢了通行密钥，我们就无法让你再进来。创建之后，请再添加一个通行密钥或一个邮箱，以便找回。`
+- `auth.createWarningNoEmail`
+  - old: `如果你丢了通行密钥，我们就无法让你再进来。创建之后，请再添加一把通行密钥，以便找回。`
+  - new: `如果你丢了通行密钥，我们就无法让你再进来。创建之后，请再添加一个通行密钥，以便找回。`
+- `auth.nudgeBody`
+  - old: `目前只有一把通行密钥能进入这个账户。它丢了，账户也就丢了。请再添加一把通行密钥或一个邮箱，以便找回。`
+  - new: `目前只有一个通行密钥能进入这个账户。它丢了，账户也就丢了。请再添加一个通行密钥或一个邮箱，以便找回。`
+- `auth.nudgeBodyNoEmail`
+  - old: `目前只有一把通行密钥能进入这个账户。它丢了，账户也就丢了。请再添加一把通行密钥，以便找回。`
+  - new: `目前只有一个通行密钥能进入这个账户。它丢了，账户也就丢了。请再添加一个通行密钥，以便找回。`
+- `auth.nudgePasskey`
+  - old: `添加第二把通行密钥`
+  - new: `添加第二个通行密钥`
+- `auth.recoveryWarning`
+  - old: `一把通行密钥是你唯一的入口。请再添加一把通行密钥或一个邮箱，以便找回。`
+  - new: `一个通行密钥是你唯一的入口。请再添加一个通行密钥或一个邮箱，以便找回。`
+- `auth.recoveryWarningNoEmail`
+  - old: `一把通行密钥是你唯一的入口。请再添加一把通行密钥，以便找回。`
+  - new: `一个通行密钥是你唯一的入口。请再添加一个通行密钥，以便找回。`
+- `auth.passkeysEmpty`
+  - old: `还没有通行密钥。添加一把，就能不用邮件验证码登录。`
+  - new: `还没有通行密钥。添加一个，就能不用邮件验证码登录。`
+- `auth.passkeysAdd`
+  - old: `再添加一把通行密钥`
+  - new: `再添加一个通行密钥`
+- `auth.error.passkey_not_accepted`
+  - old: `这把通行密钥未被接受。请用邮件验证码登录，然后添加新的通行密钥。`
+  - new: `这个通行密钥未被接受。请用邮件验证码登录，然后添加新的通行密钥。`
+- `auth.error.passkey_already_registered`
+  - old: `这把通行密钥已经登记过了。`
+  - new: `这个通行密钥已经登记过了。`
+- `auth.error.passkey_not_registered`
+  - old: `这把通行密钥没能添加。请再试一次。`
+  - new: `这个通行密钥没能添加。请再试一次。`
+- `auth.error.too_many_passkeys`
+  - old: `这个账户的通行密钥已达上限。请先移除一把。`
+  - new: `这个账户的通行密钥已达上限。请先移除一个。`
+- `auth.error.last_sign_in_method`
+  - old: `这把通行密钥是你唯一的登录方式。移除之前请先添加另一把。`
+  - new: `这个通行密钥是你唯一的登录方式。移除之前请先添加另一个。`
 - `brain.failed`
   - old: `模型无法在这台设备上启动。你仍然可以和出现成诗句的对手对决。`
   - new: `模型无法在这台设备上启动。你仍然可以和预先写好诗句的对手对决。`
@@ -1125,7 +1954,7 @@ Old text first, new text second. ⍽ marks a no-break space. A key with a dotted
   - old: `正在与出现成诗句的对手对决。想在这里迎战模型，请先到对战页面召唤一个。`
   - new: `正在与预先写好诗句的对手对决。想在这里迎战模型，请先到对战页面召唤一个。`
 
-### Japanese (ja): 5
+### Japanese (ja): 6
 
 - `form.couplet.name`
   - old: `二行連句`
@@ -1142,8 +1971,11 @@ Old text first, new text second. ⍽ marks a no-break space. A key with a dotted
 - `device.internal-rhyme.name`
   - old: `行内韻`
   - new: `中間韻`
+- `curse.forbidden-letter.theirs`
+  - old: `相手の詩に「{letter}」の文字を使ってはいけません。`
+  - new: `相手は詩に「{letter}」の文字を使えません。`
 
-### Korean (ko): 8
+### Korean (ko): 12
 
 - `form.couplet.name`
   - old: `2행 연구`
@@ -1160,18 +1992,36 @@ Old text first, new text second. ⍽ marks a no-break space. A key with a dotted
 - `form.heroic-couplet.name`
   - old: `영웅시체 2행 연구`
   - new: `영웅시체 쿠플레`
+- `house.montague.why`
+  - old: `머큐쇼의 재빠른 혀는 행 한가운데서 운을 맞춰요.`
+  - new: `머큐시오의 재빠른 혀는 행 한가운데서 운을 맞춰요.`
+- `auth.nudgeName`
+  - old: `당신의 이름은 {name}이에요.`
+  - new: `당신은 {name} 님이에요.`
 - `brain.kept`
-  - old: `한 번 내려받으면 브라우저가 보관해요. 어디로도 전송되지 않아요.`
-  - new: `한 번 다운로드하면 브라우저가 보관해요. 어디로도 전송되지 않아요.`
+  - old: `Hugging Face에서 한 번 내려받으면 브라우저가 보관해요. 쓰거나 말한 내용은 어디로도 전송되지 않아요.`
+  - new: `Hugging Face에서 한 번 다운로드하면 브라우저가 보관해요. 쓰거나 말한 내용은 어디로도 전송되지 않아요.`
 - `brain.downloading`
   - old: `{model} 내려받는 중: {total}MB 중 {done}MB`
   - new: `{model} 다운로드 중: {total}MB 중 {done}MB`
 - `brain.canRun`
   - old: `이 기기는 브라우저에서 {model}을(를) 돌릴 수 있어요. 처음에 {size}를 내려받으면 그 뒤로는 보관돼요.`
   - new: `이 기기는 브라우저에서 {model}을(를) 돌릴 수 있어요. 처음에 {size}를 다운로드하면 그 뒤로는 보관돼요.`
+- `hand.potionLastRound`
+  - old: `{card}은(는) 상대의 다음 시에 저주를 걸지만, 지금이 마지막 라운드예요.`
+  - new: `{card}은(는) 상대의 다음 시에 저주를 걸 수 있지만, 지금이 마지막 라운드예요.`
+- `theatre.titleA`
+  - old: `더`
+  - new: `입체`
 
-### Vietnamese (vi): 18
+### Vietnamese (vi): 63
 
+- `form.quatrain-aabb.name`
+  - old: `Tứ tuyệt vần liền`
+  - new: `Thơ bốn câu vần liền`
+- `form.quatrain-abab.name`
+  - old: `Tứ tuyệt vần chéo`
+  - new: `Thơ bốn câu vần chéo`
 - `check.lines`
   - old: `Đúng {n} dòng`
   - new: `Đúng {n, plural, one {# dòng} other {# dòng}}`
@@ -1223,11 +2073,203 @@ Old text first, new text second. ⍽ marks a no-break space. A key with a dotted
 - `curse.short-lines.theirs.char`
   - old: `Không dòng nào của đối thủ được quá {n} chữ.`
   - new: `Không dòng nào của đối thủ được quá {n, plural, one {# chữ} other {# chữ}}.`
+- `house.the-tempest.why`
+  - old: `Cơn bão lớn dần cho đến khi vỡ òa.`
+  - new: `Cơn bão lớn dần cho đến khi vỡ oà.`
 - `migrate.done`
   - old: `Đã đồng bộ {cards} thẻ bài và {achievements} thành tựu.`
   - new: `Đã đồng bộ {cards, plural, one {# thẻ bài} other {# thẻ bài}} và {achievements, plural, one {# thành tựu} other {# thành tựu}}.`
+- `toast.achievement`
+  - old: `Mở khóa thành tựu`
+  - new: `Mở khoá thành tựu`
+- `auth.signInIntro`
+  - old: `Không cần nhớ mật khẩu. Khóa truy cập cho bạn đăng nhập bằng vân tay, khuôn mặt hoặc khóa màn hình.`
+  - new: `Không cần nhớ mật khẩu. Khoá truy cập cho bạn đăng nhập bằng vân tay, khuôn mặt hoặc khoá màn hình.`
+- `auth.passkeyButton`
+  - old: `Đăng nhập bằng khóa truy cập`
+  - new: `Đăng nhập bằng khoá truy cập`
+- `auth.passkeyUnsupported`
+  - old: `Trình duyệt này không dùng được khóa truy cập. Hãy đăng nhập bằng mã gửi qua email.`
+  - new: `Trình duyệt này không dùng được khoá truy cập. Hãy đăng nhập bằng mã gửi qua email.`
+- `auth.passkeyUnsupportedNoEmail`
+  - old: `Trình duyệt này không dùng được khóa truy cập, mà trang này lại đăng nhập bằng khóa truy cập. Hãy thử bản mới của Chrome, Safari, Edge hoặc Firefox.`
+  - new: `Trình duyệt này không dùng được khoá truy cập, mà trang này lại đăng nhập bằng khoá truy cập. Hãy thử bản mới của Chrome, Safari, Edge hoặc Firefox.`
+- `auth.createButton`
+  - old: `Tạo tài khoản bằng khóa truy cập`
+  - new: `Tạo tài khoản bằng khoá truy cập`
+- `auth.createIntro`
+  - old: `Tài khoản của bạn là một khóa truy cập lưu trên thiết bị này hoặc trong trình quản lý mật khẩu. Chúng tôi không hỏi tên, email hay mật khẩu.`
+  - new: `Tài khoản của bạn là một khoá truy cập lưu trên thiết bị này hoặc trong trình quản lý mật khẩu. Chúng tôi không hỏi tên, email hay mật khẩu.`
+- `auth.createWarning`
+  - old: `Nếu bạn làm mất khóa truy cập, chúng tôi không thể cho bạn vào lại. Sau bước này, hãy thêm một khóa thứ hai hoặc một email để còn đường quay lại.`
+  - new: `Nếu bạn làm mất khoá truy cập, chúng tôi không thể cho bạn vào lại. Sau bước này, hãy thêm một khoá thứ hai hoặc một email để còn đường quay lại.`
+- `auth.createWarningNoEmail`
+  - old: `Nếu bạn làm mất khóa truy cập, chúng tôi không thể cho bạn vào lại. Sau bước này, hãy thêm một khóa thứ hai để còn đường quay lại.`
+  - new: `Nếu bạn làm mất khoá truy cập, chúng tôi không thể cho bạn vào lại. Sau bước này, hãy thêm một khoá thứ hai để còn đường quay lại.`
+- `auth.nudgeBody`
+  - old: `Hiện giờ một khóa truy cập là lối duy nhất vào tài khoản này. Mất nó là mất tài khoản. Hãy thêm một khóa thứ hai hoặc một email để còn đường quay lại.`
+  - new: `Hiện giờ một khoá truy cập là lối duy nhất vào tài khoản này. Mất nó là mất tài khoản. Hãy thêm một khoá thứ hai hoặc một email để còn đường quay lại.`
+- `auth.nudgeBodyNoEmail`
+  - old: `Hiện giờ một khóa truy cập là lối duy nhất vào tài khoản này. Mất nó là mất tài khoản. Hãy thêm một khóa thứ hai để còn đường quay lại.`
+  - new: `Hiện giờ một khoá truy cập là lối duy nhất vào tài khoản này. Mất nó là mất tài khoản. Hãy thêm một khoá thứ hai để còn đường quay lại.`
+- `auth.nudgePasskey`
+  - old: `Thêm khóa truy cập thứ hai`
+  - new: `Thêm khoá truy cập thứ hai`
+- `auth.nudgePasskeyHint`
+  - old: `Dùng một thiết bị khác, trình quản lý mật khẩu hoặc khóa bảo mật.`
+  - new: `Dùng một thiết bị khác, trình quản lý mật khẩu hoặc khoá bảo mật.`
+- `auth.recoveryWarning`
+  - old: `Một khóa truy cập là lối vào duy nhất của bạn. Hãy thêm một khóa thứ hai hoặc một email để còn đường quay lại.`
+  - new: `Một khoá truy cập là lối vào duy nhất của bạn. Hãy thêm một khoá thứ hai hoặc một email để còn đường quay lại.`
+- `auth.recoveryWarningNoEmail`
+  - old: `Một khóa truy cập là lối vào duy nhất của bạn. Hãy thêm một khóa thứ hai để còn đường quay lại.`
+  - new: `Một khoá truy cập là lối vào duy nhất của bạn. Hãy thêm một khoá thứ hai để còn đường quay lại.`
+- `auth.emailHint`
+  - old: `Đang dùng thiết bị không có khóa truy cập của bạn? Hãy đăng nhập qua email, nếu tài khoản có email.`
+  - new: `Đang dùng thiết bị không có khoá truy cập của bạn? Hãy đăng nhập qua email, nếu tài khoản có email.`
+- `auth.offerHeading`
+  - old: `Thêm khóa truy cập cho thiết bị này`
+  - new: `Thêm khoá truy cập cho thiết bị này`
+- `auth.offerBody`
+  - old: `Lần sau, hãy đăng nhập bằng vân tay, khuôn mặt hoặc khóa màn hình. Không cần mã, không phải chờ email.`
+  - new: `Lần sau, hãy đăng nhập bằng vân tay, khuôn mặt hoặc khoá màn hình. Không cần mã, không phải chờ email.`
+- `auth.offerAdd`
+  - old: `Thêm khóa truy cập`
+  - new: `Thêm khoá truy cập`
+- `auth.passkeysHeading`
+  - old: `Khóa truy cập`
+  - new: `Khoá truy cập`
+- `auth.passkeysEmpty`
+  - old: `Chưa có khóa truy cập nào. Hãy thêm một khóa để đăng nhập mà không cần mã email.`
+  - new: `Chưa có khoá truy cập nào. Hãy thêm một khoá để đăng nhập mà không cần mã email.`
+- `auth.passkeysAdd`
+  - old: `Thêm khóa truy cập khác`
+  - new: `Thêm khoá truy cập khác`
+- `auth.passkeyAdded`
+  - old: `Đã thêm khóa truy cập. Từ giờ bạn có thể đăng nhập bằng khóa này.`
+  - new: `Đã thêm khoá truy cập. Từ giờ bạn có thể đăng nhập bằng khoá này.`
+- `auth.passkeyAddedOn`
+  - old: `Thêm ngày {date}`
+  - new: `Đã thêm vào {date}`
+- `auth.passkeyRemoveLabel`
+  - old: `Gỡ khóa truy cập {name}`
+  - new: `Gỡ khoá truy cập {name}`
+- `auth.passkeyRemoved`
+  - old: `Đã gỡ khóa truy cập.`
+  - new: `Đã gỡ khoá truy cập.`
+- `auth.error.passkey_unsupported`
+  - old: `Trình duyệt này không dùng được khóa truy cập.`
+  - new: `Trình duyệt này không dùng được khoá truy cập.`
+- `auth.error.passkey_cancelled`
+  - old: `Chưa có khóa truy cập nào được dùng. Hãy thử lại khi bạn sẵn sàng.`
+  - new: `Chưa có khoá truy cập nào được dùng. Hãy thử lại khi bạn sẵn sàng.`
+- `auth.error.passkey_not_accepted`
+  - old: `Khóa truy cập đó không được chấp nhận. Hãy đăng nhập bằng mã email, rồi thêm một khóa mới.`
+  - new: `Khoá truy cập đó không được chấp nhận. Hãy đăng nhập bằng mã email, rồi thêm một khoá mới.`
+- `auth.error.passkey_failed`
+  - old: `Khóa truy cập không hoạt động. Vui lòng thử lại.`
+  - new: `Khoá truy cập không hoạt động. Vui lòng thử lại.`
+- `auth.error.passkey_already_on_device`
+  - old: `Thiết bị này đã có khóa truy cập cho tài khoản của bạn.`
+  - new: `Thiết bị này đã có khoá truy cập cho tài khoản của bạn.`
+- `auth.error.passkey_already_registered`
+  - old: `Khóa truy cập đó đã được đăng ký.`
+  - new: `Khoá truy cập đó đã được đăng ký.`
+- `auth.error.passkey_not_registered`
+  - old: `Không thêm được khóa truy cập đó. Vui lòng thử lại.`
+  - new: `Không thêm được khoá truy cập đó. Vui lòng thử lại.`
+- `auth.error.too_many_passkeys`
+  - old: `Tài khoản này đã có số khóa truy cập tối đa. Hãy gỡ bớt một khóa trước.`
+  - new: `Tài khoản này đã có số khoá truy cập tối đa. Hãy gỡ bớt một khoá trước.`
+- `auth.error.last_sign_in_method`
+  - old: `Khóa truy cập này là cách đăng nhập duy nhất của bạn. Hãy thêm một khóa khác trước khi gỡ nó.`
+  - new: `Khoá truy cập này là cách đăng nhập duy nhất của bạn. Hãy thêm một khoá khác trước khi gỡ nó.`
+- `mic.none`
+  - old: `Ở đây không có micro`
+  - new: `Ở đây không có micrô`
+- `mic.denied`
+  - old: `Micro chưa được cho phép`
+  - new: `Micrô chưa được cho phép`
+- `theatre.intro`
+  - old: `Vẫn trận đấu ấy, trên một sân khấu bao quanh bạn. Trỏ hoặc chụm ngón tay để đánh một lá bài, bấm micro rồi xướng bài thơ. Lời bạn được chép lại và chấm ngay trên thiết bị này.`
+  - new: `Vẫn trận đấu ấy, trên một sân khấu bao quanh bạn. Trỏ hoặc chụm ngón tay để đánh một lá bài, bấm micrô rồi xướng bài thơ. Lời bạn được chép lại và chấm ngay trên thiết bị này.`
+- `theatre.versePrompt`
+  - old: `Bài thơ của bạn hiện ở đây. Bấm micro rồi xướng lên, mỗi hơi một dòng.`
+  - new: `Bài thơ của bạn hiện ở đây. Bấm micrô rồi xướng lên, mỗi hơi một dòng.`
+- `theatre.clear`
+  - old: `Xóa`
+  - new: `Xoá`
+- `pack:relics.RL-006.3`
+  - old: `phù thủy`
+  - new: `phù thuỷ`
+- `pack:written.haiku.1.2`
+  - old: `Hóa ra là tiếng gió`
+  - new: `Hoá ra là tiếng gió`
 
-### Indonesian (id): 3
+### Thai (th): 20
+
+- `age.errorDob`
+  - old: `โปรดเลือกวันเกิดให้ครบ`
+  - new: `โปรดเลือกวันเดือนปีเกิดให้ครบถ้วน`
+- `auth.signIn`
+  - old: `เข้าสู่ระบบ`
+  - new: `ลงชื่อเข้าใช้`
+- `auth.signInHeading`
+  - old: `เข้าสู่ระบบ`
+  - new: `ลงชื่อเข้าใช้`
+- `auth.signInIntro`
+  - old: `ไม่ต้องจำรหัสผ่าน พาสคีย์พาคุณเข้าสู่ระบบด้วยลายนิ้วมือ ใบหน้า หรือการล็อกหน้าจอ`
+  - new: `ไม่ต้องจำรหัสผ่าน พาสคีย์พาคุณลงชื่อเข้าใช้ด้วยลายนิ้วมือ ใบหน้า หรือการล็อกหน้าจอ`
+- `auth.passkeyButton`
+  - old: `เข้าสู่ระบบด้วยพาสคีย์`
+  - new: `ลงชื่อเข้าใช้ด้วยพาสคีย์`
+- `auth.passkeyUnsupported`
+  - old: `เบราว์เซอร์นี้ใช้พาสคีย์ไม่ได้ โปรดเข้าสู่ระบบด้วยรหัสที่ส่งทางอีเมลแทน`
+  - new: `เบราว์เซอร์นี้ใช้พาสคีย์ไม่ได้ โปรดลงชื่อเข้าใช้ด้วยรหัสที่ส่งทางอีเมลแทน`
+- `auth.passkeyUnsupportedNoEmail`
+  - old: `เบราว์เซอร์นี้ใช้พาสคีย์ไม่ได้ และเว็บไซต์นี้เข้าสู่ระบบด้วยพาสคีย์ ลองใช้ Chrome, Safari, Edge หรือ Firefox รุ่นปัจจุบัน`
+  - new: `เบราว์เซอร์นี้ใช้พาสคีย์ไม่ได้ และเว็บไซต์นี้ลงชื่อเข้าใช้ด้วยพาสคีย์ ลองใช้ Chrome, Safari, Edge หรือ Firefox รุ่นปัจจุบัน`
+- `auth.addEmailDone`
+  - old: `เพิ่มอีเมลแล้ว ตอนนี้คุณเข้าสู่ระบบด้วยรหัสที่ส่งไปยังอีเมลนั้นได้`
+  - new: `เพิ่มอีเมลแล้ว ตอนนี้คุณลงชื่อเข้าใช้ด้วยรหัสที่ส่งไปยังอีเมลนั้นได้`
+- `auth.emailHint`
+  - old: `ใช้อุปกรณ์ที่ไม่มีพาสคีย์ของคุณอยู่หรือ เข้าสู่ระบบทางอีเมลได้ ถ้าบัญชีของคุณมีอีเมล`
+  - new: `ใช้อุปกรณ์ที่ไม่มีพาสคีย์ของคุณอยู่หรือ ลงชื่อเข้าใช้ทางอีเมลได้ ถ้าบัญชีของคุณมีอีเมล`
+- `auth.emailHeading`
+  - old: `เข้าสู่ระบบทางอีเมล`
+  - new: `ลงชื่อเข้าใช้ทางอีเมล`
+- `auth.codeVerify`
+  - old: `เข้าสู่ระบบ`
+  - new: `ลงชื่อเข้าใช้`
+- `auth.legalBefore`
+  - old: `เมื่อเข้าสู่ระบบ ถือว่าคุณยอมรับ`
+  - new: `เมื่อลงชื่อเข้าใช้ ถือว่าคุณยอมรับ`
+- `auth.offerBody`
+  - old: `ครั้งหน้า เข้าสู่ระบบด้วยลายนิ้วมือ ใบหน้า หรือการล็อกหน้าจอ ไม่ต้องใช้รหัส ไม่ต้องรออีเมล`
+  - new: `ครั้งหน้า ลงชื่อเข้าใช้ด้วยลายนิ้วมือ ใบหน้า หรือการล็อกหน้าจอ ไม่ต้องใช้รหัส ไม่ต้องรออีเมล`
+- `auth.passkeysEmpty`
+  - old: `ยังไม่มีพาสคีย์ เพิ่มสักอันเพื่อเข้าสู่ระบบโดยไม่ต้องใช้รหัสทางอีเมล`
+  - new: `ยังไม่มีพาสคีย์ เพิ่มสักอันเพื่อลงชื่อเข้าใช้โดยไม่ต้องใช้รหัสทางอีเมล`
+- `auth.passkeyAdded`
+  - old: `เพิ่มพาสคีย์แล้ว จากนี้ไปคุณเข้าสู่ระบบด้วยพาสคีย์นี้ได้`
+  - new: `เพิ่มพาสคีย์แล้ว จากนี้ไปคุณลงชื่อเข้าใช้ด้วยพาสคีย์นี้ได้`
+- `auth.signedIn`
+  - old: `เข้าสู่ระบบแล้ว`
+  - new: `ลงชื่อเข้าใช้แล้ว`
+- `auth.error.email_in_use`
+  - old: `ที่อยู่นั้นเป็นของบัญชีอื่นอยู่แล้ว โปรดออกจากระบบ แล้วเข้าสู่ระบบด้วยที่อยู่นั้นแทน`
+  - new: `ที่อยู่นั้นเป็นของบัญชีอื่นอยู่แล้ว โปรดออกจากระบบ แล้วลงชื่อเข้าใช้ด้วยที่อยู่นั้นแทน`
+- `auth.error.passkey_not_accepted`
+  - old: `พาสคีย์นั้นไม่ได้รับการยอมรับ โปรดเข้าสู่ระบบด้วยรหัสทางอีเมล แล้วเพิ่มพาสคีย์ใหม่`
+  - new: `พาสคีย์นั้นไม่ได้รับการยอมรับ โปรดลงชื่อเข้าใช้ด้วยรหัสทางอีเมล แล้วเพิ่มพาสคีย์ใหม่`
+- `auth.error.last_sign_in_method`
+  - old: `พาสคีย์นี้เป็นทางเดียวที่คุณใช้เข้าสู่ระบบ โปรดเพิ่มอีกอันก่อนนำอันนี้ออก`
+  - new: `พาสคีย์นี้เป็นทางเดียวที่คุณใช้ลงชื่อเข้าใช้ โปรดเพิ่มอีกอันก่อนนำอันนี้ออก`
+- `auth.error.not_signed_in`
+  - old: `เซสชันของคุณสิ้นสุดแล้ว โปรดเข้าสู่ระบบอีกครั้ง`
+  - new: `เซสชันของคุณสิ้นสุดแล้ว โปรดลงชื่อเข้าใช้อีกครั้ง`
+
+### Indonesian (id): 5
 
 - `form.quatrain-aabb.name`
   - old: `Kuatrin berpasangan`
@@ -1235,7 +2277,13 @@ Old text first, new text second. ⍽ marks a no-break space. A key with a dotted
 - `form.quatrain-abab.name`
   - old: `Kuatrin bersilang`
   - new: `Sajak empat baris bersilang`
+- `form.jueju.brief`
+  - old: `Empat baris, semuanya lima aksara atau semuanya tujuh: bentuk kuatrin klasik Tiongkok.`
+  - new: `Empat baris, semuanya lima aksara atau semuanya tujuh: bentuk sajak empat baris klasik Tiongkok.`
 - `form.luc-bat.name`
   - old: `Enam-delapan`
   - new: `Lục bát`
+- `migrate.done`
+  - old: `{cards} kartu dan {achievements} pencapaian tersinkron.`
+  - new: `{cards} kartu dan {achievements} pencapaian disinkronkan.`
 

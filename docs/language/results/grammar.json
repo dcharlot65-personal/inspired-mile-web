@@ -1,5 +1,5 @@
 {
- "ran": "2026-11-16T19:58:15.208Z",
+ "ran": "2026-11-16T22:46:55.514Z",
  "languagetool": {
   "version": "6.6",
   "buildDate": "2025-03-27 20:50:25 +0100",
@@ -3263,7 +3263,7 @@
      "id": "ui:auth.createWarning",
      "rule": "SPELLING",
      "category": "SPELLING",
-     "text": "Wenn du den Passkey verlierst, können wir dich nicht wieder hereinlassen. Füge danach einen zweiten Passkey oder eine E-Mail hinzu, damit du zurückkommst.",
+     "text": "Wenn du den Passkey verlierst, können wir dich nicht wieder hereinlassen. Füge danach einen zweiten Passkey oder eine E-Mail hinzu, damit du wieder Zugriff hast.",
      "at": "Passkey",
      "message": "not in the de dictionary",
      "replacements": [],
@@ -3274,7 +3274,7 @@
      "id": "ui:auth.createWarningNoEmail",
      "rule": "SPELLING",
      "category": "SPELLING",
-     "text": "Wenn du den Passkey verlierst, können wir dich nicht wieder hereinlassen. Füge danach einen zweiten Passkey hinzu, damit du zurückkommst.",
+     "text": "Wenn du den Passkey verlierst, können wir dich nicht wieder hereinlassen. Füge danach einen zweiten Passkey hinzu, damit du wieder Zugriff hast.",
      "at": "Passkey",
      "message": "not in the de dictionary",
      "replacements": [],
@@ -3285,7 +3285,7 @@
      "id": "ui:auth.nudgeBody",
      "rule": "SPELLING",
      "category": "SPELLING",
-     "text": "Im Moment ist ein einziger Passkey der einzige Zugang zu diesem Konto. Geht er verloren, ist das Konto verloren. Füge einen zweiten Passkey oder eine E-Mail hinzu, damit du zurückkommst.",
+     "text": "Im Moment ist ein einziger Passkey der einzige Zugang zu diesem Konto. Geht er verloren, ist das Konto verloren. Füge einen zweiten Passkey oder eine E-Mail hinzu, damit du wieder Zugriff hast.",
      "at": "Passkey",
      "message": "not in the de dictionary",
      "replacements": [],
@@ -3296,7 +3296,7 @@
      "id": "ui:auth.nudgeBodyNoEmail",
      "rule": "SPELLING",
      "category": "SPELLING",
-     "text": "Im Moment ist ein einziger Passkey der einzige Zugang zu diesem Konto. Geht er verloren, ist das Konto verloren. Füge einen zweiten Passkey hinzu, damit du zurückkommst.",
+     "text": "Im Moment ist ein einziger Passkey der einzige Zugang zu diesem Konto. Geht er verloren, ist das Konto verloren. Füge einen zweiten Passkey hinzu, damit du wieder Zugriff hast.",
      "at": "Passkey",
      "message": "not in the de dictionary",
      "replacements": [],
@@ -3318,7 +3318,7 @@
      "id": "ui:auth.recoveryWarning",
      "rule": "SPELLING",
      "category": "SPELLING",
-     "text": "Ein einziger Passkey ist dein einziger Zugang. Füge einen zweiten Passkey oder eine E-Mail hinzu, damit du zurückkommst.",
+     "text": "Ein einziger Passkey ist dein einziger Zugang. Füge einen zweiten Passkey oder eine E-Mail hinzu, damit du wieder Zugriff hast.",
      "at": "Passkey",
      "message": "not in the de dictionary",
      "replacements": [],
@@ -3329,7 +3329,7 @@
      "id": "ui:auth.recoveryWarningNoEmail",
      "rule": "SPELLING",
      "category": "SPELLING",
-     "text": "Ein einziger Passkey ist dein einziger Zugang. Füge einen zweiten Passkey hinzu, damit du zurückkommst.",
+     "text": "Ein einziger Passkey ist dein einziger Zugang. Füge einen zweiten Passkey hinzu, damit du wieder Zugriff hast.",
      "at": "Passkey",
      "message": "not in the de dictionary",
      "replacements": [],
@@ -11628,9 +11628,9 @@
     "ar"
    ],
    "counts": {
-    "languagetool": 174,
+    "languagetool": 175,
     "hunspell": 38,
-    "allowed": 212,
+    "allowed": 213,
     "open": 0
    },
    "hits": [
@@ -11725,14 +11725,14 @@
       "يجب أن تكوّن كلمتة",
       "يجب أن تكوّن لمة"
      ],
-     "allowed": "The rule misreads كلمة (word) as the particle كـ joined to لمة; its suggestions (كلمتة) are not words."
+     "allowed": "The rule misreads a word that begins with ك as the particle كـ joined to the rest: كلمة (word) as كـ + لمة, and in one verse line كريم (generous) as كـ + ريم; its suggestions (كلمتة) are not words."
     },
     {
      "tool": "languagetool",
      "id": "ui:form.acrostic.brief.words",
      "rule": "syntax_0002_as_ka_1",
      "category": "TEST_NEW_FEATURES",
-     "text": "سطر لكل كلمة: يجب أن تبدأ الأسطر، على الترتيب، بـ جمجمة.",
+     "text": "سطر لكل كلمة: يجب أن تبدأ الأسطر، بالترتيب، بـ جمجمة.",
      "at": "سطر لكل كلمة",
      "message": "استخدام الكاف للصفة استخدام أجنبي أدخله المترجمون، إذ يستعملون\n            \"as\"\n            بمعنى الكاف، فالأَوْلَى النصب على الحالية مثل  \" أعمل مديرًا \" أو على الاختصاص في: \"نحن المسلمين\".\n        \"سطر لكل كلمة\", \"سطر لكل كلمتة\", \"سطر لكل لمة\", \"سطر لكل لمتة\"\n        \"سطر لكل بصفة لمة\"\n\n      ",
      "replacements": [
@@ -11740,7 +11740,7 @@
       "سطر لكل كلمتة",
       "سطر لكل لمة"
      ],
-     "allowed": "The rule misreads كلمة (word) as the particle كـ joined to لمة; its suggestions (كلمتة) are not words."
+     "allowed": "The rule misreads a word that begins with ك as the particle كـ joined to the rest: كلمة (word) as كـ + لمة, and in one verse line كريم (generous) as كـ + ريم; its suggestions (كلمتة) are not words."
     },
     {
      "tool": "languagetool",
@@ -12003,7 +12003,7 @@
       "تكوّن كلمتة",
       "تكوّن لمة"
      ],
-     "allowed": "The rule misreads كلمة (word) as the particle كـ joined to لمة; its suggestions (كلمتة) are not words."
+     "allowed": "The rule misreads a word that begins with ك as the particle كـ joined to the rest: كلمة (word) as كـ + لمة, and in one verse line كريم (generous) as كـ + ريم; its suggestions (كلمتة) are not words."
     },
     {
      "tool": "languagetool",
@@ -12072,7 +12072,7 @@
       "كرّر كلمتة",
       "كرّر لمة"
      ],
-     "allowed": "The rule misreads كلمة (word) as the particle كـ joined to لمة; its suggestions (كلمتة) are not words."
+     "allowed": "The rule misreads a word that begins with ك as the particle كـ joined to the rest: كلمة (word) as كـ + لمة, and in one verse line كريم (generous) as كـ + ريم; its suggestions (كلمتة) are not words."
     },
     {
      "tool": "languagetool",
@@ -12101,7 +12101,7 @@
       "خصمك كلمتة",
       "خصمك لمة"
      ],
-     "allowed": "The rule misreads كلمة (word) as the particle كـ joined to لمة; its suggestions (كلمتة) are not words."
+     "allowed": "The rule misreads a word that begins with ك as the particle كـ joined to the rest: كلمة (word) as كـ + لمة, and in one verse line كريم (generous) as كـ + ريم; its suggestions (كلمتة) are not words."
     },
     {
      "tool": "languagetool",
@@ -12116,7 +12116,7 @@
       "أكثر من 0 كلمتة",
       "أكثر من 0 لمة"
      ],
-     "allowed": "The rule misreads كلمة (word) as the particle كـ joined to لمة; its suggestions (كلمتة) are not words."
+     "allowed": "The rule misreads a word that begins with ك as the particle كـ joined to the rest: كلمة (word) as كـ + لمة, and in one verse line كريم (generous) as كـ + ريم; its suggestions (كلمتة) are not words."
     },
     {
      "tool": "languagetool",
@@ -12131,7 +12131,7 @@
       "سطر أكثر من كلمتة",
       "سطر أكثر من لمة"
      ],
-     "allowed": "The rule misreads كلمة (word) as the particle كـ joined to لمة; its suggestions (كلمتة) are not words."
+     "allowed": "The rule misreads a word that begins with ك as the particle كـ joined to the rest: كلمة (word) as كـ + لمة, and in one verse line كريم (generous) as كـ + ريم; its suggestions (كلمتة) are not words."
     },
     {
      "tool": "languagetool",
@@ -12174,7 +12174,7 @@
       "أكثر من 11 كلمتة",
       "أكثر من 11 لمة"
      ],
-     "allowed": "The rule misreads كلمة (word) as the particle كـ joined to لمة; its suggestions (كلمتة) are not words."
+     "allowed": "The rule misreads a word that begins with ك as the particle كـ joined to the rest: كلمة (word) as كـ + لمة, and in one verse line كريم (generous) as كـ + ريم; its suggestions (كلمتة) are not words."
     },
     {
      "tool": "languagetool",
@@ -12189,7 +12189,7 @@
       "أكثر من 100 كلمتة",
       "أكثر من 100 لمة"
      ],
-     "allowed": "The rule misreads كلمة (word) as the particle كـ joined to لمة; its suggestions (كلمتة) are not words."
+     "allowed": "The rule misreads a word that begins with ك as the particle كـ joined to the rest: كلمة (word) as كـ + لمة, and in one verse line كريم (generous) as كـ + ريم; its suggestions (كلمتة) are not words."
     },
     {
      "tool": "languagetool",
@@ -12257,7 +12257,7 @@
       "أن تزيد أي كلمتة",
       "أن تزيد أي لمة"
      ],
-     "allowed": "The rule misreads كلمة (word) as the particle كـ joined to لمة; its suggestions (كلمتة) are not words."
+     "allowed": "The rule misreads a word that begins with ك as the particle كـ joined to the rest: كلمة (word) as كـ + لمة, and in one verse line كريم (generous) as كـ + ريم; its suggestions (كلمتة) are not words."
     },
     {
      "tool": "languagetool",
@@ -12285,7 +12285,7 @@
       "أن تزيد أي كلمتة",
       "أن تزيد أي لمة"
      ],
-     "allowed": "The rule misreads كلمة (word) as the particle كـ joined to لمة; its suggestions (كلمتة) are not words."
+     "allowed": "The rule misreads a word that begins with ك as the particle كـ joined to the rest: كلمة (word) as كـ + لمة, and in one verse line كريم (generous) as كـ + ريم; its suggestions (كلمتة) are not words."
     },
     {
      "tool": "languagetool",
@@ -12327,7 +12327,7 @@
       "أن تكرّر أي كلمتة",
       "أن تكرّر أي لمة"
      ],
-     "allowed": "The rule misreads كلمة (word) as the particle كـ joined to لمة; its suggestions (كلمتة) are not words."
+     "allowed": "The rule misreads a word that begins with ك as the particle كـ joined to the rest: كلمة (word) as كـ + لمة, and in one verse line كريم (generous) as كـ + ريم; its suggestions (كلمتة) are not words."
     },
     {
      "tool": "languagetool",
@@ -12355,7 +12355,7 @@
       "أن يكرّر أي كلمتة",
       "أن يكرّر أي لمة"
      ],
-     "allowed": "The rule misreads كلمة (word) as the particle كـ joined to لمة; its suggestions (كلمتة) are not words."
+     "allowed": "The rule misreads a word that begins with ك as the particle كـ joined to the rest: كلمة (word) as كـ + لمة, and in one verse line كريم (generous) as كـ + ريم; its suggestions (كلمتة) are not words."
     },
     {
      "tool": "languagetool",
@@ -12383,7 +12383,7 @@
       "أسطرك على 0 كلمتة",
       "أسطرك على 0 لمة"
      ],
-     "allowed": "The rule misreads كلمة (word) as the particle كـ joined to لمة; its suggestions (كلمتة) are not words."
+     "allowed": "The rule misreads a word that begins with ك as the particle كـ joined to the rest: كلمة (word) as كـ + لمة, and in one verse line كريم (generous) as كـ + ريم; its suggestions (كلمتة) are not words."
     },
     {
      "tool": "languagetool",
@@ -12398,7 +12398,7 @@
       "من أسطرك على كلمتة",
       "من أسطرك على لمة"
      ],
-     "allowed": "The rule misreads كلمة (word) as the particle كـ joined to لمة; its suggestions (كلمتة) are not words."
+     "allowed": "The rule misreads a word that begins with ك as the particle كـ joined to the rest: كلمة (word) as كـ + لمة, and in one verse line كريم (generous) as كـ + ريم; its suggestions (كلمتة) are not words."
     },
     {
      "tool": "languagetool",
@@ -12441,7 +12441,7 @@
       "أسطرك على 11 كلمتة",
       "أسطرك على 11 لمة"
      ],
-     "allowed": "The rule misreads كلمة (word) as the particle كـ joined to لمة; its suggestions (كلمتة) are not words."
+     "allowed": "The rule misreads a word that begins with ك as the particle كـ joined to the rest: كلمة (word) as كـ + لمة, and in one verse line كريم (generous) as كـ + ريم; its suggestions (كلمتة) are not words."
     },
     {
      "tool": "languagetool",
@@ -12456,7 +12456,7 @@
       "أسطرك على 100 كلمتة",
       "أسطرك على 100 لمة"
      ],
-     "allowed": "The rule misreads كلمة (word) as the particle كـ joined to لمة; its suggestions (كلمتة) are not words."
+     "allowed": "The rule misreads a word that begins with ك as the particle كـ joined to the rest: كلمة (word) as كـ + لمة, and in one verse line كريم (generous) as كـ + ريم; its suggestions (كلمتة) are not words."
     },
     {
      "tool": "languagetool",
@@ -12497,7 +12497,7 @@
       "خصمك على 0 كلمتة",
       "خصمك على 0 لمة"
      ],
-     "allowed": "The rule misreads كلمة (word) as the particle كـ joined to لمة; its suggestions (كلمتة) are not words."
+     "allowed": "The rule misreads a word that begins with ك as the particle كـ joined to the rest: كلمة (word) as كـ + لمة, and in one verse line كريم (generous) as كـ + ريم; its suggestions (كلمتة) are not words."
     },
     {
      "tool": "languagetool",
@@ -12512,7 +12512,7 @@
       "أسطر خصمك على كلمتة",
       "أسطر خصمك على لمة"
      ],
-     "allowed": "The rule misreads كلمة (word) as the particle كـ joined to لمة; its suggestions (كلمتة) are not words."
+     "allowed": "The rule misreads a word that begins with ك as the particle كـ joined to the rest: كلمة (word) as كـ + لمة, and in one verse line كريم (generous) as كـ + ريم; its suggestions (كلمتة) are not words."
     },
     {
      "tool": "languagetool",
@@ -12555,7 +12555,7 @@
       "خصمك على 11 كلمتة",
       "خصمك على 11 لمة"
      ],
-     "allowed": "The rule misreads كلمة (word) as the particle كـ joined to لمة; its suggestions (كلمتة) are not words."
+     "allowed": "The rule misreads a word that begins with ك as the particle كـ joined to the rest: كلمة (word) as كـ + لمة, and in one verse line كريم (generous) as كـ + ريم; its suggestions (كلمتة) are not words."
     },
     {
      "tool": "languagetool",
@@ -12570,7 +12570,7 @@
       "خصمك على 100 كلمتة",
       "خصمك على 100 لمة"
      ],
-     "allowed": "The rule misreads كلمة (word) as the particle كـ joined to لمة; its suggestions (كلمتة) are not words."
+     "allowed": "The rule misreads a word that begins with ك as the particle كـ joined to the rest: كلمة (word) as كـ + لمة, and in one verse line كريم (generous) as كـ + ريم; its suggestions (كلمتة) are not words."
     },
     {
      "tool": "languagetool",
@@ -12611,7 +12611,7 @@
       "يزن كل كلمتة",
       "يزن كل لمة"
      ],
-     "allowed": "The rule misreads كلمة (word) as the particle كـ joined to لمة; its suggestions (كلمتة) are not words."
+     "allowed": "The rule misreads a word that begins with ك as the particle كـ joined to the rest: كلمة (word) as كـ + لمة, and in one verse line كريم (generous) as كـ + ريم; its suggestions (كلمتة) are not words."
     },
     {
      "tool": "languagetool",
@@ -13017,6 +13017,19 @@
     },
     {
      "tool": "languagetool",
+     "id": "ui:auth.emailHint",
+     "rule": "grammar_0011_notjazem_lam_nafia",
+     "category": "GRAMMAR_ERROR",
+     "text": "على جهاز لا يتوفر فيه مفتاح مرورك؟ سجّل الدخول بالبريد الإلكتروني إذا كان لحسابك بريد.",
+     "at": "لا يتوفر",
+     "message": "\nالفرق بين لا الناهية ولا النافية، لا الناهية تأتي مع ضمائر المخاطب فقط. لذا فإن لا النافية لا تجزم الفعل المضارع أتقصد؟\n\n        \"لا يتوفر\"\n\n      ",
+     "replacements": [
+      "لا يتوفر"
+     ],
+     "allowed": "لا here negates a present-tense verb (لا يجوز، لا يدعم، لا نطلب، لا يُرسَل), a correct negation; the rule's lā of prohibition, which would change the verb's ending, does not apply."
+    },
+    {
+     "tool": "languagetool",
      "id": "ui:auth.legalAfter",
      "rule": "ARABIC_SC_WHITESPACE",
      "category": "TYPOGRAPHY",
@@ -13033,7 +13046,7 @@
      "id": "ui:auth.offerBody",
      "rule": "AR_DIACRITICS_REPLACE",
      "category": "STYLE",
-     "text": "في المرة القادمة ادخل ببصمة إصبعك أو وجهك أو قفل الشاشة. بلا رمز وبلا انتظار بريد.",
+     "text": "في المرة القادمة، سجّل الدخول ببصمة إصبعك أو وجهك أو قفل الشاشة. بلا رمز وبلا انتظار بريد إلكتروني.",
      "at": "قفل",
      "message": "القُفْل بالضم قفل الباب",
      "replacements": [
@@ -13046,7 +13059,7 @@
      "id": "ui:auth.passkeyAdded",
      "rule": "AR_DIACRITICS_REPLACE",
      "category": "STYLE",
-     "text": "أُضيف مفتاح المرور. يمكنك الدخول به من الآن.",
+     "text": "تمت إضافة مفتاح المرور. يمكنك تسجيل الدخول به من الآن فصاعدًا.",
      "at": "من الآن",
      "message": "ف \"الآنَ\" مبني على الظرفية",
      "replacements": [
@@ -13825,7 +13838,7 @@
       "وأنا ريم",
       "وأنا بصفة ريم"
      ],
-     "allowed": "The rule misreads كلمة (word) as the particle كـ joined to لمة; its suggestions (كلمتة) are not words."
+     "allowed": "The rule misreads a word that begins with ك as the particle كـ joined to the rest: كلمة (word) as كـ + لمة, and in one verse line كريم (generous) as كـ + ريم; its suggestions (كلمتة) are not words."
     },
     {
      "tool": "languagetool",
@@ -13908,7 +13921,7 @@
       "وكل كلمتة",
       "وكل لمة"
      ],
-     "allowed": "The rule misreads كلمة (word) as the particle كـ joined to لمة; its suggestions (كلمتة) are not words."
+     "allowed": "The rule misreads a word that begins with ك as the particle كـ joined to the rest: كلمة (word) as كـ + لمة, and in one verse line كريم (generous) as كـ + ريم; its suggestions (كلمتة) are not words."
     },
     {
      "tool": "languagetool",
@@ -15587,9 +15600,9 @@
    "languagetool": "zh-CN",
    "hunspell": null,
    "counts": {
-    "languagetool": 10,
+    "languagetool": 7,
     "hunspell": 0,
-    "allowed": 10,
+    "allowed": 7,
     "open": 0
    },
    "hits": [
@@ -15603,32 +15616,6 @@
      "message": "数词与名词之间一般应存在量词，可能缺少量词。",
      "replacements": [],
      "allowed": "一韵到底 (one rhyme to the end) is the set phrase of Chinese prosody for monorhyme; 韵 needs no measure word in it."
-    },
-    {
-     "tool": "languagetool",
-     "id": "ui:auth.nudgeBody",
-     "rule": "wa3",
-     "category": "CAT3",
-     "text": "目前只有一把通行密钥能进入这个账户。它丢了，账户也就丢了。请再添加一把通行密钥或一个邮箱，以便找回。",
-     "at": "把通行密钥能",
-     "message": "能愿动词不能成为‘把’字句、‘被’字句的谓语动词。应该是:\"能把……通行\"。",
-     "replacements": [
-      "能把……通行"
-     ],
-     "allowed": "把 here is the measure word of a key (一把通行密钥, 这把通行密钥), not the 把-construction the rule assumes."
-    },
-    {
-     "tool": "languagetool",
-     "id": "ui:auth.nudgeBodyNoEmail",
-     "rule": "wa3",
-     "category": "CAT3",
-     "text": "目前只有一把通行密钥能进入这个账户。它丢了，账户也就丢了。请再添加一把通行密钥，以便找回。",
-     "at": "把通行密钥能",
-     "message": "能愿动词不能成为‘把’字句、‘被’字句的谓语动词。应该是:\"能把……通行\"。",
-     "replacements": [
-      "能把……通行"
-     ],
-     "allowed": "把 here is the measure word of a key (一把通行密钥, 这把通行密钥), not the 把-construction the rule assumes."
     },
     {
      "tool": "languagetool",
@@ -15646,26 +15633,13 @@
      "id": "ui:auth.error.passkey_not_accepted",
      "rule": "wb4",
      "category": "CAT4",
-     "text": "这把通行密钥未被接受。请用邮件验证码登录，然后添加新的通行密钥。",
+     "text": "这个通行密钥未被接受。请用邮件验证码登录，然后添加新的通行密钥。",
      "at": "的",
      "message": "动词的修饰一般为‘形容词（副词）+地+动词’。您的意思是否是：新\"地\"通行",
      "replacements": [
       "地"
      ],
      "allowed": "新的通行密钥 (a new passkey): 新的 is an adjective before a noun; the rule took 通行 for a verb and asked for 地."
-    },
-    {
-     "tool": "languagetool",
-     "id": "ui:auth.error.passkey_not_registered",
-     "rule": "wa3",
-     "category": "CAT3",
-     "text": "这把通行密钥没能添加。请再试一次。",
-     "at": "把通行密钥没能",
-     "message": "能愿动词不能成为‘把’字句、‘被’字句的谓语动词。应该是:\"能把……通行\"。",
-     "replacements": [
-      "能把……通行"
-     ],
-     "allowed": "把 here is the measure word of a key (一把通行密钥, 这把通行密钥), not the 把-construction the rule assumes."
     },
     {
      "tool": "languagetool",
@@ -16663,8 +16637,8 @@
    "counts": {
     "languagetool": 0,
     "hunspell": 36,
-    "allowed": 32,
-    "open": 4
+    "allowed": 36,
+    "open": 0
    },
    "hits": [
     {
@@ -16972,7 +16946,8 @@
      "text": "Ở đây không có micrô",
      "at": "micrô",
      "message": "not in the vi dictionary",
-     "replacements": []
+     "replacements": [],
+     "allowed": "Micrô: Android's Vietnamese word for microphone (docs/language/glossary.json); the vi_VN list holds Vietnamese syllables only and knows no loan syllable."
     },
     {
      "tool": "hunspell",
@@ -16982,7 +16957,8 @@
      "text": "Micrô chưa được cho phép",
      "at": "Micrô",
      "message": "not in the vi dictionary",
-     "replacements": []
+     "replacements": [],
+     "allowed": "Micrô: Android's Vietnamese word for microphone (docs/language/glossary.json); the vi_VN list holds Vietnamese syllables only and knows no loan syllable."
     },
     {
      "tool": "hunspell",
@@ -17025,7 +17001,8 @@
      "text": "Vẫn trận đấu ấy, trên một sân khấu bao quanh bạn. Trỏ hoặc chụm ngón tay để đánh một lá bài, bấm micrô rồi xướng bài thơ. Lời bạn được chép lại và chấm ngay trên thiết bị này.",
      "at": "micrô",
      "message": "not in the vi dictionary",
-     "replacements": []
+     "replacements": [],
+     "allowed": "Micrô: Android's Vietnamese word for microphone (docs/language/glossary.json); the vi_VN list holds Vietnamese syllables only and knows no loan syllable."
     },
     {
      "tool": "hunspell",
@@ -17057,7 +17034,8 @@
      "text": "Bài thơ của bạn hiện ở đây. Bấm micrô rồi xướng lên, mỗi hơi một dòng.",
      "at": "micrô",
      "message": "not in the vi dictionary",
-     "replacements": []
+     "replacements": [],
+     "allowed": "Micrô: Android's Vietnamese word for microphone (docs/language/glossary.json); the vi_VN list holds Vietnamese syllables only and knows no loan syllable."
     }
    ]
   },
@@ -18971,5 +18949,5 @@
   }
  },
  "stale": [],
- "open": 4
+ "open": 0
 }
