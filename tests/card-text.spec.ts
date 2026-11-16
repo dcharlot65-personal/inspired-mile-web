@@ -57,6 +57,22 @@ test.describe('Card names and lines per language', () => {
     await expect(signature).not.toHaveText('✓');
   });
 
+  test('Italian: the name from Wikidata, and the signature read against Rusconi’s published line', async ({ page }) => {
+    await open(page);
+    await switchTo(page, 'it');
+    await expect(page.locator('#deck-cards')).toContainText('Amleto');
+    await expect(page.locator('#deck-cards')).not.toContainText("Yorick's Skull");
+    await begin(page);
+    const signature = page.locator('#live-checks li', { hasText: 'Firma' }).locator('span').first();
+    // Rusconi (1858): «Essere o non essere, ecco il gran problema»
+    await page.fill('#verse-input', 'Chi osa salire sul mio palco?\nLa luna dorme sul mare');
+    await expect(signature).not.toHaveText('✓');
+    await page.fill('#verse-input', 'Chi osa salire sul mio palco?\nIl mio problema è la notte');
+    await expect(signature).toHaveText('✓');
+    await page.fill('#verse-input', 'Chi osa salire sul mio palco?\nEssere o non essere, ecco il gran problema');
+    await expect(signature).not.toHaveText('✓');
+  });
+
   test('Japanese: the name in Japanese, and a Japanese word lands the signature', async ({ page }) => {
     await open(page);
     await switchTo(page, 'ja');

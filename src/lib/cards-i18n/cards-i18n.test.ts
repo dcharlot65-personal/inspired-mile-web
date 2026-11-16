@@ -39,7 +39,11 @@ function problems(pack: CardTextPack, prov: Provenance['langs'][string], doc: st
     if (e.quoteSource === 'published') {
       if (!e.quote) out.push(`${l} ${c.id}: published line is empty`);
       for (const k of ['translator', 'edition', 'status', 'url', 'revid', 'cite']) if (!p.quote[k]) out.push(`${l} ${c.id}: published line without ${k}`);
-      if (!/^https:\/\/[a-z]+\.wikisource\.org\/.+oldid=\d+$/.test(String(p.quote.url ?? ''))) out.push(`${l} ${c.id}: source URL is not a permanent Wikisource link`);
+      // A Wikisource revision (oldid), or a Project Gutenberg ebook pinned by the sha256 of the file that was read.
+      const url = String(p.quote.url ?? '');
+      const wikisource = /^https:\/\/[a-z]+\.wikisource\.org\/.+oldid=\d+$/.test(url);
+      const gutenberg = /^https:\/\/www\.gutenberg\.org\/ebooks\/\d+$/.test(url) && /^[0-9a-f]{64}$/.test(String(p.quote.revid ?? ''));
+      if (!wikisource && !gutenberg) out.push(`${l} ${c.id}: source URL is not a permanent Wikisource link or a pinned Project Gutenberg file`);
       if (!/[Pp]ublic domain/.test(String(p.quote.status ?? ''))) out.push(`${l} ${c.id}: status does not say public domain`);
     } else if (e.quoteSource === 'new') {
       if (!e.quote) out.push(`${l} ${c.id}: new line is empty`);
@@ -98,6 +102,16 @@ describe('card text in fifteen languages', () => {
     expect(broken((p) => { delete p.elements.Fire; })).toEqual(['fr: no label for element Fire']);
     expect(broken((p) => { delete p.houses.Capulet; })).toEqual(['fr: no label for house Capulet']);
     expect(broken((p) => { p.stop = []; })).toEqual(['fr: stop list has only 0 words']);
+    // A published line whose source is not pinned to a fixed version.
+    const unpinned: Provenance['langs'][string] = JSON.parse(JSON.stringify(prov));
+    unpinned.cards['DC-001'].quote.url = 'https://fr.wikisource.org/wiki/Hamlet';
+    expect(problems(fr, unpinned, record)).toEqual(['fr DC-001: source URL is not a permanent Wikisource link or a pinned Project Gutenberg file']);
+    const de = packs.find((p) => p.lang === 'de')!;
+    const gutenberg: Provenance['langs'][string] = JSON.parse(JSON.stringify(provenance.langs.de));
+    expect(String(gutenberg.cards['DC-001'].quote.url)).toMatch(/gutenberg\.org\/ebooks\/7276$/);
+    expect(problems(de, gutenberg, record)).toEqual([]);
+    gutenberg.cards['DC-001'].quote.revid = 'abc';
+    expect(problems(de, gutenberg, record)).toEqual(['de DC-001: source URL is not a permanent Wikisource link or a pinned Project Gutenberg file']);
     // A record with no provenance at all.
     expect(problems(fr, { cards: {} }, record).length).toBe(CARD_CATALOG.length);
   });
@@ -118,6 +132,87 @@ describe('card text in fifteen languages', () => {
     for (const p of packs) {
       for (const c of CARD_CATALOG) if (p.cards[c.id].nameSource === 'missing') expect([p.lang, c.id, cardName(c, p.lang)]).toEqual([p.lang, c.id, c.name]);
     }
+  });
+});
+
+describe('published lines: copyright and spelling', () => {
+  const translators: Record<string, { died: string | null }> = JSON.parse(readFileSync('docs/language/sources/translators.json', 'utf8')).translators;
+  const deathYears = new Set(Object.values(translators).map((t) => t.died?.slice(0, 4)).filter(Boolean));
+
+  /**
+   * Every published line must be out of copyright by the life + 70 test (translator died in 1955 or
+   * earlier, counted to 2026), with the death year taken from Wikidata (translators.json). A translator
+   * without known dates is accepted only for an edition of 1880 or earlier.
+   */
+  function copyrightProblems(prov: Provenance): string[] {
+    const out: string[] = [];
+    for (const [lang, l] of Object.entries(prov.langs)) {
+      for (const [id, c] of Object.entries(l.cards)) {
+        if (c.quote.source !== 'published') continue;
+        const dates = String(c.quote.translator ?? '').match(/\((\d{4})–(\d{4})\)/);
+        if (dates) {
+          if (Number(dates[2]) > 1955) out.push(`${lang} ${id}: translator died ${dates[2]}, within life + 70`);
+          if (!deathYears.has(dates[2])) out.push(`${lang} ${id}: death year ${dates[2]} is not Wikidata's`);
+        } else {
+          const year = String(c.quote.edition ?? '').match(/\b(1[5-8]\d\d)\b/);
+          if (!year || Number(year[1]) > 1880) out.push(`${lang} ${id}: translator without dates and no edition of 1880 or earlier`);
+        }
+      }
+    }
+    return out;
+  }
+
+  it('every published line is by a translator who died more than seventy years ago, by Wikidata’s dates', () => {
+    expect(copyrightProblems(provenance)).toEqual([]);
+    const published = Object.values(provenance.langs).reduce((n, l) => n + Object.values(l.cards).filter((c) => c.quote.source === 'published').length, 0);
+    expect(published).toBeGreaterThan(150);
+  });
+
+  it('the copyright check can fail', () => {
+    const copy: Provenance = JSON.parse(JSON.stringify(provenance));
+    const line = copy.langs.it.cards['DC-001'].quote;
+    line.translator = 'Someone (1890–1960)';
+    expect(copyrightProblems(copy)).toEqual(['it DC-001: translator died 1960, within life + 70', "it DC-001: death year 1960 is not Wikidata's"]);
+    line.translator = 'Carlo Rusconi (1812–1888)';
+    expect(copyrightProblems(copy)).toEqual(["it DC-001: death year 1888 is not Wikidata's"]);
+    line.translator = 'Anonymous';
+    line.edition = 'Milano, 1925';
+    expect(copyrightProblems(copy)).toEqual(['it DC-001: translator without dates and no edition of 1880 or earlier']);
+  });
+
+  // OpenCC's JPVariants table: old Japanese character forms to the modern ones.
+  const jp = new Map(
+    readFileSync('docs/language/sources/opencc-JPVariants.txt', 'utf8').split('\n').filter((l) => l.includes('\t')).map((l) => {
+      const [a, b] = l.split('\t');
+      return [a, b.split(' ')[0]] as [string, string];
+    }),
+  );
+  /** A Japanese line in old forms must carry its modern reading, and that reading must be the table's, character for character. */
+  function echoProblems(pack: CardTextPack): string[] {
+    const out: string[] = [];
+    for (const [id, c] of Object.entries(pack.cards)) {
+      if (!c.quote) continue;
+      const modern = [...c.quote].map((ch) => jp.get(ch) ?? ch).join('');
+      if (c.echo === undefined) {
+        if (modern !== c.quote) out.push(`${id}: old character forms without a modern reading`);
+      } else if (c.echo !== modern) out.push(`${id}: the modern reading is not the table's conversion`);
+    }
+    return out;
+  }
+
+  it('a Japanese line printed in old character forms is also read in the modern ones, by OpenCC’s table; no other language needs it', () => {
+    const ja = packs.find((p) => p.lang === 'ja')!;
+    expect(echoProblems(ja)).toEqual([]);
+    expect(Object.values(ja.cards).filter((c) => c.echo).length).toBeGreaterThanOrEqual(5);
+    for (const p of packs) if (p.lang !== 'ja') expect([p.lang, Object.values(p.cards).filter((c) => c.echo).length]).toEqual([p.lang, 0]);
+  });
+
+  it('the modern-reading check can fail', () => {
+    const ja: CardTextPack = JSON.parse(JSON.stringify(packs.find((p) => p.lang === 'ja')!));
+    delete ja.cards['VC-002'].echo;
+    expect(echoProblems(ja)).toEqual(['VC-002: old character forms without a modern reading']);
+    ja.cards['VC-002'].echo = 'さうした過激の歡楽は';
+    expect(echoProblems(ja)).toEqual(['VC-002: the modern reading is not the table\'s conversion']);
   });
 });
 
@@ -196,6 +291,30 @@ describe('the signature in the language of the duel', () => {
     expect(saysWord('هاملت', 'اسمع يا وهاملت', 'ar')).toBe(true);
     expect(saysWord('Roma', 'Romeo llega', 'es')).toBe(false);
     expect(saysWord('Гамлет', 'Слушай Макбета', 'ru')).toBe(false);
+  });
+
+  it('reads real verses against published lines: Rusconi, Moratín, Luís I, Tsubouchi', () => {
+    const hamlet = card('DC-001');
+    // Rusconi: «Essere o non essere, ecco il gran problema»
+    expect(checkSignature(hamlet, 'Il mio problema è la notte', 'it').met).toBe(true);
+    expect(checkSignature(hamlet, 'Essere o non essere, ecco il gran problema', 'it').code).toBe('quoted');
+    expect(checkSignature(hamlet, 'La luna dorme sul mare', 'it').code).toBe('hint');
+    // Moratín: «Ser, o no ser, ésa es la cuestión.»
+    expect(checkSignature(hamlet, 'Mi cuestión es la luna', 'es').met).toBe(true);
+    expect(checkSignature(hamlet, 'Ser, o no ser, ésa es la cuestión', 'es').code).toBe('quoted');
+    // Luís I: «Ser ou não ser, eis o problema.»
+    expect(checkSignature(hamlet, 'O meu problema é a noite', 'pt').met).toBe(true);
+    expect(checkSignature(hamlet, 'Ser ou não ser, eis o problema', 'pt').code).toBe('quoted');
+    // Tsubouchi, printed in old forms: 「さうした過激の歡樂は、とかく過激の終を遂ぐる。」 (modern 歓楽).
+    const friar = card('VC-002');
+    const ja = localSignatureWords(friar, 'ja');
+    expect(ja).toContain('歓楽');
+    expect(ja).toContain('歡樂');
+    expect(checkSignature(friar, '夜の歓楽よ、さらば', 'ja').met).toBe(true);
+    expect(checkSignature(friar, '夜の歡樂よ、さらば', 'ja').met).toBe(true);
+    expect(checkSignature(friar, cardQuote(friar, 'ja'), 'ja').code).toBe('quoted');
+    expect(checkSignature(friar, 'さうした過激の歓楽は、とかく過激の終を遂ぐる。', 'ja').code).toBe('quoted');
+    expect(checkSignature(friar, '月は静かに沈む', 'ja').code).toBe('hint');
   });
 
   it('counts in a duel: the multiplier rises for the echo and not for the recital', () => {
