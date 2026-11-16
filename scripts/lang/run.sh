@@ -71,7 +71,7 @@ start_languagetool() {
 
 start_llama() {
   if lsof -nP -iTCP:"$LLAMA_PORT" -sTCP:LISTEN >/dev/null 2>&1; then echo "run.sh: port $LLAMA_PORT is taken; set LLAMA_PORT" >&2; exit 2; fi
-  nice -n 10 "$MEMGUARD" --max-gb 32 -- llama-server -m "$GGUF" --host 127.0.0.1 --port "$LLAMA_PORT" -c 16384 -np 2 -ngl 99 --temp 0 --no-webui --jinja >"$LANGQA_HOME/logs/llama-server.log" 2>&1 &
+  nice -n 10 "$MEMGUARD" --max-gb 32 -- llama-server -m "$GGUF" --host 127.0.0.1 --port "$LLAMA_PORT" -c 16384 -np 2 -ngl 99 --temp 0 --no-webui --jinja --reasoning-budget 0 >"$LANGQA_HOME/logs/llama-server.log" 2>&1 &
   PIDS+=($!)
   wait_http "http://127.0.0.1:$LLAMA_PORT/health" 900 "$LANGQA_HOME/logs/llama-server.log"
   export LLAMA_URL=http://127.0.0.1:$LLAMA_PORT
@@ -97,7 +97,10 @@ case "$STEP" in
     # A copy, so the job does not change under the next rb run in this checkout.
     tar -cf - --exclude node_modules --exclude .git --exclude dist --exclude .e2e --exclude backend/target --exclude .langqa scripts/lang src docs/language | tar -xf - -C "$WORK"
     trap - EXIT
-    (cd "$WORK" && nohup bash scripts/lang/run.sh "$WHAT" "$@" >"$LANGQA_HOME/logs/$WHAT.log" 2>&1 & echo $! >"$PIDF")
+    # Every descriptor redirected for the whole background job, not only for nohup's command:
+    # a wrapper left holding the session's stdout kept rb's ssh open until the job ended (hours).
+    (cd "$WORK" && exec nohup bash scripts/lang/run.sh "$WHAT" "$@") >"$LANGQA_HOME/logs/$WHAT.log" 2>&1 </dev/null &
+    echo $! >"$PIDF"
     echo "started $WHAT (pid $(cat "$PIDF")) in $WORK; log $LANGQA_HOME/logs/$WHAT.log" ;;
   stop)
     # Stop a detached step of ours, by its pid file, and everything under it.

@@ -34,11 +34,14 @@ ap.add_argument('--beam', type=int, default=int(os.environ.get('BT_BEAM', '4')))
 args = ap.parse_args()
 
 import ctranslate2
-from transformers import AutoTokenizer
+import sentencepiece as spm
 from sentence_transformers import SentenceTransformer
 from sacrebleu.metrics import CHRF
 
-tok = AutoTokenizer.from_pretrained(args.model)
+# The model's own SentencePiece file, used directly as CTranslate2's MADLAD-400 recipe does.
+# (transformers' AutoTokenizer for this repository warns of "an incorrect regex pattern ... will
+# lead to incorrect tokenization"; nothing here depends on that heuristic.)
+sp = spm.SentencePieceProcessor(model_file=os.path.join(args.model, 'spiece.model'))
 COMPUTE = os.environ.get('BT_COMPUTE') or ('int8' if args.device == 'cpu' else 'default')
 translator = ctranslate2.Translator(args.model, device=args.device, compute_type=COMPUTE, inter_threads=1, intra_threads=args.threads)
 embedder = SentenceTransformer(args.embedder, device='cpu')
@@ -50,10 +53,10 @@ def back(texts, label=''):
     t = time.time()
     for i in range(0, len(texts), args.batch):
         chunk = texts[i:i + args.batch]
-        src = [tok.convert_ids_to_tokens(tok.encode('<2en> ' + x)) for x in chunk]
+        src = [sp.encode('<2en> ' + x, out_type=str) + ['</s>'] for x in chunk]
         res = translator.translate_batch(src, beam_size=args.beam, max_decoding_length=256, repetition_penalty=1.1)
         for r in res:
-            out.append(tok.decode(tok.convert_tokens_to_ids(r.hypotheses[0]), skip_special_tokens=True).strip())
+            out.append(sp.decode([t for t in r.hypotheses[0] if t not in ('</s>', '<pad>')]).strip())
         if (i // args.batch) % 5 == 0:
             print(f'  {label} {len(out)}/{len(texts)} ({time.time() - t:.0f}s)', file=sys.stderr, flush=True)
     return out

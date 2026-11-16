@@ -19,7 +19,7 @@ language model, whose opinion is only ever a proposal.
 | 7. Mechanical checks | Same keys and placeholders everywhere, nothing left in English, spacing, punctuation and quotation marks by language, hidden and bidirectional characters, script. | `npx vitest run`; `node scripts/lang/check.mjs` | yes |
 | 5. Terminology | One word per game term per language; platform terms as the vendors publish them. | `npx vitest run`; `node scripts/lang/glossary.mjs` | yes |
 | 6. Form names | The name of each verse form is the one recorded in the glossary, with its source. | `npx vitest run` | yes |
-| 2. Grammar and spelling | LanguageTool and Hunspell over every string as a rendered sentence. | build host: `run.sh grammar` | yes (exit 1 on an unlisted hit) |
+| 2. Grammar and spelling | LanguageTool and Hunspell over every string as a rendered sentence, each string on its own (joined into one text, LanguageTool's text-level rules judged a string by its neighbours). Thai is cut into words by ICU first, and a rejected piece counts only if no join with the pieces touching it is a known word. | build host: `run.sh grammar` | yes (exit 1 on an unlisted hit, or on an exception that no longer matches anything) |
 | 3. Meaning | Back-translation with MADLAD-400, scored against the English. | build host: `run.sh meaning`, then `node scripts/lang/meaning.mjs` | yes (exit 1 on an unreviewed flag or a string changed since it was scored) |
 | 4. Second opinion | A different model, run locally, reviews each string as a native-speaking reviewer. | build host: `run.sh review` | no: it proposes, steps 2 and 3 decide |
 
@@ -38,16 +38,21 @@ RB='export PATH=$HOME/.cargo/bin:/opt/homebrew/bin:$PATH;'
 # grammar and spelling; result in \$LANGQA_HOME/out/grammar.json
 ~/kani-logs/remote/rb . -- "$RB bash scripts/lang/run.sh grammar"
 # back-translation and the second model are long: start them detached, look in later
-~/kani-logs/remote/rb . -- "$RB bash scripts/lang/run.sh detach meaning"
-~/kani-logs/remote/rb . -- "$RB bash scripts/lang/run.sh detach review"
+~/kani-logs/remote/rb . -- "$RB BT_DEVICE=mps bash scripts/lang/run.sh detach meaning"   # mps: ~4 strings/s; cpu was ~0.2/s on a loaded host
+~/kani-logs/remote/rb . -- "$RB bash scripts/lang/run.sh detach review --lang th,hi,ar,vi,zh,ja,ko,pl,ru,id,es,fr,de,it,pt"   # weakest first
 ~/kani-logs/remote/rb . -- "$RB bash scripts/lang/run.sh status"
+~/kani-logs/remote/rb . -- "$RB bash scripts/lang/run.sh stop review"   # a detached step, by its pid file
 ```
+
+Both long steps resume: a string already scored or reviewed is asked about again only if its
+text (or the English) has changed since.
 
 Copy the result files from `$LANGQA_HOME/out/` on the host into
 `docs/language/results/`, then:
 
 ```bash
 node scripts/lang/meaning.mjs --bt docs/language/results/bt.json   # which strings drifted
+node scripts/lang/baseline.mjs main                                # the strings without this work, to count changes against
 node scripts/lang/report.mjs                                       # docs/language/QA-REPORT.md
 ```
 
@@ -88,7 +93,8 @@ before applying it.
 ## Sources
 
 `fetch-cldr.mjs` (plural rules, quotation marks), `fetch-wikidata.mjs` and
-`fetch-wikidata-titles.mjs` (names of verse forms), `fetch-wiktionary.mjs`
+`fetch-wikidata-titles.mjs` (names of verse forms), `fetch-wikidata-names.mjs` (how
+each language writes Shakespeare and Mercutio), `fetch-wiktionary.mjs`
 (Wiktionary's translation tables, for forms no Wikipedia names),
 `fetch-platform-terms.mjs` (Android's translations of platform terms),
 `fetch-apple-terms.mjs` (Apple's wording for passkeys), `fetch-mozilla-terms.mjs`
@@ -102,5 +108,6 @@ licences, and the tools and models with their versions.
 - `lib/mechanical.mjs`, `lib/glossary.mjs`: the rules, shared with the unit tests.
 - `lib/context.mjs`: where a string appears, from its key (given to the reviewer).
 - `grammar.mjs`, `backtranslate.py`, `meaning.mjs`, `review.mjs`, `adopt.mjs`, `report.mjs`, `apply.mjs`, `extract.mjs`.
+- `baseline.mjs`: the strings as they stand on a git ref (main), read with this checkout's code, so the report counts only this work's changes.
 - `hspell.cpp`: asks the Hunspell library about whole words (the `hunspell` command cuts Devanagari and Thai words apart).
 - `host-setup.sh`, `run.sh`: the build host side.

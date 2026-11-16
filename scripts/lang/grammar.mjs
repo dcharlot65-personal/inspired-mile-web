@@ -206,19 +206,33 @@ for (const lang of langs) {
   if (dicts.length) {
     const occurrences = [];
     for (const item of items) {
-      for (const w of words(lang, item.text)) {
-        if (item.filled.some(([a, b]) => w.index >= a && w.index < b)) continue;
-        if (/^\p{Lu}+$/u.test(w.word) && w.word.length <= 3) continue; // GB, MB, VR
-        occurrences.push({ id: item.id, word: w.word, form: spellForm(lang, w.word), text: item.text });
-      }
+      const ws = words(lang, item.text);
+      ws.forEach((w, i) => {
+        if (item.filled.some(([a, b]) => w.index >= a && w.index < b)) return;
+        if (/^\p{Lu}+$/u.test(w.word) && w.word.length <= 3) return; // GB, MB, VR
+        // Thai: the segments touching this one, for the second look below.
+        const touching = (j) => ws[j] && (j < i ? ws[j].index + ws[j].word.length === ws[j + 1].index : ws[j - 1].index + ws[j - 1].word.length === ws[j].index);
+        const near = lang === 'th' ? { prev2: touching(i - 2) && touching(i - 1) ? ws[i - 2].word : null, prev: touching(i - 1) ? ws[i - 1].word : null, next: touching(i + 1) ? ws[i + 1].word : null, next2: touching(i + 1) && touching(i + 2) ? ws[i + 2].word : null } : null;
+        occurrences.push({ id: item.id, word: w.word, form: spellForm(lang, w.word), text: item.text, near });
+      });
     }
     let wrong = new Set(occurrences.map((o) => o.form));
     for (const d of dicts) wrong = misspelled(d, [...wrong]);
     // A word at the start of a sentence may be capitalised: try it in lower case too.
     const lower = misspelled(dicts[0], [...wrong].map((w) => w.toLocaleLowerCase(lang)));
-    for (const o of occurrences) {
-      if (!wrong.has(o.form) || !lower.has(o.form.toLocaleLowerCase(lang))) continue;
-      hits.push({ tool: 'hunspell', id: o.id, rule: 'SPELLING', category: 'SPELLING', text: o.text, at: o.word, message: `not in the ${dicts.join('+')} dictionary`, replacements: [] });
+    let flagged = occurrences.filter((o) => wrong.has(o.form) && lower.has(o.form.toLocaleLowerCase(lang)));
+    // Thai has no spaces, and the word segmenter (ICU) cuts words it does not know into pieces
+    // (พาสคีย์ into พาส + คีย์). A rejected piece is a spelling problem only if no join of it with
+    // the pieces touching it is a word the dictionary knows.
+    if (lang === 'th') {
+      const joins = (o) => { const { prev2, prev, next, next2 } = o.near; return [prev && prev + o.word, next && o.word + next, prev && next && prev + o.word + next, prev2 && prev2 + prev + o.word, next2 && o.word + next + next2].filter(Boolean); };
+      const all = [...new Set(flagged.flatMap(joins))];
+      const bad = misspelled(dicts[0], all);
+      flagged = flagged.filter((o) => !joins(o).some((j) => !bad.has(j)));
+    }
+    for (const o of flagged) {
+      const where = o.near ? ` (between “${o.near.prev ?? ''}” and “${o.near.next ?? ''}”)` : '';
+      hits.push({ tool: 'hunspell', id: o.id, rule: 'SPELLING', category: 'SPELLING', text: o.text, at: o.word, message: `not in the ${dicts.join('+')} dictionary${where}`, replacements: [] });
     }
   }
   // One finding per (string, rule, flagged text): the same string rendered in six plural forms complains six times.
