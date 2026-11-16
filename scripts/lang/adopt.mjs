@@ -15,8 +15,9 @@
  *
  * A correction is adopted only if (1) it passes the mechanical checks and keeps
  * the glossary, (2) LanguageTool and Hunspell raise nothing on it that they did
- * not raise on the text it replaces, and (3) its back-translation is at least
- * as close to the English as the old text's was (within 0.02 of cosine).
+ * not raise on the text it replaces, and (3) the meaning check does not flag it
+ * (back-translation and LaBSE both under 0.6), nor is it further from the
+ * English than the old text on both signals (by more than 0.02).
  * Surviving is necessary, not sufficient: read the survivors before applying.
  */
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
@@ -82,7 +83,7 @@ if (mode === 'propose') {
   const pairs = Object.fromEntries(JSON.parse(readFileSync(opt('--pairs'), 'utf8')).map((p) => [p.id, p]));
   const bt = JSON.parse(readFileSync(opt('--bt'), 'utf8'));
   const out = resolve(opt('--out', `${ROOT}docs/language/results/adoption.json`));
-  const result = { decided: new Date().toISOString(), rule: 'adopted = passes mechanical and glossary checks, no new LanguageTool or Hunspell hit, back-translation cosine not lower than the old text by more than 0.02', languages: {} };
+  const result = { decided: new Date().toISOString(), rule: 'adopted = passes the mechanical and glossary checks; raises no new LanguageTool or Hunspell hit; is not flagged by the meaning check (back-translation and LaBSE both under 0.6); and is not further from the English than the old text on both signals (by more than 0.02)', languages: {} };
   const changes = {};
   const sig = (h) => `${h.tool}|${h.rule}|${h.at}`;
   for (const pr of proposals) {
@@ -97,13 +98,17 @@ if (mode === 'propose') {
     const before = bt.languages?.[pr.lang]?.[pr.key];
     const after = pairs[`${pr.lang}|${pr.key}`];
     let why = null;
+    // Step 3 as meaning.mjs applies it: flagged when back-translation and LaBSE both doubt the text.
+    const doubt = (c, x) => c < 0.6 && (x === undefined || x < 0.6);
+    const worse = (a, b) => b !== undefined && a !== undefined && b < a - 0.02;
     if (fresh.length) why = `new ${fresh[0].tool} hit: ${fresh[0].rule} on “${fresh[0].at}” (${fresh[0].message})`;
     else if (!after) why = 'not back-translated';
     else if (!before) why = 'the old text has no back-translation score to compare with';
-    else if (after.cos < before.cos - 0.02) why = `back-translation moved away from the English: cosine ${before.cos} → ${after.cos} (“${after.back}”)`;
+    else if (doubt(after.cos, after.xcos)) why = `the meaning check flags it: back-translation cosine ${after.cos}, LaBSE ${after.xcos ?? '—'} (“${after.back}”)`;
+    else if (worse(before.cos, after.cos) && (before.xcos === undefined || worse(before.xcos, after.xcos))) why = `further from the English than the text it would replace: cosine ${before.cos} → ${after.cos}, LaBSE ${before.xcos ?? '—'} → ${after.xcos ?? '—'} (“${after.back}”)`;
     if (why) L.rejected.push({ key: pr.key, current: pr.current, proposed: pr.proposed, modelReason: pr.reason, why });
     else {
-      L.adopted.push({ key: pr.key, old: pr.current, new: pr.proposed, modelReason: pr.reason, cosOld: before.cos, cosNew: after.cos, back: after.back });
+      L.adopted.push({ key: pr.key, old: pr.current, new: pr.proposed, modelReason: pr.reason, cosOld: before.cos, cosNew: after.cos, xcosOld: before.xcos, xcosNew: after.xcos, back: after.back });
       (changes[pr.lang] ??= {})[pr.key] = pr.proposed;
     }
   }
