@@ -1,15 +1,15 @@
 {
   "it": {
     "source": "Wiktionary via kaikki.org",
-    "dictionaryWords": 84748,
+    "dictionaryWords": 84753,
     "ruleSyllablesAgree": 93.8,
     "ruleStressAgree": 71.9,
-    "stressChecked": 84481,
-    "notAligned": 267,
+    "stressChecked": 84485,
+    "notAligned": 268,
     "table": {
-      "entries": 27552,
-      "bytes": 289947,
-      "gzipBytes": 67061
+      "entries": 27553,
+      "bytes": 289963,
+      "gzipBytes": 67072
     }
   },
   "fr": {
