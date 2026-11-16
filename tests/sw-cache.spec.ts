@@ -137,8 +137,10 @@ test('signed in, then signed out: nothing user-specific is in Cache Storage at e
 });
 
 test('a page comes from the network, not from the copy the worker holds', async ({ page }) => {
-  await page.goto('/about');
+  // The first visit installs the worker; the second is the first one it sees.
+  await page.goto('/');
   await underWorker(page);
+  await page.goto('/about');
   await expect.poll(async () => (await cacheStorage(page)).some((e) => new URL(e.url).pathname === '/about')).toBe(true);
   // An older deploy's page, sitting in the cache.
   await page.evaluate(async () => {
