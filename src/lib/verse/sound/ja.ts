@@ -56,6 +56,12 @@ async function dictFile(name: string): Promise<ArrayBuffer> {
     }
     throw new Error(`cannot read ${rel}`);
   }
+  if (url.startsWith('data:')) {
+    // The bundler inlines the smallest files as data URLs; they are decoded here, not fetched,
+    // so a content security policy that limits connections to the site's own origin cannot refuse them.
+    const bin = atob(url.slice(url.indexOf(',') + 1));
+    return gunzip(Uint8Array.from(bin, (c) => c.charCodeAt(0)));
+  }
   const res = await fetch(url);
   if (!res.ok) throw new Error(`${url}: HTTP ${res.status}`);
   return gunzip(new Uint8Array(await res.arrayBuffer()));

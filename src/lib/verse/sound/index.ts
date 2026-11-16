@@ -135,6 +135,11 @@ export function soundOf(lang: string, word: string): string | undefined {
   return tables.get(base(lang))?.get(word);
 }
 
+/** Every entry of a language's table, as [word, value]. Empty when not loaded. For tests and measurements. */
+export function soundEntries(lang: string): Array<[string, string]> {
+  return [...(tables.get(base(lang)) ?? [])];
+}
+
 /** Number of entries in a language's table (0 when not loaded). */
 export function soundSize(lang: string): number {
   return tables.get(base(lang))?.size ?? 0;

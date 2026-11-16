@@ -5,7 +5,7 @@ import { PACK_LANGS, loadAllPacks } from '../packs';
 import { rhymeChecked, rhymeEnds, rhymes } from '../rhyme';
 import { countsSyllables, syllablesByRule, syllablesInLine, syllablesInWord } from '../text';
 import { soundReport, type RhymeCorpus, type SoundReport, type SyllableSet } from './digest';
-import { hasSound, installSound, loadSound, markSound, parseTable, soundOf, soundReady, soundSize } from './index';
+import { hasSound, installSound, loadSound, markSound, parseTable, soundEntries, soundOf, soundReady, soundSize } from './index';
 import { japaneseLoaded, japaneseTokens, setJapaneseAnalyser } from './kana';
 import { hindiSyllablesByRule, thaiEnd, thaiSyllables } from './lookup';
 import { thaiRimeBySpelling } from './th';
@@ -275,6 +275,14 @@ describe('what each language can now hear', () => {
     for (const [text, rime] of [['กัน', 'an'], ['บ้าน', 'aːn'], ['เมีย', 'ia'], ['เรือน', 'ɯan'], ['ใจ', 'aj'], ['เขา', 'aw'], ['คน', 'on'], ['จันทร์', 'an'], ['น้ำ', 'am']] as const) {
       expect([text, thaiRimeBySpelling(text)]).toEqual([text, rime]);
     }
+    for (const [text, rime] of [['ทาง', 'aːŋ'], ['ลง', 'oŋ'], ['รัก', 'ak'], ['บาท', 'aːt'], ['ภาพ', 'aːp'], ['ลม', 'om'], ['สาย', 'aːj'], ['ขาว', 'aːw']] as const) {
+      expect([text, thaiRimeBySpelling(text)]).toEqual([text, rime]);
+    }
+    // The patterns against the whole dictionary: they must read the last rime of at least nine words in ten
+    // as the dictionary does, vowel length included (measured 2026-11-16: see PHONETICS.md).
+    const entries = soundEntries('th');
+    const agree = entries.filter(([word, value]) => value.slice(1).split('|').includes(thaiRimeBySpelling(word) ?? '')).length;
+    expect([entries.length > 15000, agree / entries.length >= 0.85]).toEqual([true, true]);
     expect(thaiSyllables('ความรัก')).toBe(2);
     // A stretch the table cannot cut into words is not counted, rather than guessed.
     expect(thaiSyllables('ะะะ')).toBeNull();
