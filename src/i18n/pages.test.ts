@@ -19,9 +19,16 @@ const area = (name: string, l: string): Messages => MODULES[`./pages/${name}/${l
 const SOURCED = /^(variants\.(city|region)\.|card-terms\.(work\.|house\.(rome|illyria|the-tempest|lake-district|olympus)$))/;
 
 describe('page areas', () => {
-  it('has the nine areas in all sixteen languages, and nothing else', () => {
-    const want = AREAS.flatMap((a) => LOCALES.map((l) => `./pages/${a}/${l}.ts`)).sort();
-    expect(Object.keys(MODULES).sort()).toEqual(want);
+  it('has the nine areas in all sixteen languages, and every area (these or another page’s) has exactly the sixteen', () => {
+    const files = Object.keys(MODULES);
+    for (const a of AREAS) for (const l of LOCALES) expect(files).toContain(`./pages/${a}/${l}.ts`);
+    // Other branches add areas of their own beside these nine; each must still be one file per language.
+    const byArea = new Map<string, string[]>();
+    for (const f of files) {
+      const [, a, l] = f.match(/^\.\/pages\/([^/]+)\/([^/]+)\.ts$/)!;
+      byArea.set(a, [...(byArea.get(a) ?? []), l]);
+    }
+    for (const [a, langs] of byArea) expect([a, langs.sort()]).toEqual([a, [...LOCALES].sort()]);
   });
 
   it('every area key begins with its area, so two areas cannot overwrite each other or a core key', async () => {

@@ -6,7 +6,7 @@
 //
 // Every file is restored afterwards. Exit status 1 if any mutation went unnoticed.
 import { execSync } from 'node:child_process';
-import { readFileSync, writeFileSync } from 'node:fs';
+import { readFileSync, unlinkSync, writeFileSync } from 'node:fs';
 
 const MUTATIONS = [
   // [file, text to find, replacement, what a red run must mention]
@@ -27,19 +27,23 @@ const MUTATIONS = [
   ['src/i18n/pages/rules/en.ts', "'rules.landIt':", "'nav.home':", 'nav.home'],
   // German quotation marks swapped for French ones: no longer what CLDR records.
   ['src/i18n/pages/runtime.ts', "de: ['„', '“']", "de: ['«', '»']", 'quotation marks'],
+  // A language's file of an area gone (the area list itself is open to other branches' areas).
+  ['src/i18n/pages/home/vi.ts', null, 'DELETE', 'home/vi'],
 ];
 
 let unnoticed = 0;
 for (const [file, find, replace, mention] of MUTATIONS) {
   const original = readFileSync(file, 'utf8');
   let mutated;
-  if (replace.startsWith('COPY:')) mutated = readFileSync(replace.slice(5), 'utf8');
+  if (replace === 'DELETE') mutated = null;
+  else if (replace.startsWith('COPY:')) mutated = readFileSync(replace.slice(5), 'utf8');
   else if (!original.includes(find)) {
     console.log(`STALE   ${file}: "${find}" is no longer in the file; update this mutation`);
     unnoticed++;
     continue;
   } else mutated = original.replace(find, replace);
-  writeFileSync(file, mutated);
+  if (mutated === null) unlinkSync(file);
+  else writeFileSync(file, mutated);
   let out = '';
   let red = false;
   try {
