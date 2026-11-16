@@ -39,8 +39,8 @@ PAL = {'gold': 'gold and amber', 'crimson': 'deep crimson', 'rose': 'rose red', 
        'yellow': 'pale gold', 'sky': 'sky blue', 'stone': 'stone grey', 'zinc': 'iron grey', 'fuchsia': 'magenta', 'neutral': 'charcoal'}
 STYLE = ('Painted in the tradition of {tradition}. Portrait orientation, colour dominated by {palette}. '
          '{subject} {scene} {cast}'
-         'Everyone is fully and modestly clothed; the image is suitable for all ages. '
-         'Stone, fabric and skin are clean and dry; drama comes from light, shadow and expression. '
+         'Everyone wears long, modest clothing that covers shoulders, chest, midriff and legs; the image is suitable for all ages. '
+         'Every blade is clean bright steel and every surface is clean and dry; drama comes from light, shadow and expression. '
          'No writing appears on any object, label, page or wall. The painting runs to all four edges of the image. '
          'No text, no lettering, no border, no rounded corners, no frame, no watermark, no signature.')
 
@@ -54,7 +54,10 @@ out, turn = [], 0
 for o in re.findall(r"\{\s*\n\s*id: '[^']+'.*?\n  \},", body, re.S):
     c = {k: val(o, k) for k in ('id', 'name', 'type', 'house', 'scene', 'gradient')}
     cols = [PAL[x] for x in re.findall(r'(?:from|to)-([a-z]+)-\d+', c['gradient'] or '') if x in PAL]
-    scene = re.sub(r'\b[Bb]lood-?stained\b', 'shadowed', c['scene'])
+    # Quoted words in a scene description get painted as lettering, so they are taken out.
+    scene = re.sub(r'\s*["\u201c][^"\u201d]{1,60}["\u201d]', '', c['scene'])
+    scene = re.sub(r'\b[Bb]lood-?stained\b', 'shadowed', scene)
+    scene = re.sub(r'\b(dripping|drips?|gore|wounds?|bleeding)\b', 'gleaming', scene)
     scene = re.sub(r'\b[Bb]lood(y|ied)?\b', 'crimson light', scene)
     cast = who = ''
     if c['type'] == 'Character':
@@ -64,7 +67,9 @@ for o in re.findall(r"\{\s*\n\s*id: '[^']+'.*?\n  \},", body, re.S):
         else:
             who = CASTS[turn % len(CASTS)]; turn += 1
             subject = f"The subject is {c['name']}, a literary character."
-        cast = f"Casting: {c['name']} is played by {who}; the people around them are of all ages and builds and come from all over the world. "
+        cast = (f"Casting: {c['name']} is the main figure, large in the frame, and is played by {who}; their face, skin and hair "
+                f"show this clearly. Show only the people the scene itself describes: do not add a crowd or onlookers. "
+                f"Anyone else the scene does include comes from a different part of the world than {c['name']}. ")
     else:
         subject = f"The subject is an object: {c['name']}, shown as a still life with no people."
     out.append({'id': c['id'], 'name': c['name'], 'house': c['house'], 'cast': who,
