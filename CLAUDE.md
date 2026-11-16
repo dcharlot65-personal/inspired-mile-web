@@ -145,6 +145,9 @@ list. Add a third-party request only by adding it to that file **and** to the po
     interaction and online controller models (they come from Babylon's servers).
 - An upgrade of any of these libraries can move the files: the integration then stops the
   build, and the tests show what the browser asks for.
+- `tests/warm-up.ts` (Playwright `globalSetup`) opens every page once before the tests
+  start, so the dev server's cold compile is not inside any test's 30 seconds. Without it
+  the first tests of a run sat at 15 to 26 seconds on main, and timed out with one more spec.
 - The two "model runtime" tests download Whisper and Kokoro (about 80 MB each) from the hub;
   `E2E_NO_DOWNLOADS=1` skips them. `playwright.model.config.ts` takes its port from
   `E2E_WEB_PORT` like the main config.
