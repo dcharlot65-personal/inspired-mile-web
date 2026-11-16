@@ -40,7 +40,32 @@ async fn main() {
         .with_env_filter(EnvFilter::from_default_env())
         .init();
 
-    let config = Config::from_env();
+    let (config, config_warnings) = match Config::from_env() {
+        Ok(loaded) => loaded,
+        Err(e) => {
+            eprintln!("FATAL: invalid configuration: {e}");
+            std::process::exit(2);
+        }
+    };
+    // Loud on purpose, and on stderr as well as the log: with RUST_LOG unset the log only
+    // shows errors, and these must not be missed.
+    for warning in &config_warnings {
+        let bar = "!".repeat(72);
+        eprintln!("\n{bar}\nWARNING: {warning}\n{bar}\n");
+        tracing::error!("CONFIGURATION WARNING: {warning}");
+    }
+    if !config.email_mode.is_available() {
+        tracing::warn!(
+            "RESEND_API_KEY is not set: email sign-in is off (the email endpoints answer 503)"
+        );
+    }
+    let auth_context = match auth::AuthContext::new(&config) {
+        Ok(ctx) => Arc::new(ctx),
+        Err(e) => {
+            eprintln!("FATAL: {e}");
+            std::process::exit(2);
+        }
+    };
     let pool = db::create_pool(&config.database_url, config.db_max_connections).await;
     db::run_migrations(&pool).await;
 
@@ -68,13 +93,24 @@ async fn main() {
         }
     });
 
-    // Rate limiter
-    let limiter = rate_limit::create_rate_limiter();
+    // Sweep expired sign-in challenges and old email codes in the background
+    let purge_pool = pool.clone();
+    let limiter = rate_limit::create_rate_limiter(config.rate_limit_per_minute);
+    let purge_limiter = limiter.clone();
+    tokio::spawn(async move {
+        loop {
+            auth::purge_expired(&purge_pool).await;
+            purge_limiter.retain_recent();
+            tokio::time::sleep(std::time::Duration::from_secs(600)).await;
+        }
+    });
+
+    // (The rate limiter, one allowance per client address, is created above.)
 
     // Public routes (no auth required)
     let public_routes = Router::new()
         .route("/health", get(|| async { "ok" }))
-        .nest("/auth", auth::router())
+        .nest("/auth", auth::router(auth_context))
         .nest("/stats", stats::public_router());
 
     // Protected routes (auth required)
@@ -119,7 +155,12 @@ async fn main() {
         .layer(middleware::from_fn(move |req: axum::http::Request<axum::body::Body>, next: middleware::Next| {
             let limiter = limiter.clone();
             async move {
-                if limiter.check().is_err() {
+                let peer = req
+                    .extensions()
+                    .get::<axum::extract::ConnectInfo<std::net::SocketAddr>>()
+                    .map(|info| info.0);
+                let client = auth::client_ip(req.headers(), peer);
+                if limiter.check_key(&client).is_err() {
                     return (StatusCode::TOO_MANY_REQUESTS, "Rate limit exceeded").into_response();
                 }
                 next.run(req).await
@@ -133,5 +174,11 @@ async fn main() {
     tracing::info!("Inspired Mile API listening on {addr}");
 
     let listener = tokio::net::TcpListener::bind(&addr).await.unwrap();
-    axum::serve(listener, app).await.unwrap();
+    // Connect info gives the email-code limiter a peer address when no proxy header is set.
+    axum::serve(
+        listener,
+        app.into_make_service_with_connect_info::<std::net::SocketAddr>(),
+    )
+    .await
+    .unwrap();
 }

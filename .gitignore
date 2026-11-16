@@ -2,6 +2,8 @@
 dist/
 backend/target/
 test-results/
+# end-to-end run state: throwaway Postgres, API logs (tests/start-backend.sh)
+.e2e/
 # generated types
 .astro/
 
@@ -24,3 +26,6 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# Claude Code agent worktrees and local state
+.claude/

@@ -21,21 +21,35 @@ async function request<T>(path: string, options: RequestInit = {}): Promise<T> {
     throw new ApiError(response.status, text);
   }
 
-  return response.json();
+  // Some answers have no body (logout, deleting a passkey).
+  const text = await response.text();
+  return (text ? JSON.parse(text) : undefined) as T;
 }
 
 export class ApiError extends Error {
+  /** Machine code from a JSON error body (`{"error": "...", "message": "..."}`), if any. */
+  public code: string | null = null;
+  /** The server's plain-English message from a JSON error body, if any. */
+  public serverMessage: string | null = null;
+
   constructor(
     public status: number,
     public body: string,
   ) {
     super(`API ${status}: ${body}`);
     this.name = 'ApiError';
+    try {
+      const parsed = JSON.parse(body);
+      if (parsed && typeof parsed.error === 'string') this.code = parsed.error;
+      if (parsed && typeof parsed.message === 'string') this.serverMessage = parsed.message;
+    } catch {
+      // Not JSON: older routes answer in plain text.
+    }
   }
 }
 
 // ---------------------------------------------------------------------------
-// Auth (Google)
+// Auth (passkeys + email one-time code)
 // ---------------------------------------------------------------------------
 
 export interface UserResponse {
@@ -49,13 +63,114 @@ export interface UserResponse {
 
 export interface AuthResponse {
   user: UserResponse;
+  /** Passkeys on the account. 0 after an email sign-in is the cue to offer adding one. */
+  passkey_count: number;
+  /** Present, and true, only on the sign-in that created the account. */
+  is_new_user?: boolean;
+  founding_player?: boolean;
 }
 
-export async function googleSignIn(idToken: string): Promise<AuthResponse> {
-  return request('/auth/google', {
+/** Which sign-in methods the server can serve right now. */
+export interface AuthMethods {
+  passkey: boolean;
+  /** An account can be created with a passkey alone (no email). */
+  passkey_signup: boolean;
+  /** False until the server has a mail key: show email nowhere. */
+  email: boolean;
+}
+
+export interface PasskeyInfo {
+  id: string;
+  name: string;
+  created_at: string;
+  last_used_at: string | null;
+}
+
+/** The start of a WebAuthn ceremony: options for the browser, and the id to finish with. */
+export interface CeremonyStart {
+  challenge_id: string;
+  /** PublicKeyCredential{Creation,Request}Options in the WebAuthn JSON form. */
+  options: Record<string, unknown>;
+}
+
+export type EmailAgeTier = 'adult' | 'teen';
+
+export async function getAuthMethods(): Promise<AuthMethods> {
+  return request('/auth/methods');
+}
+
+export async function requestEmailCode(email: string, ageTier: EmailAgeTier): Promise<{ ok: boolean; expires_in_seconds: number }> {
+  return request('/auth/email/request', {
     method: 'POST',
-    body: JSON.stringify({ id_token: idToken }),
+    body: JSON.stringify({ email, age_tier: ageTier }),
   });
+}
+
+export async function verifyEmailCode(email: string, code: string): Promise<AuthResponse> {
+  return request('/auth/email/verify', {
+    method: 'POST',
+    body: JSON.stringify({ email, code }),
+  });
+}
+
+export async function passkeyLoginBegin(): Promise<CeremonyStart> {
+  return request('/auth/passkey/login/begin', { method: 'POST' });
+}
+
+export async function passkeyLoginFinish(challengeId: string, credential: unknown): Promise<AuthResponse> {
+  return request('/auth/passkey/login/finish', {
+    method: 'POST',
+    body: JSON.stringify({ challenge_id: challengeId, credential }),
+  });
+}
+
+/** Start creating an account with a passkey and nothing else. Sends only the age tier. */
+export async function passkeySignupBegin(ageTier: EmailAgeTier): Promise<CeremonyStart> {
+  return request('/auth/passkey/signup/begin', {
+    method: 'POST',
+    body: JSON.stringify({ age_tier: ageTier }),
+  });
+}
+
+export async function passkeySignupFinish(challengeId: string, credential: unknown, name: string): Promise<AuthResponse> {
+  return request('/auth/passkey/signup/finish', {
+    method: 'POST',
+    body: JSON.stringify({ challenge_id: challengeId, credential, name }),
+  });
+}
+
+/** Signed in: ask for a code to prove an address before it becomes the recovery email. */
+export async function addEmailRequest(email: string): Promise<{ ok: boolean; expires_in_seconds: number }> {
+  return request('/auth/email/add/request', {
+    method: 'POST',
+    body: JSON.stringify({ email }),
+  });
+}
+
+export async function addEmailVerify(email: string, code: string): Promise<AuthResponse> {
+  return request('/auth/email/add/verify', {
+    method: 'POST',
+    body: JSON.stringify({ email, code }),
+  });
+}
+
+export async function passkeyRegisterBegin(): Promise<CeremonyStart> {
+  return request('/auth/passkey/register/begin', { method: 'POST' });
+}
+
+export async function passkeyRegisterFinish(challengeId: string, credential: unknown, name: string): Promise<PasskeyInfo> {
+  return request('/auth/passkey/register/finish', {
+    method: 'POST',
+    body: JSON.stringify({ challenge_id: challengeId, credential, name }),
+  });
+}
+
+export async function listPasskeys(): Promise<PasskeyInfo[]> {
+  return request('/auth/passkeys');
+}
+
+export async function deletePasskey(id: string): Promise<void> {
+  await request(`/auth/passkeys/${encodeURIComponent(id)}`, { method: 'DELETE' });
 }
 
 export async function logout(): Promise<void> {

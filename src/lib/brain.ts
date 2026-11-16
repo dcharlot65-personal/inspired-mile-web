@@ -71,7 +71,12 @@ export async function detectCapability(): Promise<Capability> {
   const nav = typeof navigator === 'undefined' ? undefined : (navigator as any);
   const cap: Capability = { webgpu: false, f16: false, memoryGb: nav?.deviceMemory ?? null, handheld: false };
   if (!nav) return cap;
-  cap.handheld = !!nav.userAgentData?.mobile || /Android|iPhone|iPad|iPod/i.test(nav.userAgent) || (nav.maxTouchPoints > 1 && /Macintosh/.test(nav.userAgent));
+  // Headsets count as handheld: a Quest reports a desktop Linux user agent in its browser's
+  // desktop mode, and Vision Pro reports a Mac with touch, but both have a phone's memory ceiling.
+  cap.handheld =
+    !!nav.userAgentData?.mobile ||
+    /Android|iPhone|iPad|iPod|OculusBrowser|Quest|Pico/i.test(nav.userAgent) ||
+    (nav.maxTouchPoints > 1 && /Macintosh/.test(nav.userAgent));
   try {
     const adapter = await nav.gpu?.requestAdapter();
     if (adapter) {

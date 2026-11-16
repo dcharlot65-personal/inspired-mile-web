@@ -170,7 +170,7 @@ import { ACHIEVEMENTS } from '../lib/achievements';
         avatarEl.innerHTML = `<img src="${user.avatar_url}" alt="${user.username}" class="w-16 h-16 rounded-full object-cover" />`;
       }
       document.getElementById('player-name')!.textContent = user.display_name || user.username;
-      document.getElementById('player-auth')!.textContent = `Signed in via Google`;
+      document.getElementById('player-auth')!.textContent = user.email ? `Signed in as ${user.email}` : 'Signed in';
     }
 
     // --- Stats ---

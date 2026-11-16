@@ -368,3 +368,75 @@ describe('ear', () => {
     expect(transcriptToVerse('')).toBe('');
   });
 });
+
+describe('session', () => {
+  const deck = { characters: ['DC-001', 'MO-001', 'CA-001'], relics: ['RL-001'], potions: ['PT-002'] };
+  const make = async (seed = 11) => {
+    const { DuelSession } = await import('./session');
+    let changes = 0;
+    const s = new DuelSession({ seed, lang: 'en', deck, difficulty: 'player', useModel: false, onChange: () => changes++ });
+    return { s, changes: () => changes };
+  };
+
+  it('plays a whole match by the rules, with no model', async () => {
+    const { s, changes } = await make();
+    await s.beginRound();
+    expect(s.phase).toBe('player-turn');
+    expect(s.opponentVerse.length).toBeGreaterThan(10);
+    expect(s.opponentSource).toBe('written');
+    expect(s.blocked()).toBe('Choose who answers.');
+    expect(s.chooseCharacter('ZZ-999')).toBe(false);
+    expect(s.chooseCharacter('DC-001')).toBe(true);
+    expect(s.blocked()).toBe('Write or speak a verse.');
+    s.setVerse('Who dares to stand upon my stage?\nI put the question to thy rage');
+    expect(s.blocked()).toBeNull();
+    expect(s.preview()!.device.met).toBe(true);
+    const r1 = await s.submit();
+    expect(r1!.index).toBe(0);
+    expect(s.phase).toBe('verdict');
+    expect(await s.submit()).toBeNull();
+
+    const order = ['MO-001', 'CA-001'];
+    while (!s.winner) {
+      await s.next();
+      expect(s.characterUsed('DC-001')).toBe(true);
+      expect(s.chooseCharacter('DC-001')).toBe(false);
+      s.chooseCharacter(order[s.roundIndex - 1]);
+      s.setVerse('A verse of some kind\nAnd another line');
+      await s.submit();
+    }
+    await s.next();
+    expect(s.phase).toBe('finished');
+    expect(s.results.length).toBeGreaterThanOrEqual(2);
+    expect(s.playerRounds + s.opponentRounds).toBe(s.results.length);
+    expect(changes()).toBeGreaterThan(6);
+  });
+  it('tracks ink as items go on and off the table', async () => {
+    const { s } = await make();
+    await s.beginRound();
+    s.chooseCharacter('DC-001');
+    expect(s.ink).toBe(2);
+    expect(s.toggleItem('RL-001')).toBe(true);
+    expect(s.ink).toBe(1);
+    expect(s.toggleItem('PT-002')).toBe(true);
+    expect(s.ink).toBe(0);
+    expect(s.toggleItem('RL-001')).toBe(true);
+    expect(s.ink).toBe(1);
+    expect(s.toggleItem('XX-000')).toBe(false);
+  });
+  it("a potion played this round curses the opponent's next verse, not this one", async () => {
+    const { s } = await make();
+    await s.beginRound();
+    s.chooseCharacter('DC-001');
+    s.toggleItem('PT-002');
+    s.setVerse('a line\nanother line');
+    const r1 = await s.submit();
+    expect(r1!.opponent.curse).toBeUndefined();
+    await s.next();
+    s.chooseCharacter('MO-001');
+    s.setVerse('a line\nanother line');
+    const r2 = await s.submit();
+    expect(r2!.opponent.curse?.name).toBe('Forbidden Letter');
+    expect(s.itemUsed('PT-002')).toBe(true);
+  });
+});

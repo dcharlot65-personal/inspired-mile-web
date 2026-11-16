@@ -223,9 +223,17 @@ test.describe('Battle Variant Equip', () => {
 test.describe('Auth UI', () => {
   test('auth dropdown exists in nav', async ({ page }) => {
     await page.goto('/');
-    // The auth dropdown container should be in DOM
-    const authArea = page.locator('#auth-login-form, #auth-user-menu, #auth-register-form');
-    expect(await authArea.count()).toBeGreaterThan(0);
+    // Closed until asked for.
+    await expect(page.locator('#auth-dropdown')).toBeHidden();
+    await page.locator('#auth-btn').click();
+    await expect(page.locator('#auth-dropdown')).toBeVisible();
+    // Signed out: the sign-in choices show, passkey first; the signed-in menu does not.
+    await expect(page.locator('#auth-sign-in-options')).toBeVisible();
+    await expect(page.locator('#auth-passkey-btn')).toBeVisible();
+    await expect(page.locator('#auth-user-menu')).toBeHidden();
+    // Google sign-in is gone, script and button both.
+    await expect(page.locator('#google-sign-in-btn')).toHaveCount(0);
+    await expect(page.locator('script[src*="accounts.google.com"]')).toHaveCount(0);
   });
 });
 

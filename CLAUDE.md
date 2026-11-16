@@ -6,22 +6,75 @@ Astro static site + Rust API (`backend/`, axum + sqlx + Postgres).
 ## Stack
 
 - Astro 7, Tailwind 4 (`@tailwindcss/vite`; theme lives in `src/styles/global.css`), React 19
-- Babylon.js 9 (3D/VR), Google Model Viewer
-- In-browser AI: `@mlc-ai/web-llm`, `kokoro-js` (being replaced; see owner direction below)
+- In-browser AI through `@huggingface/transformers` on WebGPU; no server does inference.
+  `src/lib/brain.ts` picks a tier by device capability: Gemma 4 E2B (3.1 GB), LFM3 1.7B
+  (1.1 GB), LFM2.5 350M (judge only), or none (written opponent, rule judging).
+- Speech: Whisper base on WebAssembly (`src/lib/ear.ts`); Kokoro for English voice.
+  The browser's Web Speech recognition is NOT used: it sends audio to a server.
+- Babylon.js 9 for the Theatre (`src/lib/xr/theatre.ts`, `/theatre`) and the VR gallery
 - Backend: Rust 1.100.0 (pinned in `backend/rust-toolchain.toml`), axum 0.8, sqlx 0.9
-- Playwright for end-to-end tests
+- Tests: vitest (pure logic), Playwright (browser), `tests/model` (real models, WebGPU)
+
+## The game
+
+A three-round duel of verses. Rules live in `src/lib/verse/` and are pure and seeded:
+`forms.ts` (what a verse must do, checked by code), `devices.ts` (what cards do),
+`duel.ts` (scoring: craft + judge), `judge.ts` (how a model's preference is read),
+`opponent.ts`, `session.ts` (order of play, shared by every front end).
+Read the header comment of `judge.ts` before changing judging: asked "A or B?" outright,
+small models answer by position. `scripts/judge-eval.mjs` measures a model's judging.
 
 ## Build and test — on the build host, never on the dev Mac
 
 ```bash
-~/kani-logs/remote/rb . -- 'export PATH=$HOME/.cargo/bin:/opt/homebrew/bin:$PATH; npm ci && npm run build && npx playwright test'
-~/kani-logs/remote/rb . -- 'export PATH=$HOME/.cargo/bin:$PATH; cd backend && cargo test --release && cargo build --release'
+RB='export PATH=$HOME/.cargo/bin:/opt/homebrew/bin:$PATH;'
+~/kani-logs/remote/rb . -- "$RB npm ci && npx vitest run && npm run build && npx playwright test"
+~/kani-logs/remote/rb . -- "$RB cd backend && cargo test --release && cargo build --release"
+# real models in a WebGPU browser (the build host's headless Chromium has Metal); downloads up to 3 GB
+~/kani-logs/remote/rb . -- "$RB TIERS=lite,standard,grand npx playwright test -c playwright.model.config.ts"
 # after a deploy:
-~/kani-logs/remote/rb . -- 'PROD_URL=https://sonnetman.inspiredmile.com npx playwright test'
+~/kani-logs/remote/rb . -- "$RB PROD_URL=https://sonnetman.inspiredmile.com npx playwright test"
 ```
 
-`.env` (git-ignored) holds `PUBLIC_GOOGLE_CLIENT_ID`; rb does not copy ignored files, so
-export it in the build command.
+The frontend build needs no secrets or `PUBLIC_*` variables.
+
+Do not start a second `rb` in this checkout while one is running: both use the same remote
+folder.
+
+`npx playwright test` starts three things itself (`playwright.config.ts`): a throwaway
+Postgres and two copies of the real API (`tests/start-backend.sh`; needs `initdb`, `pg_ctl`,
+`createdb` and `cargo` on `PATH`, hence `/opt/homebrew/bin` and `~/.cargo/bin` above), and
+the Astro dev server, which proxies `/api` to the API (`astro.config.mjs`). State and logs
+go to `.e2e/` (git-ignored); the sign-in codes the tests read are in `.e2e/api.log`.
+
+**The build host is shared, and no server is reused.** Default ports: 4399 (dev server),
+38490 (API, `DEV_EMAIL_LOG=1`), 38491 (API with email off), 54329 (Postgres). If another
+checkout is testing at the same time the run stops with "port already used"; give this run
+its own with `E2E_WEB_PORT`, `E2E_API_PORT`, `E2E_API_NOEMAIL_PORT`, `E2E_PG_PORT`
+(`tests/e2e-env.ts`). Before 2026-11-16 the config reused whatever answered on 4399, so two
+concurrent runs could test each other's code and pass.
+
+**Never `pkill -f 'astro dev'` on the host.** It stops every checkout's dev server, not
+only a stale one of yours: a run in another checkout then fails with "connection refused"
+on all its browser tests (its log says `[dev-server] EXITED with status 143`). A dev server
+left behind by a killed run is found by its port: `lsof -nP -iTCP:<port> -sTCP:LISTEN`.
+
+## Sign-in (passkeys + email code)
+
+- No passwords, no Google. Passkeys (WebAuthn, discoverable, no username) are primary; a
+  6-digit emailed code creates an account, signs in where there is no passkey, and recovers.
+  Session is still the `im_token` JWT cookie. Code: `backend/src/auth/`, `src/lib/passwordless.ts`,
+  the auth script in `BaseLayout.astro` (all its strings are in one `STRINGS` object).
+- API env: `WEBAUTHN_RP_ID` (default `inspiredmile.com`; **never change it once passkeys
+  exist, it orphans all of them**), `WEBAUTHN_ORIGIN` (default
+  `https://sonnetman.inspiredmile.com`; comma-separated list; each must be https, or http on
+  localhost, and on the RP ID), `RESEND_API_KEY` (absent: email endpoints answer 503 and
+  the UI hides email), `EMAIL_FROM`, `RATE_LIMIT_PER_MINUTE` (global limiter, default 60).
+- `DEV_EMAIL_LOG=1` writes codes to stderr instead of sending. Tests only. A real key wins
+  over it, with a loud start-up warning.
+- Local dev: `WEBAUTHN_RP_ID=localhost WEBAUTHN_ORIGIN=http://localhost:4321`.
+- The email step requires the age gate's stored tier (`adult` or `teen-consented`), in the
+  browser and again in the API. Do not loosen either.
 
 ## Where it runs (verified 2026-11-16)
 
@@ -44,8 +97,12 @@ export it in the build command.
   "a ring-3"). Diff `src/lib/*.ts` after running it.
 - The stylesheet is imported once, in `BaseLayout.astro`. Do not import it per page.
 - The age gate covers every page until a date of birth is stored; tests start past it
-  (`tests/age-verified.json`).
+  (the `storageState` in `playwright.config.ts`).
 - No GitHub Actions (account-wide owner rule). CI is the build host.
+- `git add -A` here will pick up agent worktrees under `.claude/`; that folder is ignored.
+- Babylon's default WebXR set-up downloads hand and controller models from its own
+  servers; `theatre.ts` turns that off, and a test asserts no foreign request in a session.
+- To test WebXR under emulation, delete `Navigator.prototype.xr` before installing `iwer`.
 
 ## Owner direction (2026-11-16)
 

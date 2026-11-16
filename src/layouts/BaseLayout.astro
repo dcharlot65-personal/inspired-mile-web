@@ -38,7 +38,6 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
     <title>{title} | Inspired Mile</title>
-    <script is:inline src="https://accounts.google.com/gsi/client" async defer></script>
     <script is:inline defer data-domain="inspiredmile.com" src="https://plausible.io/js/script.js"></script>
     <script is:inline type="application/ld+json">
     {
@@ -207,7 +206,7 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
           <div class="flex items-center gap-2">
             <!-- Auth: Login/User button -->
             <div id="auth-container" class="relative">
-              <button id="auth-btn" class="text-xs font-medium text-obsidian-300 hover:text-gold-400 transition-colors border border-obsidian-700 rounded-lg px-3 py-1.5 hover:border-gold-500/30">
+              <button id="auth-btn" type="button" data-auth-text="signIn" class="text-xs font-medium text-obsidian-300 hover:text-gold-400 transition-colors border border-obsidian-700 rounded-lg px-3 py-1.5 hover:border-gold-500/30">
                 Sign In
               </button>
               <div id="user-badge" class="hidden flex items-center gap-2 cursor-pointer">
@@ -217,41 +216,143 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
                 <span id="user-name" class="hidden md:inline text-xs font-medium text-obsidian-300"></span>
               </div>
               <!-- Auth dropdown -->
-              <div id="auth-dropdown" class="hidden absolute right-0 top-full mt-2 w-72 card-glass bg-obsidian-900/95 backdrop-blur-lg border border-obsidian-700 rounded-xl shadow-2xl z-50 p-4">
-                <!-- Sign-in options (when not logged in) -->
+              <!-- Every visible string below is filled from STRINGS in the auth script (data-auth-text / data-auth-label). -->
+              <!-- Narrow screens: pinned under the nav bar across the width (the nav is the containing block). -->
+              <div id="auth-dropdown" role="dialog" class="hidden fixed inset-x-4 top-[4.5rem] sm:absolute sm:inset-x-auto sm:right-0 sm:top-full sm:mt-2 sm:w-80 bg-obsidian-900 border border-obsidian-700 rounded-xl shadow-2xl z-50 p-4 max-h-[calc(100vh-6rem)] overflow-y-auto">
+                <!-- Signed out: choose a method, then (email only) address and code -->
                 <div id="auth-sign-in-options">
-                  <h3 class="text-sm font-display font-bold text-obsidian-200 mb-3">Sign In</h3>
-                  <button id="google-sign-in-btn" class="w-full flex items-center justify-center gap-2 bg-white text-gray-700 rounded-lg px-3 py-2.5 text-xs font-medium hover:bg-gray-50 transition-colors mb-2">
-                    <svg class="w-4 h-4" viewBox="0 0 24 24">
-                      <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z"/>
-                      <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-                      <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
-                      <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
-                    </svg>
-                    Continue with Google
-                  </button>
-                  <p id="auth-error" class="hidden text-xs text-crimson-400 mt-2 text-center"></p>
+                  <!-- Step 1: choose -->
+                  <div id="auth-step-choose">
+                    <h3 class="text-sm font-display font-bold text-obsidian-200 mb-1" data-auth-text="signInHeading"></h3>
+                    <p class="text-xs text-obsidian-400 mb-3 leading-relaxed" data-auth-text="signInIntro"></p>
+                    <button id="auth-passkey-btn" type="button" class="btn-primary w-full gap-2 px-3 py-2.5 text-xs">
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"/></svg>
+                      <span data-auth-text="passkeyButton"></span>
+                    </button>
+                    <button id="auth-create-btn" type="button" class="btn-secondary w-full gap-2 px-3 py-2 text-xs mt-2">
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                      <span data-auth-text="createButton"></span>
+                    </button>
+                    <p id="auth-passkey-unsupported" class="hidden text-xs text-obsidian-400 leading-relaxed"></p>
+                    <button id="auth-email-btn" type="button" class="hidden w-full flex items-center justify-center gap-2 text-xs text-obsidian-300 hover:text-gold-400 py-2 mt-2 transition-colors">
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                      <span data-auth-text="emailButton"></span>
+                    </button>
+                    <p id="auth-email-hint" class="hidden text-[11px] text-obsidian-500 mt-2 text-center leading-relaxed" data-auth-text="emailHint"></p>
+                  </div>
+
+                  <!-- Create an account with a passkey: what it is, and the one catch -->
+                  <div id="auth-step-create" class="hidden">
+                    <h3 class="text-sm font-display font-bold text-obsidian-200 mb-1" data-auth-text="createHeading"></h3>
+                    <p class="text-xs text-obsidian-400 mb-2 leading-relaxed" data-auth-text="createIntro"></p>
+                    <p id="auth-create-warning" class="text-xs text-gold-300 bg-gold-500/10 border border-gold-500/20 rounded-lg px-3 py-2 mb-3 leading-relaxed"></p>
+                    <button id="auth-create-confirm" type="button" class="btn-primary w-full px-3 py-2.5 text-xs" data-auth-text="createConfirm"></button>
+                    <button id="auth-create-back" type="button" class="w-full text-xs text-obsidian-400 hover:text-gold-400 py-2 mt-1 text-center transition-colors" data-auth-text="back"></button>
+                  </div>
+
+                  <!-- Step 2: email address -->
+                  <div id="auth-step-email" class="hidden">
+                    <h3 class="text-sm font-display font-bold text-obsidian-200 mb-1" data-auth-text="emailHeading"></h3>
+                    <p class="text-xs text-obsidian-400 mb-3 leading-relaxed" data-auth-text="emailIntro"></p>
+                    <form id="auth-email-form" novalidate>
+                      <label for="auth-email-input" class="block text-[11px] text-obsidian-400 mb-1" data-auth-text="emailLabel"></label>
+                      <input id="auth-email-input" name="email" type="email" inputmode="email" autocomplete="username webauthn" autocapitalize="none" spellcheck="false" maxlength="255" class="w-full bg-obsidian-800 border border-obsidian-700 rounded-lg px-3 py-2.5 text-sm text-obsidian-100 placeholder:text-obsidian-600 focus:border-gold-500/50 focus:outline-hidden" data-auth-placeholder="emailPlaceholder" />
+                      <button id="auth-email-send" type="submit" class="btn-primary w-full px-3 py-2.5 text-xs mt-3" data-auth-text="emailSend"></button>
+                    </form>
+                    <button id="auth-email-back" type="button" class="w-full text-xs text-obsidian-400 hover:text-gold-400 py-2 mt-1 text-center transition-colors" data-auth-text="back"></button>
+                  </div>
+
+                  <!-- Step 3: the code -->
+                  <div id="auth-step-code" class="hidden">
+                    <h3 class="text-sm font-display font-bold text-obsidian-200 mb-1" data-auth-text="codeHeading"></h3>
+                    <p id="auth-code-intro" class="text-xs text-obsidian-400 mb-3 leading-relaxed break-words"></p>
+                    <form id="auth-code-form" novalidate>
+                      <label for="auth-code-input" class="block text-[11px] text-obsidian-400 mb-1" data-auth-text="codeLabel"></label>
+                      <input id="auth-code-input" name="code" type="text" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]*" maxlength="6" class="w-full bg-obsidian-800 border border-obsidian-700 rounded-lg px-3 py-2.5 text-center font-mono text-xl tracking-[0.4em] text-gold-300 placeholder:text-obsidian-700 focus:border-gold-500/50 focus:outline-hidden" placeholder="000000" />
+                      <button id="auth-code-verify" type="submit" class="btn-primary w-full px-3 py-2.5 text-xs mt-3" data-auth-text="codeVerify"></button>
+                    </form>
+                    <div class="flex items-center justify-between mt-1">
+                      <button id="auth-code-back" type="button" class="text-xs text-obsidian-400 hover:text-gold-400 py-2 transition-colors" data-auth-text="codeBack"></button>
+                      <button id="auth-code-resend" type="button" class="text-xs text-obsidian-400 hover:text-gold-400 py-2 transition-colors" data-auth-text="codeResend"></button>
+                    </div>
+                  </div>
+
+                  <p id="auth-error" role="alert" class="hidden text-xs text-crimson-400 mt-3 text-center leading-relaxed"></p>
+                  <p id="auth-notice" role="status" class="hidden text-xs text-gold-300 mt-3 text-center leading-relaxed"></p>
                   <p class="text-[10px] text-obsidian-600 mt-3 text-center leading-relaxed">
-                    By signing in, you agree to our <a href="/terms" class="text-obsidian-400 hover:text-gold-400">Terms of Service</a> and <a href="/privacy" class="text-obsidian-400 hover:text-gold-400">Privacy Policy</a>.
+                    <span data-auth-text="legalBefore"></span>
+                    <a href="/terms" class="text-obsidian-400 hover:text-gold-400" data-auth-text="legalTerms"></a>
+                    <span data-auth-text="legalAnd"></span>
+                    <a href="/privacy" class="text-obsidian-400 hover:text-gold-400" data-auth-text="legalPrivacy"></a><span data-auth-text="legalAfter"></span>
                   </p>
                 </div>
+
+                <!-- Right after an email sign-in: offer a passkey for next time -->
+                <div id="auth-passkey-offer" class="hidden">
+                  <div class="w-10 h-10 rounded-full bg-gold-500/20 border border-gold-500/30 flex items-center justify-center mb-3">
+                    <svg class="w-5 h-5 text-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"/></svg>
+                  </div>
+                  <h3 class="text-sm font-display font-bold text-obsidian-200 mb-1" data-auth-text="offerHeading"></h3>
+                  <p class="text-xs text-obsidian-400 mb-3 leading-relaxed" data-auth-text="offerBody"></p>
+                  <button id="auth-passkey-add" type="button" class="btn-primary w-full px-3 py-2.5 text-xs" data-auth-text="offerAdd"></button>
+                  <button id="auth-passkey-skip" type="button" class="w-full text-xs text-obsidian-400 hover:text-gold-400 py-2 mt-1 text-center transition-colors" data-auth-text="offerSkip"></button>
+                  <p id="auth-offer-error" role="alert" class="hidden text-xs text-crimson-400 mt-2 text-center leading-relaxed"></p>
+                </div>
+
+                <!-- Right after a passkey sign-up: one passkey is the only way in, so say it -->
+                <div id="auth-recovery-nudge" class="hidden">
+                  <h3 class="text-sm font-display font-bold text-obsidian-200 mb-1" data-auth-text="nudgeHeading"></h3>
+                  <p id="auth-nudge-name" class="text-xs text-emerald-400 mb-2"></p>
+                  <p id="auth-nudge-body" class="text-xs text-gold-300 bg-gold-500/10 border border-gold-500/20 rounded-lg px-3 py-2 mb-3 leading-relaxed"></p>
+                  <button id="auth-nudge-passkey" type="button" class="btn-primary w-full px-3 py-2.5 text-xs" data-auth-text="nudgePasskey"></button>
+                  <p class="text-[11px] text-obsidian-500 mt-1 text-center leading-relaxed" data-auth-text="nudgePasskeyHint"></p>
+                  <button id="auth-nudge-email" type="button" class="hidden btn-secondary w-full px-3 py-2 text-xs mt-2" data-auth-text="nudgeEmail"></button>
+                  <button id="auth-nudge-later" type="button" class="w-full text-xs text-obsidian-400 hover:text-gold-400 py-2 mt-1 text-center transition-colors" data-auth-text="nudgeLater"></button>
+                  <p id="auth-nudge-error" role="alert" class="hidden text-xs text-crimson-400 mt-2 text-center leading-relaxed"></p>
+                </div>
+
                 <!-- User menu (when logged in) -->
                 <div id="auth-user-menu" class="hidden">
                   <div class="flex items-center gap-3 mb-3 pb-3 border-b border-obsidian-700">
-                    <div class="w-10 h-10 rounded-full bg-gold-500/20 border border-gold-500/30 flex items-center justify-center">
+                    <div class="w-10 h-10 shrink-0 rounded-full bg-gold-500/20 border border-gold-500/30 flex items-center justify-center">
                       <span id="menu-user-initial" class="text-lg font-bold text-gold-400">?</span>
                     </div>
-                    <div>
-                      <p id="menu-user-name" class="text-sm font-semibold text-obsidian-200"></p>
-                      <p id="menu-user-provider" class="text-xs text-emerald-400">Synced to server</p>
+                    <div class="min-w-0">
+                      <p id="menu-user-name" class="text-sm font-semibold text-obsidian-200 truncate"></p>
+                      <p id="menu-user-provider" class="text-xs text-emerald-400 truncate"></p>
                     </div>
                   </div>
-                  <a href="/profile" class="block text-xs text-obsidian-400 hover:text-gold-400 py-2 text-center transition-colors">
-                    View Profile
-                  </a>
-                  <button id="auth-logout-btn" class="w-full text-xs text-obsidian-400 hover:text-crimson-400 py-2 text-center transition-colors">
-                    Sign Out
-                  </button>
+
+                  <div class="mb-2 pb-3 border-b border-obsidian-700">
+                    <h4 class="text-[10px] font-mono text-obsidian-500 uppercase tracking-widest mb-2" data-auth-text="passkeysHeading"></h4>
+                    <ul id="auth-passkey-list" class="space-y-1.5"></ul>
+                    <p id="auth-passkey-empty" class="hidden text-xs text-obsidian-400 leading-relaxed" data-auth-text="passkeysEmpty"></p>
+                    <button id="auth-passkey-add-menu" type="button" class="btn-secondary w-full px-3 py-2 text-xs mt-3" data-auth-text="passkeysAdd"></button>
+                    <p id="auth-menu-message" role="status" class="hidden text-xs mt-2 text-center leading-relaxed"></p>
+                    <p id="auth-recovery-warning" class="hidden text-xs text-gold-300 bg-gold-500/10 border border-gold-500/20 rounded-lg px-3 py-2 mt-3 leading-relaxed"></p>
+                  </div>
+
+                  <!-- Recovery email: only ever shown when the server can send mail -->
+                  <div id="auth-email-section" class="hidden mb-2 pb-3 border-b border-obsidian-700">
+                    <h4 class="text-[10px] font-mono text-obsidian-500 uppercase tracking-widest mb-2" data-auth-text="recoveryEmailHeading"></h4>
+                    <p id="auth-recovery-email" class="hidden text-xs text-obsidian-200 break-words"></p>
+                    <button id="auth-add-email-btn" type="button" class="hidden btn-secondary w-full px-3 py-2 text-xs" data-auth-text="addEmailButton"></button>
+                    <form id="auth-add-email-form" class="hidden" novalidate>
+                      <label for="auth-add-email-input" class="block text-[11px] text-obsidian-400 mb-1" data-auth-text="addEmailLabel"></label>
+                      <input id="auth-add-email-input" name="email" type="email" inputmode="email" autocomplete="email" autocapitalize="none" spellcheck="false" maxlength="255" class="w-full bg-obsidian-800 border border-obsidian-700 rounded-lg px-3 py-2 text-sm text-obsidian-100 placeholder:text-obsidian-600 focus:border-gold-500/50 focus:outline-hidden" data-auth-placeholder="emailPlaceholder" />
+                      <button id="auth-add-email-send" type="submit" class="btn-primary w-full px-3 py-2 text-xs mt-2" data-auth-text="emailSend"></button>
+                    </form>
+                    <form id="auth-add-code-form" class="hidden" novalidate>
+                      <p id="auth-add-code-intro" class="text-xs text-obsidian-400 mb-2 leading-relaxed break-words"></p>
+                      <label for="auth-add-code-input" class="block text-[11px] text-obsidian-400 mb-1" data-auth-text="codeLabel"></label>
+                      <input id="auth-add-code-input" name="code" type="text" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]*" maxlength="6" class="w-full bg-obsidian-800 border border-obsidian-700 rounded-lg px-3 py-2 text-center font-mono text-lg tracking-[0.4em] text-gold-300 placeholder:text-obsidian-700 focus:border-gold-500/50 focus:outline-hidden" placeholder="000000" />
+                      <button id="auth-add-code-verify" type="submit" class="btn-primary w-full px-3 py-2 text-xs mt-2" data-auth-text="addEmailConfirm"></button>
+                    </form>
+                    <p id="auth-email-message" role="status" class="hidden text-xs mt-2 text-center leading-relaxed"></p>
+                  </div>
+
+                  <a href="/profile" class="block text-xs text-obsidian-400 hover:text-gold-400 py-2 text-center transition-colors" data-auth-text="viewProfile"></a>
+                  <button id="auth-logout-btn" type="button" class="w-full text-xs text-obsidian-400 hover:text-crimson-400 py-2 text-center transition-colors" data-auth-text="signOut"></button>
                 </div>
               </div>
             </div>
@@ -291,7 +392,7 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
           <div class="border-t border-obsidian-800/50 mt-2 pt-2">
             <a href="/about" class:list={["block text-sm font-medium py-2", currentPath === "/about" ? "text-gold-400" : "text-obsidian-300"]}>About</a>
             <a href="/profile" class:list={["block text-sm font-medium py-2", currentPath === "/profile" ? "text-gold-400" : "text-obsidian-300"]}>Profile</a>
-            <button id="mobile-auth-btn" class="block text-sm font-medium py-2 text-gold-400">Sign In</button>
+            <button id="mobile-auth-btn" type="button" data-auth-text="signIn" class="block text-sm font-medium py-2 text-gold-400">Sign In</button>
           </div>
         </div>
       </div>
@@ -513,111 +614,735 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
     </script>
 
     <script>
-      // Auth UI logic — Google OAuth sign-in
-      import { initStorageBackend, isLoggedIn, getCurrentUser, googleSignInUser, logoutUser } from '../lib/storage-backend';
-      import { getMigrationStatus, syncMigration, type MigrationPayload } from '../lib/api-client';
+      // Auth UI logic — passkeys first, an emailed one-time code as the way in without one.
+      import { initStorageBackend, isLoggedIn, getCurrentUser, logoutUser } from '../lib/storage-backend';
+      import { getMigrationStatus, syncMigration, type AuthResponse, type MigrationPayload, type PasskeyInfo } from '../lib/api-client';
       import { getPlayerStats } from '../lib/achievements';
+      import {
+        AuthFlowError,
+        addPasskey,
+        cancelPasskeyCeremony,
+        accountAgeTier,
+        confirmRecoveryEmail,
+        getAuthMethods,
+        listPasskeys,
+        passkeyAutofillSupported,
+        passkeysSupported,
+        removePasskey,
+        requestRecoveryEmail,
+        sendEmailCode,
+        signInWithEmailCode,
+        signInWithPasskey,
+        signUpWithPasskey,
+      } from '../lib/passwordless';
 
-      const authBtn = document.getElementById('auth-btn')!;
-      const userBadge = document.getElementById('user-badge')!;
-      const authDropdown = document.getElementById('auth-dropdown')!;
-      const signInOptions = document.getElementById('auth-sign-in-options')!;
-      const userMenu = document.getElementById('auth-user-menu')!;
-      const authError = document.getElementById('auth-error')!;
+      // Every user-facing string of the sign-in UI lives here, so it can be localised in
+      // one place. Markup carries only keys (data-auth-text, data-auth-placeholder).
+      // {email}, {date} and {name} are filled in at run time.
+      const STRINGS = {
+        signIn: 'Sign In',
+        signInHeading: 'Sign in',
+        signInIntro: 'No password to remember. A passkey signs you in with your fingerprint, face or screen lock.',
+        passkeyButton: 'Sign in with a passkey',
+        passkeyUnsupported: 'This browser cannot use passkeys. Sign in with an emailed code instead.',
+        passkeyUnsupportedNoEmail: 'This browser cannot use passkeys, and this site signs in with them. Try a current version of Chrome, Safari, Edge or Firefox.',
+        createButton: 'Create an account with a passkey',
+        createHeading: 'Create your account',
+        createIntro: 'Your account is a passkey saved on this device or in your password manager. We do not ask for a name, an email or a password.',
+        createWarning: 'If you lose the passkey, we cannot let you back in. After this, add a second passkey or an email so you can get back in.',
+        createWarningNoEmail: 'If you lose the passkey, we cannot let you back in. After this, add a second passkey so you can get back in.',
+        createConfirm: 'Create my account',
+        nudgeHeading: 'Your account is ready',
+        nudgeName: 'You are {name}.',
+        nudgeBody: 'Right now one passkey is the only way into this account. If it is lost, the account is lost. Add a second passkey or an email so you can get back in.',
+        nudgeBodyNoEmail: 'Right now one passkey is the only way into this account. If it is lost, the account is lost. Add a second passkey so you can get back in.',
+        nudgePasskey: 'Add a second passkey',
+        nudgePasskeyHint: 'Use another device, a password manager or a security key.',
+        nudgeEmail: 'Add an email instead',
+        nudgeLater: 'Later',
+        recoveryWarning: 'One passkey is your only way in. Add a second passkey or an email so you can get back in.',
+        recoveryWarningNoEmail: 'One passkey is your only way in. Add a second passkey so you can get back in.',
+        recoveryEmailHeading: 'Recovery email',
+        addEmailButton: 'Add an email for recovery',
+        addEmailLabel: 'Email address',
+        addEmailCodeIntro: 'We sent a 6-digit code to {email}. Enter it to confirm the address is yours.',
+        addEmailConfirm: 'Confirm email',
+        addEmailDone: 'Email added. You can now sign in with a code sent to it.',
+        emailButton: 'Email me a code',
+        emailHint: 'On a device without your passkey? Sign in by email, if your account has one.',
+        emailHeading: 'Sign in by email',
+        emailIntro: 'We will email you a 6-digit code. If the address is new, the code creates your account.',
+        emailLabel: 'Email address',
+        emailPlaceholder: 'you@example.com',
+        emailSend: 'Email me a code',
+        back: 'Back',
+        codeHeading: 'Enter your code',
+        codeIntro: 'We sent a 6-digit code to {email}. It works once and expires in 10 minutes.',
+        codeLabel: '6-digit code',
+        codeVerify: 'Sign in',
+        codeBack: 'Use a different email',
+        codeResend: 'Send a new code',
+        codeResent: 'A new code is on its way. The old one no longer works.',
+        legalBefore: 'By signing in, you agree to our ',
+        legalTerms: 'Terms of Service',
+        legalAnd: ' and ',
+        legalPrivacy: 'Privacy Policy',
+        legalAfter: '.',
+        offerHeading: 'Add a passkey to this device',
+        offerBody: 'Next time, sign in with your fingerprint, face or screen lock. No code, no waiting for an email.',
+        offerAdd: 'Add a passkey',
+        offerSkip: 'Not now',
+        passkeysHeading: 'Passkeys',
+        passkeysEmpty: 'No passkeys yet. Add one to sign in without an email code.',
+        passkeysAdd: 'Add another passkey',
+        passkeyAdded: 'Passkey added. You can sign in with it from now on.',
+        passkeyAddedOn: 'Added {date}',
+        passkeyRemove: 'Remove',
+        passkeyRemoveConfirm: 'Remove?',
+        passkeyRemoveLabel: 'Remove passkey {name}',
+        passkeyRemoved: 'Passkey removed.',
+        signedIn: 'Signed in',
+        viewProfile: 'View Profile',
+        signOut: 'Sign Out',
+        working: 'One moment…',
+        errors: {
+          age_required: 'Please confirm your age on the home page first. Accounts are for players aged 13 and over.',
+          email_in_use: 'That address already belongs to another account. Sign out and sign in with it instead.',
+          email_already_set: 'This account already has an email address.',
+          signup_retry: 'That did not go through. Please try again.',
+          invalid_email: 'That does not look like an email address.',
+          invalid_code: 'That code is not right, or it has expired. Check it, or send a new one.',
+          code_incomplete: 'Enter all 6 digits of the code.',
+          too_many_requests: 'Too many codes requested. Wait a few minutes, then try again.',
+          email_sign_in_unavailable: 'Email is not available right now.',
+          email_send_failed: 'We could not send the email. Please try again in a moment.',
+          passkey_unsupported: 'This browser cannot use passkeys.',
+          passkey_cancelled: 'No passkey was used. Try again when you are ready.',
+          passkey_not_accepted: 'That passkey was not accepted. Sign in with an emailed code, then add a new passkey.',
+          passkey_failed: 'The passkey did not work. Please try again.',
+          passkey_already_on_device: 'This device already has a passkey for your account.',
+          passkey_already_registered: 'That passkey is already registered.',
+          passkey_not_registered: 'That passkey could not be added. Please try again.',
+          too_many_passkeys: 'This account has the most passkeys it can hold. Remove one first.',
+          last_sign_in_method: 'This passkey is your only way to sign in. Add another one before removing it.',
+          challenge_expired: 'That took too long. Please try again.',
+          not_signed_in: 'Your session has ended. Please sign in again.',
+          network: 'We could not reach the server. Check your connection and try again.',
+          generic: 'Something went wrong. Please try again.',
+        } as Record<string, string>,
+      };
 
-      function showError(msg: string) {
-        authError.textContent = msg;
-        authError.classList.remove('hidden');
+      type StringKey = Exclude<keyof typeof STRINGS, 'errors'>;
+
+      function text(key: StringKey, values: Record<string, string> = {}): string {
+        return STRINGS[key].replace(/\{(\w+)\}/g, (whole, name) => values[name] ?? whole);
       }
-      function clearError() {
-        authError.classList.add('hidden');
+
+      function errorText(e: unknown): string {
+        const code = e instanceof AuthFlowError ? e.code : 'generic';
+        return STRINGS.errors[code] ?? STRINGS.errors.generic;
       }
 
-      function updateAuthUI() {
-        clearError();
-        const mobileAuthBtn = document.getElementById('mobile-auth-btn');
-        if (isLoggedIn()) {
-          const user = getCurrentUser()!;
-          const initial = (user.display_name || user.username)[0].toUpperCase();
-          authBtn.classList.add('hidden');
-          if (mobileAuthBtn) mobileAuthBtn.classList.add('hidden');
-          userBadge.classList.remove('hidden');
-          userBadge.classList.add('flex');
-          document.getElementById('user-initial')!.textContent = initial;
-          document.getElementById('user-name')!.textContent = user.display_name || user.username;
-          document.getElementById('menu-user-initial')!.textContent = initial;
-          document.getElementById('menu-user-name')!.textContent = user.display_name || user.username;
-          const providerEl = document.getElementById('menu-user-provider')!;
-          providerEl.textContent = 'Signed in with Google';
-          signInOptions.classList.add('hidden');
-          userMenu.classList.remove('hidden');
-        } else {
-          authBtn.classList.remove('hidden');
-          if (mobileAuthBtn) mobileAuthBtn.classList.remove('hidden');
-          userBadge.classList.add('hidden');
-          signInOptions.classList.remove('hidden');
-          userMenu.classList.add('hidden');
-        }
-      }
-
-      // Toggle dropdown
-      function toggleDropdown() {
-        authDropdown.classList.toggle('hidden');
-      }
-      authBtn.addEventListener('click', toggleDropdown);
-      userBadge.addEventListener('click', toggleDropdown);
-      document.getElementById('mobile-auth-btn')?.addEventListener('click', toggleDropdown);
-
-      // Close on outside click
-      document.addEventListener('click', (e) => {
-        const container = document.getElementById('auth-container')!;
-        if (!container.contains(e.target as Node)) {
-          authDropdown.classList.add('hidden');
-        }
-      });
-
-      // --- Google Sign-In ---
-      function initGoogleSignIn() {
-        const clientId = import.meta.env.PUBLIC_GOOGLE_CLIENT_ID;
-        if (!clientId || typeof google === 'undefined') return;
-        google.accounts.id.initialize({
-          client_id: clientId,
-          callback: handleGoogleCredential,
+      function applyStrings() {
+        document.querySelectorAll<HTMLElement>('[data-auth-text]').forEach((el) => {
+          el.textContent = text(el.dataset.authText as StringKey);
+        });
+        document.querySelectorAll<HTMLInputElement>('[data-auth-placeholder]').forEach((el) => {
+          el.placeholder = text(el.dataset.authPlaceholder as StringKey);
         });
       }
 
-      async function handleGoogleCredential(response: { credential: string }) {
-        clearError();
-        try {
-          await googleSignInUser(response.credential);
-          updateAuthUI();
-          authDropdown.classList.add('hidden');
-          syncAgeTier();
-          offerMigrationIfNeeded();
-        } catch (e: any) {
-          showError(e.body || e.message || 'Google sign-in failed');
+      const $ = <T extends HTMLElement = HTMLElement>(id: string) => document.getElementById(id) as T;
+
+      const authContainer = $('auth-container');
+      const authBtn = $('auth-btn');
+      const userBadge = $('user-badge');
+      const authDropdown = $('auth-dropdown');
+      const signInOptions = $('auth-sign-in-options');
+      const passkeyOffer = $('auth-passkey-offer');
+      const userMenu = $('auth-user-menu');
+      const authError = $('auth-error');
+      const authNotice = $('auth-notice');
+      const emailInput = $<HTMLInputElement>('auth-email-input');
+      const codeInput = $<HTMLInputElement>('auth-code-input');
+      const steps = {
+        choose: $('auth-step-choose'),
+        create: $('auth-step-create'),
+        email: $('auth-step-email'),
+        code: $('auth-step-code'),
+      };
+      type Step = keyof typeof steps;
+
+      let currentStep: Step = 'choose';
+      let pendingEmail = '';
+      // True between an email sign-in and the visitor answering the passkey offer.
+      let offeringPasskey = false;
+      // True between a passkey sign-up and the visitor answering "add a second way in".
+      let nudgingRecovery = false;
+      // Whether the server can send mail. Until it says so, email is shown nowhere.
+      let emailAvailable = false;
+      let passkeyTotal = 0;
+      let pendingRecoveryEmail = '';
+      const recoveryNudge = $('auth-recovery-nudge');
+
+      function show(el: HTMLElement, visible: boolean) {
+        el.classList.toggle('hidden', !visible);
+      }
+
+      function showError(msg: string) {
+        show(authNotice, false);
+        authError.textContent = msg;
+        show(authError, true);
+      }
+      function showNotice(msg: string) {
+        show(authError, false);
+        authNotice.textContent = msg;
+        show(authNotice, true);
+      }
+      function clearMessages() {
+        show(authError, false);
+        show(authNotice, false);
+        show($('auth-offer-error'), false);
+        show($('auth-nudge-error'), false);
+        show($('auth-email-message'), false);
+        show($('auth-menu-message'), false);
+      }
+
+      function showMenuMessage(msg: string, kind: 'ok' | 'error') {
+        const el = $('auth-menu-message');
+        el.textContent = msg;
+        el.classList.toggle('text-emerald-400', kind === 'ok');
+        el.classList.toggle('text-crimson-400', kind === 'error');
+        show(el, true);
+      }
+
+      /** Lock the panel while a request or a passkey prompt is in flight. */
+      function setBusy(busy: boolean) {
+        authDropdown.setAttribute('aria-busy', String(busy));
+        authDropdown.querySelectorAll<HTMLButtonElement | HTMLInputElement>('button, input').forEach((el) => {
+          el.disabled = busy;
+        });
+        authDropdown.classList.toggle('cursor-progress', busy);
+      }
+
+      function showStep(step: Step) {
+        currentStep = step;
+        (Object.keys(steps) as Step[]).forEach((name) => show(steps[name], name === step));
+        if (step !== 'email') cancelPasskeyCeremony();
+      }
+
+      function isOpen() {
+        return !authDropdown.classList.contains('hidden');
+      }
+
+      function closeDropdown() {
+        show(authDropdown, false);
+        authBtn.setAttribute('aria-expanded', 'false');
+        cancelPasskeyCeremony();
+        // An unanswered passkey offer, or recovery prompt, is a "not now".
+        offeringPasskey = false;
+        nudgingRecovery = false;
+      }
+
+      function openDropdown() {
+        clearMessages();
+        updateAuthUI();
+        show(authDropdown, true);
+        authBtn.setAttribute('aria-expanded', 'true');
+        if (isLoggedIn()) {
+          if (!offeringPasskey && !nudgingRecovery) refreshAccount();
+        } else {
+          showStep('choose');
+          prepareSignIn();
         }
       }
 
-      document.getElementById('google-sign-in-btn')?.addEventListener('click', () => {
-        clearError();
-        const clientId = import.meta.env.PUBLIC_GOOGLE_CLIENT_ID;
-        if (!clientId) {
-          showError('Google sign-in not configured');
-          return;
+      function toggleDropdown() {
+        if (isOpen()) closeDropdown();
+        else openDropdown();
+      }
+
+      function updateAuthUI() {
+        const mobileAuthBtn = document.getElementById('mobile-auth-btn');
+        if (isLoggedIn()) {
+          const user = getCurrentUser()!;
+          const shownName = user.display_name || user.username;
+          const initial = (shownName[0] || '?').toUpperCase();
+          show(authBtn, false);
+          if (mobileAuthBtn) show(mobileAuthBtn, false);
+          show(userBadge, true);
+          userBadge.classList.add('flex');
+          $('user-initial').textContent = initial;
+          $('user-name').textContent = shownName;
+          $('menu-user-initial').textContent = initial;
+          $('menu-user-name').textContent = shownName;
+          $('menu-user-provider').textContent = user.email || text('signedIn');
+          show(signInOptions, false);
+          show(passkeyOffer, offeringPasskey);
+          show(recoveryNudge, nudgingRecovery);
+          show(userMenu, !offeringPasskey && !nudgingRecovery);
+          renderRecovery();
+        } else {
+          show(authBtn, true);
+          if (mobileAuthBtn) show(mobileAuthBtn, true);
+          show(userBadge, false);
+          userBadge.classList.remove('flex');
+          show(signInOptions, true);
+          show(passkeyOffer, false);
+          show(recoveryNudge, false);
+          show(userMenu, false);
         }
-        if (typeof google === 'undefined') {
-          showError('Google script not loaded yet. Please try again.');
-          return;
+      }
+
+      /**
+       * The recovery parts of the signed-in views: the warning while one passkey is the
+       * only way in, and the recovery email (shown only when the server can send mail).
+       */
+      function renderRecovery() {
+        const user = getCurrentUser();
+        if (!user) return;
+        const hasEmail = !!user.email;
+        const warning = $('auth-recovery-warning');
+        warning.textContent = text(emailAvailable ? 'recoveryWarning' : 'recoveryWarningNoEmail');
+        show(warning, passkeyTotal === 1 && !hasEmail);
+        $('auth-nudge-name').textContent = text('nudgeName', { name: user.display_name || user.username });
+        $('auth-nudge-body').textContent = text(emailAvailable ? 'nudgeBody' : 'nudgeBodyNoEmail');
+        show($('auth-nudge-email'), emailAvailable && !hasEmail);
+
+        show($('auth-email-section'), emailAvailable);
+        const shown = $('auth-recovery-email');
+        shown.textContent = user.email || '';
+        show(shown, hasEmail);
+        const adding = !$('auth-add-email-form').classList.contains('hidden')
+          || !$('auth-add-code-form').classList.contains('hidden');
+        show($('auth-add-email-btn'), !hasEmail && !adding);
+        if (hasEmail) {
+          show($('auth-add-email-form'), false);
+          show($('auth-add-code-form'), false);
         }
-        google.accounts.id.prompt();
+      }
+
+      /** Decide which sign-in methods to show: what the browser can do, and what the server offers. */
+      async function prepareSignIn() {
+        const canPasskey = passkeysSupported();
+        show($('auth-passkey-btn'), canPasskey);
+        show($('auth-create-btn'), canPasskey);
+        const methods = await getAuthMethods();
+        emailAvailable = methods.email;
+        const unsupported = $('auth-passkey-unsupported');
+        unsupported.textContent = text(emailAvailable ? 'passkeyUnsupported' : 'passkeyUnsupportedNoEmail');
+        show(unsupported, !canPasskey);
+        $('auth-create-warning').textContent = text(emailAvailable ? 'createWarning' : 'createWarningNoEmail');
+        // With no mail key the server cannot send anything: email is shown nowhere.
+        show($('auth-email-btn'), emailAvailable);
+        show($('auth-email-hint'), emailAvailable && canPasskey);
+      }
+
+      authBtn.addEventListener('click', toggleDropdown);
+      userBadge.addEventListener('click', toggleDropdown);
+      document.getElementById('mobile-auth-btn')?.addEventListener('click', (e) => {
+        // The button sits outside the auth container: keep the click from counting as an
+        // outside click, which would close the panel as it opens.
+        e.stopPropagation();
+        document.getElementById('mobile-menu')?.classList.add('hidden');
+        toggleDropdown();
       });
 
-      // --- Logout ---
-      document.getElementById('auth-logout-btn')?.addEventListener('click', async () => {
-        await logoutUser();
+      // Close on outside click. composedPath, not contains(): a clicked row may already
+      // have been re-rendered away by the time this runs.
+      document.addEventListener('click', (e) => {
+        if (!e.composedPath().includes(authContainer)) closeDropdown();
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && isOpen()) closeDropdown();
+      });
+
+      // --- After any successful sign-in ---
+      function onSignedIn(auth: AuthResponse, via: 'passkey' | 'email' | 'signup') {
+        pendingEmail = '';
+        emailInput.value = '';
+        codeInput.value = '';
+        clearMessages();
+        // Signed in by email with no passkey on the account: offer one for next time.
+        offeringPasskey = via === 'email' && auth.passkey_count === 0 && passkeysSupported();
+        // A brand-new passkey-only account: one passkey is its only way in. Say so now.
+        nudgingRecovery = via === 'signup';
+        passkeyTotal = auth.passkey_count;
         updateAuthUI();
-        authDropdown.classList.add('hidden');
+        if (!offeringPasskey && !nudgingRecovery) closeDropdown();
+        syncAgeTier();
+        offerMigrationIfNeeded();
+      }
+
+      // --- Passkey sign-in ---
+      $('auth-passkey-btn').addEventListener('click', async () => {
+        clearMessages();
+        setBusy(true);
+        try {
+          onSignedIn(await signInWithPasskey(), 'passkey');
+        } catch (e) {
+          if (e instanceof AuthFlowError && e.code === 'passkey_cancelled') showNotice(errorText(e));
+          else showError(errorText(e));
+        } finally {
+          setBusy(false);
+        }
+      });
+
+      /**
+       * Conditional mediation: while the email field is showing, let the browser offer a
+       * saved passkey in that field's autofill. Resolves only if the visitor picks one.
+       */
+      async function offerPasskeyAutofill() {
+        if (!(await passkeyAutofillSupported())) return;
+        if (currentStep !== 'email' || !isOpen() || isLoggedIn()) return;
+        try {
+          onSignedIn(await signInWithPasskey({ autofill: true }), 'passkey');
+        } catch (e) {
+          // Cancelled is the normal end (the visitor typed an address instead).
+          const quiet = e instanceof AuthFlowError && (e.code === 'passkey_cancelled' || e.code === 'network');
+          if (!quiet && currentStep === 'email' && isOpen()) showError(errorText(e));
+        }
+      }
+
+      // --- Create an account with a passkey (no email, no personal data) ---
+      $('auth-create-btn').addEventListener('click', () => {
+        clearMessages();
+        // No account is started unless the age gate allows one.
+        if (!accountAgeTier()) {
+          showNotice(STRINGS.errors.age_required);
+          return;
+        }
+        showStep('create');
+      });
+
+      $('auth-create-back').addEventListener('click', () => {
+        clearMessages();
+        showStep('choose');
+      });
+
+      $('auth-create-confirm').addEventListener('click', async () => {
+        clearMessages();
+        setBusy(true);
+        try {
+          onSignedIn(await signUpWithPasskey(), 'signup');
+        } catch (e) {
+          if (e instanceof AuthFlowError && e.code === 'passkey_cancelled') showNotice(errorText(e));
+          else showError(errorText(e));
+        } finally {
+          setBusy(false);
+        }
+      });
+
+      // --- After a passkey sign-up: a second way in ---
+      function leaveNudge() {
+        nudgingRecovery = false;
+        updateAuthUI();
+      }
+
+      $('auth-nudge-passkey').addEventListener('click', async () => {
+        clearMessages();
+        setBusy(true);
+        try {
+          await addPasskey();
+          leaveNudge();
+          await refreshAccount();
+          showMenuMessage(text('passkeyAdded'), 'ok');
+        } catch (e) {
+          const el = $('auth-nudge-error');
+          el.textContent = errorText(e);
+          show(el, true);
+        } finally {
+          setBusy(false);
+        }
+      });
+
+      $('auth-nudge-email').addEventListener('click', async () => {
+        clearMessages();
+        leaveNudge();
+        await refreshAccount();
+        openAddEmail();
+      });
+
+      $('auth-nudge-later').addEventListener('click', closeDropdown);
+
+      // --- Recovery email for a signed-in account ---
+      const addEmailInput = $<HTMLInputElement>('auth-add-email-input');
+      const addCodeInput = $<HTMLInputElement>('auth-add-code-input');
+
+      function showEmailMessage(msg: string, kind: 'ok' | 'error') {
+        const el = $('auth-email-message');
+        el.textContent = msg;
+        el.classList.toggle('text-emerald-400', kind === 'ok');
+        el.classList.toggle('text-crimson-400', kind === 'error');
+        show(el, true);
+      }
+
+      function openAddEmail() {
+        if (!emailAvailable) return;
+        show($('auth-add-email-btn'), false);
+        show($('auth-add-code-form'), false);
+        show($('auth-add-email-form'), true);
+        addEmailInput.focus();
+      }
+
+      function resetAddEmail() {
+        pendingRecoveryEmail = '';
+        addEmailInput.value = '';
+        addCodeInput.value = '';
+        show($('auth-add-email-form'), false);
+        show($('auth-add-code-form'), false);
+      }
+
+      $('auth-add-email-btn').addEventListener('click', () => {
+        clearMessages();
+        // The same gate as every other place an address could be given.
+        if (!accountAgeTier()) {
+          showEmailMessage(STRINGS.errors.age_required, 'error');
+          return;
+        }
+        openAddEmail();
+      });
+
+      $('auth-add-email-form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        clearMessages();
+        const email = addEmailInput.value.trim();
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+          showEmailMessage(STRINGS.errors.invalid_email, 'error');
+          return;
+        }
+        setBusy(true);
+        try {
+          await requestRecoveryEmail(email);
+          pendingRecoveryEmail = email;
+          $('auth-add-code-intro').textContent = text('addEmailCodeIntro', { email });
+          addCodeInput.value = '';
+          show($('auth-add-email-form'), false);
+          show($('auth-add-code-form'), true);
+        } catch (err) {
+          showEmailMessage(errorText(err), 'error');
+        } finally {
+          setBusy(false);
+          if (pendingRecoveryEmail) addCodeInput.focus();
+        }
+      });
+
+      addCodeInput.addEventListener('input', () => {
+        addCodeInput.value = addCodeInput.value.replace(/\D/g, '').slice(0, 6);
+      });
+
+      $('auth-add-code-form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        clearMessages();
+        const code = addCodeInput.value.replace(/\D/g, '');
+        if (code.length !== 6) {
+          showEmailMessage(STRINGS.errors.code_incomplete, 'error');
+          return;
+        }
+        setBusy(true);
+        try {
+          await confirmRecoveryEmail(pendingRecoveryEmail, code);
+          resetAddEmail();
+          updateAuthUI();
+          showEmailMessage(text('addEmailDone'), 'ok');
+        } catch (err) {
+          showEmailMessage(errorText(err), 'error');
+        } finally {
+          setBusy(false);
+        }
+      });
+
+      // --- Email: address ---
+      $('auth-email-btn').addEventListener('click', () => {
+        clearMessages();
+        // No address is asked for, let alone sent, unless the age gate allows it.
+        if (!accountAgeTier()) {
+          showNotice(STRINGS.errors.age_required);
+          return;
+        }
+        showStep('email');
+        emailInput.focus();
+        offerPasskeyAutofill();
+      });
+
+      $('auth-email-back').addEventListener('click', () => {
+        clearMessages();
+        showStep('choose');
+      });
+
+      async function requestCode(email: string, resend: boolean) {
+        clearMessages();
+        setBusy(true);
+        try {
+          await sendEmailCode(email);
+          pendingEmail = email;
+          $('auth-code-intro').textContent = text('codeIntro', { email });
+          codeInput.value = '';
+          showStep('code');
+          if (resend) showNotice(text('codeResent'));
+        } catch (e) {
+          showError(errorText(e));
+        } finally {
+          setBusy(false);
+          if (currentStep === 'code') codeInput.focus();
+        }
+      }
+
+      $('auth-email-form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const email = emailInput.value.trim();
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+          showError(STRINGS.errors.invalid_email);
+          return;
+        }
+        requestCode(email, false);
+      });
+
+      // --- Email: code ---
+      codeInput.addEventListener('input', () => {
+        codeInput.value = codeInput.value.replace(/\D/g, '').slice(0, 6);
+      });
+
+      $('auth-code-form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        clearMessages();
+        const code = codeInput.value.replace(/\D/g, '');
+        if (code.length !== 6) {
+          showError(STRINGS.errors.code_incomplete);
+          return;
+        }
+        setBusy(true);
+        try {
+          onSignedIn(await signInWithEmailCode(pendingEmail, code), 'email');
+        } catch (err) {
+          showError(errorText(err));
+        } finally {
+          setBusy(false);
+        }
+      });
+
+      $('auth-code-resend').addEventListener('click', () => {
+        if (pendingEmail) requestCode(pendingEmail, true);
+      });
+
+      $('auth-code-back').addEventListener('click', () => {
+        clearMessages();
+        codeInput.value = '';
+        showStep('email');
+        emailInput.focus();
+        offerPasskeyAutofill();
+      });
+
+      // --- Adding a passkey (the offer after email sign-in, and the menu button) ---
+      async function addPasskeyFrom(source: 'offer' | 'menu') {
+        clearMessages();
+        setBusy(true);
+        try {
+          await addPasskey();
+          offeringPasskey = false;
+          updateAuthUI();
+          await refreshAccount();
+          showMenuMessage(text('passkeyAdded'), 'ok');
+        } catch (e) {
+          if (source === 'offer') {
+            const el = $('auth-offer-error');
+            el.textContent = errorText(e);
+            show(el, true);
+          } else {
+            showMenuMessage(errorText(e), 'error');
+          }
+        } finally {
+          setBusy(false);
+        }
+      }
+
+      $('auth-passkey-add').addEventListener('click', () => addPasskeyFrom('offer'));
+      $('auth-passkey-add-menu').addEventListener('click', () => addPasskeyFrom('menu'));
+      $('auth-passkey-skip').addEventListener('click', closeDropdown);
+
+      // --- Passkey management in the signed-in menu ---
+      function renderPasskeys(passkeys: PasskeyInfo[]) {
+        const list = $('auth-passkey-list');
+        list.replaceChildren();
+        for (const passkey of passkeys) {
+          const added = new Date(passkey.created_at).toLocaleDateString(
+            document.documentElement.lang || undefined,
+            { year: 'numeric', month: 'short', day: 'numeric' },
+          );
+          const item = document.createElement('li');
+          item.dataset.passkeyId = passkey.id;
+          item.className = 'flex items-center justify-between gap-2 bg-obsidian-800/60 border border-obsidian-700/60 rounded-lg px-3 py-2';
+
+          const label = document.createElement('div');
+          label.className = 'min-w-0';
+          const name = document.createElement('p');
+          name.className = 'text-xs font-medium text-obsidian-200 truncate';
+          name.textContent = passkey.name;
+          const meta = document.createElement('p');
+          meta.className = 'text-[10px] text-obsidian-500';
+          meta.textContent = text('passkeyAddedOn', { date: added });
+          label.append(name, meta);
+
+          const remove = document.createElement('button');
+          remove.type = 'button';
+          remove.className = 'shrink-0 text-[11px] text-obsidian-400 hover:text-crimson-400 transition-colors';
+          remove.textContent = text('passkeyRemove');
+          remove.setAttribute('aria-label', text('passkeyRemoveLabel', { name: passkey.name }));
+          remove.addEventListener('click', async () => {
+            // First click asks, second click removes.
+            if (remove.dataset.armed !== 'true') {
+              remove.dataset.armed = 'true';
+              remove.textContent = text('passkeyRemoveConfirm');
+              remove.classList.remove('text-obsidian-400');
+              remove.classList.add('text-crimson-400', 'font-semibold');
+              return;
+            }
+            clearMessages();
+            setBusy(true);
+            try {
+              await removePasskey(passkey.id);
+              await refreshPasskeys();
+              showMenuMessage(text('passkeyRemoved'), 'ok');
+            } catch (e) {
+              showMenuMessage(errorText(e), 'error');
+            } finally {
+              setBusy(false);
+            }
+          });
+
+          item.append(label, remove);
+          list.append(item);
+        }
+        show($('auth-passkey-empty'), passkeys.length === 0);
+        show($('auth-passkey-add-menu'), passkeysSupported());
+        passkeyTotal = passkeys.length;
+        renderRecovery();
+      }
+
+      /** Everything the signed-in menu shows: whether email exists at all, then passkeys. */
+      async function refreshAccount() {
+        emailAvailable = (await getAuthMethods()).email;
+        renderRecovery();
+        await refreshPasskeys();
+      }
+
+      async function refreshPasskeys() {
+        if (!isLoggedIn()) return;
+        try {
+          renderPasskeys(await listPasskeys());
+        } catch (e) {
+          showMenuMessage(errorText(e), 'error');
+        }
+      }
+
+      // --- Logout ---
+      $('auth-logout-btn').addEventListener('click', async () => {
+        await logoutUser();
+        $('auth-passkey-list').replaceChildren();
+        passkeyTotal = 0;
+        resetAddEmail();
+        closeDropdown();
+        updateAuthUI();
       });
 
       // --- Data Migration ---
@@ -716,15 +1441,13 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
       }
 
       // --- Init ---
+      applyStrings();
+      authDropdown.setAttribute('aria-label', text('signInHeading'));
+      authBtn.setAttribute('aria-haspopup', 'dialog');
+      authBtn.setAttribute('aria-expanded', 'false');
       initStorageBackend().then(() => {
         updateAuthUI();
-        initGoogleSignIn();
         syncAgeTier();
-      });
-
-      // Re-init Google after GIS script loads (it may load after our script)
-      window.addEventListener('load', () => {
-        if (!isLoggedIn()) initGoogleSignIn();
       });
     </script>
     <!-- Service Worker Registration -->
