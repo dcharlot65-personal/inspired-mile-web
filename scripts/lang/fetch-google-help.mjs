@@ -20,12 +20,20 @@ const out = { source: 'Google Help Center pages, ?hl=<language>', licence: '© G
 for (const [concept, url] of Object.entries(PAGES)) {
   out.pages[concept] = { url, text: {} };
   for (const [lang, hl] of Object.entries(HL)) {
-    const r = await fetch(`${url}?hl=${hl}`, { headers: { 'user-agent': 'Mozilla/5.0 (language-qa-script/1.0)' } });
-    if (!r.ok) throw new Error(`${r.status} ${url}?hl=${hl}`);
-    const html = await r.text();
-    const title = html.match(/<title>([\s\S]*?)<\/title>/)?.[1];
-    const h2 = html.match(/<h2[^>]*>([\s\S]*?)<\/h2>/)?.[1];
-    out.pages[concept].text[lang] = { title: title ? decode(title) : null, heading: h2 ? decode(h2) : null };
+    // The help centre answers some requests with a page that has no title or heading (a different
+    // language each run, seen 2026-11-16): ask again, a few seconds apart, before recording a gap.
+    let got = { title: null, heading: null };
+    for (let attempt = 1; attempt <= 5 && !got.heading; attempt++) {
+      if (attempt > 1) await new Promise((r) => setTimeout(r, 3000 * attempt));
+      const r = await fetch(`${url}?hl=${hl}`, { headers: { 'user-agent': 'Mozilla/5.0 (language-qa-script/1.0)' } });
+      if (!r.ok) throw new Error(`${r.status} ${url}?hl=${hl}`);
+      const html = await r.text();
+      const title = html.match(/<title>([\s\S]*?)<\/title>/)?.[1];
+      const h2 = html.match(/<h2[^>]*>([\s\S]*?)<\/h2>/)?.[1];
+      got = { title: title ? decode(title) : null, heading: h2 ? decode(h2) : null };
+    }
+    if (!got.heading) console.error(`no heading for ${concept} ${lang} after 5 attempts: recorded as null`);
+    out.pages[concept].text[lang] = got;
   }
 }
 writeFileSync(new URL('../../docs/language/sources/google-help.json', import.meta.url), JSON.stringify(out, null, 1) + '\n');

@@ -15,13 +15,15 @@ import { argumentNames, interpolate, parseMessage, pluralBlocks, pluralCategory,
 // @ts-expect-error a plain JavaScript module shared with the command-line tools
 import { applyAllowlist, checkLanguage, untranslated } from '../../scripts/lang/lib/mechanical.mjs';
 // @ts-expect-error as above
-import { checkGlossary } from '../../scripts/lang/lib/glossary.mjs';
+import { checkCitations, checkGlossary } from '../../scripts/lang/lib/glossary.mjs';
 
 const read = (path: string) => JSON.parse(readFileSync(new URL(`../../${path}`, import.meta.url), 'utf8'));
 const cldr = read('docs/language/sources/cldr.json');
 const allow = read('docs/language/allow/mechanical.json');
 const same = read('docs/language/allow/untranslated.json');
 const glossary = read('docs/language/glossary.json');
+const SOURCE_FILES = ['aosp-terms', 'mozilla-terms', 'google-help', 'apple-passkeys', 'wikidata-names'];
+const sources = Object.fromEntries(SOURCE_FILES.map((f) => [f, read(`docs/language/sources/${f}.json`)]));
 const helpers = { parseMessage, argumentNames, pluralBlocks };
 
 type Problem = { lang: string; key: string; rule: string; detail: string };
@@ -135,6 +137,13 @@ describe('every locale passes the mechanical checks', () => {
     for (const l of LOCALES) problems.push(...checkGlossary(l, await loadMessages(l), en, glossary));
     expect(show(problems)).toEqual([]);
   });
+
+  it('every word the glossary quotes from a fetched source is in that source file', () => {
+    const { problems, count } = checkCitations(glossary, sources);
+    expect(show(problems)).toEqual([]);
+    // The pattern must still be finding the citations (about 137 on 2026-11-16), or this passes on nothing.
+    expect(count).toBeGreaterThan(120);
+  });
 });
 
 describe('the checks can fail', () => {
@@ -223,6 +232,25 @@ describe('the checks can fail', () => {
     const tiny = { terms: { ink: { match: '\\bink\\b', langs: { es: { term: 'tinta', forbid: ['pintura'] } } } }, names: {} };
     expect((checkGlossary('es', { a: 'Sin pintura.' }, { a: 'Not enough ink.' }, tiny) as Problem[]).map((p) => p.rule)).toEqual(['glossary', 'glossary-forbidden']);
     expect(checkGlossary('fr', { a: 'x' }, { a: 'Not enough ink.' }, tiny).map((p: Problem) => p.rule)).toEqual(['glossary-missing']);
+  });
+
+  it('the citation check names a quotation its source file does not hold, and a file that is not there', () => {
+    const fake = {
+      terms: {
+        x: {
+          langs: {
+            es: { source: 'Google Help, Gmail answer 8154 (sources/google-help.json): Cerrar la sesión de Gmail.' },
+            fr: { source: 'Android (AOSP core, kg_login_submit_button): Connexion; Mozilla Firefox (sources/mozilla-terms.json, fxa-menu-sign-out): Se déconnecter…' },
+            de: { source: 'Mozilla Firefox (sources/nowhere.json): Abmelden' },
+          },
+        },
+      },
+      names: {},
+    };
+    const src = { 'google-help': { pages: { 'sign-out': { text: { es: { title: null, heading: null } } } } }, 'aosp-terms': { t: 'Connexion' }, 'mozilla-terms': { t: 'Se déconnecter…' } };
+    const { problems, count } = checkCitations(fake, src);
+    expect(count).toBe(4);
+    expect(problems.map((p: Problem) => `${p.lang} ${p.rule}`)).toEqual(['es citation-not-in-source', 'de citation-no-file']);
   });
 
   it('a string left in English is caught unless it is on the list', () => {

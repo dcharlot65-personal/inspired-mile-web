@@ -1634,7 +1634,7 @@
     },
     "vi": {
      "term": "khoá truy cập",
-     "source": "Android (AOSP CredentialManager): khoá đăng nhập / khoá truy cập Written with Android's tone-mark placement (khoá, not khóa), which the LibreOffice vi_VN dictionary also uses."
+     "source": "Android (AOSP CredentialManager): khoá đăng nhập / khoá truy cập. Written with Android's tone-mark placement (khoá, not khóa), which the LibreOffice vi_VN dictionary also uses."
     },
     "th": {
      "term": "พาสคีย์",
@@ -1743,7 +1743,7 @@
     },
     "th": {
      "term": "ลงชื่อเข้าใช้",
-     "source": "Android (AOSP core, kg_login_submit_button): ลงชื่อเข้าใช้; Google Help, Gmail answer 8494: ลงชื่อเข้าใช้. (The game had written เข้าสู่ระบบ, which no vendor fetched uses; Mozilla writes ลงชื่อเข้า.) Pairs with ออกจากระบบ, Google's sign out."
+     "source": "Android (AOSP core, kg_login_submit_button): ลงชื่อเข้าใช้; Google Help, Gmail answer 8494 (sources/google-help.json): ลงชื่อเข้าใช้. (The game had written เข้าสู่ระบบ, which no vendor fetched uses; Mozilla writes ลงชื่อเข้า.) Pairs with ออกจากระบบ, Google's sign out."
     },
     "id": {
      "term": "masuk",
@@ -1831,7 +1831,7 @@
     },
     "th": {
      "term": "ออกจากระบบ",
-     "source": "Mozilla Firefox (sources/mozilla-terms.json, fxa-menu-sign-out): ลงชื่อออก…; Google Help, Gmail answer 8154 (sources/google-help.json): ออกจากระบบ Gmail. Mozilla writes ลงชื่อออก; Google’s ออกจากระบบ is kept (it pairs with เข้าสู่ระบบ, the game’s sign in)."
+     "source": "Mozilla Firefox (sources/mozilla-terms.json, fxa-menu-sign-out): ลงชื่อออก…; Google Help, Gmail answer 8154 (sources/google-help.json): ออกจากระบบ Gmail. Mozilla writes ลงชื่อออก; Google’s ออกจากระบบ is kept: Google’s help pairs it with ลงชื่อเข้าใช้, the game’s sign in (answer 8494)."
     },
     "id": {
      "term": "keluar",
