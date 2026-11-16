@@ -290,7 +290,7 @@ const ja: Record<string, string> = {
   'battle.begin': '決闘を始める',
   'brain.checking': 'この端末で何を動かせるか確認しています…',
   'brain.playNow': 'ダウンロードせずに今すぐプレイ',
-  'brain.kept': 'ダウンロードは一度だけで、ブラウザに保存されます。どこにも送信されません。',
+  'brain.kept': 'Hugging Face からのダウンロードは一度だけで、ブラウザに保存されます。書いた内容や話した内容は、どこにも送信されません。',
   'brain.summoning': '対戦相手を召喚しています…',
   'brain.downloading': '{model}をダウンロード中：{done} / {total} MB',
   'brain.ready': '{model}の準備ができました',
