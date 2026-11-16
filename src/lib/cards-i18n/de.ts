@@ -381,7 +381,7 @@ const pack: CardTextPack = {
   "LD-003": {
    "nameSource": "wikidata",
    "name": "John Keats",
-   "quote": "Ein Ding der Schönheit ist eine Freude für immer: seine Lieblichkeit wächst.",
+   "quote": "Ein Ding der Schönheit ist eine Freude für immer: Seine Lieblichkeit wächst.",
    "quoteSource": "new",
    "scene": "Ein Garten in Hampstead im Herbst. Keats sitzt unter einem Pflaumenbaum und schreibt fieberhaft, während eine Nachtigall aus den dunkelnden Zweigen singt."
   },

@@ -29,7 +29,7 @@ Figur|Relikt|Trank
 [quotes]
 LD-001	Ich wanderte einsam wie eine Wolke, die hoch über Täler und Hügel zieht.
 LD-002	Wasser, Wasser überall, und kein Tropfen zu trinken.
-LD-003	Ein Ding der Schönheit ist eine Freude für immer: seine Lieblichkeit wächst.
+LD-003	Ein Ding der Schönheit ist eine Freude für immer: Seine Lieblichkeit wächst.
 GC-001	Sie geht in Schönheit, wie die Nacht wolkenloser Himmelsstriche und gestirnter Himmel.
 GC-002	Hüte dich; denn ich bin furchtlos und darum mächtig.
 GC-003	Einst, um eine trübe Mitternacht, als ich grübelte, schwach und müde.

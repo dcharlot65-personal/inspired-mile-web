@@ -94,7 +94,7 @@ const pack: CardTextPack = {
    "nameSource": "missing",
    "quote": "Se alguma vez voltardes a perturbar as nossas ruas, as vossas vidas pagarão a quebra da paz.",
    "quoteSource": "new",
-   "scene": "O Príncipe está nos degraus do palácio de Verona; a sua voz impõe silêncio à multidão em contenda. Um ceptro dourado arde de autoridade."
+   "scene": "O Príncipe está nos degraus do palácio de Verona; a sua voz impõe silêncio à multidão em contenda. Um cetro dourado arde de autoridade."
   },
   "VC-002": {
    "nameSource": "missing",
@@ -174,7 +174,7 @@ const pack: CardTextPack = {
    "name": "Macbeth",
    "quote": "Ouso tudo o que convém a um homem; quem ousa mais não o é.",
    "quoteSource": "new",
-   "scene": "Uma sala do trono manchada de sangue em Dunsinane. Macbeth segura a espada com mãos trémulas, a coroa pesada na fronte. A floresta de Birnam move-se na colina distante."
+   "scene": "Uma sala do trono manchada de sangue em Dunsinane. Macbeth segura a espada com mãos trêmulas, a coroa pesada na fronte. A floresta de Birnam move-se na colina distante."
   },
   "SC-002": {
    "nameSource": "wikidata",
@@ -315,7 +315,7 @@ const pack: CardTextPack = {
    "nameSource": "translated",
    "quote": "Nem a papoila, nem a mandrágora, nem todos os xaropes sonolentos do mundo.",
    "quoteSource": "new",
-   "scene": "Uma raiz nodosa, com a forma de uma figura que grita, é desenterrada à luz de uma vela. A terra desfaz-se e revela o seu poder antigo e retorcido. O boticário pega-lhe com trémula reverência."
+   "scene": "Uma raiz nodosa, com a forma de uma figura que grita, é desenterrada à luz de uma vela. A terra desfaz-se e revela o seu poder antigo e retorcido. O boticário pega-lhe com trêmula reverência."
   },
   "PT-005": {
    "name": "Orvalho de Oberon",

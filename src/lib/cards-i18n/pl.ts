@@ -380,7 +380,7 @@ const pack: CardTextPack = {
    "aliases": [
     "Bajron"
    ],
-   "quote": "Kroczy w piękności, jak noc bezchmurnych krain i gwiaździstych niebios.",
+   "quote": "Kroczy w piękności jak noc bezchmurnych krain i gwiaździstych niebios.",
    "quoteSource": "new",
    "scene": "Wenecki pałac o północy. Byron stoi na balkonie w powiewającej pelerynie i patrzy na ciemny kanał. Za nim w kominku płonie niedokończony rękopis."
   },
@@ -528,7 +528,7 @@ const pack: CardTextPack = {
   "Capulet": "Kapulet",
   "Danish Court": "Dwór duński",
   "Forest of Arden": "Las Ardeński",
-  "Verona Court": "Dwór werneński",
+  "Verona Court": "Dwór weroński",
   "Scottish Court": "Dwór szkocki",
   "Legendary": "Legendarny",
   "Relic": "Relikwia",

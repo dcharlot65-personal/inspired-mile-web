@@ -83,7 +83,7 @@ const pack: CardTextPack = {
    "nameSource": "translated",
    "quote": "Maintenant, tous mes charmes sont détruits.",
    "quoteSource": "published",
-   "scene": "Un bâton noueux crépite d’énergie arcanique. La tempête tourbillonne autour de lui tandis que Prospero murmure son dernier sortilège. L’éclair fend le ciel."
+   "scene": "Un bâton noueux crépite d’une énergie occulte. La tempête tourbillonne autour de lui tandis que Prospero murmure son dernier sortilège. L’éclair fend le ciel."
   },
   "PT-001": {
    "name": "Philtre d’amour",

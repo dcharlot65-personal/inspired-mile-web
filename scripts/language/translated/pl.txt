@@ -21,7 +21,7 @@ Wyciąg z jemioły
 Łzy syreny
 Eliksir aptekarza
 [houses]
-Monteki|Kapulet|Dwór duński|Las Ardeński|Dwór werneński|Dwór szkocki|Legendarny|Relikwia|Mikstura|Krąg gotycki|Olimp|Podziemie
+Monteki|Kapulet|Dwór duński|Las Ardeński|Dwór weroński|Dwór szkocki|Legendarny|Relikwia|Mikstura|Krąg gotycki|Olimp|Podziemie
 [elements]
 Ogień|Namiętność|Wdzięk|Cień|Woda|Wiatr|Psotnik|Natura|Śmierć|Magia tajemna|Zaklęcie|Mrok|Sprawiedliwość|Ziemia|Wierność|Burza|Powietrze|Bestia|Pokój|Trucizna|Blask księżyca|Złudzenie|Psota|Ambicja|Ciemność|Proroctwo|Przebranie|Próżność|Honor|Zawiść|Retoryka|Władza|Komedia|Obowiązek|Niewinność|Oddanie|Mądrość|Moc|Wiedza|Współczucie|Przemiana|Alchemia|Ocean|Wizja|Piękno|Bunt|Stworzenie|Rewolucja|Smutek|Grom|Światło|Miłość|Szybkość|Odrodzenie|Spryt|Skamienienie|Chwała
 [types]
@@ -30,7 +30,7 @@ Postać|Relikwia|Mikstura
 LD-001	Wędrowałem samotny jak obłok, co płynie wysoko nad dolinami i wzgórzami.
 LD-002	Woda, woda, wszędzie woda, a ani kropli do picia.
 LD-003	Rzecz piękna jest radością na zawsze: jej urok wciąż rośnie.
-GC-001	Kroczy w piękności, jak noc bezchmurnych krain i gwiaździstych niebios.
+GC-001	Kroczy w piękności jak noc bezchmurnych krain i gwiaździstych niebios.
 GC-002	Strzeż się; bo jestem nieustraszony, a przeto potężny.
 GC-003	Raz, o posępnej północy, gdy dumałem, słaby i znużony.
 GC-004	Zobaczyć świat w ziarenku piasku i niebo w polnym kwiecie.

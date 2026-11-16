@@ -60,7 +60,7 @@ MO-002	Une rue de Vérone sombre dans le chaos. Mercutio danse entre les lames, 
 FA-001	La forêt enchantée scintille de malice. Puck file entre les vieux chênes, laissant des traînées de poussière de fée. En bas, les mortels endormis font des rêves étranges.
 FA-002	Un trône de lianes vivantes s’élève du sol de la forêt. Titania commande sa cour de fées tandis que les lucioles éclairent la voûte des arbres. La nature elle-même s’incline devant sa volonté.
 RL-001	Un crâne repose sur du velours dans une crypte obscure. Un rire fantomatique résonne tandis que les souvenirs du bouffon de la cour vacillent comme la flamme d’une bougie.
-RL-002	Un bâton noueux crépite d’énergie arcanique. La tempête tourbillonne autour de lui tandis que Prospero murmure son dernier sortilège. L’éclair fend le ciel.
+RL-002	Un bâton noueux crépite d’une énergie occulte. La tempête tourbillonne autour de lui tandis que Prospero murmure son dernier sortilège. L’éclair fend le ciel.
 PT-001	Une fiole luisante palpite d’une lumière rose. Des cœurs s’élèvent de sa surface tandis qu’une douce mélodie emplit l’air.
 PT-002	Un chaudron bouillonnant crache une fumée verte. Trois silhouettes sombres tournent autour en psalmodiant. Des yeux luisent dans les bois obscurs.
 VC-001	Le Prince se tient sur les marches du palais de Vérone ; sa voix impose le silence à la foule ennemie. Un sceptre d’or brûle d’autorité.

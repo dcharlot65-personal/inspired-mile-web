@@ -3495,7 +3495,7 @@
       "detail": "Q82083 label (de)"
      },
      "quote": {
-      "text": "Ein Ding der Schönheit ist eine Freude für immer: seine Lieblichkeit wächst.",
+      "text": "Ein Ding der Schönheit ist eine Freude für immer: Seine Lieblichkeit wächst.",
       "source": "new",
       "cite": "Keats, Endymion, Book I, lines 1-2"
      },
@@ -7021,7 +7021,7 @@
       "detail": "Q5679 label (pl)"
      },
      "quote": {
-      "text": "Kroczy w piękności, jak noc bezchmurnych krain i gwiaździstych niebios.",
+      "text": "Kroczy w piękności jak noc bezchmurnych krain i gwiaździstych niebios.",
       "source": "new",
       "cite": "Byron, \"She Walks in Beauty\", lines 1-2"
      },
@@ -7254,7 +7254,7 @@
      "source": "translated"
     },
     "Verona Court": {
-     "text": "Dwór werneński",
+     "text": "Dwór weroński",
      "source": "translated"
     },
     "Scottish Court": {
@@ -7373,9 +7373,15 @@
       "detail": "Q2447542 label (ru)"
      },
      "quote": {
-      "text": "Быть или не быть, вот в чём вопрос.",
-      "source": "new",
-      "cite": "Hamlet 3.1"
+      "text": "Быть иль не быть? Вот в чем вопрос?",
+      "source": "published",
+      "cite": "Hamlet 3.1",
+      "translator": "Пётр Гнедич (1855–1925)",
+      "edition": "«Гамлет, принц датский», издание 1917 года (первое 1892) (ru.wikisource.org transcription, modern orthography)",
+      "status": "Public domain: Russia (life + 70 years; translator died 1925) and United States (published before 1931)",
+      "url": "https://ru.wikisource.org/wiki/%D0%93%D0%B0%D0%BC%D0%BB%D0%B5%D1%82%2C_%D0%BF%D1%80%D0%B8%D0%BD%D1%86_%D0%B4%D0%B0%D1%82%D1%81%D0%BA%D0%B8%D0%B9_%28%D0%A8%D0%B5%D0%BA%D1%81%D0%BF%D0%B8%D1%80%3B_%D0%93%D0%BD%D0%B5%D0%B4%D0%B8%D1%87%29/1917_%28%D0%A1%D0%9E%29?oldid=5657806",
+      "page": "Гамлет, принц датский (Шекспир; Гнедич)/1917 (СО)",
+      "revid": 5657806
      },
      "scene": "translated"
     },
@@ -7450,9 +7456,15 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": "Увы, бедный Йорик! Я знал его, Горацио.",
-      "source": "new",
-      "cite": "Hamlet 5.1"
+      "text": "Увы, бедный Йорик!",
+      "source": "published",
+      "cite": "Hamlet 5.1",
+      "translator": "Пётр Гнедич (1855–1925)",
+      "edition": "«Гамлет, принц датский», издание 1917 года (первое 1892) (ru.wikisource.org transcription, modern orthography)",
+      "status": "Public domain: Russia (life + 70 years; translator died 1925) and United States (published before 1931)",
+      "url": "https://ru.wikisource.org/wiki/%D0%93%D0%B0%D0%BC%D0%BB%D0%B5%D1%82%2C_%D0%BF%D1%80%D0%B8%D0%BD%D1%86_%D0%B4%D0%B0%D1%82%D1%81%D0%BA%D0%B8%D0%B9_%28%D0%A8%D0%B5%D0%BA%D1%81%D0%BF%D0%B8%D1%80%3B_%D0%93%D0%BD%D0%B5%D0%B4%D0%B8%D1%87%29/1917_%28%D0%A1%D0%9E%29?oldid=5657806",
+      "page": "Гамлет, принц датский (Шекспир; Гнедич)/1917 (СО)",
+      "revid": 5657806
      },
      "scene": "translated"
     },
@@ -7742,9 +7754,15 @@
       "detail": "word 3 of 3 of \"Марк Юний Брут\" (Q172248 label (ru))"
      },
      "quote": {
-      "text": "Не потому, что я меньше любил Цезаря, а потому, что я больше любил Рим.",
-      "source": "new",
-      "cite": "Julius Caesar 3.2"
+      "text": "не оттого я это сделал, что любил Цезаря меньше, но лишь оттого, что любил Рим больше.",
+      "source": "published",
+      "cite": "Julius Caesar 3.2",
+      "translator": "Павел Козлов (1841–1891)",
+      "edition": "«Юлий Цезарь», 1880 (ru.wikisource.org transcription, modern orthography)",
+      "status": "Public domain: Russia (life + 70 years; translator died 1891) and United States (published before 1931)",
+      "url": "https://ru.wikisource.org/wiki/%D0%AE%D0%BB%D0%B8%D0%B9_%D0%A6%D0%B5%D0%B7%D0%B0%D1%80%D1%8C_%28%D0%A8%D0%B5%D0%BA%D1%81%D0%BF%D0%B8%D1%80%3B_%D0%9A%D0%BE%D0%B7%D0%BB%D0%BE%D0%B2%29?oldid=5753958",
+      "page": "Юлий Цезарь (Шекспир; Козлов)",
+      "revid": 5753958
      },
      "scene": "translated"
     },
@@ -7755,9 +7773,15 @@
       "detail": "word 2 of 3 of \"Гай Кассий Лонгин\" (Q207370 label (ru))"
      },
      "quote": {
-      "text": "Вина, дорогой Брут, не в наших звёздах, а в нас самих.",
-      "source": "new",
-      "cite": "Julius Caesar 1.2"
+      "text": "Не в звездах, нет, а в нас самих ищи / Причину, что ничтожны мы и слабы.",
+      "source": "published",
+      "cite": "Julius Caesar 1.2",
+      "translator": "Павел Козлов (1841–1891)",
+      "edition": "«Юлий Цезарь», 1880 (ru.wikisource.org transcription, modern orthography)",
+      "status": "Public domain: Russia (life + 70 years; translator died 1891) and United States (published before 1931)",
+      "url": "https://ru.wikisource.org/wiki/%D0%AE%D0%BB%D0%B8%D0%B9_%D0%A6%D0%B5%D0%B7%D0%B0%D1%80%D1%8C_%28%D0%A8%D0%B5%D0%BA%D1%81%D0%BF%D0%B8%D1%80%3B_%D0%9A%D0%BE%D0%B7%D0%BB%D0%BE%D0%B2%29?oldid=5753958",
+      "page": "Юлий Цезарь (Шекспир; Козлов)",
+      "revid": 5753958
      },
      "scene": "translated"
     },
@@ -8392,7 +8416,7 @@
       "detail": "Q673361 label (ar)"
      },
      "quote": {
-      "text": "لكن مهلاً، أي نور ذاك الذي ينبثق من تلك النافذة؟",
+      "text": "لكن مهلًا، أي نور ذاك الذي ينبثق من تلك النافذة؟",
       "source": "new",
       "cite": "Romeo and Juliet 2.2"
      },
@@ -8509,7 +8533,7 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": "طريق الحب الصادق لم يكن يوماً ممهداً.",
+      "text": "طريق الحب الصادق لم يكن يومًا ممهدًا.",
       "source": "new",
       "cite": "A Midsummer Night's Dream 1.1"
      },
@@ -8535,7 +8559,7 @@
       "detail": "Q15829750 has no label in ar and no ar.wikipedia.org article"
      },
      "quote": {
-      "text": "إن عدتم يوماً إلى تعكير شوارعنا فستدفع حياتكم ثمن الإخلال بالسلام.",
+      "text": "إن عدتم يومًا إلى تعكير شوارعنا فستدفع حياتكم ثمن الإخلال بالسلام.",
       "source": "new",
       "cite": "Romeo and Juliet 1.1"
      },
@@ -8678,7 +8702,7 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": "سأضع حزاماً حول الأرض في أربعين دقيقة.",
+      "text": "سأضع حزامًا حول الأرض في أربعين دقيقة.",
       "source": "new",
       "cite": "A Midsummer Night's Dream 2.1"
      },
@@ -8717,7 +8741,7 @@
       "detail": "Q806945 label (ar)"
      },
      "quote": {
-      "text": "ستنجب ملوكاً وإن لم تكن أنت ملكاً.",
+      "text": "ستنجب ملوكًا وإن لم تكن أنت ملكًا.",
       "source": "new",
       "cite": "Macbeth 1.3"
      },
@@ -8847,7 +8871,7 @@
       "detail": "Q2190927 has no label in ar and no ar.wikipedia.org article"
      },
      "quote": {
-      "text": "رأيت رؤيا عجيبة نادرة. رأيت حلماً يفوق عقل الإنسان.",
+      "text": "رأيت رؤيا عجيبة نادرة. رأيت حلمًا يفوق عقل الإنسان.",
       "source": "new",
       "cite": "A Midsummer Night's Dream 4.1"
      },
@@ -8860,7 +8884,7 @@
       "detail": "Q3687815 label (ar)"
      },
      "quote": {
-      "text": "أوقات الحزن هذه لا تترك وقتاً للغزل.",
+      "text": "أوقات الحزن هذه لا تترك وقتًا للغزل.",
       "source": "new",
       "cite": "Romeo and Juliet 3.4"
      },
@@ -8899,7 +8923,7 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": "ليس كل ما يلمع ذهباً.",
+      "text": "ليس كل ما يلمع ذهبًا.",
       "source": "new",
       "cite": "The Merchant of Venice 2.7"
      },
@@ -9029,7 +9053,7 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": "ضع هذا في أي سائل تشاء واشربه كله؛ ولو كانت لك قوة عشرين رجلاً لقضى عليك في الحال.",
+      "text": "ضع هذا في أي سائل تشاء واشربه كله؛ ولو كانت لك قوة عشرين رجلًا لقضى عليك في الحال.",
       "source": "new",
       "cite": "Romeo and Juliet 5.1"
      },
@@ -9042,7 +9066,7 @@
       "detail": "Q45546 label (ar)"
      },
      "quote": {
-      "text": "همت وحيداً كسحابة تطفو عالياً فوق الوديان والتلال.",
+      "text": "همت وحيدًا كسحابة تطفو عاليًا فوق الوديان والتلال.",
       "source": "new",
       "cite": "Wordsworth, \"I Wandered Lonely as a Cloud\", lines 1-2"
      },
@@ -9107,7 +9131,7 @@
       "detail": "Q16867 label (ar)"
      },
      "quote": {
-      "text": "ذات مرة، في منتصف ليل كئيب، بينما كنت أتأمل، ضعيفاً متعباً.",
+      "text": "ذات مرة، في منتصف ليل كئيب، بينما كنت أتأمل، ضعيفًا متعبًا.",
       "source": "new",
       "cite": "Poe, \"The Raven\", line 1"
      },
@@ -9120,7 +9144,7 @@
       "detail": "Q41513 label (ar)"
      },
      "quote": {
-      "text": "أن ترى عالماً في حبة رمل، وسماء في زهرة برية.",
+      "text": "أن ترى عالمًا في حبة رمل، وسماء في زهرة برية.",
       "source": "new",
       "cite": "Blake, \"Auguries of Innocence\", lines 1-2"
      },
@@ -9133,7 +9157,7 @@
       "detail": "Q93343 label (ar)"
      },
      "quote": {
-      "text": "إذا جاء الشتاء، فهل يكون الربيع بعيداً؟",
+      "text": "إذا جاء الشتاء، فهل يكون الربيع بعيدًا؟",
       "source": "new",
       "cite": "P. B. Shelley, \"Ode to the West Wind\", last line"
      },
@@ -9159,7 +9183,7 @@
       "detail": "Q236596 label (ar)"
      },
      "quote": {
-      "text": "اذكرني حين أكون قد رحلت، رحلت بعيداً إلى الأرض الصامتة.",
+      "text": "اذكرني حين أكون قد رحلت، رحلت بعيدًا إلى الأرض الصامتة.",
       "source": "new",
       "cite": "C. Rossetti, \"Remember\", lines 1-2"
      },
@@ -9224,7 +9248,7 @@
       "detail": "Q41484 label (ar)"
      },
      "quote": {
-      "text": "سريعاً كالفكر، أحمل كلمات الآلهة إلى آذان البشر.",
+      "text": "سريعًا كالفكر، أحمل كلمات الآلهة إلى آذان البشر.",
       "source": "new",
       "cite": "the game's own line"
      },
@@ -9263,7 +9287,7 @@
       "detail": "Q47231 label (ar)"
      },
      "quote": {
-      "text": "حدثيني يا ربة الشعر عن الرجل الكثير الحيل، الذي تاه بعيداً.",
+      "text": "حدثيني يا ربة الشعر عن الرجل الكثير الحيل، الذي تاه بعيدًا.",
       "source": "new",
       "cite": "the game's own paraphrase of Odyssey 1.1"
      },
