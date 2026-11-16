@@ -167,6 +167,74 @@ test.describe('Verse duel', () => {
 });
 
 /**
+ * With a model loaded, the language picker says where it is not used: beside a language the
+ * model does not write in, "Written opponent"; under the picker, why, for writing and for
+ * judging. The model is a stand-in (this browser has no WebGPU): navigator.gpu and the
+ * Transformers.js module are stubbed as in pwa.spec.ts, so loadBrain's own success path runs
+ * and brainInfo() is the real MODELS entry with its measured lists.
+ */
+test.describe('Language picker with a model loaded', () => {
+  test.use({ serviceWorkers: 'block' });
+  const STUB = `
+export async function pipeline() { const g = async () => [{ generated_text: [{ role: 'assistant', content: 'stub verse' }] }]; g.tokenizer = {}; g.dispose = async () => {}; return g; }
+export class TextStreamer {}
+export const env = { backends: { onnx: { wasm: { wasmPaths: {
+  mjs: 'https://cdn.jsdelivr.net/npm/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.mjs',
+  wasm: 'https://cdn.jsdelivr.net/npm/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.wasm',
+} } } } };`;
+
+  test('marks each language the loaded model does not write in, and says why under the picker', async ({ page }) => {
+    const m = MODELS.grand;
+    const all = ['en', 'es', 'fr', 'de', 'it', 'pt', 'pl', 'ru', 'ar', 'hi', 'zh', 'ja', 'ko', 'vi', 'th', 'id'];
+    const both = all.find((l) => m.writesIn.includes(l) && m.judgesIn.includes(l));
+    const writesOnly = all.find((l) => m.writesIn.includes(l) && !m.judgesIn.includes(l));
+    const neither = all.find((l) => !m.writesIn.includes(l) && !m.judgesIn.includes(l));
+    // With the measured lists each kind exists; a test that met none of them would prove nothing.
+    expect([both, writesOnly, neither].filter(Boolean).length, 'languages of each kind in the measured lists').toBeGreaterThanOrEqual(2);
+
+    await page.addInitScript(() => {
+      Object.defineProperty(Navigator.prototype, 'gpu', { configurable: true, get: () => ({ requestAdapter: async () => ({ features: new Set(['shader-f16']) }) }) });
+    });
+    await page.route(/huggingface[_/]transformers/, (route) => route.fulfill({ contentType: 'text/javascript', body: STUB }));
+    await page.goto('/battle?brain=grand&seed=11');
+    await expect(page.locator('#brain-status')).toContainText(`${m.label} is loaded`);
+
+    const options = page.locator('#language option');
+    await expect(options).toHaveCount(16);
+    const marks = await options.evaluateAll((os) => os.map((o) => [(o as HTMLOptionElement).value, (o as HTMLOptionElement).dataset.opponent, o.textContent!.includes('Written opponent')]));
+    for (const [code, opponent, marked] of marks) {
+      const writes = m.writesIn.includes(code as string);
+      expect(opponent, `${code}: who writes`).toBe(writes ? 'model' : 'written');
+      expect(marked, `${code}: marked "Written opponent"`).toBe(!writes);
+    }
+
+    const note = page.locator('#language-note');
+    if (both) {
+      await page.selectOption('#language', both);
+      await expect(note).toBeHidden();
+      await expect(note).toHaveAttribute('data-writer', 'model');
+      await expect(note).toHaveAttribute('data-judge', 'model');
+    }
+    if (writesOnly) {
+      await page.selectOption('#language', writesOnly);
+      await expect(note).toBeVisible();
+      await expect(note).toHaveAttribute('data-writer', 'model');
+      await expect(note).toHaveAttribute('data-judge', 'rules');
+      await expect(note).toContainText(`judged by rule, because ${m.label} has not shown it is a good judge of verse`);
+      await expect(note).not.toContainText('written opponent');
+    }
+    if (neither) {
+      await page.selectOption('#language', neither);
+      await expect(note).toBeVisible();
+      await expect(note).toHaveAttribute('data-writer', 'written');
+      await expect(note).toHaveAttribute('data-judge', 'rules');
+      await expect(note).toContainText(`you face the written opponent, because ${m.label} has not shown it can write verse well`);
+      await expect(note).toContainText('judged by rule');
+    }
+  });
+});
+
+/**
  * The model panel offers only models measured to write or judge in some language
  * (docs/language/MODEL-EVAL.md). The browser is made to report a GPU; no model is
  * downloaded, because nothing is clicked and no earlier choice is stored.

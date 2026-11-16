@@ -347,9 +347,15 @@ describe('the commentary check', () => {
       const pack = packs.find((p) => p.lang === cell.lang)!;
       const texts = [...read('corpus', `${cell.lang}.json`).excerpts.map((e: { text: string }) => e.text), ...Object.values(pack.written).flat()] as string[];
       const sets = [...new Map(cell.plays.map((p: { prompt: string[]; answering: string | null }) => [p.prompt.join('\n'), instructionLines(p.prompt, p.answering)])).values()] as string[][];
-      for (const t of texts) for (const instructions of sets) {
-        checked++;
-        expect(commentary(t, cell.lang, { instructions }), `${cell.lang}: ${t}`).toEqual([]);
+      // What the prompt adds, and only that: a reference verse may still meet the one rule that
+      // reads no prompt (a first line ending in a colon, Dante's "Stavvi Minòs orribilmente, e
+      // ringhia:"), which the next test bounds.
+      for (const t of texts) {
+        const alone = commentary(t, cell.lang);
+        for (const instructions of sets) {
+          checked++;
+          expect(commentary(t, cell.lang, { instructions }), `${cell.lang}: ${t}`).toEqual(alone);
+        }
       }
     }
     // Nothing checked would prove nothing: there are cells, so there are prompts.
