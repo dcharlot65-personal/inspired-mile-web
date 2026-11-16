@@ -1,33 +1,40 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import T from '../components/T.astro';
+import { loadArea, t } from '../i18n';
+import { num } from '../i18n/pages/runtime';
+import { elementName, houseName, rarityName, typesName } from '../i18n/pages/terms';
+import { DECK_RULES } from '../lib/battle-rules';
 import { CARD_CATALOG, RARITY_COLORS } from '../lib/cards';
+import { ACHIEVEMENTS } from '../lib/achievements';
+import { CITY_CATALOG } from '../lib/variants';
+
+// English at build time; the script at the foot of the page puts it in the visitor's language.
+await Promise.all(['collection', 'card-terms', 'variants', 'achievements', 'rules'].map((a) => loadArea(a)));
+
+const filterIdle = 'filter-btn px-4 py-2 text-sm rounded-lg bg-obsidian-800 text-obsidian-300 border border-obsidian-700 hover:border-gold-500/30 transition-all';
+const cityTotal = Object.keys(CITY_CATALOG).length;
+const count = 'text-gold-400 font-mono';
 ---
 
-<BaseLayout title="My Collection" description="Browse your Inspired Mile card collection — characters, relics, and potions from Shakespeare's greatest works.">
+<BaseLayout title="My Collection" titleKey="collection.meta.title" description={t('collection.meta.description')} descriptionKey="collection.meta.description" i18nAreas={['collection']}>
 
   <!-- Header -->
   <section class="section-padding pb-8">
     <div class="max-w-7xl mx-auto">
       <div class="text-center mb-8">
-        <h1 class="text-4xl sm:text-5xl font-display font-bold mb-4">
-          My <span class="text-gradient">Collection</span>
-        </h1>
-        <p class="text-obsidian-400 max-w-2xl mx-auto">
-          Your Shakespeare card collection. Locked cards can be earned in the
-          <a href="/playground" class="text-gold-400 hover:text-gold-300 underline">Playground</a>.
-        </p>
-        <p class="text-sm text-obsidian-500 mt-2">
-          <span id="owned-count" class="text-gold-400 font-mono">0</span> / {CARD_CATALOG.length} cards owned
-        </p>
+        <T k="collection.title" as="h1" class="text-4xl sm:text-5xl font-display font-bold mb-4" />
+        <T k="collection.intro" as="p" class="text-obsidian-400 max-w-2xl mx-auto" aHref="/playground" aClass="text-gold-400 hover:text-gold-300 underline" />
+        <T k="collection.owned" as="p" id="owned-line" class="text-sm text-obsidian-500 mt-2" vars={{ owned: 0, total: CARD_CATALOG.length }} bClass={count} varIds={{ owned: 'owned-count' }} />
       </div>
 
       <!-- Filters -->
       <div class="flex flex-wrap justify-center gap-3 mb-12" id="filters">
-        <button data-filter="all" class="filter-btn active px-4 py-2 text-sm rounded-lg bg-gold-500/20 text-gold-400 border border-gold-500/30 hover:bg-gold-500/30 transition-all">All</button>
-        <button data-filter="Character" class="filter-btn px-4 py-2 text-sm rounded-lg bg-obsidian-800 text-obsidian-300 border border-obsidian-700 hover:border-gold-500/30 transition-all">Characters</button>
-        <button data-filter="Relic" class="filter-btn px-4 py-2 text-sm rounded-lg bg-obsidian-800 text-obsidian-300 border border-obsidian-700 hover:border-gold-500/30 transition-all">Relics</button>
-        <button data-filter="Potion" class="filter-btn px-4 py-2 text-sm rounded-lg bg-obsidian-800 text-obsidian-300 border border-obsidian-700 hover:border-gold-500/30 transition-all">Potions</button>
-        <button data-filter="owned" class="filter-btn px-4 py-2 text-sm rounded-lg bg-obsidian-800 text-obsidian-300 border border-obsidian-700 hover:border-gold-500/30 transition-all">Owned</button>
+        <button data-filter="all" class="filter-btn active px-4 py-2 text-sm rounded-lg bg-gold-500/20 text-gold-400 border border-gold-500/30 hover:bg-gold-500/30 transition-all"><T k="collection.filter.all" /></button>
+        <button data-filter="Character" class={filterIdle} data-term-types="Character">{typesName('Character')}</button>
+        <button data-filter="Relic" class={filterIdle} data-term-types="Relic">{typesName('Relic')}</button>
+        <button data-filter="Potion" class={filterIdle} data-term-types="Potion">{typesName('Potion')}</button>
+        <button data-filter="owned" class={filterIdle}><T k="collection.filter.owned" /></button>
       </div>
     </div>
   </section>
@@ -54,6 +61,7 @@ import { CARD_CATALOG, RARITY_COLORS } from '../lib/cards';
         ))}
       </div>
 
+      <!-- Card names and quotations are shown as the card data gives them (data-card-text). -->
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 hidden" id="card-grid">
         {CARD_CATALOG.map((card) => (
           <div
@@ -76,10 +84,8 @@ import { CARD_CATALOG, RARITY_COLORS } from '../lib/cards';
                   {card.icon}
                 </div>
               )}
-              <span class={`absolute top-3 right-3 px-2 py-0.5 text-xs rounded-full font-medium ${RARITY_COLORS[card.rarity]}`}>
-                {card.rarity}
-              </span>
-              <span class="absolute top-3 left-3 text-xs font-mono text-obsidian-400/60">{card.id}</span>
+              <span class={`absolute top-3 end-3 px-2 py-0.5 text-xs rounded-full font-medium ${RARITY_COLORS[card.rarity]}`} data-term-rarity={card.rarity}>{rarityName(card.rarity)}</span>
+              <span class="absolute top-3 start-3 text-xs font-mono text-obsidian-400/60">{card.id}</span>
 
               <!-- Lock overlay (toggled by JS) -->
               <div class="lock-overlay absolute inset-0 bg-obsidian-950/70 flex items-center justify-center hidden">
@@ -87,7 +93,7 @@ import { CARD_CATALOG, RARITY_COLORS } from '../lib/cards';
                   <svg class="w-8 h-8 text-obsidian-500 mx-auto mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                   </svg>
-                  <span class="text-xs text-obsidian-500">Locked</span>
+                  <T k="collection.locked" class="text-xs text-obsidian-500" />
                 </div>
               </div>
 
@@ -96,23 +102,23 @@ import { CARD_CATALOG, RARITY_COLORS } from '../lib/cards';
             <!-- Card Info -->
             <div class="p-4">
               <div class="flex items-center justify-between mb-1">
-                <h3 class="font-display text-lg font-semibold text-obsidian-100">{card.name}</h3>
+                <h3 class="font-display text-lg font-semibold text-obsidian-100" data-card-text>{card.name}</h3>
               </div>
-              <p class="text-xs text-obsidian-500 mb-3">{card.house} &middot; {card.element}</p>
+              <p class="text-xs text-obsidian-500 mb-3"><span data-term-house={card.house}>{houseName(card.house)}</span> &middot; <span data-term-element={card.element}>{elementName(card.element)}</span></p>
 
               {card.type === 'Character' && (
-                <div class="flex items-center gap-4 mb-3 text-xs">
-                  <span class="text-crimson-400">ATK {card.atk}</span>
-                  <span class="text-blue-400">DEF {card.def}</span>
-                  <span class="text-emerald-400">HP {card.hp}</span>
+                <div class="flex flex-wrap items-center gap-x-4 gap-y-1 mb-3 text-xs">
+                  <span class="text-crimson-400"><T k="card-terms.stat.atk" /> <span data-num={card.atk}>{num(card.atk)}</span></span>
+                  <span class="text-blue-400"><T k="card-terms.stat.def" /> <span data-num={card.def}>{num(card.def)}</span></span>
+                  <span class="text-emerald-400"><T k="card-terms.stat.hp" /> <span data-num={card.hp}>{num(card.hp)}</span></span>
                 </div>
               )}
 
-              <p class="text-xs text-obsidian-400 italic leading-relaxed line-clamp-2">"{card.quote}"</p>
+              <p class="text-xs text-obsidian-400 italic leading-relaxed line-clamp-2" data-card-text>"{card.quote}"</p>
 
               <!-- Duplicate count -->
               <div class="dup-badge hidden mt-2">
-                <span class="text-xs text-obsidian-500">x<span class="dup-count">1</span></span>
+                <span class="text-xs text-obsidian-500">&times;<span class="dup-count">1</span></span>
               </div>
             </div>
           </div>
@@ -126,15 +132,13 @@ import { CARD_CATALOG, RARITY_COLORS } from '../lib/cards';
     <div class="max-w-7xl mx-auto">
       <div class="border-t border-obsidian-800/50 pt-12">
         <h2 class="text-2xl sm:text-3xl font-display font-bold text-center mb-2">
-          <span class="text-gradient">World Cards</span>
+          <T k="collection.world.title" class="text-gradient" />
         </h2>
-        <p class="text-obsidian-400 text-center text-sm mb-2">
-          Your characters travel the globe. Win battles and ace trivia to unlock city variants.
-        </p>
+        <T k="collection.world.intro" as="p" class="text-obsidian-400 text-center text-sm mb-2" />
         <p class="text-sm text-obsidian-500 text-center mb-8">
-          <span id="variant-count" class="text-gold-400 font-mono">0</span> variants unlocked
+          <T k="variants.unlocked" id="variant-line" vars={{ n: 0 }} bClass={count} varIds={{ n: 'variant-count' }} />
           &middot;
-          <span id="city-count" class="text-gold-400 font-mono">0</span> / 12 cities discovered
+          <T k="world-map.cities" id="city-line" vars={{ n: 0, total: cityTotal }} bClass={count} varIds={{ n: 'city-count' }} />
         </p>
         <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4" id="city-grid">
         </div>
@@ -149,51 +153,44 @@ import { CARD_CATALOG, RARITY_COLORS } from '../lib/cards';
     <div class="max-w-7xl mx-auto">
       <div class="border-t border-obsidian-800/50 pt-12">
         <h2 class="text-2xl sm:text-3xl font-display font-bold text-center mb-2">
-          <span class="text-gradient">Deck Builder</span>
+          <T k="collection.deck.title" class="text-gradient" />
         </h2>
-        <p class="text-obsidian-400 text-center text-sm mb-8">
-          Build a deck of 3–5 characters + up to 2 relics + up to 2 potions (7 max). Click owned cards above to add them.
-        </p>
+        <T k="collection.deck.intro" as="p" class="text-obsidian-400 text-center text-sm mb-8"
+          vars={{ min: DECK_RULES.minCharacters, max: DECK_RULES.maxCharacters, relics: DECK_RULES.maxRelics, potions: DECK_RULES.maxPotions, total: DECK_RULES.totalMax }} />
 
         <!-- Deck Controls -->
         <div class="flex flex-wrap items-center gap-3 mb-6">
-          <input id="deck-name" type="text" placeholder="Deck name..."
+          <input id="deck-name" type="text" placeholder={t('collection.deck.namePlaceholder')} data-i18n-attr="placeholder:collection.deck.namePlaceholder"
             class="flex-1 min-w-[200px] bg-obsidian-800 border border-obsidian-700 rounded-lg px-4 py-2 text-sm text-obsidian-100 placeholder-obsidian-500 focus:outline-hidden focus:border-gold-500/50" />
-          <button id="save-deck-btn" class="btn-primary px-4 py-2 text-sm">Save Deck</button>
-          <button id="clear-deck-btn" class="btn-secondary px-4 py-2 text-sm">Clear</button>
+          <button id="save-deck-btn" class="btn-primary px-4 py-2 text-sm"><T k="collection.deck.save" /></button>
+          <button id="clear-deck-btn" class="btn-secondary px-4 py-2 text-sm"><T k="collection.deck.clear" /></button>
         </div>
 
         <!-- Deck Slots -->
         <div class="grid md:grid-cols-3 gap-6 mb-6">
           <div>
             <h3 class="text-sm font-display font-semibold text-obsidian-300 mb-2">
-              Characters <span id="char-count" class="text-obsidian-500">(0/5)</span>
+              <span data-term-types="Character">{typesName('Character')}</span> <span id="char-count" class="text-obsidian-500" dir="ltr">(0/{DECK_RULES.maxCharacters})</span>
             </h3>
-            <div id="deck-characters" class="space-y-2 min-h-[80px] p-3 rounded-lg border border-dashed border-obsidian-700 bg-obsidian-900/30">
-              <p class="deck-placeholder text-xs text-obsidian-600 text-center py-4">Click owned characters to add</p>
-            </div>
+            <div id="deck-characters" class="space-y-2 min-h-[80px] p-3 rounded-lg border border-dashed border-obsidian-700 bg-obsidian-900/30"></div>
           </div>
           <div>
             <h3 class="text-sm font-display font-semibold text-obsidian-300 mb-2">
-              Relics <span id="relic-count" class="text-obsidian-500">(0/2)</span>
+              <span data-term-types="Relic">{typesName('Relic')}</span> <span id="relic-count" class="text-obsidian-500" dir="ltr">(0/{DECK_RULES.maxRelics})</span>
             </h3>
-            <div id="deck-relics" class="space-y-2 min-h-[80px] p-3 rounded-lg border border-dashed border-obsidian-700 bg-obsidian-900/30">
-              <p class="deck-placeholder text-xs text-obsidian-600 text-center py-4">Click owned relics to add</p>
-            </div>
+            <div id="deck-relics" class="space-y-2 min-h-[80px] p-3 rounded-lg border border-dashed border-obsidian-700 bg-obsidian-900/30"></div>
           </div>
           <div>
             <h3 class="text-sm font-display font-semibold text-obsidian-300 mb-2">
-              Potions <span id="potion-count" class="text-obsidian-500">(0/2)</span>
+              <span data-term-types="Potion">{typesName('Potion')}</span> <span id="potion-count" class="text-obsidian-500" dir="ltr">(0/{DECK_RULES.maxPotions})</span>
             </h3>
-            <div id="deck-potions" class="space-y-2 min-h-[80px] p-3 rounded-lg border border-dashed border-obsidian-700 bg-obsidian-900/30">
-              <p class="deck-placeholder text-xs text-obsidian-600 text-center py-4">Click owned potions to add</p>
-            </div>
+            <div id="deck-potions" class="space-y-2 min-h-[80px] p-3 rounded-lg border border-dashed border-obsidian-700 bg-obsidian-900/30"></div>
           </div>
         </div>
 
         <!-- Synergy Preview -->
         <div id="synergy-preview" class="hidden card-glass p-4 mb-6">
-          <h3 class="text-sm font-display font-semibold text-gold-400 mb-2">Active Synergies</h3>
+          <T k="collection.deck.synergies" as="h3" class="text-sm font-display font-semibold text-gold-400 mb-2" />
           <div id="synergy-list" class="space-y-1"></div>
         </div>
 
@@ -202,10 +199,8 @@ import { CARD_CATALOG, RARITY_COLORS } from '../lib/cards';
 
         <!-- Saved Decks -->
         <div class="mt-6">
-          <h3 class="text-sm font-display font-semibold text-obsidian-300 mb-3">Saved Decks</h3>
-          <div id="saved-decks-list" class="space-y-2">
-            <p class="text-xs text-obsidian-600">No saved decks yet.</p>
-          </div>
+          <T k="collection.deck.saved" as="h3" class="text-sm font-display font-semibold text-obsidian-300 mb-3" />
+          <div id="saved-decks-list" class="space-y-2"></div>
         </div>
       </div>
     </div>
@@ -216,7 +211,7 @@ import { CARD_CATALOG, RARITY_COLORS } from '../lib/cards';
     <div class="absolute inset-0 bg-obsidian-950/90 backdrop-blur-xs" id="modal-backdrop"></div>
     <div class="relative flex items-center justify-center min-h-screen p-4">
       <div class="card-glass max-w-lg w-full max-h-[90vh] overflow-y-auto relative">
-        <button id="modal-close" class="absolute top-4 right-4 text-obsidian-400 hover:text-obsidian-200 z-10">
+        <button id="modal-close" class="absolute top-4 end-4 text-obsidian-400 hover:text-obsidian-200 z-10" aria-label={t('collection.modal.close')} data-i18n-attr="aria-label:collection.modal.close">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
           </svg>
@@ -231,11 +226,10 @@ import { CARD_CATALOG, RARITY_COLORS } from '../lib/cards';
     <div class="max-w-7xl mx-auto">
       <div class="border-t border-obsidian-800/50 pt-12">
         <h2 class="text-2xl sm:text-3xl font-display font-bold text-center mb-2">
-          <span class="text-gradient">Achievements</span>
+          <T k="collection.achievements.title" class="text-gradient" />
         </h2>
-        <p class="text-obsidian-400 text-center text-sm mb-8">
-          <span id="achievement-count" class="text-gold-400 font-mono">0</span> / <span id="achievement-total" class="font-mono">0</span> unlocked
-        </p>
+        <T k="collection.achievements.count" as="p" id="achievement-line" class="text-obsidian-400 text-center text-sm mb-8"
+          vars={{ n: 0, total: ACHIEVEMENTS.length }} bClass={count} varIds={{ n: 'achievement-count', total: 'achievement-total' }} />
         <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4" id="achievement-grid"></div>
       </div>
     </div>
@@ -254,15 +248,26 @@ import { CARD_CATALOG, RARITY_COLORS } from '../lib/cards';
     } from '../lib/variants';
     import { CARD_CATALOG, getCardById } from '../lib/cards';
     import { initAudio, isInitialized, playMusic, playSfx } from '../lib/audio-manager';
-    import { hasARModel, getARModel, isARLikelySupported } from '../lib/ar-viewer';
-    import { CHARACTER_ABILITIES, ITEM_EFFECTS, getActiveSynergies, DECK_RULES, type Deck } from '../lib/battle-rules';
+    import { getARModel, isARLikelySupported } from '../lib/ar-viewer';
+    import { DECK_RULES, type Deck } from '../lib/battle-rules';
     import { getSavedDecks, saveDeck, deleteDeck, setActiveDeck, getActiveDeckName } from '../lib/deck-manager';
+    import { ACHIEVEMENTS, getAchievementProgress } from '../lib/achievements';
+    import { loadPack } from '../lib/verse/packs';
+    import { locale, t } from '../i18n';
+    import { day, escapeHtml as esc, initPage, list, num, setVars, tn } from '../i18n/pages/runtime';
+    import { cardRule, deckProblems, synergyLine } from '../i18n/pages/rules-text';
+    import {
+      abilityBonus, achievementDescription, achievementName, applyTerms, cityName, cityRegion,
+      elementName, houseName, rarityName, sourceName, statLabel, tierName,
+    } from '../i18n/pages/terms';
 
     // Start browse music on first interaction
     document.addEventListener('click', () => {
       if (!isInitialized()) initAudio();
       playMusic('collection-browse', 1000);
     }, { once: true });
+
+    const byId = (id: string) => document.getElementById(id);
 
     // --- Ownership state ---
     function updateOwnership() {
@@ -286,7 +291,7 @@ import { CARD_CATALOG, RARITY_COLORS } from '../lib/cards';
           const count = getDuplicateCount(id);
           if (count > 1 && dupBadge && dupCount) {
             dupBadge.classList.remove('hidden');
-            dupCount.textContent = String(count);
+            dupCount.textContent = num(count);
           }
         } else {
           el.classList.add('opacity-60');
@@ -295,10 +300,8 @@ import { CARD_CATALOG, RARITY_COLORS } from '../lib/cards';
         }
       });
 
-      document.getElementById('owned-count')!.textContent = String(ownedCount);
+      setVars(byId('owned-line'), { owned: ownedCount, total: CARD_CATALOG.length });
     }
-
-    updateOwnership();
 
     // --- Filters ---
     const filterBtns = document.querySelectorAll('.filter-btn');
@@ -350,8 +353,6 @@ import { CARD_CATALOG, RARITY_COLORS } from '../lib/cards';
     });
 
     // --- Achievements ---
-    import { ACHIEVEMENTS, getAchievementProgress } from '../lib/achievements';
-
     const TIER_BG: Record<string, string> = {
       bronze: 'from-amber-700/20 to-amber-900/20 border-amber-700/30',
       silver: 'from-gray-400/20 to-gray-600/20 border-gray-400/30',
@@ -359,55 +360,49 @@ import { CARD_CATALOG, RARITY_COLORS } from '../lib/cards';
     };
 
     function renderAchievements() {
-      const grid = document.getElementById('achievement-grid');
-      const countEl = document.getElementById('achievement-count');
-      const totalEl = document.getElementById('achievement-total');
+      const grid = byId('achievement-grid');
       if (!grid) return;
 
       const progress = getAchievementProgress();
       const unlockedCount = progress.filter(p => p.unlocked).length;
-
-      if (countEl) countEl.textContent = String(unlockedCount);
-      if (totalEl) totalEl.textContent = String(ACHIEVEMENTS.length);
+      setVars(byId('achievement-line'), { n: unlockedCount, total: ACHIEVEMENTS.length });
 
       grid.innerHTML = progress.map(({ achievement: a, unlocked, unlockedAt }) => {
         const bg = TIER_BG[a.tier] || TIER_BG.bronze;
         const opacity = unlocked ? '' : 'opacity-40';
-        const date = unlockedAt ? new Date(unlockedAt).toLocaleDateString() : '';
         return `
           <div class="card-glass p-4 rounded-xl bg-linear-to-br ${bg} border ${opacity} transition-opacity">
             <div class="flex items-center gap-3 mb-2">
               <span class="text-2xl">${a.icon}</span>
-              <div>
-                <h4 class="font-display font-semibold text-obsidian-100 text-sm">${a.name}</h4>
-                <span class="text-xs text-obsidian-500 capitalize">${a.tier}</span>
+              <div class="min-w-0">
+                <h4 class="font-display font-semibold text-obsidian-100 text-sm">${esc(achievementName(a))}</h4>
+                <span class="text-xs text-obsidian-500">${esc(tierName(a.tier))}</span>
               </div>
-              ${unlocked ? '<span class="ml-auto text-emerald-400 text-xs">&#10003;</span>' : ''}
+              ${unlocked ? '<span class="ms-auto text-emerald-400 text-xs">&#10003;</span>' : ''}
             </div>
-            <p class="text-xs text-obsidian-400">${a.description}</p>
-            ${unlocked && date ? `<p class="text-xs text-obsidian-600 mt-1">Unlocked ${date}</p>` : ''}
+            <p class="text-xs text-obsidian-400">${esc(achievementDescription(a))}</p>
+            ${unlocked && unlockedAt ? `<p class="text-xs text-obsidian-600 mt-1">${esc(t('achievements.unlockedOn', { date: day(unlockedAt) }))}</p>` : ''}
           </div>
         `;
       }).join('');
     }
 
-    renderAchievements();
-
     // --- World Cards ---
+    /** A city's attire options are style names from the catalog (English, not yet translated). */
+    const styleName = (slug: string | undefined) => (slug ?? 'classic').replace(/-/g, ' ');
+
     function renderWorldCards() {
       const cities = getAllCities();
       const unlockedCities = getUnlockedCities();
       const owned = getOwnedVariants();
-      const variantCount = getVariantCount();
 
-      document.getElementById('variant-count')!.textContent = String(variantCount);
-      document.getElementById('city-count')!.textContent = String(unlockedCities.size);
+      setVars(byId('variant-line'), { n: getVariantCount() });
+      setVars(byId('city-line'), { n: unlockedCities.size, total: cities.length });
 
       // City grid
-      const cityGrid = document.getElementById('city-grid')!;
+      const cityGrid = byId('city-grid')!;
       cityGrid.innerHTML = '';
       for (const city of cities) {
-        const config = CITY_CATALOG[city];
         const isUnlocked = unlockedCities.has(city);
         const cityVariants = owned.filter(v => {
           const d = decodeVariantId(v.variantId);
@@ -418,21 +413,21 @@ import { CARD_CATALOG, RARITY_COLORS } from '../lib/cards';
         el.className = `card-glass p-3 text-center transition-all ${isUnlocked ? 'border-gold-500/30' : 'opacity-50'}`;
         el.innerHTML = `
           <div class="text-2xl mb-1">${isUnlocked ? '&#127758;' : '&#128274;'}</div>
-          <p class="text-xs font-display font-semibold ${isUnlocked ? 'text-gold-400' : 'text-obsidian-500'}">${city}</p>
-          <p class="text-[10px] text-obsidian-500">${config.region}</p>
-          <p class="text-[10px] mt-1 ${isUnlocked ? 'text-emerald-400' : 'text-obsidian-600'}">${cityVariants.length} variant${cityVariants.length !== 1 ? 's' : ''}</p>
-          <p class="text-[10px] text-obsidian-600">+${config.ability.bonus} ${config.ability.axis}</p>
+          <p class="text-xs font-display font-semibold ${isUnlocked ? 'text-gold-400' : 'text-obsidian-500'}">${esc(cityName(city))}</p>
+          <p class="text-[10px] text-obsidian-500">${esc(cityRegion(city))}</p>
+          <p class="text-[10px] mt-1 ${isUnlocked ? 'text-emerald-400' : 'text-obsidian-600'}">${esc(tn('variants.count', { n: cityVariants.length }))}</p>
+          <p class="text-[10px] text-obsidian-600">${esc(abilityBonus(city))}</p>
         `;
         cityGrid.appendChild(el);
       }
 
       // Variant list
-      const variantList = document.getElementById('variant-list')!;
+      const variantList = byId('variant-list')!;
       variantList.innerHTML = '';
       if (owned.length === 0) {
         variantList.innerHTML = `
           <div class="col-span-full text-center py-8">
-            <p class="text-obsidian-500 text-sm">No variants yet. Win 3 battles in a row or get a perfect trivia score to unlock your first World Card!</p>
+            <p class="text-obsidian-500 text-sm">${esc(t('collection.world.empty'))}</p>
           </div>
         `;
         return;
@@ -450,26 +445,25 @@ import { CARD_CATALOG, RARITY_COLORS } from '../lib/cards';
         const el = document.createElement('div');
         el.className = 'card-glass p-3 flex items-center gap-3';
         el.innerHTML = `
-          ${card.image ? `<img src="${card.image}" alt="${card.name}" class="w-12 h-12 rounded-sm object-cover">` : `<span class="text-2xl">${card.icon}</span>`}
+          ${card.image ? `<img src="${card.image}" alt="${esc(card.name)}" class="w-12 h-12 rounded-sm object-cover">` : `<span class="text-2xl">${card.icon}</span>`}
           <div class="flex-1 min-w-0">
-            <p class="text-sm font-display font-semibold text-obsidian-200 truncate">${card.name}</p>
-            <p class="text-xs text-gold-400">${city}</p>
-            <p class="text-[10px] text-obsidian-500">+${config.ability.bonus} ${config.ability.axis} &middot; ${config.attireOptions[decoded.attireIdx]?.replace(/-/g, ' ') || 'classic'}</p>
+            <p class="text-sm font-display font-semibold text-obsidian-200 truncate" data-card-text>${esc(card.name)}</p>
+            <p class="text-xs text-gold-400">${esc(cityName(city))}</p>
+            <p class="text-[10px] text-obsidian-500">${esc(abilityBonus(city))} &middot; <span lang="en" data-style-name>${esc(styleName(config.attireOptions[decoded.attireIdx]))}</span></p>
           </div>
-          <div class="text-xs text-obsidian-500">${v.source.replace('-', ' ')}</div>
+          <div class="text-xs text-obsidian-500">${esc(sourceName(v.source))}</div>
         `;
         variantList.appendChild(el);
       }
     }
 
-    renderWorldCards();
-
     // --- Card Detail Modal ---
-    const modal = document.getElementById('card-detail-modal')!;
-    const modalContent = document.getElementById('modal-content')!;
-    const modalClose = document.getElementById('modal-close')!;
-    const modalBackdrop = document.getElementById('modal-backdrop')!;
+    const modal = byId('card-detail-modal')!;
+    const modalContent = byId('modal-content')!;
+    const modalClose = byId('modal-close')!;
+    const modalBackdrop = byId('modal-backdrop')!;
     let modelViewerLoaded = false;
+    let openCardId: string | null = null;
 
     async function loadModelViewer() {
       if (modelViewerLoaded) return;
@@ -480,28 +474,23 @@ import { CARD_CATALOG, RARITY_COLORS } from '../lib/cards';
     function openCardModal(cardId: string) {
       const card = getCardById(cardId);
       if (!card) return;
+      openCardId = cardId;
 
-      const ability = CHARACTER_ABILITIES[cardId];
-      const itemEffect = ITEM_EFFECTS[cardId];
+      const rule = cardRule(card, locale());
       const arModel = getARModel(cardId);
       const arSupported = isARLikelySupported();
+      const lines = rule.lines.map(line => `<p class="text-xs text-obsidian-400">${esc(line)}</p>`).join('');
 
-      let abilityHtml = '';
-      if (ability) {
-        abilityHtml = `
+      const ruleHtml = rule.kind === 'character' ? `
           <div class="mt-4 card-glass p-3 bg-gold-500/5 border-gold-500/20">
-            <p class="text-xs text-gold-400 font-semibold mb-1">Passive: ${ability.name}</p>
-            <p class="text-xs text-obsidian-400">${ability.description}</p>
-          </div>`;
-      }
-      if (itemEffect) {
-        abilityHtml = `
+            <p class="text-xs text-gold-400 font-semibold mb-1">${esc(t('collection.modal.passive', { name: rule.name }))}</p>
+            ${lines}
+          </div>` : `
           <div class="mt-4 card-glass p-3 bg-purple-500/5 border-purple-500/20">
-            <p class="text-xs text-purple-400 font-semibold mb-1">${itemEffect.name}</p>
-            <p class="text-xs text-obsidian-400">${itemEffect.description}</p>
-            <p class="text-xs text-obsidian-500 mt-1">Uses per battle: ${itemEffect.usesPerBattle}</p>
+            <p class="text-xs text-purple-400 font-semibold mb-1" data-card-text>${esc(rule.name)}</p>
+            ${lines}
+            <p class="text-xs text-obsidian-500 mt-1">${esc(tn('collection.modal.uses', { n: rule.usesPerBattle ?? 1 }))}</p>
           </div>`;
-      }
 
       let viewerHtml = '';
       if (arModel) {
@@ -519,34 +508,35 @@ import { CARD_CATALOG, RARITY_COLORS } from '../lib/cards';
               shadow-intensity="1"
               style="width: 100%; height: 300px; --poster-color: transparent;"
             >
-              ${arSupported ? '<button slot="ar-button" class="btn-primary text-xs px-3 py-1.5 absolute bottom-3 left-1/2 -translate-x-1/2">View in AR</button>' : ''}
+              ${arSupported ? `<button slot="ar-button" class="btn-primary text-xs px-3 py-1.5 absolute bottom-3 left-1/2 -translate-x-1/2">${esc(t('collection.modal.ar'))}</button>` : ''}
             </model-viewer>
           </div>`;
       }
 
       const statsHtml = card.type === 'Character' ? `
-        <div class="flex items-center gap-4 mt-3 text-sm">
-          <span class="text-crimson-400 font-mono">ATK ${card.atk}</span>
-          <span class="text-blue-400 font-mono">DEF ${card.def}</span>
-          <span class="text-emerald-400 font-mono">HP ${card.hp}</span>
+        <div class="flex flex-wrap items-center gap-x-4 gap-y-1 mt-3 text-sm">
+          <span class="text-crimson-400 font-mono">${esc(statLabel('atk'))} ${num(card.atk)}</span>
+          <span class="text-blue-400 font-mono">${esc(statLabel('def'))} ${num(card.def)}</span>
+          <span class="text-emerald-400 font-mono">${esc(statLabel('hp'))} ${num(card.hp)}</span>
         </div>` : '';
 
+      // The card's name, its line and its scene come from the card data as they are.
       modalContent.innerHTML = `
         <div class="h-56 bg-linear-to-br ${card.gradient} flex items-center justify-center relative overflow-hidden rounded-t-xl">
-          ${card.image ? `<img src="${card.image}" alt="${card.name}" class="w-full h-full object-cover">` : `<div class="text-6xl">${card.icon}</div>`}
+          ${card.image ? `<img src="${card.image}" alt="${esc(card.name)}" class="w-full h-full object-cover">` : `<div class="text-6xl">${card.icon}</div>`}
         </div>
         <div class="p-6">
-          <div class="flex items-center justify-between mb-1">
-            <h2 class="font-display text-2xl font-bold text-obsidian-100">${card.name}</h2>
+          <div class="flex items-center justify-between gap-3 mb-1">
+            <h2 class="font-display text-2xl font-bold text-obsidian-100" data-card-text>${esc(card.name)}</h2>
             <span class="text-xs font-mono text-obsidian-500">${card.id}</span>
           </div>
-          <p class="text-sm text-obsidian-400">${card.house} &middot; ${card.element} &middot; ${card.rarity}</p>
+          <p class="text-sm text-obsidian-400">${esc(houseName(card.house))} &middot; ${esc(elementName(card.element))} &middot; ${esc(rarityName(card.rarity))}</p>
           ${statsHtml}
-          ${abilityHtml}
+          ${ruleHtml}
           ${viewerHtml}
-          <p class="mt-4 text-sm text-obsidian-400 italic">"${card.quote}"</p>
-          <p class="mt-2 text-xs text-obsidian-500 leading-relaxed">${card.scene}</p>
-          <button class="mt-4 btn-secondary text-xs w-full" id="modal-add-to-deck">Add to Deck</button>
+          <p class="mt-4 text-sm text-obsidian-400 italic" data-card-text>"${esc(card.quote)}"</p>
+          <p class="mt-2 text-xs text-obsidian-500 leading-relaxed" data-card-text>${esc(card.scene)}</p>
+          <button class="mt-4 btn-secondary text-xs w-full" id="modal-add-to-deck">${esc(t('collection.modal.add'))}</button>
         </div>`;
 
       modal.classList.remove('hidden');
@@ -555,16 +545,16 @@ import { CARD_CATALOG, RARITY_COLORS } from '../lib/cards';
       if (arModel) loadModelViewer();
 
       // Add-to-deck button
-      document.getElementById('modal-add-to-deck')?.addEventListener('click', () => {
+      byId('modal-add-to-deck')?.addEventListener('click', () => {
         toggleCardInDeck(cardId);
         closeModal();
       });
-
     }
 
     function closeModal() {
       modal.classList.add('hidden');
       modalContent.innerHTML = '';
+      openCardId = null;
     }
 
     modalClose.addEventListener('click', closeModal);
@@ -574,21 +564,23 @@ import { CARD_CATALOG, RARITY_COLORS } from '../lib/cards';
     });
 
     // --- Deck Builder ---
-    const deckNameInput = document.getElementById('deck-name') as HTMLInputElement;
-    const saveDeckBtn = document.getElementById('save-deck-btn')!;
-    const clearDeckBtn = document.getElementById('clear-deck-btn')!;
-    const deckCharsEl = document.getElementById('deck-characters')!;
-    const deckRelicsEl = document.getElementById('deck-relics')!;
-    const deckPotionsEl = document.getElementById('deck-potions')!;
-    const charCountEl = document.getElementById('char-count')!;
-    const relicCountEl = document.getElementById('relic-count')!;
-    const potionCountEl = document.getElementById('potion-count')!;
-    const synergyPreview = document.getElementById('synergy-preview')!;
-    const synergyList = document.getElementById('synergy-list')!;
-    const deckErrorsEl = document.getElementById('deck-errors')!;
-    const savedDecksListEl = document.getElementById('saved-decks-list')!;
+    const deckNameInput = byId('deck-name') as HTMLInputElement;
+    const saveDeckBtn = byId('save-deck-btn')!;
+    const clearDeckBtn = byId('clear-deck-btn')!;
+    const deckCharsEl = byId('deck-characters')!;
+    const deckRelicsEl = byId('deck-relics')!;
+    const deckPotionsEl = byId('deck-potions')!;
+    const charCountEl = byId('char-count')!;
+    const relicCountEl = byId('relic-count')!;
+    const potionCountEl = byId('potion-count')!;
+    const synergyPreview = byId('synergy-preview')!;
+    const synergyList = byId('synergy-list')!;
+    const deckErrorsEl = byId('deck-errors')!;
+    const savedDecksListEl = byId('saved-decks-list')!;
 
     let currentDeck: Deck = { name: '', characters: [], relics: [], potions: [] };
+    /** What the error box is showing, kept as a function so it can be said again in another language. */
+    let deckError: (() => string) | null = null;
 
     function toggleCardInDeck(cardId: string) {
       const card = getCardById(cardId);
@@ -622,22 +614,30 @@ import { CARD_CATALOG, RARITY_COLORS } from '../lib/cards';
       renderDeckSlots();
     }
 
+    /** "(2/5)": how full a slot is. Kept left to right, as a fraction reads the same way in every language here. */
+    const slotCount = (have: number, max: number) => `(${num(have)}/${num(max)})`;
+
     function renderDeckSlots() {
-      renderSlot(deckCharsEl, currentDeck.characters, 'Click owned characters to add');
-      renderSlot(deckRelicsEl, currentDeck.relics, 'Click owned relics to add');
-      renderSlot(deckPotionsEl, currentDeck.potions, 'Click owned potions to add');
+      renderSlot(deckCharsEl, currentDeck.characters, t('collection.deck.addCharacters'));
+      renderSlot(deckRelicsEl, currentDeck.relics, t('collection.deck.addRelics'));
+      renderSlot(deckPotionsEl, currentDeck.potions, t('collection.deck.addPotions'));
 
-      charCountEl.textContent = `(${currentDeck.characters.length}/${DECK_RULES.maxCharacters})`;
-      relicCountEl.textContent = `(${currentDeck.relics.length}/${DECK_RULES.maxRelics})`;
-      potionCountEl.textContent = `(${currentDeck.potions.length}/${DECK_RULES.maxPotions})`;
+      charCountEl.textContent = slotCount(currentDeck.characters.length, DECK_RULES.maxCharacters);
+      relicCountEl.textContent = slotCount(currentDeck.relics.length, DECK_RULES.maxRelics);
+      potionCountEl.textContent = slotCount(currentDeck.potions.length, DECK_RULES.maxPotions);
 
-      // Synergy preview
+      // Synergy preview: a house with two or more characters in the deck
       const allIds = [...currentDeck.characters, ...currentDeck.relics, ...currentDeck.potions];
-      const synergies = getActiveSynergies(currentDeck.characters);
+      const perHouse = new Map<string, number>();
+      for (const id of currentDeck.characters) {
+        const card = getCardById(id);
+        if (card?.type === 'Character') perHouse.set(card.house, (perHouse.get(card.house) ?? 0) + 1);
+      }
+      const synergies = [...perHouse.entries()].filter(([, n]) => n >= 2).map(([house]) => synergyLine(house, locale()));
       if (synergies.length > 0) {
         synergyPreview.classList.remove('hidden');
         synergyList.innerHTML = synergies.map(s =>
-          `<p class="text-xs text-obsidian-300"><span class="text-gold-400">&#10003;</span> ${s.description}</p>`
+          `<p class="text-xs text-obsidian-300"><span class="text-gold-400">&#10003;</span> ${esc(s)}</p>`
         ).join('');
       } else {
         synergyPreview.classList.add('hidden');
@@ -657,7 +657,7 @@ import { CARD_CATALOG, RARITY_COLORS } from '../lib/cards';
 
     function renderSlot(container: HTMLElement, cardIds: string[], placeholder: string) {
       if (cardIds.length === 0) {
-        container.innerHTML = `<p class="deck-placeholder text-xs text-obsidian-600 text-center py-4">${placeholder}</p>`;
+        container.innerHTML = `<p class="deck-placeholder text-xs text-obsidian-600 text-center py-4">${esc(placeholder)}</p>`;
         return;
       }
       container.innerHTML = cardIds.map(id => {
@@ -665,8 +665,8 @@ import { CARD_CATALOG, RARITY_COLORS } from '../lib/cards';
         if (!card) return '';
         return `
           <div class="flex items-center gap-2 p-2 rounded-lg bg-obsidian-800/50 border border-obsidian-700/50 group/slot cursor-pointer" data-remove-id="${id}">
-            ${card.image ? `<img src="${card.image}" alt="${card.name}" class="w-8 h-8 rounded-sm object-cover">` : `<span class="text-lg">${card.icon}</span>`}
-            <span class="text-xs text-obsidian-200 flex-1">${card.name}</span>
+            ${card.image ? `<img src="${card.image}" alt="${esc(card.name)}" class="w-8 h-8 rounded-sm object-cover">` : `<span class="text-lg">${card.icon}</span>`}
+            <span class="text-xs text-obsidian-200 flex-1" data-card-text>${esc(card.name)}</span>
             <span class="text-xs text-obsidian-600 group-hover/slot:text-crimson-400 transition-colors">&times;</span>
           </div>`;
       }).join('');
@@ -682,51 +682,66 @@ import { CARD_CATALOG, RARITY_COLORS } from '../lib/cards';
     saveDeckBtn.addEventListener('click', () => {
       const name = deckNameInput.value.trim();
       if (!name) {
-        showDeckError('Enter a deck name');
+        showDeckError(() => t('collection.deck.errorName'));
         return;
       }
       currentDeck.name = name;
+      // Say what is wrong in the interface language; saveDeck checks the same things again before it stores.
+      const deck = { ...currentDeck, characters: [...currentDeck.characters], relics: [...currentDeck.relics], potions: [...currentDeck.potions] };
+      if (deckProblems(deck).length > 0) {
+        showDeckError(() => deckProblems(deck).join(' '));
+        return;
+      }
+      const owned = getOwnedCardIds();
+      const unowned = [...deck.characters, ...deck.relics, ...deck.potions].filter(id => !owned.has(id));
+      if (unowned.length > 0) {
+        showDeckError(() => t('collection.deck.notOwned', { cards: list(unowned.map(id => getCardById(id)?.name ?? id)) }));
+        return;
+      }
       const result = saveDeck(currentDeck);
       if (result.success) {
         playSfx('ui-click');
-        deckErrorsEl.classList.add('hidden');
+        showDeckError(null);
         renderSavedDecks();
       } else {
-        showDeckError(result.errors.join('. '));
+        showDeckError(() => result.errors.join('. '));
       }
     });
 
     clearDeckBtn.addEventListener('click', () => {
       currentDeck = { name: '', characters: [], relics: [], potions: [] };
       deckNameInput.value = '';
-      deckErrorsEl.classList.add('hidden');
+      showDeckError(null);
       renderDeckSlots();
     });
 
-    function showDeckError(msg: string) {
-      deckErrorsEl.textContent = msg;
-      deckErrorsEl.classList.remove('hidden');
+    function showDeckError(message: (() => string) | null) {
+      deckError = message;
+      deckErrorsEl.textContent = message ? message() : '';
+      deckErrorsEl.classList.toggle('hidden', !message);
     }
 
     function renderSavedDecks() {
       const decks = getSavedDecks();
       const activeName = getActiveDeckName();
       if (decks.length === 0) {
-        savedDecksListEl.innerHTML = '<p class="text-xs text-obsidian-600">No saved decks yet.</p>';
+        savedDecksListEl.innerHTML = `<p class="text-xs text-obsidian-600">${esc(t('collection.deck.none'))}</p>`;
         return;
       }
+      const chip = 'text-xs text-obsidian-400 border border-obsidian-700 rounded-sm px-2 py-1';
       savedDecksListEl.innerHTML = decks.map(d => {
         const isActive = d.name === activeName;
         const total = d.characters.length + d.relics.length + d.potions.length;
+        const name = esc(d.name);
         return `
-          <div class="flex items-center gap-3 p-3 card-glass ${isActive ? 'border-gold-500/30 bg-gold-500/5' : ''}">
+          <div class="flex flex-wrap items-center gap-3 p-3 card-glass ${isActive ? 'border-gold-500/30 bg-gold-500/5' : ''}">
             <div class="flex-1 min-w-0">
-              <p class="text-sm font-display font-semibold text-obsidian-200 truncate">${d.name}</p>
-              <p class="text-xs text-obsidian-500">${d.characters.length} chars, ${d.relics.length} relics, ${d.potions.length} potions (${total} total)</p>
+              <p class="text-sm font-display font-semibold text-obsidian-200 truncate" data-user-text>${name}</p>
+              <p class="text-xs text-obsidian-500">${esc(tn('collection.deck.summary', { characters: d.characters.length, relics: d.relics.length, potions: d.potions.length, total }))}</p>
             </div>
-            ${isActive ? '<span class="text-xs text-gold-400 font-semibold">ACTIVE</span>' : `<button class="deck-activate text-xs text-obsidian-400 hover:text-gold-400 border border-obsidian-700 rounded-sm px-2 py-1" data-deck-name="${d.name}">Activate</button>`}
-            <button class="deck-load text-xs text-obsidian-400 hover:text-obsidian-200 border border-obsidian-700 rounded-sm px-2 py-1" data-deck-name="${d.name}">Edit</button>
-            <button class="deck-delete text-xs text-obsidian-400 hover:text-crimson-400 border border-obsidian-700 rounded-sm px-2 py-1" data-deck-name="${d.name}">&times;</button>
+            ${isActive ? `<span class="text-xs text-gold-400 font-semibold uppercase">${esc(t('collection.deck.active'))}</span>` : `<button class="deck-activate ${chip} hover:text-gold-400" data-deck-name="${name}">${esc(t('collection.deck.activate'))}</button>`}
+            <button class="deck-load ${chip} hover:text-obsidian-200" data-deck-name="${name}">${esc(t('collection.deck.edit'))}</button>
+            <button class="deck-delete ${chip} hover:text-crimson-400" data-deck-name="${name}" aria-label="${esc(t('collection.deck.delete', { name: d.name }))}">&times;</button>
           </div>`;
       }).join('');
 
@@ -759,8 +774,24 @@ import { CARD_CATALOG, RARITY_COLORS } from '../lib/cards';
 
     // Enable deck-build mode — clicking cards adds/removes from deck
     deckBuildMode = true;
-    renderDeckSlots();
-    renderSavedDecks();
+
+    // The card detail view, for the browser tests: while deck-build mode is on, a click on a card
+    // goes to the deck, so nothing on the page opens this view.
+    (window as any).__collection = { openCardModal, closeModal };
+
+    // Everything a script draws, in the interface language; drawn again whenever that changes.
+    void initPage(['collection', 'card-terms', 'variants', 'achievements', 'rules'], async () => {
+      // A relic's power words are in the language's verse pack.
+      await loadPack(locale()).catch(() => {});
+      applyTerms();
+      updateOwnership();
+      renderAchievements();
+      renderWorldCards();
+      renderDeckSlots();
+      renderSavedDecks();
+      if (deckError) deckErrorsEl.textContent = deckError();
+      if (openCardId) openCardModal(openCardId);
+    });
 
     // Hide loading skeleton once content is ready
     window.addEventListener('load', () => {

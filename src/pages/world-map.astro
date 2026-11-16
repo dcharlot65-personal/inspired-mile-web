@@ -1,29 +1,36 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import T from '../components/T.astro';
+import { loadArea, t } from '../i18n';
+import { CITY_CATALOG, SKIN_TONES, getCharacterCards } from '../lib/variants';
+
+// English at build time; the script at the foot of the page puts it in the visitor's language.
+await Promise.all(['world-map', 'variants', 'card-terms'].map((a) => loadArea(a)));
+
+const cities = Object.values(CITY_CATALOG);
+// Every character, in every city, in every attire, hairstyle and skin tone that city offers.
+const combinations = getCharacterCards().length * cities.reduce((sum, c) => sum + c.attireOptions.length * c.hairstyleOptions.length * SKIN_TONES.length, 0);
+const count = 'text-gold-400 font-mono';
+const heading = 'text-sm font-semibold text-obsidian-300 mb-2';
 ---
 
-<BaseLayout title="World Map" description="Explore 12 global cities and discover World Card variants for your Shakespeare characters.">
+<BaseLayout title="World Map" description={t('world-map.meta.description')} descriptionKey="world-map.meta.description" i18nAreas={['world-map']}>
 
   <section class="section-padding">
     <div class="max-w-7xl mx-auto">
       <div class="text-center mb-12">
         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold-500/10 border border-gold-500/20 mb-6">
           <span class="w-2 h-2 rounded-full bg-gold-500 animate-pulse"></span>
-          <span class="text-gold-400 text-xs font-medium tracking-wide uppercase">World Cards</span>
+          <T k="world-map.badge" class="text-gold-400 text-xs font-medium tracking-wide uppercase" />
         </div>
-        <h1 class="text-4xl sm:text-5xl font-display font-bold mb-4">
-          World <span class="text-gradient">Map</span>
-        </h1>
-        <p class="text-obsidian-400 max-w-2xl mx-auto">
-          Shakespeare's characters travel the globe. Each city grants a unique battle ability.
-          Unlock variants through battles, trivia, and exploration.
-        </p>
+        <T k="world-map.title" as="h1" class="text-4xl sm:text-5xl font-display font-bold mb-4" />
+        <T k="world-map.intro" as="p" class="text-obsidian-400 max-w-2xl mx-auto" />
         <p class="text-sm text-obsidian-500 mt-3">
-          <span id="total-variants" class="text-gold-400 font-mono">0</span> variants unlocked
+          <T k="variants.unlocked" id="variant-line" vars={{ n: 0 }} bClass={count} varIds={{ n: 'total-variants' }} />
           &middot;
-          <span id="total-cities" class="text-gold-400 font-mono">0</span> / 12 cities discovered
+          <T k="world-map.cities" id="city-line" vars={{ n: 0, total: cities.length }} bClass={count} varIds={{ n: 'total-cities' }} />
           &middot;
-          20,736 possible combinations
+          <T k="world-map.combinations" vars={{ n: combinations }} />
         </p>
       </div>
 
@@ -34,17 +41,17 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <!-- City Detail Modal -->
       <div id="city-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-obsidian-950/80 backdrop-blur-xs p-4">
         <div class="card-glass max-w-lg w-full max-h-[80vh] overflow-y-auto p-6">
-          <div class="flex items-center justify-between mb-4">
+          <div class="flex items-center justify-between gap-3 mb-4">
             <h3 id="modal-city-name" class="text-xl font-display font-bold text-gold-400"></h3>
-            <button id="modal-close" class="text-obsidian-400 hover:text-obsidian-200 text-xl">&times;</button>
+            <button id="modal-close" class="text-obsidian-400 hover:text-obsidian-200 text-xl" aria-label={t('world-map.close')} data-i18n-attr="aria-label:world-map.close">&times;</button>
           </div>
           <p id="modal-region" class="text-xs text-obsidian-500 mb-2"></p>
           <div id="modal-ability" class="card-glass p-3 bg-gold-500/5 border-gold-500/20 mb-4"></div>
-          <h4 class="text-sm font-semibold text-obsidian-300 mb-2">Attire Styles</h4>
+          <T k="world-map.attire" as="h4" class={heading} />
           <div id="modal-attire" class="flex flex-wrap gap-2 mb-4"></div>
-          <h4 class="text-sm font-semibold text-obsidian-300 mb-2">Hairstyles</h4>
+          <T k="world-map.hair" as="h4" class={heading} />
           <div id="modal-hair" class="flex flex-wrap gap-2 mb-4"></div>
-          <h4 class="text-sm font-semibold text-obsidian-300 mb-2">Your Variants in This City</h4>
+          <T k="world-map.yours" as="h4" class={heading} />
           <div id="modal-variants" class="space-y-2"></div>
         </div>
       </div>
@@ -64,6 +71,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     } from '../lib/variants';
     import { CARD_CATALOG } from '../lib/cards';
     import { initAudio, isInitialized, playMusic } from '../lib/audio-manager';
+    import { isRtl, locale, t } from '../i18n';
+    import { escapeHtml as esc, initPage, setVars, tn } from '../i18n/pages/runtime';
+    import { abilityBonus, abilityName, abilityWhy, cityName, cityRegion } from '../i18n/pages/terms';
 
     document.addEventListener('click', () => {
       if (!isInitialized()) initAudio();
@@ -73,113 +83,116 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     const cities = getAllCities();
     const unlockedCities = getUnlockedCities();
     const owned = getOwnedVariants();
-
-    document.getElementById('total-variants')!.textContent = String(getVariantCount());
-    document.getElementById('total-cities')!.textContent = String(unlockedCities.size);
-
     const worldGrid = document.getElementById('world-grid')!;
+    const modal = document.getElementById('city-modal')!;
+    const modalClose = document.getElementById('modal-close')!;
+    let openCity: WorldCity | null = null;
 
-    // Ability axis → emoji
+    // Which of the judge's criteria a city's ability adds to
     const axisEmoji: Record<string, string> = {
-      wordplay: '\u270D\uFE0F',
-      shakespeare: '\uD83C\uDFAD',
-      flow: '\uD83C\uDFB5',
-      wit: '\u26A1',
+      wordplay: '✍️',
+      shakespeare: '🎭',
+      flow: '🎵',
+      wit: '⚡',
     };
 
-    for (const city of cities) {
-      const config = CITY_CATALOG[city];
-      const isUnlocked = unlockedCities.has(city);
-      const cityVariants = owned.filter(v => {
-        const d = decodeVariantId(v.variantId);
-        return d && getCityByCode(d.cityCode) === city;
-      });
+    const variantsIn = (city: WorldCity) => owned.filter(v => {
+      const d = decodeVariantId(v.variantId);
+      return d && getCityByCode(d.cityCode) === city;
+    });
 
-      const el = document.createElement('div');
-      el.className = `card-glass p-5 transition-all cursor-pointer group ${isUnlocked ? 'hover:border-gold-500/30' : 'opacity-60'}`;
-      el.dataset.city = city;
-      el.innerHTML = `
-        <div class="flex items-start justify-between mb-3">
-          <div>
-            <h3 class="font-display font-bold text-lg ${isUnlocked ? 'text-obsidian-100' : 'text-obsidian-400'}">${city}</h3>
-            <p class="text-xs text-obsidian-500">${config.region}</p>
+    /** An attire or hairstyle option is a style name from the catalog (English, not yet translated). */
+    const styleName = (slug: string) => slug.replace(/-/g, ' ');
+    const styleChip = (slug: string) => `<span class="px-2 py-1 text-xs rounded-sm bg-obsidian-800 text-obsidian-300 border border-obsidian-700" lang="en" data-style-name>${esc(styleName(slug))}</span>`;
+
+    /** The ability as two lines: what the city is known for, then what that adds. */
+    const abilityLines = (city: WorldCity, small: boolean) => `
+        <p class="${small ? 'text-[10px] text-obsidian-500' : 'text-xs text-obsidian-400'}">${esc(abilityWhy(city))}</p>
+        <p class="${small ? 'text-[10px] text-obsidian-400' : 'text-xs text-gold-400/80'}">${esc(abilityBonus(city))}</p>`;
+
+    function renderGrid() {
+      setVars(document.getElementById('variant-line'), { n: getVariantCount() });
+      setVars(document.getElementById('city-line'), { n: unlockedCities.size, total: cities.length });
+
+      worldGrid.replaceChildren();
+      for (const city of cities) {
+        const config = CITY_CATALOG[city];
+        const isUnlocked = unlockedCities.has(city);
+
+        const el = document.createElement('div');
+        el.className = `card-glass p-5 transition-all cursor-pointer group ${isUnlocked ? 'hover:border-gold-500/30' : 'opacity-60'}`;
+        el.dataset.city = city;
+        el.innerHTML = `
+        <div class="flex items-start justify-between gap-3 mb-3">
+          <div class="min-w-0">
+            <h3 class="font-display font-bold text-lg ${isUnlocked ? 'text-obsidian-100' : 'text-obsidian-400'}">${esc(cityName(city))}</h3>
+            <p class="text-xs text-obsidian-500">${esc(cityRegion(city))}</p>
           </div>
-          <span class="text-2xl">${isUnlocked ? '\uD83C\uDF0D' : '\uD83D\uDD12'}</span>
+          <span class="text-2xl">${isUnlocked ? '🌍' : '🔒'}</span>
         </div>
         <div class="card-glass p-2 bg-obsidian-900/50 mb-3">
           <div class="flex items-center gap-2">
             <span class="text-sm">${axisEmoji[config.ability.axis] || ''}</span>
-            <div>
-              <p class="text-xs font-semibold ${isUnlocked ? 'text-gold-400' : 'text-obsidian-500'}">${config.ability.name}</p>
-              <p class="text-[10px] text-obsidian-500">${config.ability.description}</p>
+            <div class="min-w-0">
+              <p class="text-xs font-semibold ${isUnlocked ? 'text-gold-400' : 'text-obsidian-500'}">${esc(abilityName(city))}</p>
+              ${abilityLines(city, true)}
             </div>
           </div>
         </div>
-        <div class="flex items-center justify-between text-xs">
-          <span class="text-obsidian-500">${cityVariants.length} variant${cityVariants.length !== 1 ? 's' : ''} unlocked</span>
-          <span class="text-obsidian-600 group-hover:text-gold-400 transition-colors">View &rarr;</span>
+        <div class="flex items-center justify-between gap-2 text-xs">
+          <span class="text-obsidian-500">${esc(tn('variants.count', { n: variantsIn(city).length }))}</span>
+          <span class="text-obsidian-600 group-hover:text-gold-400 transition-colors">${esc(t('world-map.view'))} ${isRtl(locale()) ? '←' : '→'}</span>
         </div>
       `;
-      worldGrid.appendChild(el);
+        worldGrid.appendChild(el);
+      }
     }
-
-    // Modal
-    const modal = document.getElementById('city-modal')!;
-    const modalClose = document.getElementById('modal-close')!;
 
     worldGrid.addEventListener('click', (e) => {
       const card = (e.target as HTMLElement).closest('[data-city]') as HTMLElement | null;
       if (!card) return;
-      const city = card.dataset.city as WorldCity;
-      openCityModal(city);
+      openCityModal(card.dataset.city as WorldCity);
     });
 
-    modalClose.addEventListener('click', () => modal.classList.add('hidden'));
+    const closeModal = () => {
+      modal.classList.add('hidden');
+      openCity = null;
+    };
+    modalClose.addEventListener('click', closeModal);
     modal.addEventListener('click', (e) => {
-      if (e.target === modal) modal.classList.add('hidden');
+      if (e.target === modal) closeModal();
     });
 
     function openCityModal(city: WorldCity) {
       const config = CITY_CATALOG[city];
-      document.getElementById('modal-city-name')!.textContent = city;
-      document.getElementById('modal-region')!.textContent = config.region;
+      openCity = city;
+      document.getElementById('modal-city-name')!.textContent = cityName(city);
+      document.getElementById('modal-region')!.textContent = cityRegion(city);
       document.getElementById('modal-ability')!.innerHTML = `
-        <p class="text-sm font-semibold text-gold-400">${config.ability.name}</p>
-        <p class="text-xs text-obsidian-400">${config.ability.description}</p>
+        <p class="text-sm font-semibold text-gold-400">${esc(abilityName(city))}</p>
+        ${abilityLines(city, false)}
       `;
 
-      // Attire
-      const attireEl = document.getElementById('modal-attire')!;
-      attireEl.innerHTML = config.attireOptions.map(a =>
-        `<span class="px-2 py-1 text-xs rounded-sm bg-obsidian-800 text-obsidian-300 border border-obsidian-700">${a.replace(/-/g, ' ')}</span>`
-      ).join('');
+      document.getElementById('modal-attire')!.innerHTML = config.attireOptions.map(styleChip).join('');
+      document.getElementById('modal-hair')!.innerHTML = config.hairstyleOptions.map(styleChip).join('');
 
-      // Hair
-      const hairEl = document.getElementById('modal-hair')!;
-      hairEl.innerHTML = config.hairstyleOptions.map(h =>
-        `<span class="px-2 py-1 text-xs rounded-sm bg-obsidian-800 text-obsidian-300 border border-obsidian-700">${h.replace(/-/g, ' ')}</span>`
-      ).join('');
-
-      // Variants
+      // Variants. A card's name is shown as the card data gives it.
       const variantsEl = document.getElementById('modal-variants')!;
-      const cityVariants = owned.filter(v => {
-        const d = decodeVariantId(v.variantId);
-        return d && getCityByCode(d.cityCode) === city;
-      });
+      const cityVariants = variantsIn(city);
 
       if (cityVariants.length === 0) {
-        variantsEl.innerHTML = `<p class="text-xs text-obsidian-500">No variants unlocked in ${city} yet.</p>`;
+        variantsEl.innerHTML = `<p class="text-xs text-obsidian-500">${esc(t('world-map.none', { city: cityName(city) }))}</p>`;
       } else {
         variantsEl.innerHTML = cityVariants.map(v => {
           const card = CARD_CATALOG.find(c => c.id === v.baseCardId);
           const decoded = decodeVariantId(v.variantId);
-          const attire = decoded ? config.attireOptions[decoded.attireIdx]?.replace(/-/g, ' ') : '';
+          const attire = decoded ? config.attireOptions[decoded.attireIdx] : undefined;
           return `
             <div class="card-glass p-2 flex items-center gap-2">
-              ${card?.image ? `<img src="${card.image}" class="w-8 h-8 rounded-sm object-cover">` : `<span>${card?.icon || ''}</span>`}
-              <div class="flex-1">
-                <p class="text-xs font-semibold text-obsidian-200">${card?.name || 'Unknown'}</p>
-                <p class="text-[10px] text-obsidian-500">${attire}</p>
+              ${card?.image ? `<img src="${card.image}" alt="" class="w-8 h-8 rounded-sm object-cover">` : `<span>${card?.icon || ''}</span>`}
+              <div class="flex-1 min-w-0">
+                ${card ? `<p class="text-xs font-semibold text-obsidian-200" data-card-text>${esc(card.name)}</p>` : `<p class="text-xs font-semibold text-obsidian-200">${esc(t('world-map.unknownCard'))}</p>`}
+                <p class="text-[10px] text-obsidian-500" lang="en" data-style-name>${attire ? esc(styleName(attire)) : ''}</p>
               </div>
             </div>
           `;
@@ -188,5 +201,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
       modal.classList.remove('hidden');
     }
+
+    // Everything a script draws, in the interface language; drawn again whenever that changes.
+    void initPage(['world-map', 'variants', 'card-terms'], () => {
+      renderGrid();
+      if (openCity) openCityModal(openCity);
+    });
   </script>
 </BaseLayout>

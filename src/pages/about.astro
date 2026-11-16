@@ -1,11 +1,17 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import T from '../components/T.astro';
+import { loadArea, t } from '../i18n';
+import { monthOfYear, yearOnly } from '../i18n/pages/runtime';
 
+// English at build time; the script at the foot of the page puts it in the visitor's language.
+await loadArea('about');
+
+// People's names, their stage names and their links are the same in every language.
 const team = [
   {
+    id: 'david',
     name: 'David Charlot, PhD',
-    role: 'Founder & Technical Lead',
-    bio: 'Platform architecture, AI systems, and fundraising strategy. Background in spatial computing and digital experiences.',
     icon: '&#128187;',
     website: 'https://davidjcharlot.com/',
     socials: {
@@ -14,10 +20,9 @@ const team = [
     },
   },
   {
+    id: 'devon',
     name: 'Devon Glover',
     aka: 'The Sonnet Man',
-    role: 'Creative Director',
-    bio: 'Brings Shakespeare to life through hip-hop, poetry, and adaptation. Teaching artist, theater performer, and the voice behind Shakespeare on the Go. Music on Spotify, Tidal, and Apple Music.',
     icon: '&#127908;',
     website: 'https://southernshakespearefestival.org/sonnet-man/',
     socials: {
@@ -28,16 +33,14 @@ const team = [
     },
   },
   {
+    id: 'paul',
     name: 'Arrocito del Diablo',
     aka: 'Paul Rice',
-    role: 'Game Design & Strategy',
-    bio: 'Card game mechanics, battle system design, and competitive strategy. Deep knowledge of TCG ecosystems from Pokemon to Magic: The Gathering.',
     icon: '&#127917;',
   },
   {
+    id: 'treston',
     name: 'Treston Knight',
-    role: 'Operations & Organizational Leadership',
-    bio: 'Operational strategy and organizational leadership. Builds the systems and processes that keep teams aligned and moving forward.',
     icon: '&#9881;',
     socials: {
       linkedin: 'https://www.linkedin.com/in/treston',
@@ -45,29 +48,40 @@ const team = [
   },
 ];
 
-const timeline = [
-  { date: 'Mar 2025', event: 'Team formed, concept development begins' },
-  { date: 'Apr 2025', event: 'Shakespeare house system and card mechanics proposed' },
-  { date: 'Jun 2025', event: 'Inspired Mile launched under Voyage Tracable, LLC' },
-  { date: 'Summer 2025', event: 'Content capture with Sonnet Man performances' },
-  { date: 'Q1 2026', event: 'Platform goes live' },
-  { date: 'Q3 2026', event: 'Platform expansion' },
+// When each thing happened: a month the browser can name (Intl), or a season or quarter named by a message.
+type When = { month: [number, number] } | { key: string; year: number };
+const timeline: { when: When; event: string; done: boolean }[] = [
+  { when: { month: [2025, 3] }, event: 'e1', done: true },
+  { when: { month: [2025, 4] }, event: 'e2', done: true },
+  { when: { month: [2025, 6] }, event: 'e3', done: true },
+  { when: { key: 'about.journey.summer', year: 2025 }, event: 'e4', done: false },
+  { when: { key: 'about.journey.quarter1', year: 2026 }, event: 'e5', done: false },
+  { when: { key: 'about.journey.quarter3', year: 2026 }, event: 'e6', done: false },
 ];
+const whenText = (w: When) => ('month' in w ? monthOfYear(w.month[0], w.month[1]) : t(w.key, { year: yearOnly(w.year) }));
+
+const tech = ['collectibles', 'ai', 'theatre', 'speech', 'market'];
+const credits = [50, 30, 20, 10];
+const FOUNDED = 2025;
+const lists = [
+  { id: 'forever', icon: '&#9989;', tone: 'emerald' },
+  { id: 'earn', icon: '&#127942;', tone: 'gold' },
+  { id: 'safe', icon: '&#128101;', tone: 'purple' },
+];
+const TONE: Record<string, { card: string; chip: string; title: string }> = {
+  emerald: { card: 'border-emerald-500/20', chip: 'bg-emerald-500/10 border-emerald-500/20', title: 'text-emerald-400' },
+  gold: { card: 'border-gold-500/20', chip: 'bg-gold-500/10 border-gold-500/20', title: 'text-gold-400' },
+  purple: { card: 'border-purple-500/20', chip: 'bg-purple-500/10 border-purple-500/20', title: 'text-purple-400' },
+};
 ---
 
-<BaseLayout title="About" description="Meet the team behind Inspired Mile — building the future of interactive card gaming.">
+<BaseLayout title="About" description={t('about.meta.description')} descriptionKey="about.meta.description" i18nAreas={['about']}>
 
   <section class="section-padding">
     <div class="max-w-4xl mx-auto text-center">
-      <h1 class="text-4xl sm:text-5xl font-display font-bold mb-6">
-        About <span class="text-gradient">Inspired Mile</span>
-      </h1>
-      <p class="text-lg text-obsidian-300 leading-relaxed max-w-2xl mx-auto mb-4">
-        We're building a digital entertainment platform that combines collectible cards with AI-powered experiences.
-        Our mission is to get people interacting with each other and having fun with technology that
-        enhances rather than replaces human connection.
-      </p>
-      <p class="text-obsidian-500 text-sm">Sarasota, FL &middot; Founded 2025</p>
+      <T k="about.title" as="h1" class="text-4xl sm:text-5xl font-display font-bold mb-6" />
+      <T k="about.intro" as="p" class="text-lg text-obsidian-300 leading-relaxed max-w-2xl mx-auto mb-4" />
+      <p class="text-obsidian-500 text-sm"><span lang="en" data-proper-name>Sarasota, FL</span> &middot; <span data-when-key="about.founded" data-when-year={FOUNDED}>{t('about.founded', { year: yearOnly(FOUNDED) })}</span></p>
     </div>
   </section>
 
@@ -75,29 +89,14 @@ const timeline = [
     <div class="max-w-4xl mx-auto">
       <div class="grid md:grid-cols-2 gap-8">
         <div class="card-glass p-8">
-          <h3 class="font-display text-xl font-bold text-gold-400 mb-4">The Vision</h3>
-          <p class="text-sm text-obsidian-300 leading-relaxed mb-4">
-            Imagine selecting a digital card that springs to life with a 15-second
-            AI-generated scene. A Shakespeare character appears in augmented reality.
-            You challenge them to a rap battle. Your friends watch and cheer.
-          </p>
-          <p class="text-sm text-obsidian-300 leading-relaxed">
-            That's Inspired Mile — a platform where digital collectible cards connect to AI and AR
-            experiences, creating a new kind of interactive entertainment.
-          </p>
+          <T k="about.vision.title" as="h3" class="font-display text-xl font-bold text-gold-400 mb-4" />
+          <T k="about.vision.p1" as="p" class="text-sm text-obsidian-300 leading-relaxed mb-4" />
+          <T k="about.vision.p2" as="p" class="text-sm text-obsidian-300 leading-relaxed" />
         </div>
         <div class="card-glass p-8">
-          <h3 class="font-display text-xl font-bold text-gold-400 mb-4">Why Shakespeare?</h3>
-          <p class="text-sm text-obsidian-300 leading-relaxed mb-4">
-            Our creative partner Devon Glover — <a href="https://southernshakespearefestival.org/sonnet-man/" target="_blank" rel="noopener noreferrer" class="text-gold-400 hover:text-gold-300 transition-colors">the Sonnet Man</a> — has spent years proving that Shakespeare
-            is hip-hop. A teaching artist and theater performer, his work fuses poetry, adaptation, and
-            contemporary music. He's partnered with the Southern Shakespeare Festival, Shakespeare Behind Bars,
-            and schools nationwide. We're taking that energy digital.
-          </p>
-          <p class="text-sm text-obsidian-300 leading-relaxed">
-            Shakespeare gives us a rich universe of houses, characters, and conflicts — a natural
-            foundation for a trading card battle system. And it's all public domain.
-          </p>
+          <T k="about.why.title" as="h3" class="font-display text-xl font-bold text-gold-400 mb-4" />
+          <T k="about.why.p1" as="p" class="text-sm text-obsidian-300 leading-relaxed mb-4" aHref="https://southernshakespearefestival.org/sonnet-man/" aClass="text-gold-400 hover:text-gold-300 transition-colors" aExternal />
+          <T k="about.why.p2" as="p" class="text-sm text-obsidian-300 leading-relaxed" />
         </div>
       </div>
     </div>
@@ -105,22 +104,20 @@ const timeline = [
 
   <section class="section-padding">
     <div class="max-w-4xl mx-auto">
-      <h2 class="text-3xl font-display font-bold text-center mb-12">
-        The <span class="text-gradient">Team</span>
-      </h2>
+      <T k="about.team.title" as="h2" class="text-3xl font-display font-bold text-center mb-12" />
       <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {team.map((member) => (
           <div class="card-glass p-6 text-center hover:border-gold-500/30 transition-all">
             <div class="w-16 h-16 rounded-full bg-gold-500/10 border border-gold-500/20 flex items-center justify-center mx-auto mb-4">
               <span class="text-2xl" set:html={member.icon} />
             </div>
-            <h3 class="font-display text-lg font-semibold text-obsidian-100">{member.name}</h3>
-            {member.aka && <p class="text-xs text-gold-400 mb-1">"{member.aka}"</p>}
-            <p class="text-xs text-obsidian-500 mb-3">{member.role}</p>
-            <p class="text-sm text-obsidian-400 leading-relaxed">{member.bio}</p>
+            <h3 class="font-display text-lg font-semibold text-obsidian-100" lang="en" data-proper-name>{member.name}</h3>
+            {member.aka && <p class="text-xs text-gold-400 mb-1" lang="en" data-proper-name>"{member.aka}"</p>}
+            <T k={`about.team.${member.id}.role`} as="p" class="text-xs text-obsidian-500 mb-3" />
+            <T k={`about.team.${member.id}.bio`} as="p" class="text-sm text-obsidian-400 leading-relaxed" />
             {member.website && (
               <a href={member.website} target="_blank" rel="noopener noreferrer" class="inline-block mt-3 text-xs text-gold-400 hover:text-gold-300 transition-colors">
-                {new URL(member.website).hostname.replace('www.', '')} &rarr;
+                <span dir="ltr">{new URL(member.website).hostname.replace('www.', '')} &rarr;</span>
               </a>
             )}
             {member.socials && (
@@ -155,19 +152,19 @@ const timeline = [
 
   <section class="section-padding bg-obsidian-900/30">
     <div class="max-w-2xl mx-auto">
-      <h2 class="text-3xl font-display font-bold text-center mb-12">
-        Our <span class="text-gradient">Journey</span>
-      </h2>
+      <T k="about.journey.title" as="h2" class="text-3xl font-display font-bold text-center mb-12" />
       <div class="space-y-0">
         {timeline.map((item, i) => (
           <div class="flex gap-4">
             <div class="flex flex-col items-center">
-              <div class={`w-3 h-3 rounded-full ${i < 3 ? 'bg-gold-400' : 'bg-obsidian-600'} shrink-0`}></div>
+              <div class={`w-3 h-3 rounded-full ${item.done ? 'bg-gold-400' : 'bg-obsidian-600'} shrink-0`}></div>
               {i < timeline.length - 1 && <div class="w-px h-16 bg-obsidian-700"></div>}
             </div>
             <div class="pb-8">
-              <span class="text-xs font-mono text-gold-500">{item.date}</span>
-              <p class="text-sm text-obsidian-300 mt-1">{item.event}</p>
+              {'month' in item.when
+                ? <span class="text-xs font-mono text-gold-500" data-when-month={item.when.month.join('-')}>{whenText(item.when)}</span>
+                : <span class="text-xs font-mono text-gold-500" data-when-key={item.when.key} data-when-year={item.when.year}>{whenText(item.when)}</span>}
+              <T k={`about.journey.${item.event}`} as="p" class="text-sm text-obsidian-300 mt-1" />
             </div>
           </div>
         ))}
@@ -177,91 +174,38 @@ const timeline = [
 
   <section class="section-padding">
     <div class="max-w-4xl mx-auto">
-      <h2 class="text-3xl font-display font-bold text-center mb-12">
-        The <span class="text-gradient">Technology</span>
-      </h2>
+      <T k="about.tech.title" as="h2" class="text-3xl font-display font-bold text-center mb-12" />
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div class="card-glass p-6">
-          <h4 class="font-display font-semibold text-obsidian-200 mb-2">Digital Collectibles</h4>
-          <p class="text-sm text-obsidian-400">71 cards with tiered rarity, earned by playing and never sold at random. No blockchain, no wallet.</p>
-        </div>
-        <div class="card-glass p-6">
-          <h4 class="font-display font-semibold text-obsidian-200 mb-2">AI Engine</h4>
-          <p class="text-sm text-obsidian-400">Open models (Gemma 4, Liquid LFM3) run in your browser on WebGPU. They write the opponent's verse and judge the duel on your device; no cloud provider is involved.</p>
-        </div>
-        <div class="card-glass p-6">
-          <h4 class="font-display font-semibold text-obsidian-200 mb-2">The Theatre</h4>
-          <p class="text-sm text-obsidian-400">The duel staged in 3D through WebXR: passthrough on Meta Quest 3, a full stage on Apple Vision Pro, and the same scene on any screen.</p>
-        </div>
-        <div class="card-glass p-6">
-          <h4 class="font-display font-semibold text-obsidian-200 mb-2">Speech on the Device</h4>
-          <p class="text-sm text-obsidian-400">Speak your verse and it is transcribed in your browser by Whisper. The recording never leaves your device.</p>
-        </div>
-        <div class="card-glass p-6">
-          <h4 class="font-display font-semibold text-obsidian-200 mb-2">Marketplace</h4>
-          <p class="text-sm text-obsidian-400">Digital asset marketplace where card value is influenced by combat rankings and community engagement.</p>
-        </div>
+        {tech.map((id) => (
+          <div class="card-glass p-6">
+            <T k={`about.tech.${id}.title`} as="h4" class="font-display font-semibold text-obsidian-200 mb-2" />
+            <T k={`about.tech.${id}.body`} as="p" class="text-sm text-obsidian-400" />
+          </div>
+        ))}
       </div>
     </div>
   </section>
 
   <section class="section-padding bg-obsidian-900/30">
     <div class="max-w-4xl mx-auto">
-      <h2 class="text-3xl font-display font-bold text-center mb-4">
-        Always <span class="text-gradient">Free to Play</span>
-      </h2>
-      <p class="text-center text-obsidian-400 text-sm mb-10 max-w-xl mx-auto">
-        Every feature is available without spending a dime. Credits are earned through gameplay, never purchased with real money.
-      </p>
+      <T k="about.free.title" as="h2" class="text-3xl font-display font-bold text-center mb-4" />
+      <T k="about.free.body" as="p" class="text-center text-obsidian-400 text-sm mb-10 max-w-xl mx-auto" />
       <div class="grid sm:grid-cols-3 gap-6">
-        <div class="card-glass p-6 border-emerald-500/20">
-          <div class="flex items-center gap-2 mb-3">
-            <div class="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center">
-              <span class="text-lg">&#9989;</span>
+        {lists.map((list) => (
+          <div class={`card-glass p-6 ${TONE[list.tone].card}`}>
+            <div class="flex items-center gap-2 mb-3">
+              <div class={`w-8 h-8 shrink-0 rounded-lg border flex items-center justify-center ${TONE[list.tone].chip}`}>
+                <span class="text-lg" set:html={list.icon} />
+              </div>
+              <T k={`about.free.${list.id}.title`} as="h4" class={`font-display font-semibold ${TONE[list.tone].title}`} />
             </div>
-            <h4 class="font-display font-semibold text-emerald-400">Free Forever</h4>
+            <ul class="space-y-2 text-sm text-obsidian-300">
+              {[1, 2, 3, 4, 5, 6].map((n) => (
+                <T k={`about.free.${list.id}.l${n}`} as="li" vars={list.id === 'earn' && n <= credits.length ? { n: credits[n - 1] } : undefined} />
+              ))}
+            </ul>
           </div>
-          <ul class="space-y-2 text-sm text-obsidian-300">
-            <li>71 collectible cards to earn</li>
-            <li>Daily free card packs</li>
-            <li>Verse duels against an AI on your own device</li>
-            <li>Shakespeare trivia &amp; challenges</li>
-            <li>Multiplayer arena</li>
-            <li>Classroom mode for teachers</li>
-          </ul>
-        </div>
-        <div class="card-glass p-6 border-gold-500/20">
-          <div class="flex items-center gap-2 mb-3">
-            <div class="w-8 h-8 rounded-lg bg-gold-500/10 border border-gold-500/20 flex items-center justify-center">
-              <span class="text-lg">&#127942;</span>
-            </div>
-            <h4 class="font-display font-semibold text-gold-400">Earn Credits</h4>
-          </div>
-          <ul class="space-y-2 text-sm text-obsidian-300">
-            <li>Win battles: 50 credits</li>
-            <li>Complete trivia: 30 credits</li>
-            <li>Quote challenges: 20 credits</li>
-            <li>Daily login bonus: 10 credits</li>
-            <li>Season rewards &amp; tournaments</li>
-            <li>No real-money purchases</li>
-          </ul>
-        </div>
-        <div class="card-glass p-6 border-purple-500/20">
-          <div class="flex items-center gap-2 mb-3">
-            <div class="w-8 h-8 rounded-lg bg-purple-500/10 border border-purple-500/20 flex items-center justify-center">
-              <span class="text-lg">&#128101;</span>
-            </div>
-            <h4 class="font-display font-semibold text-purple-400">Safe for Students</h4>
-          </div>
-          <ul class="space-y-2 text-sm text-obsidian-300">
-            <li>Age verification on first visit</li>
-            <li>Daily spending limits for minors</li>
-            <li>Content moderation on all text</li>
-            <li>FERPA-aware classroom mode</li>
-            <li>Parental consent flow for teens</li>
-            <li>No ads, no data selling</li>
-          </ul>
-        </div>
+        ))}
       </div>
     </div>
   </section>
@@ -269,17 +213,28 @@ const timeline = [
   <section class="section-padding">
     <div class="max-w-2xl mx-auto text-center">
       <div class="card-glass p-10 glow-gold">
-        <h2 class="text-2xl font-display font-bold mb-3">
-          Join the <span class="text-gradient">Journey</span>
-        </h2>
-        <p class="text-obsidian-400 text-sm mb-6">
-          We're building something new. Platform launching Q1 2026.
-        </p>
+        <T k="about.join.title" as="h2" class="text-2xl font-display font-bold mb-3" />
+        <T k="about.join.body" as="p" class="text-obsidian-400 text-sm mb-6" />
         <div class="flex flex-wrap justify-center gap-4">
-          <a href="/battle" class="btn-primary">Try the Battle Arena</a>
-          <a href="/playground" class="btn-secondary">Enter the Playground</a>
+          <a href="/battle" class="btn-primary"><T k="about.join.battle" /></a>
+          <a href="/playground" class="btn-secondary"><T k="about.join.playground" /></a>
         </div>
       </div>
     </div>
   </section>
+
+  <script>
+    import { t } from '../i18n';
+    import { initPage, monthOfYear, yearOnly } from '../i18n/pages/runtime';
+
+    void initPage(['about'], () => {
+      document.querySelectorAll<HTMLElement>('[data-when-month]').forEach((el) => {
+        const [year, month] = el.dataset.whenMonth!.split('-').map(Number);
+        el.textContent = monthOfYear(year, month);
+      });
+      document.querySelectorAll<HTMLElement>('[data-when-key]').forEach((el) => {
+        el.textContent = t(el.dataset.whenKey!, { year: yearOnly(Number(el.dataset.whenYear)) });
+      });
+    });
+  </script>
 </BaseLayout>

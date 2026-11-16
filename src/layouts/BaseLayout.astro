@@ -4,18 +4,46 @@
 import '../styles/global.css';
 
 interface Props {
+  /** The page's name in English: what the built HTML carries, and what shows until the language loads. */
   title: string;
   description?: string;
   ogImage?: string;
+  /**
+   * Message keys for the same two things. With them the document title and the description follow the
+   * interface language (the i18n script below). A page that gives no titleKey gets the key of its
+   * navigation entry, where it has one.
+   */
+  titleKey?: string;
+  descriptionKey?: string;
+  /** The page areas (src/i18n/pages/<area>) those keys live in, if they are not core keys. */
+  i18nAreas?: string[];
 }
 
-const { title, description = 'Inspired Mile — Digital Collectible Cards Powered by AI and AR', ogImage = '/images/cards/sm-001.webp' } = Astro.props;
+const { title, description = 'Inspired Mile — Digital Collectible Cards Powered by AI and AR', ogImage = '/images/cards/sm-001.webp', titleKey, descriptionKey, i18nAreas = [] } = Astro.props;
 const currentPath = Astro.url.pathname;
+// Pages named in the navigation or the footer already have a translated name in the core locale files.
+const NAV_TITLE_KEYS: Record<string, string> = {
+  '/': 'nav.home',
+  '/collection': 'nav.collection',
+  '/playground': 'nav.playground',
+  '/battle': 'nav.battle',
+  '/multiplayer': 'nav.multiplayer',
+  '/tournaments': 'nav.tournaments',
+  '/world-map': 'nav.worldMap',
+  '/marketplace': 'nav.marketplace',
+  '/vr': 'nav.vr',
+  '/viewer': 'nav.viewer',
+  '/about': 'nav.about',
+  '/profile': 'nav.profile',
+  '/privacy': 'footer.privacy',
+  '/terms': 'footer.terms',
+};
+const pageTitleKey = titleKey ?? NAV_TITLE_KEYS[currentPath.replace(/(.)\/$/, '$1')] ?? '';
 const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-title-key={pageTitleKey || undefined} data-description-key={descriptionKey} data-i18n-areas={i18nAreas.length ? i18nAreas.join(',') : undefined}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -479,7 +507,7 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
     <script>
       // Interface language: detect it, fill the static markup (data-i18n), mark <html> with
       // lang and dir, and wire the switcher. See src/i18n.
-      import { bindLocaleSwitch, initI18n, locale, onLocaleChange } from '../i18n';
+      import { bindLocaleSwitch, has, initI18n, loadArea, locale, onLocaleChange, t } from '../i18n';
 
       // Month names come from the browser, in the interface language.
       function nameMonths() {
@@ -490,11 +518,36 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
         });
       }
 
+      // The document title and description, in the interface language. The keys are on <html>
+      // (the layout's titleKey / descriptionKey props); a page's own keys are in the areas it names.
+      async function nameDocument() {
+        const d = document.documentElement.dataset;
+        const l = locale();
+        await Promise.all((d.i18nAreas ?? '').split(',').filter(Boolean).map((a) => loadArea(a, l)));
+        if (locale() !== l) return;
+        const set = (selector: string, content: string) => document.querySelector(selector)?.setAttribute('content', content);
+        if (d.titleKey && has(d.titleKey)) {
+          const title = `${t(d.titleKey)} | Inspired Mile`;
+          document.title = title;
+          set('meta[property="og:title"]', title);
+          set('meta[name="twitter:title"]', title);
+        }
+        if (d.descriptionKey && has(d.descriptionKey)) {
+          const description = t(d.descriptionKey);
+          set('meta[name="description"]', description);
+          set('meta[property="og:description"]', description);
+          set('meta[name="twitter:description"]', description);
+        }
+        document.documentElement.dataset.titleLocale = l;
+      }
+
       initI18n().then(() => {
         const select = document.getElementById('locale-switch') as HTMLSelectElement | null;
         if (select) bindLocaleSwitch(select);
         nameMonths();
         onLocaleChange(nameMonths);
+        void nameDocument();
+        onLocaleChange(() => void nameDocument());
       });
     </script>
 
@@ -551,7 +604,9 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
     </script>
 
     <script>
-      import { t as tr } from '../i18n';
+      import { loadArea, locale as currentLocale, t as tr } from '../i18n';
+      import { escapeHtml } from '../i18n/pages/runtime';
+      import { achievementDescription, achievementName } from '../i18n/pages/terms';
 
       // ---- Toast notification system ----
       type ToastType = 'success' | 'error' | 'info' | 'warning';
@@ -603,10 +658,12 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
         gold: 'from-gold-400 to-gold-600 border-gold-300',
       };
 
-      window.addEventListener('achievement-unlocked', ((e: CustomEvent) => {
+      window.addEventListener('achievement-unlocked', (async (e: CustomEvent) => {
         const a = e.detail;
         const container = document.getElementById('achievement-toasts');
         if (!container) return;
+        // The achievement's name and description in the interface language (English if the area will not load).
+        await loadArea('achievements', currentLocale()).catch(() => {});
 
         const toast = document.createElement('div');
         const colors = TIER_COLORS[a.tier] || TIER_COLORS.bronze;
@@ -615,8 +672,8 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
           <span class="text-2xl">${a.icon}</span>
           <div class="flex-1 min-w-0">
             <div class="text-xs font-semibold uppercase tracking-wider text-white/70">${tr('toast.achievement')}</div>
-            <div class="font-display font-bold text-white truncate">${a.name}</div>
-            <div class="text-xs text-white/80">${a.description}</div>
+            <div class="font-display font-bold text-white truncate">${escapeHtml(achievementName(a))}</div>
+            <div class="text-xs text-white/80">${escapeHtml(achievementDescription(a))}</div>
           </div>
         `;
         container.appendChild(toast);

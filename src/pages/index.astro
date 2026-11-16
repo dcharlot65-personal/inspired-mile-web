@@ -1,38 +1,33 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import T from '../components/T.astro';
+import { loadArea, t } from '../i18n';
+import { num } from '../i18n/pages/runtime';
+import { elementName, houseName, rarityName, statLabel } from '../i18n/pages/terms';
+import { CARD_CATALOG } from '../lib/cards';
+
+// English at build time; the script at the foot of the page puts it in the visitor's language.
+await Promise.all(['home', 'card-terms'].map((a) => loadArea(a)));
 
 const features = [
-  {
-    icon: '&#9813;',
-    title: 'Digital Cards',
-    description: 'Characters from Shakespeare, the Romantics and myth. Each card changes what your verse has to do.',
-  },
-  {
-    icon: '&#9876;',
-    title: 'The Verse Duel',
-    description: 'Three rounds, three forms. Keep the form, land your card\'s device, and out-write an opponent that runs in your browser.',
-  },
-  {
-    icon: '&#127183;',
-    title: 'Earn & Collect',
-    description: 'Win cards through mini-games, trivia, challenges, and battle victories. Build your collection.',
-  },
-  {
-    icon: '&#128279;',
-    title: 'Private by Design',
-    description: 'The AI opponent, the judge and speech recognition all run on your device. Nothing you write or say is sent to a server.',
-  },
+  { icon: '&#9813;', id: 'cards' },
+  { icon: '&#9876;', id: 'duel' },
+  { icon: '&#127183;', id: 'earn' },
+  { icon: '&#128279;', id: 'private' },
 ];
 
 const houses = [
-  { name: 'House Montague', play: 'Romeo & Juliet', color: 'from-crimson-500 to-crimson-700', count: 4 },
-  { name: 'House Capulet', play: 'Romeo & Juliet', color: 'from-blue-500 to-blue-700', count: 3 },
-  { name: 'Danish Court', play: 'Hamlet', color: 'from-purple-500 to-purple-700', count: 4 },
-  { name: 'Forest of Arden', play: 'As You Like It', color: 'from-emerald-500 to-emerald-700', count: 4 },
-];
+  { house: 'Montague', work: 'romeo-and-juliet', color: 'from-crimson-500 to-crimson-700' },
+  { house: 'Capulet', work: 'romeo-and-juliet', color: 'from-blue-500 to-blue-700' },
+  { house: 'Danish Court', work: 'hamlet', color: 'from-purple-500 to-purple-700' },
+  { house: 'Forest of Arden', work: 'as-you-like-it', color: 'from-emerald-500 to-emerald-700' },
+].map((h) => ({ ...h, count: CARD_CATALOG.filter((c) => c.house === h.house).length }));
+
+const sonnetMan = CARD_CATALOG.find((c) => c.id === 'SM-001')!;
+const houseCount = new Set(CARD_CATALOG.filter((c) => c.type === 'Character').map((c) => c.house)).size;
 ---
 
-<BaseLayout title="Home" description="Inspired Mile: a card game where your move is a verse. Collect Shakespeare's characters and duel an AI that runs entirely in your browser.">
+<BaseLayout title="Home" description={t('home.meta.description')} descriptionKey="home.meta.description" i18nAreas={['home']}>
 
   <!-- Hero Section -->
   <section class="relative min-h-[90vh] flex items-center overflow-hidden">
@@ -49,46 +44,38 @@ const houses = [
         <div>
           <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold-500/10 border border-gold-500/20 mb-6">
             <span class="w-2 h-2 rounded-full bg-gold-400 animate-pulse"></span>
-            <span class="text-gold-400 text-xs font-medium tracking-wide uppercase">Shakespeare on the Go</span>
+            <!-- The name of Devon Glover's programme: a proper name, the same in every language. -->
+            <span class="text-gold-400 text-xs font-medium tracking-wide uppercase" lang="en" translate="no" data-proper-name>Shakespeare on the Go</span>
           </div>
 
-          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-display font-bold leading-tight mb-6">
-            Where Cards
-            <span class="block text-gradient">Come Alive</span>
-          </h1>
+          <T k="home.hero.title" as="h1" class="text-4xl sm:text-5xl lg:text-6xl font-display font-bold leading-tight mb-6" bClass="block text-gradient" />
 
-          <p class="text-lg text-obsidian-300 leading-relaxed mb-8 max-w-lg">
-            A card game where your move is a verse.
-            Play a character, keep the form, and duel an AI that runs in your browser. Collect Shakespeare's greatest characters,
-            and join the next evolution of trading card games.
-          </p>
+          <T k="home.hero.body" as="p" class="text-lg text-obsidian-300 leading-relaxed mb-8 max-w-lg" />
 
           <div class="flex flex-wrap gap-4">
             <a href="/playground" class="btn-primary">
-              Enter the Playground
-              <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <T k="home.cta.playground" />
+              <svg class="w-4 h-4 ms-2 rtl:-scale-x-100" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>
             </a>
-            <a href="/collection" class="btn-secondary">
-              View Collection
-            </a>
+            <a href="/collection" class="btn-secondary"><T k="home.cta.collection" /></a>
           </div>
 
-          <div class="flex items-center gap-8 mt-10 text-sm text-obsidian-400">
-            <div>
-              <span class="block text-2xl font-display font-bold text-gold-400">71</span>
-              Cards to Collect
+          <div class="flex items-start gap-6 sm:gap-8 mt-10 text-sm text-obsidian-400">
+            <div class="min-w-0">
+              <span class="block text-2xl font-display font-bold text-gold-400" data-num={CARD_CATALOG.length}>{num(CARD_CATALOG.length)}</span>
+              <T k="home.stat.cards" />
             </div>
-            <div class="w-px h-10 bg-obsidian-700"></div>
-            <div>
-              <span class="block text-2xl font-display font-bold text-gold-400">14</span>
-              Houses
+            <div class="w-px self-stretch bg-obsidian-700"></div>
+            <div class="min-w-0">
+              <span class="block text-2xl font-display font-bold text-gold-400" data-num={houseCount}>{num(houseCount)}</span>
+              <T k="home.stat.houses" />
             </div>
-            <div class="w-px h-10 bg-obsidian-700"></div>
-            <div>
-              <span class="block text-2xl font-display font-bold text-gold-400">0</span>
-              Servers Reading Your Verse
+            <div class="w-px self-stretch bg-obsidian-700"></div>
+            <div class="min-w-0">
+              <span class="block text-2xl font-display font-bold text-gold-400" data-num="0">{num(0)}</span>
+              <T k="home.stat.servers" />
             </div>
           </div>
         </div>
@@ -104,33 +91,33 @@ const houses = [
               <div class="absolute inset-0 bg-linear-to-br from-obsidian-800 via-obsidian-900 to-obsidian-950 border-2 border-gold-500/30 rounded-2xl">
                 <!-- Card header -->
                 <div class="p-4 flex items-center justify-between">
-                  <span class="text-xs font-mono text-gold-500/60">SM-001</span>
-                  <span class="text-xs font-mono text-crimson-400">ATK 95</span>
+                  <span class="text-xs font-mono text-gold-500/60">{sonnetMan.id}</span>
+                  <span class="text-xs font-mono text-crimson-400"><T k="card-terms.stat.atk" /> <span data-num={sonnetMan.atk}>{num(sonnetMan.atk)}</span></span>
                 </div>
 
                 <!-- Card art area -->
                 <div class="mx-4 h-48 rounded-lg bg-linear-to-br from-gold-500/10 to-crimson-500/10 border border-gold-500/20 overflow-hidden">
-                  <img src="/images/cards/sm-001.webp" alt="The Sonnet Man" class="w-full h-full object-cover" fetchpriority="high" decoding="async" />
+                  <img src={sonnetMan.image} alt={sonnetMan.name} class="w-full h-full object-cover" fetchpriority="high" decoding="async" />
                 </div>
 
-                <!-- Card info -->
+                <!-- Card info: the name and the line come from the card data as they are -->
                 <div class="p-4">
-                  <h3 class="font-display text-lg font-bold text-gold-300">The Sonnet Man</h3>
-                  <p class="text-xs text-obsidian-400 mt-1">Master Thespian &middot; Legendary</p>
+                  <h3 class="font-display text-lg font-bold text-gold-300" data-card-text>{sonnetMan.name}</h3>
+                  <p class="text-xs text-obsidian-400 mt-1"><T k="home.card.role" /> &middot; <span data-i18n-html="rarity.legendary">{rarityName(sonnetMan.rarity)}</span></p>
                   <div class="mt-3 flex items-center gap-2">
-                    <span class="px-2 py-0.5 text-xs rounded-sm bg-crimson-500/20 text-crimson-400 border border-crimson-500/30">Fire</span>
-                    <span class="px-2 py-0.5 text-xs rounded-sm bg-gold-500/20 text-gold-400 border border-gold-500/30">Bard</span>
+                    <span class="px-2 py-0.5 text-xs rounded-sm bg-crimson-500/20 text-crimson-400 border border-crimson-500/30" data-i18n-html="card-terms.element.fire">{elementName(sonnetMan.element)}</span>
+                    <T k="home.card.bard" class="px-2 py-0.5 text-xs rounded-sm bg-gold-500/20 text-gold-400 border border-gold-500/30" />
                   </div>
-                  <p class="text-xs text-obsidian-400 mt-3 italic leading-relaxed">
-                    "Shall I compare thee to a summer's day? Thou art more lovely and more temperate..."
+                  <p class="text-xs text-obsidian-400 mt-3 italic leading-relaxed" data-card-text>
+                    "{sonnetMan.quote}"
                   </p>
                 </div>
 
                 <!-- Card footer -->
                 <div class="absolute bottom-0 left-0 right-0 p-3 flex items-center justify-between bg-obsidian-950/80">
                   <div class="flex items-center gap-3 text-xs text-obsidian-500">
-                    <span>HP 100</span>
-                    <span>DEF 80</span>
+                    <span><T k="card-terms.stat.hp" /> <span data-num={sonnetMan.hp}>{num(sonnetMan.hp)}</span></span>
+                    <span><T k="card-terms.stat.def" /> <span data-num={sonnetMan.def}>{num(sonnetMan.def)}</span></span>
                   </div>
                   <div class="flex items-center gap-1">
                     <span class="w-1.5 h-1.5 rounded-full bg-gold-400"></span>
@@ -156,20 +143,16 @@ const houses = [
   <section class="section-padding">
     <div class="max-w-7xl mx-auto">
       <div class="text-center mb-16">
-        <h2 class="text-3xl sm:text-4xl font-display font-bold mb-4">
-          The <span class="text-gradient">Platform</span>
-        </h2>
-        <p class="text-obsidian-400 max-w-2xl mx-auto">
-          Digital cards, AI experiences, and a marketplace — coming together to create something entirely new.
-        </p>
+        <T k="home.platform.title" as="h2" class="text-3xl sm:text-4xl font-display font-bold mb-4" />
+        <T k="home.platform.body" as="p" class="text-obsidian-400 max-w-2xl mx-auto" />
       </div>
 
       <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {features.map((feature) => (
           <div class="card-glass p-6 hover:border-gold-500/30 transition-all duration-300 group">
             <div class="text-3xl mb-4 group-hover:scale-110 transition-transform" set:html={feature.icon} />
-            <h3 class="font-display text-lg font-semibold text-obsidian-100 mb-2">{feature.title}</h3>
-            <p class="text-sm text-obsidian-400 leading-relaxed">{feature.description}</p>
+            <T k={`home.feature.${feature.id}.title`} as="h3" class="font-display text-lg font-semibold text-obsidian-100 mb-2" />
+            <T k={`home.feature.${feature.id}.body`} as="p" class="text-sm text-obsidian-400 leading-relaxed" />
           </div>
         ))}
       </div>
@@ -180,28 +163,19 @@ const houses = [
   <section class="section-padding bg-obsidian-900/30">
     <div class="max-w-7xl mx-auto">
       <div class="text-center mb-16">
-        <h2 class="text-3xl sm:text-4xl font-display font-bold mb-4">
-          Shakespeare's <span class="text-gradient">Houses</span>
-        </h2>
-        <p class="text-obsidian-400 max-w-2xl mx-auto">
-          Choose your allegiance. Each house draws from a different Shakespeare play, with unique characters, abilities, and strategies.
-        </p>
+        <T k="home.houses.title" as="h2" class="text-3xl sm:text-4xl font-display font-bold mb-4" />
+        <T k="home.houses.body" as="p" class="text-obsidian-400 max-w-2xl mx-auto" />
       </div>
 
       <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {houses.map((house) => (
-          <div class="card-glass p-6 hover:border-gold-500/30 transition-all duration-300 group cursor-pointer">
+          <div class="card-glass p-6 hover:border-gold-500/30 transition-all duration-300 group">
             <div class={`w-12 h-12 rounded-lg bg-linear-to-br ${house.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
-              <span class="text-white font-display font-bold text-lg">{house.name[0]}</span>
+              <span class="text-white font-display font-bold text-lg" data-house-initial={house.house}>{houseName(house.house).charAt(0)}</span>
             </div>
-            <h3 class="font-display text-lg font-semibold text-obsidian-100 mb-1">{house.name}</h3>
-            <p class="text-xs text-obsidian-500 mb-3 italic">{house.play}</p>
-            <div class="flex items-center justify-between">
-              <span class="text-xs text-obsidian-400">{house.count} cards</span>
-              <svg class="w-4 h-4 text-obsidian-500 group-hover:text-gold-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-              </svg>
-            </div>
+            <h3 class="font-display text-lg font-semibold text-obsidian-100 mb-1" data-house={house.house}>{houseName(house.house)}</h3>
+            <T k={`card-terms.work.${house.work}`} as="p" class="text-xs text-obsidian-500 mb-3 italic" />
+            <T k="home.houses.cards" vars={{ n: house.count }} class="text-xs text-obsidian-400" />
           </div>
         ))}
       </div>
@@ -212,22 +186,16 @@ const houses = [
   <section class="section-padding">
     <div class="max-w-4xl mx-auto text-center">
       <div class="card-glass p-10 sm:p-16 glow-gold">
-        <h2 class="text-3xl sm:text-4xl font-display font-bold mb-4">
-          Ready to <span class="text-gradient">Battle</span>?
-        </h2>
-        <p class="text-obsidian-300 mb-8 max-w-lg mx-auto">
-          Play your cards, speak your verse, and take the stage. On a screen, or in a Quest 3 or Vision Pro in the Theatre.
-        </p>
+        <T k="home.ready.title" as="h2" class="text-3xl sm:text-4xl font-display font-bold mb-4" />
+        <T k="home.ready.body" as="p" class="text-obsidian-300 mb-8 max-w-lg mx-auto" />
         <div class="flex flex-wrap justify-center gap-4">
           <a href="/battle" class="btn-danger">
-            Enter the Arena
-            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <T k="home.ready.arena" />
+            <svg class="w-4 h-4 ms-2 rtl:-scale-x-100" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
             </svg>
           </a>
-          <a href="/playground" class="btn-secondary">
-            Earn Cards
-          </a>
+          <a href="/playground" class="btn-secondary"><T k="home.ready.earn" /></a>
         </div>
       </div>
     </div>
@@ -235,6 +203,17 @@ const houses = [
 
   <script>
     import { initAudio, isInitialized, playMusic } from '../lib/audio-manager';
+    import { initPage } from '../i18n/pages/runtime';
+    import { houseName } from '../i18n/pages/terms';
+
+    void initPage(['home', 'card-terms'], () => {
+      document.querySelectorAll<HTMLElement>('[data-house]').forEach((el) => {
+        el.textContent = houseName(el.dataset.house!);
+      });
+      document.querySelectorAll<HTMLElement>('[data-house-initial]').forEach((el) => {
+        el.textContent = [...houseName(el.dataset.houseInitial!)][0] ?? '';
+      });
+    });
 
     document.addEventListener('click', () => {
       if (!isInitialized()) initAudio();
