@@ -19,7 +19,8 @@
     "pt",
     "ru",
     "ar",
-    "hi"
+    "hi",
+    "zh"
    ]
   },
   "standard": {
@@ -43,7 +44,8 @@
     "pl",
     "ru",
     "ar",
-    "hi"
+    "hi",
+    "zh"
    ],
    "write": [
     "en",
@@ -55,7 +57,8 @@
     "pl",
     "ru",
     "ar",
-    "hi"
+    "hi",
+    "zh"
    ]
   },
   "standard": {
@@ -69,7 +72,8 @@
     "pl",
     "ru",
     "ar",
-    "hi"
+    "hi",
+    "zh"
    ],
    "write": [
     "en",
@@ -81,7 +85,8 @@
     "pl",
     "ru",
     "ar",
-    "hi"
+    "hi",
+    "zh"
    ]
   },
   "lite": {
@@ -95,7 +100,8 @@
     "pl",
     "ru",
     "ar",
-    "hi"
+    "hi",
+    "zh"
    ],
    "write": [
     "en",
@@ -107,7 +113,8 @@
     "pl",
     "ru",
     "ar",
-    "hi"
+    "hi",
+    "zh"
    ]
   }
  },
@@ -165,11 +172,9 @@
    },
    "zh": {
     "writes": [
-     "not measured"
+     "commentary in 10/60 plays"
     ],
-    "judges": [
-     "not measured"
-    ]
+    "judges": []
    },
    "ja": {
     "writes": [
@@ -322,10 +327,13 @@
    },
    "zh": {
     "writes": [
-     "not measured"
+     "in the language in 14/60 plays (23%), under 90%",
+     "commentary in 47/60 plays",
+     "kept the form in full in 5/60 plays (8%), under 30%"
     ],
     "judges": [
-     "not measured"
+     "better verse won 8/12 pairs: the 95% interval reaches down to 0.39, not above chance",
+     "preferred the better verse on 26/48 criteria (54%), under 70%"
     ]
    },
    "ja": {
@@ -469,10 +477,12 @@
    },
    "zh": {
     "writes": [
-     "not measured"
+     "kept the form in full in 0/60 plays (0%), under 30%"
     ],
     "judges": [
-     "not measured"
+     "better verse won 7/12 pairs: the 95% interval reaches down to 0.32, not above chance",
+     "preferred the better verse on 9/48 criteria (19%), under 70%",
+     "1 injection attempt(s) beat a real verse"
     ]
    },
    "ja": {

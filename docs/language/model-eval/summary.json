@@ -110,7 +110,8 @@
     "pl",
     "ru",
     "ar",
-    "hi"
+    "hi",
+    "zh"
    ],
    "write": [
     "en",
@@ -122,7 +123,8 @@
     "pl",
     "ru",
     "ar",
-    "hi"
+    "hi",
+    "zh"
    ]
   },
   "standard": {
@@ -136,7 +138,8 @@
     "pl",
     "ru",
     "ar",
-    "hi"
+    "hi",
+    "zh"
    ],
    "write": [
     "en",
@@ -148,7 +151,8 @@
     "pl",
     "ru",
     "ar",
-    "hi"
+    "hi",
+    "zh"
    ]
   },
   "lite": {
@@ -162,7 +166,8 @@
     "pl",
     "ru",
     "ar",
-    "hi"
+    "hi",
+    "zh"
    ],
    "write": [
     "en",
@@ -174,7 +179,8 @@
     "pl",
     "ru",
     "ar",
-    "hi"
+    "hi",
+    "zh"
    ]
   }
  },
@@ -3906,18 +3912,302 @@
     }
    },
    "zh": {
-    "judge": null,
-    "write": null,
+    "judge": {
+     "pairs": 12,
+     "allByModel": true,
+     "pairWins": 11,
+     "pairWilson": {
+      "rate": 0.9166666666666666,
+      "low": 0.6461200862787544,
+      "high": 0.9851349057603305
+     },
+     "criteria": 48,
+     "better": 46,
+     "split": 0,
+     "worse": 2,
+     "criterionWilson": {
+      "rate": 0.9583333333333334,
+      "low": 0.8602434401996508,
+      "high": 0.9884981066142424
+     },
+     "byCriterion": {
+      "wordplay": {
+       "better": 11,
+       "n": 12
+      },
+      "allusion": {
+       "better": 12,
+       "n": 12
+      },
+      "flow": {
+       "better": 12,
+       "n": 12
+      },
+      "wit": {
+       "better": 11,
+       "n": 12
+      }
+     },
+     "byKind": {
+      "prose": {
+       "pairs": 3,
+       "pairWins": 3,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 12
+      },
+      "interface": {
+       "pairs": 3,
+       "pairWins": 3,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 12
+      },
+      "gibberish": {
+       "pairs": 3,
+       "pairWins": 2,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 10
+      },
+      "injection": {
+       "pairs": 3,
+       "pairWins": 3,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 12
+      }
+     },
+     "injectionPairsLost": 0
+    },
+    "write": {
+     "plays": 60,
+     "modelSourced": 60,
+     "formKept": 27,
+     "formKeptWilson": {
+      "rate": 0.45,
+      "low": 0.33093654320665966,
+      "high": 0.5750806420967631
+     },
+     "meanCraft": 18.183333333333334,
+     "meanFormPoints": 13.033333333333333,
+     "inLanguage": 58,
+     "inLanguageWilson": {
+      "rate": 0.9666666666666667,
+      "low": 0.886362256341505,
+      "high": 0.9908106808265498
+     },
+     "commentary": 10,
+     "commentaryNarrow": 1,
+     "formKeptIfRhymeWaived": 27,
+     "drafts": 114,
+     "draftsFormKept": 47,
+     "draftsRanOn": 7,
+     "draftsEmpty": 0,
+     "tokensPerSecond": 5.046774223585134,
+     "minPlaysPerForm": 10,
+     "byForm": {
+      "crescendo": {
+       "plays": 10,
+       "modelSourced": 10,
+       "formKept": 7,
+       "formKeptWilson": {
+        "rate": 0.7,
+        "low": 0.3967781453459709,
+        "high": 0.892208733443606
+       },
+       "meanCraft": 23,
+       "meanFormPoints": 15.2,
+       "inLanguage": 9,
+       "inLanguageWilson": {
+        "rate": 0.9,
+        "low": 0.5958499704752279,
+        "high": 0.982123787103926
+       },
+       "commentary": 0,
+       "commentaryNarrow": 0,
+       "formKeptIfRhymeWaived": 7
+      },
+      "haiku": {
+       "plays": 10,
+       "modelSourced": 10,
+       "formKept": 0,
+       "formKeptWilson": {
+        "rate": 0,
+        "low": 0,
+        "high": 0.2775328030260577
+       },
+       "meanCraft": 16.1,
+       "meanFormPoints": 11,
+       "inLanguage": 10,
+       "inLanguageWilson": {
+        "rate": 1,
+        "low": 0.7224671969739421,
+        "high": 0.9999999999999999
+       },
+       "commentary": 0,
+       "commentaryNarrow": 0,
+       "formKeptIfRhymeWaived": 0
+      },
+      "epistrophe": {
+       "plays": 10,
+       "modelSourced": 10,
+       "formKept": 0,
+       "formKeptWilson": {
+        "rate": 0,
+        "low": 0,
+        "high": 0.2775328030260577
+       },
+       "meanCraft": 9,
+       "meanFormPoints": 6,
+       "inLanguage": 10,
+       "inLanguageWilson": {
+        "rate": 1,
+        "low": 0.7224671969739421,
+        "high": 0.9999999999999999
+       },
+       "commentary": 0,
+       "commentaryNarrow": 0,
+       "formKeptIfRhymeWaived": 0
+      },
+      "anaphora": {
+       "plays": 10,
+       "modelSourced": 10,
+       "formKept": 9,
+       "formKeptWilson": {
+        "rate": 0.9,
+        "low": 0.5958499704752279,
+        "high": 0.982123787103926
+       },
+       "meanCraft": 25.2,
+       "meanFormPoints": 18.6,
+       "inLanguage": 10,
+       "inLanguageWilson": {
+        "rate": 1,
+        "low": 0.7224671969739421,
+        "high": 0.9999999999999999
+       },
+       "commentary": 0,
+       "commentaryNarrow": 0,
+       "formKeptIfRhymeWaived": 9
+      },
+      "jueju": {
+       "plays": 10,
+       "modelSourced": 10,
+       "formKept": 1,
+       "formKeptWilson": {
+        "rate": 0.1,
+        "low": 0.017876212896073995,
+        "high": 0.4041500295247722
+       },
+       "meanCraft": 10.7,
+       "meanFormPoints": 7.4,
+       "inLanguage": 9,
+       "inLanguageWilson": {
+        "rate": 0.9,
+        "low": 0.5958499704752279,
+        "high": 0.982123787103926
+       },
+       "commentary": 1,
+       "commentaryNarrow": 1,
+       "formKeptIfRhymeWaived": 1
+      },
+      "acrostic": {
+       "plays": 10,
+       "modelSourced": 10,
+       "formKept": 10,
+       "formKeptWilson": {
+        "rate": 1,
+        "low": 0.7224671969739421,
+        "high": 0.9999999999999999
+       },
+       "meanCraft": 25.1,
+       "meanFormPoints": 20,
+       "inLanguage": 10,
+       "inLanguageWilson": {
+        "rate": 1,
+        "low": 0.7224671969739421,
+        "high": 0.9999999999999999
+       },
+       "commentary": 9,
+       "commentaryNarrow": 0,
+       "formKeptIfRhymeWaived": 10
+      }
+     },
+     "byDifficulty": {
+      "apprentice": {
+       "plays": 24,
+       "modelSourced": 24,
+       "formKept": 10,
+       "formKeptWilson": {
+        "rate": 0.4166666666666667,
+        "low": 0.24467602500194355,
+        "high": 0.6116533427566112
+       },
+       "meanCraft": 17.541666666666668,
+       "meanFormPoints": 12.666666666666666,
+       "inLanguage": 23,
+       "inLanguageWilson": {
+        "rate": 0.9583333333333334,
+        "low": 0.7975819334115467,
+        "high": 0.9926065439164028
+       },
+       "commentary": 4,
+       "commentaryNarrow": 0,
+       "formKeptIfRhymeWaived": 10
+      },
+      "player": {
+       "plays": 18,
+       "modelSourced": 18,
+       "formKept": 8,
+       "formKeptWilson": {
+        "rate": 0.4444444444444444,
+        "low": 0.24559518003796732,
+        "high": 0.6628358450657309
+       },
+       "meanCraft": 17.5,
+       "meanFormPoints": 12.61111111111111,
+       "inLanguage": 17,
+       "inLanguageWilson": {
+        "rate": 0.9444444444444444,
+        "low": 0.7424269900391908,
+        "high": 0.990124809131223
+       },
+       "commentary": 4,
+       "commentaryNarrow": 1,
+       "formKeptIfRhymeWaived": 8
+      },
+      "master": {
+       "plays": 18,
+       "modelSourced": 18,
+       "formKept": 9,
+       "formKeptWilson": {
+        "rate": 0.5,
+        "low": 0.2903102136885988,
+        "high": 0.7096897863114012
+       },
+       "meanCraft": 19.72222222222222,
+       "meanFormPoints": 13.944444444444445,
+       "inLanguage": 18,
+       "inLanguageWilson": {
+        "rate": 1,
+        "low": 0.8241207740667156,
+        "high": 1
+       },
+       "commentary": 2,
+       "commentaryNarrow": 0,
+       "formKeptIfRhymeWaived": 9
+      }
+     }
+    },
     "judges": {
-     "ok": false,
-     "why": [
-      "not measured"
-     ]
+     "ok": true,
+     "why": []
     },
     "writes": {
      "ok": false,
      "why": [
-      "not measured"
+      "commentary in 10/60 plays"
      ]
     }
    },
@@ -7786,18 +8076,307 @@
     }
    },
    "zh": {
-    "judge": null,
-    "write": null,
+    "judge": {
+     "pairs": 12,
+     "allByModel": true,
+     "pairWins": 8,
+     "pairWilson": {
+      "rate": 0.6666666666666666,
+      "low": 0.3906220869404939,
+      "high": 0.86187990987514
+     },
+     "criteria": 48,
+     "better": 26,
+     "split": 10,
+     "worse": 12,
+     "criterionWilson": {
+      "rate": 0.5416666666666666,
+      "low": 0.4029107444200485,
+      "high": 0.6742475780175782
+     },
+     "byCriterion": {
+      "wordplay": {
+       "better": 6,
+       "n": 12
+      },
+      "allusion": {
+       "better": 5,
+       "n": 12
+      },
+      "flow": {
+       "better": 7,
+       "n": 12
+      },
+      "wit": {
+       "better": 8,
+       "n": 12
+      }
+     },
+     "byKind": {
+      "prose": {
+       "pairs": 3,
+       "pairWins": 2,
+       "pairLosses": 1,
+       "criteria": 12,
+       "better": 4
+      },
+      "interface": {
+       "pairs": 3,
+       "pairWins": 2,
+       "pairLosses": 1,
+       "criteria": 12,
+       "better": 5
+      },
+      "gibberish": {
+       "pairs": 3,
+       "pairWins": 1,
+       "pairLosses": 2,
+       "criteria": 12,
+       "better": 5
+      },
+      "injection": {
+       "pairs": 3,
+       "pairWins": 3,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 12
+      }
+     },
+     "injectionPairsLost": 0
+    },
+    "write": {
+     "plays": 60,
+     "modelSourced": 60,
+     "formKept": 5,
+     "formKeptWilson": {
+      "rate": 0.08333333333333333,
+      "low": 0.03612045637312657,
+      "high": 0.18068942115539605
+     },
+     "meanCraft": 10.466666666666667,
+     "meanFormPoints": 6.9,
+     "inLanguage": 14,
+     "inLanguageWilson": {
+      "rate": 0.23333333333333334,
+      "low": 0.14439561680788218,
+      "high": 0.35436270481037235
+     },
+     "commentary": 47,
+     "commentaryNarrow": 45,
+     "formKeptIfRhymeWaived": 5,
+     "drafts": 114,
+     "draftsFormKept": 6,
+     "draftsRanOn": 102,
+     "draftsEmpty": 0,
+     "tokensPerSecond": 13.856371118138329,
+     "minPlaysPerForm": 10,
+     "byForm": {
+      "crescendo": {
+       "plays": 10,
+       "modelSourced": 10,
+       "formKept": 4,
+       "formKeptWilson": {
+        "rate": 0.4,
+        "low": 0.1681803285264069,
+        "high": 0.6873262320788047
+       },
+       "meanCraft": 15.7,
+       "meanFormPoints": 11.6,
+       "inLanguage": 2,
+       "inLanguageWilson": {
+        "rate": 0.2,
+        "low": 0.05668215093776685,
+        "high": 0.5098375308778678
+       },
+       "commentary": 8,
+       "commentaryNarrow": 8,
+       "formKeptIfRhymeWaived": 4
+      },
+      "haiku": {
+       "plays": 10,
+       "modelSourced": 10,
+       "formKept": 0,
+       "formKeptWilson": {
+        "rate": 0,
+        "low": 0,
+        "high": 0.2775328030260577
+       },
+       "meanCraft": 10.6,
+       "meanFormPoints": 5,
+       "inLanguage": 1,
+       "inLanguageWilson": {
+        "rate": 0.1,
+        "low": 0.017876212896073995,
+        "high": 0.4041500295247722
+       },
+       "commentary": 8,
+       "commentaryNarrow": 8,
+       "formKeptIfRhymeWaived": 0
+      },
+      "epistrophe": {
+       "plays": 10,
+       "modelSourced": 10,
+       "formKept": 0,
+       "formKeptWilson": {
+        "rate": 0,
+        "low": 0,
+        "high": 0.2775328030260577
+       },
+       "meanCraft": 9.3,
+       "meanFormPoints": 6,
+       "inLanguage": 2,
+       "inLanguageWilson": {
+        "rate": 0.2,
+        "low": 0.05668215093776685,
+        "high": 0.5098375308778678
+       },
+       "commentary": 8,
+       "commentaryNarrow": 8,
+       "formKeptIfRhymeWaived": 0
+      },
+      "anaphora": {
+       "plays": 10,
+       "modelSourced": 10,
+       "formKept": 0,
+       "formKeptWilson": {
+        "rate": 0,
+        "low": 0,
+        "high": 0.2775328030260577
+       },
+       "meanCraft": 9,
+       "meanFormPoints": 6,
+       "inLanguage": 1,
+       "inLanguageWilson": {
+        "rate": 0.1,
+        "low": 0.017876212896073995,
+        "high": 0.4041500295247722
+       },
+       "commentary": 10,
+       "commentaryNarrow": 10,
+       "formKeptIfRhymeWaived": 0
+      },
+      "jueju": {
+       "plays": 10,
+       "modelSourced": 10,
+       "formKept": 0,
+       "formKeptWilson": {
+        "rate": 0,
+        "low": 0,
+        "high": 0.2775328030260577
+       },
+       "meanCraft": 8.1,
+       "meanFormPoints": 5.4,
+       "inLanguage": 4,
+       "inLanguageWilson": {
+        "rate": 0.4,
+        "low": 0.1681803285264069,
+        "high": 0.6873262320788047
+       },
+       "commentary": 6,
+       "commentaryNarrow": 6,
+       "formKeptIfRhymeWaived": 0
+      },
+      "acrostic": {
+       "plays": 10,
+       "modelSourced": 10,
+       "formKept": 1,
+       "formKeptWilson": {
+        "rate": 0.1,
+        "low": 0.017876212896073995,
+        "high": 0.4041500295247722
+       },
+       "meanCraft": 10.1,
+       "meanFormPoints": 7.4,
+       "inLanguage": 4,
+       "inLanguageWilson": {
+        "rate": 0.4,
+        "low": 0.1681803285264069,
+        "high": 0.6873262320788047
+       },
+       "commentary": 7,
+       "commentaryNarrow": 5,
+       "formKeptIfRhymeWaived": 1
+      }
+     },
+     "byDifficulty": {
+      "apprentice": {
+       "plays": 24,
+       "modelSourced": 24,
+       "formKept": 0,
+       "formKeptWilson": {
+        "rate": 0,
+        "low": 0,
+        "high": 0.13797620655132792
+       },
+       "meanCraft": 8.5,
+       "meanFormPoints": 5.583333333333333,
+       "inLanguage": 4,
+       "inLanguageWilson": {
+        "rate": 0.16666666666666666,
+        "low": 0.06678676282131818,
+        "high": 0.3585307082129004
+       },
+       "commentary": 20,
+       "commentaryNarrow": 19,
+       "formKeptIfRhymeWaived": 0
+      },
+      "player": {
+       "plays": 18,
+       "modelSourced": 18,
+       "formKept": 4,
+       "formKeptWilson": {
+        "rate": 0.2222222222222222,
+        "low": 0.09000928045845544,
+        "high": 0.45214584506003586
+       },
+       "meanCraft": 12.722222222222221,
+       "meanFormPoints": 8.944444444444445,
+       "inLanguage": 5,
+       "inLanguageWilson": {
+        "rate": 0.2777777777777778,
+        "low": 0.1249975330046966,
+        "high": 0.5087265674100965
+       },
+       "commentary": 14,
+       "commentaryNarrow": 14,
+       "formKeptIfRhymeWaived": 4
+      },
+      "master": {
+       "plays": 18,
+       "modelSourced": 18,
+       "formKept": 1,
+       "formKeptWilson": {
+        "rate": 0.05555555555555555,
+        "low": 0.009875190868776959,
+        "high": 0.2575730099608091
+       },
+       "meanCraft": 10.833333333333334,
+       "meanFormPoints": 6.611111111111111,
+       "inLanguage": 5,
+       "inLanguageWilson": {
+        "rate": 0.2777777777777778,
+        "low": 0.1249975330046966,
+        "high": 0.5087265674100965
+       },
+       "commentary": 13,
+       "commentaryNarrow": 12,
+       "formKeptIfRhymeWaived": 1
+      }
+     }
+    },
     "judges": {
      "ok": false,
      "why": [
-      "not measured"
+      "better verse won 8/12 pairs: the 95% interval reaches down to 0.39, not above chance",
+      "preferred the better verse on 26/48 criteria (54%), under 70%"
      ]
     },
     "writes": {
      "ok": false,
      "why": [
-      "not measured"
+      "in the language in 14/60 plays (23%), under 90%",
+      "commentary in 47/60 plays",
+      "kept the form in full in 5/60 plays (8%), under 30%"
      ]
     }
    },
@@ -11656,18 +12235,306 @@
     }
    },
    "zh": {
-    "judge": null,
-    "write": null,
+    "judge": {
+     "pairs": 12,
+     "allByModel": true,
+     "pairWins": 7,
+     "pairWilson": {
+      "rate": 0.5833333333333334,
+      "low": 0.31951131084242423,
+      "high": 0.8067396875653928
+     },
+     "criteria": 48,
+     "better": 9,
+     "split": 34,
+     "worse": 5,
+     "criterionWilson": {
+      "rate": 0.1875,
+      "low": 0.10191390905651461,
+      "high": 0.31939867266128563
+     },
+     "byCriterion": {
+      "wordplay": {
+       "better": 7,
+       "n": 12
+      },
+      "allusion": {
+       "better": 0,
+       "n": 12
+      },
+      "flow": {
+       "better": 2,
+       "n": 12
+      },
+      "wit": {
+       "better": 0,
+       "n": 12
+      }
+     },
+     "byKind": {
+      "prose": {
+       "pairs": 3,
+       "pairWins": 3,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 4
+      },
+      "interface": {
+       "pairs": 3,
+       "pairWins": 2,
+       "pairLosses": 0,
+       "criteria": 12,
+       "better": 3
+      },
+      "gibberish": {
+       "pairs": 3,
+       "pairWins": 0,
+       "pairLosses": 2,
+       "criteria": 12,
+       "better": 0
+      },
+      "injection": {
+       "pairs": 3,
+       "pairWins": 2,
+       "pairLosses": 1,
+       "criteria": 12,
+       "better": 2
+      }
+     },
+     "injectionPairsLost": 1
+    },
+    "write": {
+     "plays": 60,
+     "modelSourced": 60,
+     "formKept": 0,
+     "formKeptWilson": {
+      "rate": 0,
+      "low": 0,
+      "high": 0.060171853034227174
+     },
+     "meanCraft": 5.766666666666667,
+     "meanFormPoints": 3.816666666666667,
+     "inLanguage": 55,
+     "inLanguageWilson": {
+      "rate": 0.9166666666666666,
+      "low": 0.8193105788446039,
+      "high": 0.9638795436268733
+     },
+     "commentary": 4,
+     "commentaryNarrow": 3,
+     "formKeptIfRhymeWaived": 0,
+     "drafts": 114,
+     "draftsFormKept": 0,
+     "draftsRanOn": 3,
+     "draftsEmpty": 0,
+     "tokensPerSecond": 17.12073242049648,
+     "minPlaysPerForm": 10,
+     "byForm": {
+      "crescendo": {
+       "plays": 10,
+       "modelSourced": 10,
+       "formKept": 0,
+       "formKeptWilson": {
+        "rate": 0,
+        "low": 0,
+        "high": 0.2775328030260577
+       },
+       "meanCraft": 6.6,
+       "meanFormPoints": 4.2,
+       "inLanguage": 10,
+       "inLanguageWilson": {
+        "rate": 1,
+        "low": 0.7224671969739421,
+        "high": 0.9999999999999999
+       },
+       "commentary": 0,
+       "commentaryNarrow": 0,
+       "formKeptIfRhymeWaived": 0
+      },
+      "haiku": {
+       "plays": 10,
+       "modelSourced": 10,
+       "formKept": 0,
+       "formKeptWilson": {
+        "rate": 0,
+        "low": 0,
+        "high": 0.2775328030260577
+       },
+       "meanCraft": 7.8,
+       "meanFormPoints": 4.5,
+       "inLanguage": 10,
+       "inLanguageWilson": {
+        "rate": 1,
+        "low": 0.7224671969739421,
+        "high": 0.9999999999999999
+       },
+       "commentary": 0,
+       "commentaryNarrow": 0,
+       "formKeptIfRhymeWaived": 0
+      },
+      "epistrophe": {
+       "plays": 10,
+       "modelSourced": 10,
+       "formKept": 0,
+       "formKeptWilson": {
+        "rate": 0,
+        "low": 0,
+        "high": 0.2775328030260577
+       },
+       "meanCraft": 4.5,
+       "meanFormPoints": 2.4,
+       "inLanguage": 10,
+       "inLanguageWilson": {
+        "rate": 1,
+        "low": 0.7224671969739421,
+        "high": 0.9999999999999999
+       },
+       "commentary": 0,
+       "commentaryNarrow": 0,
+       "formKeptIfRhymeWaived": 0
+      },
+      "anaphora": {
+       "plays": 10,
+       "modelSourced": 10,
+       "formKept": 0,
+       "formKeptWilson": {
+        "rate": 0,
+        "low": 0,
+        "high": 0.2775328030260577
+       },
+       "meanCraft": 5.7,
+       "meanFormPoints": 4.8,
+       "inLanguage": 8,
+       "inLanguageWilson": {
+        "rate": 0.8,
+        "low": 0.4901624691221323,
+        "high": 0.9433178490622331
+       },
+       "commentary": 1,
+       "commentaryNarrow": 1,
+       "formKeptIfRhymeWaived": 0
+      },
+      "jueju": {
+       "plays": 10,
+       "modelSourced": 10,
+       "formKept": 0,
+       "formKeptWilson": {
+        "rate": 0,
+        "low": 0,
+        "high": 0.2775328030260577
+       },
+       "meanCraft": 5.8,
+       "meanFormPoints": 4.6,
+       "inLanguage": 8,
+       "inLanguageWilson": {
+        "rate": 0.8,
+        "low": 0.4901624691221323,
+        "high": 0.9433178490622331
+       },
+       "commentary": 2,
+       "commentaryNarrow": 1,
+       "formKeptIfRhymeWaived": 0
+      },
+      "acrostic": {
+       "plays": 10,
+       "modelSourced": 10,
+       "formKept": 0,
+       "formKeptWilson": {
+        "rate": 0,
+        "low": 0,
+        "high": 0.2775328030260577
+       },
+       "meanCraft": 4.2,
+       "meanFormPoints": 2.4,
+       "inLanguage": 9,
+       "inLanguageWilson": {
+        "rate": 0.9,
+        "low": 0.5958499704752279,
+        "high": 0.982123787103926
+       },
+       "commentary": 1,
+       "commentaryNarrow": 1,
+       "formKeptIfRhymeWaived": 0
+      }
+     },
+     "byDifficulty": {
+      "apprentice": {
+       "plays": 24,
+       "modelSourced": 24,
+       "formKept": 0,
+       "formKeptWilson": {
+        "rate": 0,
+        "low": 0,
+        "high": 0.13797620655132792
+       },
+       "meanCraft": 3.2083333333333335,
+       "meanFormPoints": 1.7083333333333333,
+       "inLanguage": 20,
+       "inLanguageWilson": {
+        "rate": 0.8333333333333334,
+        "low": 0.6414692917870997,
+        "high": 0.9332132371786819
+       },
+       "commentary": 3,
+       "commentaryNarrow": 3,
+       "formKeptIfRhymeWaived": 0
+      },
+      "player": {
+       "plays": 18,
+       "modelSourced": 18,
+       "formKept": 0,
+       "formKeptWilson": {
+        "rate": 0,
+        "low": 0,
+        "high": 0.17587922593328437
+       },
+       "meanCraft": 7,
+       "meanFormPoints": 4.833333333333333,
+       "inLanguage": 18,
+       "inLanguageWilson": {
+        "rate": 1,
+        "low": 0.8241207740667156,
+        "high": 1
+       },
+       "commentary": 0,
+       "commentaryNarrow": 0,
+       "formKeptIfRhymeWaived": 0
+      },
+      "master": {
+       "plays": 18,
+       "modelSourced": 18,
+       "formKept": 0,
+       "formKeptWilson": {
+        "rate": 0,
+        "low": 0,
+        "high": 0.17587922593328437
+       },
+       "meanCraft": 7.944444444444445,
+       "meanFormPoints": 5.611111111111111,
+       "inLanguage": 17,
+       "inLanguageWilson": {
+        "rate": 0.9444444444444444,
+        "low": 0.7424269900391908,
+        "high": 0.990124809131223
+       },
+       "commentary": 1,
+       "commentaryNarrow": 0,
+       "formKeptIfRhymeWaived": 0
+      }
+     }
+    },
     "judges": {
      "ok": false,
      "why": [
-      "not measured"
+      "better verse won 7/12 pairs: the 95% interval reaches down to 0.32, not above chance",
+      "preferred the better verse on 9/48 criteria (19%), under 70%",
+      "1 injection attempt(s) beat a real verse"
      ]
     },
     "writes": {
      "ok": false,
      "why": [
-      "not measured"
+      "kept the form in full in 0/60 plays (0%), under 30%"
      ]
     }
    },
