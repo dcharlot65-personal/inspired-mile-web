@@ -154,8 +154,16 @@ written as soon as it finished.
   "He visto sombras sin par" English; it is not used. An English line inside a verse in
   another Latin-script language is therefore caught only when it tips the whole verse.
 - **Mutations.** `node scripts/model-eval/mutate.mjs` breaks the decision code, the lists, the
-  checkers, the result files, the game's scoring and prompt (for the replay test) and this page
-  27 ways, and requires the tests to go red each time. Not yet run on this version of the branch.
+  checkers, the result files, the game's scoring, prompt and tidy-up (for the replay test) and
+  this page 28 ways, and requires the tests to go red each time. Run on the iMac Pro build host
+  at `d4f6066`: all 28 caught. An earlier run caught 26 of 27: one mutation (the backtick taken
+  out of the tidy-up's markup rule) changed no stored draft, so the replay test was right to stay
+  green; it was replaced by one that changes 34 drafts, which the test catches (58 plays differ).
+  The re-score was also run against a changed scoring rule: the replay test went red, the
+  re-score rewrote all 18 writing cells then present, the replay test went green; against a
+  changed prompt the re-score refused and wrote nothing. `tests/duel.spec.ts`'s picker test was
+  run against two mutations of `battle.astro` (no language marked; the judging line dropped) and
+  failed on both.
 
 ## The thresholds
 
@@ -576,8 +584,40 @@ which is stated per tool; no tool certifies tone.
   0 glossary problems, 0 open mechanical findings, its i18n tests 23 of 23.
 - **Grammar, spelling and meaning: `scripts/model-eval/strings-qa.sh`** puts each string, filled
   in as a player reads it, to LanguageTool 6.6, Hunspell and a back-translation by MADLAD-400 3B
-  scored against the English. Results: [`model-eval/strings-qa.json`](model-eval/strings-qa.json)
-  and below. Not yet run on the fixed strings when this was written.
+  scored against the English. Results: [`model-eval/strings-qa.json`](model-eval/strings-qa.json).
+  Each sentence is checked as a player reads it: `{language}` filled with CLDR's name for Thai in
+  that language (for Japanese in Thai) and `{model}` with "LFM3 1.7B". Every hit was read:
+  - Hunspell's rejections and LanguageTool's spelling hits are all names filled in: the model's
+    ("LFM", "LFM3", "1.7B", "7B", "B") and CLDR's name for Thai in Korean (태국어) and Indonesian
+    ("Thai"). The one other is Hindi सकने, a correct form (the oblique infinitive of सकना) that the
+    dictionary lacks.
+  - LanguageTool's two other findings. Portuguese, on the first wording: "não mostrou que é um
+    bom juiz" (VERB_QUE_É_VERB_SER, a style rule); adopted as "não mostrou ser um bom juiz",
+    and the final run has no Portuguese hit. Arabic: it suggests vowelling خصم as خَصْم to tell
+    "opponent" from "discount"; not adopted, because the game's term for the written opponent
+    (خصم الأبيات المكتوبة, in the badge and the glossary) is written without vowels, and a reader of
+    Arabic should decide for the whole locale, not for one string.
+  - What the tools reach: LanguageTool has modules for en, es, fr, de, it, pt, pl, ru, ar, zh
+    and ja, and none for hi, ko, vi, th or id. On its own known-bad sentences it caught 2 of 2 in
+    en, es, fr, de and ar, 1 of 2 in pt, ru and zh, and **0 of 2 in it, ja and pl**: there its
+    silence says nothing. Hunspell has no dictionary for zh or ja; elsewhere it rejected the word
+    misspelled on purpose in each of the three sentences.
+  - Meaning, on the final strings: 45 sentences back-translated by MADLAD-400 and scored
+    against their English; in all 45 the right English scored above the control (another key's
+    English). Two are under the 0.6 flag, and both were read: Polish `brain.noneShown` (0.57;
+    the back-translation, "…you play with a rival with ready-made stanzas…", is right; the
+    distance is the game's established Polish term for the written opponent) and Japanese
+    `brain.noneShown` (0.46; "None of the models that run on this terminal have been tested…
+    Therefore, they compete…": 端末 is the ordinary Japanese for a device, and the sentence leaves
+    out the subject as the locale's other strings do, which the back-translation filled with
+    "they"). Vietnamese `brain.noneShown` was flagged twice ("chấm thơ", grade poems, read as
+    "punctuation") and now uses the game's word for the judge, giám khảo; it scores 0.66. The
+    Thai sentences score lowest of the unflagged (0.62 to 0.69).
+- **For a native reader first**, because no tool here can settle them: the Japanese and Polish
+  model-panel lines above; Thai, which LanguageTool does not cover and back-translates furthest
+  from the English; Hindi, which no grammar tool covers; Arabic's unvowelled خصم; and whether
+  "bon juge des strophes" (French) and "ein guter Richter für Strophen" (German) read naturally
+  to a player, since the glossary required the noun "judge" there.
 
 ## What is not established
 
