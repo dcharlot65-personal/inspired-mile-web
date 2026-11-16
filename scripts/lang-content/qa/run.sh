@@ -13,7 +13,8 @@ OUT=${OUT:-/Volumes/macos_4TB_external_1/wai-build/im-lang/pages-play/qa}
 HERE=$(cd "$(dirname "$0")" && pwd)
 mkdir -p "$OUT"
 case "${1:-}" in
-  pairs) node "$HERE/pairs.mjs" "$OUT" ;;
+  pairs) rm -f "$OUT"/pairs-*.json; node "$HERE/pairs.mjs" "$OUT" ;;
+  stop) touch "$OUT/STOP"; [ -f "$OUT/meaning.pid" ] && pkill -P "$(cat "$OUT/meaning.pid")" 2>/dev/null; kill "$(cat "$OUT/meaning.pid")" 2>/dev/null; sleep 1; rm -f "$OUT/STOP" "$OUT"/*.tmp; echo stopped ;;
   spell)
     ls "$LANGQA_HOME/dict" | tr '\n' ' '; echo
     for f in "$OUT"/text-*.txt; do
@@ -31,6 +32,7 @@ export MADLAD_DIR=$LANGQA_HOME/models/madlad400-3b-mt-ct2-int8 MINILM_DIR=$LANGQ
 for f in $OUT/pairs-*.json; do
   l=\$(basename \$f .json); l=\${l#pairs-}
   [ -s $OUT/bt-\$l.json ] && continue
+  [ -f $OUT/STOP ] && { echo "== STOP file found"; exit 0; }
   echo "== \$l \$(date)"
   nice -n 10 $LANGQA_HOME/venv/bin/python $OUT/bt.py \$f $OUT/bt-\$l.json.tmp && mv $OUT/bt-\$l.json.tmp $OUT/bt-\$l.json
 done

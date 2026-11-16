@@ -11,6 +11,7 @@ register('data:text/javascript,' + encodeURIComponent("export async function res
 import { join } from 'node:path';
 import { HERE, ROOT, LANGS } from '../lib.mjs';
 const out = process.argv[2];
+const ORDER = ['th', 'hi', 'ar', 'vi', 'id', 'ko', 'ja', 'zh', 'ru', 'pl', 'pt', 'it', 'de', 'fr', 'es'];
 mkdirSync(out, { recursive: true });
 const load = async (area, l) => (await import(join(ROOT, 'src/i18n/pages', area, `${l}.ts`))).default;
 const optionKeys = JSON.parse(readFileSync(join(HERE, 'trivia-options.json'), 'utf8'));
@@ -33,7 +34,12 @@ for (const l of LANGS) {
     const a = real[(i * 37) % real.length], b = real[(i * 37 + 101) % real.length];
     pairs.push({ id: `control:${a.id}`, lang: l, text: a.text, english: b.english });
   }
-  writeFileSync(join(out, `pairs-${l}.json`), JSON.stringify(pairs, null, 0));
+  // Two files per language, named so that a plain sorted loop does the factual content first
+  // (the trivia questions, with the controls) and the weakest languages before the strongest.
+  const rank = String(ORDER.indexOf(l) + 1).padStart(2, '0');
+  const first = pairs.filter((p) => /^trivia\.\d+\.q$/.test(p.id) || p.id.startsWith('control:'));
+  writeFileSync(join(out, `pairs-1-${rank}-${l}.json`), JSON.stringify(first, null, 0));
+  writeFileSync(join(out, `pairs-2-${rank}-${l}.json`), JSON.stringify(pairs.filter((p) => !first.includes(p)), null, 0));
   // Words for spelling: the translated text without what is English by design ("quoted lines", Latin-script names in other scripts are kept: the dictionary decides).
   const text = pairs.filter((p) => !p.id.startsWith('control:')).map((p) => p.text.replace(/["“”«»„][^"“”«»„]{0,200}["“”«»]/g, ' ')).join('\n');
   writeFileSync(join(out, `text-${l}.txt`), text);
