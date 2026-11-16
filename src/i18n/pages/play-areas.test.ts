@@ -208,6 +208,43 @@ export function addressProblems(l: string, m: Messages): string[] {
   return out;
 }
 
+/**
+ * The game's Portuguese is Brazilian (the core locale says tela, você, registrada). These are
+ * European spellings and words that Brazil writes otherwise: Marco António / Antônio, Polónio /
+ * Polônio, Boémia / Boêmia, Octávia / Otávia, Egipto / Egito, ecrã / tela, equipa / equipe.
+ * Wikidata's `pt` label is European, which is how they got in before (scripts/lang-content/lib.mjs).
+ */
+const EUROPEAN_PT = /(?<!\p{L})(?:\p{L}*(?:ónio|ónia|ómeo|émia|ómic|ómen|ónic)\p{L}*|Oct[aá]vi\p{L}*|Egipto|ecrã|telemóvel|equipa|registo|utilizador|ficheiro)(?!\p{L})/u;
+export function europeanPortuguese(m: Messages): string[] {
+  const out: string[] = [];
+  for (const [k, v] of Object.entries(m)) {
+    const hit = v.match(EUROPEAN_PT);
+    if (hit) out.push(`pt: ${k} writes "${hit[0]}", a European form; the game's Portuguese is Brazilian`);
+  }
+  return out;
+}
+
+/**
+ * No gender assumed for the player. In Polish and Russian the past tense says whether "you" are a
+ * man or a woman (zagrałeś / zagrałaś, ты сыграл / сыграла); the play text says it another way.
+ * Read over the whole string, quoted speech included: a character speaking to the player is
+ * speaking to someone of either sex.
+ */
+const GENDERED_YOU: Record<string, RegExp> = {
+  pl: /(?<!\p{L})\p{L}+(?:łeś|łaś)(?!\p{L})/u,
+  ru: /(?<!\p{L})[Тт]ы(?!\p{L})(?:\s+\p{L}+){0,3}?\s+\p{L}+(?:ал|ял|ил|ел|ла)(?!\p{L})/u,
+};
+export function genderedYou(l: string, m: Messages): string[] {
+  const rx = GENDERED_YOU[l];
+  if (!rx) return [];
+  const out: string[] = [];
+  for (const [k, v] of Object.entries(m)) {
+    const hit = v.match(rx);
+    if (hit) out.push(`${l}: ${k} says "${hit[0]}", which makes the player a man or a woman`);
+  }
+  return out;
+}
+
 /** Strings a language writes exactly as English does. Each is a decision, not an oversight. */
 const SAME_AS_ENGLISH: Record<string, string[]> = {
   fr: ['pg.trivia.progress'], // "Question {n} / {total}"
@@ -252,6 +289,21 @@ describe('page areas of the play content', () => {
   it('addresses the player the way the core locale does (du, vous, ты, kamu, 해요체, …)', async () => {
     const problems: string[] = [];
     for (const l of LOCALES) for (const name of ['playground', 'story']) problems.push(...addressProblems(l, (await area(name, l))!));
+    expect(problems).toEqual([]);
+  });
+
+  it('writes Brazilian Portuguese, as the core locale does, in every play area', async () => {
+    const problems: string[] = [];
+    for (const name of ['playground', 'story', 'trivia', 'challenges']) {
+      const m = await area(name, 'pt');
+      if (m) problems.push(...europeanPortuguese(m));
+    }
+    expect(problems).toEqual([]);
+  });
+
+  it('assumes no gender for the player in Polish and Russian', async () => {
+    const problems: string[] = [];
+    for (const l of ['pl', 'ru']) for (const name of ['playground', 'story']) problems.push(...genderedYou(l, (await area(name, l))!));
     expect(problems).toEqual([]);
   });
 
@@ -433,6 +485,21 @@ describe('these checks can fail', () => {
     expect(addressProblems('fr', { k: 'Le prince vous convoque. « Montre-moi que tu manies les mots. »' })).toEqual([]);
     expect(addressProblems('ru', { k: 'Мастер сцены ждёт тебя. «Откройте занавес!»' })).toEqual([]);
     expect(addressProblems('de', { k: 'Sie lachen. Du bist dran.' })).toEqual([]); // "Sie" opening a sentence is "they"
+  });
+
+  it('europeanPortuguese objects to the European spellings this branch replaced, and not to Brazilian ones', () => {
+    for (const s of ['Marco António', 'Polónio', 'na Boémia', 'Octávia', 'no Egipto', 'o ecrã']) expect([s, europeanPortuguese({ k: s }).length]).toEqual([s, 1]);
+    for (const s of ['Marco Antônio', 'Polônio', 'na Boêmia', 'Otávia', 'no Egito', 'a tela', 'Desdêmona']) expect([s, europeanPortuguese({ k: s })]).toEqual([s, []]);
+  });
+
+  it('genderedYou objects to the forms this branch rephrased, and not to the player addressed in the present', () => {
+    expect(genderedYou('pl', { k: '„Dobrze zagrałeś swoją rolę.”' }).length).toBe(1);
+    expect(genderedYou('pl', { k: 'Przetańczyłaś przez moje włości.' }).length).toBe(1);
+    expect(genderedYou('pl', { k: '„Twoja rola została dobrze zagrana.” Tańczysz po moich włościach.' })).toEqual([]);
+    expect(genderedYou('ru', { k: '«Ты хорошо сыграл свою роль.»' }).length).toBe(1);
+    expect(genderedYou('ru', { k: '«Ты незваным протанцевал по моим владениям.»' }).length).toBe(1);
+    expect(genderedYou('ru', { k: '«Ты без приглашения танцуешь по моим владениям.» Твоя роль сыграна хорошо.' })).toEqual([]);
+    expect(genderedYou('de', { k: 'Du hast gut gespielt.' })).toEqual([]); // German past tense has no gender
   });
 
   it('triviaBankFrom falls back to English for a question a language lacks, and no further', () => {
