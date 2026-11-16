@@ -1,0 +1,95 @@
+/**
+ * Words printed on every card: types, houses, elements, stats (src/lib/cards.ts): Italian.
+ *
+ * Same keys, {placeholders} and <b>/<a> marks as ./en.ts (src/i18n/pages.test.ts).
+ * Where the text came from and how it was checked: docs/language/pages-core/README.md.
+ */
+const messages: Record<string, string> = {
+  'card-terms.type.character': 'Personaggio',
+  'card-terms.type.relic': 'Reliquia',
+  'card-terms.type.potion': 'Pozione',
+  'card-terms.types.character': 'Personaggi',
+  'card-terms.types.relic': 'Reliquie',
+  'card-terms.types.potion': 'Pozioni',
+  'card-terms.stat.atk': 'ATT',
+  'card-terms.stat.def': 'DIF',
+  'card-terms.stat.hp': 'PV',
+  'card-terms.house.montague': 'Montecchi',
+  'card-terms.house.capulet': 'Capuleti',
+  'card-terms.house.danish-court': 'Corte danese',
+  'card-terms.house.forest-of-arden': 'Foresta di Arden',
+  'card-terms.house.verona-court': 'Corte di Verona',
+  'card-terms.house.the-tempest': 'La tempesta', // Wikidata Q86440 label
+  'card-terms.house.scottish-court': 'Corte scozzese',
+  'card-terms.house.illyria': 'Illiria', // Wikidata Q32047 label
+  'card-terms.house.rome': 'Roma', // Wikidata Q220 label
+  'card-terms.house.legendary': 'Leggendaria',
+  'card-terms.house.relic': 'Reliquia',
+  'card-terms.house.potion': 'Pozione',
+  'card-terms.house.lake-district': 'Lake District', // Wikidata Q211778 label
+  'card-terms.house.gothic-circle': 'Circolo gotico',
+  'card-terms.house.olympus': 'Olimpo', // not from a source: see docs/language/pages-core
+  'card-terms.house.underworld': 'Oltretomba',
+  'card-terms.element.air': 'Aria',
+  'card-terms.element.alchemy': 'Alchimia',
+  'card-terms.element.ambition': 'Ambizione',
+  'card-terms.element.arcane': 'Arcano',
+  'card-terms.element.authority': 'Autorità',
+  'card-terms.element.beast': 'Bestia',
+  'card-terms.element.beauty': 'Bellezza',
+  'card-terms.element.comedy': 'Commedia',
+  'card-terms.element.compassion': 'Compassione',
+  'card-terms.element.creation': 'Creazione',
+  'card-terms.element.cunning': 'Astuzia',
+  'card-terms.element.dark': 'Tenebra',
+  'card-terms.element.darkness': 'Oscurità',
+  'card-terms.element.death': 'Morte',
+  'card-terms.element.devotion': 'Devozione',
+  'card-terms.element.disguise': 'Travestimento',
+  'card-terms.element.duty': 'Dovere',
+  'card-terms.element.earth': 'Terra',
+  'card-terms.element.enchantment': 'Incantesimo',
+  'card-terms.element.envy': 'Invidia',
+  'card-terms.element.fire': 'Fuoco',
+  'card-terms.element.glory': 'Gloria',
+  'card-terms.element.grace': 'Grazia',
+  'card-terms.element.honor': 'Onore',
+  'card-terms.element.illusion': 'Illusione',
+  'card-terms.element.innocence': 'Innocenza',
+  'card-terms.element.justice': 'Giustizia',
+  'card-terms.element.knowledge': 'Conoscenza',
+  'card-terms.element.light': 'Luce',
+  'card-terms.element.love': 'Amore',
+  'card-terms.element.loyalty': 'Lealtà',
+  'card-terms.element.mischief': 'Birbanteria',
+  'card-terms.element.moonlight': 'Chiaro di luna',
+  'card-terms.element.nature': 'Natura',
+  'card-terms.element.ocean': 'Oceano',
+  'card-terms.element.passion': 'Passione',
+  'card-terms.element.peace': 'Pace',
+  'card-terms.element.petrification': 'Pietrificazione',
+  'card-terms.element.poison': 'Veleno',
+  'card-terms.element.power': 'Potere',
+  'card-terms.element.prophecy': 'Profezia',
+  'card-terms.element.rebellion': 'Ribellione',
+  'card-terms.element.rebirth': 'Rinascita',
+  'card-terms.element.revolution': 'Rivoluzione',
+  'card-terms.element.rhetoric': 'Retorica',
+  'card-terms.element.shadow': 'Ombra',
+  'card-terms.element.sorrow': 'Dolore',
+  'card-terms.element.speed': 'Velocità',
+  'card-terms.element.storm': 'Tempesta',
+  'card-terms.element.thunder': 'Tuono',
+  'card-terms.element.transformation': 'Trasformazione',
+  'card-terms.element.trickster': 'Burlone',
+  'card-terms.element.vanity': 'Vanità',
+  'card-terms.element.vision': 'Visione',
+  'card-terms.element.water': 'Acqua',
+  'card-terms.element.wind': 'Vento',
+  'card-terms.element.wisdom': 'Saggezza',
+  'card-terms.work.romeo-and-juliet': 'Romeo e Giulietta', // Wikidata Q83186 label
+  'card-terms.work.hamlet': 'Amleto', // Wikidata Q41567 label
+  'card-terms.work.as-you-like-it': 'Come vi piace', // Wikidata Q237572 label
+};
+
+export default messages;

@@ -1,0 +1,95 @@
+/**
+ * Words printed on every card: types, houses, elements, stats (src/lib/cards.ts): Thai.
+ *
+ * Same keys, {placeholders} and <b>/<a> marks as ./en.ts (src/i18n/pages.test.ts).
+ * Where the text came from and how it was checked: docs/language/pages-core/README.md.
+ */
+const messages: Record<string, string> = {
+  'card-terms.type.character': 'ตัวละคร',
+  'card-terms.type.relic': 'ของวิเศษ',
+  'card-terms.type.potion': 'ยาวิเศษ',
+  'card-terms.types.character': 'ตัวละคร',
+  'card-terms.types.relic': 'ของวิเศษ',
+  'card-terms.types.potion': 'ยาวิเศษ',
+  'card-terms.stat.atk': 'โจมตี',
+  'card-terms.stat.def': 'ป้องกัน',
+  'card-terms.stat.hp': 'พลังชีวิต',
+  'card-terms.house.montague': 'มอนตะคิว',
+  'card-terms.house.capulet': 'คาปุเล็ต',
+  'card-terms.house.danish-court': 'ราชสำนักเดนมาร์ก',
+  'card-terms.house.forest-of-arden': 'ป่าอาร์เดน',
+  'card-terms.house.verona-court': 'ราชสำนักเวโรนา',
+  'card-terms.house.the-tempest': 'พายุพิโรธ', // Wikidata Q86440 label
+  'card-terms.house.scottish-court': 'ราชสำนักสกอตแลนด์',
+  'card-terms.house.illyria': 'อิลิเรีย', // Wikidata Q32047 label
+  'card-terms.house.rome': 'โรม', // Wikidata Q220 label
+  'card-terms.house.legendary': 'ตำนาน',
+  'card-terms.house.relic': 'ของวิเศษ',
+  'card-terms.house.potion': 'ยาวิเศษ',
+  'card-terms.house.lake-district': 'เลกดิสตริกต์', // Wikidata Q211778 label
+  'card-terms.house.gothic-circle': 'กลุ่มกอทิก',
+  'card-terms.house.olympus': 'โอลิมปัส', // not from a source: see docs/language/pages-core
+  'card-terms.house.underworld': 'ยมโลก',
+  'card-terms.element.air': 'อากาศ',
+  'card-terms.element.alchemy': 'การเล่นแร่แปรธาตุ',
+  'card-terms.element.ambition': 'ความทะเยอทะยาน',
+  'card-terms.element.arcane': 'เวทลึกลับ',
+  'card-terms.element.authority': 'อำนาจปกครอง',
+  'card-terms.element.beast': 'สัตว์ร้าย',
+  'card-terms.element.beauty': 'ความงาม',
+  'card-terms.element.comedy': 'สุขนาฏกรรม',
+  'card-terms.element.compassion': 'ความเมตตา',
+  'card-terms.element.creation': 'การสร้างสรรค์',
+  'card-terms.element.cunning': 'เล่ห์เหลี่ยม',
+  'card-terms.element.dark': 'ความมืดมิด',
+  'card-terms.element.darkness': 'ความมืด',
+  'card-terms.element.death': 'ความตาย',
+  'card-terms.element.devotion': 'ความภักดีอุทิศตน',
+  'card-terms.element.disguise': 'การปลอมตัว',
+  'card-terms.element.duty': 'หน้าที่',
+  'card-terms.element.earth': 'ดิน',
+  'card-terms.element.enchantment': 'มนตร์สะกด',
+  'card-terms.element.envy': 'ความริษยา',
+  'card-terms.element.fire': 'ไฟ',
+  'card-terms.element.glory': 'เกียรติยศ',
+  'card-terms.element.grace': 'ความสง่างาม',
+  'card-terms.element.honor': 'เกียรติ',
+  'card-terms.element.illusion': 'ภาพลวงตา',
+  'card-terms.element.innocence': 'ความไร้เดียงสา',
+  'card-terms.element.justice': 'ความยุติธรรม',
+  'card-terms.element.knowledge': 'ความรู้',
+  'card-terms.element.light': 'แสง',
+  'card-terms.element.love': 'ความรัก',
+  'card-terms.element.loyalty': 'ความจงรักภักดี',
+  'card-terms.element.mischief': 'ความซุกซน',
+  'card-terms.element.moonlight': 'แสงจันทร์',
+  'card-terms.element.nature': 'ธรรมชาติ',
+  'card-terms.element.ocean': 'มหาสมุทร',
+  'card-terms.element.passion': 'ความหลงใหล',
+  'card-terms.element.peace': 'สันติ',
+  'card-terms.element.petrification': 'การกลายเป็นหิน',
+  'card-terms.element.poison': 'พิษ',
+  'card-terms.element.power': 'อำนาจ',
+  'card-terms.element.prophecy': 'คำพยากรณ์',
+  'card-terms.element.rebellion': 'การกบฏ',
+  'card-terms.element.rebirth': 'การเกิดใหม่',
+  'card-terms.element.revolution': 'การปฏิวัติ',
+  'card-terms.element.rhetoric': 'วาทศิลป์',
+  'card-terms.element.shadow': 'เงา',
+  'card-terms.element.sorrow': 'ความโศก',
+  'card-terms.element.speed': 'ความเร็ว',
+  'card-terms.element.storm': 'พายุ',
+  'card-terms.element.thunder': 'ฟ้าร้อง',
+  'card-terms.element.transformation': 'การแปลงร่าง',
+  'card-terms.element.trickster': 'จอมเจ้าเล่ห์',
+  'card-terms.element.vanity': 'ความหลงตัว',
+  'card-terms.element.vision': 'นิมิต',
+  'card-terms.element.water': 'น้ำ',
+  'card-terms.element.wind': 'ลม',
+  'card-terms.element.wisdom': 'ปัญญา',
+  'card-terms.work.romeo-and-juliet': 'โรเมโอและจูเลียต', // Wikidata Q83186 label
+  'card-terms.work.hamlet': 'แฮมเลต', // Wikidata Q41567 label
+  'card-terms.work.as-you-like-it': 'As You Like It', // not from a source: see docs/language/pages-core
+};
+
+export default messages;

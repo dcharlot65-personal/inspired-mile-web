@@ -1,0 +1,95 @@
+/**
+ * Words printed on every card: types, houses, elements, stats (src/lib/cards.ts): Arabic.
+ *
+ * Same keys, {placeholders} and <b>/<a> marks as ./en.ts (src/i18n/pages.test.ts).
+ * Where the text came from and how it was checked: docs/language/pages-core/README.md.
+ */
+const messages: Record<string, string> = {
+  'card-terms.type.character': 'شخصية',
+  'card-terms.type.relic': 'أثر',
+  'card-terms.type.potion': 'جرعة',
+  'card-terms.types.character': 'الشخصيات',
+  'card-terms.types.relic': 'الآثار',
+  'card-terms.types.potion': 'الجرعات',
+  'card-terms.stat.atk': 'هجوم',
+  'card-terms.stat.def': 'دفاع',
+  'card-terms.stat.hp': 'صحة',
+  'card-terms.house.montague': 'مونتاغيو',
+  'card-terms.house.capulet': 'كابوليت',
+  'card-terms.house.danish-court': 'البلاط الدنماركي',
+  'card-terms.house.forest-of-arden': 'غابة أردن',
+  'card-terms.house.verona-court': 'بلاط فيرونا',
+  'card-terms.house.the-tempest': 'العاصفة', // Wikidata Q86440 label
+  'card-terms.house.scottish-court': 'البلاط الاسكتلندي',
+  'card-terms.house.illyria': 'إيلورية', // Wikidata Q32047 label
+  'card-terms.house.rome': 'روما', // Wikidata Q220 label
+  'card-terms.house.legendary': 'أسطورية',
+  'card-terms.house.relic': 'أثر',
+  'card-terms.house.potion': 'جرعة',
+  'card-terms.house.lake-district': 'ليك ديستريكت', // Wikidata Q211778 label
+  'card-terms.house.gothic-circle': 'الحلقة القوطية',
+  'card-terms.house.olympus': 'الأوليمب', // not from a source: see docs/language/pages-core
+  'card-terms.house.underworld': 'العالم السفلي',
+  'card-terms.element.air': 'الهواء',
+  'card-terms.element.alchemy': 'الخيمياء',
+  'card-terms.element.ambition': 'الطموح',
+  'card-terms.element.arcane': 'السحر الخفي',
+  'card-terms.element.authority': 'السلطة',
+  'card-terms.element.beast': 'الوحش',
+  'card-terms.element.beauty': 'الجمال',
+  'card-terms.element.comedy': 'الكوميديا',
+  'card-terms.element.compassion': 'الرحمة',
+  'card-terms.element.creation': 'الخلق',
+  'card-terms.element.cunning': 'الدهاء',
+  'card-terms.element.dark': 'العتمة',
+  'card-terms.element.darkness': 'الظلام',
+  'card-terms.element.death': 'الموت',
+  'card-terms.element.devotion': 'الإخلاص',
+  'card-terms.element.disguise': 'التنكر',
+  'card-terms.element.duty': 'الواجب',
+  'card-terms.element.earth': 'الأرض',
+  'card-terms.element.enchantment': 'السحر',
+  'card-terms.element.envy': 'الحسد',
+  'card-terms.element.fire': 'النار',
+  'card-terms.element.glory': 'المجد',
+  'card-terms.element.grace': 'الرشاقة',
+  'card-terms.element.honor': 'الشرف',
+  'card-terms.element.illusion': 'الوهم',
+  'card-terms.element.innocence': 'البراءة',
+  'card-terms.element.justice': 'العدل',
+  'card-terms.element.knowledge': 'المعرفة',
+  'card-terms.element.light': 'النور',
+  'card-terms.element.love': 'الحب',
+  'card-terms.element.loyalty': 'الولاء',
+  'card-terms.element.mischief': 'الشقاوة',
+  'card-terms.element.moonlight': 'ضوء القمر',
+  'card-terms.element.nature': 'الطبيعة',
+  'card-terms.element.ocean': 'المحيط',
+  'card-terms.element.passion': 'الشغف',
+  'card-terms.element.peace': 'السلام',
+  'card-terms.element.petrification': 'التحجر',
+  'card-terms.element.poison': 'السم',
+  'card-terms.element.power': 'القوة',
+  'card-terms.element.prophecy': 'النبوءة',
+  'card-terms.element.rebellion': 'التمرد',
+  'card-terms.element.rebirth': 'البعث',
+  'card-terms.element.revolution': 'الثورة',
+  'card-terms.element.rhetoric': 'البلاغة',
+  'card-terms.element.shadow': 'الظل',
+  'card-terms.element.sorrow': 'الحزن',
+  'card-terms.element.speed': 'السرعة',
+  'card-terms.element.storm': 'العاصفة',
+  'card-terms.element.thunder': 'الرعد',
+  'card-terms.element.transformation': 'التحول',
+  'card-terms.element.trickster': 'المحتال',
+  'card-terms.element.vanity': 'الغرور',
+  'card-terms.element.vision': 'الرؤيا',
+  'card-terms.element.water': 'الماء',
+  'card-terms.element.wind': 'الريح',
+  'card-terms.element.wisdom': 'الحكمة',
+  'card-terms.work.romeo-and-juliet': 'روميو وجولييت', // Wikidata Q83186 label
+  'card-terms.work.hamlet': 'هاملت', // Wikidata Q41567 label
+  'card-terms.work.as-you-like-it': 'كما تشاء', // Wikidata Q237572 label
+};
+
+export default messages;

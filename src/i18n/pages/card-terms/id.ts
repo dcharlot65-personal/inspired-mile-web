@@ -1,0 +1,95 @@
+/**
+ * Words printed on every card: types, houses, elements, stats (src/lib/cards.ts): Indonesian.
+ *
+ * Same keys, {placeholders} and <b>/<a> marks as ./en.ts (src/i18n/pages.test.ts).
+ * Where the text came from and how it was checked: docs/language/pages-core/README.md.
+ */
+const messages: Record<string, string> = {
+  'card-terms.type.character': 'Tokoh',
+  'card-terms.type.relic': 'Relik',
+  'card-terms.type.potion': 'Ramuan',
+  'card-terms.types.character': 'Tokoh',
+  'card-terms.types.relic': 'Relik',
+  'card-terms.types.potion': 'Ramuan',
+  'card-terms.stat.atk': 'SER',
+  'card-terms.stat.def': 'TAH',
+  'card-terms.stat.hp': 'NYAWA',
+  'card-terms.house.montague': 'Montague',
+  'card-terms.house.capulet': 'Capulet',
+  'card-terms.house.danish-court': 'Istana Denmark',
+  'card-terms.house.forest-of-arden': 'Hutan Arden',
+  'card-terms.house.verona-court': 'Istana Verona',
+  'card-terms.house.the-tempest': 'The Tempest', // Wikidata Q86440 label
+  'card-terms.house.scottish-court': 'Istana Skotlandia',
+  'card-terms.house.illyria': 'Iliria', // Wikidata Q32047 label
+  'card-terms.house.rome': 'Roma', // Wikidata Q220 label
+  'card-terms.house.legendary': 'Legendaris',
+  'card-terms.house.relic': 'Relik',
+  'card-terms.house.potion': 'Ramuan',
+  'card-terms.house.lake-district': 'Lake District', // Wikidata Q211778 label
+  'card-terms.house.gothic-circle': 'Lingkaran Gotik',
+  'card-terms.house.olympus': 'Olimpus', // not from a source: see docs/language/pages-core
+  'card-terms.house.underworld': 'Dunia Bawah',
+  'card-terms.element.air': 'Udara',
+  'card-terms.element.alchemy': 'Alkimia',
+  'card-terms.element.ambition': 'Ambisi',
+  'card-terms.element.arcane': 'Ilmu gaib',
+  'card-terms.element.authority': 'Wewenang',
+  'card-terms.element.beast': 'Binatang buas',
+  'card-terms.element.beauty': 'Keindahan',
+  'card-terms.element.comedy': 'Komedi',
+  'card-terms.element.compassion': 'Welas asih',
+  'card-terms.element.creation': 'Penciptaan',
+  'card-terms.element.cunning': 'Kelicikan',
+  'card-terms.element.dark': 'Kelam',
+  'card-terms.element.darkness': 'Kegelapan',
+  'card-terms.element.death': 'Kematian',
+  'card-terms.element.devotion': 'Pengabdian',
+  'card-terms.element.disguise': 'Penyamaran',
+  'card-terms.element.duty': 'Kewajiban',
+  'card-terms.element.earth': 'Tanah',
+  'card-terms.element.enchantment': 'Pesona sihir',
+  'card-terms.element.envy': 'Iri hati',
+  'card-terms.element.fire': 'Api',
+  'card-terms.element.glory': 'Kejayaan',
+  'card-terms.element.grace': 'Keanggunan',
+  'card-terms.element.honor': 'Kehormatan',
+  'card-terms.element.illusion': 'Ilusi',
+  'card-terms.element.innocence': 'Kepolosan',
+  'card-terms.element.justice': 'Keadilan',
+  'card-terms.element.knowledge': 'Pengetahuan',
+  'card-terms.element.light': 'Cahaya',
+  'card-terms.element.love': 'Cinta',
+  'card-terms.element.loyalty': 'Kesetiaan',
+  'card-terms.element.mischief': 'Keusilan',
+  'card-terms.element.moonlight': 'Cahaya bulan',
+  'card-terms.element.nature': 'Alam',
+  'card-terms.element.ocean': 'Samudra',
+  'card-terms.element.passion': 'Gairah',
+  'card-terms.element.peace': 'Kedamaian',
+  'card-terms.element.petrification': 'Pembatuan',
+  'card-terms.element.poison': 'Racun',
+  'card-terms.element.power': 'Kekuasaan',
+  'card-terms.element.prophecy': 'Nubuat',
+  'card-terms.element.rebellion': 'Pemberontakan',
+  'card-terms.element.rebirth': 'Kelahiran kembali',
+  'card-terms.element.revolution': 'Revolusi',
+  'card-terms.element.rhetoric': 'Retorika',
+  'card-terms.element.shadow': 'Bayangan',
+  'card-terms.element.sorrow': 'Duka',
+  'card-terms.element.speed': 'Kecepatan',
+  'card-terms.element.storm': 'Badai',
+  'card-terms.element.thunder': 'Guntur',
+  'card-terms.element.transformation': 'Perubahan wujud',
+  'card-terms.element.trickster': 'Si penipu ulung',
+  'card-terms.element.vanity': 'Kesombongan',
+  'card-terms.element.vision': 'Penglihatan',
+  'card-terms.element.water': 'Air',
+  'card-terms.element.wind': 'Angin',
+  'card-terms.element.wisdom': 'Kearifan',
+  'card-terms.work.romeo-and-juliet': 'Romeo dan Juliet', // Wikidata Q83186 label
+  'card-terms.work.hamlet': 'Hamlet', // Wikidata Q41567 label
+  'card-terms.work.as-you-like-it': 'As You Like It', // Wikidata Q237572 label
+};
+
+export default messages;

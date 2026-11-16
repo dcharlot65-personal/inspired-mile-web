@@ -1,0 +1,95 @@
+/**
+ * Words printed on every card: types, houses, elements, stats (src/lib/cards.ts): Japanese.
+ *
+ * Same keys, {placeholders} and <b>/<a> marks as ./en.ts (src/i18n/pages.test.ts).
+ * Where the text came from and how it was checked: docs/language/pages-core/README.md.
+ */
+const messages: Record<string, string> = {
+  'card-terms.type.character': '登場人物',
+  'card-terms.type.relic': '遺物',
+  'card-terms.type.potion': '薬',
+  'card-terms.types.character': '登場人物',
+  'card-terms.types.relic': '遺物',
+  'card-terms.types.potion': '薬',
+  'card-terms.stat.atk': '攻撃',
+  'card-terms.stat.def': '防御',
+  'card-terms.stat.hp': '体力',
+  'card-terms.house.montague': 'モンタギュー家',
+  'card-terms.house.capulet': 'キャピュレット家',
+  'card-terms.house.danish-court': 'デンマーク宮廷',
+  'card-terms.house.forest-of-arden': 'アーデンの森',
+  'card-terms.house.verona-court': 'ヴェローナ宮廷',
+  'card-terms.house.the-tempest': 'テンペスト', // Wikidata Q86440 label
+  'card-terms.house.scottish-court': 'スコットランド宮廷',
+  'card-terms.house.illyria': 'イリュリア', // Wikidata Q32047 label
+  'card-terms.house.rome': 'ローマ', // Wikidata Q220 label
+  'card-terms.house.legendary': 'レジェンダリー',
+  'card-terms.house.relic': '遺物',
+  'card-terms.house.potion': '薬',
+  'card-terms.house.lake-district': '湖水地方', // Wikidata Q211778 label
+  'card-terms.house.gothic-circle': 'ゴシックの輪',
+  'card-terms.house.olympus': 'オリンポス', // Wikidata Q70054479 label
+  'card-terms.house.underworld': '冥界',
+  'card-terms.element.air': '空気',
+  'card-terms.element.alchemy': '錬金術',
+  'card-terms.element.ambition': '野心',
+  'card-terms.element.arcane': '秘術',
+  'card-terms.element.authority': '権威',
+  'card-terms.element.beast': '獣',
+  'card-terms.element.beauty': '美',
+  'card-terms.element.comedy': '喜劇',
+  'card-terms.element.compassion': '慈悲',
+  'card-terms.element.creation': '創造',
+  'card-terms.element.cunning': '狡知',
+  'card-terms.element.dark': '暗黒',
+  'card-terms.element.darkness': '闇',
+  'card-terms.element.death': '死',
+  'card-terms.element.devotion': '献身',
+  'card-terms.element.disguise': '変装',
+  'card-terms.element.duty': '義務',
+  'card-terms.element.earth': '大地',
+  'card-terms.element.enchantment': '魔法',
+  'card-terms.element.envy': '嫉妬',
+  'card-terms.element.fire': '炎',
+  'card-terms.element.glory': '栄光',
+  'card-terms.element.grace': '優雅',
+  'card-terms.element.honor': '名誉',
+  'card-terms.element.illusion': '幻',
+  'card-terms.element.innocence': '無垢',
+  'card-terms.element.justice': '正義',
+  'card-terms.element.knowledge': '知識',
+  'card-terms.element.light': '光',
+  'card-terms.element.love': '愛',
+  'card-terms.element.loyalty': '忠誠',
+  'card-terms.element.mischief': 'いたずら',
+  'card-terms.element.moonlight': '月光',
+  'card-terms.element.nature': '自然',
+  'card-terms.element.ocean': '海',
+  'card-terms.element.passion': '情熱',
+  'card-terms.element.peace': '平和',
+  'card-terms.element.petrification': '石化',
+  'card-terms.element.poison': '毒',
+  'card-terms.element.power': '権力',
+  'card-terms.element.prophecy': '予言',
+  'card-terms.element.rebellion': '反逆',
+  'card-terms.element.rebirth': '再生',
+  'card-terms.element.revolution': '革命',
+  'card-terms.element.rhetoric': '弁論',
+  'card-terms.element.shadow': '影',
+  'card-terms.element.sorrow': '悲しみ',
+  'card-terms.element.speed': '速さ',
+  'card-terms.element.storm': '嵐',
+  'card-terms.element.thunder': '雷',
+  'card-terms.element.transformation': '変身',
+  'card-terms.element.trickster': 'トリックスター',
+  'card-terms.element.vanity': '虚栄',
+  'card-terms.element.vision': '幻視',
+  'card-terms.element.water': '水',
+  'card-terms.element.wind': '風',
+  'card-terms.element.wisdom': '知恵',
+  'card-terms.work.romeo-and-juliet': 'ロミオとジュリエット', // Wikidata Q83186 label
+  'card-terms.work.hamlet': 'ハムレット', // Wikidata Q41567 label
+  'card-terms.work.as-you-like-it': 'お気に召すまま', // Wikidata Q237572 label
+};
+
+export default messages;

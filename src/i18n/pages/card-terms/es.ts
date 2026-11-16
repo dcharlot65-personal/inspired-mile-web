@@ -1,0 +1,95 @@
+/**
+ * Words printed on every card: types, houses, elements, stats (src/lib/cards.ts): Spanish.
+ *
+ * Same keys, {placeholders} and <b>/<a> marks as ./en.ts (src/i18n/pages.test.ts).
+ * Where the text came from and how it was checked: docs/language/pages-core/README.md.
+ */
+const messages: Record<string, string> = {
+  'card-terms.type.character': 'Personaje',
+  'card-terms.type.relic': 'Reliquia',
+  'card-terms.type.potion': 'Poción',
+  'card-terms.types.character': 'Personajes',
+  'card-terms.types.relic': 'Reliquias',
+  'card-terms.types.potion': 'Pociones',
+  'card-terms.stat.atk': 'ATQ',
+  'card-terms.stat.def': 'DEF',
+  'card-terms.stat.hp': 'PV',
+  'card-terms.house.montague': 'Montesco',
+  'card-terms.house.capulet': 'Capuleto',
+  'card-terms.house.danish-court': 'Corte danesa',
+  'card-terms.house.forest-of-arden': 'Bosque de Arden',
+  'card-terms.house.verona-court': 'Corte de Verona',
+  'card-terms.house.the-tempest': 'La tempestad', // Wikidata Q86440 label
+  'card-terms.house.scottish-court': 'Corte escocesa',
+  'card-terms.house.illyria': 'Iliria', // Wikidata Q32047 label
+  'card-terms.house.rome': 'Roma', // Wikidata Q220 label
+  'card-terms.house.legendary': 'Legendaria',
+  'card-terms.house.relic': 'Reliquia',
+  'card-terms.house.potion': 'Poción',
+  'card-terms.house.lake-district': 'Distrito de los Lagos', // Wikidata Q211778 label
+  'card-terms.house.gothic-circle': 'Círculo gótico',
+  'card-terms.house.olympus': 'Olimpo', // Wikidata Q70054479 label
+  'card-terms.house.underworld': 'Inframundo',
+  'card-terms.element.air': 'Aire',
+  'card-terms.element.alchemy': 'Alquimia',
+  'card-terms.element.ambition': 'Ambición',
+  'card-terms.element.arcane': 'Arcano',
+  'card-terms.element.authority': 'Autoridad',
+  'card-terms.element.beast': 'Bestia',
+  'card-terms.element.beauty': 'Belleza',
+  'card-terms.element.comedy': 'Comedia',
+  'card-terms.element.compassion': 'Compasión',
+  'card-terms.element.creation': 'Creación',
+  'card-terms.element.cunning': 'Astucia',
+  'card-terms.element.dark': 'Tinieblas',
+  'card-terms.element.darkness': 'Oscuridad',
+  'card-terms.element.death': 'Muerte',
+  'card-terms.element.devotion': 'Devoción',
+  'card-terms.element.disguise': 'Disfraz',
+  'card-terms.element.duty': 'Deber',
+  'card-terms.element.earth': 'Tierra',
+  'card-terms.element.enchantment': 'Encantamiento',
+  'card-terms.element.envy': 'Envidia',
+  'card-terms.element.fire': 'Fuego',
+  'card-terms.element.glory': 'Gloria',
+  'card-terms.element.grace': 'Gracia',
+  'card-terms.element.honor': 'Honor',
+  'card-terms.element.illusion': 'Ilusión',
+  'card-terms.element.innocence': 'Inocencia',
+  'card-terms.element.justice': 'Justicia',
+  'card-terms.element.knowledge': 'Conocimiento',
+  'card-terms.element.light': 'Luz',
+  'card-terms.element.love': 'Amor',
+  'card-terms.element.loyalty': 'Lealtad',
+  'card-terms.element.mischief': 'Travesura',
+  'card-terms.element.moonlight': 'Luz de luna',
+  'card-terms.element.nature': 'Naturaleza',
+  'card-terms.element.ocean': 'Océano',
+  'card-terms.element.passion': 'Pasión',
+  'card-terms.element.peace': 'Paz',
+  'card-terms.element.petrification': 'Petrificación',
+  'card-terms.element.poison': 'Veneno',
+  'card-terms.element.power': 'Poder',
+  'card-terms.element.prophecy': 'Profecía',
+  'card-terms.element.rebellion': 'Rebelión',
+  'card-terms.element.rebirth': 'Renacimiento',
+  'card-terms.element.revolution': 'Revolución',
+  'card-terms.element.rhetoric': 'Retórica',
+  'card-terms.element.shadow': 'Sombra',
+  'card-terms.element.sorrow': 'Pena',
+  'card-terms.element.speed': 'Velocidad',
+  'card-terms.element.storm': 'Tormenta',
+  'card-terms.element.thunder': 'Trueno',
+  'card-terms.element.transformation': 'Transformación',
+  'card-terms.element.trickster': 'Embaucador',
+  'card-terms.element.vanity': 'Vanidad',
+  'card-terms.element.vision': 'Visión',
+  'card-terms.element.water': 'Agua',
+  'card-terms.element.wind': 'Viento',
+  'card-terms.element.wisdom': 'Sabiduría',
+  'card-terms.work.romeo-and-juliet': 'Romeo y Julieta', // Wikidata Q83186 label
+  'card-terms.work.hamlet': 'Hamlet', // Wikidata Q41567 label
+  'card-terms.work.as-you-like-it': 'Como gustéis', // Wikidata Q237572 label
+};
+
+export default messages;

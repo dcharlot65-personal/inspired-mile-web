@@ -1,0 +1,95 @@
+/**
+ * Words printed on every card: types, houses, elements, stats (src/lib/cards.ts): French.
+ *
+ * Same keys, {placeholders} and <b>/<a> marks as ./en.ts (src/i18n/pages.test.ts).
+ * Where the text came from and how it was checked: docs/language/pages-core/README.md.
+ */
+const messages: Record<string, string> = {
+  'card-terms.type.character': 'Personnage',
+  'card-terms.type.relic': 'Relique',
+  'card-terms.type.potion': 'Potion',
+  'card-terms.types.character': 'Personnages',
+  'card-terms.types.relic': 'Reliques',
+  'card-terms.types.potion': 'Potions',
+  'card-terms.stat.atk': 'ATQ',
+  'card-terms.stat.def': 'DÉF',
+  'card-terms.stat.hp': 'PV',
+  'card-terms.house.montague': 'Montaigu',
+  'card-terms.house.capulet': 'Capulet',
+  'card-terms.house.danish-court': 'Cour du Danemark',
+  'card-terms.house.forest-of-arden': 'Forêt d’Arden',
+  'card-terms.house.verona-court': 'Cour de Vérone',
+  'card-terms.house.the-tempest': 'La Tempête', // Wikidata Q86440 label
+  'card-terms.house.scottish-court': 'Cour d’Écosse',
+  'card-terms.house.illyria': 'Illyrie', // Wikidata Q32047 label
+  'card-terms.house.rome': 'Rome', // Wikidata Q220 label
+  'card-terms.house.legendary': 'Légendaire',
+  'card-terms.house.relic': 'Relique',
+  'card-terms.house.potion': 'Potion',
+  'card-terms.house.lake-district': 'Lake District', // Wikidata Q211778 label
+  'card-terms.house.gothic-circle': 'Cercle gothique',
+  'card-terms.house.olympus': 'Olympe', // not from a source: see docs/language/pages-core
+  'card-terms.house.underworld': 'Enfers',
+  'card-terms.element.air': 'Air',
+  'card-terms.element.alchemy': 'Alchimie',
+  'card-terms.element.ambition': 'Ambition',
+  'card-terms.element.arcane': 'Arcane',
+  'card-terms.element.authority': 'Autorité',
+  'card-terms.element.beast': 'Bête',
+  'card-terms.element.beauty': 'Beauté',
+  'card-terms.element.comedy': 'Comédie',
+  'card-terms.element.compassion': 'Compassion',
+  'card-terms.element.creation': 'Création',
+  'card-terms.element.cunning': 'Ruse',
+  'card-terms.element.dark': 'Ténèbres',
+  'card-terms.element.darkness': 'Obscurité',
+  'card-terms.element.death': 'Mort',
+  'card-terms.element.devotion': 'Dévotion',
+  'card-terms.element.disguise': 'Déguisement',
+  'card-terms.element.duty': 'Devoir',
+  'card-terms.element.earth': 'Terre',
+  'card-terms.element.enchantment': 'Enchantement',
+  'card-terms.element.envy': 'Envie',
+  'card-terms.element.fire': 'Feu',
+  'card-terms.element.glory': 'Gloire',
+  'card-terms.element.grace': 'Grâce',
+  'card-terms.element.honor': 'Honneur',
+  'card-terms.element.illusion': 'Illusion',
+  'card-terms.element.innocence': 'Innocence',
+  'card-terms.element.justice': 'Justice',
+  'card-terms.element.knowledge': 'Savoir',
+  'card-terms.element.light': 'Lumière',
+  'card-terms.element.love': 'Amour',
+  'card-terms.element.loyalty': 'Loyauté',
+  'card-terms.element.mischief': 'Espièglerie',
+  'card-terms.element.moonlight': 'Clair de lune',
+  'card-terms.element.nature': 'Nature',
+  'card-terms.element.ocean': 'Océan',
+  'card-terms.element.passion': 'Passion',
+  'card-terms.element.peace': 'Paix',
+  'card-terms.element.petrification': 'Pétrification',
+  'card-terms.element.poison': 'Poison',
+  'card-terms.element.power': 'Pouvoir',
+  'card-terms.element.prophecy': 'Prophétie',
+  'card-terms.element.rebellion': 'Rébellion',
+  'card-terms.element.rebirth': 'Renaissance',
+  'card-terms.element.revolution': 'Révolution',
+  'card-terms.element.rhetoric': 'Rhétorique',
+  'card-terms.element.shadow': 'Ombre',
+  'card-terms.element.sorrow': 'Chagrin',
+  'card-terms.element.speed': 'Vitesse',
+  'card-terms.element.storm': 'Tempête',
+  'card-terms.element.thunder': 'Tonnerre',
+  'card-terms.element.transformation': 'Métamorphose',
+  'card-terms.element.trickster': 'Farceur',
+  'card-terms.element.vanity': 'Vanité',
+  'card-terms.element.vision': 'Vision',
+  'card-terms.element.water': 'Eau',
+  'card-terms.element.wind': 'Vent',
+  'card-terms.element.wisdom': 'Sagesse',
+  'card-terms.work.romeo-and-juliet': 'Roméo et Juliette', // Wikidata Q83186 label
+  'card-terms.work.hamlet': 'Hamlet', // Wikidata Q41567 label
+  'card-terms.work.as-you-like-it': 'Comme il vous plaira', // Wikidata Q237572 label
+};
+
+export default messages;
