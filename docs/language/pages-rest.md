@@ -400,7 +400,7 @@ Branch lang/qa-pipeline moves four spellings of main's core locale to published 
 |---|---|---|---|---|
 | hi | Shakespeare | शेक्सपियर | शेक्सपीयर | Wikidata Q692's label |
 | th | sign in | เข้าสู่ระบบ | ลงชื่อเข้าใช้ | Android (`kg_login_submit_button`), Google Help |
-| ko | download | 내려받다 and 다운로드 | 다운로드 | Android (`install_carrier_app_notification_button`) |
+| ko | download | 내려받다 (main's core writes both 내려받다 and 다운로드, so the test asks nothing of the areas yet) | 다운로드 | Android (`install_carrier_app_notification_button`) |
 | vi | tone marks in oa, oe, uy | *khóa*, *xóa*, *hủy* | *khoá*, *xoá*, *huỷ* | Android's placement, the LibreOffice vi_VN dictionary |
 
 The brief for these pages is to use the core locale's words, and main's core still has the
