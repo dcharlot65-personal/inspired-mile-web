@@ -18,6 +18,9 @@ mkdir -p "$HOME_DIR"/{dl,dict,models,cache,tmp,logs}
 # Caches and temporary files stay on the external volume: the host's internal disk is full.
 export HF_HOME="$HOME_DIR/cache/hf" UV_CACHE_DIR="$HOME_DIR/cache/uv" PIP_CACHE_DIR="$HOME_DIR/cache/pip" TMPDIR="$HOME_DIR/tmp"
 export HF_HUB_DISABLE_TELEMETRY=1
+# Setup is the one step that downloads: run.sh keeps every other step offline (HF_HUB_OFFLINE=1),
+# and a setup started from it inherited that and could fetch nothing new (seen 2026-11-16).
+export HF_HUB_OFFLINE=0 TRANSFORMERS_OFFLINE=0
 cd "$HOME_DIR"
 
 step() { printf '\n== %s\n' "$*"; }
