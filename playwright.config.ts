@@ -20,8 +20,11 @@ const prodUrl = process.env.PROD_URL;
 
 export default defineConfig({
   testDir: './tests',
-  // The dev server compiles each page on first request; on a loaded build host that alone can pass 30 s.
+  // The dev server compiles each page on first request; on a loaded build host that alone can
+  // pass 30 s. warm-up.ts compiles every page before any test's clock starts, and E2E_TIMEOUT
+  // raises the per-test limit when the host is busy.
   timeout: Number(process.env.E2E_TIMEOUT ?? 30000),
+  globalSetup: prodUrl ? undefined : './tests/warm-up.ts',
   use: {
     baseURL: prodUrl ?? E2E.webOrigin,
     headless: true,
@@ -76,8 +79,7 @@ export default defineConfig({
       command: `node tests/noemail-proxy.mjs ${E2E.webNoEmailPort} ${E2E.webPort} ${E2E.apiNoEmailPort}`,
       port: E2E.webNoEmailPort,
       reuseExistingServer: false,
-      // The dev server compiles each page on first request; on a loaded build host that alone can pass 30 s.
-  timeout: Number(process.env.E2E_TIMEOUT ?? 30000),
+      timeout: 30000,
       stderr: 'pipe',
     },
   ],
