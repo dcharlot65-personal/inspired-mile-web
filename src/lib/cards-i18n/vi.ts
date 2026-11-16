@@ -9,7 +9,8 @@ const pack: CardTextPack = {
    "name": "The Sonnet Man",
    "nameSource": "translated",
    "quote": "Ta có nên ví nàng với một ngày hè?",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Một sân khấu lớn hiện ra. The Sonnet Man bước ra từ vầng đèn vàng rực, tay cầm micro. Lời của Shakespeare biến thành những câu hip-hop trong tiếng reo hò của khán giả."
   },
   "MO-001": {
    "nameSource": "wikidata",
@@ -18,342 +19,402 @@ const pack: CardTextPack = {
     "Rô-mê-ô"
    ],
    "quote": "Nhưng khoan, ánh sáng nào vừa lóe lên nơi cửa sổ kia?",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Cảnh ban công dưới ánh trăng mở ra. Romeo vươn tay lên khi Juliet xuất hiện phía trên. Những cánh hoa hồng bay lả tả trong không trung, và cả khung cảnh rực lên một sắc đỏ thắm ấm áp."
   },
   "CA-001": {
    "nameSource": "wikidata",
    "name": "Juliet",
    "quote": "Cái tên thì có nghĩa gì? Thứ ta gọi là hoa hồng...",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Khu vườn nhà Capulet nở rộ dưới ánh trăng. Juliet đứng giữa những khóm hồng, đôi mắt ánh lên vẻ thách thức. Một con chim họa mi hót trên cành cao."
   },
   "DC-001": {
    "nameSource": "derived",
    "name": "Hamlet",
    "quote": "Tồn tại hay không tồn tại, đó là vấn đề.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Lâu đài Elsinore hiện ra từ bóng tối. Hamlet đứng trên tường thành, chiếc đầu lâu của Yorick lơ lửng bên cạnh. Một bóng ma xuất hiện trên lũy thành phía trên."
   },
   "DC-002": {
    "nameSource": "missing",
    "quote": "Đây là hương thảo, để mà tưởng nhớ.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Một dòng suối hiền hòa uốn quanh lùm liễu. Ophelia trôi giữa những đóa hoa dại, thì thầm những câu thơ đã bị lãng quên. Cánh hoa xoay tròn theo dòng nước."
   },
   "MO-002": {
    "nameSource": "missing",
    "quote": "Tai ương giáng xuống cả hai nhà các người!",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Một con phố ở Verona bùng lên hỗn loạn. Mercutio nhảy múa giữa những lưỡi kiếm, cười vào mặt hiểm nguy. Tia lửa tóe ra từ thép va vào nhau."
   },
   "FA-001": {
    "nameSource": "missing",
    "quote": "Trời ơi, người trần mới dại dột làm sao!",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Khu rừng phù phép lấp lánh vẻ tinh nghịch. Puck lướt vụt giữa những cây sồi cổ thụ, để lại những vệt bụi tiên. Bên dưới, những người phàm say ngủ mơ những giấc mơ kỳ lạ."
   },
   "FA-002": {
    "nameSource": "missing",
    "quote": "Lại đây, hãy ngồi xuống chiếc giường đầy hoa này.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Một ngai vàng bằng dây leo sống vươn lên từ nền rừng. Titania ra lệnh cho triều đình tiên của mình trong khi đom đóm thắp sáng tán lá. Chính thiên nhiên cũng cúi đầu trước ý nàng."
   },
   "RL-001": {
    "name": "Đầu lâu của Yorick",
    "nameSource": "translated",
    "quote": "Than ôi, Yorick tội nghiệp! Ta từng biết hắn, Horatio ạ.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Một chiếc đầu lâu nằm trên nền nhung trong hầm mộ tối mờ. Tiếng cười ma quái vang vọng khi ký ức về chàng hề cung đình chập chờn như ánh nến."
   },
   "RL-002": {
    "name": "Cây trượng của Prospero",
    "nameSource": "translated",
    "quote": "Giờ đây mọi phép thuật của ta đã tan hết.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Một cây trượng xương xẩu tóe lửa năng lượng huyền bí. Cơn giông xoáy quanh nó khi Prospero thì thầm câu thần chú cuối cùng. Tia chớp xé toạc bầu trời."
   },
   "PT-001": {
    "name": "Tình dược",
    "nameSource": "translated",
    "quote": "Đường đi của tình yêu chân thật chưa bao giờ êm ả.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Một lọ thuốc phát sáng, nhịp nhàng tỏa ánh hồng. Những trái tim bay lên từ mặt lọ khi một giai điệu ngọt ngào lan khắp không gian."
   },
   "PT-002": {
    "name": "Nồi thuốc của phù thủy",
    "nameSource": "translated",
    "quote": "Gấp đôi, gấp đôi nhọc nhằn và rắc rối.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Một chiếc vạc sôi sùng sục phun khói xanh lục. Ba bóng người mờ tối vây quanh nó, tụng niệm. Những con mắt sáng rực từ khu rừng tối phía xa."
   },
   "VC-001": {
    "nameSource": "missing",
    "quote": "Nếu các ngươi còn quấy rối đường phố của ta lần nữa, mạng sống các ngươi sẽ phải đền cho sự yên bình bị phá vỡ.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Vị Thân vương đứng trên bậc thềm cung điện Verona, giọng nói của ngài khiến đám đông đang thù hằn im bặt. Cây quyền trượng vàng rực cháy uy quyền."
   },
   "VC-002": {
    "nameSource": "missing",
    "quote": "Những niềm vui cuồng nhiệt này sẽ có kết cục cuồng nhiệt.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Một phòng tu thắp nến trong tu viện. Vị tu sĩ chăm sóc khu vườn thảo dược và độc dược của mình, sự minh triết in hằn trên gương mặt dãi dầu."
   },
   "VC-003": {
    "nameSource": "missing",
    "quote": "Tôi là kẻ tôi đòi nhọc nhằn vì niềm vui của cô.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Một gian bếp ấm áp trong nhà Capulet. Bà vú tất bật với lòng tận tụy mãnh liệt, một bức thư bí mật giắt trong tạp dề."
   },
   "TP-001": {
    "nameSource": "wikidata",
    "name": "Prospero",
    "quote": "Chúng ta là thứ chất liệu dệt nên những giấc mơ.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Một hòn đảo chìm trong giông tố. Prospero giơ hai tay lên và tia chớp tuân theo ý ông, biển cả cuộn sóng theo lệnh ông."
   },
   "TP-002": {
    "nameSource": "wikidata",
    "name": "Ariel",
    "quote": "Kính chào chủ nhân vĩ đại! Kính chào ngài tôn nghiêm!",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Một linh hồn lấp lánh tan vào gió và ánh sáng, rồi tái hiện thành âm nhạc. Ariel nhảy múa giữa cõi hữu hình và vô hình."
   },
   "TP-003": {
    "nameSource": "missing",
    "quote": "Hòn đảo này là của ta, do Sycorax mẹ ta để lại.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Một miệng hang trên bờ biển hoang dã. Caliban thu mình giữa những tảng đá, đôi mắt rực cháy oán hận và một trí khôn nguyên sơ."
   },
   "MO-003": {
    "nameSource": "wikidata",
    "name": "Benvolio",
    "quote": "Tôi chỉ giữ hòa khí thôi. Hãy tra gươm vào vỏ.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Một quảng trường ở Verona lúc rạng đông. Benvolio đứng giữa những thanh kiếm đã tuốt, đôi bàn tay mở là vũ khí duy nhất của chàng trước cơn bão đang kéo đến."
   },
   "CA-002": {
    "nameSource": "wikidata",
    "name": "Tybalt",
    "quote": "Sao, gươm đã tuốt mà còn nói chuyện hòa bình? Ta ghét cái từ ấy.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Một con hẻm ở Verona rực sáng ánh đuốc. Tybalt rút thanh kiếm mảnh với vẻ uyển chuyển chết người, mắt dán chặt vào kẻ thù."
   },
   "DC-003": {
    "nameSource": "missing",
    "quote": "Lời ta bay lên cao, ý nghĩ ta vẫn nằm lại dưới thấp.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Phòng ngai vàng ở Elsinore khoác vẻ lộng lẫy giả dối. Claudius nắm chặt vương miện, một lọ thuốc độc giấu trong áo choàng."
   },
   "FA-003": {
    "nameSource": "missing",
    "quote": "Gặp nhau dưới ánh trăng thật chẳng lành, Titania kiêu hãnh.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Một khoảng rừng trống dưới ánh trăng nằm sâu trong khu rừng phù phép. Oberon hiện ra từ bóng tối, vương miện bằng gạc hươu bắt lấy ánh bạc."
   },
   "RL-003": {
    "name": "Con dao găm của tâm trí",
    "nameSource": "translated",
    "quote": "Có phải con dao găm ta đang thấy trước mặt đây không?",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Một con dao găm ma quái lơ lửng trong bóng tối, lưỡi dao nhỏ những giọt máu hư ảo. Bàn tay Macbeth vươn tới nhưng không bao giờ nắm được nó."
   },
   "PT-003": {
    "name": "Nhựa hoa của Puck",
    "nameSource": "translated",
    "quote": "Tôi sẽ quấn một vòng đai quanh trái đất trong bốn mươi phút.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Một bông hoa tím bị nghiền nát nhỏ những giọt mật óng ánh vào lòng bàn tay đang chờ. Rơi xuống nơi đâu, đôi mắt đổi thay ở đó — và trái tim cũng theo sau."
   },
   "SC-001": {
    "nameSource": "derived",
    "name": "Macbeth",
    "quote": "Ta dám làm mọi điều xứng với một con người; kẻ dám làm hơn thế thì không còn là người.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Một phòng ngai vàng nhuốm máu ở Dunsinane. Macbeth nắm chặt thanh kiếm bằng đôi tay run rẩy, vương miện nặng trĩu trên trán. Rừng Birnam lay động trên ngọn đồi xa."
   },
   "SC-002": {
    "nameSource": "missing",
    "quote": "Hãy đến đây, hỡi các hồn ma phục vụ ý nghĩ giết chóc, hãy tước bỏ nữ tính của ta ngay tại đây.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Một căn phòng thắp nến trong lâu đài Scotland. Lady Macbeth đi đi lại lại trên nền đá lạnh, cố chà những vết máu hư ảo khỏi đôi tay. Bóng tối bám lấy bà như một lớp da thứ hai."
   },
   "SC-003": {
    "nameSource": "missing",
    "quote": "Ngươi sẽ sinh ra các vị vua, dù ngươi chẳng phải là vua.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Một vùng đồng hoang Scotland mù sương lúc hoàng hôn. Banquo đứng vững vàng khi ba bóng ma thì thầm những định mệnh vào trong gió. Hồn ma của ông sẽ ám ảnh người sống."
   },
   "IL-001": {
    "nameSource": "missing",
    "quote": "Tôi không phải là tôi như người ta thấy.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Một bờ biển Illyria lộng gió. Viola kéo chiếc mũ thủy thủ trùm lên mái tóc cắt ngắn, hai thân phận song sinh lấp lánh trong mắt nàng. Biển cả thì thầm những bí mật về người anh trai đã mất."
   },
   "IL-002": {
    "nameSource": "missing",
    "quote": "Có người sinh ra đã vĩ đại, có người đạt tới vĩ đại, và có người bị sự vĩ đại ấn vào tay.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Một khu vườn ngập nắng trong dinh thự của Olivia. Malvolio vênh váo trong đôi tất vàng lòe loẹt, buộc dây chéo, nhe răng cười, ôm chặt một bức thư tình giả mạo vào ngực."
   },
   "IL-003": {
    "nameSource": "missing",
    "quote": "Tình yêu tìm mà có là tốt, nhưng được trao khi chẳng tìm thì còn tốt hơn.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Một nữ bá tước đang để tang khẽ vén mạng che mặt, để lộ vẻ đẹp khiến người ta nín thở. Khu vườn của Olivia nở rộ hoa nhài và oải hương khi người đưa tin cải trang đánh cắp trái tim nàng."
   },
   "RM-001": {
    "nameSource": "derived",
    "name": "Brutus",
    "quote": "Không phải tôi yêu Caesar ít hơn, mà là tôi yêu thành Rome nhiều hơn.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Viện Nguyên lão La Mã, những cột đá cẩm thạch nhuốm màu đỏ thẫm. Brutus đứng giữa những kẻ mưu phản, lưỡi kiếm vẫn còn run rẩy. Sức nặng của nền cộng hòa đè lên đôi bàn tay đẫm máu của ông."
   },
   "RM-002": {
    "nameSource": "missing",
    "quote": "Lỗi, Brutus thân mến, không nằm ở các vì sao của chúng ta, mà ở chính chúng ta.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Một con hẻm La Mã sáng ánh đuốc lúc nửa đêm. Cassius ghé sát, thì thầm lời xúi giục nổi loạn với vẻ mặt gầy gò và thèm khát. Những lá thư giả mạo tuột ra từ vạt áo toga."
   },
   "RM-003": {
    "nameSource": "wikidata",
    "name": "Marcus Antonius",
    "quote": "Hỡi bạn bè, hỡi người La Mã, hỡi đồng bào, hãy cho tôi mượn đôi tai!",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Quảng trường La Mã bùng lên phẫn nộ. Marcus Antonius giơ cao tấm áo choàng đẫm máu của Caesar trước đám đông, lời lẽ của ông biến nỗi đau thành lửa. Nền cộng hòa sụp đổ theo từng âm tiết."
   },
   "MO-004": {
    "name": "Lãnh chúa Montague",
    "nameSource": "translated",
    "quote": "Đã nhiều buổi sáng người ta thấy nó ở đó, lấy nước mắt thêm vào sương sớm tinh khôi.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Dinh thự nhà Montague lúc rạng đông. Lãnh chúa Montague nhìn từ ô cửa sổ cao khi con trai ông lang thang giữa những vườn cây mờ sương bên dưới, tương tư và xa vời."
   },
   "CA-003": {
    "name": "Phu nhân Capulet",
    "nameSource": "translated",
    "quote": "Cưới xin, đó chính là chuyện mẹ đến để nói.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Đại sảnh nhà Capulet phủ lụa. Phu nhân Capulet sắp đặt số phận con gái như cắm hoa vào bình, tham vọng lấp lánh sau mỗi nụ cười nhã nhặn."
   },
   "DC-004": {
    "nameSource": "missing",
    "quote": "Giờ đây một trái tim cao quý đã vỡ. Chúc ngủ ngon, hoàng tử dịu hiền.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Tường thành Elsinore trong giờ lạnh giá trước bình minh. Horatio đứng canh bên Hamlet, người bạn chân thành duy nhất giữa một triều đình đầy rắn độc."
   },
   "FA-004": {
    "nameSource": "missing",
    "quote": "Tôi vừa có một thị kiến hiếm có. Tôi vừa có một giấc mơ, vượt quá trí khôn con người.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Một khoảng rừng trống rực sáng ánh tiên. Bottom đội đầu lừa với vẻ đường hoàng ngơ ngác trong khi Titania quàng vòng hoa lên người anh ta. Các nàng tiên cố nén tiếng cười."
   },
   "VC-004": {
    "nameSource": "missing",
    "quote": "Những ngày tang tóc này chẳng còn thì giờ cho chuyện tỏ tình.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Nghĩa trang nhà thờ Verona lúc chạng vạng. Paris đặt hoa lên mộ Juliet, không hay biết chàng tình nhân tuyệt vọng đang tiến đến từ trong bóng tối."
   },
   "TP-004": {
    "nameSource": "wikidata",
    "name": "Miranda",
    "quote": "Ôi thế giới mới tươi đẹp, có những con người như thế này!",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Một bãi biển hoang sơ trên hòn đảo của Prospero. Miranda lần đầu tiên nhìn thấy những thủy thủ bị đắm tàu, đôi mắt mở to kinh ngạc trước một thế giới nàng chưa từng biết là có thật."
   },
   "RL-004": {
    "name": "Chiếc nhẫn của Romeo",
    "nameSource": "translated",
    "quote": "Lòng hào phóng của em mênh mông như biển, tình em cũng sâu như thế.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Một chiếc nhẫn vàng nằm trên gờ ban công bằng đá, bắt lấy ánh trăng. Khắc bên trong là một lời thề bền lâu hơn cả cái chết. Những cánh hoa hồng xoay tròn quanh nó trong một làn gió vô hình."
   },
   "RL-005": {
    "name": "Chiếc tráp của Portia",
    "nameSource": "translated",
    "quote": "Không phải mọi thứ lấp lánh đều là vàng.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Ba chiếc tráp lấp lánh trong căn phòng thắp nến — vàng, bạc và chì. Chiếc tráp chì ngân nga một sự thật lặng lẽ, ban thưởng cho những ai đủ khôn ngoan để nhìn thấu vẻ bề ngoài."
   },
   "RL-006": {
    "name": "Vương miện của Macbeth",
    "nameSource": "translated",
    "quote": "Mái đầu đội vương miện chẳng bao giờ nằm yên.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Một chiếc vương miện Scotland xỉn màu nằm trên chiếc gối nhuốm máu. Nó rung động với tham vọng đen tối, thì thầm những lời hứa vinh quang với bất kỳ bàn tay nào dám vươn tới."
   },
   "RL-007": {
    "name": "Sách phép của Giông tố",
    "nameSource": "translated",
    "quote": "Ta sẽ dìm cuốn sách của ta.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Một cuốn sách cổ bọc da dãi dầu sóng gió lơ lửng trên bệ thờ bằng đá. Những trang sách tự lật, mỗi trang lại gọi về một cơn bão khác."
   },
   "RL-008": {
    "name": "Nước mắt của Cordelia",
    "nameSource": "translated",
    "quote": "Ôi cha yêu dấu, con đang lo liệu chính việc của cha.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Một lọ pha lê chứa những giọt nước mắt lấp lánh như ánh sao bị giam giữ. Mỗi giọt mang nỗi buồn của một người con gái đã yêu quá chân thành và nói quá thẳng thắn."
   },
   "RL-009": {
    "name": "Mặt nạ của Bottom",
    "nameSource": "translated",
    "quote": "Cầu trời phù hộ anh, Bottom! Anh đã bị biến hình rồi!",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Một chiếc mặt nạ đầu lừa treo trên cành cây phủ rêu trong khu rừng tiên. Ai đeo nó sẽ nhìn thế giới bằng đôi mắt bị phù phép — và trở nên không thể cưỡng lại đối với các nữ hoàng tiên."
   },
   "PT-004": {
    "name": "Rễ khoai ma",
    "nameSource": "translated",
    "quote": "Không phải thuốc phiện, không phải khoai ma, cũng không phải mọi thứ xi-rô ru ngủ trên đời.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Một chiếc rễ xương xẩu có hình một người đang thét gào được đào lên dưới ánh nến. Đất vụn rơi ra, để lộ sức mạnh cổ xưa vặn vẹo của nó. Người bào chế cầm nó với lòng tôn kính run rẩy."
   },
   "PT-005": {
    "name": "Sương của Oberon",
    "nameSource": "translated",
    "quote": "Hãy lấy cho ta bông hoa ấy; thứ cỏ ta đã chỉ cho ngươi một lần.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Một giọt sương bám trên đóa lan dưới ánh trăng, phát ra ánh tím huyền ảo của thế giới khác. Chỉ một giọt trên mí mắt đang ngủ, và người mơ sẽ phải lòng sinh vật đầu tiên mà họ nhìn thấy."
   },
   "PT-006": {
    "name": "Cồn thuốc độc cần",
    "nameSource": "translated",
    "quote": "Vào giờ ta yên giấc, chú của con lẻn tới, mang theo một lọ nhựa hebona đáng nguyền rủa.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Một lọ thủy tinh đen rỉ ra làn hơi xanh lục trong hành lang tối. Thứ cồn thuốc bên trong đã lật đổ các vị vua và làm tan nát các triều đại, từng giọt lặng lẽ một."
   },
   "PT-007": {
    "name": "Tinh chất tầm gửi",
    "nameSource": "translated",
    "quote": "Trong vạc hãy sôi và nướng; mắt sa giông và ngón chân ếch.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Những quả mọng nhạt màu lấp lánh giữa tán lá xanh thẫm, được hái dưới vầng trăng mùa đông. Tinh chất ngân nga thứ phép màu lặng lẽ, bền bỉ của thế giới tự nhiên."
   },
   "PT-008": {
    "name": "Nước mắt nàng tiên cá",
    "nameSource": "translated",
    "quote": "Năm sải sâu cha ngươi nằm đó; xương người đã hóa thành san hô.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Một chiếc bình nút ngọc trai chứa chất lỏng xanh lam phát sáng, chuyển động như một vùng biển sống. Bên trong, những khối san hô tí hon mọc lên rồi tan biến. Nó mang mùi muối và những chuyến hải hành đã bị lãng quên."
   },
   "PT-009": {
    "name": "Thuốc tiên của người bào chế",
    "nameSource": "translated",
    "quote": "Hãy đổ thứ này vào bất cứ chất lỏng nào anh muốn rồi uống cạn; dù anh có sức mạnh của hai mươi người, nó cũng tiễn anh đi ngay.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Một hiệu thuốc phủ bụi trong khu nghèo nhất của Mantua. Một thứ thuốc tiên tuyệt vọng phát ánh hổ phách trong chiếc lọ nứt, đủ mạnh để bắc cầu qua khoảng cách giữa sự sống và cái chết."
   },
   "LD-001": {
    "nameSource": "wikidata",
    "name": "William Wordsworth",
    "quote": "Tôi lang thang cô đơn như đám mây trôi trên cao qua thung lũng và đồi núi.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Một thảm hoa thủy tiên vàng trải dài dọc bờ hồ phẳng lặng. Wordsworth dạo bước giữa những đóa hoa, tay cầm sổ tay, những dãy đồi Cumberland nhô lên sau lưng ông."
   },
   "LD-002": {
    "nameSource": "wikidata",
    "name": "Samuel Taylor Coleridge",
    "quote": "Nước, nước, khắp nơi, mà chẳng có một giọt để uống.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Một con tàu lặng gió trôi trên đại dương như được vẽ. Người thủy thủ già nhìn chằm chằm con hải âu lớn đeo trên cổ khi những bóng ma trồi lên từ mặt biển phẳng như gương."
   },
   "LD-003": {
    "nameSource": "wikidata",
    "name": "John Keats",
    "quote": "Một vật đẹp là niềm vui mãi mãi: vẻ yêu kiều của nó càng thêm.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Một khu vườn ở Hampstead mùa thu. Keats ngồi dưới gốc cây mận, viết như lên cơn sốt trong khi một con chim họa mi hót trên những cành cây đang sẫm tối."
   },
   "GC-001": {
    "nameSource": "wikidata",
    "name": "George Gordon Byron, Nam tước Byron thứ 6",
    "quote": "Nàng bước đi trong vẻ đẹp, như đêm của miền không mây và trời đầy sao.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Một tòa lâu đài ở Venezia lúc nửa đêm. Byron đứng trên ban công, áo choàng tung bay, đăm đăm nhìn qua con kênh tối. Sau lưng ông, một bản thảo dang dở cháy trong lò sưởi."
   },
   "GC-002": {
    "nameSource": "wikidata",
    "name": "Mary Shelley",
    "quote": "Hãy coi chừng; vì ta không biết sợ, và vì thế mà mạnh mẽ.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Một phòng làm việc thắp nến ở Genève giữa cơn giông. Mary viết dưới ánh chớp lóe trong khi sinh vật kia cựa mình trong bóng tối sau lưng bà. Khoa học và kinh hoàng hòa làm một."
   },
   "GC-003": {
    "nameSource": "wikidata",
    "name": "Edgar Allan Poe",
    "quote": "Một lần vào nửa đêm ảm đạm, khi tôi trầm ngâm, yếu ớt và mỏi mệt.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Một căn phòng tối mờ được soi bởi ngọn lửa sắp tàn. Poe ngồi khom người bên bàn khi một con quạ đáp xuống bức tượng bán thân của Pallas. Tiếng \"Nevermore\" vang vọng trong bóng tối."
   },
   "GC-004": {
    "nameSource": "wikidata",
    "name": "William Blake",
    "quote": "Thấy một thế giới trong hạt cát và một thiên đường trong đóa hoa dại.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Một xưởng in ở London rực sáng ánh linh thị. Blake khắc hình con hổ lên tấm đồng khi con thú hiện hình từ bản khắc, rực cháy trong những cánh rừng đêm."
   },
   "GC-005": {
    "nameSource": "wikidata",
    "name": "Percy Bysshe Shelley",
    "quote": "Nếu mùa đông đến, mùa xuân liệu có còn xa?",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Một đỉnh vách đá lộng gió ở Ý. Shelley đối mặt với cơn bão, dang rộng hai tay, khi ngọn gió tây giật tung những trang sổ của ông và rải chúng khắp Địa Trung Hải."
   },
   "LD-004": {
    "nameSource": "wikidata",
    "name": "Elizabeth Barrett Browning",
    "quote": "Em yêu anh thế nào? Hãy để em đếm những cách.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Một căn phòng ngập nắng ở Firenze. Elizabeth viết bên khung cửa sổ nhìn ra sông Arno, chú chó spaniel nằm dưới chân bà. Những bức thư tình của Robert mở trên bàn."
   },
   "LD-005": {
    "nameSource": "wikidata",
    "name": "Christina Rossetti",
    "quote": "Hãy nhớ em khi em đã đi xa, đi thật xa vào miền đất lặng im.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Một khu vườn kiểu Tiền Raphael trong ánh thu nhạt dần. Christina ngồi giữa những chiếc lá rụng, sáng tác những vần thơ nhức nhối vẻ đẹp và sự cam chịu lặng lẽ."
   },
   "OL-001": {
    "nameSource": "wikidata",
@@ -364,13 +425,15 @@ const pack: CardTextPack = {
     "Dớt"
    ],
    "quote": "Ta là kẻ gom mây, chúa tể của bầu trời rộng lớn.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Đỉnh Olympus xé toạc bầu trời. Zeus ngự trên ngai mây, tia chớp lóe lên giữa những ngón tay. Bên dưới, thế giới người phàm run rẩy trước ánh nhìn của thần."
   },
   "OL-002": {
    "nameSource": "wikidata",
    "name": "Athena",
    "quote": "Con cú của trí tuệ chỉ cất cánh lúc hoàng hôn.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Đền Parthenon rực rỡ trong ánh vàng. Athena đứng trong bộ giáp trụ đầy đủ, con cú đậu trên khiên, đôi mắt xám nhìn thấu mọi mưu mẹo của người phàm."
   },
   "OL-003": {
    "nameSource": "wikidata",
@@ -381,7 +444,8 @@ const pack: CardTextPack = {
     "Apóllōn"
    ],
    "quote": "Ta là thần của bài ca, của sự chữa lành và của mặt trời rực rỡ.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Một cỗ xe vàng lao vút qua bầu trời bình minh. Apollo gảy đàn lia khi ánh mặt trời tuôn ra từ bánh xe, tô màu cho cả thế gian."
   },
   "OL-004": {
    "nameSource": "wikidata",
@@ -390,25 +454,29 @@ const pack: CardTextPack = {
     "Venus"
    ],
    "quote": "Ngay cả các vị thần cũng không cưỡng nổi sức mạnh của tình yêu.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Bờ biển đảo Síp lúc rạng đông. Aphrodite trồi lên từ bọt biển, đàn bồ câu lượn trên cao khi sóng đặt những viên ngọc trai dưới chân nàng. Cả thế gian nín thở."
   },
   "OL-005": {
    "nameSource": "wikidata",
    "name": "Hermes",
    "quote": "Nhanh như ý nghĩ, ta mang lời các thần đến tai người trần.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Một vệt mờ của đôi dép có cánh vút qua bầu trời. Hermes luồn lách giữa những tiếng sét, một tay nắm chặt thông điệp thần thánh, trên mặt nở nụ cười của kẻ trộm."
   },
   "UW-001": {
    "nameSource": "wikidata",
    "name": "Hades",
    "quote": "Mọi linh hồn rồi cũng đến với ta. Ta kiên nhẫn.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Phòng ngai vàng của Âm phủ, được soi sáng bởi những dòng sông lửa nhợt nhạt. Hades ngồi đó, Cerberus nằm dưới chân, chiếc mũ trụ bóng tối đặt trên tay vịn. Người chết lần lượt đi qua trong sự im lặng vô tận."
   },
   "UW-002": {
    "nameSource": "wikidata",
    "name": "Persephone",
    "quote": "Ta đã ăn sáu hạt, và tự trói mình mãi mãi giữa hai thế giới.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Một ngai vàng chia đôi giữa mùa xuân và bóng tối. Persephone cầm một quả lựu trong tay này và một vương miện hoa trong tay kia, nữ hoàng của hai cõi."
   },
   "OL-006": {
    "nameSource": "wikidata",
@@ -417,19 +485,22 @@ const pack: CardTextPack = {
     "Uylixơ"
    ],
    "quote": "Hỡi Nàng Thơ, hãy kể cho ta về người đàn ông lắm mưu nhiều kế, kẻ đã lang thang rất xa.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Một con tàu bị bão đánh tơi tả vòng qua mũi đất đá lởm chởm. Odysseus tự trói mình vào cột buồm khi các nàng Siren cất tiếng hát từ vách đá. Đôi mắt ông rực cháy ký ức về Ithaca."
   },
   "UW-003": {
    "nameSource": "wikidata",
    "name": "Medusa",
    "quote": "Hãy nhìn ta, nếu ngươi dám. Ánh mắt ta là thứ cuối cùng ngươi thấy.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Một ngôi đền đổ nát nơi tận cùng thế giới. Medusa quay lại, mái tóc rắn rít lên. Những chiến binh hóa đá nằm ngổn ngang trên nền, đông cứng trong đợt xung phong cuối cùng."
   },
   "OL-007": {
    "nameSource": "wikidata",
    "name": "Achilles",
    "quote": "Ta thà sống một đời ngắn ngủi vinh quang còn hơn một đời dài bị lãng quên.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Đồng bằng thành Troia lúc rạng đông. Achilles xông lên trong bộ giáp rực lửa, tiếng hô xung trận xé toạc không trung. Sau lưng chàng, những chiến thuyền Hy Lạp bốc cháy trên bờ."
   }
  },
  "houses": {
