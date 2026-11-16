@@ -145,6 +145,23 @@ def simplified(text):
     return _t2s.convert(text)
 
 
+_jp = None
+
+
+def shinjitai(text):
+    """Japanese old character forms (kyujitai) to the forms players type (shinjitai), by OpenCC's JPVariants table
+    (docs/language/sources/opencc-JPVariants.txt, the table OpenCC's t2jp conversion uses). Character for character;
+    kana spelling is left as printed."""
+    global _jp
+    if _jp is None:
+        _jp = {}
+        for line in read('docs/language/sources/opencc-JPVariants.txt').split('\n'):
+            if '\t' in line:
+                a, b = line.split('\t', 1)
+                _jp[a] = b.split(' ')[0]
+    return ''.join(_jp.get(ch, ch) for ch in text)
+
+
 def label(ent, lang):
     text, src, detail = _label(ent, lang)
     if text and lang == 'zh':
@@ -265,6 +282,11 @@ def main():
                 entry['quote'], entry['quoteSource'] = clean_quote(q['text']), 'published'
                 rec['quote'] = {'text': entry['quote'], 'source': 'published', 'cite': cite, 'translator': meta['translator'], 'edition': meta['edition'],
                                 'status': meta['status'], 'url': q['url'], 'page': q['page'], 'revid': q['revid']}
+                if lang == 'ja':
+                    # The published line keeps its old character forms on the card; the signature also reads it in the forms players type.
+                    modern = shinjitai(entry['quote'])
+                    if modern != entry['quote']:
+                        entry['echo'] = rec['quote']['echo'] = modern
             elif cid in tr['quotes']:
                 entry['quote'], entry['quoteSource'] = tr['quotes'][cid], 'new'
                 rec['quote'] = {'text': entry['quote'], 'source': 'new', 'cite': cite}
@@ -291,6 +313,80 @@ def main():
         print(lang, 'names: wikidata', n('name', 'wikidata'), 'wikipedia', n('name', 'wikipedia'), 'derived', n('name', 'derived'), 'translated',
               n('name', 'translated'), 'missing', n('name', 'missing'), '| quotes: published', n('quote', 'published'), 'new', n('quote', 'new'),
               'missing', n('quote', 'missing'), '| scenes', sum(1 for c in cs if c['scene'] == 'translated'))
+
+
+BT_FLAG = 0.5  # back-translations scoring below this cosine against their English source are listed for review
+
+
+def write_checks(L):
+    """The findings of scripts/language/check (docs/language/checks/*.json), if they have been run."""
+    d = os.path.join(ROOT, 'docs/language/checks')
+    load = lambda f: json.load(open(os.path.join(d, f), encoding='utf8')) if os.path.exists(os.path.join(d, f)) else None
+    sp, gr, bt = load('spelling.json'), load('grammar.json'), load('backtranslation.json')
+    L.append('## Checks by tools that did not write the text\n')
+    if not (sp or gr or bt):
+        L.append('Not run. See "What was not done".\n')
+        return
+    L.append('Run by `scripts/language/check/run.sh` on the build host; the raw findings are in `docs/language/checks/`. '
+             'A finding is a question for a reviewer, not a verdict, and an item with no finding has not thereby been shown to be right: '
+             'a spelling dictionary does not know names, LanguageTool covers only some languages and some errors, and a back-translation '
+             'can be faithful to a wrong text. Nothing here was reviewed by a native speaker.\n')
+    L.append('| Language | Items | Hunspell: items with an unknown word | LanguageTool: items with a finding | Back-translation: median cosine (control) | below ' + str(BT_FLAG) + ' |')
+    L.append('|---|---|---|---|---|---|')
+    import statistics
+    for lang in LANGS:
+        s = (sp or {}).get('languages', {}).get(lang)
+        g = (gr or {}).get('languages', {}).get(lang)
+        b = (bt or {}).get('languages', {}).get(lang)
+        n = (s or g or {}).get('items', len(b) if b else 0)
+        scell = f"{len(s['flagged'])}" if s else 'no dictionary'
+        gcell = f"{len(g['flagged'])}" if g else 'not supported'
+        if b:
+            bcell = f"{statistics.median(r['cos'] for r in b):.2f} ({statistics.median(r['control'] for r in b):.2f})"
+            low = sum(1 for r in b if r['cos'] < BT_FLAG)
+        else:
+            bcell, low = 'not run', '-'
+        L.append(f'| {lang} | {n} | {scell} | {gcell} | {bcell} | {low} |')
+    L.append('')
+    esc = lambda s: str(s).replace('|', '\\|').replace('\n', ' ')
+    if sp:
+        L.append('### Words Hunspell does not know\n')
+        L.append('Proper nouns of places and people in the scenes are expected here; a misspelling is not.\n')
+        for lang in LANGS:
+            s = sp['languages'].get(lang)
+            if not s or not s['flagged']:
+                continue
+            words = sorted(set(w for f in s['flagged'] for w in f['unknown']))
+            L.append(f"- **{lang}** ({len(words)}): " + ', '.join(words))
+        L.append('')
+    if gr:
+        L.append('### LanguageTool findings\n')
+        for lang in LANGS:
+            g = gr['languages'].get(lang)
+            if not g or not g['flagged']:
+                continue
+            L.append(f'**{lang}**\n')
+            L.append('| Item | Found | Rule | Message |')
+            L.append('|---|---|---|---|')
+            for f in g['flagged']:
+                for m in f['matches']:
+                    L.append(f"| {f['id']} {f['field']} | {esc(m['found'])} | {m['rule']} | {esc(m['message'])} |")
+            L.append('')
+    if bt:
+        L.append(f'### Back-translations below {BT_FLAG}\n')
+        for lang in LANGS:
+            b = bt['languages'].get(lang)
+            if not b:
+                continue
+            low = [r for r in b if r['cos'] < BT_FLAG]
+            if not low:
+                continue
+            L.append(f'**{lang}**\n')
+            L.append('| Item | Text | Back to English | English source | cosine |')
+            L.append('|---|---|---|---|---|')
+            for r in sorted(low, key=lambda r: r['cos']):
+                L.append(f"| {r['id']} {r['field']} | {esc(r['text'])} | {esc(r['back'])} | {esc(r['english'])} | {r['cos']:.2f} |")
+            L.append('')
 
 
 def write_doc(CARDS, ents, prov, published):
@@ -324,6 +420,7 @@ def write_doc(CARDS, ents, prov, published):
     L.append('\n## Names translated for the game, not sourced\n')
     L.append('In every language: ' + ', '.join(OWN_NAMES) + ' (SM-001 is the product name and is kept as it is), the house labels ' + ', '.join(HOUSES_T) +
              ', all element labels and the three card types. Rarity names are the ones already in src/i18n/locales. Scene descriptions are translated wherever present.\n')
+    write_checks(L)
     L.append('## Wikidata items\n')
     L.append('| Key | Item | English label | Used for |')
     L.append('|---|---|---|---|')

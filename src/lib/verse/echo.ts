@@ -19,7 +19,7 @@
  * English never comes through here: devices.ts keeps its own path for it.
  */
 import { CARD_CATALOG, type Card } from '../cards';
-import { getCardText, localQuote } from '../cards-i18n';
+import { getCardText, localEchoText, localQuote } from '../cards-i18n';
 import { baseLang } from './lang';
 import { contentWords, fold, hiragana, letterCount, wordsOf } from './text';
 
@@ -50,12 +50,18 @@ function stopWords(lang: string): Set<string> {
   return stops.get(b)!;
 }
 
-/** The telling words of the card's quotation in this language; empty when the language has no line of its own. */
+/**
+ * The telling words of the card's quotation in this language; empty when the language has no line of its own.
+ * Where the line has a modern spelling (a Japanese line printed in old character forms) its words come first,
+ * since that is what a player types, and the printed words follow, so either spelling counts.
+ */
 export function localSignatureWords(card: Card, lang: string): string[] {
-  const quote = localQuote(card, lang);
-  if (!quote) return [];
+  const printed = localQuote(card, lang);
+  if (!printed) return [];
+  const modern = localEchoText(card, lang) ?? printed;
   const stop = stopWords(lang);
-  return [...new Set(contentWords(quote, lang).map(fold).filter((w) => !stop.has(w)))];
+  const words = (text: string) => contentWords(text, lang).map(fold).filter((w) => !stop.has(w));
+  return [...new Set([...words(modern), ...(modern === printed ? [] : words(printed))])];
 }
 
 /** Does the verse recite the line: four of its words running? */
@@ -93,7 +99,11 @@ export function localSignature(card: Card, verse: string, lang: string, englishW
   const saidEn = new Set(wordsOf(verse, 'en').map(fold));
   const echoed = local.find((w) => saysWord(w, verse, lang)) ?? englishWords.find((w) => saidEn.has(w));
   if (!echoed) return { met: false, detail: local.slice(0, 4).join(', '), code: 'hint' };
-  if (recites(quote, verse, lang) || recites(card.quote, verse, 'en')) return { met: false, detail: '', code: 'quoted' };
+  // Reciting the line is refused as printed and in its modern spelling, and so is reciting the English line.
+  const modern = localEchoText(card, lang);
+  if (recites(quote, verse, lang) || (modern && modern !== quote && recites(modern, verse, lang)) || recites(card.quote, verse, 'en')) {
+    return { met: false, detail: '', code: 'quoted' };
+  }
   return { met: true, detail: echoed, code: 'echoed' };
 }
 

@@ -31,6 +31,12 @@ export interface CardText {
   aliases?: string[];
   quote?: string;
   quoteSource: QuoteSource;
+  /**
+   * The line as the signature reads it, where the published spelling is older than what players
+   * type: Japanese old character forms converted to the modern ones by OpenCC's JPVariants table.
+   * Absent when it would be the same as `quote`.
+   */
+  echo?: string;
   /** Scene description. Always translated for the game: it has no published source. */
   scene?: string;
 }
@@ -105,6 +111,12 @@ export function cardQuote(card: Card, lang: string): string {
 /** The quotation in a language only if that language has its own; null otherwise. */
 export function localQuote(card: Card, lang: string): string | null {
   return getCardText(lang)?.cards[card.id]?.quote ?? null;
+}
+
+/** The quotation as the signature reads it (its modern spelling where it has one); null where the language has none. */
+export function localEchoText(card: Card, lang: string): string | null {
+  const text = getCardText(lang)?.cards[card.id];
+  return text?.echo ?? text?.quote ?? null;
 }
 
 export function cardScene(card: Card, lang: string): string {
