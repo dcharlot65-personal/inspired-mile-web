@@ -57,7 +57,7 @@ const english: Record<string, string> = { battle: 'Battle', trivia: 'Trivia', ch
         {rates.map((r) => (
           <div class="card-glass p-4 rounded-xl text-center">
             <span class="text-2xl" aria-hidden="true" set:html={r.icon} />
-            <p class="text-sm font-bold text-obsidian-200 mt-1" data-i18n={`activity.${r.source}`}>{english[r.source]}</p>
+            <p class="text-sm font-bold text-obsidian-200 mt-1 break-words hyphens-auto" data-i18n={`activity.${r.source}`}>{english[r.source]}</p>
             <p class="text-xs text-purple-400" data-xp-rate={XP_RATES[r.source]}>+{XP_RATES[r.source]} XP</p>
           </div>
         ))}

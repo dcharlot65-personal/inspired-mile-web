@@ -53,7 +53,7 @@ const messages: Record<string, string> = {
   'offline.body': 'Certaines parties du jeu ont besoin d’une connexion à Internet. Vérifiez votre connexion et réessayez.',
   'offline.available': 'Toujours disponible hors ligne',
   'offline.retry': 'Réessayer',
-  'app.name': 'Inspired Mile : le jeu de cartes Shakespeare',
+  'app.name': 'Inspired Mile\u00a0: le jeu de cartes Shakespeare',
   'offline.link.home': 'Accueil',
   'offline.link.collection': 'Collection',
   'offline.link.battle': 'Arène de combat',

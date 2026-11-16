@@ -16,7 +16,7 @@ const messages: Record<string, string> = {
   'market.refresh': 'Actualiser',
   'market.empty': 'Aucune annonce trouvée.',
   'market.by': 'de {seller}',
-  'market.wants': 'Recherche : {cards}',
+  'market.wants': 'Recherche\u00a0: {cards}',
   'market.buy': 'Acheter',
   'market.offer': 'Proposer un échange',
   'market.toast.signInBuy': 'Connectez-vous pour acheter des cartes.',

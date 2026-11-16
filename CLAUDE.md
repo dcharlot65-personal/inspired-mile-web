@@ -84,6 +84,23 @@ left behind by a killed run is found by its port: `lsof -nP -iTCP:<port> -sTCP:L
   others: `src/i18n/i18n.test.ts` fails on a missing key, an empty value or a different
   `{placeholder}`. Translated so far: the layout (navigation, footer, age gate, sign-in), the
   battle page and the theatre. Card names and Shakespeare's lines stay English.
+- **Page areas**: a page's own strings live in `src/i18n/pages/<area>/<locale>.ts`, not in the
+  core locale files, and are fetched by the page with `initPage([areas], meta)`
+  (`src/i18n/page.ts`), which calls `loadArea`. Areas so far: `classroom`, `marketplace`,
+  `tournaments`, `season`, `viewer` (viewer and VR gallery), `shared` (API error messages,
+  activity names, credits, error boundary, offline page, app name). Counted messages are
+  `key.one`, `key.few`, … `key.other`, picked by `plural()` in `src/i18n/fmt.ts`; a language
+  has exactly the forms CLDR gives it. Numbers, dates and lists go through `fmt.ts` (Intl).
+  `src/i18n/pages-rest.test.ts` checks all of it; `docs/language/pages-rest.md` says where
+  each term came from and what no tool has checked.
+- **API errors**: a page never shows `e.message`. Client libraries throw `ApiError`; the page
+  calls `errorText(e)`, which turns the failure into a code (`src/lib/api-errors.ts`) and the
+  code into `error.<code>` in the `shared` area. A handler that gains a new answer fails
+  `src/lib/api-errors.test.ts` (it reads `backend/src`) until the answer has a code and a
+  sentence in sixteen languages.
+- `public/offline.html` and the `*_localized` members of `public/manifest.json` are written
+  by `node scripts/pages-rest/build-static.mjs` from the `shared` area; run it after changing
+  a string there (and after a merge that touches `manifest.json`).
 - **The duel's language** is a separate choice. The engine (`src/lib/verse`) returns message
   keys, never sentences; `english.ts` renders them for the model's prompt, which is always
   English. Per-language data (acrostic words, forbidden letters, power words, the written

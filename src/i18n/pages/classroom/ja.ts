@@ -61,7 +61,7 @@ const messages: Record<string, string> = {
   'classroom.wizard.next': '次へ',
   'classroom.wizard.start': 'はじめる',
   'classroom.wizard.s1.title': 'クラスを作成する',
-  'classroom.wizard.s1.body': '「クラスを作成」を選び、「3年B組 英語」や「はじめてのシェイクスピア」のような名前を付けます。クラスごとに、6文字の参加コードが発行されます。',
+  'classroom.wizard.s1.body': '「クラスを作成」を選び、「3年B組の英語」や「はじめてのシェイクスピア」のような名前を付けます。クラスごとに、6文字の参加コードが発行されます。',
   'classroom.wizard.s1.example': '参加コードの例',
   'classroom.wizard.s2.title': '生徒に共有する',
   'classroom.wizard.s2.body': '生徒に6文字のコードを伝えます。生徒は「生徒です」を選び、同意を確認して、コードを入力します。メールアドレスは必要ありません。',

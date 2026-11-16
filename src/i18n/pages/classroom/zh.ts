@@ -61,7 +61,7 @@ const messages: Record<string, string> = {
   'classroom.wizard.next': '下一步',
   'classroom.wizard.start': '开始使用',
   'classroom.wizard.s1.title': '创建你的班级',
-  'classroom.wizard.s1.body': '选择“创建班级”并为它起个名字，例如“九年级（2）班 英语”或“莎士比亚入门”。每个班级都有自己的 6 位字母加入码。',
+  'classroom.wizard.s1.body': '选择“创建班级”并为它起个名字，例如“九年级（2）班英语”或“莎士比亚入门”。每个班级都有自己的 6 位字母加入码。',
   'classroom.wizard.s1.example': '加入码示例',
   'classroom.wizard.s2.title': '分享给学生',
   'classroom.wizard.s2.body': '把 6 位字母的加入码告诉学生。他们选择“我是学生”，确认同意，然后输入加入码。无需电子邮箱。',
