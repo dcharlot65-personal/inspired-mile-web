@@ -1,4 +1,5 @@
 import { test, expect, type Page } from '@playwright/test';
+import { TRIVIA_BANK } from '../src/lib/trivia';
 
 /**
  * The playground and the story page in all sixteen languages.
@@ -78,6 +79,9 @@ for (const locale of LOCALES) {
     await expect(page.locator('#trivia-question')).not.toBeEmpty();
     await expect(page.locator('#trivia-progress')).not.toBeEmpty();
     for (const option of await page.locator('.trivia-option').allTextContents()) expect(option.trim().length).toBeGreaterThan(0);
+    // The question comes from the language's bank, not the English one (which the leak check does not read).
+    const asked = ((await page.locator('#trivia-question').textContent()) ?? '').trim();
+    if (locale !== 'en') expect(TRIVIA_BANK.some((q) => asked.startsWith(q.question)), `an English trivia question is shown in ${locale}: ${asked}`).toBe(false);
     await expectNoLeaks(page, locale);
     await page.click('#trivia-close');
 

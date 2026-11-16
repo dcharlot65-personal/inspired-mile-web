@@ -1,4 +1,7 @@
 import { describe, expect, it } from 'vitest';
+import { spawnSync } from 'node:child_process';
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
 import { LOCALES, loadMessages, type Locale, type Messages } from '../index';
 import { TRIVIA_BANK } from '../../lib/trivia';
 import { CHALLENGE_BANK } from '../../lib/challenges';
@@ -68,6 +71,66 @@ export function triviaProblems(l: string, m: Messages | undefined): string[] {
       for (const num of o.match(/\d{2,}/g) ?? []) if (!options[i].includes(num) && !options[i].includes(roman(Number(num)))) out.push(`${l}: question ${n} option ${i} lost the number ${num}`);
       for (const quote of quotations(o)) if (!options[i].includes(quote)) out.push(`${l}: question ${n} option ${i} changed the quotation "${quote}"`);
     });
+  });
+  return out;
+}
+
+type NameOf = (key: string, lang: string, which?: number) => { name: string };
+type OptionKeys = Record<string, ({ key: string; which: number } | null)[]>;
+
+/** The names table of scripts/lang-content (Wikidata labels and sourced picks), as build.mjs reads it. */
+async function namesTable(): Promise<{ optionKeys: OptionKeys; nameOf: NameOf; ucfirst: (s: string) => string }> {
+  // @ts-ignore -- a build script in plain JavaScript, without type declarations
+  const lib = await import('../../../scripts/lang-content/lib.mjs');
+  const optionKeys = JSON.parse(readFileSync(join(process.cwd(), 'scripts/lang-content/trivia-options.json'), 'utf8')) as OptionKeys;
+  return { optionKeys, nameOf: lib.nameOf, ucfirst: lib.ucfirst };
+}
+
+/** trivia-option-forms.tsv: a name option written otherwise than the names table, reviewed, with the reason. */
+function optionForms(): Set<string> {
+  const rows = readFileSync(join(process.cwd(), 'scripts/lang-content/trivia-option-forms.tsv'), 'utf8').split('\n').filter((r) => r.trim() && !r.startsWith('#'));
+  return new Set(rows.map((r) => r.split('\t').slice(0, 4).join('\t')));
+}
+const TITLE_WORDS = /^(?:King|Queen|Prince|Princess|Duke|Lord|Lady|Sir|Captain|Friar|Sonnet|Sonnets|The|Saint|Earl)$/;
+
+/**
+ * Where an English option is the name of a play, a character, a person or a place, the option at the
+ * same place in the language must be that item's name in the language. Options keep their places, and
+ * the bank's correctIndex is shared, so this is what makes the index point at the right answer.
+ * Allowed besides the name itself: the name shortened ("Raja Henry V" stands for the label "Henry V
+ * dari Inggris" only by containing it the other way round, so it must be listed), the name with a title or
+ * a common noun translated around it ("El rey Lear", "Soneto 116"), and a form listed with its reason.
+ */
+export function nameOptionProblems(l: string, m: Messages, optionKeys: OptionKeys, nameOf: NameOf, ucfirst: (s: string) => string, forms = optionForms()): string[] {
+  const out: string[] = [];
+  const low = (s: string) => s.toLocaleLowerCase(l);
+  TRIVIA_BANK.forEach((en, n) => en.options.forEach((o, i) => {
+    const ent = optionKeys[n]?.[i];
+    if (!ent) return;
+    const want = ucfirst(nameOf(ent.key, l, ent.which).name);
+    const have = m[`trivia.${n}.o${i}`] ?? '';
+    const core = want.split(/\s+/).filter((w) => !TITLE_WORDS.test(w)).join(' ');
+    // An English name in brackets beside a translation is a gloss: it does not make the translation a source's.
+    const shown = have.replace(/\s*[(（][^)）]*[)）]\s*$/u, '');
+    if (have === want || (shown && low(want).includes(low(shown))) || (core && low(shown).includes(low(core))) || forms.has([l, n, i, have].join('\t'))) return;
+    out.push(`${l}: question ${n} option ${i} ("${o}"${i === en.correctIndex ? ', the correct answer' : ''}) is "${have}", the names table says "${want}"`);
+  }));
+  return out;
+}
+
+const NOT_LATIN = ['ru', 'ar', 'hi', 'zh', 'ja', 'ko', 'th'];
+const inLatin = (s: string) => /^[\p{Script=Latin}\p{N}\p{P}\p{S}\p{Zs}]+$/u.test(s.replace(/\s*[(（][^)）]*[)）]/gu, '') || s);
+
+/**
+ * A name with no source in a script stays in Latin letters; a famous one has a label. If the right
+ * answer is the only option in Cyrillic, Thai or Hangul (or the only one in Latin letters), the script
+ * answers the question. Such a question is written in one script throughout.
+ */
+export function scriptTells(l: string, m: Messages): string[] {
+  const out: string[] = [];
+  TRIVIA_BANK.forEach((q, n) => {
+    const latin = q.options.map((_, i) => inLatin(m[`trivia.${n}.o${i}`] ?? ''));
+    if (latin.filter((x) => x === latin[q.correctIndex]).length === 1) out.push(`${l}: question ${n}: the right answer is the only option ${latin[q.correctIndex] ? 'in Latin letters' : 'in its script'}`);
   });
   return out;
 }
@@ -230,6 +293,28 @@ describe('trivia in every language', () => {
     }
   });
 
+  it('an option that is a name is the names table\'s name for the English option at that place, so the correct index holds', async () => {
+    const { optionKeys, nameOf, ucfirst } = await namesTable();
+    const problems: string[] = [];
+    for (const l of LOCALES) if (l !== 'en') problems.push(...nameOptionProblems(l, (await area('trivia', l))!, optionKeys, nameOf, ucfirst));
+    expect(problems).toEqual([]);
+    // And the right answer is one of them often enough for this to matter.
+    const named = TRIVIA_BANK.filter((q, n) => optionKeys[n][q.correctIndex]).length;
+    expect(named).toBeGreaterThan(80);
+  });
+
+  it('in a language not written in Latin letters, the right answer is never the one option in its script', async () => {
+    const problems: string[] = [];
+    for (const l of NOT_LATIN) problems.push(...scriptTells(l, (await area('trivia', l))!));
+    expect(problems).toEqual([]);
+  });
+
+  it('every generated trivia and challenge file is what its sources make (build.mjs --check)', () => {
+    const r = spawnSync(process.execPath, [join(process.cwd(), 'scripts/lang-content/build.mjs'), '--check'], { encoding: 'utf8' });
+    expect(r.stderr.split('\n').filter((s) => /ERROR|NOT WHAT/.test(s) || s.startsWith('  src/'))).toEqual([]);
+    expect(r.status).toBe(0);
+  });
+
   it('is actually translated: a language shares few questions with English', async () => {
     for (const l of LOCALES) {
       if (l === 'en') continue;
@@ -307,8 +392,26 @@ describe('these checks can fail', () => {
     expect(triviaProblems('fr', { ...fr, 'trivia.110.q': fr['trivia.110.q'].replace('1613', '1631') }).some((p) => p.includes('lost the number 1613'))).toBe(true);
   });
 
+  it('nameOptionProblems objects to two name options swapped, which would move the right answer', async () => {
+    const { optionKeys, nameOf, ucfirst } = await namesTable();
+    const ja = (await area('trivia', 'ja'))!;
+    expect(nameOptionProblems('ja', ja, optionKeys, nameOf, ucfirst)).toEqual([]);
+    // Question 1 ("Which play features Romeo and Juliet?"): its options are all plays.
+    const swapped = { ...ja, 'trivia.1.o0': ja['trivia.1.o1'], 'trivia.1.o1': ja['trivia.1.o0'] };
+    expect(nameOptionProblems('ja', swapped, optionKeys, nameOf, ucfirst).length).toBe(2);
+    expect(nameOptionProblems('ja', { ...ja, 'trivia.1.o0': 'ロミオとジュリエット物語' }, optionKeys, nameOf, ucfirst)[0]).toContain('the correct answer');
+  });
+
+  it('scriptTells objects to a right answer that is the one option in Thai, or the one in Latin letters', async () => {
+    const th = (await area('trivia', 'th'))!;
+    expect(scriptTells('th', th)).toEqual([]);
+    // Question 12 (Macbeth is the right answer): the Thai label for him alone, the others in Latin letters.
+    expect(scriptTells('th', { ...th, 'trivia.12.o0': 'แม็คเบ็ธ', 'trivia.12.o1': 'Duncan', 'trivia.12.o2': 'Malcolm', 'trivia.12.o3': 'Banquo' })).toEqual(['th: question 12: the right answer is the only option in its script']);
+    expect(scriptTells('th', { ...th, 'trivia.12.o0': 'Macbeth', 'trivia.12.o1': 'ดันแคน', 'trivia.12.o2': 'มัลคอล์ม', 'trivia.12.o3': 'แบงโคว' })).toEqual(['th: question 12: the right answer is the only option in Latin letters']);
+  });
+
   it('challengeProblems objects to a word that is not in the line, a blank too many, a missing translator', () => {
-    const good: Messages = { 'challenges.ids': '0', 'challenge.0.full': 'Sein oder Nichtsein, das ist hier die Frage.', 'challenge.0.display': '___ oder ___, das ist hier die Frage.', 'challenge.0.missing': 'Sein|Nichtsein', 'challenge.0.play': 'Hamlet', 'challenge.0.translator': 'A. W. Schlegel' };
+    const good: Messages = { 'challenges.ids': '0', 'challenge.0.full': 'Sein oder Nichtsein, das ist hier die Frage.', 'challenge.0.display': '___ oder ___, das ist hier die Frage.', 'challenge.0.missing': 'Sein|Nichtsein', 'challenge.0.play': 'Hamlet', 'challenge.0.character': 'Hamlet', 'challenge.0.translator': 'A. W. Schlegel' };
     expect(challengeProblems('de', good)).toEqual([]);
     expect(challengesFrom(good, 'de')[0].missingWords).toEqual(['Sein', 'Nichtsein']);
     expect(challengeProblems('de', { ...good, 'challenge.0.missing': 'Sein|Dasein' }).length).toBeGreaterThan(0);
@@ -321,7 +424,7 @@ describe('these checks can fail', () => {
 
   it('addressProblems objects to the other form of address in every language it knows, and not to quoted speech', () => {
     const bad: Record<string, string> = {
-      de: 'Öffnen Sie Ihr Starterpack.', fr: 'Ouvre ton paquet de départ.', es: 'Abra usted su sobre.', it: 'Aprite il vostro pacchetto.',
+      de: 'Öffnen Sie Ihr Starterpack.', fr: 'Tu peux ouvrir le paquet de départ.', es: 'Abra usted su sobre.', it: 'Aprite il vostro pacchetto.',
       pt: 'Abre o teu pacote.', pl: 'Niech pan otworzy pakiet.', ru: 'Откройте стартовый набор.', id: 'Buka paket Anda.',
       ko: '팩을 여십시오.', ja: 'パックを開けるのだ。', zh: '请打开您的卡包。', hi: 'तुम अपना पैक खोलो।', vi: 'Mời quý vị mở gói.', ar: 'افتحوا الحزمة لكم.',
     };
