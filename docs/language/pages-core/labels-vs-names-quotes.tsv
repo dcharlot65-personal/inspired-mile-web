@@ -1,0 +1,130 @@
+# This branch's card-terms labels against lang/names-quotes (688067a) CardTextPack labels, 2026-11-16.
+# Both are translated for the game (no published source). One of the two should own these labels once both are in main.
+lang	kind	English	this branch	names-quotes
+es	house	Legendary	Legendaria	Legendario
+es	element	Dark	Tinieblas	Oscuro
+fr	house	Danish Court	Cour du Danemark	Cour de Danemark
+fr	element	Dark	Ténèbres	Obscur
+fr	element	Mischief	Espièglerie	Malice
+fr	element	Darkness	Obscurité	Ténèbres
+de	house	Gothic Circle	Gothic-Zirkel	Schauerkreis
+de	element	Illusion	Illusion	Trugbild
+de	element	Rhetoric	Rhetorik	Redekunst
+de	element	Speed	Tempo	Schnelligkeit
+it	house	Legendary	Leggendaria	Leggendario
+it	element	Dark	Tenebra	Oscuro
+it	element	Mischief	Birbanteria	Malizia
+it	element	Darkness	Oscurità	Tenebra
+pt	house	Legendary	Lendária	Lendário
+pt	element	Dark	Trevas	Sombrio
+pl	house	Montague	Montekowie	Monteki
+pl	house	Capulet	Kapuleci	Kapulet
+pl	house	Verona Court	Dwór werońskiego księcia	Dwór werneński
+pl	house	Legendary	Legendarna	Legendarny
+pl	element	Arcane	Tajemna moc	Magia tajemna
+pl	element	Illusion	Iluzja	Złudzenie
+pl	element	Prophecy	Przepowiednia	Proroctwo
+pl	element	Envy	Zazdrość	Zawiść
+pl	element	Power	Potęga	Moc
+ru	house	Legendary	Легендарная	Легендарный
+ru	house	Underworld	Подземный мир	Подземное царство
+ru	element	Justice	Справедливость	Правосудие
+ru	element	Disguise	Маскировка	Личина
+ru	element	Creation	Созидание	Творение
+ru	element	Speed	Скорость	Быстрота
+ar	house	Forest of Arden	غابة أردن	غابة آردن
+ar	house	Legendary	أسطورية	أسطوري
+ar	element	Arcane	السحر الخفي	الغامض
+ar	element	Dark	العتمة	المظلم
+ar	element	Justice	العدل	العدالة
+ar	element	Loyalty	الولاء	الوفاء
+ar	element	Mischief	الشقاوة	العبث
+ar	element	Comedy	الكوميديا	الملهاة
+hi	house	Potion	काढ़ा	औषधि
+hi	house	Olympus	ओलिंपस	ओलंपस
+hi	house	Underworld	पाताल लोक	पाताल
+hi	element	Arcane	गूढ़ विद्या	रहस्य
+hi	element	Enchantment	सम्मोहन	जादू
+hi	element	Dark	तमस	अँधेरा
+hi	element	Earth	पृथ्वी	धरती
+hi	element	Wisdom	बुद्धिमत्ता	बुद्धि
+hi	element	Ocean	महासागर	सागर
+hi	element	Vision	दिव्य दृष्टि	दर्शन
+hi	element	Petrification	पाषाणीकरण	पाषाण
+hi	type	Potion	काढ़ा	औषधि
+zh	house	Legendary	传说	传奇
+zh	house	Potion	药水	魔药
+zh	element	Shadow	暗影	阴影
+zh	element	Wind	疾风	风
+zh	element	Enchantment	魔咒	魔法
+zh	element	Air	风	空气
+zh	element	Poison	毒	毒药
+zh	element	Devotion	忠贞	奉献
+zh	element	Compassion	慈悲	怜悯
+zh	element	Alchemy	炼金	炼金术
+zh	element	Vision	灵视	异象
+zh	element	Sorrow	哀伤	悲伤
+zh	element	Light	光	光明
+zh	element	Cunning	狡黠	机智
+zh	type	Character	角色	人物
+zh	type	Potion	药水	魔药
+ja	house	Legendary	レジェンダリー	伝説
+ja	house	Gothic Circle	ゴシックの輪	ゴシックの集い
+ja	house	Olympus	オリンポス	オリュンポス
+ja	element	Trickster	トリックスター	いたずら者
+ja	element	Dark	暗黒	闇黒
+ja	element	Darkness	闇	暗闇
+ja	element	Ocean	海	大海
+ja	type	Character	登場人物	人物
+ko	element	Grace	우아함	우아
+ko	element	Dark	암흑	어둠
+ko	element	Darkness	어둠	암흑
+ko	element	Rhetoric	웅변	수사
+ko	element	Vision	환시	환상
+ko	element	Rebirth	부활	재생
+ko	type	Character	등장인물	인물
+vi	house	Relic	Bảo vật	Thánh tích
+vi	house	Potion	Thuốc phép	Độc dược
+vi	house	Gothic Circle	Nhóm Gothic	Hội Gothic
+vi	element	Shadow	Bóng	Bóng tối
+vi	element	Arcane	Huyền thuật	Huyền bí
+vi	element	Storm	Bão	Bão tố
+vi	element	Air	Khí	Không khí
+vi	element	Beast	Mãnh thú	Dã thú
+vi	element	Poison	Độc	Chất độc
+vi	element	Darkness	Bóng tối	Tăm tối
+vi	element	Prophecy	Tiên tri	Lời tiên tri
+vi	element	Authority	Quyền uy	Uy quyền
+vi	element	Vision	Linh ảnh	Thị kiến
+vi	element	Beauty	Sắc đẹp	Vẻ đẹp
+vi	element	Sorrow	Sầu muộn	Nỗi buồn
+vi	element	Thunder	Sấm	Sấm sét
+vi	element	Cunning	Mưu mẹo	Mưu trí
+vi	type	Relic	Bảo vật	Thánh tích
+vi	type	Potion	Thuốc phép	Độc dược
+th	house	Gothic Circle	กลุ่มกอทิก	วงกอทิก
+th	element	Trickster	จอมเจ้าเล่ห์	จอมแกล้ง
+th	element	Enchantment	มนตร์สะกด	มนตร์เสน่ห์
+th	element	Dark	ความมืดมิด	ความมืดมน
+th	element	Loyalty	ความจงรักภักดี	ความภักดี
+th	element	Poison	พิษ	ยาพิษ
+th	element	Prophecy	คำพยากรณ์	คำทำนาย
+th	element	Vanity	ความหลงตัว	ความหยิ่งทะนง
+th	element	Comedy	สุขนาฏกรรม	ตลกขบขัน
+th	element	Devotion	ความภักดีอุทิศตน	ความอุทิศ
+th	element	Sorrow	ความโศก	ความโศกเศร้า
+th	element	Light	แสง	แสงสว่าง
+id	element	Trickster	Si penipu ulung	Si Jahil
+id	element	Arcane	Ilmu gaib	Gaib
+id	element	Enchantment	Pesona sihir	Pesona
+id	element	Dark	Kelam	Gelap
+id	element	Earth	Tanah	Bumi
+id	element	Peace	Kedamaian	Damai
+id	element	Mischief	Keusilan	Kenakalan
+id	element	Authority	Wewenang	Wibawa
+id	element	Wisdom	Kearifan	Kebijaksanaan
+id	element	Power	Kekuasaan	Kuasa
+id	element	Compassion	Welas asih	Belas Kasih
+id	element	Cunning	Kelicikan	Kecerdikan
+id	element	Glory	Kejayaan	Kemuliaan
+# same 1088, different 126
