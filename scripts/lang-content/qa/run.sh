@@ -27,7 +27,8 @@ case "${1:-}" in
     touch "$OUT/STOP"
     for e in meaning opus; do
       [ -f "$OUT/$e.pid" ] || continue
-      p=$(cat "$OUT/$e.pid"); for c in $(pgrep -P "$p" 2>/dev/null); do pkill -P "$c" 2>/dev/null; kill "$c" 2>/dev/null; done; kill "$p" 2>/dev/null
+      # Under set -e a kill or pkill that finds nothing would end the script here, with the STOP file left behind.
+      p=$(cat "$OUT/$e.pid"); for c in $(pgrep -P "$p" 2>/dev/null || true); do pkill -P "$c" 2>/dev/null || true; kill "$c" 2>/dev/null || true; done; kill "$p" 2>/dev/null || true
     done
     sleep 2; rm -f "$OUT/STOP" "$OUT"/*.tmp; echo stopped ;;
   requeue)
