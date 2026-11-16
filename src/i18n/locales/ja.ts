@@ -420,7 +420,7 @@ const ja: Record<string, string> = {
 
   // --- 劇場 ---
   'theatre.badge': 'Quest 3・Vision Pro・画面',
-  'theatre.titleA': 'ザ・',
+  'theatre.titleA': '立体',
   'theatre.titleB': 'シアター',
   'theatre.intro': '同じ決闘を、あなたを囲む舞台の上で。指し示すかつまむ動作でカードを出し、マイクを押して詩を詠んでください。文字起こしも審査も、この端末で行います。',
   'theatre.newDuel': '新しい決闘',
