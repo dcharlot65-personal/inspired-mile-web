@@ -16,7 +16,7 @@ import { criterionName } from '../duel';
 import type { Achievement, AchievementTier } from '../../lib/achievements';
 import type { CardType, Rarity } from '../../lib/cards';
 import { CITY_CATALOG, type VariantAcquisitionSource, type WorldCity } from '../../lib/variants';
-import { num, tn } from './runtime';
+import { num, signedLtr, tn } from './runtime';
 
 const slug = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-');
 const orElse = (key: string, fallback: string) => (has(key) ? t(key) : fallback);
@@ -109,7 +109,7 @@ export function abilityWhy(city: WorldCity): string {
 /** "+2 wordplay", in the words the duel's verdict uses for the judge's criteria. */
 export function abilityBonus(city: WorldCity): string {
   const { bonus, axis } = CITY_CATALOG[city].ability;
-  return t('variant.bonus', { n: num(bonus), criterion: criterionName(axis) });
+  return signedLtr(t('variant.bonus', { n: num(bonus), criterion: criterionName(axis) }));
 }
 
 export function sourceName(source: VariantAcquisitionSource | string): string {

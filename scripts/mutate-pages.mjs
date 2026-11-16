@@ -31,6 +31,8 @@ const MUTATIONS = [
   ['src/i18n/pages/home/vi.ts', null, 'DELETE', 'home/vi'],
   // Lists of words as Intl's measurement lists, which run Chinese and Japanese words together.
   ['src/i18n/pages/runtime.ts', "{ style: 'long', type: 'conjunction' }", "{ style: 'narrow', type: 'unit' }", 'zh'],
+  // Signed numbers left to the bidirectional algorithm on a right-to-left page (50+ for +50).
+  ['src/i18n/pages/runtime.ts', 'return isRtl(l) ? s.replace(', 'return false ? s.replace(', 'right-to-left page'],
   ['src/i18n/pages/rules-text.ts', 'words: list(words),', "words: new Intl.ListFormat(lang, { style: 'narrow', type: 'unit' }).format(words),", 'zh'],
 ];
 

@@ -344,6 +344,42 @@ test.describe('Translated pages: what a script draws', () => {
     expect(await countLeftOfTotal('total-cities', true)).toBe(false);
   });
 
+  test('a signed number reads +50 on the Arabic pages, not 50+', async ({ page }) => {
+    // Where the "+" really stands against its digits, in the first element matching `selector`.
+    // With `strip`, the isolate characters signedLtr() adds are taken out first: the old rendering.
+    const plusLeftOfDigits = (selector: string, strip = false) =>
+      page.evaluate(([sel, s]) => {
+        const el = document.querySelector(sel as string)!;
+        const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+        for (let n = walker.nextNode() as Text | null; n; n = walker.nextNode() as Text | null) {
+          if (s) n.data = n.data.replace(/[\u2066\u2069]/g, '');
+          const m = n.data.match(/\+(\d+)/);
+          if (!m) continue;
+          const at = (from: number, to: number) => {
+            const r = document.createRange();
+            r.setStart(n!, from);
+            r.setEnd(n!, to);
+            return r.getBoundingClientRect();
+          };
+          const plus = at(m.index!, m.index! + 1);
+          const digits = at(m.index! + 1, m.index! + m[0].length);
+          return plus.left < digits.left;
+        }
+        return null;
+      }, [selector, strip] as const);
+    await seed(page);
+    await page.goto('/about');
+    for (const l of ['ar', 'en'] as const) {
+      await show(page, '/about', l);
+      expect([l, await plusLeftOfDigits('[data-i18n-html="about.free.earn.l1"]')]).toEqual([l, true]);
+      await show(page, '/world-map', l);
+      expect([l, await plusLeftOfDigits('#world-grid [data-city="Tokyo"]')]).toEqual([l, true]);
+    }
+    // The check can fail: without the isolate the Arabic page puts the sign after the number.
+    await show(page, '/about', 'ar');
+    expect(await plusLeftOfDigits('[data-i18n-html="about.free.earn.l2"]', true)).toBe(false);
+  });
+
   test('an unlocked achievement is announced in the language', async ({ page }) => {
     await seed(page);
     await page.goto('/');

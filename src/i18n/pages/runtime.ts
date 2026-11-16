@@ -99,11 +99,21 @@ export function quoted(text: string, l: string = locale()): string {
   return `<span data-qo>${open}</span><bdi>${escapeHtml(text)}</bdi><span data-qc>${close}</span>`;
 }
 
+/**
+ * A signed number ("+50") reads the same on a right-to-left page as on any other. Left alone, the
+ * bidirectional algorithm attaches a lone "+" to the right-to-left text around it, and the Arabic
+ * about page showed 50+ (screenshots, 2026-11-16). On a right-to-left page each signed number is put
+ * in a left-to-right isolate, U+2066 ... U+2069, added here at run time and never kept in a message.
+ */
+export function signedLtr(s: string, l: string = locale()): string {
+  return isRtl(l) ? s.replace(/(^|[^\p{L}\p{N}])([+\u2212]\p{Nd}[\p{Nd}.,\u066B\u066C]*)/gu, '$1\u2066$2\u2069') : s;
+}
+
 /** t(), with every number among the variables written through num(). */
 export function tn(key: string, vars: Vars = {}): string {
   const shown: Vars = {};
   for (const [k, v] of Object.entries(vars)) shown[k] = typeof v === 'number' ? num(v) : v;
-  return t(key, shown);
+  return signedLtr(t(key, shown));
 }
 
 export function escapeHtml(s: string): string {
@@ -134,7 +144,7 @@ export function rich(key: string, vars: Vars = {}, opts: RichOptions = {}): stri
   const token = (name: string) => `@@var:${name}@@`;
   const shown: Vars = {};
   for (const [k, v] of Object.entries(vars)) shown[k] = k in ids ? token(k) : typeof v === 'number' ? num(v) : v;
-  let html = escapeHtml(t(key, shown))
+  let html = escapeHtml(signedLtr(t(key, shown)))
     .replaceAll('&lt;b&gt;', `<span class="${escapeHtml(opts.bClass ?? 'text-gradient')}">`)
     .replaceAll('&lt;/b&gt;', '</span>')
     .replaceAll('&lt;a&gt;', a)

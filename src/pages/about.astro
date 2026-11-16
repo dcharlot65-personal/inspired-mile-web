@@ -161,9 +161,11 @@ const TONE: Record<string, { card: string; chip: string; title: string }> = {
               {i < timeline.length - 1 && <div class="w-px h-16 bg-obsidian-700"></div>}
             </div>
             <div class="pb-8">
+              <!-- Arabic month names fell apart into separate letters in the monospace font (no Arabic in
+                   JetBrains Mono; the fallback is a monospaced Arabic): Arabic takes the text font. -->
               {'month' in item.when
-                ? <span class="text-xs font-mono text-gold-500" data-when-month={item.when.month.join('-')}>{whenText(item.when)}</span>
-                : <span class="text-xs font-mono text-gold-500" data-when-key={item.when.key} data-when-year={item.when.year}>{whenText(item.when)}</span>}
+                ? <span class="text-xs font-mono [&:lang(ar)]:font-sans text-gold-500" data-when-month={item.when.month.join('-')}>{whenText(item.when)}</span>
+                : <span class="text-xs font-mono [&:lang(ar)]:font-sans text-gold-500" data-when-key={item.when.key} data-when-year={item.when.year}>{whenText(item.when)}</span>}
               <T k={`about.journey.${item.event}`} as="p" class="text-sm text-obsidian-300 mt-1" />
             </div>
           </div>

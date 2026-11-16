@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { LOCALES, loadArea, loadMessages, setLocale, t, type Locale, type Messages } from './index';
 import { compareMessages } from './pages/check';
-import { isolated, list, quoted, quoteMarks, rich, tn } from './pages/runtime';
+import { isolated, list, quoted, quoteMarks, rich, signedLtr, tn } from './pages/runtime';
 import { cardRule, deckProblems, synergyLine } from './pages/rules-text';
 import { abilityBonus, achievementDescription, achievementName, cityName, cityRegion, elementName, houseName, initialOf, typeName } from './pages/terms';
 import { ACHIEVEMENTS, type PlayerStats } from '../lib/achievements';
@@ -183,6 +183,27 @@ describe('quotation marks', () => {
   it('wrap the quoted text in <bdi> and escape it', () => {
     expect(quoted('To be, or not to be?', 'ja')).toBe('<span data-qo>「</span><bdi>To be, or not to be?</bdi><span data-qc>」</span>');
     expect(quoted('<i>x</i>', 'en')).toContain('<bdi>&lt;i&gt;x&lt;/i&gt;</bdi>');
+  });
+});
+
+describe('a signed number on a right-to-left page', () => {
+  it('sits in a left-to-right isolate in Arabic, so +50 does not show as 50+, and nothing changes elsewhere', async () => {
+    const LRI = '\u2066';
+    const PDI = '\u2069';
+    expect(signedLtr('الفوز في نزال: +50', 'ar')).toBe(`الفوز في نزال: ${LRI}+50${PDI}`);
+    expect(signedLtr('+2 في التلاعب', 'ar')).toBe(`${LRI}+2${PDI} في التلاعب`);
+    // a hyphen in an id is not a sign, and a left-to-right language is left alone
+    expect(signedLtr('بطاقة غير معروفة: XX-000', 'ar')).toBe('بطاقة غير معروفة: XX-000');
+    expect(signedLtr('Win a battle: +50', 'en')).toBe('Win a battle: +50');
+    await setLocale('ar', { persist: false });
+    await Promise.all(['about', 'rules', 'variants', 'card-terms'].map((a) => loadArea(a)));
+    await loadPack('ar');
+    expect(tn('about.free.earn.l1', { n: 50 })).toContain(`${LRI}+50${PDI}`);
+    expect(rich('about.free.earn.l1', { n: 50 })).toContain(`${LRI}+50${PDI}`);
+    expect(abilityBonus('Tokyo')).toContain(`${LRI}+2${PDI}`);
+    expect(cardRule(CARD_CATALOG.find((c) => c.type === 'Relic')!, 'ar').lines[0]).toContain(`${LRI}+6${PDI}`);
+    await setLocale('en', { persist: false });
+    expect(tn('about.free.earn.l1', { n: 50 })).not.toContain(LRI);
   });
 });
 
