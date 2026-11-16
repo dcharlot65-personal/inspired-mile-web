@@ -12,7 +12,7 @@ const pack: LanguagePack = {
     'RL-003': ['dao găm', 'máu', 'giấc ngủ', 'ảo ảnh', 'bàn tay'],
     'RL-004': ['chiếc nhẫn', 'lời thề', 'đêm', 'lưu đày', 'nụ hôn'],
     'RL-005': ['vàng', 'lựa chọn', 'khoan dung', 'chì', 'chiếc hộp'],
-    'RL-006': ['vương miện', 'ngai vàng', 'tham vọng', 'phù thủy', 'nhà vua'],
+    'RL-006': ['vương miện', 'ngai vàng', 'tham vọng', 'phù thuỷ', 'nhà vua'],
     'RL-007': ['cuốn sách', 'bão tố', 'phép thuật', 'trang giấy', 'chết chìm'],
     'RL-008': ['nước mắt', 'sự thật', 'con gái', 'hư không', 'trái tim'],
     'RL-009': ['mặt nạ', 'giấc mơ', 'thằng hề', 'vở kịch', 'vầng trăng'],
@@ -48,7 +48,7 @@ const pack: LanguagePack = {
     ],
     haiku: [
       'Thơ ngươi rơi như lá\nChẳng ai buồn cúi xuống nhặt lên\nGió cuốn đi tất cả',
-      'Một giọng nói xa xăm\nTa ngoảnh đầu lại để lắng nghe\nHóa ra là tiếng gió',
+      'Một giọng nói xa xăm\nTa ngoảnh đầu lại để lắng nghe\nHoá ra là tiếng gió',
     ],
     'heroic-couplet': [
       'Thơ ngươi chỉ là chiếc bóng in trên vách đá\nThơ ta là ngọn lửa, soi rõ từng kẽ lá',

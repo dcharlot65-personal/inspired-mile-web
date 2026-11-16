@@ -56,7 +56,7 @@ const pack: LanguagePack = {
   },
   acrosticLines: {
     l: ['La salle se tait, et ce n’est pas pour toi', 'Loin d’ici, tes vers trouveront peut-être preneur'],
-    u: ['Un mot de plus, et le public s’endort', 'Une fois encore tu ouvres la bouche pour rien'],
+    u: ['Un mot de plus, et le public s’endort', 'Une fois encore, tu ouvres la bouche pour rien'],
     n: ['Nul ne s’est jamais tu si longtemps pour toi', 'Ne confonds pas le bruit avec le talent'],
     e: ['Encore toi\u202f? La foule a déjà tranché', 'Et chacun de tes vers meurt en plein vol'],
     r: ['Rimer, c’est l’escrime, et tu viens avec une cuillère', 'Rentre chez toi, les portes sont encore ouvertes'],

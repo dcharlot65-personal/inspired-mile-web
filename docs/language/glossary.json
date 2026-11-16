@@ -1633,8 +1633,8 @@
      "source": "Android (AOSP CredentialManager): 패스키 / 패스키"
     },
     "vi": {
-     "term": "khóa truy cập",
-     "source": "Android (AOSP CredentialManager): khoá đăng nhập / khoá truy cập"
+     "term": "khoá truy cập",
+     "source": "Android (AOSP CredentialManager): khoá đăng nhập / khoá truy cập Written with Android's tone-mark placement (khoá, not khóa), which the LibreOffice vi_VN dictionary also uses."
     },
     "th": {
      "term": "พาสคีย์",
@@ -2067,10 +2067,7 @@
      "source": "Android (AOSP core, screen_lock): 화면 잠금"
     },
     "vi": {
-     "term": "khóa màn hình",
-     "accept": [
-      "khoá màn hình"
-     ],
+     "term": "khoá màn hình",
      "source": "Android (AOSP core, screen_lock): Phương thức khoá màn hình"
     },
     "th": {

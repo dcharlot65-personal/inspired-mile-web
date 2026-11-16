@@ -181,6 +181,8 @@ describe('the checks can fail', () => {
     ['ar', 'b', 'تسجيـل الدخول', 'ar-tatweel'],
     ['hi', 'e', 'पंक्ति {line}: हो गया.', 'hi-danda'],
     ['th', 'e', 'บรรทัด {line}: เสร็จแล้ว.', 'th-full-stop'],
+    ['vi', 'b', 'Đăng nhập bằng khóa truy cập', 'vi-tone-placement'],
+    ['vi', 'c', 'Bạn có khỏe không?', 'vi-tone-placement'],
     ['ru', 'b', 'Sign in', 'no-native-script'],
     ['ru', 'b', 'Вoйти', 'mixed-script-word'],
     ['de', 'b', 'Anmelden�', 'replacement-char'],
@@ -201,6 +203,8 @@ describe('the checks can fail', () => {
       ['fr', { a: 'Exactement {n, plural, one {# vers} many {# vers} other {# vers}}', b: 'Se connecter', c: 'Est-ce à vous ?', d: 'repris « {word} »', e: 'Vers {line} : fait.', f: ' et ' }],
       ['ja', { a: 'ちょうど{n}行', b: 'サインイン', c: 'あなたのですか？', d: '「{word}」を響かせた', e: '{line}行目：完了。', f: 'と' }],
       ['ar', { a: '{n, plural, zero {# سطر} one {سطر واحد} two {سطران} few {# أسطر} many {# سطرًا} other {# سطر}} بالضبط', b: 'تسجيل الدخول', c: 'هل هو لك؟', d: 'ردّدت ”{word}“', e: 'السطر {line}: تمّ.', f: ' و ' }],
+      // The new placement, and syllables whose mark is placed the same in both (quý, hoàng, khoản).
+      ['vi', { a: 'Đúng {n, plural, one {# dòng} other {# dòng}}', b: 'Đăng nhập bằng khoá truy cập', c: 'Bạn có khoẻ không, quý khách?', d: 'lặp lại “{word}”', e: 'Dòng {line}: hoàng hôn, khoản cuối.', f: ' và ' }],
     ];
     for (const [lang, strings] of clean) expect(show(checkLanguage(lang, strings, EN, cldr.languages[lang], helpers))).toEqual([]);
   });

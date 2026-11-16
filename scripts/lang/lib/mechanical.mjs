@@ -199,6 +199,14 @@ export function checkLanguage(lang, strings, english, cldr, helpers, opts = {}) 
       if (/\p{Script=Thai}\.(?:\s|$)/u.test(whole)) bad(key, 'th-full-stop', 'Thai does not end a sentence with a full stop');
     }
     if (lang === 'el' && whole.includes('?')) bad(key, 'el-question', 'Greek asks with ;');
+    if (lang === 'vi') {
+      // One tone-mark placement throughout, Android's (and the LibreOffice vi_VN dictionary's):
+      // in a syllable ending in oa, oe or uy the mark sits on the second vowel (khoá, hoà, khoẻ,
+      // thuỷ), not the first (khóa). Both are written in Vietnamese; mixing them is not. In
+      // "qu" the u is a consonant, so quý is right either way.
+      const old = whole.normalize('NFC').match(/(?<![\p{L}\p{M}])\p{L}*?(?<![qQ])(?:[óòỏõọ][ae]|[úùủũụ]y)(?![\p{L}\p{M}])/iu);
+      if (old) bad(key, 'vi-tone-placement', `"${old[0]}": the game writes the tone on the second vowel (khoá, not khóa)`);
+    }
 
     // --- how a string ends follows English: a sentence, a label, a pause ---
     const endClass = (s) => {
