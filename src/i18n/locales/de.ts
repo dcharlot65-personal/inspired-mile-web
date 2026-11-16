@@ -296,7 +296,7 @@ const de: Record<string, string> = {
   'battle.begin': 'Duell beginnen',
   'brain.checking': 'Prüfe, was dieses Gerät ausführen kann…',
   'brain.playNow': 'Jetzt spielen, ohne Download',
-  'brain.kept': 'Einmal heruntergeladen und von deinem Browser aufbewahrt. Nichts wird irgendwohin gesendet.',
+  'brain.kept': 'Einmal von Hugging Face heruntergeladen und von deinem Browser aufbewahrt. Nichts, was du schreibst oder sagst, wird irgendwohin gesendet.',
   'brain.summoning': 'Dein Gegner wird beschworen…',
   'brain.downloading': '{model} wird geladen: {done} von {total} MB',
   'brain.ready': '{model} bereit',

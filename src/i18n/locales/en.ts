@@ -198,7 +198,7 @@ const UI: Record<string, string> = {
   'battle.begin': 'Begin the duel',
   'brain.checking': 'Checking what this device can run…',
   'brain.playNow': 'Play now without a download',
-  'brain.kept': 'Downloaded once and kept by your browser. Nothing is sent anywhere.',
+  'brain.kept': 'Downloaded once from Hugging Face and kept by your browser. Nothing you write or say is sent anywhere.',
   'brain.summoning': 'Summoning your opponent…',
   'brain.downloading': 'Downloading {model}: {done} of {total} MB',
   'brain.ready': '{model} ready',

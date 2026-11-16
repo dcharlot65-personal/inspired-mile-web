@@ -296,7 +296,7 @@ const ko: Record<string, string> = {
   'battle.begin': '결투 시작',
   'brain.checking': '이 기기에서 무엇을 돌릴 수 있는지 확인하는 중…',
   'brain.playNow': '다운로드 없이 바로 플레이',
-  'brain.kept': '한 번 내려받으면 브라우저가 보관해요. 어디로도 전송되지 않아요.',
+  'brain.kept': 'Hugging Face에서 한 번 내려받으면 브라우저가 보관해요. 쓰거나 말한 내용은 어디로도 전송되지 않아요.',
   'brain.summoning': '상대를 소환하는 중…',
   'brain.downloading': '{model} 내려받는 중: {total}MB 중 {done}MB',
   'brain.ready': '{model} 준비 완료',

@@ -296,7 +296,7 @@ const pt: Record<string, string> = {
   'battle.begin': 'Começar o duelo',
   'brain.checking': 'Verificando o que este dispositivo consegue rodar…',
   'brain.playNow': 'Jogar agora, sem baixar nada',
-  'brain.kept': 'Baixado uma vez e guardado pelo seu navegador. Nada é enviado a lugar nenhum.',
+  'brain.kept': 'Baixado uma vez do Hugging Face e guardado pelo seu navegador. Nada do que você escreve ou diz é enviado a lugar nenhum.',
   'brain.summoning': 'Invocando seu adversário…',
   'brain.downloading': 'Baixando {model}: {done} de {total} MB',
   'brain.ready': '{model} pronto',

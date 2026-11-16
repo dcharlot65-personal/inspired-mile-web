@@ -296,7 +296,7 @@ const vi: Record<string, string> = {
   'battle.begin': 'Bắt đầu trận đấu',
   'brain.checking': 'Đang kiểm tra xem thiết bị này chạy được gì…',
   'brain.playNow': 'Chơi ngay, không cần tải',
-  'brain.kept': 'Tải một lần và được trình duyệt giữ lại. Không có gì bị gửi đi đâu cả.',
+  'brain.kept': 'Tải một lần từ Hugging Face và được trình duyệt giữ lại. Những gì bạn viết hoặc nói không bị gửi đi đâu cả.',
   'brain.summoning': 'Đang triệu hồi đối thủ…',
   'brain.downloading': 'Đang tải {model}: {done} trên {total} MB',
   'brain.ready': '{model} đã sẵn sàng',
