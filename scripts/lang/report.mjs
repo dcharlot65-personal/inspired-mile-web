@@ -36,6 +36,9 @@ const adoption = opt(`${R}adoption.json`);
 const now = await allStrings();
 const helpers = { parseMessage, argumentNames, pluralBlocks };
 const THRESHOLD = 0.6;
+const XTHRESHOLD = 0.6;
+// As scripts/lang/meaning.mjs: flagged when back-translation and LaBSE both doubt the string.
+const doubt = (cos, x) => cos < THRESHOLD && (x === undefined || x < XTHRESHOLD);
 
 const cell = (s) => String(s).replace(/\|/g, '\\|').replace(/\n/g, ' ⏎ ');
 const code = (s) => '`' + String(s).replace(/`/g, 'ˋ').replace(/\n/g, ' ⏎ ').replace(/\u00a0/g, '⍽').replace(/\u202f/g, '⍽') + '`';
@@ -80,7 +83,7 @@ if (bt) {
   for (const lang of LOCALES) {
     if (lang === 'en') continue;
     const scored = bt.languages?.[lang];
-    const row = (meaning[lang] = { scored: 0, flagged: [], accepted: 0, open: [], notScored: 0, control: null });
+    const row = (meaning[lang] = { scored: 0, backOnly: 0, flagged: [], accepted: 0, open: [], notScored: 0, control: null });
     if (!scored) {
       row.missing = true;
       continue;
@@ -95,8 +98,9 @@ if (bt) {
         continue;
       }
       row.scored++;
-      if (s.controlCos < THRESHOLD) control++;
-      if (s.cos >= THRESHOLD) continue;
+      if (doubt(s.controlCos, s.xcontrol)) control++;
+      if (s.cos < THRESHOLD) row.backOnly++;
+      if (!doubt(s.cos, s.xcos)) continue;
       const a = allowMeaning.entries.find((e) => e.lang === lang && e.key === key && e.text === text);
       row.flagged.push({ key, ...s, reason: a?.reason });
       if (a) row.accepted++;
@@ -157,10 +161,10 @@ if (grammar) {
 } else p('**LanguageTool and Hunspell were not run** (no `docs/language/results/grammar.json`). Nothing is claimed about grammar or spelling.', '');
 
 if (bt) {
-  p(`Back-translation: ${bt.model}; similarity by ${bt.embedder}. A string is flagged when the cosine similarity of its back-translation to the English source is under ${THRESHOLD}. The control: the same back-translations scored against the wrong English sentence (the next key's).`, '');
-  p('| Language | Scored | Flagged | Mismatched control pairs the threshold catches |');
-  p('|---|---|---|---|');
-  for (const lang of LOCALES) if (lang !== 'en') p(`| ${NAME[lang]} | ${meaning[lang].missing ? 'not run' : meaning[lang].scored} | ${meaning[lang].missing ? '—' : meaning[lang].flagged.length} | ${meaning[lang].control === null ? '—' : meaning[lang].control + '%'} |`);
+  p(`Back-translation: ${bt.model}, on ${bt.device ?? 'cpu'} (beam ${bt.beam ?? 4}); similarity by ${bt.embedder}. Second signal: ${bt.bitext ?? 'none'}, which scores each translation against its English directly, with no back-translation in between. A string is flagged when the back-translation scores under ${THRESHOLD} **and** LaBSE scores it under ${XTHRESHOLD}: alone, back-translation flags short labels by the dozen, because the translation model copies a one-word label through untranslated ('Mazo' came back as 'Mazo'). The control: every back-translation and every translation is also scored against the wrong English sentence (the next key's), with the same rule.`, '');
+  p('| Language | Scored | Under the threshold by back-translation alone | Flagged (both signals) | Mismatched control pairs the rule catches |');
+  p('|---|---|---|---|---|');
+  for (const lang of LOCALES) if (lang !== 'en') p(`| ${NAME[lang]} | ${meaning[lang].missing ? 'not run' : meaning[lang].scored} | ${meaning[lang].missing ? '—' : meaning[lang].backOnly} | ${meaning[lang].missing ? '—' : meaning[lang].flagged.length} | ${meaning[lang].control === null ? '—' : meaning[lang].control + '%'} |`);
   p('', 'Back-translation finds a changed meaning; it does not find a translation that is faithful and clumsy, and it is unreliable on one-word labels, where the translation model has no context.', '');
 } else p('**Back-translation was not run** (no `docs/language/results/bt.json`). Nothing is claimed about meaning beyond the mechanical and glossary checks.', '');
 
@@ -209,7 +213,7 @@ for (const lang of LOCALES) {
     const m = meaning[lang];
     if (!bt || m.missing) p('- Back-translation: not run.');
     else {
-      p(`- Back-translation: ${m.scored} scored, ${m.flagged.length} under ${THRESHOLD}; ${m.accepted} read and accepted with a reason, ${m.open.length} open${m.notScored ? `, ${m.notScored} changed after the run and not scored again` : ''}.`);
+      p(`- Back-translation: ${m.scored} scored, ${m.backOnly} under ${THRESHOLD} by back-translation alone, ${m.flagged.length} flagged by both signals; ${m.accepted} read and accepted with a reason, ${m.open.length} open${m.notScored ? `, ${m.notScored} changed after the run and not scored again` : ''}.`);
       for (const f of m.open.slice(0, 40)) p(`  - OPEN ${code(f.key)} cos ${f.cos}: “${cell(f.text)}” came back as “${cell(f.back)}” (English: “${cell(f.english)}”)`);
     }
     const rv = review?.languages?.[lang];

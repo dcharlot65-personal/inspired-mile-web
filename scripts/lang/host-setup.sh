@@ -136,6 +136,9 @@ PY
 }
 fetch Nextcloud-AI/madlad400-3b-mt-ct2-int8 "${MADLAD_REV:-aa32bbdeba7880eff2096ec044cb155a340a9400}" madlad400-3b-mt-ct2-int8
 fetch sentence-transformers/all-MiniLM-L6-v2 "${MINILM_REV:-1110a243fdf4706b3f48f1d95db1a4f5529b4d41}" all-MiniLM-L6-v2 config.json 'model.safetensors' 'tokenizer*' 'vocab.txt' 'special_tokens_map.json' 'modules.json' 'sentence_bert_config.json' 'config_sentence_transformers.json' '1_Pooling/*' README.md
+# LaBSE: a dedicated bitext model; scores a translation against its English directly (a second signal
+# beside back-translation, which copies short labels through untranslated).
+fetch sentence-transformers/LaBSE "${LABSE_REV:-836121a0533e5664b21c7aacc5d22951f2b8b25b}" LaBSE config.json model.safetensors 'tokenizer*' vocab.txt special_tokens_map.json modules.json sentence_bert_config.json config_sentence_transformers.json '1_Pooling/*' '2_Dense/config.json' '2_Dense/model.safetensors' README.md
 # The reviewer: Google's own 4-bit (QAT) GGUF of Gemma 4 26B-A4B, a mixture of experts with about
 # 4B parameters active per token. The dense 31B (unsloth/gemma-4-31B-it-GGUF, Q4_K_M, fetched
 # first) generated 4 tokens/s on the shared GPU: about ten hours for the fifteen languages.

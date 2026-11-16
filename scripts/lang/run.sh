@@ -23,7 +23,7 @@ export LANGQA_HOME=${LANGQA_HOME:-/Volumes/macos_4TB_external_1/wai-build/im-lan
 MEMGUARD=${MEMGUARD:-/Volumes/macos_4TB_external_1/wai-build/bin/memguard}
 export OUT=${OUT:-$LANGQA_HOME/out}
 export HUNSPELL=$LANGQA_HOME/hunspell/bin/hunspell HSPELL=$LANGQA_HOME/hunspell/bin/hspell DICT_DIR=$LANGQA_HOME/dict
-export MADLAD_DIR=$LANGQA_HOME/models/madlad400-3b-mt-ct2-int8 MINILM_DIR=$LANGQA_HOME/models/all-MiniLM-L6-v2
+export MADLAD_DIR=$LANGQA_HOME/models/madlad400-3b-mt-ct2-int8 MINILM_DIR=$LANGQA_HOME/models/all-MiniLM-L6-v2 LABSE_DIR=$LANGQA_HOME/models/LaBSE
 export HF_HOME=$LANGQA_HOME/cache/hf TMPDIR=$LANGQA_HOME/tmp HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 TOKENIZERS_PARALLELISM=false
 LT_PORT=${LT_PORT:-18731}
 LLAMA_PORT=${LLAMA_PORT:-18732}

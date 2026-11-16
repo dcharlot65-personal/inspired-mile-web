@@ -3,10 +3,14 @@
  * Read the back-translation scores (scripts/lang/backtranslate.py) and say
  * which strings may have drifted from the English.
  *
- *   node scripts/lang/meaning.mjs --bt .langqa/bt.json [--threshold 0.6] [--json]
+ *   node scripts/lang/meaning.mjs --bt .langqa/bt.json [--threshold 0.6] [--xthreshold 0.6] [--json]
  *
  * A string is flagged when the cosine similarity between its back-translation
- * and the English source is under the threshold. A flag is a question, not a
+ * and the English source is under the threshold, and LaBSE, which scores the
+ * translation against the English directly, also scores it under its own
+ * threshold. (Back-translation alone flags short labels by the dozen because the
+ * translation model copies them through untranslated: 'Mazo' came back as
+ * 'Mazo'. Both counts are reported.) A flag is a question, not a
  * verdict: short labels and idioms back-translate loosely. Every flagged string
  * is either fixed or listed in docs/language/allow/meaning.json with the reason
  * a reader accepted it. A string whose text has changed since it was scored is
@@ -22,6 +26,9 @@ const args = process.argv.slice(2);
 const opt = (name, dflt) => (args.includes(name) ? args[args.indexOf(name) + 1] : dflt);
 const bt = readJson(opt('--bt', `${ROOT}.langqa/bt.json`));
 const T = Number(opt('--threshold', '0.6'));
+const TX = Number(opt('--xthreshold', '0.6'));
+// Flagged when both signals doubt the string; a string with no LaBSE score is judged on back-translation alone.
+const doubt = (cos, x) => cos < T && (x === undefined || x < TX);
 const allow = readJson(`${ROOT}docs/language/allow/meaning.json`, { entries: [] }).entries;
 const strings = await allStrings();
 const summary = {};
@@ -30,7 +37,7 @@ const used = new Set();
 for (const lang of LOCALES) {
   if (lang === 'en') continue;
   const scored = bt.languages?.[lang];
-  const row = (summary[lang] = { strings: 0, scored: 0, flagged: 0, allowed: 0, open: 0, notScored: 0, controlCaught: null });
+  const row = (summary[lang] = { strings: 0, scored: 0, backOnly: 0, flagged: 0, allowed: 0, open: 0, notScored: 0, controlCaught: null });
   if (!scored) {
     row.notScored = Object.keys(strings[lang].ui).length - Object.keys(HOUSE_QUOTES).length;
     open.push({ lang, key: '*', why: 'this language has not been back-translated' });
@@ -48,8 +55,9 @@ for (const lang of LOCALES) {
       continue;
     }
     row.scored++;
-    if (s.controlCos < T) control++;
-    if (s.cos >= T) continue;
+    if (doubt(s.controlCos, s.xcontrol)) control++;
+    if (s.cos < T) row.backOnly++;
+    if (!doubt(s.cos, s.xcos)) continue;
     row.flagged++;
     const i = allow.findIndex((a) => a.lang === lang && a.key === key && a.text === now);
     if (i >= 0) {
@@ -57,16 +65,16 @@ for (const lang of LOCALES) {
       row.allowed++;
     } else {
       row.open++;
-      open.push({ lang, key, why: `cos ${s.cos}, chrF ${s.chrf}`, text: s.text, english: s.english, back: s.back });
+      open.push({ lang, key, why: `cos ${s.cos}, LaBSE ${s.xcos ?? '—'}, chrF ${s.chrf}`, text: s.text, english: s.english, back: s.back });
     }
   }
   row.controlCaught = row.scored ? Math.round((100 * control) / row.scored) : null;
 }
 const stale = allow.filter((_, i) => !used.has(i));
-if (args.includes('--json')) console.log(JSON.stringify({ threshold: T, summary, open, stale }, null, 1));
+if (args.includes('--json')) console.log(JSON.stringify({ threshold: T, xthreshold: TX, summary, open, stale }, null, 1));
 else {
-  console.log('lang\tstrings\tscored\tflagged\taccepted\topen\tnot scored\tcontrol caught');
-  for (const [l, r] of Object.entries(summary)) console.log(`${l}\t${r.strings}\t${r.scored}\t${r.flagged}\t${r.allowed}\t${r.open}\t${r.notScored}\t${r.controlCaught === null ? '—' : r.controlCaught + '%'}`);
+  console.log('lang\tstrings\tscored\tback-translation alone\tflagged (both)\taccepted\topen\tnot scored\tcontrol caught');
+  for (const [l, r] of Object.entries(summary)) console.log(`${l}\t${r.strings}\t${r.scored}\t${r.backOnly}\t${r.flagged}\t${r.allowed}\t${r.open}\t${r.notScored}\t${r.controlCaught === null ? '—' : r.controlCaught + '%'}`);
   for (const o of open.slice(0, 400)) console.log(`${o.lang}\t${o.key}\t${o.why}${o.back ? `\n\t  now:  ${o.text}\n\t  en:   ${o.english}\n\t  back: ${o.back}` : ''}`);
   for (const s of stale) console.log(`STALE allowlist entry: ${s.lang} ${s.key}`);
 }
