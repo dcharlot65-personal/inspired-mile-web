@@ -38,12 +38,16 @@ const UNIT_MUTATIONS = [
   ['the offline page is stale', 'public/offline.html', 'data-k="title">You are offline<', 'data-k="title">You are Offline<', UNIT, 'public/offline.html is out of date'],
   ['the manifest lost a language', 'public/manifest.json', /^\s*"th": "Sonnet Man[^\n]*\n/m, '', UNIT, 'public/manifest.json is out of date'],
   ['the manifest’s English renamed with no new translations', 'public/manifest.json', '"name": "Sonnet Man: the duel of verses"', '"name": "Sonnet Man: verses at dawn"', UNIT, 'translate the new English'],
+  ['Thai "sign in" spelt otherwise than the core locale', 'src/i18n/pages/shared/th.ts', "'error.not_signed_in': 'โปรดเข้าสู่ระบบก่อน'", "'error.not_signed_in': 'โปรดลงชื่อเข้าใช้ก่อน'", UNIT, 'sign in is written ลงชื่อเข้าใช้'],
+  ['a Vietnamese tone mark placed otherwise than the core locale', 'src/i18n/pages/pwa/vi.ts', 'Trình duyệt sẽ không tự xóa.\',\n  \'pwa.storage.keptNoSize\'', 'Trình duyệt sẽ không tự xoá.\',\n  \'pwa.storage.keptNoSize\'', UNIT, 'tone mark in oa, oe, uy is written oá'],
+  ['Hindi "Shakespeare" spelt otherwise than the core locale', 'src/i18n/pages/marketplace/hi.ts', 'साथ शेक्सपियर के', 'साथ शेक्सपीयर के', UNIT, 'Shakespeare is written शेक्सपीयर'],
   ['a shortcut named otherwise than the site names the place', 'src/i18n/pages/shared/de.ts', "'app.shortcut.battle': 'Kampfarena'", "'app.shortcut.battle': 'Kampfplatz'", UNIT, 'Kampfplatz'],
   ['src/lib/pwa.ts says an English sentence again', 'src/lib/pwa.ts', "title: say('pwa.install.title'),", "title: 'Install Sonnet Man first',", UNIT, 'pwa.install.title'],
   ['sizes written the English way whatever the language', 'src/lib/pwa.ts', 'return new Intl.NumberFormat(intlLocale(), { style: \'unit\'', 'return new Intl.NumberFormat(\'en\', { style: \'unit\'', UNIT, 'Go'],
   ['the install guidance loses a Japanese string', 'src/i18n/pages/pwa/ja.ts', /^  'pwa\.install\.dismiss': .*\n/m, '', UNIT, 'missing pwa.install.dismiss'],
   ['loadArea stops filling in English for a missing string', 'src/i18n/index.ts', "for (const code of l === 'en' ? ['en'] : ['en', l])", "for (const code of [l])", UNIT, "'Join'"],
-  ['a page redraws before its areas are in the new language', 'src/i18n/page.ts', 'void areasReady().then(() => {', 'void Promise.resolve().then(() => {', UNIT, 'season.claim'],
+  // The redraw meets the English of the area, which is what the player would see.
+  ['a page redraws before its areas are in the new language', 'src/i18n/page.ts', 'void areasReady().then(() => {', 'void Promise.resolve().then(() => {', UNIT, "'de: Claim'"],
   ['the server gains an answer nobody mapped', 'backend/src/classroom/handlers.rs', '"Invalid join code".into()', '"That join code has expired".into()', ERRORS, 'That join code has expired'],
   ['the server gains a code nobody translated', 'backend/src/auth/email.rs', '"email_in_use"', '"email_is_taken"', ERRORS, 'no message for "email_is_taken"'],
   ['a language loses an error sentence', 'src/i18n/pages/shared/vi.ts', /^  'error\.tournament_full': .*\n/m, '', ERRORS, 'vi: no message for "tournament_full"'],
@@ -64,7 +68,11 @@ if (new Date(2026, 10, 1).getTimezoneOffset() > 0) {
 
 /** The same for the browser tests: [what, file, find, replace, test title that must go red] */
 const BROWSER_MUTATIONS = [
+  // The locale file itself says English: the unit test catches it, and so must the page test,
+  // which until 2026-11-16 took whatever reads the same as English to be meant (MISSED).
   ['English left in the Spanish marketplace', 'src/i18n/pages/marketplace/es.ts', /('market\.sell\.title': )'[^']*'/, "$1'Create a listing'", 'marketplace: every language'],
+  // The page's script writes an English sentence of its own, with no key at all.
+  ['the marketplace script writes English itself', 'src/pages/marketplace.astro', "${esc(t(sale ? 'market.buy' : 'market.offer'))}", "${esc(sale ? t('market.buy') : 'Offer a trade')}", 'marketplace: every language'],
   ['an element of the classroom page without its key', 'src/pages/classroom.astro', ' data-i18n="classroom.gate.title">', '>', 'classroom: every language'],
   ['a placeholder never filled on the season page', 'src/pages/season.astro', "t('season.next', { n: num(progress.xpToNext) })", "t('season.next')", 'season: every language'],
   ['a key shown as text on the tournaments page', 'src/pages/tournaments.astro', "esc(t('tour.viewBracket'))", "esc(t('tour.viewBrackets'))", 'tournaments: every language'],
@@ -127,7 +135,8 @@ for (const [what, file, find, replace, test, expected] of UNIT_MUTATIONS) {
   } finally {
     restore();
   }
-  const caught = !result.ok && result.out.includes(expected);
+  // vitest prints a string inside an array with its quotation marks escaped (\"few\").
+  const caught = !result.ok && (result.out.includes(expected) || result.out.replace(/\\"/g, '"').includes(expected));
   console.log(`${caught ? 'CAUGHT ' : result.ok ? 'MISSED ' : 'RED, BUT NOT FOR THIS '} ${what}`);
   if (!caught) {
     wrong++;

@@ -1,6 +1,6 @@
 import { test, expect, type Page } from '@playwright/test';
 // @ts-ignore a plain module, shared with scripts/pages-rest/shots.mjs
-import { DATA, DATA_TEXT, LOCALES, PAGES, mockApi, startIn } from './pages-rest.fixtures.mjs';
+import { DATA, DATA_TEXT, LOCALES, PAGES, mayMatchEnglish, mockApi, startIn } from './pages-rest.fixtures.mjs';
 
 /**
  * The classroom, marketplace, tournament, season, viewer and VR pages, and the offline
@@ -75,16 +75,21 @@ async function interfaceText(page: Page): Promise<string> {
 
 /**
  * English strings that must not be on the page in `locale`: each English value of the
- * page's areas, when it is long enough to be unmistakable, the language says it
- * differently, and it does not occur inside one of the language's own strings or in the
- * fixture data (a word two languages share is not a leak).
+ * page's areas, when it is long enough to be unmistakable, it is not listed as rightly the
+ * same in that language (SAME_AS_ENGLISH in tests/pages-rest.fixtures.mjs), and it does not
+ * occur inside another of the language's own strings or in the fixture data (a word two
+ * languages share is not a leak).
+ *
+ * The locale file is not trusted to say what is translated: a string its author forgot to
+ * translate reads the same as English there, and was skipped here until 2026-11-16
+ * (scripts/pages-rest/mutate.mjs, "English left in the Spanish marketplace": MISSED).
  */
-function englishThatMustBeGone(english: Messages, mine: Messages): string[] {
-  const own = Object.values(mine).join('\n') + '\n' + DATA_TEXT;
+function englishThatMustBeGone(english: Messages, mine: Messages, locale: string): string[] {
+  const own = Object.entries(mine).filter(([k, v]) => v !== english[k]).map(([, v]) => v).join('\n') + '\n' + DATA_TEXT;
   const out = new Set<string>();
   for (const [key, value] of Object.entries(english)) {
     const text = value.trim();
-    if (mine[key] === value) continue;
+    if (mine[key] === value && mayMatchEnglish(key, locale)) continue;
     if (text.length < 9 && !/\s/.test(text)) continue;
     if (/^[^a-zA-Z]*$/.test(text.replace(/\{[a-zA-Z_]+\}/g, ''))) continue;
     // A sentence with a variable is looked for by its longest fixed piece.
@@ -131,7 +136,7 @@ async function expectNoLeaks(page: Page, spec: PageSpec, locale: string) {
   if (locale === 'en') return;
   const english = await areaMessages(page, spec.areas, 'en');
   const mine = await areaMessages(page, spec.areas, locale);
-  const gone = englishThatMustBeGone(english, mine);
+  const gone = englishThatMustBeGone(english, mine, locale);
   // The list is long enough to mean something (a page area holds dozens of sentences).
   expect(gone.length, `${spec.name}/${locale}: English strings to look for`).toBeGreaterThan(15);
   const left = gone.filter((s) => text.includes(s));

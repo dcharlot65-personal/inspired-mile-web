@@ -17,6 +17,8 @@ import { initPage, onPageLocaleChange } from './page';
 import en from './locales/en';
 // @ts-ignore a plain .mjs script, shared with the command line
 import { OFFLINE_KEYS, SHORTCUT_KEYS, localiseManifest, renderOffline } from '../../scripts/pages-rest/build-static.mjs';
+// @ts-ignore a plain module, shared with the browser test
+import { SAME_AS_ENGLISH as SAME_AS_ENGLISH_LIST } from '../../tests/pages-rest.fixtures.mjs';
 
 // loadArea merges an area into the core messages of its language (English included), so
 // what the core locale itself holds is noted before any test loads one.
@@ -53,29 +55,11 @@ const plainKeys = (m: Messages) => Object.keys(m).filter((k) => pluralParts(k)[1
 const pluralBases = (m: Messages) => [...new Set(Object.keys(m).filter((k) => pluralParts(k)[1] !== null).map((k) => pluralParts(k)[0]))].sort();
 
 /**
- * Values that are rightly the same as English: a pattern with no words of its own, an
- * abbreviation the language keeps, or a word the two languages share. Anything else that
- * reads the same as English is an untranslated string.
+ * Values that are rightly the same as English (a pattern with no words of its own, an
+ * abbreviation the language keeps, a word the two languages share). Anything else that reads
+ * the same as English is an untranslated string. The browser test reads the same list.
  */
-const SAME_AS_ENGLISH: Record<string, readonly string[] | '*'> = {
-  'tour.option': '*', // "{name} ({status})"
-  'season.xp': '*', // "{n} XP"
-  'season.xpGain': '*',
-  'viewer.fps': ['es', 'de', 'it', 'pt', 'hi', 'ja', 'ko', 'id'], // "fps" is kept
-  'classroom.list.code': ['de'],
-  'market.status.active': ['fr'],
-  'tour.match.live': ['de'],
-  'tour.col.status': ['de', 'pl', 'id'],
-  'tour.label.format': ['pl', 'id'],
-  'tour.bye': ['it', 'id'], // Italian tennis and Indonesian sport both say "bye" (Wikidata Q1268659)
-  'season.reward.premium': ['fr', 'de', 'it', 'pt', 'pl', 'id'],
-  'season.level': ['id'],
-  'season.reward.level': ['id'],
-  'vr.card.desktop.title': ['de', 'it'],
-  'offline.pageTitle': ['de', 'it', 'pt', 'pl'],
-  'offline.link.collection': ['fr'],
-  'offline.link.home': ['it'],
-};
+const SAME_AS_ENGLISH = SAME_AS_ENGLISH_LIST as Record<string, readonly string[] | '*'>;
 
 describe('page areas: every language has every string', () => {
   it('has a module for each of the sixteen languages in each area, and no other file in them', () => {
@@ -114,7 +98,8 @@ describe('page areas: every language has every string', () => {
         }
       }
     }
-    expect(problems).toEqual([]);
+    // The list is the message too: vitest shortens a long array to "Array(1)" in its one-line summary.
+    expect(problems, problems.join('\n')).toEqual([]);
   });
 
   it('has, for every counted message, each plural form the language uses (Unicode CLDR, through Intl.PluralRules)', () => {
@@ -129,7 +114,8 @@ describe('page areas: every language has every string', () => {
         }
       }
     }
-    expect(problems).toEqual([]);
+    // The list is the message too: vitest shortens a long array to "Array(1)" in its one-line summary.
+    expect(problems, problems.join('\n')).toEqual([]);
   });
 
   it('is actually translated: nothing reads the same as English unless it is listed as shared', () => {
@@ -146,7 +132,8 @@ describe('page areas: every language has every string', () => {
         }
       }
     }
-    expect(problems).toEqual([]);
+    // The list is the message too: vitest shortens a long array to "Array(1)" in its one-line summary.
+    expect(problems, problems.join('\n')).toEqual([]);
   });
 
   it('is clean text: normal form C, no hidden or directional characters, and each language’s own punctuation', () => {
@@ -201,7 +188,41 @@ describe('page areas: every language has every string', () => {
         }
       }
     }
-    expect(problems).toEqual([]);
+    // The list is the message too: vitest shortens a long array to "Array(1)" in its one-line summary.
+    expect(problems, problems.join('\n')).toEqual([]);
+  });
+
+  it('spells a word as the core locale spells it, where a language has two ways', async () => {
+    // Rival spellings of one word, each found in these languages' strings. Whichever the core
+    // locale uses (and only that one), the areas use too. Branch lang/qa-pipeline moves the core
+    // from the first of each pair to the second, from published sources (Wikidata Q692 for
+    // Shakespeare in Hindi; Android and Google Help for "sign in" in Thai and "download" in Korean;
+    // Android's tone-mark placement in Vietnamese): when it lands, this test names each area
+    // string that must follow (docs/language/pages-rest.md, "Terms the core locale is changing").
+    // Vietnamese tone marks: in an open syllable oa, oe, uy the old style marks the first vowel
+    // (khóa, xóa, hủy), the new style the second (khoá, xoá, huỷ).
+    const OPEN = '(?![\\p{L}])';
+    type Rival = [what: string, a: RegExp, b: RegExp, aSays: string, bSays: string];
+    const RIVALS: Partial<Record<Locale, Rival[]>> = {
+      hi: [['Shakespeare', /शेक्सपियर/u, /शेक्सपीयर/u, 'शेक्सपियर', 'शेक्सपीयर']],
+      th: [['sign in', /เข้าสู่ระบบ/u, /ลงชื่อเข้าใช้/u, 'เข้าสู่ระบบ', 'ลงชื่อเข้าใช้']],
+      ko: [['download', /내려받/u, /다운로드/u, '내려받다', '다운로드']],
+      vi: [['tone mark in oa, oe, uy', new RegExp(`(?:[òóỏõọ][ae]|(?<![qQ])[ùúủũụ]y)${OPEN}`, 'iu'), new RegExp(`(?:o[àáảãạèéẻẽẹ]|(?<![qQ])u[ỳýỷỹỵ])${OPEN}`, 'iu'), 'the old style (khóa)', 'the new style (khoá)']],
+    };
+    const problems: string[] = [];
+    for (const [l, rivals] of Object.entries(RIVALS) as Array<[Locale, Rival[]]>) {
+      const all = await loadMessages(l);
+      // loadArea merges areas into the same object; the core's own strings are those with a core key.
+      const core = Object.entries(all).filter(([k]) => CORE_EN_KEYS.has(k)).map(([, v]) => v);
+      for (const [what, a, b, aSays, bSays] of rivals) {
+        const coreA = core.some((v) => a.test(v));
+        const coreB = core.some((v) => b.test(v));
+        if (coreA === coreB) continue; // the core uses both, or neither: nothing to follow
+        const wrong = coreA ? b : a;
+        for (const ar of AREAS) for (const [k, v] of Object.entries(area(ar, l))) if (wrong.test(v)) problems.push(`${ar}/${l}: ${k}: ${what} is written ${v.match(wrong)![0]}, but the core locale writes ${coreA ? aSays : bSays}: ${v}`);
+      }
+    }
+    expect(problems, problems.join('\n')).toEqual([]);
   });
 
   it('never reuses a key of the core locale, which would hide the area’s string', () => {
@@ -303,6 +324,11 @@ describe('loadArea', () => {
       await loadArea('classroom');
       expect(t('classroom.join.submit')).toBe('Join');
       expect(t('classroom.create.submit')).toBe('作成');
+      // And that English is in the Japanese messages themselves. t() above could also have found
+      // it in the English this test loaded first; a page in Japanese never loads the English area,
+      // so without the merge it would show the key (scripts/pages-rest/mutate.mjs: this was MISSED).
+      const jaMessages = await loadMessages('ja');
+      expect(jaMessages['classroom.join.submit'], 'the Japanese messages lack the English of classroom.join.submit').toBe('Join');
     } finally {
       ja['classroom.join.submit'] = saved;
     }

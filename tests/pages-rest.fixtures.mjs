@@ -8,6 +8,39 @@
 
 export const LOCALES = ['en', 'es', 'fr', 'de', 'it', 'pt', 'pl', 'ru', 'ar', 'hi', 'zh', 'ja', 'ko', 'vi', 'th', 'id'];
 
+/**
+ * Strings of the page areas that rightly read the same as English, by key: '*' for every
+ * language (a pattern with no words of its own), or the languages that share the word or keep
+ * the abbreviation. Read by both src/i18n/pages-rest.test.ts (a string the same as English and
+ * not listed here is untranslated) and tests/pages-rest.spec.ts (the English a page in another
+ * language must not show). Keep it short: each entry is a string no check looks at.
+ */
+export const SAME_AS_ENGLISH = {
+  'tour.option': '*', // "{name} ({status})"
+  'season.xp': '*', // "{n} XP"
+  'season.xpGain': '*',
+  'viewer.fps': ['es', 'de', 'it', 'pt', 'hi', 'ja', 'ko', 'id'], // "fps" is kept
+  'classroom.list.code': ['de'],
+  'market.status.active': ['fr'],
+  'tour.match.live': ['de'],
+  'tour.col.status': ['de', 'pl', 'id'],
+  'tour.label.format': ['pl', 'id'],
+  'tour.bye': ['it', 'id'], // Italian tennis and Indonesian sport both say "bye" (Wikidata Q1268659)
+  'season.reward.premium': ['fr', 'de', 'it', 'pt', 'pl', 'id'],
+  'season.level': ['id'],
+  'season.reward.level': ['id'],
+  'vr.card.desktop.title': ['de', 'it'],
+  'offline.pageTitle': ['de', 'it', 'pt', 'pl'],
+  'offline.link.collection': ['fr'],
+  'offline.link.home': ['it'],
+};
+
+/** May the string under `key` read the same as English in `locale`? */
+export function mayMatchEnglish(key, locale) {
+  const allowed = SAME_AS_ENGLISH[key];
+  return allowed === '*' || (Array.isArray(allowed) && allowed.includes(locale));
+}
+
 /** Each page: its path, the page areas it loads, where its title comes from, and how to tell its data has been drawn. */
 export const PAGES = [
   { name: 'classroom', path: '/classroom', areas: ['classroom', 'shared'], titleKey: 'classroom.meta.title', descriptionKey: 'classroom.meta.description', ready: '#classrooms-list [data-id]' },

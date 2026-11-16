@@ -89,7 +89,7 @@ describe('what the API can answer', () => {
 
   it('every plain-text answer has a code', () => {
     const unknown = texts.filter((t) => codeFor(t) === null).map((t) => `${t.file}: "${t.text}"`);
-    expect(unknown).toEqual([]);
+    expect(unknown, unknown.join('\n')).toEqual([]);
   });
 
   it('the table holds nothing the server no longer says', () => {
@@ -98,7 +98,7 @@ describe('what the API can answer', () => {
       .map(([pattern]) => String(pattern))
       // Said by a branch that is not merged yet (fix/backend-security): harmless to know already.
       .filter((p) => !['Sign in first.', 'Something went wrong on our side. Please try again.'].includes(p));
-    expect(stale).toEqual([]);
+    expect(stale, stale.join('\n')).toEqual([]);
   });
 
   it('every code, from a JSON body, a plain-text body or a bare status, has a sentence in all sixteen languages', async () => {
@@ -121,7 +121,8 @@ describe('what the API can answer', () => {
         for (const name of needs) if (!(name in (ERROR_VARS[code] ?? {}))) problems.push(`${l}: "${code}" needs {${name}}, which nothing supplies`);
       }
     }
-    expect(problems).toEqual([]);
+    // The list is the message too: vitest shortens a long array to "Array(1)" in its one-line summary.
+    expect(problems, problems.join('\n')).toEqual([]);
   });
 });
 
