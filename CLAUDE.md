@@ -94,12 +94,18 @@ left behind by a killed run is found by its port: `lsof -nP -iTCP:<port> -sTCP:L
   `Intl.DisplayNames` is not used for them); a count is written "label: number", never number + noun. Card, city and
   achievement data is named by `src/i18n/pages/terms.ts`, card rules by `rules-text.ts`.
   A quotation goes through `quoted()` (the language's marks from CLDR, the line in `<bdi>` so
-  an English line keeps its punctuation on the Arabic page).
+  an English line keeps its punctuation on the Arabic page). A list of words goes through `list()`
+  (never Intl's "unit" lists: Chinese and Japanese put nothing between their items). `tn()` and
+  `rich()` isolate a signed number on a right-to-left page (`signedLtr()`: Arabic showed +50 as
+  50+); in an Arabic message write a count out of a total as `{n}/{total}`, without spaces.
   The layout takes `titleKey`, `descriptionKey` and `i18nAreas` for the document title and
   description. Translated so far: home, about, collection, profile, world map (areas `home`,
   `about`, `collection`, `profile`, `world-map`, `variants`, `card-terms`, `rules`,
   `achievements`). `src/i18n/pages.test.ts` and `tests/pages-i18n.spec.ts` check them; sources,
-  what is not translated and what the tools found are in `docs/language/pages-core/`.
+  what is not translated and what the tools found are in `docs/language/pages-core/`. A changed
+  page string is translated back again on the build host (`scripts/pages-lang/meaning-run.sh`,
+  then `node scripts/pages-lang/meaning.mjs --bt docs/language/pages-core/bt.json`, which fails on
+  a string not scored since it changed).
 - **The duel's language** is a separate choice. The engine (`src/lib/verse`) returns message
   keys, never sentences; `english.ts` renders them for the model's prompt, which is always
   English. Per-language data (acrostic words, forbidden letters, power words, the written
