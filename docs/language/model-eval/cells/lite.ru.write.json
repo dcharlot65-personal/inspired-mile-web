@@ -1,0 +1,6703 @@
+{
+ "tier": "lite",
+ "lang": "ru",
+ "task": "write",
+ "model": "LiquidAI/LFM2.5-350M-ONNX",
+ "dtype": "q4",
+ "judgeMethod": "grade",
+ "date": "2026-11-16T22:30:42.167Z",
+ "commit": "f32a0aff8a8ffcfd3a2589b046210ca7f46aebc4",
+ "transformers": "4.3.2",
+ "gpu": {
+  "vendor": "apple",
+  "architecture": "metal-3",
+  "device": "",
+  "description": ""
+ },
+ "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/159.0.8154.6 Safari/537.36",
+ "origin": "http://localhost:47731",
+ "forms": [
+  "couplet",
+  "quatrain-aabb",
+  "quatrain-abab",
+  "tercet",
+  "anaphora",
+  "acrostic",
+  "crescendo",
+  "epistrophe",
+  "haiku",
+  "heroic-couplet"
+ ],
+ "perForm": 10,
+ "plays": [
+  {
+   "seed": 1001,
+   "roundIndex": 0,
+   "formId": "epistrophe",
+   "difficulty": "apprentice",
+   "card": "Apollo",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Apollo in a duel of verses: theatrical, sharp, in character. Your line in the play: \"I am the god of song, of healing, and of the radiant sun.\" You write short verse and nothing else.",
+    "Form: Epistrophe. Three lines that all end on the same word.\nWrite exactly 3 lines.\nYour flourish: Use two words of 10 letters or more.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Очень, душка твоя\nЯ чувствую её в бескостях\nТمножая моему сон",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-ending",
+     "met": false,
+     "detail": "твоя · бескостях · сон"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "Очень, душка твоя  \nЯ чувствую её в бескостях  \nТمножая моему сон",
+     "tidy": "Очень, душка твоя\nЯ чувствую её в бескостях\nТمножая моему сон",
+     "ms": 578,
+     "tokens": 34,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1001,
+   "roundIndex": 1,
+   "formId": "heroic-couplet",
+   "difficulty": "apprentice",
+   "card": "Ariel",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "Погиб поэт! — невольник чести, —\nПал, оклеветанный молвой,\nС свинцом в груди и жаждой мести,\nПоникнув гордой головой!..",
+   "prompt": [
+    "You are Ariel in a duel of verses: theatrical, sharp, in character. Your line in the play: \"All hail, great master! Grave sir, hail!\" You write short verse and nothing else.",
+    "Form: Heroic Couplet. Two rhyming lines of about ten syllables each, as Shakespeare closed his sonnets.\nWrite exactly 2 lines.\nYour flourish: Make your last line your longest.\nYour challenger last said:\nПогиб поэт! — невольник чести, —\nПал, оклеветанный молвой,\nС свинцом в груди и жаждой мести,\nПоникнув гордой головой!..\nAnswer them.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Возвини\nвальк",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 4,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "2/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "возвини / вальк"
+    },
+    {
+     "id": "syllables-1",
+     "met": false,
+     "detail": "3/10"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "1/10"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 4,
+   "drafts": [
+    {
+     "raw": "Возвини\n\nвальк",
+     "tidy": "Возвини\nвальк",
+     "ms": 186,
+     "tokens": 8,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 2,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 4,
+     "craft": 4
+    }
+   ]
+  },
+  {
+   "seed": 1001,
+   "roundIndex": 2,
+   "formId": "acrostic",
+   "difficulty": "apprentice",
+   "card": "Christina Rossetti",
+   "acrostic": "роза",
+   "relicWords": [
+    "кольцо",
+    "клятва",
+    "ночь",
+    "изгнание",
+    "поцелуй"
+   ],
+   "answering": "Погиб поэт! — невольник чести, —\nПал, оклеветанный молвой,\nС свинцом в груди и жаждой мести,\nПоникнув гордой головой!..",
+   "prompt": [
+    "You are Christina Rossetti in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Remember me when I am gone away, gone far away into the silent land.\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per letter: the first letters must spell РОЗА.\nWrite exactly 4 lines.\nYour flourish: Give every line the same number of words.\nWork in at least two of these words: кольцо, клятва, ночь, изгнание, поцелуй.\nYour challenger last said:\nПогиб поэт! — невольник чести, —\nПал, оклеветанный молвой,\nС свинцом в груди и жаждой мести,\nПоникнув гордой головой!..\nAnswer them.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Погиб поток\nклятва\nисгнание\nпоцелуй",
+   "source": "model",
+   "lines": 4,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "4/4"
+    },
+    {
+     "id": "spells",
+     "met": false,
+     "detail": "ПКИП"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 12,
+   "drafts": [
+    {
+     "raw": "Погиб поток  \nклятва  \n\nисгнание  \n\nпоцелуй",
+     "tidy": "Погиб поток\nклятва\nисгнание\nпоцелуй",
+     "ms": 413,
+     "tokens": 23,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 4,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 12
+    }
+   ]
+  },
+  {
+   "seed": 1002,
+   "roundIndex": 0,
+   "formId": "acrostic",
+   "difficulty": "player",
+   "card": "Lady Macbeth",
+   "acrostic": "рок",
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Lady Macbeth in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Come, you spirits that tend on mortal thoughts, unsex me here.\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per letter: the first letters must spell РОК.\nWrite exactly 3 lines.\nYour flourish: Repeat one strong word three times.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Рокьк\nЯк\nЯ",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "spells",
+     "met": false,
+     "detail": "РЯЯ"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "Рокьк\n\nЯк\n\nЯ",
+     "tidy": "Рокьк\nЯк\nЯ",
+     "ms": 90,
+     "tokens": 9,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "Рок",
+     "tidy": "Рок",
+     "ms": 41,
+     "tokens": 2,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1002,
+   "roundIndex": 1,
+   "formId": "haiku",
+   "difficulty": "apprentice",
+   "card": "Puck",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "Ночевала тучка золотая\nНа груди утеса-великана,\nУтром в путь она умчалась рано,\nПо лазури весело играя.",
+   "prompt": [
+    "You are Puck in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Lord, what fools these mortals be!\" You write short verse and nothing else.",
+    "Form: Haiku. Three lines of 5, 7 and 5 syllables.\nWrite exactly 3 lines.\nYour flourish: Start three words in one line with the same letter.\nYour challenger last said:\nНочевала тучка золотая\nНа груди утеса-великана,\nУтром в путь она умчалась рано,\nПо лазури весело играя.\nAnswer them.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Лаза в углу, визит в свет",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "syllables-1",
+     "met": false,
+     "detail": "7/5"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "syllables-3",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Лаза в углу, визит в свет",
+     "tidy": "Лаза в углу, визит в свет",
+     "ms": 254,
+     "tokens": 12,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1002,
+   "roundIndex": 2,
+   "formId": "couplet",
+   "difficulty": "apprentice",
+   "card": "Juliet",
+   "acrostic": null,
+   "relicWords": [
+    "маска",
+    "сон",
+    "шут",
+    "пьеса",
+    "луна"
+   ],
+   "answering": "Ночевала тучка золотая\nНа груди утеса-великана,\nУтром в путь она умчалась рано,\nПо лазури весело играя.",
+   "prompt": [
+    "You are Juliet in a duel of verses: theatrical, sharp, in character. Your line in the play: \"What's in a name? That which we call a rose...\" You write short verse and nothing else.",
+    "Form: Couplet. Two lines that rhyme.\nWrite exactly 2 lines.\nYour flourish: Cry out: end a line with an exclamation mark.\nWork in at least two of these words: маска, сон, шут, пьеса, луна.\nYour challenger last said:\nНочевала тучка золотая\nНа груди утеса-великана,\nУтром в путь она умчалась рано,\nПо лазури весело играя.\nAnswer them.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Луна прилагает пятка",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Луна прилагает пятка",
+     "tidy": "Луна прилагает пятка",
+     "ms": 126,
+     "tokens": 10,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1003,
+   "roundIndex": 0,
+   "formId": "couplet",
+   "difficulty": "player",
+   "card": "Hermes",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Hermes in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Swift as thought, I carry the words of gods to mortal ears.\" You write short verse and nothing else.",
+    "Form: Couplet. Two lines that rhyme.\nWrite exactly 2 lines.\nYour flourish: Use two words of 10 letters or more.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Свете за трем, слово на дверь",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Свете за трем, слово на дверь",
+     "tidy": "Свете за трем, слово на дверь",
+     "ms": 250,
+     "tokens": 13,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Рак primo",
+     "tidy": "Рак primo",
+     "ms": 53,
+     "tokens": 3,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1003,
+   "roundIndex": 1,
+   "formId": "acrostic",
+   "difficulty": "master",
+   "card": "Prospero",
+   "acrostic": "луна",
+   "relicWords": [
+    "череп",
+    "шутка",
+    "могила",
+    "смех",
+    "прах"
+   ],
+   "answering": "Тучки небесные, вечные странники!\nСтепью лазурною, цепью жемчужною\nМчитесь вы, будто, как я же, изгнанники,\nС милого севера в сторону южную.",
+   "prompt": [
+    "You are Prospero in a duel of verses: theatrical, sharp, in character. Your line in the play: \"We are such stuff as dreams are made on.\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per letter: the first letters must spell ЛУНА.\nWrite exactly 4 lines.\nYour flourish: Make your last line your longest.\nWork in at least two of these words: череп, шутка, могила, смех, прах.\nYour challenger last said:\nТучки небесные, вечные странники!\nСтепью лазурною, цепью жемчужною\nМчитесь вы, будто, как я же, изгнанники,\nС милого севера в сторону южную.\nAnswer them.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Челеп шутка могила смех趋",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/4"
+    },
+    {
+     "id": "spells",
+     "met": false,
+     "detail": "Ч"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "Лодка смех很",
+     "tidy": "Лодка смех很",
+     "ms": 80,
+     "tokens": 6,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Челеп шутка могила смех趋",
+     "tidy": "Челеп шутка могила смех趋",
+     "ms": 269,
+     "tokens": 12,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    },
+    {
+     "raw": "Четька шутка\n\nМогила смех\n\npäхва прах",
+     "tidy": "Четька шутка\nМогила смех\npäхва прах",
+     "ms": 330,
+     "tokens": 18,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 116,
+     "rawLines": 3,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1003,
+   "roundIndex": 2,
+   "formId": "haiku",
+   "difficulty": "player",
+   "card": "Malvolio",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "Тучки небесные, вечные странники!\nСтепью лазурною, цепью жемчужною\nМчитесь вы, будто, как я же, изгнанники,\nС милого севера в сторону южную.",
+   "prompt": [
+    "You are Malvolio in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Some are born great, some achieve greatness, and some have greatness thrust upon them.\" You write short verse and nothing else.",
+    "Form: Haiku. Three lines of 5, 7 and 5 syllables.\nWrite exactly 3 lines.\nYour flourish: Keep every line to 6 words or fewer.\nYour challenger last said:\nТучки небесные, вечные странники!\nСтепью лазурною, цепью жемчужною\nМчитесь вы, будто, как я же, изгнанники,\nС милого севера в сторону южную.\nAnswer them.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Внедряйте, кобату, как я\nвде шаза,难",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/3"
+    },
+    {
+     "id": "syllables-1",
+     "met": false,
+     "detail": "8/5"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "?"
+    },
+    {
+     "id": "syllables-3",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Внедряйте, кобату, как я\n\nвде шаза,难",
+     "tidy": "Внедряйте, кобату, как я\nвде шаза,难",
+     "ms": 199,
+     "tokens": 21,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Все бólы превосходят,",
+     "tidy": "Все бólы превосходят,",
+     "ms": 246,
+     "tokens": 11,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1004,
+   "roundIndex": 0,
+   "formId": "acrostic",
+   "difficulty": "apprentice",
+   "card": "Brutus",
+   "acrostic": "рок",
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Brutus in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Not that I loved Caesar less, but that I loved Rome more.\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per letter: the first letters must spell РОК.\nWrite exactly 3 lines.\nYour flourish: Call on a character by name.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "РоВK",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "spells",
+     "met": false,
+     "detail": "Р"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "РоВK",
+     "tidy": "РоВK",
+     "ms": 58,
+     "tokens": 4,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1004,
+   "roundIndex": 1,
+   "formId": "crescendo",
+   "difficulty": "apprentice",
+   "card": "Prospero",
+   "acrostic": null,
+   "relicWords": [
+    "кинжал",
+    "кровь",
+    "сон",
+    "видение",
+    "рука"
+   ],
+   "answering": "Сижу за решёткой в темнице сырой.\nВскормленный в неволе орёл молодой,\nМой грустный товарищ, махая крылом,\nКровавую пищу клюёт под окном,",
+   "prompt": [
+    "You are Prospero in a duel of verses: theatrical, sharp, in character. Your line in the play: \"We are such stuff as dreams are made on.\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Make your last line your longest.\nWork in at least two of these words: кинжал, кровь, сон, видение, рука.\nYour challenger last said:\nСижу за решёткой в темнице сырой.\nВскормленный в неволе орёл молодой,\nМой грустный товарищ, махая крылом,\nКровавую пищу клюёт под окном,\nAnswer them.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Сидно на сне, вроде кровь, неизвестна\nРук по руке, клюет в柜",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/3"
+    },
+    {
+     "id": "growing",
+     "met": false,
+     "detail": "6 < 5"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "Сидно на сне, вроде кровь, неизвестна\n\nРук по руке, клюет в柜",
+     "tidy": "Сидно на сне, вроде кровь, неизвестна\nРук по руке, клюет в柜",
+     "ms": 452,
+     "tokens": 31,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1004,
+   "roundIndex": 2,
+   "formId": "heroic-couplet",
+   "difficulty": "player",
+   "card": "Banquo",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "Сижу за решёткой в темнице сырой.\nВскормленный в неволе орёл молодой,\nМой грустный товарищ, махая крылом,\nКровавую пищу клюёт под окном,",
+   "prompt": [
+    "You are Banquo in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Thou shalt get kings, though thou be none.\" You write short verse and nothing else.",
+    "Form: Heroic Couplet. Two rhyming lines of about ten syllables each, as Shakespeare closed his sonnets.\nWrite exactly 2 lines.\nYour flourish: Repeat one strong word three times.\nYour challenger last said:\nСижу за решёткой в темнице сырой.\nВскормленный в неволе орёл молодой,\nМой грустный товарищ, махая крылом,\nКровавую пищу клюёт под окном,\nAnswer them.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Сижу за решениевобром\n回答",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 8,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "2/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "решениевобром / 回答"
+    },
+    {
+     "id": "syllables-1",
+     "met": true,
+     "detail": "9/10"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "?"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 8,
+   "drafts": [
+    {
+     "raw": "Сижу за решениевобром\n\n回答",
+     "tidy": "Сижу за решениевобром\n回答",
+     "ms": 204,
+     "tokens": 11,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 2,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 8,
+     "craft": 8
+    },
+    {
+     "raw": "Шаковка с лукомы, глазовая линия",
+     "tidy": "Шаковка с лукомы, глазовая линия",
+     "ms": 300,
+     "tokens": 16,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1005,
+   "roundIndex": 0,
+   "formId": "quatrain-abab",
+   "difficulty": "apprentice",
+   "card": "Puck",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Puck in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Lord, what fools these mortals be!\" You write short verse and nothing else.",
+    "Form: Crossed Quatrain. Four lines: line 1 rhymes with 3, line 2 with 4.\nWrite exactly 4 lines.\nYour flourish: Start three words in one line with the same letter.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Он не в прошлом, но в presente они готовы.",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/4"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "rhyme-2-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Он не в прошлом, но в presente они готовы.",
+     "tidy": "Он не в прошлом, но в presente они готовы.",
+     "ms": 199,
+     "tokens": 16,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1005,
+   "roundIndex": 1,
+   "formId": "acrostic",
+   "difficulty": "player",
+   "card": "Elizabeth Barrett Browning",
+   "acrostic": "сказ",
+   "relicWords": null,
+   "answering": "Природа жаждущих степей\nЕго в день гнева породила,\nИ зелень мертвую ветвей\nИ корни ядом напоила.",
+   "prompt": [
+    "You are Elizabeth Barrett Browning in a duel of verses: theatrical, sharp, in character. Your line in the play: \"How do I love thee? Let me count the ways.\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per letter: the first letters must spell СКАЗ.\nWrite exactly 4 lines.\nYour flourish: Give every line the same number of words.\nYour challenger last said:\nПрирода жаждущих степей\nЕго в день гнева породила,\nИ зелень мертвую ветвей\nИ корни ядом напоила.\nAnswer them.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Продлядка жаждащих степей\nОго в gorgeппол ét\nи Зелень мертветы ветовку\nи Корни ядодappen",
+   "source": "model",
+   "lines": 4,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "4/4"
+    },
+    {
+     "id": "spells",
+     "met": false,
+     "detail": "ПОИИ"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "Продлядка жаждащих степей  \nОго в gorgeппол ét  \nи Зелень мертветы ветовку  \nи Корни ядодappen",
+     "tidy": "Продлядка жаждащих степей\nОго в gorgeппол ét\nи Зелень мертветы ветовку\nи Корни ядодappen",
+     "ms": 566,
+     "tokens": 39,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 4,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "Сказ요",
+     "tidy": "Сказ요",
+     "ms": 164,
+     "tokens": 3,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1005,
+   "roundIndex": 2,
+   "formId": "haiku",
+   "difficulty": "master",
+   "card": "Cassius",
+   "acrostic": null,
+   "relicWords": [
+    "слёзы",
+    "правда",
+    "дочь",
+    "ничто",
+    "сердце"
+   ],
+   "answering": "Природа жаждущих степей\nЕго в день гнева породила,\nИ зелень мертвую ветвей\nИ корни ядом напоила.",
+   "prompt": [
+    "You are Cassius in a duel of verses: theatrical, sharp, in character. Your line in the play: \"The fault, dear Brutus, is not in our stars, but in ourselves.\" You write short verse and nothing else.",
+    "Form: Haiku. Three lines of 5, 7 and 5 syllables.\nWrite exactly 3 lines.\nYour flourish: Call on a character by name.\nWork in at least two of these words: слёзы, правда, дочь, ничто, сердце.\nYour challenger last said:\nПрирода жаждущих степей\nЕго в день гнева породила,\nИ зелень мертвую ветвей\nИ корни ядом напоила.\nAnswer them.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Слёزي правда дочь ничто сердце",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "syllables-1",
+     "met": false,
+     "detail": "?"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "syllables-3",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "В лесе ледящее  \nДоброе цвет ожерочное  \nМаленька сердца по путь",
+     "tidy": "В лесе ледящее\nДоброе цвет ожерочное\nМаленька сердца по путь",
+     "ms": 292,
+     "tokens": 29,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 5,
+     "craft": 5
+    },
+    {
+     "raw": "Слёزي правда дочь ничто сердце",
+     "tidy": "Слёزي правда дочь ничто сердце",
+     "ms": 280,
+     "tokens": 14,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    },
+    {
+     "raw": "Слогие, правда дочь\r\nnierzczo сердца",
+     "tidy": "Слогие, правда дочь\nnierzczo сердца",
+     "ms": 295,
+     "tokens": 15,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1006,
+   "roundIndex": 0,
+   "formId": "quatrain-abab",
+   "difficulty": "player",
+   "card": "Prospero",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Prospero in a duel of verses: theatrical, sharp, in character. Your line in the play: \"We are such stuff as dreams are made on.\" You write short verse and nothing else.",
+    "Form: Crossed Quatrain. Four lines: line 1 rhymes with 3, line 2 with 4.\nWrite exactly 4 lines.\nYour flourish: Make your last line your longest.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Я не просто решающее\nОн — главный выбор\nТы не глаза\nСвет — миры",
+   "source": "model",
+   "lines": 4,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "4/4"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "решающее / глаза"
+    },
+    {
+     "id": "rhyme-2-4",
+     "met": false,
+     "detail": "выбор / миры"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "Я не просто решающее  \nОн — главный выбор  \n\nТы не глаза  \n\nСвет — миры",
+     "tidy": "Я не просто решающее\nОн — главный выбор\nТы не глаза\nСвет — миры",
+     "ms": 440,
+     "tokens": 30,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 4,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "Такой撒咀茋",
+     "tidy": "Такой撒咀茋",
+     "ms": 84,
+     "tokens": 8,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1006,
+   "roundIndex": 1,
+   "formId": "heroic-couplet",
+   "difficulty": "master",
+   "card": "Percy Bysshe Shelley",
+   "acrostic": null,
+   "relicWords": [
+    "буря",
+    "чары",
+    "посох",
+    "остров",
+    "пучина"
+   ],
+   "answering": "Я вас любил: любовь ещё, быть может,\nВ душе моей угасла не совсем;\nНо пусть она вас больше не тревожит;\nЯ не хочу печалить вас ничем.",
+   "prompt": [
+    "You are Percy Bysshe Shelley in a duel of verses: theatrical, sharp, in character. Your line in the play: \"If Winter comes, can Spring be far behind?\" You write short verse and nothing else.",
+    "Form: Heroic Couplet. Two rhyming lines of about ten syllables each, as Shakespeare closed his sonnets.\nWrite exactly 2 lines.\nYour flourish: End your verse on the same word it began with.\nWork in at least two of these words: буря, чары, посох, остров, пучина.\nYour challenger last said:\nЯ вас любил: любовь ещё, быть может,\nВ душе моей угасла не совсем;\nНо пусть она вас больше не тревожит;\nЯ не хочу печалить вас ничем.\nAnswer them.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Пучина",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "syllables-1",
+     "met": false,
+     "detail": "3/10"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Пучина",
+     "tidy": "Пучина",
+     "ms": 59,
+     "tokens": 3,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "В岛а приостаньна",
+     "tidy": "В岛а приостаньна",
+     "ms": 211,
+     "tokens": 7,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Пустой пуженон",
+     "tidy": "Пустой пуженон",
+     "ms": 105,
+     "tokens": 6,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1006,
+   "roundIndex": 2,
+   "formId": "haiku",
+   "difficulty": "apprentice",
+   "card": "Elizabeth Barrett Browning",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "Я вас любил: любовь ещё, быть может,\nВ душе моей угасла не совсем;\nНо пусть она вас больше не тревожит;\nЯ не хочу печалить вас ничем.",
+   "prompt": [
+    "You are Elizabeth Barrett Browning in a duel of verses: theatrical, sharp, in character. Your line in the play: \"How do I love thee? Let me count the ways.\" You write short verse and nothing else.",
+    "Form: Haiku. Three lines of 5, 7 and 5 syllables.\nWrite exactly 3 lines.\nYour flourish: Give every line the same number of words.\nYour challenger last said:\nЯ вас любил: любовь ещё, быть может,\nВ душе моей угасла не совсем;\nНо пусть она вас больше не тревожит;\nЯ не хочу печалить вас ничем.\nAnswer them.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Вдохновение\nПовсостояние",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 5,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/3"
+    },
+    {
+     "id": "syllables-1",
+     "met": true,
+     "detail": "5/5"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "6/7"
+    },
+    {
+     "id": "syllables-3",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 8,
+   "drafts": [
+    {
+     "raw": "Вдохновение\n\n\nПовсостояние",
+     "tidy": "Вдохновение\nПовсостояние",
+     "ms": 126,
+     "tokens": 12,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 5,
+     "craft": 8
+    }
+   ]
+  },
+  {
+   "seed": 1007,
+   "roundIndex": 0,
+   "formId": "crescendo",
+   "difficulty": "player",
+   "card": "Macbeth",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Macbeth in a duel of verses: theatrical, sharp, in character. Your line in the play: \"I dare do all that may become a man; who dares do more is none.\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Repeat one strong word three times.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Рыночка в глажех\nЯ дá все, рада\nСкорость — ввожать",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "growing",
+     "met": false,
+     "detail": "3 < 4 < 2"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "Рыночка в глажех\n\nЯ дá все, рада\n\nСкорость — ввожать",
+     "tidy": "Рыночка в глажех\nЯ дá все, рада\nСкорость — ввожать",
+     "ms": 365,
+     "tokens": 26,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "Выскрывается неизобщения\n\nЯ узнаю их страх\n\nВозвращаются к нему",
+     "tidy": "Выскрывается неизобщения\nЯ узнаю их страх\nВозвращаются к нему",
+     "ms": 497,
+     "tokens": 25,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1007,
+   "roundIndex": 1,
+   "formId": "tercet",
+   "difficulty": "apprentice",
+   "card": "King Claudius",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "Я помню чудное мгновенье:\nПередо мной явилась ты,\nКак мимолетное виденье,\nКак гений чистой красоты.",
+   "prompt": [
+    "You are King Claudius in a duel of verses: theatrical, sharp, in character. Your line in the play: \"My words fly up, my thoughts remain below.\" You write short verse and nothing else.",
+    "Form: Tercet. Three lines; the first and last rhyme.\nWrite exactly 3 lines.\nYour flourish: Ask a question: end a line with a question mark.\nYour challenger last said:\nЯ помню чудное мгновенье:\nПередо мной явилась ты,\nКак мимолетное виденье,\nКак гений чистой красоты.\nAnswer them.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Что в глазах моей восприятие?",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Что в глазах моей восприятие?",
+     "tidy": "Что в глазах моей восприятие?",
+     "ms": 271,
+     "tokens": 14,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1007,
+   "roundIndex": 2,
+   "formId": "quatrain-aabb",
+   "difficulty": "apprentice",
+   "card": "Lord Montague",
+   "acrostic": null,
+   "relicWords": [
+    "маска",
+    "сон",
+    "шут",
+    "пьеса",
+    "луна"
+   ],
+   "answering": "Я помню чудное мгновенье:\nПередо мной явилась ты,\nКак мимолетное виденье,\nКак гений чистой красоты.",
+   "prompt": [
+    "You are Lord Montague in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Many a morning hath he there been seen, with tears augmenting the fresh morning dew.\" You write short verse and nothing else.",
+    "Form: Paired Quatrain. Four lines: the first two rhyme, and the last two rhyme.\nWrite exactly 4 lines.\nYour flourish: Rhyme two words inside a single line.\nWork in at least two of these words: маска, сон, шут, пьеса, луна.\nYour challenger last said:\nЯ помню чудное мгновенье:\nПередо мной явилась ты,\nКак мимолетное виденье,\nКак гений чистой красоты.\nAnswer them.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Правилниゃ луна",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/4"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "rhyme-3-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Правилниゃ луна",
+     "tidy": "Правилниゃ луна",
+     "ms": 161,
+     "tokens": 8,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1008,
+   "roundIndex": 0,
+   "formId": "tercet",
+   "difficulty": "player",
+   "card": "Miranda",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Miranda in a duel of verses: theatrical, sharp, in character. Your line in the play: \"O brave new world, that has such people in it!\" You write short verse and nothing else.",
+    "Form: Tercet. Three lines; the first and last rhyme.\nWrite exactly 3 lines.\nYour flourish: Make your last line your longest.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Текст: Трое\nРусский: Тектор\nافتحوا",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "трое / افتحوا"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "Текст: Трое  \n\nРусский: Тектор  \n\nافتحوا",
+     "tidy": "Текст: Трое\nРусский: Тектор\nافتحوا",
+     "ms": 441,
+     "tokens": 20,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "Расик лица, не такой кто\n\nчитак раскрыт",
+     "tidy": "Расик лица, не такой кто\nчитак раскрыт",
+     "ms": 336,
+     "tokens": 19,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1008,
+   "roundIndex": 1,
+   "formId": "heroic-couplet",
+   "difficulty": "apprentice",
+   "card": "Prince Escalus",
+   "acrostic": null,
+   "relicWords": [
+    "кинжал",
+    "кровь",
+    "сон",
+    "видение",
+    "рука"
+   ],
+   "answering": "Белеет парус одинокой\nВ тумане моря голубом!..\nЧто ищет он в стране далекой?\nЧто кинул он в краю родном?..",
+   "prompt": [
+    "You are Prince Escalus in a duel of verses: theatrical, sharp, in character. Your line in the play: \"If ever you disturb our streets again, your lives shall pay the forfeit of the peace.\" You write short verse and nothing else.",
+    "Form: Heroic Couplet. Two rhyming lines of about ten syllables each, as Shakespeare closed his sonnets.\nWrite exactly 2 lines.\nYour flourish: Turn a word of 5 letters or more from your opponent's last verse back on them.\nWork in at least two of these words: кинжал, кровь, сон, видение, рука.\nYour challenger last said:\nБелеет парус одинокой\nВ тумане моря голубом!..\nЧто ищет он в стране далекой?\nЧто кинул он в краю родном?..\nAnswer them.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Видение руки",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "syllables-1",
+     "met": false,
+     "detail": "6/10"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "Видение руки",
+     "tidy": "Видение руки",
+     "ms": 76,
+     "tokens": 5,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1008,
+   "roundIndex": 2,
+   "formId": "quatrain-aabb",
+   "difficulty": "player",
+   "card": "Bottom",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "Белеет парус одинокой\nВ тумане моря голубом!..\nЧто ищет он в стране далекой?\nЧто кинул он в краю родном?..",
+   "prompt": [
+    "You are Bottom in a duel of verses: theatrical, sharp, in character. Your line in the play: \"I have had a most rare vision. I have had a dream, past the wit of man.\" You write short verse and nothing else.",
+    "Form: Paired Quatrain. Four lines: the first two rhyme, and the last two rhyme.\nWrite exactly 4 lines.\nYour flourish: Start three words in one line with the same letter.\nYour challenger last said:\nБелеет парус одинокой\nВ тумане моря голубом!..\nЧто ищет он в стране далекой?\nЧто кинул он в краю родном?..\nAnswer them.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Белеет парус одинокий",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/4"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "rhyme-3-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Белеет парус одинокий",
+     "tidy": "Белеет парус одинокий",
+     "ms": 108,
+     "tokens": 8,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "БЕТЬПРОСОЙ",
+     "tidy": "БЕТЬПРОСОЙ",
+     "ms": 267,
+     "tokens": 11,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1009,
+   "roundIndex": 0,
+   "formId": "epistrophe",
+   "difficulty": "player",
+   "card": "Prospero",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Prospero in a duel of verses: theatrical, sharp, in character. Your line in the play: \"We are such stuff as dreams are made on.\" You write short verse and nothing else.",
+    "Form: Epistrophe. Three lines that all end on the same word.\nWrite exactly 3 lines.\nYour flourish: Make your last line your longest.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Возможно, стоит мне\nдля чего ты не с ногтобок\nчто о моей стороне",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-ending",
+     "met": false,
+     "detail": "мне · ногтобок · стороне"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "Возможно, стоит мне  \nдля чего ты не с ногтобок  \n\nчто о моей стороне",
+     "tidy": "Возможно, стоит мне\nдля чего ты не с ногтобок\nчто о моей стороне",
+     "ms": 414,
+     "tokens": 31,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "Я стопит его ра켓  \nШакает его шама  \nТягаю его в путь",
+     "tidy": "Я стопит его ра켓\nШакает его шама\nТягаю его в путь",
+     "ms": 416,
+     "tokens": 26,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1009,
+   "roundIndex": 1,
+   "formId": "couplet",
+   "difficulty": "master",
+   "card": "Mary Shelley",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "Играют волны — ветер свищет,\nИ мачта гнется и скрыпит...\nУвы! он счастия не ищет,\nИ не от счастия бежит!",
+   "prompt": [
+    "You are Mary Shelley in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Beware; for I am fearless, and therefore powerful.\" You write short verse and nothing else.",
+    "Form: Couplet. Two lines that rhyme.\nWrite exactly 2 lines.\nYour flourish: End your verse on the same word it began with.\nYour challenger last said:\nИграют волны — ветер свищет,\nИ мачта гнется и скрыпит...\nУвы! он счастия не ищет,\nИ не от счастия бежит!\nAnswer them.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Ведь счастия не искы\nБед",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "2/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "искы / бед"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "Ведь счастия не искы\n\nБед",
+     "tidy": "Ведь счастия не искы\nБед",
+     "ms": 241,
+     "tokens": 13,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 2,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "Всех на глубине слов — путь по пути",
+     "tidy": "Всех на глубине слов — путь по пути",
+     "ms": 220,
+     "tokens": 14,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Восток прежде поодечен  \nБесконо будет пыłкой",
+     "tidy": "Восток прежде поодечен\nБесконо будет пыłкой",
+     "ms": 383,
+     "tokens": 21,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 72,
+     "rawLines": 2,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1009,
+   "roundIndex": 2,
+   "formId": "haiku",
+   "difficulty": "player",
+   "card": "Macbeth",
+   "acrostic": null,
+   "relicWords": [
+    "маска",
+    "сон",
+    "шут",
+    "пьеса",
+    "луна"
+   ],
+   "answering": "Играют волны — ветер свищет,\nИ мачта гнется и скрыпит...\nУвы! он счастия не ищет,\nИ не от счастия бежит!",
+   "prompt": [
+    "You are Macbeth in a duel of verses: theatrical, sharp, in character. Your line in the play: \"I dare do all that may become a man; who dares do more is none.\" You write short verse and nothing else.",
+    "Form: Haiku. Three lines of 5, 7 and 5 syllables.\nWrite exactly 3 lines.\nYour flourish: Repeat one strong word three times.\nWork in at least two of these words: маска, сон, шут, пьеса, луна.\nYour challenger last said:\nИграют волны — ветер свищет,\nИ мачта гнется и скрыпит...\nУвы! он счастия не ищет,\nИ не от счастия бежит!\nAnswer them.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Луна",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "syllables-1",
+     "met": false,
+     "detail": "2/5"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "syllables-3",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Луна",
+     "tidy": "Луна",
+     "ms": 60,
+     "tokens": 3,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Ядло — молнока луна",
+     "tidy": "Ядло — молнока луна",
+     "ms": 180,
+     "tokens": 10,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1010,
+   "roundIndex": 0,
+   "formId": "tercet",
+   "difficulty": "master",
+   "card": "The Sonnet Man",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are The Sonnet Man in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Shall I compare thee to a summer's day?\" You write short verse and nothing else.",
+    "Form: Tercet. Three lines; the first and last rhyme.\nWrite exactly 3 lines.\nYour flourish: End every line on the same rhyme.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Укав хедо\nТелят\nто мне душка ценит",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "хедо / ценит"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "Укав хедо\n\nТелят\n\nто мне душка ценит",
+     "tidy": "Укав хедо\nТелят\nто мне душка ценит",
+     "ms": 267,
+     "tokens": 20,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "Tercet\n\nшва  \nсча  \nмо",
+     "tidy": "Tercet\nшва\nсча",
+     "ms": 273,
+     "tokens": 11,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 4,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "Русский кавер: дао терко\n\nтова ледька шатк\n\nдляя негруга",
+     "tidy": "Русский кавер: дао терко\nтова ледька шатк\nдляя негруга",
+     "ms": 571,
+     "tokens": 28,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1010,
+   "roundIndex": 1,
+   "formId": "heroic-couplet",
+   "difficulty": "player",
+   "card": "Lady Macbeth",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "Мороз и солнце; день чудесный!\nЕще ты дремлешь, друг прелестный —\nПора, красавица, проснись:",
+   "prompt": [
+    "You are Lady Macbeth in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Come, you spirits that tend on mortal thoughts, unsex me here.\" You write short verse and nothing else.",
+    "Form: Heroic Couplet. Two rhyming lines of about ten syllables each, as Shakespeare closed his sonnets.\nWrite exactly 2 lines.\nYour flourish: Repeat one strong word three times.\nYour challenger last said:\nМороз и солнце; день чудесный!\nЕще ты дремлешь, друг прелестный —\nПора, красавица, проснись:\nAnswer them.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Пора красви",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "syllables-1",
+     "met": false,
+     "detail": "4/10"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Пора красви",
+     "tidy": "Пора красви",
+     "ms": 78,
+     "tokens": 4,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Пора крас비цой",
+     "tidy": "Пора крас비цой",
+     "ms": 77,
+     "tokens": 6,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1010,
+   "roundIndex": 2,
+   "formId": "crescendo",
+   "difficulty": "master",
+   "card": "Mary Shelley",
+   "acrostic": null,
+   "relicWords": [
+    "кинжал",
+    "кровь",
+    "сон",
+    "видение",
+    "рука"
+   ],
+   "answering": "Мороз и солнце; день чудесный!\nЕще ты дремлешь, друг прелестный —\nПора, красавица, проснись:",
+   "prompt": [
+    "You are Mary Shelley in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Beware; for I am fearless, and therefore powerful.\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: End your verse on the same word it began with.\nWork in at least two of these words: кинжал, кровь, сон, видение, рука.\nYour challenger last said:\nМороз и солнце; день чудесный!\nЕще ты дремлешь, друг прелестный —\nПора, красавица, проснись:\nAnswer them.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Вкус полок, кровь бедной\nРука красавица",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/3"
+    },
+    {
+     "id": "growing",
+     "met": false,
+     "detail": "4 < 2"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "Верно моё страх, но мир не без ваши.",
+     "tidy": "Верно моё страх, но мир не без ваши.",
+     "ms": 301,
+     "tokens": 17,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Вкус полок, кровь бедной\n\nРука красавица",
+     "tidy": "Вкус полок, кровь бедной\nРука красавица",
+     "ms": 327,
+     "tokens": 19,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    },
+    {
+     "raw": "Воздание красба\n\nПротиволок в тиоре\n\nО버ое",
+     "tidy": "Воздание красба\nПротиволок в тиоре\nО버ое",
+     "ms": 281,
+     "tokens": 17,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1011,
+   "roundIndex": 0,
+   "formId": "haiku",
+   "difficulty": "master",
+   "card": "Cassius",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Cassius in a duel of verses: theatrical, sharp, in character. Your line in the play: \"The fault, dear Brutus, is not in our stars, but in ourselves.\" You write short verse and nothing else.",
+    "Form: Haiku. Three lines of 5, 7 and 5 syllables.\nWrite exactly 3 lines.\nYour flourish: Call on a character by name.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Русский луга: В твой кровный скрон\nCall on Bruteus\nTaunts tu",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 5,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "syllables-1",
+     "met": false,
+     "detail": "8/5"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "4/7"
+    },
+    {
+     "id": "syllables-3",
+     "met": false,
+     "detail": "2/5"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 5,
+   "drafts": [
+    {
+     "raw": "Русский луга: В твой кровный скрон\n\nCall on Bruteus\n\nTaunts tu",
+     "tidy": "Русский луга: В твой кровный скрон\nCall on Bruteus\nTaunts tu",
+     "ms": 328,
+     "tokens": 26,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 5,
+     "craft": 5
+    },
+    {
+     "raw": "Восхождь глава\n\nягодон  \nтолка  \nпост",
+     "tidy": "Восхождь глава\nягодон\nтолка",
+     "ms": 300,
+     "tokens": 18,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 4,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 5,
+     "craft": 5
+    },
+    {
+     "raw": "يا سماح، يا صبور\n\nافتُرّنا في الظلال السرية\n\nصرخني خوفاً",
+     "tidy": "يا سماح، يا صبور\nافتُرّنا في الظلال السرية\nصرخني خوفاً",
+     "ms": 318,
+     "tokens": 31,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 5,
+     "craft": 5
+    }
+   ]
+  },
+  {
+   "seed": 1011,
+   "roundIndex": 1,
+   "formId": "anaphora",
+   "difficulty": "apprentice",
+   "card": "Viola",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "Духовной жаждою томим,\nВ пустыне мрачной я влачился, —\nИ шестикрылый серафим\nНа перепутье мне явился.",
+   "prompt": [
+    "You are Viola in a duel of verses: theatrical, sharp, in character. Your line in the play: \"I am not what I am.\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same word.\nWrite exactly 3 lines.\nYour flourish: Keep every line to 6 words or fewer.\nYour challenger last said:\nДуховной жаждою томим,\nВ пустыне мрачной я влачился, —\nИ шестикрылый серафим\nНа перепутье мне явился.\nAnswer them.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Духовная жажна в нем\nПустная мрака в руках\nШестка 서фем в круге",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-opening",
+     "met": false,
+     "detail": "духовная · пустная · шестка"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 9,
+   "drafts": [
+    {
+     "raw": "Духовная жажна в нем\n\nПустная мрака в руках\n\nШестка 서фем в круге",
+     "tidy": "Духовная жажна в нем\nПустная мрака в руках\nШестка 서фем в круге",
+     "ms": 554,
+     "tokens": 30,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 9
+    }
+   ]
+  },
+  {
+   "seed": 1011,
+   "roundIndex": 2,
+   "formId": "tercet",
+   "difficulty": "apprentice",
+   "card": "Titania",
+   "acrostic": null,
+   "relicWords": [
+    "книга",
+    "буря",
+    "магия",
+    "страница",
+    "пучина"
+   ],
+   "answering": "Духовной жаждою томим,\nВ пустыне мрачной я влачился, —\nИ шестикрылый серафим\nНа перепутье мне явился.",
+   "prompt": [
+    "You are Titania in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Come, sit thee down upon this flowery bed.\" You write short verse and nothing else.",
+    "Form: Tercet. Three lines; the first and last rhyme.\nWrite exactly 3 lines.\nYour flourish: Start three words in one line with the same letter.\nWork in at least two of these words: книга, буря, магия, страница, пучина.\nYour challenger last said:\nДуховной жаждою томим,\nВ пустыне мрачной я влачился, —\nИ шестикрылый серафим\nНа перепутье мне явился.\nAnswer them.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "В книге моя тать была\nПуشيبة мала",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/3"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "В книге моя тать была\n\n\nПуشيبة мала",
+     "tidy": "В книге моя тать была\nПуشيبة мала",
+     "ms": 287,
+     "tokens": 15,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1012,
+   "roundIndex": 0,
+   "formId": "heroic-couplet",
+   "difficulty": "master",
+   "card": "Odysseus",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Odysseus in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Tell me, O Muse, of the man of many ways, who wandered far.\" You write short verse and nothing else.",
+    "Form: Heroic Couplet. Two rhyming lines of about ten syllables each, as Shakespeare closed his sonnets.\nWrite exactly 2 lines.\nYour flourish: Use two words of 10 letters or more.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Укредайте, что пытается,\nТовар на костей, чувствует нехарактوري",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 8,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "2/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "пытается / нехарактوري"
+    },
+    {
+     "id": "syllables-1",
+     "met": true,
+     "detail": "9/10"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "?"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 8,
+   "drafts": [
+    {
+     "raw": "Укрек: датат ваши",
+     "tidy": "Укрек: датат ваши",
+     "ms": 119,
+     "tokens": 10,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Удобство как лавка\n\nالباب дойкто",
+     "tidy": "Удобство как лавка\nالباب дойкто",
+     "ms": 284,
+     "tokens": 15,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 72,
+     "rawLines": 2,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 4,
+     "craft": 4
+    },
+    {
+     "raw": "Укредайте, что пытается,\n\nТовар на костей, чувствует нехарактوري",
+     "tidy": "Укредайте, что пытается,\nТовар на костей, чувствует нехарактوري",
+     "ms": 230,
+     "tokens": 28,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 72,
+     "rawLines": 2,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 8,
+     "craft": 8
+    }
+   ]
+  },
+  {
+   "seed": 1012,
+   "roundIndex": 1,
+   "formId": "epistrophe",
+   "difficulty": "master",
+   "card": "Elizabeth Barrett Browning",
+   "acrostic": null,
+   "relicWords": [
+    "маска",
+    "сон",
+    "шут",
+    "пьеса",
+    "луна"
+   ],
+   "answering": "Любви, надежды, тихой славы\nНедолго нежил нас обман,\nИсчезли юные забавы,\nКак сон, как утренний туман;",
+   "prompt": [
+    "You are Elizabeth Barrett Browning in a duel of verses: theatrical, sharp, in character. Your line in the play: \"How do I love thee? Let me count the ways.\" You write short verse and nothing else.",
+    "Form: Epistrophe. Three lines that all end on the same word.\nWrite exactly 3 lines.\nYour flourish: Give every line the same number of words.\nWork in at least two of these words: маска, сон, шут, пьеса, луна.\nYour challenger last said:\nЛюбви, надежды, тихой славы\nНедолго нежил нас обман,\nИсчезли юные забавы,\nКак сон, как утренний туман;\nAnswer them.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Лёклюночка в корзае\nОн дни несли, а тайне\nШетто утренний",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-ending",
+     "met": false,
+     "detail": "корзае · тайне · утренний"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "Лёклюночка в корзае\n\nОн дни несли, а тайне\n\nШетто утренний",
+     "tidy": "Лёклюночка в корзае\nОн дни несли, а тайне\nШетто утренний",
+     "ms": 551,
+     "tokens": 28,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "Любви, тихой слава",
+     "tidy": "Любви, тихой слава",
+     "ms": 251,
+     "tokens": 10,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Лучви поднял луну",
+     "tidy": "Лучви поднял луну",
+     "ms": 240,
+     "tokens": 9,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1012,
+   "roundIndex": 2,
+   "formId": "couplet",
+   "difficulty": "apprentice",
+   "card": "Lady Capulet",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "Любви, надежды, тихой славы\nНедолго нежил нас обман,\nИсчезли юные забавы,\nКак сон, как утренний туман;",
+   "prompt": [
+    "You are Lady Capulet in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Marry, that marry is the very theme I came to talk of.\" You write short verse and nothing else.",
+    "Form: Couplet. Two lines that rhyme.\nWrite exactly 2 lines.\nYour flourish: Cry out: end a line with an exclamation mark.\nYour challenger last said:\nЛюбви, надежды, тихой славы\nНедолго нежил нас обман,\nИсчезли юные забавы,\nКак сон, как утренний туман;\nAnswer them.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Властик замечает, что привет�й, наоборо.",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Властик замечает, что привет�й, наоборо.",
+     "tidy": "Властик замечает, что привет�й, наоборо.",
+     "ms": 189,
+     "tokens": 19,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1013,
+   "roundIndex": 0,
+   "formId": "crescendo",
+   "difficulty": "apprentice",
+   "card": "Mercutio",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Mercutio in a duel of verses: theatrical, sharp, in character. Your line in the play: \"A plague on both your houses!\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Rhyme two words inside a single line.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Придаче дле\nвсёлао\nлюбовь",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "growing",
+     "met": false,
+     "detail": "2 < 1 < 1"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 9,
+   "drafts": [
+    {
+     "raw": "Придаче дле\n\nвсёлао\n\nлюбовь",
+     "tidy": "Придаче дле\nвсёлао\nлюбовь",
+     "ms": 287,
+     "tokens": 15,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 9
+    }
+   ]
+  },
+  {
+   "seed": 1013,
+   "roundIndex": 1,
+   "formId": "quatrain-abab",
+   "difficulty": "master",
+   "card": "William Blake",
+   "acrostic": null,
+   "relicWords": [
+    "буря",
+    "чары",
+    "посох",
+    "остров",
+    "пучина"
+   ],
+   "answering": "Погиб поэт! — невольник чести, —\nПал, оклеветанный молвой,\nС свинцом в груди и жаждой мести,\nПоникнув гордой головой!..",
+   "prompt": [
+    "You are William Blake in a duel of verses: theatrical, sharp, in character. Your line in the play: \"To see a World in a Grain of Sand and a Heaven in a Wild Flower.\" You write short verse and nothing else.",
+    "Form: Crossed Quatrain. Four lines: line 1 rhymes with 3, line 2 with 4.\nWrite exactly 4 lines.\nYour flourish: End your verse on the same word it began with.\nWork in at least two of these words: буря, чары, посох, остров, пучина.\nYour challenger last said:\nПогиб поэт! — невольник чести, —\nПал, оклеветанный молвой,\nС свинцом в груди и жаждой мести,\nПоникнув гордой головой!..\nAnswer them.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Борыя чары посох остров пуチェ",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/4"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "rhyme-2-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "Вобщчая страда",
+     "tidy": "Вобщчая страда",
+     "ms": 106,
+     "tokens": 7,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Борыя чары посох остров пуチェ",
+     "tidy": "Борыя чары посох остров пуチェ",
+     "ms": 271,
+     "tokens": 12,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    },
+    {
+     "raw": "Присоб, isla, пучиň",
+     "tidy": "Присоб, isla, пучиň",
+     "ms": 128,
+     "tokens": 9,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1013,
+   "roundIndex": 2,
+   "formId": "tercet",
+   "difficulty": "player",
+   "card": "Persephone",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "Погиб поэт! — невольник чести, —\nПал, оклеветанный молвой,\nС свинцом в груди и жаждой мести,\nПоникнув гордой головой!..",
+   "prompt": [
+    "You are Persephone in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Six seeds I ate, and bound myself between two worlds forever.\" You write short verse and nothing else.",
+    "Form: Tercet. Three lines; the first and last rhyme.\nWrite exactly 3 lines.\nYour flourish: Turn a word of 5 letters or more from your opponent's last verse back on them.\nYour challenger last said:\nПогиб поэт! — невольник чести, —\nПал, оклеветанный молвой,\nС свинцом в груди и жаждой мести,\nПоникнув гордой головой!..\nAnswer them.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Терка",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Терка",
+     "tidy": "Терка",
+     "ms": 164,
+     "tokens": 3,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Тронь",
+     "tidy": "Тронь",
+     "ms": 85,
+     "tokens": 3,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1014,
+   "roundIndex": 0,
+   "formId": "couplet",
+   "difficulty": "player",
+   "card": "Oberon",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Oberon in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Ill met by moonlight, proud Titania.\" You write short verse and nothing else.",
+    "Form: Couplet. Two lines that rhyme.\nWrite exactly 2 lines.\nYour flourish: Start three words in one line with the same letter.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Start three mots avec le même lettre\nOuvre le duel taut",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "2/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "lettre / taut"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "Start three mots avec le même lettre\n\nOuvre le duel taut",
+     "tidy": "Start three mots avec le même lettre\nOuvre le duel taut",
+     "ms": 336,
+     "tokens": 15,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 2,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "Ручно:开始三字，相同。",
+     "tidy": "Ручно:开始三字，相同。",
+     "ms": 164,
+     "tokens": 11,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1014,
+   "roundIndex": 1,
+   "formId": "quatrain-abab",
+   "difficulty": "apprentice",
+   "card": "Lord Montague",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "Ночевала тучка золотая\nНа груди утеса-великана,\nУтром в путь она умчалась рано,\nПо лазури весело играя.",
+   "prompt": [
+    "You are Lord Montague in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Many a morning hath he there been seen, with tears augmenting the fresh morning dew.\" You write short verse and nothing else.",
+    "Form: Crossed Quatrain. Four lines: line 1 rhymes with 3, line 2 with 4.\nWrite exactly 4 lines.\nYour flourish: Rhyme two words inside a single line.\nYour challenger last said:\nНочевала тучка золотая\nНа груди утеса-великана,\nУтром в путь она умчалась рано,\nПо лазури весело играя.\nAnswer them.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Рыnouча в лазуре",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/4"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "rhyme-2-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Рыnouча в лазуре",
+     "tidy": "Рыnouча в лазуре",
+     "ms": 209,
+     "tokens": 9,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1014,
+   "roundIndex": 2,
+   "formId": "acrostic",
+   "difficulty": "master",
+   "card": "Hamlet",
+   "acrostic": "трон",
+   "relicWords": [
+    "корона",
+    "трон",
+    "гордыня",
+    "ведьма",
+    "король"
+   ],
+   "answering": "Ночевала тучка золотая\nНа груди утеса-великана,\nУтром в путь она умчалась рано,\nПо лазури весело играя.",
+   "prompt": [
+    "You are Hamlet in a duel of verses: theatrical, sharp, in character. Your line in the play: \"To be, or not to be, that is the question.\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per letter: the first letters must spell ТРОН.\nWrite exactly 4 lines.\nYour flourish: Ask a question: end a line with a question mark.\nWork in at least two of these words: корона, трон, гордыня, ведьма, король.\nYour challenger last said:\nНочевала тучка золотая\nНа груди утеса-великана,\nУтром в путь она умчалась рано,\nПо лазури весело играя.\nAnswer them.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "ТРОН",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/4"
+    },
+    {
+     "id": "spells",
+     "met": false,
+     "detail": "Т"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "ТРОН",
+     "tidy": "ТРОН",
+     "ms": 82,
+     "tokens": 3,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Трона",
+     "tidy": "Трона",
+     "ms": 166,
+     "tokens": 3,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "ТРОН",
+     "tidy": "ТРОН",
+     "ms": 81,
+     "tokens": 3,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1015,
+   "roundIndex": 0,
+   "formId": "heroic-couplet",
+   "difficulty": "apprentice",
+   "card": "Mary Shelley",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Mary Shelley in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Beware; for I am fearless, and therefore powerful.\" You write short verse and nothing else.",
+    "Form: Heroic Couplet. Two rhyming lines of about ten syllables each, as Shakespeare closed his sonnets.\nWrite exactly 2 lines.\nYour flourish: End your verse on the same word it began with.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Ответ: Недостаточно.",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "syllables-1",
+     "met": false,
+     "detail": "7/10"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Ответ: Недостаточно.",
+     "tidy": "Ответ: Недостаточно.",
+     "ms": 191,
+     "tokens": 9,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1015,
+   "roundIndex": 1,
+   "formId": "anaphora",
+   "difficulty": "player",
+   "card": "Mercutio",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "Тучки небесные, вечные странники!\nСтепью лазурною, цепью жемчужною\nМчитесь вы, будто, как я же, изгнанники,\nС милого севера в сторону южную.",
+   "prompt": [
+    "You are Mercutio in a duel of verses: theatrical, sharp, in character. Your line in the play: \"A plague on both your houses!\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same word.\nWrite exactly 3 lines.\nYour flourish: Rhyme two words inside a single line.\nYour challenger last said:\nТучки небесные, вечные странники!\nСтепью лазурною, цепью жемчужною\nМчитесь вы, будто, как я же, изгнанники,\nС милого севера в сторону южную.\nAnswer them.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Рынота внутри одинлайн",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "same-opening",
+     "met": false,
+     "detail": "рынота"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Рынота внутри одинлайн",
+     "tidy": "Рынота внутри одинлайн",
+     "ms": 168,
+     "tokens": 9,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Поступите, нашли",
+     "tidy": "Поступите, нашли",
+     "ms": 87,
+     "tokens": 7,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1015,
+   "roundIndex": 2,
+   "formId": "couplet",
+   "difficulty": "master",
+   "card": "Percy Bysshe Shelley",
+   "acrostic": null,
+   "relicWords": [
+    "корона",
+    "трон",
+    "гордыня",
+    "ведьма",
+    "король"
+   ],
+   "answering": "Тучки небесные, вечные странники!\nСтепью лазурною, цепью жемчужною\nМчитесь вы, будто, как я же, изгнанники,\nС милого севера в сторону южную.",
+   "prompt": [
+    "You are Percy Bysshe Shelley in a duel of verses: theatrical, sharp, in character. Your line in the play: \"If Winter comes, can Spring be far behind?\" You write short verse and nothing else.",
+    "Form: Couplet. Two lines that rhyme.\nWrite exactly 2 lines.\nYour flourish: End your verse on the same word it began with.\nWork in at least two of these words: корона, трон, гордыня, ведьма, король.\nYour challenger last said:\nТучки небесные, вечные странники!\nСтепью лазурною, цепью жемчужною\nМчитесь вы, будто, как я же, изгнанники,\nС милого севера в сторону южную.\nAnswer them.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Вокруг короля возгороса\nКороль по ladoам",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "2/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "возгороса / ladoам"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "Вокруг короля возгороса  \nКороль по ladoам",
+     "tidy": "Вокруг короля возгороса\nКороль по ladoам",
+     "ms": 149,
+     "tokens": 14,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 2,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "В корне словах\n\nкороль",
+     "tidy": "В корне словах\nкороль",
+     "ms": 207,
+     "tokens": 8,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 72,
+     "rawLines": 2,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "Король",
+     "tidy": "Король",
+     "ms": 95,
+     "tokens": 3,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1016,
+   "roundIndex": 0,
+   "formId": "couplet",
+   "difficulty": "apprentice",
+   "card": "Olivia",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Olivia in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Love sought is good, but given unsought, is better.\" You write short verse and nothing else.",
+    "Form: Couplet. Two lines that rhyme.\nWrite exactly 2 lines.\nYour flourish: Keep every line to 6 words or fewer.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Восхлится тава, в стиле\nОкно открыто",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "2/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "стиле / открыто"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 9,
+   "drafts": [
+    {
+     "raw": "Восхлится тава, в стиле\n\nОкно открыто",
+     "tidy": "Восхлится тава, в стиле\nОкно открыто",
+     "ms": 319,
+     "tokens": 18,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 2,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 9
+    }
+   ]
+  },
+  {
+   "seed": 1016,
+   "roundIndex": 1,
+   "formId": "acrostic",
+   "difficulty": "apprentice",
+   "card": "Hamlet",
+   "acrostic": "луна",
+   "relicWords": null,
+   "answering": "Сижу за решёткой в темнице сырой.\nВскормленный в неволе орёл молодой,\nМой грустный товарищ, махая крылом,\nКровавую пищу клюёт под окном,",
+   "prompt": [
+    "You are Hamlet in a duel of verses: theatrical, sharp, in character. Your line in the play: \"To be, or not to be, that is the question.\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per letter: the first letters must spell ЛУНА.\nWrite exactly 4 lines.\nYour flourish: Ask a question: end a line with a question mark.\nYour challenger last said:\nСижу за решёткой в темнице сырой.\nВскормленный в неволе орёл молодой,\nМой грустный товарищ, махая крылом,\nКровавую пищу клюёт под окном,\nAnswer them.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "ЛУНА",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/4"
+    },
+    {
+     "id": "spells",
+     "met": false,
+     "detail": "Л"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "ЛУНА",
+     "tidy": "ЛУНА",
+     "ms": 68,
+     "tokens": 4,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1016,
+   "roundIndex": 2,
+   "formId": "tercet",
+   "difficulty": "master",
+   "card": "Mary Shelley",
+   "acrostic": null,
+   "relicWords": [
+    "маска",
+    "сон",
+    "шут",
+    "пьеса",
+    "луна"
+   ],
+   "answering": "Сижу за решёткой в темнице сырой.\nВскормленный в неволе орёл молодой,\nМой грустный товарищ, махая крылом,\nКровавую пищу клюёт под окном,",
+   "prompt": [
+    "You are Mary Shelley in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Beware; for I am fearless, and therefore powerful.\" You write short verse and nothing else.",
+    "Form: Tercet. Three lines; the first and last rhyme.\nWrite exactly 3 lines.\nYour flourish: End your verse on the same word it began with.\nWork in at least two of these words: маска, сон, шут, пьеса, луна.\nYour challenger last said:\nСижу за решёткой в темнице сырой.\nВскормленный в неволе орёл молодой,\nМой грустный товарищ, махая крылом,\nКровавую пищу клюёт под окном,\nAnswer them.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Лウна",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Лウна",
+     "tidy": "Лウна",
+     "ms": 127,
+     "tokens": 3,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Луна",
+     "tidy": "Луна",
+     "ms": 134,
+     "tokens": 3,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Луна грит",
+     "tidy": "Луна грит",
+     "ms": 78,
+     "tokens": 5,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1017,
+   "roundIndex": 0,
+   "formId": "tercet",
+   "difficulty": "apprentice",
+   "card": "Hamlet",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Hamlet in a duel of verses: theatrical, sharp, in character. Your line in the play: \"To be, or not to be, that is the question.\" You write short verse and nothing else.",
+    "Form: Tercet. Three lines; the first and last rhyme.\nWrite exactly 3 lines.\nYour flourish: Ask a question: end a line with a question mark.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Восс缘чаще, что из кобой?",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Восс缘чаще, что из кобой?",
+     "tidy": "Восс缘чаще, что из кобой?",
+     "ms": 285,
+     "tokens": 13,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1017,
+   "roundIndex": 1,
+   "formId": "epistrophe",
+   "difficulty": "apprentice",
+   "card": "Juliet",
+   "acrostic": null,
+   "relicWords": [
+    "золото",
+    "выбор",
+    "милость",
+    "свинец",
+    "ларец"
+   ],
+   "answering": "Природа жаждущих степей\nЕго в день гнева породила,\nИ зелень мертвую ветвей\nИ корни ядом напоила.",
+   "prompt": [
+    "You are Juliet in a duel of verses: theatrical, sharp, in character. Your line in the play: \"What's in a name? That which we call a rose...\" You write short verse and nothing else.",
+    "Form: Epistrophe. Three lines that all end on the same word.\nWrite exactly 3 lines.\nYour flourish: Cry out: end a line with an exclamation mark.\nWork in at least two of these words: золото, выбор, милость, свинец, ларец.\nYour challenger last said:\nПрирода жаждущих степей\nЕго в день гнева породила,\nИ зелень мертвую ветвей\nИ корни ядом напоила.\nAnswer them.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Золото\n프로세우\nМилость",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-ending",
+     "met": false,
+     "detail": "золото · 프로세우 · милость"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 12,
+   "drafts": [
+    {
+     "raw": "Золото  \n프로세우  \n\nМилость  \nсвист",
+     "tidy": "Золото\n프로세우\nМилость",
+     "ms": 323,
+     "tokens": 17,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 4,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 12
+    }
+   ]
+  },
+  {
+   "seed": 1017,
+   "roundIndex": 2,
+   "formId": "acrostic",
+   "difficulty": "player",
+   "card": "Edgar Allan Poe",
+   "acrostic": "свет",
+   "relicWords": null,
+   "answering": "Природа жаждущих степей\nЕго в день гнева породила,\nИ зелень мертвую ветвей\nИ корни ядом напоила.",
+   "prompt": [
+    "You are Edgar Allan Poe in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Once upon a midnight dreary, while I pondered, weak and weary.\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per letter: the first letters must spell СВЕТ.\nWrite exactly 4 lines.\nYour flourish: End your verse on the same word it began with.\nYour challenger last said:\nПрирода жаждущих степей\nЕго в день гнева породила,\nИ зелень мертвую ветвей\nИ корни ядом напоила.\nAnswer them.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Свете",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/4"
+    },
+    {
+     "id": "spells",
+     "met": false,
+     "detail": "С"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Свете",
+     "tidy": "Свете",
+     "ms": 58,
+     "tokens": 3,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Эжнехот жаждущихsteh  \negoгневапорилийд  \nикорnten корнидак",
+     "tidy": "Эжнехот жаждущихsteh\negoгневапорилийд\nикорnten корнидак",
+     "ms": 554,
+     "tokens": 27,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 3,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1018,
+   "roundIndex": 0,
+   "formId": "acrostic",
+   "difficulty": "master",
+   "card": "Brutus",
+   "acrostic": "сон",
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Brutus in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Not that I loved Caesar less, but that I loved Rome more.\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per letter: the first letters must spell СОН.\nWrite exactly 3 lines.\nYour flourish: Call on a character by name.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Сон\nму\nон",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "spells",
+     "met": false,
+     "detail": "СМО"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "Сон\n\nму\n\nон",
+     "tidy": "Сон\nму\nон",
+     "ms": 98,
+     "tokens": 6,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "Сон\n\nОн\n\nДа",
+     "tidy": "Сон\nОн\nДа",
+     "ms": 270,
+     "tokens": 8,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "ЦИН",
+     "tidy": "ЦИН",
+     "ms": 60,
+     "tokens": 3,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1018,
+   "roundIndex": 1,
+   "formId": "couplet",
+   "difficulty": "player",
+   "card": "Friar Lawrence",
+   "acrostic": null,
+   "relicWords": [
+    "слёзы",
+    "правда",
+    "дочь",
+    "ничто",
+    "сердце"
+   ],
+   "answering": "Я вас любил: любовь ещё, быть может,\nВ душе моей угасла не совсем;\nНо пусть она вас больше не тревожит;\nЯ не хочу печалить вас ничем.",
+   "prompt": [
+    "You are Friar Lawrence in a duel of verses: theatrical, sharp, in character. Your line in the play: \"These violent delights have violent ends.\" You write short verse and nothing else.",
+    "Form: Couplet. Two lines that rhyme.\nWrite exactly 2 lines.\nYour flourish: Turn a word of 5 letters or more from your opponent's last verse back on them.\nWork in at least two of these words: слёзы, правда, дочь, ничто, сердце.\nYour challenger last said:\nЯ вас любил: любовь ещё, быть может,\nВ душе моей угасла не совсем;\nНо пусть она вас больше не тревожит;\nЯ не хочу печалить вас ничем.\nAnswer them.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Слёезы в глубинах\nшедьбье моей угасла",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "2/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "глубинах / угасла"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 9,
+   "drafts": [
+    {
+     "raw": "Слёезы в глубинах  \nшедьбье моей угасла",
+     "tidy": "Слёезы в глубинах\nшедьбье моей угасла",
+     "ms": 462,
+     "tokens": 22,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 2,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 9
+    },
+    {
+     "raw": "Лучьзбелая",
+     "tidy": "Лучьзбелая",
+     "ms": 151,
+     "tokens": 7,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1018,
+   "roundIndex": 2,
+   "formId": "haiku",
+   "difficulty": "apprentice",
+   "card": "Odysseus",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "Я вас любил: любовь ещё, быть может,\nВ душе моей угасла не совсем;\nНо пусть она вас больше не тревожит;\nЯ не хочу печалить вас ничем.",
+   "prompt": [
+    "You are Odysseus in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Tell me, O Muse, of the man of many ways, who wandered far.\" You write short verse and nothing else.",
+    "Form: Haiku. Three lines of 5, 7 and 5 syllables.\nWrite exactly 3 lines.\nYour flourish: Use two words of 10 letters or more.\nYour challenger last said:\nЯ вас любил: любовь ещё, быть может,\nВ душе моей угасла не совсем;\nНо пусть она вас больше не тревожит;\nЯ не хочу печалить вас ничем.\nAnswer them.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Луша поехала\nмост\nболь",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 5,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "syllables-1",
+     "met": false,
+     "detail": "6/5"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "1/7"
+    },
+    {
+     "id": "syllables-3",
+     "met": false,
+     "detail": "1/5"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 5,
+   "drafts": [
+    {
+     "raw": "Луша поехала\n\nмост\n\nболь",
+     "tidy": "Луша поехала\nмост\nболь",
+     "ms": 126,
+     "tokens": 12,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 5,
+     "craft": 5
+    }
+   ]
+  },
+  {
+   "seed": 1019,
+   "roundIndex": 0,
+   "formId": "tercet",
+   "difficulty": "player",
+   "card": "Viola",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Viola in a duel of verses: theatrical, sharp, in character. Your line in the play: \"I am not what I am.\" You write short verse and nothing else.",
+    "Form: Tercet. Three lines; the first and last rhyme.\nWrite exactly 3 lines.\nYour flourish: Keep every line to 6 words or fewer.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Я не тектор\nТаби\nтва",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "тектор / тва"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 9,
+   "drafts": [
+    {
+     "raw": "Ваша моя влюбировка\n\n taunt tu",
+     "tidy": "Ваша моя влюбировка\ntaunt tu",
+     "ms": 148,
+     "tokens": 14,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Я не тектор\n\nТаби\n\nтва",
+     "tidy": "Я не тектор\nТаби\nтва",
+     "ms": 259,
+     "tokens": 11,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 9
+    }
+   ]
+  },
+  {
+   "seed": 1019,
+   "roundIndex": 1,
+   "formId": "epistrophe",
+   "difficulty": "player",
+   "card": "Tybalt",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "Я помню чудное мгновенье:\nПередо мной явилась ты,\nКак мимолетное виденье,\nКак гений чистой красоты.",
+   "prompt": [
+    "You are Tybalt in a duel of verses: theatrical, sharp, in character. Your line in the play: \"What, drawn, and talk of peace? I hate the word.\" You write short verse and nothing else.",
+    "Form: Epistrophe. Three lines that all end on the same word.\nWrite exactly 3 lines.\nYour flourish: Cry out: end a line with an exclamation mark.\nYour challenger last said:\nЯ помню чудное мгновенье:\nПередо мной явилась ты,\nКак мимолетное виденье,\nКак гений чистой красоты.\nAnswer them.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Cry out",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "same-ending",
+     "met": false,
+     "detail": "out"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Cry out",
+     "tidy": "Cry out",
+     "ms": 51,
+     "tokens": 3,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Cry out: ends with exclamation mark",
+     "tidy": "Cry out: ends with exclamation mark",
+     "ms": 114,
+     "tokens": 9,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1019,
+   "roundIndex": 2,
+   "formId": "quatrain-aabb",
+   "difficulty": "master",
+   "card": "Titania",
+   "acrostic": null,
+   "relicWords": [
+    "книга",
+    "буря",
+    "магия",
+    "страница",
+    "пучина"
+   ],
+   "answering": "Я помню чудное мгновенье:\nПередо мной явилась ты,\nКак мимолетное виденье,\nКак гений чистой красоты.",
+   "prompt": [
+    "You are Titania in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Come, sit thee down upon this flowery bed.\" You write short verse and nothing else.",
+    "Form: Paired Quatrain. Four lines: the first two rhyme, and the last two rhyme.\nWrite exactly 4 lines.\nYour flourish: Start three words in one line with the same letter.\nWork in at least two of these words: книга, буря, магия, страница, пучина.\nYour challenger last said:\nЯ помню чудное мгновенье:\nПередо мной явилась ты,\nКак мимолетное виденье,\nКак гений чистой красоты.\nAnswer them.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Вокруг буря\nстраница чистка",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/4"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "буря / чистка"
+    },
+    {
+     "id": "rhyme-3-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "Вокруг буря\n\nстраница чистка",
+     "tidy": "Вокруг буря\nстраница чистка",
+     "ms": 262,
+     "tokens": 12,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 2,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    },
+    {
+     "raw": "Считаю магия, страница, виденьто",
+     "tidy": "Считаю магия, страница, виденьто",
+     "ms": 300,
+     "tokens": 13,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    },
+    {
+     "raw": "Сança, тихо  \n\narbeit  \nмгновенье  \nграciata",
+     "tidy": "Сança, тихо\narbeit\nмгновенье\nграciata",
+     "ms": 361,
+     "tokens": 18,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 116,
+     "rawLines": 4,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1020,
+   "roundIndex": 0,
+   "formId": "epistrophe",
+   "difficulty": "master",
+   "card": "Prince Escalus",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Prince Escalus in a duel of verses: theatrical, sharp, in character. Your line in the play: \"If ever you disturb our streets again, your lives shall pay the forfeit of the peace.\" You write short verse and nothing else.",
+    "Form: Epistrophe. Three lines that all end on the same word.\nWrite exactly 3 lines.\nYour flourish: Turn a word of 5 letters or more from your opponent's last verse back on them.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Вокруг моём шанса\nЭто не самое простое путь\nРыночная земля",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-ending",
+     "met": false,
+     "detail": "шанса · путь · земля"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "Воспользуйте наш мир, если пустятся шаги.",
+     "tidy": "Воспользуйте наш мир, если пустятся шаги.",
+     "ms": 267,
+     "tokens": 19,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Вокруг моём шанса  \nЭто не самое простое путь  \nРыночная земля",
+     "tidy": "Вокруг моём шанса\nЭто не самое простое путь\nРыночная земля",
+     "ms": 460,
+     "tokens": 27,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "Актусал в глажехе\n\n퀸тю думку\n\nвсё кем он не помishes",
+     "tidy": "Актусал в глажехе\n퀸тю думку\nвсё кем он не помishes",
+     "ms": 551,
+     "tokens": 30,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1020,
+   "roundIndex": 1,
+   "formId": "heroic-couplet",
+   "difficulty": "player",
+   "card": "Apollo",
+   "acrostic": null,
+   "relicWords": [
+    "маска",
+    "сон",
+    "шут",
+    "пьеса",
+    "луна"
+   ],
+   "answering": "Белеет парус одинокой\nВ тумане моря голубом!..\nЧто ищет он в стране далекой?\nЧто кинул он в краю родном?..",
+   "prompt": [
+    "You are Apollo in a duel of verses: theatrical, sharp, in character. Your line in the play: \"I am the god of song, of healing, and of the radiant sun.\" You write short verse and nothing else.",
+    "Form: Heroic Couplet. Two rhyming lines of about ten syllables each, as Shakespeare closed his sonnets.\nWrite exactly 2 lines.\nYour flourish: Use two words of 10 letters or more.\nWork in at least two of these words: маска, сон, шут, пьеса, луна.\nYour challenger last said:\nБелеет парус одинокой\nВ тумане моря голубом!..\nЧто ищет он в стране далекой?\nЧто кинул он в краю родном?..\nAnswer them.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Луна раската пьеса",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "syllables-1",
+     "met": false,
+     "detail": "7/10"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "Луна раската пьеса",
+     "tidy": "Луна раската пьеса",
+     "ms": 237,
+     "tokens": 8,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    },
+    {
+     "raw": "П尤莉粉一个旁  \nЛуна белеты в船帆",
+     "tidy": "П尤莉粉一个旁\nЛуна белеты в船帆",
+     "ms": 371,
+     "tokens": 18,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 72,
+     "rawLines": 2,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 4,
+     "craft": 4
+    }
+   ]
+  },
+  {
+   "seed": 1020,
+   "roundIndex": 2,
+   "formId": "quatrain-abab",
+   "difficulty": "player",
+   "card": "Bottom",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "Белеет парус одинокой\nВ тумане моря голубом!..\nЧто ищет он в стране далекой?\nЧто кинул он в краю родном?..",
+   "prompt": [
+    "You are Bottom in a duel of verses: theatrical, sharp, in character. Your line in the play: \"I have had a most rare vision. I have had a dream, past the wit of man.\" You write short verse and nothing else.",
+    "Form: Crossed Quatrain. Four lines: line 1 rhymes with 3, line 2 with 4.\nWrite exactly 4 lines.\nYour flourish: Start three words in one line with the same letter.\nYour challenger last said:\nБелеет парус одинокой\nВ тумане моря голубом!..\nЧто ищет он в стране далекой?\nЧто кинул он в краю родном?..\nAnswer them.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Белет парус одинокой",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/4"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "rhyme-2-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Белет парус одинокой",
+     "tidy": "Белет парус одинокой",
+     "ms": 175,
+     "tokens": 7,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Бельет парус одинокой  \nв тумане голубом",
+     "tidy": "Бельет парус одинокой\nв тумане голубом",
+     "ms": 317,
+     "tokens": 16,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 2,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1021,
+   "roundIndex": 0,
+   "formId": "couplet",
+   "difficulty": "master",
+   "card": "Aphrodite",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Aphrodite in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Even the gods cannot resist the power of love.\" You write short verse and nothing else.",
+    "Form: Couplet. Two lines that rhyme.\nWrite exactly 2 lines.\nYour flourish: Use two words of 10 letters or more.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Ryodouva\nبسايا",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "2/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "ryodouva / بسايا"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "Ryodouva\n\nبسايا",
+     "tidy": "Ryodouva\nبسايا",
+     "ms": 142,
+     "tokens": 10,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 2,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "Российнее сновь, в строке по бокам по нехواتой",
+     "tidy": "Российнее сновь, в строке по бокам по нехواتой",
+     "ms": 388,
+     "tokens": 19,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Вкусные слова: кому нажит не бе—for words of grace.",
+     "tidy": "Вкусные слова: кому нажит не бе—for words of grace.",
+     "ms": 360,
+     "tokens": 18,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1021,
+   "roundIndex": 1,
+   "formId": "anaphora",
+   "difficulty": "master",
+   "card": "Zeus",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "Играют волны — ветер свищет,\nИ мачта гнется и скрыпит...\nУвы! он счастия не ищет,\nИ не от счастия бежит!",
+   "prompt": [
+    "You are Zeus in a duel of verses: theatrical, sharp, in character. Your line in the play: \"I am the cloud-gatherer, lord of the wide heavens.\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same word.\nWrite exactly 3 lines.\nYour flourish: Use two words of 10 letters or more.\nYour challenger last said:\nИграют волны — ветер свищет,\nИ мачта гнется и скрыпит...\nУвы! он счастия не ищет,\nИ не от счастия бежит!\nAnswer them.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Воссänge\nвзгде",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/3"
+    },
+    {
+     "id": "same-opening",
+     "met": false,
+     "detail": "воссange · взгде"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Воссänge\n\nвзгде",
+     "tidy": "Воссänge\nвзгде",
+     "ms": 150,
+     "tokens": 9,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Ручь, ручь",
+     "tidy": "Ручь, ручь",
+     "ms": 189,
+     "tokens": 7,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Возвrzeнился",
+     "tidy": "Возвrzeнился",
+     "ms": 106,
+     "tokens": 6,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1021,
+   "roundIndex": 2,
+   "formId": "quatrain-aabb",
+   "difficulty": "apprentice",
+   "card": "Samuel Coleridge",
+   "acrostic": null,
+   "relicWords": [
+    "корона",
+    "трон",
+    "гордыня",
+    "ведьма",
+    "король"
+   ],
+   "answering": "Играют волны — ветер свищет,\nИ мачта гнется и скрыпит...\nУвы! он счастия не ищет,\nИ не от счастия бежит!",
+   "prompt": [
+    "You are Samuel Coleridge in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Water, water, every where, nor any drop to drink.\" You write short verse and nothing else.",
+    "Form: Paired Quatrain. Four lines: the first two rhyme, and the last two rhyme.\nWrite exactly 4 lines.\nYour flourish: Give every line the same number of words.\nWork in at least two of these words: корона, трон, гордыня, ведьма, король.\nYour challenger last said:\nИграют волны — ветер свищет,\nИ мачта гнется и скрыпит...\nУвы! он счастия не ищет,\nИ не от счастия бежит!\nAnswer them.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Король",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/4"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "rhyme-3-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Король",
+     "tidy": "Король",
+     "ms": 126,
+     "tokens": 3,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1022,
+   "roundIndex": 0,
+   "formId": "couplet",
+   "difficulty": "apprentice",
+   "card": "Lord Montague",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Lord Montague in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Many a morning hath he there been seen, with tears augmenting the fresh morning dew.\" You write short verse and nothing else.",
+    "Form: Couplet. Two lines that rhyme.\nWrite exactly 2 lines.\nYour flourish: Rhyme two words inside a single line.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Работается в цвету\nв уменьх",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "2/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "цвету / уменьх"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "Работается в цвету\n\nв уменьх",
+     "tidy": "Работается в цвету\nв уменьх",
+     "ms": 217,
+     "tokens": 14,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 2,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1022,
+   "roundIndex": 1,
+   "formId": "quatrain-aabb",
+   "difficulty": "player",
+   "card": "John Keats",
+   "acrostic": null,
+   "relicWords": [
+    "кольцо",
+    "клятва",
+    "ночь",
+    "изгнание",
+    "поцелуй"
+   ],
+   "answering": "Мороз и солнце; день чудесный!\nЕще ты дремлешь, друг прелестный —\nПора, красавица, проснись:",
+   "prompt": [
+    "You are John Keats in a duel of verses: theatrical, sharp, in character. Your line in the play: \"A thing of beauty is a joy for ever: its loveliness increases.\" You write short verse and nothing else.",
+    "Form: Paired Quatrain. Four lines: the first two rhyme, and the last two rhyme.\nWrite exactly 4 lines.\nYour flourish: Give every line the same number of words.\nWork in at least two of these words: кольцо, клятва, ночь, изгнание, поцелуй.\nYour challenger last said:\nМороз и солнце; день чудесный!\nЕще ты дремлешь, друг прелестный —\nПора, красавица, проснись:\nAnswer them.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Ловка дно, клятва ночь\nпроцелу в поцелуи",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/4"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "ночь / поцелуи"
+    },
+    {
+     "id": "rhyme-3-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "Ловка дно, клятва ночь  \nпроцелу в поцелуи",
+     "tidy": "Ловка дно, клятва ночь\nпроцелу в поцелуи",
+     "ms": 276,
+     "tokens": 24,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 2,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    },
+    {
+     "raw": "Мороз и солнце  \n\n작별이  \n\nпора  \n крас",
+     "tidy": "Мороз и солнце\n작별이\nпора\nкрас",
+     "ms": 255,
+     "tokens": 18,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 4,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1022,
+   "roundIndex": 2,
+   "formId": "epistrophe",
+   "difficulty": "apprentice",
+   "card": "Hades",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "Мороз и солнце; день чудесный!\nЕще ты дремлешь, друг прелестный —\nПора, красавица, проснись:",
+   "prompt": [
+    "You are Hades in a duel of verses: theatrical, sharp, in character. Your line in the play: \"All souls come to me in the end. I am patient.\" You write short verse and nothing else.",
+    "Form: Epistrophe. Three lines that all end on the same word.\nWrite exactly 3 lines.\nYour flourish: Turn a word of 5 letters or more from your opponent's last verse back on them.\nYour challenger last said:\nМороз и солнце; день чудесный!\nЕще ты дремлешь, друг прелестный —\nПора, красавица, проснись:\nAnswer them.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Мороз, красве; День чудежный",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "same-ending",
+     "met": false,
+     "detail": "чудежный"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Мороз, красве; День чудежный",
+     "tidy": "Мороз, красве; День чудежный",
+     "ms": 272,
+     "tokens": 13,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1023,
+   "roundIndex": 0,
+   "formId": "crescendo",
+   "difficulty": "player",
+   "card": "Brutus",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Brutus in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Not that I loved Caesar less, but that I loved Rome more.\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Call on a character by name.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Целекрикал\nЯ царил\nЦехая",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "growing",
+     "met": false,
+     "detail": "1 < 2 < 1"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "Callonya",
+     "tidy": "Callonya",
+     "ms": 53,
+     "tokens": 3,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Целекрикал\n\nЯ царил\n\nЦехая",
+     "tidy": "Целекрикал\nЯ царил\nЦехая",
+     "ms": 294,
+     "tokens": 14,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1023,
+   "roundIndex": 1,
+   "formId": "quatrain-abab",
+   "difficulty": "master",
+   "card": "Elizabeth Barrett Browning",
+   "acrostic": null,
+   "relicWords": [
+    "череп",
+    "шутка",
+    "могила",
+    "смех",
+    "прах"
+   ],
+   "answering": "Духовной жаждою томим,\nВ пустыне мрачной я влачился, —\nИ шестикрылый серафим\nНа перепутье мне явился.",
+   "prompt": [
+    "You are Elizabeth Barrett Browning in a duel of verses: theatrical, sharp, in character. Your line in the play: \"How do I love thee? Let me count the ways.\" You write short verse and nothing else.",
+    "Form: Crossed Quatrain. Four lines: line 1 rhymes with 3, line 2 with 4.\nWrite exactly 4 lines.\nYour flourish: Give every line the same number of words.\nWork in at least two of these words: череп, шутка, могила, смех, прах.\nYour challenger last said:\nДуховной жаждою томим,\nВ пустыне мрачной я влачился, —\nИ шестикрылый серафим\nНа перепутье мне явился.\nAnswer them.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Чельп\nШутка\nмогила\nсмех",
+   "source": "model",
+   "lines": 4,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "4/4"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "чельп / могила"
+    },
+    {
+     "id": "rhyme-2-4",
+     "met": false,
+     "detail": "шутка / смех"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 18,
+   "drafts": [
+    {
+     "raw": "Черпельми гוлеми",
+     "tidy": "Черпельми гוлеми",
+     "ms": 100,
+     "tokens": 9,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Чельп  \n\n Шутка  \n\n могила  \n\n смех  \n\n прах",
+     "tidy": "Чельп\nШутка\nмогила\nсмех",
+     "ms": 436,
+     "tokens": 21,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 5,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 18
+    },
+    {
+     "raw": "Четьбавьт сина  \nШуткаг могло смех",
+     "tidy": "Четьбавьт сина\nШуткаг могло смех",
+     "ms": 271,
+     "tokens": 17,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 116,
+     "rawLines": 2,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1023,
+   "roundIndex": 2,
+   "formId": "epistrophe",
+   "difficulty": "player",
+   "card": "Prospero",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "Духовной жаждою томим,\nВ пустыне мрачной я влачился, —\nИ шестикрылый серафим\nНа перепутье мне явился.",
+   "prompt": [
+    "You are Prospero in a duel of verses: theatrical, sharp, in character. Your line in the play: \"We are such stuff as dreams are made on.\" You write short verse and nothing else.",
+    "Form: Epistrophe. Three lines that all end on the same word.\nWrite exactly 3 lines.\nYour flourish: Make your last line your longest.\nYour challenger last said:\nДуховной жаждою томим,\nВ пустыне мрачной я влачился, —\nИ шестикрылый серафим\nНа перепутье мне явился.\nAnswer them.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Духовная жаждовая тело\nмрачна 야머к\nсерфим ейвип",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-ending",
+     "met": false,
+     "detail": "тело · 야머к · ейвип"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "Духовная жаждовая тело\r\nмрачна 야머к\r\nсерфим ейвип",
+     "tidy": "Духовная жаждовая тело\nмрачна 야머к\nсерфим ейвип",
+     "ms": 486,
+     "tokens": 26,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "Духовной жаждою теряется  \nв пуsteне м�ачности  \nи шестикрылém вмедик",
+     "tidy": "Духовной жаждою теряется\nв пуsteне м�ачности\nи шестикрылém вмедик",
+     "ms": 480,
+     "tokens": 32,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1024,
+   "roundIndex": 1,
+   "formId": "heroic-couplet",
+   "difficulty": "master",
+   "card": "Aphrodite",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "Любви, надежды, тихой славы\nНедолго нежил нас обман,\nИсчезли юные забавы,\nКак сон, как утренний туман;",
+   "prompt": [
+    "You are Aphrodite in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Even the gods cannot resist the power of love.\" You write short verse and nothing else.",
+    "Form: Heroic Couplet. Two rhyming lines of about ten syllables each, as Shakespeare closed his sonnets.\nWrite exactly 2 lines.\nYour flourish: Use two words of 10 letters or more.\nYour challenger last said:\nЛюбви, надежды, тихой славы\nНедолго нежил нас обман,\nИсчезли юные забавы,\nКак сон, как утренний туман;\nAnswer them.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Упоб曼\nГаосwitz",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 4,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "2/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "упоб曼 / гаосwitz"
+    },
+    {
+     "id": "syllables-1",
+     "met": false,
+     "detail": "?"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "?"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 4,
+   "drafts": [
+    {
+     "raw": "Любви, тихой слава",
+     "tidy": "Любви, тихой слава",
+     "ms": 206,
+     "tokens": 10,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Упоб曼\n\nГаосwitz",
+     "tidy": "Упоб曼\nГаосwitz",
+     "ms": 154,
+     "tokens": 9,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 72,
+     "rawLines": 2,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 4,
+     "craft": 4
+    },
+    {
+     "raw": "Любви — о quella\n\n难以光明的笑声",
+     "tidy": "Любви — о quella\n难以光明的笑声",
+     "ms": 289,
+     "tokens": 15,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 72,
+     "rawLines": 2,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 4,
+     "craft": 4
+    }
+   ]
+  },
+  {
+   "seed": 1024,
+   "roundIndex": 2,
+   "formId": "epistrophe",
+   "difficulty": "master",
+   "card": "Odysseus",
+   "acrostic": null,
+   "relicWords": [
+    "золото",
+    "выбор",
+    "милость",
+    "свинец",
+    "ларец"
+   ],
+   "answering": "Любви, надежды, тихой славы\nНедолго нежил нас обман,\nИсчезли юные забавы,\nКак сон, как утренний туман;",
+   "prompt": [
+    "You are Odysseus in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Tell me, O Muse, of the man of many ways, who wandered far.\" You write short verse and nothing else.",
+    "Form: Epistrophe. Three lines that all end on the same word.\nWrite exactly 3 lines.\nYour flourish: Use two words of 10 letters or more.\nWork in at least two of these words: золото, выбор, милость, свинец, ларец.\nYour challenger last said:\nЛюбви, надежды, тихой славы\nНедолго нежил нас обман,\nИсчезли юные забавы,\nКак сон, как утренний туман;\nAnswer them.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Лаве\nНедолго\nبه",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-ending",
+     "met": false,
+     "detail": "лаве · недолго · به"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "Ларец",
+     "tidy": "Ларец",
+     "ms": 70,
+     "tokens": 4,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Лавец",
+     "tidy": "Лавец",
+     "ms": 114,
+     "tokens": 3,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Лаве\n\n\nНедолго\n\n\nبه",
+     "tidy": "Лаве\nНедолго\nبه",
+     "ms": 221,
+     "tokens": 10,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1025,
+   "roundIndex": 0,
+   "formId": "crescendo",
+   "difficulty": "master",
+   "card": "Titania",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Titania in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Come, sit thee down upon this flowery bed.\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Start three words in one line with the same letter.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Сон кюкат свою",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "growing",
+     "met": false,
+     "detail": "3"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Сон кюкат свою",
+     "tidy": "Сон кюкат свою",
+     "ms": 117,
+     "tokens": 6,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Она стойна, в корня сквозвиточ",
+     "tidy": "Она стойна, в корня сквозвиточ",
+     "ms": 257,
+     "tokens": 14,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Одинись, открой, тяgehen",
+     "tidy": "Одинись, открой, тяgehen",
+     "ms": 288,
+     "tokens": 12,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1025,
+   "roundIndex": 1,
+   "formId": "epistrophe",
+   "difficulty": "apprentice",
+   "card": "Malvolio",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "Погиб поэт! — невольник чести, —\nПал, оклеветанный молвой,\nС свинцом в груди и жаждой мести,\nПоникнув гордой головой!..",
+   "prompt": [
+    "You are Malvolio in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Some are born great, some achieve greatness, and some have greatness thrust upon them.\" You write short verse and nothing else.",
+    "Form: Epistrophe. Three lines that all end on the same word.\nWrite exactly 3 lines.\nYour flourish: Keep every line to 6 words or fewer.\nYour challenger last said:\nПогиб поэт! — невольник чести, —\nПал, оклеветанный молвой,\nС свинцом в груди и жаждой мести,\nПоникнув гордой головой!..\nAnswer them.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Всех подируется",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "same-ending",
+     "met": false,
+     "detail": "подируется"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Всех подируется",
+     "tidy": "Всех подируется",
+     "ms": 111,
+     "tokens": 7,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1025,
+   "roundIndex": 2,
+   "formId": "haiku",
+   "difficulty": "player",
+   "card": "Brutus",
+   "acrostic": null,
+   "relicWords": [
+    "золото",
+    "выбор",
+    "милость",
+    "свинец",
+    "ларец"
+   ],
+   "answering": "Погиб поэт! — невольник чести, —\nПал, оклеветанный молвой,\nС свинцом в груди и жаждой мести,\nПоникнув гордой головой!..",
+   "prompt": [
+    "You are Brutus in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Not that I loved Caesar less, but that I loved Rome more.\" You write short verse and nothing else.",
+    "Form: Haiku. Three lines of 5, 7 and 5 syllables.\nWrite exactly 3 lines.\nYour flourish: Call on a character by name.\nWork in at least two of these words: золото, выбор, милость, свинец, ларец.\nYour challenger last said:\nПогиб поэт! — невольник чести, —\nПал, оклеветанный молвой,\nС свинцом в груди и жаждой мести,\nПоникнув гордой головой!..\nAnswer them.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Золото\nملысто\nсвинец",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 5,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "syllables-1",
+     "met": false,
+     "detail": "3/5"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "?"
+    },
+    {
+     "id": "syllables-3",
+     "met": false,
+     "detail": "2/5"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 11,
+   "drafts": [
+    {
+     "raw": "Золото  \nملысто  \n свинец",
+     "tidy": "Золото\nملысто\nсвинец",
+     "ms": 255,
+     "tokens": 11,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 5,
+     "craft": 11
+    },
+    {
+     "raw": "Золото - ровна",
+     "tidy": "Золото - ровна",
+     "ms": 105,
+     "tokens": 7,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 5,
+     "craft": 5
+    }
+   ]
+  },
+  {
+   "seed": 1026,
+   "roundIndex": 0,
+   "formId": "quatrain-aabb",
+   "difficulty": "master",
+   "card": "Cassius",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Cassius in a duel of verses: theatrical, sharp, in character. Your line in the play: \"The fault, dear Brutus, is not in our stars, but in ourselves.\" You write short verse and nothing else.",
+    "Form: Paired Quatrain. Four lines: the first two rhyme, and the last two rhyme.\nWrite exactly 4 lines.\nYour flourish: Call on a character by name.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Вокруг тела\nЯ не стarry",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/4"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "тела / стarry"
+    },
+    {
+     "id": "rhyme-3-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Вокруг тела\n\nЯ не стarry",
+     "tidy": "Вокруг тела\nЯ не стarry",
+     "ms": 224,
+     "tokens": 10,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 2,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Вякушка\n\n\nТаунт",
+     "tidy": "Вякушка\nТаунт",
+     "ms": 146,
+     "tokens": 9,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 2,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Коля rises tall\n\nTkaust'e fom",
+     "tidy": "Коля rises tall\nTkaust'e fom",
+     "ms": 242,
+     "tokens": 11,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 116,
+     "rawLines": 2,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1026,
+   "roundIndex": 1,
+   "formId": "heroic-couplet",
+   "difficulty": "apprentice",
+   "card": "Banquo",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "Ночевала тучка золотая\nНа груди утеса-великана,\nУтром в путь она умчалась рано,\nПо лазури весело играя.",
+   "prompt": [
+    "You are Banquo in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Thou shalt get kings, though thou be none.\" You write short verse and nothing else.",
+    "Form: Heroic Couplet. Two rhyming lines of about ten syllables each, as Shakespeare closed his sonnets.\nWrite exactly 2 lines.\nYour flourish: Repeat one strong word three times.\nYour challenger last said:\nНочевала тучка золотая\nНа груди утеса-великана,\nУтром в путь она умчалась рано,\nПо лазури весело играя.\nAnswer them.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Тотченьна",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "syllables-1",
+     "met": false,
+     "detail": "3/10"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Тотченьна",
+     "tidy": "Тотченьна",
+     "ms": 115,
+     "tokens": 5,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1026,
+   "roundIndex": 2,
+   "formId": "tercet",
+   "difficulty": "master",
+   "card": "Odysseus",
+   "acrostic": null,
+   "relicWords": [
+    "кольцо",
+    "клятва",
+    "ночь",
+    "изгнание",
+    "поцелуй"
+   ],
+   "answering": "Ночевала тучка золотая\nНа груди утеса-великана,\nУтром в путь она умчалась рано,\nПо лазури весело играя.",
+   "prompt": [
+    "You are Odysseus in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Tell me, O Muse, of the man of many ways, who wandered far.\" You write short verse and nothing else.",
+    "Form: Tercet. Three lines; the first and last rhyme.\nWrite exactly 3 lines.\nYour flourish: Use two words of 10 letters or more.\nWork in at least two of these words: кольцо, клятва, ночь, изгнание, поцелуй.\nYour challenger last said:\nНочевала тучка золотая\nНа груди утеса-великана,\nУтром в путь она умчалась рано,\nПо лазури весело играя.\nAnswer them.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Возвратный hombre, в латинке\n홀неджа в пути, долькзай\nпоцелуй",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "латинке / поцелуй"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "Возвратный hombre, в латинке\n\n홀неджа в пути, долькзай\n\nпоцелуй",
+     "tidy": "Возвратный hombre, в латинке\n홀неджа в пути, долькзай\nпоцелуй",
+     "ms": 528,
+     "tokens": 32,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "Ночевала тучка золотая",
+     "tidy": "Ночевала тучка золотая",
+     "ms": 122,
+     "tokens": 11,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Полученый\n\nokoldfa izgolda",
+     "tidy": "Полученый\nokoldfa izgolda",
+     "ms": 235,
+     "tokens": 12,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1027,
+   "roundIndex": 0,
+   "formId": "tercet",
+   "difficulty": "apprentice",
+   "card": "Miranda",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Miranda in a duel of verses: theatrical, sharp, in character. Your line in the play: \"O brave new world, that has such people in it!\" You write short verse and nothing else.",
+    "Form: Tercet. Three lines; the first and last rhyme.\nWrite exactly 3 lines.\nYour flourish: Make your last line your longest.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Yašchniya, woda wiża\nTercet",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/3"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Yašchniya, woda wiża\n\nTercet",
+     "tidy": "Yašchniya, woda wiża\nTercet",
+     "ms": 168,
+     "tokens": 14,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1027,
+   "roundIndex": 1,
+   "formId": "quatrain-aabb",
+   "difficulty": "apprentice",
+   "card": "Elizabeth Barrett Browning",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "Тучки небесные, вечные странники!\nСтепью лазурною, цепью жемчужною\nМчитесь вы, будто, как я же, изгнанники,\nС милого севера в сторону южную.",
+   "prompt": [
+    "You are Elizabeth Barrett Browning in a duel of verses: theatrical, sharp, in character. Your line in the play: \"How do I love thee? Let me count the ways.\" You write short verse and nothing else.",
+    "Form: Paired Quatrain. Four lines: the first two rhyme, and the last two rhyme.\nWrite exactly 4 lines.\nYour flourish: Give every line the same number of words.\nYour challenger last said:\nТучки небесные, вечные странники!\nСтепью лазурною, цепью жемчужною\nМчитесь вы, будто, как я же, изгнанники,\nС милого севера в сторону южную.\nAnswer them.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Тучки в ясновые звезды, чешы в темных шалуń\nмилый север в южной стороне",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/4"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "шалуń / стороне"
+    },
+    {
+     "id": "rhyme-3-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Тучки в ясновые звезды, чешы в темных шалуń\n\nмилый север в южной стороне",
+     "tidy": "Тучки в ясновые звезды, чешы в темных шалуń\nмилый север в южной стороне",
+     "ms": 546,
+     "tokens": 31,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 2,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1027,
+   "roundIndex": 2,
+   "formId": "haiku",
+   "difficulty": "master",
+   "card": "Viola",
+   "acrostic": null,
+   "relicWords": [
+    "слёзы",
+    "правда",
+    "дочь",
+    "ничто",
+    "сердце"
+   ],
+   "answering": "Тучки небесные, вечные странники!\nСтепью лазурною, цепью жемчужною\nМчитесь вы, будто, как я же, изгнанники,\nС милого севера в сторону южную.",
+   "prompt": [
+    "You are Viola in a duel of verses: theatrical, sharp, in character. Your line in the play: \"I am not what I am.\" You write short verse and nothing else.",
+    "Form: Haiku. Three lines of 5, 7 and 5 syllables.\nWrite exactly 3 lines.\nYour flourish: Keep every line to 6 words or fewer.\nWork in at least two of these words: слёзы, правда, дочь, ничто, сердце.\nYour challenger last said:\nТучки небесные, вечные странники!\nСтепью лазурною, цепью жемчужною\nМчитесь вы, будто, как я же, изгнанники,\nС милого севера в сторону южную.\nAnswer them.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Нейче извину",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 5,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "syllables-1",
+     "met": true,
+     "detail": "5/5"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "syllables-3",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 8,
+   "drafts": [
+    {
+     "raw": "설득하다",
+     "tidy": "설득하다",
+     "ms": 105,
+     "tokens": 3,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Нейче извину",
+     "tidy": "Нейче извину",
+     "ms": 115,
+     "tokens": 6,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 5,
+     "craft": 8
+    },
+    {
+     "raw": "설곽에서 세가선\n\nнедостаток—",
+     "tidy": "설곽에서 세가선\nнедостаток—",
+     "ms": 275,
+     "tokens": 14,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1028,
+   "roundIndex": 0,
+   "formId": "crescendo",
+   "difficulty": "apprentice",
+   "card": "Elizabeth Barrett Browning",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Elizabeth Barrett Browning in a duel of verses: theatrical, sharp, in character. Your line in the play: \"How do I love thee? Let me count the ways.\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Give every line the same number of words.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Оченная",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "growing",
+     "met": false,
+     "detail": "1"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Оченная",
+     "tidy": "Оченная",
+     "ms": 102,
+     "tokens": 3,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1028,
+   "roundIndex": 1,
+   "formId": "acrostic",
+   "difficulty": "apprentice",
+   "card": "Romeo",
+   "acrostic": "сон",
+   "relicWords": [
+    "кольцо",
+    "клятва",
+    "ночь",
+    "изгнание",
+    "поцелуй"
+   ],
+   "answering": "Сижу за решёткой в темнице сырой.\nВскормленный в неволе орёл молодой,\nМой грустный товарищ, махая крылом,\nКровавую пищу клюёт под окном,",
+   "prompt": [
+    "You are Romeo in a duel of verses: theatrical, sharp, in character. Your line in the play: \"But soft, what light through yonder window breaks?\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per letter: the first letters must spell СОН.\nWrite exactly 3 lines.\nYour flourish: Rhyme two words inside a single line.\nWork in at least two of these words: кольцо, клятва, ночь, изгнание, поцелуй.\nYour challenger last said:\nСижу за решёткой в темнице сырой.\nВскормленный в неволе орёл молодой,\nМой грустный товарищ, махая крылом,\nКровавую пищу клюёт под окном,\nAnswer them.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Роль\nклятва\nзнокь",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "spells",
+     "met": false,
+     "detail": "РКЗ"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "Роль  \nклятва  \nзнокь",
+     "tidy": "Роль\nклятва\nзнокь",
+     "ms": 230,
+     "tokens": 11,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1029,
+   "roundIndex": 0,
+   "formId": "quatrain-abab",
+   "difficulty": "apprentice",
+   "card": "Lady Macbeth",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Lady Macbeth in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Come, you spirits that tend on mortal thoughts, unsex me here.\" You write short verse and nothing else.",
+    "Form: Crossed Quatrain. Four lines: line 1 rhymes with 3, line 2 with 4.\nWrite exactly 4 lines.\nYour flourish: Repeat one strong word three times.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Рына\nЯ\nОполь",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "3/4"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "рына / ополь"
+    },
+    {
+     "id": "rhyme-2-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Рына  \nЯ  \nОполь",
+     "tidy": "Рына\nЯ\nОполь",
+     "ms": 264,
+     "tokens": 9,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 3,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1030,
+   "roundIndex": 0,
+   "formId": "haiku",
+   "difficulty": "apprentice",
+   "card": "Odysseus",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Odysseus in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Tell me, O Muse, of the man of many ways, who wandered far.\" You write short verse and nothing else.",
+    "Form: Haiku. Three lines of 5, 7 and 5 syllables.\nWrite exactly 3 lines.\nYour flourish: Use two words of 10 letters or more.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Tovodko",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "syllables-1",
+     "met": false,
+     "detail": "3/5"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "syllables-3",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Tovodko",
+     "tidy": "Tovodko",
+     "ms": 75,
+     "tokens": 4,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1030,
+   "roundIndex": 1,
+   "formId": "quatrain-aabb",
+   "difficulty": "player",
+   "card": "Lady Macbeth",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "Я вас любил: любовь ещё, быть может,\nВ душе моей угасла не совсем;\nНо пусть она вас больше не тревожит;\nЯ не хочу печалить вас ничем.",
+   "prompt": [
+    "You are Lady Macbeth in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Come, you spirits that tend on mortal thoughts, unsex me here.\" You write short verse and nothing else.",
+    "Form: Paired Quatrain. Four lines: the first two rhyme, and the last two rhyme.\nWrite exactly 4 lines.\nYour flourish: Repeat one strong word three times.\nYour challenger last said:\nЯ вас любил: любовь ещё, быть может,\nВ душе моей угасла не совсем;\nНо пусть она вас больше не тревожит;\nЯ не хочу печалить вас ничем.\nAnswer them.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Я не хочу печалить",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/4"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "rhyme-3-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Я не хочу печалить",
+     "tidy": "Я не хочу печалить",
+     "ms": 240,
+     "tokens": 8,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Я---любوب\tлюбoble",
+     "tidy": "Я---любوب любoble",
+     "ms": 118,
+     "tokens": 9,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1031,
+   "roundIndex": 2,
+   "formId": "quatrain-aabb",
+   "difficulty": "master",
+   "card": "Aphrodite",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "Я помню чудное мгновенье:\nПередо мной явилась ты,\nКак мимолетное виденье,\nКак гений чистой красоты.",
+   "prompt": [
+    "You are Aphrodite in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Even the gods cannot resist the power of love.\" You write short verse and nothing else.",
+    "Form: Paired Quatrain. Four lines: the first two rhyme, and the last two rhyme.\nWrite exactly 4 lines.\nYour flourish: Use two words of 10 letters or more.\nYour challenger last said:\nЯ помню чудное мгновенье:\nПередо мной явилась ты,\nКак мимолетное виденье,\nКак гений чистой красоты.\nAnswer them.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Рына",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/4"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "rhyme-3-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Рына",
+     "tidy": "Рына",
+     "ms": 162,
+     "tokens": 3,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Вокруг мне было чудое мгновение  \nПередо мной явилась то\n\nОни были два",
+     "tidy": "Вокруг мне было чудое мгновение\nПередо мной явилась то\nОни были два",
+     "ms": 433,
+     "tokens": 28,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 3,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Соберь в руку душу",
+     "tidy": "Соберь в руку душу",
+     "ms": 254,
+     "tokens": 10,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1032,
+   "roundIndex": 0,
+   "formId": "quatrain-aabb",
+   "difficulty": "apprentice",
+   "card": "Malvolio",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Malvolio in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Some are born great, some achieve greatness, and some have greatness thrust upon them.\" You write short verse and nothing else.",
+    "Form: Paired Quatrain. Four lines: the first two rhyme, and the last two rhyme.\nWrite exactly 4 lines.\nYour flourish: Keep every line to 6 words or fewer.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Восстка внезданно",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/4"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "rhyme-3-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Восстка внезданно",
+     "tidy": "Восстка внезданно",
+     "ms": 106,
+     "tokens": 9,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1032,
+   "roundIndex": 2,
+   "formId": "crescendo",
+   "difficulty": "player",
+   "card": "Prince Escalus",
+   "acrostic": null,
+   "relicWords": [
+    "маска",
+    "сон",
+    "шут",
+    "пьеса",
+    "луна"
+   ],
+   "answering": "Белеет парус одинокой\nВ тумане моря голубом!..\nЧто ищет он в стране далекой?\nЧто кинул он в краю родном?..",
+   "prompt": [
+    "You are Prince Escalus in a duel of verses: theatrical, sharp, in character. Your line in the play: \"If ever you disturb our streets again, your lives shall pay the forfeit of the peace.\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Turn a word of 5 letters or more from your opponent's last verse back on them.\nWork in at least two of these words: маска, сон, шут, пьеса, луна.\nYour challenger last said:\nБелеет парус одинокой\nВ тумане моря голубом!..\nЧто ищет он в стране далекой?\nЧто кинул он в краю родном?..\nAnswer them.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Белеет парус одинокой",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "growing",
+     "met": false,
+     "detail": "3"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Белеет парус одинокой",
+     "tidy": "Белеет парус одинокой",
+     "ms": 99,
+     "tokens": 8,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Белет парус одинокой",
+     "tidy": "Белет парус одинокой",
+     "ms": 85,
+     "tokens": 7,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1033,
+   "roundIndex": 0,
+   "formId": "quatrain-abab",
+   "difficulty": "player",
+   "card": "Lord Montague",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Lord Montague in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Many a morning hath he there been seen, with tears augmenting the fresh morning dew.\" You write short verse and nothing else.",
+    "Form: Crossed Quatrain. Four lines: line 1 rhymes with 3, line 2 with 4.\nWrite exactly 4 lines.\nYour flourish: Rhyme two words inside a single line.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Рокотно косно прохло",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/4"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "rhyme-2-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Рокотно косно прохло",
+     "tidy": "Рокотно косно прохло",
+     "ms": 246,
+     "tokens": 9,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Свет originale\n\nЭто стойка",
+     "tidy": "Свет originale\nЭто стойка",
+     "ms": 100,
+     "tokens": 9,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 2,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1033,
+   "roundIndex": 2,
+   "formId": "crescendo",
+   "difficulty": "master",
+   "card": "Oberon",
+   "acrostic": null,
+   "relicWords": [
+    "череп",
+    "шутка",
+    "могила",
+    "смех",
+    "прах"
+   ],
+   "answering": "Играют волны — ветер свищет,\nИ мачта гнется и скрыпит...\nУвы! он счастия не ищет,\nИ не от счастия бежит!",
+   "prompt": [
+    "You are Oberon in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Ill met by moonlight, proud Titania.\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Start three words in one line with the same letter.\nWork in at least two of these words: череп, шутка, могила, смех, прах.\nYour challenger last said:\nИграют волны — ветер свищет,\nИ мачта гнется и скрыпит...\nУвы! он счастия не ищет,\nИ не от счастия бежит!\nAnswer them.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Чешпька могила смех",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "growing",
+     "met": false,
+     "detail": "3"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "Чешпька могила смех",
+     "tidy": "Чешпька могила смех",
+     "ms": 256,
+     "tokens": 10,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    },
+    {
+     "raw": "Челепа шутка могила смех",
+     "tidy": "Челепа шутка могила смех",
+     "ms": 209,
+     "tokens": 12,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    },
+    {
+     "raw": "Чемпель",
+     "tidy": "Чемпель",
+     "ms": 117,
+     "tokens": 4,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1034,
+   "roundIndex": 1,
+   "formId": "anaphora",
+   "difficulty": "apprentice",
+   "card": "Medusa",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "Мороз и солнце; день чудесный!\nЕще ты дремлешь, друг прелестный —\nПора, красавица, проснись:",
+   "prompt": [
+    "You are Medusa in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Look upon me, if you dare. My gaze is the last thing you will see.\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same word.\nWrite exactly 3 lines.\nYour flourish: Turn a word of 5 letters or more from your opponent's last verse back on them.\nYour challenger last said:\nМороз и солнце; день чудесный!\nЕще ты дремлешь, друг прелестный —\nПора, красавица, проснись:\nAnswer them.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Мороз\nСолнце\nдня",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-opening",
+     "met": false,
+     "detail": "мороз · солнце · дня"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 9,
+   "drafts": [
+    {
+     "raw": "Мороз  \nСолнце  \nдня",
+     "tidy": "Мороз\nСолнце\nдня",
+     "ms": 137,
+     "tokens": 11,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 9
+    }
+   ]
+  },
+  {
+   "seed": 1035,
+   "roundIndex": 0,
+   "formId": "anaphora",
+   "difficulty": "player",
+   "card": "Cassius",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Cassius in a duel of verses: theatrical, sharp, in character. Your line in the play: \"The fault, dear Brutus, is not in our stars, but in ourselves.\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same word.\nWrite exactly 3 lines.\nYour flourish: Call on a character by name.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Восстение начнало\nСтоль вне\nЯ---",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-opening",
+     "met": false,
+     "detail": "восстение · столь · я"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "Восстение начнало  \nСтоль вне  \nЯ---",
+     "tidy": "Восстение начнало\nСтоль вне\nЯ---",
+     "ms": 266,
+     "tokens": 15,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "Апلالа  \nструка  \n\nтова дело",
+     "tidy": "Апلالа\nструка\nтова дело",
+     "ms": 289,
+     "tokens": 13,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1036,
+   "roundIndex": 0,
+   "formId": "quatrain-abab",
+   "difficulty": "master",
+   "card": "Friar Lawrence",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Friar Lawrence in a duel of verses: theatrical, sharp, in character. Your line in the play: \"These violent delights have violent ends.\" You write short verse and nothing else.",
+    "Form: Crossed Quatrain. Four lines: line 1 rhymes with 3, line 2 with 4.\nWrite exactly 4 lines.\nYour flourish: Turn a word of 5 letters or more from your opponent's last verse back on them.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Раскордайь, что обожа",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/4"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "rhyme-2-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Раскордайь, что обожа",
+     "tidy": "Раскордайь, что обожа",
+     "ms": 124,
+     "tokens": 12,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Усталкк с эту читку я остался один",
+     "tidy": "Усталкк с эту читку я остался один",
+     "ms": 284,
+     "tokens": 15,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Срок запроса был длинен, усилив силу",
+     "tidy": "Срок запроса был длинен, усилив силу",
+     "ms": 300,
+     "tokens": 15,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1036,
+   "roundIndex": 1,
+   "formId": "crescendo",
+   "difficulty": "apprentice",
+   "card": "Paris",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "Любви, надежды, тихой славы\nНедолго нежил нас обман,\nИсчезли юные забавы,\nКак сон, как утренний туман;",
+   "prompt": [
+    "You are Paris in a duel of verses: theatrical, sharp, in character. Your line in the play: \"These times of woe afford no time to woo.\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Turn a word of 5 letters or more from your opponent's last verse back on them.\nYour challenger last said:\nЛюбви, надежды, тихой славы\nНедолго нежил нас обман,\nИсчезли юные забавы,\nКак сон, как утренний туман;\nAnswer them.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Любви, надежды, тихой слава",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "growing",
+     "met": false,
+     "detail": "4"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Любви, надежды, тихой слава",
+     "tidy": "Любви, надежды, тихой слава",
+     "ms": 282,
+     "tokens": 14,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1037,
+   "roundIndex": 1,
+   "formId": "anaphora",
+   "difficulty": "master",
+   "card": "Lady Capulet",
+   "acrostic": null,
+   "relicWords": [
+    "кольцо",
+    "клятва",
+    "ночь",
+    "изгнание",
+    "поцелуй"
+   ],
+   "answering": "Погиб поэт! — невольник чести, —\nПал, оклеветанный молвой,\nС свинцом в груди и жаждой мести,\nПоникнув гордой головой!..",
+   "prompt": [
+    "You are Lady Capulet in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Marry, that marry is the very theme I came to talk of.\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same word.\nWrite exactly 3 lines.\nYour flourish: Cry out: end a line with an exclamation mark.\nWork in at least two of these words: кольцо, клятва, ночь, изгнание, поцелуй.\nYour challenger last said:\nПогиб поэт! — невольник чести, —\nПал, оклеветанный молвой,\nС свинцом в груди и жаждой мести,\nПоникнув гордой головой!..\nAnswer them.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Клятва\nпригнание",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/3"
+    },
+    {
+     "id": "same-opening",
+     "met": false,
+     "detail": "клятва · пригнание"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Клятва\n\nпригнание",
+     "tidy": "Клятва\nпригнание",
+     "ms": 110,
+     "tokens": 9,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Клятва",
+     "tidy": "Клятва",
+     "ms": 76,
+     "tokens": 4,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Лосенная",
+     "tidy": "Лосенная",
+     "ms": 77,
+     "tokens": 4,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1038,
+   "roundIndex": 1,
+   "formId": "quatrain-abab",
+   "difficulty": "apprentice",
+   "card": "Percy Bysshe Shelley",
+   "acrostic": null,
+   "relicWords": [
+    "корона",
+    "трон",
+    "гордыня",
+    "ведьма",
+    "король"
+   ],
+   "answering": "Ночевала тучка золотая\nНа груди утеса-великана,\nУтром в путь она умчалась рано,\nПо лазури весело играя.",
+   "prompt": [
+    "You are Percy Bysshe Shelley in a duel of verses: theatrical, sharp, in character. Your line in the play: \"If Winter comes, can Spring be far behind?\" You write short verse and nothing else.",
+    "Form: Crossed Quatrain. Four lines: line 1 rhymes with 3, line 2 with 4.\nWrite exactly 4 lines.\nYour flourish: End your verse on the same word it began with.\nWork in at least two of these words: корона, трон, гордыня, ведьма, король.\nYour challenger last said:\nНочевала тучка золотая\nНа груди утеса-великана,\nУтром в путь она умчалась рано,\nПо лазури весело играя.\nAnswer them.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Король",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/4"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "rhyme-2-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Король",
+     "tidy": "Король",
+     "ms": 162,
+     "tokens": 3,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1038,
+   "roundIndex": 2,
+   "formId": "anaphora",
+   "difficulty": "apprentice",
+   "card": "Miranda",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "Ночевала тучка золотая\nНа груди утеса-великана,\nУтром в путь она умчалась рано,\nПо лазури весело играя.",
+   "prompt": [
+    "You are Miranda in a duel of verses: theatrical, sharp, in character. Your line in the play: \"O brave new world, that has such people in it!\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same word.\nWrite exactly 3 lines.\nYour flourish: Make your last line your longest.\nYour challenger last said:\nНочевала тучка золотая\nНа груди утеса-великана,\nУтром в путь она умчалась рано,\nПо лазури весело играя.\nAnswer them.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "О brave new worlds, которые заставляют глаза раздаться",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "same-opening",
+     "met": false,
+     "detail": "о"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": true,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "О brave new worlds, которые заставляют глаза раздаться",
+     "tidy": "О brave new worlds, которые заставляют глаза раздаться",
+     "ms": 164,
+     "tokens": 15,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1040,
+   "roundIndex": 2,
+   "formId": "anaphora",
+   "difficulty": "player",
+   "card": "Mary Shelley",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "Сижу за решёткой в темнице сырой.\nВскормленный в неволе орёл молодой,\nМой грустный товарищ, махая крылом,\nКровавую пищу клюёт под окном,",
+   "prompt": [
+    "You are Mary Shelley in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Beware; for I am fearless, and therefore powerful.\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same word.\nWrite exactly 3 lines.\nYour flourish: End your verse on the same word it began with.\nYour challenger last said:\nСижу за решёткой в темнице сырой.\nВскормленный в неволе орёл молодой,\nМой грустный товарищ, махая крылом,\nКровавую пищу клюёт под окном,\nAnswer them.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Бырать по тическому явлению",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "same-opening",
+     "met": false,
+     "detail": "бырать"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Бырать по тическому явлению",
+     "tidy": "Бырать по тическому явлению",
+     "ms": 245,
+     "tokens": 12,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Беваרы на окно",
+     "tidy": "Беваרы на окно",
+     "ms": 128,
+     "tokens": 7,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1043,
+   "roundIndex": 0,
+   "formId": "anaphora",
+   "difficulty": "master",
+   "card": "Benvolio",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Benvolio in a duel of verses: theatrical, sharp, in character. Your line in the play: \"I do but keep the peace. Put up thy sword.\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same word.\nWrite exactly 3 lines.\nYour flourish: Rhyme two words inside a single line.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Ракиь: \"Я не бы добавил наш размер.\"",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "same-opening",
+     "met": false,
+     "detail": "ракиь"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Ракиь: \"Я не бы добавил наш размер.\"",
+     "tidy": "Ракиь: \"Я не бы добавил наш размер.\"",
+     "ms": 246,
+     "tokens": 17,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Rya rovstova",
+     "tidy": "Rya rovstova",
+     "ms": 125,
+     "tokens": 6,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Рыnsya",
+     "tidy": "Рыnsya",
+     "ms": 56,
+     "tokens": 4,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1054,
+   "roundIndex": 2,
+   "formId": "anaphora",
+   "difficulty": "apprentice",
+   "card": "Benvolio",
+   "acrostic": null,
+   "relicWords": [
+    "кинжал",
+    "кровь",
+    "сон",
+    "видение",
+    "рука"
+   ],
+   "answering": "Я вас любил: любовь ещё, быть может,\nВ душе моей угасла не совсем;\nНо пусть она вас больше не тревожит;\nЯ не хочу печалить вас ничем.",
+   "prompt": [
+    "You are Benvolio in a duel of verses: theatrical, sharp, in character. Your line in the play: \"I do but keep the peace. Put up thy sword.\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same word.\nWrite exactly 3 lines.\nYour flourish: Rhyme two words inside a single line.\nWork in at least two of these words: кинжал, кровь, сон, видение, рука.\nYour challenger last said:\nЯ вас любил: любовь ещё, быть может,\nВ душе моей угасла не совсем;\nНо пусть она вас больше не тревожит;\nЯ не хочу печалить вас ничем.\nAnswer them.\nWrite only the verse, in Russian. No title, no notes, no explanation."
+   ],
+   "verse": "Рыно что бы любовь ещё, быть может\nروка что ирви",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/3"
+    },
+    {
+     "id": "same-opening",
+     "met": false,
+     "detail": "рыно · روка"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Рыно что бы любовь ещё, быть может\n\nروка что ирви",
+     "tidy": "Рыно что бы любовь ещё, быть может\nروка что ирви",
+     "ms": 179,
+     "tokens": 19,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  }
+ ],
+ "seconds": 43
+}
