@@ -43,6 +43,8 @@ This covers the playground and story pages, the trivia bank (200 questions), the
 | ru-grigoryev-romeo | ru | Romeo and Juliet (Q83186) | Аполлон Григорьев (1864) | https://ru.wikisource.org/wiki/Ромео_и_Джульетта_(Шекспир;_Григорьев)/1929 | Public domain: translator died 1864; first published 1864; text of the 1929 edition (Собрание сочинений, кн. 3, «Красная газета», Ленинград) in its modern spelling |
 | pl-ulrich-romeo | pl | Romeo and Juliet (Q83186) | Leon Ulrich (1885) | https://pl.wikisource.org/wiki/Romeo_i_Julia_(Shakespeare,_tłum._Ulrich,_1895) | Public domain: translator died 1885; Dzieła dramatyczne Williama Shakespeare, tom V, 1895, in its spelling (innem) |
 | it-rusconi-romeo | it | Romeo and Juliet (Q83186) | Carlo Rusconi (1889) | https://it.wikisource.org/wiki/Giulietta_e_Romeo | Public domain: translator died 1889; Teatro completo di Shakspeare, 1858 |
+| fr-hugo-cesar | fr | Julius Caesar (Q215750) | François-Victor Hugo (1873) | https://fr.wikisource.org/wiki/Jules_César_(Shakespeare,_trad._Hugo) | Public domain: translator died 1873; Œuvres complètes de Shakespeare, Pagnerre, Paris |
+| it-rusconi-cesare | it | Julius Caesar (Q215750) | Carlo Rusconi (1889) | https://it.wikisource.org/wiki/Giulio_Cesare | Public domain: translator died 1889; Teatro completo di Shakspeare, 1858 |
 
 ## Names
 
@@ -783,6 +785,16 @@ Allowances: F.-V. Hugo's prose marks the original's verse lines with " — "; a 
 | 79 | Wisely and slow; they stumble that run fast. | Allons sagement et doucement : trébuche qui court vite | doucement, vite | https://fr.wikisource.org/w/index.php?title=Rom%C3%A9o_et_Juliette_%28trad._Hugo%29&oldid=15966892 |
 | 96 | Thou know'st the mask of night is on my face, else would a maiden blush bepaint my cheek. | Tu sais que le masque de la nuit est sur mon visage ; sans cela, tu verrais une virginale couleur colorer ma joue | nuit, couleur | https://fr.wikisource.org/w/index.php?title=Rom%C3%A9o_et_Juliette_%28trad._Hugo%29&oldid=15966892 |
 | 99 | O, she doth teach the torches to burn bright! | Oh ! elle apprend aux flambeaux à illuminer ! | flambeaux, illuminer | https://fr.wikisource.org/w/index.php?title=Rom%C3%A9o_et_Juliette_%28trad._Hugo%29&oldid=15966892 |
+| 5 | Friends, Romans, countrymen, lend me your ears. | Amis, Romains, compatriotes, prêtez-moi l’oreille. | oreille | https://fr.wikisource.org/w/index.php?title=Jules_C%C3%A9sar_%28Shakespeare%2C_trad._Hugo%29&oldid=15966514 |
+| 50 | I come to bury Caesar, not to praise him. | Je viens pour ensevelir César, non pour le louer. | ensevelir, louer | https://fr.wikisource.org/w/index.php?title=Jules_C%C3%A9sar_%28Shakespeare%2C_trad._Hugo%29&oldid=15966514 |
+| 36 | The evil that men do lives after them; the good is oft interred with their bones. | Le mal que font les hommes vit après eux ; le bien est souvent enterré avec leurs os | bien, enterré | https://fr.wikisource.org/w/index.php?title=Jules_C%C3%A9sar_%28Shakespeare%2C_trad._Hugo%29&oldid=15966514 |
+| 8 | Et tu, Brute? | Toi aussi, Brutus ! | Brutus | https://fr.wikisource.org/w/index.php?title=Jules_C%C3%A9sar_%28Shakespeare%2C_trad._Hugo%29&oldid=15966514 |
+| 69 | Men at some time are masters of their fates. | Les hommes, à de certains moments, sont maîtres de leurs destinées. | maîtres, destinées | https://fr.wikisource.org/w/index.php?title=Jules_C%C3%A9sar_%28Shakespeare%2C_trad._Hugo%29&oldid=15966514 |
+| 29 | The fault, dear Brutus, is not in our stars, but in ourselves. | la faute en est à nous et non à nos étoiles. | nous, étoiles | https://fr.wikisource.org/w/index.php?title=Jules_C%C3%A9sar_%28Shakespeare%2C_trad._Hugo%29&oldid=15966514 |
+| 31 | Cowards die many times before their deaths; the valiant never taste of death but once. | Les lâches meurent bien des fois avant leur mort ; les vaillants ne sentent qu’une fois la mort. | vaillants, fois | https://fr.wikisource.org/w/index.php?title=Jules_C%C3%A9sar_%28Shakespeare%2C_trad._Hugo%29&oldid=15966514 |
+| 47 | Cry havoc, and let slip the dogs of war! | Pas de quartier ! et déchaînera les chiens de la guerre | quartier, guerre | https://fr.wikisource.org/w/index.php?title=Jules_C%C3%A9sar_%28Shakespeare%2C_trad._Hugo%29&oldid=15966514 |
+| 49 | Beware the ides of March. | Prends garde aux Ides de Mars | Ides | https://fr.wikisource.org/w/index.php?title=Jules_C%C3%A9sar_%28Shakespeare%2C_trad._Hugo%29&oldid=15966514 |
+| 52 | This was the noblest Roman of them all. | De tous les Romains, ce fut là le plus noble. | noble | https://fr.wikisource.org/w/index.php?title=Jules_C%C3%A9sar_%28Shakespeare%2C_trad._Hugo%29&oldid=15966514 |
 
 ### de
 
@@ -834,6 +846,15 @@ Allowances: F.-V. Hugo's prose marks the original's verse lines with " — "; a 
 | 34 | These violent delights have violent ends. | Questi violenti trasporti terminano fra violenti dolori | trasporti, dolori | https://it.wikisource.org/w/index.php?title=Giulietta_e_Romeo/Atto_secondo&oldid=3803530 |
 | 79 | Wisely and slow; they stumble that run fast. | Affrettiamoci, ma con savia fretta; chè chi troppo corre, sovente precipita. | savia, corre | https://it.wikisource.org/w/index.php?title=Giulietta_e_Romeo/Atto_secondo&oldid=3803530 |
 | 99 | O, she doth teach the torches to burn bright! | Oh! la sua bellezza offusca il chiarore di tutte queste faci | chiarore, faci | https://it.wikisource.org/w/index.php?title=Giulietta_e_Romeo/Atto_primo&oldid=3803527 |
+| 5 | Friends, Romans, countrymen, lend me your ears. | Amici, Romani, concittadini, porgetemi attento ascolto | ascolto | https://it.wikisource.org/w/index.php?title=Giulio_Cesare/Atto_terzo&oldid=3803538 |
+| 50 | I come to bury Caesar, not to praise him. | vengo a seppellir Cesare, non a laudarlo. | seppellir, laudarlo | https://it.wikisource.org/w/index.php?title=Giulio_Cesare/Atto_terzo&oldid=3803538 |
+| 36 | The evil that men do lives after them; the good is oft interred with their bones. | Il male che gli uomini fanno, vive dopo di loro; come il bene è sovente sepolto colle loro ossa. | bene, sepolto | https://it.wikisource.org/w/index.php?title=Giulio_Cesare/Atto_terzo&oldid=3803538 |
+| 8 | Et tu, Brute? | Et tu, Brute? | Brute | https://it.wikisource.org/w/index.php?title=Giulio_Cesare/Atto_terzo&oldid=3803538 |
+| 69 | Men at some time are masters of their fates. | Sonovi età, in cui gli uomini riescono arbitri de’ loro destini | arbitri, destini | https://it.wikisource.org/w/index.php?title=Giulio_Cesare/Atto_primo&oldid=3803534 |
+| 29 | The fault, dear Brutus, is not in our stars, but in ourselves. | se schiavi noi siamo, la colpa è in noi soli. | colpa, soli | https://it.wikisource.org/w/index.php?title=Giulio_Cesare/Atto_primo&oldid=3803534 |
+| 31 | Cowards die many times before their deaths; the valiant never taste of death but once. | I vili muoiono molte volte prima di morire; ma una volta sola gli uomini coraggiosi. | volta, coraggiosi | https://it.wikisource.org/w/index.php?title=Giulio_Cesare/Atto_secondo&oldid=3803537 |
+| 49 | Beware the ides of March. | Guardati dalle Idi di marzo. | Idi | https://it.wikisource.org/w/index.php?title=Giulio_Cesare/Atto_primo&oldid=3803534 |
+| 52 | This was the noblest Roman of them all. | Di quanti Romani furono, Bruto apparve certo il più nobile. | nobile | https://it.wikisource.org/w/index.php?title=Giulio_Cesare/Atto_quinto&oldid=3803536 |
 
 ### pl
 
@@ -927,9 +948,9 @@ The English bank has 104 quote challenges. A language has only those listed abov
 | Language | Has | Dropped | Plays |
 |---|---|---|---|
 | es | 29 | 75 | its own 29 |
-| fr | 22 | 82 | its own 22 |
+| fr | 32 | 72 | its own 32 |
 | de | 23 | 81 | its own 23 |
-| it | 18 | 86 | its own 18 |
+| it | 27 | 77 | its own 27 |
 | pt | 0 | 104 | the English originals (104) |
 | pl | 15 | 89 | its own 15 |
 | ru | 18 | 86 | its own 18 |
@@ -942,7 +963,7 @@ The English bank has 104 quote challenges. A language has only those listed abov
 | th | 0 | 104 | the English originals (104) |
 | id | 0 | 104 | the English originals (104) |
 
-Why so many are dropped. What was searched, on Wikisource unless said otherwise: *Hamlet* in one translation per language (es, fr, de, it, pl, ru); *Romeo and Juliet* in French (Hugo), German (Schlegel), Italian (Rusconi), Spanish (Menéndez y Pelayo), Russian (Grigoryev) and Polish (Ulrich); Menéndez y Pelayo's *Macbeth* and *Otelo*; for Chinese, every one of Zhu Shenghao's translations zh.wikisource has (*Hamlet*, *The Tempest*, *A Midsummer Night's Dream*; the other links of its Shakespeare portal are pages not yet made); for Japanese, Tsubouchi Shōyō's *Romeo and Juliet* on Aozora Bunko (his *Hamlet* is still in preparation there and is not on ja.wikisource). A line not found whole in one line or verse of the source was left out, not stitched together (many prose translations of the 1880s abridge or paraphrase); one found was left out for Japanese because its words are archaic forms a player could not type (79, 'they stumble that run fast': 賢う徐うぢゃ。馳出す者は蹉躓くわい). Not searched, so no finding either way: the other works in these languages; Portuguese, whose Wikisource has the *Hamlet* of King Luís I (1877) and of Bulhão Pato (1879) only as page scans. No public-domain translation is known to the author for Korean, Arabic, Hindi, Vietnamese, Thai or Indonesian; that was not researched.
+Why so many are dropped. What was searched, on Wikisource unless said otherwise: *Hamlet* in one translation per language (es, fr, de, it, pl, ru); *Romeo and Juliet* in French (Hugo), German (Schlegel), Italian (Rusconi), Spanish (Menéndez y Pelayo), Russian (Grigoryev) and Polish (Ulrich); Menéndez y Pelayo's *Macbeth* and *Otelo*; *Julius Caesar* in French (Hugo) and Italian (Rusconi); for Chinese, every one of Zhu Shenghao's translations zh.wikisource has (*Hamlet*, *The Tempest*, *A Midsummer Night's Dream*; the other links of its Shakespeare portal are pages not yet made); for Japanese, Tsubouchi Shōyō's *Romeo and Juliet* on Aozora Bunko (his *Hamlet* is still in preparation there and is not on ja.wikisource). A line not found whole in one line or verse of the source was left out, not stitched together (many prose translations of the 1880s abridge or paraphrase); one found was left out for Japanese because its words are archaic forms a player could not type (79, 'they stumble that run fast': 賢う徐うぢゃ。馳出す者は蹉躓くわい). Not searched, so no finding either way: the other works in these languages; Portuguese, whose Wikisource has the *Hamlet* of King Luís I (1877) and of Bulhão Pato (1879) only as page scans. No public-domain translation is known to the author for Korean, Arabic, Hindi, Vietnamese, Thai or Indonesian; that was not researched.
 
 The Japanese lines are in the old orthography of the 1933 edition (旧字旧仮名), as Aozora gives them; the missing words were chosen among those written the same today, so that a player can type them.
 

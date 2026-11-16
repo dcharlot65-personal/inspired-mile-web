@@ -76,9 +76,7 @@ es	102	Love's Labour's Lost	A light heart lives long.
 es	103	The Tempest	What is past is prologue.
 fr	1	The Merchant of Venice	All that glitters is not gold.
 fr	3	The Tempest	We are such stuff as dreams are made on.
-fr	5	Julius Caesar	Friends, Romans, countrymen, lend me your ears.
 fr	7	Macbeth	Double, double toil and trouble; fire burn and cauldron bubble.
-fr	8	Julius Caesar	Et tu, Brute?
 fr	9	Richard III	Now is the winter of our discontent.
 fr	10	As You Like It	All the world's a stage, and all the men and women merely players.
 fr	11	Macbeth	Out, damned spot! Out, I say!
@@ -95,12 +93,9 @@ fr	24	Henry IV, Part 2	Uneasy lies the head that wears a crown.
 fr	25	Henry IV, Part 1	The better part of valour is discretion.
 fr	26	King Lear	How sharper than a serpent's tooth it is to have a thankless child.
 fr	28	Macbeth	By the pricking of my thumbs, something wicked this way comes.
-fr	29	Julius Caesar	The fault, dear Brutus, is not in our stars, but in ourselves.
 fr	30	A Midsummer Night's Dream	Though she be but little, she is fierce.
-fr	31	Julius Caesar	Cowards die many times before their deaths; the valiant never taste of death but once.
 fr	32	The Tempest	Hell is empty and all the devils are here.
 fr	33	The Merchant of Venice	The quality of mercy is not strained; it droppeth as the gentle rain from heaven.
-fr	36	Julius Caesar	The evil that men do lives after them; the good is oft interred with their bones.
 fr	37	Othello	I am not what I am.
 fr	38	Othello	O, beware, my lord, of jealousy! It is the green-eyed monster which doth mock the meat it feeds on.
 fr	39	Macbeth	Tomorrow, and tomorrow, and tomorrow, creeps in this petty pace from day to day.
@@ -108,12 +103,8 @@ fr	40	Macbeth	Life's but a walking shadow, a poor player that struts and frets h
 fr	41	Twelfth Night	Be not afraid of greatness. Some are born great, some achieve greatness, and others have greatness thrust upon them.
 fr	44	Richard III	Off with his head!
 fr	45	Henry V	Once more unto the breach, dear friends, once more.
-fr	47	Julius Caesar	Cry havoc, and let slip the dogs of war!
 fr	48	All's Well That Ends Well	Love all, trust a few, do wrong to none.
-fr	49	Julius Caesar	Beware the ides of March.
-fr	50	Julius Caesar	I come to bury Caesar, not to praise him.
 fr	51	Antony and Cleopatra	Give me my robe, put on my crown.
-fr	52	Julius Caesar	This was the noblest Roman of them all.
 fr	54	Hamlet	Sweets to the sweet.
 fr	55	The Merchant of Venice	If you prick us, do we not bleed?
 fr	56	Richard III	My kingdom for a horse!
@@ -127,7 +118,6 @@ fr	65	Richard II	I wasted time, and now doth time waste me.
 fr	66	Much Ado About Nothing	Sigh no more, ladies, sigh no more, men were deceivers ever.
 fr	67	As You Like It	I pray you, do not fall in love with me, for I am falser than vows made in wine.
 fr	68	The Tempest	Misery acquaints a man with strange bedfellows.
-fr	69	Julius Caesar	Men at some time are masters of their fates.
 fr	70	As You Like It	The fool doth think he is wise, but the wise man knows himself to be a fool.
 fr	71	As You Like It	Blow, blow, thou winter wind, thou art not so unkind as man's ingratitude.
 fr	72	King Lear	Have more than thou showest, speak less than thou knowest.
@@ -239,9 +229,7 @@ de	102	Love's Labour's Lost	A light heart lives long.
 de	103	The Tempest	What is past is prologue.
 it	1	The Merchant of Venice	All that glitters is not gold.
 it	3	The Tempest	We are such stuff as dreams are made on.
-it	5	Julius Caesar	Friends, Romans, countrymen, lend me your ears.
 it	7	Macbeth	Double, double toil and trouble; fire burn and cauldron bubble.
-it	8	Julius Caesar	Et tu, Brute?
 it	9	Richard III	Now is the winter of our discontent.
 it	10	As You Like It	All the world's a stage, and all the men and women merely players.
 it	11	Macbeth	Out, damned spot! Out, I say!
@@ -259,12 +247,9 @@ it	25	Henry IV, Part 1	The better part of valour is discretion.
 it	26	King Lear	How sharper than a serpent's tooth it is to have a thankless child.
 it	27	Hamlet	This above all: to thine own self be true.
 it	28	Macbeth	By the pricking of my thumbs, something wicked this way comes.
-it	29	Julius Caesar	The fault, dear Brutus, is not in our stars, but in ourselves.
 it	30	A Midsummer Night's Dream	Though she be but little, she is fierce.
-it	31	Julius Caesar	Cowards die many times before their deaths; the valiant never taste of death but once.
 it	32	The Tempest	Hell is empty and all the devils are here.
 it	33	The Merchant of Venice	The quality of mercy is not strained; it droppeth as the gentle rain from heaven.
-it	36	Julius Caesar	The evil that men do lives after them; the good is oft interred with their bones.
 it	37	Othello	I am not what I am.
 it	38	Othello	O, beware, my lord, of jealousy! It is the green-eyed monster which doth mock the meat it feeds on.
 it	39	Macbeth	Tomorrow, and tomorrow, and tomorrow, creeps in this petty pace from day to day.
@@ -275,10 +260,7 @@ it	45	Henry V	Once more unto the breach, dear friends, once more.
 it	46	Romeo and Juliet	But soft, what light through yonder window breaks?
 it	47	Julius Caesar	Cry havoc, and let slip the dogs of war!
 it	48	All's Well That Ends Well	Love all, trust a few, do wrong to none.
-it	49	Julius Caesar	Beware the ides of March.
-it	50	Julius Caesar	I come to bury Caesar, not to praise him.
 it	51	Antony and Cleopatra	Give me my robe, put on my crown.
-it	52	Julius Caesar	This was the noblest Roman of them all.
 it	54	Hamlet	Sweets to the sweet.
 it	55	The Merchant of Venice	If you prick us, do we not bleed?
 it	56	Richard III	My kingdom for a horse!
@@ -292,7 +274,6 @@ it	65	Richard II	I wasted time, and now doth time waste me.
 it	66	Much Ado About Nothing	Sigh no more, ladies, sigh no more, men were deceivers ever.
 it	67	As You Like It	I pray you, do not fall in love with me, for I am falser than vows made in wine.
 it	68	The Tempest	Misery acquaints a man with strange bedfellows.
-it	69	Julius Caesar	Men at some time are masters of their fates.
 it	70	As You Like It	The fool doth think he is wise, but the wise man knows himself to be a fool.
 it	71	As You Like It	Blow, blow, thou winter wind, thou art not so unkind as man's ingratitude.
 it	72	King Lear	Have more than thou showest, speak less than thou knowest.
