@@ -85,6 +85,30 @@ give the formal name of a municipality where a shorter one is usual: Osaka is å¤
   them; the pages now use `src/i18n/pages/rules-text.ts`, which says the same in the interface
   language.
 
+## The document title and description
+
+Every page names itself in the interface language through the layout's `titleKey`, `descriptionKey`
+and `i18nAreas`; a page in the navigation that gives no `titleKey` gets its navigation entry's name.
+The five pages above have their own keys. The battle page and the theatre, which no other language
+branch owns, now use their own introductions as descriptions (core keys `battle.intro`,
+`theatre.intro`) and the theatre's name from the about page (`about.tech.theatre.title`): no new
+strings. Classroom, season and story have no navigation entry and pass no key yet; their branches
+(lang/pages-rest, lang/pages-play) can pass one. Every page of those branches still passes an English
+`description` with no `descriptionKey`, so their descriptions stay English until they do.
+
+## Right-to-left and other scripts: what the code does, not the strings
+
+- A count out of a total in Arabic is written `11/71`, with no spaces round the slash: with spaces the
+  bidirectional algorithm showed the total first (71 / 11).
+- A signed number ("+50", "+2 Wordplay", "+6 craft") is put in a left-to-right isolate on a
+  right-to-left page by `signedLtr()` in `runtime.ts`, at run time; without it Arabic showed 50+.
+- A list of words is joined as the language joins a list (`list()`, Intl's conjunction lists). Intl's
+  "unit" lists, meant for measurements, put nothing between items in Chinese and Japanese.
+- In Japanese and Chinese an h1 or h2 keeps its accented word whole (`global.css`), so a heading too
+  wide for a phone breaks before the accent rather than inside it.
+- Dates on the about page's timeline are not set in the monospace font in Arabic: it has no Arabic,
+  and the fallback pulled the letters apart.
+
 ## How the strings are built
 
 - A count is written as a label and a number ("Variants unlocked: 2"), never as a number and a
@@ -173,10 +197,16 @@ node scripts/pages-lang/names-in-text.mjs --selftest && node scripts/pages-lang/
 #   java -Xmx4g -cp $Q/LanguageTool-6.6/languagetool-server.jar org.languagetool.server.HTTPServer --port <port>
 LT_URL=http://127.0.0.1:<port> node scripts/pages-lang/grammar.mjs --selftest
 LT_URL=http://127.0.0.1:<port> node scripts/pages-lang/grammar.mjs --out grammar.json
-# back-translation, on the build host's CPU (its MPS backend failed: RESULTS.md); long, run it detached
-node scripts/pages-lang/pairs.mjs pairs.json [--min-words 6]
-MADLAD_DIR=$Q/models/madlad400-3b-mt-ct2-int8 MINILM_DIR=$Q/models/all-MiniLM-L6-v2 BT_BEAM=2 BT_BATCH=32 \
-  $Q/venv/bin/python -I scripts/pages-lang/backtranslate.py --pairs pairs.json --out bt.json
+# meaning: back-translation with lang/qa-pipeline's own backtranslate.py (MADLAD-400 on the host's
+# GPU, MiniLM and LaBSE scores), one language at a time, then the control. Long: run it detached.
+node scripts/pages-lang/pairs.mjs pairs.json --min-words 1            # every string
+git archive lang/qa-pipeline scripts/lang | tar -x -C <dir on the host>   # QA_SRC=<that dir>/scripts/lang
+QA_SRC=... WORK=<dir> nohup bash scripts/pages-lang/meaning-run.sh pairs.json > <dir>/run.log 2>&1 &
+# after changing strings: only those, merged over the earlier run
+node scripts/pages-lang/pairs.mjs changed.json --min-words 1 --changed <earlier>/bt.json
+BASE=<earlier dir> QA_SRC=... WORK=<new dir> nohup bash scripts/pages-lang/meaning-run.sh changed.json > ... &
+# then, here: which strings drifted (exit 1 on an unread flag, a string not scored, a stale entry)
+node scripts/pages-lang/meaning.mjs --selftest && node scripts/pages-lang/meaning.mjs --bt docs/language/pages-core/bt.json
 # spelling (Hunspell) and back-translation (MADLAD-400), with the tools branch lang/qa-pipeline installed
 Q=/Volumes/macos_4TB_external_1/wai-build/im-lang/qa-pipeline
 ~/kani-logs/remote/rb . -- "$RB HSPELL=$Q/hunspell/bin/hspell DICT_DIR=$Q/dict node scripts/pages-lang/spell.mjs --selftest"
@@ -186,4 +216,7 @@ node scripts/page-shots.mjs http://localhost:<port> <outDir> ar,de,ja,es
 ```
 
 `scripts/pages-lang/` is a stand-in: when the pipeline of `lang/qa-pipeline` is in main, point
-it at `src/i18n/pages/` and delete these scripts.
+it at `src/i18n/pages/` and delete these scripts. The meaning check already runs that pipeline's
+own `backtranslate.py` (taken from the branch at b7c5459); `meaning.mjs` applies its rule (MiniLM
+and LaBSE both under 0.6) and adds a check of the back-translation's words (negation, bounds,
+numbers) that the scores were shown to miss (RESULTS.md).
