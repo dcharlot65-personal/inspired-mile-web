@@ -96,7 +96,7 @@ export function challengeProblems(l: string, m: Messages | undefined): string[] 
     if (refilled.toLocaleLowerCase(l) !== full.toLocaleLowerCase(l)) out.push(`${l}: challenge ${id}: the blanks do not fill back to the line`);
     if (l !== 'en' && !m[`challenge.${id}.translator`]) out.push(`${l}: challenge ${id} names no translator`);
   }
-  const perChallenge = l === 'en' ? 5 : 5; // full, display, missing, play, and character (en) or translator (others)
+  const perChallenge = l === 'en' ? 5 : 6; // full, display, missing, play, character; and the translator in a translation
   const stray = Object.keys(m).filter((k) => k.startsWith('challenge.') && !ids.includes(k.split('.')[1]));
   if (stray.length) out.push(`${l}: keys for challenges not listed in challenges.ids: ${stray.slice(0, 3).join(', ')}`);
   if (Object.keys(m).length !== 1 + ids.length * perChallenge) out.push(`${l}: ${Object.keys(m).length} keys for ${ids.length} challenges`);

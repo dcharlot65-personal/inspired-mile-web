@@ -1,1 +1,7 @@
-# id	lang	work (entity key)	translator	translator died	URL	copyright status
+# id	lang	work (entity key)	translator	translator died	URL of the work on Wikisource	copyright status and edition
+fr-hugo-hamlet	fr	p.hamlet	François-Victor Hugo	1873	https://fr.wikisource.org/wiki/Le_second_Hamlet_(trad._Hugo)	Public domain: translator died 1873; Œuvres complètes de Shakespeare, Pagnerre, Paris, 1865, tome I
+de-schlegel-hamlet	de	p.hamlet	August Wilhelm von Schlegel	1845	https://de.wikisource.org/wiki/Hamlet	Public domain: translator died 1845; text of W. Shakespeare's dramatische Werke, ed. Wilhelm Oechelhäuser (d. 1902), Deutsche Verlags-Anstalt, Stuttgart, 1891
+pl-paszkowski-hamlet	pl	p.hamlet	Józef Paszkowski	1861	https://pl.wikisource.org/wiki/Hamlet_(Shakespeare,_tłum._Paszkowski,_1909)	Public domain: translator died 1861; edition of 1909, in its spelling (czem, duńskiem)
+es-moratin-hamlet	es	p.hamlet	Leandro Fernández de Moratín	1828	https://es.wikisource.org/wiki/Hamlet_(Inarco_Celenio_trad.)	Public domain: translator died 1828; first published 1798 under the name Inarco Celenio
+it-rusconi-amleto	it	p.hamlet	Carlo Rusconi	1889	https://it.wikisource.org/wiki/Amleto_(Rusconi)	Public domain: translator died 1889
+ru-kroneberg-hamlet	ru	p.hamlet	Андрей Кронеберг	1855	https://ru.wikisource.org/wiki/Гамлет_(Шекспир;_Кронеберг)	Public domain: translator died 1855; text of the 1902 complete works, in the modern spelling Wikisource gives beside it (ВТ:Ё)
