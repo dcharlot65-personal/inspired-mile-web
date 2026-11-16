@@ -18,7 +18,8 @@
     "de",
     "pt",
     "ru",
-    "ar"
+    "ar",
+    "hi"
    ]
   },
   "standard": {
@@ -41,7 +42,8 @@
     "pt",
     "pl",
     "ru",
-    "ar"
+    "ar",
+    "hi"
    ],
    "write": [
     "en",
@@ -52,7 +54,8 @@
     "pt",
     "pl",
     "ru",
-    "ar"
+    "ar",
+    "hi"
    ]
   },
   "standard": {
@@ -65,7 +68,8 @@
     "pt",
     "pl",
     "ru",
-    "ar"
+    "ar",
+    "hi"
    ],
    "write": [
     "en",
@@ -76,7 +80,8 @@
     "pt",
     "pl",
     "ru",
-    "ar"
+    "ar",
+    "hi"
    ]
   },
   "lite": {
@@ -89,7 +94,8 @@
     "pt",
     "pl",
     "ru",
-    "ar"
+    "ar",
+    "hi"
    ],
    "write": [
     "en",
@@ -100,7 +106,8 @@
     "pt",
     "pl",
     "ru",
-    "ar"
+    "ar",
+    "hi"
    ]
   }
  },
@@ -152,11 +159,9 @@
    },
    "hi": {
     "writes": [
-     "not measured"
+     "commentary in 16/80 plays"
     ],
-    "judges": [
-     "not measured"
-    ]
+    "judges": []
    },
    "zh": {
     "writes": [
@@ -306,10 +311,13 @@
    },
    "hi": {
     "writes": [
-     "not measured"
+     "in the language in 4/80 plays (5%), under 90%",
+     "commentary in 74/80 plays",
+     "kept the form in full in 5/80 plays (6%), under 30%"
     ],
     "judges": [
-     "not measured"
+     "better verse won 4/12 pairs: the 95% interval reaches down to 0.14, not above chance",
+     "preferred the better verse on 17/48 criteria (35%), under 70%"
     ]
    },
    "zh": {
@@ -451,10 +459,12 @@
    },
    "hi": {
     "writes": [
-     "not measured"
+     "in the language in 71/80 plays (89%), under 90%",
+     "kept the form in full in 2/80 plays (3%), under 30%"
     ],
     "judges": [
-     "not measured"
+     "better verse won 3/12 pairs: the 95% interval reaches down to 0.09, not above chance",
+     "preferred the better verse on 4/48 criteria (8%), under 70%"
     ]
    },
    "zh": {

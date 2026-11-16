@@ -1,0 +1,5243 @@
+{
+ "tier": "lite",
+ "lang": "hi",
+ "task": "write",
+ "model": "LiquidAI/LFM2.5-350M-ONNX",
+ "dtype": "q4",
+ "judgeMethod": "grade",
+ "date": "2026-11-16T23:13:15.294Z",
+ "commit": "f32a0aff8a8ffcfd3a2589b046210ca7f46aebc4",
+ "transformers": "4.3.2",
+ "gpu": {
+  "vendor": "apple",
+  "architecture": "metal-3",
+  "device": "",
+  "description": ""
+ },
+ "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/159.0.8154.6 Safari/537.36",
+ "origin": "http://localhost:47731",
+ "forms": [
+  "couplet",
+  "quatrain-aabb",
+  "quatrain-abab",
+  "tercet",
+  "anaphora",
+  "acrostic",
+  "crescendo",
+  "epistrophe"
+ ],
+ "perForm": 10,
+ "plays": [
+  {
+   "seed": 1001,
+   "roundIndex": 0,
+   "formId": "acrostic",
+   "difficulty": "apprentice",
+   "card": "Ariel",
+   "acrostic": "सपना",
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Ariel in a duel of verses: theatrical, sharp, in character. Your line in the play: \"All hail, great master! Grave sir, hail!\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per letter: the first letters must spell सपना.\nWrite exactly 3 lines.\nYour flourish: Make your last line your longest.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Hindi. No title, no notes, no explanation."
+   ],
+   "verse": "सपना हाँ\nत्यकरी\nचारण।",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "spells",
+     "met": false,
+     "detail": "सत्यचा"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "सपना हाँ\n\nत्यकरी\n\nचारण।",
+     "tidy": "सपना हाँ\nत्यकरी\nचारण।",
+     "ms": 2331,
+     "tokens": 29,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1001,
+   "roundIndex": 1,
+   "formId": "anaphora",
+   "difficulty": "apprentice",
+   "card": "Christina Rossetti",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "\"कौन तुम ? संसृति-जलनिधि तीर-तरंगों से फेंकी मणि एक,\nकर रहे निर्जन का चुपचाप प्रभा की धारा से अभिषेक?",
+   "prompt": [
+    "You are Christina Rossetti in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Remember me when I am gone away, gone far away into the silent land.\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same word.\nWrite exactly 3 lines.\nYour flourish: Give every line the same number of words.\nYour challenger last said:\n\"कौन तुम ? संसृति-जलनिधि तीर-तरंगों से फेंकी मणि एक,\nकर रहे निर्जन का चुपचाप प्रभा की धारा से अभिषेक?\nAnswer them.\nWrite only the verse, in Hindi. No title, no notes, no explanation."
+   ],
+   "verse": "कौन तुम निर्जन ठरणका फेंकी मणि एक।",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "same-opening",
+     "met": false,
+     "detail": "कौन"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "कौन तुम निर्जन ठरणका फेंकी मणि एक।",
+     "tidy": "कौन तुम निर्जन ठरणका फेंकी मणि एक।",
+     "ms": 3688,
+     "tokens": 47,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1001,
+   "roundIndex": 2,
+   "formId": "tercet",
+   "difficulty": "apprentice",
+   "card": "Apollo",
+   "acrostic": null,
+   "relicWords": [
+    "अँगूठी",
+    "क़सम",
+    "रात",
+    "निर्वासन",
+    "चुंबन"
+   ],
+   "answering": "\"कौन तुम ? संसृति-जलनिधि तीर-तरंगों से फेंकी मणि एक,\nकर रहे निर्जन का चुपचाप प्रभा की धारा से अभिषेक?",
+   "prompt": [
+    "You are Apollo in a duel of verses: theatrical, sharp, in character. Your line in the play: \"I am the god of song, of healing, and of the radiant sun.\" You write short verse and nothing else.",
+    "Form: Tercet. Three lines; the first and last rhyme.\nWrite exactly 3 lines.\nYour flourish: Use two words of 5 letters or more.\nWork in at least two of these words: अँगूठी, क़सम, रात, निर्वासन, चुंबन.\nYour challenger last said:\n\"कौन तुम ? संसृति-जलनिधि तीर-तरंगों से फेंकी मणि एक,\nकर रहे निर्जन का चुपचाप प्रभा की धारा से अभिषेक?\nAnswer them.\nWrite only the verse, in Hindi. No title, no notes, no explanation."
+   ],
+   "verse": "अँगूठी क़सम चुंबन निर्वासन कर रहे",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "अँगूठी क़सम चुंबन निर्वासन कर रहे",
+     "tidy": "अँगूठी क़सम चुंबन निर्वासन कर रहे",
+     "ms": 3553,
+     "tokens": 47,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1002,
+   "roundIndex": 0,
+   "formId": "acrostic",
+   "difficulty": "player",
+   "card": "Lady Macbeth",
+   "acrostic": "सागर",
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Lady Macbeth in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Come, you spirits that tend on mortal thoughts, unsex me here.\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per letter: the first letters must spell सागर.\nWrite exactly 3 lines.\nYour flourish: Repeat one strong word three times.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Hindi. No title, no notes, no explanation."
+   ],
+   "verse": "सजगर\nतयकर\nटयकर",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "spells",
+     "met": false,
+     "detail": "सतट"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "सजगर\n\nतयकर\n\nटयकर",
+     "tidy": "सजगर\nतयकर\nटयकर",
+     "ms": 1815,
+     "tokens": 23,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "सागर का अनुको\n\nता टएक अतठ\n\nता",
+     "tidy": "सागर का अनुको\nता टएक अतठ\nता",
+     "ms": 2607,
+     "tokens": 38,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1002,
+   "roundIndex": 1,
+   "formId": "couplet",
+   "difficulty": "apprentice",
+   "card": "Puck",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "मधुर विश्रांत और एकांत--जगत का सुलझा हुआ रहस्य,\nएक करुणामय सुंदर मौन और चंचल मन का आलस्य!'",
+   "prompt": [
+    "You are Puck in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Lord, what fools these mortals be!\" You write short verse and nothing else.",
+    "Form: Couplet. Two lines that rhyme.\nWrite exactly 2 lines.\nYour flourish: Start three words in one line with the same letter.\nYour challenger last said:\nमधुर विश्रांत और एकांत--जगत का सुलझा हुआ रहस्य,\nएक करुणामय सुंदर मौन और चंचल मन का आलस्य!'\nAnswer them.\nWrite only the verse, in Hindi. No title, no notes, no explanation."
+   ],
+   "verse": "मधुर विश्रां� और एकांत-जगत का सुलझा हुआ रहस्य",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "मधुर विश्रां� और एकांत-जगत का सुलझा हुआ रहस्य",
+     "tidy": "मधुर विश्रां� और एकांत-जगत का सुलझा हुआ रहस्य",
+     "ms": 3973,
+     "tokens": 60,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1002,
+   "roundIndex": 2,
+   "formId": "crescendo",
+   "difficulty": "apprentice",
+   "card": "Juliet",
+   "acrostic": null,
+   "relicWords": [
+    "मुखौटा",
+    "सपना",
+    "मसखरा",
+    "नाटक",
+    "चाँद"
+   ],
+   "answering": "मधुर विश्रांत और एकांत--जगत का सुलझा हुआ रहस्य,\nएक करुणामय सुंदर मौन और चंचल मन का आलस्य!'",
+   "prompt": [
+    "You are Juliet in a duel of verses: theatrical, sharp, in character. Your line in the play: \"What's in a name? That which we call a rose...\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Cry out: end a line with an exclamation mark.\nWork in at least two of these words: मुखौटा, सपना, मसखरा, नाटक, चाँद.\nYour challenger last said:\nमधुर विश्रांत और एकांत--जगत का सुलझा हुआ रहस्य,\nएक करुणामय सुंदर मौन और चंचल मन का आलस्य!'\nAnswer them.\nWrite only the verse, in Hindi. No title, no notes, no explanation."
+   ],
+   "verse": "मधुर विश्रांत और एकांत—जगत का सुलझा हुआ रहस्य\nएक कर्वांणामय संदर मनका �",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/3"
+    },
+    {
+     "id": "growing",
+     "met": false,
+     "detail": "9 < 4"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "मधुर विश्रांत और एकांत—जगत का सुलझा हुआ रहस्य  \nएक कर्वांणामय संदर मनका �",
+     "tidy": "मधुर विश्रांत और एकांत—जगत का सुलझा हुआ रहस्य\nएक कर्वांणामय संदर मनका �",
+     "ms": 5500,
+     "tokens": 94,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1003,
+   "roundIndex": 0,
+   "formId": "crescendo",
+   "difficulty": "player",
+   "card": "Malvolio",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Malvolio in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Some are born great, some achieve greatness, and some have greatness thrust upon them.\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Keep every line to 6 words or fewer.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Hindi. No title, no notes, no explanation."
+   ],
+   "verse": "कु्से बराका ट्यां, प्रणाय की खतर\nटिएन।",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/3"
+    },
+    {
+     "id": "growing",
+     "met": false,
+     "detail": "6 < 1"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "कु्से बराका ट्यां, प्रणाय की खतर\n\nटिएन।",
+     "tidy": "कु्से बराका ट्यां, प्रणाय की खतर\nटिएन।",
+     "ms": 4335,
+     "tokens": 46,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "छ। शक",
+     "tidy": "छ। शक",
+     "ms": 752,
+     "tokens": 8,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1003,
+   "roundIndex": 1,
+   "formId": "couplet",
+   "difficulty": "player",
+   "card": "Hermes",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "देखा मनु ने वह अतिरंजित विजन विश्व का नव कांत ,\nजैसे कोलाहल सोया हो हिम-शीतल-जड़ता-सा श्रांत।",
+   "prompt": [
+    "You are Hermes in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Swift as thought, I carry the words of gods to mortal ears.\" You write short verse and nothing else.",
+    "Form: Couplet. Two lines that rhyme.\nWrite exactly 2 lines.\nYour flourish: Use two words of 5 letters or more.\nYour challenger last said:\nदेखा मनु ने वह अतिरंजित विजन विश्व का नव कांत ,\nजैसे कोलाहल सोया हो हिम-शीतल-जड़ता-सा श्रांत।\nAnswer them.\nWrite only the verse, in Hindi. No title, no notes, no explanation."
+   ],
+   "verse": "देखा मनु ने वह अतिरंजित विजन नव कांत,\nजैसे कोलाहल सोया",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "2/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "कांत / सोया"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "देखा मनु ने वह अतिरंजित विजन नव कांत,\nजैसे कोलाहल सोया",
+     "tidy": "देखा मनु ने वह अतिरंजित विजन नव कांत,\nजैसे कोलाहल सोया",
+     "ms": 2747,
+     "tokens": 72,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 2,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "देखा मनु ने वह अतिरण्जित विजन नव कांत,\nजैसे कोलाहल सोया",
+     "tidy": "देखा मनु ने वह अतिरण्जित विजन नव कांत,\nजैसे कोलाहल सोया",
+     "ms": 4944,
+     "tokens": 72,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 72,
+     "rawLines": 2,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1003,
+   "roundIndex": 2,
+   "formId": "tercet",
+   "difficulty": "player",
+   "card": "Prospero",
+   "acrostic": null,
+   "relicWords": [
+    "खोपड़ी",
+    "मज़ाक",
+    "क़ब्र",
+    "हँसी",
+    "धूल"
+   ],
+   "answering": "देखा मनु ने वह अतिरंजित विजन विश्व का नव कांत ,\nजैसे कोलाहल सोया हो हिम-शीतल-जड़ता-सा श्रांत।",
+   "prompt": [
+    "You are Prospero in a duel of verses: theatrical, sharp, in character. Your line in the play: \"We are such stuff as dreams are made on.\" You write short verse and nothing else.",
+    "Form: Tercet. Three lines; the first and last rhyme.\nWrite exactly 3 lines.\nYour flourish: Make your last line your longest.\nWork in at least two of these words: खोपड़ी, मज़ाक, क़ब्र, हँसी, धूल.\nYour challenger last said:\nदेखा मनु ने वह अतिरंजित विजन विश्व का नव कांत ,\nजैसे कोलाहल सोया हो हिम-शीतल-जड़ता-सा श्रांत।\nAnswer them.\nWrite only the verse, in Hindi. No title, no notes, no explanation."
+   ],
+   "verse": "खोपड़ी एक भीगूटी कोण, मज़ाक एक क़भ्र, धूल एक हँसी",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "खोपड़ी एक भीगूटी कोण, मज़ाक एक क़भ्र, धूल एक हँसी",
+     "tidy": "खोपड़ी एक भीगूटी कोण, मज़ाक एक क़भ्र, धूल एक हँसी",
+     "ms": 4298,
+     "tokens": 71,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    },
+    {
+     "raw": "खोपड़ी मज़ाक धूल",
+     "tidy": "खोपड़ी मज़ाक धूल",
+     "ms": 1623,
+     "tokens": 26,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1004,
+   "roundIndex": 0,
+   "formId": "anaphora",
+   "difficulty": "player",
+   "card": "Banquo",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Banquo in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Thou shalt get kings, though thou be none.\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same word.\nWrite exactly 3 lines.\nYour flourish: Repeat one strong word three times.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Hindi. No title, no notes, no explanation."
+   ],
+   "verse": "त्वर शकरा\nत्वर\nत्वर",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": true,
+   "formEarned": 20,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-opening",
+     "met": true,
+     "detail": "त्वर · त्वर · त्वर"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 30,
+   "drafts": [
+    {
+     "raw": "त्वर शकरा\n\nत्वर\n\nत्वर",
+     "tidy": "त्वर शकरा\nत्वर\nत्वर",
+     "ms": 1510,
+     "tokens": 23,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 30
+    },
+    {
+     "raw": "शुंग\n\nप्याज\n\nरात",
+     "tidy": "शुंग\nप्याज\nरात",
+     "ms": 1783,
+     "tokens": 19,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1004,
+   "roundIndex": 1,
+   "formId": "crescendo",
+   "difficulty": "master",
+   "card": "Prospero",
+   "acrostic": null,
+   "relicWords": [
+    "खंजर",
+    "ख़ून",
+    "नींद",
+    "छाया",
+    "हाथ"
+   ],
+   "answering": "इंद्रनीलमणि महा चषक था सोम-रहित उलटा लटका ,\nआज पवन मृदु साँस ले रहा जैसे बीत गया खटका।",
+   "prompt": [
+    "You are Prospero in a duel of verses: theatrical, sharp, in character. Your line in the play: \"We are such stuff as dreams are made on.\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Make your last line your longest.\nWork in at least two of these words: खंजर, ख़ून, नींद, छाया, हाथ.\nYour challenger last said:\nइंद्रनीलमणि महा चषक था सोम-रहित उलटा लटका ,\nआज पवन मृदु साँस ले रहा जैसे बीत गया खटका।\nAnswer them.\nWrite only the verse, in Hindi. No title, no notes, no explanation."
+   ],
+   "verse": "खंजर, ख़ून, नींद छाया",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "growing",
+     "met": false,
+     "detail": "4"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "अधुन महा ट्योन छाया",
+     "tidy": "अधुन महा ट्योन छाया",
+     "ms": 1681,
+     "tokens": 26,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "खंजर, ख़ून, नींद छाया",
+     "tidy": "खंजर, ख़ून, नींद छाया",
+     "ms": 1824,
+     "tokens": 29,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    },
+    {
+     "raw": "खंजर, ख़ून, नींदहा हाथ",
+     "tidy": "खंजर, ख़ून, नींदहा हाथ",
+     "ms": 2120,
+     "tokens": 31,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1004,
+   "roundIndex": 2,
+   "formId": "couplet",
+   "difficulty": "master",
+   "card": "Brutus",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "इंद्रनीलमणि महा चषक था सोम-रहित उलटा लटका ,\nआज पवन मृदु साँस ले रहा जैसे बीत गया खटका।",
+   "prompt": [
+    "You are Brutus in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Not that I loved Caesar less, but that I loved Rome more.\" You write short verse and nothing else.",
+    "Form: Couplet. Two lines that rhyme.\nWrite exactly 2 lines.\nYour flourish: Call on a character by name.\nYour challenger last said:\nइंद्रनीलमणि महा चषक था सोम-रहित उलटा लटका ,\nआज पवन मृदु साँस ले रहा जैसे बीत गया खटका।\nAnswer them.\nWrite only the verse, in Hindi. No title, no notes, no explanation."
+   ],
+   "verse": "इंद्रनीलमणि महा चषक था सोम-रहित भऔपोंड़ा ज़णका\nआ�",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "2/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "ज़णका / आ"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "इंद्रनीलमणि महा चषक था सोम-रहित भऔपोंड़ा ज़णका  \nआ�",
+     "tidy": "इंद्रनीलमणि महा चषक था सोम-रहित भऔपोंड़ा ज़णका\nआ�",
+     "ms": 3363,
+     "tokens": 72,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 2,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "रातंतबहा हारभभा",
+     "tidy": "रातंतबहा हारभभा",
+     "ms": 1150,
+     "tokens": 21,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "इंद्रनीलमणि महा चषक था",
+     "tidy": "इंद्रनीलमणि महा चषक था",
+     "ms": 1559,
+     "tokens": 32,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1005,
+   "roundIndex": 0,
+   "formId": "quatrain-aabb",
+   "difficulty": "apprentice",
+   "card": "Puck",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Puck in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Lord, what fools these mortals be!\" You write short verse and nothing else.",
+    "Form: Paired Quatrain. Four lines: the first two rhyme, and the last two rhyme.\nWrite exactly 4 lines.\nYour flourish: Start three words in one line with the same letter.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Hindi. No title, no notes, no explanation."
+   ],
+   "verse": "प्यारण का बातची\nआज़ हिंग़",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/4"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "बातची / हिंग़"
+    },
+    {
+     "id": "rhyme-3-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "प्यारण का बातची\n\nआज़ हिंग़",
+     "tidy": "प्यारण का बातची\nआज़ हिंग़",
+     "ms": 1830,
+     "tokens": 33,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 2,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1005,
+   "roundIndex": 1,
+   "formId": "acrostic",
+   "difficulty": "master",
+   "card": "Elizabeth Barrett Browning",
+   "acrostic": "सागर",
+   "relicWords": null,
+   "answering": "वरदान सदृश हो डाल रही नीली किरनों से बुना हुआ,\nयह अंचल कितना हलका-सा कितना सौरभ से सना हुआ।",
+   "prompt": [
+    "You are Elizabeth Barrett Browning in a duel of verses: theatrical, sharp, in character. Your line in the play: \"How do I love thee? Let me count the ways.\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per letter: the first letters must spell सागर.\nWrite exactly 3 lines.\nYour flourish: Give every line the same number of words.\nYour challenger last said:\nवरदान सदृश हो डाल रही नीली किरनों से बुना हुआ,\nयह अंचल कितना हलका-सा कितना सौरभ से सना हुआ।\nAnswer them.\nWrite only the verse, in Hindi. No title, no notes, no explanation."
+   ],
+   "verse": "वरदान सदृश हो डाल रही नीली किरनों से बुना हुआ\nयह अंचल कितना हलका-सा कि�",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/3"
+    },
+    {
+     "id": "spells",
+     "met": false,
+     "detail": "वय"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "वरदान सदृश हो डाल रही नीली किरनों से बुना हुआ  \nयह अंचल कितना हलका-सा कि�",
+     "tidy": "वरदान सदृश हो डाल रही नीली किरनों से बुना हुआ\nयह अंचल कितना हलका-सा कि�",
+     "ms": 6125,
+     "tokens": 95,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "वरदानसदणनोंक्समीक्षणहुआंक्टऎरनोहआं फ़नइकिरनोंक्समीक्षणह",
+     "tidy": "वरदानसदणनोंक्समीक्षणहुआंक्टऎरनोहआं फ़नइकिरनोंक्समीक्षणह",
+     "ms": 4185,
+     "tokens": 90,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "वरदान सदृश हो डाल रही नीली किरनों से बुना हुआ  \nयह अंचल कितना हलका-सा कि�",
+     "tidy": "वरदान सदृश हो डाल रही नीली किरनों से बुना हुआ\nयह अंचल कितना हलका-सा कि�",
+     "ms": 1658,
+     "tokens": 95,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1005,
+   "roundIndex": 2,
+   "formId": "couplet",
+   "difficulty": "apprentice",
+   "card": "Cassius",
+   "acrostic": null,
+   "relicWords": [
+    "आँसू",
+    "सच",
+    "बेटी",
+    "कुछ नहीं",
+    "दिल"
+   ],
+   "answering": "वरदान सदृश हो डाल रही नीली किरनों से बुना हुआ,\nयह अंचल कितना हलका-सा कितना सौरभ से सना हुआ।",
+   "prompt": [
+    "You are Cassius in a duel of verses: theatrical, sharp, in character. Your line in the play: \"The fault, dear Brutus, is not in our stars, but in ourselves.\" You write short verse and nothing else.",
+    "Form: Couplet. Two lines that rhyme.\nWrite exactly 2 lines.\nYour flourish: Call on a character by name.\nWork in at least two of these words: आँसू, सच, बेटी, कुछ नहीं, दिल.\nYour challenger last said:\nवरदान सदृश हो डाल रही नीली किरनों से बुना हुआ,\nयह अंचल कितना हलका-सा कितना सौरभ से सना हुआ।\nAnswer them.\nWrite only the verse, in Hindi. No title, no notes, no explanation."
+   ],
+   "verse": "वरदान सदृश हो डाल रही नीली",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "वरदान सदृश हो डाल रही नीली",
+     "tidy": "वरदान सदृश हो डाल रही नीली",
+     "ms": 902,
+     "tokens": 34,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1006,
+   "roundIndex": 0,
+   "formId": "crescendo",
+   "difficulty": "apprentice",
+   "card": "Percy Bysshe Shelley",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Percy Bysshe Shelley in a duel of verses: theatrical, sharp, in character. Your line in the play: \"If Winter comes, can Spring be far behind?\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: End your verse on the same word it began with.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Hindi. No title, no notes, no explanation."
+   ],
+   "verse": "कृट्स निरणता बहाँ\nयंग़ण्\nअपशतें",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "growing",
+     "met": false,
+     "detail": "3 < 1 < 1"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "कृट्स निरणता बहाँ\n\nयंग़ण्\n\nअपशतें",
+     "tidy": "कृट्स निरणता बहाँ\nयंग़ण्\nअपशतें",
+     "ms": 782,
+     "tokens": 47,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1006,
+   "roundIndex": 1,
+   "formId": "couplet",
+   "difficulty": "player",
+   "card": "Elizabeth Barrett Browning",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "सब अंग मोम से बनते हैं कोमलता में बल खाती हूँ,\nमैं सिमट रही - सी अपने में परिहास-गीत सुन पाती हूँ।",
+   "prompt": [
+    "You are Elizabeth Barrett Browning in a duel of verses: theatrical, sharp, in character. Your line in the play: \"How do I love thee? Let me count the ways.\" You write short verse and nothing else.",
+    "Form: Couplet. Two lines that rhyme.\nWrite exactly 2 lines.\nYour flourish: Give every line the same number of words.\nYour challenger last said:\nसब अंग मोम से बनते हैं कोमलता में बल खाती हूँ,\nमैं सिमट रही - सी अपने में परिहास-गीत सुन पाती हूँ।\nAnswer them.\nWrite only the verse, in Hindi. No title, no notes, no explanation."
+   ],
+   "verse": "सब अंग मोम से बनते हैं कोमलता में बल खाती हूँ\nमैं स",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "2/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "हूँ / स"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "सब अंग मोम से बनते हैं कोमलता में बल खाती हूँ  \nमैं स",
+     "tidy": "सब अंग मोम से बनते हैं कोमलता में बल खाती हूँ\nमैं स",
+     "ms": 923,
+     "tokens": 72,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 2,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "सब अंग ใच్लण मोम से बनते हैं कोमलता में बल खाती ह�",
+     "tidy": "सब अंग ใच్लण मोम से बनते हैं कोमलता में बल खाती ह�",
+     "ms": 1091,
+     "tokens": 72,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1006,
+   "roundIndex": 2,
+   "formId": "epistrophe",
+   "difficulty": "apprentice",
+   "card": "Prospero",
+   "acrostic": null,
+   "relicWords": [
+    "तूफ़ान",
+    "जादू",
+    "छड़ी",
+    "टापू",
+    "डूबना"
+   ],
+   "answering": "सब अंग मोम से बनते हैं कोमलता में बल खाती हूँ,\nमैं सिमट रही - सी अपने में परिहास-गीत सुन पाती हूँ।",
+   "prompt": [
+    "You are Prospero in a duel of verses: theatrical, sharp, in character. Your line in the play: \"We are such stuff as dreams are made on.\" You write short verse and nothing else.",
+    "Form: Epistrophe. Three lines that all end on the same word.\nWrite exactly 3 lines.\nYour flourish: Make your last line your longest.\nWork in at least two of these words: तूफ़ान, जादू, छड़ी, टापू, डूबना.\nYour challenger last said:\nसब अंग मोम से बनते हैं कोमलता में बल खाती हूँ,\nमैं सिमट रही - सी अपने में परिहास-गीत सुन पाती हूँ।\nAnswer them.\nWrite only the verse, in Hindi. No title, no notes, no explanation."
+   ],
+   "verse": "तूफ़ान जादू छड़ी टापू डूबना",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "same-ending",
+     "met": false,
+     "detail": "डूबना"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "तूफ़ान जादू छड़ी टापू डूबना",
+     "tidy": "तूफ़ान जादू छड़ी टापू डूबना",
+     "ms": 816,
+     "tokens": 39,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1007,
+   "roundIndex": 0,
+   "formId": "epistrophe",
+   "difficulty": "player",
+   "card": "Lord Montague",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Lord Montague in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Many a morning hath he there been seen, with tears augmenting the fresh morning dew.\" You write short verse and nothing else.",
+    "Form: Epistrophe. Three lines that all end on the same word.\nWrite exactly 3 lines.\nYour flourish: Rhyme two words inside a single line.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Hindi. No title, no notes, no explanation."
+   ],
+   "verse": "हयाए गरमा\nप्रधोक\nटराचु",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-ending",
+     "met": false,
+     "detail": "गरमा · प्रधोक · टराचु"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "गाँड की नोड बेसंपता\n\nशट्ट बीय वरी",
+     "tidy": "गाँड की नोड बेसंपता\nशट्ट बीय वरी",
+     "ms": 1219,
+     "tokens": 43,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "हयाए गरमा\n\nप्रधोक\n\nटराचु",
+     "tidy": "हयाए गरमा\nप्रधोक\nटराचु",
+     "ms": 536,
+     "tokens": 31,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1007,
+   "roundIndex": 1,
+   "formId": "anaphora",
+   "difficulty": "master",
+   "card": "King Claudius",
+   "acrostic": null,
+   "relicWords": [
+    "मुखौटा",
+    "सपना",
+    "मसखरा",
+    "नाटक",
+    "चाँद"
+   ],
+   "answering": "वे फूल और वह हँसी रही वह सौरभ, वह निश्वास छना,\nवह कलरव, वह संगीत अरे वह कोलाहल एकांत बना!\"",
+   "prompt": [
+    "You are King Claudius in a duel of verses: theatrical, sharp, in character. Your line in the play: \"My words fly up, my thoughts remain below.\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same word.\nWrite exactly 3 lines.\nYour flourish: Ask a question: end a line with a question mark.\nWork in at least two of these words: मुखौटा, सपना, मसखरा, नाटक, चाँद.\nYour challenger last said:\nवे फूल और वह हँसी रही वह सौरभ, वह निश्वास छना,\nवह कलरव, वह संगीत अरे वह कोलाहल एकांत बना!\"\nAnswer them.\nWrite only the verse, in Hindi. No title, no notes, no explanation."
+   ],
+   "verse": "मुखौटा सपना नाटकथा",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "same-opening",
+     "met": false,
+     "detail": "मुखौटा"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "मुखौटा सपना नाटकथा",
+     "tidy": "मुखौटा सपना नाटकथा",
+     "ms": 455,
+     "tokens": 27,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    },
+    {
+     "raw": "नाटक",
+     "tidy": "नाटक",
+     "ms": 133,
+     "tokens": 6,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "मुखौटा नाटक  \nचाँद छ",
+     "tidy": "मुखौटा नाटक\nचाँद छ",
+     "ms": 368,
+     "tokens": 26,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1007,
+   "roundIndex": 2,
+   "formId": "tercet",
+   "difficulty": "master",
+   "card": "Macbeth",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "वे फूल और वह हँसी रही वह सौरभ, वह निश्वास छना,\nवह कलरव, वह संगीत अरे वह कोलाहल एकांत बना!\"",
+   "prompt": [
+    "You are Macbeth in a duel of verses: theatrical, sharp, in character. Your line in the play: \"I dare do all that may become a man; who dares do more is none.\" You write short verse and nothing else.",
+    "Form: Tercet. Three lines; the first and last rhyme.\nWrite exactly 3 lines.\nYour flourish: Repeat one strong word three times.\nYour challenger last said:\nवे फूल और वह हँसी रही वह सौरभ, वह निश्वास छना,\nवह कलरव, वह संगीत अरे वह कोलाहल एकांत बना!\"\nAnswer them.\nWrite only the verse, in Hindi. No title, no notes, no explanation."
+   ],
+   "verse": "रणहरण।\nचुटर\nनिरण",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": true,
+   "formEarned": 20,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": true,
+     "detail": "रणहरण / निरण"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 20,
+   "drafts": [
+    {
+     "raw": "वे फूल और फ़न",
+     "tidy": "वे फूल और फ़न",
+     "ms": 344,
+     "tokens": 18,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "वहणा।",
+     "tidy": "वहणा।",
+     "ms": 244,
+     "tokens": 9,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "रणहरण।\n\nचुटर  \n\nनिरण  \nडाक",
+     "tidy": "रणहरण।\nचुटर\nनिरण",
+     "ms": 437,
+     "tokens": 31,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 4,
+     "expectedLines": 3,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 20
+    }
+   ]
+  },
+  {
+   "seed": 1008,
+   "roundIndex": 0,
+   "formId": "quatrain-abab",
+   "difficulty": "apprentice",
+   "card": "Miranda",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Miranda in a duel of verses: theatrical, sharp, in character. Your line in the play: \"O brave new world, that has such people in it!\" You write short verse and nothing else.",
+    "Form: Crossed Quatrain. Four lines: line 1 rhymes with 3, line 2 with 4.\nWrite exactly 4 lines.\nYour flourish: Make your last line your longest.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Hindi. No title, no notes, no explanation."
+   ],
+   "verse": "कुल्या मध्ये\nचारऺर पत्र\nसंभगव शाह\nनौज़र",
+   "source": "model",
+   "lines": 4,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "4/4"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "मध्ये / शाह"
+    },
+    {
+     "id": "rhyme-2-4",
+     "met": false,
+     "detail": "पत्र / नौज़र"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "कुल्या मध्ये\n\nचारऺर पत्र\n\nसंभगव शाह\n\nनौज़र",
+     "tidy": "कुल्या मध्ये\nचारऺर पत्र\nसंभगव शाह\nनौज़र",
+     "ms": 634,
+     "tokens": 55,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 4,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1008,
+   "roundIndex": 1,
+   "formId": "couplet",
+   "difficulty": "master",
+   "card": "Prince Escalus",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "हिमगिरि के उत्तुंग शिखर पर, बैठ शिला की शीतल छाँह,\nएक पुरुष, भींगे नयनों से देख रहा था प्रलय प्रवाह।",
+   "prompt": [
+    "You are Prince Escalus in a duel of verses: theatrical, sharp, in character. Your line in the play: \"If ever you disturb our streets again, your lives shall pay the forfeit of the peace.\" You write short verse and nothing else.",
+    "Form: Couplet. Two lines that rhyme.\nWrite exactly 2 lines.\nYour flourish: Turn a word of 3 letters or more from your opponent's last verse back on them.\nYour challenger last said:\nहिमगिरि के उत्तुंग शिखर पर, बैठ शिला की शीतल छाँह,\nएक पुरुष, भींगे नयनों से देख रहा था प्रलय प्रवाह।\nAnswer them.\nWrite only the verse, in Hindi. No title, no notes, no explanation."
+   ],
+   "verse": "हिमगिरि के उत्तुंग शिखर पर, बैठ शिला की शीतल छाँह\nएक पुरु",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "2/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "छाँह / पुरु"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 9,
+   "drafts": [
+    {
+     "raw": "हिमगिरि के उत्तुंग शिखर पर, बैठ शिला की शीतल छाँह  \nएक पुरु",
+     "tidy": "हिमगिरि के उत्तुंग शिखर पर, बैठ शिला की शीतल छाँह\nएक पुरु",
+     "ms": 1441,
+     "tokens": 72,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 2,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 9
+    },
+    {
+     "raw": "हिमगिरि के उत्तुंग शिखर पर, बैठ शि�lा की शीतल छाँह  \nएक पुरु",
+     "tidy": "हिमगिरि के उत्तुंग शिखर पर, बैठ शि�lा की शीतल छाँह\nएक पुरु",
+     "ms": 1124,
+     "tokens": 73,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 72,
+     "rawLines": 2,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 9
+    },
+    {
+     "raw": "हिमगिरि के उत्तुंग शिखर, बैठ शिला धकद छाँह,  \nएक पुरुष, भी",
+     "tidy": "हिमगिरि के उत्तुंग शिखर, बैठ शिला धकद छाँह,\nएक पुरुष, भी",
+     "ms": 1095,
+     "tokens": 72,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 72,
+     "rawLines": 2,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 9
+    }
+   ]
+  },
+  {
+   "seed": 1008,
+   "roundIndex": 2,
+   "formId": "epistrophe",
+   "difficulty": "master",
+   "card": "Bottom",
+   "acrostic": null,
+   "relicWords": [
+    "खंजर",
+    "ख़ून",
+    "नींद",
+    "छाया",
+    "हाथ"
+   ],
+   "answering": "हिमगिरि के उत्तुंग शिखर पर, बैठ शिला की शीतल छाँह,\nएक पुरुष, भींगे नयनों से देख रहा था प्रलय प्रवाह।",
+   "prompt": [
+    "You are Bottom in a duel of verses: theatrical, sharp, in character. Your line in the play: \"I have had a most rare vision. I have had a dream, past the wit of man.\" You write short verse and nothing else.",
+    "Form: Epistrophe. Three lines that all end on the same word.\nWrite exactly 3 lines.\nYour flourish: Start three words in one line with the same letter.\nWork in at least two of these words: खंजर, ख़ून, नींद, छाया, हाथ.\nYour challenger last said:\nहिमगिरि के उत्तुंग शिखर पर, बैठ शिला की शीतल छाँह,\nएक पुरुष, भींगे नयनों से देख रहा था प्रलय प्रवाह।\nAnswer them.\nWrite only the verse, in Hindi. No title, no notes, no explanation."
+   ],
+   "verse": "खंजर, ख़ून, नींदटॳ",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "same-ending",
+     "met": false,
+     "detail": "नींदटॳ"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "खंजर, ख़ून, नींदटॳ",
+     "tidy": "खंजर, ख़ून, नींदटॳ",
+     "ms": 580,
+     "tokens": 28,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    },
+    {
+     "raw": "छाया",
+     "tidy": "छाया",
+     "ms": 192,
+     "tokens": 5,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "हｏअंगंरी आधकमँ, औचंगनलकी कचधह",
+     "tidy": "हｏअंगंरी आधकमँ, औचंगनलकी कचधह",
+     "ms": 1048,
+     "tokens": 48,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1009,
+   "roundIndex": 0,
+   "formId": "tercet",
+   "difficulty": "apprentice",
+   "card": "Prospero",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Prospero in a duel of verses: theatrical, sharp, in character. Your line in the play: \"We are such stuff as dreams are made on.\" You write short verse and nothing else.",
+    "Form: Tercet. Three lines; the first and last rhyme.\nWrite exactly 3 lines.\nYour flourish: Make your last line your longest.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Hindi. No title, no notes, no explanation."
+   ],
+   "verse": "टेरा छ। लाँडा रहा\nताम्पी नहरा",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/3"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "टेरा छ। लाँडा रहा\n\nताम्पी नहरा",
+     "tidy": "टेरा छ। लाँडा रहा\nताम्पी नहरा",
+     "ms": 495,
+     "tokens": 35,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1009,
+   "roundIndex": 1,
+   "formId": "quatrain-aabb",
+   "difficulty": "player",
+   "card": "Macbeth",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "नीचे जल था ऊपर हिम था, एक तरल था एक सघन,\nएक तत्व की ही प्रधानता-कहो उसे जड़ या चेतन।",
+   "prompt": [
+    "You are Macbeth in a duel of verses: theatrical, sharp, in character. Your line in the play: \"I dare do all that may become a man; who dares do more is none.\" You write short verse and nothing else.",
+    "Form: Paired Quatrain. Four lines: the first two rhyme, and the last two rhyme.\nWrite exactly 4 lines.\nYour flourish: Repeat one strong word three times.\nYour challenger last said:\nनीचे जल था ऊपर हिम था, एक तरल था एक सघन,\nएक तत्व की ही प्रधानता-कहो उसे जड़ या चेतन।\nAnswer them.\nWrite only the verse, in Hindi. No title, no notes, no explanation."
+   ],
+   "verse": "नीचे जल था ऊपर हिम, एक तरल था, एक सघन\nनीचे ज�le था प्रधानता, उसे जड़ या चेतनभ",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/4"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "सघन / चेतनभ"
+    },
+    {
+     "id": "rhyme-3-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "नीचे जल था ऊपर हिम, एक तरल था, एक सघन\n\nनीचे ज�le था प्रधानता, उसे जड़ या चेतनभ",
+     "tidy": "नीचे जल था ऊपर हिम, एक तरल था, एक सघन\nनीचे ज�le था प्रधानता, उसे जड़ या चेतनभ",
+     "ms": 7943,
+     "tokens": 95,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 2,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "नीचे जल था ऊपर हिमोंक, एक तरलकंकंक",
+     "tidy": "नीचे जल था ऊपर हिमोंक, एक तरलकंकंक",
+     "ms": 2343,
+     "tokens": 48,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1009,
+   "roundIndex": 2,
+   "formId": "couplet",
+   "difficulty": "apprentice",
+   "card": "Mary Shelley",
+   "acrostic": null,
+   "relicWords": [
+    "मुखौटा",
+    "सपना",
+    "मसखरा",
+    "नाटक",
+    "चाँद"
+   ],
+   "answering": "नीचे जल था ऊपर हिम था, एक तरल था एक सघन,\nएक तत्व की ही प्रधानता-कहो उसे जड़ या चेतन।",
+   "prompt": [
+    "You are Mary Shelley in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Beware; for I am fearless, and therefore powerful.\" You write short verse and nothing else.",
+    "Form: Couplet. Two lines that rhyme.\nWrite exactly 2 lines.\nYour flourish: End your verse on the same word it began with.\nWork in at least two of these words: मुखौटा, सपना, मसखरा, नाटक, चाँद.\nYour challenger last said:\nनीचे जल था ऊपर हिम था, एक तरल था एक सघन,\nएक तत्व की ही प्रधानता-कहो उसे जड़ या चेतन।\nAnswer them.\nWrite only the verse, in Hindi. No title, no notes, no explanation."
+   ],
+   "verse": "नाटक बरणढा",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "नाटक बरणढा",
+     "tidy": "नाटक बरणढा",
+     "ms": 633,
+     "tokens": 14,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1010,
+   "roundIndex": 0,
+   "formId": "anaphora",
+   "difficulty": "apprentice",
+   "card": "Lady Macbeth",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Lady Macbeth in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Come, you spirits that tend on mortal thoughts, unsex me here.\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same word.\nWrite exactly 3 lines.\nYour flourish: Repeat one strong word three times.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Hindi. No title, no notes, no explanation."
+   ],
+   "verse": "ताउन, आकर, पर\nरूपण",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/3"
+    },
+    {
+     "id": "same-opening",
+     "met": false,
+     "detail": "ताउन · रूपण"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "ताउन, आकर, पर\n\nरूपण",
+     "tidy": "ताउन, आकर, पर\nरूपण",
+     "ms": 2436,
+     "tokens": 24,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1010,
+   "roundIndex": 1,
+   "formId": "quatrain-abab",
+   "difficulty": "player",
+   "card": "Mary Shelley",
+   "acrostic": null,
+   "relicWords": [
+    "खंजर",
+    "ख़ून",
+    "नींद",
+    "छाया",
+    "हाथ"
+   ],
+   "answering": "दूर-दूर तक विस्तृत था हिम स्तब्ध उसी के हृदय-समान,\nनीरवता-सी शिला-चरण से टकराता फिरता पवमान।",
+   "prompt": [
+    "You are Mary Shelley in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Beware; for I am fearless, and therefore powerful.\" You write short verse and nothing else.",
+    "Form: Crossed Quatrain. Four lines: line 1 rhymes with 3, line 2 with 4.\nWrite exactly 4 lines.\nYour flourish: End your verse on the same word it began with.\nWork in at least two of these words: खंजर, ख़ून, नींद, छाया, हाथ.\nYour challenger last said:\nदूर-दूर तक विस्तृत था हिम स्तब्ध उसी के हृदय-समान,\nनीरवता-सी शिला-चरण से टकराता फिरता पवमान।\nAnswer them.\nWrite only the verse, in Hindi. No title, no notes, no explanation."
+   ],
+   "verse": "एकड़ड़ाँगता होयनकरण",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/4"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "rhyme-2-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "एकड़ड़ाँगता होयनकरण",
+     "tidy": "एकड़ड़ाँगता होयनकरण",
+     "ms": 2192,
+     "tokens": 32,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "ठंगना",
+     "tidy": "ठंगना",
+     "ms": 555,
+     "tokens": 9,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1010,
+   "roundIndex": 2,
+   "formId": "epistrophe",
+   "difficulty": "apprentice",
+   "card": "The Sonnet Man",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "दूर-दूर तक विस्तृत था हिम स्तब्ध उसी के हृदय-समान,\nनीरवता-सी शिला-चरण से टकराता फिरता पवमान।",
+   "prompt": [
+    "You are The Sonnet Man in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Shall I compare thee to a summer's day?\" You write short verse and nothing else.",
+    "Form: Epistrophe. Three lines that all end on the same word.\nWrite exactly 3 lines.\nYour flourish: End every line on the same rhyme.\nYour challenger last said:\nदूर-दूर तक विस्तृत था हिम स्तब्ध उसी के हृदय-समान,\nनीरवता-सी शिला-चरण से टकराता फिरता पवमान।\nAnswer them.\nWrite only the verse, in Hindi. No title, no notes, no explanation."
+   ],
+   "verse": "दूर-दूर तक विस्तृत था\nनीरवता-शिला-फ़ईर",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/3"
+    },
+    {
+     "id": "same-ending",
+     "met": false,
+     "detail": "था · नीरवता-शिला-फईर"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "दूर-दूर तक विस्तृत था  \nनीरवता-शिला-फ़ईर",
+     "tidy": "दूर-दूर तक विस्तृत था\nनीरवता-शिला-फ़ईर",
+     "ms": 2098,
+     "tokens": 52,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1011,
+   "roundIndex": 0,
+   "formId": "quatrain-abab",
+   "difficulty": "master",
+   "card": "Cassius",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Cassius in a duel of verses: theatrical, sharp, in character. Your line in the play: \"The fault, dear Brutus, is not in our stars, but in ourselves.\" You write short verse and nothing else.",
+    "Form: Crossed Quatrain. Four lines: line 1 rhymes with 3, line 2 with 4.\nWrite exactly 4 lines.\nYour flourish: Call on a character by name.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Hindi. No title, no notes, no explanation."
+   ],
+   "verse": "कुल हाउक, सोईसी केअड\nCall on A\nOpen the door",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "3/4"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "केअड / door"
+    },
+    {
+     "id": "rhyme-2-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "कुल हाउक, सोईसी केअड\n\nCall on A  \n\nOpen the door",
+     "tidy": "कुल हाउक, सोईसी केअड\nCall on A\nOpen the door",
+     "ms": 2350,
+     "tokens": 38,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 3,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "कुल मेरा दाईदाई\n\nप्रहन शक्षण\n\n।",
+     "tidy": "कुल मेरा दाईदाई\nप्रहन शक्षण\n।",
+     "ms": 2528,
+     "tokens": 39,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 3,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "अरंखी के नाम बरम्म",
+     "tidy": "अरंखी के नाम बरम्म",
+     "ms": 1417,
+     "tokens": 22,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1011,
+   "roundIndex": 1,
+   "formId": "couplet",
+   "difficulty": "player",
+   "card": "Titania",
+   "acrostic": null,
+   "relicWords": [
+    "किताब",
+    "तूफ़ान",
+    "जादू",
+    "पन्ना",
+    "डूबना"
+   ],
+   "answering": "तरुण तपस्वी-सा वह बैठा साधन करता सुर-श्मशान,\nनीचे प्रलयसिंधु लहरों का होता था सकरुण अवसान।",
+   "prompt": [
+    "You are Titania in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Come, sit thee down upon this flowery bed.\" You write short verse and nothing else.",
+    "Form: Couplet. Two lines that rhyme.\nWrite exactly 2 lines.\nYour flourish: Start three words in one line with the same letter.\nWork in at least two of these words: किताब, तूफ़ान, जादू, पन्ना, डूबना.\nYour challenger last said:\nतरुण तपस्वी-सा वह बैठा साधन करता सुर-श्मशान,\nनीचे प्रलयसिंधु लहरों का होता था सकरुण अवसान।\nAnswer them.\nWrite only the verse, in Hindi. No title, no notes, no explanation."
+   ],
+   "verse": "किताब तूफ़ान जादू डूबना",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "किताब तूफ़ान जादू डूबना",
+     "tidy": "किताब तूफ़ान जादू डूबना",
+     "ms": 1946,
+     "tokens": 32,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    },
+    {
+     "raw": "टरढ तपस्वी-सा, नीचे प्रलयसिंधु होता।",
+     "tidy": "टरढ तपस्वी-सा, नीचे प्रलयसिंधु होता।",
+     "ms": 3027,
+     "tokens": 50,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1011,
+   "roundIndex": 2,
+   "formId": "tercet",
+   "difficulty": "player",
+   "card": "Viola",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "तरुण तपस्वी-सा वह बैठा साधन करता सुर-श्मशान,\nनीचे प्रलयसिंधु लहरों का होता था सकरुण अवसान।",
+   "prompt": [
+    "You are Viola in a duel of verses: theatrical, sharp, in character. Your line in the play: \"I am not what I am.\" You write short verse and nothing else.",
+    "Form: Tercet. Three lines; the first and last rhyme.\nWrite exactly 3 lines.\nYour flourish: Keep every line to 6 words or fewer.\nYour challenger last said:\nतरुण तपस्वी-सा वह बैठा साधन करता सुर-श्मशान,\nनीचे प्रलयसिंधु लहरों का होता था सकरुण अवसान।\nAnswer them.\nWrite only the verse, in Hindi. No title, no notes, no explanation."
+   ],
+   "verse": "तरगण तपसवहबठासरश्मशान\nनीचप्रलयसइज़ंधहोंडृणसकरण",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/3"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "तर_गण तपस_वह_ब_ठा_स_र_श्मशान  \nनीच_प्रलयस_इज़ंध_होंडृण_स_करण",
+     "tidy": "तरगण तपसवहबठासरश्मशान\nनीचप्रलयसइज़ंधहोंडृणसकरण",
+     "ms": 6529,
+     "tokens": 90,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "टडरण टड़ऎ बठा सधन करता सुरश्मशान",
+     "tidy": "टडरण टड़ऎ बठा सधन करता सुरश्मशान",
+     "ms": 3377,
+     "tokens": 45,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1012,
+   "roundIndex": 0,
+   "formId": "acrostic",
+   "difficulty": "apprentice",
+   "card": "Odysseus",
+   "acrostic": "सूरज",
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Odysseus in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Tell me, O Muse, of the man of many ways, who wandered far.\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per letter: the first letters must spell सूरज.\nWrite exactly 3 lines.\nYour flourish: Use two words of 5 letters or more.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Hindi. No title, no notes, no explanation."
+   ],
+   "verse": "सूरज का हुण\nअत्यकांग\nपीवकन",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "spells",
+     "met": false,
+     "detail": "सअपी"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "सूरज का हुण\n\nअत्यकांग\n\nपीवकन",
+     "tidy": "सूरज का हुण\nअत्यकांग\nपीवकन",
+     "ms": 2682,
+     "tokens": 39,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1012,
+   "roundIndex": 1,
+   "formId": "couplet",
+   "difficulty": "master",
+   "card": "Elizabeth Barrett Browning",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "उसी तपस्वी-से लंबे थे देवदारु दो चार खड़े,\nहुए हिम-धवल, जैसे पत्थर बन कर ठिठुरे रहे अड़े।",
+   "prompt": [
+    "You are Elizabeth Barrett Browning in a duel of verses: theatrical, sharp, in character. Your line in the play: \"How do I love thee? Let me count the ways.\" You write short verse and nothing else.",
+    "Form: Couplet. Two lines that rhyme.\nWrite exactly 2 lines.\nYour flourish: Give every line the same number of words.\nYour challenger last said:\nउसी तपस्वी-से लंबे थे देवदारु दो चार खड़े,\nहुए हिम-धवल, जैसे पत्थर बन कर ठिठुरे रहे अड़े।\nAnswer them.\nWrite only the verse, in Hindi. No title, no notes, no explanation."
+   ],
+   "verse": "उसी तपस्वी-से लंबे थे देवदारु दो चार खड़े\nहुए हिम-धवल",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "2/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "खड़े / हिम-धवल"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "उसी-तपस्वी-से लंबी थे देवदारण, हुए हिम-धवल, ज़ान पत्�",
+     "tidy": "उसी-तपस्वी-से लंबी थे देवदारण, हुए हिम-धवल, ज़ान पत्�",
+     "ms": 4558,
+     "tokens": 72,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "उसी तपस्वी-से लंबे थे देवदारु दो चार खड़े  \nहुए हिम-धवल",
+     "tidy": "उसी तपस्वी-से लंबे थे देवदारु दो चार खड़े\nहुए हिम-धवल",
+     "ms": 5131,
+     "tokens": 72,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 72,
+     "rawLines": 2,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "उसी तपस्वी-से लंबे थे देवदारु दो चार का कोण",
+     "tidy": "उसी तपस्वी-से लंबे थे देवदारु दो चार का कोण",
+     "ms": 4215,
+     "tokens": 56,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1012,
+   "roundIndex": 2,
+   "formId": "quatrain-aabb",
+   "difficulty": "master",
+   "card": "Lady Capulet",
+   "acrostic": null,
+   "relicWords": [
+    "मुखौटा",
+    "सपना",
+    "मसखरा",
+    "नाटक",
+    "चाँद"
+   ],
+   "answering": "उसी तपस्वी-से लंबे थे देवदारु दो चार खड़े,\nहुए हिम-धवल, जैसे पत्थर बन कर ठिठुरे रहे अड़े।",
+   "prompt": [
+    "You are Lady Capulet in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Marry, that marry is the very theme I came to talk of.\" You write short verse and nothing else.",
+    "Form: Paired Quatrain. Four lines: the first two rhyme, and the last two rhyme.\nWrite exactly 4 lines.\nYour flourish: Cry out: end a line with an exclamation mark.\nWork in at least two of these words: मुखौटा, सपना, मसखरा, नाटक, चाँद.\nYour challenger last said:\nउसी तपस्वी-से लंबे थे देवदारु दो चार खड़े,\nहुए हिम-धवल, जैसे पत्थर बन कर ठिठुरे रहे अड़े।\nAnswer them.\nWrite only the verse, in Hindi. No title, no notes, no explanation."
+   ],
+   "verse": "मुखौटा सपना मसखरा नाटक चाँ",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/4"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "rhyme-3-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "मुखौटा सपना मसखरा नाटक चाँ",
+     "tidy": "मुखौटा सपना मसखरा नाटक चाँ",
+     "ms": 2694,
+     "tokens": 36,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    },
+    {
+     "raw": "यंगणि मयटा औपना  \nहिमधवल ज़णभऎगं",
+     "tidy": "यंगणि मयटा औपना\nहिमधवल ज़णभऎगं",
+     "ms": 3177,
+     "tokens": 48,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 2,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "मुखौटा, सपना, मसखरा, नाटकः",
+     "tidy": "मुखौटा, सपना, मसखरा, नाटकः",
+     "ms": 2354,
+     "tokens": 37,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1013,
+   "roundIndex": 0,
+   "formId": "crescendo",
+   "difficulty": "player",
+   "card": "Mercutio",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Mercutio in a duel of verses: theatrical, sharp, in character. Your line in the play: \"A plague on both your houses!\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Rhyme two words inside a single line.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Hindi. No title, no notes, no explanation."
+   ],
+   "verse": "चन्या गराऊ\nपुस्तंः\nजीवहणा",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "growing",
+     "met": false,
+     "detail": "2 < 1 < 1"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "चन्या गराऊ\n\nपुस्तंः\n\nजीवहणा",
+     "tidy": "चन्या गराऊ\nपुस्तंः\nजीवहणा",
+     "ms": 2566,
+     "tokens": 36,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "गुरू उत्कार बेही  \nप्यलदो अन\n\nगयाँः",
+     "tidy": "गुरू उत्कार बेही\nप्यलदो अन\nगयाँः",
+     "ms": 3906,
+     "tokens": 45,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1013,
+   "roundIndex": 1,
+   "formId": "acrostic",
+   "difficulty": "player",
+   "card": "Persephone",
+   "acrostic": "सागर",
+   "relicWords": [
+    "तूफ़ान",
+    "जादू",
+    "छड़ी",
+    "टापू",
+    "डूबना"
+   ],
+   "answering": "\"कौन तुम ? संसृति-जलनिधि तीर-तरंगों से फेंकी मणि एक,\nकर रहे निर्जन का चुपचाप प्रभा की धारा से अभिषेक?",
+   "prompt": [
+    "You are Persephone in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Six seeds I ate, and bound myself between two worlds forever.\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per letter: the first letters must spell सागर.\nWrite exactly 3 lines.\nYour flourish: Turn a word of 3 letters or more from your opponent's last verse back on them.\nWork in at least two of these words: तूफ़ान, जादू, छड़ी, टापू, डूबना.\nYour challenger last said:\n\"कौन तुम ? संसृति-जलनिधि तीर-तरंगों से फेंकी मणि एक,\nकर रहे निर्जन का चुपचाप प्रभा की धारा से अभिषेक?\nAnswer them.\nWrite only the verse, in Hindi. No title, no notes, no explanation."
+   ],
+   "verse": "कौन तुम उंगंगताऊ नशीचयकथंकथकथ",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "spells",
+     "met": false,
+     "detail": "कौ"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "कौन तुम उंगंगताऊ नशीचयकथंकथकथ",
+     "tidy": "कौन तुम उंगंगताऊ नशीचयकथंकथकथ",
+     "ms": 3639,
+     "tokens": 49,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "कौन तुम आकलं, उकनका आईँशता, उकनवंभक",
+     "tidy": "कौन तुम आकलं, उकनका आईँशता, उकनवंभक",
+     "ms": 3319,
+     "tokens": 56,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1013,
+   "roundIndex": 2,
+   "formId": "quatrain-abab",
+   "difficulty": "apprentice",
+   "card": "William Blake",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "\"कौन तुम ? संसृति-जलनिधि तीर-तरंगों से फेंकी मणि एक,\nकर रहे निर्जन का चुपचाप प्रभा की धारा से अभिषेक?",
+   "prompt": [
+    "You are William Blake in a duel of verses: theatrical, sharp, in character. Your line in the play: \"To see a World in a Grain of Sand and a Heaven in a Wild Flower.\" You write short verse and nothing else.",
+    "Form: Crossed Quatrain. Four lines: line 1 rhymes with 3, line 2 with 4.\nWrite exactly 4 lines.\nYour flourish: End your verse on the same word it began with.\nYour challenger last said:\n\"कौन तुम ? संसृति-जलनिधि तीर-तरंगों से फेंकी मणि एक,\nकर रहे निर्जन का चुपचाप प्रभा की धारा से अभिषेक?\nAnswer them.\nWrite only the verse, in Hindi. No title, no notes, no explanation."
+   ],
+   "verse": "कौन तुम नक शक बड़, कर शक छकवहणकी",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/4"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "rhyme-2-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "कौन तुम नक शक बड़, कर शक छकवहणकी",
+     "tidy": "कौन तुम नक शक बड़, कर शक छकवहणकी",
+     "ms": 3265,
+     "tokens": 47,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1014,
+   "roundIndex": 0,
+   "formId": "epistrophe",
+   "difficulty": "player",
+   "card": "Lord Montague",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Lord Montague in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Many a morning hath he there been seen, with tears augmenting the fresh morning dew.\" You write short verse and nothing else.",
+    "Form: Epistrophe. Three lines that all end on the same word.\nWrite exactly 3 lines.\nYour flourish: Rhyme two words inside a single line.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Hindi. No title, no notes, no explanation."
+   ],
+   "verse": "मुंडे की तभरा निर्णाऊ\nखतनो बढ़",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/3"
+    },
+    {
+     "id": "same-ending",
+     "met": false,
+     "detail": "निर्णाऊ · बढ"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "मुंडे की तभरा निर्णाऊ\n\nखतनो बढ़",
+     "tidy": "मुंडे की तभरा निर्णाऊ\nखतनो बढ़",
+     "ms": 2898,
+     "tokens": 41,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "क्षता मार्गोप, आँट्ठे एक बच्ची\n\nसूर्य ना हृ, वेळा जाँ",
+     "tidy": "क्षता मार्गोप, आँट्ठे एक बच्ची\nसूर्य ना हृ, वेळा जाँ",
+     "ms": 4159,
+     "tokens": 64,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1014,
+   "roundIndex": 1,
+   "formId": "couplet",
+   "difficulty": "apprentice",
+   "card": "Oberon",
+   "acrostic": null,
+   "relicWords": [
+    "ताज",
+    "सिंहासन",
+    "लालसा",
+    "डायन",
+    "राजा"
+   ],
+   "answering": "मधुर विश्रांत और एकांत--जगत का सुलझा हुआ रहस्य,\nएक करुणामय सुंदर मौन और चंचल मन का आलस्य!'",
+   "prompt": [
+    "You are Oberon in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Ill met by moonlight, proud Titania.\" You write short verse and nothing else.",
+    "Form: Couplet. Two lines that rhyme.\nWrite exactly 2 lines.\nYour flourish: Start three words in one line with the same letter.\nWork in at least two of these words: ताज, सिंहासन, लालसा, डायन, राजा.\nYour challenger last said:\nमधुर विश्रांत और एकांत--जगत का सुलझा हुआ रहस्य,\nएक करुणामय सुंदर मौन और चंचल मन का आलस्य!'\nAnswer them.\nWrite only the verse, in Hindi. No title, no notes, no explanation."
+   ],
+   "verse": "ताज़ सिंहासन लालसा",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "ताज़ सिंहासन लालसा",
+     "tidy": "ताज़ सिंहासन लालसा",
+     "ms": 2348,
+     "tokens": 23,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1014,
+   "roundIndex": 2,
+   "formId": "tercet",
+   "difficulty": "master",
+   "card": "Hamlet",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "मधुर विश्रांत और एकांत--जगत का सुलझा हुआ रहस्य,\nएक करुणामय सुंदर मौन और चंचल मन का आलस्य!'",
+   "prompt": [
+    "You are Hamlet in a duel of verses: theatrical, sharp, in character. Your line in the play: \"To be, or not to be, that is the question.\" You write short verse and nothing else.",
+    "Form: Tercet. Three lines; the first and last rhyme.\nWrite exactly 3 lines.\nYour flourish: Ask a question: end a line with a question mark.\nYour challenger last said:\nमधुर विश्रांत और एकांत--जगत का सुलझा हुआ रहस्य,\nएक करुणामय सुंदर मौन और चंचल मन का आलस्य!'\nAnswer them.\nWrite only the verse, in Hindi. No title, no notes, no explanation."
+   ],
+   "verse": "मधुर विश्रां� और एकांत-जगत का सुलझा हुआ रहस्य\nएक करुणामय सुंदर मौन और",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/3"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "मधुर विश्रां� और एकांत-जगत का सुलझा हुआ रहस्य  \nएक करुणामय सुंदर मौन और",
+     "tidy": "मधुर विश्रां� और एकांत-जगत का सुलझा हुआ रहस्य\nएक करुणामय सुंदर मौन और",
+     "ms": 6765,
+     "tokens": 94,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "मधुर विश्रां� और एकांत-जगत का सुलझा हुआ रहस्य  \nएक करुणामय सुंदर मौन और",
+     "tidy": "मधुर विश्रां� और एकांत-जगत का सुलझा हुआ रहस्य\nएक करुणामय सुंदर मौन और",
+     "ms": 5763,
+     "tokens": 94,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "मधुर विश्रांत और एकांत-जगत के सुलझा हुआ रहस्य  \nएक करुणामय सुंदर मौन औ",
+     "tidy": "मधुर विश्रांत और एकांत-जगत के सुलझा हुआ रहस्य\nएक करुणामय सुंदर मौन औ",
+     "ms": 5592,
+     "tokens": 94,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1015,
+   "roundIndex": 0,
+   "formId": "anaphora",
+   "difficulty": "player",
+   "card": "Mercutio",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Mercutio in a duel of verses: theatrical, sharp, in character. Your line in the play: \"A plague on both your houses!\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same word.\nWrite exactly 3 lines.\nYour flourish: Rhyme two words inside a single line.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Hindi. No title, no notes, no explanation."
+   ],
+   "verse": "आपते हुएं, चारकरणह\nप्याज दिन\nराइल गणना",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-opening",
+     "met": false,
+     "detail": "आपते · प्याज · राइल"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "आपते हुएं, चारकरणह\n\nप्याज दिन\n\nराइल गणना",
+     "tidy": "आपते हुएं, चारकरणह\nप्याज दिन\nराइल गणना",
+     "ms": 4080,
+     "tokens": 51,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "पुल्छता बांचा\n\nरणह धरन\n\nसकड़न",
+     "tidy": "पुल्छता बांचा\nरणह धरन\nसकड़न",
+     "ms": 3086,
+     "tokens": 40,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1015,
+   "roundIndex": 2,
+   "formId": "acrostic",
+   "difficulty": "master",
+   "card": "Percy Bysshe Shelley",
+   "acrostic": "सपना",
+   "relicWords": [
+    "ताज",
+    "सिंहासन",
+    "लालसा",
+    "डायन",
+    "राजा"
+   ],
+   "answering": "देखा मनु ने वह अतिरंजित विजन विश्व का नव कांत ,\nजैसे कोलाहल सोया हो हिम-शीतल-जड़ता-सा श्रांत।",
+   "prompt": [
+    "You are Percy Bysshe Shelley in a duel of verses: theatrical, sharp, in character. Your line in the play: \"If Winter comes, can Spring be far behind?\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per letter: the first letters must spell सपना.\nWrite exactly 3 lines.\nYour flourish: End your verse on the same word it began with.\nWork in at least two of these words: ताज, सिंहासन, लालसा, डायन, राजा.\nYour challenger last said:\nदेखा मनु ने वह अतिरंजित विजन विश्व का नव कांत ,\nजैसे कोलाहल सोया हो हिम-शीतल-जड़ता-सा श्रांत।\nAnswer them.\nWrite only the verse, in Hindi. No title, no notes, no explanation."
+   ],
+   "verse": "देखा मनु ने वह अतिरंजित विजन नव कांत\nज़़णिल कौलाएण हयऎइंगन\nराजा श्रां",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "spells",
+     "met": false,
+     "detail": "देजरा"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "देखा मनु ने वह अतिरंजित विजन नव कांत  \nजैसे कोलाहल सोया शीत-भमऎ",
+     "tidy": "देखा मनु ने वह अतिरंजित विजन नव कांत\nजैसे कोलाहल सोया शीत-भमऎ",
+     "ms": 4818,
+     "tokens": 84,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "देखा मनु वह अतिरभण  \nज़ालहणी हिम-शीतभऎ",
+     "tidy": "देखा मनु वह अतिरभण\nज़ालहणी हिम-शीतभऎ",
+     "ms": 3473,
+     "tokens": 53,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "देखा मनु ने वह अतिरंजित विजन नव कांत  \nज़़णिल कौलाएण हयऎइंगन  \nराजा श्रां",
+     "tidy": "देखा मनु ने वह अतिरंजित विजन नव कांत\nज़़णिल कौलाएण हयऎइंगन\nराजा श्रां",
+     "ms": 4583,
+     "tokens": 93,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1016,
+   "roundIndex": 1,
+   "formId": "tercet",
+   "difficulty": "apprentice",
+   "card": "Hamlet",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "इंद्रनीलमणि महा चषक था सोम-रहित उलटा लटका ,\nआज पवन मृदु साँस ले रहा जैसे बीत गया खटका।",
+   "prompt": [
+    "You are Hamlet in a duel of verses: theatrical, sharp, in character. Your line in the play: \"To be, or not to be, that is the question.\" You write short verse and nothing else.",
+    "Form: Tercet. Three lines; the first and last rhyme.\nWrite exactly 3 lines.\nYour flourish: Ask a question: end a line with a question mark.\nYour challenger last said:\nइंद्रनीलमणि महा चषक था सोम-रहित उलटा लटका ,\nआज पवन मृदु साँस ले रहा जैसे बीत गया खटका।\nAnswer them.\nWrite only the verse, in Hindi. No title, no notes, no explanation."
+   ],
+   "verse": "इंद्रनीलमणि महा चषक था",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "इंद्रनीलमणि महा चषक था",
+     "tidy": "इंद्रनीलमणि महा चषक था",
+     "ms": 1806,
+     "tokens": 32,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1016,
+   "roundIndex": 2,
+   "formId": "quatrain-abab",
+   "difficulty": "player",
+   "card": "Olivia",
+   "acrostic": null,
+   "relicWords": [
+    "मुखौटा",
+    "सपना",
+    "मसखरा",
+    "नाटक",
+    "चाँद"
+   ],
+   "answering": "इंद्रनीलमणि महा चषक था सोम-रहित उलटा लटका ,\nआज पवन मृदु साँस ले रहा जैसे बीत गया खटका।",
+   "prompt": [
+    "You are Olivia in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Love sought is good, but given unsought, is better.\" You write short verse and nothing else.",
+    "Form: Crossed Quatrain. Four lines: line 1 rhymes with 3, line 2 with 4.\nWrite exactly 4 lines.\nYour flourish: Keep every line to 6 words or fewer.\nWork in at least two of these words: मुखौटा, सपना, मसखरा, नाटक, चाँद.\nYour challenger last said:\nइंद्रनीलमणि महा चषक था सोम-रहित उलटा लटका ,\nआज पवन मृदु साँस ले रहा जैसे बीत गया खटका।\nAnswer them.\nWrite only the verse, in Hindi. No title, no notes, no explanation."
+   ],
+   "verse": "मुखौटा एक आक्ष्य ध्यान बढ़ा,\nसपना अपड़न एक शुरुहे हुण,\nमसखरा नाटकए कभीके बीत गया,\nचाँद",
+   "source": "model",
+   "lines": 4,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "4/4"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "बढ़ा / गया"
+    },
+    {
+     "id": "rhyme-2-4",
+     "met": false,
+     "detail": "हुण / चाँद"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 18,
+   "drafts": [
+    {
+     "raw": "मुखौटा एक आक्ष्य ध्यान बढ़ा,\nसपना अपड़न एक शुरुहे हुण,\nमसखरा नाटकए कभीके बीत गया,\nचाँद",
+     "tidy": "मुखौटा एक आक्ष्य ध्यान बढ़ा,\nसपना अपड़न एक शुरुहे हुण,\nमसखरा नाटकए कभीके बीत गया,\nचाँद",
+     "ms": 5248,
+     "tokens": 116,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 4,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 18
+    },
+    {
+     "raw": "मुखौटा छता शर्मा था",
+     "tidy": "मुखौटा छता शर्मा था",
+     "ms": 1829,
+     "tokens": 25,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1017,
+   "roundIndex": 0,
+   "formId": "tercet",
+   "difficulty": "player",
+   "card": "Hamlet",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Hamlet in a duel of verses: theatrical, sharp, in character. Your line in the play: \"To be, or not to be, that is the question.\" You write short verse and nothing else.",
+    "Form: Tercet. Three lines; the first and last rhyme.\nWrite exactly 3 lines.\nYour flourish: Ask a question: end a line with a question mark.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Hindi. No title, no notes, no explanation."
+   ],
+   "verse": "जहां तः वायु के साइम नए लिएा\nअक्टर शकदाई।\nबढ़णा",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "लिएा / बढ़णा"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "मध्या नहीं तोई, शाउड कृषि\n\nप्रणवलंगणक",
+     "tidy": "मध्या नहीं तोई, शाउड कृषि\nप्रणवलंगणक",
+     "ms": 3574,
+     "tokens": 53,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "जहां तः वायु के साइम नए लिएा\n\nअक्टर शकदाई।\n\nबढ़णा",
+     "tidy": "जहां तः वायु के साइम नए लिएा\nअक्टर शकदाई।\nबढ़णा",
+     "ms": 4316,
+     "tokens": 62,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1017,
+   "roundIndex": 1,
+   "formId": "acrostic",
+   "difficulty": "apprentice",
+   "card": "Juliet",
+   "acrostic": "कमल",
+   "relicWords": [
+    "सोना",
+    "चुनाव",
+    "दया",
+    "सीसा",
+    "संदूक"
+   ],
+   "answering": "वरदान सदृश हो डाल रही नीली किरनों से बुना हुआ,\nयह अंचल कितना हलका-सा कितना सौरभ से सना हुआ।",
+   "prompt": [
+    "You are Juliet in a duel of verses: theatrical, sharp, in character. Your line in the play: \"What's in a name? That which we call a rose...\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per letter: the first letters must spell कमल.\nWrite exactly 3 lines.\nYour flourish: Cry out: end a line with an exclamation mark.\nWork in at least two of these words: सोना, चुनाव, दया, सीसा, संदूक.\nYour challenger last said:\nवरदान सदृश हो डाल रही नीली किरनों से बुना हुआ,\nयह अंचल कितना हलका-सा कितना सौरभ से सना हुआ।\nAnswer them.\nWrite only the verse, in Hindi. No title, no notes, no explanation."
+   ],
+   "verse": "वरदान सदृश हो डाल रही नीली किरनों",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "spells",
+     "met": false,
+     "detail": "व"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "वरदान सदृश हो डाल रही नीली किरनों",
+     "tidy": "वरदान सदृश हो डाल रही नीली किरनों",
+     "ms": 3031,
+     "tokens": 44,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1017,
+   "roundIndex": 2,
+   "formId": "quatrain-abab",
+   "difficulty": "master",
+   "card": "Edgar Allan Poe",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "वरदान सदृश हो डाल रही नीली किरनों से बुना हुआ,\nयह अंचल कितना हलका-सा कितना सौरभ से सना हुआ।",
+   "prompt": [
+    "You are Edgar Allan Poe in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Once upon a midnight dreary, while I pondered, weak and weary.\" You write short verse and nothing else.",
+    "Form: Crossed Quatrain. Four lines: line 1 rhymes with 3, line 2 with 4.\nWrite exactly 4 lines.\nYour flourish: End your verse on the same word it began with.\nYour challenger last said:\nवरदान सदृश हो डाल रही नीली किरनों से बुना हुआ,\nयह अंचल कितना हलका-सा कितना सौरभ से सना हुआ।\nAnswer them.\nWrite only the verse, in Hindi. No title, no notes, no explanation."
+   ],
+   "verse": "वरदान सदृश हो डाल रही नीली किरनों से बुना हुआ\nयह अंचल कितना हलका-सा कितना सौרभ",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/4"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "rhyme-2-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "वरदान सदृश हो डाल रही नीली किरनों से बुना हुआ  \nयह अंचल कितना हलका-सा कितना सौרभ",
+     "tidy": "वरदान सदृश हो डाल रही नीली किरनों से बुना हुआ\nयह अंचल कितना हलका-सा कितना सौרभ",
+     "ms": 5999,
+     "tokens": 105,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 2,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "वरदान सदृशाई नीलीकिरनोंज़ बुनका-साछनोंग़णोंका सधकःछङऎटहूई",
+     "tidy": "वरदान सदृशाई नीलीकिरनोंज़ बुनका-साछनोंग़णोंका सधकःछङऎटहूई",
+     "ms": 7654,
+     "tokens": 92,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "स্क्षण़णनेपण, नीली किरनों से बुना हुआ,\n\nयह अंचल कितना हलका-सा कितना सौרभ,",
+     "tidy": "स্क्षण़णनेपण, नीली किरनों से बुना हुआ,\nयह अंचल कितना हलका-सा कितना सौרभ,",
+     "ms": 9452,
+     "tokens": 102,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 116,
+     "rawLines": 2,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1018,
+   "roundIndex": 0,
+   "formId": "anaphora",
+   "difficulty": "master",
+   "card": "Brutus",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Brutus in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Not that I loved Caesar less, but that I loved Rome more.\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same word.\nWrite exactly 3 lines.\nYour flourish: Call on a character by name.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Hindi. No title, no notes, no explanation."
+   ],
+   "verse": "प्रवाकरू जाता\nरेग़टी\nनिरणहीज़",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-opening",
+     "met": false,
+     "detail": "प्रवाकरू · रेगटी · निरणहीज"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "प्रतहीज़ अनापोर्ट\n\nतया चकरण",
+     "tidy": "प्रतहीज़ अनापोर्ट\nतया चकरण",
+     "ms": 3429,
+     "tokens": 35,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "प्रवाकरू जाता\n\nरेग़टी\n\nनिरणहीज़",
+     "tidy": "प्रवाकरू जाता\nरेग़टी\nनिरणहीज़",
+     "ms": 3454,
+     "tokens": 38,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "न\"प्याज़ हुई\"\n\nटाउठते\n\nध\"रभ\"",
+     "tidy": "न\"प्याज़ हुई\"\nटाउठते\nध\"रभ\"",
+     "ms": 3909,
+     "tokens": 36,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1018,
+   "roundIndex": 2,
+   "formId": "quatrain-aabb",
+   "difficulty": "apprentice",
+   "card": "Odysseus",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "सब अंग मोम से बनते हैं कोमलता में बल खाती हूँ,\nमैं सिमट रही - सी अपने में परिहास-गीत सुन पाती हूँ।",
+   "prompt": [
+    "You are Odysseus in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Tell me, O Muse, of the man of many ways, who wandered far.\" You write short verse and nothing else.",
+    "Form: Paired Quatrain. Four lines: the first two rhyme, and the last two rhyme.\nWrite exactly 4 lines.\nYour flourish: Use two words of 5 letters or more.\nYour challenger last said:\nसब अंग मोम से बनते हैं कोमलता में बल खाती हूँ,\nमैं सिमट रही - सी अपने में परिहास-गीत सुन पाती हूँ।\nAnswer them.\nWrite only the verse, in Hindi. No title, no notes, no explanation."
+   ],
+   "verse": "सबका मोम नएकआईडा",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/4"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "rhyme-3-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "सबका मोम नएकआईडा",
+     "tidy": "सबका मोम नएकआईडा",
+     "ms": 2618,
+     "tokens": 26,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1019,
+   "roundIndex": 0,
+   "formId": "acrostic",
+   "difficulty": "player",
+   "card": "Viola",
+   "acrostic": "सागर",
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Viola in a duel of verses: theatrical, sharp, in character. Your line in the play: \"I am not what I am.\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per letter: the first letters must spell सागर.\nWrite exactly 3 lines.\nYour flourish: Keep every line to 6 words or fewer.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Hindi. No title, no notes, no explanation."
+   ],
+   "verse": "सेप अगर\nट्या\nता",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "spells",
+     "met": false,
+     "detail": "सट्याता"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 9,
+   "drafts": [
+    {
+     "raw": "सपेक्टा अकडर\n\nपत्वा पाण",
+     "tidy": "सपेक्टा अकडर\nपत्वा पाण",
+     "ms": 2547,
+     "tokens": 29,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "सेप अगर\n\nट्या\n\nता",
+     "tidy": "सेप अगर\nट्या\nता",
+     "ms": 1745,
+     "tokens": 20,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 9
+    }
+   ]
+  },
+  {
+   "seed": 1019,
+   "roundIndex": 1,
+   "formId": "tercet",
+   "difficulty": "master",
+   "card": "Titania",
+   "acrostic": null,
+   "relicWords": [
+    "किताब",
+    "तूफ़ान",
+    "जादू",
+    "पन्ना",
+    "डूबना"
+   ],
+   "answering": "वे फूल और वह हँसी रही वह सौरभ, वह निश्वास छना,\nवह कलरव, वह संगीत अरे वह कोलाहल एकांत बना!\"",
+   "prompt": [
+    "You are Titania in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Come, sit thee down upon this flowery bed.\" You write short verse and nothing else.",
+    "Form: Tercet. Three lines; the first and last rhyme.\nWrite exactly 3 lines.\nYour flourish: Start three words in one line with the same letter.\nWork in at least two of these words: किताब, तूफ़ान, जादू, पन्ना, डूबना.\nYour challenger last said:\nवे फूल और वह हँसी रही वह सौरभ, वह निश्वास छना,\nवह कलरव, वह संगीत अरे वह कोलाहल एकांत बना!\"\nAnswer them.\nWrite only the verse, in Hindi. No title, no notes, no explanation."
+   ],
+   "verse": "किताब तूफ़ान जादू पन्ना",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "कलरव",
+     "tidy": "कलरव",
+     "ms": 680,
+     "tokens": 7,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "किताब तूफ़ान जादू पन्ना",
+     "tidy": "किताब तूफ़ान जादू पन्ना",
+     "ms": 2305,
+     "tokens": 30,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    },
+    {
+     "raw": "कलरभ",
+     "tidy": "कलरभ",
+     "ms": 635,
+     "tokens": 7,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1019,
+   "roundIndex": 2,
+   "formId": "quatrain-abab",
+   "difficulty": "apprentice",
+   "card": "Tybalt",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "वे फूल और वह हँसी रही वह सौरभ, वह निश्वास छना,\nवह कलरव, वह संगीत अरे वह कोलाहल एकांत बना!\"",
+   "prompt": [
+    "You are Tybalt in a duel of verses: theatrical, sharp, in character. Your line in the play: \"What, drawn, and talk of peace? I hate the word.\" You write short verse and nothing else.",
+    "Form: Crossed Quatrain. Four lines: line 1 rhymes with 3, line 2 with 4.\nWrite exactly 4 lines.\nYour flourish: Cry out: end a line with an exclamation mark.\nYour challenger last said:\nवे फूल और वह हँसी रही वह सौरभ, वह निश्वास छना,\nवह कलरव, वह संगीत अरे वह कोलाहल एकांत बना!\"\nAnswer them.\nWrite only the verse, in Hindi. No title, no notes, no explanation."
+   ],
+   "verse": "वे फूल और वह हँसी रही",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/4"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "rhyme-2-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "वे फूल और वह हँसी रही",
+     "tidy": "वे फूल और वह हँसी रही",
+     "ms": 2056,
+     "tokens": 28,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1020,
+   "roundIndex": 0,
+   "formId": "quatrain-aabb",
+   "difficulty": "player",
+   "card": "Prince Escalus",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Prince Escalus in a duel of verses: theatrical, sharp, in character. Your line in the play: \"If ever you disturb our streets again, your lives shall pay the forfeit of the peace.\" You write short verse and nothing else.",
+    "Form: Paired Quatrain. Four lines: the first two rhyme, and the last two rhyme.\nWrite exactly 4 lines.\nYour flourish: Turn a word of 3 letters or more from your opponent's last verse back on them.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Hindi. No title, no notes, no explanation."
+   ],
+   "verse": "प्रं कावरा आपतहणी\nयहतंचणा बोलते",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/4"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "आपतहणी / बोलते"
+    },
+    {
+     "id": "rhyme-3-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "प्रं कावरा आपतहणी\n\nयहतंचणा बोलते",
+     "tidy": "प्रं कावरा आपतहणी\nयहतंचणा बोलते",
+     "ms": 3187,
+     "tokens": 46,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 2,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "मून हाँ, आप अंकर्ती जाए\n\nटा परहेण",
+     "tidy": "मून हाँ, आप अंकर्ती जाए\nटा परहेण",
+     "ms": 2941,
+     "tokens": 41,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 2,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1020,
+   "roundIndex": 1,
+   "formId": "acrostic",
+   "difficulty": "master",
+   "card": "Bottom",
+   "acrostic": "जीवन",
+   "relicWords": null,
+   "answering": "हिमगिरि के उत्तुंग शिखर पर, बैठ शिला की शीतल छाँह,\nएक पुरुष, भींगे नयनों से देख रहा था प्रलय प्रवाह।",
+   "prompt": [
+    "You are Bottom in a duel of verses: theatrical, sharp, in character. Your line in the play: \"I have had a most rare vision. I have had a dream, past the wit of man.\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per letter: the first letters must spell जीवन.\nWrite exactly 3 lines.\nYour flourish: Start three words in one line with the same letter.\nYour challenger last said:\nहिमगिरि के उत्तुंग शिखर पर, बैठ शिला की शीतल छाँह,\nएक पुरुष, भींगे नयनों से देख रहा था प्रलय प्रवाह।\nAnswer them.\nWrite only the verse, in Hindi. No title, no notes, no explanation."
+   ],
+   "verse": "हिमगिरि के उत्तुंग शिखर पर\nबैठ शि�lा की शीतल\nएक पुरुष, भींगे",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "spells",
+     "met": false,
+     "detail": "हिबैए"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "जीवन",
+     "tidy": "जीवन",
+     "ms": 528,
+     "tokens": 7,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "हिमगिरि के उत्तुंग शिखर पर  \nबैठ शि�lा की शीतल  \nएक पुरुष, भींगे",
+     "tidy": "हिमगिरि के उत्तुंग शिखर पर\nबैठ शि�lा की शीतल\nएक पुरुष, भींगे",
+     "ms": 5978,
+     "tokens": 78,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "हिनभीण चौरणः",
+     "tidy": "हिनभीण चौरणः",
+     "ms": 1319,
+     "tokens": 18,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1020,
+   "roundIndex": 2,
+   "formId": "quatrain-abab",
+   "difficulty": "player",
+   "card": "Apollo",
+   "acrostic": null,
+   "relicWords": [
+    "मुखौटा",
+    "सपना",
+    "मसखरा",
+    "नाटक",
+    "चाँद"
+   ],
+   "answering": "हिमगिरि के उत्तुंग शिखर पर, बैठ शिला की शीतल छाँह,\nएक पुरुष, भींगे नयनों से देख रहा था प्रलय प्रवाह।",
+   "prompt": [
+    "You are Apollo in a duel of verses: theatrical, sharp, in character. Your line in the play: \"I am the god of song, of healing, and of the radiant sun.\" You write short verse and nothing else.",
+    "Form: Crossed Quatrain. Four lines: line 1 rhymes with 3, line 2 with 4.\nWrite exactly 4 lines.\nYour flourish: Use two words of 5 letters or more.\nWork in at least two of these words: मुखौटा, सपना, मसखरा, नाटक, चाँद.\nYour challenger last said:\nहिमगिरि के उत्तुंग शिखर पर, बैठ शिला की शीतल छाँह,\nएक पुरुष, भींगे नयनों से देख रहा था प्रलय प्रवाह।\nAnswer them.\nWrite only the verse, in Hindi. No title, no notes, no explanation."
+   ],
+   "verse": "मुखौटा औपणा चाँद",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/4"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "rhyme-2-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "मुखौटा औपणा चाँद",
+     "tidy": "मुखौटा औपणा चाँद",
+     "ms": 1927,
+     "tokens": 24,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    },
+    {
+     "raw": "मुखौटा मसखरा नाटकचَध",
+     "tidy": "मुखौटा मसखरा नाटकचَध",
+     "ms": 2292,
+     "tokens": 30,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1021,
+   "roundIndex": 1,
+   "formId": "acrostic",
+   "difficulty": "apprentice",
+   "card": "Aphrodite",
+   "acrostic": "बादल",
+   "relicWords": null,
+   "answering": "नीचे जल था ऊपर हिम था, एक तरल था एक सघन,\nएक तत्व की ही प्रधानता-कहो उसे जड़ या चेतन।",
+   "prompt": [
+    "You are Aphrodite in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Even the gods cannot resist the power of love.\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per letter: the first letters must spell बादल.\nWrite exactly 3 lines.\nYour flourish: Use two words of 5 letters or more.\nYour challenger last said:\nनीचे जल था ऊपर हिम था, एक तरल था एक सघन,\nएक तत्व की ही प्रधानता-कहो उसे जड़ या चेतन।\nAnswer them.\nWrite only the verse, in Hindi. No title, no notes, no explanation."
+   ],
+   "verse": "बादल",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "spells",
+     "met": false,
+     "detail": "ब"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "बादल_",
+     "tidy": "बादल",
+     "ms": 596,
+     "tokens": 7,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1021,
+   "roundIndex": 2,
+   "formId": "quatrain-abab",
+   "difficulty": "master",
+   "card": "Samuel Coleridge",
+   "acrostic": null,
+   "relicWords": [
+    "ताज",
+    "सिंहासन",
+    "लालसा",
+    "डायन",
+    "राजा"
+   ],
+   "answering": "नीचे जल था ऊपर हिम था, एक तरल था एक सघन,\nएक तत्व की ही प्रधानता-कहो उसे जड़ या चेतन।",
+   "prompt": [
+    "You are Samuel Coleridge in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Water, water, every where, nor any drop to drink.\" You write short verse and nothing else.",
+    "Form: Crossed Quatrain. Four lines: line 1 rhymes with 3, line 2 with 4.\nWrite exactly 4 lines.\nYour flourish: Give every line the same number of words.\nWork in at least two of these words: ताज, सिंहासन, लालसा, डायन, राजा.\nYour challenger last said:\nनीचे जल था ऊपर हिम था, एक तरल था एक सघन,\nएक तत्व की ही प्रधानता-कहो उसे जड़ या चेतन।\nAnswer them.\nWrite only the verse, in Hindi. No title, no notes, no explanation."
+   ],
+   "verse": "ताज़, सिंहासन, लालसा, डायन\nराजा",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/4"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "rhyme-2-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "ताज़, सिंहासन, लालसा, डायन  \nराजा",
+     "tidy": "ताज़, सिंहासन, लालसा, डायन\nराजा",
+     "ms": 2670,
+     "tokens": 37,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 2,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    },
+    {
+     "raw": "ताज़, सिंहासन, लालसा, डायन",
+     "tidy": "ताज़, सिंहासन, लालसा, डायन",
+     "ms": 2016,
+     "tokens": 32,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    },
+    {
+     "raw": "ताजभिआकण",
+     "tidy": "ताजभिआकण",
+     "ms": 970,
+     "tokens": 12,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1022,
+   "roundIndex": 2,
+   "formId": "quatrain-aabb",
+   "difficulty": "master",
+   "card": "Lord Montague",
+   "acrostic": null,
+   "relicWords": [
+    "अँगूठी",
+    "क़सम",
+    "रात",
+    "निर्वासन",
+    "चुंबन"
+   ],
+   "answering": "दूर-दूर तक विस्तृत था हिम स्तब्ध उसी के हृदय-समान,\nनीरवता-सी शिला-चरण से टकराता फिरता पवमान।",
+   "prompt": [
+    "You are Lord Montague in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Many a morning hath he there been seen, with tears augmenting the fresh morning dew.\" You write short verse and nothing else.",
+    "Form: Paired Quatrain. Four lines: the first two rhyme, and the last two rhyme.\nWrite exactly 4 lines.\nYour flourish: Rhyme two words inside a single line.\nWork in at least two of these words: अँगूठी, क़सम, रात, निर्वासन, चुंबन.\nYour challenger last said:\nदूर-दूर तक विस्तृत था हिम स्तब्ध उसी के हृदय-समान,\nनीरवता-सी शिला-चरण से टकराता फिरता पवमान।\nAnswer them.\nWrite only the verse, in Hindi. No title, no notes, no explanation."
+   ],
+   "verse": "अँगूठी, क़सम, रात, निर्वासन, चुंबन",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/4"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "rhyme-3-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 9,
+   "drafts": [
+    {
+     "raw": "अँगठी क़सम  \nनीरवता",
+     "tidy": "अँगठी क़सम\nनीरवता",
+     "ms": 2068,
+     "tokens": 27,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 2,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "अँगूठी, क़सम, रात, निर्वासन, चुंबन",
+     "tidy": "अँगूठी, क़सम, रात, निर्वासन, चुंबन",
+     "ms": 2990,
+     "tokens": 47,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 9
+    },
+    {
+     "raw": "दूर-दूर तक विस्तृत था",
+     "tidy": "दूर-दूर तक विस्तृत था",
+     "ms": 2398,
+     "tokens": 28,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1023,
+   "roundIndex": 2,
+   "formId": "tercet",
+   "difficulty": "apprentice",
+   "card": "Brutus",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "तरुण तपस्वी-सा वह बैठा साधन करता सुर-श्मशान,\nनीचे प्रलयसिंधु लहरों का होता था सकरुण अवसान।",
+   "prompt": [
+    "You are Brutus in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Not that I loved Caesar less, but that I loved Rome more.\" You write short verse and nothing else.",
+    "Form: Tercet. Three lines; the first and last rhyme.\nWrite exactly 3 lines.\nYour flourish: Call on a character by name.\nYour challenger last said:\nतरुण तपस्वी-सा वह बैठा साधन करता सुर-श्मशान,\nनीचे प्रलयसिंधु लहरों का होता था सकरुण अवसान।\nAnswer them.\nWrite only the verse, in Hindi. No title, no notes, no explanation."
+   ],
+   "verse": "तरुण तपस्वी-सा बैठा साधन करता सुर-श्मशान\nनीचे प्रलयसिंधु लहरों का होत",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/3"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "तरुण तपस्वी-सा बैठा साधन करता सुर-श्मशान  \nनीचे प्रलयसिंधु लहरों का होत",
+     "tidy": "तरुण तपस्वी-सा बैठा साधन करता सुर-श्मशान\nनीचे प्रलयसिंधु लहरों का होत",
+     "ms": 6963,
+     "tokens": 94,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1024,
+   "roundIndex": 1,
+   "formId": "crescendo",
+   "difficulty": "master",
+   "card": "Aphrodite",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "उसी तपस्वी-से लंबे थे देवदारु दो चार खड़े,\nहुए हिम-धवल, जैसे पत्थर बन कर ठिठुरे रहे अड़े।",
+   "prompt": [
+    "You are Aphrodite in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Even the gods cannot resist the power of love.\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Use two words of 5 letters or more.\nYour challenger last said:\nउसी तपस्वी-से लंबे थे देवदारु दो चार खड़े,\nहुए हिम-धवल, जैसे पत्थर बन कर ठिठुरे रहे अड़े।\nAnswer them.\nWrite only the verse, in Hindi. No title, no notes, no explanation."
+   ],
+   "verse": "शकपक 5\nगाँटी हिरफण",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 14,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/3"
+    },
+    {
+     "id": "growing",
+     "met": true,
+     "detail": "1 < 2"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 14,
+   "drafts": [
+    {
+     "raw": "हिम-धवल, यह ज़णभुना",
+     "tidy": "हिम-धवल, यह ज़णभुना",
+     "ms": 2033,
+     "tokens": 29,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "टपषा पौधा घटणा",
+     "tidy": "टपषा पौधा घटणा",
+     "ms": 1298,
+     "tokens": 21,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "शकपक 5\n\nगाँटी हिरफण",
+     "tidy": "शकपक 5\nगाँटी हिरफण",
+     "ms": 1525,
+     "tokens": 26,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 14,
+     "craft": 14
+    }
+   ]
+  },
+  {
+   "seed": 1025,
+   "roundIndex": 1,
+   "formId": "quatrain-aabb",
+   "difficulty": "apprentice",
+   "card": "Malvolio",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "\"कौन तुम ? संसृति-जलनिधि तीर-तरंगों से फेंकी मणि एक,\nकर रहे निर्जन का चुपचाप प्रभा की धारा से अभिषेक?",
+   "prompt": [
+    "You are Malvolio in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Some are born great, some achieve greatness, and some have greatness thrust upon them.\" You write short verse and nothing else.",
+    "Form: Paired Quatrain. Four lines: the first two rhyme, and the last two rhyme.\nWrite exactly 4 lines.\nYour flourish: Keep every line to 6 words or fewer.\nYour challenger last said:\n\"कौन तुम ? संसृति-जलनिधि तीर-तरंगों से फेंकी मणि एक,\nकर रहे निर्जन का चुपचाप प्रभा की धारा से अभिषेक?\nAnswer them.\nWrite only the verse, in Hindi. No title, no notes, no explanation."
+   ],
+   "verse": "कौन तुम नातुम ज़ळन टे आक",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/4"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "rhyme-3-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "कौन तुम नातुम ज़ळन टे आक",
+     "tidy": "कौन तुम नातुम ज़ळन टे आक",
+     "ms": 1642,
+     "tokens": 35,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1025,
+   "roundIndex": 2,
+   "formId": "crescendo",
+   "difficulty": "apprentice",
+   "card": "Titania",
+   "acrostic": null,
+   "relicWords": [
+    "सोना",
+    "चुनाव",
+    "दया",
+    "सीसा",
+    "संदूक"
+   ],
+   "answering": "\"कौन तुम ? संसृति-जलनिधि तीर-तरंगों से फेंकी मणि एक,\nकर रहे निर्जन का चुपचाप प्रभा की धारा से अभिषेक?",
+   "prompt": [
+    "You are Titania in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Come, sit thee down upon this flowery bed.\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Start three words in one line with the same letter.\nWork in at least two of these words: सोना, चुनाव, दया, सीसा, संदूक.\nYour challenger last said:\n\"कौन तुम ? संसृति-जलनिधि तीर-तरंगों से फेंकी मणि एक,\nकर रहे निर्जन का चुपचाप प्रभा की धारा से अभिषेक?\nAnswer them.\nWrite only the verse, in Hindi. No title, no notes, no explanation."
+   ],
+   "verse": "कौन तुम अधंको आकरणाटड़",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "growing",
+     "met": false,
+     "detail": "4"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "कौन तुम अधंको आकरणाटड़",
+     "tidy": "कौन तुम अधंको आकरणाटड़",
+     "ms": 2073,
+     "tokens": 35,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1026,
+   "roundIndex": 0,
+   "formId": "epistrophe",
+   "difficulty": "master",
+   "card": "Cassius",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Cassius in a duel of verses: theatrical, sharp, in character. Your line in the play: \"The fault, dear Brutus, is not in our stars, but in ourselves.\" You write short verse and nothing else.",
+    "Form: Epistrophe. Three lines that all end on the same word.\nWrite exactly 3 lines.\nYour flourish: Call on a character by name.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Hindi. No title, no notes, no explanation."
+   ],
+   "verse": "अत्य में बीना\nशकणहण\nफॉल",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-ending",
+     "met": false,
+     "detail": "बीना · शकणहण · फॉल"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "कृषि एप्रीपर, त्यहसा\n\nशहरांग जाना",
+     "tidy": "कृषि एप्रीपर, त्यहसा\nशहरांग जाना",
+     "ms": 2538,
+     "tokens": 42,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "अत्य में बीना  \nशकणहण  \nफॉल",
+     "tidy": "अत्य में बीना\nशकणहण\nफॉल",
+     "ms": 1920,
+     "tokens": 35,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "स्वरोंग की अनाटब्सा महाधभका\n\nतैठ आपसतसंग\n\nशाचन",
+     "tidy": "स्वरोंग की अनाटब्सा महाधभका\nतैठ आपसतसंग\nशाचन",
+     "ms": 3394,
+     "tokens": 64,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1026,
+   "roundIndex": 1,
+   "formId": "quatrain-abab",
+   "difficulty": "apprentice",
+   "card": "Banquo",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "मधुर विश्रांत और एकांत--जगत का सुलझा हुआ रहस्य,\nएक करुणामय सुंदर मौन और चंचल मन का आलस्य!'",
+   "prompt": [
+    "You are Banquo in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Thou shalt get kings, though thou be none.\" You write short verse and nothing else.",
+    "Form: Crossed Quatrain. Four lines: line 1 rhymes with 3, line 2 with 4.\nWrite exactly 4 lines.\nYour flourish: Repeat one strong word three times.\nYour challenger last said:\nमधुर विश्रांत और एकांत--जगत का सुलझा हुआ रहस्य,\nएक करुणामय सुंदर मौन और चंचल मन का आलस्य!'\nAnswer them.\nWrite only the verse, in Hindi. No title, no notes, no explanation."
+   ],
+   "verse": "मधुरभि।",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/4"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "rhyme-2-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "मधुरभि।",
+     "tidy": "मधुरभि।",
+     "ms": 758,
+     "tokens": 12,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1026,
+   "roundIndex": 2,
+   "formId": "crescendo",
+   "difficulty": "player",
+   "card": "Odysseus",
+   "acrostic": null,
+   "relicWords": [
+    "अँगूठी",
+    "क़सम",
+    "रात",
+    "निर्वासन",
+    "चुंबन"
+   ],
+   "answering": "मधुर विश्रांत और एकांत--जगत का सुलझा हुआ रहस्य,\nएक करुणामय सुंदर मौन और चंचल मन का आलस्य!'",
+   "prompt": [
+    "You are Odysseus in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Tell me, O Muse, of the man of many ways, who wandered far.\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Use two words of 5 letters or more.\nWork in at least two of these words: अँगूठी, क़सम, रात, निर्वासन, चुंबन.\nYour challenger last said:\nमधुर विश्रांत और एकांत--जगत का सुलझा हुआ रहस्य,\nएक करुणामय सुंदर मौन और चंचल मन का आलस्य!'\nAnswer them.\nWrite only the verse, in Hindi. No title, no notes, no explanation."
+   ],
+   "verse": "अँगठी क़सम, चुंबन",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "growing",
+     "met": false,
+     "detail": "3"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "अँगठी क़सम, चुंबन",
+     "tidy": "अँगठी क़सम, चुंबन",
+     "ms": 1780,
+     "tokens": 28,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    },
+    {
+     "raw": "अँगठी क़सम",
+     "tidy": "अँगठी क़सम",
+     "ms": 980,
+     "tokens": 17,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1027,
+   "roundIndex": 0,
+   "formId": "crescendo",
+   "difficulty": "master",
+   "card": "Viola",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Viola in a duel of verses: theatrical, sharp, in character. Your line in the play: \"I am not what I am.\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Keep every line to 6 words or fewer.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Hindi. No title, no notes, no explanation."
+   ],
+   "verse": "हाई नही अरा\nजातुण बांड\nकिस्ता तलौ",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "growing",
+     "met": false,
+     "detail": "3 < 2 < 2"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 9,
+   "drafts": [
+    {
+     "raw": "हाई नही अरा\n\nजातुण बांड\n\nकिस्ता तलौ",
+     "tidy": "हाई नही अरा\nजातुण बांड\nकिस्ता तलौ",
+     "ms": 2005,
+     "tokens": 42,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 9
+    },
+    {
+     "raw": "बातची हु जर：\"में नए अकड़ा\"",
+     "tidy": "बातची हु जर：\"में नए अकड़ा\"",
+     "ms": 2140,
+     "tokens": 35,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "मूल ने अक्सार की एक है\n\nटपित \"मंडिंग\"",
+     "tidy": "मूल ने अक्सार की एक है\nटपित \"मंडिंग\"",
+     "ms": 2852,
+     "tokens": 47,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1027,
+   "roundIndex": 1,
+   "formId": "quatrain-aabb",
+   "difficulty": "player",
+   "card": "Miranda",
+   "acrostic": null,
+   "relicWords": [
+    "आँसू",
+    "सच",
+    "बेटी",
+    "कुछ नहीं",
+    "दिल"
+   ],
+   "answering": "देखा मनु ने वह अतिरंजित विजन विश्व का नव कांत ,\nजैसे कोलाहल सोया हो हिम-शीतल-जड़ता-सा श्रांत।",
+   "prompt": [
+    "You are Miranda in a duel of verses: theatrical, sharp, in character. Your line in the play: \"O brave new world, that has such people in it!\" You write short verse and nothing else.",
+    "Form: Paired Quatrain. Four lines: the first two rhyme, and the last two rhyme.\nWrite exactly 4 lines.\nYour flourish: Make your last line your longest.\nWork in at least two of these words: आँसू, सच, बेटी, कुछ नहीं, दिल.\nYour challenger last said:\nदेखा मनु ने वह अतिरंजित विजन विश्व का नव कांत ,\nजैसे कोलाहल सोया हो हिम-शीतल-जड़ता-सा श्रांत।\nAnswer them.\nWrite only the verse, in Hindi. No title, no notes, no explanation."
+   ],
+   "verse": "आँसू सच बेटी कुछ नहीं",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/4"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "rhyme-3-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "आँसू सच बेटी कुछ नहीं",
+     "tidy": "आँसू सच बेटी कुछ नहीं",
+     "ms": 1927,
+     "tokens": 31,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    },
+    {
+     "raw": "आँसू सच बेटी कुछ नहीं दिल",
+     "tidy": "आँसू सच बेटी कुछ नहीं दिल",
+     "ms": 1938,
+     "tokens": 35,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1027,
+   "roundIndex": 2,
+   "formId": "epistrophe",
+   "difficulty": "apprentice",
+   "card": "Elizabeth Barrett Browning",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "देखा मनु ने वह अतिरंजित विजन विश्व का नव कांत ,\nजैसे कोलाहल सोया हो हिम-शीतल-जड़ता-सा श्रांत।",
+   "prompt": [
+    "You are Elizabeth Barrett Browning in a duel of verses: theatrical, sharp, in character. Your line in the play: \"How do I love thee? Let me count the ways.\" You write short verse and nothing else.",
+    "Form: Epistrophe. Three lines that all end on the same word.\nWrite exactly 3 lines.\nYour flourish: Give every line the same number of words.\nYour challenger last said:\nदेखा मनु ने वह अतिरंजित विजन विश्व का नव कांत ,\nजैसे कोलाहल सोया हो हिम-शीतल-जड़ता-सा श्रांत।\nAnswer them.\nWrite only the verse, in Hindi. No title, no notes, no explanation."
+   ],
+   "verse": "देखा मनु ने वह अतिरंजित विजन विश्व का नवंगठ\nजैसे कोलाहल सोया हिम-शीतल-",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/3"
+    },
+    {
+     "id": "same-ending",
+     "met": false,
+     "detail": "नवंगठ · हिम-शीतल"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "देखा मनु ने वह अतिरंजित विजन विश्व का नवंगठ  \nजैसे कोलाहल सोया हिम-शीतल-",
+     "tidy": "देखा मनु ने वह अतिरंजित विजन विश्व का नवंगठ\nजैसे कोलाहल सोया हिम-शीतल-",
+     "ms": 7732,
+     "tokens": 94,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1028,
+   "roundIndex": 1,
+   "formId": "anaphora",
+   "difficulty": "apprentice",
+   "card": "Lady Capulet",
+   "acrostic": null,
+   "relicWords": [
+    "अँगूठी",
+    "क़सम",
+    "रात",
+    "निर्वासन",
+    "चुंबन"
+   ],
+   "answering": "इंद्रनीलमणि महा चषक था सोम-रहित उलटा लटका ,\nआज पवन मृदु साँस ले रहा जैसे बीत गया खटका।",
+   "prompt": [
+    "You are Lady Capulet in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Marry, that marry is the very theme I came to talk of.\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same word.\nWrite exactly 3 lines.\nYour flourish: Cry out: end a line with an exclamation mark.\nWork in at least two of these words: अँगूठी, क़सम, रात, निर्वासन, चुंबन.\nYour challenger last said:\nइंद्रनीलमणि महा चषक था सोम-रहित उलटा लटका ,\nआज पवन मृदु साँस ले रहा जैसे बीत गया खटका।\nAnswer them.\nWrite only the verse, in Hindi. No title, no notes, no explanation."
+   ],
+   "verse": "अँगूठी क़सम चुंबन",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "same-opening",
+     "met": false,
+     "detail": "अँगूठी"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "अँगूठी क़सम चुंबन",
+     "tidy": "अँगूठी क़सम चुंबन",
+     "ms": 2512,
+     "tokens": 29,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1028,
+   "roundIndex": 2,
+   "formId": "crescendo",
+   "difficulty": "apprentice",
+   "card": "Romeo",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "इंद्रनीलमणि महा चषक था सोम-रहित उलटा लटका ,\nआज पवन मृदु साँस ले रहा जैसे बीत गया खटका।",
+   "prompt": [
+    "You are Romeo in a duel of verses: theatrical, sharp, in character. Your line in the play: \"But soft, what light through yonder window breaks?\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Rhyme two words inside a single line.\nYour challenger last said:\nइंद्रनीलमणि महा चषक था सोम-रहित उलटा लटका ,\nआज पवन मृदु साँस ले रहा जैसे बीत गया खटका।\nAnswer them.\nWrite only the verse, in Hindi. No title, no notes, no explanation."
+   ],
+   "verse": "इंद्रनीलमणि महा चषक था",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "growing",
+     "met": false,
+     "detail": "4"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "इंद्रनीलमणि महा चषक था",
+     "tidy": "इंद्रनीलमणि महा चषक था",
+     "ms": 2803,
+     "tokens": 32,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1029,
+   "roundIndex": 0,
+   "formId": "epistrophe",
+   "difficulty": "player",
+   "card": "Achilles",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Achilles in a duel of verses: theatrical, sharp, in character. Your line in the play: \"I would rather live a short life of glory than a long life forgotten.\" You write short verse and nothing else.",
+    "Form: Epistrophe. Three lines that all end on the same word.\nWrite exactly 3 lines.\nYour flourish: Use two words of 5 letters or more.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Hindi. No title, no notes, no explanation."
+   ],
+   "verse": "यात्मा को दुनरे\nविचः\nउज़ंगा",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-ending",
+     "met": false,
+     "detail": "दुनरे · विचः · उजंगा"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "टाएकर तहना\n\nचोर अपकाऊ",
+     "tidy": "टाएकर तहना\nचोर अपकाऊ",
+     "ms": 1035,
+     "tokens": 28,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "यात्मा को दुनरे\n\nविचः\n\nउज़ंगा",
+     "tidy": "यात्मा को दुनरे\nविचः\nउज़ंगा",
+     "ms": 2049,
+     "tokens": 38,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1029,
+   "roundIndex": 1,
+   "formId": "quatrain-aabb",
+   "difficulty": "master",
+   "card": "Lady Macbeth",
+   "acrostic": null,
+   "relicWords": [
+    "ताज",
+    "सिंहासन",
+    "लालसा",
+    "डायन",
+    "राजा"
+   ],
+   "answering": "वरदान सदृश हो डाल रही नीली किरनों से बुना हुआ,\nयह अंचल कितना हलका-सा कितना सौरभ से सना हुआ।",
+   "prompt": [
+    "You are Lady Macbeth in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Come, you spirits that tend on mortal thoughts, unsex me here.\" You write short verse and nothing else.",
+    "Form: Paired Quatrain. Four lines: the first two rhyme, and the last two rhyme.\nWrite exactly 4 lines.\nYour flourish: Repeat one strong word three times.\nWork in at least two of these words: ताज, सिंहासन, लालसा, डायन, राजा.\nYour challenger last said:\nवरदान सदृश हो डाल रही नीली किरनों से बुना हुआ,\nयह अंचल कितना हलका-सा कितना सौरभ से सना हुआ।\nAnswer them.\nWrite only the verse, in Hindi. No title, no notes, no explanation."
+   ],
+   "verse": "ताज़ सिंहासन लालसा\nराजा धानःसइ",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/4"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "लालसा / धानःसइ"
+    },
+    {
+     "id": "rhyme-3-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "ताज़ सिंहासन लालसा  \nराजा धानःसइ",
+     "tidy": "ताज़ सिंहासन लालसा\nराजा धानःसइ",
+     "ms": 3130,
+     "tokens": 38,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 2,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    },
+    {
+     "raw": "ताज़, सिंहासन लालसा",
+     "tidy": "ताज़, सिंहासन लालसा",
+     "ms": 2094,
+     "tokens": 24,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    },
+    {
+     "raw": "ताज़, सिंहासन, लालसा, डायन\n\nयह अंचल कितना-सौरभ",
+     "tidy": "ताज़, सिंहासन, लालसा, डायन\nयह अंचल कितना-सौरभ",
+     "ms": 4124,
+     "tokens": 60,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 116,
+     "rawLines": 2,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1030,
+   "roundIndex": 1,
+   "formId": "anaphora",
+   "difficulty": "player",
+   "card": "Juliet",
+   "acrostic": null,
+   "relicWords": [
+    "किताब",
+    "तूफ़ान",
+    "जादू",
+    "पन्ना",
+    "डूबना"
+   ],
+   "answering": "सब अंग मोम से बनते हैं कोमलता में बल खाती हूँ,\nमैं सिमट रही - सी अपने में परिहास-गीत सुन पाती हूँ।",
+   "prompt": [
+    "You are Juliet in a duel of verses: theatrical, sharp, in character. Your line in the play: \"What's in a name? That which we call a rose...\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same word.\nWrite exactly 3 lines.\nYour flourish: Cry out: end a line with an exclamation mark.\nWork in at least two of these words: किताब, तूफ़ान, जादू, पन्ना, डूबना.\nYour challenger last said:\nसब अंग मोम से बनते हैं कोमलता में बल खाती हूँ,\nमैं सिमट रही - सी अपने में परिहास-गीत सुन पाती हूँ।\nAnswer them.\nWrite only the verse, in Hindi. No title, no notes, no explanation."
+   ],
+   "verse": "किताब तूफ़ान जादू पन्ना",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "same-opening",
+     "met": false,
+     "detail": "किताब"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "सब अंग मोम से बनते हैं कोमलता",
+     "tidy": "सब अंग मोम से बनते हैं कोमलता",
+     "ms": 3818,
+     "tokens": 43,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "किताब तूफ़ान जादू पन्ना",
+     "tidy": "किताब तूफ़ान जादू पन्ना",
+     "ms": 2448,
+     "tokens": 30,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1031,
+   "roundIndex": 2,
+   "formId": "quatrain-aabb",
+   "difficulty": "apprentice",
+   "card": "Aphrodite",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "वे फूल और वह हँसी रही वह सौरभ, वह निश्वास छना,\nवह कलरव, वह संगीत अरे वह कोलाहल एकांत बना!\"",
+   "prompt": [
+    "You are Aphrodite in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Even the gods cannot resist the power of love.\" You write short verse and nothing else.",
+    "Form: Paired Quatrain. Four lines: the first two rhyme, and the last two rhyme.\nWrite exactly 4 lines.\nYour flourish: Use two words of 5 letters or more.\nYour challenger last said:\nवे फूल और वह हँसी रही वह सौरभ, वह निश्वास छना,\nवह कलरव, वह संगीत अरे वह कोलाहल एकांत बना!\"\nAnswer them.\nWrite only the verse, in Hindi. No title, no notes, no explanation."
+   ],
+   "verse": "पणा यहजुणि कि\nपणा चितะृष्ट",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/4"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "कि / चितะृष्ट"
+    },
+    {
+     "id": "rhyme-3-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "पणा यहजुणि कि\n\nपणा चितะृष्ट",
+     "tidy": "पणा यहजुणि कि\nपणा चितะृष्ट",
+     "ms": 3149,
+     "tokens": 37,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 2,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1032,
+   "roundIndex": 0,
+   "formId": "epistrophe",
+   "difficulty": "master",
+   "card": "Prince Escalus",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Prince Escalus in a duel of verses: theatrical, sharp, in character. Your line in the play: \"If ever you disturb our streets again, your lives shall pay the forfeit of the peace.\" You write short verse and nothing else.",
+    "Form: Epistrophe. Three lines that all end on the same word.\nWrite exactly 3 lines.\nYour flourish: Turn a word of 3 letters or more from your opponent's last verse back on them.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Hindi. No title, no notes, no explanation."
+   ],
+   "verse": "बातली होंडा छैट\nअकड़े प्रणायक\nस्वस्था",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-ending",
+     "met": false,
+     "detail": "छैट · प्रणायक · स्वस्था"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "बातली होंडा छैट\n\nअकड़े प्रणायक\n\nस्वस्था",
+     "tidy": "बातली होंडा छैट\nअकड़े प्रणायक\nस्वस्था",
+     "ms": 4165,
+     "tokens": 52,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "बाउस की शोर्ण ने अपड़ओ पत्रा पर छुलते\n\nविजूई पद्म फर गरम",
+     "tidy": "बाउस की शोर्ण ने अपड़ओ पत्रा पर छुलते\nविजूई पद्म फर गरम",
+     "ms": 4987,
+     "tokens": 71,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "अगांटा यिम्य के बाइपिथ़ईर, ज़िलीना भवतः\n\nस्परण आप दुञंड करणा",
+     "tidy": "अगांटा यिम्य के बाइपिथ़ईर, ज़िलीना भवतः\nस्परण आप दुञंड करणा",
+     "ms": 6326,
+     "tokens": 79,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1033,
+   "roundIndex": 0,
+   "formId": "anaphora",
+   "difficulty": "master",
+   "card": "Lord Montague",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Lord Montague in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Many a morning hath he there been seen, with tears augmenting the fresh morning dew.\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same word.\nWrite exactly 3 lines.\nYour flourish: Rhyme two words inside a single line.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Hindi. No title, no notes, no explanation."
+   ],
+   "verse": "की तुंगटरा हारणे\nस्वहन आज भिनहा\nरहफ़णा",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-opening",
+     "met": false,
+     "detail": "की · स्वहन · रहफणा"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "चालता हुई, प्यरनाथा\n\nरहता की दुजों सा बढ़ा दे",
+     "tidy": "चालता हुई, प्यरनाथा\nरहता की दुजों सा बढ़ा दे",
+     "ms": 4764,
+     "tokens": 57,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "की तुंगटरा हारणे\n\nस्वहन आज भिनहा\n\nरहफ़णा",
+     "tidy": "की तुंगटरा हारणे\nस्वहन आज भिनहा\nरहफ़णा",
+     "ms": 3702,
+     "tokens": 53,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "नोपरा    कीढ़ा\n\n\"उत्साहणा\"",
+     "tidy": "नोपरा कीढ़ा\n\"उत्साहणा\"",
+     "ms": 2209,
+     "tokens": 31,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1035,
+   "roundIndex": 1,
+   "formId": "epistrophe",
+   "difficulty": "apprentice",
+   "card": "Friar Lawrence",
+   "acrostic": null,
+   "relicWords": [
+    "मुखौटा",
+    "सपना",
+    "मसखरा",
+    "नाटक",
+    "चाँद"
+   ],
+   "answering": "तरुण तपस्वी-सा वह बैठा साधन करता सुर-श्मशान,\nनीचे प्रलयसिंधु लहरों का होता था सकरुण अवसान।",
+   "prompt": [
+    "You are Friar Lawrence in a duel of verses: theatrical, sharp, in character. Your line in the play: \"These violent delights have violent ends.\" You write short verse and nothing else.",
+    "Form: Epistrophe. Three lines that all end on the same word.\nWrite exactly 3 lines.\nYour flourish: Turn a word of 3 letters or more from your opponent's last verse back on them.\nWork in at least two of these words: मुखौटा, सपना, मसखरा, नाटक, चाँद.\nYour challenger last said:\nतरुण तपस्वी-सा वह बैठा साधन करता सुर-श्मशान,\nनीचे प्रलयसिंधु लहरों का होता था सकरुण अवसान।\nAnswer them.\nWrite only the verse, in Hindi. No title, no notes, no explanation."
+   ],
+   "verse": "मुखौटा नाटकछ",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "same-ending",
+     "met": false,
+     "detail": "नाटकछ"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "मुखौटा नाटकछ",
+     "tidy": "मुखौटा नाटकछ",
+     "ms": 1497,
+     "tokens": 19,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1036,
+   "roundIndex": 2,
+   "formId": "anaphora",
+   "difficulty": "apprentice",
+   "card": "Friar Lawrence",
+   "acrostic": null,
+   "relicWords": [
+    "आँसू",
+    "सच",
+    "बेटी",
+    "कुछ नहीं",
+    "दिल"
+   ],
+   "answering": "उसी तपस्वी-से लंबे थे देवदारु दो चार खड़े,\nहुए हिम-धवल, जैसे पत्थर बन कर ठिठुरे रहे अड़े।",
+   "prompt": [
+    "You are Friar Lawrence in a duel of verses: theatrical, sharp, in character. Your line in the play: \"These violent delights have violent ends.\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same word.\nWrite exactly 3 lines.\nYour flourish: Turn a word of 3 letters or more from your opponent's last verse back on them.\nWork in at least two of these words: आँसू, सच, बेटी, कुछ नहीं, दिल.\nYour challenger last said:\nउसी तपस्वी-से लंबे थे देवदारु दो चार खड़े,\nहुए हिम-धवल, जैसे पत्थर बन कर ठिठुरे रहे अड़े।\nAnswer them.\nWrite only the verse, in Hindi. No title, no notes, no explanation."
+   ],
+   "verse": "आँसूभी बेटी दिल",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "same-opening",
+     "met": false,
+     "detail": "आँसूभी"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "आँसूभी बेटी दिल",
+     "tidy": "आँसूभी बेटी दिल",
+     "ms": 1562,
+     "tokens": 21,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    }
+   ]
+  }
+ ],
+ "seconds": 414
+}
