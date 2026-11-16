@@ -42,12 +42,45 @@ def to_text(h):
     lines = [re.sub(r'[ \t   ]+', ' ', l).strip() for l in h.split('\n')]
     return [l for l in lines if l]
 
+def page(lang, **params):
+    """index.php: on 2026-11-16 the API answered this address with 429 for minutes on end, ordinary pages did not."""
+    url = f'https://{lang}.wikisource.org/w/index.php?' + urllib.parse.urlencode(params)
+    for attempt in range(10):
+        try:
+            with urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=90) as r:
+                return r.read().decode('utf-8')
+        except urllib.error.HTTPError as e:
+            if e.code == 404: raise SystemExit(f'{lang}: no such page: {params.get("title")}')
+            wait = int(e.headers.get('Retry-After') or 20) + 3
+            print(f'  HTTP {e.code}; waiting {wait}s', file=sys.stderr); time.sleep(wait)
+    raise SystemExit('gave up: ' + url[:160])
+
+# Chinese Wikisource keeps Zhu Shenghao's text in Traditional characters; the game writes Simplified, and the
+# page is read as zh.wikisource itself serves it in Simplified (MediaWiki's converter, variant=zh-hans: the page view
+# converts, action=render does not).
+VARIANT = {'zh': 'zh-hans'}
+
 def get(lang, title):
     p = path(lang, title)
     if os.path.exists(p): return json.load(open(p, encoding='utf-8'))
-    d = api(lang, action='parse', page=title, prop='text|revid', redirects=1, disablelimitreport=1)
-    if 'error' in d: raise SystemExit(f'{lang}: {title}: {d["error"].get("info")}')
-    rec = {'lang': lang, 'title': d['parse']['title'], 'revid': d['parse']['revid'], 'fetched': time.strftime('%Y-%m-%d'), 'lines': to_text(d['parse']['text']['*'])}
+    h = page(lang, title=title, action='history', limit=1)
+    rev = re.search(r'"wgCurRevisionId":(\d+)', h)
+    name = re.search(r'"wgPageName":"((?:[^"\\]|\\.)*)"', h)
+    if not rev or rev.group(1) == '0': raise SystemExit(f'{lang}: no such page: {title}')
+    real = json.loads('"' + name.group(1) + '"').replace('_', ' ') if name else title
+    time.sleep(2)
+    raw = page(lang, title=real, action='raw', oldid=rev.group(1))
+    m = re.match(r'\s*#[^\[\n]{2,30}\[\[([^\]|#]+)', raw)
+    if m and len(raw) < 300: time.sleep(2); return get(lang, m.group(1).strip())
+    time.sleep(2)
+    if lang in VARIANT:
+        h = page(lang, title=real, oldid=rev.group(1), variant=VARIANT[lang])
+        body = h.split('id="mw-content-text"', 1)[-1].split('id="catlinks"', 1)[0]
+        body = body.split('>', 1)[-1]
+    else:
+        body = page(lang, title=real, oldid=rev.group(1), action='render')
+    rec = {'lang': lang, 'title': real, 'revid': int(rev.group(1)), 'fetched': time.strftime('%Y-%m-%d'), 'lines': to_text(body)}
+    if lang in VARIANT: rec['variant'] = VARIANT[lang]
     os.makedirs(os.path.dirname(p), exist_ok=True)
     json.dump(rec, open(p, 'w', encoding='utf-8'), ensure_ascii=False)
     time.sleep(2)
@@ -77,7 +110,7 @@ elif cmd == 'take':
     if len(hits) != 1: raise SystemExit(f'{len(hits)} lines match; narrow the pattern:\n' + '\n'.join(hits[:6]))
     os.makedirs(os.path.join(HERE, 'challenges', 'evidence'), exist_ok=True)
     out = os.path.join(HERE, 'challenges', 'evidence', sid + '.txt')
-    url = f'https://{lang}.wikisource.org/w/index.php?title={urllib.parse.quote(r["title"].replace(" ", "_"))}&oldid={r["revid"]}'
+    url = f'https://{lang}.wikisource.org/w/index.php?title={urllib.parse.quote(r["title"].replace(" ", "_"))}&oldid={r["revid"]}' + (f'&variant={r["variant"]}' if r.get('variant') else '')
     entry = f'{url}\t{r["fetched"]}\t{hits[0]}\n'
     have = open(out, encoding='utf-8').read() if os.path.exists(out) else ''
     if entry not in have: open(out, 'a', encoding='utf-8').write(entry)

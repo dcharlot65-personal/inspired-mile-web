@@ -8,7 +8,9 @@ const sources = new Map(readTsv(join(HERE, 'challenges', 'sources.tsv')).map((r)
 const evidence = (id) => (existsSync(join(HERE, 'challenges', 'evidence', `${id}.txt`)) ? readFileSync(join(HERE, 'challenges', 'evidence', `${id}.txt`), 'utf8').split('\n').filter(Boolean).map((l) => l.split('\t')) : []);
 let bad = 0, n = 0;
 for (const [id, s] of sources) {
-  if (!(new Date().getFullYear() - s.died > 100)) { bad++; console.log(`${id}: translator died in ${s.died}: not more than 100 years ago`); }
+  // Free everywhere a hundred years after the translator's death; sooner only where the status names the
+  // basis: public domain at home on 1 January 1996, hence not restored in the US under the URAA.
+  if (!(new Date().getFullYear() - s.died > 100) && !/at home on 1 January 1996.*not restored under the URAA/.test(s.status ?? '')) { bad++; console.log(`${id}: translator died in ${s.died}, not more than 100 years ago, and the status names no other basis`); }
   if (!/^Public domain/.test(s.status ?? '')) { bad++; console.log(`${id}: no public-domain statement`); }
   for (const [url] of evidence(id)) if (!url.startsWith(`https://${s.lang}.wikisource.org/`) || !/oldid=\d+/.test(url)) { bad++; console.log(`${id}: evidence line without a revision URL on ${s.lang}.wikisource.org`); }
 }

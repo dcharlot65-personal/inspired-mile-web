@@ -875,7 +875,6 @@ hi	100	King Lear	The wheel is come full circle; I am here.
 hi	101	As You Like It	I had rather have a fool to make me merry than experience to make me sad.
 hi	102	Love's Labour's Lost	A light heart lives long.
 hi	103	The Tempest	What is past is prologue.
-zh	0	Hamlet	To be, or not to be, that is the question.
 zh	1	The Merchant of Venice	All that glitters is not gold.
 zh	2	Romeo and Juliet	Parting is such sweet sorrow.
 zh	3	The Tempest	We are such stuff as dreams are made on.
@@ -889,20 +888,16 @@ zh	10	As You Like It	All the world's a stage, and all the men and women merely p
 zh	11	Macbeth	Out, damned spot! Out, I say!
 zh	12	Romeo and Juliet	A plague on both your houses!
 zh	13	Twelfth Night	If music be the food of love, play on.
-zh	14	Hamlet	The lady doth protest too much, methinks.
-zh	15	Hamlet	Brevity is the soul of wit.
 zh	16	A Midsummer Night's Dream	Love looks not with the eyes, but with the mind.
 zh	17	Twelfth Night	Some are born great, some achieve greatness, and some have greatness thrust upon them.
 zh	18	A Midsummer Night's Dream	The course of true love never did run smooth.
 zh	19	Romeo and Juliet	Good night, good night! Parting is such sweet sorrow, that I shall say good night till it be morrow.
-zh	20	Hamlet	There is nothing either good or bad, but thinking makes it so.
 zh	21	A Midsummer Night's Dream	Lord, what fools these mortals be!
 zh	22	Macbeth	Is this a dagger which I see before me, the handle toward my hand?
 zh	23	Sonnet 18	Shall I compare thee to a summer's day? Thou art more lovely and more temperate.
 zh	24	Henry IV, Part 2	Uneasy lies the head that wears a crown.
 zh	25	Henry IV, Part 1	The better part of valour is discretion.
 zh	26	King Lear	How sharper than a serpent's tooth it is to have a thankless child.
-zh	27	Hamlet	This above all: to thine own self be true.
 zh	28	Macbeth	By the pricking of my thumbs, something wicked this way comes.
 zh	29	Julius Caesar	The fault, dear Brutus, is not in our stars, but in ourselves.
 zh	30	A Midsummer Night's Dream	Though she be but little, she is fierce.
@@ -917,8 +912,6 @@ zh	38	Othello	O, beware, my lord, of jealousy! It is the green-eyed monster whic
 zh	39	Macbeth	Tomorrow, and tomorrow, and tomorrow, creeps in this petty pace from day to day.
 zh	40	Macbeth	Life's but a walking shadow, a poor player that struts and frets his hour upon the stage.
 zh	41	Twelfth Night	Be not afraid of greatness. Some are born great, some achieve greatness, and others have greatness thrust upon them.
-zh	42	Hamlet	We know what we are, but know not what we may be.
-zh	43	Hamlet	Frailty, thy name is woman!
 zh	44	Richard III	Off with his head!
 zh	45	Henry V	Once more unto the breach, dear friends, once more.
 zh	46	Romeo and Juliet	But soft, what light through yonder window breaks?
@@ -928,17 +921,13 @@ zh	49	Julius Caesar	Beware the ides of March.
 zh	50	Julius Caesar	I come to bury Caesar, not to praise him.
 zh	51	Antony and Cleopatra	Give me my robe, put on my crown.
 zh	52	Julius Caesar	This was the noblest Roman of them all.
-zh	53	Hamlet	Something is rotten in the state of Denmark.
-zh	54	Hamlet	Sweets to the sweet.
 zh	55	The Merchant of Venice	If you prick us, do we not bleed?
 zh	56	Richard III	My kingdom for a horse!
-zh	57	Hamlet	There are more things in heaven and earth, Horatio, than are dreamt of in your philosophy.
 zh	58	King Lear	When we are born, we cry that we are come to this great stage of fools.
 zh	59	Othello	I will wear my heart upon my sleeve for daws to peck at.
 zh	60	Henry V	We few, we happy few, we band of brothers.
 zh	61	King Lear	I am a man more sinned against than sinning.
 zh	62	As You Like It	Who ever loved that loved not at first sight?
-zh	63	Hamlet	What a piece of work is a man! How noble in reason! How infinite in faculty!
 zh	64	Othello	The robbed that smiles steals something from the thief.
 zh	65	Richard II	I wasted time, and now doth time waste me.
 zh	66	Much Ado About Nothing	Sigh no more, ladies, sigh no more, men were deceivers ever.
@@ -948,7 +937,6 @@ zh	69	Julius Caesar	Men at some time are masters of their fates.
 zh	70	As You Like It	The fool doth think he is wise, but the wise man knows himself to be a fool.
 zh	71	As You Like It	Blow, blow, thou winter wind, thou art not so unkind as man's ingratitude.
 zh	72	King Lear	Have more than thou showest, speak less than thou knowest.
-zh	73	Hamlet	I must be cruel only to be kind.
 zh	74	King Lear	Nothing will come of nothing.
 zh	75	Henry VI, Part 2	The first thing we do, let's kill all the lawyers.
 zh	76	Measure for Measure	Some rise by sin, and some by virtue fall.
@@ -958,8 +946,6 @@ zh	79	Romeo and Juliet	Wisely and slow; they stumble that run fast.
 zh	80	Othello	Put out the light, and then put out the light.
 zh	81	Macbeth	It is a tale told by an idiot, full of sound and fury, signifying nothing.
 zh	82	Othello	Reputation is an idle and most false imposition; oft got without merit, and lost without deserving.
-zh	83	Hamlet	O, what a rogue and peasant slave am I!
-zh	84	Hamlet	The rest is silence.
 zh	85	King Lear	As flies to wanton boys are we to the gods; they kill us for their sport.
 zh	86	Antony and Cleopatra	My salad days, when I was green in judgment.
 zh	87	The Merry Wives of Windsor	I cannot tell what the dickens his name is.
