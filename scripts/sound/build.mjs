@@ -411,7 +411,12 @@ function thai() {
 
 // --- Chinese: the rhyme group and tone of each character, and of the last character of words that settle it ---
 
-const ZH_GROUPS = { a: 'a ia ua', b: 'o uo', c: 'e ie üe ê', d: 'i -i', e: 'u', f: 'ü', g: 'ai uai', h: 'ei ui', i: 'ao iao', j: 'ou iu', k: 'an ian uan üan', l: 'en in un ün', m: 'ang iang uang', n: 'eng ing ueng', o: 'ong iong', p: 'er' };
+// The sixteen groups of 中华通韵 as the Ministry of Education's 2018 call for poems printed them
+// (docs/language/PHONETICS.md, "Chinese"), lettered a to p in that order, except that the third
+// group, 鹅 (e ie üe), is split in two: q is e alone. The thirteen-rut scheme (十三辙) rhymes e
+// with o and uo (梭波) and keeps ie and üe apart (乜斜), so e has to be able to answer both sides
+// while o never answers ie. rhyme.ts (ZH_ALLIED) joins q to b and to c.
+const ZH_GROUPS = { a: 'a ia ua', b: 'o uo', c: 'ie üe ê', q: 'e', d: 'i -i', e: 'u', f: 'ü', g: 'ai uai', h: 'ei ui', i: 'ao iao', j: 'ou iu', k: 'an ian uan üan', l: 'en in un ün', m: 'ang iang uang', n: 'eng ing ueng', o: 'ong iong', p: 'er' };
 const ZH_FINAL = new Map();
 for (const [g, fs] of Object.entries(ZH_GROUPS)) for (const f of fs.split(' ')) ZH_FINAL.set(f, g);
 const TONE_MARKS = { '\u0304': 1, '\u0301': 2, '\u030c': 3, '\u0300': 4 };
@@ -498,7 +503,7 @@ function chinese() {
     entries.set(w, c);
     words++;
   }
-  const size = writeTable('zh', entries, 'zh: rhyme group (a-p, 中华通韵) and tone of each reading of a character; for a word, of its last character. Sources: Unicode Unihan 18.0 (Unicode licence), CC-CEDICT (CC BY-SA 4.0).');
+  const size = writeTable('zh', entries, 'zh: rhyme group (a-q, 中华通韵 with e apart) and tone of each reading of a character; for a word, of its last character. Sources: Unicode Unihan 18.0 (Unicode licence), CC-CEDICT (CC BY-SA 4.0).');
   const zhc = [];
   for (const l of lines('cedict.txt')) {
     const m = /^(\S+) (\S+) \[([^\]]+)\]/.exec(l);

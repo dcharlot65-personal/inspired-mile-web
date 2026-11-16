@@ -14,8 +14,9 @@
  * - fr: the syllable count as spoken, "+" if the word closes on a mute e that
  *   verse sounds before a consonant, then its rhyme keys joined by "|".
  * - de, th: the syllable count, then the rhyme keys joined by "|".
- * - zh: for one character, its readings, two characters each (rhyme group a-p,
- *   tone 1-5); for a word, the reading of its last character.
+ * - zh: for one character, its readings, two characters each (rhyme group a-q,
+ *   tone 1-5; see ZH_ALLIED in ../rhyme); for a word, the reading of its last
+ *   character.
  */
 import { longestEnding, longestOpening, soundOf, soundReady } from './index';
 import { thaiPlain, thaiRimeBySpelling } from './th';

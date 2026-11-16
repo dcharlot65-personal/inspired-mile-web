@@ -223,6 +223,13 @@ describe('what each language can now hear', () => {
     expect(rhymes('流行', '太阳', 'zh')).toBe(false);
     expect(rhymes('流行', '流星', 'zh')).toBe(true);
     expect(rhymeEnds('举头望明月', '低头思故乡', 'zh')).toEqual(['头望明月', '头思故乡']);
+    // What the two published schemes join: e with ie (中华通韵's 鹅), e with o and uo (十三辙's 梭波).
+    expect(rhymes('歌', '夜', 'zh')).toBe(true);
+    expect(rhymes('歌', '我', 'zh')).toBe(true);
+    expect(rhymes('月', '雪', 'zh')).toBe(true);
+    // What neither joins: o and uo with ie and üe. Until 2026-11-16 these passed.
+    expect(rhymes('我', '夜', 'zh')).toBe(false);
+    expect(rhymes('躲', '灭', 'zh')).toBe(false);
   });
 
   it('Japanese: reads kanji, counts sounds, rhymes on the last two', () => {

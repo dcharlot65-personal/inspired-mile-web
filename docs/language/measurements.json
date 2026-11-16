@@ -36,12 +36,12 @@
   "zh": {
     "source": "Unihan kMandarin/kHanyuPinlu/kTGHZ2013/kXHC1983; CC-CEDICT",
     "characters": 44358,
-    "charactersWithSeveralRhymeGroups": 226,
-    "wordsThatSettleAReading": 4120,
+    "charactersWithSeveralRhymeGroups": 229,
+    "wordsThatSettleAReading": 4348,
     "table": {
-      "entries": 48478,
-      "bytes": 511610,
-      "gzipBytes": 166162
+      "entries": 48706,
+      "bytes": 514315,
+      "gzipBytes": 167848
     }
   },
   "ru": {

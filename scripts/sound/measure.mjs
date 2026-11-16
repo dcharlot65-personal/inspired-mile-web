@@ -26,6 +26,8 @@ const langs = args.filter((a) => !a.startsWith('--') && a !== kuro);
 
 for (const f of readdirSync('src/lib/verse/sound/data')) {
   const lang = f.replace('.ts', '');
+  // Only the languages asked for: the Russian table alone is 400,000 entries.
+  if (langs.length && !langs.includes(lang)) continue;
   installSound(lang, (await import(`../../src/lib/verse/sound/data/${f}`)).default);
 }
 if (kuro) {

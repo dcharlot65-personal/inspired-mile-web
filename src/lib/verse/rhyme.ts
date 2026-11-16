@@ -731,12 +731,17 @@ function japaneseEnds(lineA: string, lineB: string): [string, string] | null {
 
 /**
  * Rhyme groups that verse lets rhyme with each other, beyond a group with
- * itself. The groups are the sixteen of 中华通韵 (the national standard of
- * 2019, GF 0022-2019), lettered a to p in its order. The standard itself lets
- * eng/ing and ong/iong rhyme (n, o), and the older thirteen-rut scheme of
- * spoken verse merges i, ü and er (d, f, p) and o/uo with e (b, c).
+ * itself. The groups are the sixteen of 中华通韵 (GF 0022-2019), lettered a to
+ * p in its order as the Ministry of Education's 2018 call for poems printed
+ * them, with its third group (鹅: e, ie, üe) split so that e alone is q.
+ *
+ * Allied: what one of the two published schemes of modern Mandarin rhyme joins.
+ * 中华通韵 rhymes e with ie and üe (q, c). The thirteen-rut scheme of spoken
+ * verse (十三辙) rhymes e with o and uo (梭波: q, b), i with ü and er (衣七: d,
+ * f, p), and eng and ing with ong and iong (中东: n, o). Neither rhymes o or uo
+ * with ie or üe ("我 / 夜", "躲 / 灭"), so b and c are not allied.
  */
-const ZH_ALLIED: string[] = ['no', 'dfp', 'bc'];
+const ZH_ALLIED: string[] = ['no', 'dfp', 'bq', 'cq'];
 
 /**
  * Chinese: two lines rhyme when their last characters have finals of the same
