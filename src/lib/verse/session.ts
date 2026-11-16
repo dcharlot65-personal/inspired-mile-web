@@ -10,7 +10,7 @@ import { getCardById } from '../cards';
 import { brainInfo, generate, isBrainLoaded } from '../brain';
 import {
   ROUNDS, createDuel, illegalMove, inkAt, matchWinner, moveCost, resolveRound, scoreVerse,
-  type CastCurse, type Duel, type DuelDeck, type PlayerMove, type RoundResult, type VerseScore,
+  type CastCurse, type Duel, type DuelDeck, type IllegalMove, type PlayerMove, type RoundResult, type VerseScore,
 } from './duel';
 import { getForm } from './forms';
 import { writeOpponentVerse, type Difficulty } from './opponent';
@@ -18,6 +18,9 @@ import { referee } from './referee';
 import { cleanVerse } from './text';
 
 export type Phase = 'opponent-writing' | 'player-turn' | 'judging' | 'verdict' | 'finished';
+
+/** Why a verse cannot be submitted yet. Each is the message `blocked.<code>`. */
+export type Blocked = 'not-your-turn' | 'choose-character' | 'write-verse' | IllegalMove;
 
 export interface SessionOptions {
   seed: number;
@@ -46,6 +49,7 @@ export class DuelSession {
   /** A potion played last round, binding the opponent's verse this round. */
   private carried?: CastCurse;
 
+  /** The language's pack must be loaded first (loadPack in ./packs); English always is. */
   constructor(private readonly opts: SessionOptions) {
     this.duel = createDuel(opts.seed, opts.lang, opts.deck);
   }
@@ -153,10 +157,10 @@ export class DuelSession {
   }
 
   /** Why the verse cannot be submitted yet, or null when it can. */
-  blocked(): string | null {
-    if (this.phase !== 'player-turn') return 'Not your turn.';
-    if (!this.move.charId) return 'Choose who answers.';
-    if (!cleanVerse(this.verse)) return 'Write or speak a verse.';
+  blocked(): Blocked | null {
+    if (this.phase !== 'player-turn') return 'not-your-turn';
+    if (!this.move.charId) return 'choose-character';
+    if (!cleanVerse(this.verse)) return 'write-verse';
     return illegalMove(this.duel, this.roundIndex, this.move, this.moves);
   }
 
