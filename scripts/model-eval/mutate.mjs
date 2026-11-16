@@ -20,6 +20,11 @@ const MUTATIONS = [
   ['an unmeasured cell allowed to write', 'scripts/model-eval/lib.mjs', "export function decideWrite(s, t, recall) {\n  if (!s) return { ok: false, why: ['not measured'] };", "export function decideWrite(s, t, recall) {\n  if (!s) return { ok: true, why: [] };"],
   ['a threshold loosened after the fact', 'scripts/model-eval/thresholds.json', '"pairWinsWilsonLowerAbove": 0.5', '"pairWinsWilsonLowerAbove": 0.2'],
   ['a pair whose better verse is not from the corpus', 'docs/language/model-eval/pairs/fr.json', /"text": "/, '"text": "x'],
+  ['talk about the task no longer seen', 'scripts/model-eval/lib.mjs', "else if (TASK_TALK.test(l) || INTERRUPTION.test(l)) out.push('talk about the task');", ''],
+  ['an echo of the instructions no longer seen', 'scripts/model-eval/lib.mjs', "else if (echoesInstruction(l, instructions)) out.push('repeats the instructions');", ''],
+  ['acrostic letters set out as labels no longer seen', 'scripts/model-eval/lib.mjs', ".length >= 2) out.push('letters set out as labels');", ".length >= 99) out.push('letters set out as labels');"],
+  ['the challenger\'s quoted verse read as instructions', 'scripts/model-eval/lib.mjs', '.filter((l) => l && !quoted.has(l));', '.filter((l) => l);'],
+  ['a model used in no language offered for download', 'src/lib/brain.ts', 'return runnable.filter(usedAnywhere);', 'return runnable;'],
 ];
 
 const run = () => {

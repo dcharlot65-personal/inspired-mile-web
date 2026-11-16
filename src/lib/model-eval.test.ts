@@ -13,10 +13,10 @@
 import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
-import { MODELS, modelJudges, modelWrites } from './brain';
+import { MODELS, modelJudges, modelsToOffer, modelWrites, usedAnywhere, type Capability } from './brain';
 import { PACK_LANGS, loadAllPacks } from './verse/packs';
 // @ts-expect-error a plain module, shared with the scripts that run the evaluation
-import { LANGS, TIERS, commentary, decideJudge, decideWrite, derive, inLanguage, scriptOk, summarizeJudge, summarizeWrite, wilson } from '../../scripts/model-eval/lib.mjs';
+import { LANGS, TIERS, commentary, decideJudge, decideWrite, derive, inLanguage, instructionLines, scriptOk, summarizeJudge, summarizeWrite, wilson } from '../../scripts/model-eval/lib.mjs';
 
 const DIR = join(process.cwd(), 'docs', 'language', 'model-eval');
 const read = (...p: string[]) => JSON.parse(readFileSync(join(DIR, ...p), 'utf8'));
@@ -78,6 +78,32 @@ describe('the measured language lists', () => {
     expect(modelJudges(spec, 'zh-Hant')).toBe(true);
     expect(modelWrites(spec, 'es')).toBe(false);
     expect(modelWrites(null, 'en')).toBe(false);
+  });
+});
+
+describe('a model used in no language is never offered', () => {
+  const desktop: Capability = { webgpu: true, f16: true, memoryGb: 16, handheld: false };
+  const phone: Capability = { webgpu: true, f16: true, memoryGb: 4, handheld: true };
+  it('offers, with the measured lists, only models used somewhere, and nothing without WebGPU', () => {
+    for (const cap of [desktop, phone, { ...desktop, f16: false }]) for (const m of modelsToOffer(cap)) expect(usedAnywhere(m), m.tier).toBe(true);
+    expect(modelsToOffer({ ...desktop, webgpu: false })).toEqual([]);
+  });
+  it('drops a model whose lists are empty and keeps one used in a single language', () => {
+    const saved = (TIERS as (keyof typeof MODELS)[]).map((t) => [t, MODELS[t].writesIn, MODELS[t].judgesIn] as const);
+    const set = (t: keyof typeof MODELS, writesIn: string[], judgesIn: string[]) => Object.assign(MODELS[t], { writesIn, judgesIn });
+    try {
+      set('grand', ['en'], []);
+      set('standard', [], []);
+      set('lite', [], ['ja']);
+      expect(modelsToOffer(desktop).map((m) => m.tier)).toEqual(['grand']);
+      expect(modelsToOffer(phone).map((m) => m.tier)).toEqual(['lite']);
+      set('lite', [], []);
+      expect(modelsToOffer(phone)).toEqual([]);
+      set('standard', [], ['de']);
+      expect(modelsToOffer(desktop).map((m) => m.tier)).toEqual(['grand', 'standard']);
+    } finally {
+      for (const [t, w, j] of saved) Object.assign(MODELS[t], { writesIn: w, judgesIn: j });
+    }
   });
 });
 
@@ -207,6 +233,57 @@ describe('the commentary check', () => {
     expect(commentary('Aquí tienes el pareado:\nTu vela tiembla en la noche', 'es').length).toBe(1);
     expect(commentary('Белеет парус одинокой\nThis means a lonely sail is white', 'ru').length).toBe(1);
     expect(commentary('千山鳥飛絕\nA thousand hills and no bird flying', 'zh').length).toBe(1);
+  });
+  // Verbatim from the first English and Spanish cells (standard.en.write.json; echo from
+  // lite.en.write.json; labelsEs from grand.es.write.json). The rules committed before any cell
+  // ran missed every one of these.
+  const MISSED = {
+    selfTalk: 'How I love thee, my heart in bloom\nIn every hour the sun inspires (3) — wait need rhyme pattern.\nLet me design:\nCrossed quatrain: lines 1-3 form one group (A-A?), but instructions: line 1 rhymes with line 3; line 2 with line 4.',
+    interruption: 'Many mornings have I seen, / with sorrow blooming like dew, / yet still the world doth hear.\nBut wait—three lines, each longer than the previous; need to craft.',
+    echo: 'Open the duel\nFearless',
+    labels: 'W - Vivid rays strike the dawning light,\nI - In harmony I draw my might.\nT - Tribute rings where hearts once sang,',
+    labelsEs: 'L: Llevo mi veneno ardiente,\nU: Urte con mi sombra oscura,\nN: Nunca cesará mi furia,\nA: Ahora seré lo que debo ser.',
+  };
+  const PROMPT = ['You are Christina Rossetti…', 'Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Give every line the same number of words.\nOpen the duel: taunt your challenger.\nWrite only the verse, in English. No title, no notes, no explanation.'];
+  it('flags what the first cells showed the rules committed before them missing', () => {
+    const instructions = instructionLines(PROMPT, null);
+    for (const [name, verse] of Object.entries(MISSED)) {
+      const lang = name === 'labelsEs' ? 'es' : 'en';
+      expect(commentary(verse, lang, { instructions, narrow: true }), `${name}, narrow`).toEqual([]);
+      expect(commentary(verse, lang, { instructions }).length, name).toBeGreaterThan(0);
+    }
+    // Without the prompt the echo cannot be seen: the rule needs the instructions.
+    expect(commentary(MISSED.echo, 'en')).toEqual([]);
+  });
+  it('does not take verse that names its own making for commentary', () => {
+    for (const verse of [
+      'Let me not to the marriage of true minds\nAdmit impediments.',
+      'How do I love thee? Let me count the ways.\nI love thee to the depth and breadth and height',
+      'They also serve who only stand and wait.',
+      'O — what a rogue and peasant slave am I!\nIs it not monstrous that this player here',
+      'Not marble, nor the gilded monuments\nOf princes, shall outlive this powerful rhyme;',
+    ]) expect(commentary(verse, 'en', { instructions: instructionLines(PROMPT, null) }), verse).toEqual([]);
+  });
+  it('leaves out of the echo rule the challenger\'s verse a prompt quotes', () => {
+    const answering = 'Rough winds do shake the darling buds of May';
+    const prompt = ['…', `Form: Couplet. Two lines that rhyme.\nYour challenger last said:\n${answering}\nAnswer them.`];
+    expect(instructionLines(prompt, answering)).not.toContain(answering);
+    expect(commentary('Rough winds do shake the darling buds of May,\nAnd so my answer shakes thy day', 'en', { instructions: instructionLines(prompt, answering) })).toEqual([]);
+  });
+  it('never reads real verse as an echo of any prompt the game sent in its language', async () => {
+    const packs = await loadAllPacks();
+    let checked = 0;
+    for (const cell of cells.filter((c) => c.task === 'write')) {
+      const pack = packs.find((p) => p.lang === cell.lang)!;
+      const texts = [...read('corpus', `${cell.lang}.json`).excerpts.map((e: { text: string }) => e.text), ...Object.values(pack.written).flat()] as string[];
+      const sets = [...new Map(cell.plays.map((p: { prompt: string[]; answering: string | null }) => [p.prompt.join('\n'), instructionLines(p.prompt, p.answering)])).values()] as string[][];
+      for (const t of texts) for (const instructions of sets) {
+        checked++;
+        expect(commentary(t, cell.lang, { instructions }), `${cell.lang}: ${t}`).toEqual([]);
+      }
+    }
+    // Nothing checked would prove nothing: there are cells, so there are prompts.
+    if (cells.some((c) => c.task === 'write')) expect(checked).toBeGreaterThan(1000);
   });
   it('leaves verse alone: under 1% of the reference verse of all sixteen languages is flagged', async () => {
     expect(commentary('Who dares to stand upon my stage?\nI put the question to thy rage', 'en')).toEqual([]);

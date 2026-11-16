@@ -93,10 +93,66 @@ export function commentaryLine(line, lang, first = false) {
   return null;
 }
 
-/** Does a verse contain commentary? Returns the reasons, one per offending line. */
-export function commentary(verse, lang) {
+// The rules above were committed before any cell ran (8e92604). The first English cells showed
+// them missing a small model talking to itself mid-verse ("— wait need rhyme pattern. / Let me
+// design:"), echoing its instructions ("Write exactly 3 lines.") and labelling an acrostic's
+// letters ("W - Vivid rays…"). The three rules below were added for that, and kept only because
+// they flag none of the 443 reference verses (and the echo rule none of them against any prompt
+// the game sent): src/lib/model-eval.test.ts holds both. A rule that ended a verse on a colon
+// was tried and dropped: it flagged 4 reference verses, Wikisource excerpts cut mid-sentence.
+
+/**
+ * Talk about the task, in English (the language of the prompt). Narrow on purpose: "Let me not
+ * to the marriage of true minds" and "Let me count the ways" are verse, so "let me" alone is not
+ * enough, nor is "wait" without the dash or colon of an interruption.
+ */
+const TASK_TALK = /\b(let me (craft|write|try|design|start|fix|redo|rewrite|think|check|compose|adjust|revise|count (the )?syllables)|let'?s (try|craft|write|count|fix|redo)|i need to|need to (rhyme|craft|write|start|end|count|include|make)|needs? (a )?rhyme|must (start|end|begin|rhyme|include|repeat|contain|use)|each line|every line|the (first|last|second|third|fourth) line|lines? \d|syllables?\b|rhyme (scheme|pattern)|the (prompt|instructions?|flourish)|write exactly|exactly \d+ lines|that'?s not right|try again|\((\d+|that'?s[^)]*)\))/i;
+const INTERRUPTION = /(^|[—–(-]\s*|\.\s+)wait\b\s*[—–,:.!-]/i;
+
+const norm = (s) => s.toLowerCase().normalize('NFKC').replace(/[^\p{L}\p{N}\s]/gu, ' ').replace(/\s+/g, ' ').trim();
+const fourGrams = (s) => {
+  const w = norm(s).split(' ').filter(Boolean);
+  const out = new Set();
+  for (let i = 0; i + 4 <= w.length; i++) out.add(w.slice(i, i + 4).join(' '));
+  return out;
+};
+
+/**
+ * The instruction lines of the prompt a play was written to: the user message, without the
+ * challenger's verse it quotes (a reply may borrow from that verse; that is not commentary).
+ */
+export function instructionLines(prompt, answering) {
+  if (!Array.isArray(prompt) || !prompt.length) return [];
+  const quoted = new Set((answering ?? '').split(/\r?\n/).map((l) => l.trim()).filter(Boolean));
+  return String(prompt[prompt.length - 1]).split(/\r?\n/).map((l) => l.trim()).filter((l) => l && !quoted.has(l));
+}
+
+/** A verse line that repeats an instruction: four words in a row from it, or all of a line of three or more words. */
+export function echoesInstruction(line, instructions) {
+  const l = norm(line);
+  if (l.split(' ').filter(Boolean).length < 3) return false;
+  const mine = fourGrams(line);
+  return instructions.some((ins) => norm(ins).includes(l) || [...fourGrams(ins)].some((g) => mine.has(g)));
+}
+
+/**
+ * Does a verse contain commentary? Returns the reasons, one per offending line.
+ * `instructions` (instructionLines of the play's prompt) turns on the echo rule.
+ * `narrow: true` applies only the rules committed before any cell ran, for comparison.
+ */
+export function commentary(verse, lang, { instructions = [], narrow = false } = {}) {
   const lines = verse.split(/\r?\n/).filter((l) => l.trim());
-  return lines.map((l, i) => commentaryLine(l, lang, i === 0 && lines.length > 1)).filter(Boolean);
+  const out = [];
+  lines.forEach((l, i) => {
+    const old = commentaryLine(l, lang, i === 0 && lines.length > 1);
+    if (old) out.push(old);
+    else if (narrow) return;
+    else if (TASK_TALK.test(l) || INTERRUPTION.test(l)) out.push('talk about the task');
+    else if (echoesInstruction(l, instructions)) out.push('repeats the instructions');
+  });
+  // Acrostic letters set out as labels ("W - Vivid rays", "L: Llevo"): two or more lines.
+  if (!narrow && lines.filter((l) => /^\s*\p{L}\s*[-–—:)]/u.test(l) && !/^\s*\p{L}\p{L}/u.test(l)).length >= 2) out.push('letters set out as labels');
+  return out;
 }
 
 // --- Summaries ---
@@ -145,8 +201,9 @@ export function summarizeWrite(cell, lidOf) {
   const plays = cell.plays.map((p) => {
     const model = p.source === 'model';
     const inLang = model && inLanguage(p.verse, lang, lidOf(p.verse));
-    const comment = model ? commentary(p.verse, lang) : [];
-    return { ...p, model, inLang, comment };
+    const comment = model ? commentary(p.verse, lang, { instructions: instructionLines(p.prompt, p.answering) }) : [];
+    const commentNarrow = model ? commentary(p.verse, lang, { narrow: true }) : [];
+    return { ...p, model, inLang, comment, commentNarrow };
   });
   const group = (rows) => {
     const n = rows.length;
@@ -161,6 +218,7 @@ export function summarizeWrite(cell, lidOf) {
       inLanguage: m.filter((r) => r.inLang).length,
       inLanguageWilson: wilson(m.filter((r) => r.inLang).length, n),
       commentary: m.filter((r) => r.comment.length).length,
+      commentaryNarrow: m.filter((r) => r.commentNarrow.length).length,
     };
   };
   const drafts = cell.plays.flatMap((p) => p.drafts);
