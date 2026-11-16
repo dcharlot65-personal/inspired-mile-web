@@ -849,6 +849,7 @@ import { CARD_CATALOG, RARITY_COLORS, type Card, type Rarity } from '../lib/card
     }
 
     // Delay slightly so DOM is settled
-    void ready.then(() => setTimeout(startOnboarding, 500));
+    // Not held up by the language: the tooltip's text carries keys and is filled when the area arrives.
+    setTimeout(startOnboarding, 500);
   </script>
 </BaseLayout>

@@ -21,7 +21,7 @@ const ENGLISH = [
   'Digital Playground', 'The Playground', 'Cards Owned', 'Battle Wins', 'Trivia Score', 'View Collection', 'Card Packs', 'Open packs',
   'Starter Pack', 'Daily Pack', 'CLAIMED', 'Drop Rates', 'Pack Tiers', 'Standard Pack', 'guaranteed', 'real money', 'Enter the Arena',
   'Shakespeare Trivia', 'Test your knowledge', 'Start Trivia', 'Quote Challenge', 'Complete the famous', 'Start Challenge', 'Check Answer',
-  'Missing word', 'Blank 1', 'Hint:', 'Question 1', 'Claim Your', 'Got it', 'Story Mode', 'Your Journey', 'encounters completed',
+  'Missing word', 'Blank 1', 'Hint:', 'Claim Your', 'Got it', 'Story Mode', 'Your Journey', 'encounters completed',
   'The Streets of Verona', 'Street Brawl', 'Easy', 'Medium', 'Hard', 'The Enchanted Forest', 'Tempest Island', 'The Final Bow',
 ];
 
