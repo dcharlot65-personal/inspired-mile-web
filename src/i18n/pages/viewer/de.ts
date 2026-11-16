@@ -44,7 +44,7 @@ const messages: Record<string, string> = {
   'vr.status.noHeadset': 'Kein VR-Headset gefunden. Die Galerie wird in 3D gezeigt.',
   'vr.status.ready': 'WebXR ist bereit. Drück auf „VR starten“.',
   'vr.status.selected': 'Ausgewählt: {card} ({id})',
-  'vr.status.useButton': 'Nutz den VR-Knopf in der Ecke des Bildes.',
+  'vr.status.useButton': 'Nutze den VR-Knopf in der Ecke des Bildes.',
   'vr.error.webxr': 'WebXR ist hier nicht verfügbar.',
   'vr.error.init': 'Die 3D-Galerie konnte nicht starten.',
   'vr.fallback': 'WebXR ist auf diesem Gerät nicht verfügbar. Die Galerie wird in 3D gezeigt: Zieh, um dich umzusehen, und scroll zum Zoomen.',
