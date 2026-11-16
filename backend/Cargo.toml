@@ -7,10 +7,13 @@ edition = "2024"
 axum = { version = "0.8", features = ["ws"] }
 axum-extra = { version = "0.12", features = ["cookie"] }
 tokio = { version = "1", features = ["full"] }
-sqlx = { version = "0.9", features = ["runtime-tokio", "postgres", "chrono", "uuid"] }
+sqlx = { version = "0.9", features = ["runtime-tokio", "postgres", "chrono", "uuid", "json"] }
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
-jsonwebtoken = { version = "12", features = ["rust_crypto"] }
+# aws_lc_rs, not rust_crypto: rust_crypto pulls rsa 0.10.0, and webauthn-rs (through
+# crypto-glue 0.2) needs an rsa 0.10 release candidate; cargo cannot hold both. aws-lc-rs
+# is already in the tree as reqwest's TLS provider. Sessions are HS256 either way.
+jsonwebtoken = { version = "12", features = ["aws_lc_rs"] }
 uuid = { version = "1", features = ["v4", "serde"] }
 chrono = { version = "0.4", features = ["serde"] }
 tower-http = { version = "0.7", features = ["cors", "trace", "limit"] }
@@ -23,3 +26,11 @@ dotenvy = "0.15"
 reqwest = { version = "0.13", features = ["json", "query"] }
 rand = "0.10"
 futures = "0.3"
+# Passkeys. `conditional-ui` is the discoverable (usernameless) sign-in API;
+# `danger-allow-state-serialisation` lets ceremony state be kept in Postgres. That state
+# never leaves the server, which is the condition the feature's name warns about.
+webauthn-rs = { version = "0.6", features = ["conditional-ui", "danger-allow-state-serialisation"] }
+url = "2"
+hmac = "0.13"
+sha2 = "0.11"
+hex = "0.4"

@@ -36,12 +36,45 @@ RB='export PATH=$HOME/.cargo/bin:/opt/homebrew/bin:$PATH;'
 ~/kani-logs/remote/rb . -- "$RB PROD_URL=https://sonnetman.inspiredmile.com npx playwright test"
 ```
 
-Do not start a second `rb` in this checkout while one is running: both use the same remote
-folder, and a stale `astro dev` left on port 4399 makes every browser test fail with
-connection refused (`pkill -f 'astro dev'` on the host).
+The frontend build needs no secrets or `PUBLIC_*` variables.
 
-`.env` (git-ignored) holds `PUBLIC_GOOGLE_CLIENT_ID`; rb does not copy ignored files, so
-export it in the build command.
+Do not start a second `rb` in this checkout while one is running: both use the same remote
+folder.
+
+`npx playwright test` starts three things itself (`playwright.config.ts`): a throwaway
+Postgres and two copies of the real API (`tests/start-backend.sh`; needs `initdb`, `pg_ctl`,
+`createdb` and `cargo` on `PATH`, hence `/opt/homebrew/bin` and `~/.cargo/bin` above), and
+the Astro dev server, which proxies `/api` to the API (`astro.config.mjs`). State and logs
+go to `.e2e/` (git-ignored); the sign-in codes the tests read are in `.e2e/api.log`.
+
+**The build host is shared, and no server is reused.** Default ports: 4399 (dev server),
+38490 (API, `DEV_EMAIL_LOG=1`), 38491 (API with email off), 54329 (Postgres). If another
+checkout is testing at the same time the run stops with "port already used"; give this run
+its own with `E2E_WEB_PORT`, `E2E_API_PORT`, `E2E_API_NOEMAIL_PORT`, `E2E_PG_PORT`
+(`tests/e2e-env.ts`). Before 2026-11-16 the config reused whatever answered on 4399, so two
+concurrent runs could test each other's code and pass.
+
+**Never `pkill -f 'astro dev'` on the host.** It stops every checkout's dev server, not
+only a stale one of yours: a run in another checkout then fails with "connection refused"
+on all its browser tests (its log says `[dev-server] EXITED with status 143`). A dev server
+left behind by a killed run is found by its port: `lsof -nP -iTCP:<port> -sTCP:LISTEN`.
+
+## Sign-in (passkeys + email code)
+
+- No passwords, no Google. Passkeys (WebAuthn, discoverable, no username) are primary; a
+  6-digit emailed code creates an account, signs in where there is no passkey, and recovers.
+  Session is still the `im_token` JWT cookie. Code: `backend/src/auth/`, `src/lib/passwordless.ts`,
+  the auth script in `BaseLayout.astro` (all its strings are in one `STRINGS` object).
+- API env: `WEBAUTHN_RP_ID` (default `inspiredmile.com`; **never change it once passkeys
+  exist, it orphans all of them**), `WEBAUTHN_ORIGIN` (default
+  `https://sonnetman.inspiredmile.com`; comma-separated list; each must be https, or http on
+  localhost, and on the RP ID), `RESEND_API_KEY` (absent: email endpoints answer 503 and
+  the UI hides email), `EMAIL_FROM`, `RATE_LIMIT_PER_MINUTE` (global limiter, default 60).
+- `DEV_EMAIL_LOG=1` writes codes to stderr instead of sending. Tests only. A real key wins
+  over it, with a loud start-up warning.
+- Local dev: `WEBAUTHN_RP_ID=localhost WEBAUTHN_ORIGIN=http://localhost:4321`.
+- The email step requires the age gate's stored tier (`adult` or `teen-consented`), in the
+  browser and again in the API. Do not loosen either.
 
 ## Where it runs (verified 2026-11-16)
 
@@ -64,7 +97,7 @@ export it in the build command.
   "a ring-3"). Diff `src/lib/*.ts` after running it.
 - The stylesheet is imported once, in `BaseLayout.astro`. Do not import it per page.
 - The age gate covers every page until a date of birth is stored; tests start past it
-  (`tests/age-verified.json`).
+  (the `storageState` in `playwright.config.ts`).
 - No GitHub Actions (account-wide owner rule). CI is the build host.
 - `git add -A` here will pick up agent worktrees under `.claude/`; that folder is ignored.
 - Babylon's default WebXR set-up downloads hand and controller models from its own

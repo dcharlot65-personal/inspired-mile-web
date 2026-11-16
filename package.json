@@ -17,6 +17,7 @@
     "@babylonjs/loaders": "^9.36.0",
     "@google/model-viewer": "^4.4.0",
     "@huggingface/transformers": "^4.3.2",
+    "@simplewebauthn/browser": "^14.0.0",
     "@tailwindcss/vite": "^4.3.5",
     "astro": "^7.4.12",
     "kokoro-js": "^1.2.1",

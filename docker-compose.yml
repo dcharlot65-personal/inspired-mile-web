@@ -25,7 +25,12 @@ services:
       JWT_SECRET: dev-secret-change-in-production
       PORT: "3849"
       CORS_ORIGIN: http://localhost:4321
-      GOOGLE_CLIENT_ID: ""
+      # Passkeys: the relying-party ID and the page origins that may use it.
+      WEBAUTHN_RP_ID: localhost
+      WEBAUTHN_ORIGIN: http://localhost:4321
+      # Email sign-in is off (503) until a Resend key is set here.
+      RESEND_API_KEY: ""
+      EMAIL_FROM: "Sonnet Man <signin@inspiredmile.com>"
       LLM_API_KEY: ""
     ports:
       - "3849:3849"
