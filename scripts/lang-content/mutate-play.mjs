@@ -11,7 +11,7 @@ const MUTATIONS = [
   { name: 'an unfilled {placeholder}', file: 'src/i18n/pages/playground/de.ts', from: `'pg.trivia.start': "Quiz starten"`, to: `'pg.trivia.start': "Quiz {starten}"`, grep: 'playground in de' },
   { name: 'markup that lost its key', file: 'src/pages/playground.astro', from: ` data-i18n="pg.stat.cards">Cards Owned<`, to: `>Cards Owned<`, grep: 'playground in de' },
   { name: 'a raw key shown as text', file: 'src/i18n/pages/story/de.ts', from: `'story.act.1.name': "Die Straßen von Verona"`, to: `'story.act.1.name': "story.act.1.name"`, grep: 'story page in de' },
-  { name: 'English trivia served to a German player', file: 'src/lib/play-content.ts', from: `if (l === 'en') return TRIVIA_BANK;`, to: `if (l) return TRIVIA_BANK;`, grep: 'relabels the open playground', control: false },
+  { name: 'English trivia served to a German player', file: 'src/lib/play-content.ts', from: `if (l === 'en') return TRIVIA_BANK;`, to: `if (l) return TRIVIA_BANK;`, grep: 'relabels the open playground' },
   { name: 'English trivia in the German playground test itself', file: 'src/lib/play-content.ts', from: `if (l === 'en') return TRIVIA_BANK;`, to: `if (l) return TRIVIA_BANK;`, grep: 'playground in de' },
 ];
 

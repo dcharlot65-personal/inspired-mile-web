@@ -127,6 +127,10 @@ test('a change of language relabels the open playground', async ({ page }) => {
   await page.click('#trivia-start-btn');
   await expect(page.locator('#trivia-question')).toHaveAttribute('lang', 'de');
   await expect(page.locator('#trivia-progress')).toContainText('Frage 1 / 5');
+  // The question itself comes from the German bank, not only the labels around it.
+  const asked = ((await page.locator('#trivia-question').textContent()) ?? '').trim();
+  expect(asked.length).toBeGreaterThan(0);
+  expect(TRIVIA_BANK.some((q) => asked.startsWith(q.question)), `an English trivia question after switching to German: ${asked}`).toBe(false);
   await page.selectOption('#locale-switch', 'ja');
   await expect(page.locator('#trivia-progress')).toContainText('第1問');
   // Arabic turns the page right to left.
