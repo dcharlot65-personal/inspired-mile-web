@@ -43,6 +43,16 @@ function uniqueIp(): string {
   return `10.${n()}.${n()}.${n()}`;
 }
 
+/** A random /48 of the IPv6 documentation range, for tests about IPv6 networks. */
+function random48(): string {
+  return `2001:db8:${(1 + Math.floor(Math.random() * 0xfffe)).toString(16)}`;
+}
+
+/** An address in /64 number `subnet` of the /48 `p48` (as `random48` gives). */
+function in48(p48: string, subnet: number, host = 1): string {
+  return `${p48}:${subnet.toString(16)}::${host.toString(16)}`;
+}
+
 function escapeRegExp(s: string): string {
   return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
@@ -1125,6 +1135,17 @@ test.describe('Passkey-only accounts, with email off', () => {
     expect((await signupBegin(request)).status()).toBe(200);
   });
 
+  test('for IPv6 the sign-up network is the /48, not each of its /64s', async ({ request }) => {
+    const p48 = random48();
+    // 199 begun from one /64 of the /48 (written directly), then one real begin from another.
+    sql(`INSERT INTO signup_attempts (ip, completed) SELECT '${p48}::/48', FALSE FROM generate_series(1, 199)`);
+    expect((await signupBegin(request, { ip: in48(p48, 2) })).status()).toBe(200);
+    // A third /64 of the same /48 is the same network, and over its two hundred.
+    const over = await signupBegin(request, { ip: in48(p48, 0xbeef) });
+    expect(over.status()).toBe(429);
+    expect(sql(`SELECT COUNT(*) FROM signup_attempts WHERE ip = '${p48}::/48'`)).toBe('200');
+  });
+
   test('a browser without WebAuthn is told so, with no mention of email', async ({ page }) => {
     await page.addInitScript(() => {
       Object.defineProperty(window, 'PublicKeyCredential', { value: undefined, configurable: true });
@@ -1454,6 +1475,16 @@ test.describe('Hardening: the session secret', () => {
     expect(local.status).not.toBe(2);
     expect(local.stderr).toContain('For tests only');
     expect(local.stderr).toMatch(/Failed to connect to PostgreSQL/);
+  });
+
+  test('a PROXY_SECRET that is set must be a real secret', async () => {
+    const short = startApi({ JWT_SECRET: E2E_JWT_SECRET, PROXY_SECRET: 'too-short' });
+    expect(short.status).toBe(2);
+    expect(short.stderr).toContain('PROXY_SECRET is 9 characters long; at least 32');
+    // Control: a long one is accepted, and start-up goes on to the database.
+    const good = startApi({ JWT_SECRET: E2E_JWT_SECRET, PROXY_SECRET: randomBytes(32).toString('hex') });
+    expect(good.status).not.toBe(2);
+    expect(good.stderr).toMatch(/Failed to connect to PostgreSQL/);
   });
 
   test('email codes are hashed with a key of their own, not the session secret', async ({ request }) => {
@@ -1851,21 +1882,23 @@ test.describe('Hardening: the cookie and sign-out', () => {
 // ---------------------------------------------------------------------------
 
 test.describe('Hardening: client address and limits by network', () => {
-  test('ten codes an hour for a whole IPv6 /64, not for each of its addresses', async ({ request }) => {
+  test('ten codes an hour for a whole IPv6 /48, not for each of its /64s', async ({ request }) => {
     const hex = () => (1 + Math.floor(Math.random() * 0xfffe)).toString(16);
-    const net = `2001:db8:${hex()}:${hex()}`;
+    const p48 = random48();
     for (let i = 1; i <= 10; i++) {
-      const res = await requestCode(request, uniqueEmail('v6'), { ip: `${net}:${hex()}:${hex()}:${hex()}:${i.toString(16)}` });
+      // A different /64 of the same /48 each time: one home line or tunnel has thousands.
+      const res = await requestCode(request, uniqueEmail('v6'), { ip: `${p48}:${i.toString(16)}:${hex()}:${hex()}::1` });
       expect(res.status(), `request ${i}`).toBe(200);
     }
-    // An eleventh address in the same /64 is the same client.
-    const over = await requestCode(request, uniqueEmail('v6'), { ip: `${net}:ffff:ffff:ffff:ffff` });
+    // An eleventh /64 of the same /48 is the same network.
+    const over = await requestCode(request, uniqueEmail('v6'), { ip: `${p48}:ffff:ffff:ffff:ffff:ffff` });
     expect(over.status()).toBe(429);
     expect((await over.json()).error).toBe('too_many_requests');
-    // The neighbouring /64 is somebody else.
-    const neighbour = uniqueEmail('v6-other');
-    expect((await requestCode(request, neighbour, { ip: `2001:db8:${hex()}:1::1` })).status()).toBe(200);
-    expect(sql(`SELECT DISTINCT ip FROM email_login_codes WHERE email LIKE 'v6-%' AND ip LIKE '${net}%'`)).toBe(`${net}::/64`);
+    // The next /48 is somebody else.
+    let other = random48();
+    while (other === p48) other = random48();
+    expect((await requestCode(request, uniqueEmail('v6-other'), { ip: `${other}:1::1` })).status()).toBe(200);
+    expect(sql(`SELECT string_agg(DISTINCT ip, ',') FROM email_login_codes WHERE email LIKE 'v6-%' AND ip LIKE '${p48}:%'`)).toBe(`${p48}::/48`);
   });
 
   test('forwarding headers are believed from a trusted proxy and ignored from anyone else', async ({ request }) => {
@@ -1907,6 +1940,43 @@ test.describe('Hardening: client address and limits by network', () => {
       }
       await new Promise((r) => setTimeout(r, 500));
       expect(api.log().match(/ignored CF-Connecting-IP/g)).toHaveLength(1);
+    } finally {
+      await api.stop();
+    }
+  });
+
+  // The second review's concern: the proxy's host (the M4, 100.98.101.113) is also a shared
+  // build host, so trusting its address trusted every program on it. With PROXY_SECRET set,
+  // only a request carrying the secret the proxy adds is believed.
+  test('with PROXY_SECRET set, a trusted proxy\'s forwarding headers count only with the secret', async () => {
+    const secret = `proxy-${randomBytes(24).toString('hex')}`;
+    const api = await startApi({ PROXY_SECRET: secret }, { isolated: true });
+    try {
+      expect(api.log()).toContain('PROXY_SECRET is set');
+      const begin = (headers: Record<string, string>) =>
+        call('POST', `${api.base}/auth/passkey/login/begin`, { headers }).then((r) => r.status());
+      const claimed = uniqueIp();
+      // From loopback (a trusted peer) without the secret, and with a wrong one: counted as
+      // loopback, whatever the header claims...
+      expect(await begin({ 'CF-Connecting-IP': claimed })).toBe(200);
+      expect(await begin({ 'CF-Connecting-IP': claimed, 'X-Proxy-Secret': `${secret}x` })).toBe(200);
+      // ...and with it, as the visitor it names.
+      expect(await begin({ 'CF-Connecting-IP': claimed, 'X-Proxy-Secret': secret })).toBe(200);
+      expect(api.sql("SELECT string_agg(net_key, ',' ORDER BY created_at) FROM auth_challenges")).toBe(`127.0.0.1,127.0.0.1,${claimed}`);
+      // The log says why the header was not believed, and never shows the secret.
+      await expect.poll(() => api.log()).toMatch(/from 127\.0\.0\.1, a trusted proxy, because the request had no matching X-Proxy-Secret/);
+      expect(api.log()).not.toContain(secret);
+    } finally {
+      await api.stop();
+    }
+  });
+
+  test('the log has no colour codes when it is not a terminal, even without NO_COLOR', async () => {
+    // launchd writes the log to a file, and the operator greps it for the notices.
+    const api = await startApi({ NO_COLOR: '' });
+    try {
+      expect(api.log()).toContain('Inspired Mile API listening on');
+      expect(api.log()).not.toContain('\u001b[');
     } finally {
       await api.stop();
     }
@@ -2021,41 +2091,59 @@ test.describe('Hardening: sign-up accounting', () => {
     expect(nextDoor.status()).toBe(200);
   });
 
-  test('a site-wide ceiling stops sign-ups for everyone, and says so loudly in the log', async ({ request }) => {
-    // Other tests in this file sign up; they run before or after this one, never during.
-    const marker = `ceiling-${unique()}`;
+  // A ceiling that refused everyone was a way to stop all sign-ups with a few networks (the
+  // reviews' concern). Now, at the ceiling, only a network over its share is refused.
+  test('at the site-wide ceiling of accounts, only a network over its share is refused, loudly', async ({ request }) => {
+    // A database of its own, so the hour's count is exactly what this test made.
+    const api = await startApi({}, { isolated: true });
     try {
-      sql(`INSERT INTO signup_attempts (ip, completed) SELECT '${marker}', TRUE FROM generate_series(1, 300)`);
-      const refused = await signupBegin(request, { base: API });
+      // The hour's 300 accounts, two each from 150 networks (written directly: only their
+      // count matters).
+      api.sql(`INSERT INTO signup_attempts (ip, completed)
+               SELECT '10.250.' || (g % 150) || '.0/24', TRUE FROM generate_series(1, 300) g`);
+      // One of those networks, at its share of two: refused, and the log says so.
+      const refused = await signupBegin(request, { base: api.base, ip: '10.250.7.9' });
       expect(refused.status()).toBe(429);
       const body = await refused.json();
       expect(body.error).toBe('too_many_requests');
       expect(body.message).toContain('right now');
-      await expect.poll(() => readFileSync(API_LOG, 'utf8')).toContain('SIGN-UP CEILING HIT');
-      expect(readFileSync(API_LOG, 'utf8')).toContain('SIGNUP_GLOBAL_PER_HOUR = 300');
+      await expect.poll(() => api.log()).toContain('SIGN-UP CEILING HIT');
+      expect(api.log()).toContain('SIGNUP_GLOBAL_PER_HOUR = 300');
+      // A network that has made none this hour still signs up, at the ceiling...
+      expect((await signupBegin(request, { base: api.base })).status()).toBe(200);
+      // ...and so does one that has made one.
+      const once = uniqueIp();
+      api.sql(`INSERT INTO signup_attempts (ip, completed) VALUES ('${once.replace(/\.\d+$/, '.0/24')}', TRUE)`);
+      expect((await signupBegin(request, { base: api.base, ip: once })).status()).toBe(200);
+      // An hour later the ceiling's network is served again.
+      api.sql("UPDATE signup_attempts SET created_at = NOW() - INTERVAL '61 minutes'");
+      expect((await signupBegin(request, { base: api.base, ip: '10.250.7.9' })).status()).toBe(200);
     } finally {
-      sql(`DELETE FROM signup_attempts WHERE ip = '${marker}'`);
+      await api.stop();
     }
-    // One below the ceiling is still served.
-    expect((await signupBegin(request, { base: API })).status()).toBe(200);
   });
 
-  test('begun sign-ups have a site-wide ceiling too, loud when hit', async ({ request }) => {
-    // A database of its own, so the count of begun sign-ups is exactly what this test made.
+  test('begun sign-ups have a site-wide ceiling too: at it a network that has begun ten is refused, loudly', async ({ request }) => {
     const api = await startApi({ SIGNUP_BEGINS_GLOBAL_PER_HOUR: '20' }, { isolated: true });
     try {
-      // Twenty networks begin once each; the twenty-first begin, from yet another, is refused.
-      for (let i = 0; i < 20; i++) expect((await signupBegin(request, { base: api.base })).status(), `begin ${i + 1}`).toBe(200);
-      const refused = await signupBegin(request, { base: api.base });
+      // One network begins twenty: the site's ceiling.
+      const flood = uniqueIp();
+      for (let i = 0; i < 20; i++) expect((await signupBegin(request, { base: api.base, ip: flood })).status(), `begin ${i + 1}`).toBe(200);
+      // Its twenty-first is refused, loudly, with RUST_LOG unset...
+      const refused = await signupBegin(request, { base: api.base, ip: flood });
       expect(refused.status()).toBe(429);
       expect((await refused.json()).message).toContain('right now');
-      expect(api.sql('SELECT COUNT(*) FROM signup_attempts WHERE NOT completed')).toBe('20');
-      // Loud, with RUST_LOG unset.
       await expect.poll(() => api.log()).toContain('SIGN-UP BEGIN CEILING HIT');
       expect(api.log()).toContain('SIGNUP_BEGINS_GLOBAL_PER_HOUR = 20');
-      // When the hour has moved on, sign-ups begin again.
+      // ...but another network still begins, up to its share of ten.
+      let other = uniqueIp();
+      while (other.replace(/\.\d+$/, '') === flood.replace(/\.\d+$/, '')) other = uniqueIp();
+      for (let i = 0; i < 10; i++) expect((await signupBegin(request, { base: api.base, ip: other })).status(), `other ${i + 1}`).toBe(200);
+      expect((await signupBegin(request, { base: api.base, ip: other })).status()).toBe(429);
+      expect(api.sql('SELECT COUNT(*) FROM signup_attempts WHERE NOT completed')).toBe('30');
+      // When the hour has moved on, the first network begins again.
       api.sql("UPDATE signup_attempts SET created_at = NOW() - INTERVAL '61 minutes'");
-      expect((await signupBegin(request, { base: api.base })).status()).toBe(200);
+      expect((await signupBegin(request, { base: api.base, ip: flood })).status()).toBe(200);
     } finally {
       await api.stop();
     }
@@ -2076,40 +2164,105 @@ test.describe('Hardening: sign-up accounting', () => {
     sql(`DELETE FROM signup_attempts WHERE ip = '${marker}'`);
   });
 
-  test('sign-in challenges: a hundred live per network, a ceiling for the table, expired rows cleaned up at it', async ({ request }) => {
+  test('sign-in challenges: three hundred live per network, and an IPv6 /48 is one network', async () => {
+    test.setTimeout(180000);
+    const api = await startApi({}, { isolated: true });
+    const begin = (ip: string) =>
+      call('POST', `${api.base}/auth/passkey/login/begin`, { headers: { 'CF-Connecting-IP': ip } }).then((r) => r.status());
+    try {
+      // One IPv4 network: three hundred live ceremonies, then refused.
+      const flood = uniqueIp();
+      for (let i = 0; i < 300; i++) expect(await begin(flood), `begin ${i + 1}`).toBe(200);
+      const over = await call('POST', `${api.base}/auth/passkey/login/begin`, { headers: { 'CF-Connecting-IP': flood } });
+      expect(over.status()).toBe(429);
+      expect((await over.json()).error).toBe('busy');
+      // Another network is not affected.
+      expect(await begin(uniqueIp())).toBe(200);
+      expect(api.sql(`SELECT COUNT(*) FROM auth_challenges WHERE net_key = '${flood}'`)).toBe('300');
+      // Four /64s of one /48, seventy-five each: the /48's three hundred; a fifth /64 of it is refused.
+      const p48 = random48();
+      for (let subnet = 1; subnet <= 4; subnet++) {
+        for (let k = 1; k <= 75; k++) expect(await begin(in48(p48, subnet, k)), `/64 ${subnet} begin ${k}`).toBe(200);
+      }
+      expect(await begin(in48(p48, 0xff))).toBe(429);
+      expect(api.sql(`SELECT COUNT(*) FROM auth_challenges WHERE net_key = '${p48}::/48'`)).toBe('300');
+    } finally {
+      await api.stop();
+    }
+  });
+
+  test('a full challenge table refuses only the networks over their share, and is cleaned up at the ceiling', async () => {
     test.setTimeout(120000);
     const api = await startApi({ AUTH_CHALLENGES_MAX: '150' }, { isolated: true });
     const begin = (ip: string) =>
       call('POST', `${api.base}/auth/passkey/login/begin`, { headers: { 'CF-Connecting-IP': ip } });
     try {
-      // One network: a hundred live ceremonies, then refused.
+      // One network fills the table to its ceiling of 150.
       const flood = uniqueIp();
-      for (let i = 0; i < 100; i++) expect((await begin(flood)).status(), `begin ${i + 1}`).toBe(200);
-      const over = await begin(flood);
-      expect(over.status()).toBe(429);
-      expect((await over.json()).error).toBe('busy');
-      // Another network is not affected.
-      expect((await begin(uniqueIp())).status()).toBe(200);
-      expect(api.sql(`SELECT COUNT(*) FROM auth_challenges WHERE net_key = '${flood}'`)).toBe('100');
-
-      // The table at its ceiling, filled by many networks: refused for everyone, loudly.
-      api.sql(`INSERT INTO auth_challenges (kind, state, expires_at, net_key)
-               SELECT 'login', '{}'::jsonb, NOW() + INTERVAL '5 minutes', 'filler-' || g FROM generate_series(1, 49) g`);
-      expect(api.sql('SELECT COUNT(*) FROM auth_challenges')).toBe('150');
-      const full = await begin(uniqueIp());
-      expect(full.status()).toBe(503);
-      expect((await full.json()).error).toBe('busy');
+      for (let i = 0; i < 150; i++) expect((await begin(flood)).status(), `begin ${i + 1}`).toBe(200);
+      // It is refused from now on (it holds far more than its share of ten), loudly...
+      const refused = await begin(flood);
+      expect(refused.status()).toBe(503);
+      expect((await refused.json()).error).toBe('busy');
       await expect.poll(() => api.log()).toContain('SIGN-IN CHALLENGE CEILING HIT');
-
-      // Once they have expired, the next begin deletes them itself (this API's sweep is an
-      // hour away) and is served.
-      api.sql("UPDATE auth_challenges SET expires_at = NOW() - INTERVAL '1 second' WHERE net_key LIKE 'filler-%'");
+      expect(api.log()).toContain('AUTH_CHALLENGES_MAX = 150');
+      // ...while a visitor on any other network still signs in: up to ten live ceremonies
+      // each while the table is full, then refused like the flood.
+      const visitor = uniqueIp();
+      for (let i = 0; i < 10; i++) expect((await begin(visitor)).status(), `visitor ${i + 1}`).toBe(200);
+      expect((await begin(visitor)).status()).toBe(503);
       expect((await begin(uniqueIp())).status()).toBe(200);
-      expect(api.sql("SELECT COUNT(*) FROM auth_challenges WHERE net_key LIKE 'filler-%'")).toBe('0');
+      // A sign-up and a fresh verification go through the same door.
+      const signup = await call('POST', `${api.base}/auth/passkey/signup/begin`, {
+        body: { age_tier: 'adult' }, headers: { 'CF-Connecting-IP': uniqueIp() },
+      });
+      expect(signup.status()).toBe(200);
+      expect(api.sql('SELECT COUNT(*) FROM auth_challenges')).toBe('162');
+
+      // Once the flood's ceremonies have expired, the next begin deletes them itself (this
+      // API's sweep is an hour away), and the flood's network is served again.
+      api.sql(`UPDATE auth_challenges SET expires_at = NOW() - INTERVAL '1 second' WHERE net_key = '${flood}'`);
+      expect((await begin(flood)).status()).toBe(200);
+      expect(api.sql(`SELECT COUNT(*) FROM auth_challenges WHERE net_key = '${flood}'`)).toBe('1');
       // Live ceremonies were not touched.
-      expect(api.sql(`SELECT COUNT(*) FROM auth_challenges WHERE net_key = '${flood}'`)).toBe('100');
-      // And a ceremony begun under the ceiling still finishes as before: its row is there.
-      expect(api.sql('SELECT COUNT(*) FROM auth_challenges')).toBe('102');
+      expect(api.sql(`SELECT COUNT(*) FROM auth_challenges WHERE net_key = '${visitor}'`)).toBe('10');
+    } finally {
+      await api.stop();
+    }
+  });
+
+  // The second review's probe CHK-5, with its verdict turned round. 200 /64s of one IPv6 /48
+  // each began 100 sign-ins (20,000 in about nine seconds, under every per-/64 limit), filled
+  // the table, and from then on every passkey sign-in, sign-up and verification on the site
+  // answered 503. Now the /48 is one network: it gets its 300, and everyone else is served.
+  test('one IPv6 /48 cannot fill the challenge table and stop everyone\'s passkey sign-in', async () => {
+    test.setTimeout(400000);
+    // The default settings, as in production, on a database of its own.
+    const api = await startApi({}, { isolated: true });
+    try {
+      const p48 = random48();
+      const answers: Record<number, number> = {};
+      const started = Date.now();
+      for (let round = 0; round < 100; round++) {
+        for (let group = 0; group < 4; group++) {
+          const batch = await Promise.all(Array.from({ length: 50 }, (_, j) =>
+            call('POST', `${api.base}/auth/passkey/login/begin`, { headers: { 'CF-Connecting-IP': in48(p48, group * 50 + j + 1, round + 1) } })
+              .then((r) => r.status())));
+          for (const status of batch) answers[status] = (answers[status] ?? 0) + 1;
+        }
+      }
+      const floodMs = Date.now() - started;
+      const rows = Number(api.sql('SELECT COUNT(*) FROM auth_challenges'));
+      const visitor = await call('POST', `${api.base}/auth/passkey/login/begin`, { headers: { 'CF-Connecting-IP': uniqueIp() } });
+      const signup = await call('POST', `${api.base}/auth/passkey/signup/begin`, { body: { age_tier: 'adult' }, headers: { 'CF-Connecting-IP': uniqueIp() } });
+      // What a row costs, for the size of the default ceiling.
+      const sizes = api.sql("SELECT string_agg(kind || '=' || ROUND(AVG_SIZE), ',') FROM (SELECT kind, AVG(pg_column_size(t.*)) AS avg_size FROM auth_challenges t GROUP BY kind) x");
+      const tableBytes = api.sql("SELECT pg_total_relation_size('auth_challenges')");
+      console.log(`CHK-5 turned round: 20000 login/begin from 200 /64s of ${p48}::/48 in ${floodMs} ms: ${JSON.stringify(answers)}; rows ${rows}; visitor login/begin ${visitor.status()}; signup/begin ${signup.status()}; average row bytes by kind ${sizes}; table with indexes ${tableBytes} bytes`);
+      expect(answers).toEqual({ 200: 300, 429: 19700 });
+      expect(rows).toBe(300);
+      expect(visitor.status()).toBe(200);
+      expect(signup.status()).toBe(200);
     } finally {
       await api.stop();
     }
@@ -2319,6 +2472,33 @@ test.describe('Hardening: age tier', () => {
     expect(tierOf(adult.user.id)).toBe('adult|adult');
     // The browser's own stored answer follows what was typed, as the gate always did.
     expect(await page.evaluate(() => localStorage.getItem('inspired-mile-age-verified'))).toBe('adult');
+
+    // A wrong year that makes the user under 13 (the second review's concern): the screen
+    // for under-13s, but with a way back to the question, so the slip can be put right at
+    // once instead of locking this browser until its site data is cleared.
+    await openQuestion();
+    const toStrictest = page.waitForResponse((r) => r.url().endsWith('/auth/age-tier'));
+    await giveBirthYear(year - 5);
+    expect(JSON.parse((await toStrictest).request().postData()!)).toEqual({ age_tier: 'teen' });
+    await expect(page.locator('#age-gate-minor')).toBeVisible();
+    expect(tierOf(adult.user.id)).toBe('teen|adult');
+    await expect(page.locator('#age-gate-cancel')).toBeVisible();
+    await page.locator('#age-gate-cancel').click();
+    // Back at the question, which must now be answered: no second "Back" to leave it with.
+    await expect(page.locator('#age-gate-form')).toBeVisible();
+    await expect(page.locator('#age-gate-minor')).toBeHidden();
+    await expect(page.locator('#age-gate-cancel')).toBeHidden();
+    const corrected = page.waitForResponse((r) => r.url().endsWith('/auth/age-tier'));
+    await giveBirthYear(year - 40);
+    expect((await corrected).status()).toBe(200);
+    await expect(page.locator('#age-gate')).toBeHidden();
+    expect(tierOf(adult.user.id)).toBe('adult|adult');
+    expect(await page.evaluate(() => localStorage.getItem('inspired-mile-age-verified'))).toBe('adult');
+    // And on a page load with an under-13 answer stored, the screen still has no way out.
+    await page.evaluate(() => localStorage.setItem('inspired-mile-age-verified', 'blocked'));
+    await page.reload();
+    await expect(page.locator('#age-gate-minor')).toBeVisible();
+    await expect(page.locator('#age-gate-cancel')).toBeHidden();
   });
 });
 
@@ -2505,6 +2685,91 @@ test.describe('Hardening: email codes', () => {
     expect(await statuses(uniqueIp(), 1)).toEqual([200]);
   });
 
+  // The second review's probe CHK-1, with its verdict turned round. Each /64 of one IPv6
+  // /48 had a share of its own, so four of them, asking in turn, used up an address's ten
+  // codes ([[200,200,200,429] x3, [200,429,429,429]]) and the owner then got 429. A /48 is
+  // now one network, with one share.
+  test('the /64s of one IPv6 /48 are one network: their share is three, and the owner still gets a code', async ({ request }) => {
+    const victim = uniqueEmail('v48');
+    const p48 = random48();
+    const got: number[][] = [];
+    for (let subnet = 0; subnet < 4; subnet++) {
+      const mine: number[] = [];
+      for (let k = 0; k < 4; k++) {
+        mine.push((await requestCode(request, victim, { ip: in48(p48, subnet, 1000 + k), browser: 'other' })).status());
+      }
+      got.push(mine);
+    }
+    expect(got).toEqual([[200, 200, 200, 429], [429, 429, 429, 429], [429, 429, 429, 429], [429, 429, 429, 429]]);
+    expect(sql(`SELECT COUNT(*) || '|' || string_agg(DISTINCT ip, ',') FROM email_login_codes WHERE email = '${victim}'`)).toBe(`3|${p48}::/48`);
+    // The owner, from their own network, with a fresh browser: a code, and it signs them in.
+    requesterCookies.delete(victim);
+    const ownerIp = uniqueIp();
+    const owner = await requestCode(request, victim, { ip: ownerIp });
+    expect(owner.status(), await owner.text()).toBe(200);
+    const code = await readCode(victim, 4);
+    expect((await verifyCode(request, victim, code, API, { ip: ownerIp })).status()).toBe(200);
+  });
+
+  // The second review's probe CHK-3, turned round: viola+1@, viola+2@ and v.iola@ of one
+  // Gmail mailbox were three addresses with ten codes an hour each. They are one inbox now.
+  test('an inbox gets ten codes an hour however its address is spelt', async ({ request }) => {
+    const name = `viola${unique().replace(/[^a-z0-9]/g, '')}`;
+    const dotted = `${name.slice(0, 2)}.${name.slice(2)}`;
+    const spellings = [`${name}+1@gmail.com`, `${name}+2@gmail.com`, `${dotted}@gmail.com`, `${name.toUpperCase()}+x@GoogleMail.com`];
+    const sent: Record<string, number> = {};
+    for (const address of spellings) {
+      sent[address] = 0;
+      // Four networks, three requests each.
+      for (let n = 0; n < 4; n++) {
+        const ip = uniqueIp();
+        for (let k = 0; k < 3; k++) {
+          if ((await requestCode(request, address, { ip, browser: 'other' })).status() === 200) sent[address] += 1;
+        }
+      }
+    }
+    expect(Object.values(sent).reduce((a, b) => a + b, 0), JSON.stringify(sent)).toBe(10);
+    expect(sql(`SELECT COUNT(*) || '|' || COUNT(DISTINCT email) FROM email_login_codes WHERE inbox = '${name}@gmail.com'`)).toBe('10|1');
+
+    // Elsewhere a +tag is still the same inbox, but a dot may be another person.
+    const plain = `${name}@example.test`;
+    for (let n = 0; n < 4; n++) {
+      const ip = uniqueIp();
+      for (let k = 0; k < 3; k++) await requestCode(request, plain, { ip, browser: 'other' });
+    }
+    expect(sql(`SELECT COUNT(*) FROM email_login_codes WHERE inbox = '${plain}'`)).toBe('10');
+    expect((await requestCode(request, `${name}+games@example.test`, { browser: 'other' })).status()).toBe(429);
+    expect((await requestCode(request, `${dotted}@example.test`, { browser: 'other' })).status()).toBe(200);
+  });
+
+  // The second review's CHK-4: pupils behind one school address who mistyped shut the
+  // address out of email codes for a day (thirty misses a day per network). A network's miss
+  // at an address is now forgiven, for that count, once it signs in with a code for it.
+  test('a network\'s misses are forgiven once it signs in with a code for that address', async ({ request }) => {
+    test.setTimeout(180000);
+    const school = uniqueIp();
+    for (let pupil = 1; pupil <= 30; pupil++) {
+      const email = uniqueEmail(`pupil${pupil}`);
+      expect((await requestCode(request, email, { ip: school })).status(), `pupil ${pupil} asks`).toBe(200);
+      const code = await readCode(email);
+      // A slip of the finger, then the right code.
+      expect((await verifyCode(request, email, wrongCodeFor(code), API, { ip: school })).status()).toBe(401);
+      expect((await verifyCode(request, email, code, API, { ip: school })).status(), `pupil ${pupil} gets in`).toBe(200);
+      // The network's ten codes an hour: as if the class signed in over three hours.
+      if (pupil % 9 === 0) sql(`UPDATE email_login_codes SET created_at = created_at - INTERVAL '61 minutes' WHERE ip = '${school}'`);
+    }
+    expect(sql(`SELECT COUNT(*) || '|' || COUNT(*) FILTER (WHERE forgiven) FROM email_code_failures WHERE net_key = '${school}'`)).toBe('30|30');
+    // The thirty-first pupil still gets a code.
+    expect((await requestCode(request, uniqueEmail('pupil31'), { ip: school })).status()).toBe(200);
+    // Misses that nobody followed with a sign-in still count: thirty of them stop the network.
+    sql(`INSERT INTO email_code_failures (email, net_key) SELECT 'gaveup-' || g || '@example.test', '${school}' FROM generate_series(1, 30) g`);
+    const refused = await requestCode(request, uniqueEmail('pupil32'), { ip: school });
+    expect(refused.status()).toBe(429);
+    expect((await refused.json()).error).toBe('too_many_attempts');
+    // A forgiven miss still counts for its own address: the per-account ceiling is unchanged.
+    expect(sql(`SELECT COUNT(*) FROM email_code_failures WHERE net_key = '${school}' AND email LIKE 'pupil1-%' AND forgiven`)).toBe('1');
+  });
+
   // The review's probe REVIEW-D, as it was written: on the branch before this fix, 30 of 30
   // parallel requests were answered 200 and 30 codes stored.
   test('a burst of parallel code requests from one network stays inside the caps', async () => {
@@ -2563,6 +2828,13 @@ test.describe('Hardening: email codes', () => {
       const c = await burst(Array.from({ length: 30 }, () => ({ email: uniqueEmail('race-net'), ip: net })));
       expect(count(`ip = '${net}'`)).toBe(10);
       expect(c.filter((s) => s === 200)).toHaveLength(10);
+
+      // Thirty spellings of one inbox from thirty networks: still the inbox's ten (the lock is
+      // the inbox's, not the address's).
+      const name = `race${unique().replace(/[^a-z0-9]/g, '')}`;
+      const d = await burst(Array.from({ length: 30 }, (_, i) => ({ email: `${name}+${i}@example.test`, ip: uniqueIp() })));
+      expect(count(`inbox = '${name}@example.test'`)).toBe(10);
+      expect(d.filter((s) => s === 200)).toHaveLength(10);
     } finally {
       await api.stop();
     }
