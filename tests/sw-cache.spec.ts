@@ -77,6 +77,9 @@ test.beforeEach(async ({ context }) => {
 });
 
 test('signed in, then signed out: nothing user-specific is in Cache Storage at either point', async ({ page }) => {
+  // A sign-in and six page loads; the first test of a run also waits for the dev server's
+  // first compile of each page.
+  test.setTimeout(90_000);
   const email = `swcache-${Date.now().toString(36)}${Math.random().toString(36).slice(2, 8)}@example.test`;
   await page.goto('/');
   await underWorker(page);
