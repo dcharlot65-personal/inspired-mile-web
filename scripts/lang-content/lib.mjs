@@ -1,0 +1,87 @@
+// Shared by build.mjs and check.mjs: the entity table, and the name of an entity in a language.
+import { readFileSync, existsSync } from 'node:fs';
+import { dirname, join } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+export const HERE = dirname(fileURLToPath(import.meta.url));
+export const ROOT = join(HERE, '..', '..');
+export const LANGS = ['es', 'fr', 'de', 'it', 'pt', 'pl', 'ru', 'ar', 'hi', 'zh', 'ja', 'ko', 'vi', 'th', 'id'];
+/** Languages written in the Latin alphabet: an English name can stand in one of these, never in the others. */
+export const LATIN = new Set(['es', 'fr', 'de', 'it', 'pt', 'pl', 'vi', 'id']);
+
+export const wikidata = JSON.parse(readFileSync(join(HERE, 'wikidata-labels.json'), 'utf8'));
+export const entities = wikidata.entities;
+
+export function readTsv(file) {
+  if (!existsSync(file)) return [];
+  return readFileSync(file, 'utf8').split('\n').filter((l) => l.trim() && !l.startsWith('#')).map((l) => l.split('\t'));
+}
+
+/** key -> [English names as the game writes them] */
+export const gameNames = Object.fromEntries(readTsv(join(HERE, 'entities.tsv')).map(([key, , names]) => [key, names.split('|')]));
+
+/** picks.tsv: key, lang, name, note. A name chosen by hand; it must be found in a source (checked below). */
+const picks = new Map(readTsv(join(HERE, 'picks.tsv')).map(([key, lang, name, note]) => [`${key}/${lang}`, { name, note: note ?? '' }]));
+
+const tokens = (s) => s.split(/[\s·・]+/u).filter(Boolean);
+
+function labelOf(e, lang) {
+  const L = e.labels;
+  const raw = lang === 'zh' ? L['zh-hans'] ?? L['zh-cn'] ?? L.zh : lang === 'pt' ? L.pt ?? L['pt-br'] : L[lang];
+  // A label should not carry a disambiguator, but some do: "Polonio (Hamlet)", "Enrique VIII (teatro)".
+  return raw?.replace(/\s*[(（][^)）]*[)）]\s*$/u, '');
+}
+
+/** A name standing alone (a quiz option) starts with a capital where the script has capitals. */
+export const ucfirst = (s) => s.charAt(0).toLocaleUpperCase() + s.slice(1);
+
+/** Everything a source says this entity is called in a language. */
+export function sourcesOf(key, lang) {
+  const e = entities[key];
+  const out = [];
+  const add = (v, where) => v && out.push({ value: v, where });
+  for (const code of lang === 'zh' ? ['zh-hans', 'zh-cn', 'zh', 'zh-hant'] : lang === 'pt' ? ['pt', 'pt-br'] : [lang]) {
+    add(e.labels[code], `label (${code})`);
+    for (const a of e.aliases?.[code] ?? []) add(a, `alias (${code})`);
+  }
+  add(e.sitelinks?.[lang], `${lang}.wikipedia title`);
+  if (LATIN.has(lang)) add(e.labels.mul, 'label (mul)');
+  return out;
+}
+
+/**
+ * The name of an entity in a language, and how it was arrived at.
+ *   how: 'label'      the Wikidata label, whole
+ *        'part'       part of the label: the same words the English game name is of the English label
+ *        'pick'       chosen by hand in picks.tsv, and found in a label, alias or Wikipedia title
+ *        'unsourced'  chosen by hand in picks.tsv, in no source we hold (listed in the provenance file)
+ *        'mul'        Wikidata's language-neutral label (Latin-alphabet languages only)
+ *        'english'    no label in this language: the English name stands (Latin alphabet), or is
+ *                     left in Latin letters (other scripts) rather than transliterated by guesswork
+ */
+export function nameOf(key, lang, which = 0) {
+  const e = entities[key];
+  if (!e) throw new Error(`no such entity: ${key}`);
+  const game = gameNames[key][which] ?? gameNames[key][0];
+  if (lang === 'en') return { name: game, how: 'english' };
+  const pick = picks.get(`${key}/${lang}`) ?? picks.get(`${key}#${which}/${lang}`);
+  if (pick) {
+    const found = sourcesOf(key, lang).find((s) => s.value.toLocaleLowerCase().includes(pick.name.toLocaleLowerCase()));
+    return { name: pick.name, how: found ? 'pick' : 'unsourced', where: found?.where, note: pick.note };
+  }
+  const label = labelOf(e, lang);
+  const enLabel = e.labels.en ?? '';
+  if (label) {
+    if (enLabel === game || enLabel === game.replace(/^The /, '')) return { name: label, how: 'label' };
+    // The English label says more than the game does ("Prince Hamlet" for "Hamlet"): take the same words.
+    const en = tokens(enLabel), g = tokens(game), mine = tokens(label);
+    const at = en.findIndex((_, i) => g.every((w, j) => en[i + j] === w));
+    if (at >= 0 && mine.length === en.length) {
+      const sep = label.includes('・') ? '・' : label.includes('·') ? '·' : ' ';
+      return { name: mine.slice(at, at + g.length).join(sep), how: 'part', where: label };
+    }
+    return { name: label, how: 'label', check: `English label is "${enLabel}", the game says "${game}"` };
+  }
+  if (LATIN.has(lang) && e.labels.mul && (e.labels.mul === game || e.labels.mul === enLabel)) return { name: game, how: 'mul' };
+  return { name: game, how: 'english' };
+}
