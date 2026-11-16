@@ -43,6 +43,8 @@ const quotations = (s: string) => [...s.matchAll(/"([^"]+)"/g)].map((m) => m[1].
 // In quotes in the English, but a nickname or a critic's term, not Shakespeare's words: these are translated.
 const NOT_A_QUOTATION = new Set(['The Scottish Play', 'Seven Ages of Man']);
 
+const roman = (n: number) => [['M', 1000], ['CM', 900], ['D', 500], ['CD', 400], ['C', 100], ['XC', 90], ['L', 50], ['XL', 40], ['X', 10], ['IX', 9], ['V', 5], ['IV', 4], ['I', 1]].reduce((acc, [r, v]) => { while (n >= (v as number)) { acc += r; n -= v as number; } return acc; }, '');
+
 /** A language's trivia: every question and option present, options distinct, quotations and numbers intact. */
 export function triviaProblems(l: string, m: Messages | undefined): string[] {
   if (!m) return [`${l}: no trivia file`];
@@ -61,7 +63,9 @@ export function triviaProblems(l: string, m: Messages | undefined): string[] {
     en.options.forEach((o, i) => {
       // An option that is a number, a year, a rhyme scheme or a quoted line is the same in every language.
       if (/^[\dA-Z ]+$/.test(o) && options[i] !== o) out.push(`${l}: question ${n} option ${i} should be "${o}", is "${options[i]}"`);
-      for (const num of o.match(/\d+/g) ?? []) if (!options[i].includes(num)) out.push(`${l}: question ${n} option ${i} lost the number ${num}`);
+      // A number of two digits or more is kept, in digits or as a Roman numeral ("siglo XVI"); a lone
+      // digit may become a word or an ordinal ("première partie").
+      for (const num of o.match(/\d{2,}/g) ?? []) if (!options[i].includes(num) && !options[i].includes(roman(Number(num)))) out.push(`${l}: question ${n} option ${i} lost the number ${num}`);
       for (const quote of quotations(o)) if (!options[i].includes(quote)) out.push(`${l}: question ${n} option ${i} changed the quotation "${quote}"`);
     });
   });
@@ -140,8 +144,8 @@ describe('page areas of the play content', () => {
       const core = await loadMessages(l);
       const pg = (await area('playground', l))!;
       expect([l, pg['pg.meta.title']]).toEqual([l, core['nav.playground']]);
-      // "Collect" and "Close" are one word each wherever they appear.
-      expect([l, pg['pg.close']]).toEqual([l, core['pwa.dismiss']]);
+      // Closing a panel is one word wherever it appears (English says Close here and Dismiss on the install banner).
+      if (l !== 'en') expect([l, pg['pg.close']]).toEqual([l, core['pwa.dismiss']]);
     }
   });
 });

@@ -10,3 +10,4 @@ One line per finished step, newest last. Whoever continues this branch starts he
 - 2026-11-16 trivia written for pl, ru.
 - 2026-11-16 trivia written for zh, ja, ko. Left: ar, hi, vi, th, id; then story (all 15), challenges, tests, QA.
 - 2026-11-16 trivia written for ar, hi, vi, th, id: all 15 languages have trivia. Left: story (15), challenges, tests, provenance doc, QA pass.
+- 2026-11-16 story written in all 15; tests written (play-areas.test.ts, tests/play-i18n.spec.ts). Left: run suites, challenges from Wikisource, provenance doc, spelling/back-translation pass.
