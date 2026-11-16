@@ -16,7 +16,7 @@ ROOT = Path(__file__).resolve().parents[2]
 TRADITION = {
     'Legendary': 'a contemporary street-art mural: bold spray-paint colour fields, crisp stencil edges and painterly oil highlights',
     'Montague': 'an Italian Renaissance fresco: soft plaster texture, balanced figures, gentle earth pigments and architectural depth',
-    'Capulet': 'an Art Nouveau poster: flowing whiplash lines, flat decorative colour, floral ornament and elegant outlined figures',
+    'Capulet': 'an Art Nouveau poster: flowing whiplash lines, flat decorative colour, floral ornament within the scene and elegant outlined figures, the picture filling the whole image with no ornamental border',
     'Danish Court': 'a German Expressionist woodcut: stark angular shapes, heavy black cuts, raw emotion and limited colour',
     'Forest of Arden': 'the Haitian painting tradition: vivid saturated colour, lush stylised foliage, flattened perspective and joyful pattern',
     'Verona Court': 'an Ethiopian Orthodox icon painting: bold flat colour, strong dark outlines, large expressive eyes and patterned borders within the scene',
@@ -40,7 +40,7 @@ PAL = {'gold': 'gold and amber', 'crimson': 'deep crimson', 'rose': 'rose red', 
 STYLE = ('Painted in the tradition of {tradition}. Portrait orientation, colour dominated by {palette}. '
          '{subject} {scene} {cast}'
          'Everyone wears long, modest clothing that covers shoulders, chest, midriff and legs; the image is suitable for all ages. '
-         'Every blade is clean bright steel and every surface is clean and dry; drama comes from light, shadow and expression. '
+         'Every surface is clean and dry; drama comes from light, shadow and expression. No weapon appears unless the scene itself names one. {era}'
          'No writing appears on any object, label, page or wall. The painting runs to all four edges of the image. '
          'No text, no lettering, no border, no rounded corners, no frame, no watermark, no signature.')
 
@@ -56,6 +56,8 @@ for o in re.findall(r"\{\s*\n\s*id: '[^']+'.*?\n  \},", body, re.S):
     cols = [PAL[x] for x in re.findall(r'(?:from|to)-([a-z]+)-\d+', c['gradient'] or '') if x in PAL]
     # Quoted words in a scene description get painted as lettering, so they are taken out.
     scene = re.sub(r'\s*["\u201c][^"\u201d]{1,60}["\u201d]', '', c['scene'])
+    # Sentences about inscriptions, labels or messages get painted as garbled lettering: drop them.
+    scene = ' '.join(x for x in re.split(r'(?<=[.!?])\s+', scene) if not re.search(r'\b(inscri\w+|labell?ed|label|reads?|written|message|letters?|words?|vow)\b', x, re.I)) or scene
     scene = re.sub(r'\b[Bb]lood-?stained\b', 'shadowed', scene)
     scene = re.sub(r'\b(dripping|drips?|gore|wounds?|bleeding)\b', 'gleaming', scene)
     scene = re.sub(r'\b[Bb]lood(y|ied)?\b', 'crimson light', scene)
@@ -72,8 +74,11 @@ for o in re.findall(r"\{\s*\n\s*id: '[^']+'.*?\n  \},", body, re.S):
                 f"Anyone else the scene does include comes from a different part of the world than {c['name']}. ")
     else:
         subject = f"The subject is an object: {c['name']}, shown as a still life with no people."
+        # Lore sentences about an object get painted onto it as a label, so only the first, visual sentence is kept.
+        scene = re.split(r'(?<=[.!?])\s+', scene)[0] + ' The object is plain: it carries no label, tag, engraving or inscription.'
     out.append({'id': c['id'], 'name': c['name'], 'house': c['house'], 'cast': who,
                 'prompt': STYLE.format(tradition=TRADITION[c['house']], palette=' and '.join(dict.fromkeys(cols)) or 'deep jewel tones',
-                                       subject=subject, scene=scene, cast=cast)})
+                                       subject=subject, scene=scene, cast=cast,
+                                       era='' if c['id'] == 'SM-001' else "The setting belongs to the character's own historical or mythic era, with no modern objects. ")})
 (ROOT / 'scripts/art/prompts.json').write_text(json.dumps(out, indent=1, ensure_ascii=False))
 print(len(out), 'prompts;', len({c['house'] for c in out}), 'houses')
