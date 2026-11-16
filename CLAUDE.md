@@ -104,7 +104,8 @@ left behind by a killed run is found by its port: `lsof -nP -iTCP:<port> -sTCP:L
   unit tests (`src/i18n/quality.test.ts`) fail on: a count without its plural forms, a string
   left in English that is not in `docs/language/allow/untranslated.json`, wrong quotation marks
   or punctuation for the language (French no-break spaces, Spanish ¿ ¡, full-width punctuation in
-  Chinese and Japanese, the Hindi danda), hidden or bidirectional control characters, and a string
+  Chinese and Japanese, the Hindi danda, Vietnamese tone marks placed as Android places them:
+  khoá, not khóa), hidden or bidirectional control characters, and a string
   that strays from `docs/language/glossary.json` (one word per term; form names with their
   source). LanguageTool, Hunspell, back-translation and the second-model review run on the build
   host: `bash scripts/lang/run.sh selftest|grammar|meaning|review`.

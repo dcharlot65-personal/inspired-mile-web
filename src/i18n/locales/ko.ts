@@ -101,7 +101,7 @@ const ko: Record<string, string> = {
   'curse.short-lines.theirs.char': '상대의 행은 어느 것도 {n}자를 넘을 수 없어요.',
 
   // 가문
-  'house.montague.why': '머큐쇼의 재빠른 혀는 행 한가운데서 운을 맞춰요.',
+  'house.montague.why': '머큐시오의 재빠른 혀는 행 한가운데서 운을 맞춰요.',
   'house.verona-court.why': '궁정은 당신에게 던져진 말 한 마디 한 마디를 저울질해요.',
   'house.the-tempest.why': '폭풍은 터질 때까지 커져요.',
   'house.legendary.why': 'Sonnet Man은 한 가지 운을 끝까지 타고 가요.',

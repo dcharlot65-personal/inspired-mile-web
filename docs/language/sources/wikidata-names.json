@@ -1,0 +1,238 @@
+{
+ "source": "Wikidata, wbgetentities (labels, aliases, sitelinks)",
+ "licence": "CC0 1.0",
+ "fetched": "2026-11-16T18:59:44.792Z",
+ "names": {
+  "shakespeare": {
+   "qid": "Q692",
+   "english": null,
+   "langs": {
+    "es": {
+     "label": null,
+     "aliases": [
+      "El Bardo"
+     ],
+     "sitelink": "William Shakespeare"
+    },
+    "fr": {
+     "label": null,
+     "aliases": [],
+     "sitelink": "William Shakespeare"
+    },
+    "de": {
+     "label": null,
+     "aliases": [],
+     "sitelink": "William Shakespeare"
+    },
+    "it": {
+     "label": null,
+     "aliases": [],
+     "sitelink": "William Shakespeare"
+    },
+    "pt": {
+     "label": null,
+     "aliases": [],
+     "sitelink": "William Shakespeare"
+    },
+    "pt-br": {
+     "label": null,
+     "aliases": [],
+     "sitelink": null
+    },
+    "pl": {
+     "label": "William Shakespeare",
+     "aliases": [
+      "Szekspir",
+      "William Szekspir",
+      "Wilhelm Szekspir",
+      "Wieszcz z Awonu"
+     ],
+     "sitelink": "William Shakespeare"
+    },
+    "ru": {
+     "label": "Уильям Шекспир",
+     "aliases": [
+      "У. Шекспир",
+      "Шекспир",
+      "Шекспир, Уильям",
+      "Вильям Шекспир"
+     ],
+     "sitelink": "Шекспир, Уильям"
+    },
+    "ar": {
+     "label": "وليم شكسبير",
+     "aliases": [
+      "شكسبير"
+     ],
+     "sitelink": "وليم شكسبير"
+    },
+    "hi": {
+     "label": "विलियम शेक्सपीयर",
+     "aliases": [],
+     "sitelink": "विलियम शेक्सपीयर"
+    },
+    "zh": {
+     "label": "威廉·莎士比亚",
+     "aliases": [
+      "莎士比亞",
+      "莎士比亚",
+      "莎翁"
+     ],
+     "sitelink": "威廉·莎士比亚"
+    },
+    "zh-hans": {
+     "label": "威廉·莎士比亚",
+     "aliases": [],
+     "sitelink": null
+    },
+    "zh-cn": {
+     "label": "威廉·莎士比亚",
+     "aliases": [],
+     "sitelink": null
+    },
+    "ja": {
+     "label": "ウィリアム・シェイクスピア",
+     "aliases": [
+      "シェークスピーヤ",
+      "シェークスピア",
+      "シェイクスピア",
+      "ウィリアム・シェークスピア",
+      "沙吉比亜",
+      "沙翁",
+      "シェークスペーヤ"
+     ],
+     "sitelink": "ウィリアム・シェイクスピア"
+    },
+    "ko": {
+     "label": "윌리엄 셰익스피어",
+     "aliases": [
+      "셰익스피어"
+     ],
+     "sitelink": "윌리엄 셰익스피어"
+    },
+    "vi": {
+     "label": "William Shakespeare",
+     "aliases": [
+      "Uy-li-am Sếch-xpia",
+      "Sếch-xpia"
+     ],
+     "sitelink": "William Shakespeare"
+    },
+    "th": {
+     "label": "วิลเลียม เชกสเปียร์",
+     "aliases": [],
+     "sitelink": "วิลเลียม เชกสเปียร์"
+    },
+    "id": {
+     "label": null,
+     "aliases": [],
+     "sitelink": "William Shakespeare"
+    }
+   }
+  },
+  "mercutio": {
+   "qid": "Q1767900",
+   "english": null,
+   "langs": {
+    "es": {
+     "label": "Mercucio",
+     "aliases": [],
+     "sitelink": "Mercucio"
+    },
+    "fr": {
+     "label": "Mercutio",
+     "aliases": [],
+     "sitelink": "Mercutio"
+    },
+    "de": {
+     "label": "Mercutio",
+     "aliases": [],
+     "sitelink": "Mercutio"
+    },
+    "it": {
+     "label": "Mercuzio",
+     "aliases": [],
+     "sitelink": "Mercuzio"
+    },
+    "pt": {
+     "label": null,
+     "aliases": [],
+     "sitelink": null
+    },
+    "pt-br": {
+     "label": null,
+     "aliases": [],
+     "sitelink": null
+    },
+    "pl": {
+     "label": "Merkucjo",
+     "aliases": [],
+     "sitelink": "Merkucjo"
+    },
+    "ru": {
+     "label": "Меркуцио",
+     "aliases": [],
+     "sitelink": "Меркуцио"
+    },
+    "ar": {
+     "label": "ماركيشيو",
+     "aliases": [],
+     "sitelink": "ماركيشيو"
+    },
+    "hi": {
+     "label": "मरकूशियो",
+     "aliases": [],
+     "sitelink": null
+    },
+    "zh": {
+     "label": "莫枯修",
+     "aliases": [
+      "茂丘西奧",
+      "默庫蒂奧"
+     ],
+     "sitelink": null
+    },
+    "zh-hans": {
+     "label": null,
+     "aliases": [],
+     "sitelink": null
+    },
+    "zh-cn": {
+     "label": "mercutio",
+     "aliases": [],
+     "sitelink": null
+    },
+    "ja": {
+     "label": null,
+     "aliases": [],
+     "sitelink": null
+    },
+    "ko": {
+     "label": "머큐시오",
+     "aliases": [
+      "머큐티오",
+      "머큐쇼",
+      "머큐소",
+      "메르쿠티오"
+     ],
+     "sitelink": null
+    },
+    "vi": {
+     "label": null,
+     "aliases": [],
+     "sitelink": null
+    },
+    "th": {
+     "label": null,
+     "aliases": [],
+     "sitelink": null
+    },
+    "id": {
+     "label": null,
+     "aliases": [],
+     "sitelink": null
+    }
+   }
+  }
+ }
+}

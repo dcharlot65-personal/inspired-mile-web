@@ -2079,6 +2079,140 @@
      "source": "Android (AOSP core, screen_lock): Kunci layar"
     }
    }
+  },
+  "shakespeare": {
+   "english": "Shakespeare",
+   "match": "\\bShakespeare",
+   "note": "A person's name, as Wikidata records it in the language (sources/wikidata-names.json, fetch-wikidata-names.mjs).",
+   "langs": {
+    "es": {
+     "term": "Shakespeare",
+     "source": "The name as the es Wikipedia article title writes it (William Shakespeare; Wikidata Q692, which has no separate es label)."
+    },
+    "fr": {
+     "term": "Shakespeare",
+     "source": "The name as the fr Wikipedia article title writes it (William Shakespeare; Wikidata Q692, which has no separate fr label)."
+    },
+    "de": {
+     "term": "Shakespeare",
+     "source": "The name as the de Wikipedia article title writes it (William Shakespeare; Wikidata Q692, which has no separate de label)."
+    },
+    "it": {
+     "term": "Shakespeare",
+     "source": "The name as the it Wikipedia article title writes it (William Shakespeare; Wikidata Q692, which has no separate it label)."
+    },
+    "pt": {
+     "term": "Shakespeare",
+     "source": "The name as the pt Wikipedia article title writes it (William Shakespeare; Wikidata Q692, which has no separate pt label)."
+    },
+    "pl": {
+     "term": "Szekspir",
+     "source": "Wikidata alias (Q692): Szekspir; the label is William Shakespeare."
+    },
+    "ru": {
+     "term": "Шекспир",
+     "source": "Wikidata label (Q692): Уильям Шекспир; Wikipedia article Шекспир, Уильям."
+    },
+    "ar": {
+     "term": "شكسبير",
+     "source": "Wikidata label (Q692): وليم شكسبير; Wikipedia article وليم شكسبير."
+    },
+    "hi": {
+     "term": "शेक्सपीयर",
+     "source": "Wikidata label (Q692): विलियम शेक्सपीयर; Wikipedia article विलियम शेक्सपीयर. Changed from शेक्सपियर to the label."
+    },
+    "zh": {
+     "term": "莎士比亚",
+     "source": "Wikidata label (Q692): 威廉·莎士比亚; Wikipedia article 威廉·莎士比亚."
+    },
+    "ja": {
+     "term": "シェイクスピア",
+     "source": "Wikidata label (Q692): ウィリアム・シェイクスピア; Wikipedia article ウィリアム・シェイクスピア."
+    },
+    "ko": {
+     "term": "셰익스피어",
+     "source": "Wikidata label (Q692): 윌리엄 셰익스피어; Wikipedia article 윌리엄 셰익스피어."
+    },
+    "vi": {
+     "term": "Shakespeare",
+     "source": "Wikidata label (Q692): William Shakespeare; Wikipedia article William Shakespeare."
+    },
+    "th": {
+     "term": "เชกสเปียร์",
+     "source": "Wikidata label (Q692): วิลเลียม เชกสเปียร์; Wikipedia article วิลเลียม เชกสเปียร์."
+    },
+    "id": {
+     "term": "Shakespeare",
+     "source": "The name as the id Wikipedia article title writes it (William Shakespeare; Wikidata Q692, which has no separate id label)."
+    }
+   }
+  },
+  "mercutio": {
+   "english": "Mercutio",
+   "match": "\\bMercutio",
+   "note": "A character's name, as Wikidata records it in the language (sources/wikidata-names.json). Where Wikidata has nothing, the entry says so.",
+   "langs": {
+    "es": {
+     "term": "Mercucio",
+     "source": "Wikidata label (Q1767900): Mercucio; Wikipedia article Mercucio."
+    },
+    "fr": {
+     "term": "Mercutio",
+     "source": "Wikidata label (Q1767900): Mercutio; Wikipedia article Mercutio."
+    },
+    "de": {
+     "term": "Mercutio",
+     "source": "Wikidata label (Q1767900): Mercutio; Wikipedia article Mercutio."
+    },
+    "it": {
+     "term": "Mercuzio",
+     "source": "Wikidata label (Q1767900): Mercuzio; Wikipedia article Mercuzio."
+    },
+    "pt": {
+     "term": "Mercúcio",
+     "source": "Not sourced: Wikidata has no pt label or alias that contains it (Q1767900)."
+    },
+    "pl": {
+     "term": "Merkuc",
+     "source": "Wikidata label (Q1767900): Merkucjo; Wikipedia article Merkucjo. Stem Merkuc, so the genitive Merkucja passes."
+    },
+    "ru": {
+     "term": "Меркуцио",
+     "source": "Wikidata label (Q1767900): Меркуцио; Wikipedia article Меркуцио."
+    },
+    "ar": {
+     "term": "ماركيشيو",
+     "source": "Wikidata label (Q1767900): ماركيشيو; Wikipedia article ماركيشيو. Changed from مركوشيو to the label."
+    },
+    "hi": {
+     "term": "मरकूशियो",
+     "source": "Wikidata label (Q1767900): मरकूशियो. Changed from मर्क्यूशियो to the label."
+    },
+    "zh": {
+     "term": "茂丘西奥",
+     "source": "Wikidata alias (Q1767900): 茂丘西奧, written in simplified characters; kept over the label 莫枯修, which has no Simplified-Chinese (zh-hans) counterpart, because it is the form the game already used. For a native reader."
+    },
+    "ja": {
+     "term": "マキューシオ",
+     "source": "Not sourced: Wikidata has no ja label or alias that contains it (Q1767900)."
+    },
+    "ko": {
+     "term": "머큐시오",
+     "source": "Wikidata label (Q1767900): 머큐시오. Changed from the alias 머큐쇼 to the label."
+    },
+    "vi": {
+     "term": "Mercutio",
+     "source": "Not sourced in this language (Wikidata Q1767900 has no label); the original name, as the English label writes it."
+    },
+    "th": {
+     "term": "เมอร์คิวชิโอ",
+     "source": "Not sourced: Wikidata has no th label or alias that contains it (Q1767900)."
+    },
+    "id": {
+     "term": "Mercutio",
+     "source": "Not sourced in this language (Wikidata Q1767900 has no label); the original name, as the English label writes it."
+    }
+   }
   }
  },
  "names": {

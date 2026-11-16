@@ -101,7 +101,7 @@ const ar: Record<string, string> = {
   'curse.short-lines.theirs.char': 'لا يجوز أن يزيد أي سطر من أسطر خصمك على {n, plural, zero {# حرف} one {حرف واحد} two {حرفين} few {# أحرف} many {# حرفًا} other {# حرف}}.',
 
   // البيوت
-  'house.montague.why': 'لسان مركوشيو السريع يقفّي في منتصف السطر.',
+  'house.montague.why': 'لسان ماركيشيو السريع يقفّي في منتصف السطر.',
   'house.verona-court.why': 'البلاط يزن كل كلمة قيلت ضدك.',
   'house.the-tempest.why': 'العاصفة تشتد حتى تنفجر.',
   'house.legendary.why': 'Sonnet Man يركب قافية واحدة حتى النهاية.',
