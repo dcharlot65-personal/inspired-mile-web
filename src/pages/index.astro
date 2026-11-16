@@ -63,12 +63,14 @@ const houseCount = new Set(CARD_CATALOG.filter((c) => c.type === 'Character').ma
           </div>
 
           <div class="flex items-start gap-6 sm:gap-8 mt-10 text-sm text-obsidian-400">
-            <div class="min-w-0">
+            <!-- The first two columns keep their longest word (in Japanese, their longest phrase: 家門
+                 split one character per line); the long third one gives way. -->
+            <div class="min-w-min">
               <span class="block text-2xl font-display font-bold text-gold-400" data-num={CARD_CATALOG.length}>{num(CARD_CATALOG.length)}</span>
               <T k="home.stat.cards" />
             </div>
             <div class="w-px self-stretch bg-obsidian-700"></div>
-            <div class="min-w-0">
+            <div class="min-w-min">
               <span class="block text-2xl font-display font-bold text-gold-400" data-num={houseCount}>{num(houseCount)}</span>
               <T k="home.stat.houses" />
             </div>
