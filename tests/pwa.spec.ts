@@ -32,7 +32,8 @@ export async function pipeline(task, id, opts) {
   return generator;
 }
 export class TextStreamer {}
-export const env = {};
+// loadTransformers() (src/lib/model-runtime.ts) refuses a library without these settings.
+export const env = { backends: { onnx: { wasm: {} } } };
 `;
 
 interface StorageMock {
