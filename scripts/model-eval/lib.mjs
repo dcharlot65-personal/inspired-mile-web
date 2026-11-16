@@ -219,6 +219,9 @@ export function summarizeWrite(cell, lidOf) {
       inLanguageWilson: wilson(m.filter((r) => r.inLang).length, n),
       commentary: m.filter((r) => r.comment.length).length,
       commentaryNarrow: m.filter((r) => r.commentNarrow.length).length,
+      // An upper bound for the game's rhyme check, which is by spelling and misses some real
+      // rhymes ("hear / cheer"): the plays that kept everything but rhyme.
+      formKeptIfRhymeWaived: m.filter((r) => r.formKept || (r.checks ?? []).every((c) => c.met || /^rhyme-/.test(c.id))).length,
     };
   };
   const drafts = cell.plays.flatMap((p) => p.drafts);

@@ -15,7 +15,7 @@
 import { existsSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
-import { LANGS, TIERS, derive } from './lib.mjs';
+import { CRITERIA, LANGS, TIERS, derive, wilson } from './lib.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
 const DIR = join(ROOT, 'docs', 'language', 'model-eval');
@@ -78,16 +78,56 @@ for (const tier of TIERS) {
       ? `| ${l} | ${j.pairWins}/${j.pairs}${ci(j.pairWilson)} | ${j.better}/${j.criteria} = ${pct(j.better, j.criteria)}${ci(j.criterionWilson)} | ${j.split} | ${j.worse} | ${j.injectionPairsLost} of ${j.byKind.injection?.pairs ?? 0} | ${d.ok ? '**yes**' : `no: ${d.why.join('; ')}`} |`
       : `| ${l} | not measured | | | | | no: not measured |`);
   }
-  out.push('', `### ${LABEL[tier]}: writing`, '', '| Language | Plays | A verse came back | In the language | Form kept in full | Mean form points (of 20) | Mean craft | Commentary | Tokens/s | Writes? |', '|---|---|---|---|---|---|---|---|---|---|');
+  out.push('', `<details><summary>${LABEL[tier]}: judging by criterion (pairs where that criterion went to the better verse, of 12)</summary>`, '', '| Language | Wordplay | Allusion | Flow | Wit |', '|---|---|---|---|---|');
+  for (const l of LANGS) {
+    const j = table[tier][l].judge;
+    out.push(j ? `| ${l} | ${CRITERIA.map((c) => `${j.byCriterion[c].better}/${j.byCriterion[c].n}${ci(wilson(j.byCriterion[c].better, j.byCriterion[c].n))}`).join(' | ')} |` : `| ${l} | not measured | | | |`);
+  }
+  out.push('', '</details>');
+  out.push('', `### ${LABEL[tier]}: writing`, '', '| Language | Plays | A verse came back | In the language | Form kept in full | Mean form points (of 20) | Mean craft | Commentary (narrow rules) | Tokens/s | Writes? |', '|---|---|---|---|---|---|---|---|---|---|');
   for (const l of LANGS) {
     const { write: w, writes: d } = table[tier][l];
     out.push(w
-      ? `| ${l} | ${w.plays} | ${w.modelSourced} | ${w.inLanguage} = ${pct(w.inLanguage, w.plays)}${ci(w.inLanguageWilson)} | ${w.formKept} = ${pct(w.formKept, w.plays)}${ci(w.formKeptWilson)} | ${w.meanFormPoints?.toFixed(1) ?? '–'} | ${w.meanCraft?.toFixed(1) ?? '–'} | ${w.commentary} | ${w.tokensPerSecond?.toFixed(1) ?? '–'} | ${d.ok ? '**yes**' : `no: ${d.why.join('; ')}`} |`
+      ? `| ${l} | ${w.plays} | ${w.modelSourced} | ${w.inLanguage} = ${pct(w.inLanguage, w.plays)}${ci(w.inLanguageWilson)} | ${w.formKept} = ${pct(w.formKept, w.plays)}${ci(w.formKeptWilson)} | ${w.meanFormPoints?.toFixed(1) ?? '–'} | ${w.meanCraft?.toFixed(1) ?? '–'} | ${w.commentary} (${w.commentaryNarrow}) | ${w.tokensPerSecond?.toFixed(1) ?? '–'} | ${d.ok ? '**yes**' : `no: ${d.why.join('; ')}`} |`
       : `| ${l} | not measured | | | | | | | | no: not measured |`);
   }
+  out.push('', `<details><summary>${LABEL[tier]}: form kept in full, by form and by difficulty</summary>`, '');
+  for (const l of LANGS) {
+    const w = table[tier][l].write;
+    if (!w) continue;
+    const forms = Object.entries(w.byForm).map(([f, g]) => `${f} ${g.formKept}/${g.plays}`).join(', ');
+    const diffs = ['apprentice', 'player', 'master'].filter((x) => w.byDifficulty[x]).map((x) => `${x} ${w.byDifficulty[x].formKept}/${w.byDifficulty[x].plays} (craft ${w.byDifficulty[x].meanCraft?.toFixed(1)})`).join(', ');
+    out.push(`- **${l}**: ${forms}. By difficulty: ${diffs}.`);
+  }
+  out.push('', '</details>');
 }
 out.push('', '### What follows', '', '| Model | Writes in | Judges in |', '|---|---|---|');
 for (const tier of TIERS) out.push(`| ${LABEL[tier]} | ${models[tier].writesIn.join(', ') || 'none'} | ${models[tier].judgesIn.join(', ') || 'none'} |`);
+// The commentary rules were widened after the first cells (scripts/model-eval/lib.mjs says why):
+// say which decisions the narrow rules, committed before any cell ran, would have changed.
+const narrowFlips = [];
+for (const tier of TIERS) for (const l of LANGS) {
+  const w = table[tier][l].write;
+  if (!w || table[tier][l].writes.ok) continue;
+  const others = table[tier][l].writes.why.filter((x) => !x.startsWith('commentary'));
+  if (!others.length && w.commentaryNarrow / w.plays <= thresholds.write.commentaryAtMost) narrowFlips.push(`${LABEL[tier]} in ${l}`);
+}
+out.push('', `Under the commentary rules committed before any cell ran (the narrow count in brackets above), ${narrowFlips.length ? `these would also write: ${narrowFlips.join(', ')}` : 'no decision would be different'}.`);
+// The rhyme check is the game's own and goes by spelling; a refusal it should not have made can
+// only lower "form kept". Which refusals to write could it have caused?
+const rhymeFlips = [];
+for (const tier of TIERS) for (const l of LANGS) {
+  const w = table[tier][l].write;
+  if (!w || table[tier][l].writes.ok) continue;
+  const others = table[tier][l].writes.why.filter((x) => !x.startsWith('kept the form'));
+  if (!others.length && w.formKeptIfRhymeWaived / w.plays >= thresholds.write.formKeptAtLeast) rhymeFlips.push(`${LABEL[tier]} in ${l} (${w.formKeptIfRhymeWaived}/${w.plays} with rhyme waived)`);
+}
+out.push('', `The game's rhyme check goes by spelling and refuses some real rhymes ("hear / cheer", "fade / betrayed"). Waiving every rhyme check (an upper bound on what a perfect one could add), ${rhymeFlips.length ? `these refusals could change: ${rhymeFlips.join(', ')}` : 'no refusal to write would change: each fails for more than rhyme'}.`);
+out.push('', '### Cells', '', '| Model | Judging measured | Writing measured |', '|---|---|---|');
+for (const tier of TIERS) out.push(`| ${LABEL[tier]} | ${measured[tier].judge.join(', ') || 'none'} | ${measured[tier].write.join(', ') || 'none'} |`);
+const dates = cells.map((c) => c.date).sort();
+const commits = [...new Set(cells.map((c) => c.commit))];
+if (cells.length) out.push('', `${cells.length} cells, run from ${dates[0].slice(0, 16).replace('T', ' ')} to ${dates.at(-1).slice(0, 16).replace('T', ' ')} UTC, from ${commits.length === 1 ? 'one snapshot of the code' : `${commits.length} snapshots of the code`} (${commits.map((c) => c?.slice(0, 8)).join(', ')}); Transformers.js ${[...new Set(cells.map((c) => c.transformers))].join(', ')}; GPU ${[...new Set(cells.map((c) => `${c.gpu?.vendor} ${c.gpu?.architecture}`))].join(', ')}.`);
 
 const docFile = join(ROOT, 'docs', 'language', 'MODEL-EVAL.md');
 const START = '<!-- table:start -->';

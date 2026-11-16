@@ -329,6 +329,19 @@ describe('the writing decision', () => {
     expect(s.commentary).toBe(2);
     expect(decideWrite(s, thresholds.write, 1).ok).toBe(false);
   });
+  it('bounds what the spelling-based rhyme check can cost: only plays that failed on rhyme alone are added back', () => {
+    const checks = (...failed: string[]) => ['lines', 'rhyme-1-2', 'rhyme-3-4'].map((id) => ({ id, met: !failed.includes(id) }));
+    const plays = [
+      play({ formKept: false, ...({ checks: checks('rhyme-1-2') } as object) }),
+      play({ formKept: false, ...({ checks: checks('rhyme-1-2', 'rhyme-3-4') } as object) }),
+      play({ formKept: false, ...({ checks: checks('lines', 'rhyme-1-2') } as object) }),
+      play({ formKept: false, ...({ checks: checks('lines') } as object) }),
+      play({ ...({ checks: checks() } as object) }),
+    ];
+    const s = summarizeWrite(cell(plays), en);
+    expect(s.formKept).toBe(1);
+    expect(s.formKeptIfRhymeWaived).toBe(3);
+  });
   it('fails a writer that rarely keeps the form, one that returns nothing, and one measured too little', () => {
     expect(decideWrite(summarizeWrite(cell(Array.from({ length: 10 }, (_, i) => play({ formKept: i < 2 }))), en), thresholds.write, 1).ok).toBe(false);
     expect(decideWrite(summarizeWrite(cell(Array.from({ length: 10 }, (_, i) => play(i < 3 ? { source: 'written' } : {}))), en), thresholds.write, 1).ok).toBe(false);
