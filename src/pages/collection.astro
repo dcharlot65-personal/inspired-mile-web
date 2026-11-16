@@ -254,7 +254,7 @@ import { CARD_CATALOG, RARITY_COLORS } from '../lib/cards';
     } from '../lib/variants';
     import { CARD_CATALOG, getCardById } from '../lib/cards';
     import { initAudio, isInitialized, playMusic, playSfx } from '../lib/audio-manager';
-    import { hasARModel, getARModel, isARLikelySupported } from '../lib/ar-viewer';
+    import { hasARModel, getARModel, isARLikelySupported, loadModelViewer } from '../lib/ar-viewer';
     import { CHARACTER_ABILITIES, ITEM_EFFECTS, getActiveSynergies, DECK_RULES, type Deck } from '../lib/battle-rules';
     import { getSavedDecks, saveDeck, deleteDeck, setActiveDeck, getActiveDeckName } from '../lib/deck-manager';
 
@@ -469,13 +469,7 @@ import { CARD_CATALOG, RARITY_COLORS } from '../lib/cards';
     const modalContent = document.getElementById('modal-content')!;
     const modalClose = document.getElementById('modal-close')!;
     const modalBackdrop = document.getElementById('modal-backdrop')!;
-    let modelViewerLoaded = false;
 
-    async function loadModelViewer() {
-      if (modelViewerLoaded) return;
-      await import('@google/model-viewer');
-      modelViewerLoaded = true;
-    }
 
     function openCardModal(cardId: string) {
       const card = getCardById(cardId);
@@ -552,7 +546,7 @@ import { CARD_CATALOG, RARITY_COLORS } from '../lib/cards';
       modal.classList.remove('hidden');
 
       // Load model-viewer if needed
-      if (arModel) loadModelViewer();
+      if (arModel) loadModelViewer().catch((err) => console.error('[collection] 3D viewer failed to load', err));
 
       // Add-to-deck button
       document.getElementById('modal-add-to-deck')?.addEventListener('click', () => {

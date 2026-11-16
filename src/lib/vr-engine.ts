@@ -202,6 +202,14 @@ export class VRCardEngine {
           sessionMode: 'immersive-vr',
         },
         disableTeleportation: false,
+        // Same switches as the Theatre (src/lib/xr/theatre.ts). Babylon's defaults download
+        // hand models and a material from assets.babylonjs.com and controller models from
+        // controllers.babylonjs.com when a headset session starts. Nothing here may fetch
+        // from a third party at play time. Aiming and teleporting use the pointer ray,
+        // which is drawn locally; a pinch still selects.
+        disableHandTracking: true,
+        disableNearInteraction: true,
+        inputOptions: { doNotLoadControllerMeshes: true, disableOnlineControllerRepository: true },
       });
 
       this.options.onStatusChange?.('WebXR ready — click "Enter VR" button');
