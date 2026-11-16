@@ -3,7 +3,7 @@
 // translation named in scripts/lang-content/challenges/sources.tsv; a challenge with no such
 // line in this language is left out (docs/language/CONTENT-PROVENANCE.md).
 const messages: Record<string, string> = {
-  'challenges.ids': "15,20,27,42,43,57,63,84,4,35,6,2,19,12,34,46,96,7,11,22,39,40,81,89,37,59,64,80,82",
+  'challenges.ids': "15,20,27,42,43,57,63,84,4,35,6,2,19,12,34,46,96,7,11,22,39,40,81,89,37,59,64,80,82,1,33",
   'challenge.15.full': "la brevedad es el alma del talento",
   'challenge.15.display': "la ___ es el alma del ___",
   'challenge.15.missing': "brevedad|talento",
@@ -178,6 +178,18 @@ const messages: Record<string, string> = {
   'challenge.82.play': "Otelo",
   'challenge.82.character': "Yago",
   'challenge.82.translator': "Marcelino Menéndez y Pelayo",
+  'challenge.1.full': "No es oro todo lo que reluce",
+  'challenge.1.display': "No es ___ todo lo que ___",
+  'challenge.1.missing': "oro|reluce",
+  'challenge.1.play': "El mercader de Venecia",
+  'challenge.1.character': "Morocco",
+  'challenge.1.translator': "Marcelino Menéndez y Pelayo",
+  'challenge.33.full': "La clemencia no quiere fuerza: es como la plácida lluvia del cielo que cae sobre un campo y le fecunda",
+  'challenge.33.display': "La ___ no quiere fuerza: es como la plácida ___ del cielo que cae sobre un campo y le fecunda",
+  'challenge.33.missing': "clemencia|lluvia",
+  'challenge.33.play': "El mercader de Venecia",
+  'challenge.33.character': "Porcia",
+  'challenge.33.translator': "Marcelino Menéndez y Pelayo",
 };
 
 export default messages;
