@@ -262,7 +262,7 @@ const messages: Record<string, string> = {
   'trivia.51.o2': "Der Wald verbirgt seine Feinde",
   'trivia.51.o3': "Ein Baum wird fallen und ihn erschlagen",
   'trivia.52.q': "In welcher Werkgruppe tritt Shakespeares „Dark Lady“ auf?",
-  'trivia.52.o0': "Die Sonette",
+  'trivia.52.o0': "Shakespeares Sonette",
   'trivia.52.o1': "Die Historien",
   'trivia.52.o2': "Die Romanzen",
   'trivia.52.o3': "Die Problemstücke",

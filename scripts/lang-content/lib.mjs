@@ -25,6 +25,9 @@ export const gameNames = Object.fromEntries(readTsv(join(HERE, 'entities.tsv')).
 /** picks.tsv: key, lang, name, note. A name chosen by hand; it must be found in a source (checked below). */
 const picks = new Map(readTsv(join(HERE, 'picks.tsv')).map(([key, lang, name, note]) => [`${key}/${lang}`, { name, note: note ?? '' }]));
 
+/** English names that carry a title the languages translate (Friar Lawrence, Captain Fluellen, Sir Toby). */
+const TITLE = /^(?:King|Queen|Prince|Princess|Duke|Lord|Lady|Sir|Captain|Friar|Earl|Saint|Doctor)\s/;
+
 const tokens = (s) => s.split(/[\s·・]+/u).filter(Boolean);
 
 function labelOf(e, lang) {
@@ -37,11 +40,19 @@ function labelOf(e, lang) {
 /** A name standing alone (a quiz option) starts with a capital where the script has capitals. */
 export const ucfirst = (s) => s.charAt(0).toLocaleUpperCase() + s.slice(1);
 
+/**
+ * names-evidence.tsv: a name read in a language's Wikipedia article (written only by wikipedia.py take,
+ * from the fetched text, with the article's revision). For a character Wikidata has no label for in
+ * that language, the article on the play is where the language's usual name for it is to be found.
+ */
+const nameEvidence = readTsv(join(HERE, 'names-evidence.tsv'));
+
 /** Everything a source says this entity is called in a language. */
 export function sourcesOf(key, lang) {
   const e = entities[key];
   const out = [];
   const add = (v, where) => v && out.push({ value: v, where });
+  for (const [k, l, name, url, , how] of nameEvidence) if (k === key && l === lang) add(name, `${lang}.wikipedia, ${decodeURIComponent(url.match(/title=([^&]+)/)?.[1] ?? '').replace(/_/g, ' ')} (oldid ${url.match(/oldid=(\d+)/)?.[1]}; ${how})`);
   for (const code of lang === 'zh' ? ['zh-hans', 'zh-cn', 'zh', 'zh-hant'] : lang === 'pt' ? ['pt', 'pt-br'] : [lang]) {
     add(e.labels[code], `label (${code})`);
     for (const a of e.aliases?.[code] ?? []) add(a, `alias (${code})`);
@@ -68,7 +79,17 @@ export function nameOf(key, lang, which = 0) {
   if (lang === 'en') return { name: game, how: 'english' };
   const pick = picks.get(`${key}#${which}/${lang}`) ?? picks.get(`${key}/${lang}`);
   if (pick) {
-    const found = sourcesOf(key, lang).find((s) => s.value.toLocaleLowerCase().includes(pick.name.toLocaleLowerCase()));
+    const low = (s) => s.toLocaleLowerCase(lang);
+    const sources = sourcesOf(key, lang);
+    let found = sources.find((s) => low(s.value).includes(low(pick.name)));
+    // A sourced name with a title translated before or after it ("로렌스 신부" for "Friar Lawrence"),
+    // where the English name has that title: the name is the source's, the title a translation.
+    if (!found && TITLE.test(game)) {
+      const named = sources.find((s) => s.value.length > 2 && low(pick.name).includes(low(s.value)));
+      if (named) found = { ...named, where: `${named.where}, with the title translated` };
+    }
+    // The English name kept on purpose (Latin letters where no source has the name in this language).
+    if (!found && pick.name === game) return { name: pick.name, how: 'english', note: pick.note };
     return { name: pick.name, how: found ? 'pick' : 'unsourced', where: found?.where, note: pick.note };
   }
   const strip = (v) => v?.replace(/\s*[(（][^)）]*[)）]\s*$/u, '');

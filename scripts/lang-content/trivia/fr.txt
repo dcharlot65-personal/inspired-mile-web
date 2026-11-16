@@ -52,7 +52,7 @@
 49 | Dans Le Roi Lear, combien de filles Lear a-t-il ? | Trois | Deux | Quatre | Une
 50 | Quel scélérat de Shakespeare dit « I am not what I am » ? | = | = | = | Aaron
 51 | Que prédisent les sorcières à Macbeth au sujet de la forêt de Birnam ? | Il ne sera pas vaincu tant que la forêt ne marchera pas vers son château | Il doit brûler la forêt pour être en sûreté | La forêt cache ses ennemis | Un arbre tombera et l'écrasera
-52 | Dans quel ensemble d'œuvres apparaît la « Dame sombre » de Shakespeare ? | Les Sonnets | Les pièces historiques | Les romances | Les pièces à problème
+52 | Dans quel ensemble d'œuvres apparaît la « Dame sombre » de Shakespeare ? | = | Les pièces historiques | Les romances | Les pièces à problème
 53 | Quel personnage dit « These violent delights have violent ends » ? | = | = | = | Le Prince
 54 | Dans quelle pièce trouve-t-on Rosalinde et Orlando dans la forêt d'Arden ? | = | = | = | =
 55 | Comment s'appelait l'épouse de Shakespeare ? | = | = | = | =

@@ -262,7 +262,7 @@ const messages: Record<string, string> = {
   'trivia.51.o2': "Que o bosque esconde os seus inimigos",
   'trivia.51.o3': "Que uma árvore cairá e o esmagará",
   'trivia.52.q': "Em que grupo de obras aparece a “Dark Lady” de Shakespeare?",
-  'trivia.52.o0': "Os Sonetos",
+  'trivia.52.o0': "Sonetos de Shakespeare",
   'trivia.52.o1': "As peças históricas",
   'trivia.52.o2': "Os romances",
   'trivia.52.o3': "As peças-problema",

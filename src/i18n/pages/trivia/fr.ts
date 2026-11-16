@@ -262,7 +262,7 @@ const messages: Record<string, string> = {
   'trivia.51.o2': "La forêt cache ses ennemis",
   'trivia.51.o3': "Un arbre tombera et l'écrasera",
   'trivia.52.q': "Dans quel ensemble d'œuvres apparaît la « Dame sombre » de Shakespeare ?",
-  'trivia.52.o0': "Les Sonnets",
+  'trivia.52.o0': "Sonnets de Shakespeare",
   'trivia.52.o1': "Les pièces historiques",
   'trivia.52.o2': "Les romances",
   'trivia.52.o3': "Les pièces à problème",

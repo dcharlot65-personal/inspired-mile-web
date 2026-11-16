@@ -9,7 +9,9 @@
 //   -> docs/language/data/content-names.tsv (every name used, its Wikidata item and how it was arrived at)
 //
 // Run: node scripts/lang-content/build.mjs        (exits 1 and writes nothing for a language with errors)
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+//      node scripts/lang-content/build.mjs --check    writes nothing; exits 1 if a generated file is not what
+//                                                     its sources make (play-areas.test.ts runs this)
+import { existsSync, mkdirSync, readFileSync, writeFileSync as write } from 'node:fs';
 import { join } from 'node:path';
 import { HERE, ROOT, LANGS, entities, gameNames, nameOf, readTsv, ucfirst } from './lib.mjs';
 
@@ -18,6 +20,12 @@ const { CHALLENGE_BANK } = await import(join(ROOT, 'src/lib/challenges.ts'));
 const optionKeys = JSON.parse(readFileSync(join(HERE, 'trivia-options.json'), 'utf8'));
 const q = (s) => JSON.stringify(s);
 let failed = false;
+const CHECK = process.argv.includes('--check');
+const stale = [];
+function writeFileSync(file, text) {
+  if (!CHECK) return write(file, text);
+  if (!existsSync(file) || readFileSync(file, 'utf8') !== text) stale.push(file.slice(ROOT.length + 1));
+}
 const fail = (m) => { failed = true; console.error('ERROR ' + m); };
 
 // ---------- trivia ----------
@@ -109,7 +117,7 @@ export default messages;
 }
 
 // ---------- the names table, for the provenance file ----------
-mkdirSync(join(ROOT, 'docs/language/data'), { recursive: true });
+if (!CHECK) mkdirSync(join(ROOT, 'docs/language/data'), { recursive: true });
 const lines = ['key\twikidata\tenglish (game)\t' + LANGS.map((l) => `${l}\t${l}:how`).join('\t')];
 for (const key of Object.keys(gameNames)) {
   gameNames[key].forEach((g, which) => {
@@ -118,4 +126,8 @@ for (const key of Object.keys(gameNames)) {
 }
 writeFileSync(join(ROOT, 'docs/language/data/content-names.tsv'), lines.join('\n') + '\n');
 writeFileSync(join(ROOT, 'docs/language/data/challenges-dropped.tsv'), 'lang\tchallenge\twork\tEnglish line\n' + dropped.map((d) => d.join('\t')).join('\n') + '\n');
-if (failed) process.exit(1);
+if (CHECK) {
+  if (stale.length) console.error('NOT WHAT THE SOURCES MAKE (run node scripts/lang-content/build.mjs):\n  ' + stale.join('\n  '));
+  else console.log('every generated file is what its sources make');
+}
+if (failed || stale.length) process.exit(1);

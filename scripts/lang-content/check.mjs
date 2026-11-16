@@ -7,7 +7,7 @@
 // Run: node scripts/lang-content/check.mjs [lang...]       exit 1 if a quotation or a number is lost
 import { readFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
-import { HERE, ROOT, LANGS, gameNames, nameOf } from './lib.mjs';
+import { HERE, ROOT, LANGS, gameNames, nameOf, sourcesOf } from './lib.mjs';
 const { TRIVIA_BANK } = await import(join(ROOT, 'src/lib/trivia.ts'));
 const langs = process.argv.slice(2).filter((a) => !a.startsWith('-'));
 const quiet = process.argv.includes('-q');
@@ -39,7 +39,8 @@ for (const lang of langs.length ? langs : LANGS) {
       if (!re.test(rest)) continue;
       rest = rest.replace(re, ' ');
       // Every entity the game calls by this name: the play and its hero, the two Portias.
-      want.set(name, names.filter((x) => x.n === name).map((x) => nameOf(x.key, lang, x.which).name));
+      // The table's name, and any form of it a Wikipedia article was read to use (names-evidence.tsv): an inflected one counts.
+      want.set(name, names.filter((x) => x.n === name).flatMap((x) => [nameOf(x.key, lang, x.which).name, ...sourcesOf(x.key, lang).filter((s) => s.where.includes('wikipedia')).map((s) => s.value)]));
     }
     for (const [name, cands] of want) {
       const low = text.toLocaleLowerCase(lang);

@@ -125,8 +125,6 @@ l.navarre	zh	纳瓦拉
 l.sicily	zh	西西里
 p.errors	zh	错误的喜剧	the label is the English title in lower case; this is Zhu Shenghao's title
 p.henry6b	zh	亨利六世中篇	the label lacks the part; this is Zhu Shenghao's title
-l.elsinore	zh	厄耳锡诺	the label is the modern town's; this is Zhu Shenghao's form
-l.arden	zh	亚登森林	Zhu Shenghao's form; the label (雅顿) is of the real forest
 c.nurse	zh	奶妈	the label (护士) means a hospital nurse; the item's alias is 奶媽
 c.ariel	zh	爱丽儿	Zhu Shenghao's form; the item has no Chinese label
 c.banquo	zh	班柯	Zhu Shenghao's form
@@ -135,10 +133,9 @@ c.goneril	zh	高纳里尔	Zhu Shenghao's form; the item has no Chinese label
 c.regan	zh	里根	Zhu Shenghao's form; the item has no Chinese label
 c.cassio	zh	凯西奥	Zhu Shenghao's form; the item has no Chinese label
 c.orlando	zh	奥兰多	Zhu Shenghao's form; the item has no Chinese label
-c.benedick	zh	培尼狄克	Zhu Shenghao's form; the item has no Chinese label
+c.benedick	zh	本尼狄克	replaces an unsourced choice (培尼狄克): the name the language's Wikipedia article gives, with the English beside it (names-evidence.tsv)
 c.petruchio	zh	彼特鲁乔	Zhu Shenghao's form; the item has no Chinese label
 c.lear	zh	李尔	as in the play's label 李尔王
-c.yorick	zh	郁利克	Zhu Shenghao's form; the item has no Chinese label
 h.field	zh	Richard Field
 c.romeo	zh	罗密欧
 h.shakespeare#1	ja	シェイクスピア
@@ -146,12 +143,9 @@ h.hamnet	ja	ハムネット
 h.caesar	ja	ジュリアス・シーザー	the name the Japanese translations of the play use (and the play's label); the person's label is ガイウス・ユリウス・カエサル
 h.caesar#1	ja	シーザー	as above
 h.brutus	ja	ブルータス	the name the Japanese translations of the play use; the person's label is マルクス・ユニウス・ブルトゥス
-h.cassius	ja	キャシアス	the name the Japanese translations of the play use
 h.antony	ja	マーク・アントニー	the name the Japanese translations of the play use
 h.calpurnia	ja	カルパーニア	the name the Japanese translations of the play use
 h.porcia	ja	ポーシャ	the name the Japanese translations of the play use
-h.octavia	ja	オクテーヴィア	the name the Japanese translations use
-h.cornelia	ja	コルネリア
 c.juliet	ja	ジュリエット
 c.rosguil#0	ja	ローゼンクランツ
 c.rosguil#1	ja	ギルデンスターン
@@ -174,7 +168,6 @@ c.claudius	ko	클라우디우스
 c.laurence	ko	로렌스 신부	the label transliterates the English word Friar
 c.falstaff	ko	팔스타프
 l.navarre	ko	나바라
-l.elsinore	ko	엘시노어	the label is the modern town's
 h.field	ko	Richard Field
 c.romeo	ja	ロミオ
 c.mercutio	ja	マキューシオ	the form of the Japanese translations; the item has no Japanese label
@@ -189,19 +182,15 @@ h.octavius	ja	オクテイヴィアス	the name the Japanese translations of the
 c.toby	ja	サー・トービー・ベルチ
 c.paris	ko	패리스	the usual Korean form; the item has no Korean label
 c.puck	ko	퍽	the usual Korean form; the item has no Korean label
-c.caliban	ko	캘리번	the usual Korean form; the item has no Korean label
 c.cordelia	ko	코델리아	the usual Korean form; the item has no Korean label
 c.rosguil#0	ko	로젠크란츠	the usual Korean form; the item has no Korean label
 c.rosguil#1	ko	길든스턴	the usual Korean form; the item has no Korean label
-c.bottom	ko	보텀	the usual Korean form; the item has no Korean label
 c.edmund	ko	에드먼드	the usual Korean form; the item has no Korean label
 c.fortinbras	ko	포틴브라스	the usual Korean form; the item has no Korean label
 p.pericles	ko	페리클레스	the usual Korean title; the item has no Korean label
 p.cymbeline	ko	심벨린	the usual Korean title; the item has no Korean label
 p.faustus	ko	포스터스 박사	the usual Korean title; the item has no Korean label
-c.tuck	ko	터크 수사	the usual Korean form; the item has no Korean label
 c.alonso	ko	알론소	the usual Korean form; the item has no Korean label
-l.dunsinane	ko	던시네인	the usual Korean form; the item has no Korean label
 l.rose	ko	로즈 극장	the item has no Korean label
 l.swan	ko	스완 극장	the item has no Korean label
 b.alexandria	ko	알렉산드리아 전투	the item has no Korean label
@@ -209,8 +198,6 @@ w.pyramus	ko	피라모스와 티스베	the item has no Korean label
 w.hero	ko	헤로와 레안드로스	the item has no Korean label
 p.twelfth	ar	الليلة الثانية عشرة
 c.macbeth	ar	مكبث	the play's label, so the quiz says one name; the character's label is ماكبث
-c.ladymacbeth	ar	ليدي مكبث	as above
-l.elsinore	ar	إلسينور	the label is a garbled form of the modern town's name
 c.hamlet	hi	हैमलेट
 c.claudius	hi	क्लॉडियस
 c.paris	hi	पेरिस
@@ -236,10 +223,134 @@ h.field	pt	Richard Field
 c.lear	ar	لير	as in the play's label الملك لير
 c.lear	hi	लीयर	as in the play's label किंग लीयर
 h.brutus	hi	ब्रूटस	the usual Hindi form; the item has no Hindi label
-l.bohemia	hi	बोहेमिया	the usual Hindi form; the item has no Hindi label
 c.romeo	th	โรเมโอ	from the play's Thai label โรเมโอและจูเลียต; the character's item has no Thai label
 c.juliet	th	จูเลียต	from the play's Thai label โรเมโอและจูเลียต; the character's item has no Thai label
 c.hamlet	th	แฮมเลต	the play's Thai label; the character's item has no Thai label
 c.macbeth	th	แม็คเบ็ธ	the play's Thai label; the character's item has no Thai label
 c.othello	th	โอเทลโล	the play's Thai label; the character's item has no Thai label
 c.ladymacbeth	th	เลดี้แม็คเบ็ธ	from the play's Thai label; the character's item has no Thai label
+c.hero	ru	Геро	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.beatrice	ru	Беатриче	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.margaret	ru	Маргарита	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.rosalind	ru	Розалинда	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.celia	ru	Селия	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.audrey	ru	Одри	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.angelo	ru	Анджело	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.claudio.ado	ru	Клавдио	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.silvia	ru	Сильвия	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.donjohn	ru	Дон Хуан	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.donpedro	ru	Дон Педро	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.jaques	ru	Жак	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.orlando	ru	Орландо	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.touchstone	ru	Оселок	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.launcelot	ru	Ланчелот	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.dogberry	ru	Кизил	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+h.jaggard	ru	Уильям Джаггард	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+h.blount	ru	Эдвард Блаунт	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+w.sonnets	hi	सॉनेट	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.perdita	ja	パーディタ	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.goneril	ja	ゴネリル	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.regan	ja	リーガン	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.gratiano	ja	グラシアーノ	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.hero	ja	ヒーロー	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.beatrice	ja	ベアトリス	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.margaret	ja	マーガレット	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.angelo	ja	アンジェロ	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.claudio.ado	ja	クローディオ	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.silvia	ja	シルヴィア	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.donjohn	ja	ドン・ジョン	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.donpedro	ja	ドン・ペドロ	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.launcelot	ja	ランスロット	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.dogberry	ja	ドグベリー	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.sycorax	ja	シコラクス	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.sly	ja	クリストファー・スライ	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+h.jaggard	ja	ウィリアム・ジャガード	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.macduff	ko	맥더프	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.helena	ko	헬레나	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.sebastian	ko	세바스찬	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.orsino	ko	오시노	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.goneril	ko	고너릴	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.regan	ko	리건	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.gratiano	ko	그라시아노	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.malvolio	ko	말볼리오	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.beatrice	ko	베아트리체	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.celia	ko	실리아	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.claudio.ado	ko	클라우디오	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.silvia	ko	실비아	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.cassio	ko	카시오	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.feste	ko	페스테	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.donjohn	ko	돈 존	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.donpedro	ko	돈 페드로	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.orlando	ko	올란도	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.lear	ko	리어 왕	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+h.porcia	ko	포샤	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.dogberry	ko	도그베리	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.sycorax	ko	시코락스	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.tranio	ko	트라니오	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.grumio	ko	그루미오	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+w.sonnets	th	ซอนเน็ต	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.laurence	ar	لورنس	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.laurence	hi	लॉरेंस	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.laurence	ja	ロレンス	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.toby	ko	토비 벨치	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.flute	ru	Дудка	Wikidata has no Russian label; the ru.wikipedia cast list (names-evidence.tsv) names him so, as the Russian translations do
+c.quince	ru	Пигва	Wikidata's label (Питер Куинс) transliterates the English; the Russian translations and the ru.wikipedia cast list call him Пигва, as they call Bottom Основа, which is Wikidata's label for him
+c.fluellen	zh	弗鲁爱林	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+h.porcia	pl	Porcja	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.laurence	pt	Frei Lourenço	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.laurence	pl	Ojciec Laurenty	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.ariel	th	แอเรียล	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.prospero	th	พรอสเพโร	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.ferdinand	th	เฟอร์ดินานด์	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.miranda	th	มิแรนดา	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.roderigo	zh	洛特利哥	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.brabantio	zh	勃拉班修	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.emilia	zh	艾米莉娅	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.shylock	th	ไชล็อก	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.antonio	th	อันโตนิโย	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.bassanio	th	บัสสานิโย	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.hero	zh	希洛	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.donpedro	zh	唐·彼德罗	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.sebastian	zh	西巴斯辛	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.feste	zh	费斯特	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.jaques	zh	杰奎斯	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.perdita	zh	珀迪塔	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.snug	zh	斯纳格	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.helena	zh	海丽娜	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.lysander	zh	拉山德	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.claudio.ado	zh	克劳迪奥	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.donjohn	zh	唐·约翰	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.audrey	zh	奥德蕾	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.lucentio	zh	路森修	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.grumio	zh	葛鲁米奥	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.tranio	zh	特拉尼奥	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.margaret	zh	玛格丽特	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.alonso	zh	阿隆索	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.alonso	th	อลองโซ	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.celia	zh	西莉亚	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.gratiano	zh	葛莱西安诺	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.lodovico	zh	罗多维科	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.montano	zh	蒙泰诺	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.morocco	ja	モロッコ公	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+h.blount	ko	에드워드 블라운트	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.malvolio	ar	ملفوليو	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.olivia	ar	اوليفيا	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.portia	th	ปอร์เชีย	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+h.porcia	fr	Portia	the name the play gives her in French (the fr.wikipedia cast list of Jules César, names-evidence.tsv); Wikidata's label (Porcie) is the historians' name for Porcia Catonis
+h.porcia	de	Portia	the name the play gives her in German (the de.wikipedia cast list of Julius Caesar, names-evidence.tsv); Wikidata's label (Porcia) is the historians' name for Porcia Catonis
+w.folio	de	First Folio	the de.wikipedia article on the book calls it so, with the English beside it (names-evidence.tsv); Wikidata's label is Shakespeares Folio
+c.laurence#1	ko	로렌스	the ko.wikipedia article on the play names him so (names-evidence.tsv)
+c.benedick	ko	베네딕	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.viola	ko	비올라	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.isabella	ko	이사벨라	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.maria	ko	마리아	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.benedick	ja	ベネディック	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.balthazar	ja	バルサザー	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.isabella	ja	イザベラ	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.benedick	ru	Бенедикт	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.balthazar	ru	Бальтазар	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.isabella	ru	Изабелла	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+l.arden	ja	アーデンの森	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+l.arden	ko	아든 숲	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+l.arden	ar	غابة أردن	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+c.rosalind	ko	로절린드	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
