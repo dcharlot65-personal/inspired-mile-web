@@ -91,7 +91,9 @@ if args.rank:
         off = sum(1 for r in mine if r['xrank'] > 1)
         coff = sum(1 for r in mine if r['controlRank'] > 1)
         print(f'{lang}: {len(mine)} strings among {len(pool)} English; own English not nearest for {off}; wrong English not nearest for {coff}; {time.time() - t0:.0f}s', file=sys.stderr, flush=True)
-    json.dump(rows, open(args.out or args.bt, 'w', encoding='utf8'), ensure_ascii=False, indent=1)
+    # One row per line, as docs/language/results/pages-rest/bt.json is kept.
+    with open(args.out or args.bt, 'w', encoding='utf8') as f:
+        f.write('[\n' + ',\n'.join(json.dumps(r, ensure_ascii=False) for r in rows) + '\n]\n')
     sys.exit(0)
 
 for lang in langs:
