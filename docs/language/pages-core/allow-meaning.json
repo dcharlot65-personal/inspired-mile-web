@@ -3132,10 +3132,10 @@
   {
    "lang": "vi",
    "key": "card-terms.element.devotion",
-   "text": "Tận tụy",
-   "flag": "cos 0.4819, LaBSE 0.5633, chrF 28.4",
-   "back": "Dedication.",
-   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+   "text": "Tận tuỵ",
+   "flag": "cos 0.3492, LaBSE 0.4863, chrF 4.2",
+   "back": "Selfish.",
+   "reason": "Tận tuỵ ('devotion'), with the tone on the second vowel as lang/qa-pipeline's rule asks; MADLAD read it as 'selfish', where it had read tận tụy as 'dedication'."
   },
   {
    "lang": "vi",
@@ -3172,10 +3172,10 @@
   {
    "lang": "vi",
    "key": "card-terms.element.petrification",
-   "text": "Hóa đá",
-   "flag": "cos 0.2057, LaBSE 0.4048, chrF 7.3",
-   "back": "Stones",
-   "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
+   "text": "Hoá đá",
+   "flag": "cos 0.2553, LaBSE 0.3589, chrF 4.2",
+   "back": "Flowers.",
+   "reason": "Hoá đá ('turning to stone'), with the tone on the second vowel as lang/qa-pipeline's rule asks; MADLAD read hoa ('flower'), where it had read hóa đá as 'stones'."
   },
   {
    "lang": "vi",
@@ -3216,14 +3216,6 @@
    "flag": "cos 0.218, LaBSE 0.5185, chrF 3.4",
    "back": "Fake.",
    "reason": "An element's name: one word with no sentence around it, so MADLAD gives a synonym, a transliteration or another sense of the word. Read: the word names the element."
-  },
-  {
-   "lang": "vi",
-   "key": "collection.deck.clear",
-   "text": "Xóa hết",
-   "flag": "cos 0.3712, LaBSE 0.58, chrF 11.1",
-   "back": "Delete All",
-   "reason": "A button or heading of one to three words; out of context MADLAD reads the deck word as a package, envelope or tray, or the verb as a statement. Read: right for the control it labels."
   },
   {
    "lang": "vi",

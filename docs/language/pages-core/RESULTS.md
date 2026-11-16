@@ -51,6 +51,19 @@ Arabic صنعتك; Hindi काढ़ों, प्रश्नोत्तर�
 (French Justice, German Gold, Spanish Honor, the Montague and Capulet families in German,
 Vietnamese and Indonesian…).
 
+Run again on 2026-11-16 (continuation) with lang/qa-pipeline as it then stood (b7c5459), whose
+rules and glossary had grown since: 40 open findings, all where the core files had changed their
+convention in that branch, and all followed:
+
+| Language | Strings | Was | Now | Source (lang/qa-pipeline's glossary or rule) |
+|---|---|---|---|---|
+| hi | 18 | शेक्सपियर | शेक्सपीयर | Wikidata label of Q692 (विलियम शेक्सपीयर) |
+| th | 2 | เข้าสู่ระบบ (sign in) | ลงชื่อเข้าใช้ | Android (AOSP kg_login_submit_button) and Google Help |
+| vi | 20 | khóa, hòa, hóa, xóa, tụy | khoá, hoà, hoá, xoá, tuỵ | one tone placement, Android's and the LibreOffice vi_VN dictionary's |
+
+After them: **0 open**. The strings were translated back again (Meaning) and spelled again: the
+Vietnamese dictionary now knows the seven words it rejected before.
+
 ## Names inside a sentence
 
 The line that says why a city grants its ability was written by the model. In every language it
@@ -98,7 +111,8 @@ which back-translated as "perfectionist", to पूरा संग्रह (se
 
 Run again on the final strings (2026-11-16, iMac Pro, the same dictionaries at `c0865a85`): the
 self-test passed in all fourteen languages, and the unknown words were those of the run above
-except the two achievement names that were changed. Nothing new.
+except the two achievement names that were changed and seven Vietnamese words now spelled with the
+dictionary's tone placement (Hòa, Hóa, Xóa, hòa, hóa, khóa, tụy). Nothing new.
 
 ## Grammar (LanguageTool 6.6, level "picky")
 
@@ -174,15 +188,15 @@ MiniLM score against its own English 0.88, against the wrong one 0.23; LaBSE 0.8
 | pl | 378 | 64 | 22 | 3 | 25 | 0 | 91 % | 0.94 / 0.86 |
 | ru | 378 | 66 | 29 | 5 | 33 | 1 | 90 % | 0.90 / 0.85 |
 | ar | 378 | 107 | 45 | 3 | 47 | 3 (layout) | 92 % | 0.79 / 0.82 |
-| hi | 378 | 84 | 41 | 3 | 43 | 1 | 90 % | 0.86 / 0.83 |
+| hi | 378 | 84 | 41 | 3 | 43 | 1 + 18 (name) | 90 % | 0.86 / 0.83 |
 | zh | 378 | 107 | 31 | 0 | 31 | 0 | 92 % | 0.81 / 0.83 |
 | ja | 378 | 72 | 29 | 4 | 33 | 0 | 90 % | 0.85 / 0.82 |
 | ko | 378 | 74 | 39 | 4 | 43 | 1 | 91 % | 0.86 / 0.82 |
-| vi | 378 | 89 | 38 | 1 | 39 | 0 | 90 % | 0.80 / 0.82 |
-| th | 378 | 132 | 63 | 6 | 69 | 0 | 93 % | 0.74 / 0.77 |
+| vi | 378 | 89 | 37 | 1 | 38 | 20 (tone marks) | 90 % | 0.80 / 0.82 |
+| th | 378 | 132 | 63 | 6 | 69 | 2 (sign in) | 93 % | 0.74 / 0.77 |
 | id | 378 | 83 | 34 | 2 | 36 | 0 | 91 % | 0.87 / 0.86 |
 
-Every flagged string was read: 519 in all, each accepted with its reason in
+Every flagged string was read: 518 in all, each accepted with its reason in
 `docs/language/pages-core/allow-meaning.json` (the entry names the exact text, so a changed string
 is flagged again), and the result is in `docs/language/pages-core/bt.json`. Most are labels of one or
 two words (an element, a stat, an achievement's title), where MADLAD gives a synonym, a
@@ -201,8 +215,12 @@ Changed because of what was read:
 | hi | achievements.completionist.name | पूर्णताप्रेमी | पूरा संग्रह | back-translated as "perfectionist"; "the full collection" |
 | ko | world-map.none | …아직 연 변형이 없어요. | …아직 열린 변형이 없어요. | 연 also reads as "kite" (MADLAD: "kite variants"), and variants.unlocked says 열린 |
 
-These were translated back again after the change (merged over the first run) and are in `bt.json`.
-The three Arabic counts (below) were scored again too.
+These were translated back again after the change (merged over the first run) and are in `bt.json`,
+as were the three Arabic counts (below) and the 40 Hindi, Thai and Vietnamese strings changed to
+lang/qa-pipeline's conventions (Mechanical rules, above). After those, two Vietnamese labels were
+flagged anew: MADLAD read the second-vowel tone marks as other words (Tận tuỵ "selfish", Hoá đá
+"flowers"; before, tận tụy "dedication", hóa đá "stones"). Read and accepted; both spellings are
+Vietnamese, and the game writes the second.
 
 Left for a native reader, from this pass: Arabic شعر الدَّب for "dub poetry" (MADLAD: "bear hair"),
 Hindi हमारी सोच for "The Vision", Vietnamese "Lão làng làng thơ" for "Verse Veteran" (the repeated

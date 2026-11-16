@@ -56,20 +56,8 @@
   "cos": 0.4709,
   "chrf": 7.1,
   "xcos": 0.5323,
-  "controlCos": 0.1308,
-  "xcontrol": 0.0786
- },
- {
-  "id": "about.vision.p1",
-  "lang": "hi",
-  "text": "सोचिए, आप एक डिजिटल कार्ड चुनते हैं और वह एआई से बने 15 सेकंड के दृश्य में जी उठता है। शेक्सपियर का एक पात्र ऑगमेंटेड रियलिटी में सामने आता है। आप उसे रैप बैटल की चुनौती देते हैं। आपके दोस्त देखते हैं और हौसला बढ़ाते हैं।",
-  "english": "Imagine selecting a digital card that springs to life with a 15-second AI-generated scene. A Shakespeare character appears in augmented reality. You challenge them to a rap battle. Your friends watch and cheer.",
-  "back": "Imagine, you pick a digital card and it comes to life in an AI-generated 15-second scene. A Shakespearean character appears in augmented reality. You challenge him to a rap battle. Your friends watch and encourage him.",
-  "cos": 0.9844,
-  "chrf": 73.3,
-  "xcos": 0.8387,
-  "controlCos": 0.6542,
-  "xcontrol": 0.4476
+  "controlCos": 0.1647,
+  "xcontrol": 0.1657
  },
  {
   "id": "about.vision.p2",
@@ -80,44 +68,8 @@
   "cos": 0.9273,
   "chrf": 79.9,
   "xcos": 0.8953,
-  "controlCos": 0.0639,
-  "xcontrol": 0.1451
- },
- {
-  "id": "about.why.title",
-  "lang": "hi",
-  "text": "शेक्सपियर ही क्यों?",
-  "english": "Why Shakespeare?",
-  "back": "Why Shakespeare?",
-  "cos": 1.0,
-  "chrf": 100.0,
-  "xcos": 0.9263,
-  "controlCos": 0.5101,
-  "xcontrol": 0.3513
- },
- {
-  "id": "about.why.p1",
-  "lang": "hi",
-  "text": "हमारे रचनात्मक साथी Devon Glover, यानी Sonnet Man, बरसों से साबित करते आए हैं कि शेक्सपियर हिप हॉप हैं। वे कलाकार, शिक्षक और रंगमंच के अभिनेता हैं, और उनके काम में कविता, रूपांतरण और समकालीन संगीत घुले-मिले हैं। उन्होंने Southern Shakespeare Festival, Shakespeare Behind Bars और पूरे अमेरिका के स्कूलों के साथ काम किया है। हम उसी ऊर्जा को डिजिटल दुनिया में ला रहे हैं।",
-  "english": "Our creative partner Devon Glover, the Sonnet Man, has spent years proving that Shakespeare is hip-hop. A teaching artist and theater performer, his work fuses poetry, adaptation, and contemporary music. He's partnered with the Southern Shakespeare Festival, Shakespeare Behind Bars, and schools nationwide. We're taking that energy digital.",
-  "back": "Our creative partner Devon Glover, also known as Sonnet Man, has been proving for years that Shakespeare is hip hop. He’s an artist, teacher and stage actor, whose work blends poetry, transformation and contemporary music. He’s worked with the Southern Shakespeare Festival, Shakespeare Behind Bars, and schools across America. We are bringing that same energy to the digital world.",
-  "cos": 0.9681,
-  "chrf": 65.8,
-  "xcos": 0.9068,
-  "controlCos": 0.3531,
-  "xcontrol": 0.3244
- },
- {
-  "id": "about.why.p2",
-  "lang": "hi",
-  "text": "शेक्सपियर हमें घरानों, पात्रों और टकरावों का एक समृद्ध संसार देते हैं: संग्रहणीय कार्डों की युद्ध-प्रणाली के लिए एक स्वाभाविक बुनियाद। और यह सब सार्वजनिक डोमेन में है।",
-  "english": "Shakespeare gives us a rich universe of houses, characters, and conflicts: a natural foundation for a trading card battle system. And it's all public domain.",
-  "back": "Shakespeare gives us a rich world of clans, characters, and conflicts: a natural basis for a war-system of collectible cards. And it’s all in the public domain.",
-  "cos": 0.882,
-  "chrf": 60.9,
-  "xcos": 0.8429,
-  "controlCos": 0.0554,
-  "xcontrol": 0.0885
+  "controlCos": 0.0837,
+  "xcontrol": 0.148
  },
  {
   "id": "about.team.title",
@@ -164,20 +116,8 @@
   "cos": 1.0,
   "chrf": 100.0,
   "xcos": 0.898,
-  "controlCos": 0.2085,
-  "xcontrol": 0.0974
- },
- {
-  "id": "about.team.devon.bio",
-  "lang": "hi",
-  "text": "हिप हॉप, कविता और रूपांतरण के ज़रिए शेक्सपियर को जीवंत करते हैं। कलाकार, शिक्षक, रंगमंच के अभिनेता और Shakespeare on the Go की आवाज़। उनका संगीत Spotify, Tidal और Apple Music पर है।",
-  "english": "Brings Shakespeare to life through hip-hop, poetry, and adaptation. Teaching artist, theater performer, and the voice behind Shakespeare on the Go. Music on Spotify, Tidal, and Apple Music.",
-  "back": "Hip hop brings Shakespeare to life through poetry and translation. Artist, teacher, stage actor and the voice of Shakespeare on the Go. His music is available on Spotify, Tidal and Apple Music.",
-  "cos": 0.8162,
-  "chrf": 61.1,
-  "xcos": 0.8868,
-  "controlCos": -0.0515,
-  "xcontrol": 0.1893
+  "controlCos": 0.2279,
+  "xcontrol": 0.4119
  },
  {
   "id": "about.team.paul.role",
@@ -284,20 +224,8 @@
   "cos": 0.7655,
   "chrf": 33.1,
   "xcos": 0.8237,
-  "controlCos": 0.1251,
-  "xcontrol": 0.1633
- },
- {
-  "id": "about.journey.e2",
-  "lang": "hi",
-  "text": "शेक्सपियर के घरानों की प्रणाली और कार्डों के नियम प्रस्तावित हुए",
-  "english": "Shakespeare house system and card mechanics proposed",
-  "back": "Shakespeare's system of houses and rules of cards were proposed",
-  "cos": 0.8583,
-  "chrf": 52.1,
-  "xcos": 0.7996,
-  "controlCos": 0.0078,
-  "xcontrol": 0.0341
+  "controlCos": 0.2584,
+  "xcontrol": 0.2829
  },
  {
   "id": "about.journey.e3",
@@ -548,20 +476,8 @@
   "cos": 0.792,
   "chrf": 50.4,
   "xcos": 0.7337,
-  "controlCos": 0.1545,
-  "xcontrol": 0.0078
- },
- {
-  "id": "about.free.forever.l4",
-  "lang": "hi",
-  "text": "शेक्सपियर की प्रश्नोत्तरी और चुनौतियाँ",
-  "english": "Shakespeare trivia & challenges",
-  "back": "Shakespeare Quiz and Challenges",
-  "cos": 0.8457,
-  "chrf": 59.4,
-  "xcos": 0.7827,
-  "controlCos": 0.213,
-  "xcontrol": 0.1031
+  "controlCos": 0.3167,
+  "xcontrol": 0.0631
  },
  {
   "id": "about.free.forever.l5",
@@ -1148,20 +1064,8 @@
   "cos": 0.8267,
   "chrf": 38.4,
   "xcos": 0.9423,
-  "controlCos": 0.093,
-  "xcontrol": 0.072
- },
- {
-  "id": "achievements.shakespeare-scholar.name",
-  "lang": "hi",
-  "text": "शेक्सपियर का विद्वान",
-  "english": "Shakespeare Scholar",
-  "back": "Shakespeare Scholar",
-  "cos": 1.0,
-  "chrf": 100.0,
-  "xcos": 0.8884,
-  "controlCos": 0.156,
-  "xcontrol": 0.0938
+  "controlCos": 0.2344,
+  "xcontrol": 0.5582
  },
  {
   "id": "achievements.shakespeare-scholar.description",
@@ -2492,20 +2396,8 @@
   "cos": 1.0,
   "chrf": 100.0,
   "xcos": 0.92,
-  "controlCos": 0.3263,
-  "xcontrol": 0.2639
- },
- {
-  "id": "collection.meta.description",
-  "lang": "hi",
-  "text": "अपना Inspired Mile कार्ड संग्रह देखें: शेक्सपियर की महानतम रचनाओं के पात्र, अवशेष और काढ़े।",
-  "english": "Browse your Inspired Mile card collection: characters, relics, and potions from Shakespeare's greatest works.",
-  "back": "Check out your Inspired Mile card collection: Characters, fragments and excerpts from Shakespeare's greatest works.",
-  "cos": 0.899,
-  "chrf": 72.2,
-  "xcos": 0.8338,
-  "controlCos": 0.2556,
-  "xcontrol": 0.4166
+  "controlCos": 0.2721,
+  "xcontrol": 0.1993
  },
  {
   "id": "collection.title",
@@ -2516,20 +2408,8 @@
   "cos": 1.0,
   "chrf": 100.0,
   "xcos": 0.92,
-  "controlCos": 0.3783,
-  "xcontrol": 0.2129
- },
- {
-  "id": "collection.intro",
-  "lang": "hi",
-  "text": "आपका शेक्सपियर कार्ड संग्रह। बंद कार्ड खेल के मैदान में कमाए जा सकते हैं।",
-  "english": "Your Shakespeare card collection. Locked cards can be earned in the Playground.",
-  "back": "Your Shakespeare card collection. Closed cards can be earned in the game field.",
-  "cos": 0.8468,
-  "chrf": 75.1,
-  "xcos": 0.8469,
-  "controlCos": 0.4193,
-  "xcontrol": 0.2666
+  "controlCos": 0.2721,
+  "xcontrol": 0.1993
  },
  {
   "id": "collection.owned",
@@ -2912,20 +2792,8 @@
   "cos": 0.4332,
   "chrf": 24.3,
   "xcos": 0.8097,
-  "controlCos": 0.1557,
-  "xcontrol": 0.0602
- },
- {
-  "id": "home.meta.description",
-  "lang": "hi",
-  "text": "Inspired Mile: एक कार्ड गेम जिसमें आपकी चाल एक पद है। शेक्सपियर के पात्र इकट्ठा करें और ऐसे एआई से द्वंद्व करें जो पूरी तरह आपके ब्राउज़र में चलता है।",
-  "english": "Inspired Mile: a card game where your move is a verse. Collect Shakespeare's characters and duel an AI that runs entirely in your browser.",
-  "back": "Inspired Mile: A card game where your move is a piece. Collect Shakespearean characters and duel an AI that runs entirely in your browser.",
-  "cos": 0.9538,
-  "chrf": 87.3,
-  "xcos": 0.8527,
-  "controlCos": 0.3546,
-  "xcontrol": 0.1084
+  "controlCos": 0.0922,
+  "xcontrol": 0.1005
  },
  {
   "id": "home.hero.title",
@@ -2936,20 +2804,8 @@
   "cos": 0.8913,
   "chrf": 32.2,
   "xcos": 0.7796,
-  "controlCos": 0.4649,
-  "xcontrol": 0.1787
- },
- {
-  "id": "home.hero.body",
-  "lang": "hi",
-  "text": "एक कार्ड गेम जिसमें आपकी चाल एक पद है। कोई पात्र खेलें, छंद-रूप निभाएँ और ऐसे एआई से द्वंद्व करें जो आपके ब्राउज़र में चलता है। शेक्सपियर के महानतम पात्र इकट्ठा करें और संग्रहणीय कार्ड गेमों के अगले दौर का हिस्सा बनें।",
-  "english": "A card game where your move is a verse. Play a character, keep the form, and duel an AI that runs in your browser. Collect Shakespeare's greatest characters, and join the next evolution of trading card games.",
-  "back": "A card game where your move is one piece. Play a character, play the rhyme and duel an AI that runs in your browser. Collect Shakespeare's greatest characters and be part of the next round of collectible card games.",
-  "cos": 0.9302,
-  "chrf": 73.0,
-  "xcos": 0.8262,
-  "controlCos": 0.213,
-  "xcontrol": 0.2237
+  "controlCos": 0.0779,
+  "xcontrol": 0.2057
  },
  {
   "id": "home.cta.playground",
@@ -3068,20 +2924,8 @@
   "cos": 0.9495,
   "chrf": 91.1,
   "xcos": 0.8745,
-  "controlCos": 0.2164,
-  "xcontrol": 0.0969
- },
- {
-  "id": "home.feature.cards.body",
-  "lang": "hi",
-  "text": "शेक्सपियर, रोमानी कवियों और मिथकों के पात्र। हर कार्ड बदल देता है कि आपके पद को क्या करना है।",
-  "english": "Characters from Shakespeare, the Romantics and myth. Each card changes what your verse has to do.",
-  "back": "Shakespeare, Romantic poets and mythical characters. Each card changes what your position has to do.",
-  "cos": 0.8476,
-  "chrf": 67.8,
-  "xcos": 0.8379,
-  "controlCos": 0.3264,
-  "xcontrol": 0.0445
+  "controlCos": 0.0266,
+  "xcontrol": 0.1416
  },
  {
   "id": "home.feature.duel.title",
@@ -3152,32 +2996,8 @@
   "cos": 0.9029,
   "chrf": 61.2,
   "xcos": 0.8181,
-  "controlCos": 0.0442,
-  "xcontrol": 0.1051
- },
- {
-  "id": "home.houses.title",
-  "lang": "hi",
-  "text": "शेक्सपियर के घराने",
-  "english": "Shakespeare's Houses",
-  "back": "Shakespeare's House",
-  "cos": 0.9592,
-  "chrf": 95.0,
-  "xcos": 0.8234,
-  "controlCos": 0.7031,
-  "xcontrol": 0.505
- },
- {
-  "id": "home.houses.body",
-  "lang": "hi",
-  "text": "अपना पक्ष चुनें। हर घराना शेक्सपियर के एक अलग नाटक से निकला है, और उसके अपने पात्र, क्षमताएँ और रणनीतियाँ हैं।",
-  "english": "Choose your allegiance. Each house draws from a different Shakespeare play, with unique characters, abilities, and strategies.",
-  "back": "Choose your side. Each clan stems from a different play by Shakespeare, and has its own characters, skills, and strategies.",
-  "cos": 0.6724,
-  "chrf": 56.5,
-  "xcos": 0.808,
-  "controlCos": 0.1226,
-  "xcontrol": 0.2938
+  "controlCos": 0.0991,
+  "xcontrol": 0.2303
  },
  {
   "id": "home.houses.cards",
@@ -3980,20 +3800,8 @@
   "cos": 0.4584,
   "chrf": 30.5,
   "xcos": 0.4556,
-  "controlCos": 0.5859,
-  "xcontrol": 0.615
- },
- {
-  "id": "variants.ability.LDN.why",
-  "lang": "hi",
-  "text": "शेक्सपियर का घर",
-  "english": "The home of Shakespeare",
-  "back": "Shakespeare's House",
-  "cos": 0.9027,
-  "chrf": 50.9,
-  "xcos": 0.8923,
-  "controlCos": 0.169,
-  "xcontrol": 0.0984
+  "controlCos": 0.1296,
+  "xcontrol": 0.2442
  },
  {
   "id": "variants.ability.MUM.name",
@@ -4376,20 +4184,8 @@
   "cos": 0.9586,
   "chrf": 85.7,
   "xcos": 0.8755,
-  "controlCos": 0.263,
-  "xcontrol": 0.1257
- },
- {
-  "id": "world-map.meta.description",
-  "lang": "hi",
-  "text": "दुनिया भर के शहर घूमें और अपने शेक्सपियर पात्रों के लिए विश्व कार्ड के संस्करण खोजें।",
-  "english": "Explore cities around the world and discover World Card variants for your Shakespeare characters.",
-  "back": "Tour cities around the world and find versions of the World Card for your Shakespeare characters.",
-  "cos": 0.9509,
-  "chrf": 69.5,
-  "xcos": 0.8545,
-  "controlCos": 0.4671,
-  "xcontrol": 0.4602
+  "controlCos": 0.1366,
+  "xcontrol": 0.1657
  },
  {
   "id": "world-map.badge",
@@ -4412,20 +4208,8 @@
   "cos": 1.0,
   "chrf": 100.0,
   "xcos": 0.9153,
-  "controlCos": 0.3453,
-  "xcontrol": 0.1884
- },
- {
-  "id": "world-map.intro",
-  "lang": "hi",
-  "text": "शेक्सपियर के पात्र दुनिया घूमते हैं। हर शहर युद्ध की एक अनोखी क्षमता देता है। युद्ध, प्रश्नोत्तरी और खोज से संस्करण खोलें।",
-  "english": "Shakespeare's characters travel the globe. Each city grants a unique battle ability. Unlock variants through battles, trivia, and exploration.",
-  "back": "Shakespeare's characters travel the world. Each city offers a unique ability of warfare. Open versions from War, Quiz and Discovery.",
-  "cos": 0.8785,
-  "chrf": 45.6,
-  "xcos": 0.8444,
-  "controlCos": 0.1557,
-  "xcontrol": 0.2091
+  "controlCos": 0.1384,
+  "xcontrol": 0.1833
  },
  {
   "id": "world-map.combinations",
@@ -4532,8 +4316,224 @@
   "cos": 0.3737,
   "chrf": 21.5,
   "xcos": 0.3203,
-  "controlCos": 0.176,
-  "xcontrol": 0.0539
+  "controlCos": 0.1081,
+  "xcontrol": -0.0245
+ },
+ {
+  "id": "about.vision.p1",
+  "lang": "hi",
+  "text": "सोचिए, आप एक डिजिटल कार्ड चुनते हैं और वह एआई से बने 15 सेकंड के दृश्य में जी उठता है। शेक्सपीयर का एक पात्र ऑगमेंटेड रियलिटी में सामने आता है। आप उसे रैप बैटल की चुनौती देते हैं। आपके दोस्त देखते हैं और हौसला बढ़ाते हैं।",
+  "english": "Imagine selecting a digital card that springs to life with a 15-second AI-generated scene. A Shakespeare character appears in augmented reality. You challenge them to a rap battle. Your friends watch and cheer.",
+  "back": "Imagine, you pick a digital card and it comes to life in an AI-generated 15-second scene. A Shakespearean character appears in augmented reality. You challenge him to a rap battle. Your friends watch and encourage.",
+  "cos": 0.9846,
+  "chrf": 73.4,
+  "xcos": 0.842,
+  "controlCos": 0.2933,
+  "xcontrol": 0.2831
+ },
+ {
+  "id": "about.why.title",
+  "lang": "hi",
+  "text": "शेक्सपीयर ही क्यों?",
+  "english": "Why Shakespeare?",
+  "back": "Why Shakespeare?",
+  "cos": 1.0,
+  "chrf": 100.0,
+  "xcos": 0.9227,
+  "controlCos": 0.5101,
+  "xcontrol": 0.3462
+ },
+ {
+  "id": "about.why.p1",
+  "lang": "hi",
+  "text": "हमारे रचनात्मक साथी Devon Glover, यानी Sonnet Man, बरसों से साबित करते आए हैं कि शेक्सपीयर हिप हॉप हैं। वे कलाकार, शिक्षक और रंगमंच के अभिनेता हैं, और उनके काम में कविता, रूपांतरण और समकालीन संगीत घुले-मिले हैं। उन्होंने Southern Shakespeare Festival, Shakespeare Behind Bars और पूरे अमेरिका के स्कूलों के साथ काम किया है। हम उसी ऊर्जा को डिजिटल दुनिया में ला रहे हैं।",
+  "english": "Our creative partner Devon Glover, the Sonnet Man, has spent years proving that Shakespeare is hip-hop. A teaching artist and theater performer, his work fuses poetry, adaptation, and contemporary music. He's partnered with the Southern Shakespeare Festival, Shakespeare Behind Bars, and schools nationwide. We're taking that energy digital.",
+  "back": "Our creative partner Devon Glover, also known as Sonnet Man, has been proving for years that Shakespeare is hip hop. He’s an artist, teacher and stage actor, and his work blends poetry, transformation and contemporary music. He’s worked with the Southern Shakespeare Festival, Shakespeare Behind Bars and schools across America. We are bringing that same energy to the digital world.",
+  "cos": 0.9711,
+  "chrf": 65.3,
+  "xcos": 0.9065,
+  "controlCos": 0.3626,
+  "xcontrol": 0.3239
+ },
+ {
+  "id": "about.why.p2",
+  "lang": "hi",
+  "text": "शेक्सपीयर हमें घरानों, पात्रों और टकरावों का एक समृद्ध संसार देते हैं: संग्रहणीय कार्डों की युद्ध-प्रणाली के लिए एक स्वाभाविक बुनियाद। और यह सब सार्वजनिक डोमेन में है।",
+  "english": "Shakespeare gives us a rich universe of houses, characters, and conflicts: a natural foundation for a trading card battle system. And it's all public domain.",
+  "back": "Shakespeare gives us a rich world of clans, characters, and conflicts: a natural basis for a war-system of collectible cards. And it’s all in the public domain.",
+  "cos": 0.882,
+  "chrf": 60.9,
+  "xcos": 0.8429,
+  "controlCos": 0.4032,
+  "xcontrol": 0.2696
+ },
+ {
+  "id": "about.team.devon.bio",
+  "lang": "hi",
+  "text": "हिप हॉप, कविता और रूपांतरण के ज़रिए शेक्सपीयर को जीवंत करते हैं। कलाकार, शिक्षक, रंगमंच के अभिनेता और Shakespeare on the Go की आवाज़। उनका संगीत Spotify, Tidal और Apple Music पर है।",
+  "english": "Brings Shakespeare to life through hip-hop, poetry, and adaptation. Teaching artist, theater performer, and the voice behind Shakespeare on the Go. Music on Spotify, Tidal, and Apple Music.",
+  "back": "Hip hop brings Shakespeare to life through poetry and translation. Artist, teacher, stage actor and the voice of Shakespeare on the Go. His music is available on Spotify, Tidal and Apple Music.",
+  "cos": 0.8162,
+  "chrf": 61.1,
+  "xcos": 0.8853,
+  "controlCos": 0.2063,
+  "xcontrol": 0.2388
+ },
+ {
+  "id": "about.journey.e2",
+  "lang": "hi",
+  "text": "शेक्सपीयर के घरानों की प्रणाली और कार्डों के नियम प्रस्तावित हुए",
+  "english": "Shakespeare house system and card mechanics proposed",
+  "back": "Shakespeare's system of houses and rules of cards were proposed",
+  "cos": 0.8583,
+  "chrf": 52.1,
+  "xcos": 0.7951,
+  "controlCos": 0.5349,
+  "xcontrol": 0.4214
+ },
+ {
+  "id": "about.free.forever.l4",
+  "lang": "hi",
+  "text": "शेक्सपीयर की प्रश्नोत्तरी और चुनौतियाँ",
+  "english": "Shakespeare trivia & challenges",
+  "back": "Shakespeare Quizzes and Challenges",
+  "cos": 0.785,
+  "chrf": 58.0,
+  "xcos": 0.7779,
+  "controlCos": 0.5368,
+  "xcontrol": 0.5147
+ },
+ {
+  "id": "achievements.shakespeare-scholar.name",
+  "lang": "hi",
+  "text": "शेक्सपीयर का विद्वान",
+  "english": "Shakespeare Scholar",
+  "back": "Shakespeare Scholar",
+  "cos": 1.0,
+  "chrf": 100.0,
+  "xcos": 0.8811,
+  "controlCos": 0.5542,
+  "xcontrol": 0.3902
+ },
+ {
+  "id": "collection.meta.description",
+  "lang": "hi",
+  "text": "अपना Inspired Mile कार्ड संग्रह देखें: शेक्सपीयर की महानतम रचनाओं के पात्र, अवशेष और काढ़े।",
+  "english": "Browse your Inspired Mile card collection: characters, relics, and potions from Shakespeare's greatest works.",
+  "back": "Check out your Inspired Mile card collection: Characters, remains and excerpts from Shakespeare's greatest works.",
+  "cos": 0.8922,
+  "chrf": 74.6,
+  "xcos": 0.8333,
+  "controlCos": 0.5361,
+  "xcontrol": 0.4042
+ },
+ {
+  "id": "collection.intro",
+  "lang": "hi",
+  "text": "आपका शेक्सपीयर कार्ड संग्रह। बंद कार्ड खेल के मैदान में कमाए जा सकते हैं।",
+  "english": "Your Shakespeare card collection. Locked cards can be earned in the Playground.",
+  "back": "Your Shakespeare card collection. Closed cards can be earned in the game field.",
+  "cos": 0.8468,
+  "chrf": 75.1,
+  "xcos": 0.842,
+  "controlCos": 0.548,
+  "xcontrol": 0.4537
+ },
+ {
+  "id": "home.meta.description",
+  "lang": "hi",
+  "text": "Inspired Mile: एक कार्ड गेम जिसमें आपकी चाल एक पद है। शेक्सपीयर के पात्र इकट्ठा करें और ऐसे एआई से द्वंद्व करें जो पूरी तरह आपके ब्राउज़र में चलता है।",
+  "english": "Inspired Mile: a card game where your move is a verse. Collect Shakespeare's characters and duel an AI that runs entirely in your browser.",
+  "back": "Inspired Mile: A card game where your move is a piece. Collect Shakespearean characters and duel an AI that runs entirely in your browser.",
+  "cos": 0.9538,
+  "chrf": 87.3,
+  "xcos": 0.8503,
+  "controlCos": 0.7873,
+  "xcontrol": 0.6472
+ },
+ {
+  "id": "home.hero.body",
+  "lang": "hi",
+  "text": "एक कार्ड गेम जिसमें आपकी चाल एक पद है। कोई पात्र खेलें, छंद-रूप निभाएँ और ऐसे एआई से द्वंद्व करें जो आपके ब्राउज़र में चलता है। शेक्सपीयर के महानतम पात्र इकट्ठा करें और संग्रहणीय कार्ड गेमों के अगले दौर का हिस्सा बनें।",
+  "english": "A card game where your move is a verse. Play a character, keep the form, and duel an AI that runs in your browser. Collect Shakespeare's greatest characters, and join the next evolution of trading card games.",
+  "back": "A card game where your move is one piece. Play a character, play the rhyme and duel an AI that runs in your browser. Collect Shakespeare's greatest characters and be part of the next round of collectible card games.",
+  "cos": 0.9302,
+  "chrf": 73.0,
+  "xcos": 0.825,
+  "controlCos": 0.5567,
+  "xcontrol": 0.4474
+ },
+ {
+  "id": "home.feature.cards.body",
+  "lang": "hi",
+  "text": "शेक्सपीयर, रोमानी कवियों और मिथकों के पात्र। हर कार्ड बदल देता है कि आपके पद को क्या करना है।",
+  "english": "Characters from Shakespeare, the Romantics and myth. Each card changes what your verse has to do.",
+  "back": "Characters from Shakespeare, Romantic poets and myths. Each card changes what your position has to do.",
+  "cos": 0.8775,
+  "chrf": 76.8,
+  "xcos": 0.8415,
+  "controlCos": 0.343,
+  "xcontrol": 0.3921
+ },
+ {
+  "id": "home.houses.title",
+  "lang": "hi",
+  "text": "शेक्सपीयर के घराने",
+  "english": "Shakespeare's Houses",
+  "back": "Shakespeare's House",
+  "cos": 0.9592,
+  "chrf": 95.0,
+  "xcos": 0.8091,
+  "controlCos": 0.7031,
+  "xcontrol": 0.5019
+ },
+ {
+  "id": "home.houses.body",
+  "lang": "hi",
+  "text": "अपना पक्ष चुनें। हर घराना शेक्सपीयर के एक अलग नाटक से निकला है, और उसके अपने पात्र, क्षमताएँ और रणनीतियाँ हैं।",
+  "english": "Choose your allegiance. Each house draws from a different Shakespeare play, with unique characters, abilities, and strategies.",
+  "back": "Choose your side. Each clan stems from a different play by Shakespeare, and has its own characters, skills, and strategies.",
+  "cos": 0.6724,
+  "chrf": 56.5,
+  "xcos": 0.8043,
+  "controlCos": 0.3504,
+  "xcontrol": 0.4582
+ },
+ {
+  "id": "variants.ability.LDN.why",
+  "lang": "hi",
+  "text": "शेक्सपीयर का घर",
+  "english": "The home of Shakespeare",
+  "back": "Shakespeare's House",
+  "cos": 0.9027,
+  "chrf": 50.9,
+  "xcos": 0.8809,
+  "controlCos": 0.4881,
+  "xcontrol": 0.3563
+ },
+ {
+  "id": "world-map.meta.description",
+  "lang": "hi",
+  "text": "दुनिया भर के शहर घूमें और अपने शेक्सपीयर पात्रों के लिए विश्व कार्ड के संस्करण खोजें।",
+  "english": "Explore cities around the world and discover World Card variants for your Shakespeare characters.",
+  "back": "Tour cities around the world and find versions of the World Card for your Shakespeare characters.",
+  "cos": 0.9509,
+  "chrf": 69.5,
+  "xcos": 0.8572,
+  "controlCos": 0.6561,
+  "xcontrol": 0.5136
+ },
+ {
+  "id": "world-map.intro",
+  "lang": "hi",
+  "text": "शेक्सपीयर के पात्र दुनिया घूमते हैं। हर शहर युद्ध की एक अनोखी क्षमता देता है। युद्ध, प्रश्नोत्तरी और खोज से संस्करण खोलें।",
+  "english": "Shakespeare's characters travel the globe. Each city grants a unique battle ability. Unlock variants through battles, trivia, and exploration.",
+  "back": "Shakespeare's characters travel the world. Each city gives a unique ability to war. Open versions with war, quiz and quest.",
+  "cos": 0.8506,
+  "chrf": 47.3,
+  "xcos": 0.8419,
+  "controlCos": 0.1676,
+  "xcontrol": 0.2086
  },
  {
   "id": "about.meta.description",
@@ -6885,7 +6885,7 @@
   "chrf": 2.2,
   "xcos": 0.4369,
   "controlCos": 0.2317,
-  "xcontrol": 0.3571
+  "xcontrol": 0.3572
  },
  {
   "id": "card-terms.element.shadow",
@@ -7832,32 +7832,8 @@
   "cos": 0.5493,
   "chrf": 39.9,
   "xcos": 0.6117,
-  "controlCos": 0.1939,
-  "xcontrol": 0.1566
- },
- {
-  "id": "profile.local",
-  "lang": "th",
-  "text": "คุณกำลังเล่นบนเครื่องนี้เท่านั้น เข้าสู่ระบบเพื่อซิงก์ความคืบหน้า",
-  "english": "Playing locally. Sign in to sync your progress.",
-  "back": "You're only playing on this machine. Log in to sync progress.",
-  "cos": 0.808,
-  "chrf": 44.1,
-  "xcos": 0.5241,
-  "controlCos": 0.2497,
-  "xcontrol": 0.1495
- },
- {
-  "id": "profile.signedInAs",
-  "lang": "th",
-  "text": "เข้าสู่ระบบด้วย ana@example.com",
-  "english": "Signed in as ana@example.com",
-  "back": "Log in with ana@example.com",
-  "cos": 0.8957,
-  "chrf": 59.2,
-  "xcos": 0.8418,
-  "controlCos": 0.0892,
-  "xcontrol": 0.1146
+  "controlCos": 0.201,
+  "xcontrol": 0.2243
  },
  {
   "id": "profile.stat.wins",
@@ -9068,8 +9044,32 @@
   "cos": 0.3822,
   "chrf": 0.0,
   "xcos": 0.9142,
-  "controlCos": 0.0741,
-  "xcontrol": 0.0104
+  "controlCos": 0.102,
+  "xcontrol": 0.0365
+ },
+ {
+  "id": "profile.local",
+  "lang": "th",
+  "text": "คุณกำลังเล่นบนเครื่องนี้เท่านั้น ลงชื่อเข้าใช้เพื่อซิงก์ความคืบหน้า",
+  "english": "Playing locally. Sign in to sync your progress.",
+  "back": "You're only playing on this machine. Sign in to sync progress.",
+  "cos": 0.8206,
+  "chrf": 54.9,
+  "xcos": 0.4784,
+  "controlCos": 0.3056,
+  "xcontrol": 0.1543
+ },
+ {
+  "id": "profile.signedInAs",
+  "lang": "th",
+  "text": "ลงชื่อเข้าใช้ด้วย ana@example.com",
+  "english": "Signed in as ana@example.com",
+  "back": "Sign in with ana@example.com",
+  "cos": 0.9544,
+  "chrf": 64.3,
+  "xcos": 0.892,
+  "controlCos": 0.1852,
+  "xcontrol": 0.0385
  },
  {
   "id": "about.meta.description",
@@ -13700,20 +13700,8 @@
   "cos": 1.0,
   "chrf": 100.0,
   "xcos": 0.9374,
-  "controlCos": 0.5101,
-  "xcontrol": 0.409
- },
- {
-  "id": "about.why.p1",
-  "lang": "vi",
-  "text": "Đối tác sáng tạo của chúng tôi, Devon Glover, tức Sonnet Man, đã dành nhiều năm chứng minh rằng Shakespeare chính là hip hop. Là nghệ sĩ giảng dạy và diễn viên sân khấu, anh hòa trộn thơ ca, chuyển thể và âm nhạc đương đại trong tác phẩm của mình. Anh đã hợp tác với Southern Shakespeare Festival, Shakespeare Behind Bars và các trường học trên khắp nước Mỹ. Chúng tôi đang đưa nguồn năng lượng đó vào thế giới số.",
-  "english": "Our creative partner Devon Glover, the Sonnet Man, has spent years proving that Shakespeare is hip-hop. A teaching artist and theater performer, his work fuses poetry, adaptation, and contemporary music. He's partnered with the Southern Shakespeare Festival, Shakespeare Behind Bars, and schools nationwide. We're taking that energy digital.",
-  "back": "Our creative partner, Devon Glover, aka Sonnet Man, has spent years proving that Shakespeare is hip hop. As a teaching artist and stage actor, he blends poetry, performance and contemporary music into his work. He's collaborated with the Southern Shakespeare Festival, Shakespeare Behind Bars and schools across America. We're bringing that energy to the digital world.",
-  "cos": 0.9812,
-  "chrf": 72.9,
-  "xcos": 0.8807,
-  "controlCos": 0.3742,
-  "xcontrol": 0.313
+  "controlCos": 0.5643,
+  "xcontrol": 0.4284
  },
  {
   "id": "about.why.p2",
@@ -14444,20 +14432,8 @@
   "cos": 1.0,
   "chrf": 100.0,
   "xcos": 0.935,
-  "controlCos": 0.1581,
-  "xcontrol": 0.1833
- },
- {
-  "id": "achievements.unlockedOn",
-  "lang": "vi",
-  "text": "Mở khóa ngày 2025-03-14",
-  "english": "Unlocked 2025-03-14",
-  "back": "Unlocked 2025-03-14",
-  "cos": 1.0,
-  "chrf": 100.0,
-  "xcos": 0.8926,
-  "controlCos": 0.0137,
-  "xcontrol": 0.1748
+  "controlCos": 0.2716,
+  "xcontrol": 0.3586
  },
  {
   "id": "achievements.first-blood.name",
@@ -15584,20 +15560,8 @@
   "cos": 0.8445,
   "chrf": 92.4,
   "xcos": 0.9274,
-  "controlCos": 0.2142,
-  "xcontrol": 0.4323
- },
- {
-  "id": "card-terms.element.devotion",
-  "lang": "vi",
-  "text": "Tận tụy",
-  "english": "Devotion",
-  "back": "Dedication.",
-  "cos": 0.4819,
-  "chrf": 28.4,
-  "xcos": 0.5633,
-  "controlCos": 0.1706,
-  "xcontrol": 0.2725
+  "controlCos": 0.3316,
+  "xcontrol": 0.3696
  },
  {
   "id": "card-terms.element.disguise",
@@ -15848,32 +15812,8 @@
   "cos": 0.929,
   "chrf": 95.2,
   "xcos": 0.7945,
-  "controlCos": 0.318,
-  "xcontrol": 0.3213
- },
- {
-  "id": "card-terms.element.peace",
-  "lang": "vi",
-  "text": "Hòa bình",
-  "english": "Peace",
-  "back": "Peace.",
-  "cos": 0.8773,
-  "chrf": 92.4,
-  "xcos": 0.8613,
-  "controlCos": 0.1443,
-  "xcontrol": 0.1879
- },
- {
-  "id": "card-terms.element.petrification",
-  "lang": "vi",
-  "text": "Hóa đá",
-  "english": "Petrification",
-  "back": "Stones",
-  "cos": 0.2057,
-  "chrf": 7.3,
-  "xcos": 0.4048,
-  "controlCos": 0.3,
-  "xcontrol": 0.3256
+  "controlCos": 0.2864,
+  "xcontrol": 0.4342
  },
  {
   "id": "card-terms.element.poison",
@@ -16136,20 +16076,8 @@
   "cos": 0.9293,
   "chrf": 70.2,
   "xcos": 0.9137,
-  "controlCos": 0.3891,
-  "xcontrol": 0.2228
- },
- {
-  "id": "collection.intro",
-  "lang": "vi",
-  "text": "Bộ sưu tập thẻ bài Shakespeare của bạn. Những lá bài còn khóa có thể kiếm được ở Sân chơi.",
-  "english": "Your Shakespeare card collection. Locked cards can be earned in the Playground.",
-  "back": "Your collection of Shakespeare cards. Unlocked cards can be found in the Playground.",
-  "cos": 0.9022,
-  "chrf": 73.6,
-  "xcos": 0.8569,
-  "controlCos": 0.3612,
-  "xcontrol": 0.2237
+  "controlCos": 0.2283,
+  "xcontrol": 0.2041
  },
  {
   "id": "collection.owned",
@@ -16184,20 +16112,8 @@
   "cos": 0.2016,
   "chrf": 7.4,
   "xcos": 0.6228,
-  "controlCos": 0.2552,
-  "xcontrol": 0.4228
- },
- {
-  "id": "collection.locked",
-  "lang": "vi",
-  "text": "Còn khóa",
-  "english": "Locked",
-  "back": "Locked.",
-  "cos": 0.9016,
-  "chrf": 93.3,
-  "xcos": 0.7892,
-  "controlCos": 0.1362,
-  "xcontrol": 0.2136
+  "controlCos": 0.241,
+  "xcontrol": 0.1587
  },
  {
   "id": "collection.world.title",
@@ -16208,32 +16124,8 @@
   "cos": 0.9691,
   "chrf": 47.2,
   "xcos": 0.7336,
-  "controlCos": 0.3227,
-  "xcontrol": 0.2449
- },
- {
-  "id": "collection.world.intro",
-  "lang": "vi",
-  "text": "Các nhân vật của bạn chu du khắp địa cầu. Thắng trận đấu và trả lời đúng hết đố vui để mở khóa các biến thể thành phố.",
-  "english": "Your characters travel the globe. Win battles and ace trivia to unlock city variants.",
-  "back": "Your characters travel around the globe. Win matches and answer all the puzzles correctly to unlock city variations.",
-  "cos": 0.8424,
-  "chrf": 65.3,
-  "xcos": 0.7778,
-  "controlCos": 0.489,
-  "xcontrol": 0.451
- },
- {
-  "id": "collection.world.empty",
-  "lang": "vi",
-  "text": "Chưa có biến thể nào. Thắng ba trận đấu liên tiếp hoặc đạt điểm tuyệt đối ở đố vui để mở khóa lá bài thế giới đầu tiên!",
-  "english": "No variants yet. Win three battles in a row or get a perfect trivia score to unlock your first World Card!",
-  "back": "No variation available. Win three matches in a row or achieve the absolute score on the fun deck to unlock the first world card!",
-  "cos": 0.8093,
-  "chrf": 42.1,
-  "xcos": 0.8334,
-  "controlCos": 0.3878,
-  "xcontrol": 0.0978
+  "controlCos": 0.4261,
+  "xcontrol": 0.1606
  },
  {
   "id": "collection.deck.title",
@@ -16280,20 +16172,8 @@
   "cos": 1.0,
   "chrf": 100.0,
   "xcos": 0.6372,
-  "controlCos": 0.1843,
-  "xcontrol": 0.2765
- },
- {
-  "id": "collection.deck.clear",
-  "lang": "vi",
-  "text": "Xóa hết",
-  "english": "Clear",
-  "back": "Delete All",
-  "cos": 0.3712,
-  "chrf": 11.1,
-  "xcos": 0.58,
-  "controlCos": -0.0228,
-  "xcontrol": 0.0809
+  "controlCos": 0.0395,
+  "xcontrol": 0.0396
  },
  {
   "id": "collection.deck.addCharacters",
@@ -16412,20 +16292,8 @@
   "cos": 1.0,
   "chrf": 100.0,
   "xcos": 0.8691,
-  "controlCos": 0.1492,
-  "xcontrol": 0.107
- },
- {
-  "id": "collection.deck.delete",
-  "lang": "vi",
-  "text": "Xóa bộ bài Hamlet",
-  "english": "Delete deck Hamlet",
-  "back": "Delete Hamlet Deck",
-  "cos": 0.9798,
-  "chrf": 56.0,
-  "xcos": 0.8865,
-  "controlCos": 0.4568,
-  "xcontrol": 0.3032
+  "controlCos": 0.2292,
+  "xcontrol": 0.0788
  },
  {
   "id": "collection.deck.errorName",
@@ -16520,20 +16388,8 @@
   "cos": 0.832,
   "chrf": 91.1,
   "xcos": 0.9402,
-  "controlCos": 0.0482,
-  "xcontrol": 0.16
- },
- {
-  "id": "collection.achievements.count",
-  "lang": "vi",
-  "text": "Đã mở khóa: 3 / 12",
-  "english": "Unlocked: 3 / 12",
-  "back": "Unlocked: 3 / 12",
-  "cos": 1.0,
-  "chrf": 100.0,
-  "xcos": 0.9483,
-  "controlCos": 0.0559,
-  "xcontrol": -0.0074
+  "controlCos": 0.2067,
+  "xcontrol": 0.0493
  },
  {
   "id": "home.meta.description",
@@ -16556,20 +16412,8 @@
   "cos": 1.0,
   "chrf": 38.3,
   "xcos": 0.6329,
-  "controlCos": 0.4115,
-  "xcontrol": 0.1106
- },
- {
-  "id": "home.hero.body",
-  "lang": "vi",
-  "text": "Trò chơi thẻ bài mà nước đi của bạn là một bài thơ. Đánh ra một nhân vật, giữ đúng thể thơ và đấu với một AI chạy trong trình duyệt của bạn. Sưu tầm những nhân vật vĩ đại nhất của Shakespeare và tham gia bước tiến hóa tiếp theo của dòng trò chơi thẻ bài sưu tầm.",
-  "english": "A card game where your move is a verse. Play a character, keep the form, and duel an AI that runs in your browser. Collect Shakespeare's greatest characters, and join the next evolution of trading card games.",
-  "back": "A card game where your move is a poem. Pick a character, keep the verse and battle an AI running in your browser. Collect Shakespeare's greatest characters and join the next evolution of the collection card series.",
-  "cos": 0.9297,
-  "chrf": 72.2,
-  "xcos": 0.8131,
-  "controlCos": 0.1899,
-  "xcontrol": 0.2224
+  "controlCos": 0.034,
+  "xcontrol": 0.2061
  },
  {
   "id": "home.cta.playground",
@@ -17228,20 +17072,8 @@
   "cos": 0.8014,
   "chrf": 60.5,
   "xcos": 0.9551,
-  "controlCos": 0.51,
-  "xcontrol": 0.4157
- },
- {
-  "id": "profile.recent.noAchievements",
-  "lang": "vi",
-  "text": "Bạn chưa mở khóa thành tựu nào.",
-  "english": "No achievements unlocked yet.",
-  "back": "You haven't unlocked any achievements.",
-  "cos": 0.866,
-  "chrf": 62.1,
-  "xcos": 0.7979,
-  "controlCos": 0.1433,
-  "xcontrol": 0.1563
+  "controlCos": 0.1306,
+  "xcontrol": 0.0687
  },
  {
   "id": "rules.landIt",
@@ -17420,20 +17252,8 @@
   "cos": 0.7364,
   "chrf": 59.4,
   "xcos": 0.8658,
-  "controlCos": -0.035,
-  "xcontrol": 0.1685
- },
- {
-  "id": "variants.unlocked",
-  "lang": "vi",
-  "text": "Biến thể đã mở khóa: 3",
-  "english": "Variants unlocked: 3",
-  "back": "Unlocked mutants: 3",
-  "cos": 0.6622,
-  "chrf": 42.3,
-  "xcos": 0.8624,
-  "controlCos": 0.4544,
-  "xcontrol": 0.6311
+  "controlCos": 0.0324,
+  "xcontrol": 0.2608
  },
  {
   "id": "variants.count",
@@ -17528,20 +17348,8 @@
   "cos": 0.6142,
   "chrf": 12.7,
   "xcos": 0.8333,
-  "controlCos": 0.0736,
-  "xcontrol": 0.3792
- },
- {
-  "id": "variants.ability.TKY.why",
-  "lang": "vi",
-  "text": "Văn hóa chuộng sự chính xác của Tokyo",
-  "english": "Tokyo's culture of precision",
-  "back": "Tokyo's precision culture.",
-  "cos": 0.9574,
-  "chrf": 68.1,
-  "xcos": 0.876,
-  "controlCos": 0.0863,
-  "xcontrol": 0.1934
+  "controlCos": 0.132,
+  "xcontrol": 0.2268
  },
  {
   "id": "variants.ability.LGS.name",
@@ -17576,20 +17384,8 @@
   "cos": 0.6084,
   "chrf": 18.5,
   "xcos": 0.6625,
-  "controlCos": 0.135,
-  "xcontrol": 0.1357
- },
- {
-  "id": "variants.ability.BKN.why",
-  "lang": "vi",
-  "text": "Văn hóa cà khịa của New York, cái nôi của đấu rap",
-  "english": "New York's roast culture, birthplace of battle rap",
-  "back": "The mockery culture of New York, the cradle of rap.",
-  "cos": 0.75,
-  "chrf": 31.9,
-  "xcos": 0.8046,
-  "controlCos": 0.152,
-  "xcontrol": 0.183
+  "controlCos": 0.2061,
+  "xcontrol": 0.374
  },
  {
   "id": "variants.ability.LDN.name",
@@ -17864,20 +17660,8 @@
   "cos": 0.6411,
   "chrf": 50.9,
   "xcos": 0.7964,
-  "controlCos": 0.1772,
-  "xcontrol": 0.4049
- },
- {
-  "id": "variants.ability.MNL.why",
-  "lang": "vi",
-  "text": "Văn hóa đấu rap của Philippines",
-  "english": "Filipino rap battle culture",
-  "back": "Rap culture in the Philippines.",
-  "cos": 0.8331,
-  "chrf": 33.9,
-  "xcos": 0.849,
-  "controlCos": 0.1788,
-  "xcontrol": 0.0589
+  "controlCos": 0.2304,
+  "xcontrol": 0.2103
  },
  {
   "id": "variants.ability.IST.name",
@@ -18032,20 +17816,8 @@
   "cos": 0.9209,
   "chrf": 44.3,
   "xcos": 0.9551,
-  "controlCos": 0.3679,
-  "xcontrol": 0.1765
- },
- {
-  "id": "world-map.intro",
-  "lang": "vi",
-  "text": "Các nhân vật của Shakespeare chu du khắp địa cầu. Mỗi thành phố ban một năng lực thi đấu riêng. Mở khóa biến thể qua trận đấu, đố vui và khám phá.",
-  "english": "Shakespeare's characters travel the globe. Each city grants a unique battle ability. Unlock variants through battles, trivia, and exploration.",
-  "back": "Shakespeare's characters travel the globe, each city gives you a unique combat ability, unlock transformation through battles, puzzles and exploration.",
-  "cos": 0.9254,
-  "chrf": 66.2,
-  "xcos": 0.8698,
-  "controlCos": 0.1596,
-  "xcontrol": 0.2468
+  "controlCos": 0.1107,
+  "xcontrol": 0.1973
  },
  {
   "id": "world-map.combinations",
@@ -18104,20 +17876,8 @@
   "cos": 0.5324,
   "chrf": 24.6,
   "xcos": 0.8618,
-  "controlCos": 0.2008,
-  "xcontrol": 0.2758
- },
- {
-  "id": "world-map.none",
-  "lang": "vi",
-  "text": "Bạn chưa mở khóa biến thể nào ở thành phố này: London.",
-  "english": "No variants unlocked in London yet.",
-  "back": "You haven't unlocked any variants in this city: London.",
-  "cos": 0.8419,
-  "chrf": 50.7,
-  "xcos": 0.7071,
-  "controlCos": 0.1836,
-  "xcontrol": 0.1663
+  "controlCos": 0.0413,
+  "xcontrol": 0.1161
  },
  {
   "id": "world-map.unknownCard",
@@ -18140,8 +17900,248 @@
   "cos": 1.0,
   "chrf": 100.0,
   "xcos": 0.9254,
-  "controlCos": 0.1716,
-  "xcontrol": -0.0015
+  "controlCos": 0.062,
+  "xcontrol": 0.1016
+ },
+ {
+  "id": "about.why.p1",
+  "lang": "vi",
+  "text": "Đối tác sáng tạo của chúng tôi, Devon Glover, tức Sonnet Man, đã dành nhiều năm chứng minh rằng Shakespeare chính là hip hop. Là nghệ sĩ giảng dạy và diễn viên sân khấu, anh hoà trộn thơ ca, chuyển thể và âm nhạc đương đại trong tác phẩm của mình. Anh đã hợp tác với Southern Shakespeare Festival, Shakespeare Behind Bars và các trường học trên khắp nước Mỹ. Chúng tôi đang đưa nguồn năng lượng đó vào thế giới số.",
+  "english": "Our creative partner Devon Glover, the Sonnet Man, has spent years proving that Shakespeare is hip-hop. A teaching artist and theater performer, his work fuses poetry, adaptation, and contemporary music. He's partnered with the Southern Shakespeare Festival, Shakespeare Behind Bars, and schools nationwide. We're taking that energy digital.",
+  "back": "Our creative partner, Devon Glover, aka Sonnet Man, has spent years proving that Shakespeare is hip hop. As a teaching artist and stage actor, he blends poetry, adaptation and contemporary music into his work. He's collaborated with the Southern Shakespeare Festival, Shakespeare Behind Bars and schools across America. We're bringing that energy to the digital world.",
+  "cos": 0.9811,
+  "chrf": 74.7,
+  "xcos": 0.8807,
+  "controlCos": -0.0484,
+  "xcontrol": 0.031
+ },
+ {
+  "id": "achievements.unlockedOn",
+  "lang": "vi",
+  "text": "Mở khoá ngày 2025-03-14",
+  "english": "Unlocked 2025-03-14",
+  "back": "Unlocked 2025-03-14",
+  "cos": 1.0,
+  "chrf": 100.0,
+  "xcos": 0.9021,
+  "controlCos": 0.0263,
+  "xcontrol": 0.0982
+ },
+ {
+  "id": "card-terms.element.devotion",
+  "lang": "vi",
+  "text": "Tận tuỵ",
+  "english": "Devotion",
+  "back": "Selfish.",
+  "cos": 0.3492,
+  "chrf": 4.2,
+  "xcos": 0.4863,
+  "controlCos": 0.3102,
+  "xcontrol": 0.413
+ },
+ {
+  "id": "card-terms.element.peace",
+  "lang": "vi",
+  "text": "Hoà bình",
+  "english": "Peace",
+  "back": "Peace.",
+  "cos": 0.8773,
+  "chrf": 92.4,
+  "xcos": 0.9061,
+  "controlCos": 0.1443,
+  "xcontrol": 0.216
+ },
+ {
+  "id": "card-terms.element.petrification",
+  "lang": "vi",
+  "text": "Hoá đá",
+  "english": "Petrification",
+  "back": "Flowers.",
+  "cos": 0.2553,
+  "chrf": 4.2,
+  "xcos": 0.3589,
+  "controlCos": 0.1939,
+  "xcontrol": 0.0215
+ },
+ {
+  "id": "collection.intro",
+  "lang": "vi",
+  "text": "Bộ sưu tập thẻ bài Shakespeare của bạn. Những lá bài còn khoá có thể kiếm được ở Sân chơi.",
+  "english": "Your Shakespeare card collection. Locked cards can be earned in the Playground.",
+  "back": "Your collection of Shakespeare cards. The locked cards can be found in the Playground.",
+  "cos": 0.9254,
+  "chrf": 73.6,
+  "xcos": 0.8568,
+  "controlCos": 0.2993,
+  "xcontrol": 0.1322
+ },
+ {
+  "id": "collection.locked",
+  "lang": "vi",
+  "text": "Còn khoá",
+  "english": "Locked",
+  "back": "Locked.",
+  "cos": 0.9016,
+  "chrf": 93.3,
+  "xcos": 0.7668,
+  "controlCos": 0.2461,
+  "xcontrol": 0.0091
+ },
+ {
+  "id": "collection.world.intro",
+  "lang": "vi",
+  "text": "Các nhân vật của bạn chu du khắp địa cầu. Thắng trận đấu và trả lời đúng hết đố vui để mở khoá các biến thể thành phố.",
+  "english": "Your characters travel the globe. Win battles and ace trivia to unlock city variants.",
+  "back": "Your characters travel around the globe. Win matches and answer all the puzzles correctly to unlock city variations.",
+  "cos": 0.8424,
+  "chrf": 65.3,
+  "xcos": 0.7812,
+  "controlCos": 0.489,
+  "xcontrol": 0.4504
+ },
+ {
+  "id": "collection.world.empty",
+  "lang": "vi",
+  "text": "Chưa có biến thể nào. Thắng ba trận đấu liên tiếp hoặc đạt điểm tuyệt đối ở đố vui để mở khoá lá bài thế giới đầu tiên!",
+  "english": "No variants yet. Win three battles in a row or get a perfect trivia score to unlock your first World Card!",
+  "back": "No variation available. Win three games in a row or achieve the absolute score on the fun deck to unlock the first world card!",
+  "cos": 0.8214,
+  "chrf": 42.3,
+  "xcos": 0.8351,
+  "controlCos": 0.0644,
+  "xcontrol": 0.1202
+ },
+ {
+  "id": "collection.deck.clear",
+  "lang": "vi",
+  "text": "Xoá hết",
+  "english": "Clear",
+  "back": "Delete All",
+  "cos": 0.3712,
+  "chrf": 11.1,
+  "xcos": 0.6286,
+  "controlCos": 0.2985,
+  "xcontrol": 0.2773
+ },
+ {
+  "id": "collection.deck.delete",
+  "lang": "vi",
+  "text": "Xoá bộ bài Hamlet",
+  "english": "Delete deck Hamlet",
+  "back": "Delete Hamlet",
+  "cos": 0.8149,
+  "chrf": 52.4,
+  "xcos": 0.8455,
+  "controlCos": 0.051,
+  "xcontrol": 0.2153
+ },
+ {
+  "id": "collection.achievements.count",
+  "lang": "vi",
+  "text": "Đã mở khoá: 3 / 12",
+  "english": "Unlocked: 3 / 12",
+  "back": "Unlocked: 3 / 12",
+  "cos": 1.0,
+  "chrf": 100.0,
+  "xcos": 0.9506,
+  "controlCos": 0.0747,
+  "xcontrol": -0.0178
+ },
+ {
+  "id": "home.hero.body",
+  "lang": "vi",
+  "text": "Trò chơi thẻ bài mà nước đi của bạn là một bài thơ. Đánh ra một nhân vật, giữ đúng thể thơ và đấu với một AI chạy trong trình duyệt của bạn. Sưu tầm những nhân vật vĩ đại nhất của Shakespeare và tham gia bước tiến hoá tiếp theo của dòng trò chơi thẻ bài sưu tầm.",
+  "english": "A card game where your move is a verse. Play a character, keep the form, and duel an AI that runs in your browser. Collect Shakespeare's greatest characters, and join the next evolution of trading card games.",
+  "back": "A card game where your move is a poem. Pick a character, keep the verse and battle an AI running in your browser. Collect Shakespeare's greatest characters and join the next evolution of the collection card game series.",
+  "cos": 0.9296,
+  "chrf": 74.4,
+  "xcos": 0.811,
+  "controlCos": 0.0622,
+  "xcontrol": 0.1655
+ },
+ {
+  "id": "profile.recent.noAchievements",
+  "lang": "vi",
+  "text": "Bạn chưa mở khoá thành tựu nào.",
+  "english": "No achievements unlocked yet.",
+  "back": "You haven't unlocked any achievements.",
+  "cos": 0.866,
+  "chrf": 62.1,
+  "xcos": 0.8123,
+  "controlCos": 0.292,
+  "xcontrol": 0.3186
+ },
+ {
+  "id": "variants.unlocked",
+  "lang": "vi",
+  "text": "Biến thể đã mở khoá: 3",
+  "english": "Variants unlocked: 3",
+  "back": "Unlocked mutants: 3",
+  "cos": 0.6622,
+  "chrf": 42.3,
+  "xcos": 0.8746,
+  "controlCos": 0.1445,
+  "xcontrol": 0.0538
+ },
+ {
+  "id": "variants.ability.TKY.why",
+  "lang": "vi",
+  "text": "Văn hoá chuộng sự chính xác của Tokyo",
+  "english": "Tokyo's culture of precision",
+  "back": "Tokyo's precision culture.",
+  "cos": 0.9574,
+  "chrf": 68.1,
+  "xcos": 0.8675,
+  "controlCos": 0.1904,
+  "xcontrol": 0.416
+ },
+ {
+  "id": "variants.ability.BKN.why",
+  "lang": "vi",
+  "text": "Văn hoá cà khịa của New York, cái nôi của đấu rap",
+  "english": "New York's roast culture, birthplace of battle rap",
+  "back": "New York's mockery culture, the cradle of rapping.",
+  "cos": 0.7301,
+  "chrf": 39.5,
+  "xcos": 0.8061,
+  "controlCos": 0.5151,
+  "xcontrol": 0.5369
+ },
+ {
+  "id": "variants.ability.MNL.why",
+  "lang": "vi",
+  "text": "Văn hoá đấu rap của Philippines",
+  "english": "Filipino rap battle culture",
+  "back": "Rap culture in the Philippines.",
+  "cos": 0.8331,
+  "chrf": 33.9,
+  "xcos": 0.8513,
+  "controlCos": 0.1195,
+  "xcontrol": 0.1437
+ },
+ {
+  "id": "world-map.intro",
+  "lang": "vi",
+  "text": "Các nhân vật của Shakespeare chu du khắp địa cầu. Mỗi thành phố ban một năng lực thi đấu riêng. Mở khoá biến thể qua trận đấu, đố vui và khám phá.",
+  "english": "Shakespeare's characters travel the globe. Each city grants a unique battle ability. Unlock variants through battles, trivia, and exploration.",
+  "back": "Shakespeare's characters travel the globe, each city gives you a unique combat ability, unlock transformation through battles, puzzles and exploration.",
+  "cos": 0.9254,
+  "chrf": 66.2,
+  "xcos": 0.8685,
+  "controlCos": 0.176,
+  "xcontrol": 0.2415
+ },
+ {
+  "id": "world-map.none",
+  "lang": "vi",
+  "text": "Bạn chưa mở khoá biến thể nào ở thành phố này: London.",
+  "english": "No variants unlocked in London yet.",
+  "back": "You haven't unlocked any variants in this city: London.",
+  "cos": 0.8419,
+  "chrf": 50.7,
+  "xcos": 0.7117,
+  "controlCos": 0.1867,
+  "xcontrol": 0.0906
  },
  {
   "id": "about.meta.description",
