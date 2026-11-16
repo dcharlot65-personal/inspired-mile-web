@@ -440,10 +440,12 @@ emitted as assets, 17,788,982 bytes in all (`tid_pos` 5.9 MB, `base` 4.0 MB, `ch
 smallest inlined in the analyser's chunk.
 
 Time for `loadSound(lang)` to resolve in headless Chromium, measured by `tests/sound.spec.ts`
-against the dev server on the build host: see the branch report for the run of 2026-11-16;
-the earlier run gave es 5 ms, id 9 ms, pt 15 ms, hi 41 ms, it 52 ms, th 63 ms, zh 88 ms,
-fr 146 ms, de 209 ms, ru 813 ms, ja 1,068 ms; pl, ko, vi, ar 0. That is parse and install time
-with no network in the way. **Download time over a real connection was not measured**; it
+against the dev server on the build host on 2026-11-16, at a load of about 4.5 per core (10
+test workers beside other sessions' work): es 8 ms, id 73 ms, hi 110 ms, fr 117 ms, pt 122 ms,
+th 135 ms, it 266 ms, zh 599 ms, de 896 ms, ja 1,752 ms, ru 3,336 ms; pl, ko, vi, ar 0. An
+earlier run on a quieter host gave es 5, id 9, pt 15, hi 41, it 52, th 63, zh 88, fr 146,
+de 209, ru 813, ja 1,068 ms. That is parse and install time with no network in the way; the
+Russian table is the slow one to parse (400,000 entries). **Download time over a real connection was not measured**; it
 follows from the gzip sizes above (Russian's 515 kB and Japanese's 17.8 MB are the two a
 player on a slow link will notice).
 
