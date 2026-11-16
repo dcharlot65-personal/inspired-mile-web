@@ -136,16 +136,21 @@ PY
 }
 fetch Nextcloud-AI/madlad400-3b-mt-ct2-int8 "${MADLAD_REV:-aa32bbdeba7880eff2096ec044cb155a340a9400}" madlad400-3b-mt-ct2-int8
 fetch sentence-transformers/all-MiniLM-L6-v2 "${MINILM_REV:-1110a243fdf4706b3f48f1d95db1a4f5529b4d41}" all-MiniLM-L6-v2 config.json 'model.safetensors' 'tokenizer*' 'vocab.txt' 'special_tokens_map.json' 'modules.json' 'sentence_bert_config.json' 'config_sentence_transformers.json' '1_Pooling/*' README.md
-# The reviewer: one 18 GB file. curl, not the hub client (which held 6 GB of memory fetching it), and resumable.
+# The reviewer: Google's own 4-bit (QAT) GGUF of Gemma 4 26B-A4B, a mixture of experts with about
+# 4B parameters active per token. The dense 31B (unsloth/gemma-4-31B-it-GGUF, Q4_K_M, fetched
+# first) generated 4 tokens/s on the shared GPU: about ten hours for the fifteen languages.
+# curl, not the hub client (which held 6 GB of memory fetching a file this size), and resumable.
 if [ "${SKIP_REVIEWER:-0}" != 1 ]; then
-  GEMMA_REV=${GEMMA_REV:-c1ac76e99d5513b141e8adde7288b85c3f9c32ec}
-  GEMMA_FILE=gemma-4-31B-it-Q4_K_M.gguf
-  GEMMA_SHA256=38bd64c852c4b460434cc7162fa9bdcf242faf86502581a754cb72956bb17f84
-  mkdir -p models/gemma-4-31B-it-GGUF
-  if [ ! -f models/gemma-4-31B-it-GGUF/.verified ]; then
-    step "model unsloth/gemma-4-31B-it-GGUF@$GEMMA_REV ($GEMMA_FILE)"
-    curl -fL --retry 5 -C - -sS -o "models/gemma-4-31B-it-GGUF/$GEMMA_FILE" "https://huggingface.co/unsloth/gemma-4-31B-it-GGUF/resolve/$GEMMA_REV/$GEMMA_FILE"
-    echo "$GEMMA_SHA256  models/gemma-4-31B-it-GGUF/$GEMMA_FILE" | shasum -a 256 -c - && touch models/gemma-4-31B-it-GGUF/.verified
+  REVIEWER_REPO=${REVIEWER_REPO:-google/gemma-4-26B-A4B-it-qat-q4_0-gguf}
+  REVIEWER_REV=${REVIEWER_REV:-d1c082be9cf3c8a514acf63b8761f4b41935842e}
+  REVIEWER_FILE=${REVIEWER_FILE:-gemma-4-26B_q4_0-it.gguf}
+  REVIEWER_SHA256=${REVIEWER_SHA256:-3eca3b8f6d7baf218a7dd6bba5fb59a56ee25fe2d567b6f5f589b4f697eca51d}
+  D=models/$(basename "$REVIEWER_REPO")
+  mkdir -p "$D"
+  if [ ! -f "$D/.verified" ]; then
+    step "model $REVIEWER_REPO@$REVIEWER_REV ($REVIEWER_FILE)"
+    curl -fL --retry 5 -C - -sS -o "$D/$REVIEWER_FILE" "https://huggingface.co/$REVIEWER_REPO/resolve/$REVIEWER_REV/$REVIEWER_FILE"
+    echo "$REVIEWER_SHA256  $D/$REVIEWER_FILE" | shasum -a 256 -c - && touch "$D/.verified"
   fi
 fi
 du -sh models/* 2>/dev/null

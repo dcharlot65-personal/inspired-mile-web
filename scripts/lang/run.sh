@@ -27,7 +27,7 @@ export MADLAD_DIR=$LANGQA_HOME/models/madlad400-3b-mt-ct2-int8 MINILM_DIR=$LANGQ
 export HF_HOME=$LANGQA_HOME/cache/hf TMPDIR=$LANGQA_HOME/tmp HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 TOKENIZERS_PARALLELISM=false
 LT_PORT=${LT_PORT:-18731}
 LLAMA_PORT=${LLAMA_PORT:-18732}
-GGUF=${GGUF:-$LANGQA_HOME/models/gemma-4-31B-it-GGUF/gemma-4-31B-it-Q4_K_M.gguf}
+export GGUF=${GGUF:-$LANGQA_HOME/models/gemma-4-26B-A4B-it-qat-q4_0-gguf/gemma-4-26B_q4_0-it.gguf}
 mkdir -p "$OUT" "$LANGQA_HOME/logs" "$TMPDIR"
 HERE=$(cd "$(dirname "$0")/../.." && pwd)
 cd "$HERE"
@@ -71,7 +71,7 @@ start_languagetool() {
 
 start_llama() {
   if lsof -nP -iTCP:"$LLAMA_PORT" -sTCP:LISTEN >/dev/null 2>&1; then echo "run.sh: port $LLAMA_PORT is taken; set LLAMA_PORT" >&2; exit 2; fi
-  nice -n 10 "$MEMGUARD" --max-gb 32 -- llama-server -m "$GGUF" --host 127.0.0.1 --port "$LLAMA_PORT" -c 16384 -np 2 -ngl 99 --temp 0 --no-webui --jinja --reasoning-budget 0 >"$LANGQA_HOME/logs/llama-server.log" 2>&1 &
+  nice -n 10 "$MEMGUARD" --max-gb 32 -- llama-server -m "$GGUF" --host 127.0.0.1 --port "$LLAMA_PORT" -c 16384 -np 2 -ngl 99 --temp 0 --no-webui --jinja --reasoning-budget 0 --cache-ram 0 >"$LANGQA_HOME/logs/llama-server.log" 2>&1 &
   PIDS+=($!)
   wait_http "http://127.0.0.1:$LLAMA_PORT/health" 900 "$LANGQA_HOME/logs/llama-server.log"
   export LLAMA_URL=http://127.0.0.1:$LLAMA_PORT

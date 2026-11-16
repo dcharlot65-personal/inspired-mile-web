@@ -26,7 +26,7 @@ const args = process.argv.slice(2);
 const opt = (name, dflt) => (args.includes(name) ? args[args.indexOf(name) + 1] : dflt);
 const URL_ = process.env.LLAMA_URL ?? 'http://127.0.0.1:18732';
 const OUT = resolve(opt('--out', `${ROOT}.langqa/review.json`));
-const BATCH = Number(opt('--batch', '12'));
+const BATCH = Number(opt('--batch', '20'));
 const only = opt('--lang', '').split(',').filter(Boolean);
 const NAME = { es: 'Spanish (neutral, European spelling)', fr: 'French', de: 'German', it: 'Italian', pt: 'Brazilian Portuguese', pl: 'Polish', ru: 'Russian', ar: 'Modern Standard Arabic', hi: 'Hindi', zh: 'Simplified Chinese', ja: 'Japanese', ko: 'Korean', vi: 'Vietnamese', th: 'Thai', id: 'Indonesian' };
 const glossary = readJson(`${ROOT}docs/language/glossary.json`, { terms: {} });
@@ -37,24 +37,24 @@ function glossaryLines(lang) {
   return lines.join('; ');
 }
 
+// The answer names items by number: the ones that are fine, and a correction with its reason for
+// the rest. (Writing out every key and an empty correction for each "ok" took most of the
+// reviewer's output; on the shared GPU that made a language take over an hour.) An item the answer
+// does not name is recorded as "no answer", never as "ok".
 const SCHEMA = {
   type: 'object',
   properties: {
-    reviews: {
+    ok: { type: 'array', items: { type: 'integer' } },
+    fix: {
       type: 'array',
       items: {
         type: 'object',
-        properties: {
-          key: { type: 'string' },
-          verdict: { type: 'string', enum: ['ok', 'fix'] },
-          corrected: { type: 'string' },
-          reason: { type: 'string' },
-        },
-        required: ['key', 'verdict', 'corrected', 'reason'],
+        properties: { n: { type: 'integer' }, corrected: { type: 'string' }, reason: { type: 'string' } },
+        required: ['n', 'corrected', 'reason'],
       },
     },
   },
-  required: ['reviews'],
+  required: ['ok', 'fix'],
 };
 
 function prompt(lang, items) {
@@ -63,35 +63,49 @@ function prompt(lang, items) {
       role: 'system',
       content: `You are a professional localisation reviewer and a native speaker of ${NAME[lang]}. You review the ${NAME[lang]} interface text of "Sonnet Man", a card game in which the player's move is a short verse, fought as a three-round duel against a computer opponent.
 
-For each item you get the key, where the text appears, the English source and the current translation. Judge the translation as a native reader would: is it correct ${NAME[lang]} (grammar, spelling, agreement, word order), does it mean what the English means, is it natural for a game interface, and does it use the right register consistently?
+Each item is numbered and gives where the text appears, the English source and the current translation. Judge the translation as a native reader would: is it correct ${NAME[lang]} (grammar, spelling, agreement, word order), does it mean what the English means, is it natural for a game interface, and does it use the right register consistently?
 
 Rules:
 - Text in curly braces is a placeholder ({card}, {n}) and must be kept exactly. A block like {n, plural, one {# line} other {# lines}} is ICU plural syntax: keep the syntax and the category names; only the words inside may change. "#" stands for the number.
 - Card names, character names, model names and product names stay as they are.
-- Do not change a translation that is already correct. A different but equally good wording is "ok". Only answer "fix" for a real error or clearly unnatural wording, and then give the complete corrected string and a one-sentence reason in English.
+- Do not change a translation that is already correct. A different but equally good wording is fine. Only correct a real error or clearly unnatural wording: give the complete corrected string and a one-sentence reason in English.
 - Keep these terms as the game uses them: ${glossaryLines(lang) || '(no glossary given)'}.
 
-Answer with JSON: {"reviews": [{"key", "verdict": "ok" | "fix", "corrected", "reason"}]}, one entry per item, in the same order. For "ok", "corrected" and "reason" are empty strings.`,
+Answer with JSON: {"ok": [numbers of the items that are fine], "fix": [{"n": number, "corrected": "the whole corrected string", "reason": "why"}]}. Every item number appears exactly once, in "ok" or in "fix".`,
     },
-    { role: 'user', content: JSON.stringify(items.map((i) => ({ key: i.key, where: i.where, english: i.english, translation: i.translation })), null, 1) },
+    { role: 'user', content: JSON.stringify(items.map((i, k) => ({ n: k + 1, where: i.where, english: i.english, translation: i.translation })), null, 1) },
   ];
 }
 
+/** The reviewer's verdicts as [{ key, verdict, corrected, reason }]; an item it did not name is left out. Null if every attempt failed. */
 async function ask(lang, items) {
   for (let attempt = 1; attempt <= 3; attempt++) {
-    const r = await fetch(`${URL_}/v1/chat/completions`, {
-      method: 'POST',
-      headers: { 'content-type': 'application/json' },
-      body: JSON.stringify({ messages: prompt(lang, items), temperature: 0, max_tokens: 4096, response_format: { type: 'json_schema', json_schema: { name: 'reviews', schema: SCHEMA, strict: true } }, chat_template_kwargs: { enable_thinking: false } }),
-    });
-    if (!r.ok) {
-      console.error(`${lang}: HTTP ${r.status} ${(await r.text()).slice(0, 200)}`);
+    let j;
+    try {
+      const r = await fetch(`${URL_}/v1/chat/completions`, {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ messages: prompt(lang, items), temperature: 0, max_tokens: 3072, response_format: { type: 'json_schema', json_schema: { name: 'review', schema: SCHEMA, strict: true } }, chat_template_kwargs: { enable_thinking: false } }),
+      });
+      if (!r.ok) {
+        console.error(`${lang}: HTTP ${r.status} ${(await r.text()).slice(0, 200)} (attempt ${attempt})`);
+        await new Promise((res) => setTimeout(res, 10000));
+        continue;
+      }
+      j = await r.json();
+    } catch (err) {
+      // The server went away mid-request (a memory guard, a restart): wait, and try again.
+      console.error(`${lang}: request failed (attempt ${attempt}): ${String(err.cause ?? err).slice(0, 160)}`);
+      await new Promise((res) => setTimeout(res, 15000));
       continue;
     }
-    const j = await r.json();
     try {
       const parsed = JSON.parse(j.choices[0].message.content);
-      if (Array.isArray(parsed.reviews)) return parsed.reviews;
+      if (!Array.isArray(parsed.ok) || !Array.isArray(parsed.fix)) throw new Error('no ok/fix arrays');
+      const out = new Map();
+      for (const n of parsed.ok) if (items[n - 1]) out.set(n, { key: items[n - 1].key, verdict: 'ok', corrected: '', reason: '' });
+      for (const f of parsed.fix) if (items[f.n - 1]) out.set(f.n, { key: items[f.n - 1].key, verdict: 'fix', corrected: f.corrected, reason: f.reason });
+      return [...out.values()];
     } catch (err) {
       console.error(`${lang}: unparseable answer (attempt ${attempt}): ${String(err).slice(0, 100)}`);
     }
