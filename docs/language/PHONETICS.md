@@ -364,11 +364,11 @@ recorded in `src/lib/verse/sound/corpus/expected.json`.
 
 | Lang | Poem | Real rhymes heard | Non-rhymes refused | Counts right | Count source |
 |---|---|---|---|---|---|
-| es | Sor Juana, Redondillas; Espronceda, Canción del pirata | 42/43 | 38/38 | 57/60 | Wiktionary |
+| es | Sor Juana, Redondillas; Espronceda, Canción del pirata | 42/43 | 38/38 | 60/60 | Wiktionary |
 | fr | Boileau, L'Art poétique I, 1-100 | 49/50 | 50/50 | 60/60 | Wiktionary (same source as the table) |
 | de | Busch, Max und Moritz, Streiche 1-3 | 57/60 | 60/60 | 60/60 | Wiktionary (same source as the table) |
 | it | Dante, Inferno I, 1-91 | 56/59 | 30/30 | 59/60 | Wiktionary |
-| pt | Camões, Os Lusíadas I, 1-9 | 45/45 | 27/27 | 58/60 | Wiktionary |
+| pt | Camões, Os Lusíadas I, 1-9 | 45/45 | 27/27 | 59/60 | Wiktionary |
 | pl | Mickiewicz, Pan Tadeusz I, 1-100 | 48/50 | 50/50 | 60/60 | Wiktionary |
 | ru | Pushkin, Tsar Saltan, 1-96 | 47/48 | 47/48 | 60/60 | Wiktionary |
 | ar | Imru' al-Qais, Mu'allaqa | 50/50 | 38/38 | not counted | - |
@@ -411,9 +411,10 @@ verse joins: "mio", "tuo", "via" are two syllables in a dictionary and one in a 
 verse. Taking the dictionary's count made the Italian pack's own heroic couplets count
 twelve. The branch `fix/rules-findings` introduces a syllable span (a line may count from n
 to m); when it lands, the dictionary's count belongs in it as the upper bound. The test sets
-for these languages were also made with a fault: a syllable break written twice (".ˈ")
-counted as two, which gave "automutilar" six; that is fixed in `build.mjs` and the sets
-were rebuilt.
+for these languages keep every count a word's transcriptions give: a phonemic transcription
+may leave a glide unmarked that the phonetic one marks ("/automutiˈlaɾ/" six,
+"[au̯.t̪o.mu.t̪iˈlaɾ]" five), and until 2026-11-16 only the first counted. A syllable break
+written twice (".ˈ") is also counted once now.
 
 ## Download size and load time
 

@@ -244,7 +244,10 @@ function romance(lang) {
       }
       t = votes.size ? [...votes].reduce((a, b) => (b[1] > a[1] ? b : a))[0] : null;
     }
-    if (t !== null) cands.push([w, n]);
+    // The test set keeps every count the word's transcriptions give: a phonemic one may not mark
+    // the glide a phonetic one does ("/automutiˈlaɾ/" six, "[au̯.t̪o.mu.t̪iˈlaɾ]" five).
+    const counts = [...new Set([n, ...ipas.map((x) => syllablesOf(x)).filter((x) => x > 0)])];
+    if (t !== null) cands.push([w, counts.length === 1 ? n : counts]);
     const starts = romanceStressByRule(w, lang) ?? [];
     let tailCode = '0';
     if (t === null) m.unaligned++;
@@ -261,7 +264,7 @@ function romance(lang) {
     if (countCode !== '0' || tailCode !== '0') entries.set(w, countCode + tailCode);
   }
   const size = writeTable(lang, entries, `${lang}: words whose syllable count or stress the spelling rule gets wrong. Source: Wiktionary (CC BY-SA 4.0) via kaikki.org.`);
-  syllableSet(lang, 'Wiktionary (syllabified IPA) via kaikki.org', 'syllables', cands);
+  syllableSet(lang, 'Wiktionary (syllabified IPA) via kaikki.org; every count its transcriptions give', 'syllables', cands);
   measures[lang] = { ...measures[lang], source: 'Wiktionary via kaikki.org', dictionaryWords: m.words, ruleSyllablesAgree: pct(m.countAgree, m.words), ruleStressAgree: pct(m.stressAgree, m.stressChecked), stressChecked: m.stressChecked, notAligned: m.unaligned, table: size };
 }
 

@@ -271,7 +271,8 @@ describe('what each language can now hear', () => {
     expect(await loadSound('ja')).toBe(true);
     expect(syllablesInLine('古池や', 'ja')).toBe(5);
     expect(rhymeChecked('ja')).toBe(true);
-  });
+    // Reading the 17.8 MB dictionary again: over five seconds on a loaded build host.
+  }, 60_000);
 
   it('Thai: the last syllable of the dictionary word a line ends on, or of its spelling', () => {
     expect(rhymes('ใจ', 'ไป', 'th')).toBe(true);
