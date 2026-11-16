@@ -1,0 +1,503 @@
+{
+ "source": "https://support.apple.com/<locale>/guide/iphone/iph42ab2f3a7/ios, section \"Add a website icon to your Home Screen\"",
+ "fetched": "2026-11-16T18:39:50.402Z",
+ "licence": "Apple Inc. text, quoted as evidence of interface terms",
+ "pages": {
+  "en": {
+   "url": "https://support.apple.com/en-us/guide/iphone/iph42ab2f3a7/ios",
+   "finalUrl": "https://support.apple.com/guide/iphone/bookmark-a-website-iph42ab2f3a7/ios",
+   "pageLocale": "en",
+   "heading": "Add a website icon to your Home Screen",
+   "iconAlts": [
+    "the Page Menu button",
+    "the Share button"
+   ],
+   "steps": [
+    [
+     "Go to the Safari app [] on your iPhone."
+    ],
+    [
+     "Go to the website you want to add to your Home Screen."
+    ],
+    [
+     "Tap [the Page Menu button] , then tap Share.",
+     "If your Tabs layout is Bottom or Top, tap [the Share button] ."
+    ],
+    [
+     "Scroll down the list of options, then tap Add to Home Screen.",
+     "If you don’t see Add to Home Screen, you can add it. Scroll down to the bottom of the list, tap Edit Actions, then tap [] Add to Home Screen.",
+     "You can choose Open as Web App to use the website as if it’s an app. See Turn a website into an app."
+    ],
+    [
+     "Tap Add."
+    ]
+   ],
+   "label": "Add to Home Screen"
+  },
+  "es": {
+   "url": "https://support.apple.com/es-es/guide/iphone/iph42ab2f3a7/ios",
+   "finalUrl": "https://support.apple.com/es-es/guide/iphone/iph42ab2f3a7/ios",
+   "pageLocale": "es",
+   "heading": "Añadir el icono de un sitio web a la pantalla de inicio",
+   "iconAlts": [
+    "el botón “Menú de página”",
+    "el botón Compartir"
+   ],
+   "steps": [
+    [
+     "Abre la app Safari [] en el iPhone."
+    ],
+    [
+     "Ve al sitio web que quieres añadir a la pantalla de inicio."
+    ],
+    [
+     "Toca [el botón “Menú de página”] y, a continuación, toca Share.",
+     "Si el diseño de tus pestañas es Abajo o Arriba, toca [el botón Compartir] ."
+    ],
+    [
+     "Desplázate hacia abajo por la lista de opciones y, a continuación, toca “Añadir a pantalla de inicio”.",
+     "Si no ves la opción “Añadir a pantalla de inicio”, puedes añadirla. Desplázate hasta el final de la lista, toca “Editar acciones” y, a continuación, toca [] “Añadir a pantalla de inicio”.",
+     "Ahora puedes elegir “Abrir como app web” para usar el sitio web como si fuera una app. Consulta Convertir un sitio web en una app."
+    ],
+    [
+     "Toca Añadir."
+    ]
+   ],
+   "label": "Añadir a pantalla de inicio"
+  },
+  "fr": {
+   "url": "https://support.apple.com/fr-fr/guide/iphone/iph42ab2f3a7/ios",
+   "finalUrl": "https://support.apple.com/fr-fr/guide/iphone/iph42ab2f3a7/ios",
+   "pageLocale": "fr",
+   "heading": "Ajouter l’icône d’un site web à l’écran d’accueil",
+   "iconAlts": [
+    "le bouton Menu de la page",
+    "le bouton Partager"
+   ],
+   "steps": [
+    [
+     "Accédez à l’app Safari [] sur votre iPhone."
+    ],
+    [
+     "Accédez au site web à ajouter à votre écran d’accueil."
+    ],
+    [
+     "Touchez [le bouton Menu de la page] , puis touchez « Partager ».",
+     "Si la disposition de vos onglets est « En bas » ou « En haut », touchez [le bouton Partager] ."
+    ],
+    [
+     "Faites défiler la liste des options, puis touchez « Sur l’écran d’accueil ».",
+     "Si vous ne voyez pas l’option « Sur l’écran d’accueil », vous pouvez l’ajouter. Faites défiler la liste jusqu’en bas, touchez « Modifier les actions », puis touchez [] « Sur l’écran d’accueil ».",
+     "Vous pouvez choisir « Ouvrir comme app web » pour utiliser le site web comme s’il s’agissait d’une app. Consultez la rubrique Transformer un site web en app."
+    ],
+    [
+     "Touchez Ajouter."
+    ]
+   ],
+   "label": "« Sur l’écran d’accueil »"
+  },
+  "de": {
+   "url": "https://support.apple.com/de-de/guide/iphone/iph42ab2f3a7/ios",
+   "finalUrl": "https://support.apple.com/de-de/guide/iphone/iph42ab2f3a7/ios",
+   "pageLocale": "de",
+   "heading": "Website-Symbol zum Home-Bildschirm hinzufügen",
+   "iconAlts": [
+    "die Taste „Seitenmenü“",
+    "die Taste „Teilen“"
+   ],
+   "steps": [
+    [
+     "Öffne die App „Safari“ [] auf dem iPhone."
+    ],
+    [
+     "Navigiere zu der Website, die du dem Home-Bildschirm hinzufügen möchtest."
+    ],
+    [
+     "Tippe auf [die Taste „Seitenmenü“] und tippe anschließend auf „Teilen“.",
+     "Wenn dein Tablayout „Unten“ oder „Oben“ ist, tippe auf [die Taste „Teilen“] ."
+    ],
+    [
+     "Scrolle in der Optionsliste nach unten und tippe dann auf „Zu Home-Bildschirm hinzufügen“.",
+     "Wird die Option „Zu Home-Bildschirm hinzufügen“ nicht angezeigt, kannst du sie hinzufügen. Scrolle ans Ende der Liste, tippe auf „Aktionen bearbeiten“ und dann auf „Zu Home-Bildschirm hinzufügen“ [] .",
+     "Du kannst „Als Web-App öffnen“ auswählen, um die Website als App zu verwenden. Weitere Informationen findest du unter Website in eine App verwandeln."
+    ],
+    [
+     "Tippe auf „Hinzufügen“."
+    ]
+   ],
+   "label": "dann auf „Zu Home-Bildschirm hinzufügen"
+  },
+  "it": {
+   "url": "https://support.apple.com/it-it/guide/iphone/iph42ab2f3a7/ios",
+   "finalUrl": "https://support.apple.com/it-it/guide/iphone/iph42ab2f3a7/ios",
+   "pageLocale": "it",
+   "heading": "Aggiungere l’icona di un sito web alla schermata Home",
+   "iconAlts": [
+    "il pulsante “Menu della pagina”",
+    "il pulsante Condividi"
+   ],
+   "steps": [
+    [
+     "Vai nell’app Safari [] su iPhone."
+    ],
+    [
+     "Vai sul sito web che vuoi aggiungere alla schermata Home."
+    ],
+    [
+     "Tocca [il pulsante “Menu della pagina”] , quindi tocca Condividi.",
+     "Se il layout dei pannelli è “In basso” o “In alto”, tocca [il pulsante Condividi] ."
+    ],
+    [
+     "Fai scorrere verso il basso l’elenco delle opzioni, quindi tocca “Aggiungi alla schermata Home”.",
+     "Se “Aggiungi alla schermata Home” non è presente, puoi aggiungerlo. Scorri in fondo all’elenco, tocca “Modifica azioni”, quindi tocca [] “Aggiungi alla schermata Home”.",
+     "Puoi scegliere “Apri come app web” per usare i siti web come se fossero un’app. Consulta Utilizzare un sito web come un’app."
+    ],
+    [
+     "Tocca Aggiungi."
+    ]
+   ],
+   "label": "Aggiungi alla schermata Home"
+  },
+  "pt": {
+   "url": "https://support.apple.com/pt-br/guide/iphone/iph42ab2f3a7/ios",
+   "finalUrl": "https://support.apple.com/pt-br/guide/iphone/iph42ab2f3a7/ios",
+   "pageLocale": "pt",
+   "heading": "Adicione o ícone de um site à Tela de Início",
+   "iconAlts": [
+    "botão Menu da Página",
+    "botão Compartilhar"
+   ],
+   "steps": [
+    [
+     "Abra o app Safari [] no iPhone."
+    ],
+    [
+     "Abra o site que você deseja adicionar à Tela de Início."
+    ],
+    [
+     "Toque em [botão Menu da Página] e toque em Compartilhar.",
+     "Se o seu layout de Abas for Inferior ou Superior, toque em [botão Compartilhar] ."
+    ],
+    [
+     "Role para baixo a lista de opções e toque em “Adicionar à Tela de Início”.",
+     "Caso não veja a opção “Adicionar à Tela de Início”, você pode adicioná-la. Role até a parte inferior da lista, toque em Editar Ações e toque em [] “Adicionar à Tela de Início”.",
+     "Você pode escolher Abrir como App da Web para usar o site como se fosse um app. Consulte Transforme um site em um app."
+    ],
+    [
+     "Toque em Adicionar."
+    ]
+   ],
+   "label": "Adicionar à Tela de Início"
+  },
+  "pl": {
+   "url": "https://support.apple.com/pl-pl/guide/iphone/iph42ab2f3a7/ios",
+   "finalUrl": "https://support.apple.com/pl-pl/guide/iphone/iph42ab2f3a7/ios",
+   "pageLocale": "pl",
+   "heading": "Dodawanie ikony witryny do ekranu głównego",
+   "iconAlts": [
+    "przycisk Menu strony",
+    "przycisk udostępniania"
+   ],
+   "steps": [
+    [
+     "Przejdź do aplikacji Safari [] na iPhonie."
+    ],
+    [
+     "Przejdź do witryny, którą chcesz dodać do ekranu głównego."
+    ],
+    [
+     "Stuknij w [przycisk Menu strony] , a następnie stuknij w Udostępnij.",
+     "Jeśli używasz układu kart Na dole lub Na górze, stuknij w [przycisk udostępniania] ."
+    ],
+    [
+     "Przewiń listę opcji w dół, a następnie stuknij w Do ekranu głównego.",
+     "Jeśli nie widzisz opcji Do ekranu głównego, możesz ją dodać. Przewiń na dół listy, stuknij w Edytuj czynności, a następnie stuknij w [] Do ekranu głównego.",
+     "Możesz wybrać Otwórz jako aplikację www, aby używać witryny jak aplikacji. Zobacz: Używanie witryny jako aplikacji."
+    ],
+    [
+     "Stuknij w Dodaj."
+    ]
+   ],
+   "label": "a następnie stuknij w"
+  },
+  "ru": {
+   "url": "https://support.apple.com/ru-ru/guide/iphone/iph42ab2f3a7/ios",
+   "finalUrl": "https://support.apple.com/ru-ru/guide/iphone/iph42ab2f3a7/ios",
+   "pageLocale": "ru",
+   "heading": "Добавление значка сайта на экран «Домой»",
+   "iconAlts": [
+    "кнопки «Меню страницы»",
+    "кнопки «Поделиться»"
+   ],
+   "steps": [
+    [
+     "Откройте Safari [] на iPhone."
+    ],
+    [
+     "Откройте сайт, который хотите добавить на экран «Домой»."
+    ],
+    [
+     "Коснитесь кнопки [кнопки «Меню страницы»] , затем коснитесь «Поделиться».",
+     "Если выбран вид вкладок снизу или сверху, коснитесь [кнопки «Поделиться»] ."
+    ],
+    [
+     "Прокрутите вниз список параметров, затем коснитесь «На экран \"Домой\"».",
+     "Если параметр «На экран \"Домой\"» не отображается, его можно добавить. Прокрутите вниз списка, коснитесь «Редактировать действия», затем коснитесь «На экран \"Домой\"» [] .",
+     "Вы можете выбрать вариант «Открыть как веб‑приложение», чтобы использовать сайт как приложение. См. раздел Преобразование сайта в приложение."
+    ],
+    [
+     "Коснитесь «Добавить»."
+    ]
+   ],
+   "label": "затем коснитесь «На экран \"Домой\"»"
+  },
+  "ar": {
+   "url": "https://support.apple.com/ar-ae/guide/iphone/iph42ab2f3a7/ios",
+   "finalUrl": "https://support.apple.com/ar-ae/guide/iphone/iph42ab2f3a7/ios",
+   "pageLocale": "ar",
+   "heading": "إضافة أيقونة موقع ويب إلى الشاشة الرئيسية",
+   "iconAlts": [
+    "زر قائمة الصفحة",
+    "الزر مشاركة"
+   ],
+   "steps": [
+    [
+     "انتقل إلى تطبيق سفاري [] على iPhone."
+    ],
+    [
+     "انتقل إلى موقع الويب الذي تريد إضافته إلى الشاشة الرئيسية."
+    ],
+    [
+     "اضغط على [زر قائمة الصفحة] ، ثم اضغط على مشاركة.",
+     "إذا كان تخطيط علامات التبويب \"الأسفل\" أو \"الأعلى\"، فاضغط على [الزر مشاركة] ."
+    ],
+    [
+     "مرِّر لأسفل في قائمة الخيارات، ثم اضغط على إضافة إلى الشاشة الرئيسية.",
+     "في حالة عدم رؤية إضافة إلى الشاشة الرئيسية، يمكنك إضافتها. مرِّر لأسفل إلى أسفل القائمة، اضغط على تعديل الإجراءات، ثم اضغط على [] إضافة إلى الشاشة الرئيسية.",
+     "يمكنك اختيار فتح كتطبيق ويب لاستخدام الموقع الإلكتروني وكأنه تطبيق مستقل. انظر تحويل موقع إلكتروني إلى تطبيق."
+    ],
+    [
+     "اضغط على إضافة."
+    ]
+   ],
+   "label": "إضافة إلى الشاشة الرئيسية"
+  },
+  "hi": {
+   "url": "https://support.apple.com/hi-in/guide/iphone/iph42ab2f3a7/ios",
+   "finalUrl": "https://support.apple.com/hi-in/guide/iphone/iph42ab2f3a7/ios",
+   "pageLocale": "hi",
+   "heading": "अपनी होम स्क्रीन पर कोई वेबसाइट आइकॉन जोड़ें",
+   "iconAlts": [
+    "पृष्ठ मेन्यू बटन",
+    "“शेयर करें“ बटन"
+   ],
+   "steps": [
+    [
+     "अपने iPhone पर Safari ऐप [] पर जाएँ।"
+    ],
+    [
+     "उस वेबसाइट पर जाएँ जिसे आप अपनी होम स्क्रीन पर जोड़ना चाहते हैं।"
+    ],
+    [
+     "[पृष्ठ मेन्यू बटन] पर टैप करें, फिर शेयर करें पर टैप करें।",
+     "अगर आपके टैब का लेआउट नीचे या ऊपर है, तो [“शेयर करें“ बटन] पर टैप करें।"
+    ],
+    [
+     "विकल्पों की सूची पर नीचे स्क्रोल करें, फिर होम स्क्रीन पर जोड़ें पर टैप करें।",
+     "अगर आपको होम स्क्रीन पर जोड़ें नहीं दिखाई देता है, तो आप इसे जोड़ सकते हैं। सूची पर सबसे नीचे स्क्रोल करें, क्रियाएँ संपादित करें पर टैप करें, फिर [] होम स्क्रीन पर जोड़ें पर टैप करें।",
+     "वेबसाइट का इस्तेमाल एक ऐप के रूप में करने के लिए, आप “वेब ऐप के रूप में खोलें” चुन सकते हैं। किसी वेबसाइट को ऐप में बदलें देखें।"
+    ],
+    [
+     "\"जोड़ें\" पर टैप करें।"
+    ]
+   ],
+   "label": "होम स्क्रीन पर जोड़ें पर टैप करें।"
+  },
+  "zh": {
+   "url": "https://support.apple.com/zh-cn/guide/iphone/iph42ab2f3a7/ios",
+   "finalUrl": "https://support.apple.com/zh-cn/guide/iphone/iph42ab2f3a7/ios",
+   "pageLocale": "zh-CN",
+   "heading": "将网站图标添加到主屏幕",
+   "iconAlts": [
+    "“页面菜单”按钮",
+    "“共享”按钮"
+   ],
+   "steps": [
+    [
+     "在 iPhone 上前往 Safari 浏览器 App [] 。"
+    ],
+    [
+     "前往要添加到主屏幕的网站。"
+    ],
+    [
+     "轻点 [“页面菜单”按钮] ，然后轻点“共享”。",
+     "如果标签页布局是“底部”或“顶部”，请轻点 [“共享”按钮] 。"
+    ],
+    [
+     "向下滚动选项列表，然后轻点“添加到主屏幕”。",
+     "如果未看到“添加到主屏幕”，你可以添加该选项。向下滚动到列表底部，轻点“编辑操作”，然后轻点“ [] 添加到主屏幕”。",
+     "你可以选取“作为网页 App 打开”，从而像 App 一样使用网站。请参阅将网站变为 App。"
+    ],
+    [
+     "轻点“添加”。"
+    ]
+   ],
+   "label": "添加到主屏幕"
+  },
+  "ja": {
+   "url": "https://support.apple.com/ja-jp/guide/iphone/iph42ab2f3a7/ios",
+   "finalUrl": "https://support.apple.com/ja-jp/guide/iphone/iph42ab2f3a7/ios",
+   "pageLocale": "ja",
+   "heading": "ホーム画面にウェブサイトのアイコンを追加する",
+   "iconAlts": [
+    "ページメニューボタン",
+    "共有ボタン"
+   ],
+   "steps": [
+    [
+     "iPhoneでSafariアプリ [] を開きます。"
+    ],
+    [
+     "ホーム画面に追加したいウェブサイトに移動します。"
+    ],
+    [
+     "[ページメニューボタン] をタップしてから、「共有」をタップします。",
+     "タブレイアウトが「下」または「上」の場合、 [共有ボタン] をタップします。"
+    ],
+    [
+     "オプションのリストを下にスクロールしてから、「ホーム画面に追加」をタップします。",
+     "「ホーム画面に追加」が表示されない場合は、このオプションを追加できます。リストの一番下までスクロールし、「アクションを編集」をタップしてから「 [] ホーム画面に追加」をタップします。",
+     "「ウェブアプリとして開く」を選択して、ウェブサイトをアプリのように使うことができます。ウェブサイトをアプリにするを参照してください。"
+    ],
+    [
+     "「追加」をタップします。"
+    ]
+   ],
+   "label": "ホーム画面に追加」をタップします"
+  },
+  "ko": {
+   "url": "https://support.apple.com/ko-kr/guide/iphone/iph42ab2f3a7/ios",
+   "finalUrl": "https://support.apple.com/ko-kr/guide/iphone/iph42ab2f3a7/ios",
+   "pageLocale": "ko",
+   "heading": "홈 화면에 웹사이트 아이콘 추가하기",
+   "iconAlts": [
+    "페이지 메뉴 버튼",
+    "공유 버튼"
+   ],
+   "steps": [
+    [
+     "iPhone에서 Safari 앱 [] 으로 이동하십시오."
+    ],
+    [
+     "홈 화면에 추가하려는 웹사이트로 이동하십시오."
+    ],
+    [
+     "[페이지 메뉴 버튼] 을 탭한 다음, 공유를 탭하십시오.",
+     "탭 레이아웃이 하단 또는 상단인 경우, [공유 버튼] 을 탭하십시오."
+    ],
+    [
+     "옵션 목록을 아래로 스크롤한 다음, ‘홈 화면에 추가’를 탭하십시오.",
+     "‘홈 화면에 추가’가 보이지 않는 경우 이를 추가할 수 있습니다. 목록의 맨 아래로 스크롤한 다음, 동작 편집을 탭하고 ‘홈 화면에 추가’ [] 를 탭하십시오.",
+     "‘웹 앱으로 열기’를 선택하여 웹사이트를 앱처럼 사용할 수 있습니다. 웹사이트를 앱으로 만들기의 내용을 참조하십시오."
+    ],
+    [
+     "추가를 탭하십시오."
+    ]
+   ],
+   "label": "아래로 스크롤한 다음"
+  },
+  "vi": {
+   "url": "https://support.apple.com/vi-vn/guide/iphone/iph42ab2f3a7/ios",
+   "finalUrl": "https://support.apple.com/vi-vn/guide/iphone/iph42ab2f3a7/ios",
+   "pageLocale": "vi",
+   "heading": "Thêm biểu tượng trang web vào Màn hình chính",
+   "iconAlts": [
+    "nút Menu của trang",
+    "nút Chia sẻ"
+   ],
+   "steps": [
+    [
+     "Đi tới ứng dụng Safari [] trên iPhone của bạn."
+    ],
+    [
+     "Đi tới trang web bạn muốn thêm vào Màn hình chính."
+    ],
+    [
+     "Chạm vào [nút Menu của trang] , sau đó chạm vào Chia sẻ.",
+     "Nếu bố cục tab là Dưới cùng hoặc Trên cùng, hãy chạm vào [nút Chia sẻ] ."
+    ],
+    [
+     "Cuộn danh sách các tùy chọn xuống, sau đó chạm vào Thêm vào Màn hình chính.",
+     "Nếu bạn không nhìn thấy Thêm vào Màn hình chính thì bạn có thể thêm tùy chọn đó. Cuộn xuống đến cuối danh sách, chạm vào Sửa tác vụ, sau đó chạm vào [] Thêm vào Màn hình chính.",
+     "Bạn có thể chọn Mở dưới dạng ứng dụng web để sử dụng trang web như thể một ứng dụng. Hãy xem Biến trang web thành ứng dụng."
+    ],
+    [
+     "Chạm vào Thêm."
+    ]
+   ],
+   "label": "Thêm vào Màn hình chính"
+  },
+  "th": {
+   "url": "https://support.apple.com/th-th/guide/iphone/iph42ab2f3a7/ios",
+   "finalUrl": "https://support.apple.com/th-th/guide/iphone/iph42ab2f3a7/ios",
+   "pageLocale": "th",
+   "heading": "เพิ่มไอคอนเว็บไซต์ไปยังหน้าจอโฮมของคุณ",
+   "iconAlts": [
+    "ปุ่มเมนูหน้า",
+    "ปุ่มแชร์"
+   ],
+   "steps": [
+    [
+     "ไปที่แอป Safari [] บน iPhone ของคุณ"
+    ],
+    [
+     "ไปที่เว็บไซต์ที่คุณต้องการเพิ่มไปยังหน้าจอโฮมของคุณ"
+    ],
+    [
+     "แตะ [ปุ่มเมนูหน้า] แล้วแตะ แชร์",
+     "ถ้าเค้าโครงแถบของคุณคือด้านล่างสุดหรือด้านบนสุด ให้แตะ [ปุ่มแชร์]"
+    ],
+    [
+     "เลื่อนลงไปยังรายการตัวเลือก แล้วแตะ เพิ่มไปยังหน้าจอโฮม",
+     "ถ้าคุณไม่เห็น เพิ่มไปยังหน้าจอโฮม คุณสามารถเพิ่มได้ เลื่อนลงไปยังด้านล่างสุดของรายการ แล้วแตะ แก้ไขการทำงาน จากนั้นแตะ [] เพิ่มไปยังหน้าจอโฮม",
+     "คุณสามารถเลือก เปิดเป็นแอปหน้าเว็บ เพื่อใช้เว็บไซต์ในรูปแบบที่เหมือนกับแอปได้ ให้ดูที่เปลี่ยนเว็บไซต์เป็นแอป"
+    ],
+    [
+     "แตะ เพิ่ม"
+    ]
+   ],
+   "label": "เพิ่มไปยังหน้าจอโฮม"
+  },
+  "id": {
+   "url": "https://support.apple.com/id-id/guide/iphone/iph42ab2f3a7/ios",
+   "finalUrl": "https://support.apple.com/id-id/guide/iphone/iph42ab2f3a7/ios",
+   "pageLocale": "id",
+   "heading": "Menambahkan ikon situs web ke Layar Utama Anda",
+   "iconAlts": [
+    "tombol Menu Halaman",
+    "tombol Bagikan"
+   ],
+   "steps": [
+    [
+     "Buka app Safari [] di iPhone Anda."
+    ],
+    [
+     "Buka situs web yang ingin Anda tambahkan ke Layar Utama Anda."
+    ],
+    [
+     "Ketuk [tombol Menu Halaman] , lalu ketuk Bagikan.",
+     "Jika tata letak Tab Anda berada di Bawah atau Atas, ketuk [tombol Bagikan] ."
+    ],
+    [
+     "Gulir ke bawah daftar pilihan, lalu ketuk Tambah ke Layar Utama.",
+     "Jika Anda tidak melihat Tambah ke Layar Utama, Anda dapat menambahkannya. Gulir ke bagian bawah daftar, ketuk Edit Tindakan, lalu ketuk [] Tambah ke Layar Utama.",
+     "Anda dapat memilih Buka sebagai App Web untuk menggunakan situs web selayaknya app. Lihat Mengubah situs web menjadi app."
+    ],
+    [
+     "Ketuk Tambah."
+    ]
+   ],
+   "label": "Tambah ke Layar Utama"
+  }
+ }
+}

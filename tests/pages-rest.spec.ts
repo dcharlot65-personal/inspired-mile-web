@@ -34,7 +34,7 @@ test.use({ serviceWorkers: 'block' });
 type Messages = Record<string, string>;
 interface PageSpec { name: string; path: string; areas: string[]; titleKey: string; descriptionKey: string; ready: string }
 
-const KEY_AS_TEXT = /\b(?:classroom|market|tour|season|viewer|vr|error|activity|credits|boundary|offline|app|nav|auth|footer)\.[a-zA-Z_]+(?:\.[a-zA-Z_]+)*\b/g;
+const KEY_AS_TEXT = /\b(?:classroom|market|tour|season|viewer|vr|error|activity|credits|boundary|offline|app|pwa|nav|auth|footer)\.[a-zA-Z_]+(?:\.[a-zA-Z_]+)*\b/g;
 
 /** The messages a page can show in one language: the core locale and the page's areas, read from the dev server. */
 async function messagesFor(page: Page, areas: string[], locale: string): Promise<Messages> {
@@ -450,5 +450,39 @@ test.describe('The offline page in a language we do not have', () => {
     await page.goto('/offline.html');
     await expect(page.locator('html')).toHaveAttribute('lang', 'en');
     await expect(page.locator('h1')).toHaveText('You are offline');
+  });
+});
+
+test.describe('The install guidance in the player’s language', () => {
+  // The same iPhone as tests/pwa.spec.ts: Safari has no install dialog, so the box gives two steps.
+  test.use({
+    userAgent: 'Mozilla/5.0 (iPhone; CPU iPhone OS 26_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.1 Mobile/15E148 Safari/604.1',
+    hasTouch: true,
+    viewport: { width: 390, height: 844 },
+  });
+
+  test('names Apple’s own buttons in the language, and is drawn again when the language changes', async ({ page }) => {
+    const pwa = (l: string) => page.evaluate(async (code) => (await import(/* @vite-ignore */ `/src/i18n/pages/pwa/${code}.ts`)).default as Record<string, string>, l);
+    await startIn(page, 'ja');
+    await page.goto('/season');
+    const box = page.locator('#pwa-install');
+    await expect(box).toHaveAttribute('data-mode', 'ios');
+    const ja = await pwa('ja');
+    await expect(box.locator('ol li')).toHaveText([ja['pwa.install.iosStep1'], ja['pwa.install.iosStep2']]);
+    await expect(box).toHaveAttribute('aria-label', ja['pwa.install.regionLabel']);
+    await expect(page.locator('#pwa-install-dismiss')).toHaveText(ja['pwa.install.dismiss']);
+    const en = await pwa('en');
+    const text = (await box.evaluate((b) => b.textContent ?? '')).replace(/\s+/g, ' ');
+    for (const english of Object.values(en)) expect(text.includes(english), `English "${english}" in the Japanese box`).toBe(false);
+
+    await page.selectOption('#locale-switch', 'ar');
+    const ar = await pwa('ar');
+    await expect(box.locator('ol li')).toHaveText([ar['pwa.install.iosStep1'], ar['pwa.install.iosStep2']]);
+    await expect(page.locator('#pwa-install-dismiss')).toHaveText(ar['pwa.install.dismiss']);
+    // Still one box, inside the screen.
+    await expect(box).toHaveCount(1);
+    const r = (await box.boundingBox())!;
+    expect(r.x).toBeGreaterThanOrEqual(0);
+    expect(r.x + r.width).toBeLessThanOrEqual(390 + 1);
   });
 });

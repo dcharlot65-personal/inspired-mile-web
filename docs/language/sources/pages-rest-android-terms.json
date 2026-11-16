@@ -1,0 +1,52 @@
+{
+ "source": "https://raw.githubusercontent.com/aosp-mirror/platform_frameworks_base/1cdfff555f4a21f71ccc978290e2e212e2f8b168/<module>/<values-dir>/strings.xml",
+ "commit": "1cdfff555f4a21f71ccc978290e2e212e2f8b168",
+ "licence": "Apache License 2.0 (Android Open Source Project)",
+ "fetched": "2026-11-16T18:41:21.788Z",
+ "terms": {
+  "install": {
+   "module": "packages/PackageInstaller/res",
+   "name": "install",
+   "text": {
+    "en": "Install",
+    "es": "Instalar",
+    "fr": "Installer",
+    "de": "Installieren",
+    "it": "Installa",
+    "pt": "Instalar",
+    "pl": "Zainstaluj",
+    "ru": "Установить",
+    "ar": "تثبيت",
+    "hi": "इंस्टॉल करें",
+    "zh": "安装",
+    "ja": "インストール",
+    "ko": "설치",
+    "vi": "Cài đặt",
+    "th": "ติดตั้ง",
+    "id": "Instal"
+   }
+  },
+  "notNow": {
+   "module": "core/res/res",
+   "name": "autofill_save_notnow",
+   "text": {
+    "en": "Not now",
+    "es": "Ahora no",
+    "fr": "Pas maintenant",
+    "de": "Nicht jetzt",
+    "it": "Non ora",
+    "pt": "Agora não",
+    "pl": "Nie teraz",
+    "ru": "Не сейчас",
+    "ar": "ليس الآن",
+    "hi": "अभी नहीं",
+    "zh": "以后再说",
+    "ja": "後で",
+    "ko": "나중에",
+    "vi": "Để sau",
+    "th": "ไว้ทีหลัง",
+    "id": "Lain kali"
+   }
+  }
+ }
+}

@@ -16,13 +16,13 @@ import { PLURAL_CATEGORIES, date, dateRange, dateTime, intlLocale, list, num, pl
 import { initPage, onPageLocaleChange } from './page';
 import en from './locales/en';
 // @ts-ignore a plain .mjs script, shared with the command line
-import { OFFLINE_KEYS, localiseManifest, renderOffline } from '../../scripts/pages-rest/build-static.mjs';
+import { OFFLINE_KEYS, SHORTCUT_KEYS, localiseManifest, renderOffline } from '../../scripts/pages-rest/build-static.mjs';
 
 // loadArea merges an area into the core messages of its language (English included), so
 // what the core locale itself holds is noted before any test loads one.
 const CORE_EN_KEYS = new Set(Object.keys(en));
 
-const AREAS = ['classroom', 'marketplace', 'tournaments', 'season', 'viewer', 'shared'] as const;
+const AREAS = ['classroom', 'marketplace', 'tournaments', 'season', 'viewer', 'shared', 'pwa'] as const;
 type Area = (typeof AREAS)[number];
 
 /** Which areas each page asks for, and so which keys its markup and script may use. */
@@ -78,8 +78,10 @@ const SAME_AS_ENGLISH: Record<string, readonly string[] | '*'> = {
 };
 
 describe('page areas: every language has every string', () => {
-  it('has a module for each of the sixteen languages in each area', () => {
-    expect(Object.keys(modules).sort()).toEqual(AREAS.flatMap((a) => LOCALES.map((l) => `./pages/${a}/${l}.ts`)).sort());
+  it('has a module for each of the sixteen languages in each area, and no other file in them', () => {
+    // Other branches add areas of their own beside these; only this branch's are looked at.
+    const mine = Object.keys(modules).filter((k) => (AREAS as readonly string[]).includes(k.split('/')[2]));
+    expect(mine.sort()).toEqual(AREAS.flatMap((a) => LOCALES.map((l) => `./pages/${a}/${l}.ts`)).sort());
   });
 
   it('gives every locale exactly the keys of English, no empty value, and the same placeholders', () => {
@@ -208,7 +210,10 @@ describe('page areas: every language has every string', () => {
       expect([l, shared['offline.link.home']]).toEqual([l, core['nav.home']]);
       expect([l, shared['offline.link.collection']]).toEqual([l, core['nav.collection']]);
       expect([l, shared['offline.link.battle']]).toEqual([l, core['nav.battle']]);
-      expect([l, shared['app.description']]).toEqual([l, core['footer.tagline']]);
+      // The manifest's shortcuts are named as the site names those places.
+      expect([l, shared['app.shortcut.battle']]).toEqual([l, core['nav.battle']]);
+      const gap = ['zh', 'ja', 'th'].includes(l) ? '' : ' '; // the Theatre's heading, as two pieces
+      expect([l, shared['app.shortcut.theatre']]).toEqual([l, `${core['theatre.titleA']}${gap}${core['theatre.titleB']}`]);
       // The two sentences every page can show for a failed request are said one way.
       expect([l, shared['error.network']]).toEqual([l, core['auth.error.network']]);
       expect([l, shared['error.generic']]).toEqual([l, core['auth.error.generic']]);
@@ -242,6 +247,15 @@ describe('pages ask only for strings that exist', () => {
       }
     });
   }
+
+  it('every sentence src/lib/pwa.ts says is in the pwa area, and it says nothing else', () => {
+    const source = readFileSync('src/lib/pwa.ts', 'utf8');
+    const said = [...source.matchAll(/\bsay\(\s*'([a-zA-Z0-9_.]+)'/g)].map((m) => m[1]);
+    const pwa = area('pwa', 'en');
+    expect(new Set(said)).toEqual(new Set(Object.keys(pwa)));
+    // No sentence is put on the page except through say().
+    expect(source).not.toMatch(/el\([^)]*,\s*'[A-Z][a-z]+ /);
+  });
 
   it('the messages the viewer libraries report are all in the viewer area', () => {
     const viewer = area('viewer', 'en');
@@ -390,6 +404,30 @@ describe('numbers, dates and counts come from Intl', () => {
   });
 });
 
+describe('the install guidance and the storage note (src/lib/pwa.ts)', () => {
+  it('speak the interface language once the pwa area is in, with sizes as the language writes them', async () => {
+    const { formatBytes, storageNote } = await import('../lib/pwa');
+    await setLocale('en', { persist: false });
+    expect(formatBytes(1.09e9)).toBe('1.1 GB');
+    await setLocale('fr', { persist: false });
+    await loadArea('pwa');
+    const fr = area('pwa', 'fr');
+    // French writes gigaoctets and a decimal comma (CLDR, through Intl).
+    expect(formatBytes(1.09e9)).toMatch(/^1,1\sGo$/);
+    expect(storageNote(true, 1.09e9).text).toBe(fr['pwa.storage.kept'].replace('{size}', formatBytes(1.09e9)));
+    expect(storageNote(false, 295e6, true).text).toBe(`${fr['pwa.storage.atRisk'].replace('{size}', formatBytes(295e6))} ${fr['pwa.storage.installHint']}`);
+    const oneMb = new Intl.NumberFormat('fr', { style: 'unit', unit: 'megabyte', unitDisplay: 'short' }).format(1);
+    expect(oneMb).toMatch(/^1\sMo$/);
+    expect(formatBytes(10)).toBe(fr['pwa.storage.lessThan'].replace('{size}', oneMb));
+    await setLocale('ru', { persist: false });
+    await loadArea('pwa');
+    expect(formatBytes(3.1e9)).toMatch(/^3,1\sГБ$/);
+    expect(storageNote(true, null).text).toBe(area('pwa', 'ru')['pwa.storage.keptNoSize']);
+    await setLocale('en', { persist: false });
+    expect(storageNote(true, null).text).toBe(area('pwa', 'en')['pwa.storage.keptNoSize']);
+  });
+});
+
 describe('the generated static files', () => {
   const shared = Object.fromEntries(LOCALES.map((l) => [l, area('shared', l)]));
 
@@ -405,7 +443,7 @@ describe('the generated static files', () => {
     expect(onDisk).not.toMatch(/data-k="[a-z]+">\s*</);
   });
 
-  it('public/manifest.json carries the name and description in every language', () => {
+  it('public/manifest.json carries the name, the description and the shortcuts in every language', () => {
     const onDisk = readFileSync('public/manifest.json', 'utf8');
     expect(onDisk === localiseManifest(onDisk, shared), 'public/manifest.json is out of date: run node scripts/pages-rest/build-static.mjs').toBe(true);
     const manifest = JSON.parse(onDisk);
@@ -417,6 +455,21 @@ describe('the generated static files', () => {
     }
     expect(Object.keys(manifest.name_localized).sort()).toEqual(LOCALES.filter((l) => l !== 'en').sort());
     // The product name is not translated.
-    for (const l of LOCALES) expect([l, shared[l]['app.name'].includes('Inspired Mile')]).toEqual([l, true]);
+    for (const l of LOCALES) expect([l, shared[l]['app.name'].startsWith('Sonnet Man')]).toEqual([l, true]);
+    // Each shortcut has its name in every language, from the key its url names.
+    expect(manifest.shortcuts.length).toBeGreaterThan(0);
+    for (const shortcut of manifest.shortcuts) {
+      const key = SHORTCUT_KEYS[shortcut.url as keyof typeof SHORTCUT_KEYS];
+      expect([shortcut.url, shortcut.name]).toEqual([shortcut.url, shared.en[key]]);
+      for (const l of LOCALES.filter((x) => x !== 'en')) expect([shortcut.url, l, shortcut.name_localized[l]]).toEqual([shortcut.url, l, shared[l][key]]);
+    }
+  });
+
+  it('refuses to write translations of English the manifest no longer has', () => {
+    const onDisk = JSON.parse(readFileSync('public/manifest.json', 'utf8'));
+    const renamed = JSON.stringify({ ...onDisk, name: 'Sonnet Man: a new name' });
+    expect(() => localiseManifest(renamed, shared)).toThrow(/translate the new English/);
+    const newShortcut = JSON.stringify({ ...onDisk, shortcuts: [...onDisk.shortcuts, { name: 'Story', url: '/story' }] });
+    expect(() => localiseManifest(newShortcut, shared)).toThrow(/\/story has no key/);
   });
 });
