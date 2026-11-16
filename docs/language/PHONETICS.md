@@ -103,7 +103,10 @@ usable dictionary word, with no table loaded.
   stressed by the rule, which says the last syllable but one. That is wrong for
   "servono", "regole", "piccoli", "dollari", "avrebbero" and for imperatives with a pronoun
   ("lasciami", "guardami"): 18 of the 24 stress differences on 1,356 common words (the
-  other six are foreign names and one espeak-ng error, "oddio"). One table entry is known wrong: the
+  other six are foreign names and one espeak-ng error, "oddio"). Taking the stress of a form
+  the table has that differs only in its closing vowel ("regole" from "regola") was tried and
+  measured: it fixed those nouns and broke verbs ("capito" took the stress of "capita"),
+  and agreement fell from 98.2% to 97.8%, so it was not adopted. One table entry is known wrong: the
   source's transcription of "cristianizzazione" puts the stress on "-tia-".
 - **Undecidable**: open against closed e and o are not distinguished; Italian verse rhymes
   them freely.
