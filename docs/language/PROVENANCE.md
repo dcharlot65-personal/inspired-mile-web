@@ -84,6 +84,7 @@ game or copied into this repository.
 |---|---|---|---|---|
 | MADLAD-400 3B MT (Google) | Back-translation of every string to English | Apache 2.0 | CTranslate2 int8 conversion `Nextcloud-AI/madlad400-3b-mt-ct2-int8` of `google/madlad400-3b-mt` | Hugging Face revision `aa32bbdeba7880eff2096ec044cb155a340a9400` |
 | all-MiniLM-L6-v2 (sentence-transformers) | Similarity between a back-translation and the English source (both English) | Apache 2.0 | `sentence-transformers/all-MiniLM-L6-v2` | revision `1110a243fdf4706b3f48f1d95db1a4f5529b4d41` |
+| LaBSE (Google; sentence-transformers conversion) | Similarity of each translation to its English directly, the second signal of step 3 | Apache 2.0 | `sentence-transformers/LaBSE` | revision `836121a0533e5664b21c7aacc5d22951f2b8b25b` |
 | Gemma 4 26B-A4B instruct (Google), Google's own 4-bit quantisation-aware (QAT) GGUF | The second opinion (step 4) | Apache 2.0 (`cardData.license` of the repository; not gated) | `google/gemma-4-26B-A4B-it-qat-q4_0-gguf`, `gemma-4-26B_q4_0-it.gguf` (14.4 GB) | revision `d1c082be9cf3c8a514acf63b8761f4b41935842e`; SHA-256 `3eca3b8f6d7baf218a7dd6bba5fb59a56ee25fe2d567b6f5f589b4f697eca51d` (checked after download) |
 | Gemma 4 31B instruct (Google), 4-bit GGUF | Tried first for step 4 and stopped: 4 tokens/s on the shared GPU. Its partial results (Thai and Hindi, 36 strings each) are kept on the host as `review-31b-partial.json` and not used | Apache 2.0 | `unsloth/gemma-4-31B-it-GGUF`, `gemma-4-31B-it-Q4_K_M.gguf` (18.3 GB) | revision `c1ac76e99d5513b141e8adde7288b85c3f9c32ec`; SHA-256 `38bd64c852c4b460434cc7162fa9bdcf242faf86502581a754cb72956bb17f84` |
 
@@ -107,7 +108,7 @@ model had to be a different one from the model that wrote the translations
 in the 26B-A4B form (a mixture of experts; Google's own QAT 4-bit file), because
 the dense 31B was too slow beside the host's other work.
 
-All three run on the build host only, with no network at run time
+All of them run on the build host only, with no network at run time
 (`HF_HUB_OFFLINE=1`). No text of the game was sent to any service.
 
 ## What was generated, not sourced
