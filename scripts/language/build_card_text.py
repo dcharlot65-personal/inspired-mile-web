@@ -333,6 +333,11 @@ def write_checks(L):
              'A finding is a question for a reviewer, not a verdict, and an item with no finding has not thereby been shown to be right: '
              'a spelling dictionary does not know names, LanguageTool covers only some languages and some errors, and a back-translation '
              'can be faithful to a wrong text. Nothing here was reviewed by a native speaker.\n')
+    if bt and bt.get('scope'):
+        sc = bt['scope']
+        L.append(f"Back-translation was run on {', '.join(sc['fields'])} in {', '.join(sc['languages'])} only (beam {sc['beam']}): MADLAD-400 3B "
+                 'on the CPU of a heavily loaded shared host took about 13 seconds an item, so the 2,200 items of every language would have '
+                 'taken most of a day. The text written in this round (those scenes) came first. Everything else has not been back-translated.\n')
     L.append('| Language | Items | Hunspell: items with an unknown word | LanguageTool: items with a finding | Back-translation: median cosine (control) | below ' + str(BT_FLAG) + ' |')
     L.append('|---|---|---|---|---|---|')
     import statistics

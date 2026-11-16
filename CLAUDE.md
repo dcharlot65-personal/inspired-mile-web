@@ -99,6 +99,12 @@ left behind by a killed run is found by its port: `lsof -nP -iTCP:<port> -sTCP:L
   unsourced, unreviewed or missing, is `docs/language/NAMES-AND-QUOTATIONS.md`.
   `loadPack(lang)` loads a language's card text, so the signature and the invocation work in the
   duel's language (`src/lib/verse/echo.ts`); an English duel never goes through that file.
+  Published lines keep the edition's spelling; a Japanese line in old kanji also carries its
+  modern reading (`echo`, OpenCC's JPVariants table) for the signature. The tool checks of the
+  translated text (Hunspell, LanguageTool, MADLAD back-translation) are
+  `scripts/language/check/run.sh` on the build host; their tools live in
+  `im-lang/names-quotes` there. When www.gutenberg.org is down, its files are on the mirror
+  gutenberg.pglaf.org (catalogue: GUTINDEX.ALL there).
 - Every verse in every pack must keep its form as the code checks it (`verse.test.ts`).
   `node scripts/mutate-packs.mjs` (on the build host) proves those tests go red.
 - Writing a `\uXXXX` escape through an agent's file tools can turn it into the character

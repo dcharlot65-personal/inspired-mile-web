@@ -1,0 +1,6490 @@
+{
+ "tool": "LanguageTool 6.6, local server, default rules",
+ "languages": {
+  "es": {
+   "items": 205,
+   "flagged": [
+    {
+     "id": "DC-001",
+     "field": "scene",
+     "text": "El castillo de Elsinor emerge de la sombra. Hamlet está en las almenas, con la calavera de Yorick flotando a su lado. Una figura espectral aparece en lo alto de la muralla.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_ES",
+       "category": "TYPOS",
+       "message": "Se ha encontrado un posible error ortográfico.",
+       "found": "Elsinor",
+       "suggestions": [
+        "Encino",
+        "Encinar",
+        "Encinos"
+       ]
+      },
+      {
+       "rule": "MORFOLOGIK_RULE_ES",
+       "category": "TYPOS",
+       "message": "Se ha encontrado un posible error ortográfico.",
+       "found": "Yorick",
+       "suggestions": [
+        "Dórico",
+        "Dórica",
+        "Bórico"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "MO-002",
+     "field": "scene",
+     "text": "Una calle de Verona estalla en caos. Mercucio baila entre las espadas, riéndose del peligro. Saltan chispas del acero que choca.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_ES",
+       "category": "TYPOS",
+       "message": "Se ha encontrado un posible error ortográfico.",
+       "found": "Mercucio",
+       "suggestions": [
+        "Mercurio"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "FA-001",
+     "field": "scene",
+     "text": "El bosque encantado reluce de travesura. Puck se escurre entre robles antiguos, dejando estelas de polvo de hadas. Abajo, los mortales dormidos sueñan sueños extraños.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_ES",
+       "category": "TYPOS",
+       "message": "Se ha encontrado un posible error ortográfico.",
+       "found": "Puck",
+       "suggestions": [
+        "Punk",
+        "Pick",
+        "Pucú"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "RL-001",
+     "field": "name",
+     "text": "La calavera de Yorick",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_ES",
+       "category": "TYPOS",
+       "message": "Se ha encontrado un posible error ortográfico.",
+       "found": "Yorick",
+       "suggestions": [
+        "Dórico",
+        "Dórica",
+        "Bórico"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "RL-002",
+     "field": "quote",
+     "text": "Ahora mis hechizos están todos deshechos.",
+     "matches": [
+      {
+       "rule": "DESHECHO_DESECHO",
+       "category": "MISSPELLING",
+       "message": "¿Quería decir ‘desecho’ (residuo) en vez de ‘deshecho’ (del v. ‘deshacer’)?",
+       "found": "deshechos",
+       "suggestions": [
+        "desechos"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "TP-003",
+     "field": "scene",
+     "text": "La boca de una cueva en una costa salvaje. Calibán se agazapa entre las rocas, con los ojos ardiendo de rencor y de una inteligencia primitiva.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_ES",
+       "category": "TYPOS",
+       "message": "Se ha encontrado un posible error ortográfico.",
+       "found": "Calibán",
+       "suggestions": [
+        "Talibán",
+        "Calibran",
+        "Calaban"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "TP-003",
+     "field": "quote",
+     "text": "Esta isla es mía, por Sycorax, mi madre.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_ES",
+       "category": "TYPOS",
+       "message": "Se ha encontrado un posible error ortográfico.",
+       "found": "Sycorax",
+       "suggestions": [
+        "Sierra",
+        "Nicolás",
+        "Litoral"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "MO-003",
+     "field": "scene",
+     "text": "Una plaza de Verona al amanecer. Benvolio se interpone entre espadas desnudas; sus manos abiertas son la única arma contra la tormenta que se avecina.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_ES",
+       "category": "TYPOS",
+       "message": "Se ha encontrado un posible error ortográfico.",
+       "found": "Benvolio",
+       "suggestions": [
+        "Envolvió",
+        "Benévolo",
+        "Bamboleo"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "CA-002",
+     "field": "scene",
+     "text": "Un callejón de Verona incendiado por las antorchas. Tebaldo desenvaina su estoque con gracia letal, con los ojos clavados en su enemigo.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_ES",
+       "category": "TYPOS",
+       "message": "Se ha encontrado un posible error ortográfico.",
+       "found": "Tebaldo",
+       "suggestions": [
+        "Te baldo",
+        "Evaldo",
+        "Nevaldo"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "DC-003",
+     "field": "scene",
+     "text": "El salón del trono de Elsinor, revestido de falso esplendor. Claudio aferra la corona, con un frasco de veneno oculto en sus ropas.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_ES",
+       "category": "TYPOS",
+       "message": "Se ha encontrado un posible error ortográfico.",
+       "found": "Elsinor",
+       "suggestions": [
+        "Encino",
+        "Encinar",
+        "Encinos"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "FA-003",
+     "field": "scene",
+     "text": "Un claro iluminado por la luna en lo hondo del bosque encantado. Oberón surge de la sombra; su corona de astas recoge la luz de plata.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_ES",
+       "category": "TYPOS",
+       "message": "Se ha encontrado un posible error ortográfico.",
+       "found": "Oberón",
+       "suggestions": [
+        "Oyeron",
+        "Overo",
+        "Overos"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "RL-003",
+     "field": "scene",
+     "text": "Una daga espectral flota en la oscuridad, con la hoja goteando sangre fantasma. La mano de Macbeth se alarga, pero nunca logra asirla.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_ES",
+       "category": "TYPOS",
+       "message": "Se ha encontrado un posible error ortográfico.",
+       "found": "Macbeth",
+       "suggestions": [
+        "Maceta",
+        "Machete",
+        "Marbete"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "PT-003",
+     "field": "name",
+     "text": "Jugo de la flor de Puck",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_ES",
+       "category": "TYPOS",
+       "message": "Se ha encontrado un posible error ortográfico.",
+       "found": "Puck",
+       "suggestions": [
+        "Punk",
+        "Pick",
+        "Pucú"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "SC-001",
+     "field": "scene",
+     "text": "Un salón del trono manchado de sangre en Dunsinane. Macbeth empuña la espada con manos temblorosas; la corona le pesa en la frente. El bosque de Birnam se mueve en la colina lejana.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_ES",
+       "category": "TYPOS",
+       "message": "Se ha encontrado un posible error ortográfico.",
+       "found": "Dunsinane",
+       "suggestions": [
+        "Funcionan",
+        "Funcione",
+        "Funcionase"
+       ]
+      },
+      {
+       "rule": "MORFOLOGIK_RULE_ES",
+       "category": "TYPOS",
+       "message": "Se ha encontrado un posible error ortográfico.",
+       "found": "Macbeth",
+       "suggestions": [
+        "Maceta",
+        "Machete",
+        "Marbete"
+       ]
+      },
+      {
+       "rule": "MORFOLOGIK_RULE_ES",
+       "category": "TYPOS",
+       "message": "Se ha encontrado un posible error ortográfico.",
+       "found": "Birnam",
+       "suggestions": [
+        "Bernal",
+        "Bienal",
+        "Dirham"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "SC-003",
+     "field": "scene",
+     "text": "Un páramo escocés brumoso al crepúsculo. Banquo se mantiene firme mientras tres figuras espectrales susurran destinos al viento. Su fantasma perseguirá a los vivos.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_ES",
+       "category": "TYPOS",
+       "message": "Se ha encontrado un posible error ortográfico.",
+       "found": "Banquo",
+       "suggestions": [
+        "Blanqueo",
+        "Blanqueó",
+        "Banque"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "IL-002",
+     "field": "scene",
+     "text": "Un jardín soleado en la finca de Olivia. Malvolio se pavonea con chillonas medias amarillas y ligas cruzadas, sonriente, apretando contra el pecho una carta de amor falsificada.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_ES",
+       "category": "TYPOS",
+       "message": "Se ha encontrado un posible error ortográfico.",
+       "found": "Malvolio",
+       "suggestions": [
+        "Abolió",
+        "Malévolo",
+        "Magnolio"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "RM-001",
+     "field": "scene",
+     "text": "El Senado romano, con las columnas de mármol teñidas de carmesí. Bruto está entre los conjurados, con la hoja aún temblando. El peso de la república descansa en sus manos ensangrentadas.",
+     "matches": [
+      {
+       "rule": "AUN",
+       "category": "DIACRITICS",
+       "message": "Se escribe sin tilde cuando significa ‘hasta, incluso’ o ‘siquiera’. Solo lleva tilde cuando equivale a ‘todavía’.",
+       "found": "aún",
+       "suggestions": [
+        "aun"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "DC-004",
+     "field": "scene",
+     "text": "Las almenas de Elsinor en la hora fría que precede al alba. Horacio vela junto a Hamlet, el único amigo verdadero en una corte de serpientes.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_ES",
+       "category": "TYPOS",
+       "message": "Se ha encontrado un posible error ortográfico.",
+       "found": "Elsinor",
+       "suggestions": [
+        "Encino",
+        "Encinar",
+        "Encinos"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "FA-004",
+     "field": "scene",
+     "text": "Un claro del bosque encendido de luz de hadas. Bottom lleva una cabeza de asno con desconcertada dignidad mientras Titania lo cubre de guirnaldas. Las hadas ahogan la risa.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_ES",
+       "category": "TYPOS",
+       "message": "Se ha encontrado un posible error ortográfico.",
+       "found": "Bottom",
+       "suggestions": [
+        "Botón",
+        "Boom",
+        "Botó"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "VC-004",
+     "field": "scene",
+     "text": "El cementerio de Verona al anochecer. Paris deja flores en la tumba de Julieta, sin saber del amante desesperado que se acerca desde las sombras.",
+     "matches": [
+      {
+       "rule": "PARIS",
+       "category": "DIACRITICS",
+       "message": "¿Quería decir «París» (ciudad) en vez de Paris (personaje)?",
+       "found": "Paris",
+       "suggestions": [
+        "París"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "RL-005",
+     "field": "name",
+     "text": "El cofre de Portia",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_ES",
+       "category": "TYPOS",
+       "message": "Se ha encontrado un posible error ortográfico.",
+       "found": "Portia",
+       "suggestions": [
+        "Puerta",
+        "Porta",
+        "Partía"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "RL-006",
+     "field": "name",
+     "text": "La corona de Macbeth",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_ES",
+       "category": "TYPOS",
+       "message": "Se ha encontrado un posible error ortográfico.",
+       "found": "Macbeth",
+       "suggestions": [
+        "Maceta",
+        "Machete",
+        "Marbete"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "RL-009",
+     "field": "quote",
+     "text": "¡Dios te bendiga, Bottom! ¡Estás transformado!",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_ES",
+       "category": "TYPOS",
+       "message": "Se ha encontrado un posible error ortográfico.",
+       "found": "Bottom",
+       "suggestions": [
+        "Botón",
+        "Boom",
+        "Botó"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "RL-009",
+     "field": "name",
+     "text": "La máscara de Bottom",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_ES",
+       "category": "TYPOS",
+       "message": "Se ha encontrado un posible error ortográfico.",
+       "found": "Bottom",
+       "suggestions": [
+        "Botón",
+        "Boom",
+        "Botó"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "PT-005",
+     "field": "name",
+     "text": "Rocío de Oberón",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_ES",
+       "category": "TYPOS",
+       "message": "Se ha encontrado un posible error ortográfico.",
+       "found": "Oberón",
+       "suggestions": [
+        "Oyeron",
+        "Overo",
+        "Overos"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "LD-001",
+     "field": "scene",
+     "text": "Una alfombra de narcisos dorados se extiende por la orilla de un lago en calma. Wordsworth camina entre ellos, cuaderno en mano, con las colinas de Cumberland alzándose a su espalda.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_ES",
+       "category": "TYPOS",
+       "message": "Se ha encontrado un posible error ortográfico.",
+       "found": "Cumberland",
+       "suggestions": [
+        "Conversando",
+        "Conversan",
+        "Converjan"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "LD-003",
+     "field": "scene",
+     "text": "Un jardín de Hampstead en otoño. Keats, sentado bajo un ciruelo, escribe con fiebre mientras un ruiseñor canta desde las ramas que oscurecen.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_ES",
+       "category": "TYPOS",
+       "message": "Se ha encontrado un posible error ortográfico.",
+       "found": "Hampstead",
+       "suggestions": [
+        "Mampostead"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "LD-004",
+     "field": "scene",
+     "text": "Una habitación soleada en Florencia. Elizabeth escribe junto a una ventana que da al Arno, con su spaniel a los pies. Las cartas de amor de Robert están abiertas sobre el escritorio.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_ES",
+       "category": "TYPOS",
+       "message": "Se ha encontrado un posible error ortográfico.",
+       "found": "spaniel",
+       "suggestions": [
+        "spa niel"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "OL-006",
+     "field": "scene",
+     "text": "Un barco maltratado por la tormenta dobla un cabo rocoso. Odiseo se ata al mástil mientras las sirenas cantan desde los acantilados. En sus ojos arde el recuerdo de Ítaca.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_ES",
+       "category": "TYPOS",
+       "message": "Se ha encontrado un posible error ortográfico.",
+       "found": "Ítaca",
+       "suggestions": [
+        "Itaca",
+        "Ataca",
+        "Ítala"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "fr": {
+   "items": 183,
+   "flagged": [
+    {
+     "id": "CA-001",
+     "field": "scene",
+     "text": "Le jardin des Capulet fleurit au clair de lune. Juliette se tient parmi les roses, les yeux brillants de défi. Un rossignol chante dans les branches.",
+     "matches": [
+      {
+       "rule": "D_N",
+       "category": "AGREEMENT",
+       "message": "Le déterminant s’accorde avec le nom « Capulet ».",
+       "found": "des Capulet",
+       "suggestions": [
+        "du Capulet",
+        "des Capulets"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "DC-001",
+     "field": "scene",
+     "text": "Le château d’Elseneur émerge de l’ombre. Hamlet se tient aux créneaux, le crâne de Yorick flottant à son côté. Une figure spectrale paraît sur les remparts.",
+     "matches": [
+      {
+       "rule": "FR_SPELLING_RULE",
+       "category": "TYPOS",
+       "message": "Faute de frappe possible trouvée.",
+       "found": "Elseneur",
+       "suggestions": [
+        "Éleveur",
+        "Égreneur"
+       ]
+      },
+      {
+       "rule": "FR_SPELLING_RULE",
+       "category": "TYPOS",
+       "message": "Faute de frappe possible trouvée.",
+       "found": "Yorick",
+       "suggestions": [
+        "York",
+        "Maurice",
+        "Rick"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "RL-001",
+     "field": "name",
+     "text": "Le crâne de Yorick",
+     "matches": [
+      {
+       "rule": "FR_SPELLING_RULE",
+       "category": "TYPOS",
+       "message": "Faute de frappe possible trouvée.",
+       "found": "Yorick",
+       "suggestions": [
+        "York",
+        "Maurice",
+        "Rick"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "RL-002",
+     "field": "scene",
+     "text": "Un bâton noueux crépite d’une énergie occulte. La tempête tourbillonne autour de lui tandis que Prospero murmure son dernier sortilège. L’éclair fend le ciel.",
+     "matches": [
+      {
+       "rule": "FR_SPELLING_RULE",
+       "category": "TYPOS",
+       "message": "Faute de frappe possible trouvée.",
+       "found": "Prospero",
+       "suggestions": [
+        "Prospère",
+        "Prosper",
+        "Prospéra"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "RL-002",
+     "field": "name",
+     "text": "Le bâton de Prospero",
+     "matches": [
+      {
+       "rule": "FR_SPELLING_RULE",
+       "category": "TYPOS",
+       "message": "Faute de frappe possible trouvée.",
+       "found": "Prospero",
+       "suggestions": [
+        "Prospère",
+        "Prosper",
+        "Prospéra"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "VC-003",
+     "field": "scene",
+     "text": "Une cuisine chaleureuse dans la maison des Capulet. La nourrice s’affaire avec un dévouement farouche, une lettre secrète glissée dans son tablier.",
+     "matches": [
+      {
+       "rule": "D_N",
+       "category": "AGREEMENT",
+       "message": "Le déterminant s’accorde avec le nom « Capulet ».",
+       "found": "des Capulet",
+       "suggestions": [
+        "du Capulet",
+        "des Capulets"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "TP-001",
+     "field": "scene",
+     "text": "Une île enveloppée de tempête. Prospero lève les mains tandis que la foudre obéit à sa volonté et que la mer bouillonne à son commandement.",
+     "matches": [
+      {
+       "rule": "FR_SPELLING_RULE",
+       "category": "TYPOS",
+       "message": "Faute de frappe possible trouvée.",
+       "found": "Prospero",
+       "suggestions": [
+        "Prospère",
+        "Prosper",
+        "Prospéra"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "MO-003",
+     "field": "scene",
+     "text": "Une place de Vérone à l’aube. Benvolio se tient entre les épées tirées ; ses mains ouvertes sont la seule arme contre l’orage qui monte.",
+     "matches": [
+      {
+       "rule": "FR_SPELLING_RULE",
+       "category": "TYPOS",
+       "message": "Faute de frappe possible trouvée.",
+       "found": "Benvolio",
+       "suggestions": [
+        "Le Boulou",
+        "Envoie",
+        "Renvoie"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "DC-003",
+     "field": "scene",
+     "text": "La salle du trône d’Elseneur, drapée d’une fausse splendeur. Claudius serre la couronne, une fiole de poison cachée dans sa robe.",
+     "matches": [
+      {
+       "rule": "FR_SPELLING_RULE",
+       "category": "TYPOS",
+       "message": "Faute de frappe possible trouvée.",
+       "found": "Elseneur",
+       "suggestions": [
+        "Éleveur",
+        "Égreneur"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "SC-001",
+     "field": "scene",
+     "text": "Une salle du trône tachée de sang à Dunsinane. Macbeth serre son épée de ses mains tremblantes, la couronne lourde sur son front. Le bois de Birnam remue sur la colline lointaine.",
+     "matches": [
+      {
+       "rule": "FR_SPELLING_RULE",
+       "category": "TYPOS",
+       "message": "Faute de frappe possible trouvée.",
+       "found": "Dunsinane",
+       "suggestions": [
+        "Dessinant",
+        "Usinage",
+        "Cuisinant"
+       ]
+      },
+      {
+       "rule": "FR_SPELLING_RULE",
+       "category": "TYPOS",
+       "message": "Faute de frappe possible trouvée.",
+       "found": "Birnam",
+       "suggestions": [
+        "Birman",
+        "Bram",
+        "Miriam"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "SC-003",
+     "field": "scene",
+     "text": "Une lande écossaise brumeuse au crépuscule. Banquo se tient ferme tandis que trois figures spectrales murmurent des destins dans le vent. Son fantôme hantera les vivants.",
+     "matches": [
+      {
+       "rule": "FR_SPELLING_RULE",
+       "category": "TYPOS",
+       "message": "Faute de frappe possible trouvée.",
+       "found": "Banquo",
+       "suggestions": [
+        "Banco",
+        "Banque",
+        "Bancs"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "IL-002",
+     "field": "scene",
+     "text": "Un jardin ensoleillé dans le domaine d’Olivia. Malvolio se pavane en bas jaunes criards, jarretières croisées, tout sourire, serrant contre sa poitrine une fausse lettre d’amour.",
+     "matches": [
+      {
+       "rule": "FR_SPELLING_RULE",
+       "category": "TYPOS",
+       "message": "Faute de frappe possible trouvée.",
+       "found": "Malvolio",
+       "suggestions": [
+        "Malpoli",
+        "Malpolis",
+        "Malpolie"
+       ]
+      },
+      {
+       "rule": "PLACE_ADJ",
+       "category": "CAT_TOURS_CRITIQUES",
+       "message": "Ce nom précède généralement l’adjectif.",
+       "found": "jaunes criards",
+       "suggestions": [
+        "criards jaunes"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "RM-002",
+     "field": "scene",
+     "text": "Une ruelle romaine à minuit, à la lueur des torches. Cassius se penche et murmure la sédition, l’air maigre et affamé. De fausses lettres s’échappent de sa toge.",
+     "matches": [
+      {
+       "rule": "FR_SPELLING_RULE",
+       "category": "TYPOS",
+       "message": "Faute de frappe possible trouvée.",
+       "found": "Cassius",
+       "suggestions": [
+        "Cactus",
+        "Cassis",
+        "Cacous"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "CA-003",
+     "field": "scene",
+     "text": "La grande salle des Capulet, tendue de soie. Dame Capulet arrange le destin de sa fille comme des fleurs dans un vase ; l’ambition brille derrière chaque sourire gracieux.",
+     "matches": [
+      {
+       "rule": "D_N",
+       "category": "AGREEMENT",
+       "message": "Le déterminant s’accorde avec le nom « Capulet ».",
+       "found": "des Capulet",
+       "suggestions": [
+        "du Capulet",
+        "des Capulets"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "DC-004",
+     "field": "scene",
+     "text": "Les remparts d’Elseneur à l’heure froide qui précède l’aube. Horatio veille aux côtés d’Hamlet, seul ami véritable dans une cour de serpents.",
+     "matches": [
+      {
+       "rule": "FR_SPELLING_RULE",
+       "category": "TYPOS",
+       "message": "Faute de frappe possible trouvée.",
+       "found": "Elseneur",
+       "suggestions": [
+        "Éleveur",
+        "Égreneur"
+       ]
+      },
+      {
+       "rule": "PAS_D_ELISION",
+       "category": "CAT_ELISION",
+       "message": "Cette expression ne s’élide pas.",
+       "found": "d’Hamlet",
+       "suggestions": [
+        "de Hamlet"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "FA-004",
+     "field": "scene",
+     "text": "Une clairière baignée de lumière féerique. Bottom porte une tête d’âne avec une dignité perplexe tandis que Titania le couvre de guirlandes. Les fées étouffent leurs rires.",
+     "matches": [
+      {
+       "rule": "FR_SPELLING_RULE",
+       "category": "TYPOS",
+       "message": "Faute de frappe possible trouvée.",
+       "found": "Bottom",
+       "suggestions": [
+        "Gotham",
+        "Potto",
+        "Bethon"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "TP-004",
+     "field": "scene",
+     "text": "Une plage intacte sur l’île de Prospero. Miranda voit pour la première fois les naufragés, les yeux écarquillés d’émerveillement devant un monde dont elle ignorait l’existence.",
+     "matches": [
+      {
+       "rule": "FR_SPELLING_RULE",
+       "category": "TYPOS",
+       "message": "Faute de frappe possible trouvée.",
+       "found": "Prospero",
+       "suggestions": [
+        "Prospère",
+        "Prosper",
+        "Prospéra"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "RL-008",
+     "field": "name",
+     "text": "Les larmes de Cordélia",
+     "matches": [
+      {
+       "rule": "FR_SPELLING_RULE",
+       "category": "TYPOS",
+       "message": "Faute de frappe possible trouvée.",
+       "found": "Cordélia",
+       "suggestions": [
+        "Cordelia",
+        "Cordela",
+        "Cordelai"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "RL-009",
+     "field": "name",
+     "text": "Le masque de Bottom",
+     "matches": [
+      {
+       "rule": "FR_SPELLING_RULE",
+       "category": "TYPOS",
+       "message": "Faute de frappe possible trouvée.",
+       "found": "Bottom",
+       "suggestions": [
+        "Gotham",
+        "Potto",
+        "Bethon"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "PT-005",
+     "field": "scene",
+     "text": "Une goutte de rosée s’accroche à une orchidée sous la lune et luit d’une lumière violette venue d’ailleurs. Une goutte sur des paupières endormies, et le dormeur s’éprend de la première créature qu’il voit.",
+     "matches": [
+      {
+       "rule": "PAS_DE_VIRGULE",
+       "category": "PONCTUATION_VIRGULE",
+       "message": "La virgule doit être omise dans ce contexte.",
+       "found": ", et",
+       "suggestions": [
+        " et"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "LD-001",
+     "field": "scene",
+     "text": "Un tapis de jonquilles dorées s’étend le long des rives d’un lac immobile. Wordsworth marche parmi elles, carnet en main, les monts du Cumberland dressés derrière lui.",
+     "matches": [
+      {
+       "rule": "FR_SPELLING_RULE",
+       "category": "TYPOS",
+       "message": "Faute de frappe possible trouvée.",
+       "found": "Wordsworth",
+       "suggestions": [
+        "Portsmouth",
+        "Fort Worth",
+        "Woolworth"
+       ]
+      },
+      {
+       "rule": "FR_SPELLING_RULE",
+       "category": "TYPOS",
+       "message": "Faute de frappe possible trouvée.",
+       "found": "Cumberland",
+       "suggestions": [
+        "Cambernard",
+        "Combrand",
+        "Sunderland"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "LD-003",
+     "field": "scene",
+     "text": "Un jardin de Hampstead en automne. Keats, assis sous un prunier, écrit fiévreusement tandis qu’un rossignol chante dans les branches qui s’assombrissent.",
+     "matches": [
+      {
+       "rule": "FR_SPELLING_RULE",
+       "category": "TYPOS",
+       "message": "Faute de frappe possible trouvée.",
+       "found": "Hampstead",
+       "suggestions": [
+        "Hamster",
+        "Hamsters",
+        "Sam Snead"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "LD-004",
+     "field": "scene",
+     "text": "Une chambre ensoleillée à Florence. Elizabeth écrit près d’une fenêtre qui donne sur l’Arno, son épagneul à ses pieds. Les lettres d’amour de Robert sont ouvertes sur le bureau.",
+     "matches": [
+      {
+       "rule": "FR_SPELLING_RULE",
+       "category": "TYPOS",
+       "message": "Faute de frappe possible trouvée.",
+       "found": "Arno",
+       "suggestions": [
+        "Anneau",
+        "ARN",
+        "Arnaud"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "OL-006",
+     "field": "scene",
+     "text": "Un navire battu par la tempête double un cap rocheux. Ulysse s’attache au mât tandis que les Sirènes chantent du haut des falaises. Le souvenir d’Ithaque brûle dans ses yeux.",
+     "matches": [
+      {
+       "rule": "FR_SPELLING_RULE",
+       "category": "TYPOS",
+       "message": "Faute de frappe possible trouvée.",
+       "found": "Ithaque",
+       "suggestions": [
+        "Ithaqua"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "UW-003",
+     "field": "scene",
+     "text": "Un temple en ruine au bord du monde. Méduse se retourne, sa chevelure de serpents sifflant. Des guerriers de pierre jonchent le sol, figés dans leur dernière charge.",
+     "matches": [
+      {
+       "rule": "AGREEMENT_POSTPONED_ADJ",
+       "category": "AGREEMENT",
+       "message": "Vérifiez la concordance de « sifflant » avec les noms précédents.",
+       "found": "sifflant",
+       "suggestions": [
+        "sifflante",
+        "sifflants"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "house:Danish Court",
+     "field": "house",
+     "text": "Cour de Danemark",
+     "matches": [
+      {
+       "rule": "PREP_PAYS",
+       "category": "CAT_TOURS_CRITIQUES",
+       "message": "Une autre préposition semble plus appropriée.",
+       "found": "de",
+       "suggestions": [
+        "du"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "de": {
+   "items": 184,
+   "flagged": [
+    {
+     "id": "DC-001",
+     "field": "scene",
+     "text": "Das Schloss Helsingör taucht aus dem Schatten auf. Hamlet steht auf den Zinnen, Yoricks Schädel schwebt neben ihm. Auf dem Wall darüber erscheint eine geisterhafte Gestalt.",
+     "matches": [
+      {
+       "rule": "GERMAN_SPELLER_RULE",
+       "category": "TYPOS",
+       "message": "Möglicher Tippfehler gefunden.",
+       "found": "Helsingör",
+       "suggestions": [
+        "Helsinki",
+        "Helsinkis"
+       ]
+      },
+      {
+       "rule": "GERMAN_SPELLER_RULE",
+       "category": "TYPOS",
+       "message": "Möglicher Tippfehler gefunden.",
+       "found": "Yoricks",
+       "suggestions": [
+        "Löricks",
+        "Tricks",
+        "Yorks"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "MO-002",
+     "field": "scene",
+     "text": "Eine Straße in Verona bricht ins Chaos aus. Mercutio tanzt zwischen den Klingen und lacht der Gefahr ins Gesicht. Funken sprühen vom klirrenden Stahl.",
+     "matches": [
+      {
+       "rule": "GERMAN_SPELLER_RULE",
+       "category": "TYPOS",
+       "message": "Möglicher Tippfehler gefunden.",
+       "found": "Mercutio",
+       "suggestions": []
+      }
+     ]
+    },
+    {
+     "id": "FA-002",
+     "field": "scene",
+     "text": "Ein Thron aus lebenden Ranken wächst aus dem Waldboden. Titania gebietet über ihren Feenhof, während Glühwürmchen das Blätterdach erhellen. Die Natur selbst beugt sich ihrem Willen.",
+     "matches": [
+      {
+       "rule": "GERMAN_SPELLER_RULE",
+       "category": "TYPOS",
+       "message": "Möglicher Tippfehler gefunden.",
+       "found": "Titania",
+       "suggestions": [
+        "Titanic",
+        "Titanin",
+        "Catania"
+       ]
+      },
+      {
+       "rule": "GERMAN_SPELLER_RULE",
+       "category": "TYPOS",
+       "message": "Möglicher Tippfehler gefunden.",
+       "found": "Feenhof",
+       "suggestions": [
+        "Fronhof",
+        "Meinhof",
+        "Seehof"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "RL-001",
+     "field": "name",
+     "text": "Yoricks Schädel",
+     "matches": [
+      {
+       "rule": "GERMAN_SPELLER_RULE",
+       "category": "TYPOS",
+       "message": "Möglicher Tippfehler gefunden.",
+       "found": "Yoricks",
+       "suggestions": [
+        "Löricks",
+        "Tricks",
+        "Yorks"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "RL-002",
+     "field": "scene",
+     "text": "Ein knorriger Stab knistert vor arkaner Kraft. Der Sturm wirbelt um ihn, während Prospero seinen letzten Zauber flüstert. Ein Blitz spaltet den Himmel.",
+     "matches": [
+      {
+       "rule": "GERMAN_SPELLER_RULE",
+       "category": "TYPOS",
+       "message": "Möglicher Tippfehler gefunden.",
+       "found": "Prospero",
+       "suggestions": [
+        "Prospekt",
+        "Großberg",
+        "Proper"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "RL-002",
+     "field": "name",
+     "text": "Prosperos Stab",
+     "matches": [
+      {
+       "rule": "GERMAN_SPELLER_RULE",
+       "category": "TYPOS",
+       "message": "Möglicher Tippfehler gefunden.",
+       "found": "Prosperos",
+       "suggestions": [
+        "Prospekts",
+        "Großbergs",
+        "Properes"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "TP-001",
+     "field": "scene",
+     "text": "Eine Insel, vom Sturm umhüllt. Prospero hebt die Hände, während der Blitz seinem Willen gehorcht und das Meer auf seinen Befehl aufwallt.",
+     "matches": [
+      {
+       "rule": "GERMAN_SPELLER_RULE",
+       "category": "TYPOS",
+       "message": "Möglicher Tippfehler gefunden.",
+       "found": "Prospero",
+       "suggestions": [
+        "Prospekt",
+        "Großberg",
+        "Proper"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "TP-003",
+     "field": "scene",
+     "text": "Ein Höhleneingang an einer wilden Küste. Caliban kauert zwischen den Felsen, die Augen brennend vor Groll und ursprünglicher Klugheit.",
+     "matches": [
+      {
+       "rule": "GERMAN_SPELLER_RULE",
+       "category": "TYPOS",
+       "message": "Möglicher Tippfehler gefunden.",
+       "found": "Caliban",
+       "suggestions": [
+        "Taliban",
+        "Calypso",
+        "Kalben"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "MO-003",
+     "field": "scene",
+     "text": "Ein Platz in Verona bei Tagesanbruch. Benvolio steht zwischen gezogenen Schwertern; seine offenen Hände sind die einzige Waffe gegen den aufziehenden Sturm.",
+     "matches": [
+      {
+       "rule": "GERMAN_SPELLER_RULE",
+       "category": "TYPOS",
+       "message": "Möglicher Tippfehler gefunden.",
+       "found": "Benvolio",
+       "suggestions": []
+      }
+     ]
+    },
+    {
+     "id": "CA-002",
+     "field": "scene",
+     "text": "Eine Gasse in Verona, vom Fackelschein erhellt. Tybalt zieht seinen Degen mit tödlicher Anmut, die Augen auf seinen Feind geheftet.",
+     "matches": [
+      {
+       "rule": "GERMAN_SPELLER_RULE",
+       "category": "TYPOS",
+       "message": "Möglicher Tippfehler gefunden.",
+       "found": "Tybalt",
+       "suggestions": [
+        "Sobald",
+        "Cobalt",
+        "Sebald"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "DC-003",
+     "field": "scene",
+     "text": "Der Thronsaal von Helsingör, in falschen Glanz gehüllt. Claudius umklammert die Krone, ein Fläschchen Gift in seinem Gewand verborgen.",
+     "matches": [
+      {
+       "rule": "GERMAN_SPELLER_RULE",
+       "category": "TYPOS",
+       "message": "Möglicher Tippfehler gefunden.",
+       "found": "Helsingör",
+       "suggestions": [
+        "Helsinki",
+        "Helsinkis"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "SC-001",
+     "field": "scene",
+     "text": "Ein blutbefleckter Thronsaal in Dunsinane. Macbeth umklammert sein Schwert mit zitternden Händen, die Krone schwer auf der Stirn. Auf dem fernen Hügel regt sich der Wald von Birnam.",
+     "matches": [
+      {
+       "rule": "GERMAN_SPELLER_RULE",
+       "category": "TYPOS",
+       "message": "Möglicher Tippfehler gefunden.",
+       "found": "Dunsinane",
+       "suggestions": []
+      },
+      {
+       "rule": "GERMAN_SPELLER_RULE",
+       "category": "TYPOS",
+       "message": "Möglicher Tippfehler gefunden.",
+       "found": "Birnam",
+       "suggestions": [
+        "Birnau",
+        "Miriam",
+        "Bitnami"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "SC-003",
+     "field": "scene",
+     "text": "Eine neblige schottische Heide in der Dämmerung. Banquo steht unbeirrt, während drei geisterhafte Gestalten Schicksale in den Wind flüstern. Sein Geist wird die Lebenden heimsuchen.",
+     "matches": [
+      {
+       "rule": "GERMAN_SPELLER_RULE",
+       "category": "TYPOS",
+       "message": "Möglicher Tippfehler gefunden.",
+       "found": "Banquo",
+       "suggestions": [
+        "Banjul",
+        "Banque",
+        "Bangui"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "IL-002",
+     "field": "scene",
+     "text": "Ein sonniger Garten auf Olivias Gut. Malvolio stolziert in grellgelben Strümpfen mit kreuzweise gebundenen Kniegürteln umher, grinsend, einen gefälschten Liebesbrief an die Brust gedrückt.",
+     "matches": [
+      {
+       "rule": "GERMAN_SPELLER_RULE",
+       "category": "TYPOS",
+       "message": "Möglicher Tippfehler gefunden.",
+       "found": "Malvolio",
+       "suggestions": []
+      }
+     ]
+    },
+    {
+     "id": "DC-004",
+     "field": "scene",
+     "text": "Die Zinnen von Helsingör in der kalten Stunde vor Tagesanbruch. Horatio hält Wache an Hamlets Seite, der eine wahre Freund an einem Hof voller Schlangen.",
+     "matches": [
+      {
+       "rule": "GERMAN_SPELLER_RULE",
+       "category": "TYPOS",
+       "message": "Möglicher Tippfehler gefunden.",
+       "found": "Helsingör",
+       "suggestions": [
+        "Helsinki",
+        "Helsinkis"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "FA-004",
+     "field": "scene",
+     "text": "Eine Waldlichtung im Feenlicht. Zettel trägt einen Eselskopf mit verdutzter Würde, während Titania ihn mit Girlanden behängt. Die Feen unterdrücken ihr Lachen.",
+     "matches": [
+      {
+       "rule": "GERMAN_SPELLER_RULE",
+       "category": "TYPOS",
+       "message": "Möglicher Tippfehler gefunden.",
+       "found": "Titania",
+       "suggestions": [
+        "Titanic",
+        "Titanin",
+        "Catania"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "TP-004",
+     "field": "scene",
+     "text": "Ein unberührter Strand auf Prosperos Insel. Miranda sieht die Schiffbrüchigen zum ersten Mal, die Augen weit vor Staunen über eine Welt, von der sie nichts wusste.",
+     "matches": [
+      {
+       "rule": "GERMAN_SPELLER_RULE",
+       "category": "TYPOS",
+       "message": "Möglicher Tippfehler gefunden.",
+       "found": "Prosperos",
+       "suggestions": [
+        "Prospekts",
+        "Großbergs",
+        "Properes"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "RL-005",
+     "field": "name",
+     "text": "Portias Kästchen",
+     "matches": [
+      {
+       "rule": "GERMAN_SPELLER_RULE",
+       "category": "TYPOS",
+       "message": "Möglicher Tippfehler gefunden.",
+       "found": "Portias",
+       "suggestions": [
+        "Portal",
+        "Porträt",
+        "Bondias"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "RL-007",
+     "field": "scene",
+     "text": "Ein uralter Foliant, in meergegerbtes Leder gebunden, schwebt über einem steinernen Altar. Seine Seiten blättern von selbst um, und jede ruft einen anderen Sturm herbei.",
+     "matches": [
+      {
+       "rule": "GERMAN_SPELLER_RULE",
+       "category": "TYPOS",
+       "message": "Möglicher Tippfehler gefunden.",
+       "found": "meergegerbtes",
+       "suggestions": [
+        "leer-gegerbtes"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "RL-008",
+     "field": "name",
+     "text": "Cordelias Tränen",
+     "matches": [
+      {
+       "rule": "GERMAN_SPELLER_RULE",
+       "category": "TYPOS",
+       "message": "Möglicher Tippfehler gefunden.",
+       "found": "Cordelias",
+       "suggestions": [
+        "Cornelias",
+        "Cornelius",
+        "Kornelias"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "PT-005",
+     "field": "name",
+     "text": "Oberons Tau",
+     "matches": [
+      {
+       "rule": "GERMAN_SPELLER_RULE",
+       "category": "TYPOS",
+       "message": "Möglicher Tippfehler gefunden.",
+       "found": "Oberons",
+       "suggestions": [
+        "Operons",
+        "Obertons",
+        "Oberen"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "PT-006",
+     "field": "name",
+     "text": "Schierlingstinktur",
+     "matches": [
+      {
+       "rule": "GERMAN_SPELLER_RULE",
+       "category": "TYPOS",
+       "message": "Möglicher Tippfehler gefunden.",
+       "found": "Schierlingstinktur",
+       "suggestions": []
+      }
+     ]
+    },
+    {
+     "id": "LD-001",
+     "field": "scene",
+     "text": "Ein Teppich goldener Narzissen zieht sich am Ufer eines stillen Sees entlang. Wordsworth geht zwischen ihnen, das Notizbuch in der Hand; hinter ihm erheben sich die Berge von Cumberland.",
+     "matches": [
+      {
+       "rule": "GERMAN_SPELLER_RULE",
+       "category": "TYPOS",
+       "message": "Möglicher Tippfehler gefunden.",
+       "found": "Wordsworth",
+       "suggestions": []
+      }
+     ]
+    },
+    {
+     "id": "LD-003",
+     "field": "scene",
+     "text": "Ein Garten in Hampstead im Herbst. Keats sitzt unter einem Pflaumenbaum und schreibt fieberhaft, während eine Nachtigall aus den dunkelnden Zweigen singt.",
+     "matches": [
+      {
+       "rule": "GERMAN_SPELLER_RULE",
+       "category": "TYPOS",
+       "message": "Möglicher Tippfehler gefunden.",
+       "found": "Keats",
+       "suggestions": [
+        "Beats",
+        "Geätzt",
+        "Kats"
+       ]
+      },
+      {
+       "rule": "GERMAN_SPELLER_RULE",
+       "category": "TYPOS",
+       "message": "Möglicher Tippfehler gefunden.",
+       "found": "dunkelnden",
+       "suggestions": [
+        "dunkeln den",
+        "dunkelsten",
+        "dengelnden"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "GC-003",
+     "field": "scene",
+     "text": "Ein düsteres Gemach, von einem erlöschenden Feuer erhellt. Poe sitzt gebeugt an seinem Schreibtisch, als sich ein Rabe auf der Büste der Pallas niederlässt. Das Wort „Nimmermehr“ hallt in den Schatten.",
+     "matches": [
+      {
+       "rule": "GERMAN_SPELLER_RULE",
+       "category": "TYPOS",
+       "message": "Möglicher Tippfehler gefunden.",
+       "found": "Poe",
+       "suggestions": [
+        "Hohe",
+        "Joe",
+        "Bot"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "GC-004",
+     "field": "scene",
+     "text": "Eine Londoner Druckwerkstatt, von visionärem Licht durchflutet. Blake ätzt einen Tiger ins Kupfer, während das Tier aus der Platte hervortritt und hell lodert in den Wäldern der Nacht.",
+     "matches": [
+      {
+       "rule": "GERMAN_SPELLER_RULE",
+       "category": "TYPOS",
+       "message": "Möglicher Tippfehler gefunden.",
+       "found": "Blake",
+       "suggestions": [
+        "Black ",
+        "Black",
+        "Plage"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "GC-005",
+     "field": "scene",
+     "text": "Eine windgepeitschte italienische Klippe. Shelley stellt sich dem Sturm mit ausgebreiteten Armen, während der Westwind Seiten aus seinem Notizbuch reißt und sie über das Mittelmeer verstreut.",
+     "matches": [
+      {
+       "rule": "GERMAN_SPELLER_RULE",
+       "category": "TYPOS",
+       "message": "Möglicher Tippfehler gefunden.",
+       "found": "Shelley",
+       "suggestions": [
+        "Shell ey",
+        "Stellen",
+        "Helle"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "UW-001",
+     "field": "scene",
+     "text": "Der Thronsaal der Unterwelt, erhellt von Strömen bleichen Feuers. Hades thront mit Kerberos zu seinen Füßen, den Helm der Dunkelheit auf der Armlehne. Die Toten ziehen in endlosem Schweigen vorüber.",
+     "matches": [
+      {
+       "rule": "FEHLERHAFTES_KOMMA_ALLG",
+       "category": "HILFESTELLUNG_KOMMASETZUNG",
+       "message": "Wenn es sich hier um keinen Haupt- und Nebensatz handelt, wird in der Regel kein Komma gesetzt.",
+       "found": ", erhellt",
+       "suggestions": [
+        " erhellt"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "OL-006",
+     "field": "scene",
+     "text": "Ein sturmgepeitschtes Schiff umrundet ein felsiges Kap. Odysseus bindet sich an den Mast, während die Sirenen von den Klippen singen. In seinen Augen brennt die Erinnerung an Ithaka.",
+     "matches": [
+      {
+       "rule": "GERMAN_SPELLER_RULE",
+       "category": "TYPOS",
+       "message": "Möglicher Tippfehler gefunden.",
+       "found": "sturmgepeitschtes",
+       "suggestions": []
+      }
+     ]
+    },
+    {
+     "id": "OL-007",
+     "field": "scene",
+     "text": "Die Ebene von Troja bei Tagesanbruch. Achilleus stürmt in gleißender Rüstung voran, sein Kriegsschrei zerreißt die Luft. Hinter ihm brennen griechische Schiffe am Strand.",
+     "matches": [
+      {
+       "rule": "GERMAN_SPELLER_RULE",
+       "category": "TYPOS",
+       "message": "Möglicher Tippfehler gefunden.",
+       "found": "Achilleus",
+       "suggestions": [
+        "Achilles",
+        "Schillers",
+        "Agiles"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "it": {
+   "items": 183,
+   "flagged": [
+    {
+     "id": "SM-001",
+     "field": "scene",
+     "text": "Un grande palco prende forma. The Sonnet Man avanza da un riflettore dorato, microfono in mano. Le parole di Shakespeare si trasformano in rime hip-hop mentre la folla esulta.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_IT_IT",
+       "category": "TYPOS",
+       "message": "Trovato un probabile errore di battitura.",
+       "found": "The",
+       "suggestions": [
+        "Ohe",
+        "Che",
+        "Ché"
+       ]
+      },
+      {
+       "rule": "MORFOLOGIK_RULE_IT_IT",
+       "category": "TYPOS",
+       "message": "Trovato un probabile errore di battitura.",
+       "found": "Sonnet",
+       "suggestions": [
+        "Son net"
+       ]
+      },
+      {
+       "rule": "MORFOLOGIK_RULE_IT_IT",
+       "category": "TYPOS",
+       "message": "Trovato un probabile errore di battitura.",
+       "found": "hip-hop",
+       "suggestions": [
+        "tiptop"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "CA-001",
+     "field": "scene",
+     "text": "Il giardino dei Capuleti fiorisce al chiaro di luna. Giulietta sta fra le rose, gli occhi accesi di sfida. Un usignolo canta dai rami.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_IT_IT",
+       "category": "TYPOS",
+       "message": "Trovato un probabile errore di battitura.",
+       "found": "Capuleti",
+       "suggestions": [
+        "Amuleti",
+        "Caduteti",
+        "Capiteti"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "DC-001",
+     "field": "scene",
+     "text": "Il castello di Elsinore emerge dall’ombra. Amleto sta sugli spalti, con il teschio di Yorick sospeso accanto a lui. Una figura spettrale appare sui bastioni.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_IT_IT",
+       "category": "TYPOS",
+       "message": "Trovato un probabile errore di battitura.",
+       "found": "Elsinore",
+       "suggestions": [
+        "Editore",
+        "Eleonora",
+        "Elettore"
+       ]
+      },
+      {
+       "rule": "MORFOLOGIK_RULE_IT_IT",
+       "category": "TYPOS",
+       "message": "Trovato un probabile errore di battitura.",
+       "found": "Yorick",
+       "suggestions": [
+        "Orice",
+        "Sorico",
+        "York"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "MO-002",
+     "field": "scene",
+     "text": "Una strada di Verona esplode nel caos. Mercuzio danza tra le lame, ridendo in faccia al pericolo. Scintille sprizzano dall’acciaio che si scontra.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_IT_IT",
+       "category": "TYPOS",
+       "message": "Trovato un probabile errore di battitura.",
+       "found": "Mercuzio",
+       "suggestions": [
+        "Mercurio"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "FA-001",
+     "field": "scene",
+     "text": "La foresta incantata luccica di malizia. Puck guizza tra querce antiche, lasciando scie di polvere di fata. Sotto, i mortali addormentati fanno strani sogni.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_IT_IT",
+       "category": "TYPOS",
+       "message": "Trovato un probabile errore di battitura.",
+       "found": "Puck",
+       "suggestions": [
+        "Pack",
+        "Peck",
+        "Punk"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "FA-002",
+     "field": "scene",
+     "text": "Un trono di rampicanti vivi si leva dal suolo della foresta. Titania comanda la sua corte di fate mentre le lucciole illuminano le fronde. La natura stessa si inchina al suo volere.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_IT_IT",
+       "category": "TYPOS",
+       "message": "Trovato un probabile errore di battitura.",
+       "found": "Titania",
+       "suggestions": [
+        "Titanic",
+        "Litania",
+        "Titani"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "RL-001",
+     "field": "name",
+     "text": "Il teschio di Yorick",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_IT_IT",
+       "category": "TYPOS",
+       "message": "Trovato un probabile errore di battitura.",
+       "found": "Yorick",
+       "suggestions": [
+        "Orice",
+        "Sorico",
+        "York"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "VC-003",
+     "field": "scene",
+     "text": "Una cucina calda in casa Capuleti. La balia si affaccenda con feroce devozione, una lettera segreta infilata nel grembiule.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_IT_IT",
+       "category": "TYPOS",
+       "message": "Trovato un probabile errore di battitura.",
+       "found": "Capuleti",
+       "suggestions": [
+        "Amuleti",
+        "Caduteti",
+        "Capiteti"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "TP-003",
+     "field": "scene",
+     "text": "L’imbocco di una grotta su una costa selvaggia. Calibano sta acquattato fra le rocce, gli occhi ardenti di rancore e di un’intelligenza primordiale.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_IT_IT",
+       "category": "TYPOS",
+       "message": "Trovato un probabile errore di battitura.",
+       "found": "Calibano",
+       "suggestions": [
+        "Calibrano",
+        "Ca libano",
+        "Cali bano"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "MO-003",
+     "field": "scene",
+     "text": "Una piazza di Verona all’alba. Benvolio sta fra le spade sguainate; le sue mani aperte sono l’unica arma contro la tempesta che si addensa.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_IT_IT",
+       "category": "TYPOS",
+       "message": "Trovato un probabile errore di battitura.",
+       "found": "Benvolio",
+       "suggestions": [
+        "Benevoli",
+        "Benevolo",
+        "Benvoluto"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "DC-003",
+     "field": "scene",
+     "text": "La sala del trono di Elsinore, drappeggiata di falso splendore. Claudio stringe la corona, con una fiala di veleno nascosta nelle vesti.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_IT_IT",
+       "category": "TYPOS",
+       "message": "Trovato un probabile errore di battitura.",
+       "found": "Elsinore",
+       "suggestions": [
+        "Editore",
+        "Eleonora",
+        "Elettore"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "FA-003",
+     "field": "scene",
+     "text": "Una radura illuminata dalla luna nel folto della foresta incantata. Oberon prende corpo dall’ombra; la sua corona di corna cattura la luce d’argento.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_IT_IT",
+       "category": "TYPOS",
+       "message": "Trovato un probabile errore di battitura.",
+       "found": "Oberon",
+       "suggestions": [
+        "Obero",
+        "Oberò",
+        "Obero n"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "PT-003",
+     "field": "name",
+     "text": "Succo del fiore di Puck",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_IT_IT",
+       "category": "TYPOS",
+       "message": "Trovato un probabile errore di battitura.",
+       "found": "Puck",
+       "suggestions": [
+        "Pack",
+        "Peck",
+        "Punk"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "SC-001",
+     "field": "scene",
+     "text": "Una sala del trono macchiata di sangue a Dunsinane. Macbeth stringe la spada con mani tremanti, la corona pesante sulla fronte. Il bosco di Birnam si muove sul colle lontano.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_IT_IT",
+       "category": "TYPOS",
+       "message": "Trovato un probabile errore di battitura.",
+       "found": "Dunsinane",
+       "suggestions": [
+        "Uncinane",
+        "Desinane"
+       ]
+      },
+      {
+       "rule": "MORFOLOGIK_RULE_IT_IT",
+       "category": "TYPOS",
+       "message": "Trovato un probabile errore di battitura.",
+       "found": "Birnam",
+       "suggestions": [
+        "Berna",
+        "Bionaz",
+        "Miriam"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "SC-003",
+     "field": "scene",
+     "text": "Una brughiera scozzese nebbiosa al crepuscolo. Banquo sta saldo mentre tre figure spettrali sussurrano destini nel vento. Il suo fantasma tormenterà i vivi.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_IT_IT",
+       "category": "TYPOS",
+       "message": "Trovato un probabile errore di battitura.",
+       "found": "Banquo",
+       "suggestions": [
+        "Annuo",
+        "Banjul",
+        "Banano"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "IL-002",
+     "field": "scene",
+     "text": "Un giardino assolato nella tenuta di Olivia. Malvolio si pavoneggia in sgargianti calze gialle con le giarrettiere incrociate, sorridente, stringendo al petto una falsa lettera d’amore.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_IT_IT",
+       "category": "TYPOS",
+       "message": "Trovato un probabile errore di battitura.",
+       "found": "Malvolio",
+       "suggestions": [
+        "Malevoli",
+        "Malevolo",
+        "Maltolto"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "CA-003",
+     "field": "scene",
+     "text": "Il salone dei Capuleti, parato di seta. Madonna Capuleti dispone il destino della figlia come fiori in un vaso; l’ambizione luccica dietro ogni sorriso cortese.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_IT_IT",
+       "category": "TYPOS",
+       "message": "Trovato un probabile errore di battitura.",
+       "found": "Capuleti",
+       "suggestions": [
+        "Amuleti",
+        "Caduteti",
+        "Capiteti"
+       ]
+      },
+      {
+       "rule": "MORFOLOGIK_RULE_IT_IT",
+       "category": "TYPOS",
+       "message": "Trovato un probabile errore di battitura.",
+       "found": "Capuleti",
+       "suggestions": [
+        "Amuleti",
+        "Caduteti",
+        "Capiteti"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "CA-003",
+     "field": "name",
+     "text": "Madonna Capuleti",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_IT_IT",
+       "category": "TYPOS",
+       "message": "Trovato un probabile errore di battitura.",
+       "found": "Capuleti",
+       "suggestions": [
+        "Amuleti",
+        "Caduteti",
+        "Capiteti"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "DC-004",
+     "field": "scene",
+     "text": "Gli spalti di Elsinore nell’ora fredda che precede l’alba. Orazio veglia accanto ad Amleto, l’unico vero amico in una corte di serpenti.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_IT_IT",
+       "category": "TYPOS",
+       "message": "Trovato un probabile errore di battitura.",
+       "found": "Elsinore",
+       "suggestions": [
+        "Editore",
+        "Eleonora",
+        "Elettore"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "FA-004",
+     "field": "scene",
+     "text": "Una radura nel bosco accesa di luce fatata. Bottom porta una testa d’asino con stupefatta dignità mentre Titania lo copre di ghirlande. Le fate soffocano le risa.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_IT_IT",
+       "category": "TYPOS",
+       "message": "Trovato un probabile errore di battitura.",
+       "found": "Bottom",
+       "suggestions": [
+        "Botto",
+        "Botto m"
+       ]
+      },
+      {
+       "rule": "MORFOLOGIK_RULE_IT_IT",
+       "category": "TYPOS",
+       "message": "Trovato un probabile errore di battitura.",
+       "found": "Titania",
+       "suggestions": [
+        "Titanic",
+        "Litania",
+        "Titani"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "RL-005",
+     "field": "name",
+     "text": "Lo scrigno di Porzia",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_IT_IT",
+       "category": "TYPOS",
+       "message": "Trovato un probabile errore di battitura.",
+       "found": "Porzia",
+       "suggestions": [
+        "Porcia",
+        "Prozia",
+        "Por zia"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "RL-009",
+     "field": "name",
+     "text": "La maschera di Bottom",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_IT_IT",
+       "category": "TYPOS",
+       "message": "Trovato un probabile errore di battitura.",
+       "found": "Bottom",
+       "suggestions": [
+        "Botto",
+        "Botto m"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "PT-004",
+     "field": "name",
+     "text": "Radice di mandragora",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_IT_IT",
+       "category": "TYPOS",
+       "message": "Trovato un probabile errore di battitura.",
+       "found": "mandragora",
+       "suggestions": [
+        "mandragola"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "PT-005",
+     "field": "name",
+     "text": "Rugiada di Oberon",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_IT_IT",
+       "category": "TYPOS",
+       "message": "Trovato un probabile errore di battitura.",
+       "found": "Oberon",
+       "suggestions": [
+        "Obero",
+        "Oberò",
+        "Obero n"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "LD-001",
+     "field": "scene",
+     "text": "Un tappeto di narcisi dorati si stende lungo le rive di un lago immobile. Wordsworth cammina in mezzo a loro, taccuino in mano, con i monti del Cumberland che si alzano alle sue spalle.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_IT_IT",
+       "category": "TYPOS",
+       "message": "Trovato un probabile errore di battitura.",
+       "found": "Wordsworth",
+       "suggestions": [
+        "Fort Worth",
+        "Woolworth"
+       ]
+      },
+      {
+       "rule": "MORFOLOGIK_RULE_IT_IT",
+       "category": "TYPOS",
+       "message": "Trovato un probabile errore di battitura.",
+       "found": "Cumberland",
+       "suggestions": [
+        "Timberland"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "LD-003",
+     "field": "scene",
+     "text": "Un giardino di Hampstead in autunno. Keats siede sotto un susino e scrive febbrilmente mentre un usignolo canta dai rami che si fanno scuri.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_IT_IT",
+       "category": "TYPOS",
+       "message": "Trovato un probabile errore di battitura.",
+       "found": "Hampstead",
+       "suggestions": [
+        "Hamster",
+        "Sam Snead"
+       ]
+      },
+      {
+       "rule": "MORFOLOGIK_RULE_IT_IT",
+       "category": "TYPOS",
+       "message": "Trovato un probabile errore di battitura.",
+       "found": "Keats",
+       "suggestions": [
+        "Beat",
+        "Beata",
+        "Beate"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "GC-004",
+     "field": "scene",
+     "text": "Una stamperia di Londra accesa di luce visionaria. Blake incide una tigre nel rame mentre la belva prende corpo dalla lastra, ardendo luminosa nelle foreste della notte.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_IT_IT",
+       "category": "TYPOS",
+       "message": "Trovato un probabile errore di battitura.",
+       "found": "Blake",
+       "suggestions": [
+        "Alale",
+        "Alane",
+        "Alare"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "GC-005",
+     "field": "scene",
+     "text": "La cima di una scogliera italiana battuta dal vento. Shelley affronta la tempesta a braccia aperte, mentre il vento dell’ovest strappa le pagine dal suo taccuino e le disperde sul Mediterraneo.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_IT_IT",
+       "category": "TYPOS",
+       "message": "Trovato un probabile errore di battitura.",
+       "found": "Shelley",
+       "suggestions": [
+        "Selle",
+        "Snelle",
+        "Stelle"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "LD-005",
+     "field": "scene",
+     "text": "Un giardino preraffaellita nella luce d’autunno che si spegne. Christina siede tra le foglie cadute e compone versi che dolgono di bellezza e di quieta rassegnazione.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_IT_IT",
+       "category": "TYPOS",
+       "message": "Trovato un probabile errore di battitura.",
+       "found": "Christina",
+       "suggestions": [
+        "Christian",
+        "Cristina"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "OL-001",
+     "field": "quote",
+     "text": "Io sono l’adunatore di nubi, signore degli ampi cieli.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_IT_IT",
+       "category": "TYPOS",
+       "message": "Trovato un probabile errore di battitura.",
+       "found": "adunatore",
+       "suggestions": [
+        "adulatore",
+        "adunatole",
+        "adunatone"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "OL-002",
+     "field": "scene",
+     "text": "Il Partenone splende in una luce dorata. Atena sta in piedi in armatura completa, la civetta posata sullo scudo, gli occhi grigi che vedono attraverso ogni inganno mortale.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_IT_IT",
+       "category": "TYPOS",
+       "message": "Trovato un probabile errore di battitura.",
+       "found": "Partenone",
+       "suggestions": [
+        "Partendone",
+        "Par tenone",
+        "Parte none"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "OL-004",
+     "field": "quote",
+     "text": "Nemmeno gli dèi possono resistere al potere dell’amore.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_IT_IT",
+       "category": "TYPOS",
+       "message": "Trovato un probabile errore di battitura.",
+       "found": "dèi",
+       "suggestions": [
+        "dei",
+        "bei",
+        "dai"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "OL-005",
+     "field": "quote",
+     "text": "Rapido come il pensiero, porto le parole degli dèi a orecchie mortali.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_IT_IT",
+       "category": "TYPOS",
+       "message": "Trovato un probabile errore di battitura.",
+       "found": "dèi",
+       "suggestions": [
+        "dei",
+        "bei",
+        "dai"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "UW-002",
+     "field": "scene",
+     "text": "Un trono diviso tra primavera e ombra. Persefone tiene una melagrana in una mano e una corona di fiori nell’altra, regina di due regni.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_IT_IT",
+       "category": "TYPOS",
+       "message": "Trovato un probabile errore di battitura.",
+       "found": "Persefone",
+       "suggestions": [
+        "Persone"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "house:Capulet",
+     "field": "house",
+     "text": "Capuleti",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_IT_IT",
+       "category": "TYPOS",
+       "message": "Trovato un probabile errore di battitura.",
+       "found": "Capuleti",
+       "suggestions": [
+        "Amuleti",
+        "Caduteti",
+        "Capiteti"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "house:Forest of Arden",
+     "field": "house",
+     "text": "Foresta di Arden",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_IT_IT",
+       "category": "TYPOS",
+       "message": "Trovato un probabile errore di battitura.",
+       "found": "Arden",
+       "suggestions": [
+        "Aden",
+        "Arde",
+        "Ardea"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "pt": {
+   "items": 228,
+   "flagged": [
+    {
+     "id": "DC-001",
+     "field": "scene",
+     "text": "O castelo de Elsinore emerge da sombra. Hamlet está nas ameias, com a caveira de Yorick a pairar ao seu lado. Uma figura espectral aparece nas muralhas.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_PT_BR",
+       "category": "TYPOS",
+       "message": "Encontrado possível erro de ortografia.",
+       "found": "Elsinore",
+       "suggestions": [
+        "Eleonore",
+        "Buzinote",
+        "Enzimose"
+       ]
+      },
+      {
+       "rule": "MORFOLOGIK_RULE_PT_BR",
+       "category": "TYPOS",
+       "message": "Encontrado possível erro de ortografia.",
+       "found": "Yorick",
+       "suggestions": [
+        "York",
+        "Dórica",
+        "Dórico"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "MO-002",
+     "field": "scene",
+     "text": "Uma rua de Verona irrompe em caos. Mercúcio dança entre as lâminas, rindo na cara do perigo. Saltam faíscas do aço que se choca.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_PT_BR",
+       "category": "TYPOS",
+       "message": "Encontrado possível erro de ortografia.",
+       "found": "Mercúcio",
+       "suggestions": [
+        "Mercúrio",
+        "Mércurio",
+        "Merlúcio"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "FA-001",
+     "field": "scene",
+     "text": "A floresta encantada cintila de travessura. Puck esgueira-se entre carvalhos antigos, deixando rastos de pó de fada. Em baixo, mortais adormecidos sonham sonhos estranhos.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_PT_BR",
+       "category": "TYPOS",
+       "message": "Encontrado possível erro de ortografia.",
+       "found": "Puck",
+       "suggestions": [
+        "Punk",
+        "PUC",
+        "Puco"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "FA-002",
+     "field": "scene",
+     "text": "Um trono de trepadeiras vivas ergue-se do chão da floresta. Titania comanda a sua corte de fadas enquanto os pirilampos iluminam a copa das árvores. A própria natureza se curva à sua vontade.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_PT_BR",
+       "category": "TYPOS",
+       "message": "Encontrado possível erro de ortografia.",
+       "found": "Titania",
+       "suggestions": [
+        "Titânia",
+        "Tirania",
+        "Titânio"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "RL-001",
+     "field": "name",
+     "text": "A caveira de Yorick",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_PT_BR",
+       "category": "TYPOS",
+       "message": "Encontrado possível erro de ortografia.",
+       "found": "Yorick",
+       "suggestions": [
+        "York",
+        "Dórica",
+        "Dórico"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "RL-002",
+     "field": "name",
+     "text": "O cajado de Prospero",
+     "matches": [
+      {
+       "rule": "LP_PARONYMS",
+       "category": "CONFUSED_WORDS",
+       "message": "Quando escrita sem acento, esta palavra é um verbo. Se pretende referir-se a um substantivo ou adjetivo, deve utilizar a forma acentuada.",
+       "found": "Prospero",
+       "suggestions": [
+        "Próspero"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "TP-003",
+     "field": "scene",
+     "text": "A boca de uma gruta numa costa selvagem. Caliban agacha-se entre as rochas, com os olhos a arder de rancor e de uma inteligência primitiva.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_PT_BR",
+       "category": "TYPOS",
+       "message": "Encontrado possível erro de ortografia.",
+       "found": "Caliban",
+       "suggestions": [
+        "Caibam",
+        "Clivam",
+        "Cativam"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "TP-003",
+     "field": "quote",
+     "text": "Esta ilha é minha, por Sycorax, minha mãe.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_PT_BR",
+       "category": "TYPOS",
+       "message": "Encontrado possível erro de ortografia.",
+       "found": "Sycorax",
+       "suggestions": [
+        "Sincorá",
+        "Bicora",
+        "Bicorai"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "MO-003",
+     "field": "scene",
+     "text": "Uma praça de Verona ao amanhecer. Benvólio está entre espadas desembainhadas; as suas mãos abertas são a única arma contra a tempestade que se forma.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_PT_BR",
+       "category": "TYPOS",
+       "message": "Encontrado possível erro de ortografia.",
+       "found": "Benvólio",
+       "suggestions": [
+        "Embólio"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "DC-003",
+     "field": "scene",
+     "text": "A sala do trono de Elsinore, coberta de falso esplendor. Cláudio agarra a coroa, com um frasco de veneno escondido nas vestes.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_PT_BR",
+       "category": "TYPOS",
+       "message": "Encontrado possível erro de ortografia.",
+       "found": "Elsinore",
+       "suggestions": [
+        "Eleonore",
+        "Buzinote",
+        "Enzimose"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "FA-003",
+     "field": "scene",
+     "text": "Uma clareira ao luar, no fundo da floresta encantada. Oberon surge da sombra; a sua coroa de hastes apanha a luz de prata.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_PT_BR",
+       "category": "TYPOS",
+       "message": "Encontrado possível erro de ortografia.",
+       "found": "Oberon",
+       "suggestions": [
+        "Oberam",
+        "Oberem",
+        "Obero"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "FA-003",
+     "field": "quote",
+     "text": "Mau encontro ao luar, orgulhosa Titania.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_PT_BR",
+       "category": "TYPOS",
+       "message": "Encontrado possível erro de ortografia.",
+       "found": "Titania",
+       "suggestions": [
+        "Titânia",
+        "Tirania",
+        "Titânio"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "PT-003",
+     "field": "name",
+     "text": "Sumo da flor de Puck",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_PT_BR",
+       "category": "TYPOS",
+       "message": "Encontrado possível erro de ortografia.",
+       "found": "Puck",
+       "suggestions": [
+        "Punk",
+        "PUC",
+        "Puco"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "SC-001",
+     "field": "scene",
+     "text": "Uma sala do trono manchada de sangue em Dunsinane. Macbeth segura a espada com mãos trêmulas, a coroa pesada na fronte. A floresta de Birnam move-se na colina distante.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_PT_BR",
+       "category": "TYPOS",
+       "message": "Encontrado possível erro de ortografia.",
+       "found": "Dunsinane",
+       "suggestions": [
+        "Duns inane"
+       ]
+      },
+      {
+       "rule": "MORFOLOGIK_RULE_PT_BR",
+       "category": "TYPOS",
+       "message": "Encontrado possível erro de ortografia.",
+       "found": "Birnam",
+       "suggestions": [
+        "Barman",
+        "Firmam",
+        "Birmane"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "SC-003",
+     "field": "scene",
+     "text": "Uma charneca escocesa enevoada ao crepúsculo. Banquo mantém-se firme enquanto três figuras espectrais sussurram destinos ao vento. O seu fantasma há de assombrar os vivos.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_PT_BR",
+       "category": "TYPOS",
+       "message": "Encontrado possível erro de ortografia.",
+       "found": "Banquo",
+       "suggestions": [
+        "Banque"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "IL-002",
+     "field": "scene",
+     "text": "Um jardim soalheiro na propriedade de Olívia. Malvólio pavoneia-se de berrantes meias amarelas com ligas cruzadas, sorridente, apertando ao peito uma carta de amor forjada.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_PT_BR",
+       "category": "TYPOS",
+       "message": "Encontrado possível erro de ortografia.",
+       "found": "Malvólio",
+       "suggestions": [
+        "Malvouro"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "MO-004",
+     "field": "scene",
+     "text": "A propriedade dos Montéquio ao amanhecer. O senhor Montéquio observa de uma janela alta o filho que vagueia pelos pomares enevoados, doente de amor e inalcançável.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_PT_BR",
+       "category": "TYPOS",
+       "message": "Encontrado possível erro de ortografia.",
+       "found": "Montéquio",
+       "suggestions": [
+        "Montepio",
+        "Contaquiro",
+        "Monarquio"
+       ]
+      },
+      {
+       "rule": "MORFOLOGIK_RULE_PT_BR",
+       "category": "TYPOS",
+       "message": "Encontrado possível erro de ortografia.",
+       "found": "Montéquio",
+       "suggestions": [
+        "Montepio",
+        "Contaquiro",
+        "Monarquio"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "MO-004",
+     "field": "name",
+     "text": "Senhor Montéquio",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_PT_BR",
+       "category": "TYPOS",
+       "message": "Encontrado possível erro de ortografia.",
+       "found": "Montéquio",
+       "suggestions": [
+        "Montepio",
+        "Contaquiro",
+        "Monarquio"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "DC-004",
+     "field": "scene",
+     "text": "As ameias de Elsinore na hora fria antes da alvorada. Horácio vela ao lado de Hamlet, o único amigo verdadeiro numa corte de serpentes.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_PT_BR",
+       "category": "TYPOS",
+       "message": "Encontrado possível erro de ortografia.",
+       "found": "Elsinore",
+       "suggestions": [
+        "Eleonore",
+        "Buzinote",
+        "Enzimose"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "FA-004",
+     "field": "scene",
+     "text": "Uma clareira da floresta banhada de luz de fadas. Bottom usa uma cabeça de burro com perplexa dignidade enquanto Titania o cobre de grinaldas. As fadas abafam o riso.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_PT_BR",
+       "category": "TYPOS",
+       "message": "Encontrado possível erro de ortografia.",
+       "found": "Bottom",
+       "suggestions": [
+        "Boston",
+        "Fóton",
+        "Boto"
+       ]
+      },
+      {
+       "rule": "MORFOLOGIK_RULE_PT_BR",
+       "category": "TYPOS",
+       "message": "Encontrado possível erro de ortografia.",
+       "found": "Titania",
+       "suggestions": [
+        "Titânia",
+        "Tirania",
+        "Titânio"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "TP-004",
+     "field": "scene",
+     "text": "Uma praia intocada na ilha de Prospero. Miranda vê pela primeira vez os náufragos, de olhos arregalados de espanto perante um mundo que não sabia existir.",
+     "matches": [
+      {
+       "rule": "LP_PARONYMS",
+       "category": "CONFUSED_WORDS",
+       "message": "Quando escrita sem acento, esta palavra é um verbo. Se pretende referir-se a um substantivo ou adjetivo, deve utilizar a forma acentuada.",
+       "found": "Prospero",
+       "suggestions": [
+        "Próspero"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "RL-004",
+     "field": "scene",
+     "text": "Um anel de ouro repousa no parapeito de pedra de uma varanda e apanha o luar. Por dentro tem gravado um voto que sobrevive à própria morte. Pétalas de rosa rodopiam à sua volta num vento invisível.",
+     "matches": [
+      {
+       "rule": "PARA-POR_TER_PARTICIPIO-PASSADO",
+       "category": "ACADEMIC",
+       "message": "Para conferir mais clareza ao seu texto, busque usar uma linguagem mais concisa.",
+       "found": "tem gravado",
+       "suggestions": [
+        "grava"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "RL-009",
+     "field": "quote",
+     "text": "Deus te abençoe, Bottom! Estás transformado!",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_PT_BR",
+       "category": "TYPOS",
+       "message": "Encontrado possível erro de ortografia.",
+       "found": "Bottom",
+       "suggestions": [
+        "Boston",
+        "Fóton",
+        "Boto"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "RL-009",
+     "field": "name",
+     "text": "A máscara de Bottom",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_PT_BR",
+       "category": "TYPOS",
+       "message": "Encontrado possível erro de ortografia.",
+       "found": "Bottom",
+       "suggestions": [
+        "Boston",
+        "Fóton",
+        "Boto"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "PT-005",
+     "field": "name",
+     "text": "Orvalho de Oberon",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_PT_BR",
+       "category": "TYPOS",
+       "message": "Encontrado possível erro de ortografia.",
+       "found": "Oberon",
+       "suggestions": [
+        "Oberam",
+        "Oberem",
+        "Obero"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "LD-001",
+     "field": "scene",
+     "text": "Um tapete de narcisos dourados estende-se pelas margens de um lago parado. Wordsworth caminha entre eles, de caderno na mão, com os montes de Cumberland a erguer-se atrás de si.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_PT_BR",
+       "category": "TYPOS",
+       "message": "Encontrado possível erro de ortografia.",
+       "found": "Wordsworth",
+       "suggestions": [
+        "Fort Worth",
+        "Woolworth"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "LD-003",
+     "field": "scene",
+     "text": "Um jardim de Hampstead no outono. Keats, sentado debaixo de uma ameixeira, escreve febrilmente enquanto um rouxinol canta nos ramos que escurecem.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_PT_BR",
+       "category": "TYPOS",
+       "message": "Encontrado possível erro de ortografia.",
+       "found": "Hampstead",
+       "suggestions": [
+        "Hasteada",
+        "Hamster",
+        "Hamsters"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "GC-003",
+     "field": "scene",
+     "text": "Um aposento sombrio alumiado por um fogo que morre. Poe está curvado sobre a secretária quando um corvo pousa no busto de Palas. A palavra «Nunca mais» ecoa nas sombras.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_PT_BR",
+       "category": "TYPOS",
+       "message": "Encontrado possível erro de ortografia.",
+       "found": "Poe",
+       "suggestions": [
+        "Põe",
+        "Por",
+        "Pode"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "GC-004",
+     "field": "scene",
+     "text": "Uma oficina de impressão em Londres, incendiada de luz visionária. Blake grava um tigre no cobre enquanto a fera se materializa da chapa, ardendo brilhante nas florestas da noite.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_PT_BR",
+       "category": "TYPOS",
+       "message": "Encontrado possível erro de ortografia.",
+       "found": "Blake",
+       "suggestions": [
+        "Burke",
+        "Glacê",
+        "Glacé"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "GC-005",
+     "field": "scene",
+     "text": "O cimo de uma falésia italiana varrida pelo vento. Shelley enfrenta a tempestade de braços abertos, enquanto o vento oeste arranca páginas do seu caderno e as espalha pelo Mediterrâneo.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_PT_BR",
+       "category": "TYPOS",
+       "message": "Encontrado possível erro de ortografia.",
+       "found": "Shelley",
+       "suggestions": [
+        "Shirley",
+        "Cheguei",
+        "Hellen"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "OL-002",
+     "field": "scene",
+     "text": "O Pártenon resplandece numa luz dourada. Atena está de pé com a armadura completa, a coruja pousada no escudo, os olhos cinzentos a ver através de todo o engano mortal.",
+     "matches": [
+      {
+       "rule": "ATRAVES_DE_POR_VIA",
+       "category": "FORMAL",
+       "message": "Para conferir mais clareza ao seu texto, busque usar uma linguagem mais concisa.",
+       "found": "através de",
+       "suggestions": [
+        "por",
+        "via",
+        "mediante"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "UW-002",
+     "field": "scene",
+     "text": "Um trono dividido entre a primavera e a sombra. Perséfone segura uma romã numa mão e uma coroa de flores na outra, rainha de dois reinos.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_PT_BR",
+       "category": "TYPOS",
+       "message": "Encontrado possível erro de ortografia.",
+       "found": "Perséfone",
+       "suggestions": [
+        "Pernegome",
+        "Persevão",
+        "Persófona"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "house:Montague",
+     "field": "house",
+     "text": "Montéquio",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_PT_BR",
+       "category": "TYPOS",
+       "message": "Encontrado possível erro de ortografia.",
+       "found": "Montéquio",
+       "suggestions": [
+        "Montepio",
+        "Contaquiro",
+        "Monarquio"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "house:Forest of Arden",
+     "field": "house",
+     "text": "Floresta de Arden",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_PT_BR",
+       "category": "TYPOS",
+       "message": "Encontrado possível erro de ortografia.",
+       "found": "Arden",
+       "suggestions": [
+        "Ardem",
+        "Ordem",
+        "Arde"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "pl": {
+   "items": 206,
+   "flagged": [
+    {
+     "id": "SM-001",
+     "field": "scene",
+     "text": "Materializuje się wielka scena. The Sonnet Man wychodzi ze złotego światła reflektora z mikrofonem w dłoni. Słowa Szekspira zmieniają się w hip-hopowe wersy, a tłum wiwatuje.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_PL_PL",
+       "category": "TYPOS",
+       "message": "Wykryto prawdopodobny błąd pisowni",
+       "found": "Sonnet",
+       "suggestions": [
+        "Sonet",
+        "Bonnet",
+        "Sennet"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "CA-001",
+     "field": "scene",
+     "text": "Ogród Kapuletów kwitnie w świetle księżyca. Julia stoi wśród róż, a jej oczy błyszczą przekorą. W gałęziach śpiewa słowik.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_PL_PL",
+       "category": "TYPOS",
+       "message": "Wykryto prawdopodobny błąd pisowni",
+       "found": "Kapuletów",
+       "suggestions": []
+      }
+     ]
+    },
+    {
+     "id": "DC-001",
+     "field": "scene",
+     "text": "Zamek Elsynor wyłania się z cienia. Hamlet stoi na blankach, a obok niego unosi się czaszka Yorika. Na murach pojawia się widmowa postać.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_PL_PL",
+       "category": "TYPOS",
+       "message": "Wykryto prawdopodobny błąd pisowni",
+       "found": "Yorika",
+       "suggestions": [
+        "Yorka"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "MO-002",
+     "field": "scene",
+     "text": "Ulica Werony wybucha chaosem. Merkucjo tańczy między ostrzami, śmiejąc się niebezpieczeństwu w twarz. Ze zderzającej się stali sypią się iskry.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_PL_PL",
+       "category": "TYPOS",
+       "message": "Wykryto prawdopodobny błąd pisowni",
+       "found": "Merkucjo",
+       "suggestions": [
+        "Mer kucjo"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "RL-001",
+     "field": "name",
+     "text": "Czaszka Yorika",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_PL_PL",
+       "category": "TYPOS",
+       "message": "Wykryto prawdopodobny błąd pisowni",
+       "found": "Yorika",
+       "suggestions": [
+        "Yorka"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "VC-002",
+     "field": "scene",
+     "text": "Klasztorna cela w blasku świec. Zakonnik dogląda ogródka ziół i trucizn, a mądrość wyryta jest na jego ogorzałej twarzy.",
+     "matches": [
+      {
+       "rule": "DWA_PODMIOTY_FIN",
+       "category": "SYNTAX",
+       "message": "W tym fragmencie zdania występują dwa potencjalne podmioty (Zakonnik, ogródka) jednego orzeczenia (dogląda). Prawdopodobnie błąd gramatyczny, interpunkcyjny lub literówka.",
+       "found": "Zakonnik dogląda ogródka",
+       "suggestions": []
+      }
+     ]
+    },
+    {
+     "id": "VC-003",
+     "field": "scene",
+     "text": "Ciepła kuchnia w domu Kapuletów. Niania krząta się z zaciętym oddaniem, z tajnym listem wsuniętym za fartuch.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_PL_PL",
+       "category": "TYPOS",
+       "message": "Wykryto prawdopodobny błąd pisowni",
+       "found": "Kapuletów",
+       "suggestions": []
+      }
+     ]
+    },
+    {
+     "id": "TP-003",
+     "field": "scene",
+     "text": "Wylot jaskini na dzikim brzegu. Kaliban przyczaja się wśród skał, a jego oczy płoną urazą i pierwotną inteligencją.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_PL_PL",
+       "category": "TYPOS",
+       "message": "Wykryto prawdopodobny błąd pisowni",
+       "found": "Kaliban",
+       "suggestions": [
+        "Taliban",
+        "Kalian",
+        "Kali ban"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "TP-003",
+     "field": "quote",
+     "text": "Ta wyspa jest moja, po Sykoraks, mojej matce.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_PL_PL",
+       "category": "TYPOS",
+       "message": "Wykryto prawdopodobny błąd pisowni",
+       "found": "Sykoraks",
+       "suggestions": []
+      }
+     ]
+    },
+    {
+     "id": "MO-003",
+     "field": "scene",
+     "text": "Plac w Weronie o świcie. Benvolio staje między dobytymi mieczami; jego otwarte dłonie to jedyna broń przeciw nadciągającej burzy.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_PL_PL",
+       "category": "TYPOS",
+       "message": "Wykryto prawdopodobny błąd pisowni",
+       "found": "Benvolio",
+       "suggestions": []
+      }
+     ]
+    },
+    {
+     "id": "CA-002",
+     "field": "scene",
+     "text": "Zaułek Werony rozświetlony pochodniami. Tybalt dobywa rapiera ze śmiertelnym wdziękiem, z oczami utkwionymi we wrogu.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_PL_PL",
+       "category": "TYPOS",
+       "message": "Wykryto prawdopodobny błąd pisowni",
+       "found": "Tybalt",
+       "suggestions": [
+        "Rybałt"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "DC-003",
+     "field": "scene",
+     "text": "Sala tronowa Elsynoru, udrapowana fałszywym przepychem. Klaudiusz ściska koronę, a w szatach kryje fiolkę trucizny.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_PL_PL",
+       "category": "TYPOS",
+       "message": "Wykryto prawdopodobny błąd pisowni",
+       "found": "Elsynoru",
+       "suggestions": [
+        "Elsynor",
+        "Elsynora",
+        "Elsynor u"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "SC-001",
+     "field": "scene",
+     "text": "Zbryzgana krwią sala tronowa w Dunsinane. Makbet ściska miecz drżącymi dłońmi, korona ciąży mu na czole. Na dalekim wzgórzu porusza się las Birnam.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_PL_PL",
+       "category": "TYPOS",
+       "message": "Wykryto prawdopodobny błąd pisowni",
+       "found": "Dunsinane",
+       "suggestions": []
+      },
+      {
+       "rule": "MORFOLOGIK_RULE_PL_PL",
+       "category": "TYPOS",
+       "message": "Wykryto prawdopodobny błąd pisowni",
+       "found": "Birnam",
+       "suggestions": []
+      }
+     ]
+    },
+    {
+     "id": "IL-001",
+     "field": "scene",
+     "text": "Smagany wiatrem brzeg Ilirii. Wiola naciąga marynarską czapkę na krótko ścięte włosy; w jej oczach migocą dwie tożsamości. Morze szepcze tajemnice o jej zaginionym bracie.",
+     "matches": [
+      {
+       "rule": "PREP_CASUS",
+       "category": "SYNTAX",
+       "message": "Przyimek „o” jest używany z miejscownikiem.",
+       "found": "jej",
+       "suggestions": []
+      }
+     ]
+    },
+    {
+     "id": "IL-002",
+     "field": "scene",
+     "text": "Słoneczny ogród w posiadłości Oliwii. Malwolio kroczy dumnie w jaskrawożółtych pończochach z podwiązkami na krzyż, uśmiechnięty, przyciskając do piersi sfałszowany list miłosny.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_PL_PL",
+       "category": "TYPOS",
+       "message": "Wykryto prawdopodobny błąd pisowni",
+       "found": "Malwolio",
+       "suggestions": []
+      }
+     ]
+    },
+    {
+     "id": "CA-003",
+     "field": "scene",
+     "text": "Wielka sala Kapuletów, udrapowana jedwabiem. Pani Kapulet układa los córki jak kwiaty w wazonie; za każdym łaskawym uśmiechem lśni ambicja.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_PL_PL",
+       "category": "TYPOS",
+       "message": "Wykryto prawdopodobny błąd pisowni",
+       "found": "Kapuletów",
+       "suggestions": []
+      },
+      {
+       "rule": "MORFOLOGIK_RULE_PL_PL",
+       "category": "TYPOS",
+       "message": "Wykryto prawdopodobny błąd pisowni",
+       "found": "Kapulet",
+       "suggestions": [
+        "Kapuleti"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "CA-003",
+     "field": "name",
+     "text": "Pani Kapulet",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_PL_PL",
+       "category": "TYPOS",
+       "message": "Wykryto prawdopodobny błąd pisowni",
+       "found": "Kapulet",
+       "suggestions": [
+        "Kapuleti"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "DC-004",
+     "field": "scene",
+     "text": "Blanki Elsynoru w zimnej godzinie przed świtem. Horacy czuwa u boku Hamleta, jedyny prawdziwy przyjaciel na dworze pełnym węży.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_PL_PL",
+       "category": "TYPOS",
+       "message": "Wykryto prawdopodobny błąd pisowni",
+       "found": "Elsynoru",
+       "suggestions": [
+        "Elsynor",
+        "Elsynora",
+        "Elsynor u"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "LD-003",
+     "field": "scene",
+     "text": "Ogród w Hampstead jesienią. Keats siedzi pod śliwą i pisze gorączkowo, a słowik śpiewa z ciemniejących gałęzi.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_PL_PL",
+       "category": "TYPOS",
+       "message": "Wykryto prawdopodobny błąd pisowni",
+       "found": "Hampstead",
+       "suggestions": []
+      }
+     ]
+    },
+    {
+     "id": "OL-004",
+     "field": "scene",
+     "text": "Brzegi Cypru o świcie. Afrodyta wyłania się z morskiej piany; nad nią krążą gołębie, a fale składają perły u jej stóp. Świat wstrzymuje oddech.",
+     "matches": [
+      {
+       "rule": "ZDANIA_ZLOZONE",
+       "category": "PUNCTUATION",
+       "message": "W tym zdaniu złożonym brakuje przecinka lub spójnika między jednym czasownikiem („składają”) a drugim („wstrzymuje”).",
+       "found": "składają perły u jej stóp. Świat wstrzymuje oddech.",
+       "suggestions": []
+      }
+     ]
+    },
+    {
+     "id": "house:Capulet",
+     "field": "house",
+     "text": "Kapulet",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_PL_PL",
+       "category": "TYPOS",
+       "message": "Wykryto prawdopodobny błąd pisowni",
+       "found": "Kapulet",
+       "suggestions": [
+        "Kapuleti"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "ru": {
+   "items": 219,
+   "flagged": [
+    {
+     "id": "CA-001",
+     "field": "scene",
+     "text": "Сад Капулетти цветёт в лунном свете. Джульетта стоит среди роз, её глаза горят вызовом. В ветвях поёт соловей.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_RU_RU",
+       "category": "TYPOS",
+       "message": "Возможно найдена орфографическая ошибка.",
+       "found": "Капулетти",
+       "suggestions": [
+        "Популисте",
+        "Запулимте"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "DC-001",
+     "field": "scene",
+     "text": "Замок Эльсинор выступает из тени. Гамлет стоит на зубчатой стене, рядом с ним парит череп Йорика. На валу появляется призрачная фигура.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_RU_RU",
+       "category": "TYPOS",
+       "message": "Возможно найдена орфографическая ошибка.",
+       "found": "Эльсинор",
+       "suggestions": [
+        "Эль синор"
+       ]
+      },
+      {
+       "rule": "MORFOLOGIK_RULE_RU_RU",
+       "category": "TYPOS",
+       "message": "Возможно найдена орфографическая ошибка.",
+       "found": "Йорика",
+       "suggestions": [
+        "Борика",
+        "Борику",
+        "Дорика"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "MO-002",
+     "field": "scene",
+     "text": "Улица Вероны взрывается хаосом. Меркуцио танцует между клинками, смеясь в лицо опасности. От скрещённой стали летят искры.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_RU_RU",
+       "category": "TYPOS",
+       "message": "Возможно найдена орфографическая ошибка.",
+       "found": "Меркуцио",
+       "suggestions": [
+        "Маркуце",
+        "Маркуцей",
+        "Меркуле"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "FA-002",
+     "field": "scene",
+     "text": "Из лесной земли поднимается трон из живых лоз. Титания повелевает своим двором фей, а светлячки озаряют кроны. Сама природа склоняется перед её волей.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_RU_RU",
+       "category": "TYPOS",
+       "message": "Возможно найдена орфографическая ошибка.",
+       "found": "Титания",
+       "suggestions": [
+        "Летания",
+        "Литания",
+        "Метания"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "RL-001",
+     "field": "name",
+     "text": "Череп Йорика",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_RU_RU",
+       "category": "TYPOS",
+       "message": "Возможно найдена орфографическая ошибка.",
+       "found": "Йорика",
+       "suggestions": [
+        "Борика",
+        "Борику",
+        "Дорика"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "RL-002",
+     "field": "scene",
+     "text": "Узловатый посох потрескивает тайной силой. Буря кружит вокруг него, пока Просперо шепчет своё последнее заклинание. Молния раскалывает небо.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_RU_RU",
+       "category": "TYPOS",
+       "message": "Возможно найдена орфографическая ошибка.",
+       "found": "Просперо",
+       "suggestions": [
+        "Просвиров"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "RL-002",
+     "field": "name",
+     "text": "Посох Просперо",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_RU_RU",
+       "category": "TYPOS",
+       "message": "Возможно найдена орфографическая ошибка.",
+       "found": "Просперо",
+       "suggestions": [
+        "Просвиров"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "VC-003",
+     "field": "scene",
+     "text": "Тёплая кухня в доме Капулетти. Кормилица хлопочет с яростной преданностью, спрятав тайное письмо в передник.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_RU_RU",
+       "category": "TYPOS",
+       "message": "Возможно найдена орфографическая ошибка.",
+       "found": "Капулетти",
+       "suggestions": [
+        "Популисте",
+        "Запулимте"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "TP-001",
+     "field": "scene",
+     "text": "Остров, окутанный бурей. Просперо воздевает руки, и молния повинуется его воле, а море вскипает по его приказу.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_RU_RU",
+       "category": "TYPOS",
+       "message": "Возможно найдена орфографическая ошибка.",
+       "found": "Просперо",
+       "suggestions": [
+        "Просвиров"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "TP-002",
+     "field": "quote",
+     "text": "Привет тебе, великий господин! Почтенный повелитель, привет!",
+     "matches": [
+      {
+       "rule": "POZHALUJSTA",
+       "category": "PUNCTUATION",
+       "message": "Пропущена запятая: «Привет, тебе».",
+       "found": "Привет тебе",
+       "suggestions": [
+        "Привет, тебе"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "TP-003",
+     "field": "scene",
+     "text": "Вход в пещеру на диком берегу. Калибан притаился среди скал, его глаза горят обидой и первобытным умом.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_RU_RU",
+       "category": "TYPOS",
+       "message": "Возможно найдена орфографическая ошибка.",
+       "found": "Калибан",
+       "suggestions": [
+        "Талибан",
+        "Калбан",
+        "Калибин"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "TP-003",
+     "field": "quote",
+     "text": "Этот остров мой, он достался мне от Сикораксы, моей матери.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_RU_RU",
+       "category": "TYPOS",
+       "message": "Возможно найдена орфографическая ошибка.",
+       "found": "Сикораксы",
+       "suggestions": [
+        "Сикорскисы",
+        "Сикорук",
+        "Сикорука"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "MO-003",
+     "field": "scene",
+     "text": "Площадь Вероны на рассвете. Бенволио стоит между обнажёнными мечами; его раскрытые ладони, единственное оружие против надвигающейся грозы.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_RU_RU",
+       "category": "TYPOS",
+       "message": "Возможно найдена орфографическая ошибка.",
+       "found": "Бенволио",
+       "suggestions": [
+        "Безволие",
+        "Бензоле",
+        "Безволен"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "CA-002",
+     "field": "scene",
+     "text": "Переулок Вероны, залитый светом факелов. Тибальт выхватывает рапиру со смертоносным изяществом, не сводя глаз с врага.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_RU_RU",
+       "category": "TYPOS",
+       "message": "Возможно найдена орфографическая ошибка.",
+       "found": "Тибальт",
+       "suggestions": [
+        "Типольт",
+        "Ти бальт"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "DC-003",
+     "field": "scene",
+     "text": "Тронный зал Эльсинора, убранный ложным великолепием. Клавдий сжимает корону, в его одеждах спрятан пузырёк с ядом.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_RU_RU",
+       "category": "TYPOS",
+       "message": "Возможно найдена орфографическая ошибка.",
+       "found": "Эльсинора",
+       "suggestions": [
+        "Эль синора"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "FA-003",
+     "field": "quote",
+     "text": "Недобрая встреча при лунном свете, гордая Титания.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_RU_RU",
+       "category": "TYPOS",
+       "message": "Возможно найдена орфографическая ошибка.",
+       "found": "Титания",
+       "suggestions": [
+        "Летания",
+        "Литания",
+        "Метания"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "RL-003",
+     "field": "scene",
+     "text": "Призрачный кинжал парит во тьме, с его клинка каплет призрачная кровь. Рука Макбета тянется к нему, но никогда не может схватить.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_RU_RU",
+       "category": "TYPOS",
+       "message": "Возможно найдена орфографическая ошибка.",
+       "found": "Макбета",
+       "suggestions": [
+        "Макбет",
+        "Мак бета",
+        "Макбет а"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "SC-001",
+     "field": "scene",
+     "text": "Залитый кровью тронный зал в Дунсинане. Макбет сжимает меч дрожащими руками, корона тяжела на его челе. На дальнем холме приходит в движение Бирнамский лес.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_RU_RU",
+       "category": "TYPOS",
+       "message": "Возможно найдена орфографическая ошибка.",
+       "found": "Дунсинане",
+       "suggestions": [
+        "Дуйсенове",
+        "Дункинове",
+        "Дурсинове"
+       ]
+      },
+      {
+       "rule": "MORFOLOGIK_RULE_RU_RU",
+       "category": "TYPOS",
+       "message": "Возможно найдена орфографическая ошибка.",
+       "found": "Бирнамский",
+       "suggestions": [
+        "Бернадский",
+        "Бир намский"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "IL-002",
+     "field": "scene",
+     "text": "Залитый солнцем сад в поместье Оливии. Мальволио вышагивает в кричащих жёлтых чулках с подвязками крест-накрест, ухмыляясь и прижимая к груди поддельное любовное письмо.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_RU_RU",
+       "category": "TYPOS",
+       "message": "Возможно найдена орфографическая ошибка.",
+       "found": "Мальволио",
+       "suggestions": [
+        "Сольволиз"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "CA-003",
+     "field": "scene",
+     "text": "Большой зал Капулетти, убранный шёлком. Синьора Капулетти расставляет судьбу дочери, как цветы в вазе; за каждой любезной улыбкой блестит честолюбие.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_RU_RU",
+       "category": "TYPOS",
+       "message": "Возможно найдена орфографическая ошибка.",
+       "found": "Капулетти",
+       "suggestions": [
+        "Популисте",
+        "Запулимте"
+       ]
+      },
+      {
+       "rule": "MORFOLOGIK_RULE_RU_RU",
+       "category": "TYPOS",
+       "message": "Возможно найдена орфографическая ошибка.",
+       "found": "Капулетти",
+       "suggestions": [
+        "Популисте",
+        "Запулимте"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "CA-003",
+     "field": "name",
+     "text": "Синьора Капулетти",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_RU_RU",
+       "category": "TYPOS",
+       "message": "Возможно найдена орфографическая ошибка.",
+       "found": "Капулетти",
+       "suggestions": [
+        "Популисте",
+        "Запулимте"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "DC-004",
+     "field": "scene",
+     "text": "Стены Эльсинора в холодный час перед рассветом. Горацио несёт стражу рядом с Гамлетом, единственный верный друг при дворе змей.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_RU_RU",
+       "category": "TYPOS",
+       "message": "Возможно найдена орфографическая ошибка.",
+       "found": "Эльсинора",
+       "suggestions": [
+        "Эль синора"
+       ]
+      },
+      {
+       "rule": "MORFOLOGIK_RULE_RU_RU",
+       "category": "TYPOS",
+       "message": "Возможно найдена орфографическая ошибка.",
+       "found": "Горацио",
+       "suggestions": [
+        "Горацев",
+        "Горацию",
+        "Горации"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "FA-004",
+     "field": "scene",
+     "text": "Лесная поляна, озарённая светом фей. Основа носит ослиную голову с растерянным достоинством, пока Титания украшает его гирляндами. Феи сдерживают смех.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_RU_RU",
+       "category": "TYPOS",
+       "message": "Возможно найдена орфографическая ошибка.",
+       "found": "Титания",
+       "suggestions": [
+        "Летания",
+        "Литания",
+        "Метания"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "TP-004",
+     "field": "scene",
+     "text": "Нетронутый берег на острове Просперо. Миранда впервые видит потерпевших кораблекрушение, её глаза широко раскрыты от изумления перед миром, о котором она не знала.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_RU_RU",
+       "category": "TYPOS",
+       "message": "Возможно найдена орфографическая ошибка.",
+       "found": "Просперо",
+       "suggestions": [
+        "Просвиров"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "RL-006",
+     "field": "name",
+     "text": "Корона Макбета",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_RU_RU",
+       "category": "TYPOS",
+       "message": "Возможно найдена орфографическая ошибка.",
+       "found": "Макбета",
+       "suggestions": [
+        "Макбет",
+        "Мак бета",
+        "Макбет а"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "RL-008",
+     "field": "name",
+     "text": "Слёзы Корделии",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_RU_RU",
+       "category": "TYPOS",
+       "message": "Возможно найдена орфографическая ошибка.",
+       "found": "Корделии",
+       "suggestions": [
+        "Карделии",
+        "Корнелии",
+        "Корнилии"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "PT-005",
+     "field": "name",
+     "text": "Роса Оберона",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_RU_RU",
+       "category": "TYPOS",
+       "message": "Возможно найдена орфографическая ошибка.",
+       "found": "Оберона",
+       "suggestions": [
+        "Обирина",
+        "Обирину",
+        "Обе рона"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "PT-009",
+     "field": "scene",
+     "text": "Пыльная аптека в беднейшем квартале Мантуи. Эликсир отчаяния светится янтарём в треснувшем пузырьке, достаточно сильный, чтобы перекинуть мост между жизнью и смертью.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_RU_RU",
+       "category": "TYPOS",
+       "message": "Возможно найдена орфографическая ошибка.",
+       "found": "Мантуи",
+       "suggestions": [
+        "Манту",
+        "Мантуев",
+        "Ман туи"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "LD-001",
+     "field": "scene",
+     "text": "Ковёр золотых нарциссов тянется вдоль берегов тихого озера. Вордсворт идёт среди них с записной книжкой в руке, а за его спиной поднимаются холмы Камберленда.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_RU_RU",
+       "category": "TYPOS",
+       "message": "Возможно найдена орфографическая ошибка.",
+       "found": "Вордсворт",
+       "suggestions": [
+        "Мордоворот"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "LD-003",
+     "field": "scene",
+     "text": "Сад в Хэмпстеде осенью. Китс сидит под сливой и лихорадочно пишет, а в темнеющих ветвях поёт соловей.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_RU_RU",
+       "category": "TYPOS",
+       "message": "Возможно найдена орфографическая ошибка.",
+       "found": "Хэмпстеде",
+       "suggestions": [
+        "Гомстеде",
+        "Уемистее",
+        "Эрстеде"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "GC-003",
+     "field": "scene",
+     "text": "Сумрачная комната, освещённая угасающим огнём. Эдгар По сидит, сгорбившись, за столом, когда ворон садится на бюст Паллады. Слово «Никогда» отдаётся эхом в тенях.",
+     "matches": [
+      {
+       "rule": "pouchastvovat",
+       "category": "GRAMMAR",
+       "message": "Пишется слитно: «Посидит»",
+       "found": "По сидит",
+       "suggestions": [
+        "Посидит"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "OL-001",
+     "field": "scene",
+     "text": "Гора Олимп рассекает небо. Зевс восседает на троне из облаков, между его пальцами проскакивает молния. Внизу мир смертных трепещет под его взглядом.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_RU_RU",
+       "category": "TYPOS",
+       "message": "Возможно найдена орфографическая ошибка.",
+       "found": "Зевс",
+       "suggestions": [
+        "Зёв",
+        "Зёвы",
+        "Зев"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "OL-002",
+     "field": "scene",
+     "text": "Парфенон сияет в золотом свете. Афина стоит в полном вооружении, сова сидит на её щите, её серые глаза видят насквозь всякий обман смертных.",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_RU_RU",
+       "category": "TYPOS",
+       "message": "Возможно найдена орфографическая ошибка.",
+       "found": "Парфенон",
+       "suggestions": [
+        "Парфёнов",
+        "Парфеною",
+        "Парфеной"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "house:Capulet",
+     "field": "house",
+     "text": "Капулетти",
+     "matches": [
+      {
+       "rule": "MORFOLOGIK_RULE_RU_RU",
+       "category": "TYPOS",
+       "message": "Возможно найдена орфографическая ошибка.",
+       "found": "Капулетти",
+       "suggestions": [
+        "Популисте",
+        "Запулимте"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "ar": {
+   "items": 234,
+   "flagged": [
+    {
+     "id": "SM-001",
+     "field": "scene",
+     "text": "تتجسّد خشبة مسرح عظيمة. يتقدّم The Sonnet Man من بقعة ضوء ذهبية والميكروفون في يده. تتحوّل كلمات شكسبير إلى أبيات هيب هوب والجمهور يهتف.",
+     "matches": [
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "The",
+       "suggestions": []
+      },
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "Sonnet",
+       "suggestions": []
+      },
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "Man",
+       "suggestions": []
+      },
+      {
+       "rule": "syntax_0002_as_ka_2",
+       "category": "TEST_NEW_FEATURES",
+       "message": "استخدام الكاف للصفة استخدام أجنبي أدخله المترجمون، إذ يستعملون\n            \"as\"\n            بمعنى الكاف، فالأَوْلَى النصب على الحالية مثل  \" أعمل مديرًا \" أو على الاختصاص في: \"نحن المسلمين\".\n        \"تتحوّل لمات\"\n        \"تتحوّل بصفة لمات\"\n\n      ",
+       "found": "تتحوّل كلمات",
+       "suggestions": [
+        "تتحوّل لمات",
+        "تتحوّل بصفة لمات"
+       ]
+      },
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "هيب هوب",
+       "suggestions": [
+        "هيبه وب"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "MO-001",
+     "field": "scene",
+     "text": "يتكشّف مشهد شرفة تحت ضوء القمر. يمدّ روميو يده إلى الأعلى بينما تظهر جولييت فوقه. تتهادى بتلات الورد في الهواء، والمشهد ينبض بوهج قرمزي دافئ.",
+     "matches": [
+      {
+       "rule": "syntax_456_bynama_sent_start_1",
+       "category": "TEST_NEW_FEATURES",
+       "message": "ربما تحتاج الجملة إلى إعادة صياغة لأن بينما لها الصدارة، أي يجب أن تكون في بدء الجملة\"\n        \"\"\n        \"حين\"\n        \"في حين\"\n        \"و\"\n        \"مع أنّ\"\n      ",
+       "found": "بينما",
+       "suggestions": [
+        "",
+        "حين",
+        "في حين"
+       ]
+      },
+      {
+       "rule": "AR_DIACRITICS_REPLACE",
+       "category": "STYLE",
+       "message": "قِرْمزي بكسر القاف",
+       "found": "قرمزي",
+       "suggestions": [
+        "قِرْمزي"
+       ]
+      },
+      {
+       "rule": "AR_SIMPLE_REPLACE",
+       "category": "CONFUSED_WORDS",
+       "message": "قل \"دفئ\" أو  \"دفيء\"",
+       "found": "دافئ",
+       "suggestions": [
+        "دفئ",
+        "دفيء"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "CA-001",
+     "field": "scene",
+     "text": "تزهر حديقة آل كابوليت في ضوء القمر. تقف جولييت بين الورود وعيناها تلمعان بالتحدّي، ويغرّد عندليب من الأغصان فوقها.",
+     "matches": [
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "كابوليت",
+       "suggestions": [
+        "كابولية",
+        "كابوليا",
+        "كابولي"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "CA-001",
+     "field": "quote",
+     "text": "ماذا في الاسم؟ إن ما نسميه وردة...",
+     "matches": [
+      {
+       "rule": "syntax_132_in_maa",
+       "category": "TEST_NEW_FEATURES",
+       "message": "حذف النون من إن الشرطية إذا جاء بعدها ما الزائدة، نحو قوله تعالى: \"إمّا يبلغنّ عندك الكبر\"\n: \"إمّا نسميه\"\n\n      ",
+       "found": "إن ما نسميه",
+       "suggestions": [
+        "إمّا نسميه"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "DC-001",
+     "field": "scene",
+     "text": "تبرز قلعة إلسينور من الظلال. يقف هاملت على الأسوار وجمجمة يوريك تحوم إلى جانبه، ويظهر طيف على المتاريس في الأعلى.",
+     "matches": [
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "إلسينور",
+       "suggestions": [
+        "إل سينور",
+        "إلينوي"
+       ]
+      },
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "هاملت",
+       "suggestions": [
+        "هاملة",
+        "عاملت",
+        "هازلت"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "DC-001",
+     "field": "quote",
+     "text": "أكون أو لا أكون، تلك هي المسألة.",
+     "matches": [
+      {
+       "rule": "grammar_0011_notjazem_lam_nafia",
+       "category": "GRAMMAR_ERROR",
+       "message": "\nالفرق بين لا الناهية ولا النافية، لا الناهية تأتي مع ضمائر المخاطب فقط. لذا فإن لا النافية لا تجزم الفعل المضارع أتقصد؟\n\n        \"لا أكون\"\n\n      ",
+       "found": "لا أكون",
+       "suggestions": [
+        "لا أكون"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "DC-002",
+     "field": "scene",
+     "text": "يتلوّى جدول هادئ عبر أيكة من الصفصاف. تطفو Ophelia بين الأزهار البرية وهي تهمس بأبيات منسية، والبتلات تدور مع التيار.",
+     "matches": [
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "Ophelia",
+       "suggestions": []
+      },
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "والبتلات",
+       "suggestions": [
+        "والبالات",
+        "والبتات",
+        "والبلات"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "MO-002",
+     "field": "scene",
+     "text": "ينفجر أحد شوارع فيرونا فوضى. يرقص ماركيشيو بين النصال ضاحكًا في وجه الخطر، والشرر يتطاير من الفولاذ المتصادم.",
+     "matches": [
+      {
+       "rule": "number_one_feminin",
+       "category": "NUMBER_AGREEMENT",
+       "message": "أتقصد \"إحدى\"؟\nهل تقصد؟\n      ",
+       "found": "أحد",
+       "suggestions": [
+        "إحدى"
+       ]
+      },
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "ماركيشيو",
+       "suggestions": [
+        "ماركسيو"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "FA-001",
+     "field": "scene",
+     "text": "تتلألأ الغابة المسحورة بالمشاكسة. يندفع Puck بين أشجار البلوط العتيقة تاركًا وراءه آثارًا من غبار الجنيات، وفي الأسفل يحلم البشر النائمون أحلامًا غريبة.",
+     "matches": [
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "Puck",
+       "suggestions": []
+      }
+     ]
+    },
+    {
+     "id": "FA-002",
+     "field": "scene",
+     "text": "يرتفع عرش من الكروم الحية من أرض الغابة. تأمر تيتانيا بلاط جنياتها بينما تضيء اليراعات أعالي الأشجار، والطبيعة نفسها تنحني لمشيئتها.",
+     "matches": [
+      {
+       "rule": "syntax_456_bynama_sent_start_1",
+       "category": "TEST_NEW_FEATURES",
+       "message": "ربما تحتاج الجملة إلى إعادة صياغة لأن بينما لها الصدارة، أي يجب أن تكون في بدء الجملة\"\n        \"\"\n        \"حين\"\n        \"في حين\"\n        \"و\"\n        \"مع أنّ\"\n      ",
+       "found": "بينما",
+       "suggestions": [
+        "",
+        "حين",
+        "في حين"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "RL-001",
+     "field": "scene",
+     "text": "ترقد جمجمة على قطيفة في سرداب خافت الضوء. يتردّد ضحك شبحي بينما تومض ذكريات مهرّج البلاط كضوء الشموع.",
+     "matches": [
+      {
+       "rule": "syntax_456_bynama_sent_start_1",
+       "category": "TEST_NEW_FEATURES",
+       "message": "ربما تحتاج الجملة إلى إعادة صياغة لأن بينما لها الصدارة، أي يجب أن تكون في بدء الجملة\"\n        \"\"\n        \"حين\"\n        \"في حين\"\n        \"و\"\n        \"مع أنّ\"\n      ",
+       "found": "بينما",
+       "suggestions": [
+        "",
+        "حين",
+        "في حين"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "RL-001",
+     "field": "quote",
+     "text": "وا أسفاه، يوريك المسكين! لقد عرفته يا هوراشيو.",
+     "matches": [
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "هوراشيو",
+       "suggestions": [
+        "يهورا"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "RL-002",
+     "field": "scene",
+     "text": "عصا معقودة تطقطق بطاقة سحرية. تدور العاصفة حولها بينما يهمس بروسبيرو بتعويذته الأخيرة، والبرق يشقّ السماء.",
+     "matches": [
+      {
+       "rule": "syntax_456_bynama_sent_start_1",
+       "category": "TEST_NEW_FEATURES",
+       "message": "ربما تحتاج الجملة إلى إعادة صياغة لأن بينما لها الصدارة، أي يجب أن تكون في بدء الجملة\"\n        \"\"\n        \"حين\"\n        \"في حين\"\n        \"و\"\n        \"مع أنّ\"\n      ",
+       "found": "بينما",
+       "suggestions": [
+        "",
+        "حين",
+        "في حين"
+       ]
+      },
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "بروسبيرو",
+       "suggestions": [
+        "بروس بيرو",
+        "بروبير",
+        "بروسي"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "RL-002",
+     "field": "name",
+     "text": "عصا بروسبيرو",
+     "matches": [
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "بروسبيرو",
+       "suggestions": [
+        "بروس بيرو",
+        "بروبير",
+        "بروسي"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "PT-001",
+     "field": "scene",
+     "text": "قارورة متوهّجة تنبض بضوء وردي. تتصاعد القلوب من سطحها بينما يملأ لحن عذب الأجواء.",
+     "matches": [
+      {
+       "rule": "syntax_456_bynama_sent_start_1",
+       "category": "TEST_NEW_FEATURES",
+       "message": "ربما تحتاج الجملة إلى إعادة صياغة لأن بينما لها الصدارة، أي يجب أن تكون في بدء الجملة\"\n        \"\"\n        \"حين\"\n        \"في حين\"\n        \"و\"\n        \"مع أنّ\"\n      ",
+       "found": "بينما",
+       "suggestions": [
+        "",
+        "حين",
+        "في حين"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "VC-002",
+     "field": "scene",
+     "text": "صومعة في دير تضيئها الشموع. يعتني الراهب بحديقته من الأعشاب والسموم، والحكمة محفورة في وجهه الذي أنهكته السنون.",
+     "matches": [
+      {
+       "rule": "syntax_125_mobtadaa_nakira_1",
+       "category": "TEST_NEW_FEATURES",
+       "message": "لا يجوز الابتداء بنكرة، فيتقدم الخبر شبه الجملة مثلا \"كتابان عندك\" تصبح \"عندك كتابان\"\n\n: \"في صومعة\"\n\n      ",
+       "found": "صومعة في",
+       "suggestions": [
+        "في صومعة"
+       ]
+      },
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "تضيئها",
+       "suggestions": [
+        "تضيءها",
+        "تضئيها",
+        "تضيئاه"
+       ]
+      },
+      {
+       "rule": "AR_DIACRITICS_REPLACE",
+       "category": "STYLE",
+       "message": "السِّنُون بالكسر جمع سنة",
+       "found": "السنون",
+       "suggestions": [
+        "السِّنُون"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "VC-003",
+     "field": "scene",
+     "text": "مطبخ دافئ في بيت آل كابوليت. تنشغل المربّية بتفانٍ شديد، ورسالة سرّية مدسوسة في مئزرها.",
+     "matches": [
+      {
+       "rule": "AR_SIMPLE_REPLACE",
+       "category": "CONFUSED_WORDS",
+       "message": "قل \"دفئ\" أو  \"دفيء\"",
+       "found": "دافئ",
+       "suggestions": [
+        "دفئ",
+        "دفيء"
+       ]
+      },
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "كابوليت",
+       "suggestions": [
+        "كابولية",
+        "كابوليا",
+        "كابولي"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "TP-001",
+     "field": "scene",
+     "text": "جزيرة تلفّها العاصفة. يرفع بروسبيرو يديه فيطيع البرق مشيئته، والبحر يهيج بأمره.",
+     "matches": [
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "بروسبيرو",
+       "suggestions": [
+        "بروس بيرو",
+        "بروبير",
+        "بروسي"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "TP-001",
+     "field": "quote",
+     "text": "نحن من المادة نفسها التي تصنع منها الأحلام.",
+     "matches": [
+      {
+       "rule": "gender_0010_alladhi",
+       "category": "GENDER_AGREEMENT",
+       "message": "هل تقصد \"نفسها الذي\"?\n      ",
+       "found": "نفسها التي",
+       "suggestions": [
+        "نفسها الذي"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "TP-002",
+     "field": "scene",
+     "text": "روح متلألئة تذوب في الريح والضوء ثم تعود موسيقى. يرقص أرييل بين المرئي واللامرئي.",
+     "matches": [
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "أرييل",
+       "suggestions": [
+        "أريي",
+        "أييل",
+        "ألريي"
+       ]
+      },
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "واللامرئي",
+       "suggestions": [
+        "واللائي",
+        "وامرئي"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "TP-002",
+     "field": "quote",
+     "text": "سلام عليك أيها السيد العظيم! أيها السيد الوقور، سلام!",
+     "matches": [
+      {
+       "rule": "syntax_125_mobtadaa_nakira_1",
+       "category": "TEST_NEW_FEATURES",
+       "message": "لا يجوز الابتداء بنكرة، فيتقدم الخبر شبه الجملة مثلا \"كتابان عندك\" تصبح \"عندك كتابان\"\n\n: \"عليك سلام\"\n\n      ",
+       "found": "سلام عليك",
+       "suggestions": [
+        "عليك سلام"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "TP-003",
+     "field": "scene",
+     "text": "فم كهف على شاطئ برّي. يجثم Caliban بين الصخور، وعيناه تتّقدان بالضغينة وبذكاء بدائي.",
+     "matches": [
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "Caliban",
+       "suggestions": []
+      }
+     ]
+    },
+    {
+     "id": "TP-003",
+     "field": "quote",
+     "text": "هذه الجزيرة لي، ورثتها عن أمي سيكوراكس.",
+     "matches": [
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "سيكوراكس",
+       "suggestions": [
+        "سيكور اكس",
+        "سيكوران",
+        "سيكور"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "MO-003",
+     "field": "scene",
+     "text": "ساحة في فيرونا عند الفجر. يقف بنفوليو بين السيوف المسلولة، ويداه المفتوحتان سلاحه الوحيد في وجه العاصفة المتجمّعة.",
+     "matches": [
+      {
+       "rule": "syntax_125_mobtadaa_nakira_1",
+       "category": "TEST_NEW_FEATURES",
+       "message": "لا يجوز الابتداء بنكرة، فيتقدم الخبر شبه الجملة مثلا \"كتابان عندك\" تصبح \"عندك كتابان\"\n\n: \"في ساحة\"\n\n      ",
+       "found": "ساحة في",
+       "suggestions": [
+        "في ساحة"
+       ]
+      },
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "بنفوليو",
+       "suggestions": [
+        "بنجوليو",
+        "بنابولي"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "CA-002",
+     "field": "scene",
+     "text": "زقاق في فيرونا يتأجّج بضوء المشاعل. يسلّ تيبالت سيفه برشاقة قاتلة، وعيناه مثبّتتان على عدوّه.",
+     "matches": [
+      {
+       "rule": "syntax_125_mobtadaa_nakira_1",
+       "category": "TEST_NEW_FEATURES",
+       "message": "لا يجوز الابتداء بنكرة، فيتقدم الخبر شبه الجملة مثلا \"كتابان عندك\" تصبح \"عندك كتابان\"\n\n: \"في زقاق\"\n\n      ",
+       "found": "زقاق في",
+       "suggestions": [
+        "في زقاق"
+       ]
+      },
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "تيبالت",
+       "suggestions": [
+        "تي بالت",
+        "بالتي",
+        "باللتيا"
+       ]
+      },
+      {
+       "rule": "grammar_0000_jar_plural",
+       "category": "TEST_NEW_FEATURES",
+       "message": ":انتبه لحرف الجر فالجمع المذكر السالم  يُجَرّ بالياء\n        \"على (عدوّه)\"\n      ",
+       "found": "على عدوّه",
+       "suggestions": [
+        "على (عدوّه)"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "DC-003",
+     "field": "scene",
+     "text": "قاعة العرش في إلسينور تكسوها أبّهة زائفة. يقبض كلوديس على التاج، وقارورة سمّ مخبّأة في ثيابه.",
+     "matches": [
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "إلسينور",
+       "suggestions": [
+        "إل سينور",
+        "إلينوي"
+       ]
+      },
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "كلوديس",
+       "suggestions": [
+        "ولكديس",
+        "كلويس",
+        "كل وديس"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "FA-003",
+     "field": "scene",
+     "text": "فسحة يغمرها ضوء القمر في أعماق الغابة المسحورة. يتجسّد Oberon من الظل، وتاجه المصنوع من قرون الوعل يلتقط الضوء الفضي.",
+     "matches": [
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "Oberon",
+       "suggestions": []
+      },
+      {
+       "rule": "grammar_0000_jar_plural",
+       "category": "TEST_NEW_FEATURES",
+       "message": ":انتبه لحرف الجر فالجمع المذكر السالم  يُجَرّ بالياء\n        \"من قرات\", \"من قرون\", \"من قرونات\", \"من قرونة\", \"من قرونتين\", \"من قرونيات\", \"من قرونيتين\", \"من قرونين\", \"من قريات\", \"من قرين\"\n      ",
+       "found": "من قرون",
+       "suggestions": [
+        "من قرات",
+        "من قرون",
+        "من قرونات"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "RL-003",
+     "field": "scene",
+     "text": "خنجر طيفي يطفو في الظلام، ونصله يقطر دمًا وهميًا. تمتدّ يد ماكبث إليه لكنها لا تقدر أبدًا على الإمساك به.",
+     "matches": [
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "ماكبث",
+       "suggestions": [
+        "ماكث",
+        "بماكث",
+        "ما كبث"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "PT-003",
+     "field": "scene",
+     "text": "زهرة أرجوانية مسحوقة يقطر منها رحيق متقزّح في كفّ تنتظره. وحيثما يسقط تتبدّل العيون، وتتبعها القلوب.",
+     "matches": [
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "متقزّح",
+       "suggestions": [
+        "متفرج",
+        "متقرح",
+        "متقزم"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "SC-001",
+     "field": "scene",
+     "text": "قاعة عرش ملطّخة بالدماء في دنسينان. يقبض ماكبث على سيفه بيدين مرتجفتين والتاج ثقيل على جبينه، وغابة بيرنام تتحرّك على التلّ البعيد.",
+     "matches": [
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "في دنسينان",
+       "suggestions": [
+        "فيد نسينان"
+       ]
+      },
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "ماكبث",
+       "suggestions": [
+        "ماكث",
+        "بماكث",
+        "ما كبث"
+       ]
+      },
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "بيرنام",
+       "suggestions": [
+        "بيرمنا",
+        "بير نام",
+        "ناميبي"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "SC-001",
+     "field": "quote",
+     "text": "أجرؤ على كل ما يليق برجل؛ ومن يجرؤ على أكثر فليس برجل.",
+     "matches": [
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "ما يليق",
+       "suggestions": [
+        "ماي ليق"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "SC-002",
+     "field": "scene",
+     "text": "حجرة تضيئها الشموع في القلعة الاسكتلندية. تذرع ليدي ماكبث الحجارة الباردة جيئةً وذهابًا وهي تفرك عن يديها بقع دم وهمية، والظلال تلتصق بها كجلد ثانٍ.",
+     "matches": [
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "تضيئها",
+       "suggestions": [
+        "تضيءها",
+        "تضئيها",
+        "تضيئاه"
+       ]
+      },
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "الاسكتلندية",
+       "suggestions": [
+        "الإسكتلندية",
+        "ألإسكتلندية",
+        "ألإسكتلنديه"
+       ]
+      },
+      {
+       "rule": "syntax_125_mobtadaa_nakira_3",
+       "category": "TEST_NEW_FEATURES",
+       "message": "لا يجوز الابتداء بنكرة، فيتقدم الخبر شبه الجملة مثلا \"كتاب  بالبيت\" تصبح \"بالبيت كتاب\"\n\n: \"ليدي تذرع\"\n\n      ",
+       "found": "تذرع ليدي",
+       "suggestions": [
+        "ليدي تذرع"
+       ]
+      },
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "ماكبث",
+       "suggestions": [
+        "ماكث",
+        "بماكث",
+        "ما كبث"
+       ]
+      },
+      {
+       "rule": "AR_DIACRITICS_REPLACE",
+       "category": "STYLE",
+       "message": "الدّمُ دون تشديد الميم، كقوله تعالى: \"حرمت عليكم الميتة والدَّم\"",
+       "found": "دم",
+       "suggestions": [
+        "دَم"
+       ]
+      },
+      {
+       "rule": "syntax_0002_as_ka_2",
+       "category": "TEST_NEW_FEATURES",
+       "message": "استخدام الكاف للصفة استخدام أجنبي أدخله المترجمون، إذ يستعملون\n            \"as\"\n            بمعنى الكاف، فالأَوْلَى النصب على الحالية مثل  \" أعمل مديرًا \" أو على الاختصاص في: \"نحن المسلمين\".\n        \"تلتصق بها جلد\"\n        \"تلتصق بها بصفة جلد\"\n\n      ",
+       "found": "تلتصق بها كجلد",
+       "suggestions": [
+        "تلتصق بها جلد",
+        "تلتصق بها بصفة جلد"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "SC-003",
+     "field": "scene",
+     "text": "برّية اسكتلندية يلفّها الضباب عند الغسق. يقف بانكو ثابتًا بينما تهمس ثلاث هيئات طيفية بالأقدار في الريح. وسيطارد شبحُه الأحياء.",
+     "matches": [
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "اسكتلندية",
+       "suggestions": [
+        "إسكتلندية",
+        "إسكتلنديه",
+        "اسكت لندية"
+       ]
+      },
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "بانكو",
+       "suggestions": [
+        "بانوك",
+        "وانكب",
+        "بانكن"
+       ]
+      },
+      {
+       "rule": "syntax_456_bynama_sent_start_1",
+       "category": "TEST_NEW_FEATURES",
+       "message": "ربما تحتاج الجملة إلى إعادة صياغة لأن بينما لها الصدارة، أي يجب أن تكون في بدء الجملة\"\n        \"\"\n        \"حين\"\n        \"في حين\"\n        \"و\"\n        \"مع أنّ\"\n      ",
+       "found": "بينما",
+       "suggestions": [
+        "",
+        "حين",
+        "في حين"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "IL-001",
+     "field": "scene",
+     "text": "شاطئ في إيلورية تعصف به الرياح. تسحب Viola قبعة بحّار فوق شعرها القصير، وفي عينيها تتلألأ هويّتان توأمان، والبحر يهمس بأسرار أخيها المفقود.",
+     "matches": [
+      {
+       "rule": "syntax_125_mobtadaa_nakira_1",
+       "category": "TEST_NEW_FEATURES",
+       "message": "لا يجوز الابتداء بنكرة، فيتقدم الخبر شبه الجملة مثلا \"كتابان عندك\" تصبح \"عندك كتابان\"\n\n: \"في شاطئ\"\n\n      ",
+       "found": "شاطئ في",
+       "suggestions": [
+        "في شاطئ"
+       ]
+      },
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "إيلورية",
+       "suggestions": [
+        "بلورية"
+       ]
+      },
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "Viola",
+       "suggestions": []
+      }
+     ]
+    },
+    {
+     "id": "IL-002",
+     "field": "scene",
+     "text": "حديقة مشمسة في ضيعة Olivia. يختال Malvolio بجوارب صفراء صارخة مربوطة بأشرطة متقاطعة، مبتسمًا، ويضمّ إلى صدره رسالة حب مزوّرة.",
+     "matches": [
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "Olivia",
+       "suggestions": []
+      },
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "Malvolio",
+       "suggestions": []
+      }
+     ]
+    },
+    {
+     "id": "IL-003",
+     "field": "scene",
+     "text": "كونتيسة في الحداد ترفع خمارها فيظهر جمال يخطف الأنفاس. تزهر حديقة Olivia بالياسمين والخزامى بينما يسرق الرسول المتنكّر قلبها.",
+     "matches": [
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "كونتيسة",
+       "suggestions": [
+        "كونتة"
+       ]
+      },
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "Olivia",
+       "suggestions": []
+      },
+      {
+       "rule": "syntax_456_bynama_sent_start_1",
+       "category": "TEST_NEW_FEATURES",
+       "message": "ربما تحتاج الجملة إلى إعادة صياغة لأن بينما لها الصدارة، أي يجب أن تكون في بدء الجملة\"\n        \"\"\n        \"حين\"\n        \"في حين\"\n        \"و\"\n        \"مع أنّ\"\n      ",
+       "found": "بينما",
+       "suggestions": [
+        "",
+        "حين",
+        "في حين"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "RM-001",
+     "field": "scene",
+     "text": "مجلس الشيوخ الروماني، وأعمدته الرخامية ملطّخة بالقرمزي. يقف بروتس بين المتآمرين ونصله ما زال يرتجف، وثقل الجمهورية يستقرّ على يديه الملطّختين بالدماء.",
+     "matches": [
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "بروتس",
+       "suggestions": [
+        "برواس",
+        "بروس",
+        "بتروس"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "RM-002",
+     "field": "scene",
+     "text": "زقاق روماني تضيئه المشاعل في منتصف الليل. يميل كاسيوس قريبًا ويهمس بالفتنة بنظرة هزيلة جائعة، ورسائل مزوّرة تنسكب من ثنايا ثوبه.",
+     "matches": [
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "تضيئه",
+       "suggestions": [
+        "تضيءه",
+        "تضئيه",
+        "تشيئه"
+       ]
+      },
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "كاسيوس",
+       "suggestions": [
+        "كاس يوس",
+        "كاسي وس",
+        "كاسي"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "RM-002",
+     "field": "quote",
+     "text": "العيب يا عزيزي بروتس ليس في نجومنا، بل في أنفسنا.",
+     "matches": [
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "بروتس",
+       "suggestions": [
+        "برواس",
+        "بروس",
+        "بتروس"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "RM-003",
+     "field": "scene",
+     "text": "يضجّ المنتدى الروماني بالغضب. يرفع مرقس أنطونيوس عباءة قيصر الملطّخة بالدم أمام الجموع، وكلماته تحوّل الحزن نارًا. والجمهورية تتداعى مع كل مقطع.",
+     "matches": [
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "مرقس",
+       "suggestions": [
+        "مرقش",
+        "مرقي",
+        "مرقص"
+       ]
+      },
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "أنطونيوس",
+       "suggestions": [
+        "أنطونيو",
+        "أنطوني وس",
+        "أنطونيو س"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "RM-003",
+     "field": "quote",
+     "text": "أيها الأصدقاء، أيها الرومان، يا أبناء وطني، أعيروني آذانكم!",
+     "matches": [
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "أعيروني",
+       "suggestions": [
+        "أيعروني",
+        "أويرعني",
+        "أعوريني"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "MO-004",
+     "field": "scene",
+     "text": "ضيعة آل مونتاغيو عند الفجر. يراقب السيد مونتاغيو من نافذة عالية ابنه وهو يهيم في البساتين الضبابية في الأسفل، عاشقًا متيّمًا لا سبيل إليه.",
+     "matches": [
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "مونتاغيو",
+       "suggestions": [
+        "مونتا"
+       ]
+      },
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "مونتاغيو",
+       "suggestions": [
+        "مونتا"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "MO-004",
+     "field": "name",
+     "text": "السيد مونتاغيو",
+     "matches": [
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "مونتاغيو",
+       "suggestions": [
+        "مونتا"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "CA-003",
+     "field": "scene",
+     "text": "القاعة الكبرى لآل كابوليت مكسوّة بالحرير. ترتّب السيدة كابوليت مصير ابنتها كما تُرتَّب الأزهار في مزهرية، والطموح يتلألأ خلف كل ابتسامة لطيفة.",
+     "matches": [
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "كابوليت",
+       "suggestions": [
+        "كابولية",
+        "كابوليا",
+        "كابولي"
+       ]
+      },
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "كابوليت",
+       "suggestions": [
+        "كابولية",
+        "كابوليا",
+        "كابولي"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "CA-003",
+     "field": "name",
+     "text": "السيدة كابوليت",
+     "matches": [
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "كابوليت",
+       "suggestions": [
+        "كابولية",
+        "كابوليا",
+        "كابولي"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "DC-004",
+     "field": "scene",
+     "text": "أسوار إلسينور في الساعة الباردة قبل الفجر. يقف Horatio ساهرًا إلى جانب هاملت، الصديق الوفيّ الوحيد في بلاط من الأفاعي.",
+     "matches": [
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "إلسينور",
+       "suggestions": [
+        "إل سينور",
+        "إلينوي"
+       ]
+      },
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "Horatio",
+       "suggestions": []
+      },
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "هاملت",
+       "suggestions": [
+        "هاملة",
+        "عاملت",
+        "هازلت"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "FA-004",
+     "field": "scene",
+     "text": "فسحة في الغابة يتوهّج فيها ضوء الجنيات. يضع Bottom رأس حمار بوقار حائر بينما تكلّله تيتانيا بالأكاليل، والجنيات يكتمن ضحكاتهن.",
+     "matches": [
+      {
+       "rule": "syntax_125_mobtadaa_nakira_2",
+       "category": "TEST_NEW_FEATURES",
+       "message": "لا يجوز الابتداء بنكرة، فيتقدم الخبر شبه الجملة مثلا \"كتاب  في البيت\" تصبح \"في البيت كتاب\"\n\n: \"في الغابة فسحة\"\n\n      ",
+       "found": "فسحة في الغابة",
+       "suggestions": [
+        "في الغابة فسحة"
+       ]
+      },
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "Bottom",
+       "suggestions": []
+      },
+      {
+       "rule": "syntax_456_bynama_sent_start_1",
+       "category": "TEST_NEW_FEATURES",
+       "message": "ربما تحتاج الجملة إلى إعادة صياغة لأن بينما لها الصدارة، أي يجب أن تكون في بدء الجملة\"\n        \"\"\n        \"حين\"\n        \"في حين\"\n        \"و\"\n        \"مع أنّ\"\n      ",
+       "found": "بينما",
+       "suggestions": [
+        "",
+        "حين",
+        "في حين"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "TP-004",
+     "field": "scene",
+     "text": "شاطئ بكر على جزيرة بروسبيرو. ترى Miranda البحّارة الغرقى لأول مرة، وعيناها متّسعتان دهشةً أمام عالم لم تكن تعرف بوجوده.",
+     "matches": [
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "بروسبيرو",
+       "suggestions": [
+        "بروس بيرو",
+        "بروبير",
+        "بروسي"
+       ]
+      },
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "Miranda",
+       "suggestions": []
+      },
+      {
+       "rule": "collo_0084_lawal_marra",
+       "category": "SYNTAX_COMMON_ERRORS",
+       "message": "\n        ويفضل أن يقال:\n        \"أول\"\n        مرة\n      ",
+       "found": "لأول",
+       "suggestions": [
+        "أول"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "RL-004",
+     "field": "scene",
+     "text": "خاتم ذهبي على حافة شرفة حجرية يلتقط ضوء القمر. نُقش في داخله عهد يبقى بعد الموت نفسه، وبتلات الورد تدور حوله في ريح خفية.",
+     "matches": [
+      {
+       "rule": "AR_DIACRITICS_REPLACE",
+       "category": "STYLE",
+       "message": "الحافة دون تشديد الفاء",
+       "found": "حافة",
+       "suggestions": [
+        "حافَة"
+       ]
+      },
+      {
+       "rule": "syntax_125_mobtadaa_nakira_2",
+       "category": "TEST_NEW_FEATURES",
+       "message": "لا يجوز الابتداء بنكرة، فيتقدم الخبر شبه الجملة مثلا \"كتاب  في البيت\" تصبح \"في البيت كتاب\"\n\n: \"في داخله نُقش\"\n\n      ",
+       "found": "نُقش في داخله",
+       "suggestions": [
+        "في داخله نُقش"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "RL-005",
+     "field": "scene",
+     "text": "ثلاثة صناديق تلمع في حجرة تضيئها الشموع: ذهب وفضة ورصاص. يهمهم صندوق الرصاص بحقيقة هادئة، ويكافئ من أوتي من الحكمة ما يرى به ما وراء المظاهر.",
+     "matches": [
+      {
+       "rule": "number_under_10_feminin",
+       "category": "NUMBER_AGREEMENT",
+       "message": "أتقصد \"ثلاث\"؟\nالأعداد المفردة من ثلاثة إلى تسعة، تكون مذكرة قبل الأسماء المؤنثة.      قل ثلاث طالبات ولا تقل ثلاثة طالبات.\n      ",
+       "found": "ثلاثة",
+       "suggestions": [
+        "ثلاث"
+       ]
+      },
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "تضيئها",
+       "suggestions": [
+        "تضيءها",
+        "تضئيها",
+        "تضيئاه"
+       ]
+      },
+      {
+       "rule": "AR_DIACRITICS_REPLACE",
+       "category": "STYLE",
+       "message": "الرّصاص بفتح الراء أو كسرها",
+       "found": "الرصاص",
+       "suggestions": [
+        "الرَّصاص",
+        "الرِّصاص"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "RL-005",
+     "field": "quote",
+     "text": "ليس كل ما يلمع ذهبًا.",
+     "matches": [
+      {
+       "rule": "AR_SIMPLE_REPLACE",
+       "category": "CONFUSED_WORDS",
+       "message": "تُوصل \"ما\" المصدرية ب \"كل\" المنصوبة على الظرفية",
+       "found": "كل ما",
+       "suggestions": [
+        "كلّما"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "RL-005",
+     "field": "name",
+     "text": "صندوق بورشيا",
+     "matches": [
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "بورشيا",
+       "suggestions": [
+        "بشرويا",
+        "لورشيا",
+        "بورشي"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "RL-006",
+     "field": "scene",
+     "text": "تاج اسكتلندي باهت يستقرّ على وسادة ملطّخة بالدم. ينبض بطموح مظلم ويهمس بوعود المجد لكل يد تجرؤ على أن تمتدّ إليه.",
+     "matches": [
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "اسكتلندي",
+       "suggestions": [
+        "إسكتلندي",
+        "اسكت لندي"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "RL-006",
+     "field": "name",
+     "text": "تاج ماكبث",
+     "matches": [
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "ماكبث",
+       "suggestions": [
+        "ماكث",
+        "بماكث",
+        "ما كبث"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "RL-008",
+     "field": "scene",
+     "text": "قارورة من البلّور تحفظ دموعًا تتلألأ كضوء نجوم أسير. كل قطرة تحمل حزن ابنة أحبّت بصدق مفرط وتكلّمت بصراحة مفرطة.",
+     "matches": [
+      {
+       "rule": "syntax_125_mobtadaa_nakira_2",
+       "category": "TEST_NEW_FEATURES",
+       "message": "لا يجوز الابتداء بنكرة، فيتقدم الخبر شبه الجملة مثلا \"كتاب  في البيت\" تصبح \"في البيت كتاب\"\n\n: \"من البلّور قارورة\"\n\n      ",
+       "found": "قارورة من البلّور",
+       "suggestions": [
+        "من البلّور قارورة"
+       ]
+      },
+      {
+       "rule": "syntax_0002_as_ka_1",
+       "category": "TEST_NEW_FEATURES",
+       "message": "استخدام الكاف للصفة استخدام أجنبي أدخله المترجمون، إذ يستعملون\n            \"as\"\n            بمعنى الكاف، فالأَوْلَى النصب على الحالية مثل  \" أعمل مديرًا \" أو على الاختصاص في: \"نحن المسلمين\".\n        \"تحفظ دموعًا تتلألأ ضوء\"\n        \"تحفظ دموعًا تتلألأ بصفة ضوء\"\n\n      ",
+       "found": "تحفظ دموعًا تتلألأ كضوء",
+       "suggestions": [
+        "تحفظ دموعًا تتلألأ ضوء",
+        "تحفظ دموعًا تتلألأ بصفة ضوء"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "RL-008",
+     "field": "name",
+     "text": "دموع كورديليا",
+     "matches": [
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "كورديليا",
+       "suggestions": [
+        "كورد يليا",
+        "كوردي ليا",
+        "ديكوريا"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "RL-009",
+     "field": "quote",
+     "text": "بوركت يا بوتوم! لقد تحولت!",
+     "matches": [
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "بوتوم",
+       "suggestions": [
+        "وبتوم",
+        "بوتون",
+        "بتوم"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "RL-009",
+     "field": "name",
+     "text": "قناع بوتوم",
+     "matches": [
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "بوتوم",
+       "suggestions": [
+        "وبتوم",
+        "بوتون",
+        "بتوم"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "PT-004",
+     "field": "quote",
+     "text": "لا الخشخاش ولا اليبروح ولا كل أشربة النعاس في العالم.",
+     "matches": [
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "اليبروح",
+       "suggestions": [
+        "البروح",
+        "ليبرالي"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "PT-004",
+     "field": "name",
+     "text": "جذر اليبروح",
+     "matches": [
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "اليبروح",
+       "suggestions": [
+        "البروح",
+        "ليبرالي"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "PT-005",
+     "field": "quote",
+     "text": "أحضر لي تلك الزهرة؛ العشبة التي أريتك إياها مرة.",
+     "matches": [
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "العشبة",
+       "suggestions": [
+        "ألعشبه",
+        "الشعبة",
+        "البشعة"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "PT-005",
+     "field": "name",
+     "text": "ندى أوبيرون",
+     "matches": [
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "أوبيرون",
+       "suggestions": [
+        "أويبرون",
+        "أوبريون",
+        "أيبورون"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "PT-006",
+     "field": "scene",
+     "text": "قارورة من الزجاج الأسود ينزّ منها بخار أخضر في رواق معتم. الصبغة التي فيها أسقطت ملوكًا وحطّمت سلالات، قطرةً صامتة بعد قطرة.",
+     "matches": [
+      {
+       "rule": "syntax_125_mobtadaa_nakira_2",
+       "category": "TEST_NEW_FEATURES",
+       "message": "لا يجوز الابتداء بنكرة، فيتقدم الخبر شبه الجملة مثلا \"كتاب  في البيت\" تصبح \"في البيت كتاب\"\n\n: \"من الزجاج قارورة\"\n\n      ",
+       "found": "قارورة من الزجاج",
+       "suggestions": [
+        "من الزجاج قارورة"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "PT-006",
+     "field": "quote",
+     "text": "في ساعة أماني تسلل عمك، ومعه عصير الهيبونا الملعون في قارورة.",
+     "matches": [
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "الهيبونا",
+       "suggestions": [
+        "لهيابونا",
+        "الهيابون",
+        "اله يبونا"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "PT-006",
+     "field": "name",
+     "text": "صبغة الشوكران",
+     "matches": [
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "الشوكران",
+       "suggestions": [
+        "الشكوران",
+        "ولشاكران",
+        "الشاكرون"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "PT-007",
+     "field": "quote",
+     "text": "في القدر اغلي واخبزي؛ عين سمندل وإصبع ضفدع.",
+     "matches": [
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "سمندل",
+       "suggestions": [
+        "سنملد",
+        "لمندس",
+        "سنندل"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "PT-008",
+     "field": "scene",
+     "text": "قارورة سدادتها لؤلؤة تحفظ سائلًا أزرق مضيئًا يتموّج كبحر حيّ. في داخلها تنمو تكوينات مرجانية صغيرة ثم تذوب، ورائحتها رائحة الملح والرحلات المنسية.",
+     "matches": [
+      {
+       "rule": "syntax_0002_as_ka_1",
+       "category": "TEST_NEW_FEATURES",
+       "message": "استخدام الكاف للصفة استخدام أجنبي أدخله المترجمون، إذ يستعملون\n            \"as\"\n            بمعنى الكاف، فالأَوْلَى النصب على الحالية مثل  \" أعمل مديرًا \" أو على الاختصاص في: \"نحن المسلمين\".\n        \"أزرق مضيئًا يتموّج بحر\"\n        \"أزرق مضيئًا يتموّج بصفة بحر\"\n\n      ",
+       "found": "أزرق مضيئًا يتموّج كبحر",
+       "suggestions": [
+        "أزرق مضيئًا يتموّج بحر",
+        "أزرق مضيئًا يتموّج بصفة بحر"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "PT-009",
+     "field": "scene",
+     "text": "دكّان صيدلاني يغطّيه الغبار في أفقر أحياء مانتوفا. إكسير يائس يتوهّج كهرمانيًا في قارورة مشقوقة، قويّ بما يكفي ليعبر الهوّة بين الحياة والموت.",
+     "matches": [
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "مانتوفا",
+       "suggestions": [
+        "انتونان"
+       ]
+      },
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "كهرمانيًا",
+       "suggestions": [
+        "كهرمانا",
+        "كهرمائيا",
+        "رمانيا"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "LD-001",
+     "field": "scene",
+     "text": "بساط من أزهار النرجس الذهبية يمتدّ على ضفاف بحيرة ساكنة. يسير ووردزوورث بينها ودفتره في يده، وتلال كمبرلاند ترتفع خلفه.",
+     "matches": [
+      {
+       "rule": "syntax_125_mobtadaa_nakira_5",
+       "category": "TEST_NEW_FEATURES",
+       "message": "لا يجوز الابتداء بنكرة، فيتقدم الخبر شبه الجملة مثلا \"كتاب  في بيت الولد\" تصبح \"في بيت الولد كتاب\"\n\n: \"من أزهار النرجس بساط\"\n\n      ",
+       "found": "بساط من أزهار النرجس",
+       "suggestions": [
+        "من أزهار النرجس بساط"
+       ]
+      },
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "ووردزوورث",
+       "suggestions": [
+        "وووردوا"
+       ]
+      },
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "كمبرلاند",
+       "suggestions": [
+        "كسندرلاند"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "LD-001",
+     "field": "quote",
+     "text": "همت وحيدًا كسحابة تطفو عاليًا فوق الوديان والتلال.",
+     "matches": [
+      {
+       "rule": "syntax_0002_as_ka_1",
+       "category": "TEST_NEW_FEATURES",
+       "message": "استخدام الكاف للصفة استخدام أجنبي أدخله المترجمون، إذ يستعملون\n            \"as\"\n            بمعنى الكاف، فالأَوْلَى النصب على الحالية مثل  \" أعمل مديرًا \" أو على الاختصاص في: \"نحن المسلمين\".\n        \"همت وحيدًا سحابة\", \"همت وحيدًا سحابتا\", \"همت وحيدًا سحابتة\"\n        \"همت وحيدًا بصفة سحابة\"\n\n      ",
+       "found": "همت وحيدًا كسحابة",
+       "suggestions": [
+        "همت وحيدًا سحابة",
+        "همت وحيدًا سحابتا",
+        "همت وحيدًا سحابتة"
+       ]
+      },
+      {
+       "rule": "AR_DIACRITICS_REPLACE",
+       "category": "STYLE",
+       "message": "الوُدْيَان بضم الواو جمع وادٍ.",
+       "found": "الوديان",
+       "suggestions": [
+        "الوُدْيَان"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "LD-002",
+     "field": "scene",
+     "text": "سفينة ساكنة لا ريح تحرّكها تنجرف على محيط كأنه مرسوم. يحدّق البحّار العجوز في طائر القطرس المعلّق في عنقه بينما تنهض أطياف من البحر الزجاجي.",
+     "matches": [
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "القطرس",
+       "suggestions": [
+        "القطري",
+        "القطر",
+        "القرس"
+       ]
+      },
+      {
+       "rule": "syntax_456_bynama_sent_start_1",
+       "category": "TEST_NEW_FEATURES",
+       "message": "ربما تحتاج الجملة إلى إعادة صياغة لأن بينما لها الصدارة، أي يجب أن تكون في بدء الجملة\"\n        \"\"\n        \"حين\"\n        \"في حين\"\n        \"و\"\n        \"مع أنّ\"\n      ",
+       "found": "بينما",
+       "suggestions": [
+        "",
+        "حين",
+        "في حين"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "LD-003",
+     "field": "scene",
+     "text": "حديقة في هامبستيد في الخريف. يجلس كيتس تحت شجرة برقوق يكتب بحمّى، وعندليب يغرّد من الأغصان التي يغشاها الظلام.",
+     "matches": [
+      {
+       "rule": "syntax_125_mobtadaa_nakira_1",
+       "category": "TEST_NEW_FEATURES",
+       "message": "لا يجوز الابتداء بنكرة، فيتقدم الخبر شبه الجملة مثلا \"كتابان عندك\" تصبح \"عندك كتابان\"\n\n: \"في حديقة\"\n\n      ",
+       "found": "حديقة في",
+       "suggestions": [
+        "في حديقة"
+       ]
+      },
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "هامبستيد",
+       "suggestions": [
+        "هامستما"
+       ]
+      },
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "كيتس",
+       "suggestions": [
+        "يكتس",
+        "كتيس",
+        "كيست"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "GC-001",
+     "field": "scene",
+     "text": "قصر في البندقية عند منتصف الليل. يقف بايرون على الشرفة وعباءته تخفق في الريح، ويحدّق عبر القناة المظلمة، وخلفه مخطوطة لم تكتمل تحترق في المدفأة.",
+     "matches": [
+      {
+       "rule": "syntax_125_mobtadaa_nakira_2",
+       "category": "TEST_NEW_FEATURES",
+       "message": "لا يجوز الابتداء بنكرة، فيتقدم الخبر شبه الجملة مثلا \"كتاب  في البيت\" تصبح \"في البيت كتاب\"\n\n: \"في البندقية قصر\"\n\n      ",
+       "found": "قصر في البندقية",
+       "suggestions": [
+        "في البندقية قصر"
+       ]
+      },
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "بايرون",
+       "suggestions": [
+        "بيارون",
+        "وايربن",
+        "باسرون"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "GC-001",
+     "field": "quote",
+     "text": "تمشي في الجمال، كليل الأجواء الصافية والسماوات المرصعة بالنجوم.",
+     "matches": [
+      {
+       "rule": "syntax_0002_as_ka_1",
+       "category": "TEST_NEW_FEATURES",
+       "message": "استخدام الكاف للصفة استخدام أجنبي أدخله المترجمون، إذ يستعملون\n            \"as\"\n            بمعنى الكاف، فالأَوْلَى النصب على الحالية مثل  \" أعمل مديرًا \" أو على الاختصاص في: \"نحن المسلمين\".\n        \"في الجمال، ليل\"\n        \"في الجمال، بصفة ليل\"\n\n      ",
+       "found": "في الجمال، كليل",
+       "suggestions": [
+        "في الجمال، ليل",
+        "في الجمال، بصفة ليل"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "GC-002",
+     "field": "scene",
+     "text": "غرفة مكتب في جنيف تضيئها الشموع وسط عاصفة رعدية. تكتب ماري على وميض البرق بينما يتحرّك المخلوق في الظلال خلفها. يصير العلم والرعب شيئًا واحدًا.",
+     "matches": [
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "تضيئها",
+       "suggestions": [
+        "تضيءها",
+        "تضئيها",
+        "تضيئاه"
+       ]
+      },
+      {
+       "rule": "AR_HOMOPHONES_REPLACE",
+       "category": "CONFUSED_WORDS",
+       "message": "لأن \"وَسْطَ\" ظرف بمعنى \"بين\" والوَسَط هو المعتدل من كل شيء، وما بين طرفي الشيء",
+       "found": "وسط",
+       "suggestions": [
+        "وَسَط",
+        "وَسْط"
+       ]
+      },
+      {
+       "rule": "syntax_456_bynama_sent_start_1",
+       "category": "TEST_NEW_FEATURES",
+       "message": "ربما تحتاج الجملة إلى إعادة صياغة لأن بينما لها الصدارة، أي يجب أن تكون في بدء الجملة\"\n        \"\"\n        \"حين\"\n        \"في حين\"\n        \"و\"\n        \"مع أنّ\"\n      ",
+       "found": "بينما",
+       "suggestions": [
+        "",
+        "حين",
+        "في حين"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "GC-002",
+     "field": "quote",
+     "text": "احذر؛ فأنا لا أعرف الخوف، ولذلك أنا قوي.",
+     "matches": [
+      {
+       "rule": "grammar_0011_notjazem_lam_nafia",
+       "category": "GRAMMAR_ERROR",
+       "message": "\nالفرق بين لا الناهية ولا النافية، لا الناهية تأتي مع ضمائر المخاطب فقط. لذا فإن لا النافية لا تجزم الفعل المضارع أتقصد؟\n\n        \"لا أعرف\"\n\n      ",
+       "found": "لا أعرف",
+       "suggestions": [
+        "لا أعرف"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "GC-003",
+     "field": "scene",
+     "text": "حجرة خافتة يضيئها جمر يحتضر. يجلس بو منحنيًا على مكتبه بينما يحطّ غراب على تمثال بالاس النصفي، وتتردّد كلمة «Nevermore» في الظلال.",
+     "matches": [
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "يضيئها",
+       "suggestions": [
+        "يضيءها",
+        "يضيئاه",
+        "يشيئها"
+       ]
+      },
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "بو",
+       "suggestions": [
+        "وب",
+        "لو",
+        "قو"
+       ]
+      },
+      {
+       "rule": "syntax_456_bynama_sent_start_1",
+       "category": "TEST_NEW_FEATURES",
+       "message": "ربما تحتاج الجملة إلى إعادة صياغة لأن بينما لها الصدارة، أي يجب أن تكون في بدء الجملة\"\n        \"\"\n        \"حين\"\n        \"في حين\"\n        \"و\"\n        \"مع أنّ\"\n      ",
+       "found": "بينما",
+       "suggestions": [
+        "",
+        "حين",
+        "في حين"
+       ]
+      },
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "بالاس",
+       "suggestions": [
+        "بالأس",
+        "بالآس",
+        "بالاي"
+       ]
+      },
+      {
+       "rule": "syntax_0002_as_ka_1",
+       "category": "TEST_NEW_FEATURES",
+       "message": "استخدام الكاف للصفة استخدام أجنبي أدخله المترجمون، إذ يستعملون\n            \"as\"\n            بمعنى الكاف، فالأَوْلَى النصب على الحالية مثل  \" أعمل مديرًا \" أو على الاختصاص في: \"نحن المسلمين\".\n        \"وتتردّد كلمة\", \"وتتردّد كلمتة\", \"وتتردّد لمة\", \"وتتردّد لمتة\"\n        \"وتتردّد بصفة لمة\"\n\n      ",
+       "found": "وتتردّد كلمة",
+       "suggestions": [
+        "وتتردّد كلمة",
+        "وتتردّد كلمتة",
+        "وتتردّد لمة"
+       ]
+      },
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "Nevermore",
+       "suggestions": []
+      }
+     ]
+    },
+    {
+     "id": "GC-003",
+     "field": "quote",
+     "text": "ذات مرة، في منتصف ليل كئيب، بينما كنت أتأمل، ضعيفًا متعبًا.",
+     "matches": [
+      {
+       "rule": "syntax_456_bynama_sent_start_1",
+       "category": "TEST_NEW_FEATURES",
+       "message": "ربما تحتاج الجملة إلى إعادة صياغة لأن بينما لها الصدارة، أي يجب أن تكون في بدء الجملة\"\n        \"\"\n        \"حين\"\n        \"في حين\"\n        \"و\"\n        \"مع أنّ\"\n      ",
+       "found": "بينما",
+       "suggestions": [
+        "",
+        "حين",
+        "في حين"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "GC-004",
+     "field": "scene",
+     "text": "ورشة طباعة في لندن تتّقد بنور الرؤيا. يحفر بليك نمرًا على النحاس بينما يتجسّد الوحش من اللوح، متوهّجًا في غابات الليل.",
+     "matches": [
+      {
+       "rule": "syntax_456_bynama_sent_start_1",
+       "category": "TEST_NEW_FEATURES",
+       "message": "ربما تحتاج الجملة إلى إعادة صياغة لأن بينما لها الصدارة، أي يجب أن تكون في بدء الجملة\"\n        \"\"\n        \"حين\"\n        \"في حين\"\n        \"و\"\n        \"مع أنّ\"\n      ",
+       "found": "بينما",
+       "suggestions": [
+        "",
+        "حين",
+        "في حين"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "LD-004",
+     "field": "scene",
+     "text": "غرفة مشمسة في فلورنسا. تكتب إليزابيث عند نافذة تطلّ على نهر أرنو، وكلبها من فصيلة السبانيل عند قدميها، ورسائل حب من Robert مفتوحة على المكتب.",
+     "matches": [
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "السبانيل",
+       "suggestions": [
+        "الحاصباني"
+       ]
+      },
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "Robert",
+       "suggestions": []
+      }
+     ]
+    },
+    {
+     "id": "LD-005",
+     "field": "scene",
+     "text": "حديقة على طراز ما قبل الرفائيلية في ضوء الخريف الآفل. تجلس كريستينا بين الأوراق المتساقطة تنظم أبياتًا يوجعها الجمال والاستسلام الهادئ.",
+     "matches": [
+      {
+       "rule": "syntax_125_mobtadaa_nakira_1",
+       "category": "TEST_NEW_FEATURES",
+       "message": "لا يجوز الابتداء بنكرة، فيتقدم الخبر شبه الجملة مثلا \"كتابان عندك\" تصبح \"عندك كتابان\"\n\n: \"على حديقة\"\n\n      ",
+       "found": "حديقة على",
+       "suggestions": [
+        "على حديقة"
+       ]
+      },
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "الرفائيلية",
+       "suggestions": [
+        "عزرائيلية"
+       ]
+      },
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "كريستينا",
+       "suggestions": [
+        "كريستيان",
+        "كسيرتينا",
+        "كتيسرينا"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "OL-001",
+     "field": "scene",
+     "text": "جبل الأوليمب يشقّ السماء. يجلس زيوس على عرش من الغيوم والبرق يتقوّس بين أصابعه، وفي الأسفل يرتجف عالم البشر تحت نظرته.",
+     "matches": [
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "الأوليمب",
+       "suggestions": [
+        "الأوليمبي",
+        "الأولمبي",
+        "أوليمبياد"
+       ]
+      },
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "زيوس",
+       "suggestions": [
+        "ويوس",
+        "يوس",
+        "زيوف"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "OL-002",
+     "field": "scene",
+     "text": "البارثينون يتلألأ في ضوء ذهبي. تقف آثينا في كامل عدّتها الحربية وبومتها جاثمة على ترسها، وعيناها الرماديتان تنفذان من كل خداع بشري.",
+     "matches": [
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "البارثينون",
+       "suggestions": [
+        "البالياري"
+       ]
+      },
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "آثينا",
+       "suggestions": [
+        "أثينا",
+        "أتينا",
+        "آتينا"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "OL-004",
+     "field": "scene",
+     "text": "شواطئ قبرص عند الفجر. تنهض أفروديت من زبد البحر، والحمائم تحلّق فوقها، والأمواج تضع اللآلئ عند قدميها. والعالم يحبس أنفاسه.",
+     "matches": [
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "أفروديت",
+       "suggestions": [
+        "أفرودية",
+        "أفرودتي",
+        "أفدوريت"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "OL-004",
+     "field": "quote",
+     "text": "حتى الآلهة لا تستطيع مقاومة قوة الحب.",
+     "matches": [
+      {
+       "rule": "grammar_0010_jazem_la_nahia",
+       "category": "GRAMMAR_ERROR",
+       "message": "\nالفعل المضارع بعد \"لا الناهية\" يأتي مجزوما. أتقصد؟\n\n        \"لا تستطع\"\n\n      ",
+       "found": "لا تستطيع",
+       "suggestions": [
+        "لا تستطع"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "OL-005",
+     "field": "scene",
+     "text": "ومضة من صنادل مجنّحة عبر السماء. ينساب هيرميز بين الصواعق، وفي إحدى يديه رسالة إلهية، وعلى وجهه ابتسامة لص.",
+     "matches": [
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "هيرميز",
+       "suggestions": [
+        "هي رميز",
+        "هير ميز",
+        "رميز"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "OL-005",
+     "field": "quote",
+     "text": "سريعًا كالفكر، أحمل كلمات الآلهة إلى آذان البشر.",
+     "matches": [
+      {
+       "rule": "syntax_0002_as_ka_2",
+       "category": "TEST_NEW_FEATURES",
+       "message": "استخدام الكاف للصفة استخدام أجنبي أدخله المترجمون، إذ يستعملون\n            \"as\"\n            بمعنى الكاف، فالأَوْلَى النصب على الحالية مثل  \" أعمل مديرًا \" أو على الاختصاص في: \"نحن المسلمين\".\n        \"أحمل لمات\"\n        \"أحمل بصفة لمات\"\n\n      ",
+       "found": "أحمل كلمات",
+       "suggestions": [
+        "أحمل لمات",
+        "أحمل بصفة لمات"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "UW-001",
+     "field": "scene",
+     "text": "قاعة عرش العالم السفلي تضيئها أنهار من نار شاحبة. يجلس هاديس وسيربيروس عند قدميه، وخوذة الظلام على مسند ذراعه، والموتى يمرّون في صمت لا ينتهي.",
+     "matches": [
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "تضيئها",
+       "suggestions": [
+        "تضيءها",
+        "تضئيها",
+        "تضيئاه"
+       ]
+      },
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "هاديس",
+       "suggestions": [
+        "ساديه",
+        "هاديي",
+        "هادي"
+       ]
+      },
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "وسيربيروس",
+       "suggestions": [
+        "وسيربي روس",
+        "وسيروبون",
+        "وسيسيرون"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "UW-002",
+     "field": "scene",
+     "text": "عرش منقسم بين الربيع والظل. تمسك بيرسيفون رمّانة في يد وتاجًا من الأزهار في الأخرى، ملكةً على مملكتين.",
+     "matches": [
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "بيرسيفون",
+       "suggestions": [
+        "بير سيفون",
+        "بيرس يفون",
+        "بيونسيف"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "OL-006",
+     "field": "scene",
+     "text": "سفينة أنهكتها العواصف تدور حول رأس صخري. يربط أوديسيوس نفسه إلى الصاري بينما تغنّي عرائس البحر من الجروف، وعيناه تتّقدان بذكرى إيثاكا.",
+     "matches": [
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "أوديسيوس",
+       "suggestions": [
+        "أوديس يوس",
+        "أوديسي وس",
+        "أوأوسي"
+       ]
+      },
+      {
+       "rule": "syntax_456_bynama_sent_start_1",
+       "category": "TEST_NEW_FEATURES",
+       "message": "ربما تحتاج الجملة إلى إعادة صياغة لأن بينما لها الصدارة، أي يجب أن تكون في بدء الجملة\"\n        \"\"\n        \"حين\"\n        \"في حين\"\n        \"و\"\n        \"مع أنّ\"\n      ",
+       "found": "بينما",
+       "suggestions": [
+        "",
+        "حين",
+        "في حين"
+       ]
+      },
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "إيثاكا",
+       "suggestions": [
+        "إيثاما",
+        "إيثاقا",
+        "إيثافا"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "UW-003",
+     "field": "scene",
+     "text": "معبد خرب عند حافة العالم. تلتفت ميدوسا وشعرها من الأفاعي يفحّ، ومحاربون من حجر مبعثرون على الأرض، متجمّدون في هجمتهم الأخيرة.",
+     "matches": [
+      {
+       "rule": "AR_DIACRITICS_REPLACE",
+       "category": "STYLE",
+       "message": "الحافة دون تشديد الفاء",
+       "found": "حافة",
+       "suggestions": [
+        "حافَة"
+       ]
+      },
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "ميدوسا",
+       "suggestions": [
+        "ويدمسا",
+        "مسدوسا",
+        "ميدوا"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "house:Montague",
+     "field": "house",
+     "text": "مونتاغيو",
+     "matches": [
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "مونتاغيو",
+       "suggestions": [
+        "مونتا"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "house:Capulet",
+     "field": "house",
+     "text": "كابوليت",
+     "matches": [
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "كابوليت",
+       "suggestions": [
+        "كابولية",
+        "كابوليا",
+        "كابولي"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "house:Forest of Arden",
+     "field": "house",
+     "text": "غابة آردن",
+     "matches": [
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "آردن",
+       "suggestions": [
+        "ازدن",
+        "اردن",
+        "أزدن"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "house:Scottish Court",
+     "field": "house",
+     "text": "البلاط الاسكتلندي",
+     "matches": [
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "الاسكتلندي",
+       "suggestions": [
+        "الإسكتلندي",
+        "ألإسكتلندي",
+        "آلإسكتلندي"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "house:Olympus",
+     "field": "house",
+     "text": "الأوليمب",
+     "matches": [
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "الأوليمب",
+       "suggestions": [
+        "الأوليمبي",
+        "الأولمبي",
+        "أوليمبياد"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "element:Alchemy",
+     "field": "element",
+     "text": "الخيمياء",
+     "matches": [
+      {
+       "rule": "HUNSPELL_RULE_AR",
+       "category": "TYPOS",
+       "message": "وُجد خطأ إملائي محتمل",
+       "found": "الخيمياء",
+       "suggestions": [
+        "الكيمياء",
+        "الخيميان",
+        "الخيميات"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "zh": {
+   "items": 234,
+   "flagged": [
+    {
+     "id": "VC-002",
+     "field": "scene",
+     "text": "修道院里一间烛光摇曳的小室。神父照料着他种满草药与毒草的园子，智慧刻在他饱经风霜的脸上。",
+     "matches": [
+      {
+       "rule": "wa5",
+       "category": "CAT4",
+       "message": "\"间\"不能与“烛光”搭配，请换量词",
+       "found": "间",
+       "suggestions": []
+      }
+     ]
+    },
+    {
+     "id": "MO-003",
+     "field": "scene",
+     "text": "黎明时分维罗纳的一座广场。班伏里奥站在出鞘的刀剑之间，他摊开的双手是抵挡这场风暴的唯一武器。",
+     "matches": [
+      {
+       "rule": "wa2",
+       "category": "CAT3",
+       "message": "名词后要加\"方位词\"",
+       "found": "在出",
+       "suggestions": [
+        "方位词"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "DC-003",
+     "field": "scene",
+     "text": "埃尔西诺的王座厅，披挂着虚假的华丽。克劳狄斯紧握王冠，袍子里藏着一小瓶毒药。",
+     "matches": [
+      {
+       "rule": "wb4",
+       "category": "CAT4",
+       "message": "形容词的修饰一般为‘形容词（副词）+地+形容词’。您的意思是否是：虚假\"地\"华丽",
+       "found": "的",
+       "suggestions": [
+        "地"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "FA-003",
+     "field": "quote",
+     "text": "月光下相遇真是不巧，骄傲的提泰妮娅。",
+     "matches": [
+      {
+       "rule": "wb4",
+       "category": "CAT4",
+       "message": "动词的修饰一般为‘形容词（副词）+地+动词’。您的意思是否是：骄傲\"地\"提",
+       "found": "的",
+       "suggestions": [
+        "地"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "SC-001",
+     "field": "scene",
+     "text": "邓西嫩一间血迹斑斑的王座厅。马克白双手颤抖地握着剑，王冠沉沉地压在额上。远处山丘上，勃南森林开始移动。",
+     "matches": [
+      {
+       "rule": "wa5",
+       "category": "CAT4",
+       "message": "\"间\"不能与“血迹”搭配，请换量词",
+       "found": "间",
+       "suggestions": []
+      }
+     ]
+    },
+    {
+     "id": "SC-002",
+     "field": "scene",
+     "text": "苏格兰城堡里一间烛光摇曳的房间。马克白夫人在冰冷的石地上踱步，搓洗着手上并不存在的血迹。阴影像第二层皮肤一样贴着她。",
+     "matches": [
+      {
+       "rule": "wa5",
+       "category": "CAT4",
+       "message": "\"间\"不能与“烛光”搭配，请换量词",
+       "found": "间",
+       "suggestions": []
+      }
+     ]
+    },
+    {
+     "id": "FA-004",
+     "field": "scene",
+     "text": "一片被仙子之光照亮的林间空地。波顿顶着一个驴头，神情茫然却不失庄重，提泰妮娅给他披上花环。仙子们忍着笑。",
+     "matches": [
+      {
+       "rule": "wa5",
+       "category": "CAT4",
+       "message": "\"间\"不能与“空地”搭配，请换量词",
+       "found": "林间",
+       "suggestions": []
+      }
+     ]
+    },
+    {
+     "id": "PT-007",
+     "field": "scene",
+     "text": "苍白的浆果在深色的常青叶间闪光，采于冬夜的月下。这萃取液低鸣着自然界安静而持久的魔力。",
+     "matches": [
+      {
+       "rule": "wa5",
+       "category": "CAT4",
+       "message": "\"间\"不能与“闪光”搭配，请换量词",
+       "found": "间",
+       "suggestions": []
+      }
+     ]
+    },
+    {
+     "id": "LD-001",
+     "field": "scene",
+     "text": "金色的水仙像地毯一样沿着平静的湖岸铺开。华兹华斯手拿笔记本走在花间，身后耸立着坎伯兰的山岭。",
+     "matches": [
+      {
+       "rule": "wa2",
+       "category": "CAT3",
+       "message": "名词后要加\"方位词\"",
+       "found": "在花",
+       "suggestions": [
+        "方位词"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "LD-005",
+     "field": "scene",
+     "text": "秋光渐暗的一座拉斐尔前派花园。克里斯蒂娜坐在落叶之间，写着因美与平静的顺从而令人心痛的诗句。",
+     "matches": [
+      {
+       "rule": "wa2",
+       "category": "CAT3",
+       "message": "名词后要加\"方位词\"",
+       "found": "在落叶",
+       "suggestions": [
+        "方位词"
+       ]
+      },
+      {
+       "rule": "wb4",
+       "category": "CAT4",
+       "message": "动词的修饰一般为‘形容词（副词）+地+动词’。您的意思是否是：平静\"地\"顺从",
+       "found": "的",
+       "suggestions": [
+        "地"
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

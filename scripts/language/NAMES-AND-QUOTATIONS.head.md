@@ -25,7 +25,8 @@ English is the source of truth (`src/lib/cards.ts`) and is not repeated in the p
   play in that language ("Hamlet", "Macbeth"; "Romeo" and "Juliet" from the two halves of the title).
 - `translated`: the game's own invention (relics, potions, "Lord Montague", "Lady Capulet", houses,
   elements). Written for the game by the language model that did this work. **Not reviewed by a native
-  speaker and not checked by an independent tool.**
+  speaker.** Checked by tools that did not write it (see "Checks by tools that did not write the text");
+  a name with no finding is not thereby right.
 - `missing`: no source has the name in that language. Nothing was invented: the card shows the English
   name there, and the invocation accepts the English name.
 
@@ -33,13 +34,21 @@ English is the source of truth (`src/lib/cards.ts`) and is not repeated in the p
 
 - `published`: copied by program from a published translation that is in the public domain. The text is the
   span matched in the transcription at the URL given (a permanent link to the revision read). Line breaks
-  of verse are shown as " / ", footnote marks are removed, and a leading or trailing dash is cut; nothing
-  else is changed. François-Victor Hugo's long dashes inside a line mark the verse lines of the original
-  and are his.
+  of verse are shown as " / ", footnote marks and the page-number marks of the transcription ("[p. 160
+  modifica]") are removed, and a leading or trailing dash is cut; nothing else is changed. François-Victor
+  Hugo's long dashes inside a line mark the verse lines of the original and are his. In the Gutenberg texts,
+  where prose is wrapped at a fixed width, a line end inside prose is a space, not a verse break, and
+  Gutenberg's "--" (its plain-text sign for a dash) is shown as "—". Spelling is the
+  edition's: Spanish "Porqué", "dejaria", Portuguese "Horacio", "cahindo", Japanese old character forms
+  and historical kana (Tsubouchi, 1933) are as printed. For a Japanese line in old character forms the
+  module also keeps its modern reading (`echo`), made character for character by OpenCC's JPVariants
+  table (the table of OpenCC's `t2jp` conversion), so that a player typing 歓楽 echoes Tsubouchi's 歡樂;
+  the printed forms count too, and the card shows the line as printed. Kana spelling is not modernised.
 - `NEW, unsourced`: no public-domain translation of the line was found in that language (or none was
   searched for; see "What was not done"). The line was translated for the game by the language model that
-  did this work. **It is generated text. It has not been reviewed by a native speaker, and it has not been
-  checked by a back-translation model or a grammar checker.** Do not present it as a published translation.
+  did this work. **It is generated text, not reviewed by a native speaker.** It was put through the tool
+  checks below (spelling, grammar where LanguageTool has the language, back-translation), which can catch
+  some errors and cannot show a line to be right. Do not present it as a published translation.
 
 The quotations on the mythology cards (OL-, UW-) are not quotations from any work: they are lines written
 for the game in English. They can only ever be translated, never sourced.
@@ -50,16 +59,28 @@ for the game in English. They can only ever be translated, never sourced.
 |---|---|---|---|
 | Names of characters, authors, gods, places, works | Wikidata API, `wbgetentities` (`docs/language/sources/wikidata-names.json` keeps the item id, the revision id and every label read) | CC0 1.0 | 2026-11-16 |
 | Wikipedia article titles (fallback for names) | Wikidata sitelinks | titles are used as names only | 2026-11-16 |
-| French quotations | fr.wikisource.org, translations by François-Victor Hugo (`docs/language/sources/quotes-fr.json` keeps the page, revision and matching pattern for each line) | public domain (see the table below); Wikisource transcription CC BY-SA 4.0 for its own additions | 2026-11-16 |
-| Other published quotations | the Wikisource of each language, listed below per work | public domain, per work below | 2026-11-16 |
+| French quotations | fr.wikisource.org, translations by François-Victor Hugo, and Mallarmé, Saladin and Rabbe for the poems and Frankenstein (`docs/language/sources/quotes-fr.json` keeps the page, revision and matching pattern for each line) | public domain (see the table below); Wikisource transcription CC BY-SA 4.0 for its own additions | 2026-11-16 |
+| Other published quotations | the Wikisource of each language: Italian (Rusconi, Ragazzoni), Spanish (Menéndez y Pelayo, Moratín, Márquez, Pérez Bonalde), Portuguese (Luís I, Machado de Assis), Polish (Ulrich), Russian (several), German (Schlegel's Romeo, Lachmann, Strodtmann), Japanese (Tsubouchi); `docs/language/sources/quotes-<lang>.json` | public domain, per work below | 2026-11-16 |
+| German plays beyond Romeo | Project Gutenberg, plain-text files read from the official mirror gutenberg.pglaf.org (Schlegel #7022, #7043, #9875; Dorothea Tieck #6975; Wieland #7276, #7236, #7186, #7185, #7240, #7934); each line's record keeps the ebook URL, the mirror file and the file's sha256 | public domain in the US (Project Gutenberg) and by the translators' dates | 2026-11-16 |
+| Modern reading of Japanese old character forms | OpenCC 1.1.9, `data/dictionary/JPVariants.txt` (https://github.com/BYVoid/OpenCC, tag ver.1.1.9; `docs/language/sources/opencc-JPVariants.txt`, sha256 db09543d…afab8) | Apache-2.0 | 2026-11-16 |
 | Stop words (words that never count as an echo) | stopwords-iso, commit 6e8e9a2 (`docs/language/sources/stopwords-iso.json`) | MIT, © 2020 Gene Diaz | 2026-11-16 |
+| Spelling check | Hunspell 1.7.2 (LGPL/GPL/MPL) with LibreOffice's dictionaries at commit c0865a85 (each under its own licence, README kept beside it on the build host) | as stated | 2026-11-16 |
+| Grammar check | LanguageTool 6.6, run locally (LGPL-2.1) | LGPL-2.1 | 2026-11-16 |
+| Back-translation | MADLAD-400 3B (google/madlad400-3b-mt; CTranslate2 int8 conversion Nextcloud-AI/madlad400-3b-mt-ct2-int8, revision aa32bbde) and all-MiniLM-L6-v2 (revision 1110a243) | Apache-2.0 | 2026-11-16 |
+
+The checking tools were copied (APFS clones) from the files the language QA work had already fetched on the
+build host (`im-lang/qa-pipeline`, fetched by its `scripts/lang/host-setup.sh` at the pinned versions above)
+into this task's own folder, `im-lang/names-quotes`; nothing was installed system-wide.
 
 Translators' dates of birth and death are Wikidata's (properties P569 and P570, fetched 2026-11-16,
-`docs/language/sources/translators.json`); they decide the copyright status. The years of the editions were
-written from general reference knowledge and were not fetched: check them before relying on them. The
-United States test used is "published before 1931"; the home-country test is the author's life plus
-70 years. Every translator used died before 1926, so both tests are met with a wide margin whichever
-edition a transcription follows.
+`docs/language/sources/translators.json`); they decide the copyright status, and a unit test checks every
+published line against them (translator died in 1955 or earlier). The editions are as the Wikisource page
+states them; for the Gutenberg files, which do not name their edition, see each work's note. The home-country test is the translator's life plus 70 years (Spain: life plus 80 for authors
+who died before 1987). The United States test is "published before 1931", or, for Tsubouchi's 1933 edition,
+that the work was already in the public domain in Japan on 1 January 1996 (Japan's term was then life plus
+50, and he died in 1935), so its US copyright was never restored. Every translator with known dates died in
+1935 or earlier. Jules Saladin's dates were not found; his translation was published in 1821, so he cannot
+have died within the last seventy years.
 
 ## How the game uses this
 
@@ -79,41 +100,71 @@ edition a transcription follows.
 
 Read this before treating any language as finished.
 
-- **Published lines were only taken for French (Hugo, all the plays and the sonnet), Polish (Ulrich),
-  Russian (several translators) and German (Schlegel, Romeo und Julia only).** In Polish, Russian and German
-  only the lines that a search pattern found and that could be recognised with certainty were taken; the
-  rest of those plays is in the same sources and was not extracted. Every other line in every language is
-  marked `NEW, unsourced`.
-- **Leads not followed up** (Wikisource pages that Wikidata links to the works, seen on 2026-11-16, not
-  opened): Spanish (Romeo y Julieta, Hamlet, El sueño de una noche de verano, Macbeth, Julio César, El
-  mercader de Venecia, El rey Lear, Otelo), Italian (Giulietta e Romeo, Amleto, La tempesta, Macbeth, La
-  dodicesima notte, Il mercante di Venezia, Il re Lear, Otello), Portuguese (Romeu e Julieta, Hamlet),
-  Chinese (Hamlet as 漢姆萊脫; Sonnet 18), Japanese (ロミオとヂュリエット), Korean (햄릿), Arabic (تاجر البندقية;
-  Sonnet 18), German (Sonnet 18). Their translators and copyright status were not established. For the
-  Romantic poems, Wikisource has The Raven in German, Spanish, French, Italian, Portuguese and Russian,
-  "She Walks in Beauty" in Polish and Frankenstein in French; none was used. No library other than
-  Wikisource was searched. Nothing was found, or looked for, in Hindi, Vietnamese, Thai or Indonesian.
-- **The place of each published line in its play was recognised by reading the passage around the match**
-  (speaker, neighbouring lines), not by act, scene and line numbers in the translation. The citation given
-  is that of the English line.
-- **Scene descriptions are translated in es, fr, de, it, pt, pl, ru, zh, ja, ko and id. They are not
-  translated in Arabic, Hindi, Vietnamese or Thai**, the four languages the translating model is least sure
-  of; those show the English scene.
-- **No independent tool has checked any translated text.** LanguageTool, Hunspell and a back-translation
-  model were not run: the build host refused work for load during this task. Every `translated` name,
-  every `NEW` line and every scene is one model's output, unreviewed.
+- **Published lines** were taken where a public-domain translation is transcribed on Wikisource or Project
+  Gutenberg and the line could be found in it: Italian 51 of 71 cards (Rusconi's complete prose Shakespeare
+  of 1858–1859, all eleven plays, and Ragazzoni's Raven), French 51 (Hugo; Mallarmé's Raven, Saladin's
+  Frankenstein, Rabbe's Shelley), German 50 (Schlegel's Romeo, Dream, Merchant and Julius Caesar; Dorothea
+  Tieck's Macbeth; Wieland's 1762–1766 prose for Hamlet, the Tempest, Twelfth Night, Othello, Lear and Henry
+  IV; Lachmann's Raven, Strodtmann's Shelley), Spanish 29, Polish 28, Japanese 13 (Romeo and Juliet only),
+  Russian 15, Portuguese 6. Arabic, Hindi, Chinese, Korean, Vietnamese, Thai and Indonesian have none. Every
+  other line is `NEW, unsourced`.
+- **Where a published translation exists but was not used**, and why:
+  - German: Schlegel–Tieck's Hamlet, Tempest, Twelfth Night, Othello and Lear are in the public domain, but
+    Project Gutenberg's German files for those plays (its index GUTINDEX.ALL, read from the official mirror
+    gutenberg.pglaf.org because www.gutenberg.org answered HTTP 503 all day on 2026-11-16) are Wieland's
+    1762–1766 prose, the first German Shakespeare; that is what was used. zeno.org, which has the
+    Schlegel–Tieck texts, could not be read by the fetch script. Wieland's spelling is his (seyn,
+    zurük, Crone). Neither Wieland nor this Gutenberg text has the Tempest's epilogue or "I'll drown my book"
+    in a form that was found, so those two German lines are NEW. The Gutenberg Macbeth reads "entweiht mich"
+    where Tieck printed "entweibt mich" (unsex me); the German line for Lady Macbeth stops before that word.
+  - Polish and Russian: the plays are cached and searched; a line was taken only when it could be found and
+    recognised with certainty. The others are in the same texts and were not found in the time spent.
+    The Polish Macbeth page (Ulrich) could not be fetched under the title tried. The cached Russian Dream
+    (Grigoryev) and Macbeth (Yuryev) are transcriptions in the pre-1918 spelling; lines were not taken from
+    them, because players would not type that spelling, and modern-spelling versions were not looked for.
+  - Spanish: Menéndez y Pelayo's 1881 versions omit some lines (the Nurse's "drudge", Lady Capulet's
+    "marry"); Spanish Wikisource has no transcribed Tempest, Twelfth Night, Dream, Lear or Henry IV part 2 in a
+    public-domain translation that was found. Astrana Marín's Julio César is on Wikisource but he died in
+    1959 (Spain: life plus 80), so it was not used.
+  - Portuguese: Rebelo da Silva's Otelo (1856) and Luís I's O Mercador de Veneza (1879) are listed on
+    pt.wikisource, but the page titles tried did not exist; not followed further.
+  - Japanese: only Tsubouchi's Romeo and Juliet is on ja.wikisource. Aozora Bunko holds more of his
+    translations (Hamlet, Macbeth, and others); not fetched.
+  - Chinese: zh.wikisource has a 1924 classical-Chinese Hamlet (漢姆萊脫) whose translator's dates were not
+    established, and a contributors' own translation of Sonnet 18 (CC BY-SA); neither was used. Korean
+    Wikisource has a Hamlet page whose translator was not established. Arabic Wikisource has The Merchant of
+    Venice and Sonnet 18; their translators were not established.
+  - The Romantic poems: Polish (Beaupré, 1910) has a Raven whose translator's dates Wikidata does not have,
+    so it was not used; the Russian "She Walks in Beauty" on Wikisource is a 2002 translation, not used.
+    Wordsworth, Keats, Blake, Byron, Browning and Rossetti were not searched for in any language.
+  - No library other than Wikisource was searched.
+- **The place of each published line** was recognised by reading the passage around the match (speaker,
+  neighbouring lines), not by act, scene and line numbers in the translation. The citation given is that of
+  the English line. Some 19th-century prose translations render a line loosely (Rusconi's "Ti troverò al
+  chiaro di luna, superba Titania" for "Ill met by moonlight"); the published wording is used as it stands.
+- **Everything translated for the game is one language model's output**: every `translated` name and label,
+  every `NEW` line and every scene in every language. The scenes in Arabic, Hindi, Vietnamese and Thai were
+  written in this round. In those scenes, a character whose name has no source in the language keeps the
+  English name in Latin letters, as the card does, rather than an invented transliteration. None of this text
+  has been reviewed by a native speaker. It was checked by tools that did not write it (the section "Checks by
+  tools that did not write the text" below says what they found and what they cannot find); a text with no
+  finding is not thereby correct.
 - **Wikidata labels are community-edited and a few look doubtful.** They are used as found. For review:
   Russian Horatio is labelled "Гораций" (the usual stage name is Горацио); Chinese Macbeth is "马克白", the
   Taiwan form, converted to Simplified characters (the mainland form is 麦克白); Romans carry their Latin
   names (Japanese ブルトゥス for Brutus, where the stage tradition says ブルータス); some poets carry a full
-  formal name (Vietnamese and Thai Byron). Brand-new translated relic names follow these labels.
+  formal name (Vietnamese and Thai Byron). Translated relic names follow these labels.
 - **The stop-word list is broad.** stopwords-iso counts some content words as stop words. Two were taken
   off it because they are the one telling word of Hamlet's line: Portuguese "questão" and Russian "вопрос"
-  (`NOT_STOP` in the build script). Otherwise the lists are used as published. "I am not what I am" has no
-  telling word in English and has none in most languages either; the test suite prints every line that has
-  none. For those cards the English words decide, as before.
+  (`NOT_STOP` in the build script). Otherwise the lists are used as published. A line with no telling word
+  of its own leaves the English words to decide, as before; the test suite prints every such line.
 - The telling words of a line depend on `Intl.Segmenter` for Chinese, Japanese and Thai, so they can differ
   slightly between browsers and Node versions.
+- **The card detail view** (`src/pages/collection.astro`) is being translated on another branch
+  (lang/pages-core), which marks the card's name, line and scene `data-card-text` and leaves them to this
+  work. This branch does not touch that page; when the two meet, those spots take `cardName`, `cardQuote`
+  and `cardScene` from `src/lib/cards-i18n` with the interface language. Until then the battle page is the
+  only page that shows card names in the interface language.
 
 ## How to rebuild
 
@@ -124,6 +175,10 @@ python3 scripts/language/fetch/fetchwork.py fr.wikisource.org fr hamlet "Le seco
 python3 scripts/language/fetch/extract.py fr scripts/language/fetch/specs/fr.txt
 # then, from the repository root (needs: pip install regex opencc-python-reimplemented)
 python3 scripts/language/build_card_text.py
+# the tool checks, on the build host (writes docs/language/checks/); then run build_card_text.py again
+~/kani-logs/remote/rb . -- 'bash scripts/language/check/run.sh selftest'
+~/kani-logs/remote/rb . -- 'bash scripts/language/check/run.sh spell && bash scripts/language/check/run.sh grammar'
+~/kani-logs/remote/rb . -- 'bash scripts/language/check/run.sh detach meaning'   # about an hour; copy its result back
 ```
 
 The fetch scripts write into the directory they are run from (`cache/`, `out/`); copy `out/<lang>.json`

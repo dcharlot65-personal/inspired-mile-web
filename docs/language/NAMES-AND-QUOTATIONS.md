@@ -25,7 +25,8 @@ English is the source of truth (`src/lib/cards.ts`) and is not repeated in the p
   play in that language ("Hamlet", "Macbeth"; "Romeo" and "Juliet" from the two halves of the title).
 - `translated`: the game's own invention (relics, potions, "Lord Montague", "Lady Capulet", houses,
   elements). Written for the game by the language model that did this work. **Not reviewed by a native
-  speaker and not checked by an independent tool.**
+  speaker.** Checked by tools that did not write it (see "Checks by tools that did not write the text");
+  a name with no finding is not thereby right.
 - `missing`: no source has the name in that language. Nothing was invented: the card shows the English
   name there, and the invocation accepts the English name.
 
@@ -33,13 +34,21 @@ English is the source of truth (`src/lib/cards.ts`) and is not repeated in the p
 
 - `published`: copied by program from a published translation that is in the public domain. The text is the
   span matched in the transcription at the URL given (a permanent link to the revision read). Line breaks
-  of verse are shown as " / ", footnote marks are removed, and a leading or trailing dash is cut; nothing
-  else is changed. François-Victor Hugo's long dashes inside a line mark the verse lines of the original
-  and are his.
+  of verse are shown as " / ", footnote marks and the page-number marks of the transcription ("[p. 160
+  modifica]") are removed, and a leading or trailing dash is cut; nothing else is changed. François-Victor
+  Hugo's long dashes inside a line mark the verse lines of the original and are his. In the Gutenberg texts,
+  where prose is wrapped at a fixed width, a line end inside prose is a space, not a verse break, and
+  Gutenberg's "--" (its plain-text sign for a dash) is shown as "—". Spelling is the
+  edition's: Spanish "Porqué", "dejaria", Portuguese "Horacio", "cahindo", Japanese old character forms
+  and historical kana (Tsubouchi, 1933) are as printed. For a Japanese line in old character forms the
+  module also keeps its modern reading (`echo`), made character for character by OpenCC's JPVariants
+  table (the table of OpenCC's `t2jp` conversion), so that a player typing 歓楽 echoes Tsubouchi's 歡樂;
+  the printed forms count too, and the card shows the line as printed. Kana spelling is not modernised.
 - `NEW, unsourced`: no public-domain translation of the line was found in that language (or none was
   searched for; see "What was not done"). The line was translated for the game by the language model that
-  did this work. **It is generated text. It has not been reviewed by a native speaker, and it has not been
-  checked by a back-translation model or a grammar checker.** Do not present it as a published translation.
+  did this work. **It is generated text, not reviewed by a native speaker.** It was put through the tool
+  checks below (spelling, grammar where LanguageTool has the language, back-translation), which can catch
+  some errors and cannot show a line to be right. Do not present it as a published translation.
 
 The quotations on the mythology cards (OL-, UW-) are not quotations from any work: they are lines written
 for the game in English. They can only ever be translated, never sourced.
@@ -50,16 +59,28 @@ for the game in English. They can only ever be translated, never sourced.
 |---|---|---|---|
 | Names of characters, authors, gods, places, works | Wikidata API, `wbgetentities` (`docs/language/sources/wikidata-names.json` keeps the item id, the revision id and every label read) | CC0 1.0 | 2026-11-16 |
 | Wikipedia article titles (fallback for names) | Wikidata sitelinks | titles are used as names only | 2026-11-16 |
-| French quotations | fr.wikisource.org, translations by François-Victor Hugo (`docs/language/sources/quotes-fr.json` keeps the page, revision and matching pattern for each line) | public domain (see the table below); Wikisource transcription CC BY-SA 4.0 for its own additions | 2026-11-16 |
-| Other published quotations | the Wikisource of each language, listed below per work | public domain, per work below | 2026-11-16 |
+| French quotations | fr.wikisource.org, translations by François-Victor Hugo, and Mallarmé, Saladin and Rabbe for the poems and Frankenstein (`docs/language/sources/quotes-fr.json` keeps the page, revision and matching pattern for each line) | public domain (see the table below); Wikisource transcription CC BY-SA 4.0 for its own additions | 2026-11-16 |
+| Other published quotations | the Wikisource of each language: Italian (Rusconi, Ragazzoni), Spanish (Menéndez y Pelayo, Moratín, Márquez, Pérez Bonalde), Portuguese (Luís I, Machado de Assis), Polish (Ulrich), Russian (several), German (Schlegel's Romeo, Lachmann, Strodtmann), Japanese (Tsubouchi); `docs/language/sources/quotes-<lang>.json` | public domain, per work below | 2026-11-16 |
+| German plays beyond Romeo | Project Gutenberg, plain-text files read from the official mirror gutenberg.pglaf.org (Schlegel #7022, #7043, #9875; Dorothea Tieck #6975; Wieland #7276, #7236, #7186, #7185, #7240, #7934); each line's record keeps the ebook URL, the mirror file and the file's sha256 | public domain in the US (Project Gutenberg) and by the translators' dates | 2026-11-16 |
+| Modern reading of Japanese old character forms | OpenCC 1.1.9, `data/dictionary/JPVariants.txt` (https://github.com/BYVoid/OpenCC, tag ver.1.1.9; `docs/language/sources/opencc-JPVariants.txt`, sha256 db09543d…afab8) | Apache-2.0 | 2026-11-16 |
 | Stop words (words that never count as an echo) | stopwords-iso, commit 6e8e9a2 (`docs/language/sources/stopwords-iso.json`) | MIT, © 2020 Gene Diaz | 2026-11-16 |
+| Spelling check | Hunspell 1.7.2 (LGPL/GPL/MPL) with LibreOffice's dictionaries at commit c0865a85 (each under its own licence, README kept beside it on the build host) | as stated | 2026-11-16 |
+| Grammar check | LanguageTool 6.6, run locally (LGPL-2.1) | LGPL-2.1 | 2026-11-16 |
+| Back-translation | MADLAD-400 3B (google/madlad400-3b-mt; CTranslate2 int8 conversion Nextcloud-AI/madlad400-3b-mt-ct2-int8, revision aa32bbde) and all-MiniLM-L6-v2 (revision 1110a243) | Apache-2.0 | 2026-11-16 |
+
+The checking tools were copied (APFS clones) from the files the language QA work had already fetched on the
+build host (`im-lang/qa-pipeline`, fetched by its `scripts/lang/host-setup.sh` at the pinned versions above)
+into this task's own folder, `im-lang/names-quotes`; nothing was installed system-wide.
 
 Translators' dates of birth and death are Wikidata's (properties P569 and P570, fetched 2026-11-16,
-`docs/language/sources/translators.json`); they decide the copyright status. The years of the editions were
-written from general reference knowledge and were not fetched: check them before relying on them. The
-United States test used is "published before 1931"; the home-country test is the author's life plus
-70 years. Every translator used died before 1926, so both tests are met with a wide margin whichever
-edition a transcription follows.
+`docs/language/sources/translators.json`); they decide the copyright status, and a unit test checks every
+published line against them (translator died in 1955 or earlier). The editions are as the Wikisource page
+states them; for the Gutenberg files, which do not name their edition, see each work's note. The home-country test is the translator's life plus 70 years (Spain: life plus 80 for authors
+who died before 1987). The United States test is "published before 1931", or, for Tsubouchi's 1933 edition,
+that the work was already in the public domain in Japan on 1 January 1996 (Japan's term was then life plus
+50, and he died in 1935), so its US copyright was never restored. Every translator with known dates died in
+1935 or earlier. Jules Saladin's dates were not found; his translation was published in 1821, so he cannot
+have died within the last seventy years.
 
 ## How the game uses this
 
@@ -79,41 +100,71 @@ edition a transcription follows.
 
 Read this before treating any language as finished.
 
-- **Published lines were only taken for French (Hugo, all the plays and the sonnet), Polish (Ulrich),
-  Russian (several translators) and German (Schlegel, Romeo und Julia only).** In Polish, Russian and German
-  only the lines that a search pattern found and that could be recognised with certainty were taken; the
-  rest of those plays is in the same sources and was not extracted. Every other line in every language is
-  marked `NEW, unsourced`.
-- **Leads not followed up** (Wikisource pages that Wikidata links to the works, seen on 2026-11-16, not
-  opened): Spanish (Romeo y Julieta, Hamlet, El sueño de una noche de verano, Macbeth, Julio César, El
-  mercader de Venecia, El rey Lear, Otelo), Italian (Giulietta e Romeo, Amleto, La tempesta, Macbeth, La
-  dodicesima notte, Il mercante di Venezia, Il re Lear, Otello), Portuguese (Romeu e Julieta, Hamlet),
-  Chinese (Hamlet as 漢姆萊脫; Sonnet 18), Japanese (ロミオとヂュリエット), Korean (햄릿), Arabic (تاجر البندقية;
-  Sonnet 18), German (Sonnet 18). Their translators and copyright status were not established. For the
-  Romantic poems, Wikisource has The Raven in German, Spanish, French, Italian, Portuguese and Russian,
-  "She Walks in Beauty" in Polish and Frankenstein in French; none was used. No library other than
-  Wikisource was searched. Nothing was found, or looked for, in Hindi, Vietnamese, Thai or Indonesian.
-- **The place of each published line in its play was recognised by reading the passage around the match**
-  (speaker, neighbouring lines), not by act, scene and line numbers in the translation. The citation given
-  is that of the English line.
-- **Scene descriptions are translated in es, fr, de, it, pt, pl, ru, zh, ja, ko and id. They are not
-  translated in Arabic, Hindi, Vietnamese or Thai**, the four languages the translating model is least sure
-  of; those show the English scene.
-- **No independent tool has checked any translated text.** LanguageTool, Hunspell and a back-translation
-  model were not run: the build host refused work for load during this task. Every `translated` name,
-  every `NEW` line and every scene is one model's output, unreviewed.
+- **Published lines** were taken where a public-domain translation is transcribed on Wikisource or Project
+  Gutenberg and the line could be found in it: Italian 51 of 71 cards (Rusconi's complete prose Shakespeare
+  of 1858–1859, all eleven plays, and Ragazzoni's Raven), French 51 (Hugo; Mallarmé's Raven, Saladin's
+  Frankenstein, Rabbe's Shelley), German 50 (Schlegel's Romeo, Dream, Merchant and Julius Caesar; Dorothea
+  Tieck's Macbeth; Wieland's 1762–1766 prose for Hamlet, the Tempest, Twelfth Night, Othello, Lear and Henry
+  IV; Lachmann's Raven, Strodtmann's Shelley), Spanish 29, Polish 28, Japanese 13 (Romeo and Juliet only),
+  Russian 15, Portuguese 6. Arabic, Hindi, Chinese, Korean, Vietnamese, Thai and Indonesian have none. Every
+  other line is `NEW, unsourced`.
+- **Where a published translation exists but was not used**, and why:
+  - German: Schlegel–Tieck's Hamlet, Tempest, Twelfth Night, Othello and Lear are in the public domain, but
+    Project Gutenberg's German files for those plays (its index GUTINDEX.ALL, read from the official mirror
+    gutenberg.pglaf.org because www.gutenberg.org answered HTTP 503 all day on 2026-11-16) are Wieland's
+    1762–1766 prose, the first German Shakespeare; that is what was used. zeno.org, which has the
+    Schlegel–Tieck texts, could not be read by the fetch script. Wieland's spelling is his (seyn,
+    zurük, Crone). Neither Wieland nor this Gutenberg text has the Tempest's epilogue or "I'll drown my book"
+    in a form that was found, so those two German lines are NEW. The Gutenberg Macbeth reads "entweiht mich"
+    where Tieck printed "entweibt mich" (unsex me); the German line for Lady Macbeth stops before that word.
+  - Polish and Russian: the plays are cached and searched; a line was taken only when it could be found and
+    recognised with certainty. The others are in the same texts and were not found in the time spent.
+    The Polish Macbeth page (Ulrich) could not be fetched under the title tried. The cached Russian Dream
+    (Grigoryev) and Macbeth (Yuryev) are transcriptions in the pre-1918 spelling; lines were not taken from
+    them, because players would not type that spelling, and modern-spelling versions were not looked for.
+  - Spanish: Menéndez y Pelayo's 1881 versions omit some lines (the Nurse's "drudge", Lady Capulet's
+    "marry"); Spanish Wikisource has no transcribed Tempest, Twelfth Night, Dream, Lear or Henry IV part 2 in a
+    public-domain translation that was found. Astrana Marín's Julio César is on Wikisource but he died in
+    1959 (Spain: life plus 80), so it was not used.
+  - Portuguese: Rebelo da Silva's Otelo (1856) and Luís I's O Mercador de Veneza (1879) are listed on
+    pt.wikisource, but the page titles tried did not exist; not followed further.
+  - Japanese: only Tsubouchi's Romeo and Juliet is on ja.wikisource. Aozora Bunko holds more of his
+    translations (Hamlet, Macbeth, and others); not fetched.
+  - Chinese: zh.wikisource has a 1924 classical-Chinese Hamlet (漢姆萊脫) whose translator's dates were not
+    established, and a contributors' own translation of Sonnet 18 (CC BY-SA); neither was used. Korean
+    Wikisource has a Hamlet page whose translator was not established. Arabic Wikisource has The Merchant of
+    Venice and Sonnet 18; their translators were not established.
+  - The Romantic poems: Polish (Beaupré, 1910) has a Raven whose translator's dates Wikidata does not have,
+    so it was not used; the Russian "She Walks in Beauty" on Wikisource is a 2002 translation, not used.
+    Wordsworth, Keats, Blake, Byron, Browning and Rossetti were not searched for in any language.
+  - No library other than Wikisource was searched.
+- **The place of each published line** was recognised by reading the passage around the match (speaker,
+  neighbouring lines), not by act, scene and line numbers in the translation. The citation given is that of
+  the English line. Some 19th-century prose translations render a line loosely (Rusconi's "Ti troverò al
+  chiaro di luna, superba Titania" for "Ill met by moonlight"); the published wording is used as it stands.
+- **Everything translated for the game is one language model's output**: every `translated` name and label,
+  every `NEW` line and every scene in every language. The scenes in Arabic, Hindi, Vietnamese and Thai were
+  written in this round. In those scenes, a character whose name has no source in the language keeps the
+  English name in Latin letters, as the card does, rather than an invented transliteration. None of this text
+  has been reviewed by a native speaker. It was checked by tools that did not write it (the section "Checks by
+  tools that did not write the text" below says what they found and what they cannot find); a text with no
+  finding is not thereby correct.
 - **Wikidata labels are community-edited and a few look doubtful.** They are used as found. For review:
   Russian Horatio is labelled "Гораций" (the usual stage name is Горацио); Chinese Macbeth is "马克白", the
   Taiwan form, converted to Simplified characters (the mainland form is 麦克白); Romans carry their Latin
   names (Japanese ブルトゥス for Brutus, where the stage tradition says ブルータス); some poets carry a full
-  formal name (Vietnamese and Thai Byron). Brand-new translated relic names follow these labels.
+  formal name (Vietnamese and Thai Byron). Translated relic names follow these labels.
 - **The stop-word list is broad.** stopwords-iso counts some content words as stop words. Two were taken
   off it because they are the one telling word of Hamlet's line: Portuguese "questão" and Russian "вопрос"
-  (`NOT_STOP` in the build script). Otherwise the lists are used as published. "I am not what I am" has no
-  telling word in English and has none in most languages either; the test suite prints every line that has
-  none. For those cards the English words decide, as before.
+  (`NOT_STOP` in the build script). Otherwise the lists are used as published. A line with no telling word
+  of its own leaves the English words to decide, as before; the test suite prints every such line.
 - The telling words of a line depend on `Intl.Segmenter` for Chinese, Japanese and Thai, so they can differ
   slightly between browsers and Node versions.
+- **The card detail view** (`src/pages/collection.astro`) is being translated on another branch
+  (lang/pages-core), which marks the card's name, line and scene `data-card-text` and leaves them to this
+  work. This branch does not touch that page; when the two meet, those spots take `cardName`, `cardQuote`
+  and `cardScene` from `src/lib/cards-i18n` with the interface language. Until then the battle page is the
+  only page that shows card names in the interface language.
 
 ## How to rebuild
 
@@ -124,6 +175,10 @@ python3 scripts/language/fetch/fetchwork.py fr.wikisource.org fr hamlet "Le seco
 python3 scripts/language/fetch/extract.py fr scripts/language/fetch/specs/fr.txt
 # then, from the repository root (needs: pip install regex opencc-python-reimplemented)
 python3 scripts/language/build_card_text.py
+# the tool checks, on the build host (writes docs/language/checks/); then run build_card_text.py again
+~/kani-logs/remote/rb . -- 'bash scripts/language/check/run.sh selftest'
+~/kani-logs/remote/rb . -- 'bash scripts/language/check/run.sh spell && bash scripts/language/check/run.sh grammar'
+~/kani-logs/remote/rb . -- 'bash scripts/language/check/run.sh detach meaning'   # about an hour; copy its result back
 ```
 
 The fetch scripts write into the directory they are run from (`cache/`, `out/`); copy `out/<lang>.json`
@@ -140,7 +195,7 @@ the lines used, each with the permanent link of the revision it was read from.
 | it | 42 | 0 | 3 | 21 | 5 | 51 | 20 | 71 |
 | pt | 35 | 0 | 2 | 21 | 13 | 6 | 65 | 71 |
 | pl | 36 | 0 | 2 | 21 | 12 | 28 | 43 | 71 |
-| ru | 46 | 0 | 2 | 21 | 2 | 11 | 60 | 71 |
+| ru | 46 | 0 | 2 | 21 | 2 | 15 | 56 | 71 |
 | ar | 36 | 0 | 1 | 21 | 13 | 0 | 71 | 71 |
 | hi | 36 | 0 | 2 | 21 | 12 | 0 | 71 | 71 |
 | zh | 43 | 1 | 3 | 21 | 3 | 0 | 71 | 71 |
@@ -247,7 +302,7 @@ the lines used, each with the permanent link of the revision it was read from.
 - **it** new (20): SM-001, LD-001, LD-002, LD-003, GC-001, GC-002, GC-004, GC-005, LD-004, LD-005, OL-001, OL-002, OL-003, OL-004, OL-005, UW-001, UW-002, OL-006, UW-003, OL-007
 - **pt** new (65): SM-001, MO-001, CA-001, MO-002, FA-001, FA-002, RL-002, PT-001, PT-002, VC-001, VC-002, VC-003, TP-001, TP-002, TP-003, MO-003, CA-002, FA-003, RL-003, PT-003, SC-001, SC-002, SC-003, IL-001, IL-002, IL-003, RM-001, RM-002, RM-003, MO-004, CA-003, DC-004, FA-004, VC-004, TP-004, RL-004, RL-005, RL-006, RL-007, RL-008, RL-009, PT-004, PT-005, PT-007, PT-008, PT-009, LD-001, LD-002, LD-003, GC-001, GC-002, GC-004, GC-005, LD-004, LD-005, OL-001, OL-002, OL-003, OL-004, OL-005, UW-001, UW-002, OL-006, UW-003, OL-007
 - **pl** new (43): SM-001, FA-001, FA-002, PT-001, PT-002, TP-001, TP-002, TP-003, DC-003, FA-003, RL-003, SC-001, SC-002, SC-003, IL-003, RM-001, RM-002, TP-004, RL-006, RL-009, PT-004, PT-006, PT-007, LD-001, LD-002, LD-003, GC-001, GC-002, GC-003, GC-004, GC-005, LD-004, LD-005, OL-001, OL-002, OL-003, OL-004, OL-005, UW-001, UW-002, OL-006, UW-003, OL-007
-- **ru** new (60): DC-001, FA-001, FA-002, RL-001, RL-002, PT-001, PT-002, VC-001, VC-002, VC-003, TP-001, TP-002, TP-003, MO-003, CA-002, FA-003, RL-003, PT-003, SC-001, SC-002, SC-003, IL-001, IL-002, IL-003, RM-001, RM-002, MO-004, CA-003, DC-004, FA-004, VC-004, TP-004, RL-004, RL-005, RL-006, RL-008, RL-009, PT-005, PT-006, PT-007, PT-008, PT-009, LD-001, LD-003, GC-001, GC-002, GC-004, GC-005, LD-004, LD-005, OL-001, OL-002, OL-003, OL-004, OL-005, UW-001, UW-002, OL-006, UW-003, OL-007
+- **ru** new (56): FA-001, FA-002, RL-002, PT-001, PT-002, VC-001, VC-002, VC-003, TP-001, TP-002, TP-003, MO-003, CA-002, FA-003, RL-003, PT-003, SC-001, SC-002, SC-003, IL-001, IL-002, IL-003, MO-004, CA-003, DC-004, FA-004, VC-004, TP-004, RL-004, RL-005, RL-006, RL-008, RL-009, PT-005, PT-006, PT-007, PT-008, PT-009, LD-001, LD-003, GC-001, GC-002, GC-004, GC-005, LD-004, LD-005, OL-001, OL-002, OL-003, OL-004, OL-005, UW-001, UW-002, OL-006, UW-003, OL-007
 - **ar** new (71): SM-001, MO-001, CA-001, DC-001, DC-002, MO-002, FA-001, FA-002, RL-001, RL-002, PT-001, PT-002, VC-001, VC-002, VC-003, TP-001, TP-002, TP-003, MO-003, CA-002, DC-003, FA-003, RL-003, PT-003, SC-001, SC-002, SC-003, IL-001, IL-002, IL-003, RM-001, RM-002, RM-003, MO-004, CA-003, DC-004, FA-004, VC-004, TP-004, RL-004, RL-005, RL-006, RL-007, RL-008, RL-009, PT-004, PT-005, PT-006, PT-007, PT-008, PT-009, LD-001, LD-002, LD-003, GC-001, GC-002, GC-003, GC-004, GC-005, LD-004, LD-005, OL-001, OL-002, OL-003, OL-004, OL-005, UW-001, UW-002, OL-006, UW-003, OL-007
 - **hi** new (71): SM-001, MO-001, CA-001, DC-001, DC-002, MO-002, FA-001, FA-002, RL-001, RL-002, PT-001, PT-002, VC-001, VC-002, VC-003, TP-001, TP-002, TP-003, MO-003, CA-002, DC-003, FA-003, RL-003, PT-003, SC-001, SC-002, SC-003, IL-001, IL-002, IL-003, RM-001, RM-002, RM-003, MO-004, CA-003, DC-004, FA-004, VC-004, TP-004, RL-004, RL-005, RL-006, RL-007, RL-008, RL-009, PT-004, PT-005, PT-006, PT-007, PT-008, PT-009, LD-001, LD-002, LD-003, GC-001, GC-002, GC-003, GC-004, GC-005, LD-004, LD-005, OL-001, OL-002, OL-003, OL-004, OL-005, UW-001, UW-002, OL-006, UW-003, OL-007
 - **zh** new (71): SM-001, MO-001, CA-001, DC-001, DC-002, MO-002, FA-001, FA-002, RL-001, RL-002, PT-001, PT-002, VC-001, VC-002, VC-003, TP-001, TP-002, TP-003, MO-003, CA-002, DC-003, FA-003, RL-003, PT-003, SC-001, SC-002, SC-003, IL-001, IL-002, IL-003, RM-001, RM-002, RM-003, MO-004, CA-003, DC-004, FA-004, VC-004, TP-004, RL-004, RL-005, RL-006, RL-007, RL-008, RL-009, PT-004, PT-005, PT-006, PT-007, PT-008, PT-009, LD-001, LD-002, LD-003, GC-001, GC-002, GC-003, GC-004, GC-005, LD-004, LD-005, OL-001, OL-002, OL-003, OL-004, OL-005, UW-001, UW-002, OL-006, UW-003, OL-007
@@ -263,7 +318,510 @@ In every language: SM-001, MO-004, CA-003, RL-001, RL-002, RL-003, RL-004, RL-00
 
 ## Checks by tools that did not write the text
 
-Not run. See "What was not done".
+Run by `scripts/language/check/run.sh` on the build host; the raw findings are in `docs/language/checks/`. A finding is a question for a reviewer, not a verdict, and an item with no finding has not thereby been shown to be right: a spelling dictionary does not know names, LanguageTool covers only some languages and some errors, and a back-translation can be faithful to a wrong text. Nothing here was reviewed by a native speaker.
+
+| Language | Items | Hunspell: items with an unknown word | LanguageTool: items with a finding | Back-translation: median cosine (control) | below 0.5 |
+|---|---|---|---|---|---|
+| es | 205 | 23 | 29 | not run | - |
+| fr | 183 | 9 | 26 | not run | - |
+| de | 184 | 22 | 30 | not run | - |
+| it | 183 | 51 | 36 | not run | - |
+| pt | 228 | 13 | 34 | not run | - |
+| pl | 206 | 10 | 21 | not run | - |
+| ru | 219 | 15 | 34 | not run | - |
+| ar | 234 | 39 | 97 | not run | - |
+| hi | 234 | 43 | not supported | not run | - |
+| zh | 234 | no dictionary | 10 | not run | - |
+| ja | 0 | no dictionary | not supported | not run | - |
+| ko | 234 | 76 | not supported | not run | - |
+| vi | 234 | 56 | not supported | not run | - |
+| th | 234 | 37 | not supported | not run | - |
+| id | 234 | 79 | not supported | not run | - |
+
+### Words Hunspell does not know
+
+Proper nouns of places and people in the scenes are expected here; a misspelling is not.
+
+- **es** (23): Arno, Birnam, Cumberland, Dunsinane, Elsinor, Florencia, Hampstead, Mantua, Partenón, Petrificación, Recuérdame, Robert, Shakespeare, Sycorax, Tebaldo, Verona, burbujeante, hip, hop, prerrafaelita, rarísima, spaniel, Ítaca
+- **fr** (8): Birnam, Cumberland, Dunsinane, Hampstead, d’Elseneur, d’Ithaque, hip, l’Arno
+- **de** (21): Arkan, Birnam, Capulets, Dunsinane, Feenhof, Feenköniginnen, Feenlicht, Feenstaub, Feenwald, Hampstead, Helsingör, Hop, Olivias, Phantomblut, Schauerkreis, arkaner, behängt, dunkelnden, meergegerbtes, sturmgepeitschtes, windgepeitschte
+- **it** (60): All’interno, Arden, Birnam, Cumberland, Dunsinane, Elsinore, Hampstead, L’estratto, L’imbocco, Partenone, Robert, Un’isola, all’alba, all’albero, all’imbrunire, dall’acciaio, dall’ombra, dell’Illiria, dell’alba, dell’amante, dell’amore, dell’oscurità, dell’ovest, dell’uomo, dèi, d’ambra, d’argento, d’asino, d’autunno, d’estate, d’inverno, d’ombra, d’oro, hip, hop, l’adunatore, l’alba, l’albatro, l’alto, l’altra, l’ambizione, l’aria, l’elmo, l’inverno, l’invisibile, l’ultima, l’unica, l’unico, nell’altra, nell’aria, nell’ombra, nell’ora, siede, sull’Arno, sull’isola, s’innamora, un’alta, un’armatura, un’intelligenza, un’orchidea
+- **pt** (14): Arden, Benvólio, Birnam, Cumberland, Dunsinane, Elsinore, Hampstead, Malvólio, Mercúcio, Robert, Sycorax, hip, hop, spaniel
+- **pl** (8): Birnam, Dunsinane, Elsynoru, Hampstead, Kaliban, Kapuletów, Malwolio, Sykoraks
+- **ru** (17): Арденский, Арно, Бирнамский, Гамлетом, Дунсинане, Иллирии, Мальволио, Мантуи, Оливии, Парфенон, Сикораксы, Хэмпстеде, Шекспира, Эльсинор, Эльсинора, прерафаэлитов, хип
+- **ar** (36): آردن, أعيروني, إلسينور, إيثاكا, إيلورية, اسكتلندي, اسكتلندية, الأوليمب, الاسكتلندي, الاسكتلندية, البارثينون, الخيمياء, الرفائيلية, السبانيل, العشبة, القطرس, الهيبونا, بيرنام, تضيئه, تضيئها, دنسينان, سمندل, سيكوراكس, كمبرلاند, كهرمانيًا, كونتيسة, مانتوفا, متقزّح, هامبستيد, هوب, هوراشيو, والبتلات, واللامرئي, وسيربيروس, يضيئها, يليق
+- **hi** (50): अल्बाट्रॉस, आत्माओ, आर्डन, इथाका, इल्लुरिया, एल्सिनोर, ओलंपस, कम्बरलैंड, करूँ, काउंटेस, काटती, गुज़रते, घुलती, चिंगारियाँ, जलती, जाऊँ, जाओ, टपकता, डनसिनेन, डालो, दरबार, दरबारी, देशवासियो, धब्बे, पट्टियाँ, परी, पहचानें, पार्थेनन, बग़ीचों, बर्नम, बेचारा, ब्रूटस, भला, भले, भूली, भूले, मलती, मानती, मित्रो, मैंटुआ, युक्तियों, रैफ़ेलाइट, रोमवासियो, शौकत, सर्बेरस, साइरनें, सिकोरैक्स, सीसर, हेबोना, हैम्पस्टेड
+- **ko** (125): 가을빛, 것뿐이네, 내게로, 대연회장, 던시네인의, 돌난간, 돌바닥을, 동판에, 동포들이여, 들려주소서, 라파엘, 로마인들이여, 로미오가, 로버트가, 리라를, 만토바의, 말볼리오는, 맥베스는, 맨드레이크도, 머큐쇼는, 메두사가, 문제로다, 미란다는, 바위투성이, 바이런은, 바이올라는, 반씩, 배들이, 뱅코는, 버남, 베네치아, 베로나, 베로나의, 벤볼리오는, 보텀, 보텀은, 브루투스는, 블레이크가, 빈터, 사내다운, 사랑해서가, 상록, 세이렌들이, 셰익스피어의, 셸리는, 숲속, 숲속에서, 쉿쉿거린다, 스패니얼이, 시코락스가, 신세계여, 아르노강이, 아킬레우스가, 아테나는, 아폴론이, 아프로디테가, 안토니우스는, 알현실, 앨버트로스를, 약제사는, 에어리얼은, 엘리자베스는, 엘시노어, 엘시노어의, 여신이여, 영애가, 영약이, 오디세우스는, 오베론이, 오필리아는, 올리비아, 올리비아의, 올림포스, 올림포스산이, 왔단다, 왕자님, 요릭, 워즈워스는, 원로원, 이타카의, 인간들이란, 일꾼이랍니다, 일리리아의, 있으랴, 잊혀진, 자들을, 자들이, 잠드소서, 장정한, 저주받은, 전파풍, 정령들아, 정령이, 줄리엣은, 줄리엣의, 줄리엣이, 진홍빛으로, 추출액은, 친구들이여, 침묵시킨다, 카시우스는, 카이사르의, 캘리번은, 컴벌랜드의, 케르베로스를, 크리스티나는, 클로디어스는, 키츠는, 타닥거린다, 토가에서, 티볼트는, 티타니아가, 티타니아는, 팅크는, 팔라스의, 패리스는, 페르세포네는, 프로스페로가, 피렌체의, 하나뿐인, 하데스는, 햄릿은, 햄스테드, 호레이쇼는, 호박빛으로
+- **vi** (50): Arden, Arno, Birnam, Caesar, Cerberus, Cumberland, Dunsinane, Elsinore, Firenze, Genève, Gothic, Hampstead, Hòa, Hóa, Illyria, Ithaca, London, Mantua, Nevermore, Olympus, Pallas, Parthenon, Raphael, Robert, Rome, Scotland, Shakespeare, Siren, Sycorax, Síp, Troia, Venezia, Verona, hebona, hip, hop, hòa, hóa, họa, lòe, lóe, lũy, micro, spaniel, toga, tòa, tóe, tỏa, tụy, đóa
+- **th** (46): คัม, ซู, ซ์, ด, ดร์, ทร, ทิก, นอร์, น์, บนม, บอต, ปอตไลต์, ป์, พรี, พลัม, พัลลัส, ฟ, ม, ย, ยี่สิบ, รพาร์เธ, ราชิ, ลิมปัส, วิ, สมัด, หาส, ห่าลง, อรัม, อรัส, อร์เบ, อัล, อิ, เชกส, เซีย, เตส, เนน, เนีย, เบอร์นั, เรีย, เว, เอล, เอลไลต์, แดฟโฟดิล, โลดี, ใหล, ไลร์
+- **id** (85): Arden, Arno, Arwahnya, Belatikah, Birnam, Caesar, Cumberland, Dunsinane, Elsinore, Firenze, Hampstead, Illyria, Ithaka, Jenewa, Kerberos, Kisahkan, London, Mantua, Olimpus, Pallas, Parthenon, Pra, Raphael, Robert, Sarinya, Sarungkan, Sebentuk, Sekuntum, Sesosok, Shakespeare, Siren, Skotlandia, Sycorax, Troya, Tuangkan, Venesia, Verona, baliknya, bebatuan, berbonggol, berpayah, berpengikat, bersumbat, bilahnya, celemeknya, diterpa, ek, halamannya, hantunya, hasutan, hebona, hip, kelabunya, keputusasaan, kerudungnya, kubandingkan, kuhitung, kuikat, kulilitkan, kunang, kutenggelamkan, kutunjukkan, liranya, mandragora, marmernya, masing, menggenggamnya, meraihnya, mondar, mungkinkah, pecahlah, pelelap, perinya, rampingnya, rosemari, rusanya, sekuntum, spanielnya, terlelap, terlupakan, terpilin, tertahankan, toganya, ularnya, urusanmulah
+
+### LanguageTool findings
+
+**es**
+
+| Item | Found | Rule | Message |
+|---|---|---|---|
+| DC-001 scene | Elsinor | MORFOLOGIK_RULE_ES | Se ha encontrado un posible error ortográfico. |
+| DC-001 scene | Yorick | MORFOLOGIK_RULE_ES | Se ha encontrado un posible error ortográfico. |
+| MO-002 scene | Mercucio | MORFOLOGIK_RULE_ES | Se ha encontrado un posible error ortográfico. |
+| FA-001 scene | Puck | MORFOLOGIK_RULE_ES | Se ha encontrado un posible error ortográfico. |
+| RL-001 name | Yorick | MORFOLOGIK_RULE_ES | Se ha encontrado un posible error ortográfico. |
+| RL-002 quote | deshechos | DESHECHO_DESECHO | ¿Quería decir ‘desecho’ (residuo) en vez de ‘deshecho’ (del v. ‘deshacer’)? |
+| TP-003 scene | Calibán | MORFOLOGIK_RULE_ES | Se ha encontrado un posible error ortográfico. |
+| TP-003 quote | Sycorax | MORFOLOGIK_RULE_ES | Se ha encontrado un posible error ortográfico. |
+| MO-003 scene | Benvolio | MORFOLOGIK_RULE_ES | Se ha encontrado un posible error ortográfico. |
+| CA-002 scene | Tebaldo | MORFOLOGIK_RULE_ES | Se ha encontrado un posible error ortográfico. |
+| DC-003 scene | Elsinor | MORFOLOGIK_RULE_ES | Se ha encontrado un posible error ortográfico. |
+| FA-003 scene | Oberón | MORFOLOGIK_RULE_ES | Se ha encontrado un posible error ortográfico. |
+| RL-003 scene | Macbeth | MORFOLOGIK_RULE_ES | Se ha encontrado un posible error ortográfico. |
+| PT-003 name | Puck | MORFOLOGIK_RULE_ES | Se ha encontrado un posible error ortográfico. |
+| SC-001 scene | Dunsinane | MORFOLOGIK_RULE_ES | Se ha encontrado un posible error ortográfico. |
+| SC-001 scene | Macbeth | MORFOLOGIK_RULE_ES | Se ha encontrado un posible error ortográfico. |
+| SC-001 scene | Birnam | MORFOLOGIK_RULE_ES | Se ha encontrado un posible error ortográfico. |
+| SC-003 scene | Banquo | MORFOLOGIK_RULE_ES | Se ha encontrado un posible error ortográfico. |
+| IL-002 scene | Malvolio | MORFOLOGIK_RULE_ES | Se ha encontrado un posible error ortográfico. |
+| RM-001 scene | aún | AUN | Se escribe sin tilde cuando significa ‘hasta, incluso’ o ‘siquiera’. Solo lleva tilde cuando equivale a ‘todavía’. |
+| DC-004 scene | Elsinor | MORFOLOGIK_RULE_ES | Se ha encontrado un posible error ortográfico. |
+| FA-004 scene | Bottom | MORFOLOGIK_RULE_ES | Se ha encontrado un posible error ortográfico. |
+| VC-004 scene | Paris | PARIS | ¿Quería decir «París» (ciudad) en vez de Paris (personaje)? |
+| RL-005 name | Portia | MORFOLOGIK_RULE_ES | Se ha encontrado un posible error ortográfico. |
+| RL-006 name | Macbeth | MORFOLOGIK_RULE_ES | Se ha encontrado un posible error ortográfico. |
+| RL-009 quote | Bottom | MORFOLOGIK_RULE_ES | Se ha encontrado un posible error ortográfico. |
+| RL-009 name | Bottom | MORFOLOGIK_RULE_ES | Se ha encontrado un posible error ortográfico. |
+| PT-005 name | Oberón | MORFOLOGIK_RULE_ES | Se ha encontrado un posible error ortográfico. |
+| LD-001 scene | Cumberland | MORFOLOGIK_RULE_ES | Se ha encontrado un posible error ortográfico. |
+| LD-003 scene | Hampstead | MORFOLOGIK_RULE_ES | Se ha encontrado un posible error ortográfico. |
+| LD-004 scene | spaniel | MORFOLOGIK_RULE_ES | Se ha encontrado un posible error ortográfico. |
+| OL-006 scene | Ítaca | MORFOLOGIK_RULE_ES | Se ha encontrado un posible error ortográfico. |
+
+**fr**
+
+| Item | Found | Rule | Message |
+|---|---|---|---|
+| CA-001 scene | des Capulet | D_N | Le déterminant s’accorde avec le nom « Capulet ». |
+| DC-001 scene | Elseneur | FR_SPELLING_RULE | Faute de frappe possible trouvée. |
+| DC-001 scene | Yorick | FR_SPELLING_RULE | Faute de frappe possible trouvée. |
+| RL-001 name | Yorick | FR_SPELLING_RULE | Faute de frappe possible trouvée. |
+| RL-002 scene | Prospero | FR_SPELLING_RULE | Faute de frappe possible trouvée. |
+| RL-002 name | Prospero | FR_SPELLING_RULE | Faute de frappe possible trouvée. |
+| VC-003 scene | des Capulet | D_N | Le déterminant s’accorde avec le nom « Capulet ». |
+| TP-001 scene | Prospero | FR_SPELLING_RULE | Faute de frappe possible trouvée. |
+| MO-003 scene | Benvolio | FR_SPELLING_RULE | Faute de frappe possible trouvée. |
+| DC-003 scene | Elseneur | FR_SPELLING_RULE | Faute de frappe possible trouvée. |
+| SC-001 scene | Dunsinane | FR_SPELLING_RULE | Faute de frappe possible trouvée. |
+| SC-001 scene | Birnam | FR_SPELLING_RULE | Faute de frappe possible trouvée. |
+| SC-003 scene | Banquo | FR_SPELLING_RULE | Faute de frappe possible trouvée. |
+| IL-002 scene | Malvolio | FR_SPELLING_RULE | Faute de frappe possible trouvée. |
+| IL-002 scene | jaunes criards | PLACE_ADJ | Ce nom précède généralement l’adjectif. |
+| RM-002 scene | Cassius | FR_SPELLING_RULE | Faute de frappe possible trouvée. |
+| CA-003 scene | des Capulet | D_N | Le déterminant s’accorde avec le nom « Capulet ». |
+| DC-004 scene | Elseneur | FR_SPELLING_RULE | Faute de frappe possible trouvée. |
+| DC-004 scene | d’Hamlet | PAS_D_ELISION | Cette expression ne s’élide pas. |
+| FA-004 scene | Bottom | FR_SPELLING_RULE | Faute de frappe possible trouvée. |
+| TP-004 scene | Prospero | FR_SPELLING_RULE | Faute de frappe possible trouvée. |
+| RL-008 name | Cordélia | FR_SPELLING_RULE | Faute de frappe possible trouvée. |
+| RL-009 name | Bottom | FR_SPELLING_RULE | Faute de frappe possible trouvée. |
+| PT-005 scene | , et | PAS_DE_VIRGULE | La virgule doit être omise dans ce contexte. |
+| LD-001 scene | Wordsworth | FR_SPELLING_RULE | Faute de frappe possible trouvée. |
+| LD-001 scene | Cumberland | FR_SPELLING_RULE | Faute de frappe possible trouvée. |
+| LD-003 scene | Hampstead | FR_SPELLING_RULE | Faute de frappe possible trouvée. |
+| LD-004 scene | Arno | FR_SPELLING_RULE | Faute de frappe possible trouvée. |
+| OL-006 scene | Ithaque | FR_SPELLING_RULE | Faute de frappe possible trouvée. |
+| UW-003 scene | sifflant | AGREEMENT_POSTPONED_ADJ | Vérifiez la concordance de « sifflant » avec les noms précédents. |
+| house:Danish Court house | de | PREP_PAYS | Une autre préposition semble plus appropriée. |
+
+**de**
+
+| Item | Found | Rule | Message |
+|---|---|---|---|
+| DC-001 scene | Helsingör | GERMAN_SPELLER_RULE | Möglicher Tippfehler gefunden. |
+| DC-001 scene | Yoricks | GERMAN_SPELLER_RULE | Möglicher Tippfehler gefunden. |
+| MO-002 scene | Mercutio | GERMAN_SPELLER_RULE | Möglicher Tippfehler gefunden. |
+| FA-002 scene | Titania | GERMAN_SPELLER_RULE | Möglicher Tippfehler gefunden. |
+| FA-002 scene | Feenhof | GERMAN_SPELLER_RULE | Möglicher Tippfehler gefunden. |
+| RL-001 name | Yoricks | GERMAN_SPELLER_RULE | Möglicher Tippfehler gefunden. |
+| RL-002 scene | Prospero | GERMAN_SPELLER_RULE | Möglicher Tippfehler gefunden. |
+| RL-002 name | Prosperos | GERMAN_SPELLER_RULE | Möglicher Tippfehler gefunden. |
+| TP-001 scene | Prospero | GERMAN_SPELLER_RULE | Möglicher Tippfehler gefunden. |
+| TP-003 scene | Caliban | GERMAN_SPELLER_RULE | Möglicher Tippfehler gefunden. |
+| MO-003 scene | Benvolio | GERMAN_SPELLER_RULE | Möglicher Tippfehler gefunden. |
+| CA-002 scene | Tybalt | GERMAN_SPELLER_RULE | Möglicher Tippfehler gefunden. |
+| DC-003 scene | Helsingör | GERMAN_SPELLER_RULE | Möglicher Tippfehler gefunden. |
+| SC-001 scene | Dunsinane | GERMAN_SPELLER_RULE | Möglicher Tippfehler gefunden. |
+| SC-001 scene | Birnam | GERMAN_SPELLER_RULE | Möglicher Tippfehler gefunden. |
+| SC-003 scene | Banquo | GERMAN_SPELLER_RULE | Möglicher Tippfehler gefunden. |
+| IL-002 scene | Malvolio | GERMAN_SPELLER_RULE | Möglicher Tippfehler gefunden. |
+| DC-004 scene | Helsingör | GERMAN_SPELLER_RULE | Möglicher Tippfehler gefunden. |
+| FA-004 scene | Titania | GERMAN_SPELLER_RULE | Möglicher Tippfehler gefunden. |
+| TP-004 scene | Prosperos | GERMAN_SPELLER_RULE | Möglicher Tippfehler gefunden. |
+| RL-005 name | Portias | GERMAN_SPELLER_RULE | Möglicher Tippfehler gefunden. |
+| RL-007 scene | meergegerbtes | GERMAN_SPELLER_RULE | Möglicher Tippfehler gefunden. |
+| RL-008 name | Cordelias | GERMAN_SPELLER_RULE | Möglicher Tippfehler gefunden. |
+| PT-005 name | Oberons | GERMAN_SPELLER_RULE | Möglicher Tippfehler gefunden. |
+| PT-006 name | Schierlingstinktur | GERMAN_SPELLER_RULE | Möglicher Tippfehler gefunden. |
+| LD-001 scene | Wordsworth | GERMAN_SPELLER_RULE | Möglicher Tippfehler gefunden. |
+| LD-003 scene | Keats | GERMAN_SPELLER_RULE | Möglicher Tippfehler gefunden. |
+| LD-003 scene | dunkelnden | GERMAN_SPELLER_RULE | Möglicher Tippfehler gefunden. |
+| GC-003 scene | Poe | GERMAN_SPELLER_RULE | Möglicher Tippfehler gefunden. |
+| GC-004 scene | Blake | GERMAN_SPELLER_RULE | Möglicher Tippfehler gefunden. |
+| GC-005 scene | Shelley | GERMAN_SPELLER_RULE | Möglicher Tippfehler gefunden. |
+| UW-001 scene | , erhellt | FEHLERHAFTES_KOMMA_ALLG | Wenn es sich hier um keinen Haupt- und Nebensatz handelt, wird in der Regel kein Komma gesetzt. |
+| OL-006 scene | sturmgepeitschtes | GERMAN_SPELLER_RULE | Möglicher Tippfehler gefunden. |
+| OL-007 scene | Achilleus | GERMAN_SPELLER_RULE | Möglicher Tippfehler gefunden. |
+
+**it**
+
+| Item | Found | Rule | Message |
+|---|---|---|---|
+| SM-001 scene | The | MORFOLOGIK_RULE_IT_IT | Trovato un probabile errore di battitura. |
+| SM-001 scene | Sonnet | MORFOLOGIK_RULE_IT_IT | Trovato un probabile errore di battitura. |
+| SM-001 scene | hip-hop | MORFOLOGIK_RULE_IT_IT | Trovato un probabile errore di battitura. |
+| CA-001 scene | Capuleti | MORFOLOGIK_RULE_IT_IT | Trovato un probabile errore di battitura. |
+| DC-001 scene | Elsinore | MORFOLOGIK_RULE_IT_IT | Trovato un probabile errore di battitura. |
+| DC-001 scene | Yorick | MORFOLOGIK_RULE_IT_IT | Trovato un probabile errore di battitura. |
+| MO-002 scene | Mercuzio | MORFOLOGIK_RULE_IT_IT | Trovato un probabile errore di battitura. |
+| FA-001 scene | Puck | MORFOLOGIK_RULE_IT_IT | Trovato un probabile errore di battitura. |
+| FA-002 scene | Titania | MORFOLOGIK_RULE_IT_IT | Trovato un probabile errore di battitura. |
+| RL-001 name | Yorick | MORFOLOGIK_RULE_IT_IT | Trovato un probabile errore di battitura. |
+| VC-003 scene | Capuleti | MORFOLOGIK_RULE_IT_IT | Trovato un probabile errore di battitura. |
+| TP-003 scene | Calibano | MORFOLOGIK_RULE_IT_IT | Trovato un probabile errore di battitura. |
+| MO-003 scene | Benvolio | MORFOLOGIK_RULE_IT_IT | Trovato un probabile errore di battitura. |
+| DC-003 scene | Elsinore | MORFOLOGIK_RULE_IT_IT | Trovato un probabile errore di battitura. |
+| FA-003 scene | Oberon | MORFOLOGIK_RULE_IT_IT | Trovato un probabile errore di battitura. |
+| PT-003 name | Puck | MORFOLOGIK_RULE_IT_IT | Trovato un probabile errore di battitura. |
+| SC-001 scene | Dunsinane | MORFOLOGIK_RULE_IT_IT | Trovato un probabile errore di battitura. |
+| SC-001 scene | Birnam | MORFOLOGIK_RULE_IT_IT | Trovato un probabile errore di battitura. |
+| SC-003 scene | Banquo | MORFOLOGIK_RULE_IT_IT | Trovato un probabile errore di battitura. |
+| IL-002 scene | Malvolio | MORFOLOGIK_RULE_IT_IT | Trovato un probabile errore di battitura. |
+| CA-003 scene | Capuleti | MORFOLOGIK_RULE_IT_IT | Trovato un probabile errore di battitura. |
+| CA-003 scene | Capuleti | MORFOLOGIK_RULE_IT_IT | Trovato un probabile errore di battitura. |
+| CA-003 name | Capuleti | MORFOLOGIK_RULE_IT_IT | Trovato un probabile errore di battitura. |
+| DC-004 scene | Elsinore | MORFOLOGIK_RULE_IT_IT | Trovato un probabile errore di battitura. |
+| FA-004 scene | Bottom | MORFOLOGIK_RULE_IT_IT | Trovato un probabile errore di battitura. |
+| FA-004 scene | Titania | MORFOLOGIK_RULE_IT_IT | Trovato un probabile errore di battitura. |
+| RL-005 name | Porzia | MORFOLOGIK_RULE_IT_IT | Trovato un probabile errore di battitura. |
+| RL-009 name | Bottom | MORFOLOGIK_RULE_IT_IT | Trovato un probabile errore di battitura. |
+| PT-004 name | mandragora | MORFOLOGIK_RULE_IT_IT | Trovato un probabile errore di battitura. |
+| PT-005 name | Oberon | MORFOLOGIK_RULE_IT_IT | Trovato un probabile errore di battitura. |
+| LD-001 scene | Wordsworth | MORFOLOGIK_RULE_IT_IT | Trovato un probabile errore di battitura. |
+| LD-001 scene | Cumberland | MORFOLOGIK_RULE_IT_IT | Trovato un probabile errore di battitura. |
+| LD-003 scene | Hampstead | MORFOLOGIK_RULE_IT_IT | Trovato un probabile errore di battitura. |
+| LD-003 scene | Keats | MORFOLOGIK_RULE_IT_IT | Trovato un probabile errore di battitura. |
+| GC-004 scene | Blake | MORFOLOGIK_RULE_IT_IT | Trovato un probabile errore di battitura. |
+| GC-005 scene | Shelley | MORFOLOGIK_RULE_IT_IT | Trovato un probabile errore di battitura. |
+| LD-005 scene | Christina | MORFOLOGIK_RULE_IT_IT | Trovato un probabile errore di battitura. |
+| OL-001 quote | adunatore | MORFOLOGIK_RULE_IT_IT | Trovato un probabile errore di battitura. |
+| OL-002 scene | Partenone | MORFOLOGIK_RULE_IT_IT | Trovato un probabile errore di battitura. |
+| OL-004 quote | dèi | MORFOLOGIK_RULE_IT_IT | Trovato un probabile errore di battitura. |
+| OL-005 quote | dèi | MORFOLOGIK_RULE_IT_IT | Trovato un probabile errore di battitura. |
+| UW-002 scene | Persefone | MORFOLOGIK_RULE_IT_IT | Trovato un probabile errore di battitura. |
+| house:Capulet house | Capuleti | MORFOLOGIK_RULE_IT_IT | Trovato un probabile errore di battitura. |
+| house:Forest of Arden house | Arden | MORFOLOGIK_RULE_IT_IT | Trovato un probabile errore di battitura. |
+
+**pt**
+
+| Item | Found | Rule | Message |
+|---|---|---|---|
+| DC-001 scene | Elsinore | MORFOLOGIK_RULE_PT_BR | Encontrado possível erro de ortografia. |
+| DC-001 scene | Yorick | MORFOLOGIK_RULE_PT_BR | Encontrado possível erro de ortografia. |
+| MO-002 scene | Mercúcio | MORFOLOGIK_RULE_PT_BR | Encontrado possível erro de ortografia. |
+| FA-001 scene | Puck | MORFOLOGIK_RULE_PT_BR | Encontrado possível erro de ortografia. |
+| FA-002 scene | Titania | MORFOLOGIK_RULE_PT_BR | Encontrado possível erro de ortografia. |
+| RL-001 name | Yorick | MORFOLOGIK_RULE_PT_BR | Encontrado possível erro de ortografia. |
+| RL-002 name | Prospero | LP_PARONYMS | Quando escrita sem acento, esta palavra é um verbo. Se pretende referir-se a um substantivo ou adjetivo, deve utilizar a forma acentuada. |
+| TP-003 scene | Caliban | MORFOLOGIK_RULE_PT_BR | Encontrado possível erro de ortografia. |
+| TP-003 quote | Sycorax | MORFOLOGIK_RULE_PT_BR | Encontrado possível erro de ortografia. |
+| MO-003 scene | Benvólio | MORFOLOGIK_RULE_PT_BR | Encontrado possível erro de ortografia. |
+| DC-003 scene | Elsinore | MORFOLOGIK_RULE_PT_BR | Encontrado possível erro de ortografia. |
+| FA-003 scene | Oberon | MORFOLOGIK_RULE_PT_BR | Encontrado possível erro de ortografia. |
+| FA-003 quote | Titania | MORFOLOGIK_RULE_PT_BR | Encontrado possível erro de ortografia. |
+| PT-003 name | Puck | MORFOLOGIK_RULE_PT_BR | Encontrado possível erro de ortografia. |
+| SC-001 scene | Dunsinane | MORFOLOGIK_RULE_PT_BR | Encontrado possível erro de ortografia. |
+| SC-001 scene | Birnam | MORFOLOGIK_RULE_PT_BR | Encontrado possível erro de ortografia. |
+| SC-003 scene | Banquo | MORFOLOGIK_RULE_PT_BR | Encontrado possível erro de ortografia. |
+| IL-002 scene | Malvólio | MORFOLOGIK_RULE_PT_BR | Encontrado possível erro de ortografia. |
+| MO-004 scene | Montéquio | MORFOLOGIK_RULE_PT_BR | Encontrado possível erro de ortografia. |
+| MO-004 scene | Montéquio | MORFOLOGIK_RULE_PT_BR | Encontrado possível erro de ortografia. |
+| MO-004 name | Montéquio | MORFOLOGIK_RULE_PT_BR | Encontrado possível erro de ortografia. |
+| DC-004 scene | Elsinore | MORFOLOGIK_RULE_PT_BR | Encontrado possível erro de ortografia. |
+| FA-004 scene | Bottom | MORFOLOGIK_RULE_PT_BR | Encontrado possível erro de ortografia. |
+| FA-004 scene | Titania | MORFOLOGIK_RULE_PT_BR | Encontrado possível erro de ortografia. |
+| TP-004 scene | Prospero | LP_PARONYMS | Quando escrita sem acento, esta palavra é um verbo. Se pretende referir-se a um substantivo ou adjetivo, deve utilizar a forma acentuada. |
+| RL-004 scene | tem gravado | PARA-POR_TER_PARTICIPIO-PASSADO | Para conferir mais clareza ao seu texto, busque usar uma linguagem mais concisa. |
+| RL-009 quote | Bottom | MORFOLOGIK_RULE_PT_BR | Encontrado possível erro de ortografia. |
+| RL-009 name | Bottom | MORFOLOGIK_RULE_PT_BR | Encontrado possível erro de ortografia. |
+| PT-005 name | Oberon | MORFOLOGIK_RULE_PT_BR | Encontrado possível erro de ortografia. |
+| LD-001 scene | Wordsworth | MORFOLOGIK_RULE_PT_BR | Encontrado possível erro de ortografia. |
+| LD-003 scene | Hampstead | MORFOLOGIK_RULE_PT_BR | Encontrado possível erro de ortografia. |
+| GC-003 scene | Poe | MORFOLOGIK_RULE_PT_BR | Encontrado possível erro de ortografia. |
+| GC-004 scene | Blake | MORFOLOGIK_RULE_PT_BR | Encontrado possível erro de ortografia. |
+| GC-005 scene | Shelley | MORFOLOGIK_RULE_PT_BR | Encontrado possível erro de ortografia. |
+| OL-002 scene | através de | ATRAVES_DE_POR_VIA | Para conferir mais clareza ao seu texto, busque usar uma linguagem mais concisa. |
+| UW-002 scene | Perséfone | MORFOLOGIK_RULE_PT_BR | Encontrado possível erro de ortografia. |
+| house:Montague house | Montéquio | MORFOLOGIK_RULE_PT_BR | Encontrado possível erro de ortografia. |
+| house:Forest of Arden house | Arden | MORFOLOGIK_RULE_PT_BR | Encontrado possível erro de ortografia. |
+
+**pl**
+
+| Item | Found | Rule | Message |
+|---|---|---|---|
+| SM-001 scene | Sonnet | MORFOLOGIK_RULE_PL_PL | Wykryto prawdopodobny błąd pisowni |
+| CA-001 scene | Kapuletów | MORFOLOGIK_RULE_PL_PL | Wykryto prawdopodobny błąd pisowni |
+| DC-001 scene | Yorika | MORFOLOGIK_RULE_PL_PL | Wykryto prawdopodobny błąd pisowni |
+| MO-002 scene | Merkucjo | MORFOLOGIK_RULE_PL_PL | Wykryto prawdopodobny błąd pisowni |
+| RL-001 name | Yorika | MORFOLOGIK_RULE_PL_PL | Wykryto prawdopodobny błąd pisowni |
+| VC-002 scene | Zakonnik dogląda ogródka | DWA_PODMIOTY_FIN | W tym fragmencie zdania występują dwa potencjalne podmioty (Zakonnik, ogródka) jednego orzeczenia (dogląda). Prawdopodobnie błąd gramatyczny, interpunkcyjny lub literówka. |
+| VC-003 scene | Kapuletów | MORFOLOGIK_RULE_PL_PL | Wykryto prawdopodobny błąd pisowni |
+| TP-003 scene | Kaliban | MORFOLOGIK_RULE_PL_PL | Wykryto prawdopodobny błąd pisowni |
+| TP-003 quote | Sykoraks | MORFOLOGIK_RULE_PL_PL | Wykryto prawdopodobny błąd pisowni |
+| MO-003 scene | Benvolio | MORFOLOGIK_RULE_PL_PL | Wykryto prawdopodobny błąd pisowni |
+| CA-002 scene | Tybalt | MORFOLOGIK_RULE_PL_PL | Wykryto prawdopodobny błąd pisowni |
+| DC-003 scene | Elsynoru | MORFOLOGIK_RULE_PL_PL | Wykryto prawdopodobny błąd pisowni |
+| SC-001 scene | Dunsinane | MORFOLOGIK_RULE_PL_PL | Wykryto prawdopodobny błąd pisowni |
+| SC-001 scene | Birnam | MORFOLOGIK_RULE_PL_PL | Wykryto prawdopodobny błąd pisowni |
+| IL-001 scene | jej | PREP_CASUS | Przyimek „o” jest używany z miejscownikiem. |
+| IL-002 scene | Malwolio | MORFOLOGIK_RULE_PL_PL | Wykryto prawdopodobny błąd pisowni |
+| CA-003 scene | Kapuletów | MORFOLOGIK_RULE_PL_PL | Wykryto prawdopodobny błąd pisowni |
+| CA-003 scene | Kapulet | MORFOLOGIK_RULE_PL_PL | Wykryto prawdopodobny błąd pisowni |
+| CA-003 name | Kapulet | MORFOLOGIK_RULE_PL_PL | Wykryto prawdopodobny błąd pisowni |
+| DC-004 scene | Elsynoru | MORFOLOGIK_RULE_PL_PL | Wykryto prawdopodobny błąd pisowni |
+| LD-003 scene | Hampstead | MORFOLOGIK_RULE_PL_PL | Wykryto prawdopodobny błąd pisowni |
+| OL-004 scene | składają perły u jej stóp. Świat wstrzymuje oddech. | ZDANIA_ZLOZONE | W tym zdaniu złożonym brakuje przecinka lub spójnika między jednym czasownikiem („składają”) a drugim („wstrzymuje”). |
+| house:Capulet house | Kapulet | MORFOLOGIK_RULE_PL_PL | Wykryto prawdopodobny błąd pisowni |
+
+**ru**
+
+| Item | Found | Rule | Message |
+|---|---|---|---|
+| CA-001 scene | Капулетти | MORFOLOGIK_RULE_RU_RU | Возможно найдена орфографическая ошибка. |
+| DC-001 scene | Эльсинор | MORFOLOGIK_RULE_RU_RU | Возможно найдена орфографическая ошибка. |
+| DC-001 scene | Йорика | MORFOLOGIK_RULE_RU_RU | Возможно найдена орфографическая ошибка. |
+| MO-002 scene | Меркуцио | MORFOLOGIK_RULE_RU_RU | Возможно найдена орфографическая ошибка. |
+| FA-002 scene | Титания | MORFOLOGIK_RULE_RU_RU | Возможно найдена орфографическая ошибка. |
+| RL-001 name | Йорика | MORFOLOGIK_RULE_RU_RU | Возможно найдена орфографическая ошибка. |
+| RL-002 scene | Просперо | MORFOLOGIK_RULE_RU_RU | Возможно найдена орфографическая ошибка. |
+| RL-002 name | Просперо | MORFOLOGIK_RULE_RU_RU | Возможно найдена орфографическая ошибка. |
+| VC-003 scene | Капулетти | MORFOLOGIK_RULE_RU_RU | Возможно найдена орфографическая ошибка. |
+| TP-001 scene | Просперо | MORFOLOGIK_RULE_RU_RU | Возможно найдена орфографическая ошибка. |
+| TP-002 quote | Привет тебе | POZHALUJSTA | Пропущена запятая: «Привет, тебе». |
+| TP-003 scene | Калибан | MORFOLOGIK_RULE_RU_RU | Возможно найдена орфографическая ошибка. |
+| TP-003 quote | Сикораксы | MORFOLOGIK_RULE_RU_RU | Возможно найдена орфографическая ошибка. |
+| MO-003 scene | Бенволио | MORFOLOGIK_RULE_RU_RU | Возможно найдена орфографическая ошибка. |
+| CA-002 scene | Тибальт | MORFOLOGIK_RULE_RU_RU | Возможно найдена орфографическая ошибка. |
+| DC-003 scene | Эльсинора | MORFOLOGIK_RULE_RU_RU | Возможно найдена орфографическая ошибка. |
+| FA-003 quote | Титания | MORFOLOGIK_RULE_RU_RU | Возможно найдена орфографическая ошибка. |
+| RL-003 scene | Макбета | MORFOLOGIK_RULE_RU_RU | Возможно найдена орфографическая ошибка. |
+| SC-001 scene | Дунсинане | MORFOLOGIK_RULE_RU_RU | Возможно найдена орфографическая ошибка. |
+| SC-001 scene | Бирнамский | MORFOLOGIK_RULE_RU_RU | Возможно найдена орфографическая ошибка. |
+| IL-002 scene | Мальволио | MORFOLOGIK_RULE_RU_RU | Возможно найдена орфографическая ошибка. |
+| CA-003 scene | Капулетти | MORFOLOGIK_RULE_RU_RU | Возможно найдена орфографическая ошибка. |
+| CA-003 scene | Капулетти | MORFOLOGIK_RULE_RU_RU | Возможно найдена орфографическая ошибка. |
+| CA-003 name | Капулетти | MORFOLOGIK_RULE_RU_RU | Возможно найдена орфографическая ошибка. |
+| DC-004 scene | Эльсинора | MORFOLOGIK_RULE_RU_RU | Возможно найдена орфографическая ошибка. |
+| DC-004 scene | Горацио | MORFOLOGIK_RULE_RU_RU | Возможно найдена орфографическая ошибка. |
+| FA-004 scene | Титания | MORFOLOGIK_RULE_RU_RU | Возможно найдена орфографическая ошибка. |
+| TP-004 scene | Просперо | MORFOLOGIK_RULE_RU_RU | Возможно найдена орфографическая ошибка. |
+| RL-006 name | Макбета | MORFOLOGIK_RULE_RU_RU | Возможно найдена орфографическая ошибка. |
+| RL-008 name | Корделии | MORFOLOGIK_RULE_RU_RU | Возможно найдена орфографическая ошибка. |
+| PT-005 name | Оберона | MORFOLOGIK_RULE_RU_RU | Возможно найдена орфографическая ошибка. |
+| PT-009 scene | Мантуи | MORFOLOGIK_RULE_RU_RU | Возможно найдена орфографическая ошибка. |
+| LD-001 scene | Вордсворт | MORFOLOGIK_RULE_RU_RU | Возможно найдена орфографическая ошибка. |
+| LD-003 scene | Хэмпстеде | MORFOLOGIK_RULE_RU_RU | Возможно найдена орфографическая ошибка. |
+| GC-003 scene | По сидит | pouchastvovat | Пишется слитно: «Посидит» |
+| OL-001 scene | Зевс | MORFOLOGIK_RULE_RU_RU | Возможно найдена орфографическая ошибка. |
+| OL-002 scene | Парфенон | MORFOLOGIK_RULE_RU_RU | Возможно найдена орфографическая ошибка. |
+| house:Capulet house | Капулетти | MORFOLOGIK_RULE_RU_RU | Возможно найдена орфографическая ошибка. |
+
+**ar**
+
+| Item | Found | Rule | Message |
+|---|---|---|---|
+| SM-001 scene | The | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| SM-001 scene | Sonnet | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| SM-001 scene | Man | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| SM-001 scene | تتحوّل كلمات | syntax_0002_as_ka_2 | استخدام الكاف للصفة استخدام أجنبي أدخله المترجمون، إذ يستعملون             "as"             بمعنى الكاف، فالأَوْلَى النصب على الحالية مثل  " أعمل مديرًا " أو على الاختصاص في: "نحن المسلمين".         "تتحوّل لمات"         "تتحوّل بصفة لمات"         |
+| SM-001 scene | هيب هوب | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| MO-001 scene | بينما | syntax_456_bynama_sent_start_1 | ربما تحتاج الجملة إلى إعادة صياغة لأن بينما لها الصدارة، أي يجب أن تكون في بدء الجملة"         ""         "حين"         "في حين"         "و"         "مع أنّ"        |
+| MO-001 scene | قرمزي | AR_DIACRITICS_REPLACE | قِرْمزي بكسر القاف |
+| MO-001 scene | دافئ | AR_SIMPLE_REPLACE | قل "دفئ" أو  "دفيء" |
+| CA-001 scene | كابوليت | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| CA-001 quote | إن ما نسميه | syntax_132_in_maa | حذف النون من إن الشرطية إذا جاء بعدها ما الزائدة، نحو قوله تعالى: "إمّا يبلغنّ عندك الكبر" : "إمّا نسميه"         |
+| DC-001 scene | إلسينور | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| DC-001 scene | هاملت | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| DC-001 quote | لا أكون | grammar_0011_notjazem_lam_nafia |  الفرق بين لا الناهية ولا النافية، لا الناهية تأتي مع ضمائر المخاطب فقط. لذا فإن لا النافية لا تجزم الفعل المضارع أتقصد؟          "لا أكون"         |
+| DC-002 scene | Ophelia | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| DC-002 scene | والبتلات | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| MO-002 scene | أحد | number_one_feminin | أتقصد "إحدى"؟ هل تقصد؟        |
+| MO-002 scene | ماركيشيو | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| FA-001 scene | Puck | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| FA-002 scene | بينما | syntax_456_bynama_sent_start_1 | ربما تحتاج الجملة إلى إعادة صياغة لأن بينما لها الصدارة، أي يجب أن تكون في بدء الجملة"         ""         "حين"         "في حين"         "و"         "مع أنّ"        |
+| RL-001 scene | بينما | syntax_456_bynama_sent_start_1 | ربما تحتاج الجملة إلى إعادة صياغة لأن بينما لها الصدارة، أي يجب أن تكون في بدء الجملة"         ""         "حين"         "في حين"         "و"         "مع أنّ"        |
+| RL-001 quote | هوراشيو | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| RL-002 scene | بينما | syntax_456_bynama_sent_start_1 | ربما تحتاج الجملة إلى إعادة صياغة لأن بينما لها الصدارة، أي يجب أن تكون في بدء الجملة"         ""         "حين"         "في حين"         "و"         "مع أنّ"        |
+| RL-002 scene | بروسبيرو | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| RL-002 name | بروسبيرو | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| PT-001 scene | بينما | syntax_456_bynama_sent_start_1 | ربما تحتاج الجملة إلى إعادة صياغة لأن بينما لها الصدارة، أي يجب أن تكون في بدء الجملة"         ""         "حين"         "في حين"         "و"         "مع أنّ"        |
+| VC-002 scene | صومعة في | syntax_125_mobtadaa_nakira_1 | لا يجوز الابتداء بنكرة، فيتقدم الخبر شبه الجملة مثلا "كتابان عندك" تصبح "عندك كتابان"  : "في صومعة"         |
+| VC-002 scene | تضيئها | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| VC-002 scene | السنون | AR_DIACRITICS_REPLACE | السِّنُون بالكسر جمع سنة |
+| VC-003 scene | دافئ | AR_SIMPLE_REPLACE | قل "دفئ" أو  "دفيء" |
+| VC-003 scene | كابوليت | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| TP-001 scene | بروسبيرو | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| TP-001 quote | نفسها التي | gender_0010_alladhi | هل تقصد "نفسها الذي"?        |
+| TP-002 scene | أرييل | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| TP-002 scene | واللامرئي | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| TP-002 quote | سلام عليك | syntax_125_mobtadaa_nakira_1 | لا يجوز الابتداء بنكرة، فيتقدم الخبر شبه الجملة مثلا "كتابان عندك" تصبح "عندك كتابان"  : "عليك سلام"         |
+| TP-003 scene | Caliban | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| TP-003 quote | سيكوراكس | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| MO-003 scene | ساحة في | syntax_125_mobtadaa_nakira_1 | لا يجوز الابتداء بنكرة، فيتقدم الخبر شبه الجملة مثلا "كتابان عندك" تصبح "عندك كتابان"  : "في ساحة"         |
+| MO-003 scene | بنفوليو | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| CA-002 scene | زقاق في | syntax_125_mobtadaa_nakira_1 | لا يجوز الابتداء بنكرة، فيتقدم الخبر شبه الجملة مثلا "كتابان عندك" تصبح "عندك كتابان"  : "في زقاق"         |
+| CA-002 scene | تيبالت | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| CA-002 scene | على عدوّه | grammar_0000_jar_plural | :انتبه لحرف الجر فالجمع المذكر السالم  يُجَرّ بالياء         "على (عدوّه)"        |
+| DC-003 scene | إلسينور | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| DC-003 scene | كلوديس | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| FA-003 scene | Oberon | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| FA-003 scene | من قرون | grammar_0000_jar_plural | :انتبه لحرف الجر فالجمع المذكر السالم  يُجَرّ بالياء         "من قرات", "من قرون", "من قرونات", "من قرونة", "من قرونتين", "من قرونيات", "من قرونيتين", "من قرونين", "من قريات", "من قرين"        |
+| RL-003 scene | ماكبث | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| PT-003 scene | متقزّح | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| SC-001 scene | في دنسينان | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| SC-001 scene | ماكبث | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| SC-001 scene | بيرنام | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| SC-001 quote | ما يليق | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| SC-002 scene | تضيئها | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| SC-002 scene | الاسكتلندية | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| SC-002 scene | تذرع ليدي | syntax_125_mobtadaa_nakira_3 | لا يجوز الابتداء بنكرة، فيتقدم الخبر شبه الجملة مثلا "كتاب  بالبيت" تصبح "بالبيت كتاب"  : "ليدي تذرع"         |
+| SC-002 scene | ماكبث | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| SC-002 scene | دم | AR_DIACRITICS_REPLACE | الدّمُ دون تشديد الميم، كقوله تعالى: "حرمت عليكم الميتة والدَّم" |
+| SC-002 scene | تلتصق بها كجلد | syntax_0002_as_ka_2 | استخدام الكاف للصفة استخدام أجنبي أدخله المترجمون، إذ يستعملون             "as"             بمعنى الكاف، فالأَوْلَى النصب على الحالية مثل  " أعمل مديرًا " أو على الاختصاص في: "نحن المسلمين".         "تلتصق بها جلد"         "تلتصق بها بصفة جلد"         |
+| SC-003 scene | اسكتلندية | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| SC-003 scene | بانكو | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| SC-003 scene | بينما | syntax_456_bynama_sent_start_1 | ربما تحتاج الجملة إلى إعادة صياغة لأن بينما لها الصدارة، أي يجب أن تكون في بدء الجملة"         ""         "حين"         "في حين"         "و"         "مع أنّ"        |
+| IL-001 scene | شاطئ في | syntax_125_mobtadaa_nakira_1 | لا يجوز الابتداء بنكرة، فيتقدم الخبر شبه الجملة مثلا "كتابان عندك" تصبح "عندك كتابان"  : "في شاطئ"         |
+| IL-001 scene | إيلورية | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| IL-001 scene | Viola | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| IL-002 scene | Olivia | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| IL-002 scene | Malvolio | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| IL-003 scene | كونتيسة | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| IL-003 scene | Olivia | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| IL-003 scene | بينما | syntax_456_bynama_sent_start_1 | ربما تحتاج الجملة إلى إعادة صياغة لأن بينما لها الصدارة، أي يجب أن تكون في بدء الجملة"         ""         "حين"         "في حين"         "و"         "مع أنّ"        |
+| RM-001 scene | بروتس | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| RM-002 scene | تضيئه | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| RM-002 scene | كاسيوس | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| RM-002 quote | بروتس | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| RM-003 scene | مرقس | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| RM-003 scene | أنطونيوس | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| RM-003 quote | أعيروني | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| MO-004 scene | مونتاغيو | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| MO-004 scene | مونتاغيو | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| MO-004 name | مونتاغيو | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| CA-003 scene | كابوليت | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| CA-003 scene | كابوليت | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| CA-003 name | كابوليت | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| DC-004 scene | إلسينور | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| DC-004 scene | Horatio | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| DC-004 scene | هاملت | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| FA-004 scene | فسحة في الغابة | syntax_125_mobtadaa_nakira_2 | لا يجوز الابتداء بنكرة، فيتقدم الخبر شبه الجملة مثلا "كتاب  في البيت" تصبح "في البيت كتاب"  : "في الغابة فسحة"         |
+| FA-004 scene | Bottom | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| FA-004 scene | بينما | syntax_456_bynama_sent_start_1 | ربما تحتاج الجملة إلى إعادة صياغة لأن بينما لها الصدارة، أي يجب أن تكون في بدء الجملة"         ""         "حين"         "في حين"         "و"         "مع أنّ"        |
+| TP-004 scene | بروسبيرو | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| TP-004 scene | Miranda | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| TP-004 scene | لأول | collo_0084_lawal_marra |          ويفضل أن يقال:         "أول"         مرة        |
+| RL-004 scene | حافة | AR_DIACRITICS_REPLACE | الحافة دون تشديد الفاء |
+| RL-004 scene | نُقش في داخله | syntax_125_mobtadaa_nakira_2 | لا يجوز الابتداء بنكرة، فيتقدم الخبر شبه الجملة مثلا "كتاب  في البيت" تصبح "في البيت كتاب"  : "في داخله نُقش"         |
+| RL-005 scene | ثلاثة | number_under_10_feminin | أتقصد "ثلاث"؟ الأعداد المفردة من ثلاثة إلى تسعة، تكون مذكرة قبل الأسماء المؤنثة.      قل ثلاث طالبات ولا تقل ثلاثة طالبات.        |
+| RL-005 scene | تضيئها | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| RL-005 scene | الرصاص | AR_DIACRITICS_REPLACE | الرّصاص بفتح الراء أو كسرها |
+| RL-005 quote | كل ما | AR_SIMPLE_REPLACE | تُوصل "ما" المصدرية ب "كل" المنصوبة على الظرفية |
+| RL-005 name | بورشيا | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| RL-006 scene | اسكتلندي | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| RL-006 name | ماكبث | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| RL-008 scene | قارورة من البلّور | syntax_125_mobtadaa_nakira_2 | لا يجوز الابتداء بنكرة، فيتقدم الخبر شبه الجملة مثلا "كتاب  في البيت" تصبح "في البيت كتاب"  : "من البلّور قارورة"         |
+| RL-008 scene | تحفظ دموعًا تتلألأ كضوء | syntax_0002_as_ka_1 | استخدام الكاف للصفة استخدام أجنبي أدخله المترجمون، إذ يستعملون             "as"             بمعنى الكاف، فالأَوْلَى النصب على الحالية مثل  " أعمل مديرًا " أو على الاختصاص في: "نحن المسلمين".         "تحفظ دموعًا تتلألأ ضوء"         "تحفظ دموعًا تتلألأ بصفة ضوء"         |
+| RL-008 name | كورديليا | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| RL-009 quote | بوتوم | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| RL-009 name | بوتوم | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| PT-004 quote | اليبروح | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| PT-004 name | اليبروح | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| PT-005 quote | العشبة | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| PT-005 name | أوبيرون | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| PT-006 scene | قارورة من الزجاج | syntax_125_mobtadaa_nakira_2 | لا يجوز الابتداء بنكرة، فيتقدم الخبر شبه الجملة مثلا "كتاب  في البيت" تصبح "في البيت كتاب"  : "من الزجاج قارورة"         |
+| PT-006 quote | الهيبونا | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| PT-006 name | الشوكران | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| PT-007 quote | سمندل | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| PT-008 scene | أزرق مضيئًا يتموّج كبحر | syntax_0002_as_ka_1 | استخدام الكاف للصفة استخدام أجنبي أدخله المترجمون، إذ يستعملون             "as"             بمعنى الكاف، فالأَوْلَى النصب على الحالية مثل  " أعمل مديرًا " أو على الاختصاص في: "نحن المسلمين".         "أزرق مضيئًا يتموّج بحر"         "أزرق مضيئًا يتموّج بصفة بحر"         |
+| PT-009 scene | مانتوفا | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| PT-009 scene | كهرمانيًا | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| LD-001 scene | بساط من أزهار النرجس | syntax_125_mobtadaa_nakira_5 | لا يجوز الابتداء بنكرة، فيتقدم الخبر شبه الجملة مثلا "كتاب  في بيت الولد" تصبح "في بيت الولد كتاب"  : "من أزهار النرجس بساط"         |
+| LD-001 scene | ووردزوورث | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| LD-001 scene | كمبرلاند | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| LD-001 quote | همت وحيدًا كسحابة | syntax_0002_as_ka_1 | استخدام الكاف للصفة استخدام أجنبي أدخله المترجمون، إذ يستعملون             "as"             بمعنى الكاف، فالأَوْلَى النصب على الحالية مثل  " أعمل مديرًا " أو على الاختصاص في: "نحن المسلمين".         "همت وحيدًا سحابة", "همت وحيدًا سحابتا", "همت وحيدًا سحابتة"         "همت وحيدًا بصفة سحابة"         |
+| LD-001 quote | الوديان | AR_DIACRITICS_REPLACE | الوُدْيَان بضم الواو جمع وادٍ. |
+| LD-002 scene | القطرس | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| LD-002 scene | بينما | syntax_456_bynama_sent_start_1 | ربما تحتاج الجملة إلى إعادة صياغة لأن بينما لها الصدارة، أي يجب أن تكون في بدء الجملة"         ""         "حين"         "في حين"         "و"         "مع أنّ"        |
+| LD-003 scene | حديقة في | syntax_125_mobtadaa_nakira_1 | لا يجوز الابتداء بنكرة، فيتقدم الخبر شبه الجملة مثلا "كتابان عندك" تصبح "عندك كتابان"  : "في حديقة"         |
+| LD-003 scene | هامبستيد | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| LD-003 scene | كيتس | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| GC-001 scene | قصر في البندقية | syntax_125_mobtadaa_nakira_2 | لا يجوز الابتداء بنكرة، فيتقدم الخبر شبه الجملة مثلا "كتاب  في البيت" تصبح "في البيت كتاب"  : "في البندقية قصر"         |
+| GC-001 scene | بايرون | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| GC-001 quote | في الجمال، كليل | syntax_0002_as_ka_1 | استخدام الكاف للصفة استخدام أجنبي أدخله المترجمون، إذ يستعملون             "as"             بمعنى الكاف، فالأَوْلَى النصب على الحالية مثل  " أعمل مديرًا " أو على الاختصاص في: "نحن المسلمين".         "في الجمال، ليل"         "في الجمال، بصفة ليل"         |
+| GC-002 scene | تضيئها | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| GC-002 scene | وسط | AR_HOMOPHONES_REPLACE | لأن "وَسْطَ" ظرف بمعنى "بين" والوَسَط هو المعتدل من كل شيء، وما بين طرفي الشيء |
+| GC-002 scene | بينما | syntax_456_bynama_sent_start_1 | ربما تحتاج الجملة إلى إعادة صياغة لأن بينما لها الصدارة، أي يجب أن تكون في بدء الجملة"         ""         "حين"         "في حين"         "و"         "مع أنّ"        |
+| GC-002 quote | لا أعرف | grammar_0011_notjazem_lam_nafia |  الفرق بين لا الناهية ولا النافية، لا الناهية تأتي مع ضمائر المخاطب فقط. لذا فإن لا النافية لا تجزم الفعل المضارع أتقصد؟          "لا أعرف"         |
+| GC-003 scene | يضيئها | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| GC-003 scene | بو | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| GC-003 scene | بينما | syntax_456_bynama_sent_start_1 | ربما تحتاج الجملة إلى إعادة صياغة لأن بينما لها الصدارة، أي يجب أن تكون في بدء الجملة"         ""         "حين"         "في حين"         "و"         "مع أنّ"        |
+| GC-003 scene | بالاس | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| GC-003 scene | وتتردّد كلمة | syntax_0002_as_ka_1 | استخدام الكاف للصفة استخدام أجنبي أدخله المترجمون، إذ يستعملون             "as"             بمعنى الكاف، فالأَوْلَى النصب على الحالية مثل  " أعمل مديرًا " أو على الاختصاص في: "نحن المسلمين".         "وتتردّد كلمة", "وتتردّد كلمتة", "وتتردّد لمة", "وتتردّد لمتة"         "وتتردّد بصفة لمة"         |
+| GC-003 scene | Nevermore | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| GC-003 quote | بينما | syntax_456_bynama_sent_start_1 | ربما تحتاج الجملة إلى إعادة صياغة لأن بينما لها الصدارة، أي يجب أن تكون في بدء الجملة"         ""         "حين"         "في حين"         "و"         "مع أنّ"        |
+| GC-004 scene | بينما | syntax_456_bynama_sent_start_1 | ربما تحتاج الجملة إلى إعادة صياغة لأن بينما لها الصدارة، أي يجب أن تكون في بدء الجملة"         ""         "حين"         "في حين"         "و"         "مع أنّ"        |
+| LD-004 scene | السبانيل | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| LD-004 scene | Robert | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| LD-005 scene | حديقة على | syntax_125_mobtadaa_nakira_1 | لا يجوز الابتداء بنكرة، فيتقدم الخبر شبه الجملة مثلا "كتابان عندك" تصبح "عندك كتابان"  : "على حديقة"         |
+| LD-005 scene | الرفائيلية | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| LD-005 scene | كريستينا | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| OL-001 scene | الأوليمب | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| OL-001 scene | زيوس | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| OL-002 scene | البارثينون | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| OL-002 scene | آثينا | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| OL-004 scene | أفروديت | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| OL-004 quote | لا تستطيع | grammar_0010_jazem_la_nahia |  الفعل المضارع بعد "لا الناهية" يأتي مجزوما. أتقصد؟          "لا تستطع"         |
+| OL-005 scene | هيرميز | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| OL-005 quote | أحمل كلمات | syntax_0002_as_ka_2 | استخدام الكاف للصفة استخدام أجنبي أدخله المترجمون، إذ يستعملون             "as"             بمعنى الكاف، فالأَوْلَى النصب على الحالية مثل  " أعمل مديرًا " أو على الاختصاص في: "نحن المسلمين".         "أحمل لمات"         "أحمل بصفة لمات"         |
+| UW-001 scene | تضيئها | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| UW-001 scene | هاديس | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| UW-001 scene | وسيربيروس | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| UW-002 scene | بيرسيفون | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| OL-006 scene | أوديسيوس | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| OL-006 scene | بينما | syntax_456_bynama_sent_start_1 | ربما تحتاج الجملة إلى إعادة صياغة لأن بينما لها الصدارة، أي يجب أن تكون في بدء الجملة"         ""         "حين"         "في حين"         "و"         "مع أنّ"        |
+| OL-006 scene | إيثاكا | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| UW-003 scene | حافة | AR_DIACRITICS_REPLACE | الحافة دون تشديد الفاء |
+| UW-003 scene | ميدوسا | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| house:Montague house | مونتاغيو | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| house:Capulet house | كابوليت | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| house:Forest of Arden house | آردن | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| house:Scottish Court house | الاسكتلندي | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| house:Olympus house | الأوليمب | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+| element:Alchemy element | الخيمياء | HUNSPELL_RULE_AR | وُجد خطأ إملائي محتمل |
+
+**zh**
+
+| Item | Found | Rule | Message |
+|---|---|---|---|
+| VC-002 scene | 间 | wa5 | "间"不能与“烛光”搭配，请换量词 |
+| MO-003 scene | 在出 | wa2 | 名词后要加"方位词" |
+| DC-003 scene | 的 | wb4 | 形容词的修饰一般为‘形容词（副词）+地+形容词’。您的意思是否是：虚假"地"华丽 |
+| FA-003 quote | 的 | wb4 | 动词的修饰一般为‘形容词（副词）+地+动词’。您的意思是否是：骄傲"地"提 |
+| SC-001 scene | 间 | wa5 | "间"不能与“血迹”搭配，请换量词 |
+| SC-002 scene | 间 | wa5 | "间"不能与“烛光”搭配，请换量词 |
+| FA-004 scene | 林间 | wa5 | "间"不能与“空地”搭配，请换量词 |
+| PT-007 scene | 间 | wa5 | "间"不能与“闪光”搭配，请换量词 |
+| LD-001 scene | 在花 | wa2 | 名词后要加"方位词" |
+| LD-005 scene | 在落叶 | wa2 | 名词后要加"方位词" |
+| LD-005 scene | 的 | wb4 | 动词的修饰一般为‘形容词（副词）+地+动词’。您的意思是否是：平静"地"顺从 |
 
 ## Wikidata items
 
@@ -395,7 +953,7 @@ English line: "But soft, what light through yonder window breaks?" (Romeo and Ju
 | pt | Romeu | wikidata: Q673361 label (pt) | Mas, silêncio! Que luz irrompe por aquela janela? | NEW, unsourced: translated for the game, not reviewed |
 | pl | Romeo Monteki | wikidata: Q673361 label (pl) | Jakież światło z okna błyska? | published: Leon Ulrich (1811–1885), Dzieła dramatyczne Williama Shakespeare, Kraków, 1895 (pl.wikisource.org transcription); Public domain: Poland (life + 70 years; translator died 1885) and United States (published before 1931); [source](https://pl.wikisource.org/wiki/Romeo_i_Julia_%28Shakespeare%2C_t%C5%82um._Ulrich%2C_1895%29/Akt_drugi?oldid=3285360) |
 | ru | Ромео Монтекки | wikidata: Q673361 label (ru) | Но, тише, что за свет в ее окне? | published: Дмитрий Михаловский (1828–1905), «Ромео и Джульетта», 1888 (ru.wikisource.org transcription, modern orthography); Public domain: Russia (life + 70 years; translator died 1905) and United States (published before 1931); [source](https://ru.wikisource.org/wiki/%D0%A0%D0%BE%D0%BC%D0%B5%D0%BE_%D0%B8_%D0%94%D0%B6%D1%83%D0%BB%D1%8C%D0%B5%D1%82%D1%82%D0%B0_%28%D0%A8%D0%B5%D0%BA%D1%81%D0%BF%D0%B8%D1%80%3B_%D0%9C%D0%B8%D1%85%D0%B0%D0%BB%D0%BE%D0%B2%D1%81%D0%BA%D0%B8%D0%B9%29/2001?oldid=5750496) |
-| ar | روميو | wikidata: Q673361 label (ar) | لكن مهلاً، أي نور ذاك الذي ينبثق من تلك النافذة؟ | NEW, unsourced: translated for the game, not reviewed |
+| ar | روميو | wikidata: Q673361 label (ar) | لكن مهلًا، أي نور ذاك الذي ينبثق من تلك النافذة؟ | NEW, unsourced: translated for the game, not reviewed |
 | hi | रोमियो | wikidata: Q673361 label (hi) | पर ठहरो, उस खिड़की से यह कैसा उजाला फूट रहा है? | NEW, unsourced: translated for the game, not reviewed |
 | zh | 罗密欧·蒙泰古 | wikidata: Q673361 label (zh); "羅密歐·蒙泰古" converted to Simplified with OpenCC t2s | 轻声！那边窗子里亮起来的是什么光？ | NEW, unsourced: translated for the game, not reviewed |
 | ja | ロミオ・モンタギュー | wikidata: Q673361 label (ja) | や、待てよ！　あの窓から洩るゝ光明は？ | published: 坪内逍遙 Tsubouchi Shōyō (1859–1935), 『ロミオとヂュリエット』新修シェークスピヤ全集 第二十五卷, 中央公論社, 1933 (ja.wikisource.org transcription of the Aozora Bunko text, card 42773; old orthography as printed); Public domain: Japan (translator died 1935; Japan’s term was then life + 50, so the work fell into the public domain on 1 January 1986, and the 2018 extension to life + 70 did not revive it; life + 70 is met as well) and United States (published in 1933, but already in the public domain in Japan on 1 January 1996, so US copyright was not restored); [source](https://ja.wikisource.org/wiki/%E3%83%AD%E3%83%9F%E3%82%AA%E3%81%A8%E3%83%82%E3%83%A5%E3%83%AA%E3%82%A8%E3%83%83%E3%83%88?oldid=212568) |
@@ -438,7 +996,7 @@ English line: "To be, or not to be, that is the question." (Hamlet 3.1)
 | it | Amleto | wikidata: Q2447542 label (it) | Essere o non essere, ecco il gran problema | published: Carlo Rusconi (1812–1889), Teatro completo di Shakspeare, Torino, 1858–1859 (it.wikisource.org transcription of the 1858–1859 volumes); Public domain: Italy (life + 70 years; translator died 1889) and United States (published before 1931); [source](https://it.wikisource.org/wiki/Amleto/Atto_terzo?oldid=3794677) |
 | pt | Príncipe Hamlet | wikidata: Q2447542 label (pt) | Ser ou não ser, eis o problema. | published: Luís I of Portugal (1838–1889), Hamlet: drama em cinco actos, Lisboa, 1877 (pt.wikisource.org transcription); Public domain: Portugal (life + 70 years; translator died 1889) and United States (published before 1931); [source](https://pt.wikisource.org/wiki/Hamlet%3A_drama_em_cinco_actos/Acto_terceiro/Cena_I?oldid=527387) |
 | pl | Hamlet | wikidata: Q2447542 label (pl) | Być albo nie być, oto jest pytanie. | published: Leon Ulrich (1811–1885), Dzieła dramatyczne Williama Shakespeare, Kraków, 1895 (pl.wikisource.org transcription); Public domain: Poland (life + 70 years; translator died 1885) and United States (published before 1931); [source](https://pl.wikisource.org/wiki/Hamlet_%28Shakespeare%2C_t%C5%82um._Ulrich%2C_1895%29/Akt_trzeci?oldid=3257297) |
-| ru | Гамлет | wikidata: Q2447542 label (ru) | Быть или не быть, вот в чём вопрос. | NEW, unsourced: translated for the game, not reviewed |
+| ru | Гамлет | wikidata: Q2447542 label (ru) | Быть иль не быть? Вот в чем вопрос? | published: Пётр Гнедич (1855–1925), «Гамлет, принц датский», издание 1917 года (первое 1892) (ru.wikisource.org transcription, modern orthography); Public domain: Russia (life + 70 years; translator died 1925) and United States (published before 1931); [source](https://ru.wikisource.org/wiki/%D0%93%D0%B0%D0%BC%D0%BB%D0%B5%D1%82%2C_%D0%BF%D1%80%D0%B8%D0%BD%D1%86_%D0%B4%D0%B0%D1%82%D1%81%D0%BA%D0%B8%D0%B9_%28%D0%A8%D0%B5%D0%BA%D1%81%D0%BF%D0%B8%D1%80%3B_%D0%93%D0%BD%D0%B5%D0%B4%D0%B8%D1%87%29/1917_%28%D0%A1%D0%9E%29?oldid=5657806) |
 | ar | الأمير هاملت | wikidata: Q2447542 label (ar) | أكون أو لا أكون، تلك هي المسألة. | NEW, unsourced: translated for the game, not reviewed |
 | hi | प्रिंस हैमलेट | wikidata: Q2447542 label (hi) | जीना या न जीना, यही प्रश्न है। | NEW, unsourced: translated for the game, not reviewed |
 | zh | 哈姆雷特王子 | wikidata: Q2447542 label (zh) | 生存还是毁灭，这是一个问题。 | NEW, unsourced: translated for the game, not reviewed |
@@ -548,7 +1106,7 @@ English line: "Alas, poor Yorick! I knew him, Horatio." (Hamlet 5.1)
 | it | Il teschio di Yorick | translated: the game's own name, translated for the game | Oimè! povero Yorick!... L’ho conosciuto, Orazio | published: Carlo Rusconi (1812–1889), Teatro completo di Shakspeare, Torino, 1858–1859 (it.wikisource.org transcription of the 1858–1859 volumes); Public domain: Italy (life + 70 years; translator died 1889) and United States (published before 1931); [source](https://it.wikisource.org/wiki/Amleto/Atto_quinto?oldid=3794675) |
 | pt | A caveira de Yorick | translated: the game's own name, translated for the game | Pobre Yorick! Conheci-o, Horacio | published: Luís I of Portugal (1838–1889), Hamlet: drama em cinco actos, Lisboa, 1877 (pt.wikisource.org transcription); Public domain: Portugal (life + 70 years; translator died 1889) and United States (published before 1931); [source](https://pt.wikisource.org/wiki/Hamlet%3A_drama_em_cinco_actos/Acto_quinto/Cena_I?oldid=527398) |
 | pl | Czaszka Yorika | translated: the game's own name, translated for the game | Ach, biedny Yoriku! Znałem go, Horacyo | published: Leon Ulrich (1811–1885), Dzieła dramatyczne Williama Shakespeare, Kraków, 1895 (pl.wikisource.org transcription); Public domain: Poland (life + 70 years; translator died 1885) and United States (published before 1931); [source](https://pl.wikisource.org/wiki/Hamlet_%28Shakespeare%2C_t%C5%82um._Ulrich%2C_1895%29/Akt_pi%C4%85ty?oldid=3257296) |
-| ru | Череп Йорика | translated: the game's own name, translated for the game | Увы, бедный Йорик! Я знал его, Горацио. | NEW, unsourced: translated for the game, not reviewed |
+| ru | Череп Йорика | translated: the game's own name, translated for the game | Увы, бедный Йорик! | published: Пётр Гнедич (1855–1925), «Гамлет, принц датский», издание 1917 года (первое 1892) (ru.wikisource.org transcription, modern orthography); Public domain: Russia (life + 70 years; translator died 1925) and United States (published before 1931); [source](https://ru.wikisource.org/wiki/%D0%93%D0%B0%D0%BC%D0%BB%D0%B5%D1%82%2C_%D0%BF%D1%80%D0%B8%D0%BD%D1%86_%D0%B4%D0%B0%D1%82%D1%81%D0%BA%D0%B8%D0%B9_%28%D0%A8%D0%B5%D0%BA%D1%81%D0%BF%D0%B8%D1%80%3B_%D0%93%D0%BD%D0%B5%D0%B4%D0%B8%D1%87%29/1917_%28%D0%A1%D0%9E%29?oldid=5657806) |
 | ar | جمجمة يوريك | translated: the game's own name, translated for the game | وا أسفاه، يوريك المسكين! لقد عرفته يا هوراشيو. | NEW, unsourced: translated for the game, not reviewed |
 | hi | योरिक की खोपड़ी | translated: the game's own name, translated for the game | हाय, बेचारा योरिक! मैं उसे जानता था, होरेशियो। | NEW, unsourced: translated for the game, not reviewed |
 | zh | 约里克的骷髅 | translated: the game's own name, translated for the game | 唉，可怜的约里克！我认识他，赫瑞修。 | NEW, unsourced: translated for the game, not reviewed |
@@ -593,7 +1151,7 @@ English line: "The course of true love never did run smooth." (A Midsummer Night
 | pt | Poção do amor | translated: the game's own name, translated for the game | O curso do verdadeiro amor nunca correu sereno. | NEW, unsourced: translated for the game, not reviewed |
 | pl | Napój miłosny | translated: the game's own name, translated for the game | Droga prawdziwej miłości nigdy nie była gładka. | NEW, unsourced: translated for the game, not reviewed |
 | ru | Любовное зелье | translated: the game's own name, translated for the game | Путь истинной любви никогда не был гладким. | NEW, unsourced: translated for the game, not reviewed |
-| ar | شراب الحب | translated: the game's own name, translated for the game | طريق الحب الصادق لم يكن يوماً ممهداً. | NEW, unsourced: translated for the game, not reviewed |
+| ar | شراب الحب | translated: the game's own name, translated for the game | طريق الحب الصادق لم يكن يومًا ممهدًا. | NEW, unsourced: translated for the game, not reviewed |
 | hi | प्रेम औषधि | translated: the game's own name, translated for the game | सच्चे प्रेम की राह कभी सीधी नहीं रही। | NEW, unsourced: translated for the game, not reviewed |
 | zh | 爱情魔药 | translated: the game's own name, translated for the game | 真爱的道路从来不曾平坦。 | NEW, unsourced: translated for the game, not reviewed |
 | ja | 惚れ薬 | translated: the game's own name, translated for the game | まことの恋の道は、けっして平らであったためしがない。 | NEW, unsourced: translated for the game, not reviewed |
@@ -637,7 +1195,7 @@ English line: "If ever you disturb our streets again, your lives shall pay the f
 | pt | (none) | missing: Q15829750 has no label in pt and no pt.wikipedia.org article | Se alguma vez voltardes a perturbar as nossas ruas, as vossas vidas pagarão a quebra da paz. | NEW, unsourced: translated for the game, not reviewed |
 | pl | (none) | missing: Q15829750 has no label in pl and no pl.wikipedia.org article | Jeśli raz jeszcze zaburzycie pokój, / Żywotem wasze opłacicie waśnie. | published: Leon Ulrich (1811–1885), Dzieła dramatyczne Williama Shakespeare, Kraków, 1895 (pl.wikisource.org transcription); Public domain: Poland (life + 70 years; translator died 1885) and United States (published before 1931); [source](https://pl.wikisource.org/wiki/Romeo_i_Julia_%28Shakespeare%2C_t%C5%82um._Ulrich%2C_1895%29/Akt_pierwszy?oldid=3285361) |
 | ru | герцог Эскал | wikidata: Q15829750 label (ru) | Если вы ещё раз нарушите покой наших улиц, вы заплатите жизнью за нарушенный мир. | NEW, unsourced: translated for the game, not reviewed |
-| ar | (none) | missing: Q15829750 has no label in ar and no ar.wikipedia.org article | إن عدتم يوماً إلى تعكير شوارعنا فستدفع حياتكم ثمن الإخلال بالسلام. | NEW, unsourced: translated for the game, not reviewed |
+| ar | (none) | missing: Q15829750 has no label in ar and no ar.wikipedia.org article | إن عدتم يومًا إلى تعكير شوارعنا فستدفع حياتكم ثمن الإخلال بالسلام. | NEW, unsourced: translated for the game, not reviewed |
 | hi | (none) | missing: Q15829750 has no label in hi and no hi.wikipedia.org article | यदि तुमने फिर कभी हमारी गलियों की शांति भंग की, तो तुम्हारे प्राण उसका दंड भरेंगे। | NEW, unsourced: translated for the game, not reviewed |
 | zh | (none) | missing: Q15829750 has no label in zh and no zh.wikipedia.org article | 你们若再扰乱我们的街道，就要用性命抵偿破坏和平的罪过。 | NEW, unsourced: translated for the game, not reviewed |
 | ja | (none) | missing: Q15829750 has no label in ja and no ja.wikipedia.org article | 爾後再び公安を亂るに於ては汝等が命は無いぞよ | published: 坪内逍遙 Tsubouchi Shōyō (1859–1935), 『ロミオとヂュリエット』新修シェークスピヤ全集 第二十五卷, 中央公論社, 1933 (ja.wikisource.org transcription of the Aozora Bunko text, card 42773; old orthography as printed); Public domain: Japan (translator died 1935; Japan’s term was then life + 50, so the work fell into the public domain on 1 January 1986, and the 2018 extension to life + 70 did not revive it; life + 70 is met as well) and United States (published in 1933, but already in the public domain in Japan on 1 January 1996, so US copyright was not restored); [source](https://ja.wikisource.org/wiki/%E3%83%AD%E3%83%9F%E3%82%AA%E3%81%A8%E3%83%82%E3%83%A5%E3%83%AA%E3%82%A8%E3%83%83%E3%83%88?oldid=212568) |
@@ -879,7 +1437,7 @@ English line: "I'll put a girdle round about the earth in forty minutes." (A Mid
 | pt | Sumo da flor de Puck | translated: the game's own name, translated for the game | Porei um cinto em volta da terra em quarenta minutos. | NEW, unsourced: translated for the game, not reviewed |
 | pl | Sok z kwiatu Puka | translated: the game's own name, translated for the game | W czterdzieści minut okołuję ziemię | published: Leon Ulrich (1811–1885), Dzieła dramatyczne Williama Shakespeare, Kraków, 1895 (pl.wikisource.org transcription); Public domain: Poland (life + 70 years; translator died 1885) and United States (published before 1931); [source](https://pl.wikisource.org/wiki/Sen_nocy_letniej_%28Shakespeare%2C_t%C5%82um._Ulrich%2C_1895%29/Akt_drugi?oldid=3286441) |
 | ru | Сок цветка Пака | translated: the game's own name, translated for the game | Я опояшу землю за сорок минут. | NEW, unsourced: translated for the game, not reviewed |
-| ar | عصير زهرة باك | translated: the game's own name, translated for the game | سأضع حزاماً حول الأرض في أربعين دقيقة. | NEW, unsourced: translated for the game, not reviewed |
+| ar | عصير زهرة باك | translated: the game's own name, translated for the game | سأضع حزامًا حول الأرض في أربعين دقيقة. | NEW, unsourced: translated for the game, not reviewed |
 | hi | पक के फूल का रस | translated: the game's own name, translated for the game | मैं चालीस मिनट में धरती के चारों ओर पट्टा बाँध दूँगा। | NEW, unsourced: translated for the game, not reviewed |
 | zh | 帕克的花汁 | translated: the game's own name, translated for the game | 我要在四十分钟内给地球围上一条腰带。 | NEW, unsourced: translated for the game, not reviewed |
 | ja | パックの花の汁 | translated: the game's own name, translated for the game | 四十分で地球に帯をひと巻きしてみせます。 | NEW, unsourced: translated for the game, not reviewed |
@@ -945,7 +1503,7 @@ English line: "Thou shalt get kings, though thou be none." (Macbeth 1.3)
 | pt | Banquo | wikidata: Q806945 label (pt) | Gerarás reis, embora não sejas rei. | NEW, unsourced: translated for the game, not reviewed |
 | pl | Banquo | wikidata: Q806945 label (pl) | Spłodzisz królów, choć sam nim nie będziesz. | NEW, unsourced: translated for the game, not reviewed |
 | ru | Банко | wikidata: Q806945 label (ru) | Ты породишь королей, хотя сам не будешь королём. | NEW, unsourced: translated for the game, not reviewed |
-| ar | بانكو | wikidata: Q806945 label (ar) | ستنجب ملوكاً وإن لم تكن أنت ملكاً. | NEW, unsourced: translated for the game, not reviewed |
+| ar | بانكو | wikidata: Q806945 label (ar) | ستنجب ملوكًا وإن لم تكن أنت ملكًا. | NEW, unsourced: translated for the game, not reviewed |
 | hi | बैंको | wikidata: Q806945 label (hi) | तू राजाओं को जन्म देगा, भले ही तू स्वयं राजा न हो। | NEW, unsourced: translated for the game, not reviewed |
 | zh | 班柯 | wikidata: Q806945 label (zh) | 你虽然不是君王，却要生下许多君王。 | NEW, unsourced: translated for the game, not reviewed |
 | ja | バンクォウ | wikidata: Q806945 label (ja) | おまえは王にはならぬが、王たちを生むだろう。 | NEW, unsourced: translated for the game, not reviewed |
@@ -1032,7 +1590,7 @@ English line: "Not that I loved Caesar less, but that I loved Rome more." (Juliu
 | it | Bruto | derived: word 3 of 3 of "Marco Giunio Bruto" (Q172248 label (it)) | Bruto amò Roma, a preferenza di Cesare. | published: Carlo Rusconi (1812–1889), Teatro completo di Shakspeare, Torino, 1858–1859 (it.wikisource.org transcription of the 1858–1859 volumes); Public domain: Italy (life + 70 years; translator died 1889) and United States (published before 1931); [source](https://it.wikisource.org/wiki/Giulio_Cesare/Atto_terzo?oldid=3803538) |
 | pt | Bruto | derived: word 3 of 3 of "Marco Júnio Bruto" (Q172248 label (pt)) | Não que eu amasse menos César, mas amava mais Roma. | NEW, unsourced: translated for the game, not reviewed |
 | pl | Brutus | derived: word 3 of 3 of "Marek Juniusz Brutus" (Q172248 label (pl)) | Nie dlatego, że mniej kochałem Cezara, lecz dlatego, że bardziej kochałem Rzym. | NEW, unsourced: translated for the game, not reviewed |
-| ru | Брут | derived: word 3 of 3 of "Марк Юний Брут" (Q172248 label (ru)) | Не потому, что я меньше любил Цезаря, а потому, что я больше любил Рим. | NEW, unsourced: translated for the game, not reviewed |
+| ru | Брут | derived: word 3 of 3 of "Марк Юний Брут" (Q172248 label (ru)) | не оттого я это сделал, что любил Цезаря меньше, но лишь оттого, что любил Рим больше. | published: Павел Козлов (1841–1891), «Юлий Цезарь», 1880 (ru.wikisource.org transcription, modern orthography); Public domain: Russia (life + 70 years; translator died 1891) and United States (published before 1931); [source](https://ru.wikisource.org/wiki/%D0%AE%D0%BB%D0%B8%D0%B9_%D0%A6%D0%B5%D0%B7%D0%B0%D1%80%D1%8C_%28%D0%A8%D0%B5%D0%BA%D1%81%D0%BF%D0%B8%D1%80%3B_%D0%9A%D0%BE%D0%B7%D0%BB%D0%BE%D0%B2%29?oldid=5753958) |
 | ar | بروتس | wikidata: Q172248 label (ar) | ليس لأني أحببت قيصر أقل، بل لأني أحببت روما أكثر. | NEW, unsourced: translated for the game, not reviewed |
 | hi | (none) | missing: Q172248 has no label in hi and no hi.wikipedia.org article | यह नहीं कि मैं सीज़र से कम प्रेम करता था, बल्कि यह कि मैं रोम से अधिक प्रेम करता था। | NEW, unsourced: translated for the game, not reviewed |
 | zh | 布鲁图 | derived: word 3 of 3 of "马尔库斯·尤尼乌斯·布鲁图" (Q172248 label (zh-hans)) | 不是我爱恺撒少，而是我爱罗马更多。 | NEW, unsourced: translated for the game, not reviewed |
@@ -1054,7 +1612,7 @@ English line: "The fault, dear Brutus, is not in our stars, but in ourselves." (
 | it | Cassio | derived: word 2 of 3 of "Gaio Cassio Longino" (Q207370 label (it)) | Sonovi età, in cui gli uomini riescono arbitri de’ loro destini; e se schiavi noi siamo, la colpa è in noi soli. | published: Carlo Rusconi (1812–1889), Teatro completo di Shakspeare, Torino, 1858–1859 (it.wikisource.org transcription of the 1858–1859 volumes); Public domain: Italy (life + 70 years; translator died 1889) and United States (published before 1931); [source](https://it.wikisource.org/wiki/Giulio_Cesare/Atto_primo?oldid=3803534) |
 | pt | Cássio | derived: word 2 of 3 of "Caio Cássio Longino" (Q207370 label (pt)) | A culpa, caro Bruto, não está nas nossas estrelas, mas em nós mesmos. | NEW, unsourced: translated for the game, not reviewed |
 | pl | Kasjusz | derived: word 2 of 3 of "Gajusz Kasjusz Longinus" (Q207370 label (pl)) | Wina, drogi Brutusie, nie leży w naszych gwiazdach, lecz w nas samych. | NEW, unsourced: translated for the game, not reviewed |
-| ru | Кассий | derived: word 2 of 3 of "Гай Кассий Лонгин" (Q207370 label (ru)) | Вина, дорогой Брут, не в наших звёздах, а в нас самих. | NEW, unsourced: translated for the game, not reviewed |
+| ru | Кассий | derived: word 2 of 3 of "Гай Кассий Лонгин" (Q207370 label (ru)) | Не в звездах, нет, а в нас самих ищи / Причину, что ничтожны мы и слабы. | published: Павел Козлов (1841–1891), «Юлий Цезарь», 1880 (ru.wikisource.org transcription, modern orthography); Public domain: Russia (life + 70 years; translator died 1891) and United States (published before 1931); [source](https://ru.wikisource.org/wiki/%D0%AE%D0%BB%D0%B8%D0%B9_%D0%A6%D0%B5%D0%B7%D0%B0%D1%80%D1%8C_%28%D0%A8%D0%B5%D0%BA%D1%81%D0%BF%D0%B8%D1%80%3B_%D0%9A%D0%BE%D0%B7%D0%BB%D0%BE%D0%B2%29?oldid=5753958) |
 | ar | كاسيوس | derived: word 2 of 3 of "غايوس كاسيوس لونغينوس" (Q207370 label (ar)) | العيب يا عزيزي بروتس ليس في نجومنا، بل في أنفسنا. | NEW, unsourced: translated for the game, not reviewed |
 | hi | कैसियस | derived: word 2 of 3 of "गैयस कैसियस लोंगिनस" (Q207370 label (hi)) | दोष, प्रिय ब्रूटस, हमारे सितारों में नहीं, हम में ही है। | NEW, unsourced: translated for the game, not reviewed |
 | zh | 卡西乌斯 | derived: word 2 of 3 of "盖乌斯·卡西乌斯·朗基努斯" (Q207370 label (zh-hans)) | 亲爱的布鲁图，过错不在我们的星辰，而在我们自己。 | NEW, unsourced: translated for the game, not reviewed |
@@ -1165,7 +1723,7 @@ English line: "I have had a most rare vision. I have had a dream, past the wit o
 | pt | (none) | missing: Q2190927 has no label in pt and no pt.wikipedia.org article | Tive uma visão raríssima. Tive um sonho que excede o entendimento do homem. | NEW, unsourced: translated for the game, not reviewed |
 | pl | (none) | missing: Q2190927 has no label in pl and no pl.wikipedia.org article | Przedziwne miałem widzenie. Miałem sen, a żaden ludzki dowcip nie wypowie, co to za sen był. | published: Leon Ulrich (1811–1885), Dzieła dramatyczne Williama Shakespeare, Kraków, 1895 (pl.wikisource.org transcription); Public domain: Poland (life + 70 years; translator died 1885) and United States (published before 1931); [source](https://pl.wikisource.org/wiki/Sen_nocy_letniej_%28Shakespeare%2C_t%C5%82um._Ulrich%2C_1895%29/Akt_czwarty?oldid=3286440) |
 | ru | (none) | missing: Q2190927 has no label in ru and no ru.wikipedia.org article | Мне было редчайшее видение. Мне приснился сон, который выше человеческого разумения. | NEW, unsourced: translated for the game, not reviewed |
-| ar | (none) | missing: Q2190927 has no label in ar and no ar.wikipedia.org article | رأيت رؤيا عجيبة نادرة. رأيت حلماً يفوق عقل الإنسان. | NEW, unsourced: translated for the game, not reviewed |
+| ar | (none) | missing: Q2190927 has no label in ar and no ar.wikipedia.org article | رأيت رؤيا عجيبة نادرة. رأيت حلمًا يفوق عقل الإنسان. | NEW, unsourced: translated for the game, not reviewed |
 | hi | बॉटम | derived: word 2 of 2 of "निक बॉटम" (Q2190927 label (hi)) | मैंने एक बड़ा अनोखा दृश्य देखा है। मैंने एक सपना देखा है, जो मनुष्य की बुद्धि से परे है। | NEW, unsourced: translated for the game, not reviewed |
 | zh | 波顿 | derived: word 2 of 2 of "尼克·波顿" (Q2190927 label (zh)) | 我看见了一个极其稀奇的幻象。我做了一个梦，超出人的智慧所能说明。 | NEW, unsourced: translated for the game, not reviewed |
 | ja | ボトム | derived: word 2 of 2 of "ニック・ボトム" (Q2190927 label (ja)) | 世にも珍しい幻を見た。人間の知恵では測れない夢を見た。 | NEW, unsourced: translated for the game, not reviewed |
@@ -1187,7 +1745,7 @@ English line: "These times of woe afford no time to woo." (Romeo and Juliet 3.4)
 | pt | (none) | missing: Q3687815 has no label in pt and no pt.wikipedia.org article | Estes tempos de dor não dão tempo para cortejar. | NEW, unsourced: translated for the game, not reviewed |
 | pl | (none) | missing: Q3687815 has no label in pl and no pl.wikipedia.org article | Czas żalu złym jest czasem do zalotów. | published: Leon Ulrich (1811–1885), Dzieła dramatyczne Williama Shakespeare, Kraków, 1895 (pl.wikisource.org transcription); Public domain: Poland (life + 70 years; translator died 1885) and United States (published before 1931); [source](https://pl.wikisource.org/wiki/Romeo_i_Julia_%28Shakespeare%2C_t%C5%82um._Ulrich%2C_1895%29/Akt_trzeci?oldid=3285363) |
 | ru | граф Парис | wikidata: Q3687815 label (ru) | В эти дни скорби нет времени для сватовства. | NEW, unsourced: translated for the game, not reviewed |
-| ar | الكونت باريس | wikidata: Q3687815 label (ar) | أوقات الحزن هذه لا تترك وقتاً للغزل. | NEW, unsourced: translated for the game, not reviewed |
+| ar | الكونت باريس | wikidata: Q3687815 label (ar) | أوقات الحزن هذه لا تترك وقتًا للغزل. | NEW, unsourced: translated for the game, not reviewed |
 | hi | काउंट पेरिस | wikidata: Q3687815 label (hi) | शोक के इन दिनों में प्रणय के लिए समय नहीं है। | NEW, unsourced: translated for the game, not reviewed |
 | zh | 帕里斯伯爵 | wikidata: Q3687815 label (zh) | 这样悲伤的时候没有工夫谈情求爱。 | NEW, unsourced: translated for the game, not reviewed |
 | ja | (none) | missing: Q3687815 has no label in ja and no ja.wikipedia.org article | かういふ愁傷の最中には祝言の話も出來まい。 | published: 坪内逍遙 Tsubouchi Shōyō (1859–1935), 『ロミオとヂュリエット』新修シェークスピヤ全集 第二十五卷, 中央公論社, 1933 (ja.wikisource.org transcription of the Aozora Bunko text, card 42773; old orthography as printed); Public domain: Japan (translator died 1935; Japan’s term was then life + 50, so the work fell into the public domain on 1 January 1986, and the 2018 extension to life + 70 did not revive it; life + 70 is met as well) and United States (published in 1933, but already in the public domain in Japan on 1 January 1996, so US copyright was not restored); [source](https://ja.wikisource.org/wiki/%E3%83%AD%E3%83%9F%E3%82%AA%E3%81%A8%E3%83%82%E3%83%A5%E3%83%AA%E3%82%A8%E3%83%83%E3%83%88?oldid=212568) |
@@ -1253,7 +1811,7 @@ English line: "All that glisters is not gold." (The Merchant of Venice 2.7)
 | pt | O cofre de Pórcia | translated: the game's own name, translated for the game | Nem tudo o que reluz é ouro. | NEW, unsourced: translated for the game, not reviewed |
 | pl | Szkatułka Porcji | translated: the game's own name, translated for the game | Nie wszystko ma wagę złota, / Co jak złoto czyste świeci | published: Leon Ulrich (1811–1885), Dzieła dramatyczne Williama Shakespeare, Kraków, 1895 (pl.wikisource.org transcription); Public domain: Poland (life + 70 years; translator died 1885) and United States (published before 1931); [source](https://pl.wikisource.org/wiki/Kupiec_wenecki_%28Shakespeare%2C_t%C5%82um._Ulrich%2C_1895%29/Akt_drugi?oldid=3263783) |
 | ru | Ларец Порции | translated: the game's own name, translated for the game | Не всё то золото, что блестит. | NEW, unsourced: translated for the game, not reviewed |
-| ar | صندوق بورشيا | translated: the game's own name, translated for the game | ليس كل ما يلمع ذهباً. | NEW, unsourced: translated for the game, not reviewed |
+| ar | صندوق بورشيا | translated: the game's own name, translated for the game | ليس كل ما يلمع ذهبًا. | NEW, unsourced: translated for the game, not reviewed |
 | hi | पोर्टिया की पेटी | translated: the game's own name, translated for the game | हर चमकती चीज़ सोना नहीं होती। | NEW, unsourced: translated for the game, not reviewed |
 | zh | 波西亚的匣子 | translated: the game's own name, translated for the game | 闪光的不都是金子。 | NEW, unsourced: translated for the game, not reviewed |
 | ja | ポーシャの小箱 | translated: the game's own name, translated for the game | 光るものすべてが金ではない。 | NEW, unsourced: translated for the game, not reviewed |
@@ -1473,7 +2031,7 @@ English line: "Put this in any liquid thing you will, and drink it off; and, if 
 | pt | Elixir do boticário | translated: the game's own name, translated for the game | Deita isto em qualquer líquido que queiras e bebe-o; e, ainda que tivesses a força de vinte homens, despachar-te-ia de imediato. | NEW, unsourced: translated for the game, not reviewed |
 | pl | Eliksir aptekarza | translated: the game's own name, translated for the game | Wsypiesz ten proszek w jakikolwiek napój, / A gdy wypijesz, chociażbyś miał siły / Dwudziestu mężów, upadniesz bez ducha. | published: Leon Ulrich (1811–1885), Dzieła dramatyczne Williama Shakespeare, Kraków, 1895 (pl.wikisource.org transcription); Public domain: Poland (life + 70 years; translator died 1885) and United States (published before 1931); [source](https://pl.wikisource.org/wiki/Romeo_i_Julia_%28Shakespeare%2C_t%C5%82um._Ulrich%2C_1895%29/Akt_pi%C4%85ty?oldid=3285362) |
 | ru | Эликсир аптекаря | translated: the game's own name, translated for the game | Влей это в любую жидкость и выпей; и будь в тебе сила двадцати человек, оно тотчас тебя прикончит. | NEW, unsourced: translated for the game, not reviewed |
-| ar | إكسير الصيدلاني | translated: the game's own name, translated for the game | ضع هذا في أي سائل تشاء واشربه كله؛ ولو كانت لك قوة عشرين رجلاً لقضى عليك في الحال. | NEW, unsourced: translated for the game, not reviewed |
+| ar | إكسير الصيدلاني | translated: the game's own name, translated for the game | ضع هذا في أي سائل تشاء واشربه كله؛ ولو كانت لك قوة عشرين رجلًا لقضى عليك في الحال. | NEW, unsourced: translated for the game, not reviewed |
 | hi | अत्तार का अमृत | translated: the game's own name, translated for the game | इसे जिस किसी तरल में चाहो डालो और पी जाओ; तुममें बीस आदमियों का बल भी हो, तो यह तुम्हें तुरंत निपटा देगा। | NEW, unsourced: translated for the game, not reviewed |
 | zh | 药剂师的灵药 | translated: the game's own name, translated for the game | 把这个放进随便什么液体里喝下去；即使你有二十个人的力气，它也会立刻送你上路。 | NEW, unsourced: translated for the game, not reviewed |
 | ja | 薬屋の霊薬 | translated: the game's own name, translated for the game | これをばお好みの飮料に入れて飮ませられい。たとひ二十人力おじゃらしませうとも、立地に片附かッしゃりませう。 | published: 坪内逍遙 Tsubouchi Shōyō (1859–1935), 『ロミオとヂュリエット』新修シェークスピヤ全集 第二十五卷, 中央公論社, 1933 (ja.wikisource.org transcription of the Aozora Bunko text, card 42773; old orthography as printed); Public domain: Japan (translator died 1935; Japan’s term was then life + 50, so the work fell into the public domain on 1 January 1986, and the 2018 extension to life + 70 did not revive it; life + 70 is met as well) and United States (published in 1933, but already in the public domain in Japan on 1 January 1996, so US copyright was not restored); [source](https://ja.wikisource.org/wiki/%E3%83%AD%E3%83%9F%E3%82%AA%E3%81%A8%E3%83%82%E3%83%A5%E3%83%AA%E3%82%A8%E3%83%83%E3%83%88?oldid=212568) |
@@ -1495,7 +2053,7 @@ English line: "I wandered lonely as a cloud that floats on high o'er vales and h
 | pt | William Wordsworth | wikidata: Q45546 label (pt) | Eu vagueava solitário como uma nuvem que flutua bem alto sobre vales e colinas. | NEW, unsourced: translated for the game, not reviewed |
 | pl | William Wordsworth | wikidata: Q45546 label (pl) | Wędrowałem samotny jak obłok, co płynie wysoko nad dolinami i wzgórzami. | NEW, unsourced: translated for the game, not reviewed |
 | ru | Уильям Вордсворт | wikidata: Q45546 label (ru) | Я бродил одиноко, как облако, что плывёт высоко над долинами и холмами. | NEW, unsourced: translated for the game, not reviewed |
-| ar | ويليام ووردزوورث | wikidata: Q45546 label (ar) | همت وحيداً كسحابة تطفو عالياً فوق الوديان والتلال. | NEW, unsourced: translated for the game, not reviewed |
+| ar | ويليام ووردزوورث | wikidata: Q45546 label (ar) | همت وحيدًا كسحابة تطفو عاليًا فوق الوديان والتلال. | NEW, unsourced: translated for the game, not reviewed |
 | hi | विलियम वर्ड्सवर्थ | wikidata: Q45546 label (hi) | मैं अकेला भटकता था, उस बादल की तरह जो घाटियों और पहाड़ियों के ऊपर ऊँचा तैरता है। | NEW, unsourced: translated for the game, not reviewed |
 | zh | 威廉·华兹华斯 | wikidata: Q45546 label (zh) | 我独自漫游，像一朵云高高飘过山谷和丘陵。 | NEW, unsourced: translated for the game, not reviewed |
 | ja | ウィリアム・ワーズワース | wikidata: Q45546 label (ja) | 私は谷や丘の上高く漂う雲のように、ひとりさまよった。 | NEW, unsourced: translated for the game, not reviewed |
@@ -1534,7 +2092,7 @@ English line: "A thing of beauty is a joy for ever: its loveliness increases." (
 |---|---|---|---|---|
 | es | John Keats | wikidata: Q82083 label (es) | Una cosa bella es un gozo para siempre: su encanto crece. | NEW, unsourced: translated for the game, not reviewed |
 | fr | John Keats | wikidata: Q82083 label (fr) | Une chose de beauté est une joie pour toujours : son charme ne cesse de croître. | NEW, unsourced: translated for the game, not reviewed |
-| de | John Keats | wikidata: Q82083 label (de) | Ein Ding der Schönheit ist eine Freude für immer: seine Lieblichkeit wächst. | NEW, unsourced: translated for the game, not reviewed |
+| de | John Keats | wikidata: Q82083 label (de) | Ein Ding der Schönheit ist eine Freude für immer: Seine Lieblichkeit wächst. | NEW, unsourced: translated for the game, not reviewed |
 | it | John Keats | wikidata: Q82083 label (it) | Una cosa bella è una gioia per sempre: la sua grazia cresce. | NEW, unsourced: translated for the game, not reviewed |
 | pt | John Keats | wikidata: Q82083 label (pt) | Uma coisa bela é uma alegria para sempre: o seu encanto cresce. | NEW, unsourced: translated for the game, not reviewed |
 | pl | John Keats | wikidata: Q82083 label (pl) | Rzecz piękna jest radością na zawsze: jej urok wciąż rośnie. | NEW, unsourced: translated for the game, not reviewed |
@@ -1559,7 +2117,7 @@ English line: "She walks in beauty, like the night of cloudless climes and starr
 | de | George Gordon Byron | wikidata: Q5679 label (de) | Sie geht in Schönheit, wie die Nacht wolkenloser Himmelsstriche und gestirnter Himmel. | NEW, unsourced: translated for the game, not reviewed |
 | it | George Gordon Byron | wikidata: Q5679 label (it) | Ella cammina nella bellezza, come la notte di climi senza nubi e di cieli stellati. | NEW, unsourced: translated for the game, not reviewed |
 | pt | Lorde Byron | wikidata: Q5679 label (pt) | Ela caminha em beleza, como a noite de climas sem nuvens e céus estrelados. | NEW, unsourced: translated for the game, not reviewed |
-| pl | George Gordon Byron | wikidata: Q5679 label (pl) | Kroczy w piękności, jak noc bezchmurnych krain i gwiaździstych niebios. | NEW, unsourced: translated for the game, not reviewed |
+| pl | George Gordon Byron | wikidata: Q5679 label (pl) | Kroczy w piękności jak noc bezchmurnych krain i gwiaździstych niebios. | NEW, unsourced: translated for the game, not reviewed |
 | ru | Джордж Гордон Байрон | wikidata: Q5679 label (ru) | Она идёт во всей красе, как ночь безоблачных краёв и звёздных небес. | NEW, unsourced: translated for the game, not reviewed |
 | ar | جورج غوردون بايرون | wikidata: Q5679 label (ar) | تمشي في الجمال، كليل الأجواء الصافية والسماوات المرصعة بالنجوم. | NEW, unsourced: translated for the game, not reviewed |
 | hi | जॉर्ज गॉर्डन बायरन | wikidata: Q5679 label (hi) | वह सौंदर्य में चलती है, निर्मेघ देशों और तारों भरे आकाश की रात की तरह। | NEW, unsourced: translated for the game, not reviewed |
@@ -1605,7 +2163,7 @@ English line: "Once upon a midnight dreary, while I pondered, weak and weary." (
 | pt | Edgar Allan Poe | wikidata: Q16867 label (pt) | Em certo dia, á hora, á hora / Da meia-noite que apavora, / Eu, cahindo de somno e exausto de fadiga | published: Machado de Assis (1839–1908), «O corvo» (first published 1883), in Poesias completas, Garnier, Rio de Janeiro, 1902 (pt.wikisource.org transcription); Public domain: Brazil (life + 70 years; translator died 1908) and United States (published before 1931); [source](https://pt.wikisource.org/wiki/O_Corvo_%28tradu%C3%A7%C3%A3o_de_Machado_de_Assis%29?oldid=512829) |
 | pl | Edgar Allan Poe | wikidata: Q16867 label (pl) | Raz, o posępnej północy, gdy dumałem, słaby i znużony. | NEW, unsourced: translated for the game, not reviewed |
 | ru | Эдгар Аллан По | wikidata: Q16867 label (ru) | Как-то в полночь, в час унылый, я вникал, устав, без силы | published: Валерий Брюсов (1873–1924), «Ворон», в книге «Эдгар По. Полное собрание поэм и стихотворений», 1924 (ru.wikisource.org transcription); Public domain: Russia (life + 70 years; translator died 1924) and United States (published before 1931); [source](https://ru.wikisource.org/wiki/%D0%92%D0%BE%D1%80%D0%BE%D0%BD_%28%D0%9F%D0%BE%3B_%D0%91%D1%80%D1%8E%D1%81%D0%BE%D0%B2%29?oldid=5049551) |
-| ar | إدغار آلان بو | wikidata: Q16867 label (ar) | ذات مرة، في منتصف ليل كئيب، بينما كنت أتأمل، ضعيفاً متعباً. | NEW, unsourced: translated for the game, not reviewed |
+| ar | إدغار آلان بو | wikidata: Q16867 label (ar) | ذات مرة، في منتصف ليل كئيب، بينما كنت أتأمل، ضعيفًا متعبًا. | NEW, unsourced: translated for the game, not reviewed |
 | hi | एडगर ऍलन पो | wikidata: Q16867 label (hi) | एक बार एक उदास आधी रात को, जब मैं थका और निर्बल सोच में डूबा था। | NEW, unsourced: translated for the game, not reviewed |
 | zh | 爱伦·坡 | wikidata: Q16867 label (zh) | 从前一个阴郁的午夜，我独自沉思，虚弱而疲倦。 | NEW, unsourced: translated for the game, not reviewed |
 | ja | エドガー・アラン・ポー | wikidata: Q16867 label (ja) | あるわびしい真夜中のこと、弱り疲れて思いにふけっていると。 | NEW, unsourced: translated for the game, not reviewed |
@@ -1627,7 +2185,7 @@ English line: "To see a World in a Grain of Sand and a Heaven in a Wild Flower."
 | pt | William Blake | wikidata: Q41513 label (pt) | Ver um mundo num grão de areia e um céu numa flor silvestre. | NEW, unsourced: translated for the game, not reviewed |
 | pl | William Blake | wikidata: Q41513 label (pl) | Zobaczyć świat w ziarenku piasku i niebo w polnym kwiecie. | NEW, unsourced: translated for the game, not reviewed |
 | ru | Уильям Блейк | wikidata: Q41513 label (ru) | Увидеть мир в одной песчинке и небо в полевом цветке. | NEW, unsourced: translated for the game, not reviewed |
-| ar | وليم بليك | wikidata: Q41513 label (ar) | أن ترى عالماً في حبة رمل، وسماء في زهرة برية. | NEW, unsourced: translated for the game, not reviewed |
+| ar | وليم بليك | wikidata: Q41513 label (ar) | أن ترى عالمًا في حبة رمل، وسماء في زهرة برية. | NEW, unsourced: translated for the game, not reviewed |
 | hi | विलियम ब्लेक | wikidata: Q41513 label (hi) | रेत के एक कण में संसार देखना और एक जंगली फूल में स्वर्ग। | NEW, unsourced: translated for the game, not reviewed |
 | zh | 威廉·布莱克 | wikidata: Q41513 label (zh) | 在一粒沙里看见一个世界，在一朵野花里看见一座天堂。 | NEW, unsourced: translated for the game, not reviewed |
 | ja | ウィリアム・ブレイク | wikidata: Q41513 label (ja) | 一粒の砂に世界を見、一輪の野の花に天国を見る。 | NEW, unsourced: translated for the game, not reviewed |
@@ -1649,7 +2207,7 @@ English line: "If Winter comes, can Spring be far behind?" (P. B. Shelley, "Ode 
 | pt | Percy Bysshe Shelley | wikidata: Q93343 label (pt) | Se o inverno chega, pode a primavera estar longe? | NEW, unsourced: translated for the game, not reviewed |
 | pl | Percy Bysshe Shelley | wikidata: Q93343 label (pl) | Jeśli nadchodzi zima, czy wiosna może być daleko? | NEW, unsourced: translated for the game, not reviewed |
 | ru | Перси Биш Шелли | wikidata: Q93343 label (ru) | Если пришла зима, может ли весна быть далеко? | NEW, unsourced: translated for the game, not reviewed |
-| ar | بيرسي بيش شيلي | wikidata: Q93343 label (ar) | إذا جاء الشتاء، فهل يكون الربيع بعيداً؟ | NEW, unsourced: translated for the game, not reviewed |
+| ar | بيرسي بيش شيلي | wikidata: Q93343 label (ar) | إذا جاء الشتاء، فهل يكون الربيع بعيدًا؟ | NEW, unsourced: translated for the game, not reviewed |
 | hi | पर्सी बिश शेली | wikidata: Q93343 label (hi) | यदि शीत ऋतु आ गई है, तो क्या वसंत दूर हो सकता है? | NEW, unsourced: translated for the game, not reviewed |
 | zh | 珀西·比希·雪莱 | wikidata: Q93343 label (zh-hans) | 冬天来了，春天还会远吗？ | NEW, unsourced: translated for the game, not reviewed |
 | ja | パーシー・ビッシュ・シェリー | wikidata: Q93343 label (ja) | 冬が来たなら、春は遠くないのではないか。 | NEW, unsourced: translated for the game, not reviewed |
@@ -1693,7 +2251,7 @@ English line: "Remember me when I am gone away, gone far away into the silent la
 | pt | Christina Rossetti | wikidata: Q236596 label (pt) | Lembra-te de mim quando eu tiver partido, partido para longe, para a terra silenciosa. | NEW, unsourced: translated for the game, not reviewed |
 | pl | Christina Rossetti | wikidata: Q236596 label (pl) | Pamiętaj o mnie, gdy odejdę, odejdę daleko, do cichej krainy. | NEW, unsourced: translated for the game, not reviewed |
 | ru | Кристина Джорджина Россетти | wikidata: Q236596 label (ru) | Вспомни обо мне, когда я уйду, уйду далеко, в безмолвный край. | NEW, unsourced: translated for the game, not reviewed |
-| ar | كريستينا روسيتي | wikidata: Q236596 label (ar) | اذكرني حين أكون قد رحلت، رحلت بعيداً إلى الأرض الصامتة. | NEW, unsourced: translated for the game, not reviewed |
+| ar | كريستينا روسيتي | wikidata: Q236596 label (ar) | اذكرني حين أكون قد رحلت، رحلت بعيدًا إلى الأرض الصامتة. | NEW, unsourced: translated for the game, not reviewed |
 | hi | (none) | missing: Q236596 has no label in hi and no hi.wikipedia.org article | मेरा स्मरण करना जब मैं चली जाऊँ, दूर उस मौन देश में चली जाऊँ। | NEW, unsourced: translated for the game, not reviewed |
 | zh | 克里斯蒂娜·罗塞蒂 | wikidata: Q236596 label (zh-hans) | 请记着我，当我已经离去，远远地去了那寂静的国度。 | NEW, unsourced: translated for the game, not reviewed |
 | ja | クリスティーナ・ロセッティ | wikidata: Q236596 label (ja) | 私を思い出してください、私が去ったあと、遠く静かな国へ去ったあとに。 | NEW, unsourced: translated for the game, not reviewed |
@@ -1803,7 +2361,7 @@ English line: "Swift as thought, I carry the words of gods to mortal ears." (the
 | pt | Hermes | wikidata: Q41484 label (pt) | Veloz como o pensamento, levo as palavras dos deuses a ouvidos mortais. | NEW, unsourced: translated for the game, not reviewed |
 | pl | Hermes | wikidata: Q41484 label (pl) | Szybki jak myśl, niosę słowa bogów do uszu śmiertelnych. | NEW, unsourced: translated for the game, not reviewed |
 | ru | Гермес | wikidata: Q41484 label (ru) | Быстрый, как мысль, я несу слова богов к ушам смертных. | NEW, unsourced: translated for the game, not reviewed |
-| ar | هيرميز | wikidata: Q41484 label (ar) | سريعاً كالفكر، أحمل كلمات الآلهة إلى آذان البشر. | NEW, unsourced: translated for the game, not reviewed |
+| ar | هيرميز | wikidata: Q41484 label (ar) | سريعًا كالفكر، أحمل كلمات الآلهة إلى آذان البشر. | NEW, unsourced: translated for the game, not reviewed |
 | hi | हरमीस | wikidata: Q41484 label (hi) | विचार की तरह तेज़, मैं देवताओं के वचन नश्वर कानों तक ले जाता हूँ। | NEW, unsourced: translated for the game, not reviewed |
 | zh | 赫耳墨斯 | wikidata: Q41484 label (zh) | 快如思想，我把众神的话带到凡人的耳边。 | NEW, unsourced: translated for the game, not reviewed |
 | ja | ヘルメース | wikidata: Q41484 label (ja) | 思いのように速く、我は神々の言葉を人の耳に運ぶ。 | NEW, unsourced: translated for the game, not reviewed |
@@ -1869,7 +2427,7 @@ English line: "Tell me, O Muse, of the man of many ways, who wandered far." (the
 | pt | Odisseu | wikidata: Q47231 label (pt) | Fala-me, ó Musa, do homem de muitos caminhos, que vagueou por longe. | NEW, unsourced: translated for the game, not reviewed |
 | pl | Odyseusz | wikidata: Q47231 label (pl) | Opowiedz mi, Muzo, o mężu wielu dróg, który błąkał się daleko. | NEW, unsourced: translated for the game, not reviewed |
 | ru | Одиссей | wikidata: Q47231 label (ru) | Расскажи мне, о Муза, о муже многих путей, что странствовал далеко. | NEW, unsourced: translated for the game, not reviewed |
-| ar | أوديسيوس | wikidata: Q47231 label (ar) | حدثيني يا ربة الشعر عن الرجل الكثير الحيل، الذي تاه بعيداً. | NEW, unsourced: translated for the game, not reviewed |
+| ar | أوديسيوس | wikidata: Q47231 label (ar) | حدثيني يا ربة الشعر عن الرجل الكثير الحيل، الذي تاه بعيدًا. | NEW, unsourced: translated for the game, not reviewed |
 | hi | ओदुस्सेउस | wikidata: Q47231 label (hi) | हे काव्य की देवी, मुझे उस अनेक युक्तियों वाले पुरुष की कथा सुनाओ जो दूर तक भटका। | NEW, unsourced: translated for the game, not reviewed |
 | zh | 奥德修斯 | wikidata: Q47231 label (zh) | 缪斯啊，请为我讲述那个足智多谋、漂泊远方的人。 | NEW, unsourced: translated for the game, not reviewed |
 | ja | オデュッセウス | wikidata: Q47231 label (ja) | 語りたまえ、ムーサよ、遠くさすらった知略に富む男のことを。 | NEW, unsourced: translated for the game, not reviewed |
