@@ -9,150 +9,176 @@ const pack: CardTextPack = {
    "name": "The Sonnet Man",
    "nameSource": "translated",
    "quote": "Czy mam cię porównać do letniego dnia?",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Materializuje się wielka scena. The Sonnet Man wychodzi ze złotego światła reflektora z mikrofonem w dłoni. Słowa Szekspira zmieniają się w hip-hopowe wersy, a tłum wiwatuje."
   },
   "MO-001": {
    "nameSource": "wikidata",
    "name": "Romeo Monteki",
    "quote": "Jakież światło z okna błyska?",
-   "quoteSource": "published"
+   "quoteSource": "published",
+   "scene": "Rozwija się scena balkonowa w blasku księżyca. Romeo wyciąga rękę ku górze, gdy nad nim pojawia się Julia. W powietrzu unoszą się płatki róż. Scena pulsuje ciepłą, karmazynową poświatą."
   },
   "CA-001": {
    "nameSource": "wikidata",
    "name": "Julia Kapulet",
    "quote": "Cóż jest w imieniu? To, co zwiemy różą...",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Ogród Kapuletów kwitnie w świetle księżyca. Julia stoi wśród róż, a jej oczy błyszczą przekorą. W gałęziach śpiewa słowik."
   },
   "DC-001": {
    "nameSource": "wikidata",
    "name": "Hamlet",
    "quote": "Być albo nie być, oto jest pytanie.",
-   "quoteSource": "published"
+   "quoteSource": "published",
+   "scene": "Zamek Elsynor wyłania się z cienia. Hamlet stoi na blankach, a obok niego unosi się czaszka Yorika. Na murach pojawia się widmowa postać."
   },
   "DC-002": {
    "nameSource": "wikidata",
    "name": "Ofelia",
    "quote": "Masz tu rozmaryn, to na pamiątkę",
-   "quoteSource": "published"
+   "quoteSource": "published",
+   "scene": "Łagodny strumień wije się przez wierzbowy gaj. Ofelia unosi się wśród polnych kwiatów, szepcząc zapomniane wiersze. Płatki wirują w nurcie."
   },
   "MO-002": {
    "nameSource": "wikidata",
    "name": "Merkucjo",
    "quote": "Mór na wasze domy!",
-   "quoteSource": "published"
+   "quoteSource": "published",
+   "scene": "Ulica Werony wybucha chaosem. Merkucjo tańczy między ostrzami, śmiejąc się niebezpieczeństwu w twarz. Ze zderzającej się stali sypią się iskry."
   },
   "FA-001": {
    "nameSource": "missing",
    "quote": "Panie, jacyż głupcy z tych śmiertelników!",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Zaczarowany las skrzy się psotą. Puk przemyka między starymi dębami, zostawiając smugi czarodziejskiego pyłu. W dole śpiący śmiertelnicy śnią dziwne sny."
   },
   "FA-002": {
    "nameSource": "missing",
    "quote": "Chodź, usiądź na tym kwiecistym łożu.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Z leśnego poszycia wyrasta tron z żywych pnączy. Tytania włada swoim dworem wróżek, a świetliki rozjaśniają korony drzew. Sama natura kłania się jej woli."
   },
   "RL-001": {
    "name": "Czaszka Yorika",
    "nameSource": "translated",
    "quote": "Ach, biedny Yoriku! Znałem go, Horacyo",
-   "quoteSource": "published"
+   "quoteSource": "published",
+   "scene": "Czaszka spoczywa na aksamicie w mrocznej krypcie. Rozlega się upiorny śmiech, a wspomnienia nadwornego błazna migocą jak płomień świecy."
   },
   "RL-002": {
    "name": "Laska Prospera",
    "nameSource": "translated",
    "quote": "Teraz zniknęły wszystkie czary moje",
-   "quoteSource": "published"
+   "quoteSource": "published",
+   "scene": "Sękata laska trzeszczy od tajemnej mocy. Burza wiruje wokół niej, gdy Prospero szepcze swoje ostatnie zaklęcie. Błyskawica rozdziera niebo."
   },
   "PT-001": {
    "name": "Napój miłosny",
    "nameSource": "translated",
    "quote": "Droga prawdziwej miłości nigdy nie była gładka.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Świetlista fiolka pulsuje różanym blaskiem. Z jej powierzchni unoszą się serca, a powietrze wypełnia słodka melodia."
   },
   "PT-002": {
    "name": "Wywar czarownic",
    "nameSource": "translated",
    "quote": "Podwój, podwój trud i znój.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Bulgoczący kocioł bucha zielonym dymem. Krążą wokół niego trzy mroczne postacie, zawodząc zaklęcia. Z ciemnego lasu błyszczą oczy."
   },
   "VC-001": {
    "nameSource": "missing",
    "quote": "Jeśli jeszcze raz zakłócicie spokój naszych ulic, życiem zapłacicie za złamanie pokoju.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Książę stoi na stopniach pałacu w Weronie; jego głos nakazuje milczenie zwaśnionemu tłumowi. Złote berło płonie władzą."
   },
   "VC-002": {
    "nameSource": "missing",
    "quote": "Gwałtowna rozkosz gwałtownie się kończy",
-   "quoteSource": "published"
+   "quoteSource": "published",
+   "scene": "Klasztorna cela w blasku świec. Zakonnik dogląda ogródka ziół i trucizn, a mądrość wyryta jest na jego ogorzałej twarzy."
   },
   "VC-003": {
    "nameSource": "missing",
    "quote": "Jestem wyrobnicą i trudzę się dla twojej rozkoszy.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Ciepła kuchnia w domu Kapuletów. Niania krząta się z zaciętym oddaniem, z tajnym listem wsuniętym za fartuch."
   },
   "TP-001": {
    "nameSource": "wikidata",
    "name": "Prospero",
    "quote": "Jesteśmy z tej samej materii, z której zrobione są sny.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Wyspa spowita burzą. Prospero wznosi ręce, a błyskawica słucha jego woli i morze kipi na jego rozkaz."
   },
   "TP-002": {
    "nameSource": "wikidata",
    "name": "Ariel",
    "quote": "Witaj, wielki mistrzu! Czcigodny panie, witaj!",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Migotliwy duch rozpływa się w wiatr i światło, po czym odradza się jako muzyka. Ariel tańczy między widzialnym a niewidzialnym."
   },
   "TP-003": {
    "nameSource": "missing",
    "quote": "Ta wyspa jest moja, po Sykoraks, mojej matce.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Wylot jaskini na dzikim brzegu. Kaliban przyczaja się wśród skał, a jego oczy płoną urazą i pierwotną inteligencją."
   },
   "MO-003": {
    "nameSource": "wikidata",
    "name": "Benvolio",
    "quote": "Ja tylko strzegę pokoju. Schowaj swój miecz.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Plac w Weronie o świcie. Benvolio staje między dobytymi mieczami; jego otwarte dłonie to jedyna broń przeciw nadciągającej burzy."
   },
   "CA-002": {
    "nameSource": "wikidata",
    "name": "Tybalt",
    "quote": "Co, z dobytym mieczem mówisz o pokoju? Nienawidzę tego słowa.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Zaułek Werony rozświetlony pochodniami. Tybalt dobywa rapiera ze śmiertelnym wdziękiem, z oczami utkwionymi we wrogu."
   },
   "DC-003": {
    "nameSource": "wikidata",
    "name": "Król Klaudiusz",
    "quote": "Moje słowa ulatują w górę, moje myśli zostają w dole.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Sala tronowa Elsynoru, udrapowana fałszywym przepychem. Klaudiusz ściska koronę, a w szatach kryje fiolkę trucizny."
   },
   "FA-003": {
    "nameSource": "missing",
    "quote": "Złe to spotkanie przy księżycu, dumna Tytanio.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Oświetlona księżycem polana w głębi zaczarowanego lasu. Oberon wyłania się z cienia, a jego korona z poroża chwyta srebrne światło."
   },
   "RL-003": {
    "name": "Sztylet umysłu",
    "nameSource": "translated",
    "quote": "Czy to sztylet widzę przed sobą?",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Widmowy sztylet unosi się w ciemności, z ostrza kapie zjawiskowa krew. Ręka Makbeta sięga po niego, lecz nigdy nie może go uchwycić."
   },
   "PT-003": {
    "name": "Sok z kwiatu Puka",
    "nameSource": "translated",
    "quote": "W czterdzieści minut okołuję ziemię",
-   "quoteSource": "published"
+   "quoteSource": "published",
+   "scene": "Zgnieciony purpurowy kwiat sączy opalizujący nektar w czekającą dłoń. Gdziekolwiek spadnie, oczy się zmieniają, a serca idą za nimi."
   },
   "SC-001": {
    "nameSource": "wikidata",
    "name": "Makbet",
    "quote": "Ważę się na wszystko, co przystoi mężowi; kto waży się na więcej, ten nim nie jest.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Zbryzgana krwią sala tronowa w Dunsinane. Makbet ściska miecz drżącymi dłońmi, korona ciąży mu na czole. Na dalekim wzgórzu porusza się las Birnam."
   },
   "SC-002": {
    "nameSource": "wikidata",
    "name": "Lady Makbet",
    "quote": "Przybądźcie, duchy, co służycie myślom morderczym, odbierzcie mi tutaj moją płeć.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Komnata szkockiego zamku w blasku świec. Lady Makbet przemierza zimne kamienie, ścierając z rąk urojone plamy krwi. Cienie lgną do niej jak druga skóra."
   },
   "SC-003": {
    "nameSource": "wikidata",
@@ -161,164 +187,192 @@ const pack: CardTextPack = {
     "Banko"
    ],
    "quote": "Spłodzisz królów, choć sam nim nie będziesz.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Mgliste szkockie wrzosowisko o zmierzchu. Banko stoi niewzruszony, gdy trzy widmowe postacie szepczą przeznaczenia na wiatr. Jego duch będzie nawiedzał żywych."
   },
   "IL-001": {
    "nameSource": "missing",
    "quote": "nie jestem, czem jestem.",
-   "quoteSource": "published"
+   "quoteSource": "published",
+   "scene": "Smagany wiatrem brzeg Ilirii. Wiola naciąga marynarską czapkę na krótko ścięte włosy; w jej oczach migocą dwie tożsamości. Morze szepcze tajemnice o jej zaginionym bracie."
   },
   "IL-002": {
    "nameSource": "missing",
    "quote": "Jedni rodzą się wielkimi; inni w pocie czoła do wielkości przychodzą; innych wielkość szuka sama.",
-   "quoteSource": "published"
+   "quoteSource": "published",
+   "scene": "Słoneczny ogród w posiadłości Oliwii. Malwolio kroczy dumnie w jaskrawożółtych pończochach z podwiązkami na krzyż, uśmiechnięty, przyciskając do piersi sfałszowany list miłosny."
   },
   "IL-003": {
    "nameSource": "missing",
    "quote": "Miłość szukana jest dobra, lecz dana bez szukania jest lepsza.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Hrabina w żałobie unosi welon i odsłania urodę, która zapiera dech. Ogród Oliwii kwitnie jaśminem i lawendą, gdy przebrany posłaniec kradnie jej serce."
   },
   "RM-001": {
    "nameSource": "derived",
    "name": "Brutus",
    "quote": "Nie dlatego, że mniej kochałem Cezara, lecz dlatego, że bardziej kochałem Rzym.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Senat rzymski, marmurowe kolumny splamione karmazynem. Brutus stoi wśród spiskowców, a jego ostrze wciąż drży. Ciężar republiki spoczywa na jego zakrwawionych rękach."
   },
   "RM-002": {
    "nameSource": "derived",
    "name": "Kasjusz",
    "quote": "Wina, drogi Brutusie, nie leży w naszych gwiazdach, lecz w nas samych.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Rzymski zaułek o północy, w świetle pochodni. Kasjusz nachyla się i szepcze bunt, chudy i głodny z wejrzenia. Z jego togi wysypują się sfałszowane listy."
   },
   "RM-003": {
    "nameSource": "wikidata",
    "name": "Marek Antoniusz",
    "quote": "Przyjaciele, Rzymianie, rodacy, użyczcie mi uszu!",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Forum Romanum wybucha wściekłością. Marek Antoniusz unosi przed tłumem zakrwawiony płaszcz Cezara; jego słowa zmieniają żałobę w ogień. Republika rozpada się z każdą sylabą."
   },
   "MO-004": {
    "name": "Pan Monteki",
    "nameSource": "translated",
    "quote": "Wiele poranków widziano go tam, jak łzami pomnażał świeżą poranną rosę.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Posiadłość Montekich o świcie. Pan Monteki patrzy z wysokiego okna, jak jego syn błąka się po zamglonych sadach, chory z miłości i nieosiągalny."
   },
   "CA-003": {
    "name": "Pani Kapulet",
    "nameSource": "translated",
    "quote": "Zamążpójście, to właśnie sprawa, o której przyszłam mówić.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Wielka sala Kapuletów, udrapowana jedwabiem. Pani Kapulet układa los córki jak kwiaty w wazonie; za każdym łaskawym uśmiechem lśni ambicja."
   },
   "DC-004": {
    "nameSource": "wikidata",
    "name": "Horacy",
    "quote": "Teraz pęka szlachetne serce. Dobranoc, słodki książę.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Blanki Elsynoru w zimnej godzinie przed świtem. Horacy czuwa u boku Hamleta, jedyny prawdziwy przyjaciel na dworze pełnym węży."
   },
   "FA-004": {
    "nameSource": "missing",
    "quote": "Przedziwne miałem widzenie. Miałem sen, a żaden ludzki dowcip nie wypowie, co to za sen był.",
-   "quoteSource": "published"
+   "quoteSource": "published",
+   "scene": "Leśna polana jaśniejąca czarodziejskim światłem. Spodek nosi oślą głowę z oszołomioną godnością, a Tytania stroi go w girlandy. Wróżki tłumią śmiech."
   },
   "VC-004": {
    "nameSource": "missing",
    "quote": "Te czasy żałoby nie dają czasu na zaloty.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Cmentarz w Weronie o zmierzchu. Parys składa kwiaty na grobie Julii, nieświadom zrozpaczonego kochanka, który zbliża się z cienia."
   },
   "TP-004": {
    "nameSource": "wikidata",
    "name": "Miranda",
    "quote": "O wspaniały nowy świecie, w którym żyją tacy ludzie!",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Nieskalana plaża na wyspie Prospera. Miranda po raz pierwszy widzi rozbitków, a jej oczy są szeroko otwarte ze zdumienia nad światem, o którego istnieniu nie wiedziała."
   },
   "RL-004": {
    "name": "Pierścień Romea",
    "nameSource": "translated",
    "quote": "Moja hojność jest bezbrzeżna jak morze, moja miłość równie głęboka.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Złoty pierścień leży na kamiennej balustradzie balkonu i chwyta blask księżyca. Wewnątrz wyryto przysięgę, która przetrwa samą śmierć. Płatki róż wirują wokół niego w niewidzialnym wietrze."
   },
   "RL-005": {
    "name": "Szkatułka Porcji",
    "nameSource": "translated",
    "quote": "Nie wszystko złoto, co się świeci.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Trzy szkatułki lśnią w komnacie oświetlonej świecami: złota, srebrna i ołowiana. Ołowiana szkatułka brzmi cichą prawdą i nagradza tych, którzy są dość mądrzy, by spojrzeć poza pozory."
   },
   "RL-006": {
    "name": "Korona Makbeta",
    "nameSource": "translated",
    "quote": "Niespokojnie spoczywa głowa, która nosi koronę.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Zmatowiała szkocka korona leży na zakrwawionej poduszce. Pulsuje mroczną ambicją i szepcze obietnice chwały każdej ręce, która ośmieli się po nią sięgnąć."
   },
   "RL-007": {
    "name": "Kodeks burzy",
    "nameSource": "translated",
    "quote": "Utopię moją księgę.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Pradawna księga, oprawna w skórę zniszczoną przez morze, unosi się nad kamiennym ołtarzem. Jej karty przewracają się same, a każda przywołuje inną burzę."
   },
   "RL-008": {
    "name": "Łzy Kordelii",
    "nameSource": "translated",
    "quote": "O drogi ojcze, w twojej sprawie walczę!",
-   "quoteSource": "published"
+   "quoteSource": "published",
+   "scene": "Kryształowa fiolka kryje łzy, które migocą jak uwięzione światło gwiazd. Każda kropla niesie smutek córki, która kochała zbyt prawdziwie i mówiła zbyt otwarcie."
   },
   "RL-009": {
    "name": "Maska Spodka",
    "nameSource": "translated",
    "quote": "Niech cię Bóg strzeże, Spodku! Jesteś przemieniony!",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Maska z oślą głową wisi na omszałej gałęzi w lesie wróżek. Kto ją włoży, widzi świat zaczarowanymi oczami i staje się nieodparty dla królowych wróżek."
   },
   "PT-004": {
    "name": "Korzeń mandragory",
    "nameSource": "translated",
    "quote": "Ani mak, ani mandragora, ani wszystkie usypiające syropy świata.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Sękaty korzeń w kształcie krzyczącej postaci zostaje wykopany przy świetle świecy. Ziemia osypuje się i odsłania jego poskręcaną, pradawną moc. Aptekarz ujmuje go z drżącą czcią."
   },
   "PT-005": {
    "name": "Rosa Oberona",
    "nameSource": "translated",
    "quote": "Przynieś mi ten kwiat; ziele, które ci kiedyś pokazałem.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Kropla rosy trzyma się storczyka w blasku księżyca i jarzy się nieziemskim fioletowym światłem. Jedna kropla na uśpione powieki, a śniący zakocha się w pierwszym stworzeniu, które zobaczy."
   },
   "PT-006": {
    "name": "Nalewka z cykuty",
    "nameSource": "translated",
    "quote": "W godzinie mego spokoju twój stryj zakradł się z sokiem przeklętego lulka we flaszce.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Fiolka z czarnego szkła sączy zielone opary w ciemnym korytarzu. Nalewka w jej wnętrzu obalała królów i kruszyła dynastie, jedna cicha kropla po drugiej."
   },
   "PT-007": {
    "name": "Wyciąg z jemioły",
    "nameSource": "translated",
    "quote": "W kotle wrzyj i piecz się; oko traszki i palec żaby.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Blade jagody lśnią wśród ciemnych, wiecznie zielonych liści, zebrane pod zimowym księżycem. Wyciąg tętni cichą, wytrwałą magią świata przyrody."
   },
   "PT-008": {
    "name": "Łzy syreny",
    "nameSource": "translated",
    "quote": "Na pięć sążni głęboko leży twój ojciec; z jego kości powstał koral.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Flakon z perłowym korkiem kryje świetlisty błękitny płyn, który porusza się jak żywe morze. Wewnątrz rosną i rozpuszczają się maleńkie koralowce. Pachnie solą i zapomnianymi podróżami."
   },
   "PT-009": {
    "name": "Eliksir aptekarza",
    "nameSource": "translated",
    "quote": "Wlej to do jakiegokolwiek płynu i wypij; a choćbyś miał siłę dwudziestu ludzi, zgładzi cię natychmiast.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Zakurzona apteka w najuboższej dzielnicy Mantui. Eliksir rozpaczy jarzy się bursztynowo w pękniętej fiolce, dość mocny, by przerzucić most między życiem a śmiercią."
   },
   "LD-001": {
    "nameSource": "wikidata",
    "name": "William Wordsworth",
    "quote": "Wędrowałem samotny jak obłok, co płynie wysoko nad dolinami i wzgórzami.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Dywan złotych żonkili ciągnie się wzdłuż brzegów cichego jeziora. Wordsworth idzie wśród nich z notatnikiem w ręku, a za nim wznoszą się wzgórza Cumberlandu."
   },
   "LD-002": {
    "nameSource": "wikidata",
    "name": "Samuel Taylor Coleridge",
    "quote": "Woda, woda, wszędzie woda, a ani kropli do picia.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Unieruchomiony ciszą statek dryfuje po malowanym oceanie. Stary marynarz wpatruje się w albatrosa na swojej szyi, a ze szklistego morza wyłaniają się widmowe postacie."
   },
   "LD-003": {
    "nameSource": "wikidata",
    "name": "John Keats",
    "quote": "Rzecz piękna jest radością na zawsze: jej urok wciąż rośnie.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Ogród w Hampstead jesienią. Keats siedzi pod śliwą i pisze gorączkowo, a słowik śpiewa z ciemniejących gałęzi."
   },
   "GC-001": {
    "nameSource": "wikidata",
@@ -327,43 +381,50 @@ const pack: CardTextPack = {
     "Bajron"
    ],
    "quote": "Kroczy w piękności, jak noc bezchmurnych krain i gwiaździstych niebios.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Wenecki pałac o północy. Byron stoi na balkonie w powiewającej pelerynie i patrzy na ciemny kanał. Za nim w kominku płonie niedokończony rękopis."
   },
   "GC-002": {
    "nameSource": "wikidata",
    "name": "Mary Shelley",
    "quote": "Strzeż się; bo jestem nieustraszony, a przeto potężny.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Gabinet w Genewie w blasku świec, podczas burzy. Mary pisze przy świetle błyskawic, a w cieniu za nią porusza się stwór. Nauka i groza stają się jednym."
   },
   "GC-003": {
    "nameSource": "wikidata",
    "name": "Edgar Allan Poe",
    "quote": "Raz, o posępnej północy, gdy dumałem, słaby i znużony.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Mroczna komnata oświetlona dogasającym ogniem. Poe siedzi zgarbiony przy biurku, gdy kruk siada na popiersiu Pallady. Słowo „Nigdy więcej” rozbrzmiewa w cieniach."
   },
   "GC-004": {
    "nameSource": "wikidata",
    "name": "William Blake",
    "quote": "Zobaczyć świat w ziarenku piasku i niebo w polnym kwiecie.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Londyńska pracownia drukarska rozjarzona wizjonerskim światłem. Blake ryje tygrysa w miedzi, a bestia wyłania się z płyty, płonąc jasno w lasach nocy."
   },
   "GC-005": {
    "nameSource": "wikidata",
    "name": "Percy Bysshe Shelley",
    "quote": "Jeśli nadchodzi zima, czy wiosna może być daleko?",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Smagany wiatrem szczyt włoskiego klifu. Shelley stawia czoło burzy z rozpostartymi ramionami, a zachodni wiatr wyrywa kartki z jego notatnika i rozsiewa je nad Morzem Śródziemnym."
   },
   "LD-004": {
    "nameSource": "wikidata",
    "name": "Elizabeth Barrett Browning",
    "quote": "Jak cię kocham? Pozwól, że policzę sposoby.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Słoneczny pokój we Florencji. Elizabeth pisze przy oknie z widokiem na Arno, ze spanielem u stóp. Listy miłosne od Roberta leżą otwarte na biurku."
   },
   "LD-005": {
    "nameSource": "wikidata",
    "name": "Christina Rossetti",
    "quote": "Pamiętaj o mnie, gdy odejdę, odejdę daleko, do cichej krainy.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Prerafaelicki ogród w gasnącym jesiennym świetle. Christina siedzi wśród opadłych liści i układa wiersze, które bolą pięknem i cichą rezygnacją."
   },
   "OL-001": {
    "nameSource": "wikidata",
@@ -373,7 +434,8 @@ const pack: CardTextPack = {
     "Horkios"
    ],
    "quote": "Jestem tym, który gromadzi chmury, panem szerokich niebios.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Olimp rozcina niebo. Zeus zasiada na tronie z chmur, a błyskawica przeskakuje mu między palcami. W dole świat śmiertelnych drży pod jego spojrzeniem."
   },
   "OL-002": {
    "nameSource": "wikidata",
@@ -382,7 +444,8 @@ const pack: CardTextPack = {
     "Pallas"
    ],
    "quote": "Sowa mądrości wzlatuje dopiero o zmierzchu.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Partenon lśni w złotym świetle. Atena stoi w pełnej zbroi, z sową na tarczy, a jej szare oczy przenikają każdy ludzki podstęp."
   },
   "OL-003": {
    "nameSource": "wikidata",
@@ -391,7 +454,8 @@ const pack: CardTextPack = {
     "Apollin"
    ],
    "quote": "Jestem bogiem pieśni, uzdrawiania i promiennego słońca.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Złoty rydwan pędzi po niebie o świcie. Apollo gra na lirze, a światło słońca leje się z kół i maluje świat barwami."
   },
   "OL-004": {
    "nameSource": "wikidata",
@@ -402,13 +466,15 @@ const pack: CardTextPack = {
     "Cypryda"
    ],
    "quote": "Nawet bogowie nie mogą oprzeć się potędze miłości.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Brzegi Cypru o świcie. Afrodyta wyłania się z morskiej piany; nad nią krążą gołębie, a fale składają perły u jej stóp. Świat wstrzymuje oddech."
   },
   "OL-005": {
    "nameSource": "wikidata",
    "name": "Hermes",
    "quote": "Szybki jak myśl, niosę słowa bogów do uszu śmiertelnych.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Smuga skrzydlatych sandałów na niebie. Hermes lawiruje między piorunami, z boską wiadomością w jednej ręce i złodziejskim uśmiechem na twarzy."
   },
   "UW-001": {
    "nameSource": "wikidata",
@@ -418,7 +484,8 @@ const pack: CardTextPack = {
     "Agesandros"
    ],
    "quote": "Wszystkie dusze przychodzą w końcu do mnie. Jestem cierpliwy.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Sala tronowa Podziemia, oświetlona rzekami bladego ognia. Hades siedzi z Cerberem u stóp, a hełm ciemności leży na poręczy tronu. Umarli suną w nieskończonym milczeniu."
   },
   "UW-002": {
    "nameSource": "wikidata",
@@ -427,7 +494,8 @@ const pack: CardTextPack = {
     "Kore"
    ],
    "quote": "Zjadłam sześć ziaren i związałam się na zawsze między dwoma światami.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Tron rozdzielony między wiosnę i cień. Persefona trzyma w jednej ręce granat, a w drugiej wieniec z kwiatów, królowa dwóch królestw."
   },
   "OL-006": {
    "nameSource": "wikidata",
@@ -437,19 +505,22 @@ const pack: CardTextPack = {
     "Ulisses"
    ],
    "quote": "Opowiedz mi, Muzo, o mężu wielu dróg, który błąkał się daleko.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Poszarpany sztormem statek opływa skalisty przylądek. Odyseusz przywiązuje się do masztu, gdy syreny śpiewają z klifów. W jego oczach płonie wspomnienie Itaki."
   },
   "UW-003": {
    "nameSource": "wikidata",
    "name": "Meduza",
    "quote": "Spójrz na mnie, jeśli śmiesz. Mój wzrok jest ostatnią rzeczą, jaką zobaczysz.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Zrujnowana świątynia na krańcu świata. Meduza odwraca się, a jej wężowe włosy syczą. Kamienni wojownicy zaścielają posadzkę, zastygli w ostatniej szarży."
   },
   "OL-007": {
    "nameSource": "wikidata",
    "name": "Achilles",
    "quote": "Wolę żyć krótko w chwale niż długo w zapomnieniu.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Równiny Troi o świcie. Achilles naciera w płonącej zbroi, a jego okrzyk bojowy rozdziera powietrze. Za nim na brzegu płoną greckie okręty."
   }
  },
  "houses": {

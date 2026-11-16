@@ -2295,7 +2295,7 @@
       "source": "new",
       "cite": "Shakespeare, Sonnet 18, line 1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "MO-001": {
      "name": {
@@ -2314,7 +2314,7 @@
       "page": "Romeo und Julia (Übersetzung Schlegel)/Zweiter Aufzug",
       "revid": 1730815
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "CA-001": {
      "name": {
@@ -2333,7 +2333,7 @@
       "page": "Romeo und Julia (Übersetzung Schlegel)/Zweiter Aufzug",
       "revid": 1730815
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "DC-001": {
      "name": {
@@ -2346,7 +2346,7 @@
       "source": "new",
       "cite": "Hamlet 3.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "DC-002": {
      "name": {
@@ -2359,7 +2359,7 @@
       "source": "new",
       "cite": "Hamlet 4.5"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "MO-002": {
      "name": {
@@ -2378,7 +2378,7 @@
       "page": "Romeo und Julia (Übersetzung Schlegel)/Dritter Aufzug",
       "revid": 4062134
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "FA-001": {
      "name": {
@@ -2391,7 +2391,7 @@
       "source": "new",
       "cite": "A Midsummer Night's Dream 3.2"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "FA-002": {
      "name": {
@@ -2404,7 +2404,7 @@
       "source": "new",
       "cite": "A Midsummer Night's Dream 4.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "RL-001": {
      "name": {
@@ -2417,7 +2417,7 @@
       "source": "new",
       "cite": "Hamlet 5.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "RL-002": {
      "name": {
@@ -2430,7 +2430,7 @@
       "source": "new",
       "cite": "The Tempest, Epilogue"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "PT-001": {
      "name": {
@@ -2443,7 +2443,7 @@
       "source": "new",
       "cite": "A Midsummer Night's Dream 1.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "PT-002": {
      "name": {
@@ -2456,7 +2456,7 @@
       "source": "new",
       "cite": "Macbeth 4.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "VC-001": {
      "name": {
@@ -2469,7 +2469,7 @@
       "source": "new",
       "cite": "Romeo and Juliet 1.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "VC-002": {
      "name": {
@@ -2488,7 +2488,7 @@
       "page": "Romeo und Julia (Übersetzung Schlegel)/Zweiter Aufzug",
       "revid": 1730815
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "VC-003": {
      "name": {
@@ -2501,7 +2501,7 @@
       "source": "new",
       "cite": "Romeo and Juliet 2.5"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "TP-001": {
      "name": {
@@ -2514,7 +2514,7 @@
       "source": "new",
       "cite": "The Tempest 4.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "TP-002": {
      "name": {
@@ -2527,7 +2527,7 @@
       "source": "new",
       "cite": "The Tempest 1.2"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "TP-003": {
      "name": {
@@ -2540,7 +2540,7 @@
       "source": "new",
       "cite": "The Tempest 1.2"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "MO-003": {
      "name": {
@@ -2559,7 +2559,7 @@
       "page": "Romeo und Julia (Übersetzung Schlegel)/Erster Aufzug",
       "revid": 4062133
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "CA-002": {
      "name": {
@@ -2572,7 +2572,7 @@
       "source": "new",
       "cite": "Romeo and Juliet 1.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "DC-003": {
      "name": {
@@ -2585,7 +2585,7 @@
       "source": "new",
       "cite": "Hamlet 3.3"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "FA-003": {
      "name": {
@@ -2598,7 +2598,7 @@
       "source": "new",
       "cite": "A Midsummer Night's Dream 2.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "RL-003": {
      "name": {
@@ -2611,7 +2611,7 @@
       "source": "new",
       "cite": "Macbeth 2.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "PT-003": {
      "name": {
@@ -2624,7 +2624,7 @@
       "source": "new",
       "cite": "A Midsummer Night's Dream 2.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "SC-001": {
      "name": {
@@ -2637,7 +2637,7 @@
       "source": "new",
       "cite": "Macbeth 1.7"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "SC-002": {
      "name": {
@@ -2650,7 +2650,7 @@
       "source": "new",
       "cite": "Macbeth 1.5"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "SC-003": {
      "name": {
@@ -2663,7 +2663,7 @@
       "source": "new",
       "cite": "Macbeth 1.3"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "IL-001": {
      "name": {
@@ -2676,7 +2676,7 @@
       "source": "new",
       "cite": "Twelfth Night 3.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "IL-002": {
      "name": {
@@ -2689,7 +2689,7 @@
       "source": "new",
       "cite": "Twelfth Night 2.5"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "IL-003": {
      "name": {
@@ -2702,7 +2702,7 @@
       "source": "new",
       "cite": "Twelfth Night 3.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "RM-001": {
      "name": {
@@ -2715,7 +2715,7 @@
       "source": "new",
       "cite": "Julius Caesar 3.2"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "RM-002": {
      "name": {
@@ -2728,7 +2728,7 @@
       "source": "new",
       "cite": "Julius Caesar 1.2"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "RM-003": {
      "name": {
@@ -2741,7 +2741,7 @@
       "source": "new",
       "cite": "Julius Caesar 3.2"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "MO-004": {
      "name": {
@@ -2754,7 +2754,7 @@
       "source": "new",
       "cite": "Romeo and Juliet 1.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "CA-003": {
      "name": {
@@ -2767,7 +2767,7 @@
       "source": "new",
       "cite": "Romeo and Juliet 1.3"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "DC-004": {
      "name": {
@@ -2780,7 +2780,7 @@
       "source": "new",
       "cite": "Hamlet 5.2"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "FA-004": {
      "name": {
@@ -2793,7 +2793,7 @@
       "source": "new",
       "cite": "A Midsummer Night's Dream 4.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "VC-004": {
      "name": {
@@ -2806,7 +2806,7 @@
       "source": "new",
       "cite": "Romeo and Juliet 3.4"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "TP-004": {
      "name": {
@@ -2819,7 +2819,7 @@
       "source": "new",
       "cite": "The Tempest 5.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "RL-004": {
      "name": {
@@ -2838,7 +2838,7 @@
       "page": "Romeo und Julia (Übersetzung Schlegel)/Zweiter Aufzug",
       "revid": 1730815
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "RL-005": {
      "name": {
@@ -2851,7 +2851,7 @@
       "source": "new",
       "cite": "The Merchant of Venice 2.7"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "RL-006": {
      "name": {
@@ -2864,7 +2864,7 @@
       "source": "new",
       "cite": "Henry IV, Part 2 3.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "RL-007": {
      "name": {
@@ -2877,7 +2877,7 @@
       "source": "new",
       "cite": "The Tempest 5.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "RL-008": {
      "name": {
@@ -2890,7 +2890,7 @@
       "source": "new",
       "cite": "King Lear 4.4"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "RL-009": {
      "name": {
@@ -2903,7 +2903,7 @@
       "source": "new",
       "cite": "A Midsummer Night's Dream 3.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "PT-004": {
      "name": {
@@ -2916,7 +2916,7 @@
       "source": "new",
       "cite": "Othello 3.3"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "PT-005": {
      "name": {
@@ -2929,7 +2929,7 @@
       "source": "new",
       "cite": "A Midsummer Night's Dream 2.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "PT-006": {
      "name": {
@@ -2942,7 +2942,7 @@
       "source": "new",
       "cite": "Hamlet 1.5"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "PT-007": {
      "name": {
@@ -2955,7 +2955,7 @@
       "source": "new",
       "cite": "Macbeth 4.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "PT-008": {
      "name": {
@@ -2968,7 +2968,7 @@
       "source": "new",
       "cite": "The Tempest 1.2"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "PT-009": {
      "name": {
@@ -2981,7 +2981,7 @@
       "source": "new",
       "cite": "Romeo and Juliet 5.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "LD-001": {
      "name": {
@@ -2994,7 +2994,7 @@
       "source": "new",
       "cite": "Wordsworth, \"I Wandered Lonely as a Cloud\", lines 1-2"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "LD-002": {
      "name": {
@@ -3007,7 +3007,7 @@
       "source": "new",
       "cite": "Coleridge, The Rime of the Ancient Mariner, Part II"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "LD-003": {
      "name": {
@@ -3020,7 +3020,7 @@
       "source": "new",
       "cite": "Keats, Endymion, Book I, lines 1-2"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "GC-001": {
      "name": {
@@ -3033,7 +3033,7 @@
       "source": "new",
       "cite": "Byron, \"She Walks in Beauty\", lines 1-2"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "GC-002": {
      "name": {
@@ -3046,7 +3046,7 @@
       "source": "new",
       "cite": "Mary Shelley, Frankenstein, chapter 20"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "GC-003": {
      "name": {
@@ -3059,7 +3059,7 @@
       "source": "new",
       "cite": "Poe, \"The Raven\", line 1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "GC-004": {
      "name": {
@@ -3072,7 +3072,7 @@
       "source": "new",
       "cite": "Blake, \"Auguries of Innocence\", lines 1-2"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "GC-005": {
      "name": {
@@ -3085,7 +3085,7 @@
       "source": "new",
       "cite": "P. B. Shelley, \"Ode to the West Wind\", last line"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "LD-004": {
      "name": {
@@ -3098,7 +3098,7 @@
       "source": "new",
       "cite": "E. B. Browning, Sonnets from the Portuguese 43, line 1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "LD-005": {
      "name": {
@@ -3111,7 +3111,7 @@
       "source": "new",
       "cite": "C. Rossetti, \"Remember\", lines 1-2"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "OL-001": {
      "name": {
@@ -3124,7 +3124,7 @@
       "source": "new",
       "cite": "the game's own line (Zeus's Homeric epithet, cloud-gatherer)"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "OL-002": {
      "name": {
@@ -3137,7 +3137,7 @@
       "source": "new",
       "cite": "the game's own line (after Hegel's owl of Minerva)"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "OL-003": {
      "name": {
@@ -3150,7 +3150,7 @@
       "source": "new",
       "cite": "the game's own line"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "OL-004": {
      "name": {
@@ -3163,7 +3163,7 @@
       "source": "new",
       "cite": "the game's own line"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "OL-005": {
      "name": {
@@ -3176,7 +3176,7 @@
       "source": "new",
       "cite": "the game's own line"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "UW-001": {
      "name": {
@@ -3189,7 +3189,7 @@
       "source": "new",
       "cite": "the game's own line"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "UW-002": {
      "name": {
@@ -3202,7 +3202,7 @@
       "source": "new",
       "cite": "the game's own line"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "OL-006": {
      "name": {
@@ -3215,7 +3215,7 @@
       "source": "new",
       "cite": "the game's own paraphrase of Odyssey 1.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "UW-003": {
      "name": {
@@ -3228,7 +3228,7 @@
       "source": "new",
       "cite": "the game's own line"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "OL-007": {
      "name": {
@@ -3241,7 +3241,7 @@
       "source": "new",
       "cite": "the game's own paraphrase of Iliad 9.410-416"
      },
-     "scene": "missing"
+     "scene": "translated"
     }
    },
    "houses": {
@@ -3328,7 +3328,7 @@
       "source": "new",
       "cite": "Shakespeare, Sonnet 18, line 1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "MO-001": {
      "name": {
@@ -3341,7 +3341,7 @@
       "source": "new",
       "cite": "Romeo and Juliet 2.2"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "CA-001": {
      "name": {
@@ -3354,7 +3354,7 @@
       "source": "new",
       "cite": "Romeo and Juliet 2.2"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "DC-001": {
      "name": {
@@ -3367,7 +3367,7 @@
       "source": "new",
       "cite": "Hamlet 3.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "DC-002": {
      "name": {
@@ -3380,7 +3380,7 @@
       "source": "new",
       "cite": "Hamlet 4.5"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "MO-002": {
      "name": {
@@ -3393,7 +3393,7 @@
       "source": "new",
       "cite": "Romeo and Juliet 3.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "FA-001": {
      "name": {
@@ -3406,7 +3406,7 @@
       "source": "new",
       "cite": "A Midsummer Night's Dream 3.2"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "FA-002": {
      "name": {
@@ -3419,7 +3419,7 @@
       "source": "new",
       "cite": "A Midsummer Night's Dream 4.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "RL-001": {
      "name": {
@@ -3432,7 +3432,7 @@
       "source": "new",
       "cite": "Hamlet 5.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "RL-002": {
      "name": {
@@ -3445,7 +3445,7 @@
       "source": "new",
       "cite": "The Tempest, Epilogue"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "PT-001": {
      "name": {
@@ -3458,7 +3458,7 @@
       "source": "new",
       "cite": "A Midsummer Night's Dream 1.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "PT-002": {
      "name": {
@@ -3471,7 +3471,7 @@
       "source": "new",
       "cite": "Macbeth 4.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "VC-001": {
      "name": {
@@ -3484,7 +3484,7 @@
       "source": "new",
       "cite": "Romeo and Juliet 1.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "VC-002": {
      "name": {
@@ -3497,7 +3497,7 @@
       "source": "new",
       "cite": "Romeo and Juliet 2.6"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "VC-003": {
      "name": {
@@ -3510,7 +3510,7 @@
       "source": "new",
       "cite": "Romeo and Juliet 2.5"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "TP-001": {
      "name": {
@@ -3523,7 +3523,7 @@
       "source": "new",
       "cite": "The Tempest 4.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "TP-002": {
      "name": {
@@ -3536,7 +3536,7 @@
       "source": "new",
       "cite": "The Tempest 1.2"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "TP-003": {
      "name": {
@@ -3549,7 +3549,7 @@
       "source": "new",
       "cite": "The Tempest 1.2"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "MO-003": {
      "name": {
@@ -3562,7 +3562,7 @@
       "source": "new",
       "cite": "Romeo and Juliet 1.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "CA-002": {
      "name": {
@@ -3575,7 +3575,7 @@
       "source": "new",
       "cite": "Romeo and Juliet 1.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "DC-003": {
      "name": {
@@ -3588,7 +3588,7 @@
       "source": "new",
       "cite": "Hamlet 3.3"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "FA-003": {
      "name": {
@@ -3601,7 +3601,7 @@
       "source": "new",
       "cite": "A Midsummer Night's Dream 2.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "RL-003": {
      "name": {
@@ -3614,7 +3614,7 @@
       "source": "new",
       "cite": "Macbeth 2.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "PT-003": {
      "name": {
@@ -3627,7 +3627,7 @@
       "source": "new",
       "cite": "A Midsummer Night's Dream 2.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "SC-001": {
      "name": {
@@ -3640,7 +3640,7 @@
       "source": "new",
       "cite": "Macbeth 1.7"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "SC-002": {
      "name": {
@@ -3653,7 +3653,7 @@
       "source": "new",
       "cite": "Macbeth 1.5"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "SC-003": {
      "name": {
@@ -3666,7 +3666,7 @@
       "source": "new",
       "cite": "Macbeth 1.3"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "IL-001": {
      "name": {
@@ -3679,7 +3679,7 @@
       "source": "new",
       "cite": "Twelfth Night 3.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "IL-002": {
      "name": {
@@ -3692,7 +3692,7 @@
       "source": "new",
       "cite": "Twelfth Night 2.5"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "IL-003": {
      "name": {
@@ -3705,7 +3705,7 @@
       "source": "new",
       "cite": "Twelfth Night 3.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "RM-001": {
      "name": {
@@ -3718,7 +3718,7 @@
       "source": "new",
       "cite": "Julius Caesar 3.2"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "RM-002": {
      "name": {
@@ -3731,7 +3731,7 @@
       "source": "new",
       "cite": "Julius Caesar 1.2"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "RM-003": {
      "name": {
@@ -3744,7 +3744,7 @@
       "source": "new",
       "cite": "Julius Caesar 3.2"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "MO-004": {
      "name": {
@@ -3757,7 +3757,7 @@
       "source": "new",
       "cite": "Romeo and Juliet 1.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "CA-003": {
      "name": {
@@ -3770,7 +3770,7 @@
       "source": "new",
       "cite": "Romeo and Juliet 1.3"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "DC-004": {
      "name": {
@@ -3783,7 +3783,7 @@
       "source": "new",
       "cite": "Hamlet 5.2"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "FA-004": {
      "name": {
@@ -3796,7 +3796,7 @@
       "source": "new",
       "cite": "A Midsummer Night's Dream 4.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "VC-004": {
      "name": {
@@ -3809,7 +3809,7 @@
       "source": "new",
       "cite": "Romeo and Juliet 3.4"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "TP-004": {
      "name": {
@@ -3822,7 +3822,7 @@
       "source": "new",
       "cite": "The Tempest 5.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "RL-004": {
      "name": {
@@ -3835,7 +3835,7 @@
       "source": "new",
       "cite": "Romeo and Juliet 2.2"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "RL-005": {
      "name": {
@@ -3848,7 +3848,7 @@
       "source": "new",
       "cite": "The Merchant of Venice 2.7"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "RL-006": {
      "name": {
@@ -3861,7 +3861,7 @@
       "source": "new",
       "cite": "Henry IV, Part 2 3.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "RL-007": {
      "name": {
@@ -3874,7 +3874,7 @@
       "source": "new",
       "cite": "The Tempest 5.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "RL-008": {
      "name": {
@@ -3887,7 +3887,7 @@
       "source": "new",
       "cite": "King Lear 4.4"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "RL-009": {
      "name": {
@@ -3900,7 +3900,7 @@
       "source": "new",
       "cite": "A Midsummer Night's Dream 3.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "PT-004": {
      "name": {
@@ -3913,7 +3913,7 @@
       "source": "new",
       "cite": "Othello 3.3"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "PT-005": {
      "name": {
@@ -3926,7 +3926,7 @@
       "source": "new",
       "cite": "A Midsummer Night's Dream 2.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "PT-006": {
      "name": {
@@ -3939,7 +3939,7 @@
       "source": "new",
       "cite": "Hamlet 1.5"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "PT-007": {
      "name": {
@@ -3952,7 +3952,7 @@
       "source": "new",
       "cite": "Macbeth 4.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "PT-008": {
      "name": {
@@ -3965,7 +3965,7 @@
       "source": "new",
       "cite": "The Tempest 1.2"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "PT-009": {
      "name": {
@@ -3978,7 +3978,7 @@
       "source": "new",
       "cite": "Romeo and Juliet 5.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "LD-001": {
      "name": {
@@ -3991,7 +3991,7 @@
       "source": "new",
       "cite": "Wordsworth, \"I Wandered Lonely as a Cloud\", lines 1-2"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "LD-002": {
      "name": {
@@ -4004,7 +4004,7 @@
       "source": "new",
       "cite": "Coleridge, The Rime of the Ancient Mariner, Part II"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "LD-003": {
      "name": {
@@ -4017,7 +4017,7 @@
       "source": "new",
       "cite": "Keats, Endymion, Book I, lines 1-2"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "GC-001": {
      "name": {
@@ -4030,7 +4030,7 @@
       "source": "new",
       "cite": "Byron, \"She Walks in Beauty\", lines 1-2"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "GC-002": {
      "name": {
@@ -4043,7 +4043,7 @@
       "source": "new",
       "cite": "Mary Shelley, Frankenstein, chapter 20"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "GC-003": {
      "name": {
@@ -4056,7 +4056,7 @@
       "source": "new",
       "cite": "Poe, \"The Raven\", line 1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "GC-004": {
      "name": {
@@ -4069,7 +4069,7 @@
       "source": "new",
       "cite": "Blake, \"Auguries of Innocence\", lines 1-2"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "GC-005": {
      "name": {
@@ -4082,7 +4082,7 @@
       "source": "new",
       "cite": "P. B. Shelley, \"Ode to the West Wind\", last line"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "LD-004": {
      "name": {
@@ -4095,7 +4095,7 @@
       "source": "new",
       "cite": "E. B. Browning, Sonnets from the Portuguese 43, line 1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "LD-005": {
      "name": {
@@ -4108,7 +4108,7 @@
       "source": "new",
       "cite": "C. Rossetti, \"Remember\", lines 1-2"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "OL-001": {
      "name": {
@@ -4121,7 +4121,7 @@
       "source": "new",
       "cite": "the game's own line (Zeus's Homeric epithet, cloud-gatherer)"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "OL-002": {
      "name": {
@@ -4134,7 +4134,7 @@
       "source": "new",
       "cite": "the game's own line (after Hegel's owl of Minerva)"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "OL-003": {
      "name": {
@@ -4147,7 +4147,7 @@
       "source": "new",
       "cite": "the game's own line"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "OL-004": {
      "name": {
@@ -4160,7 +4160,7 @@
       "source": "new",
       "cite": "the game's own line"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "OL-005": {
      "name": {
@@ -4173,7 +4173,7 @@
       "source": "new",
       "cite": "the game's own line"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "UW-001": {
      "name": {
@@ -4186,7 +4186,7 @@
       "source": "new",
       "cite": "the game's own line"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "UW-002": {
      "name": {
@@ -4199,7 +4199,7 @@
       "source": "new",
       "cite": "the game's own line"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "OL-006": {
      "name": {
@@ -4212,7 +4212,7 @@
       "source": "new",
       "cite": "the game's own paraphrase of Odyssey 1.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "UW-003": {
      "name": {
@@ -4225,7 +4225,7 @@
       "source": "new",
       "cite": "the game's own line"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "OL-007": {
      "name": {
@@ -4238,7 +4238,7 @@
       "source": "new",
       "cite": "the game's own paraphrase of Iliad 9.410-416"
      },
-     "scene": "missing"
+     "scene": "translated"
     }
    },
    "houses": {
@@ -4325,7 +4325,7 @@
       "source": "new",
       "cite": "Shakespeare, Sonnet 18, line 1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "MO-001": {
      "name": {
@@ -4338,7 +4338,7 @@
       "source": "new",
       "cite": "Romeo and Juliet 2.2"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "CA-001": {
      "name": {
@@ -4351,7 +4351,7 @@
       "source": "new",
       "cite": "Romeo and Juliet 2.2"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "DC-001": {
      "name": {
@@ -4364,7 +4364,7 @@
       "source": "new",
       "cite": "Hamlet 3.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "DC-002": {
      "name": {
@@ -4377,7 +4377,7 @@
       "source": "new",
       "cite": "Hamlet 4.5"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "MO-002": {
      "name": {
@@ -4390,7 +4390,7 @@
       "source": "new",
       "cite": "Romeo and Juliet 3.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "FA-001": {
      "name": {
@@ -4403,7 +4403,7 @@
       "source": "new",
       "cite": "A Midsummer Night's Dream 3.2"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "FA-002": {
      "name": {
@@ -4416,7 +4416,7 @@
       "source": "new",
       "cite": "A Midsummer Night's Dream 4.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "RL-001": {
      "name": {
@@ -4429,7 +4429,7 @@
       "source": "new",
       "cite": "Hamlet 5.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "RL-002": {
      "name": {
@@ -4442,7 +4442,7 @@
       "source": "new",
       "cite": "The Tempest, Epilogue"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "PT-001": {
      "name": {
@@ -4455,7 +4455,7 @@
       "source": "new",
       "cite": "A Midsummer Night's Dream 1.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "PT-002": {
      "name": {
@@ -4468,7 +4468,7 @@
       "source": "new",
       "cite": "Macbeth 4.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "VC-001": {
      "name": {
@@ -4481,7 +4481,7 @@
       "source": "new",
       "cite": "Romeo and Juliet 1.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "VC-002": {
      "name": {
@@ -4494,7 +4494,7 @@
       "source": "new",
       "cite": "Romeo and Juliet 2.6"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "VC-003": {
      "name": {
@@ -4507,7 +4507,7 @@
       "source": "new",
       "cite": "Romeo and Juliet 2.5"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "TP-001": {
      "name": {
@@ -4520,7 +4520,7 @@
       "source": "new",
       "cite": "The Tempest 4.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "TP-002": {
      "name": {
@@ -4533,7 +4533,7 @@
       "source": "new",
       "cite": "The Tempest 1.2"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "TP-003": {
      "name": {
@@ -4546,7 +4546,7 @@
       "source": "new",
       "cite": "The Tempest 1.2"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "MO-003": {
      "name": {
@@ -4559,7 +4559,7 @@
       "source": "new",
       "cite": "Romeo and Juliet 1.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "CA-002": {
      "name": {
@@ -4572,7 +4572,7 @@
       "source": "new",
       "cite": "Romeo and Juliet 1.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "DC-003": {
      "name": {
@@ -4585,7 +4585,7 @@
       "source": "new",
       "cite": "Hamlet 3.3"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "FA-003": {
      "name": {
@@ -4598,7 +4598,7 @@
       "source": "new",
       "cite": "A Midsummer Night's Dream 2.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "RL-003": {
      "name": {
@@ -4611,7 +4611,7 @@
       "source": "new",
       "cite": "Macbeth 2.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "PT-003": {
      "name": {
@@ -4624,7 +4624,7 @@
       "source": "new",
       "cite": "A Midsummer Night's Dream 2.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "SC-001": {
      "name": {
@@ -4637,7 +4637,7 @@
       "source": "new",
       "cite": "Macbeth 1.7"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "SC-002": {
      "name": {
@@ -4650,7 +4650,7 @@
       "source": "new",
       "cite": "Macbeth 1.5"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "SC-003": {
      "name": {
@@ -4663,7 +4663,7 @@
       "source": "new",
       "cite": "Macbeth 1.3"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "IL-001": {
      "name": {
@@ -4676,7 +4676,7 @@
       "source": "new",
       "cite": "Twelfth Night 3.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "IL-002": {
      "name": {
@@ -4689,7 +4689,7 @@
       "source": "new",
       "cite": "Twelfth Night 2.5"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "IL-003": {
      "name": {
@@ -4702,7 +4702,7 @@
       "source": "new",
       "cite": "Twelfth Night 3.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "RM-001": {
      "name": {
@@ -4715,7 +4715,7 @@
       "source": "new",
       "cite": "Julius Caesar 3.2"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "RM-002": {
      "name": {
@@ -4728,7 +4728,7 @@
       "source": "new",
       "cite": "Julius Caesar 1.2"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "RM-003": {
      "name": {
@@ -4741,7 +4741,7 @@
       "source": "new",
       "cite": "Julius Caesar 3.2"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "MO-004": {
      "name": {
@@ -4754,7 +4754,7 @@
       "source": "new",
       "cite": "Romeo and Juliet 1.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "CA-003": {
      "name": {
@@ -4767,7 +4767,7 @@
       "source": "new",
       "cite": "Romeo and Juliet 1.3"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "DC-004": {
      "name": {
@@ -4780,7 +4780,7 @@
       "source": "new",
       "cite": "Hamlet 5.2"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "FA-004": {
      "name": {
@@ -4793,7 +4793,7 @@
       "source": "new",
       "cite": "A Midsummer Night's Dream 4.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "VC-004": {
      "name": {
@@ -4806,7 +4806,7 @@
       "source": "new",
       "cite": "Romeo and Juliet 3.4"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "TP-004": {
      "name": {
@@ -4819,7 +4819,7 @@
       "source": "new",
       "cite": "The Tempest 5.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "RL-004": {
      "name": {
@@ -4832,7 +4832,7 @@
       "source": "new",
       "cite": "Romeo and Juliet 2.2"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "RL-005": {
      "name": {
@@ -4845,7 +4845,7 @@
       "source": "new",
       "cite": "The Merchant of Venice 2.7"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "RL-006": {
      "name": {
@@ -4858,7 +4858,7 @@
       "source": "new",
       "cite": "Henry IV, Part 2 3.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "RL-007": {
      "name": {
@@ -4871,7 +4871,7 @@
       "source": "new",
       "cite": "The Tempest 5.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "RL-008": {
      "name": {
@@ -4884,7 +4884,7 @@
       "source": "new",
       "cite": "King Lear 4.4"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "RL-009": {
      "name": {
@@ -4897,7 +4897,7 @@
       "source": "new",
       "cite": "A Midsummer Night's Dream 3.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "PT-004": {
      "name": {
@@ -4910,7 +4910,7 @@
       "source": "new",
       "cite": "Othello 3.3"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "PT-005": {
      "name": {
@@ -4923,7 +4923,7 @@
       "source": "new",
       "cite": "A Midsummer Night's Dream 2.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "PT-006": {
      "name": {
@@ -4936,7 +4936,7 @@
       "source": "new",
       "cite": "Hamlet 1.5"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "PT-007": {
      "name": {
@@ -4949,7 +4949,7 @@
       "source": "new",
       "cite": "Macbeth 4.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "PT-008": {
      "name": {
@@ -4962,7 +4962,7 @@
       "source": "new",
       "cite": "The Tempest 1.2"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "PT-009": {
      "name": {
@@ -4975,7 +4975,7 @@
       "source": "new",
       "cite": "Romeo and Juliet 5.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "LD-001": {
      "name": {
@@ -4988,7 +4988,7 @@
       "source": "new",
       "cite": "Wordsworth, \"I Wandered Lonely as a Cloud\", lines 1-2"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "LD-002": {
      "name": {
@@ -5001,7 +5001,7 @@
       "source": "new",
       "cite": "Coleridge, The Rime of the Ancient Mariner, Part II"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "LD-003": {
      "name": {
@@ -5014,7 +5014,7 @@
       "source": "new",
       "cite": "Keats, Endymion, Book I, lines 1-2"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "GC-001": {
      "name": {
@@ -5027,7 +5027,7 @@
       "source": "new",
       "cite": "Byron, \"She Walks in Beauty\", lines 1-2"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "GC-002": {
      "name": {
@@ -5040,7 +5040,7 @@
       "source": "new",
       "cite": "Mary Shelley, Frankenstein, chapter 20"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "GC-003": {
      "name": {
@@ -5053,7 +5053,7 @@
       "source": "new",
       "cite": "Poe, \"The Raven\", line 1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "GC-004": {
      "name": {
@@ -5066,7 +5066,7 @@
       "source": "new",
       "cite": "Blake, \"Auguries of Innocence\", lines 1-2"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "GC-005": {
      "name": {
@@ -5079,7 +5079,7 @@
       "source": "new",
       "cite": "P. B. Shelley, \"Ode to the West Wind\", last line"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "LD-004": {
      "name": {
@@ -5092,7 +5092,7 @@
       "source": "new",
       "cite": "E. B. Browning, Sonnets from the Portuguese 43, line 1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "LD-005": {
      "name": {
@@ -5105,7 +5105,7 @@
       "source": "new",
       "cite": "C. Rossetti, \"Remember\", lines 1-2"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "OL-001": {
      "name": {
@@ -5118,7 +5118,7 @@
       "source": "new",
       "cite": "the game's own line (Zeus's Homeric epithet, cloud-gatherer)"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "OL-002": {
      "name": {
@@ -5131,7 +5131,7 @@
       "source": "new",
       "cite": "the game's own line (after Hegel's owl of Minerva)"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "OL-003": {
      "name": {
@@ -5144,7 +5144,7 @@
       "source": "new",
       "cite": "the game's own line"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "OL-004": {
      "name": {
@@ -5157,7 +5157,7 @@
       "source": "new",
       "cite": "the game's own line"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "OL-005": {
      "name": {
@@ -5170,7 +5170,7 @@
       "source": "new",
       "cite": "the game's own line"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "UW-001": {
      "name": {
@@ -5183,7 +5183,7 @@
       "source": "new",
       "cite": "the game's own line"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "UW-002": {
      "name": {
@@ -5196,7 +5196,7 @@
       "source": "new",
       "cite": "the game's own line"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "OL-006": {
      "name": {
@@ -5209,7 +5209,7 @@
       "source": "new",
       "cite": "the game's own paraphrase of Odyssey 1.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "UW-003": {
      "name": {
@@ -5222,7 +5222,7 @@
       "source": "new",
       "cite": "the game's own line"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "OL-007": {
      "name": {
@@ -5235,7 +5235,7 @@
       "source": "new",
       "cite": "the game's own paraphrase of Iliad 9.410-416"
      },
-     "scene": "missing"
+     "scene": "translated"
     }
    },
    "houses": {
@@ -5322,7 +5322,7 @@
       "source": "new",
       "cite": "Shakespeare, Sonnet 18, line 1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "MO-001": {
      "name": {
@@ -5341,7 +5341,7 @@
       "page": "Romeo i Julia (Shakespeare, tłum. Ulrich, 1895)/Akt drugi",
       "revid": 3285360
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "CA-001": {
      "name": {
@@ -5354,7 +5354,7 @@
       "source": "new",
       "cite": "Romeo and Juliet 2.2"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "DC-001": {
      "name": {
@@ -5373,7 +5373,7 @@
       "page": "Hamlet (Shakespeare, tłum. Ulrich, 1895)/Akt trzeci",
       "revid": 3257297
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "DC-002": {
      "name": {
@@ -5392,7 +5392,7 @@
       "page": "Hamlet (Shakespeare, tłum. Ulrich, 1895)/Akt czwarty",
       "revid": 3257293
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "MO-002": {
      "name": {
@@ -5411,7 +5411,7 @@
       "page": "Romeo i Julia (Shakespeare, tłum. Ulrich, 1895)/Akt trzeci",
       "revid": 3285363
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "FA-001": {
      "name": {
@@ -5424,7 +5424,7 @@
       "source": "new",
       "cite": "A Midsummer Night's Dream 3.2"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "FA-002": {
      "name": {
@@ -5437,7 +5437,7 @@
       "source": "new",
       "cite": "A Midsummer Night's Dream 4.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "RL-001": {
      "name": {
@@ -5456,7 +5456,7 @@
       "page": "Hamlet (Shakespeare, tłum. Ulrich, 1895)/Akt piąty",
       "revid": 3257296
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "RL-002": {
      "name": {
@@ -5475,7 +5475,7 @@
       "page": "Burza (Shakespeare, tłum. Ulrich, 1895)/Epilog",
       "revid": 3248992
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "PT-001": {
      "name": {
@@ -5488,7 +5488,7 @@
       "source": "new",
       "cite": "A Midsummer Night's Dream 1.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "PT-002": {
      "name": {
@@ -5501,7 +5501,7 @@
       "source": "new",
       "cite": "Macbeth 4.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "VC-001": {
      "name": {
@@ -5514,7 +5514,7 @@
       "source": "new",
       "cite": "Romeo and Juliet 1.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "VC-002": {
      "name": {
@@ -5533,7 +5533,7 @@
       "page": "Romeo i Julia (Shakespeare, tłum. Ulrich, 1895)/Akt drugi",
       "revid": 3285360
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "VC-003": {
      "name": {
@@ -5546,7 +5546,7 @@
       "source": "new",
       "cite": "Romeo and Juliet 2.5"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "TP-001": {
      "name": {
@@ -5559,7 +5559,7 @@
       "source": "new",
       "cite": "The Tempest 4.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "TP-002": {
      "name": {
@@ -5572,7 +5572,7 @@
       "source": "new",
       "cite": "The Tempest 1.2"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "TP-003": {
      "name": {
@@ -5585,7 +5585,7 @@
       "source": "new",
       "cite": "The Tempest 1.2"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "MO-003": {
      "name": {
@@ -5598,7 +5598,7 @@
       "source": "new",
       "cite": "Romeo and Juliet 1.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "CA-002": {
      "name": {
@@ -5611,7 +5611,7 @@
       "source": "new",
       "cite": "Romeo and Juliet 1.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "DC-003": {
      "name": {
@@ -5624,7 +5624,7 @@
       "source": "new",
       "cite": "Hamlet 3.3"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "FA-003": {
      "name": {
@@ -5637,7 +5637,7 @@
       "source": "new",
       "cite": "A Midsummer Night's Dream 2.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "RL-003": {
      "name": {
@@ -5650,7 +5650,7 @@
       "source": "new",
       "cite": "Macbeth 2.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "PT-003": {
      "name": {
@@ -5669,7 +5669,7 @@
       "page": "Sen nocy letniej (Shakespeare, tłum. Ulrich, 1895)/Akt drugi",
       "revid": 3286441
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "SC-001": {
      "name": {
@@ -5682,7 +5682,7 @@
       "source": "new",
       "cite": "Macbeth 1.7"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "SC-002": {
      "name": {
@@ -5695,7 +5695,7 @@
       "source": "new",
       "cite": "Macbeth 1.5"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "SC-003": {
      "name": {
@@ -5708,7 +5708,7 @@
       "source": "new",
       "cite": "Macbeth 1.3"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "IL-001": {
      "name": {
@@ -5727,7 +5727,7 @@
       "page": "Wieczór Trzech Króli (Shakespeare, tłum. Ulrich, 1895)/Akt trzeci",
       "revid": 3294592
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "IL-002": {
      "name": {
@@ -5746,7 +5746,7 @@
       "page": "Wieczór Trzech Króli (Shakespeare, tłum. Ulrich, 1895)/Akt drugi",
       "revid": 3294589
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "IL-003": {
      "name": {
@@ -5759,7 +5759,7 @@
       "source": "new",
       "cite": "Twelfth Night 3.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "RM-001": {
      "name": {
@@ -5772,7 +5772,7 @@
       "source": "new",
       "cite": "Julius Caesar 3.2"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "RM-002": {
      "name": {
@@ -5785,7 +5785,7 @@
       "source": "new",
       "cite": "Julius Caesar 1.2"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "RM-003": {
      "name": {
@@ -5798,7 +5798,7 @@
       "source": "new",
       "cite": "Julius Caesar 3.2"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "MO-004": {
      "name": {
@@ -5811,7 +5811,7 @@
       "source": "new",
       "cite": "Romeo and Juliet 1.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "CA-003": {
      "name": {
@@ -5824,7 +5824,7 @@
       "source": "new",
       "cite": "Romeo and Juliet 1.3"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "DC-004": {
      "name": {
@@ -5837,7 +5837,7 @@
       "source": "new",
       "cite": "Hamlet 5.2"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "FA-004": {
      "name": {
@@ -5856,7 +5856,7 @@
       "page": "Sen nocy letniej (Shakespeare, tłum. Ulrich, 1895)/Akt czwarty",
       "revid": 3286440
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "VC-004": {
      "name": {
@@ -5869,7 +5869,7 @@
       "source": "new",
       "cite": "Romeo and Juliet 3.4"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "TP-004": {
      "name": {
@@ -5882,7 +5882,7 @@
       "source": "new",
       "cite": "The Tempest 5.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "RL-004": {
      "name": {
@@ -5895,7 +5895,7 @@
       "source": "new",
       "cite": "Romeo and Juliet 2.2"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "RL-005": {
      "name": {
@@ -5908,7 +5908,7 @@
       "source": "new",
       "cite": "The Merchant of Venice 2.7"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "RL-006": {
      "name": {
@@ -5921,7 +5921,7 @@
       "source": "new",
       "cite": "Henry IV, Part 2 3.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "RL-007": {
      "name": {
@@ -5934,7 +5934,7 @@
       "source": "new",
       "cite": "The Tempest 5.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "RL-008": {
      "name": {
@@ -5953,7 +5953,7 @@
       "page": "Król Lear (Shakespeare, tłum. Ulrich, 1895)/Akt czwarty",
       "revid": 3263021
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "RL-009": {
      "name": {
@@ -5966,7 +5966,7 @@
       "source": "new",
       "cite": "A Midsummer Night's Dream 3.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "PT-004": {
      "name": {
@@ -5979,7 +5979,7 @@
       "source": "new",
       "cite": "Othello 3.3"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "PT-005": {
      "name": {
@@ -5992,7 +5992,7 @@
       "source": "new",
       "cite": "A Midsummer Night's Dream 2.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "PT-006": {
      "name": {
@@ -6005,7 +6005,7 @@
       "source": "new",
       "cite": "Hamlet 1.5"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "PT-007": {
      "name": {
@@ -6018,7 +6018,7 @@
       "source": "new",
       "cite": "Macbeth 4.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "PT-008": {
      "name": {
@@ -6031,7 +6031,7 @@
       "source": "new",
       "cite": "The Tempest 1.2"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "PT-009": {
      "name": {
@@ -6044,7 +6044,7 @@
       "source": "new",
       "cite": "Romeo and Juliet 5.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "LD-001": {
      "name": {
@@ -6057,7 +6057,7 @@
       "source": "new",
       "cite": "Wordsworth, \"I Wandered Lonely as a Cloud\", lines 1-2"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "LD-002": {
      "name": {
@@ -6070,7 +6070,7 @@
       "source": "new",
       "cite": "Coleridge, The Rime of the Ancient Mariner, Part II"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "LD-003": {
      "name": {
@@ -6083,7 +6083,7 @@
       "source": "new",
       "cite": "Keats, Endymion, Book I, lines 1-2"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "GC-001": {
      "name": {
@@ -6096,7 +6096,7 @@
       "source": "new",
       "cite": "Byron, \"She Walks in Beauty\", lines 1-2"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "GC-002": {
      "name": {
@@ -6109,7 +6109,7 @@
       "source": "new",
       "cite": "Mary Shelley, Frankenstein, chapter 20"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "GC-003": {
      "name": {
@@ -6122,7 +6122,7 @@
       "source": "new",
       "cite": "Poe, \"The Raven\", line 1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "GC-004": {
      "name": {
@@ -6135,7 +6135,7 @@
       "source": "new",
       "cite": "Blake, \"Auguries of Innocence\", lines 1-2"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "GC-005": {
      "name": {
@@ -6148,7 +6148,7 @@
       "source": "new",
       "cite": "P. B. Shelley, \"Ode to the West Wind\", last line"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "LD-004": {
      "name": {
@@ -6161,7 +6161,7 @@
       "source": "new",
       "cite": "E. B. Browning, Sonnets from the Portuguese 43, line 1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "LD-005": {
      "name": {
@@ -6174,7 +6174,7 @@
       "source": "new",
       "cite": "C. Rossetti, \"Remember\", lines 1-2"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "OL-001": {
      "name": {
@@ -6187,7 +6187,7 @@
       "source": "new",
       "cite": "the game's own line (Zeus's Homeric epithet, cloud-gatherer)"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "OL-002": {
      "name": {
@@ -6200,7 +6200,7 @@
       "source": "new",
       "cite": "the game's own line (after Hegel's owl of Minerva)"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "OL-003": {
      "name": {
@@ -6213,7 +6213,7 @@
       "source": "new",
       "cite": "the game's own line"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "OL-004": {
      "name": {
@@ -6226,7 +6226,7 @@
       "source": "new",
       "cite": "the game's own line"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "OL-005": {
      "name": {
@@ -6239,7 +6239,7 @@
       "source": "new",
       "cite": "the game's own line"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "UW-001": {
      "name": {
@@ -6252,7 +6252,7 @@
       "source": "new",
       "cite": "the game's own line"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "UW-002": {
      "name": {
@@ -6265,7 +6265,7 @@
       "source": "new",
       "cite": "the game's own line"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "OL-006": {
      "name": {
@@ -6278,7 +6278,7 @@
       "source": "new",
       "cite": "the game's own paraphrase of Odyssey 1.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "UW-003": {
      "name": {
@@ -6291,7 +6291,7 @@
       "source": "new",
       "cite": "the game's own line"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "OL-007": {
      "name": {
@@ -6304,7 +6304,7 @@
       "source": "new",
       "cite": "the game's own paraphrase of Iliad 9.410-416"
      },
-     "scene": "missing"
+     "scene": "translated"
     }
    },
    "houses": {
