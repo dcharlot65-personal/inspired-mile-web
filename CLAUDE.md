@@ -63,18 +63,45 @@ left behind by a killed run is found by its port: `lsof -nP -iTCP:<port> -sTCP:L
 
 - No passwords, no Google. Passkeys (WebAuthn, discoverable, no username) are primary; a
   6-digit emailed code creates an account, signs in where there is no passkey, and recovers.
-  Session is still the `im_token` JWT cookie. Code: `backend/src/auth/`, `src/lib/passwordless.ts`,
-  the auth script in `BaseLayout.astro` (all its strings are in one `STRINGS` object).
+  Code: `backend/src/auth/`, `src/lib/passwordless.ts`, the auth script in `BaseLayout.astro`
+  (all its strings are in one `STRINGS` object).
+- **Sessions live on the server** (`auth_sessions`, `backend/src/auth/sessions.rs`). The cookie
+  holds a JWT whose `sid` names a row; a request is signed in only while that row is live.
+  Sign-out revokes the row, `POST /auth/logout/all` revokes all of the account's. The cookie is
+  `__Host-im_token` when every `WEBAUTHN_ORIGIN` is https (production) and `im_token` over
+  http (localhost, tests: browsers refuse the prefix there); HttpOnly, Secure, SameSite=Strict.
+- **Adding or removing a passkey, and adding an email, need a fresh proof** (a passkey
+  assertion or an emailed code in the last 5 minutes), not just the cookie. The page gets
+  403 `reauth_required`, runs `/auth/passkey/verify/{begin,finish}` and retries
+  (`withFreshProof` in `passwordless.ts`).
+- **`JWT_SECRET` is mandatory**: the API exits at start-up if it is absent, under 32 bytes,
+  or the old development constant. `DEV_INSECURE_JWT_SECRET=1` lifts that on localhost only
+  (refused with an https origin). Email codes use a key derived from it, not the secret itself.
 - API env: `WEBAUTHN_RP_ID` (default `inspiredmile.com`; **never change it once passkeys
   exist, it orphans all of them**), `WEBAUTHN_ORIGIN` (default
   `https://sonnetman.inspiredmile.com`; comma-separated list; each must be https, or http on
   localhost, and on the RP ID), `RESEND_API_KEY` (absent: email endpoints answer 503 and
-  the UI hides email), `EMAIL_FROM`, `RATE_LIMIT_PER_MINUTE` (global limiter, default 60).
+  the UI hides email), `EMAIL_FROM`, `RATE_LIMIT_PER_MINUTE` (per client, default 600),
+  `TRUSTED_PROXIES` (peers whose `CF-Connecting-IP` / `X-Forwarded-For` are believed; default
+  `127.0.0.1,::1,10.10.10.1,100.64.224.0`; from any other peer the socket address is the
+  client, and the API logs a warning naming the peer it ignored),
+  `SIGNUP_GLOBAL_PER_HOUR` (default 300; hitting it logs `SIGN-UP CEILING HIT`),
+  `UNUSED_ACCOUNT_PURGE_DAYS` (default 30, 0 = never: passkey-only accounts that never played
+  are deleted, see `purge_unused_accounts` in `auth/passkeys.rs`).
+- Limits are per network, not per address: an IPv6 /64 is one client, and the sign-up budget
+  (40 accounts an hour, counted when created) is per IPv4 /24 or IPv6 /64.
+- **Accounts that exist only by email cannot sign in while email is off** (no `RESEND_API_KEY`):
+  an old Google or email account has no passkey and its only way in answers 503. Production
+  had no users when this was accepted (2026-11-16); the sign-in panel says so. Check
+  `SELECT COUNT(*) FROM users u WHERE NOT EXISTS (SELECT 1 FROM webauthn_credentials c WHERE c.user_id = u.id)`
+  before relying on it.
 - `DEV_EMAIL_LOG=1` writes codes to stderr instead of sending. Tests only. A real key wins
   over it, with a loud start-up warning.
 - Local dev: `WEBAUTHN_RP_ID=localhost WEBAUTHN_ORIGIN=http://localhost:4321`.
 - The email step requires the age gate's stored tier (`adult` or `teen-consented`), in the
-  browser and again in the API. Do not loosen either.
+  browser and again in the API. Do not loosen either. The tier is self-declared (nobody's
+  age is verified); the server sets it at account creation and afterwards only lets it move
+  to the stricter value (`/credits/age-verify` never turns `teen` into `adult`).
 
 ## Where it runs (verified 2026-11-16)
 
