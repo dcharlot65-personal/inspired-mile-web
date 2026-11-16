@@ -9,7 +9,7 @@ import { test, expect } from '@playwright/test';
 const PAGES = [
   '/', '/battle', '/collection', '/playground', '/classroom', '/multiplayer',
   '/marketplace', '/tournaments', '/story', '/season', '/profile', '/world-map',
-  '/viewer', '/vr', '/about', '/privacy', '/terms',
+  '/viewer', '/vr', '/theatre', '/about', '/privacy', '/terms',
 ];
 
 test.beforeEach(async ({ page }) => {

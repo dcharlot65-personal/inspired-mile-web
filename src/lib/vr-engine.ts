@@ -90,8 +90,9 @@ export class VRCardEngine {
 
       // Material with card image
       const mat = new StandardMaterial(`mat-${card.id}`, this.scene);
-      const imagePath = `/images/cards/${card.id.toLowerCase()}.webp`;
-      mat.diffuseTexture = new Texture(imagePath, this.scene);
+      // Only cards that have artwork get a texture; asking for the rest was a 404 per card.
+      if (card.image) mat.diffuseTexture = new Texture(card.image, this.scene);
+      else mat.diffuseColor = new Color3(0.2, 0.17, 0.12);
       mat.emissiveColor = new Color3(0.3, 0.3, 0.3); // Slight self-illumination
       mat.backFaceCulling = false;
       cardMesh.material = mat;
@@ -146,8 +147,9 @@ export class VRCardEngine {
       cardMesh.lookAt(Vector3.Zero());
 
       const mat = new StandardMaterial(`mat-${card.id}`, this.scene);
-      const imagePath = `/images/cards/${card.id.toLowerCase()}.webp`;
-      mat.diffuseTexture = new Texture(imagePath, this.scene);
+      // Only cards that have artwork get a texture; asking for the rest was a 404 per card.
+      if (card.image) mat.diffuseTexture = new Texture(card.image, this.scene);
+      else mat.diffuseColor = new Color3(0.2, 0.17, 0.12);
       mat.emissiveColor = new Color3(0.2, 0.2, 0.2);
       mat.backFaceCulling = false;
       cardMesh.material = mat;

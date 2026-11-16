@@ -1,0 +1,200 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="The Theatre" description="The duel of verses staged in 3D: play in a Quest 3 or Vision Pro headset, or on a flat screen.">
+  <section class="section-padding">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-8">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/20 mb-6">
+          <span class="w-2 h-2 rounded-full bg-purple-500 animate-pulse"></span>
+          <span class="text-purple-400 text-xs font-medium tracking-wide uppercase">Quest 3 · Vision Pro · Screen</span>
+        </div>
+        <h1 class="font-display text-4xl sm:text-5xl font-bold text-obsidian-100 mb-4">The <span class="text-gradient">Theatre</span></h1>
+        <p class="text-obsidian-300 max-w-2xl mx-auto">
+          The same duel, on a stage around you. Point or pinch to play a card, press the microphone and speak your verse.
+          It is transcribed and judged on this device.
+        </p>
+      </div>
+
+      <div class="flex flex-wrap items-center justify-center gap-3 mb-4">
+        <button id="enter-xr" class="btn-primary px-6 py-2 text-sm hidden"></button>
+        <button id="restart" class="btn-secondary px-6 py-2 text-sm">New duel</button>
+        <a href="/battle" class="text-xs text-obsidian-400 hover:text-gold-400 underline">Play the flat version</a>
+      </div>
+      <p id="theatre-status" class="text-center text-xs font-mono text-obsidian-500 mb-4">Raising the curtain…</p>
+
+      <div class="card-glass overflow-hidden rounded-xl">
+        <canvas id="theatre-canvas" class="w-full block touch-none" style="height: min(70vh, 640px);"></canvas>
+      </div>
+
+      <!-- On a flat screen a keyboard is to hand, so typing is offered as well as speaking. -->
+      <div id="typed" class="mt-4 card-glass p-4">
+        <label for="typed-verse" class="text-xs uppercase tracking-wider text-obsidian-500">Or type your verse</label>
+        <textarea id="typed-verse" rows="3" maxlength="600"
+          class="mt-2 w-full bg-obsidian-900 border border-obsidian-700 rounded-lg px-4 py-3 text-obsidian-100 font-display text-lg focus:border-gold-500/50 focus:outline-hidden"
+          placeholder="One line of verse per line…"></textarea>
+      </div>
+
+      <div class="mt-6 grid sm:grid-cols-3 gap-4 text-center">
+        <div class="card-glass p-4">
+          <h2 class="text-sm font-display font-bold text-obsidian-200 mb-1">Quest 3</h2>
+          <p class="text-xs text-obsidian-400">Opens in passthrough, so the stage sits in your room. Point a controller or pinch with a hand.</p>
+        </div>
+        <div class="card-glass p-4">
+          <h2 class="text-sm font-display font-bold text-obsidian-200 mb-1">Vision Pro</h2>
+          <p class="text-xs text-obsidian-400">Opens as a full stage. Look at a card and pinch. Safari on visionOS does not offer passthrough to web pages.</p>
+        </div>
+        <div class="card-glass p-4">
+          <h2 class="text-sm font-display font-bold text-obsidian-200 mb-1">Screen</h2>
+          <p class="text-xs text-obsidian-400">Click the cards and buttons on the stage, and speak or type.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    import { brainInfo, chooseTier, detectCapability, loadBrain } from '../lib/brain';
+    import { getActiveDeck } from '../lib/deck-manager';
+    import { cancelListening, isListening, loadEar, startListening, stopListening } from '../lib/ear';
+    import { getOwnedCardIds } from '../lib/inventory';
+    import { incrementStat } from '../lib/achievements';
+    import { ROUNDS, starterDeck, type DuelDeck } from '../lib/verse/duel';
+    import { DuelSession } from '../lib/verse/session';
+    import { Theatre, type Action } from '../lib/xr/theatre';
+
+    const statusEl = document.getElementById('theatre-status')!;
+    const typed = document.getElementById('typed-verse') as HTMLTextAreaElement;
+    const enterBtn = document.getElementById('enter-xr') as HTMLButtonElement;
+    const params = new URLSearchParams(location.search);
+
+    let session: DuelSession;
+    let useModel = false;
+    let micLabel = '🎙 Speak';
+
+    function deck(): DuelDeck {
+      const saved = getActiveDeck();
+      return saved && saved.characters.length >= ROUNDS ? { characters: saved.characters, relics: saved.relics, potions: saved.potions } : starterDeck(getOwnedCardIds());
+    }
+
+    function redraw() {
+      const info = useModel ? brainInfo() : null;
+      theatre.render(session, {
+        mic: micLabel,
+        listening: isListening(),
+        judge: info ? `Judged by ${info.label} on this device.` : 'Judged by rule: no model is running.',
+      });
+      if (document.activeElement !== typed) typed.value = session.verse;
+      (document.getElementById('typed') as HTMLElement).classList.toggle('hidden', theatre.mode !== 'flat');
+    }
+
+    async function finishTake() {
+      micLabel = 'Transcribing…';
+      redraw();
+      try {
+        const said = await stopListening(session.duel.lang);
+        if (said) session.setVerse(session.verse.trim() ? `${session.verse.trim()}\n${said}` : said);
+        micLabel = said ? '🎙 Speak' : 'Heard nothing';
+      } catch (err) {
+        console.error('[theatre mic]', err);
+        micLabel = 'Could not transcribe';
+      }
+      redraw();
+    }
+
+    async function act(a: Action) {
+      switch (a.type) {
+        case 'character':
+          session.chooseCharacter(a.id);
+          break;
+        case 'item':
+          session.toggleItem(a.id);
+          break;
+        case 'clear':
+          session.setVerse('');
+          break;
+        case 'submit': {
+          const result = await session.submit();
+          if (result) incrementStat('totalRounds');
+          if (result?.winner === 'player') incrementStat('battleWins');
+          break;
+        }
+        case 'next':
+          if (session.phase === 'finished') start(Math.floor(Math.random() * 2 ** 31));
+          else await session.next();
+          break;
+        case 'mic':
+          if (isListening()) return finishTake();
+          try {
+            micLabel = 'Loading the ear…';
+            redraw();
+            if (!(await loadEar())) {
+              micLabel = 'The ear could not load';
+              break;
+            }
+            await startListening(finishTake);
+            micLabel = 'Listening… tap to stop';
+          } catch (err) {
+            console.error('[theatre mic]', err);
+            cancelListening();
+            micLabel = 'Microphone not allowed';
+          }
+          break;
+      }
+      redraw();
+    }
+
+    const theatre = new Theatre(document.getElementById('theatre-canvas') as HTMLCanvasElement, act);
+
+    function start(seed: number) {
+      session = new DuelSession({
+        seed,
+        lang: localStorage.getItem('inspired-mile-duel-lang') ?? 'en',
+        deck: deck(),
+        difficulty: 'player',
+        useModel,
+        onChange: redraw,
+      });
+      incrementStat('totalBattles');
+      session.beginRound();
+      (window as any).__theatre = { theatre, act, get session() { return session; } };
+    }
+
+    typed.addEventListener('input', () => session?.setVerse(typed.value));
+    document.getElementById('restart')!.addEventListener('click', () => start(Math.floor(Math.random() * 2 ** 31)));
+
+    async function init() {
+      // A model is used only if the player has already chosen one on the battle page; the
+      // theatre never starts a large download on its own, least of all inside a headset.
+      const cap = await detectCapability();
+      const chosen = localStorage.getItem('inspired-mile-brain');
+      const tier = chooseTier(cap);
+      if (params.get('brain') !== 'rules' && tier !== 'none' && chosen && chosen !== 'rules') {
+        statusEl.textContent = 'Summoning your opponent…';
+        useModel = await loadBrain(chosen === 'grand' && !cap.handheld ? 'grand' : tier, (p) => { statusEl.textContent = p.text; });
+      }
+      const info = useModel ? brainInfo() : null;
+      statusEl.textContent = info ? `${info.label} is running on this device.` : 'Playing the written opponent. Summon a model on the battle page to face one here.';
+
+      const mode = await Theatre.supportedMode();
+      if (mode) {
+        enterBtn.textContent = mode === 'immersive-ar' ? 'Enter: stage in your room' : 'Enter the theatre';
+        enterBtn.classList.remove('hidden');
+        enterBtn.addEventListener('click', async () => {
+          if (theatre.mode !== 'flat') return theatre.exitXR();
+          try {
+            const entered = await theatre.enterXR();
+            statusEl.textContent = entered ? `In the headset (${entered === 'immersive-ar' ? 'passthrough' : 'full stage'}).` : 'This device declined an immersive session.';
+          } catch (err) {
+            console.error('[theatre xr]', err);
+            statusEl.textContent = 'The headset session could not start.';
+          }
+          redraw();
+        });
+      }
+      const s = Number(params.get('seed'));
+      start(Number.isFinite(s) && s > 0 ? s : Math.floor(Math.random() * 2 ** 31));
+    }
+    init();
+  </script>
+</BaseLayout>
