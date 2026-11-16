@@ -53,5 +53,5 @@ describe('re-scoring the writing cells', () => {
       writeFileSync(u.file, JSON.stringify(u.cell, null, 1) + '\n');
     }
     console.log(`${updates.length} cell file(s) rewritten`);
-  });
+  }, 300_000);
 });

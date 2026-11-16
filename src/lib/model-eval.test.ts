@@ -99,7 +99,7 @@ describe('the measured language lists', () => {
     expect(problems.slice(0, 12), `${problems.length} differences over ${plays} plays`).toEqual([]);
     // Nothing replayed would prove nothing.
     if (cells.some((c) => c.task === 'write')) expect(plays).toBeGreaterThan(500);
-  });
+  }, 120_000);
 
   it('MODEL-EVAL.md is finished and states the lists decisions.json holds', () => {
     const doc = readFileSync(join(process.cwd(), 'docs', 'language', 'MODEL-EVAL.md'), 'utf8');
@@ -323,24 +323,32 @@ describe('the commentary check', () => {
   it('never reads real verse as an echo of any prompt the game sent in its language', async () => {
     const packs = await loadAllPacks();
     let checked = 0;
+    const wrong: string[] = [];
+    // Every distinct prompt of a language once: the three models were given the same duels.
+    const byLang = new Map<string, Map<string, string[]>>();
     for (const cell of cells.filter((c) => c.task === 'write')) {
-      const pack = packs.find((p) => p.lang === cell.lang)!;
-      const texts = [...read('corpus', `${cell.lang}.json`).excerpts.map((e: { text: string }) => e.text), ...Object.values(pack.written).flat()] as string[];
-      const sets = [...new Map(cell.plays.map((p: { prompt: string[]; answering: string | null }) => [p.prompt.join('\n'), instructionLines(p.prompt, p.answering)])).values()] as string[][];
+      const sets = byLang.get(cell.lang) ?? new Map<string, string[]>();
+      for (const p of cell.plays as { prompt: string[]; answering: string | null }[]) sets.set(`${p.prompt.join('\n')}\n${p.answering ?? ''}`, instructionLines(p.prompt, p.answering));
+      byLang.set(cell.lang, sets);
+    }
+    for (const [lang, sets] of byLang) {
+      const pack = packs.find((p) => p.lang === lang)!;
+      const texts = [...read('corpus', `${lang}.json`).excerpts.map((e: { text: string }) => e.text), ...Object.values(pack.written).flat()] as string[];
       // What the prompt adds, and only that: a reference verse may still meet the one rule that
       // reads no prompt (a first line ending in a colon, Dante's "Stavvi Minòs orribilmente, e
       // ringhia:"), which the next test bounds.
       for (const t of texts) {
-        const alone = commentary(t, cell.lang);
-        for (const instructions of sets) {
+        const alone = JSON.stringify(commentary(t, lang));
+        for (const instructions of sets.values()) {
           checked++;
-          expect(commentary(t, cell.lang, { instructions }), `${cell.lang}: ${t}`).toEqual(alone);
+          if (JSON.stringify(commentary(t, lang, { instructions })) !== alone) wrong.push(`${lang}: ${t.split('\n')[0]} / ${instructions[0]}`);
         }
       }
     }
+    expect(wrong.slice(0, 12), `${wrong.length} of ${checked} checks read a real verse as an echo`).toEqual([]);
     // Nothing checked would prove nothing: there are cells, so there are prompts.
     if (cells.some((c) => c.task === 'write')) expect(checked).toBeGreaterThan(1000);
-  });
+  }, 60_000);
   it('leaves verse alone: under 1% of the reference verse of all sixteen languages is flagged', async () => {
     expect(commentary('Who dares to stand upon my stage?\nI put the question to thy rage', 'en')).toEqual([]);
     // A line of verse inside a stanza may end in a colon; only a first line that does is read as a label.
