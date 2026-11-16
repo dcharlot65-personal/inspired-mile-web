@@ -37,7 +37,7 @@ import { POTION_CURSE, deviceForHouse } from '../verse/devices';
 import { JUDGE_POOL, ROUNDS, type RoundResult, type VerseScore } from '../verse/duel';
 import { FORM_POINTS } from '../verse/forms';
 // Everything written on the stage is a message in the interface language (src/i18n).
-import { list, t, tm } from '../../i18n';
+import { list, num, t, tm } from '../../i18n';
 import { curseName, curseRule, deviceBrief, deviceName, signatureText } from '../../i18n/duel';
 import type { DuelSession } from '../verse/session';
 
@@ -346,13 +346,13 @@ export class Theatre {
       checks.push(`${preview.signature.met ? '✓' : '○'} ${t('verdict.signature')}: ${signatureText(preview.signature)}`);
       if (preview.powerWords) checks.push(`${preview.powerWords.met ? '✓' : '○'} ${t('verdict.powerWords')}: ${list(s.duel.playerRelics[s.move.relicId!].words)}`);
       if (preview.curse) checks.push(`${preview.curse.violations ? '✗' : '✓'} ${t('live.curse', { name: curseName(preview.curse.id) })}`);
-      checks.push(`${t('round.craftSoFar')} ${preview.craft}`);
+      checks.push(`${t('round.craftSoFar')} ${num(preview.craft)}`);
     } else checks.push(t('theatre.pick'));
     this.panels.round.text.text = [
       [
         t('round.label', { n: s.roundIndex + 1, total: ROUNDS }).toLocaleUpperCase(),
         t('theatre.score', { you: t('battle.you'), a: s.playerRounds, b: s.opponentRounds, them: t('battle.opponent') }),
-        `${t('round.ink')} ${s.ink}`,
+        `${t('round.ink')} ${num(s.ink)}`,
       ].join('   ·   '),
       t('round.device', { name: tm(s.form.name), brief: tm(s.form.brief(s.plan.ctx)) }),
       '',
