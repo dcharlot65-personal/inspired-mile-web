@@ -7,7 +7,10 @@
  *
  * Without a path the dictionary is downloaded to the system temp folder (it is
  * about 3.6 MB and is NOT committed). The output is committed: the site build
- * needs no network, and the same table scores every match.
+ * needs no network, and the same table scores every match. The dictionary is
+ * pinned to one commit of github.com/cmusphinx/cmudict and its sha256 (COMMIT,
+ * SHA256 below): a file that differs is refused, so the table cannot change
+ * without this script changing.
  *
  * For each word the game needs two things:
  *   - how many syllables it has (every count its pronunciations give), and
@@ -16,21 +19,27 @@
  * Words the dictionary lacks and the game cannot do without (its own character
  * names, the "thee" and "thou" of stage verse) are in scripts/pronunciation-extra.txt.
  *
- * Output format, one line per rhyme key:   <key>\t<word><counts> <word><counts> …
+ * Output format, one line per rhyme key:   <key>\t<word><counts>[*] <word><counts>[*] …
  * A key is one character per sound (table below); <counts> is one digit per
  * syllable count, the commonest pronunciation first. A word with two
- * pronunciations appears under both keys.
+ * pronunciations appears under both keys. A "*" marks a word the dictionary only
+ * says letter by letter ("cd" is S IY D IY, "tv", "fbi"): an abbreviation, which
+ * the substance floor does not count as a word (text.ts lexiconHas).
  *
  * CMUdict: Copyright (C) 1993-2015 Carnegie Mellon University. BSD 2-clause style
  * licence; the notice is reproduced in the generated file.
  */
+import { createHash } from 'node:crypto';
 import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
-const SOURCE = 'https://raw.githubusercontent.com/cmusphinx/cmudict/master/cmudict.dict';
+/** The commit of github.com/cmusphinx/cmudict the table is built from (master on 2026-11-16), and the sha256 of its cmudict.dict. */
+const COMMIT = '74790861f652b15e4ac49015a90074ad62a27690';
+const SHA256 = '81917843c7f44ce2b094ac63873c2c7a4cf802040792c455ba3ca406891c3d22';
+const SOURCE = `https://raw.githubusercontent.com/cmusphinx/cmudict/${COMMIT}/cmudict.dict`;
 const OUT = join(ROOT, 'src/lib/verse/pron-en.ts');
 
 /** One character per sound. Vowels are the characters in VOWELS (src/lib/verse/pronounce.ts has the same string). */
@@ -117,6 +126,7 @@ function parse(text, into, { first = false } = {}) {
     if (!/^'?[a-z]+(?:'[a-z]+)*'?$/.test(word) || !phones.length) continue;
     const r = reduce(phones);
     if (!r) continue;
+    r.phones = phones.map((p) => p.replace(/\d$/, '')).join(' ');
     const list = into.get(word) ?? [];
     if (!into.has(word)) into.set(word, list);
     if (first) list.unshift(r);
@@ -124,18 +134,40 @@ function parse(text, into, { first = false } = {}) {
   }
 }
 
+/**
+ * Is every pronunciation the dictionary gives this word its letters said one by one? Then it
+ * is an abbreviation ("cd", "tv", "fbi"), not a word. Letter names are the dictionary's own
+ * entries for "a" to "z"; stress is ignored.
+ */
+function spelledOut(word, list, words) {
+  if (!/^[a-z]{2,6}$/.test(word)) return false;
+  const names = [...word].map((ch) => new Set((words.get(ch) ?? []).map((r) => r.phones)));
+  const can = (phones, i) => {
+    if (i === word.length) return phones === '';
+    for (const name of names[i]) {
+      if (phones === name && i === word.length - 1) return true;
+      if (phones.startsWith(`${name} `) && can(phones.slice(name.length + 1), i + 1)) return true;
+    }
+    return false;
+  };
+  return list.length > 0 && list.every((r) => r.phones && can(r.phones, 0));
+}
+
 async function main() {
   let path = process.argv[2];
   if (!path) {
-    path = join(tmpdir(), 'cmudict.dict');
+    path = join(tmpdir(), `cmudict-${COMMIT.slice(0, 12)}.dict`);
     if (!existsSync(path)) {
       const res = await fetch(SOURCE);
       if (!res.ok) throw new Error(`Could not download ${SOURCE}: ${res.status}`);
       writeFileSync(path, await res.text());
     }
   }
+  const dict = readFileSync(path, 'utf8');
+  const sha = createHash('sha256').update(dict, 'utf8').digest('hex');
+  if (sha !== SHA256) throw new Error(`${path} has sha256 ${sha}, not ${SHA256} (cmudict commit ${COMMIT}). Check the new dictionary, then update COMMIT and SHA256.`);
   const words = new Map();
-  parse(readFileSync(path, 'utf8'), words);
+  parse(dict, words);
   const fromDictionary = words.size;
 
   // Extras: a word the dictionary lacks is added; one it has gains a pronunciation.
@@ -171,11 +203,14 @@ async function main() {
   if (missing.size) throw new Error(`Character names with no pronunciation (add them to scripts/pronunciation-extra.txt): ${[...missing].join(', ')}`);
 
   const byKey = new Map();
+  let spelled = 0;
   for (const [word, list] of words) {
     const counts = [...new Set(list.flatMap((r) => r.counts))].map((n) => Math.min(n, 9)).join('');
+    const mark = spelledOut(word, list, words) ? '*' : '';
+    if (mark) spelled++;
     for (const key of new Set(list.map((r) => r.key))) {
       if (!byKey.has(key)) byKey.set(key, []);
-      byKey.get(key).push(word + counts);
+      byKey.get(key).push(word + counts + mark);
     }
   }
   const lines = [...byKey.keys()].sort().map((key) => `${key}\t${byKey.get(key).sort().join(' ')}`);
@@ -187,8 +222,10 @@ async function main() {
  * scripts/pronunciation-extra.txt and run it again.
  *
  * English syllable counts and rhyme keys, reduced from the CMU Pronouncing
- * Dictionary (${fromDictionary} words), ${added} words of the game's own (scripts/pronunciation-extra.txt)
- * and ${aliases} spellings without their opening apostrophe.
+ * Dictionary (${fromDictionary} words; github.com/cmusphinx/cmudict commit ${COMMIT},
+ * cmudict.dict sha256 ${SHA256}), ${added} words of the game's own
+ * (scripts/pronunciation-extra.txt) and ${aliases} spellings without their opening apostrophe.
+ * ${spelled} words the dictionary only says letter by letter are marked "*".
  * Loaded on demand by pronounce.ts (loadPronunciation); never part of a page's first load.
  *
 ${LICENCE.split('\n').map((l) => ` * ${l}`.trimEnd()).join('\n')}
@@ -199,7 +236,7 @@ ${LICENCE.split('\n').map((l) => ` * ${l}`.trimEnd()).join('\n')}
   // redistribution that must carry the notice.
   const notice = LICENCE.split('\n').map((l) => `# ${l}`.trimEnd()).join('\n').replace(/`/g, '\\`');
   writeFileSync(OUT, `${header}export default \`${notice}\n${data}\`;\n`);
-  console.log(`${OUT}: ${words.size} words, ${byKey.size} rhyme keys, ${Buffer.byteLength(data)} bytes`);
+  console.log(`${OUT}: ${words.size} words (${spelled} said letter by letter), ${byKey.size} rhyme keys, ${Buffer.byteLength(data)} bytes; cmudict ${COMMIT} ${sha}`);
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) await main();
