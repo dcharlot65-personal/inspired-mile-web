@@ -5,10 +5,10 @@
  * Where the text came from and how it was checked: docs/language/pages-core/README.md.
  */
 const messages: Record<string, string> = {
-  'world-map.meta.description': 'दुनिया भर के शहर घूमें और अपने शेक्सपियर पात्रों के लिए विश्व कार्ड के संस्करण खोजें।',
+  'world-map.meta.description': 'दुनिया भर के शहर घूमें और अपने शेक्सपीयर पात्रों के लिए विश्व कार्ड के संस्करण खोजें।',
   'world-map.badge': 'विश्व कार्ड',
   'world-map.title': 'विश्व <b>मानचित्र</b>',
-  'world-map.intro': 'शेक्सपियर के पात्र दुनिया घूमते हैं। हर शहर युद्ध की एक अनोखी क्षमता देता है। युद्ध, प्रश्नोत्तरी और खोज से संस्करण खोलें।',
+  'world-map.intro': 'शेक्सपीयर के पात्र दुनिया घूमते हैं। हर शहर युद्ध की एक अनोखी क्षमता देता है। युद्ध, प्रश्नोत्तरी और खोज से संस्करण खोलें।',
   'world-map.combinations': 'संभव संयोजन: {n}',
   'world-map.view': 'देखें',
   'world-map.attire': 'पहनावे की शैलियाँ',

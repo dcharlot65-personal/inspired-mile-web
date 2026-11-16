@@ -36,7 +36,7 @@ const messages: Record<string, string> = {
   'profile.recent.cards': 'Lá bài mới nhất',
   'profile.recent.noCards': 'Bạn chưa nhận được lá bài nào.',
   'profile.recent.achievements': 'Thành tựu mới nhất',
-  'profile.recent.noAchievements': 'Bạn chưa mở khóa thành tựu nào.',
+  'profile.recent.noAchievements': 'Bạn chưa mở khoá thành tựu nào.',
 };
 
 export default messages;

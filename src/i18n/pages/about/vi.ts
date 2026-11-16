@@ -13,7 +13,7 @@ const messages: Record<string, string> = {
   'about.vision.p1': 'Hãy hình dung bạn chọn một lá bài kỹ thuật số và nó sống dậy trong một cảnh dài 15 giây do AI tạo ra. Một nhân vật của Shakespeare hiện ra trong thực tế tăng cường. Bạn thách nhân vật ấy đấu rap. Bạn bè đứng xem và cổ vũ.',
   'about.vision.p2': 'Đó là Inspired Mile: một nền tảng nơi thẻ bài sưu tầm kỹ thuật số kết nối với các trải nghiệm AI và thực tế tăng cường, tạo nên một kiểu giải trí tương tác mới.',
   'about.why.title': 'Vì sao là Shakespeare?',
-  'about.why.p1': 'Đối tác sáng tạo của chúng tôi, Devon Glover, tức <a>Sonnet Man</a>, đã dành nhiều năm chứng minh rằng Shakespeare chính là hip hop. Là nghệ sĩ giảng dạy và diễn viên sân khấu, anh hòa trộn thơ ca, chuyển thể và âm nhạc đương đại trong tác phẩm của mình. Anh đã hợp tác với Southern Shakespeare Festival, Shakespeare Behind Bars và các trường học trên khắp nước Mỹ. Chúng tôi đang đưa nguồn năng lượng đó vào thế giới số.',
+  'about.why.p1': 'Đối tác sáng tạo của chúng tôi, Devon Glover, tức <a>Sonnet Man</a>, đã dành nhiều năm chứng minh rằng Shakespeare chính là hip hop. Là nghệ sĩ giảng dạy và diễn viên sân khấu, anh hoà trộn thơ ca, chuyển thể và âm nhạc đương đại trong tác phẩm của mình. Anh đã hợp tác với Southern Shakespeare Festival, Shakespeare Behind Bars và các trường học trên khắp nước Mỹ. Chúng tôi đang đưa nguồn năng lượng đó vào thế giới số.',
   'about.why.p2': 'Shakespeare cho chúng tôi một vũ trụ phong phú gồm các gia tộc, nhân vật và xung đột: nền móng tự nhiên cho một hệ thống đấu thẻ bài sưu tầm. Và tất cả đều thuộc phạm vi công cộng.',
   'about.team.title': '<b>Đội ngũ</b> của chúng tôi',
   'about.team.david.role': 'Nhà sáng lập kiêm trưởng nhóm kỹ thuật',

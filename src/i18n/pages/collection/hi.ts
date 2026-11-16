@@ -6,9 +6,9 @@
  */
 const messages: Record<string, string> = {
   'collection.meta.title': 'मेरा संग्रह',
-  'collection.meta.description': 'अपना Inspired Mile कार्ड संग्रह देखें: शेक्सपियर की महानतम रचनाओं के पात्र, अवशेष और काढ़े।',
+  'collection.meta.description': 'अपना Inspired Mile कार्ड संग्रह देखें: शेक्सपीयर की महानतम रचनाओं के पात्र, अवशेष और काढ़े।',
   'collection.title': 'मेरा <b>संग्रह</b>',
-  'collection.intro': 'आपका शेक्सपियर कार्ड संग्रह। बंद कार्ड <a>खेल के मैदान</a> में कमाए जा सकते हैं।',
+  'collection.intro': 'आपका शेक्सपीयर कार्ड संग्रह। बंद कार्ड <a>खेल के मैदान</a> में कमाए जा सकते हैं।',
   'collection.owned': 'आपके पास कार्ड: <b>{owned}</b> / {total}',
   'collection.filter.all': 'सभी',
   'collection.filter.owned': 'मेरे पास',

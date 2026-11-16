@@ -20,7 +20,7 @@ const messages: Record<string, string> = {
   'variants.ability.BKN.name': 'मोहल्ले का सरदार',
   'variants.ability.BKN.why': 'न्यूयॉर्क की चुटकी लेने की संस्कृति, रैप बैटल की जन्मभूमि',
   'variants.ability.LDN.name': 'कवि का अपना घर',
-  'variants.ability.LDN.why': 'शेक्सपियर का घर',
+  'variants.ability.LDN.why': 'शेक्सपीयर का घर',
   'variants.ability.MUM.name': 'बॉलीवुड की लय',
   'variants.ability.MUM.why': 'मुम्बई की काव्य परंपराएँ',
   'variants.ability.PAR.name': 'ऊँचा पद',

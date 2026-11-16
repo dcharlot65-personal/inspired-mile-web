@@ -7,7 +7,7 @@
 const messages: Record<string, string> = {
   'home.meta.description': 'Inspired Mile: trò chơi thẻ bài mà nước đi của bạn là một bài thơ. Sưu tầm các nhân vật của Shakespeare và đấu với một AI chạy hoàn toàn trong trình duyệt của bạn.',
   'home.hero.title': 'Nơi lá bài <b>sống dậy</b>',
-  'home.hero.body': 'Trò chơi thẻ bài mà nước đi của bạn là một bài thơ. Đánh ra một nhân vật, giữ đúng thể thơ và đấu với một AI chạy trong trình duyệt của bạn. Sưu tầm những nhân vật vĩ đại nhất của Shakespeare và tham gia bước tiến hóa tiếp theo của dòng trò chơi thẻ bài sưu tầm.',
+  'home.hero.body': 'Trò chơi thẻ bài mà nước đi của bạn là một bài thơ. Đánh ra một nhân vật, giữ đúng thể thơ và đấu với một AI chạy trong trình duyệt của bạn. Sưu tầm những nhân vật vĩ đại nhất của Shakespeare và tham gia bước tiến hoá tiếp theo của dòng trò chơi thẻ bài sưu tầm.',
   'home.cta.playground': 'Vào Sân chơi',
   'home.cta.collection': 'Xem bộ sưu tập',
   'home.stat.cards': 'Lá bài để sưu tầm',

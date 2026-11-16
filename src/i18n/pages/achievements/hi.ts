@@ -35,7 +35,7 @@ const messages: Record<string, string> = {
   'achievements.completionist.description': 'इकट्ठा किए गए अलग-अलग कार्ड: {n}',
   'achievements.master-thespian.name': 'मंच का उस्ताद',
   'achievements.master-thespian.description': 'जीते गए युद्ध: {n}',
-  'achievements.shakespeare-scholar.name': 'शेक्सपियर का विद्वान',
+  'achievements.shakespeare-scholar.name': 'शेक्सपीयर का विद्वान',
   'achievements.shakespeare-scholar.description': 'प्रश्नोत्तरी के सही उत्तर: {n}',
   'achievements.virtuoso.name': 'कलावंत',
   'achievements.virtuoso.description': 'एक ही दौर में {n} या उससे अधिक स्कोर करें',

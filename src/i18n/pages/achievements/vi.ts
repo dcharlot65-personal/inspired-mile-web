@@ -8,7 +8,7 @@ const messages: Record<string, string> = {
   'achievements.tier.bronze': 'Đồng',
   'achievements.tier.silver': 'Bạc',
   'achievements.tier.gold': 'Vàng',
-  'achievements.unlockedOn': 'Mở khóa ngày {date}',
+  'achievements.unlockedOn': 'Mở khoá ngày {date}',
   'achievements.first-blood.name': 'Chiến công đầu',
   'achievements.first-blood.description': 'Thắng trận đấu đầu tiên của bạn',
   'achievements.card-collector.name': 'Nhà sưu tầm lá bài',

@@ -5,7 +5,7 @@
  * Where the text came from and how it was checked: docs/language/pages-core/README.md.
  */
 const messages: Record<string, string> = {
-  'variants.unlocked': 'Biến thể đã mở khóa: <b>{n}</b>',
+  'variants.unlocked': 'Biến thể đã mở khoá: <b>{n}</b>',
   'variants.count': 'Biến thể: {n}',
   'variants.cities': 'Thành phố đã khám phá: <b>{n}</b> / {total}',
   'variants.source.city-quest': 'Nhiệm vụ thành phố',
@@ -14,11 +14,11 @@ const messages: Record<string, string> = {
   'variants.source.daily-travel': 'Chuyến đi hằng ngày',
   'variants.source.event': 'Sự kiện',
   'variants.ability.TKY.name': 'Chính xác kiểu neon',
-  'variants.ability.TKY.why': 'Văn hóa chuộng sự chính xác của Tokyo',
+  'variants.ability.TKY.why': 'Văn hoá chuộng sự chính xác của Tokyo',
   'variants.ability.LGS.name': 'Nhịp điệu Afrobeat',
   'variants.ability.LGS.why': 'Tiết tấu Afrobeats của Lagos',
   'variants.ability.BKN.name': 'Trùm khu phố',
-  'variants.ability.BKN.why': 'Văn hóa cà khịa của New York, cái nôi của đấu rap',
+  'variants.ability.BKN.why': 'Văn hoá cà khịa của New York, cái nôi của đấu rap',
   'variants.ability.LDN.name': 'Sân nhà của Thi sĩ',
   'variants.ability.LDN.why': 'Quê hương của Shakespeare',
   'variants.ability.MUM.name': 'Tiết tấu Bollywood',
@@ -42,7 +42,7 @@ const messages: Record<string, string> = {
   'variants.ability.JHB.name': 'Câu rap Jozi',
   'variants.ability.JHB.why': 'Sức nóng của giới rap Johannesburg',
   'variants.ability.MNL.name': 'Nhịp điệu FlipTop',
-  'variants.ability.MNL.why': 'Văn hóa đấu rap của Philippines',
+  'variants.ability.MNL.why': 'Văn hoá đấu rap của Philippines',
   'variants.ability.IST.name': 'Thơ nơi ngã tư',
   'variants.ability.IST.why': 'Nơi Đông và Tây gặp nhau trong thơ',
   'variants.ability.TOR.name': 'Nhịp điệu The Six',
