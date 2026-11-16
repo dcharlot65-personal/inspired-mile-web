@@ -187,6 +187,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     import { getPlayerStats, incrementStat, setHighScore, syncCardStats } from '../lib/achievements';
     import { initAudio, isInitialized, playMusic, playRarityFanfare, playSfx, preloadSfx, duckMusic, unduckMusic, type Rarity as AudioRarity } from '../lib/audio-manager';
     import { getActiveDeck } from '../lib/deck-manager';
+    import { holdWakeLock, mountStorageNote, releaseWakeLock } from '../lib/pwa';
     import { CITY_CATALOG, decodeVariantId, getCityByCode, getOwnedVariants, type CityAbility } from '../lib/variants';
     import { isSpeaking, isVoiceLoaded, loadVoice, speak, stopSpeaking } from '../lib/thespian-voice';
     import { CURSES, HOUSE_DEVICE, POTION_CURSE, deviceForHouse } from '../lib/verse/devices';
@@ -412,6 +413,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         else if (before === 'grand' || before === 'standard' || before === 'lite' || forced === 'model') summon(tier);
       }
     }
+    mountStorageNote($('brain-status'));
     initBrain();
 
     // --- Voice ---
@@ -794,6 +796,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     }
 
     function finish(winner: 'player' | 'opponent') {
+      releaseWakeLock('duel');
       const v = $('verdict');
       v.replaceChildren();
       v.dataset.match = winner;
@@ -834,6 +837,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       $('ai-score').textContent = '0';
       const info = useModel ? brainInfo() : null;
       $('ai-model-badge').textContent = info ? (info.writes ? `${info.label} · on this device` : `Written opponent · judged by ${info.label}`) : 'Written opponent';
+      holdWakeLock('duel');
       $('duel-setup').classList.add('hidden');
       $('battle-arena').classList.remove('hidden');
       incrementStat('totalBattles');

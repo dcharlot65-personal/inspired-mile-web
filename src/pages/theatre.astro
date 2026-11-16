@@ -58,6 +58,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     import { getActiveDeck } from '../lib/deck-manager';
     import { cancelListening, isListening, loadEar, startListening, stopListening } from '../lib/ear';
     import { getOwnedCardIds } from '../lib/inventory';
+    import { holdWakeLock, releaseWakeLock } from '../lib/pwa';
     import { incrementStat } from '../lib/achievements';
     import { ROUNDS, starterDeck, type DuelDeck } from '../lib/verse/duel';
     import { DuelSession } from '../lib/verse/session';
@@ -78,6 +79,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     }
 
     function redraw() {
+      // The screen stays on while a duel is on stage, and may sleep once it is over.
+      if (session?.phase === 'finished') releaseWakeLock('theatre');
       const info = useModel ? brainInfo() : null;
       theatre.render(session, {
         mic: micLabel,
@@ -156,6 +159,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         onChange: redraw,
       });
       incrementStat('totalBattles');
+      holdWakeLock('theatre');
       session.beginRound();
       (window as any).__theatre = { theatre, act, get session() { return session; } };
     }
