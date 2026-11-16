@@ -384,7 +384,8 @@ describe('against espeak-ng, a tool that shares no data with the tables', () => 
       expect([line, syllablesInLine(line, 'fr')]).toEqual([line, n]);
     }
     // German: narrow transcriptions, the r after a vowel, "ch" read as r, a compound cut inside "ei".
-    for (const [a, b, yes] of [['Leute', 'heute', true], ['Leute', 'Beute', true], ['Wochen', 'gebrochen', true], ['Wochen', 'Born', false], ['Bar', 'klar', true], ['reicht', 'leicht', true], ['reicht', 'Licht', false]] as const) {
+    // "gleicht", "erreicht" are not in the table: read as a compound, they would end on the table's "icht".
+    for (const [a, b, yes] of [['Leute', 'heute', true], ['Leute', 'Beute', true], ['Wochen', 'gebrochen', true], ['Wochen', 'Born', false], ['Bar', 'klar', true], ['reicht', 'leicht', true], ['reicht', 'Licht', false], ['gleicht', 'leicht', true], ['gleicht', 'Licht', false], ['erreicht', 'Licht', false]] as const) {
       expect([a, b, rhymes(a, b, 'de')]).toEqual([a, b, yes]);
     }
     for (const [word, n] of [['Feuer', 2], ['eher', 2], ['Bar', 1], ['Verzeihung', 3], ['Leute', 2], ['wären', 2], ['Wochen', 2], ['scheint', 1]] as const) {
@@ -394,6 +395,8 @@ describe('against espeak-ng, a tool that shares no data with the tables', () => 
     for (const [a, b] of [['pessoal', 'normal'], ['especial', 'final'], ['real', 'natural'], ['caixa', 'baixa'], ['seguinte', 'ouvinte'], ['odeio', 'receio']] as const) {
       expect([a, b, rhymes(a, b, 'pt')]).toEqual([a, b, true]);
     }
+    // "-eio" is stressed on the e: "meio" does not rhyme with "frio" (odeio / receio alone cannot show it).
+    expect(rhymes('meio', 'frio', 'pt')).toBe(false);
     // Italian: an accent marks the stress, not a hiatus.
     expect([syllablesInLine('più', 'it'), syllablesInLine('giù', 'it')]).toEqual([1, 1]);
     expect(rhymes('più', 'virtù', 'it')).toBe(true);

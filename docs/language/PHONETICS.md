@@ -433,18 +433,21 @@ written twice (".ˈ") is also counted once now.
 | ru | table | 3.72 MB | 515 kB |
 | ja | analyser code and twelve dictionary files | 17.8 MB | 17.8 MB (already compressed) |
 
-These are the generated modules; the production chunks of this branch's build are in the
-branch report. In the production build of 2026-11-16 the Japanese dictionary is eight files
+These are the generated modules. In the production build of 2026-11-16 (`npm run build`,
+this branch merged with `main`) each table is one chunk, raw and gzip -9: id 4.7 kB / 2.3 kB,
+es 14.2 / 4.9 kB, pt 14.9 / 5.5 kB, hi 18.4 / 5.4 kB, it 235 / 65 kB, th 311 / 86 kB, zh 417 /
+162 kB, fr 830 / 231 kB, de 1.15 MB / 446 kB, ru 2.92 MB / 477 kB; the Japanese analyser is a
+29 kB chunk (8.9 kB gzip). The Japanese dictionary is eight files
 emitted as assets, 17,788,982 bytes in all (`tid_pos` 5.9 MB, `base` 4.0 MB, `check` 3.1 MB,
 `cc` 1.7 MB, `tid` 1.6 MB, `tid_map` 1.5 MB, `unk` and `unk_pos` 11 kB each), and the four
 smallest inlined in the analyser's chunk.
 
 Time for `loadSound(lang)` to resolve in headless Chromium, measured by `tests/sound.spec.ts`
-against the dev server on the build host on 2026-11-16, at a load of about 4.5 per core (10
-test workers beside other sessions' work): es 8 ms, id 73 ms, hi 110 ms, fr 117 ms, pt 122 ms,
-th 135 ms, it 266 ms, zh 599 ms, de 896 ms, ja 1,752 ms, ru 3,336 ms; pl, ko, vi, ar 0. An
-earlier run on a quieter host gave es 5, id 9, pt 15, hi 41, it 52, th 63, zh 88, fr 146,
-de 209, ru 813, ja 1,068 ms. That is parse and install time with no network in the way; the
+against the dev server on the build host on 2026-11-16 (the final run, this branch merged with
+`main`; the host at about 4 load per core, 10 test workers): es 6 ms, fr 72 ms, pt 83 ms, id 114 ms,
+hi 123 ms, th 148 ms, zh 190 ms, de 261 ms, it 272 ms, ru 1,248 ms, ja 1,755 ms; pl, ko, vi, ar 0.
+The run before it, on a busier host, gave ru 3,336 ms and de 896 ms; an earlier one on a quiet
+host es 5, id 9, pt 15, hi 41, it 52, th 63, zh 88, fr 146, de 209, ru 813, ja 1,068 ms. That is parse and install time with no network in the way; the
 Russian table is the slow one to parse (400,000 entries). **Download time over a real connection was not measured**; it
 follows from the gzip sizes above (Russian's 515 kB and Japanese's 17.8 MB are the two a
 player on a slow link will notice).
@@ -521,7 +524,8 @@ node --import ./scripts/sound/ts-resolve.mjs scripts/sound/measure.mjs --show --
 
 `scripts/sound/mutate-sound.mjs` (build host) breaks twenty things one at a time (rules,
 tables, test sets, a written verse, the espeak-ng reader, the recorded digest) and expects
-the sound tests to go red each time.
+the sound tests to go red each time; the branch report has the run. `tests/prod-smoke.spec.ts`
+loads the Japanese dictionary from a built site; with one file removed from `dist/` it fails.
 
 ## Not finished, not verified
 
@@ -549,8 +553,10 @@ the sound tests to go red each time.
 - **Thai counts greedily.** `thaiSyllables` cuts a line into dictionary words longest-first
   from the left with no backtracking; it is not used by any form.
 - **Attribution for the CC BY-SA sources is not on the site.**
-- **The Japanese analyser has not been loaded in a browser from the production build.** The
-  browser tests run against the dev server.
+- **The Japanese analyser from the production build was loaded in Chromium against
+  `astro preview` on the build host only**, not through Caddy or a CDN. A server that adds
+  `Content-Encoding: gzip` to the `.gz` files is handled in code (the loader checks the gzip
+  magic bytes) and is untested. `tests/prod-smoke.spec.ts` checks it after a deploy.
 - **No download was timed over a real network.**
 
 Anything measured in a browser, and the state of the test suites on the build host, is in
