@@ -64,7 +64,7 @@ Inspired Mile is building a **two-layer platform**:
 ## Flagship Product: Shakespeare on the Go
 
 ### Concept
-Built around Devon Glover's "Sonnet Man" persona ([sonnetman.com](https://sonnetman.com)) — a teaching artist and theater performer who brings Shakespeare to life through hip-hop, poetry, and adaptation. Glover has partnered with the Southern Shakespeare Festival, Shakespeare Behind Bars, GO Learning Lab, and schools nationwide. His music is available on Spotify, Tidal, and Apple Music.
+Built around Devon Glover's "Sonnet Man" persona ([Southern Shakespeare Festival](https://southernshakespearefestival.org/sonnet-man/)) — a teaching artist and theater performer who brings Shakespeare to life through hip-hop, poetry, and adaptation. Glover has partnered with the Southern Shakespeare Festival, Shakespeare Behind Bars, GO Learning Lab, and schools nationwide. His music is available on Spotify, Tidal, and Apple Music.
 
 **Socials**: YouTube [TheSonnetManTV](https://www.youtube.com/TheSonnetManTV) | X [@thesonnetmannyc](https://x.com/thesonnetmannyc) | LinkedIn [thesonnetman](https://www.linkedin.com/in/thesonnetman/) | Facebook [TheSonnetMan](https://www.facebook.com/TheSonnetMan/)
 

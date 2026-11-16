@@ -71,7 +71,7 @@ const ALLOWED_DOMAINS = new Set([
   'sites.google.com',
   // Business & events
   'events.ringcentral.com',
-  'sonnetman.com', 'www.sonnetman.com',
+  'southernshakespearefestival.org', 'www.southernshakespearefestival.org',
   'greenlab.di.uminho.pt',
 ]);
 

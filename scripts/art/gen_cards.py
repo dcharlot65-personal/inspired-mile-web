@@ -17,6 +17,7 @@ ap = argparse.ArgumentParser()
 ap.add_argument('prompts'); ap.add_argument('out')
 ap.add_argument('--only', default=''); ap.add_argument('--seed', type=int, default=7)
 ap.add_argument('--model', default='/Volumes/macos_4tb_external_1/model_library/flux-3-image-klein')
+ap.add_argument('--part', default='', help='i/n: paint only every n-th card starting at i, so two machines can share a run')
 a = ap.parse_args()
 
 cards = json.loads(Path(a.prompts).read_text())
@@ -25,8 +26,11 @@ out = Path(a.out); out.mkdir(parents=True, exist_ok=True)
 t0 = time.time()
 model = Flux3Klein(model_path=a.model)
 print(f'model loaded in {time.time() - t0:.0f}s', flush=True)
-for card in cards:
+part = [int(x) for x in a.part.split('/')] if a.part else None
+for index, card in enumerate(cards):
     if only and card['id'] not in only:
+        continue
+    if part and index % part[1] != part[0]:
         continue
     stem = card['id'].lower()
     webp = out / f'{stem}.webp'
