@@ -474,8 +474,20 @@ function tablesJson(): string {
     formsForEnglish: formsFor('en').map((f) => f.id),
     rules: rulesFor('en'),
     stopWords: [...STOP_WORDS],
-    // How many words the pronunciation table holds, counted here from the file the server compiles in.
-    pronunciationWords: new Set(PRON.split('\n').flatMap((l) => l.slice(l.indexOf('\t') + 1).split(' ').map((e) => e.replace(/\d+$/, '')))).size,
+    // How many words the pronunciation table holds, counted from the file the server compiles in, line by
+    // line as installPronunciation reads it: a line without a tab (the licence notice) holds no words.
+    pronunciationWords: (() => {
+      const words = new Set<string>();
+      for (const line of PRON.split('\n')) {
+        const tab = line.indexOf('\t');
+        if (tab < 1) continue;
+        for (const entry of line.slice(tab + 1).split(' ')) {
+          const m = /^(.*?)(\d+)$/.exec(entry);
+          if (m) words.add(m[1]);
+        }
+      }
+      return words.size;
+    })(),
     deviceInPlay: [...Object.keys(HOUSE_DEVICE), 'No Such House'].flatMap((house) =>
       [true, false].map((answering) => ({ house, answering, device: deviceInPlay(house, 'en', answering).id })),
     ),

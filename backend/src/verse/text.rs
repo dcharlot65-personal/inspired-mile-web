@@ -695,7 +695,10 @@ pub const MIN_DISTINCT_WORDS: usize = 3;
 
 /// Is this a verse, or tokens arranged to satisfy a checker (`substance`)? Every line holds
 /// at least one word, and the verse has at least as many different words as it has lines,
-/// and never fewer than three. Lone letters count as one word between them.
+/// and never fewer than three. Lone letters count as one word between them. More than half
+/// of its lines are different lines: a line said again (the same words, whatever the case
+/// and punctuation) counts once, so a refrain may return but one line said over and over
+/// is one line.
 pub fn substance(verse: &str) -> Substance {
     let ls = lines_of(verse);
     let per_line: Vec<Vec<String>> =
@@ -711,7 +714,12 @@ pub fn substance(verse: &str) -> Substance {
     }
     let distinct = words.len() + usize::from(any_lone);
     let needed = ls.len().max(MIN_DISTINCT_WORDS);
-    Substance { ok: !ls.is_empty() && per_line.iter().all(|units| !units.is_empty()) && distinct >= needed, distinct, needed }
+    let different_lines = per_line.iter().map(|units| units.join(" ")).collect::<HashSet<String>>().len();
+    let ok = !ls.is_empty()
+        && per_line.iter().all(|units| !units.is_empty())
+        && distinct >= needed
+        && different_lines * 2 > ls.len();
+    Substance { ok, distinct, needed }
 }
 
 /// How much of `verse` is taken from `source`, from 0 (nothing) to 1 (all of it)

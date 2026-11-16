@@ -29,8 +29,10 @@ pub struct Pronunciation {
 }
 
 /// The table's data: what the module exports, between the back-ticks of its template
-/// string. The generator refuses to write a table holding a back-tick, a backslash or
-/// `${`, so the text between them is the string itself.
+/// string. The text runs to the LAST back-tick: the licence notice at the top of the data
+/// holds escaped back-ticks (\`\`AS IS''). Those notice lines start with `#` and hold no
+/// tab, so the reader below skips them, as `installPronunciation` does; table lines hold
+/// no back-tick, backslash or `${`, so their text is the string itself.
 fn data() -> &'static str {
     const OPEN: &str = "export default `";
     let start = SOURCE.find(OPEN).expect("pron-en.ts exports a template string") + OPEN.len();
@@ -124,7 +126,17 @@ mod tests {
     fn the_table_is_the_generated_one_and_parses_whole() {
         // The dictionary alone is over a hundred thousand words.
         assert!(table_len() > 120_000, "{} words", table_len());
-        assert!(!data().contains('`') && !data().contains('\\'));
+        // Every line is a table line, whose text a template string leaves as it is, or a line
+        // of the dictionary's licence notice, which starts with "#", holds no tab and is
+        // skipped. Nothing else may be skipped without a word.
+        for line in data().split('\n') {
+            if line.contains('\t') {
+                assert!(!line.contains('`') && !line.contains('\\') && !line.contains("${"), "{line}");
+            } else {
+                assert!(line.starts_with('#'), "neither a table line nor the licence: {line:?}");
+            }
+        }
+        assert!(data().starts_with("# The CMU Pronouncing Dictionary is Copyright"));
         for word in ["hamlet", "macbeth", "ophelia", "thee", "thou", "tis", "o'er"] {
             assert!(pronounce(word).is_some(), "{word}");
         }
