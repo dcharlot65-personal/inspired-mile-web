@@ -30,6 +30,8 @@ const glossary = readJson(`${D}glossary.json`);
 const baselineFile = readJson(`${D}baseline.json`);
 const baseline = baselineFile.strings;
 const grammar = opt(`${R}grammar.json`);
+// The first full run, before the strings were fixed: what each tool flagged at the start.
+const grammarFirst = opt(`${R}grammar-first.json`);
 const bt = opt(`${R}bt.json`);
 const review = opt(`${R}review.json`);
 const adoption = opt(`${R}adoption.json`);
@@ -118,13 +120,14 @@ p('What this report can and cannot say. A tool that covers a language can show t
 p('## Summary by language', '');
 p('Strings: interface strings (the six Shakespeare quotations, which are the source text, are not counted) + player-facing strings in the language pack (verse lines, power words, acrostic words).', '');
 p(`"Changed" and "before" are measured against \`${baselineFile.ref}\` at \`${baselineFile.commit.slice(0, 10)}\` (\`docs/language/baseline.json\`, made by \`node scripts/lang/baseline.mjs\`): the strings as they stand without this work.`, '');
-p('| Language | Strings (interface + pack) | Changed | Mechanical: before → now (accepted) | Glossary: before → now | LanguageTool hits (accepted / open) | Hunspell hits (accepted / open) | Back-translation flagged (accepted / open) | Second-model corrections (proposed / adopted) |');
+p('| Language | Strings (interface + pack) | Changed | Mechanical: before → now (accepted) | Glossary: before → now | LanguageTool: first run → now (accepted / open) | Hunspell: first run → now (accepted / open) | Meaning: flagged (accepted / open) | Second model: corrections proposed / adopted |');
 p('|---|---|---|---|---|---|---|---|---|');
 for (const lang of LOCALES) {
   const g = grammar?.languages?.[lang];
   const hits = (tool) => (g ? g.hits.filter((h) => h.tool === tool) : []);
-  const lt = !grammar ? 'not run' : !g ? 'not run' : g.languagetool ? `${hits('languagetool').length} (${hits('languagetool').filter((h) => h.allowed).length} / ${hits('languagetool').filter((h) => !h.allowed).length})` : 'no module';
-  const hs = !grammar ? 'not run' : !g ? 'not run' : g.hunspell ? `${hits('hunspell').length} (${hits('hunspell').filter((h) => h.allowed).length} / ${hits('hunspell').filter((h) => !h.allowed).length})` : 'no dictionary';
+  const first = (tool) => grammarFirst?.languages?.[lang]?.hits.filter((h) => h.tool === tool).length;
+  const lt = !grammar ? 'not run' : !g ? 'not run' : g.languagetool ? `${first('languagetool') ?? '?'} → ${hits('languagetool').length} (${hits('languagetool').filter((h) => h.allowed).length} / ${hits('languagetool').filter((h) => !h.allowed).length})` : '**no module**';
+  const hs = !grammar ? 'not run' : !g ? 'not run' : g.hunspell ? `${first('hunspell') ?? '?'} → ${hits('hunspell').length} (${hits('hunspell').filter((h) => h.allowed).length} / ${hits('hunspell').filter((h) => !h.allowed).length})` : '**no dictionary**';
   const m = meaning[lang];
   const mt = lang === 'en' ? 'source' : !bt ? 'not run' : m.missing ? 'not run' : `${m.flagged.length} of ${m.scored} (${m.accepted} / ${m.open.length})${m.notScored ? `; ${m.notScored} not scored since changed` : ''}`;
   const rv = review?.languages?.[lang];
@@ -135,6 +138,7 @@ for (const lang of LOCALES) {
   p(`| ${NAME[lang]} (${lang}) | ${ui} + ${Object.keys(now[lang].pack).length} | ${changes[lang].ui.length} + ${changes[lang].pack.length} | ${mech[lang].before ? mech[lang].before.length : 'n/a'} → ${mech[lang].open.length} (${mech[lang].accepted}) | ${lang === 'en' ? '—' : `${mech[lang].glossBefore.length} → ${mech[lang].gloss.length}`} | ${lt} | ${hs} | ${mt} | ${rt} |`);
 }
 p('');
+p('"First run → now": hits on the first full run (2026-11-16, after the earlier mechanical and plural fixes, before this triage) and on the final run; a hit that is gone was fixed in the string. Every hit still there is accepted, with its reason, in `docs/language/allow/`.', '');
 p('"Mechanical: before" is the text as it stood before this work, measured with today\'s rules (so it counts the strings that had no plural forms). "Accepted" means listed, with a reason, in `docs/language/allow/`. "Open" should be zero; an open hit fails the run.', '');
 
 // ---------- tool coverage ----------
