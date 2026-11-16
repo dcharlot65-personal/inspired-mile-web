@@ -1,10 +1,13 @@
 /**
- * Rhyme, decided from spelling alone, one rule per language.
+ * Rhyme, one rule per language.
  *
- * There is no pronouncing dictionary here, so every rule is an approximation,
- * and each says below what it can and cannot hear. All of them are tuned the
- * same way as the English one always was: a doubtful rhyme is allowed rather
- * than a real one refused. A word never rhymes with itself.
+ * English is decided by sound: a table reduced from the CMU Pronouncing
+ * Dictionary (./pronounce) gives each word its rhyme key, the sounds from its
+ * last stressed vowel on. Every other language, and any English word the table
+ * does not have, is decided from spelling alone, so those rules are
+ * approximations, and each says below what it can and cannot hear. All of them
+ * are tuned the same way: a doubtful rhyme is allowed rather than a real one
+ * refused. A word never rhymes with itself.
  *
  * Where spelling cannot carry a fair rule, there is none, and rhymeChecked()
  * says so; the rhyming forms are then not offered in that language:
@@ -17,6 +20,7 @@
  *   many spellings; a rule short of a full syllable parser refuses real rhymes.
  */
 import { baseLang } from './lang';
+import { pronounce, soundRhyme } from './pronounce';
 import { fold, hiragana, wordsOf } from './text';
 
 const LATIN_VOWELS = 'aeiouy';
@@ -26,13 +30,13 @@ export function rhymeChecked(lang: string): boolean {
   return !/^(zh|ja|th)$/.test(baseLang(lang));
 }
 
-// --- English, and the fallback for any Latin-script word ---
+// --- English by spelling: the fallback for a word the table lacks, and for any Latin-script word ---
 
 /**
- * The part of an English word that carries its rhyme: from the last vowel group
- * to the end. For other scripts, the last two characters.
+ * The part of a word that carries its rhyme, by spelling: from the last vowel
+ * group to the end. For other scripts, the last two characters.
  */
-export function rhymeKey(word: string): string {
+function spelledKey(word: string): string {
   const w = fold(word).replace(/[^\p{L}]/gu, '');
   if (w.length < 2) return w;
   if (!/^[a-z]+$/.test(w)) return w.slice(-2);
@@ -40,18 +44,25 @@ export function rhymeKey(word: string): string {
   // guide to sound, so this is rough and tuned to be generous: a doubtful rhyme
   // is allowed rather than refused.
   const e = w
+    .replace(/^(d|t|wh|y)o$/, '$1oo')
+    .replace(/^you$/, 'yoo')
+    .replace(/eigh$/, 'ay')
     .replace(/ight$/, 'ite')
+    .replace(/igh$/, 'y')
     .replace(/(ower|our)$/, 'owr')
     .replace(/(are|air|eir|ayer)$/, 'air')
     .replace(/^(th|wh)ere$/, '$1air')
     .replace(/(awl|aul|all)$/, 'awl')
     .replace(/(oise|oys)$/, 'oyz')
     .replace(/(ize|ise|ies|eyes|ighs)$/, 'ize')
+    .replace(/yme$/, 'ime')
     .replace(/(ough|ow|oe)$/, 'o')
-    .replace(/(ay|eigh)$/, 'ay')
+    .replace(/^(th|gr|pr|ob|conv|surv)ey$/, '$1ay')
+    .replace(/(ue|ew|oo)$/, 'oo')
     .replace(/(ck|que)$/, 'k')
     .replace(/ph$/, 'f')
     .replace(/^(me|he|she|we|be|ye)$/, '$1e')
+    .replace(/^([^aeiou]+)(y|ie|ye)$/, '$1eye')
     .replace(/(ee|ea|ey|ie)$/, 'ee')
     .replace(/([^aeiou])y$/, '$1ee');
   // Skip a silent final e so "stage" keys on "age", not on "e".
@@ -63,11 +74,25 @@ export function rhymeKey(word: string): string {
   return e.slice(i);
 }
 
+/**
+ * The part of a word that carries its rhyme. For an English word in the
+ * pronunciation table: its sounds from the last stressed vowel on, prefixed
+ * with "/" (the first pronunciation; `rhymes` tries them all). Otherwise by
+ * spelling: from the last vowel group to the end, or the last two characters
+ * of a word in another script.
+ */
+export function rhymeKey(word: string, lang = 'en'): string {
+  const known = pronounce(word, lang);
+  return known ? `/${known.keys[0]}` : spelledKey(word);
+}
+
 function englishRhyme(a: string, b: string): boolean {
-  const ka = rhymeKey(a);
-  const kb = rhymeKey(b);
-  if (ka.length < 2 || kb.length < 2) return false;
+  const ka = spelledKey(a);
+  const kb = spelledKey(b);
+  if (!ka || !kb) return false;
+  // "go" / "so": a one-letter ending rhymes with itself, but is too little to be found inside another.
   if (ka === kb) return true;
+  if (ka.length < 2 || kb.length < 2) return false;
   // "corazón" / "canción": one ending contained in the other still rhymes.
   const [short, long] = ka.length <= kb.length ? [ka, kb] : [kb, ka];
   return long.endsWith(short);
@@ -574,7 +599,10 @@ export function rhymes(a: string, b: string, lang = 'en'): boolean {
     const verdict = rule(a, b);
     if (verdict !== null) return verdict;
   }
-  // English, an unlisted language, or a word from another script inside the verse.
+  // English by sound, when the table has both words.
+  const heard = soundRhyme(a, b, lang);
+  if (heard !== null) return heard;
+  // English by spelling, an unlisted language, or a word from another script inside the verse.
   return englishRhyme(fa, fb);
 }
 

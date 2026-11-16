@@ -22,7 +22,7 @@
 import { JUDGE_POOL, type JudgeSplit } from './duel';
 import { rulesFor } from './lang';
 import { rhymeEnds, rhymes } from './rhyme';
-import { fold, lineLength, linesOf, syllablesInLine, wordSpan, wordsOf, cleanVerse } from './text';
+import { fold, isStopWord, letterCount, lineLength, linesOf, substance, syllablesInLine, wordParts, wordSpan, wordsOf, cleanVerse } from './text';
 
 export const CRITERIA = ['wordplay', 'allusion', 'flow', 'wit'] as const;
 export type Criterion = (typeof CRITERIA)[number];
@@ -116,15 +116,27 @@ export function combineGrades(player: Margins, opponent: Margins): JudgeSplit {
 }
 
 // --- Rule-based comparison, used when no model can run ---
+//
+// Each criterion is a measurement a verse cannot raise without doing the thing
+// measured. Filler words, bare punctuation and one-word verses earn nothing:
+//   wordplay  how many different words that carry meaning, for the verse's length
+//   allusion  names and telling words from the plays (the lexicon)
+//   flow      rhymes between line ends, and lines of even length
+//   wit       words of the verse being answered, turned back on it
 
 function variety(verse: string, lang: string): number {
-  const w = wordsOf(verse, lang).map(fold);
-  return w.length ? new Set(w).size / w.length + Math.min(w.length, 30) / 60 : 0;
+  const all = wordParts(verse, lang).map(fold);
+  // The little words of the language are not variety (English has a list; elsewhere every word counts).
+  const telling = new Set(all.filter((w) => letterCount(w) > 0 && !isStopWord(w, lang)));
+  return all.length ? telling.size / all.length + Math.min(telling.size, 30) / 60 : 0;
 }
+
+/** Below anything a verse of two lines or more can score: one line has no flow to judge. */
+const NO_FLOW = -10;
 
 function soundScore(verse: string, lang: string): number {
   const ls = linesOf(verse);
-  if (ls.length < 2) return 0;
+  if (ls.length < 2) return NO_FLOW;
   let rhymed = 0;
   for (let i = 0; i < ls.length; i++) {
     for (let j = i + 1; j < ls.length; j++) {
@@ -135,7 +147,7 @@ function soundScore(verse: string, lang: string): number {
   const lens = ls.map((l) => syllablesInLine(l, lang) ?? lineLength(l, lang));
   const mean = lens.reduce((a, b) => a + b, 0) / lens.length;
   const spread = Math.sqrt(lens.reduce((s, n) => s + (n - mean) ** 2, 0) / lens.length);
-  return rhymed * 2 - spread / Math.max(1, mean);
+  return Math.max(NO_FLOW + 1, rhymed * 2 - spread / Math.max(1, mean));
 }
 
 // The lexicon is the card catalogue's names and quotation words, which are English
@@ -144,34 +156,48 @@ function allusionScore(verse: string, lang: string, lexicon: Set<string>): numbe
   return new Set(wordsOf(verse, lang).map(fold).filter((w) => lexicon.has(w))).size;
 }
 
-function witScore(verse: string, other: string, lang: string): number {
+/** Most words thrown back that count: past this it is repetition, not wit. */
+const MAX_THROWN = 3;
+
+/**
+ * A comeback: telling words, long enough for the language, taken from the verse
+ * being answered. Only the side that answers can score it, so `answered` is the
+ * other side's earlier verse, or nothing for a verse that opens. A line that
+ * ends in a question or an outcry breaks a tie and no more.
+ */
+function witScore(verse: string, lang: string, answered?: string): number {
   const min = rulesFor(lang).riposte;
-  const theirs = new Set(wordsOf(other, lang).filter((w) => wordSpan(w) >= min).map(fold));
+  const theirs = new Set(wordsOf(answered ?? '', lang).filter((w) => wordSpan(w) >= min && !isStopWord(w, lang)).map(fold));
   const thrown = new Set(wordsOf(verse, lang).map(fold).filter((w) => theirs.has(w))).size;
-  const marks = (verse.match(/[?!？！؟]/g) ?? []).length;
-  return thrown * 2 + Math.min(marks, 2);
+  const pointed = linesOf(verse).filter((l) => /[?!？！؟]\s*["'”’)»」』]*$/.test(l) && lineLength(l, lang) >= 2).length;
+  return Math.min(thrown, MAX_THROWN) + Math.min(pointed, 2) * 0.1;
 }
 
 /**
  * Compare two verses by measurable features alone. `lexicon` is the set of
- * folded words that count as literary allusion (names and quotation words from
- * the card catalogue).
+ * folded words that count as literary allusion (names and telling words from
+ * the card catalogue). The player answers the opponent's verse; the opponent
+ * answers `previousPlayerVerse`, the player's verse of the round before.
+ *
+ * Text too thin to be a verse (text.ts `substance`) loses every criterion to a
+ * real one.
  */
-export function rulesJudge(playerVerse: string, opponentVerse: string, lang: string, lexicon: Set<string>): JudgeSplit {
+export function rulesJudge(playerVerse: string, opponentVerse: string, lang: string, lexicon: Set<string>, previousPlayerVerse?: string): JudgeSplit {
   const p = cleanVerse(playerVerse);
   const o = cleanVerse(opponentVerse);
   const scores: Record<Criterion, [number, number]> = {
     wordplay: [variety(p, lang), variety(o, lang)],
     allusion: [allusionScore(p, lang, lexicon), allusionScore(o, lang, lexicon)],
     flow: [soundScore(p, lang), soundScore(o, lang)],
-    wit: [witScore(p, o, lang), witScore(o, p, lang)],
+    wit: [witScore(p, lang, o), witScore(o, lang, previousPlayerVerse ? cleanVerse(previousPlayerVerse) : undefined)],
   };
+  const real = [substance(p, lang).ok, substance(o, lang).ok];
   const each = JUDGE_POOL / CRITERIA.length;
   const criteria: JudgeSplit['criteria'] = {};
   let player = 0;
   for (const c of CRITERIA) {
     const [a, b] = scores[c];
-    const verdict = Math.abs(a - b) < 1e-9 ? 'split' : a > b ? 'player' : 'opponent';
+    const verdict = real[0] !== real[1] ? (real[0] ? 'player' : 'opponent') : Math.abs(a - b) < 1e-9 ? 'split' : a > b ? 'player' : 'opponent';
     criteria[c] = verdict;
     player += verdict === 'player' ? each : verdict === 'split' ? each / 2 : 0;
   }

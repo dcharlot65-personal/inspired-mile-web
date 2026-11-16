@@ -6,13 +6,19 @@
  * and its verse. The player then chooses a character (each can be played once
  * per match), may spend ink on a relic or a potion, and answers.
  *
- * A verse scores  craft + judge:
+ * A verse scores  craft + judge (+ the world card's bonus, for the player):
  *   craft = (form points + power-word bonus) × multiplier − curse penalties
  *   judge = this side's share of JUDGE_POOL, from comparing the two verses
  *
+ * A verse that is empty, too thin to be a verse (text.ts `substance`) or taken
+ * from the other side's verse (text.ts `similarity`) is void: it lands nothing
+ * and its craft is 0. A player's copied verse also forfeits the judge.
+ *
  * Everything in this file is pure and seeded: the same seed, deck and verses
- * always produce the same match. No randomness is applied after a verse is
- * written.
+ * always produce the same plan and the same scores. No randomness is applied
+ * after a verse is written. (A verse written by a model is sampled, so a match
+ * against a model is not reproducible from its seed; one against the written
+ * opponent is.)
  */
 import { CARD_CATALOG, getCardById, type Card } from '../cards';
 import {
@@ -23,12 +29,13 @@ import {
   POWER_WORD_BONUS,
   checkPowerWords,
   checkSignature,
-  deviceForHouse,
+  deviceInPlay,
+  invocationNames,
   type DeviceResult,
 } from './devices';
 import { formsFor, scoreForm, type Form, type FormContext, type FormScore } from './forms';
 import { getPack } from './packs';
-import { cleanVerse } from './text';
+import { cleanVerse, similarity, wordsOf } from './text';
 
 export const ROUNDS = 3;
 export const START_INK = 2;
@@ -37,6 +44,8 @@ export const RELIC_COST = 1;
 export const POTION_COST = 1;
 /** Points the judge shares between the two verses each round. */
 export const JUDGE_POOL = 24;
+/** A verse this similar to the other side's (text.ts `similarity`) is a copy, not an answer. */
+export const COPY_THRESHOLD = 0.5;
 
 export interface DuelDeck {
   characters: string[];
@@ -69,7 +78,17 @@ export interface RoundPlan {
   opponent: OpponentMove;
 }
 
+/** A world (city) card: bonus points each round the judge gives the player its criterion. */
+export interface WorldCard {
+  /** The city, as shown. */
+  label: string;
+  /** One of the judge's criteria (judge.ts CRITERIA). */
+  criterion: string;
+  bonus: number;
+}
+
 export interface Duel {
+  /** The seed as the rules use it (see `normalizeSeed`). */
   seed: number;
   lang: string;
   player: DuelDeck;
@@ -78,6 +97,8 @@ export interface Duel {
   /** What each of the player's potions would cast, fixed at the start so it can be shown. */
   playerCurses: Record<string, CastCurse>;
   playerRelics: Record<string, LentWords>;
+  /** The player's world card, when one is equipped. */
+  worldCard?: WorldCard;
 }
 
 export interface PlayerMove {
@@ -97,6 +118,11 @@ export interface VerseScore {
   /** The curse by id; its name is the message `curse.<id>.name`. */
   curse?: { id: string; violations: number; penalty: number };
   craft: number;
+  /**
+   * Set when the verse earns nothing: it is empty, too thin to be a verse, or
+   * copied from the other side. Shown as the message `void.<reason>`.
+   */
+  voided?: 'empty' | 'thin' | 'copied';
 }
 
 export interface JudgeSplit {
@@ -116,13 +142,26 @@ export interface RoundResult {
   opponentVerse: string;
   player: VerseScore;
   opponent: VerseScore;
+  /** The judge's split as scored: a copied verse forfeits its share, whatever the judge said. */
   judge: JudgeSplit;
+  /** The world card's bonus this round: `points` is 0 when the player did not take its criterion. */
+  bonus?: { label: string; criterion: string; points: number };
+  /** craft + judge (+ bonus for the player). */
   playerTotal: number;
   opponentTotal: number;
   winner: 'player' | 'opponent';
 }
 
 // --- Seeded randomness ---
+
+/**
+ * The seed the rules actually use: a whole number from 0 to 2^32 - 1. A fraction
+ * is dropped and anything larger wraps, so 0.5 and 0.7 are both 0 and
+ * 4294967297 is 1. Front ends show this number, not the one typed.
+ */
+export function normalizeSeed(seed: number): number {
+  return Number.isFinite(seed) ? Math.trunc(seed) >>> 0 : 0;
+}
 
 export function rng(seed: number): () => number {
   let a = seed >>> 0;
@@ -181,8 +220,10 @@ export function starterDeck(ownedIds: Iterable<string> = []): DuelDeck {
  * Plan a duel. The language's pack must be loaded first (loadPack in ./packs);
  * English always is.
  */
-export function createDuel(seed: number, lang: string, player: DuelDeck, opponent: DuelDeck = opponentDeck(seed)): Duel {
+export function createDuel(seedGiven: number, lang: string, player: DuelDeck, opponent?: DuelDeck, worldCard?: WorldCard): Duel {
   if (player.characters.length < ROUNDS) throw new Error(`A deck needs at least ${ROUNDS} characters to duel`);
+  const seed = normalizeSeed(seedGiven);
+  opponent ??= opponentDeck(seed);
   const r = rng(seed);
   const forms = shuffled(r, formsFor(lang)).slice(0, ROUNDS);
   const oppChars = shuffled(r, opponent.characters).slice(0, ROUNDS);
@@ -208,7 +249,7 @@ export function createDuel(seed: number, lang: string, player: DuelDeck, opponen
   const playerRelics: Record<string, LentWords> = {};
   for (const id of player.relics) playerRelics[id] = wordsFor(id, lang);
 
-  return { seed, lang, player, opponent, rounds, playerCurses, playerRelics };
+  return { seed, lang, player, opponent, rounds, playerCurses, playerRelics, ...(worldCard ? { worldCard } : {}) };
 }
 
 // --- Ink and legal moves ---
@@ -229,6 +270,7 @@ export type IllegalMove =
   | 'potion-not-in-deck'
   | 'relic-spent'
   | 'potion-spent'
+  | 'potion-last-round'
   | 'no-ink';
 
 /** Why a move cannot be played, or null when it can. */
@@ -239,6 +281,8 @@ export function illegalMove(duel: Duel, roundIndex: number, move: PlayerMove, ea
   if (move.potionId && !duel.player.potions.includes(move.potionId)) return 'potion-not-in-deck';
   if (move.relicId && earlier.some((m) => m.relicId === move.relicId)) return 'relic-spent';
   if (move.potionId && earlier.some((m) => m.potionId === move.potionId)) return 'potion-spent';
+  // A potion curses the opponent's NEXT verse; in the last round there is none.
+  if (move.potionId && roundIndex >= ROUNDS - 1) return 'potion-last-round';
   const spent = earlier.reduce((s, m) => s + moveCost(m), 0);
   if (moveCost(move) > inkAt(roundIndex, spent)) return 'no-ink';
   return null;
@@ -253,22 +297,47 @@ export interface ScoreInput {
   card: Card;
   /** The other characters in this side's deck, for house synergy. */
   deckCharacters: string[];
+  /**
+   * The verse this one answers: the Riposte is checked against it, and a verse
+   * copied from it is void. Absent for a verse that opens the duel.
+   */
   opponentVerse?: string;
   /** Curse this verse was written under. */
   curse?: CastCurse;
   /** Power words this side paid for. */
   lent?: LentWords;
+  /**
+   * The verse was chosen by the game itself (the opponent's, written or model):
+   * it is not tested for being a copy of the verse it answers. A model's draft
+   * that parrots the player is weeded out when it is written (opponent.ts). If
+   * the test ran again at scoring, a player could void the written opponent by
+   * typing its next verse, which the seed makes knowable, a round early.
+   */
+  trusted?: boolean;
 }
 
-const CHARACTER_NAMES = CARD_CATALOG.filter((c) => c.type === 'Character').flatMap((c) => c.name.replace(/^The /, '').split(/\s+/));
+const CHARACTER_NAMES = invocationNames(CARD_CATALOG.filter((c) => c.type === 'Character').map((c) => c.name));
+
+/** Why a verse earns nothing, or undefined when it is a verse of the writer's own. */
+function voidReason(verse: string, form: FormScore, lang: string, answered: string): VerseScore['voided'] {
+  if (!verse || !wordsOf(verse, lang).length) return 'empty';
+  if (form.thin) return 'thin';
+  if (answered && similarity(verse, answered, lang) >= COPY_THRESHOLD) return 'copied';
+  return undefined;
+}
 
 export function scoreVerse(input: ScoreInput): VerseScore {
   const verse = cleanVerse(input.verse);
   const form = scoreForm(input.form, verse, input.ctx);
   const lang = input.ctx.lang;
-  const dev = deviceForHouse(input.card.house, lang);
-  const device = { id: dev.id, ...dev.check(verse, { lang, opponentVerse: input.opponentVerse, names: CHARACTER_NAMES }) };
-  const signature = checkSignature(input.card, verse, lang);
+  const answered = input.opponentVerse ? cleanVerse(input.opponentVerse) : '';
+  const voided = voidReason(verse, form, lang, input.trusted ? '' : answered);
+  // A Riposte house with nothing to answer is held to its opening device instead.
+  const dev = deviceInPlay(input.card.house, lang, !!answered);
+  // A void verse lands nothing: devices and signatures are for verses.
+  const landed = (r: DeviceResult): DeviceResult => (voided ? { met: false, detail: '', ...(r.code ? { code: 'void' } : {}) } : r);
+  const device = { id: dev.id, ...landed(dev.check(verse, { lang, opponentVerse: answered || undefined, names: CHARACTER_NAMES })) };
+  const signature = landed(checkSignature(input.card, verse, lang));
 
   const sameHouse = input.deckCharacters.filter((id) => getCardById(id)?.house === input.card.house).length;
   const synergy = device.met && sameHouse >= 2;
@@ -277,7 +346,7 @@ export function scoreVerse(input: ScoreInput): VerseScore {
   let power: VerseScore['powerWords'];
   if (input.lent) {
     const p = checkPowerWords(input.lent.words, verse, lang);
-    power = { ...p, bonus: p.met ? POWER_WORD_BONUS : 0 };
+    power = { ...p, bonus: p.met && !voided ? POWER_WORD_BONUS : 0 };
   }
 
   let curse: VerseScore['curse'];
@@ -287,10 +356,17 @@ export function scoreVerse(input: ScoreInput): VerseScore {
     curse = { id: c.id, violations, penalty: Math.min(CURSE_PENALTY_CAP, violations * CURSE_PENALTY) };
   }
 
-  // An empty verse earns nothing, whatever the cards say.
-  const base = verse ? form.earned + (power?.bonus ?? 0) : 0;
+  // A void verse earns nothing, whatever the cards say.
+  const base = voided ? 0 : form.earned + (power?.bonus ?? 0);
   const craft = Math.max(0, Math.round(base * multiplier) - (curse?.penalty ?? 0));
-  return { form, device, signature, synergy, multiplier, powerWords: power, curse, craft };
+  return { form, device, signature, synergy, multiplier, powerWords: power, curse, craft, ...(voided ? { voided } : {}) };
+}
+
+/** The judge's split when a verse is a copy: every criterion goes to the other side. */
+function forfeit(judge: JudgeSplit, to: 'player' | 'opponent'): JudgeSplit {
+  const criteria: JudgeSplit['criteria'] = {};
+  for (const c of Object.keys(judge.criteria)) criteria[c] = to;
+  return { ...judge, player: to === 'player' ? JUDGE_POOL : 0, opponent: to === 'opponent' ? JUDGE_POOL : 0, criteria, reason: 'copied' };
 }
 
 export function resolveRound(
@@ -299,7 +375,7 @@ export function resolveRound(
   move: PlayerMove,
   playerVerseRaw: string,
   opponentVerseRaw: string,
-  judge: JudgeSplit,
+  judgeGiven: JudgeSplit,
   previousPlayerVerse?: string,
 ): RoundResult {
   const plan = duel.rounds[roundIndex];
@@ -327,15 +403,23 @@ export function resolveRound(
     opponentVerse: previousPlayerVerse,
     curse: move.potionId ? duel.playerCurses[move.potionId] : undefined,
     lent: plan.opponent.relic,
+    trusted: true,
   });
 
-  const playerTotal = player.craft + judge.player;
+  // A copy forfeits the judge as well as its craft. (Only the player's verse is tested: see ScoreInput.trusted.)
+  const judge = player.voided === 'copied' ? forfeit(judgeGiven, 'opponent') : judgeGiven;
+
+  // The world card: bonus points when the judge gives the player its criterion. Applied here and nowhere else.
+  const card = duel.worldCard;
+  const bonus = card ? { label: card.label, criterion: card.criterion, points: judge.criteria[card.criterion] === 'player' && !player.voided ? card.bonus : 0 } : undefined;
+
+  const playerTotal = player.craft + judge.player + (bonus?.points ?? 0);
   const opponentTotal = opponent.craft + judge.opponent;
   // Ties go to the judge's preference, then to the challenger.
   const winner: RoundResult['winner'] =
     playerTotal !== opponentTotal ? (playerTotal > opponentTotal ? 'player' : 'opponent') : judge.opponent > judge.player ? 'opponent' : 'player';
 
-  return { index: roundIndex, playerVerse, opponentVerse, player, opponent, judge, playerTotal, opponentTotal, winner };
+  return { index: roundIndex, playerVerse, opponentVerse, player, opponent, judge, ...(bonus ? { bonus } : {}), playerTotal, opponentTotal, winner };
 }
 
 export function matchWinner(results: RoundResult[]): 'player' | 'opponent' | null {
