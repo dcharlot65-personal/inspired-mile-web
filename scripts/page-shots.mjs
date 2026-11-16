@@ -45,6 +45,9 @@ for (const locale of locales) {
       };
       await page.goto(`${base}${PATHS[name]}`, { waitUntil: 'networkidle' });
       await page.waitForFunction((l) => document.documentElement.dataset.i18nReady === l && document.documentElement.dataset.titleLocale === l, locale);
+      // global.css leaves off-screen sections unpainted (content-visibility: auto); a full-page
+      // screenshot would show them as blank bands.
+      await page.addStyleTag({ content: '* { content-visibility: visible !important; }' });
       await page.waitForTimeout(500);
       // Anything wider than the screen is the first thing to know about.
       const wide = await page.evaluate(() => {

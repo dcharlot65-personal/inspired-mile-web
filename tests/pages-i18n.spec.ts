@@ -148,6 +148,16 @@ async function expectTranslated(page: Page, areas: string[], l: L, where: string
 async function expectFits(page: Page, where: string) {
   const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
   expect(overflow, `${where}: the page is wider than the screen`).toBeLessThanOrEqual(1);
+  // The navigation bar is fixed, so what does not fit in it is cut off without widening the page:
+  // German's "Anmelden" once pushed the menu button off a phone's screen.
+  const cut = await page.evaluate(() => {
+    const vw = document.documentElement.clientWidth;
+    return ['#mobile-menu-btn', '#auth-btn', '#locale-switch', '#audio-toggle', '#planted']
+      .map((sel) => [sel, document.querySelector(sel)?.getBoundingClientRect()] as const)
+      .filter(([, r]) => r && r.width > 0 && (r.left < 0 || r.right > vw + 0.5))
+      .map(([sel]) => sel);
+  });
+  expect(cut, `${where}: cut off by the edge of the screen`).toEqual([]);
 }
 
 for (const p of PAGES) {
@@ -226,7 +236,7 @@ test.describe('Translated pages: what a script draws', () => {
 
     await page.selectOption('#locale-switch', 'es');
     await expect(page.locator('html')).toHaveAttribute('data-i18n-ready', 'es');
-    await expect(page.locator('h1')).toHaveText('Mi colección');
+    await expect(page.locator('main h1')).toHaveText('Mi colección');
     await expect(page.locator('.card-item[data-id="MO-001"]')).toContainText('Montesco · Pasión');
     await expect(page.locator('.card-item[data-id="MO-001"] [data-term-rarity]')).toHaveText('Rara');
     await expect(page.locator('[data-filter="Relic"]')).toHaveText('Reliquias');

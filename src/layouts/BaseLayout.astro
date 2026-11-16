@@ -173,13 +173,14 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
     <!-- Navigation -->
     <nav class="fixed top-0 w-full z-50 bg-obsidian-950/80 backdrop-blur-lg border-b border-obsidian-800/50">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex items-center justify-between h-16">
-          <!-- Logo -->
-          <a href="/" class="flex items-center gap-3 group">
-            <div class="w-8 h-8 rounded-lg bg-linear-to-br from-gold-400 to-gold-600 flex items-center justify-center">
+        <div class="flex items-center justify-between gap-2 h-16">
+          <!-- Logo. On a narrow phone only the mark shows: with the wordmark, a language whose
+               "Sign in" is long (German, Arabic) pushed the menu button off the screen. -->
+          <a href="/" class="flex items-center gap-3 group shrink-0" aria-label="Inspired Mile">
+            <div class="w-8 h-8 shrink-0 rounded-lg bg-linear-to-br from-gold-400 to-gold-600 flex items-center justify-center">
               <span class="text-obsidian-950 font-display font-bold text-sm">IM</span>
             </div>
-            <span class="font-display text-lg font-semibold text-gold-400 group-hover:text-gold-300 transition-colors">
+            <span class="hidden min-[440px]:inline font-display text-lg font-semibold text-gold-400 group-hover:text-gold-300 transition-colors whitespace-nowrap">
               Inspired Mile
             </span>
           </a>
@@ -230,7 +231,7 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
             </select>
             <!-- Auth: Login/User button -->
             <div id="auth-container" class="relative">
-              <button id="auth-btn" type="button" data-auth-text="signIn" class="text-xs font-medium text-obsidian-300 hover:text-gold-400 transition-colors border border-obsidian-700 rounded-lg px-3 py-1.5 hover:border-gold-500/30">
+              <button id="auth-btn" type="button" data-auth-text="signIn" class="text-xs font-medium text-obsidian-300 hover:text-gold-400 transition-colors border border-obsidian-700 rounded-lg px-3 py-1.5 hover:border-gold-500/30 whitespace-nowrap">
                 Sign In
               </button>
               <div id="user-badge" class="hidden flex items-center gap-2 cursor-pointer">
@@ -389,7 +390,7 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
               </svg>
             </button>
-          <button id="mobile-menu-btn" class="md:hidden text-obsidian-300 hover:text-gold-400 transition-colors" aria-label="Toggle menu" data-i18n-aria-label="nav.toggleMenu">
+          <button id="mobile-menu-btn" class="md:hidden shrink-0 text-obsidian-300 hover:text-gold-400 transition-colors" aria-label="Toggle menu" data-i18n-aria-label="nav.toggleMenu">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
             </svg>
