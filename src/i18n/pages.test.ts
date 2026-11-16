@@ -1,9 +1,9 @@
 import { describe, expect, it } from 'vitest';
 import { LOCALES, loadArea, loadMessages, setLocale, t, type Locale, type Messages } from './index';
 import { compareMessages } from './pages/check';
-import { quoted, quoteMarks, rich, tn } from './pages/runtime';
+import { isolated, quoted, quoteMarks, rich, tn } from './pages/runtime';
 import { cardRule, deckProblems, synergyLine } from './pages/rules-text';
-import { abilityBonus, achievementDescription, achievementName, cityName, cityRegion, elementName, houseName, typeName } from './pages/terms';
+import { abilityBonus, achievementDescription, achievementName, cityName, cityRegion, elementName, houseName, initialOf, typeName } from './pages/terms';
 import { ACHIEVEMENTS, type PlayerStats } from '../lib/achievements';
 import { CARD_CATALOG } from '../lib/cards';
 import { CITY_CATALOG, type WorldCity } from '../lib/variants';
@@ -137,6 +137,28 @@ describe('loading an area', () => {
     en['home.test.evil'] = 'A <b>bold</b> <img src=x onerror=alert(1)> & "quoted" {name}';
     expect(rich('home.test.evil', { name: '<script>' })).toBe('A <span class="text-gradient">bold</span> &lt;img src=x onerror=alert(1)&gt; &amp; &quot;quoted&quot; &lt;script&gt;');
     delete en['home.test.evil'];
+  });
+});
+
+describe('a house badge’s letter', () => {
+  it('is the first letter a reader would take as the name’s initial', () => {
+    expect(initialOf('Danish Court', 'en')).toBe('D');
+    // Arabic: past the article, or every "the …" would show ا.
+    expect(initialOf('البلاط الدنماركي', 'ar')).toBe('ب');
+    expect(initialOf('روما', 'ar')).toBe('ر');
+    // Thai: past a leading vowel, as Thai dictionary order goes.
+    expect(initialOf('โรม', 'th')).toBe('ร');
+    // Hindi: a whole cluster, never a consonant cut from its vowel sign.
+    expect(initialOf('मोंटेग्यू', 'hi')).toBe('मों');
+    expect(initialOf('montaigu', 'fr')).toBe('M');
+  });
+});
+
+describe('text in another script on a right-to-left page', () => {
+  it('goes in <bdi> when it has no right-to-left letter, and is escaped', () => {
+    expect(isolated('"To be, or not to be, that is the question."', 'ar')).toBe('<bdi>&quot;To be, or not to be, that is the question.&quot;</bdi>');
+    expect(isolated('أتقنها لتزيد صنعتك بمقدار النصف.', 'ar')).toBe('أتقنها لتزيد صنعتك بمقدار النصف.');
+    expect(isolated('Land it.', 'en')).toBe('Land it.');
   });
 });
 

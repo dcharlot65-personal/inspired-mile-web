@@ -26,7 +26,7 @@
  * This file sits beside the area folders, not in one: the loader only reads
  * ./pages/<area>/<locale>.ts.
  */
-import { applyTranslations, initI18n, loadArea, locale, onLocaleChange, t } from '../index';
+import { applyTranslations, initI18n, isRtl, loadArea, locale, onLocaleChange, t } from '../index';
 
 type Vars = Record<string, string | number>;
 
@@ -71,6 +71,15 @@ const QUOTES: Record<string, readonly [string, string]> = {
   pl: ['„', '”'], ru: ['«', '»'], ar: ['”', '“'], hi: ['“', '”'], zh: ['“', '”'], ja: ['「', '」'],
   ko: ['“', '”'], vi: ['“', '”'], th: ['“', '”'], id: ['“', '”'],
 };
+
+/**
+ * Text that may be in another script than the page's, as HTML. On a right-to-left page, text with
+ * no right-to-left letter in it (an English line from the card data, a name) goes in <bdi>, so the
+ * bidirectional algorithm keeps its punctuation at its own end ("question." not ".question").
+ */
+export function isolated(text: string, l: string = locale()): string {
+  return isRtl(l) && !/[\p{Script=Arabic}\p{Script=Hebrew}]/u.test(text) ? `<bdi>${escapeHtml(text)}</bdi>` : escapeHtml(text);
+}
 
 /** The opening and closing quotation marks of a language. */
 export function quoteMarks(l: string = locale()): readonly [string, string] {

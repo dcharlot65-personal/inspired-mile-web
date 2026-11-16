@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import T from '../components/T.astro';
 import { loadArea, t } from '../i18n';
 import { num, quoted } from '../i18n/pages/runtime';
-import { elementName, houseName, rarityName } from '../i18n/pages/terms';
+import { elementName, houseInitial, houseName, rarityName } from '../i18n/pages/terms';
 import { CARD_CATALOG } from '../lib/cards';
 
 // English at build time; the script at the foot of the page puts it in the visitor's language.
@@ -92,7 +92,7 @@ const houseCount = new Set(CARD_CATALOG.filter((c) => c.type === 'Character').ma
                 <!-- Card header -->
                 <div class="p-4 flex items-center justify-between">
                   <span class="text-xs font-mono text-gold-500/60">{sonnetMan.id}</span>
-                  <span class="text-xs font-mono text-crimson-400"><T k="card-terms.stat.atk" /> <span data-num={sonnetMan.atk}>{num(sonnetMan.atk)}</span></span>
+                  <span class="text-xs text-crimson-400"><T k="card-terms.stat.atk" /> <span class="font-mono" data-num={sonnetMan.atk}>{num(sonnetMan.atk)}</span></span>
                 </div>
 
                 <!-- Card art area -->
@@ -102,7 +102,7 @@ const houseCount = new Set(CARD_CATALOG.filter((c) => c.type === 'Character').ma
 
                 <!-- Card info: the name and the line come from the card data as they are -->
                 <div class="p-4">
-                  <h3 class="font-display text-lg font-bold text-gold-300" data-card-text>{sonnetMan.name}</h3>
+                  <h3 class="font-display text-lg font-bold text-gold-300" data-card-text><bdi>{sonnetMan.name}</bdi></h3>
                   <p class="text-xs text-obsidian-400 mt-1"><T k="home.card.role" /> &middot; <span data-i18n-html="rarity.legendary">{rarityName(sonnetMan.rarity)}</span></p>
                   <div class="mt-3 flex items-center gap-2">
                     <span class="px-2 py-0.5 text-xs rounded-sm bg-crimson-500/20 text-crimson-400 border border-crimson-500/30" data-i18n-html="card-terms.element.fire">{elementName(sonnetMan.element)}</span>
@@ -169,7 +169,7 @@ const houseCount = new Set(CARD_CATALOG.filter((c) => c.type === 'Character').ma
         {houses.map((house) => (
           <div class="card-glass p-6 hover:border-gold-500/30 transition-all duration-300 group">
             <div class={`w-12 h-12 rounded-lg bg-linear-to-br ${house.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
-              <span class="text-white font-display font-bold text-lg" data-house-initial={house.house}>{houseName(house.house).charAt(0)}</span>
+              <span class="text-white font-display font-bold text-lg" data-house-initial={house.house}>{houseInitial(house.house, 'en')}</span>
             </div>
             <h3 class="font-display text-lg font-semibold text-obsidian-100 mb-1" data-house={house.house}>{houseName(house.house)}</h3>
             <T k={`card-terms.work.${house.work}`} as="p" class="text-xs text-obsidian-500 mb-3 italic" />
@@ -202,14 +202,15 @@ const houseCount = new Set(CARD_CATALOG.filter((c) => c.type === 'Character').ma
   <script>
     import { initAudio, isInitialized, playMusic } from '../lib/audio-manager';
     import { initPage } from '../i18n/pages/runtime';
-    import { houseName } from '../i18n/pages/terms';
+    import { locale } from '../i18n';
+    import { houseInitial, houseName } from '../i18n/pages/terms';
 
     void initPage(['home', 'card-terms'], () => {
       document.querySelectorAll<HTMLElement>('[data-house]').forEach((el) => {
         el.textContent = houseName(el.dataset.house!);
       });
       document.querySelectorAll<HTMLElement>('[data-house-initial]').forEach((el) => {
-        el.textContent = [...houseName(el.dataset.houseInitial!)][0] ?? '';
+        el.textContent = houseInitial(el.dataset.houseInitial!, locale());
       });
     });
 

@@ -25,6 +25,24 @@ export function houseName(house: string): string {
   return orElse(`card-terms.house.${slug(house)}`, house);
 }
 
+/**
+ * The letter on a house's badge: the first grapheme of its name (a whole Devanagari cluster, never
+ * half of one), skipping what a reader would not take as the name's initial: the Arabic article
+ * ال (every "the …" would otherwise show ا), and a Thai leading vowel (เ แ โ ใ ไ), which Thai
+ * dictionary order also passes over to sort by the consonant.
+ */
+export function initialOf(name: string, l: string): string {
+  let s = name.trim();
+  if (l === 'ar') s = s.replace(/^ال(?=\p{L}{2})/u, '');
+  if (l === 'th') s = s.replace(/^[เแโใไ](?=\p{L})/u, '');
+  const first = new Intl.Segmenter(l, { granularity: 'grapheme' }).segment(s)[Symbol.iterator]().next().value?.segment ?? '';
+  return first.toLocaleUpperCase(l);
+}
+
+export function houseInitial(house: string, l: string): string {
+  return initialOf(houseName(house), l);
+}
+
 export function elementName(element: string): string {
   return orElse(`card-terms.element.${slug(element)}`, element);
 }

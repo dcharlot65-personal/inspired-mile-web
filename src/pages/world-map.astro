@@ -191,7 +191,7 @@ const heading = 'text-sm font-semibold text-obsidian-300 mb-2';
             <div class="card-glass p-2 flex items-center gap-2">
               ${card?.image ? `<img src="${card.image}" alt="" class="w-8 h-8 rounded-sm object-cover">` : `<span>${card?.icon || ''}</span>`}
               <div class="flex-1 min-w-0">
-                ${card ? `<p class="text-xs font-semibold text-obsidian-200" data-card-text>${esc(card.name)}</p>` : `<p class="text-xs font-semibold text-obsidian-200">${esc(t('world-map.unknownCard'))}</p>`}
+                ${card ? `<p class="text-xs font-semibold text-obsidian-200" data-card-text><bdi>${esc(card.name)}</bdi></p>` : `<p class="text-xs font-semibold text-obsidian-200">${esc(t('world-map.unknownCard'))}</p>`}
                 <p class="text-[10px] text-obsidian-500" lang="en" data-style-name>${attire ? esc(styleName(attire)) : ''}</p>
               </div>
             </div>

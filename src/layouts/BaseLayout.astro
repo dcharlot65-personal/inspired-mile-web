@@ -460,7 +460,10 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
     </div>
 
     <!-- Main Content -->
-    <main class="flex-1 pt-16">
+    <!-- Both inherited: Japanese breaks between phrases (auto-phrase; other languages are unaffected), so
+         a two-character word such as 家門 is not split across lines, and a paragraph does not end on a
+         single character (text-wrap: pretty). -->
+    <main class="flex-1 pt-16 [word-break:auto-phrase] text-pretty">
       <slot />
     </main>
 

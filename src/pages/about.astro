@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import T from '../components/T.astro';
 import { loadArea, t } from '../i18n';
-import { monthOfYear, yearOnly } from '../i18n/pages/runtime';
+import { monthOfYear, quoted, yearOnly } from '../i18n/pages/runtime';
 
 // English at build time; the script at the foot of the page puts it in the visitor's language.
 await loadArea('about');
@@ -112,7 +112,7 @@ const TONE: Record<string, { card: string; chip: string; title: string }> = {
               <span class="text-2xl" set:html={member.icon} />
             </div>
             <h3 class="font-display text-lg font-semibold text-obsidian-100" lang="en" data-proper-name>{member.name}</h3>
-            {member.aka && <p class="text-xs text-gold-400 mb-1" lang="en" data-proper-name>"{member.aka}"</p>}
+            {member.aka && <p class="text-xs text-gold-400 mb-1" data-proper-name set:html={quoted(member.aka, 'en')} />}
             <T k={`about.team.${member.id}.role`} as="p" class="text-xs text-obsidian-500 mb-3" />
             <T k={`about.team.${member.id}.bio`} as="p" class="text-sm text-obsidian-400 leading-relaxed" />
             {member.website && (
