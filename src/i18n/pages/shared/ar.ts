@@ -56,11 +56,13 @@ const messages: Record<string, string> = {
   'offline.body': 'بعض أجزاء اللعبة تحتاج إلى اتصال بالإنترنت. تحقق من اتصالك وحاول مجددًا.',
   'offline.available': 'ما زال متاحًا دون اتصال',
   'offline.retry': 'إعادة المحاولة',
-  'app.name': 'Inspired Mile: لعبة بطاقات شكسبير',
+  'app.name': 'Sonnet Man: مبارزة الأبيات',
   'offline.link.home': 'الرئيسية',
   'offline.link.collection': 'المجموعة',
   'offline.link.battle': 'حلبة النزال',
-  'app.description': 'بطاقات رقمية للاقتناء يحرّكها الذكاء الاصطناعي والواقع المعزَّز. تجارب تفاعلية تبعث الحياة في شكسبير.',
+  'app.description': 'لعبة بطاقات من Inspired Mile على طريقة معارك الراب بلغة شكسبير. العب بطاقاتك، والتزم بالقالب، واكتب أفضل من خصم يعمل بالكامل على جهازك.',
+  'app.shortcut.battle': 'حلبة النزال',
+  'app.shortcut.theatre': 'قاعة المسرح',
 };
 
 export default messages;

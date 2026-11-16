@@ -51,11 +51,13 @@ const messages: Record<string, string> = {
   'offline.body': '游戏的部分内容需要联网。请检查网络后再试。',
   'offline.available': '离线时仍可使用',
   'offline.retry': '重试',
-  'app.name': 'Inspired Mile：莎士比亚卡牌游戏',
+  'app.name': 'Sonnet Man：诗的对决',
   'offline.link.home': '首页',
   'offline.link.collection': '收藏',
   'offline.link.battle': '对战竞技场',
-  'app.description': '由人工智能和增强现实驱动的数字收藏卡牌。让莎士比亚活起来的互动体验。',
+  'app.description': 'Inspired Mile 出品的莎士比亚说唱对决卡牌游戏。打出你的卡牌，守住诗体，写得比完全运行在你设备上的对手更好。',
+  'app.shortcut.battle': '对战竞技场',
+  'app.shortcut.theatre': '立体剧场',
 };
 
 export default messages;

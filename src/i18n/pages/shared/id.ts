@@ -51,11 +51,13 @@ const messages: Record<string, string> = {
   'offline.body': 'Beberapa bagian permainan memerlukan koneksi internet. Periksa koneksimu dan coba lagi.',
   'offline.available': 'Tetap tersedia saat luring',
   'offline.retry': 'Coba lagi',
-  'app.name': 'Inspired Mile: permainan kartu Shakespeare',
+  'app.name': 'Sonnet Man: duel syair',
   'offline.link.home': 'Beranda',
   'offline.link.collection': 'Koleksi',
   'offline.link.battle': 'Arena pertarungan',
-  'app.description': 'Kartu koleksi digital bertenaga AI dan realitas tertambah. Pengalaman interaktif yang menghidupkan Shakespeare.',
+  'app.description': 'Permainan kartu adu rap ala Shakespeare dari Inspired Mile. Mainkan kartumu, jaga bentuknya, dan tulis lebih baik daripada lawan yang berjalan sepenuhnya di perangkatmu.',
+  'app.shortcut.battle': 'Arena pertarungan',
+  'app.shortcut.theatre': 'Sang Teater',
 };
 
 export default messages;

@@ -21,6 +21,7 @@ const messages: Record<string, string> = {
   'viewer.error.noMeshes': 'ไฟล์นี้ไม่มีโมเดล',
   'viewer.error.loadFailed': 'โหลดโมเดลไม่ได้',
   'viewer.error.init': 'เริ่มตัวดู 3 มิติไม่ได้',
+  'viewer.error.glbViewer': 'โหลดมุมมอง GLB ไม่ได้',
   'viewer.fps': '{n} เฟรม/วินาที',
   'viewer.ar': 'ดูแบบ AR',
   'viewer.card.splat.title': 'มุมมอง splat',

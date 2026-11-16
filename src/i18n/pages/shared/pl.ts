@@ -54,11 +54,13 @@ const messages: Record<string, string> = {
   'offline.body': 'Niektóre części gry wymagają połączenia z internetem. Sprawdź połączenie i spróbuj ponownie.',
   'offline.available': 'Nadal dostępne offline',
   'offline.retry': 'Spróbuj ponownie',
-  'app.name': 'Inspired Mile: szekspirowska gra karciana',
+  'app.name': 'Sonnet Man: pojedynek na strofy',
   'offline.link.home': 'Start',
   'offline.link.collection': 'Kolekcja',
   'offline.link.battle': 'Arena bitwy',
-  'app.description': 'Cyfrowe karty kolekcjonerskie napędzane SI i rozszerzoną rzeczywistością. Interaktywne doświadczenia, które ożywiają Szekspira.',
+  'app.description': 'Szekspirowska gra karciana w stylu bitwy rapowej od Inspired Mile. Zagraj kartami, zachowaj formę i napisz lepiej niż rywal, który działa w całości na twoim urządzeniu.',
+  'app.shortcut.battle': 'Arena bitwy',
+  'app.shortcut.theatre': 'Nasz Teatr',
 };
 
 export default messages;

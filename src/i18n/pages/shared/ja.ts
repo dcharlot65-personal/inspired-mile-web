@@ -51,11 +51,13 @@ const messages: Record<string, string> = {
   'offline.body': 'ゲームの一部は、インターネット接続が必要です。接続を確認して、もう一度お試しください。',
   'offline.available': 'オフラインでも使えます',
   'offline.retry': '再試行',
-  'app.name': 'Inspired Mile：シェイクスピアのカードゲーム',
+  'app.name': 'Sonnet Man：詩の決闘',
   'offline.link.home': 'ホーム',
   'offline.link.collection': 'コレクション',
   'offline.link.battle': 'バトルアリーナ',
-  'app.description': 'AIと拡張現実で動くデジタルコレクションカード。シェイクスピアを生き生きとよみがえらせるインタラクティブな体験。',
+  'app.description': 'Inspired Mileのシェイクスピア・ラップバトル・カードゲーム。カードを出し、詩形を守り、あなたの端末だけで動く対戦相手よりも良い詩を書きましょう。',
+  'app.shortcut.battle': 'バトルアリーナ',
+  'app.shortcut.theatre': '立体シアター',
 };
 
 export default messages;

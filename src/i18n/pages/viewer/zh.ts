@@ -21,6 +21,7 @@ const messages: Record<string, string> = {
   'viewer.error.noMeshes': '文件里没有模型。',
   'viewer.error.loadFailed': '模型加载失败。',
   'viewer.error.init': '3D 查看器无法启动。',
+  'viewer.error.glbViewer': 'GLB 视图加载失败。',
   'viewer.fps': '{n} 帧/秒',
   'viewer.ar': '用 AR 查看',
   'viewer.card.splat.title': '泼溅视图',

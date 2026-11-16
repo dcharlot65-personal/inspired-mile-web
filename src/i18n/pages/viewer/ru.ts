@@ -21,6 +21,7 @@ const messages: Record<string, string> = {
   'viewer.error.noMeshes': 'В файле нет модели.',
   'viewer.error.loadFailed': 'Не удалось загрузить модель.',
   'viewer.error.init': 'Не удалось запустить 3D-просмотр.',
+  'viewer.error.glbViewer': 'Не удалось загрузить режим GLB.',
   'viewer.fps': '{n} кадр/с',
   'viewer.ar': 'Смотреть в AR',
   'viewer.card.splat.title': 'Режим сплатов',

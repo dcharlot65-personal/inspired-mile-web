@@ -6,7 +6,13 @@
  * mono on the device and transcribed by Whisper (base, multilingual, about
  * 80 MB) through Transformers.js on WebAssembly, which works with or without
  * WebGPU. Nothing recorded leaves the device.
+ *
+ * The first use downloads the Whisper model from the Hugging Face hub (a download
+ * request: IP address and browser details, no audio). The WebAssembly runtime comes
+ * from this site (model-runtime.ts).
  */
+
+import { loadTransformers } from './model-runtime';
 
 export const EAR_MODEL = 'onnx-community/whisper-base';
 export const EAR_MEGABYTES = 80;
@@ -25,7 +31,7 @@ export function loadEar(onProgress?: (text: string) => void): Promise<boolean> {
   if (loading) return loading;
   loading = (async () => {
     try {
-      const T = await import('@huggingface/transformers');
+      const T = await loadTransformers();
       transcriber = await T.pipeline('automatic-speech-recognition', EAR_MODEL, {
         device: 'wasm',
         dtype: 'q8',

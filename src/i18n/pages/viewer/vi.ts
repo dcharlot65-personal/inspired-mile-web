@@ -21,6 +21,7 @@ const messages: Record<string, string> = {
   'viewer.error.noMeshes': 'Tệp không chứa mô hình nào.',
   'viewer.error.loadFailed': 'Không tải được mô hình.',
   'viewer.error.init': 'Không khởi động được trình xem 3D.',
+  'viewer.error.glbViewer': 'Không tải được chế độ GLB.',
   'viewer.fps': '{n} khung hình/giây',
   'viewer.ar': 'Xem bằng AR',
   'viewer.card.splat.title': 'Chế độ splat',

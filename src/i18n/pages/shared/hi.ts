@@ -52,11 +52,13 @@ const messages: Record<string, string> = {
   'offline.body': 'खेल के कुछ हिस्सों को इंटरनेट कनेक्शन चाहिए। अपना कनेक्शन जाँचकर फिर कोशिश करें।',
   'offline.available': 'ऑफ़लाइन भी उपलब्ध',
   'offline.retry': 'फिर कोशिश करें',
-  'app.name': 'Inspired Mile: शेक्सपियर कार्ड गेम',
+  'app.name': 'Sonnet Man: पदों का द्वंद्व',
   'offline.link.home': 'मुखपृष्ठ',
   'offline.link.collection': 'संग्रह',
   'offline.link.battle': 'युद्ध अखाड़ा',
-  'app.description': 'एआई और ऑगमेंटेड रियलिटी से चलने वाले डिजिटल संग्रहणीय कार्ड। ऐसे इंटरैक्टिव अनुभव जो शेक्सपियर को जीवंत कर देते हैं।',
+  'app.description': 'Inspired Mile का शेक्सपियर रैप-बैटल कार्ड गेम। अपने कार्ड खेलें, छंद-रूप निभाएँ, और ऐसे प्रतिद्वंद्वी से बेहतर लिखें जो पूरी तरह आपके डिवाइस पर चलता है।',
+  'app.shortcut.battle': 'युद्ध अखाड़ा',
+  'app.shortcut.theatre': 'हमारी रंगशाला',
 };
 
 export default messages;

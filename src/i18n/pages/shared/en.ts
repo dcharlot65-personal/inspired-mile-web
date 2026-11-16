@@ -52,11 +52,13 @@ const messages: Record<string, string> = {
   'offline.body': 'Some parts of the game need an internet connection. Check your connection and try again.',
   'offline.available': 'Still available offline',
   'offline.retry': 'Try again',
-  'app.name': 'Inspired Mile — Shakespeare Card Game',
+  'app.name': 'Sonnet Man: the duel of verses',
   'offline.link.home': 'Home',
   'offline.link.collection': 'Collection',
   'offline.link.battle': 'Battle Arena',
-  'app.description': 'Digital collectible cards powered by AI and augmented reality. Interactive experiences that bring Shakespeare to life.',
+  'app.description': 'A Shakespeare rap-battle card game from Inspired Mile. Play your cards, keep the form, and out-write an opponent that runs entirely on your device.',
+  'app.shortcut.battle': 'Battle Arena',
+  'app.shortcut.theatre': 'The Theatre',
 };
 
 export default messages;

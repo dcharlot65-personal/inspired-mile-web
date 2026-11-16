@@ -4,10 +4,11 @@
 //   public/offline.html    the page the service worker shows when there is no network. It
 //                          is served alone, with no bundle to import, so it carries its
 //                          sixteen languages inside itself.
-//   public/manifest.json   the app's name and description per language (the *_localized
-//                          members of the Web App Manifest; Chrome and Edge from 148). Only
+//   public/manifest.json   the app's name, its description and each shortcut's name per
+//                          language (the *_localized members of the Web App Manifest; Chrome
+//                          and Edge from 148; a shortcut carries its own name_localized). Only
 //                          those members and "lang" are touched; the rest of the file is
-//                          whoever last edited it.
+//                          whoever last edited it, and its English must match the area's.
 //
 //   node scripts/pages-rest/build-static.mjs           write both files
 //   node scripts/pages-rest/build-static.mjs --check   exit 1 if either is out of date
@@ -175,33 +176,61 @@ export function renderOffline(shared) {
 }
 
 /** The manifest with its per-language name and description brought up to date. Other members are left as they are. */
-export function localiseManifest(manifestText, shared) {
-  const manifest = JSON.parse(manifestText);
-  const names = {};
-  const descriptions = {};
-  for (const l of LOCALES) {
-    const name = shared[l]?.['app.name'];
-    const description = shared[l]?.['app.description'];
-    if (!name || !description) throw new Error(`${l}: no app.name or app.description for the manifest`);
-    if (l === 'en') continue; // English is the manifest's own "name" and "description"
-    names[l] = name;
-    descriptions[l] = description;
-  }
-  // Keep the file's order; put the new members straight after the ones they translate.
+/** Which key of the shared area names each shortcut of the manifest, by the shortcut's url. */
+export const SHORTCUT_KEYS = { '/battle': 'app.shortcut.battle', '/theatre': 'app.shortcut.theatre' };
+
+/** One member's translations, the English left out (it is the member itself). */
+function translations(shared, key) {
   const out = {};
-  for (const [key, value] of Object.entries(manifest)) {
-    if (key === 'lang' || key === 'name_localized' || key === 'description_localized') continue;
-    out[key] = value;
-    if (key === 'name') {
-      out.lang = 'en';
-      out.name_localized = names;
-    }
-    if (key === 'description') out.description_localized = descriptions;
+  for (const l of LOCALES) {
+    const value = shared[l]?.[key];
+    if (typeof value !== 'string' || !value.trim()) throw new Error(`${l}: no "${key}" for the manifest`);
+    if (l !== 'en') out[l] = value;
   }
-  if (!('name_localized' in out) || !('description_localized' in out)) {
+  return out;
+}
+
+/** Copy `obj`, putting `<member>_localized` straight after `<member>` and dropping any old one. */
+function besides(obj, member, localized) {
+  const out = {};
+  for (const [key, value] of Object.entries(obj)) {
+    if (key === `${member}_localized` || (member === 'name' && key === 'lang' && localized.lang)) continue;
+    out[key] = value;
+    if (key === member) {
+      if (localized.lang) out.lang = localized.lang;
+      out[`${member}_localized`] = localized.values;
+    }
+  }
+  return out;
+}
+
+/**
+ * The manifest with the app's name, its description and each shortcut's name in every
+ * language. The English stays the file's own: the shared area's English must say the
+ * same, or its translations are of words the manifest no longer has.
+ */
+export function localiseManifest(manifestText, shared) {
+  let manifest = JSON.parse(manifestText);
+  const en = shared.en ?? {};
+  const same = (member, key, english) => {
+    if (en[key] !== english) throw new Error(`manifest ${member} is "${english}" but the shared area's ${key} is "${en[key]}": translate the new English first`);
+  };
+  if (typeof manifest.name !== 'string' || typeof manifest.description !== 'string') {
     throw new Error('manifest.json must have "name" and "description" for their translations to sit beside');
   }
-  return JSON.stringify(out, null, 2) + '\n';
+  same('name', 'app.name', manifest.name);
+  same('description', 'app.description', manifest.description);
+  manifest = besides(manifest, 'name', { lang: 'en', values: translations(shared, 'app.name') });
+  manifest = besides(manifest, 'description', { values: translations(shared, 'app.description') });
+  if (Array.isArray(manifest.shortcuts)) {
+    manifest.shortcuts = manifest.shortcuts.map((shortcut) => {
+      const key = SHORTCUT_KEYS[shortcut.url];
+      if (!key) throw new Error(`manifest shortcut ${shortcut.url} has no key in SHORTCUT_KEYS, so its name has no translations`);
+      same(`shortcut ${shortcut.url}`, key, shortcut.name);
+      return besides(shortcut, 'name', { values: translations(shared, key) });
+    });
+  }
+  return JSON.stringify(manifest, null, 2) + '\n';
 }
 
 async function main() {

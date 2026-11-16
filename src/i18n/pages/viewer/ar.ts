@@ -21,6 +21,7 @@ const messages: Record<string, string> = {
   'viewer.error.noMeshes': 'الملف لا يحتوي على أي نموذج.',
   'viewer.error.loadFailed': 'تعذّر تحميل النموذج.',
   'viewer.error.init': 'تعذّر تشغيل العارض ثلاثي الأبعاد.',
+  'viewer.error.glbViewer': 'تعذّر تحميل عرض GLB.',
   'viewer.fps': '{n} إطار/ث',
   'viewer.ar': 'عرض بالواقع المعزَّز',
   'viewer.card.splat.title': 'عرض Splat',

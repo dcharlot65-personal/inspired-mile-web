@@ -290,7 +290,7 @@ const zh: Record<string, string> = {
   'battle.begin': '开始对决',
   'brain.checking': '正在检查这台设备能运行什么…',
   'brain.playNow': '不下载，立即开始',
-  'brain.kept': '只需下载一次，由你的浏览器保存。不会向任何地方发送任何内容。',
+  'brain.kept': '只需从 Hugging Face 下载一次，由你的浏览器保存。你写下或说出的内容不会发送到任何地方。',
   'brain.summoning': '正在召唤你的对手…',
   'brain.downloading': '正在下载 {model}：{done} / {total} MB',
   'brain.ready': '{model} 已就绪',

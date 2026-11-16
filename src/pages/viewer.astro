@@ -80,7 +80,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   <script>
     import { SplatViewer } from '../lib/splat-viewer';
-    import { AR_MODELS, buildModelViewerHTML } from '../lib/ar-viewer';
+    import { AR_MODELS, buildModelViewerHTML, loadModelViewer } from '../lib/ar-viewer';
     import { CARD_CATALOG } from '../lib/cards';
     import type { Msg } from '../lib/verse/msg';
     import { t, tm } from '../i18n';
@@ -160,8 +160,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       } else {
         const config = AR_MODELS[cardId];
         if (config) {
-          glbContainer.innerHTML = buildModelViewerHTML(config, t('viewer.ar'));
-          setStatus({ key: 'viewer.status.glbLoaded', vars: { card: cardId } });
+          try {
+            // The component is bundled with the site and loaded on first use of GLB mode.
+            await loadModelViewer();
+            glbContainer.innerHTML = buildModelViewerHTML(config, t('viewer.ar'));
+            setStatus({ key: 'viewer.status.glbLoaded', vars: { card: cardId } });
+          } catch (err) {
+            console.error('[viewer] 3D viewer failed to load', err);
+            setStatus({ key: 'viewer.error.glbViewer' });
+          }
         } else {
           setStatus({ key: 'viewer.status.noGlb', vars: { card: cardId } });
         }
@@ -230,7 +237,4 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         onPageLocaleChange(redraw);
       });
   </script>
-
-  <!-- model-viewer web component (lazy-loaded for GLB mode) -->
-  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
 </BaseLayout>

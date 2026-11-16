@@ -52,11 +52,13 @@ const messages: Record<string, string> = {
   'offline.body': 'Einige Teile des Spiels brauchen eine Internetverbindung. Prüf deine Verbindung und versuch es noch einmal.',
   'offline.available': 'Weiterhin offline verfügbar',
   'offline.retry': 'Noch einmal versuchen',
-  'app.name': 'Inspired Mile: das Shakespeare-Kartenspiel',
+  'app.name': 'Sonnet Man: das Duell der Strophen',
   'offline.link.home': 'Start',
   'offline.link.collection': 'Sammlung',
   'offline.link.battle': 'Kampfarena',
-  'app.description': 'Digitale Sammelkarten mit KI und erweiterter Realität. Interaktive Erlebnisse, die Shakespeare lebendig machen.',
+  'app.description': 'Ein Shakespeare-Kartenspiel im Stil eines Rap-Battles, von Inspired Mile. Spiel deine Karten, halte die Form und schreib besser als ein Gegner, der ganz auf deinem Gerät läuft.',
+  'app.shortcut.battle': 'Kampfarena',
+  'app.shortcut.theatre': 'Das Theater',
 };
 
 export default messages;

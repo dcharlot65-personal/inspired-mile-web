@@ -52,11 +52,13 @@ const messages: Record<string, string> = {
   'offline.body': 'Một số phần của trò chơi cần có kết nối internet. Hãy kiểm tra mạng rồi thử lại.',
   'offline.available': 'Vẫn dùng được khi ngoại tuyến',
   'offline.retry': 'Thử lại',
-  'app.name': 'Inspired Mile: trò chơi thẻ bài Shakespeare',
+  'app.name': 'Sonnet Man: trận đấu thơ',
   'offline.link.home': 'Trang chủ',
   'offline.link.collection': 'Bộ sưu tập',
   'offline.link.battle': 'Đấu trường',
-  'app.description': 'Thẻ bài sưu tầm kỹ thuật số với AI và thực tế tăng cường. Những trải nghiệm tương tác làm Shakespeare sống dậy.',
+  'app.description': 'Trò chơi bài đấu rap theo phong cách Shakespeare của Inspired Mile. Đánh lá bài của bạn, giữ đúng thể thơ và viết hay hơn một đối thủ chạy hoàn toàn trên thiết bị của bạn.',
+  'app.shortcut.battle': 'Đấu trường',
+  'app.shortcut.theatre': 'Nhà hát',
 };
 
 export default messages;

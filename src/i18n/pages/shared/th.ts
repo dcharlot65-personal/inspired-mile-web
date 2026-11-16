@@ -51,11 +51,13 @@ const messages: Record<string, string> = {
   'offline.body': 'บางส่วนของเกมต้องใช้การเชื่อมต่ออินเทอร์เน็ต โปรดตรวจการเชื่อมต่อแล้วลองอีกครั้ง',
   'offline.available': 'ยังใช้ได้ขณะออฟไลน์',
   'offline.retry': 'ลองอีกครั้ง',
-  'app.name': 'Inspired Mile: เกมการ์ดเชกสเปียร์',
+  'app.name': 'Sonnet Man: การประชันบทกลอน',
   'offline.link.home': 'หน้าแรก',
   'offline.link.collection': 'คอลเลกชัน',
   'offline.link.battle': 'สังเวียนประชัน',
-  'app.description': 'การ์ดสะสมดิจิทัลที่ขับเคลื่อนด้วย AI และความจริงเสริม ประสบการณ์เชิงโต้ตอบที่ปลุกเชกสเปียร์ให้มีชีวิต',
+  'app.description': 'เกมการ์ดแร็ปแบตเทิลแบบเชกสเปียร์จาก Inspired Mile ลงการ์ดของคุณ รักษาฉันทลักษณ์ และเขียนให้ดีกว่าคู่ต่อสู้ที่ทำงานอยู่บนอุปกรณ์ของคุณทั้งหมด',
+  'app.shortcut.battle': 'สังเวียนประชัน',
+  'app.shortcut.theatre': 'เวทีโรงละคร',
 };
 
 export default messages;

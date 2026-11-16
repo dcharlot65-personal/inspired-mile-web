@@ -51,11 +51,13 @@ const messages: Record<string, string> = {
   'offline.body': '게임의 일부는 인터넷 연결이 필요해요. 연결을 확인하고 다시 시도해 주세요.',
   'offline.available': '오프라인에서도 쓸 수 있어요',
   'offline.retry': '다시 시도',
-  'app.name': 'Inspired Mile: 셰익스피어 카드 게임',
+  'app.name': 'Sonnet Man: 시의 결투',
   'offline.link.home': '홈',
   'offline.link.collection': '컬렉션',
   'offline.link.battle': '배틀 아레나',
-  'app.description': 'AI와 증강 현실로 움직이는 디지털 수집 카드. 셰익스피어를 되살리는 인터랙티브 경험.',
+  'app.description': 'Inspired Mile의 셰익스피어 랩 배틀 카드 게임. 카드를 내고, 형식을 지키고, 내 기기에서만 움직이는 상대보다 더 잘 써 보세요.',
+  'app.shortcut.battle': '배틀 아레나',
+  'app.shortcut.theatre': '더 극장',
 };
 
 export default messages;

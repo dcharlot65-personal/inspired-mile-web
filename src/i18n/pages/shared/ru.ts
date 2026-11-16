@@ -54,11 +54,13 @@ const messages: Record<string, string> = {
   'offline.body': 'Некоторым частям игры нужен интернет. Проверь соединение и попробуй ещё раз.',
   'offline.available': 'По-прежнему доступно без сети',
   'offline.retry': 'Повторить',
-  'app.name': 'Inspired Mile: карточная игра по Шекспиру',
+  'app.name': 'Sonnet Man: дуэль строф',
   'offline.link.home': 'Главная',
   'offline.link.collection': 'Коллекция',
   'offline.link.battle': 'Арена битв',
-  'app.description': 'Цифровые коллекционные карты с ИИ и дополненной реальностью. Интерактивные истории, в которых оживает Шекспир.',
+  'app.description': 'Карточная игра по Шекспиру в духе рэп-баттла от Inspired Mile. Разыгрывай карты, держи форму и напиши лучше соперника, который работает целиком на твоём устройстве.',
+  'app.shortcut.battle': 'Арена битв',
+  'app.shortcut.theatre': 'Наш Театр',
 };
 
 export default messages;

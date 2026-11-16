@@ -21,6 +21,7 @@ const messages: Record<string, string> = {
   'viewer.error.noMeshes': '파일에 모델이 없어요.',
   'viewer.error.loadFailed': '모델을 불러오지 못했어요.',
   'viewer.error.init': '3D 뷰어를 시작하지 못했어요.',
+  'viewer.error.glbViewer': 'GLB 보기를 불러오지 못했어요.',
   'viewer.fps': '{n} fps',
   'viewer.ar': 'AR로 보기',
   'viewer.card.splat.title': '스플랫 보기',

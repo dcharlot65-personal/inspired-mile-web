@@ -21,6 +21,7 @@ const messages: Record<string, string> = {
   'viewer.error.noMeshes': 'Il file non contiene nessun modello.',
   'viewer.error.loadFailed': 'Non è stato possibile caricare il modello.',
   'viewer.error.init': 'Il visualizzatore 3D non è riuscito ad avviarsi.',
+  'viewer.error.glbViewer': 'Non è stato possibile caricare la vista GLB.',
   'viewer.fps': '{n} fps',
   'viewer.ar': 'Guarda in AR',
   'viewer.card.splat.title': 'Vista splat',

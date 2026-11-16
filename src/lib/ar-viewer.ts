@@ -4,7 +4,41 @@
  * - iOS Safari: Quick Look (.usdz)
  * - Android Chrome: Scene Viewer / WebXR
  * - Desktop: Interactive 3D viewer (no AR)
+ *
+ * The component is bundled with the site (loadModelViewer below), never loaded from
+ * Google's CDN. "View in AR" on Android hands the model's address to Google's Scene
+ * Viewer app; the privacy policy says so.
  */
+
+import { selfHosted } from './self-hosted';
+
+let modelViewer: Promise<void> | null = null;
+
+/**
+ * Define the <model-viewer> element. Every page that shows one must call this instead
+ * of importing the package or adding a script tag.
+ *
+ * Left alone, model-viewer fetches a Draco or KTX2 decoder from www.gstatic.com when a
+ * model is compressed, and a Lottie loader from cdn.jsdelivr.net. The decoders are
+ * shipped by this site (scripts/self-hosted-runtime.mjs). Lottie textures are not used;
+ * its location is pointed at this site too (where there is no such file) so the default
+ * can never be fetched.
+ */
+export function loadModelViewer(): Promise<void> {
+  modelViewer ??= (async () => {
+    const { draco, basis } = selfHosted();
+    // model-viewer reads these from a global of this name when it first loads.
+    const scope = self as any;
+    scope.ModelViewerElement = {
+      ...(scope.ModelViewerElement ?? {}),
+      dracoDecoderLocation: draco,
+      ktx2TranscoderLocation: basis,
+      lottieLoaderLocation: '/vendor/not-shipped/LottieLoader.js',
+    };
+    await import('@google/model-viewer');
+  })();
+  return modelViewer;
+}
 
 export interface ARModelConfig {
   cardId: string;

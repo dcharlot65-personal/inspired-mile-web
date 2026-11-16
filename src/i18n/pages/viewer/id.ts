@@ -21,6 +21,7 @@ const messages: Record<string, string> = {
   'viewer.error.noMeshes': 'Berkas ini tidak berisi model.',
   'viewer.error.loadFailed': 'Model tidak dapat dimuat.',
   'viewer.error.init': 'Penampil 3D tidak dapat dimulai.',
+  'viewer.error.glbViewer': 'Tampilan GLB tidak dapat dimuat.',
   'viewer.fps': '{n} fps',
   'viewer.ar': 'Lihat dalam AR',
   'viewer.card.splat.title': 'Tampilan splat',
