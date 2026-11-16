@@ -145,7 +145,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <!-- The arrow points back: to the left in left-to-right languages, to the right in Arabic. -->
             <svg class="w-5 h-5 rtl:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
           </button>
-          <h2 class="text-2xl font-display font-bold text-obsidian-200 min-w-0 break-words" id="detail-name" dir="auto"></h2>
+          <!-- <bdi>: a name keeps its own direction, while the line it sits on stays aligned with the page. -->
+          <h2 class="text-2xl font-display font-bold text-obsidian-200 min-w-0 break-words"><bdi id="detail-name"></bdi></h2>
         </div>
 
         <div class="grid md:grid-cols-2 gap-6">
@@ -489,7 +490,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <button class="card-glass p-5 rounded-2xl w-full text-start hover:border-gold-400/30 transition-colors" data-id="${c.id}">
           <div class="flex items-center justify-between gap-3">
             <div class="min-w-0">
-              <h3 class="font-display font-bold text-obsidian-200 break-words" dir="auto">${esc(c.name)}</h3>
+              <h3 class="font-display font-bold text-obsidian-200 break-words"><bdi>${esc(c.name)}</bdi></h3>
               <p class="text-xs text-obsidian-500 mt-1">${esc(plural('classroom.members', c.member_count))} &middot; ${esc(t('classroom.list.code'))} <span class="font-mono text-gold-400" lang="en" dir="ltr" translate="no">${esc(c.join_code)}</span></p>
             </div>
             <svg class="w-5 h-5 text-obsidian-500 shrink-0 rtl:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
@@ -525,7 +526,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
       document.getElementById('members-list')!.innerHTML = openMembers.map(m => `
         <div class="flex items-center justify-between gap-2 text-sm">
-          <span class="text-obsidian-200 min-w-0 break-words" dir="auto">${esc(m.username)}</span>
+          <span class="text-obsidian-200 min-w-0 break-words"><bdi>${esc(m.username)}</bdi></span>
           <span class="text-xs px-2 py-0.5 rounded-full shrink-0 ${m.role === 'teacher' ? 'bg-gold-400/10 text-gold-400' : 'bg-obsidian-700 text-obsidian-400'}">${esc(t(m.role === 'teacher' ? 'classroom.badge.teacher' : 'classroom.badge.student'))}</span>
         </div>
       `).join('');
@@ -546,7 +547,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           return `
             <div class="card-glass p-4 rounded-xl flex items-center justify-between gap-3">
               <div class="min-w-0">
-                <p class="font-display font-bold text-obsidian-200 text-sm break-words" dir="auto">${esc(a.title)}</p>
+                <p class="font-display font-bold text-obsidian-200 text-sm break-words"><bdi>${esc(a.title)}</bdi></p>
                 <p class="text-xs text-obsidian-500">${esc(date(a.created_at))}</p>
               </div>
               <span class="text-xs px-2 py-1 rounded-full bg-emerald-500/10 text-emerald-400 shrink-0">${esc(kind)}</span>

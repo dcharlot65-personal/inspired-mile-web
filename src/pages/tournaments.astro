@@ -166,7 +166,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div class="flex-1 min-w-0">
                 <div class="flex flex-wrap items-center gap-x-3 gap-y-1 mb-2">
-                  <h3 class="font-display text-lg font-bold text-obsidian-200 break-words min-w-0" dir="auto">${esc(tn.name)}</h3>
+                  <h3 class="font-display text-lg font-bold text-obsidian-200 break-words min-w-0"><bdi>${esc(tn.name)}</bdi></h3>
                   <span class="text-xs ${statusColor(tn.status)} px-2 py-0.5 rounded-full uppercase">
                     ${esc(statusName(tn.status))}
                   </span>
@@ -293,7 +293,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                 const state = m.status === 'in_progress' ? 'tour.match.live' : m.status === 'completed' ? 'tour.match.done' : 'tour.match.pending';
                 const player = (name: string | null, won: unknown) => `
                     <div class="flex items-center justify-between gap-2 py-1 ${won ? 'text-gold-400 font-semibold' : 'text-obsidian-300'} text-sm">
-                      <span dir="auto">${esc(name || bye)}</span>
+                      <bdi>${esc(name || bye)}</bdi>
                       ${won ? '<span class="text-xs" aria-hidden="true">&#9733;</span>' : ''}
                     </div>`;
 
@@ -347,7 +347,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             ${[...standings].sort((a, b) => b.wins - a.wins || a.losses - b.losses).map((e, i) => `
               <tr class="border-b border-obsidian-800/50 ${e.eliminated ? 'opacity-50' : ''}">
                 <td class="px-4 py-3 text-obsidian-500 font-mono">${esc(num(i + 1))}</td>
-                <td class="px-4 py-3 text-obsidian-200 font-medium" dir="auto">${esc(e.username)}</td>
+                <td class="px-4 py-3 text-obsidian-200 font-medium"><bdi>${esc(e.username)}</bdi></td>
                 <td class="px-4 py-3 text-center text-emerald-400">${esc(num(e.wins))}</td>
                 <td class="px-4 py-3 text-center text-crimson-400">${esc(num(e.losses))}</td>
                 <td class="px-4 py-3 text-center">
