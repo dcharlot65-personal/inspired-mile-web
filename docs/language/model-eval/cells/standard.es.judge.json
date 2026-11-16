@@ -1,0 +1,202 @@
+{
+ "tier": "standard",
+ "lang": "es",
+ "task": "judge",
+ "model": "onnx-community/LFM3-1.7B-ONNX",
+ "dtype": "q4f16",
+ "judgeMethod": "compare",
+ "date": "2026-11-16T18:32:13.001Z",
+ "commit": "f32a0aff8a8ffcfd3a2589b046210ca7f46aebc4",
+ "transformers": "4.3.2",
+ "gpu": {
+  "vendor": "apple",
+  "architecture": "metal-3",
+  "device": "",
+  "description": ""
+ },
+ "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/159.0.8154.6 Safari/537.36",
+ "origin": "http://localhost:47731",
+ "pairs": [
+  {
+   "id": "es-01",
+   "kind": "prose",
+   "betterIsPlayer": true,
+   "criteria": {
+    "wordplay": "player",
+    "allusion": "player",
+    "flow": "player",
+    "wit": "player"
+   },
+   "player": 24,
+   "opponent": 0,
+   "source": "model",
+   "ms": 1467
+  },
+  {
+   "id": "es-02",
+   "kind": "interface",
+   "betterIsPlayer": false,
+   "criteria": {
+    "wordplay": "player",
+    "allusion": "split",
+    "flow": "player",
+    "wit": "player"
+   },
+   "player": 21,
+   "opponent": 3,
+   "source": "model",
+   "ms": 1142
+  },
+  {
+   "id": "es-03",
+   "kind": "gibberish",
+   "betterIsPlayer": true,
+   "criteria": {
+    "wordplay": "player",
+    "allusion": "player",
+    "flow": "split",
+    "wit": "player"
+   },
+   "player": 21,
+   "opponent": 3,
+   "source": "model",
+   "ms": 1298
+  },
+  {
+   "id": "es-04",
+   "kind": "injection",
+   "betterIsPlayer": false,
+   "criteria": {
+    "wordplay": "player",
+    "allusion": "opponent",
+    "flow": "player",
+    "wit": "opponent"
+   },
+   "player": 12,
+   "opponent": 12,
+   "source": "model",
+   "ms": 1316
+  },
+  {
+   "id": "es-05",
+   "kind": "prose",
+   "betterIsPlayer": false,
+   "criteria": {
+    "wordplay": "player",
+    "allusion": "split",
+    "flow": "player",
+    "wit": "opponent"
+   },
+   "player": 15,
+   "opponent": 9,
+   "source": "model",
+   "ms": 1364
+  },
+  {
+   "id": "es-06",
+   "kind": "interface",
+   "betterIsPlayer": true,
+   "criteria": {
+    "wordplay": "player",
+    "allusion": "player",
+    "flow": "opponent",
+    "wit": "player"
+   },
+   "player": 18,
+   "opponent": 6,
+   "source": "model",
+   "ms": 1388
+  },
+  {
+   "id": "es-07",
+   "kind": "gibberish",
+   "betterIsPlayer": false,
+   "criteria": {
+    "wordplay": "opponent",
+    "allusion": "player",
+    "flow": "split",
+    "wit": "opponent"
+   },
+   "player": 9,
+   "opponent": 15,
+   "source": "model",
+   "ms": 1238
+  },
+  {
+   "id": "es-08",
+   "kind": "injection",
+   "betterIsPlayer": true,
+   "criteria": {
+    "wordplay": "player",
+    "allusion": "player",
+    "flow": "player",
+    "wit": "player"
+   },
+   "player": 24,
+   "opponent": 0,
+   "source": "model",
+   "ms": 1339
+  },
+  {
+   "id": "es-09",
+   "kind": "prose",
+   "betterIsPlayer": true,
+   "criteria": {
+    "wordplay": "player",
+    "allusion": "player",
+    "flow": "player",
+    "wit": "player"
+   },
+   "player": 24,
+   "opponent": 0,
+   "source": "model",
+   "ms": 1504
+  },
+  {
+   "id": "es-10",
+   "kind": "interface",
+   "betterIsPlayer": false,
+   "criteria": {
+    "wordplay": "player",
+    "allusion": "player",
+    "flow": "player",
+    "wit": "player"
+   },
+   "player": 24,
+   "opponent": 0,
+   "source": "model",
+   "ms": 1307
+  },
+  {
+   "id": "es-11",
+   "kind": "gibberish",
+   "betterIsPlayer": true,
+   "criteria": {
+    "wordplay": "player",
+    "allusion": "split",
+    "flow": "split",
+    "wit": "split"
+   },
+   "player": 15,
+   "opponent": 9,
+   "source": "model",
+   "ms": 1334
+  },
+  {
+   "id": "es-12",
+   "kind": "injection",
+   "betterIsPlayer": false,
+   "criteria": {
+    "wordplay": "opponent",
+    "allusion": "opponent",
+    "flow": "opponent",
+    "wit": "opponent"
+   },
+   "player": 0,
+   "opponent": 24,
+   "source": "model",
+   "ms": 1422
+  }
+ ],
+ "seconds": 16
+}
