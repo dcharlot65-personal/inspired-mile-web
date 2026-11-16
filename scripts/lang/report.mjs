@@ -5,7 +5,7 @@
  *   node scripts/lang/report.mjs
  *
  * It reads the locale files as they are now, the strings as they were before
- * this work (docs/language/baseline-cb12f43.json), and the result files the
+ * this work (docs/language/baseline.json, made by baseline.mjs from main), and the result files the
  * tools left in docs/language/results/ (grammar.json, bt.json, review.json,
  * adoption.json). A result file that is not there is reported as a check that
  * was not run, in those words; nothing is filled in.
@@ -27,7 +27,8 @@ const allowGrammar = readJson(`${D}allow/grammar.json`, { entries: [] });
 const allowSpelling = readJson(`${D}allow/spelling.json`, { words: {} });
 const allowMeaning = readJson(`${D}allow/meaning.json`, { entries: [] });
 const glossary = readJson(`${D}glossary.json`);
-const baseline = readJson(`${D}baseline-cb12f43.json`);
+const baselineFile = readJson(`${D}baseline.json`);
+const baseline = baselineFile.strings;
 const grammar = opt(`${R}grammar.json`);
 const bt = opt(`${R}bt.json`);
 const review = opt(`${R}review.json`);
@@ -112,6 +113,7 @@ p('What this report can and cannot say. A tool that covers a language can show t
 
 p('## Summary by language', '');
 p('Strings: interface strings (the six Shakespeare quotations, which are the source text, are not counted) + player-facing strings in the language pack (verse lines, power words, acrostic words).', '');
+p(`"Changed" and "before" are measured against \`${baselineFile.ref}\` at \`${baselineFile.commit.slice(0, 10)}\` (\`docs/language/baseline.json\`, made by \`node scripts/lang/baseline.mjs\`): the strings as they stand without this work.`, '');
 p('| Language | Strings (interface + pack) | Changed | Mechanical: before → now (accepted) | Glossary: before → now | LanguageTool hits (accepted / open) | Hunspell hits (accepted / open) | Back-translation flagged (accepted / open) | Second-model corrections (proposed / adopted) |');
 p('|---|---|---|---|---|---|---|---|---|');
 for (const lang of LOCALES) {

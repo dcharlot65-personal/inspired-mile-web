@@ -42,7 +42,6 @@ const LT_CODE = { en: 'en-US', es: 'es', fr: 'fr', de: 'de-DE', it: 'it', pt: 'p
 const DICTS = { en: ['en'], es: ['es'], fr: ['fr'], de: ['de'], it: ['it'], pt: ['pt-BR'], pl: ['pl'], ru: ['ru'], ar: ['ar'], hi: ['hi'], ko: ['ko'], vi: ['vi'], th: ['th'], id: ['id'] };
 
 // ---------- LanguageTool ----------
-const BATCH_ARTEFACTS = ['ENGLISH_WORD_REPEAT_BEGINNING_RULE', 'SPANISH_WORD_REPEAT_BEGINNING_RULE', 'GERMAN_WORD_REPEAT_BEGINNING_RULE', 'PORTUGUESE_WORD_REPEAT_BEGINNING_RULE', 'FRENCH_WORD_REPEAT_BEGINNING_RULE', 'ITALIAN_WORD_REPEAT_BEGINNING_RULE', 'RUSSIAN_WORD_REPEAT_BEGINNING_RULE', 'POLISH_WORD_REPEAT_BEGINNING_RULE', 'ARABIC_WORD_REPEAT_BEGINNING_RULE'].join(',');
 async function ltLanguages() {
   const r = await fetch(`${LT_URL}/v2/languages`);
   if (!r.ok) throw new Error(`LanguageTool at ${LT_URL}: ${r.status}`);
@@ -50,36 +49,28 @@ async function ltLanguages() {
 }
 
 async function ltCheck(code, text) {
-  // Strings are checked together as paragraphs of one text, so a rule about neighbouring sentences
-  // ("three sentences in a row begin with the same word") would be judging our batching, not the text.
-  const body = new URLSearchParams({ language: code, text, level: 'picky', disabledRules: BATCH_ARTEFACTS });
+  const body = new URLSearchParams({ language: code, text, level: 'picky' });
   // Spelling is Hunspell's job where we have a dictionary of our own; LanguageTool's speller still runs (it knows compounds and names).
   const r = await fetch(`${LT_URL}/v2/check`, { method: 'POST', body });
   if (!r.ok) throw new Error(`LanguageTool ${code}: ${r.status} ${await r.text()}`);
   return (await r.json()).matches;
 }
 
-/** Check many sentences in few requests: join them as paragraphs, then hand each match back to its sentence. */
-async function ltBatch(code, sentences) {
+/**
+ * Check each sentence on its own, a few requests at a time. Strings used to be joined into one
+ * text to save requests; LanguageTool's text-level rules then judged a string by its neighbours
+ * (French FR_REPEATEDWORDS_DÉSORMAIS fired because the previous string said "désormais", and the
+ * same with "three sentences in a row begin with the same word"). Alone, a string is judged as
+ * itself, and no rule needs switching off.
+ */
+async function ltBatch(code, sentences, parallel = Number(process.env.LT_PARALLEL ?? '6')) {
   const hits = sentences.map(() => []);
-  const SEP = '\n\n';
-  for (let start = 0; start < sentences.length; ) {
-    let end = start;
-    let size = 0;
-    while (end < sentences.length && (end === start || size + sentences[end].length < 15000)) size += sentences[end++].length + SEP.length;
-    const offsets = [];
-    let text = '';
-    for (let i = start; i < end; i++) {
-      offsets.push(text.length);
-      text += sentences[i] + SEP;
+  let next = 0;
+  await Promise.all(Array.from({ length: parallel }, async () => {
+    for (let i = next++; i < sentences.length; i = next++) {
+      for (const m of await ltCheck(code, sentences[i])) hits[i].push({ offset: m.offset, length: m.length, rule: m.rule.id, category: m.rule.category?.id ?? '', message: m.message, replacements: m.replacements.slice(0, 3).map((x) => x.value) });
     }
-    for (const m of await ltCheck(code, text)) {
-      let i = offsets.length - 1;
-      while (i > 0 && offsets[i] > m.offset) i--;
-      hits[start + i].push({ offset: m.offset - offsets[i], length: m.length, rule: m.rule.id, category: m.rule.category?.id ?? '', message: m.message, replacements: m.replacements.slice(0, 3).map((x) => x.value) });
-    }
-    start = end;
-  }
+  }));
   return hits;
 }
 
@@ -244,7 +235,9 @@ for (const lang of langs) {
         usedWords.add(`${lang in allowSpelling && h.at in allowSpelling[lang] ? lang : '*'}|${h.at}`);
       }
     } else {
-      const i = allowGrammar.findIndex((a) => (a.lang === '*' || a.lang === lang) && a.rule === h.rule && (a.id === '*' || a.id === h.id) && (a.at === undefined || a.at === h.at));
+      // id: one string ('ui:auth.signOut'), every string ('*'), or a group by prefix ('pack:written.*').
+      const idMatches = (id) => id === '*' || id === h.id || (id.endsWith('*') && h.id.startsWith(id.slice(0, -1)));
+      const i = allowGrammar.findIndex((a) => (a.lang === '*' || a.lang === lang) && a.rule === h.rule && idMatches(a.id) && (a.at === undefined || a.at === h.at));
       if (i >= 0) {
         h.allowed = allowGrammar[i].reason;
         usedGrammar.add(i);

@@ -11,6 +11,7 @@
 #   pairs FILE    back-translate candidate corrections (FILE: [{id, lang, text, english}])
 #   detach STEP   run a long step in the background from a copy of this checkout, so rb is free;
 #                 log in $LANGQA_HOME/logs/STEP.log, result in $OUT
+#   stop STEP     stop a detached step of ours (by its pid file)
 #   status        what is running, and the tail of each log
 #
 # The tools live in $LANGQA_HOME (scripts/lang/host-setup.sh installs them). Every heavy
@@ -35,10 +36,23 @@ STEP=${1:-}; shift || true
 PIDS=()
 # Stop what this run started, and only that: each server's own pid and the processes under it
 # (memguard runs the server as its child, and does not pass a signal on).
-kill_tree() { local c; for c in $(pgrep -P "$1" 2>/dev/null); do kill_tree "$c"; done; kill "$1" 2>/dev/null || true; }
+KILLED=()
+kill_tree() { local c; for c in $(pgrep -P "$1" 2>/dev/null); do kill_tree "$c"; done; KILLED+=("$1"); kill "$1" 2>/dev/null || true; }
 # It keeps the step's own exit status: under set -e a trap whose last test fails would turn a
 # step that succeeded, and started no server, into exit 1 (seen 2026-11-16 on `setup`).
-cleanup() { local rc=$?; for p in "${PIDS[@]:-}"; do if [ -n "$p" ]; then kill_tree "$p"; fi; done; return $rc; }
+# And it waits (up to 60 s) for what it stopped to be gone: a Java server takes a few seconds to
+# exit, and the next step, starting at once on the same port, found it still taken.
+cleanup() {
+  local rc=$? p _
+  for p in "${PIDS[@]:-}"; do if [ -n "$p" ]; then kill_tree "$p"; fi; done
+  for _ in $(seq 1 60); do
+    local alive=0
+    for p in "${KILLED[@]:-}"; do if [ -n "$p" ] && kill -0 "$p" 2>/dev/null; then alive=1; fi; done
+    [ "$alive" = 0 ] && break
+    sleep 1
+  done
+  return $rc
+}
 trap cleanup EXIT
 
 wait_http() {  # wait_http <url> <seconds> <log>
@@ -76,14 +90,21 @@ case "$STEP" in
   detach)
     WHAT=${1:?detach needs a step}; shift
     WORK=$LANGQA_HOME/work/$WHAT
+    PIDF=$LANGQA_HOME/logs/$WHAT.pid
+    # One copy of a step at a time: two would write the same result file.
+    if [ -s "$PIDF" ] && kill -0 "$(cat "$PIDF")" 2>/dev/null; then echo "run.sh: $WHAT is already running (pid $(cat "$PIDF")); not starting another" >&2; exit 3; fi
     rm -rf "$WORK"; mkdir -p "$WORK"
     # A copy, so the job does not change under the next rb run in this checkout.
     tar -cf - --exclude node_modules --exclude .git --exclude dist --exclude .e2e --exclude backend/target --exclude .langqa scripts/lang src docs/language | tar -xf - -C "$WORK"
     trap - EXIT
-    (cd "$WORK" && nohup bash scripts/lang/run.sh "$WHAT" "$@" >"$LANGQA_HOME/logs/$WHAT.log" 2>&1 &)
-    echo "started $WHAT in $WORK; log $LANGQA_HOME/logs/$WHAT.log" ;;
+    (cd "$WORK" && nohup bash scripts/lang/run.sh "$WHAT" "$@" >"$LANGQA_HOME/logs/$WHAT.log" 2>&1 & echo $! >"$PIDF")
+    echo "started $WHAT (pid $(cat "$PIDF")) in $WORK; log $LANGQA_HOME/logs/$WHAT.log" ;;
+  stop)
+    # Stop a detached step of ours, by its pid file, and everything under it.
+    WHAT=${1:?stop needs a step}; PIDF=$LANGQA_HOME/logs/$WHAT.pid
+    if [ -s "$PIDF" ] && kill -0 "$(cat "$PIDF")" 2>/dev/null; then kill_tree "$(cat "$PIDF")"; echo "stopped $WHAT"; else echo "$WHAT is not running"; fi ;;
   status)
-    pgrep -fl "scripts/lang/run.sh|languagetool-server|backtranslate.py|$GGUF" || echo "nothing of ours is running"
+    for w in meaning review; do f=$LANGQA_HOME/logs/$w.pid; if [ -s "$f" ] && kill -0 "$(cat "$f")" 2>/dev/null; then echo "$w: running (pid $(cat "$f"))"; else echo "$w: not running"; fi; done
     for f in "$LANGQA_HOME"/logs/{grammar,meaning,review}.log; do [ -f "$f" ] && { echo "== $f"; tail -5 "$f"; }; done; ls -la "$OUT" ;;
   *) sed -n 2,18p "$0"; exit 2 ;;
 esac

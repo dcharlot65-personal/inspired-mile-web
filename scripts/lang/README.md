@@ -88,9 +88,11 @@ before applying it.
 ## Sources
 
 `fetch-cldr.mjs` (plural rules, quotation marks), `fetch-wikidata.mjs` and
-`fetch-wikidata-titles.mjs` (names of verse forms), `fetch-platform-terms.mjs`
-(Android's translations of platform terms), `fetch-apple-terms.mjs` (Apple's
-wording for passkeys). Each writes a file under `docs/language/sources/` with
+`fetch-wikidata-titles.mjs` (names of verse forms), `fetch-wiktionary.mjs`
+(Wiktionary's translation tables, for forms no Wikipedia names),
+`fetch-platform-terms.mjs` (Android's translations of platform terms),
+`fetch-apple-terms.mjs` (Apple's wording for passkeys), `fetch-mozilla-terms.mjs`
+and `fetch-google-help.mjs` ("sign out", which Android's strings lack). Each writes a file under `docs/language/sources/` with
 where it came from and when. `docs/language/PROVENANCE.md` lists them all, with
 licences, and the tools and models with their versions.
 

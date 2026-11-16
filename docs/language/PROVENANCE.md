@@ -14,6 +14,9 @@ and `fetched` fields; the script named beside it fetches it again.
 | The reverse lookup: whether a candidate term is an article title in that language's Wikipedia, and what the article is about | Wikidata, `wbgetentities` by site and title | CC0 1.0 | `sources/wikidata-titles.json` | `scripts/lang/fetch-wikidata-titles.mjs` |
 | Platform terms as the platform vendor translates them (passkey, sign in, microphone, screen lock, home screen, download) | Android Open Source Project, `platform_frameworks_base` at commit `1cdfff555f4a21f71ccc978290e2e212e2f8b168` (GitHub mirror `aosp-mirror/platform_frameworks_base`): `packages/CredentialManager`, `core/res`, `packages/SystemUI`, `packages/SettingsLib` string resources | Apache License 2.0 | `sources/aosp-terms.json` | `scripts/lang/fetch-platform-terms.mjs` |
 | Apple's wording for "passkey" and "sign in": the first sentence of support article 102195 in each language Apple publishes it in (no Hindi edition) | `https://support.apple.com/<locale>/102195` | © Apple; one sentence quoted per language as evidence of a term | `sources/apple-passkeys.json` | `scripts/lang/fetch-apple-terms.mjs` |
+| Names of verse forms where a language's Wikipedia has no article: English Wiktionary's translation tables, each kept with the sense it translates | `https://en.wiktionary.org/w/index.php?title=<page>&action=raw` (couplet, distich, quatrain, tercet, anaphora, epistrophe, acrostic, alliteration, heroic couplet, internal rhyme, jueju, lục bát, haiku) | CC BY-SA 4.0; one word per language quoted as evidence of a term | `sources/wiktionary-translations.json` | `scripts/lang/fetch-wiktionary.mjs` |
+| "Sign out" as Mozilla ships it: Firefox's account menu (`fxa-menu-sign-out`) and its confirmation button (`fxa-signout-dialog2-button`) | `mozilla-l10n/firefox-l10n` at commit `bb61adaeeaefe5db067571d42d0eb7a1c2309b1a`, `<locale>/browser/browser/sync.ftl`; English from `mozilla-firefox/firefox`, `browser/locales/en-US/browser/sync.ftl` | Mozilla Public License 2.0 | `sources/mozilla-terms.json` | `scripts/lang/fetch-mozilla-terms.mjs` |
+| "Sign out" as Google writes it: the title and first heading of Gmail Help answer 8154 in each language | `https://support.google.com/mail/answer/8154?hl=<lang>` | © Google; a title and a heading quoted per language as evidence of a term | `sources/google-help.json` | `scripts/lang/fetch-google-help.mjs` |
 
 What was decided from these (which name was adopted, and where a source was
 not followed and why) is in `glossary.json`, per entry, and summarised in
@@ -28,8 +31,16 @@ Known limits of these sources, met in this work:
   term, and the Hindi त्रिपदी the algebraic one. Each is recorded in the glossary.
 - Wikipedia has no article for many of these concepts in Hindi, Thai,
   Vietnamese and Korean. Where there is none, the name is marked "not sourced".
-- "Sign out" and "home page" were not found in the Android strings fetched;
-  they are not vendor-sourced.
+- "Sign out" is not in the Android strings fetched. It comes from Mozilla's
+  Firefox strings and from Google's Gmail help instead; where those two differ
+  from each other or from the game (Italian, Portuguese, Arabic, Japanese, Thai,
+  Indonesian), `glossary.json` says which was kept and why. "Home screen" is
+  Android's (`group_system_access_home_screen`); none of the core strings use it.
+- English Wiktionary has no translation table for heroic couplet, epistrophe,
+  internal rhyme, lục bát or jueju, and none for Thai or Hindi in most of the
+  others. It filled four gaps (Indonesian *kuplet* and *anafora*, Chinese 藏头诗,
+  Polish *czterowiersz*) and gave the word that replaced the Vietnamese
+  quatrain's *tứ tuyệt* (*thơ bốn câu*).
 
 ## Tools
 
@@ -74,10 +85,20 @@ game or copied into this repository.
 | all-MiniLM-L6-v2 (sentence-transformers) | Similarity between a back-translation and the English source (both English) | Apache 2.0 | `sentence-transformers/all-MiniLM-L6-v2` | revision `1110a243fdf4706b3f48f1d95db1a4f5529b4d41` |
 | Gemma 4 31B instruct (Google), 4-bit GGUF | The second opinion (step 4) | Apache 2.0 (as tagged on `google/gemma-4-31B-it` and on the conversion) | `unsloth/gemma-4-31B-it-GGUF`, `gemma-4-31B-it-Q4_K_M.gguf` (18.3 GB) | revision `c1ac76e99d5513b141e8adde7288b85c3f9c32ec`; SHA-256 `38bd64c852c4b460434cc7162fa9bdcf242faf86502581a754cb72956bb17f84` (verified after download) |
 
+Licences checked against the Hugging Face API on 2026-11-16 (`cardData.license`:
+`apache-2.0` for all three, and for `google/gemma-4-31B-it` itself).
+
 Why these. For back-translation the two open dedicated translation models that
 cover all sixteen languages are NLLB-200 (Meta, 2022) and MADLAD-400 (Google,
 2023). NLLB-200's weights are CC BY-NC 4.0, which rules them out for a product;
-MADLAD-400 is Apache 2.0 and the newer of the two. The 3B size was chosen
+MADLAD-400 is Apache 2.0. Newer dedicated translation models exist and were
+looked at on 2026-11-16 and not used: TranslateGemma (Google, 2026-01-12) is
+under the Gemma terms, gated behind a manual approval, and built on Gemma, the
+same family as the second-opinion model, so the two checks would not be
+independent; Seed-X (ByteDance, 2025-07) is under the OpenMDW licence;
+Hunyuan-MT-7B (Tencent, 2025-08) has its own licence, which was not reviewed.
+MADLAD-400 is older and weaker than these, which matters less here: it only
+raises a flag that a person then reads. The 3B size was chosen
 because it runs on CPU beside the host's other work. For the second opinion the
 model had to be a different one from the model that wrote the translations
 (Claude), strong in all sixteen languages, open, and runnable locally:
