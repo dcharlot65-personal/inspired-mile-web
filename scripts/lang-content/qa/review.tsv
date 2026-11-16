@@ -485,3 +485,32 @@ zh	trivia.90.o1	ok	reads: 葛莱密斯爵士: Thane of Glamis; the flag is OPUS-
 zh	trivia.90.o3	ok	reads: 洛斯伯爵: Earl of Ross; the flag is OPUS-MT zh-en's
 zh	trivia.97.q	ok	reads: the shrew's name; the flag is OPUS-MT zh-en's
 zh	trivia.131.o1	ok	reads: 葛罗斯特伯爵, the Earl of Gloucester, where the English distractor says Duke; Gloucester is an earl in King Lear and the option is a wrong answer either way, so it is left
+ru	trivia.104.o0	ok	reads: «Мышеловка»: The Mousetrap; the flag is OPUS-MT ru-en's
+ru	trivia.107.o0	ok	reads: Платком: with a handkerchief; the flag is OPUS-MT ru-en's
+ru	trivia.109.o2	ok	reads: Феба: Phebe, as the ru.wikipedia article writes her; the flag is OPUS-MT ru-en's
+ru	trivia.126.o1	ok	reads: Произносит речи: makes speeches; the flag is OPUS-MT ru-en's
+ru	trivia.128.o3	ok	reads: Гулянье в Иванову ночь: a midsummer-night revel; the flag is OPUS-MT ru-en's
+ru	trivia.132.o3	ok	reads: Никакой: none; the flag is OPUS-MT ru-en's
+ru	trivia.132.q	ok	reads: what relationship Caliban claims with the island; the flag is OPUS-MT ru-en's
+ru	trivia.139.o0	ok	reads: Корнуол: Cornwall; the flag is OPUS-MT ru-en's
+ru	trivia.145.o0	ok	reads: «Мышеловка»: The Mousetrap; the flag is OPUS-MT ru-en's
+ru	trivia.147.o3	ok	reads: Корнуол: Cornwall; the flag is OPUS-MT ru-en's
+ru	trivia.149.o0	ok	reads: Винченцио: Vincentio; the flag is OPUS-MT ru-en's
+ru	trivia.154.o0	ok	reads: Горб: a hump; the flag is OPUS-MT ru-en's
+ru	trivia.154.o2	ok	reads: Косолапость: a club foot; the flag is OPUS-MT ru-en's
+ru	trivia.155.q	ok	reads: who Sycorax is; the flag is OPUS-MT ru-en's
+ru	trivia.167.o1	ok	reads: Полное собрание сочинений: the complete works; the flag is OPUS-MT ru-en's
+ru	trivia.167.o2	ok	reads: Собрание кварто: the quarto collection; the flag is OPUS-MT ru-en's
+ru	trivia.174.o0	ok	reads: disguised as a servant called Кай (Caius) to stay near Lear; the flag is OPUS-MT ru-en's
+ru	trivia.177.o1	ok	reads: Честолюбие: ambition; the flag is OPUS-MT ru-en's
+ru	trivia.181.o3	ok	reads: Маски: masques; the flag is OPUS-MT ru-en's
+ru	trivia.185.o2	ok	reads: Публичного признания: a public confession; the flag is OPUS-MT ru-en's
+ru	trivia.194.o1	ok	reads: Балдахин: the canopy; the flag is OPUS-MT ru-en's
+ru	trivia.194.o2	ok	reads: Небесный свод: the firmament; the flag is OPUS-MT ru-en's
+ru	trivia.199.o2	ok	reads: Чернь: the mob; the flag is OPUS-MT ru-en's
+ru	trivia.27.o0	ok	reads: Фунт мяса: a pound of flesh; the flag is OPUS-MT ru-en's
+ru	trivia.4.o3	ok	reads: Рассказами: short stories; the flag is OPUS-MT ru-en's
+ru	trivia.48.o3	ok	reads: Фиалки: violets; the flag is OPUS-MT ru-en's
+ru	trivia.68.o0	ok	reads: Осла: a donkey's (head); the flag is OPUS-MT ru-en's
+ru	trivia.97.q	ok	reads: the shrew's name; the flag is OPUS-MT ru-en's
+ru	trivia.41.o0	ok	reads: Поручик (знаменосец), lieutenant (standard-bearer): the Russian translations make Iago поручик and Cassio лейтенант (Weinberg's cast list on ru.wikisource: «Яго, его поручик»), which is the distinction this question asks for; the gloss names the ensign's office
