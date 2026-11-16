@@ -1,0 +1,202 @@
+# Quiz auf Deutsch. n | Frage | Option 0 (die richtige) | 1 | 2 | 3.   „=“: Name aus der Namenstabelle (Wikidata).
+# Shakespeares Verse bleiben englisch, wie auf den Karten.
+0 | Wer schrieb „To be, or not to be, that is the question“? | = | = | = | =
+1 | In welchem Stück treten Romeo und Julia auf? | = | = | = | =
+2 | Wie heißt Hamlets Schloss? | = | = | = | =
+3 | Welche Figur sagt „A plague on both your houses!“? | = | = | = | =
+4 | Für welche Art von Werken ist Shakespeare am berühmtesten? | Theaterstücke und Sonette | Romane | Epen | Kurzgeschichten
+5 | Wo wurde Shakespeare geboren? | = | = | = | =
+6 | Wer tötet Romeo im Stück Romeo und Julia? | Niemand – er nimmt sich selbst das Leben | = | = | Julias Vater
+7 | Wie heißt Shakespeares Theater? | = | = | = | Das Königliche Theater
+8 | Welches dieser Stücke ist eine Komödie von Shakespeare? | = | = | = | =
+9 | Wo steht Julia, als Romeo zu ihr spricht? | Auf einem Balkon | Auf einem Turm | Auf einer Brücke | Auf einem Dach
+10 | Aus welchem Stück stammt „Friends, Romans, countrymen, lend me your ears“? | = | = | = | =
+11 | Wie viele Theaterstücke schrieb Shakespeare? | 37 | 15 | 50 | 100
+12 | Welcher berühmte schottische König steht im Mittelpunkt einer Tragödie von Shakespeare? | = | = | = | =
+13 | In welchem Stück gibt es eine Zauberinsel? | = | = | = | =
+14 | Zu welcher Familie gehört Romeo? | Montague | Capulet | Escalus | Lorenzo
+15 | In welchem Stück tritt die Figur Puck auf? | = | = | = | =
+16 | Wer ist Prosperos zauberkundiger Diener in Der Sturm? | = | = | = | =
+17 | Aus welchem Stück stammt „Double, double toil and trouble“? | = | = | = | =
+18 | Wie viele Sonette schrieb Shakespeare? | 154 | 100 | 200 | 52
+19 | Welche Figur ist die Königin der Elfen? | = | = | = | =
+20 | In welcher Stadt spielt Romeo und Julia? | = | = | = | =
+21 | Wer ist Hamlets Onkel? | = | = | = | =
+22 | Woran stirbt Hamlet am Ende des Stücks? | An einem vergifteten Degen | An einem Dolch | An Gift in seinem Becher | An einem Sturz von einem Turm
+23 | In welchem Stück treten drei Hexen auf? | = | = | = | =
+24 | Wer sagt im Sterben „Et tu, Brute?“? | = | = | = | =
+25 | Wie heißt der schelmische Geist in Ein Sommernachtstraum? | Puck (Robin Goodfellow) | = | = | =
+26 | Zu welcher Figur in Hamlet wird „Get thee to a nunnery“ gesagt? | = | = | = | =
+27 | Was verlangt Shylock in Der Kaufmann von Venedig als Pfand? | Ein Pfund Fleisch | Einen Beutel Gold | Ein Schiff | Einen Ring
+28 | Wer ist Prosperos missgestalteter Diener in Der Sturm? | = | = | = | =
+29 | Lady Macbeth sagt „Out, damned ___!“. Welches Wort fehlt? | Spot | Blood | Hand | Stain
+30 | In welchem Stück hält eine Figur einen Schädel und sagt „Alas, poor Yorick“? | = | = | = | =
+31 | In welchem Stück treten Beatrice und Benedikt auf? | = | = | = | =
+32 | Was sieht Macbeth vor sich schweben, das ihn zu Duncans Gemach führt? | Einen Dolch | Einen Geist | Eine Krone | Eine Fackel
+33 | Wer ist der Fürst von Verona in Romeo und Julia? | Escalus | = | = | =
+34 | Wie lautet der Untertitel von Was ihr wollt (im Original Twelfth Night)? | Or, What You Will | Or, As You Like It | Or, The Comedy of Errors | Or, All's Well
+35 | Welches Stück enthält die Zeile „All the world's a stage“? | = | = | = | =
+36 | Wie heißt der Elfenkönig in Ein Sommernachtstraum? | = | = | = | =
+37 | Welche Figur sagt „Brevity is the soul of wit“? | = | = | = | =
+38 | Was meint Julia mit „What's in a name?“? | Ein Name ändert nicht, wer jemand wirklich ist | Sie hat Romeos Namen vergessen | Sie möchte ihren eigenen Namen ändern | Namen sind wichtiger als Taten
+39 | Welches dieser Stücke ist NICHT von Shakespeare? | = | = | = | =
+40 | In welchem Stück bekommt eine Figur einen Eselskopf? | = | = | = | =
+41 | Welchen Rang hat Iago in Othello? | Fähnrich | Hauptmann | General | Leutnant
+42 | Welches Stück von Shakespeare ist auch als „das schottische Stück“ bekannt? | = | = | = | =
+43 | Welches Stück beginnt mit „Now is the winter of our discontent“? | = | = | = | =
+44 | Welches ist Shakespeares längstes Stück? | = | = | = | =
+45 | Am Ende welches Stücks zerbricht Prospero seinen Stab und versenkt sein Buch? | = | = | = | =
+46 | Welche Figur sagt „Lord, what fools these mortals be!“? | = | = | = | =
+47 | Aus welchem Stück stammt „The quality of mercy is not strained“? | = | = | = | =
+48 | Mit dem Saft welcher Blume lässt Oberon Menschen sich verlieben? | Ein Stiefmütterchen (love-in-idleness) | Eine Rose | Eine Lilie | Ein Veilchen
+49 | Wie viele Töchter hat Lear in König Lear? | Drei | Zwei | Vier | Eine
+50 | Welcher Schurke bei Shakespeare sagt „I am not what I am“? | = | = | = | Aaron
+51 | Was prophezeien die Hexen Macbeth über den Wald von Birnam? | Er wird nicht besiegt, bis der Wald zu seiner Burg kommt | Er muss den Wald niederbrennen, um sicher zu sein | Der Wald verbirgt seine Feinde | Ein Baum wird fallen und ihn erschlagen
+52 | In welcher Werkgruppe tritt Shakespeares „Dark Lady“ auf? | Die Sonette | Die Historien | Die Romanzen | Die Problemstücke
+53 | Welche Figur sagt „These violent delights have violent ends“? | Bruder Lorenzo | = | = | Der Fürst
+54 | In welchem Stück sind Rosalinde und Orlando im Ardenner Wald? | = | = | = | =
+55 | Wie hieß Shakespeares Frau? | = | = | = | =
+56 | In welchem Jahrhundert wurde Shakespeare geboren? | Im 16. Jahrhundert | Im 15. Jahrhundert | Im 17. Jahrhundert | Im 14. Jahrhundert
+57 | Welches dieser Stücke ist eine Tragödie von Shakespeare? | = | = | = | =
+58 | Wo spielt Hamlet? | = | = | = | =
+59 | Wer ist die Titelfigur in Der Kaufmann von Venedig? | = | = | = | =
+60 | Wie täuscht Julia in Romeo und Julia ihren Tod vor? | Mit einem Schlaftrunk | Mit einem Zauberspruch | Indem sie die Luft anhält | Mit Gift
+61 | Welche Figur ist der Prinz von Dänemark? | = | = | = | =
+62 | Shakespeare wird oft „The ____ of Avon“ genannt. Welches Wort fehlt? | Bard | King | Poet | Master
+63 | Zu welcher Familie gehört Julia? | Capulet | Montague | Escalus | Lorenzo
+64 | In welchem Land spielen die meisten Komödien Shakespeares? | = | = | = | =
+65 | Wer tötet Macbeth am Ende des Stücks? | = | = | = | =
+66 | Was meint Hamlet mit „the rest is silence“? | Er stirbt und kann nichts mehr sagen | Er will, dass alle still sind | Er geht schlafen | Er hat keine Meinung
+67 | In welchem Stück von Shakespeare kommen schiffbrüchige Zwillinge vor? | = | = | = | =
+68 | Den Kopf welches Tieres bekommt Zettel in Ein Sommernachtstraum? | Eines Esels | Eines Pferdes | Eines Bären | Eines Schweins
+69 | In welcher englischen Stadt verbrachte Shakespeare den größten Teil seiner Laufbahn? | = | = | = | =
+70 | Wie heißt der Mönch in Romeo und Julia? | Bruder Lorenzo | = | Bruder Johannes | Bruder Franziskus
+71 | Wer herrscht über die Zauberinsel in Der Sturm? | = | = | = | =
+72 | In welchem Stück gibt es eine Figur namens Shylock? | = | = | = | =
+73 | Wessen Geist erscheint am Anfang von Hamlet? | Der von Hamlets Vater | Der von Hamlets Großvater | = | =
+74 | Welches Gedicht beginnt mit der berühmten Zeile „Shall I compare thee to a summer's day?“ | = | = | = | Sonett 116
+75 | Welchen Titel trägt Macbeth zu Beginn des Stücks? | Than von Glamis | König von Schottland | Herzog von Albany | Graf von Northumberland
+76 | Welches Stück von Shakespeare handelt von einem eifersüchtigen Mohren? | = | = | = | =
+77 | Wie stirbt Ophelia in Hamlet? | Sie ertrinkt | Sie wird vergiftet | Sie wird erstochen | Sie stürzt von einem Turm
+78 | Welcher Monarch regierte England während des größten Teils von Shakespeares Laufbahn? | = | = | = | =
+79 | Was sagt Prosperos Tochter Miranda, als sie zum ersten Mal andere Menschen sieht? | „O brave new world“ | „What magic is this“ | „Father, who are they“ | „I must be dreaming“
+80 | In welchem Stück verkleidet sich eine Figur als Rechtsgelehrter namens Balthazar? | = | = | = | =
+81 | Wie hieß Shakespeares Schauspieltruppe unter König Jakob I.? | = | The Queen's Players | = | The Chamberlain's Servants
+82 | Welches Stück beginnt mit einem Sturm auf See? | = | = | = | =
+83 | Wer führt in Julius Cäsar die Verschwörung zur Ermordung Cäsars an? | Brutus und Cassius | Marcus Antonius und Octavius | Calpurnia und Portia | Cicero und Casca
+84 | Zu welcher Gattung gehört Ein Sommernachtstraum? | Komödie | Tragödie | Historie | Romanze
+85 | In welchem Stück von Shakespeare kommt der Ardenner Wald vor? | = | = | = | =
+86 | In welchem Jahr starb Shakespeare? | 1616 | 1600 | 1623 | 1590
+87 | Wer ist Romeos bester Freund? | = | = | = | =
+88 | Wie heißt Prosperos Tochter in Der Sturm? | = | = | Perdita | =
+89 | In welchem Stück steht der Satz „If music be the food of love, play on“? | = | = | = | =
+90 | Welchen Titel erhält Macbeth nach seinem ersten Sieg in der Schlacht? | Than von Cawdor | Than von Glamis | Herzog von Albany | Graf von Ross
+91 | Wie nennt sich Viola in Was ihr wollt, als sie sich als Mann verkleidet? | Cesario | = | = | =
+92 | Wer tötet Tybalt in Romeo und Julia? | = | = | = | =
+93 | Welche Tochter liebt in König Lear ihren Vater wirklich? | = | = | = | Alle drei gleich
+94 | Womit tötet Othello Desdemona? | Mit einem Kissen (er erstickt sie) | Mit einem Dolch | Mit Gift | Mit einem Strick
+95 | In welchem Stück tritt die Figur Malvolio auf? | = | = | = | =
+96 | Wie heißt Hamlets Mutter? | = | = | = | =
+97 | Wie heißt die „Widerspenstige“ in Der Widerspenstigen Zähmung? | Katharina (Käthchen) | Bianca | Adriana | =
+98 | Wer ist Desdemonas Vater in Othello? | = | = | = | =
+99 | Welche Figur hält die Rede „Once more unto the breach“? | = | = | = | =
+100 | Von welchem Königreich ist Perdita in Das Wintermärchen Prinzessin? | = | = | = | =
+101 | Wer ist der Herzog von Illyrien in Was ihr wollt? | = | = | = | =
+102 | Als was verkleidet sich Portia in Der Kaufmann von Venedig? | Als Rechtsgelehrter | Als Kaufmann | Als Seemann | Als Mönch
+103 | Welche Figur täuscht in Viel Lärm um nichts ihren eigenen Tod vor? | = | = | = | Ursula
+104 | Welches Stück im Stück lässt Hamlet aufführen, um das Gewissen des Königs zu fangen? | Die Mausefalle | Die Ermordung Gonzagos | Das Stück vom König | Ein Fürstenspiegel
+105 | Wer hält in Julius Cäsar die berühmte Leichenrede, die mit „Friends, Romans, countrymen“ beginnt? | = | = | = | =
+106 | Wie heißt Lears treuer Gefährte, der sich als „Poor Tom“ verkleidet? | Edgar | = | Kent | Gloucester
+107 | Mit welchem Gegenstand überzeugt Iago in Othello Othello von Desdemonas Untreue? | Mit einem Taschentuch | Mit einem Brief | Mit einem Ring | Mit einem Bildnis
+108 | Welches Stück endet mit der Zeile „The rest is silence“? | = | = | = | =
+109 | Wer verkleidet sich in Wie es euch gefällt als Junge namens Ganymed? | = | = | Phöbe | =
+110 | Was geschah 1613 mit dem Globe Theatre? | Es brannte während einer Aufführung ab | Der König ließ es schließen | Es stürzte in einem Sturm ein | Es wurde für einen Neubau abgerissen
+111 | Wer ist in Maß für Maß der korrupte Statthalter, dem Wien anvertraut wird? | = | Escalus | Lucio | Claudio
+112 | In welchem Stück von Shakespeare gibt es eine Figur namens Caliban? | = | = | = | =
+113 | Wie heißt Petruchios Braut in Der Widerspenstigen Zähmung? | Katharina | Bianca | Adriana | =
+114 | Wie stirbt Cleopatra in Antonius und Cleopatra? | Durch den Biss einer Natter (einer Schlange) | Durch Gift | Durch Ertrinken | Durch einen Dolch
+115 | Wen sucht Banquos Geist in Macbeth heim? | = | = | = | =
+116 | Wie heißt Othellos Leutnant, auf den Iago neidisch ist? | = | = | = | =
+117 | Wofür bietet Richard in Richard III. sein Königreich an? | Für ein Pferd | Für ein Schwert | Für eine Krone | Für sein Leben
+118 | Welcher Zwilling ist Violas Bruder in Was ihr wollt? | = | = | = | =
+119 | Welcher Schlacht geht in Heinrich V. die berühmte Rede zum St.-Crispins-Tag voraus? | = | = | = | =
+120 | Wer tötet König Duncan in Macbeth? | = | = | = | =
+121 | Welches Kästchen muss Bassanio in Der Kaufmann von Venedig wählen, um Portia zu gewinnen? | Das bleierne Kästchen | Das goldene Kästchen | Das silberne Kästchen | Das bronzene Kästchen
+122 | Wie heißt Hamlets enger Freund und Vertrauter? | = | = | = | =
+123 | Welches Stück von Shakespeare spielt im alten Ägypten? | = | = | = | =
+124 | Was sollen Lears Töchter in König Lear erklären, bevor er sein Reich teilt? | Wie sehr sie ihn lieben | Ihre Pläne für die Herrschaft | Ihre Heiratsaussichten | Ihre militärische Stärke
+125 | Wer sagt „Parting is such sweet sorrow“? | Julia in Romeo und Julia | Hamlet in Hamlet | Portia in Der Kaufmann von Venedig | Viola in Was ihr wollt
+126 | Was tut Lady Macbeth beim Schlafwandeln wie besessen? | Sich die Hände waschen | Reden aufsagen | Nach einem Dolch suchen | Nach ihrem Mann rufen
+127 | Wer ist in Viel Lärm um nichts der ränkeschmiedende Schurke? | = | = | = | Borachio
+128 | Wie heißt das Fest der Schäfer in Das Wintermärchen? | Das Schafschurfest | Der Ernteball | Der Frühlingskarneval | Das Mittsommerfest
+129 | Wer hält in Wie es euch gefällt die Rede von den „sieben Lebensaltern“? | = | = | = | Der alte Herzog
+130 | Welche Figur in Ein Sommernachtstraum leitet eine Gruppe von Laienschauspielern? | = | = | = | =
+131 | Wer ist Cordelias Vater in König Lear? | König Lear | Der Graf von Gloucester | Der Graf von Kent | Der Herzog von Cornwall
+132 | Welches Verhältnis zur Insel beansprucht Caliban in Der Sturm? | Er sieht sich als ihren rechtmäßigen Herrn | Er sieht sich als ihren Schöpfer | Er sieht sich als ihren Beschützer | Er beansprucht keines
+133 | Wie heißt die Frau des Brutus in Julius Cäsar? | Portia | = | = | =
+134 | Welches Stück von Shakespeare spielt im Wald bei Athen? | = | = | = | =
+135 | Wegen welchen Vergehens wurde Claudio in Maß für Maß verhaftet? | Weil seine Verlobte vor der Ehe schwanger wurde | Wegen Diebstahls | Wegen Mordes | Wegen Hochverrats
+136 | Wie heißt der Narr in Was ihr wollt? | = | = | = | =
+137 | In wen verliebt sich Ferdinand in Der Sturm? | = | = | Claribel | =
+138 | Was kauft Romeo beim Apotheker? | Gift | Einen Schlaftrunk | Medizin | Einen Liebestrank
+139 | Wer blendet Gloucester in König Lear? | Cornwall | = | = | Oswald
+140 | Wie hieß Shakespeares Theatertruppe, bevor König Jakob ihr Schirmherr wurde? | = | = | = | =
+141 | In welchem Stück tritt Dogberry (Holzapfel) als tölpelhafter Gerichtsdiener auf? | = | = | = | =
+142 | Wie stirbt Antonius in Antonius und Cleopatra? | Er stürzt sich in sein eigenes Schwert | Er fällt in der Schlacht | Er wird vergiftet | Er wird hingerichtet
+143 | Wer ist Hermione in Das Wintermärchen? | Die Königin von Sizilien | Eine Schäferin | Eine Hexe | Eine Dienerin
+144 | In welchem Stück trägt eine Figur gelbe Strümpfe mit kreuzweise gebundenen Kniebändern? | = | = | = | =
+145 | Wie heißt das Stück im Stück in Hamlet, so wie Hamlet selbst es nennt? | Die Mausefalle | Die Ermordung Gonzagos | Das Gewissen des Königs | Die Rache Dänemarks
+146 | In welchem Stück überlebt eine Figur, die als Säugling in Böhmen ausgesetzt wurde? | = | = | = | =
+147 | Wie heißt Gloucesters unehelicher Sohn in König Lear? | = | Edgar | Oswald | Cornwall
+148 | Welches Sonett von Shakespeare beginnt mit „Let me not to the marriage of true minds / Admit impediments“? | Sonett 116 | = | = | =
+149 | Wie heißt in Maß für Maß der Herzog, der sich als Mönch verkleidet? | Vincentio | = | Escalus | Claudio
+150 | Welches Stück gilt als das letzte, das Shakespeare allein geschrieben hat? | = | = | = | =
+151 | Wie heißen die drei Töchter von König Lear? | Goneril, Regan und Cordelia | Goneril, Rosalinde und Cordelia | Helena, Regan und Cordelia | Goneril, Regan und Ophelia
+152 | Welche Inschrift trägt in Der Kaufmann von Venedig das bleierne Kästchen? | „Who chooseth me must give and hazard all he hath“ | „Who chooseth me shall gain what many men desire“ | „Who chooseth me shall get as much as he deserves“ | „Who chooseth me shall find true love“
+153 | Was ist das Besondere an Sonett 130 („My mistress' eyes are nothing like the sun“)? | Es ist ein antipetrarkistisches Sonett, das die herkömmliche Liebeslyrik verspottet | Es ist in freien Versen statt in fünfhebigen Jamben geschrieben | Es ist das einzige Sonett, das sich an einen Mann richtet | Es wurde getrennt von den anderen Sonetten veröffentlicht
+154 | Welche Missbildung schreibt sich Richard in Richard III. zu? | Einen Buckel | Eine fehlende Hand | Einen Klumpfuß | Blindheit auf einem Auge
+155 | Wer ist Sycorax in Der Sturm? | Calibans Mutter, eine Hexe, die vor Prospero über die Insel herrschte | Ariels Schwester | Prosperos erste Frau | Eine Meeresgöttin
+156 | Welches Reimschema hat ein Shakespeare-Sonett? | ABAB CDCD EFEF GG | ABBA ABBA CDE CDE | AABB CCDD EEFF GG | ABAB ABAB CDCD EE
+157 | In welchem Stück steht die Regieanweisung „Exit, pursued by a bear“? | = | = | = | =
+158 | Wie hieß Shakespeares Sohn, der als Kind starb? | = | Hamlet | Edmund | William
+159 | Woher stammt Othello in Othello? | Er ist ein Mohr (aus Nordafrika) | Er stammt aus Venedig | Er stammt aus Zypern | Er stammt aus Spanien
+160 | Welche Figur in Heinrich V. verkleidet sich, um vor der Schlacht unter ihren Soldaten umherzugehen? | König Heinrich V. | Der Herzog von Exeter | Hauptmann Fluellen | Der Graf von Westmoreland
+161 | Wie lautet die erste Zeile von Richard III.? | „Now is the winter of our discontent / Made glorious summer by this sun of York“ | „A horse, a horse, my kingdom for a horse“ | „Was ever woman in this humour wooed“ | „Off with his head! So much for Buckingham“
+162 | Wie heißt in Der Widerspenstigen Zähmung die Figur der Rahmenhandlung, die dem Stück zusieht? | = | = | = | =
+163 | Welches dieser Werke Shakespeares gilt als „Problemstück“? | = | = | = | =
+164 | In welchem Jahr wurde das ursprüngliche Globe Theatre gebaut? | 1599 | 1576 | 1610 | 1588
+165 | Wie heißt in Macbeth die Burg Macduffs, in der seine Familie ermordet wird? | = | = | = | =
+166 | Welche Figur in Julius Cäsar hat einen Traum und warnt ihren Mann davor, in den Senat zu gehen? | = | Portia | = | =
+167 | Wie heißt die Ausgabe, in der Shakespeares Stücke erstmals gesammelt erschienen? | First Folio | Die Gesammelten Werke | Die Quarto-Sammlung | Die Anthologie des Barden
+168 | In welchem Jahr erschien das First Folio? | 1623 | 1616 | 1599 | 1609
+169 | In welchem Stück von Shakespeare tritt Autolycus auf, ein gaunerhafter Hausierer? | = | = | = | =
+170 | Wer spricht den Epilog am Ende von Der Sturm? | = | = | = | Der Erzähler
+171 | Wie heißt in Antonius und Cleopatra die entscheidende Seeschlacht? | = | = | = | =
+172 | Welchen Doppelsinn hat das Wort „nunnery“ wahrscheinlich in Hamlets „Get thee to a nunnery“? | Ein Kloster und, im elisabethanischen Slang, auch ein Bordell | Nur ein Kloster | Ein Gefängnis | Eine Schule für Frauen
+173 | Welches Stück von Shakespeare enthält den Monolog „To-morrow, and to-morrow, and to-morrow“? | = | = | = | =
+174 | Was tut Kent in König Lear nach seiner Verbannung? | Er verkleidet sich als Diener namens Caius, um in Lears Nähe zu bleiben | Er flieht nach Frankreich | Er schließt sich dem französischen Heer an | Er wird Einsiedler
+175 | Welcher Dichter und Dramatiker, Zeitgenosse und Rivale Shakespeares, wurde 1593 bei einer Wirtshausschlägerei getötet? | = | = | = | =
+176 | Wie viel Zeit vergeht in Das Wintermärchen zwischen dem 3. und dem 4. Akt? | 16 Jahre | 5 Jahre | 1 Jahr | 20 Jahre
+177 | Was ist das „green-eyed monster“, vor dem Iago Othello warnt? | Die Eifersucht | Der Ehrgeiz | Die Habgier | Die Rache
+178 | Welches Stück führen die Handwerker in Ein Sommernachtstraum bei der Hochzeit auf? | = | = | = | =
+179 | Worin bestand die Tradition der Knabenschauspieler im elisabethanischen Theater? | Knaben spielten alle Frauenrollen, weil Frauen nicht auf der Bühne stehen durften | Knaben spielten nur Kinderrollen | Knaben arbeiteten als Inspizienten | Knaben traten nur in Komödien auf
+180 | In welchem Stück sagt der alte Herzog „Sweet are the uses of adversity“? | = | = | = | =
+181 | Wie nennt man Shakespeares späte Stücke wie Das Wintermärchen und Der Sturm? | Romanzen (oder späte Romanzen) | Tragikomödien | Schäferspiele | Maskenspiele
+182 | Wer sagt in Macbeth „By the pricking of my thumbs, / Something wicked this way comes“? | Die zweite Hexe | Die erste Hexe | = | =
+183 | Welche von Lears Töchtern ist mit dem Herzog von Cornwall verheiratet? | = | = | = | Keine von ihnen
+184 | Wie lautet der vollständige Titel des Stücks, das als Heinrich V. bekannt ist? | The Life of King Henry the Fifth | The Chronicle History of Henry V | Henry V: The Warrior King | The Reign of King Henry V
+185 | Was verlangt Angelo in Maß für Maß von Isabella für das Leben ihres Bruders? | Dass sie mit ihm schläft | Eine große Geldsumme | Ein öffentliches Geständnis | Dass sie das Kloster verlässt
+186 | Wer sagt „Cowards die many times before their deaths; the valiant never taste of death but once“? | = | = | = | =
+187 | Was war der „pit“ oder „yard“ im Globe Theatre? | Der Stehplatzbereich vor der Bühne mit dem billigsten Eintritt | Der Lagerraum unter der Bühne | Der Bereich hinter der Bühne für die Schauspieler | Der Orchestergraben
+188 | Was macht in Sonett 18 nach den Worten des Dichters die geliebte Person unsterblich? | Das Gedicht selbst („So long lives this, and this gives life to thee“) | Die Schönheit der geliebten Person | Die Sommersonne | Ein Gemälde der geliebten Person
+189 | Welche Figur in Hamlet sagt „Though this be madness, yet there is method in't“? | = | = | = | =
+190 | Welche Bedingung hat Portias verstorbener Vater in Der Kaufmann von Venedig ihren Freiern gestellt? | Sie müssen aus drei Kästchen (Gold, Silber, Blei) das richtige wählen | Sie müssen einander im Kampf besiegen | Sie müssen ein Rätsel lösen | Sie müssen ihren Reichtum beweisen
+191 | Wie heißt die Figur, die in Das Wintermärchen die Zeit verkörpert? | Die Zeit (als Chor) | Vater Zeit | Das Orakel | Autolycus
+192 | Welches Stück von Shakespeare entstand wahrscheinlich zu Ehren des neu gekrönten Königs Jakob I.? | = | = | = | =
+193 | Welchen Streich spielen Maria und Junker Tobias in Was ihr wollt Malvolio? | Sie fälschen einen Liebesbrief von Olivia, der ihn auffordert, gelbe Strümpfe zu tragen | Sie sperren ihn in ein Zimmer | Sie stehlen seine Kleider | Sie reden ihm ein, dass er taub wird
+194 | Wie heißt der mit Sternen bemalte Aufbau über der Bühne des Globe Theatre? | Der Himmel (the Heavens) | Der Baldachin | Das Firmament | Das Dach
+195 | In welchem Stück befragt eine Figur das Orakel von Delphi? | = | = | = | =
+196 | Wer veröffentlichte 1609 Shakespeares Sonette? | = | = | = | =
+197 | Welches beleidigende Geschenk schickt der Dauphin Heinrich in Heinrich V.? | Tennisbälle | Eine Spielzeugkrone | Eine Narrenkappe | Ein Holzschwert
+198 | In welchem Stück von Shakespeare steht die berühmte „band of brothers“-Rede? | = | = | = | =
+199 | Wie nannte man die Zuschauer, die im Hof des Globe Theatre standen? | Groundlings | Penny standers | Der Pöbel | Das gemeine Volk

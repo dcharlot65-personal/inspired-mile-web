@@ -1,0 +1,202 @@
+# Quiz in italiano. n | domanda | opzione 0 (quella giusta) | 1 | 2 | 3.   «=»: nome preso dalla tabella dei nomi (Wikidata).
+# I versi di Shakespeare restano in inglese, come sulle carte.
+0 | Chi ha scritto «To be, or not to be, that is the question»? | = | = | = | =
+1 | In quale opera compaiono Romeo e Giulietta? | = | = | = | =
+2 | Come si chiama il castello di Amleto? | = | = | = | =
+3 | Quale personaggio dice «A plague on both your houses!»? | = | = | = | =
+4 | Per quale genere di scritti è più famoso Shakespeare? | Drammi e sonetti | Romanzi | Poemi epici | Racconti
+5 | Dove nacque Shakespeare? | = | = | = | =
+6 | Chi uccide Romeo nell'opera Romeo e Giulietta? | Nessuno: si toglie la vita | = | = | Il padre di Giulietta
+7 | Come si chiama il teatro di Shakespeare? | = | = | = | Il Teatro Reale
+8 | Quale di queste opere è una commedia di Shakespeare? | = | = | = | =
+9 | Dove si trova Giulietta quando Romeo le parla? | Su un balcone | Su una torre | Su un ponte | Su un tetto
+10 | Da quale opera viene «Friends, Romans, countrymen, lend me your ears»? | = | = | = | =
+11 | Quanti drammi scrisse Shakespeare? | 37 | 15 | 50 | 100
+12 | Quale famoso re scozzese è il protagonista di una tragedia di Shakespeare? | = | = | = | =
+13 | In quale opera c'è un'isola magica? | = | = | = | =
+14 | A quale famiglia appartiene Romeo? | Montecchi | Capuleti | Escalo | Lorenzo
+15 | In quale opera compare il personaggio di Puck? | = | = | = | =
+16 | Chi è il servitore magico di Prospero ne La tempesta? | = | = | = | =
+17 | Da quale opera viene «Double, double toil and trouble»? | = | = | = | =
+18 | Quanti sonetti scrisse Shakespeare? | 154 | 100 | 200 | 52
+19 | Quale personaggio è la regina delle fate? | = | = | = | =
+20 | In quale città è ambientato Romeo e Giulietta? | = | = | = | =
+21 | Chi è lo zio di Amleto? | = | = | = | =
+22 | Che cosa uccide Amleto alla fine dell'opera? | Una spada avvelenata | Un pugnale | Il veleno nella sua coppa | Una caduta da una torre
+23 | In quale opera compaiono tre streghe? | = | = | = | =
+24 | Chi dice «Et tu, Brute?» mentre muore? | = | = | = | =
+25 | Come si chiama lo spirito dispettoso di Sogno di una notte di mezza estate? | Puck (Robin Goodfellow) | = | = | =
+26 | A quale personaggio dell'Amleto viene detto «Get thee to a nunnery»? | = | = | = | =
+27 | Ne Il mercante di Venezia, che cosa pretende Shylock come pegno? | Una libbra di carne | Una borsa d'oro | Una nave | Un anello
+28 | Chi è il mostruoso servitore di Prospero ne La tempesta? | = | = | = | =
+29 | Lady Macbeth dice «Out, damned ___!». Quale parola manca? | Spot | Blood | Hand | Stain
+30 | In quale opera un personaggio tiene in mano un teschio e dice «Alas, poor Yorick»? | = | = | = | =
+31 | In quale opera compaiono i personaggi di Beatrice e Benedick? | = | = | = | =
+32 | Che cosa vede Macbeth fluttuare davanti a sé, che lo guida alla camera di Duncan? | Un pugnale | Un fantasma | Una corona | Una torcia
+33 | Chi è il principe di Verona in Romeo e Giulietta? | Escalo | = | = | =
+34 | Qual è il sottotitolo de La dodicesima notte? | O quel che volete | O come vi piace | O la commedia degli errori | O tutto è bene
+35 | Quale opera contiene il verso «All the world's a stage»? | = | = | = | =
+36 | Come si chiama il re delle fate in Sogno di una notte di mezza estate? | = | = | = | =
+37 | Quale personaggio dice «Brevity is the soul of wit»? | = | = | = | =
+38 | Che cosa intende Giulietta con «What's in a name?»? | Che un nome non cambia ciò che una persona è davvero | Che ha dimenticato il nome di Romeo | Che vuole cambiare il proprio nome | Che i nomi contano più delle azioni
+39 | Quale di queste opere NON è di Shakespeare? | = | = | = | =
+40 | In quale opera un personaggio si ritrova con la testa d'asino? | = | = | = | =
+41 | Qual è il grado di Iago nell'Otello? | Alfiere | Capitano | Generale | Luogotenente
+42 | Quale opera di Shakespeare è nota anche come «il dramma scozzese»? | = | = | = | =
+43 | Quale opera si apre con «Now is the winter of our discontent»? | = | = | = | =
+44 | Qual è l'opera più lunga di Shakespeare? | = | = | = | =
+45 | Alla fine di quale opera Prospero spezza la sua verga e affonda il suo libro? | = | = | = | =
+46 | Quale personaggio dice «Lord, what fools these mortals be!»? | = | = | = | =
+47 | Da quale opera viene «The quality of mercy is not strained»? | = | = | = | =
+48 | Con il succo di quale fiore Oberon fa innamorare le persone? | La viola del pensiero (love-in-idleness) | Una rosa | Un giglio | Una violetta
+49 | In Re Lear, quante figlie ha Lear? | Tre | Due | Quattro | Una
+50 | Quale malvagio di Shakespeare dice «I am not what I am»? | = | = | = | Aronne
+51 | Che cosa profetizzano le streghe a Macbeth sul bosco di Birnam? | Non sarà sconfitto finché il bosco non avanzerà verso il suo castello | Deve bruciare il bosco per essere al sicuro | Il bosco nasconde i suoi nemici | Un albero cadrà e lo schiaccerà
+52 | In quale gruppo di opere compare la «Dark Lady» di Shakespeare? | I Sonetti | I drammi storici | I drammi romanzeschi | I drammi problematici
+53 | Quale personaggio dice «These violent delights have violent ends»? | = | = | = | Il Principe
+54 | In quale opera Rosalinda e Orlando si trovano nella foresta di Arden? | = | = | = | =
+55 | Come si chiamava la moglie di Shakespeare? | = | = | = | =
+56 | In quale secolo nacque Shakespeare? | Nel XVI secolo | Nel XV secolo | Nel XVII secolo | Nel XIV secolo
+57 | Quale di queste opere è una tragedia di Shakespeare? | = | = | = | =
+58 | Dove è ambientato l'Amleto? | = | = | = | =
+59 | Chi è il personaggio a cui si riferisce il titolo de Il mercante di Venezia? | = | = | = | =
+60 | In Romeo e Giulietta, come finge Giulietta la propria morte? | Con una pozione soporifera | Con un incantesimo | Trattenendo il respiro | Con il veleno
+61 | Quale personaggio è il principe di Danimarca? | = | = | = | =
+62 | Shakespeare è spesso chiamato «The ____ of Avon». Quale parola manca? | Bard | King | Poet | Master
+63 | A quale famiglia appartiene Giulietta? | Capuleti | Montecchi | Escalo | Lorenzo
+64 | In quale paese è ambientata la maggior parte delle commedie di Shakespeare? | = | = | = | =
+65 | Chi uccide Macbeth alla fine dell'opera? | = | = | = | =
+66 | Che cosa intende Amleto con «the rest is silence»? | Sta morendo e non può dire altro | Vuole che tutti tacciano | Sta per addormentarsi | Non ha un'opinione
+67 | In quale opera di Shakespeare ci sono due gemelli naufraghi? | = | = | = | =
+68 | Di quale animale è la testa che riceve Bottom in Sogno di una notte di mezza estate? | Di un asino | Di un cavallo | Di un orso | Di un maiale
+69 | In quale città inglese Shakespeare trascorse la maggior parte della sua carriera? | = | = | = | =
+70 | Come si chiama il frate di Romeo e Giulietta? | = | = | Frate Giovanni | Frate Francesco
+71 | Chi governa l'isola magica ne La tempesta? | = | = | = | =
+72 | In quale opera c'è un personaggio di nome Shylock? | = | = | = | =
+73 | Di chi è il fantasma che appare all'inizio dell'Amleto? | Del padre di Amleto | Del nonno di Amleto | = | =
+74 | Quale poesia comincia con il celebre verso «Shall I compare thee to a summer's day?»? | = | = | = | =
+75 | Qual è il titolo di Macbeth all'inizio dell'opera? | Thane di Glamis | Re di Scozia | Duca di Albany | Conte di Northumberland
+76 | Quale opera di Shakespeare parla di un Moro geloso? | = | = | = | =
+77 | Come muore Ofelia nell'Amleto? | Annega | Viene avvelenata | Viene pugnalata | Cade da una torre
+78 | Quale sovrano regnò sull'Inghilterra per la maggior parte della carriera di Shakespeare? | = | = | = | =
+79 | Che cosa dice Miranda, la figlia di Prospero, quando vede per la prima volta altre persone? | «O brave new world» | «What magic is this» | «Father, who are they» | «I must be dreaming»
+80 | In quale opera un personaggio si traveste da avvocato con il nome di Balthazar? | = | = | = | =
+81 | Come si chiamava la compagnia di attori di Shakespeare sotto il re Giacomo I? | = | The Queen's Players | = | The Chamberlain's Servants
+82 | Quale opera si apre con una tempesta in mare? | = | = | = | =
+83 | Nel Giulio Cesare, chi guida la congiura per uccidere Cesare? | Bruto e Cassio | Marco Antonio e Ottavio | Calpurnia e Porzia | Cicerone e Casca
+84 | A quale genere appartiene Sogno di una notte di mezza estate? | Commedia | Tragedia | Dramma storico | Dramma romanzesco
+85 | In quale opera di Shakespeare compare la foresta di Arden? | = | = | = | =
+86 | In quale anno morì Shakespeare? | 1616 | 1600 | 1623 | 1590
+87 | Chi è il migliore amico di Romeo? | = | = | = | =
+88 | Come si chiama la figlia di Prospero ne La tempesta? | = | = | Perdita | =
+89 | In quale opera compare la frase «If music be the food of love, play on»? | = | = | = | =
+90 | Quale titolo riceve Macbeth dopo la sua prima vittoria in battaglia? | Thane di Cawdor | Thane di Glamis | Duca di Albany | Conte di Ross
+91 | Ne La dodicesima notte, quale nome maschile assume Viola quando si traveste? | Cesario | = | = | =
+92 | Chi uccide Tebaldo in Romeo e Giulietta? | = | = | = | =
+93 | In Re Lear, quale figlia ama davvero il padre? | = | = | = | Tutte e tre allo stesso modo
+94 | Con che cosa Otello uccide Desdemona? | Con un cuscino (la soffoca) | Con un pugnale | Con il veleno | Con una corda
+95 | In quale opera compare il personaggio di Malvolio? | = | = | = | =
+96 | Come si chiama la madre di Amleto? | = | = | = | =
+97 | Ne La bisbetica domata, come si chiama la «bisbetica»? | Caterina (Kate) | Bianca | Adriana | =
+98 | Chi è il padre di Desdemona nell'Otello? | = | = | = | =
+99 | Quale personaggio pronuncia il discorso «Once more unto the breach»? | = | = | = | =
+100 | Ne Il racconto d'inverno, di quale regno è principessa Perdita? | = | = | = | =
+101 | Chi è il duca d'Illiria ne La dodicesima notte? | = | = | = | =
+102 | Da che cosa si traveste Porzia ne Il mercante di Venezia? | Da avvocato | Da mercante | Da marinaio | Da monaco
+103 | In Molto rumore per nulla, quale personaggio finge la propria morte? | = | = | = | Orsola
+104 | Quale dramma nel dramma fa rappresentare Amleto per catturare la coscienza del re? | La trappola per topi | L'assassinio di Gonzago | Il dramma del re | Lo specchio dei principi
+105 | Nel Giulio Cesare, chi pronuncia la celebre orazione funebre che comincia con «Friends, Romans, countrymen»? | = | = | = | =
+106 | Come si chiama il fedele compagno di Lear che si traveste da «Poor Tom»? | Edgar | = | Kent | Gloucester
+107 | Nell'Otello, quale oggetto usa Iago per convincere Otello dell'infedeltà di Desdemona? | Un fazzoletto | Una lettera | Un anello | Un ritratto
+108 | Quale opera termina con la battuta «The rest is silence»? | = | = | = | =
+109 | Chi si traveste da ragazzo con il nome di Ganimede in Come vi piace? | = | = | Febe | =
+110 | Che cosa accadde al Globe Theatre nel 1613? | Bruciò durante una rappresentazione | Fu chiuso dal re | Crollò durante una tempesta | Fu demolito per essere ricostruito
+111 | In Misura per misura, chi è il vicario corrotto lasciato a governare Vienna? | = | Escalo | Lucio | Claudio
+112 | In quale opera di Shakespeare c'è un personaggio di nome Calibano? | = | = | = | =
+113 | Come si chiama la sposa di Petruchio ne La bisbetica domata? | Caterina | Bianca | Adriana | =
+114 | In Antonio e Cleopatra, come muore Cleopatra? | Per il morso di un aspide (un serpente) | Avvelenata | Annegata | Con un pugnale
+115 | Chi perseguita il fantasma di Banco nel Macbeth? | = | = | = | =
+116 | Come si chiama il luogotenente di Otello di cui Iago è invidioso? | = | = | = | =
+117 | Nel Riccardo III, in cambio di che cosa Riccardo offre il suo regno? | Di un cavallo | Di una spada | Di una corona | Della sua vita
+118 | Quale gemello è il fratello di Viola ne La dodicesima notte? | = | = | = | =
+119 | Nell'Enrico V, quale battaglia segue il celebre discorso del giorno di San Crispino? | = | = | = | =
+120 | Chi uccide il re Duncan nel Macbeth? | = | = | = | =
+121 | Ne Il mercante di Venezia, quale scrigno deve scegliere Bassanio per sposare Porzia? | Lo scrigno di piombo | Lo scrigno d'oro | Lo scrigno d'argento | Lo scrigno di bronzo
+122 | Come si chiama l'amico intimo e confidente di Amleto? | = | = | = | =
+123 | Quale opera di Shakespeare è ambientata nell'antico Egitto? | = | = | = | =
+124 | In Re Lear, che cosa chiede Lear alle figlie di dichiarare prima di dividere il regno? | Quanto lo amano | I loro piani di governo | Le loro prospettive di matrimonio | La loro forza militare
+125 | Chi dice «Parting is such sweet sorrow»? | Giulietta, in Romeo e Giulietta | Amleto, nell'Amleto | Porzia, ne Il mercante di Venezia | Viola, ne La dodicesima notte
+126 | Che cosa fa ossessivamente Lady Macbeth mentre cammina nel sonno? | Si lava le mani | Recita discorsi | Cerca un pugnale | Chiama il marito
+127 | In Molto rumore per nulla, chi è il malvagio che trama? | = | = | = | Borachio
+128 | Come si chiama la festa dei pastori ne Il racconto d'inverno? | La festa della tosatura | Il ballo del raccolto | Il carnevale di primavera | La festa di mezza estate
+129 | In Come vi piace, chi pronuncia il discorso delle «sette età dell'uomo»? | = | = | = | Il duca esiliato
+130 | Quale personaggio di Sogno di una notte di mezza estate dirige un gruppo di attori dilettanti? | = | = | = | =
+131 | Chi è il padre di Cordelia in Re Lear? | Re Lear | Il duca di Gloucester | Il conte di Kent | Il duca di Cornovaglia
+132 | Ne La tempesta, quale rapporto Calibano dice di avere con l'isola? | Dice di esserne il legittimo signore | Dice di esserne il creatore | Dice di esserne il protettore | Non ne rivendica alcuno
+133 | Come si chiama la moglie di Bruto nel Giulio Cesare? | = | = | = | =
+134 | Quale opera di Shakespeare si svolge nei boschi di Atene? | = | = | = | =
+135 | In Misura per misura, per quale reato è stato arrestato Claudio? | Aver messo incinta la fidanzata prima del matrimonio | Furto | Omicidio | Tradimento
+136 | Come si chiama il buffone de La dodicesima notte? | = | = | = | =
+137 | Di chi si innamora Ferdinando ne La tempesta? | = | = | Claribel | =
+138 | Che cosa compra Romeo dallo speziale? | Del veleno | Un sonnifero | Una medicina | Un filtro d'amore
+139 | In Re Lear, chi acceca Gloucester? | Cornovaglia | = | = | Oswald
+140 | Come si chiamava la compagnia teatrale di Shakespeare prima che il re Giacomo ne diventasse il patrono? | = | = | = | =
+141 | In quale opera compare Dogberry (Carruba), una guardia pasticciona? | = | = | = | =
+142 | Come muore Antonio in Antonio e Cleopatra? | Si getta sulla propria spada | Viene ucciso in battaglia | Viene avvelenato | Viene giustiziato
+143 | Chi è Ermione ne Il racconto d'inverno? | La regina di Sicilia | Una pastorella | Una strega | Una serva
+144 | In quale opera un personaggio indossa calze gialle con giarrettiere incrociate? | = | = | = | =
+145 | Come si chiama il dramma nel dramma dell'Amleto, secondo il nome che gli dà Amleto stesso? | La trappola per topi | L'assassinio di Gonzago | La coscienza del re | La vendetta di Danimarca
+146 | In quale opera un personaggio sopravvive dopo essere stato abbandonato neonato in Boemia? | = | = | = | =
+147 | Come si chiama il figlio illegittimo di Gloucester in Re Lear? | = | Edgar | Oswald | Cornovaglia
+148 | Quale sonetto di Shakespeare comincia con «Let me not to the marriage of true minds / Admit impediments»? | = | = | = | =
+149 | In Misura per misura, come si chiama il duca che si traveste da frate? | Vincenzo | = | Escalo | Claudio
+150 | Quale opera è ritenuta l'ultima che Shakespeare scrisse da solo? | = | = | = | =
+151 | Come si chiamano le tre figlie di re Lear? | Goneril, Regan e Cordelia | Goneril, Rosalinda e Cordelia | Elena, Regan e Cordelia | Goneril, Regan e Ofelia
+152 | Ne Il mercante di Venezia, quale iscrizione porta lo scrigno di piombo? | «Who chooseth me must give and hazard all he hath» | «Who chooseth me shall gain what many men desire» | «Who chooseth me shall get as much as he deserves» | «Who chooseth me shall find true love»
+153 | Che cos'ha di particolare il Sonetto 130 («My mistress' eyes are nothing like the sun»)? | È un sonetto antipetrarchista che si fa beffe della poesia d'amore convenzionale | È scritto in versi liberi anziché in pentametri giambici | È l'unico sonetto rivolto a un uomo | Fu pubblicato separatamente dagli altri sonetti
+154 | Nel Riccardo III, quale deformità Riccardo dice di avere? | La gobba | Una mano mancante | Un piede equino | La cecità a un occhio
+155 | Chi è Sicorace ne La tempesta? | La madre di Calibano, una strega che governava l'isola prima di Prospero | La sorella di Ariel | La prima moglie di Prospero | Una dea del mare
+156 | Qual è lo schema di rime di un sonetto shakespeariano? | ABAB CDCD EFEF GG | ABBA ABBA CDE CDE | AABB CCDD EEFF GG | ABAB ABAB CDCD EE
+157 | In quale opera compare la didascalia «Exit, pursued by a bear»? | = | = | = | =
+158 | Come si chiamava il figlio di Shakespeare morto bambino? | = | Hamlet | Edmund | William
+159 | Nell'Otello, da dove viene Otello? | È un Moro (del Nord Africa) | Viene da Venezia | Viene da Cipro | Viene dalla Spagna
+160 | Quale personaggio dell'Enrico V si traveste per camminare tra i suoi soldati prima della battaglia? | Il re Enrico V | Il duca di Exeter | Il capitano Fluellen | Il conte di Westmoreland
+161 | Qual è il primo verso del Riccardo III? | «Now is the winter of our discontent / Made glorious summer by this sun of York» | «A horse, a horse, my kingdom for a horse» | «Was ever woman in this humour wooed» | «Off with his head! So much for Buckingham»
+162 | Ne La bisbetica domata, come si chiama il personaggio della cornice che assiste alla commedia? | = | = | = | =
+163 | Quale di queste opere di Shakespeare è considerata un «dramma problematico»? | = | = | = | =
+164 | In quale anno fu costruito il Globe Theatre originale? | 1599 | 1576 | 1610 | 1588
+165 | Nel Macbeth, come si chiama il castello di Macduff, dove viene sterminata la sua famiglia? | = | = | = | =
+166 | Quale personaggio del Giulio Cesare fa un sogno e avverte il marito di non andare in Senato? | = | = | = | =
+167 | Come si chiama la raccolta in cui le opere di Shakespeare furono pubblicate insieme per la prima volta? | = | Le opere complete | La raccolta in quarto | L'antologia del Bardo
+168 | In quale anno fu pubblicato il First Folio? | 1623 | 1616 | 1599 | 1609
+169 | In quale opera di Shakespeare compare Autolico, un venditore ambulante imbroglione? | = | = | = | =
+170 | Chi pronuncia l'epilogo alla fine de La tempesta? | = | = | = | Il narratore
+171 | In Antonio e Cleopatra, come si chiama la battaglia navale decisiva? | = | = | = | =
+172 | Quale doppio senso ha probabilmente la parola «nunnery» nel «Get thee to a nunnery» di Amleto? | Un convento e, nel gergo elisabettiano, anche un bordello | Soltanto un convento | Una prigione | Una scuola per donne
+173 | Quale opera di Shakespeare contiene il monologo «To-morrow, and to-morrow, and to-morrow»? | = | = | = | =
+174 | In Re Lear, che cosa fa Kent dopo essere stato bandito? | Si traveste da servo, con il nome di Caio, per restare vicino a Lear | Fugge in Francia | Si unisce all'esercito francese | Diventa eremita
+175 | Quale poeta e drammaturgo, contemporaneo e rivale di Shakespeare, fu ucciso in una rissa da taverna nel 1593? | = | = | = | =
+176 | Ne Il racconto d'inverno, quanto tempo passa tra il terzo e il quarto atto (atti 3 e 4)? | 16 anni | 5 anni | 1 anno | 20 anni
+177 | Che cos'è il «green-eyed monster» da cui Iago mette in guardia Otello? | La gelosia | L'ambizione | L'avidità | La vendetta
+178 | In Sogno di una notte di mezza estate, quale dramma recitano gli artigiani alle nozze? | = | = | = | =
+179 | In che cosa consisteva la tradizione dei ragazzi attori nel teatro elisabettiano? | I ragazzi recitavano tutte le parti femminili, perché alle donne era vietato salire sul palco | I ragazzi recitavano solo parti di bambini | I ragazzi facevano i direttori di scena | I ragazzi recitavano solo nelle commedie
+180 | In quale opera il duca esiliato dice «Sweet are the uses of adversity»? | = | = | = | =
+181 | Come vengono chiamati i drammi tardi di Shakespeare come Il racconto d'inverno e La tempesta? | Drammi romanzeschi (o romances) | Tragicommedie | Drammi pastorali | Masque
+182 | Nel Macbeth, chi dice «By the pricking of my thumbs, / Something wicked this way comes»? | La seconda strega | La prima strega | = | =
+183 | Quale delle figlie di Lear è sposata con il duca di Cornovaglia? | = | = | = | Nessuna
+184 | Qual è il titolo completo dell'opera nota come Enrico V? | The Life of King Henry the Fifth | The Chronicle History of Henry V | Henry V: The Warrior King | The Reign of King Henry V
+185 | In Misura per misura, che cosa pretende Angelo da Isabella in cambio della vita del fratello? | Che vada a letto con lui | Una grossa somma di denaro | Una confessione pubblica | Che lasci il convento
+186 | Chi dice «Cowards die many times before their deaths; the valiant never taste of death but once»? | = | = | = | =
+187 | Che cos'era il «pit» o «yard» del Globe Theatre? | La platea in piedi davanti al palco, con l'ingresso più economico | Lo spazio sotto il palco usato come deposito | Il retropalco per gli attori | La buca dell'orchestra
+188 | Nel Sonetto 18, che cosa renderà immortale la persona amata, secondo il poeta? | La poesia stessa («So long lives this, and this gives life to thee») | La bellezza della persona amata | Il sole d'estate | Un ritratto della persona amata
+189 | Quale personaggio dell'Amleto dice «Though this be madness, yet there is method in't»? | = | = | = | =
+190 | Ne Il mercante di Venezia, quale condizione ha imposto ai pretendenti il defunto padre di Porzia? | Devono scegliere lo scrigno giusto fra tre (oro, argento, piombo) | Devono sconfiggersi l'un l'altro in duello | Devono risolvere un enigma | Devono dimostrare la loro ricchezza
+191 | Come si chiama il personaggio che impersona il Tempo ne Il racconto d'inverno? | Il Tempo (come coro) | Padre Tempo | L'Oracolo | Autolico
+192 | Quale opera di Shakespeare fu probabilmente scritta in omaggio al re Giacomo I, da poco incoronato? | = | = | = | =
+193 | Ne La dodicesima notte, quale scherzo fanno Maria e Sir Toby a Malvolio? | Falsificano una lettera d'amore di Olivia che gli chiede di portare calze gialle | Lo chiudono in una stanza | Gli rubano i vestiti | Lo convincono che sta diventando sordo
+194 | Come si chiama la struttura dipinta di stelle sopra il palco del Globe Theatre? | I Cieli (the Heavens) | Il Baldacchino | Il Firmamento | Il Tetto
+195 | In quale opera un personaggio consulta l'oracolo di Delfi? | = | = | = | =
+196 | Chi pubblicò i sonetti di Shakespeare nel 1609? | = | = | = | =
+197 | Nell'Enrico V, quale dono offensivo manda il Delfino a Enrico? | Palle da tennis | Una corona giocattolo | Un berretto da giullare | Una spada di legno
+198 | In quale opera di Shakespeare si trova il celebre discorso della «band of brothers»? | = | = | = | =
+199 | Come venivano chiamati gli spettatori che stavano in piedi nel cortile del Globe Theatre? | Groundlings | Penny standers | La plebaglia | I popolani
