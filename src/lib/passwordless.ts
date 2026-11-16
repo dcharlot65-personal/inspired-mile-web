@@ -22,6 +22,7 @@ import type {
 import * as api from './api-client';
 import type { AuthMethods, AuthResponse, EmailAgeTier, PasskeyInfo } from './api-client';
 import { activateServerMode, deactivateServerMode } from './storage-backend';
+import { forgetUserCaches } from './pwa';
 
 const AGE_KEY = 'inspired-mile-age-verified';
 
@@ -260,12 +261,16 @@ async function withFreshProof<T>(step: () => Promise<T>): Promise<T> {
   }
 }
 
-/** Sign out on every device. Local state is cleared whether or not the server answered. */
+/**
+ * Sign out on every device. Local state, and the account's data in the service worker's
+ * caches, are cleared whether or not the server answered (as `logoutUser` does).
+ */
 export async function signOutEverywhere(): Promise<void> {
   try {
     await api.logoutEverywhere();
   } finally {
     deactivateServerMode();
+    await forgetUserCaches();
   }
 }
 
