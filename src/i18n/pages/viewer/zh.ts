@@ -51,7 +51,7 @@ const messages: Record<string, string> = {
   'vr.card.desktop.title': '电脑',
   'vr.card.desktop.body': '按住并拖动可环顾四周。滚动可缩放。点击卡牌即可选中。',
   'vr.card.quest.body': '按“进入 VR”即可置身其中。用手柄移动并挑选卡牌。',
-  'vr.card.vision.body': '通过 WebXR 打开。看着一张卡牌，然后捏合即可选中。',
+  'vr.card.vision.body': '通过 WebXR 打开。注视一张卡牌，然后互点食指和拇指将其选中。',
 };
 
 export default messages;

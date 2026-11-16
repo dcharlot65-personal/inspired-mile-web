@@ -14,7 +14,7 @@ const messages: Record<string, string> = {
   'error.generic': '문제가 생겼어요. 다시 시도해 주세요.',
   'error.passkey_not_found': '그 패스키는 이 계정에 없어요.',
   'error.classroom_name_invalid': '학급 이름은 1~128자여야 해요.',
-  'error.join_code_invalid': '그 참여 코드는 올바르지 않아요. 코드는 6글자예요.',
+  'error.join_code_invalid': '그 참여 코드는 올바르지 않아요. 코드는 영문과 숫자로 된 6글자예요.',
   'error.classroom_not_found': '그 코드의 학급이 없어요. 선생님께 확인해 보세요.',
   'error.not_classroom_member': '이 학급의 구성원이 아니에요.',
   'error.teachers_only': '과제는 교사만 만들 수 있어요.',

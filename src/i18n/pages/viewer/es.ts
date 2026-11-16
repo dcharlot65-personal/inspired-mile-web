@@ -51,7 +51,7 @@ const messages: Record<string, string> = {
   'vr.card.desktop.title': 'Ordenador',
   'vr.card.desktop.body': 'Haz clic y arrastra para mirar alrededor. Usa la rueda para acercarte. Haz clic en una carta para seleccionarla.',
   'vr.card.quest.body': 'Pulsa «Entrar en RV» para meterte dentro. Usa los mandos para moverte y elegir cartas.',
-  'vr.card.vision.body': 'Se abre en WebXR. Mira una carta y pellizca para seleccionarla.',
+  'vr.card.vision.body': 'Se abre en WebXR. Mira una carta y, a continuación, toca el dedo índice con el pulgar para seleccionarla.',
 };
 
 export default messages;

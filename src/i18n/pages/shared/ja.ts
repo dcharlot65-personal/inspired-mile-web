@@ -14,7 +14,7 @@ const messages: Record<string, string> = {
   'error.generic': '問題が発生しました。もう一度お試しください。',
   'error.passkey_not_found': 'そのパスキーはこのアカウントにありません。',
   'error.classroom_name_invalid': 'クラス名は1～128文字で入力してください。',
-  'error.join_code_invalid': 'その参加コードは正しくありません。コードは6文字です。',
+  'error.join_code_invalid': 'その参加コードは正しくありません。コードは英数字6文字です。',
   'error.classroom_not_found': 'そのコードのクラスはありません。先生に確認してください。',
   'error.not_classroom_member': 'あなたはこのクラスのメンバーではありません。',
   'error.teachers_only': '課題を作成できるのは教員だけです。',

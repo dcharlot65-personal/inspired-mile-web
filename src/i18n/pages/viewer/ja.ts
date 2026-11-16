@@ -51,7 +51,7 @@ const messages: Record<string, string> = {
   'vr.card.desktop.title': 'パソコン',
   'vr.card.desktop.body': 'クリックしたままドラッグして見回します。スクロールで拡大・縮小します。カードをクリックすると選択できます。',
   'vr.card.quest.body': '「VRに入る」を押すと中に入れます。コントローラーで移動し、カードを選びます。',
-  'vr.card.vision.body': 'WebXRで開きます。カードを見て、指でつまむと選択できます。',
+  'vr.card.vision.body': 'WebXRで開きます。カードを注視してから、人差し指と親指をタップして選択します。',
 };
 
 export default messages;

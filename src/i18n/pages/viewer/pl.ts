@@ -27,11 +27,11 @@ const messages: Record<string, string> = {
   'viewer.card.splat.title': 'Widok splat',
   'viewer.card.splat.body': 'Splaty gaussowskie rysowane przez Babylon.js. Obracaj, przybliżaj i przesuwaj realistyczny obraz 3D modelu.',
   'viewer.card.glb.title': 'Widok GLB',
-  'viewer.card.glb.body': 'Zwykła siatka wyświetlana przez model-viewer. Na telefonie może ustawić model w twoim pokoju w rozszerzonej rzeczywistości.',
+  'viewer.card.glb.body': 'Zwykła siatka wyświetlana przez model-viewer. Na telefonie może ustawić model w twoim pokoju w rzeczywistości rozszerzonej.',
   'viewer.card.ar.title': 'AR na telefonie',
   'viewer.card.ar.body': 'W widoku GLB na telefonie dotknij „Zobacz w AR”, aby zobaczyć kartę w swoim pokoju.',
-  'vr.meta.description': 'Przejdź się po swojej kolekcji kart z Szekspirem w wirtualnej rzeczywistości.',
-  'vr.badge': 'Wirtualna rzeczywistość',
+  'vr.meta.description': 'Przejdź się po swojej kolekcji kart z Szekspirem w rzeczywistości wirtualnej.',
+  'vr.badge': 'Rzeczywistość wirtualna',
   'vr.titleA': 'Galeria ',
   'vr.titleB': 'kart',
   'vr.intro': 'Przejdź się po swojej kolekcji w 3D. Działa na Quest 3 i Vision Pro dzięki WebXR oraz z myszą na komputerze.',
@@ -51,7 +51,7 @@ const messages: Record<string, string> = {
   'vr.card.desktop.title': 'Komputer',
   'vr.card.desktop.body': 'Kliknij i przeciągnij, aby się rozejrzeć. Przewiń, aby przybliżyć. Kliknij kartę, aby ją wybrać.',
   'vr.card.quest.body': 'Naciśnij „Wejdź do VR”, aby wejść do środka. Kontrolerami poruszasz się i wybierasz karty.',
-  'vr.card.vision.body': 'Otwiera się w WebXR. Spójrz na kartę i uszczypnij palcami, aby ją wybrać.',
+  'vr.card.vision.body': 'Otwiera się w WebXR. Spójrz na kartę i ściągnij palce, aby ją wybrać.',
 };
 
 export default messages;

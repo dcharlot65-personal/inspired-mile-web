@@ -14,7 +14,7 @@ const messages: Record<string, string> = {
   'error.generic': 'Une erreur est survenue. Veuillez réessayer.',
   'error.passkey_not_found': 'Cette clé d’accès ne figure pas sur ce compte.',
   'error.classroom_name_invalid': 'Le nom d’une classe doit compter entre 1 et 128 caractères.',
-  'error.join_code_invalid': 'Ce code d’accès n’est pas valide. Il comporte six lettres.',
+  'error.join_code_invalid': 'Ce code d’accès n’est pas valide. Il comporte six caractères, lettres et chiffres.',
   'error.classroom_not_found': 'Aucune classe n’a ce code. Vérifiez-le auprès de votre enseignant.',
   'error.not_classroom_member': 'Vous ne faites pas partie de cette classe.',
   'error.teachers_only': 'Seul l’enseignant peut créer des devoirs.',

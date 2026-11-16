@@ -51,7 +51,7 @@ const messages: Record<string, string> = {
   'vr.card.desktop.title': 'Computer',
   'vr.card.desktop.body': 'Fai clic e trascina per guardarti intorno. Usa la rotellina per lo zoom. Fai clic su una carta per selezionarla.',
   'vr.card.quest.body': 'Premi «Entra in VR» per entrare. Usa i controller per muoverti e scegliere le carte.',
-  'vr.card.vision.body': 'Si apre in WebXR. Guarda una carta e pizzica per selezionarla.',
+  'vr.card.vision.body': 'Si apre in WebXR. Guarda una carta, quindi tocca con l’indice e il pollice per selezionarla.',
 };
 
 export default messages;

@@ -14,7 +14,7 @@ const messages: Record<string, string> = {
   'error.generic': 'Đã có lỗi xảy ra. Vui lòng thử lại.',
   'error.passkey_not_found': 'Khóa truy cập đó không có trong tài khoản này.',
   'error.classroom_name_invalid': 'Tên lớp học phải có từ 1 đến 128 ký tự.',
-  'error.join_code_invalid': 'Mã tham gia đó không hợp lệ. Mã gồm 6 chữ cái.',
+  'error.join_code_invalid': 'Mã tham gia đó không hợp lệ. Mã gồm 6 ký tự, có cả chữ cái và chữ số.',
   'error.classroom_not_found': 'Không có lớp học nào dùng mã đó. Hãy hỏi lại giáo viên của bạn.',
   'error.not_classroom_member': 'Bạn không phải là thành viên của lớp học này.',
   'error.teachers_only': 'Chỉ giáo viên mới tạo được bài tập.',

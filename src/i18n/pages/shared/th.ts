@@ -14,7 +14,7 @@ const messages: Record<string, string> = {
   'error.generic': 'เกิดข้อผิดพลาดบางอย่าง โปรดลองอีกครั้ง',
   'error.passkey_not_found': 'ไม่พบพาสคีย์นั้นในบัญชีนี้',
   'error.classroom_name_invalid': 'ชื่อชั้นเรียนต้องมี 1 ถึง 128 ตัวอักษร',
-  'error.join_code_invalid': 'รหัสเข้าร่วมนั้นไม่ถูกต้อง รหัสมี 6 ตัวอักษร',
+  'error.join_code_invalid': 'รหัสเข้าร่วมนั้นไม่ถูกต้อง รหัสมี 6 อักขระ ทั้งตัวอักษรและตัวเลข',
   'error.classroom_not_found': 'ไม่มีชั้นเรียนที่ใช้รหัสนั้น โปรดตรวจสอบกับครูของคุณ',
   'error.not_classroom_member': 'คุณไม่ได้เป็นสมาชิกของชั้นเรียนนี้',
   'error.teachers_only': 'เฉพาะครูเท่านั้นที่สร้างงานได้',

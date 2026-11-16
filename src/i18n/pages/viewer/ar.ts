@@ -34,7 +34,7 @@ const messages: Record<string, string> = {
   'vr.badge': 'الواقع الافتراضي',
   'vr.titleA': 'معرض ',
   'vr.titleB': 'البطاقات',
-  'vr.intro': 'تجوّل في مجموعتك بالأبعاد الثلاثة. يعمل على Quest 3 و Vision Pro عبر WebXR، وبالفأرة على الحاسوب.',
+  'vr.intro': 'تجوّل في مجموعتك بالأبعاد الثلاثة. يعمل على Quest 3 وVision Pro عبر WebXR، وبالفأرة على الحاسوب.',
   'vr.play.before': 'أتريد اللعب؟ ',
   'vr.play.link': 'المسرح',
   'vr.play.after': ' يعرض المبارزة كاملة داخل نظّارتك.',
@@ -51,7 +51,7 @@ const messages: Record<string, string> = {
   'vr.card.desktop.title': 'الحاسوب',
   'vr.card.desktop.body': 'انقر واسحب لتنظر حولك. مرّر للتكبير. انقر بطاقة لتحديدها.',
   'vr.card.quest.body': 'اضغط «دخول الواقع الافتراضي» لتدخل. استخدم ذراعَي التحكم للتنقّل واختيار البطاقات.',
-  'vr.card.vision.body': 'يُفتح عبر WebXR. انظر إلى بطاقة واقرص بإصبعيك لتحديدها.',
+  'vr.card.vision.body': 'يُفتح عبر WebXR. انظر إلى بطاقة، ثم اضغط بإصبعي السبابة والإبهام معًا لتحديدها.',
 };
 
 export default messages;

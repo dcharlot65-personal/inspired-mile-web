@@ -14,7 +14,7 @@ const messages: Record<string, string> = {
   'error.generic': '出了点问题。请再试一次。',
   'error.passkey_not_found': '这个账户里没有这把通行密钥。',
   'error.classroom_name_invalid': '班级名称须为 1 到 128 个字符。',
-  'error.join_code_invalid': '这个加入码无效。加入码由 6 个字母组成。',
+  'error.join_code_invalid': '这个加入码无效。加入码由 6 位字母和数字组成。',
   'error.classroom_not_found': '没有班级使用这个加入码。请向老师核对。',
   'error.not_classroom_member': '你不是这个班级的成员。',
   'error.teachers_only': '只有教师可以创建作业。',

@@ -107,7 +107,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <h3 class="text-lg font-display font-bold text-obsidian-200 mb-4" data-i18n="classroom.join.title">Join with a code</h3>
         <div class="flex flex-wrap gap-3">
           <!-- The code is six Latin letters in every language: left to right, and never letter-spaced away. -->
-          <input id="join-code" type="text" maxlength="6" placeholder="6-letter code" data-i18n-placeholder="classroom.join.placeholder" data-i18n-aria-label="classroom.detail.code" aria-label="Join code" autocapitalize="characters" autocomplete="off" spellcheck="false"
+          <input id="join-code" type="text" maxlength="6" placeholder="6-character code" data-i18n-placeholder="classroom.join.placeholder" data-i18n-aria-label="classroom.detail.code" aria-label="Join code" autocapitalize="characters" autocomplete="off" spellcheck="false"
                  class="flex-1 min-w-0 bg-obsidian-800 border border-obsidian-700 rounded-xl px-4 py-3 text-obsidian-200 placeholder-obsidian-500 font-mono text-lg text-center uppercase placeholder:normal-case placeholder:text-sm placeholder:font-sans focus:border-gold-400 focus:outline-hidden" />
           <button id="join-submit" class="btn-gold px-6 py-3 rounded-xl font-display font-bold" data-i18n="classroom.join.submit">Join</button>
         </div>
@@ -210,7 +210,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <!-- Step 1 -->
         <div class="wizard-page" data-step="1">
           <h3 class="font-display text-lg font-bold text-gold-300 mb-2" data-i18n="classroom.wizard.s1.title">Create your classroom</h3>
-          <p class="text-sm text-obsidian-300 mb-3" data-i18n="classroom.wizard.s1.body">Choose “Create a classroom” and give it a name, such as “Period 3 English” or “Shakespeare 101”. Each classroom gets its own 6-letter join code.</p>
+          <p class="text-sm text-obsidian-300 mb-3" data-i18n="classroom.wizard.s1.body">Choose “Create a classroom” and give it a name, such as “Period 3 English” or “Shakespeare 101”. Each classroom gets its own 6-character join code.</p>
           <div class="card-glass p-3 bg-obsidian-800/50 rounded-lg text-center">
             <span class="font-mono text-2xl tracking-widest text-gold-400" lang="en" dir="ltr" translate="no">ABCDEF</span>
             <p class="text-[10px] text-obsidian-500 mt-1" data-i18n="classroom.wizard.s1.example">Example of a join code</p>
@@ -220,7 +220,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <!-- Step 2 -->
         <div class="wizard-page hidden" data-step="2">
           <h3 class="font-display text-lg font-bold text-gold-300 mb-2" data-i18n="classroom.wizard.s2.title">Share it with your students</h3>
-          <p class="text-sm text-obsidian-300 mb-3" data-i18n="classroom.wizard.s2.body">Give your students the 6-letter code. They choose “I am a student”, confirm the consent and enter the code. No email address is needed.</p>
+          <p class="text-sm text-obsidian-300 mb-3" data-i18n="classroom.wizard.s2.body">Give your students the 6-character code. They choose “I am a student”, confirm the consent and enter the code. No email address is needed.</p>
           <div class="flex flex-wrap gap-2 justify-center">
             <div class="card-glass px-3 py-2 rounded-lg text-center">
               <span class="text-xs text-obsidian-400" data-i18n="classroom.wizard.s2.board">Write it on the board</span>

@@ -14,7 +14,7 @@ const messages: Record<string, string> = {
   'error.generic': 'Coś poszło nie tak. Spróbuj ponownie.',
   'error.passkey_not_found': 'Tego klucza dostępu nie ma na tym koncie.',
   'error.classroom_name_invalid': 'Nazwa klasy musi mieć od 1 do 128 znaków.',
-  'error.join_code_invalid': 'Ten kod dołączenia jest nieprawidłowy. Kod ma 6 liter.',
+  'error.join_code_invalid': 'Ten kod dołączenia jest nieprawidłowy. Kod ma 6 znaków: litery i cyfry.',
   'error.classroom_not_found': 'Żadna klasa nie ma takiego kodu. Sprawdź go u nauczyciela.',
   'error.not_classroom_member': 'Nie należysz do tej klasy.',
   'error.teachers_only': 'Zadania może tworzyć tylko nauczyciel.',

@@ -1,9 +1,15 @@
 #!/usr/bin/env node
-// The platform's own words for two buttons of the install guidance, from the Android Open
+// The platform's own words for the two buttons of the install guidance and two other terms, from the Android Open
 // Source Project's string resources (Apache-2.0), pinned to one commit:
 //
 //   "Install"   packages/PackageInstaller/res, string "install" (the package installer's button)
 //   "Not now"   core/res/res, string "autofill_save_notnow"
+//   "pinch"     core/res/res, string "capability_desc_canPerformGestures" ("Can tap, swipe,
+//               pinch, and perform other gestures."): Android's verb for the gesture, used where
+//               Apple publishes no Apple Vision Pro guide in the language
+//   "characters" core/res/res, string "policydesc_limitPassword" ("Control the length and the
+//               characters allowed in screen lock passwords and PINs."): the word for the
+//               characters of a code, which mixes letters and digits
 //
 //   node scripts/pages-rest/fetch-android-terms.mjs
 //     -> docs/language/sources/pages-rest-android-terms.json
@@ -16,9 +22,9 @@ const COMMIT = '1cdfff555f4a21f71ccc978290e2e212e2f8b168';
 const BASE = `https://raw.githubusercontent.com/aosp-mirror/platform_frameworks_base/${COMMIT}`;
 // Android's resource folder for each of the game's languages (Indonesian is still "in").
 const DIRS = { en: 'values', es: 'values-es', fr: 'values-fr', de: 'values-de', it: 'values-it', pt: 'values-pt-rBR', pl: 'values-pl', ru: 'values-ru', ar: 'values-ar', hi: 'values-hi', zh: 'values-zh-rCN', ja: 'values-ja', ko: 'values-ko', vi: 'values-vi', th: 'values-th', id: 'values-in' };
-const TERMS = { install: ['packages/PackageInstaller/res', 'install'], notNow: ['core/res/res', 'autofill_save_notnow'] };
+const TERMS = { install: ['packages/PackageInstaller/res', 'install'], notNow: ['core/res/res', 'autofill_save_notnow'], gestures: ['core/res/res', 'capability_desc_canPerformGestures'], characters: ['core/res/res', 'policydesc_limitPassword'] };
 
-const unescape = (s) => s.replace(/^"|"$/g, '').replace(/\\'/g, "'").replace(/\\"/g, '"').replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>');
+const unescape = (s) => s.replace(/\s+/g, ' ').replace(/^"|"$/g, '').replace(/\\'/g, "'").replace(/\\"/g, '"').replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>');
 const cache = new Map();
 async function strings(module, dir) {
   const url = `${BASE}/${module}/${dir}/strings.xml`;

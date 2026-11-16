@@ -14,7 +14,7 @@ const messages: Record<string, string> = {
   'error.generic': 'حدث خطأ ما. حاول مرة أخرى.',
   'error.passkey_not_found': 'مفتاح المرور هذا غير موجود في هذا الحساب.',
   'error.classroom_name_invalid': 'يجب أن يتكوّن اسم الصف من 1 إلى 128 حرفًا.',
-  'error.join_code_invalid': 'رمز الانضمام هذا غير صالح. الرمز من 6 أحرف.',
+  'error.join_code_invalid': 'رمز الانضمام هذا غير صالح. يتكوّن الرمز من 6 أحرف وأرقام.',
   'error.classroom_not_found': 'لا يوجد صف بهذا الرمز. تحقق منه مع معلّمك.',
   'error.not_classroom_member': 'لست عضوًا في هذا الصف.',
   'error.teachers_only': 'المعلّم وحده يستطيع إنشاء الواجبات.',

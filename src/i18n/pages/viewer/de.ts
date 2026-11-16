@@ -51,7 +51,7 @@ const messages: Record<string, string> = {
   'vr.card.desktop.title': 'Computer',
   'vr.card.desktop.body': 'Klick und zieh, um dich umzusehen. Scrolle zum Zoomen. Klick auf eine Karte, um sie auszuwählen.',
   'vr.card.quest.body': 'Drück auf „VR starten“, um einzutreten. Mit den Controllern bewegst du dich und wählst Karten aus.',
-  'vr.card.vision.body': 'Öffnet sich in WebXR. Sieh eine Karte an und kneif, um sie auszuwählen.',
+  'vr.card.vision.body': 'Öffnet sich in WebXR. Sieh eine Karte an und tippe dann deinen Zeigefinger und Daumen zusammen, um sie auszuwählen.',
 };
 
 export default messages;

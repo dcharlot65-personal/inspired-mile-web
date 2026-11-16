@@ -14,7 +14,7 @@ const messages: Record<string, string> = {
   'error.generic': 'कुछ गड़बड़ हो गई। कृपया फिर कोशिश करें।',
   'error.passkey_not_found': 'वह पासकी इस खाते में नहीं है।',
   'error.classroom_name_invalid': 'कक्षा का नाम 1 से 128 अक्षरों का होना चाहिए।',
-  'error.join_code_invalid': 'वह कक्षा कोड मान्य नहीं है। कोड में 6 अक्षर होते हैं।',
+  'error.join_code_invalid': 'वह कक्षा कोड मान्य नहीं है। कोड में 6 वर्ण होते हैं: अक्षर और अंक।',
   'error.classroom_not_found': 'इस कोड की कोई कक्षा नहीं है। अपने शिक्षक से कोड जाँच लें।',
   'error.not_classroom_member': 'आप इस कक्षा के सदस्य नहीं हैं।',
   'error.teachers_only': 'केवल शिक्षक ही कार्य बना सकते हैं।',

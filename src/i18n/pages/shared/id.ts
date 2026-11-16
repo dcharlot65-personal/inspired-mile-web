@@ -14,7 +14,7 @@ const messages: Record<string, string> = {
   'error.generic': 'Ada yang tidak beres. Silakan coba lagi.',
   'error.passkey_not_found': 'Kunci sandi itu tidak ada di akun ini.',
   'error.classroom_name_invalid': 'Nama kelas harus terdiri atas 1 sampai 128 karakter.',
-  'error.join_code_invalid': 'Kode gabung itu tidak valid. Kodenya terdiri atas 6 huruf.',
+  'error.join_code_invalid': 'Kode gabung itu tidak valid. Kodenya terdiri atas 6 karakter, berupa huruf dan angka.',
   'error.classroom_not_found': 'Tidak ada kelas dengan kode itu. Tanyakan kepada gurumu.',
   'error.not_classroom_member': 'Kamu bukan anggota kelas ini.',
   'error.teachers_only': 'Hanya guru yang dapat membuat tugas.',

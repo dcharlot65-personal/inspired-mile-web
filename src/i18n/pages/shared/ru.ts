@@ -14,7 +14,7 @@ const messages: Record<string, string> = {
   'error.generic': 'Что-то пошло не так. Попробуй ещё раз.',
   'error.passkey_not_found': 'Этого ключа доступа нет в этой учётной записи.',
   'error.classroom_name_invalid': 'В названии класса должно быть от 1 до 128 символов.',
-  'error.join_code_invalid': 'Такой код класса не подходит. В коде 6 букв.',
+  'error.join_code_invalid': 'Такой код класса не подходит. В коде 6 символов: буквы и цифры.',
   'error.classroom_not_found': 'Класса с таким кодом нет. Уточни код у учителя.',
   'error.not_classroom_member': 'Ты не состоишь в этом классе.',
   'error.teachers_only': 'Создавать задания может только учитель.',

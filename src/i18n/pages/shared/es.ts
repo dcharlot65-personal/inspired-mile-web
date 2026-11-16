@@ -14,7 +14,7 @@ const messages: Record<string, string> = {
   'error.generic': 'Algo ha salido mal. Inténtalo de nuevo.',
   'error.passkey_not_found': 'Esa llave de acceso no está en esta cuenta.',
   'error.classroom_name_invalid': 'El nombre de la clase debe tener entre 1 y 128 caracteres.',
-  'error.join_code_invalid': 'Ese código de acceso no es válido. Tiene 6 letras.',
+  'error.join_code_invalid': 'Ese código de acceso no es válido. Tiene 6 caracteres, entre letras y números.',
   'error.classroom_not_found': 'Ninguna clase tiene ese código. Compruébalo con tu docente.',
   'error.not_classroom_member': 'No eres miembro de esta clase.',
   'error.teachers_only': 'Solo el docente puede crear tareas.',

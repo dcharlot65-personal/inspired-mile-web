@@ -51,7 +51,7 @@ const messages: Record<string, string> = {
   'vr.card.desktop.title': '컴퓨터',
   'vr.card.desktop.body': '클릭한 채로 드래그해서 둘러보세요. 스크롤해서 확대·축소하세요. 카드를 클릭하면 선택돼요.',
   'vr.card.quest.body': '“VR 들어가기”를 누르면 안으로 들어가요. 컨트롤러로 이동하고 카드를 고르세요.',
-  'vr.card.vision.body': 'WebXR로 열려요. 카드를 바라보고 손가락을 집으면 선택돼요.',
+  'vr.card.vision.body': 'WebXR로 열려요. 카드를 바라본 다음, 검지와 엄지를 함께 탭하면 선택돼요.',
 };
 
 export default messages;

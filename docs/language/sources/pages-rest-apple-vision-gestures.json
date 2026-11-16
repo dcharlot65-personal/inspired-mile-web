@@ -1,0 +1,137 @@
+{
+ "source": "https://support.apple.com/<locale>/guide/apple-vision-pro/tan1e2a29e00/visionos, table \"Use eyes and hands to navigate visionOS\", first row",
+ "fetched": "2026-11-16T23:11:19.678Z",
+ "licence": "Apple Inc. text, quoted as evidence of interface terms",
+ "pages": {
+  "en": {
+   "url": "https://support.apple.com/en-us/guide/apple-vision-pro/tan1e2a29e00/visionos",
+   "finalUrl": "https://support.apple.com/guide/apple-vision-pro/basic-gestures-and-controls-tan1e2a29e00/visionos",
+   "pageLocale": "en-us",
+   "found": true,
+   "gesture": "Tap your fingers together (or simply “tap”)",
+   "purpose": "Select options, open apps",
+   "instruction": "Look at content (like an app icon or button), then tap your index finger and thumb together to select it."
+  },
+  "es": {
+   "url": "https://support.apple.com/es-es/guide/apple-vision-pro/tan1e2a29e00/visionos",
+   "finalUrl": "https://support.apple.com/es-es/guide/apple-vision-pro/tan1e2a29e00/visionos",
+   "pageLocale": "es-es",
+   "found": true,
+   "gesture": "Pellizcar con dos dedos (o, simplemente “tocar”)",
+   "purpose": "Seleccionar opciones, abrir apps",
+   "instruction": "Mira el contenido (como el icono o el botón de una app) y, a continuación, toca el dedo índice con el pulgar para seleccionarlo."
+  },
+  "fr": {
+   "url": "https://support.apple.com/fr-fr/guide/apple-vision-pro/tan1e2a29e00/visionos",
+   "finalUrl": "https://support.apple.com/fr-fr/guide/apple-vision-pro/tan1e2a29e00/visionos",
+   "pageLocale": "fr-fr",
+   "found": true,
+   "gesture": "Toucher lʼextrémité de vos doigts (ou simplement « toucher »)",
+   "purpose": "Sélectionner des options, ouvrir des apps",
+   "instruction": "Regardez un élément de contenu (comme l’icône d’une app ou un bouton), puis faites se toucher votre index et votre pouce pour le sélectionner."
+  },
+  "de": {
+   "url": "https://support.apple.com/de-de/guide/apple-vision-pro/tan1e2a29e00/visionos",
+   "finalUrl": "https://support.apple.com/de-de/guide/apple-vision-pro/tan1e2a29e00/visionos",
+   "pageLocale": "de-de",
+   "found": true,
+   "gesture": "Tippe deine Finger zusammen (oder einfach „tippe“)",
+   "purpose": "Optionen auswählen, Apps öffnen",
+   "instruction": "Sieh ein Objekt (wie ein App-Symbol oder eine Taste) an und tippe dann deinen Zeigefinger und Daumen zusammen, um es auszuwählen."
+  },
+  "it": {
+   "url": "https://support.apple.com/it-it/guide/apple-vision-pro/tan1e2a29e00/visionos",
+   "finalUrl": "https://support.apple.com/it-it/guide/apple-vision-pro/tan1e2a29e00/visionos",
+   "pageLocale": "it-it",
+   "found": true,
+   "gesture": "Toccare o avvicinare le dita",
+   "purpose": "Selezionare opzioni, aprire app.",
+   "instruction": "Guarda un contenuto (come l’icona di un’app o un pulsante) quindi tocca con l’indice e il pollice per selezionarlo."
+  },
+  "pt": {
+   "url": "https://support.apple.com/pt-br/guide/apple-vision-pro/tan1e2a29e00/visionos",
+   "finalUrl": "https://support.apple.com/pt-br/guide/apple-vision-pro/tan1e2a29e00/visionos",
+   "status": 200,
+   "pageLocale": "en-us",
+   "found": false
+  },
+  "pl": {
+   "url": "https://support.apple.com/pl-pl/guide/apple-vision-pro/tan1e2a29e00/visionos",
+   "finalUrl": "https://support.apple.com/pl-pl/guide/apple-vision-pro/tan1e2a29e00/visionos",
+   "status": 200,
+   "pageLocale": "en-euro",
+   "found": false
+  },
+  "ru": {
+   "url": "https://support.apple.com/ru-ru/guide/apple-vision-pro/tan1e2a29e00/visionos",
+   "finalUrl": "https://support.apple.com/ru-ru/guide/apple-vision-pro/tan1e2a29e00/visionos",
+   "status": 200,
+   "pageLocale": "en-us",
+   "found": false
+  },
+  "ar": {
+   "url": "https://support.apple.com/ar-ae/guide/apple-vision-pro/tan1e2a29e00/visionos",
+   "finalUrl": "https://support.apple.com/ar-ae/guide/apple-vision-pro/tan1e2a29e00/visionos",
+   "pageLocale": "ar-eg",
+   "found": true,
+   "gesture": "الضغط بإصبعين معًا (أو ببساطة \"الضغط\")",
+   "purpose": "تحديد الخيارات، فتح التطبيقات",
+   "instruction": "انظر إلى المحتوى (مثل أيقونة تطبيق أو زر)، ثم اضغط بإصبعي السبابة والإبهام معًا لتحديده."
+  },
+  "hi": {
+   "url": "https://support.apple.com/hi-in/guide/apple-vision-pro/tan1e2a29e00/visionos",
+   "finalUrl": "https://support.apple.com/hi-in/guide/apple-vision-pro/tan1e2a29e00/visionos",
+   "status": 200,
+   "pageLocale": "en-us",
+   "found": false
+  },
+  "zh": {
+   "url": "https://support.apple.com/zh-cn/guide/apple-vision-pro/tan1e2a29e00/visionos",
+   "finalUrl": "https://support.apple.com/zh-cn/guide/apple-vision-pro/tan1e2a29e00/visionos",
+   "pageLocale": "zh-cn",
+   "found": true,
+   "gesture": "互点手指（简称“互点”）",
+   "purpose": "选择选项、打开 App",
+   "instruction": "注视内容（如 App 图标或按钮），然后互点食指和拇指将其选中。"
+  },
+  "ja": {
+   "url": "https://support.apple.com/ja-jp/guide/apple-vision-pro/tan1e2a29e00/visionos",
+   "finalUrl": "https://support.apple.com/ja-jp/guide/apple-vision-pro/tan1e2a29e00/visionos",
+   "pageLocale": "ja-jp",
+   "found": true,
+   "gesture": "指をタップする（または単に「タップ」）",
+   "purpose": "オプションを選択する、アプリを開く",
+   "instruction": "コンテンツ（アプリアイコンやボタンなど）を注視してから、人差し指と親指をタップして、そのコンテンツを選択します。"
+  },
+  "ko": {
+   "url": "https://support.apple.com/ko-kr/guide/apple-vision-pro/tan1e2a29e00/visionos",
+   "finalUrl": "https://support.apple.com/ko-kr/guide/apple-vision-pro/tan1e2a29e00/visionos",
+   "pageLocale": "ko-kr",
+   "found": true,
+   "gesture": "손가락을 함께 탭(또는 간단히 ‘탭’)",
+   "purpose": "옵션 선택, 앱 열기",
+   "instruction": "콘텐츠(앱 아이콘 또는 버튼)를 바라본 다음, 검지와 엄지를 함께 탭하여 선택하십시오."
+  },
+  "vi": {
+   "url": "https://support.apple.com/vi-vn/guide/apple-vision-pro/tan1e2a29e00/visionos",
+   "finalUrl": "https://support.apple.com/vi-vn/guide/apple-vision-pro/tan1e2a29e00/visionos",
+   "status": 200,
+   "pageLocale": "en-us",
+   "found": false
+  },
+  "th": {
+   "url": "https://support.apple.com/th-th/guide/apple-vision-pro/tan1e2a29e00/visionos",
+   "finalUrl": "https://support.apple.com/th-th/guide/apple-vision-pro/tan1e2a29e00/visionos",
+   "status": 200,
+   "pageLocale": "en-us",
+   "found": false
+  },
+  "id": {
+   "url": "https://support.apple.com/id-id/guide/apple-vision-pro/tan1e2a29e00/visionos",
+   "finalUrl": "https://support.apple.com/id-id/guide/apple-vision-pro/tan1e2a29e00/visionos",
+   "status": 200,
+   "pageLocale": "en-us",
+   "found": false
+  }
+ }
+}

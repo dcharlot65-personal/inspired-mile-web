@@ -27,11 +27,11 @@ const messages: Record<string, string> = {
   'viewer.card.splat.title': 'มุมมอง splat',
   'viewer.card.splat.body': 'Gaussian splat ที่วาดด้วย Babylon.js หมุน ซูม และเลื่อนภาพ 3 มิติที่สมจริงของโมเดลได้',
   'viewer.card.glb.title': 'มุมมอง GLB',
-  'viewer.card.glb.body': 'เมชทั่วไปที่แสดงด้วย model-viewer บนโทรศัพท์จะวางโมเดลไว้ในห้องของคุณด้วยความจริงเสริมได้',
+  'viewer.card.glb.body': 'เมชทั่วไปที่แสดงด้วย model-viewer บนโทรศัพท์จะวางโมเดลไว้ในห้องของคุณด้วยความเป็นจริงเสริมได้',
   'viewer.card.ar.title': 'AR บนโทรศัพท์',
   'viewer.card.ar.body': 'ในมุมมอง GLB บนโทรศัพท์ แตะ “ดูแบบ AR” เพื่อดูการ์ดในห้องของคุณ',
   'vr.meta.description': 'เดินชมคอลเลกชันการ์ดเชกสเปียร์ของคุณในความเป็นจริงเสมือน',
-  'vr.badge': 'ความจริงเสมือน',
+  'vr.badge': 'ความเป็นจริงเสมือน',
   'vr.titleA': 'แกลเลอรี',
   'vr.titleB': 'การ์ด',
   'vr.intro': 'เดินชมคอลเลกชันของคุณแบบ 3 มิติ ใช้ได้บน Quest 3 และ Vision Pro ผ่าน WebXR และใช้เมาส์บนคอมพิวเตอร์',
@@ -51,7 +51,7 @@ const messages: Record<string, string> = {
   'vr.card.desktop.title': 'คอมพิวเตอร์',
   'vr.card.desktop.body': 'คลิกแล้วลากเพื่อมองรอบ ๆ เลื่อนเพื่อซูม คลิกการ์ดเพื่อเลือก',
   'vr.card.quest.body': 'กด “เข้าสู่ VR” เพื่อเข้าไปข้างใน ใช้คอนโทรลเลอร์เพื่อเคลื่อนที่และเลือกการ์ด',
-  'vr.card.vision.body': 'เปิดด้วย WebXR มองที่การ์ดแล้วจีบนิ้วเพื่อเลือก',
+  'vr.card.vision.body': 'เปิดด้วย WebXR มองที่การ์ดแล้วบีบนิ้วเพื่อเลือก',
 };
 
 export default messages;
