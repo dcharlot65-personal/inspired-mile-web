@@ -30,6 +30,7 @@ const opt = (name, dflt) => {
 };
 const LT_URL = process.env.LT_URL ?? 'http://127.0.0.1:8099';
 const HUNSPELL = process.env.HUNSPELL ?? 'hunspell';
+const HSPELL = process.env.HSPELL ?? 'hspell';
 const DICT_DIR = process.env.DICT_DIR ?? '';
 const OUT = resolve(opt('--out', `${ROOT}.langqa/grammar.json`));
 const only = opt('--lang', '')?.split(',').filter(Boolean);
@@ -84,11 +85,11 @@ function dictPaths(lang) {
   return (DICTS[lang] ?? []).filter((d) => DICT_DIR && existsSync(`${DICT_DIR}/${d}.aff`) && existsSync(`${DICT_DIR}/${d}.dic`));
 }
 
-/** The words Hunspell rejects, out of a list. */
+/** The words Hunspell rejects, out of a list. Each is put to the library whole (see hspell.cpp). */
 function misspelled(dict, words) {
   if (!words.length) return new Set();
-  const r = spawnSync(HUNSPELL, ['-d', `${DICT_DIR}/${dict}`, '-i', 'UTF-8', '-l'], { input: words.join('\n') + '\n', encoding: 'utf8', maxBuffer: 1 << 26 });
-  if (r.status !== 0) throw new Error(`hunspell ${dict}: ${r.stderr}`);
+  const r = spawnSync(HSPELL, [`${DICT_DIR}/${dict}.aff`, `${DICT_DIR}/${dict}.dic`], { input: words.join('\n') + '\n', encoding: 'utf8', maxBuffer: 1 << 26 });
+  if (r.status !== 0) throw new Error(`hspell ${dict}: ${r.error ?? r.stderr}`);
   return new Set(r.stdout.split('\n').filter(Boolean));
 }
 
@@ -113,23 +114,23 @@ function spellForm(lang, word) {
 
 // ---------- known-bad sentences: the proof that each tool can flag something in each language ----------
 const KNOWN_BAD = {
-  // [a sentence with a grammar error a native reader sees at once, a misspelled word, a correctly spelled word]
-  en: ['She go to school every day and he have two book.', 'recieve', 'receive'],
-  es: ['Los casa es muy grandes.', 'recivir', 'recibir'],
-  fr: ['Les maison est très grands.', 'recevior', 'recevoir'],
-  de: ['Das Häuser ist sehr großen.', 'bekomen', 'bekommen'],
-  it: ['Le casa è molto grandi.', 'ricevre', 'ricevere'],
-  pt: ['As casa é muito grandes.', 'recebr', 'receber'],
-  pl: ['Ten kobieta jest bardzo wysoki.', 'otrzymć', 'otrzymać'],
-  ru: ['Он пошла домой и купил два книга.', 'получиьт', 'получить'],
-  ar: ['ذهبت الولد إلى المدرسة أمس.', 'مدرسسة', 'مدرسة'],
-  hi: ['लड़का स्कूल जाती है।', 'विद्यालयय', 'विद्यालय'],
-  zh: ['我昨天去学校了了。', '', ''],
-  ja: ['私は学校に行くました。', '', ''],
-  ko: ['나는 학교에 갔다요.', '학굥', '학교'],
-  vi: ['Tôi đi học trường hôm qua rồi sẽ.', 'trườngg', 'trường'],
-  th: ['ฉันไปโรงเรียนเมื่อวานจะ', 'โรงเรียยน', 'โรงเรียน'],
-  id: ['Saya pergi ke sekolah kemarin akan.', 'sekolaah', 'sekolah'],
+  // [sentences with a grammar error a native reader sees at once], a misspelled word, the word spelled right
+  en: [['She go to school every day.', 'I has two cats.', 'They was at home.', 'He have two book.'], 'recieve', 'receive'],
+  es: [['Los casa es muy grandes.', 'Yo tiene dos gatos.', 'La problema es grande.', 'Nosotros va al cine.'], 'recivir', 'recibir'],
+  fr: [['Les maison est très grands.', 'Je a deux chats.', 'Nous allez au cinéma.', 'Il sont arrivé.'], 'recevior', 'recevoir'],
+  de: [['Das Häuser ist sehr großen.', 'Ich haben zwei Katzen.', 'Wir geht ins Kino.', 'Er sind gekommen.'], 'bekomen', 'bekommen'],
+  it: [['Le casa è molto grandi.', 'Io ha mangiato la mela.', 'Un amica mia è venuto.', 'Loro è andati a casa.'], 'ricevre', 'ricevere'],
+  pt: [['As casa é muito grandes.', 'Eu vai para a escola.', 'Os menino jogam bola.', 'Nós vai embora.'], 'recebr', 'receber'],
+  pl: [['Ten kobieta jest bardzo wysoki.', 'Ja idzie do szkoły.', 'Oni jest w domu.', 'Mam dwa psów.'], 'otrzymć', 'otrzymać'],
+  ru: [['Он пошла домой.', 'Я идёт в школу.', 'Они был дома.', 'Он купил два книга.'], 'получиьт', 'получить'],
+  ar: [['ذهبت الولد إلى المدرسة أمس.', 'أنا يذهب إلى المدرسة.', 'البنات ذهب إلى السوق.', 'هذا السيارة جميلة.'], 'مدرسسة', 'مدرسة'],
+  hi: [[], 'विद्यालयय', 'विद्यालय'],
+  zh: [['我昨天去学校了了。', '他们是很高兴的的。', '我有三个书。', '因为下雨，所以但是我去了。'], '', ''],
+  ja: [['私は学校に行くました。', 'これはペンをです。', '彼が本を読むますた。', '食べれる事が出来る。'], '', ''],
+  ko: [[], '학굥', '학교'],
+  vi: [[], 'trườngg', 'trường'],
+  th: [[], 'โรงเรียยน', 'โรงเรียน'],
+  id: [[], 'sekolaah', 'sekolah'],
 };
 
 async function selftest(supported) {
@@ -139,9 +140,11 @@ async function selftest(supported) {
     const [bad, wrong, right] = KNOWN_BAD[lang];
     const row = { lang, languagetool: 'no module', hunspell: 'no dictionary' };
     if (LT_CODE[lang] && supported.has(LT_CODE[lang])) {
-      const m = await ltCheck(LT_CODE[lang], bad);
-      row.languagetool = m.length ? `flags the known-bad sentence (${m.map((x) => x.rule.id).slice(0, 3).join(', ')})` : 'DOES NOT flag the known-bad sentence';
-      row.languagetoolFlags = m.length > 0;
+      let caught = 0;
+      for (const sentence of bad) if ((await ltCheck(LT_CODE[lang], sentence)).length) caught++;
+      row.languagetool = `flags ${caught} of ${bad.length} known-bad sentences`;
+      row.languagetoolCaught = caught;
+      row.languagetoolTried = bad.length;
     }
     const dicts = dictPaths(lang);
     if (dicts.length && wrong) {

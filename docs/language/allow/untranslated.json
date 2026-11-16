@@ -180,6 +180,11 @@
    "lang": "id",
    "key": "footer.platform",
    "reason": "Indonesian uses the loanword platform."
+  },
+  {
+   "lang": "de",
+   "key": "device.alliteration.name",
+   "reason": "The device's name in German is Alliteration (Wikipedia article title, via Wikidata Q484495)."
   }
  ]
 }

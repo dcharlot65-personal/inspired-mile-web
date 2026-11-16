@@ -3,6 +3,7 @@
 #
 #   ~/kani-logs/remote/rb . -- 'bash scripts/lang/run.sh <step> [args]'
 #
+#   setup         install or update the tools (scripts/lang/host-setup.sh)
 #   selftest      prove LanguageTool and Hunspell flag a known-bad sentence in each language
 #   grammar       LanguageTool + Hunspell over every string            -> $OUT/grammar.json
 #   meaning       back-translate with MADLAD-400 and score             -> $OUT/bt.json
@@ -20,7 +21,7 @@ export PATH=/opt/homebrew/opt/openjdk/bin:/opt/homebrew/bin:$PATH
 export LANGQA_HOME=${LANGQA_HOME:-/Volumes/macos_4TB_external_1/wai-build/im-lang/qa-pipeline}
 MEMGUARD=${MEMGUARD:-/Volumes/macos_4TB_external_1/wai-build/bin/memguard}
 export OUT=${OUT:-$LANGQA_HOME/out}
-export HUNSPELL=$LANGQA_HOME/hunspell/bin/hunspell DICT_DIR=$LANGQA_HOME/dict
+export HUNSPELL=$LANGQA_HOME/hunspell/bin/hunspell HSPELL=$LANGQA_HOME/hunspell/bin/hspell DICT_DIR=$LANGQA_HOME/dict
 export MADLAD_DIR=$LANGQA_HOME/models/madlad400-3b-mt-ct2-int8 MINILM_DIR=$LANGQA_HOME/models/all-MiniLM-L6-v2
 export HF_HOME=$LANGQA_HOME/cache/hf TMPDIR=$LANGQA_HOME/tmp HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 TOKENIZERS_PARALLELISM=false
 LT_PORT=${LT_PORT:-18731}
@@ -32,7 +33,10 @@ cd "$HERE"
 STEP=${1:-}; shift || true
 
 PIDS=()
-cleanup() { for p in "${PIDS[@]:-}"; do [ -n "$p" ] && kill "$p" 2>/dev/null || true; done; }
+# Stop what this run started, and only that: each server's own pid and the processes under it
+# (memguard runs the server as its child, and does not pass a signal on).
+kill_tree() { local c; for c in $(pgrep -P "$1" 2>/dev/null); do kill_tree "$c"; done; kill "$1" 2>/dev/null || true; }
+cleanup() { for p in "${PIDS[@]:-}"; do [ -n "$p" ] && kill_tree "$p"; done; }
 trap cleanup EXIT
 
 wait_http() {  # wait_http <url> <seconds> <log>
@@ -58,6 +62,7 @@ start_llama() {
 }
 
 case "$STEP" in
+  setup) SKIP_REVIEWER=${SKIP_REVIEWER:-0} bash scripts/lang/host-setup.sh ;;
   selftest) start_languagetool; node scripts/lang/grammar.mjs --selftest "$@" ;;
   grammar) start_languagetool; node scripts/lang/grammar.mjs --out "$OUT/grammar.json" "$@" ;;
   meaning)

@@ -11,6 +11,7 @@
 # What it fetches, and from where, is recorded in docs/language/PROVENANCE.md.
 set -euo pipefail
 export PATH=/opt/homebrew/opt/openjdk/bin:/opt/homebrew/bin:$PATH
+SRC_DIR=$(cd "$(dirname "$0")" && pwd)
 HOME_DIR=${LANGQA_HOME:-/Volumes/macos_4TB_external_1/wai-build/im-lang/qa-pipeline}
 MEMGUARD=${MEMGUARD:-/Volumes/macos_4TB_external_1/wai-build/bin/memguard}
 mkdir -p "$HOME_DIR"/{dl,dict,models,cache,tmp,logs}
@@ -43,6 +44,11 @@ if [ ! -x "$HOME_DIR/hunspell/bin/hunspell" ]; then
     || { echo "hunspell build failed; see $HOME_DIR/tmp/hunspell-build/*.log" >&2; exit 1; }
 fi
 "$HOME_DIR/hunspell/bin/hunspell" --version | head -1
+# hspell: whole-word queries to the same library (scripts/lang/hspell.cpp says why).
+if [ -f "$SRC_DIR/hspell.cpp" ] && { [ ! -x "$HOME_DIR/hunspell/bin/hspell" ] || [ "$SRC_DIR/hspell.cpp" -nt "$HOME_DIR/hunspell/bin/hspell" ]; }; then
+  step "hspell"
+  clang++ -std=c++17 -O1 -I"$HOME_DIR/hunspell/include" "$SRC_DIR/hspell.cpp" "$HOME_DIR"/hunspell/lib/libhunspell-1.7.a -o "$HOME_DIR/hunspell/bin/hspell"
+fi
 
 # --- Hunspell dictionaries, from LibreOffice's dictionaries repository at a pinned commit ---
 # <our code> <path of the .aff without extension in the repository>
