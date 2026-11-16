@@ -20,7 +20,8 @@ const prodUrl = process.env.PROD_URL;
 
 export default defineConfig({
   testDir: './tests',
-  timeout: 30000,
+  // The dev server compiles each page on first request; on a loaded build host that alone can pass 30 s.
+  timeout: Number(process.env.E2E_TIMEOUT ?? 30000),
   use: {
     baseURL: prodUrl ?? E2E.webOrigin,
     headless: true,
@@ -75,7 +76,8 @@ export default defineConfig({
       command: `node tests/noemail-proxy.mjs ${E2E.webNoEmailPort} ${E2E.webPort} ${E2E.apiNoEmailPort}`,
       port: E2E.webNoEmailPort,
       reuseExistingServer: false,
-      timeout: 30000,
+      // The dev server compiles each page on first request; on a loaded build host that alone can pass 30 s.
+  timeout: Number(process.env.E2E_TIMEOUT ?? 30000),
       stderr: 'pipe',
     },
   ],
