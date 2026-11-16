@@ -207,7 +207,9 @@
     "it": "battaglia di Alessandria",
     "ja": "アレクサンドリアの戦い",
     "pt": "Batalha de Alexandria",
-    "zh": "亚历山大之战 (前30年)"
+    "zh": "亚历山大之战 (前30年)",
+    "zh-hans": "亚历山大之战 (前30年)",
+    "zh-hans:from": "converted from \"亚历山大之战 (前30年)\" by zh.wikipedia.org (variant=zh-cn)"
    },
    "names": [
     "The Battle of Alexandria"
@@ -451,7 +453,9 @@
     "ru": "Битва при Гастингсе",
     "th": "ยุทธการที่เฮสติงส์",
     "vi": "Trận Hastings",
-    "zh": "黑斯廷斯战役"
+    "zh": "黑斯廷斯战役",
+    "zh-hans": "黑斯廷斯战役",
+    "zh-hans:from": "converted from \"黑斯廷斯战役\" by zh.wikipedia.org (variant=zh-cn)"
    },
    "names": [
     "The Battle of Hastings"
@@ -512,7 +516,9 @@
     "pt": "Batalha de Filipos",
     "ru": "битва при Филиппах",
     "vi": "Trận Philippi",
-    "zh": "腓立比戰役"
+    "zh": "腓立比戰役",
+    "zh-hans": "腓立比战役",
+    "zh-hans:from": "converted from \"腓立比戰役\" by zh.wikipedia.org (variant=zh-cn)"
    },
    "names": [
     "The Battle of Philippi"
@@ -633,7 +639,9 @@
     "es": "Angelo",
     "hi": "एंजेलो",
     "pl": "Angelo",
-    "zh": "安吉洛"
+    "zh": "安吉洛",
+    "zh-hans": "安吉洛",
+    "zh-hans:from": "converted from \"安吉洛\" by zh.wikipedia.org (variant=zh-cn)"
    },
    "names": [
     "Angelo"
@@ -659,7 +667,9 @@
     "ja": "アントーニオ (ヴェニスの商人)",
     "ko": "안토니오",
     "pt": "Antonio",
-    "zh": "安東尼奧"
+    "zh": "安東尼奧",
+    "zh-hans": "安东尼奥",
+    "zh-hans:from": "converted from \"安東尼奧\" by zh.wikipedia.org (variant=zh-cn)"
    },
    "names": [
     "Antonio"
@@ -795,7 +805,9 @@
     "ja": "バサーニオ",
     "ko": "바사니오",
     "pt": "Bassanio",
-    "zh": "巴薩尼奧"
+    "zh": "巴薩尼奧",
+    "zh-hans": "巴萨尼奥",
+    "zh-hans:from": "converted from \"巴薩尼奧\" by zh.wikipedia.org (variant=zh-cn)"
    },
    "names": [
     "Bassanio"
@@ -812,7 +824,9 @@
    "labels": {
     "en": "Beatrice",
     "it": "Beatrice (Molto rumore per nulla)",
-    "zh": "碧翠絲"
+    "zh": "碧翠絲",
+    "zh-hans": "碧翠丝",
+    "zh-hans:from": "converted from \"碧翠絲\" by zh.wikipedia.org (variant=zh-cn)"
    },
    "names": [
     "Beatrice"
@@ -869,7 +883,9 @@
     "pl": "Benvolio",
     "ru": "Бенволио",
     "vi": "Benvolio",
-    "zh": "班福留"
+    "zh": "班福留",
+    "zh-hans": "班福留",
+    "zh-hans:from": "converted from \"班福留\" by zh.wikipedia.org (variant=zh-cn)"
    },
    "names": [
     "Benvolio"
@@ -906,7 +922,9 @@
     "id": "Nick Bottom",
     "it": "Nick Bottom",
     "ja": "ニック・ボトム",
-    "zh": "尼克·波顿"
+    "zh": "尼克·波顿",
+    "zh-hans": "尼克·波顿",
+    "zh-hans:from": "converted from \"尼克·波顿\" by zh.wikipedia.org (variant=zh-cn)"
    },
    "names": [
     "Bottom"
@@ -966,7 +984,9 @@
     "ja": "キャリバン",
     "pt": "Caliban",
     "ru": "Калибан",
-    "zh": "凱列班"
+    "zh": "凱列班",
+    "zh-hans": "凯列班",
+    "zh-hans:from": "converted from \"凱列班\" by zh.wikipedia.org (variant=zh-cn)"
    },
    "names": [
     "Caliban"
@@ -1075,7 +1095,9 @@
     "ko": "클라우디우스 왕",
     "pl": "Król Klaudiusz",
     "ru": "Король Клавдий",
-    "zh": "克勞迪國王"
+    "zh": "克勞迪國王",
+    "zh-hans": "克劳迪国王",
+    "zh-hans:from": "converted from \"克勞迪國王\" by zh.wikipedia.org (variant=zh-cn)"
    },
    "names": [
     "Claudius",
@@ -1104,7 +1126,9 @@
     "ja": "コーディリア",
     "pl": "Kordelia",
     "ru": "Корделия",
-    "zh": "寇蒂莉亞"
+    "zh": "寇蒂莉亞",
+    "zh-hans": "寇蒂莉亚",
+    "zh-hans:from": "converted from \"寇蒂莉亞\" by zh.wikipedia.org (variant=zh-cn)"
    },
    "names": [
     "Cordelia"
@@ -1196,7 +1220,9 @@
     "de": "Holzapfel",
     "en": "Dogberry",
     "hi": "डॉगबेरी",
-    "zh": "多格貝瑞"
+    "zh": "多格貝瑞",
+    "zh-hans": "多格贝瑞",
+    "zh-hans:from": "converted from \"多格貝瑞\" by zh.wikipedia.org (variant=zh-cn)"
    },
    "names": [
     "Dogberry"
@@ -1251,7 +1277,9 @@
     "ja": "ダンカン王",
     "ko": "던컨",
     "ru": "Король Дункан",
-    "zh": "鄧肯王"
+    "zh": "鄧肯王",
+    "zh-hans": "邓肯王",
+    "zh-hans:from": "converted from \"鄧肯王\" by zh.wikipedia.org (variant=zh-cn)"
    },
    "names": [
     "Duncan",
@@ -1273,7 +1301,9 @@
     "en": "Edmund",
     "hi": "एडमंड",
     "ja": "エドマンド",
-    "zh": "愛德蒙"
+    "zh": "愛德蒙",
+    "zh-hans": "爱德蒙",
+    "zh-hans:from": "converted from \"愛德蒙\" by zh.wikipedia.org (variant=zh-cn)"
    },
    "names": [
     "Edmund"
@@ -1392,7 +1422,9 @@
     "fr": "Ferdinand",
     "ko": "페르디난드",
     "ru": "Фердинанд",
-    "zh": "費迪南（Ferdinand）"
+    "zh": "費迪南（Ferdinand）",
+    "zh-hans": "费迪南（Ferdinand）",
+    "zh-hans:from": "converted from \"費迪南（Ferdinand）\" by zh.wikipedia.org (variant=zh-cn)"
    },
    "names": [
     "Ferdinand"
@@ -1446,7 +1478,9 @@
     "hi": "फ़्रांसिस फ़्लूट",
     "id": "Francis Flute",
     "ja": "フラーンシス・フルート",
-    "zh": "法蘭西斯·弗魯特"
+    "zh": "法蘭西斯·弗魯特",
+    "zh-hans": "法兰西斯·弗鲁特",
+    "zh-hans:from": "converted from \"法蘭西斯·弗魯特\" by zh.wikipedia.org (variant=zh-cn)"
    },
    "names": [
     "Flute"
@@ -1475,7 +1509,9 @@
     "pl": "Fortinbras",
     "pt": "Fortimbrás",
     "ru": "Фортинбрас",
-    "zh": "福丁布拉"
+    "zh": "福丁布拉",
+    "zh-hans": "福丁布拉",
+    "zh-hans:from": "converted from \"福丁布拉\" by zh.wikipedia.org (variant=zh-cn)"
    },
    "names": [
     "Fortinbras"
@@ -1518,7 +1554,9 @@
     "ko": "거트루드",
     "pl": "Królowa Gertruda",
     "ru": "Гертруда",
-    "zh": "葛簇特"
+    "zh": "葛簇特",
+    "zh-hans": "葛簇特",
+    "zh-hans:from": "converted from \"葛簇特\" by zh.wikipedia.org (variant=zh-cn)"
    },
    "names": [
     "Gertrude"
@@ -1573,7 +1611,9 @@
     "ko": "망령 (햄릿 왕)",
     "pl": "Król Hamlet",
     "ru": "Призрак отца Гамлета",
-    "zh": "哈姆雷特国王"
+    "zh": "哈姆雷特国王",
+    "zh-hans": "哈姆雷特国王",
+    "zh-hans:from": "converted from \"哈姆雷特国王\" by zh.wikipedia.org (variant=zh-cn)"
    },
    "names": [
     "the Ghost"
@@ -1690,7 +1730,9 @@
     "pl": "Hamlet",
     "pt": "Príncipe Hamlet",
     "ru": "Гамлет",
-    "zh": "哈姆雷特王子"
+    "zh": "哈姆雷特王子",
+    "zh-hans": "哈姆雷特王子",
+    "zh-hans:from": "converted from \"哈姆雷特王子\" by zh.wikipedia.org (variant=zh-cn)"
    },
    "names": [
     "Hamlet"
@@ -1845,7 +1887,9 @@
     "ko": "호레이쇼",
     "pl": "Horacy",
     "ru": "Гораций",
-    "zh": "赫瑞修"
+    "zh": "赫瑞修",
+    "zh-hans": "赫瑞修",
+    "zh-hans:from": "converted from \"赫瑞修\" by zh.wikipedia.org (variant=zh-cn)"
    },
    "names": [
     "Horatio"
@@ -2093,7 +2137,9 @@
     "ko": "레어티스",
     "pl": "Laertes",
     "ru": "Лаэрт",
-    "zh": "雷爾提"
+    "zh": "雷爾提",
+    "zh-hans": "雷尔提",
+    "zh-hans:from": "converted from \"雷爾提\" by zh.wikipedia.org (variant=zh-cn)"
    },
    "names": [
     "Laertes"
@@ -2135,7 +2181,9 @@
     "it": "Frate Lorenzo",
     "ko": "프리어 로렌스",
     "ru": "отец Лоренцо",
-    "zh": "勞倫斯神父"
+    "zh": "勞倫斯神父",
+    "zh-hans": "劳伦斯神父",
+    "zh-hans:from": "converted from \"勞倫斯神父\" by zh.wikipedia.org (variant=zh-cn)"
    },
    "names": [
     "Friar Lawrence",
@@ -2291,7 +2339,9 @@
     "pl": "Makbet (postać)",
     "pt": "Macbeth (personagem)",
     "ru": "Макбет",
-    "zh": "馬克白"
+    "zh": "馬克白",
+    "zh-hans": "马克白",
+    "zh-hans:from": "converted from \"馬克白\" by zh.wikipedia.org (variant=zh-cn)"
    },
    "names": [
     "Macbeth"
@@ -2320,7 +2370,9 @@
     "ja": "マクダフ",
     "mul": "Macduff",
     "ru": "Макдуф",
-    "zh": "麥克德夫"
+    "zh": "麥克德夫",
+    "zh-hans": "麦克德夫",
+    "zh-hans:from": "converted from \"麥克德夫\" by zh.wikipedia.org (variant=zh-cn)"
    },
    "names": [
     "Macduff"
@@ -2351,7 +2403,9 @@
     "ja": "マルカム",
     "ko": "맬컴",
     "ru": "Малкольм",
-    "zh": "馬爾柯姆"
+    "zh": "馬爾柯姆",
+    "zh-hans": "马尔柯姆",
+    "zh-hans:from": "converted from \"馬爾柯姆\" by zh.wikipedia.org (variant=zh-cn)"
    },
    "names": [
     "Malcolm"
@@ -2374,7 +2428,9 @@
     "hi": "मालवोलियो",
     "it": "Malvolio",
     "ja": "マルヴォーリオ",
-    "zh": "馬伏里奧"
+    "zh": "馬伏里奧",
+    "zh-hans": "马伏里奥",
+    "zh-hans:from": "converted from \"馬伏里奧\" by zh.wikipedia.org (variant=zh-cn)"
    },
    "names": [
     "Malvolio"
@@ -2422,7 +2478,9 @@
     "fr": "Maria",
     "ja": "マライア",
     "ru": "Мария",
-    "zh": "麻莉亞"
+    "zh": "麻莉亞",
+    "zh-hans": "麻莉亚",
+    "zh-hans:from": "converted from \"麻莉亞\" by zh.wikipedia.org (variant=zh-cn)"
    },
    "names": [
     "Maria"
@@ -2511,7 +2569,9 @@
     "pt-br": "Miranda",
     "ru": "Миранда",
     "vi": "Miranda",
-    "zh": "米蘭達（Miranda）"
+    "zh": "米蘭達（Miranda）",
+    "zh-hans": "米兰达（Miranda）",
+    "zh-hans:from": "converted from \"米蘭達（Miranda）\" by zh.wikipedia.org (variant=zh-cn)"
    },
    "names": [
     "Miranda"
@@ -2572,7 +2632,9 @@
     "es": "Nodriza de Julieta",
     "fr": "Infirmière",
     "ru": "Кормилица",
-    "zh": "護士"
+    "zh": "護士",
+    "zh-hans": "护士",
+    "zh-hans:from": "converted from \"護士\" by zh.wikipedia.org (variant=zh-cn)"
    },
    "names": [
     "The Nurse"
@@ -2616,6 +2678,8 @@
     "pt": "Oberon",
     "ru": "Оберон",
     "zh": "奥伯伦",
+    "zh-hans": "奥伯伦",
+    "zh-hans:from": "converted from \"奥伯伦\" by zh.wikipedia.org (variant=zh-cn)",
     "zh-hant": "woah"
    },
    "names": [
@@ -2655,7 +2719,9 @@
     "fr": "Olivia",
     "ja": "オリヴィア",
     "ru": "Оливия",
-    "zh": "奥利維亞"
+    "zh": "奥利維亞",
+    "zh-hans": "奥利维亚",
+    "zh-hans:from": "converted from \"奥利維亞\" by zh.wikipedia.org (variant=zh-cn)"
    },
    "names": [
     "Olivia"
@@ -2791,7 +2857,9 @@
     "pl": "Otello",
     "pt": "Otelo (personagem)",
     "ru": "Отелло",
-    "zh": "奧賽羅"
+    "zh": "奧賽羅",
+    "zh-hans": "奥赛罗",
+    "zh-hans:from": "converted from \"奧賽羅\" by zh.wikipedia.org (variant=zh-cn)"
    },
    "names": [
     "Othello"
@@ -2822,7 +2890,9 @@
     "hi": "काउंट पेरिस",
     "it": "Conte Paride",
     "ru": "граф Парис",
-    "zh": "帕里斯伯爵"
+    "zh": "帕里斯伯爵",
+    "zh-hans": "帕里斯伯爵",
+    "zh-hans:from": "converted from \"帕里斯伯爵\" by zh.wikipedia.org (variant=zh-cn)"
    },
    "names": [
     "Paris"
@@ -2897,7 +2967,9 @@
     "pl": "Poloniusz",
     "pt": "Polónio",
     "ru": "Полоний",
-    "zh": "波隆尼爾"
+    "zh": "波隆尼爾",
+    "zh-hans": "波隆尼尔",
+    "zh-hans:from": "converted from \"波隆尼爾\" by zh.wikipedia.org (variant=zh-cn)"
    },
    "names": [
     "Polonius"
@@ -2928,7 +3000,9 @@
     "hi": "पोर्टिया (द मर्चेंट ऑफ वेनिस)",
     "ja": "ポーシャ (ヴェニスの商人)",
     "ko": "포샤",
-    "zh": "波西亞"
+    "zh": "波西亞",
+    "zh-hans": "波西亚",
+    "zh-hans:from": "converted from \"波西亞\" by zh.wikipedia.org (variant=zh-cn)"
    },
    "names": [
     "Portia"
@@ -2971,7 +3045,9 @@
     "pt-br": "Prospero",
     "ru": "Просперо",
     "vi": "Prospero",
-    "zh": "普洛斯彼羅"
+    "zh": "普洛斯彼羅",
+    "zh-hans": "普洛斯彼罗",
+    "zh-hans:from": "converted from \"普洛斯彼羅\" by zh.wikipedia.org (variant=zh-cn)"
    },
    "names": [
     "Prospero"
@@ -3015,7 +3091,9 @@
     "it": "Puck",
     "ja": "パック",
     "ru": "Пак",
-    "zh": "帕克"
+    "zh": "帕克",
+    "zh-hans": "帕克",
+    "zh-hans:from": "converted from \"帕克\" by zh.wikipedia.org (variant=zh-cn)"
    },
    "names": [
     "Puck"
@@ -3134,7 +3212,9 @@
     "pt": "Romeu",
     "ru": "Ромео Монтекки",
     "vi": "Romeo",
-    "zh": "羅密歐·蒙泰古"
+    "zh": "羅密歐·蒙泰古",
+    "zh-hans": "罗密欧·蒙泰古",
+    "zh-hans:from": "converted from \"羅密歐·蒙泰古\" by zh.wikipedia.org (variant=zh-cn)"
    },
    "names": [
     "Romeo"
@@ -3163,7 +3243,9 @@
     "en": "Rosalind",
     "fr": "Rosalinde",
     "ja": "ロザリンド",
-    "zh": "羅莎琳"
+    "zh": "羅莎琳",
+    "zh-hans": "罗莎琳",
+    "zh-hans:from": "converted from \"羅莎琳\" by zh.wikipedia.org (variant=zh-cn)"
    },
    "names": [
     "Rosalind"
@@ -3188,7 +3270,9 @@
    "labels": {
     "en": "Rosaline",
     "ja": "ロザライン",
-    "zh": "蘿莎琳"
+    "zh": "蘿莎琳",
+    "zh-hans": "萝莎琳",
+    "zh-hans:from": "converted from \"蘿莎琳\" by zh.wikipedia.org (variant=zh-cn)"
    },
    "names": [
     "Rosaline"
@@ -3222,6 +3306,8 @@
     "pl": "Rosencrantz i Guildenstern",
     "ru": "Розенкранц и Гильденстерн",
     "zh": "羅生克蘭和蓋登思鄧",
+    "zh-hans": "罗生克兰和盖登思邓",
+    "zh-hans:from": "converted from \"羅生克蘭和蓋登思鄧\" by zh.wikipedia.org (variant=zh-cn)",
     "zh-hant": "羅生剋蘭和蓋登思鄧"
    },
    "names": [
@@ -3278,7 +3364,9 @@
     "pl": "Shylock",
     "pt": "Shylock",
     "ru": "Шейлок",
-    "zh": "夏洛克"
+    "zh": "夏洛克",
+    "zh-hans": "夏洛克",
+    "zh-hans:from": "converted from \"夏洛克\" by zh.wikipedia.org (variant=zh-cn)"
    },
    "names": [
     "Shylock"
@@ -3317,7 +3405,9 @@
     "de": "Christoph Schlau",
     "en": "Christopher Sly",
     "ru": "Кристофер Слай",
-    "zh": "克利斯朵夫·斯赖"
+    "zh": "克利斯朵夫·斯赖",
+    "zh-hans": "克利斯朵夫·斯赖",
+    "zh-hans:from": "converted from \"克利斯朵夫·斯赖\" by zh.wikipedia.org (variant=zh-cn)"
    },
    "names": [
     "Christopher Sly"
@@ -3355,7 +3445,9 @@
     "en": "Stephano",
     "fr": "Stephano",
     "ko": "스테파노",
-    "zh": "史蒂芬諾"
+    "zh": "史蒂芬諾",
+    "zh-hans": "史蒂芬诺",
+    "zh-hans:from": "converted from \"史蒂芬諾\" by zh.wikipedia.org (variant=zh-cn)"
    },
    "names": [
     "Stephano"
@@ -3377,7 +3469,9 @@
     "it": "Sicorace",
     "pt": "Sycorax (Shakespeare)",
     "ru": "Сикоракса",
-    "zh": "西科拉克斯"
+    "zh": "西科拉克斯",
+    "zh-hans": "西科拉克斯",
+    "zh-hans:from": "converted from \"西科拉克斯\" by zh.wikipedia.org (variant=zh-cn)"
    },
    "names": [
     "Sycorax"
@@ -3453,6 +3547,8 @@
     "pt": "Sininho",
     "ru": "Динь-Динь",
     "zh": "奇妙仙子",
+    "zh-hans": "奇妙仙子",
+    "zh-hans:from": "converted from \"奇妙仙子\" by zh.wikipedia.org (variant=zh-cn)",
     "zh-hant": "Tinker bell"
    },
    "names": [
@@ -3500,7 +3596,9 @@
     "ko": "티타니아",
     "pt": "Titania",
     "ru": "Титания",
-    "zh": "titania"
+    "zh": "titania",
+    "zh-hans": "titania",
+    "zh-hans:from": "converted from \"titania\" by zh.wikipedia.org (variant=zh-cn)"
    },
    "names": [
     "Titania"
@@ -3540,7 +3638,9 @@
     "fr": "Sir Toby Belch",
     "ja": "トービー・ベルチ",
     "ru": "Тоби Белч",
-    "zh": "托比·貝爾奇爵士"
+    "zh": "托比·貝爾奇爵士",
+    "zh-hans": "托比·贝尔奇爵士",
+    "zh-hans:from": "converted from \"托比·貝爾奇爵士\" by zh.wikipedia.org (variant=zh-cn)"
    },
    "names": [
     "Sir Toby Belch",
@@ -3566,7 +3666,9 @@
     "es": "Touchstone",
     "ja": "タッチストーン",
     "pl": "Probierczyk",
-    "zh": "試金石"
+    "zh": "試金石",
+    "zh-hans": "试金石",
+    "zh-hans:from": "converted from \"試金石\" by zh.wikipedia.org (variant=zh-cn)"
    },
    "names": [
     "Touchstone"
@@ -3638,7 +3740,9 @@
     "ja": "タック修道士",
     "pl": "Brat Tuck",
     "ru": "брат Тук",
-    "zh": "塔克修士"
+    "zh": "塔克修士",
+    "zh-hans": "塔克修士",
+    "zh-hans:from": "converted from \"塔克修士\" by zh.wikipedia.org (variant=zh-cn)"
    },
    "names": [
     "Friar Tuck"
@@ -3690,7 +3794,9 @@
     "mul": "Tybalt",
     "pl": "Tybalt",
     "ru": "Тибальт",
-    "zh": "提伯爾特"
+    "zh": "提伯爾特",
+    "zh-hans": "提伯尔特",
+    "zh-hans:from": "converted from \"提伯爾特\" by zh.wikipedia.org (variant=zh-cn)"
    },
    "names": [
     "Tybalt"
@@ -3836,7 +3942,9 @@
     "ru": "Марк Антоний",
     "th": "มาร์ก แอนโทนี",
     "vi": "Marcus Antonius",
-    "zh": "马克·安东尼"
+    "zh": "马克·安东尼",
+    "zh-hans": "马克·安东尼",
+    "zh-hans:from": "converted from \"马克·安东尼\" by zh.wikipedia.org (variant=zh-cn)"
    },
    "names": [
     "Mark Antony"
@@ -4297,7 +4405,9 @@
     "pl": "Serwiliusz Kaska",
     "pt": "Públio Servílio Casca Longo",
     "ru": "Сервилий Каска",
-    "zh": "卡斯卡"
+    "zh": "卡斯卡",
+    "zh-hans": "卡斯卡",
+    "zh-hans:from": "converted from \"卡斯卡\" by zh.wikipedia.org (variant=zh-cn)"
    },
    "names": [
     "Casca"
@@ -4595,7 +4705,9 @@
     "ru": "Клеопатра",
     "th": "คลีโอพัตรา",
     "vi": "Cleopatra VII",
-    "zh": "克娄巴特拉七世"
+    "zh": "克娄巴特拉七世",
+    "zh-hans": "克娄巴特拉七世",
+    "zh-hans:from": "converted from \"克娄巴特拉七世\" by zh.wikipedia.org (variant=zh-cn)"
    },
    "names": [
     "Cleopatra"
@@ -4812,7 +4924,9 @@
     "pt": "Cneu Domício Enobarbo",
     "pt-br": "Cneu Domício Enobarbo",
     "ru": "Гней Домиций Агенобарб",
-    "zh": "格奈烏斯·多米提烏斯·阿赫諾巴爾比"
+    "zh": "格奈烏斯·多米提烏斯·阿赫諾巴爾比",
+    "zh-hans": "格奈乌斯·多米提乌斯·阿赫诺巴尔比",
+    "zh-hans:from": "converted from \"格奈烏斯·多米提烏斯·阿赫諾巴爾比\" by zh.wikipedia.org (variant=zh-cn)"
    },
    "names": [
     "Enobarbus"
@@ -5379,7 +5493,9 @@
     "ru": "Генрих VIII Тюдор",
     "th": "พระเจ้าเฮนรีที่ 8 แห่งอังกฤษ",
     "vi": "Henry VIII của Anh",
-    "zh": "亨利八世"
+    "zh": "亨利八世",
+    "zh-hans": "亨利八世",
+    "zh-hans:from": "converted from \"亨利八世\" by zh.wikipedia.org (variant=zh-cn)"
    },
    "names": [
     "King Henry VIII"
@@ -5565,7 +5681,9 @@
     "ru": "Яков I",
     "th": "พระเจ้าเจมส์ที่ 1 แห่งอังกฤษ",
     "vi": "James VI và I",
-    "zh": "詹姆斯一世"
+    "zh": "詹姆斯一世",
+    "zh-hans": "詹姆斯一世",
+    "zh-hans:from": "converted from \"詹姆斯一世\" by zh.wikipedia.org (variant=zh-cn)"
    },
    "names": [
     "King James I"
@@ -5905,6 +6023,8 @@
     "ru": "Кристофер Марло",
     "vi": "Christopher Marlowe",
     "zh": "克里斯托弗·馬洛",
+    "zh-hans": "克里斯托弗·马洛",
+    "zh-hans:from": "converted from \"克里斯托弗·馬洛\" by zh.wikipedia.org (variant=zh-cn)",
     "zh-hant": "克里斯托弗·馬洛"
    },
    "names": [
@@ -6047,7 +6167,9 @@
     "ru": "Мария I",
     "th": "สมเด็จพระราชินีนาถแมรีที่ 1 แห่งอังกฤษ",
     "vi": "Mary I của Anh",
-    "zh": "玛丽一世"
+    "zh": "玛丽一世",
+    "zh-hans": "玛丽一世",
+    "zh-hans:from": "converted from \"玛丽一世\" by zh.wikipedia.org (variant=zh-cn)"
    },
    "names": [
     "Queen Mary I"
@@ -6128,7 +6250,9 @@
     "ru": "Джон Мильтон",
     "th": "จอห์น มิลตัน",
     "vi": "John Milton",
-    "zh": "约翰·弥尔顿"
+    "zh": "约翰·弥尔顿",
+    "zh-hans": "约翰·弥尔顿",
+    "zh-hans:from": "converted from \"约翰·弥尔顿\" by zh.wikipedia.org (variant=zh-cn)"
    },
    "names": [
     "John Milton"
@@ -6583,7 +6707,9 @@
     "ru": "Ричард II",
     "th": "พระเจ้าริชาร์ดที่ 2 แห่งอังกฤษ",
     "vi": "Richard II của Anh",
-    "zh": "理查二世"
+    "zh": "理查二世",
+    "zh-hans": "理查二世",
+    "zh-hans:from": "converted from \"理查二世\" by zh.wikipedia.org (variant=zh-cn)"
    },
    "names": [
     "Richard II"
@@ -6895,7 +7021,9 @@
    "id": "Q4787912",
    "labels": {
     "en": "Arden",
-    "zh": "雅頓 (瓦立克郡)"
+    "zh": "雅頓 (瓦立克郡)",
+    "zh-hans": "雅顿 (瓦立克郡)",
+    "zh-hans:from": "converted from \"雅頓 (瓦立克郡)\" by zh.wikipedia.org (variant=zh-cn)"
    },
    "names": [
     "Forest of Arden"
@@ -7447,7 +7575,9 @@
     "ru": "Дельфы",
     "th": "เดลฟี",
     "vi": "Delphi",
-    "zh": "德尔斐"
+    "zh": "德尔斐",
+    "zh-hans": "德尔斐",
+    "zh-hans:from": "converted from \"德尔斐\" by zh.wikipedia.org (variant=zh-cn)"
    },
    "names": [
     "Delphi"
@@ -7746,6 +7876,8 @@
     "th": "เฮลซิงเงอร์",
     "vi": "Helsingør",
     "zh": "赫爾辛格",
+    "zh-hans": "赫尔辛格",
+    "zh-hans:from": "converted from \"赫爾辛格\" by zh.wikipedia.org (variant=zh-cn)",
     "zh-hant": "赫爾辛格"
    },
    "names": [
@@ -8470,7 +8602,9 @@
     "pt": "Ilíria",
     "ru": "Иллирия",
     "th": "อิลิเรีย",
-    "zh": "伊利里亚"
+    "zh": "伊利里亚",
+    "zh-hans": "伊利里亚",
+    "zh-hans:from": "converted from \"伊利里亚\" by zh.wikipedia.org (variant=zh-cn)"
    },
    "names": [
     "Illyria"
@@ -8955,6 +9089,8 @@
     "th": "แอฟริกาเหนือ",
     "vi": "Bắc Phi",
     "zh": "北部非洲",
+    "zh-hans": "北部非洲",
+    "zh-hans:from": "converted from \"北部非洲\" by zh.wikipedia.org (variant=zh-cn)",
     "zh-hant": "北非"
    },
    "names": [
@@ -9312,7 +9448,9 @@
     "fr": "The Rose",
     "it": "The Rose",
     "ja": "ローズ座",
-    "zh": "玫瑰劇院"
+    "zh": "玫瑰劇院",
+    "zh-hans": "玫瑰剧院",
+    "zh-hans:from": "converted from \"玫瑰劇院\" by zh.wikipedia.org (variant=zh-cn)"
    },
    "names": [
     "The Rose Theatre"
@@ -10050,7 +10188,9 @@
     "mul": "Lord Chamberlain's Men",
     "pl": "Trupa Lorda Szambelana",
     "ru": "Слуги лорда-камергера",
-    "zh": "宫内大臣剧团"
+    "zh": "宫内大臣剧团",
+    "zh-hans": "宫内大臣剧团",
+    "zh-hans:from": "converted from \"宫内大臣剧团\" by zh.wikipedia.org (variant=zh-cn)"
    },
    "names": [
     "The Lord Chamberlain's Men"
@@ -10206,7 +10346,9 @@
     "pl": "Wszystko dobre, co się dobrze kończy",
     "pt": "All's Well That Ends Well",
     "ru": "Всё хорошо, что хорошо кончается",
-    "zh": "終成眷屬"
+    "zh": "終成眷屬",
+    "zh-hans": "终成眷属",
+    "zh-hans:from": "converted from \"終成眷屬\" by zh.wikipedia.org (variant=zh-cn)"
    },
    "names": [
     "All's Well That Ends Well"
@@ -10277,7 +10419,9 @@
     "pl": "Antoniusz i Kleopatra",
     "pt": "Antony and Cleopatra",
     "ru": "Антоний и Клеопатра",
-    "zh": "安東尼與克麗奧佩托拉"
+    "zh": "安東尼與克麗奧佩托拉",
+    "zh-hans": "安东尼与克丽奥佩托拉",
+    "zh-hans:from": "converted from \"安東尼與克麗奧佩托拉\" by zh.wikipedia.org (variant=zh-cn)"
    },
    "names": [
     "Antony and Cleopatra"
@@ -10524,7 +10668,9 @@
     "pl": "Cymbelin",
     "pt": "Cymbeline",
     "ru": "Цимбелин",
-    "zh": "辛白林"
+    "zh": "辛白林",
+    "zh-hans": "辛白林",
+    "zh-hans:from": "converted from \"辛白林\" by zh.wikipedia.org (variant=zh-cn)"
    },
    "names": [
     "Cymbeline"
@@ -10748,7 +10894,9 @@
     "pt": "A Trágica História do Doutor Fausto",
     "pt-br": "A Trágica História do Doutor Fausto",
     "ru": "Трагическая история доктора Фауста",
-    "zh": "浮士德博士悲劇"
+    "zh": "浮士德博士悲劇",
+    "zh-hans": "浮士德博士悲剧",
+    "zh-hans:from": "converted from \"浮士德博士悲劇\" by zh.wikipedia.org (variant=zh-cn)"
    },
    "names": [
     "Doctor Faustus"
@@ -10898,7 +11046,9 @@
     "pl": "Henryk IV, część 1",
     "pt": "Henry IV, Part 1",
     "ru": "Генрих IV, часть 1",
-    "zh": "亨利四世：第一部分"
+    "zh": "亨利四世：第一部分",
+    "zh-hans": "亨利四世：第一部分",
+    "zh-hans:from": "converted from \"亨利四世：第一部分\" by zh.wikipedia.org (variant=zh-cn)"
    },
    "names": [
     "Henry IV, Part 1",
@@ -10966,7 +11116,9 @@
     "pl": "Henryk IV, część 2",
     "pt": "Henry IV, Part 2",
     "ru": "Генрих IV, часть 2",
-    "zh": "亨利四世：第二部分"
+    "zh": "亨利四世：第二部分",
+    "zh-hans": "亨利四世：第二部分",
+    "zh-hans:from": "converted from \"亨利四世：第二部分\" by zh.wikipedia.org (variant=zh-cn)"
    },
    "names": [
     "Henry IV, Part 2"
@@ -11086,7 +11238,9 @@
     "pl": "Henryk VI, część 2",
     "pt": "Henry VI, Part 2",
     "ru": "Генрих VI, часть 2",
-    "zh": "亨利六世（中）"
+    "zh": "亨利六世（中）",
+    "zh-hans": "亨利六世（中）",
+    "zh-hans:from": "converted from \"亨利六世（中）\" by zh.wikipedia.org (variant=zh-cn)"
    },
    "names": [
     "Henry VI, Part 2"
@@ -11133,7 +11287,9 @@
     "pl": "Henryk VIII",
     "pt": "Henry VIII",
     "ru": "Генрих VIII (пьеса)",
-    "zh": "亨利八世"
+    "zh": "亨利八世",
+    "zh-hans": "亨利八世",
+    "zh-hans:from": "converted from \"亨利八世\" by zh.wikipedia.org (variant=zh-cn)"
    },
    "names": [
     "Henry VIII"
@@ -11275,7 +11431,9 @@
     "pl": "Stracone zachody miłości",
     "pt": "Love's Labour's Lost",
     "ru": "Бесплодные усилия любви",
-    "zh": "愛的徒勞"
+    "zh": "愛的徒勞",
+    "zh-hans": "爱的徒劳",
+    "zh-hans:from": "converted from \"愛的徒勞\" by zh.wikipedia.org (variant=zh-cn)"
    },
    "names": [
     "Love's Labour's Lost"
@@ -11403,7 +11561,9 @@
     "pl": "Miarka za miarkę",
     "pt": "Measure for Measure",
     "ru": "Мера за меру",
-    "zh": "一報還一報"
+    "zh": "一報還一報",
+    "zh-hans": "一报还一报",
+    "zh-hans:from": "converted from \"一報還一報\" by zh.wikipedia.org (variant=zh-cn)"
    },
    "names": [
     "Measure for Measure"
@@ -11695,6 +11855,8 @@
     "pt": "Pericles, Prince of Tyre",
     "ru": "Перикл",
     "zh": "泰爾親王佩利克爾斯",
+    "zh-hans": "泰尔亲王佩利克尔斯",
+    "zh-hans:from": "converted from \"泰爾親王佩利克爾斯\" by zh.wikipedia.org (variant=zh-cn)",
     "zh-hant": "泰爾親王佩利克爾斯"
    },
    "names": [
@@ -11740,7 +11902,9 @@
     "pl": "Ryszard II",
     "pt": "Richard II",
     "ru": "Ричард II",
-    "zh": "理查二世"
+    "zh": "理查二世",
+    "zh-hans": "理查二世",
+    "zh-hans:from": "converted from \"理查二世\" by zh.wikipedia.org (variant=zh-cn)"
    },
    "names": [
     "Richard II"
@@ -11901,6 +12065,8 @@
     "th": "โรเมโอและจูเลียต",
     "vi": "Romeo và Juliet",
     "zh": "羅密歐與朱麗葉",
+    "zh-hans": "罗密欧与朱丽叶",
+    "zh-hans:from": "converted from \"羅密歐與朱麗葉\" by zh.wikipedia.org (variant=zh-cn)",
     "zh-hant": "羅密歐與茱麗葉"
    },
    "names": [
@@ -12105,7 +12271,9 @@
     "pl": "Tymon Ateńczyk",
     "pt": "Timon of Athens",
     "ru": "Тимон Афинский",
-    "zh": "雅典的泰门"
+    "zh": "雅典的泰门",
+    "zh-hans": "雅典的泰门",
+    "zh-hans:from": "converted from \"雅典的泰门\" by zh.wikipedia.org (variant=zh-cn)"
    },
    "names": [
     "Timon of Athens"
@@ -12229,7 +12397,9 @@
     "pl": "Troilus i Kresyda",
     "pt": "Troilo e Créssida",
     "ru": "Троил и Крессида",
-    "zh": "脫愛勒斯與克萊西達"
+    "zh": "脫愛勒斯與克萊西達",
+    "zh-hans": "脱爱勒斯与克莱西达",
+    "zh-hans:from": "converted from \"脫愛勒斯與克萊西達\" by zh.wikipedia.org (variant=zh-cn)"
    },
    "names": [
     "Troilus and Cressida"
@@ -12372,7 +12542,9 @@
     "pl": "Dwaj panowie z Werony",
     "pt": "The Two Gentlemen of Verona",
     "ru": "Два веронца",
-    "zh": "維洛那兩紳士"
+    "zh": "維洛那兩紳士",
+    "zh-hans": "维洛那两绅士",
+    "zh-hans:from": "converted from \"維洛那兩紳士\" by zh.wikipedia.org (variant=zh-cn)"
    },
    "names": [
     "The Two Gentlemen of Verona"
@@ -12502,7 +12674,9 @@
     "pl": "Wesołe kumoszki z Windsoru",
     "pt": "The Merry Wives of Windsor",
     "ru": "Виндзорские насмешницы",
-    "zh": "溫莎的風流婦人"
+    "zh": "溫莎的風流婦人",
+    "zh-hans": "温莎的风流妇人",
+    "zh-hans:from": "converted from \"溫莎的風流婦人\" by zh.wikipedia.org (variant=zh-cn)"
    },
    "names": [
     "The Merry Wives of Windsor"
@@ -12766,7 +12940,9 @@
     "pl": "Sonet 116",
     "pt": "Soneto 116",
     "ru": "Сонет 116",
-    "zh": "十四行诗 116 (莎士比亞)"
+    "zh": "十四行诗 116 (莎士比亞)",
+    "zh-hans": "十四行诗 116 (莎士比亚)",
+    "zh-hans:from": "converted from \"十四行诗 116 (莎士比亞)\" by zh.wikipedia.org (variant=zh-cn)"
    },
    "names": [
     "Sonnet 116"
@@ -12848,7 +13024,9 @@
     "pl": "Sonet 18",
     "pt": "Soneto 18",
     "ru": "Сонет 18",
-    "zh": "十四行诗 18"
+    "zh": "十四行诗 18",
+    "zh-hans": "十四行诗 18",
+    "zh-hans:from": "converted from \"十四行诗 18\" by zh.wikipedia.org (variant=zh-cn)"
    },
    "names": [
     "Sonnet 18"
@@ -12931,7 +13109,9 @@
     "pt": "Sonetos de Shakespeare",
     "ru": "сонеты Уильяма Шекспира",
     "vi": "Các bài sonnet của William Shakespeare",
-    "zh": "莎士比亞十四行詩"
+    "zh": "莎士比亞十四行詩",
+    "zh-hans": "莎士比亚十四行诗",
+    "zh-hans:from": "converted from \"莎士比亞十四行詩\" by zh.wikipedia.org (variant=zh-cn)"
    },
    "names": [
     "The Sonnets"

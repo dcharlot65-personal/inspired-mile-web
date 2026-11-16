@@ -9,6 +9,8 @@ export const LANGS = ['es', 'fr', 'de', 'it', 'pt', 'pl', 'ru', 'ar', 'hi', 'zh'
 /** Languages written in the Latin alphabet: an English name can stand in one of these, never in the others. */
 export const LATIN = new Set(['es', 'fr', 'de', 'it', 'pt', 'pl', 'vi', 'id']);
 
+const PART_OK = new Set(['es', 'fr', 'de', 'it', 'pt', 'pl', 'ru', 'ar', 'vi', 'id']);
+
 export const wikidata = JSON.parse(readFileSync(join(HERE, 'wikidata-labels.json'), 'utf8'));
 export const entities = wikidata.entities;
 
@@ -69,18 +71,27 @@ export function nameOf(key, lang, which = 0) {
     const found = sourcesOf(key, lang).find((s) => s.value.toLocaleLowerCase().includes(pick.name.toLocaleLowerCase()));
     return { name: pick.name, how: found ? 'pick' : 'unsourced', where: found?.where, note: pick.note };
   }
-  const label = labelOf(e, lang);
+  const strip = (v) => v?.replace(/\s*[(（][^)）]*[)）]\s*$/u, '');
   const enLabel = e.labels.en ?? '';
+  let label = labelOf(e, lang);
+  let from = 'label';
+  // No label, or a label that only repeats the English one: the title of that language's Wikipedia article.
+  const site = strip(e.sitelinks?.[lang]);
+  if (site && (!label || (/^[pw]\./.test(key) && label === enLabel && site !== enLabel))) { label = site; from = 'sitelink'; }
   if (label) {
-    if (enLabel === game || enLabel === game.replace(/^The /, '')) return { name: label, how: 'label' };
-    // The English label says more than the game does ("Prince Hamlet" for "Hamlet"): take the same words.
+    const same = (x) => x === game || x === game.replace(/^The /, '');
+    if (same(enLabel)) return { name: label, how: from };
+    // The English label says more than the game does ("Prince Hamlet" for "Hamlet", "Pericles, Prince
+    // of Tyre" for "Pericles", "Gaius Julius Caesar" for "Caesar"): take the same part of this label.
+    if (enLabel.startsWith(game + ', ') && label.includes(', ')) return { name: label.split(', ')[0], how: 'part', where: label };
     const en = tokens(enLabel), g = tokens(game), mine = tokens(label);
+    const sep = label.includes('・') ? '・' : label.includes('·') ? '·' : ' ';
     const at = en.findIndex((_, i) => g.every((w, j) => en[i + j] === w));
-    if (at >= 0 && mine.length === en.length) {
-      const sep = label.includes('・') ? '・' : label.includes('·') ? '·' : ' ';
-      return { name: mine.slice(at, at + g.length).join(sep), how: 'part', where: label };
-    }
-    return { name: label, how: 'label', check: `English label is "${enLabel}", the game says "${game}"` };
+    // Only where a title comes before the name, as in English: in Korean, Japanese, Hindi, Chinese and Thai it does not.
+    if (!PART_OK.has(lang)) return { name: label, how: from, check: `English label is "${enLabel}", the game says "${game}"` };
+    if (at >= 0 && mine.length === en.length) return { name: mine.slice(at, at + g.length).join(sep), how: 'part', where: label };
+    if (at >= 0 && at + g.length === en.length && mine.length > g.length && en.length > g.length) return { name: mine.slice(-g.length).join(sep), how: 'part', where: label };
+    return { name: label, how: from, check: `English label is "${enLabel}", the game says "${game}"` };
   }
   if (LATIN.has(lang) && e.labels.mul && (e.labels.mul === game || e.labels.mul === enLabel)) return { name: game, how: 'mul' };
   return { name: game, how: 'english' };
