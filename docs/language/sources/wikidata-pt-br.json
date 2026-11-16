@@ -1,0 +1,542 @@
+{
+ "fetched": "2026-11-16",
+ "api": "https://www.wikidata.org/w/api.php?action=wbgetentities (languages=pt-br|pt)",
+ "licence": "CC0 1.0",
+ "items": {
+  "Q10322723": {
+   "lastrevid": 2568596710,
+   "pt-br": null,
+   "pt": "Macbeth (personagem)",
+   "aliases": []
+  },
+  "Q1048": {
+   "lastrevid": 2569135947,
+   "pt-br": "Júlio César",
+   "pt": "Júlio César",
+   "aliases": []
+  },
+  "Q104871": {
+   "lastrevid": 2546594060,
+   "pt-br": "A Midsummer Night's Dream",
+   "pt": "Sonho em uma noite de verão",
+   "aliases": []
+  },
+  "Q1092632": {
+   "lastrevid": 2569429898,
+   "pt-br": null,
+   "pt": "Julieta Capuleto (personagem)",
+   "aliases": []
+  },
+  "Q1139234": {
+   "lastrevid": 2530654700,
+   "pt-br": null,
+   "pt": "Oberon",
+   "aliases": []
+  },
+  "Q1232349": {
+   "lastrevid": 2512957288,
+   "pt-br": null,
+   "pt": "Henry IV, Part 2",
+   "aliases": []
+  },
+  "Q1248616": {
+   "lastrevid": 2530985547,
+   "pt-br": null,
+   "pt": null,
+   "aliases": []
+  },
+  "Q130283": {
+   "lastrevid": 2555895963,
+   "pt-br": "Macbeth",
+   "pt": "Macbeth",
+   "aliases": []
+  },
+  "Q150827": {
+   "lastrevid": 2568684663,
+   "pt-br": "Frankenstein",
+   "pt": "Frankenstein",
+   "aliases": []
+  },
+  "Q1521549": {
+   "lastrevid": 2540210793,
+   "pt-br": null,
+   "pt": "Mundo inferior",
+   "aliases": []
+  },
+  "Q15829750": {
+   "lastrevid": 2531072537,
+   "pt-br": null,
+   "pt": null,
+   "aliases": []
+  },
+  "Q160730": {
+   "lastrevid": 2569184207,
+   "pt-br": null,
+   "pt": "Medusa",
+   "aliases": []
+  },
+  "Q1650633": {
+   "lastrevid": 2569431485,
+   "pt-br": null,
+   "pt": "Yorick",
+   "aliases": []
+  },
+  "Q16867": {
+   "lastrevid": 2565595885,
+   "pt-br": "Edgar Allan Poe",
+   "pt": "Edgar Allan Poe",
+   "aliases": []
+  },
+  "Q172248": {
+   "lastrevid": 2567934765,
+   "pt-br": "Marco Júnio Bruto",
+   "pt": "Marco Júnio Bruto",
+   "aliases": []
+  },
+  "Q1767900": {
+   "lastrevid": 2569444912,
+   "pt-br": null,
+   "pt": null,
+   "aliases": []
+  },
+  "Q1800888": {
+   "lastrevid": 2568385993,
+   "pt-br": null,
+   "pt": "Ofélia",
+   "aliases": []
+  },
+  "Q1811294": {
+   "lastrevid": 2569228100,
+   "pt-br": null,
+   "pt": null,
+   "aliases": []
+  },
+  "Q181598": {
+   "lastrevid": 2565806704,
+   "pt-br": "Rei Lear",
+   "pt": "Rei Lear",
+   "aliases": [
+    "O Rei Lear",
+    "King Lear"
+   ]
+  },
+  "Q2027936": {
+   "lastrevid": 2555905174,
+   "pt-br": null,
+   "pt": null,
+   "aliases": []
+  },
+  "Q2028": {
+   "lastrevid": 2570451519,
+   "pt-br": "Verona",
+   "pt": "Verona",
+   "aliases": []
+  },
+  "Q206400": {
+   "lastrevid": 2552171526,
+   "pt-br": "O mercador de veneza",
+   "pt": "The Merchant of Venice",
+   "aliases": []
+  },
+  "Q207370": {
+   "lastrevid": 2557889214,
+   "pt-br": "Caio Cássio Longino",
+   "pt": "Caio Cássio Longino",
+   "aliases": []
+  },
+  "Q2083848": {
+   "lastrevid": 2481346148,
+   "pt-br": null,
+   "pt": null,
+   "aliases": []
+  },
+  "Q211778": {
+   "lastrevid": 2554083174,
+   "pt-br": null,
+   "pt": "Lake District",
+   "aliases": []
+  },
+  "Q215750": {
+   "lastrevid": 2545481281,
+   "pt-br": null,
+   "pt": "Julius Caesar",
+   "aliases": []
+  },
+  "Q2190927": {
+   "lastrevid": 2570099384,
+   "pt-br": null,
+   "pt": null,
+   "aliases": []
+  },
+  "Q22": {
+   "lastrevid": 2570388018,
+   "pt-br": "Escócia",
+   "pt": "Escócia",
+   "aliases": []
+  },
+  "Q220": {
+   "lastrevid": 2570460591,
+   "pt-br": "Roma",
+   "pt": "Roma",
+   "aliases": [
+    "A Cidade Eterna"
+   ]
+  },
+  "Q221211": {
+   "lastrevid": 2567066188,
+   "pt-br": null,
+   "pt": "Twelfth Night",
+   "aliases": []
+  },
+  "Q22726": {
+   "lastrevid": 2549689668,
+   "pt-br": null,
+   "pt": "The Raven",
+   "aliases": []
+  },
+  "Q228494": {
+   "lastrevid": 2570423737,
+   "pt-br": "Elizabeth Barrett Browning",
+   "pt": "Elizabeth Barrett Browning",
+   "aliases": []
+  },
+  "Q2295398": {
+   "lastrevid": 2555908041,
+   "pt-br": null,
+   "pt": null,
+   "aliases": []
+  },
+  "Q2332221": {
+   "lastrevid": 2569852096,
+   "pt-br": null,
+   "pt": "Titania",
+   "aliases": []
+  },
+  "Q236596": {
+   "lastrevid": 2539472166,
+   "pt-br": "Christina Rossetti",
+   "pt": "Christina Rossetti",
+   "aliases": []
+  },
+  "Q2412073": {
+   "lastrevid": 2570064295,
+   "pt-br": null,
+   "pt": null,
+   "aliases": []
+  },
+  "Q2447542": {
+   "lastrevid": 2569810306,
+   "pt-br": null,
+   "pt": "Príncipe Hamlet",
+   "aliases": []
+  },
+  "Q2454065": {
+   "lastrevid": 2569662547,
+   "pt-br": null,
+   "pt": "Lady Macbeth",
+   "aliases": []
+  },
+  "Q2527863": {
+   "lastrevid": 2560755527,
+   "pt-br": null,
+   "pt": "Soneto 18",
+   "aliases": []
+  },
+  "Q26833": {
+   "lastrevid": 2555914676,
+   "pt-br": "Otelo, o Mouro de Veneza",
+   "pt": "Otelo, o Mouro de Veneza",
+   "aliases": []
+  },
+  "Q3140503": {
+   "lastrevid": 2569841041,
+   "pt-br": null,
+   "pt": null,
+   "aliases": []
+  },
+  "Q32047": {
+   "lastrevid": 2562490671,
+   "pt-br": null,
+   "pt": "Ilíria",
+   "aliases": []
+  },
+  "Q34201": {
+   "lastrevid": 2565891776,
+   "pt-br": null,
+   "pt": "Zeus",
+   "aliases": []
+  },
+  "Q35": {
+   "lastrevid": 2570451990,
+   "pt-br": "Dinamarca",
+   "pt": "Dinamarca",
+   "aliases": []
+  },
+  "Q35160": {
+   "lastrevid": 2565891862,
+   "pt-br": null,
+   "pt": "Odisseia",
+   "aliases": []
+  },
+  "Q35500": {
+   "lastrevid": 2566537505,
+   "pt-br": null,
+   "pt": "Afrodite",
+   "aliases": []
+  },
+  "Q3687815": {
+   "lastrevid": 2570377691,
+   "pt-br": null,
+   "pt": null,
+   "aliases": []
+  },
+  "Q37122": {
+   "lastrevid": 2566537426,
+   "pt-br": null,
+   "pt": "Atena",
+   "aliases": []
+  },
+  "Q37340": {
+   "lastrevid": 2568791265,
+   "pt-br": null,
+   "pt": "Apolo",
+   "aliases": []
+  },
+  "Q3844047": {
+   "lastrevid": 2570432209,
+   "pt-br": null,
+   "pt": null,
+   "aliases": []
+  },
+  "Q3880836": {
+   "lastrevid": 2555908056,
+   "pt-br": null,
+   "pt": null,
+   "aliases": []
+  },
+  "Q41410": {
+   "lastrevid": 2565892689,
+   "pt-br": null,
+   "pt": "Hades",
+   "aliases": []
+  },
+  "Q41484": {
+   "lastrevid": 2565892695,
+   "pt-br": null,
+   "pt": "Hermes",
+   "aliases": []
+  },
+  "Q41513": {
+   "lastrevid": 2558282023,
+   "pt-br": "William Blake",
+   "pt": "William Blake",
+   "aliases": []
+  },
+  "Q41567": {
+   "lastrevid": 2567729581,
+   "pt-br": null,
+   "pt": "Hamlet",
+   "aliases": []
+  },
+  "Q41746": {
+   "lastrevid": 2566537622,
+   "pt-br": null,
+   "pt": "Aquiles",
+   "aliases": []
+  },
+  "Q45546": {
+   "lastrevid": 2565596776,
+   "pt-br": "William Wordsworth",
+   "pt": "William Wordsworth",
+   "aliases": []
+  },
+  "Q45967": {
+   "lastrevid": 2569104887,
+   "pt-br": "Perséfone",
+   "pt": "Perséfone",
+   "aliases": []
+  },
+  "Q47152": {
+   "lastrevid": 2570029270,
+   "pt-br": "Mary Shelley",
+   "pt": "Mary Shelley",
+   "aliases": []
+  },
+  "Q47231": {
+   "lastrevid": 2565115888,
+   "pt-br": null,
+   "pt": "Odisseu",
+   "aliases": []
+  },
+  "Q4787912": {
+   "lastrevid": 2434403282,
+   "pt-br": null,
+   "pt": null,
+   "aliases": []
+  },
+  "Q51673": {
+   "lastrevid": 2568730419,
+   "pt-br": "Marco Antônio",
+   "pt": "Marco António",
+   "aliases": [
+    "Marco Antonio"
+   ]
+  },
+  "Q5169921": {
+   "lastrevid": 2530969159,
+   "pt-br": null,
+   "pt": null,
+   "aliases": []
+  },
+  "Q533120": {
+   "lastrevid": 2539128408,
+   "pt-br": null,
+   "pt": "Caliban",
+   "aliases": []
+  },
+  "Q5503354": {
+   "lastrevid": 2530969553,
+   "pt-br": null,
+   "pt": null,
+   "aliases": []
+  },
+  "Q5679": {
+   "lastrevid": 2567629727,
+   "pt-br": "Lord Byron",
+   "pt": "Lorde Byron",
+   "aliases": []
+  },
+  "Q634983": {
+   "lastrevid": 2569305297,
+   "pt-br": "Miranda",
+   "pt": "Miranda",
+   "aliases": []
+  },
+  "Q658028": {
+   "lastrevid": 2545389024,
+   "pt-br": "Ariel",
+   "pt": "Ariel",
+   "aliases": []
+  },
+  "Q662550": {
+   "lastrevid": 2549024731,
+   "pt-br": null,
+   "pt": "Sonetos de Shakespeare",
+   "aliases": []
+  },
+  "Q673361": {
+   "lastrevid": 2530963848,
+   "pt-br": null,
+   "pt": "Romeu",
+   "aliases": []
+  },
+  "Q692": {
+   "lastrevid": 2569932414,
+   "pt-br": null,
+   "pt": null,
+   "aliases": []
+  },
+  "Q7070187": {
+   "lastrevid": 2531033859,
+   "pt-br": null,
+   "pt": null,
+   "aliases": []
+  },
+  "Q708177": {
+   "lastrevid": 2569909441,
+   "pt-br": null,
+   "pt": "The Rime of the Ancient Mariner",
+   "aliases": []
+  },
+  "Q7088017": {
+   "lastrevid": 2531079342,
+   "pt-br": null,
+   "pt": null,
+   "aliases": []
+  },
+  "Q7231797": {
+   "lastrevid": 2563866289,
+   "pt-br": null,
+   "pt": null,
+   "aliases": []
+  },
+  "Q7492082": {
+   "lastrevid": 2468589143,
+   "pt-br": null,
+   "pt": null,
+   "aliases": []
+  },
+  "Q7932996": {
+   "lastrevid": 2531000959,
+   "pt-br": null,
+   "pt": null,
+   "aliases": []
+  },
+  "Q80344": {
+   "lastrevid": 2566133378,
+   "pt-br": "Monte Olimpo",
+   "pt": "Monte Olimpo",
+   "aliases": []
+  },
+  "Q806945": {
+   "lastrevid": 2568545605,
+   "pt-br": null,
+   "pt": "Banquo",
+   "aliases": []
+  },
+  "Q82083": {
+   "lastrevid": 2565595119,
+   "pt-br": "John Keats",
+   "pt": "John Keats",
+   "aliases": []
+  },
+  "Q82409": {
+   "lastrevid": 2565594084,
+   "pt-br": "Samuel Taylor Coleridge",
+   "pt": "Samuel Taylor Coleridge",
+   "aliases": []
+  },
+  "Q8275": {
+   "lastrevid": 2564073733,
+   "pt-br": "Ilíada",
+   "pt": "Ilíada",
+   "aliases": []
+  },
+  "Q83186": {
+   "lastrevid": 2552975141,
+   "pt-br": "Romeu e Julieta",
+   "pt": "Romeu e Julieta",
+   "aliases": []
+  },
+  "Q86440": {
+   "lastrevid": 2555906158,
+   "pt-br": null,
+   "pt": "A Tempestade",
+   "aliases": []
+  },
+  "Q93343": {
+   "lastrevid": 2560348348,
+   "pt-br": "Percy Bysshe Shelley",
+   "pt": "Percy Bysshe Shelley",
+   "aliases": []
+  },
+  "Q939489": {
+   "lastrevid": 2569257061,
+   "pt-br": null,
+   "pt": null,
+   "aliases": []
+  },
+  "Q945069": {
+   "lastrevid": 2540221121,
+   "pt-br": null,
+   "pt": "Sonetos Portugueses",
+   "aliases": []
+  },
+  "Q978952": {
+   "lastrevid": 2569491906,
+   "pt-br": "Prospero",
+   "pt": "Prospero",
+   "aliases": []
+  }
+ }
+}

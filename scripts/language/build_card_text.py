@@ -176,7 +176,8 @@ def _label(ent, lang):
     if not ent or ent.get('missing'):
         return None, 'missing', 'no Wikidata item'
     labs, q = ent['labels'], ent['id']
-    order = ['zh-hans', 'zh-cn', 'zh'] if lang == 'zh' else [lang]
+    # The game's Portuguese is Brazilian (src/i18n/locales/pt.ts): Wikidata's pt-br label first, where there is one.
+    order = ['zh-hans', 'zh-cn', 'zh'] if lang == 'zh' else ['pt-br', 'pt'] if lang == 'pt' else [lang]
     for code in order:
         if code in labs and in_script(labs[code], lang):
             return strip_paren(labs[code]), 'wikidata', f'{q} label ({code})'
@@ -212,7 +213,7 @@ def name_for(key, lang, ents):
 def aliases(key, lang, ents, name):
     ent = ents.get(key) or {}
     out = []
-    for a in ent.get('aliases', {}).get(lang, []):
+    for a in ent.get('aliases', {}).get('pt-br', []) * (lang == 'pt') + ent.get('aliases', {}).get(lang, []):
         a = strip_paren(a)
         if a and a != name and not SPLIT.search(a) and a not in out:
             out.append(a)
@@ -237,6 +238,14 @@ def rarity_names(lang):
 
 def main():
     ents = json.loads(read('docs/language/sources/wikidata-names.json'))['entities']
+    # Brazilian Portuguese labels, fetched separately (scripts/language/fetch/names_ptbr.py) so no other language's labels moved.
+    ptbr = json.loads(read('docs/language/sources/wikidata-pt-br.json'))['items']
+    for e in ents.values():
+        b = ptbr.get(e.get('id'), {})
+        if b.get('pt-br'):
+            e['labels']['pt-br'] = b['pt-br']
+        if b.get('aliases'):
+            e.setdefault('aliases', {})['pt-br'] = b['aliases']
     stop = json.loads(read('docs/language/sources/stopwords-iso.json'))['words']
     published = json.loads(read('scripts/language/published.json'))
     CARDS = cards()
