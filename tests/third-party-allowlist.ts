@@ -50,7 +50,9 @@ export const THIRD_PARTY_ALLOWLIST: AllowedRequest[] = [
   },
   {
     name: 'Hugging Face hub: model files',
-    pattern: new RegExp(`^https://huggingface\\.co/(${HF_REPOS.join('|')})/resolve/`),
+    // /<repo>/resolve/<revision>/<file>, which the hub redirects to
+    // /api/resolve-cache/models/<repo>/<commit>/<file> for small files (seen in a real-model run).
+    pattern: new RegExp(`^https://huggingface\\.co/(api/resolve-cache/models/)?(${HF_REPOS.join('|')})/`),
     when: 'on-use',
     ageGate: 'cleared',
     source: 'src/lib/brain.ts, src/lib/ear.ts, src/lib/thespian-voice.ts',
