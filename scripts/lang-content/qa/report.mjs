@@ -53,7 +53,8 @@ for (const l of LANGS) {
   const words = readFileSync(f, 'utf8').split('\n').filter(Boolean).map((x) => x.trim().split(/\s+/)[1]).filter(Boolean);
   // Names are most of what a dictionary does not know; a word with a capital (where the script has them) is set aside.
   const lower = words.filter((w) => w === w.toLocaleLowerCase(l));
-  spell.languages[l] = { dictionary: l === 'pt' ? 'pt-BR' : l, unknown: lower.length, errors: readTsv(join(HERE, 'qa', 'review.tsv')).filter((r) => r[0] === l && r[1].startsWith('spell:') && r[2] === 'fixed').length };
+  const unusable = { hi: 'Devanagari split at combining marks', ko: 'particles attached to every word', th: 'no spaces between words' }[l];
+  spell.languages[l] = { dictionary: (l === 'pt' ? 'pt-BR' : l) + (unusable ? ` (not usable: ${unusable})` : ''), unknown: unusable ? null : lower.length, errors: readTsv(join(HERE, 'qa', 'review.tsv')).filter((r) => r[0] === l && r[1].startsWith('spell:') && r[2] === 'fixed').length };
   if (list === l && !only) console.log(`spelling, ${l}: ` + lower.map((w) => (reviewed.has(`${l}/spell:${w}`) ? w : `*${w}`)).join(' '));
 }
 if (!list) {

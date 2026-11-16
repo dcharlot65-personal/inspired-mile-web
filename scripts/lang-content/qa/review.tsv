@@ -1,1 +1,14 @@
 # lang	id (a string key, or spell:<word>)	verdict (ok | fixed)	note
+es	spell:*	ok	every lower-case word Hunspell does not know, read: fierecilla (La fierecilla domada), shakespeariana/o, minijuegos, yámbico, pentámetro, obsesivamente, intercámbiala, colecciónala, antipetrarquista, min/h (abbreviations), sir (lower case, as the RAE writes titles); English: wit, love-in-idleness, the, von; none misspelt
+fr	spell:*	ok	read: battle(s) (une battle de rap: current French; the core has no term for it), d'Iago, d'Exeter, d'Elseneur (elisions), antipétrarquiste; English: wit, love-in-idleness, groundlings, standers, von, the; none misspelt
+de	spell:*	ok	read: ränkeschmiedende, fünfhebigen, antipetrarkistisches, -Rede (a hyphenated compound); English: wit, love-in-idleness, the; none misspelt
+it	spell:*	ok	read: dell/nell/sull/dall/cos (elisions split at the apostrophe), minigiochi, min, antipetrarchista, romances (the English critics' term, in brackets as a gloss); English: wit, idleness, the, von; none misspelt
+pt	spell:*	ok	read: quiz, rap (loanwords in Brazilian use), antipetrarquista; English: wit, love, idleness, the; none misspelt
+pl	spell:*	ok	read: antypetrarkistowski; English: wit, von, the, love, idleness; none misspelt
+vi	spell:*	ok	read: thủy, hóa, úy, khóa (the new tone placement, which the core locale uses 34 times to 1; the dictionary has the old), păng (hoa păng-xê, pansy), violet, sonnet, iamb, rap; English: wit, love, idleness, of, for, and; none misspelt
+id	spell:*	ok	read: affixed forms the dictionary does not derive (diracun, tertatih, termurah, terkekeh, sesosok, pelamarnya, membekapnya, keputusasaannya, keberapa, kastelnya, kartunya, kariernya, diurai, dinobatkan, dilukisi, dikoleksi, berbinar, berlatar, penyihir, koleksimu, awalmu, subjudul), iambik, pansy, mnt/j (abbreviations of menit, jam); English: love-in-idleness, of, the, for, von; none misspelt
+ru	spell:*	ok	read: тан, рэп, фолио, кварто, антипетраркистский, ч (час); English: wit, love, in, idleness, groundlings, von, the; none misspelt
+ar	spell:*	ok	read: names (هاملت, مكبث, بروسبيرو …) and words with an attached prefix (وكاسيوس, لمكبث, والسونيتات); common words: متشقلبًا, الانحناءة, الأيامبي, الاسكتلندي, إلهة, الشكسبيرية; none misspelt
+hi	spell:*	not usable	not usable as run: Hunspell splits Devanagari words at combining marks (ं, र्ड, ँ …), so its list is fragments, not words; nothing concluded from it
+ko	spell:*	not usable	not usable as run: every word with a particle attached (셰익스피어의, 햄릿은) is unknown to the dictionary; nothing concluded from it
+th	spell:*	not usable	not usable as run: Thai is written without spaces between words, so Hunspell reads whole phrases as one word; nothing concluded from it
