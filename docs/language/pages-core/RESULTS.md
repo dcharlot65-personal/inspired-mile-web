@@ -173,3 +173,7 @@ capitals and hidden, a key, a placeholder, a mark and an over-wide element, and 
   those four fail there.
 - Run at 6afd468 (main 3015db5 merged, the screenshot fixes in): vitest 127 of 127, build passed, Playwright **143 of 143**
   (7.4 min, none flaky), mutation proof 11 of 11 caught.
+- Last run, at 8d6d3f1 (the home stats change in; nothing but a report script after it):
+  vitest 127 of 127, build passed, Playwright **143 of 143** (6.1 min), and new Arabic and
+  Japanese screenshots of home and collection at both widths: no overflow, 家門 whole, the
+  Arabic stats and card view as fixed.
