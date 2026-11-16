@@ -1,0 +1,93 @@
+{
+  "it": {
+    "source": "Wiktionary via kaikki.org",
+    "dictionaryWords": 84783,
+    "ruleSyllablesAgree": 93.7,
+    "ruleStressAgree": 71.9,
+    "stressChecked": 84505,
+    "notAligned": 278,
+    "table": {
+      "entries": 27558,
+      "bytes": 289996,
+      "gzipBytes": 67075
+    }
+  },
+  "fr": {
+    "source": "Wiktionary via WikiPron",
+    "dictionaryWords": 84350,
+    "table": {
+      "entries": 84350,
+      "bytes": 998547,
+      "gzipBytes": 243816
+    }
+  },
+  "th": {
+    "source": "Wiktionary via WikiPron",
+    "dictionaryWords": 17219,
+    "spellingRuleRimeAgree": 94.9,
+    "oneSyllableWords": 3603,
+    "spellingRuleRimeAgreeOneSyllable": 94.7,
+    "table": {
+      "entries": 17219,
+      "bytes": 345771,
+      "gzipBytes": 88803
+    }
+  },
+  "zh": {
+    "source": "Unihan kMandarin/kTGHZ2013/kXHC1983; CC-CEDICT",
+    "characters": 44358,
+    "charactersWithSeveralRhymeGroups": 312,
+    "wordsThatSettleAReading": 11419,
+    "table": {
+      "entries": 55777,
+      "bytes": 598571,
+      "gzipBytes": 191704
+    }
+  },
+  "ru": {
+    "source": "Wiktionary via kaikki.org",
+    "dictionaryWords": 415115,
+    "notAligned": 267,
+    "table": {
+      "entries": 399887,
+      "bytes": 3721216,
+      "gzipBytes": 515498
+    }
+  },
+  "es": {
+    "source": "Wiktionary via kaikki.org",
+    "dictionaryWords": 137137,
+    "ruleSyllablesAgree": 94.3,
+    "ruleStressAgree": 99.2,
+    "stressChecked": 136608,
+    "notAligned": 529,
+    "table": {
+      "entries": 1141,
+      "bytes": 16716,
+      "gzipBytes": 5135
+    }
+  },
+  "de": {
+    "source": "Wiktionary via kaikki.org",
+    "dictionaryWords": 71746,
+    "ruleSyllablesAgree": 95.1,
+    "table": {
+      "entries": 71746,
+      "bytes": 1295679,
+      "gzipBytes": 457874
+    }
+  },
+  "pt": {
+    "source": "Wiktionary via kaikki.org",
+    "dictionaryWords": 6453,
+    "ruleSyllablesAgree": 85.8,
+    "ruleStressAgree": 92.3,
+    "stressChecked": 5972,
+    "notAligned": 481,
+    "table": {
+      "entries": 457,
+      "bytes": 5584,
+      "gzipBytes": 2074
+    }
+  }
+}

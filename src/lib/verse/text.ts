@@ -12,9 +12,14 @@
  *   split a rare phrase differently; the form checks for Chinese and Japanese
  *   therefore count characters, not words, and only bonus devices lean on the
  *   segmenter. Thai has no such alternative and uses segmenter words throughout.
- * - Syllables are counted only where the spelling makes a fair count possible.
+ * - Syllables are counted from the sound: by a spelling rule where the spelling
+ *   shows it, corrected by that language's dictionary table where it does not
+ *   (./sound), and not at all where neither can say (unvocalised Arabic).
  */
 import { baseLang, rulesFor } from './lang';
+import { soundReady } from './sound';
+import { japaneseMorae } from './sound/kana';
+import { countOverride, frenchSound, germanSound, hindiSyllablesByRule, thaiSyllables } from './sound/lookup';
 
 /** Longest verse the game accepts. Also bounds what a judge prompt can carry. */
 export const MAX_VERSE_CHARS = 600;
@@ -215,6 +220,16 @@ function vowelGroups(w: string): number {
   return groups;
 }
 
+/**
+ * German by spelling, for a word the table lacks: each vowel or vowel pair
+ * that is one sound ("ie", "ei", "au", "eu", "äu", a doubled vowel) is a
+ * syllable, so "Treue" and "bauen" are two.
+ */
+function germanSyllablesByRule(word: string): number {
+  const w = word.toLowerCase().normalize('NFC');
+  return Math.max(1, (w.match(/ie|ei|ai|au|eu|äu|aa|ee|oo|[aeiouyäöü]/g) ?? []).length);
+}
+
 function englishSyllables(w: string): number {
   let groups = vowelGroups(w);
   // Silent final e ("stage"), but not "-le" after a consonant ("candle").
@@ -295,40 +310,38 @@ function indonesianSyllables(word: string): number {
   return Math.max(1, vowels - (/(ai|au|oi)$/.test(w) && vowels > 1 ? 1 : 0));
 }
 
-/** Japanese sounds (mora) in a kana string, or null if it holds anything that is not kana. */
-function kanaMora(text: string): number | null {
-  const letters = lettersOf(hiragana(text));
-  if (!letters.length) return 0;
-  let n = 0;
-  for (const ch of letters) {
-    if (!/[ぁ-ゖー]/.test(ch)) return null;
-    // Small ya, yu, yo and small vowels ride on the sound before them.
-    if (!'ゃゅょぁぃぅぇぉゎ'.includes(ch)) n++;
-  }
-  return n;
-}
-
-/** Languages in which a line's syllables can be counted fairly from its spelling. */
+/**
+ * Languages in which a line's syllables can be counted fairly. Thai is counted
+ * only with its table loaded (a Thai syllable cannot be found by rule alone);
+ * Arabic is not counted: its short vowels are not written.
+ */
 export function countsSyllables(lang: string): boolean {
-  return /^(en|es|it|pt|de|nl|fr|ca|ro|pl|ru|id|ko|zh|ja|vi)$/.test(baseLang(lang));
+  const b = baseLang(lang);
+  if (b === 'th') return THAI_COUNTED && soundReady('th');
+  return /^(en|es|it|pt|de|nl|fr|ca|ro|pl|ru|id|ko|zh|ja|vi|hi)$/.test(b);
 }
 
 /**
- * Syllables in a word, or null when the script is not one we can count.
- *
- * English gets silent-e handling. Spanish, Italian and Portuguese count strong
- * vowels. Polish, Russian and Indonesian are spelled nearly as spoken, so their
- * vowels are counted. A Hangul block, a Chinese character and a Vietnamese word
- * are each one syllable by definition. Japanese counts sounds, and only in kana:
- * a kanji's reading is not in its spelling. Other Latin-script languages get
- * plain vowel groups.
+ * Whether Thai syllable forms are offered. Off: the table covers too little of
+ * free Thai text for a fair count (the measured figure is in PHONETICS.md).
  */
-export function syllablesInWord(word: string, lang = 'en'): number | null {
+const THAI_COUNTED = false;
+
+/**
+ * Syllables in a word by its language's spelling rule alone, with no table:
+ * what the tables are measured against and corrected from. Null when the
+ * script is not one the rule can count.
+ */
+export function syllablesByRule(word: string, lang = 'en'): number | null {
   const b = baseLang(lang);
   const letters = lettersOf(word);
   if (b === 'ko' && letters.length && letters.every((c) => /[가-힣]/.test(c))) return letters.length;
   if (b === 'zh' && letters.length && letters.every((c) => /\p{Script=Han}/u.test(c))) return letters.length;
-  if (b === 'ja') return kanaMora(word);
+  if (b === 'ja') return japaneseMorae(word);
+  if (b === 'hi') {
+    const n = hindiSyllablesByRule(word);
+    if (n !== null) return n;
+  }
   if (b === 'ru' && letters.length && letters.every((c) => /\p{Script=Cyrillic}/u.test(c))) {
     // No floor of one: "в", "к", "с" are words with no syllable of their own.
     return (word.toLowerCase().match(/[аеёиоуыэюя]/g) ?? []).length;
@@ -338,20 +351,54 @@ export function syllablesInWord(word: string, lang = 'en'): number | null {
   if (b === 'pl') return polishSyllables(word);
   if (b === 'id') return indonesianSyllables(word);
   if (b === 'es' || b === 'it' || b === 'pt') return romanceSyllables(word, b);
+  if (b === 'de') return germanSyllablesByRule(word);
   const w = fold(word).replace(/œ/g, 'oe').replace(/[^a-z]/g, '');
   if (!w) return 0;
   if (b === 'en') return englishSyllables(w);
   return Math.max(1, vowelGroups(w));
 }
 
-/** A French word that ends in a mute e: "porte", "portes", but not "été" or "vie". */
+/**
+ * Syllables in a word, or null when the script is not one we can count.
+ *
+ * A dictionary's count where the language has a table and the word is in it:
+ * French and German as spoken; Spanish, Italian, Portuguese, Indonesian and
+ * Hindi where the dictionary disagrees with the spelling rule. Otherwise the
+ * rule: English gets silent-e handling; Spanish, Italian and Portuguese count
+ * strong vowels; Polish, Russian and Indonesian are spelled nearly as spoken,
+ * so their vowels are counted; Hindi counts the vowels that are said; a Hangul
+ * block, a Chinese character and a Vietnamese word are each one syllable by
+ * definition; Japanese counts sounds (morae) from the reading. Other
+ * Latin-script languages get plain vowel groups.
+ */
+export function syllablesInWord(word: string, lang = 'en'): number | null {
+  const b = baseLang(lang);
+  if (b === 'fr' && isLatin(word)) {
+    const s = frenchSound(word);
+    if (s) return s.n + (s.mute ? 1 : 0);
+  }
+  if (b === 'de' && isLatin(word)) {
+    const s = germanSound(word);
+    if (s && s.n !== null) return s.n + (s.rest ? germanSyllablesByRule(s.rest) : 0);
+  }
+  if (b === 'es' || b === 'it' || b === 'pt' || b === 'id' || b === 'hi') {
+    const n = countOverride(b, word);
+    if (n !== null) return n;
+  }
+  return syllablesByRule(word, lang);
+}
+
+/** A French word that ends in a mute e: "porte", "portes", and with the table "parlent"; not "été", "vie" or "moment". */
 function frenchMuteE(word: string): boolean {
+  const s = frenchSound(word);
+  if (s) return s.mute;
   return /[^aeiouyàâäéèêëîïôöùûü]es?$/.test(word.toLowerCase().normalize('NFC')) && vowelGroups(fold(word)) > 1;
 }
 
 export function syllablesInLine(line: string, lang = 'en'): number | null {
   const b = baseLang(lang);
-  if (b === 'ja') return kanaMora(line);
+  if (b === 'ja') return japaneseMorae(line);
+  if (b === 'th') return thaiSyllables(line);
   if (b === 'zh') {
     const letters = lettersOf(line);
     return letters.every((c) => /\p{Script=Han}/u.test(c)) ? letters.length : null;
