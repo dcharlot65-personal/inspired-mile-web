@@ -103,6 +103,48 @@ export function challengeProblems(l: string, m: Messages | undefined): string[] 
   return out;
 }
 
+/**
+ * How each core locale file says it addresses the player (the comment on its first line:
+ * "Anrede: du", "Обращение на «ты»", "Sapaan: kamu", "말투: 해요체", …), as the forms that
+ * would break it. Looked for in what the game says to the player, not in what a character
+ * says in quotation marks: the Nurse may call a stranger "tu" while the page says "vous".
+ */
+const L = '(?<![\\p{L}\\p{M}])', R = '(?![\\p{L}\\p{M}])';
+const word = (...w: string[]) => new RegExp(`${L}(?:${w.join('|')})${R}`, 'iu');
+const ADDRESS: Record<string, { rule: string; wrong: RegExp[] }> = {
+  de: { rule: 'du', wrong: [/(?<![.!?:]\s|^)\b(?:Sie|Ihnen|Ihr|Ihre[mnrs]?)\b/u] },
+  fr: { rule: 'vous', wrong: [word('tu', 'toi', 'ta', 'tes', 'te'), /(?<![\p{L}])t'/iu] },
+  es: { rule: 'tú', wrong: [word('usted', 'ustedes', 'vosotros', 'vuestr[oa]s?')] },
+  it: { rule: 'tu', wrong: [word('voi', 'vostr[oaie]'), /(?<![.!?:]\s|^)\bLei\b/u] },
+  pt: { rule: 'você', wrong: [word('tu', 'teu', 'tua', 'teus', 'tuas', 'contigo', 'vós')] },
+  pl: { rule: 'ty', wrong: [word('pan', 'pani', 'pana', 'panu', 'panią', 'państwo', 'państwa', 'wy', 'was', 'wam')] },
+  ru: { rule: 'ты', wrong: [word('вы', 'вас', 'вам', 'вами', 'ваш', 'ваша', 'ваше', 'ваши', 'вашего', 'вашей', 'вашему', 'вашу', 'вашим', 'ваших'), /[а-яё]{3,}(?:айте|яйте|ейте|ите)(?![\p{L}])/iu] },
+  id: { rule: 'kamu', wrong: [word('anda')] },
+  ko: { rule: '해요체', wrong: [/(?:습니다|입니다|ㅂ니다|십시오)/u] },
+  ja: { rule: 'です・ます', wrong: [/(?:だ|である)[。！!]/u] },
+  zh: { rule: '你', wrong: [/您/u] },
+  hi: { rule: 'आप', wrong: [word('तुम', 'तू', 'तुम्हें', 'तुम्हारा', 'तुम्हारी', 'तुम्हारे', 'तेरा', 'तेरी', 'तेरे', 'तुझे')] },
+  vi: { rule: 'bạn', wrong: [word('quý vị', 'quý khách')] },
+  ar: { rule: 'المخاطب المفرد', wrong: [/(?:أنتم|لكم|عليكم|إليكم|بكم)(?![\p{L}\p{M}])/u] },
+};
+/** What the game itself says: quoted speech and quoted lines taken out. */
+const narration = (s: string) => s.replace(/«[^»]*»|"[^"]*"|“[^”]*”|„[^“”]*[“”]|「[^」]*」|『[^』]*』|»[^«]*«/gu, ' ');
+
+/** Forms of address that break the core locale's rule, in a language's area. */
+export function addressProblems(l: string, m: Messages): string[] {
+  const a = ADDRESS[l];
+  if (!a) return [];
+  const out: string[] = [];
+  for (const [k, v] of Object.entries(m)) {
+    const said = narration(v);
+    for (const re of a.wrong) {
+      const hit = said.match(re);
+      if (hit) out.push(`${l}: ${k} says "${hit[0]}", but the game addresses the player with ${a.rule}`);
+    }
+  }
+  return out;
+}
+
 /** Strings a language writes exactly as English does. Each is a decision, not an oversight. */
 const SAME_AS_ENGLISH: Record<string, string[]> = {
   fr: ['pg.trivia.progress'], // "Question {n} / {total}"
@@ -141,6 +183,12 @@ describe('page areas of the play content', () => {
         if (SHAKESPEARE.some((s) => quote.startsWith(s)) && !m[k].includes(SHAKESPEARE.find((s) => quote.startsWith(s))!)) problems.push(`${l}: ${k} lost "${quote}"`);
       }
     }
+    expect(problems).toEqual([]);
+  });
+
+  it('addresses the player the way the core locale does (du, vous, ты, kamu, 해요체, …)', async () => {
+    const problems: string[] = [];
+    for (const l of LOCALES) for (const name of ['playground', 'story']) problems.push(...addressProblems(l, (await area(name, l))!));
     expect(problems).toEqual([]);
   });
 
@@ -269,6 +317,19 @@ describe('these checks can fail', () => {
     const { 'challenge.0.translator': _t, ...anonymous } = good;
     expect(challengeProblems('de', anonymous).some((p) => p.includes('names no translator'))).toBe(true);
     expect(challengeProblems('de', { ...good, 'challenges.ids': '0,999' }).some((p) => p.includes('not in the bank'))).toBe(true);
+  });
+
+  it('addressProblems objects to the other form of address in every language it knows, and not to quoted speech', () => {
+    const bad: Record<string, string> = {
+      de: 'Öffnen Sie Ihr Starterpack.', fr: 'Ouvre ton paquet de départ.', es: 'Abra usted su sobre.', it: 'Aprite il vostro pacchetto.',
+      pt: 'Abre o teu pacote.', pl: 'Niech pan otworzy pakiet.', ru: 'Откройте стартовый набор.', id: 'Buka paket Anda.',
+      ko: '팩을 여십시오.', ja: 'パックを開けるのだ。', zh: '请打开您的卡包。', hi: 'तुम अपना पैक खोलो।', vi: 'Mời quý vị mở gói.', ar: 'افتحوا الحزمة لكم.',
+    };
+    for (const [l, s] of Object.entries(bad)) expect([l, addressProblems(l, { k: s }).length]).toEqual([l, 1]);
+    // The same words inside a character's speech are that character's voice.
+    expect(addressProblems('fr', { k: 'Le prince vous convoque. « Montre-moi que tu manies les mots. »' })).toEqual([]);
+    expect(addressProblems('ru', { k: 'Мастер сцены ждёт тебя. «Откройте занавес!»' })).toEqual([]);
+    expect(addressProblems('de', { k: 'Sie lachen. Du bist dran.' })).toEqual([]); // "Sie" opening a sentence is "they"
   });
 
   it('triviaBankFrom falls back to English for a question a language lacks, and no further', () => {

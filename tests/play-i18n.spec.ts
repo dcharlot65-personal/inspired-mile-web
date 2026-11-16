@@ -120,7 +120,7 @@ test('a change of language relabels the open playground', async ({ page }) => {
   await expect(page.locator('#trivia-question')).toHaveAttribute('lang', 'de');
   await expect(page.locator('#trivia-progress')).toContainText('Frage 1 / 5');
   await page.selectOption('#locale-switch', 'ja');
-  await expect(page.locator('#trivia-progress')).toContainText('第 1 問');
+  await expect(page.locator('#trivia-progress')).toContainText('第1問');
   // Arabic turns the page right to left.
   await page.selectOption('#locale-switch', 'ar');
   await expect(page.locator('html')).toHaveAttribute('dir', 'rtl');
