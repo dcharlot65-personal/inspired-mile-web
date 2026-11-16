@@ -19,7 +19,7 @@
   "words": 60,
   "kept": 18,
   "verses": 18,
-  "digest": "8cb03d70"
+  "digest": "a402457f"
  },
  "de": {
   "heard": 57,
@@ -30,7 +30,7 @@
   "words": 60,
   "kept": 18,
   "verses": 18,
-  "digest": "f98bc574"
+  "digest": "72de1019"
  },
  "it": {
   "heard": 56,
@@ -48,11 +48,11 @@
   "yes": 45,
   "refused": 27,
   "no": 27,
-  "counted": 56,
+  "counted": 58,
   "words": 60,
   "kept": 18,
   "verses": 18,
-  "digest": "e760ebfa"
+  "digest": "e66b06bb"
  },
  "pl": {
   "heard": 48,
@@ -96,7 +96,7 @@
   "words": 60,
   "kept": 18,
   "verses": 18,
-  "digest": "63b1da04"
+  "digest": "a663e67a"
  },
  "zh": {
   "heard": 46,
@@ -162,6 +162,6 @@
   "words": 60,
   "kept": 18,
   "verses": 18,
-  "digest": "fb0c374e"
+  "digest": "9f401751"
  }
 }

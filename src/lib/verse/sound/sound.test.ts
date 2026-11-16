@@ -11,6 +11,8 @@ import { hindiSyllablesByRule, thaiEnd, thaiSyllables } from './lookup';
 import { thaiRimeBySpelling } from './th';
 import expected from './corpus/expected.json';
 import syllableSets from './corpus/syllables.json';
+import espeakData from './corpus/espeak.json';
+import { crossCheck, readEspeak } from './crosscheck';
 
 const CORPORA = import.meta.glob('./corpus/*.json', { eager: true, import: 'default' }) as Record<string, RhymeCorpus>;
 const corpus = (lang: string): RhymeCorpus | undefined => CORPORA[`./corpus/${lang}.json`];
@@ -323,5 +325,79 @@ describe('what each language can now hear', () => {
     expect(rhymes('tàn', 'tán', 'vi')).toBe(false);
     expect(rhymes('an', 'ang', 'vi')).toBe(false);
     expect(rhymes('사랑', '자랑', 'ko')).toBe(true);
+  });
+});
+
+/**
+ * The engine against espeak-ng (./crosscheck): the 1,500 commonest words of each language in
+ * subtitles, and how espeak-ng, which shares no data with the tables, says them. Agreement is not
+ * accuracy (PHONETICS.md reads every kind of disagreement), so these floors sit a little under what
+ * was measured on 2026-11-16 and catch a rule, a table or the reader getting much worse.
+ */
+const ESPEAK_FLOORS: Record<string, { syllables: number; stress?: number }> = {
+  es: { syllables: 0.98, stress: 0.99 },
+  it: { syllables: 0.9, stress: 0.97 },
+  pt: { syllables: 0.94, stress: 0.98 },
+  fr: { syllables: 0.93 },
+  de: { syllables: 0.96 },
+  pl: { syllables: 0.98 },
+  ru: { syllables: 0.99, stress: 0.98 },
+  id: { syllables: 0.95 },
+  hi: { syllables: 0.94 },
+};
+
+describe('against espeak-ng, a tool that shares no data with the tables', () => {
+  it('reads its transcriptions as it writes them', () => {
+    expect(readEspeak('z_n_ˈɑ_ju', 'ru')).toEqual({ syllables: 2, stress: { fromStart: 1, fromEnd: 2 } });
+    // A consonant's release is not a vowel.
+    expect(readEspeak('d_vʲ_ˈe_r_ɪ^', 'ru').syllables).toBe(1);
+    // A glide written as a vowel, against a real hiatus.
+    expect(readEspeak('s_ˈɛ_i', 'it').syllables).toBe(1);
+    expect(readEspeak('m_ˈi__o', 'it').syllables).toBe(2);
+    expect(readEspeak('s_y_ˈi', 'fr').syllables).toBe(1);
+    // Where espeak-ng writes glides as glides, two vowels are two syllables.
+    expect(readEspeak('s_i_ˈa_p_a', 'id').syllables).toBe(3);
+    // The release of a Brazilian tap.
+    expect(readEspeak('s_ˈɛ_ɾ_ə_t_ʊ', 'pt').syllables).toBe(2);
+  });
+
+  it('agrees with it on common words, in every language it covers', () => {
+    const langs = (espeakData as { langs: Record<string, { words: Array<[string, string]> }> }).langs;
+    expect(Object.keys(langs).sort()).toEqual(Object.keys(ESPEAK_FLOORS).sort());
+    for (const [lang, floor] of Object.entries(ESPEAK_FLOORS)) {
+      const r = crossCheck(lang, langs[lang].words);
+      expect([lang, r.words]).toEqual([lang, 1500]);
+      expect([lang, 'syllables', r.syllablesAgree, r.syllablesAgree / r.words >= floor.syllables]).toEqual([lang, 'syllables', r.syllablesAgree, true]);
+      if (floor.stress === undefined) continue;
+      // Nearly every word of two syllables or more must have a stress to compare: a missing table shows here.
+      expect([lang, 'stress compared', r.stressCompared >= 1200]).toEqual([lang, 'stress compared', true]);
+      expect([lang, 'stress', r.stressAgree, r.stressAgree / r.stressCompared >= floor.stress]).toEqual([lang, 'stress', r.stressAgree, true]);
+    }
+  });
+
+  it('no longer makes the mistakes the comparison found (2026-11-16)', () => {
+    // French: a closing schwa in a transcription is the mute e, not the rhyme; verse counts the e of "pe-tite".
+    expect(rhymes('prendre', 'rendre', 'fr')).toBe(true);
+    expect(rhymes('prendre', 'monde', 'fr')).toBe(false);
+    for (const [line, n] of [['petite', 2], ['semaine', 2], ['demain', 2], ['quand', 1], ['aide', 1], ['chaque jour', 3], ['Le président parle', 5]] as const) {
+      expect([line, syllablesInLine(line, 'fr')]).toEqual([line, n]);
+    }
+    // German: narrow transcriptions, the r after a vowel, "ch" read as r, a compound cut inside "ei".
+    for (const [a, b, yes] of [['Leute', 'heute', true], ['Leute', 'Beute', true], ['Wochen', 'gebrochen', true], ['Wochen', 'Born', false], ['Bar', 'klar', true], ['reicht', 'leicht', true], ['reicht', 'Licht', false]] as const) {
+      expect([a, b, rhymes(a, b, 'de')]).toEqual([a, b, yes]);
+    }
+    for (const [word, n] of [['Feuer', 2], ['eher', 2], ['Bar', 1], ['Verzeihung', 3], ['Leute', 2], ['wären', 2], ['Wochen', 2], ['scheint', 1]] as const) {
+      expect([word, syllablesInLine(word, 'de')]).toEqual([word, n]);
+    }
+    // Portuguese: the stressed letter of "-al", "ai", "gu" words, and "-eio" is not a hiatus.
+    for (const [a, b] of [['pessoal', 'normal'], ['especial', 'final'], ['real', 'natural'], ['caixa', 'baixa'], ['seguinte', 'ouvinte'], ['odeio', 'receio']] as const) {
+      expect([a, b, rhymes(a, b, 'pt')]).toEqual([a, b, true]);
+    }
+    // Italian: an accent marks the stress, not a hiatus.
+    expect([syllablesInLine('più', 'it'), syllablesInLine('giù', 'it')]).toEqual([1, 1]);
+    expect(rhymes('più', 'virtù', 'it')).toBe(true);
+    // Hindi and Indonesian: one transcription among several does not stand for the word.
+    for (const [word, n] of [['चाय', 1], ['नाव', 1], ['मैं', 1], ['दुनिया', 3]] as const) expect([word, syllablesInLine(word, 'hi')]).toEqual([word, n]);
+    for (const [word, n] of [['apakah', 3], ['pribadi', 3], ['setengah', 3]] as const) expect([word, syllablesInLine(word, 'id')]).toEqual([word, n]);
   });
 });

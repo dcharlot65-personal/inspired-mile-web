@@ -17,8 +17,8 @@
     "dictionaryWords": 84049,
     "table": {
       "entries": 84049,
-      "bytes": 995826,
-      "gzipBytes": 242653
+      "bytes": 997916,
+      "gzipBytes": 240836
     }
   },
   "th": {
@@ -69,25 +69,25 @@
   },
   "de": {
     "source": "Wiktionary via kaikki.org",
-    "dictionaryWords": 71643,
-    "ruleSyllablesAgree": 95.3,
+    "dictionaryWords": 71649,
+    "ruleSyllablesAgree": 96,
     "table": {
-      "entries": 71643,
-      "bytes": 1294551,
-      "gzipBytes": 457346
+      "entries": 71649,
+      "bytes": 1294734,
+      "gzipBytes": 457467
     }
   },
   "pt": {
     "source": "Wiktionary via kaikki.org",
     "dictionaryWords": 59646,
-    "ruleSyllablesAgree": 87.3,
-    "ruleStressAgree": 96.5,
-    "stressChecked": 58133,
-    "notAligned": 1513,
+    "ruleSyllablesAgree": 87.4,
+    "ruleStressAgree": 97.6,
+    "stressChecked": 59183,
+    "notAligned": 463,
     "table": {
-      "entries": 2013,
-      "bytes": 24157,
-      "gzipBytes": 7329
+      "entries": 1444,
+      "bytes": 17926,
+      "gzipBytes": 5724
     }
   },
   "ko": {
@@ -110,23 +110,23 @@
     "ruleSyllablesAgree": 98.7
   },
   "hi": {
-    "source": "Wiktionary (IPA: one vowel sound a syllable) via WikiPron",
-    "dictionaryWords": 30377,
-    "ruleSyllablesAgree": 96,
+    "source": "Wiktionary (IPA: one vowel sound a syllable) via WikiPron; every count its transcriptions give",
+    "dictionaryWords": 30374,
+    "ruleSyllablesAgree": 96.4,
     "table": {
-      "entries": 1214,
-      "bytes": 22489,
-      "gzipBytes": 6125
+      "entries": 1099,
+      "bytes": 20746,
+      "gzipBytes": 5658
     }
   },
   "id": {
     "source": "Wiktionary via kaikki.org",
-    "dictionaryWords": 21744,
-    "ruleSyllablesAgree": 94.9,
+    "dictionaryWords": 21741,
+    "ruleSyllablesAgree": 97.6,
     "table": {
-      "entries": 1104,
-      "bytes": 12496,
-      "gzipBytes": 5010
+      "entries": 512,
+      "bytes": 5910,
+      "gzipBytes": 2473
     }
   }
 }

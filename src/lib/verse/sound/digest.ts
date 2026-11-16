@@ -26,7 +26,13 @@ export interface SyllableSet {
   source: string;
   /** What is counted: syllables, or morae for Japanese. */
   unit: string;
-  words: Array<[string, number]>;
+  /** Each word with its count, or with every count its dictionary gives where it gives more than one. */
+  words: Array<[string, number | number[]]>;
+}
+
+/** Is `n` a count the set gives for its word? */
+export function countAgrees(n: number | null, want: number | number[]): boolean {
+  return n !== null && (Array.isArray(want) ? want.includes(n) : n === want);
 }
 
 export interface SoundReport {
@@ -77,7 +83,7 @@ export function soundReport(lang: string, corpus?: RhymeCorpus, set?: SyllableSe
     yes: yes.length,
     refused: no.filter((x) => !x).length,
     no: no.length,
-    counted: counts.filter((c, i) => c === set!.words[i][1]).length,
+    counted: counts.filter((c, i) => countAgrees(c, set!.words[i][1])).length,
     words: counts.length,
     kept: kept.filter(Boolean).length,
     verses: kept.length,

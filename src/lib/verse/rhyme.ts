@@ -186,8 +186,9 @@ export function romanceStressByRule(word: string, lang: 'es' | 'it' | 'pt'): num
   if (marked.length) starts.push(marked[marked.length - 1]);
   else if (lang === 'es') starts.push(/[aeiouns]$/.test(text) ? penult : lastN);
   else if (lang === 'pt') {
-    // Unaccented "-ia", "-io", "-ua" is stressed on the i or u ("dia", "alegria", "rua").
-    const hiatus = /(?<![qg])[iu][aeo]s?$/.exec(text);
+    // Unaccented "-ia", "-io", "-ua" after a consonant is stressed on the i or u ("dia", "alegria",
+    // "rua"); after a vowel the i or u closes that vowel's syllable ("meio", "odeio", "praia").
+    const hiatus = /(?<![qgaeiou])[iu][aeo]s?$/.exec(text);
     if (hiatus) starts.push(hiatus.index);
     else starts.push(/([aeo]s?|[ae]m|ens)$/.test(text) ? penult : lastN);
   } else {
@@ -211,19 +212,62 @@ export function romanceStressByRule(word: string, lang: 'es' | 'it' | 'pt'): num
  * accepts; open against closed e and o, which Italian and Portuguese rhyme
  * freely anyway.
  */
+/**
+ * The stressed vowel of a Spanish, Italian or Portuguese word, as indexes into
+ * romanceText(word) (more than one where the spelling allows more than one
+ * reading): the table's where it has the word, else the spelling rule's.
+ */
+function romanceStress(word: string, lang: 'es' | 'it' | 'pt'): { word: string; text: string; starts: number[] } | null {
+  // An elided word in front is not part of the rhyming word ("v'intrai", "l'erta").
+  const after = word.split(/['’]/).pop() ?? '';
+  if ([...after].length >= 2) word = after;
+  const text = romanceText(word);
+  if (text === null) return null;
+  const known = tailOverride(lang, word);
+  const starts = known !== null && known <= text.length ? [text.length - known] : romanceStressByRule(word, lang);
+  if (!starts) return null;
+  // Italian words closing on a falling diphthong are stressed on it ("trovai", "assai", "lui", "poi").
+  const falling = lang === 'it' && known === null ? /[aeou]i$/.exec(text) : null;
+  if (falling && !starts.includes(falling.index)) starts.push(falling.index);
+  return { word, text, starts };
+}
+
+/**
+ * Which syllable of a word the rules stress, counted from the start and from
+ * the end (1 is the first, or the last): Spanish, Italian and Portuguese by
+ * romanceStress, Russian by its table. Both, because two readings of a word
+ * can stress the same vowel and still divide it differently on one side of
+ * it: "sto-ria" and "sto-ri-a" agree from the start, "tra-du-zio-ne" and
+ * "tra-du-zi-o-ne" from the end. More than one answer where the rule allows
+ * more than one reading; null for another language, a word the rule cannot
+ * read, or a Russian word the table lacks. For measuring the rules against
+ * other tools (./sound/crosscheck); rhyme itself is read from the stressed
+ * vowel on, by the functions below.
+ */
+export function stressedSyllable(word: string, lang: string): Array<{ fromStart: number; fromEnd: number }> | null {
+  const b = baseLang(lang);
+  if (b === 'ru') {
+    const w = word.toLowerCase().normalize('NFC');
+    const vowels = (w.match(/[аеёиоуыэюя]/g) ?? []).length;
+    const k = /^[а-яё]+$/.test(w) ? russianStress(w) : null;
+    return k ? k.map((x) => ({ fromStart: vowels - x + 1, fromEnd: x })) : null;
+  }
+  if (b !== 'es' && b !== 'it' && b !== 'pt') return null;
+  const r = romanceStress(word, b);
+  const ls = r ? romanceLetters(r.word) : null;
+  if (!r || !ls) return null;
+  const nuc = nuclei(ls);
+  // A stressed vowel the syllable rule joins to a following strong one is a syllable of its own ("po-e-sí-a").
+  const apart = (s: number) => !nuc.includes(s) && 'aeo'.includes(ls.slice(s + 1).find((l) => l.vowel)?.ch ?? '');
+  const out = r.starts.map((s) => ({ fromStart: nuc.filter((i) => i < s).length + 1, fromEnd: nuc.filter((i) => i >= s).length + (apart(s) ? 1 : 0) }));
+  return out.filter((x, i) => out.findIndex((y) => y.fromStart === x.fromStart && y.fromEnd === x.fromEnd) === i);
+}
+
 function romanceKeys(lang: 'es' | 'it' | 'pt'): (word: string) => string[] | null {
   return (word) => {
-    // An elided word in front is not part of the rhyming word ("v'intrai", "l'erta").
-    const after = word.split(/['’]/).pop() ?? '';
-    if ([...after].length >= 2) word = after;
-    const text = romanceText(word);
-    if (text === null) return null;
-    const known = tailOverride(lang, word);
-    const starts = known !== null && known <= text.length ? [text.length - known] : romanceStressByRule(word, lang);
-    if (!starts) return null;
-    // Italian words closing on a falling diphthong are stressed on it ("trovai", "assai", "lui", "poi").
-    const falling = lang === 'it' && known === null ? /[aeou]i$/.exec(text) : null;
-    if (falling && !starts.includes(falling.index)) starts.push(falling.index);
+    const r = romanceStress(word, lang);
+    if (!r) return null;
+    const { text, starts } = r;
     return starts.map((s) => {
       let tail = text.slice(s).replace(/h/g, '');
       if (lang === 'es') tail = tail.replace(/v/g, 'b').replace(/z/g, 's').replace(/c(?=[ei])/g, 's').replace(/ll/g, 'y');
@@ -377,8 +421,10 @@ function germanSpelledRhyme(a: string, b: string): boolean | null {
   // The impure rhyme of rounded with unrounded vowels ("Müh / Vieh"), as nearKey allows for words in the table.
   const flat = (k: string) => k.replace(/ü/g, 'i').replace(/ö/g, 'e').replace(/oi/g, 'ei');
   if (flat(ka) === flat(kb)) return true;
+  // A shorter ending inside a longer one ("Hotel / Fell"), but not one that starts inside a vowel
+  // pair: "reicht" is "eicht", which does not end in the "icht" of "Licht".
   const [short, long] = ka.length <= kb.length ? [ka, kb] : [kb, ka];
-  return short.length >= 2 && long.endsWith(short);
+  return short.length >= 2 && long.endsWith(short) && !'aeiouöü'.includes(long[long.length - short.length - 1] ?? '');
 }
 
 // --- Polish ---

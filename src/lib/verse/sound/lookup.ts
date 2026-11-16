@@ -77,9 +77,21 @@ export function germanSound(word: string): GermanSpoken | null {
   const w = plainWord(word).replace(/['\-]/g, '');
   const v = soundOf('de', w);
   if (v) return { n: parseInt(v[0], 36), keys: v.slice(1).split('|'), rest: '' };
-  const e = longestEnding('de', w, [...w].length - 2, 4);
-  if (!e) return null;
-  return { n: parseInt(e.value[0], 36), keys: e.value.slice(1).split('|'), rest: w.slice(0, w.length - e.word.length) };
+  // The last element of a compound: the longest ending in the table that leaves a word-like part
+  // in front. A cut inside a vowel pair or a "sch", "ch", "ck" is not between two words: "reicht"
+  // is not "re" + "icht", nor "scheint" "sc" + "heint" (checked against espeak-ng, PHONETICS.md).
+  const V = /[aeiouyäöü]/;
+  const cs = [...w];
+  for (let n = cs.length - 3; n >= 4; n--) {
+    const rest = cs.slice(0, cs.length - n).join('');
+    const end = cs.slice(cs.length - n).join('');
+    if (rest.length < 3 || !V.test(rest)) continue;
+    if (V.test(rest.slice(-1)) && V.test(end[0])) continue;
+    if ((/s$/.test(rest) && /^ch/.test(end)) || (/sc$/.test(rest) && /^h/.test(end)) || (/c$/.test(rest) && /^[hk]/.test(end))) continue;
+    const e = soundOf('de', end);
+    if (e) return { n: parseInt(e[0], 36), keys: e.slice(1).split('|'), rest };
+  }
+  return null;
 }
 
 // --- Russian ---

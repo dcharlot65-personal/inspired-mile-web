@@ -18,7 +18,7 @@
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'node:fs';
 import { gzipSync } from 'node:zlib';
 import { join } from 'node:path';
-import { syllablesByRule } from '../../src/lib/verse/text.ts';
+import { fold, syllablesByRule } from '../../src/lib/verse/text.ts';
 import { romanceText, romanceStressByRule } from '../../src/lib/verse/rhyme.ts';
 import { hindiSyllablesByRule } from '../../src/lib/verse/sound/lookup.ts';
 import { thaiRimeBySpelling } from '../../src/lib/verse/sound/th.ts';
@@ -43,7 +43,9 @@ const syllSets = existsSync(SYLL_FILE) ? JSON.parse(readFileSync(SYLL_FILE, 'utf
  */
 function syllableSet(lang, source, unit, pairs) {
   const seen = new Set();
-  const all = pairs.filter(([w, n]) => [...w].length >= 2 && [...w].length <= 14 && n > 0 && !seen.has(w) && seen.add(w)).sort((a, b) => (a[0] < b[0] ? -1 : a[0] > b[0] ? 1 : 0));
+  // A count may be a list: the dictionary gives the word more than one pronunciation, and more than one count.
+  const ok = (n) => (Array.isArray(n) ? n.length > 0 && n.every((x) => x > 0) : n > 0);
+  const all = pairs.filter(([w, n]) => [...w].length >= 2 && [...w].length <= 14 && ok(n) && !seen.has(w) && seen.add(w)).sort((a, b) => (a[0] < b[0] ? -1 : a[0] > b[0] ? 1 : 0));
   const words = [];
   for (let i = 0; i < 60 && all.length >= 60; i++) words.push(all[Math.floor(((i + 0.5) * all.length) / 60)]);
   syllSets[lang] = { source, unit, words };
@@ -93,7 +95,8 @@ function cleanIpa(raw) {
 /** Syllable nuclei in an IPA string: vowels (a marked glide is none, a diphthong written with a tie-less glide mark is one) and syllabic consonants. */
 function nuclei(ipa, diphthongs = []) {
   let s = ipa;
-  for (const d of diphthongs) s = s.split(d).join('a');
+  // Each diphthong counts once; its stand-in begins no other diphthong ("aɪʊ" is aɪ + ʊ, not aɪ then aʊ).
+  for (const d of diphthongs) s = s.split(d).join('ə');
   let n = 0;
   const cs = [...s];
   for (let i = 0; i < cs.length; i++) {
@@ -111,10 +114,14 @@ function nuclei(ipa, diphthongs = []) {
   return n;
 }
 
-/** Syllables of a syllabified transcription: one more than its breaks. */
+/**
+ * Syllables of a syllabified transcription: one more than its breaks. A break written twice
+ * (".ˈ" in "/pri.ˈba.di/") is one break; until 2026-11-16 it counted as two, which put wrong
+ * counts into the es, it and pt test sets ("automutilar", six).
+ */
 function syllablesOf(ipa, diphthongs) {
   if (!/[.]/.test(ipa)) return nuclei(ipa, diphthongs);
-  return 1 + [...ipa.replace(/^[ˈˌ.]+/, '')].filter((c) => '.ˈˌ'.includes(c)).length;
+  return 1 + (ipa.replace(/^[ˈˌ.]+/, '').match(/[.ˈˌ]+/g) ?? []).length;
 }
 
 function kaikki(lang) {
@@ -130,10 +137,21 @@ function kaikki(lang) {
   return out;
 }
 
+/** As kaikki(), with each entry's transcriptions as written (not yet cleaned or split). */
+function kaikkiRaw(lang) {
+  const out = [];
+  for (const l of lines(`kaikki_${lang}.tsv`)) {
+    const [word, ...ipas] = l.split('\t');
+    const initialism = [...word].length > 1 && word === word.toUpperCase() && word !== word.toLowerCase();
+    if (word && ipas.length && !/[\s\d]/.test(word) && !initialism) out.push([word, ipas]);
+  }
+  return out;
+}
+
 // --- Spanish, Italian, Portuguese: exceptions to the spelling rules ---
 
 /** Letters from the stressed vowel to the end of `text`, by lining the spelling's vowel groups up with the transcription's. Null when they do not line up. */
-function stressedTail(text, ipa) {
+function stressedTail(text, ipa, byQuality = false) {
   const groups = [];
   for (let i = 0; i < text.length; i++) {
     const v = 'aeiou'.includes(text[i]);
@@ -183,6 +201,16 @@ function stressedTail(text, ipa) {
   const letters = [];
   for (let i = g.start; i < g.end; i++) if (text[i] !== 'h') letters.push(i);
   const run = runs[stressed.run];
+  // Portuguese: the letter that spells the stressed vowel, where one in the group does. A group and
+  // its sounds do not line up by position there: a closing l is said as a glide ("real", /ʁeˈaw/),
+  // a nasal adds one ("alguém", /awˈɡẽj̃/), the u of "gu" is silent, and a variant may drop a vowel
+  // ("caixa", /ˈka.ʃɐ/).
+  if (byQuality) {
+    const v = run[stressed.at].normalize('NFD')[0];
+    const letter = /[aɐæ]/.test(v) ? 'a' : /[eɛ]/.test(v) ? 'e' : /[iɪ]/.test(v) ? 'i' : /[oɔ]/.test(v) ? 'o' : /[uʊ]/.test(v) ? 'u' : '';
+    const match = letters.filter((i) => text[i] === letter);
+    if (match.length === 1) return text.length - match[0];
+  }
   const fromRight = run.length - stressed.at;
   const li = Math.max(0, letters.length - fromRight);
   return text.length - letters[li];
@@ -204,7 +232,18 @@ function romance(lang) {
     const n = syllablesOf(ipa);
     m.words++;
     if (n === rule) m.countAgree++;
-    const t = stressedTail(text, ipa);
+    let t = stressedTail(text, ipa);
+    if (lang === 'pt') {
+      // The stress most of the word's transcriptions give: one odd variant ("seguinte", /si.ɡĩˈt͡ʃi/,
+      // against three with /ˈɡĩ/) does not decide it.
+      const votes = new Map();
+      for (const x of ipas) {
+        if (!(/[.ˈ]/.test(x) || nuclei(x) === 1)) continue;
+        const v = stressedTail(text, x, true);
+        if (v !== null) votes.set(v, (votes.get(v) ?? 0) + 1);
+      }
+      t = votes.size ? [...votes].reduce((a, b) => (b[1] > a[1] ? b : a))[0] : null;
+    }
     if (t !== null) cands.push([w, n]);
     const starts = romanceStressByRule(w, lang) ?? [];
     let tailCode = '0';
@@ -228,26 +267,46 @@ function romance(lang) {
 
 // --- Indonesian, Hindi: exceptions to the syllable rule ---
 
+/**
+ * What a word's transcriptions say about its syllables, against the spelling rule. A dictionary
+ * often lists several (a careful and a casual one, a regional one), sorted in no useful order, so
+ * no one of them stands for the word. The rule is overridden only where none agrees with it, and
+ * then by the count most of them give. Returns the override (or null) and the counts listed, the
+ * commonest first, for the test set.
+ */
+function resolveCounts(counts, rule) {
+  const tally = new Map();
+  for (const n of counts) tally.set(n, (tally.get(n) ?? 0) + 1);
+  const listed = [...tally].sort((a, b) => b[1] - a[1]).map(([n]) => n);
+  return { override: counts.length && !tally.has(rule) ? listed[0] : null, listed };
+}
+
 function countExceptions(lang, script, ruleFn) {
   const cands = [];
   const entries = new Map();
   let words = 0;
   let agree = 0;
-  const seen = new Set();
+  const all = new Map();
   for (const [word, ipas] of kaikki(lang)) {
     const w = word.toLowerCase().normalize('NFC');
-    if (seen.has(w) || !script.test(w)) continue;
+    if (!script.test(w) || ruleFn(w) === null) continue;
+    const list = all.get(w) ?? [];
+    // Vowels, not syllable breaks: a transcription may mark only some of its breaks ("/apa.kah/")
+    // or mark one twice ("/pri.ˈba.di/").
+    for (const x of ipas) list.push(nuclei(x.replace(/ᵊ/g, '')));
+    all.set(w, list);
+  }
+  for (const [w, counts] of all) {
     const rule = ruleFn(w);
-    if (rule === null) continue;
-    seen.add(w);
-    const n = syllablesOf(ipas[0].replace(/ᵊ/g, ''));
-    cands.push([w, n]);
+    const { override, listed } = resolveCounts(counts.filter((n) => n > 0), rule);
+    if (!listed.length) continue;
+    cands.push([w, listed.length === 1 ? listed[0] : listed]);
     words++;
-    if (n === rule) agree++;
-    else if (n > 0 && n < 36) entries.set(w, b36(n));
+    if (override === null) agree++;
+    else if (override < 36) entries.set(w, b36(override));
   }
   const size = writeTable(lang, entries, `${lang}: words whose syllable count the spelling rule gets wrong. Source: Wiktionary (CC BY-SA 4.0) via kaikki.org.`);
-  syllableSet(lang, 'Wiktionary (IPA) via kaikki.org', 'syllables', cands);
+  syllableSet(lang, 'Wiktionary (IPA) via kaikki.org; every count its transcriptions give', 'syllables', cands);
   measures[lang] = { ...measures[lang], source: 'Wiktionary via kaikki.org', dictionaryWords: words, ruleSyllablesAgree: pct(agree, words), table: size };
 }
 
@@ -291,25 +350,106 @@ function russian() {
 
 // --- French: how each word is said ---
 
+/**
+ * French vowel groups in the spelling, the bounds a verse count must lie in. The fewest: every
+ * run of vowel letters is one sound, and a closing mute e is not counted; a written "e" between
+ * consonants is a syllable in verse even where speech drops it ("pe-tite", "se-maine"). The
+ * most: an i, u or ou before another vowel may be sounded apart ("li-on", "nu-age", "jou-er"),
+ * as may a vowel with a diaeresis ("na-ïf") and each side of a y between vowels ("pa-yer");
+ * the u of "qu" and "gu" is only a spelling.
+ */
+/** Does the spelling close on a mute e: "e", "es" or "ent" after a consonant ("porte", "chaque", "parlent"; not "été", "vie")? */
+function frenchMuteSpelling(w) {
+  const sp = w.replace(/qu/g, 'k').replace(/gu(?=[eéèêëiïy])/g, 'g');
+  return /[^aeiouyàâäéèêëîïôöùûü](e|es|ent)$/.test(sp) && /[aeiouyàâäéèêëîïôöùûü]/.test(sp.replace(/(e|es|ent)$/, ''));
+}
+
+function frenchSpelled(w, mute) {
+  const V = 'aeiouy';
+  const cs = [...w.normalize('NFD').replace(/œ/g, 'oe').replace(/æ/g, 'ae')];
+  const ls = [];
+  for (const c of cs) {
+    if (/[\u0300-\u036f]/.test(c)) {
+      if (ls.length && c === '\u0308') ls[ls.length - 1].apart = true;
+      continue;
+    }
+    ls.push({ c, apart: false });
+  }
+  let fewest = 0;
+  let most = 0;
+  let prevVowel = false;
+  for (let i = 0; i < ls.length; i++) {
+    const { c, apart } = ls[i];
+    const silentU = c === 'u' && i > 0 && (ls[i - 1].c === 'q' || (ls[i - 1].c === 'g' && 'eiy'.includes(ls[i + 1]?.c ?? '')));
+    const vowel = V.includes(c) && !silentU;
+    if (!vowel) {
+      prevVowel = false;
+      continue;
+    }
+    if (!prevVowel) {
+      fewest++;
+      most++;
+    } else {
+      const before = ls[i - 1].c;
+      const ou = before === 'u' && ls[i - 2]?.c === 'o';
+      if (apart || ((before === 'i' || before === 'u' || ou) && c !== 'i' && c !== 'u') || before === 'y') most++;
+    }
+    prevVowel = true;
+  }
+  if (mute) {
+    fewest--;
+    most--;
+  }
+  return { fewest: Math.max(1, fewest), most: Math.max(1, most) };
+}
+
 function french() {
   const FR_VOWEL = /^[aeiouyøœəɛɔɑ]/;
-  const by = new Map();
+  // Transcriptions of Quebec French (affricates, lax high vowels, diphthongs before a consonant):
+  // used for a word only when it has no other.
+  const REGIONAL = /t\u0361s|d\u0361z|ɪ|ʏ|ʊ|ã|\u032f/;
+  const variants = new Map();
   for (const l of lines('fra_latn_broad.tsv')) {
     const [word, pron] = l.split('\t');
     const w = word.toLowerCase().normalize('NFC');
     if (word.length > 1 && word === word.toUpperCase() && word !== w) continue;
     if (!pron || !/^[a-zàâäçéèêëîïôöùûüÿœæ'\-]+$/.test(w) || w.length > 24) continue;
     const phones = pron.normalize('NFC').split(' ').filter((p) => p !== '‿');
+    // A closing schwa is the mute e said aloud: verse decides when it is a syllable (see "mute").
+    while (phones.length > 1 && phones[phones.length - 1] === 'ə' && phones.slice(0, -1).some((p) => FR_VOWEL.test(p))) phones.pop();
     const n = phones.filter((p) => FR_VOWEL.test(p)).length;
-    let i = phones.length - 1;
-    while (i >= 0 && !FR_VOWEL.test(phones[i])) i--;
-    if (i < 0 || n < 1 || n > 35) continue;
-    const key = phones.slice(i).join('').replace(/ʀ|r/g, 'ʁ');
-    const lastIsVowel = FR_VOWEL.test(phones[phones.length - 1]);
-    const mute = /[^aeiouyàâäéèêëîïôöùûü](e|es|ent)$/.test(w) && !lastIsVowel && n >= 1 && /[aeiouyàâäéèêëîïôöùûü]/.test(w.replace(/(e|es|ent)$/, ''));
-    const e = by.get(w) ?? { n, mute, keys: [] };
-    if (!e.keys.includes(key) && e.keys.length < 3) e.keys.push(key);
-    by.set(w, e);
+    if (n < 1 || n > 35) continue;
+    const list = variants.get(w) ?? [];
+    list.push({ phones, n, regional: REGIONAL.test(pron.normalize('NFD')) });
+    variants.set(w, list);
+  }
+  const by = new Map();
+  for (const [w, all] of variants) {
+    const standard = all.filter((v) => !v.regional);
+    let use = standard.length ? standard : all;
+    let muteSpelled = frenchMuteSpelling(w);
+    // A closing "-ent" is said in a noun or adjective ("président", "content") and silent in a verb
+    // ("ils président", "parlent"). Where the dictionary has both readings, verse is counted with
+    // the one that says it, which is the commoner in verse; the rhyme keys keep both.
+    const said = /ent$/.test(w) ? use.filter((v) => FR_VOWEL.test(v.phones[v.phones.length - 1])) : [];
+    if (said.length) muteSpelled = false;
+    const spelled = frenchSpelled(w, muteSpelled);
+    const count = said.length ? said : use;
+    // The fullest reading the spelling can hold ("p ə t i t", not "p t i t"; "ɛ d", not "a ɛ d"),
+    // and never fewer syllables than verse gives the written vowels.
+    const fits = count.filter((v) => v.n <= spelled.most);
+    const best = fits.length ? fits.reduce((a, b) => (b.n > a.n ? b : a)) : count.reduce((a, b) => (b.n < a.n ? b : a));
+    const n = Math.max(best.n, spelled.fewest);
+    const lastIsVowel = FR_VOWEL.test(best.phones[best.phones.length - 1]);
+    const mute = muteSpelled && !lastIsVowel;
+    const keys = [];
+    for (const v of [best, ...use]) {
+      let i = v.phones.length - 1;
+      while (i >= 0 && !FR_VOWEL.test(v.phones[i])) i--;
+      const key = v.phones.slice(i).join('').replace(/ʀ|r/g, 'ʁ');
+      if (!keys.includes(key) && keys.length < 3) keys.push(key);
+    }
+    by.set(w, { n, mute, keys });
   }
   const entries = new Map();
   for (const [w, e] of by) entries.set(w, b36(e.n) + (e.mute ? '+' : '') + e.keys.join('|'));
@@ -320,17 +460,54 @@ function french() {
 
 // --- German: how each word is said ---
 
+/**
+ * German transcriptions as Wiktionary writes them, made comparable. A sound may carry the phonemic
+ * and the phonetic form in one string ("/ˈlɔɪ.tə/ [ˈlɔe̠.t(ʰ)ə]"): the phonemic one is taken, so that
+ * a regional phonetic variant does not stand for the word. Narrow transcriptions write diphthongs
+ * without the mark of a glide ("hɛˈʁaus") and the vocalised r as a plain ɐ after a vowel ("baːɐ",
+ * "fɛɐˈʁʏkt"): one syllable each. After a diphthong ɐ is a syllable ("ˈfɔʏ̯ɐ", Feu-er).
+ */
+function germanIpas(raws) {
+  const parts = raws.flatMap((r) => r.trim().split(/\s+/));
+  const clean = (xs) => xs.map(cleanIpa).filter(Boolean);
+  return [...new Set([...clean(parts.filter((x) => x.startsWith('/'))), ...clean(parts)])];
+}
+
 function german() {
-  const DIPH = ['aɪ', 'aʊ', 'ɔʏ', 'ɔɪ'];
+  // Diphthongs, with and without the tie or the glide mark. Never across a syllable break ("Pha.ra.o").
+  const DIPH = ['aɪ', 'aʊ', 'ɔʏ', 'ɔɪ', 'ai', 'au', 'ae', 'aɛ', 'ao', 'ɔe', 'ɔø', 'ɔy', 'oɪ', 'ɛɪ'];
+  const V = 'aeiouyɛɔœøɪʊʏɑæə';
   const by = new Map();
   let words = 0;
-  for (const [word, ipas] of kaikki('de')) {
+  for (const [word, raws] of kaikkiRaw('de')) {
     const w = word.toLowerCase().normalize('NFC');
     if (!/^[a-zäöüß]+$/.test(w) || w.length > 28) continue;
-    for (const raw of ipas.slice(0, 2)) {
-      let ipa = raw.normalize('NFC').replace(/[ʔ.]/g, '');
-      ipa = ipa.normalize('NFD').replace(/n\u0329|ŋ\u0329|m\u0329/g, (x) => 'ə' + x[0].replace('ŋ', 'n')).replace(/l\u0329/g, 'əl').replace(/əʁ|ər/g, 'ɐ').replace(/ɐ\u032f|[ʀrχ]/g, 'ʁ').replace(/\u032f/g, '').normalize('NFC');
+    for (const raw of germanIpas(raws).slice(0, 2)) {
+      let ipa = raw.normalize('NFC').replace(/ʔ/g, '');
+      ipa = ipa
+        .normalize('NFD')
+        .replace(/n̩|ŋ̩|m̩/g, (x) => 'ə' + x[0].replace('ŋ', 'n'))
+        .replace(/l̩/g, 'əl')
+        .replace(/əʁ|ər/g, 'ɐ')
+        .replace(/ɐ̯|[ʀr]/g, 'ʁ')
+        // χ is the "ch" of "Bach", not an r.
+        .replace(/χ/g, 'x')
+        .replace(/̯/g, '')
+        .normalize('NFC');
+      // ɐ after a vowel that is not the end of a diphthong is that vowel's r ("baːɐ" is "baːʁ").
+      // (Each diphthong stands as one private-use character while this is decided.)
+      // Not where that leaves fewer syllables than the spelling has: "eher" is ˈeː.ɐ, e-her.
+      let r = ipa;
+      DIPH.forEach((d, i) => (r = r.split(d).join(String.fromCharCode(0xe000 + i))));
+      r = r.replace(new RegExp(`([${V}]ː?)ɐ`, 'g'), '$1ʁ');
+      DIPH.forEach((d, i) => (r = r.split(String.fromCharCode(0xe000 + i)).join(d)));
+      if (nuclei(r, DIPH) >= Math.min(nuclei(ipa, DIPH), syllablesByRule(w, 'de'))) ipa = r;
+      // A closing n, l or m after a consonant that the spelling writes with an e is a syllable even
+      // where the transcription does not mark it ("ˈvɔχn" for "Wochen", "vɛːɐ̯n" for "wären").
+      const spelled = syllablesByRule(w, 'de');
+      if (nuclei(ipa, DIPH) < spelled && /e(n|l|m|ln|rn|ns|ls)$/.test(w)) ipa = ipa.replace(new RegExp(`([^${V}ːˈˌ.])([nlmŋ])$`), '$1ə$2');
       const n = nuclei(ipa, DIPH);
+      ipa = ipa.replace(/\./g, '');
       if (n < 1 || n > 35) continue;
       const at = Math.max(ipa.lastIndexOf('ˈ'), ipa.lastIndexOf('ˌ'));
       let tail = ipa.slice(at + 1).replace(/[ˈˌ]/g, '');
@@ -346,7 +523,7 @@ function german() {
       const first = cs.findIndex(isVowel);
       if (first < 0) continue;
       const key = cs.slice(first).join('');
-      const e = by.get(w) ?? { n, keys: [] };
+    const e = by.get(w) ?? { n, keys: [] };
       if (!e.keys.includes(key) && e.keys.length < 3) e.keys.push(key);
       by.set(w, e);
     }
@@ -553,6 +730,36 @@ function wikipronCounts(lang, file, script, countPhones, unit, source, tableNote
   if (tableNote) measures[lang].table = writeTable(lang, entries, tableNote);
 }
 
+/** Hindi from WikiPron, every listed pronunciation of a word weighed (resolveCounts). A vowel marked as a glide ("ə̯") is not a syllable. */
+function hindi() {
+  const counts = new Map();
+  for (const l of lines('hin_deva_broad.tsv')) {
+    const [word, pron] = l.split('\t');
+    const w = word.normalize('NFC').toLowerCase();
+    if (!pron || !/^[\u0900-\u097f]+$/.test(w)) continue;
+    const n = pron.normalize('NFC').split(' ').filter((p) => VOWEL_PHONE(p) && !p.normalize('NFD').includes('\u032f')).length;
+    const list = counts.get(w) ?? [];
+    list.push(n);
+    counts.set(w, list);
+  }
+  const cands = [];
+  const entries = new Map();
+  let agree = 0;
+  for (const [w, ns] of counts) {
+    const rule = syllablesByRule(w, 'hi');
+    if (rule === null) continue;
+    const { override, listed } = resolveCounts(ns.filter((n) => n > 0), rule);
+    if (!listed.length) continue;
+    cands.push([w, listed.length === 1 ? listed[0] : listed]);
+    if (override === null) agree++;
+    else if (override < 36) entries.set(w, b36(override));
+  }
+  const source = 'Wiktionary (IPA: one vowel sound a syllable) via WikiPron; every count its transcriptions give';
+  syllableSet('hi', source, 'syllables', cands);
+  measures.hi = { ...measures.hi, source, dictionaryWords: cands.length, ruleSyllablesAgree: pct(agree, cands.length) };
+  measures.hi.table = writeTable('hi', entries, 'hi: words whose syllable count the script rule gets wrong. Source: Wiktionary (CC BY-SA 4.0) via WikiPron.');
+}
+
 function japanese() {
   // JMdict: common entries with one kanji spelling and one reading. The count is the reading's morae.
   const xml = readFileSync(join(SRC, 'JMdict_e'), 'utf8');
@@ -577,7 +784,7 @@ const JOBS = {
   pt: () => romance('pt'),
   id: () => countExceptions('id', /^[a-z]+$/, (w) => syllablesByRule(w, 'id')),
   // Hindi from WikiPron: it has 33,000 words where the kaikki extract has under 2,000 with a transcription.
-  hi: () => wikipronCounts('hi', 'hin_deva_broad.tsv', /^[\u0900-\u097f]+$/, (ps) => ps.filter(VOWEL_PHONE).length, 'syllables', 'Wiktionary (IPA: one vowel sound a syllable) via WikiPron', 'hi: words whose syllable count the script rule gets wrong. Source: Wiktionary (CC BY-SA 4.0) via WikiPron.'),
+  hi: hindi,
   ru: russian,
   fr: french,
   de: german,

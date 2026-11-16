@@ -15,7 +15,7 @@ import { setJapaneseAnalyser } from '../../src/lib/verse/sound/kana.ts';
 import { rhymes, rhymeEnds } from '../../src/lib/verse/rhyme.ts';
 import { syllablesInLine } from '../../src/lib/verse/text.ts';
 import { formsFor, scoreForm } from '../../src/lib/verse/forms.ts';
-import { soundReport } from '../../src/lib/verse/sound/digest.ts';
+import { countAgrees, soundReport } from '../../src/lib/verse/sound/digest.ts';
 import { PACK_LANGS, loadPack } from '../../src/lib/verse/packs/index.ts';
 
 const args = process.argv.slice(2);
@@ -66,7 +66,7 @@ for (const lang of PACK_LANGS) {
   const letIn = (corpus?.no ?? []).map(ends).filter(([a, b]) => rhymes(a, b, lang));
   if (missed.length) console.log('   missed:', missed.map((p) => p.join('/')).join(' | '));
   if (letIn.length) console.log('   let in:', letIn.map((p) => p.join('/')).join(' | '));
-  const wrong = (sets[lang]?.words ?? []).filter(([w, n]) => syllablesInLine(w, lang) !== n);
+  const wrong = (sets[lang]?.words ?? []).filter(([w, n]) => !countAgrees(syllablesInLine(w, lang), n));
   if (wrong.length) console.log('   counts:', wrong.map(([w, n]) => `${w}=${syllablesInLine(w, lang)} (dictionary ${n})`).join(' | '));
   const pack = await loadPack(lang);
   for (const form of formsFor(lang)) {

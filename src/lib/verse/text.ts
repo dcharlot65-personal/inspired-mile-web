@@ -257,6 +257,8 @@ function romanceSyllables(word: string, lang: string): number {
   let nasal = false;
   let prev = '';
   let anyAccent = false;
+  /** The last vowel of the open vowel group was an unaccented i or u. */
+  let afterWeak = false;
   const chars = [...nfd];
   for (let i = 0; i < chars.length; i++) {
     const ch = chars[i];
@@ -274,20 +276,25 @@ function romanceSyllables(word: string, lang: string): number {
       const tilde = marks.includes('\u0303');
       if (accented || tilde) anyAccent = true;
       const stressedWeak = !strong && accented;
+      // Spanish and Portuguese write an accent on i or u to part it from the vowel beside it
+      // ("dí-a", "pa-ís"); Italian writes one only for the stress, so "più" and "giù" stay one syllable.
+      const parts = stressedWeak && !(lang === 'it' && afterWeak);
       if (!inGroup) {
         count++;
         hasStrong = strong || stressedWeak;
       } else if (nasal) {
         // Portuguese "ão", "õe": one syllable.
-      } else if (stressedWeak || (strong && hasStrong)) {
+      } else if (parts || (strong && hasStrong)) {
         count++;
         hasStrong = true;
-      } else if (strong) hasStrong = true;
+      } else if (strong || stressedWeak) hasStrong = true;
       inGroup = true;
       nasal = tilde;
+      afterWeak = !strong && !accented;
     } else if (!silentU) {
       inGroup = false;
       nasal = false;
+      afterWeak = false;
     }
     prev = ch;
   }
