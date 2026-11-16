@@ -399,12 +399,9 @@ pt	103	The Tempest	What is past is prologue.
 pl	1	The Merchant of Venice	All that glitters is not gold.
 pl	2	Romeo and Juliet	Parting is such sweet sorrow.
 pl	3	The Tempest	We are such stuff as dreams are made on.
-pl	5	Julius Caesar	Friends, Romans, countrymen, lend me your ears.
-pl	7	Macbeth	Double, double toil and trouble; fire burn and cauldron bubble.
 pl	8	Julius Caesar	Et tu, Brute?
 pl	9	Richard III	Now is the winter of our discontent.
 pl	10	As You Like It	All the world's a stage, and all the men and women merely players.
-pl	11	Macbeth	Out, damned spot! Out, I say!
 pl	13	Twelfth Night	If music be the food of love, play on.
 pl	14	Hamlet	The lady doth protest too much, methinks.
 pl	15	Hamlet	Brevity is the soul of wit.
@@ -413,38 +410,28 @@ pl	17	Twelfth Night	Some are born great, some achieve greatness, and some have g
 pl	18	A Midsummer Night's Dream	The course of true love never did run smooth.
 pl	19	Romeo and Juliet	Good night, good night! Parting is such sweet sorrow, that I shall say good night till it be morrow.
 pl	21	A Midsummer Night's Dream	Lord, what fools these mortals be!
-pl	22	Macbeth	Is this a dagger which I see before me, the handle toward my hand?
 pl	23	Sonnet 18	Shall I compare thee to a summer's day? Thou art more lovely and more temperate.
 pl	24	Henry IV, Part 2	Uneasy lies the head that wears a crown.
 pl	25	Henry IV, Part 1	The better part of valour is discretion.
 pl	26	King Lear	How sharper than a serpent's tooth it is to have a thankless child.
-pl	28	Macbeth	By the pricking of my thumbs, something wicked this way comes.
-pl	29	Julius Caesar	The fault, dear Brutus, is not in our stars, but in ourselves.
 pl	30	A Midsummer Night's Dream	Though she be but little, she is fierce.
-pl	31	Julius Caesar	Cowards die many times before their deaths; the valiant never taste of death but once.
 pl	32	The Tempest	Hell is empty and all the devils are here.
 pl	33	The Merchant of Venice	The quality of mercy is not strained; it droppeth as the gentle rain from heaven.
 pl	34	Romeo and Juliet	These violent delights have violent ends.
 pl	36	Julius Caesar	The evil that men do lives after them; the good is oft interred with their bones.
 pl	37	Othello	I am not what I am.
 pl	38	Othello	O, beware, my lord, of jealousy! It is the green-eyed monster which doth mock the meat it feeds on.
-pl	39	Macbeth	Tomorrow, and tomorrow, and tomorrow, creeps in this petty pace from day to day.
-pl	40	Macbeth	Life's but a walking shadow, a poor player that struts and frets his hour upon the stage.
 pl	41	Twelfth Night	Be not afraid of greatness. Some are born great, some achieve greatness, and others have greatness thrust upon them.
 pl	43	Hamlet	Frailty, thy name is woman!
 pl	44	Richard III	Off with his head!
 pl	45	Henry V	Once more unto the breach, dear friends, once more.
-pl	47	Julius Caesar	Cry havoc, and let slip the dogs of war!
 pl	48	All's Well That Ends Well	Love all, trust a few, do wrong to none.
-pl	49	Julius Caesar	Beware the ides of March.
-pl	50	Julius Caesar	I come to bury Caesar, not to praise him.
 pl	51	Antony and Cleopatra	Give me my robe, put on my crown.
 pl	52	Julius Caesar	This was the noblest Roman of them all.
 pl	54	Hamlet	Sweets to the sweet.
 pl	55	The Merchant of Venice	If you prick us, do we not bleed?
 pl	56	Richard III	My kingdom for a horse!
 pl	58	King Lear	When we are born, we cry that we are come to this great stage of fools.
-pl	59	Othello	I will wear my heart upon my sleeve for daws to peck at.
 pl	60	Henry V	We few, we happy few, we band of brothers.
 pl	61	King Lear	I am a man more sinned against than sinning.
 pl	62	As You Like It	Who ever loved that loved not at first sight?
@@ -463,8 +450,6 @@ pl	76	Measure for Measure	Some rise by sin, and some by virtue fall.
 pl	77	Measure for Measure	Our doubts are traitors, and make us lose the good we oft might win by fearing to attempt.
 pl	78	Measure for Measure	They say best men are moulded out of faults.
 pl	79	Romeo and Juliet	Wisely and slow; they stumble that run fast.
-pl	80	Othello	Put out the light, and then put out the light.
-pl	81	Macbeth	It is a tale told by an idiot, full of sound and fury, signifying nothing.
 pl	82	Othello	Reputation is an idle and most false imposition; oft got without merit, and lost without deserving.
 pl	83	Hamlet	O, what a rogue and peasant slave am I!
 pl	85	King Lear	As flies to wanton boys are we to the gods; they kill us for their sport.
@@ -478,7 +463,6 @@ pl	92	All's Well That Ends Well	No legacy is so rich as honesty.
 pl	93	Richard II	This blessed plot, this earth, this realm, this England.
 pl	94	Macbeth	Come what come may, time and the hour runs through the roughest day.
 pl	95	Much Ado About Nothing	Speak low, if you speak love.
-pl	97	Othello	For I am nothing if not critical.
 pl	98	The Winter's Tale	Exit, pursued by a bear.
 pl	99	Romeo and Juliet	O, she doth teach the torches to burn bright!
 pl	100	King Lear	The wheel is come full circle; I am here.
