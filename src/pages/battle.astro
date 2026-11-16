@@ -255,8 +255,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     // --- Stats ---
     function showStats() {
       const ps = getPlayerStats();
-      $('rounds-played').textContent = String(ps.totalRounds);
-      $('battles-total').textContent = String(ps.totalBattles);
+      $('rounds-played').textContent = num(ps.totalRounds);
+      $('battles-total').textContent = num(ps.totalBattles);
       $('win-rate').textContent = ps.totalRounds > 0 ? `${Math.round((ps.battleWins / ps.totalRounds) * 100)}%` : '--%';
     }
     showStats();
@@ -593,7 +593,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           'crimson',
         ));
       }
-      $('live-craft').textContent = String(s.craft);
+      $('live-craft').textContent = num(s.craft);
     }
 
     function renderHand() {
@@ -601,7 +601,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       const d = duel;
       const spent = moves.reduce((n, m) => n + moveCost(m), 0);
       const ink = inkAt(roundIndex, spent) - moveCost(move);
-      $('ink').textContent = String(ink);
+      $('ink').textContent = num(ink);
 
       const chars = $('hand-characters');
       chars.replaceChildren();
@@ -814,8 +814,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         playSfx('battle-victory');
       } else playSfx('battle-defeat');
       setHighScore(scored.playerTotal);
-      $('player-score').textContent = String(results.filter((r) => r.winner === 'player').length);
-      $('ai-score').textContent = String(results.filter((r) => r.winner === 'opponent').length);
+      $('player-score').textContent = num(results.filter((r) => r.winner === 'player').length);
+      $('ai-score').textContent = num(results.filter((r) => r.winner === 'opponent').length);
       showStats();
       busy = false;
       judging = false;
