@@ -1,5 +1,6 @@
 import { test, expect, type APIRequestContext, type CDPSession, type Page } from '@playwright/test';
 import { execFileSync } from 'node:child_process';
+import { createHmac } from 'node:crypto';
 import { existsSync, readFileSync } from 'node:fs';
 import path from 'node:path';
 import { E2E } from './e2e-env';
@@ -15,6 +16,8 @@ import { E2E } from './e2e-env';
 const API = `http://127.0.0.1:${E2E.apiPort}/api/v1`;
 const API_NO_EMAIL = `http://127.0.0.1:${E2E.apiNoEmailPort}/api/v1`;
 const API_LOG = path.join(E2E.workDir, 'api.log');
+/** The JWT secret tests/start-backend.sh gives the test APIs. */
+const E2E_JWT_SECRET = 'e2e-secret-not-for-production';
 
 // ---------------------------------------------------------------------------
 // Helpers
@@ -445,9 +448,32 @@ test.describe('Session API', () => {
     expect(finish.status()).toBe(401);
   });
 
-  test('a forged session cookie is refused', async ({ request }) => {
-    const res = await request.get(`${API}/auth/me`, { headers: { Cookie: 'im_token=not.a.token' } });
-    expect(res.status()).toBe(401);
+  test('a forged session cookie is refused', async ({ request, playwright }) => {
+    // A real account, so that only the signature stands between a forger and its session.
+    const email = uniqueEmail('forge');
+    expect((await requestCode(request, email)).status()).toBe(200);
+    const { user } = await (await verifyCode(request, email, await readCode(email))).json();
+
+    const sessionToken = (secret: string) => {
+      const b64 = (value: object) => Buffer.from(JSON.stringify(value)).toString('base64url');
+      const now = Math.floor(Date.now() / 1000);
+      const body = `${b64({ alg: 'HS256', typ: 'JWT' })}.${b64({ sub: user.id, username: user.username, iat: now, exp: now + 3600 })}`;
+      return `${body}.${createHmac('sha256', secret).update(body).digest('base64url')}`;
+    };
+    // A context of its own: no cookie from the sign-in above rides along.
+    const anonymous = await playwright.request.newContext();
+    const meWith = (token: string) =>
+      anonymous.get(`${API}/auth/me`, { headers: { Cookie: `im_token=${token}` } });
+
+    // Control: the same token signed with the server's (test) secret is a valid session,
+    // so the refusals below are about the signature and nothing else.
+    const genuine = await meWith(sessionToken(E2E_JWT_SECRET));
+    expect(genuine.status()).toBe(200);
+    expect((await genuine.json()).user.id).toBe(user.id);
+
+    expect((await meWith(sessionToken('some-other-secret'))).status()).toBe(401);
+    expect((await meWith('not.a.token')).status()).toBe(401);
+    await anonymous.dispose();
   });
 
   test('Google sign-in is gone', async ({ request }) => {
@@ -671,6 +697,19 @@ test.describe('Sign-in and the age gate', () => {
       // No field to type an address into, and no request made.
       await expect(page.locator('#auth-step-email')).toBeHidden();
       await expect(page.locator('#auth-email-input')).toBeHidden();
+      expect(emailCalls).toEqual([]);
+
+      // Second line of defence: get past the button anyway (reveal the hidden form by
+      // hand and submit an address). The sender itself must refuse, before any request.
+      await page.evaluate(() => {
+        document.getElementById('auth-step-choose')!.classList.add('hidden');
+        document.getElementById('auth-step-email')!.classList.remove('hidden');
+      });
+      await page.locator('#auth-email-input').fill(uniqueEmail('underage'));
+      await page.locator('#auth-email-send').click();
+      await expect(page.locator('#auth-error')).toBeVisible();
+      await expect(page.locator('#auth-error')).toContainText('confirm your age');
+      await expect(page.locator('#auth-step-code')).toBeHidden();
       expect(emailCalls).toEqual([]);
     });
   }

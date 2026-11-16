@@ -50,10 +50,15 @@ export default defineConfig({
       },
     },
     {
-      command: `npm run dev -- --port ${E2E.webPort}`,
+      // If the dev server stops while tests are still running (on the shared host,
+      // something outside this run has stopped it more than once), say so with its exit
+      // status: the tests that follow fail with "connection refused", which is not a
+      // verdict on the code. 143 = SIGTERM, 137 = SIGKILL.
+      command: `bash -c 'npm run dev -- --port ${E2E.webPort}; echo "[dev-server] EXITED with status $? while the tests were running" >&2'`,
       port: E2E.webPort,
       reuseExistingServer: false,
       timeout: 60000,
+      stderr: 'pipe',
       env: { API_PROXY_TARGET: `http://127.0.0.1:${E2E.apiPort}` },
     },
   ],
