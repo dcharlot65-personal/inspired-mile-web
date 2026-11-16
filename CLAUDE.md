@@ -24,6 +24,26 @@ A three-round duel of verses. Rules live in `src/lib/verse/` and are pure and se
 Read the header comment of `judge.ts` before changing judging: asked "A or B?" outright,
 small models answer by position. `scripts/judge-eval.mjs` measures a model's judging.
 
+## Online play (multiplayer)
+
+The SERVER decides every online score, with no model and no randomness: `backend/src/verse/`
+is a Rust port of `src/lib/verse/` (English; craft plus the rule-based judge), and
+`backend/src/multiplayer/game_room.rs` runs the match (server draws the seed and three
+forms; both players write under the same form; best of three). The page
+(`src/pages/multiplayer.astro`) previews with the TypeScript rules and recomputes every
+round the server sends (`auditRound` in `src/lib/multiplayer-client.ts`).
+
+The two engines are held together by golden vectors. After ANY change to `src/lib/verse/`,
+`src/lib/cards.ts` or `src/lib/multiplayer-rules.ts`:
+
+```bash
+~/kani-logs/remote/rb --pull . -- "$RB npm ci && scripts/gen-verse-golden.sh"   # rewrites backend/data, backend/tests/golden
+~/kani-logs/remote/rb . -- "$RB cd backend && cargo test --release"            # tests/verse_parity.rs must pass
+```
+
+`npx vitest run` fails while those files are stale. If the parity test fails, fix the Rust;
+never loosen the comparison. Online play has no relics, potions or ink yet.
+
 ## Build and test — on the build host, never on the dev Mac
 
 ```bash
@@ -108,7 +128,8 @@ left behind by a killed run is found by its port: `lsof -nP -iTCP:<port> -sTCP:L
 
 Passwordless sign-in (passkeys + Resend email) replacing Google OAuth; in-browser models
 only, no cloud provider (Liquid AI / Gemma 4 class), which also means the multiplayer judge
-must stop calling a cloud API; all languages represented; backend stays Rust.
+must stop calling a cloud API (done: it is rules on the server, see "Online play"); all
+languages represented; backend stays Rust.
 
 ## Git
 
