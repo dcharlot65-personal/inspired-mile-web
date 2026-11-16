@@ -145,9 +145,11 @@ quality pass on branch `lang/qa-pipeline`):
   sưu tầm" only for "collectible cards", as the footer does.
 - The core Vietnamese and Thai have a word for the duel and none of their own for a battle;
   these pages use the duel's word for both (trận đấu, การประชัน).
-- The duel page writes numbers as plain digits; these pages write them through `Intl`, which
-  gives Arabic-Indic digits in Arabic (١٢٣). The two should agree; which way is a decision for
-  the owner of the core files.
+- The duel page writes numbers as plain digits; these pages write them through `Intl`. In the
+  build host's Chromium, `Intl` writes Arabic with Latin digits (71, 43%, 11 / 12 in the
+  screenshots of 2026-11-16), so the two agree there. A browser whose CLDR data defaults Arabic
+  to Arabic-Indic digits (١٢٣) would show those on these pages and not on the duel page; not
+  checked in any other browser.
 
 ## Running the checks again
 
