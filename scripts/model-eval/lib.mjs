@@ -52,7 +52,12 @@ export function scriptOk(text, lang) {
   }
 }
 
-/** Languages whose script is theirs alone among the sixteen: the script check settles the language. */
+/**
+ * Where the script check settles the language: Hangul and Thai script are written for no other
+ * language a model would plausibly answer in, and Chinese and Japanese are told apart by kana.
+ * Cyrillic, Arabic and Devanagari are each Russian's, Arabic's and Hindi's alone among the sixteen,
+ * but are shared with Ukrainian, Persian, Urdu, Marathi, Nepali: there the identifier must agree.
+ */
 export const SCRIPT_DECIDES = ['zh', 'ja', 'ko', 'th'];
 /** What the identifier may answer for a language. Indonesian and Malay are one language standardised twice; a short verse cannot tell them apart. */
 export const LID_ACCEPTS = { id: ['id', 'ms'] };
@@ -115,7 +120,11 @@ const ANNOUNCE = /\b(i('ll| will| shall| must| need to)|let me|now to) (craft|wr
 // A reasoning block some models open with.
 const REASONING = /<\/?think>/i;
 
-const norm = (s) => s.toLowerCase().normalize('NFKC').replace(/[^\p{L}\p{N}\s]/gu, ' ').replace(/\s+/g, ' ').trim();
+// Marks (\p{M}) stay: Devanagari vowel signs, Thai vowels and tones, Arabic harakat are part of the
+// word. Without them "क़सम, यह रात निर्वासन" fell apart into consonants that matched the relic's word
+// list in the prompt, which the model is asked to use (four false echoes in Hindi, found by reading
+// grand.hi.write.json; fixed before any decision turned on it).
+const norm = (s) => s.toLowerCase().normalize('NFKC').replace(/[^\p{L}\p{M}\p{N}\s]/gu, ' ').replace(/\s+/g, ' ').trim();
 const fourGrams = (s) => {
   const w = norm(s).split(' ').filter(Boolean);
   const out = new Set();

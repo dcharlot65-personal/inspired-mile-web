@@ -314,6 +314,16 @@ describe('the commentary check', () => {
       'Not marble, nor the gilded monuments\nOf princes, shall outlive this powerful rhyme;',
     ]) expect(commentary(verse, 'en', { instructions: instructionLines(PROMPT, null) }), verse).toEqual([]);
   });
+  it('reads a Devanagari word whole: a verse that uses the relic\'s words is not an echo of the list', () => {
+    // Lines from grand.hi.write.json that the rule once flagged: their vowel signs were stripped and
+    // the consonants left over matched the word list in the prompt.
+    const ins = instructionLines(['…', 'Form: Couplet. Two lines that rhyme.\nWrite exactly 2 lines.\nWork in at least two of these words: अँगूठी, क़सम, रात, निर्वासन, चुंबन.\nWrite only the verse, in Hindi. No title, no notes, no explanation.'], null);
+    for (const line of ['क़सम, यह रात निर्वासन की है!', 'निर्वासन का भार, सहता यह मन,', 'क़समों की गूँज में जीवन का गहरा निर्वासन रचा गया,']) {
+      expect(commentary(`${line}\nचुंबन की याद में जलता है मन`, 'hi', { instructions: ins }), line).toEqual([]);
+    }
+    // The list itself, copied as a line, is still an echo.
+    expect(commentary('अँगूठी, क़सम, रात, निर्वासन, चुंबन\nचुंबन की याद में जलता है मन', 'hi', { instructions: ins })).toEqual(['repeats the instructions']);
+  });
   it('leaves out of the echo rule the challenger\'s verse a prompt quotes', () => {
     const answering = 'Rough winds do shake the darling buds of May';
     const prompt = ['…', `Form: Couplet. Two lines that rhyme.\nYour challenger last said:\n${answering}\nAnswer them.`];
