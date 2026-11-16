@@ -452,6 +452,10 @@ const ru: Record<string, string> = {
   'theatre.clear': 'Стереть',
   'theatre.submit': 'Произнести',
   'theatre.judging': 'Идёт оценка…',
+  // The language picker and the verdict, when the loaded model is not used in the duel's language
+  // (measured: docs/language/MODEL-EVAL.md).
+  'battle.lang.written': '{language}: играет соперник с готовыми строфами, потому что модель {model} не показала, что хорошо пишет стихи на этом языке.',
+  'battle.lang.rules': '{language}: судят по правилам, потому что модель {model} не показала, что хорошо судит стихи на этом языке.',
 };
 
 export default ru;

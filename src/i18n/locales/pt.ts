@@ -452,6 +452,10 @@ const pt: Record<string, string> = {
   'theatre.clear': 'Limpar',
   'theatre.submit': 'Dizer',
   'theatre.judging': 'Julgando…',
+  // The language picker and the verdict, when the loaded model is not used in the duel's language
+  // (measured: docs/language/MODEL-EVAL.md).
+  'battle.lang.written': '{language}: você enfrenta o adversário de estrofes escritas, porque {model} não mostrou que escreve bem versos neste idioma.',
+  'battle.lang.rules': '{language}: julgado por regras, porque {model} não mostrou que julga bem versos neste idioma.',
 };
 
 export default pt;

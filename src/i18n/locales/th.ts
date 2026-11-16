@@ -452,6 +452,10 @@ const th: Record<string, string> = {
   'theatre.clear': 'ล้าง',
   'theatre.submit': 'ขับกลอน',
   'theatre.judging': 'กำลังตัดสิน…',
+  // The language picker and the verdict, when the loaded model is not used in the duel's language
+  // (measured: docs/language/MODEL-EVAL.md).
+  'battle.lang.written': '{language}: คุณจะพบกับคู่ต่อสู้ที่ใช้บทกลอนเขียนไว้แล้ว เพราะ {model} ยังไม่ได้แสดงให้เห็นว่าเขียนบทกลอนภาษานี้ได้ดี',
+  'battle.lang.rules': '{language}: ตัดสินด้วยกฎ เพราะ {model} ยังไม่ได้แสดงให้เห็นว่าตัดสินบทกลอนภาษานี้ได้ดี',
 };
 
 export default th;

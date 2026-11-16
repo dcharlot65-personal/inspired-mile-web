@@ -46,6 +46,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <label class="block">
               <span class="text-xs uppercase tracking-wider text-obsidian-500" data-i18n="battle.duelLanguage">Language of the duel</span>
               <select id="language" class="mt-1 w-full bg-obsidian-900 border border-obsidian-700 rounded-lg px-3 py-2 text-sm text-obsidian-100"></select>
+              <span id="language-note" class="hidden mt-1 block text-xs text-obsidian-400" role="status"></span>
             </label>
           </div>
         </div>
@@ -184,7 +185,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   </section>
 
   <script>
-    import { brainInfo, canOfferGrand, chooseTier, detectCapability, generate, isBrainLoaded, loadBrain, MODELS, type Tier } from '../lib/brain';
+    import { brainInfo, canOfferGrand, chooseTier, detectCapability, generate, isBrainLoaded, loadBrain, modelJudges, modelWrites, MODELS, type Tier } from '../lib/brain';
     import { CARD_CATALOG, drawRandomCard, getCardById, RARITY_COLORS, type Card, type Rarity } from '../lib/cards';
     import { addCard, getOwnedCardIds, getOwnedCards, getUniqueOwnedCount, recordBattleWin } from '../lib/inventory';
     import { getPlayerStats, incrementStat, setHighScore, syncCardStats } from '../lib/achievements';
@@ -303,22 +304,45 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
     // --- Language of the duel ---
     const langSelect = $<HTMLSelectElement>('language');
-    let offered: string[] = [...PACK_LANGS];
-    function fillLanguages(codes: string[], prefer?: string) {
-      // Only languages the game has verse data for; with a model, only those it names.
-      offered = codes.filter((c) => hasPack(c));
+    const offered: string[] = [...PACK_LANGS];
+    /**
+     * Every language the game has verse data for is offered, with or without a model.
+     * What changes with a model is who the player meets: in a language the loaded model
+     * has not been shown to write verse in (docs/language/MODEL-EVAL.md) the opponent
+     * plays written verse, and the picker says so beside the language's name.
+     */
+    function fillLanguages(prefer?: string) {
       const want = prefer ?? params.get('lang') ?? localStorage.getItem('inspired-mile-duel-lang') ?? locale();
+      const info = useModel ? brainInfo() : null;
       langSelect.replaceChildren();
       for (const code of offered) {
         const o = document.createElement('option');
         o.value = code;
-        o.textContent = languageName(code);
+        const written = !!info && !modelWrites(info, code);
+        o.dataset.opponent = info ? (written ? 'written' : 'model') : 'written';
+        o.textContent = written ? `${languageName(code)} · ${t('badge.written')}` : languageName(code);
         langSelect.appendChild(o);
       }
-      langSelect.value = offered.includes(want) ? want : offered.includes('en') ? 'en' : offered[0];
+      langSelect.value = offered.includes(want) ? want : 'en';
+      languageNote();
+    }
+    /** Under the picker: who writes and who judges in the chosen language, when it is not the loaded model. */
+    function languageNote() {
+      const note = $('language-note');
+      const info = useModel ? brainInfo() : null;
+      const lang = langSelect.value || 'en';
+      const lines: string[] = [];
+      if (info && !modelWrites(info, lang)) lines.push(t('battle.lang.written', { language: languageName(lang), model: info.label }));
+      if (info && !modelJudges(info, lang)) lines.push(t('battle.lang.rules', { language: languageName(lang), model: info.label }));
+      note.textContent = lines.join(' ');
+      note.dataset.writer = info && modelWrites(info, lang) ? 'model' : 'written';
+      note.dataset.judge = info && modelJudges(info, lang) ? 'model' : 'rules';
+      note.classList.toggle('hidden', lines.length === 0);
     }
     langSelect.addEventListener('change', () => {
       localStorage.setItem('inspired-mile-duel-lang', langSelect.value);
+      languageNote();
+      renderBadge();
       loadDeck();
     });
 
@@ -403,12 +427,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         const info = brainInfo()!;
         useModel = true;
         localStorage.setItem(BRAIN_KEY, info.tier);
-        say$($('brain-status'), info.writes ? 'brain.loaded' : 'brain.loadedJudgeOnly', { model: info.label });
-        fillLanguages(info.languages, langSelect.value);
+        say$($('brain-status'), info.writesIn.length ? 'brain.loaded' : 'brain.loadedJudgeOnly', { model: info.label });
+        fillLanguages(langSelect.value);
         loadDeck();
         ready(null);
       } else {
         useModel = false;
+        fillLanguages(langSelect.value);
         say$($('brain-status'), 'brain.failed');
         ready('brain.noModel');
       }
@@ -725,7 +750,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         curse: castCarry,
         previousPlayerVerse: results.at(-1)?.playerVerse,
         difficulty: ($<HTMLSelectElement>('difficulty').value as Difficulty) ?? 'player',
-        generate: useModel && isBrainLoaded() && brainInfo()?.writes ? (m, o) => generate(m, { maxTokens: o.maxTokens, temperature: o.temperature }) : undefined,
+        generate: useModel && isBrainLoaded() && modelWrites(brainInfo(), duel.lang) ? (m, o) => generate(m, { maxTokens: o.maxTokens, temperature: o.temperature }) : undefined,
         onDraft: (n, of) => { verseEl.textContent = of > 1 ? t('round.composingDraft', { card: card.name, n, total: of }) : t('round.composing', { card: card.name }); },
       });
       opponentVerse = written.verse;
@@ -858,7 +883,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       const info = brainInfo();
       v.appendChild(el('p', 'mt-2 text-[11px] text-obsidian-500', r.judge.source === 'model' && info
         ? t(info.judge === 'grade' ? 'verdict.judgedGrade' : 'verdict.judgedCompare', { model: info.label })
-        : t('verdict.judgedRules')));
+        // A model is loaded but does not judge this language: say that, not "no model is running".
+        : useModel && info && duel && !modelJudges(info, duel.lang)
+          ? t('battle.lang.rules', { language: languageName(duel.lang), model: info.label })
+          : t('verdict.judgedRules')));
 
       const winner = matchWinner(results);
       const done = winner !== null || results.length >= ROUNDS;
@@ -920,7 +948,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
     function renderBadge() {
       const info = useModel ? brainInfo() : null;
-      $('ai-model-badge').textContent = info ? t(info.writes ? 'badge.onDevice' : 'badge.writtenJudged', { model: info.label }) : t('badge.written');
+      const lang = duelLang();
+      // Who the player meets in this language: the model, the written opponent judged by the model, or neither.
+      $('ai-model-badge').textContent = !info || (!modelWrites(info, lang) && !modelJudges(info, lang))
+        ? t('badge.written')
+        : t(modelWrites(info, lang) ? 'badge.onDevice' : 'badge.writtenJudged', { model: info.label });
     }
 
     async function start(seed: number) {
@@ -957,7 +989,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     function redraw() {
       resay();
       const chosen = langSelect.value;
-      fillLanguages(offered, chosen);
+      fillLanguages(chosen);
       loadDeck();
       renderVariantPicker();
       updateSubmit();
@@ -975,7 +1007,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       say$($('brain-status'), 'brain.checking');
       say$(micLabel, 'mic.speak');
       say$(voiceLabel, 'voice.off');
-      fillLanguages([...PACK_LANGS]);
+      fillLanguages();
       loadDeck();
       renderVariantPicker();
       updateSubmit();

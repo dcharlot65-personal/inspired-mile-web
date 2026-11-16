@@ -354,6 +354,10 @@ const UI: Record<string, string> = {
   'theatre.clear': 'Clear',
   'theatre.submit': 'Speak it',
   'theatre.judging': 'Judging…',
+  // The language picker and the verdict, when the loaded model is not used in the duel's language
+  // (measured: docs/language/MODEL-EVAL.md).
+  'battle.lang.written': '{language}: you face the written opponent, because {model} has not shown it can write verse well in this language.',
+  'battle.lang.rules': '{language}: judged by rule, because {model} has not shown it can judge verse well in this language.',
 };
 
 const en: Record<string, string> = { ...ENGINE_EN, ...UI };

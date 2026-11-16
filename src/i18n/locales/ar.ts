@@ -452,6 +452,10 @@ const ar: Record<string, string> = {
   'theatre.clear': 'مسح',
   'theatre.submit': 'ألقِها',
   'theatre.judging': 'جارٍ التحكيم…',
+  // The language picker and the verdict, when the loaded model is not used in the duel's language
+  // (measured: docs/language/MODEL-EVAL.md).
+  'battle.lang.written': '{language}: تواجه خصم الأبيات المكتوبة، لأن {model} لم يُثبت أنه يجيد كتابة الشعر بهذه اللغة.',
+  'battle.lang.rules': '{language}: الحكم بالقواعد، لأن {model} لم يُثبت أنه يجيد الحكم على الشعر بهذه اللغة.',
 };
 
 export default ar;

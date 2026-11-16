@@ -1,9 +1,11 @@
 /**
  * The referee: asks the loaded model to compare two verses, or falls back to
- * the rule-based comparison when no model is loaded or a reading fails.
+ * the rule-based comparison when no model is loaded, when the loaded model has
+ * not been shown to judge verse in the duel's language (MODELS[..].judgesIn in
+ * ../brain, measured: docs/language/MODEL-EVAL.md), or when a reading fails.
  */
 import { CARD_CATALOG } from '../cards';
-import { answerScores, brainInfo, isBrainLoaded } from '../brain';
+import { answerScores, brainInfo, isBrainLoaded, modelJudges } from '../brain';
 import type { JudgeSplit } from './duel';
 import {
   CRITERIA, GRADE_ANSWERS, combineGrades, combineMargins, compareMessages, expectedGrade, gradeMessages, rulesJudge, type Margins,
@@ -39,15 +41,29 @@ async function grades(verse: string, lang: string): Promise<Margins> {
   return out;
 }
 
+/**
+ * The loaded model's judgement, by the method that model is read with. No check of
+ * whether the model should judge this language: `referee` makes that check, and the
+ * evaluation that decides it (scripts/model-eval) calls this.
+ */
+export async function modelJudge(playerVerse: string, opponentVerse: string, lang: string): Promise<JudgeSplit> {
+  if (brainInfo()?.judge === 'grade') {
+    return combineGrades(await grades(playerVerse, lang), await grades(opponentVerse, lang));
+  }
+  const forward = await margins(playerVerse, opponentVerse, lang);
+  const reversed = await margins(opponentVerse, playerVerse, lang);
+  return combineMargins(forward, reversed);
+}
+
+/** Will the loaded model judge a duel in this language, or will the rules? */
+export function judgedByModel(lang: string): boolean {
+  return isBrainLoaded() && modelJudges(brainInfo(), lang);
+}
+
 export async function referee(playerVerse: string, opponentVerse: string, lang: string): Promise<JudgeSplit> {
-  if (isBrainLoaded()) {
+  if (judgedByModel(lang)) {
     try {
-      if (brainInfo()?.judge === 'grade') {
-        return combineGrades(await grades(playerVerse, lang), await grades(opponentVerse, lang));
-      }
-      const forward = await margins(playerVerse, opponentVerse, lang);
-      const reversed = await margins(opponentVerse, playerVerse, lang);
-      return combineMargins(forward, reversed);
+      return await modelJudge(playerVerse, opponentVerse, lang);
     } catch (err) {
       console.error('[referee] model judging failed; using the rules', err);
     }

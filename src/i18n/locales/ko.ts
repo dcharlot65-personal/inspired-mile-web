@@ -452,6 +452,10 @@ const ko: Record<string, string> = {
   'theatre.clear': '지우기',
   'theatre.submit': '읊기',
   'theatre.judging': '심사하는 중…',
+  // The language picker and the verdict, when the loaded model is not used in the duel's language
+  // (measured: docs/language/MODEL-EVAL.md).
+  'battle.lang.written': '{language}: 미리 쓰인 시를 내는 상대와 겨뤄요. {model}이(가) 이 언어로 시를 잘 쓴다는 것이 확인되지 않았기 때문이에요.',
+  'battle.lang.rules': '{language}: 규칙으로 심사해요. {model}이(가) 이 언어의 시를 잘 심사한다는 것이 확인되지 않았기 때문이에요.',
 };
 
 export default ko;

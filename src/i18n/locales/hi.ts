@@ -452,6 +452,10 @@ const hi: Record<string, string> = {
   'theatre.clear': 'मिटाएँ',
   'theatre.submit': 'सुनाएँ',
   'theatre.judging': 'परखा जा रहा है…',
+  // The language picker and the verdict, when the loaded model is not used in the duel's language
+  // (measured: docs/language/MODEL-EVAL.md).
+  'battle.lang.written': '{language}: आपका सामना लिखे हुए पदों वाले प्रतिद्वंद्वी से होगा, क्योंकि {model} ने यह नहीं दिखाया है कि वह इस भाषा में अच्छे पद लिख सकता है।',
+  'battle.lang.rules': '{language}: निर्णय नियमों से होगा, क्योंकि {model} ने यह नहीं दिखाया है कि वह इस भाषा के पदों का ठीक निर्णय कर सकता है।',
 };
 
 export default hi;

@@ -53,7 +53,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   </section>
 
   <script>
-    import { brainInfo, chooseTier, detectCapability, loadBrain } from '../lib/brain';
+    import { brainInfo, chooseTier, detectCapability, loadBrain, modelJudges } from '../lib/brain';
     import { getActiveDeck } from '../lib/deck-manager';
     import { cancelListening, isListening, loadEar, startListening, stopListening } from '../lib/ear';
     import { getOwnedCardIds } from '../lib/inventory';
@@ -62,7 +62,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     import { hasPack, loadPack } from '../lib/verse/packs';
     import { DuelSession } from '../lib/verse/session';
     import { Theatre, type Action } from '../lib/xr/theatre';
-    import { initI18n, onLocaleChange, t } from '../i18n';
+    import { initI18n, languageName, onLocaleChange, t } from '../i18n';
     import type { Msg } from '../lib/verse/msg';
 
     const statusEl = document.getElementById('theatre-status')!;
@@ -93,7 +93,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       theatre.render(session, {
         mic: micText(),
         listening: isListening(),
-        judge: info ? t('theatre.judgedModel', { model: info.label }) : t('theatre.judgedRules'),
+        // The model judges only a language it has been shown to judge (docs/language/MODEL-EVAL.md);
+        // elsewhere the judging is by rule even with a model loaded, and the line says which.
+        judge: !info
+          ? t('theatre.judgedRules')
+          : modelJudges(info, session.duel.lang)
+            ? t('theatre.judgedModel', { model: info.label })
+            : t('battle.lang.rules', { language: languageName(session.duel.lang), model: info.label }),
       });
       if (document.activeElement !== typed) typed.value = session.verse;
       (document.getElementById('typed') as HTMLElement).classList.toggle('hidden', theatre.mode !== 'flat');

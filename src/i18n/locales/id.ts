@@ -452,6 +452,10 @@ const id: Record<string, string> = {
   'theatre.clear': 'Hapus',
   'theatre.submit': 'Ucapkan',
   'theatre.judging': 'Menilai…',
+  // The language picker and the verdict, when the loaded model is not used in the duel's language
+  // (measured: docs/language/MODEL-EVAL.md).
+  'battle.lang.written': '{language}: kamu melawan lawan bersyair tertulis, karena {model} belum terbukti mampu menulis syair dengan baik dalam bahasa ini.',
+  'battle.lang.rules': '{language}: dinilai dengan aturan, karena {model} belum terbukti mampu menilai syair dengan baik dalam bahasa ini.',
 };
 
 export default id;

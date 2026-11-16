@@ -452,6 +452,10 @@ const zh: Record<string, string> = {
   'theatre.clear': '清除',
   'theatre.submit': '吟诵',
   'theatre.judging': '评判中…',
+  // The language picker and the verdict, when the loaded model is not used in the duel's language
+  // (measured: docs/language/MODEL-EVAL.md).
+  'battle.lang.written': '{language}：你将面对出现成诗句的对手，因为 {model} 尚未证明它能用这种语言写好诗。',
+  'battle.lang.rules': '{language}：按规则评判，因为 {model} 尚未证明它能评好这种语言的诗。',
 };
 
 export default zh;

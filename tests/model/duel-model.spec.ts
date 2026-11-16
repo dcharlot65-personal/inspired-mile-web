@@ -1,10 +1,13 @@
 import { test, expect } from '@playwright/test';
+import { MODELS } from '../../src/lib/brain';
 
 /**
  * A duel against each real model, in a browser with WebGPU. What is asserted is
- * that the model loads, writes the opponent's verse itself, and judges; what is
- * printed (load time, the verses, the verdict) is for a person to read, since
- * verse quality cannot be asserted.
+ * that the model loads and that it writes and judges exactly where the measured
+ * lists in src/lib/brain.ts say it does (docs/language/MODEL-EVAL.md): elsewhere
+ * the opponent's verse is written and the judging is by rule, and the language
+ * picker says so. What is printed (load time, the verses, the verdict) is for a
+ * person to read, since verse quality cannot be asserted.
  */
 const TIERS = (process.env.TIERS ?? 'lite,standard,grand').split(',');
 const LABEL: Record<string, RegExp> = { lite: /LFM2\.5 350M/, standard: /LFM3 1\.7B/, grand: /Gemma 4 E2B/ };
@@ -33,8 +36,9 @@ for (const tier of TIERS) {
     await expect(verse).toHaveAttribute('data-source', /model|written/, { timeout: 3 * 60 * 1000 });
     const opening = await verse.innerText();
     const writeSeconds = Math.round((Date.now() - t1) / 1000);
-    // The phone-tier model only judges; the two larger ones must write the verse themselves.
-    expect(await verse.getAttribute('data-source')).toBe(tier === 'lite' ? 'written' : 'model');
+    // The model writes the verse itself only in a language it has been shown to write in.
+    const spec = MODELS[tier as keyof typeof MODELS];
+    expect(await verse.getAttribute('data-source')).toBe(spec.writesIn.includes('en') ? 'model' : 'written');
     expect(opening.trim().length).toBeGreaterThan(10);
 
     await page.click('[data-char-id]:not(.pointer-events-none)');
@@ -43,7 +47,8 @@ for (const tier of TIERS) {
     await page.click('#submit-verse');
     await expect(page.locator('#verdict')).toBeVisible({ timeout: 3 * 60 * 1000 });
     const judgeSeconds = Math.round((Date.now() - t2) / 1000);
-    await expect(page.locator('#verdict')).toContainText(/Judged by .* on this device/);
+    if (spec.judgesIn.includes('en')) await expect(page.locator('#verdict')).toContainText(/Judged by .* on this device/);
+    else await expect(page.locator('#verdict')).toContainText(/judged by rule/);
     await expect(page.locator('#verdict')).toContainText(LABEL[tier]);
 
     console.log(`\n[${tier}] load ${loadSeconds}s | opening verse ${writeSeconds}s | judging ${judgeSeconds}s`);
@@ -53,3 +58,34 @@ for (const tier of TIERS) {
     expect(errors, errors.join('\n')).toEqual([]);
   });
 }
+
+for (const tier of TIERS) {
+  test(`${tier}: the language picker marks every language the model does not write in`, async ({ page }) => {
+    const spec = MODELS[tier as keyof typeof MODELS];
+    await page.goto(`/battle?seed=11&brain=${tier}`);
+    await expect(page.locator('#start-duel')).toBeEnabled({ timeout: 12 * 60 * 1000 });
+    await expect(page.locator('#brain-status')).toContainText(LABEL[tier]);
+    const options = await page.locator('#language option').evaluateAll((os) => os.map((o) => ({ code: (o as HTMLOptionElement).value, opponent: (o as HTMLOptionElement).dataset.opponent, text: o.textContent ?? '' })));
+    expect(options.length).toBe(16);
+    for (const o of options) {
+      const writes = spec.writesIn.includes(o.code);
+      expect(o.opponent, o.code).toBe(writes ? 'model' : 'written');
+      // "Written opponent" stands beside the name of a language the model does not write in, and only there.
+      expect(o.text.includes('Written opponent'), `${o.code}: "${o.text}"`).toBe(!writes);
+    }
+    for (const code of ['en', 'th', 'ja', 'es']) {
+      await page.selectOption('#language', code);
+      const note = page.locator('#language-note');
+      await expect(note).toHaveAttribute('data-writer', spec.writesIn.includes(code) ? 'model' : 'written');
+      await expect(note).toHaveAttribute('data-judge', spec.judgesIn.includes(code) ? 'model' : 'rules');
+      if (spec.writesIn.includes(code) && spec.judgesIn.includes(code)) await expect(note).toBeHidden();
+      else {
+        await expect(note).toBeVisible();
+        await expect(note).toContainText(LABEL[tier]);
+        if (!spec.writesIn.includes(code)) await expect(note).toContainText('you face the written opponent');
+        if (!spec.judgesIn.includes(code)) await expect(note).toContainText('judged by rule');
+      }
+    }
+  });
+}
+

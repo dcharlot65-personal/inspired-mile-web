@@ -7,7 +7,7 @@
  * the score, so every front end plays by exactly the same rules.
  */
 import { getCardById } from '../cards';
-import { brainInfo, generate, isBrainLoaded } from '../brain';
+import { brainInfo, generate, isBrainLoaded, modelWrites } from '../brain';
 import {
   ROUNDS, createDuel, illegalMove, inkAt, matchWinner, moveCost, resolveRound, scoreVerse,
   type CastCurse, type Duel, type DuelDeck, type IllegalMove, type PlayerMove, type RoundResult, type VerseScore,
@@ -92,7 +92,8 @@ export class DuelSession {
     this.opponentVerse = '';
     this.drafting = null;
     this.changed();
-    const canWrite = this.opts.useModel && isBrainLoaded() && !!brainInfo()?.writes;
+    // Only in a language the loaded model has been shown to write verse in; elsewhere the written opponent plays.
+    const canWrite = this.opts.useModel && isBrainLoaded() && modelWrites(brainInfo(), this.duel.lang);
     const written = await writeOpponentVerse({
       duel: this.duel,
       roundIndex: this.roundIndex,

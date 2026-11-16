@@ -35,27 +35,58 @@ export interface ModelSpec {
   label: string;
   /** Approximate download, for the consent prompt. */
   megabytes: number;
-  /** Languages the model's card names. */
-  languages: string[];
   judge: JudgeMethod;
   /**
-   * Can it write the opponent's verse? Measured in play (tests/model, 2026-11-16):
-   * Gemma 4 E2B and LFM3 both wrote a correct acrostic; LFM2.5 350M produced
-   * "Acrostic Verse: The challenge begins with words". Where this is false the
-   * opponent plays written verses and the model only judges.
+   * Languages in which it writes the opponent's verse, and languages in which it judges.
+   * Both are measured, not taken from the model's card: docs/language/MODEL-EVAL.md has
+   * the method, the thresholds and the table. In a language missing from `writesIn` the
+   * opponent plays written verse; in one missing from `judgesIn` the judging is by rule.
+   * A language that was not measured is not in either list.
+   *
+   * The lists are copied from docs/language/model-eval/decisions.json, which
+   * scripts/model-eval/analyze.mjs derives from the result files beside it.
+   * src/lib/model-eval.test.ts fails when they differ, and when that file no longer
+   * follows from the results.
    */
-  writes: boolean;
+  writesIn: readonly string[];
+  judgesIn: readonly string[];
 }
 
-const LFM_LANGS = ['en', 'ar', 'zh', 'fr', 'de', 'it', 'ja', 'ko', 'pt', 'es', 'vi', 'th', 'id', 'hi', 'ru', 'pl'];
-
-// Gemma's card says "35+ languages out of the box" without naming them; these are the
-// ones the game offers, the same set LFM3 names, until each is tested in play.
 export const MODELS: Record<Exclude<Tier, 'none'>, ModelSpec> = {
-  grand: { tier: 'grand', id: 'onnx-community/gemma-4-E2B-it-ONNX', dtype: 'q4f16', label: 'Gemma 4 E2B', megabytes: 3100, languages: LFM_LANGS, judge: 'compare', writes: true },
-  standard: { tier: 'standard', id: 'onnx-community/LFM3-1.7B-ONNX', dtype: 'q4f16', label: 'LFM3 1.7B', megabytes: 1090, languages: LFM_LANGS, judge: 'compare', writes: true },
-  lite: { tier: 'lite', id: 'LiquidAI/LFM2.5-350M-ONNX', dtype: 'q4', label: 'LFM2.5 350M', megabytes: 295, languages: ['en', 'ar', 'zh', 'fr', 'de', 'ja', 'ko', 'es'], judge: 'grade', writes: false },
+  grand: {
+    tier: 'grand', id: 'onnx-community/gemma-4-E2B-it-ONNX', dtype: 'q4f16', label: 'Gemma 4 E2B', megabytes: 3100, judge: 'compare',
+    // docs/language/model-eval/cells/grand.<lang>.write.json
+    writesIn: [],
+    // docs/language/model-eval/cells/grand.<lang>.judge.json
+    judgesIn: [],
+  },
+  standard: {
+    tier: 'standard', id: 'onnx-community/LFM3-1.7B-ONNX', dtype: 'q4f16', label: 'LFM3 1.7B', megabytes: 1090, judge: 'compare',
+    // docs/language/model-eval/cells/standard.<lang>.write.json
+    writesIn: [],
+    // docs/language/model-eval/cells/standard.<lang>.judge.json
+    judgesIn: [],
+  },
+  lite: {
+    tier: 'lite', id: 'LiquidAI/LFM2.5-350M-ONNX', dtype: 'q4', label: 'LFM2.5 350M', megabytes: 295, judge: 'grade',
+    // docs/language/model-eval/cells/lite.<lang>.write.json
+    writesIn: [],
+    // docs/language/model-eval/cells/lite.<lang>.judge.json
+    judgesIn: [],
+  },
 };
+
+const base = (lang: string) => lang.toLowerCase().split('-')[0];
+
+/** Does this model write the opponent's verse in this language? */
+export function modelWrites(spec: ModelSpec | null | undefined, lang: string): boolean {
+  return !!spec && spec.writesIn.includes(base(lang));
+}
+
+/** Does this model judge verse in this language? */
+export function modelJudges(spec: ModelSpec | null | undefined, lang: string): boolean {
+  return !!spec && spec.judgesIn.includes(base(lang));
+}
 
 export interface Capability {
   webgpu: boolean;
@@ -242,4 +273,10 @@ export async function answerScores(messages: Message[], answers: string[]): Prom
   });
   out.logits.dispose?.();
   return scores;
+}
+
+/** How many of the loaded model's tokens a text is. Used to time generation (scripts/model-eval). */
+export function countTokens(text: string): number {
+  if (!loaded) throw new Error('No model is loaded');
+  return loaded.generator.tokenizer.encode(text, { add_special_tokens: false }).length;
 }

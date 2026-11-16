@@ -57,6 +57,20 @@ test.describe('Verse duel', () => {
     await expect(page.locator('#brain-status')).toContainText(/written/i);
   });
 
+  test('without a model every language is offered, each against the written opponent, with nothing to explain', async ({ page }) => {
+    await open(page);
+    const options = page.locator('#language option');
+    await expect(options).toHaveCount(16);
+    // No model is loaded, so no language is marked: the status line already says the opponent is written.
+    expect(await options.evaluateAll((os) => os.map((o) => (o as HTMLOptionElement).dataset.opponent))).toEqual(Array(16).fill('written'));
+    expect(await options.evaluateAll((os) => os.filter((o) => o.textContent!.includes('·')).length)).toBe(0);
+    await expect(page.locator('#language-note')).toBeHidden();
+    await page.selectOption('#language', 'th');
+    await expect(page.locator('#language-note')).toBeHidden();
+    await expect(page.locator('#language-note')).toHaveAttribute('data-writer', 'written');
+    await expect(page.locator('#language-note')).toHaveAttribute('data-judge', 'rules');
+  });
+
   test('a round shows the form, the opponent, its verse and a live checklist', async ({ page }) => {
     await open(page);
     await start(page);
