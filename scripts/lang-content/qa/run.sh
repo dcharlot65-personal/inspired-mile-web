@@ -5,6 +5,7 @@
 #   bash scripts/lang-content/qa/run.sh detach-meaning   back-translate every language, detached, under memguard -> $OUT/bt-<lang>.json
 #   bash scripts/lang-content/qa/run.sh install-opus     OPUS-MT models into $TASK/opus (this task's own directory), under memguard
 #   bash scripts/lang-content/qa/run.sh detach-opus      back-translate every language with OPUS-MT, detached, under memguard -> $OUT/bto-<lang>.json
+#   bash scripts/lang-content/qa/run.sh align            does each translated option still mean its own English option? -> $OUT/align.json
 #   bash scripts/lang-content/qa/run.sh status
 # MADLAD, the embedder, Hunspell and the Python environment are the shared language pipeline's
 # installation (LANGQA_HOME), used read-only. The OPUS-MT models are this task's own ($TASK/opus),
@@ -70,6 +71,8 @@ SH
     if [ -f "$OUT/opus.pid" ] && kill -0 "$(cat "$OUT/opus.pid")" 2>/dev/null; then echo "already running: pid $(cat "$OUT/opus.pid")"; exit 0; fi
     nohup "$MEMGUARD" --max-gb 8 -- "$OUT/opus.sh" > "$OUT/opus.log" 2>&1 &
     echo $! > "$OUT/opus.pid"; echo "started: pid $!" ;;
+  align)
+    MINILM_DIR=$LANGQA_HOME/models/all-MiniLM-L6-v2 HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 nice -n 10 "$MEMGUARD" --max-gb 4 -- "$LANGQA_HOME/venv/bin/python" "$HERE/align.py" "$OUT" "$OUT/align.json" 2>&1 | grep -v Warning | tail -2 ;;
   status)
     for e in meaning opus; do
       p=bt; [ $e = opus ] && p=bto
