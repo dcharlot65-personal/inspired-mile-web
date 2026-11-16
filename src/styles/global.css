@@ -102,6 +102,14 @@
   @apply bg-linear-to-r from-gold-400 via-gold-300 to-gold-500 bg-clip-text text-transparent;
 }
 
+/* Japanese and Chinese may break a heading between any two characters, and a heading too wide
+   for a phone broke inside its accented word (プレイヤープロフィー / ル). Kept whole, the accent
+   moves to the next line instead (プレイヤー / プロフィール); it still wraps if it alone is too wide. */
+:lang(ja) :is(h1, h2) .text-gradient,
+:lang(zh) :is(h1, h2) .text-gradient {
+  display: inline-block;
+}
+
 @utility section-padding {
   @apply px-4 sm:px-6 lg:px-8 py-16 sm:py-24;
 }
