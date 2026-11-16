@@ -24,7 +24,7 @@ RESULTS.md, beside this file, says what those tools found.
 | City names: Brooklyn, Mumbai, Osaka, Kingston | Wikidata labels (CLDR has no time zone named for them). | `variants/<lang>.ts`, `wikidata-labels.json` |
 | "Eurasia"; the play titles on the home page; the houses Rome, Illyria, The Tempest, Lake District; Olympus where Wikidata has it | Wikidata labels. | `variants`, `card-terms`, `wikidata-labels.json` |
 | The game's own terms (verse, round, deck, relic, potion, craft, ink…) | The core locale files `src/i18n/locales/*.ts`, word for word. | `terminology` below |
-| Everything else: 363 strings a language | Written by a language model (Claude), then checked as RESULTS.md describes. **Not reviewed by a native speaker.** | `src/i18n/pages/<area>/<lang>.ts` |
+| Everything else: 378 strings a language | Written by a language model (Claude), then checked as RESULTS.md describes. **Not reviewed by a native speaker.** | `src/i18n/pages/<area>/<lang>.ts` |
 
 `sourced-names.json` lists every value taken from a source, per language, with the source it
 came from. `src/i18n/pages.test.ts` fails if a module and that record disagree, so a name cannot
