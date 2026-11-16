@@ -1,8 +1,8 @@
 import { test, expect, type APIRequestContext, type CDPSession, type Page } from '@playwright/test';
-import { execFileSync, spawnSync } from 'node:child_process';
+import { execFileSync, spawn, spawnSync } from 'node:child_process';
 import { createHmac } from 'node:crypto';
 import { existsSync, readFileSync } from 'node:fs';
-import os from 'node:os';
+import net from 'node:net';
 import path from 'node:path';
 import { E2E } from './e2e-env';
 
@@ -1245,21 +1245,29 @@ async function fetchFromPage(page: Page, method: string, route: string, body?: u
   }, [method, `/api/v1${route}`, body ?? null] as const);
 }
 
-/** Make a passkey for a begun registration, with the page's virtual authenticator. */
-async function createCredential(page: Page, options: unknown) {
-  return page.evaluate(async (o) => {
+/**
+ * Make a passkey for a begun registration, with the page's virtual authenticator.
+ *
+ * Chrome's virtual authenticator holds only a few discoverable credentials (the fourth
+ * create fails with NotAllowedError). A test that makes many accounts passes `forget`: the
+ * authenticator then drops the credential once the attestation exists, which is all the
+ * server needs to finish the sign-up. Such an account cannot be signed in to again.
+ */
+async function createCredential(page: Page, options: unknown, forget?: Authenticator) {
+  const credential = await page.evaluate(async (o) => {
     const publicKey = (PublicKeyCredential as any).parseCreationOptionsFromJSON(o);
     const made = (await navigator.credentials.create({ publicKey })) as any;
     return made.toJSON();
   }, options);
+  if (forget) await forget.cdp.send('WebAuthn.clearCredentials', { authenticatorId: forget.authenticatorId });
+  return credential;
 }
 
 /** Sign up with a passkey through the API, from inside the page. */
-async function signUpFromPage(page: Page, ip?: string) {
-  if (ip) await page.context().setExtraHTTPHeaders({ 'CF-Connecting-IP': ip });
+async function signUpFromPage(page: Page, forget?: Authenticator) {
   const begun = await postFromPage(page, '/auth/passkey/signup/begin', { age_tier: 'adult' });
   if (begun.status !== 200) return begun;
-  const credential = await createCredential(page, begun.body.options);
+  const credential = await createCredential(page, begun.body.options, forget);
   return postFromPage(page, '/auth/passkey/signup/finish', {
     challenge_id: begun.body.challenge_id, credential, name: 'e2e',
   });
@@ -1690,31 +1698,72 @@ test.describe('Hardening: client address and limits by network', () => {
     expect(sql(`SELECT DISTINCT ip FROM email_login_codes WHERE email LIKE 'v6-%' AND ip LIKE '${net}%'`)).toBe(`${net}::/64`);
   });
 
-  test('forwarding headers are believed from the proxy and ignored from anyone else', async ({ request }) => {
-    // Through loopback (where Caddy and the tunnel are): the header names the client.
+  test('forwarding headers are believed from a trusted proxy and ignored from anyone else', async ({ request }) => {
+    // The test APIs trust loopback, as production trusts the hosts its proxies are on:
+    // through it, the header names the client.
     const viaProxy = uniqueEmail('proxy');
     const claimed = uniqueIp();
     expect((await requestCode(request, viaProxy, { ip: claimed })).status()).toBe(200);
     expect(sql(`SELECT ip FROM email_login_codes WHERE email = '${viaProxy}'`)).toBe(claimed);
 
-    // Straight to the port from another address of this machine (how any device on the
-    // LAN or the tailnet reaches it): whatever the header says, the peer is the client.
-    const lan = Object.values(os.networkInterfaces())
-      .flat()
-      .filter((a) => a && a.family === 'IPv4' && !a.internal)
-      .map((a) => a!.address)
-      .find((a) => a !== '10.10.10.1' && a !== '100.64.224.0');
-    test.skip(!lan, 'this machine has no address other than loopback to connect from');
-    const direct = uniqueEmail('direct');
-    const spoofed = uniqueIp();
-    const res = await call('POST', `http://${lan}:${E2E.apiPort}/api/v1/auth/email/request`, {
-      body: { email: direct, age_tier: 'adult' },
-      headers: { 'CF-Connecting-IP': spoofed, 'X-Forwarded-For': spoofed },
+    // The same binary on the same database, told that its only proxy is somewhere else.
+    // This test's requests then come from a peer that is not a proxy, which is what any
+    // device on the LAN or the tailnet is when it talks to the port directly.
+    const bin = readFileSync(path.join(E2E.workDir, 'api-bin'), 'utf8').trim();
+    const port = await new Promise<number>((resolve, reject) => {
+      const probe = net.createServer();
+      probe.once('error', reject);
+      probe.listen(0, '127.0.0.1', () => {
+        const { port: free } = probe.address() as net.AddressInfo;
+        probe.close(() => resolve(free));
+      });
     });
-    expect(res.status()).toBe(200);
-    const stored = sql(`SELECT ip FROM email_login_codes WHERE email = '${direct}'`);
-    expect(stored).not.toBe(spoofed);
-    expect(stored).toBe(lan);
+    // Warnings from tracing go to stdout, start-up notices to stderr: both are "the log".
+    let log = '';
+    const api = spawn(bin, [], {
+      cwd: path.resolve('backend'),
+      env: {
+        PATH: process.env.PATH ?? '',
+        DATABASE_URL: `postgres://${E2E.dbUser}@127.0.0.1:${E2E.pgPort}/${E2E.dbName}`,
+        JWT_SECRET: E2E_JWT_SECRET,
+        PORT: String(port),
+        CORS_ORIGIN: E2E.webOrigin,
+        WEBAUTHN_RP_ID: 'localhost',
+        WEBAUTHN_ORIGIN: E2E.webOrigin,
+        DEV_EMAIL_LOG: '1',
+        RATE_LIMIT_PER_MINUTE: '100000',
+        DB_MAX_CONNECTIONS: '3',
+        TRUSTED_PROXIES: '203.0.113.99',
+        RUST_LOG: 'warn',
+        NO_COLOR: '1',
+      },
+      stdio: ['ignore', 'pipe', 'pipe'],
+    });
+    api.stdout!.on('data', (chunk) => { log += String(chunk); });
+    api.stderr!.on('data', (chunk) => { log += String(chunk); });
+    try {
+      await expect
+        .poll(async () => {
+          try { return (await fetch(`http://127.0.0.1:${port}/api/v1/health`)).status; } catch { return 0; }
+        }, { message: `the second API should come up on :${port}`, timeout: 30000 })
+        .toBe(200);
+
+      const direct = uniqueEmail('direct');
+      const spoofed = uniqueIp();
+      const res = await call('POST', `http://127.0.0.1:${port}/api/v1/auth/email/request`, {
+        body: { email: direct, age_tier: 'adult' },
+        headers: { 'CF-Connecting-IP': spoofed, 'X-Forwarded-For': spoofed },
+      });
+      expect(res.status()).toBe(200);
+      // Counted against the socket's address, whatever the headers claimed.
+      expect(sql(`SELECT ip FROM email_login_codes WHERE email = '${direct}'`)).toBe('127.0.0.1');
+      // And the server says which peer it did not believe, so a proxy left out of
+      // TRUSTED_PROXIES by mistake is found in the log, not by its visitors.
+      await expect.poll(() => log).toContain('not in TRUSTED_PROXIES');
+      expect(log).toMatch(/ignored CF-Connecting-IP \/ X-Forwarded-For from 127\.0\.0\.1/);
+    } finally {
+      api.kill('SIGTERM');
+    }
   });
 });
 
@@ -1725,15 +1774,17 @@ test.describe('Hardening: client address and limits by network', () => {
 test.describe('Hardening: sign-up accounting', () => {
   test('forty accounts an hour for one /24, counted when created and checked under a lock', async ({ page }) => {
     test.setTimeout(180000);
-    await page.goto('/');
-    await addVirtualAuthenticator(page);
     const n = () => 1 + Math.floor(Math.random() * 253);
-    const net = `10.${n()}.${n()}`;
-    const key = `${net}.0/24`;
+    const subnet = `10.${n()}.${n()}`;
+    const key = `${subnet}.0/24`;
+    // The browser's address for the whole test, set before the page exists.
+    await page.context().setExtraHTTPHeaders({ 'CF-Connecting-IP': `${subnet}.7` });
+    await page.goto(`${NO_EMAIL_WEB}/`);
+    const authenticator = await addVirtualAuthenticator(page);
 
-    // Thirty-eight accounts, each from a different address of the same /24.
+    // Thirty-eight accounts.
     for (let i = 1; i <= 38; i++) {
-      const made = await signUpFromPage(page, `${net}.${i}`);
+      const made = await signUpFromPage(page, authenticator);
       expect(made.status, `sign-up ${i}`).toBe(200);
     }
     expect(sql(`SELECT COUNT(*) FROM signup_attempts WHERE ip = '${key}' AND completed`)).toBe('38');
@@ -1742,10 +1793,13 @@ test.describe('Hardening: sign-up accounting', () => {
     // places are left; a count-then-insert without a lock would let all four in.
     const pending: { challenge_id: string; credential: unknown; name: string }[] = [];
     for (let i = 39; i <= 42; i++) {
-      await page.context().setExtraHTTPHeaders({ 'CF-Connecting-IP': `${net}.${i}` });
       const begun = await postFromPage(page, '/auth/passkey/signup/begin', { age_tier: 'adult' });
       expect(begun.status, `begin ${i}`).toBe(200);
-      pending.push({ challenge_id: begun.body.challenge_id, credential: await createCredential(page, begun.body.options), name: 'race' });
+      pending.push({
+        challenge_id: begun.body.challenge_id,
+        credential: await createCredential(page, begun.body.options, authenticator),
+        name: 'race',
+      });
     }
     const usersBefore = Number(sql('SELECT COUNT(*) FROM users'));
     const statuses = await page.evaluate(async (bodies) => Promise.all(bodies.map(async (body) => {
@@ -1758,13 +1812,20 @@ test.describe('Hardening: sign-up accounting', () => {
     expect(Number(sql('SELECT COUNT(*) FROM users'))).toBe(usersBefore + 2);
     expect(sql(`SELECT COUNT(*) FROM signup_attempts WHERE ip = '${key}' AND completed`)).toBe('40');
 
-    // The network is now refused before the prompt, from an address it has not used yet...
-    await page.context().setExtraHTTPHeaders({ 'CF-Connecting-IP': `${net}.250` });
-    const over = await postFromPage(page, '/auth/passkey/signup/begin', { age_tier: 'adult' });
-    expect(over.status).toBe(429);
-    expect(over.body.error).toBe('too_many_requests');
+    // The network is now refused before the prompt, also from an address of the /24 that
+    // has not been used yet (the budget is the network's, not the address's)...
+    for (const address of [`${subnet}.7`, `${subnet}.250`]) {
+      const over = await call('POST', `${API_NO_EMAIL}/auth/passkey/signup/begin`, {
+        body: { age_tier: 'adult' }, headers: { 'CF-Connecting-IP': address },
+      });
+      expect(over.status(), address).toBe(429);
+      expect((await over.json()).error).toBe('too_many_requests');
+    }
     // ...and the /24 next door is not.
-    expect((await signUpFromPage(page, `10.${n()}.254.7`)).status).toBe(200);
+    const nextDoor = await call('POST', `${API_NO_EMAIL}/auth/passkey/signup/begin`, {
+      body: { age_tier: 'adult' }, headers: { 'CF-Connecting-IP': `10.${n()}.254.7` },
+    });
+    expect(nextDoor.status()).toBe(200);
   });
 
   test('a site-wide ceiling stops sign-ups for everyone, and says so loudly in the log', async ({ request }) => {
@@ -1788,10 +1849,10 @@ test.describe('Hardening: sign-up accounting', () => {
 
   test('a passkey-only account that never played is deleted after thirty days; one that did, or was used, is not', async ({ page }) => {
     test.setTimeout(90000);
-    await page.goto('/');
-    await addVirtualAuthenticator(page);
+    await page.goto(`${NO_EMAIL_WEB}/`);
+    const authenticator = await addVirtualAuthenticator(page);
     const make = async () => {
-      const made = await signUpFromPage(page, uniqueIp());
+      const made = await signUpFromPage(page, authenticator);
       expect(made.status).toBe(200);
       return made.body.user.id as string;
     };
