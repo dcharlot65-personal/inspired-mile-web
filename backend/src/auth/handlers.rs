@@ -14,7 +14,7 @@ use webauthn_rs::prelude::{Webauthn, WebauthnBuilder};
 
 use super::error::ApiError;
 use super::sessions::{self, Session};
-use super::{email, passkeys};
+use super::{age, email, passkeys};
 use crate::config::Config;
 
 /// What the auth handlers share besides the database: the WebAuthn relying party and an
@@ -105,6 +105,7 @@ pub fn router(ctx: Arc<AuthContext>) -> Router<(PgPool, Config)> {
         .route("/logout", post(logout))
         .route("/logout/all", post(logout_everywhere))
         .route("/me", get(me))
+        .route("/age-tier", post(age::set_age_tier))
         .layer(Extension(ctx))
 }
 
@@ -237,8 +238,9 @@ pub async fn passkey_count(pool: &PgPool, user_id: Uuid) -> Result<i64, ApiError
 /// the visitor and the "my parent agrees" box is ticked by the visitor; no parent is asked
 /// and no age is verified. A child who sends "adult" gets an adult account, and no code
 /// here can stop that. What the server does guarantee is narrower: an account is given a
-/// tier once, when it is created, and can afterwards only move to the stricter one
-/// (`credits::age_verify`), so a teen account cannot lift its own limits.
+/// tier when it is created, and afterwards only its signed-in owner's explicit answer
+/// changes it, by the rules in `auth/age.rs`; an account declared teen cannot lift its own
+/// limits.
 pub fn age_tier_from(stated: Option<&str>) -> Result<&'static str, ApiError> {
     match stated {
         Some("adult") => Ok("adult"),

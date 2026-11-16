@@ -469,8 +469,8 @@ async fn find_or_create_user(
 
     let username = unused_username(&mut **tx).await?;
     let row = sqlx::query(
-        "INSERT INTO users (username, email, auth_provider, age_tier)
-         VALUES ($1, $2, 'email', $3)
+        "INSERT INTO users (username, email, auth_provider, age_tier, age_tier_declared)
+         VALUES ($1, $2, 'email', $3, $3)
          RETURNING id, username, email, display_name, auth_provider, avatar_url",
     )
     .bind(&username)

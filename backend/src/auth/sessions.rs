@@ -57,18 +57,15 @@ pub fn is_fresh(verified_at: DateTime<Utc>, now: DateTime<Utc>) -> bool {
     age >= Duration::seconds(-5) && age < Duration::minutes(FRESH_AUTH_MINUTES)
 }
 
+/// The refusal for a step that needs a fresh proof; the page answers it with a passkey check.
+pub fn reauth_required() -> ApiError {
+    ApiError::new(StatusCode::FORBIDDEN, "reauth_required", "Confirm it is you with your passkey first.")
+}
+
 impl Session {
     /// Refuse unless the user proved who they are in the last few minutes.
     pub fn require_fresh(&self) -> Result<(), ApiError> {
-        if is_fresh(self.verified_at, Utc::now()) {
-            Ok(())
-        } else {
-            Err(ApiError::new(
-                StatusCode::FORBIDDEN,
-                "reauth_required",
-                "Confirm it is you with your passkey first.",
-            ))
-        }
+        if is_fresh(self.verified_at, Utc::now()) { Ok(()) } else { Err(reauth_required()) }
     }
 }
 

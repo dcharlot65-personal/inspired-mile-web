@@ -37,34 +37,11 @@ pub struct AgeTierRequest {
 
 #[derive(Serialize)]
 pub struct AgeTierResponse {
-    /// "ok" when the stored tier now equals the one sent; "unchanged" when the request
-    /// would have loosened it and was not applied.
+    /// "ok" when the stored tier equals the one sent; "unchanged" when it does not. Either
+    /// way nothing was written.
     pub status: String,
-    /// The tier the account has after this request.
+    /// The account's tier.
     pub age_tier: String,
-}
-
-/// What a client may do to an account's stored age tier.
-///
-/// The tier is set when the account is created (sign-up sends the age gate's answer).
-/// After that the client can only make it stricter: `unknown` (accounts older than the
-/// gate) may be set once, `adult` may become `teen`, and `teen` stays `teen` whatever is
-/// sent. Before this, any signed-in account could post "adult" and lift the teen spending
-/// limit from itself; the page did exactly that on every load from whatever localStorage
-/// held.
-///
-/// None of this verifies anyone's age. The tier is what the visitor typed into the age
-/// gate; a child who claims to be an adult when creating an account gets an adult account,
-/// and a self-declared gate cannot prevent that. The rule here only stops an account that
-/// was declared a teen's from undeclaring it.
-pub fn resolve_age_tier(stored: &str, requested: &str) -> Option<&'static str> {
-    match (stored, requested) {
-        ("teen", _) => None,
-        (_, "teen") => Some("teen"),
-        ("adult", "adult") => None,
-        (_, "adult") => Some("adult"),
-        _ => None,
-    }
 }
 
 #[derive(Serialize)]
@@ -189,56 +166,30 @@ async fn spend_credits(
 // Age tier verification
 // ---------------------------------------------------------------------------
 
+/// The old automatic sync. Until 2026-11-16 the page posted the browser's stored age-gate
+/// answer here on every load, and this wrote it to the account: on a shared browser,
+/// whoever answered the gate last decided the tier of every account signed in there.
+///
+/// It no longer writes anything. It stays, answering with the account's tier, because a
+/// page cached before the change (the service worker keeps pages) still calls it on every
+/// load. Only the signed-in user's explicit answer changes a tier: `POST /auth/age-tier`,
+/// with the rules in `auth/age.rs`.
 async fn age_verify(
     Extension(claims): Extension<Claims>,
     State((pool, _)): State<(PgPool, Config)>,
     Json(body): Json<AgeTierRequest>,
 ) -> Result<Json<AgeTierResponse>, (StatusCode, String)> {
-    let requested = match body.age_tier.as_str() {
-        "adult" => "adult",
-        "teen" => "teen",
-        _ => return Err((StatusCode::BAD_REQUEST, "Invalid age tier".into())),
-    };
-
+    if !matches!(body.age_tier.as_str(), "adult" | "teen") {
+        return Err((StatusCode::BAD_REQUEST, "Invalid age tier".into()));
+    }
     let stored: String = sqlx::query_scalar("SELECT age_tier FROM users WHERE id = $1")
         .bind(claims.sub)
         .fetch_optional(&pool)
         .await
         .map_err(crate::error::internal)?
         .ok_or((StatusCode::UNAUTHORIZED, "Sign in first.".to_string()))?;
-
-    let Some(new_tier) = resolve_age_tier(&stored, requested) else {
-        // Already that tier, or the request would loosen it: nothing is written.
-        let status = if stored == requested { "ok" } else { "unchanged" };
-        if status == "unchanged" {
-            tracing::info!(user_id = %claims.sub, stored = %stored, requested, "Age tier not loosened");
-        }
-        return Ok(Json(AgeTierResponse { status: status.into(), age_tier: stored }));
-    };
-    // Written only if the tier is still the one the rule was applied to, so two requests
-    // cannot race past it (and a row that became `teen` meanwhile is never touched). One
-    // statement, no transaction: the page calls this on every load.
-    let written = sqlx::query("UPDATE users SET age_tier = $2 WHERE id = $1 AND age_tier = $3 AND age_tier <> 'teen'")
-        .bind(claims.sub)
-        .bind(new_tier)
-        .bind(&stored)
-        .execute(&pool)
-        .await
-        .map_err(crate::error::internal)?
-        .rows_affected();
-    if written == 0 {
-        // Another request changed it in between; say what is stored now.
-        let now: String = sqlx::query_scalar("SELECT age_tier FROM users WHERE id = $1")
-            .bind(claims.sub)
-            .fetch_one(&pool)
-            .await
-            .map_err(crate::error::internal)?;
-        let status = if now == requested { "ok" } else { "unchanged" };
-        return Ok(Json(AgeTierResponse { status: status.into(), age_tier: now }));
-    }
-
-    tracing::info!(user_id = %claims.sub, age_tier = %new_tier, "Age tier updated");
-    Ok(Json(AgeTierResponse { status: "ok".into(), age_tier: new_tier.into() }))
+    let status = if stored == body.age_tier { "ok" } else { "unchanged" };
+    Ok(Json(AgeTierResponse { status: status.into(), age_tier: stored }))
 }
 
 // ---------------------------------------------------------------------------
@@ -294,29 +245,3 @@ async fn log_transaction(pool: &PgPool, user_id: uuid::Uuid, amount: i32, direct
     .await;
 }
 
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn a_teen_account_cannot_be_made_adult() {
-        assert_eq!(resolve_age_tier("teen", "adult"), None);
-        assert_eq!(resolve_age_tier("teen", "teen"), None);
-    }
-
-    #[test]
-    fn the_tier_only_moves_towards_the_stricter_value() {
-        // An adult account may be marked teen.
-        assert_eq!(resolve_age_tier("adult", "teen"), Some("teen"));
-        assert_eq!(resolve_age_tier("adult", "adult"), None);
-        // An account from before the age gate takes the first answer it is given.
-        assert_eq!(resolve_age_tier("unknown", "adult"), Some("adult"));
-        assert_eq!(resolve_age_tier("unknown", "teen"), Some("teen"));
-        // Nothing else is a tier.
-        for junk in ["", "unknown", "child", "Adult", "blocked"] {
-            assert_eq!(resolve_age_tier("adult", junk), None, "{junk:?}");
-            assert_eq!(resolve_age_tier("unknown", junk), None, "{junk:?}");
-            assert_eq!(resolve_age_tier("teen", junk), None, "{junk:?}");
-        }
-    }
-}

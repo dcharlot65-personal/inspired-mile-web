@@ -262,6 +262,16 @@ async function withFreshProof<T>(step: () => Promise<T>): Promise<T> {
 }
 
 /**
+ * Give the signed-in account's age, as its user has just answered the age question opened
+ * from the account menu. Nothing else in the page changes an account's tier: the browser's
+ * stored gate answer is never sent on its own. Going back from teen to adult asks for the
+ * passkey first when the last proof is old.
+ */
+export async function setAccountAgeTier(tier: EmailAgeTier): Promise<{ age_tier: string; changed: boolean }> {
+  return withFreshProof(() => call(() => api.setAgeTier(tier)));
+}
+
+/**
  * Sign out on every device. Local state, and the account's data in the service worker's
  * caches, are cleared whether or not the server answered (as `logoutUser` does).
  */

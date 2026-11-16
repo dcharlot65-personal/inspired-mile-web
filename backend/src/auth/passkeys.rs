@@ -541,8 +541,8 @@ pub async fn signup_finish(
         .execute(&mut *tx)
         .await?;
     let user_row = sqlx::query(
-        "INSERT INTO users (id, username, auth_provider, age_tier)
-         VALUES ($1, $2, 'passkey', $3)
+        "INSERT INTO users (id, username, auth_provider, age_tier, age_tier_declared)
+         VALUES ($1, $2, 'passkey', $3, $3)
          ON CONFLICT DO NOTHING
          RETURNING id, username, email, display_name, auth_provider, avatar_url",
     )
