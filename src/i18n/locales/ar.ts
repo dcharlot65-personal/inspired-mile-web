@@ -290,7 +290,7 @@ const ar: Record<string, string> = {
   'battle.begin': 'ابدأ المبارزة',
   'brain.checking': 'جارٍ فحص ما يستطيع هذا الجهاز تشغيله…',
   'brain.playNow': 'العب الآن بلا تنزيل',
-  'brain.kept': 'يُنزَّل مرة واحدة ويحتفظ به متصفحك. لا يُرسَل شيء إلى أي مكان.',
+  'brain.kept': 'يُنزَّل مرة واحدة من Hugging Face ويحتفظ به متصفحك. لا يُرسَل شيء مما تكتبه أو تقوله إلى أي مكان.',
   'brain.summoning': 'جارٍ استدعاء خصمك…',
   'brain.downloading': 'جارٍ تنزيل {model}: {done} من {total} م.ب',
   'brain.ready': '{model} جاهز',

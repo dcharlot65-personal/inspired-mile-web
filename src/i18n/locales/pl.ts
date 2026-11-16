@@ -290,7 +290,7 @@ const pl: Record<string, string> = {
   'battle.begin': 'Zacznij pojedynek',
   'brain.checking': 'Sprawdzam, co to urządzenie potrafi uruchomić…',
   'brain.playNow': 'Graj od razu, bez pobierania',
-  'brain.kept': 'Pobierane raz i przechowywane przez przeglądarkę. Nic nie jest nigdzie wysyłane.',
+  'brain.kept': 'Pobierane raz z Hugging Face i przechowywane przez przeglądarkę. Nic z tego, co piszesz lub mówisz, nie jest nigdzie wysyłane.',
   'brain.summoning': 'Przywołuję twojego rywala…',
   'brain.downloading': 'Pobieranie {model}: {done} z {total} MB',
   'brain.ready': '{model}: gotowe',

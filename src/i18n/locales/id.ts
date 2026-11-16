@@ -290,7 +290,7 @@ const id: Record<string, string> = {
   'battle.begin': 'Mulai duel',
   'brain.checking': 'Memeriksa apa yang bisa dijalankan perangkat ini…',
   'brain.playNow': 'Main sekarang tanpa mengunduh',
-  'brain.kept': 'Diunduh sekali dan disimpan perambanmu. Tidak ada yang dikirim ke mana pun.',
+  'brain.kept': 'Diunduh sekali dari Hugging Face dan disimpan perambanmu. Apa pun yang kamu tulis atau ucapkan tidak dikirim ke mana pun.',
   'brain.summoning': 'Memanggil lawanmu…',
   'brain.downloading': 'Mengunduh {model}: {done} dari {total} MB',
   'brain.ready': '{model} siap',
