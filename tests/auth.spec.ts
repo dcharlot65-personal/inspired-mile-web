@@ -1,7 +1,8 @@
 import { test, expect, type APIRequestContext, type CDPSession, type Page } from '@playwright/test';
 import { execFileSync, spawn, spawnSync } from 'node:child_process';
-import { createHmac } from 'node:crypto';
+import { createHash, createHmac, randomBytes } from 'node:crypto';
 import { existsSync, readFileSync } from 'node:fs';
+import http from 'node:http';
 import net from 'node:net';
 import path from 'node:path';
 import { E2E } from './e2e-env';
@@ -1280,6 +1281,97 @@ function ageProof(userId: string, minutes: number) {
 
 const meStatus = async (cookie: string) => (await call('GET', `${API}/auth/me`, { cookie })).status();
 
+/** A port nothing listens on right now. */
+function freePort(): Promise<number> {
+  return new Promise<number>((resolve, reject) => {
+    const probe = net.createServer();
+    probe.once('error', reject);
+    probe.listen(0, '127.0.0.1', () => {
+      const { port: free } = probe.address() as net.AddressInfo;
+      probe.close(() => resolve(free));
+    });
+  });
+}
+
+/** Run SQL on another database of the test cluster. */
+function sqlOn(db: string, statement: string): string {
+  return execFileSync(
+    psqlBinary(),
+    ['-h', '127.0.0.1', '-p', String(E2E.pgPort), '-U', E2E.dbUser, '-d', db, '-At', '-v', 'ON_ERROR_STOP=1', '-c', statement],
+    { encoding: 'utf8' },
+  ).trim();
+}
+
+interface ExtraApi {
+  /** Its API root, like API. */
+  base: string;
+  /** Everything it has written to stdout and stderr: "the log". */
+  log(): string;
+  /** SQL on the database it uses. */
+  sql(statement: string): string;
+  stop(): Promise<void>;
+}
+
+/**
+ * Another copy of the real API binary, on a port of its own, for a test that needs a
+ * setting the two standing APIs do not have.
+ *
+ * RUST_LOG is NOT set unless `env` sets it: that is how production starts when its .env
+ * leaves it out. (The standing APIs run with RUST_LOG=warn.) Its sweep runs once at start
+ * and then not for an hour. With `isolated`, it gets a fresh database of its own in the same
+ * Postgres, made here and dropped by stop(), so that counts over a whole table are exact
+ * whatever the other tests are doing meanwhile.
+ */
+async function startApi(env: Record<string, string> = {}, opts: { isolated?: boolean } = {}): Promise<ExtraApi> {
+  const bin = readFileSync(path.join(E2E.workDir, 'api-bin'), 'utf8').trim();
+  expect(existsSync(bin), `${bin} (written by tests/start-backend.sh)`).toBe(true);
+  const db = opts.isolated ? `iso_${unique().replace(/[^a-z0-9]/g, '')}` : E2E.dbName;
+  if (opts.isolated) sql(`CREATE DATABASE ${db}`);
+  const port = await freePort();
+  let log = '';
+  const api = spawn(bin, [], {
+    cwd: path.resolve('backend'),
+    env: {
+      PATH: process.env.PATH ?? '',
+      DATABASE_URL: `postgres://${E2E.dbUser}@127.0.0.1:${E2E.pgPort}/${db}`,
+      JWT_SECRET: E2E_JWT_SECRET,
+      PORT: String(port),
+      CORS_ORIGIN: E2E.webOrigin,
+      WEBAUTHN_RP_ID: 'localhost',
+      WEBAUTHN_ORIGIN: `${E2E.webOrigin},${E2E.webNoEmailOrigin}`,
+      DEV_EMAIL_LOG: '1',
+      RATE_LIMIT_PER_MINUTE: '100000',
+      DB_MAX_CONNECTIONS: '20',
+      MAINTENANCE_INTERVAL_SECONDS: '3600',
+      NO_COLOR: '1',
+      ...env,
+    },
+    stdio: ['ignore', 'pipe', 'pipe'],
+  });
+  api.stdout!.on('data', (chunk) => { log += String(chunk); });
+  api.stderr!.on('data', (chunk) => { log += String(chunk); });
+  const exited = new Promise<void>((resolve) => api.once('exit', () => resolve()));
+  const stop = async () => {
+    if (api.exitCode === null && api.signalCode === null) {
+      api.kill('SIGTERM');
+      await exited;
+    }
+    if (opts.isolated) sql(`DROP DATABASE IF EXISTS ${db} WITH (FORCE)`);
+  };
+  try {
+    await expect
+      .poll(async () => {
+        if (api.exitCode !== null) throw new Error(`the extra API exited (${api.exitCode}):\n${log.slice(-2000)}`);
+        try { return (await fetch(`http://127.0.0.1:${port}/api/v1/health`)).status; } catch { return 0; }
+      }, { message: `the extra API should come up on :${port}`, timeout: 60000 })
+      .toBe(200);
+  } catch (e) {
+    await stop();
+    throw e;
+  }
+  return { base: `http://127.0.0.1:${port}/api/v1`, log: () => log, sql: (s) => sqlOn(db, s), stop };
+}
+
 // ---------------------------------------------------------------------------
 // Start-up: no session secret, no server
 // ---------------------------------------------------------------------------
@@ -1343,6 +1435,25 @@ test.describe('Hardening: the session secret', () => {
     });
     expect(prod.status).toBe(2);
     expect(prod.stderr).toContain('local development');
+  });
+
+  test('the test-only race delay is refused with an https origin', async () => {
+    // The pause the race tests use must never reach production: the release binary will not
+    // start with it when a page origin is https.
+    const prod = startApi({
+      JWT_SECRET: E2E_JWT_SECRET,
+      TEST_ONLY_LIMIT_RACE_DELAY_MS: '300',
+      WEBAUTHN_RP_ID: 'inspiredmile.com',
+      WEBAUTHN_ORIGIN: 'https://sonnetman.inspiredmile.com',
+    });
+    expect(prod.status).toBe(2);
+    expect(prod.stderr).toContain('TEST_ONLY_LIMIT_RACE_DELAY_MS is set');
+    expect(prod.stderr).toContain('test-only');
+    // Control: on http localhost it is accepted, loudly, and start-up goes on to the database.
+    const local = startApi({ JWT_SECRET: E2E_JWT_SECRET, TEST_ONLY_LIMIT_RACE_DELAY_MS: '300' });
+    expect(local.status).not.toBe(2);
+    expect(local.stderr).toContain('For tests only');
+    expect(local.stderr).toMatch(/Failed to connect to PostgreSQL/);
   });
 
   test('email codes are hashed with a key of their own, not the session secret', async ({ request }) => {
@@ -1445,6 +1556,65 @@ test.describe('Hardening: sessions end on the server', () => {
     await expect(page.locator('#auth-btn')).toBeVisible();
     expect((await me(page)).status()).toBe(401);
     expect(await meStatus(elsewhere.cookie)).toBe(401);
+  });
+
+  // The review's probe REVIEW-A. Every request now runs in a task of its own to its end
+  // (run_to_completion in backend/src/main.rs); the multiplayer WebSocket upgrade must
+  // still work through that, and still need a live session.
+  test('the multiplayer WebSocket upgrades and answers, and only for a live session', async () => {
+    const { cookie } = await emailAccount();
+    /** Open the WebSocket by hand, send one text frame, read the first frame back. */
+    const roundTrip = (withCookie: string | null) => new Promise<{ status: number; reply?: string }>((resolve, reject) => {
+      const key = randomBytes(16).toString('base64');
+      const headers: Record<string, string> = {
+        Connection: 'Upgrade', Upgrade: 'websocket', 'Sec-WebSocket-Version': '13', 'Sec-WebSocket-Key': key,
+      };
+      if (withCookie) headers.Cookie = withCookie;
+      const req = http.request({ host: '127.0.0.1', port: E2E.apiPort, path: '/api/v1/multiplayer/ws', headers });
+      req.setTimeout(15000, () => req.destroy(new Error('timeout')));
+      req.on('response', (res) => { res.resume(); resolve({ status: res.statusCode ?? 0 }); });
+      req.on('upgrade', (res, socket) => {
+        const accept = createHash('sha1').update(`${key}258EAFA5-E914-47DA-95CA-C5AB0DC85B11`).digest('base64');
+        if (res.headers['sec-websocket-accept'] !== accept) {
+          socket.destroy();
+          reject(new Error('bad Sec-WebSocket-Accept'));
+          return;
+        }
+        const payload = Buffer.from('not json');
+        const mask = randomBytes(4);
+        const masked = Buffer.alloc(payload.length);
+        for (let i = 0; i < payload.length; i++) masked[i] = payload[i] ^ mask[i % 4];
+        let buf = Buffer.alloc(0);
+        socket.on('data', (d: Buffer) => {
+          buf = Buffer.concat([buf, d]);
+          if (buf.length < 2) return;
+          let len = buf[1] & 0x7f;
+          let off = 2;
+          if (len === 126) {
+            if (buf.length < 4) return;
+            len = buf.readUInt16BE(2);
+            off = 4;
+          }
+          if (buf.length >= off + len) {
+            socket.destroy();
+            resolve({ status: 101, reply: buf.subarray(off, off + len).toString('utf8') });
+          }
+        });
+        socket.on('error', reject);
+        socket.write(Buffer.concat([Buffer.from([0x81, 0x80 | payload.length]), mask, masked]));
+      });
+      req.on('error', reject);
+      req.end();
+    });
+
+    const ok = await roundTrip(cookie);
+    expect(ok.status).toBe(101);
+    expect(ok.reply).toContain('Invalid message format');
+    // Controls: no cookie, and a cookie whose session was signed out.
+    expect((await roundTrip(null)).status).toBe(401);
+    const out = await call('POST', `${API}/auth/logout`, { cookie, headers: { 'Content-Type': 'application/json' } });
+    expect(out.status()).toBe(200);
+    expect((await roundTrip(cookie)).status).toBe(401);
   });
 
   test('removing a passkey ends the account\'s other sessions and keeps this one', async ({ page }) => {
@@ -1708,49 +1878,16 @@ test.describe('Hardening: client address and limits by network', () => {
 
     // The same binary on the same database, told that its only proxy is somewhere else.
     // This test's requests then come from a peer that is not a proxy, which is what any
-    // device on the LAN or the tailnet is when it talks to the port directly.
-    const bin = readFileSync(path.join(E2E.workDir, 'api-bin'), 'utf8').trim();
-    const port = await new Promise<number>((resolve, reject) => {
-      const probe = net.createServer();
-      probe.once('error', reject);
-      probe.listen(0, '127.0.0.1', () => {
-        const { port: free } = probe.address() as net.AddressInfo;
-        probe.close(() => resolve(free));
-      });
-    });
-    // Warnings from tracing go to stdout, start-up notices to stderr: both are "the log".
-    let log = '';
-    const api = spawn(bin, [], {
-      cwd: path.resolve('backend'),
-      env: {
-        PATH: process.env.PATH ?? '',
-        DATABASE_URL: `postgres://${E2E.dbUser}@127.0.0.1:${E2E.pgPort}/${E2E.dbName}`,
-        JWT_SECRET: E2E_JWT_SECRET,
-        PORT: String(port),
-        CORS_ORIGIN: E2E.webOrigin,
-        WEBAUTHN_RP_ID: 'localhost',
-        WEBAUTHN_ORIGIN: E2E.webOrigin,
-        DEV_EMAIL_LOG: '1',
-        RATE_LIMIT_PER_MINUTE: '100000',
-        DB_MAX_CONNECTIONS: '3',
-        TRUSTED_PROXIES: '203.0.113.99',
-        RUST_LOG: 'warn',
-        NO_COLOR: '1',
-      },
-      stdio: ['ignore', 'pipe', 'pipe'],
-    });
-    api.stdout!.on('data', (chunk) => { log += String(chunk); });
-    api.stderr!.on('data', (chunk) => { log += String(chunk); });
+    // device on the LAN or the tailnet is when it talks to the port directly. RUST_LOG is
+    // left unset, as production's launchd environment may leave it.
+    const api = await startApi({ TRUSTED_PROXIES: '203.0.113.99' });
     try {
-      await expect
-        .poll(async () => {
-          try { return (await fetch(`http://127.0.0.1:${port}/api/v1/health`)).status; } catch { return 0; }
-        }, { message: `the second API should come up on :${port}`, timeout: 30000 })
-        .toBe(200);
+      // The start-up notice says which peers are trusted.
+      expect(api.log()).toContain('TRUSTED_PROXIES: CF-Connecting-IP / X-Forwarded-For are believed only from 203.0.113.99;');
 
       const direct = uniqueEmail('direct');
       const spoofed = uniqueIp();
-      const res = await call('POST', `http://127.0.0.1:${port}/api/v1/auth/email/request`, {
+      const res = await call('POST', `${api.base}/auth/email/request`, {
         body: { email: direct, age_tier: 'adult' },
         headers: { 'CF-Connecting-IP': spoofed, 'X-Forwarded-For': spoofed },
       });
@@ -1759,10 +1896,53 @@ test.describe('Hardening: client address and limits by network', () => {
       expect(sql(`SELECT ip FROM email_login_codes WHERE email = '${direct}'`)).toBe('127.0.0.1');
       // And the server says which peer it did not believe, so a proxy left out of
       // TRUSTED_PROXIES by mistake is found in the log, not by its visitors.
-      await expect.poll(() => log).toContain('not in TRUSTED_PROXIES');
-      expect(log).toMatch(/ignored CF-Connecting-IP \/ X-Forwarded-For from 127\.0\.0\.1/);
+      await expect.poll(() => api.log()).toContain('not in TRUSTED_PROXIES');
+      expect(api.log()).toMatch(/ignored CF-Connecting-IP \/ X-Forwarded-For from 127\.0\.0\.1/);
+
+      // A proxy that is left out sends the header on every request: the notice must not
+      // flood the log. Thirty more requests, and still one line.
+      for (let i = 0; i < 30; i++) {
+        const more = await call('GET', `${api.base}/auth/methods`, { headers: { 'CF-Connecting-IP': uniqueIp() } });
+        expect(more.status()).toBe(200);
+      }
+      await new Promise((r) => setTimeout(r, 500));
+      expect(api.log().match(/ignored CF-Connecting-IP/g)).toHaveLength(1);
     } finally {
-      api.kill('SIGTERM');
+      await api.stop();
+    }
+  });
+
+  test('the proxy notices are written whatever RUST_LOG says, and the default trusts the proxy\'s tailnet address', async () => {
+    test.setTimeout(120000);
+    for (const level of [null, 'off', 'error']) {
+      // TRUSTED_PROXIES is not set: the default list.
+      const api = await startApi(level === null ? {} : { RUST_LOG: level });
+      try {
+        const label = `RUST_LOG=${level ?? '(unset)'}`;
+        expect(api.log(), label).toContain(
+          'believed only from 127.0.0.1, ::1, 10.10.10.1, 100.64.224.0, 100.98.101.113;',
+        );
+        expect(api.log(), label).toContain('Inspired Mile API listening on');
+        // Control: the rest of the log still follows RUST_LOG. This info line is not a
+        // notice, so it is absent at every level here; if it showed, the notices would be
+        // visible only because everything is.
+        expect(api.log(), label).not.toContain('Database connected and migrations applied');
+        // Loopback is trusted by default, so a header from it is believed and not reported.
+        expect((await call('GET', `${api.base}/auth/methods`, { headers: { 'CF-Connecting-IP': uniqueIp() } })).status()).toBe(200);
+        await new Promise((r) => setTimeout(r, 300));
+        expect(api.log(), label).not.toContain('ignored CF-Connecting-IP');
+      } finally {
+        await api.stop();
+      }
+      // And with loopback left out, the ignored-header notice is there at this level too.
+      const strict = await startApi({ TRUSTED_PROXIES: '203.0.113.99', ...(level === null ? {} : { RUST_LOG: level }) });
+      try {
+        await call('GET', `${strict.base}/auth/methods`, { headers: { 'X-Forwarded-For': uniqueIp() } });
+        await expect.poll(() => strict.log(), { message: `RUST_LOG=${level ?? '(unset)'}` })
+          .toMatch(/ignored CF-Connecting-IP \/ X-Forwarded-For from 127\.0\.0\.1, which is not in TRUSTED_PROXIES/);
+      } finally {
+        await strict.stop();
+      }
     }
   });
 });
@@ -1801,16 +1981,29 @@ test.describe('Hardening: sign-up accounting', () => {
         name: 'race',
       });
     }
+    // The finishes go to a copy of the API (same database) that pauses 500 ms between the
+    // count and the insert (TEST_ONLY_LIMIT_RACE_DELAY_MS). Without the pause four parallel
+    // finishes were serialised by timing alone, and this test passed with the lock removed.
+    // With it, a check made without the lock lets all four read "38" and all four in.
+    const racer = await startApi({ TEST_ONLY_LIMIT_RACE_DELAY_MS: '500', RUST_LOG: 'warn' });
+    let statuses: number[];
+    let elapsed: number;
     const usersBefore = Number(sql('SELECT COUNT(*) FROM users'));
-    const statuses = await page.evaluate(async (bodies) => Promise.all(bodies.map(async (body) => {
-      const res = await fetch('/api/v1/auth/passkey/signup/finish', {
-        method: 'POST', credentials: 'include', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body),
-      });
-      return res.status;
-    })), pending);
+    try {
+      const started = Date.now();
+      statuses = await Promise.all(pending.map((body) =>
+        call('POST', `${racer.base}/auth/passkey/signup/finish`, {
+          body, headers: { 'CF-Connecting-IP': `${subnet}.7` },
+        }).then((r) => r.status())));
+      elapsed = Date.now() - started;
+    } finally {
+      await racer.stop();
+    }
     expect([...statuses].sort()).toEqual([200, 200, 429, 429]);
     expect(Number(sql('SELECT COUNT(*) FROM users'))).toBe(usersBefore + 2);
     expect(sql(`SELECT COUNT(*) FROM signup_attempts WHERE ip = '${key}' AND completed`)).toBe('40');
+    // Harness check: the two that were let in waited for each other, 500 ms each.
+    expect(elapsed).toBeGreaterThanOrEqual(1000);
 
     // The network is now refused before the prompt, also from an address of the /24 that
     // has not been used yet (the budget is the network's, not the address's)...
@@ -1845,6 +2038,81 @@ test.describe('Hardening: sign-up accounting', () => {
     }
     // One below the ceiling is still served.
     expect((await signupBegin(request, { base: API })).status()).toBe(200);
+  });
+
+  test('begun sign-ups have a site-wide ceiling too, loud when hit', async ({ request }) => {
+    // A database of its own, so the count of begun sign-ups is exactly what this test made.
+    const api = await startApi({ SIGNUP_BEGINS_GLOBAL_PER_HOUR: '20' }, { isolated: true });
+    try {
+      // Twenty networks begin once each; the twenty-first begin, from yet another, is refused.
+      for (let i = 0; i < 20; i++) expect((await signupBegin(request, { base: api.base })).status(), `begin ${i + 1}`).toBe(200);
+      const refused = await signupBegin(request, { base: api.base });
+      expect(refused.status()).toBe(429);
+      expect((await refused.json()).message).toContain('right now');
+      expect(api.sql('SELECT COUNT(*) FROM signup_attempts WHERE NOT completed')).toBe('20');
+      // Loud, with RUST_LOG unset.
+      await expect.poll(() => api.log()).toContain('SIGN-UP BEGIN CEILING HIT');
+      expect(api.log()).toContain('SIGNUP_BEGINS_GLOBAL_PER_HOUR = 20');
+      // When the hour has moved on, sign-ups begin again.
+      api.sql("UPDATE signup_attempts SET created_at = NOW() - INTERVAL '61 minutes'");
+      expect((await signupBegin(request, { base: api.base })).status()).toBe(200);
+    } finally {
+      await api.stop();
+    }
+  });
+
+  test('begun sign-ups are swept once they no longer count; finished ones are kept a day', async () => {
+    const marker = `sweep-${unique()}`;
+    sql(`INSERT INTO signup_attempts (ip, completed, created_at) VALUES
+           ('${marker}', FALSE, NOW() - INTERVAL '3 hours'),
+           ('${marker}', FALSE, NOW() - INTERVAL '30 minutes'),
+           ('${marker}', TRUE, NOW() - INTERVAL '3 hours')`);
+    await expect
+      .poll(() => sql(`SELECT string_agg(completed::text || '@' || (created_at < NOW() - INTERVAL '1 hour')::text, ',' ORDER BY completed, created_at) FROM signup_attempts WHERE ip = '${marker}'`), {
+        message: 'the sweep (every 3 s in the tests) should drop the old begun row only',
+        timeout: 30000,
+      })
+      .toBe('false@false,true@true');
+    sql(`DELETE FROM signup_attempts WHERE ip = '${marker}'`);
+  });
+
+  test('sign-in challenges: a hundred live per network, a ceiling for the table, expired rows cleaned up at it', async ({ request }) => {
+    test.setTimeout(120000);
+    const api = await startApi({ AUTH_CHALLENGES_MAX: '150' }, { isolated: true });
+    const begin = (ip: string) =>
+      call('POST', `${api.base}/auth/passkey/login/begin`, { headers: { 'CF-Connecting-IP': ip } });
+    try {
+      // One network: a hundred live ceremonies, then refused.
+      const flood = uniqueIp();
+      for (let i = 0; i < 100; i++) expect((await begin(flood)).status(), `begin ${i + 1}`).toBe(200);
+      const over = await begin(flood);
+      expect(over.status()).toBe(429);
+      expect((await over.json()).error).toBe('busy');
+      // Another network is not affected.
+      expect((await begin(uniqueIp())).status()).toBe(200);
+      expect(api.sql(`SELECT COUNT(*) FROM auth_challenges WHERE net_key = '${flood}'`)).toBe('100');
+
+      // The table at its ceiling, filled by many networks: refused for everyone, loudly.
+      api.sql(`INSERT INTO auth_challenges (kind, state, expires_at, net_key)
+               SELECT 'login', '{}'::jsonb, NOW() + INTERVAL '5 minutes', 'filler-' || g FROM generate_series(1, 49) g`);
+      expect(api.sql('SELECT COUNT(*) FROM auth_challenges')).toBe('150');
+      const full = await begin(uniqueIp());
+      expect(full.status()).toBe(503);
+      expect((await full.json()).error).toBe('busy');
+      await expect.poll(() => api.log()).toContain('SIGN-IN CHALLENGE CEILING HIT');
+
+      // Once they have expired, the next begin deletes them itself (this API's sweep is an
+      // hour away) and is served.
+      api.sql("UPDATE auth_challenges SET expires_at = NOW() - INTERVAL '1 second' WHERE net_key LIKE 'filler-%'");
+      expect((await begin(uniqueIp())).status()).toBe(200);
+      expect(api.sql("SELECT COUNT(*) FROM auth_challenges WHERE net_key LIKE 'filler-%'")).toBe('0');
+      // Live ceremonies were not touched.
+      expect(api.sql(`SELECT COUNT(*) FROM auth_challenges WHERE net_key = '${flood}'`)).toBe('100');
+      // And a ceremony begun under the ceiling still finishes as before: its row is there.
+      expect(api.sql('SELECT COUNT(*) FROM auth_challenges')).toBe('102');
+    } finally {
+      await api.stop();
+    }
   });
 
   test('a passkey-only account that never played is deleted after thirty days; one that did, or was used, is not', async ({ page }) => {
@@ -1888,52 +2156,169 @@ test.describe('Hardening: sign-up accounting', () => {
 // ---------------------------------------------------------------------------
 
 test.describe('Hardening: age tier', () => {
-  test('a teen account cannot make itself an adult one; an adult one can be made teen', async () => {
-    const teen = await emailAccount('teen');
-    const limits = async (cookie: string) => (await call('GET', `${API}/credits/limits`, { cookie })).json();
-    expect((await limits(teen.cookie)).daily_limit).toBe(200);
+  const tierOf = (id: string) => sql(`SELECT age_tier || '|' || age_tier_declared FROM users WHERE id = '${id}'`);
+  const answer = (cookie: string, ageTier: string, headers: Record<string, string> = {}) =>
+    call('POST', `${API}/auth/age-tier`, { cookie, body: { age_tier: ageTier }, headers });
+  const limits = async (cookie: string) => (await call('GET', `${API}/credits/limits`, { cookie })).json();
 
-    const lift = await call('POST', `${API}/credits/age-verify`, { cookie: teen.cookie, body: { age_tier: 'adult' } });
-    expect(lift.status()).toBe(200);
-    expect(await lift.json()).toEqual({ status: 'unchanged', age_tier: 'teen' });
-    expect(sql(`SELECT age_tier FROM users WHERE id = '${teen.user.id}'`)).toBe('teen');
-    expect((await limits(teen.cookie)).daily_limit).toBe(200);
-
+  test('the page never sends the browser\'s stored age answer by itself', async ({ page }) => {
+    // A family browser: a teen answered the gate here. The adult, whose account was made
+    // elsewhere as an adult account, signs in on it and uses the site.
     const adult = await emailAccount('adult');
-    expect((await limits(adult.cookie)).daily_limit).toBeNull();
-    const same = await call('POST', `${API}/credits/age-verify`, { cookie: adult.cookie, body: { age_tier: 'adult' } });
-    expect(await same.json()).toEqual({ status: 'ok', age_tier: 'adult' });
-    const stricter = await call('POST', `${API}/credits/age-verify`, { cookie: adult.cookie, body: { age_tier: 'teen' } });
-    expect(await stricter.json()).toEqual({ status: 'ok', age_tier: 'teen' });
-    expect((await limits(adult.cookie)).daily_limit).toBe(200);
-    // And there is no way back.
-    const back = await call('POST', `${API}/credits/age-verify`, { cookie: adult.cookie, body: { age_tier: 'adult' } });
-    expect(await back.json()).toEqual({ status: 'unchanged', age_tier: 'teen' });
-    expect(sql(`SELECT age_tier FROM users WHERE id = '${adult.user.id}'`)).toBe('teen');
-
-    // An account from before the age gate takes the first answer it is given.
-    sql(`UPDATE users SET age_tier = 'unknown' WHERE id = '${teen.user.id}'`);
-    const first = await call('POST', `${API}/credits/age-verify`, { cookie: teen.cookie, body: { age_tier: 'adult' } });
-    expect(await first.json()).toEqual({ status: 'ok', age_tier: 'adult' });
-  });
-
-  test('a teen who re-enters an adult birth date in the browser stays a teen on the server', async ({ page }) => {
-    const email = uniqueEmail('teen-sync');
+    const ageCalls: string[] = [];
+    page.on('request', (r) => {
+      if (/\/credits\/age-verify|\/auth\/age-tier/.test(r.url())) ageCalls.push(`${r.method()} ${r.url()}`);
+    });
     await page.goto('/about');
     await page.evaluate(() => localStorage.setItem('inspired-mile-age-verified', 'teen-consented'));
     await page.reload();
+    await signInByEmailUi(page, adult.email);
+    await expect(page.locator('#user-badge')).toBeVisible();
+    for (const route of ['/', '/collection', '/about']) {
+      await page.goto(route);
+      await expect(page.locator('#user-badge')).toBeVisible();
+    }
+    expect(ageCalls).toEqual([]);
+    expect(tierOf(adult.user.id)).toBe('adult|adult');
+
+    // The other way round: a teen account in a browser whose stored answer is "adult".
+    const teen = await emailAccount('teen');
+    await page.evaluate(() => localStorage.setItem('inspired-mile-age-verified', 'adult'));
+    await signOutUi(page);
+    await signInByEmailUi(page, teen.email);
+    await expect(page.locator('#user-badge')).toBeVisible();
+    await page.reload();
+    await expect(page.locator('#user-badge')).toBeVisible();
+    expect(ageCalls).toEqual([]);
+    expect(tierOf(teen.user.id)).toBe('teen|teen');
+  });
+
+  test('the old automatic sync is answered and changes nothing', async () => {
+    // What a page cached before this change still posts on every load.
+    const adult = await emailAccount('adult');
+    const sync = await call('POST', `${API}/credits/age-verify`, { cookie: adult.cookie, body: { age_tier: 'teen' } });
+    expect(sync.status()).toBe(200);
+    expect(await sync.json()).toEqual({ status: 'unchanged', age_tier: 'adult' });
+    expect(tierOf(adult.user.id)).toBe('adult|adult');
+    expect((await limits(adult.cookie)).daily_limit).toBeNull();
+
+    const teen = await emailAccount('teen');
+    const lift = await call('POST', `${API}/credits/age-verify`, { cookie: teen.cookie, body: { age_tier: 'adult' } });
+    expect(await lift.json()).toEqual({ status: 'unchanged', age_tier: 'teen' });
+    expect(tierOf(teen.user.id)).toBe('teen|teen');
+    expect((await limits(teen.cookie)).daily_limit).toBe(200);
+    const same = await call('POST', `${API}/credits/age-verify`, { cookie: teen.cookie, body: { age_tier: 'teen' } });
+    expect(await same.json()).toEqual({ status: 'ok', age_tier: 'teen' });
+  });
+
+  test('the owner\'s own answer makes an adult account teen, and back only with a fresh proof', async () => {
+    const adult = await emailAccount('adult');
+    const stricter = await answer(adult.cookie, 'teen');
+    expect(stricter.status()).toBe(200);
+    expect(await stricter.json()).toEqual({ age_tier: 'teen', changed: true });
+    expect(tierOf(adult.user.id)).toBe('teen|adult');
+    expect((await limits(adult.cookie)).daily_limit).toBe(200);
+    // The same answer again changes nothing.
+    expect(await (await answer(adult.cookie, 'teen')).json()).toEqual({ age_tier: 'teen', changed: false });
+
+    // Back to adult, with the last proof six minutes old: the page is asked for a passkey.
+    ageProof(adult.user.id, 6);
+    const stale = await answer(adult.cookie, 'adult');
+    expect(stale.status()).toBe(403);
+    expect((await stale.json()).error).toBe('reauth_required');
+    expect(tierOf(adult.user.id)).toBe('teen|adult');
+    // With a fresh proof: back to adult, because the account was declared adult.
+    ageProof(adult.user.id, 0);
+    const back = await answer(adult.cookie, 'adult');
+    expect(back.status()).toBe(200);
+    expect(await back.json()).toEqual({ age_tier: 'adult', changed: true });
+    expect(tierOf(adult.user.id)).toBe('adult|adult');
+    expect((await limits(adult.cookie)).daily_limit).toBeNull();
+  });
+
+  test('an account made for a teen stays a teen account, whatever is answered', async () => {
+    const teen = await emailAccount('teen');
+    ageProof(teen.user.id, 0);
+    const lift = await answer(teen.cookie, 'adult');
+    expect(lift.status()).toBe(403);
+    expect((await lift.json()).error).toBe('age_tier_locked');
+    expect(tierOf(teen.user.id)).toBe('teen|teen');
+    expect((await limits(teen.cookie)).daily_limit).toBe(200);
+
+    // An account from before the age gate takes its first answer as its declaration...
+    sql(`UPDATE users SET age_tier = 'unknown', age_tier_declared = 'unknown' WHERE id = '${teen.user.id}'`);
+    expect(await (await answer(teen.cookie, 'teen')).json()).toEqual({ age_tier: 'teen', changed: true });
+    expect(tierOf(teen.user.id)).toBe('teen|teen');
+    // ...so a first answer of teen cannot be undone either.
+    expect((await answer(teen.cookie, 'adult')).status()).toBe(403);
+    sql(`UPDATE users SET age_tier = 'unknown', age_tier_declared = 'unknown' WHERE id = '${teen.user.id}'`);
+    expect(await (await answer(teen.cookie, 'adult')).json()).toEqual({ age_tier: 'adult', changed: true });
+    expect(tierOf(teen.user.id)).toBe('adult|adult');
+  });
+
+  test('an answer needs a session, the site itself, and a real tier', async () => {
+    const adult = await emailAccount('adult');
+    expect((await call('POST', `${API}/auth/age-tier`, { body: { age_tier: 'teen' } })).status()).toBe(401);
+    // A form on another site can send text/plain, not JSON; and a browser labels a
+    // cross-site request as one.
+    for (const headers of [{ 'Content-Type': 'text/plain' }, { 'Content-Type': 'application/json', 'Sec-Fetch-Site': 'cross-site' }]) {
+      const forged = await answer(adult.cookie, 'teen', headers);
+      expect(forged.status(), JSON.stringify(headers)).toBe(403);
+      expect((await forged.json()).error).toBe('cross_site_request');
+    }
+    for (const junk of ['unknown', 'blocked', 'Adult', '']) {
+      expect((await answer(adult.cookie, junk)).status(), JSON.stringify(junk)).toBe(400);
+    }
+    expect(tierOf(adult.user.id)).toBe('adult|adult');
+  });
+
+  test('the account menu asks the age again, and only that answer reaches the account', async ({ page }) => {
+    const email = uniqueEmail('menu-age');
+    const adult = await emailAccount('adult', email);
+    await page.goto('/');
     await signInByEmailUi(page, email);
     await expect(page.locator('#user-badge')).toBeVisible();
-    expect(sql(`SELECT age_tier FROM users WHERE email = '${email}'`)).toBe('teen');
+    if (await page.locator('#auth-passkey-offer').isVisible()) await page.locator('#auth-passkey-skip').click();
+    const year = new Date().getFullYear();
+    const openQuestion = async () => {
+      if (await page.locator('#auth-dropdown').isHidden()) await page.locator('#user-badge').click();
+      await page.locator('#auth-age-btn').click();
+      await expect(page.locator('#age-gate')).toBeVisible();
+      await expect(page.locator('#age-gate-form')).toBeVisible();
+    };
+    const giveBirthYear = async (born: number) => {
+      await page.locator('#age-month').selectOption('1');
+      await page.locator('#age-day').selectOption('1');
+      await page.locator('#age-year').selectOption(String(born));
+      await page.locator('#age-gate-submit').click();
+    };
 
-    // Clear site data, give an adult date, come back: the page posts "adult" on load.
-    await page.evaluate(() => localStorage.setItem('inspired-mile-age-verified', 'adult'));
-    const synced = page.waitForResponse((r) => r.url().endsWith('/credits/age-verify'));
-    await page.reload();
-    const answer = await synced;
-    expect(JSON.parse(answer.request().postData()!)).toEqual({ age_tier: 'adult' });
-    expect(await answer.json()).toEqual({ status: 'unchanged', age_tier: 'teen' });
-    expect(sql(`SELECT age_tier FROM users WHERE email = '${email}'`)).toBe('teen');
+    // Opened and left with "Back": nothing is sent.
+    await openQuestion();
+    await page.locator('#age-gate-cancel').click();
+    await expect(page.locator('#age-gate')).toBeHidden();
+    expect(tierOf(adult.user.id)).toBe('adult|adult');
+
+    // A teen's birth date and the consent box: the account becomes teen.
+    await openQuestion();
+    await giveBirthYear(year - 15);
+    await expect(page.locator('#age-gate-teen')).toBeVisible();
+    await page.locator('#parental-consent').check();
+    const toTeen = page.waitForResponse((r) => r.url().endsWith('/auth/age-tier'));
+    await page.locator('#teen-continue').click();
+    expect(JSON.parse((await toTeen).request().postData()!)).toEqual({ age_tier: 'teen' });
+    expect((await toTeen).status()).toBe(200);
+    await expect(page.locator('#age-gate')).toBeHidden();
+    expect(tierOf(adult.user.id)).toBe('teen|adult');
+
+    // An adult's birth date: back to adult (the email sign-in is the fresh proof).
+    await openQuestion();
+    const toAdult = page.waitForResponse((r) => r.url().endsWith('/auth/age-tier'));
+    await giveBirthYear(year - 40);
+    expect((await toAdult).status()).toBe(200);
+    expect(tierOf(adult.user.id)).toBe('adult|adult');
+    // The browser's own stored answer follows what was typed, as the gate always did.
+    expect(await page.evaluate(() => localStorage.getItem('inspired-mile-age-verified'))).toBe('adult');
   });
 });
 
@@ -2066,6 +2451,144 @@ test.describe('Hardening: email codes', () => {
     expect(over.status()).toBe(429);
     expect((await over.json()).error).toBe('too_many_requests');
     expect(sql(`SELECT COUNT(*) FROM email_login_codes WHERE email = '${email}'`)).toBe('10');
+  });
+
+  // The review's probe REVIEW-B, as it was written, with its verdict turned round: before,
+  // one network spacing its requests over an hour got all ten of an address's codes and the
+  // owner got 429. Now that network gets its share of three, and the owner gets a code.
+  test('one network can never stop another from getting a code for an address', async ({ request }) => {
+    const victim = uniqueEmail('victim');
+    const attacker = uniqueIp();
+    const ask = (ip: string) => requestCode(request, victim, { ip, browser: 'other' });
+    // One attacker address over one hour: 3 codes at t-50 min, 3 at t-35, 3 at t-20, 1 now.
+    // (Each batch is asked for now, then moved back in time, which is what a real attacker
+    // spacing them out would leave in the table.)
+    const answers: number[] = [];
+    for (const ago of [50, 35, 20]) {
+      for (let i = 0; i < 3; i++) answers.push((await ask(attacker)).status());
+      sql(`UPDATE email_login_codes SET created_at = NOW() - INTERVAL '${ago} minutes'
+           WHERE email = '${victim}' AND created_at > NOW() - INTERVAL '1 minute'`);
+    }
+    answers.push((await ask(attacker)).status());
+    // Its share, then its own excess refused: 3 accepted, 7 refused.
+    expect(answers).toEqual([200, 200, 200, 429, 429, 429, 429, 429, 429, 429]);
+    expect(sql(`SELECT COUNT(DISTINCT ip) || '|' || COUNT(*) FROM email_login_codes WHERE email = '${victim}'`)).toBe('1|3');
+
+    // The owner of the address, from their own network, with a fresh browser: a code, and
+    // it signs them in.
+    requesterCookies.delete(victim);
+    const ownerIp = uniqueIp();
+    const owner = await requestCode(request, victim, { ip: ownerIp });
+    expect(owner.status(), await owner.text()).toBe(200);
+    const code = await readCode(victim, 4);
+    expect((await verifyCode(request, victim, code, API, { ip: ownerIp })).status()).toBe(200);
+  });
+
+  test('three networks at their share still leave a code for a fourth; ten an hour is the inbox\'s ceiling', async ({ request }) => {
+    const email = uniqueEmail('shares');
+    const statuses = async (ip: string, times: number) => {
+      const got: number[] = [];
+      for (let i = 0; i < times; i++) got.push((await requestCode(request, email, { ip, browser: 'other' })).status());
+      return got;
+    };
+    // Three networks each ask four times: each gets three, and only its fourth is refused.
+    for (let n = 0; n < 3; n++) expect(await statuses(uniqueIp(), 4), `network ${n + 1}`).toEqual([200, 200, 200, 429]);
+    expect(sql(`SELECT COUNT(*) FROM email_login_codes WHERE email = '${email}'`)).toBe('9');
+    // A fourth network gets the tenth code.
+    expect(await statuses(uniqueIp(), 2)).toEqual([200, 429]);
+    // That is the ceiling: from here on nobody gets one this hour, from any network.
+    for (let n = 0; n < 3; n++) expect(await statuses(uniqueIp(), 1)).toEqual([429]);
+    expect(sql(`SELECT COUNT(*) FROM email_login_codes WHERE email = '${email}'`)).toBe('10');
+    expect(loggedCodes(email)).toHaveLength(10);
+    // An hour later the window has moved on.
+    sql(`UPDATE email_login_codes SET created_at = NOW() - INTERVAL '61 minutes' WHERE email = '${email}'`);
+    expect(await statuses(uniqueIp(), 1)).toEqual([200]);
+  });
+
+  // The review's probe REVIEW-D, as it was written: on the branch before this fix, 30 of 30
+  // parallel requests were answered 200 and 30 codes stored.
+  test('a burst of parallel code requests from one network stays inside the caps', async () => {
+    const victim = uniqueEmail('burst');
+    const attacker = uniqueIp();
+    const statuses = await Promise.all(
+      Array.from({ length: 30 }, () =>
+        call('POST', `${API}/auth/email/request`, {
+          body: { email: victim, age_tier: 'adult' },
+          headers: { 'CF-Connecting-IP': attacker },
+        }).then((r) => r.status()),
+      ),
+    );
+    const stored = Number(sql(`SELECT COUNT(*) FROM email_login_codes WHERE email = '${victim}'`));
+    expect(stored).toBeLessThanOrEqual(3);
+    expect(statuses.filter((s) => s === 200)).toHaveLength(stored);
+    expect(statuses.filter((s) => s === 429)).toHaveLength(30 - stored);
+  });
+
+  // The same, made certain: this API pauses 200 ms between the checks and the insert
+  // (TEST_ONLY_LIMIT_RACE_DELAY_MS), so any check not made under the locks lets every
+  // parallel request through, and this test goes red.
+  test('with a pause between check and insert, parallel requests still cannot pass any cap', async () => {
+    test.setTimeout(120000);
+    const api = await startApi({ TEST_ONLY_LIMIT_RACE_DELAY_MS: '200', RUST_LOG: 'warn' });
+    try {
+      expect(api.log()).toContain('TEST_ONLY_LIMIT_RACE_DELAY_MS is 200');
+      const burst = (bodies: { email: string; ip: string }[]) =>
+        Promise.all(bodies.map(({ email, ip }) =>
+          call('POST', `${api.base}/auth/email/request`, {
+            body: { email, age_tier: 'adult' },
+            headers: { 'CF-Connecting-IP': ip },
+          }).then((r) => r.status()),
+        ));
+      const count = (where: string) => Number(sql(`SELECT COUNT(*) FROM email_login_codes WHERE ${where}`));
+
+      // One address, one network: its share of three.
+      const one = uniqueEmail('race-share');
+      const ip = uniqueIp();
+      const started = Date.now();
+      const a = await burst(Array.from({ length: 30 }, () => ({ email: one, ip })));
+      expect(count(`email = '${one}'`)).toBe(3);
+      expect(a.filter((s) => s === 200)).toHaveLength(3);
+      // Harness check: the pause really was there (three inserts one after another, 200 ms
+      // each). Without it this test would prove nothing about the locks.
+      expect(Date.now() - started).toBeGreaterThanOrEqual(600);
+
+      // One address, thirty networks: the inbox's ten.
+      const inbox = uniqueEmail('race-inbox');
+      const b = await burst(Array.from({ length: 30 }, () => ({ email: inbox, ip: uniqueIp() })));
+      expect(count(`email = '${inbox}'`)).toBe(10);
+      expect(b.filter((s) => s === 200)).toHaveLength(10);
+
+      // Thirty addresses, one network: the network's ten.
+      const net = uniqueIp();
+      const c = await burst(Array.from({ length: 30 }, () => ({ email: uniqueEmail('race-net'), ip: net })));
+      expect(count(`ip = '${net}'`)).toBe(10);
+      expect(c.filter((s) => s === 200)).toHaveLength(10);
+    } finally {
+      await api.stop();
+    }
+  });
+
+  test('thirty wrong guesses a day from one network, at any addresses, stop that network only', async ({ request }) => {
+    const ip = uniqueIp();
+    // Twenty-nine misses on record from this network at other addresses (written directly:
+    // only their number matters), and the thirtieth made for real.
+    sql(`INSERT INTO email_code_failures (email, net_key) SELECT 'spread-' || g || '@example.test', '${ip}' FROM generate_series(1, 29) g`);
+    const email = uniqueEmail('spread');
+    expect((await requestCode(request, email, { ip })).status()).toBe(200);
+    const code = await readCode(email);
+    expect((await verifyCode(request, email, wrongCodeFor(code), API, { ip })).status()).toBe(401);
+    // Now this network gets no code for any address, and no guess is judged, the right one included.
+    const another = await requestCode(request, uniqueEmail('spread-next'), { ip });
+    expect(another.status()).toBe(429);
+    expect((await another.json()).error).toBe('too_many_attempts');
+    const right = await verifyCode(request, email, code, API, { ip });
+    expect(right.status()).toBe(429);
+    expect((await right.json()).error).toBe('too_many_attempts');
+    // Another network is not affected, at the same address or any other.
+    requesterCookies.delete(email);
+    const other = uniqueIp();
+    expect((await requestCode(request, email, { ip: other })).status()).toBe(200);
+    expect((await verifyCode(request, email, await readCode(email, 2), API, { ip: other })).status()).toBe(200);
   });
 
   test('ten wrong guesses a day at one address from one network, then no more codes and no more guesses', async ({ request }) => {
