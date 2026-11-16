@@ -83,7 +83,7 @@ const english: Record<string, string> = { battle: 'Battle', trivia: 'Trivia', ch
     import { claimReward, fetchCurrentSeason, getLevelProgress, getRewards, type SeasonProgress, type SeasonReward } from '../lib/seasons';
     import { apiErrorCode } from '../lib/api-errors';
     import { t } from '../i18n';
-    import { dateRange, num, plural } from '../i18n/fmt';
+    import { dateRange, num, plural, signed } from '../i18n/fmt';
     import { errorText, esc, initPage, onPageLocaleChange, isolate } from '../i18n/page';
 
     const toast = (message: string, type: 'success' | 'error' | 'warning') => (window as any).showToast?.(message, type);
@@ -112,7 +112,7 @@ const english: Record<string, string> = { battle: 'Battle', trivia: 'Trivia', ch
       const ready = season.state === 'ready' ? season : null;
       $('season-badge').textContent = t('season.badge', { n: num(ready?.progress.season.id ?? 1) });
       document.querySelectorAll<HTMLElement>('[data-xp-rate]').forEach((el) => {
-        el.textContent = t('season.xpGain', { n: num(Number(el.dataset.xpRate)) });
+        el.textContent = t('season.xpGain', { n: signed(Number(el.dataset.xpRate)) });
       });
 
       $('season-signin').classList.toggle('hidden', season.state !== 'signed-out');

@@ -10,7 +10,7 @@ const messages: Record<string, string> = {
   'season.loading': 'Loading…',
   'season.level': 'Level',
   'season.xp': '{n} XP',
-  'season.xpGain': '+{n} XP',
+  'season.xpGain': '{n} XP',
   'season.next': '{n} XP to the next level',
   'season.maxed': 'Highest level reached',
   'season.track': 'Reward track',

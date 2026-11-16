@@ -12,7 +12,7 @@
 import { readFileSync } from 'node:fs';
 import { describe, expect, it, vi } from 'vitest';
 import { LOCALES, has, loadArea, loadMessages, setLocale, t, type Locale, type Messages } from './index';
-import { PLURAL_CATEGORIES, date, dateRange, dateTime, intlLocale, list, num, plural, pluralCategory } from './fmt';
+import { PLURAL_CATEGORIES, date, dateRange, dateTime, intlLocale, list, num, plural, pluralCategory, signed } from './fmt';
 import { initPage, onPageLocaleChange } from './page';
 import en from './locales/en';
 // @ts-ignore a plain .mjs script, shared with the command line
@@ -384,6 +384,7 @@ describe('numbers, dates and counts come from Intl', () => {
     expect(date(when)).toMatch(/16\.11\.2026/);
     await setLocale('en', { persist: false });
     expect(num(100000)).toBe('100,000');
+    expect(signed(50)).toBe('+50');
     expect(list(['A', 'B', 'C'])).toBe('A, B, and C');
     expect(date(when)).toMatch(/Nov 16, 2026/);
     await setLocale('ja', { persist: false });
@@ -392,6 +393,8 @@ describe('numbers, dates and counts come from Intl', () => {
     // Arabic keeps the digits the rest of the interface uses.
     await setLocale('ar', { persist: false });
     expect(intlLocale()).toBe('ar-u-nu-latn');
+    // A gain keeps its sign beside its digits in a right-to-left line: CLDR's left-to-right mark.
+    expect(signed(50)).toBe(`${String.fromCodePoint(0x200e)}+50`);
     expect(num(2026)).toMatch(/^2[,٬]?026$/);
     expect(date(when)).toMatch(/2026/);
     expect(dateTime(when)).toMatch(/\d/);

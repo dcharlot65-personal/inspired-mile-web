@@ -24,6 +24,15 @@ export function num(n: number): string {
   return new Intl.NumberFormat(intlLocale()).format(n);
 }
 
+/**
+ * A gain or a loss, with its sign as the language writes it: "+50", and in Arabic "+50" with
+ * the left-to-right mark CLDR puts before the sign, so that it stays beside its digits in a
+ * right-to-left line (a "+" typed into a message drifts to the far side of the number).
+ */
+export function signed(n: number): string {
+  return new Intl.NumberFormat(intlLocale(), { signDisplay: 'exceptZero' }).format(n);
+}
+
 function asDate(d: string | number | Date): Date | null {
   // "2026-11-01" is a calendar day. new Date() would read it as midnight UTC, which is the
   // evening of 31 October for a reader in America.
