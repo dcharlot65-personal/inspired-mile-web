@@ -49,7 +49,7 @@ const pack: CardTextPack = {
   "FA-002": {
    "nameSource": "wikidata",
    "name": "टाइटेनिया",
-   "quote": "आओ, इस फूलों की सेज पर बैठो।",
+   "quote": "आओ, इस पुष्पों की सेज पर विराजो।",
    "quoteSource": "new"
   },
   "RL-001": {
@@ -61,7 +61,7 @@ const pack: CardTextPack = {
   "RL-002": {
    "name": "प्रॉस्पेरो की छड़ी",
    "nameSource": "translated",
-   "quote": "अब मेरे सारे जादू टूट चुके हैं।",
+   "quote": "अब मेरे सारे मंत्र टूट चुके हैं।",
    "quoteSource": "new"
   },
   "PT-001": {
@@ -314,7 +314,7 @@ const pack: CardTextPack = {
   "LD-002": {
    "nameSource": "wikidata",
    "name": "सैम्युअल टेलर कॉलरिज",
-   "quote": "पानी, पानी, हर ओर पानी, पर पीने को एक बूँद नहीं।",
+   "quote": "पानी, पानी, हर तरफ़ समुद्र का पानी, पर पीने को एक बूँद नहीं।",
    "quoteSource": "new"
   },
   "LD-003": {
@@ -363,7 +363,7 @@ const pack: CardTextPack = {
   },
   "LD-005": {
    "nameSource": "missing",
-   "quote": "मुझे याद करना जब मैं चली जाऊँ, दूर उस मौन देश में चली जाऊँ।",
+   "quote": "मेरा स्मरण करना जब मैं चली जाऊँ, दूर उस मौन देश में चली जाऊँ।",
    "quoteSource": "new"
   },
   "OL-001": {

@@ -8,95 +8,114 @@ const pack: CardTextPack = {
   "SM-001": {
    "name": "The Sonnet Man",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "Dovrò paragonarti a un giorno d’estate?",
+   "quoteSource": "new"
   },
   "MO-001": {
    "nameSource": "wikidata",
    "name": "Romeo Montecchi",
-   "quoteSource": "missing"
+   "quote": "Ma piano, quale luce irrompe da quella finestra?",
+   "quoteSource": "new"
   },
   "CA-001": {
    "nameSource": "wikidata",
    "name": "Giulietta Capuleti",
-   "quoteSource": "missing"
+   "quote": "Che cosa c’è in un nome? Ciò che chiamiamo rosa...",
+   "quoteSource": "new"
   },
   "DC-001": {
    "nameSource": "wikidata",
    "name": "Amleto",
-   "quoteSource": "missing"
+   "quote": "Essere o non essere, questo è il problema.",
+   "quoteSource": "new"
   },
   "DC-002": {
    "nameSource": "wikidata",
    "name": "Ofelia",
-   "quoteSource": "missing"
+   "quote": "Ecco del rosmarino, che è per il ricordo.",
+   "quoteSource": "new"
   },
   "MO-002": {
    "nameSource": "wikidata",
    "name": "Mercuzio",
-   "quoteSource": "missing"
+   "quote": "La peste a tutte e due le vostre case!",
+   "quoteSource": "new"
   },
   "FA-001": {
    "nameSource": "wikidata",
    "name": "Puck",
-   "quoteSource": "missing"
+   "quote": "Signore, che pazzi sono questi mortali!",
+   "quoteSource": "new"
   },
   "FA-002": {
    "nameSource": "wikidata",
    "name": "Titania",
-   "quoteSource": "missing"
+   "quote": "Vieni, siediti su questo letto fiorito.",
+   "quoteSource": "new"
   },
   "RL-001": {
    "name": "Il teschio di Yorick",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "Ahimè, povero Yorick! Io lo conoscevo, Orazio.",
+   "quoteSource": "new"
   },
   "RL-002": {
    "name": "Il bastone di Prospero",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "Ora i miei incanti sono tutti spezzati.",
+   "quoteSource": "new"
   },
   "PT-001": {
    "name": "Filtro d’amore",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "Il corso del vero amore non fu mai liscio.",
+   "quoteSource": "new"
   },
   "PT-002": {
    "name": "Intruglio delle streghe",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "Doppio, doppio, fatica e travaglio.",
+   "quoteSource": "new"
   },
   "VC-001": {
    "nameSource": "missing",
-   "quoteSource": "missing"
+   "quote": "Se mai turberete ancora le nostre strade, le vostre vite pagheranno la pace violata.",
+   "quoteSource": "new"
   },
   "VC-002": {
    "nameSource": "wikidata",
    "name": "Frate Lorenzo",
-   "quoteSource": "missing"
+   "quote": "Queste gioie violente hanno fini violente.",
+   "quoteSource": "new"
   },
   "VC-003": {
    "nameSource": "missing",
-   "quoteSource": "missing"
+   "quote": "Io sono la serva che fatica per il tuo piacere.",
+   "quoteSource": "new"
   },
   "TP-001": {
    "nameSource": "wikidata",
    "name": "Prospero",
-   "quoteSource": "missing"
+   "quote": "Siamo fatti della stessa sostanza di cui sono fatti i sogni.",
+   "quoteSource": "new"
   },
   "TP-002": {
    "nameSource": "wikidata",
    "name": "Ariel",
-   "quoteSource": "missing"
+   "quote": "Salve, grande padrone! Grave signore, salve!",
+   "quoteSource": "new"
   },
   "TP-003": {
    "nameSource": "wikidata",
    "name": "Calibano",
-   "quoteSource": "missing"
+   "quote": "Quest’isola è mia, per via di Sycorax, mia madre.",
+   "quoteSource": "new"
   },
   "MO-003": {
    "nameSource": "wikidata",
    "name": "Benvolio",
-   "quoteSource": "missing"
+   "quote": "Io non faccio che mantenere la pace. Rinfodera la spada.",
+   "quoteSource": "new"
   },
   "CA-002": {
    "nameSource": "wikidata",
@@ -104,159 +123,191 @@ const pack: CardTextPack = {
    "aliases": [
     "Teobaldo"
    ],
-   "quoteSource": "missing"
+   "quote": "Come, con la spada in pugno parli di pace? Odio questa parola.",
+   "quoteSource": "new"
   },
   "DC-003": {
    "nameSource": "wikidata",
    "name": "Re Claudio",
-   "quoteSource": "missing"
+   "quote": "Le mie parole volano in alto, i miei pensieri restano in basso.",
+   "quoteSource": "new"
   },
   "FA-003": {
    "nameSource": "wikidata",
    "name": "Oberon",
-   "quoteSource": "missing"
+   "quote": "Malaugurato incontro al chiaro di luna, superba Titania.",
+   "quoteSource": "new"
   },
   "RL-003": {
    "name": "Il pugnale della mente",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "È un pugnale questo che vedo davanti a me?",
+   "quoteSource": "new"
   },
   "PT-003": {
    "name": "Succo del fiore di Puck",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "Metterò una cintura intorno alla terra in quaranta minuti.",
+   "quoteSource": "new"
   },
   "SC-001": {
    "nameSource": "wikidata",
    "name": "Macbeth",
-   "quoteSource": "missing"
+   "quote": "Oso tutto ciò che si addice a un uomo; chi osa di più non lo è.",
+   "quoteSource": "new"
   },
   "SC-002": {
    "nameSource": "wikidata",
    "name": "Lady Macbeth",
-   "quoteSource": "missing"
+   "quote": "Venite, spiriti che servite i pensieri di morte, toglietemi qui il mio sesso.",
+   "quoteSource": "new"
   },
   "SC-003": {
    "nameSource": "wikidata",
    "name": "Banco",
-   "quoteSource": "missing"
+   "quote": "Genererai dei re, pur non essendo re tu stesso.",
+   "quoteSource": "new"
   },
   "IL-001": {
    "nameSource": "missing",
-   "quoteSource": "missing"
+   "quote": "Io non sono quello che sono.",
+   "quoteSource": "new"
   },
   "IL-002": {
    "nameSource": "wikidata",
    "name": "Malvolio",
-   "quoteSource": "missing"
+   "quote": "Alcuni nascono grandi, alcuni conquistano la grandezza, e ad alcuni la grandezza viene imposta.",
+   "quoteSource": "new"
   },
   "IL-003": {
    "nameSource": "missing",
-   "quoteSource": "missing"
+   "quote": "L’amore cercato è buono, ma dato senza essere cercato è migliore.",
+   "quoteSource": "new"
   },
   "RM-001": {
    "nameSource": "derived",
    "name": "Bruto",
-   "quoteSource": "missing"
+   "quote": "Non perché amassi meno Cesare, ma perché amavo di più Roma.",
+   "quoteSource": "new"
   },
   "RM-002": {
    "nameSource": "derived",
    "name": "Cassio",
-   "quoteSource": "missing"
+   "quote": "La colpa, caro Bruto, non è nelle nostre stelle, ma in noi stessi.",
+   "quoteSource": "new"
   },
   "RM-003": {
    "nameSource": "wikidata",
    "name": "Marco Antonio",
-   "quoteSource": "missing"
+   "quote": "Amici, Romani, concittadini, prestatemi orecchio!",
+   "quoteSource": "new"
   },
   "MO-004": {
    "name": "Messer Montecchi",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "Molte mattine lo si è visto là, ad accrescere con le lacrime la fresca rugiada del mattino.",
+   "quoteSource": "new"
   },
   "CA-003": {
    "name": "Madonna Capuleti",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "Sposarti, è proprio questo l’argomento di cui venivo a parlare.",
+   "quoteSource": "new"
   },
   "DC-004": {
    "nameSource": "missing",
-   "quoteSource": "missing"
+   "quote": "Ora si spezza un nobile cuore. Buona notte, dolce principe.",
+   "quoteSource": "new"
   },
   "FA-004": {
    "nameSource": "derived",
    "name": "Bottom",
-   "quoteSource": "missing"
+   "quote": "Ho avuto una visione rarissima. Ho fatto un sogno che supera l’ingegno dell’uomo.",
+   "quoteSource": "new"
   },
   "VC-004": {
    "nameSource": "wikidata",
    "name": "Conte Paride",
-   "quoteSource": "missing"
+   "quote": "Questi tempi di lutto non lasciano tempo al corteggiamento.",
+   "quoteSource": "new"
   },
   "TP-004": {
    "nameSource": "wikidata",
    "name": "Miranda",
-   "quoteSource": "missing"
+   "quote": "O splendido mondo nuovo, che ha in sé gente simile!",
+   "quoteSource": "new"
   },
   "RL-004": {
    "name": "L’anello di Romeo",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "La mia generosità è sconfinata come il mare, il mio amore altrettanto profondo.",
+   "quoteSource": "new"
   },
   "RL-005": {
    "name": "Lo scrigno di Porzia",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "Non è tutto oro quel che luccica.",
+   "quoteSource": "new"
   },
   "RL-006": {
    "name": "La corona di Macbeth",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "Inquieto giace il capo che porta una corona.",
+   "quoteSource": "new"
   },
   "RL-007": {
    "name": "Il codice della tempesta",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "Annegherò il mio libro.",
+   "quoteSource": "new"
   },
   "RL-008": {
    "name": "Le lacrime di Cordelia",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "O caro padre, sono i tuoi affari quelli di cui mi occupo.",
+   "quoteSource": "new"
   },
   "RL-009": {
    "name": "La maschera di Bottom",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "Dio ti benedica, Bottom! Sei trasformato!",
+   "quoteSource": "new"
   },
   "PT-004": {
    "name": "Radice di mandragora",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "Né il papavero, né la mandragora, né tutti gli sciroppi soporiferi del mondo.",
+   "quoteSource": "new"
   },
   "PT-005": {
    "name": "Rugiada di Oberon",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "Portami quel fiore; l’erba che una volta ti mostrai.",
+   "quoteSource": "new"
   },
   "PT-006": {
    "name": "Tintura di cicuta",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "Nella mia ora di quiete tuo zio si avvicinò furtivo, con il succo del maledetto giusquiamo in una fiala.",
+   "quoteSource": "new"
   },
   "PT-007": {
    "name": "Estratto di vischio",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "Nel calderone bolli e cuoci; occhio di tritone e dito di rana.",
+   "quoteSource": "new"
   },
   "PT-008": {
    "name": "Lacrime di sirena",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "A cinque tese giace tuo padre; delle sue ossa si è fatto corallo.",
+   "quoteSource": "new"
   },
   "PT-009": {
    "name": "Elisir dello speziale",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "Metti questo in qualunque liquido tu voglia e bevilo; e, avessi anche la forza di venti uomini, ti spaccerebbe all’istante.",
+   "quoteSource": "new"
   },
   "LD-001": {
    "nameSource": "wikidata",

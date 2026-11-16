@@ -47,3 +47,42 @@ UW-002	Zjadłam sześć ziaren i związałam się na zawsze między dwoma świat
 OL-006	Opowiedz mi, Muzo, o mężu wielu dróg, który błąkał się daleko.
 UW-003	Spójrz na mnie, jeśli śmiesz. Mój wzrok jest ostatnią rzeczą, jaką zobaczysz.
 OL-007	Wolę żyć krótko w chwale niż długo w zapomnieniu.
+SM-001	Czy mam cię porównać do letniego dnia?
+CA-001	Cóż jest w imieniu? To, co zwiemy różą...
+FA-001	Panie, jacyż głupcy z tych śmiertelników!
+FA-002	Chodź, usiądź na tym kwiecistym łożu.
+PT-001	Droga prawdziwej miłości nigdy nie była gładka.
+PT-002	Podwój, podwój trud i znój.
+VC-001	Jeśli jeszcze raz zakłócicie spokój naszych ulic, życiem zapłacicie za złamanie pokoju.
+VC-003	Jestem wyrobnicą i trudzę się dla twojej rozkoszy.
+TP-001	Jesteśmy z tej samej materii, z której zrobione są sny.
+TP-002	Witaj, wielki mistrzu! Czcigodny panie, witaj!
+TP-003	Ta wyspa jest moja, po Sykoraks, mojej matce.
+MO-003	Ja tylko strzegę pokoju. Schowaj swój miecz.
+CA-002	Co, z dobytym mieczem mówisz o pokoju? Nienawidzę tego słowa.
+DC-003	Moje słowa ulatują w górę, moje myśli zostają w dole.
+FA-003	Złe to spotkanie przy księżycu, dumna Tytanio.
+RL-003	Czy to sztylet widzę przed sobą?
+SC-001	Ważę się na wszystko, co przystoi mężowi; kto waży się na więcej, ten nim nie jest.
+SC-002	Przybądźcie, duchy, co służycie myślom morderczym, odbierzcie mi tutaj moją płeć.
+SC-003	Spłodzisz królów, choć sam nim nie będziesz.
+IL-003	Miłość szukana jest dobra, lecz dana bez szukania jest lepsza.
+RM-001	Nie dlatego, że mniej kochałem Cezara, lecz dlatego, że bardziej kochałem Rzym.
+RM-002	Wina, drogi Brutusie, nie leży w naszych gwiazdach, lecz w nas samych.
+RM-003	Przyjaciele, Rzymianie, rodacy, użyczcie mi uszu!
+MO-004	Wiele poranków widziano go tam, jak łzami pomnażał świeżą poranną rosę.
+CA-003	Zamążpójście, to właśnie sprawa, o której przyszłam mówić.
+DC-004	Teraz pęka szlachetne serce. Dobranoc, słodki książę.
+VC-004	Te czasy żałoby nie dają czasu na zaloty.
+TP-004	O wspaniały nowy świecie, w którym żyją tacy ludzie!
+RL-004	Moja hojność jest bezbrzeżna jak morze, moja miłość równie głęboka.
+RL-005	Nie wszystko złoto, co się świeci.
+RL-006	Niespokojnie spoczywa głowa, która nosi koronę.
+RL-007	Utopię moją księgę.
+RL-009	Niech cię Bóg strzeże, Spodku! Jesteś przemieniony!
+PT-004	Ani mak, ani mandragora, ani wszystkie usypiające syropy świata.
+PT-005	Przynieś mi ten kwiat; ziele, które ci kiedyś pokazałem.
+PT-006	W godzinie mego spokoju twój stryj zakradł się z sokiem przeklętego lulka we flaszce.
+PT-007	W kotle wrzyj i piecz się; oko traszki i palec żaby.
+PT-008	Na pięć sążni głęboko leży twój ojciec; z jego kości powstał koral.
+PT-009	Wlej to do jakiegokolwiek płynu i wypij; a choćbyś miał siłę dwudziestu ludzi, zgładzi cię natychmiast.

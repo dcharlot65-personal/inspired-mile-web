@@ -1,0 +1,62 @@
+{
+ "MO-001": {
+  "text": "Doch still, was schimmert durch das Fenster dort?",
+  "work": "rj",
+  "page": "Romeo und Julia (Übersetzung Schlegel)/Zweiter Aufzug",
+  "url": "https://de.wikisource.org/wiki/Romeo_und_Julia_%28%C3%9Cbersetzung_Schlegel%29/Zweiter_Aufzug?oldid=1730815",
+  "revid": 1730815,
+  "offset": 123923,
+  "matches": 1,
+  "regex": "Doch still, was schimmert durch das Fenster dort\\?"
+ },
+ "CA-001": {
+  "text": "Was ist ein Name? Was uns Rose heißt, / Wie es auch hieße, würde lieblich duften",
+  "work": "rj",
+  "page": "Romeo und Julia (Übersetzung Schlegel)/Zweiter Aufzug",
+  "url": "https://de.wikisource.org/wiki/Romeo_und_Julia_%28%C3%9Cbersetzung_Schlegel%29/Zweiter_Aufzug?oldid=1730815",
+  "revid": 1730815,
+  "offset": 125741,
+  "matches": 1,
+  "regex": "Was ist ein Name\\? Was uns Rose heißt, Wie es auch hieße, würde lieblich duften"
+ },
+ "MO-002": {
+  "text": "Zum Teufel beider Sippschaft!",
+  "work": "rj",
+  "page": "Romeo und Julia (Übersetzung Schlegel)/Dritter Aufzug",
+  "url": "https://de.wikisource.org/wiki/Romeo_und_Julia_%28%C3%9Cbersetzung_Schlegel%29/Dritter_Aufzug?oldid=4062134",
+  "revid": 4062134,
+  "offset": 9166,
+  "matches": 1,
+  "regex": "Zum Teufel beider Sippschaft!"
+ },
+ "VC-002": {
+  "text": "So wilde Freude nimmt ein wildes Ende",
+  "work": "rj",
+  "page": "Romeo und Julia (Übersetzung Schlegel)/Zweiter Aufzug",
+  "url": "https://de.wikisource.org/wiki/Romeo_und_Julia_%28%C3%9Cbersetzung_Schlegel%29/Zweiter_Aufzug?oldid=1730815",
+  "revid": 1730815,
+  "offset": 150920,
+  "matches": 1,
+  "regex": "So wilde Freude nimmt ein wildes Ende"
+ },
+ "MO-003": {
+  "text": "Ich stifte Frieden: steck’ dein Schwert nur ein",
+  "work": "rj",
+  "page": "Romeo und Julia (Übersetzung Schlegel)/Erster Aufzug",
+  "url": "https://de.wikisource.org/wiki/Romeo_und_Julia_%28%C3%9Cbersetzung_Schlegel%29/Erster_Aufzug?oldid=4062133",
+  "revid": 4062133,
+  "offset": 46871,
+  "matches": 1,
+  "regex": "Ich stifte Frieden: steck’ dein Schwert nur ein"
+ },
+ "RL-004": {
+  "text": "So grenzenlos ist meine Huld, die Liebe / So tief ja wie das Meer",
+  "work": "rj",
+  "page": "Romeo und Julia (Übersetzung Schlegel)/Zweiter Aufzug",
+  "url": "https://de.wikisource.org/wiki/Romeo_und_Julia_%28%C3%9Cbersetzung_Schlegel%29/Zweiter_Aufzug?oldid=1730815",
+  "revid": 1730815,
+  "offset": 129986,
+  "matches": 1,
+  "regex": "So grenzenlos ist meine Huld, die Liebe So tief ja wie das Meer"
+ }
+}

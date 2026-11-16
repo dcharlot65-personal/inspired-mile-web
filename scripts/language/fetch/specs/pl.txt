@@ -1,0 +1,12 @@
+MO-001|rj|Jakież światło z okna błyska\?
+DC-001|hamlet|Być albo nie być, oto jest pytanie\.
+DC-002|hamlet|Masz tu rozmaryn, to na pamiątkę
+RL-001|hamlet|Ach, biedny Yoriku! Znałem go, Horacyo
+VC-002|rj|Gwałtowna rozkosz gwałtownie się kończy
+PT-003|mnd|W czterdzieści minut okołuję ziemię
+IL-001|tn|nie jestem, czem jestem\.
+IL-002|tn|Jedni rodzą się wielkimi; inni w pocie czoła do wielkości przychodzą; innych wielkość szuka sama\.
+FA-004|mnd|Przedziwne miałem widzenie\. Miałem sen, a żaden ludzki dowcip nie wypowie, co to za sen był\.
+RL-008|lear|O drogi ojcze, w twojej sprawie walczę!
+MO-002|rj|Mór na wasze domy!
+RL-002|tempest|Teraz zniknęły wszystkie czary moje

@@ -8,97 +8,116 @@ const pack: CardTextPack = {
   "SM-001": {
    "name": "The Sonnet Man",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "Как я сравню тебя с роскошным летним днем",
+   "quoteSource": "published"
   },
   "MO-001": {
    "nameSource": "wikidata",
    "name": "Ромео Монтекки",
-   "quoteSource": "missing"
+   "quote": "Но, тише, что за свет в ее окне?",
+   "quoteSource": "published"
   },
   "CA-001": {
    "nameSource": "wikidata",
    "name": "Джульетта Капулетти",
-   "quoteSource": "missing"
+   "quote": "Что в имени? Как розу ни зови - / В ней аромат останется все тот же",
+   "quoteSource": "published"
   },
   "DC-001": {
    "nameSource": "wikidata",
    "name": "Гамлет",
-   "quoteSource": "missing"
+   "quote": "Быть или не быть, вот в чём вопрос.",
+   "quoteSource": "new"
   },
   "DC-002": {
    "nameSource": "wikidata",
    "name": "Офелия",
-   "quoteSource": "missing"
+   "quote": "Вот розмарин. Это для памяти.",
+   "quoteSource": "published"
   },
   "MO-002": {
    "nameSource": "wikidata",
    "name": "Меркуцио",
-   "quoteSource": "missing"
+   "quote": "Чума на вас, - на оба ваши дома!",
+   "quoteSource": "published"
   },
   "FA-001": {
    "nameSource": "wikidata",
    "name": "Пак",
-   "quoteSource": "missing"
+   "quote": "Господи, как глупы эти смертные!",
+   "quoteSource": "new"
   },
   "FA-002": {
    "nameSource": "wikidata",
    "name": "Титания",
-   "quoteSource": "missing"
+   "quote": "Приди, сядь на это цветущее ложе.",
+   "quoteSource": "new"
   },
   "RL-001": {
    "name": "Череп Йорика",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "Увы, бедный Йорик! Я знал его, Горацио.",
+   "quoteSource": "new"
   },
   "RL-002": {
    "name": "Посох Просперо",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "Теперь все мои чары разрушены.",
+   "quoteSource": "new"
   },
   "PT-001": {
    "name": "Любовное зелье",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "Путь истинной любви никогда не был гладким.",
+   "quoteSource": "new"
   },
   "PT-002": {
    "name": "Ведьмино варево",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "Вдвойне, вдвойне труд и беда.",
+   "quoteSource": "new"
   },
   "VC-001": {
    "nameSource": "wikidata",
    "name": "герцог Эскал",
-   "quoteSource": "missing"
+   "quote": "Если вы ещё раз нарушите покой наших улиц, вы заплатите жизнью за нарушенный мир.",
+   "quoteSource": "new"
   },
   "VC-002": {
    "nameSource": "wikidata",
    "name": "отец Лоренцо",
-   "quoteSource": "missing"
+   "quote": "У этих бурных радостей бурный конец.",
+   "quoteSource": "new"
   },
   "VC-003": {
    "nameSource": "wikidata",
    "name": "Кормилица",
-   "quoteSource": "missing"
+   "quote": "Я работница и тружусь ради твоей радости.",
+   "quoteSource": "new"
   },
   "TP-001": {
    "nameSource": "wikidata",
    "name": "Просперо",
-   "quoteSource": "missing"
+   "quote": "Мы созданы из того же вещества, что и сны.",
+   "quoteSource": "new"
   },
   "TP-002": {
    "nameSource": "wikidata",
    "name": "Ариэль",
-   "quoteSource": "missing"
+   "quote": "Привет тебе, великий господин! Почтенный повелитель, привет!",
+   "quoteSource": "new"
   },
   "TP-003": {
    "nameSource": "wikidata",
    "name": "Калибан",
-   "quoteSource": "missing"
+   "quote": "Этот остров мой, он достался мне от Сикораксы, моей матери.",
+   "quoteSource": "new"
   },
   "MO-003": {
    "nameSource": "wikidata",
    "name": "Бенволио",
-   "quoteSource": "missing"
+   "quote": "Я только охраняю мир. Вложи свой меч в ножны.",
+   "quoteSource": "new"
   },
   "CA-002": {
    "nameSource": "wikidata",
@@ -106,66 +125,79 @@ const pack: CardTextPack = {
    "aliases": [
     "Тибальд"
    ],
-   "quoteSource": "missing"
+   "quote": "Как, с обнажённым мечом ты говоришь о мире? Я ненавижу это слово.",
+   "quoteSource": "new"
   },
   "DC-003": {
    "nameSource": "wikidata",
    "name": "Король Клавдий",
-   "quoteSource": "missing"
+   "quote": "Слова на небе, мысли на земле!",
+   "quoteSource": "published"
   },
   "FA-003": {
    "nameSource": "wikidata",
    "name": "Оберон",
-   "quoteSource": "missing"
+   "quote": "Недобрая встреча при лунном свете, гордая Титания.",
+   "quoteSource": "new"
   },
   "RL-003": {
    "name": "Кинжал воображения",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "Кинжал ли это, что я вижу перед собой?",
+   "quoteSource": "new"
   },
   "PT-003": {
    "name": "Сок цветка Пака",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "Я опояшу землю за сорок минут.",
+   "quoteSource": "new"
   },
   "SC-001": {
    "nameSource": "wikidata",
    "name": "Макбет",
-   "quoteSource": "missing"
+   "quote": "Я смею всё, что подобает мужчине; кто смеет больше, тот не человек.",
+   "quoteSource": "new"
   },
   "SC-002": {
    "nameSource": "wikidata",
    "name": "Леди Макбет",
-   "quoteSource": "missing"
+   "quote": "Придите, духи, что служите смертельным мыслям, лишите меня здесь моего пола.",
+   "quoteSource": "new"
   },
   "SC-003": {
    "nameSource": "wikidata",
    "name": "Банко",
-   "quoteSource": "missing"
+   "quote": "Ты породишь королей, хотя сам не будешь королём.",
+   "quoteSource": "new"
   },
   "IL-001": {
    "nameSource": "wikidata",
    "name": "Виола",
-   "quoteSource": "missing"
+   "quote": "Я не то, что я есть.",
+   "quoteSource": "new"
   },
   "IL-002": {
    "nameSource": "missing",
-   "quoteSource": "missing"
+   "quote": "Одни рождаются великими, другие достигают величия, а третьим величие навязывают.",
+   "quoteSource": "new"
   },
   "IL-003": {
    "nameSource": "wikidata",
    "name": "Оливия",
-   "quoteSource": "missing"
+   "quote": "Любовь искомая хороша, но данная без исканий лучше.",
+   "quoteSource": "new"
   },
   "RM-001": {
    "nameSource": "derived",
    "name": "Брут",
-   "quoteSource": "missing"
+   "quote": "Не потому, что я меньше любил Цезаря, а потому, что я больше любил Рим.",
+   "quoteSource": "new"
   },
   "RM-002": {
    "nameSource": "derived",
    "name": "Кассий",
-   "quoteSource": "missing"
+   "quote": "Вина, дорогой Брут, не в наших звёздах, а в нас самих.",
+   "quoteSource": "new"
   },
   "RM-003": {
    "nameSource": "wikidata",
@@ -173,17 +205,20 @@ const pack: CardTextPack = {
    "aliases": [
     "Антоний"
    ],
-   "quoteSource": "missing"
+   "quote": "О, римляне, сограждане, друзья!",
+   "quoteSource": "published"
   },
   "MO-004": {
    "name": "Синьор Монтекки",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "Много раз по утрам его видели там, слезами умножающим свежую утреннюю росу.",
+   "quoteSource": "new"
   },
   "CA-003": {
    "name": "Синьора Капулетти",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "Замужество, как раз о замужестве я и пришла говорить.",
+   "quoteSource": "new"
   },
   "DC-004": {
    "nameSource": "wikidata",
@@ -191,81 +226,97 @@ const pack: CardTextPack = {
    "aliases": [
     "Горацио"
    ],
-   "quoteSource": "missing"
+   "quote": "Вот разбилось благородное сердце. Доброй ночи, милый принц.",
+   "quoteSource": "new"
   },
   "FA-004": {
    "nameSource": "missing",
-   "quoteSource": "missing"
+   "quote": "Мне было редчайшее видение. Мне приснился сон, который выше человеческого разумения.",
+   "quoteSource": "new"
   },
   "VC-004": {
    "nameSource": "wikidata",
    "name": "граф Парис",
-   "quoteSource": "missing"
+   "quote": "В эти дни скорби нет времени для сватовства.",
+   "quoteSource": "new"
   },
   "TP-004": {
    "nameSource": "wikidata",
    "name": "Миранда",
-   "quoteSource": "missing"
+   "quote": "О дивный новый мир, где есть такие люди!",
+   "quoteSource": "new"
   },
   "RL-004": {
    "name": "Кольцо Ромео",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "Моя щедрость безбрежна, как море, моя любовь так же глубока.",
+   "quoteSource": "new"
   },
   "RL-005": {
    "name": "Ларец Порции",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "Не всё то золото, что блестит.",
+   "quoteSource": "new"
   },
   "RL-006": {
    "name": "Корона Макбета",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "Беспокойно лежит голова, носящая корону.",
+   "quoteSource": "new"
   },
   "RL-007": {
    "name": "Кодекс бури",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "А книгу так глубоко потоплю",
+   "quoteSource": "published"
   },
   "RL-008": {
    "name": "Слёзы Корделии",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "О дорогой отец, я занята твоим делом.",
+   "quoteSource": "new"
   },
   "RL-009": {
    "name": "Маска Основы",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "Господь с тобой, Основа! Ты преображён!",
+   "quoteSource": "new"
   },
   "PT-004": {
    "name": "Корень мандрагоры",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "Ни мак, ни мандрагора, / Ни зелья все, какие есть на свете",
+   "quoteSource": "published"
   },
   "PT-005": {
    "name": "Роса Оберона",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "Принеси мне тот цветок; траву, что я тебе однажды показывал.",
+   "quoteSource": "new"
   },
   "PT-006": {
    "name": "Настойка болиголова",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "В час моего покоя твой дядя подкрался с соком проклятой белены в склянке.",
+   "quoteSource": "new"
   },
   "PT-007": {
    "name": "Вытяжка омелы",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "В котле кипи и варись; глаз тритона и палец лягушки.",
+   "quoteSource": "new"
   },
   "PT-008": {
    "name": "Слёзы русалки",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "На глубине пяти саженей лежит твой отец; из его костей стал коралл.",
+   "quoteSource": "new"
   },
   "PT-009": {
    "name": "Эликсир аптекаря",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "Влей это в любую жидкость и выпей; и будь в тебе сила двадцати человек, оно тотчас тебя прикончит.",
+   "quoteSource": "new"
   },
   "LD-001": {
    "nameSource": "wikidata",

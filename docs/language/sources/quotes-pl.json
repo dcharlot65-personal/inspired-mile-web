@@ -1,0 +1,122 @@
+{
+ "MO-001": {
+  "text": "Jakież światło z okna błyska?",
+  "work": "rj",
+  "page": "Romeo i Julia (Shakespeare, tłum. Ulrich, 1895)/Akt drugi",
+  "url": "https://pl.wikisource.org/wiki/Romeo_i_Julia_%28Shakespeare%2C_t%C5%82um._Ulrich%2C_1895%29/Akt_drugi?oldid=3285360",
+  "revid": 3285360,
+  "offset": 22016,
+  "matches": 2,
+  "regex": "Jakież światło z okna błyska\\?"
+ },
+ "DC-001": {
+  "text": "Być albo nie być, oto jest pytanie.",
+  "work": "hamlet",
+  "page": "Hamlet (Shakespeare, tłum. Ulrich, 1895)/Akt trzeci",
+  "url": "https://pl.wikisource.org/wiki/Hamlet_%28Shakespeare%2C_t%C5%82um._Ulrich%2C_1895%29/Akt_trzeci?oldid=3257297",
+  "revid": 3257297,
+  "offset": 137346,
+  "matches": 2,
+  "regex": "Być albo nie być, oto jest pytanie\\."
+ },
+ "DC-002": {
+  "text": "Masz tu rozmaryn, to na pamiątkę",
+  "work": "hamlet",
+  "page": "Hamlet (Shakespeare, tłum. Ulrich, 1895)/Akt czwarty",
+  "url": "https://pl.wikisource.org/wiki/Hamlet_%28Shakespeare%2C_t%C5%82um._Ulrich%2C_1895%29/Akt_czwarty?oldid=3257293",
+  "revid": 3257293,
+  "offset": 18963,
+  "matches": 2,
+  "regex": "Masz tu rozmaryn, to na pamiątkę"
+ },
+ "RL-001": {
+  "text": "Ach, biedny Yoriku! Znałem go, Horacyo",
+  "work": "hamlet",
+  "page": "Hamlet (Shakespeare, tłum. Ulrich, 1895)/Akt piąty",
+  "url": "https://pl.wikisource.org/wiki/Hamlet_%28Shakespeare%2C_t%C5%82um._Ulrich%2C_1895%29/Akt_pi%C4%85ty?oldid=3257296",
+  "revid": 3257296,
+  "offset": 109724,
+  "matches": 2,
+  "regex": "Ach, biedny Yoriku! Znałem go, Horacyo"
+ },
+ "VC-002": {
+  "text": "Gwałtowna rozkosz gwałtownie się kończy",
+  "work": "rj",
+  "page": "Romeo i Julia (Shakespeare, tłum. Ulrich, 1895)/Akt drugi",
+  "url": "https://pl.wikisource.org/wiki/Romeo_i_Julia_%28Shakespeare%2C_t%C5%82um._Ulrich%2C_1895%29/Akt_drugi?oldid=3285360",
+  "revid": 3285360,
+  "offset": 46885,
+  "matches": 2,
+  "regex": "Gwałtowna rozkosz gwałtownie się kończy"
+ },
+ "PT-003": {
+  "text": "W czterdzieści minut okołuję ziemię",
+  "work": "mnd",
+  "page": "Sen nocy letniej (Shakespeare, tłum. Ulrich, 1895)/Akt drugi",
+  "url": "https://pl.wikisource.org/wiki/Sen_nocy_letniej_%28Shakespeare%2C_t%C5%82um._Ulrich%2C_1895%29/Akt_drugi?oldid=3286441",
+  "revid": 3286441,
+  "offset": 20779,
+  "matches": 2,
+  "regex": "W czterdzieści minut okołuję ziemię"
+ },
+ "IL-001": {
+  "text": "nie jestem, czem jestem.",
+  "work": "tn",
+  "page": "Wieczór Trzech Króli (Shakespeare, tłum. Ulrich, 1895)/Akt trzeci",
+  "url": "https://pl.wikisource.org/wiki/Wiecz%C3%B3r_Trzech_Kr%C3%B3li_%28Shakespeare%2C_t%C5%82um._Ulrich%2C_1895%29/Akt_trzeci?oldid=3294592",
+  "revid": 3294592,
+  "offset": 97225,
+  "matches": 2,
+  "regex": "nie jestem, czem jestem\\."
+ },
+ "IL-002": {
+  "text": "Jedni rodzą się wielkimi; inni w pocie czoła do wielkości przychodzą; innych wielkość szuka sama.",
+  "work": "tn",
+  "page": "Wieczór Trzech Króli (Shakespeare, tłum. Ulrich, 1895)/Akt drugi",
+  "url": "https://pl.wikisource.org/wiki/Wiecz%C3%B3r_Trzech_Kr%C3%B3li_%28Shakespeare%2C_t%C5%82um._Ulrich%2C_1895%29/Akt_drugi?oldid=3294589",
+  "revid": 3294589,
+  "offset": 37951,
+  "matches": 2,
+  "regex": "Jedni rodzą się wielkimi; inni w pocie czoła do wielkości przychodzą; innych wielkość szuka sama\\."
+ },
+ "FA-004": {
+  "text": "Przedziwne miałem widzenie. Miałem sen, a żaden ludzki dowcip nie wypowie, co to za sen był.",
+  "work": "mnd",
+  "page": "Sen nocy letniej (Shakespeare, tłum. Ulrich, 1895)/Akt czwarty",
+  "url": "https://pl.wikisource.org/wiki/Sen_nocy_letniej_%28Shakespeare%2C_t%C5%82um._Ulrich%2C_1895%29/Akt_czwarty?oldid=3286440",
+  "revid": 3286440,
+  "offset": 10188,
+  "matches": 2,
+  "regex": "Przedziwne miałem widzenie\\. Miałem sen, a żaden ludzki dowcip nie wypowie, co to za sen był\\."
+ },
+ "RL-008": {
+  "text": "O drogi ojcze, w twojej sprawie walczę!",
+  "work": "lear",
+  "page": "Król Lear (Shakespeare, tłum. Ulrich, 1895)/Akt czwarty",
+  "url": "https://pl.wikisource.org/wiki/Kr%C3%B3l_Lear_%28Shakespeare%2C_t%C5%82um._Ulrich%2C_1895%29/Akt_czwarty?oldid=3263021",
+  "revid": 3263021,
+  "offset": 13274,
+  "matches": 2,
+  "regex": "O drogi ojcze, w twojej sprawie walczę!"
+ },
+ "MO-002": {
+  "text": "Mór na wasze domy!",
+  "work": "rj",
+  "page": "Romeo i Julia (Shakespeare, tłum. Ulrich, 1895)/Akt trzeci",
+  "url": "https://pl.wikisource.org/wiki/Romeo_i_Julia_%28Shakespeare%2C_t%C5%82um._Ulrich%2C_1895%29/Akt_trzeci?oldid=3285363",
+  "revid": 3285363,
+  "offset": 104093,
+  "matches": 4,
+  "regex": "Mór na wasze domy!"
+ },
+ "RL-002": {
+  "text": "Teraz zniknęły wszystkie czary moje",
+  "work": "tempest",
+  "page": "Burza (Shakespeare, tłum. Ulrich, 1895)/Epilog",
+  "url": "https://pl.wikisource.org/wiki/Burza_%28Shakespeare%2C_t%C5%82um._Ulrich%2C_1895%29/Epilog?oldid=3248992",
+  "revid": 3248992,
+  "offset": 98274,
+  "matches": 2,
+  "regex": "Teraz zniknęły wszystkie czary moje"
+ }
+}

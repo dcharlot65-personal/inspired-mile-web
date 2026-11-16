@@ -47,3 +47,54 @@ UW-002	Sechs Kerne aß ich und band mich für immer zwischen zwei Welten.
 OL-006	Sage mir, o Muse, von dem Mann der vielen Wege, der weit umherirrte.
 UW-003	Sieh mich an, wenn du es wagst. Mein Blick ist das Letzte, was du sehen wirst.
 OL-007	Lieber lebe ich ein kurzes Leben voll Ruhm als ein langes in Vergessenheit.
+SM-001	Soll ich dich einem Sommertag vergleichen?
+MO-001	Doch still, was für ein Licht bricht dort durchs Fenster?
+CA-001	Was ist ein Name? Was uns Rose heißt...
+DC-001	Sein oder Nichtsein, das ist hier die Frage.
+DC-002	Da ist Rosmarin, das ist zur Erinnerung.
+MO-002	Die Pest auf eure beiden Häuser!
+FA-001	Herr, was für Narren diese Sterblichen sind!
+FA-002	Komm, setz dich nieder auf dies Blumenbett.
+RL-001	Ach, armer Yorick! Ich kannte ihn, Horatio.
+RL-002	Nun sind all meine Zauber dahin.
+PT-001	Der Lauf der wahren Liebe ging noch niemals glatt.
+PT-002	Doppelt, doppelt Müh und Plage.
+VC-001	Wenn ihr je wieder unsere Straßen stört, so zahlt euer Leben für den gebrochenen Frieden.
+VC-002	Diese heftigen Freuden nehmen ein heftiges Ende.
+VC-003	Ich bin die Magd und plage mich für Eure Lust.
+TP-001	Wir sind aus solchem Stoff, aus dem die Träume sind.
+TP-002	Heil dir, großer Meister! Würdiger Herr, Heil!
+TP-003	Diese Insel ist mein, von Sycorax, meiner Mutter.
+MO-003	Ich halte nur den Frieden. Steck dein Schwert ein.
+CA-002	Was, mit gezogenem Schwert sprichst du von Frieden? Ich hasse das Wort.
+DC-003	Meine Worte fliegen auf, meine Gedanken bleiben unten.
+FA-003	Schlimm getroffen im Mondlicht, stolze Titania.
+RL-003	Ist das ein Dolch, was ich vor mir erblicke?
+PT-003	Ich lege einen Gürtel um die Erde in vierzig Minuten.
+SC-001	Ich wage alles, was dem Manne ziemt; wer mehr wagt, der ist keiner.
+SC-002	Kommt, ihr Geister, die ihr den Mordgedanken dient, entweibt mich hier.
+SC-003	Du wirst Könige zeugen, obgleich du selbst keiner bist.
+IL-001	Ich bin nicht, was ich bin.
+IL-002	Einige werden groß geboren, einige erringen Größe, und einigen wird die Größe aufgedrängt.
+IL-003	Gesuchte Liebe ist gut, doch ungesucht geschenkte ist besser.
+RM-001	Nicht weil ich Cäsar weniger liebte, sondern weil ich Rom mehr liebte.
+RM-002	Die Schuld, lieber Brutus, liegt nicht in unseren Sternen, sondern in uns selbst.
+RM-003	Freunde, Römer, Landsleute, leiht mir euer Ohr!
+MO-004	So manchen Morgen ward er dort gesehen, wie er mit Tränen den frischen Morgentau vermehrte.
+CA-003	Heiraten, eben das Heiraten ist das Thema, über das ich sprechen wollte.
+DC-004	Nun bricht ein edles Herz. Gute Nacht, süßer Prinz.
+FA-004	Ich hatte ein höchst seltenes Gesicht. Ich hatte einen Traum, der über Menschenwitz geht.
+VC-004	Diese Zeiten des Wehs lassen keine Zeit zum Werben.
+TP-004	O schöne neue Welt, die solche Menschen trägt!
+RL-004	Meine Freigebigkeit ist grenzenlos wie das Meer, meine Liebe ebenso tief.
+RL-005	Nicht alles, was glänzt, ist Gold.
+RL-006	Unruhig liegt das Haupt, das eine Krone trägt.
+RL-007	Ich will mein Buch ertränken.
+RL-008	O lieber Vater, es ist deine Sache, um die ich mich bemühe.
+RL-009	Gott segne dich, Zettel! Du bist verwandelt!
+PT-004	Nicht Mohn, nicht Mandragora, noch alle Schlummersäfte dieser Welt.
+PT-005	Hol mir die Blume; das Kraut, das ich dir einst gezeigt.
+PT-006	In meiner sicheren Stunde schlich dein Oheim herbei, mit dem Saft verfluchten Bilsenkrauts in einem Fläschchen.
+PT-007	Im Kessel sied und brat; Molchesauge und Froschzehe.
+PT-008	Fünf Faden tief liegt dein Vater; aus seinen Gebeinen sind Korallen geworden.
+PT-009	Tut dies in irgendeine Flüssigkeit und trinkt es aus; und hättet Ihr die Kraft von zwanzig Männern, es würde Euch sogleich hinraffen.

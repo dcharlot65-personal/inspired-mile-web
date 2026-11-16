@@ -8,125 +8,151 @@ const pack: CardTextPack = {
   "SM-001": {
    "name": "The Sonnet Man",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "Czy mam cię porównać do letniego dnia?",
+   "quoteSource": "new"
   },
   "MO-001": {
    "nameSource": "wikidata",
    "name": "Romeo Monteki",
-   "quoteSource": "missing"
+   "quote": "Jakież światło z okna błyska?",
+   "quoteSource": "published"
   },
   "CA-001": {
    "nameSource": "wikidata",
    "name": "Julia Kapulet",
-   "quoteSource": "missing"
+   "quote": "Cóż jest w imieniu? To, co zwiemy różą...",
+   "quoteSource": "new"
   },
   "DC-001": {
    "nameSource": "wikidata",
    "name": "Hamlet",
-   "quoteSource": "missing"
+   "quote": "Być albo nie być, oto jest pytanie.",
+   "quoteSource": "published"
   },
   "DC-002": {
    "nameSource": "wikidata",
    "name": "Ofelia",
-   "quoteSource": "missing"
+   "quote": "Masz tu rozmaryn, to na pamiątkę",
+   "quoteSource": "published"
   },
   "MO-002": {
    "nameSource": "wikidata",
    "name": "Merkucjo",
-   "quoteSource": "missing"
+   "quote": "Mór na wasze domy!",
+   "quoteSource": "published"
   },
   "FA-001": {
    "nameSource": "missing",
-   "quoteSource": "missing"
+   "quote": "Panie, jacyż głupcy z tych śmiertelników!",
+   "quoteSource": "new"
   },
   "FA-002": {
    "nameSource": "missing",
-   "quoteSource": "missing"
+   "quote": "Chodź, usiądź na tym kwiecistym łożu.",
+   "quoteSource": "new"
   },
   "RL-001": {
    "name": "Czaszka Yorika",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "Ach, biedny Yoriku! Znałem go, Horacyo",
+   "quoteSource": "published"
   },
   "RL-002": {
    "name": "Laska Prospera",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "Teraz zniknęły wszystkie czary moje",
+   "quoteSource": "published"
   },
   "PT-001": {
    "name": "Napój miłosny",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "Droga prawdziwej miłości nigdy nie była gładka.",
+   "quoteSource": "new"
   },
   "PT-002": {
    "name": "Wywar czarownic",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "Podwój, podwój trud i znój.",
+   "quoteSource": "new"
   },
   "VC-001": {
    "nameSource": "missing",
-   "quoteSource": "missing"
+   "quote": "Jeśli jeszcze raz zakłócicie spokój naszych ulic, życiem zapłacicie za złamanie pokoju.",
+   "quoteSource": "new"
   },
   "VC-002": {
    "nameSource": "missing",
-   "quoteSource": "missing"
+   "quote": "Gwałtowna rozkosz gwałtownie się kończy",
+   "quoteSource": "published"
   },
   "VC-003": {
    "nameSource": "missing",
-   "quoteSource": "missing"
+   "quote": "Jestem wyrobnicą i trudzę się dla twojej rozkoszy.",
+   "quoteSource": "new"
   },
   "TP-001": {
    "nameSource": "wikidata",
    "name": "Prospero",
-   "quoteSource": "missing"
+   "quote": "Jesteśmy z tej samej materii, z której zrobione są sny.",
+   "quoteSource": "new"
   },
   "TP-002": {
    "nameSource": "wikidata",
    "name": "Ariel",
-   "quoteSource": "missing"
+   "quote": "Witaj, wielki mistrzu! Czcigodny panie, witaj!",
+   "quoteSource": "new"
   },
   "TP-003": {
    "nameSource": "missing",
-   "quoteSource": "missing"
+   "quote": "Ta wyspa jest moja, po Sykoraks, mojej matce.",
+   "quoteSource": "new"
   },
   "MO-003": {
    "nameSource": "wikidata",
    "name": "Benvolio",
-   "quoteSource": "missing"
+   "quote": "Ja tylko strzegę pokoju. Schowaj swój miecz.",
+   "quoteSource": "new"
   },
   "CA-002": {
    "nameSource": "wikidata",
    "name": "Tybalt",
-   "quoteSource": "missing"
+   "quote": "Co, z dobytym mieczem mówisz o pokoju? Nienawidzę tego słowa.",
+   "quoteSource": "new"
   },
   "DC-003": {
    "nameSource": "wikidata",
    "name": "Król Klaudiusz",
-   "quoteSource": "missing"
+   "quote": "Moje słowa ulatują w górę, moje myśli zostają w dole.",
+   "quoteSource": "new"
   },
   "FA-003": {
    "nameSource": "missing",
-   "quoteSource": "missing"
+   "quote": "Złe to spotkanie przy księżycu, dumna Tytanio.",
+   "quoteSource": "new"
   },
   "RL-003": {
    "name": "Sztylet umysłu",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "Czy to sztylet widzę przed sobą?",
+   "quoteSource": "new"
   },
   "PT-003": {
    "name": "Sok z kwiatu Puka",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "W czterdzieści minut okołuję ziemię",
+   "quoteSource": "published"
   },
   "SC-001": {
    "nameSource": "wikidata",
    "name": "Makbet",
-   "quoteSource": "missing"
+   "quote": "Ważę się na wszystko, co przystoi mężowi; kto waży się na więcej, ten nim nie jest.",
+   "quoteSource": "new"
   },
   "SC-002": {
    "nameSource": "wikidata",
    "name": "Lady Makbet",
-   "quoteSource": "missing"
+   "quote": "Przybądźcie, duchy, co służycie myślom morderczym, odbierzcie mi tutaj moją płeć.",
+   "quoteSource": "new"
   },
   "SC-003": {
    "nameSource": "wikidata",
@@ -134,122 +160,147 @@ const pack: CardTextPack = {
    "aliases": [
     "Banko"
    ],
-   "quoteSource": "missing"
+   "quote": "Spłodzisz królów, choć sam nim nie będziesz.",
+   "quoteSource": "new"
   },
   "IL-001": {
    "nameSource": "missing",
-   "quoteSource": "missing"
+   "quote": "nie jestem, czem jestem.",
+   "quoteSource": "published"
   },
   "IL-002": {
    "nameSource": "missing",
-   "quoteSource": "missing"
+   "quote": "Jedni rodzą się wielkimi; inni w pocie czoła do wielkości przychodzą; innych wielkość szuka sama.",
+   "quoteSource": "published"
   },
   "IL-003": {
    "nameSource": "missing",
-   "quoteSource": "missing"
+   "quote": "Miłość szukana jest dobra, lecz dana bez szukania jest lepsza.",
+   "quoteSource": "new"
   },
   "RM-001": {
    "nameSource": "derived",
    "name": "Brutus",
-   "quoteSource": "missing"
+   "quote": "Nie dlatego, że mniej kochałem Cezara, lecz dlatego, że bardziej kochałem Rzym.",
+   "quoteSource": "new"
   },
   "RM-002": {
    "nameSource": "derived",
    "name": "Kasjusz",
-   "quoteSource": "missing"
+   "quote": "Wina, drogi Brutusie, nie leży w naszych gwiazdach, lecz w nas samych.",
+   "quoteSource": "new"
   },
   "RM-003": {
    "nameSource": "wikidata",
    "name": "Marek Antoniusz",
-   "quoteSource": "missing"
+   "quote": "Przyjaciele, Rzymianie, rodacy, użyczcie mi uszu!",
+   "quoteSource": "new"
   },
   "MO-004": {
    "name": "Pan Monteki",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "Wiele poranków widziano go tam, jak łzami pomnażał świeżą poranną rosę.",
+   "quoteSource": "new"
   },
   "CA-003": {
    "name": "Pani Kapulet",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "Zamążpójście, to właśnie sprawa, o której przyszłam mówić.",
+   "quoteSource": "new"
   },
   "DC-004": {
    "nameSource": "wikidata",
    "name": "Horacy",
-   "quoteSource": "missing"
+   "quote": "Teraz pęka szlachetne serce. Dobranoc, słodki książę.",
+   "quoteSource": "new"
   },
   "FA-004": {
    "nameSource": "missing",
-   "quoteSource": "missing"
+   "quote": "Przedziwne miałem widzenie. Miałem sen, a żaden ludzki dowcip nie wypowie, co to za sen był.",
+   "quoteSource": "published"
   },
   "VC-004": {
    "nameSource": "missing",
-   "quoteSource": "missing"
+   "quote": "Te czasy żałoby nie dają czasu na zaloty.",
+   "quoteSource": "new"
   },
   "TP-004": {
    "nameSource": "wikidata",
    "name": "Miranda",
-   "quoteSource": "missing"
+   "quote": "O wspaniały nowy świecie, w którym żyją tacy ludzie!",
+   "quoteSource": "new"
   },
   "RL-004": {
    "name": "Pierścień Romea",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "Moja hojność jest bezbrzeżna jak morze, moja miłość równie głęboka.",
+   "quoteSource": "new"
   },
   "RL-005": {
    "name": "Szkatułka Porcji",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "Nie wszystko złoto, co się świeci.",
+   "quoteSource": "new"
   },
   "RL-006": {
    "name": "Korona Makbeta",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "Niespokojnie spoczywa głowa, która nosi koronę.",
+   "quoteSource": "new"
   },
   "RL-007": {
    "name": "Kodeks burzy",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "Utopię moją księgę.",
+   "quoteSource": "new"
   },
   "RL-008": {
    "name": "Łzy Kordelii",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "O drogi ojcze, w twojej sprawie walczę!",
+   "quoteSource": "published"
   },
   "RL-009": {
    "name": "Maska Spodka",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "Niech cię Bóg strzeże, Spodku! Jesteś przemieniony!",
+   "quoteSource": "new"
   },
   "PT-004": {
    "name": "Korzeń mandragory",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "Ani mak, ani mandragora, ani wszystkie usypiające syropy świata.",
+   "quoteSource": "new"
   },
   "PT-005": {
    "name": "Rosa Oberona",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "Przynieś mi ten kwiat; ziele, które ci kiedyś pokazałem.",
+   "quoteSource": "new"
   },
   "PT-006": {
    "name": "Nalewka z cykuty",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "W godzinie mego spokoju twój stryj zakradł się z sokiem przeklętego lulka we flaszce.",
+   "quoteSource": "new"
   },
   "PT-007": {
    "name": "Wyciąg z jemioły",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "W kotle wrzyj i piecz się; oko traszki i palec żaby.",
+   "quoteSource": "new"
   },
   "PT-008": {
    "name": "Łzy syreny",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "Na pięć sążni głęboko leży twój ojciec; z jego kości powstał koral.",
+   "quoteSource": "new"
   },
   "PT-009": {
    "name": "Eliksir aptekarza",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "Wlej to do jakiegokolwiek płynu i wypij; a choćbyś miał siłę dwudziestu ludzi, zgładzi cię natychmiast.",
+   "quoteSource": "new"
   },
   "LD-001": {
    "nameSource": "wikidata",

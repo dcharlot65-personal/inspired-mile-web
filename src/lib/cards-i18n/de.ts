@@ -8,17 +8,20 @@ const pack: CardTextPack = {
   "SM-001": {
    "name": "The Sonnet Man",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "Soll ich dich einem Sommertag vergleichen?",
+   "quoteSource": "new"
   },
   "MO-001": {
    "nameSource": "wikidata",
    "name": "Romeo",
-   "quoteSource": "missing"
+   "quote": "Doch still, was schimmert durch das Fenster dort?",
+   "quoteSource": "published"
   },
   "CA-001": {
    "nameSource": "wikidata",
    "name": "Julia",
-   "quoteSource": "missing"
+   "quote": "Was ist ein Name? Was uns Rose heißt, / Wie es auch hieße, würde lieblich duften",
+   "quoteSource": "published"
   },
   "DC-001": {
    "nameSource": "wikidata",
@@ -26,17 +29,20 @@ const pack: CardTextPack = {
    "aliases": [
     "Hamlet"
    ],
-   "quoteSource": "missing"
+   "quote": "Sein oder Nichtsein, das ist hier die Frage.",
+   "quoteSource": "new"
   },
   "DC-002": {
    "nameSource": "wikidata",
    "name": "Ophelia",
-   "quoteSource": "missing"
+   "quote": "Da ist Rosmarin, das ist zur Erinnerung.",
+   "quoteSource": "new"
   },
   "MO-002": {
    "nameSource": "wikidata",
    "name": "Mercutio",
-   "quoteSource": "missing"
+   "quote": "Zum Teufel beider Sippschaft!",
+   "quoteSource": "published"
   },
   "FA-001": {
    "nameSource": "wikidata",
@@ -45,222 +51,267 @@ const pack: CardTextPack = {
     "Puk",
     "Droll"
    ],
-   "quoteSource": "missing"
+   "quote": "Herr, was für Narren diese Sterblichen sind!",
+   "quoteSource": "new"
   },
   "FA-002": {
    "nameSource": "missing",
-   "quoteSource": "missing"
+   "quote": "Komm, setz dich nieder auf dies Blumenbett.",
+   "quoteSource": "new"
   },
   "RL-001": {
    "name": "Yoricks Schädel",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "Ach, armer Yorick! Ich kannte ihn, Horatio.",
+   "quoteSource": "new"
   },
   "RL-002": {
    "name": "Prosperos Stab",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "Nun sind all meine Zauber dahin.",
+   "quoteSource": "new"
   },
   "PT-001": {
    "name": "Liebestrank",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "Der Lauf der wahren Liebe ging noch niemals glatt.",
+   "quoteSource": "new"
   },
   "PT-002": {
    "name": "Hexengebräu",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "Doppelt, doppelt Müh und Plage.",
+   "quoteSource": "new"
   },
   "VC-001": {
    "nameSource": "missing",
-   "quoteSource": "missing"
+   "quote": "Wenn ihr je wieder unsere Straßen stört, so zahlt euer Leben für den gebrochenen Frieden.",
+   "quoteSource": "new"
   },
   "VC-002": {
    "nameSource": "wikidata",
    "name": "Friar Laurence",
-   "quoteSource": "missing"
+   "quote": "So wilde Freude nimmt ein wildes Ende",
+   "quoteSource": "published"
   },
   "VC-003": {
    "nameSource": "wikidata",
    "name": "Wärterin",
-   "quoteSource": "missing"
+   "quote": "Ich bin die Magd und plage mich für Eure Lust.",
+   "quoteSource": "new"
   },
   "TP-001": {
    "nameSource": "wikidata",
    "name": "Prospero",
-   "quoteSource": "missing"
+   "quote": "Wir sind aus solchem Stoff, aus dem die Träume sind.",
+   "quoteSource": "new"
   },
   "TP-002": {
    "nameSource": "wikidata",
    "name": "Ariel",
-   "quoteSource": "missing"
+   "quote": "Heil dir, großer Meister! Würdiger Herr, Heil!",
+   "quoteSource": "new"
   },
   "TP-003": {
    "nameSource": "wikidata",
    "name": "Caliban",
-   "quoteSource": "missing"
+   "quote": "Diese Insel ist mein, von Sycorax, meiner Mutter.",
+   "quoteSource": "new"
   },
   "MO-003": {
    "nameSource": "wikidata",
    "name": "Benvolio",
-   "quoteSource": "missing"
+   "quote": "Ich stifte Frieden: steck’ dein Schwert nur ein",
+   "quoteSource": "published"
   },
   "CA-002": {
    "nameSource": "wikidata",
    "name": "Tybalt",
-   "quoteSource": "missing"
+   "quote": "Was, mit gezogenem Schwert sprichst du von Frieden? Ich hasse das Wort.",
+   "quoteSource": "new"
   },
   "DC-003": {
    "nameSource": "wikidata",
    "name": "König Claudius",
-   "quoteSource": "missing"
+   "quote": "Meine Worte fliegen auf, meine Gedanken bleiben unten.",
+   "quoteSource": "new"
   },
   "FA-003": {
    "nameSource": "wikidata",
    "name": "Oberon",
-   "quoteSource": "missing"
+   "quote": "Schlimm getroffen im Mondlicht, stolze Titania.",
+   "quoteSource": "new"
   },
   "RL-003": {
    "name": "Dolch der Einbildung",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "Ist das ein Dolch, was ich vor mir erblicke?",
+   "quoteSource": "new"
   },
   "PT-003": {
    "name": "Pucks Blumensaft",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "Ich lege einen Gürtel um die Erde in vierzig Minuten.",
+   "quoteSource": "new"
   },
   "SC-001": {
    "nameSource": "wikidata",
    "name": "Macbeth",
-   "quoteSource": "missing"
+   "quote": "Ich wage alles, was dem Manne ziemt; wer mehr wagt, der ist keiner.",
+   "quoteSource": "new"
   },
   "SC-002": {
    "nameSource": "wikidata",
    "name": "Lady Macbeth",
-   "quoteSource": "missing"
+   "quote": "Kommt, ihr Geister, die ihr den Mordgedanken dient, entweibt mich hier.",
+   "quoteSource": "new"
   },
   "SC-003": {
    "nameSource": "wikidata",
    "name": "Banquo",
-   "quoteSource": "missing"
+   "quote": "Du wirst Könige zeugen, obgleich du selbst keiner bist.",
+   "quoteSource": "new"
   },
   "IL-001": {
    "nameSource": "missing",
-   "quoteSource": "missing"
+   "quote": "Ich bin nicht, was ich bin.",
+   "quoteSource": "new"
   },
   "IL-002": {
    "nameSource": "wikidata",
    "name": "Malvolio",
-   "quoteSource": "missing"
+   "quote": "Einige werden groß geboren, einige erringen Größe, und einigen wird die Größe aufgedrängt.",
+   "quoteSource": "new"
   },
   "IL-003": {
    "nameSource": "missing",
-   "quoteSource": "missing"
+   "quote": "Gesuchte Liebe ist gut, doch ungesucht geschenkte ist besser.",
+   "quoteSource": "new"
   },
   "RM-001": {
    "nameSource": "derived",
    "name": "Brutus",
-   "quoteSource": "missing"
+   "quote": "Nicht weil ich Cäsar weniger liebte, sondern weil ich Rom mehr liebte.",
+   "quoteSource": "new"
   },
   "RM-002": {
    "nameSource": "derived",
    "name": "Cassius",
-   "quoteSource": "missing"
+   "quote": "Die Schuld, lieber Brutus, liegt nicht in unseren Sternen, sondern in uns selbst.",
+   "quoteSource": "new"
   },
   "RM-003": {
    "nameSource": "wikidata",
    "name": "Marcus Antonius",
-   "quoteSource": "missing"
+   "quote": "Freunde, Römer, Landsleute, leiht mir euer Ohr!",
+   "quoteSource": "new"
   },
   "MO-004": {
    "name": "Graf Montague",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "So manchen Morgen ward er dort gesehen, wie er mit Tränen den frischen Morgentau vermehrte.",
+   "quoteSource": "new"
   },
   "CA-003": {
    "name": "Gräfin Capulet",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "Heiraten, eben das Heiraten ist das Thema, über das ich sprechen wollte.",
+   "quoteSource": "new"
   },
   "DC-004": {
    "nameSource": "wikidata",
    "name": "Horatio",
-   "quoteSource": "missing"
+   "quote": "Nun bricht ein edles Herz. Gute Nacht, süßer Prinz.",
+   "quoteSource": "new"
   },
   "FA-004": {
    "nameSource": "wikidata",
    "name": "Zettel",
-   "quoteSource": "missing"
+   "quote": "Ich hatte ein höchst seltenes Gesicht. Ich hatte einen Traum, der über Menschenwitz geht.",
+   "quoteSource": "new"
   },
   "VC-004": {
    "nameSource": "missing",
-   "quoteSource": "missing"
+   "quote": "Diese Zeiten des Wehs lassen keine Zeit zum Werben.",
+   "quoteSource": "new"
   },
   "TP-004": {
    "nameSource": "wikidata",
    "name": "Miranda",
-   "quoteSource": "missing"
+   "quote": "O schöne neue Welt, die solche Menschen trägt!",
+   "quoteSource": "new"
   },
   "RL-004": {
    "name": "Romeos Ring",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "So grenzenlos ist meine Huld, die Liebe / So tief ja wie das Meer",
+   "quoteSource": "published"
   },
   "RL-005": {
    "name": "Portias Kästchen",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "Nicht alles, was glänzt, ist Gold.",
+   "quoteSource": "new"
   },
   "RL-006": {
    "name": "Macbeths Krone",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "Unruhig liegt das Haupt, das eine Krone trägt.",
+   "quoteSource": "new"
   },
   "RL-007": {
    "name": "Der Sturm-Kodex",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "Ich will mein Buch ertränken.",
+   "quoteSource": "new"
   },
   "RL-008": {
    "name": "Cordelias Tränen",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "O lieber Vater, es ist deine Sache, um die ich mich bemühe.",
+   "quoteSource": "new"
   },
   "RL-009": {
    "name": "Zettels Maske",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "Gott segne dich, Zettel! Du bist verwandelt!",
+   "quoteSource": "new"
   },
   "PT-004": {
    "name": "Alraunwurzel",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "Nicht Mohn, nicht Mandragora, noch alle Schlummersäfte dieser Welt.",
+   "quoteSource": "new"
   },
   "PT-005": {
    "name": "Oberons Tau",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "Hol mir die Blume; das Kraut, das ich dir einst gezeigt.",
+   "quoteSource": "new"
   },
   "PT-006": {
    "name": "Schierlingstinktur",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "In meiner sicheren Stunde schlich dein Oheim herbei, mit dem Saft verfluchten Bilsenkrauts in einem Fläschchen.",
+   "quoteSource": "new"
   },
   "PT-007": {
    "name": "Mistelextrakt",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "Im Kessel sied und brat; Molchesauge und Froschzehe.",
+   "quoteSource": "new"
   },
   "PT-008": {
    "name": "Tränen der Meerjungfrau",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "Fünf Faden tief liegt dein Vater; aus seinen Gebeinen sind Korallen geworden.",
+   "quoteSource": "new"
   },
   "PT-009": {
    "name": "Elixier des Apothekers",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "Tut dies in irgendeine Flüssigkeit und trinkt es aus; und hättet Ihr die Kraft von zwanzig Männern, es würde Euch sogleich hinraffen.",
+   "quoteSource": "new"
   },
   "LD-001": {
    "nameSource": "wikidata",

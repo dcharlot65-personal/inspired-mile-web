@@ -60,5 +60,76 @@
    "edition": "Sonnets de Shakespeare, Michel Lévy, Paris, 1857 (fr.wikisource.org transcription)",
    "status": "Public domain: France (life + 70 years; translator died 1873) and United States (published before 1931)"
   }
+ },
+ "pl": {
+  "rj": {
+   "translator": "Leon Ulrich (1811–1885)",
+   "edition": "Dzieła dramatyczne Williama Shakespeare, Kraków, 1895 (pl.wikisource.org transcription)",
+   "status": "Public domain: Poland (life + 70 years; translator died 1885) and United States (published before 1931)"
+  },
+  "hamlet": {
+   "translator": "Leon Ulrich (1811–1885)",
+   "edition": "Dzieła dramatyczne Williama Shakespeare, Kraków, 1895 (pl.wikisource.org transcription)",
+   "status": "Public domain: Poland (life + 70 years; translator died 1885) and United States (published before 1931)"
+  },
+  "mnd": {
+   "translator": "Leon Ulrich (1811–1885)",
+   "edition": "Dzieła dramatyczne Williama Shakespeare, Kraków, 1895 (pl.wikisource.org transcription)",
+   "status": "Public domain: Poland (life + 70 years; translator died 1885) and United States (published before 1931)"
+  },
+  "tempest": {
+   "translator": "Leon Ulrich (1811–1885)",
+   "edition": "Dzieła dramatyczne Williama Shakespeare, Kraków, 1895 (pl.wikisource.org transcription)",
+   "status": "Public domain: Poland (life + 70 years; translator died 1885) and United States (published before 1931)"
+  },
+  "tn": {
+   "translator": "Leon Ulrich (1811–1885)",
+   "edition": "Dzieła dramatyczne Williama Shakespeare, Kraków, 1895 (pl.wikisource.org transcription)",
+   "status": "Public domain: Poland (life + 70 years; translator died 1885) and United States (published before 1931)"
+  },
+  "lear": {
+   "translator": "Leon Ulrich (1811–1885)",
+   "edition": "Dzieła dramatyczne Williama Shakespeare, Kraków, 1895 (pl.wikisource.org transcription)",
+   "status": "Public domain: Poland (life + 70 years; translator died 1885) and United States (published before 1931)"
+  }
+ },
+ "ru": {
+  "rj": {
+   "translator": "Дмитрий Михаловский (1828–1905)",
+   "edition": "«Ромео и Джульетта», 1888 (ru.wikisource.org transcription, modern orthography)",
+   "status": "Public domain: Russia (life + 70 years; translator died 1905) and United States (published before 1931)"
+  },
+  "hamlet": {
+   "translator": "Пётр Гнедич (1855–1925)",
+   "edition": "«Гамлет, принц датский», издание 1917 года (первое 1892) (ru.wikisource.org transcription, modern orthography)",
+   "status": "Public domain: Russia (life + 70 years; translator died 1925) and United States (published before 1931)"
+  },
+  "jc": {
+   "translator": "Павел Козлов (1841–1891)",
+   "edition": "«Юлий Цезарь», 1880 (ru.wikisource.org transcription, modern orthography)",
+   "status": "Public domain: Russia (life + 70 years; translator died 1891) and United States (published before 1931)"
+  },
+  "othello": {
+   "translator": "Пётр Вейнберг (1831–1908)",
+   "edition": "«Отелло, венецианский мавр», 1864 (ru.wikisource.org transcription, modern orthography)",
+   "status": "Public domain: Russia (life + 70 years; translator died 1908) and United States (published before 1931)"
+  },
+  "tempest": {
+   "translator": "Николай Сатин (1814–1873)",
+   "edition": "«Буря», 1840 (ru.wikisource.org transcription, modern orthography)",
+   "status": "Public domain: Russia (life + 70 years; translator died 1873) and United States (published before 1931)"
+  },
+  "sonnet18": {
+   "translator": "Николай Гербель (1827–1883)",
+   "edition": "«Полное собрание сонетов Шекспира», 1880 (ru.wikisource.org transcription, modern orthography)",
+   "status": "Public domain: Russia (life + 70 years; translator died 1883) and United States (published before 1931)"
+  }
+ },
+ "de": {
+  "rj": {
+   "translator": "August Wilhelm Schlegel (1767–1845)",
+   "edition": "Romeo und Julia, 1797 (de.wikisource.org transcription)",
+   "status": "Public domain: Germany (life + 70 years; translator died 1845) and United States (published before 1931)"
+  }
  }
 }

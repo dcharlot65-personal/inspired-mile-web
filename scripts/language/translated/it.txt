@@ -47,3 +47,54 @@ UW-002	Sei semi mangiai, e mi legai per sempre fra due mondi.
 OL-006	Narrami, o Musa, dell’uomo dalle molte vie, che errò lontano.
 UW-003	Guardami, se osi. Il mio sguardo è l’ultima cosa che vedrai.
 OL-007	Preferisco vivere una breve vita di gloria che una lunga vita dimenticata.
+SM-001	Dovrò paragonarti a un giorno d’estate?
+MO-001	Ma piano, quale luce irrompe da quella finestra?
+CA-001	Che cosa c’è in un nome? Ciò che chiamiamo rosa...
+DC-001	Essere o non essere, questo è il problema.
+DC-002	Ecco del rosmarino, che è per il ricordo.
+MO-002	La peste a tutte e due le vostre case!
+FA-001	Signore, che pazzi sono questi mortali!
+FA-002	Vieni, siediti su questo letto fiorito.
+RL-001	Ahimè, povero Yorick! Io lo conoscevo, Orazio.
+RL-002	Ora i miei incanti sono tutti spezzati.
+PT-001	Il corso del vero amore non fu mai liscio.
+PT-002	Doppio, doppio, fatica e travaglio.
+VC-001	Se mai turberete ancora le nostre strade, le vostre vite pagheranno la pace violata.
+VC-002	Queste gioie violente hanno fini violente.
+VC-003	Io sono la serva che fatica per il tuo piacere.
+TP-001	Siamo fatti della stessa sostanza di cui sono fatti i sogni.
+TP-002	Salve, grande padrone! Grave signore, salve!
+TP-003	Quest’isola è mia, per via di Sycorax, mia madre.
+MO-003	Io non faccio che mantenere la pace. Rinfodera la spada.
+CA-002	Come, con la spada in pugno parli di pace? Odio questa parola.
+DC-003	Le mie parole volano in alto, i miei pensieri restano in basso.
+FA-003	Malaugurato incontro al chiaro di luna, superba Titania.
+RL-003	È un pugnale questo che vedo davanti a me?
+PT-003	Metterò una cintura intorno alla terra in quaranta minuti.
+SC-001	Oso tutto ciò che si addice a un uomo; chi osa di più non lo è.
+SC-002	Venite, spiriti che servite i pensieri di morte, toglietemi qui il mio sesso.
+SC-003	Genererai dei re, pur non essendo re tu stesso.
+IL-001	Io non sono quello che sono.
+IL-002	Alcuni nascono grandi, alcuni conquistano la grandezza, e ad alcuni la grandezza viene imposta.
+IL-003	L’amore cercato è buono, ma dato senza essere cercato è migliore.
+RM-001	Non perché amassi meno Cesare, ma perché amavo di più Roma.
+RM-002	La colpa, caro Bruto, non è nelle nostre stelle, ma in noi stessi.
+RM-003	Amici, Romani, concittadini, prestatemi orecchio!
+MO-004	Molte mattine lo si è visto là, ad accrescere con le lacrime la fresca rugiada del mattino.
+CA-003	Sposarti, è proprio questo l’argomento di cui venivo a parlare.
+DC-004	Ora si spezza un nobile cuore. Buona notte, dolce principe.
+FA-004	Ho avuto una visione rarissima. Ho fatto un sogno che supera l’ingegno dell’uomo.
+VC-004	Questi tempi di lutto non lasciano tempo al corteggiamento.
+TP-004	O splendido mondo nuovo, che ha in sé gente simile!
+RL-004	La mia generosità è sconfinata come il mare, il mio amore altrettanto profondo.
+RL-005	Non è tutto oro quel che luccica.
+RL-006	Inquieto giace il capo che porta una corona.
+RL-007	Annegherò il mio libro.
+RL-008	O caro padre, sono i tuoi affari quelli di cui mi occupo.
+RL-009	Dio ti benedica, Bottom! Sei trasformato!
+PT-004	Né il papavero, né la mandragora, né tutti gli sciroppi soporiferi del mondo.
+PT-005	Portami quel fiore; l’erba che una volta ti mostrai.
+PT-006	Nella mia ora di quiete tuo zio si avvicinò furtivo, con il succo del maledetto giusquiamo in una fiala.
+PT-007	Nel calderone bolli e cuoci; occhio di tritone e dito di rana.
+PT-008	A cinque tese giace tuo padre; delle sue ossa si è fatto corallo.
+PT-009	Metti questo in qualunque liquido tu voglia e bevilo; e, avessi anche la forza di venti uomini, ti spaccerebbe all’istante.

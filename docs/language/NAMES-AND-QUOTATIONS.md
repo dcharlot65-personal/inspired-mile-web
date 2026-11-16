@@ -54,7 +54,7 @@ for the game in English. They can only ever be translated, never sourced.
 | Other published quotations | the Wikisource of each language, listed below per work | public domain, per work below | 2026-11-16 |
 | Stop words (words that never count as an echo) | stopwords-iso, commit 6e8e9a2 (`docs/language/sources/stopwords-iso.json`) | MIT, © 2020 Gene Diaz | 2026-11-16 |
 
-Translators' life dates in the tables below were written from general reference knowledge, not fetched
+Translators' life dates and the years of the editions in the tables below were written from general reference knowledge, not fetched
 from a source in this run. They decide the copyright status, so check them before relying on it. The
 United States test used is "published before 1931"; the home-country test is the author's life plus
 70 years.
@@ -77,13 +77,13 @@ United States test used is "published before 1931"; the home-country test is the
 
 | Language | Names from Wikidata | from a Wikipedia title | derived by rule | translated (own inventions) | missing | Lines from a published translation | new, unsourced | Scenes translated |
 |---|---|---|---|---|---|---|---|---|
-| es | 43 | 0 | 3 | 21 | 4 | 0 | 20 | 0 |
-| fr | 45 | 0 | 3 | 21 | 2 | 48 | 23 | 0 |
-| de | 43 | 0 | 2 | 21 | 5 | 0 | 20 | 0 |
-| it | 42 | 0 | 3 | 21 | 5 | 0 | 20 | 0 |
+| es | 43 | 0 | 3 | 21 | 4 | 0 | 71 | 71 |
+| fr | 45 | 0 | 3 | 21 | 2 | 48 | 23 | 71 |
+| de | 43 | 0 | 2 | 21 | 5 | 6 | 65 | 0 |
+| it | 42 | 0 | 3 | 21 | 5 | 0 | 71 | 0 |
 | pt | 35 | 0 | 2 | 21 | 13 | 0 | 71 | 0 |
-| pl | 36 | 0 | 2 | 21 | 12 | 0 | 20 | 0 |
-| ru | 46 | 0 | 2 | 21 | 2 | 0 | 20 | 0 |
+| pl | 36 | 0 | 2 | 21 | 12 | 12 | 59 | 0 |
+| ru | 46 | 0 | 2 | 21 | 2 | 9 | 62 | 0 |
 | ar | 36 | 0 | 1 | 21 | 13 | 0 | 71 | 0 |
 | hi | 36 | 0 | 2 | 21 | 12 | 0 | 71 | 0 |
 | zh | 43 | 1 | 3 | 21 | 3 | 0 | 71 | 0 |
@@ -109,6 +109,19 @@ United States test used is "published before 1931"; the home-country test is the
 | fr | othello | François-Victor Hugo (1828–1873) | Œuvres complètes de W. Shakespeare, Pagnerre, Paris, 1859–1866 (fr.wikisource.org transcription) | Public domain: France (life + 70 years; translator died 1873) and United States (published before 1931) |
 | fr | h4p2 | François-Victor Hugo (1828–1873) | Œuvres complètes de W. Shakespeare, Pagnerre, Paris, 1859–1866 (fr.wikisource.org transcription) | Public domain: France (life + 70 years; translator died 1873) and United States (published before 1931) |
 | fr | sonnet18 | François-Victor Hugo (1828–1873) | Sonnets de Shakespeare, Michel Lévy, Paris, 1857 (fr.wikisource.org transcription) | Public domain: France (life + 70 years; translator died 1873) and United States (published before 1931) |
+| de | rj | August Wilhelm Schlegel (1767–1845) | Romeo und Julia, 1797 (de.wikisource.org transcription) | Public domain: Germany (life + 70 years; translator died 1845) and United States (published before 1931) |
+| pl | rj | Leon Ulrich (1811–1885) | Dzieła dramatyczne Williama Shakespeare, Kraków, 1895 (pl.wikisource.org transcription) | Public domain: Poland (life + 70 years; translator died 1885) and United States (published before 1931) |
+| pl | hamlet | Leon Ulrich (1811–1885) | Dzieła dramatyczne Williama Shakespeare, Kraków, 1895 (pl.wikisource.org transcription) | Public domain: Poland (life + 70 years; translator died 1885) and United States (published before 1931) |
+| pl | mnd | Leon Ulrich (1811–1885) | Dzieła dramatyczne Williama Shakespeare, Kraków, 1895 (pl.wikisource.org transcription) | Public domain: Poland (life + 70 years; translator died 1885) and United States (published before 1931) |
+| pl | tempest | Leon Ulrich (1811–1885) | Dzieła dramatyczne Williama Shakespeare, Kraków, 1895 (pl.wikisource.org transcription) | Public domain: Poland (life + 70 years; translator died 1885) and United States (published before 1931) |
+| pl | tn | Leon Ulrich (1811–1885) | Dzieła dramatyczne Williama Shakespeare, Kraków, 1895 (pl.wikisource.org transcription) | Public domain: Poland (life + 70 years; translator died 1885) and United States (published before 1931) |
+| pl | lear | Leon Ulrich (1811–1885) | Dzieła dramatyczne Williama Shakespeare, Kraków, 1895 (pl.wikisource.org transcription) | Public domain: Poland (life + 70 years; translator died 1885) and United States (published before 1931) |
+| ru | rj | Дмитрий Михаловский (1828–1905) | «Ромео и Джульетта», 1888 (ru.wikisource.org transcription, modern orthography) | Public domain: Russia (life + 70 years; translator died 1905) and United States (published before 1931) |
+| ru | hamlet | Пётр Гнедич (1855–1925) | «Гамлет, принц датский», издание 1917 года (первое 1892) (ru.wikisource.org transcription, modern orthography) | Public domain: Russia (life + 70 years; translator died 1925) and United States (published before 1931) |
+| ru | jc | Павел Козлов (1841–1891) | «Юлий Цезарь», 1880 (ru.wikisource.org transcription, modern orthography) | Public domain: Russia (life + 70 years; translator died 1891) and United States (published before 1931) |
+| ru | othello | Пётр Вейнберг (1831–1908) | «Отелло, венецианский мавр», 1864 (ru.wikisource.org transcription, modern orthography) | Public domain: Russia (life + 70 years; translator died 1908) and United States (published before 1931) |
+| ru | tempest | Николай Сатин (1814–1873) | «Буря», 1840 (ru.wikisource.org transcription, modern orthography) | Public domain: Russia (life + 70 years; translator died 1873) and United States (published before 1931) |
+| ru | sonnet18 | Николай Гербель (1827–1883) | «Полное собрание сонетов Шекспира», 1880 (ru.wikisource.org transcription, modern orthography) | Public domain: Russia (life + 70 years; translator died 1883) and United States (published before 1931) |
 
 ## Missing names (the English name is shown and accepted)
 
@@ -130,13 +143,13 @@ United States test used is "published before 1931"; the home-country test is the
 
 ## Lines translated for the game, not sourced
 
-- **es** new (20): LD-001, LD-002, LD-003, GC-001, GC-002, GC-003, GC-004, GC-005, LD-004, LD-005, OL-001, OL-002, OL-003, OL-004, OL-005, UW-001, UW-002, OL-006, UW-003, OL-007. Not translated (51): SM-001, MO-001, CA-001, DC-001, DC-002, MO-002, FA-001, FA-002, RL-001, RL-002, PT-001, PT-002, VC-001, VC-002, VC-003, TP-001, TP-002, TP-003, MO-003, CA-002, DC-003, FA-003, RL-003, PT-003, SC-001, SC-002, SC-003, IL-001, IL-002, IL-003, RM-001, RM-002, RM-003, MO-004, CA-003, DC-004, FA-004, VC-004, TP-004, RL-004, RL-005, RL-006, RL-007, RL-008, RL-009, PT-004, PT-005, PT-006, PT-007, PT-008, PT-009
+- **es** new (71): SM-001, MO-001, CA-001, DC-001, DC-002, MO-002, FA-001, FA-002, RL-001, RL-002, PT-001, PT-002, VC-001, VC-002, VC-003, TP-001, TP-002, TP-003, MO-003, CA-002, DC-003, FA-003, RL-003, PT-003, SC-001, SC-002, SC-003, IL-001, IL-002, IL-003, RM-001, RM-002, RM-003, MO-004, CA-003, DC-004, FA-004, VC-004, TP-004, RL-004, RL-005, RL-006, RL-007, RL-008, RL-009, PT-004, PT-005, PT-006, PT-007, PT-008, PT-009, LD-001, LD-002, LD-003, GC-001, GC-002, GC-003, GC-004, GC-005, LD-004, LD-005, OL-001, OL-002, OL-003, OL-004, OL-005, UW-001, UW-002, OL-006, UW-003, OL-007
 - **fr** new (23): IL-003, CA-003, TP-004, LD-001, LD-002, LD-003, GC-001, GC-002, GC-003, GC-004, GC-005, LD-004, LD-005, OL-001, OL-002, OL-003, OL-004, OL-005, UW-001, UW-002, OL-006, UW-003, OL-007
-- **de** new (20): LD-001, LD-002, LD-003, GC-001, GC-002, GC-003, GC-004, GC-005, LD-004, LD-005, OL-001, OL-002, OL-003, OL-004, OL-005, UW-001, UW-002, OL-006, UW-003, OL-007. Not translated (51): SM-001, MO-001, CA-001, DC-001, DC-002, MO-002, FA-001, FA-002, RL-001, RL-002, PT-001, PT-002, VC-001, VC-002, VC-003, TP-001, TP-002, TP-003, MO-003, CA-002, DC-003, FA-003, RL-003, PT-003, SC-001, SC-002, SC-003, IL-001, IL-002, IL-003, RM-001, RM-002, RM-003, MO-004, CA-003, DC-004, FA-004, VC-004, TP-004, RL-004, RL-005, RL-006, RL-007, RL-008, RL-009, PT-004, PT-005, PT-006, PT-007, PT-008, PT-009
-- **it** new (20): LD-001, LD-002, LD-003, GC-001, GC-002, GC-003, GC-004, GC-005, LD-004, LD-005, OL-001, OL-002, OL-003, OL-004, OL-005, UW-001, UW-002, OL-006, UW-003, OL-007. Not translated (51): SM-001, MO-001, CA-001, DC-001, DC-002, MO-002, FA-001, FA-002, RL-001, RL-002, PT-001, PT-002, VC-001, VC-002, VC-003, TP-001, TP-002, TP-003, MO-003, CA-002, DC-003, FA-003, RL-003, PT-003, SC-001, SC-002, SC-003, IL-001, IL-002, IL-003, RM-001, RM-002, RM-003, MO-004, CA-003, DC-004, FA-004, VC-004, TP-004, RL-004, RL-005, RL-006, RL-007, RL-008, RL-009, PT-004, PT-005, PT-006, PT-007, PT-008, PT-009
+- **de** new (65): SM-001, DC-001, DC-002, FA-001, FA-002, RL-001, RL-002, PT-001, PT-002, VC-001, VC-003, TP-001, TP-002, TP-003, CA-002, DC-003, FA-003, RL-003, PT-003, SC-001, SC-002, SC-003, IL-001, IL-002, IL-003, RM-001, RM-002, RM-003, MO-004, CA-003, DC-004, FA-004, VC-004, TP-004, RL-005, RL-006, RL-007, RL-008, RL-009, PT-004, PT-005, PT-006, PT-007, PT-008, PT-009, LD-001, LD-002, LD-003, GC-001, GC-002, GC-003, GC-004, GC-005, LD-004, LD-005, OL-001, OL-002, OL-003, OL-004, OL-005, UW-001, UW-002, OL-006, UW-003, OL-007
+- **it** new (71): SM-001, MO-001, CA-001, DC-001, DC-002, MO-002, FA-001, FA-002, RL-001, RL-002, PT-001, PT-002, VC-001, VC-002, VC-003, TP-001, TP-002, TP-003, MO-003, CA-002, DC-003, FA-003, RL-003, PT-003, SC-001, SC-002, SC-003, IL-001, IL-002, IL-003, RM-001, RM-002, RM-003, MO-004, CA-003, DC-004, FA-004, VC-004, TP-004, RL-004, RL-005, RL-006, RL-007, RL-008, RL-009, PT-004, PT-005, PT-006, PT-007, PT-008, PT-009, LD-001, LD-002, LD-003, GC-001, GC-002, GC-003, GC-004, GC-005, LD-004, LD-005, OL-001, OL-002, OL-003, OL-004, OL-005, UW-001, UW-002, OL-006, UW-003, OL-007
 - **pt** new (71): SM-001, MO-001, CA-001, DC-001, DC-002, MO-002, FA-001, FA-002, RL-001, RL-002, PT-001, PT-002, VC-001, VC-002, VC-003, TP-001, TP-002, TP-003, MO-003, CA-002, DC-003, FA-003, RL-003, PT-003, SC-001, SC-002, SC-003, IL-001, IL-002, IL-003, RM-001, RM-002, RM-003, MO-004, CA-003, DC-004, FA-004, VC-004, TP-004, RL-004, RL-005, RL-006, RL-007, RL-008, RL-009, PT-004, PT-005, PT-006, PT-007, PT-008, PT-009, LD-001, LD-002, LD-003, GC-001, GC-002, GC-003, GC-004, GC-005, LD-004, LD-005, OL-001, OL-002, OL-003, OL-004, OL-005, UW-001, UW-002, OL-006, UW-003, OL-007
-- **pl** new (20): LD-001, LD-002, LD-003, GC-001, GC-002, GC-003, GC-004, GC-005, LD-004, LD-005, OL-001, OL-002, OL-003, OL-004, OL-005, UW-001, UW-002, OL-006, UW-003, OL-007. Not translated (51): SM-001, MO-001, CA-001, DC-001, DC-002, MO-002, FA-001, FA-002, RL-001, RL-002, PT-001, PT-002, VC-001, VC-002, VC-003, TP-001, TP-002, TP-003, MO-003, CA-002, DC-003, FA-003, RL-003, PT-003, SC-001, SC-002, SC-003, IL-001, IL-002, IL-003, RM-001, RM-002, RM-003, MO-004, CA-003, DC-004, FA-004, VC-004, TP-004, RL-004, RL-005, RL-006, RL-007, RL-008, RL-009, PT-004, PT-005, PT-006, PT-007, PT-008, PT-009
-- **ru** new (20): LD-001, LD-002, LD-003, GC-001, GC-002, GC-003, GC-004, GC-005, LD-004, LD-005, OL-001, OL-002, OL-003, OL-004, OL-005, UW-001, UW-002, OL-006, UW-003, OL-007. Not translated (51): SM-001, MO-001, CA-001, DC-001, DC-002, MO-002, FA-001, FA-002, RL-001, RL-002, PT-001, PT-002, VC-001, VC-002, VC-003, TP-001, TP-002, TP-003, MO-003, CA-002, DC-003, FA-003, RL-003, PT-003, SC-001, SC-002, SC-003, IL-001, IL-002, IL-003, RM-001, RM-002, RM-003, MO-004, CA-003, DC-004, FA-004, VC-004, TP-004, RL-004, RL-005, RL-006, RL-007, RL-008, RL-009, PT-004, PT-005, PT-006, PT-007, PT-008, PT-009
+- **pl** new (59): SM-001, CA-001, FA-001, FA-002, PT-001, PT-002, VC-001, VC-003, TP-001, TP-002, TP-003, MO-003, CA-002, DC-003, FA-003, RL-003, SC-001, SC-002, SC-003, IL-003, RM-001, RM-002, RM-003, MO-004, CA-003, DC-004, VC-004, TP-004, RL-004, RL-005, RL-006, RL-007, RL-009, PT-004, PT-005, PT-006, PT-007, PT-008, PT-009, LD-001, LD-002, LD-003, GC-001, GC-002, GC-003, GC-004, GC-005, LD-004, LD-005, OL-001, OL-002, OL-003, OL-004, OL-005, UW-001, UW-002, OL-006, UW-003, OL-007
+- **ru** new (62): DC-001, FA-001, FA-002, RL-001, RL-002, PT-001, PT-002, VC-001, VC-002, VC-003, TP-001, TP-002, TP-003, MO-003, CA-002, FA-003, RL-003, PT-003, SC-001, SC-002, SC-003, IL-001, IL-002, IL-003, RM-001, RM-002, MO-004, CA-003, DC-004, FA-004, VC-004, TP-004, RL-004, RL-005, RL-006, RL-008, RL-009, PT-005, PT-006, PT-007, PT-008, PT-009, LD-001, LD-002, LD-003, GC-001, GC-002, GC-003, GC-004, GC-005, LD-004, LD-005, OL-001, OL-002, OL-003, OL-004, OL-005, UW-001, UW-002, OL-006, UW-003, OL-007
 - **ar** new (71): SM-001, MO-001, CA-001, DC-001, DC-002, MO-002, FA-001, FA-002, RL-001, RL-002, PT-001, PT-002, VC-001, VC-002, VC-003, TP-001, TP-002, TP-003, MO-003, CA-002, DC-003, FA-003, RL-003, PT-003, SC-001, SC-002, SC-003, IL-001, IL-002, IL-003, RM-001, RM-002, RM-003, MO-004, CA-003, DC-004, FA-004, VC-004, TP-004, RL-004, RL-005, RL-006, RL-007, RL-008, RL-009, PT-004, PT-005, PT-006, PT-007, PT-008, PT-009, LD-001, LD-002, LD-003, GC-001, GC-002, GC-003, GC-004, GC-005, LD-004, LD-005, OL-001, OL-002, OL-003, OL-004, OL-005, UW-001, UW-002, OL-006, UW-003, OL-007
 - **hi** new (71): SM-001, MO-001, CA-001, DC-001, DC-002, MO-002, FA-001, FA-002, RL-001, RL-002, PT-001, PT-002, VC-001, VC-002, VC-003, TP-001, TP-002, TP-003, MO-003, CA-002, DC-003, FA-003, RL-003, PT-003, SC-001, SC-002, SC-003, IL-001, IL-002, IL-003, RM-001, RM-002, RM-003, MO-004, CA-003, DC-004, FA-004, VC-004, TP-004, RL-004, RL-005, RL-006, RL-007, RL-008, RL-009, PT-004, PT-005, PT-006, PT-007, PT-008, PT-009, LD-001, LD-002, LD-003, GC-001, GC-002, GC-003, GC-004, GC-005, LD-004, LD-005, OL-001, OL-002, OL-003, OL-004, OL-005, UW-001, UW-002, OL-006, UW-003, OL-007
 - **zh** new (71): SM-001, MO-001, CA-001, DC-001, DC-002, MO-002, FA-001, FA-002, RL-001, RL-002, PT-001, PT-002, VC-001, VC-002, VC-003, TP-001, TP-002, TP-003, MO-003, CA-002, DC-003, FA-003, RL-003, PT-003, SC-001, SC-002, SC-003, IL-001, IL-002, IL-003, RM-001, RM-002, RM-003, MO-004, CA-003, DC-004, FA-004, VC-004, TP-004, RL-004, RL-005, RL-006, RL-007, RL-008, RL-009, PT-004, PT-005, PT-006, PT-007, PT-008, PT-009, LD-001, LD-002, LD-003, GC-001, GC-002, GC-003, GC-004, GC-005, LD-004, LD-005, OL-001, OL-002, OL-003, OL-004, OL-005, UW-001, UW-002, OL-006, UW-003, OL-007
@@ -251,13 +264,13 @@ English line: "Shall I compare thee to a summer's day?" (Shakespeare, Sonnet 18,
 
 | Language | Name | Name source | Line | Line source |
 |---|---|---|---|---|
-| es | The Sonnet Man | translated: the product name, kept as it is | (none) | missing |
+| es | The Sonnet Man | translated: the product name, kept as it is | ¿He de compararte con un día de verano? | NEW, unsourced: translated for the game, not reviewed |
 | fr | The Sonnet Man | translated: the product name, kept as it is | Te comparerai-je à un jour d’été ? | published: François-Victor Hugo (1828–1873), Sonnets de Shakespeare, Michel Lévy, Paris, 1857 (fr.wikisource.org transcription); Public domain: France (life + 70 years; translator died 1873) and United States (published before 1931); [source](https://fr.wikisource.org/wiki/Sonnets_de_Shakespeare_%28trad._Hugo%29/018?oldid=7372651) |
-| de | The Sonnet Man | translated: the product name, kept as it is | (none) | missing |
-| it | The Sonnet Man | translated: the product name, kept as it is | (none) | missing |
+| de | The Sonnet Man | translated: the product name, kept as it is | Soll ich dich einem Sommertag vergleichen? | NEW, unsourced: translated for the game, not reviewed |
+| it | The Sonnet Man | translated: the product name, kept as it is | Dovrò paragonarti a un giorno d’estate? | NEW, unsourced: translated for the game, not reviewed |
 | pt | The Sonnet Man | translated: the product name, kept as it is | Devo comparar-te a um dia de verão? | NEW, unsourced: translated for the game, not reviewed |
-| pl | The Sonnet Man | translated: the product name, kept as it is | (none) | missing |
-| ru | The Sonnet Man | translated: the product name, kept as it is | (none) | missing |
+| pl | The Sonnet Man | translated: the product name, kept as it is | Czy mam cię porównać do letniego dnia? | NEW, unsourced: translated for the game, not reviewed |
+| ru | The Sonnet Man | translated: the product name, kept as it is | Как я сравню тебя с роскошным летним днем | published: Николай Гербель (1827–1883), «Полное собрание сонетов Шекспира», 1880 (ru.wikisource.org transcription, modern orthography); Public domain: Russia (life + 70 years; translator died 1883) and United States (published before 1931); [source](https://ru.wikisource.org/wiki/%D0%A1%D0%BE%D0%BD%D0%B5%D1%82_18_%28%D0%A8%D0%B5%D0%BA%D1%81%D0%BF%D0%B8%D1%80%3B_%D0%93%D0%B5%D1%80%D0%B1%D0%B5%D0%BB%D1%8C%29?oldid=4689902) |
 | ar | The Sonnet Man | translated: the product name, kept as it is | هل أشبهك بيوم من أيام الصيف؟ | NEW, unsourced: translated for the game, not reviewed |
 | hi | The Sonnet Man | translated: the product name, kept as it is | क्या मैं तुम्हारी तुलना गर्मी के दिन से करूँ? | NEW, unsourced: translated for the game, not reviewed |
 | zh | The Sonnet Man | translated: the product name, kept as it is | 我可否把你比作夏日的一天？ | NEW, unsourced: translated for the game, not reviewed |
@@ -273,13 +286,13 @@ English line: "But soft, what light through yonder window breaks?" (Romeo and Ju
 
 | Language | Name | Name source | Line | Line source |
 |---|---|---|---|---|
-| es | Romeo | wikidata: Q673361 label (es) | (none) | missing |
+| es | Romeo | wikidata: Q673361 label (es) | Pero, ¡silencio! ¿Qué luz asoma por aquella ventana? | NEW, unsourced: translated for the game, not reviewed |
 | fr | Roméo Montaigu | wikidata: Q673361 label (fr) | Mais doucement ! Quelle lumière jaillit par cette fenêtre ? | published: François-Victor Hugo (1828–1873), Œuvres complètes de W. Shakespeare, Pagnerre, Paris, 1859–1866 (fr.wikisource.org transcription); Public domain: France (life + 70 years; translator died 1873) and United States (published before 1931); [source](https://fr.wikisource.org/wiki/Rom%C3%A9o_et_Juliette_%28trad._Hugo%29?oldid=15966892) |
-| de | Romeo | wikidata: Q673361 label (de) | (none) | missing |
-| it | Romeo Montecchi | wikidata: Q673361 label (it) | (none) | missing |
+| de | Romeo | wikidata: Q673361 label (de) | Doch still, was schimmert durch das Fenster dort? | published: August Wilhelm Schlegel (1767–1845), Romeo und Julia, 1797 (de.wikisource.org transcription); Public domain: Germany (life + 70 years; translator died 1845) and United States (published before 1931); [source](https://de.wikisource.org/wiki/Romeo_und_Julia_%28%C3%9Cbersetzung_Schlegel%29/Zweiter_Aufzug?oldid=1730815) |
+| it | Romeo Montecchi | wikidata: Q673361 label (it) | Ma piano, quale luce irrompe da quella finestra? | NEW, unsourced: translated for the game, not reviewed |
 | pt | Romeu | wikidata: Q673361 label (pt) | Mas, silêncio! Que luz irrompe por aquela janela? | NEW, unsourced: translated for the game, not reviewed |
-| pl | Romeo Monteki | wikidata: Q673361 label (pl) | (none) | missing |
-| ru | Ромео Монтекки | wikidata: Q673361 label (ru) | (none) | missing |
+| pl | Romeo Monteki | wikidata: Q673361 label (pl) | Jakież światło z okna błyska? | published: Leon Ulrich (1811–1885), Dzieła dramatyczne Williama Shakespeare, Kraków, 1895 (pl.wikisource.org transcription); Public domain: Poland (life + 70 years; translator died 1885) and United States (published before 1931); [source](https://pl.wikisource.org/wiki/Romeo_i_Julia_%28Shakespeare%2C_t%C5%82um._Ulrich%2C_1895%29/Akt_drugi?oldid=3285360) |
+| ru | Ромео Монтекки | wikidata: Q673361 label (ru) | Но, тише, что за свет в ее окне? | published: Дмитрий Михаловский (1828–1905), «Ромео и Джульетта», 1888 (ru.wikisource.org transcription, modern orthography); Public domain: Russia (life + 70 years; translator died 1905) and United States (published before 1931); [source](https://ru.wikisource.org/wiki/%D0%A0%D0%BE%D0%BC%D0%B5%D0%BE_%D0%B8_%D0%94%D0%B6%D1%83%D0%BB%D1%8C%D0%B5%D1%82%D1%82%D0%B0_%28%D0%A8%D0%B5%D0%BA%D1%81%D0%BF%D0%B8%D1%80%3B_%D0%9C%D0%B8%D1%85%D0%B0%D0%BB%D0%BE%D0%B2%D1%81%D0%BA%D0%B8%D0%B9%29/2001?oldid=5750496) |
 | ar | روميو | wikidata: Q673361 label (ar) | لكن مهلاً، أي نور ذاك الذي ينبثق من تلك النافذة؟ | NEW, unsourced: translated for the game, not reviewed |
 | hi | रोमियो | wikidata: Q673361 label (hi) | पर ठहरो, उस खिड़की से यह कैसा उजाला फूट रहा है? | NEW, unsourced: translated for the game, not reviewed |
 | zh | 罗密欧·蒙泰古 | wikidata: Q673361 label (zh); "羅密歐·蒙泰古" converted to Simplified with OpenCC t2s | 轻声！那边窗子里亮起来的是什么光？ | NEW, unsourced: translated for the game, not reviewed |
@@ -295,13 +308,13 @@ English line: "What's in a name? That which we call a rose..." (Romeo and Juliet
 
 | Language | Name | Name source | Line | Line source |
 |---|---|---|---|---|
-| es | Julieta | wikidata: Q1092632 label (es) | (none) | missing |
+| es | Julieta | wikidata: Q1092632 label (es) | ¿Qué hay en un nombre? Lo que llamamos rosa... | NEW, unsourced: translated for the game, not reviewed |
 | fr | Juliette Capulet | wikidata: Q1092632 label (fr) | Qu’y a-t-il dans un nom ? Ce que nous appelons une rose — embaumerait autant sous un autre nom. | published: François-Victor Hugo (1828–1873), Œuvres complètes de W. Shakespeare, Pagnerre, Paris, 1859–1866 (fr.wikisource.org transcription); Public domain: France (life + 70 years; translator died 1873) and United States (published before 1931); [source](https://fr.wikisource.org/wiki/Rom%C3%A9o_et_Juliette_%28trad._Hugo%29?oldid=15966892) |
-| de | Julia | wikidata: Q1092632 label (de) | (none) | missing |
-| it | Giulietta Capuleti | wikidata: Q1092632 label (it) | (none) | missing |
+| de | Julia | wikidata: Q1092632 label (de) | Was ist ein Name? Was uns Rose heißt, / Wie es auch hieße, würde lieblich duften | published: August Wilhelm Schlegel (1767–1845), Romeo und Julia, 1797 (de.wikisource.org transcription); Public domain: Germany (life + 70 years; translator died 1845) and United States (published before 1931); [source](https://de.wikisource.org/wiki/Romeo_und_Julia_%28%C3%9Cbersetzung_Schlegel%29/Zweiter_Aufzug?oldid=1730815) |
+| it | Giulietta Capuleti | wikidata: Q1092632 label (it) | Che cosa c’è in un nome? Ciò che chiamiamo rosa... | NEW, unsourced: translated for the game, not reviewed |
 | pt | Julieta Capuleto | wikidata: Q1092632 label (pt) | Que há num nome? Aquilo a que chamamos rosa... | NEW, unsourced: translated for the game, not reviewed |
-| pl | Julia Kapulet | wikidata: Q1092632 label (pl) | (none) | missing |
-| ru | Джульетта Капулетти | wikidata: Q1092632 label (ru) | (none) | missing |
+| pl | Julia Kapulet | wikidata: Q1092632 label (pl) | Cóż jest w imieniu? To, co zwiemy różą... | NEW, unsourced: translated for the game, not reviewed |
+| ru | Джульетта Капулетти | wikidata: Q1092632 label (ru) | Что в имени? Как розу ни зови - / В ней аромат останется все тот же | published: Дмитрий Михаловский (1828–1905), «Ромео и Джульетта», 1888 (ru.wikisource.org transcription, modern orthography); Public domain: Russia (life + 70 years; translator died 1905) and United States (published before 1931); [source](https://ru.wikisource.org/wiki/%D0%A0%D0%BE%D0%BC%D0%B5%D0%BE_%D0%B8_%D0%94%D0%B6%D1%83%D0%BB%D1%8C%D0%B5%D1%82%D1%82%D0%B0_%28%D0%A8%D0%B5%D0%BA%D1%81%D0%BF%D0%B8%D1%80%3B_%D0%9C%D0%B8%D1%85%D0%B0%D0%BB%D0%BE%D0%B2%D1%81%D0%BA%D0%B8%D0%B9%29/2001?oldid=5750496) |
 | ar | جولييت | wikidata: Q1092632 label (ar) | ماذا في الاسم؟ إن ما نسميه وردة... | NEW, unsourced: translated for the game, not reviewed |
 | hi | जूलियट | wikidata: Q1092632 label (hi) | नाम में क्या रखा है? जिसे हम गुलाब कहते हैं... | NEW, unsourced: translated for the game, not reviewed |
 | zh | 朱丽叶·凯普莱特 | wikidata: Q1092632 label (zh-hans) | 名字里有什么呢？我们叫做玫瑰的那一种花…… | NEW, unsourced: translated for the game, not reviewed |
@@ -317,13 +330,13 @@ English line: "To be, or not to be, that is the question." (Hamlet 3.1)
 
 | Language | Name | Name source | Line | Line source |
 |---|---|---|---|---|
-| es | Príncipe Hamlet | wikidata: Q2447542 label (es) | (none) | missing |
+| es | Príncipe Hamlet | wikidata: Q2447542 label (es) | Ser o no ser, esa es la cuestión. | NEW, unsourced: translated for the game, not reviewed |
 | fr | Hamlet | wikidata: Q2447542 label (fr) | Être, ou ne pas être, c’est là la question. | published: François-Victor Hugo (1828–1873), Œuvres complètes de W. Shakespeare, Pagnerre, Paris, 1859–1866 (fr.wikisource.org transcription); Public domain: France (life + 70 years; translator died 1873) and United States (published before 1931); [source](https://fr.wikisource.org/wiki/Le_second_Hamlet_%28trad._Hugo%29?oldid=15966629) |
-| de | Prinz Hamlet | wikidata: Q2447542 label (de) | (none) | missing |
-| it | Amleto | wikidata: Q2447542 label (it) | (none) | missing |
+| de | Prinz Hamlet | wikidata: Q2447542 label (de) | Sein oder Nichtsein, das ist hier die Frage. | NEW, unsourced: translated for the game, not reviewed |
+| it | Amleto | wikidata: Q2447542 label (it) | Essere o non essere, questo è il problema. | NEW, unsourced: translated for the game, not reviewed |
 | pt | Príncipe Hamlet | wikidata: Q2447542 label (pt) | Ser ou não ser, eis a questão. | NEW, unsourced: translated for the game, not reviewed |
-| pl | Hamlet | wikidata: Q2447542 label (pl) | (none) | missing |
-| ru | Гамлет | wikidata: Q2447542 label (ru) | (none) | missing |
+| pl | Hamlet | wikidata: Q2447542 label (pl) | Być albo nie być, oto jest pytanie. | published: Leon Ulrich (1811–1885), Dzieła dramatyczne Williama Shakespeare, Kraków, 1895 (pl.wikisource.org transcription); Public domain: Poland (life + 70 years; translator died 1885) and United States (published before 1931); [source](https://pl.wikisource.org/wiki/Hamlet_%28Shakespeare%2C_t%C5%82um._Ulrich%2C_1895%29/Akt_trzeci?oldid=3257297) |
+| ru | Гамлет | wikidata: Q2447542 label (ru) | Быть или не быть, вот в чём вопрос. | NEW, unsourced: translated for the game, not reviewed |
 | ar | الأمير هاملت | wikidata: Q2447542 label (ar) | أكون أو لا أكون، تلك هي المسألة. | NEW, unsourced: translated for the game, not reviewed |
 | hi | प्रिंस हैमलेट | wikidata: Q2447542 label (hi) | जीना या न जीना, यही प्रश्न है। | NEW, unsourced: translated for the game, not reviewed |
 | zh | 哈姆雷特王子 | wikidata: Q2447542 label (zh) | 生存还是毁灭，这是一个问题。 | NEW, unsourced: translated for the game, not reviewed |
@@ -339,13 +352,13 @@ English line: "There's rosemary, that's for remembrance." (Hamlet 4.5)
 
 | Language | Name | Name source | Line | Line source |
 |---|---|---|---|---|
-| es | Ofelia | wikidata: Q1800888 label (es) | (none) | missing |
+| es | Ofelia | wikidata: Q1800888 label (es) | Aquí hay romero, que es para el recuerdo. | NEW, unsourced: translated for the game, not reviewed |
 | fr | Ophélie | wikidata: Q1800888 label (fr) | Voici du romarin ; c’est comme souvenir | published: François-Victor Hugo (1828–1873), Œuvres complètes de W. Shakespeare, Pagnerre, Paris, 1859–1866 (fr.wikisource.org transcription); Public domain: France (life + 70 years; translator died 1873) and United States (published before 1931); [source](https://fr.wikisource.org/wiki/Le_second_Hamlet_%28trad._Hugo%29?oldid=15966629) |
-| de | Ophelia | wikidata: Q1800888 label (de) | (none) | missing |
-| it | Ofelia | wikidata: Q1800888 label (it) | (none) | missing |
+| de | Ophelia | wikidata: Q1800888 label (de) | Da ist Rosmarin, das ist zur Erinnerung. | NEW, unsourced: translated for the game, not reviewed |
+| it | Ofelia | wikidata: Q1800888 label (it) | Ecco del rosmarino, che è per il ricordo. | NEW, unsourced: translated for the game, not reviewed |
 | pt | Ofélia | wikidata: Q1800888 label (pt) | Aqui está o alecrim, que é para a lembrança. | NEW, unsourced: translated for the game, not reviewed |
-| pl | Ofelia | wikidata: Q1800888 label (pl) | (none) | missing |
-| ru | Офелия | wikidata: Q1800888 label (ru) | (none) | missing |
+| pl | Ofelia | wikidata: Q1800888 label (pl) | Masz tu rozmaryn, to na pamiątkę | published: Leon Ulrich (1811–1885), Dzieła dramatyczne Williama Shakespeare, Kraków, 1895 (pl.wikisource.org transcription); Public domain: Poland (life + 70 years; translator died 1885) and United States (published before 1931); [source](https://pl.wikisource.org/wiki/Hamlet_%28Shakespeare%2C_t%C5%82um._Ulrich%2C_1895%29/Akt_czwarty?oldid=3257293) |
+| ru | Офелия | wikidata: Q1800888 label (ru) | Вот розмарин. Это для памяти. | published: Пётр Гнедич (1855–1925), «Гамлет, принц датский», издание 1917 года (первое 1892) (ru.wikisource.org transcription, modern orthography); Public domain: Russia (life + 70 years; translator died 1925) and United States (published before 1931); [source](https://ru.wikisource.org/wiki/%D0%93%D0%B0%D0%BC%D0%BB%D0%B5%D1%82%2C_%D0%BF%D1%80%D0%B8%D0%BD%D1%86_%D0%B4%D0%B0%D1%82%D1%81%D0%BA%D0%B8%D0%B9_%28%D0%A8%D0%B5%D0%BA%D1%81%D0%BF%D0%B8%D1%80%3B_%D0%93%D0%BD%D0%B5%D0%B4%D0%B8%D1%87%29/1917_%28%D0%A1%D0%9E%29?oldid=5657806) |
 | ar | (none) | missing: Q1800888 has no label in ar and no ar.wikipedia.org article | هذا إكليل الجبل، وهو للذكرى. | NEW, unsourced: translated for the game, not reviewed |
 | hi | ओफ़ीलिया | wikidata: Q1800888 label (hi) | यह रोज़मेरी है, यह याद के लिए है। | NEW, unsourced: translated for the game, not reviewed |
 | zh | 奥菲利娅 | wikidata: Q1800888 label (zh-hans) | 这是迷迭香，是表示记忆的。 | NEW, unsourced: translated for the game, not reviewed |
@@ -361,13 +374,13 @@ English line: "A plague on both your houses!" (Romeo and Juliet 3.1)
 
 | Language | Name | Name source | Line | Line source |
 |---|---|---|---|---|
-| es | Mercucio | wikidata: Q1767900 label (es) | (none) | missing |
+| es | Mercucio | wikidata: Q1767900 label (es) | ¡Mala peste a vuestras dos casas! | NEW, unsourced: translated for the game, not reviewed |
 | fr | Mercutio | wikidata: Q1767900 label (fr) | Malédiction sur vos deux maisons ! | published: François-Victor Hugo (1828–1873), Œuvres complètes de W. Shakespeare, Pagnerre, Paris, 1859–1866 (fr.wikisource.org transcription); Public domain: France (life + 70 years; translator died 1873) and United States (published before 1931); [source](https://fr.wikisource.org/wiki/Rom%C3%A9o_et_Juliette_%28trad._Hugo%29?oldid=15966892) |
-| de | Mercutio | wikidata: Q1767900 label (de) | (none) | missing |
-| it | Mercuzio | wikidata: Q1767900 label (it) | (none) | missing |
+| de | Mercutio | wikidata: Q1767900 label (de) | Zum Teufel beider Sippschaft! | published: August Wilhelm Schlegel (1767–1845), Romeo und Julia, 1797 (de.wikisource.org transcription); Public domain: Germany (life + 70 years; translator died 1845) and United States (published before 1931); [source](https://de.wikisource.org/wiki/Romeo_und_Julia_%28%C3%9Cbersetzung_Schlegel%29/Dritter_Aufzug?oldid=4062134) |
+| it | Mercuzio | wikidata: Q1767900 label (it) | La peste a tutte e due le vostre case! | NEW, unsourced: translated for the game, not reviewed |
 | pt | (none) | missing: Q1767900 has no label in pt and no pt.wikipedia.org article | Uma praga sobre as vossas duas casas! | NEW, unsourced: translated for the game, not reviewed |
-| pl | Merkucjo | wikidata: Q1767900 label (pl) | (none) | missing |
-| ru | Меркуцио | wikidata: Q1767900 label (ru) | (none) | missing |
+| pl | Merkucjo | wikidata: Q1767900 label (pl) | Mór na wasze domy! | published: Leon Ulrich (1811–1885), Dzieła dramatyczne Williama Shakespeare, Kraków, 1895 (pl.wikisource.org transcription); Public domain: Poland (life + 70 years; translator died 1885) and United States (published before 1931); [source](https://pl.wikisource.org/wiki/Romeo_i_Julia_%28Shakespeare%2C_t%C5%82um._Ulrich%2C_1895%29/Akt_trzeci?oldid=3285363) |
+| ru | Меркуцио | wikidata: Q1767900 label (ru) | Чума на вас, - на оба ваши дома! | published: Дмитрий Михаловский (1828–1905), «Ромео и Джульетта», 1888 (ru.wikisource.org transcription, modern orthography); Public domain: Russia (life + 70 years; translator died 1905) and United States (published before 1931); [source](https://ru.wikisource.org/wiki/%D0%A0%D0%BE%D0%BC%D0%B5%D0%BE_%D0%B8_%D0%94%D0%B6%D1%83%D0%BB%D1%8C%D0%B5%D1%82%D1%82%D0%B0_%28%D0%A8%D0%B5%D0%BA%D1%81%D0%BF%D0%B8%D1%80%3B_%D0%9C%D0%B8%D1%85%D0%B0%D0%BB%D0%BE%D0%B2%D1%81%D0%BA%D0%B8%D0%B9%29/2001?oldid=5750496) |
 | ar | ماركيشيو | wikidata: Q1767900 label (ar) | الطاعون على بيتيكما كليهما! | NEW, unsourced: translated for the game, not reviewed |
 | hi | मरकूशियो | wikidata: Q1767900 label (hi) | तुम दोनों घरानों पर महामारी पड़े! | NEW, unsourced: translated for the game, not reviewed |
 | zh | 莫枯修 | wikidata: Q1767900 label (zh) | 你们两家都遭瘟疫去吧！ | NEW, unsourced: translated for the game, not reviewed |
@@ -383,13 +396,13 @@ English line: "Lord, what fools these mortals be!" (A Midsummer Night's Dream 3.
 
 | Language | Name | Name source | Line | Line source |
 |---|---|---|---|---|
-| es | Puck | wikidata: Q1248616 label (es) | (none) | missing |
+| es | Puck | wikidata: Q1248616 label (es) | ¡Señor, qué necios son estos mortales! | NEW, unsourced: translated for the game, not reviewed |
 | fr | Puck | wikidata: Q1248616 label (fr) | Seigneur, que ces mortels sont fous ! | published: François-Victor Hugo (1828–1873), Œuvres complètes de W. Shakespeare, Pagnerre, Paris, 1859–1866 (fr.wikisource.org transcription); Public domain: France (life + 70 years; translator died 1873) and United States (published before 1931); [source](https://fr.wikisource.org/wiki/Le_Songe_d%E2%80%99une_nuit_d%E2%80%99%C3%A9t%C3%A9_%28trad._Hugo%29?oldid=15966622) |
-| de | Puck | wikidata: Q1248616 label (de) | (none) | missing |
-| it | Puck | wikidata: Q1248616 label (it) | (none) | missing |
+| de | Puck | wikidata: Q1248616 label (de) | Herr, was für Narren diese Sterblichen sind! | NEW, unsourced: translated for the game, not reviewed |
+| it | Puck | wikidata: Q1248616 label (it) | Signore, che pazzi sono questi mortali! | NEW, unsourced: translated for the game, not reviewed |
 | pt | (none) | missing: Q1248616 has no label in pt and no pt.wikipedia.org article | Senhor, que tolos são estes mortais! | NEW, unsourced: translated for the game, not reviewed |
-| pl | (none) | missing: Q1248616 has no label in pl and no pl.wikipedia.org article | (none) | missing |
-| ru | Пак | wikidata: Q1248616 label (ru) | (none) | missing |
+| pl | (none) | missing: Q1248616 has no label in pl and no pl.wikipedia.org article | Panie, jacyż głupcy z tych śmiertelników! | NEW, unsourced: translated for the game, not reviewed |
+| ru | Пак | wikidata: Q1248616 label (ru) | Господи, как глупы эти смертные! | NEW, unsourced: translated for the game, not reviewed |
 | ar | (none) | missing: Q1248616 has no label in ar and no ar.wikipedia.org article | يا إلهي، ما أحمق هؤلاء البشر الفانين! | NEW, unsourced: translated for the game, not reviewed |
 | hi | (none) | missing: Q1248616 has no label in hi and no hi.wikipedia.org article | हे प्रभु, ये नश्वर लोग कितने मूर्ख हैं! | NEW, unsourced: translated for the game, not reviewed |
 | zh | 帕克 | wikidata: Q1248616 label (zh) | 天哪，这些凡人多么愚蠢！ | NEW, unsourced: translated for the game, not reviewed |
@@ -405,15 +418,15 @@ English line: "Come, sit thee down upon this flowery bed." (A Midsummer Night's 
 
 | Language | Name | Name source | Line | Line source |
 |---|---|---|---|---|
-| es | Titania | wikidata: Q2332221 label (es) | (none) | missing |
+| es | Titania | wikidata: Q2332221 label (es) | Ven, siéntate en este lecho florido. | NEW, unsourced: translated for the game, not reviewed |
 | fr | Titania | wikidata: Q2332221 label (fr) | Viens t’asseoir sur ce lit de fleurs, | published: François-Victor Hugo (1828–1873), Œuvres complètes de W. Shakespeare, Pagnerre, Paris, 1859–1866 (fr.wikisource.org transcription); Public domain: France (life + 70 years; translator died 1873) and United States (published before 1931); [source](https://fr.wikisource.org/wiki/Le_Songe_d%E2%80%99une_nuit_d%E2%80%99%C3%A9t%C3%A9_%28trad._Hugo%29?oldid=15966622) |
-| de | (none) | missing: Q2332221 has no label in de and no de.wikipedia.org article | (none) | missing |
-| it | Titania | wikidata: Q2332221 label (it) | (none) | missing |
+| de | (none) | missing: Q2332221 has no label in de and no de.wikipedia.org article | Komm, setz dich nieder auf dies Blumenbett. | NEW, unsourced: translated for the game, not reviewed |
+| it | Titania | wikidata: Q2332221 label (it) | Vieni, siediti su questo letto fiorito. | NEW, unsourced: translated for the game, not reviewed |
 | pt | Titania | wikidata: Q2332221 label (pt) | Vem, senta-te neste leito florido. | NEW, unsourced: translated for the game, not reviewed |
-| pl | (none) | missing: Q2332221 has no label in pl and no pl.wikipedia.org article | (none) | missing |
-| ru | Титания | wikidata: Q2332221 label (ru) | (none) | missing |
+| pl | (none) | missing: Q2332221 has no label in pl and no pl.wikipedia.org article | Chodź, usiądź na tym kwiecistym łożu. | NEW, unsourced: translated for the game, not reviewed |
+| ru | Титания | wikidata: Q2332221 label (ru) | Приди, сядь на это цветущее ложе. | NEW, unsourced: translated for the game, not reviewed |
 | ar | تيتانيا | wikidata: Q2332221 label (ar) | تعال واجلس على هذا السرير المزهر. | NEW, unsourced: translated for the game, not reviewed |
-| hi | टाइटेनिया | wikidata: Q2332221 label (hi) | आओ, इस फूलों की सेज पर बैठो। | NEW, unsourced: translated for the game, not reviewed |
+| hi | टाइटेनिया | wikidata: Q2332221 label (hi) | आओ, इस पुष्पों की सेज पर विराजो। | NEW, unsourced: translated for the game, not reviewed |
 | zh | 缇坦妮雅 | wikipedia: zh.wikipedia.org article title (Q2332221); "緹坦妮雅" converted to Simplified with OpenCC t2s | 来，在这铺满鲜花的床上坐下。 | NEW, unsourced: translated for the game, not reviewed |
 | ja | タイターニア | wikidata: Q2332221 label (ja) | さあ、この花の寝床にお座りなさい。 | NEW, unsourced: translated for the game, not reviewed |
 | ko | 티타니아 | wikidata: Q2332221 label (ko) | 자, 이 꽃 침대 위에 앉으세요. | NEW, unsourced: translated for the game, not reviewed |
@@ -427,13 +440,13 @@ English line: "Alas, poor Yorick! I knew him, Horatio." (Hamlet 5.1)
 
 | Language | Name | Name source | Line | Line source |
 |---|---|---|---|---|
-| es | La calavera de Yorick | translated: the game's own name, translated for the game | (none) | missing |
+| es | La calavera de Yorick | translated: the game's own name, translated for the game | ¡Ay, pobre Yorick! Yo lo conocí, Horacio. | NEW, unsourced: translated for the game, not reviewed |
 | fr | Le crâne de Yorick | translated: the game's own name, translated for the game | Hélas ! pauvre Yorick !… Je l’ai connu, Horatio ! | published: François-Victor Hugo (1828–1873), Œuvres complètes de W. Shakespeare, Pagnerre, Paris, 1859–1866 (fr.wikisource.org transcription); Public domain: France (life + 70 years; translator died 1873) and United States (published before 1931); [source](https://fr.wikisource.org/wiki/Le_second_Hamlet_%28trad._Hugo%29?oldid=15966629) |
-| de | Yoricks Schädel | translated: the game's own name, translated for the game | (none) | missing |
-| it | Il teschio di Yorick | translated: the game's own name, translated for the game | (none) | missing |
+| de | Yoricks Schädel | translated: the game's own name, translated for the game | Ach, armer Yorick! Ich kannte ihn, Horatio. | NEW, unsourced: translated for the game, not reviewed |
+| it | Il teschio di Yorick | translated: the game's own name, translated for the game | Ahimè, povero Yorick! Io lo conoscevo, Orazio. | NEW, unsourced: translated for the game, not reviewed |
 | pt | A caveira de Yorick | translated: the game's own name, translated for the game | Ai, pobre Yorick! Eu conheci-o, Horácio. | NEW, unsourced: translated for the game, not reviewed |
-| pl | Czaszka Yorika | translated: the game's own name, translated for the game | (none) | missing |
-| ru | Череп Йорика | translated: the game's own name, translated for the game | (none) | missing |
+| pl | Czaszka Yorika | translated: the game's own name, translated for the game | Ach, biedny Yoriku! Znałem go, Horacyo | published: Leon Ulrich (1811–1885), Dzieła dramatyczne Williama Shakespeare, Kraków, 1895 (pl.wikisource.org transcription); Public domain: Poland (life + 70 years; translator died 1885) and United States (published before 1931); [source](https://pl.wikisource.org/wiki/Hamlet_%28Shakespeare%2C_t%C5%82um._Ulrich%2C_1895%29/Akt_pi%C4%85ty?oldid=3257296) |
+| ru | Череп Йорика | translated: the game's own name, translated for the game | Увы, бедный Йорик! Я знал его, Горацио. | NEW, unsourced: translated for the game, not reviewed |
 | ar | جمجمة يوريك | translated: the game's own name, translated for the game | وا أسفاه، يوريك المسكين! لقد عرفته يا هوراشيو. | NEW, unsourced: translated for the game, not reviewed |
 | hi | योरिक की खोपड़ी | translated: the game's own name, translated for the game | हाय, बेचारा योरिक! मैं उसे जानता था, होरेशियो। | NEW, unsourced: translated for the game, not reviewed |
 | zh | 约里克的骷髅 | translated: the game's own name, translated for the game | 唉，可怜的约里克！我认识他，赫瑞修。 | NEW, unsourced: translated for the game, not reviewed |
@@ -449,15 +462,15 @@ English line: "Now my charms are all o'erthrown." (The Tempest, Epilogue)
 
 | Language | Name | Name source | Line | Line source |
 |---|---|---|---|---|
-| es | El báculo de Próspero | translated: the game's own name, translated for the game | (none) | missing |
+| es | El báculo de Próspero | translated: the game's own name, translated for the game | Ahora mis hechizos están todos deshechos. | NEW, unsourced: translated for the game, not reviewed |
 | fr | Le bâton de Prospero | translated: the game's own name, translated for the game | Maintenant, tous mes charmes sont détruits. | published: François-Victor Hugo (1828–1873), Œuvres complètes de W. Shakespeare, Pagnerre, Paris, 1859–1866 (fr.wikisource.org transcription); Public domain: France (life + 70 years; translator died 1873) and United States (published before 1931); [source](https://fr.wikisource.org/wiki/La_Temp%C3%AAte_%28Shakespeare%2C_trad._Hugo%29?oldid=15966548) |
-| de | Prosperos Stab | translated: the game's own name, translated for the game | (none) | missing |
-| it | Il bastone di Prospero | translated: the game's own name, translated for the game | (none) | missing |
+| de | Prosperos Stab | translated: the game's own name, translated for the game | Nun sind all meine Zauber dahin. | NEW, unsourced: translated for the game, not reviewed |
+| it | Il bastone di Prospero | translated: the game's own name, translated for the game | Ora i miei incanti sono tutti spezzati. | NEW, unsourced: translated for the game, not reviewed |
 | pt | O cajado de Prospero | translated: the game's own name, translated for the game | Agora os meus encantos estão todos desfeitos. | NEW, unsourced: translated for the game, not reviewed |
-| pl | Laska Prospera | translated: the game's own name, translated for the game | (none) | missing |
-| ru | Посох Просперо | translated: the game's own name, translated for the game | (none) | missing |
+| pl | Laska Prospera | translated: the game's own name, translated for the game | Teraz zniknęły wszystkie czary moje | published: Leon Ulrich (1811–1885), Dzieła dramatyczne Williama Shakespeare, Kraków, 1895 (pl.wikisource.org transcription); Public domain: Poland (life + 70 years; translator died 1885) and United States (published before 1931); [source](https://pl.wikisource.org/wiki/Burza_%28Shakespeare%2C_t%C5%82um._Ulrich%2C_1895%29/Epilog?oldid=3248992) |
+| ru | Посох Просперо | translated: the game's own name, translated for the game | Теперь все мои чары разрушены. | NEW, unsourced: translated for the game, not reviewed |
 | ar | عصا بروسبيرو | translated: the game's own name, translated for the game | الآن قد بطل سحري كله. | NEW, unsourced: translated for the game, not reviewed |
-| hi | प्रॉस्पेरो की छड़ी | translated: the game's own name, translated for the game | अब मेरे सारे जादू टूट चुके हैं। | NEW, unsourced: translated for the game, not reviewed |
+| hi | प्रॉस्पेरो की छड़ी | translated: the game's own name, translated for the game | अब मेरे सारे मंत्र टूट चुके हैं। | NEW, unsourced: translated for the game, not reviewed |
 | zh | 普洛斯彼罗的魔杖 | translated: the game's own name, translated for the game | 现在我的魔法已经全部破除。 | NEW, unsourced: translated for the game, not reviewed |
 | ja | プロスペロの杖 | translated: the game's own name, translated for the game | いまや私の魔法はすべて破れた。 | NEW, unsourced: translated for the game, not reviewed |
 | ko | 프로스페로의 지팡이 | translated: the game's own name, translated for the game | 이제 나의 마법은 모두 무너졌습니다. | NEW, unsourced: translated for the game, not reviewed |
@@ -471,13 +484,13 @@ English line: "The course of true love never did run smooth." (A Midsummer Night
 
 | Language | Name | Name source | Line | Line source |
 |---|---|---|---|---|
-| es | Filtro de amor | translated: the game's own name, translated for the game | (none) | missing |
+| es | Filtro de amor | translated: the game's own name, translated for the game | El curso del amor verdadero nunca fue sereno. | NEW, unsourced: translated for the game, not reviewed |
 | fr | Philtre d’amour | translated: the game's own name, translated for the game | l’amour vrai n’a jamais suivi un cours facile. | published: François-Victor Hugo (1828–1873), Œuvres complètes de W. Shakespeare, Pagnerre, Paris, 1859–1866 (fr.wikisource.org transcription); Public domain: France (life + 70 years; translator died 1873) and United States (published before 1931); [source](https://fr.wikisource.org/wiki/Le_Songe_d%E2%80%99une_nuit_d%E2%80%99%C3%A9t%C3%A9_%28trad._Hugo%29?oldid=15966622) |
-| de | Liebestrank | translated: the game's own name, translated for the game | (none) | missing |
-| it | Filtro d’amore | translated: the game's own name, translated for the game | (none) | missing |
+| de | Liebestrank | translated: the game's own name, translated for the game | Der Lauf der wahren Liebe ging noch niemals glatt. | NEW, unsourced: translated for the game, not reviewed |
+| it | Filtro d’amore | translated: the game's own name, translated for the game | Il corso del vero amore non fu mai liscio. | NEW, unsourced: translated for the game, not reviewed |
 | pt | Poção do amor | translated: the game's own name, translated for the game | O curso do verdadeiro amor nunca correu sereno. | NEW, unsourced: translated for the game, not reviewed |
-| pl | Napój miłosny | translated: the game's own name, translated for the game | (none) | missing |
-| ru | Любовное зелье | translated: the game's own name, translated for the game | (none) | missing |
+| pl | Napój miłosny | translated: the game's own name, translated for the game | Droga prawdziwej miłości nigdy nie była gładka. | NEW, unsourced: translated for the game, not reviewed |
+| ru | Любовное зелье | translated: the game's own name, translated for the game | Путь истинной любви никогда не был гладким. | NEW, unsourced: translated for the game, not reviewed |
 | ar | شراب الحب | translated: the game's own name, translated for the game | طريق الحب الصادق لم يكن يوماً ممهداً. | NEW, unsourced: translated for the game, not reviewed |
 | hi | प्रेम औषधि | translated: the game's own name, translated for the game | सच्चे प्रेम की राह कभी सीधी नहीं रही। | NEW, unsourced: translated for the game, not reviewed |
 | zh | 爱情魔药 | translated: the game's own name, translated for the game | 真爱的道路从来不曾平坦。 | NEW, unsourced: translated for the game, not reviewed |
@@ -493,13 +506,13 @@ English line: "Double, double toil and trouble." (Macbeth 4.1)
 
 | Language | Name | Name source | Line | Line source |
 |---|---|---|---|---|
-| es | Brebaje de las brujas | translated: the game's own name, translated for the game | (none) | missing |
+| es | Brebaje de las brujas | translated: the game's own name, translated for the game | Dobla, dobla, afán y tormento. | NEW, unsourced: translated for the game, not reviewed |
 | fr | Breuvage des sorcières | translated: the game's own name, translated for the game | Double, double, peine et trouble ! | published: François-Victor Hugo (1828–1873), Œuvres complètes de W. Shakespeare, Pagnerre, Paris, 1859–1866 (fr.wikisource.org transcription); Public domain: France (life + 70 years; translator died 1873) and United States (published before 1931); [source](https://fr.wikisource.org/wiki/Macbeth_%28trad._Hugo%29?oldid=15966804) |
-| de | Hexengebräu | translated: the game's own name, translated for the game | (none) | missing |
-| it | Intruglio delle streghe | translated: the game's own name, translated for the game | (none) | missing |
+| de | Hexengebräu | translated: the game's own name, translated for the game | Doppelt, doppelt Müh und Plage. | NEW, unsourced: translated for the game, not reviewed |
+| it | Intruglio delle streghe | translated: the game's own name, translated for the game | Doppio, doppio, fatica e travaglio. | NEW, unsourced: translated for the game, not reviewed |
 | pt | Caldo das bruxas | translated: the game's own name, translated for the game | Dobra, dobra, canseira e tormento. | NEW, unsourced: translated for the game, not reviewed |
-| pl | Wywar czarownic | translated: the game's own name, translated for the game | (none) | missing |
-| ru | Ведьмино варево | translated: the game's own name, translated for the game | (none) | missing |
+| pl | Wywar czarownic | translated: the game's own name, translated for the game | Podwój, podwój trud i znój. | NEW, unsourced: translated for the game, not reviewed |
+| ru | Ведьмино варево | translated: the game's own name, translated for the game | Вдвойне, вдвойне труд и беда. | NEW, unsourced: translated for the game, not reviewed |
 | ar | مرق الساحرات | translated: the game's own name, translated for the game | ضاعفوا، ضاعفوا الكد والعناء. | NEW, unsourced: translated for the game, not reviewed |
 | hi | चुड़ैलों का काढ़ा | translated: the game's own name, translated for the game | दुगुनी, दुगुनी मेहनत और मुसीबत। | NEW, unsourced: translated for the game, not reviewed |
 | zh | 女巫的汤药 | translated: the game's own name, translated for the game | 加倍，加倍，辛劳和烦恼。 | NEW, unsourced: translated for the game, not reviewed |
@@ -515,13 +528,13 @@ English line: "If ever you disturb our streets again, your lives shall pay the f
 
 | Language | Name | Name source | Line | Line source |
 |---|---|---|---|---|
-| es | (none) | missing: Q15829750 has no label in es and no es.wikipedia.org article | (none) | missing |
+| es | (none) | missing: Q15829750 has no label in es and no es.wikipedia.org article | Si alguna vez volvéis a perturbar nuestras calles, vuestras vidas pagarán el quebranto de la paz. | NEW, unsourced: translated for the game, not reviewed |
 | fr | (none) | missing: Q15829750 has no label in fr and no fr.wikipedia.org article | Si jamais vous troublez encore nos rues, — votre vie payera le dommage fait à la paix. | published: François-Victor Hugo (1828–1873), Œuvres complètes de W. Shakespeare, Pagnerre, Paris, 1859–1866 (fr.wikisource.org transcription); Public domain: France (life + 70 years; translator died 1873) and United States (published before 1931); [source](https://fr.wikisource.org/wiki/Rom%C3%A9o_et_Juliette_%28trad._Hugo%29?oldid=15966892) |
-| de | (none) | missing: Q15829750 has no label in de and no de.wikipedia.org article | (none) | missing |
-| it | (none) | missing: Q15829750 has no label in it and no it.wikipedia.org article | (none) | missing |
+| de | (none) | missing: Q15829750 has no label in de and no de.wikipedia.org article | Wenn ihr je wieder unsere Straßen stört, so zahlt euer Leben für den gebrochenen Frieden. | NEW, unsourced: translated for the game, not reviewed |
+| it | (none) | missing: Q15829750 has no label in it and no it.wikipedia.org article | Se mai turberete ancora le nostre strade, le vostre vite pagheranno la pace violata. | NEW, unsourced: translated for the game, not reviewed |
 | pt | (none) | missing: Q15829750 has no label in pt and no pt.wikipedia.org article | Se alguma vez voltardes a perturbar as nossas ruas, as vossas vidas pagarão a quebra da paz. | NEW, unsourced: translated for the game, not reviewed |
-| pl | (none) | missing: Q15829750 has no label in pl and no pl.wikipedia.org article | (none) | missing |
-| ru | герцог Эскал | wikidata: Q15829750 label (ru) | (none) | missing |
+| pl | (none) | missing: Q15829750 has no label in pl and no pl.wikipedia.org article | Jeśli jeszcze raz zakłócicie spokój naszych ulic, życiem zapłacicie za złamanie pokoju. | NEW, unsourced: translated for the game, not reviewed |
+| ru | герцог Эскал | wikidata: Q15829750 label (ru) | Если вы ещё раз нарушите покой наших улиц, вы заплатите жизнью за нарушенный мир. | NEW, unsourced: translated for the game, not reviewed |
 | ar | (none) | missing: Q15829750 has no label in ar and no ar.wikipedia.org article | إن عدتم يوماً إلى تعكير شوارعنا فستدفع حياتكم ثمن الإخلال بالسلام. | NEW, unsourced: translated for the game, not reviewed |
 | hi | (none) | missing: Q15829750 has no label in hi and no hi.wikipedia.org article | यदि तुमने फिर कभी हमारी गलियों की शांति भंग की, तो तुम्हारे प्राण उसका दंड भरेंगे। | NEW, unsourced: translated for the game, not reviewed |
 | zh | (none) | missing: Q15829750 has no label in zh and no zh.wikipedia.org article | 你们若再扰乱我们的街道，就要用性命抵偿破坏和平的罪过。 | NEW, unsourced: translated for the game, not reviewed |
@@ -537,13 +550,13 @@ English line: "These violent delights have violent ends." (Romeo and Juliet 2.6)
 
 | Language | Name | Name source | Line | Line source |
 |---|---|---|---|---|
-| es | Fray Lorenzo | wikidata: Q5503354 label (es) | (none) | missing |
+| es | Fray Lorenzo | wikidata: Q5503354 label (es) | Estos placeres violentos tienen finales violentos. | NEW, unsourced: translated for the game, not reviewed |
 | fr | (none) | missing: Q5503354 has no label in fr and no fr.wikipedia.org article | Ces joies violentes ont des fins violentes | published: François-Victor Hugo (1828–1873), Œuvres complètes de W. Shakespeare, Pagnerre, Paris, 1859–1866 (fr.wikisource.org transcription); Public domain: France (life + 70 years; translator died 1873) and United States (published before 1931); [source](https://fr.wikisource.org/wiki/Rom%C3%A9o_et_Juliette_%28trad._Hugo%29?oldid=15966892) |
-| de | Friar Laurence | wikidata: Q5503354 label (de) | (none) | missing |
-| it | Frate Lorenzo | wikidata: Q5503354 label (it) | (none) | missing |
+| de | Friar Laurence | wikidata: Q5503354 label (de) | So wilde Freude nimmt ein wildes Ende | published: August Wilhelm Schlegel (1767–1845), Romeo und Julia, 1797 (de.wikisource.org transcription); Public domain: Germany (life + 70 years; translator died 1845) and United States (published before 1931); [source](https://de.wikisource.org/wiki/Romeo_und_Julia_%28%C3%9Cbersetzung_Schlegel%29/Zweiter_Aufzug?oldid=1730815) |
+| it | Frate Lorenzo | wikidata: Q5503354 label (it) | Queste gioie violente hanno fini violente. | NEW, unsourced: translated for the game, not reviewed |
 | pt | (none) | missing: Q5503354 has no label in pt and no pt.wikipedia.org article | Estes prazeres violentos têm fins violentos. | NEW, unsourced: translated for the game, not reviewed |
-| pl | (none) | missing: Q5503354 has no label in pl and no pl.wikipedia.org article | (none) | missing |
-| ru | отец Лоренцо | wikidata: Q5503354 label (ru) | (none) | missing |
+| pl | (none) | missing: Q5503354 has no label in pl and no pl.wikipedia.org article | Gwałtowna rozkosz gwałtownie się kończy | published: Leon Ulrich (1811–1885), Dzieła dramatyczne Williama Shakespeare, Kraków, 1895 (pl.wikisource.org transcription); Public domain: Poland (life + 70 years; translator died 1885) and United States (published before 1931); [source](https://pl.wikisource.org/wiki/Romeo_i_Julia_%28Shakespeare%2C_t%C5%82um._Ulrich%2C_1895%29/Akt_drugi?oldid=3285360) |
+| ru | отец Лоренцо | wikidata: Q5503354 label (ru) | У этих бурных радостей бурный конец. | NEW, unsourced: translated for the game, not reviewed |
 | ar | (none) | missing: Q5503354 has no label in ar and no ar.wikipedia.org article | هذه المسرات العنيفة لها نهايات عنيفة. | NEW, unsourced: translated for the game, not reviewed |
 | hi | (none) | missing: Q5503354 has no label in hi and no hi.wikipedia.org article | इन उग्र आनंदों का अंत भी उग्र होता है। | NEW, unsourced: translated for the game, not reviewed |
 | zh | 劳伦斯神父 | wikidata: Q5503354 label (zh); "勞倫斯神父" converted to Simplified with OpenCC t2s | 这些狂暴的欢乐必有狂暴的结局。 | NEW, unsourced: translated for the game, not reviewed |
@@ -559,13 +572,13 @@ English line: "I am the drudge and toil in your delight." (Romeo and Juliet 2.5)
 
 | Language | Name | Name source | Line | Line source |
 |---|---|---|---|---|
-| es | Nodriza de Julieta | wikidata: Q7070187 label (es) | (none) | missing |
+| es | Nodriza de Julieta | wikidata: Q7070187 label (es) | Yo soy la esclava que se afana por tu deleite. | NEW, unsourced: translated for the game, not reviewed |
 | fr | Infirmière | wikidata: Q7070187 label (fr) | C’est moi qui suis la bête de somme, et je m’épuise pour votre plaisir | published: François-Victor Hugo (1828–1873), Œuvres complètes de W. Shakespeare, Pagnerre, Paris, 1859–1866 (fr.wikisource.org transcription); Public domain: France (life + 70 years; translator died 1873) and United States (published before 1931); [source](https://fr.wikisource.org/wiki/Rom%C3%A9o_et_Juliette_%28trad._Hugo%29?oldid=15966892) |
-| de | Wärterin | wikidata: Q7070187 label (de) | (none) | missing |
-| it | (none) | missing: Q7070187 has no label in it and no it.wikipedia.org article | (none) | missing |
+| de | Wärterin | wikidata: Q7070187 label (de) | Ich bin die Magd und plage mich für Eure Lust. | NEW, unsourced: translated for the game, not reviewed |
+| it | (none) | missing: Q7070187 has no label in it and no it.wikipedia.org article | Io sono la serva che fatica per il tuo piacere. | NEW, unsourced: translated for the game, not reviewed |
 | pt | (none) | missing: Q7070187 has no label in pt and no pt.wikipedia.org article | Sou eu a escrava que se cansa pelo vosso deleite. | NEW, unsourced: translated for the game, not reviewed |
-| pl | (none) | missing: Q7070187 has no label in pl and no pl.wikipedia.org article | (none) | missing |
-| ru | Кормилица | wikidata: Q7070187 label (ru) | (none) | missing |
+| pl | (none) | missing: Q7070187 has no label in pl and no pl.wikipedia.org article | Jestem wyrobnicą i trudzę się dla twojej rozkoszy. | NEW, unsourced: translated for the game, not reviewed |
+| ru | Кормилица | wikidata: Q7070187 label (ru) | Я работница и тружусь ради твоей радости. | NEW, unsourced: translated for the game, not reviewed |
 | ar | (none) | missing: Q7070187 has no label in ar and no ar.wikipedia.org article | أنا الخادمة الكادحة التي تتعب من أجل سروركِ. | NEW, unsourced: translated for the game, not reviewed |
 | hi | (none) | missing: Q7070187 has no label in hi and no hi.wikipedia.org article | मैं तो दासी हूँ, तुम्हारी खुशी के लिए खटती हूँ। | NEW, unsourced: translated for the game, not reviewed |
 | zh | 护士 | wikidata: Q7070187 label (zh); "護士" converted to Simplified with OpenCC t2s | 我是个苦工，为了您的快乐而奔忙。 | NEW, unsourced: translated for the game, not reviewed |
@@ -581,13 +594,13 @@ English line: "We are such stuff as dreams are made on." (The Tempest 4.1)
 
 | Language | Name | Name source | Line | Line source |
 |---|---|---|---|---|
-| es | Próspero | wikidata: Q978952 label (es) | (none) | missing |
+| es | Próspero | wikidata: Q978952 label (es) | Estamos hechos de la misma materia que los sueños. | NEW, unsourced: translated for the game, not reviewed |
 | fr | Prospero | wikidata: Q978952 label (fr) | Nous sommes de l’étoffe — dont sont faits les rêves | published: François-Victor Hugo (1828–1873), Œuvres complètes de W. Shakespeare, Pagnerre, Paris, 1859–1866 (fr.wikisource.org transcription); Public domain: France (life + 70 years; translator died 1873) and United States (published before 1931); [source](https://fr.wikisource.org/wiki/La_Temp%C3%AAte_%28Shakespeare%2C_trad._Hugo%29?oldid=15966548) |
-| de | Prospero | wikidata: Q978952 label (de) | (none) | missing |
-| it | Prospero | wikidata: Q978952 label (it) | (none) | missing |
+| de | Prospero | wikidata: Q978952 label (de) | Wir sind aus solchem Stoff, aus dem die Träume sind. | NEW, unsourced: translated for the game, not reviewed |
+| it | Prospero | wikidata: Q978952 label (it) | Siamo fatti della stessa sostanza di cui sono fatti i sogni. | NEW, unsourced: translated for the game, not reviewed |
 | pt | Prospero | wikidata: Q978952 label (pt) | Somos feitos da matéria de que são feitos os sonhos. | NEW, unsourced: translated for the game, not reviewed |
-| pl | Prospero | wikidata: Q978952 label (pl) | (none) | missing |
-| ru | Просперо | wikidata: Q978952 label (ru) | (none) | missing |
+| pl | Prospero | wikidata: Q978952 label (pl) | Jesteśmy z tej samej materii, z której zrobione są sny. | NEW, unsourced: translated for the game, not reviewed |
+| ru | Просперо | wikidata: Q978952 label (ru) | Мы созданы из того же вещества, что и сны. | NEW, unsourced: translated for the game, not reviewed |
 | ar | بروسبيرو | wikidata: Q978952 label (ar) | نحن من المادة نفسها التي تصنع منها الأحلام. | NEW, unsourced: translated for the game, not reviewed |
 | hi | प्रॉस्पेरो | wikidata: Q978952 label (hi) | हम उसी पदार्थ के बने हैं जिससे सपने बनते हैं। | NEW, unsourced: translated for the game, not reviewed |
 | zh | 普洛斯彼罗 | wikidata: Q978952 label (zh); "普洛斯彼羅" converted to Simplified with OpenCC t2s | 我们都是构成梦幻的材料。 | NEW, unsourced: translated for the game, not reviewed |
@@ -603,13 +616,13 @@ English line: "All hail, great master! Grave sir, hail!" (The Tempest 1.2)
 
 | Language | Name | Name source | Line | Line source |
 |---|---|---|---|---|
-| es | Ariel | wikidata: Q658028 label (es) | (none) | missing |
+| es | Ariel | wikidata: Q658028 label (es) | ¡Salve, gran amo! ¡Grave señor, salve! | NEW, unsourced: translated for the game, not reviewed |
 | fr | Ariel | wikidata: Q658028 label (fr) | Salut, grand maître ! grave seigneur, salut ! | published: François-Victor Hugo (1828–1873), Œuvres complètes de W. Shakespeare, Pagnerre, Paris, 1859–1866 (fr.wikisource.org transcription); Public domain: France (life + 70 years; translator died 1873) and United States (published before 1931); [source](https://fr.wikisource.org/wiki/La_Temp%C3%AAte_%28Shakespeare%2C_trad._Hugo%29?oldid=15966548) |
-| de | Ariel | wikidata: Q658028 label (de) | (none) | missing |
-| it | Ariel | wikidata: Q658028 label (it) | (none) | missing |
+| de | Ariel | wikidata: Q658028 label (de) | Heil dir, großer Meister! Würdiger Herr, Heil! | NEW, unsourced: translated for the game, not reviewed |
+| it | Ariel | wikidata: Q658028 label (it) | Salve, grande padrone! Grave signore, salve! | NEW, unsourced: translated for the game, not reviewed |
 | pt | Ariel | wikidata: Q658028 label (pt) | Salve, grande amo! Grave senhor, salve! | NEW, unsourced: translated for the game, not reviewed |
-| pl | Ariel | wikidata: Q658028 label (pl) | (none) | missing |
-| ru | Ариэль | wikidata: Q658028 label (ru) | (none) | missing |
+| pl | Ariel | wikidata: Q658028 label (pl) | Witaj, wielki mistrzu! Czcigodny panie, witaj! | NEW, unsourced: translated for the game, not reviewed |
+| ru | Ариэль | wikidata: Q658028 label (ru) | Привет тебе, великий господин! Почтенный повелитель, привет! | NEW, unsourced: translated for the game, not reviewed |
 | ar | أرييل | wikidata: Q658028 label (ar) | سلام عليك أيها السيد العظيم! أيها السيد الوقور، سلام! | NEW, unsourced: translated for the game, not reviewed |
 | hi | (none) | missing: Q658028 has no label in hi and no hi.wikipedia.org article | जय हो, महान स्वामी! गंभीर महोदय, जय हो! | NEW, unsourced: translated for the game, not reviewed |
 | zh | (none) | missing: Q658028 has no label in zh and no zh.wikipedia.org article | 万福，伟大的主人！尊严的先生，万福！ | NEW, unsourced: translated for the game, not reviewed |
@@ -625,13 +638,13 @@ English line: "This island's mine, by Sycorax my mother." (The Tempest 1.2)
 
 | Language | Name | Name source | Line | Line source |
 |---|---|---|---|---|
-| es | Calibán | wikidata: Q533120 label (es) | (none) | missing |
+| es | Calibán | wikidata: Q533120 label (es) | Esta isla es mía, por Sycorax, mi madre. | NEW, unsourced: translated for the game, not reviewed |
 | fr | Caliban | wikidata: Q533120 label (fr) | Cette île est à moi par Sycorax ma mère | published: François-Victor Hugo (1828–1873), Œuvres complètes de W. Shakespeare, Pagnerre, Paris, 1859–1866 (fr.wikisource.org transcription); Public domain: France (life + 70 years; translator died 1873) and United States (published before 1931); [source](https://fr.wikisource.org/wiki/La_Temp%C3%AAte_%28Shakespeare%2C_trad._Hugo%29?oldid=15966548) |
-| de | Caliban | wikidata: Q533120 label (de) | (none) | missing |
-| it | Calibano | wikidata: Q533120 label (it) | (none) | missing |
+| de | Caliban | wikidata: Q533120 label (de) | Diese Insel ist mein, von Sycorax, meiner Mutter. | NEW, unsourced: translated for the game, not reviewed |
+| it | Calibano | wikidata: Q533120 label (it) | Quest’isola è mia, per via di Sycorax, mia madre. | NEW, unsourced: translated for the game, not reviewed |
 | pt | Caliban | wikidata: Q533120 label (pt) | Esta ilha é minha, por Sycorax, minha mãe. | NEW, unsourced: translated for the game, not reviewed |
-| pl | (none) | missing: Q533120 has no label in pl and no pl.wikipedia.org article | (none) | missing |
-| ru | Калибан | wikidata: Q533120 label (ru) | (none) | missing |
+| pl | (none) | missing: Q533120 has no label in pl and no pl.wikipedia.org article | Ta wyspa jest moja, po Sykoraks, mojej matce. | NEW, unsourced: translated for the game, not reviewed |
+| ru | Калибан | wikidata: Q533120 label (ru) | Этот остров мой, он достался мне от Сикораксы, моей матери. | NEW, unsourced: translated for the game, not reviewed |
 | ar | (none) | missing: Q533120 has no label in ar and no ar.wikipedia.org article | هذه الجزيرة لي، ورثتها عن أمي سيكوراكس. | NEW, unsourced: translated for the game, not reviewed |
 | hi | (none) | missing: Q533120 has no label in hi and no hi.wikipedia.org article | यह द्वीप मेरा है, मेरी माँ सिकोरैक्स से मिला। | NEW, unsourced: translated for the game, not reviewed |
 | zh | 凯列班 | wikidata: Q533120 label (zh); "凱列班" converted to Simplified with OpenCC t2s | 这岛是我的，是我母亲西考拉克斯传给我的。 | NEW, unsourced: translated for the game, not reviewed |
@@ -647,13 +660,13 @@ English line: "I do but keep the peace. Put up thy sword." (Romeo and Juliet 1.1
 
 | Language | Name | Name source | Line | Line source |
 |---|---|---|---|---|
-| es | Benvolio | wikidata: Q939489 label (es) | (none) | missing |
+| es | Benvolio | wikidata: Q939489 label (es) | Yo solo mantengo la paz. Envaina tu espada. | NEW, unsourced: translated for the game, not reviewed |
 | fr | Benvolio | wikidata: Q939489 label (fr) | Je ne veux ici que maintenir la paix ; rengaine ton épée, | published: François-Victor Hugo (1828–1873), Œuvres complètes de W. Shakespeare, Pagnerre, Paris, 1859–1866 (fr.wikisource.org transcription); Public domain: France (life + 70 years; translator died 1873) and United States (published before 1931); [source](https://fr.wikisource.org/wiki/Rom%C3%A9o_et_Juliette_%28trad._Hugo%29?oldid=15966892) |
-| de | Benvolio | wikidata: Q939489 label (de) | (none) | missing |
-| it | Benvolio | wikidata: Q939489 label (it) | (none) | missing |
+| de | Benvolio | wikidata: Q939489 label (de) | Ich stifte Frieden: steck’ dein Schwert nur ein | published: August Wilhelm Schlegel (1767–1845), Romeo und Julia, 1797 (de.wikisource.org transcription); Public domain: Germany (life + 70 years; translator died 1845) and United States (published before 1931); [source](https://de.wikisource.org/wiki/Romeo_und_Julia_%28%C3%9Cbersetzung_Schlegel%29/Erster_Aufzug?oldid=4062133) |
+| it | Benvolio | wikidata: Q939489 label (it) | Io non faccio che mantenere la pace. Rinfodera la spada. | NEW, unsourced: translated for the game, not reviewed |
 | pt | (none) | missing: Q939489 has no label in pt and no pt.wikipedia.org article | Eu apenas mantenho a paz. Guarda a tua espada. | NEW, unsourced: translated for the game, not reviewed |
-| pl | Benvolio | wikidata: Q939489 label (pl) | (none) | missing |
-| ru | Бенволио | wikidata: Q939489 label (ru) | (none) | missing |
+| pl | Benvolio | wikidata: Q939489 label (pl) | Ja tylko strzegę pokoju. Schowaj swój miecz. | NEW, unsourced: translated for the game, not reviewed |
+| ru | Бенволио | wikidata: Q939489 label (ru) | Я только охраняю мир. Вложи свой меч в ножны. | NEW, unsourced: translated for the game, not reviewed |
 | ar | بنفوليو | wikidata: Q939489 label (ar) | إنما أحفظ السلام. أغمد سيفك. | NEW, unsourced: translated for the game, not reviewed |
 | hi | बेनवोलियो | wikidata: Q939489 label (hi) | मैं तो बस शांति बनाए रख रहा हूँ। अपनी तलवार म्यान में रखो। | NEW, unsourced: translated for the game, not reviewed |
 | zh | 班福留 | wikidata: Q939489 label (zh) | 我只是在维持和平。收起你的剑。 | NEW, unsourced: translated for the game, not reviewed |
@@ -669,13 +682,13 @@ English line: "What, drawn, and talk of peace? I hate the word." (Romeo and Juli
 
 | Language | Name | Name source | Line | Line source |
 |---|---|---|---|---|
-| es | Teobaldo | wikidata: Q2412073 label (es) | (none) | missing |
+| es | Teobaldo | wikidata: Q2412073 label (es) | ¿Qué, espada en mano y hablas de paz? Odio esa palabra. | NEW, unsourced: translated for the game, not reviewed |
 | fr | Tybalt | wikidata: Q2412073 label (mul, the default for every language) | Quoi, l’épée à la main, tu parles de paix ! Ce mot, je le hais | published: François-Victor Hugo (1828–1873), Œuvres complètes de W. Shakespeare, Pagnerre, Paris, 1859–1866 (fr.wikisource.org transcription); Public domain: France (life + 70 years; translator died 1873) and United States (published before 1931); [source](https://fr.wikisource.org/wiki/Rom%C3%A9o_et_Juliette_%28trad._Hugo%29?oldid=15966892) |
-| de | Tybalt | wikidata: Q2412073 label (de) | (none) | missing |
-| it | Tebaldo | wikidata: Q2412073 label (it) | (none) | missing |
+| de | Tybalt | wikidata: Q2412073 label (de) | Was, mit gezogenem Schwert sprichst du von Frieden? Ich hasse das Wort. | NEW, unsourced: translated for the game, not reviewed |
+| it | Tebaldo | wikidata: Q2412073 label (it) | Come, con la spada in pugno parli di pace? Odio questa parola. | NEW, unsourced: translated for the game, not reviewed |
 | pt | Tybalt | wikidata: Q2412073 label (mul, the default for every language) | Quê, de espada na mão e falas de paz? Odeio essa palavra. | NEW, unsourced: translated for the game, not reviewed |
-| pl | Tybalt | wikidata: Q2412073 label (pl) | (none) | missing |
-| ru | Тибальт | wikidata: Q2412073 label (ru) | (none) | missing |
+| pl | Tybalt | wikidata: Q2412073 label (pl) | Co, z dobytym mieczem mówisz o pokoju? Nienawidzę tego słowa. | NEW, unsourced: translated for the game, not reviewed |
+| ru | Тибальт | wikidata: Q2412073 label (ru) | Как, с обнажённым мечом ты говоришь о мире? Я ненавижу это слово. | NEW, unsourced: translated for the game, not reviewed |
 | ar | تيبالت | wikidata: Q2412073 label (ar) | ماذا، سيفك مسلول وتتحدث عن السلام؟ إني أكره هذه الكلمة. | NEW, unsourced: translated for the game, not reviewed |
 | hi | टाइबल्ट | wikidata: Q2412073 label (hi) | क्या, तलवार खींचकर शांति की बात? मुझे इस शब्द से घृणा है। | NEW, unsourced: translated for the game, not reviewed |
 | zh | 提伯尔特 | wikidata: Q2412073 label (zh); "提伯爾特" converted to Simplified with OpenCC t2s | 什么，拔出了剑还谈和平？我痛恨这个字眼。 | NEW, unsourced: translated for the game, not reviewed |
@@ -691,13 +704,13 @@ English line: "My words fly up, my thoughts remain below." (Hamlet 3.3)
 
 | Language | Name | Name source | Line | Line source |
 |---|---|---|---|---|
-| es | Rey Claudio | wikidata: Q1811294 label (es) | (none) | missing |
+| es | Rey Claudio | wikidata: Q1811294 label (es) | Mis palabras vuelan a lo alto, mis pensamientos quedan abajo. | NEW, unsourced: translated for the game, not reviewed |
 | fr | Claudius | wikidata: Q1811294 label (fr) | Mes paroles s’envolent ; mes pensées restent en bas. | published: François-Victor Hugo (1828–1873), Œuvres complètes de W. Shakespeare, Pagnerre, Paris, 1859–1866 (fr.wikisource.org transcription); Public domain: France (life + 70 years; translator died 1873) and United States (published before 1931); [source](https://fr.wikisource.org/wiki/Le_second_Hamlet_%28trad._Hugo%29?oldid=15966629) |
-| de | König Claudius | wikidata: Q1811294 label (de) | (none) | missing |
-| it | Re Claudio | wikidata: Q1811294 label (it) | (none) | missing |
+| de | König Claudius | wikidata: Q1811294 label (de) | Meine Worte fliegen auf, meine Gedanken bleiben unten. | NEW, unsourced: translated for the game, not reviewed |
+| it | Re Claudio | wikidata: Q1811294 label (it) | Le mie parole volano in alto, i miei pensieri restano in basso. | NEW, unsourced: translated for the game, not reviewed |
 | pt | (none) | missing: Q1811294 has no label in pt and no pt.wikipedia.org article | As minhas palavras voam para o alto, os meus pensamentos ficam cá em baixo. | NEW, unsourced: translated for the game, not reviewed |
-| pl | Król Klaudiusz | wikidata: Q1811294 label (pl) | (none) | missing |
-| ru | Король Клавдий | wikidata: Q1811294 label (ru) | (none) | missing |
+| pl | Król Klaudiusz | wikidata: Q1811294 label (pl) | Moje słowa ulatują w górę, moje myśli zostają w dole. | NEW, unsourced: translated for the game, not reviewed |
+| ru | Король Клавдий | wikidata: Q1811294 label (ru) | Слова на небе, мысли на земле! | published: Пётр Гнедич (1855–1925), «Гамлет, принц датский», издание 1917 года (первое 1892) (ru.wikisource.org transcription, modern orthography); Public domain: Russia (life + 70 years; translator died 1925) and United States (published before 1931); [source](https://ru.wikisource.org/wiki/%D0%93%D0%B0%D0%BC%D0%BB%D0%B5%D1%82%2C_%D0%BF%D1%80%D0%B8%D0%BD%D1%86_%D0%B4%D0%B0%D1%82%D1%81%D0%BA%D0%B8%D0%B9_%28%D0%A8%D0%B5%D0%BA%D1%81%D0%BF%D0%B8%D1%80%3B_%D0%93%D0%BD%D0%B5%D0%B4%D0%B8%D1%87%29/1917_%28%D0%A1%D0%9E%29?oldid=5657806) |
 | ar | الملك كلوديس | wikidata: Q1811294 label (ar) | كلماتي تطير إلى الأعلى، وأفكاري تبقى في الأسفل. | NEW, unsourced: translated for the game, not reviewed |
 | hi | किंग क्लॉडियस | wikidata: Q1811294 label (hi) | मेरे शब्द ऊपर उड़ते हैं, मेरे विचार नीचे रह जाते हैं। | NEW, unsourced: translated for the game, not reviewed |
 | zh | 克劳迪国王 | wikidata: Q1811294 label (zh); "克勞迪國王" converted to Simplified with OpenCC t2s | 我的言语飞上天去，我的思想却留在地下。 | NEW, unsourced: translated for the game, not reviewed |
@@ -713,13 +726,13 @@ English line: "Ill met by moonlight, proud Titania." (A Midsummer Night's Dream 
 
 | Language | Name | Name source | Line | Line source |
 |---|---|---|---|---|
-| es | Oberón | wikidata: Q1139234 label (es) | (none) | missing |
+| es | Oberón | wikidata: Q1139234 label (es) | Mal encuentro a la luz de la luna, orgullosa Titania. | NEW, unsourced: translated for the game, not reviewed |
 | fr | Obéron | wikidata: Q1139234 label (fr) | Fâcheuse rencontre au clair de lune, fière Titania ! | published: François-Victor Hugo (1828–1873), Œuvres complètes de W. Shakespeare, Pagnerre, Paris, 1859–1866 (fr.wikisource.org transcription); Public domain: France (life + 70 years; translator died 1873) and United States (published before 1931); [source](https://fr.wikisource.org/wiki/Le_Songe_d%E2%80%99une_nuit_d%E2%80%99%C3%A9t%C3%A9_%28trad._Hugo%29?oldid=15966622) |
-| de | Oberon | wikidata: Q1139234 label (de) | (none) | missing |
-| it | Oberon | wikidata: Q1139234 label (it) | (none) | missing |
+| de | Oberon | wikidata: Q1139234 label (de) | Schlimm getroffen im Mondlicht, stolze Titania. | NEW, unsourced: translated for the game, not reviewed |
+| it | Oberon | wikidata: Q1139234 label (it) | Malaugurato incontro al chiaro di luna, superba Titania. | NEW, unsourced: translated for the game, not reviewed |
 | pt | Oberon | wikidata: Q1139234 label (pt) | Mau encontro ao luar, orgulhosa Titania. | NEW, unsourced: translated for the game, not reviewed |
-| pl | (none) | missing: Q1139234 has no label in pl and no pl.wikipedia.org article | (none) | missing |
-| ru | Оберон | wikidata: Q1139234 label (ru) | (none) | missing |
+| pl | (none) | missing: Q1139234 has no label in pl and no pl.wikipedia.org article | Złe to spotkanie przy księżycu, dumna Tytanio. | NEW, unsourced: translated for the game, not reviewed |
+| ru | Оберон | wikidata: Q1139234 label (ru) | Недобрая встреча при лунном свете, гордая Титания. | NEW, unsourced: translated for the game, not reviewed |
 | ar | (none) | missing: Q1139234 has no label in ar and no ar.wikipedia.org article | لقاء مشؤوم في ضوء القمر، يا تيتانيا المتكبرة. | NEW, unsourced: translated for the game, not reviewed |
 | hi | (none) | missing: Q1139234 has no label in hi and no hi.wikipedia.org article | चाँदनी में यह भेंट अशुभ है, घमंडी टाइटेनिया। | NEW, unsourced: translated for the game, not reviewed |
 | zh | 奥伯伦 | wikidata: Q1139234 label (zh) | 月光下相遇真是不巧，骄傲的提泰妮娅。 | NEW, unsourced: translated for the game, not reviewed |
@@ -735,13 +748,13 @@ English line: "Is this a dagger which I see before me?" (Macbeth 2.1)
 
 | Language | Name | Name source | Line | Line source |
 |---|---|---|---|---|
-| es | La daga de la mente | translated: the game's own name, translated for the game | (none) | missing |
+| es | La daga de la mente | translated: the game's own name, translated for the game | ¿Es un puñal esto que veo ante mí? | NEW, unsourced: translated for the game, not reviewed |
 | fr | Le poignard de l’esprit | translated: the game's own name, translated for the game | Est-ce un poignard que je vois là devant moi, — la poignée vers ma main ? | published: François-Victor Hugo (1828–1873), Œuvres complètes de W. Shakespeare, Pagnerre, Paris, 1859–1866 (fr.wikisource.org transcription); Public domain: France (life + 70 years; translator died 1873) and United States (published before 1931); [source](https://fr.wikisource.org/wiki/Macbeth_%28trad._Hugo%29?oldid=15966804) |
-| de | Dolch der Einbildung | translated: the game's own name, translated for the game | (none) | missing |
-| it | Il pugnale della mente | translated: the game's own name, translated for the game | (none) | missing |
+| de | Dolch der Einbildung | translated: the game's own name, translated for the game | Ist das ein Dolch, was ich vor mir erblicke? | NEW, unsourced: translated for the game, not reviewed |
+| it | Il pugnale della mente | translated: the game's own name, translated for the game | È un pugnale questo che vedo davanti a me? | NEW, unsourced: translated for the game, not reviewed |
 | pt | O punhal da mente | translated: the game's own name, translated for the game | É um punhal isto que vejo diante de mim? | NEW, unsourced: translated for the game, not reviewed |
-| pl | Sztylet umysłu | translated: the game's own name, translated for the game | (none) | missing |
-| ru | Кинжал воображения | translated: the game's own name, translated for the game | (none) | missing |
+| pl | Sztylet umysłu | translated: the game's own name, translated for the game | Czy to sztylet widzę przed sobą? | NEW, unsourced: translated for the game, not reviewed |
+| ru | Кинжал воображения | translated: the game's own name, translated for the game | Кинжал ли это, что я вижу перед собой? | NEW, unsourced: translated for the game, not reviewed |
 | ar | خنجر الخيال | translated: the game's own name, translated for the game | أهذا خنجر الذي أراه أمامي؟ | NEW, unsourced: translated for the game, not reviewed |
 | hi | मन का खंजर | translated: the game's own name, translated for the game | क्या यह खंजर है जो मैं अपने सामने देखता हूँ? | NEW, unsourced: translated for the game, not reviewed |
 | zh | 心中的匕首 | translated: the game's own name, translated for the game | 在我面前的是一把匕首吗？ | NEW, unsourced: translated for the game, not reviewed |
@@ -757,13 +770,13 @@ English line: "I'll put a girdle round about the earth in forty minutes." (A Mid
 
 | Language | Name | Name source | Line | Line source |
 |---|---|---|---|---|
-| es | Jugo de la flor de Puck | translated: the game's own name, translated for the game | (none) | missing |
+| es | Jugo de la flor de Puck | translated: the game's own name, translated for the game | Pondré un cinturón alrededor de la tierra en cuarenta minutos. | NEW, unsourced: translated for the game, not reviewed |
 | fr | Suc de la fleur de Puck | translated: the game's own name, translated for the game | Je puis faire une ceinture autour de la terre — en quarante minutes. | published: François-Victor Hugo (1828–1873), Œuvres complètes de W. Shakespeare, Pagnerre, Paris, 1859–1866 (fr.wikisource.org transcription); Public domain: France (life + 70 years; translator died 1873) and United States (published before 1931); [source](https://fr.wikisource.org/wiki/Le_Songe_d%E2%80%99une_nuit_d%E2%80%99%C3%A9t%C3%A9_%28trad._Hugo%29?oldid=15966622) |
-| de | Pucks Blumensaft | translated: the game's own name, translated for the game | (none) | missing |
-| it | Succo del fiore di Puck | translated: the game's own name, translated for the game | (none) | missing |
+| de | Pucks Blumensaft | translated: the game's own name, translated for the game | Ich lege einen Gürtel um die Erde in vierzig Minuten. | NEW, unsourced: translated for the game, not reviewed |
+| it | Succo del fiore di Puck | translated: the game's own name, translated for the game | Metterò una cintura intorno alla terra in quaranta minuti. | NEW, unsourced: translated for the game, not reviewed |
 | pt | Sumo da flor de Puck | translated: the game's own name, translated for the game | Porei um cinto em volta da terra em quarenta minutos. | NEW, unsourced: translated for the game, not reviewed |
-| pl | Sok z kwiatu Puka | translated: the game's own name, translated for the game | (none) | missing |
-| ru | Сок цветка Пака | translated: the game's own name, translated for the game | (none) | missing |
+| pl | Sok z kwiatu Puka | translated: the game's own name, translated for the game | W czterdzieści minut okołuję ziemię | published: Leon Ulrich (1811–1885), Dzieła dramatyczne Williama Shakespeare, Kraków, 1895 (pl.wikisource.org transcription); Public domain: Poland (life + 70 years; translator died 1885) and United States (published before 1931); [source](https://pl.wikisource.org/wiki/Sen_nocy_letniej_%28Shakespeare%2C_t%C5%82um._Ulrich%2C_1895%29/Akt_drugi?oldid=3286441) |
+| ru | Сок цветка Пака | translated: the game's own name, translated for the game | Я опояшу землю за сорок минут. | NEW, unsourced: translated for the game, not reviewed |
 | ar | عصير زهرة باك | translated: the game's own name, translated for the game | سأضع حزاماً حول الأرض في أربعين دقيقة. | NEW, unsourced: translated for the game, not reviewed |
 | hi | पक के फूल का रस | translated: the game's own name, translated for the game | मैं चालीस मिनट में धरती के चारों ओर पट्टा बाँध दूँगा। | NEW, unsourced: translated for the game, not reviewed |
 | zh | 帕克的花汁 | translated: the game's own name, translated for the game | 我要在四十分钟内给地球围上一条腰带。 | NEW, unsourced: translated for the game, not reviewed |
@@ -779,13 +792,13 @@ English line: "I dare do all that may become a man; who dares do more is none." 
 
 | Language | Name | Name source | Line | Line source |
 |---|---|---|---|---|
-| es | Macbeth | wikidata: Q10322723 label (es) | (none) | missing |
+| es | Macbeth | wikidata: Q10322723 label (es) | Me atrevo a todo lo que conviene a un hombre; quien se atreve a más no lo es. | NEW, unsourced: translated for the game, not reviewed |
 | fr | Macbeth | wikidata: Q10322723 label (fr) | J’ose tout ce qui sied à un homme ; — qui ose au delà n’en est plus un. | published: François-Victor Hugo (1828–1873), Œuvres complètes de W. Shakespeare, Pagnerre, Paris, 1859–1866 (fr.wikisource.org transcription); Public domain: France (life + 70 years; translator died 1873) and United States (published before 1931); [source](https://fr.wikisource.org/wiki/Macbeth_%28trad._Hugo%29?oldid=15966804) |
-| de | Macbeth | wikidata: Q10322723 label (de) | (none) | missing |
-| it | Macbeth | wikidata: Q10322723 label (it) | (none) | missing |
+| de | Macbeth | wikidata: Q10322723 label (de) | Ich wage alles, was dem Manne ziemt; wer mehr wagt, der ist keiner. | NEW, unsourced: translated for the game, not reviewed |
+| it | Macbeth | wikidata: Q10322723 label (it) | Oso tutto ciò che si addice a un uomo; chi osa di più non lo è. | NEW, unsourced: translated for the game, not reviewed |
 | pt | Macbeth | wikidata: Q10322723 label (pt) | Ouso tudo o que convém a um homem; quem ousa mais não o é. | NEW, unsourced: translated for the game, not reviewed |
-| pl | Makbet | wikidata: Q10322723 label (pl) | (none) | missing |
-| ru | Макбет | wikidata: Q10322723 label (ru) | (none) | missing |
+| pl | Makbet | wikidata: Q10322723 label (pl) | Ważę się na wszystko, co przystoi mężowi; kto waży się na więcej, ten nim nie jest. | NEW, unsourced: translated for the game, not reviewed |
+| ru | Макбет | wikidata: Q10322723 label (ru) | Я смею всё, что подобает мужчине; кто смеет больше, тот не человек. | NEW, unsourced: translated for the game, not reviewed |
 | ar | ماكبث | wikidata: Q10322723 label (ar) | أجرؤ على كل ما يليق برجل؛ ومن يجرؤ على أكثر فليس برجل. | NEW, unsourced: translated for the game, not reviewed |
 | hi | मैकबेथ | wikidata: Q10322723 label (hi) | जो कुछ एक पुरुष को शोभा देता है, वह सब करने का साहस मुझमें है; जो उससे अधिक साहस करे, वह पुरुष नहीं। | NEW, unsourced: translated for the game, not reviewed |
 | zh | 马克白 | wikidata: Q10322723 label (zh); "馬克白" converted to Simplified with OpenCC t2s | 凡是男子汉该做的事我都敢做；敢做得更多的就不是人了。 | NEW, unsourced: translated for the game, not reviewed |
@@ -801,13 +814,13 @@ English line: "Come, you spirits that tend on mortal thoughts, unsex me here." (
 
 | Language | Name | Name source | Line | Line source |
 |---|---|---|---|---|
-| es | Lady Macbeth | wikidata: Q2454065 label (es) | (none) | missing |
+| es | Lady Macbeth | wikidata: Q2454065 label (es) | Venid, espíritus que servís a los pensamientos de muerte, quitadme aquí mi sexo. | NEW, unsourced: translated for the game, not reviewed |
 | fr | Lady Macbeth | wikidata: Q2454065 label (fr) | Venez, venez, esprits — qui assistez les pensées meurtrières ! Désexez-moi ici | published: François-Victor Hugo (1828–1873), Œuvres complètes de W. Shakespeare, Pagnerre, Paris, 1859–1866 (fr.wikisource.org transcription); Public domain: France (life + 70 years; translator died 1873) and United States (published before 1931); [source](https://fr.wikisource.org/wiki/Macbeth_%28trad._Hugo%29?oldid=15966804) |
-| de | Lady Macbeth | wikidata: Q2454065 label (de) | (none) | missing |
-| it | Lady Macbeth | wikidata: Q2454065 label (it) | (none) | missing |
+| de | Lady Macbeth | wikidata: Q2454065 label (de) | Kommt, ihr Geister, die ihr den Mordgedanken dient, entweibt mich hier. | NEW, unsourced: translated for the game, not reviewed |
+| it | Lady Macbeth | wikidata: Q2454065 label (it) | Venite, spiriti che servite i pensieri di morte, toglietemi qui il mio sesso. | NEW, unsourced: translated for the game, not reviewed |
 | pt | Lady Macbeth | wikidata: Q2454065 label (pt) | Vinde, espíritos que servis os pensamentos mortais, tirai-me aqui o meu sexo. | NEW, unsourced: translated for the game, not reviewed |
-| pl | Lady Makbet | wikidata: Q2454065 label (pl) | (none) | missing |
-| ru | Леди Макбет | wikidata: Q2454065 label (ru) | (none) | missing |
+| pl | Lady Makbet | wikidata: Q2454065 label (pl) | Przybądźcie, duchy, co służycie myślom morderczym, odbierzcie mi tutaj moją płeć. | NEW, unsourced: translated for the game, not reviewed |
+| ru | Леди Макбет | wikidata: Q2454065 label (ru) | Придите, духи, что служите смертельным мыслям, лишите меня здесь моего пола. | NEW, unsourced: translated for the game, not reviewed |
 | ar | ليدي ماكبث | wikidata: Q2454065 label (ar) | تعالي أيتها الأرواح التي ترعى أفكار القتل، وجرديني هنا من أنوثتي. | NEW, unsourced: translated for the game, not reviewed |
 | hi | लेडी मैकबेथ | wikidata: Q2454065 label (hi) | आओ, हत्या के विचारों की सेवा करने वाली आत्माओ, यहीं मेरा स्त्रीत्व छीन लो। | NEW, unsourced: translated for the game, not reviewed |
 | zh | 麦克白夫人 | wikidata: Q2454065 label (zh-hans) | 来吧，侍奉杀人念头的精灵们，在这里除去我的女性。 | NEW, unsourced: translated for the game, not reviewed |
@@ -823,13 +836,13 @@ English line: "Thou shalt get kings, though thou be none." (Macbeth 1.3)
 
 | Language | Name | Name source | Line | Line source |
 |---|---|---|---|---|
-| es | Banquo | wikidata: Q806945 label (es) | (none) | missing |
+| es | Banquo | wikidata: Q806945 label (es) | Engendrarás reyes, aunque tú no lo seas. | NEW, unsourced: translated for the game, not reviewed |
 | fr | Banquo | wikidata: Q806945 label (fr) | Tu engendreras des rois, — sans être roi toi-même | published: François-Victor Hugo (1828–1873), Œuvres complètes de W. Shakespeare, Pagnerre, Paris, 1859–1866 (fr.wikisource.org transcription); Public domain: France (life + 70 years; translator died 1873) and United States (published before 1931); [source](https://fr.wikisource.org/wiki/Macbeth_%28trad._Hugo%29?oldid=15966804) |
-| de | Banquo | wikidata: Q806945 label (de) | (none) | missing |
-| it | Banco | wikidata: Q806945 label (it) | (none) | missing |
+| de | Banquo | wikidata: Q806945 label (de) | Du wirst Könige zeugen, obgleich du selbst keiner bist. | NEW, unsourced: translated for the game, not reviewed |
+| it | Banco | wikidata: Q806945 label (it) | Genererai dei re, pur non essendo re tu stesso. | NEW, unsourced: translated for the game, not reviewed |
 | pt | Banquo | wikidata: Q806945 label (pt) | Gerarás reis, embora não sejas rei. | NEW, unsourced: translated for the game, not reviewed |
-| pl | Banquo | wikidata: Q806945 label (pl) | (none) | missing |
-| ru | Банко | wikidata: Q806945 label (ru) | (none) | missing |
+| pl | Banquo | wikidata: Q806945 label (pl) | Spłodzisz królów, choć sam nim nie będziesz. | NEW, unsourced: translated for the game, not reviewed |
+| ru | Банко | wikidata: Q806945 label (ru) | Ты породишь королей, хотя сам не будешь королём. | NEW, unsourced: translated for the game, not reviewed |
 | ar | بانكو | wikidata: Q806945 label (ar) | ستنجب ملوكاً وإن لم تكن أنت ملكاً. | NEW, unsourced: translated for the game, not reviewed |
 | hi | बैंको | wikidata: Q806945 label (hi) | तू राजाओं को जन्म देगा, भले ही तू स्वयं राजा न हो। | NEW, unsourced: translated for the game, not reviewed |
 | zh | 班柯 | wikidata: Q806945 label (zh) | 你虽然不是君王，却要生下许多君王。 | NEW, unsourced: translated for the game, not reviewed |
@@ -845,13 +858,13 @@ English line: "I am not what I am." (Twelfth Night 3.1)
 
 | Language | Name | Name source | Line | Line source |
 |---|---|---|---|---|
-| es | (none) | missing: Q7932996 has no label in es and no es.wikipedia.org article | (none) | missing |
+| es | (none) | missing: Q7932996 has no label in es and no es.wikipedia.org article | No soy lo que soy. | NEW, unsourced: translated for the game, not reviewed |
 | fr | Viola | wikidata: Q7932996 label (fr) | je ne suis pas ce que je suis. | published: François-Victor Hugo (1828–1873), Œuvres complètes de W. Shakespeare, Pagnerre, Paris, 1859–1866 (fr.wikisource.org transcription); Public domain: France (life + 70 years; translator died 1873) and United States (published before 1931); [source](https://fr.wikisource.org/wiki/Le_soir_des_rois_ou_ce_que_vous_voudrez_%28trad._Hugo%29?oldid=15966630) |
-| de | (none) | missing: Q7932996 has no label in de and no de.wikipedia.org article | (none) | missing |
-| it | (none) | missing: Q7932996 has no label in it and no it.wikipedia.org article | (none) | missing |
+| de | (none) | missing: Q7932996 has no label in de and no de.wikipedia.org article | Ich bin nicht, was ich bin. | NEW, unsourced: translated for the game, not reviewed |
+| it | (none) | missing: Q7932996 has no label in it and no it.wikipedia.org article | Io non sono quello che sono. | NEW, unsourced: translated for the game, not reviewed |
 | pt | (none) | missing: Q7932996 has no label in pt and no pt.wikipedia.org article | Não sou o que sou. | NEW, unsourced: translated for the game, not reviewed |
-| pl | (none) | missing: Q7932996 has no label in pl and no pl.wikipedia.org article | (none) | missing |
-| ru | Виола | wikidata: Q7932996 label (ru) | (none) | missing |
+| pl | (none) | missing: Q7932996 has no label in pl and no pl.wikipedia.org article | nie jestem, czem jestem. | published: Leon Ulrich (1811–1885), Dzieła dramatyczne Williama Shakespeare, Kraków, 1895 (pl.wikisource.org transcription); Public domain: Poland (life + 70 years; translator died 1885) and United States (published before 1931); [source](https://pl.wikisource.org/wiki/Wiecz%C3%B3r_Trzech_Kr%C3%B3li_%28Shakespeare%2C_t%C5%82um._Ulrich%2C_1895%29/Akt_trzeci?oldid=3294592) |
+| ru | Виола | wikidata: Q7932996 label (ru) | Я не то, что я есть. | NEW, unsourced: translated for the game, not reviewed |
 | ar | (none) | missing: Q7932996 has no label in ar and no ar.wikipedia.org article | لست ما أبدو عليه. | NEW, unsourced: translated for the game, not reviewed |
 | hi | (none) | missing: Q7932996 has no label in hi and no hi.wikipedia.org article | मैं वह नहीं हूँ जो दिखती हूँ। | NEW, unsourced: translated for the game, not reviewed |
 | zh | (none) | missing: Q7932996 has no label in zh and no zh.wikipedia.org article | 我并不是我现在的样子。 | NEW, unsourced: translated for the game, not reviewed |
@@ -867,13 +880,13 @@ English line: "Some are born great, some achieve greatness, and some have greatn
 
 | Language | Name | Name source | Line | Line source |
 |---|---|---|---|---|
-| es | (none) | missing: Q3844047 has no label in es and no es.wikipedia.org article | (none) | missing |
+| es | (none) | missing: Q3844047 has no label in es and no es.wikipedia.org article | Algunos nacen grandes, algunos alcanzan la grandeza, y a algunos la grandeza les es impuesta. | NEW, unsourced: translated for the game, not reviewed |
 | fr | Malvolio | wikidata: Q3844047 label (fr) | Il en est qui naissent grands, d’autres qui conquièrent les grandeurs, et d’autres à qui elles s’imposent. | published: François-Victor Hugo (1828–1873), Œuvres complètes de W. Shakespeare, Pagnerre, Paris, 1859–1866 (fr.wikisource.org transcription); Public domain: France (life + 70 years; translator died 1873) and United States (published before 1931); [source](https://fr.wikisource.org/wiki/Le_soir_des_rois_ou_ce_que_vous_voudrez_%28trad._Hugo%29?oldid=15966630) |
-| de | Malvolio | wikidata: Q3844047 label (de) | (none) | missing |
-| it | Malvolio | wikidata: Q3844047 label (it) | (none) | missing |
+| de | Malvolio | wikidata: Q3844047 label (de) | Einige werden groß geboren, einige erringen Größe, und einigen wird die Größe aufgedrängt. | NEW, unsourced: translated for the game, not reviewed |
+| it | Malvolio | wikidata: Q3844047 label (it) | Alcuni nascono grandi, alcuni conquistano la grandezza, e ad alcuni la grandezza viene imposta. | NEW, unsourced: translated for the game, not reviewed |
 | pt | (none) | missing: Q3844047 has no label in pt and no pt.wikipedia.org article | Uns nascem grandes, outros alcançam a grandeza, e a outros a grandeza é imposta. | NEW, unsourced: translated for the game, not reviewed |
-| pl | (none) | missing: Q3844047 has no label in pl and no pl.wikipedia.org article | (none) | missing |
-| ru | (none) | missing: Q3844047 has no label in ru and no ru.wikipedia.org article | (none) | missing |
+| pl | (none) | missing: Q3844047 has no label in pl and no pl.wikipedia.org article | Jedni rodzą się wielkimi; inni w pocie czoła do wielkości przychodzą; innych wielkość szuka sama. | published: Leon Ulrich (1811–1885), Dzieła dramatyczne Williama Shakespeare, Kraków, 1895 (pl.wikisource.org transcription); Public domain: Poland (life + 70 years; translator died 1885) and United States (published before 1931); [source](https://pl.wikisource.org/wiki/Wiecz%C3%B3r_Trzech_Kr%C3%B3li_%28Shakespeare%2C_t%C5%82um._Ulrich%2C_1895%29/Akt_drugi?oldid=3294589) |
+| ru | (none) | missing: Q3844047 has no label in ru and no ru.wikipedia.org article | Одни рождаются великими, другие достигают величия, а третьим величие навязывают. | NEW, unsourced: translated for the game, not reviewed |
 | ar | (none) | missing: Q3844047 has no label in ar and no ar.wikipedia.org article | بعض الناس يولدون عظماء، وبعضهم ينالون العظمة، وبعضهم تفرض عليهم العظمة. | NEW, unsourced: translated for the game, not reviewed |
 | hi | मालवोलियो | wikidata: Q3844047 label (hi) | कुछ लोग महान जन्म लेते हैं, कुछ महानता पा लेते हैं, और कुछ पर महानता थोप दी जाती है। | NEW, unsourced: translated for the game, not reviewed |
 | zh | 马伏里奥 | wikidata: Q3844047 label (zh); "馬伏里奧" converted to Simplified with OpenCC t2s | 有的人生来伟大，有的人挣得伟大，有的人是伟大硬加在他们身上的。 | NEW, unsourced: translated for the game, not reviewed |
@@ -889,13 +902,13 @@ English line: "Love sought is good, but given unsought, is better." (Twelfth Nig
 
 | Language | Name | Name source | Line | Line source |
 |---|---|---|---|---|
-| es | (none) | missing: Q7088017 has no label in es and no es.wikipedia.org article | (none) | missing |
+| es | (none) | missing: Q7088017 has no label in es and no es.wikipedia.org article | El amor buscado es bueno, pero dado sin buscarlo es mejor. | NEW, unsourced: translated for the game, not reviewed |
 | fr | Olivia | wikidata: Q7088017 label (fr) | L’amour que l’on recherche est bon, mais donné sans qu’on le recherche, il est meilleur. | NEW, unsourced: translated for the game, not reviewed |
-| de | (none) | missing: Q7088017 has no label in de and no de.wikipedia.org article | (none) | missing |
-| it | (none) | missing: Q7088017 has no label in it and no it.wikipedia.org article | (none) | missing |
+| de | (none) | missing: Q7088017 has no label in de and no de.wikipedia.org article | Gesuchte Liebe ist gut, doch ungesucht geschenkte ist besser. | NEW, unsourced: translated for the game, not reviewed |
+| it | (none) | missing: Q7088017 has no label in it and no it.wikipedia.org article | L’amore cercato è buono, ma dato senza essere cercato è migliore. | NEW, unsourced: translated for the game, not reviewed |
 | pt | (none) | missing: Q7088017 has no label in pt and no pt.wikipedia.org article | O amor procurado é bom, mas dado sem ser procurado é melhor. | NEW, unsourced: translated for the game, not reviewed |
-| pl | (none) | missing: Q7088017 has no label in pl and no pl.wikipedia.org article | (none) | missing |
-| ru | Оливия | wikidata: Q7088017 label (ru) | (none) | missing |
+| pl | (none) | missing: Q7088017 has no label in pl and no pl.wikipedia.org article | Miłość szukana jest dobra, lecz dana bez szukania jest lepsza. | NEW, unsourced: translated for the game, not reviewed |
+| ru | Оливия | wikidata: Q7088017 label (ru) | Любовь искомая хороша, но данная без исканий лучше. | NEW, unsourced: translated for the game, not reviewed |
 | ar | (none) | missing: Q7088017 has no label in ar and no ar.wikipedia.org article | الحب المطلوب حسن، لكن الحب الموهوب بلا طلب أحسن. | NEW, unsourced: translated for the game, not reviewed |
 | hi | (none) | missing: Q7088017 has no label in hi and no hi.wikipedia.org article | माँगा हुआ प्रेम अच्छा है, पर बिना माँगे मिला प्रेम और अच्छा है। | NEW, unsourced: translated for the game, not reviewed |
 | zh | 奥利维亚 | wikidata: Q7088017 label (zh); "奥利維亞" converted to Simplified with OpenCC t2s | 求来的爱是好的，不求而得的爱更好。 | NEW, unsourced: translated for the game, not reviewed |
@@ -911,13 +924,13 @@ English line: "Not that I loved Caesar less, but that I loved Rome more." (Juliu
 
 | Language | Name | Name source | Line | Line source |
 |---|---|---|---|---|
-| es | Bruto | derived: word 3 of 3 of "Marco Junio Bruto" (Q172248 label (es)) | (none) | missing |
+| es | Bruto | derived: word 3 of 3 of "Marco Junio Bruto" (Q172248 label (es)) | No porque amara menos a César, sino porque amaba más a Roma. | NEW, unsourced: translated for the game, not reviewed |
 | fr | Brutus | derived: word 3 of 3 of "Marcus Junius Brutus" (Q172248 label (fr)) | Ce n’est pas que j’aimasse moins César, mais j’aimais Rome davantage. | published: François-Victor Hugo (1828–1873), Œuvres complètes de W. Shakespeare, Pagnerre, Paris, 1859–1866 (fr.wikisource.org transcription); Public domain: France (life + 70 years; translator died 1873) and United States (published before 1931); [source](https://fr.wikisource.org/wiki/Jules_C%C3%A9sar_%28Shakespeare%2C_trad._Hugo%29?oldid=15966514) |
-| de | Brutus | derived: word 3 of 3 of "Marcus Iunius Brutus" (Q172248 label (de)) | (none) | missing |
-| it | Bruto | derived: word 3 of 3 of "Marco Giunio Bruto" (Q172248 label (it)) | (none) | missing |
+| de | Brutus | derived: word 3 of 3 of "Marcus Iunius Brutus" (Q172248 label (de)) | Nicht weil ich Cäsar weniger liebte, sondern weil ich Rom mehr liebte. | NEW, unsourced: translated for the game, not reviewed |
+| it | Bruto | derived: word 3 of 3 of "Marco Giunio Bruto" (Q172248 label (it)) | Non perché amassi meno Cesare, ma perché amavo di più Roma. | NEW, unsourced: translated for the game, not reviewed |
 | pt | Bruto | derived: word 3 of 3 of "Marco Júnio Bruto" (Q172248 label (pt)) | Não que eu amasse menos César, mas amava mais Roma. | NEW, unsourced: translated for the game, not reviewed |
-| pl | Brutus | derived: word 3 of 3 of "Marek Juniusz Brutus" (Q172248 label (pl)) | (none) | missing |
-| ru | Брут | derived: word 3 of 3 of "Марк Юний Брут" (Q172248 label (ru)) | (none) | missing |
+| pl | Brutus | derived: word 3 of 3 of "Marek Juniusz Brutus" (Q172248 label (pl)) | Nie dlatego, że mniej kochałem Cezara, lecz dlatego, że bardziej kochałem Rzym. | NEW, unsourced: translated for the game, not reviewed |
+| ru | Брут | derived: word 3 of 3 of "Марк Юний Брут" (Q172248 label (ru)) | Не потому, что я меньше любил Цезаря, а потому, что я больше любил Рим. | NEW, unsourced: translated for the game, not reviewed |
 | ar | بروتس | wikidata: Q172248 label (ar) | ليس لأني أحببت قيصر أقل، بل لأني أحببت روما أكثر. | NEW, unsourced: translated for the game, not reviewed |
 | hi | (none) | missing: Q172248 has no label in hi and no hi.wikipedia.org article | यह नहीं कि मैं सीज़र से कम प्रेम करता था, बल्कि यह कि मैं रोम से अधिक प्रेम करता था। | NEW, unsourced: translated for the game, not reviewed |
 | zh | 布鲁图 | derived: word 3 of 3 of "马尔库斯·尤尼乌斯·布鲁图" (Q172248 label (zh-hans)) | 不是我爱恺撒少，而是我爱罗马更多。 | NEW, unsourced: translated for the game, not reviewed |
@@ -933,13 +946,13 @@ English line: "The fault, dear Brutus, is not in our stars, but in ourselves." (
 
 | Language | Name | Name source | Line | Line source |
 |---|---|---|---|---|
-| es | Casio | derived: word 2 of 3 of "Cayo Casio Longino" (Q207370 label (es)) | (none) | missing |
+| es | Casio | derived: word 2 of 3 of "Cayo Casio Longino" (Q207370 label (es)) | La culpa, querido Bruto, no está en nuestras estrellas, sino en nosotros mismos. | NEW, unsourced: translated for the game, not reviewed |
 | fr | Cassius | derived: word 2 of 3 of "Caius Cassius Longinus" (Q207370 label (fr)) | Si nous ne sommes que des subalternes, cher Brutus, — la faute en est à nous et non à nos étoiles. | published: François-Victor Hugo (1828–1873), Œuvres complètes de W. Shakespeare, Pagnerre, Paris, 1859–1866 (fr.wikisource.org transcription); Public domain: France (life + 70 years; translator died 1873) and United States (published before 1931); [source](https://fr.wikisource.org/wiki/Jules_C%C3%A9sar_%28Shakespeare%2C_trad._Hugo%29?oldid=15966514) |
-| de | Cassius | derived: word 2 of 3 of "Gaius Cassius Longinus" (Q207370 label (de)) | (none) | missing |
-| it | Cassio | derived: word 2 of 3 of "Gaio Cassio Longino" (Q207370 label (it)) | (none) | missing |
+| de | Cassius | derived: word 2 of 3 of "Gaius Cassius Longinus" (Q207370 label (de)) | Die Schuld, lieber Brutus, liegt nicht in unseren Sternen, sondern in uns selbst. | NEW, unsourced: translated for the game, not reviewed |
+| it | Cassio | derived: word 2 of 3 of "Gaio Cassio Longino" (Q207370 label (it)) | La colpa, caro Bruto, non è nelle nostre stelle, ma in noi stessi. | NEW, unsourced: translated for the game, not reviewed |
 | pt | Cássio | derived: word 2 of 3 of "Caio Cássio Longino" (Q207370 label (pt)) | A culpa, caro Bruto, não está nas nossas estrelas, mas em nós mesmos. | NEW, unsourced: translated for the game, not reviewed |
-| pl | Kasjusz | derived: word 2 of 3 of "Gajusz Kasjusz Longinus" (Q207370 label (pl)) | (none) | missing |
-| ru | Кассий | derived: word 2 of 3 of "Гай Кассий Лонгин" (Q207370 label (ru)) | (none) | missing |
+| pl | Kasjusz | derived: word 2 of 3 of "Gajusz Kasjusz Longinus" (Q207370 label (pl)) | Wina, drogi Brutusie, nie leży w naszych gwiazdach, lecz w nas samych. | NEW, unsourced: translated for the game, not reviewed |
+| ru | Кассий | derived: word 2 of 3 of "Гай Кассий Лонгин" (Q207370 label (ru)) | Вина, дорогой Брут, не в наших звёздах, а в нас самих. | NEW, unsourced: translated for the game, not reviewed |
 | ar | كاسيوس | derived: word 2 of 3 of "غايوس كاسيوس لونغينوس" (Q207370 label (ar)) | العيب يا عزيزي بروتس ليس في نجومنا، بل في أنفسنا. | NEW, unsourced: translated for the game, not reviewed |
 | hi | कैसियस | derived: word 2 of 3 of "गैयस कैसियस लोंगिनस" (Q207370 label (hi)) | दोष, प्रिय ब्रूटस, हमारे सितारों में नहीं, हम में ही है। | NEW, unsourced: translated for the game, not reviewed |
 | zh | 卡西乌斯 | derived: word 2 of 3 of "盖乌斯·卡西乌斯·朗基努斯" (Q207370 label (zh-hans)) | 亲爱的布鲁图，过错不在我们的星辰，而在我们自己。 | NEW, unsourced: translated for the game, not reviewed |
@@ -955,13 +968,13 @@ English line: "Friends, Romans, countrymen, lend me your ears!" (Julius Caesar 3
 
 | Language | Name | Name source | Line | Line source |
 |---|---|---|---|---|
-| es | Marco Antonio | wikidata: Q51673 label (es) | (none) | missing |
+| es | Marco Antonio | wikidata: Q51673 label (es) | ¡Amigos, romanos, compatriotas, prestadme oídos! | NEW, unsourced: translated for the game, not reviewed |
 | fr | Marc Antoine | wikidata: Q51673 label (fr) | Amis, Romains, compatriotes, prêtez-moi l’oreille. | published: François-Victor Hugo (1828–1873), Œuvres complètes de W. Shakespeare, Pagnerre, Paris, 1859–1866 (fr.wikisource.org transcription); Public domain: France (life + 70 years; translator died 1873) and United States (published before 1931); [source](https://fr.wikisource.org/wiki/Jules_C%C3%A9sar_%28Shakespeare%2C_trad._Hugo%29?oldid=15966514) |
-| de | Marcus Antonius | wikidata: Q51673 label (de) | (none) | missing |
-| it | Marco Antonio | wikidata: Q51673 label (it) | (none) | missing |
+| de | Marcus Antonius | wikidata: Q51673 label (de) | Freunde, Römer, Landsleute, leiht mir euer Ohr! | NEW, unsourced: translated for the game, not reviewed |
+| it | Marco Antonio | wikidata: Q51673 label (it) | Amici, Romani, concittadini, prestatemi orecchio! | NEW, unsourced: translated for the game, not reviewed |
 | pt | Marco António | wikidata: Q51673 label (pt) | Amigos, romanos, compatriotas, emprestai-me os vossos ouvidos! | NEW, unsourced: translated for the game, not reviewed |
-| pl | Marek Antoniusz | wikidata: Q51673 label (pl) | (none) | missing |
-| ru | Марк Антоний | wikidata: Q51673 label (ru) | (none) | missing |
+| pl | Marek Antoniusz | wikidata: Q51673 label (pl) | Przyjaciele, Rzymianie, rodacy, użyczcie mi uszu! | NEW, unsourced: translated for the game, not reviewed |
+| ru | Марк Антоний | wikidata: Q51673 label (ru) | О, римляне, сограждане, друзья! | published: Павел Козлов (1841–1891), «Юлий Цезарь», 1880 (ru.wikisource.org transcription, modern orthography); Public domain: Russia (life + 70 years; translator died 1891) and United States (published before 1931); [source](https://ru.wikisource.org/wiki/%D0%AE%D0%BB%D0%B8%D0%B9_%D0%A6%D0%B5%D0%B7%D0%B0%D1%80%D1%8C_%28%D0%A8%D0%B5%D0%BA%D1%81%D0%BF%D0%B8%D1%80%3B_%D0%9A%D0%BE%D0%B7%D0%BB%D0%BE%D0%B2%29?oldid=5753958) |
 | ar | مرقس أنطونيوس | wikidata: Q51673 label (ar) | أيها الأصدقاء، أيها الرومان، يا أبناء وطني، أعيروني آذانكم! | NEW, unsourced: translated for the game, not reviewed |
 | hi | मार्कस आंतोनियस | wikidata: Q51673 label (hi) | मित्रो, रोमवासियो, देशवासियो, मुझे अपने कान उधार दो! | NEW, unsourced: translated for the game, not reviewed |
 | zh | 马克·安东尼 | wikidata: Q51673 label (zh) | 朋友们，罗马人，同胞们，请借给我你们的耳朵！ | NEW, unsourced: translated for the game, not reviewed |
@@ -977,13 +990,13 @@ English line: "Many a morning hath he there been seen, with tears augmenting the
 
 | Language | Name | Name source | Line | Line source |
 |---|---|---|---|---|
-| es | Señor Montesco | translated: the game's own name, translated for the game | (none) | missing |
+| es | Señor Montesco | translated: the game's own name, translated for the game | Muchas mañanas se le ha visto allí, aumentando con lágrimas el fresco rocío de la mañana. | NEW, unsourced: translated for the game, not reviewed |
 | fr | Seigneur Montaigu | translated: the game's own name, translated for the game | Voilà bien des matinées qu’on l’a vu là — augmenter de ses larmes la fraîche rosée du matin | published: François-Victor Hugo (1828–1873), Œuvres complètes de W. Shakespeare, Pagnerre, Paris, 1859–1866 (fr.wikisource.org transcription); Public domain: France (life + 70 years; translator died 1873) and United States (published before 1931); [source](https://fr.wikisource.org/wiki/Rom%C3%A9o_et_Juliette_%28trad._Hugo%29?oldid=15966892) |
-| de | Graf Montague | translated: the game's own name, translated for the game | (none) | missing |
-| it | Messer Montecchi | translated: the game's own name, translated for the game | (none) | missing |
+| de | Graf Montague | translated: the game's own name, translated for the game | So manchen Morgen ward er dort gesehen, wie er mit Tränen den frischen Morgentau vermehrte. | NEW, unsourced: translated for the game, not reviewed |
+| it | Messer Montecchi | translated: the game's own name, translated for the game | Molte mattine lo si è visto là, ad accrescere con le lacrime la fresca rugiada del mattino. | NEW, unsourced: translated for the game, not reviewed |
 | pt | Senhor Montéquio | translated: the game's own name, translated for the game | Muitas manhãs ali foi visto, aumentando com lágrimas o fresco orvalho da manhã. | NEW, unsourced: translated for the game, not reviewed |
-| pl | Pan Monteki | translated: the game's own name, translated for the game | (none) | missing |
-| ru | Синьор Монтекки | translated: the game's own name, translated for the game | (none) | missing |
+| pl | Pan Monteki | translated: the game's own name, translated for the game | Wiele poranków widziano go tam, jak łzami pomnażał świeżą poranną rosę. | NEW, unsourced: translated for the game, not reviewed |
+| ru | Синьор Монтекки | translated: the game's own name, translated for the game | Много раз по утрам его видели там, слезами умножающим свежую утреннюю росу. | NEW, unsourced: translated for the game, not reviewed |
 | ar | السيد مونتاغيو | translated: the game's own name, translated for the game | كم من صباح شوهد هناك، يزيد بدموعه ندى الصباح الطري. | NEW, unsourced: translated for the game, not reviewed |
 | hi | लॉर्ड मोंटेग्यू | translated: the game's own name, translated for the game | कितनी ही सुबह वह वहाँ देखा गया है, अपने आँसुओं से भोर की ताज़ा ओस बढ़ाते हुए। | NEW, unsourced: translated for the game, not reviewed |
 | zh | 蒙太古老爷 | translated: the game's own name, translated for the game | 好多个早晨有人看见他在那里，用眼泪增添清晨新鲜的露水。 | NEW, unsourced: translated for the game, not reviewed |
@@ -999,13 +1012,13 @@ English line: "Marry, that marry is the very theme I came to talk of." (Romeo an
 
 | Language | Name | Name source | Line | Line source |
 |---|---|---|---|---|
-| es | Señora Capuleto | translated: the game's own name, translated for the game | (none) | missing |
+| es | Señora Capuleto | translated: the game's own name, translated for the game | Casarte, ese es justamente el tema del que venía a hablar. | NEW, unsourced: translated for the game, not reviewed |
 | fr | Dame Capulet | translated: the game's own name, translated for the game | Marier, justement : c’est de te marier que je venais te parler. | NEW, unsourced: translated for the game, not reviewed |
-| de | Gräfin Capulet | translated: the game's own name, translated for the game | (none) | missing |
-| it | Madonna Capuleti | translated: the game's own name, translated for the game | (none) | missing |
+| de | Gräfin Capulet | translated: the game's own name, translated for the game | Heiraten, eben das Heiraten ist das Thema, über das ich sprechen wollte. | NEW, unsourced: translated for the game, not reviewed |
+| it | Madonna Capuleti | translated: the game's own name, translated for the game | Sposarti, è proprio questo l’argomento di cui venivo a parlare. | NEW, unsourced: translated for the game, not reviewed |
 | pt | Senhora Capuleto | translated: the game's own name, translated for the game | Casar, é esse mesmo o tema de que te vinha falar. | NEW, unsourced: translated for the game, not reviewed |
-| pl | Pani Kapulet | translated: the game's own name, translated for the game | (none) | missing |
-| ru | Синьора Капулетти | translated: the game's own name, translated for the game | (none) | missing |
+| pl | Pani Kapulet | translated: the game's own name, translated for the game | Zamążpójście, to właśnie sprawa, o której przyszłam mówić. | NEW, unsourced: translated for the game, not reviewed |
+| ru | Синьора Капулетти | translated: the game's own name, translated for the game | Замужество, как раз о замужестве я и пришла говорить. | NEW, unsourced: translated for the game, not reviewed |
 | ar | السيدة كابوليت | translated: the game's own name, translated for the game | الزواج، إنه بعينه الموضوع الذي جئت أحدثك فيه. | NEW, unsourced: translated for the game, not reviewed |
 | hi | लेडी कैपुलेट | translated: the game's own name, translated for the game | विवाह, इसी विवाह की बात करने तो मैं आई हूँ। | NEW, unsourced: translated for the game, not reviewed |
 | zh | 凯普莱特夫人 | translated: the game's own name, translated for the game | 结婚，我正是为了谈结婚这件事来的。 | NEW, unsourced: translated for the game, not reviewed |
@@ -1021,13 +1034,13 @@ English line: "Now cracks a noble heart. Good night, sweet prince." (Hamlet 5.2)
 
 | Language | Name | Name source | Line | Line source |
 |---|---|---|---|---|
-| es | Horacio | wikidata: Q3140503 label (es) | (none) | missing |
+| es | Horacio | wikidata: Q3140503 label (es) | Ahora se quiebra un noble corazón. Buenas noches, dulce príncipe. | NEW, unsourced: translated for the game, not reviewed |
 | fr | Horatio | wikidata: Q3140503 label (fr) | Voici un noble cœur qui se brise. Bonne nuit, doux prince | published: François-Victor Hugo (1828–1873), Œuvres complètes de W. Shakespeare, Pagnerre, Paris, 1859–1866 (fr.wikisource.org transcription); Public domain: France (life + 70 years; translator died 1873) and United States (published before 1931); [source](https://fr.wikisource.org/wiki/Le_second_Hamlet_%28trad._Hugo%29?oldid=15966629) |
-| de | Horatio | wikidata: Q3140503 label (de) | (none) | missing |
-| it | (none) | missing: Q3140503 has no label in it and no it.wikipedia.org article | (none) | missing |
+| de | Horatio | wikidata: Q3140503 label (de) | Nun bricht ein edles Herz. Gute Nacht, süßer Prinz. | NEW, unsourced: translated for the game, not reviewed |
+| it | (none) | missing: Q3140503 has no label in it and no it.wikipedia.org article | Ora si spezza un nobile cuore. Buona notte, dolce principe. | NEW, unsourced: translated for the game, not reviewed |
 | pt | (none) | missing: Q3140503 has no label in pt and no pt.wikipedia.org article | Quebra-se agora um nobre coração. Boa noite, doce príncipe. | NEW, unsourced: translated for the game, not reviewed |
-| pl | Horacy | wikidata: Q3140503 label (pl) | (none) | missing |
-| ru | Гораций | wikidata: Q3140503 label (ru) | (none) | missing |
+| pl | Horacy | wikidata: Q3140503 label (pl) | Teraz pęka szlachetne serce. Dobranoc, słodki książę. | NEW, unsourced: translated for the game, not reviewed |
+| ru | Гораций | wikidata: Q3140503 label (ru) | Вот разбилось благородное сердце. Доброй ночи, милый принц. | NEW, unsourced: translated for the game, not reviewed |
 | ar | (none) | missing: Q3140503 has no label in ar and no ar.wikipedia.org article | الآن ينكسر قلب نبيل. طابت ليلتك أيها الأمير العذب. | NEW, unsourced: translated for the game, not reviewed |
 | hi | होरेशियो | wikidata: Q3140503 label (hi) | अब एक महान हृदय टूटता है। शुभ रात्रि, प्यारे राजकुमार। | NEW, unsourced: translated for the game, not reviewed |
 | zh | 赫瑞修 | wikidata: Q3140503 label (zh) | 一颗高贵的心现在碎裂了。晚安，亲爱的王子。 | NEW, unsourced: translated for the game, not reviewed |
@@ -1043,13 +1056,13 @@ English line: "I have had a most rare vision. I have had a dream, past the wit o
 
 | Language | Name | Name source | Line | Line source |
 |---|---|---|---|---|
-| es | Bottom | derived: word 2 of 2 of "Nick Bottom" (Q2190927 label (es)) | (none) | missing |
+| es | Bottom | derived: word 2 of 2 of "Nick Bottom" (Q2190927 label (es)) | He tenido una visión rarísima. He tenido un sueño que supera el entendimiento del hombre. | NEW, unsourced: translated for the game, not reviewed |
 | fr | Bottom | derived: word 2 of 2 of "Nick Bottom" (Q2190927 label (fr)) | J’ai eu une vision extraordinaire. J’ai fait un songe : c’est au-dessus de l’esprit de l’homme de dire ce qu’était ce songe. | published: François-Victor Hugo (1828–1873), Œuvres complètes de W. Shakespeare, Pagnerre, Paris, 1859–1866 (fr.wikisource.org transcription); Public domain: France (life + 70 years; translator died 1873) and United States (published before 1931); [source](https://fr.wikisource.org/wiki/Le_Songe_d%E2%80%99une_nuit_d%E2%80%99%C3%A9t%C3%A9_%28trad._Hugo%29?oldid=15966622) |
-| de | Zettel | wikidata: Q2190927 label (de) | (none) | missing |
-| it | Bottom | derived: word 2 of 2 of "Nick Bottom" (Q2190927 label (it)) | (none) | missing |
+| de | Zettel | wikidata: Q2190927 label (de) | Ich hatte ein höchst seltenes Gesicht. Ich hatte einen Traum, der über Menschenwitz geht. | NEW, unsourced: translated for the game, not reviewed |
+| it | Bottom | derived: word 2 of 2 of "Nick Bottom" (Q2190927 label (it)) | Ho avuto una visione rarissima. Ho fatto un sogno che supera l’ingegno dell’uomo. | NEW, unsourced: translated for the game, not reviewed |
 | pt | (none) | missing: Q2190927 has no label in pt and no pt.wikipedia.org article | Tive uma visão raríssima. Tive um sonho que excede o entendimento do homem. | NEW, unsourced: translated for the game, not reviewed |
-| pl | (none) | missing: Q2190927 has no label in pl and no pl.wikipedia.org article | (none) | missing |
-| ru | (none) | missing: Q2190927 has no label in ru and no ru.wikipedia.org article | (none) | missing |
+| pl | (none) | missing: Q2190927 has no label in pl and no pl.wikipedia.org article | Przedziwne miałem widzenie. Miałem sen, a żaden ludzki dowcip nie wypowie, co to za sen był. | published: Leon Ulrich (1811–1885), Dzieła dramatyczne Williama Shakespeare, Kraków, 1895 (pl.wikisource.org transcription); Public domain: Poland (life + 70 years; translator died 1885) and United States (published before 1931); [source](https://pl.wikisource.org/wiki/Sen_nocy_letniej_%28Shakespeare%2C_t%C5%82um._Ulrich%2C_1895%29/Akt_czwarty?oldid=3286440) |
+| ru | (none) | missing: Q2190927 has no label in ru and no ru.wikipedia.org article | Мне было редчайшее видение. Мне приснился сон, который выше человеческого разумения. | NEW, unsourced: translated for the game, not reviewed |
 | ar | (none) | missing: Q2190927 has no label in ar and no ar.wikipedia.org article | رأيت رؤيا عجيبة نادرة. رأيت حلماً يفوق عقل الإنسان. | NEW, unsourced: translated for the game, not reviewed |
 | hi | बॉटम | derived: word 2 of 2 of "निक बॉटम" (Q2190927 label (hi)) | मैंने एक बड़ा अनोखा दृश्य देखा है। मैंने एक सपना देखा है, जो मनुष्य की बुद्धि से परे है। | NEW, unsourced: translated for the game, not reviewed |
 | zh | 波顿 | derived: word 2 of 2 of "尼克·波顿" (Q2190927 label (zh)) | 我看见了一个极其稀奇的幻象。我做了一个梦，超出人的智慧所能说明。 | NEW, unsourced: translated for the game, not reviewed |
@@ -1065,13 +1078,13 @@ English line: "These times of woe afford no time to woo." (Romeo and Juliet 3.4)
 
 | Language | Name | Name source | Line | Line source |
 |---|---|---|---|---|
-| es | Conde París | wikidata: Q3687815 label (es) | (none) | missing |
+| es | Conde París | wikidata: Q3687815 label (es) | Estos tiempos de duelo no dejan tiempo para el cortejo. | NEW, unsourced: translated for the game, not reviewed |
 | fr | Comte Pâris | wikidata: Q3687815 label (fr) | Quand la mort parle, ce n’est pas pour l’amour le moment de parler. | published: François-Victor Hugo (1828–1873), Œuvres complètes de W. Shakespeare, Pagnerre, Paris, 1859–1866 (fr.wikisource.org transcription); Public domain: France (life + 70 years; translator died 1873) and United States (published before 1931); [source](https://fr.wikisource.org/wiki/Rom%C3%A9o_et_Juliette_%28trad._Hugo%29?oldid=15966892) |
-| de | (none) | missing: Q3687815 has no label in de and no de.wikipedia.org article | (none) | missing |
-| it | Conte Paride | wikidata: Q3687815 label (it) | (none) | missing |
+| de | (none) | missing: Q3687815 has no label in de and no de.wikipedia.org article | Diese Zeiten des Wehs lassen keine Zeit zum Werben. | NEW, unsourced: translated for the game, not reviewed |
+| it | Conte Paride | wikidata: Q3687815 label (it) | Questi tempi di lutto non lasciano tempo al corteggiamento. | NEW, unsourced: translated for the game, not reviewed |
 | pt | (none) | missing: Q3687815 has no label in pt and no pt.wikipedia.org article | Estes tempos de dor não dão tempo para cortejar. | NEW, unsourced: translated for the game, not reviewed |
-| pl | (none) | missing: Q3687815 has no label in pl and no pl.wikipedia.org article | (none) | missing |
-| ru | граф Парис | wikidata: Q3687815 label (ru) | (none) | missing |
+| pl | (none) | missing: Q3687815 has no label in pl and no pl.wikipedia.org article | Te czasy żałoby nie dają czasu na zaloty. | NEW, unsourced: translated for the game, not reviewed |
+| ru | граф Парис | wikidata: Q3687815 label (ru) | В эти дни скорби нет времени для сватовства. | NEW, unsourced: translated for the game, not reviewed |
 | ar | الكونت باريس | wikidata: Q3687815 label (ar) | أوقات الحزن هذه لا تترك وقتاً للغزل. | NEW, unsourced: translated for the game, not reviewed |
 | hi | काउंट पेरिस | wikidata: Q3687815 label (hi) | शोक के इन दिनों में प्रणय के लिए समय नहीं है। | NEW, unsourced: translated for the game, not reviewed |
 | zh | 帕里斯伯爵 | wikidata: Q3687815 label (zh) | 这样悲伤的时候没有工夫谈情求爱。 | NEW, unsourced: translated for the game, not reviewed |
@@ -1087,13 +1100,13 @@ English line: "O brave new world, that has such people in it!" (The Tempest 5.1)
 
 | Language | Name | Name source | Line | Line source |
 |---|---|---|---|---|
-| es | Miranda | wikidata: Q634983 label (es) | (none) | missing |
+| es | Miranda | wikidata: Q634983 label (es) | ¡Oh, espléndido mundo nuevo, que tiene tales gentes! | NEW, unsourced: translated for the game, not reviewed |
 | fr | Miranda | wikidata: Q634983 label (fr) | Ô merveilleux nouveau monde, qui compte de pareils habitants ! | NEW, unsourced: translated for the game, not reviewed |
-| de | Miranda | wikidata: Q634983 label (de) | (none) | missing |
-| it | Miranda | wikidata: Q634983 label (it) | (none) | missing |
+| de | Miranda | wikidata: Q634983 label (de) | O schöne neue Welt, die solche Menschen trägt! | NEW, unsourced: translated for the game, not reviewed |
+| it | Miranda | wikidata: Q634983 label (it) | O splendido mondo nuovo, che ha in sé gente simile! | NEW, unsourced: translated for the game, not reviewed |
 | pt | Miranda | wikidata: Q634983 label (pt) | Ó admirável mundo novo, que tem em si tal gente! | NEW, unsourced: translated for the game, not reviewed |
-| pl | Miranda | wikidata: Q634983 label (pl) | (none) | missing |
-| ru | Миранда | wikidata: Q634983 label (ru) | (none) | missing |
+| pl | Miranda | wikidata: Q634983 label (pl) | O wspaniały nowy świecie, w którym żyją tacy ludzie! | NEW, unsourced: translated for the game, not reviewed |
+| ru | Миранда | wikidata: Q634983 label (ru) | О дивный новый мир, где есть такие люди! | NEW, unsourced: translated for the game, not reviewed |
 | ar | (none) | missing: Q634983 has no label in ar and no ar.wikipedia.org article | يا له من عالم جديد رائع، فيه أناس كهؤلاء! | NEW, unsourced: translated for the game, not reviewed |
 | hi | मिरांडा | wikidata: Q634983 label (hi) | ओ अद्भुत नई दुनिया, जिसमें ऐसे लोग बसते हैं! | NEW, unsourced: translated for the game, not reviewed |
 | zh | 米兰达 | wikidata: Q634983 label (zh); "米蘭達" converted to Simplified with OpenCC t2s | 啊，美丽的新世界，有这样的人在里头！ | NEW, unsourced: translated for the game, not reviewed |
@@ -1109,13 +1122,13 @@ English line: "My bounty is as boundless as the sea, my love as deep." (Romeo an
 
 | Language | Name | Name source | Line | Line source |
 |---|---|---|---|---|
-| es | El anillo de Romeo | translated: the game's own name, translated for the game | (none) | missing |
+| es | El anillo de Romeo | translated: the game's own name, translated for the game | Mi generosidad es tan ilimitada como el mar, mi amor tan profundo. | NEW, unsourced: translated for the game, not reviewed |
 | fr | L’anneau de Roméo | translated: the game's own name, translated for the game | ma libéralité est aussi illimitée que la mer, — et mon amour aussi profond | published: François-Victor Hugo (1828–1873), Œuvres complètes de W. Shakespeare, Pagnerre, Paris, 1859–1866 (fr.wikisource.org transcription); Public domain: France (life + 70 years; translator died 1873) and United States (published before 1931); [source](https://fr.wikisource.org/wiki/Rom%C3%A9o_et_Juliette_%28trad._Hugo%29?oldid=15966892) |
-| de | Romeos Ring | translated: the game's own name, translated for the game | (none) | missing |
-| it | L’anello di Romeo | translated: the game's own name, translated for the game | (none) | missing |
+| de | Romeos Ring | translated: the game's own name, translated for the game | So grenzenlos ist meine Huld, die Liebe / So tief ja wie das Meer | published: August Wilhelm Schlegel (1767–1845), Romeo und Julia, 1797 (de.wikisource.org transcription); Public domain: Germany (life + 70 years; translator died 1845) and United States (published before 1931); [source](https://de.wikisource.org/wiki/Romeo_und_Julia_%28%C3%9Cbersetzung_Schlegel%29/Zweiter_Aufzug?oldid=1730815) |
+| it | L’anello di Romeo | translated: the game's own name, translated for the game | La mia generosità è sconfinata come il mare, il mio amore altrettanto profondo. | NEW, unsourced: translated for the game, not reviewed |
 | pt | O anel de Romeu | translated: the game's own name, translated for the game | A minha generosidade é tão ilimitada como o mar, o meu amor tão profundo. | NEW, unsourced: translated for the game, not reviewed |
-| pl | Pierścień Romea | translated: the game's own name, translated for the game | (none) | missing |
-| ru | Кольцо Ромео | translated: the game's own name, translated for the game | (none) | missing |
+| pl | Pierścień Romea | translated: the game's own name, translated for the game | Moja hojność jest bezbrzeżna jak morze, moja miłość równie głęboka. | NEW, unsourced: translated for the game, not reviewed |
+| ru | Кольцо Ромео | translated: the game's own name, translated for the game | Моя щедрость безбрежна, как море, моя любовь так же глубока. | NEW, unsourced: translated for the game, not reviewed |
 | ar | خاتم روميو | translated: the game's own name, translated for the game | كرمي بلا حدود كالبحر، وحبي عميق مثله. | NEW, unsourced: translated for the game, not reviewed |
 | hi | रोमियो की अंगूठी | translated: the game's own name, translated for the game | मेरी उदारता सागर जैसी असीम है, मेरा प्रेम उतना ही गहरा। | NEW, unsourced: translated for the game, not reviewed |
 | zh | 罗密欧的戒指 | translated: the game's own name, translated for the game | 我的慷慨像海一样无边，我的爱也像海一样深。 | NEW, unsourced: translated for the game, not reviewed |
@@ -1131,13 +1144,13 @@ English line: "All that glisters is not gold." (The Merchant of Venice 2.7)
 
 | Language | Name | Name source | Line | Line source |
 |---|---|---|---|---|
-| es | El cofre de Portia | translated: the game's own name, translated for the game | (none) | missing |
+| es | El cofre de Portia | translated: the game's own name, translated for the game | No es oro todo lo que reluce. | NEW, unsourced: translated for the game, not reviewed |
 | fr | Le coffret de Portia | translated: the game's own name, translated for the game | Tout ce qui luit n’est pas or | published: François-Victor Hugo (1828–1873), Œuvres complètes de W. Shakespeare, Pagnerre, Paris, 1859–1866 (fr.wikisource.org transcription); Public domain: France (life + 70 years; translator died 1873) and United States (published before 1931); [source](https://fr.wikisource.org/wiki/Le_Marchand_de_Venise_%28trad._Hugo%29?oldid=15966581) |
-| de | Portias Kästchen | translated: the game's own name, translated for the game | (none) | missing |
-| it | Lo scrigno di Porzia | translated: the game's own name, translated for the game | (none) | missing |
+| de | Portias Kästchen | translated: the game's own name, translated for the game | Nicht alles, was glänzt, ist Gold. | NEW, unsourced: translated for the game, not reviewed |
+| it | Lo scrigno di Porzia | translated: the game's own name, translated for the game | Non è tutto oro quel che luccica. | NEW, unsourced: translated for the game, not reviewed |
 | pt | O cofre de Pórcia | translated: the game's own name, translated for the game | Nem tudo o que reluz é ouro. | NEW, unsourced: translated for the game, not reviewed |
-| pl | Szkatułka Porcji | translated: the game's own name, translated for the game | (none) | missing |
-| ru | Ларец Порции | translated: the game's own name, translated for the game | (none) | missing |
+| pl | Szkatułka Porcji | translated: the game's own name, translated for the game | Nie wszystko złoto, co się świeci. | NEW, unsourced: translated for the game, not reviewed |
+| ru | Ларец Порции | translated: the game's own name, translated for the game | Не всё то золото, что блестит. | NEW, unsourced: translated for the game, not reviewed |
 | ar | صندوق بورشيا | translated: the game's own name, translated for the game | ليس كل ما يلمع ذهباً. | NEW, unsourced: translated for the game, not reviewed |
 | hi | पोर्टिया की पेटी | translated: the game's own name, translated for the game | हर चमकती चीज़ सोना नहीं होती। | NEW, unsourced: translated for the game, not reviewed |
 | zh | 波西亚的匣子 | translated: the game's own name, translated for the game | 闪光的不都是金子。 | NEW, unsourced: translated for the game, not reviewed |
@@ -1153,13 +1166,13 @@ English line: "Uneasy lies the head that wears a crown." (Henry IV, Part 2 3.1)
 
 | Language | Name | Name source | Line | Line source |
 |---|---|---|---|---|
-| es | La corona de Macbeth | translated: the game's own name, translated for the game | (none) | missing |
+| es | La corona de Macbeth | translated: the game's own name, translated for the game | Inquieta yace la cabeza que lleva una corona. | NEW, unsourced: translated for the game, not reviewed |
 | fr | La couronne de Macbeth | translated: the game's own name, translated for the game | Inquiète / est la tête qui porte une couronne ! | published: François-Victor Hugo (1828–1873), Œuvres complètes de W. Shakespeare, Pagnerre, Paris, 1859–1866 (fr.wikisource.org transcription); Public domain: France (life + 70 years; translator died 1873) and United States (published before 1931); [source](https://fr.wikisource.org/wiki/Henry_IV%2C_Deuxi%C3%A8me_Partie_%28trad._Hugo%29?oldid=15966472) |
-| de | Macbeths Krone | translated: the game's own name, translated for the game | (none) | missing |
-| it | La corona di Macbeth | translated: the game's own name, translated for the game | (none) | missing |
+| de | Macbeths Krone | translated: the game's own name, translated for the game | Unruhig liegt das Haupt, das eine Krone trägt. | NEW, unsourced: translated for the game, not reviewed |
+| it | La corona di Macbeth | translated: the game's own name, translated for the game | Inquieto giace il capo che porta una corona. | NEW, unsourced: translated for the game, not reviewed |
 | pt | A coroa de Macbeth | translated: the game's own name, translated for the game | Inquieta repousa a cabeça que usa uma coroa. | NEW, unsourced: translated for the game, not reviewed |
-| pl | Korona Makbeta | translated: the game's own name, translated for the game | (none) | missing |
-| ru | Корона Макбета | translated: the game's own name, translated for the game | (none) | missing |
+| pl | Korona Makbeta | translated: the game's own name, translated for the game | Niespokojnie spoczywa głowa, która nosi koronę. | NEW, unsourced: translated for the game, not reviewed |
+| ru | Корона Макбета | translated: the game's own name, translated for the game | Беспокойно лежит голова, носящая корону. | NEW, unsourced: translated for the game, not reviewed |
 | ar | تاج ماكبث | translated: the game's own name, translated for the game | قلق يرقد الرأس الذي يلبس التاج. | NEW, unsourced: translated for the game, not reviewed |
 | hi | मैकबेथ का मुकुट | translated: the game's own name, translated for the game | मुकुट पहनने वाला सिर बेचैन सोता है। | NEW, unsourced: translated for the game, not reviewed |
 | zh | 马克白的王冠 | translated: the game's own name, translated for the game | 戴王冠的头是不能安睡的。 | NEW, unsourced: translated for the game, not reviewed |
@@ -1175,13 +1188,13 @@ English line: "I'll drown my book." (The Tempest 5.1)
 
 | Language | Name | Name source | Line | Line source |
 |---|---|---|---|---|
-| es | El códice de la tempestad | translated: the game's own name, translated for the game | (none) | missing |
+| es | El códice de la tempestad | translated: the game's own name, translated for the game | Ahogaré mi libro. | NEW, unsourced: translated for the game, not reviewed |
 | fr | Le codex de la tempête | translated: the game's own name, translated for the game | je noierai mon livre | published: François-Victor Hugo (1828–1873), Œuvres complètes de W. Shakespeare, Pagnerre, Paris, 1859–1866 (fr.wikisource.org transcription); Public domain: France (life + 70 years; translator died 1873) and United States (published before 1931); [source](https://fr.wikisource.org/wiki/La_Temp%C3%AAte_%28Shakespeare%2C_trad._Hugo%29?oldid=15966548) |
-| de | Der Sturm-Kodex | translated: the game's own name, translated for the game | (none) | missing |
-| it | Il codice della tempesta | translated: the game's own name, translated for the game | (none) | missing |
+| de | Der Sturm-Kodex | translated: the game's own name, translated for the game | Ich will mein Buch ertränken. | NEW, unsourced: translated for the game, not reviewed |
+| it | Il codice della tempesta | translated: the game's own name, translated for the game | Annegherò il mio libro. | NEW, unsourced: translated for the game, not reviewed |
 | pt | O códice da tempestade | translated: the game's own name, translated for the game | Afogarei o meu livro. | NEW, unsourced: translated for the game, not reviewed |
-| pl | Kodeks burzy | translated: the game's own name, translated for the game | (none) | missing |
-| ru | Кодекс бури | translated: the game's own name, translated for the game | (none) | missing |
+| pl | Kodeks burzy | translated: the game's own name, translated for the game | Utopię moją księgę. | NEW, unsourced: translated for the game, not reviewed |
+| ru | Кодекс бури | translated: the game's own name, translated for the game | А книгу так глубоко потоплю | published: Николай Сатин (1814–1873), «Буря», 1840 (ru.wikisource.org transcription, modern orthography); Public domain: Russia (life + 70 years; translator died 1873) and United States (published before 1931); [source](https://ru.wikisource.org/wiki/%D0%91%D1%83%D1%80%D1%8F_%28%D0%A8%D0%B5%D0%BA%D1%81%D0%BF%D0%B8%D1%80%3B_%D0%A1%D0%B0%D1%82%D0%B8%D0%BD%29?oldid=5250007) |
 | ar | مخطوط العاصفة | translated: the game's own name, translated for the game | سأغرق كتابي. | NEW, unsourced: translated for the game, not reviewed |
 | hi | तूफ़ान की पोथी | translated: the game's own name, translated for the game | मैं अपनी पुस्तक डुबो दूँगा। | NEW, unsourced: translated for the game, not reviewed |
 | zh | 暴风雨魔法书 | translated: the game's own name, translated for the game | 我要把我的书沉入海底。 | NEW, unsourced: translated for the game, not reviewed |
@@ -1197,13 +1210,13 @@ English line: "O dear father, it is thy business that I go about." (King Lear 4.
 
 | Language | Name | Name source | Line | Line source |
 |---|---|---|---|---|
-| es | Las lágrimas de Cordelia | translated: the game's own name, translated for the game | (none) | missing |
+| es | Las lágrimas de Cordelia | translated: the game's own name, translated for the game | Oh, padre querido, son tus asuntos los que me ocupan. | NEW, unsourced: translated for the game, not reviewed |
 | fr | Les larmes de Cordélia | translated: the game's own name, translated for the game | Ô père chéri ! — ce sont tes intérêts qui m’occupent. | published: François-Victor Hugo (1828–1873), Œuvres complètes de W. Shakespeare, Pagnerre, Paris, 1859–1866 (fr.wikisource.org transcription); Public domain: France (life + 70 years; translator died 1873) and United States (published before 1931); [source](https://fr.wikisource.org/wiki/Le_Roi_Lear_%28trad._Hugo%29?oldid=15966612) |
-| de | Cordelias Tränen | translated: the game's own name, translated for the game | (none) | missing |
-| it | Le lacrime di Cordelia | translated: the game's own name, translated for the game | (none) | missing |
+| de | Cordelias Tränen | translated: the game's own name, translated for the game | O lieber Vater, es ist deine Sache, um die ich mich bemühe. | NEW, unsourced: translated for the game, not reviewed |
+| it | Le lacrime di Cordelia | translated: the game's own name, translated for the game | O caro padre, sono i tuoi affari quelli di cui mi occupo. | NEW, unsourced: translated for the game, not reviewed |
 | pt | As lágrimas de Cordélia | translated: the game's own name, translated for the game | Ó querido pai, é dos teus assuntos que me ocupo. | NEW, unsourced: translated for the game, not reviewed |
-| pl | Łzy Kordelii | translated: the game's own name, translated for the game | (none) | missing |
-| ru | Слёзы Корделии | translated: the game's own name, translated for the game | (none) | missing |
+| pl | Łzy Kordelii | translated: the game's own name, translated for the game | O drogi ojcze, w twojej sprawie walczę! | published: Leon Ulrich (1811–1885), Dzieła dramatyczne Williama Shakespeare, Kraków, 1895 (pl.wikisource.org transcription); Public domain: Poland (life + 70 years; translator died 1885) and United States (published before 1931); [source](https://pl.wikisource.org/wiki/Kr%C3%B3l_Lear_%28Shakespeare%2C_t%C5%82um._Ulrich%2C_1895%29/Akt_czwarty?oldid=3263021) |
+| ru | Слёзы Корделии | translated: the game's own name, translated for the game | О дорогой отец, я занята твоим делом. | NEW, unsourced: translated for the game, not reviewed |
 | ar | دموع كورديليا | translated: the game's own name, translated for the game | يا أبي العزيز، إنما أسعى في شأنك أنت. | NEW, unsourced: translated for the game, not reviewed |
 | hi | कॉर्डेलिया के आँसू | translated: the game's own name, translated for the game | ओ प्रिय पिता, मैं आपके ही काम में लगी हूँ। | NEW, unsourced: translated for the game, not reviewed |
 | zh | 寇蒂莉亚的眼泪 | translated: the game's own name, translated for the game | 啊，亲爱的父亲，我奔走的正是您的事情。 | NEW, unsourced: translated for the game, not reviewed |
@@ -1219,13 +1232,13 @@ English line: "Bless thee, Bottom! Thou art translated!" (A Midsummer Night's Dr
 
 | Language | Name | Name source | Line | Line source |
 |---|---|---|---|---|
-| es | La máscara de Bottom | translated: the game's own name, translated for the game | (none) | missing |
+| es | La máscara de Bottom | translated: the game's own name, translated for the game | ¡Dios te bendiga, Bottom! ¡Estás transformado! | NEW, unsourced: translated for the game, not reviewed |
 | fr | Le masque de Bottom | translated: the game's own name, translated for the game | Dieu te bénisse, Bottom, Dieu te bénisse ! tu es métamorphosé. | published: François-Victor Hugo (1828–1873), Œuvres complètes de W. Shakespeare, Pagnerre, Paris, 1859–1866 (fr.wikisource.org transcription); Public domain: France (life + 70 years; translator died 1873) and United States (published before 1931); [source](https://fr.wikisource.org/wiki/Le_Songe_d%E2%80%99une_nuit_d%E2%80%99%C3%A9t%C3%A9_%28trad._Hugo%29?oldid=15966622) |
-| de | Zettels Maske | translated: the game's own name, translated for the game | (none) | missing |
-| it | La maschera di Bottom | translated: the game's own name, translated for the game | (none) | missing |
+| de | Zettels Maske | translated: the game's own name, translated for the game | Gott segne dich, Zettel! Du bist verwandelt! | NEW, unsourced: translated for the game, not reviewed |
+| it | La maschera di Bottom | translated: the game's own name, translated for the game | Dio ti benedica, Bottom! Sei trasformato! | NEW, unsourced: translated for the game, not reviewed |
 | pt | A máscara de Bottom | translated: the game's own name, translated for the game | Deus te abençoe, Bottom! Estás transformado! | NEW, unsourced: translated for the game, not reviewed |
-| pl | Maska Spodka | translated: the game's own name, translated for the game | (none) | missing |
-| ru | Маска Основы | translated: the game's own name, translated for the game | (none) | missing |
+| pl | Maska Spodka | translated: the game's own name, translated for the game | Niech cię Bóg strzeże, Spodku! Jesteś przemieniony! | NEW, unsourced: translated for the game, not reviewed |
+| ru | Маска Основы | translated: the game's own name, translated for the game | Господь с тобой, Основа! Ты преображён! | NEW, unsourced: translated for the game, not reviewed |
 | ar | قناع بوتوم | translated: the game's own name, translated for the game | بوركت يا بوتوم! لقد تحولت! | NEW, unsourced: translated for the game, not reviewed |
 | hi | बॉटम का मुखौटा | translated: the game's own name, translated for the game | भगवान तेरा भला करे, बॉटम! तेरा तो रूप ही बदल गया! | NEW, unsourced: translated for the game, not reviewed |
 | zh | 波顿的面具 | translated: the game's own name, translated for the game | 天保佑你，波顿！你变了样子了！ | NEW, unsourced: translated for the game, not reviewed |
@@ -1241,13 +1254,13 @@ English line: "Not poppy, nor mandragora, nor all the drowsy syrups of the world
 
 | Language | Name | Name source | Line | Line source |
 |---|---|---|---|---|
-| es | Raíz de mandrágora | translated: the game's own name, translated for the game | (none) | missing |
+| es | Raíz de mandrágora | translated: the game's own name, translated for the game | Ni la adormidera, ni la mandrágora, ni todos los jarabes soporíferos del mundo. | NEW, unsourced: translated for the game, not reviewed |
 | fr | Racine de mandragore | translated: the game's own name, translated for the game | Ni le pavot, ni la mandragore, — ni tous les sirops narcotiques du monde | published: François-Victor Hugo (1828–1873), Œuvres complètes de W. Shakespeare, Pagnerre, Paris, 1859–1866 (fr.wikisource.org transcription); Public domain: France (life + 70 years; translator died 1873) and United States (published before 1931); [source](https://fr.wikisource.org/wiki/Othello_%28trad._Hugo%29?oldid=15966844) |
-| de | Alraunwurzel | translated: the game's own name, translated for the game | (none) | missing |
-| it | Radice di mandragora | translated: the game's own name, translated for the game | (none) | missing |
+| de | Alraunwurzel | translated: the game's own name, translated for the game | Nicht Mohn, nicht Mandragora, noch alle Schlummersäfte dieser Welt. | NEW, unsourced: translated for the game, not reviewed |
+| it | Radice di mandragora | translated: the game's own name, translated for the game | Né il papavero, né la mandragora, né tutti gli sciroppi soporiferi del mondo. | NEW, unsourced: translated for the game, not reviewed |
 | pt | Raiz de mandrágora | translated: the game's own name, translated for the game | Nem a papoila, nem a mandrágora, nem todos os xaropes sonolentos do mundo. | NEW, unsourced: translated for the game, not reviewed |
-| pl | Korzeń mandragory | translated: the game's own name, translated for the game | (none) | missing |
-| ru | Корень мандрагоры | translated: the game's own name, translated for the game | (none) | missing |
+| pl | Korzeń mandragory | translated: the game's own name, translated for the game | Ani mak, ani mandragora, ani wszystkie usypiające syropy świata. | NEW, unsourced: translated for the game, not reviewed |
+| ru | Корень мандрагоры | translated: the game's own name, translated for the game | Ни мак, ни мандрагора, / Ни зелья все, какие есть на свете | published: Пётр Вейнберг (1831–1908), «Отелло, венецианский мавр», 1864 (ru.wikisource.org transcription, modern orthography); Public domain: Russia (life + 70 years; translator died 1908) and United States (published before 1931); [source](https://ru.wikisource.org/wiki/%D0%9E%D1%82%D0%B5%D0%BB%D0%BB%D0%BE%2C_%D0%B2%D0%B5%D0%BD%D0%B5%D1%86%D0%B8%D0%B0%D0%BD%D1%81%D0%BA%D0%B8%D0%B9_%D0%BC%D0%B0%D0%B2%D1%80_%28%D0%A8%D0%B5%D0%BA%D1%81%D0%BF%D0%B8%D1%80%3B_%D0%92%D0%B5%D0%B9%D0%BD%D0%B1%D0%B5%D1%80%D0%B3%29?oldid=5658637) |
 | ar | جذر اليبروح | translated: the game's own name, translated for the game | لا الخشخاش ولا اليبروح ولا كل أشربة النعاس في العالم. | NEW, unsourced: translated for the game, not reviewed |
 | hi | मैंड्रेक की जड़ | translated: the game's own name, translated for the game | न अफ़ीम, न मैंड्रेक, न दुनिया के सारे नींद लाने वाले शरबत। | NEW, unsourced: translated for the game, not reviewed |
 | zh | 曼德拉草根 | translated: the game's own name, translated for the game | 无论罂粟、曼陀罗，还是世上一切催眠的药水。 | NEW, unsourced: translated for the game, not reviewed |
@@ -1263,13 +1276,13 @@ English line: "Fetch me that flower; the herb I showed thee once." (A Midsummer 
 
 | Language | Name | Name source | Line | Line source |
 |---|---|---|---|---|
-| es | Rocío de Oberón | translated: the game's own name, translated for the game | (none) | missing |
+| es | Rocío de Oberón | translated: the game's own name, translated for the game | Tráeme aquella flor; la hierba que una vez te mostré. | NEW, unsourced: translated for the game, not reviewed |
 | fr | Rosée d’Obéron | translated: the game's own name, translated for the game | Va me chercher cette fleur ; je t’en ai montré une fois la feuille. | published: François-Victor Hugo (1828–1873), Œuvres complètes de W. Shakespeare, Pagnerre, Paris, 1859–1866 (fr.wikisource.org transcription); Public domain: France (life + 70 years; translator died 1873) and United States (published before 1931); [source](https://fr.wikisource.org/wiki/Le_Songe_d%E2%80%99une_nuit_d%E2%80%99%C3%A9t%C3%A9_%28trad._Hugo%29?oldid=15966622) |
-| de | Oberons Tau | translated: the game's own name, translated for the game | (none) | missing |
-| it | Rugiada di Oberon | translated: the game's own name, translated for the game | (none) | missing |
+| de | Oberons Tau | translated: the game's own name, translated for the game | Hol mir die Blume; das Kraut, das ich dir einst gezeigt. | NEW, unsourced: translated for the game, not reviewed |
+| it | Rugiada di Oberon | translated: the game's own name, translated for the game | Portami quel fiore; l’erba che una volta ti mostrai. | NEW, unsourced: translated for the game, not reviewed |
 | pt | Orvalho de Oberon | translated: the game's own name, translated for the game | Traz-me aquela flor; a erva que uma vez te mostrei. | NEW, unsourced: translated for the game, not reviewed |
-| pl | Rosa Oberona | translated: the game's own name, translated for the game | (none) | missing |
-| ru | Роса Оберона | translated: the game's own name, translated for the game | (none) | missing |
+| pl | Rosa Oberona | translated: the game's own name, translated for the game | Przynieś mi ten kwiat; ziele, które ci kiedyś pokazałem. | NEW, unsourced: translated for the game, not reviewed |
+| ru | Роса Оберона | translated: the game's own name, translated for the game | Принеси мне тот цветок; траву, что я тебе однажды показывал. | NEW, unsourced: translated for the game, not reviewed |
 | ar | ندى أوبيرون | translated: the game's own name, translated for the game | أحضر لي تلك الزهرة؛ العشبة التي أريتك إياها مرة. | NEW, unsourced: translated for the game, not reviewed |
 | hi | ओबेरॉन की ओस | translated: the game's own name, translated for the game | मुझे वह फूल ला दो; वह बूटी जो मैंने तुम्हें एक बार दिखाई थी। | NEW, unsourced: translated for the game, not reviewed |
 | zh | 奥伯伦的露水 | translated: the game's own name, translated for the game | 给我把那朵花采来；我曾经指给你看过的那种草。 | NEW, unsourced: translated for the game, not reviewed |
@@ -1285,13 +1298,13 @@ English line: "Upon my secure hour thy uncle stole, with juice of cursed hebona 
 
 | Language | Name | Name source | Line | Line source |
 |---|---|---|---|---|
-| es | Tintura de cicuta | translated: the game's own name, translated for the game | (none) | missing |
+| es | Tintura de cicuta | translated: the game's own name, translated for the game | En mi hora de descanso tu tío se acercó a hurtadillas, con jugo de maldito beleño en un frasco. | NEW, unsourced: translated for the game, not reviewed |
 | fr | Teinture de ciguë | translated: the game's own name, translated for the game | À cette heure de pleine sécurité, ton oncle se glissa près de moi — avec une fiole pleine du jus maudit de la jusquiame | published: François-Victor Hugo (1828–1873), Œuvres complètes de W. Shakespeare, Pagnerre, Paris, 1859–1866 (fr.wikisource.org transcription); Public domain: France (life + 70 years; translator died 1873) and United States (published before 1931); [source](https://fr.wikisource.org/wiki/Le_second_Hamlet_%28trad._Hugo%29?oldid=15966629) |
-| de | Schierlingstinktur | translated: the game's own name, translated for the game | (none) | missing |
-| it | Tintura di cicuta | translated: the game's own name, translated for the game | (none) | missing |
+| de | Schierlingstinktur | translated: the game's own name, translated for the game | In meiner sicheren Stunde schlich dein Oheim herbei, mit dem Saft verfluchten Bilsenkrauts in einem Fläschchen. | NEW, unsourced: translated for the game, not reviewed |
+| it | Tintura di cicuta | translated: the game's own name, translated for the game | Nella mia ora di quiete tuo zio si avvicinò furtivo, con il succo del maledetto giusquiamo in una fiala. | NEW, unsourced: translated for the game, not reviewed |
 | pt | Tintura de cicuta | translated: the game's own name, translated for the game | Na minha hora de sossego o teu tio aproximou-se furtivo, com sumo de maldito meimendro num frasco. | NEW, unsourced: translated for the game, not reviewed |
-| pl | Nalewka z cykuty | translated: the game's own name, translated for the game | (none) | missing |
-| ru | Настойка болиголова | translated: the game's own name, translated for the game | (none) | missing |
+| pl | Nalewka z cykuty | translated: the game's own name, translated for the game | W godzinie mego spokoju twój stryj zakradł się z sokiem przeklętego lulka we flaszce. | NEW, unsourced: translated for the game, not reviewed |
+| ru | Настойка болиголова | translated: the game's own name, translated for the game | В час моего покоя твой дядя подкрался с соком проклятой белены в склянке. | NEW, unsourced: translated for the game, not reviewed |
 | ar | صبغة الشوكران | translated: the game's own name, translated for the game | في ساعة أماني تسلل عمك، ومعه عصير الهيبونا الملعون في قارورة. | NEW, unsourced: translated for the game, not reviewed |
 | hi | हेमलॉक का अर्क | translated: the game's own name, translated for the game | मेरी निश्चिंत घड़ी में तेरा चाचा चुपके से आया, शीशी में शापित हेबोना का रस लिए। | NEW, unsourced: translated for the game, not reviewed |
 | zh | 毒芹酊 | translated: the game's own name, translated for the game | 在我安心熟睡的时候，你的叔父带着一小瓶可诅咒的毒草汁偷偷走来。 | NEW, unsourced: translated for the game, not reviewed |
@@ -1307,13 +1320,13 @@ English line: "In the cauldron boil and bake; eye of newt and toe of frog." (Mac
 
 | Language | Name | Name source | Line | Line source |
 |---|---|---|---|---|
-| es | Extracto de muérdago | translated: the game's own name, translated for the game | (none) | missing |
+| es | Extracto de muérdago | translated: the game's own name, translated for the game | En el caldero hierve y cuece; ojo de tritón y dedo de rana. | NEW, unsourced: translated for the game, not reviewed |
 | fr | Extrait de gui | translated: the game's own name, translated for the game | Dans le chaudron bous et cuis. / Œil de salamandre, orteil de grenouille | published: François-Victor Hugo (1828–1873), Œuvres complètes de W. Shakespeare, Pagnerre, Paris, 1859–1866 (fr.wikisource.org transcription); Public domain: France (life + 70 years; translator died 1873) and United States (published before 1931); [source](https://fr.wikisource.org/wiki/Macbeth_%28trad._Hugo%29?oldid=15966804) |
-| de | Mistelextrakt | translated: the game's own name, translated for the game | (none) | missing |
-| it | Estratto di vischio | translated: the game's own name, translated for the game | (none) | missing |
+| de | Mistelextrakt | translated: the game's own name, translated for the game | Im Kessel sied und brat; Molchesauge und Froschzehe. | NEW, unsourced: translated for the game, not reviewed |
+| it | Estratto di vischio | translated: the game's own name, translated for the game | Nel calderone bolli e cuoci; occhio di tritone e dito di rana. | NEW, unsourced: translated for the game, not reviewed |
 | pt | Extrato de visco | translated: the game's own name, translated for the game | No caldeirão fervei e cozei; olho de salamandra e dedo de rã. | NEW, unsourced: translated for the game, not reviewed |
-| pl | Wyciąg z jemioły | translated: the game's own name, translated for the game | (none) | missing |
-| ru | Вытяжка омелы | translated: the game's own name, translated for the game | (none) | missing |
+| pl | Wyciąg z jemioły | translated: the game's own name, translated for the game | W kotle wrzyj i piecz się; oko traszki i palec żaby. | NEW, unsourced: translated for the game, not reviewed |
+| ru | Вытяжка омелы | translated: the game's own name, translated for the game | В котле кипи и варись; глаз тритона и палец лягушки. | NEW, unsourced: translated for the game, not reviewed |
 | ar | خلاصة الهدال | translated: the game's own name, translated for the game | في القدر اغلي واخبزي؛ عين سمندل وإصبع ضفدع. | NEW, unsourced: translated for the game, not reviewed |
 | hi | मिसलटो का सत्त | translated: the game's own name, translated for the game | कड़ाह में उबलो और पको; गोह की आँख और मेंढक का अँगूठा। | NEW, unsourced: translated for the game, not reviewed |
 | zh | 槲寄生萃取液 | translated: the game's own name, translated for the game | 在大锅里煮吧，烤吧；蝾螈的眼睛，青蛙的脚趾。 | NEW, unsourced: translated for the game, not reviewed |
@@ -1329,13 +1342,13 @@ English line: "Full fathom five thy father lies; of his bones are coral made." (
 
 | Language | Name | Name source | Line | Line source |
 |---|---|---|---|---|
-| es | Lágrimas de sirena | translated: the game's own name, translated for the game | (none) | missing |
+| es | Lágrimas de sirena | translated: the game's own name, translated for the game | A cinco brazas yace tu padre; de sus huesos se ha hecho coral. | NEW, unsourced: translated for the game, not reviewed |
 | fr | Larmes de sirène | translated: the game's own name, translated for the game | Sous cinq brassées ton père gît : / Ses os se sont changés en corail. | published: François-Victor Hugo (1828–1873), Œuvres complètes de W. Shakespeare, Pagnerre, Paris, 1859–1866 (fr.wikisource.org transcription); Public domain: France (life + 70 years; translator died 1873) and United States (published before 1931); [source](https://fr.wikisource.org/wiki/La_Temp%C3%AAte_%28Shakespeare%2C_trad._Hugo%29?oldid=15966548) |
-| de | Tränen der Meerjungfrau | translated: the game's own name, translated for the game | (none) | missing |
-| it | Lacrime di sirena | translated: the game's own name, translated for the game | (none) | missing |
+| de | Tränen der Meerjungfrau | translated: the game's own name, translated for the game | Fünf Faden tief liegt dein Vater; aus seinen Gebeinen sind Korallen geworden. | NEW, unsourced: translated for the game, not reviewed |
+| it | Lacrime di sirena | translated: the game's own name, translated for the game | A cinque tese giace tuo padre; delle sue ossa si è fatto corallo. | NEW, unsourced: translated for the game, not reviewed |
 | pt | Lágrimas de sereia | translated: the game's own name, translated for the game | A cinco braças jaz o teu pai; dos seus ossos se fez coral. | NEW, unsourced: translated for the game, not reviewed |
-| pl | Łzy syreny | translated: the game's own name, translated for the game | (none) | missing |
-| ru | Слёзы русалки | translated: the game's own name, translated for the game | (none) | missing |
+| pl | Łzy syreny | translated: the game's own name, translated for the game | Na pięć sążni głęboko leży twój ojciec; z jego kości powstał koral. | NEW, unsourced: translated for the game, not reviewed |
+| ru | Слёзы русалки | translated: the game's own name, translated for the game | На глубине пяти саженей лежит твой отец; из его костей стал коралл. | NEW, unsourced: translated for the game, not reviewed |
 | ar | دموع حورية البحر | translated: the game's own name, translated for the game | على عمق خمس قامات يرقد أبوك؛ ومن عظامه صار المرجان. | NEW, unsourced: translated for the game, not reviewed |
 | hi | जलपरी के आँसू | translated: the game's own name, translated for the game | पाँच पुरसा गहरे तेरे पिता लेटे हैं; उनकी हड्डियों से मूँगा बना है। | NEW, unsourced: translated for the game, not reviewed |
 | zh | 美人鱼的眼泪 | translated: the game's own name, translated for the game | 五噚深处躺着你的父亲；他的骨头已化成珊瑚。 | NEW, unsourced: translated for the game, not reviewed |
@@ -1351,13 +1364,13 @@ English line: "Put this in any liquid thing you will, and drink it off; and, if 
 
 | Language | Name | Name source | Line | Line source |
 |---|---|---|---|---|
-| es | Elixir del boticario | translated: the game's own name, translated for the game | (none) | missing |
+| es | Elixir del boticario | translated: the game's own name, translated for the game | Echa esto en cualquier líquido que quieras y bébelo; y, aunque tuvieras la fuerza de veinte hombres, te despacharía al instante. | NEW, unsourced: translated for the game, not reviewed |
 | fr | Élixir de l’apothicaire | translated: the game's own name, translated for the game | Mettez ceci dans le liquide que vous voudrez, — et avalez ; eussiez-vous la force de vingt hommes, vous serez expédié immédiatement (129). | published: François-Victor Hugo (1828–1873), Œuvres complètes de W. Shakespeare, Pagnerre, Paris, 1859–1866 (fr.wikisource.org transcription); Public domain: France (life + 70 years; translator died 1873) and United States (published before 1931); [source](https://fr.wikisource.org/wiki/Rom%C3%A9o_et_Juliette_%28trad._Hugo%29?oldid=15966892) |
-| de | Elixier des Apothekers | translated: the game's own name, translated for the game | (none) | missing |
-| it | Elisir dello speziale | translated: the game's own name, translated for the game | (none) | missing |
+| de | Elixier des Apothekers | translated: the game's own name, translated for the game | Tut dies in irgendeine Flüssigkeit und trinkt es aus; und hättet Ihr die Kraft von zwanzig Männern, es würde Euch sogleich hinraffen. | NEW, unsourced: translated for the game, not reviewed |
+| it | Elisir dello speziale | translated: the game's own name, translated for the game | Metti questo in qualunque liquido tu voglia e bevilo; e, avessi anche la forza di venti uomini, ti spaccerebbe all’istante. | NEW, unsourced: translated for the game, not reviewed |
 | pt | Elixir do boticário | translated: the game's own name, translated for the game | Deita isto em qualquer líquido que queiras e bebe-o; e, ainda que tivesses a força de vinte homens, despachar-te-ia de imediato. | NEW, unsourced: translated for the game, not reviewed |
-| pl | Eliksir aptekarza | translated: the game's own name, translated for the game | (none) | missing |
-| ru | Эликсир аптекаря | translated: the game's own name, translated for the game | (none) | missing |
+| pl | Eliksir aptekarza | translated: the game's own name, translated for the game | Wlej to do jakiegokolwiek płynu i wypij; a choćbyś miał siłę dwudziestu ludzi, zgładzi cię natychmiast. | NEW, unsourced: translated for the game, not reviewed |
+| ru | Эликсир аптекаря | translated: the game's own name, translated for the game | Влей это в любую жидкость и выпей; и будь в тебе сила двадцати человек, оно тотчас тебя прикончит. | NEW, unsourced: translated for the game, not reviewed |
 | ar | إكسير الصيدلاني | translated: the game's own name, translated for the game | ضع هذا في أي سائل تشاء واشربه كله؛ ولو كانت لك قوة عشرين رجلاً لقضى عليك في الحال. | NEW, unsourced: translated for the game, not reviewed |
 | hi | अत्तार का अमृत | translated: the game's own name, translated for the game | इसे जिस किसी तरल में चाहो डालो और पी जाओ; तुममें बीस आदमियों का बल भी हो, तो यह तुम्हें तुरंत निपटा देगा। | NEW, unsourced: translated for the game, not reviewed |
 | zh | 药剂师的灵药 | translated: the game's own name, translated for the game | 把这个放进随便什么液体里喝下去；即使你有二十个人的力气，它也会立刻送你上路。 | NEW, unsourced: translated for the game, not reviewed |
@@ -1403,7 +1416,7 @@ English line: "Water, water, every where, nor any drop to drink." (Coleridge, Th
 | pl | Samuel Taylor Coleridge | wikidata: Q82409 label (pl) | Woda, woda, wszędzie woda, a ani kropli do picia. | NEW, unsourced: translated for the game, not reviewed |
 | ru | Сэмюэл Тейлор Кольридж | wikidata: Q82409 label (ru) | Вода, вода, везде вода, и ни капли для питья. | NEW, unsourced: translated for the game, not reviewed |
 | ar | صامويل تايلر كولريدج | wikidata: Q82409 label (ar) | ماء، ماء في كل مكان، ولا قطرة للشرب. | NEW, unsourced: translated for the game, not reviewed |
-| hi | सैम्युअल टेलर कॉलरिज | wikidata: Q82409 label (hi) | पानी, पानी, हर ओर पानी, पर पीने को एक बूँद नहीं। | NEW, unsourced: translated for the game, not reviewed |
+| hi | सैम्युअल टेलर कॉलरिज | wikidata: Q82409 label (hi) | पानी, पानी, हर तरफ़ समुद्र का पानी, पर पीने को एक बूँद नहीं। | NEW, unsourced: translated for the game, not reviewed |
 | zh | 塞缪尔·泰勒·柯勒律治 | wikidata: Q82409 label (zh) | 水，水，到处是水，却没有一滴可以喝。 | NEW, unsourced: translated for the game, not reviewed |
 | ja | サミュエル・テイラー・コールリッジ | wikidata: Q82409 label (ja) | 水、水、どこもかしこも水、それなのに飲める水は一滴もない。 | NEW, unsourced: translated for the game, not reviewed |
 | ko | 새뮤얼 테일러 콜리지 | wikidata: Q82409 label (ko) | 물, 물, 어디에나 물, 그러나 마실 물은 한 방울도 없네. | NEW, unsourced: translated for the game, not reviewed |
@@ -1579,7 +1592,7 @@ English line: "Remember me when I am gone away, gone far away into the silent la
 | pl | Christina Rossetti | wikidata: Q236596 label (pl) | Pamiętaj o mnie, gdy odejdę, odejdę daleko, do cichej krainy. | NEW, unsourced: translated for the game, not reviewed |
 | ru | Кристина Джорджина Россетти | wikidata: Q236596 label (ru) | Вспомни обо мне, когда я уйду, уйду далеко, в безмолвный край. | NEW, unsourced: translated for the game, not reviewed |
 | ar | كريستينا روسيتي | wikidata: Q236596 label (ar) | اذكرني حين أكون قد رحلت، رحلت بعيداً إلى الأرض الصامتة. | NEW, unsourced: translated for the game, not reviewed |
-| hi | (none) | missing: Q236596 has no label in hi and no hi.wikipedia.org article | मुझे याद करना जब मैं चली जाऊँ, दूर उस मौन देश में चली जाऊँ। | NEW, unsourced: translated for the game, not reviewed |
+| hi | (none) | missing: Q236596 has no label in hi and no hi.wikipedia.org article | मेरा स्मरण करना जब मैं चली जाऊँ, दूर उस मौन देश में चली जाऊँ। | NEW, unsourced: translated for the game, not reviewed |
 | zh | 克里斯蒂娜·罗塞蒂 | wikidata: Q236596 label (zh-hans) | 请记着我，当我已经离去，远远地去了那寂静的国度。 | NEW, unsourced: translated for the game, not reviewed |
 | ja | クリスティーナ・ロセッティ | wikidata: Q236596 label (ja) | 私を思い出してください、私が去ったあと、遠く静かな国へ去ったあとに。 | NEW, unsourced: translated for the game, not reviewed |
 | ko | 크리스티나 로제티 | wikidata: Q236596 label (ko) | 내가 떠나거든 나를 기억해 주세요, 멀리 고요한 땅으로 떠나거든. | NEW, unsourced: translated for the game, not reviewed |

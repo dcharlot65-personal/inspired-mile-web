@@ -9,11 +9,11 @@
       "detail": "the product name, kept as it is"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "¿He de compararte con un día de verano?",
+      "source": "new",
       "cite": "Shakespeare, Sonnet 18, line 1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "MO-001": {
      "name": {
@@ -22,11 +22,11 @@
       "detail": "Q673361 label (es)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Pero, ¡silencio! ¿Qué luz asoma por aquella ventana?",
+      "source": "new",
       "cite": "Romeo and Juliet 2.2"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "CA-001": {
      "name": {
@@ -35,11 +35,11 @@
       "detail": "Q1092632 label (es)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "¿Qué hay en un nombre? Lo que llamamos rosa...",
+      "source": "new",
       "cite": "Romeo and Juliet 2.2"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "DC-001": {
      "name": {
@@ -48,11 +48,11 @@
       "detail": "Q2447542 label (es)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Ser o no ser, esa es la cuestión.",
+      "source": "new",
       "cite": "Hamlet 3.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "DC-002": {
      "name": {
@@ -61,11 +61,11 @@
       "detail": "Q1800888 label (es)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Aquí hay romero, que es para el recuerdo.",
+      "source": "new",
       "cite": "Hamlet 4.5"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "MO-002": {
      "name": {
@@ -74,11 +74,11 @@
       "detail": "Q1767900 label (es)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "¡Mala peste a vuestras dos casas!",
+      "source": "new",
       "cite": "Romeo and Juliet 3.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "FA-001": {
      "name": {
@@ -87,11 +87,11 @@
       "detail": "Q1248616 label (es)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "¡Señor, qué necios son estos mortales!",
+      "source": "new",
       "cite": "A Midsummer Night's Dream 3.2"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "FA-002": {
      "name": {
@@ -100,11 +100,11 @@
       "detail": "Q2332221 label (es)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Ven, siéntate en este lecho florido.",
+      "source": "new",
       "cite": "A Midsummer Night's Dream 4.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "RL-001": {
      "name": {
@@ -113,11 +113,11 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "¡Ay, pobre Yorick! Yo lo conocí, Horacio.",
+      "source": "new",
       "cite": "Hamlet 5.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "RL-002": {
      "name": {
@@ -126,11 +126,11 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Ahora mis hechizos están todos deshechos.",
+      "source": "new",
       "cite": "The Tempest, Epilogue"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "PT-001": {
      "name": {
@@ -139,11 +139,11 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "El curso del amor verdadero nunca fue sereno.",
+      "source": "new",
       "cite": "A Midsummer Night's Dream 1.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "PT-002": {
      "name": {
@@ -152,11 +152,11 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Dobla, dobla, afán y tormento.",
+      "source": "new",
       "cite": "Macbeth 4.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "VC-001": {
      "name": {
@@ -165,11 +165,11 @@
       "detail": "Q15829750 has no label in es and no es.wikipedia.org article"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Si alguna vez volvéis a perturbar nuestras calles, vuestras vidas pagarán el quebranto de la paz.",
+      "source": "new",
       "cite": "Romeo and Juliet 1.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "VC-002": {
      "name": {
@@ -178,11 +178,11 @@
       "detail": "Q5503354 label (es)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Estos placeres violentos tienen finales violentos.",
+      "source": "new",
       "cite": "Romeo and Juliet 2.6"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "VC-003": {
      "name": {
@@ -191,11 +191,11 @@
       "detail": "Q7070187 label (es)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Yo soy la esclava que se afana por tu deleite.",
+      "source": "new",
       "cite": "Romeo and Juliet 2.5"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "TP-001": {
      "name": {
@@ -204,11 +204,11 @@
       "detail": "Q978952 label (es)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Estamos hechos de la misma materia que los sueños.",
+      "source": "new",
       "cite": "The Tempest 4.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "TP-002": {
      "name": {
@@ -217,11 +217,11 @@
       "detail": "Q658028 label (es)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "¡Salve, gran amo! ¡Grave señor, salve!",
+      "source": "new",
       "cite": "The Tempest 1.2"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "TP-003": {
      "name": {
@@ -230,11 +230,11 @@
       "detail": "Q533120 label (es)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Esta isla es mía, por Sycorax, mi madre.",
+      "source": "new",
       "cite": "The Tempest 1.2"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "MO-003": {
      "name": {
@@ -243,11 +243,11 @@
       "detail": "Q939489 label (es)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Yo solo mantengo la paz. Envaina tu espada.",
+      "source": "new",
       "cite": "Romeo and Juliet 1.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "CA-002": {
      "name": {
@@ -256,11 +256,11 @@
       "detail": "Q2412073 label (es)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "¿Qué, espada en mano y hablas de paz? Odio esa palabra.",
+      "source": "new",
       "cite": "Romeo and Juliet 1.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "DC-003": {
      "name": {
@@ -269,11 +269,11 @@
       "detail": "Q1811294 label (es)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Mis palabras vuelan a lo alto, mis pensamientos quedan abajo.",
+      "source": "new",
       "cite": "Hamlet 3.3"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "FA-003": {
      "name": {
@@ -282,11 +282,11 @@
       "detail": "Q1139234 label (es)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Mal encuentro a la luz de la luna, orgullosa Titania.",
+      "source": "new",
       "cite": "A Midsummer Night's Dream 2.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "RL-003": {
      "name": {
@@ -295,11 +295,11 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "¿Es un puñal esto que veo ante mí?",
+      "source": "new",
       "cite": "Macbeth 2.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "PT-003": {
      "name": {
@@ -308,11 +308,11 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Pondré un cinturón alrededor de la tierra en cuarenta minutos.",
+      "source": "new",
       "cite": "A Midsummer Night's Dream 2.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "SC-001": {
      "name": {
@@ -321,11 +321,11 @@
       "detail": "Q10322723 label (es)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Me atrevo a todo lo que conviene a un hombre; quien se atreve a más no lo es.",
+      "source": "new",
       "cite": "Macbeth 1.7"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "SC-002": {
      "name": {
@@ -334,11 +334,11 @@
       "detail": "Q2454065 label (es)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Venid, espíritus que servís a los pensamientos de muerte, quitadme aquí mi sexo.",
+      "source": "new",
       "cite": "Macbeth 1.5"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "SC-003": {
      "name": {
@@ -347,11 +347,11 @@
       "detail": "Q806945 label (es)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Engendrarás reyes, aunque tú no lo seas.",
+      "source": "new",
       "cite": "Macbeth 1.3"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "IL-001": {
      "name": {
@@ -360,11 +360,11 @@
       "detail": "Q7932996 has no label in es and no es.wikipedia.org article"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "No soy lo que soy.",
+      "source": "new",
       "cite": "Twelfth Night 3.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "IL-002": {
      "name": {
@@ -373,11 +373,11 @@
       "detail": "Q3844047 has no label in es and no es.wikipedia.org article"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Algunos nacen grandes, algunos alcanzan la grandeza, y a algunos la grandeza les es impuesta.",
+      "source": "new",
       "cite": "Twelfth Night 2.5"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "IL-003": {
      "name": {
@@ -386,11 +386,11 @@
       "detail": "Q7088017 has no label in es and no es.wikipedia.org article"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "El amor buscado es bueno, pero dado sin buscarlo es mejor.",
+      "source": "new",
       "cite": "Twelfth Night 3.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "RM-001": {
      "name": {
@@ -399,11 +399,11 @@
       "detail": "word 3 of 3 of \"Marco Junio Bruto\" (Q172248 label (es))"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "No porque amara menos a César, sino porque amaba más a Roma.",
+      "source": "new",
       "cite": "Julius Caesar 3.2"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "RM-002": {
      "name": {
@@ -412,11 +412,11 @@
       "detail": "word 2 of 3 of \"Cayo Casio Longino\" (Q207370 label (es))"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "La culpa, querido Bruto, no está en nuestras estrellas, sino en nosotros mismos.",
+      "source": "new",
       "cite": "Julius Caesar 1.2"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "RM-003": {
      "name": {
@@ -425,11 +425,11 @@
       "detail": "Q51673 label (es)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "¡Amigos, romanos, compatriotas, prestadme oídos!",
+      "source": "new",
       "cite": "Julius Caesar 3.2"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "MO-004": {
      "name": {
@@ -438,11 +438,11 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Muchas mañanas se le ha visto allí, aumentando con lágrimas el fresco rocío de la mañana.",
+      "source": "new",
       "cite": "Romeo and Juliet 1.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "CA-003": {
      "name": {
@@ -451,11 +451,11 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Casarte, ese es justamente el tema del que venía a hablar.",
+      "source": "new",
       "cite": "Romeo and Juliet 1.3"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "DC-004": {
      "name": {
@@ -464,11 +464,11 @@
       "detail": "Q3140503 label (es)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Ahora se quiebra un noble corazón. Buenas noches, dulce príncipe.",
+      "source": "new",
       "cite": "Hamlet 5.2"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "FA-004": {
      "name": {
@@ -477,11 +477,11 @@
       "detail": "word 2 of 2 of \"Nick Bottom\" (Q2190927 label (es))"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "He tenido una visión rarísima. He tenido un sueño que supera el entendimiento del hombre.",
+      "source": "new",
       "cite": "A Midsummer Night's Dream 4.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "VC-004": {
      "name": {
@@ -490,11 +490,11 @@
       "detail": "Q3687815 label (es)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Estos tiempos de duelo no dejan tiempo para el cortejo.",
+      "source": "new",
       "cite": "Romeo and Juliet 3.4"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "TP-004": {
      "name": {
@@ -503,11 +503,11 @@
       "detail": "Q634983 label (es)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "¡Oh, espléndido mundo nuevo, que tiene tales gentes!",
+      "source": "new",
       "cite": "The Tempest 5.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "RL-004": {
      "name": {
@@ -516,11 +516,11 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Mi generosidad es tan ilimitada como el mar, mi amor tan profundo.",
+      "source": "new",
       "cite": "Romeo and Juliet 2.2"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "RL-005": {
      "name": {
@@ -529,11 +529,11 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "No es oro todo lo que reluce.",
+      "source": "new",
       "cite": "The Merchant of Venice 2.7"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "RL-006": {
      "name": {
@@ -542,11 +542,11 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Inquieta yace la cabeza que lleva una corona.",
+      "source": "new",
       "cite": "Henry IV, Part 2 3.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "RL-007": {
      "name": {
@@ -555,11 +555,11 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Ahogaré mi libro.",
+      "source": "new",
       "cite": "The Tempest 5.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "RL-008": {
      "name": {
@@ -568,11 +568,11 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Oh, padre querido, son tus asuntos los que me ocupan.",
+      "source": "new",
       "cite": "King Lear 4.4"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "RL-009": {
      "name": {
@@ -581,11 +581,11 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "¡Dios te bendiga, Bottom! ¡Estás transformado!",
+      "source": "new",
       "cite": "A Midsummer Night's Dream 3.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "PT-004": {
      "name": {
@@ -594,11 +594,11 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Ni la adormidera, ni la mandrágora, ni todos los jarabes soporíferos del mundo.",
+      "source": "new",
       "cite": "Othello 3.3"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "PT-005": {
      "name": {
@@ -607,11 +607,11 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Tráeme aquella flor; la hierba que una vez te mostré.",
+      "source": "new",
       "cite": "A Midsummer Night's Dream 2.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "PT-006": {
      "name": {
@@ -620,11 +620,11 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "En mi hora de descanso tu tío se acercó a hurtadillas, con jugo de maldito beleño en un frasco.",
+      "source": "new",
       "cite": "Hamlet 1.5"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "PT-007": {
      "name": {
@@ -633,11 +633,11 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "En el caldero hierve y cuece; ojo de tritón y dedo de rana.",
+      "source": "new",
       "cite": "Macbeth 4.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "PT-008": {
      "name": {
@@ -646,11 +646,11 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "A cinco brazas yace tu padre; de sus huesos se ha hecho coral.",
+      "source": "new",
       "cite": "The Tempest 1.2"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "PT-009": {
      "name": {
@@ -659,11 +659,11 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Echa esto en cualquier líquido que quieras y bébelo; y, aunque tuvieras la fuerza de veinte hombres, te despacharía al instante.",
+      "source": "new",
       "cite": "Romeo and Juliet 5.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "LD-001": {
      "name": {
@@ -676,7 +676,7 @@
       "source": "new",
       "cite": "Wordsworth, \"I Wandered Lonely as a Cloud\", lines 1-2"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "LD-002": {
      "name": {
@@ -689,7 +689,7 @@
       "source": "new",
       "cite": "Coleridge, The Rime of the Ancient Mariner, Part II"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "LD-003": {
      "name": {
@@ -702,7 +702,7 @@
       "source": "new",
       "cite": "Keats, Endymion, Book I, lines 1-2"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "GC-001": {
      "name": {
@@ -715,7 +715,7 @@
       "source": "new",
       "cite": "Byron, \"She Walks in Beauty\", lines 1-2"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "GC-002": {
      "name": {
@@ -728,7 +728,7 @@
       "source": "new",
       "cite": "Mary Shelley, Frankenstein, chapter 20"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "GC-003": {
      "name": {
@@ -741,7 +741,7 @@
       "source": "new",
       "cite": "Poe, \"The Raven\", line 1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "GC-004": {
      "name": {
@@ -754,7 +754,7 @@
       "source": "new",
       "cite": "Blake, \"Auguries of Innocence\", lines 1-2"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "GC-005": {
      "name": {
@@ -767,7 +767,7 @@
       "source": "new",
       "cite": "P. B. Shelley, \"Ode to the West Wind\", last line"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "LD-004": {
      "name": {
@@ -780,7 +780,7 @@
       "source": "new",
       "cite": "E. B. Browning, Sonnets from the Portuguese 43, line 1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "LD-005": {
      "name": {
@@ -793,7 +793,7 @@
       "source": "new",
       "cite": "C. Rossetti, \"Remember\", lines 1-2"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "OL-001": {
      "name": {
@@ -806,7 +806,7 @@
       "source": "new",
       "cite": "the game's own line (Zeus's Homeric epithet, cloud-gatherer)"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "OL-002": {
      "name": {
@@ -819,7 +819,7 @@
       "source": "new",
       "cite": "the game's own line (after Hegel's owl of Minerva)"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "OL-003": {
      "name": {
@@ -832,7 +832,7 @@
       "source": "new",
       "cite": "the game's own line"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "OL-004": {
      "name": {
@@ -845,7 +845,7 @@
       "source": "new",
       "cite": "the game's own line"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "OL-005": {
      "name": {
@@ -858,7 +858,7 @@
       "source": "new",
       "cite": "the game's own line"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "UW-001": {
      "name": {
@@ -871,7 +871,7 @@
       "source": "new",
       "cite": "the game's own line"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "UW-002": {
      "name": {
@@ -884,7 +884,7 @@
       "source": "new",
       "cite": "the game's own line"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "OL-006": {
      "name": {
@@ -897,7 +897,7 @@
       "source": "new",
       "cite": "the game's own paraphrase of Odyssey 1.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "UW-003": {
      "name": {
@@ -910,7 +910,7 @@
       "source": "new",
       "cite": "the game's own line"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "OL-007": {
      "name": {
@@ -923,7 +923,7 @@
       "source": "new",
       "cite": "the game's own paraphrase of Iliad 9.410-416"
      },
-     "scene": "missing"
+     "scene": "translated"
     }
    },
    "houses": {
@@ -1016,7 +1016,7 @@
       "page": "Sonnets de Shakespeare (trad. Hugo)/018",
       "revid": 7372651
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "MO-001": {
      "name": {
@@ -1035,7 +1035,7 @@
       "page": "Roméo et Juliette (trad. Hugo)",
       "revid": 15966892
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "CA-001": {
      "name": {
@@ -1054,7 +1054,7 @@
       "page": "Roméo et Juliette (trad. Hugo)",
       "revid": 15966892
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "DC-001": {
      "name": {
@@ -1073,7 +1073,7 @@
       "page": "Le second Hamlet (trad. Hugo)",
       "revid": 15966629
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "DC-002": {
      "name": {
@@ -1092,7 +1092,7 @@
       "page": "Le second Hamlet (trad. Hugo)",
       "revid": 15966629
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "MO-002": {
      "name": {
@@ -1111,7 +1111,7 @@
       "page": "Roméo et Juliette (trad. Hugo)",
       "revid": 15966892
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "FA-001": {
      "name": {
@@ -1130,7 +1130,7 @@
       "page": "Le Songe d’une nuit d’été (trad. Hugo)",
       "revid": 15966622
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "FA-002": {
      "name": {
@@ -1149,7 +1149,7 @@
       "page": "Le Songe d’une nuit d’été (trad. Hugo)",
       "revid": 15966622
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "RL-001": {
      "name": {
@@ -1168,7 +1168,7 @@
       "page": "Le second Hamlet (trad. Hugo)",
       "revid": 15966629
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "RL-002": {
      "name": {
@@ -1187,7 +1187,7 @@
       "page": "La Tempête (Shakespeare, trad. Hugo)",
       "revid": 15966548
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "PT-001": {
      "name": {
@@ -1206,7 +1206,7 @@
       "page": "Le Songe d’une nuit d’été (trad. Hugo)",
       "revid": 15966622
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "PT-002": {
      "name": {
@@ -1225,7 +1225,7 @@
       "page": "Macbeth (trad. Hugo)",
       "revid": 15966804
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "VC-001": {
      "name": {
@@ -1244,7 +1244,7 @@
       "page": "Roméo et Juliette (trad. Hugo)",
       "revid": 15966892
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "VC-002": {
      "name": {
@@ -1263,7 +1263,7 @@
       "page": "Roméo et Juliette (trad. Hugo)",
       "revid": 15966892
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "VC-003": {
      "name": {
@@ -1282,7 +1282,7 @@
       "page": "Roméo et Juliette (trad. Hugo)",
       "revid": 15966892
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "TP-001": {
      "name": {
@@ -1301,7 +1301,7 @@
       "page": "La Tempête (Shakespeare, trad. Hugo)",
       "revid": 15966548
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "TP-002": {
      "name": {
@@ -1320,7 +1320,7 @@
       "page": "La Tempête (Shakespeare, trad. Hugo)",
       "revid": 15966548
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "TP-003": {
      "name": {
@@ -1339,7 +1339,7 @@
       "page": "La Tempête (Shakespeare, trad. Hugo)",
       "revid": 15966548
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "MO-003": {
      "name": {
@@ -1358,7 +1358,7 @@
       "page": "Roméo et Juliette (trad. Hugo)",
       "revid": 15966892
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "CA-002": {
      "name": {
@@ -1377,7 +1377,7 @@
       "page": "Roméo et Juliette (trad. Hugo)",
       "revid": 15966892
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "DC-003": {
      "name": {
@@ -1396,7 +1396,7 @@
       "page": "Le second Hamlet (trad. Hugo)",
       "revid": 15966629
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "FA-003": {
      "name": {
@@ -1415,7 +1415,7 @@
       "page": "Le Songe d’une nuit d’été (trad. Hugo)",
       "revid": 15966622
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "RL-003": {
      "name": {
@@ -1434,7 +1434,7 @@
       "page": "Macbeth (trad. Hugo)",
       "revid": 15966804
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "PT-003": {
      "name": {
@@ -1453,7 +1453,7 @@
       "page": "Le Songe d’une nuit d’été (trad. Hugo)",
       "revid": 15966622
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "SC-001": {
      "name": {
@@ -1472,7 +1472,7 @@
       "page": "Macbeth (trad. Hugo)",
       "revid": 15966804
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "SC-002": {
      "name": {
@@ -1491,7 +1491,7 @@
       "page": "Macbeth (trad. Hugo)",
       "revid": 15966804
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "SC-003": {
      "name": {
@@ -1510,7 +1510,7 @@
       "page": "Macbeth (trad. Hugo)",
       "revid": 15966804
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "IL-001": {
      "name": {
@@ -1529,7 +1529,7 @@
       "page": "Le soir des rois ou ce que vous voudrez (trad. Hugo)",
       "revid": 15966630
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "IL-002": {
      "name": {
@@ -1548,7 +1548,7 @@
       "page": "Le soir des rois ou ce que vous voudrez (trad. Hugo)",
       "revid": 15966630
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "IL-003": {
      "name": {
@@ -1561,7 +1561,7 @@
       "source": "new",
       "cite": "Twelfth Night 3.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "RM-001": {
      "name": {
@@ -1580,7 +1580,7 @@
       "page": "Jules César (Shakespeare, trad. Hugo)",
       "revid": 15966514
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "RM-002": {
      "name": {
@@ -1599,7 +1599,7 @@
       "page": "Jules César (Shakespeare, trad. Hugo)",
       "revid": 15966514
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "RM-003": {
      "name": {
@@ -1618,7 +1618,7 @@
       "page": "Jules César (Shakespeare, trad. Hugo)",
       "revid": 15966514
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "MO-004": {
      "name": {
@@ -1637,7 +1637,7 @@
       "page": "Roméo et Juliette (trad. Hugo)",
       "revid": 15966892
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "CA-003": {
      "name": {
@@ -1650,7 +1650,7 @@
       "source": "new",
       "cite": "Romeo and Juliet 1.3"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "DC-004": {
      "name": {
@@ -1669,7 +1669,7 @@
       "page": "Le second Hamlet (trad. Hugo)",
       "revid": 15966629
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "FA-004": {
      "name": {
@@ -1688,7 +1688,7 @@
       "page": "Le Songe d’une nuit d’été (trad. Hugo)",
       "revid": 15966622
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "VC-004": {
      "name": {
@@ -1707,7 +1707,7 @@
       "page": "Roméo et Juliette (trad. Hugo)",
       "revid": 15966892
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "TP-004": {
      "name": {
@@ -1720,7 +1720,7 @@
       "source": "new",
       "cite": "The Tempest 5.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "RL-004": {
      "name": {
@@ -1739,7 +1739,7 @@
       "page": "Roméo et Juliette (trad. Hugo)",
       "revid": 15966892
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "RL-005": {
      "name": {
@@ -1758,7 +1758,7 @@
       "page": "Le Marchand de Venise (trad. Hugo)",
       "revid": 15966581
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "RL-006": {
      "name": {
@@ -1777,7 +1777,7 @@
       "page": "Henry IV, Deuxième Partie (trad. Hugo)",
       "revid": 15966472
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "RL-007": {
      "name": {
@@ -1796,7 +1796,7 @@
       "page": "La Tempête (Shakespeare, trad. Hugo)",
       "revid": 15966548
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "RL-008": {
      "name": {
@@ -1815,7 +1815,7 @@
       "page": "Le Roi Lear (trad. Hugo)",
       "revid": 15966612
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "RL-009": {
      "name": {
@@ -1834,7 +1834,7 @@
       "page": "Le Songe d’une nuit d’été (trad. Hugo)",
       "revid": 15966622
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "PT-004": {
      "name": {
@@ -1853,7 +1853,7 @@
       "page": "Othello (trad. Hugo)",
       "revid": 15966844
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "PT-005": {
      "name": {
@@ -1872,7 +1872,7 @@
       "page": "Le Songe d’une nuit d’été (trad. Hugo)",
       "revid": 15966622
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "PT-006": {
      "name": {
@@ -1891,7 +1891,7 @@
       "page": "Le second Hamlet (trad. Hugo)",
       "revid": 15966629
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "PT-007": {
      "name": {
@@ -1910,7 +1910,7 @@
       "page": "Macbeth (trad. Hugo)",
       "revid": 15966804
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "PT-008": {
      "name": {
@@ -1929,7 +1929,7 @@
       "page": "La Tempête (Shakespeare, trad. Hugo)",
       "revid": 15966548
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "PT-009": {
      "name": {
@@ -1948,7 +1948,7 @@
       "page": "Roméo et Juliette (trad. Hugo)",
       "revid": 15966892
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "LD-001": {
      "name": {
@@ -1961,7 +1961,7 @@
       "source": "new",
       "cite": "Wordsworth, \"I Wandered Lonely as a Cloud\", lines 1-2"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "LD-002": {
      "name": {
@@ -1974,7 +1974,7 @@
       "source": "new",
       "cite": "Coleridge, The Rime of the Ancient Mariner, Part II"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "LD-003": {
      "name": {
@@ -1987,7 +1987,7 @@
       "source": "new",
       "cite": "Keats, Endymion, Book I, lines 1-2"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "GC-001": {
      "name": {
@@ -2000,7 +2000,7 @@
       "source": "new",
       "cite": "Byron, \"She Walks in Beauty\", lines 1-2"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "GC-002": {
      "name": {
@@ -2013,7 +2013,7 @@
       "source": "new",
       "cite": "Mary Shelley, Frankenstein, chapter 20"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "GC-003": {
      "name": {
@@ -2026,7 +2026,7 @@
       "source": "new",
       "cite": "Poe, \"The Raven\", line 1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "GC-004": {
      "name": {
@@ -2039,7 +2039,7 @@
       "source": "new",
       "cite": "Blake, \"Auguries of Innocence\", lines 1-2"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "GC-005": {
      "name": {
@@ -2052,7 +2052,7 @@
       "source": "new",
       "cite": "P. B. Shelley, \"Ode to the West Wind\", last line"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "LD-004": {
      "name": {
@@ -2065,7 +2065,7 @@
       "source": "new",
       "cite": "E. B. Browning, Sonnets from the Portuguese 43, line 1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "LD-005": {
      "name": {
@@ -2078,7 +2078,7 @@
       "source": "new",
       "cite": "C. Rossetti, \"Remember\", lines 1-2"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "OL-001": {
      "name": {
@@ -2091,7 +2091,7 @@
       "source": "new",
       "cite": "the game's own line (Zeus's Homeric epithet, cloud-gatherer)"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "OL-002": {
      "name": {
@@ -2104,7 +2104,7 @@
       "source": "new",
       "cite": "the game's own line (after Hegel's owl of Minerva)"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "OL-003": {
      "name": {
@@ -2117,7 +2117,7 @@
       "source": "new",
       "cite": "the game's own line"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "OL-004": {
      "name": {
@@ -2130,7 +2130,7 @@
       "source": "new",
       "cite": "the game's own line"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "OL-005": {
      "name": {
@@ -2143,7 +2143,7 @@
       "source": "new",
       "cite": "the game's own line"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "UW-001": {
      "name": {
@@ -2156,7 +2156,7 @@
       "source": "new",
       "cite": "the game's own line"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "UW-002": {
      "name": {
@@ -2169,7 +2169,7 @@
       "source": "new",
       "cite": "the game's own line"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "OL-006": {
      "name": {
@@ -2182,7 +2182,7 @@
       "source": "new",
       "cite": "the game's own paraphrase of Odyssey 1.1"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "UW-003": {
      "name": {
@@ -2195,7 +2195,7 @@
       "source": "new",
       "cite": "the game's own line"
      },
-     "scene": "missing"
+     "scene": "translated"
     },
     "OL-007": {
      "name": {
@@ -2208,7 +2208,7 @@
       "source": "new",
       "cite": "the game's own paraphrase of Iliad 9.410-416"
      },
-     "scene": "missing"
+     "scene": "translated"
     }
    },
    "houses": {
@@ -2291,8 +2291,8 @@
       "detail": "the product name, kept as it is"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Soll ich dich einem Sommertag vergleichen?",
+      "source": "new",
       "cite": "Shakespeare, Sonnet 18, line 1"
      },
      "scene": "missing"
@@ -2304,9 +2304,15 @@
       "detail": "Q673361 label (de)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
-      "cite": "Romeo and Juliet 2.2"
+      "text": "Doch still, was schimmert durch das Fenster dort?",
+      "source": "published",
+      "cite": "Romeo and Juliet 2.2",
+      "translator": "August Wilhelm Schlegel (1767–1845)",
+      "edition": "Romeo und Julia, 1797 (de.wikisource.org transcription)",
+      "status": "Public domain: Germany (life + 70 years; translator died 1845) and United States (published before 1931)",
+      "url": "https://de.wikisource.org/wiki/Romeo_und_Julia_%28%C3%9Cbersetzung_Schlegel%29/Zweiter_Aufzug?oldid=1730815",
+      "page": "Romeo und Julia (Übersetzung Schlegel)/Zweiter Aufzug",
+      "revid": 1730815
      },
      "scene": "missing"
     },
@@ -2317,9 +2323,15 @@
       "detail": "Q1092632 label (de)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
-      "cite": "Romeo and Juliet 2.2"
+      "text": "Was ist ein Name? Was uns Rose heißt, / Wie es auch hieße, würde lieblich duften",
+      "source": "published",
+      "cite": "Romeo and Juliet 2.2",
+      "translator": "August Wilhelm Schlegel (1767–1845)",
+      "edition": "Romeo und Julia, 1797 (de.wikisource.org transcription)",
+      "status": "Public domain: Germany (life + 70 years; translator died 1845) and United States (published before 1931)",
+      "url": "https://de.wikisource.org/wiki/Romeo_und_Julia_%28%C3%9Cbersetzung_Schlegel%29/Zweiter_Aufzug?oldid=1730815",
+      "page": "Romeo und Julia (Übersetzung Schlegel)/Zweiter Aufzug",
+      "revid": 1730815
      },
      "scene": "missing"
     },
@@ -2330,8 +2342,8 @@
       "detail": "Q2447542 label (de)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Sein oder Nichtsein, das ist hier die Frage.",
+      "source": "new",
       "cite": "Hamlet 3.1"
      },
      "scene": "missing"
@@ -2343,8 +2355,8 @@
       "detail": "Q1800888 label (de)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Da ist Rosmarin, das ist zur Erinnerung.",
+      "source": "new",
       "cite": "Hamlet 4.5"
      },
      "scene": "missing"
@@ -2356,9 +2368,15 @@
       "detail": "Q1767900 label (de)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
-      "cite": "Romeo and Juliet 3.1"
+      "text": "Zum Teufel beider Sippschaft!",
+      "source": "published",
+      "cite": "Romeo and Juliet 3.1",
+      "translator": "August Wilhelm Schlegel (1767–1845)",
+      "edition": "Romeo und Julia, 1797 (de.wikisource.org transcription)",
+      "status": "Public domain: Germany (life + 70 years; translator died 1845) and United States (published before 1931)",
+      "url": "https://de.wikisource.org/wiki/Romeo_und_Julia_%28%C3%9Cbersetzung_Schlegel%29/Dritter_Aufzug?oldid=4062134",
+      "page": "Romeo und Julia (Übersetzung Schlegel)/Dritter Aufzug",
+      "revid": 4062134
      },
      "scene": "missing"
     },
@@ -2369,8 +2387,8 @@
       "detail": "Q1248616 label (de)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Herr, was für Narren diese Sterblichen sind!",
+      "source": "new",
       "cite": "A Midsummer Night's Dream 3.2"
      },
      "scene": "missing"
@@ -2382,8 +2400,8 @@
       "detail": "Q2332221 has no label in de and no de.wikipedia.org article"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Komm, setz dich nieder auf dies Blumenbett.",
+      "source": "new",
       "cite": "A Midsummer Night's Dream 4.1"
      },
      "scene": "missing"
@@ -2395,8 +2413,8 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Ach, armer Yorick! Ich kannte ihn, Horatio.",
+      "source": "new",
       "cite": "Hamlet 5.1"
      },
      "scene": "missing"
@@ -2408,8 +2426,8 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Nun sind all meine Zauber dahin.",
+      "source": "new",
       "cite": "The Tempest, Epilogue"
      },
      "scene": "missing"
@@ -2421,8 +2439,8 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Der Lauf der wahren Liebe ging noch niemals glatt.",
+      "source": "new",
       "cite": "A Midsummer Night's Dream 1.1"
      },
      "scene": "missing"
@@ -2434,8 +2452,8 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Doppelt, doppelt Müh und Plage.",
+      "source": "new",
       "cite": "Macbeth 4.1"
      },
      "scene": "missing"
@@ -2447,8 +2465,8 @@
       "detail": "Q15829750 has no label in de and no de.wikipedia.org article"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Wenn ihr je wieder unsere Straßen stört, so zahlt euer Leben für den gebrochenen Frieden.",
+      "source": "new",
       "cite": "Romeo and Juliet 1.1"
      },
      "scene": "missing"
@@ -2460,9 +2478,15 @@
       "detail": "Q5503354 label (de)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
-      "cite": "Romeo and Juliet 2.6"
+      "text": "So wilde Freude nimmt ein wildes Ende",
+      "source": "published",
+      "cite": "Romeo and Juliet 2.6",
+      "translator": "August Wilhelm Schlegel (1767–1845)",
+      "edition": "Romeo und Julia, 1797 (de.wikisource.org transcription)",
+      "status": "Public domain: Germany (life + 70 years; translator died 1845) and United States (published before 1931)",
+      "url": "https://de.wikisource.org/wiki/Romeo_und_Julia_%28%C3%9Cbersetzung_Schlegel%29/Zweiter_Aufzug?oldid=1730815",
+      "page": "Romeo und Julia (Übersetzung Schlegel)/Zweiter Aufzug",
+      "revid": 1730815
      },
      "scene": "missing"
     },
@@ -2473,8 +2497,8 @@
       "detail": "Q7070187 label (de)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Ich bin die Magd und plage mich für Eure Lust.",
+      "source": "new",
       "cite": "Romeo and Juliet 2.5"
      },
      "scene": "missing"
@@ -2486,8 +2510,8 @@
       "detail": "Q978952 label (de)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Wir sind aus solchem Stoff, aus dem die Träume sind.",
+      "source": "new",
       "cite": "The Tempest 4.1"
      },
      "scene": "missing"
@@ -2499,8 +2523,8 @@
       "detail": "Q658028 label (de)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Heil dir, großer Meister! Würdiger Herr, Heil!",
+      "source": "new",
       "cite": "The Tempest 1.2"
      },
      "scene": "missing"
@@ -2512,8 +2536,8 @@
       "detail": "Q533120 label (de)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Diese Insel ist mein, von Sycorax, meiner Mutter.",
+      "source": "new",
       "cite": "The Tempest 1.2"
      },
      "scene": "missing"
@@ -2525,9 +2549,15 @@
       "detail": "Q939489 label (de)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
-      "cite": "Romeo and Juliet 1.1"
+      "text": "Ich stifte Frieden: steck’ dein Schwert nur ein",
+      "source": "published",
+      "cite": "Romeo and Juliet 1.1",
+      "translator": "August Wilhelm Schlegel (1767–1845)",
+      "edition": "Romeo und Julia, 1797 (de.wikisource.org transcription)",
+      "status": "Public domain: Germany (life + 70 years; translator died 1845) and United States (published before 1931)",
+      "url": "https://de.wikisource.org/wiki/Romeo_und_Julia_%28%C3%9Cbersetzung_Schlegel%29/Erster_Aufzug?oldid=4062133",
+      "page": "Romeo und Julia (Übersetzung Schlegel)/Erster Aufzug",
+      "revid": 4062133
      },
      "scene": "missing"
     },
@@ -2538,8 +2568,8 @@
       "detail": "Q2412073 label (de)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Was, mit gezogenem Schwert sprichst du von Frieden? Ich hasse das Wort.",
+      "source": "new",
       "cite": "Romeo and Juliet 1.1"
      },
      "scene": "missing"
@@ -2551,8 +2581,8 @@
       "detail": "Q1811294 label (de)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Meine Worte fliegen auf, meine Gedanken bleiben unten.",
+      "source": "new",
       "cite": "Hamlet 3.3"
      },
      "scene": "missing"
@@ -2564,8 +2594,8 @@
       "detail": "Q1139234 label (de)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Schlimm getroffen im Mondlicht, stolze Titania.",
+      "source": "new",
       "cite": "A Midsummer Night's Dream 2.1"
      },
      "scene": "missing"
@@ -2577,8 +2607,8 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Ist das ein Dolch, was ich vor mir erblicke?",
+      "source": "new",
       "cite": "Macbeth 2.1"
      },
      "scene": "missing"
@@ -2590,8 +2620,8 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Ich lege einen Gürtel um die Erde in vierzig Minuten.",
+      "source": "new",
       "cite": "A Midsummer Night's Dream 2.1"
      },
      "scene": "missing"
@@ -2603,8 +2633,8 @@
       "detail": "Q10322723 label (de)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Ich wage alles, was dem Manne ziemt; wer mehr wagt, der ist keiner.",
+      "source": "new",
       "cite": "Macbeth 1.7"
      },
      "scene": "missing"
@@ -2616,8 +2646,8 @@
       "detail": "Q2454065 label (de)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Kommt, ihr Geister, die ihr den Mordgedanken dient, entweibt mich hier.",
+      "source": "new",
       "cite": "Macbeth 1.5"
      },
      "scene": "missing"
@@ -2629,8 +2659,8 @@
       "detail": "Q806945 label (de)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Du wirst Könige zeugen, obgleich du selbst keiner bist.",
+      "source": "new",
       "cite": "Macbeth 1.3"
      },
      "scene": "missing"
@@ -2642,8 +2672,8 @@
       "detail": "Q7932996 has no label in de and no de.wikipedia.org article"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Ich bin nicht, was ich bin.",
+      "source": "new",
       "cite": "Twelfth Night 3.1"
      },
      "scene": "missing"
@@ -2655,8 +2685,8 @@
       "detail": "Q3844047 label (de)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Einige werden groß geboren, einige erringen Größe, und einigen wird die Größe aufgedrängt.",
+      "source": "new",
       "cite": "Twelfth Night 2.5"
      },
      "scene": "missing"
@@ -2668,8 +2698,8 @@
       "detail": "Q7088017 has no label in de and no de.wikipedia.org article"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Gesuchte Liebe ist gut, doch ungesucht geschenkte ist besser.",
+      "source": "new",
       "cite": "Twelfth Night 3.1"
      },
      "scene": "missing"
@@ -2681,8 +2711,8 @@
       "detail": "word 3 of 3 of \"Marcus Iunius Brutus\" (Q172248 label (de))"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Nicht weil ich Cäsar weniger liebte, sondern weil ich Rom mehr liebte.",
+      "source": "new",
       "cite": "Julius Caesar 3.2"
      },
      "scene": "missing"
@@ -2694,8 +2724,8 @@
       "detail": "word 2 of 3 of \"Gaius Cassius Longinus\" (Q207370 label (de))"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Die Schuld, lieber Brutus, liegt nicht in unseren Sternen, sondern in uns selbst.",
+      "source": "new",
       "cite": "Julius Caesar 1.2"
      },
      "scene": "missing"
@@ -2707,8 +2737,8 @@
       "detail": "Q51673 label (de)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Freunde, Römer, Landsleute, leiht mir euer Ohr!",
+      "source": "new",
       "cite": "Julius Caesar 3.2"
      },
      "scene": "missing"
@@ -2720,8 +2750,8 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "So manchen Morgen ward er dort gesehen, wie er mit Tränen den frischen Morgentau vermehrte.",
+      "source": "new",
       "cite": "Romeo and Juliet 1.1"
      },
      "scene": "missing"
@@ -2733,8 +2763,8 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Heiraten, eben das Heiraten ist das Thema, über das ich sprechen wollte.",
+      "source": "new",
       "cite": "Romeo and Juliet 1.3"
      },
      "scene": "missing"
@@ -2746,8 +2776,8 @@
       "detail": "Q3140503 label (de)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Nun bricht ein edles Herz. Gute Nacht, süßer Prinz.",
+      "source": "new",
       "cite": "Hamlet 5.2"
      },
      "scene": "missing"
@@ -2759,8 +2789,8 @@
       "detail": "Q2190927 label (de)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Ich hatte ein höchst seltenes Gesicht. Ich hatte einen Traum, der über Menschenwitz geht.",
+      "source": "new",
       "cite": "A Midsummer Night's Dream 4.1"
      },
      "scene": "missing"
@@ -2772,8 +2802,8 @@
       "detail": "Q3687815 has no label in de and no de.wikipedia.org article"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Diese Zeiten des Wehs lassen keine Zeit zum Werben.",
+      "source": "new",
       "cite": "Romeo and Juliet 3.4"
      },
      "scene": "missing"
@@ -2785,8 +2815,8 @@
       "detail": "Q634983 label (de)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "O schöne neue Welt, die solche Menschen trägt!",
+      "source": "new",
       "cite": "The Tempest 5.1"
      },
      "scene": "missing"
@@ -2798,9 +2828,15 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
-      "cite": "Romeo and Juliet 2.2"
+      "text": "So grenzenlos ist meine Huld, die Liebe / So tief ja wie das Meer",
+      "source": "published",
+      "cite": "Romeo and Juliet 2.2",
+      "translator": "August Wilhelm Schlegel (1767–1845)",
+      "edition": "Romeo und Julia, 1797 (de.wikisource.org transcription)",
+      "status": "Public domain: Germany (life + 70 years; translator died 1845) and United States (published before 1931)",
+      "url": "https://de.wikisource.org/wiki/Romeo_und_Julia_%28%C3%9Cbersetzung_Schlegel%29/Zweiter_Aufzug?oldid=1730815",
+      "page": "Romeo und Julia (Übersetzung Schlegel)/Zweiter Aufzug",
+      "revid": 1730815
      },
      "scene": "missing"
     },
@@ -2811,8 +2847,8 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Nicht alles, was glänzt, ist Gold.",
+      "source": "new",
       "cite": "The Merchant of Venice 2.7"
      },
      "scene": "missing"
@@ -2824,8 +2860,8 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Unruhig liegt das Haupt, das eine Krone trägt.",
+      "source": "new",
       "cite": "Henry IV, Part 2 3.1"
      },
      "scene": "missing"
@@ -2837,8 +2873,8 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Ich will mein Buch ertränken.",
+      "source": "new",
       "cite": "The Tempest 5.1"
      },
      "scene": "missing"
@@ -2850,8 +2886,8 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "O lieber Vater, es ist deine Sache, um die ich mich bemühe.",
+      "source": "new",
       "cite": "King Lear 4.4"
      },
      "scene": "missing"
@@ -2863,8 +2899,8 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Gott segne dich, Zettel! Du bist verwandelt!",
+      "source": "new",
       "cite": "A Midsummer Night's Dream 3.1"
      },
      "scene": "missing"
@@ -2876,8 +2912,8 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Nicht Mohn, nicht Mandragora, noch alle Schlummersäfte dieser Welt.",
+      "source": "new",
       "cite": "Othello 3.3"
      },
      "scene": "missing"
@@ -2889,8 +2925,8 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Hol mir die Blume; das Kraut, das ich dir einst gezeigt.",
+      "source": "new",
       "cite": "A Midsummer Night's Dream 2.1"
      },
      "scene": "missing"
@@ -2902,8 +2938,8 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "In meiner sicheren Stunde schlich dein Oheim herbei, mit dem Saft verfluchten Bilsenkrauts in einem Fläschchen.",
+      "source": "new",
       "cite": "Hamlet 1.5"
      },
      "scene": "missing"
@@ -2915,8 +2951,8 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Im Kessel sied und brat; Molchesauge und Froschzehe.",
+      "source": "new",
       "cite": "Macbeth 4.1"
      },
      "scene": "missing"
@@ -2928,8 +2964,8 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Fünf Faden tief liegt dein Vater; aus seinen Gebeinen sind Korallen geworden.",
+      "source": "new",
       "cite": "The Tempest 1.2"
      },
      "scene": "missing"
@@ -2941,8 +2977,8 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Tut dies in irgendeine Flüssigkeit und trinkt es aus; und hättet Ihr die Kraft von zwanzig Männern, es würde Euch sogleich hinraffen.",
+      "source": "new",
       "cite": "Romeo and Juliet 5.1"
      },
      "scene": "missing"
@@ -3288,8 +3324,8 @@
       "detail": "the product name, kept as it is"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Dovrò paragonarti a un giorno d’estate?",
+      "source": "new",
       "cite": "Shakespeare, Sonnet 18, line 1"
      },
      "scene": "missing"
@@ -3301,8 +3337,8 @@
       "detail": "Q673361 label (it)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Ma piano, quale luce irrompe da quella finestra?",
+      "source": "new",
       "cite": "Romeo and Juliet 2.2"
      },
      "scene": "missing"
@@ -3314,8 +3350,8 @@
       "detail": "Q1092632 label (it)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Che cosa c’è in un nome? Ciò che chiamiamo rosa...",
+      "source": "new",
       "cite": "Romeo and Juliet 2.2"
      },
      "scene": "missing"
@@ -3327,8 +3363,8 @@
       "detail": "Q2447542 label (it)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Essere o non essere, questo è il problema.",
+      "source": "new",
       "cite": "Hamlet 3.1"
      },
      "scene": "missing"
@@ -3340,8 +3376,8 @@
       "detail": "Q1800888 label (it)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Ecco del rosmarino, che è per il ricordo.",
+      "source": "new",
       "cite": "Hamlet 4.5"
      },
      "scene": "missing"
@@ -3353,8 +3389,8 @@
       "detail": "Q1767900 label (it)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "La peste a tutte e due le vostre case!",
+      "source": "new",
       "cite": "Romeo and Juliet 3.1"
      },
      "scene": "missing"
@@ -3366,8 +3402,8 @@
       "detail": "Q1248616 label (it)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Signore, che pazzi sono questi mortali!",
+      "source": "new",
       "cite": "A Midsummer Night's Dream 3.2"
      },
      "scene": "missing"
@@ -3379,8 +3415,8 @@
       "detail": "Q2332221 label (it)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Vieni, siediti su questo letto fiorito.",
+      "source": "new",
       "cite": "A Midsummer Night's Dream 4.1"
      },
      "scene": "missing"
@@ -3392,8 +3428,8 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Ahimè, povero Yorick! Io lo conoscevo, Orazio.",
+      "source": "new",
       "cite": "Hamlet 5.1"
      },
      "scene": "missing"
@@ -3405,8 +3441,8 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Ora i miei incanti sono tutti spezzati.",
+      "source": "new",
       "cite": "The Tempest, Epilogue"
      },
      "scene": "missing"
@@ -3418,8 +3454,8 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Il corso del vero amore non fu mai liscio.",
+      "source": "new",
       "cite": "A Midsummer Night's Dream 1.1"
      },
      "scene": "missing"
@@ -3431,8 +3467,8 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Doppio, doppio, fatica e travaglio.",
+      "source": "new",
       "cite": "Macbeth 4.1"
      },
      "scene": "missing"
@@ -3444,8 +3480,8 @@
       "detail": "Q15829750 has no label in it and no it.wikipedia.org article"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Se mai turberete ancora le nostre strade, le vostre vite pagheranno la pace violata.",
+      "source": "new",
       "cite": "Romeo and Juliet 1.1"
      },
      "scene": "missing"
@@ -3457,8 +3493,8 @@
       "detail": "Q5503354 label (it)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Queste gioie violente hanno fini violente.",
+      "source": "new",
       "cite": "Romeo and Juliet 2.6"
      },
      "scene": "missing"
@@ -3470,8 +3506,8 @@
       "detail": "Q7070187 has no label in it and no it.wikipedia.org article"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Io sono la serva che fatica per il tuo piacere.",
+      "source": "new",
       "cite": "Romeo and Juliet 2.5"
      },
      "scene": "missing"
@@ -3483,8 +3519,8 @@
       "detail": "Q978952 label (it)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Siamo fatti della stessa sostanza di cui sono fatti i sogni.",
+      "source": "new",
       "cite": "The Tempest 4.1"
      },
      "scene": "missing"
@@ -3496,8 +3532,8 @@
       "detail": "Q658028 label (it)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Salve, grande padrone! Grave signore, salve!",
+      "source": "new",
       "cite": "The Tempest 1.2"
      },
      "scene": "missing"
@@ -3509,8 +3545,8 @@
       "detail": "Q533120 label (it)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Quest’isola è mia, per via di Sycorax, mia madre.",
+      "source": "new",
       "cite": "The Tempest 1.2"
      },
      "scene": "missing"
@@ -3522,8 +3558,8 @@
       "detail": "Q939489 label (it)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Io non faccio che mantenere la pace. Rinfodera la spada.",
+      "source": "new",
       "cite": "Romeo and Juliet 1.1"
      },
      "scene": "missing"
@@ -3535,8 +3571,8 @@
       "detail": "Q2412073 label (it)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Come, con la spada in pugno parli di pace? Odio questa parola.",
+      "source": "new",
       "cite": "Romeo and Juliet 1.1"
      },
      "scene": "missing"
@@ -3548,8 +3584,8 @@
       "detail": "Q1811294 label (it)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Le mie parole volano in alto, i miei pensieri restano in basso.",
+      "source": "new",
       "cite": "Hamlet 3.3"
      },
      "scene": "missing"
@@ -3561,8 +3597,8 @@
       "detail": "Q1139234 label (it)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Malaugurato incontro al chiaro di luna, superba Titania.",
+      "source": "new",
       "cite": "A Midsummer Night's Dream 2.1"
      },
      "scene": "missing"
@@ -3574,8 +3610,8 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "È un pugnale questo che vedo davanti a me?",
+      "source": "new",
       "cite": "Macbeth 2.1"
      },
      "scene": "missing"
@@ -3587,8 +3623,8 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Metterò una cintura intorno alla terra in quaranta minuti.",
+      "source": "new",
       "cite": "A Midsummer Night's Dream 2.1"
      },
      "scene": "missing"
@@ -3600,8 +3636,8 @@
       "detail": "Q10322723 label (it)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Oso tutto ciò che si addice a un uomo; chi osa di più non lo è.",
+      "source": "new",
       "cite": "Macbeth 1.7"
      },
      "scene": "missing"
@@ -3613,8 +3649,8 @@
       "detail": "Q2454065 label (it)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Venite, spiriti che servite i pensieri di morte, toglietemi qui il mio sesso.",
+      "source": "new",
       "cite": "Macbeth 1.5"
      },
      "scene": "missing"
@@ -3626,8 +3662,8 @@
       "detail": "Q806945 label (it)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Genererai dei re, pur non essendo re tu stesso.",
+      "source": "new",
       "cite": "Macbeth 1.3"
      },
      "scene": "missing"
@@ -3639,8 +3675,8 @@
       "detail": "Q7932996 has no label in it and no it.wikipedia.org article"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Io non sono quello che sono.",
+      "source": "new",
       "cite": "Twelfth Night 3.1"
      },
      "scene": "missing"
@@ -3652,8 +3688,8 @@
       "detail": "Q3844047 label (it)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Alcuni nascono grandi, alcuni conquistano la grandezza, e ad alcuni la grandezza viene imposta.",
+      "source": "new",
       "cite": "Twelfth Night 2.5"
      },
      "scene": "missing"
@@ -3665,8 +3701,8 @@
       "detail": "Q7088017 has no label in it and no it.wikipedia.org article"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "L’amore cercato è buono, ma dato senza essere cercato è migliore.",
+      "source": "new",
       "cite": "Twelfth Night 3.1"
      },
      "scene": "missing"
@@ -3678,8 +3714,8 @@
       "detail": "word 3 of 3 of \"Marco Giunio Bruto\" (Q172248 label (it))"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Non perché amassi meno Cesare, ma perché amavo di più Roma.",
+      "source": "new",
       "cite": "Julius Caesar 3.2"
      },
      "scene": "missing"
@@ -3691,8 +3727,8 @@
       "detail": "word 2 of 3 of \"Gaio Cassio Longino\" (Q207370 label (it))"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "La colpa, caro Bruto, non è nelle nostre stelle, ma in noi stessi.",
+      "source": "new",
       "cite": "Julius Caesar 1.2"
      },
      "scene": "missing"
@@ -3704,8 +3740,8 @@
       "detail": "Q51673 label (it)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Amici, Romani, concittadini, prestatemi orecchio!",
+      "source": "new",
       "cite": "Julius Caesar 3.2"
      },
      "scene": "missing"
@@ -3717,8 +3753,8 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Molte mattine lo si è visto là, ad accrescere con le lacrime la fresca rugiada del mattino.",
+      "source": "new",
       "cite": "Romeo and Juliet 1.1"
      },
      "scene": "missing"
@@ -3730,8 +3766,8 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Sposarti, è proprio questo l’argomento di cui venivo a parlare.",
+      "source": "new",
       "cite": "Romeo and Juliet 1.3"
      },
      "scene": "missing"
@@ -3743,8 +3779,8 @@
       "detail": "Q3140503 has no label in it and no it.wikipedia.org article"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Ora si spezza un nobile cuore. Buona notte, dolce principe.",
+      "source": "new",
       "cite": "Hamlet 5.2"
      },
      "scene": "missing"
@@ -3756,8 +3792,8 @@
       "detail": "word 2 of 2 of \"Nick Bottom\" (Q2190927 label (it))"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Ho avuto una visione rarissima. Ho fatto un sogno che supera l’ingegno dell’uomo.",
+      "source": "new",
       "cite": "A Midsummer Night's Dream 4.1"
      },
      "scene": "missing"
@@ -3769,8 +3805,8 @@
       "detail": "Q3687815 label (it)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Questi tempi di lutto non lasciano tempo al corteggiamento.",
+      "source": "new",
       "cite": "Romeo and Juliet 3.4"
      },
      "scene": "missing"
@@ -3782,8 +3818,8 @@
       "detail": "Q634983 label (it)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "O splendido mondo nuovo, che ha in sé gente simile!",
+      "source": "new",
       "cite": "The Tempest 5.1"
      },
      "scene": "missing"
@@ -3795,8 +3831,8 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "La mia generosità è sconfinata come il mare, il mio amore altrettanto profondo.",
+      "source": "new",
       "cite": "Romeo and Juliet 2.2"
      },
      "scene": "missing"
@@ -3808,8 +3844,8 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Non è tutto oro quel che luccica.",
+      "source": "new",
       "cite": "The Merchant of Venice 2.7"
      },
      "scene": "missing"
@@ -3821,8 +3857,8 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Inquieto giace il capo che porta una corona.",
+      "source": "new",
       "cite": "Henry IV, Part 2 3.1"
      },
      "scene": "missing"
@@ -3834,8 +3870,8 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Annegherò il mio libro.",
+      "source": "new",
       "cite": "The Tempest 5.1"
      },
      "scene": "missing"
@@ -3847,8 +3883,8 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "O caro padre, sono i tuoi affari quelli di cui mi occupo.",
+      "source": "new",
       "cite": "King Lear 4.4"
      },
      "scene": "missing"
@@ -3860,8 +3896,8 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Dio ti benedica, Bottom! Sei trasformato!",
+      "source": "new",
       "cite": "A Midsummer Night's Dream 3.1"
      },
      "scene": "missing"
@@ -3873,8 +3909,8 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Né il papavero, né la mandragora, né tutti gli sciroppi soporiferi del mondo.",
+      "source": "new",
       "cite": "Othello 3.3"
      },
      "scene": "missing"
@@ -3886,8 +3922,8 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Portami quel fiore; l’erba che una volta ti mostrai.",
+      "source": "new",
       "cite": "A Midsummer Night's Dream 2.1"
      },
      "scene": "missing"
@@ -3899,8 +3935,8 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Nella mia ora di quiete tuo zio si avvicinò furtivo, con il succo del maledetto giusquiamo in una fiala.",
+      "source": "new",
       "cite": "Hamlet 1.5"
      },
      "scene": "missing"
@@ -3912,8 +3948,8 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Nel calderone bolli e cuoci; occhio di tritone e dito di rana.",
+      "source": "new",
       "cite": "Macbeth 4.1"
      },
      "scene": "missing"
@@ -3925,8 +3961,8 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "A cinque tese giace tuo padre; delle sue ossa si è fatto corallo.",
+      "source": "new",
       "cite": "The Tempest 1.2"
      },
      "scene": "missing"
@@ -3938,8 +3974,8 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Metti questo in qualunque liquido tu voglia e bevilo; e, avessi anche la forza di venti uomini, ti spaccerebbe all’istante.",
+      "source": "new",
       "cite": "Romeo and Juliet 5.1"
      },
      "scene": "missing"
@@ -5282,8 +5318,8 @@
       "detail": "the product name, kept as it is"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Czy mam cię porównać do letniego dnia?",
+      "source": "new",
       "cite": "Shakespeare, Sonnet 18, line 1"
      },
      "scene": "missing"
@@ -5295,9 +5331,15 @@
       "detail": "Q673361 label (pl)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
-      "cite": "Romeo and Juliet 2.2"
+      "text": "Jakież światło z okna błyska?",
+      "source": "published",
+      "cite": "Romeo and Juliet 2.2",
+      "translator": "Leon Ulrich (1811–1885)",
+      "edition": "Dzieła dramatyczne Williama Shakespeare, Kraków, 1895 (pl.wikisource.org transcription)",
+      "status": "Public domain: Poland (life + 70 years; translator died 1885) and United States (published before 1931)",
+      "url": "https://pl.wikisource.org/wiki/Romeo_i_Julia_%28Shakespeare%2C_t%C5%82um._Ulrich%2C_1895%29/Akt_drugi?oldid=3285360",
+      "page": "Romeo i Julia (Shakespeare, tłum. Ulrich, 1895)/Akt drugi",
+      "revid": 3285360
      },
      "scene": "missing"
     },
@@ -5308,8 +5350,8 @@
       "detail": "Q1092632 label (pl)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Cóż jest w imieniu? To, co zwiemy różą...",
+      "source": "new",
       "cite": "Romeo and Juliet 2.2"
      },
      "scene": "missing"
@@ -5321,9 +5363,15 @@
       "detail": "Q2447542 label (pl)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
-      "cite": "Hamlet 3.1"
+      "text": "Być albo nie być, oto jest pytanie.",
+      "source": "published",
+      "cite": "Hamlet 3.1",
+      "translator": "Leon Ulrich (1811–1885)",
+      "edition": "Dzieła dramatyczne Williama Shakespeare, Kraków, 1895 (pl.wikisource.org transcription)",
+      "status": "Public domain: Poland (life + 70 years; translator died 1885) and United States (published before 1931)",
+      "url": "https://pl.wikisource.org/wiki/Hamlet_%28Shakespeare%2C_t%C5%82um._Ulrich%2C_1895%29/Akt_trzeci?oldid=3257297",
+      "page": "Hamlet (Shakespeare, tłum. Ulrich, 1895)/Akt trzeci",
+      "revid": 3257297
      },
      "scene": "missing"
     },
@@ -5334,9 +5382,15 @@
       "detail": "Q1800888 label (pl)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
-      "cite": "Hamlet 4.5"
+      "text": "Masz tu rozmaryn, to na pamiątkę",
+      "source": "published",
+      "cite": "Hamlet 4.5",
+      "translator": "Leon Ulrich (1811–1885)",
+      "edition": "Dzieła dramatyczne Williama Shakespeare, Kraków, 1895 (pl.wikisource.org transcription)",
+      "status": "Public domain: Poland (life + 70 years; translator died 1885) and United States (published before 1931)",
+      "url": "https://pl.wikisource.org/wiki/Hamlet_%28Shakespeare%2C_t%C5%82um._Ulrich%2C_1895%29/Akt_czwarty?oldid=3257293",
+      "page": "Hamlet (Shakespeare, tłum. Ulrich, 1895)/Akt czwarty",
+      "revid": 3257293
      },
      "scene": "missing"
     },
@@ -5347,9 +5401,15 @@
       "detail": "Q1767900 label (pl)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
-      "cite": "Romeo and Juliet 3.1"
+      "text": "Mór na wasze domy!",
+      "source": "published",
+      "cite": "Romeo and Juliet 3.1",
+      "translator": "Leon Ulrich (1811–1885)",
+      "edition": "Dzieła dramatyczne Williama Shakespeare, Kraków, 1895 (pl.wikisource.org transcription)",
+      "status": "Public domain: Poland (life + 70 years; translator died 1885) and United States (published before 1931)",
+      "url": "https://pl.wikisource.org/wiki/Romeo_i_Julia_%28Shakespeare%2C_t%C5%82um._Ulrich%2C_1895%29/Akt_trzeci?oldid=3285363",
+      "page": "Romeo i Julia (Shakespeare, tłum. Ulrich, 1895)/Akt trzeci",
+      "revid": 3285363
      },
      "scene": "missing"
     },
@@ -5360,8 +5420,8 @@
       "detail": "Q1248616 has no label in pl and no pl.wikipedia.org article"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Panie, jacyż głupcy z tych śmiertelników!",
+      "source": "new",
       "cite": "A Midsummer Night's Dream 3.2"
      },
      "scene": "missing"
@@ -5373,8 +5433,8 @@
       "detail": "Q2332221 has no label in pl and no pl.wikipedia.org article"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Chodź, usiądź na tym kwiecistym łożu.",
+      "source": "new",
       "cite": "A Midsummer Night's Dream 4.1"
      },
      "scene": "missing"
@@ -5386,9 +5446,15 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
-      "cite": "Hamlet 5.1"
+      "text": "Ach, biedny Yoriku! Znałem go, Horacyo",
+      "source": "published",
+      "cite": "Hamlet 5.1",
+      "translator": "Leon Ulrich (1811–1885)",
+      "edition": "Dzieła dramatyczne Williama Shakespeare, Kraków, 1895 (pl.wikisource.org transcription)",
+      "status": "Public domain: Poland (life + 70 years; translator died 1885) and United States (published before 1931)",
+      "url": "https://pl.wikisource.org/wiki/Hamlet_%28Shakespeare%2C_t%C5%82um._Ulrich%2C_1895%29/Akt_pi%C4%85ty?oldid=3257296",
+      "page": "Hamlet (Shakespeare, tłum. Ulrich, 1895)/Akt piąty",
+      "revid": 3257296
      },
      "scene": "missing"
     },
@@ -5399,9 +5465,15 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
-      "cite": "The Tempest, Epilogue"
+      "text": "Teraz zniknęły wszystkie czary moje",
+      "source": "published",
+      "cite": "The Tempest, Epilogue",
+      "translator": "Leon Ulrich (1811–1885)",
+      "edition": "Dzieła dramatyczne Williama Shakespeare, Kraków, 1895 (pl.wikisource.org transcription)",
+      "status": "Public domain: Poland (life + 70 years; translator died 1885) and United States (published before 1931)",
+      "url": "https://pl.wikisource.org/wiki/Burza_%28Shakespeare%2C_t%C5%82um._Ulrich%2C_1895%29/Epilog?oldid=3248992",
+      "page": "Burza (Shakespeare, tłum. Ulrich, 1895)/Epilog",
+      "revid": 3248992
      },
      "scene": "missing"
     },
@@ -5412,8 +5484,8 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Droga prawdziwej miłości nigdy nie była gładka.",
+      "source": "new",
       "cite": "A Midsummer Night's Dream 1.1"
      },
      "scene": "missing"
@@ -5425,8 +5497,8 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Podwój, podwój trud i znój.",
+      "source": "new",
       "cite": "Macbeth 4.1"
      },
      "scene": "missing"
@@ -5438,8 +5510,8 @@
       "detail": "Q15829750 has no label in pl and no pl.wikipedia.org article"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Jeśli jeszcze raz zakłócicie spokój naszych ulic, życiem zapłacicie za złamanie pokoju.",
+      "source": "new",
       "cite": "Romeo and Juliet 1.1"
      },
      "scene": "missing"
@@ -5451,9 +5523,15 @@
       "detail": "Q5503354 has no label in pl and no pl.wikipedia.org article"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
-      "cite": "Romeo and Juliet 2.6"
+      "text": "Gwałtowna rozkosz gwałtownie się kończy",
+      "source": "published",
+      "cite": "Romeo and Juliet 2.6",
+      "translator": "Leon Ulrich (1811–1885)",
+      "edition": "Dzieła dramatyczne Williama Shakespeare, Kraków, 1895 (pl.wikisource.org transcription)",
+      "status": "Public domain: Poland (life + 70 years; translator died 1885) and United States (published before 1931)",
+      "url": "https://pl.wikisource.org/wiki/Romeo_i_Julia_%28Shakespeare%2C_t%C5%82um._Ulrich%2C_1895%29/Akt_drugi?oldid=3285360",
+      "page": "Romeo i Julia (Shakespeare, tłum. Ulrich, 1895)/Akt drugi",
+      "revid": 3285360
      },
      "scene": "missing"
     },
@@ -5464,8 +5542,8 @@
       "detail": "Q7070187 has no label in pl and no pl.wikipedia.org article"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Jestem wyrobnicą i trudzę się dla twojej rozkoszy.",
+      "source": "new",
       "cite": "Romeo and Juliet 2.5"
      },
      "scene": "missing"
@@ -5477,8 +5555,8 @@
       "detail": "Q978952 label (pl)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Jesteśmy z tej samej materii, z której zrobione są sny.",
+      "source": "new",
       "cite": "The Tempest 4.1"
      },
      "scene": "missing"
@@ -5490,8 +5568,8 @@
       "detail": "Q658028 label (pl)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Witaj, wielki mistrzu! Czcigodny panie, witaj!",
+      "source": "new",
       "cite": "The Tempest 1.2"
      },
      "scene": "missing"
@@ -5503,8 +5581,8 @@
       "detail": "Q533120 has no label in pl and no pl.wikipedia.org article"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Ta wyspa jest moja, po Sykoraks, mojej matce.",
+      "source": "new",
       "cite": "The Tempest 1.2"
      },
      "scene": "missing"
@@ -5516,8 +5594,8 @@
       "detail": "Q939489 label (pl)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Ja tylko strzegę pokoju. Schowaj swój miecz.",
+      "source": "new",
       "cite": "Romeo and Juliet 1.1"
      },
      "scene": "missing"
@@ -5529,8 +5607,8 @@
       "detail": "Q2412073 label (pl)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Co, z dobytym mieczem mówisz o pokoju? Nienawidzę tego słowa.",
+      "source": "new",
       "cite": "Romeo and Juliet 1.1"
      },
      "scene": "missing"
@@ -5542,8 +5620,8 @@
       "detail": "Q1811294 label (pl)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Moje słowa ulatują w górę, moje myśli zostają w dole.",
+      "source": "new",
       "cite": "Hamlet 3.3"
      },
      "scene": "missing"
@@ -5555,8 +5633,8 @@
       "detail": "Q1139234 has no label in pl and no pl.wikipedia.org article"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Złe to spotkanie przy księżycu, dumna Tytanio.",
+      "source": "new",
       "cite": "A Midsummer Night's Dream 2.1"
      },
      "scene": "missing"
@@ -5568,8 +5646,8 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Czy to sztylet widzę przed sobą?",
+      "source": "new",
       "cite": "Macbeth 2.1"
      },
      "scene": "missing"
@@ -5581,9 +5659,15 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
-      "cite": "A Midsummer Night's Dream 2.1"
+      "text": "W czterdzieści minut okołuję ziemię",
+      "source": "published",
+      "cite": "A Midsummer Night's Dream 2.1",
+      "translator": "Leon Ulrich (1811–1885)",
+      "edition": "Dzieła dramatyczne Williama Shakespeare, Kraków, 1895 (pl.wikisource.org transcription)",
+      "status": "Public domain: Poland (life + 70 years; translator died 1885) and United States (published before 1931)",
+      "url": "https://pl.wikisource.org/wiki/Sen_nocy_letniej_%28Shakespeare%2C_t%C5%82um._Ulrich%2C_1895%29/Akt_drugi?oldid=3286441",
+      "page": "Sen nocy letniej (Shakespeare, tłum. Ulrich, 1895)/Akt drugi",
+      "revid": 3286441
      },
      "scene": "missing"
     },
@@ -5594,8 +5678,8 @@
       "detail": "Q10322723 label (pl)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Ważę się na wszystko, co przystoi mężowi; kto waży się na więcej, ten nim nie jest.",
+      "source": "new",
       "cite": "Macbeth 1.7"
      },
      "scene": "missing"
@@ -5607,8 +5691,8 @@
       "detail": "Q2454065 label (pl)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Przybądźcie, duchy, co służycie myślom morderczym, odbierzcie mi tutaj moją płeć.",
+      "source": "new",
       "cite": "Macbeth 1.5"
      },
      "scene": "missing"
@@ -5620,8 +5704,8 @@
       "detail": "Q806945 label (pl)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Spłodzisz królów, choć sam nim nie będziesz.",
+      "source": "new",
       "cite": "Macbeth 1.3"
      },
      "scene": "missing"
@@ -5633,9 +5717,15 @@
       "detail": "Q7932996 has no label in pl and no pl.wikipedia.org article"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
-      "cite": "Twelfth Night 3.1"
+      "text": "nie jestem, czem jestem.",
+      "source": "published",
+      "cite": "Twelfth Night 3.1",
+      "translator": "Leon Ulrich (1811–1885)",
+      "edition": "Dzieła dramatyczne Williama Shakespeare, Kraków, 1895 (pl.wikisource.org transcription)",
+      "status": "Public domain: Poland (life + 70 years; translator died 1885) and United States (published before 1931)",
+      "url": "https://pl.wikisource.org/wiki/Wiecz%C3%B3r_Trzech_Kr%C3%B3li_%28Shakespeare%2C_t%C5%82um._Ulrich%2C_1895%29/Akt_trzeci?oldid=3294592",
+      "page": "Wieczór Trzech Króli (Shakespeare, tłum. Ulrich, 1895)/Akt trzeci",
+      "revid": 3294592
      },
      "scene": "missing"
     },
@@ -5646,9 +5736,15 @@
       "detail": "Q3844047 has no label in pl and no pl.wikipedia.org article"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
-      "cite": "Twelfth Night 2.5"
+      "text": "Jedni rodzą się wielkimi; inni w pocie czoła do wielkości przychodzą; innych wielkość szuka sama.",
+      "source": "published",
+      "cite": "Twelfth Night 2.5",
+      "translator": "Leon Ulrich (1811–1885)",
+      "edition": "Dzieła dramatyczne Williama Shakespeare, Kraków, 1895 (pl.wikisource.org transcription)",
+      "status": "Public domain: Poland (life + 70 years; translator died 1885) and United States (published before 1931)",
+      "url": "https://pl.wikisource.org/wiki/Wiecz%C3%B3r_Trzech_Kr%C3%B3li_%28Shakespeare%2C_t%C5%82um._Ulrich%2C_1895%29/Akt_drugi?oldid=3294589",
+      "page": "Wieczór Trzech Króli (Shakespeare, tłum. Ulrich, 1895)/Akt drugi",
+      "revid": 3294589
      },
      "scene": "missing"
     },
@@ -5659,8 +5755,8 @@
       "detail": "Q7088017 has no label in pl and no pl.wikipedia.org article"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Miłość szukana jest dobra, lecz dana bez szukania jest lepsza.",
+      "source": "new",
       "cite": "Twelfth Night 3.1"
      },
      "scene": "missing"
@@ -5672,8 +5768,8 @@
       "detail": "word 3 of 3 of \"Marek Juniusz Brutus\" (Q172248 label (pl))"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Nie dlatego, że mniej kochałem Cezara, lecz dlatego, że bardziej kochałem Rzym.",
+      "source": "new",
       "cite": "Julius Caesar 3.2"
      },
      "scene": "missing"
@@ -5685,8 +5781,8 @@
       "detail": "word 2 of 3 of \"Gajusz Kasjusz Longinus\" (Q207370 label (pl))"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Wina, drogi Brutusie, nie leży w naszych gwiazdach, lecz w nas samych.",
+      "source": "new",
       "cite": "Julius Caesar 1.2"
      },
      "scene": "missing"
@@ -5698,8 +5794,8 @@
       "detail": "Q51673 label (pl)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Przyjaciele, Rzymianie, rodacy, użyczcie mi uszu!",
+      "source": "new",
       "cite": "Julius Caesar 3.2"
      },
      "scene": "missing"
@@ -5711,8 +5807,8 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Wiele poranków widziano go tam, jak łzami pomnażał świeżą poranną rosę.",
+      "source": "new",
       "cite": "Romeo and Juliet 1.1"
      },
      "scene": "missing"
@@ -5724,8 +5820,8 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Zamążpójście, to właśnie sprawa, o której przyszłam mówić.",
+      "source": "new",
       "cite": "Romeo and Juliet 1.3"
      },
      "scene": "missing"
@@ -5737,8 +5833,8 @@
       "detail": "Q3140503 label (pl)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Teraz pęka szlachetne serce. Dobranoc, słodki książę.",
+      "source": "new",
       "cite": "Hamlet 5.2"
      },
      "scene": "missing"
@@ -5750,9 +5846,15 @@
       "detail": "Q2190927 has no label in pl and no pl.wikipedia.org article"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
-      "cite": "A Midsummer Night's Dream 4.1"
+      "text": "Przedziwne miałem widzenie. Miałem sen, a żaden ludzki dowcip nie wypowie, co to za sen był.",
+      "source": "published",
+      "cite": "A Midsummer Night's Dream 4.1",
+      "translator": "Leon Ulrich (1811–1885)",
+      "edition": "Dzieła dramatyczne Williama Shakespeare, Kraków, 1895 (pl.wikisource.org transcription)",
+      "status": "Public domain: Poland (life + 70 years; translator died 1885) and United States (published before 1931)",
+      "url": "https://pl.wikisource.org/wiki/Sen_nocy_letniej_%28Shakespeare%2C_t%C5%82um._Ulrich%2C_1895%29/Akt_czwarty?oldid=3286440",
+      "page": "Sen nocy letniej (Shakespeare, tłum. Ulrich, 1895)/Akt czwarty",
+      "revid": 3286440
      },
      "scene": "missing"
     },
@@ -5763,8 +5865,8 @@
       "detail": "Q3687815 has no label in pl and no pl.wikipedia.org article"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Te czasy żałoby nie dają czasu na zaloty.",
+      "source": "new",
       "cite": "Romeo and Juliet 3.4"
      },
      "scene": "missing"
@@ -5776,8 +5878,8 @@
       "detail": "Q634983 label (pl)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "O wspaniały nowy świecie, w którym żyją tacy ludzie!",
+      "source": "new",
       "cite": "The Tempest 5.1"
      },
      "scene": "missing"
@@ -5789,8 +5891,8 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Moja hojność jest bezbrzeżna jak morze, moja miłość równie głęboka.",
+      "source": "new",
       "cite": "Romeo and Juliet 2.2"
      },
      "scene": "missing"
@@ -5802,8 +5904,8 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Nie wszystko złoto, co się świeci.",
+      "source": "new",
       "cite": "The Merchant of Venice 2.7"
      },
      "scene": "missing"
@@ -5815,8 +5917,8 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Niespokojnie spoczywa głowa, która nosi koronę.",
+      "source": "new",
       "cite": "Henry IV, Part 2 3.1"
      },
      "scene": "missing"
@@ -5828,8 +5930,8 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Utopię moją księgę.",
+      "source": "new",
       "cite": "The Tempest 5.1"
      },
      "scene": "missing"
@@ -5841,9 +5943,15 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
-      "cite": "King Lear 4.4"
+      "text": "O drogi ojcze, w twojej sprawie walczę!",
+      "source": "published",
+      "cite": "King Lear 4.4",
+      "translator": "Leon Ulrich (1811–1885)",
+      "edition": "Dzieła dramatyczne Williama Shakespeare, Kraków, 1895 (pl.wikisource.org transcription)",
+      "status": "Public domain: Poland (life + 70 years; translator died 1885) and United States (published before 1931)",
+      "url": "https://pl.wikisource.org/wiki/Kr%C3%B3l_Lear_%28Shakespeare%2C_t%C5%82um._Ulrich%2C_1895%29/Akt_czwarty?oldid=3263021",
+      "page": "Król Lear (Shakespeare, tłum. Ulrich, 1895)/Akt czwarty",
+      "revid": 3263021
      },
      "scene": "missing"
     },
@@ -5854,8 +5962,8 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Niech cię Bóg strzeże, Spodku! Jesteś przemieniony!",
+      "source": "new",
       "cite": "A Midsummer Night's Dream 3.1"
      },
      "scene": "missing"
@@ -5867,8 +5975,8 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Ani mak, ani mandragora, ani wszystkie usypiające syropy świata.",
+      "source": "new",
       "cite": "Othello 3.3"
      },
      "scene": "missing"
@@ -5880,8 +5988,8 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Przynieś mi ten kwiat; ziele, które ci kiedyś pokazałem.",
+      "source": "new",
       "cite": "A Midsummer Night's Dream 2.1"
      },
      "scene": "missing"
@@ -5893,8 +6001,8 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "W godzinie mego spokoju twój stryj zakradł się z sokiem przeklętego lulka we flaszce.",
+      "source": "new",
       "cite": "Hamlet 1.5"
      },
      "scene": "missing"
@@ -5906,8 +6014,8 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "W kotle wrzyj i piecz się; oko traszki i palec żaby.",
+      "source": "new",
       "cite": "Macbeth 4.1"
      },
      "scene": "missing"
@@ -5919,8 +6027,8 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Na pięć sążni głęboko leży twój ojciec; z jego kości powstał koral.",
+      "source": "new",
       "cite": "The Tempest 1.2"
      },
      "scene": "missing"
@@ -5932,8 +6040,8 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Wlej to do jakiegokolwiek płynu i wypij; a choćbyś miał siłę dwudziestu ludzi, zgładzi cię natychmiast.",
+      "source": "new",
       "cite": "Romeo and Juliet 5.1"
      },
      "scene": "missing"
@@ -6279,9 +6387,15 @@
       "detail": "the product name, kept as it is"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
-      "cite": "Shakespeare, Sonnet 18, line 1"
+      "text": "Как я сравню тебя с роскошным летним днем",
+      "source": "published",
+      "cite": "Shakespeare, Sonnet 18, line 1",
+      "translator": "Николай Гербель (1827–1883)",
+      "edition": "«Полное собрание сонетов Шекспира», 1880 (ru.wikisource.org transcription, modern orthography)",
+      "status": "Public domain: Russia (life + 70 years; translator died 1883) and United States (published before 1931)",
+      "url": "https://ru.wikisource.org/wiki/%D0%A1%D0%BE%D0%BD%D0%B5%D1%82_18_%28%D0%A8%D0%B5%D0%BA%D1%81%D0%BF%D0%B8%D1%80%3B_%D0%93%D0%B5%D1%80%D0%B1%D0%B5%D0%BB%D1%8C%29?oldid=4689902",
+      "page": "Сонет 18 (Шекспир; Гербель)",
+      "revid": 4689902
      },
      "scene": "missing"
     },
@@ -6292,9 +6406,15 @@
       "detail": "Q673361 label (ru)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
-      "cite": "Romeo and Juliet 2.2"
+      "text": "Но, тише, что за свет в ее окне?",
+      "source": "published",
+      "cite": "Romeo and Juliet 2.2",
+      "translator": "Дмитрий Михаловский (1828–1905)",
+      "edition": "«Ромео и Джульетта», 1888 (ru.wikisource.org transcription, modern orthography)",
+      "status": "Public domain: Russia (life + 70 years; translator died 1905) and United States (published before 1931)",
+      "url": "https://ru.wikisource.org/wiki/%D0%A0%D0%BE%D0%BC%D0%B5%D0%BE_%D0%B8_%D0%94%D0%B6%D1%83%D0%BB%D1%8C%D0%B5%D1%82%D1%82%D0%B0_%28%D0%A8%D0%B5%D0%BA%D1%81%D0%BF%D0%B8%D1%80%3B_%D0%9C%D0%B8%D1%85%D0%B0%D0%BB%D0%BE%D0%B2%D1%81%D0%BA%D0%B8%D0%B9%29/2001?oldid=5750496",
+      "page": "Ромео и Джульетта (Шекспир; Михаловский)/2001",
+      "revid": 5750496
      },
      "scene": "missing"
     },
@@ -6305,9 +6425,15 @@
       "detail": "Q1092632 label (ru)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
-      "cite": "Romeo and Juliet 2.2"
+      "text": "Что в имени? Как розу ни зови - / В ней аромат останется все тот же",
+      "source": "published",
+      "cite": "Romeo and Juliet 2.2",
+      "translator": "Дмитрий Михаловский (1828–1905)",
+      "edition": "«Ромео и Джульетта», 1888 (ru.wikisource.org transcription, modern orthography)",
+      "status": "Public domain: Russia (life + 70 years; translator died 1905) and United States (published before 1931)",
+      "url": "https://ru.wikisource.org/wiki/%D0%A0%D0%BE%D0%BC%D0%B5%D0%BE_%D0%B8_%D0%94%D0%B6%D1%83%D0%BB%D1%8C%D0%B5%D1%82%D1%82%D0%B0_%28%D0%A8%D0%B5%D0%BA%D1%81%D0%BF%D0%B8%D1%80%3B_%D0%9C%D0%B8%D1%85%D0%B0%D0%BB%D0%BE%D0%B2%D1%81%D0%BA%D0%B8%D0%B9%29/2001?oldid=5750496",
+      "page": "Ромео и Джульетта (Шекспир; Михаловский)/2001",
+      "revid": 5750496
      },
      "scene": "missing"
     },
@@ -6318,8 +6444,8 @@
       "detail": "Q2447542 label (ru)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Быть или не быть, вот в чём вопрос.",
+      "source": "new",
       "cite": "Hamlet 3.1"
      },
      "scene": "missing"
@@ -6331,9 +6457,15 @@
       "detail": "Q1800888 label (ru)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
-      "cite": "Hamlet 4.5"
+      "text": "Вот розмарин. Это для памяти.",
+      "source": "published",
+      "cite": "Hamlet 4.5",
+      "translator": "Пётр Гнедич (1855–1925)",
+      "edition": "«Гамлет, принц датский», издание 1917 года (первое 1892) (ru.wikisource.org transcription, modern orthography)",
+      "status": "Public domain: Russia (life + 70 years; translator died 1925) and United States (published before 1931)",
+      "url": "https://ru.wikisource.org/wiki/%D0%93%D0%B0%D0%BC%D0%BB%D0%B5%D1%82%2C_%D0%BF%D1%80%D0%B8%D0%BD%D1%86_%D0%B4%D0%B0%D1%82%D1%81%D0%BA%D0%B8%D0%B9_%28%D0%A8%D0%B5%D0%BA%D1%81%D0%BF%D0%B8%D1%80%3B_%D0%93%D0%BD%D0%B5%D0%B4%D0%B8%D1%87%29/1917_%28%D0%A1%D0%9E%29?oldid=5657806",
+      "page": "Гамлет, принц датский (Шекспир; Гнедич)/1917 (СО)",
+      "revid": 5657806
      },
      "scene": "missing"
     },
@@ -6344,9 +6476,15 @@
       "detail": "Q1767900 label (ru)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
-      "cite": "Romeo and Juliet 3.1"
+      "text": "Чума на вас, - на оба ваши дома!",
+      "source": "published",
+      "cite": "Romeo and Juliet 3.1",
+      "translator": "Дмитрий Михаловский (1828–1905)",
+      "edition": "«Ромео и Джульетта», 1888 (ru.wikisource.org transcription, modern orthography)",
+      "status": "Public domain: Russia (life + 70 years; translator died 1905) and United States (published before 1931)",
+      "url": "https://ru.wikisource.org/wiki/%D0%A0%D0%BE%D0%BC%D0%B5%D0%BE_%D0%B8_%D0%94%D0%B6%D1%83%D0%BB%D1%8C%D0%B5%D1%82%D1%82%D0%B0_%28%D0%A8%D0%B5%D0%BA%D1%81%D0%BF%D0%B8%D1%80%3B_%D0%9C%D0%B8%D1%85%D0%B0%D0%BB%D0%BE%D0%B2%D1%81%D0%BA%D0%B8%D0%B9%29/2001?oldid=5750496",
+      "page": "Ромео и Джульетта (Шекспир; Михаловский)/2001",
+      "revid": 5750496
      },
      "scene": "missing"
     },
@@ -6357,8 +6495,8 @@
       "detail": "Q1248616 label (ru)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Господи, как глупы эти смертные!",
+      "source": "new",
       "cite": "A Midsummer Night's Dream 3.2"
      },
      "scene": "missing"
@@ -6370,8 +6508,8 @@
       "detail": "Q2332221 label (ru)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Приди, сядь на это цветущее ложе.",
+      "source": "new",
       "cite": "A Midsummer Night's Dream 4.1"
      },
      "scene": "missing"
@@ -6383,8 +6521,8 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Увы, бедный Йорик! Я знал его, Горацио.",
+      "source": "new",
       "cite": "Hamlet 5.1"
      },
      "scene": "missing"
@@ -6396,8 +6534,8 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Теперь все мои чары разрушены.",
+      "source": "new",
       "cite": "The Tempest, Epilogue"
      },
      "scene": "missing"
@@ -6409,8 +6547,8 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Путь истинной любви никогда не был гладким.",
+      "source": "new",
       "cite": "A Midsummer Night's Dream 1.1"
      },
      "scene": "missing"
@@ -6422,8 +6560,8 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Вдвойне, вдвойне труд и беда.",
+      "source": "new",
       "cite": "Macbeth 4.1"
      },
      "scene": "missing"
@@ -6435,8 +6573,8 @@
       "detail": "Q15829750 label (ru)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Если вы ещё раз нарушите покой наших улиц, вы заплатите жизнью за нарушенный мир.",
+      "source": "new",
       "cite": "Romeo and Juliet 1.1"
      },
      "scene": "missing"
@@ -6448,8 +6586,8 @@
       "detail": "Q5503354 label (ru)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "У этих бурных радостей бурный конец.",
+      "source": "new",
       "cite": "Romeo and Juliet 2.6"
      },
      "scene": "missing"
@@ -6461,8 +6599,8 @@
       "detail": "Q7070187 label (ru)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Я работница и тружусь ради твоей радости.",
+      "source": "new",
       "cite": "Romeo and Juliet 2.5"
      },
      "scene": "missing"
@@ -6474,8 +6612,8 @@
       "detail": "Q978952 label (ru)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Мы созданы из того же вещества, что и сны.",
+      "source": "new",
       "cite": "The Tempest 4.1"
      },
      "scene": "missing"
@@ -6487,8 +6625,8 @@
       "detail": "Q658028 label (ru)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Привет тебе, великий господин! Почтенный повелитель, привет!",
+      "source": "new",
       "cite": "The Tempest 1.2"
      },
      "scene": "missing"
@@ -6500,8 +6638,8 @@
       "detail": "Q533120 label (ru)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Этот остров мой, он достался мне от Сикораксы, моей матери.",
+      "source": "new",
       "cite": "The Tempest 1.2"
      },
      "scene": "missing"
@@ -6513,8 +6651,8 @@
       "detail": "Q939489 label (ru)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Я только охраняю мир. Вложи свой меч в ножны.",
+      "source": "new",
       "cite": "Romeo and Juliet 1.1"
      },
      "scene": "missing"
@@ -6526,8 +6664,8 @@
       "detail": "Q2412073 label (ru)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Как, с обнажённым мечом ты говоришь о мире? Я ненавижу это слово.",
+      "source": "new",
       "cite": "Romeo and Juliet 1.1"
      },
      "scene": "missing"
@@ -6539,9 +6677,15 @@
       "detail": "Q1811294 label (ru)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
-      "cite": "Hamlet 3.3"
+      "text": "Слова на небе, мысли на земле!",
+      "source": "published",
+      "cite": "Hamlet 3.3",
+      "translator": "Пётр Гнедич (1855–1925)",
+      "edition": "«Гамлет, принц датский», издание 1917 года (первое 1892) (ru.wikisource.org transcription, modern orthography)",
+      "status": "Public domain: Russia (life + 70 years; translator died 1925) and United States (published before 1931)",
+      "url": "https://ru.wikisource.org/wiki/%D0%93%D0%B0%D0%BC%D0%BB%D0%B5%D1%82%2C_%D0%BF%D1%80%D0%B8%D0%BD%D1%86_%D0%B4%D0%B0%D1%82%D1%81%D0%BA%D0%B8%D0%B9_%28%D0%A8%D0%B5%D0%BA%D1%81%D0%BF%D0%B8%D1%80%3B_%D0%93%D0%BD%D0%B5%D0%B4%D0%B8%D1%87%29/1917_%28%D0%A1%D0%9E%29?oldid=5657806",
+      "page": "Гамлет, принц датский (Шекспир; Гнедич)/1917 (СО)",
+      "revid": 5657806
      },
      "scene": "missing"
     },
@@ -6552,8 +6696,8 @@
       "detail": "Q1139234 label (ru)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Недобрая встреча при лунном свете, гордая Титания.",
+      "source": "new",
       "cite": "A Midsummer Night's Dream 2.1"
      },
      "scene": "missing"
@@ -6565,8 +6709,8 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Кинжал ли это, что я вижу перед собой?",
+      "source": "new",
       "cite": "Macbeth 2.1"
      },
      "scene": "missing"
@@ -6578,8 +6722,8 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Я опояшу землю за сорок минут.",
+      "source": "new",
       "cite": "A Midsummer Night's Dream 2.1"
      },
      "scene": "missing"
@@ -6591,8 +6735,8 @@
       "detail": "Q10322723 label (ru)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Я смею всё, что подобает мужчине; кто смеет больше, тот не человек.",
+      "source": "new",
       "cite": "Macbeth 1.7"
      },
      "scene": "missing"
@@ -6604,8 +6748,8 @@
       "detail": "Q2454065 label (ru)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Придите, духи, что служите смертельным мыслям, лишите меня здесь моего пола.",
+      "source": "new",
       "cite": "Macbeth 1.5"
      },
      "scene": "missing"
@@ -6617,8 +6761,8 @@
       "detail": "Q806945 label (ru)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Ты породишь королей, хотя сам не будешь королём.",
+      "source": "new",
       "cite": "Macbeth 1.3"
      },
      "scene": "missing"
@@ -6630,8 +6774,8 @@
       "detail": "Q7932996 label (ru)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Я не то, что я есть.",
+      "source": "new",
       "cite": "Twelfth Night 3.1"
      },
      "scene": "missing"
@@ -6643,8 +6787,8 @@
       "detail": "Q3844047 has no label in ru and no ru.wikipedia.org article"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Одни рождаются великими, другие достигают величия, а третьим величие навязывают.",
+      "source": "new",
       "cite": "Twelfth Night 2.5"
      },
      "scene": "missing"
@@ -6656,8 +6800,8 @@
       "detail": "Q7088017 label (ru)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Любовь искомая хороша, но данная без исканий лучше.",
+      "source": "new",
       "cite": "Twelfth Night 3.1"
      },
      "scene": "missing"
@@ -6669,8 +6813,8 @@
       "detail": "word 3 of 3 of \"Марк Юний Брут\" (Q172248 label (ru))"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Не потому, что я меньше любил Цезаря, а потому, что я больше любил Рим.",
+      "source": "new",
       "cite": "Julius Caesar 3.2"
      },
      "scene": "missing"
@@ -6682,8 +6826,8 @@
       "detail": "word 2 of 3 of \"Гай Кассий Лонгин\" (Q207370 label (ru))"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Вина, дорогой Брут, не в наших звёздах, а в нас самих.",
+      "source": "new",
       "cite": "Julius Caesar 1.2"
      },
      "scene": "missing"
@@ -6695,9 +6839,15 @@
       "detail": "Q51673 label (ru)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
-      "cite": "Julius Caesar 3.2"
+      "text": "О, римляне, сограждане, друзья!",
+      "source": "published",
+      "cite": "Julius Caesar 3.2",
+      "translator": "Павел Козлов (1841–1891)",
+      "edition": "«Юлий Цезарь», 1880 (ru.wikisource.org transcription, modern orthography)",
+      "status": "Public domain: Russia (life + 70 years; translator died 1891) and United States (published before 1931)",
+      "url": "https://ru.wikisource.org/wiki/%D0%AE%D0%BB%D0%B8%D0%B9_%D0%A6%D0%B5%D0%B7%D0%B0%D1%80%D1%8C_%28%D0%A8%D0%B5%D0%BA%D1%81%D0%BF%D0%B8%D1%80%3B_%D0%9A%D0%BE%D0%B7%D0%BB%D0%BE%D0%B2%29?oldid=5753958",
+      "page": "Юлий Цезарь (Шекспир; Козлов)",
+      "revid": 5753958
      },
      "scene": "missing"
     },
@@ -6708,8 +6858,8 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Много раз по утрам его видели там, слезами умножающим свежую утреннюю росу.",
+      "source": "new",
       "cite": "Romeo and Juliet 1.1"
      },
      "scene": "missing"
@@ -6721,8 +6871,8 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Замужество, как раз о замужестве я и пришла говорить.",
+      "source": "new",
       "cite": "Romeo and Juliet 1.3"
      },
      "scene": "missing"
@@ -6734,8 +6884,8 @@
       "detail": "Q3140503 label (ru)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Вот разбилось благородное сердце. Доброй ночи, милый принц.",
+      "source": "new",
       "cite": "Hamlet 5.2"
      },
      "scene": "missing"
@@ -6747,8 +6897,8 @@
       "detail": "Q2190927 has no label in ru and no ru.wikipedia.org article"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Мне было редчайшее видение. Мне приснился сон, который выше человеческого разумения.",
+      "source": "new",
       "cite": "A Midsummer Night's Dream 4.1"
      },
      "scene": "missing"
@@ -6760,8 +6910,8 @@
       "detail": "Q3687815 label (ru)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "В эти дни скорби нет времени для сватовства.",
+      "source": "new",
       "cite": "Romeo and Juliet 3.4"
      },
      "scene": "missing"
@@ -6773,8 +6923,8 @@
       "detail": "Q634983 label (ru)"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "О дивный новый мир, где есть такие люди!",
+      "source": "new",
       "cite": "The Tempest 5.1"
      },
      "scene": "missing"
@@ -6786,8 +6936,8 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Моя щедрость безбрежна, как море, моя любовь так же глубока.",
+      "source": "new",
       "cite": "Romeo and Juliet 2.2"
      },
      "scene": "missing"
@@ -6799,8 +6949,8 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Не всё то золото, что блестит.",
+      "source": "new",
       "cite": "The Merchant of Venice 2.7"
      },
      "scene": "missing"
@@ -6812,8 +6962,8 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Беспокойно лежит голова, носящая корону.",
+      "source": "new",
       "cite": "Henry IV, Part 2 3.1"
      },
      "scene": "missing"
@@ -6825,9 +6975,15 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
-      "cite": "The Tempest 5.1"
+      "text": "А книгу так глубоко потоплю",
+      "source": "published",
+      "cite": "The Tempest 5.1",
+      "translator": "Николай Сатин (1814–1873)",
+      "edition": "«Буря», 1840 (ru.wikisource.org transcription, modern orthography)",
+      "status": "Public domain: Russia (life + 70 years; translator died 1873) and United States (published before 1931)",
+      "url": "https://ru.wikisource.org/wiki/%D0%91%D1%83%D1%80%D1%8F_%28%D0%A8%D0%B5%D0%BA%D1%81%D0%BF%D0%B8%D1%80%3B_%D0%A1%D0%B0%D1%82%D0%B8%D0%BD%29?oldid=5250007",
+      "page": "Буря (Шекспир; Сатин)",
+      "revid": 5250007
      },
      "scene": "missing"
     },
@@ -6838,8 +6994,8 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "О дорогой отец, я занята твоим делом.",
+      "source": "new",
       "cite": "King Lear 4.4"
      },
      "scene": "missing"
@@ -6851,8 +7007,8 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Господь с тобой, Основа! Ты преображён!",
+      "source": "new",
       "cite": "A Midsummer Night's Dream 3.1"
      },
      "scene": "missing"
@@ -6864,9 +7020,15 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
-      "cite": "Othello 3.3"
+      "text": "Ни мак, ни мандрагора, / Ни зелья все, какие есть на свете",
+      "source": "published",
+      "cite": "Othello 3.3",
+      "translator": "Пётр Вейнберг (1831–1908)",
+      "edition": "«Отелло, венецианский мавр», 1864 (ru.wikisource.org transcription, modern orthography)",
+      "status": "Public domain: Russia (life + 70 years; translator died 1908) and United States (published before 1931)",
+      "url": "https://ru.wikisource.org/wiki/%D0%9E%D1%82%D0%B5%D0%BB%D0%BB%D0%BE%2C_%D0%B2%D0%B5%D0%BD%D0%B5%D1%86%D0%B8%D0%B0%D0%BD%D1%81%D0%BA%D0%B8%D0%B9_%D0%BC%D0%B0%D0%B2%D1%80_%28%D0%A8%D0%B5%D0%BA%D1%81%D0%BF%D0%B8%D1%80%3B_%D0%92%D0%B5%D0%B9%D0%BD%D0%B1%D0%B5%D1%80%D0%B3%29?oldid=5658637",
+      "page": "Отелло, венецианский мавр (Шекспир; Вейнберг)",
+      "revid": 5658637
      },
      "scene": "missing"
     },
@@ -6877,8 +7039,8 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Принеси мне тот цветок; траву, что я тебе однажды показывал.",
+      "source": "new",
       "cite": "A Midsummer Night's Dream 2.1"
      },
      "scene": "missing"
@@ -6890,8 +7052,8 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "В час моего покоя твой дядя подкрался с соком проклятой белены в склянке.",
+      "source": "new",
       "cite": "Hamlet 1.5"
      },
      "scene": "missing"
@@ -6903,8 +7065,8 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "В котле кипи и варись; глаз тритона и палец лягушки.",
+      "source": "new",
       "cite": "Macbeth 4.1"
      },
      "scene": "missing"
@@ -6916,8 +7078,8 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "На глубине пяти саженей лежит твой отец; из его костей стал коралл.",
+      "source": "new",
       "cite": "The Tempest 1.2"
      },
      "scene": "missing"
@@ -6929,8 +7091,8 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": null,
-      "source": "missing",
+      "text": "Влей это в любую жидкость и выпей; и будь в тебе сила двадцати человек, оно тотчас тебя прикончит.",
+      "source": "new",
       "cite": "Romeo and Juliet 5.1"
      },
      "scene": "missing"
@@ -8364,7 +8526,7 @@
       "detail": "Q2332221 label (hi)"
      },
      "quote": {
-      "text": "आओ, इस फूलों की सेज पर बैठो।",
+      "text": "आओ, इस पुष्पों की सेज पर विराजो।",
       "source": "new",
       "cite": "A Midsummer Night's Dream 4.1"
      },
@@ -8390,7 +8552,7 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": "अब मेरे सारे जादू टूट चुके हैं।",
+      "text": "अब मेरे सारे मंत्र टूट चुके हैं।",
       "source": "new",
       "cite": "The Tempest, Epilogue"
      },
@@ -8949,7 +9111,7 @@
       "detail": "Q82409 label (hi)"
      },
      "quote": {
-      "text": "पानी, पानी, हर ओर पानी, पर पीने को एक बूँद नहीं।",
+      "text": "पानी, पानी, हर तरफ़ समुद्र का पानी, पर पीने को एक बूँद नहीं।",
       "source": "new",
       "cite": "Coleridge, The Rime of the Ancient Mariner, Part II"
      },
@@ -9053,7 +9215,7 @@
       "detail": "Q236596 has no label in hi and no hi.wikipedia.org article"
      },
      "quote": {
-      "text": "मुझे याद करना जब मैं चली जाऊँ, दूर उस मौन देश में चली जाऊँ।",
+      "text": "मेरा स्मरण करना जब मैं चली जाऊँ, दूर उस मौन देश में चली जाऊँ।",
       "source": "new",
       "cite": "C. Rossetti, \"Remember\", lines 1-2"
      },

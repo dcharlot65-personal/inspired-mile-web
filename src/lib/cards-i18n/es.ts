@@ -8,76 +8,106 @@ const pack: CardTextPack = {
   "SM-001": {
    "name": "The Sonnet Man",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "¿He de compararte con un día de verano?",
+   "quoteSource": "new",
+   "scene": "Un gran escenario se materializa. The Sonnet Man avanza desde un foco dorado, micrófono en mano. Las palabras de Shakespeare se transforman en rimas de hip-hop mientras el público lo aclama."
   },
   "MO-001": {
    "nameSource": "wikidata",
    "name": "Romeo",
-   "quoteSource": "missing"
+   "quote": "Pero, ¡silencio! ¿Qué luz asoma por aquella ventana?",
+   "quoteSource": "new",
+   "scene": "Se despliega la escena de un balcón a la luz de la luna. Romeo tiende la mano hacia lo alto mientras Julieta aparece arriba. Pétalos de rosa flotan en el aire. La escena late con un cálido resplandor carmesí."
   },
   "CA-001": {
    "nameSource": "wikidata",
    "name": "Julieta",
-   "quoteSource": "missing"
+   "quote": "¿Qué hay en un nombre? Lo que llamamos rosa...",
+   "quoteSource": "new",
+   "scene": "El jardín de los Capuleto florece a la luz de la luna. Julieta está entre las rosas, con los ojos brillantes de desafío. Un ruiseñor canta desde las ramas."
   },
   "DC-001": {
    "nameSource": "wikidata",
    "name": "Príncipe Hamlet",
-   "quoteSource": "missing"
+   "quote": "Ser o no ser, esa es la cuestión.",
+   "quoteSource": "new",
+   "scene": "El castillo de Elsinor emerge de la sombra. Hamlet está en las almenas, con la calavera de Yorick flotando a su lado. Una figura espectral aparece en lo alto de la muralla."
   },
   "DC-002": {
    "nameSource": "wikidata",
    "name": "Ofelia",
-   "quoteSource": "missing"
+   "quote": "Aquí hay romero, que es para el recuerdo.",
+   "quoteSource": "new",
+   "scene": "Un arroyo manso serpentea por un bosque de sauces. Ofelia flota entre flores silvestres, susurrando versos olvidados. Los pétalos giran en la corriente."
   },
   "MO-002": {
    "nameSource": "wikidata",
    "name": "Mercucio",
-   "quoteSource": "missing"
+   "quote": "¡Mala peste a vuestras dos casas!",
+   "quoteSource": "new",
+   "scene": "Una calle de Verona estalla en caos. Mercucio baila entre las espadas, riéndose del peligro. Saltan chispas del acero que choca."
   },
   "FA-001": {
    "nameSource": "wikidata",
    "name": "Puck",
-   "quoteSource": "missing"
+   "quote": "¡Señor, qué necios son estos mortales!",
+   "quoteSource": "new",
+   "scene": "El bosque encantado reluce de travesura. Puck se escurre entre robles antiguos, dejando estelas de polvo de hadas. Abajo, los mortales dormidos sueñan sueños extraños."
   },
   "FA-002": {
    "nameSource": "wikidata",
    "name": "Titania",
-   "quoteSource": "missing"
+   "quote": "Ven, siéntate en este lecho florido.",
+   "quoteSource": "new",
+   "scene": "Un trono de enredaderas vivas se alza del suelo del bosque. Titania gobierna su corte de hadas mientras las luciérnagas iluminan la fronda. La naturaleza misma se inclina ante su voluntad."
   },
   "RL-001": {
    "name": "La calavera de Yorick",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "¡Ay, pobre Yorick! Yo lo conocí, Horacio.",
+   "quoteSource": "new",
+   "scene": "Una calavera reposa sobre terciopelo en una cripta en penumbra. Resuena una risa fantasmal mientras los recuerdos del bufón de la corte tiemblan como la luz de una vela."
   },
   "RL-002": {
    "name": "El báculo de Próspero",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "Ahora mis hechizos están todos deshechos.",
+   "quoteSource": "new",
+   "scene": "Un báculo nudoso chisporrotea de energía arcana. La tempestad gira a su alrededor mientras Próspero susurra su último conjuro. El rayo parte el cielo."
   },
   "PT-001": {
    "name": "Filtro de amor",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "El curso del amor verdadero nunca fue sereno.",
+   "quoteSource": "new",
+   "scene": "Un frasco luminoso late con luz rosada. De su superficie suben corazones mientras una dulce melodía llena el aire."
   },
   "PT-002": {
    "name": "Brebaje de las brujas",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "Dobla, dobla, afán y tormento.",
+   "quoteSource": "new",
+   "scene": "Un caldero burbujeante escupe humo verde. Tres figuras sombrías lo rodean, salmodiando. Unos ojos brillan desde el bosque oscuro."
   },
   "VC-001": {
    "nameSource": "missing",
-   "quoteSource": "missing"
+   "quote": "Si alguna vez volvéis a perturbar nuestras calles, vuestras vidas pagarán el quebranto de la paz.",
+   "quoteSource": "new",
+   "scene": "El Príncipe está en la escalinata del palacio de Verona; su voz impone silencio a la multitud enfrentada. Un cetro dorado arde de autoridad."
   },
   "VC-002": {
    "nameSource": "wikidata",
    "name": "Fray Lorenzo",
-   "quoteSource": "missing"
+   "quote": "Estos placeres violentos tienen finales violentos.",
+   "quoteSource": "new",
+   "scene": "Una celda de monasterio a la luz de las velas. El fraile cuida su huerto de hierbas y venenos, con la sabiduría grabada en el rostro curtido."
   },
   "VC-003": {
    "nameSource": "wikidata",
    "name": "Nodriza de Julieta",
-   "quoteSource": "missing"
+   "quote": "Yo soy la esclava que se afana por tu deleite.",
+   "quoteSource": "new",
+   "scene": "Una cocina cálida en casa de los Capuleto. El ama trajina con feroz devoción, con una carta secreta guardada en el delantal."
   },
   "TP-001": {
    "nameSource": "wikidata",
@@ -85,12 +115,16 @@ const pack: CardTextPack = {
    "aliases": [
     "Prospero"
    ],
-   "quoteSource": "missing"
+   "quote": "Estamos hechos de la misma materia que los sueños.",
+   "quoteSource": "new",
+   "scene": "Una isla envuelta en la tempestad. Próspero alza las manos mientras el rayo obedece su voluntad y el mar se agita a su mandato."
   },
   "TP-002": {
    "nameSource": "wikidata",
    "name": "Ariel",
-   "quoteSource": "missing"
+   "quote": "¡Salve, gran amo! ¡Grave señor, salve!",
+   "quoteSource": "new",
+   "scene": "Un espíritu tornasolado se disuelve en viento y luz, y vuelve a formarse como música. Ariel danza entre lo visible y lo invisible."
   },
   "TP-003": {
    "nameSource": "wikidata",
@@ -98,17 +132,23 @@ const pack: CardTextPack = {
    "aliases": [
     "Caliban"
    ],
-   "quoteSource": "missing"
+   "quote": "Esta isla es mía, por Sycorax, mi madre.",
+   "quoteSource": "new",
+   "scene": "La boca de una cueva en una costa salvaje. Calibán se agazapa entre las rocas, con los ojos ardiendo de rencor y de una inteligencia primitiva."
   },
   "MO-003": {
    "nameSource": "wikidata",
    "name": "Benvolio",
-   "quoteSource": "missing"
+   "quote": "Yo solo mantengo la paz. Envaina tu espada.",
+   "quoteSource": "new",
+   "scene": "Una plaza de Verona al amanecer. Benvolio se interpone entre espadas desnudas; sus manos abiertas son la única arma contra la tormenta que se avecina."
   },
   "CA-002": {
    "nameSource": "wikidata",
    "name": "Teobaldo",
-   "quoteSource": "missing"
+   "quote": "¿Qué, espada en mano y hablas de paz? Odio esa palabra.",
+   "quoteSource": "new",
+   "scene": "Un callejón de Verona incendiado por las antorchas. Tebaldo desenvaina su estoque con gracia letal, con los ojos clavados en su enemigo."
   },
   "DC-003": {
    "nameSource": "wikidata",
@@ -116,7 +156,9 @@ const pack: CardTextPack = {
    "aliases": [
     "Claudio"
    ],
-   "quoteSource": "missing"
+   "quote": "Mis palabras vuelan a lo alto, mis pensamientos quedan abajo.",
+   "quoteSource": "new",
+   "scene": "El salón del trono de Elsinor, revestido de falso esplendor. Claudio aferra la corona, con un frasco de veneno oculto en sus ropas."
   },
   "FA-003": {
    "nameSource": "wikidata",
@@ -124,149 +166,209 @@ const pack: CardTextPack = {
    "aliases": [
     "Oberon"
    ],
-   "quoteSource": "missing"
+   "quote": "Mal encuentro a la luz de la luna, orgullosa Titania.",
+   "quoteSource": "new",
+   "scene": "Un claro iluminado por la luna en lo hondo del bosque encantado. Oberón surge de la sombra; su corona de astas recoge la luz de plata."
   },
   "RL-003": {
    "name": "La daga de la mente",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "¿Es un puñal esto que veo ante mí?",
+   "quoteSource": "new",
+   "scene": "Una daga espectral flota en la oscuridad, con la hoja goteando sangre fantasma. La mano de Macbeth se alarga, pero nunca logra asirla."
   },
   "PT-003": {
    "name": "Jugo de la flor de Puck",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "Pondré un cinturón alrededor de la tierra en cuarenta minutos.",
+   "quoteSource": "new",
+   "scene": "Una flor púrpura aplastada deja caer un néctar irisado en una palma que espera. Allí donde cae, los ojos cambian, y los corazones los siguen."
   },
   "SC-001": {
    "nameSource": "wikidata",
    "name": "Macbeth",
-   "quoteSource": "missing"
+   "quote": "Me atrevo a todo lo que conviene a un hombre; quien se atreve a más no lo es.",
+   "quoteSource": "new",
+   "scene": "Un salón del trono manchado de sangre en Dunsinane. Macbeth empuña la espada con manos temblorosas; la corona le pesa en la frente. El bosque de Birnam se mueve en la colina lejana."
   },
   "SC-002": {
    "nameSource": "wikidata",
    "name": "Lady Macbeth",
-   "quoteSource": "missing"
+   "quote": "Venid, espíritus que servís a los pensamientos de muerte, quitadme aquí mi sexo.",
+   "quoteSource": "new",
+   "scene": "Una cámara del castillo escocés a la luz de las velas. Lady Macbeth recorre las frías losas, frotándose de las manos manchas de sangre que no existen. Las sombras se le pegan como una segunda piel."
   },
   "SC-003": {
    "nameSource": "wikidata",
    "name": "Banquo",
-   "quoteSource": "missing"
+   "quote": "Engendrarás reyes, aunque tú no lo seas.",
+   "quoteSource": "new",
+   "scene": "Un páramo escocés brumoso al crepúsculo. Banquo se mantiene firme mientras tres figuras espectrales susurran destinos al viento. Su fantasma perseguirá a los vivos."
   },
   "IL-001": {
    "nameSource": "missing",
-   "quoteSource": "missing"
+   "quote": "No soy lo que soy.",
+   "quoteSource": "new",
+   "scene": "Una costa de Iliria azotada por el viento. Viola se cala una gorra de marinero sobre el pelo corto; dos identidades brillan en sus ojos. El mar susurra secretos de su hermano perdido."
   },
   "IL-002": {
    "nameSource": "missing",
-   "quoteSource": "missing"
+   "quote": "Algunos nacen grandes, algunos alcanzan la grandeza, y a algunos la grandeza les es impuesta.",
+   "quoteSource": "new",
+   "scene": "Un jardín soleado en la finca de Olivia. Malvolio se pavonea con chillonas medias amarillas y ligas cruzadas, sonriente, apretando contra el pecho una carta de amor falsificada."
   },
   "IL-003": {
    "nameSource": "missing",
-   "quoteSource": "missing"
+   "quote": "El amor buscado es bueno, pero dado sin buscarlo es mejor.",
+   "quoteSource": "new",
+   "scene": "Una condesa de luto alza el velo y descubre una belleza que corta el aliento. El jardín de Olivia florece de jazmín y lavanda mientras el mensajero disfrazado le roba el corazón."
   },
   "RM-001": {
    "nameSource": "derived",
    "name": "Bruto",
-   "quoteSource": "missing"
+   "quote": "No porque amara menos a César, sino porque amaba más a Roma.",
+   "quoteSource": "new",
+   "scene": "El Senado romano, con las columnas de mármol teñidas de carmesí. Bruto está entre los conjurados, con la hoja aún temblando. El peso de la república descansa en sus manos ensangrentadas."
   },
   "RM-002": {
    "nameSource": "derived",
    "name": "Casio",
-   "quoteSource": "missing"
+   "quote": "La culpa, querido Bruto, no está en nuestras estrellas, sino en nosotros mismos.",
+   "quoteSource": "new",
+   "scene": "Un callejón romano a medianoche, a la luz de las antorchas. Casio se acerca y susurra sedición con mirada flaca y hambrienta. De su toga caen cartas falsificadas."
   },
   "RM-003": {
    "nameSource": "wikidata",
    "name": "Marco Antonio",
-   "quoteSource": "missing"
+   "quote": "¡Amigos, romanos, compatriotas, prestadme oídos!",
+   "quoteSource": "new",
+   "scene": "El Foro romano estalla de furia. Marco Antonio alza ante la turba el manto ensangrentado de César; sus palabras convierten el duelo en fuego. La república se derrumba con cada sílaba."
   },
   "MO-004": {
    "name": "Señor Montesco",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "Muchas mañanas se le ha visto allí, aumentando con lágrimas el fresco rocío de la mañana.",
+   "quoteSource": "new",
+   "scene": "La hacienda de los Montesco al amanecer. El señor Montesco mira desde una ventana alta a su hijo, que vaga por los huertos brumosos, enfermo de amor e inalcanzable."
   },
   "CA-003": {
    "name": "Señora Capuleto",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "Casarte, ese es justamente el tema del que venía a hablar.",
+   "quoteSource": "new",
+   "scene": "El gran salón de los Capuleto, vestido de seda. La señora Capuleto dispone el destino de su hija como flores en un jarrón; la ambición brilla tras cada sonrisa amable."
   },
   "DC-004": {
    "nameSource": "wikidata",
    "name": "Horacio",
-   "quoteSource": "missing"
+   "quote": "Ahora se quiebra un noble corazón. Buenas noches, dulce príncipe.",
+   "quoteSource": "new",
+   "scene": "Las almenas de Elsinor en la hora fría que precede al alba. Horacio vela junto a Hamlet, el único amigo verdadero en una corte de serpientes."
   },
   "FA-004": {
    "nameSource": "derived",
    "name": "Bottom",
-   "quoteSource": "missing"
+   "quote": "He tenido una visión rarísima. He tenido un sueño que supera el entendimiento del hombre.",
+   "quoteSource": "new",
+   "scene": "Un claro del bosque encendido de luz de hadas. Bottom lleva una cabeza de asno con desconcertada dignidad mientras Titania lo cubre de guirnaldas. Las hadas ahogan la risa."
   },
   "VC-004": {
    "nameSource": "wikidata",
    "name": "Conde París",
-   "quoteSource": "missing"
+   "quote": "Estos tiempos de duelo no dejan tiempo para el cortejo.",
+   "quoteSource": "new",
+   "scene": "El cementerio de Verona al anochecer. Paris deja flores en la tumba de Julieta, sin saber del amante desesperado que se acerca desde las sombras."
   },
   "TP-004": {
    "nameSource": "wikidata",
    "name": "Miranda",
-   "quoteSource": "missing"
+   "quote": "¡Oh, espléndido mundo nuevo, que tiene tales gentes!",
+   "quoteSource": "new",
+   "scene": "Una playa intacta en la isla de Próspero. Miranda ve por primera vez a los náufragos, con los ojos muy abiertos de asombro ante un mundo que no sabía que existía."
   },
   "RL-004": {
    "name": "El anillo de Romeo",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "Mi generosidad es tan ilimitada como el mar, mi amor tan profundo.",
+   "quoteSource": "new",
+   "scene": "Un anillo de oro descansa en el antepecho de piedra de un balcón y recoge la luz de la luna. Dentro lleva grabado un voto que sobrevive a la muerte misma. Pétalos de rosa giran a su alrededor en un viento invisible."
   },
   "RL-005": {
    "name": "El cofre de Portia",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "No es oro todo lo que reluce.",
+   "quoteSource": "new",
+   "scene": "Tres cofres relucen en una cámara a la luz de las velas: oro, plata y plomo. El de plomo vibra con una verdad callada y premia a quien sabe ver más allá de las apariencias."
   },
   "RL-006": {
    "name": "La corona de Macbeth",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "Inquieta yace la cabeza que lleva una corona.",
+   "quoteSource": "new",
+   "scene": "Una corona escocesa deslustrada reposa sobre un cojín manchado de sangre. Late con oscura ambición y susurra promesas de gloria a toda mano que se atreva a tomarla."
   },
   "RL-007": {
    "name": "El códice de la tempestad",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "Ahogaré mi libro.",
+   "quoteSource": "new",
+   "scene": "Un tomo antiguo, encuadernado en cuero curtido por el mar, flota sobre un altar de piedra. Sus páginas pasan solas, y cada una convoca una tormenta distinta."
   },
   "RL-008": {
    "name": "Las lágrimas de Cordelia",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "Oh, padre querido, son tus asuntos los que me ocupan.",
+   "quoteSource": "new",
+   "scene": "Un frasco de cristal guarda lágrimas que relucen como luz de estrellas cautiva. Cada gota lleva la pena de una hija que amó con demasiada verdad y habló con demasiada llaneza."
   },
   "RL-009": {
    "name": "La máscara de Bottom",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "¡Dios te bendiga, Bottom! ¡Estás transformado!",
+   "quoteSource": "new",
+   "scene": "Una máscara con cabeza de burro cuelga de una rama musgosa en el bosque de las hadas. Quien se la pone ve el mundo con ojos encantados, y se vuelve irresistible para las reinas de las hadas."
   },
   "PT-004": {
    "name": "Raíz de mandrágora",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "Ni la adormidera, ni la mandrágora, ni todos los jarabes soporíferos del mundo.",
+   "quoteSource": "new",
+   "scene": "Una raíz nudosa con forma de figura que grita es desenterrada a la luz de una vela. La tierra se desmorona y deja ver su poder antiguo y retorcido. El boticario la maneja con reverencia temblorosa."
   },
   "PT-005": {
    "name": "Rocío de Oberón",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "Tráeme aquella flor; la hierba que una vez te mostré.",
+   "quoteSource": "new",
+   "scene": "Una gota de rocío se aferra a una orquídea bañada de luna y brilla con una luz violeta de otro mundo. Una gota sobre los párpados dormidos, y quien sueña se enamora de la primera criatura que ve."
   },
   "PT-006": {
    "name": "Tintura de cicuta",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "En mi hora de descanso tu tío se acercó a hurtadillas, con jugo de maldito beleño en un frasco.",
+   "quoteSource": "new",
+   "scene": "Un frasco de vidrio negro exhala vapor verde en un corredor a oscuras. La tintura que encierra ha derribado reyes y deshecho dinastías, gota silenciosa a gota silenciosa."
   },
   "PT-007": {
    "name": "Extracto de muérdago",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "En el caldero hierve y cuece; ojo de tritón y dedo de rana.",
+   "quoteSource": "new",
+   "scene": "Unas bayas pálidas relucen entre oscuras hojas perennes, recogidas bajo una luna de invierno. El extracto vibra con la magia callada y tenaz del mundo natural."
   },
   "PT-008": {
    "name": "Lágrimas de sirena",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "A cinco brazas yace tu padre; de sus huesos se ha hecho coral.",
+   "quoteSource": "new",
+   "scene": "Un frasco con tapón de perla guarda un líquido azul luminoso que se mueve como un mar vivo. Dentro crecen y se deshacen diminutas formaciones de coral. Huele a sal y a viajes olvidados."
   },
   "PT-009": {
    "name": "Elixir del boticario",
    "nameSource": "translated",
-   "quoteSource": "missing"
+   "quote": "Echa esto en cualquier líquido que quieras y bébelo; y, aunque tuvieras la fuerza de veinte hombres, te despacharía al instante.",
+   "quoteSource": "new",
+   "scene": "Una polvorienta botica en el barrio más pobre de Mantua. Un elixir desesperado brilla, ambarino, en un frasco agrietado, con fuerza bastante para salvar la distancia entre la vida y la muerte."
   },
   "LD-001": {
    "nameSource": "wikidata",
@@ -275,37 +377,43 @@ const pack: CardTextPack = {
     "Wordsworth"
    ],
    "quote": "Vagaba solitario como una nube que flota en lo alto sobre valles y colinas.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Una alfombra de narcisos dorados se extiende por la orilla de un lago en calma. Wordsworth camina entre ellos, cuaderno en mano, con las colinas de Cumberland alzándose a su espalda."
   },
   "LD-002": {
    "nameSource": "wikidata",
    "name": "Samuel Taylor Coleridge",
    "quote": "Agua, agua por todas partes, y ni una gota que beber.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Un barco en calma chicha deriva sobre un océano pintado. El viejo marinero mira el albatros que lleva al cuello mientras figuras espectrales suben del mar de vidrio."
   },
   "LD-003": {
    "nameSource": "wikidata",
    "name": "John Keats",
    "quote": "Una cosa bella es un gozo para siempre: su encanto crece.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Un jardín de Hampstead en otoño. Keats, sentado bajo un ciruelo, escribe con fiebre mientras un ruiseñor canta desde las ramas que oscurecen."
   },
   "GC-001": {
    "nameSource": "wikidata",
    "name": "George Gordon Byron",
    "quote": "Camina en la belleza, como la noche de climas sin nubes y cielos estrellados.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Un palacio veneciano a medianoche. Byron está en el balcón, con la capa al viento, mirando el canal oscuro. A su espalda, un manuscrito a medio terminar arde en la chimenea."
   },
   "GC-002": {
    "nameSource": "wikidata",
    "name": "Mary Shelley",
    "quote": "Cuidado; pues no tengo miedo, y por eso soy poderoso.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Un estudio a la luz de las velas en Ginebra, durante una tormenta. Mary escribe al fulgor de los relámpagos mientras la criatura se agita en las sombras detrás de ella. Ciencia y horror se hacen uno."
   },
   "GC-003": {
    "nameSource": "wikidata",
    "name": "Edgar Allan Poe",
    "quote": "Una vez, en una lúgubre medianoche, mientras meditaba, débil y cansado.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Una estancia en penumbra, alumbrada por un fuego que muere. Poe está encorvado sobre su escritorio cuando un cuervo se posa en el busto de Palas. La palabra «Nunca más» resuena en las sombras."
   },
   "GC-004": {
    "nameSource": "wikidata",
@@ -314,25 +422,29 @@ const pack: CardTextPack = {
     "Blake"
    ],
    "quote": "Ver un mundo en un grano de arena y un cielo en una flor silvestre.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Un taller de imprenta de Londres encendido de luz visionaria. Blake graba un tigre en el cobre mientras la fiera sale de la plancha, ardiendo brillante en los bosques de la noche."
   },
   "GC-005": {
    "nameSource": "wikidata",
    "name": "Percy Bysshe Shelley",
    "quote": "Si llega el invierno, ¿puede estar lejos la primavera?",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Un acantilado italiano azotado por el viento. Shelley encara la tormenta con los brazos abiertos mientras el viento del oeste arranca las hojas de su cuaderno y las esparce por el Mediterráneo."
   },
   "LD-004": {
    "nameSource": "wikidata",
    "name": "Elizabeth Barrett Browning",
    "quote": "¿Cómo te amo? Déjame contar las maneras.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Una habitación soleada en Florencia. Elizabeth escribe junto a una ventana que da al Arno, con su spaniel a los pies. Las cartas de amor de Robert están abiertas sobre el escritorio."
   },
   "LD-005": {
    "nameSource": "wikidata",
    "name": "Christina Rossetti",
    "quote": "Recuérdame cuando me haya ido, ido lejos, a la tierra silenciosa.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Un jardín prerrafaelita en la luz que se apaga del otoño. Christina está sentada entre hojas caídas, componiendo versos que duelen de belleza y de serena resignación."
   },
   "OL-001": {
    "nameSource": "wikidata",
@@ -342,7 +454,8 @@ const pack: CardTextPack = {
     "Cronión"
    ],
    "quote": "Soy el que amontona las nubes, señor de los anchos cielos.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "El monte Olimpo parte el cielo. Zeus está sentado en un trono de nubes, con el rayo saltando entre sus dedos. Abajo, el mundo mortal tiembla bajo su mirada."
   },
   "OL-002": {
    "nameSource": "wikidata",
@@ -351,7 +464,8 @@ const pack: CardTextPack = {
     "Palas"
    ],
    "quote": "La lechuza de la sabiduría solo alza el vuelo al anochecer.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "El Partenón reluce en una luz dorada. Atenea está de pie con la armadura completa, la lechuza posada en su escudo y los ojos grises viendo a través de todo engaño mortal."
   },
   "OL-003": {
    "nameSource": "wikidata",
@@ -360,7 +474,8 @@ const pack: CardTextPack = {
     "Febo"
    ],
    "quote": "Soy el dios del canto, de la curación y del sol radiante.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Un carro de oro cruza veloz el cielo del alba. Apolo tañe la lira mientras la luz del sol mana de las ruedas y pinta el mundo de color."
   },
   "OL-004": {
    "nameSource": "wikidata",
@@ -370,7 +485,8 @@ const pack: CardTextPack = {
     "Citerea"
    ],
    "quote": "Ni siquiera los dioses pueden resistir el poder del amor.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Las costas de Chipre al amanecer. Afrodita surge de la espuma del mar; las palomas vuelan en círculo y las olas dejan perlas a sus pies. El mundo contiene el aliento."
   },
   "OL-005": {
    "nameSource": "wikidata",
@@ -379,7 +495,8 @@ const pack: CardTextPack = {
     "Argifonte"
    ],
    "quote": "Veloz como el pensamiento, llevo las palabras de los dioses a oídos mortales.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Un borrón de sandalias aladas cruza el cielo. Hermes zigzaguea entre los rayos, con un mensaje divino apretado en una mano y una sonrisa de ladrón en la cara."
   },
   "UW-001": {
    "nameSource": "wikidata",
@@ -389,7 +506,8 @@ const pack: CardTextPack = {
     "Pluto"
    ],
    "quote": "Todas las almas vienen a mí al final. Soy paciente.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "El salón del trono del Inframundo, alumbrado por ríos de fuego pálido. Hades está sentado con Cerbero a sus pies y el yelmo de oscuridad sobre el brazo del trono. Los muertos desfilan en un silencio sin fin."
   },
   "UW-002": {
    "nameSource": "wikidata",
@@ -399,7 +517,8 @@ const pack: CardTextPack = {
     "Perséfona"
    ],
    "quote": "Seis semillas comí, y me até para siempre entre dos mundos.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Un trono partido entre la primavera y la sombra. Perséfone sostiene una granada en una mano y una corona de flores en la otra, reina de dos reinos."
   },
   "OL-006": {
    "nameSource": "wikidata",
@@ -408,13 +527,15 @@ const pack: CardTextPack = {
     "Ulises"
    ],
    "quote": "Háblame, oh Musa, del hombre de muchos caminos, que anduvo errante muy lejos.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Un barco maltratado por la tormenta dobla un cabo rocoso. Odiseo se ata al mástil mientras las sirenas cantan desde los acantilados. En sus ojos arde el recuerdo de Ítaca."
   },
   "UW-003": {
    "nameSource": "wikidata",
    "name": "Medusa",
    "quote": "Mírame, si te atreves. Mi mirada es lo último que verás.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Un templo en ruinas al borde del mundo. Medusa se vuelve, con su cabellera de serpientes silbando. Guerreros de piedra cubren el suelo, congelados en su última carga."
   },
   "OL-007": {
    "nameSource": "wikidata",
@@ -424,7 +545,8 @@ const pack: CardTextPack = {
     "Pelida"
    ],
    "quote": "Prefiero vivir una vida corta de gloria que una vida larga en el olvido.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Las llanuras de Troya al amanecer. Aquiles carga con armadura resplandeciente y su grito de guerra parte el aire. Detrás de él, las naves griegas arden en la orilla."
   }
  },
  "houses": {

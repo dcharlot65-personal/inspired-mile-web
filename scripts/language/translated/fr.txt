@@ -50,3 +50,75 @@ OL-007	J’aime mieux vivre une courte vie de gloire qu’une longue vie d’oub
 IL-003	L’amour que l’on recherche est bon, mais donné sans qu’on le recherche, il est meilleur.
 CA-003	Marier, justement : c’est de te marier que je venais te parler.
 TP-004	Ô merveilleux nouveau monde, qui compte de pareils habitants !
+[scenes]
+SM-001	Une grande scène se matérialise. The Sonnet Man s’avance hors d’un projecteur doré, micro en main. Les mots de Shakespeare se changent en rimes de hip-hop sous les acclamations de la foule.
+MO-001	Une scène de balcon au clair de lune se déploie. Roméo tend la main vers le haut tandis que Juliette paraît au-dessus. Des pétales de rose flottent dans l’air. La scène palpite d’une chaude lueur cramoisie.
+CA-001	Le jardin des Capulet fleurit au clair de lune. Juliette se tient parmi les roses, les yeux brillants de défi. Un rossignol chante dans les branches.
+DC-001	Le château d’Elseneur émerge de l’ombre. Hamlet se tient aux créneaux, le crâne de Yorick flottant à son côté. Une figure spectrale paraît sur les remparts.
+DC-002	Un ruisseau paisible serpente dans un bois de saules. Ophélie flotte parmi les fleurs sauvages, murmurant des vers oubliés. Des pétales tournoient dans le courant.
+MO-002	Une rue de Vérone sombre dans le chaos. Mercutio danse entre les lames, riant au nez du danger. Des étincelles jaillissent de l’acier qui s’entrechoque.
+FA-001	La forêt enchantée scintille de malice. Puck file entre les vieux chênes, laissant des traînées de poussière de fée. En bas, les mortels endormis font des rêves étranges.
+FA-002	Un trône de lianes vivantes s’élève du sol de la forêt. Titania commande sa cour de fées tandis que les lucioles éclairent la voûte des arbres. La nature elle-même s’incline devant sa volonté.
+RL-001	Un crâne repose sur du velours dans une crypte obscure. Un rire fantomatique résonne tandis que les souvenirs du bouffon de la cour vacillent comme la flamme d’une bougie.
+RL-002	Un bâton noueux crépite d’énergie arcanique. La tempête tourbillonne autour de lui tandis que Prospero murmure son dernier sortilège. L’éclair fend le ciel.
+PT-001	Une fiole luisante palpite d’une lumière rose. Des cœurs s’élèvent de sa surface tandis qu’une douce mélodie emplit l’air.
+PT-002	Un chaudron bouillonnant crache une fumée verte. Trois silhouettes sombres tournent autour en psalmodiant. Des yeux luisent dans les bois obscurs.
+VC-001	Le Prince se tient sur les marches du palais de Vérone ; sa voix impose le silence à la foule ennemie. Un sceptre d’or brûle d’autorité.
+VC-002	Une cellule de monastère éclairée à la bougie. Le frère soigne son jardin d’herbes et de poisons, la sagesse gravée sur son visage buriné.
+VC-003	Une cuisine chaleureuse dans la maison des Capulet. La nourrice s’affaire avec un dévouement farouche, une lettre secrète glissée dans son tablier.
+TP-001	Une île enveloppée de tempête. Prospero lève les mains tandis que la foudre obéit à sa volonté et que la mer bouillonne à son commandement.
+TP-002	Un esprit chatoyant se dissout en vent et en lumière, puis se reforme en musique. Ariel danse entre le visible et l’invisible.
+TP-003	L’entrée d’une grotte sur un rivage sauvage. Caliban est tapi parmi les rochers, les yeux brûlants de rancune et d’une intelligence primitive.
+MO-003	Une place de Vérone à l’aube. Benvolio se tient entre les épées tirées ; ses mains ouvertes sont la seule arme contre l’orage qui monte.
+CA-002	Une ruelle de Vérone embrasée par les torches. Tybalt tire sa rapière avec une grâce mortelle, les yeux fixés sur son ennemi.
+DC-003	La salle du trône d’Elseneur, drapée d’une fausse splendeur. Claudius serre la couronne, une fiole de poison cachée dans sa robe.
+FA-003	Une clairière au clair de lune, au fond de la forêt enchantée. Obéron surgit de l’ombre ; sa couronne de bois de cerf accroche la lumière d’argent.
+RL-003	Un poignard spectral flotte dans les ténèbres, sa lame dégouttant d’un sang fantôme. La main de Macbeth se tend, mais ne peut jamais le saisir.
+PT-003	Une fleur pourpre écrasée laisse couler un nectar irisé dans une paume qui attend. Partout où il tombe, les yeux changent, et les cœurs suivent.
+SC-001	Une salle du trône tachée de sang à Dunsinane. Macbeth serre son épée de ses mains tremblantes, la couronne lourde sur son front. Le bois de Birnam remue sur la colline lointaine.
+SC-002	Une chambre du château écossais, éclairée à la bougie. Lady Macbeth arpente les dalles froides, frottant sur ses mains des taches de sang imaginaires. Les ombres s’accrochent à elle comme une seconde peau.
+SC-003	Une lande écossaise brumeuse au crépuscule. Banquo se tient ferme tandis que trois figures spectrales murmurent des destins dans le vent. Son fantôme hantera les vivants.
+IL-001	Un rivage d’Illyrie battu par les vents. Viola enfonce un bonnet de marin sur ses cheveux coupés court ; deux identités miroitent dans ses yeux. La mer murmure les secrets de son frère perdu.
+IL-002	Un jardin ensoleillé dans le domaine d’Olivia. Malvolio se pavane en bas jaunes criards, jarretières croisées, tout sourire, serrant contre sa poitrine une fausse lettre d’amour.
+IL-003	Une comtesse en deuil soulève son voile et révèle une beauté à couper le souffle. Le jardin d’Olivia fleurit de jasmin et de lavande tandis que le messager déguisé lui vole son cœur.
+RM-001	Le Sénat romain, ses colonnes de marbre tachées de cramoisi. Brutus se tient parmi les conjurés, la lame encore tremblante. Le poids de la république repose sur ses mains ensanglantées.
+RM-002	Une ruelle romaine à minuit, à la lueur des torches. Cassius se penche et murmure la sédition, l’air maigre et affamé. De fausses lettres s’échappent de sa toge.
+RM-003	Le Forum romain éclate de fureur. Marc Antoine brandit devant la foule le manteau ensanglanté de César ; ses mots changent le deuil en feu. La république s’effondre à chaque syllabe.
+MO-004	Le domaine des Montaigu à l’aube. Le seigneur Montaigu regarde d’une haute fenêtre son fils errer dans les vergers brumeux, malade d’amour et hors d’atteinte.
+CA-003	La grande salle des Capulet, tendue de soie. Dame Capulet arrange le destin de sa fille comme des fleurs dans un vase ; l’ambition brille derrière chaque sourire gracieux.
+DC-004	Les remparts d’Elseneur à l’heure froide qui précède l’aube. Horatio veille aux côtés d’Hamlet, seul ami véritable dans une cour de serpents.
+FA-004	Une clairière baignée de lumière féerique. Bottom porte une tête d’âne avec une dignité perplexe tandis que Titania le couvre de guirlandes. Les fées étouffent leurs rires.
+VC-004	Le cimetière de Vérone au crépuscule. Pâris dépose des fleurs sur le tombeau de Juliette, ignorant l’amant désespéré qui approche dans l’ombre.
+TP-004	Une plage intacte sur l’île de Prospero. Miranda voit pour la première fois les naufragés, les yeux écarquillés d’émerveillement devant un monde dont elle ignorait l’existence.
+RL-004	Un anneau d’or repose sur le rebord de pierre d’un balcon et accroche le clair de lune. À l’intérieur est gravé un serment qui survit à la mort même. Des pétales de rose tournoient autour de lui dans un vent invisible.
+RL-005	Trois coffrets luisent dans une chambre éclairée à la bougie : or, argent et plomb. Le coffret de plomb vibre d’une vérité tranquille et récompense ceux qui savent voir au-delà des apparences.
+RL-006	Une couronne écossaise ternie repose sur un coussin taché de sang. Elle palpite d’une sombre ambition et murmure des promesses de gloire à toute main qui ose se tendre vers elle.
+RL-007	Un grimoire ancien, relié d’un cuir patiné par la mer, flotte au-dessus d’un autel de pierre. Ses pages tournent toutes seules, et chacune appelle une tempête différente.
+RL-008	Une fiole de cristal renferme des larmes qui scintillent comme une lumière d’étoiles captive. Chaque goutte porte le chagrin d’une fille qui aima trop sincèrement et parla trop franchement.
+RL-009	Un masque à tête d’âne pend à une branche moussue dans le bois des fées. Qui le revêt voit le monde avec des yeux enchantés, et devient irrésistible aux reines des fées.
+PT-004	Une racine noueuse, en forme de silhouette hurlante, est déterrée à la lueur d’une bougie. La terre s’effrite et révèle sa puissance ancienne et tordue. L’apothicaire la manie avec un respect tremblant.
+PT-005	Une goutte de rosée s’accroche à une orchidée sous la lune et luit d’une lumière violette venue d’ailleurs. Une goutte sur des paupières endormies, et le dormeur s’éprend de la première créature qu’il voit.
+PT-006	Une fiole de verre noir exhale une vapeur verte dans un couloir obscur. La teinture qu’elle contient a renversé des rois et brisé des dynasties, une goutte silencieuse après l’autre.
+PT-007	Des baies pâles luisent parmi de sombres feuilles persistantes, cueillies sous une lune d’hiver. L’extrait vibre de la magie calme et tenace du monde naturel.
+PT-008	Un flacon au bouchon de perle renferme un liquide bleu lumineux qui ondule comme une mer vivante. De minuscules coraux y poussent et s’y dissolvent. Il sent le sel et les voyages oubliés.
+PT-009	Une boutique d’apothicaire poussiéreuse dans le quartier le plus pauvre de Mantoue. Un élixir du désespoir luit, ambré, dans une fiole fêlée, assez puissant pour franchir l’écart entre la vie et la mort.
+LD-001	Un tapis de jonquilles dorées s’étend le long des rives d’un lac immobile. Wordsworth marche parmi elles, carnet en main, les monts du Cumberland dressés derrière lui.
+LD-002	Un navire encalminé dérive sur un océan peint. Le vieux marin fixe l’albatros pendu à son cou tandis que des figures spectrales montent de la mer de verre.
+LD-003	Un jardin de Hampstead en automne. Keats, assis sous un prunier, écrit fiévreusement tandis qu’un rossignol chante dans les branches qui s’assombrissent.
+GC-001	Un palais vénitien à minuit. Byron se tient au balcon, la cape au vent, le regard perdu sur le canal obscur. Derrière lui, un manuscrit inachevé brûle dans la cheminée.
+GC-002	Un cabinet éclairé à la bougie, à Genève, pendant un orage. Mary écrit à la lueur des éclairs tandis que la créature remue dans l’ombre derrière elle. La science et l’horreur ne font plus qu’un.
+GC-003	Une chambre sombre qu’éclaire un feu mourant. Poe est voûté sur son bureau lorsqu’un corbeau se pose sur le buste de Pallas. Le mot « Jamais plus » résonne dans l’ombre.
+GC-004	Un atelier d’imprimeur à Londres, embrasé d’une lumière visionnaire. Blake grave un tigre dans le cuivre tandis que la bête sort de la plaque, brûlant d’un vif éclat dans les forêts de la nuit.
+GC-005	Le sommet d’une falaise italienne battue par les vents. Shelley fait face à l’orage, les bras ouverts, tandis que le vent d’ouest arrache les pages de son carnet et les disperse sur la Méditerranée.
+LD-004	Une chambre ensoleillée à Florence. Elizabeth écrit près d’une fenêtre qui donne sur l’Arno, son épagneul à ses pieds. Les lettres d’amour de Robert sont ouvertes sur le bureau.
+LD-005	Un jardin préraphaélite dans la lumière déclinante de l’automne. Christina est assise parmi les feuilles mortes et compose des vers douloureux de beauté et de calme résignation.
+OL-001	Le mont Olympe fend le ciel. Zeus siège sur un trône de nuages, la foudre jaillissant entre ses doigts. En bas, le monde des mortels tremble sous son regard.
+OL-002	Le Parthénon resplendit dans une lumière dorée. Athéna se tient en armure complète, sa chouette perchée sur son bouclier, ses yeux gris perçant toute tromperie mortelle.
+OL-003	Un char d’or file dans le ciel de l’aube. Apollon joue de la lyre tandis que la lumière du soleil ruisselle des roues et peint le monde de couleurs.
+OL-004	Les rivages de Chypre à l’aube. Aphrodite surgit de l’écume ; des colombes tournoient au-dessus d’elle et les vagues déposent des perles à ses pieds. Le monde retient son souffle.
+OL-005	Un éclair de sandales ailées traverse le ciel. Hermès se faufile entre les foudres, un message divin serré dans une main et un sourire de voleur aux lèvres.
+UW-001	La salle du trône des Enfers, éclairée par des fleuves de feu pâle. Hadès siège avec Cerbère à ses pieds, son casque de ténèbres posé sur l’accoudoir. Les morts défilent dans un silence sans fin.
+UW-002	Un trône partagé entre le printemps et l’ombre. Perséphone tient une grenade dans une main et une couronne de fleurs dans l’autre, reine de deux royaumes.
+OL-006	Un navire battu par la tempête double un cap rocheux. Ulysse s’attache au mât tandis que les Sirènes chantent du haut des falaises. Le souvenir d’Ithaque brûle dans ses yeux.
+UW-003	Un temple en ruine au bord du monde. Méduse se retourne, sa chevelure de serpents sifflant. Des guerriers de pierre jonchent le sol, figés dans leur dernière charge.
+OL-007	Les plaines de Troie à l’aube. Achille charge dans une armure flamboyante, son cri de guerre fendant l’air. Derrière lui, les navires grecs brûlent sur le rivage.
