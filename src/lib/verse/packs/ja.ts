@@ -1,7 +1,8 @@
 import type { LanguagePack } from './index';
 
 // Japanese. The acrostic spells a word in kana, one kana per line, so every acrostic line here opens
-// in kana. The haiku are written in kana because sounds can only be counted in kana.
+// in kana. These haiku are written in kana; with the analyser loaded (../sound/ja) a haiku in kanji
+// is counted too.
 const pack: LanguagePack = {
   lang: 'ja',
   acrostic: ['さくら', 'あらし', 'いのち', 'ことば', 'はなし', 'あした'],

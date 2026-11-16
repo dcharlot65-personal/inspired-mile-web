@@ -1,7 +1,7 @@
 import type { LanguagePack } from './index';
 
 // Chinese (Simplified). The acrostic is the hidden-head poem (藏头诗): each line opens on one character
-// of the phrase. No rhyming forms: a character does not show its sound.
+// of the phrase. Rhyme is checked from a table of readings (../sound), in modern Mandarin.
 const pack: LanguagePack = {
   lang: 'zh',
   acrostic: ['风花雪月', '天下第一', '明月清风', '春花秋月', '月下花', '清秋月'],

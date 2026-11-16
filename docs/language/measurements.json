@@ -1,24 +1,24 @@
 {
   "it": {
     "source": "Wiktionary via kaikki.org",
-    "dictionaryWords": 84783,
-    "ruleSyllablesAgree": 93.7,
+    "dictionaryWords": 84748,
+    "ruleSyllablesAgree": 93.8,
     "ruleStressAgree": 71.9,
-    "stressChecked": 84505,
-    "notAligned": 278,
+    "stressChecked": 84481,
+    "notAligned": 267,
     "table": {
-      "entries": 27558,
-      "bytes": 289996,
-      "gzipBytes": 67075
+      "entries": 27552,
+      "bytes": 289947,
+      "gzipBytes": 67061
     }
   },
   "fr": {
     "source": "Wiktionary via WikiPron",
-    "dictionaryWords": 84350,
+    "dictionaryWords": 84049,
     "table": {
-      "entries": 84350,
-      "bytes": 998547,
-      "gzipBytes": 243816
+      "entries": 84049,
+      "bytes": 995826,
+      "gzipBytes": 242653
     }
   },
   "th": {
@@ -46,59 +46,59 @@
   },
   "ru": {
     "source": "Wiktionary via kaikki.org",
-    "dictionaryWords": 415115,
+    "dictionaryWords": 415075,
     "notAligned": 267,
     "table": {
-      "entries": 399887,
-      "bytes": 3721216,
-      "gzipBytes": 515498
+      "entries": 399857,
+      "bytes": 3720967,
+      "gzipBytes": 515424
     }
   },
   "es": {
     "source": "Wiktionary via kaikki.org",
-    "dictionaryWords": 137137,
-    "ruleSyllablesAgree": 94.3,
+    "dictionaryWords": 137003,
+    "ruleSyllablesAgree": 94.4,
     "ruleStressAgree": 99.2,
-    "stressChecked": 136608,
-    "notAligned": 529,
+    "stressChecked": 136520,
+    "notAligned": 483,
     "table": {
-      "entries": 1141,
-      "bytes": 16716,
-      "gzipBytes": 5135
+      "entries": 1135,
+      "bytes": 16666,
+      "gzipBytes": 5122
     }
   },
   "de": {
     "source": "Wiktionary via kaikki.org",
-    "dictionaryWords": 71746,
-    "ruleSyllablesAgree": 95.1,
+    "dictionaryWords": 71643,
+    "ruleSyllablesAgree": 95.3,
     "table": {
-      "entries": 71746,
-      "bytes": 1295679,
-      "gzipBytes": 457874
+      "entries": 71643,
+      "bytes": 1294551,
+      "gzipBytes": 457346
     }
   },
   "pt": {
     "source": "Wiktionary via kaikki.org",
-    "dictionaryWords": 37313,
-    "ruleSyllablesAgree": 87.8,
-    "ruleStressAgree": 96.1,
-    "stressChecked": 36193,
-    "notAligned": 1120,
+    "dictionaryWords": 59646,
+    "ruleSyllablesAgree": 87.3,
+    "ruleStressAgree": 96.5,
+    "stressChecked": 58133,
+    "notAligned": 1513,
     "table": {
-      "entries": 1418,
-      "bytes": 16996,
-      "gzipBytes": 5259
+      "entries": 2013,
+      "bytes": 24157,
+      "gzipBytes": 7329
     }
   },
   "ko": {
     "source": "Wiktionary (IPA: one vowel sound a syllable) via WikiPron",
-    "dictionaryWords": 45562,
-    "ruleSyllablesAgree": 99.9
+    "dictionaryWords": 30385,
+    "ruleSyllablesAgree": 100
   },
   "vi": {
     "source": "Wiktionary (IPA: one tone a syllable) via WikiPron",
-    "dictionaryWords": 27553,
-    "ruleSyllablesAgree": 98.2
+    "dictionaryWords": 26911,
+    "ruleSyllablesAgree": 98.6
   },
   "ja": {
     "source": "JMdict (EDRDG)",
@@ -106,7 +106,27 @@
   },
   "pl": {
     "source": "Wiktionary via kaikki.org",
-    "dictionaryWords": 84525,
-    "ruleSyllablesAgree": 98.8
+    "dictionaryWords": 160770,
+    "ruleSyllablesAgree": 98.7
+  },
+  "hi": {
+    "source": "Wiktionary (IPA: one vowel sound a syllable) via WikiPron",
+    "dictionaryWords": 30377,
+    "ruleSyllablesAgree": 96,
+    "table": {
+      "entries": 1214,
+      "bytes": 22489,
+      "gzipBytes": 6125
+    }
+  },
+  "id": {
+    "source": "Wiktionary via kaikki.org",
+    "dictionaryWords": 21744,
+    "ruleSyllablesAgree": 94.9,
+    "table": {
+      "entries": 1104,
+      "bytes": 12496,
+      "gzipBytes": 5010
+    }
   }
 }

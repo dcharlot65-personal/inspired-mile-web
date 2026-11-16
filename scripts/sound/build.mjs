@@ -6,7 +6,8 @@
 // <folder> holds the downloads named in docs/language/PHONETICS.md (it says where each comes
 // from, its version and licence, and how to fetch it):
 //   kaikki_<lang>.tsv        word<TAB>IPA[<TAB>IPA…], reduced from kaikki.org's Wiktionary extract
-//                            by scripts/sound/kaikki-filter.py           (es it pt de ru hi id)
+//                            by scripts/sound/kaikki-filter.py           (es it pt de ru id)
+//   hin_deva_broad.tsv       WikiPron                                    (hi)
 //   fra_latn_broad.tsv       WikiPron                                    (fr)
 //   tha_thai_broad.tsv       WikiPron                                    (th)
 //   unihan/Unihan_Readings.txt, cedict.txt                               (zh)
@@ -121,7 +122,10 @@ function kaikki(lang) {
   for (const l of lines(`kaikki_${lang}.tsv`)) {
     const [word, ...ipas] = l.split('\t');
     const clean = ipas.map(cleanIpa).filter(Boolean);
-    if (word && clean.length && !/[\s\d]/.test(word)) out.push([word, clean]);
+    // An initialism is read letter by letter and shares its spelling with an ordinary word once
+    // lower-cased (Indonesian "API", four syllables, against "api", fire): left out.
+    const initialism = [...word].length > 1 && word === word.toUpperCase() && word !== word.toLowerCase();
+    if (word && clean.length && !/[\s\d]/.test(word) && !initialism) out.push([word, clean]);
   }
   return out;
 }
@@ -293,6 +297,7 @@ function french() {
   for (const l of lines('fra_latn_broad.tsv')) {
     const [word, pron] = l.split('\t');
     const w = word.toLowerCase().normalize('NFC');
+    if (word.length > 1 && word === word.toUpperCase() && word !== w) continue;
     if (!pron || !/^[a-zàâäçéèêëîïôöùûüÿœæ'\-]+$/.test(w) || w.length > 24) continue;
     const phones = pron.normalize('NFC').split(' ').filter((p) => p !== '‿');
     const n = phones.filter((p) => FR_VOWEL.test(p)).length;
@@ -521,20 +526,26 @@ function polish() {
   measures.pl = { ...measures.pl, source: 'Wiktionary via kaikki.org', dictionaryWords: cands.length, ruleSyllablesAgree: pct(agree, cands.length) };
 }
 
-function wikipronCounts(lang, file, script, countPhones, unit, source) {
+function wikipronCounts(lang, file, script, countPhones, unit, source, tableNote) {
   const cands = [];
+  const entries = new Map();
+  const seen = new Set();
   let agree = 0;
   for (const l of lines(file)) {
     const [word, pron] = l.split('\t');
     const w = word.normalize('NFC').toLowerCase();
     if (!pron || !script.test(w)) continue;
+    if (seen.has(w)) continue;
+    seen.add(w);
     const n = countPhones(pron.normalize('NFC').split(' '));
     cands.push([w, n]);
     const rule = w.split(' ').reduce((sum, part) => sum + (syllablesByRule(part, lang) ?? NaN), 0);
     if (rule === n) agree++;
+    else if (tableNote && n > 0 && n < 36) entries.set(w, b36(n));
   }
   syllableSet(lang, source, unit, cands);
   measures[lang] = { ...measures[lang], source, dictionaryWords: cands.length, ruleSyllablesAgree: pct(agree, cands.length) };
+  if (tableNote) measures[lang].table = writeTable(lang, entries, tableNote);
 }
 
 function japanese() {
@@ -560,7 +571,8 @@ const JOBS = {
   it: () => romance('it'),
   pt: () => romance('pt'),
   id: () => countExceptions('id', /^[a-z]+$/, (w) => syllablesByRule(w, 'id')),
-  hi: () => countExceptions('hi', /^[\u0900-\u097f]+$/, (w) => hindiSyllablesByRule(w)),
+  // Hindi from WikiPron: it has 33,000 words where the kaikki extract has under 2,000 with a transcription.
+  hi: () => wikipronCounts('hi', 'hin_deva_broad.tsv', /^[\u0900-\u097f]+$/, (ps) => ps.filter(VOWEL_PHONE).length, 'syllables', 'Wiktionary (IPA: one vowel sound a syllable) via WikiPron', 'hi: words whose syllable count the script rule gets wrong. Source: Wiktionary (CC BY-SA 4.0) via WikiPron.'),
   ru: russian,
   fr: french,
   de: german,

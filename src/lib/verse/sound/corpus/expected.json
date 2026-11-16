@@ -8,7 +8,7 @@
   "words": 60,
   "kept": 18,
   "verses": 18,
-  "digest": "e71cbf50"
+  "digest": "b5092c20"
  },
  "fr": {
   "heard": 49,
@@ -19,7 +19,7 @@
   "words": 60,
   "kept": 18,
   "verses": 18,
-  "digest": "44a1c8ed"
+  "digest": "8cb03d70"
  },
  "de": {
   "heard": 57,
@@ -30,40 +30,40 @@
   "words": 60,
   "kept": 18,
   "verses": 18,
-  "digest": "ad92c6f8"
+  "digest": "f98bc574"
  },
  "it": {
   "heard": 56,
   "yes": 59,
   "refused": 30,
   "no": 30,
-  "counted": 57,
+  "counted": 58,
   "words": 60,
   "kept": 18,
   "verses": 18,
-  "digest": "974b0df5"
+  "digest": "a1b19277"
  },
  "pt": {
   "heard": 45,
   "yes": 45,
   "refused": 27,
   "no": 27,
-  "counted": 53,
+  "counted": 56,
   "words": 60,
   "kept": 18,
   "verses": 18,
-  "digest": "bbd12fc3"
+  "digest": "e760ebfa"
  },
  "pl": {
   "heard": 48,
   "yes": 50,
   "refused": 50,
   "no": 50,
-  "counted": 59,
+  "counted": 60,
   "words": 60,
   "kept": 18,
   "verses": 18,
-  "digest": "0450cccc"
+  "digest": "6a2474fb"
  },
  "ru": {
   "heard": 47,
@@ -74,7 +74,7 @@
   "words": 60,
   "kept": 18,
   "verses": 18,
-  "digest": "029b26cf"
+  "digest": "b8b19c06"
  },
  "ar": {
   "heard": 50,
@@ -92,11 +92,11 @@
   "yes": 48,
   "refused": 45,
   "no": 45,
-  "counted": 0,
-  "words": 0,
+  "counted": 60,
+  "words": 60,
   "kept": 18,
   "verses": 18,
-  "digest": "ee68ba22"
+  "digest": "63b1da04"
  },
  "zh": {
   "heard": 46,
@@ -158,10 +158,10 @@
   "yes": 46,
   "refused": 43,
   "no": 43,
-  "counted": 0,
-  "words": 0,
+  "counted": 60,
+  "words": 60,
   "kept": 18,
   "verses": 18,
-  "digest": "30ceb63d"
+  "digest": "fb0c374e"
  }
 }

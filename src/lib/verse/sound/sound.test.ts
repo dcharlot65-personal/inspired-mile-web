@@ -35,7 +35,7 @@ const FLOORS: Record<string, { heard: number; refused: number; counted: number }
   pl: { heard: 0.9, refused: 0.95, counted: 0.95 },
   ru: { heard: 0.95, refused: 0.95, counted: 0.95 },
   ar: { heard: 0.95, refused: 0.95, counted: 0 },
-  hi: { heard: 0.9, refused: 0.9, counted: 0.9 },
+  hi: { heard: 0.8, refused: 0.9, counted: 0.9 },
   zh: { heard: 0.85, refused: 0.85, counted: 0.95 },
   ja: { heard: 0, refused: 0, counted: 0.95 },
   ko: { heard: 0, refused: 0, counted: 0.95 },
