@@ -39,7 +39,8 @@ from sentence_transformers import SentenceTransformer
 from sacrebleu.metrics import CHRF
 
 tok = AutoTokenizer.from_pretrained(args.model)
-translator = ctranslate2.Translator(args.model, device=args.device, compute_type='int8' if args.device == 'cpu' else 'default', inter_threads=1, intra_threads=args.threads)
+COMPUTE = os.environ.get('BT_COMPUTE') or ('int8' if args.device == 'cpu' else 'default')
+translator = ctranslate2.Translator(args.model, device=args.device, compute_type=COMPUTE, inter_threads=1, intra_threads=args.threads)
 embedder = SentenceTransformer(args.embedder, device='cpu')
 chrf = CHRF()
 
@@ -83,17 +84,27 @@ keys = list(en.keys())
 result = {'model': 'google/madlad400-3b-mt (CTranslate2 int8: Nextcloud-AI/madlad400-3b-mt-ct2-int8)', 'embedder': 'sentence-transformers/all-MiniLM-L6-v2', 'languages': {}}
 if os.path.exists(args.out):
     try:
-        result = json.load(open(args.out, encoding='utf8'))  # resume: a language already scored is kept
+        result = json.load(open(args.out, encoding='utf8'))  # resume
     except Exception:
         pass
+result['device'] = f'{args.device} ({COMPUTE})'
+result['beam'] = args.beam
 for lang in data:
-    if lang == 'en' or (only and lang not in only) or lang in result['languages']:
+    if lang == 'en' or (only and lang not in only):
         continue
-    texts = [data[lang]['typical'][k] for k in keys]
-    bts = back(texts, lang)
-    right = score(bts, [en[k] for k in keys])
+    old = result['languages'].get(lang, {})
+    # Resume, string by string: a score is kept only while both the translation and the English
+    # it was scored against are exactly what they were. Anything else is translated again.
+    todo = [k for k in keys if not (k in old and old[k]['text'] == data[lang]['typical'][k] and old[k]['english'] == en[k])]
+    if not todo and set(old) == set(keys):
+        continue
+    texts = [data[lang]['typical'][k] for k in todo]
+    bts = back(texts, lang) if todo else []
+    right = score(bts, [en[k] for k in todo]) if todo else []
     # the control: the same back-translations against the next key's English
-    wrong = score(bts, [en[keys[(i + 1) % len(keys)]] for i in range(len(keys))])
-    result['languages'][lang] = {k: {'text': t, 'english': en[k], 'back': bt, **s, 'controlCos': w['cos']} for k, t, bt, s, w in zip(keys, texts, bts, right, wrong)}
+    nxt = {k: en[keys[(i + 1) % len(keys)]] for i, k in enumerate(keys)}
+    wrong = score(bts, [nxt[k] for k in todo]) if todo else []
+    fresh = {k: {'text': t, 'english': en[k], 'back': bt, **s, 'controlCos': w['cos']} for k, t, bt, s, w in zip(todo, texts, bts, right, wrong)}
+    result['languages'][lang] = {k: fresh.get(k) or old[k] for k in keys}
     json.dump(result, open(args.out, 'w', encoding='utf8'), ensure_ascii=False, indent=1)
-    print(f'{lang}: {len(keys)} strings, {time.time() - t0:.0f}s elapsed', file=sys.stderr, flush=True)
+    print(f'{lang}: {len(todo)} of {len(keys)} strings translated, {time.time() - t0:.0f}s elapsed', file=sys.stderr, flush=True)

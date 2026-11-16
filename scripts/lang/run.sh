@@ -36,7 +36,9 @@ PIDS=()
 # Stop what this run started, and only that: each server's own pid and the processes under it
 # (memguard runs the server as its child, and does not pass a signal on).
 kill_tree() { local c; for c in $(pgrep -P "$1" 2>/dev/null); do kill_tree "$c"; done; kill "$1" 2>/dev/null || true; }
-cleanup() { for p in "${PIDS[@]:-}"; do [ -n "$p" ] && kill_tree "$p"; done; }
+# It keeps the step's own exit status: under set -e a trap whose last test fails would turn a
+# step that succeeded, and started no server, into exit 1 (seen 2026-11-16 on `setup`).
+cleanup() { local rc=$?; for p in "${PIDS[@]:-}"; do if [ -n "$p" ]; then kill_tree "$p"; fi; done; return $rc; }
 trap cleanup EXIT
 
 wait_http() {  # wait_http <url> <seconds> <log>

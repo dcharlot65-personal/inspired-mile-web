@@ -129,12 +129,22 @@ try {
   result.server = { model: props.model_path ?? props.default_generation_settings?.model ?? null, build: props.build_info ?? null };
 } catch { /* older servers have no /props */ }
 
-for (const lang of LOCALES) {
-  if (lang === 'en' || (only.length && !only.includes(lang))) continue;
+// Languages are reviewed side by side, one per server slot (run.sh starts llama-server with -np 2).
+const PARALLEL = Number(process.env.REVIEW_PARALLEL ?? '2');
+// In the order given (--lang th,hi,…: the weakest first), else the locale order.
+const queue = (only.length ? only : LOCALES).filter((l) => l !== 'en' && LOCALES.includes(l));
+await Promise.all(Array.from({ length: PARALLEL }, async () => {
+  for (let lang = queue.shift(); lang; lang = queue.shift()) await reviewLanguage(lang);
+}));
+result.finished = new Date().toISOString();
+writeFileSync(OUT, JSON.stringify(result, null, 1) + '\n');
+
+async function reviewLanguage(lang) {
   const done = (result.languages[lang] ??= { control: null, reviewed: {}, failedBatches: 0 });
   if (!done.control) done.control = await control(lang);
   console.log(`${lang} control: ${JSON.stringify({ ...done.control, raw: undefined })}`);
-  const keys = Object.keys(strings[lang].ui).filter((k) => !(k in HOUSE_QUOTES) && !(k in done.reviewed));
+  // On a resume, a string is asked about again if its text has changed since its review.
+  const keys = Object.keys(strings[lang].ui).filter((k) => !(k in HOUSE_QUOTES) && (done.reviewed[k]?.translation !== strings[lang].ui[k] || done.reviewed[k].verdict === 'no answer'));
   for (let i = 0; i < keys.length; i += BATCH) {
     const batch = keys.slice(i, i + BATCH).map((key) => ({ key, where: contextOf(key), english: strings.en.ui[key], translation: strings[lang].ui[key] }));
     const got = await ask(lang, batch);
@@ -148,11 +158,9 @@ for (const lang of LOCALES) {
       done.reviewed[b.key] = r ? { verdict: r.verdict, corrected: r.verdict === 'fix' ? r.corrected : '', reason: r.reason, translation: b.translation } : { verdict: 'no answer', corrected: '', reason: '', translation: b.translation };
     }
     writeFileSync(OUT, JSON.stringify(result, null, 1) + '\n');
-    process.stdout.write(`${lang} ${Math.min(i + BATCH, keys.length)}/${keys.length}\r`);
+    console.log(`${lang} ${Math.min(i + BATCH, keys.length)}/${keys.length}`);
   }
   const fixes = Object.values(done.reviewed).filter((r) => r.verdict === 'fix').length;
   console.log(`${lang}: ${Object.keys(done.reviewed).length} reviewed, ${fixes} corrections proposed, ${done.failedBatches} failed batches`);
   writeFileSync(OUT, JSON.stringify(result, null, 1) + '\n');
 }
-result.finished = new Date().toISOString();
-writeFileSync(OUT, JSON.stringify(result, null, 1) + '\n');
