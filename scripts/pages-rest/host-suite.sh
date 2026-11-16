@@ -5,9 +5,15 @@
 #
 # Ports of this branch's own (46331-46336), so a run in another checkout is never tested
 # by mistake. The dev server for the screenshots is stopped by its own port.
-export PATH=$HOME/.cargo/bin:/opt/homebrew/bin:$PATH
-OUT=/Volumes/macos_4TB_external_1/wai-build/im-lang/pages-rest
-MEMGUARD=/Volumes/macos_4TB_external_1/wai-build/bin/memguard
+#
+# On a host other than the Studio, set OUT and MEMGUARD to that host's own folder and guard
+# (the iMac Pro: OUT=/Users/dcharlot/wai-build/im-lang/pages-rest
+# MEMGUARD=/Users/dcharlot/wai-build/bin/memguard, and PLAYWRIGHT_BROWSERS_PATH=$OUT/pw-browsers,
+# where `npx playwright install chromium` put this branch's browser). PW_ARGS picks the specs
+# (default: this branch's); PW_ARGS=" " runs the whole suite.
+export PATH=$HOME/.cargo/bin:/opt/homebrew/bin:/usr/local/bin:$PATH
+OUT=${OUT:-/Volumes/macos_4TB_external_1/wai-build/im-lang/pages-rest}
+MEMGUARD=${MEMGUARD:-/Volumes/macos_4TB_external_1/wai-build/bin/memguard}
 mkdir -p $OUT/shots $OUT/logs
 STEPS="${STEPS:-vitest build pw shots}"
 export E2E_WEB_PORT=46331 E2E_WEB_NOEMAIL_PORT=46332 E2E_API_PORT=46333 E2E_API_NOEMAIL_PORT=46334 E2E_PG_PORT=46335

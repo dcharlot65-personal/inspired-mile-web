@@ -8,6 +8,8 @@
 #   grammar      LanguageTool over every string                  -> $OUT/grammar.json
 #   bt-start     translate every string back to English (MADLAD-400), detached (BT_DEVICE=mps: minutes, not hours)
 #   bt-status    is it running, and the tail of its log          -> $OUT/bt.json when done
+#   bitext       add LaBSE's score of each translation against its English to $OUT/bt.json
+#   bt-pairs F O back-translate and score only the strings in F ([{id, lang, text, english}]) -> O
 #
 # The tools are the ones branch lang/qa-pipeline installed on the host
 # ($LANGQA_HOME: Hunspell with its dictionaries, LanguageTool, MADLAD-400, a Python
@@ -21,7 +23,7 @@ MINE=${MINE:-/Volumes/macos_4TB_external_1/wai-build/im-lang/pages-rest}
 MEMGUARD=${MEMGUARD:-/Volumes/macos_4TB_external_1/wai-build/bin/memguard}
 export OUT=$MINE/lang
 export HSPELL=$LANGQA_HOME/hunspell/bin/hspell DICT_DIR=$LANGQA_HOME/dict
-export MADLAD_DIR=$LANGQA_HOME/models/madlad400-3b-mt-ct2-int8 MINILM_DIR=$LANGQA_HOME/models/all-MiniLM-L6-v2
+export MADLAD_DIR=$LANGQA_HOME/models/madlad400-3b-mt-ct2-int8 MINILM_DIR=$LANGQA_HOME/models/all-MiniLM-L6-v2 LABSE_DIR=$LANGQA_HOME/models/LaBSE
 export HF_HOME=$MINE/cache/hf TMPDIR=$MINE/tmp HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 TOKENIZERS_PARALLELISM=false
 LT_PORT=${LT_PORT:-46340}
 mkdir -p "$OUT" "$MINE/logs" "$TMPDIR" "$HF_HOME"
@@ -65,9 +67,15 @@ case "$STEP" in
     # ssh session's output keeps rb waiting until it ends (seen 2026-11-16).
     (cd "$MINE/work" && exec nohup nice -n 15 "$MEMGUARD" --max-gb 14 -- "$LANGQA_HOME/venv/bin/python" scripts/pages-rest/backtranslate.py --pairs pairs.json --out "$OUT/bt.json" ${BT_ARGS:-} >"$MINE/logs/bt.log" 2>&1 </dev/null) >/dev/null 2>&1 </dev/null &
     echo "started; log $MINE/logs/bt.log, result $OUT/bt.json" ;;
+  bitext)
+    "$MEMGUARD" --max-gb 8 -- "$LANGQA_HOME/venv/bin/python" scripts/pages-rest/bitext.py --bt "$OUT/bt.json" ;;
+  bt-pairs)
+    # A few strings (after a fix), in the foreground: the full set is bt-start's job.
+    "$MEMGUARD" --max-gb 14 -- "$LANGQA_HOME/venv/bin/python" scripts/pages-rest/backtranslate.py --pairs "$2" --out "$3" ${BT_ARGS:-}
+    "$MEMGUARD" --max-gb 8 -- "$LANGQA_HOME/venv/bin/python" scripts/pages-rest/bitext.py --bt "$3" ;;
   bt-status)
     pgrep -fl "scripts/pages-rest/backtranslate.py --pairs pairs.json" || echo "not running"
     tail -20 "$MINE/logs/bt.log" 2>/dev/null || true
     ls -la "$OUT" ;;
-  *) sed -n 2,12p "$0"; exit 2 ;;
+  *) sed -n 2,14p "$0"; exit 2 ;;
 esac
