@@ -14,7 +14,7 @@ const messages: Record<string, string> = {
   'world-map.attire': '의상 스타일',
   'world-map.hair': '헤어스타일',
   'world-map.yours': '이 도시에서 얻은 내 변형',
-  'world-map.none': '이 도시({city})에서는 아직 연 변형이 없어요.',
+  'world-map.none': '이 도시({city})에서는 아직 열린 변형이 없어요.',
   'world-map.unknownCard': '알 수 없는 카드',
   'world-map.close': '닫기',
 };

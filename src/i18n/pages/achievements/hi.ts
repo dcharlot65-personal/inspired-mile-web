@@ -31,7 +31,7 @@ const messages: Record<string, string> = {
   'achievements.verse-veteran.description': 'पूरे किए गए युद्ध के दौर: {n}',
   'achievements.challenge-master.name': 'चुनौतियों का उस्ताद',
   'achievements.challenge-master.description': 'पूरी की गई उद्धरण चुनौतियाँ: {n}',
-  'achievements.completionist.name': 'पूर्णताप्रेमी',
+  'achievements.completionist.name': 'पूरा संग्रह',
   'achievements.completionist.description': 'इकट्ठा किए गए अलग-अलग कार्ड: {n}',
   'achievements.master-thespian.name': 'मंच का उस्ताद',
   'achievements.master-thespian.description': 'जीते गए युद्ध: {n}',
