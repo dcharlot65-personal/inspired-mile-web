@@ -19,9 +19,9 @@ This covers the playground and story pages, the trivia bank (200 questions), the
 
 - **Wikidata** (labels, aliases and sitelinks; CC0). Fetched 2026-11-16T17:18Z by `fetch-wikidata.py` through the public API (`wbgetentities`); stored whole in `scripts/lang-content/wikidata-labels.json`. 238 items.
 - **Wikipedia article titles**, as Wikidata's sitelinks give them, where an item has no label in a language. A title is a name, not text.
-- **Wikipedia articles** (text CC BY-SA 4.0; only names are taken from them, never text), fetched 2026-11-16 by `wikipedia.py`: the articles on the plays, on Shakespeare and on the Globe, one revision each, read through `index.php` (the API was refusing this address with HTTP 429). A name Wikidata has no label for is taken from an article only where the article has it as a word, or writes it with the English beside it ("愛麗兒（Ariel）", "Пигва (Peter Quince)"). Each such name is a line of `scripts/lang-content/names-evidence.tsv`: the item, the language, the name, the URL of the article revision, the date, and the words around it. 196 lines.
+- **Wikipedia articles** (text CC BY-SA 4.0; only names are taken from them, never text), fetched 2026-11-16 by `wikipedia.py`: the articles on the plays, on Shakespeare and on the Globe, one revision each, read through `index.php` (the API was refusing this address with HTTP 429). A name Wikidata has no label for is taken from an article only where the article has it as a word, or writes it with the English beside it ("愛麗兒（Ariel）", "Пигва (Peter Quince)"). Each such name is a line of `scripts/lang-content/names-evidence.tsv`: the item, the language, the name, the URL of the article revision, the date, and the words around it. 200 lines.
 - **Chinese**: labels and titles in Traditional characters were converted to Simplified by MediaWiki's own converter on zh.wikipedia.org (`zh-simplify.py`; marked `zh-hans:from` in the JSON); Chinese articles and Zhu Shenghao's translation were read as zh.wikipedia and zh.wikisource serve them in Simplified (`variant=zh-cn` / `zh-hans`).
-- **Wikisource** (public-domain translations), fetched 2026-11-16:
+- **Wikisource** and **Aozora Bunko** (public-domain translations), fetched 2026-11-16. An Aozora file has no revision id: the evidence records the SHA-256 of the bytes read.
 
 | Source id | Language | Work | Translator (died) | Page | Status |
 |---|---|---|---|---|---|
@@ -32,6 +32,9 @@ This covers the playground and story pages, the trivia bank (200 questions), the
 | it-rusconi-amleto | it | Hamlet (Q41567) | Carlo Rusconi (1889) | https://it.wikisource.org/wiki/Amleto_(Rusconi) | Public domain: translator died 1889 |
 | ru-kroneberg-hamlet | ru | Hamlet (Q41567) | Андрей Кронеберг (1855) | https://ru.wikisource.org/wiki/Гамлет_(Шекспир;_Кронеберг) | Public domain: translator died 1855; text of the 1902 complete works, in the modern spelling Wikisource gives beside it (ВТ:Ё) |
 | zh-zhu-hamlet | zh | Hamlet (Q41567) | 朱生豪 (Zhu Shenghao) (1944) | https://zh.wikisource.org/wiki/漢姆萊脫 | Public domain: translator died 1944; public domain in China (50 years after death) at home on 1 January 1996, never published in the US before, so not restored under the URAA, as the licence notice on the Wikisource page states; source named there 莎士比亞戲劇集; quoted in Simplified characters as zh.wikisource serves the page (variant=zh-hans) |
+| zh-zhu-tempest | zh | The Tempest (Q86440) | 朱生豪 (Zhu Shenghao) (1944) | https://zh.wikisource.org/wiki/暴風雨 | Public domain: translator died 1944; public domain in China (50 years after death) at home on 1 January 1996, never published in the US before, so not restored under the URAA, as the licence notice on the Wikisource page states; quoted in Simplified characters as zh.wikisource serves the page (variant=zh-hans) |
+| zh-zhu-dream | zh | A Midsummer Night's Dream (Q104871) | 朱生豪 (Zhu Shenghao) (1944) | https://zh.wikisource.org/wiki/莎士比亞戲劇全集_(朱生豪)/仲夏夜之夢 | Public domain: translator died 1944; public domain in China (50 years after death) at home on 1 January 1996, never published in the US before, so not restored under the URAA, as the licence notice on the Wikisource page states; 莎士比亚戏剧全集, 第一辑第一种, 世界书局, as the page names its edition; quoted in Simplified characters as zh.wikisource serves the page (variant=zh-hans) |
+| ja-tsubouchi-romeo | ja | Romeo and Juliet (Q83186) | 坪内逍遙 (Tsubouchi Shōyō) (1935) | https://www.aozora.gr.jp/cards/000264/card42773.html | Public domain: translator died 1935; public domain in Japan at home on 1 January 1996, so not restored under the URAA; Aozora Bunko (a library of public-domain texts), from 新修シェークスピヤ全集 第二十五卷, 中央公論社, 1933, in its old orthography (旧字旧仮名) as Aozora gives it, ruby readings left out |
 
 ## Names
 
@@ -48,11 +51,11 @@ How a name is arrived at, in this order: a pick (`picks.tsv`), which must be fou
 | de | 196 | 134 | 2 | 11 | 3 | 3 | 1 | 42 | 15 |
 | it | 199 | 123 | 2 | 11 | 9 | 5 | 2 | 47 | 9 |
 | pt | 199 | 99 | 17 | 8 | 5 | 0 | 6 | 64 | 10 |
-| pl | 197 | 113 | 0 | 6 | 19 | 3 | 4 | 52 | 13 |
+| pl | 197 | 113 | 0 | 6 | 22 | 3 | 4 | 49 | 13 |
 | ru | 174 | 141 | 0 | 9 | 19 | 3 | 0 | 2 | 46 |
 | ar | 194 | 108 | 0 | 7 | 4 | 0 | 0 | 75 | 22 |
 | hi | 195 | 88 | 0 | 0 | 9 | 0 | 0 | 98 | 32 |
-| zh | 183 | 126 | 0 | 0 | 48 | 0 | 0 | 9 | 34 |
+| zh | 183 | 125 | 0 | 0 | 49 | 0 | 0 | 9 | 34 |
 | ja | 176 | 145 | 0 | 0 | 26 | 0 | 0 | 5 | 43 |
 | ko | 165 | 114 | 0 | 0 | 20 | 4 | 0 | 27 | 77 |
 | vi | 194 | 63 | 2 | 4 | 0 | 0 | 14 | 111 | 18 |
@@ -70,7 +73,7 @@ An option that is a name, written by hand. `play-areas.test.ts` accepts one only
 - **pt** (10): *contains the table's name*: Laurence → Lourenço; Friar Lawrence → Frei Lourenço; Perdita → Perdita; Claudio → Claudio; King Lear → O rei Lear; Captain Fluellen → O capitão Fluellen. *title*: King Henry V → O rei Henrique V
 - **pl** (13): *inflected*: Laurence → Laurentego; The Sonnets → W Sonetach. *contains the table's name*: Friar Lawrence → Ojciec Laurenty; Perdita → Perdita; Claudio → Claudio; King Lear → Król Lear; Portia → Porcja; Captain Fluellen → Kapitan Fluellen. *title*: King Henry V → Król Henryk V
 - **ru** (46): *contains the table's name*: Laurence → Лоренцо; Hero → Геро; Beatrice → Беатриче; Margaret → Маргарита; Edmund → Эдмунд; Rosalind → Розалинда; Celia → Селия; Audrey → Одри; Angelo → Анджело; Claudio → Клавдио; Silvia → Сильвия; Sebastian → Себастьян; Antonio → Антонио; Orsino → Орсино; Feste → Фесте; Don John → Дон Хуан; Don Pedro → Дон Педро; Jaques → Жак; Orlando → Орландо; Peter Quince → Пигва (Peter Quince); Bottom → Основа (Bottom); Flute → Дудка (Flute); King Lear → Король Лир; Touchstone → Оселок; Launcelot → Ланчелот; Dogberry → Кизил; Regan → Регана; The Lord Chamberlain's Men → Слуги лорда-камергера (Lord Chamberlain's Men); King Henry V → Король Генрих V; Richard Field → Ричард Филд; William Jaggard → Уильям Джаггард; Edward Blount → Эдвард Блаунт. *inflected*: The Sonnets → В сонетах. *title*: The King's Men → Слуги короля (King's Men); The Admiral's Men → Слуги лорда-адмирала (Admiral's Men); The Queen's Men → Слуги королевы (Queen's Men); The Earl of Leicester's Men → Слуги графа Лестера (Leicester's Men)
-- **ar** (22): *script*: Ariel → Ariel; Claudius → Claudius; Paris → Paris; Mercutio → Mercutio; Tybalt → Tybalt. *contains the table's name*: Friar Lawrence → الراهب لورنس; Sonnet 130 → السونيتة 130; Sonnet 116 → السونيتة 116; Claudio → Claudio; King Lear → الملك لير; Captain Fluellen → النقيب Fluellen. *title*: The King's Men → رجال الملك (King's Men); The Admiral's Men → رجال الأميرال (Admiral's Men); The Lord Chamberlain's Men → رجال اللورد تشامبرلين (Lord Chamberlain's Men); The Queen's Men → رجال الملكة (Queen's Men); The Earl of Leicester's Men → رجال إيرل ليستر (Leicester's Men); King Henry V → الملك هنري الخامس
+- **ar** (22): *script*: Ariel → Ariel; Claudius → Claudius; Paris → Paris; Mercutio → Mercutio; Tybalt → Tybalt. *contains the table's name*: Friar Lawrence → الراهب لورنس; Sonnet 130 → سونيت 130; Sonnet 116 → سونيت 116; Claudio → Claudio; King Lear → الملك لير; Captain Fluellen → النقيب Fluellen. *title*: The King's Men → رجال الملك (King's Men); The Admiral's Men → رجال الأميرال (Admiral's Men); The Lord Chamberlain's Men → رجال اللورد تشامبرلين (Lord Chamberlain's Men); The Queen's Men → رجال الملكة (Queen's Men); The Earl of Leicester's Men → رجال إيرل ليستر (Leicester's Men); King Henry V → الملك هنري الخامس
 - **hi** (32): *script*: The Tempest → The Tempest; Paris → Paris; Mercutio → Mercutio; Tybalt → Tybalt; A Midsummer Night's Dream → A Midsummer Night's Dream; Romeo and Juliet → Romeo and Juliet; Angelo → Angelo; Miranda → Miranda; Edmund → Edmund; As You Like It → As You Like It; Christopher Marlowe → Christopher Marlowe. *contains the table's name*: The Sonnets → सॉनेट; Friar Lawrence → फ़्रायर लॉरेंस; Sonnet 18 → सॉनेट 18; Sonnet 1 → सॉनेट 1; Sonnet 130 → सॉनेट 130; Sonnet 116 → सॉनेट 116; Claudio → Claudio; King Lear → राजा लीयर; Sonnet 73 → सॉनेट 73; King Henry V → राजा हेनरी पंचम; Captain Fluellen → कैप्टन Fluellen
 - **zh** (34): *contains the table's name*: Laurence → 劳伦斯; The Sonnets → 十四行诗; Sonnet 1 → 第 1 首十四行诗; Sonnet 130 → 第 130 首十四行诗; Orsino → Orsino; Silvia → Silvia; Peter Quince → Peter Quince; King Lear → 李尔王; Launcelot → Launcelot; The Queen's Men → The Queen's Men; The Earl of Leicester's Men → The Earl of Leicester's Men; Sonnet 73 → 第 73 首十四行诗; King Henry V → 国王亨利五世; Captain Fluellen → 弗鲁爱林上尉（Fluellen）; Dunsinane → Dunsinane. *number*: Sonnet 18 → 第 18 首十四行诗; Sonnet 116 → 第 116 首十四行诗. *title*: The Admiral's Men → 海军大臣剧团（Admiral's Men）. *script*: Malvolio → Malvolio; Sebastian → Sebastian; Sir Toby Belch → Sir Toby Belch; Bottom → Bottom; Snug → Snug; Flute → Flute; Troilus and Cressida → Troilus and Cressida; Romeo and Juliet → Romeo and Juliet; Hero and Leander → Hero and Leander
 - **ja** (43): *contains the table's name*: Laurence → ロレンス家; The Sonnets → ソネット集; Friar Lawrence → ロレンス神父; Sonnet 18 → ソネット18番; Sonnet 1 → ソネット1番; Sonnet 130 → ソネット130番; Sonnet 116 → ソネット116番; Miranda → ミランダ; Perdita → パーディタ; Goneril → ゴネリル; Regan → リーガン; Gratiano → グラシアーノ; Hero → ヒーロー; Beatrice → ベアトリス; Margaret → マーガレット; Angelo → アンジェロ; Claudio → クローディオ; Silvia → シルヴィア; Don John → ドン・ジョン; Don Pedro → ドン・ペドロ; King Lear → リア王; Launcelot → ランスロット; Dogberry → ドグベリー; Sycorax → シコラクス; Sonnet 73 → ソネット73番; Christopher Sly → クリストファー・スライ; Ferdinand → ファーディナンド; Thomas Thorpe → トマス・ソープ; William Jaggard → ウィリアム・ジャガード. *number*: King Henry V → ヘンリー五世
@@ -452,8 +455,12 @@ A pick overrides the label: where the label is of something else (a real king, n
 | Q4787912 | Forest of Arden | ko | 아든 숲 | ko.wikipedia, 당신 뜻대로 (oldid 39618582; 2 mentions) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
 | Q4787912 | Forest of Arden | ar | غابة أردن | ar.wikipedia, كما تشاء (oldid 70748661; 1 mentions) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
 | Q60834955 | Rosalind | ko | 로절린드 | ko.wikipedia, 당신 뜻대로 (oldid 39618582; 4 mentions) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q26881 | Elsinore | zh | 厄尔锡诺 | zh.wikisource, 漢姆萊脫 (oldid 2019432; the setting in the cast list of Zhu Shenghao's translation) | the play's name for it, from the cast list of Zhu Shenghao's translation on zh.wikisource (names-evidence.tsv); Wikidata's label (赫尔辛格) is the modern town |
+| Q1248616 | Puck | pl | Puk | pl.wikipedia, Sen nocy letniej (oldid 78550808; 8 mentions) | Wikidata has no Polish label; the pl.wikipedia article on the play names him so (names-evidence.tsv), as the Polish translations do |
+| Q2190927 | Bottom | pl | Spodek | pl.wikipedia, Sen nocy letniej (oldid 78550808; 3 mentions) | Wikidata has no Polish label; the pl.wikipedia article on the play names him so (names-evidence.tsv) |
+| Q2332221 | Titania | pl | Tytania | pl.wikipedia, Sen nocy letniej (oldid 78550808; glossed) | Wikidata has no Polish label; the pl.wikipedia article on the play names her so, with the English beside it (names-evidence.tsv) |
 
-355 picks; 21 of them not found in a source.
+359 picks; 21 of them not found in a source.
 
 ### Names inside the question sentences
 
@@ -816,6 +823,29 @@ Allowances: F.-V. Hugo's prose marks the original's verse lines with " — "; a 
 | 73 | I must be cruel only to be kind. | 为了顾全母子的恩慈，我不得不忍情暴戾 | 恩慈, 暴戾 | https://zh.wikisource.org/w/index.php?title=%E6%BC%A2%E5%A7%86%E8%90%8A%E8%84%AB/%E7%AC%AC%E4%B8%89%E5%B9%95&oldid=1749886&variant=zh-hans |
 | 83 | O, what a rogue and peasant slave am I! | 啊，我是一个多么不中用的蠢才 | 不中用, 蠢才 | https://zh.wikisource.org/w/index.php?title=%E6%BC%A2%E5%A7%86%E8%90%8A%E8%84%AB/%E7%AC%AC%E4%BA%8C%E5%B9%95&oldid=7905639&variant=zh-hans |
 | 84 | The rest is silence. | 此外惟馀沉默 | 沉默 | https://zh.wikisource.org/w/index.php?title=%E6%BC%A2%E5%A7%86%E8%90%8A%E8%84%AB/%E7%AC%AC%E4%BA%94%E5%B9%95&oldid=7905641&variant=zh-hans |
+| 3 | We are such stuff as dreams are made on. | 构成我们的料子也就是那梦幻的料子 | 梦幻 | https://zh.wikisource.org/w/index.php?title=%E6%9A%B4%E9%A2%A8%E9%9B%A8&oldid=4699536&variant=zh-hans |
+| 32 | Hell is empty and all the devils are here. | 地狱开了门，所有的魔鬼都出来了 | 地狱, 魔鬼 | https://zh.wikisource.org/w/index.php?title=%E6%9A%B4%E9%A2%A8%E9%9B%A8&oldid=4699536&variant=zh-hans |
+| 68 | Misery acquaints a man with strange bedfellows. | 一个人倒起运来，就要跟妖怪一起睡觉 | 倒起运, 妖怪 | https://zh.wikisource.org/w/index.php?title=%E6%9A%B4%E9%A2%A8%E9%9B%A8&oldid=4699536&variant=zh-hans |
+| 103 | What is past is prologue. | 以往的一切都只是个开场的引子 | 以往, 引子 | https://zh.wikisource.org/w/index.php?title=%E6%9A%B4%E9%A2%A8%E9%9B%A8&oldid=4699536&variant=zh-hans |
+| 16 | Love looks not with the eyes, but with the mind. | 爱情是不用眼睛，而用心灵看着的 | 眼睛, 心灵 | https://zh.wikisource.org/w/index.php?title=%E8%8E%8E%E5%A3%AB%E6%AF%94%E4%BA%9E%E6%88%B2%E5%8A%87%E5%85%A8%E9%9B%86_%28%E6%9C%B1%E7%94%9F%E8%B1%AA%29/%E4%BB%B2%E5%A4%8F%E5%A4%9C%E4%B9%8B%E5%A4%A2/%E7%AC%AC%E4%B8%80%E5%B9%95&oldid=2593294&variant=zh-hans |
+| 18 | The course of true love never did run smooth. | 真爱情的道路永远是崎岖多阻 | 爱情, 崎岖 | https://zh.wikisource.org/w/index.php?title=%E8%8E%8E%E5%A3%AB%E6%AF%94%E4%BA%9E%E6%88%B2%E5%8A%87%E5%85%A8%E9%9B%86_%28%E6%9C%B1%E7%94%9F%E8%B1%AA%29/%E4%BB%B2%E5%A4%8F%E5%A4%9C%E4%B9%8B%E5%A4%A2/%E7%AC%AC%E4%B8%80%E5%B9%95&oldid=2593294&variant=zh-hans |
+| 21 | Lord, what fools these mortals be! | 人们真蠢得没法想 | 人们, 蠢 | https://zh.wikisource.org/w/index.php?title=%E8%8E%8E%E5%A3%AB%E6%AF%94%E4%BA%9E%E6%88%B2%E5%8A%87%E5%85%A8%E9%9B%86_%28%E6%9C%B1%E7%94%9F%E8%B1%AA%29/%E4%BB%B2%E5%A4%8F%E5%A4%9C%E4%B9%8B%E5%A4%A2/%E7%AC%AC%E4%B8%89%E5%B9%95&oldid=2593455&variant=zh-hans |
+| 30 | Though she be but little, she is fierce. | 长得很小的时候便已是那么凶 | 小, 凶 | https://zh.wikisource.org/w/index.php?title=%E8%8E%8E%E5%A3%AB%E6%AF%94%E4%BA%9E%E6%88%B2%E5%8A%87%E5%85%A8%E9%9B%86_%28%E6%9C%B1%E7%94%9F%E8%B1%AA%29/%E4%BB%B2%E5%A4%8F%E5%A4%9C%E4%B9%8B%E5%A4%A2/%E7%AC%AC%E4%B8%89%E5%B9%95&oldid=2593455&variant=zh-hans |
+
+### ja
+
+| # | English line | Line used | Missing words | Page revision |
+|---|---|---|---|---|
+| 4 | Romeo, Romeo, wherefore art thou Romeo? | おゝ、ロミオ、ロミオ！ 何故卿はロミオぢゃ！ | 何故 | https://www.aozora.gr.jp/cards/000264/files/42773_39853.html#sha256=46a86f7f6b30711c8e79466fc4733e7f8029b169a471324fe93090ccbf6c2c3d |
+| 35 | What's in a name? That which we call a rose by any other name would smell as sweet. | 名が何ぢゃ？ 薔薇の花は、他の名で呼んでも、同じやうに善い香がする。 | 名, 薔薇 | https://www.aozora.gr.jp/cards/000264/files/42773_39853.html#sha256=46a86f7f6b30711c8e79466fc4733e7f8029b169a471324fe93090ccbf6c2c3d |
+| 6 | A rose by any other name would smell as sweet. | 薔薇の花は、他の名で呼んでも、同じやうに善い香がする | 薔薇, 香 | https://www.aozora.gr.jp/cards/000264/files/42773_39853.html#sha256=46a86f7f6b30711c8e79466fc4733e7f8029b169a471324fe93090ccbf6c2c3d |
+| 2 | Parting is such sweet sorrow. | あゝ、別れといふものは悲し懷しいものぢゃ | 別れ, 悲し | https://www.aozora.gr.jp/cards/000264/files/42773_39853.html#sha256=46a86f7f6b30711c8e79466fc4733e7f8029b169a471324fe93090ccbf6c2c3d |
+| 19 | Good night, good night! Parting is such sweet sorrow, that I shall say good night till it be morrow. | あゝ、別れといふものは悲し懷しいものぢゃ。夜が明くるまで、斯うしてさよならを言うてゐたい。 | 悲し, 夜 | https://www.aozora.gr.jp/cards/000264/files/42773_39853.html#sha256=46a86f7f6b30711c8e79466fc4733e7f8029b169a471324fe93090ccbf6c2c3d |
+| 46 | But soft, what light through yonder window breaks? | や、待てよ！ あの窓から洩るゝ光明は？ | 光明 | https://www.aozora.gr.jp/cards/000264/files/42773_39853.html#sha256=46a86f7f6b30711c8e79466fc4733e7f8029b169a471324fe93090ccbf6c2c3d |
+| 96 | Thou know'st the mask of night is on my face, else would a maiden blush bepaint my cheek. | 夜といふ假面を附けてゐればこそ、でなくば恥かしさに此頬が眞赤にならう | 夜, 頬 | https://www.aozora.gr.jp/cards/000264/files/42773_39853.html#sha256=46a86f7f6b30711c8e79466fc4733e7f8029b169a471324fe93090ccbf6c2c3d |
+| 99 | O, she doth teach the torches to burn bright! | おゝ、あの姫の美麗さで、輝く燭火が又一段と輝くわい！ | 燭火, 輝く | https://www.aozora.gr.jp/cards/000264/files/42773_39853.html#sha256=46a86f7f6b30711c8e79466fc4733e7f8029b169a471324fe93090ccbf6c2c3d |
+| 34 | These violent delights have violent ends. | さうした過激の歡樂は、とかく過激の終を遂ぐる。 | 過激, 終 | https://www.aozora.gr.jp/cards/000264/files/42773_39853.html#sha256=46a86f7f6b30711c8e79466fc4733e7f8029b169a471324fe93090ccbf6c2c3d |
+| 12 | A plague on both your houses! | 畜生、兩方の奴等！ | 畜生, 奴等 | https://www.aozora.gr.jp/cards/000264/files/42773_39853.html#sha256=46a86f7f6b30711c8e79466fc4733e7f8029b169a471324fe93090ccbf6c2c3d |
 
 ## Dropped
 
@@ -832,14 +862,16 @@ The English bank has 104 quote challenges. A language has only those listed abov
 | ru | 10 | 94 | its own 10 |
 | ar | 0 | 104 | the English originals (104) |
 | hi | 0 | 104 | the English originals (104) |
-| zh | 14 | 90 | its own 14 |
-| ja | 0 | 104 | the English originals (104) |
+| zh | 22 | 82 | its own 22 |
+| ja | 10 | 94 | its own 10 |
 | ko | 0 | 104 | the English originals (104) |
 | vi | 0 | 104 | the English originals (104) |
 | th | 0 | 104 | the English originals (104) |
 | id | 0 | 104 | the English originals (104) |
 
-Why so many are dropped: only *Hamlet* was searched, in one translation per language, on Wikisource. A line that was not found whole in one line of the page was left out, not stitched together. Not searched, so no finding either way: the other 26 works in every language; Portuguese, whose Wikisource has the *Hamlet* of King Luís I (1877) and of Bulhão Pato (1879) only as page scans; Japanese (Tsubouchi Shōyō, d. 1935, is public domain, but his *Hamlet* is not on ja.wikisource under that title, and Aozora Bunko was not searched). No public-domain translation is known to the author for Korean, Arabic, Hindi, Vietnamese, Thai or Indonesian; that was not researched.
+Why so many are dropped. What was searched: *Hamlet* in one translation per language on Wikisource (es, fr, de, it, pl, ru); for Chinese, every one of Zhu Shenghao's translations zh.wikisource has (*Hamlet*, *The Tempest*, *A Midsummer Night's Dream*; the other links of its Shakespeare portal are pages not yet made); for Japanese, Tsubouchi Shōyō's *Romeo and Juliet* on Aozora Bunko (his *Hamlet* is still in preparation there and is not on ja.wikisource). A line not found whole in one line of the source was left out, not stitched together; one found was left out for Japanese because its words are archaic forms a player could not type (79, 'they stumble that run fast': 賢う徐うぢゃ。馳出す者は蹉躓くわい). Not searched, so no finding either way: the other works in es, fr, de, it, pl and ru; Portuguese, whose Wikisource has the *Hamlet* of King Luís I (1877) and of Bulhão Pato (1879) only as page scans. No public-domain translation is known to the author for Korean, Arabic, Hindi, Vietnamese, Thai or Indonesian; that was not researched.
+
+The Japanese lines are in the old orthography of the 1933 edition (旧字旧仮名), as Aozora gives them; the missing words were chosen among those written the same today, so that a player can type them.
 
 The full list, one row per dropped challenge and language: `docs/language/data/challenges-dropped.tsv`.
 
@@ -852,4 +884,6 @@ What the tools that did not write the text found, and what was done about it. Th
 **Mechanical** (`npx vitest run src/i18n/pages`): the same keys and {placeholders} as English in every area; every question with its four options; quotations and numbers kept; every name option its source's name or a listed form; no question whose script gives the answer away; the player addressed as each core locale says (du, vous, ты, kamu, 해요체, …); every challenge's missing words in its line, in order, filling back to the line; generated files what their sources make. Each rule is also fed a known-bad input and must object.
 
 **Back-translation**: not run to completion; see the report of this branch.
+
+**Read by hand**: 14 flagged strings. 11 ok, 3 not usable. *ok* means the translation says what the English says and the flag came from the checking model (a title it renders literally, a word it does not know); *fixed* means the translation was wrong and was changed; the note says how.
 

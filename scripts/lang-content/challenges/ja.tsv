@@ -1,0 +1,11 @@
+# challenge number (index in CHALLENGE_BANK)	the line, as the source has it	missing words	source id (sources.tsv)
+4	おゝ、ロミオ、ロミオ！ 何故卿はロミオぢゃ！	何故	ja-tsubouchi-romeo
+35	名が何ぢゃ？ 薔薇の花は、他の名で呼んでも、同じやうに善い香がする。	名|薔薇	ja-tsubouchi-romeo
+6	薔薇の花は、他の名で呼んでも、同じやうに善い香がする	薔薇|香	ja-tsubouchi-romeo
+2	あゝ、別れといふものは悲し懷しいものぢゃ	別れ|悲し	ja-tsubouchi-romeo
+19	あゝ、別れといふものは悲し懷しいものぢゃ。夜が明くるまで、斯うしてさよならを言うてゐたい。	悲し|夜	ja-tsubouchi-romeo
+46	や、待てよ！ あの窓から洩るゝ光明は？	光明	ja-tsubouchi-romeo
+96	夜といふ假面を附けてゐればこそ、でなくば恥かしさに此頬が眞赤にならう	夜|頬	ja-tsubouchi-romeo
+99	おゝ、あの姫の美麗さで、輝く燭火が又一段と輝くわい！	燭火|輝く	ja-tsubouchi-romeo
+34	さうした過激の歡樂は、とかく過激の終を遂ぐる。	過激|終	ja-tsubouchi-romeo
+12	畜生、兩方の奴等！	畜生|奴等	ja-tsubouchi-romeo

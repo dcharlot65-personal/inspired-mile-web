@@ -12,7 +12,9 @@ for (const [id, s] of sources) {
   // basis: public domain at home on 1 January 1996, hence not restored in the US under the URAA.
   if (!(new Date().getFullYear() - s.died > 100) && !/at home on 1 January 1996.*not restored under the URAA/.test(s.status ?? '')) { bad++; console.log(`${id}: translator died in ${s.died}, not more than 100 years ago, and the status names no other basis`); }
   if (!/^Public domain/.test(s.status ?? '')) { bad++; console.log(`${id}: no public-domain statement`); }
-  for (const [url] of evidence(id)) if (!url.startsWith(`https://${s.lang}.wikisource.org/`) || !/oldid=\d+/.test(url)) { bad++; console.log(`${id}: evidence line without a revision URL on ${s.lang}.wikisource.org`); }
+  // A Wikisource page revision, or an Aozora Bunko file with the hash of the bytes that were read.
+  const revision = (url) => (url.startsWith(`https://${s.lang}.wikisource.org/`) && /oldid=\d+/.test(url)) || (s.lang === 'ja' && url.startsWith('https://www.aozora.gr.jp/cards/') && /#sha256=[0-9a-f]{64}$/.test(url));
+  for (const [url] of evidence(id)) if (!revision(url)) { bad++; console.log(`${id}: evidence line without a revision URL on ${s.lang}.wikisource.org or a hashed Aozora Bunko file`); }
 }
 for (const lang of LANGS) {
   for (const [num, line, , sid] of readTsv(join(HERE, 'challenges', `${lang}.tsv`))) {
