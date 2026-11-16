@@ -548,10 +548,9 @@ function unitsOf(line: string, lang: string): string[] {
   return wordParts(line, lang).map(fold);
 }
 
-/** Does a unit count towards a verse having something in it? A lone letter of an alphabet does not. */
-function countsAsWord(unit: string, lang: string): boolean {
-  if (rulesFor(lang).unit === 'char') return true;
-  return letterCount(unit) >= 2 || (letterCount(unit) === 1 && !/^[\p{Script=Latin}\p{Script=Cyrillic}\p{Script=Greek}]/u.test(unit));
+/** A single letter of an alphabet standing as a word: "a", "I", "O", but also the "w", "i", "t" of a fake acrostic. */
+function loneLetter(unit: string, lang: string): boolean {
+  return rulesFor(lang).unit !== 'char' && letterCount(unit) === 1 && /^[\p{Script=Latin}\p{Script=Cyrillic}\p{Script=Greek}]/u.test(unit);
 }
 
 export interface Substance {
@@ -567,17 +566,21 @@ export const MIN_DISTINCT_WORDS = 3;
 /**
  * Is this a verse, or tokens arranged to satisfy a checker? The floor every
  * form, device and judge shares:
- *   - every line holds at least one word (a lone letter of an alphabet is not one), and
+ *   - every line holds at least one word, and
  *   - the verse has at least as many different words as it has lines, and never
- *     fewer than MIN_DISTINCT_WORDS.
+ *     fewer than MIN_DISTINCT_WORDS. Lone letters, however many different ones,
+ *     count as one word between them: "I" and "a" are words, but an alphabet is
+ *     not a vocabulary.
  * "Never / Never / Never", "a / a a / a a a", "w / i / t" and a single word fail
- * it; the shortest honest verses, such as an acrostic of one word to a line,
- * keep it. Where lines are counted in characters, "words" here are characters.
+ * it; the shortest honest verses ("I / I rise / I rise again", an acrostic of
+ * one word to a line) keep it. Where lines are counted in characters, "words"
+ * here are characters.
  */
 export function substance(verse: string, lang = 'en'): Substance {
   const ls = linesOf(verse);
-  const perLine = ls.map((l) => unitsOf(l, lang).filter((u) => countsAsWord(u, lang)));
-  const distinct = new Set(perLine.flat()).size;
+  const perLine = ls.map((l) => unitsOf(l, lang).filter((u) => letterCount(u) > 0));
+  const all = perLine.flat();
+  const distinct = new Set(all.filter((u) => !loneLetter(u, lang))).size + (all.some((u) => loneLetter(u, lang)) ? 1 : 0);
   const needed = Math.max(ls.length, MIN_DISTINCT_WORDS);
   return { ok: ls.length > 0 && perLine.every((units) => units.length > 0) && distinct >= needed, distinct, needed };
 }

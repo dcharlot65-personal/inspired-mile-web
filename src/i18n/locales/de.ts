@@ -352,7 +352,7 @@ const de: Record<string, string> = {
   'live.curseBroken': '{n}× gebrochen (−{penalty})',
   'live.curseHolding': 'eingehalten',
   'void.label': 'Bringt keine Punkte',
-  'void.thin': 'zu wenig für eine Strophe: Sie braucht mehr verschiedene Wörter als Zeilen',
+  'void.thin': 'zu wenig für eine Strophe: Sie braucht mehr verschiedene Wörter',
   'void.copied': 'aus der anderen Strophe übernommen: Eine Antwort muss deine eigene sein',
   'signature.none': 'diese Karte hat keine Signaturzeile',
   'signature.hint': 'lass eines davon anklingen: {words}',

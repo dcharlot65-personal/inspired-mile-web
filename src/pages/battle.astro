@@ -822,7 +822,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       }
       v.appendChild(crit);
       const info = brainInfo();
-      const copied = r.player.voided === 'copied' || r.opponent.voided === 'copied';
+      const copied = r.player.voided === 'copied';
       v.appendChild(el('p', 'mt-2 text-[11px] text-obsidian-500', (r.judge.source === 'model' && info
         ? t(info.judge === 'grade' ? 'verdict.judgedGrade' : 'verdict.judgedCompare', { model: info.label })
         : t('verdict.judgedRules')) + (copied ? ` ${t('verdict.copyForfeits')}` : '')));

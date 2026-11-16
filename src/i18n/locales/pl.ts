@@ -352,7 +352,7 @@ const pl: Record<string, string> = {
   'live.curseBroken': 'złamana {n}× (−{penalty})',
   'live.curseHolding': 'dotrzymana',
   'void.label': 'Bez punktów',
-  'void.thin': 'za mało na strofę: potrzeba więcej różnych słów niż wersów',
+  'void.thin': 'za mało na strofę: potrzeba więcej różnych słów',
   'void.copied': 'wzięte z drugiej strofy: odpowiedź musi być twoja własna',
   'signature.none': 'ta karta nie ma kwestii-sygnatury',
   'signature.hint': 'nawiąż do jednego z tych słów: {words}',

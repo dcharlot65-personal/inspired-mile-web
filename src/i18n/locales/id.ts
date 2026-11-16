@@ -352,7 +352,7 @@ const id: Record<string, string> = {
   'live.curseBroken': 'dilanggar {n}× (−{penalty})',
   'live.curseHolding': 'terjaga',
   'void.label': 'Tanpa nilai',
-  'void.thin': 'terlalu sedikit untuk disebut syair: kata yang berbeda harus lebih banyak daripada baris',
+  'void.thin': 'terlalu sedikit untuk disebut syair: perlu lebih banyak kata yang berbeda',
   'void.copied': 'diambil dari syair lawan: jawaban harus buatanmu sendiri',
   'signature.none': 'kartu ini tidak punya dialog tanda tangan',
   'signature.hint': 'gemakan salah satu dari: {words}',

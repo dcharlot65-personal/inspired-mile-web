@@ -352,7 +352,7 @@ const ko: Record<string, string> = {
   'live.curseBroken': '{n}번 어김 (−{penalty})',
   'live.curseHolding': '지키는 중',
   'void.label': '점수 없음',
-  'void.thin': '시라고 하기엔 너무 적어요. 행 수보다 서로 다른 낱말이 더 많아야 해요',
+  'void.thin': '시라고 하기엔 너무 적어요. 서로 다른 낱말이 더 있어야 해요',
   'void.copied': '상대의 시에서 가져왔어요. 답은 내가 지은 것이어야 해요',
   'signature.none': '이 카드에는 시그니처 대사가 없어요',
   'signature.hint': '다음 중 하나를 떠올리게 하세요: {words}',

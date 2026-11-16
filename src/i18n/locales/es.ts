@@ -352,7 +352,7 @@ const es: Record<string, string> = {
   'live.curseBroken': 'rota {n}× (−{penalty})',
   'live.curseHolding': 'se cumple',
   'void.label': 'No puntúa',
-  'void.thin': 'demasiado poco para ser una estrofa: hacen falta más palabras distintas que versos',
+  'void.thin': 'demasiado poco para ser una estrofa: hacen falta más palabras distintas',
   'void.copied': 'tomada de la otra estrofa: una respuesta debe ser tuya',
   'signature.none': 'esta carta no tiene frase de firma',
   'signature.hint': 'evoca una de: {words}',

@@ -352,7 +352,7 @@ const fr: Record<string, string> = {
   'live.curseBroken': 'enfreinte {n}× (−{penalty})',
   'live.curseHolding': 'respectée',
   'void.label': 'Ne rapporte rien',
-  'void.thin': 'trop peu pour faire une strophe : il faut plus de mots différents que de vers',
+  'void.thin': 'trop peu pour faire une strophe : il faut davantage de mots différents',
   'void.copied': 'reprise de l’autre strophe : une réponse doit être de vous',
   'signature.none': 'cette carte n’a pas de réplique de signature',
   'signature.hint': 'faites écho à l’un de ces mots : {words}',

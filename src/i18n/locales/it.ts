@@ -352,7 +352,7 @@ const it: Record<string, string> = {
   'live.curseBroken': 'infranta {n}× (−{penalty})',
   'live.curseHolding': 'rispettata',
   'void.label': 'Non dà punti',
-  'void.thin': 'troppo poco per essere una strofa: servono più parole diverse che versi',
+  'void.thin': 'troppo poco per essere una strofa: servono più parole diverse',
   'void.copied': 'presa dall’altra strofa: una risposta dev’essere tua',
   'signature.none': 'questa carta non ha una battuta di firma',
   'signature.hint': 'riecheggia una di queste: {words}',

@@ -254,7 +254,7 @@ const UI: Record<string, string> = {
   'live.curseBroken': 'broken {n}× (−{penalty})',
   'live.curseHolding': 'holding',
   'void.label': 'Scores nothing',
-  'void.thin': 'too little to be a verse: it needs more different words than lines',
+  'void.thin': 'too little to be a verse: it needs more different words',
   'void.copied': 'taken from the other verse: an answer must be your own',
   'signature.none': 'this card has no signature line',
   'signature.hint': 'echo one of: {words}',

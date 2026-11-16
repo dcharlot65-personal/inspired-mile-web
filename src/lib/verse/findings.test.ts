@@ -155,6 +155,16 @@ describe("finding: pasting the opponent's verse back won the round", () => {
       expect([copy, res.winner, res.player.craft, res.judge.player]).toEqual([copy, 'opponent', 0, 0]);
     }
   });
+  it("cannot be turned on the written opponent by typing its next verse a round early", () => {
+    // The seed makes the written opponent's verses knowable. Its verse is the game's own
+    // choice and is not tested for being a copy, or this would win rounds two and three.
+    const d = createDuel(11, 'en', deck);
+    const next = opponent.writtenVerse(getForm(d.rounds[1].formId), d.rounds[1].ctx, d.seed + 1);
+    const res = resolveRound(d, 1, { charId: 'MO-001' }, 'A verse of my own making now\nAnd nothing more to say', next, evenJudge, next);
+    expect(res.opponent.voided).toBeUndefined();
+    expect(res.opponent.form.kept).toBe(true);
+    expect(res.judge).toEqual(evenJudge);
+  });
   it('leaves an honest answer alone, even one that throws words back', () => {
     const d = createDuel(11, 'en', deck);
     const opening = 'Thy rhymes are candles guttering in the night\nMine is the sun, and thou hast lost the light';
@@ -242,6 +252,7 @@ describe('finding: invisible and look-alike characters passed cleanVerse', () =>
     expect(violations('short-lines', 'one-two-three four-five-six seven')).toBe(1);
     expect(violations('no-repeats', "don't don't never never")).toBe(2);
     expect(violations('no-repeats', `don't don${CURLY}t never nev${SOFT_HYPHEN}er`)).toBe(2);
+    expect(violations('no-repeats', 'never-never')).toBe(1);
   });
   it('Grandeur counts letters, not combining marks', () => {
     // (Already so when this was written: the localisation work counted letters. Kept as a guard.)

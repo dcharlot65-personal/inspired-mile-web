@@ -12,7 +12,7 @@
  *
  * A verse that is empty, too thin to be a verse (text.ts `substance`) or taken
  * from the other side's verse (text.ts `similarity`) is void: it lands nothing
- * and its craft is 0. A copied verse also forfeits the judge.
+ * and its craft is 0. A player's copied verse also forfeits the judge.
  *
  * Everything in this file is pure and seeded: the same seed, deck and verses
  * always produce the same plan and the same scores. No randomness is applied
@@ -306,6 +306,14 @@ export interface ScoreInput {
   curse?: CastCurse;
   /** Power words this side paid for. */
   lent?: LentWords;
+  /**
+   * The verse was chosen by the game itself (the opponent's, written or model):
+   * it is not tested for being a copy of the verse it answers. A model's draft
+   * that parrots the player is weeded out when it is written (opponent.ts). If
+   * the test ran again at scoring, a player could void the written opponent by
+   * typing its next verse, which the seed makes knowable, a round early.
+   */
+  trusted?: boolean;
 }
 
 const CHARACTER_NAMES = invocationNames(CARD_CATALOG.filter((c) => c.type === 'Character').map((c) => c.name));
@@ -323,7 +331,7 @@ export function scoreVerse(input: ScoreInput): VerseScore {
   const form = scoreForm(input.form, verse, input.ctx);
   const lang = input.ctx.lang;
   const answered = input.opponentVerse ? cleanVerse(input.opponentVerse) : '';
-  const voided = voidReason(verse, form, lang, answered);
+  const voided = voidReason(verse, form, lang, input.trusted ? '' : answered);
   // A Riposte house with nothing to answer is held to its opening device instead.
   const dev = deviceInPlay(input.card.house, lang, !!answered);
   // A void verse lands nothing: devices and signatures are for verses.
@@ -354,7 +362,7 @@ export function scoreVerse(input: ScoreInput): VerseScore {
   return { form, device, signature, synergy, multiplier, powerWords: power, curse, craft, ...(voided ? { voided } : {}) };
 }
 
-/** The judge's split when one side's verse is a copy: every criterion goes to the other side. */
+/** The judge's split when a verse is a copy: every criterion goes to the other side. */
 function forfeit(judge: JudgeSplit, to: 'player' | 'opponent'): JudgeSplit {
   const criteria: JudgeSplit['criteria'] = {};
   for (const c of Object.keys(judge.criteria)) criteria[c] = to;
@@ -395,12 +403,11 @@ export function resolveRound(
     opponentVerse: previousPlayerVerse,
     curse: move.potionId ? duel.playerCurses[move.potionId] : undefined,
     lent: plan.opponent.relic,
+    trusted: true,
   });
 
-  // A copy forfeits the judge as well as its craft; if both sides copied, the judge's split stands.
-  const playerCopied = player.voided === 'copied';
-  const opponentCopied = opponent.voided === 'copied';
-  const judge = playerCopied === opponentCopied ? judgeGiven : forfeit(judgeGiven, playerCopied ? 'opponent' : 'player');
+  // A copy forfeits the judge as well as its craft. (Only the player's verse is tested: see ScoreInput.trusted.)
+  const judge = player.voided === 'copied' ? forfeit(judgeGiven, 'opponent') : judgeGiven;
 
   // The world card: bonus points when the judge gives the player its criterion. Applied here and nowhere else.
   const card = duel.worldCard;

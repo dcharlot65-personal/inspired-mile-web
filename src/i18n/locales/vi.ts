@@ -352,7 +352,7 @@ const vi: Record<string, string> = {
   'live.curseBroken': 'phạm {n}× (−{penalty})',
   'live.curseHolding': 'chưa phạm',
   'void.label': 'Không được điểm',
-  'void.thin': 'quá ít để thành một bài thơ: cần nhiều từ khác nhau hơn số dòng',
+  'void.thin': 'quá ít để thành một bài thơ: cần thêm những từ khác nhau',
   'void.copied': 'lấy từ bài thơ của đối thủ: câu đáp phải là của chính bạn',
   'signature.none': 'lá bài này không có câu thoại dấu ấn',
   'signature.hint': 'gợi lại một trong các từ: {words}',

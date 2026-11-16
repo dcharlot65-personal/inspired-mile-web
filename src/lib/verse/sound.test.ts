@@ -171,7 +171,7 @@ describe('substance: a verse, or tokens laid out like one', () => {
     for (const thin of ['Never\nNever\nNever', 'dare\ndare\ndare', 'a\na a\na a a', 'w\ni\nt', 'x', '?\n?', 'so\nso', 'go go\ngo go', 'Never fear\nNever\nNever', 'question', 'zz!!', 'Hear this']) {
       expect([thin, text.substance(thin, 'en').ok]).toEqual([thin, false]);
     }
-    for (const real of ['Never fear\nNever yield\nNever kneel', 'Kneel\nWeep, fool\nThy doom has come', 'A candle?\nThen I snuff it', 'To be or not to be', 'Bold\nAnd\nRash\nDeeds']) {
+    for (const real of ['Never fear\nNever yield\nNever kneel', 'Kneel\nWeep, fool\nThy doom has come', 'A candle?\nThen I snuff it', 'To be or not to be', 'Bold\nAnd\nRash\nDeeds', 'I\nI rise\nI rise again', 'O!\nRomeo, wherefore art thou']) {
       expect([real, text.substance(real, 'en').ok]).toEqual([real, true]);
     }
     expect(text.substance('Never\nNever\nNever')).toEqual({ ok: false, distinct: 1, needed: 3 });

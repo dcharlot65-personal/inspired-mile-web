@@ -352,7 +352,7 @@ const pt: Record<string, string> = {
   'live.curseBroken': 'quebrada {n}× (−{penalty})',
   'live.curseHolding': 'cumprida',
   'void.label': 'Não pontua',
-  'void.thin': 'pouco demais para ser uma estrofe: é preciso ter mais palavras diferentes do que versos',
+  'void.thin': 'pouco demais para ser uma estrofe: é preciso ter mais palavras diferentes',
   'void.copied': 'tirada da outra estrofe: uma resposta precisa ser sua',
   'signature.none': 'esta carta não tem fala de assinatura',
   'signature.hint': 'ecoe uma destas: {words}',

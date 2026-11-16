@@ -352,7 +352,7 @@ const ja: Record<string, string> = {
   'live.curseBroken': '{n}回破った（−{penalty}）',
   'live.curseHolding': '守っている',
   'void.label': '得点なし',
-  'void.thin': '詩と呼ぶには少なすぎます。行数より多くの異なる語が必要です',
+  'void.thin': '詩と呼ぶには少なすぎます。もっと多くの異なる語が必要です',
   'void.copied': '相手の詩から取ったものです。返しは自分の言葉で書いてください',
   'signature.none': 'このカードにはシグネチャーの台詞がありません',
   'signature.hint': '次のどれかを響かせてください：{words}',

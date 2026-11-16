@@ -352,7 +352,7 @@ const ar: Record<string, string> = {
   'live.curseBroken': 'خُرقت {n}× (−{penalty})',
   'live.curseHolding': 'ملتزَم بها',
   'void.label': 'لا نقاط',
-  'void.thin': 'أقل من أن تكون أبياتًا: يلزم أن تزيد الكلمات المختلفة على عدد الأسطر',
+  'void.thin': 'أقل من أن تكون أبياتًا: يلزم مزيد من الكلمات المختلفة',
   'void.copied': 'مأخوذة من أبيات الخصم: الرد يجب أن يكون من عندك',
   'signature.none': 'ليس لهذه البطاقة عبارة توقيع',
   'signature.hint': 'ردّد صدى إحدى هذه الكلمات: {words}',

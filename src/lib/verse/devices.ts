@@ -360,7 +360,8 @@ export const CURSES: Record<string, Curse> = {
       const seen = new Set<string>();
       let n = 0;
       const min = rulesFor(lang).content;
-      for (const w of wordsAsRead(v, lang)) {
+      // Each part of a hyphenated chain is a word of its own here: "never-never" says it twice.
+      for (const w of wordsAsRead(v, lang).flatMap((x) => x.split('-'))) {
         if (wordSpan(w) < min) continue;
         if (seen.has(w)) n++;
         seen.add(w);

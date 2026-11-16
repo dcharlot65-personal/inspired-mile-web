@@ -352,7 +352,7 @@ const hi: Record<string, string> = {
   'live.curseBroken': '{n} बार टूटा (−{penalty})',
   'live.curseHolding': 'निभ रहा है',
   'void.label': 'कोई अंक नहीं',
-  'void.thin': 'पद कहलाने के लिए बहुत कम: पंक्तियों से ज़्यादा अलग-अलग शब्द चाहिए',
+  'void.thin': 'पद कहलाने के लिए बहुत कम: और अलग-अलग शब्द चाहिए',
   'void.copied': 'दूसरे पद से लिया गया: जवाब आपका अपना होना चाहिए',
   'signature.none': 'इस कार्ड का कोई हस्ताक्षर-संवाद नहीं है',
   'signature.hint': 'इनमें से किसी एक की गूँज लाएँ: {words}',

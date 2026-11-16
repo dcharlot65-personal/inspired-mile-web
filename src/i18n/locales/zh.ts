@@ -352,7 +352,7 @@ const zh: Record<string, string> = {
   'live.curseBroken': '触犯 {n} 次（−{penalty}）',
   'live.curseHolding': '未触犯',
   'void.label': '不得分',
-  'void.thin': '内容太少，算不上一首诗：不同的字词要比行数多',
+  'void.thin': '内容太少，算不上一首诗：需要更多不同的字词',
   'void.copied': '取自对方的诗：回应必须是你自己写的',
   'signature.none': '这张牌没有签名台词',
   'signature.hint': '呼应其中之一：{words}',
