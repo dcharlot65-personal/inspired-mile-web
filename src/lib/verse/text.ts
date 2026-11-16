@@ -81,6 +81,8 @@ export function syllablesInWord(word: string, lang = 'en'): number | null {
     // Silent final e ("stage"), but not "-le" after a consonant ("candle").
     if (w.length > 2 && w.endsWith('e') && !w.endsWith('le') && !LATIN_VOWELS.includes(w[w.length - 2])) groups--;
     if (w.endsWith('le') && w.length > 2 && LATIN_VOWELS.includes(w[w.length - 3])) groups--;
+    // "-es" is silent after most consonants ("leaves", "takes") but not after a hiss ("roses", "wishes").
+    if (w.length > 3 && w.endsWith('es') && !LATIN_VOWELS.includes(w[w.length - 3]) && !/(s|x|z|ch|sh|c|g)es$/.test(w)) groups--;
     // "-ed" is silent except after t or d ("wanted").
     if (w.length > 3 && w.endsWith('ed') && !/[td]ed$/.test(w) && !LATIN_VOWELS.includes(w[w.length - 3])) groups--;
   }
@@ -105,12 +107,21 @@ export function rhymeKey(word: string): string {
   const w = fold(word).replace(/[^\p{L}]/gu, '');
   if (w.length < 2) return w;
   if (!/^[a-z]+$/.test(w)) return w.slice(-2);
-  // Spellings that sound alike at the end of a word. Rough, and tuned to be
-  // generous: a doubtful rhyme is allowed rather than refused.
+  // Spellings that sound alike at the end of a word. English spelling is a poor
+  // guide to sound, so this is rough and tuned to be generous: a doubtful rhyme
+  // is allowed rather than refused.
   const e = w
     .replace(/ight$/, 'ite')
-    .replace(/(ough|ow)$/, 'o')
+    .replace(/(ower|our)$/, 'owr')
+    .replace(/(are|air|eir|ayer)$/, 'air')
+    .replace(/^(th|wh)ere$/, '$1air')
+    .replace(/(awl|aul|all)$/, 'awl')
+    .replace(/(oise|oys)$/, 'oyz')
+    .replace(/(ize|ise|ies|eyes|ighs)$/, 'ize')
+    .replace(/(ough|ow|oe)$/, 'o')
     .replace(/(ay|eigh)$/, 'ay')
+    .replace(/(ck|que)$/, 'k')
+    .replace(/ph$/, 'f')
     .replace(/^(me|he|she|we|be|ye)$/, '$1e')
     .replace(/(ee|ea|ey|ie)$/, 'ee')
     .replace(/([^aeiou])y$/, '$1ee');

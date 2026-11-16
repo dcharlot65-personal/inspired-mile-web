@@ -12,6 +12,8 @@ export default defineConfig({
     // The age gate covers every page until a date of birth is given; tests start past it.
     storageState: prodUrl ? undefined : './tests/age-verified.json',
   },
+  // tests/model needs WebGPU and multi-gigabyte downloads; it has its own config.
+  testIgnore: /tests\/model\//,
   testMatch: prodUrl ? /prod-smoke\.spec\.ts/ : /^(?!.*prod-smoke).*\.spec\.ts$/,
   webServer: prodUrl ? undefined : {
     command: 'npm run dev -- --port 4399',
