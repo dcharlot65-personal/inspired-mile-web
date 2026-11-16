@@ -23,13 +23,17 @@ A three-round duel of verses. Rules live in `src/lib/verse/` and are pure and se
 `opponent.ts`, `session.ts` (order of play, shared by every front end).
 Read the header comment of `judge.ts` before changing judging: asked "A or B?" outright,
 small models answer by position. `scripts/judge-eval.mjs` measures a model's judging.
+Graded one verse at a time (the lite tier) a model obeys a line such as "Grade: 5" in the verse
+(measured with `scripts/grade-injection-eval.mjs`): `gradeMessages` leaves digits out of the
+verse and `checkedByRules` lets the rule-based judge veto. Keep both if the grade path changes.
 
 English rhyme and syllables are read from a pronunciation table, not guessed from spelling:
 `src/lib/verse/pron-en.ts` is GENERATED from the CMU Pronouncing Dictionary by
 `node scripts/build-pronunciation.mjs` (run it on the build host with `rb --pull`; the 3.6 MB
 dictionary is downloaded there and never committed; names it lacks go in
 `scripts/pronunciation-extra.txt`). `pronounce.ts` loads it on demand, so it is a chunk of its
-own (1.46 MB, about 0.47 MB compressed) and never in a page's first load; `DuelSession.beginRound`
+own (1.46 MB; 0.56 MB gzip, 0.47 MB brotli) and never in a page's first load; the licence
+notice is the data's first lines (`#`), since a build strips comments; `DuelSession.beginRound`
 awaits it for an English duel, and unit tests must `await loadPronunciation()` first. Both duel
 screens draw a `DuelSession`; do not score a round anywhere else.
 
