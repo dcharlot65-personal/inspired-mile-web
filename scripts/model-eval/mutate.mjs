@@ -32,7 +32,9 @@ const MUTATIONS = [
   ['a score in a cell edited', 'docs/language/model-eval/cells/grand.en.write.json', '"formKept": true', '"formKept": false'],
   ['a scoring rule changed after the cells ran', 'src/lib/verse/duel.ts', '1 + (device.met ? 0.5 : 0)', '1 + (device.met ? 0.6 : 0)'],
   ['the opponent\'s prompt changed after the cells ran', 'src/lib/verse/opponent.ts', 'No title, no notes, no explanation.', 'No title, no notes.'],
-  ['the opponent\'s tidy-up changed after the cells ran', 'src/lib/verse/opponent.ts', ".replace(/[*_`]+/g, '')", ".replace(/[*_]+/g, '')"],
+  // A rule the stored drafts use: 34 of them had a note in brackets cut off a kept line ("(needs 5)").
+  // (Dropping the backtick from the markup rule changed no stored draft, and survived: the wrong mutation, not a weak test.)
+  ['the opponent\'s tidy-up changed after the cells ran', 'src/lib/verse/opponent.ts', ".replace(/\\s*\\([^)]*\\)\\s*$/, '')", ''],
   ['the report edited apart from the decisions', 'docs/language/MODEL-EVAL.md', /\| Gemma 4 E2B \| [^|]*\|/, '| Gemma 4 E2B | xx |'],
 ];
 
