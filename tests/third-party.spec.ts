@@ -181,8 +181,10 @@ test.describe('Requests to other origins', () => {
     // Retried as a whole: the first time the dev server meets model-viewer it rebuilds its
     // dependency cache and reloads the page, which puts the viewer back in its first mode.
     await expect(async () => {
-      await page.selectOption('#card-select', 'SM-001');
+      // GLB mode first, then the card: choosing a card in the page's first mode would load
+      // its Gaussian splat as well, which keeps a headless browser busy for minutes.
       await page.click('#mode-glb');
+      await page.selectOption('#card-select', 'SM-001');
       await page.waitForFunction(() => !!customElements.get('model-viewer') && !!document.querySelector('#glb-container model-viewer'), undefined, { timeout: 8000 });
     }).toPass({ timeout: 45000 });
     // The bundled component really draws the card's model.
