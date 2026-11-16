@@ -5,10 +5,15 @@
  * The effects themselves live in ./verse: a character carries its house's
  * device, a relic lends power words, a potion casts a curse. This file only
  * describes them and validates decks.
+ *
+ * The descriptions here are English: the collection and deck-building screens
+ * are not yet translated (the duel itself is; see src/i18n).
  */
 import type { House } from './cards';
 import { CARD_CATALOG, getCardById } from './cards';
-import { CURSES, HOUSE_DEVICE, POTION_CURSE, POWER_WORDS_NEEDED, POWER_WORD_BONUS, RELIC_WORDS, deviceForHouse } from './verse/devices';
+import { CURSES, POTION_CURSE, POWER_WORDS_NEEDED, POWER_WORD_BONUS, deviceForHouse, houseWhy } from './verse/devices';
+import { en, theirs } from './verse/english';
+import { getPack } from './verse/packs';
 
 /** The four things a judge weighs. World cards name one of them. */
 export type BattleAxis = 'wordplay' | 'shakespeare' | 'flow' | 'wit';
@@ -23,7 +28,8 @@ export interface CardEffect {
 export const CHARACTER_ABILITIES: Record<string, CardEffect> = Object.fromEntries(
   CARD_CATALOG.filter((c) => c.type === 'Character').map((c) => {
     const device = deviceForHouse(c.house);
-    return [c.id, { id: device.id, name: device.name, description: `${device.brief} Land it to add half again to your craft. ${HOUSE_DEVICE[c.house]?.why ?? ''}`.trim() }];
+    const why = houseWhy(c.house);
+    return [c.id, { id: device.id, name: en(device.name), description: `${en(device.brief('en'))} Land it to add half again to your craft. ${why ? en(why) : ''}`.trim() }];
   }),
 );
 
@@ -36,11 +42,13 @@ export interface ItemEffect extends CardEffect {
 export const ITEM_EFFECTS: Record<string, ItemEffect> = Object.fromEntries(
   CARD_CATALOG.filter((c) => c.type !== 'Character').map((c) => {
     if (c.type === 'Relic') {
-      const words = RELIC_WORDS.en[c.id] ?? [];
+      const words = getPack('en').relics[c.id] ?? [];
       return [c.id, { cardId: c.id, id: 'power-words', name: c.name, usesPerBattle: 1, description: `Lends power words: ${words.join(', ')}. Use ${POWER_WORDS_NEEDED} of them for +${POWER_WORD_BONUS} craft. Costs 1 ink.` }];
     }
     const curse = CURSES[POTION_CURSE[c.id]];
-    return [c.id, { cardId: c.id, id: curse.id, name: c.name, usesPerBattle: 1, description: `Curses your opponent's next verse with ${curse.name}: ${curse.brief('one chosen letter').replace('Your verse', 'their verse')} Costs 1 ink.` }];
+    // A Forbidden Letter potion names its letter when the duel is dealt.
+    const rule = curse.id === 'forbidden-letter' ? { key: 'curse.forbidden-letter.theirs', vars: { letter: 'the potion names' } } : theirs(curse.brief('', 'en'));
+    return [c.id, { cardId: c.id, id: curse.id, name: c.name, usesPerBattle: 1, description: `Curses your opponent's next verse with ${en(curse.name)}: ${en(rule)} Costs 1 ink.` }];
   }),
 );
 
@@ -59,7 +67,7 @@ export function getActiveSynergies(cardIds: string[]): HouseSynergy[] {
   }
   return [...counts.entries()]
     .filter(([, n]) => n >= 2)
-    .map(([house]) => ({ house, minCards: 2, description: `2+ ${house}: ${deviceForHouse(house).name} adds three quarters to your craft instead of half` }));
+    .map(([house]) => ({ house, minCards: 2, description: `2+ ${house}: ${en(deviceForHouse(house).name)} adds three quarters to your craft instead of half` }));
 }
 
 // --- Deck validation ---

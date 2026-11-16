@@ -76,6 +76,25 @@ left behind by a killed run is found by its port: `lsof -nP -iTCP:<port> -sTCP:L
 - The email step requires the age gate's stored tier (`adult` or `teen-consented`), in the
   browser and again in the API. Do not loosen either.
 
+## Languages (16: en es fr de it pt pl ru ar hi zh ja ko vi th id)
+
+- **Interface**: `src/i18n/` (`t()`, `setLocale()`, one lazily loaded module per language in
+  `locales/`). Markup carries keys (`data-i18n`, `data-i18n-placeholder`, …); scripts call
+  `t()` and redraw on `onLocaleChange`. A new string goes into `locales/en.ts` and all fifteen
+  others: `src/i18n/i18n.test.ts` fails on a missing key, an empty value or a different
+  `{placeholder}`. Translated so far: the layout (navigation, footer, age gate, sign-in), the
+  battle page and the theatre. Card names and Shakespeare's lines stay English.
+- **The duel's language** is a separate choice. The engine (`src/lib/verse`) returns message
+  keys, never sentences; `english.ts` renders them for the model's prompt, which is always
+  English. Per-language data (acrostic words, forbidden letters, power words, the written
+  opponent's verses) is in `src/lib/verse/packs/`, loaded with `loadPack(lang)` before
+  `createDuel`. Rhyme and syllable rules per language: `rhyme.ts`, `text.ts`; thresholds:
+  `lang.ts`. Rhyming forms are not offered in zh, ja, th.
+- Every verse in every pack must keep its form as the code checks it (`verse.test.ts`).
+  `node scripts/mutate-packs.mjs` (on the build host) proves those tests go red.
+- Writing a `\uXXXX` escape through an agent's file tools can turn it into the character
+  itself; check with `grep` after writing one.
+
 ## Where it runs (verified 2026-11-16)
 
 - **Live origin for the domain is `10.10.10.1`**: Cloudflare's "publishing" tunnel terminates

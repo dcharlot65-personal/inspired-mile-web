@@ -8,19 +8,18 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <div class="text-center mb-8">
         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/20 mb-6">
           <span class="w-2 h-2 rounded-full bg-purple-500 animate-pulse"></span>
-          <span class="text-purple-400 text-xs font-medium tracking-wide uppercase">Quest 3 · Vision Pro · Screen</span>
+          <span class="text-purple-400 text-xs font-medium tracking-wide uppercase" data-i18n="theatre.badge">Quest 3 · Vision Pro · Screen</span>
         </div>
-        <h1 class="font-display text-4xl sm:text-5xl font-bold text-obsidian-100 mb-4">The <span class="text-gradient">Theatre</span></h1>
-        <p class="text-obsidian-300 max-w-2xl mx-auto">
-          The same duel, on a stage around you. Point or pinch to play a card, press the microphone and speak your verse.
-          It is transcribed and judged on this device.
+        <h1 class="font-display text-4xl sm:text-5xl font-bold text-obsidian-100 mb-4"><span data-i18n="theatre.titleA">The</span> <span class="text-gradient" data-i18n="theatre.titleB">Theatre</span></h1>
+        <p class="text-obsidian-300 max-w-2xl mx-auto" data-i18n="theatre.intro">
+          The same duel, on a stage around you. Point or pinch to play a card, press the microphone and speak your verse. It is transcribed and judged on this device.
         </p>
       </div>
 
       <div class="flex flex-wrap items-center justify-center gap-3 mb-4">
         <button id="enter-xr" class="btn-primary px-6 py-2 text-sm hidden"></button>
-        <button id="restart" class="btn-secondary px-6 py-2 text-sm">New duel</button>
-        <a href="/battle" class="text-xs text-obsidian-400 hover:text-gold-400 underline">Play the flat version</a>
+        <button id="restart" class="btn-secondary px-6 py-2 text-sm" data-i18n="theatre.newDuel">New duel</button>
+        <a href="/battle" class="text-xs text-obsidian-400 hover:text-gold-400 underline" data-i18n="theatre.flat">Play the flat version</a>
       </div>
       <p id="theatre-status" class="text-center text-xs font-mono text-obsidian-500 mb-4">Raising the curtain…</p>
 
@@ -30,8 +29,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
       <!-- On a flat screen a keyboard is to hand, so typing is offered as well as speaking. -->
       <div id="typed" class="mt-4 card-glass p-4">
-        <label for="typed-verse" class="text-xs uppercase tracking-wider text-obsidian-500">Or type your verse</label>
-        <textarea id="typed-verse" rows="3" maxlength="600"
+        <label for="typed-verse" class="text-xs uppercase tracking-wider text-obsidian-500" data-i18n="theatre.typeLabel">Or type your verse</label>
+        <textarea id="typed-verse" rows="3" maxlength="600" dir="auto" data-i18n-placeholder="round.versePlaceholder"
           class="mt-2 w-full bg-obsidian-900 border border-obsidian-700 rounded-lg px-4 py-3 text-obsidian-100 font-display text-lg focus:border-gold-500/50 focus:outline-hidden"
           placeholder="One line of verse per line…"></textarea>
       </div>
@@ -39,15 +38,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <div class="mt-6 grid sm:grid-cols-3 gap-4 text-center">
         <div class="card-glass p-4">
           <h2 class="text-sm font-display font-bold text-obsidian-200 mb-1">Quest 3</h2>
-          <p class="text-xs text-obsidian-400">Opens in passthrough, so the stage sits in your room. Point a controller or pinch with a hand.</p>
+          <p class="text-xs text-obsidian-400" data-i18n="theatre.questBody">Opens in passthrough, so the stage sits in your room. Point a controller or pinch with a hand.</p>
         </div>
         <div class="card-glass p-4">
           <h2 class="text-sm font-display font-bold text-obsidian-200 mb-1">Vision Pro</h2>
-          <p class="text-xs text-obsidian-400">Opens as a full stage. Look at a card and pinch. Safari on visionOS does not offer passthrough to web pages.</p>
+          <p class="text-xs text-obsidian-400" data-i18n="theatre.visionBody">Opens as a full stage. Look at a card and pinch. Safari on visionOS does not offer passthrough to web pages.</p>
         </div>
         <div class="card-glass p-4">
-          <h2 class="text-sm font-display font-bold text-obsidian-200 mb-1">Screen</h2>
-          <p class="text-xs text-obsidian-400">Click the cards and buttons on the stage, and speak or type.</p>
+          <h2 class="text-sm font-display font-bold text-obsidian-200 mb-1" data-i18n="theatre.screenTitle">Screen</h2>
+          <p class="text-xs text-obsidian-400" data-i18n="theatre.screenBody">Click the cards and buttons on the stage, and speak or type.</p>
         </div>
       </div>
     </div>
@@ -60,17 +59,28 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     import { getOwnedCardIds } from '../lib/inventory';
     import { incrementStat } from '../lib/achievements';
     import { ROUNDS, starterDeck, type DuelDeck } from '../lib/verse/duel';
+    import { hasPack, loadPack } from '../lib/verse/packs';
     import { DuelSession } from '../lib/verse/session';
     import { Theatre, type Action } from '../lib/xr/theatre';
+    import { initI18n, onLocaleChange, t } from '../i18n';
+    import type { Msg } from '../lib/verse/msg';
 
     const statusEl = document.getElementById('theatre-status')!;
     const typed = document.getElementById('typed-verse') as HTMLTextAreaElement;
     const enterBtn = document.getElementById('enter-xr') as HTMLButtonElement;
     const params = new URLSearchParams(location.search);
 
-    let session: DuelSession;
+    let session: DuelSession | undefined;
     let useModel = false;
-    let micLabel = '🎙 Speak';
+    // The microphone button and the status line remember the message they show, so a
+    // change of interface language can say it again.
+    let micMsg: Msg = { key: 'theatre.micSpeak' };
+    let statusMsg: Msg | null = { key: 'theatre.raising' };
+    const micText = () => (micMsg.key === 'theatre.micSpeak' ? `🎙 ${t(micMsg.key)}` : t(micMsg.key, micMsg.vars));
+    function status(key: string | null, vars?: Msg['vars']) {
+      statusMsg = key ? { key, vars } : null;
+      if (key) statusEl.textContent = t(key, vars);
+    }
 
     function deck(): DuelDeck {
       const saved = getActiveDeck();
@@ -78,31 +88,34 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     }
 
     function redraw() {
+      if (!session) return;
       const info = useModel ? brainInfo() : null;
       theatre.render(session, {
-        mic: micLabel,
+        mic: micText(),
         listening: isListening(),
-        judge: info ? `Judged by ${info.label} on this device.` : 'Judged by rule: no model is running.',
+        judge: info ? t('theatre.judgedModel', { model: info.label }) : t('theatre.judgedRules'),
       });
       if (document.activeElement !== typed) typed.value = session.verse;
       (document.getElementById('typed') as HTMLElement).classList.toggle('hidden', theatre.mode !== 'flat');
     }
 
     async function finishTake() {
-      micLabel = 'Transcribing…';
+      if (!session) return;
+      micMsg = { key: 'mic.transcribing' };
       redraw();
       try {
         const said = await stopListening(session.duel.lang);
         if (said) session.setVerse(session.verse.trim() ? `${session.verse.trim()}\n${said}` : said);
-        micLabel = said ? '🎙 Speak' : 'Heard nothing';
+        micMsg = { key: said ? 'theatre.micSpeak' : 'mic.heardNothing' };
       } catch (err) {
         console.error('[theatre mic]', err);
-        micLabel = 'Could not transcribe';
+        micMsg = { key: 'mic.failed' };
       }
       redraw();
     }
 
     async function act(a: Action) {
+      if (!session) return;
       switch (a.type) {
         case 'character':
           session.chooseCharacter(a.id);
@@ -126,18 +139,18 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         case 'mic':
           if (isListening()) return finishTake();
           try {
-            micLabel = 'Loading the ear…';
+            micMsg = { key: 'theatre.micLoading' };
             redraw();
             if (!(await loadEar())) {
-              micLabel = 'The ear could not load';
+              micMsg = { key: 'mic.earFailed' };
               break;
             }
             await startListening(finishTake);
-            micLabel = 'Listening… tap to stop';
+            micMsg = { key: 'mic.listening' };
           } catch (err) {
             console.error('[theatre mic]', err);
             cancelListening();
-            micLabel = 'Microphone not allowed';
+            micMsg = { key: 'mic.denied' };
           }
           break;
       }
@@ -146,10 +159,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
     const theatre = new Theatre(document.getElementById('theatre-canvas') as HTMLCanvasElement, act);
 
-    function start(seed: number) {
+    async function start(seed: number) {
+      // The duel is fought in the language chosen on the battle page; its verse data loads first.
+      const stored = localStorage.getItem('inspired-mile-duel-lang');
+      const lang = stored && hasPack(stored) ? stored : 'en';
+      await loadPack(lang);
       session = new DuelSession({
         seed,
-        lang: localStorage.getItem('inspired-mile-duel-lang') ?? 'en',
+        lang,
         deck: deck(),
         difficulty: 'player',
         useModel,
@@ -158,6 +175,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       incrementStat('totalBattles');
       session.beginRound();
       (window as any).__theatre = { theatre, act, get session() { return session; } };
+    }
+
+    let xrMode: 'immersive-ar' | 'immersive-vr' | null = null;
+    function labelEnter() {
+      if (xrMode) enterBtn.textContent = t(xrMode === 'immersive-ar' ? 'theatre.enterAr' : 'theatre.enterVr');
     }
 
     typed.addEventListener('input', () => session?.setVerse(typed.value));
@@ -170,24 +192,31 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       const chosen = localStorage.getItem('inspired-mile-brain');
       const tier = chooseTier(cap);
       if (params.get('brain') !== 'rules' && tier !== 'none' && chosen && chosen !== 'rules') {
-        statusEl.textContent = 'Summoning your opponent…';
-        useModel = await loadBrain(chosen === 'grand' && !cap.handheld ? 'grand' : tier, (p) => { statusEl.textContent = p.text; });
+        status('brain.summoning');
+        useModel = await loadBrain(chosen === 'grand' && !cap.handheld ? 'grand' : tier, (p) => {
+          // The loader reports its progress in English.
+          const down = p.text.match(/^Downloading (.+): (\d+) of (\d+) MB$/);
+          statusMsg = null;
+          statusEl.textContent = down ? t('brain.downloading', { model: down[1], done: down[2], total: down[3] }) : p.text;
+        });
       }
       const info = useModel ? brainInfo() : null;
-      statusEl.textContent = info ? `${info.label} is running on this device.` : 'Playing the written opponent. Summon a model on the battle page to face one here.';
+      if (info) status('theatre.running', { model: info.label });
+      else status('theatre.writtenHint');
 
       const mode = await Theatre.supportedMode();
       if (mode) {
-        enterBtn.textContent = mode === 'immersive-ar' ? 'Enter: stage in your room' : 'Enter the theatre';
+        xrMode = mode;
+        labelEnter();
         enterBtn.classList.remove('hidden');
         enterBtn.addEventListener('click', async () => {
           if (theatre.mode !== 'flat') return theatre.exitXR();
           try {
             const entered = await theatre.enterXR();
-            statusEl.textContent = entered ? `In the headset (${entered === 'immersive-ar' ? 'passthrough' : 'full stage'}).` : 'This device declined an immersive session.';
+            status(entered ? (entered === 'immersive-ar' ? 'theatre.inPassthrough' : 'theatre.inFullStage') : 'theatre.declined');
           } catch (err) {
             console.error('[theatre xr]', err);
-            statusEl.textContent = 'The headset session could not start.';
+            status('theatre.xrFailed');
           }
           redraw();
         });
@@ -195,6 +224,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       const s = Number(params.get('seed'));
       start(Number.isFinite(s) && s > 0 ? s : Math.floor(Math.random() * 2 ** 31));
     }
-    init();
+    initI18n().then(() => {
+      status('theatre.raising');
+      onLocaleChange(() => {
+        if (statusMsg) statusEl.textContent = t(statusMsg.key, statusMsg.vars);
+        labelEnter();
+        redraw();
+      });
+      init();
+    });
   </script>
 </BaseLayout>
