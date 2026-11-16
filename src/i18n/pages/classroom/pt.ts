@@ -14,7 +14,7 @@ const messages: Record<string, string> = {
   'classroom.role.student': 'Sou estudante',
   'classroom.role.studentHint': 'Entrar em uma turma que já existe',
   'classroom.teacher.title': 'Confirmação do professor',
-  'classroom.teacher.check1': 'Sou professor, instrutor ou gestor escolar e tenho autorização para usar este serviço com meus estudantes.',
+  'classroom.teacher.check1': 'Dou aulas, trabalho com formação ou faço parte da gestão de uma escola e tenho autorização para usar este serviço com meus estudantes.',
   'classroom.teacher.check2': 'Vou obter o consentimento de um dos pais ou de um responsável antes de inscrever qualquer estudante com menos de 18 anos.',
   'classroom.teacher.check3Before': 'Li e aceito os ',
   'classroom.teacher.check3And': ' e a ',

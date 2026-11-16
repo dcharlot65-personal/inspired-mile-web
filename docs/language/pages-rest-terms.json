@@ -93,7 +93,10 @@
      "word": "enseignant",
      "rel": "same",
      "from": "article",
-     "note": "The label, enseignant ou enseignante, where the teacher names themself."
+     "note": "The label, enseignant ou enseignante, where the teacher names themself.",
+     "notIn": {
+      "classroom.teacher.check1": "J’enseigne, j’assure des formations: verbs, so that the teacher’s declaration reads the same for a woman and a man"
+     }
     },
     "de": {
      "word": "Lehrkraft",
@@ -108,15 +111,24 @@
      "spellings": [
       "insegnanti"
      ],
-     "rel": "same"
+     "rel": "same",
+     "notIn": {
+      "classroom.teacher.check1": "Insegno, mi occupo di formazione: verbs, so that the teacher’s declaration reads the same for a woman and a man"
+     }
     },
     "pt": {
      "word": "professor",
-     "rel": "same"
+     "rel": "same",
+     "notIn": {
+      "classroom.teacher.check1": "Dou aulas, trabalho com formação: verbs, so that the teacher’s declaration reads the same for a woman and a man"
+     }
     },
     "pl": {
      "word": "nauczyciel",
-     "rel": "same"
+     "rel": "same",
+     "notIn": {
+      "classroom.teacher.check1": "Uczę, prowadzę szkolenia: verbs, so that the teacher’s declaration reads the same for a woman and a man"
+     }
     },
     "ru": {
      "word": "учитель",
@@ -128,7 +140,10 @@
     "ar": {
      "word": "معلّم",
      "rel": "other",
-     "note": "Both are standard. The model's choice; no recorded source."
+     "note": "Both are standard. The model's choice; no recorded source.",
+     "notIn": {
+      "classroom.teacher.check1": "أعمل في التدريس: a verb, so that the teacher’s declaration reads the same for a woman and a man"
+     }
     },
     "hi": {
      "word": "शिक्षक",

@@ -14,7 +14,7 @@ const messages: Record<string, string> = {
   'error.generic': 'Etwas ist schiefgegangen. Bitte versuch es noch einmal.',
   'error.passkey_not_found': 'Dieser Passkey gehört nicht zu diesem Konto.',
   'error.classroom_name_invalid': 'Der Name einer Klasse muss 1 bis 128 Zeichen lang sein.',
-  'error.join_code_invalid': 'Dieser Beitrittscode ist ungültig. Er hat 6 Zeichen, Buchstaben und Ziffern.',
+  'error.join_code_invalid': 'Dieser Beitrittscode ist ungültig. Er hat 6 Zeichen: Buchstaben und Ziffern.',
   'error.classroom_not_found': 'Keine Klasse hat diesen Code. Frag deine Lehrkraft danach.',
   'error.not_classroom_member': 'Du bist kein Mitglied dieser Klasse.',
   'error.teachers_only': 'Nur die Lehrkraft kann Aufgaben anlegen.',

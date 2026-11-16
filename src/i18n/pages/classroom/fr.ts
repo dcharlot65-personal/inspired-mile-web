@@ -14,7 +14,7 @@ const messages: Record<string, string> = {
   'classroom.role.student': 'Je suis élève',
   'classroom.role.studentHint': 'Rejoindre une classe qui existe déjà',
   'classroom.teacher.title': 'Confirmation de l’enseignant',
-  'classroom.teacher.check1': 'Je suis enseignant, formateur ou membre de la direction d’un établissement scolaire, et je suis autorisé à utiliser ce service avec mes élèves.',
+  'classroom.teacher.check1': 'J’enseigne, j’assure des formations ou je fais partie de la direction d’un établissement scolaire, et j’ai l’autorisation d’utiliser ce service avec mes élèves.',
   'classroom.teacher.check2': 'J’obtiendrai l’accord d’un parent ou d’un tuteur avant d’inscrire un élève de moins de 18 ans.',
   'classroom.teacher.check3Before': 'J’ai lu et j’accepte les ',
   'classroom.teacher.check3And': ' et la ',

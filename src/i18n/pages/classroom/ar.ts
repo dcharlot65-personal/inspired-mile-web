@@ -14,7 +14,7 @@ const messages: Record<string, string> = {
   'classroom.role.student': 'أنا طالب أو طالبة',
   'classroom.role.studentHint': 'الانضمام إلى صف موجود',
   'classroom.teacher.title': 'تأكيد المعلّم',
-  'classroom.teacher.check1': 'أنا معلّم أو مدرّب أو أحد أعضاء إدارة مدرسة، ومصرَّح لي باستخدام هذه الخدمة مع طلابي.',
+  'classroom.teacher.check1': 'أعمل في التدريس أو التدريب أو في إدارة مدرسة، ومصرَّح لي باستخدام هذه الخدمة مع طلابي.',
   'classroom.teacher.check2': 'سأحصل على موافقة أحد الوالدين أو وليّ الأمر قبل تسجيل أي طالب دون 18 عامًا.',
   'classroom.teacher.check3Before': 'قرأت ',
   'classroom.teacher.check3And': ' و',

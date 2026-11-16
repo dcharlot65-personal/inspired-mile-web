@@ -14,7 +14,7 @@ const messages: Record<string, string> = {
   'error.generic': 'Something went wrong. Please try again.',
   'error.passkey_not_found': 'That passkey was not found on this account.',
   'error.classroom_name_invalid': 'A classroom name must have between 1 and 128 characters.',
-  'error.join_code_invalid': 'That is not a valid join code. It has 6 characters, letters and digits.',
+  'error.join_code_invalid': 'That is not a valid join code. It has 6 characters: letters and digits.',
   'error.classroom_not_found': 'No classroom has that code. Check it with your teacher.',
   'error.not_classroom_member': 'You are not a member of this classroom.',
   'error.teachers_only': 'Only the teacher can create assignments.',

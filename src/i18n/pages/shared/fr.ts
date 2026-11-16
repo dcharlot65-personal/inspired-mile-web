@@ -4,7 +4,7 @@
 const messages: Record<string, string> = {
   'error.network': 'Impossible de joindre le serveur. Vérifiez votre connexion et réessayez.',
   'error.not_signed_in': 'Connectez-vous d’abord.',
-  'error.forbidden': 'Vous n’êtes pas autorisé à faire cela.',
+  'error.forbidden': 'Vous n’avez pas l’autorisation de faire cela.',
   'error.not_found': 'Nous n’avons pas trouvé cela.',
   'error.conflict': 'Cela vient de changer. Actualisez la page et réessayez.',
   'error.bad_request': 'Cela n’a pas fonctionné. Vérifiez votre saisie et réessayez.',
@@ -14,7 +14,7 @@ const messages: Record<string, string> = {
   'error.generic': 'Une erreur est survenue. Veuillez réessayer.',
   'error.passkey_not_found': 'Cette clé d’accès ne figure pas sur ce compte.',
   'error.classroom_name_invalid': 'Le nom d’une classe doit compter entre 1 et 128 caractères.',
-  'error.join_code_invalid': 'Ce code d’accès n’est pas valide. Il comporte six caractères, lettres et chiffres.',
+  'error.join_code_invalid': 'Ce code d’accès n’est pas valide. Il comporte six caractères\u00a0: lettres et chiffres.',
   'error.classroom_not_found': 'Aucune classe n’a ce code. Vérifiez-le auprès de votre enseignant.',
   'error.not_classroom_member': 'Vous ne faites pas partie de cette classe.',
   'error.teachers_only': 'Seul l’enseignant peut créer des devoirs.',

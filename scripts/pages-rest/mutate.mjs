@@ -63,6 +63,8 @@ const UNIT_MUTATIONS = [
   ['a plural form the language does not have (Russian "two")', 'src/i18n/pages/shared/ru.ts', "  'credits.one': '{n} кредит',", "  'credits.one': '{n} кредит',\n  'credits.two': '{n} кредита',", UNIT, 'credits has a "two" form, which CLDR does not give ru'],
   ['Russian "one" written out, though it is also 21, 31, 101', 'src/i18n/pages/shared/ru.ts', "'credits.one': '{n} кредит'", "'credits.one': 'один кредит'", UNIT, 'ru: credits.one has {} but English has {n}'],
   ['French "one" written out, though it is also 0', 'src/i18n/pages/shared/fr.ts', "'credits.one': '{n} crédit'", "'credits.one': 'un crédit'", UNIT, 'fr: credits.one has {} but English has {n}'],
+  ['a Hindi gender hedge again', 'src/i18n/pages/classroom/hi.ts', 'मुझे पता है कि मेरे शिक्षक', 'मैं समझता/समझती हूँ कि मेरे शिक्षक', UNIT, 'a gender hedge "समझता/समझती"'],
+  ['a Polish gender hedge in brackets', 'src/i18n/pages/classroom/pl.ts', "'Uczę, prowadzę szkolenia", "'Uczyłe(ła)m, prowadzę szkolenia", UNIT, 'a gender hedge in brackets'],
   ['Arabic و standing apart from a Latin name', 'src/i18n/pages/viewer/ar.ts', 'Quest 3 وVision Pro', 'Quest 3 و Vision Pro', UNIT, 'و stands apart'],
   ['the Arabic manifest values without their direction', 'scripts/pages-rest/build-static.mjs', "RTL.includes(l) ? { value, dir: 'rtl' } : value", 'value', UNIT, 'public/manifest.json is out of date'],
   ['a third Thai word for virtual reality on the VR page', 'src/i18n/pages/viewer/th.ts', "'vr.badge': 'ความเป็นจริงเสมือน'", "'vr.badge': 'โลกเสมือนจริง'", TERMS, 'vr/th: vr.badge does not say'],

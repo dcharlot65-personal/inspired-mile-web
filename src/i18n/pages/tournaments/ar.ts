@@ -36,7 +36,7 @@ const messages: Record<string, string> = {
   'tour.col.wins': 'مرات الفوز',
   'tour.col.losses': 'الهزائم',
   'tour.col.status': 'الحالة',
-  'tour.entry.eliminated': 'خرج من البطولة',
+  'tour.entry.eliminated': 'خارج البطولة',
   'tour.entry.active': 'ما زال في المنافسة',
   'tour.option': '{name} ({status})',
 };

@@ -211,6 +211,16 @@ describe('page areas: every language has every string', () => {
             if (/\p{Script=Devanagari}\.(?:\s|$)/u.test(v)) bad('a Hindi sentence ends with the danda (।)');
           } else if (/[।॥]/.test(v)) bad('danda outside Hindi');
           if (l === 'th' && /\p{Script=Thai}\.(?:\s|$)/u.test(v)) bad('Thai does not end a sentence with a full stop');
+          // A gender hedge ("समझता/समझती", "dołączył(a)") makes the reader pick their own form; the
+          // core locale's rule (branch lang/qa-pipeline) is to rephrase instead. Two words on either
+          // side of a slash that share their start are one word in two genders; units (إطار/ث) and
+          // the German short form Schüler/in are not.
+          for (const m of v.matchAll(/([\p{L}\p{M}]+)\/([\p{L}\p{M}]+)/gu)) {
+            let same = 0;
+            while (same < m[1].length && m[1][same] === m[2][same]) same++;
+            if (same >= 2 && m[1] !== m[2]) bad(`a gender hedge "${m[0]}": rephrase so that the sentence is the same for anyone`);
+          }
+          if (/\p{L}\((?:a|а|ая|ась|ла|ła|e|o|ka|ica)\)/u.test(v)) bad('a gender hedge in brackets: rephrase so that the sentence is the same for anyone');
           // A word that mixes Latin with Cyrillic letters is a look-alike typo.
           for (const w of v.split(/[^\p{L}]+/u)) if (/\p{Script=Latin}/u.test(w) && /\p{Script=Cyrillic}/u.test(w)) bad(`"${w}" mixes Latin and Cyrillic letters`);
         }
