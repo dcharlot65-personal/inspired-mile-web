@@ -12,6 +12,7 @@ const words = (lang, text) => [...new Intl.Segmenter(lang, { granularity: 'word'
 
 const items = [];
 const names = {};
+const nameStrings = {};
 for (const lang of LANGS) {
   const pack = (await import(`../../../src/lib/cards-i18n/${lang}.ts`)).default;
   // Every word of every card name in this language and in English: proper nouns, not spelling errors.
@@ -21,6 +22,7 @@ for (const lang of LANGS) {
     for (const t of [e.name, c.name, ...(e.aliases ?? [])]) if (t) for (const w of words(lang, t)) known.add(w.toLowerCase());
   }
   names[lang] = [...known];
+  nameStrings[lang] = [...new Set(CARD_CATALOG.flatMap((c) => [pack.cards[c.id].name, ...(pack.cards[c.id].aliases ?? [])]).filter(Boolean))];
   const add = (id, field, source, text, english) => items.push({ lang, id, field, source, text, english, words: words(lang, text) });
   for (const c of CARD_CATALOG) {
     const e = pack.cards[c.id];
@@ -32,5 +34,5 @@ for (const lang of LANGS) {
   for (const [el, text] of Object.entries(pack.elements)) add(`element:${el}`, 'element', 'translated', text, el);
   for (const [ty, text] of Object.entries(pack.types)) add(`type:${ty}`, 'type', 'translated', text, ty);
 }
-writeFileSync(process.argv[2], JSON.stringify({ items, names }, null, 1));
+writeFileSync(process.argv[2], JSON.stringify({ items, names, nameStrings }, null, 1));
 console.log(`${items.length} items in ${LANGS.length} languages`);

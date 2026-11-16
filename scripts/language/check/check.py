@@ -3,19 +3,29 @@
 
   check.py spell   ITEMS OUT      Hunspell, with LibreOffice's dictionaries, word by word
   check.py grammar ITEMS OUT      LanguageTool (a local server at $LT_URL), item by item
-  check.py meaning ITEMS OUT      MADLAD-400 translates each item back to English; the result is
-                                  scored against the English source (MiniLM cosine and chrF)
+  check.py meaning ITEMS OUT      MADLAD-400 translates each item back to English (lang/qa-pipeline's
+                                  backtranslate.py); MiniLM cosine, chrF and LaBSE against the English
   check.py selftest               each check is fed a known-bad input and must flag it
 
 ITEMS is the output of collect.mjs. Nothing here changes any text: it writes findings, and a person
-(or the engineer) decides what to change. Environment: HUNSPELL, DICT_DIR, LT_URL, MADLAD_DIR, MINILM_DIR.
+(or the engineer) decides what to change. Environment: HSPELL, DICT_DIR, LT_URL, MADLAD_DIR, MINILM_DIR, LABSE_DIR,
+BT_SCRIPT (lang/qa-pipeline's backtranslate.py, which does the translating and scoring), TMPDIR.
 """
-import json, os, re, subprocess, sys, time, urllib.parse, urllib.request
+import hashlib, json, os, re, subprocess, sys, time, urllib.parse, urllib.request
 
 HUNSPELL_DICT = {'es': 'es', 'fr': 'fr', 'de': 'de', 'it': 'it', 'pt': 'pt-BR', 'pl': 'pl', 'ru': 'ru', 'ar': 'ar', 'hi': 'hi',
                  'ko': 'ko', 'vi': 'vi', 'th': 'th', 'id': 'id'}  # no Hunspell dictionary for zh or ja
 LT_LANG = {'es': 'es', 'fr': 'fr', 'de': 'de-DE', 'it': 'it', 'pt': 'pt-BR', 'pl': 'pl-PL', 'ru': 'ru-RU', 'ar': 'ar', 'zh': 'zh-CN'}
 LATIN = set('es fr de it pt pl vi id'.split())
+
+
+def text_hash(text):
+    """What a check records of each item it read, so a test can tell an item checked as it now reads from one changed since."""
+    return hashlib.sha256(text.encode('utf8')).hexdigest()[:16]
+
+
+def checked(items):
+    return {f"{i['id']}|{i['field']}": text_hash(i['text']) for i in items}
 
 
 def latin_word(w):
@@ -32,6 +42,44 @@ def hunspell_unknown(lang, words):
     return set(x for x in r.stdout.split('\n') if x)
 
 
+def thai_unknown(items, names, bad):
+    """Thai has no spaces, and ICU (Intl.Segmenter) cuts a word it does not know into pieces: a transliterated
+    name comes out as several. A rejected piece counts only if no join with the pieces touching it (up to three)
+    is a word Hunspell knows, and it is not part of a card name in Thai (the rule of lang/qa-pipeline)."""
+    full = [n for n in names if n]
+    joins = set()
+    for i in items:
+        w = i['words']
+        for k in range(len(w)):
+            for a in range(max(0, k - 2), k + 1):
+                for b in range(k + 1, min(len(w), k + 3) + 1):
+                    if b - a > 1:
+                        joins.add(''.join(w[a:b]))
+    ok_joins = joins - hunspell_unknown('th', sorted(joins))
+    out = {}
+    for i in items:
+        w = i['words']
+        for k, piece in enumerate(w):
+            if piece not in bad:
+                continue
+            spans = [''.join(w[a:b]) for a in range(max(0, k - 2), k + 1) for b in range(k + 1, min(len(w), k + 3) + 1) if b - a > 1]
+            if any(j in ok_joins for j in spans) or any(piece in n for n in full):
+                continue
+            out.setdefault(i['id'] + '|' + i['field'], set()).add(piece)
+    return out
+
+
+def elided_unknown(lang, bad):
+    """An elided word comes to Hunspell whole and with the typographic apostrophe ("dell’alba", "un’isola"); the Italian
+    dictionary holds these forms with the straight one ("dell'alba") and rejects the others. A word with ’ is accepted
+    when the same word with ' is."""
+    alt = {w: w.replace('’', "'") for w in bad if '’' in w}
+    if not alt:
+        return bad
+    rejected = hunspell_unknown(lang, sorted(set(alt.values())))
+    return {w for w in bad if w not in alt or alt[w] in rejected}
+
+
 def spell(items_path, out_path):
     data = json.load(open(items_path, encoding='utf8'))
     out = {'tool': 'Hunspell 1.7.2 library, whole-word queries (hspell.cpp), LibreOffice dictionaries at commit c0865a85', 'languages': {}}
@@ -41,13 +89,19 @@ def spell(items_path, out_path):
         # Proper nouns kept in Latin letters inside another script (the rule for names with no source) are not this language's words.
         cand = sorted(set(w for i in items for w in i['words'] if w.lower() not in names and not (lang not in LATIN and latin_word(w)) and not re.search(r'\d', w)))
         bad = hunspell_unknown(lang, cand)
+        if lang in LATIN:
+            bad = elided_unknown(lang, bad)
+        thai = thai_unknown(items, data.get('nameStrings', {}).get(lang, []), bad) if lang == 'th' else None
         flagged = []
         for i in items:
-            unk = sorted(set(w for w in i['words'] if w in bad))
+            unk = sorted(thai.get(i['id'] + '|' + i['field'], ())) if thai is not None else sorted(set(w for w in i['words'] if w in bad))
             if unk:
                 flagged.append({'id': i['id'], 'field': i['field'], 'unknown': unk, 'text': i['text']})
-        out['languages'][lang] = {'items': len(items), 'words checked': len(cand), 'unknown words': len(bad), 'flagged': flagged}
-        print(f'spell {lang}: {len(items)} items, {len(cand)} distinct words, {len(bad)} unknown', file=sys.stderr)
+        counted = len(set(w for f in flagged for w in f['unknown']))
+        out['languages'][lang] = {'items': len(items), 'words checked': len(cand), 'unknown words': counted, 'flagged': flagged, 'checked': checked(items)}
+        print(f'spell {lang}: {len(items)} items, {len(cand)} distinct words, {counted} unknown', file=sys.stderr)
+    for lang in sorted(set(i['lang'] for i in data['items']) - set(HUNSPELL_DICT)):
+        out['languages'][lang] = {'items': sum(1 for i in data['items'] if i['lang'] == lang), 'dictionary': None}  # not checked: no dictionary
     json.dump(out, open(out_path, 'w', encoding='utf8'), ensure_ascii=False, indent=1)
 
 
@@ -74,64 +128,99 @@ def grammar(items_path, out_path):
                 flagged.append({'id': i['id'], 'field': i['field'], 'text': i['text'],
                                 'matches': [{'rule': m['rule']['id'], 'category': m['rule'].get('category', {}).get('id'), 'message': m['message'],
                                              'found': i['text'][m['offset']:m['offset'] + m['length']], 'suggestions': [r['value'] for r in m.get('replacements', [])[:3]]} for m in ms]})
-        out['languages'][lang] = {'items': len(items), 'flagged': flagged}
+        out['languages'][lang] = {'items': len(items), 'flagged': flagged, 'checked': checked(items)}
         print(f'grammar {lang}: {len(items)} items, {len(flagged)} with a finding', file=sys.stderr)
+    for lang in sorted(set(i['lang'] for i in data['items']) - set(LT_LANG)):
+        out['languages'][lang] = {'items': sum(1 for i in data['items'] if i['lang'] == lang), 'supported': False}  # LanguageTool has no such language
     json.dump(out, open(out_path, 'w', encoding='utf8'), ensure_ascii=False, indent=1)
 
 
-class BackTranslator:
+# The meaning rule of the language QA pipeline (scripts/lang/meaning.mjs): an item is flagged when the
+# back-translation's MiniLM cosine to the English is under 0.6 AND LaBSE's similarity of the text itself to
+# the English is under 0.6. Back-translation alone flags short labels by the dozen (the model copies a name
+# through untranslated); LaBSE alone cannot see a wrong word in a long sentence.
+BT_T = 0.6
+BT_TX = 0.6
+
+
+def doubt(cos, xcos):
+    return cos < BT_T and (xcos is None or xcos < BT_TX)
+
+
+def run_pairs(pairs, tmp_name):
+    """lang/qa-pipeline's backtranslate.py --pairs: back-translation (MADLAD-400), MiniLM cosine, chrF, LaBSE xcos."""
+    src = os.path.join(os.environ['TMPDIR'], tmp_name + '.in.json')
+    dst = os.path.join(os.environ['TMPDIR'], tmp_name + '.out.json')
+    json.dump(pairs, open(src, 'w', encoding='utf8'), ensure_ascii=False)
+    subprocess.run([sys.executable, os.environ['BT_SCRIPT'], '--pairs', src, '--out', dst, '--model', os.environ['MADLAD_DIR'],
+                    '--embedder', os.environ['MINILM_DIR'], '--bitext', os.environ['LABSE_DIR']], check=True)
+    return json.load(open(dst, encoding='utf8'))
+
+
+class Control:
+    """The proof the measure can tell right from wrong: each item scored against the English of the next item
+    of the same field in the same language, by the same two models and the same rule."""
     def __init__(self):
-        import ctranslate2
-        from transformers import AutoTokenizer
         from sentence_transformers import SentenceTransformer
-        from sacrebleu.metrics import CHRF
-        self.tok = AutoTokenizer.from_pretrained(os.environ['MADLAD_DIR'])
-        self.tr = ctranslate2.Translator(os.environ['MADLAD_DIR'], device='cpu', compute_type='int8', inter_threads=1, intra_threads=int(os.environ.get('BT_THREADS', '6')))
-        self.emb = SentenceTransformer(os.environ['MINILM_DIR'], device='cpu')
-        self.chrf = CHRF()
+        self.mini = SentenceTransformer(os.environ['MINILM_DIR'], device='cpu')
+        self.labse = SentenceTransformer(os.environ['LABSE_DIR'], device='cpu')
 
-    def back(self, texts):
-        out = []
-        for k in range(0, len(texts), 16):
-            src = [self.tok.convert_ids_to_tokens(self.tok.encode('<2en> ' + t)) for t in texts[k:k + 16]]
-            for r in self.tr.translate_batch(src, beam_size=int(os.environ.get('BT_BEAM', '3')), max_decoding_length=256, repetition_penalty=1.1):
-                out.append(self.tok.decode(self.tok.convert_tokens_to_ids(r.hypotheses[0]), skip_special_tokens=True).strip())
-        return out
-
-    def cos(self, a, b):
-        x = self.emb.encode(a, normalize_embeddings=True, batch_size=64)
-        y = self.emb.encode(b, normalize_embeddings=True, batch_size=64)
+    @staticmethod
+    def _cos(model, a, b):
+        x = model.encode(a, normalize_embeddings=True, batch_size=64)
+        y = model.encode(b, normalize_embeddings=True, batch_size=64)
         return [round(float(v), 4) for v in (x * y).sum(axis=1)]
+
+    def score(self, backs, texts, wrong):
+        return self._cos(self.mini, backs, wrong), self._cos(self.labse, texts, wrong)
 
 
 def meaning(items_path, out_path):
     data = json.load(open(items_path, encoding='utf8'))
-    bt = BackTranslator()
-    out = {'tool': 'MADLAD-400 3B (google/madlad400-3b-mt, CTranslate2 int8) back to English; all-MiniLM-L6-v2 cosine and chrF against the English source',
-           'control': 'each back-translation is also scored against the English of the next item of the same kind; a check that cannot tell those apart proves nothing',
+    out = {'tool': 'lang/qa-pipeline scripts/lang/backtranslate.py --pairs: MADLAD-400 3B (google/madlad400-3b-mt, CTranslate2 int8) '
+                   'back to English, all-MiniLM-L6-v2 cosine and chrF against the English source; LaBSE similarity of the text to the English',
+           'rule': f'flagged when cos < {BT_T} and LaBSE < {BT_TX}',
+           'control': 'each item is also scored against the English of the next item of the same field in the same language; '
+                      'a check that cannot tell those apart proves nothing',
            'languages': {}}
     if os.path.exists(out_path):
-        out = json.load(open(out_path, encoding='utf8'))  # resume
+        old = json.load(open(out_path, encoding='utf8'))
+        if all('xcos' in r for rows in old.get('languages', {}).values() for r in rows):
+            out['languages'] = old['languages']  # resume: an item is translated again only if its text or its English changed
+    only = [l for l in os.environ.get('BT_LANGS', '').split(',') if l]
+    langs = [l for l in sorted(set(i['lang'] for i in data['items'])) if not only or l in only]
     t0 = time.time()
-    # BT_LANGS and BT_FIELDS narrow the run: on a loaded host MADLAD 3B on the CPU takes about 13 s an item.
-    langs = [l for l in os.environ.get('BT_LANGS', '').split(',') if l] or sorted(set(i['lang'] for i in data['items']))
-    fields = [f for f in os.environ.get('BT_FIELDS', '').split(',') if f] or ['scene', 'quote', 'name']
-    out['scope'] = {'languages': langs, 'fields': fields, 'beam': int(os.environ.get('BT_BEAM', '3'))}
+    ctl = None
     for lang in langs:
-        if lang in out['languages']:
-            continue
-        items = [i for i in data['items'] if i['lang'] == lang and i['field'] in fields]
-        backs = bt.back([i['text'] for i in items])
-        right = bt.cos(backs, [i['english'] for i in items])
-        nxt = [items[(k + 1) % len(items)]['english'] for k in range(len(items))]
-        wrong = bt.cos(backs, nxt)
-        rows = []
-        for i, b, c, w in zip(items, backs, right, wrong):
-            rows.append({'id': i['id'], 'field': i['field'], 'text': i['text'], 'english': i['english'], 'back': b, 'cos': c, 'control': w,
-                         'chrf': round(bt.chrf.sentence_score(b, [i['english']]).score, 1)})
+        items = [i for i in data['items'] if i['lang'] == lang]
+        prev = {(r['id'], r['field']): r for r in out['languages'].get(lang, [])}
+        todo = [i for i in items if not ((i['id'], i['field']) in prev and prev[(i['id'], i['field'])]['text'] == i['text']
+                                         and prev[(i['id'], i['field'])]['english'] == i['english'])]
+        fresh = {}
+        if todo:
+            res = run_pairs([{'id': f"{i['id']}|{i['field']}", 'lang': lang, 'text': i['text'], 'english': i['english']} for i in todo], f'bt-{lang}')
+            for i, r in zip(todo, res):
+                fresh[(i['id'], i['field'])] = {'id': i['id'], 'field': i['field'], 'text': i['text'], 'english': i['english'],
+                                                'back': r['back'], 'cos': r['cos'], 'chrf': r['chrf'], 'xcos': r.get('xcos')}
+        rows = [fresh.get((i['id'], i['field'])) or prev[(i['id'], i['field'])] for i in items]
+        # The control, for every row (cheap: no translation): the next item of the same field.
+        by_field = {}
+        for k, i in enumerate(items):
+            by_field.setdefault(i['field'], []).append(k)
+        wrong = [None] * len(items)
+        for ks in by_field.values():
+            for n, k in enumerate(ks):
+                wrong[k] = items[ks[(n + 1) % len(ks)]]['english'] if len(ks) > 1 else None
+        need = [k for k, r in enumerate(rows) if wrong[k] is not None and (r.get('controlEnglish') != wrong[k] or 'control' not in r)]
+        if need:
+            ctl = ctl or Control()
+            c, x = ctl.score([rows[k]['back'] for k in need], [rows[k]['text'] for k in need], [wrong[k] for k in need])
+            for k, cv, xv in zip(need, c, x):
+                rows[k]['control'], rows[k]['xcontrol'], rows[k]['controlEnglish'] = cv, xv, wrong[k]
         out['languages'][lang] = rows
         json.dump(out, open(out_path, 'w', encoding='utf8'), ensure_ascii=False, indent=1)
-        print(f'meaning {lang}: {len(rows)} items, {time.time() - t0:.0f}s', file=sys.stderr, flush=True)
+        print(f'meaning {lang}: {len(rows)} items, {len(todo)} translated now, {sum(doubt(r["cos"], r["xcos"]) for r in rows)} flagged, '
+              f'{time.time() - t0:.0f}s', file=sys.stderr, flush=True)
 
 
 def selftest():
@@ -139,10 +228,16 @@ def selftest():
     ok = True
     bad = hunspell_unknown('fr', ['château', 'chatteau', 'lumière', 'lumiaire'])
     print('spell fr flags', sorted(bad)); ok &= bad == {'chatteau', 'lumiaire'}
+    bad = elided_unknown('it', hunspell_unknown('it', ['dell’alba', 'dell’allba', 'un’isola']))
+    print('spell it (elisions) flags', sorted(bad)); ok &= bad == {'dell’allba'}
     bad = hunspell_unknown('ru', ['замок', 'заммок'])
     print('spell ru flags', sorted(bad)); ok &= bad == {'заммок'}
     bad = hunspell_unknown('th', ['ปราสาท', 'ปราสาาท'])
     print('spell th flags', sorted(bad)); ok &= bad == {'ปราสาาท'}
+    # In a sentence: the misspelt word is still found after the joins are tried; the name's pieces are not counted.
+    items = [{'id': 'x', 'field': 'scene', 'words': ['ปราสาาท', 'ของ', 'แฮม', 'เล็ต']}]
+    got = thai_unknown(items, ['แฮมเล็ต'], hunspell_unknown('th', items[0]['words']))
+    print('spell th in a sentence flags', got); ok &= got == {'x|scene': {'ปราสาาท'}}
     if os.environ.get('LT_URL'):
         ms = lt_check('fr', 'Les chat mange la souris.')
         print('grammar fr flags', [m['rule']['id'] for m in ms]); ok &= bool(ms)
@@ -153,11 +248,15 @@ def selftest():
         print('grammar es flags (repeated word)', [m['rule']['id'] for m in ms]); ok &= bool(ms)
         ms = lt_check('fr', 'Le chat mange la souris.')
         print('grammar fr clean sentence', [m['rule']['id'] for m in ms]); ok &= not ms
-    if os.environ.get('MADLAD_DIR'):
-        bt = BackTranslator()
-        b = bt.back(['Le château sort de l’ombre.'])
-        good, wrong = bt.cos(b, ['The castle emerges from shadow.']), bt.cos(b, ['A golden chariot races across the dawn sky.'])
-        print('meaning', b, good, wrong); ok &= good[0] > 0.7 and wrong[0] < 0.3
+    if os.environ.get('MADLAD_DIR') and os.environ.get('BT_SCRIPT'):
+        # A faithful French line and the same line put against an unrelated English one: the rule must pass
+        # the first and flag the second.
+        r = run_pairs([{'id': 'good', 'lang': 'fr', 'text': 'Le château sort de l’ombre.', 'english': 'The castle emerges from shadow.'},
+                       {'id': 'swapped', 'lang': 'fr', 'text': 'Le château sort de l’ombre.', 'english': 'A golden chariot races across the dawn sky.'},
+                       {'id': 'wrong word', 'lang': 'de', 'text': 'Ein Hund schläft unter dem Tisch.', 'english': 'A rose blooms in the moonlit garden.'}], 'selftest')
+        for x in r:
+            print('meaning', x['id'], repr(x['back']), 'cos', x['cos'], 'LaBSE', x.get('xcos'), 'flagged', doubt(x['cos'], x.get('xcos')))
+        ok &= not doubt(r[0]['cos'], r[0].get('xcos')) and doubt(r[1]['cos'], r[1].get('xcos')) and doubt(r[2]['cos'], r[2].get('xcos'))
     print('SELFTEST', 'PASS' if ok else 'FAIL')
     sys.exit(0 if ok else 1)
 

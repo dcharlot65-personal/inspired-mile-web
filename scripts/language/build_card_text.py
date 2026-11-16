@@ -326,83 +326,205 @@ def main():
               'missing', n('quote', 'missing'), '| scenes', sum(1 for c in cs if c['scene'] == 'translated'))
 
 
-BT_FLAG = 0.5  # back-translations scoring below this cosine against their English source are listed for review
+# The meaning rule of the language QA pipeline (scripts/lang/meaning.mjs, branch lang/qa-pipeline): flagged when the
+# back-translation's MiniLM cosine to the English is under 0.6 and LaBSE's score of the text against the English is too.
+BT_T, BT_TX = 0.6, 0.6
 
 
-def write_checks(L):
-    """The findings of scripts/language/check (docs/language/checks/*.json), if they have been run."""
+def bt_doubt(r):
+    return r['cos'] < BT_T and (r.get('xcos') is None or r['xcos'] < BT_TX)
+
+
+def text_hash(text):
+    import hashlib
+    return hashlib.sha256(text.encode('utf8')).hexdigest()[:16]
+
+
+def current_items(CARDS, prov):
+    """The text written for the game, item by item, as scripts/language/check/collect.mjs gathers it for the checks."""
+    out = {}
+    for lang in LANGS:
+        src = read(f'src/lib/cards-i18n/{lang}.ts')
+        pack = json.loads(src[src.index('= {') + 2:src.rindex('};') + 1])
+        items = {}
+        for c in CARDS:
+            e = pack['cards'][c['id']]
+            if e.get('scene'):
+                items[(c['id'], 'scene')] = e['scene']
+            if e.get('quoteSource') == 'new':
+                items[(c['id'], 'quote')] = e['quote']
+            if e.get('nameSource') == 'translated' and c['id'] != 'SM-001':
+                items[(c['id'], 'name')] = e['name']
+        for h, t in pack['houses'].items():
+            if prov['langs'][lang]['houses'].get(h, {}).get('source') == 'translated':
+                items[(f'house:{h}', 'house')] = t
+        for el, t in pack['elements'].items():
+            items[(f'element:{el}', 'element')] = t
+        for ty, t in pack['types'].items():
+            items[(f'type:{ty}', 'type')] = t
+        out[lang] = items
+    return out
+
+
+def triage(items, sp, gr, bt, acc):
+    """Per language: every finding on the text as it now reads, each either accepted (with its reason) or open; and the
+    items a check has not read as they now read. The same rule as src/lib/cards-i18n/cards-i18n.test.ts."""
+    res = {}
+    for lang in LANGS:
+        cur = items[lang]
+        r = res[lang] = {'items': len(cur), 'spell': None, 'grammar': None, 'meaning': None}
+        s = (sp or {}).get('languages', {}).get(lang)
+        if s and s.get('dictionary', True) is not None and 'flagged' in s:
+            words = acc.get('spelling', {}).get(lang, {})
+            seen = {}
+            for f in s['flagged']:
+                if cur.get((f['id'], f['field'])) != f['text']:
+                    continue
+                for w in f['unknown']:
+                    seen.setdefault(w, []).append(f['id'] + ' ' + f['field'])
+            ck = s.get('checked', {})
+            r['spell'] = {'unknown': sorted(seen), 'accepted': sorted(w for w in seen if w in words), 'open': sorted(w for w in seen if w not in words),
+                          'where': seen, 'stale': sorted(w for w in words if w not in seen),
+                          'unchecked': sorted(f'{i} {fl}' for (i, fl), t in cur.items() if ck.get(f'{i}|{fl}') != text_hash(t)) if ck else ['(no record of what was read)']}
+        g = (gr or {}).get('languages', {}).get(lang)
+        if g and g.get('supported', True) and 'flagged' in g:
+            al = [a for a in acc.get('grammar', []) if a['lang'] == lang]
+            used, found, open_ = set(), [], []
+            for f in g['flagged']:
+                if cur.get((f['id'], f['field'])) != f['text']:
+                    continue
+                for m in f['matches']:
+                    k = next((n for n, a in enumerate(al) if a['id'] == f['id'] and a['field'] == f['field'] and a['rule'] == m['rule'] and a['found'] == m['found']), None)
+                    row = {'id': f['id'], 'field': f['field'], 'rule': m['rule'], 'found': m['found'], 'message': m['message'], 'text': f['text']}
+                    if k is None:
+                        open_.append(row)
+                    else:
+                        used.add(k)
+                        found.append({**row, 'reason': al[k]['reason']})
+            ck = g.get('checked', {})
+            r['grammar'] = {'accepted': found, 'open': open_, 'stale': [a for n, a in enumerate(al) if n not in used],
+                            'unchecked': sorted(f'{i} {fl}' for (i, fl), t in cur.items() if ck.get(f'{i}|{fl}') != text_hash(t)) if ck else ['(no record of what was read)']}
+        b = (bt or {}).get('languages', {}).get(lang)
+        if b:
+            al = [a for a in acc.get('meaning', []) if a['lang'] == lang]
+            used, flagged, open_ = set(), [], []
+            rows = {(x['id'], x['field']): x for x in b}
+            scored = [x for k, x in rows.items() if cur.get(k) == x['text']]
+            for x in scored:
+                if not bt_doubt(x):
+                    continue
+                k = next((n for n, a in enumerate(al) if a['id'] == x['id'] and a['field'] == x['field'] and a['text'] == x['text']), None)
+                if k is None:
+                    open_.append(x)
+                else:
+                    used.add(k)
+                    flagged.append({**x, 'reason': al[k]['reason']})
+            ctl = [x for x in scored if 'control' in x]
+            caught = sum(1 for x in ctl if bt_doubt({'cos': x['control'], 'xcos': x.get('xcontrol')}))
+            r['meaning'] = {'scored': len(scored), 'backOnly': sum(1 for x in scored if x['cos'] < BT_T), 'accepted': flagged, 'open': open_,
+                            'stale': [a for n, a in enumerate(al) if n not in used], 'control': (caught, len(ctl)),
+                            'median': (sorted(x['cos'] for x in scored)[len(scored) // 2] if scored else None),
+                            'unchecked': sorted(f'{i} {fl}' for (i, fl), t in cur.items() if rows.get((i, fl), {}).get('text') != t)}
+    return res
+
+
+def write_checks(L, CARDS, prov):
+    """The findings of scripts/language/check (docs/language/checks/*.json) and how each was dealt with."""
     d = os.path.join(ROOT, 'docs/language/checks')
     load = lambda f: json.load(open(os.path.join(d, f), encoding='utf8')) if os.path.exists(os.path.join(d, f)) else None
-    sp, gr, bt = load('spelling.json'), load('grammar.json'), load('backtranslation.json')
+    sp, gr, bt, acc, fixes = load('spelling.json'), load('grammar.json'), load('backtranslation.json'), load('accepted.json') or {}, load('fixes.json') or {'fixes': []}
     L.append('## Checks by tools that did not write the text\n')
     if not (sp or gr or bt):
         L.append('Not run. See "What was not done".\n')
         return
-    L.append('Run by `scripts/language/check/run.sh` on the build host; the raw findings are in `docs/language/checks/`. '
-             'A finding is a question for a reviewer, not a verdict, and an item with no finding has not thereby been shown to be right: '
-             'a spelling dictionary does not know names, LanguageTool covers only some languages and some errors, and a back-translation '
-             'can be faithful to a wrong text. Nothing here was reviewed by a native speaker.\n')
-    if bt and bt.get('scope'):
-        sc = bt['scope']
-        L.append(f"Back-translation was run on {', '.join(sc['fields'])} in {', '.join(sc['languages'])} only (beam {sc['beam']}): MADLAD-400 3B "
-                 'on the CPU of a heavily loaded shared host took about 13 seconds an item, so the 2,200 items of every language would have '
-                 'taken most of a day. The text written in this round (those scenes) came first. Everything else has not been back-translated.\n')
-    L.append('| Language | Items | Hunspell: items with an unknown word | LanguageTool: items with a finding | Back-translation: median cosine (control) | below ' + str(BT_FLAG) + ' |')
-    L.append('|---|---|---|---|---|---|')
-    import statistics
+    res = triage(current_items(CARDS, prov), sp, gr, bt, acc)
+    L.append('Run by `scripts/language/check/run.sh` on a build host; the raw findings are in `docs/language/checks/` (`spelling.json`, '
+             '`grammar.json`, `backtranslation.json`). Every finding on the text as it now reads was read, and either the text was changed '
+             '(listed under "Changes made because of a finding") or the finding was accepted with a reason (`docs/language/checks/accepted.json`, '
+             'shown below). ' + acc.get('readBy', '') + ' A unit test (`src/lib/cards-i18n/checks.test.ts`) fails on a finding that is '
+             'neither, on an acceptance that no longer matches a finding, and on any item that a check has not read as it now reads.\n')
+    L.append('What the tools cannot show: a spelling dictionary does not know names; LanguageTool has grammar rules for only some of these '
+             'languages, and finds only the errors it has rules for; a back-translation can be faithful to a text that is wrong in its own '
+             'language, and a loose one can come from a right text. A text with no finding has not thereby been shown to be right.\n')
+    L.append(f'Meaning is judged by the rule of the language QA pipeline: an item is flagged when its back-translation scores under {BT_T} '
+             f'(MiniLM cosine against the English) and LaBSE scores the text itself under {BT_TX} against the English. The control column is '
+             'the share of deliberately mismatched pairs (each item against the English of the next item of the same kind) that the same rule '
+             'flags: a measure that cannot tell those apart proves nothing.\n')
+    L.append('| Language | Items | Hunspell: unknown words (accepted / open) | LanguageTool: findings (accepted / open) | Back-translation: scored, median cosine | flagged by both signals (accepted / open) | control caught | not re-checked since the text changed |')
+    L.append('|---|---|---|---|---|---|---|---|')
     for lang in LANGS:
-        s = (sp or {}).get('languages', {}).get(lang)
-        g = (gr or {}).get('languages', {}).get(lang)
-        b = (bt or {}).get('languages', {}).get(lang)
-        n = (s or g or {}).get('items', len(b) if b else 0)
-        scell = f"{len(s['flagged'])}" if s else 'no dictionary'
-        gcell = f"{len(g['flagged'])}" if g else 'not supported'
-        if b:
-            bcell = f"{statistics.median(r['cos'] for r in b):.2f} ({statistics.median(r['control'] for r in b):.2f})"
-            low = sum(1 for r in b if r['cos'] < BT_FLAG)
+        r = res[lang]
+        s, g, m = r['spell'], r['grammar'], r['meaning']
+        sc = f"{len(s['unknown'])} ({len(s['accepted'])} / {len(s['open'])})" if s else 'no dictionary'
+        gc = f"{len(g['accepted']) + len(g['open'])} ({len(g['accepted'])} / {len(g['open'])})" if g else 'language not supported'
+        if m:
+            mc = f"{m['scored']}, {m['median']:.2f}" if m['median'] is not None else f"{m['scored']}"
+            fc = f"{len(m['accepted']) + len(m['open'])} ({len(m['accepted'])} / {len(m['open'])})"
+            cc = f"{m['control'][0]} of {m['control'][1]}"
         else:
-            bcell, low = 'not run', '-'
-        L.append(f'| {lang} | {n} | {scell} | {gcell} | {bcell} | {low} |')
+            mc, fc, cc = 'not run', '-', '-'
+        un = sorted(set((s or {}).get('unchecked', [])) | set((g or {}).get('unchecked', [])) | set((m or {}).get('unchecked', [])))
+        L.append(f"| {lang} | {r['items']} | {sc} | {gc} | {mc} | {fc} | {cc} | {len(un) if un else 0} |")
     L.append('')
-    esc = lambda s: str(s).replace('|', '\\|').replace('\n', ' ')
-    if sp:
-        L.append('### Words Hunspell does not know\n')
-        L.append('Proper nouns of places and people in the scenes are expected here; a misspelling is not.\n')
-        for lang in LANGS:
-            s = sp['languages'].get(lang)
-            if not s or not s['flagged']:
-                continue
-            words = sorted(set(w for f in s['flagged'] for w in f['unknown']))
-            L.append(f"- **{lang}** ({len(words)}): " + ', '.join(words))
+    esc = lambda x: str(x).replace('|', '\\|').replace('\n', ' ')
+    opens = [(lang, 'spelling', w) for lang in LANGS if res[lang]['spell'] for w in res[lang]['spell']['open']]
+    opens += [(lang, 'grammar', f"{o['id']} {o['field']}: {o['rule']} «{o['found']}»") for lang in LANGS if res[lang]['grammar'] for o in res[lang]['grammar']['open']]
+    opens += [(lang, 'meaning', f"{o['id']} {o['field']}: {o['text']} → {o['back']}") for lang in LANGS if res[lang]['meaning'] for o in res[lang]['meaning']['open']]
+    L.append('### Open findings\n')
+    L.append('None.\n' if not opens else '\n'.join(f'- {l} {k}: {esc(t)}' for l, k, t in opens) + '\n')
+    L.append('### Changes made because of a finding\n')
+    if fixes['fixes']:
+        L.append('| Language | Item | Finding | Before | After |')
+        L.append('|---|---|---|---|---|')
+        for f in fixes['fixes']:
+            L.append(f"| {f['lang']} | {f['id']} {f['field']} | {esc(f['finding'])} | {esc(f['old'])} | {esc(f['new'])} |")
         L.append('')
-    if gr:
-        L.append('### LanguageTool findings\n')
-        for lang in LANGS:
-            g = gr['languages'].get(lang)
-            if not g or not g['flagged']:
-                continue
-            L.append(f'**{lang}**\n')
-            L.append('| Item | Found | Rule | Message |')
-            L.append('|---|---|---|---|')
-            for f in g['flagged']:
-                for m in f['matches']:
-                    L.append(f"| {f['id']} {f['field']} | {esc(m['found'])} | {m['rule']} | {esc(m['message'])} |")
-            L.append('')
+    if fixes.get('note'):
+        L.append(fixes['note'] + '\n')
+    L.append('### Accepted: words Hunspell does not know\n')
+    for lang in LANGS:
+        s = res[lang]['spell']
+        if not s or not s['accepted']:
+            continue
+        reasons = acc['spelling'][lang]
+        by = {}
+        for w in s['accepted']:
+            by.setdefault(reasons[w], []).append(w)
+        L.append(f"- **{lang}**: " + '; '.join(f"{', '.join(ws)} ({why})" for why, ws in sorted(by.items(), key=lambda kv: -len(kv[1]))))
+    L.append('')
+    L.append('### Accepted: LanguageTool findings\n')
+    for lang in LANGS:
+        g = res[lang]['grammar']
+        if not g or not g['accepted']:
+            continue
+        L.append(f'**{lang}**\n')
+        L.append('| Item | Found | Rule | Why it was left |')
+        L.append('|---|---|---|---|')
+        for a in g['accepted']:
+            L.append(f"| {a['id']} {a['field']} | {esc(a['found'])} | {a['rule']} | {esc(a['reason'])} |")
+        L.append('')
     if bt:
-        L.append(f'### Back-translations below {BT_FLAG}\n')
+        L.append('### Accepted: back-translations flagged by both signals\n')
+        any_ = False
         for lang in LANGS:
-            b = bt['languages'].get(lang)
-            if not b:
+            m = res[lang]['meaning']
+            if not m or not m['accepted']:
                 continue
-            low = [r for r in b if r['cos'] < BT_FLAG]
-            if not low:
-                continue
+            any_ = True
             L.append(f'**{lang}**\n')
-            L.append('| Item | Text | Back to English | English source | cosine |')
-            L.append('|---|---|---|---|---|')
-            for r in sorted(low, key=lambda r: r['cos']):
-                L.append(f"| {r['id']} {r['field']} | {esc(r['text'])} | {esc(r['back'])} | {esc(r['english'])} | {r['cos']:.2f} |")
+            L.append('| Item | Text | Back to English | English | cos / LaBSE | Why it was left |')
+            L.append('|---|---|---|---|---|---|')
+            for a in m['accepted']:
+                L.append(f"| {a['id']} {a['field']} | {esc(a['text'])} | {esc(a['back'])} | {esc(a['english'])} | {a['cos']:.2f} / {a['xcos']:.2f} | {esc(a['reason'])} |")
             L.append('')
+        if not any_:
+            L.append('None.\n')
+    stale = [(lang, k, a) for lang in LANGS for k in ('spell', 'grammar', 'meaning') if res[lang][k] for a in res[lang][k]['stale']]
+    if stale:
+        L.append('### Acceptances that no longer match a finding (remove them)\n')
+        for lang, k, a in stale:
+            L.append(f'- {lang} {k}: {esc(a)}')
+        L.append('')
 
 
 def write_doc(CARDS, ents, prov, published):
@@ -436,7 +558,7 @@ def write_doc(CARDS, ents, prov, published):
     L.append('\n## Names translated for the game, not sourced\n')
     L.append('In every language: ' + ', '.join(OWN_NAMES) + ' (SM-001 is the product name and is kept as it is), the house labels ' + ', '.join(HOUSES_T) +
              ', all element labels and the three card types. Rarity names are the ones already in src/i18n/locales. Scene descriptions are translated wherever present.\n')
-    write_checks(L)
+    write_checks(L, CARDS, prov)
     L.append('## Wikidata items\n')
     L.append('| Key | Item | English label | Used for |')
     L.append('|---|---|---|---|')
