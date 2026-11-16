@@ -29,6 +29,11 @@
 //   MEVAL_CONTROL  "same": instead of the matrix, judge pairs whose two verses are the
 //                  same text. A judge that reads a preference there is broken, and so is a
 //                  harness that reports one; the result goes to control/ and decides nothing.
+//                  "repeat": judge the real pairs again, into control/repeat.*.judge.json.
+//                  Judging reads next-token scores and samples nothing, so the same code on
+//                  the same machine must give the same verdicts as the cell: run it after a
+//                  change below the game's code (the runtime, the browser) to show the cells
+//                  still describe what the game does.
 import { spawn } from 'node:child_process';
 import { cpSync, existsSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
@@ -254,13 +259,21 @@ try {
   const readJson = (...p) => JSON.parse(readFileSync(join(ROOT, 'docs', 'language', 'model-eval', ...p), 'utf8'));
   const overBudget = () => MINUTES > 0 && (Date.now() - started) / 60000 > MINUTES;
 
-  if (CONTROL === 'same') {
+  if (CONTROL === 'same' || CONTROL === 'repeat') {
     mkdirSync(join(OUT, 'control'), { recursive: true });
     for (const tier of TIERS) for (const lang of LANGS) {
       const page = await pageFor(tier);
-      const pairs = await page.evaluate(pageJudge, { lang, pairs: readJson('pairs', `${lang}.json`).pairs, same: true });
-      writeFileSync(join(OUT, 'control', `same.${tier}.${lang}.judge.json`), JSON.stringify({ ...meta(tier, lang, 'judge'), control: 'both verses of every pair are the same text', pairs }, null, 1) + '\n');
-      log(`control same ${tier} ${lang}: ${pairs.flatMap((p) => Object.values(p.criteria)).filter((v) => v !== 'split').length} of ${pairs.length * 4} criteria were not a split`);
+      const same = CONTROL === 'same';
+      const pairs = await page.evaluate(pageJudge, { lang, pairs: readJson('pairs', `${lang}.json`).pairs, same });
+      const control = same ? 'both verses of every pair are the same text' : `the pairs of cells/${tier}.${lang}.judge.json judged again`;
+      writeFileSync(join(OUT, 'control', `${CONTROL}.${tier}.${lang}.judge.json`), JSON.stringify({ ...meta(tier, lang, 'judge'), control, pairs }, null, 1) + '\n');
+      if (same) log(`control same ${tier} ${lang}: ${pairs.flatMap((p) => Object.values(p.criteria)).filter((v) => v !== 'split').length} of ${pairs.length * 4} criteria were not a split`);
+      else {
+        const cellFile = join(OUT, `${tier}.${lang}.judge.json`);
+        const cell = existsSync(cellFile) ? JSON.parse(readFileSync(cellFile, 'utf8')) : null;
+        const differ = cell ? pairs.filter((p, i) => JSON.stringify(p.criteria) !== JSON.stringify(cell.pairs[i]?.criteria)).length : null;
+        log(`control repeat ${tier} ${lang}: ${differ === null ? 'no cell to compare with' : `${differ} of ${pairs.length} pairs got a different verdict from the cell`}`);
+      }
     }
   } else {
     let stopped = false;
