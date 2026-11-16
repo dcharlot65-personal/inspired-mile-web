@@ -232,7 +232,7 @@ const vi: Record<string, string> = {
   'auth.passkeysEmpty': 'Chưa có khoá truy cập nào. Hãy thêm một khoá để đăng nhập mà không cần mã email.',
   'auth.passkeysAdd': 'Thêm khoá truy cập khác',
   'auth.passkeyAdded': 'Đã thêm khoá truy cập. Từ giờ bạn có thể đăng nhập bằng khoá này.',
-  'auth.passkeyAddedOn': 'Thêm ngày {date}',
+  'auth.passkeyAddedOn': 'Đã thêm vào {date}',
   'auth.passkeyRemove': 'Gỡ',
   'auth.passkeyRemoveConfirm': 'Gỡ chứ?',
   'auth.passkeyRemoveLabel': 'Gỡ khoá truy cập {name}',

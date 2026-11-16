@@ -407,7 +407,7 @@ const hi: Record<string, string> = {
   'end.cardEarned': 'कार्ड मिला',
   'end.again': 'फिर से द्वंद्व',
   'rarity.common': 'साधारण',
-  'rarity.uncommon': 'असाधारण',
+  'rarity.uncommon': 'असामान्य',
   'rarity.rare': 'दुर्लभ',
   'rarity.epic': 'महाकाव्य',
   'rarity.legendary': 'पौराणिक',

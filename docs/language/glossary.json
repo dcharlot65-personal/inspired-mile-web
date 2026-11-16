@@ -1622,7 +1622,10 @@
     },
     "zh": {
      "term": "通行密钥",
-     "source": "Android (AOSP CredentialManager): 通行密钥 / 通行密钥"
+     "forbid": [
+      "把通行密钥"
+     ],
+     "source": "Android (AOSP CredentialManager): 通行密钥 / 通行密钥. Counted with 个, as Android counts them: Android (AOSP CredentialManager, more_options_usage_passkeys): %1$s 个通行密钥. The game had written 一把 / 这把 (the measure word of a key with a handle); the reviewer model objected in two strings, and all fifteen now take 个."
     },
     "ja": {
      "term": "パスキー",

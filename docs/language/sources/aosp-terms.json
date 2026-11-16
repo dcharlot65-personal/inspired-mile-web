@@ -2,7 +2,7 @@
  "source": "https://raw.githubusercontent.com/aosp-mirror/platform_frameworks_base/1cdfff555f4a21f71ccc978290e2e212e2f8b168/<module>/<values-dir>/strings.xml",
  "commit": "1cdfff555f4a21f71ccc978290e2e212e2f8b168",
  "licence": "Apache License 2.0 (Android Open Source Project)",
- "fetched": "2026-11-16T17:19:26.922Z",
+ "fetched": "2026-11-16T21:57:12.478Z",
  "dirs": {
   "en": "values",
   "es": "values-es",
@@ -251,6 +251,27 @@
     "vi": "Thiết bị khác",
     "th": "อุปกรณ์อื่น",
     "id": "Perangkat lain"
+   }
+  },
+  "more_options_usage_passkeys": {
+   "module": "packages/CredentialManager/res",
+   "text": {
+    "en": "%1$s passkeys",
+    "es": "Llaves de acceso: %1$s",
+    "fr": "%1$s clés d'accès",
+    "de": "%1$s Passkeys",
+    "it": "%1$s passkey",
+    "pt": "Chaves de acesso (%1$s)",
+    "pl": "Klucze dostępu: %1$s",
+    "ru": "Ключи доступа (%1$s)",
+    "ar": "عدد مفاتيح المرور: %1$s",
+    "hi": "%1$s पासकी",
+    "zh": "%1$s 个通行密钥",
+    "ja": "%1$s 件のパスキー",
+    "ko": "패스키 %1$s개",
+    "vi": "%1$s khoá truy cập",
+    "th": "พาสคีย์ %1$s รายการ",
+    "id": "%1$s kunci sandi"
    }
   },
   "kg_login_submit_button": {

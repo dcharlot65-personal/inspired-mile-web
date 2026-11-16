@@ -189,7 +189,7 @@ const ko: Record<string, string> = {
   'auth.createWarningNoEmail': '패스키를 잃어버리면 다시 들여보내 드릴 방법이 없어요. 만든 뒤에 두 번째 패스키를 추가해 두면 다시 들어올 수 있어요.',
   'auth.createConfirm': '내 계정 만들기',
   'auth.nudgeHeading': '계정이 준비됐어요',
-  'auth.nudgeName': '당신의 이름은 {name}이에요.',
+  'auth.nudgeName': '당신은 {name} 님이에요.',
   'auth.nudgeBody': '지금은 패스키 하나가 이 계정으로 들어오는 유일한 길이에요. 그것을 잃으면 계정도 잃어요. 두 번째 패스키나 이메일을 추가해 두면 다시 들어올 수 있어요.',
   'auth.nudgeBodyNoEmail': '지금은 패스키 하나가 이 계정으로 들어오는 유일한 길이에요. 그것을 잃으면 계정도 잃어요. 두 번째 패스키를 추가해 두면 다시 들어올 수 있어요.',
   'auth.nudgePasskey': '두 번째 패스키 추가',
@@ -420,7 +420,7 @@ const ko: Record<string, string> = {
 
   // --- 극장 ---
   'theatre.badge': 'Quest 3 · Vision Pro · 화면',
-  'theatre.titleA': '더',
+  'theatre.titleA': '입체',
   'theatre.titleB': '극장',
   'theatre.intro': '같은 결투를, 나를 둘러싼 무대에서. 가리키거나 손가락을 집어 카드를 내고, 마이크를 누르고 시를 읊으세요. 이 기기에서 받아 적고 심사해요.',
   'theatre.newDuel': '새 결투',

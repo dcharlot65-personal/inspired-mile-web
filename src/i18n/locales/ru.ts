@@ -75,7 +75,7 @@ const ru: Record<string, string> = {
   'device.balance.brief': 'Пусть во всех строках будет поровну слов.',
   'device.balance.brief.char': 'Пусть во всех строках будет поровну знаков.',
   'device.ring.name': 'Кольцо',
-  'device.ring.brief': 'Закончи строфу тем же словом, каким она началась.',
+  'device.ring.brief': 'Закончи строфу тем же словом, с которого она началась.',
   'device.ring.brief.char': 'Закончи строфу тем же знаком, с которого она началась.',
   'device.invocation.name': 'Воззвание',
   'device.invocation.brief': 'Назови персонажа по имени.',

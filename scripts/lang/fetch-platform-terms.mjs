@@ -18,7 +18,7 @@ const BASE = `https://raw.githubusercontent.com/aosp-mirror/platform_frameworks_
 // our language -> Android resource qualifier
 const DIRS = { en: 'values', es: 'values-es', fr: 'values-fr', de: 'values-de', it: 'values-it', pt: 'values-pt-rBR', pl: 'values-pl', ru: 'values-ru', ar: 'values-ar', hi: 'values-hi', zh: 'values-zh-rCN', ja: 'values-ja', ko: 'values-ko', vi: 'values-vi', th: 'values-th', id: 'values-in' };
 const WANT = {
-  'packages/CredentialManager/res': ['passkey', 'passkeys', 'password', 'sign_ins', 'passkey_creation_intro_title', 'passkey_creation_intro_body_fingerprint', 'passkey_creation_intro_body_device', 'choose_create_option_passkey_title', 'get_dialog_title_use_passkey_for', 'other_password_manager', 'another_device'],
+  'packages/CredentialManager/res': ['passkey', 'passkeys', 'password', 'sign_ins', 'passkey_creation_intro_title', 'passkey_creation_intro_body_fingerprint', 'passkey_creation_intro_body_device', 'choose_create_option_passkey_title', 'get_dialog_title_use_passkey_for', 'other_password_manager', 'another_device', 'more_options_usage_passkeys'],
   'core/res/res': ['kg_login_submit_button', 'permgrouplab_microphone', 'screen_lock', 'autofill_save_notnow', 'back_button_label', 'install_carrier_app_notification_button'],
   'packages/SystemUI/res': ['group_system_access_home_screen', 'screenrecord_mic_label'],
   'packages/SettingsLib/res': ['tts_default_lang_title'],

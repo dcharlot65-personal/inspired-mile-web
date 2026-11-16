@@ -87,7 +87,7 @@ const ja: Record<string, string> = {
   // 呪い
   'curse.forbidden-letter.name': '禁じられた文字',
   'curse.forbidden-letter.brief': 'あなたの詩に「{letter}」の文字を使ってはいけません。',
-  'curse.forbidden-letter.theirs': '相手の詩に「{letter}」の文字を使ってはいけません。',
+  'curse.forbidden-letter.theirs': '相手は詩に「{letter}」の文字を使えません。',
   'curse.short-words.name': 'もつれた舌',
   'curse.short-words.brief': 'あなたは{n}文字を超える語を使えません。',
   'curse.short-words.theirs': '相手は{n}文字を超える語を使えません。',
