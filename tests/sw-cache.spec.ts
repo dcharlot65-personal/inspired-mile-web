@@ -145,6 +145,10 @@ test('signed out on every device: the account\'s data leaves Cache Storage too',
   await page.goto('/');
   await underWorker(page);
   await signInByEmail(page, email);
+  // A fresh page: right after sign-in the menu shows the passkey offer, not the account.
+  await page.goto('/');
+  await underWorker(page);
+  await expect(page.locator('#user-badge')).toBeVisible();
   const meBody = await page.evaluate(() => fetch('/api/v1/auth/me', { credentials: 'include' }).then((r) => r.text()));
   expect(meBody).toContain(email);
   const user = JSON.parse(meBody).user;
