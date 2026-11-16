@@ -32,8 +32,13 @@ export async function pipeline(task, id, opts) {
   return generator;
 }
 export class TextStreamer {}
-// loadTransformers() (src/lib/model-runtime.ts) refuses a library without these settings.
-export const env = { backends: { onnx: { wasm: {} } } };
+// The real library exposes onnxruntime-web's settings here, already pointed at its CDN;
+// loadTransformers() repoints them at this site and refuses to start without them.
+export const env = { backends: { onnx: { wasm: { wasmPaths: {
+  mjs: 'https://cdn.jsdelivr.net/npm/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.mjs',
+  wasm: 'https://cdn.jsdelivr.net/npm/onnxruntime-web/dist/ort-wasm-simd-threaded.asyncify.wasm',
+} } } } };
+globalThis.__stubEnv = env;
 `;
 
 interface StorageMock {
@@ -113,6 +118,10 @@ test.describe('Persistent storage', () => {
     expect(recorded).toMatchObject({ supported: true, persisted: true, model: true });
     // Play was never held up by it.
     await expect(page.locator('#start-duel')).toBeEnabled();
+    // And the model runtime was pointed at this site, not the library's CDN.
+    const paths = await page.evaluate(() => (globalThis as any).__stubEnv.backends.onnx.wasm.wasmPaths);
+    expect(paths.mjs).toMatch(/^\/ort\/[^/]+\/ort-wasm-simd-threaded\.asyncify\.mjs$/);
+    expect(paths.wasm).toMatch(/^\/ort\/[^/]+\/ort-wasm-simd-threaded\.asyncify\.wasm$/);
   });
 
   test('a refused answer is shown as "your browser may clear this", and play goes on', async ({ page }) => {
