@@ -100,6 +100,12 @@ left behind by a killed run is found by its port: `lsof -nP -iTCP:<port> -sTCP:L
   or a table, run `scripts/sound/measure.mjs --write` (it records the digests the unit and
   browser tests must reproduce). `node scripts/sound/mutate-sound.mjs` (build host) proves
   those tests go red.
+- **The test sets mostly come from the dictionaries the tables are built from**, so they
+  cannot show a table's faults. `sound/corpus/espeak.json` can: common words and their
+  phonemes from espeak-ng, which shares no data with the tables. After rebuilding a table,
+  run `scripts/sound/crosscheck.mjs --show 40` and read the disagreements. It found, on
+  2026-11-16, that the build had let one transcription stand for a word: Wiktionary lists
+  several per word (careful, casual, regional) in no useful order, so never take the first.
 - Every verse in every pack must keep its form as the code checks it (`verse.test.ts`).
   `node scripts/mutate-packs.mjs` (on the build host) proves those tests go red.
 - Writing a `\uXXXX` escape through an agent's file tools can turn it into the character
