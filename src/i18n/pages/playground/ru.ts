@@ -49,7 +49,7 @@ const messages: Record<string, string> = {
   'pg.trivia.won': "Твой результат: {n} из {total}!",
   'pg.trivia.lost': "Твой результат: {n} из {total}",
   'pg.trivia.need': "Чтобы получить карту, нужно не меньше 3 правильных ответов. Попробуй ещё раз!",
-  'pg.worldCard': "Открыта карта мира! {city}: +{bonus} {axis}",
+  'pg.worldCard': "Открыта игральная карта мира! {city}: +{bonus} {axis}",
   'pg.challenge.title': "Испытание с цитатой",
   'pg.challenge.sub': "Закончи знаменитую цитату",
   'pg.challenge.body': "Впиши пропущенные слова в цитату из Шекспира. Ответишь верно — получишь карту.",

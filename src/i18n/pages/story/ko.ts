@@ -27,7 +27,7 @@ const messages: Record<string, string> = {
   'story.enc.1-4.desc': "에스칼루스 영주 앞에서 실력을 증명하세요.",
   'story.enc.1-4.narrative': "에스칼루스 영주가 당신을 궁으로 부른다. \"이 거리에서 너무 많은 이가 죽었다. 그대가 휘두르는 것이 칼이 아니라 말임을 보이면 통행을 허락하겠다.\"",
   'story.act.2.label': "제2막",
-  'story.act.2.name': "헬싱외르의 궁정",
+  'story.act.2.name': "엘시노르의 궁정",
   'story.act.2.desc': "덴마크에 무언가 썩어 있다. 궁정의 어두운 비밀을 풀어내세요.",
   'story.enc.2-1.name': "유령의 경고",
   'story.enc.2-1.desc': "유령의 수수께끼 같은 시를 풀어내세요.",

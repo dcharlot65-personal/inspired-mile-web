@@ -82,7 +82,7 @@ const messages: Record<string, string> = {
   'story.enc.5-2.narrative': "\"Not that I loved Caesar less, but that I loved Rome more.\" ブルータスが元老院の階段からあなたのほうを向く。「よそ者よ、短剣が壊したものを言葉が繕えると、わたしを納得させてみよ」",
   'story.enc.5-3.name': "最後のカーテンコール",
   'story.enc.5-3.desc': "究極のバトルで The Sonnet Man と対決しましょう。",
-  'story.enc.5-3.narrative': "グローブ座が静まり返る。ひとすじのスポットライトが The Sonnet Man その人を照らす。\"All the world's a stage.\" 「おまえは自分の役をよく演じた。さあ、最後の一篇を。そして幕が下りる」",
+  'story.enc.5-3.narrative': "グローブ座が静まり返る。ひとすじのスポットライトが The Sonnet Man その人を照らす。\"All the world's a stage.\" 「おまえは自分の役をよく演じた。さあ、最後の詩を。そして幕が下りる」",
 };
 
 export default messages;

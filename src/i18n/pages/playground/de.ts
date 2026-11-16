@@ -49,7 +49,7 @@ const messages: Record<string, string> = {
   'pg.trivia.won': "Du hast {n} von {total} richtig!",
   'pg.trivia.lost': "Du hast {n} von {total} richtig",
   'pg.trivia.need': "Für eine Karte brauchst du mindestens 3 richtige Antworten. Versuch es noch einmal!",
-  'pg.worldCard': "Weltkarte freigeschaltet! {city}: +{bonus} {axis}",
+  'pg.worldCard': "Welt-Spielkarte freigeschaltet! {city}: +{bonus} {axis}",
   'pg.challenge.title': "Zitat-Herausforderung",
   'pg.challenge.sub': "Vervollständige das berühmte Zitat",
   'pg.challenge.body': "Ergänze die fehlenden Wörter eines Shakespeare-Zitats. Liegst du richtig, verdienst du eine Karte.",
