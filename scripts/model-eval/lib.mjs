@@ -1,0 +1,206 @@
+// What the evaluation computes from what the browser recorded. Pure functions, no model,
+// no network: src/lib/model-eval.test.ts runs them against known-bad input.
+
+export const LANGS = ['en', 'es', 'fr', 'de', 'it', 'pt', 'pl', 'ru', 'ar', 'hi', 'zh', 'ja', 'ko', 'vi', 'th', 'id'];
+export const TIERS = ['grand', 'standard', 'lite'];
+export const CRITERIA = ['wordplay', 'allusion', 'flow', 'wit'];
+
+/** Wilson score interval for k successes in n trials (95% by default). */
+export function wilson(k, n, z = 1.959964) {
+  if (!n) return { rate: null, low: null, high: null };
+  const p = k / n;
+  const d = 1 + (z * z) / n;
+  const centre = (p + (z * z) / (2 * n)) / d;
+  const half = (z * Math.sqrt((p * (1 - p)) / n + (z * z) / (4 * n * n))) / d;
+  return { rate: p, low: Math.max(0, centre - half), high: Math.min(1, centre + half) };
+}
+
+// --- Script and language ---
+
+const SCRIPTS = ['Latin', 'Cyrillic', 'Arabic', 'Devanagari', 'Thai', 'Hangul', 'Han', 'Hiragana', 'Katakana'];
+const SCRIPT_RE = Object.fromEntries(SCRIPTS.map((s) => [s, new RegExp(`\\p{Script=${s}}`, 'u')]));
+
+/** Share of a text's letters in each script (Unicode Script property). */
+export function scriptShares(text) {
+  const counts = Object.fromEntries(SCRIPTS.map((s) => [s, 0]));
+  let letters = 0;
+  for (const ch of text) {
+    if (!/\p{L}/u.test(ch)) continue;
+    letters++;
+    for (const s of SCRIPTS) if (SCRIPT_RE[s].test(ch)) { counts[s]++; break; }
+  }
+  const shares = Object.fromEntries(SCRIPTS.map((s) => [s, letters ? counts[s] / letters : 0]));
+  return { letters, shares };
+}
+
+/**
+ * Is the text written in the script the language is written in? Chinese is Han with no
+ * kana; Japanese is Han and kana with some kana; Korean is Hangul (a little Han allowed).
+ */
+export function scriptOk(text, lang) {
+  const { letters, shares: s } = scriptShares(text);
+  if (!letters) return false;
+  switch (lang) {
+    case 'ru': return s.Cyrillic >= 0.8;
+    case 'ar': return s.Arabic >= 0.8;
+    case 'hi': return s.Devanagari >= 0.8;
+    case 'th': return s.Thai >= 0.8;
+    case 'ko': return s.Hangul >= 0.6 && s.Hangul + s.Han >= 0.8;
+    case 'zh': return s.Han >= 0.8 && s.Hiragana + s.Katakana + s.Hangul <= 0.02;
+    case 'ja': return s.Han + s.Hiragana + s.Katakana >= 0.8 && s.Hiragana + s.Katakana >= 0.1;
+    default: return s.Latin >= 0.8;
+  }
+}
+
+/** Languages whose script is theirs alone among the sixteen: the script check settles the language. */
+export const SCRIPT_DECIDES = ['zh', 'ja', 'ko', 'th'];
+/** What the identifier may answer for a language. Indonesian and Malay are one language standardised twice; a short verse cannot tell them apart. */
+export const LID_ACCEPTS = { id: ['id', 'ms'] };
+
+/**
+ * Is a verse in the language asked for? The script must be right; and where other
+ * languages share the script, the language identifier's first answer must be this
+ * language. `lid` is that answer (an ISO 639-1 code), or null where it was not run.
+ */
+export function inLanguage(text, lang, lid) {
+  if (!scriptOk(text, lang)) return false;
+  if (SCRIPT_DECIDES.includes(lang)) return true;
+  return (LID_ACCEPTS[lang] ?? [lang]).includes(lid);
+}
+
+// --- Commentary ---
+
+const META = /^\s*["'“«(\[]?\s*(here(?:'s| is| are)?|sure|certainly|of course|okay|ok|note|notes|translation|explanation|verse|title|line\s*\d+|couplet|haiku|quatrain|tercet|acrostic|anaphora|answer|response)\b[^\n]{0,60}[:：!]/i;
+
+/** Why a line reads as commentary rather than verse, or null. */
+export function commentaryLine(line, lang) {
+  const l = line.trim();
+  if (!l) return null;
+  if (/[:：]\s*$/.test(l)) return 'ends in a colon';
+  if (META.test(l)) return 'opens like a note';
+  if (/^\s*(#{1,6}\s|\*\*|[-*]\s)/.test(l)) return 'markup';
+  const latinLang = !['ru', 'ar', 'hi', 'th', 'ko', 'zh', 'ja'].includes(lang);
+  if (!latinLang) {
+    const { letters, shares } = scriptShares(l);
+    const latinWords = (l.match(/\p{Script=Latin}{2,}/gu) ?? []).length;
+    if (letters >= 6 && shares.Latin >= 0.7 && latinWords >= 3) return 'a line in Latin script';
+  }
+  return null;
+}
+
+/** Does a verse contain commentary? Returns the reasons, one per offending line. */
+export function commentary(verse, lang) {
+  return verse.split(/\r?\n/).map((l) => commentaryLine(l, lang)).filter(Boolean);
+}
+
+// --- Summaries ---
+
+/** One judging cell: how often the judge preferred the better verse. */
+export function summarizeJudge(cell) {
+  const rows = cell.pairs.map((p) => {
+    const better = p.betterIsPlayer ? 'player' : 'opponent';
+    const verdicts = CRITERIA.map((c) => (p.criteria[c] === better ? 'better' : p.criteria[c] === 'split' ? 'split' : 'worse'));
+    const pointsBetter = p.betterIsPlayer ? p.player : p.opponent;
+    const pointsWorse = p.betterIsPlayer ? p.opponent : p.player;
+    return { id: p.id, kind: p.kind, verdicts, won: pointsBetter > pointsWorse, lost: pointsWorse > pointsBetter, byModel: p.source === 'model' };
+  });
+  const n = rows.length;
+  const crit = rows.flatMap((r) => r.verdicts);
+  const pairWins = rows.filter((r) => r.won).length;
+  const byCriterion = Object.fromEntries(CRITERIA.map((c, i) => [c, { better: rows.filter((r) => r.verdicts[i] === 'better').length, n }]));
+  const byKind = {};
+  for (const r of rows) {
+    const k = (byKind[r.kind] ??= { pairs: 0, pairWins: 0, pairLosses: 0, criteria: 0, better: 0 });
+    k.pairs++; k.pairWins += r.won ? 1 : 0; k.pairLosses += r.lost ? 1 : 0; k.criteria += r.verdicts.length; k.better += r.verdicts.filter((v) => v === 'better').length;
+  }
+  return {
+    pairs: n,
+    allByModel: rows.every((r) => r.byModel),
+    pairWins, pairWilson: wilson(pairWins, n),
+    criteria: crit.length,
+    better: crit.filter((v) => v === 'better').length,
+    split: crit.filter((v) => v === 'split').length,
+    worse: crit.filter((v) => v === 'worse').length,
+    criterionWilson: wilson(crit.filter((v) => v === 'better').length, crit.length),
+    byCriterion, byKind,
+    injectionPairsLost: byKind.injection?.pairLosses ?? 0,
+  };
+}
+
+const mean = (xs) => (xs.length ? xs.reduce((a, b) => a + b, 0) / xs.length : null);
+
+/**
+ * One writing cell. `lidOf(text)` is the language identifier's answer for a text.
+ * A play is one call of the opponent (one verse on the table); a draft is one
+ * generation inside it.
+ */
+export function summarizeWrite(cell, lidOf) {
+  const lang = cell.lang;
+  const plays = cell.plays.map((p) => {
+    const model = p.source === 'model';
+    const inLang = model && inLanguage(p.verse, lang, lidOf(p.verse));
+    const comment = model ? commentary(p.verse, lang) : [];
+    return { ...p, model, inLang, comment };
+  });
+  const group = (rows) => {
+    const n = rows.length;
+    const m = rows.filter((r) => r.model);
+    return {
+      plays: n,
+      modelSourced: m.length,
+      formKept: m.filter((r) => r.formKept).length,
+      formKeptWilson: wilson(m.filter((r) => r.formKept).length, n),
+      meanCraft: mean(m.map((r) => r.craft)),
+      meanFormPoints: mean(m.map((r) => r.formEarned)),
+      inLanguage: m.filter((r) => r.inLang).length,
+      inLanguageWilson: wilson(m.filter((r) => r.inLang).length, n),
+      commentary: m.filter((r) => r.comment.length).length,
+    };
+  };
+  const drafts = cell.plays.flatMap((p) => p.drafts);
+  const tokens = drafts.reduce((s, d) => s + d.tokens, 0);
+  const seconds = drafts.reduce((s, d) => s + d.ms, 0) / 1000;
+  const byForm = {};
+  for (const p of plays) (byForm[p.formId] ??= []).push(p);
+  const byDifficulty = {};
+  for (const p of plays) (byDifficulty[p.difficulty] ??= []).push(p);
+  return {
+    ...group(plays),
+    drafts: drafts.length,
+    draftsFormKept: drafts.filter((d) => d.formKept).length,
+    draftsRanOn: drafts.filter((d) => d.rawLines > d.expectedLines).length,
+    draftsEmpty: drafts.filter((d) => !d.tidy).length,
+    tokensPerSecond: seconds ? tokens / seconds : null,
+    minPlaysPerForm: Math.min(...Object.values(byForm).map((r) => r.length)),
+    byForm: Object.fromEntries(Object.entries(byForm).map(([f, r]) => [f, group(r)])),
+    byDifficulty: Object.fromEntries(Object.entries(byDifficulty).map(([d, r]) => [d, group(r)])),
+  };
+}
+
+// --- Decisions ---
+
+/** May this model judge this language? `s` is summarizeJudge's result, or null when the cell was not measured. */
+export function decideJudge(s, t) {
+  if (!s) return { ok: false, why: ['not measured'] };
+  const why = [];
+  if (s.pairs < t.minPairs) why.push(`${s.pairs} pairs, ${t.minPairs} needed`);
+  if (!s.allByModel) why.push('a reading fell back to the rules');
+  if (!(s.pairWilson.low > t.pairWinsWilsonLowerAbove)) why.push(`better verse won ${s.pairWins}/${s.pairs} pairs: the 95% interval reaches down to ${s.pairWilson.low.toFixed(2)}, not above chance`);
+  if (!(s.criterionWilson.rate >= t.criterionRateAtLeast)) why.push(`preferred the better verse on ${s.better}/${s.criteria} criteria (${(s.criterionWilson.rate * 100).toFixed(0)}%), under ${t.criterionRateAtLeast * 100}%`);
+  if (s.injectionPairsLost > t.injectionPairsLostAtMost) why.push(`${s.injectionPairsLost} injection attempt(s) beat a real verse`);
+  return { ok: why.length === 0, why };
+}
+
+/** May this model write in this language? `recall` is the language detector's pass rate on real verse in the language. */
+export function decideWrite(s, t, recall) {
+  if (!s) return { ok: false, why: ['not measured'] };
+  const why = [];
+  const n = s.plays;
+  if (s.minPlaysPerForm < t.minPlaysPerForm) why.push(`a form has ${s.minPlaysPerForm} plays, ${t.minPlaysPerForm} needed`);
+  if (!(s.modelSourced / n >= t.modelSourcedAtLeast)) why.push(`wrote a usable verse in ${s.modelSourced}/${n} plays`);
+  const need = t.inLanguageAtLeastTimesDetectorRecall * Math.min(1, recall ?? 1);
+  if (!(s.inLanguage / n >= need)) why.push(`in the language in ${s.inLanguage}/${n} plays (${((s.inLanguage / n) * 100).toFixed(0)}%), under ${(need * 100).toFixed(0)}%`);
+  if (!(s.commentary / n <= t.commentaryAtMost)) why.push(`commentary in ${s.commentary}/${n} plays`);
+  if (!(s.formKept / n >= t.formKeptAtLeast)) why.push(`kept the form in full in ${s.formKept}/${n} plays (${((s.formKept / n) * 100).toFixed(0)}%), under ${t.formKeptAtLeast * 100}%`);
+  return { ok: why.length === 0, why };
+}

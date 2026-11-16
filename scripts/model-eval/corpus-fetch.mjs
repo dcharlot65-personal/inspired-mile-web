@@ -57,6 +57,9 @@ const INVISIBLE = new RegExp(`[${cps(0x200b, 0x200e, 0x200f, 0x2060, 0xfeff, 0xa
 /** The lines of text on a rendered page, in order, with the apparatus removed. */
 export function htmlToLines(html) {
   let s = html
+    // Parsoid keeps each template's source in a data-mw attribute, tags and all.
+    .replace(/\sdata-mw='[^']*'/g, '')
+    .replace(/\sdata-mw="[^"]*"/g, '')
     .replace(/<!--[\s\S]*?-->/g, '')
     .replace(/<(style|script|sup)\b[\s\S]*?<\/\1>/gi, '')
     // Page numbers, line numbers, edit links and reference marks are not the poem.
@@ -144,41 +147,43 @@ async function build(only) {
   if (failed) { console.log(`${failed} entries failed`); process.exit(1); }
 }
 
-const [cmd, lang, ...rest] = process.argv.slice(2);
-if (cmd === 'never') {
-} else if (cmd === 'probe') {
-  const max = Number(process.env.LINES ?? 30);
-  const from = Number(process.env.FROM ?? 0);
-  const p = await page(lang, rest.join(' '));
-  console.log(`# ${p.title} rev ${p.revid} (${p.lines.length} lines)`);
-  p.lines.slice(from, from + max).forEach((l, i) => console.log(String(from + i).padStart(4), l.slice(0, 110)));
-} else if (cmd === 'links') {
-  // links <lang> <title>: where a page of versions or a contents page points.
-  const html = await getHtml(`https://${lang}.wikisource.org/wiki/${slug(rest.join(' '))}`);
-  const seen = new Set();
-  for (const m of html.matchAll(/href="\/wiki\/([^"#?]+)"/g)) {
-    const t = decodeURIComponent(m[1]).replace(/_/g, ' ');
-    if (!/^[^/]*:/.test(t) && !seen.has(t)) { seen.add(t); console.log(t); }
-  }
-} else if (cmd === 'batch') {
-  // batch <file>: lines of "lang|title"; prints the opening lines of each, to choose anchors from.
-  const max = Number(process.env.LINES ?? 6);
-  for (const row of readFileSync(lang, 'utf8').split('\n').map((l) => l.trim()).filter((l) => l && !l.startsWith('#'))) {
-    const [l, t] = row.split('|');
-    try {
-      const p = await page(l, t);
-      // The verse-like lines: short, and not the page's furniture.
-      const ls = p.lines.filter(verseLike);
-      const from = Number(process.env.FROM ?? 0);
-      console.log(`## ${l}|${p.title} (${p.lines.length}/${ls.length}) ` + ls.slice(from, from + max).map((x) => x.slice(0, 44)).join(' / '));
-    } catch (err) {
-      console.log(`## ${l}|${t} FAIL ${err.message}`);
+if (process.argv[1] === fileURLToPath(import.meta.url)) {
+  const [cmd, lang, ...rest] = process.argv.slice(2);
+  if (cmd === 'never') {
+  } else if (cmd === 'probe') {
+    const max = Number(process.env.LINES ?? 30);
+    const from = Number(process.env.FROM ?? 0);
+    const p = await page(lang, rest.join(' '));
+    console.log(`# ${p.title} rev ${p.revid} (${p.lines.length} lines)`);
+    p.lines.slice(from, from + max).forEach((l, i) => console.log(String(from + i).padStart(4), l.slice(0, 110)));
+  } else if (cmd === 'links') {
+    // links <lang> <title>: where a page of versions or a contents page points.
+    const html = await getHtml(`https://${lang}.wikisource.org/wiki/${slug(rest.join(' '))}`);
+    const seen = new Set();
+    for (const m of html.matchAll(/href="\/wiki\/([^"#?]+)"/g)) {
+      const t = decodeURIComponent(m[1]).replace(/_/g, ' ');
+      if (!/^[^/]*:/.test(t) && !seen.has(t)) { seen.add(t); console.log(t); }
     }
-    await new Promise((r) => setTimeout(r, 300));
+  } else if (cmd === 'batch') {
+    // batch <file>: lines of "lang|title"; prints the opening lines of each, to choose anchors from.
+    const max = Number(process.env.LINES ?? 6);
+    for (const row of readFileSync(lang, 'utf8').split('\n').map((l) => l.trim()).filter((l) => l && !l.startsWith('#'))) {
+      const [l, t] = row.split('|');
+      try {
+        const p = await page(l, t);
+        // The verse-like lines: short, and not the page's furniture.
+        const ls = p.lines.filter(verseLike);
+        const from = Number(process.env.FROM ?? 0);
+        console.log(`## ${l}|${p.title} (${p.lines.length}/${ls.length}) ` + ls.slice(from, from + max).map((x) => x.slice(0, 44)).join(' / '));
+      } catch (err) {
+        console.log(`## ${l}|${t} FAIL ${err.message}`);
+      }
+      await new Promise((r) => setTimeout(r, 300));
+    }
+  } else if (cmd === 'build') {
+    await build([lang, ...rest].filter(Boolean));
+  } else if (cmd) {
+    console.log('usage: corpus-fetch.mjs probe|batch|build …');
+    process.exit(2);
   }
-} else if (cmd === 'build') {
-  await build([lang, ...rest].filter(Boolean));
-} else if (cmd) {
-  console.log('usage: corpus-fetch.mjs probe|batch|build …');
-  process.exit(2);
 }
