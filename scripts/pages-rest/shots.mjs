@@ -60,6 +60,8 @@ for (const locale of localeArg.split(',')) {
       const context = await browser.newContext({ viewport: VIEWPORTS[width], serviceWorkers: 'block', ...(view.context ?? {}) });
       const page = await context.newPage();
       page.setDefaultTimeout(15000);
+      // A page the dev server has not compiled yet can take longer than a click.
+      page.setDefaultNavigationTimeout(60000);
       try {
         await startIn(page, locale);
         await mockApi(page);

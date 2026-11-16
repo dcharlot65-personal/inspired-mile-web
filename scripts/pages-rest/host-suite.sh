@@ -1,7 +1,7 @@
 # Runs on the build host, inside the checkout (through rb). Everything it writes outside the
 # checkout goes under im-lang/pages-rest.
 #
-#   STEPS="ci vitest build pw shots" bash scripts/pages-rest/host-suite.sh
+#   STEPS="ci vitest build pw mutate shots" bash scripts/pages-rest/host-suite.sh
 #
 # Ports of this branch's own (46331-46336), so a run in another checkout is never tested
 # by mistake. The dev server for the screenshots is stopped by its own port.
@@ -20,6 +20,8 @@ case " $STEPS " in *" ci "*) npm ci --no-audit --no-fund >$OUT/logs/npm.log 2>&1
 case " $STEPS " in *" vitest "*) $MEMGUARD --max-gb 12 -- npx vitest run >$OUT/logs/vitest.log 2>&1; echo "vitest exit $?"; grep -E "✗|×|FAIL|Test Files|Tests " $OUT/logs/vitest.log | sed -e 's/\x1b\[[0-9;]*m//g' | tail -30;; esac
 case " $STEPS " in *" build "*) $MEMGUARD --max-gb 12 -- npm run build >$OUT/logs/build.log 2>&1; echo "build exit $?"; tail -6 $OUT/logs/build.log;; esac
 case " $STEPS " in *" pw "*) $MEMGUARD --max-gb 24 -- npx playwright test ${PW_ARGS:-tests/pages-rest.spec.ts} --reporter=list >$OUT/logs/pw.log 2>&1; echo "playwright exit $?"; sed -e 's/\x1b\[[0-9;]*m//g' $OUT/logs/pw.log | grep -E "✓|✘|×|passed|failed|flaky|skipped|did not run|Error:" | tail -${PW_TAIL:-60};; esac
+# Each check broken on purpose, and the test expected to go red (unit tests, then the browser tests).
+case " $STEPS " in *" mutate "*) $MEMGUARD --max-gb 24 -- node scripts/pages-rest/mutate.mjs --browser >$OUT/logs/mutate.log 2>&1; echo "mutate exit $?"; grep -E "CAUGHT|MISSED|RED|GREEN|SKIPPED|mutation" $OUT/logs/mutate.log | tail -60;; esac
 case " $STEPS " in *" shots "*)
   rm -f $OUT/shots/*.png
   API_PROXY_TARGET=http://127.0.0.1:9 $MEMGUARD --max-gb 8 -- npx astro dev --port $SHOT_PORT >$OUT/logs/dev.log 2>&1 &
