@@ -28,6 +28,8 @@ export default defineConfig({
       }],
     },
   },
+  // tests/model needs WebGPU and multi-gigabyte downloads; it has its own config.
+  testIgnore: /tests\/model\//,
   testMatch: prodUrl ? /prod-smoke\.spec\.ts/ : /^(?!.*prod-smoke).*\.spec\.ts$/,
   webServer: prodUrl ? undefined : [
     {

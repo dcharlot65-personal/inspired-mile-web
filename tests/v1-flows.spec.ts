@@ -146,51 +146,13 @@ test.describe('Playground', () => {
 });
 
 test.describe('Battle Arena', () => {
-  test('shows loading screen initially', async ({ page }) => {
+  test('shows the duel set-up with a deck and stats', async ({ page }) => {
     await page.goto('/battle');
-    await expect(page.locator('#loading-screen')).toBeVisible();
-  });
-
-  test('shows battle stats section', async ({ page }) => {
-    await page.goto('/battle');
-    // Stats are below the loading screen — check they exist in DOM
+    await expect(page.locator('#duel-setup')).toBeVisible();
+    await expect(page.locator('#deck-cards > div')).not.toHaveCount(0);
     await expect(page.locator('#rounds-played')).toHaveCount(1);
     await expect(page.locator('#battles-total')).toHaveCount(1);
     await expect(page.locator('#win-rate')).toHaveCount(1);
-  });
-
-  test('enters demo mode when WebGPU unavailable', async ({ page }) => {
-    await page.goto('/battle', { waitUntil: 'networkidle' });
-    await page.waitForTimeout(3000);
-
-    const noWebgpu = page.locator('#no-webgpu');
-    if (await noWebgpu.isVisible()) {
-      await page.click('#fallback-mode-btn');
-      await page.waitForTimeout(500);
-
-      // Mode select should be visible in the arena
-      const modeSelect = page.locator('#mode-select');
-      await expect(modeSelect).toBeVisible();
-    }
-  });
-
-  test('can start freestyle mode in demo', async ({ page }) => {
-    await page.goto('/battle', { waitUntil: 'networkidle' });
-    await page.waitForTimeout(3000);
-
-    if (await page.locator('#no-webgpu').isVisible()) {
-      await page.click('#fallback-mode-btn');
-      await page.waitForTimeout(500);
-    }
-
-    await page.click('#battle-arena');
-    await page.waitForTimeout(300);
-    await page.click('[data-mode="freestyle"]');
-    await page.waitForTimeout(2000);
-
-    // Battle log should have messages
-    const messages = page.locator('#battle-log > div');
-    expect(await messages.count()).toBeGreaterThan(0);
   });
 
   test('persistent stats load from localStorage', async ({ page }) => {

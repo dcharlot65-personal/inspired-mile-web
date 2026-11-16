@@ -7,9 +7,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "test": "playwright test",
-    "test:v1": "playwright test v1-flows",
-    "test:v2": "playwright test v2-world-cards"
+    "test": "vitest run && playwright test",
+    "test:unit": "vitest run"
   },
   "dependencies": {
     "@astrojs/react": "^7.1.9",
@@ -17,7 +16,7 @@
     "@babylonjs/gui": "^9.36.0",
     "@babylonjs/loaders": "^9.36.0",
     "@google/model-viewer": "^4.4.0",
-    "@mlc-ai/web-llm": "^0.2.88",
+    "@huggingface/transformers": "^4.3.2",
     "@simplewebauthn/browser": "^14.0.0",
     "@tailwindcss/vite": "^4.3.5",
     "astro": "^7.4.12",
@@ -27,6 +26,8 @@
     "tailwindcss": "^4.3.5"
   },
   "devDependencies": {
-    "@playwright/test": "^1.65.1"
+    "@playwright/test": "^1.65.1",
+    "iwer": "^2.8.0",
+    "vitest": "^5.1.0"
   }
 }

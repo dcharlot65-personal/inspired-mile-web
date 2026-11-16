@@ -1,11 +1,10 @@
 /**
- * Content Generation — Uses the already-loaded WebLLM engine to generate
- * dynamic trivia questions and quote challenges.
- * Reuses the same Llama 3.2 3B model loaded for battles.
+ * Content Generation — uses the in-browser model, when one is loaded, to write
+ * fresh trivia questions and quote challenges.
  * Falls back to hardcoded banks if LLM not loaded or generation fails.
  */
 
-import { getEngine, isLoaded } from './thespian-llm';
+import { generate, isBrainLoaded } from './brain';
 import type { TriviaQuestion } from './trivia';
 import type { QuoteChallenge } from './challenges';
 
@@ -30,24 +29,17 @@ Rules:
 async function generateTriviaQuestion(
   difficulty?: 'easy' | 'medium' | 'hard',
 ): Promise<TriviaQuestion | null> {
-  const engine = getEngine();
-  if (!engine) return null;
+  if (!isBrainLoaded()) return null;
 
   const difficultyHint = difficulty
     ? `Generate a ${difficulty} difficulty question.`
     : 'Generate a question of random difficulty.';
 
   try {
-    const reply = await engine.chat.completions.create({
-      messages: [
+    const content = await generate([
         { role: 'system', content: TRIVIA_SYSTEM_PROMPT },
         { role: 'user', content: `${difficultyHint} Make it unique and interesting.` },
-      ],
-      temperature: 0.9,
-      max_tokens: 200,
-    });
-
-    const content = reply.choices[0]?.message?.content || '';
+      ], { temperature: 0.9, maxTokens: 200 });
     return parseTriviaResponse(content);
   } catch (err) {
     console.error('[content-gen] Trivia generation failed:', err);
@@ -117,20 +109,13 @@ Rules:
 - Do NOT include any text outside the JSON object`;
 
 export async function generateChallenge(): Promise<QuoteChallenge | null> {
-  const engine = getEngine();
-  if (!engine) return null;
+  if (!isBrainLoaded()) return null;
 
   try {
-    const reply = await engine.chat.completions.create({
-      messages: [
+    const content = await generate([
         { role: 'system', content: CHALLENGE_SYSTEM_PROMPT },
         { role: 'user', content: 'Generate a unique Shakespeare quote challenge. Choose a quote that is not overly common.' },
-      ],
-      temperature: 0.9,
-      max_tokens: 200,
-    });
-
-    const content = reply.choices[0]?.message?.content || '';
+      ], { temperature: 0.9, maxTokens: 200 });
     return parseChallengeResponse(content);
   } catch (err) {
     console.error('[content-gen] Challenge generation failed:', err);
@@ -177,5 +162,5 @@ function parseChallengeResponse(raw: string): QuoteChallenge | null {
 // --- Availability check ---
 
 export function isContentGenAvailable(): boolean {
-  return isLoaded();
+  return isBrainLoaded();
 }

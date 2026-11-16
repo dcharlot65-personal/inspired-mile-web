@@ -51,7 +51,11 @@ export function isVoiceLoading(): boolean {
 
 let currentAudio: HTMLAudioElement | null = null;
 
-export async function speak(text: string, voice?: string): Promise<void> {
+/**
+ * Speak a verse. Kokoro, the in-browser voice model, is good only in English
+ * (by its own card), so other languages use the device's local voices.
+ */
+export async function speak(text: string, voice?: string, lang = 'en'): Promise<void> {
   // Stop any currently playing audio
   stopSpeaking();
 
@@ -68,9 +72,8 @@ export async function speak(text: string, voice?: string): Promise<void> {
     });
   }
 
-  if (!tts) {
-    // Fallback to browser speech synthesis
-    return speakFallback(text);
+  if (!tts || !lang.startsWith('en')) {
+    return speakFallback(text, lang);
   }
 
   try {
@@ -91,7 +94,7 @@ export async function speak(text: string, voice?: string): Promise<void> {
     await currentAudio.play();
   } catch (err) {
     console.error('TTS generation failed, using fallback:', err);
-    return speakFallback(text);
+    return speakFallback(text, lang);
   }
 }
 
@@ -129,19 +132,21 @@ export async function speakStreaming(text: string, voice?: string): Promise<void
   }
 }
 
-function speakFallback(text: string): void {
+/**
+ * Speak with one of the device's own voices. Only voices the browser reports
+ * as local are used: Chrome also lists network voices, which send the text to
+ * a server, and nothing in this game is allowed to do that.
+ */
+function speakFallback(text: string, lang = 'en'): void {
   if (typeof window === 'undefined' || !window.speechSynthesis) return;
-
+  const base = lang.split('-')[0];
+  const local = window.speechSynthesis.getVoices().filter((v) => v.localService && v.lang.toLowerCase().startsWith(base));
+  if (!local.length) return;
   const utterance = new SpeechSynthesisUtterance(text);
   utterance.rate = 0.9;
   utterance.pitch = 0.8;
-  // Try to pick a British English voice
-  const voices = window.speechSynthesis.getVoices();
-  const britishVoice = voices.find(
-    (v) => v.lang.startsWith('en-GB') || v.name.toLowerCase().includes('british'),
-  );
-  if (britishVoice) utterance.voice = britishVoice;
-
+  utterance.voice = (base === 'en' && local.find((v) => v.lang.startsWith('en-GB'))) || local[0];
+  utterance.lang = utterance.voice.lang;
   window.speechSynthesis.speak(utterance);
 }
 
