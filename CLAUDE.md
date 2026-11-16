@@ -83,16 +83,34 @@ left behind by a killed run is found by its port: `lsof -nP -iTCP:<port> -sTCP:L
   localhost, and on the RP ID), `RESEND_API_KEY` (absent: email endpoints answer 503 and
   the UI hides email), `EMAIL_FROM`, `RATE_LIMIT_PER_MINUTE` (per client, default 600),
   `TRUSTED_PROXIES` (peers whose `CF-Connecting-IP` / `X-Forwarded-For` are believed; default
-  `127.0.0.1,::1,10.10.10.1,100.64.224.0`; from any other peer the socket address is the
-  client, and the API logs a warning naming the peer it ignored. **Check this on every
-  deploy:** the Caddy on 10.10.10.1 forwards to `100.64.224.0:3849` over the tailnet, so the
-  API most likely sees .1's own Tailscale address, which the default does not list; if it is
-  missing, every visitor shares one allowance. Add the address the warning names),
+  `127.0.0.1,::1,10.10.10.1,100.64.224.0,100.98.101.113`. The last is the Tailscale address of
+  the M4 MacBook Pro (10.10.10.1): its Caddy reaches the API on prod at `100.64.224.0:3849` over
+  the tailnet, so that is the peer production sees (checked 2026-11-16). From any other peer the
+  socket address is the client. **Check this on every deploy**, in the API log: whatever
+  `RUST_LOG` says (even `off`), the API writes at start-up `TRUSTED_PROXIES: ... believed only
+  from <list>`, and, at most once every ten minutes per peer and ten lines a minute,
+  `ignored CF-Connecting-IP / X-Forwarded-For from <peer>`. If that peer is the proxy, add it:
+  otherwise every visitor shares one allowance. These are "operator notices"
+  (`backend/src/notice.rs`): the log filter is `RUST_LOG` OR that target),
   `SIGNUP_GLOBAL_PER_HOUR` (default 300; hitting it logs `SIGN-UP CEILING HIT`),
+  `SIGNUP_BEGINS_GLOBAL_PER_HOUR` (default 1500 begun sign-ups an hour, site-wide; logs
+  `SIGN-UP BEGIN CEILING HIT`), `AUTH_CHALLENGES_MAX` (default 20000 rows in `auth_challenges`;
+  one network may hold 100 live; at the ceiling expired rows are deleted on the spot, and if it
+  is still full new ceremonies get 503 and `SIGN-IN CHALLENGE CEILING HIT` is logged),
   `UNUSED_ACCOUNT_PURGE_DAYS` (default 30, 0 = never: passkey-only accounts that never played
   are deleted, see `purge_unused_accounts` in `auth/passkeys.rs`).
 - Limits are per network, not per address: an IPv6 /64 is one client, and the sign-up budget
   (40 accounts an hour, counted when created) is per IPv4 /24 or IPv6 /64.
+- Email codes (`backend/src/auth/email_code.rs`, top comment, is the statement): an address's
+  inbox gets at most 10 codes an hour; one network (IPv4 address or IPv6 /64) may have at most
+  3 of them, so no network, and no three together, can stop another from getting a code; it
+  takes four. Wrong guesses: 10 a day per network per address, 50 per address from everyone, 30
+  per network over all addresses. All checked under the address's and the network's advisory
+  locks in the transaction that inserts, so parallel requests cannot pass them.
+- `TEST_ONLY_LIMIT_RACE_DELAY_MS` pauses between each limit's check and its write, so the
+  end-to-end tests can show a check made without its lock letting parallel requests through.
+  The API refuses to start with it when any `WEBAUTHN_ORIGIN` is https. Never set it in a
+  deployed `.env`.
 - **Accounts that exist only by email cannot sign in while email is off** (no `RESEND_API_KEY`):
   an old Google or email account has no passkey and its only way in answers 503. Production
   had no users when this was accepted (2026-11-16); the sign-in panel says so. Check
@@ -103,8 +121,13 @@ left behind by a killed run is found by its port: `lsof -nP -iTCP:<port> -sTCP:L
 - Local dev: `WEBAUTHN_RP_ID=localhost WEBAUTHN_ORIGIN=http://localhost:4321`.
 - The email step requires the age gate's stored tier (`adult` or `teen-consented`), in the
   browser and again in the API. Do not loosen either. The tier is self-declared (nobody's
-  age is verified); the server sets it at account creation and afterwards only lets it move
-  to the stricter value (`/credits/age-verify` never turns `teen` into `adult`).
+  age is verified). Rules in `backend/src/auth/age.rs`: set at account creation; afterwards
+  only the signed-in user's own answer changes it (the age question opened by "Date of Birth"
+  in the account menu, `POST /auth/age-tier`). The page never posts the browser's stored gate
+  answer by itself (on a shared browser it may be someone else's), and `/credits/age-verify`,
+  which pages cached before 2026-11-16 still call, never writes. Adult may become teen; teen
+  becomes adult again only for an account declared adult, with a proof from the last five
+  minutes; an account declared teen stays teen (the operator can change it in the database).
 
 ## Languages (16: en es fr de it pt pl ru ar hi zh ja ko vi th id)
 
