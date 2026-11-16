@@ -63,3 +63,37 @@ test('age gate blocks a first-time visitor', async ({ browser, baseURL }) => {
   await expect(page.locator('#age-gate')).toBeVisible();
   await ctx.close();
 });
+
+// The Japanese analyser's dictionary is the largest thing the duel loads (17.8 MB: files emitted
+// as assets, and the smallest inlined in the analyser's chunk). Only the dev server is used by the
+// other browser tests, so this one checks that the built site serves the dictionary and that
+// loadSound reads it: every file arrives whole, and the loader reports no failure.
+test('a Japanese duel loads its analyser and dictionary from the built site', async ({ page }) => {
+  test.setTimeout(180_000);
+  const deck = { name: 'Test deck', characters: ['DC-001', 'MO-001', 'CA-001'], relics: ['RL-001'], potions: ['PT-002'] };
+  await page.addInitScript((d) => {
+    localStorage.setItem('inspired-mile-decks', JSON.stringify([d]));
+    localStorage.setItem('inspired-mile-active-deck', d.name);
+  }, deck);
+  const files: Array<{ url: string; status: number; bytes: number }> = [];
+  const pending: Promise<void>[] = [];
+  const failures: string[] = [];
+  page.on('console', (m) => {
+    if (m.type() === 'error' && m.text().includes('[verse]')) failures.push(m.text());
+  });
+  page.on('response', (r) => {
+    // base.dat.gz in dev; base.dat.<hash>.gz (or -<hash>) when built.
+    if (!/\/[a-z_]+\.dat[^/]*\.gz(\?|$)/.test(r.url())) return;
+    pending.push(r.body().then((b) => void files.push({ url: r.url(), status: r.status(), bytes: b.length }), () => void files.push({ url: r.url(), status: r.status(), bytes: -1 })));
+  });
+  await page.goto('/battle?seed=11&brain=rules&lang=ja');
+  await expect(page.locator('#start-duel')).toBeEnabled();
+  await page.click('#start-duel');
+  // The page waits for the language's sound data before it builds the duel.
+  await expect(page.locator('#battle-arena')).toBeVisible({ timeout: 150_000 });
+  await Promise.all(pending);
+  console.log(`SOUND-PROD ${JSON.stringify(files.map((f) => ({ file: f.url.split('/').pop(), status: f.status, bytes: f.bytes })))}`);
+  expect(failures).toEqual([]);
+  expect(files.length).toBeGreaterThan(0);
+  for (const f of files) expect([f.url, f.status, f.bytes > 0]).toEqual([f.url, 200, true]);
+});
