@@ -97,7 +97,9 @@ export function firstWord(line: string, lang = 'en'): string {
 /**
  * Fold a word for comparison: lower case, and without the accents of Latin and
  * Greek letters or the optional vowel marks of Arabic, so "café" and "cafe", or
- * a vocalised and a bare Arabic word, compare equal.
+ * a vocalised and a bare Arabic word, compare equal. Spellings people type
+ * either way are merged too: œ and oe, ß and ss, Russian ё and е, and the
+ * Devanagari dot (nukta) that Hindi keyboards often leave off.
  *
  * Marks that are part of the spelling are kept: Devanagari vowel signs, Thai
  * vowels and tones, Japanese voicing marks, the breve of Russian й. Stripping
@@ -106,11 +108,14 @@ export function firstWord(line: string, lang = 'en'): string {
 export function fold(word: string): string {
   return word
     .normalize('NFD')
-    .replace(/([\p{Script=Latin}\p{Script=Greek}])[̀-ͯ]+/gu, '$1')
-    .replace(/[ـً-ٰٟ]/g, '')
+    .replace(/([\p{Script=Latin}\p{Script=Greek}])[\u0300-\u036f]+/gu, '$1')
+    .replace(/[\u0640\u064b-\u065f\u0670\u093c]/g, '')
     .normalize('NFC')
     .toLowerCase()
-    .replace(/ё/g, 'е');
+    .replace(/ё/g, 'е')
+    .replace(/œ/g, 'oe')
+    .replace(/æ/g, 'ae')
+    .replace(/ß/g, 'ss');
 }
 
 /** Katakana to hiragana, so the two kana spellings of a sound compare equal. */
@@ -228,18 +233,18 @@ function romanceSyllables(word: string, lang: string): number {
   const chars = [...nfd];
   for (let i = 0; i < chars.length; i++) {
     const ch = chars[i];
-    if (/[̀-ͯ]/.test(ch)) continue;
+    if (/[\u0300-\u036f]/.test(ch)) continue;
     let marks = '';
-    for (let j = i + 1; j < chars.length && /[̀-ͯ]/.test(chars[j]); j++) marks += chars[j];
-    const next = chars.slice(i + 1).find((c) => !/[̀-ͯ]/.test(c)) ?? '';
+    for (let j = i + 1; j < chars.length && /[\u0300-\u036f]/.test(chars[j]); j++) marks += chars[j];
+    const next = chars.slice(i + 1).find((c) => !/[\u0300-\u036f]/.test(c)) ?? '';
     const isY = ch === 'y' && next === '';
     const vowel = 'aeiou'.includes(ch) || isY;
     // The u of "que" and "gue" is only a spelling.
     const silentU = ch === 'u' && !marks && ((prev === 'q' && 'aeio'.includes(next)) || (prev === 'g' && 'ei'.includes(next)));
     if (vowel && !silentU) {
       const strong = 'aeo'.includes(ch);
-      const accented = /[̀́̂]/.test(marks);
-      const tilde = marks.includes('̃');
+      const accented = /[\u0300\u0301\u0302]/.test(marks);
+      const tilde = marks.includes('\u0303');
       if (accented || tilde) anyAccent = true;
       const stressedWeak = !strong && accented;
       if (!inGroup) {
@@ -267,7 +272,8 @@ function romanceSyllables(word: string, lang: string): number {
 function polishSyllables(word: string): number {
   // An i before another vowel only softens the consonant ("nie-bo").
   const w = word.toLowerCase().normalize('NFC').replace(/i(?=[aąeęoóuy])/g, '');
-  return Math.max(1, (w.match(/[aąeęioóuy]/g) ?? []).length);
+  // No floor of one: "w" and "z" are words with no syllable of their own.
+  return (w.match(/[aąeęioóuy]/g) ?? []).length;
 }
 
 function indonesianSyllables(word: string): number {
@@ -312,7 +318,8 @@ export function syllablesInWord(word: string, lang = 'en'): number | null {
   if (b === 'zh' && letters.length && letters.every((c) => /\p{Script=Han}/u.test(c))) return letters.length;
   if (b === 'ja') return kanaMora(word);
   if (b === 'ru' && letters.length && letters.every((c) => /\p{Script=Cyrillic}/u.test(c))) {
-    return Math.max(1, (word.toLowerCase().match(/[аеёиоуыэюя]/g) ?? []).length);
+    // No floor of one: "в", "к", "с" are words with no syllable of their own.
+    return (word.toLowerCase().match(/[аеёиоуыэюя]/g) ?? []).length;
   }
   if (!isLatin(word)) return letters.length ? null : 0;
   if (b === 'vi') return 1;

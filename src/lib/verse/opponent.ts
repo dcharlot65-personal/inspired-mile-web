@@ -20,7 +20,7 @@ import { rng, scoreVerse, type Duel, type RoundPlan } from './duel';
 import { en } from './english';
 import { acrosticUnits, getForm, type Form, type FormContext } from './forms';
 import { getPack } from './packs';
-import { cleanVerse } from './text';
+import { cleanVerse, fold } from './text';
 
 export const LANGUAGE_NAMES: Record<string, string> = {
   en: 'English', es: 'Spanish', fr: 'French', de: 'German', it: 'Italian', pt: 'Portuguese', pl: 'Polish', ru: 'Russian',
@@ -144,7 +144,7 @@ export function writtenVerse(form: Form, ctx: FormContext, seed: number): string
   if (form.id === 'acrostic') {
     return acrosticUnits(ctx.acrostic ?? pack.acrostic[0], ctx.lang)
       .map((unit) => {
-        const bank = pack.acrosticLines[unit.toLowerCase()] ?? pack.acrosticLines[unit] ?? [`${unit.toUpperCase()}…`];
+        const bank = pack.acrosticLines[fold(unit)] ?? [`${unit.toUpperCase()}…`];
         return bank[Math.floor(r() * bank.length)];
       })
       .join('\n');

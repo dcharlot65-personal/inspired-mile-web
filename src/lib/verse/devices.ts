@@ -310,7 +310,7 @@ export const POWER_WORDS_NEEDED = 2;
  *
  * English asks for the word itself. Most other languages inflect, and a noun
  * must be allowed its endings and particles: a verse word counts when it begins
- * with the power word, or, for a power word of five letters or more, with all
+ * with the power word, or, for a power word of four letters or more, with all
  * but its last letter (Russian "кровь" is met by "крови", Korean "왕" by "왕이").
  * Arabic attaches the article and prepositions in front, and Chinese, Japanese
  * and Thai are written unspaced, so there the power word may sit anywhere
@@ -334,7 +334,7 @@ function usesWord(power: string, verse: string, lang: string): boolean {
   if (b === 'en') return said.includes(w);
   if (b === 'ar') return said.some((s) => s.includes(w));
   const letters = [...w];
-  const stem = letters.length >= 5 ? letters.slice(0, -1).join('') : w;
+  const stem = letters.length >= 4 ? letters.slice(0, -1).join('') : w;
   return said.some((s) => s.startsWith(stem));
 }
 

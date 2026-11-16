@@ -99,12 +99,12 @@ function romanceLetters(word: string): Letter[] | null {
   const nfd = word.toLowerCase().normalize('NFD');
   const out: Letter[] = [];
   for (const ch of nfd) {
-    if (/[̀-ͯ]/.test(ch)) {
+    if (/[\u0300-\u036f]/.test(ch)) {
       const last = out[out.length - 1];
       if (!last) continue;
-      if (ch === '̃' && last.ch === 'n') last.ch = 'ñ';
-      else if (ch === '̧' && last.ch === 'c') last.ch = 'ç';
-      else if (last.vowel && /[̀́̂̃]/.test(ch)) last.stress = true;
+      if (ch === '\u0303' && last.ch === 'n') last.ch = 'ñ';
+      else if (ch === '\u0327' && last.ch === 'c') last.ch = 'ç';
+      else if (last.vowel && /[\u0300\u0301\u0302\u0303]/.test(ch)) last.stress = true;
       continue;
     }
     if (!/[a-z]/.test(ch)) {
@@ -216,7 +216,8 @@ function romanceKeys(lang: 'es' | 'it' | 'pt'): (word: string) => string[] | nul
 function frenchKeys(word: string): string[] | null {
   const w0 = word.toLowerCase().normalize('NFC').replace(/œ/g, 'oe').replace(/æ/g, 'e').replace(/['’\-]/g, '');
   if (!/^[a-zàâäçéèêëîïôöùûüÿ]+$/.test(w0)) return null;
-  const hasVowel = (s: string) => /[aeiouyàâäéèêëîïôöùûüÿ]/.test(s);
+  // A, E, O stand for the nasal vowels once they have been read.
+  const hasVowel = (s: string) => /[aeiouyàâäéèêëîïôöùûüÿAEO]/.test(s);
   const plain = (s: string) => fold(s).replace(/ç/g, 's');
   const starts: Array<{ s: string; mute: boolean }> = [];
 
@@ -232,7 +233,11 @@ function frenchKeys(word: string): string[] | null {
 
   const keys = new Set<string>();
   for (const st of starts) {
-    let t = plain(st.s);
+    // A vowel with n or m before another consonant is nasal wherever it stands ("silence", "jambe", "monde").
+    let t = plain(st.s)
+      .replace(/(ain|ein|in|im|un|um)(?=[bcdfgjklpqrstvxz])/g, 'E')
+      .replace(/(an|am|en|em)(?=[bcdfgjklpqrstvxz])/g, 'A')
+      .replace(/(on|om)(?=[bcdfgjklpqrstvxz])/g, 'O');
     if (!st.mute) {
       // Silent closing consonants, then the nasal vowels they leave at the end.
       const cut = t.replace(/[stdxzp]+$/, '').replace(/(?<=n)[cg]$/, '');
@@ -398,8 +403,8 @@ function indonesianKey(word: string): string[] | null {
  */
 function vietnameseKey(word: string): string[] | null {
   const nfd = word.toLowerCase().normalize('NFD');
-  const level = !/[̣́̃̉]/.test(nfd);
-  const bare = nfd.replace(/[̣̀́̃̉]/g, '').normalize('NFC');
+  const level = !/[\u0301\u0303\u0309\u0323]/.test(nfd);
+  const bare = nfd.replace(/[\u0300\u0301\u0303\u0309\u0323]/g, '').normalize('NFC');
   if (!/^[a-zâăêôơưđ]+$/.test(bare)) return null;
   let rime = bare.replace(/^(ngh|ng|gh|gi(?=[aâăeêoôơuư])|kh|nh|ph|qu|th|tr|ch|[bcdđghklmnpqrstvx])/, '');
   rime = rime.replace(/^o(?=[aăe])/, '').replace(/^u(?=[yêâơ])/, '').replace(/^yê/, 'iê');
@@ -434,13 +439,13 @@ function arabicKey(word: string): string[] | null {
 
 // --- Hindi ---
 
-const DEV_SIGNS: Record<string, string> = { 'ा': 'A', 'ि': 'i', 'ी': 'i', 'ु': 'u', 'ू': 'u', 'े': 'e', 'ै': 'E', 'ो': 'o', 'ौ': 'O', 'ृ': 'r', 'ॉ': 'o', 'ॅ': 'e' };
+const DEV_SIGNS: Record<string, string> = { '\u093e': 'A', '\u093f': 'i', '\u0940': 'i', '\u0941': 'u', '\u0942': 'u', '\u0947': 'e', '\u0948': 'E', '\u094b': 'o', '\u094c': 'O', '\u0943': 'r', '\u0949': 'o', '\u0945': 'e' };
 const DEV_VOWELS: Record<string, string> = { 'अ': 'a', 'आ': 'A', 'इ': 'i', 'ई': 'i', 'उ': 'u', 'ऊ': 'u', 'ए': 'e', 'ऐ': 'E', 'ओ': 'o', 'औ': 'O', 'ऋ': 'r', 'ऑ': 'o' };
 
 /** A Devanagari word with its vowels written out in Latin letters, the unwritten "a" included. */
 function devanagariSounds(word: string): string | null {
-  const w = word.normalize('NFC').replace(/[़ँंः]/g, '');
-  if (!w || !/^[ऄ-ॣॱ-ॿ]+$/.test(w)) return null;
+  const w = word.normalize('NFC').replace(/[\u093c\u0901\u0902\u0903]/g, '');
+  if (!w || !/^[ऄ-\u0963ॱ-ॿ]+$/.test(w)) return null;
   const cs = [...w];
   let out = '';
   for (let i = 0; i < cs.length; i++) {
@@ -452,7 +457,7 @@ function devanagariSounds(word: string): string | null {
       if (next && DEV_SIGNS[next]) {
         out += DEV_SIGNS[next];
         i++;
-      } else if (next === '्') i++;
+      } else if (next === '\u094d') i++;
       else if (next !== undefined) out += 'a';
     }
   }
@@ -560,7 +565,10 @@ const RULES: Record<string, Rule> = {
 export function rhymes(a: string, b: string, lang = 'en'): boolean {
   const fa = fold(a);
   const fb = fold(b);
-  if (!fa || !fb || fa === fb) return false;
+  if (!fa || !fb) return false;
+  // Folding drops Vietnamese tones, and two Vietnamese words that differ only in tone are different words.
+  const same = baseLang(lang) === 'vi' ? a.normalize('NFC').toLowerCase() === b.normalize('NFC').toLowerCase() : fa === fb;
+  if (same) return false;
   const rule = RULES[baseLang(lang)];
   if (rule) {
     const verdict = rule(a, b);
