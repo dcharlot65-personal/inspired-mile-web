@@ -359,3 +359,12 @@ describe('opponent', () => {
     expect(seen).toMatch(/You are cursed: Your verse may not contain the letter/);
   });
 });
+
+describe('ear', () => {
+  it('breaks a transcript into lines of verse at the pauses', async () => {
+    const { transcriptToVerse } = await import('../ear');
+    expect(transcriptToVerse(' Who dares to stand upon my stage?  I put the question to thy rage. ')).toBe('Who dares to stand upon my stage?\nI put the question to thy rage.');
+    expect(transcriptToVerse('Never fear, never yield, never kneel')).toBe('Never fear,\nNever yield,\nNever kneel'.replace(/N/g, (m, i) => (i === 0 ? 'N' : 'n')));
+    expect(transcriptToVerse('')).toBe('');
+  });
+});

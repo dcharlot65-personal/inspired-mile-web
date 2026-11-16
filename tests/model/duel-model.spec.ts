@@ -9,6 +9,10 @@ import { test, expect } from '@playwright/test';
 const TIERS = (process.env.TIERS ?? 'lite,standard,grand').split(',');
 const LABEL: Record<string, RegExp> = { lite: /LFM2\.5 350M/, standard: /LFM3 1\.7B/, grand: /Gemma 4 E2B/ };
 
+test.beforeEach(async ({ page }) => {
+  await page.addInitScript(() => localStorage.setItem('inspired-mile-age-verified', 'adult'));
+});
+
 for (const tier of TIERS) {
   test(`${tier}: the model loads, writes the opening verse and judges the round`, async ({ page }) => {
     const errors: string[] = [];

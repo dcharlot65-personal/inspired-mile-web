@@ -145,7 +145,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               </div>
 
               <div class="flex items-center justify-between gap-3">
-                <button id="voice-toggle" class="text-xs text-obsidian-500 hover:text-gold-400 transition-colors"><span id="voice-label">Voice: Off</span></button>
+                <div class="flex items-center gap-4">
+                  <button id="mic-btn" class="flex items-center gap-2 text-xs px-3 py-2 rounded-lg border border-obsidian-700 text-obsidian-300 hover:text-gold-400 hover:border-gold-500/40 transition-colors" aria-pressed="false">
+                    <span aria-hidden="true">🎙</span><span id="mic-label">Speak it</span>
+                  </button>
+                  <button id="voice-toggle" class="text-xs text-obsidian-500 hover:text-gold-400 transition-colors"><span id="voice-label">Voice: Off</span></button>
+                </div>
                 <button id="submit-verse" class="btn-primary px-8" disabled>Speak your verse</button>
               </div>
             </div>
@@ -189,6 +194,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       JUDGE_POOL, ROUNDS, createDuel, illegalMove, inkAt, matchWinner, moveCost, resolveRound, scoreVerse, starterDeck,
       type Duel, type DuelDeck, type PlayerMove, type RoundResult, type VerseScore,
     } from '../lib/verse/duel';
+    import { cancelListening, EAR_MEGABYTES, isEarLoaded, isListening, loadEar, startListening, stopListening } from '../lib/ear';
     import { getForm } from '../lib/verse/forms';
     import { CRITERIA } from '../lib/verse/judge';
     import { LANGUAGE_NAMES, writeOpponentVerse, type Difficulty } from '../lib/verse/opponent';
@@ -412,7 +418,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     function say(text: string) {
       if (!voiceEnabled) return;
       duckMusic();
-      speak(text);
+      speak(text, undefined, duel?.lang ?? 'en');
       const t = setInterval(() => {
         if (!isSpeaking()) {
           clearInterval(t);
@@ -429,6 +435,57 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       }
       label.textContent = voiceEnabled ? 'Voice: On' : 'Voice: Off';
       if (!voiceEnabled) stopSpeaking();
+    });
+
+    // --- Microphone: speech is transcribed on the device ---
+    const micBtn = $<HTMLButtonElement>('mic-btn');
+    const micLabel = $('mic-label');
+    async function finishTake() {
+      micLabel.textContent = 'Transcribing…';
+      micBtn.disabled = true;
+      try {
+        const said = await stopListening(duel?.lang ?? 'en');
+        if (said) {
+          verseInput.value = verseInput.value.trim() ? `${verseInput.value.trim()}\n${said}` : said;
+          renderChecks();
+          updateSubmit();
+        }
+        micLabel.textContent = said ? 'Speak it' : 'Heard nothing; try again';
+      } catch (err) {
+        console.error('[mic]', err);
+        micLabel.textContent = 'Could not transcribe';
+      }
+      micBtn.disabled = false;
+      micBtn.setAttribute('aria-pressed', 'false');
+      micBtn.classList.remove('border-crimson-500', 'text-crimson-400');
+    }
+    micBtn.addEventListener('click', async () => {
+      if (isListening()) return finishTake();
+      if (!navigator.mediaDevices?.getUserMedia) {
+        micLabel.textContent = 'No microphone here';
+        return;
+      }
+      try {
+        if (!isEarLoaded()) {
+          micBtn.disabled = true;
+          micLabel.textContent = `Loading the ear (${EAR_MEGABYTES} MB, once)…`;
+          const ok = await loadEar((t) => { micLabel.textContent = t; });
+          micBtn.disabled = false;
+          if (!ok) {
+            micLabel.textContent = 'The ear could not load';
+            return;
+          }
+        }
+        await startListening(finishTake);
+        micLabel.textContent = 'Listening… tap to stop';
+        micBtn.setAttribute('aria-pressed', 'true');
+        micBtn.classList.add('border-crimson-500', 'text-crimson-400');
+      } catch (err) {
+        console.error('[mic]', err);
+        cancelListening();
+        micBtn.disabled = false;
+        micLabel.textContent = 'Microphone not allowed';
+      }
     });
 
     // --- Round ---
