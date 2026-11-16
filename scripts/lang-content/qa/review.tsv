@@ -444,3 +444,44 @@ ja	trivia.94.q	ok	reads: with what Othello kills Desdemona; the flag is OPUS-MT 
 ja	trivia.97.o0	ok	reads: キャタリーナ（ケイト）: Katherina (Kate); the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
 ja	trivia.97.q	ok	reads: the shrew's name; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
 ja	trivia.99.q	ok	reads: who gives the "Once more unto the breach" speech; the flag is OPUS-MT ja-en's (it often answers with subtitle filler: "And I'm going to ask you a question.")
+zh	trivia.102.o3	ok	reads: 修士: a friar, monk; the flag is OPUS-MT zh-en's
+zh	trivia.104.o3	ok	reads: 《君王宝鉴》: A Mirror for Princes; the flag is OPUS-MT zh-en's
+zh	trivia.110.o1	ok	reads: closed by the king's order; the flag is OPUS-MT zh-en's
+zh	trivia.121.o3	ok	reads: 铜匣: the bronze casket; the flag is OPUS-MT zh-en's
+zh	trivia.132.q	ok	reads: what relationship Caliban claims with the island; the flag is OPUS-MT zh-en's
+zh	trivia.15.q	ok	reads: which play has the character Puck (帕克); the flag is OPUS-MT zh-en's
+zh	trivia.154.o0	ok	reads: 驼背: a hunched back; the flag is OPUS-MT zh-en's
+zh	trivia.160.o3	ok	reads: 威斯摩兰伯爵: the Earl of Westmoreland; the flag is OPUS-MT zh-en's
+zh	trivia.162.q	ok	reads: the name of the man who watches the play in the induction; the flag is OPUS-MT zh-en's
+zh	trivia.167.o1	ok	reads: 全集: the complete works; the flag is OPUS-MT zh-en's
+zh	trivia.167.o2	ok	reads: 四开本集: the quarto collection; the flag is OPUS-MT zh-en's
+zh	trivia.181.o0	ok	reads: 传奇剧（晚期传奇剧）: romances (late romances); the flag is OPUS-MT zh-en's
+zh	trivia.181.o1	ok	reads: 悲喜剧: tragicomedy; the flag is OPUS-MT zh-en's
+zh	trivia.181.o3	ok	reads: 假面剧: masque; the flag is OPUS-MT zh-en's
+zh	trivia.182.q	ok	reads: who says "…"; the flag is OPUS-MT zh-en's
+zh	trivia.185.o2	ok	reads: 当众认罪: a public confession; the flag is OPUS-MT zh-en's
+zh	trivia.187.o3	ok	reads: 乐队席: the musicians' seats; the flag is OPUS-MT zh-en's
+zh	trivia.189.q	ok	reads: who says "…"; the flag is OPUS-MT zh-en's
+zh	trivia.191.o1	ok	reads: 时间老人: Father Time; the flag is OPUS-MT zh-en's
+zh	trivia.194.o1	ok	reads: 华盖: the canopy; the flag is OPUS-MT zh-en's
+zh	trivia.194.o2	ok	reads: 苍穹: the firmament; the flag is OPUS-MT zh-en's
+zh	trivia.199.o2	ok	reads: 乌合之众: the rabble; the flag is OPUS-MT zh-en's
+zh	trivia.199.o3	ok	reads: 平民: commoners; the flag is OPUS-MT zh-en's
+zh	trivia.34.o0	ok	reads: 或名：各遂所愿: "or, What You Will", as the Chinese title has it; the flag is OPUS-MT zh-en's
+zh	trivia.34.o1	ok	reads: 或名：皆大欢喜: "or, As You Like It" (the play's Chinese label); the flag is OPUS-MT zh-en's
+zh	trivia.34.o3	ok	reads: 或名：终成眷属: "or, All's Well" (the play's Chinese label); the flag is OPUS-MT zh-en's
+zh	trivia.4.o2	ok	reads: 史诗: epics; the flag is OPUS-MT zh-en's
+zh	trivia.43.q	ok	reads: which play opens with "…"; the flag is OPUS-MT zh-en's
+zh	trivia.47.q	ok	reads: which play "…" is from; the flag is OPUS-MT zh-en's
+zh	trivia.52.o2	ok	reads: 传奇剧: the romances; the flag is OPUS-MT zh-en's
+zh	trivia.53.q	ok	reads: who says "…"; the flag is OPUS-MT zh-en's
+zh	trivia.66.o3	ok	reads: 他没有意见: he has no opinion; the flag is OPUS-MT zh-en's
+zh	trivia.72.q	ok	reads: which play has a character called Shylock; the flag is OPUS-MT zh-en's
+zh	trivia.75.o0	ok	reads: 葛莱密斯爵士: Thane of Glamis, as Zhu Shenghao's Macbeth styles him; the flag is OPUS-MT zh-en's
+zh	trivia.75.o3	ok	reads: 诺森伯兰伯爵: Earl of Northumberland; the flag is OPUS-MT zh-en's
+zh	trivia.84.o3	ok	reads: 传奇剧: romance; the flag is OPUS-MT zh-en's
+zh	trivia.90.o0	ok	reads: 考特爵士: Thane of Cawdor, as Zhu Shenghao's Macbeth styles him; the flag is OPUS-MT zh-en's
+zh	trivia.90.o1	ok	reads: 葛莱密斯爵士: Thane of Glamis; the flag is OPUS-MT zh-en's
+zh	trivia.90.o3	ok	reads: 洛斯伯爵: Earl of Ross; the flag is OPUS-MT zh-en's
+zh	trivia.97.q	ok	reads: the shrew's name; the flag is OPUS-MT zh-en's
+zh	trivia.131.o1	ok	reads: 葛罗斯特伯爵, the Earl of Gloucester, where the English distractor says Duke; Gloucester is an earl in King Lear and the option is a wrong answer either way, so it is left
