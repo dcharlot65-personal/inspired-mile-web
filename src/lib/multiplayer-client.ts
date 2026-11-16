@@ -8,7 +8,10 @@
  * and the server has no field to receive one.
  *
  * What the browser can do is check the server: auditRound() recomputes a round from the
- * two verses with the TypeScript rules and lists every number that differs.
+ * two verses with the TypeScript rules and lists every number that differs. The page must
+ * have the pronunciation table loaded first (loadPronunciation in verse/pronounce.ts):
+ * the server scores English by sound, and without the table the browser falls back to
+ * spelling rules that can answer differently.
  */
 import { onlinePlan, resolveOnlineRound, type OnlineRound, type OnlineRoundPlan } from './multiplayer-rules';
 import type { VerseScore } from './verse/duel';
@@ -27,6 +30,8 @@ export interface WireScore {
     checks: Array<{ id: string; points: number; earned: number; met: boolean }>;
     earned: number;
     kept: boolean;
+    /** Too little to be a verse: nothing is earned. */
+    thin: boolean;
   };
   device: { id: string; met: boolean };
   signature: boolean;
@@ -35,6 +40,8 @@ export interface WireScore {
   power_words: { used: string[]; met: boolean; bonus: number } | null;
   curse: { id: string; violations: number; penalty: number } | null;
   craft: number;
+  /** Why the verse earns nothing, when it does: empty, too thin to be a verse, or copied. */
+  voided: 'empty' | 'thin' | 'copied' | null;
 }
 
 export interface WireSide {
@@ -241,6 +248,8 @@ function sideProblems(who: string, wire: WireSide, local: { verse: string; score
   differ('craft', wire.score.craft, local.score.craft);
   differ('form points', wire.score.form.earned, local.score.form.earned);
   differ('form kept', wire.score.form.kept, local.score.form.kept);
+  differ('thin', wire.score.form.thin, !!local.score.form.thin);
+  differ('void', wire.score.voided, local.score.voided ?? null);
   differ('number of form checks', wire.score.form.checks.length, local.score.form.checks.length);
   wire.score.form.checks.forEach((c, i) => {
     const mine = local.score.form.checks[i];

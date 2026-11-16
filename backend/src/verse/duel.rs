@@ -5,21 +5,27 @@
 //!   craft = (form points + power-word bonus) × multiplier − curse penalties
 //!   judge = this side's share of `JUDGE_POOL`, from comparing the two verses by rule
 //!
+//! A verse that is empty, too thin to be a verse (`text::substance`) or taken from the
+//! verse it answers (`text::similarity`) is void: it lands nothing and its craft is 0. A
+//! copied verse also forfeits the judge.
+//!
 //! Everything here is pure: the same seed, cards and verses always give the same numbers.
 
 use serde::Serialize;
 
 use super::cards::{card_by_id, Card, CHARACTER_NAMES};
 use super::devices::{
-    check_device, check_power_words, check_signature, curse_violations, device_for_house, DeviceContext,
-    CURSE_PENALTY, CURSE_PENALTY_CAP, POWER_WORD_BONUS,
+    check_device, check_power_words, check_signature, curse_violations, device_in_play, DeviceContext, CURSE_PENALTY,
+    CURSE_PENALTY_CAP, POWER_WORD_BONUS,
 };
 use super::forms::{forms_for_english, get_form, score_form, Form, FormContext, FormScore, ACROSTIC_WORDS};
-use super::judge::{rules_judge, JudgeSplit, Verdict, CRITERIA, LEXICON};
-use super::text::clean_verse;
+use super::judge::{online_judge, rules_judge, JudgeSplit, Verdict, CRITERIA, LEXICON};
+use super::text::{clean_verse, similarity, words_of};
 use super::LANG;
 
 pub const ROUNDS: usize = 3;
+/// A verse this similar to the one it answers (`text::similarity`) is a copy, not an answer.
+pub const COPY_THRESHOLD: f64 = 0.5;
 
 // --- Seeded randomness ---
 
@@ -77,12 +83,16 @@ pub struct ScoreInput<'a> {
     pub card: &'a Card,
     /// The characters in this side's deck, for house synergy.
     pub deck_characters: &'a [String],
-    /// The verse a riposte may answer.
+    /// The verse this one answers: the Riposte is checked against it, and a verse copied
+    /// from it is void. `None` for a verse that opens.
     pub opponent_verse: Option<&'a str>,
     /// Curse this verse was written under.
     pub curse: Option<Curse<'a>>,
     /// Power words this side paid for.
     pub lent: Option<&'a [String]>,
+    /// The verse was chosen by the game itself (the single-player opponent's): it is not
+    /// tested for being a copy. Never set for a player's verse, and never online.
+    pub trusted: bool,
 }
 
 #[derive(Debug, Clone, PartialEq, Eq, Serialize)]
@@ -105,6 +115,18 @@ pub struct CurseScore {
     pub penalty: u32,
 }
 
+/// Why a verse earns nothing.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize)]
+#[serde(rename_all = "snake_case")]
+pub enum Voided {
+    /// No words.
+    Empty,
+    /// Too little to be a verse.
+    Thin,
+    /// Taken from the verse it answers.
+    Copied,
+}
+
 #[derive(Debug, Clone, PartialEq, Serialize)]
 pub struct VerseScore {
     pub form: FormScore,
@@ -116,19 +138,36 @@ pub struct VerseScore {
     pub power_words: Option<PowerScore>,
     pub curse: Option<CurseScore>,
     pub craft: u32,
+    /// Set when the verse earns nothing.
+    pub voided: Option<Voided>,
 }
 
 pub fn score_verse(input: &ScoreInput) -> VerseScore {
     let verse = clean_verse(input.verse);
     let form = score_form(input.form, &verse, &input.ctx);
-    let device_id = device_for_house(&input.card.house);
-    let device_met = check_device(
-        device_id,
-        &verse,
-        &DeviceContext { opponent_verse: input.opponent_verse, names: &CHARACTER_NAMES },
-    )
-    .expect("every house device exists");
-    let signature = check_signature(input.card, &verse);
+    let answered = input.opponent_verse.filter(|v| !v.is_empty()).map(clean_verse).unwrap_or_default();
+
+    let voided = if verse.is_empty() || words_of(&verse).is_empty() {
+        Some(Voided::Empty)
+    } else if form.thin {
+        Some(Voided::Thin)
+    } else if !input.trusted && !answered.is_empty() && similarity(&verse, &answered) >= COPY_THRESHOLD {
+        Some(Voided::Copied)
+    } else {
+        None
+    };
+
+    // A Riposte house with nothing to answer is held to its opening device instead.
+    let device_id = device_in_play(&input.card.house, !answered.is_empty());
+    // A void verse lands nothing: devices and signatures are for verses.
+    let device_met = voided.is_none()
+        && check_device(
+            device_id,
+            &verse,
+            &DeviceContext { opponent_verse: (!answered.is_empty()).then_some(answered.as_str()), names: &CHARACTER_NAMES },
+        )
+        .expect("every house device exists");
+    let signature = voided.is_none() && check_signature(input.card, &verse);
 
     let same_house = input
         .deck_characters
@@ -141,7 +180,7 @@ pub fn score_verse(input: &ScoreInput) -> VerseScore {
 
     let power_words = input.lent.map(|words| {
         let p = check_power_words(words, &verse);
-        PowerScore { bonus: if p.met { POWER_WORD_BONUS } else { 0 }, used: p.used, met: p.met }
+        PowerScore { bonus: if p.met && voided.is_none() { POWER_WORD_BONUS } else { 0 }, used: p.used, met: p.met }
     });
 
     let curse = input.curse.map(|c| {
@@ -149,8 +188,8 @@ pub fn score_verse(input: &ScoreInput) -> VerseScore {
         CurseScore { id: c.curse_id.to_string(), violations, penalty: CURSE_PENALTY_CAP.min(violations * CURSE_PENALTY) }
     });
 
-    // An empty verse earns nothing, whatever the cards say.
-    let base = if verse.is_empty() { 0 } else { form.earned + power_words.as_ref().map_or(0, |p| p.bonus) };
+    // A void verse earns nothing, whatever the cards say.
+    let base = if voided.is_some() { 0 } else { form.earned + power_words.as_ref().map_or(0, |p| p.bonus) };
     // Math.round(base * multiplier): halves round up.
     let rounded = (base * quarters + 2) / 4;
     let craft = rounded.saturating_sub(curse.as_ref().map_or(0, |c| c.penalty));
@@ -163,6 +202,7 @@ pub fn score_verse(input: &ScoreInput) -> VerseScore {
         power_words,
         curse,
         craft,
+        voided,
     }
 }
 
@@ -192,8 +232,10 @@ pub struct RoundResult {
 }
 
 /// `resolveRound`, with the judge share from `rulesJudge` as session.ts plays it without a
-/// model. The opponent opens, so the player may answer the opponent's verse of this round
-/// and the opponent may answer the player's verse of the round before.
+/// model. The opponent opens, so the player answers the opponent's verse of this round and
+/// the opponent answers the player's verse of the round before. The opponent's verse is
+/// the game's own and is not tested for copying. World cards are not ported: they are a
+/// single-player bonus the server has no part in.
 pub fn resolve_round(
     form: &Form,
     ctx: FormContext,
@@ -203,7 +245,7 @@ pub fn resolve_round(
 ) -> RoundResult {
     let player_verse = clean_verse(player.verse);
     let opponent_verse = clean_verse(opponent.verse);
-    let judge = rules_judge(&player_verse, &opponent_verse, ctx.lang, &LEXICON);
+    let judged = rules_judge(player.verse, opponent.verse, ctx.lang, &LEXICON, previous_player_verse);
     let player_score = score_verse(&ScoreInput {
         verse: &player_verse,
         form,
@@ -213,6 +255,7 @@ pub fn resolve_round(
         opponent_verse: Some(&opponent_verse),
         curse: player.curse,
         lent: player.lent,
+        trusted: false,
     });
     let opponent_score = score_verse(&ScoreInput {
         verse: &opponent_verse,
@@ -223,7 +266,10 @@ pub fn resolve_round(
         opponent_verse: previous_player_verse,
         curse: opponent.curse,
         lent: opponent.lent,
+        trusted: true,
     });
+    // A copy forfeits the judge as well as its craft.
+    let judge = if player_score.voided == Some(Voided::Copied) { JudgeSplit::forfeit_to(Verdict::Opponent) } else { judged };
     let player_total = player_score.craft + judge.player;
     let opponent_total = opponent_score.craft + judge.opponent;
     // Ties go to the judge's preference, then to the challenger.
@@ -292,7 +338,8 @@ pub struct OnlineSide<'a> {
     /// Every character in this side's deck, for house synergy.
     pub deck: &'a [String],
     pub verse: &'a str,
-    /// The other side's verse from the round before, which a riposte may answer.
+    /// The other side's verse from the round before: what a riposte and a comeback answer,
+    /// and what a copied verse is copied from. `None` in round one.
     pub previous_opponent_verse: Option<&'a str>,
 }
 
@@ -334,19 +381,29 @@ pub fn online_craft(plan: &RoundPlan, side: &OnlineSide) -> VerseScore {
         opponent_verse: side.previous_opponent_verse.filter(|v| !v.is_empty()),
         curse: None,
         lent: None,
+        trusted: false,
     })
 }
 
 /// Score both verses of an online round and say who took it (`resolveOnlineRound`).
 ///
-/// Both players wrote at once under the same form. The better total takes the round;
-/// level totals go to the judge's preference; level on both is a draw.
+/// Both players wrote at once under the same form, neither seeing the other's verse, so
+/// everything that "answers" (the Riposte, the judge's comeback, the test for a copy) is
+/// read against the other side's verse of the round before. A copied verse forfeits the
+/// judge to the other side. The better total takes the round; level totals go to the
+/// judge's preference; level on both is a draw.
 pub fn resolve_online_round(plan: &RoundPlan, a: &OnlineSide, b: &OnlineSide) -> OnlineRound {
     let verse_a = clean_verse(a.verse);
     let verse_b = clean_verse(b.verse);
     let score_a = online_craft(plan, &OnlineSide { verse: &verse_a, ..*a });
     let score_b = online_craft(plan, &OnlineSide { verse: &verse_b, ..*b });
-    let judge = rules_judge(&verse_a, &verse_b, LANG, &LEXICON);
+    let judged = online_judge(&verse_a, &verse_b, LANG, &LEXICON, a.previous_opponent_verse, b.previous_opponent_verse);
+    let copied = (score_a.voided == Some(Voided::Copied), score_b.voided == Some(Voided::Copied));
+    let judge = match copied {
+        (true, false) => JudgeSplit::forfeit_to(Verdict::Opponent),
+        (false, true) => JudgeSplit::forfeit_to(Verdict::Player),
+        _ => judged,
+    };
     let total_a = score_a.craft + judge.player;
     let total_b = score_b.craft + judge.opponent;
     let winner = if total_a != total_b {
@@ -428,54 +485,88 @@ pub fn online_match_winner(rounds: &[(RoundWinner, u32, u32)]) -> Option<MatchWi
 mod tests {
     use super::*;
 
+    const GOOD: &str = "Who dares to stand upon my stage?\nI put the question to thy rage";
+
     fn deck(ids: &[&str]) -> Vec<String> {
         ids.iter().map(|s| s.to_string()).collect()
     }
 
-    fn score(verse: &str, card: &str, deck_ids: &[&str]) -> VerseScore {
-        let d = deck(deck_ids);
-        score_verse(&ScoreInput {
+    fn input<'a>(verse: &'a str, card: &'a str, deck: &'a [String]) -> ScoreInput<'a> {
+        ScoreInput {
             verse,
             form: get_form("couplet").unwrap(),
             ctx: FormContext { lang: "en", acrostic: None },
             card: card_by_id(card).unwrap(),
-            deck_characters: &d,
+            deck_characters: deck,
             opponent_verse: None,
             curse: None,
             lent: None,
-        })
+            trusted: false,
+        }
+    }
+
+    fn score(verse: &str, card: &str, deck_ids: &[&str]) -> VerseScore {
+        let d = deck(deck_ids);
+        score_verse(&input(verse, card, &d))
     }
 
     #[test]
     fn craft_is_multiplied_when_the_device_and_signature_land() {
         // Hamlet: the question is his house's device, and "question" echoes his line.
-        let kept = "Who dares to stand upon my stage?\nI put the question to thy rage";
-        let s = score(kept, "DC-001", &["DC-001", "MO-001", "CA-001"]);
+        let s = score(GOOD, "DC-001", &["DC-001", "MO-001", "CA-001"]);
         assert_eq!((s.form.earned, s.device.met, s.signature, s.synergy), (20, true, true, false));
         assert_eq!(s.multiplier, 2.0);
-        assert_eq!(s.craft, 40);
+        assert_eq!((s.craft, s.voided), (40, None));
         // Two of the Danish Court in the deck: synergy, a further quarter.
-        let s = score(kept, "DC-001", &["DC-001", "DC-002", "CA-001"]);
+        let s = score(GOOD, "DC-001", &["DC-001", "DC-002", "CA-001"]);
         assert_eq!((s.synergy, s.multiplier, s.craft), (true, 2.25, 45));
     }
 
     #[test]
     fn an_empty_verse_scores_nothing_and_a_penalty_never_goes_below_zero() {
-        assert_eq!(score("", "DC-001", &["DC-001"]).craft, 0);
-        assert_eq!(score("  \n\u{200b}\n", "DC-001", &["DC-001"]).craft, 0);
+        assert_eq!(score("", "DC-001", &["DC-001"]).voided, Some(Voided::Empty));
+        let blank = score("  \n\u{200b}\n?!", "DC-001", &["DC-001"]);
+        assert_eq!((blank.craft, blank.voided, blank.device.met), (0, Some(Voided::Empty), false));
         let d = deck(&["DC-001"]);
         let cursed = score_verse(&ScoreInput {
-            verse: "sssss sssss sssss sssss",
-            form: get_form("couplet").unwrap(),
-            ctx: FormContext { lang: "en", acrostic: None },
-            card: card_by_id("DC-001").unwrap(),
-            deck_characters: &d,
-            opponent_verse: None,
             curse: Some(Curse { curse_id: "forbidden-letter", param: "s" }),
-            lent: None,
+            ..input("Some sister sings softly\nSo she says", "DC-001", &d)
         });
         assert_eq!(cursed.curse.as_ref().map(|c| c.penalty), Some(12));
         assert_eq!(cursed.craft, 0);
+    }
+
+    #[test]
+    fn tokens_laid_out_like_a_verse_are_not_a_verse() {
+        let d = deck(&["DC-001", "MO-001", "CA-001"]);
+        // One word three times once swept Anaphora.
+        let anaphora = ScoreInput { form: get_form("anaphora").unwrap(), ..input("Never\nNever\nNever", "DC-001", &d) };
+        let s = score_verse(&anaphora);
+        assert_eq!((s.craft, s.voided, s.form.thin, s.form.earned), (0, Some(Voided::Thin), true, 0));
+        // An invisible couplet once scored the full form.
+        let s = score("\u{3164}\u{3164}\n\u{3164}", "DC-001", &["DC-001"]);
+        assert_eq!((s.craft, s.voided), (0, Some(Voided::Empty)));
+        // A question mark alone lands nothing.
+        let s = score("?", "DC-001", &["DC-001"]);
+        assert_eq!((s.device.met, s.craft), (false, 0));
+    }
+
+    #[test]
+    fn a_verse_taken_from_the_one_it_answers_is_void() {
+        let d = deck(&["VC-001", "MO-001", "CA-001"]);
+        let theirs = "I stand upon the midnight stage\nAnd answer all thy empty rage";
+        let copy = score_verse(&ScoreInput { opponent_verse: Some(theirs), ..input(theirs, "VC-001", &d) });
+        assert_eq!((copy.craft, copy.voided, copy.device.met), (0, Some(Voided::Copied), false));
+        // Throwing one word back is the Riposte, not a copy.
+        let riposte = "Thy midnight is a candle in the wind\nIt gutters and leaves nothing behind";
+        let own = score_verse(&ScoreInput { opponent_verse: Some(theirs), ..input(riposte, "VC-001", &d) });
+        assert_eq!((own.voided, own.device.id.as_str(), own.device.met), (None, "riposte", true));
+        // With nothing to answer, a Riposte house is held to the outcry.
+        let opening = score_verse(&input("Hear me now!\nI open and I bow", "VC-001", &d));
+        assert_eq!((opening.device.id.as_str(), opening.device.met), ("exclaim", true));
+        // The game's own verse is not tested.
+        let trusted = score_verse(&ScoreInput { opponent_verse: Some(theirs), trusted: true, ..input(theirs, "VC-001", &d) });
+        assert_eq!(trusted.voided, None);
     }
 
     #[test]
@@ -487,8 +578,7 @@ mod tests {
     }
 
     #[test]
-    fn the_generator_matches_the_typescript_one() {
-        // rng(1) and rng(42) in duel.ts, first values times 1e9, floored.
+    fn the_generator_is_deterministic_and_stays_below_one() {
         let mut r = Rng::new(1);
         let first = (r.next() * 1e9).floor() as u64;
         let mut again = Rng::new(1);
@@ -512,29 +602,49 @@ mod tests {
         }
     }
 
+    fn couplet() -> RoundPlan {
+        RoundPlan { index: 0, form_id: "couplet".into(), acrostic: None }
+    }
+
     #[test]
     fn an_online_round_is_the_same_from_either_seat() {
-        let plan = RoundPlan { index: 0, form_id: "couplet".into(), acrostic: None };
         let da = deck(&["DC-001", "MO-001", "CA-001"]);
         let db = deck(&["MO-001", "CA-001", "DC-002"]);
-        let a = OnlineSide {
-            card: card_by_id("DC-001").unwrap(),
-            deck: &da,
-            verse: "Who dares to stand upon my stage?\nI put the question to thy rage",
-            previous_opponent_verse: None,
-        };
+        let a = OnlineSide { card: card_by_id("DC-001").unwrap(), deck: &da, verse: GOOD, previous_opponent_verse: Some("A borrowed light") };
         let b = OnlineSide {
             card: card_by_id("MO-001").unwrap(),
             deck: &db,
             verse: "The night is bright with borrowed light\nAnd I shall win this fight",
-            previous_opponent_verse: None,
+            previous_opponent_verse: Some("My stage, my question"),
         };
-        let ab = resolve_online_round(&plan, &a, &b);
-        let ba = resolve_online_round(&plan, &b, &a);
+        let ab = resolve_online_round(&couplet(), &a, &b);
+        let ba = resolve_online_round(&couplet(), &b, &a);
         assert_eq!((ab.a.total, ab.b.total), (ba.b.total, ba.a.total));
+        assert_eq!((ab.a.score.clone(), ab.b.score.clone()), (ba.b.score, ba.a.score));
         assert_eq!(ab.a.judge + ab.b.judge, super::super::judge::JUDGE_POOL);
-        let same = resolve_online_round(&plan, &a, &a);
+        let same = resolve_online_round(&couplet(), &a, &OnlineSide { previous_opponent_verse: a.previous_opponent_verse, ..a });
         assert_eq!(same.winner, RoundWinner::Draw);
+    }
+
+    #[test]
+    fn pasting_the_opponents_last_verse_back_loses_the_round_online() {
+        let da = deck(&["DC-001", "MO-001", "CA-001"]);
+        let db = deck(&["MO-002", "CA-002", "DC-002"]);
+        let theirs = "The night is bright with borrowed light\nAnd I shall win this fight";
+        let paste = OnlineSide { card: card_by_id("DC-001").unwrap(), deck: &da, verse: theirs, previous_opponent_verse: Some(theirs) };
+        let honest = OnlineSide {
+            card: card_by_id("MO-002").unwrap(),
+            deck: &db,
+            verse: "A plain new line of mine\nAnother, less than fine",
+            previous_opponent_verse: Some(GOOD),
+        };
+        let r = resolve_online_round(&couplet(), &paste, &honest);
+        assert_eq!((r.a.score.voided, r.a.score.craft, r.a.judge, r.a.total), (Some(Voided::Copied), 0, 0, 0));
+        assert_eq!((r.b.judge, r.winner), (24, RoundWinner::B));
+        assert_eq!(r.criteria, [Verdict::Opponent; 4]);
+        // From the other seat the same thing happens to the same player.
+        let r = resolve_online_round(&couplet(), &honest, &paste);
+        assert_eq!((r.b.total, r.a.judge, r.winner), (0, 24, RoundWinner::A));
     }
 
     #[test]

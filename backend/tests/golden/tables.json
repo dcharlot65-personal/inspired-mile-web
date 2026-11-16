@@ -8,7 +8,9 @@
   "CURSE_PENALTY": 4,
   "CURSE_PENALTY_CAP": 12,
   "POWER_WORD_BONUS": 6,
-  "POWER_WORDS_NEEDED": 2
+  "POWER_WORDS_NEEDED": 2,
+  "MIN_DISTINCT_WORDS": 3,
+  "COPY_THRESHOLD": 0.5
  },
  "forms": [
   {
@@ -182,6 +184,1045 @@
   "brevity": 6,
   "shortLine": 5
  },
+ "stopWords": [
+  "a",
+  "an",
+  "the",
+  "and",
+  "or",
+  "but",
+  "nor",
+  "so",
+  "yet",
+  "for",
+  "of",
+  "to",
+  "in",
+  "on",
+  "at",
+  "by",
+  "with",
+  "from",
+  "into",
+  "upon",
+  "onto",
+  "over",
+  "under",
+  "up",
+  "down",
+  "out",
+  "off",
+  "as",
+  "is",
+  "am",
+  "are",
+  "was",
+  "were",
+  "be",
+  "been",
+  "being",
+  "have",
+  "has",
+  "had",
+  "having",
+  "do",
+  "does",
+  "did",
+  "done",
+  "will",
+  "would",
+  "shall",
+  "should",
+  "can",
+  "could",
+  "may",
+  "might",
+  "must",
+  "not",
+  "no",
+  "none",
+  "this",
+  "that",
+  "these",
+  "those",
+  "there",
+  "here",
+  "where",
+  "when",
+  "what",
+  "which",
+  "who",
+  "whom",
+  "whose",
+  "why",
+  "how",
+  "i",
+  "me",
+  "my",
+  "mine",
+  "we",
+  "us",
+  "our",
+  "ours",
+  "you",
+  "your",
+  "yours",
+  "he",
+  "him",
+  "his",
+  "she",
+  "her",
+  "hers",
+  "it",
+  "its",
+  "they",
+  "them",
+  "their",
+  "theirs",
+  "thou",
+  "thee",
+  "thy",
+  "thine",
+  "ye",
+  "all",
+  "any",
+  "both",
+  "each",
+  "every",
+  "few",
+  "more",
+  "most",
+  "much",
+  "many",
+  "some",
+  "such",
+  "only",
+  "own",
+  "same",
+  "than",
+  "then",
+  "too",
+  "very",
+  "just",
+  "also",
+  "even",
+  "ever",
+  "again",
+  "once",
+  "if",
+  "because",
+  "while",
+  "though",
+  "although",
+  "about",
+  "above",
+  "after",
+  "before",
+  "against",
+  "between",
+  "through",
+  "during",
+  "until",
+  "unless",
+  "cannot",
+  "hath",
+  "doth",
+  "art",
+  "dost",
+  "hast",
+  "wilt",
+  "shalt",
+  "lord",
+  "what's",
+  "that's",
+  "there's",
+  "it's",
+  "i'm",
+  "i'll",
+  "don't",
+  "can't",
+  "won't",
+  "tis",
+  "twas",
+  "come",
+  "comes",
+  "came",
+  "go",
+  "goes",
+  "went",
+  "get",
+  "gets",
+  "got",
+  "make",
+  "makes",
+  "made",
+  "take",
+  "takes",
+  "took",
+  "like",
+  "look",
+  "looks",
+  "thing",
+  "things"
+ ],
+ "pronunciationWords": 124986,
+ "deviceInPlay": [
+  {
+   "house": "Danish Court",
+   "answering": true,
+   "device": "question"
+  },
+  {
+   "house": "Danish Court",
+   "answering": false,
+   "device": "question"
+  },
+  {
+   "house": "Capulet",
+   "answering": true,
+   "device": "exclaim"
+  },
+  {
+   "house": "Capulet",
+   "answering": false,
+   "device": "exclaim"
+  },
+  {
+   "house": "Montague",
+   "answering": true,
+   "device": "internal-rhyme"
+  },
+  {
+   "house": "Montague",
+   "answering": false,
+   "device": "internal-rhyme"
+  },
+  {
+   "house": "Forest of Arden",
+   "answering": true,
+   "device": "alliteration"
+  },
+  {
+   "house": "Forest of Arden",
+   "answering": false,
+   "device": "alliteration"
+  },
+  {
+   "house": "Verona Court",
+   "answering": true,
+   "device": "riposte"
+  },
+  {
+   "house": "Verona Court",
+   "answering": false,
+   "device": "exclaim"
+  },
+  {
+   "house": "The Tempest",
+   "answering": true,
+   "device": "swell"
+  },
+  {
+   "house": "The Tempest",
+   "answering": false,
+   "device": "swell"
+  },
+  {
+   "house": "Scottish Court",
+   "answering": true,
+   "device": "repetition"
+  },
+  {
+   "house": "Scottish Court",
+   "answering": false,
+   "device": "repetition"
+  },
+  {
+   "house": "Illyria",
+   "answering": true,
+   "device": "brevity"
+  },
+  {
+   "house": "Illyria",
+   "answering": false,
+   "device": "brevity"
+  },
+  {
+   "house": "Rome",
+   "answering": true,
+   "device": "invocation"
+  },
+  {
+   "house": "Rome",
+   "answering": false,
+   "device": "invocation"
+  },
+  {
+   "house": "Legendary",
+   "answering": true,
+   "device": "monorhyme"
+  },
+  {
+   "house": "Legendary",
+   "answering": false,
+   "device": "monorhyme"
+  },
+  {
+   "house": "Lake District",
+   "answering": true,
+   "device": "balance"
+  },
+  {
+   "house": "Lake District",
+   "answering": false,
+   "device": "balance"
+  },
+  {
+   "house": "Gothic Circle",
+   "answering": true,
+   "device": "ring"
+  },
+  {
+   "house": "Gothic Circle",
+   "answering": false,
+   "device": "ring"
+  },
+  {
+   "house": "Olympus",
+   "answering": true,
+   "device": "grandeur"
+  },
+  {
+   "house": "Olympus",
+   "answering": false,
+   "device": "grandeur"
+  },
+  {
+   "house": "Underworld",
+   "answering": true,
+   "device": "riposte"
+  },
+  {
+   "house": "Underworld",
+   "answering": false,
+   "device": "exclaim"
+  },
+  {
+   "house": "No Such House",
+   "answering": true,
+   "device": "question"
+  },
+  {
+   "house": "No Such House",
+   "answering": false,
+   "device": "question"
+  }
+ ],
+ "signatures": [
+  {
+   "cardId": "SM-001",
+   "words": [
+    "compare",
+    "summer"
+   ],
+   "needed": 1
+  },
+  {
+   "cardId": "MO-001",
+   "words": [
+    "soft",
+    "light",
+    "yonder",
+    "window",
+    "breaks"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "CA-001",
+   "words": [
+    "name",
+    "call",
+    "rose"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "DC-001",
+   "words": [
+    "question"
+   ],
+   "needed": 1
+  },
+  {
+   "cardId": "DC-002",
+   "words": [
+    "rosemary",
+    "remembrance"
+   ],
+   "needed": 1
+  },
+  {
+   "cardId": "MO-002",
+   "words": [
+    "plague",
+    "houses"
+   ],
+   "needed": 1
+  },
+  {
+   "cardId": "FA-001",
+   "words": [
+    "fools",
+    "mortals"
+   ],
+   "needed": 1
+  },
+  {
+   "cardId": "FA-002",
+   "words": [
+    "flowery"
+   ],
+   "needed": 1
+  },
+  {
+   "cardId": "RL-001",
+   "words": [
+    "alas",
+    "poor",
+    "yorick",
+    "knew",
+    "horatio"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "RL-002",
+   "words": [
+    "charms",
+    "o'erthrown"
+   ],
+   "needed": 1
+  },
+  {
+   "cardId": "PT-001",
+   "words": [
+    "course",
+    "true",
+    "love",
+    "never",
+    "smooth"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "PT-002",
+   "words": [
+    "double",
+    "toil",
+    "trouble"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "VC-001",
+   "words": [
+    "disturb",
+    "streets",
+    "lives",
+    "forfeit",
+    "peace"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "VC-002",
+   "words": [
+    "violent",
+    "delights",
+    "ends"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "VC-003",
+   "words": [
+    "drudge",
+    "toil",
+    "delight"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "TP-001",
+   "words": [
+    "stuff",
+    "dreams"
+   ],
+   "needed": 1
+  },
+  {
+   "cardId": "TP-002",
+   "words": [
+    "hail",
+    "great",
+    "master",
+    "grave"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "TP-003",
+   "words": [
+    "island",
+    "sycorax",
+    "mother"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "MO-003",
+   "words": [
+    "keep",
+    "peace",
+    "sword"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "CA-002",
+   "words": [
+    "drawn",
+    "talk",
+    "peace",
+    "hate",
+    "word"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "DC-003",
+   "words": [
+    "words",
+    "thoughts",
+    "remain",
+    "below"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "FA-003",
+   "words": [
+    "moonlight",
+    "proud",
+    "titania"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "RL-003",
+   "words": [
+    "dagger"
+   ],
+   "needed": 1
+  },
+  {
+   "cardId": "PT-003",
+   "words": [
+    "girdle",
+    "round",
+    "earth",
+    "forty",
+    "minutes"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "SC-001",
+   "words": [
+    "dare",
+    "become",
+    "dares"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "SC-002",
+   "words": [
+    "spirits",
+    "tend",
+    "mortal",
+    "thoughts",
+    "unsex"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "SC-003",
+   "words": [
+    "kings"
+   ],
+   "needed": 1
+  },
+  {
+   "cardId": "IL-001",
+   "words": [
+    "what",
+    "not"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "IL-002",
+   "words": [
+    "born",
+    "great",
+    "achieve",
+    "greatness",
+    "thrust"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "IL-003",
+   "words": [
+    "love",
+    "sought",
+    "good",
+    "given",
+    "unsought",
+    "better"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "RM-001",
+   "words": [
+    "loved",
+    "caesar",
+    "less",
+    "rome"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "RM-002",
+   "words": [
+    "fault",
+    "dear",
+    "brutus",
+    "stars",
+    "ourselves"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "RM-003",
+   "words": [
+    "friends",
+    "romans",
+    "countrymen",
+    "lend",
+    "ears"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "MO-004",
+   "words": [
+    "morning",
+    "seen",
+    "tears",
+    "augmenting",
+    "fresh"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "CA-003",
+   "words": [
+    "marry",
+    "theme",
+    "talk"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "DC-004",
+   "words": [
+    "cracks",
+    "noble",
+    "heart",
+    "good",
+    "night",
+    "sweet",
+    "prince"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "FA-004",
+   "words": [
+    "rare",
+    "vision",
+    "dream",
+    "past"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "VC-004",
+   "words": [
+    "times",
+    "afford",
+    "time"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "TP-004",
+   "words": [
+    "brave",
+    "world",
+    "people"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "RL-004",
+   "words": [
+    "bounty",
+    "boundless",
+    "love",
+    "deep"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "RL-005",
+   "words": [
+    "glisters",
+    "gold"
+   ],
+   "needed": 1
+  },
+  {
+   "cardId": "RL-006",
+   "words": [
+    "uneasy",
+    "lies",
+    "head",
+    "wears",
+    "crown"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "RL-007",
+   "words": [
+    "drown",
+    "book"
+   ],
+   "needed": 1
+  },
+  {
+   "cardId": "RL-008",
+   "words": [
+    "dear",
+    "father",
+    "business"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "RL-009",
+   "words": [
+    "bless",
+    "bottom",
+    "translated"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "PT-004",
+   "words": [
+    "poppy",
+    "mandragora",
+    "drowsy",
+    "syrups",
+    "world"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "PT-005",
+   "words": [
+    "fetch",
+    "flower",
+    "herb",
+    "showed"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "PT-006",
+   "words": [
+    "secure",
+    "hour",
+    "uncle",
+    "stole",
+    "juice",
+    "cursed",
+    "hebona",
+    "vial"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "PT-007",
+   "words": [
+    "cauldron",
+    "boil",
+    "bake",
+    "newt",
+    "frog"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "PT-008",
+   "words": [
+    "full",
+    "fathom",
+    "five",
+    "father",
+    "lies",
+    "bones",
+    "coral"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "PT-009",
+   "words": [
+    "liquid",
+    "drink",
+    "strength",
+    "twenty",
+    "dispatch",
+    "straight"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "LD-001",
+   "words": [
+    "wandered",
+    "lonely",
+    "cloud",
+    "floats",
+    "high",
+    "vales",
+    "hills"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "LD-002",
+   "words": [
+    "water",
+    "drop",
+    "drink"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "LD-003",
+   "words": [
+    "beauty",
+    "loveliness",
+    "increases"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "GC-001",
+   "words": [
+    "walks",
+    "beauty",
+    "night",
+    "cloudless",
+    "climes",
+    "starry",
+    "skies"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "GC-002",
+   "words": [
+    "beware",
+    "fearless",
+    "therefore",
+    "powerful"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "GC-003",
+   "words": [
+    "midnight",
+    "dreary",
+    "pondered",
+    "weak",
+    "weary"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "GC-004",
+   "words": [
+    "world",
+    "grain",
+    "sand",
+    "heaven",
+    "wild",
+    "flower"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "GC-005",
+   "words": [
+    "winter",
+    "spring",
+    "behind"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "LD-004",
+   "words": [
+    "love",
+    "count",
+    "ways"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "LD-005",
+   "words": [
+    "remember",
+    "gone",
+    "away",
+    "silent",
+    "land"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "OL-001",
+   "words": [
+    "cloud",
+    "gatherer",
+    "wide",
+    "heavens"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "OL-002",
+   "words": [
+    "wisdom",
+    "flight",
+    "dusk"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "OL-003",
+   "words": [
+    "song",
+    "healing",
+    "radiant"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "OL-004",
+   "words": [
+    "gods",
+    "resist",
+    "power",
+    "love"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "OL-005",
+   "words": [
+    "swift",
+    "thought",
+    "carry",
+    "words",
+    "gods",
+    "mortal",
+    "ears"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "UW-001",
+   "words": [
+    "souls",
+    "patient"
+   ],
+   "needed": 1
+  },
+  {
+   "cardId": "UW-002",
+   "words": [
+    "seeds",
+    "bound",
+    "myself",
+    "worlds",
+    "forever"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "OL-006",
+   "words": [
+    "tell",
+    "muse",
+    "ways",
+    "wandered"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "UW-003",
+   "words": [
+    "dare",
+    "gaze",
+    "last"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "OL-007",
+   "words": [
+    "rather",
+    "live",
+    "short",
+    "life",
+    "glory",
+    "long",
+    "forgotten"
+   ],
+   "needed": 2
+  }
+ ],
  "devices": [
   "question",
   "exclaim",
@@ -320,33 +1361,25 @@
   "wit"
  ],
  "lexicon": [
-  "about",
   "achieve",
   "achilles",
   "afford",
-  "again",
   "alas",
-  "allan",
   "antony",
   "aphrodite",
   "apollo",
-  "apothecary's",
   "ariel",
   "athena",
   "augmenting",
   "away",
   "bake",
   "banquo",
-  "barrett",
   "beauty",
   "become",
-  "been",
-  "before",
   "behind",
   "below",
   "benvolio",
   "better",
-  "between",
   "beware",
   "blake",
   "bless",
@@ -354,44 +1387,31 @@
   "bones",
   "book",
   "born",
-  "both",
   "bottom",
-  "bottom's",
   "bound",
   "boundless",
   "bounty",
   "brave",
   "breaks",
-  "brew",
   "browning",
   "brutus",
   "business",
   "byron",
-  "bysshe",
   "caesar",
   "caliban",
   "call",
-  "came",
-  "cannot",
   "capulet",
   "carry",
-  "casket",
   "cassius",
   "cauldron",
   "charms",
-  "christina",
   "claudius",
   "climes",
   "cloud",
-  "cloud-gatherer",
   "cloudless",
-  "codex",
   "coleridge",
-  "come",
-  "comes",
   "compare",
   "coral",
-  "cordelia's",
   "count",
   "countrymen",
   "course",
@@ -408,7 +1428,6 @@
   "dispatch",
   "disturb",
   "double",
-  "down",
   "drawn",
   "dream",
   "dreams",
@@ -421,15 +1440,8 @@
   "dusk",
   "ears",
   "earth",
-  "edgar",
-  "elixir",
-  "elizabeth",
   "ends",
   "escalus",
-  "even",
-  "ever",
-  "every",
-  "extract",
   "father",
   "fathom",
   "fault",
@@ -446,10 +1458,10 @@
   "forgotten",
   "forty",
   "fresh",
-  "friar",
   "friends",
   "frog",
   "full",
+  "gatherer",
   "gaze",
   "girdle",
   "given",
@@ -467,36 +1479,27 @@
   "hail",
   "hamlet",
   "hate",
-  "hath",
-  "have",
   "head",
   "healing",
   "heart",
   "heaven",
   "heavens",
   "hebona",
-  "hemlock",
   "herb",
-  "here",
   "hermes",
   "high",
   "hills",
   "horatio",
   "hour",
   "houses",
-  "i'll",
   "increases",
-  "into",
-  "island's",
-  "john",
+  "island",
   "juice",
   "juliet",
   "keats",
   "keep",
-  "king",
   "kings",
   "knew",
-  "lady",
   "land",
   "last",
   "lawrence",
@@ -505,45 +1508,29 @@
   "lies",
   "life",
   "light",
-  "like",
   "liquid",
   "live",
   "lives",
   "lonely",
   "long",
-  "look",
-  "lord",
   "love",
   "loved",
   "loveliness",
   "macbeth",
-  "macbeth's",
-  "made",
   "malvolio",
   "mandragora",
-  "mandrake",
-  "many",
-  "mark",
   "marry",
-  "mary",
-  "mask",
   "master",
   "medusa",
   "mercutio",
-  "mermaid's",
   "midnight",
-  "mind",
-  "mine",
   "minutes",
   "miranda",
-  "mistletoe",
   "montague",
   "moonlight",
-  "more",
   "morning",
   "mortal",
   "mortals",
-  "most",
   "mother",
   "muse",
   "myself",
@@ -552,16 +1539,10 @@
   "newt",
   "night",
   "noble",
-  "none",
-  "nurse",
-  "o'er",
   "o'erthrown",
   "oberon",
-  "oberon's",
   "odysseus",
   "olivia",
-  "once",
-  "only",
   "ophelia",
   "ourselves",
   "paris",
@@ -569,22 +1550,17 @@
   "patient",
   "peace",
   "people",
-  "percy",
   "persephone",
   "plague",
   "pondered",
   "poor",
   "poppy",
-  "portia's",
-  "potion",
   "power",
   "powerful",
   "prince",
   "prospero",
-  "prospero's",
   "proud",
   "puck",
-  "puck's",
   "question",
   "radiant",
   "rare",
@@ -593,39 +1569,29 @@
   "remember",
   "remembrance",
   "resist",
-  "ring",
   "romans",
   "rome",
   "romeo",
-  "romeo's",
-  "root",
   "rose",
   "rosemary",
   "rossetti",
   "round",
-  "samuel",
   "sand",
   "secure",
   "seeds",
   "seen",
-  "shall",
-  "shalt",
   "shelley",
   "short",
   "showed",
   "silent",
   "skies",
-  "skull",
   "smooth",
   "soft",
-  "some",
   "song",
-  "sonnet",
   "sought",
   "souls",
   "spirits",
   "spring",
-  "staff",
   "starry",
   "stars",
   "stole",
@@ -633,40 +1599,23 @@
   "streets",
   "strength",
   "stuff",
-  "such",
-  "summer's",
+  "summer",
   "sweet",
   "swift",
   "sword",
   "sycorax",
   "syrups",
-  "takes",
   "talk",
   "tears",
   "tell",
-  "tempest",
   "tend",
-  "than",
-  "that",
-  "that's",
-  "thee",
-  "them",
   "theme",
-  "there",
-  "there's",
   "therefore",
-  "these",
-  "thing",
-  "this",
-  "thou",
-  "though",
   "thought",
   "thoughts",
-  "through",
   "thrust",
   "time",
   "times",
-  "tincture",
   "titania",
   "toil",
   "translated",
@@ -678,9 +1627,7 @@
   "uneasy",
   "unsex",
   "unsought",
-  "upon",
   "vales",
-  "very",
   "vial",
   "viola",
   "violent",
@@ -692,36 +1639,22 @@
   "weak",
   "wears",
   "weary",
-  "what",
-  "what's",
-  "when",
-  "where",
-  "which",
-  "while",
   "wide",
   "wild",
-  "will",
-  "william",
   "window",
   "winter",
   "wisdom",
-  "witches",
-  "with",
   "word",
   "words",
   "wordsworth",
   "world",
   "worlds",
-  "would",
   "yonder",
   "yorick",
-  "yorick's",
-  "your",
   "zeus"
  ],
  "characterNames": [
-  "Sonnet",
-  "Man",
+  "Sonnet Man",
   "Romeo",
   "Juliet",
   "Hamlet",
@@ -729,61 +1662,58 @@
   "Mercutio",
   "Puck",
   "Titania",
-  "Prince",
   "Escalus",
-  "Friar",
+  "Prince Escalus",
   "Lawrence",
-  "Nurse",
+  "Friar Lawrence",
+  "The Nurse",
   "Prospero",
   "Ariel",
   "Caliban",
   "Benvolio",
   "Tybalt",
-  "King",
   "Claudius",
+  "King Claudius",
   "Oberon",
   "Macbeth",
-  "Lady",
-  "Macbeth",
+  "Lady Macbeth",
   "Banquo",
   "Viola",
   "Malvolio",
   "Olivia",
   "Brutus",
   "Cassius",
-  "Mark",
   "Antony",
-  "Lord",
+  "Mark Antony",
   "Montague",
-  "Lady",
+  "Lord Montague",
   "Capulet",
+  "Lady Capulet",
   "Horatio",
-  "Bottom",
+  "Nick Bottom",
+  "Bully Bottom",
+  "Bottom the weaver",
   "Paris",
   "Miranda",
-  "William",
   "Wordsworth",
-  "Samuel",
+  "William Wordsworth",
   "Coleridge",
-  "John",
+  "Samuel Coleridge",
   "Keats",
-  "Lord",
+  "John Keats",
   "Byron",
-  "Mary",
+  "Lord Byron",
   "Shelley",
-  "Edgar",
-  "Allan",
+  "Mary Shelley",
   "Poe",
-  "William",
+  "Edgar Allan Poe",
   "Blake",
-  "Percy",
-  "Bysshe",
-  "Shelley",
-  "Elizabeth",
-  "Barrett",
+  "William Blake",
+  "Percy Bysshe Shelley",
   "Browning",
-  "Christina",
+  "Elizabeth Barrett Browning",
   "Rossetti",
+  "Christina Rossetti",
   "Zeus",
   "Athena",
   "Apollo",

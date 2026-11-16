@@ -12,21 +12,31 @@
  *
  * Nothing computed here is ever sent to the server.
  *
+ * English is scored by sound, from the pronunciation table (verse/pronounce.ts).
+ * The server always has the table; a page must load it (loadPronunciation)
+ * before it previews or audits, or its numbers are the spelling rules' and can
+ * differ from the server's.
+ *
  * How an online round differs from the single-player duel in duel.ts:
  *   - both players write at once, under the same form, without seeing the
- *     other's verse; so the riposte answers the opponent's verse from the
- *     PREVIOUS round (in round one there is nothing to answer yet);
+ *     other's verse. So everything that "answers" is read against the other
+ *     side's verse of the round BEFORE: the Riposte, the judge's comeback (wit)
+ *     and the test for a copied verse. In round one there is nothing to answer:
+ *     a Riposte house is held to its opening device, as in the duel;
  *   - no relics, potions or ink in this first version;
- *   - the judge share is always the rule-based comparison (rulesJudge): no
- *     language model takes part;
- *   - neither side is "the challenger", so a dead-level round is a draw.
+ *   - the judge share is always the rule-based comparison: no language model
+ *     takes part;
+ *   - neither side is "the challenger", so a dead-level round is a draw;
+ *   - a copied verse forfeits the judge to the other side, whichever seat it is in.
  */
 import { CARD_CATALOG, getCardById } from './cards';
-import { ROUNDS, rng, scoreVerse, type VerseScore } from './verse/duel';
+import { invocationNames, signatureWords } from './verse/devices';
+import { JUDGE_POOL, ROUNDS, rng, scoreVerse, type VerseScore } from './verse/duel';
 import { formsFor, getForm } from './verse/forms';
 import { CRITERIA, rulesJudge } from './verse/judge';
+import { rulesFor } from './verse/lang';
 import { getPack } from './verse/packs';
-import { cleanVerse, contentWords, fold, wordSpan, wordsOf } from './verse/text';
+import { STOP_WORDS, cleanVerse, fold, isStopWord, letterCount, lineLength, linesOf, substance, wordSpan, wordsOf } from './verse/text';
 
 /** The one language online play is scored in, for now. */
 export const ONLINE_LANG = 'en';
@@ -72,9 +82,10 @@ let lexicon: Set<string> | null = null;
 export function onlineLexicon(): Set<string> {
   if (!lexicon) {
     lexicon = new Set<string>();
+    const names = invocationNames(CARD_CATALOG.filter((c) => c.type === 'Character').map((c) => c.name));
+    for (const n of names) if (!n.includes(' ') && letterCount(n) >= 4) lexicon.add(fold(n));
     for (const c of CARD_CATALOG) {
-      for (const w of wordsOf(c.name)) if (wordSpan(w) >= 4) lexicon.add(fold(w));
-      for (const w of contentWords(c.quote)) lexicon.add(fold(w));
+      for (const w of signatureWords(c)) if (letterCount(w) >= 4 && !STOP_WORDS.has(w)) lexicon.add(w);
     }
   }
   return lexicon;
@@ -85,7 +96,10 @@ export interface OnlineSide {
   /** Every character in this side's deck, for house synergy. */
   deck: string[];
   verse: string;
-  /** The other side's verse from the round before, which a riposte may answer. */
+  /**
+   * The other side's verse from the round before: what a riposte and a comeback
+   * answer, and what a copied verse is copied from. Absent in round one.
+   */
   previousOpponentVerse?: string;
 }
 
@@ -104,6 +118,60 @@ export function onlineCraft(plan: OnlineRoundPlan, side: OnlineSide): VerseScore
 }
 
 export type OnlineVerdict = 'a' | 'b' | 'split';
+
+export interface OnlineJudge {
+  /** Points out of JUDGE_POOL for each side. */
+  a: number;
+  b: number;
+  criteria: Record<string, OnlineVerdict>;
+}
+
+/** Most words thrown back that count (MAX_THROWN in verse/judge.ts). */
+const MAX_THROWN = 3;
+
+/**
+ * The judge's comeback score for one verse: witScore in verse/judge.ts, which is
+ * not exported. A copy, kept honest by a test that compares it with the engine's
+ * own verdicts (multiplayer-golden.test.ts).
+ */
+export function onlineWit(verse: string, answered?: string): number {
+  const lang = ONLINE_LANG;
+  const min = rulesFor(lang).riposte;
+  const theirs = new Set(wordsOf(answered ?? '', lang).filter((w) => wordSpan(w) >= min && !isStopWord(w, lang)).map(fold));
+  const thrown = new Set(wordsOf(verse, lang).map(fold).filter((w) => theirs.has(w))).size;
+  const pointed = linesOf(verse).filter((l) => /[?!？！؟]\s*["'”’)»」』]*$/.test(l) && lineLength(l, lang) >= 2).length;
+  return Math.min(thrown, MAX_THROWN) + Math.min(pointed, 2) * 0.1;
+}
+
+/**
+ * The rule-based judge for a round written at once. Wordplay, allusion and flow
+ * are the engine's own verdicts (rulesJudge). Wit, the comeback, is read for
+ * each side against the other's verse of the round before, where the engine
+ * reads the player's against the opponent's verse of this round, which online
+ * nobody has seen. Text too thin to be a verse loses every criterion to a real one.
+ */
+export function onlineJudge(verseA: string, verseB: string, previousB?: string, previousA?: string): OnlineJudge {
+  const a = cleanVerse(verseA);
+  const b = cleanVerse(verseB);
+  const engine = rulesJudge(a, b, ONLINE_LANG, onlineLexicon());
+  const criteria: Record<string, OnlineVerdict> = {};
+  for (const c of CRITERIA) criteria[c] = engine.criteria[c] === 'player' ? 'a' : engine.criteria[c] === 'opponent' ? 'b' : 'split';
+  const real = [substance(a, ONLINE_LANG).ok, substance(b, ONLINE_LANG).ok];
+  const witA = onlineWit(a, previousB ? cleanVerse(previousB) : undefined);
+  const witB = onlineWit(b, previousA ? cleanVerse(previousA) : undefined);
+  criteria.wit = real[0] !== real[1] ? (real[0] ? 'a' : 'b') : Math.abs(witA - witB) < 1e-9 ? 'split' : witA > witB ? 'a' : 'b';
+  const each = JUDGE_POOL / CRITERIA.length;
+  let pointsA = 0;
+  for (const c of CRITERIA) pointsA += criteria[c] === 'a' ? each : criteria[c] === 'split' ? each / 2 : 0;
+  return { a: pointsA, b: JUDGE_POOL - pointsA, criteria };
+}
+
+/** The judge's split when one verse is a copy: every criterion goes to the other side. */
+function forfeitTo(to: 'a' | 'b'): OnlineJudge {
+  const criteria: Record<string, OnlineVerdict> = {};
+  for (const c of CRITERIA) criteria[c] = to;
+  return { a: to === 'a' ? JUDGE_POOL : 0, b: to === 'b' ? JUDGE_POOL : 0, criteria };
+}
 
 export interface OnlineSideResult {
   verse: string;
@@ -125,17 +193,19 @@ export function resolveOnlineRound(plan: OnlineRoundPlan, a: OnlineSide, b: Onli
   const verseB = cleanVerse(b.verse);
   const scoreA = onlineCraft(plan, { ...a, verse: verseA });
   const scoreB = onlineCraft(plan, { ...b, verse: verseB });
-  const judge = rulesJudge(verseA, verseB, ONLINE_LANG, onlineLexicon());
-  const criteria: Record<string, OnlineVerdict> = {};
-  for (const c of CRITERIA) criteria[c] = judge.criteria[c] === 'player' ? 'a' : judge.criteria[c] === 'opponent' ? 'b' : 'split';
-  const totalA = scoreA.craft + judge.player;
-  const totalB = scoreB.craft + judge.opponent;
+  const judged = onlineJudge(verseA, verseB, a.previousOpponentVerse, b.previousOpponentVerse);
+  // A copy forfeits the judge as well as its craft. Two copies leave the judge as it found them.
+  const copiedA = scoreA.voided === 'copied';
+  const copiedB = scoreB.voided === 'copied';
+  const judge = copiedA !== copiedB ? forfeitTo(copiedA ? 'b' : 'a') : judged;
+  const totalA = scoreA.craft + judge.a;
+  const totalB = scoreB.craft + judge.b;
   // The better total takes the round; level totals go to the judge's preference; level on both is a draw.
-  const winner = totalA !== totalB ? (totalA > totalB ? 'a' : 'b') : judge.player !== judge.opponent ? (judge.player > judge.opponent ? 'a' : 'b') : 'draw';
+  const winner = totalA !== totalB ? (totalA > totalB ? 'a' : 'b') : judge.a !== judge.b ? (judge.a > judge.b ? 'a' : 'b') : 'draw';
   return {
-    a: { verse: verseA, score: scoreA, judge: judge.player, total: totalA },
-    b: { verse: verseB, score: scoreB, judge: judge.opponent, total: totalB },
-    criteria,
+    a: { verse: verseA, score: scoreA, judge: judge.a, total: totalA },
+    b: { verse: verseB, score: scoreB, judge: judge.b, total: totalB },
+    criteria: judge.criteria,
     winner,
   };
 }

@@ -37,37 +37,11 @@ pub fn card_by_id(id: &str) -> Option<&'static Card> {
     BY_ID.get(id).copied()
 }
 
-/// Names that count as an invocation: each word of each character's name, without a
-/// leading "The " (`CHARACTER_NAMES` in duel.ts).
+/// Names that count as an invocation (`CHARACTER_NAMES` in duel.ts): each character's
+/// full name, and its last part alone when that is a name and not an ordinary word.
 pub static CHARACTER_NAMES: LazyLock<Vec<String>> = LazyLock::new(|| {
-    CARDS
-        .iter()
-        .filter(|c| c.is_character())
-        .flat_map(|c| js_split_space(c.name.strip_prefix("The ").unwrap_or(&c.name)))
-        .collect()
+    super::devices::invocation_names(CARDS.iter().filter(|c| c.is_character()).map(|c| c.name.as_str()))
 });
-
-/// JavaScript's `s.split(/\s+/)`: unlike `split_whitespace`, leading or trailing space
-/// leaves an empty first or last piece.
-fn js_split_space(s: &str) -> Vec<String> {
-    let mut out = vec![String::new()];
-    let mut in_space = false;
-    for c in s.chars() {
-        if super::text::is_js_space(c) {
-            in_space = true;
-        } else {
-            if in_space {
-                out.push(String::new());
-                in_space = false;
-            }
-            out.last_mut().expect("never empty").push(c);
-        }
-    }
-    if in_space {
-        out.push(String::new());
-    }
-    out
-}
 
 #[cfg(test)]
 mod tests {
@@ -84,10 +58,12 @@ mod tests {
     }
 
     #[test]
-    fn names_split_as_javascript_splits_them() {
-        assert_eq!(js_split_space("Sonnet Man"), ["Sonnet", "Man"]);
-        assert_eq!(js_split_space(" a  b "), ["", "a", "b", ""]);
-        assert!(CHARACTER_NAMES.iter().any(|n| n == "Sonnet"));
-        assert!(!CHARACTER_NAMES.iter().any(|n| n == "The"));
+    fn a_character_is_called_on_by_name_not_by_an_ordinary_word() {
+        for name in ["Hamlet", "Sonnet Man", "The Nurse", "Antony", "Mark Antony", "Macbeth", "Lady Macbeth", "Nick Bottom"] {
+            assert!(CHARACTER_NAMES.iter().any(|n| n == name), "{name}");
+        }
+        for word in ["The", "Man", "Sonnet", "Nurse", "Bottom", "King", "Lady", "Mark", "Lord"] {
+            assert!(!CHARACTER_NAMES.iter().any(|n| n == word), "{word}");
+        }
     }
 }

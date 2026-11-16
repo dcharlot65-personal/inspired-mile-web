@@ -1,6 +1,13 @@
 import { test, expect, type Browser, type BrowserContext, type Page } from '@playwright/test';
 import { E2E } from './e2e-env';
 import { auditRound, type MatchStart, type RoundView, type ServerEvent } from '../src/lib/multiplayer-client';
+import PRON from '../src/lib/verse/pron-en';
+import { installPronunciation } from '../src/lib/verse/pronounce';
+import { isStopWord, wordSpan, wordsOf } from '../src/lib/verse/text';
+
+// This process recomputes each round with the TypeScript rules, as the page does; like the
+// page, and like the server, it needs the pronunciation table for that.
+installPronunciation(PRON);
 
 /**
  * Online play, end to end: two browsers, each signed in with its own passkey on the real
@@ -27,7 +34,8 @@ function uniqueIp(): string {
 
 /** Verses that keep each form, so the scores are not all nought. */
 const KEEPS: Record<string, string> = {
-  couplet: 'I stand upon the midnight stage\nAnd answer all thy empty rage',
+  // A rhyme English spelling hides (go / flow): kept only where rhyme is decided by sound.
+  couplet: 'I do not know which way to go\nThe river runs, the waters flow',
   'quatrain-aabb': 'The silver moon is bright\nIt fills the empty night\nUpon the restless sea\nIt calls again to me',
   'quatrain-abab': 'The silver moon is bright\nUpon the restless sea\nIt fills the empty night\nAnd calls again to me',
   tercet: 'I take the midnight stage\nThe crowd is loud tonight\nI feed my rising rage',
@@ -157,6 +165,9 @@ test.describe('Online duel', () => {
       expect(startBob.you.deck).toEqual(bobDeck.characters);
       expect(startAnn.opponent.deck).toEqual(bobDeck.characters);
       expect(startAnn.you.deck).toHaveLength(3);
+      // Both pages scored with the pronunciation table, as the server does.
+      expect(await ann.page.locator('#mp-arena').getAttribute('data-pronunciation')).toBeNull();
+      expect(await bob.page.locator('#mp-arena').getAttribute('data-pronunciation')).toBeNull();
       await expect(ann.page.locator('#mp-arena')).toHaveAttribute('data-seed-check', 'ok');
       await expect(bob.page.locator('#mp-arena')).toHaveAttribute('data-seed-check', 'ok');
 
@@ -172,7 +183,8 @@ test.describe('Online duel', () => {
         // Ann keeps the form. Bob writes two plain lines and, from round two, throws back a
         // word of Ann's last verse (his Verona Court characters fight with the Riposte).
         const annVerse = verseFor(plan);
-        const thrown = round > 0 ? (seenBob[round - 1].opponent.verse.match(/[A-Za-z]{5,}/)?.[0] ?? 'nothing') : '';
+        // A word worth throwing back: five letters or more, and not one of the little words.
+        const thrown = round > 0 ? (wordsOf(seenBob[round - 1].opponent.verse).find((w) => wordSpan(w) >= 5 && !isStopWord(w)) ?? 'nothing') : '';
         const bobVerse = round > 0 ? `Thy ${thrown} is a candle in the wind\nI hand thy ${thrown} back to thee` : 'The sun is up above the quiet hills\nThe day is here and I am glad of it';
         const annChar = startAnn.you.deck[round];
         const bobChar = bobDeck.characters[round];

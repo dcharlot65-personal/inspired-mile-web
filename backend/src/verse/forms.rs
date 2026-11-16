@@ -6,7 +6,8 @@ use std::sync::LazyLock;
 use serde::Serialize;
 
 use super::text::{
-    first_unit, fold, hiragana, is_js_space, js_trim, line_length, lines_of, rhyme_ends, rhymes, syllables_in_line,
+    first_unit, fold, hiragana, is_js_space, js_trim, line_length, lines_of, rhyme_ends, rhymes, substance,
+    syllable_span,
 };
 
 pub const FORM_POINTS: u32 = 20;
@@ -140,6 +141,9 @@ pub struct FormScore {
     pub earned: u32,
     /// Every requirement met.
     pub kept: bool,
+    /// The text is too thin to be a verse (`text::substance`): no requirement is met and
+    /// nothing is earned.
+    pub thin: bool,
 }
 
 /// What each line of an acrostic must open with: one letter per line, or, for a phrase
@@ -178,8 +182,14 @@ fn check(rule: &Rule, lines: &[&str], ctx: &FormContext) -> bool {
             if lines.len() <= *index {
                 return false;
             }
-            match syllables_in_line(lines[*index], ctx.lang) {
-                Some(n) => (i64::from(n) - target).abs() <= *tolerance,
+            // A word can be said more than one way, so a line has a range of counts and keeps
+            // the form when the target is inside it. A line with a word the pronunciation
+            // table lacks, counted by a guess from its spelling, is allowed one either way.
+            match syllable_span(lines[*index], ctx.lang) {
+                Some(span) => {
+                    let slack = (*tolerance).max(i64::from(span.guessed > 0));
+                    *target >= i64::from(span.min) - slack && *target <= i64::from(span.max) + slack
+                }
                 None => false,
             }
         }
@@ -207,17 +217,19 @@ fn check(rule: &Rule, lines: &[&str], ctx: &FormContext) -> bool {
 
 pub fn score_form(form: &Form, verse: &str, ctx: &FormContext) -> FormScore {
     let lines = lines_of(verse);
+    // A form is kept by a verse, not by tokens laid out in its shape.
+    let thin = !lines.is_empty() && !substance(verse).ok;
     let checks: Vec<CheckResult> = form
         .requirements
         .iter()
         .map(|r| {
-            let met = !lines.is_empty() && check(&r.rule, &lines, ctx);
+            let met = !lines.is_empty() && !thin && check(&r.rule, &lines, ctx);
             CheckResult { id: r.id.clone(), points: r.points, earned: if met { r.points } else { 0 }, met }
         })
         .collect();
     let earned = checks.iter().map(|c| c.earned).sum();
     let kept = checks.iter().all(|c| c.met);
-    FormScore { form_id: form.id.to_string(), checks, earned, kept }
+    FormScore { form_id: form.id.to_string(), checks, earned, kept, thin }
 }
 
 #[cfg(test)]

@@ -6,6 +6,11 @@ import { describe, expect, it } from 'vitest';
 import { auditRound, planMatchesSeed, recomputeRound, type MatchStart, type RoundView, type WireSide } from './multiplayer-client';
 import { onlinePlan, resolveOnlineRound, type OnlineSideResult } from './multiplayer-rules';
 import { CRITERIA } from './verse/judge';
+import PRON from './verse/pron-en';
+import { installPronunciation } from './verse/pronounce';
+
+// The server always scores with the pronunciation table; so does the page before a match.
+installPronunciation(PRON);
 
 const DECK_A = ['DC-001', 'MO-001', 'CA-001'];
 const DECK_B = ['VC-001', 'VC-002', 'DC-002'];
@@ -17,7 +22,7 @@ function wire(charId: string, r: OnlineSideResult): WireSide {
     verse: r.verse,
     timed_out: false,
     score: {
-      form: { form_id: r.score.form.formId, checks: r.score.form.checks.map((c) => ({ id: c.id, points: c.points, earned: c.earned, met: c.met })), earned: r.score.form.earned, kept: r.score.form.kept },
+      form: { form_id: r.score.form.formId, checks: r.score.form.checks.map((c) => ({ id: c.id, points: c.points, earned: c.earned, met: c.met })), earned: r.score.form.earned, kept: r.score.form.kept, thin: !!r.score.form.thin },
       device: { id: r.score.device.id, met: r.score.device.met },
       signature: r.score.signature.met,
       synergy: r.score.synergy,
@@ -25,6 +30,7 @@ function wire(charId: string, r: OnlineSideResult): WireSide {
       power_words: null,
       curse: null,
       craft: r.score.craft,
+      voided: r.score.voided ?? null,
     },
     judge: r.judge,
     total: r.total,
@@ -115,6 +121,8 @@ describe('auditRound', () => {
       ['your device', (r) => { r.you.score.device.met = !r.you.score.device.met; }],
       ['your signature', (r) => { r.you.score.signature = !r.you.score.signature; }],
       ['your multiplier', (r) => { r.you.score.multiplier += 0.25; }],
+      ['your void', (r) => { r.you.score.voided = 'copied'; }],
+      ['your thin', (r) => { r.you.score.form.thin = true; }],
       // A verse the rules would have cleaned differently: the server did not send what it scored.
       ['your verse', (r) => { r.you.verse += '\u200b'; }],
       ['winner', (r) => { r.winner = r.winner === 'you' ? 'opponent' : 'you'; }],
