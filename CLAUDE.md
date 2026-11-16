@@ -24,6 +24,15 @@ A three-round duel of verses. Rules live in `src/lib/verse/` and are pure and se
 Read the header comment of `judge.ts` before changing judging: asked "A or B?" outright,
 small models answer by position. `scripts/judge-eval.mjs` measures a model's judging.
 
+English rhyme and syllables are read from a pronunciation table, not guessed from spelling:
+`src/lib/verse/pron-en.ts` is GENERATED from the CMU Pronouncing Dictionary by
+`node scripts/build-pronunciation.mjs` (run it on the build host with `rb --pull`; the 3.6 MB
+dictionary is downloaded there and never committed; names it lacks go in
+`scripts/pronunciation-extra.txt`). `pronounce.ts` loads it on demand, so it is a chunk of its
+own (1.46 MB, about 0.47 MB compressed) and never in a page's first load; `DuelSession.beginRound`
+awaits it for an English duel, and unit tests must `await loadPronunciation()` first. Both duel
+screens draw a `DuelSession`; do not score a round anywhere else.
+
 ## Online play (multiplayer)
 
 The SERVER decides every online score, with no model and no randomness: `backend/src/verse/`
