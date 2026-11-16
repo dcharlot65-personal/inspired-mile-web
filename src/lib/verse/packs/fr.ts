@@ -31,7 +31,7 @@ const pack: LanguagePack = {
     ],
     tercet: [
       'Tu as une langue, soit, mais pas le talent\nElle erre comme un ivrogne dans le noir\nEt n’arrive jamais, jamais à temps',
-      'Tu appelles ça un vers ? J’appelle ça une erreur\nUne ligne boiteuse qui demande grâce\nEt je la lui accorde, par pure douceur',
+      'Tu appelles ça un vers\u202f? J’appelle ça une erreur\nUne ligne boiteuse qui demande grâce\nEt je la lui accorde, par pure douceur',
     ],
     anaphora: [
       'Jamais on n’a tant dit sur si peu\nJamais une scène n’a porté voix si mince\nJamais plus, je crois, ce public ne t’écoutera',
@@ -58,13 +58,13 @@ const pack: LanguagePack = {
     l: ['La salle se tait, et ce n’est pas pour toi', 'Loin d’ici, tes vers trouveront peut-être preneur'],
     u: ['Un mot de plus, et le public s’endort', 'Une fois encore tu ouvres la bouche pour rien'],
     n: ['Nul ne s’est jamais tu si longtemps pour toi', 'Ne confonds pas le bruit avec le talent'],
-    e: ['Encore toi ? La foule a déjà tranché', 'Et chacun de tes vers meurt en plein vol'],
+    e: ['Encore toi\u202f? La foule a déjà tranché', 'Et chacun de tes vers meurt en plein vol'],
     r: ['Rimer, c’est l’escrime, et tu viens avec une cuillère', 'Rentre chez toi, les portes sont encore ouvertes'],
     o: ['On t’écoute, hélas, et l’on regrette déjà', 'Ose encore, plus fort, petite voix'],
-    s: ['Si c’est là ton meilleur vers, garde les autres', 'Silence : voici comment sonne un vrai vers'],
+    s: ['Si c’est là ton meilleur vers, garde les autres', 'Silence\u00a0: voici comment sonne un vrai vers'],
     i: ['Il faut du souffle pour monter ici', 'Ici, la scène ne se souvient que de moi'],
     m: ['Mon pire vers vaut ton meilleur', 'Mesure bien tes mots, il t’en reste peu'],
-    a: ['Ainsi finit la leçon ; emporte-la chez toi', 'Allons, salue, le rideau tombe sur toi'],
+    a: ['Ainsi finit la leçon\u202f; emporte-la chez toi', 'Allons, salue, le rideau tombe sur toi'],
     t: ['Ta langue est vive, mais la hâte n’est pas l’esprit', 'Tu parles, tu parles, et rien ne reste'],
   },
 };

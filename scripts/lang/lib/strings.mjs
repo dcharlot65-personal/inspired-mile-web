@@ -23,9 +23,13 @@ export { LOCALES, HOUSE_QUOTES, parseMessage, PLURAL_CATEGORIES, pluralCategory 
 
 export const ROOT = fileURLToPath(new URL('../../../', import.meta.url));
 
+// Proposed corrections laid over the locale files without touching them: { lang: { key: template } }
+// (LANGQA_OVERLAY=file.json). Lets the tools judge a correction before it is adopted.
+const overlay = process.env.LANGQA_OVERLAY ? JSON.parse(readFileSync(process.env.LANGQA_OVERLAY, 'utf8')) : {};
+
 /** The interface messages of a language: { key: template }. */
 export async function uiStrings(lang) {
-  return { ...(await loadMessages(lang)) };
+  return { ...(await loadMessages(lang)), ...(overlay[lang] ?? {}) };
 }
 
 /**
@@ -109,7 +113,7 @@ const fillerCache = new Map();
  * The sentences a template can become. Returns [{ text, filled: [[start, end, name]], counts: {arg: n} }].
  * A template with no count gives one sentence; one with a count gives one per plural category.
  */
-export async function renderSamples(lang, template) {
+export async function renderSamples(lang, template, opts = {}) {
   if (!fillerCache.has(lang)) fillerCache.set(lang, await fillers(lang));
   const fill = fillerCache.get(lang);
   const parts = parseMessage(template);
@@ -117,12 +121,13 @@ export async function renderSamples(lang, template) {
   const collect = (ps) => ps.forEach((p) => { if (p.type === 'plural') { counted.add(p.name); Object.values(p.options).forEach(collect); } });
   collect(parts);
   const cats = categorySamples(lang);
-  const runs = counted.size ? Object.entries(cats).map(([cat, n]) => ({ cat, n })) : [{ cat: null, n: null }];
+  // opts.typical: one sentence only, every count at a number the game really shows.
+  const runs = counted.size && !opts.typical ? Object.entries(cats).map(([cat, n]) => ({ cat, n })) : [{ cat: null, n: null }];
   // Exact-number branches (=0, =1) are sentences too.
   const exact = new Set();
   const collectExact = (ps) => ps.forEach((p) => { if (p.type === 'plural') { for (const [sel, o] of Object.entries(p.options)) { if (sel[0] === '=') exact.add(Number(sel.slice(1))); collectExact(o); } } });
   collectExact(parts);
-  for (const n of exact) runs.push({ cat: `=${n}`, n });
+  if (!opts.typical) for (const n of exact) runs.push({ cat: `=${n}`, n });
 
   const out = [];
   for (const run of runs) {

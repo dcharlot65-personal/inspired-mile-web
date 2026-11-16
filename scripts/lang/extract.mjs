@@ -17,9 +17,11 @@ const strings = await allStrings();
 if (withSamples) {
   for (const [lang, s] of Object.entries(strings)) {
     s.samples = {};
+    s.typical = {};
     for (const [key, template] of Object.entries(s.ui)) {
       if (key in HOUSE_QUOTES) continue;
       s.samples[key] = await renderSamples(lang, template);
+      s.typical[key] = (await renderSamples(lang, template, { typical: true }))[0].text;
     }
   }
 }

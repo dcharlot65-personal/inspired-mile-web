@@ -1,0 +1,87 @@
+{
+ "source": "https://support.apple.com/<locale>/102195",
+ "fetched": "2026-11-16T17:20:34.987Z",
+ "note": "First sentence of the article body, as evidence of the vendor term. Where Apple has no translation the page is English and is recorded as such.",
+ "pages": {
+  "en": {
+   "url": "https://support.apple.com/en-us/102195",
+   "pageLocale": "en_US",
+   "firstSentence": "Passkeys are a replacement for passwords that are designed to provide websites and apps a passwordless sign-in experience that is both more convenient and more secure."
+  },
+  "es": {
+   "url": "https://support.apple.com/es-es/102195",
+   "pageLocale": "es_ES",
+   "firstSentence": "Las llaves de acceso son un reemplazo de las contraseñas y están diseñadas para poder iniciar sesión en sitios web y aplicaciones sin tener que introducir una contraseña: una experiencia más cómoda y segura."
+  },
+  "fr": {
+   "url": "https://support.apple.com/fr-fr/102195",
+   "pageLocale": "fr_FR",
+   "firstSentence": "Les clés d’accès se substituent aux mots de passe."
+  },
+  "de": {
+   "url": "https://support.apple.com/de-de/102195",
+   "pageLocale": "de_DE",
+   "firstSentence": "Passkeys wurden entwickelt, damit Benutzer sich ohne Passwörter bei Websites und Apps anmelden können und das Benutzererlebnis bequemer und sicherer wird."
+  },
+  "it": {
+   "url": "https://support.apple.com/it-it/102195",
+   "pageLocale": "it_IT",
+   "firstSentence": "Le chiavi d'accesso, che vanno a sostituire le password, sono progettate per fornire un'esperienza di accesso senza password più comoda e sicura ai siti web e alle app."
+  },
+  "pt": {
+   "url": "https://support.apple.com/pt-br/102195",
+   "pageLocale": "pt_BR",
+   "firstSentence": "As chaves de acesso substituem as senhas e são projetadas para proporcionar uma experiência de início de sessão sem senha em sites e apps de um modo que seja mais conveniente e seguro."
+  },
+  "pl": {
+   "url": "https://support.apple.com/pl-pl/102195",
+   "pageLocale": "pl_PL",
+   "firstSentence": "Klucze, które zastępują hasła, pozwalają logować się do witryn i aplikacji bez podawania hasła, co jest zarówno wygodniejsze, jak i bezpieczniejsze."
+  },
+  "ru": {
+   "url": "https://support.apple.com/ru-ru/102195",
+   "pageLocale": null,
+   "firstSentence": "Ключи входа являются заменой паролей."
+  },
+  "ar": {
+   "url": "https://support.apple.com/ar-ae/102195",
+   "pageLocale": "ar_AE",
+   "firstSentence": "تعد مفاتيح المرور بديلاً لكلمات السر، وهي مصممة لتزويد مواقع الويب والتطبيقات بتجربة تسجيل دخول بدون كلمة سر تكون أكثر ملاءمة وأمانًا."
+  },
+  "hi": {
+   "url": "https://support.apple.com/hi-in/102195",
+   "pageLocale": "en_IN",
+   "firstSentence": "Passkeys are a replacement for passwords that are designed to provide a more convenient, more secure, password-less sign-in experience on websites and apps."
+  },
+  "zh": {
+   "url": "https://support.apple.com/zh-cn/102195",
+   "pageLocale": "zh_CN",
+   "firstSentence": "通行密钥是密码的一种替代形式，旨在为各种网站和 App 提供一种更安全快捷的免密登录体验。"
+  },
+  "ja": {
+   "url": "https://support.apple.com/ja-jp/102195",
+   "pageLocale": "ja_JP",
+   "firstSentence": "パスキーはパスワードに代わるものとして設計されました。"
+  },
+  "ko": {
+   "url": "https://support.apple.com/ko-kr/102195",
+   "pageLocale": "ko_KR",
+   "firstSentence": "패스키는 암호를 대체하는 수단으로 웹 사이트 및 앱에 암호 없이 로그인할 수 있도록 설계되었으며 편리성과 보안이라는 측면에서 암호보다 우수합니다."
+  },
+  "vi": {
+   "url": "https://support.apple.com/vi-vn/102195",
+   "pageLocale": "vi_VN",
+   "firstSentence": "Mã khóa là giải pháp thay thế cho mật khẩu, được thiết kế để giúp người dùng đăng nhập vào các trang web và ứng dụng một cách thuận tiện và an toàn hơn mà không cần dùng mật khẩu."
+  },
+  "th": {
+   "url": "https://support.apple.com/th-th/102195",
+   "pageLocale": "th_TH",
+   "firstSentence": "พาสคีย์คือรหัสที่ใช้แทนรหัสผ่าน ซึ่งออกแบบมาเพื่อมอบประสบการณ์การลงชื่อเข้าใช้เว็บไซต์และแอปแบบไม่ต้องใช้รหัสผ่าน ช่วยให้สะดวกและปลอดภัยยิ่งขึ้น พาสคีย์เป็นเทคโนโลยีมาตรฐานที่สามารถป้องกันการฟิชชิ่ง มีความแข็งแกร่งเสมอ และได้รับการออกแบบมาเพื่อไม่ให้มีการแชร์ข้อมูลลับกัน พาสคีย์ช่วยลดความยุ่งยากในการลงทะเบียนบัญชีสำหรับแอปและเว็บไซต์ต่างๆ ใช้งานง่าย และใช้งานได้กับอุปกรณ์ Apple ทั้งหมด หรือแม้แต่อ"
+  },
+  "id": {
+   "url": "https://support.apple.com/id-id/102195",
+   "pageLocale": "id_ID",
+   "firstSentence": "Kunci sandi adalah pengganti kata sandi yang dirancang untuk memberikan pengalaman masuk tanpa kata sandi ke situs web dan app, sehingga yang lebih nyaman dan aman."
+  }
+ }
+}

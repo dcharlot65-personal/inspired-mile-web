@@ -1,0 +1,2872 @@
+{
+ "about": "The game's core terms and the platform terms, per language. Checked against every string by scripts/lang/lib/glossary.mjs (unit test: src/i18n/quality.test.ts). 'term' is the dictionary form; 'accept' lists further stems that count as the same word (inflected and derived forms). 'names' holds the names of verse forms and devices; see docs/language/GLOSSARY.md for how each was chosen.",
+ "terms": {
+  "verse": {
+   "english": "verse (what the player writes: a short poem of two to four lines)",
+   "match": "\\bverses?\\b",
+   "note": "In the Romance languages, German, Polish and Russian the cognate of 'verse' means one line, so the player's text is called a strophe/stanza and a line is a 'verso/vers/wers'.",
+   "skip": [
+    "round.versePlaceholder"
+   ],
+   "langs": {
+    "es": {
+     "term": "estrofa",
+     "accept": [
+      "estrof"
+     ],
+     "source": "game term (no outside source)",
+     "skip": [
+      "brain.noWebgpu"
+     ]
+    },
+    "fr": {
+     "term": "strophe",
+     "accept": [
+      "stroph"
+     ],
+     "source": "game term (no outside source)"
+    },
+    "de": {
+     "term": "Strophe",
+     "accept": [
+      "stroph"
+     ],
+     "source": "game term (no outside source)"
+    },
+    "it": {
+     "term": "strofa",
+     "accept": [
+      "strof"
+     ],
+     "source": "game term (no outside source)"
+    },
+    "pt": {
+     "term": "estrofe",
+     "accept": [
+      "estrof"
+     ],
+     "source": "game term (no outside source)"
+    },
+    "pl": {
+     "term": "strofa",
+     "accept": [
+      "strof"
+     ],
+     "source": "game term (no outside source)"
+    },
+    "ru": {
+     "term": "строфа",
+     "accept": [
+      "строф"
+     ],
+     "source": "game term (no outside source)"
+    },
+    "ar": {
+     "term": "أبيات",
+     "accept": [
+      "بيت"
+     ],
+     "source": "game term (no outside source)"
+    },
+    "hi": {
+     "term": "पद",
+     "source": "game term (no outside source)"
+    },
+    "zh": {
+     "term": "诗",
+     "source": "game term (no outside source)"
+    },
+    "ja": {
+     "term": "詩",
+     "source": "game term (no outside source)"
+    },
+    "ko": {
+     "term": "시",
+     "source": "game term (no outside source)"
+    },
+    "vi": {
+     "term": "bài thơ",
+     "accept": [
+      "thơ"
+     ],
+     "source": "game term (no outside source)"
+    },
+    "th": {
+     "term": "บทกลอน",
+     "accept": [
+      "กลอน"
+     ],
+     "source": "game term (no outside source)"
+    },
+    "id": {
+     "term": "syair",
+     "source": "game term (no outside source)"
+    }
+   }
+  },
+  "line": {
+   "english": "line (one line of a verse)",
+   "match": "\\blines?\\b",
+   "note": "The game's own term, fixed by the translator's note at the top of the locale file; kept consistent by this check.",
+   "skip": [
+    "live.signature",
+    "signature.none",
+    "signature.quoted"
+   ],
+   "langs": {
+    "es": {
+     "term": "verso",
+     "accept": [
+      "vers"
+     ],
+     "source": "game term (no outside source)"
+    },
+    "fr": {
+     "term": "vers",
+     "source": "game term (no outside source)"
+    },
+    "de": {
+     "term": "Zeile",
+     "accept": [
+      "zeile"
+     ],
+     "source": "game term (no outside source)"
+    },
+    "it": {
+     "term": "verso",
+     "accept": [
+      "vers"
+     ],
+     "source": "game term (no outside source)"
+    },
+    "pt": {
+     "term": "verso",
+     "accept": [
+      "vers"
+     ],
+     "source": "game term (no outside source)"
+    },
+    "pl": {
+     "term": "wers",
+     "source": "game term (no outside source)"
+    },
+    "ru": {
+     "term": "строка",
+     "accept": [
+      "строк",
+      "строч"
+     ],
+     "source": "game term (no outside source)"
+    },
+    "ar": {
+     "term": "سطر",
+     "accept": [
+      "أسطر",
+      "السطران"
+     ],
+     "source": "game term (no outside source)"
+    },
+    "hi": {
+     "term": "पंक्ति",
+     "source": "game term (no outside source)"
+    },
+    "zh": {
+     "term": "行",
+     "source": "game term (no outside source)"
+    },
+    "ja": {
+     "term": "行",
+     "source": "game term (no outside source)"
+    },
+    "ko": {
+     "term": "행",
+     "source": "game term (no outside source)"
+    },
+    "vi": {
+     "term": "dòng",
+     "source": "game term (no outside source)"
+    },
+    "th": {
+     "term": "บรรทัด",
+     "source": "game term (no outside source)"
+    },
+    "id": {
+     "term": "baris",
+     "source": "game term (no outside source)"
+    }
+   }
+  },
+  "card-line": {
+   "english": "line (a character's famous line from the play, which the signature bonus echoes)",
+   "match": "\\bline\\b",
+   "note": "A line spoken in a play, not a line of the player's verse: most languages have a different word for it.",
+   "only": [
+    "live.signature",
+    "signature.none"
+   ],
+   "langs": {
+    "es": {
+     "term": "frase",
+     "source": "game term (no outside source)"
+    },
+    "fr": {
+     "term": "réplique",
+     "source": "game term (no outside source)"
+    },
+    "de": {
+     "term": "Zeile",
+     "source": "game term (no outside source)"
+    },
+    "it": {
+     "term": "battuta",
+     "source": "game term (no outside source)"
+    },
+    "pt": {
+     "term": "fala",
+     "source": "game term (no outside source)"
+    },
+    "pl": {
+     "term": "kwestia",
+     "accept": [
+      "kwesti"
+     ],
+     "source": "game term (no outside source)"
+    },
+    "ru": {
+     "term": "реплика",
+     "accept": [
+      "реплик"
+     ],
+     "source": "game term (no outside source)"
+    },
+    "ar": {
+     "term": "عبارة",
+     "source": "game term (no outside source)"
+    },
+    "hi": {
+     "term": "संवाद",
+     "source": "game term (no outside source)"
+    },
+    "zh": {
+     "term": "台词",
+     "source": "game term (no outside source)"
+    },
+    "ja": {
+     "term": "台詞",
+     "source": "game term (no outside source)"
+    },
+    "ko": {
+     "term": "대사",
+     "source": "game term (no outside source)"
+    },
+    "vi": {
+     "term": "câu thoại",
+     "source": "game term (no outside source)"
+    },
+    "th": {
+     "term": "บทพูด",
+     "source": "game term (no outside source)"
+    },
+    "id": {
+     "term": "dialog",
+     "source": "game term (no outside source)"
+    }
+   }
+  },
+  "character-unit": {
+   "english": "character (the unit counted when the duel is in Chinese or Japanese: the \".char\" wording)",
+   "match": "\\bcharacters?\\b",
+   "note": "A written character of Chinese or Japanese. One word per language, and not the word used for a sign-in code.",
+   "only": [
+    "form.anaphora.brief.char",
+    "form.epistrophe.brief.char",
+    "form.haiku.brief.char",
+    "form.jueju.brief",
+    "check.syllables.char",
+    "check.same-opening.char",
+    "check.same-ending.char",
+    "check.growing.char",
+    "check.jueju-length",
+    "device.brevity.brief.char",
+    "device.balance.brief.char",
+    "device.ring.brief.char",
+    "curse.short-lines.brief.char",
+    "curse.short-lines.theirs.char"
+   ],
+   "langs": {
+    "es": {
+     "term": "carácter",
+     "accept": [
+      "caracter"
+     ],
+     "source": "game term (no outside source)"
+    },
+    "fr": {
+     "term": "caractère",
+     "source": "game term (no outside source)"
+    },
+    "de": {
+     "term": "Zeichen",
+     "source": "game term (no outside source)"
+    },
+    "it": {
+     "term": "carattere",
+     "accept": [
+      "caratter"
+     ],
+     "source": "game term (no outside source)"
+    },
+    "pt": {
+     "term": "caractere",
+     "source": "game term (no outside source)"
+    },
+    "pl": {
+     "term": "znak",
+     "source": "game term (no outside source)"
+    },
+    "ru": {
+     "term": "знак",
+     "source": "game term (no outside source)"
+    },
+    "ar": {
+     "term": "حرف",
+     "accept": [
+      "أحرف"
+     ],
+     "source": "game term (no outside source)"
+    },
+    "hi": {
+     "term": "अक्षर",
+     "source": "game term (no outside source)"
+    },
+    "zh": {
+     "term": "字",
+     "source": "game term (no outside source)"
+    },
+    "ja": {
+     "term": "字",
+     "source": "game term (no outside source)"
+    },
+    "ko": {
+     "term": "자",
+     "source": "game term (no outside source)"
+    },
+    "vi": {
+     "term": "chữ",
+     "source": "game term (no outside source)"
+    },
+    "th": {
+     "term": "ตัวอักษร",
+     "accept": [
+      "อักษร"
+     ],
+     "source": "game term (no outside source)"
+    },
+    "id": {
+     "term": "aksara",
+     "source": "game term (no outside source)"
+    }
+   }
+  },
+  "round": {
+   "english": "round (one of the three rounds of a duel)",
+   "match": "\\brounds?\\b",
+   "note": "The game's own term, fixed by the translator's note at the top of the locale file; kept consistent by this check.",
+   "langs": {
+    "es": {
+     "term": "ronda",
+     "source": "game term (no outside source)"
+    },
+    "fr": {
+     "term": "manche",
+     "source": "game term (no outside source)"
+    },
+    "de": {
+     "term": "Runde",
+     "source": "game term (no outside source)"
+    },
+    "it": {
+     "term": "round",
+     "source": "game term (no outside source)"
+    },
+    "pt": {
+     "term": "rodada",
+     "source": "game term (no outside source)"
+    },
+    "pl": {
+     "term": "runda",
+     "accept": [
+      "rund"
+     ],
+     "source": "game term (no outside source)"
+    },
+    "ru": {
+     "term": "раунд",
+     "source": "game term (no outside source)"
+    },
+    "ar": {
+     "term": "جولة",
+     "accept": [
+      "جولات"
+     ],
+     "source": "game term (no outside source)"
+    },
+    "hi": {
+     "term": "दौर",
+     "source": "game term (no outside source)"
+    },
+    "zh": {
+     "term": "回合",
+     "source": "game term (no outside source)"
+    },
+    "ja": {
+     "term": "ラウンド",
+     "source": "game term (no outside source)"
+    },
+    "ko": {
+     "term": "라운드",
+     "source": "game term (no outside source)"
+    },
+    "vi": {
+     "term": "hiệp",
+     "source": "game term (no outside source)"
+    },
+    "th": {
+     "term": "ยก",
+     "source": "game term (no outside source)"
+    },
+    "id": {
+     "term": "ronde",
+     "source": "game term (no outside source)"
+    }
+   }
+  },
+  "ink": {
+   "english": "ink (the resource that pays for relics and potions)",
+   "match": "\\bink\\b",
+   "note": "The game's own term, fixed by the translator's note at the top of the locale file; kept consistent by this check.",
+   "langs": {
+    "es": {
+     "term": "tinta",
+     "source": "game term (no outside source)"
+    },
+    "fr": {
+     "term": "encre",
+     "source": "game term (no outside source)"
+    },
+    "de": {
+     "term": "Tinte",
+     "source": "game term (no outside source)"
+    },
+    "it": {
+     "term": "inchiostro",
+     "source": "game term (no outside source)"
+    },
+    "pt": {
+     "term": "tinta",
+     "source": "game term (no outside source)"
+    },
+    "pl": {
+     "term": "atrament",
+     "source": "game term (no outside source)"
+    },
+    "ru": {
+     "term": "чернила",
+     "accept": [
+      "чернил"
+     ],
+     "source": "game term (no outside source)"
+    },
+    "ar": {
+     "term": "حبر",
+     "source": "game term (no outside source)"
+    },
+    "hi": {
+     "term": "स्याही",
+     "source": "game term (no outside source)"
+    },
+    "zh": {
+     "term": "墨水",
+     "source": "game term (no outside source)"
+    },
+    "ja": {
+     "term": "インク",
+     "source": "game term (no outside source)"
+    },
+    "ko": {
+     "term": "잉크",
+     "source": "game term (no outside source)"
+    },
+    "vi": {
+     "term": "mực",
+     "source": "game term (no outside source)"
+    },
+    "th": {
+     "term": "หมึก",
+     "source": "game term (no outside source)"
+    },
+    "id": {
+     "term": "tinta",
+     "source": "game term (no outside source)"
+    }
+   }
+  },
+  "curse": {
+   "english": "curse (a restriction placed on the other player's next verse)",
+   "match": "\\bcurse[sd]?\\b",
+   "note": "The game's own term, fixed by the translator's note at the top of the locale file; kept consistent by this check.",
+   "langs": {
+    "es": {
+     "term": "maldición",
+     "accept": [
+      "maldi",
+      "maldec"
+     ],
+     "source": "game term (no outside source)"
+    },
+    "fr": {
+     "term": "malédiction",
+     "accept": [
+      "maudi",
+      "malédi"
+     ],
+     "source": "game term (no outside source)"
+    },
+    "de": {
+     "term": "Fluch",
+     "accept": [
+      "fluch",
+      "flüch"
+     ],
+     "source": "game term (no outside source)"
+    },
+    "it": {
+     "term": "maledizione",
+     "accept": [
+      "maledi"
+     ],
+     "source": "game term (no outside source)"
+    },
+    "pt": {
+     "term": "maldição",
+     "accept": [
+      "maldi",
+      "amaldiço"
+     ],
+     "source": "game term (no outside source)"
+    },
+    "pl": {
+     "term": "klątwa",
+     "accept": [
+      "klątw",
+      "przekl"
+     ],
+     "source": "game term (no outside source)"
+    },
+    "ru": {
+     "term": "проклятие",
+     "accept": [
+      "прокл"
+     ],
+     "source": "game term (no outside source)"
+    },
+    "ar": {
+     "term": "لعنة",
+     "accept": [
+      "لعن"
+     ],
+     "source": "game term (no outside source)"
+    },
+    "hi": {
+     "term": "शाप",
+     "source": "game term (no outside source)"
+    },
+    "zh": {
+     "term": "诅咒",
+     "source": "game term (no outside source)"
+    },
+    "ja": {
+     "term": "呪い",
+     "accept": [
+      "呪"
+     ],
+     "source": "game term (no outside source)"
+    },
+    "ko": {
+     "term": "저주",
+     "source": "game term (no outside source)"
+    },
+    "vi": {
+     "term": "lời nguyền",
+     "accept": [
+      "nguyền"
+     ],
+     "source": "game term (no outside source)"
+    },
+    "th": {
+     "term": "คำสาป",
+     "accept": [
+      "สาป"
+     ],
+     "source": "game term (no outside source)"
+    },
+    "id": {
+     "term": "kutukan",
+     "accept": [
+      "kutuk",
+      "ngutuk"
+     ],
+     "source": "game term (no outside source)"
+    }
+   }
+  },
+  "relic": {
+   "english": "relic (a card that lends power words)",
+   "match": "\\brelics?\\b",
+   "note": "The game's own term, fixed by the translator's note at the top of the locale file; kept consistent by this check.",
+   "langs": {
+    "es": {
+     "term": "reliquia",
+     "source": "game term (no outside source)"
+    },
+    "fr": {
+     "term": "relique",
+     "source": "game term (no outside source)"
+    },
+    "de": {
+     "term": "Relikt",
+     "source": "game term (no outside source)"
+    },
+    "it": {
+     "term": "reliquia",
+     "accept": [
+      "reliqui"
+     ],
+     "source": "game term (no outside source)"
+    },
+    "pt": {
+     "term": "relíquia",
+     "source": "game term (no outside source)"
+    },
+    "pl": {
+     "term": "relikwia",
+     "accept": [
+      "relikwi"
+     ],
+     "source": "game term (no outside source)"
+    },
+    "ru": {
+     "term": "реликвия",
+     "accept": [
+      "реликви"
+     ],
+     "source": "game term (no outside source)"
+    },
+    "ar": {
+     "term": "أثر",
+     "accept": [
+      "آثار"
+     ],
+     "source": "game term (no outside source)"
+    },
+    "hi": {
+     "term": "अवशेष",
+     "source": "game term (no outside source)"
+    },
+    "zh": {
+     "term": "圣物",
+     "source": "game term (no outside source)"
+    },
+    "ja": {
+     "term": "遺物",
+     "source": "game term (no outside source)"
+    },
+    "ko": {
+     "term": "유물",
+     "source": "game term (no outside source)"
+    },
+    "vi": {
+     "term": "bảo vật",
+     "source": "game term (no outside source)"
+    },
+    "th": {
+     "term": "ของวิเศษ",
+     "source": "game term (no outside source)"
+    },
+    "id": {
+     "term": "relik",
+     "source": "game term (no outside source)"
+    }
+   }
+  },
+  "potion": {
+   "english": "potion (a card that curses the opponent)",
+   "match": "\\bpotions?\\b",
+   "note": "The game's own term, fixed by the translator's note at the top of the locale file; kept consistent by this check.",
+   "langs": {
+    "es": {
+     "term": "poción",
+     "accept": [
+      "poci"
+     ],
+     "source": "game term (no outside source)"
+    },
+    "fr": {
+     "term": "potion",
+     "source": "game term (no outside source)"
+    },
+    "de": {
+     "term": "Trank",
+     "accept": [
+      "tränk"
+     ],
+     "source": "game term (no outside source)"
+    },
+    "it": {
+     "term": "pozione",
+     "accept": [
+      "pozion"
+     ],
+     "source": "game term (no outside source)"
+    },
+    "pt": {
+     "term": "poção",
+     "accept": [
+      "poções"
+     ],
+     "source": "game term (no outside source)"
+    },
+    "pl": {
+     "term": "mikstura",
+     "accept": [
+      "mikstur"
+     ],
+     "source": "game term (no outside source)"
+    },
+    "ru": {
+     "term": "зелье",
+     "accept": [
+      "зель"
+     ],
+     "source": "game term (no outside source)"
+    },
+    "ar": {
+     "term": "جرعة",
+     "accept": [
+      "جرع"
+     ],
+     "source": "game term (no outside source)"
+    },
+    "hi": {
+     "term": "काढ़ा",
+     "accept": [
+      "काढ़े"
+     ],
+     "source": "game term (no outside source)"
+    },
+    "zh": {
+     "term": "药水",
+     "source": "game term (no outside source)"
+    },
+    "ja": {
+     "term": "薬",
+     "source": "game term (no outside source)"
+    },
+    "ko": {
+     "term": "물약",
+     "source": "game term (no outside source)"
+    },
+    "vi": {
+     "term": "thuốc phép",
+     "source": "game term (no outside source)"
+    },
+    "th": {
+     "term": "ยาวิเศษ",
+     "source": "game term (no outside source)"
+    },
+    "id": {
+     "term": "ramuan",
+     "source": "game term (no outside source)"
+    }
+   }
+  },
+  "deck": {
+   "english": "deck (the player's set of cards)",
+   "match": "\\bdeck\\b",
+   "note": "The game's own term, fixed by the translator's note at the top of the locale file; kept consistent by this check.",
+   "langs": {
+    "es": {
+     "term": "mazo",
+     "source": "game term (no outside source)"
+    },
+    "fr": {
+     "term": "jeu",
+     "source": "game term (no outside source)"
+    },
+    "de": {
+     "term": "Deck",
+     "source": "game term (no outside source)"
+    },
+    "it": {
+     "term": "mazzo",
+     "source": "game term (no outside source)"
+    },
+    "pt": {
+     "term": "baralho",
+     "source": "game term (no outside source)"
+    },
+    "pl": {
+     "term": "talia",
+     "accept": [
+      "tali"
+     ],
+     "source": "game term (no outside source)"
+    },
+    "ru": {
+     "term": "колода",
+     "accept": [
+      "колод"
+     ],
+     "source": "game term (no outside source)"
+    },
+    "ar": {
+     "term": "رزمة",
+     "accept": [
+      "رزمت"
+     ],
+     "source": "game term (no outside source)"
+    },
+    "hi": {
+     "term": "डेक",
+     "source": "game term (no outside source)"
+    },
+    "zh": {
+     "term": "牌组",
+     "source": "game term (no outside source)"
+    },
+    "ja": {
+     "term": "デッキ",
+     "source": "game term (no outside source)"
+    },
+    "ko": {
+     "term": "덱",
+     "source": "game term (no outside source)"
+    },
+    "vi": {
+     "term": "bộ bài",
+     "source": "game term (no outside source)"
+    },
+    "th": {
+     "term": "สำรับ",
+     "source": "game term (no outside source)"
+    },
+    "id": {
+     "term": "dek",
+     "source": "game term (no outside source)"
+    }
+   }
+  },
+  "duel": {
+   "english": "duel (a match of three rounds)",
+   "match": "\\bduels?\\b",
+   "note": "The game's own term, fixed by the translator's note at the top of the locale file; kept consistent by this check.",
+   "langs": {
+    "es": {
+     "term": "duelo",
+     "source": "game term (no outside source)"
+    },
+    "fr": {
+     "term": "duel",
+     "source": "game term (no outside source)"
+    },
+    "de": {
+     "term": "Duell",
+     "source": "game term (no outside source)"
+    },
+    "it": {
+     "term": "duello",
+     "accept": [
+      "duell"
+     ],
+     "source": "game term (no outside source)"
+    },
+    "pt": {
+     "term": "duelo",
+     "source": "game term (no outside source)"
+    },
+    "pl": {
+     "term": "pojedynek",
+     "accept": [
+      "pojedyn"
+     ],
+     "source": "game term (no outside source)"
+    },
+    "ru": {
+     "term": "дуэль",
+     "accept": [
+      "дуэл"
+     ],
+     "source": "game term (no outside source)"
+    },
+    "ar": {
+     "term": "مبارزة",
+     "accept": [
+      "مبارز"
+     ],
+     "source": "game term (no outside source)"
+    },
+    "hi": {
+     "term": "द्वंद्व",
+     "source": "game term (no outside source)"
+    },
+    "zh": {
+     "term": "对决",
+     "accept": [
+      "一场"
+     ],
+     "source": "game term (no outside source)"
+    },
+    "ja": {
+     "term": "決闘",
+     "source": "game term (no outside source)"
+    },
+    "ko": {
+     "term": "결투",
+     "source": "game term (no outside source)"
+    },
+    "vi": {
+     "term": "trận đấu",
+     "accept": [
+      "đấu",
+      "trận"
+     ],
+     "source": "game term (no outside source)"
+    },
+    "th": {
+     "term": "การประชัน",
+     "accept": [
+      "ประชัน"
+     ],
+     "source": "game term (no outside source)"
+    },
+    "id": {
+     "term": "duel",
+     "source": "game term (no outside source)"
+    }
+   }
+  },
+  "craft": {
+   "english": "craft (the part of the score a verse earns by keeping its form)",
+   "match": "\\bcraft\\b",
+   "note": "The game's own term, fixed by the translator's note at the top of the locale file; kept consistent by this check.",
+   "langs": {
+    "es": {
+     "term": "oficio",
+     "source": "game term (no outside source)"
+    },
+    "fr": {
+     "term": "métier",
+     "source": "game term (no outside source)"
+    },
+    "de": {
+     "term": "Handwerk",
+     "source": "game term (no outside source)"
+    },
+    "it": {
+     "term": "mestiere",
+     "source": "game term (no outside source)"
+    },
+    "pt": {
+     "term": "ofício",
+     "source": "game term (no outside source)"
+    },
+    "pl": {
+     "term": "kunszt",
+     "source": "game term (no outside source)"
+    },
+    "ru": {
+     "term": "мастерство",
+     "accept": [
+      "мастерств"
+     ],
+     "source": "game term (no outside source)"
+    },
+    "ar": {
+     "term": "صنعة",
+     "source": "game term (no outside source)"
+    },
+    "hi": {
+     "term": "शिल्प",
+     "source": "game term (no outside source)"
+    },
+    "zh": {
+     "term": "技艺",
+     "source": "game term (no outside source)"
+    },
+    "ja": {
+     "term": "技巧",
+     "source": "game term (no outside source)"
+    },
+    "ko": {
+     "term": "기교",
+     "source": "game term (no outside source)"
+    },
+    "vi": {
+     "term": "tay nghề",
+     "source": "game term (no outside source)"
+    },
+    "th": {
+     "term": "ฝีมือ",
+     "source": "game term (no outside source)"
+    },
+    "id": {
+     "term": "keahlian",
+     "source": "game term (no outside source)"
+    }
+   }
+  },
+  "judge": {
+   "english": "judge (who compares the two verses)",
+   "match": "\\bjudge\\b",
+   "note": "The game's own term, fixed by the translator's note at the top of the locale file; kept consistent by this check.",
+   "langs": {
+    "es": {
+     "term": "juez",
+     "source": "game term (no outside source)"
+    },
+    "fr": {
+     "term": "juge",
+     "source": "game term (no outside source)"
+    },
+    "de": {
+     "term": "Richter",
+     "source": "game term (no outside source)"
+    },
+    "it": {
+     "term": "giudice",
+     "source": "game term (no outside source)"
+    },
+    "pt": {
+     "term": "juiz",
+     "source": "game term (no outside source)"
+    },
+    "pl": {
+     "term": "sędzia",
+     "accept": [
+      "sędzi"
+     ],
+     "source": "game term (no outside source)"
+    },
+    "ru": {
+     "term": "судья",
+     "accept": [
+      "судь"
+     ],
+     "source": "game term (no outside source)"
+    },
+    "ar": {
+     "term": "حَكَم",
+     "accept": [
+      "الحكم"
+     ],
+     "source": "game term (no outside source)"
+    },
+    "hi": {
+     "term": "निर्णायक",
+     "source": "game term (no outside source)"
+    },
+    "zh": {
+     "term": "裁判",
+     "source": "game term (no outside source)"
+    },
+    "ja": {
+     "term": "審判",
+     "source": "game term (no outside source)"
+    },
+    "ko": {
+     "term": "심판",
+     "source": "game term (no outside source)"
+    },
+    "vi": {
+     "term": "giám khảo",
+     "source": "game term (no outside source)"
+    },
+    "th": {
+     "term": "กรรมการ",
+     "source": "game term (no outside source)"
+    },
+    "id": {
+     "term": "juri",
+     "source": "game term (no outside source)"
+    }
+   }
+  },
+  "opponent": {
+   "english": "opponent",
+   "match": "\\bopponent",
+   "note": "The game's own term, fixed by the translator's note at the top of the locale file; kept consistent by this check.",
+   "langs": {
+    "es": {
+     "term": "rival",
+     "source": "game term (no outside source)"
+    },
+    "fr": {
+     "term": "adversaire",
+     "source": "game term (no outside source)"
+    },
+    "de": {
+     "term": "Gegner",
+     "source": "game term (no outside source)"
+    },
+    "it": {
+     "term": "avversario",
+     "accept": [
+      "avversari"
+     ],
+     "source": "game term (no outside source)"
+    },
+    "pt": {
+     "term": "adversário",
+     "source": "game term (no outside source)"
+    },
+    "pl": {
+     "term": "rywal",
+     "source": "game term (no outside source)"
+    },
+    "ru": {
+     "term": "соперник",
+     "source": "game term (no outside source)"
+    },
+    "ar": {
+     "term": "خصم",
+     "source": "game term (no outside source)"
+    },
+    "hi": {
+     "term": "प्रतिद्वंद्वी",
+     "source": "game term (no outside source)"
+    },
+    "zh": {
+     "term": "对手",
+     "source": "game term (no outside source)"
+    },
+    "ja": {
+     "term": "相手",
+     "source": "game term (no outside source)"
+    },
+    "ko": {
+     "term": "상대",
+     "source": "game term (no outside source)"
+    },
+    "vi": {
+     "term": "đối thủ",
+     "source": "game term (no outside source)"
+    },
+    "th": {
+     "term": "คู่ต่อสู้",
+     "source": "game term (no outside source)"
+    },
+    "id": {
+     "term": "lawan",
+     "source": "game term (no outside source)"
+    }
+   }
+  },
+  "signature": {
+   "english": "signature (the bonus for echoing a card's famous line)",
+   "match": "\\bsignature\\b",
+   "note": "The game's own term, fixed by the translator's note at the top of the locale file; kept consistent by this check.",
+   "langs": {
+    "es": {
+     "term": "firma",
+     "source": "game term (no outside source)"
+    },
+    "fr": {
+     "term": "signature",
+     "source": "game term (no outside source)"
+    },
+    "de": {
+     "term": "Signatur",
+     "source": "game term (no outside source)"
+    },
+    "it": {
+     "term": "firma",
+     "source": "game term (no outside source)"
+    },
+    "pt": {
+     "term": "assinatura",
+     "source": "game term (no outside source)"
+    },
+    "pl": {
+     "term": "sygnatura",
+     "accept": [
+      "sygnatur"
+     ],
+     "source": "game term (no outside source)"
+    },
+    "ru": {
+     "term": "подпись",
+     "accept": [
+      "подпис"
+     ],
+     "source": "game term (no outside source)"
+    },
+    "ar": {
+     "term": "توقيع",
+     "source": "game term (no outside source)"
+    },
+    "hi": {
+     "term": "हस्ताक्षर",
+     "source": "game term (no outside source)"
+    },
+    "zh": {
+     "term": "签名",
+     "source": "game term (no outside source)"
+    },
+    "ja": {
+     "term": "シグネチャー",
+     "source": "game term (no outside source)"
+    },
+    "ko": {
+     "term": "시그니처",
+     "source": "game term (no outside source)"
+    },
+    "vi": {
+     "term": "dấu ấn",
+     "source": "game term (no outside source)"
+    },
+    "th": {
+     "term": "ลายเซ็น",
+     "source": "game term (no outside source)"
+    },
+    "id": {
+     "term": "tanda tangan",
+     "source": "game term (no outside source)"
+    }
+   }
+  },
+  "power-words": {
+   "english": "power words (words a relic lends)",
+   "match": "power words",
+   "note": "The game's own term, fixed by the translator's note at the top of the locale file; kept consistent by this check.",
+   "langs": {
+    "es": {
+     "term": "palabras de poder",
+     "source": "game term (no outside source)"
+    },
+    "fr": {
+     "term": "mots de pouvoir",
+     "source": "game term (no outside source)"
+    },
+    "de": {
+     "term": "Machtworte",
+     "source": "game term (no outside source)"
+    },
+    "it": {
+     "term": "parole di potere",
+     "source": "game term (no outside source)"
+    },
+    "pt": {
+     "term": "palavras de poder",
+     "source": "game term (no outside source)"
+    },
+    "pl": {
+     "term": "słowa mocy",
+     "source": "game term (no outside source)"
+    },
+    "ru": {
+     "term": "слова силы",
+     "source": "game term (no outside source)"
+    },
+    "ar": {
+     "term": "كلمات القوة",
+     "source": "game term (no outside source)"
+    },
+    "hi": {
+     "term": "शक्ति-शब्द",
+     "source": "game term (no outside source)"
+    },
+    "zh": {
+     "term": "力量之词",
+     "source": "game term (no outside source)"
+    },
+    "ja": {
+     "term": "力の言葉",
+     "source": "game term (no outside source)"
+    },
+    "ko": {
+     "term": "힘의 낱말",
+     "source": "game term (no outside source)"
+    },
+    "vi": {
+     "term": "từ quyền năng",
+     "source": "game term (no outside source)"
+    },
+    "th": {
+     "term": "คำทรงพลัง",
+     "source": "game term (no outside source)"
+    },
+    "id": {
+     "term": "kata sakti",
+     "source": "game term (no outside source)"
+    }
+   }
+  },
+  "syllable": {
+   "english": "syllable",
+   "match": "\\bsyllables?\\b",
+   "note": "The word for a syllable in each language: the title of its Wikipedia article (Wikidata Q8188), or for Hindi the Wikidata label (the article title, अक्षर, also means 'letter', which the game needs as a separate word).",
+   "langs": {
+    "es": {
+     "term": "sílaba",
+     "source": "Wikidata Q8188 (docs/language/sources/wikidata-terms.json)"
+    },
+    "fr": {
+     "term": "syllabe",
+     "source": "Wikidata Q8188 (docs/language/sources/wikidata-terms.json)"
+    },
+    "de": {
+     "term": "Silbe",
+     "source": "Wikidata Q8188 (docs/language/sources/wikidata-terms.json)"
+    },
+    "it": {
+     "term": "sillaba",
+     "accept": [
+      "sillabe"
+     ],
+     "source": "Wikidata Q8188 (docs/language/sources/wikidata-terms.json)"
+    },
+    "pt": {
+     "term": "sílaba",
+     "source": "Wikidata Q8188 (docs/language/sources/wikidata-terms.json)"
+    },
+    "pl": {
+     "term": "sylaba",
+     "accept": [
+      "sylab"
+     ],
+     "source": "Wikidata Q8188 (docs/language/sources/wikidata-terms.json)"
+    },
+    "ru": {
+     "term": "слог",
+     "source": "Wikidata Q8188 (docs/language/sources/wikidata-terms.json)"
+    },
+    "ar": {
+     "term": "مقطع",
+     "accept": [
+      "مقاطع"
+     ],
+     "source": "Wikidata Q8188 (docs/language/sources/wikidata-terms.json)"
+    },
+    "hi": {
+     "term": "शब्दांश",
+     "source": "Wikidata Q8188 (docs/language/sources/wikidata-terms.json)"
+    },
+    "zh": {
+     "term": "音节",
+     "source": "Wikidata Q8188 (docs/language/sources/wikidata-terms.json)"
+    },
+    "ja": {
+     "term": "音節",
+     "source": "Wikidata Q8188 (docs/language/sources/wikidata-terms.json)"
+    },
+    "ko": {
+     "term": "음절",
+     "source": "Wikidata Q8188 (docs/language/sources/wikidata-terms.json)"
+    },
+    "vi": {
+     "term": "âm tiết",
+     "accept": [
+      "tiếng"
+     ],
+     "source": "Wikidata Q8188 (docs/language/sources/wikidata-terms.json)"
+    },
+    "th": {
+     "term": "พยางค์",
+     "source": "Wikidata Q8188 (docs/language/sources/wikidata-terms.json)"
+    },
+    "id": {
+     "term": "suku kata",
+     "source": "Wikidata Q8188 (docs/language/sources/wikidata-terms.json)"
+    }
+   }
+  },
+  "rhyme": {
+   "english": "rhyme",
+   "match": "\\brhym",
+   "note": "Each language's word for rhyme (Wikidata Q178715 where the article title is the everyday word).",
+   "langs": {
+    "es": {
+     "term": "rima",
+     "accept": [
+      "rim"
+     ],
+     "source": "Wikidata Q178715 (docs/language/sources/wikidata-terms.json); verb forms by the translator"
+    },
+    "fr": {
+     "term": "rime",
+     "accept": [
+      "rim"
+     ],
+     "source": "Wikidata Q178715 (docs/language/sources/wikidata-terms.json); verb forms by the translator"
+    },
+    "de": {
+     "term": "Reim",
+     "accept": [
+      "reim"
+     ],
+     "source": "Wikidata Q178715 (docs/language/sources/wikidata-terms.json); verb forms by the translator"
+    },
+    "it": {
+     "term": "rima",
+     "accept": [
+      "rim"
+     ],
+     "source": "Wikidata Q178715 (docs/language/sources/wikidata-terms.json); verb forms by the translator"
+    },
+    "pt": {
+     "term": "rima",
+     "accept": [
+      "rim"
+     ],
+     "source": "Wikidata Q178715 (docs/language/sources/wikidata-terms.json); verb forms by the translator"
+    },
+    "pl": {
+     "term": "rym",
+     "source": "Wikidata Q178715 (docs/language/sources/wikidata-terms.json); verb forms by the translator"
+    },
+    "ru": {
+     "term": "рифма",
+     "accept": [
+      "рифм"
+     ],
+     "source": "Wikidata Q178715 (docs/language/sources/wikidata-terms.json); verb forms by the translator"
+    },
+    "ar": {
+     "term": "قافية",
+     "accept": [
+      "قافي",
+      "يقفّي",
+      "مقفّ"
+     ],
+     "source": "Wikidata Q178715 (docs/language/sources/wikidata-terms.json); verb forms by the translator"
+    },
+    "hi": {
+     "term": "तुक",
+     "source": "Wikidata Q178715 (docs/language/sources/wikidata-terms.json); verb forms by the translator"
+    },
+    "zh": {
+     "term": "押韵",
+     "accept": [
+      "韵"
+     ],
+     "source": "Wikidata Q178715 (docs/language/sources/wikidata-terms.json); verb forms by the translator"
+    },
+    "ja": {
+     "term": "韻",
+     "source": "Wikidata Q178715 (docs/language/sources/wikidata-terms.json); verb forms by the translator"
+    },
+    "ko": {
+     "term": "운",
+     "source": "Wikidata Q178715 (docs/language/sources/wikidata-terms.json); verb forms by the translator"
+    },
+    "vi": {
+     "term": "vần",
+     "accept": [
+      "vận"
+     ],
+     "source": "Wikidata Q178715 (docs/language/sources/wikidata-terms.json); verb forms by the translator"
+    },
+    "th": {
+     "term": "สัมผัส",
+     "source": "Wikidata Q178715 (docs/language/sources/wikidata-terms.json); verb forms by the translator"
+    },
+    "id": {
+     "term": "rima",
+     "source": "Wikidata Q178715 (docs/language/sources/wikidata-terms.json); verb forms by the translator"
+    }
+   }
+  },
+  "written-opponent": {
+   "english": "written opponent / written verse (the opponent that plays prepared verses when no model runs)",
+   "match": "written (opponent|verse)",
+   "note": "The game's own term, fixed by the translator's note at the top of the locale file; kept consistent by this check.",
+   "langs": {
+    "es": {
+     "term": "escrit",
+     "source": "game term (no outside source)"
+    },
+    "fr": {
+     "term": "écrit",
+     "source": "game term (no outside source)"
+    },
+    "de": {
+     "term": "geschrieben",
+     "source": "game term (no outside source)"
+    },
+    "it": {
+     "term": "scritt",
+     "source": "game term (no outside source)"
+    },
+    "pt": {
+     "term": "escrit",
+     "source": "game term (no outside source)"
+    },
+    "pl": {
+     "term": "gotow",
+     "source": "game term (no outside source)"
+    },
+    "ru": {
+     "term": "готов",
+     "source": "game term (no outside source)"
+    },
+    "ar": {
+     "term": "مكتوب",
+     "source": "game term (no outside source)"
+    },
+    "hi": {
+     "term": "लिखे",
+     "source": "game term (no outside source)"
+    },
+    "zh": {
+     "term": "预先写好",
+     "source": "game term (no outside source)"
+    },
+    "ja": {
+     "term": "書かれた",
+     "source": "game term (no outside source)"
+    },
+    "ko": {
+     "term": "쓰인",
+     "source": "game term (no outside source)"
+    },
+    "vi": {
+     "term": "viết sẵn",
+     "source": "game term (no outside source)"
+    },
+    "th": {
+     "term": "เขียนไว้",
+     "source": "game term (no outside source)"
+    },
+    "id": {
+     "term": "tertulis",
+     "accept": [
+      "ditulis"
+     ],
+     "source": "game term (no outside source)"
+    }
+   }
+  },
+  "passkey": {
+   "english": "passkey",
+   "match": "passkey",
+   "note": "Platform term. Reference: Android's own translation (AOSP CredentialManager strings 'passkey'/'passkeys'); Apple's wording is recorded beside it where it differs (docs/language/sources/apple-passkeys.json).",
+   "langs": {
+    "es": {
+     "term": "llave de acceso",
+     "accept": [
+      "llaves de acceso",
+      "llave"
+     ],
+     "source": "Android (AOSP CredentialManager): llave de acceso / llaves de acceso"
+    },
+    "fr": {
+     "term": "clé d’accès",
+     "accept": [
+      "clés d’accès"
+     ],
+     "source": "Android (AOSP CredentialManager): clé d'accès / clés d'accès"
+    },
+    "de": {
+     "term": "Passkey",
+     "source": "Android (AOSP CredentialManager): Passkey / Passkeys"
+    },
+    "it": {
+     "term": "passkey",
+     "source": "Android (AOSP CredentialManager): passkey / passkey"
+    },
+    "pt": {
+     "term": "chave de acesso",
+     "accept": [
+      "chaves de acesso",
+      "chave"
+     ],
+     "source": "Android (AOSP CredentialManager): chave de acesso / chaves de acesso"
+    },
+    "pl": {
+     "term": "klucz dostępu",
+     "accept": [
+      "klucz"
+     ],
+     "source": "Android (AOSP CredentialManager): klucz / klucze dostępu"
+    },
+    "ru": {
+     "term": "ключ доступа",
+     "accept": [
+      "ключ"
+     ],
+     "source": "Android (AOSP CredentialManager): ключ доступа / ключи доступа"
+    },
+    "ar": {
+     "term": "مفتاح المرور",
+     "accept": [
+      "مفتاح مرور",
+      "مفاتيح المرور",
+      "مفاتيح مرور",
+      "مفتاح"
+     ],
+     "source": "Android (AOSP CredentialManager): مفتاح المرور / مفاتيح المرور"
+    },
+    "hi": {
+     "term": "पासकी",
+     "source": "Android (AOSP CredentialManager): पासकी / पासकी"
+    },
+    "zh": {
+     "term": "通行密钥",
+     "source": "Android (AOSP CredentialManager): 通行密钥 / 通行密钥"
+    },
+    "ja": {
+     "term": "パスキー",
+     "source": "Android (AOSP CredentialManager): パスキー / パスキー"
+    },
+    "ko": {
+     "term": "패스키",
+     "source": "Android (AOSP CredentialManager): 패스키 / 패스키"
+    },
+    "vi": {
+     "term": "khóa truy cập",
+     "source": "Android (AOSP CredentialManager): khoá đăng nhập / khoá truy cập"
+    },
+    "th": {
+     "term": "พาสคีย์",
+     "source": "Android (AOSP CredentialManager): พาสคีย์ / พาสคีย์"
+    },
+    "id": {
+     "term": "kunci sandi",
+     "source": "Android (AOSP CredentialManager): kunci sandi / kunci sandi"
+    }
+   }
+  },
+  "sign-in": {
+   "english": "sign in",
+   "match": "\\bsign(s|ed|ing)? in\\b",
+   "note": "Platform term. Reference: Android's translation of the 'Sign in' button (AOSP core strings, kg_login_submit_button). Where the locale differs from Android (Portuguese Entrar, Japanese サインイン, Thai เข้าสู่ระบบ, Indonesian Masuk) the entry says so.",
+   "langs": {
+    "es": {
+     "term": "iniciar sesión",
+     "accept": [
+      "inicia sesión",
+      "inicio de sesión",
+      "entra",
+      "sesión"
+     ],
+     "source": "Android (AOSP core, kg_login_submit_button): Iniciar sesión"
+    },
+    "fr": {
+     "term": "connexion",
+     "accept": [
+      "connect"
+     ],
+     "source": "Android (AOSP core, kg_login_submit_button): Connexion"
+    },
+    "de": {
+     "term": "anmelden",
+     "accept": [
+      "anmeld",
+      "meld"
+     ],
+     "source": "Android (AOSP core, kg_login_submit_button): Anmelden"
+    },
+    "it": {
+     "term": "accedi",
+     "accept": [
+      "acced",
+      "accesso"
+     ],
+     "source": "Android (AOSP core, kg_login_submit_button): Accedi"
+    },
+    "pt": {
+     "term": "entrar",
+     "accept": [
+      "entra",
+      "entre",
+      "conectado"
+     ],
+     "source": "Android (AOSP core, kg_login_submit_button): Fazer login"
+    },
+    "pl": {
+     "term": "zaloguj",
+     "accept": [
+      "logow",
+      "logując",
+      "loguj"
+     ],
+     "source": "Android (AOSP core, kg_login_submit_button): Zaloguj się"
+    },
+    "ru": {
+     "term": "войти",
+     "accept": [
+      "вход",
+      "войд",
+      "входи"
+     ],
+     "source": "Android (AOSP core, kg_login_submit_button): Войти"
+    },
+    "ar": {
+     "term": "تسجيل الدخول",
+     "accept": [
+      "الدخول",
+      "دخول",
+      "ادخل",
+      "تدخل"
+     ],
+     "source": "Android (AOSP core, kg_login_submit_button): تسجيل الدخول"
+    },
+    "hi": {
+     "term": "साइन इन",
+     "source": "Android (AOSP core, kg_login_submit_button): साइन इन करें"
+    },
+    "zh": {
+     "term": "登录",
+     "source": "Android (AOSP core, kg_login_submit_button): 登录"
+    },
+    "ja": {
+     "term": "サインイン",
+     "source": "Android (AOSP core, kg_login_submit_button): ログイン"
+    },
+    "ko": {
+     "term": "로그인",
+     "source": "Android (AOSP core, kg_login_submit_button): 로그인"
+    },
+    "vi": {
+     "term": "đăng nhập",
+     "source": "Android (AOSP core, kg_login_submit_button): Đăng nhập"
+    },
+    "th": {
+     "term": "เข้าสู่ระบบ",
+     "source": "Android (AOSP core, kg_login_submit_button): ลงชื่อเข้าใช้"
+    },
+    "id": {
+     "term": "masuk",
+     "source": "Android (AOSP core, kg_login_submit_button): Login"
+    }
+   }
+  },
+  "microphone": {
+   "english": "microphone",
+   "match": "\\bmicrophone",
+   "note": "Platform term. Reference: Android's permission-group label (AOSP core strings, permgrouplab_microphone).",
+   "langs": {
+    "es": {
+     "term": "micrófono",
+     "source": "Android (AOSP core, permgrouplab_microphone): Micrófono"
+    },
+    "fr": {
+     "term": "micro",
+     "source": "Android (AOSP core, permgrouplab_microphone): Micro"
+    },
+    "de": {
+     "term": "Mikrofon",
+     "source": "Android (AOSP core, permgrouplab_microphone): Mikrofon"
+    },
+    "it": {
+     "term": "microfono",
+     "source": "Android (AOSP core, permgrouplab_microphone): Microfono"
+    },
+    "pt": {
+     "term": "microfone",
+     "source": "Android (AOSP core, permgrouplab_microphone): Microfone"
+    },
+    "pl": {
+     "term": "mikrofon",
+     "source": "Android (AOSP core, permgrouplab_microphone): Mikrofon"
+    },
+    "ru": {
+     "term": "микрофон",
+     "source": "Android (AOSP core, permgrouplab_microphone): Микрофон"
+    },
+    "ar": {
+     "term": "ميكروفون",
+     "source": "Android (AOSP core, permgrouplab_microphone): الميكروفون"
+    },
+    "hi": {
+     "term": "माइक्रोफ़ोन",
+     "source": "Android (AOSP core, permgrouplab_microphone): माइक्रोफ़ोन"
+    },
+    "zh": {
+     "term": "麦克风",
+     "source": "Android (AOSP core, permgrouplab_microphone): 麦克风"
+    },
+    "ja": {
+     "term": "マイク",
+     "source": "Android (AOSP core, permgrouplab_microphone): マイク"
+    },
+    "ko": {
+     "term": "마이크",
+     "source": "Android (AOSP core, permgrouplab_microphone): 마이크"
+    },
+    "vi": {
+     "term": "micro",
+     "source": "Android (AOSP core, permgrouplab_microphone): Micrô"
+    },
+    "th": {
+     "term": "ไมโครโฟน",
+     "source": "Android (AOSP core, permgrouplab_microphone): ไมโครโฟน"
+    },
+    "id": {
+     "term": "mikrofon",
+     "source": "Android (AOSP core, permgrouplab_microphone): Mikrofon"
+    }
+   }
+  },
+  "download": {
+   "english": "download",
+   "match": "\\bdownload",
+   "note": "Platform term. Reference: Android's 'Download app' (AOSP core strings, install_carrier_app_notification_button).",
+   "langs": {
+    "es": {
+     "term": "descarg",
+     "source": "Android (AOSP core, install_carrier_app_notification_button): Descargar aplicación"
+    },
+    "fr": {
+     "term": "télécharg",
+     "source": "Android (AOSP core, install_carrier_app_notification_button): Télécharger l'application"
+    },
+    "de": {
+     "term": "Download",
+     "accept": [
+      "herunter",
+      "geladen",
+      "lädt"
+     ],
+     "source": "Android (AOSP core, install_carrier_app_notification_button): App herunterladen"
+    },
+    "it": {
+     "term": "scaric",
+     "accept": [
+      "download"
+     ],
+     "source": "Android (AOSP core, install_carrier_app_notification_button): Scarica app"
+    },
+    "pt": {
+     "term": "baix",
+     "accept": [
+      "download"
+     ],
+     "source": "Android (AOSP core, install_carrier_app_notification_button): Baixar o app"
+    },
+    "pl": {
+     "term": "pobier",
+     "accept": [
+      "pobran",
+      "pobra"
+     ],
+     "source": "Android (AOSP core, install_carrier_app_notification_button): Pobierz aplikację"
+    },
+    "ru": {
+     "term": "загруз",
+     "accept": [
+      "загруж",
+      "скач"
+     ],
+     "source": "Android (AOSP core, install_carrier_app_notification_button): Скачать приложение"
+    },
+    "ar": {
+     "term": "تنزيل",
+     "accept": [
+      "تنزّل",
+      "نزّل",
+      "نزَّل",
+      "تحميل"
+     ],
+     "source": "Android (AOSP core, install_carrier_app_notification_button): تنزيل التطبيق"
+    },
+    "hi": {
+     "term": "डाउनलोड",
+     "source": "Android (AOSP core, install_carrier_app_notification_button): ऐप्लिकेशन डाउनलोड करें"
+    },
+    "zh": {
+     "term": "下载",
+     "source": "Android (AOSP core, install_carrier_app_notification_button): 下载应用"
+    },
+    "ja": {
+     "term": "ダウンロード",
+     "source": "Android (AOSP core, install_carrier_app_notification_button): アプリをダウンロード"
+    },
+    "ko": {
+     "term": "다운로드",
+     "source": "Android (AOSP core, install_carrier_app_notification_button): 앱 다운로드"
+    },
+    "vi": {
+     "term": "tải",
+     "source": "Android (AOSP core, install_carrier_app_notification_button): Tải xuống ứng dụng"
+    },
+    "th": {
+     "term": "ดาวน์โหลด",
+     "source": "Android (AOSP core, install_carrier_app_notification_button): ดาวน์โหลดแอป"
+    },
+    "id": {
+     "term": "unduh",
+     "accept": [
+      "mengunduh"
+     ],
+     "source": "Android (AOSP core, install_carrier_app_notification_button): Download aplikasi"
+    }
+   }
+  },
+  "screen-lock": {
+   "english": "screen lock",
+   "match": "screen lock",
+   "note": "Platform term. Reference: Android's 'Screen lock' (AOSP core strings, screen_lock).",
+   "langs": {
+    "es": {
+     "term": "bloqueo de pantalla",
+     "source": "Android (AOSP core, screen_lock): Bloqueo de pantalla"
+    },
+    "fr": {
+     "term": "verrouillage de l’écran",
+     "accept": [
+      "verrouillage"
+     ],
+     "source": "Android (AOSP core, screen_lock): Verrouillage de l'écran"
+    },
+    "de": {
+     "term": "Bildschirmsperre",
+     "source": "Android (AOSP core, screen_lock): Displaysperre"
+    },
+    "it": {
+     "term": "blocco schermo",
+     "accept": [
+      "blocco dello schermo"
+     ],
+     "source": "Android (AOSP core, screen_lock): Blocco schermo"
+    },
+    "pt": {
+     "term": "bloqueio de tela",
+     "source": "Android (AOSP core, screen_lock): Bloquear tela"
+    },
+    "pl": {
+     "term": "blokada ekranu",
+     "accept": [
+      "blokad"
+     ],
+     "source": "Android (AOSP core, screen_lock): Blokada ekranu"
+    },
+    "ru": {
+     "term": "блокировка экрана",
+     "accept": [
+      "блокировк"
+     ],
+     "source": "Android (AOSP core, screen_lock): Блокировка экрана"
+    },
+    "ar": {
+     "term": "قفل الشاشة",
+     "source": "Android (AOSP core, screen_lock): قفل الشاشة"
+    },
+    "hi": {
+     "term": "स्क्रीन लॉक",
+     "source": "Android (AOSP core, screen_lock): स्‍क्रीन लॉक"
+    },
+    "zh": {
+     "term": "屏幕锁",
+     "source": "Android (AOSP core, screen_lock): 屏幕锁定"
+    },
+    "ja": {
+     "term": "画面ロック",
+     "source": "Android (AOSP core, screen_lock): 画面をロック"
+    },
+    "ko": {
+     "term": "화면 잠금",
+     "source": "Android (AOSP core, screen_lock): 화면 잠금"
+    },
+    "vi": {
+     "term": "khóa màn hình",
+     "accept": [
+      "khoá màn hình"
+     ],
+     "source": "Android (AOSP core, screen_lock): Phương thức khoá màn hình"
+    },
+    "th": {
+     "term": "ล็อกหน้าจอ",
+     "source": "Android (AOSP core, screen_lock): ล็อกหน้าจอ"
+    },
+    "id": {
+     "term": "kunci layar",
+     "source": "Android (AOSP core, screen_lock): Kunci layar"
+    }
+   }
+  }
+ },
+ "names": {
+  "form.couplet.name": {
+   "concept": "couplet",
+   "wikidata": "Q4779829",
+   "english": "Couplet",
+   "langs": {
+    "es": {
+     "value": "Pareado",
+     "source": "es Wikipedia article Pareado (Wikidata Q4779829)"
+    },
+    "fr": {
+     "value": "Distique",
+     "source": "fr Wikipedia article Distique (littérature) (Wikidata Q4779829)"
+    },
+    "de": {
+     "value": "Zweizeiler",
+     "source": "de Wikipedia article Zweizeiler (Verslehre) (Wikidata Q4779829)"
+    },
+    "it": {
+     "value": "Distico",
+     "source": "it Wikipedia article Distico (Wikidata Q4779829)"
+    },
+    "pt": {
+     "value": "Dístico",
+     "source": "pt Wikipedia article Dístico (Wikidata Q4779829)"
+    },
+    "pl": {
+     "value": "Dystych",
+     "source": "Title of the pl Wikipedia article Dystych (Wikidata Q906442, distich); the couplet item itself has no Polish article."
+    },
+    "ru": {
+     "value": "Двустишие",
+     "source": "ru Wikipedia article Двустишие (Wikidata Q4779829)"
+    },
+    "ar": {
+     "value": "بيتان مقفّيان",
+     "source": "A description (two rhymed lines), not a term. Wikidata links the Arabic article مربع (شعر) to this concept; it was not adopted because, to the translator's knowledge, مربع names a four-part stanza in Arabic prosody. Not verified: for a native reader."
+    },
+    "hi": {
+     "value": "दोहा",
+     "source": "दोहा is the rhymed couplet of the Hindi tradition (hi Wikipedia article दोहा, Wikidata Q5288532). A doha also has a fixed metre, which the game does not check. Replaces the coined दोहा-युग्म."
+    },
+    "zh": {
+     "value": "对句",
+     "source": "zh Wikipedia article 对句 (Wikidata Q4779829)"
+    },
+    "ja": {
+     "value": "二行連",
+     "source": "ja Wikipedia article 二行連 (Wikidata Q4779829)"
+    },
+    "ko": {
+     "value": "쿠플레",
+     "source": "ko Wikipedia article 쿠플레 (Wikidata Q4779829)"
+    },
+    "vi": {
+     "value": "Câu đối vần",
+     "source": "No article for this concept. Câu đối (vi Wikipedia, Q1168671) is the antithetical couplet, a different form; the name here adds vần (rhyme). Coined: for a native reader."
+    },
+    "th": {
+     "value": "กลอนคู่",
+     "source": "No article for this concept and none titled กลอนคู่. Not sourced: for a native reader."
+    },
+    "id": {
+     "value": "Kuplet",
+     "source": "Wikidata links the Indonesian article Bait (sastra); bait is the everyday Indonesian word for a stanza, so it was not adopted. Kuplet is not an article title. Not sourced: for a native reader."
+    }
+   }
+  },
+  "form.quatrain-aabb.name": {
+   "concept": "quatrain",
+   "wikidata": "Q570948",
+   "english": "Paired Quatrain",
+   "langs": {
+    "es": {
+     "value": "Cuarteta de pareados",
+     "source": "Cuarteta + the rhyme pattern. Cuarteta: es Wikipedia article Cuarteta (Q8352204)"
+    },
+    "fr": {
+     "value": "Quatrain à rimes plates",
+     "source": "Quatrain + the rhyme pattern. Quatrain: fr Wikipedia article Quatrain (Wikidata Q570948)"
+    },
+    "de": {
+     "value": "Vierzeiler im Paarreim",
+     "source": "Vierzeiler + the rhyme pattern. Vierzeiler: de Wikipedia article Vierzeiler (Wikidata Q570948)"
+    },
+    "it": {
+     "value": "Quartina a rima baciata",
+     "source": "Quartina + the rhyme pattern. Quartina: it Wikipedia article Quartina (metrica) (Wikidata Q570948)"
+    },
+    "pt": {
+     "value": "Quadra de rimas emparelhadas",
+     "source": "Quadra + the rhyme pattern. Quadra: Wikidata alias quadra"
+    },
+    "pl": {
+     "value": "Czterowiersz parzysty",
+     "source": "Czterowiersz + the rhyme pattern. Czterowiersz: not an article title (the article is Tetrastych); the everyday Polish word, not sourced"
+    },
+    "ru": {
+     "value": "Катрен с парной рифмой",
+     "source": "Катрен + the rhyme pattern. Катрен: ru Wikipedia article Катрен (Wikidata Q570948)"
+    },
+    "ar": {
+     "value": "رباعية مزدوجة القافية",
+     "source": "رباعية + the rhyme pattern. رباعية: ar Wikipedia article رباعية (شعر) (Wikidata Q570948)"
+    },
+    "hi": {
+     "value": "जोड़ीदार चौपदी",
+     "source": "चौपदी + the rhyme pattern. चौपदी: not sourced: for a native reader"
+    },
+    "zh": {
+     "value": "连韵四行诗",
+     "source": "四行诗 + the rhyme pattern. 四行诗: zh Wikipedia article 四行诗 (Wikidata Q570948)"
+    },
+    "ja": {
+     "value": "対韻の四行連",
+     "source": "四行連 + the rhyme pattern. 四行連: ja Wikipedia article 四行連 (Wikidata Q570948)"
+    },
+    "ko": {
+     "value": "짝운 4행시",
+     "source": "4행시 + the rhyme pattern. 4행시: not sourced"
+    },
+    "vi": {
+     "value": "Tứ tuyệt vần liền",
+     "source": "Tứ tuyệt + the rhyme pattern. Tứ tuyệt: not sourced; tứ tuyệt usually names the Chinese-style quatrain: for a native reader"
+    },
+    "th": {
+     "value": "กลอนสี่สัมผัสคู่",
+     "source": "กลอนสี่ + the rhyme pattern. กลอนสี่: not an article title; not sourced"
+    },
+    "id": {
+     "value": "Sajak empat baris berpasangan",
+     "source": "Sajak empat baris + the rhyme pattern. Sajak empat baris: id Wikipedia article Sajak empat baris (Wikidata Q570948)"
+    }
+   }
+  },
+  "form.quatrain-abab.name": {
+   "concept": "quatrain",
+   "wikidata": "Q570948",
+   "english": "Crossed Quatrain",
+   "langs": {
+    "es": {
+     "value": "Cuarteta cruzada",
+     "source": "Cuarteta + the rhyme pattern. Cuarteta: es Wikipedia article Cuarteta (Q8352204)"
+    },
+    "fr": {
+     "value": "Quatrain à rimes croisées",
+     "source": "Quatrain + the rhyme pattern. Quatrain: fr Wikipedia article Quatrain (Wikidata Q570948)"
+    },
+    "de": {
+     "value": "Vierzeiler im Kreuzreim",
+     "source": "Vierzeiler + the rhyme pattern. Vierzeiler: de Wikipedia article Vierzeiler (Wikidata Q570948)"
+    },
+    "it": {
+     "value": "Quartina a rima alternata",
+     "source": "Quartina + the rhyme pattern. Quartina: it Wikipedia article Quartina (metrica) (Wikidata Q570948)"
+    },
+    "pt": {
+     "value": "Quadra de rimas cruzadas",
+     "source": "Quadra + the rhyme pattern. Quadra: Wikidata alias quadra"
+    },
+    "pl": {
+     "value": "Czterowiersz krzyżowy",
+     "source": "Czterowiersz + the rhyme pattern. Czterowiersz: not an article title (the article is Tetrastych); the everyday Polish word, not sourced"
+    },
+    "ru": {
+     "value": "Катрен с перекрёстной рифмой",
+     "source": "Катрен + the rhyme pattern. Катрен: ru Wikipedia article Катрен (Wikidata Q570948)"
+    },
+    "ar": {
+     "value": "رباعية متقاطعة القافية",
+     "source": "رباعية + the rhyme pattern. رباعية: ar Wikipedia article رباعية (شعر) (Wikidata Q570948)"
+    },
+    "hi": {
+     "value": "एकांतर चौपदी",
+     "source": "चौपदी + the rhyme pattern. चौपदी: not sourced: for a native reader"
+    },
+    "zh": {
+     "value": "交韵四行诗",
+     "source": "四行诗 + the rhyme pattern. 四行诗: zh Wikipedia article 四行诗 (Wikidata Q570948)"
+    },
+    "ja": {
+     "value": "交差韻の四行連",
+     "source": "四行連 + the rhyme pattern. 四行連: ja Wikipedia article 四行連 (Wikidata Q570948)"
+    },
+    "ko": {
+     "value": "교차운 4행시",
+     "source": "4행시 + the rhyme pattern. 4행시: not sourced"
+    },
+    "vi": {
+     "value": "Tứ tuyệt vần chéo",
+     "source": "Tứ tuyệt + the rhyme pattern. Tứ tuyệt: not sourced; tứ tuyệt usually names the Chinese-style quatrain: for a native reader"
+    },
+    "th": {
+     "value": "กลอนสี่สัมผัสไขว้",
+     "source": "กลอนสี่ + the rhyme pattern. กลอนสี่: not an article title; not sourced"
+    },
+    "id": {
+     "value": "Sajak empat baris bersilang",
+     "source": "Sajak empat baris + the rhyme pattern. Sajak empat baris: id Wikipedia article Sajak empat baris (Wikidata Q570948)"
+    }
+   }
+  },
+  "form.tercet.name": {
+   "concept": "tercet",
+   "wikidata": "Q1353779",
+   "english": "Tercet",
+   "langs": {
+    "es": {
+     "value": "Terceto",
+     "source": "es Wikipedia article Terceto (Wikidata Q1353779)"
+    },
+    "fr": {
+     "value": "Tercet",
+     "source": "fr Wikipedia article Tercet (Wikidata Q1353779)"
+    },
+    "de": {
+     "value": "Terzett",
+     "source": "de Wikipedia article Terzett (Verslehre) (Wikidata Q1353779)"
+    },
+    "it": {
+     "value": "Terzina",
+     "source": "it Wikipedia article Terzina (metrica) (Wikidata Q1353779)"
+    },
+    "pt": {
+     "value": "Terceto",
+     "source": "pt Wikipedia article Terceto (Wikidata Q1353779)"
+    },
+    "pl": {
+     "value": "Tercet",
+     "source": "pl Wikipedia article Tercet (literatura) (Wikidata Q1353779)"
+    },
+    "ru": {
+     "value": "Терцет",
+     "source": "ru Wikipedia article Терцет (Wikidata Q1353779)"
+    },
+    "ar": {
+     "value": "ثلاثية",
+     "source": "Not sourced: no article for this concept in this language. For a native reader."
+    },
+    "hi": {
+     "value": "त्रिपदी",
+     "source": "No article for this concept. The hi Wikipedia article त्रिपदी is about the trinomial in algebra. Not sourced: for a native reader."
+    },
+    "zh": {
+     "value": "三行诗",
+     "source": "No zh article for this concept; Wikidata's zh label is 三行体. Not sourced: for a native reader."
+    },
+    "ja": {
+     "value": "三行連",
+     "source": "ja Wikipedia article 三行連 (Wikidata Q1353779)"
+    },
+    "ko": {
+     "value": "3행 연",
+     "source": "Not sourced: no article for this concept in this language. For a native reader."
+    },
+    "vi": {
+     "value": "Khổ ba dòng",
+     "source": "Not sourced: no article for this concept in this language. For a native reader."
+    },
+    "th": {
+     "value": "กลอนสาม",
+     "source": "Not sourced: no article for this concept in this language. For a native reader."
+    },
+    "id": {
+     "value": "Terzina",
+     "source": "Not sourced: no article for this concept in this language. For a native reader."
+    }
+   }
+  },
+  "form.anaphora.name": {
+   "concept": "anaphora",
+   "wikidata": "Q486050",
+   "english": "Anaphora",
+   "langs": {
+    "es": {
+     "value": "Anáfora",
+     "source": "es Wikipedia article Anáfora (retórica) (Wikidata Q486050)"
+    },
+    "fr": {
+     "value": "Anaphore",
+     "source": "fr Wikipedia article Anaphore (rhétorique) (Wikidata Q486050)"
+    },
+    "de": {
+     "value": "Anapher",
+     "source": "de Wikipedia article Anapher (Wikidata Q486050)"
+    },
+    "it": {
+     "value": "Anafora",
+     "source": "it Wikipedia article Anafora (figura retorica) (Wikidata Q486050)"
+    },
+    "pt": {
+     "value": "Anáfora",
+     "source": "pt Wikipedia article Anáfora (Wikidata Q486050)"
+    },
+    "pl": {
+     "value": "Anafora",
+     "source": "pl Wikipedia article Anafora (środek stylistyczny) (Wikidata Q486050)"
+    },
+    "ru": {
+     "value": "Анафора",
+     "source": "ru Wikipedia article Анафора (Wikidata Q486050)"
+    },
+    "ar": {
+     "value": "تكرار الصدارة",
+     "source": "ar Wikipedia article تكرار الصدارة (Wikidata Q486050)"
+    },
+    "hi": {
+     "value": "आदि-आवृत्ति",
+     "source": "Not sourced: no article for this concept in this language. For a native reader."
+    },
+    "zh": {
+     "value": "首语重复",
+     "source": "No zh article; Wikidata's zh label is 句首照应反复. 首语重复 is not sourced: for a native reader."
+    },
+    "ja": {
+     "value": "首句反復",
+     "source": "ja Wikipedia article 首句反復 (Wikidata Q486050)"
+    },
+    "ko": {
+     "value": "첫말 반복",
+     "source": "No ko article. A plain description (repeat the first word), chosen over the earlier 두운 반복, which used the word for alliteration. Not sourced."
+    },
+    "vi": {
+     "value": "Điệp đầu",
+     "source": "Wikidata's vi sitelink is the untranslated 'Anaphora (tu từ học)'. Điệp đầu is not sourced: for a native reader."
+    },
+    "th": {
+     "value": "ซ้ำคำขึ้นต้น",
+     "source": "Not sourced: no article for this concept in this language. For a native reader."
+    },
+    "id": {
+     "value": "Anafora",
+     "source": "The id Wikipedia article Anafora (Q262575) is about the eucharistic prayer; the rhetorical term has no article. Not sourced."
+    }
+   }
+  },
+  "form.acrostic.name": {
+   "concept": "acrostic",
+   "wikidata": "Q173287",
+   "english": "Acrostic",
+   "langs": {
+    "es": {
+     "value": "Acróstico",
+     "source": "es Wikipedia article Acróstico (Wikidata Q173287)"
+    },
+    "fr": {
+     "value": "Acrostiche",
+     "source": "fr Wikipedia article Acrostiche (Wikidata Q173287)"
+    },
+    "de": {
+     "value": "Akrostichon",
+     "source": "de Wikipedia article Akrostichon (Wikidata Q173287)"
+    },
+    "it": {
+     "value": "Acrostico",
+     "source": "it Wikipedia article Acrostico (Wikidata Q173287)"
+    },
+    "pt": {
+     "value": "Acróstico",
+     "source": "pt Wikipedia article Acróstico (Wikidata Q173287)"
+    },
+    "pl": {
+     "value": "Akrostych",
+     "source": "pl Wikipedia article Akrostych (Wikidata Q173287)"
+    },
+    "ru": {
+     "value": "Акростих",
+     "source": "ru Wikipedia article Акростих (Wikidata Q173287)"
+    },
+    "ar": {
+     "value": "التطريز",
+     "source": "Title of the ar Wikipedia article تطريز (شعر) (Wikidata Q40376349). Wikidata links a different article, تتويج (شعر), to the acrostic item. Which is the better name is for a native reader."
+    },
+    "hi": {
+     "value": "एक्रोस्टिक कविता",
+     "source": "hi Wikipedia article एक्रोस्टिक कविता (Wikidata Q173287)"
+    },
+    "zh": {
+     "value": "藏头诗",
+     "source": "The common word. The zh article is 離合詩 (离合诗); Wikidata lists 離合藏頭詩 as an alias. 藏头诗 itself is not an article title: for a native reader."
+    },
+    "ja": {
+     "value": "折句",
+     "source": "ja Wikipedia article 折句 (Wikidata Q173287)"
+    },
+    "ko": {
+     "value": "이합체시",
+     "source": "ko Wikipedia article 이합체시 (Wikidata Q173287)"
+    },
+    "vi": {
+     "value": "Thơ khoán thủ",
+     "source": "No vi article for this concept and none titled Thơ khoán thủ. Not sourced: for a native reader."
+    },
+    "th": {
+     "value": "กลอนกระทู้",
+     "source": "Wikidata links the Thai article อักษรกล. The game's Thai acrostic is word by word, which is the กระทู้ form of Thai verse; กลอนกระทู้ is not an article title: for a native reader."
+    },
+    "id": {
+     "value": "Akrostik",
+     "source": "id Wikipedia article Akrostik (Wikidata Q173287)"
+    }
+   }
+  },
+  "form.epistrophe.name": {
+   "concept": "epistrophe",
+   "wikidata": "Q963102",
+   "english": "Epistrophe",
+   "langs": {
+    "es": {
+     "value": "Epífora",
+     "source": "es Wikipedia article Epífora (retórica) (Wikidata Q963102)"
+    },
+    "fr": {
+     "value": "Épiphore",
+     "source": "fr Wikipedia article Épiphore (Wikidata Q963102)"
+    },
+    "de": {
+     "value": "Epiphora",
+     "source": "de Wikipedia article Epiphora (Rhetorik) (Wikidata Q963102)"
+    },
+    "it": {
+     "value": "Epifora",
+     "source": "it Wikipedia article Epifora (figura retorica) (Wikidata Q963102)"
+    },
+    "pt": {
+     "value": "Epístrofe",
+     "source": "Article title. The earlier Epífora is, in pt Wikipedia, the medical term (Q1347256, excessive tearing)."
+    },
+    "pl": {
+     "value": "Epifora",
+     "source": "pl Wikipedia article Epifora (Wikidata Q963102)"
+    },
+    "ru": {
+     "value": "Эпифора",
+     "source": "ru Wikipedia article Эпифора (риторика) (Wikidata Q963102)"
+    },
+    "ar": {
+     "value": "تكرار النهاية",
+     "source": "ar Wikipedia article تكرار النهاية (Wikidata Q963102)"
+    },
+    "hi": {
+     "value": "अंत-आवृत्ति",
+     "source": "Not sourced: no article for this concept in this language. For a native reader."
+    },
+    "zh": {
+     "value": "尾语重复",
+     "source": "Not sourced: no article for this concept in this language. For a native reader."
+    },
+    "ja": {
+     "value": "結句反復",
+     "source": "ja Wikipedia article 結句反復 (Wikidata Q963102)"
+    },
+    "ko": {
+     "value": "끝말 반복",
+     "source": "No ko article. A plain description (repeat the last word), chosen over the earlier 각운 반복, which used the word for end rhyme. Not sourced."
+    },
+    "vi": {
+     "value": "Điệp cuối",
+     "source": "Not sourced: no article for this concept in this language (Wikidata label: Epistrophe). For a native reader."
+    },
+    "th": {
+     "value": "ซ้ำคำลงท้าย",
+     "source": "Not sourced: no article for this concept in this language. For a native reader."
+    },
+    "id": {
+     "value": "Epifora",
+     "source": "id Wikipedia article Epifora (Wikidata Q963102)"
+    }
+   }
+  },
+  "form.haiku.name": {
+   "concept": "haiku",
+   "wikidata": "Q37707",
+   "english": "Haiku",
+   "langs": {
+    "es": {
+     "value": "Haiku",
+     "source": "es Wikipedia article Haiku (Wikidata Q37707)"
+    },
+    "fr": {
+     "value": "Haïku",
+     "source": "fr Wikipedia article Haïku (Wikidata Q37707)"
+    },
+    "de": {
+     "value": "Haiku",
+     "source": "de Wikipedia article Haiku (Wikidata Q37707)"
+    },
+    "it": {
+     "value": "Haiku",
+     "source": "it Wikipedia article Haiku (Wikidata Q37707)"
+    },
+    "pt": {
+     "value": "Haicai",
+     "source": "Wikidata alias; the usual Brazilian name. The pt article is titled Haiku."
+    },
+    "pl": {
+     "value": "Haiku",
+     "source": "pl Wikipedia article Haiku (Wikidata Q37707)"
+    },
+    "ru": {
+     "value": "Хайку",
+     "source": "ru Wikipedia article Хайку (Wikidata Q37707)"
+    },
+    "ar": {
+     "value": "هايكو",
+     "source": "ar Wikipedia article هايكو (Wikidata Q37707)"
+    },
+    "hi": {
+     "value": "हाइकु",
+     "source": "hi Wikipedia article हाइकु (Wikidata Q37707)"
+    },
+    "zh": {
+     "value": "俳句",
+     "source": "zh Wikipedia article 俳句 (Wikidata Q37707)"
+    },
+    "ja": {
+     "value": "俳句",
+     "source": "ja Wikipedia article 俳句 (Wikidata Q37707)"
+    },
+    "ko": {
+     "value": "하이쿠",
+     "source": "ko Wikipedia article 하이쿠 (Wikidata Q37707)"
+    },
+    "vi": {
+     "value": "Haiku",
+     "source": "vi Wikipedia article Haiku (Wikidata Q37707)"
+    },
+    "th": {
+     "value": "ไฮกุ",
+     "source": "th Wikipedia article ไฮกุ (Wikidata Q37707)"
+    },
+    "id": {
+     "value": "Haiku",
+     "source": "id Wikipedia article Haiku (Wikidata Q37707)"
+    }
+   }
+  },
+  "form.heroic-couplet.name": {
+   "concept": "heroic-couplet",
+   "wikidata": "Q2714966",
+   "english": "Heroic Couplet",
+   "langs": {
+    "es": {
+     "value": "Dístico heroico",
+     "source": "es Wikipedia article Dístico heroico (Wikidata Q2714966)"
+    },
+    "fr": {
+     "value": "Distique héroïque",
+     "source": "Not sourced: no article for this concept in this language. For a native reader."
+    },
+    "de": {
+     "value": "Heroisches Reimpaar",
+     "source": "Not sourced: no article for this concept in this language. For a native reader."
+    },
+    "it": {
+     "value": "Distico eroico",
+     "source": "it Wikipedia article Distico eroico (Wikidata Q2714966)"
+    },
+    "pt": {
+     "value": "Dístico heroico",
+     "source": "Not sourced: no article for this concept in this language. For a native reader."
+    },
+    "pl": {
+     "value": "Dystych bohaterski",
+     "source": "Not sourced: no article for this concept in this language. For a native reader."
+    },
+    "ru": {
+     "value": "Героический стих",
+     "source": "ru Wikipedia article Героический стих (Wikidata Q2714966)"
+    },
+    "ar": {
+     "value": "دوبيت ملحمي",
+     "source": "ar Wikipedia article دوبيت ملحمي (Wikidata Q2714966)"
+    },
+    "hi": {
+     "value": "वीर युग्म",
+     "source": "No hi article. Not sourced: for a native reader."
+    },
+    "zh": {
+     "value": "英雄双行体",
+     "source": "zh Wikipedia article 英雄双行体 (Wikidata Q2714966)"
+    },
+    "ja": {
+     "value": "ヒロイック・カプレット",
+     "source": "ja Wikipedia article ヒロイック・カプレット (Wikidata Q2714966)"
+    },
+    "ko": {
+     "value": "영웅시체 쿠플레",
+     "source": "No ko article. 영웅시체 (heroic verse) plus the article title for couplet, 쿠플레. Not sourced."
+    },
+    "vi": {
+     "value": "Song cú anh hùng",
+     "source": "Not sourced: no article for this concept in this language. For a native reader."
+    },
+    "th": {
+     "value": "กลอนคู่วีรกรรม",
+     "source": "Not sourced: no article for this concept in this language. For a native reader."
+    },
+    "id": {
+     "value": "Kuplet heroik",
+     "source": "Not sourced: no article for this concept in this language. For a native reader."
+    }
+   }
+  },
+  "form.jueju.name": {
+   "concept": "jueju",
+   "wikidata": "Q537198",
+   "english": "Jueju",
+   "langs": {
+    "es": {
+     "value": "Jueju",
+     "source": "Pinyin name, as the English, German and Indonesian Wikipedias title it (Wikidata Q537198); no article in this language."
+    },
+    "fr": {
+     "value": "Jueju",
+     "source": "Pinyin name, as the English, German and Indonesian Wikipedias title it (Wikidata Q537198); no article in this language."
+    },
+    "de": {
+     "value": "Jueju",
+     "source": "de Wikipedia article Jueju (Wikidata Q537198)"
+    },
+    "it": {
+     "value": "Jueju",
+     "source": "Pinyin name, as the English, German and Indonesian Wikipedias title it (Wikidata Q537198); no article in this language."
+    },
+    "pt": {
+     "value": "Jueju",
+     "source": "Pinyin name, as the English, German and Indonesian Wikipedias title it (Wikidata Q537198); no article in this language."
+    },
+    "pl": {
+     "value": "Jueju",
+     "source": "Pinyin name, as the English, German and Indonesian Wikipedias title it (Wikidata Q537198); no article in this language."
+    },
+    "ru": {
+     "value": "Цзюэцзюй",
+     "source": "Wikidata alias (цзюэцзюй); no ru article."
+    },
+    "ar": {
+     "value": "جويجو",
+     "source": "Not sourced: no article for this concept in this language. For a native reader."
+    },
+    "hi": {
+     "value": "जुएजु",
+     "source": "Not sourced: no article for this concept in this language. For a native reader."
+    },
+    "zh": {
+     "value": "绝句",
+     "source": "zh Wikipedia article 绝句 (Wikidata Q537198)"
+    },
+    "ja": {
+     "value": "絶句",
+     "source": "ja Wikipedia article 絶句 (Wikidata Q537198)"
+    },
+    "ko": {
+     "value": "절구",
+     "source": "絶句 read in Korean. The ko Wikipedia article 절구 (Q30020756) is about the mortar, a homograph; the poem has no article. Not sourced."
+    },
+    "vi": {
+     "value": "Tuyệt cú",
+     "source": "vi Wikipedia article Tuyệt cú (Wikidata Q537198)"
+    },
+    "th": {
+     "value": "เจวี๋ยจวี้",
+     "source": "Not sourced: no article for this concept in this language. For a native reader."
+    },
+    "id": {
+     "value": "Jueju",
+     "source": "id Wikipedia article Jueju (Wikidata Q537198)"
+    }
+   }
+  },
+  "form.luc-bat.name": {
+   "concept": "luc-bat",
+   "wikidata": "Q1755587",
+   "english": "Lục Bát",
+   "langs": {
+    "es": {
+     "value": "Lục bát",
+     "source": "es Wikipedia article Lục bát (Wikidata Q1755587)"
+    },
+    "fr": {
+     "value": "Lục bát",
+     "source": "fr Wikipedia article Lục bát (Wikidata Q1755587)"
+    },
+    "de": {
+     "value": "Lục bát",
+     "source": "The form's own Vietnamese name, as the English, Spanish and French Wikipedias title it (Wikidata Q1755587); no article in this language."
+    },
+    "it": {
+     "value": "Lục bát",
+     "source": "The form's own Vietnamese name, as the English, Spanish and French Wikipedias title it (Wikidata Q1755587); no article in this language."
+    },
+    "pt": {
+     "value": "Lục bát",
+     "source": "The form's own Vietnamese name, as the English, Spanish and French Wikipedias title it (Wikidata Q1755587); no article in this language."
+    },
+    "pl": {
+     "value": "Lục bát",
+     "source": "The form's own Vietnamese name, as the English, Spanish and French Wikipedias title it (Wikidata Q1755587); no article in this language."
+    },
+    "ru": {
+     "value": "Шесть-восемь",
+     "source": "Not sourced: no article for this concept in this language. For a native reader."
+    },
+    "ar": {
+     "value": "ستة-ثمانية",
+     "source": "Not sourced: no article for this concept in this language. For a native reader."
+    },
+    "hi": {
+     "value": "छह-आठ",
+     "source": "Not sourced: no article for this concept in this language. For a native reader."
+    },
+    "zh": {
+     "value": "六八体",
+     "source": "The zh article 六八體, in simplified characters."
+    },
+    "ja": {
+     "value": "六八体",
+     "source": "Not sourced: no article for this concept in this language. For a native reader."
+    },
+    "ko": {
+     "value": "육팔체",
+     "source": "Not sourced: no article for this concept in this language. For a native reader."
+    },
+    "vi": {
+     "value": "Lục bát",
+     "source": "vi Wikipedia article Lục bát (thể thơ) (Wikidata Q1755587)"
+    },
+    "th": {
+     "value": "หก-แปด",
+     "source": "Not sourced: no article for this concept in this language. For a native reader."
+    },
+    "id": {
+     "value": "Lục bát",
+     "source": "The form's own Vietnamese name, as the English, Spanish and French Wikipedias title it (Wikidata Q1755587); no article in this language."
+    }
+   }
+  },
+  "device.alliteration.name": {
+   "concept": "alliteration",
+   "wikidata": "Q484495",
+   "english": "Alliteration",
+   "langs": {
+    "es": {
+     "value": "Aliteración",
+     "source": "es Wikipedia article Aliteración (Wikidata Q484495)"
+    },
+    "fr": {
+     "value": "Allitération",
+     "source": "fr Wikipedia article Allitération (Wikidata Q484495)"
+    },
+    "de": {
+     "value": "Alliteration",
+     "source": "de Wikipedia article Alliteration (Wikidata Q484495)"
+    },
+    "it": {
+     "value": "Allitterazione",
+     "source": "it Wikipedia article Allitterazione (Wikidata Q484495)"
+    },
+    "pt": {
+     "value": "Aliteração",
+     "source": "pt Wikipedia article Aliteração (Wikidata Q484495)"
+    },
+    "pl": {
+     "value": "Aliteracja",
+     "source": "pl Wikipedia article Aliteracja (Wikidata Q484495)"
+    },
+    "ru": {
+     "value": "Аллитерация",
+     "source": "ru Wikipedia article Аллитерация (Wikidata Q484495)"
+    },
+    "ar": {
+     "value": "الجناس الاستهلالي",
+     "source": "Wikidata alias (الجناس الاستهلالي). The article is titled سجع ابتدائي."
+    },
+    "hi": {
+     "value": "अनुप्रास",
+     "source": "hi Wikipedia article अनुप्रास (Wikidata Q484495)"
+    },
+    "zh": {
+     "value": "头韵法",
+     "source": "The zh article 頭韻法, in simplified characters."
+    },
+    "ja": {
+     "value": "頭韻",
+     "source": "Wikidata alias (頭韻); the article is 頭韻法."
+    },
+    "ko": {
+     "value": "두운",
+     "source": "ko Wikipedia article 두운 (Wikidata Q484495)"
+    },
+    "vi": {
+     "value": "Điệp phụ âm",
+     "source": "Not sourced: no article for this concept in this language. For a native reader."
+    },
+    "th": {
+     "value": "สัมผัสอักษร",
+     "source": "Not sourced: no article for this concept in this language. For a native reader."
+    },
+    "id": {
+     "value": "Aliterasi",
+     "source": "id Wikipedia article Aliterasi (Wikidata Q484495)"
+    }
+   }
+  },
+  "device.internal-rhyme.name": {
+   "concept": "internal-rhyme",
+   "wikidata": "Q2098331",
+   "english": "Inner Rhyme",
+   "langs": {
+    "es": {
+     "value": "Rima interna",
+     "source": "es Wikipedia article Rima interna (Wikidata Q2098331)"
+    },
+    "fr": {
+     "value": "Rime intérieure",
+     "source": "Not sourced: no article for this concept in this language. For a native reader."
+    },
+    "de": {
+     "value": "Binnenreim",
+     "source": "de Wikipedia article Binnenreim (Wikidata Q2098331)"
+    },
+    "it": {
+     "value": "Rima interna",
+     "source": "it Wikipedia article Rima interna (Wikidata Q2098331)"
+    },
+    "pt": {
+     "value": "Rima interna",
+     "source": "Not sourced: no article for this concept in this language. For a native reader."
+    },
+    "pl": {
+     "value": "Rym wewnętrzny",
+     "source": "Title of the pl Wikipedia article Rym wewnętrzny (Wikidata Q30912590)."
+    },
+    "ru": {
+     "value": "Внутренняя рифма",
+     "source": "Wikidata label (внутренняя рифма); no ru article."
+    },
+    "ar": {
+     "value": "القافية الداخلية",
+     "source": "Not sourced: no article for this concept in this language (Wikidata label: السجع في الشعر). For a native reader."
+    },
+    "hi": {
+     "value": "भीतरी तुक",
+     "source": "Not sourced: no article for this concept in this language. For a native reader."
+    },
+    "zh": {
+     "value": "行内韵",
+     "source": "Not sourced: no article for this concept in this language (Wikidata label: 内韵). For a native reader."
+    },
+    "ja": {
+     "value": "中間韻",
+     "source": "ja Wikipedia article 中間韻 (Wikidata Q2098331)"
+    },
+    "ko": {
+     "value": "행 안의 운",
+     "source": "Not sourced: no article for this concept in this language. For a native reader."
+    },
+    "vi": {
+     "value": "Vần lưng",
+     "source": "Not sourced: no article for this concept in this language. For a native reader."
+    },
+    "th": {
+     "value": "สัมผัสใน",
+     "source": "A standard term of Thai prosody; Wikidata lists สัมผัสใน among the aliases of the Thai rhyme article. No article of its own."
+    },
+    "id": {
+     "value": "Rima dalam",
+     "source": "Not sourced: no article for this concept in this language. For a native reader."
+    }
+   }
+  }
+ }
+}

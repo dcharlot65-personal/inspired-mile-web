@@ -69,7 +69,7 @@ const UI: Record<string, string> = {
   'migrate.yes': 'Sync Data',
   'migrate.no': 'Skip',
   'migrate.syncing': 'Syncing...',
-  'migrate.done': 'Synced {cards} cards, {achievements} achievements.',
+  'migrate.done': 'Synced {cards, plural, one {# card} other {# cards}}, {achievements, plural, one {# achievement} other {# achievements}}.',
   'migrate.failed': 'Sync failed. You can try again later.',
   'toast.achievement': 'Achievement Unlocked',
   'pwa.install': 'Install Inspired Mile for the best experience',

@@ -3,8 +3,16 @@ import { LOCALES, LOCALE_NAMES, has, isRtl, loadMessages, locale, pickLocale, se
 import en from './locales/en';
 import { ENGINE_EN, HOUSE_QUOTES } from '../lib/verse/english';
 import { PACK_LANGS } from '../lib/verse/packs';
+import { argumentNames } from '../lib/verse/msg';
 
-const placeholders = (s: string) => [...s.matchAll(/\{([a-zA-Z_]+)\}/g)].map((m) => m[1]).sort();
+// The names a template takes, plural counts included; a template that does not parse has none it can be trusted on.
+const placeholders = (s: string): string[] => {
+  try {
+    return argumentNames(s);
+  } catch {
+    return ['<malformed>'];
+  }
+};
 
 describe('locales', () => {
   it('covers the sixteen languages the duel can be fought in', () => {
@@ -31,8 +39,8 @@ describe('locales', () => {
         else if (k in en && placeholders(v).join(',') !== placeholders(en[k]).join(',')) {
           problems.push(`${l}: ${k} has {${placeholders(v)}} but English has {${placeholders(en[k])}}`);
         }
-        // A brace that is not a placeholder is a typo that would be shown to the player.
-        if (typeof v === 'string' && /[{}]/.test(v.replace(/\{[a-zA-Z_]+\}/g, ''))) problems.push(`${l}: stray brace in ${k}`);
+        // A brace that is not part of a placeholder or a plural is a typo that would be shown to the player.
+        if (typeof v === 'string' && placeholders(v)[0] === '<malformed>') problems.push(`${l}: stray brace in ${k}`);
       }
     }
     expect(problems).toEqual([]);
@@ -43,6 +51,8 @@ describe('locales', () => {
     for (const l of LOCALES) {
       if (l === 'en') continue;
       const m = await loadMessages(l);
+      // The exact list of what may read the same, each with its reason, is docs/language/allow/untranslated.json,
+      // and quality.test.ts holds every locale to it; this is the coarse guard that a whole file was not left in English.
       const same = Object.keys(en).filter((k) => !(k in HOUSE_QUOTES) && m[k] === en[k]);
       expect([l, same.length < 25, same.slice(0, 30)]).toEqual([l, true, same.slice(0, 30)]);
       // The quotations are English in every language, on purpose.

@@ -7,9 +7,9 @@ const id: Record<string, string> = {
   // Bentuk
   'form.couplet.name': 'Kuplet',
   'form.couplet.brief': 'Dua baris yang berima.',
-  'form.quatrain-aabb.name': 'Kuatrin berpasangan',
+  'form.quatrain-aabb.name': 'Sajak empat baris berpasangan',
   'form.quatrain-aabb.brief': 'Empat baris: dua baris pertama berima, dan dua baris terakhir berima.',
-  'form.quatrain-abab.name': 'Kuatrin bersilang',
+  'form.quatrain-abab.name': 'Sajak empat baris bersilang',
   'form.quatrain-abab.brief': 'Empat baris: baris 1 berima dengan baris 3, baris 2 dengan baris 4.',
   'form.tercet.name': 'Terzina',
   'form.tercet.brief': 'Tiga baris; baris pertama dan terakhir berima.',
@@ -32,7 +32,7 @@ const id: Record<string, string> = {
   'form.heroic-couplet.brief': 'Dua baris berima, masing-masing kira-kira sepuluh suku kata, seperti cara Shakespeare menutup sonetanya.',
   'form.jueju.name': 'Jueju',
   'form.jueju.brief': 'Empat baris, semuanya lima aksara atau semuanya tujuh: bentuk kuatrin klasik Tiongkok.',
-  'form.luc-bat.name': 'Enam-delapan',
+  'form.luc-bat.name': 'Lục bát',
   'form.luc-bat.brief': 'Satu baris enam suku kata, lalu satu baris delapan suku kata yang suku keenamnya berima dengan akhir baris pertama.',
 
   // Syarat sebuah bentuk

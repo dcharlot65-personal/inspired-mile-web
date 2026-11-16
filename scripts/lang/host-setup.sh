@@ -128,10 +128,19 @@ snapshot_download(repo, revision=rev, local_dir=dest, allow_patterns=files or No
 PY
   touch "models/$dir/.complete"
 }
-fetch Nextcloud-AI/madlad400-3b-mt-ct2-int8 "${MADLAD_REV:-main}" madlad400-3b-mt-ct2-int8
-fetch sentence-transformers/all-MiniLM-L6-v2 "${MINILM_REV:-main}" all-MiniLM-L6-v2
+fetch Nextcloud-AI/madlad400-3b-mt-ct2-int8 "${MADLAD_REV:-aa32bbdeba7880eff2096ec044cb155a340a9400}" madlad400-3b-mt-ct2-int8
+fetch sentence-transformers/all-MiniLM-L6-v2 "${MINILM_REV:-1110a243fdf4706b3f48f1d95db1a4f5529b4d41}" all-MiniLM-L6-v2 config.json 'model.safetensors' 'tokenizer*' 'vocab.txt' 'special_tokens_map.json' 'modules.json' 'sentence_bert_config.json' 'config_sentence_transformers.json' '1_Pooling/*' README.md
+# The reviewer: one 18 GB file. curl, not the hub client (which held 6 GB of memory fetching it), and resumable.
 if [ "${SKIP_REVIEWER:-0}" != 1 ]; then
-  fetch unsloth/gemma-4-31B-it-GGUF "${GEMMA_REV:-main}" gemma-4-31B-it-GGUF gemma-4-31B-it-Q4_K_M.gguf
+  GEMMA_REV=${GEMMA_REV:-c1ac76e99d5513b141e8adde7288b85c3f9c32ec}
+  GEMMA_FILE=gemma-4-31B-it-Q4_K_M.gguf
+  GEMMA_SHA256=38bd64c852c4b460434cc7162fa9bdcf242faf86502581a754cb72956bb17f84
+  mkdir -p models/gemma-4-31B-it-GGUF
+  if [ ! -f models/gemma-4-31B-it-GGUF/.verified ]; then
+    step "model unsloth/gemma-4-31B-it-GGUF@$GEMMA_REV ($GEMMA_FILE)"
+    curl -fL --retry 5 -C - -sS -o "models/gemma-4-31B-it-GGUF/$GEMMA_FILE" "https://huggingface.co/unsloth/gemma-4-31B-it-GGUF/resolve/$GEMMA_REV/$GEMMA_FILE"
+    echo "$GEMMA_SHA256  models/gemma-4-31B-it-GGUF/$GEMMA_FILE" | shasum -a 256 -c - && touch models/gemma-4-31B-it-GGUF/.verified
+  fi
 fi
 du -sh models/* 2>/dev/null
 echo "setup complete: $HOME_DIR"

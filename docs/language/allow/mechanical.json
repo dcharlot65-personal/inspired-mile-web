@@ -1,0 +1,67 @@
+{
+ "about": "Accepted exceptions to the mechanical checks (scripts/lang/lib/mechanical.mjs). Each entry names one string and one rule and says why. lang '*' means every language. A stale entry (one that no longer excuses anything) fails the check.",
+ "extraQuotes": {
+  "es": [
+   "«",
+   "»"
+  ],
+  "ar": [
+   "«",
+   "»"
+  ]
+ },
+ "extraQuotesWhy": {
+  "es": "CLDR gives “ ” for Spanish; the Real Academia (Ortografía de la lengua española, 2010, §3.4.8) recommends « » first and “ ” inside them. Both are correct; the text uses « ».",
+  "ar": "CLDR gives ” “ for Arabic. Guillemets « » are equally standard in Arabic publishing and are mirrored characters, so they stay the right way round next to a Latin word in a right-to-left line. The text uses « »."
+ },
+ "entries": [
+  {
+   "lang": "*",
+   "key": "footer.sonnetMan",
+   "rule": "no-native-script",
+   "reason": "A proper name (the performer's stage name); not translated or transliterated."
+  },
+  {
+   "lang": "*",
+   "key": "auth.emailPlaceholder",
+   "rule": "no-native-script",
+   "reason": "An example e-mail address; addresses are Latin-script."
+  },
+  {
+   "lang": "pl",
+   "key": "age.consentBefore",
+   "rule": "ending",
+   "reason": "Polish would have to decline the two document titles that follow as links; ending on 'dokumentami:' lets them stand in the nominative."
+  },
+  {
+   "lang": "pl",
+   "key": "age.agreeBefore",
+   "rule": "ending",
+   "reason": "As above: 'akceptujesz dokumenty:' then the titles, undeclined."
+  },
+  {
+   "lang": "pl",
+   "key": "auth.legalBefore",
+   "rule": "ending",
+   "reason": "As above."
+  },
+  {
+   "lang": "ru",
+   "key": "age.consentBefore",
+   "rule": "ending",
+   "reason": "Russian would have to decline the two document titles that follow as links; ending on 'документы:' lets them stand in the nominative."
+  },
+  {
+   "lang": "ru",
+   "key": "age.agreeBefore",
+   "rule": "ending",
+   "reason": "As above."
+  },
+  {
+   "lang": "ru",
+   "key": "auth.legalBefore",
+   "rule": "ending",
+   "reason": "As above."
+  }
+ ]
+}

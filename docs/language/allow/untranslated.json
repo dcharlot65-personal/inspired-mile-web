@@ -1,0 +1,185 @@
+{
+ "about": "Strings that read the same as English on purpose. Any other string identical to English fails the check (scripts/lang/check.mjs, src/i18n/quality.test.ts).",
+ "entries": [
+  {
+   "lang": "*",
+   "key": "footer.sonnetMan",
+   "reason": "A proper name (the performer's stage name)."
+  },
+  {
+   "lang": "*",
+   "key": "auth.emailPlaceholder",
+   "reason": "An example address on the reserved domain example.com."
+  },
+  {
+   "lang": "de",
+   "key": "form.haiku.name",
+   "reason": "The form's name in this language is Haiku (Wikipedia article title, via Wikidata Q37707)."
+  },
+  {
+   "lang": "es",
+   "key": "form.haiku.name",
+   "reason": "The form's name in this language is Haiku (Wikipedia article title, via Wikidata Q37707)."
+  },
+  {
+   "lang": "id",
+   "key": "form.haiku.name",
+   "reason": "The form's name in this language is Haiku (Wikipedia article title, via Wikidata Q37707)."
+  },
+  {
+   "lang": "it",
+   "key": "form.haiku.name",
+   "reason": "The form's name in this language is Haiku (Wikipedia article title, via Wikidata Q37707)."
+  },
+  {
+   "lang": "pl",
+   "key": "form.haiku.name",
+   "reason": "The form's name in this language is Haiku (Wikipedia article title, via Wikidata Q37707)."
+  },
+  {
+   "lang": "vi",
+   "key": "form.haiku.name",
+   "reason": "The form's name in this language is Haiku (Wikipedia article title, via Wikidata Q37707)."
+  },
+  {
+   "lang": "fr",
+   "key": "form.tercet.name",
+   "reason": "The form's name in this language is Tercet (Wikipedia article title, via Wikidata Q1353779)."
+  },
+  {
+   "lang": "pl",
+   "key": "form.tercet.name",
+   "reason": "The form's name in this language is Tercet (Wikipedia article title, via Wikidata Q1353779)."
+  },
+  {
+   "lang": "de",
+   "key": "form.jueju.name",
+   "reason": "The form's name in this language is Jueju (Wikipedia article title, via Wikidata Q537198)."
+  },
+  {
+   "lang": "id",
+   "key": "form.jueju.name",
+   "reason": "The form's name in this language is Jueju (Wikipedia article title, via Wikidata Q537198)."
+  },
+  {
+   "lang": "es",
+   "key": "form.jueju.name",
+   "reason": "No article in this language's Wikipedia (Wikidata Q537198 has no sitelink); the pinyin name Jueju is used, as English, German and Indonesian do."
+  },
+  {
+   "lang": "fr",
+   "key": "form.jueju.name",
+   "reason": "No article in this language's Wikipedia (Wikidata Q537198 has no sitelink); the pinyin name Jueju is used, as English, German and Indonesian do."
+  },
+  {
+   "lang": "it",
+   "key": "form.jueju.name",
+   "reason": "No article in this language's Wikipedia (Wikidata Q537198 has no sitelink); the pinyin name Jueju is used, as English, German and Indonesian do."
+  },
+  {
+   "lang": "pl",
+   "key": "form.jueju.name",
+   "reason": "No article in this language's Wikipedia (Wikidata Q537198 has no sitelink); the pinyin name Jueju is used, as English, German and Indonesian do."
+  },
+  {
+   "lang": "pt",
+   "key": "form.jueju.name",
+   "reason": "No article in this language's Wikipedia (Wikidata Q537198 has no sitelink); the pinyin name Jueju is used, as English, German and Indonesian do."
+  },
+  {
+   "lang": "de",
+   "key": "form.crescendo.name",
+   "reason": "Crescendo is the Italian musical term, used unchanged in this language. The form is the game's own; it has no literary name."
+  },
+  {
+   "lang": "es",
+   "key": "form.crescendo.name",
+   "reason": "Crescendo is the Italian musical term, used unchanged in this language. The form is the game's own; it has no literary name."
+  },
+  {
+   "lang": "fr",
+   "key": "form.crescendo.name",
+   "reason": "Crescendo is the Italian musical term, used unchanged in this language. The form is the game's own; it has no literary name."
+  },
+  {
+   "lang": "it",
+   "key": "form.crescendo.name",
+   "reason": "Crescendo is the Italian musical term, used unchanged in this language. The form is the game's own; it has no literary name."
+  },
+  {
+   "lang": "pl",
+   "key": "form.crescendo.name",
+   "reason": "Crescendo is the Italian musical term, used unchanged in this language. The form is the game's own; it has no literary name."
+  },
+  {
+   "lang": "pt",
+   "key": "form.crescendo.name",
+   "reason": "Crescendo is the Italian musical term, used unchanged in this language. The form is the game's own; it has no literary name."
+  },
+  {
+   "lang": "de",
+   "key": "battle.cardInCity",
+   "reason": "German 'in' is the same word."
+  },
+  {
+   "lang": "de",
+   "key": "battle.deck",
+   "reason": "German card players say Deck."
+  },
+  {
+   "lang": "de",
+   "key": "verdict.form",
+   "reason": "German Form is the same word."
+  },
+  {
+   "lang": "de",
+   "key": "auth.passkeysHeading",
+   "reason": "The platform term in German is Passkeys (Apple and Google German documentation; see docs/language/glossary.json)."
+  },
+  {
+   "lang": "fr",
+   "key": "rarity.rare",
+   "reason": "French rare is the same word."
+  },
+  {
+   "lang": "fr",
+   "key": "nav.collection",
+   "reason": "French collection is the same word."
+  },
+  {
+   "lang": "fr",
+   "key": "criterion.allusion",
+   "reason": "French allusion is the same word."
+  },
+  {
+   "lang": "fr",
+   "key": "device.invocation.name",
+   "reason": "French invocation is the same word."
+  },
+  {
+   "lang": "fr",
+   "key": "device.grandeur.name",
+   "reason": "French grandeur is the same word."
+  },
+  {
+   "lang": "fr",
+   "key": "stats.duels",
+   "reason": "French duels is the same word."
+  },
+  {
+   "lang": "fr",
+   "key": "verdict.signature",
+   "reason": "French signature is the same word."
+  },
+  {
+   "lang": "it",
+   "key": "nav.home",
+   "reason": "Italian sites say Home."
+  },
+  {
+   "lang": "id",
+   "key": "footer.platform",
+   "reason": "Indonesian uses the loanword platform."
+  }
+ ]
+}
