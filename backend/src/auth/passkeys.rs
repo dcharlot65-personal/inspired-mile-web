@@ -9,16 +9,29 @@
 //! Ceremony state lives in `auth_challenges`, is taken out on first use and expires fast.
 //!
 //! Sign-up is the one unauthenticated request that writes rows for good, so it is the one
-//! that could fill the database. Four things bound it:
+//! that could fill the database. Five things bound it:
 //!   1. per network (IPv4 /24, IPv6 /64), `MAX_SIGNUPS_PER_NETWORK` accounts an hour;
 //!   2. per network, `MAX_SIGNUP_BEGINS_PER_NETWORK` begun ceremonies an hour (a looser
 //!      cap: a class that cancels and retries the prompt must not lock its school out);
 //!   3. over all visitors, `SIGNUP_GLOBAL_PER_HOUR` accounts an hour, with a loud log line
 //!      when it is hit, because that means either an attack or a very good day;
-//!   4. accounts that never played are deleted after `UNUSED_ACCOUNT_PURGE_DAYS`
+//!   4. over all visitors, `SIGNUP_BEGINS_GLOBAL_PER_HOUR` begun ceremonies an hour, also
+//!      loud when hit;
+//!   5. accounts that never played are deleted after `UNUSED_ACCOUNT_PURGE_DAYS`
 //!      (`purge_unused_accounts`).
 //! 1 and 3 count accounts actually created and are checked under a lock in the same
 //! transaction that creates the account, so a burst of parallel requests cannot pass them.
+//! 2 is checked under the network's lock with the insert it allows. 4 is counted without a
+//! global lock, so parallel begins can pass it by at most the number of database
+//! connections; it bounds storage, and that is close enough.
+//!
+//! Every ceremony (sign-up, sign-in, adding a passkey, a fresh verification) also writes a
+//! row to `auth_challenges`, which lives five minutes. `store_challenge` bounds that table:
+//! `MAX_LIVE_CHALLENGES_PER_NETWORK` live ceremonies per network (IPv4 address or IPv6
+//! /64), checked under the network's lock, and `AUTH_CHALLENGES_MAX` rows in all; at that
+//! ceiling the expired rows are deleted on the spot, and only if the table is still full is
+//! the ceremony refused. So one network cannot fill the table for everyone: that takes
+//! `AUTH_CHALLENGES_MAX / MAX_LIVE_CHALLENGES_PER_NETWORK` (200) networks at once.
 
 use std::net::SocketAddr;
 use std::sync::atomic::{AtomicI64, Ordering};
@@ -61,8 +74,15 @@ pub const MAX_SIGNUPS_PER_NETWORK: i64 = 40;
 /// lives five minutes; the cap is five tries per allowed account.
 pub const MAX_SIGNUP_BEGINS_PER_NETWORK: i64 = 200;
 pub const SIGNUP_WINDOW_MINUTES: i64 = 60;
+/// Begun sign-ups are only counted inside the window; the sweep removes them after this.
+/// (Finished ones are kept a day.)
+pub const BEGUN_SIGNUP_KEEP_MINUTES: i64 = 2 * SIGNUP_WINDOW_MINUTES;
 /// Advisory-lock key that serialises the "count, then create" step of every sign-up.
 const SIGNUP_LOCK: i64 = 0x494d_5349_474e_5550; // "IMSIGNUP"
+/// Ceremonies one network (IPv4 address, IPv6 /64) may have live at once. A ceremony lives
+/// `CHALLENGE_TTL_MINUTES`; a page asks for one when the sign-in panel offers a passkey,
+/// so this leaves a class behind one school address room for a few each.
+pub const MAX_LIVE_CHALLENGES_PER_NETWORK: i64 = 100;
 
 /// Sign-ups in the window, as the limits see them.
 #[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]
@@ -73,6 +93,15 @@ pub struct SignupCounts {
     pub created_by_network: i64,
     /// Accounts created by everyone.
     pub created_by_everyone: i64,
+    /// Ceremonies begun by everyone.
+    pub begun_by_everyone: i64,
+}
+
+/// The site-wide ceilings (`SIGNUP_GLOBAL_PER_HOUR`, `SIGNUP_BEGINS_GLOBAL_PER_HOUR`).
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub struct SignupCeilings {
+    pub created: i64,
+    pub begun: i64,
 }
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
@@ -84,26 +113,36 @@ pub enum SignupVerdict {
     BeginsLimited,
     /// The site-wide ceiling is reached: nobody may sign up until the hour moves on.
     GlobalLimited,
+    /// The site-wide ceiling on begun sign-ups is reached.
+    GlobalBeginsLimited,
 }
 
-/// Whether one more sign-up may go ahead. `ceiling` is `SIGNUP_GLOBAL_PER_HOUR`.
-pub fn signup_verdict(counts: SignupCounts, ceiling: i64) -> SignupVerdict {
-    if counts.created_by_everyone >= ceiling {
+/// Whether one more sign-up may go ahead. When the account is created (`signup_finish`)
+/// the begin counts are zeroed by the caller: only accounts count there.
+pub fn signup_verdict(counts: SignupCounts, ceilings: SignupCeilings) -> SignupVerdict {
+    if counts.created_by_everyone >= ceilings.created {
         SignupVerdict::GlobalLimited
     } else if counts.created_by_network >= MAX_SIGNUPS_PER_NETWORK {
         SignupVerdict::NetworkLimited
     } else if counts.begun_by_network >= MAX_SIGNUP_BEGINS_PER_NETWORK {
         SignupVerdict::BeginsLimited
+    } else if counts.begun_by_everyone >= ceilings.begun {
+        SignupVerdict::GlobalBeginsLimited
     } else {
         SignupVerdict::Allowed
     }
+}
+
+fn ceilings(config: &Config) -> SignupCeilings {
+    SignupCeilings { created: config.signup_global_per_hour, begun: config.signup_begins_global_per_hour }
 }
 
 async fn signup_counts(conn: &mut sqlx::PgConnection, network: &str) -> Result<SignupCounts, ApiError> {
     let row = sqlx::query(
         "SELECT COUNT(*) FILTER (WHERE ip = $1 AND NOT completed) AS begun,
                 COUNT(*) FILTER (WHERE ip = $1 AND completed) AS created,
-                COUNT(*) FILTER (WHERE completed) AS everyone
+                COUNT(*) FILTER (WHERE completed) AS everyone,
+                COUNT(*) FILTER (WHERE NOT completed) AS begun_everyone
          FROM signup_attempts
          WHERE created_at > NOW() - make_interval(mins => $2)",
     )
@@ -115,42 +154,87 @@ async fn signup_counts(conn: &mut sqlx::PgConnection, network: &str) -> Result<S
         begun_by_network: row.get("begun"),
         created_by_network: row.get("created"),
         created_by_everyone: row.get("everyone"),
+        begun_by_everyone: row.get("begun_everyone"),
     })
 }
 
-/// The refusal for a verdict, or `Ok` when the sign-up may go ahead. Hitting the global
+/// Say loudly, at most once a minute per banner, that a site-wide ceiling was hit: on
+/// stderr in a banner, and as an operator notice (written whatever `RUST_LOG` says).
+fn ceiling_banner(last: &AtomicI64, text: String) {
+    let now = Utc::now().timestamp();
+    let before = last.load(Ordering::Relaxed);
+    if now - before >= 60 && last.compare_exchange(before, now, Ordering::Relaxed, Ordering::Relaxed).is_ok() {
+        let bar = "!".repeat(72);
+        eprintln!("\n{bar}\n{text}\n{bar}\n");
+        tracing::error!(target: crate::notice::TARGET, "{text}");
+    }
+}
+
+/// The refusal for a verdict, or `Ok` when the sign-up may go ahead. Hitting a global
 /// ceiling is logged loudly (at most once a minute): it should never happen in normal use.
-fn signup_refusal(verdict: SignupVerdict, counts: SignupCounts, ceiling: i64) -> Result<(), ApiError> {
+fn signup_refusal(verdict: SignupVerdict, counts: SignupCounts, ceilings: SignupCeilings) -> Result<(), ApiError> {
+    static LAST_CREATED: AtomicI64 = AtomicI64::new(0);
+    static LAST_BEGUN: AtomicI64 = AtomicI64::new(0);
+    let right_now = "Too many accounts are being created right now. Please try again in a little while.";
     let message = match verdict {
         SignupVerdict::Allowed => return Ok(()),
         SignupVerdict::GlobalLimited => {
-            static LAST: AtomicI64 = AtomicI64::new(0);
-            let now = Utc::now().timestamp();
-            let last = LAST.load(Ordering::Relaxed);
-            if now - last >= 60
-                && LAST.compare_exchange(last, now, Ordering::Relaxed, Ordering::Relaxed).is_ok()
-            {
-                let bar = "!".repeat(72);
-                eprintln!(
-                    "\n{bar}\nSIGN-UP CEILING HIT: {} accounts were created in the last {SIGNUP_WINDOW_MINUTES} \
-                     minutes (SIGNUP_GLOBAL_PER_HOUR = {ceiling}). New passkey sign-ups are being REFUSED \
+            ceiling_banner(
+                &LAST_CREATED,
+                format!(
+                    "SIGN-UP CEILING HIT: {} accounts were created in the last {SIGNUP_WINDOW_MINUTES} \
+                     minutes (SIGNUP_GLOBAL_PER_HOUR = {}). New passkey sign-ups are being REFUSED \
                      for everyone until the count falls. Either the site is under a sign-up flood or it \
-                     is unusually busy: look at signup_attempts before raising the ceiling.\n{bar}\n",
-                    counts.created_by_everyone
-                );
-                tracing::error!(
-                    created_last_hour = counts.created_by_everyone,
-                    ceiling,
-                    "SIGN-UP CEILING HIT: passkey sign-ups are refused for everyone"
-                );
-            }
-            "Too many accounts are being created right now. Please try again in a little while."
+                     is unusually busy: look at signup_attempts before raising the ceiling.",
+                    counts.created_by_everyone, ceilings.created
+                ),
+            );
+            right_now
+        }
+        SignupVerdict::GlobalBeginsLimited => {
+            ceiling_banner(
+                &LAST_BEGUN,
+                format!(
+                    "SIGN-UP BEGIN CEILING HIT: {} passkey sign-ups were begun and not finished in the \
+                     last {SIGNUP_WINDOW_MINUTES} minutes (SIGNUP_BEGINS_GLOBAL_PER_HOUR = {}). New \
+                     sign-ups are being REFUSED for everyone until the count falls: look at \
+                     signup_attempts (completed = false) by ip before raising it.",
+                    counts.begun_by_everyone, ceilings.begun
+                ),
+            );
+            right_now
         }
         SignupVerdict::NetworkLimited | SignupVerdict::BeginsLimited => {
             "Too many accounts started from this network. Wait a while and try again."
         }
     };
     Err(ApiError::new(StatusCode::TOO_MANY_REQUESTS, "too_many_requests", message))
+}
+
+/// What `store_challenge` sees before it writes.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum ChallengeVerdict {
+    Allowed,
+    /// This network has `MAX_LIVE_CHALLENGES_PER_NETWORK` ceremonies live already.
+    NetworkLimited,
+    /// The table holds `AUTH_CHALLENGES_MAX` rows: clean up expired ones, then look again.
+    Full,
+}
+
+/// `live_by_network`: unexpired challenges begun by this network; `rows`: every row in the
+/// table, expired or not; `max`: `AUTH_CHALLENGES_MAX`.
+pub fn challenge_verdict(live_by_network: i64, rows: i64, max: i64) -> ChallengeVerdict {
+    if live_by_network >= MAX_LIVE_CHALLENGES_PER_NETWORK {
+        ChallengeVerdict::NetworkLimited
+    } else if rows >= max {
+        ChallengeVerdict::Full
+    } else {
+        ChallengeVerdict::Allowed
+    }
+}
+
+fn challenges_busy(status: StatusCode) -> ApiError {
+    ApiError::new(status, "busy", "Too many sign-ins are being started right now. Please try again in a minute.")
 }
 
 #[derive(Deserialize)]
@@ -257,22 +341,78 @@ pub fn require_discoverable(options: &mut Value) {
     }
 }
 
+/// Unexpired challenges begun by this network, and rows in the table.
+async fn challenge_counts(conn: &mut sqlx::PgConnection, network: &str) -> Result<(i64, i64), ApiError> {
+    let row = sqlx::query(
+        "SELECT COUNT(*) FILTER (WHERE net_key = $1 AND expires_at > NOW()) AS live_by_network,
+                COUNT(*) AS all_rows
+         FROM auth_challenges",
+    )
+    .bind(network)
+    .fetch_one(conn)
+    .await?;
+    Ok((row.get("live_by_network"), row.get("all_rows")))
+}
+
+/// Write a ceremony's state, within the bounds described at the top of this file.
+/// `network` is the client's `limit_key`.
 async fn store_challenge(
     pool: &PgPool,
+    config: &Config,
     kind: &str,
     user_id: Option<Uuid>,
+    network: &str,
     state: Value,
 ) -> Result<Uuid, ApiError> {
-    Ok(sqlx::query_scalar(
-        "INSERT INTO auth_challenges (kind, user_id, state, expires_at)
-         VALUES ($1, $2, $3, $4) RETURNING id",
+    static LAST_FULL: AtomicI64 = AtomicI64::new(0);
+    let mut tx = pool.begin().await?;
+    sqlx::query("SELECT pg_advisory_xact_lock(hashtextextended('challenge-net:' || $1, 0))")
+        .bind(network)
+        .execute(&mut *tx)
+        .await?;
+    let (live_by_network, rows) = challenge_counts(&mut tx, network).await?;
+    let mut verdict = challenge_verdict(live_by_network, rows, config.auth_challenges_max);
+    if verdict == ChallengeVerdict::Full {
+        // Clean up first: expired ceremonies can never be finished.
+        let cleaned = sqlx::query("DELETE FROM auth_challenges WHERE expires_at < NOW()")
+            .execute(&mut *tx)
+            .await?
+            .rows_affected();
+        let (live_by_network, rows) = challenge_counts(&mut tx, network).await?;
+        verdict = challenge_verdict(live_by_network, rows, config.auth_challenges_max);
+        if verdict == ChallengeVerdict::Full {
+            ceiling_banner(
+                &LAST_FULL,
+                format!(
+                    "SIGN-IN CHALLENGE CEILING HIT: auth_challenges holds {rows} live ceremonies \
+                     (AUTH_CHALLENGES_MAX = {}; {cleaned} expired ones were just deleted). New passkey \
+                     sign-ins, sign-ups and verifications are REFUSED for everyone until some expire \
+                     (five minutes). Look at auth_challenges by net_key before raising it.",
+                    config.auth_challenges_max
+                ),
+            );
+        }
+    }
+    match verdict {
+        ChallengeVerdict::Allowed => {}
+        ChallengeVerdict::NetworkLimited => return Err(challenges_busy(StatusCode::TOO_MANY_REQUESTS)),
+        ChallengeVerdict::Full => return Err(challenges_busy(StatusCode::SERVICE_UNAVAILABLE)),
+    }
+    // Test-only pause (TEST_ONLY_LIMIT_RACE_DELAY_MS), between the check and the write.
+    config.test_race_window().await;
+    let id = sqlx::query_scalar(
+        "INSERT INTO auth_challenges (kind, user_id, state, expires_at, net_key)
+         VALUES ($1, $2, $3, $4, $5) RETURNING id",
     )
     .bind(kind)
     .bind(user_id)
     .bind(Db(state))
     .bind(Utc::now() + Duration::minutes(CHALLENGE_TTL_MINUTES))
-    .fetch_one(pool)
-    .await?)
+    .bind(network)
+    .fetch_one(&mut *tx)
+    .await?;
+    tx.commit().await?;
+    Ok(id)
 }
 
 /// Take a challenge out of the table. Deleting it as it is read is what makes it single
@@ -316,19 +456,17 @@ pub async fn signup_begin(
     // prompt rather than after it. The two that count accounts are checked again, for
     // real, when the account is created. Count and insert happen under one lock, so
     // parallel begins cannot all read "one below the cap".
-    let network = client_addr(&headers, Some(peer), &config.trusted_proxies).signup_key();
+    let client = client_addr(&headers, Some(peer), &config.trusted_proxies);
+    let network = client.signup_key();
     {
         let mut tx = pool.begin().await?;
         sqlx::query("SELECT pg_advisory_xact_lock(hashtextextended($1, 0))")
             .bind(&network)
             .execute(&mut *tx)
             .await?;
-        let counts = signup_counts(&mut *tx, &network).await?;
-        signup_refusal(
-            signup_verdict(counts, config.signup_global_per_hour),
-            counts,
-            config.signup_global_per_hour,
-        )?;
+        let counts = signup_counts(&mut tx, &network).await?;
+        signup_refusal(signup_verdict(counts, ceilings(&config)), counts, ceilings(&config))?;
+        config.test_race_window().await;
         sqlx::query("INSERT INTO signup_attempts (ip, completed) VALUES ($1, FALSE)")
             .bind(&network)
             .execute(&mut *tx)
@@ -355,7 +493,7 @@ pub async fn signup_begin(
     let pending = PendingSignup { user_id, username, age_tier: age_tier.to_string(), registration };
     let state = serde_json::to_value(&pending)
         .map_err(|e| ApiError::internal("serialise sign-up state", e))?;
-    let challenge_id = store_challenge(&pool, "signup", None, state).await?;
+    let challenge_id = store_challenge(&pool, &config, "signup", None, &client.limit_key(), state).await?;
     Ok(Json(BeginResponse { challenge_id, options }))
 }
 
@@ -388,12 +526,16 @@ pub async fn signup_finish(
         .bind(SIGNUP_LOCK)
         .execute(&mut *tx)
         .await?;
-    let counts = SignupCounts { begun_by_network: 0, ..signup_counts(&mut *tx, &network).await? };
-    signup_refusal(
-        signup_verdict(counts, config.signup_global_per_hour),
-        counts,
-        config.signup_global_per_hour,
-    )?;
+    // Only created accounts count here; the begin limits were applied at begin.
+    let counts = SignupCounts {
+        begun_by_network: 0,
+        begun_by_everyone: 0,
+        ..signup_counts(&mut tx, &network).await?
+    };
+    signup_refusal(signup_verdict(counts, ceilings(&config)), counts, ceilings(&config))?;
+    // Test-only pause (TEST_ONLY_LIMIT_RACE_DELAY_MS): the end-to-end race test relies on
+    // it to show that, without SIGNUP_LOCK, parallel finishes all pass the count above.
+    config.test_race_window().await;
     sqlx::query("INSERT INTO signup_attempts (ip, completed) VALUES ($1, TRUE)")
         .bind(&network)
         .execute(&mut *tx)
@@ -460,6 +602,8 @@ pub async fn register_begin(
     jar: CookieJar,
     State((pool, config)): State<(PgPool, Config)>,
     ctx: Ctx,
+    ConnectInfo(peer): ConnectInfo<SocketAddr>,
+    headers: HeaderMap,
 ) -> Result<Json<BeginResponse>, ApiError> {
     let session = session(&jar, &pool, &config).await?;
     // A session cookie alone must not be enough to attach a new passkey: whoever sits down
@@ -504,7 +648,8 @@ pub async fn register_begin(
 
     let state = serde_json::to_value(&state)
         .map_err(|e| ApiError::internal("serialise registration state", e))?;
-    let challenge_id = store_challenge(&pool, "register", Some(claims.sub), state).await?;
+    let network = client_addr(&headers, Some(peer), &config.trusted_proxies).limit_key();
+    let challenge_id = store_challenge(&pool, &config, "register", Some(claims.sub), &network, state).await?;
     Ok(Json(BeginResponse { challenge_id, options }))
 }
 
@@ -564,8 +709,10 @@ pub async fn register_finish(
 // ---------------------------------------------------------------------------
 
 pub async fn login_begin(
-    State((pool, _)): State<(PgPool, Config)>,
+    State((pool, config)): State<(PgPool, Config)>,
     ctx: Ctx,
+    ConnectInfo(peer): ConnectInfo<SocketAddr>,
+    headers: HeaderMap,
 ) -> Result<Json<BeginResponse>, ApiError> {
     let (challenge, state) = ctx
         .webauthn
@@ -577,7 +724,9 @@ pub async fn login_begin(
         .map_err(|e| ApiError::internal("serialise authentication options", e))?;
     let state = serde_json::to_value(&state)
         .map_err(|e| ApiError::internal("serialise authentication state", e))?;
-    let challenge_id = store_challenge(&pool, "login", None, state).await?;
+    // Anyone may begin a sign-in, so this is where the challenge table's bounds matter most.
+    let network = client_addr(&headers, Some(peer), &config.trusted_proxies).limit_key();
+    let challenge_id = store_challenge(&pool, &config, "login", None, &network, state).await?;
     Ok(Json(BeginResponse { challenge_id, options }))
 }
 
@@ -675,6 +824,8 @@ pub async fn verify_begin(
     jar: CookieJar,
     State((pool, config)): State<(PgPool, Config)>,
     ctx: Ctx,
+    ConnectInfo(peer): ConnectInfo<SocketAddr>,
+    headers: HeaderMap,
 ) -> Result<Json<BeginResponse>, ApiError> {
     let claims = session(&jar, &pool, &config).await?.claims;
     let passkeys: Vec<Passkey> =
@@ -702,7 +853,8 @@ pub async fn verify_begin(
         .map_err(|e| ApiError::internal("serialise verification options", e))?;
     let state = serde_json::to_value(&state)
         .map_err(|e| ApiError::internal("serialise verification state", e))?;
-    let challenge_id = store_challenge(&pool, "verify", Some(claims.sub), state).await?;
+    let network = client_addr(&headers, Some(peer), &config.trusted_proxies).limit_key();
+    let challenge_id = store_challenge(&pool, &config, "verify", Some(claims.sub), &network, state).await?;
     Ok(Json(BeginResponse { challenge_id, options }))
 }
 
@@ -830,10 +982,15 @@ pub async fn purge_expired(pool: &PgPool) {
     {
         tracing::warn!("could not purge expired auth challenges: {e}");
     }
-    if let Err(e) =
-        sqlx::query("DELETE FROM signup_attempts WHERE created_at < NOW() - INTERVAL '1 day'")
-            .execute(pool)
-            .await
+    // Begun sign-ups count only inside the hour's window; finished ones are kept a day.
+    if let Err(e) = sqlx::query(
+        "DELETE FROM signup_attempts
+         WHERE (NOT completed AND created_at < NOW() - make_interval(mins => $1))
+            OR created_at < NOW() - INTERVAL '1 day'",
+    )
+    .bind(BEGUN_SIGNUP_KEEP_MINUTES as i32)
+    .execute(pool)
+    .await
     {
         tracing::warn!("could not purge old sign-up attempts: {e}");
     }
@@ -968,15 +1125,27 @@ mod tests {
     }
 
     fn counts(begun: i64, created: i64, everyone: i64) -> SignupCounts {
-        SignupCounts { begun_by_network: begun, created_by_network: created, created_by_everyone: everyone }
+        SignupCounts {
+            begun_by_network: begun,
+            created_by_network: created,
+            created_by_everyone: everyone,
+            begun_by_everyone: begun,
+        }
+    }
+
+    fn at(created: i64) -> SignupCeilings {
+        SignupCeilings { created, begun: 1500 }
     }
 
     #[test]
     fn a_network_may_create_forty_accounts_an_hour() {
-        assert_eq!(signup_verdict(counts(0, 0, 0), 300), SignupVerdict::Allowed);
-        assert_eq!(signup_verdict(counts(0, MAX_SIGNUPS_PER_NETWORK - 1, 39), 300), SignupVerdict::Allowed);
-        assert_eq!(signup_verdict(counts(0, MAX_SIGNUPS_PER_NETWORK, 40), 300), SignupVerdict::NetworkLimited);
-        assert_eq!(signup_verdict(counts(0, MAX_SIGNUPS_PER_NETWORK + 100, 140), 300), SignupVerdict::NetworkLimited);
+        assert_eq!(signup_verdict(counts(0, 0, 0), at(300)), SignupVerdict::Allowed);
+        assert_eq!(signup_verdict(counts(0, MAX_SIGNUPS_PER_NETWORK - 1, 39), at(300)), SignupVerdict::Allowed);
+        assert_eq!(signup_verdict(counts(0, MAX_SIGNUPS_PER_NETWORK, 40), at(300)), SignupVerdict::NetworkLimited);
+        assert_eq!(
+            signup_verdict(counts(0, MAX_SIGNUPS_PER_NETWORK + 100, 140), at(300)),
+            SignupVerdict::NetworkLimited
+        );
         assert_eq!(MAX_SIGNUPS_PER_NETWORK, 40);
     }
 
@@ -984,15 +1153,15 @@ mod tests {
     fn begun_sign_ups_do_not_use_up_the_account_budget() {
         // A class of 30 where everyone cancels the prompt once and tries again: 60 begins,
         // and before that the 41st begin locked the whole school out for an hour.
-        assert_eq!(signup_verdict(counts(60, 0, 0), 300), SignupVerdict::Allowed);
-        assert_eq!(signup_verdict(counts(60, 30, 30), 300), SignupVerdict::Allowed);
+        assert_eq!(signup_verdict(counts(60, 0, 0), at(300)), SignupVerdict::Allowed);
+        assert_eq!(signup_verdict(counts(60, 30, 30), at(300)), SignupVerdict::Allowed);
         assert_eq!(
-            signup_verdict(counts(MAX_SIGNUP_BEGINS_PER_NETWORK - 1, 0, 0), 300),
+            signup_verdict(counts(MAX_SIGNUP_BEGINS_PER_NETWORK - 1, 0, 0), at(300)),
             SignupVerdict::Allowed
         );
         // Begins are still bounded, more loosely.
         assert_eq!(
-            signup_verdict(counts(MAX_SIGNUP_BEGINS_PER_NETWORK, 0, 0), 300),
+            signup_verdict(counts(MAX_SIGNUP_BEGINS_PER_NETWORK, 0, 0), at(300)),
             SignupVerdict::BeginsLimited
         );
         assert!(MAX_SIGNUP_BEGINS_PER_NETWORK > MAX_SIGNUPS_PER_NETWORK);
@@ -1001,23 +1170,58 @@ mod tests {
     #[test]
     fn the_global_ceiling_stops_everyone() {
         // A network that has done nothing is refused once the whole site is at the ceiling.
-        assert_eq!(signup_verdict(counts(0, 0, 299), 300), SignupVerdict::Allowed);
-        assert_eq!(signup_verdict(counts(0, 0, 300), 300), SignupVerdict::GlobalLimited);
-        assert_eq!(signup_verdict(counts(0, 0, 5000), 300), SignupVerdict::GlobalLimited);
+        assert_eq!(signup_verdict(counts(0, 0, 299), at(300)), SignupVerdict::Allowed);
+        assert_eq!(signup_verdict(counts(0, 0, 300), at(300)), SignupVerdict::GlobalLimited);
+        assert_eq!(signup_verdict(counts(0, 0, 5000), at(300)), SignupVerdict::GlobalLimited);
         // The ceiling is the configured one.
-        assert_eq!(signup_verdict(counts(0, 0, 50), 50), SignupVerdict::GlobalLimited);
+        assert_eq!(signup_verdict(counts(0, 0, 50), at(50)), SignupVerdict::GlobalLimited);
         // And it is reported in preference to the network's own limit.
-        assert_eq!(signup_verdict(counts(500, 500, 300), 300), SignupVerdict::GlobalLimited);
+        assert_eq!(signup_verdict(counts(500, 500, 300), at(300)), SignupVerdict::GlobalLimited);
+    }
+
+    #[test]
+    fn begun_sign_ups_have_a_site_wide_ceiling_too() {
+        let ceilings = SignupCeilings { created: 300, begun: 1500 };
+        let site = |begun_by_everyone| SignupCounts { begun_by_everyone, ..SignupCounts::default() };
+        assert_eq!(signup_verdict(site(1499), ceilings), SignupVerdict::Allowed);
+        // A network that has begun nothing is refused once everyone has begun 1500.
+        assert_eq!(signup_verdict(site(1500), ceilings), SignupVerdict::GlobalBeginsLimited);
+        assert_eq!(signup_verdict(site(20), SignupCeilings { created: 300, begun: 20 }), SignupVerdict::GlobalBeginsLimited);
+        // When the account is created the begin counts are zeroed: only accounts count.
+        let finish = SignupCounts { begun_by_network: 0, begun_by_everyone: 0, ..counts(5000, 3, 3) };
+        assert_eq!(signup_verdict(finish, ceilings), SignupVerdict::Allowed);
+        // One network alone cannot reach it: it is refused at its own 200 first.
+        assert!(MAX_SIGNUP_BEGINS_PER_NETWORK < crate::config::DEFAULT_SIGNUP_BEGINS_GLOBAL_PER_HOUR);
     }
 
     #[test]
     fn the_refusal_is_a_429_and_allowed_is_not_a_refusal() {
-        assert!(signup_refusal(SignupVerdict::Allowed, counts(0, 0, 0), 300).is_ok());
-        for verdict in [SignupVerdict::NetworkLimited, SignupVerdict::BeginsLimited, SignupVerdict::GlobalLimited] {
-            let err = signup_refusal(verdict, counts(0, 0, 300), 300).expect_err("refused");
+        assert!(signup_refusal(SignupVerdict::Allowed, counts(0, 0, 0), at(300)).is_ok());
+        for verdict in [
+            SignupVerdict::NetworkLimited,
+            SignupVerdict::BeginsLimited,
+            SignupVerdict::GlobalLimited,
+            SignupVerdict::GlobalBeginsLimited,
+        ] {
+            let err = signup_refusal(verdict, counts(0, 0, 300), at(300)).expect_err("refused");
             assert_eq!(err.status, StatusCode::TOO_MANY_REQUESTS);
             assert_eq!(err.code, "too_many_requests");
         }
+    }
+
+    #[test]
+    fn live_challenges_are_capped_per_network_and_overall() {
+        let max = crate::config::DEFAULT_AUTH_CHALLENGES_MAX;
+        assert_eq!(challenge_verdict(0, 0, max), ChallengeVerdict::Allowed);
+        assert_eq!(challenge_verdict(MAX_LIVE_CHALLENGES_PER_NETWORK - 1, max - 1, max), ChallengeVerdict::Allowed);
+        // One network: a hundred live ceremonies.
+        assert_eq!(challenge_verdict(MAX_LIVE_CHALLENGES_PER_NETWORK, 0, max), ChallengeVerdict::NetworkLimited);
+        // The table full, whoever filled it: clean up and look again.
+        assert_eq!(challenge_verdict(0, max, max), ChallengeVerdict::Full);
+        assert_eq!(challenge_verdict(0, 30, 30), ChallengeVerdict::Full);
+        // Filling it takes two hundred networks at their own limit.
+        assert_eq!(max / MAX_LIVE_CHALLENGES_PER_NETWORK, 200);
+        assert_eq!(MAX_LIVE_CHALLENGES_PER_NETWORK, 100);
     }
 
     #[test]
