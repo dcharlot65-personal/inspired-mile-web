@@ -16,15 +16,21 @@ function port(name: string, fallback: number): number {
 }
 
 const webPort = port('E2E_WEB_PORT', 4399);
+const webNoEmailPort = port('E2E_WEB_NOEMAIL_PORT', 4398);
 
 export const E2E = {
   /** The Astro dev server the browser tests load. */
   webPort,
   /** The page origin: also the WebAuthn origin and the CORS origin the API is started with. */
   webOrigin: `http://localhost:${webPort}`,
+  /** A second origin, same pages, whose /api goes to the API with email off
+   *  (tests/noemail-proxy.mjs). */
+  webNoEmailPort,
+  webNoEmailOrigin: `http://localhost:${webNoEmailPort}`,
   /** The real API with DEV_EMAIL_LOG=1. The dev server proxies /api to it. */
   apiPort: port('E2E_API_PORT', 38490),
-  /** The same API and database with email sign-in off (no Resend key, no DEV_EMAIL_LOG). */
+  /** The same API and database with email off (no Resend key, no DEV_EMAIL_LOG): the
+   *  state production launches in. The second origin proxies /api to it. */
   apiNoEmailPort: port('E2E_API_NOEMAIL_PORT', 38491),
   pgPort: port('E2E_PG_PORT', 54329),
   /** State and logs of a run, relative to the repository root. */

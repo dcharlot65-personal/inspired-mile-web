@@ -1,5 +1,6 @@
 /**
- * Passwordless sign-in: passkeys first, an emailed one-time code as the way in without one.
+ * Passwordless sign-in. An account can be made with a passkey alone (no email, no personal
+ * data); email is optional, for recovery and for signing in where there is no passkey.
  *
  * The server sets the session (an HttpOnly cookie); this module runs the browser side of
  * each ceremony and switches storage to server mode once it succeeds.
@@ -49,12 +50,13 @@ export class AuthFlowError extends Error {
 // ---------------------------------------------------------------------------
 
 /**
- * The age tier that allows an email address to be collected, or null.
+ * The age tier that allows an account to be created or an email address given, or null.
  *
  * Only a visitor the age gate recorded as an adult, or as a teen with consent, has one.
- * Unknown age and under 13 ("blocked") get null, and no address of theirs leaves the page.
+ * Unknown age and under 13 ("blocked") get null: no account is made for them and no
+ * address of theirs leaves the page.
  */
-export function emailAgeTier(): EmailAgeTier | null {
+export function accountAgeTier(): EmailAgeTier | null {
   let stored: string | null = null;
   try {
     stored = localStorage.getItem(AGE_KEY);
@@ -80,7 +82,7 @@ export function getAuthMethods(): Promise<AuthMethods> {
   if (!methodsPromise) {
     methodsPromise = api.getAuthMethods().catch(() => {
       methodsPromise = null; // let a later call try again
-      return { passkey: true, email: false };
+      return { passkey: true, passkey_signup: true, email: false };
     });
   }
   return methodsPromise;
@@ -113,15 +115,31 @@ export async function passkeyAutofillSupported(): Promise<boolean> {
  * allows it.
  */
 export async function sendEmailCode(email: string): Promise<void> {
-  const tier = emailAgeTier();
+  const tier = accountAgeTier();
   if (!tier) throw new AuthFlowError('age_required');
   await call(() => api.requestEmailCode(email.trim(), tier));
 }
 
 export async function signInWithEmailCode(email: string, code: string): Promise<AuthResponse> {
   // The same gate again: a code must not be redeemed by a visitor it could not be sent to.
-  if (!emailAgeTier()) throw new AuthFlowError('age_required');
+  if (!accountAgeTier()) throw new AuthFlowError('age_required');
   const auth = await call(() => api.verifyEmailCode(email.trim(), code.trim()));
+  activateServerMode(auth.user);
+  return auth;
+}
+
+/**
+ * Signed in: ask for a code to prove an address is yours, before it is stored as the
+ * account's recovery email. Refuses, before any request, unless the age gate allows it.
+ */
+export async function requestRecoveryEmail(email: string): Promise<void> {
+  if (!accountAgeTier()) throw new AuthFlowError('age_required');
+  await call(() => api.addEmailRequest(email.trim()));
+}
+
+export async function confirmRecoveryEmail(email: string, code: string): Promise<AuthResponse> {
+  if (!accountAgeTier()) throw new AuthFlowError('age_required');
+  const auth = await call(() => api.addEmailVerify(email.trim(), code.trim()));
   activateServerMode(auth.user);
   return auth;
 }
@@ -150,6 +168,29 @@ export async function signInWithPasskey(opts: { autofill?: boolean } = {}): Prom
     throw ceremonyError(e);
   }
   const auth = await call(() => api.passkeyLoginFinish(begin.challenge_id, credential));
+  activateServerMode(auth.user);
+  return auth;
+}
+
+/**
+ * Create an account with a passkey and nothing else. The only thing sent before the
+ * passkey itself is the age tier; no name, email or other personal data is asked for.
+ * Refuses, before any request, unless the age gate allows an account.
+ */
+export async function signUpWithPasskey(name: string = defaultPasskeyName()): Promise<AuthResponse> {
+  const tier = accountAgeTier();
+  if (!tier) throw new AuthFlowError('age_required');
+  if (!passkeysSupported()) throw new AuthFlowError('passkey_unsupported');
+  const begin = await call(() => api.passkeySignupBegin(tier));
+  let credential;
+  try {
+    credential = await startRegistration({
+      optionsJSON: begin.options as unknown as PublicKeyCredentialCreationOptionsJSON,
+    });
+  } catch (e) {
+    throw ceremonyError(e);
+  }
+  const auth = await call(() => api.passkeySignupFinish(begin.challenge_id, credential, name));
   activateServerMode(auth.user);
   return auth;
 }

@@ -19,8 +19,11 @@ CREATE INDEX IF NOT EXISTS idx_webauthn_credentials_user ON webauthn_credentials
 -- Server-side state of a WebAuthn ceremony in progress. Single use, short-lived.
 CREATE TABLE IF NOT EXISTS auth_challenges (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    kind VARCHAR(16) NOT NULL CHECK (kind IN ('register', 'login')),
-    -- Set for 'register' (the signed-in user adding a passkey); NULL for 'login'.
+    -- 'register': a signed-in user adds a passkey. 'login': usernameless sign-in.
+    -- 'signup': a visitor creates an account with a passkey; the account-to-be (new user id,
+    -- generated username, age tier) rides in `state`, and no `users` row exists until finish.
+    kind VARCHAR(16) NOT NULL CHECK (kind IN ('register', 'login', 'signup')),
+    -- Set for 'register' only.
     user_id UUID REFERENCES users(id) ON DELETE CASCADE,
     state JSONB NOT NULL,
     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
@@ -29,7 +32,17 @@ CREATE TABLE IF NOT EXISTS auth_challenges (
 
 CREATE INDEX IF NOT EXISTS idx_auth_challenges_expires ON auth_challenges(expires_at);
 
--- One-time email sign-in codes. Only an HMAC of the code is stored.
+-- Passkey sign-ups begun, by client address: what the per-IP sign-up limit counts.
+-- (The challenge row cannot serve: it is deleted when the sign-up finishes.)
+CREATE TABLE IF NOT EXISTS signup_attempts (
+    id BIGSERIAL PRIMARY KEY,
+    ip VARCHAR(64) NOT NULL,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+CREATE INDEX IF NOT EXISTS idx_signup_attempts_ip ON signup_attempts(ip, created_at DESC);
+
+-- One-time email codes. Only an HMAC of the code is stored.
 -- Rows are also what the per-email and per-IP request limits count.
 CREATE TABLE IF NOT EXISTS email_login_codes (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
@@ -37,6 +50,10 @@ CREATE TABLE IF NOT EXISTS email_login_codes (
     email VARCHAR(255) NOT NULL,
     code_hash CHAR(64) NOT NULL,
     ip VARCHAR(64) NOT NULL,
+    -- 'login': sign in, creating the account if the address is new.
+    -- 'add': a signed-in account (user_id) proving it owns the address before it is stored.
+    purpose VARCHAR(8) NOT NULL DEFAULT 'login' CHECK (purpose IN ('login', 'add')),
+    user_id UUID REFERENCES users(id) ON DELETE CASCADE,
     -- 'adult' or 'teen', as stated by the age gate; applied when the code creates an account.
     age_tier VARCHAR(10) NOT NULL,
     attempts INT NOT NULL DEFAULT 0,

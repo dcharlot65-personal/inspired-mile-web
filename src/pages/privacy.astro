@@ -20,11 +20,15 @@ import Layout from '../layouts/BaseLayout.astro';
           <h2 class="text-xl font-display font-semibold text-white mb-3">Data We Collect</h2>
 
           <h3 class="text-md font-semibold text-obsidian-200 mt-4 mb-2">Account Data</h3>
-          <p class="mb-2">When you create an account, we collect:</p>
+          <p class="mb-2">You can create an account with a passkey alone. That sends us no personal data: no name, no email address, no password, and nothing about your fingerprint, face or screen lock, which never leave your device. What we store for a passkey-only account is:</p>
           <ul class="list-disc list-inside space-y-1 ml-2">
-            <li><strong class="text-white">Email address:</strong> used to send you a one-time sign-in code and to recover your account. We only ask for it after the age check, and never from visitors under 13.</li>
-            <li><strong class="text-white">Passkeys:</strong> if you add a passkey, we store its public key and a label for the device. Your fingerprint, face or screen lock never leaves your device, and we never receive it.</li>
-            <li><strong class="text-white">Username:</strong> a generated name (for example <code class="text-xs bg-obsidian-800 px-1 rounded-sm">bard-4f2a9c</code>) that is not derived from your email address</li>
+            <li><strong class="text-white">A passkey public key</strong> and a label for the device or browser it was made on (for example "Chrome on macOS"), so you can tell your passkeys apart</li>
+            <li><strong class="text-white">A random account identifier and a generated username</strong> (for example <code class="text-xs bg-obsidian-800 px-1 rounded-sm">bard-4f2a9c</code>), neither derived from anything about you</li>
+            <li><strong class="text-white">Your age group</strong> from the age check: "adult" or "teen with consent". We do not store your date of birth.</li>
+          </ul>
+          <p class="mt-3 mb-2">An email address is optional. If you choose to add one for account recovery, or to sign in by email, we also store:</p>
+          <ul class="list-disc list-inside space-y-1 ml-2">
+            <li><strong class="text-white">Your email address,</strong> used only to send you one-time sign-in codes. We ask for it only after the age check, and never from visitors under 13.</li>
             <li><strong class="text-white">Accounts created before passkeys:</strong> if you first signed in with Google, we still hold the name, email address and profile picture Google provided then. We no longer use Google Sign-In.</li>
           </ul>
 
@@ -80,7 +84,7 @@ import Layout from '../layouts/BaseLayout.astro';
         <div>
           <h2 class="text-xl font-display font-semibold text-white mb-3">Third-Party Services</h2>
           <ul class="list-disc list-inside space-y-2 ml-2">
-            <li><strong class="text-white">Resend:</strong> Sign-in codes are emailed through Resend, which receives your email address and the message in order to deliver it. Resend's <a href="https://resend.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer" class="text-accent hover:text-accent-light transition-colors">Privacy Policy</a> applies to that delivery.</li>
+            <li><strong class="text-white">Resend:</strong> Only if you give us an email address: sign-in codes are emailed through Resend, which receives that address and the message in order to deliver it. Resend's <a href="https://resend.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer" class="text-accent hover:text-accent-light transition-colors">Privacy Policy</a> applies to that delivery. A passkey-only account sends nothing to Resend.</li>
             <li><strong class="text-white">Google Fonts:</strong> We load fonts from Google Fonts, which means your browser makes requests to Google's servers. Google's <a href="https://developers.google.com/fonts/faq/privacy" target="_blank" rel="noopener noreferrer" class="text-accent hover:text-accent-light transition-colors">Fonts Privacy FAQ</a> applies.</li>
             <li><strong class="text-white">Plausible Analytics:</strong> Privacy-focused analytics as described above.</li>
             <li><strong class="text-white">Hugging Face:</strong> Our in-browser AI assistant downloads models from Hugging Face. No user data is sent to Hugging Face.</li>

@@ -8,10 +8,15 @@ const prodUrl = process.env.PROD_URL;
 // Two copies of the API share that database: one with DEV_EMAIL_LOG (sign-in codes go to
 // its log, where tests/auth.spec.ts reads them), one with email sign-in off.
 //
-// Neither server is ever reused. A server already on the port may be another checkout's
+// A second origin (tests/noemail-proxy.mjs) serves the same pages with /api going to the
+// email-off API, so the
+// whole passkey-only life of an account runs in a browser against the state production
+// launches in.
+//
+// No server is ever reused. A server already on the port may be another checkout's
 // (the build host is shared), and tests that pass against someone else's code prove
-// nothing. If a port is taken the run stops; move it with E2E_WEB_PORT, E2E_API_PORT,
-// E2E_API_NOEMAIL_PORT or E2E_PG_PORT (tests/e2e-env.ts).
+// nothing. If a port is taken the run stops; move it with E2E_WEB_PORT, E2E_WEB_NOEMAIL_PORT,
+// E2E_API_PORT, E2E_API_NOEMAIL_PORT or E2E_PG_PORT (tests/e2e-env.ts).
 
 export default defineConfig({
   testDir: './tests',
@@ -22,10 +27,10 @@ export default defineConfig({
     // The age gate covers every page until a date of birth is given; tests start past it.
     storageState: prodUrl ? undefined : {
       cookies: [],
-      origins: [{
-        origin: E2E.webOrigin,
+      origins: [E2E.webOrigin, E2E.webNoEmailOrigin].map((origin) => ({
+        origin,
         localStorage: [{ name: 'inspired-mile-age-verified', value: 'adult' }],
-      }],
+      })),
     },
   },
   // tests/model needs WebGPU and multi-gigabyte downloads; it has its own config.
@@ -45,6 +50,7 @@ export default defineConfig({
       stderr: 'pipe',
       env: {
         E2E_WEB_ORIGIN: E2E.webOrigin,
+        E2E_WEB_NOEMAIL_ORIGIN: E2E.webNoEmailOrigin,
         E2E_API_PORT: String(E2E.apiPort),
         E2E_API_NOEMAIL_PORT: String(E2E.apiNoEmailPort),
         E2E_PG_PORT: String(E2E.pgPort),
@@ -62,6 +68,15 @@ export default defineConfig({
       timeout: 60000,
       stderr: 'pipe',
       env: { API_PROXY_TARGET: `http://127.0.0.1:${E2E.apiPort}` },
+    },
+    {
+      // The same pages on a second origin whose /api is the email-off API. Astro runs one
+      // dev server per project, so this is a small pass-through in front of both.
+      command: `node tests/noemail-proxy.mjs ${E2E.webNoEmailPort} ${E2E.webPort} ${E2E.apiNoEmailPort}`,
+      port: E2E.webNoEmailPort,
+      reuseExistingServer: false,
+      timeout: 30000,
+      stderr: 'pipe',
     },
   ],
 });

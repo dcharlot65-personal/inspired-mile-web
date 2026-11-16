@@ -68,7 +68,7 @@ pub struct AuthResponse {
     pub founding_player: Option<bool>,
     /// How many passkeys the account has; 0 is the cue to offer adding one.
     pub passkey_count: i64,
-    /// True only on the email sign-in that created the account.
+    /// True only on the sign-in that created the account.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub is_new_user: Option<bool>,
 }
@@ -77,7 +77,9 @@ pub struct AuthResponse {
 pub struct MethodsResponse {
     /// Passkey sign-in is always offered by the server; the browser decides if it can.
     passkey: bool,
-    /// False until a mail key is configured: the UI hides email sign-in.
+    /// A visitor can create an account with a passkey alone: no email, no mail key needed.
+    passkey_signup: bool,
+    /// False until a mail key is configured: the UI then shows email nowhere.
     email: bool,
 }
 
@@ -88,6 +90,8 @@ pub struct MethodsResponse {
 pub fn router(ctx: Arc<AuthContext>) -> Router<(PgPool, Config)> {
     Router::new()
         .route("/methods", get(methods))
+        .route("/passkey/signup/begin", post(passkeys::signup_begin))
+        .route("/passkey/signup/finish", post(passkeys::signup_finish))
         .route("/passkey/register/begin", post(passkeys::register_begin))
         .route("/passkey/register/finish", post(passkeys::register_finish))
         .route("/passkey/login/begin", post(passkeys::login_begin))
@@ -96,6 +100,8 @@ pub fn router(ctx: Arc<AuthContext>) -> Router<(PgPool, Config)> {
         .route("/passkeys/{id}", delete(passkeys::remove))
         .route("/email/request", post(email::request_code))
         .route("/email/verify", post(email::verify_code))
+        .route("/email/add/request", post(email::add_request))
+        .route("/email/add/verify", post(email::add_verify))
         .route("/logout", post(logout))
         .route("/me", get(me))
         .layer(Extension(ctx))
@@ -106,7 +112,11 @@ pub fn router(ctx: Arc<AuthContext>) -> Router<(PgPool, Config)> {
 // ---------------------------------------------------------------------------
 
 async fn methods(State((_, config)): State<(PgPool, Config)>) -> Json<MethodsResponse> {
-    Json(MethodsResponse { passkey: true, email: config.email_mode.is_available() })
+    Json(MethodsResponse {
+        passkey: true,
+        passkey_signup: true,
+        email: config.email_mode.is_available(),
+    })
 }
 
 async fn logout() -> CookieJar {
@@ -205,4 +215,51 @@ pub async fn passkey_count(pool: &PgPool, user_id: Uuid) -> Result<i64, ApiError
         .bind(user_id)
         .fetch_one(pool)
         .await?)
+}
+
+/// The age gate's answer, as sent by the page: only "adult" and "teen" (a teen with
+/// consent) may create an account or give an email address. Unknown age and under 13 are
+/// refused here whatever the page did.
+pub fn age_tier_from(stated: Option<&str>) -> Result<&'static str, ApiError> {
+    match stated {
+        Some("adult") => Ok("adult"),
+        Some("teen") => Ok("teen"),
+        _ => Err(ApiError::new(
+            axum::http::StatusCode::FORBIDDEN,
+            "age_required",
+            "Confirm your age before creating an account.",
+        )),
+    }
+}
+
+/// A neutral public name such as `bard-4f2a9c`. Usernames show on the public leaderboard,
+/// so they are never derived from an email address.
+pub async fn unused_username(conn: &mut sqlx::PgConnection) -> Result<String, ApiError> {
+    for _ in 0..10 {
+        let candidate = format!("bard-{:06x}", rand::random::<u32>() & 0x00ff_ffff);
+        let taken: bool = sqlx::query_scalar("SELECT EXISTS(SELECT 1 FROM users WHERE username = $1)")
+            .bind(&candidate)
+            .fetch_one(&mut *conn)
+            .await?;
+        if !taken {
+            return Ok(candidate);
+        }
+    }
+    Err(ApiError::internal("username generation", "no free username after 10 tries"))
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn only_adult_and_consenting_teen_pass_the_age_check() {
+        assert_eq!(age_tier_from(Some("adult")).unwrap(), "adult");
+        assert_eq!(age_tier_from(Some("teen")).unwrap(), "teen");
+        for refused in [None, Some(""), Some("unknown"), Some("blocked"), Some("child"), Some("Adult")] {
+            let err = age_tier_from(refused).expect_err("must be refused");
+            assert_eq!(err.code, "age_required");
+            assert_eq!(err.status, axum::http::StatusCode::FORBIDDEN);
+        }
+    }
 }

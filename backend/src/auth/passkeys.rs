@@ -1,12 +1,16 @@
 //! Passkeys (WebAuthn discoverable credentials): the primary way to sign in.
 //!
+//! Sign-up needs nothing but a passkey: no email, no personal data. The account-to-be
+//! waits in the challenge and reaches `users` only when the passkey verifies.
 //! Registration needs a session (you add a passkey to an account you are already in).
 //! Sign-in needs nothing: the authenticator names the account through the user handle.
 //! Ceremony state lives in `auth_challenges`, is taken out on first use and expires fast.
 
+use std::net::SocketAddr;
+
 use axum::{
-    extract::{Path, State},
-    http::StatusCode,
+    extract::{ConnectInfo, Path, State},
+    http::{HeaderMap, StatusCode},
     Json,
 };
 use axum_extra::extract::CookieJar;
@@ -21,8 +25,12 @@ use webauthn_rs::prelude::{
     RegisterPublicKeyCredential,
 };
 
+use super::client_ip::client_ip;
 use super::error::ApiError;
-use super::handlers::{passkey_count, row_to_user, session, session_cookie, AuthResponse, Ctx};
+use super::handlers::{
+    age_tier_from, passkey_count, row_to_user, session, session_cookie, unused_username,
+    AuthResponse, Ctx,
+};
 use crate::config::Config;
 
 /// How long a begun ceremony may take to finish. Matches the WebAuthn timeout webauthn-rs
@@ -30,6 +38,31 @@ use crate::config::Config;
 const CHALLENGE_TTL_MINUTES: i64 = 5;
 /// A sane ceiling on passkeys per account.
 const MAX_PASSKEYS_PER_USER: i64 = 20;
+/// Passkey sign-ups one client address may begin inside `SIGNUP_WINDOW_MINUTES`. Roomy
+/// enough for a class signing up from one school address, small enough to blunt a script.
+pub const MAX_SIGNUPS_PER_IP: i64 = 40;
+pub const SIGNUP_WINDOW_MINUTES: i64 = 60;
+
+/// Whether an address that has begun `recent` sign-ups in the window may begin another.
+pub fn signup_allowed(recent: i64) -> bool {
+    recent < MAX_SIGNUPS_PER_IP
+}
+
+#[derive(Deserialize)]
+pub struct SignupBeginBody {
+    /// The age gate's answer: "adult" or "teen". Required, as for email.
+    #[serde(default)]
+    age_tier: Option<String>,
+}
+
+/// The account a sign-up will create, held in the challenge until the passkey verifies.
+#[derive(Serialize, Deserialize)]
+struct PendingSignup {
+    user_id: Uuid,
+    username: String,
+    age_tier: String,
+    registration: PasskeyRegistration,
+}
 
 #[derive(Serialize)]
 pub struct BeginResponse {
@@ -152,6 +185,136 @@ async fn take_challenge(
     }
     let Db(state): Db<Value> = row.get("state");
     Ok((row.get("user_id"), state))
+}
+
+// ---------------------------------------------------------------------------
+// Sign-up (a visitor creates an account with a passkey and nothing else)
+// ---------------------------------------------------------------------------
+
+pub async fn signup_begin(
+    State((pool, _)): State<(PgPool, Config)>,
+    ctx: Ctx,
+    ConnectInfo(peer): ConnectInfo<SocketAddr>,
+    headers: HeaderMap,
+    Json(body): Json<SignupBeginBody>,
+) -> Result<Json<BeginResponse>, ApiError> {
+    let age_tier = age_tier_from(body.age_tier.as_deref())?;
+
+    let ip = client_ip(&headers, Some(peer));
+    let recent: i64 = sqlx::query_scalar(
+        "SELECT COUNT(*) FROM signup_attempts
+         WHERE ip = $1 AND created_at > NOW() - make_interval(mins => $2)",
+    )
+    .bind(&ip)
+    .bind(SIGNUP_WINDOW_MINUTES as i32)
+    .fetch_one(&pool)
+    .await?;
+    if !signup_allowed(recent) {
+        return Err(ApiError::new(
+            StatusCode::TOO_MANY_REQUESTS,
+            "too_many_requests",
+            "Too many accounts started from this network. Wait a while and try again.",
+        ));
+    }
+    sqlx::query("INSERT INTO signup_attempts (ip) VALUES ($1)")
+        .bind(&ip)
+        .execute(&pool)
+        .await?;
+
+    // A fresh random user handle and a generated name. Neither says anything about the
+    // person, and nothing is written to `users` here.
+    let user_id = Uuid::new_v4();
+    let username = {
+        let mut conn = pool.acquire().await?;
+        unused_username(&mut conn).await?
+    };
+    let (challenge, registration) = ctx
+        .webauthn
+        .start_passkey_registration(user_id, &username, &username, None)
+        .map_err(|e| ApiError::internal("start_passkey_registration", e))?;
+
+    let mut options = serde_json::to_value(&challenge.public_key)
+        .map_err(|e| ApiError::internal("serialise registration options", e))?;
+    require_discoverable(&mut options);
+
+    let pending = PendingSignup { user_id, username, age_tier: age_tier.to_string(), registration };
+    let state = serde_json::to_value(&pending)
+        .map_err(|e| ApiError::internal("serialise sign-up state", e))?;
+    let challenge_id = store_challenge(&pool, "signup", None, state).await?;
+    Ok(Json(BeginResponse { challenge_id, options }))
+}
+
+pub async fn signup_finish(
+    State((pool, config)): State<(PgPool, Config)>,
+    ctx: Ctx,
+    Json(body): Json<RegisterFinishBody>,
+) -> Result<(CookieJar, Json<AuthResponse>), ApiError> {
+    let (_, state) = take_challenge(&pool, body.challenge_id, "signup").await?;
+    let pending: PendingSignup = serde_json::from_value(state)
+        .map_err(|e| ApiError::internal("stored sign-up state", e))?;
+
+    // Nothing reaches `users` unless the passkey verifies.
+    let passkey = ctx
+        .webauthn
+        .finish_passkey_registration(&body.credential, &pending.registration)
+        .map_err(|e| {
+            tracing::warn!("passkey sign-up refused: {e}");
+            ApiError::bad_request("passkey_not_registered", "That passkey could not be registered.")
+        })?;
+
+    // The account and its passkey are made together or not at all.
+    let mut tx = pool.begin().await?;
+    let user_row = sqlx::query(
+        "INSERT INTO users (id, username, auth_provider, age_tier)
+         VALUES ($1, $2, 'passkey', $3)
+         ON CONFLICT DO NOTHING
+         RETURNING id, username, email, display_name, auth_provider, avatar_url",
+    )
+    .bind(pending.user_id)
+    .bind(&pending.username)
+    .bind(&pending.age_tier)
+    .fetch_optional(&mut *tx)
+    .await?
+    .ok_or_else(|| {
+        // The generated name was taken in the minutes since begin. Vanishingly rare.
+        ApiError::new(
+            StatusCode::CONFLICT,
+            "signup_retry",
+            "That did not go through. Please try again.",
+        )
+    })?;
+    sqlx::query("INSERT INTO player_stats (user_id) VALUES ($1) ON CONFLICT DO NOTHING")
+        .bind(pending.user_id)
+        .execute(&mut *tx)
+        .await?;
+    let credential_id: &[u8] = passkey.cred_id().as_ref();
+    sqlx::query(
+        "INSERT INTO webauthn_credentials (user_id, credential_id, passkey, name)
+         VALUES ($1, $2, $3, $4)
+         ON CONFLICT (credential_id) DO NOTHING
+         RETURNING id",
+    )
+    .bind(pending.user_id)
+    .bind(credential_id)
+    .bind(Db(&passkey))
+    .bind(clean_passkey_name(body.name.as_deref()))
+    .fetch_optional(&mut *tx)
+    .await?
+    .ok_or_else(|| {
+        ApiError::new(
+            StatusCode::CONFLICT,
+            "passkey_already_registered",
+            "That passkey is already registered.",
+        )
+    })?;
+    tx.commit().await?;
+
+    let user = row_to_user(&user_row);
+    let jar = session_cookie(user.id, &user.username, &config)?;
+    Ok((
+        jar,
+        Json(AuthResponse { user, founding_player: None, passkey_count: 1, is_new_user: Some(true) }),
+    ))
 }
 
 // ---------------------------------------------------------------------------
@@ -419,6 +582,13 @@ pub async fn purge_expired(pool: &PgPool) {
         tracing::warn!("could not purge expired auth challenges: {e}");
     }
     if let Err(e) =
+        sqlx::query("DELETE FROM signup_attempts WHERE created_at < NOW() - INTERVAL '1 day'")
+            .execute(pool)
+            .await
+    {
+        tracing::warn!("could not purge old sign-up attempts: {e}");
+    }
+    if let Err(e) =
         sqlx::query("DELETE FROM email_login_codes WHERE created_at < NOW() - INTERVAL '1 day'")
             .execute(pool)
             .await
@@ -450,6 +620,15 @@ mod tests {
         require_discoverable(&mut options);
         assert_eq!(options["authenticatorSelection"]["residentKey"], "required");
         assert_eq!(options["authenticatorSelection"]["userVerification"], "required");
+    }
+
+    #[test]
+    fn sign_ups_per_address_stop_at_the_limit() {
+        assert!(signup_allowed(0));
+        assert!(signup_allowed(MAX_SIGNUPS_PER_IP - 1));
+        assert!(!signup_allowed(MAX_SIGNUPS_PER_IP));
+        assert!(!signup_allowed(MAX_SIGNUPS_PER_IP + 100));
+        assert_eq!(MAX_SIGNUPS_PER_IP, 40);
     }
 
     #[test]

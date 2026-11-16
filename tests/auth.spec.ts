@@ -16,6 +16,8 @@ import { E2E } from './e2e-env';
 const API = `http://127.0.0.1:${E2E.apiPort}/api/v1`;
 const API_NO_EMAIL = `http://127.0.0.1:${E2E.apiNoEmailPort}/api/v1`;
 const API_LOG = path.join(E2E.workDir, 'api.log');
+/** The same pages on a second origin whose /api is the email-off API. */
+const NO_EMAIL_WEB = E2E.webNoEmailOrigin;
 /** The JWT secret tests/start-backend.sh gives the test APIs. */
 const E2E_JWT_SECRET = 'e2e-secret-not-for-production';
 
@@ -178,12 +180,12 @@ test.describe('Auth methods', () => {
   test('methods says email is available when the API can deliver codes', async ({ request }) => {
     const res = await request.get(`${API}/auth/methods`);
     expect(res.status()).toBe(200);
-    expect(await res.json()).toEqual({ passkey: true, email: true });
+    expect(await res.json()).toEqual({ passkey: true, passkey_signup: true, email: true });
   });
 
   test('without a mail key the email endpoints answer 503 with a JSON error', async ({ request }) => {
     const methods = await request.get(`${API_NO_EMAIL}/auth/methods`);
-    expect(await methods.json()).toEqual({ passkey: true, email: false });
+    expect(await methods.json()).toEqual({ passkey: true, passkey_signup: true, email: false });
 
     const email = uniqueEmail('nokey');
     const asked = await requestCode(request, email, { base: API_NO_EMAIL });
@@ -202,18 +204,17 @@ test.describe('Auth methods', () => {
     expect(loggedCodes(email)).toEqual([]);
   });
 
-  test('the UI hides email sign-in when the API has no mail key', async ({ page }) => {
-    // Answer this page's methods call from the real API that has email off.
-    await page.route('**/api/v1/auth/methods', async (route) => {
-      const response = await route.fetch({ url: `${API_NO_EMAIL}/auth/methods` });
-      await route.fulfill({ response });
-    });
-    await page.goto('/');
+  test('with no mail key the UI shows email nowhere, and still offers an account', async ({ page }) => {
+    // The second origin: same pages, in front of the API that has email off.
+    await page.goto(`${NO_EMAIL_WEB}/`);
     await openSignIn(page);
     await expect(page.locator('#auth-passkey-btn')).toBeVisible();
-    await expect(page.locator('#auth-email-unavailable')).toBeVisible();
+    await expect(page.locator('#auth-create-btn')).toBeVisible();
+    await expect(page.locator('#auth-create-btn')).toHaveText(/Create an account with a passkey/);
     await expect(page.locator('#auth-email-btn')).toBeHidden();
     await expect(page.locator('#auth-email-hint')).toBeHidden();
+    // Not a word about email on the panel a visitor first sees.
+    expect(await page.locator('#auth-step-choose').innerText()).not.toMatch(/e-?mail/i);
   });
 
   test('the UI offers email sign-in when the API can deliver codes', async ({ page }) => {
@@ -223,7 +224,7 @@ test.describe('Auth methods', () => {
     await expect(page.locator('#auth-passkey-btn')).toHaveText(/Sign in with a passkey/);
     await expect(page.locator('#auth-email-btn')).toBeVisible();
     await expect(page.locator('#auth-email-btn')).toHaveText(/Email me a code/);
-    await expect(page.locator('#auth-email-unavailable')).toBeHidden();
+    await expect(page.locator('#auth-create-btn')).toBeVisible();
   });
 });
 
@@ -652,6 +653,7 @@ test.describe('Sign-in UI', () => {
     await page.goto('/');
     await openSignIn(page);
     await expect(page.locator('#auth-passkey-btn')).toBeHidden();
+    await expect(page.locator('#auth-create-btn')).toBeHidden();
     await expect(page.locator('#auth-passkey-unsupported')).toBeVisible();
     await expect(page.locator('#auth-email-btn')).toBeVisible();
 
@@ -685,10 +687,32 @@ test.describe('Sign-in and the age gate', () => {
         await page.addInitScript((value) => localStorage.setItem('inspired-mile-age-verified', value), stored);
       }
       const emailCalls: string[] = [];
-      page.on('request', (r) => { if (r.url().includes('/auth/email/')) emailCalls.push(r.url()); });
+      page.on('request', (r) => {
+        if (r.url().includes('/auth/email/') || r.url().includes('/auth/passkey/signup/')) emailCalls.push(r.url());
+      });
 
       await page.goto('/about');
+      await addVirtualAuthenticator(page);
       await openSignIn(page);
+
+      // Creating an account with a passkey is refused the same way, at the button...
+      await page.locator('#auth-create-btn').click();
+      await expect(page.locator('#auth-notice')).toContainText('confirm your age');
+      await expect(page.locator('#auth-step-create')).toBeHidden();
+      // ...and again by the function behind it, if the hidden step is revealed by hand.
+      await page.evaluate(() => {
+        document.getElementById('auth-step-choose')!.classList.add('hidden');
+        document.getElementById('auth-step-create')!.classList.remove('hidden');
+      });
+      await page.locator('#auth-create-confirm').click();
+      await expect(page.locator('#auth-error')).toContainText('confirm your age');
+      await expect(page.locator('#user-badge')).toBeHidden();
+      expect(emailCalls).toEqual([]);
+      await page.evaluate(() => {
+        document.getElementById('auth-step-create')!.classList.add('hidden');
+        document.getElementById('auth-step-choose')!.classList.remove('hidden');
+      });
+
       await expect(page.locator('#auth-email-btn')).toBeVisible();
       await page.locator('#auth-email-btn').click();
 
@@ -702,6 +726,7 @@ test.describe('Sign-in and the age gate', () => {
       // Second line of defence: get past the button anyway (reveal the hidden form by
       // hand and submit an address). The sender itself must refuse, before any request.
       await page.evaluate(() => {
+        document.getElementById('auth-notice')!.classList.add('hidden');
         document.getElementById('auth-step-choose')!.classList.add('hidden');
         document.getElementById('auth-step-email')!.classList.remove('hidden');
       });
@@ -747,5 +772,319 @@ test.describe('Sign-in and the age gate', () => {
       return el ? !!el.closest('#age-gate') : false;
     });
     expect(topmost).toBe(true);
+  });
+});
+
+// ---------------------------------------------------------------------------
+// Accounts made with a passkey alone
+// ---------------------------------------------------------------------------
+
+/** POST JSON from inside the page, with the page's own session cookie. */
+async function postFromPage(page: Page, route: string, body: unknown) {
+  return page.evaluate(async ([url, data]) => {
+    const res = await fetch(url as string, {
+      method: 'POST',
+      credentials: 'include',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    });
+    return { status: res.status, body: await res.json().catch(() => null) };
+  }, [`/api/v1${route}`, body] as const);
+}
+
+async function createAccountWithPasskey(page: Page) {
+  await openSignIn(page);
+  await page.locator('#auth-create-btn').click();
+  await expect(page.locator('#auth-step-create')).toBeVisible();
+  await page.locator('#auth-create-confirm').click();
+  await expect(page.locator('#auth-recovery-nudge')).toBeVisible();
+}
+
+async function signOutUi(page: Page) {
+  if (await page.locator('#auth-dropdown').isHidden()) await page.locator('#user-badge').click();
+  await page.locator('#auth-logout-btn').click();
+  await expect(page.locator('#auth-btn')).toBeVisible();
+}
+
+function signupBegin(request: APIRequestContext, opts: { ip?: string; ageTier?: string | null; base?: string } = {}) {
+  const data: Record<string, unknown> = {};
+  if (opts.ageTier !== null) data.age_tier = opts.ageTier ?? 'adult';
+  return request.post(`${opts.base ?? API_NO_EMAIL}/auth/passkey/signup/begin`, {
+    data,
+    headers: { 'CF-Connecting-IP': opts.ip ?? uniqueIp() },
+  });
+}
+
+test.describe('Passkey-only accounts, with email off', () => {
+  test('sign up, sign out, sign in, add a second passkey, delete the first: no email anywhere', async ({ page }) => {
+    await page.goto(`${NO_EMAIL_WEB}/`);
+    const first = await addVirtualAuthenticator(page);
+    const { cdp } = first;
+    const usersBefore = Number(sql('SELECT COUNT(*) FROM users'));
+
+    // 1. Create the account. The warning comes before the account does.
+    await openSignIn(page);
+    await page.locator('#auth-create-btn').click();
+    await expect(page.locator('#auth-step-create')).toBeVisible();
+    await expect(page.locator('#auth-create-warning')).toContainText('add a second passkey so you can get back in');
+    expect(await page.locator('#auth-step-create').innerText()).not.toMatch(/or an e-?mail/i);
+    const begin = page.waitForRequest((r) => r.url().endsWith('/auth/passkey/signup/begin'));
+    const finish = page.waitForRequest((r) => r.url().endsWith('/auth/passkey/signup/finish'));
+    await page.locator('#auth-create-confirm').click();
+    // All that is sent to start an account is the age tier: no name, no address.
+    expect(JSON.parse((await begin).postData()!)).toEqual({ age_tier: 'adult' });
+    expect(Object.keys(JSON.parse((await finish).postData()!)).sort()).toEqual(['challenge_id', 'credential', 'name']);
+
+    // 2. Signed in at once, and told plainly that one passkey is the only way in.
+    await expect(page.locator('#auth-recovery-nudge')).toBeVisible();
+    await expect(page.locator('#auth-nudge-body')).toContainText('one passkey is the only way into this account');
+    await expect(page.locator('#auth-nudge-body')).toContainText('Add a second passkey so you can get back in');
+    await expect(page.locator('#auth-nudge-email')).toBeHidden();
+    await expect(page.locator('#user-badge')).toBeVisible();
+    const created = await (await me(page)).json();
+    expect(created.user.email).toBeNull();
+    expect(created.user.auth_provider).toBe('passkey');
+    expect(created.user.username).toMatch(/^bard-[0-9a-f]{6}$/);
+    expect(created.passkey_count).toBe(1);
+    const id = created.user.id;
+    expect(Number(sql('SELECT COUNT(*) FROM users'))).toBe(usersBefore + 1);
+    expect(sql(`SELECT email IS NULL, age_tier, display_name IS NULL, avatar_url IS NULL FROM users WHERE id = '${id}'`)).toBe('t|adult|t|t');
+    // The authenticator's user handle is the new account's id.
+    const held = await cdp.send('WebAuthn.getCredentials', { authenticatorId: first.authenticatorId });
+    expect(held.credentials).toHaveLength(1);
+    expect(held.credentials[0].isResidentCredential).toBe(true);
+    expect(Buffer.from(held.credentials[0].userHandle!, 'base64').toString('hex')).toBe(id.replace(/-/g, ''));
+
+    // 3. "Later": the menu keeps the warning, shows no email section, and will not
+    //    delete the only passkey.
+    await page.locator('#auth-nudge-later').click();
+    await expect(page.locator('#auth-dropdown')).toBeHidden();
+    await page.locator('#user-badge').click();
+    await expect(page.locator('#auth-user-menu')).toBeVisible();
+    await expect(page.locator('#auth-passkey-list li')).toHaveCount(1);
+    await expect(page.locator('#auth-recovery-warning')).toBeVisible();
+    await expect(page.locator('#auth-recovery-warning')).toContainText('One passkey is your only way in');
+    await expect(page.locator('#auth-email-section')).toBeHidden();
+    expect(await page.locator('#auth-user-menu').innerText()).not.toMatch(/e-?mail/i);
+    const onlyRemove = page.locator('#auth-passkey-list li button');
+    await onlyRemove.click();
+    await onlyRemove.click();
+    await expect(page.locator('#auth-menu-message')).toContainText('only way to sign in');
+    await expect(page.locator('#auth-passkey-list li')).toHaveCount(1);
+    expect(sql(`SELECT COUNT(*) FROM webauthn_credentials WHERE user_id = '${id}'`)).toBe('1');
+    // Email cannot be added here either: the server has no way to send a code.
+    expect((await postFromPage(page, '/auth/email/add/request', { email: uniqueEmail('nomail') })).status).toBe(503);
+
+    // 4. Sign out, then sign in with the passkey alone.
+    await signOutUi(page);
+    expect((await me(page)).status()).toBe(401);
+    await openSignIn(page);
+    await page.locator('#auth-passkey-btn').click();
+    await expect(page.locator('#user-badge')).toBeVisible();
+    expect((await (await me(page)).json()).user.id).toBe(id);
+
+    // 5. Add a second passkey, on another authenticator.
+    await cdp.send('WebAuthn.removeVirtualAuthenticator', { authenticatorId: first.authenticatorId });
+    const second = await cdp.send('WebAuthn.addVirtualAuthenticator', {
+      options: { protocol: 'ctap2', transport: 'usb', hasResidentKey: true, hasUserVerification: true, isUserVerified: true, automaticPresenceSimulation: true },
+    });
+    await page.locator('#user-badge').click();
+    await expect(page.locator('#auth-passkey-list li')).toHaveCount(1);
+    await page.locator('#auth-passkey-add-menu').click();
+    await expect(page.locator('#auth-passkey-list li')).toHaveCount(2);
+    await expect(page.locator('#auth-recovery-warning')).toBeHidden();
+    expect(sql(`SELECT COUNT(*) FROM webauthn_credentials WHERE user_id = '${id}'`)).toBe('2');
+
+    // 6. Now the first passkey can go.
+    const firstRemove = page.locator('#auth-passkey-list li').first().locator('button');
+    await firstRemove.click();
+    await firstRemove.click();
+    await expect(page.locator('#auth-passkey-list li')).toHaveCount(1);
+    await expect(page.locator('#auth-recovery-warning')).toBeVisible();
+    expect(sql(`SELECT COUNT(*) FROM webauthn_credentials WHERE user_id = '${id}'`)).toBe('1');
+
+    // 7. The second passkey signs in to the same account.
+    await signOutUi(page);
+    await openSignIn(page);
+    await page.locator('#auth-passkey-btn').click();
+    await expect(page.locator('#user-badge')).toBeVisible();
+    expect((await (await me(page)).json()).user.id).toBe(id);
+    const used = await cdp.send('WebAuthn.getCredentials', { authenticatorId: second.authenticatorId });
+    expect(used.credentials[0].signCount).toBeGreaterThan(0);
+  });
+
+  test('an account cannot be started without an age tier of adult or teen', async ({ request }) => {
+    const attemptsBefore = sql('SELECT COUNT(*) FROM signup_attempts');
+    const challengesBefore = sql("SELECT COUNT(*) FROM auth_challenges WHERE kind = 'signup'");
+    for (const ageTier of [null, 'unknown', 'blocked', 'child', '']) {
+      const res = await signupBegin(request, { ageTier });
+      expect(res.status(), `age_tier=${JSON.stringify(ageTier)}`).toBe(403);
+      expect((await res.json()).error).toBe('age_required');
+    }
+    expect(sql('SELECT COUNT(*) FROM signup_attempts')).toBe(attemptsBefore);
+    expect(sql("SELECT COUNT(*) FROM auth_challenges WHERE kind = 'signup'")).toBe(challengesBefore);
+  });
+
+  test('nothing is written to users unless the passkey verifies', async ({ request }) => {
+    const usersBefore = sql('SELECT COUNT(*) FROM users');
+    const begun = await signupBegin(request, { ageTier: 'teen' });
+    expect(begun.status()).toBe(200);
+    const { challenge_id, options } = await begun.json();
+    // Usernameless and discoverable, with a random handle and a generated name.
+    expect(options.authenticatorSelection.residentKey).toBe('required');
+    expect(options.user.name).toMatch(/^bard-[0-9a-f]{6}$/);
+    expect(sql('SELECT COUNT(*) FROM users')).toBe(usersBefore);
+    expect(sql(`SELECT kind, user_id IS NULL FROM auth_challenges WHERE id = '${challenge_id}'`)).toBe('signup|t');
+
+    const bogus = {
+      challenge_id,
+      credential: { id: 'AA', rawId: 'AA', type: 'public-key', response: { attestationObject: 'AA', clientDataJSON: 'AA' } },
+    };
+    const refused = await request.post(`${API_NO_EMAIL}/auth/passkey/signup/finish`, { data: bogus });
+    expect(refused.status()).toBe(400);
+    expect((await refused.json()).error).toBe('passkey_not_registered');
+    expect(refused.headers()['set-cookie']).toBeUndefined();
+    expect(sql('SELECT COUNT(*) FROM users')).toBe(usersBefore);
+    expect(sql(`SELECT COUNT(*) FROM users WHERE username = '${options.user.name}'`)).toBe('0');
+
+    // The challenge was used up by that attempt.
+    const again = await request.post(`${API_NO_EMAIL}/auth/passkey/signup/finish`, { data: bogus });
+    expect(again.status()).toBe(400);
+    expect((await again.json()).error).toBe('challenge_expired');
+  });
+
+  test('a sign-up challenge that has expired creates nothing', async ({ page }) => {
+    await page.goto(`${NO_EMAIL_WEB}/`);
+    await addVirtualAuthenticator(page);
+    const usersBefore = sql('SELECT COUNT(*) FROM users');
+
+    // The ceremony by hand, so the challenge can be aged between its two halves.
+    const begun = await postFromPage(page, '/auth/passkey/signup/begin', { age_tier: 'adult' });
+    expect(begun.status).toBe(200);
+    sql(`UPDATE auth_challenges SET expires_at = NOW() - INTERVAL '1 second' WHERE id = '${begun.body.challenge_id}'`);
+    const credential = await page.evaluate(async (options) => {
+      const publicKey = (PublicKeyCredential as any).parseCreationOptionsFromJSON(options);
+      const made = (await navigator.credentials.create({ publicKey })) as any;
+      return made.toJSON();
+    }, begun.body.options);
+    // A genuine passkey for this very challenge: only its age is wrong.
+    const finished = await postFromPage(page, '/auth/passkey/signup/finish', {
+      challenge_id: begun.body.challenge_id, credential, name: 'late',
+    });
+    expect(finished.status).toBe(400);
+    expect(finished.body.error).toBe('challenge_expired');
+    expect(sql('SELECT COUNT(*) FROM users')).toBe(usersBefore);
+    expect((await me(page)).status()).toBe(401);
+
+    // Control: the same steps without the ageing do create the account.
+    const fresh = await postFromPage(page, '/auth/passkey/signup/begin', { age_tier: 'adult' });
+    const freshCredential = await page.evaluate(async (options) => {
+      const publicKey = (PublicKeyCredential as any).parseCreationOptionsFromJSON(options);
+      const made = (await navigator.credentials.create({ publicKey })) as any;
+      return made.toJSON();
+    }, fresh.body.options);
+    const ok = await postFromPage(page, '/auth/passkey/signup/finish', {
+      challenge_id: fresh.body.challenge_id, credential: freshCredential, name: 'in time',
+    });
+    expect(ok.status).toBe(200);
+    expect(Number(sql('SELECT COUNT(*) FROM users'))).toBe(Number(usersBefore) + 1);
+  });
+
+  test('one client address may begin forty sign-ups in the window, not forty-one', async ({ request }) => {
+    const ip = uniqueIp();
+    for (let i = 0; i < 40; i++) {
+      expect((await signupBegin(request, { ip })).status(), `begin ${i + 1}`).toBe(200);
+    }
+    const over = await signupBegin(request, { ip });
+    expect(over.status()).toBe(429);
+    expect((await over.json()).error).toBe('too_many_requests');
+    expect((await signupBegin(request)).status()).toBe(200);
+  });
+
+  test('a browser without WebAuthn is told so, with no mention of email', async ({ page }) => {
+    await page.addInitScript(() => {
+      Object.defineProperty(window, 'PublicKeyCredential', { value: undefined, configurable: true });
+    });
+    await page.goto(`${NO_EMAIL_WEB}/`);
+    await openSignIn(page);
+    await expect(page.locator('#auth-passkey-btn')).toBeHidden();
+    await expect(page.locator('#auth-create-btn')).toBeHidden();
+    await expect(page.locator('#auth-email-btn')).toBeHidden();
+    await expect(page.locator('#auth-passkey-unsupported')).toBeVisible();
+    await expect(page.locator('#auth-passkey-unsupported')).toContainText('cannot use passkeys');
+    expect(await page.locator('#auth-step-choose').innerText()).not.toMatch(/e-?mail/i);
+  });
+});
+
+test.describe('Passkey-only accounts, with email on', () => {
+  test('a recovery email is stored only after its code comes back, and then unlocks the last passkey', async ({ page, request }) => {
+    await page.goto('/');
+    await addVirtualAuthenticator(page);
+    await createAccountWithPasskey(page);
+    const id = (await (await me(page)).json()).user.id;
+    await expect(page.locator('#auth-nudge-body')).toContainText('Add a second passkey or an email so you can get back in');
+    await expect(page.locator('#auth-nudge-email')).toBeVisible();
+
+    // A code issued for signing in does not add an email.
+    const address = uniqueEmail('recovery');
+    expect((await requestCode(request, address)).status()).toBe(200);
+    const loginCode = await readCode(address, 1);
+    expect((await postFromPage(page, '/auth/email/add/verify', { email: address, code: loginCode })).status).toBe(401);
+    expect(sql(`SELECT email IS NULL FROM users WHERE id = '${id}'`)).toBe('t');
+
+    // An address that is already another account's: the code is sent all the same, and
+    // only someone holding that code learns the address is taken.
+    const taken = uniqueEmail('taken');
+    expect((await requestCode(request, taken)).status()).toBe(200);
+    expect((await verifyCode(request, taken, await readCode(taken, 1))).status()).toBe(200);
+    const askTaken = await postFromPage(page, '/auth/email/add/request', { email: taken });
+    const askFree = await postFromPage(page, '/auth/email/add/request', { email: uniqueEmail('free') });
+    expect(askTaken).toEqual(askFree);
+    expect(askTaken.status).toBe(200);
+    const refused = await postFromPage(page, '/auth/email/add/verify', { email: taken, code: await readCode(taken, 2) });
+    expect(refused.status).toBe(409);
+    expect(refused.body.error).toBe('email_in_use');
+    expect(sql(`SELECT email IS NULL FROM users WHERE id = '${id}'`)).toBe('t');
+
+    // Through the UI: asking stores nothing; the code does.
+    await page.locator('#auth-nudge-email').click();
+    await expect(page.locator('#auth-add-email-form')).toBeVisible();
+    await page.locator('#auth-add-email-input').fill(address);
+    await page.locator('#auth-add-email-send').click();
+    await expect(page.locator('#auth-add-code-form')).toBeVisible();
+    await expect(page.locator('#auth-add-code-intro')).toContainText(address);
+    expect(sql(`SELECT email IS NULL FROM users WHERE id = '${id}'`)).toBe('t');
+    const addCode = await readCode(address, 2);
+    await page.locator('#auth-add-code-input').fill(wrongCodeFor(addCode));
+    await page.locator('#auth-add-code-verify').click();
+    await expect(page.locator('#auth-email-message')).toContainText('not right');
+    expect(sql(`SELECT email IS NULL FROM users WHERE id = '${id}'`)).toBe('t');
+    await page.locator('#auth-add-code-input').fill(addCode);
+    await page.locator('#auth-add-code-verify').click();
+    await expect(page.locator('#auth-email-message')).toContainText('Email added');
+    await expect(page.locator('#auth-recovery-email')).toHaveText(address);
+    await expect(page.locator('#auth-recovery-warning')).toBeHidden();
+    expect(sql(`SELECT email FROM users WHERE id = '${id}'`)).toBe(address);
+
+    // With a verified email as the way back, the last passkey may be removed...
+    const remove = page.locator('#auth-passkey-list li button');
+    await remove.click();
+    await remove.click();
+    await expect(page.locator('#auth-passkey-list li')).toHaveCount(0);
+
+    // ...and the email signs in to the same account.
+    await signOutUi(page);
+    await signInByEmailUi(page, address);
+    await expect(page.locator('#user-badge')).toBeVisible();
+    const back = await (await me(page)).json();
+    expect(back.user.id).toBe(id);
+    expect(back.user.email).toBe(address);
+  });
+
+  test('adding an email needs a session', async ({ request }) => {
+    const ask = await request.post(`${API}/auth/email/add/request`, { data: { email: uniqueEmail('anon') } });
+    expect(ask.status()).toBe(401);
+    const confirm = await request.post(`${API}/auth/email/add/verify`, { data: { email: uniqueEmail('anon'), code: '123456' } });
+    expect(confirm.status()).toBe(401);
   });
 });

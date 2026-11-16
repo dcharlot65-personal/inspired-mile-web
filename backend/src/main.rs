@@ -95,15 +95,17 @@ async fn main() {
 
     // Sweep expired sign-in challenges and old email codes in the background
     let purge_pool = pool.clone();
+    let limiter = rate_limit::create_rate_limiter(config.rate_limit_per_minute);
+    let purge_limiter = limiter.clone();
     tokio::spawn(async move {
         loop {
             auth::purge_expired(&purge_pool).await;
+            purge_limiter.retain_recent();
             tokio::time::sleep(std::time::Duration::from_secs(600)).await;
         }
     });
 
-    // Rate limiter
-    let limiter = rate_limit::create_rate_limiter(config.rate_limit_per_minute);
+    // (The rate limiter, one allowance per client address, is created above.)
 
     // Public routes (no auth required)
     let public_routes = Router::new()
@@ -153,7 +155,12 @@ async fn main() {
         .layer(middleware::from_fn(move |req: axum::http::Request<axum::body::Body>, next: middleware::Next| {
             let limiter = limiter.clone();
             async move {
-                if limiter.check().is_err() {
+                let peer = req
+                    .extensions()
+                    .get::<axum::extract::ConnectInfo<std::net::SocketAddr>>()
+                    .map(|info| info.0);
+                let client = auth::client_ip(req.headers(), peer);
+                if limiter.check_key(&client).is_err() {
                     return (StatusCode::TOO_MANY_REQUESTS, "Rate limit exceeded").into_response();
                 }
                 next.run(req).await

@@ -12,6 +12,7 @@ set -euo pipefail
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 WEB_ORIGIN="${E2E_WEB_ORIGIN:-http://localhost:4399}"
+WEB_NOEMAIL_ORIGIN="${E2E_WEB_NOEMAIL_ORIGIN:-http://localhost:4398}"
 API_PORT="${E2E_API_PORT:-38490}"
 API_NOEMAIL_PORT="${E2E_API_NOEMAIL_PORT:-38491}"
 PG_PORT="${E2E_PG_PORT:-54329}"
@@ -99,7 +100,7 @@ start_api() {
       PORT="$1" \
       CORS_ORIGIN="$WEB_ORIGIN" \
       WEBAUTHN_RP_ID="localhost" \
-      WEBAUTHN_ORIGIN="$WEB_ORIGIN" \
+      WEBAUTHN_ORIGIN="$WEB_ORIGIN,$WEB_NOEMAIL_ORIGIN" \
       DEV_EMAIL_LOG="$3" \
       RATE_LIMIT_PER_MINUTE="100000" \
       DB_MAX_CONNECTIONS="10" \

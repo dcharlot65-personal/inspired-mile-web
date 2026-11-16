@@ -65,7 +65,7 @@ export interface AuthResponse {
   user: UserResponse;
   /** Passkeys on the account. 0 after an email sign-in is the cue to offer adding one. */
   passkey_count: number;
-  /** Present, and true, only on the email sign-in that created the account. */
+  /** Present, and true, only on the sign-in that created the account. */
   is_new_user?: boolean;
   founding_player?: boolean;
 }
@@ -73,7 +73,9 @@ export interface AuthResponse {
 /** Which sign-in methods the server can serve right now. */
 export interface AuthMethods {
   passkey: boolean;
-  /** False until the server has a mail key: hide email sign-in. */
+  /** An account can be created with a passkey alone (no email). */
+  passkey_signup: boolean;
+  /** False until the server has a mail key: show email nowhere. */
   email: boolean;
 }
 
@@ -119,6 +121,36 @@ export async function passkeyLoginFinish(challengeId: string, credential: unknow
   return request('/auth/passkey/login/finish', {
     method: 'POST',
     body: JSON.stringify({ challenge_id: challengeId, credential }),
+  });
+}
+
+/** Start creating an account with a passkey and nothing else. Sends only the age tier. */
+export async function passkeySignupBegin(ageTier: EmailAgeTier): Promise<CeremonyStart> {
+  return request('/auth/passkey/signup/begin', {
+    method: 'POST',
+    body: JSON.stringify({ age_tier: ageTier }),
+  });
+}
+
+export async function passkeySignupFinish(challengeId: string, credential: unknown, name: string): Promise<AuthResponse> {
+  return request('/auth/passkey/signup/finish', {
+    method: 'POST',
+    body: JSON.stringify({ challenge_id: challengeId, credential, name }),
+  });
+}
+
+/** Signed in: ask for a code to prove an address before it becomes the recovery email. */
+export async function addEmailRequest(email: string): Promise<{ ok: boolean; expires_in_seconds: number }> {
+  return request('/auth/email/add/request', {
+    method: 'POST',
+    body: JSON.stringify({ email }),
+  });
+}
+
+export async function addEmailVerify(email: string, code: string): Promise<AuthResponse> {
+  return request('/auth/email/add/verify', {
+    method: 'POST',
+    body: JSON.stringify({ email, code }),
   });
 }
 

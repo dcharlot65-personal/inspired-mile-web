@@ -76,7 +76,7 @@ pub struct Config {
     pub webauthn_origins: Vec<Url>,
     pub email_mode: EmailMode,
     pub email_from: String,
-    /// Requests per minute allowed by the global limiter.
+    /// Requests per minute allowed to one client address.
     pub rate_limit_per_minute: u32,
 }
 
@@ -121,7 +121,7 @@ impl Config {
             rate_limit_per_minute: get("RATE_LIMIT_PER_MINUTE")
                 .and_then(|v| v.parse().ok())
                 .filter(|n| *n > 0)
-                .unwrap_or(60),
+                .unwrap_or(crate::rate_limit::DEFAULT_PER_MINUTE),
         };
         Ok((config, warnings))
     }
@@ -193,7 +193,7 @@ mod tests {
         assert_eq!(config.email_from, "Sonnet Man <signin@inspiredmile.com>");
         assert_eq!(config.email_mode, EmailMode::Disabled);
         assert!(!config.email_mode.is_available());
-        assert_eq!(config.rate_limit_per_minute, 60);
+        assert_eq!(config.rate_limit_per_minute, 600);
         assert!(warnings.is_empty());
     }
 
@@ -293,6 +293,6 @@ mod tests {
         let (config, _) = config_from(&[("RATE_LIMIT_PER_MINUTE", "5000")]).unwrap();
         assert_eq!(config.rate_limit_per_minute, 5000);
         let (config, _) = config_from(&[("RATE_LIMIT_PER_MINUTE", "0")]).unwrap();
-        assert_eq!(config.rate_limit_per_minute, 60);
+        assert_eq!(config.rate_limit_per_minute, 600);
     }
 }

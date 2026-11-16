@@ -229,13 +229,25 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
                       <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"/></svg>
                       <span data-auth-text="passkeyButton"></span>
                     </button>
-                    <p id="auth-passkey-unsupported" class="hidden text-xs text-obsidian-400 leading-relaxed" data-auth-text="passkeyUnsupported"></p>
-                    <button id="auth-email-btn" type="button" class="hidden btn-secondary w-full gap-2 px-3 py-2 text-xs mt-2">
+                    <button id="auth-create-btn" type="button" class="btn-secondary w-full gap-2 px-3 py-2 text-xs mt-2">
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                      <span data-auth-text="createButton"></span>
+                    </button>
+                    <p id="auth-passkey-unsupported" class="hidden text-xs text-obsidian-400 leading-relaxed"></p>
+                    <button id="auth-email-btn" type="button" class="hidden w-full flex items-center justify-center gap-2 text-xs text-obsidian-300 hover:text-gold-400 py-2 mt-2 transition-colors">
                       <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
                       <span data-auth-text="emailButton"></span>
                     </button>
                     <p id="auth-email-hint" class="hidden text-[11px] text-obsidian-500 mt-2 text-center leading-relaxed" data-auth-text="emailHint"></p>
-                    <p id="auth-email-unavailable" class="hidden text-[11px] text-obsidian-500 mt-3 text-center leading-relaxed" data-auth-text="emailUnavailable"></p>
+                  </div>
+
+                  <!-- Create an account with a passkey: what it is, and the one catch -->
+                  <div id="auth-step-create" class="hidden">
+                    <h3 class="text-sm font-display font-bold text-obsidian-200 mb-1" data-auth-text="createHeading"></h3>
+                    <p class="text-xs text-obsidian-400 mb-2 leading-relaxed" data-auth-text="createIntro"></p>
+                    <p id="auth-create-warning" class="text-xs text-gold-300 bg-gold-500/10 border border-gold-500/20 rounded-lg px-3 py-2 mb-3 leading-relaxed"></p>
+                    <button id="auth-create-confirm" type="button" class="btn-primary w-full px-3 py-2.5 text-xs" data-auth-text="createConfirm"></button>
+                    <button id="auth-create-back" type="button" class="w-full text-xs text-obsidian-400 hover:text-gold-400 py-2 mt-1 text-center transition-colors" data-auth-text="back"></button>
                   </div>
 
                   <!-- Step 2: email address -->
@@ -287,6 +299,18 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
                   <p id="auth-offer-error" role="alert" class="hidden text-xs text-crimson-400 mt-2 text-center leading-relaxed"></p>
                 </div>
 
+                <!-- Right after a passkey sign-up: one passkey is the only way in, so say it -->
+                <div id="auth-recovery-nudge" class="hidden">
+                  <h3 class="text-sm font-display font-bold text-obsidian-200 mb-1" data-auth-text="nudgeHeading"></h3>
+                  <p id="auth-nudge-name" class="text-xs text-emerald-400 mb-2"></p>
+                  <p id="auth-nudge-body" class="text-xs text-gold-300 bg-gold-500/10 border border-gold-500/20 rounded-lg px-3 py-2 mb-3 leading-relaxed"></p>
+                  <button id="auth-nudge-passkey" type="button" class="btn-primary w-full px-3 py-2.5 text-xs" data-auth-text="nudgePasskey"></button>
+                  <p class="text-[11px] text-obsidian-500 mt-1 text-center leading-relaxed" data-auth-text="nudgePasskeyHint"></p>
+                  <button id="auth-nudge-email" type="button" class="hidden btn-secondary w-full px-3 py-2 text-xs mt-2" data-auth-text="nudgeEmail"></button>
+                  <button id="auth-nudge-later" type="button" class="w-full text-xs text-obsidian-400 hover:text-gold-400 py-2 mt-1 text-center transition-colors" data-auth-text="nudgeLater"></button>
+                  <p id="auth-nudge-error" role="alert" class="hidden text-xs text-crimson-400 mt-2 text-center leading-relaxed"></p>
+                </div>
+
                 <!-- User menu (when logged in) -->
                 <div id="auth-user-menu" class="hidden">
                   <div class="flex items-center gap-3 mb-3 pb-3 border-b border-obsidian-700">
@@ -305,6 +329,26 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
                     <p id="auth-passkey-empty" class="hidden text-xs text-obsidian-400 leading-relaxed" data-auth-text="passkeysEmpty"></p>
                     <button id="auth-passkey-add-menu" type="button" class="btn-secondary w-full px-3 py-2 text-xs mt-3" data-auth-text="passkeysAdd"></button>
                     <p id="auth-menu-message" role="status" class="hidden text-xs mt-2 text-center leading-relaxed"></p>
+                    <p id="auth-recovery-warning" class="hidden text-xs text-gold-300 bg-gold-500/10 border border-gold-500/20 rounded-lg px-3 py-2 mt-3 leading-relaxed"></p>
+                  </div>
+
+                  <!-- Recovery email: only ever shown when the server can send mail -->
+                  <div id="auth-email-section" class="hidden mb-2 pb-3 border-b border-obsidian-700">
+                    <h4 class="text-[10px] font-mono text-obsidian-500 uppercase tracking-widest mb-2" data-auth-text="recoveryEmailHeading"></h4>
+                    <p id="auth-recovery-email" class="hidden text-xs text-obsidian-200 break-words"></p>
+                    <button id="auth-add-email-btn" type="button" class="hidden btn-secondary w-full px-3 py-2 text-xs" data-auth-text="addEmailButton"></button>
+                    <form id="auth-add-email-form" class="hidden" novalidate>
+                      <label for="auth-add-email-input" class="block text-[11px] text-obsidian-400 mb-1" data-auth-text="addEmailLabel"></label>
+                      <input id="auth-add-email-input" name="email" type="email" inputmode="email" autocomplete="email" autocapitalize="none" spellcheck="false" maxlength="255" class="w-full bg-obsidian-800 border border-obsidian-700 rounded-lg px-3 py-2 text-sm text-obsidian-100 placeholder:text-obsidian-600 focus:border-gold-500/50 focus:outline-hidden" data-auth-placeholder="emailPlaceholder" />
+                      <button id="auth-add-email-send" type="submit" class="btn-primary w-full px-3 py-2 text-xs mt-2" data-auth-text="emailSend"></button>
+                    </form>
+                    <form id="auth-add-code-form" class="hidden" novalidate>
+                      <p id="auth-add-code-intro" class="text-xs text-obsidian-400 mb-2 leading-relaxed break-words"></p>
+                      <label for="auth-add-code-input" class="block text-[11px] text-obsidian-400 mb-1" data-auth-text="codeLabel"></label>
+                      <input id="auth-add-code-input" name="code" type="text" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]*" maxlength="6" class="w-full bg-obsidian-800 border border-obsidian-700 rounded-lg px-3 py-2 text-center font-mono text-lg tracking-[0.4em] text-gold-300 placeholder:text-obsidian-700 focus:border-gold-500/50 focus:outline-hidden" placeholder="000000" />
+                      <button id="auth-add-code-verify" type="submit" class="btn-primary w-full px-3 py-2 text-xs mt-2" data-auth-text="addEmailConfirm"></button>
+                    </form>
+                    <p id="auth-email-message" role="status" class="hidden text-xs mt-2 text-center leading-relaxed"></p>
                   </div>
 
                   <a href="/profile" class="block text-xs text-obsidian-400 hover:text-gold-400 py-2 text-center transition-colors" data-auth-text="viewProfile"></a>
@@ -578,15 +622,18 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
         AuthFlowError,
         addPasskey,
         cancelPasskeyCeremony,
-        emailAgeTier,
+        accountAgeTier,
+        confirmRecoveryEmail,
         getAuthMethods,
         listPasskeys,
         passkeyAutofillSupported,
         passkeysSupported,
         removePasskey,
+        requestRecoveryEmail,
         sendEmailCode,
         signInWithEmailCode,
         signInWithPasskey,
+        signUpWithPasskey,
       } from '../lib/passwordless';
 
       // Every user-facing string of the sign-in UI lives here, so it can be localised in
@@ -598,9 +645,31 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
         signInIntro: 'No password to remember. A passkey signs you in with your fingerprint, face or screen lock.',
         passkeyButton: 'Sign in with a passkey',
         passkeyUnsupported: 'This browser cannot use passkeys. Sign in with an emailed code instead.',
+        passkeyUnsupportedNoEmail: 'This browser cannot use passkeys, and this site signs in with them. Try a current version of Chrome, Safari, Edge or Firefox.',
+        createButton: 'Create an account with a passkey',
+        createHeading: 'Create your account',
+        createIntro: 'Your account is a passkey saved on this device or in your password manager. We do not ask for a name, an email or a password.',
+        createWarning: 'If you lose the passkey, we cannot let you back in. After this, add a second passkey or an email so you can get back in.',
+        createWarningNoEmail: 'If you lose the passkey, we cannot let you back in. After this, add a second passkey so you can get back in.',
+        createConfirm: 'Create my account',
+        nudgeHeading: 'Your account is ready',
+        nudgeName: 'You are {name}.',
+        nudgeBody: 'Right now one passkey is the only way into this account. If it is lost, the account is lost. Add a second passkey or an email so you can get back in.',
+        nudgeBodyNoEmail: 'Right now one passkey is the only way into this account. If it is lost, the account is lost. Add a second passkey so you can get back in.',
+        nudgePasskey: 'Add a second passkey',
+        nudgePasskeyHint: 'Use another device, a password manager or a security key.',
+        nudgeEmail: 'Add an email instead',
+        nudgeLater: 'Later',
+        recoveryWarning: 'One passkey is your only way in. Add a second passkey or an email so you can get back in.',
+        recoveryWarningNoEmail: 'One passkey is your only way in. Add a second passkey so you can get back in.',
+        recoveryEmailHeading: 'Recovery email',
+        addEmailButton: 'Add an email for recovery',
+        addEmailLabel: 'Email address',
+        addEmailCodeIntro: 'We sent a 6-digit code to {email}. Enter it to confirm the address is yours.',
+        addEmailConfirm: 'Confirm email',
+        addEmailDone: 'Email added. You can now sign in with a code sent to it.',
         emailButton: 'Email me a code',
-        emailHint: 'New here, or on a device without your passkey? Use your email.',
-        emailUnavailable: 'Email sign-in and new accounts are not open yet. If you already have a passkey, use it above.',
+        emailHint: 'On a device without your passkey? Sign in by email, if your account has one.',
         emailHeading: 'Sign in by email',
         emailIntro: 'We will email you a 6-digit code. If the address is new, the code creates your account.',
         emailLabel: 'Email address',
@@ -625,7 +694,7 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
         offerSkip: 'Not now',
         passkeysHeading: 'Passkeys',
         passkeysEmpty: 'No passkeys yet. Add one to sign in without an email code.',
-        passkeysAdd: 'Add a passkey to this device',
+        passkeysAdd: 'Add another passkey',
         passkeyAdded: 'Passkey added. You can sign in with it from now on.',
         passkeyAddedOn: 'Added {date}',
         passkeyRemove: 'Remove',
@@ -637,12 +706,15 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
         signOut: 'Sign Out',
         working: 'One moment…',
         errors: {
-          age_required: 'Please confirm your age on the home page first. Email sign-in is for players aged 13 and over.',
+          age_required: 'Please confirm your age on the home page first. Accounts are for players aged 13 and over.',
+          email_in_use: 'That address already belongs to another account. Sign out and sign in with it instead.',
+          email_already_set: 'This account already has an email address.',
+          signup_retry: 'That did not go through. Please try again.',
           invalid_email: 'That does not look like an email address.',
           invalid_code: 'That code is not right, or it has expired. Check it, or send a new one.',
           code_incomplete: 'Enter all 6 digits of the code.',
           too_many_requests: 'Too many codes requested. Wait a few minutes, then try again.',
-          email_sign_in_unavailable: 'Email sign-in is not open yet.',
+          email_sign_in_unavailable: 'Email is not available right now.',
           email_send_failed: 'We could not send the email. Please try again in a moment.',
           passkey_unsupported: 'This browser cannot use passkeys.',
           passkey_cancelled: 'No passkey was used. Try again when you are ready.',
@@ -695,6 +767,7 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
       const codeInput = $<HTMLInputElement>('auth-code-input');
       const steps = {
         choose: $('auth-step-choose'),
+        create: $('auth-step-create'),
         email: $('auth-step-email'),
         code: $('auth-step-code'),
       };
@@ -704,6 +777,13 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
       let pendingEmail = '';
       // True between an email sign-in and the visitor answering the passkey offer.
       let offeringPasskey = false;
+      // True between a passkey sign-up and the visitor answering "add a second way in".
+      let nudgingRecovery = false;
+      // Whether the server can send mail. Until it says so, email is shown nowhere.
+      let emailAvailable = false;
+      let passkeyTotal = 0;
+      let pendingRecoveryEmail = '';
+      const recoveryNudge = $('auth-recovery-nudge');
 
       function show(el: HTMLElement, visible: boolean) {
         el.classList.toggle('hidden', !visible);
@@ -723,6 +803,8 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
         show(authError, false);
         show(authNotice, false);
         show($('auth-offer-error'), false);
+        show($('auth-nudge-error'), false);
+        show($('auth-email-message'), false);
         show($('auth-menu-message'), false);
       }
 
@@ -757,8 +839,9 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
         show(authDropdown, false);
         authBtn.setAttribute('aria-expanded', 'false');
         cancelPasskeyCeremony();
-        // An unanswered passkey offer is a "not now".
+        // An unanswered passkey offer, or recovery prompt, is a "not now".
         offeringPasskey = false;
+        nudgingRecovery = false;
       }
 
       function openDropdown() {
@@ -767,7 +850,7 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
         show(authDropdown, true);
         authBtn.setAttribute('aria-expanded', 'true');
         if (isLoggedIn()) {
-          if (!offeringPasskey) refreshPasskeys();
+          if (!offeringPasskey && !nudgingRecovery) refreshAccount();
         } else {
           showStep('choose');
           prepareSignIn();
@@ -796,7 +879,9 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
           $('menu-user-provider').textContent = user.email || text('signedIn');
           show(signInOptions, false);
           show(passkeyOffer, offeringPasskey);
-          show(userMenu, !offeringPasskey);
+          show(recoveryNudge, nudgingRecovery);
+          show(userMenu, !offeringPasskey && !nudgingRecovery);
+          renderRecovery();
         } else {
           show(authBtn, true);
           if (mobileAuthBtn) show(mobileAuthBtn, true);
@@ -804,7 +889,36 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
           userBadge.classList.remove('flex');
           show(signInOptions, true);
           show(passkeyOffer, false);
+          show(recoveryNudge, false);
           show(userMenu, false);
+        }
+      }
+
+      /**
+       * The recovery parts of the signed-in views: the warning while one passkey is the
+       * only way in, and the recovery email (shown only when the server can send mail).
+       */
+      function renderRecovery() {
+        const user = getCurrentUser();
+        if (!user) return;
+        const hasEmail = !!user.email;
+        const warning = $('auth-recovery-warning');
+        warning.textContent = text(emailAvailable ? 'recoveryWarning' : 'recoveryWarningNoEmail');
+        show(warning, passkeyTotal === 1 && !hasEmail);
+        $('auth-nudge-name').textContent = text('nudgeName', { name: user.display_name || user.username });
+        $('auth-nudge-body').textContent = text(emailAvailable ? 'nudgeBody' : 'nudgeBodyNoEmail');
+        show($('auth-nudge-email'), emailAvailable && !hasEmail);
+
+        show($('auth-email-section'), emailAvailable);
+        const shown = $('auth-recovery-email');
+        shown.textContent = user.email || '';
+        show(shown, hasEmail);
+        const adding = !$('auth-add-email-form').classList.contains('hidden')
+          || !$('auth-add-code-form').classList.contains('hidden');
+        show($('auth-add-email-btn'), !hasEmail && !adding);
+        if (hasEmail) {
+          show($('auth-add-email-form'), false);
+          show($('auth-add-code-form'), false);
         }
       }
 
@@ -812,11 +926,16 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
       async function prepareSignIn() {
         const canPasskey = passkeysSupported();
         show($('auth-passkey-btn'), canPasskey);
-        show($('auth-passkey-unsupported'), !canPasskey);
+        show($('auth-create-btn'), canPasskey);
         const methods = await getAuthMethods();
-        show($('auth-email-btn'), methods.email);
-        show($('auth-email-hint'), methods.email && canPasskey);
-        show($('auth-email-unavailable'), !methods.email);
+        emailAvailable = methods.email;
+        const unsupported = $('auth-passkey-unsupported');
+        unsupported.textContent = text(emailAvailable ? 'passkeyUnsupported' : 'passkeyUnsupportedNoEmail');
+        show(unsupported, !canPasskey);
+        $('auth-create-warning').textContent = text(emailAvailable ? 'createWarning' : 'createWarningNoEmail');
+        // With no mail key the server cannot send anything: email is shown nowhere.
+        show($('auth-email-btn'), emailAvailable);
+        show($('auth-email-hint'), emailAvailable && canPasskey);
       }
 
       authBtn.addEventListener('click', toggleDropdown);
@@ -839,15 +958,18 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
       });
 
       // --- After any successful sign-in ---
-      function onSignedIn(auth: AuthResponse, via: 'passkey' | 'email') {
+      function onSignedIn(auth: AuthResponse, via: 'passkey' | 'email' | 'signup') {
         pendingEmail = '';
         emailInput.value = '';
         codeInput.value = '';
         clearMessages();
         // Signed in by email with no passkey on the account: offer one for next time.
         offeringPasskey = via === 'email' && auth.passkey_count === 0 && passkeysSupported();
+        // A brand-new passkey-only account: one passkey is its only way in. Say so now.
+        nudgingRecovery = via === 'signup';
+        passkeyTotal = auth.passkey_count;
         updateAuthUI();
-        if (!offeringPasskey) closeDropdown();
+        if (!offeringPasskey && !nudgingRecovery) closeDropdown();
         syncAgeTier();
         offerMigrationIfNeeded();
       }
@@ -882,11 +1004,159 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
         }
       }
 
+      // --- Create an account with a passkey (no email, no personal data) ---
+      $('auth-create-btn').addEventListener('click', () => {
+        clearMessages();
+        // No account is started unless the age gate allows one.
+        if (!accountAgeTier()) {
+          showNotice(STRINGS.errors.age_required);
+          return;
+        }
+        showStep('create');
+      });
+
+      $('auth-create-back').addEventListener('click', () => {
+        clearMessages();
+        showStep('choose');
+      });
+
+      $('auth-create-confirm').addEventListener('click', async () => {
+        clearMessages();
+        setBusy(true);
+        try {
+          onSignedIn(await signUpWithPasskey(), 'signup');
+        } catch (e) {
+          if (e instanceof AuthFlowError && e.code === 'passkey_cancelled') showNotice(errorText(e));
+          else showError(errorText(e));
+        } finally {
+          setBusy(false);
+        }
+      });
+
+      // --- After a passkey sign-up: a second way in ---
+      function leaveNudge() {
+        nudgingRecovery = false;
+        updateAuthUI();
+      }
+
+      $('auth-nudge-passkey').addEventListener('click', async () => {
+        clearMessages();
+        setBusy(true);
+        try {
+          await addPasskey();
+          leaveNudge();
+          await refreshAccount();
+          showMenuMessage(text('passkeyAdded'), 'ok');
+        } catch (e) {
+          const el = $('auth-nudge-error');
+          el.textContent = errorText(e);
+          show(el, true);
+        } finally {
+          setBusy(false);
+        }
+      });
+
+      $('auth-nudge-email').addEventListener('click', async () => {
+        clearMessages();
+        leaveNudge();
+        await refreshAccount();
+        openAddEmail();
+      });
+
+      $('auth-nudge-later').addEventListener('click', closeDropdown);
+
+      // --- Recovery email for a signed-in account ---
+      const addEmailInput = $<HTMLInputElement>('auth-add-email-input');
+      const addCodeInput = $<HTMLInputElement>('auth-add-code-input');
+
+      function showEmailMessage(msg: string, kind: 'ok' | 'error') {
+        const el = $('auth-email-message');
+        el.textContent = msg;
+        el.classList.toggle('text-emerald-400', kind === 'ok');
+        el.classList.toggle('text-crimson-400', kind === 'error');
+        show(el, true);
+      }
+
+      function openAddEmail() {
+        if (!emailAvailable) return;
+        show($('auth-add-email-btn'), false);
+        show($('auth-add-code-form'), false);
+        show($('auth-add-email-form'), true);
+        addEmailInput.focus();
+      }
+
+      function resetAddEmail() {
+        pendingRecoveryEmail = '';
+        addEmailInput.value = '';
+        addCodeInput.value = '';
+        show($('auth-add-email-form'), false);
+        show($('auth-add-code-form'), false);
+      }
+
+      $('auth-add-email-btn').addEventListener('click', () => {
+        clearMessages();
+        // The same gate as every other place an address could be given.
+        if (!accountAgeTier()) {
+          showEmailMessage(STRINGS.errors.age_required, 'error');
+          return;
+        }
+        openAddEmail();
+      });
+
+      $('auth-add-email-form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        clearMessages();
+        const email = addEmailInput.value.trim();
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+          showEmailMessage(STRINGS.errors.invalid_email, 'error');
+          return;
+        }
+        setBusy(true);
+        try {
+          await requestRecoveryEmail(email);
+          pendingRecoveryEmail = email;
+          $('auth-add-code-intro').textContent = text('addEmailCodeIntro', { email });
+          addCodeInput.value = '';
+          show($('auth-add-email-form'), false);
+          show($('auth-add-code-form'), true);
+        } catch (err) {
+          showEmailMessage(errorText(err), 'error');
+        } finally {
+          setBusy(false);
+          if (pendingRecoveryEmail) addCodeInput.focus();
+        }
+      });
+
+      addCodeInput.addEventListener('input', () => {
+        addCodeInput.value = addCodeInput.value.replace(/\D/g, '').slice(0, 6);
+      });
+
+      $('auth-add-code-form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        clearMessages();
+        const code = addCodeInput.value.replace(/\D/g, '');
+        if (code.length !== 6) {
+          showEmailMessage(STRINGS.errors.code_incomplete, 'error');
+          return;
+        }
+        setBusy(true);
+        try {
+          await confirmRecoveryEmail(pendingRecoveryEmail, code);
+          resetAddEmail();
+          updateAuthUI();
+          showEmailMessage(text('addEmailDone'), 'ok');
+        } catch (err) {
+          showEmailMessage(errorText(err), 'error');
+        } finally {
+          setBusy(false);
+        }
+      });
+
       // --- Email: address ---
       $('auth-email-btn').addEventListener('click', () => {
         clearMessages();
         // No address is asked for, let alone sent, unless the age gate allows it.
-        if (!emailAgeTier()) {
+        if (!accountAgeTier()) {
           showNotice(STRINGS.errors.age_required);
           return;
         }
@@ -971,7 +1241,7 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
           await addPasskey();
           offeringPasskey = false;
           updateAuthUI();
-          await refreshPasskeys();
+          await refreshAccount();
           showMenuMessage(text('passkeyAdded'), 'ok');
         } catch (e) {
           if (source === 'offer') {
@@ -1045,6 +1315,15 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
         }
         show($('auth-passkey-empty'), passkeys.length === 0);
         show($('auth-passkey-add-menu'), passkeysSupported());
+        passkeyTotal = passkeys.length;
+        renderRecovery();
+      }
+
+      /** Everything the signed-in menu shows: whether email exists at all, then passkeys. */
+      async function refreshAccount() {
+        emailAvailable = (await getAuthMethods()).email;
+        renderRecovery();
+        await refreshPasskeys();
       }
 
       async function refreshPasskeys() {
@@ -1060,6 +1339,8 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
       $('auth-logout-btn').addEventListener('click', async () => {
         await logoutUser();
         $('auth-passkey-list').replaceChildren();
+        passkeyTotal = 0;
+        resetAddEmail();
         closeDropdown();
         updateAuthUI();
       });

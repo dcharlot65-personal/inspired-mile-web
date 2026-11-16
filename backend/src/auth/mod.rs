@@ -8,6 +8,7 @@ mod mailer;
 mod middleware;
 mod passkeys;
 
+pub use client_ip::client_ip;
 pub use handlers::{router, AuthContext};
 pub use jwt::Claims;
 pub use middleware::auth_middleware;
