@@ -18,7 +18,7 @@ case "${1:-}" in
     ls "$LANGQA_HOME/dict" | tr '\n' ' '; echo
     for f in "$OUT"/text-*.txt; do
       l=$(basename "$f" .txt); l=${l#text-}
-      d=$(ls "$LANGQA_HOME/dict/$l".aff "$LANGQA_HOME/dict/${l}_"*.aff 2>/dev/null | head -1 || true)
+      d=$(ls "$LANGQA_HOME/dict/$l".aff "$LANGQA_HOME/dict/$l"-BR.aff 2>/dev/null | head -1 || true)
       [ -n "$d" ] || { echo "$l: no dictionary"; continue; }
       "$LANGQA_HOME/hunspell/bin/hunspell" -i utf-8 -l -d "${d%.aff}" < "$f" | sort | uniq -c | sort -rn > "$OUT/spell-$l.txt" || true
       echo "$l: $(wc -l < "$OUT/spell-$l.txt") unknown words (${d##*/})"

@@ -5,6 +5,9 @@
 // CONTROLS: for every language, 12 pairs whose English is deliberately the WRONG sentence (id "control:…").
 // A run that does not flag most of them proves nothing; qa/report.mjs prints how many it caught.
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { register } from 'node:module';
+// The English areas import their data without a file extension, as the bundler allows; plain Node needs it spelt out.
+register('data:text/javascript,' + encodeURIComponent("export async function resolve(s, c, n) { if (/^\\.\\.?\\//.test(s) && !/\\.\\w+$/.test(s)) { try { return await n(s + '.ts', c); } catch {} } return n(s, c); }"));
 import { join } from 'node:path';
 import { HERE, ROOT, LANGS } from '../lib.mjs';
 const out = process.argv[2];
