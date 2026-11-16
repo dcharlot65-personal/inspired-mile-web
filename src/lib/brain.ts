@@ -60,7 +60,7 @@ export const MODELS: Record<Exclude<Tier, 'none'>, ModelSpec> = {
   grand: {
     tier: 'grand', id: 'onnx-community/gemma-4-E2B-it-ONNX', dtype: 'q4f16', label: 'Gemma 4 E2B', megabytes: 3100, judge: 'compare',
     // docs/language/model-eval/cells/grand.<lang>.write.json
-    writesIn: ['en', 'es', 'fr', 'de', 'it', 'pt'],
+    writesIn: ['en', 'es', 'fr', 'de', 'it', 'pt', 'pl'],
     // docs/language/model-eval/cells/grand.<lang>.judge.json
     judgesIn: ['en', 'fr', 'de', 'pt'],
   },
