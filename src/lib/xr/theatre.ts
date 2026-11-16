@@ -37,7 +37,7 @@ import { POTION_CURSE, deviceForHouse } from '../verse/devices';
 import { JUDGE_POOL, ROUNDS, type RoundResult, type VerseScore } from '../verse/duel';
 import { FORM_POINTS } from '../verse/forms';
 // Everything written on the stage is a message in the interface language (src/i18n).
-import { t, tm } from '../../i18n';
+import { list, t, tm } from '../../i18n';
 import { curseName, curseRule, deviceBrief, deviceName, signatureText } from '../../i18n/duel';
 import type { DuelSession } from '../verse/session';
 
@@ -344,7 +344,7 @@ export class Theatre {
       for (const c of preview.form.checks) checks.push(`${c.met ? '✓' : '○'} ${tm(c.label)}`);
       checks.push(`${preview.device.met ? '✓' : '○'} ${t('round.device', { name: deviceName(preview.device.id), brief: deviceBrief(preview.device.id, s.duel.lang) })}`);
       checks.push(`${preview.signature.met ? '✓' : '○'} ${t('verdict.signature')}: ${signatureText(preview.signature)}`);
-      if (preview.powerWords) checks.push(`${preview.powerWords.met ? '✓' : '○'} ${t('verdict.powerWords')}: ${s.duel.playerRelics[s.move.relicId!].words.join(', ')}`);
+      if (preview.powerWords) checks.push(`${preview.powerWords.met ? '✓' : '○'} ${t('verdict.powerWords')}: ${list(s.duel.playerRelics[s.move.relicId!].words)}`);
       if (preview.curse) checks.push(`${preview.curse.violations ? '✗' : '✓'} ${t('live.curse', { name: curseName(preview.curse.id) })}`);
       checks.push(`${t('round.craftSoFar')} ${preview.craft}`);
     } else checks.push(t('theatre.pick'));

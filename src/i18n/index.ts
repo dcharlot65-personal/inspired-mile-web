@@ -2,6 +2,8 @@
  * The interface language: a small runtime, no library.
  *
  *   t('round.label', { n: 1, total: 3 })   a message, with {name} filled in
+ *   t('check.lines', { n: 3 })             a count: the plural form is the language's own
+ *   num(1234.5), list(['a', 'b', 'c'])     a number and a list as the language writes them
  *   setLocale('ja')                        load a language and switch to it
  *   onLocaleChange(render)                 redraw what was built with t()
  *
@@ -14,10 +16,17 @@
  * text, data-i18n-placeholder / -title / -aria-label for attributes. They are
  * filled when the locale is set. <html> gets lang, and dir="rtl" for Arabic.
  *
+ * Messages are ICU MessageFormat templates (see ../lib/verse/msg.ts): a count
+ * is written {n, plural, one {...} other {...}} with one form for each plural
+ * category the language has in Unicode CLDR. The form is chosen by
+ * Intl.PluralRules, numbers are written by Intl.NumberFormat and lists by
+ * Intl.ListFormat, so none of those rules is restated here. The tests
+ * (./i18n.test.ts, ./quality.test.ts) hold every locale to its categories.
+ *
  * This is the interface language only. The language a duel is fought in is a
  * separate choice (the verse packs in src/lib/verse/packs).
  */
-import { interpolate, type Msg } from '../lib/verse/msg';
+import { formatList, formatNumber, interpolate, type Msg } from '../lib/verse/msg';
 import en from './locales/en';
 
 export type Messages = Record<string, string>;
@@ -112,7 +121,19 @@ export function has(key: string): boolean {
 
 /** A message in the current language; English if the language lacks it; the key itself if nobody has it. */
 export function t(key: string, vars?: Msg['vars']): string {
-  return interpolate(messages[key] ?? en[key] ?? key, vars);
+  // A key the language lacks is shown in English, and then English rules choose its plural form.
+  const own = messages[key];
+  return own !== undefined ? interpolate(own, vars, current) : interpolate(en[key] ?? key, vars, 'en');
+}
+
+/** A number as the current language writes it (grouping, decimal mark, digits). */
+export function num(n: number): string {
+  return formatNumber(n, current);
+}
+
+/** Words joined as the current language joins a list. */
+export function list(items: readonly string[]): string {
+  return formatList(items, current);
 }
 
 /** An engine message (a form's name, a check's label) in the current language. */

@@ -1,0 +1,2560 @@
+{
+  "fetched": "2026-11-16T17:02:41.717Z",
+  "source": "https://www.wikidata.org/w/api.php (wbgetentities)",
+  "licence": "CC0 1.0 (Wikidata)",
+  "concepts": {
+    "couplet": {
+      "enwiki": "Couplet",
+      "qid": "Q4779829",
+      "description": "pair of lines of metre in poetry; two line stanza making complete sense",
+      "langs": {
+        "en": {
+          "sitelink": "Couplet",
+          "label": "couplet",
+          "aliases": [
+            "distich"
+          ]
+        },
+        "es": {
+          "sitelink": "Pareado",
+          "label": "pareado",
+          "aliases": [
+            "Pareado"
+          ]
+        },
+        "fr": {
+          "sitelink": "Distique (littérature)",
+          "label": "distique",
+          "aliases": [
+            "couplet"
+          ]
+        },
+        "de": {
+          "sitelink": "Zweizeiler (Verslehre)",
+          "label": "Zweizeiler",
+          "aliases": []
+        },
+        "it": {
+          "sitelink": "Distico",
+          "label": "distico",
+          "aliases": [
+            "couplet"
+          ]
+        },
+        "pt": {
+          "sitelink": "Dístico",
+          "label": "dístico",
+          "aliases": []
+        },
+        "pl": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "ru": {
+          "sitelink": "Двустишие",
+          "label": "двустишие",
+          "aliases": [
+            "дистих",
+            "куплет"
+          ]
+        },
+        "ar": {
+          "sitelink": "مربع (شعر)",
+          "label": "مربع",
+          "aliases": []
+        },
+        "hi": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "zh": {
+          "sitelink": "对句",
+          "label": "雙行句",
+          "aliases": []
+        },
+        "ja": {
+          "sitelink": "二行連",
+          "label": "二行連",
+          "aliases": []
+        },
+        "ko": {
+          "sitelink": "쿠플레",
+          "label": "쿠플레",
+          "aliases": []
+        },
+        "vi": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "th": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "id": {
+          "sitelink": "Bait (sastra)",
+          "label": "Bait (sastra)",
+          "aliases": []
+        }
+      }
+    },
+    "quatrain": {
+      "enwiki": "Quatrain",
+      "qid": "Q570948",
+      "description": "type of stanza, or a complete poem, consisting of four lines",
+      "langs": {
+        "en": {
+          "sitelink": "Quatrain",
+          "label": "quatrain",
+          "aliases": []
+        },
+        "es": {
+          "sitelink": "Cuarteto (poesía)",
+          "label": "cuarteto",
+          "aliases": [
+            "tetrastichon"
+          ]
+        },
+        "fr": {
+          "sitelink": "Quatrain",
+          "label": "quatrain",
+          "aliases": [
+            "Catran"
+          ]
+        },
+        "de": {
+          "sitelink": "Vierzeiler",
+          "label": "Vierzeiler",
+          "aliases": [
+            "Quartine",
+            "Tetrastichon",
+            "Catran",
+            "Quartett"
+          ]
+        },
+        "it": {
+          "sitelink": "Quartina (metrica)",
+          "label": "quartina",
+          "aliases": [
+            "tetrastico"
+          ]
+        },
+        "pt": {
+          "sitelink": "Quarteto (poesia)",
+          "label": "quadra poética",
+          "aliases": [
+            "quadra",
+            "quarteto"
+          ]
+        },
+        "pl": {
+          "sitelink": "Tetrastych",
+          "label": "tetrastych",
+          "aliases": []
+        },
+        "ru": {
+          "sitelink": "Катрен",
+          "label": "катрен",
+          "aliases": []
+        },
+        "ar": {
+          "sitelink": "رباعية (شعر)",
+          "label": "رباعية (شعر)",
+          "aliases": []
+        },
+        "hi": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "zh": {
+          "sitelink": "四行诗",
+          "label": "四行诗",
+          "aliases": []
+        },
+        "ja": {
+          "sitelink": "四行連",
+          "label": "四行連",
+          "aliases": []
+        },
+        "ko": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "vi": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "th": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "id": {
+          "sitelink": "Sajak empat baris",
+          "label": "sajak empat baris",
+          "aliases": []
+        }
+      }
+    },
+    "tercet": {
+      "enwiki": "Tercet",
+      "qid": "Q1353779",
+      "description": "term referring to a poetry which is composed of three lines",
+      "langs": {
+        "en": {
+          "sitelink": "Tercet",
+          "label": "tercet",
+          "aliases": []
+        },
+        "es": {
+          "sitelink": "Terceto",
+          "label": "terceto",
+          "aliases": [
+            "terza rima"
+          ]
+        },
+        "fr": {
+          "sitelink": "Tercet",
+          "label": "tercet",
+          "aliases": []
+        },
+        "de": {
+          "sitelink": "Terzett (Verslehre)",
+          "label": "Terzett",
+          "aliases": []
+        },
+        "it": {
+          "sitelink": "Terzina (metrica)",
+          "label": "terzina",
+          "aliases": []
+        },
+        "pt": {
+          "sitelink": "Terceto",
+          "label": "terceto",
+          "aliases": []
+        },
+        "pl": {
+          "sitelink": "Tercet (literatura)",
+          "label": "tercyna",
+          "aliases": []
+        },
+        "ru": {
+          "sitelink": "Терцет",
+          "label": "терцет",
+          "aliases": [
+            "трёхстишие"
+          ]
+        },
+        "ar": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "hi": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "zh": {
+          "sitelink": null,
+          "label": "三行体",
+          "aliases": []
+        },
+        "ja": {
+          "sitelink": "三行連",
+          "label": "三行連",
+          "aliases": [
+            "三行連句"
+          ]
+        },
+        "ko": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "vi": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "th": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "id": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        }
+      }
+    },
+    "haiku": {
+      "enwiki": "Haiku",
+      "qid": "Q37707",
+      "description": "very short form of Japanese poetry",
+      "langs": {
+        "en": {
+          "sitelink": "Haiku",
+          "label": "haiku",
+          "aliases": []
+        },
+        "es": {
+          "sitelink": "Haiku",
+          "label": "haiku",
+          "aliases": [
+            "Haikú",
+            "Haikaista",
+            "Haikus",
+            "jaicú"
+          ]
+        },
+        "fr": {
+          "sitelink": "Haïku",
+          "label": "haïku",
+          "aliases": [
+            "Aïku",
+            "Haiku",
+            "Haikai",
+            "Haidjin",
+            "Hokku",
+            "Haïdjin",
+            "Haïkaï"
+          ]
+        },
+        "de": {
+          "sitelink": "Haiku",
+          "label": "Haiku",
+          "aliases": [
+            "Hokku",
+            "Haikai",
+            "Haikus"
+          ]
+        },
+        "it": {
+          "sitelink": "Haiku",
+          "label": "haiku",
+          "aliases": []
+        },
+        "pt": {
+          "sitelink": "Haiku",
+          "label": "haikai",
+          "aliases": [
+            "Hai kai",
+            "Hai cai",
+            "Haïku",
+            "Haicai"
+          ]
+        },
+        "pl": {
+          "sitelink": "Haiku",
+          "label": "haiku",
+          "aliases": [
+            "haikai"
+          ]
+        },
+        "ru": {
+          "sitelink": "Хайку",
+          "label": "хайку",
+          "aliases": [
+            "хокку",
+            "хоку",
+            "хойку"
+          ]
+        },
+        "ar": {
+          "sitelink": "هايكو",
+          "label": "هايكو",
+          "aliases": [
+            "هائيكو"
+          ]
+        },
+        "hi": {
+          "sitelink": "हाइकु",
+          "label": "हाइकु",
+          "aliases": []
+        },
+        "zh": {
+          "sitelink": "俳句",
+          "label": "俳句",
+          "aliases": []
+        },
+        "ja": {
+          "sitelink": "俳句",
+          "label": "俳句",
+          "aliases": [
+            "発句",
+            "Haiku"
+          ]
+        },
+        "ko": {
+          "sitelink": "하이쿠",
+          "label": "하이쿠",
+          "aliases": []
+        },
+        "vi": {
+          "sitelink": "Haiku",
+          "label": "haiku",
+          "aliases": []
+        },
+        "th": {
+          "sitelink": "ไฮกุ",
+          "label": "ไฮกุ",
+          "aliases": [
+            "ไฮกึ",
+            "โคลงไฮกุ"
+          ]
+        },
+        "id": {
+          "sitelink": "Haiku",
+          "label": "Haiku",
+          "aliases": []
+        }
+      }
+    },
+    "anaphora": {
+      "enwiki": "Anaphora (rhetoric)",
+      "qid": "Q486050",
+      "description": "rhetoric",
+      "langs": {
+        "en": {
+          "sitelink": "Anaphora (rhetoric)",
+          "label": "anaphora",
+          "aliases": []
+        },
+        "es": {
+          "sitelink": "Anáfora (retórica)",
+          "label": "anáfora",
+          "aliases": [
+            "Anafora (retorica)",
+            "Anafora (retórica)",
+            "Anáfora (retorica)"
+          ]
+        },
+        "fr": {
+          "sitelink": "Anaphore (rhétorique)",
+          "label": "Anaphore (rhétorique)",
+          "aliases": [
+            "Répétition (rhétorique)",
+            "Anaphore (Rhétorique)",
+            "Anaphore (rhetorique)"
+          ]
+        },
+        "de": {
+          "sitelink": "Anapher",
+          "label": "Anapher",
+          "aliases": [
+            "Rückwärtsbezug"
+          ]
+        },
+        "it": {
+          "sitelink": "Anafora (figura retorica)",
+          "label": "anafora",
+          "aliases": [
+            "anafora (retorica)",
+            "anafore"
+          ]
+        },
+        "pt": {
+          "sitelink": "Anáfora",
+          "label": "anáfora",
+          "aliases": []
+        },
+        "pl": {
+          "sitelink": "Anafora (środek stylistyczny)",
+          "label": "anafora",
+          "aliases": [
+            "Repetitio",
+            "epanafora"
+          ]
+        },
+        "ru": {
+          "sitelink": "Анафора",
+          "label": "анафора",
+          "aliases": [
+            "Единоначатие"
+          ]
+        },
+        "ar": {
+          "sitelink": "تكرار الصدارة",
+          "label": "تكرار الصدارة",
+          "aliases": []
+        },
+        "hi": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "zh": {
+          "sitelink": null,
+          "label": "句首照应反复",
+          "aliases": []
+        },
+        "ja": {
+          "sitelink": "首句反復",
+          "label": "首句反復",
+          "aliases": []
+        },
+        "ko": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "vi": {
+          "sitelink": "Anaphora (tu từ học)",
+          "label": "Hồi chỉ (tu từ học)",
+          "aliases": []
+        },
+        "th": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "id": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        }
+      }
+    },
+    "epistrophe": {
+      "enwiki": "Epistrophe",
+      "qid": "Q963102",
+      "description": "stylistic device",
+      "langs": {
+        "en": {
+          "sitelink": "Epistrophe",
+          "label": "epistrophe",
+          "aliases": [
+            "epiphora"
+          ]
+        },
+        "es": {
+          "sitelink": "Epífora (retórica)",
+          "label": "epífora",
+          "aliases": [
+            "epifora"
+          ]
+        },
+        "fr": {
+          "sitelink": "Épiphore",
+          "label": "Épiphore",
+          "aliases": []
+        },
+        "de": {
+          "sitelink": "Epiphora (Rhetorik)",
+          "label": "Epiphora",
+          "aliases": []
+        },
+        "it": {
+          "sitelink": "Epifora (figura retorica)",
+          "label": "Epifora",
+          "aliases": []
+        },
+        "pt": {
+          "sitelink": "Epístrofe",
+          "label": "epístrofe",
+          "aliases": []
+        },
+        "pl": {
+          "sitelink": "Epifora",
+          "label": "Epifora",
+          "aliases": []
+        },
+        "ru": {
+          "sitelink": "Эпифора (риторика)",
+          "label": "эпифора",
+          "aliases": []
+        },
+        "ar": {
+          "sitelink": "تكرار النهاية",
+          "label": "تكرار النهاية",
+          "aliases": []
+        },
+        "hi": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "zh": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "ja": {
+          "sitelink": "結句反復",
+          "label": "結句反復",
+          "aliases": []
+        },
+        "ko": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "vi": {
+          "sitelink": null,
+          "label": "Epistrophe",
+          "aliases": []
+        },
+        "th": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "id": {
+          "sitelink": "Epifora",
+          "label": "Epifora",
+          "aliases": []
+        }
+      }
+    },
+    "acrostic": {
+      "enwiki": "Acrostic",
+      "qid": "Q173287",
+      "description": "writing in which the first letter, syllable or word of each line, paragraph or other recurring feature in the text spells out a word or a message",
+      "langs": {
+        "en": {
+          "sitelink": "Acrostic",
+          "label": "acrostic",
+          "aliases": [
+            "acrostics"
+          ]
+        },
+        "es": {
+          "sitelink": "Acróstico",
+          "label": "acróstico",
+          "aliases": [
+            "Versos acrósticos",
+            "Acrostico",
+            "Versos acrosticos"
+          ]
+        },
+        "fr": {
+          "sitelink": "Acrostiche",
+          "label": "acrostiche",
+          "aliases": [
+            "Mésostiche",
+            "Acrostiches"
+          ]
+        },
+        "de": {
+          "sitelink": "Akrostichon",
+          "label": "Akrostichon",
+          "aliases": [
+            "Leistenvers"
+          ]
+        },
+        "it": {
+          "sitelink": "Acrostico",
+          "label": "acrostico",
+          "aliases": [
+            "acrostica",
+            "versi acrostici"
+          ]
+        },
+        "pt": {
+          "sitelink": "Acróstico",
+          "label": "acróstico",
+          "aliases": [
+            "Acrósticos"
+          ]
+        },
+        "pl": {
+          "sitelink": "Akrostych",
+          "label": "Akrostych",
+          "aliases": []
+        },
+        "ru": {
+          "sitelink": "Акростих",
+          "label": "акростих",
+          "aliases": []
+        },
+        "ar": {
+          "sitelink": "تتويج (شعر)",
+          "label": "تتويج",
+          "aliases": [
+            "أكرستيك"
+          ]
+        },
+        "hi": {
+          "sitelink": "एक्रोस्टिक कविता",
+          "label": "एक्रोस्टिक कविता",
+          "aliases": []
+        },
+        "zh": {
+          "sitelink": "離合詩",
+          "label": "離合詩",
+          "aliases": [
+            "離合藏頭詩"
+          ]
+        },
+        "ja": {
+          "sitelink": "折句",
+          "label": "折句",
+          "aliases": [
+            "アクロスティック"
+          ]
+        },
+        "ko": {
+          "sitelink": "이합체시",
+          "label": "세로반전",
+          "aliases": [
+            "세로드립"
+          ]
+        },
+        "vi": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "th": {
+          "sitelink": "อักษรกล",
+          "label": "อักษรกล",
+          "aliases": []
+        },
+        "id": {
+          "sitelink": "Akrostik",
+          "label": "Akrostik",
+          "aliases": []
+        }
+      }
+    },
+    "heroic-couplet": {
+      "enwiki": "Heroic couplet",
+      "qid": "Q2714966",
+      "description": "rhyming pair of lines in iambic pentameter",
+      "langs": {
+        "en": {
+          "sitelink": "Heroic couplet",
+          "label": "heroic couplet",
+          "aliases": []
+        },
+        "es": {
+          "sitelink": "Dístico heroico",
+          "label": null,
+          "aliases": []
+        },
+        "fr": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "de": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "it": {
+          "sitelink": "Distico eroico",
+          "label": "distico eroico",
+          "aliases": []
+        },
+        "pt": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "pl": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "ru": {
+          "sitelink": "Героический стих",
+          "label": "Героический стих",
+          "aliases": []
+        },
+        "ar": {
+          "sitelink": "دوبيت ملحمي",
+          "label": "دوبيت ملحمي",
+          "aliases": []
+        },
+        "hi": {
+          "sitelink": null,
+          "label": "heroic couplet",
+          "aliases": []
+        },
+        "zh": {
+          "sitelink": "英雄双行体",
+          "label": "英雄双行体",
+          "aliases": []
+        },
+        "ja": {
+          "sitelink": "ヒロイック・カプレット",
+          "label": "ヒロイック・カプレット",
+          "aliases": []
+        },
+        "ko": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "vi": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "th": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "id": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        }
+      }
+    },
+    "jueju": {
+      "enwiki": "Jueju",
+      "qid": "Q537198",
+      "description": "form of Chinese poetry",
+      "langs": {
+        "en": {
+          "sitelink": "Jueju",
+          "label": "jueju",
+          "aliases": [
+            "Chinese quatrain"
+          ]
+        },
+        "es": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "fr": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "de": {
+          "sitelink": "Jueju",
+          "label": "Jueju",
+          "aliases": []
+        },
+        "it": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "pt": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "pl": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "ru": {
+          "sitelink": null,
+          "label": "«оборванные строки»",
+          "aliases": [
+            "цзюэцзюй"
+          ]
+        },
+        "ar": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "hi": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "zh": {
+          "sitelink": "绝句",
+          "label": "绝句",
+          "aliases": []
+        },
+        "ja": {
+          "sitelink": "絶句",
+          "label": "絶句",
+          "aliases": []
+        },
+        "ko": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "vi": {
+          "sitelink": "Tuyệt cú",
+          "label": "tuyệt cú",
+          "aliases": []
+        },
+        "th": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "id": {
+          "sitelink": "Jueju",
+          "label": "Jueju",
+          "aliases": []
+        }
+      }
+    },
+    "luc-bat": {
+      "enwiki": "Lục bát",
+      "qid": "Q1755587",
+      "description": "traditional Vietnamese verse form",
+      "langs": {
+        "en": {
+          "sitelink": "Lục bát",
+          "label": "Lục bát",
+          "aliases": []
+        },
+        "es": {
+          "sitelink": "Lục bát",
+          "label": "Lục bát",
+          "aliases": [
+            "Luc bát",
+            "Lục bat",
+            "Luc bat"
+          ]
+        },
+        "fr": {
+          "sitelink": "Lục bát",
+          "label": "Lục bát",
+          "aliases": []
+        },
+        "de": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "it": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "pt": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "pl": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "ru": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "ar": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "hi": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "zh": {
+          "sitelink": "六八體",
+          "label": "六八體",
+          "aliases": [
+            "六八"
+          ]
+        },
+        "ja": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "ko": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "vi": {
+          "sitelink": "Lục bát (thể thơ)",
+          "label": "Lục bát",
+          "aliases": []
+        },
+        "th": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "id": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        }
+      }
+    },
+    "alliteration": {
+      "enwiki": "Alliteration",
+      "qid": "Q484495",
+      "description": "stylistic literary device identified by the repeated sound of the first letter in a series of multiple words, or the repetition of the same letter sounds in stressed syllables of a phrase",
+      "langs": {
+        "en": {
+          "sitelink": "Alliteration",
+          "label": "alliteration",
+          "aliases": []
+        },
+        "es": {
+          "sitelink": "Aliteración",
+          "label": "aliteración",
+          "aliases": [
+            "Fornyrðislag",
+            "Aliteracion",
+            "Aliterado",
+            "Dróttkvætt"
+          ]
+        },
+        "fr": {
+          "sitelink": "Allitération",
+          "label": "allitération",
+          "aliases": [
+            "alitération",
+            "alliteration",
+            "allitérations"
+          ]
+        },
+        "de": {
+          "sitelink": "Alliteration",
+          "label": "Alliteration",
+          "aliases": []
+        },
+        "it": {
+          "sitelink": "Allitterazione",
+          "label": "allitterazione",
+          "aliases": []
+        },
+        "pt": {
+          "sitelink": "Aliteração",
+          "label": "aliteração",
+          "aliases": []
+        },
+        "pl": {
+          "sitelink": "Aliteracja",
+          "label": "aliteracja",
+          "aliases": []
+        },
+        "ru": {
+          "sitelink": "Аллитерация",
+          "label": "аллитерация",
+          "aliases": []
+        },
+        "ar": {
+          "sitelink": "سجع ابتدائي",
+          "label": "سجع ابتدائي",
+          "aliases": [
+            "تجنيس استهلالي",
+            "التجنيس الاستهلالي",
+            "الجناس الاستهلالي",
+            "جناس استهلالي",
+            "السجع الابتدائي",
+            "سجع استهلالي",
+            "المجانسة الاستهلالية",
+            "مجانسة استهلالية"
+          ]
+        },
+        "hi": {
+          "sitelink": "अनुप्रास",
+          "label": "अनुप्रास",
+          "aliases": []
+        },
+        "zh": {
+          "sitelink": "頭韻法",
+          "label": "頭韻法",
+          "aliases": []
+        },
+        "ja": {
+          "sitelink": "頭韻法",
+          "label": "頭韻法",
+          "aliases": [
+            "頭韻"
+          ]
+        },
+        "ko": {
+          "sitelink": "두운",
+          "label": "두운",
+          "aliases": []
+        },
+        "vi": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "th": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "id": {
+          "sitelink": "Aliterasi",
+          "label": "Aliterasi",
+          "aliases": []
+        }
+      }
+    },
+    "internal-rhyme": {
+      "enwiki": "Internal rhyme",
+      "qid": "Q2098331",
+      "description": "rhyme that occurs within a single line of verse, or between internal phrases across multiple lines",
+      "langs": {
+        "en": {
+          "sitelink": "Internal rhyme",
+          "label": "internal rhyme",
+          "aliases": []
+        },
+        "es": {
+          "sitelink": "Rima interna",
+          "label": "Rima interna",
+          "aliases": []
+        },
+        "fr": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "de": {
+          "sitelink": "Binnenreim",
+          "label": "Schlagreim",
+          "aliases": []
+        },
+        "it": {
+          "sitelink": "Rima interna",
+          "label": "rima interna",
+          "aliases": [
+            "rima al mezzo"
+          ]
+        },
+        "pt": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "pl": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "ru": {
+          "sitelink": null,
+          "label": "внутренняя рифма",
+          "aliases": []
+        },
+        "ar": {
+          "sitelink": "السجع في الشعر",
+          "label": "السجع في الشعر",
+          "aliases": []
+        },
+        "hi": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "zh": {
+          "sitelink": null,
+          "label": "内韵",
+          "aliases": []
+        },
+        "ja": {
+          "sitelink": "中間韻",
+          "label": "中間韻",
+          "aliases": []
+        },
+        "ko": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "vi": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "th": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "id": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        }
+      }
+    },
+    "monorhyme": {
+      "enwiki": "Monorhyme",
+      "qid": "Q4301857",
+      "description": "rhyme scheme in which each line has an identical rhyme; use of one (mono) type of repetitious sound (rhyme), usually at the end of each line",
+      "langs": {
+        "en": {
+          "sitelink": "Monorhyme",
+          "label": "monorhyme",
+          "aliases": []
+        },
+        "es": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "fr": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "de": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "it": {
+          "sitelink": null,
+          "label": "monorima",
+          "aliases": []
+        },
+        "pt": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "pl": {
+          "sitelink": "Monorym",
+          "label": "Monorym",
+          "aliases": []
+        },
+        "ru": {
+          "sitelink": "Монорим",
+          "label": "Монорим",
+          "aliases": [
+            "Монорифма"
+          ]
+        },
+        "ar": {
+          "sitelink": "إيطاء",
+          "label": "إيطاء",
+          "aliases": []
+        },
+        "hi": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "zh": {
+          "sitelink": null,
+          "label": "单韵诗",
+          "aliases": []
+        },
+        "ja": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "ko": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "vi": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "th": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "id": {
+          "sitelink": "Sajak tunggal",
+          "label": "Sajak tunggal",
+          "aliases": []
+        }
+      }
+    },
+    "syllable": {
+      "enwiki": "Syllable",
+      "qid": "Q8188",
+      "description": "unit of organization for a sequence of speech sounds",
+      "langs": {
+        "en": {
+          "sitelink": "Syllable",
+          "label": "syllable",
+          "aliases": [
+            "syllab",
+            "syllabe"
+          ]
+        },
+        "es": {
+          "sitelink": "Sílaba",
+          "label": "sílaba",
+          "aliases": [
+            "silaba"
+          ]
+        },
+        "fr": {
+          "sitelink": "Syllabe",
+          "label": "syllabe",
+          "aliases": []
+        },
+        "de": {
+          "sitelink": "Silbe",
+          "label": "Silbe",
+          "aliases": []
+        },
+        "it": {
+          "sitelink": "Sillaba",
+          "label": "sillaba",
+          "aliases": []
+        },
+        "pt": {
+          "sitelink": "Sílaba",
+          "label": "sílaba",
+          "aliases": []
+        },
+        "pl": {
+          "sitelink": "Sylaba",
+          "label": "sylaba",
+          "aliases": [
+            "zgłoska"
+          ]
+        },
+        "ru": {
+          "sitelink": "Слог",
+          "label": "слог",
+          "aliases": []
+        },
+        "ar": {
+          "sitelink": "مقطع لفظي",
+          "label": "مقطع لفظي",
+          "aliases": [
+            "مقطع"
+          ]
+        },
+        "hi": {
+          "sitelink": "अक्षर",
+          "label": "शब्दांश",
+          "aliases": [
+            "अक्षर"
+          ]
+        },
+        "zh": {
+          "sitelink": "音节",
+          "label": "音节",
+          "aliases": []
+        },
+        "ja": {
+          "sitelink": "音節",
+          "label": "音節",
+          "aliases": []
+        },
+        "ko": {
+          "sitelink": "음절",
+          "label": "음절",
+          "aliases": [
+            "소리마디"
+          ]
+        },
+        "vi": {
+          "sitelink": "Âm tiết",
+          "label": "âm tiết",
+          "aliases": [
+            "音節"
+          ]
+        },
+        "th": {
+          "sitelink": "พยางค์",
+          "label": "พยางค์",
+          "aliases": [
+            "คำ"
+          ]
+        },
+        "id": {
+          "sitelink": "Suku kata",
+          "label": "suku kata",
+          "aliases": []
+        }
+      }
+    },
+    "rhyme": {
+      "enwiki": "Rhyme",
+      "qid": "Q178715",
+      "description": "repetition of similar sounds in language",
+      "langs": {
+        "en": {
+          "sitelink": "Rhyme",
+          "label": "rhyme",
+          "aliases": [
+            "rhymes",
+            "poetic rhyme"
+          ]
+        },
+        "es": {
+          "sitelink": "Rima",
+          "label": "rima",
+          "aliases": [
+            "rimas"
+          ]
+        },
+        "fr": {
+          "sitelink": "Rime",
+          "label": "rime",
+          "aliases": [
+            "rimes"
+          ]
+        },
+        "de": {
+          "sitelink": "Reim",
+          "label": "Reim",
+          "aliases": [
+            "Reime"
+          ]
+        },
+        "it": {
+          "sitelink": "Rima",
+          "label": "rima",
+          "aliases": [
+            "rime"
+          ]
+        },
+        "pt": {
+          "sitelink": "Rima",
+          "label": "rima",
+          "aliases": [
+            "Rima emparelhadas",
+            "Esquema rimático"
+          ]
+        },
+        "pl": {
+          "sitelink": "Rym",
+          "label": "rym",
+          "aliases": [
+            "rym dokładny",
+            "rymy"
+          ]
+        },
+        "ru": {
+          "sitelink": "Рифма",
+          "label": "рифма",
+          "aliases": [
+            "рифмы",
+            "рифмовка",
+            "сквозная рифма",
+            "эхо-рифма",
+            "эхо рифма"
+          ]
+        },
+        "ar": {
+          "sitelink": "قافية",
+          "label": "قافية",
+          "aliases": [
+            "القواف",
+            "قافي",
+            "القافية",
+            "القوافي"
+          ]
+        },
+        "hi": {
+          "sitelink": "क़ाफ़िया",
+          "label": "क़ाफ़िया",
+          "aliases": []
+        },
+        "zh": {
+          "sitelink": "押韻",
+          "label": "押韻",
+          "aliases": [
+            "韻"
+          ]
+        },
+        "ja": {
+          "sitelink": "押韻",
+          "label": "韻文",
+          "aliases": [
+            "フランス詩法"
+          ]
+        },
+        "ko": {
+          "sitelink": "압운",
+          "label": "압운",
+          "aliases": [
+            "각운"
+          ]
+        },
+        "vi": {
+          "sitelink": null,
+          "label": "vần",
+          "aliases": [
+            "vần thơ",
+            "gieo vần"
+          ]
+        },
+        "th": {
+          "sitelink": "คำคล้องจอง",
+          "label": "คำคล้องจอง",
+          "aliases": [
+            "สัมผัสนอก",
+            "สัมผัสใน",
+            "คำคล้อง",
+            "คำสัมผัส",
+            "เสียงสัมผัส"
+          ]
+        },
+        "id": {
+          "sitelink": "Rima",
+          "label": "Rima",
+          "aliases": []
+        }
+      }
+    },
+    "stanza": {
+      "enwiki": "Stanza",
+      "qid": "Q1756348",
+      "description": "grouped set of lines within a poem",
+      "langs": {
+        "en": {
+          "sitelink": "Stanza",
+          "label": "stanza",
+          "aliases": []
+        },
+        "es": {
+          "sitelink": "Estancia (poesía)",
+          "label": "estancia",
+          "aliases": [
+            "estanza",
+            "stanza"
+          ]
+        },
+        "fr": {
+          "sitelink": "Stance",
+          "label": "stance",
+          "aliases": []
+        },
+        "de": {
+          "sitelink": null,
+          "label": "Strophe",
+          "aliases": [
+            "Gedichtstrophe"
+          ]
+        },
+        "it": {
+          "sitelink": "Stanza (poesia)",
+          "label": "stanza",
+          "aliases": []
+        },
+        "pt": {
+          "sitelink": "Estância (poesia)",
+          "label": "estância",
+          "aliases": []
+        },
+        "pl": {
+          "sitelink": null,
+          "label": "stanza",
+          "aliases": []
+        },
+        "ru": {
+          "sitelink": "Стансы",
+          "label": "строфа",
+          "aliases": [
+            "стансы"
+          ]
+        },
+        "ar": {
+          "sitelink": "مقطوعة شعرية",
+          "label": "مقطوعة شعرية",
+          "aliases": [
+            "مقطع شعري"
+          ]
+        },
+        "hi": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "zh": {
+          "sitelink": "詩節",
+          "label": "詩節",
+          "aliases": []
+        },
+        "ja": {
+          "sitelink": "スタンザ",
+          "label": "スタンザ",
+          "aliases": [
+            "詩節"
+          ]
+        },
+        "ko": {
+          "sitelink": "스탠자",
+          "label": "스탠자",
+          "aliases": []
+        },
+        "vi": {
+          "sitelink": "Khổ thơ",
+          "label": "khổ thơ",
+          "aliases": []
+        },
+        "th": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "id": {
+          "sitelink": "Stanza (sastra)",
+          "label": "stanza",
+          "aliases": []
+        }
+      }
+    },
+    "verse": {
+      "enwiki": "Verse (poetry)",
+      "qid": "Q1661",
+      "description": "single metrical line in a poetic composition",
+      "langs": {
+        "en": {
+          "sitelink": "Verse (poetry)",
+          "label": "verse",
+          "aliases": []
+        },
+        "es": {
+          "sitelink": "Verso",
+          "label": "verso",
+          "aliases": []
+        },
+        "fr": {
+          "sitelink": "Vers",
+          "label": "vers",
+          "aliases": []
+        },
+        "de": {
+          "sitelink": "Vers",
+          "label": "Vers",
+          "aliases": []
+        },
+        "it": {
+          "sitelink": "Verso (metrica)",
+          "label": "verso",
+          "aliases": []
+        },
+        "pt": {
+          "sitelink": "Verso",
+          "label": "verso",
+          "aliases": []
+        },
+        "pl": {
+          "sitelink": null,
+          "label": "wiersz",
+          "aliases": [
+            "wiersz (piśmiennictwo)"
+          ]
+        },
+        "ru": {
+          "sitelink": "Стих",
+          "label": "стих",
+          "aliases": [
+            "вирша"
+          ]
+        },
+        "ar": {
+          "sitelink": "بيت (شعر)",
+          "label": "بيت",
+          "aliases": [
+            "بيت الشعر",
+            "الأبيات",
+            "ابيات",
+            "بيت شعر",
+            "أبيات شعرية",
+            "بيتا شعريا"
+          ]
+        },
+        "hi": {
+          "sitelink": "पद (कविता)",
+          "label": "पद",
+          "aliases": [
+            "पद (कविता)"
+          ]
+        },
+        "zh": {
+          "sitelink": "韻文",
+          "label": "韻文",
+          "aliases": []
+        },
+        "ja": {
+          "sitelink": "韻文",
+          "label": "韻文詩",
+          "aliases": []
+        },
+        "ko": {
+          "sitelink": "운문",
+          "label": "운문",
+          "aliases": []
+        },
+        "vi": {
+          "sitelink": "Verse",
+          "label": "verse",
+          "aliases": []
+        },
+        "th": {
+          "sitelink": null,
+          "label": "ฉันทลักษณ์",
+          "aliases": []
+        },
+        "id": {
+          "sitelink": "Sajak (puisi)",
+          "label": "sajak",
+          "aliases": [
+            "sajak (puisi)"
+          ]
+        }
+      }
+    },
+    "line": {
+      "enwiki": "Line (poetry)",
+      "qid": "Q285573",
+      "description": "subdivision of a poem",
+      "langs": {
+        "en": {
+          "sitelink": "Line (poetry)",
+          "label": "line",
+          "aliases": [
+            "verse",
+            "line of text",
+            "poem line"
+          ]
+        },
+        "es": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "fr": {
+          "sitelink": null,
+          "label": "ligne",
+          "aliases": []
+        },
+        "de": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "it": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "pt": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "pl": {
+          "sitelink": "Wers",
+          "label": "wers",
+          "aliases": []
+        },
+        "ru": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "ar": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "hi": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "zh": {
+          "sitelink": null,
+          "label": "詩句",
+          "aliases": []
+        },
+        "ja": {
+          "sitelink": null,
+          "label": "詩行",
+          "aliases": []
+        },
+        "ko": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "vi": {
+          "sitelink": "Dòng (thơ)",
+          "label": "Dòng",
+          "aliases": []
+        },
+        "th": {
+          "sitelink": "บาท (ฉันทลักษณ์)",
+          "label": "บาท (ฉันทลักษณ์)",
+          "aliases": []
+        },
+        "id": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        }
+      }
+    },
+    "sonnet": {
+      "enwiki": "Sonnet",
+      "qid": "Q80056",
+      "description": "form of poetry with fourteen lines and strict rhyming structure",
+      "langs": {
+        "en": {
+          "sitelink": "Sonnet",
+          "label": "sonnet",
+          "aliases": []
+        },
+        "es": {
+          "sitelink": "Soneto",
+          "label": "soneto",
+          "aliases": []
+        },
+        "fr": {
+          "sitelink": "Sonnet",
+          "label": "sonnet",
+          "aliases": [
+            "Sonnets"
+          ]
+        },
+        "de": {
+          "sitelink": "Sonett",
+          "label": "Sonett",
+          "aliases": [
+            "Sonette",
+            "Klanggedicht",
+            "Sonettennetz",
+            "Sonetto",
+            "Klinggedicht"
+          ]
+        },
+        "it": {
+          "sitelink": "Sonetto",
+          "label": "sonetto",
+          "aliases": []
+        },
+        "pt": {
+          "sitelink": "Soneto",
+          "label": "soneto",
+          "aliases": []
+        },
+        "pl": {
+          "sitelink": "Sonet",
+          "label": "sonet",
+          "aliases": [
+            "sonety"
+          ]
+        },
+        "ru": {
+          "sitelink": "Сонет",
+          "label": "сонет",
+          "aliases": []
+        },
+        "ar": {
+          "sitelink": "سونيتة",
+          "label": "سونيتة",
+          "aliases": []
+        },
+        "hi": {
+          "sitelink": "सॉनेट",
+          "label": "सॉनेट",
+          "aliases": []
+        },
+        "zh": {
+          "sitelink": "十四行诗",
+          "label": "十四行诗",
+          "aliases": []
+        },
+        "ja": {
+          "sitelink": "ソネット",
+          "label": "ソネット",
+          "aliases": [
+            "ソネット形式"
+          ]
+        },
+        "ko": {
+          "sitelink": "소네트",
+          "label": "소네트",
+          "aliases": [
+            "십사행시",
+            "소넷"
+          ]
+        },
+        "vi": {
+          "sitelink": "Sonnet",
+          "label": "sonnet",
+          "aliases": []
+        },
+        "th": {
+          "sitelink": "ซอนเน็ต",
+          "label": "ซอนเน็ต",
+          "aliases": [
+            "Sonnet",
+            "ซอนเน็ท"
+          ]
+        },
+        "id": {
+          "sitelink": "Soneta",
+          "label": "soneta",
+          "aliases": []
+        }
+      }
+    },
+    "kana": {
+      "enwiki": "Kana",
+      "qid": "Q187659",
+      "description": "Japanese syllabary writing system using mainly the Hiragana syllabary with the Katakana syllabary for borrowings from other languages or les transcriptions from other scripts",
+      "langs": {
+        "en": {
+          "sitelink": "Kana",
+          "label": "kana",
+          "aliases": [
+            "Hiragana + Katakana",
+            "Hrkt",
+            "kana script",
+            "kanas"
+          ]
+        },
+        "es": {
+          "sitelink": "Kana",
+          "label": "kana",
+          "aliases": [
+            "silabario japonés",
+            "alfabeto fonético japonés",
+            "alfabeto fonetico japones",
+            "silabario japones"
+          ]
+        },
+        "fr": {
+          "sitelink": "Kana",
+          "label": "kana",
+          "aliases": [
+            "kanas",
+            "Hrkt",
+            "écriture kana",
+            "hiragana + katakana"
+          ]
+        },
+        "de": {
+          "sitelink": "Kana (Schrift)",
+          "label": "Kana",
+          "aliases": [
+            "Hrkt"
+          ]
+        },
+        "it": {
+          "sitelink": "Kana",
+          "label": "kana",
+          "aliases": []
+        },
+        "pt": {
+          "sitelink": "Kana",
+          "label": "kana",
+          "aliases": []
+        },
+        "pl": {
+          "sitelink": "Kana (pismo)",
+          "label": "kana",
+          "aliases": []
+        },
+        "ru": {
+          "sitelink": "Кана",
+          "label": "кана",
+          "aliases": [
+            "kana"
+          ]
+        },
+        "ar": {
+          "sitelink": "كانا",
+          "label": "كانا",
+          "aliases": []
+        },
+        "hi": {
+          "sitelink": "काना (लिपि)",
+          "label": "काना",
+          "aliases": []
+        },
+        "zh": {
+          "sitelink": "假名 (文字)",
+          "label": "假名",
+          "aliases": [
+            "仮名",
+            "日语假名",
+            "日文假名"
+          ]
+        },
+        "ja": {
+          "sitelink": "仮名 (文字)",
+          "label": "仮名",
+          "aliases": [
+            "Hrkt",
+            "かな文字",
+            "仮名文字",
+            "かな",
+            "カナ",
+            "平仮名と片仮名"
+          ]
+        },
+        "ko": {
+          "sitelink": "가나 (문자)",
+          "label": "가나",
+          "aliases": [
+            "가나 문자"
+          ]
+        },
+        "vi": {
+          "sitelink": "Kana",
+          "label": "kana",
+          "aliases": [
+            "Giả danh",
+            "Bảng chữ cái tiếng Nhật"
+          ]
+        },
+        "th": {
+          "sitelink": "คานะ",
+          "label": "คานะ",
+          "aliases": [
+            "อักษรคานะ"
+          ]
+        },
+        "id": {
+          "sitelink": "Aksara kana",
+          "label": "kana",
+          "aliases": [
+            "aksara kana",
+            "huruf kana"
+          ]
+        }
+      }
+    },
+    "poetry": {
+      "enwiki": "Poetry",
+      "qid": "Q482",
+      "description": "literary style characterized by a strong expressiveness of words",
+      "langs": {
+        "en": {
+          "sitelink": "Poetry",
+          "label": "poetry",
+          "aliases": [
+            "poetic art",
+            "poem",
+            "waxing poetic",
+            "poesie",
+            "poesy",
+            "art of poetry",
+            "wordsmithing",
+            "singing",
+            "rhyming",
+            "rhymes",
+            "balladry",
+            "versification",
+            "metrical composition",
+            "verse",
+            "verses",
+            "rhythmical composition",
+            "composition",
+            "rhyme",
+            "poesies",
+            "poems",
+            "chanting",
+            "chant",
+            "chants",
+            "song"
+          ]
+        },
+        "es": {
+          "sitelink": "Poesía",
+          "label": "poesía",
+          "aliases": [
+            "lírica"
+          ]
+        },
+        "fr": {
+          "sitelink": "Poésie",
+          "label": "poésie",
+          "aliases": []
+        },
+        "de": {
+          "sitelink": "Poesie",
+          "label": "Dichtkunst",
+          "aliases": [
+            "Dichtung",
+            "Gedichtband",
+            "Lyrik",
+            "Poesie"
+          ]
+        },
+        "it": {
+          "sitelink": "Poesia",
+          "label": "poesia",
+          "aliases": []
+        },
+        "pt": {
+          "sitelink": "Poesia",
+          "label": "poesia",
+          "aliases": []
+        },
+        "pl": {
+          "sitelink": "Poezja",
+          "label": "poezja",
+          "aliases": [
+            "liryka"
+          ]
+        },
+        "ru": {
+          "sitelink": "Поэзия",
+          "label": "поэзия",
+          "aliases": []
+        },
+        "ar": {
+          "sitelink": "شعر (أدب)",
+          "label": "شِعر",
+          "aliases": [
+            "نظم"
+          ]
+        },
+        "hi": {
+          "sitelink": "काव्य",
+          "label": "काव्य",
+          "aliases": []
+        },
+        "zh": {
+          "sitelink": "诗歌",
+          "label": "詩歌",
+          "aliases": [
+            "詩",
+            "诗"
+          ]
+        },
+        "ja": {
+          "sitelink": "詩",
+          "label": "詩",
+          "aliases": []
+        },
+        "ko": {
+          "sitelink": "시 (문학)",
+          "label": "시",
+          "aliases": []
+        },
+        "vi": {
+          "sitelink": "Thơ",
+          "label": "thơ",
+          "aliases": []
+        },
+        "th": {
+          "sitelink": "กวีนิพนธ์",
+          "label": "กวีนิพนธ์",
+          "aliases": []
+        },
+        "id": {
+          "sitelink": "Puisi",
+          "label": "puisi",
+          "aliases": []
+        }
+      }
+    },
+    "william-shakespeare": {
+      "enwiki": "William Shakespeare",
+      "qid": "Q692",
+      "description": "English playwright and poet (1564–1616)",
+      "langs": {
+        "en": {
+          "sitelink": "William Shakespeare",
+          "label": "William Shakespeare",
+          "aliases": []
+        },
+        "es": {
+          "sitelink": "William Shakespeare",
+          "label": null,
+          "aliases": [
+            "El Bardo"
+          ]
+        },
+        "fr": {
+          "sitelink": "William Shakespeare",
+          "label": null,
+          "aliases": []
+        },
+        "de": {
+          "sitelink": "William Shakespeare",
+          "label": null,
+          "aliases": []
+        },
+        "it": {
+          "sitelink": "William Shakespeare",
+          "label": null,
+          "aliases": []
+        },
+        "pt": {
+          "sitelink": "William Shakespeare",
+          "label": null,
+          "aliases": []
+        },
+        "pl": {
+          "sitelink": "William Shakespeare",
+          "label": "William Shakespeare",
+          "aliases": [
+            "Szekspir",
+            "William Szekspir",
+            "Wilhelm Szekspir",
+            "Wieszcz z Awonu"
+          ]
+        },
+        "ru": {
+          "sitelink": "Шекспир, Уильям",
+          "label": "Уильям Шекспир",
+          "aliases": [
+            "У. Шекспир",
+            "Шекспир",
+            "Шекспир, Уильям",
+            "Вильям Шекспир"
+          ]
+        },
+        "ar": {
+          "sitelink": "وليم شكسبير",
+          "label": "وليم شكسبير",
+          "aliases": [
+            "شكسبير"
+          ]
+        },
+        "hi": {
+          "sitelink": "विलियम शेक्सपीयर",
+          "label": "विलियम शेक्सपीयर",
+          "aliases": []
+        },
+        "zh": {
+          "sitelink": "威廉·莎士比亚",
+          "label": "威廉·莎士比亚",
+          "aliases": [
+            "莎士比亞",
+            "莎士比亚",
+            "莎翁"
+          ]
+        },
+        "ja": {
+          "sitelink": "ウィリアム・シェイクスピア",
+          "label": "ウィリアム・シェイクスピア",
+          "aliases": [
+            "シェークスピーヤ",
+            "シェークスピア",
+            "シェイクスピア",
+            "ウィリアム・シェークスピア",
+            "沙吉比亜",
+            "沙翁",
+            "シェークスペーヤ"
+          ]
+        },
+        "ko": {
+          "sitelink": "윌리엄 셰익스피어",
+          "label": "윌리엄 셰익스피어",
+          "aliases": [
+            "셰익스피어"
+          ]
+        },
+        "vi": {
+          "sitelink": "William Shakespeare",
+          "label": "William Shakespeare",
+          "aliases": [
+            "Uy-li-am Sếch-xpia",
+            "Sếch-xpia"
+          ]
+        },
+        "th": {
+          "sitelink": "วิลเลียม เชกสเปียร์",
+          "label": "วิลเลียม เชกสเปียร์",
+          "aliases": []
+        },
+        "id": {
+          "sitelink": "William Shakespeare",
+          "label": null,
+          "aliases": []
+        }
+      }
+    },
+    "climax": {
+      "enwiki": "Climax (rhetoric)",
+      "qid": "Q1122956",
+      "description": "figure of speech",
+      "langs": {
+        "en": {
+          "sitelink": "Climax (rhetoric)",
+          "label": "climax",
+          "aliases": []
+        },
+        "es": {
+          "sitelink": "Clímax (retórica)",
+          "label": "Clímax (retórica)",
+          "aliases": []
+        },
+        "fr": {
+          "sitelink": "Climax (rhétorique)",
+          "label": "climax",
+          "aliases": [
+            "Climax (narration)",
+            "Climax (Rhétorique)",
+            "Climax (rhetorique)"
+          ]
+        },
+        "de": {
+          "sitelink": "Klimax (Sprache)",
+          "label": "Klimax",
+          "aliases": []
+        },
+        "it": {
+          "sitelink": "Climax (figura retorica)",
+          "label": "climax",
+          "aliases": []
+        },
+        "pt": {
+          "sitelink": "Clímax (figura de estilo)",
+          "label": "Clímax",
+          "aliases": []
+        },
+        "pl": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "ru": {
+          "sitelink": "Градация",
+          "label": "Климакс",
+          "aliases": []
+        },
+        "ar": {
+          "sitelink": "ارتقاء (بلاغة)",
+          "label": "ارتقاء",
+          "aliases": []
+        },
+        "hi": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "zh": {
+          "sitelink": "層遞",
+          "label": "層遞",
+          "aliases": []
+        },
+        "ja": {
+          "sitelink": "漸層法",
+          "label": "漸層法",
+          "aliases": []
+        },
+        "ko": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "vi": {
+          "sitelink": null,
+          "label": "cao trào",
+          "aliases": [
+            "cao trào (hùng biện)"
+          ]
+        },
+        "th": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "id": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        }
+      }
+    },
+    "enclosed-rhyme": {
+      "enwiki": "Enclosed rhyme",
+      "qid": "Q4228974",
+      "description": "rhyme scheme a-b-b-a; used in e.g. the first two stanzas of Petrarchan sonnets",
+      "langs": {
+        "en": {
+          "sitelink": "Enclosed rhyme",
+          "label": "enclosed rhyme",
+          "aliases": []
+        },
+        "es": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "fr": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "de": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "it": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "pt": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "pl": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "ru": {
+          "sitelink": "Кольцевая рифма",
+          "label": "Кольцевая рифма",
+          "aliases": []
+        },
+        "ar": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "hi": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "zh": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "ja": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "ko": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "vi": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "th": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "id": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        }
+      }
+    },
+    "rhyme-scheme": {
+      "enwiki": "Rhyme scheme",
+      "qid": "Q3264652",
+      "description": "pattern of rhymes at the end of each line of a poem or song",
+      "langs": {
+        "en": {
+          "sitelink": "Rhyme scheme",
+          "label": "rhyme scheme",
+          "aliases": []
+        },
+        "es": {
+          "sitelink": null,
+          "label": "esquema de rimas",
+          "aliases": []
+        },
+        "fr": {
+          "sitelink": null,
+          "label": "schéma de rimes",
+          "aliases": []
+        },
+        "de": {
+          "sitelink": "Reimschema",
+          "label": "Reimschema",
+          "aliases": []
+        },
+        "it": {
+          "sitelink": "Schema rimico",
+          "label": "schema rimico",
+          "aliases": [
+            "schema di rime",
+            "schema delle rime"
+          ]
+        },
+        "pt": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "pl": {
+          "sitelink": "Układy rymów",
+          "label": "układy rymów",
+          "aliases": []
+        },
+        "ru": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "ar": {
+          "sitelink": "مخطط قافية",
+          "label": "مخطط قافية",
+          "aliases": []
+        },
+        "hi": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "zh": {
+          "sitelink": "韵法",
+          "label": "押韻結構",
+          "aliases": [
+            "押韻格式"
+          ]
+        },
+        "ja": {
+          "sitelink": "押韻構成",
+          "label": "押韻構成",
+          "aliases": [
+            "脚韻構成"
+          ]
+        },
+        "ko": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "vi": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "th": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        },
+        "id": {
+          "sitelink": null,
+          "label": null,
+          "aliases": []
+        }
+      }
+    }
+  }
+}

@@ -204,7 +204,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     import { PACK_LANGS, hasPack, loadPack } from '../lib/verse/packs';
     import { referee } from '../lib/verse/referee';
     import { cleanVerse } from '../lib/verse/text';
-    import { initI18n, languageName, locale, onLocaleChange, t, tm } from '../i18n';
+    import { initI18n, languageName, locale, num, onLocaleChange, t, tm } from '../i18n';
     import { criterionName, curseName, curseRule, curseRuleTheirs, deviceBrief, deviceName, signatureText } from '../i18n/duel';
     import type { Msg } from '../lib/verse/msg';
 
@@ -371,7 +371,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     // --- Brain ---
     const startBtn = $<HTMLButtonElement>('start-duel');
     const BRAIN_KEY = 'inspired-mile-brain';
-    const size = (mb: number) => (mb >= 1000 ? `${(mb / 1000).toFixed(1)} GB` : `${mb} MB`);
+    const size = (mb: number) => (mb >= 1000 ? `${num(Math.round(mb / 100) / 10)} GB` : `${num(mb)} MB`);
 
     function ready(noteKey: string | null) {
       say$($('setup-note'), noteKey);
@@ -582,7 +582,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       list.appendChild(checkRow(s.signature.met, t('live.signature', { card: card.name }), signatureText(s.signature)));
       if (s.powerWords) {
         const lent = duel.playerRelics[move.relicId!];
-        list.appendChild(checkRow(s.powerWords.met, t('live.power', { bonus: POWER_WORD_BONUS, words: lent.words.join(', ') }), s.powerWords.used.length ? t('live.powerUsed', { words: s.powerWords.used.join(', ') }) : ''));
+        list.appendChild(checkRow(s.powerWords.met, t('live.power', { bonus: POWER_WORD_BONUS, words: lent.words }), s.powerWords.used.length ? t('live.powerUsed', { words: s.powerWords.used }) : ''));
       }
       if (s.curse) {
         list.appendChild(checkRow(
@@ -631,7 +631,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         const b = cardChip(card, `cursor-pointer transition-all ${chosen ? 'border-purple-500/70 bg-purple-500/10' : ''} ${used || cantAfford ? 'opacity-30 pointer-events-none' : 'hover:border-purple-500/40'}`);
         b.setAttribute('role', 'button');
         b.dataset.itemId = id;
-        if (kind === 'relic') b.title = t('hand.lends', { words: d.playerRelics[id].words.join(', ') });
+        if (kind === 'relic') b.title = t('hand.lends', { words: d.playerRelics[id].words });
         else {
           const cast = d.playerCurses[id];
           b.title = t('hand.curses', { rule: curseRuleTheirs(cast.curseId, cast.param, d.lang) });
@@ -649,7 +649,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       }
       // Say in plain sight what the chosen items do; a tooltip is no use on a phone.
       const notes: string[] = [];
-      if (move.relicId) notes.push(t('hand.relicNote', { card: getCardById(move.relicId)!.name, words: d.playerRelics[move.relicId].words.join(', ') }));
+      if (move.relicId) notes.push(t('hand.relicNote', { card: getCardById(move.relicId)!.name, words: d.playerRelics[move.relicId].words }));
       if (move.potionId) {
         const cast = d.playerCurses[move.potionId];
         const card = getCardById(move.potionId)!.name;
