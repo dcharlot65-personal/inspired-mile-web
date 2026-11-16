@@ -72,11 +72,16 @@ export function inLanguage(text, lang, lid) {
 
 const META = /^\s*["'“«(\[]?\s*(here(?:'s| is| are)?|sure|certainly|of course|okay|ok|note|notes|translation|explanation|verse|title|line\s*\d+|couplet|haiku|quatrain|tercet|acrostic|anaphora|answer|response)\b[^\n]{0,60}[:：!]/i;
 
-/** Why a line reads as commentary rather than verse, or null. */
-export function commentaryLine(line, lang) {
+/**
+ * Why a line reads as commentary rather than verse, or null. `first` is whether it is the
+ * verse's first line: a label ("Here is the couplet:", in any language) comes first and
+ * ends in a colon. Lines of real verse end in colons too, so the colon counts only there:
+ * measured on the 443 reference verses, that flags 2 (0.5%); on any line it flagged 10.
+ */
+export function commentaryLine(line, lang, first = false) {
   const l = line.trim();
   if (!l) return null;
-  if (/[:：]\s*$/.test(l)) return 'ends in a colon';
+  if (first && /[:：]\s*$/.test(l)) return 'a first line that ends in a colon';
   if (META.test(l)) return 'opens like a note';
   if (/^\s*(#{1,6}\s|\*\*|[-*]\s)/.test(l)) return 'markup';
   const latinLang = !['ru', 'ar', 'hi', 'th', 'ko', 'zh', 'ja'].includes(lang);
@@ -90,7 +95,8 @@ export function commentaryLine(line, lang) {
 
 /** Does a verse contain commentary? Returns the reasons, one per offending line. */
 export function commentary(verse, lang) {
-  return verse.split(/\r?\n/).map((l) => commentaryLine(l, lang)).filter(Boolean);
+  const lines = verse.split(/\r?\n/).filter((l) => l.trim());
+  return lines.map((l, i) => commentaryLine(l, lang, i === 0 && lines.length > 1)).filter(Boolean);
 }
 
 // --- Summaries ---
@@ -203,4 +209,43 @@ export function decideWrite(s, t, recall) {
   if (!(s.commentary / n <= t.commentaryAtMost)) why.push(`commentary in ${s.commentary}/${n} plays`);
   if (!(s.formKept / n >= t.formKeptAtLeast)) why.push(`kept the form in full in ${s.formKept}/${n} plays (${((s.formKept / n) * 100).toFixed(0)}%), under ${t.formKeptAtLeast * 100}%`);
   return { ok: why.length === 0, why };
+}
+
+// --- From result files to decisions ---
+
+/**
+ * Everything decided, from the result files alone.
+ *   cells        the parsed cell files (docs/language/model-eval/cells)
+ *   lid          { [text]: code } the language identifier's answers, recorded by analyze.mjs
+ *   thresholds   scripts/model-eval/thresholds.json
+ *   reference    { [lang]: string[] } real verse per language, to measure the detector on
+ * A cell that is missing is "not measured", and decides as unsupported.
+ */
+export function derive(cells, lid, thresholds, reference) {
+  const lidOf = (text) => lid[text] ?? null;
+  const detector = {};
+  for (const lang of LANGS) {
+    const texts = reference[lang] ?? [];
+    const pass = texts.filter((t) => inLanguage(t, lang, lidOf(t))).length;
+    detector[lang] = { texts: texts.length, pass, recall: texts.length ? pass / texts.length : null };
+  }
+  const find = (tier, lang, task) => cells.find((c) => c.tier === tier && c.lang === lang && c.task === task) ?? null;
+  const table = {};
+  const models = {};
+  for (const tier of TIERS) {
+    table[tier] = {};
+    models[tier] = { writesIn: [], judgesIn: [] };
+    for (const lang of LANGS) {
+      const jc = find(tier, lang, 'judge');
+      const wc = find(tier, lang, 'write');
+      const judge = jc ? summarizeJudge(jc) : null;
+      const write = wc ? summarizeWrite(wc, lidOf) : null;
+      const dj = decideJudge(judge, thresholds.judge);
+      const dw = decideWrite(write, thresholds.write, detector[lang].recall);
+      table[tier][lang] = { judge, write, judges: dj, writes: dw };
+      if (dj.ok) models[tier].judgesIn.push(lang);
+      if (dw.ok) models[tier].writesIn.push(lang);
+    }
+  }
+  return { detector, table, models };
 }

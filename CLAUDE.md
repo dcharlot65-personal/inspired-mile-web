@@ -22,7 +22,8 @@ A three-round duel of verses. Rules live in `src/lib/verse/` and are pure and se
 `duel.ts` (scoring: craft + judge), `judge.ts` (how a model's preference is read),
 `opponent.ts`, `session.ts` (order of play, shared by every front end).
 Read the header comment of `judge.ts` before changing judging: asked "A or B?" outright,
-small models answer by position. `scripts/judge-eval.mjs` measures a model's judging.
+small models answer by position. `scripts/judge-eval.mjs` was the first, English-only measurement;
+`scripts/model-eval/` measures every model in every language through the game's own functions.
 
 ## Build and test — on the build host, never on the dev Mac
 
@@ -90,6 +91,16 @@ left behind by a killed run is found by its port: `lsof -nP -iTCP:<port> -sTCP:L
   opponent's verses) is in `src/lib/verse/packs/`, loaded with `loadPack(lang)` before
   `createDuel`. Rhyme and syllable rules per language: `rhyme.ts`, `text.ts`; thresholds:
   `lang.ts`. Rhyming forms are not offered in zh, ja, th.
+- **Where a model is used is measured, not assumed** (`docs/language/MODEL-EVAL.md`).
+  `MODELS[tier].writesIn` / `.judgesIn` in `src/lib/brain.ts` list the languages in which each
+  model writes the opponent's verse and judges; anywhere else the written opponent plays and the
+  rules judge, and the language picker on the battle page says so. The lists are copied from
+  `docs/language/model-eval/decisions.json`, which `scripts/model-eval/analyze.mjs` derives from
+  the result files in `docs/language/model-eval/cells/` by the thresholds in
+  `scripts/model-eval/thresholds.json`; `src/lib/model-eval.test.ts` fails when either drifts.
+  Never edit a list by hand: run the cell again (`scripts/model-eval/run.mjs`, on the build host,
+  one run at a time, under memguard; it resumes), then `analyze.mjs`, then copy the lists.
+  A language with no result file is unsupported for that model.
 - Every verse in every pack must keep its form as the code checks it (`verse.test.ts`).
   `node scripts/mutate-packs.mjs` (on the build host) proves those tests go red.
 - Writing a `\uXXXX` escape through an agent's file tools can turn it into the character

@@ -1,0 +1,423 @@
+{
+ "note": "Where each model may write the opponent's verse and where it may judge. Derived by scripts/model-eval/analyze.mjs from cells/*.json with scripts/model-eval/thresholds.json; src/lib/brain.ts copies these lists and src/lib/model-eval.test.ts fails if either drifts. A language that was not measured is in no list.",
+ "models": {
+  "grand": {
+   "writesIn": [],
+   "judgesIn": []
+  },
+  "standard": {
+   "writesIn": [],
+   "judgesIn": []
+  },
+  "lite": {
+   "writesIn": [],
+   "judgesIn": []
+  }
+ },
+ "measured": {
+  "grand": {
+   "judge": [],
+   "write": []
+  },
+  "standard": {
+   "judge": [],
+   "write": []
+  },
+  "lite": {
+   "judge": [],
+   "write": []
+  }
+ },
+ "why": {
+  "grand": {
+   "en": {
+    "writes": [
+     "not measured"
+    ],
+    "judges": [
+     "not measured"
+    ]
+   },
+   "es": {
+    "writes": [
+     "not measured"
+    ],
+    "judges": [
+     "not measured"
+    ]
+   },
+   "fr": {
+    "writes": [
+     "not measured"
+    ],
+    "judges": [
+     "not measured"
+    ]
+   },
+   "de": {
+    "writes": [
+     "not measured"
+    ],
+    "judges": [
+     "not measured"
+    ]
+   },
+   "it": {
+    "writes": [
+     "not measured"
+    ],
+    "judges": [
+     "not measured"
+    ]
+   },
+   "pt": {
+    "writes": [
+     "not measured"
+    ],
+    "judges": [
+     "not measured"
+    ]
+   },
+   "pl": {
+    "writes": [
+     "not measured"
+    ],
+    "judges": [
+     "not measured"
+    ]
+   },
+   "ru": {
+    "writes": [
+     "not measured"
+    ],
+    "judges": [
+     "not measured"
+    ]
+   },
+   "ar": {
+    "writes": [
+     "not measured"
+    ],
+    "judges": [
+     "not measured"
+    ]
+   },
+   "hi": {
+    "writes": [
+     "not measured"
+    ],
+    "judges": [
+     "not measured"
+    ]
+   },
+   "zh": {
+    "writes": [
+     "not measured"
+    ],
+    "judges": [
+     "not measured"
+    ]
+   },
+   "ja": {
+    "writes": [
+     "not measured"
+    ],
+    "judges": [
+     "not measured"
+    ]
+   },
+   "ko": {
+    "writes": [
+     "not measured"
+    ],
+    "judges": [
+     "not measured"
+    ]
+   },
+   "vi": {
+    "writes": [
+     "not measured"
+    ],
+    "judges": [
+     "not measured"
+    ]
+   },
+   "th": {
+    "writes": [
+     "not measured"
+    ],
+    "judges": [
+     "not measured"
+    ]
+   },
+   "id": {
+    "writes": [
+     "not measured"
+    ],
+    "judges": [
+     "not measured"
+    ]
+   }
+  },
+  "standard": {
+   "en": {
+    "writes": [
+     "not measured"
+    ],
+    "judges": [
+     "not measured"
+    ]
+   },
+   "es": {
+    "writes": [
+     "not measured"
+    ],
+    "judges": [
+     "not measured"
+    ]
+   },
+   "fr": {
+    "writes": [
+     "not measured"
+    ],
+    "judges": [
+     "not measured"
+    ]
+   },
+   "de": {
+    "writes": [
+     "not measured"
+    ],
+    "judges": [
+     "not measured"
+    ]
+   },
+   "it": {
+    "writes": [
+     "not measured"
+    ],
+    "judges": [
+     "not measured"
+    ]
+   },
+   "pt": {
+    "writes": [
+     "not measured"
+    ],
+    "judges": [
+     "not measured"
+    ]
+   },
+   "pl": {
+    "writes": [
+     "not measured"
+    ],
+    "judges": [
+     "not measured"
+    ]
+   },
+   "ru": {
+    "writes": [
+     "not measured"
+    ],
+    "judges": [
+     "not measured"
+    ]
+   },
+   "ar": {
+    "writes": [
+     "not measured"
+    ],
+    "judges": [
+     "not measured"
+    ]
+   },
+   "hi": {
+    "writes": [
+     "not measured"
+    ],
+    "judges": [
+     "not measured"
+    ]
+   },
+   "zh": {
+    "writes": [
+     "not measured"
+    ],
+    "judges": [
+     "not measured"
+    ]
+   },
+   "ja": {
+    "writes": [
+     "not measured"
+    ],
+    "judges": [
+     "not measured"
+    ]
+   },
+   "ko": {
+    "writes": [
+     "not measured"
+    ],
+    "judges": [
+     "not measured"
+    ]
+   },
+   "vi": {
+    "writes": [
+     "not measured"
+    ],
+    "judges": [
+     "not measured"
+    ]
+   },
+   "th": {
+    "writes": [
+     "not measured"
+    ],
+    "judges": [
+     "not measured"
+    ]
+   },
+   "id": {
+    "writes": [
+     "not measured"
+    ],
+    "judges": [
+     "not measured"
+    ]
+   }
+  },
+  "lite": {
+   "en": {
+    "writes": [
+     "not measured"
+    ],
+    "judges": [
+     "not measured"
+    ]
+   },
+   "es": {
+    "writes": [
+     "not measured"
+    ],
+    "judges": [
+     "not measured"
+    ]
+   },
+   "fr": {
+    "writes": [
+     "not measured"
+    ],
+    "judges": [
+     "not measured"
+    ]
+   },
+   "de": {
+    "writes": [
+     "not measured"
+    ],
+    "judges": [
+     "not measured"
+    ]
+   },
+   "it": {
+    "writes": [
+     "not measured"
+    ],
+    "judges": [
+     "not measured"
+    ]
+   },
+   "pt": {
+    "writes": [
+     "not measured"
+    ],
+    "judges": [
+     "not measured"
+    ]
+   },
+   "pl": {
+    "writes": [
+     "not measured"
+    ],
+    "judges": [
+     "not measured"
+    ]
+   },
+   "ru": {
+    "writes": [
+     "not measured"
+    ],
+    "judges": [
+     "not measured"
+    ]
+   },
+   "ar": {
+    "writes": [
+     "not measured"
+    ],
+    "judges": [
+     "not measured"
+    ]
+   },
+   "hi": {
+    "writes": [
+     "not measured"
+    ],
+    "judges": [
+     "not measured"
+    ]
+   },
+   "zh": {
+    "writes": [
+     "not measured"
+    ],
+    "judges": [
+     "not measured"
+    ]
+   },
+   "ja": {
+    "writes": [
+     "not measured"
+    ],
+    "judges": [
+     "not measured"
+    ]
+   },
+   "ko": {
+    "writes": [
+     "not measured"
+    ],
+    "judges": [
+     "not measured"
+    ]
+   },
+   "vi": {
+    "writes": [
+     "not measured"
+    ],
+    "judges": [
+     "not measured"
+    ]
+   },
+   "th": {
+    "writes": [
+     "not measured"
+    ],
+    "judges": [
+     "not measured"
+    ]
+   },
+   "id": {
+    "writes": [
+     "not measured"
+    ],
+    "judges": [
+     "not measured"
+    ]
+   }
+  }
+ }
+}

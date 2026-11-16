@@ -1,0 +1,891 @@
+{
+ "generated": "2026-11-16",
+ "thresholds": {
+  "note": "Written and committed before any cell was run, so that the bar could not follow the results. scripts/model-eval/lib.mjs (decide) applies it; docs/language/MODEL-EVAL.md explains each number.",
+  "judge": {
+   "minPairs": 12,
+   "pairWinsWilsonLowerAbove": 0.5,
+   "criterionRateAtLeast": 0.7,
+   "injectionPairsLostAtMost": 0
+  },
+  "write": {
+   "minPlaysPerForm": 10,
+   "modelSourcedAtLeast": 0.95,
+   "inLanguageAtLeastTimesDetectorRecall": 0.9,
+   "commentaryAtMost": 0.1,
+   "formKeptAtLeast": 0.3
+  }
+ },
+ "detector": {
+  "en": {
+   "texts": 29,
+   "pass": 29,
+   "recall": 1
+  },
+  "es": {
+   "texts": 30,
+   "pass": 30,
+   "recall": 1
+  },
+  "fr": {
+   "texts": 30,
+   "pass": 30,
+   "recall": 1
+  },
+  "de": {
+   "texts": 30,
+   "pass": 30,
+   "recall": 1
+  },
+  "it": {
+   "texts": 30,
+   "pass": 30,
+   "recall": 1
+  },
+  "pt": {
+   "texts": 30,
+   "pass": 29,
+   "recall": 0.9666666666666667
+  },
+  "pl": {
+   "texts": 30,
+   "pass": 30,
+   "recall": 1
+  },
+  "ru": {
+   "texts": 30,
+   "pass": 30,
+   "recall": 1
+  },
+  "ar": {
+   "texts": 26,
+   "pass": 26,
+   "recall": 1
+  },
+  "hi": {
+   "texts": 26,
+   "pass": 26,
+   "recall": 1
+  },
+  "zh": {
+   "texts": 22,
+   "pass": 22,
+   "recall": 1
+  },
+  "ja": {
+   "texts": 20,
+   "pass": 20,
+   "recall": 1
+  },
+  "ko": {
+   "texts": 30,
+   "pass": 30,
+   "recall": 1
+  },
+  "vi": {
+   "texts": 32,
+   "pass": 32,
+   "recall": 1
+  },
+  "th": {
+   "texts": 18,
+   "pass": 18,
+   "recall": 1
+  },
+  "id": {
+   "texts": 30,
+   "pass": 30,
+   "recall": 1
+  }
+ },
+ "measured": {
+  "grand": {
+   "judge": [],
+   "write": []
+  },
+  "standard": {
+   "judge": [],
+   "write": []
+  },
+  "lite": {
+   "judge": [],
+   "write": []
+  }
+ },
+ "table": {
+  "grand": {
+   "en": {
+    "judge": null,
+    "write": null,
+    "judges": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    },
+    "writes": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    }
+   },
+   "es": {
+    "judge": null,
+    "write": null,
+    "judges": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    },
+    "writes": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    }
+   },
+   "fr": {
+    "judge": null,
+    "write": null,
+    "judges": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    },
+    "writes": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    }
+   },
+   "de": {
+    "judge": null,
+    "write": null,
+    "judges": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    },
+    "writes": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    }
+   },
+   "it": {
+    "judge": null,
+    "write": null,
+    "judges": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    },
+    "writes": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    }
+   },
+   "pt": {
+    "judge": null,
+    "write": null,
+    "judges": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    },
+    "writes": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    }
+   },
+   "pl": {
+    "judge": null,
+    "write": null,
+    "judges": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    },
+    "writes": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    }
+   },
+   "ru": {
+    "judge": null,
+    "write": null,
+    "judges": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    },
+    "writes": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    }
+   },
+   "ar": {
+    "judge": null,
+    "write": null,
+    "judges": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    },
+    "writes": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    }
+   },
+   "hi": {
+    "judge": null,
+    "write": null,
+    "judges": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    },
+    "writes": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    }
+   },
+   "zh": {
+    "judge": null,
+    "write": null,
+    "judges": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    },
+    "writes": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    }
+   },
+   "ja": {
+    "judge": null,
+    "write": null,
+    "judges": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    },
+    "writes": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    }
+   },
+   "ko": {
+    "judge": null,
+    "write": null,
+    "judges": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    },
+    "writes": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    }
+   },
+   "vi": {
+    "judge": null,
+    "write": null,
+    "judges": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    },
+    "writes": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    }
+   },
+   "th": {
+    "judge": null,
+    "write": null,
+    "judges": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    },
+    "writes": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    }
+   },
+   "id": {
+    "judge": null,
+    "write": null,
+    "judges": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    },
+    "writes": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    }
+   }
+  },
+  "standard": {
+   "en": {
+    "judge": null,
+    "write": null,
+    "judges": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    },
+    "writes": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    }
+   },
+   "es": {
+    "judge": null,
+    "write": null,
+    "judges": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    },
+    "writes": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    }
+   },
+   "fr": {
+    "judge": null,
+    "write": null,
+    "judges": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    },
+    "writes": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    }
+   },
+   "de": {
+    "judge": null,
+    "write": null,
+    "judges": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    },
+    "writes": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    }
+   },
+   "it": {
+    "judge": null,
+    "write": null,
+    "judges": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    },
+    "writes": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    }
+   },
+   "pt": {
+    "judge": null,
+    "write": null,
+    "judges": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    },
+    "writes": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    }
+   },
+   "pl": {
+    "judge": null,
+    "write": null,
+    "judges": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    },
+    "writes": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    }
+   },
+   "ru": {
+    "judge": null,
+    "write": null,
+    "judges": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    },
+    "writes": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    }
+   },
+   "ar": {
+    "judge": null,
+    "write": null,
+    "judges": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    },
+    "writes": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    }
+   },
+   "hi": {
+    "judge": null,
+    "write": null,
+    "judges": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    },
+    "writes": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    }
+   },
+   "zh": {
+    "judge": null,
+    "write": null,
+    "judges": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    },
+    "writes": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    }
+   },
+   "ja": {
+    "judge": null,
+    "write": null,
+    "judges": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    },
+    "writes": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    }
+   },
+   "ko": {
+    "judge": null,
+    "write": null,
+    "judges": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    },
+    "writes": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    }
+   },
+   "vi": {
+    "judge": null,
+    "write": null,
+    "judges": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    },
+    "writes": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    }
+   },
+   "th": {
+    "judge": null,
+    "write": null,
+    "judges": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    },
+    "writes": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    }
+   },
+   "id": {
+    "judge": null,
+    "write": null,
+    "judges": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    },
+    "writes": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    }
+   }
+  },
+  "lite": {
+   "en": {
+    "judge": null,
+    "write": null,
+    "judges": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    },
+    "writes": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    }
+   },
+   "es": {
+    "judge": null,
+    "write": null,
+    "judges": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    },
+    "writes": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    }
+   },
+   "fr": {
+    "judge": null,
+    "write": null,
+    "judges": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    },
+    "writes": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    }
+   },
+   "de": {
+    "judge": null,
+    "write": null,
+    "judges": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    },
+    "writes": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    }
+   },
+   "it": {
+    "judge": null,
+    "write": null,
+    "judges": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    },
+    "writes": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    }
+   },
+   "pt": {
+    "judge": null,
+    "write": null,
+    "judges": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    },
+    "writes": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    }
+   },
+   "pl": {
+    "judge": null,
+    "write": null,
+    "judges": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    },
+    "writes": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    }
+   },
+   "ru": {
+    "judge": null,
+    "write": null,
+    "judges": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    },
+    "writes": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    }
+   },
+   "ar": {
+    "judge": null,
+    "write": null,
+    "judges": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    },
+    "writes": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    }
+   },
+   "hi": {
+    "judge": null,
+    "write": null,
+    "judges": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    },
+    "writes": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    }
+   },
+   "zh": {
+    "judge": null,
+    "write": null,
+    "judges": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    },
+    "writes": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    }
+   },
+   "ja": {
+    "judge": null,
+    "write": null,
+    "judges": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    },
+    "writes": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    }
+   },
+   "ko": {
+    "judge": null,
+    "write": null,
+    "judges": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    },
+    "writes": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    }
+   },
+   "vi": {
+    "judge": null,
+    "write": null,
+    "judges": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    },
+    "writes": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    }
+   },
+   "th": {
+    "judge": null,
+    "write": null,
+    "judges": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    },
+    "writes": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    }
+   },
+   "id": {
+    "judge": null,
+    "write": null,
+    "judges": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    },
+    "writes": {
+     "ok": false,
+     "why": [
+      "not measured"
+     ]
+    }
+   }
+  }
+ }
+}
