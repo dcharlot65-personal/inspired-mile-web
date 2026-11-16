@@ -132,7 +132,7 @@
 129 | Em Como Gostais, quem faz o discurso das “sete idades do homem”? | = | = | = | O duque exilado
 130 | Que personagem de Sonho de uma Noite de Verão dirige um grupo de atores amadores? | = | = | = | =
 131 | Quem é o pai de Cordelia em Rei Lear? | O rei Lear | O duque de Gloucester | O conde de Kent | O duque da Cornualha
-132 | Em A Tempestade, que relação Caliban afirma ter com a ilha? | Diz ser o seu legítimo dono | Diz ser o seu criador | Diz ser o seu protetor | Não afirma nenhuma
+132 | Em A Tempestade, que relação Caliban afirma ter com a ilha? | Diz ser o seu legítimo senhor | Diz ser o seu criador | Diz ser o seu protetor | Não afirma nenhuma
 133 | Como se chama a esposa de Bruto em Júlio César? | = | = | = | =
 134 | Que peça de Shakespeare se passa nos bosques de Atenas? | = | = | = | =
 135 | Em Medida por Medida, por que crime Claudio foi preso? | Por engravidar a noiva antes do casamento | Por roubo | Por assassinato | Por traição

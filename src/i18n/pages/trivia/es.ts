@@ -662,7 +662,7 @@ const messages: Record<string, string> = {
   'trivia.131.o2': "El conde de Kent",
   'trivia.131.o3': "El duque de Cornualles",
   'trivia.132.q': "En La tempestad, ¿qué relación dice tener Calibán con la isla?",
-  'trivia.132.o0': "Dice ser su legítimo dueño",
+  'trivia.132.o0': "Dice ser su legítimo señor",
   'trivia.132.o1': "Dice ser su creador",
   'trivia.132.o2': "Dice ser su protector",
   'trivia.132.o3': "No dice tener ninguna",

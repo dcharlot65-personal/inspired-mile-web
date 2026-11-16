@@ -662,7 +662,7 @@ const messages: Record<string, string> = {
   'trivia.131.o2': "肯特伯爵",
   'trivia.131.o3': "康华尔公爵",
   'trivia.132.q': "在《暴风雨》中，凯列班声称自己和这座岛是什么关系？",
-  'trivia.132.o0': "他自称是岛的合法主人",
+  'trivia.132.o0': "他自称是岛的合法统治者",
   'trivia.132.o1': "他自称是岛的创造者",
   'trivia.132.o2': "他自称是岛的守护者",
   'trivia.132.o3': "他不认为有任何关系",

@@ -662,7 +662,7 @@ const messages: Record<string, string> = {
   'trivia.131.o2': "Bá tước xứ Kent",
   'trivia.131.o3': "Công tước xứ Cornwall",
   'trivia.132.q': "Trong Giông tố, Caliban tự nhận mình có quan hệ gì với hòn đảo?",
-  'trivia.132.o0': "Hắn tự nhận là chủ nhân chính đáng của đảo",
+  'trivia.132.o0': "Hắn tự nhận là người cai trị chính đáng của đảo",
   'trivia.132.o1': "Hắn tự nhận là người tạo ra đảo",
   'trivia.132.o2': "Hắn tự nhận là người bảo vệ đảo",
   'trivia.132.o3': "Hắn không nhận quan hệ nào",
