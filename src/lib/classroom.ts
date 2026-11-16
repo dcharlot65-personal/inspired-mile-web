@@ -2,6 +2,8 @@
  * Classroom Mode — Client-side API for teacher/student classroom operations.
  */
 
+import { ApiError } from './api-client';
+
 const API = import.meta.env.PUBLIC_API_URL ?? '/api/v1';
 
 export interface Classroom {
@@ -33,8 +35,8 @@ async function apiFetch<T>(path: string, options: RequestInit = {}): Promise<T> 
     ...options,
   });
   if (!res.ok) {
-    const text = await res.text();
-    throw new Error(text || res.statusText);
+    // The status and the body, for src/lib/api-errors.ts to turn into a code. Never shown as they are.
+    throw new ApiError(res.status, await res.text());
   }
   return res.json();
 }
