@@ -20,11 +20,17 @@ import {
   AbstractMesh,
 } from '@babylonjs/core';
 import '@babylonjs/loaders';
+import { msg, type Msg } from './verse/msg';
 
 export interface SplatViewerOptions {
   canvas: HTMLCanvasElement;
-  onStatusChange?: (status: string) => void;
-  onError?: (error: string) => void;
+  /**
+   * What the viewer is doing, as a message key and its variables (src/i18n/pages/viewer),
+   * never a sentence: the page says it in the interface language.
+   */
+  onStatusChange?: (status: Msg) => void;
+  /** What went wrong, likewise as a key. The technical detail goes to the console. */
+  onError?: (error: Msg) => void;
   onFpsUpdate?: (fps: number) => void;
 }
 
@@ -122,7 +128,7 @@ export class SplatViewer {
 
   /** Load a Gaussian splat .ply file */
   async loadSplat(plyUrl: string): Promise<void> {
-    this.options.onStatusChange?.('Loading splat model...');
+    this.options.onStatusChange?.(msg('viewer.status.loading'));
 
     // Dispose previous meshes fully
     for (const mesh of this.currentMeshes) {
@@ -160,15 +166,15 @@ export class SplatViewer {
         this.wakeRenderer();
 
         const fileName = plyUrl.split('/').pop() || plyUrl;
-        const tierLabel = this.perfTier === 'high' ? '' : ` (${this.perfTier} quality)`;
         this.options.onStatusChange?.(
-          `Loaded ${fileName}${tierLabel} — orbit with mouse, scroll to zoom`
+          msg(this.perfTier === 'high' ? 'viewer.status.loaded' : 'viewer.status.loadedReduced', { file: fileName })
         );
       } else {
-        this.options.onError?.('No meshes found in file');
+        this.options.onError?.(msg('viewer.error.noMeshes'));
       }
     } catch (e: any) {
-      this.options.onError?.(`Failed to load: ${e.message || e}`);
+      console.error('[splat-viewer] could not load', plyUrl, e);
+      this.options.onError?.(msg('viewer.error.loadFailed'));
     }
   }
 
@@ -236,7 +242,7 @@ export class SplatViewer {
       canvas.addEventListener(event, () => this.wakeRenderer(), { passive: true });
     }
 
-    this.options.onStatusChange?.('3D viewer ready — select a card to view');
+    this.options.onStatusChange?.(msg('viewer.status.ready'));
   }
 
   private snapshotCamera(): void {
@@ -288,9 +294,7 @@ export class SplatViewer {
     const currentLevel = this.engine.getHardwareScalingLevel();
     const newLevel = Math.min(currentLevel * 1.5, 3.0); // lower res
     this.engine.setHardwareScalingLevel(newLevel);
-    this.options.onStatusChange?.(
-      `Reduced render quality for smoother performance`
-    );
+    this.options.onStatusChange?.(msg('viewer.status.reduced'));
   }
 
   /** Stop and dispose all resources */

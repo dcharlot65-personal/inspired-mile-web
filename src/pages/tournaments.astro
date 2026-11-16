@@ -1,32 +1,29 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+// Every sentence on this page is a key in src/i18n/pages/tournaments (and "shared"); the
+// English written in the markup is what a reader sees before the script has run.
 ---
 
-<BaseLayout title="Tournaments" description="Compete in Shakespearean rap battle tournaments for glory and prizes.">
+<BaseLayout title="Tournaments" description="Enter tournaments of verse duels and play for the title.">
 
   <section class="section-padding">
     <div class="max-w-6xl mx-auto">
       <div class="text-center mb-12">
         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold-500/10 border border-gold-500/20 mb-6">
           <span class="w-2 h-2 rounded-full bg-gold-500 animate-pulse"></span>
-          <span class="text-gold-400 text-xs font-medium tracking-wide uppercase">Tournaments</span>
+          <span class="text-gold-400 text-xs font-medium tracking-wide uppercase" data-i18n="nav.tournaments">Tournaments</span>
         </div>
-        <h1 class="text-4xl sm:text-5xl font-display font-bold mb-4">
-          Tournament <span class="text-gradient">Arena</span>
-        </h1>
-        <p class="text-obsidian-400 max-w-2xl mx-auto">
-          Enter organized competitions and prove your Shakespearean rap mastery. Single elimination, round robin, and more.
+        <!-- Two pieces so that one can carry the gradient; the first brings its own space where the language wants one. -->
+        <h1 class="text-4xl sm:text-5xl font-display font-bold mb-4"><span data-i18n="tour.titleA">Tournament </span><span class="text-gradient" data-i18n="tour.titleB">Arena</span></h1>
+        <p class="text-obsidian-400 max-w-2xl mx-auto" data-i18n="tour.intro">
+          Enter organised competitions and show your command of verse. Single elimination, round robin and more.
         </p>
       </div>
 
       <!-- Tabs -->
-      <div class="flex gap-2 mb-8 justify-center">
-        <button id="tab-list" class="px-6 py-2 text-sm font-medium rounded-lg bg-gold-500/10 text-gold-400 border border-gold-500/20 transition-colors">
-          Tournaments
-        </button>
-        <button id="tab-bracket" class="px-6 py-2 text-sm font-medium rounded-lg text-obsidian-400 border border-obsidian-700 hover:border-obsidian-600 transition-colors">
-          Bracket View
-        </button>
+      <div class="flex flex-wrap gap-2 mb-8 justify-center">
+        <button id="tab-list" class="px-6 py-2 text-sm font-medium rounded-lg bg-gold-500/10 text-gold-400 border border-gold-500/20 transition-colors" data-i18n="nav.tournaments">Tournaments</button>
+        <button id="tab-bracket" class="px-6 py-2 text-sm font-medium rounded-lg text-obsidian-400 border border-obsidian-700 hover:border-obsidian-600 transition-colors" data-i18n="tour.tab.bracket">Bracket</button>
       </div>
 
       <!-- Tournament List -->
@@ -62,21 +59,21 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <!-- Bracket View -->
       <div id="panel-bracket" class="hidden">
         <div class="mb-6">
-          <select id="bracket-tournament-select" class="bg-obsidian-800 border border-obsidian-700 rounded-lg px-4 py-2 text-sm text-obsidian-200 focus:outline-hidden focus:border-gold-500/50">
-            <option value="">Select a tournament...</option>
+          <select id="bracket-tournament-select" aria-label="Choose a tournament…" data-i18n-aria-label="tour.select" class="max-w-full bg-obsidian-800 border border-obsidian-700 rounded-lg px-4 py-2 text-sm text-obsidian-200 focus:outline-hidden focus:border-gold-500/50">
+            <option value="" data-i18n="tour.select">Choose a tournament…</option>
           </select>
         </div>
 
         <div id="bracket-container" class="overflow-x-auto">
           <div class="text-center py-12">
-            <p class="text-sm text-obsidian-500">Select a tournament to view its bracket.</p>
+            <p class="text-sm text-obsidian-500" data-i18n="tour.selectHint">Choose a tournament to see its bracket.</p>
           </div>
         </div>
 
         <!-- Leaderboard -->
         <div id="leaderboard-section" class="hidden mt-8">
-          <h2 class="font-display text-xl font-bold text-obsidian-200 mb-4">Leaderboard</h2>
-          <div id="leaderboard-table" class="card-glass overflow-hidden">
+          <h2 class="font-display text-xl font-bold text-obsidian-200 mb-4" data-i18n="tour.leaderboard">Standings</h2>
+          <div id="leaderboard-table" class="card-glass overflow-x-auto">
             <!-- Populated by JS -->
           </div>
         </div>
@@ -85,17 +82,22 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   </section>
 
   <script>
-    import { listTournaments, getTournament, registerForTournament, getBracket, getLeaderboard, type Tournament, type BracketMatch, type LeaderboardEntry } from '../lib/tournament-client';
+    import { listTournaments, registerForTournament, getBracket, getLeaderboard, type Tournament, type BracketMatch, type LeaderboardEntry } from '../lib/tournament-client';
     import { isLoggedIn } from '../lib/storage-backend';
+    import { has, onLocaleChange, t } from '../i18n';
+    import { dateTime, num } from '../i18n/fmt';
+    import { errorText, esc, initPage } from '../i18n/page';
+
+    const toast = (message: string, type: 'success' | 'error' | 'warning') => (window as any).showToast?.(message, type);
 
     // Tabs
     const tabPairs = [['list', 'panel-list'], ['bracket', 'panel-bracket']] as const;
     tabPairs.forEach(([tab, panel]) => {
       document.getElementById(`tab-${tab}`)!.addEventListener('click', () => {
-        tabPairs.forEach(([t, p]) => {
-          document.getElementById(p)!.classList.toggle('hidden', t !== tab);
-          const btn = document.getElementById(`tab-${t}`)!;
-          if (t === tab) {
+        tabPairs.forEach(([tb, p]) => {
+          document.getElementById(p)!.classList.toggle('hidden', tb !== tab);
+          const btn = document.getElementById(`tab-${tb}`)!;
+          if (tb === tab) {
             btn.className = 'px-6 py-2 text-sm font-medium rounded-lg bg-gold-500/10 text-gold-400 border border-gold-500/20 transition-colors';
           } else {
             btn.className = 'px-6 py-2 text-sm font-medium rounded-lg text-obsidian-400 border border-obsidian-700 hover:border-obsidian-600 transition-colors';
@@ -114,65 +116,71 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       }
     }
 
+    // The server's words for a state or a format have names here; one it adds later is shown as it wrote it.
+    const statusName = (status: string) => (has(`tour.status.${status}`) ? t(`tour.status.${status}`) : status.replace(/_/g, ' '));
+    const formatName = (format: string) => (has(`tour.format.${format}`) ? t(`tour.format.${format}`) : format.replace(/_/g, ' '));
+    const note = (cls: string, text: string, alert = false) =>
+      `<div class="text-center py-12"><p class="text-sm ${cls}"${alert ? ' role="alert"' : ''}>${esc(text)}</p></div>`;
+
     // Load tournament list
     const listContainer = document.getElementById('tournament-list')!;
     const bracketSelect = document.getElementById('bracket-tournament-select') as HTMLSelectElement;
+
+    type ListState = { state: 'loading' } | { state: 'ready' } | { state: 'failed'; error: unknown };
     let tournaments: Tournament[] = [];
+    let listState: ListState = { state: 'loading' };
 
     async function loadTournaments() {
       try {
         tournaments = await listTournaments();
-        renderTournaments();
-        populateBracketSelect();
-      } catch (e: any) {
-        // Hide skeleton on error
-        const skeleton = document.getElementById('loading-skeleton');
-        if (skeleton) skeleton.style.display = 'none';
-        listContainer.classList.remove('hidden');
-
-        const isOffline = !e.message || e.message.includes('Failed to fetch') || e.message.includes('NetworkError');
-        listContainer.innerHTML = isOffline
-          ? '<div class="text-center py-12"><div class="w-16 h-16 rounded-full bg-obsidian-800 border border-obsidian-700 flex items-center justify-center mx-auto mb-4"><span class="text-2xl">&#127942;</span></div><p class="text-sm text-obsidian-300 font-display font-bold mb-2">Tournaments Coming Soon</p><p class="text-xs text-obsidian-500">The backend service is being set up. Check back shortly.</p></div>'
-          : '<div class="text-center py-12"><p class="text-sm text-crimson-400">Failed to load tournaments.</p></div>';
+        listState = { state: 'ready' };
+      } catch (e) {
+        listState = { state: 'failed', error: e };
       }
+      renderTournaments();
+      populateBracketSelect();
     }
 
     function renderTournaments() {
-      // Hide skeleton and show content
+      if (listState.state === 'loading') return; // the skeleton stands in
       const skeleton = document.getElementById('loading-skeleton');
       if (skeleton) skeleton.style.display = 'none';
       listContainer.classList.remove('hidden');
 
-      if (tournaments.length === 0) {
-        listContainer.innerHTML = '<div class="text-center py-12"><p class="text-sm text-obsidian-500">No tournaments available yet. Check back soon!</p></div>';
+      if (listState.state === 'failed') {
+        listContainer.innerHTML = note('text-crimson-400', errorText(listState.error), true);
         return;
       }
 
-      listContainer.innerHTML = tournaments.map(t => {
-        const startsAt = new Date(t.starts_at);
-        const isOpen = t.status === 'registration';
-        const entryCount = t.entry_count ?? 0;
+      if (tournaments.length === 0) {
+        listContainer.innerHTML = note('text-obsidian-500', t('tour.empty'));
+        return;
+      }
+
+      listContainer.innerHTML = tournaments.map(tn => {
+        const isOpen = tn.status === 'registration';
+        const entryCount = tn.entry_count ?? 0;
 
         return `
           <div class="card-glass p-6 hover:border-gold-500/30 transition-colors">
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-              <div class="flex-1">
-                <div class="flex items-center gap-3 mb-2">
-                  <h3 class="font-display text-lg font-bold text-obsidian-200">${t.name}</h3>
-                  <span class="text-xs font-mono ${statusColor(t.status)} px-2 py-0.5 rounded-full uppercase">
-                    ${t.status.replace('_', ' ')}
+              <div class="flex-1 min-w-0">
+                <div class="flex flex-wrap items-center gap-x-3 gap-y-1 mb-2">
+                  <h3 class="font-display text-lg font-bold text-obsidian-200 break-words min-w-0" dir="auto">${esc(tn.name)}</h3>
+                  <span class="text-xs ${statusColor(tn.status)} px-2 py-0.5 rounded-full uppercase">
+                    ${esc(statusName(tn.status))}
                   </span>
                 </div>
-                <div class="flex flex-wrap gap-4 text-xs text-obsidian-400">
-                  <span>Format: <span class="text-obsidian-300">${t.format.replace('_', ' ')}</span></span>
-                  <span>Players: <span class="text-obsidian-300">${entryCount} / ${t.max_players}</span></span>
-                  <span>Starts: <span class="text-obsidian-300">${startsAt.toLocaleDateString()} ${startsAt.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span></span>
+                <div class="flex flex-wrap gap-x-4 gap-y-1 text-xs text-obsidian-400">
+                  <span>${esc(t('tour.label.format'))} <span class="text-obsidian-300">${esc(formatName(tn.format))}</span></span>
+                  <span>${esc(t('tour.label.players'))} <span class="text-obsidian-300">${esc(t('tour.playersOf', { n: num(entryCount), max: num(tn.max_players) }))}</span></span>
+                  <span>${esc(t('tour.label.starts'))} <span class="text-obsidian-300">${esc(dateTime(tn.starts_at))}</span></span>
                 </div>
               </div>
-              <div class="flex gap-2">
-                ${isOpen ? `<button class="register-btn btn-primary text-xs px-4 py-2" data-id="${t.id}">Register</button>` : ''}
-                <button class="view-bracket-btn text-xs text-obsidian-400 hover:text-gold-400 border border-obsidian-700 rounded-lg px-4 py-2 transition-colors" data-id="${t.id}">
-                  View Bracket
+              <div class="flex flex-wrap gap-2">
+                ${isOpen ? `<button class="register-btn btn-primary text-xs px-4 py-2" data-id="${esc(tn.id)}">${esc(t('tour.register'))}</button>` : ''}
+                <button class="view-bracket-btn text-xs text-obsidian-400 hover:text-gold-400 border border-obsidian-700 rounded-lg px-4 py-2 transition-colors" data-id="${esc(tn.id)}">
+                  ${esc(t('tour.viewBracket'))}
                 </button>
               </div>
             </div>
@@ -183,14 +191,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       // Register buttons
       listContainer.querySelectorAll('.register-btn').forEach(btn => {
         btn.addEventListener('click', async () => {
-          if (!isLoggedIn()) { (window as any).showToast('Sign in to register.', 'warning'); return; }
+          if (!isLoggedIn()) { toast(t('tour.toast.signIn'), 'warning'); return; }
           const id = (btn as HTMLElement).dataset.id!;
           try {
             await registerForTournament(id);
-            (window as any).showToast('Registered successfully!', 'success');
+            toast(t('tour.toast.registered'), 'success');
             loadTournaments();
-          } catch (e: any) {
-            (window as any).showToast(e.message || 'Registration failed', 'error');
+          } catch (e) {
+            toast(errorText(e), 'error');
           }
         });
       });
@@ -207,14 +215,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     }
 
     function populateBracketSelect() {
+      const chosen = bracketSelect.value;
       // Clear existing options except the placeholder
       while (bracketSelect.options.length > 1) bracketSelect.remove(1);
-      tournaments.forEach(t => {
+      tournaments.forEach(tn => {
         const opt = document.createElement('option');
-        opt.value = t.id;
-        opt.textContent = `${t.name} (${t.status})`;
+        opt.value = tn.id;
+        opt.textContent = t('tour.option', { name: tn.name, status: statusName(tn.status) });
         bracketSelect.appendChild(opt);
       });
+      bracketSelect.value = chosen;
     }
 
     // Bracket view
@@ -222,65 +232,79 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     const leaderboardSection = document.getElementById('leaderboard-section')!;
     const leaderboardTable = document.getElementById('leaderboard-table')!;
 
+    type BracketState = { state: 'none' } | { state: 'loading' } | { state: 'ready'; matches: BracketMatch[] } | { state: 'missing' };
+    let bracket: BracketState = { state: 'none' };
+    let standings: LeaderboardEntry[] = [];
+
     bracketSelect.addEventListener('change', () => {
       if (bracketSelect.value) loadBracket(bracketSelect.value);
     });
 
     async function loadBracket(tournamentId: string) {
-      bracketContainer.innerHTML = '<div class="text-center py-12"><div class="w-6 h-6 border-2 border-gold-500 border-t-transparent rounded-full animate-spin mx-auto mb-3"></div><p class="text-sm text-obsidian-500">Loading bracket...</p></div>';
+      bracket = { state: 'loading' };
+      standings = [];
+      renderBracket();
+      renderLeaderboard();
 
       try {
-        const matches = await getBracket(tournamentId);
-        renderBracket(matches);
-        loadLeaderboard(tournamentId);
+        bracket = { state: 'ready', matches: await getBracket(tournamentId) };
       } catch {
-        bracketContainer.innerHTML = '<div class="text-center py-12"><p class="text-sm text-obsidian-500">No bracket available yet.</p></div>';
+        bracket = { state: 'missing' };
       }
+      renderBracket();
+      if (bracket.state === 'ready') loadLeaderboard(tournamentId);
     }
 
-    function renderBracket(matches: BracketMatch[]) {
-      if (matches.length === 0) {
-        bracketContainer.innerHTML = '<div class="text-center py-12"><p class="text-sm text-obsidian-500">Bracket not yet generated.</p></div>';
+    function renderBracket() {
+      if (bracket.state === 'none') {
+        bracketContainer.innerHTML = note('text-obsidian-500', t('tour.selectHint'));
+        return;
+      }
+      if (bracket.state === 'loading') {
+        bracketContainer.innerHTML = `<div class="text-center py-12"><div class="w-6 h-6 border-2 border-gold-500 border-t-transparent rounded-full animate-spin mx-auto mb-3"></div><p class="text-sm text-obsidian-500">${esc(t('tour.bracket.loading'))}</p></div>`;
+        return;
+      }
+      if (bracket.state === 'missing' || bracket.matches.length === 0) {
+        bracketContainer.innerHTML = note('text-obsidian-500', t('tour.bracket.none'));
         return;
       }
 
       // Group by round
       const rounds = new Map<number, BracketMatch[]>();
-      matches.forEach(m => {
+      bracket.matches.forEach(m => {
         if (!rounds.has(m.round)) rounds.set(m.round, []);
         rounds.get(m.round)!.push(m);
       });
 
       const sortedRounds = [...rounds.entries()].sort((a, b) => a[0] - b[0]);
+      const bye = t('tour.bye');
 
+      // A row of rounds: it starts at the left in left-to-right languages and at the right in Arabic.
       bracketContainer.innerHTML = `
         <div class="flex gap-6 min-w-max py-4">
           ${sortedRounds.map(([roundNum, roundMatches]) => `
             <div class="flex flex-col gap-4 min-w-[220px]">
-              <div class="text-center text-xs font-mono text-obsidian-500 uppercase tracking-wider mb-2">
-                Round ${roundNum}
+              <div class="text-center text-xs text-obsidian-500 uppercase tracking-wider mb-2">
+                ${esc(t('tour.round', { n: num(roundNum) }))}
               </div>
-              ${roundMatches.sort((a, b) => a.match_order - b.match_order).map(m => {
-                const p1 = m.player1_name || 'BYE';
-                const p2 = m.player2_name || 'BYE';
+              ${[...roundMatches].sort((a, b) => a.match_order - b.match_order).map(m => {
                 const p1Won = m.winner_id && m.winner_id === m.player1_id;
                 const p2Won = m.winner_id && m.winner_id === m.player2_id;
-                const pending = m.status === 'pending';
+                const state = m.status === 'in_progress' ? 'tour.match.live' : m.status === 'completed' ? 'tour.match.done' : 'tour.match.pending';
+                const player = (name: string | null, won: unknown) => `
+                    <div class="flex items-center justify-between gap-2 py-1 ${won ? 'text-gold-400 font-semibold' : 'text-obsidian-300'} text-sm">
+                      <span dir="auto">${esc(name || bye)}</span>
+                      ${won ? '<span class="text-xs" aria-hidden="true">&#9733;</span>' : ''}
+                    </div>`;
 
                 return `
                   <div class="card-glass p-3 ${m.status === 'in_progress' ? 'border-purple-500/30' : ''}">
-                    <div class="flex items-center justify-between py-1 ${p1Won ? 'text-gold-400 font-semibold' : 'text-obsidian-300'} text-sm">
-                      <span>${p1}</span>
-                      ${p1Won ? '<span class="text-xs">&#9733;</span>' : ''}
-                    </div>
+                    ${player(m.player1_name, p1Won)}
                     <div class="border-t border-obsidian-700/50 my-1"></div>
-                    <div class="flex items-center justify-between py-1 ${p2Won ? 'text-gold-400 font-semibold' : 'text-obsidian-300'} text-sm">
-                      <span>${p2}</span>
-                      ${p2Won ? '<span class="text-xs">&#9733;</span>' : ''}
-                    </div>
+                    ${player(m.player2_name, p2Won)}
                     <div class="text-center mt-1">
-                      <span class="text-[10px] font-mono ${m.status === 'in_progress' ? 'text-purple-400' : m.status === 'completed' ? 'text-obsidian-500' : 'text-obsidian-600'}">
-                        ${m.status === 'in_progress' ? 'LIVE' : m.status === 'completed' ? 'DONE' : 'PENDING'}
+                      <span class="text-[10px] uppercase ${m.status === 'in_progress' ? 'text-purple-400' : m.status === 'completed' ? 'text-obsidian-500' : 'text-obsidian-600'}">
+                        ${esc(t(state))}
                       </span>
                     </div>
                   </div>
@@ -294,47 +318,65 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
     async function loadLeaderboard(tournamentId: string) {
       try {
-        const entries = await getLeaderboard(tournamentId);
-        if (entries.length === 0) {
-          leaderboardSection.classList.add('hidden');
-          return;
-        }
-
-        leaderboardSection.classList.remove('hidden');
-        leaderboardTable.innerHTML = `
-          <table class="w-full text-sm">
-            <thead>
-              <tr class="text-xs text-obsidian-500 uppercase tracking-wider border-b border-obsidian-700/50">
-                <th class="text-left px-4 py-3">#</th>
-                <th class="text-left px-4 py-3">Player</th>
-                <th class="text-center px-4 py-3">W</th>
-                <th class="text-center px-4 py-3">L</th>
-                <th class="text-center px-4 py-3">Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              ${entries.sort((a, b) => b.wins - a.wins || a.losses - b.losses).map((e, i) => `
-                <tr class="border-b border-obsidian-800/50 ${e.eliminated ? 'opacity-50' : ''}">
-                  <td class="px-4 py-3 text-obsidian-500 font-mono">${i + 1}</td>
-                  <td class="px-4 py-3 text-obsidian-200 font-medium">${e.username}</td>
-                  <td class="px-4 py-3 text-center text-emerald-400">${e.wins}</td>
-                  <td class="px-4 py-3 text-center text-crimson-400">${e.losses}</td>
-                  <td class="px-4 py-3 text-center">
-                    <span class="text-xs ${e.eliminated ? 'text-crimson-400' : 'text-emerald-400'}">
-                      ${e.eliminated ? 'Eliminated' : 'Active'}
-                    </span>
-                  </td>
-                </tr>
-              `).join('')}
-            </tbody>
-          </table>
-        `;
+        standings = await getLeaderboard(tournamentId);
       } catch {
-        leaderboardSection.classList.add('hidden');
+        standings = [];
       }
+      renderLeaderboard();
     }
 
-    // Init
-    loadTournaments();
+    function renderLeaderboard() {
+      if (standings.length === 0) {
+        leaderboardSection.classList.add('hidden');
+        return;
+      }
+
+      leaderboardSection.classList.remove('hidden');
+      leaderboardTable.innerHTML = `
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="text-xs text-obsidian-500 uppercase tracking-wider border-b border-obsidian-700/50">
+              <th scope="col" class="text-start px-4 py-3">${esc(t('tour.col.rank'))}</th>
+              <th scope="col" class="text-start px-4 py-3">${esc(t('tour.col.player'))}</th>
+              <th scope="col" class="text-center px-4 py-3">${esc(t('tour.col.wins'))}</th>
+              <th scope="col" class="text-center px-4 py-3">${esc(t('tour.col.losses'))}</th>
+              <th scope="col" class="text-center px-4 py-3">${esc(t('tour.col.status'))}</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${[...standings].sort((a, b) => b.wins - a.wins || a.losses - b.losses).map((e, i) => `
+              <tr class="border-b border-obsidian-800/50 ${e.eliminated ? 'opacity-50' : ''}">
+                <td class="px-4 py-3 text-obsidian-500 font-mono">${esc(num(i + 1))}</td>
+                <td class="px-4 py-3 text-obsidian-200 font-medium" dir="auto">${esc(e.username)}</td>
+                <td class="px-4 py-3 text-center text-emerald-400">${esc(num(e.wins))}</td>
+                <td class="px-4 py-3 text-center text-crimson-400">${esc(num(e.losses))}</td>
+                <td class="px-4 py-3 text-center">
+                  <span class="text-xs ${e.eliminated ? 'text-crimson-400' : 'text-emerald-400'}">
+                    ${esc(t(e.eliminated ? 'tour.entry.eliminated' : 'tour.entry.active'))}
+                  </span>
+                </td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+      `;
+    }
+
+    /** Everything built with t(), drawn again. */
+    function redraw() {
+      renderTournaments();
+      populateBracketSelect();
+      renderBracket();
+      renderLeaderboard();
+    }
+
+    // Nothing is drawn with t() before the language and this page's strings are in.
+    initPage(['tournaments', 'shared'], { title: 'nav.tournaments', description: 'tour.meta.description' })
+      .catch((e) => console.error('[tournaments] the language could not be loaded', e))
+      .then(() => {
+        redraw();
+        onLocaleChange(redraw);
+        loadTournaments();
+      });
   </script>
 </BaseLayout>

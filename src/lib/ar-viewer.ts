@@ -159,8 +159,13 @@ export function isARLikelySupported(): boolean {
   return /Android|iPhone|iPad/i.test(ua);
 }
 
-/** Build model-viewer HTML for a card */
-export function buildModelViewerHTML(config: ARModelConfig): string {
+/**
+ * Build model-viewer HTML for a card.
+ * `arLabel` is the text of the "view in AR" button, in the interface language
+ * (the page passes t('viewer.ar')). It is placed as text, never as markup.
+ */
+export function buildModelViewerHTML(config: ARModelConfig, arLabel = 'View in AR'): string {
+  const label = arLabel.replace(/[&<>"']/g, (c) => `&#${c.charCodeAt(0)};`);
   return `<model-viewer
     src="${config.glbPath}"
     ${config.iosSrc ? `ios-src="${config.iosSrc}"` : ''}
@@ -174,7 +179,7 @@ export function buildModelViewerHTML(config: ARModelConfig): string {
     style="width: 100%; height: 400px; --poster-color: transparent;"
   >
     <button slot="ar-button" class="ar-btn">
-      View in AR
+      ${label}
     </button>
   </model-viewer>`;
 }

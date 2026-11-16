@@ -1,50 +1,43 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+// Every sentence on this page is a key in src/i18n/pages/marketplace (and "shared"); the
+// English written in the markup is what a reader sees before the script has run.
 ---
 
-<BaseLayout title="Marketplace" description="Trade and buy Shakespearean collectible cards from other players.">
+<BaseLayout title="Marketplace" description="Buy and trade Shakespeare collectible cards with other players.">
 
   <section class="section-padding">
     <div class="max-w-6xl mx-auto">
       <div class="text-center mb-12">
         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 mb-6">
           <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-          <span class="text-emerald-400 text-xs font-medium tracking-wide uppercase">Marketplace</span>
+          <span class="text-emerald-400 text-xs font-medium tracking-wide uppercase" data-i18n="nav.marketplace">Marketplace</span>
         </div>
-        <h1 class="text-4xl sm:text-5xl font-display font-bold mb-4">
-          Card <span class="text-gradient">Marketplace</span>
-        </h1>
-        <p class="text-obsidian-400 max-w-2xl mx-auto">
-          Buy and trade cards with other players. List your duplicates for sale or find the cards you need.
+        <!-- Two pieces so that one can carry the gradient; the first brings its own space where the language wants one. -->
+        <h1 class="text-4xl sm:text-5xl font-display font-bold mb-4"><span data-i18n="market.titleA">Card </span><span class="text-gradient" data-i18n="market.titleB">Marketplace</span></h1>
+        <p class="text-obsidian-400 max-w-2xl mx-auto" data-i18n="market.intro">
+          Buy and trade cards with other players. Offer your duplicates for sale, or find the cards you are missing.
         </p>
       </div>
 
       <!-- Tabs -->
-      <div class="flex gap-2 mb-8 justify-center">
-        <button id="tab-browse" class="px-6 py-2 text-sm font-medium rounded-lg bg-gold-500/10 text-gold-400 border border-gold-500/20 transition-colors">
-          Browse
-        </button>
-        <button id="tab-my" class="px-6 py-2 text-sm font-medium rounded-lg text-obsidian-400 border border-obsidian-700 hover:border-obsidian-600 transition-colors">
-          My Listings
-        </button>
-        <button id="tab-sell" class="px-6 py-2 text-sm font-medium rounded-lg text-obsidian-400 border border-obsidian-700 hover:border-obsidian-600 transition-colors">
-          Sell / Trade
-        </button>
+      <div class="flex flex-wrap gap-2 mb-8 justify-center">
+        <button id="tab-browse" class="px-6 py-2 text-sm font-medium rounded-lg bg-gold-500/10 text-gold-400 border border-gold-500/20 transition-colors" data-i18n="market.tab.browse">Browse</button>
+        <button id="tab-my" class="px-6 py-2 text-sm font-medium rounded-lg text-obsidian-400 border border-obsidian-700 hover:border-obsidian-600 transition-colors" data-i18n="market.tab.mine">My listings</button>
+        <button id="tab-sell" class="px-6 py-2 text-sm font-medium rounded-lg text-obsidian-400 border border-obsidian-700 hover:border-obsidian-600 transition-colors" data-i18n="market.tab.sell">Sell or trade</button>
       </div>
 
       <!-- Browse Panel -->
       <div id="panel-browse">
         <!-- Filters -->
         <div class="flex flex-wrap gap-3 mb-6">
-          <select id="filter-type" class="bg-obsidian-800 border border-obsidian-700 rounded-lg px-3 py-2 text-xs text-obsidian-200 focus:outline-hidden focus:border-gold-500/50">
-            <option value="">All Types</option>
-            <option value="sale">For Sale</option>
-            <option value="trade">For Trade</option>
+          <select id="filter-type" aria-label="Kind of listing" data-i18n-aria-label="market.sell.type" class="bg-obsidian-800 border border-obsidian-700 rounded-lg px-3 py-2 text-xs text-obsidian-200 focus:outline-hidden focus:border-gold-500/50">
+            <option value="" data-i18n="market.filter.all">All listings</option>
+            <option value="sale" data-i18n="market.filter.sale">For sale</option>
+            <option value="trade" data-i18n="market.filter.trade">For trade</option>
           </select>
-          <input id="filter-search" type="text" placeholder="Search cards..." class="bg-obsidian-800 border border-obsidian-700 rounded-lg px-3 py-2 text-xs text-obsidian-200 focus:outline-hidden focus:border-gold-500/50 w-48" />
-          <button id="refresh-btn" class="text-xs text-obsidian-400 hover:text-gold-400 transition-colors border border-obsidian-700 rounded-lg px-3 py-2 hover:border-gold-500/30">
-            Refresh
-          </button>
+          <input id="filter-search" type="text" placeholder="Search cards…" data-i18n-placeholder="market.search" data-i18n-aria-label="market.search" aria-label="Search cards…" dir="auto" class="bg-obsidian-800 border border-obsidian-700 rounded-lg px-3 py-2 text-xs text-obsidian-200 focus:outline-hidden focus:border-gold-500/50 w-48 max-w-full" />
+          <button id="refresh-btn" class="text-xs text-obsidian-400 hover:text-gold-400 transition-colors border border-obsidian-700 rounded-lg px-3 py-2 hover:border-gold-500/30" data-i18n="market.refresh">Refresh</button>
         </div>
 
         <!-- Loading Skeleton -->
@@ -71,7 +64,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <div id="panel-my" class="hidden">
         <div id="my-listings-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           <div class="col-span-full text-center py-12">
-            <p class="text-sm text-obsidian-500">Sign in to see your listings.</p>
+            <p class="text-sm text-obsidian-500" data-i18n="market.mine.signIn">Sign in to see your listings.</p>
           </div>
         </div>
       </div>
@@ -79,45 +72,44 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <!-- Sell / Trade Panel -->
       <div id="panel-sell" class="hidden">
         <div class="card-glass p-8 max-w-lg mx-auto">
-          <h2 class="font-display text-xl font-bold text-obsidian-200 mb-6">Create a Listing</h2>
+          <h2 class="font-display text-xl font-bold text-obsidian-200 mb-6" data-i18n="market.sell.title">Create a listing</h2>
 
           <div class="space-y-4">
             <div>
-              <label class="block text-xs text-obsidian-400 mb-1">Card</label>
+              <label for="sell-card" class="block text-xs text-obsidian-400 mb-1" data-i18n="market.sell.card">Card</label>
               <select id="sell-card" class="w-full bg-obsidian-800 border border-obsidian-700 rounded-lg px-3 py-2 text-sm text-obsidian-200 focus:outline-hidden focus:border-gold-500/50">
-                <option value="">Select a card to list...</option>
+                <option value="" data-i18n="market.sell.choose">Choose a card to list…</option>
               </select>
             </div>
 
-            <div>
-              <label class="block text-xs text-obsidian-400 mb-1">Listing Type</label>
-              <div class="flex gap-3">
+            <fieldset>
+              <legend class="block text-xs text-obsidian-400 mb-1" data-i18n="market.sell.type">Kind of listing</legend>
+              <div class="flex flex-wrap gap-3">
                 <label class="flex items-center gap-2 cursor-pointer">
                   <input type="radio" name="listing-type" value="sale" checked class="accent-gold-500" />
-                  <span class="text-sm text-obsidian-200">Sale</span>
+                  <span class="text-sm text-obsidian-200" data-i18n="market.sell.sale">Sale</span>
                 </label>
                 <label class="flex items-center gap-2 cursor-pointer">
                   <input type="radio" name="listing-type" value="trade" class="accent-gold-500" />
-                  <span class="text-sm text-obsidian-200">Trade</span>
+                  <span class="text-sm text-obsidian-200" data-i18n="market.sell.trade">Trade</span>
                 </label>
               </div>
-            </div>
+            </fieldset>
 
             <div id="price-field">
-              <label class="block text-xs text-obsidian-400 mb-1">Price (credits)</label>
-              <input id="sell-price" type="number" min="1" placeholder="100" class="w-full bg-obsidian-800 border border-obsidian-700 rounded-lg px-3 py-2 text-sm text-obsidian-200 focus:outline-hidden focus:border-gold-500/50" />
+              <label for="sell-price" class="block text-xs text-obsidian-400 mb-1" data-i18n="market.sell.price">Price (credits)</label>
+              <input id="sell-price" type="number" min="1" max="100000" inputmode="numeric" placeholder="100" class="w-full bg-obsidian-800 border border-obsidian-700 rounded-lg px-3 py-2 text-sm text-obsidian-200 focus:outline-hidden focus:border-gold-500/50" />
             </div>
 
             <div id="wanted-field" class="hidden">
-              <label class="block text-xs text-obsidian-400 mb-1">Wanted Cards (comma-separated IDs)</label>
-              <input id="sell-wanted" type="text" placeholder="MO-001, CA-001" class="w-full bg-obsidian-800 border border-obsidian-700 rounded-lg px-3 py-2 text-sm text-obsidian-200 focus:outline-hidden focus:border-gold-500/50" />
+              <label for="sell-wanted" class="block text-xs text-obsidian-400 mb-1" data-i18n="market.sell.wanted">Cards wanted (card numbers, separated by commas)</label>
+              <!-- Card numbers are Latin letters and digits in every language. -->
+              <input id="sell-wanted" type="text" placeholder="MO-001, CA-001" lang="en" dir="ltr" class="w-full bg-obsidian-800 border border-obsidian-700 rounded-lg px-3 py-2 text-sm text-obsidian-200 focus:outline-hidden focus:border-gold-500/50" />
             </div>
 
-            <button id="create-listing-btn" class="w-full btn-primary py-3">
-              Create Listing
-            </button>
-            <p id="sell-error" class="hidden text-xs text-crimson-400 text-center"></p>
-            <p id="sell-success" class="hidden text-xs text-emerald-400 text-center"></p>
+            <button id="create-listing-btn" class="w-full btn-primary py-3" data-i18n="market.sell.submit">Create the listing</button>
+            <p id="sell-error" role="alert" class="hidden text-xs text-crimson-400 text-center"></p>
+            <p id="sell-success" role="status" class="hidden text-xs text-emerald-400 text-center"></p>
           </div>
         </div>
       </div>
@@ -127,15 +119,20 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <script>
     import { browseListings, createListing, cancelListing, buyListing, myListings, type Listing } from '../lib/marketplace-client';
     import { isLoggedIn } from '../lib/storage-backend';
+    import { has, onLocaleChange, t } from '../i18n';
+    import { date, list, plural } from '../i18n/fmt';
+    import { errorText, esc, initPage, isolate } from '../i18n/page';
+
+    const toast = (message: string, type: 'success' | 'error' | 'warning') => (window as any).showToast?.(message, type);
 
     // Tabs
     const tabs = ['browse', 'my', 'sell'] as const;
     tabs.forEach(tab => {
       document.getElementById(`tab-${tab}`)!.addEventListener('click', () => {
-        tabs.forEach(t => {
-          document.getElementById(`panel-${t}`)!.classList.toggle('hidden', t !== tab);
-          const btn = document.getElementById(`tab-${t}`)!;
-          if (t === tab) {
+        tabs.forEach(tb => {
+          document.getElementById(`panel-${tb}`)!.classList.toggle('hidden', tb !== tab);
+          const btn = document.getElementById(`tab-${tb}`)!;
+          if (tb === tab) {
             btn.className = 'px-6 py-2 text-sm font-medium rounded-lg bg-gold-500/10 text-gold-400 border border-gold-500/20 transition-colors';
           } else {
             btn.className = 'px-6 py-2 text-sm font-medium rounded-lg text-obsidian-400 border border-obsidian-700 hover:border-obsidian-600 transition-colors';
@@ -153,37 +150,43 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       });
     });
 
+    const panel = (cls: string, text: string, alert = false) =>
+      `<div class="col-span-full text-center py-12"><p class="text-sm ${cls}"${alert ? ' role="alert"' : ''}>${esc(text)}</p></div>`;
+
+    const typeName = (type: string) => (type === 'sale' ? t('market.sell.sale') : type === 'trade' ? t('market.sell.trade') : type);
+    // A status the page has no word for is shown as the server wrote it.
+    const statusName = (status: string) => (has(`market.status.${status}`) ? t(`market.status.${status}`) : status);
+
     // Browse
     const listingsGrid = document.getElementById('listings-grid')!;
     const filterType = document.getElementById('filter-type') as HTMLSelectElement;
     const filterSearch = document.getElementById('filter-search') as HTMLInputElement;
 
-    let allListings: Listing[] = [];
+    type Load<T> = { state: 'loading' } | { state: 'ready'; items: T } | { state: 'failed'; error: unknown } | { state: 'signed-out' };
+    let browse: Load<Listing[]> = { state: 'loading' };
+    let mine: Load<Listing[]> = { state: 'signed-out' };
 
     async function loadListings() {
       try {
-        allListings = await browseListings();
-        renderListings();
-      } catch (e: any) {
-        // Hide skeleton on error
-        const skeleton = document.getElementById('loading-skeleton');
-        if (skeleton) skeleton.style.display = 'none';
-        listingsGrid.classList.remove('hidden');
-
-        const isOffline = !e.message || e.message.includes('Failed to fetch') || e.message.includes('NetworkError');
-        listingsGrid.innerHTML = isOffline
-          ? '<div class="col-span-full text-center py-12"><div class="w-16 h-16 rounded-full bg-obsidian-800 border border-obsidian-700 flex items-center justify-center mx-auto mb-4"><span class="text-2xl">&#128679;</span></div><p class="text-sm text-obsidian-300 font-display font-bold mb-2">Marketplace Coming Soon</p><p class="text-xs text-obsidian-500">The backend service is being set up. Check back shortly.</p></div>'
-          : '<div class="col-span-full text-center py-12"><p class="text-sm text-crimson-400">Failed to load listings.</p></div>';
+        browse = { state: 'ready', items: await browseListings() };
+      } catch (e) {
+        browse = { state: 'failed', error: e };
       }
+      renderListings();
     }
 
     function renderListings() {
-      // Hide skeleton and show content
+      if (browse.state === 'loading' || browse.state === 'signed-out') return; // the skeleton stands in
       const skeleton = document.getElementById('loading-skeleton');
       if (skeleton) skeleton.style.display = 'none';
       listingsGrid.classList.remove('hidden');
 
-      let filtered = allListings;
+      if (browse.state === 'failed') {
+        listingsGrid.innerHTML = panel('text-crimson-400', errorText(browse.error), true);
+        return;
+      }
+
+      let filtered = browse.items;
       const typeFilter = filterType.value;
       const searchFilter = filterSearch.value.toLowerCase();
 
@@ -191,42 +194,46 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       if (searchFilter) filtered = filtered.filter(l => l.card_id.toLowerCase().includes(searchFilter) || l.seller_username.toLowerCase().includes(searchFilter));
 
       if (filtered.length === 0) {
-        listingsGrid.innerHTML = '<div class="col-span-full text-center py-12"><p class="text-sm text-obsidian-500">No listings found.</p></div>';
+        listingsGrid.innerHTML = panel('text-obsidian-500', t('market.empty'));
         return;
       }
 
-      listingsGrid.innerHTML = filtered.map(l => `
+      listingsGrid.innerHTML = filtered.map(l => {
+        const sale = l.listing_type === 'sale';
+        const wanted = l.wanted_card_ids ?? [];
+        return `
         <div class="card-glass p-5 hover:border-gold-500/30 transition-colors">
-          <div class="flex items-center justify-between mb-3">
-            <span class="text-xs font-mono ${l.listing_type === 'sale' ? 'text-emerald-400 bg-emerald-500/10' : 'text-purple-400 bg-purple-500/10'} px-2 py-0.5 rounded-full">
-              ${l.listing_type === 'sale' ? 'FOR SALE' : 'FOR TRADE'}
+          <div class="flex items-center justify-between gap-2 mb-3">
+            <span class="text-xs ${sale ? 'text-emerald-400 bg-emerald-500/10' : 'text-purple-400 bg-purple-500/10'} px-2 py-0.5 rounded-full uppercase">
+              ${esc(t(sale ? 'market.filter.sale' : 'market.filter.trade'))}
             </span>
-            <span class="text-xs text-obsidian-500">${new Date(l.created_at).toLocaleDateString()}</span>
+            <span class="text-xs text-obsidian-500">${esc(date(l.created_at))}</span>
           </div>
-          <h3 class="font-display font-bold text-obsidian-200 mb-1">${l.card_id}</h3>
-          <p class="text-xs text-obsidian-400 mb-3">by ${l.seller_username}</p>
-          ${l.listing_type === 'sale' && l.price_credits != null
-            ? `<p class="text-sm font-semibold text-gold-400 mb-3">${l.price_credits} credits</p>`
-            : l.wanted_card_ids.length > 0
-              ? `<p class="text-xs text-obsidian-400 mb-3">Wants: ${l.wanted_card_ids.join(', ')}</p>`
+          <h3 class="font-display font-bold text-obsidian-200 mb-1" lang="en" dir="ltr" translate="no">${esc(l.card_id)}</h3>
+          <p class="text-xs text-obsidian-400 mb-3">${esc(t('market.by', { seller: isolate(l.seller_username) }))}</p>
+          ${sale && l.price_credits != null
+            ? `<p class="text-sm font-semibold text-gold-400 mb-3">${esc(plural('credits', l.price_credits))}</p>`
+            : wanted.length > 0
+              ? `<p class="text-xs text-obsidian-400 mb-3">${esc(t('market.wants', { cards: list(wanted) }))}</p>`
               : ''
           }
-          <button class="buy-btn w-full btn-primary text-xs py-2" data-id="${l.id}" data-type="${l.listing_type}">
-            ${l.listing_type === 'sale' ? 'Buy' : 'Offer Trade'}
+          <button class="buy-btn w-full btn-primary text-xs py-2" data-id="${esc(l.id)}">
+            ${esc(t(sale ? 'market.buy' : 'market.offer'))}
           </button>
         </div>
-      `).join('');
+      `;
+      }).join('');
 
       listingsGrid.querySelectorAll('.buy-btn').forEach(btn => {
         btn.addEventListener('click', async () => {
-          if (!isLoggedIn()) { (window as any).showToast('Sign in to buy cards.', 'warning'); return; }
+          if (!isLoggedIn()) { toast(t('market.toast.signInBuy'), 'warning'); return; }
           const id = (btn as HTMLElement).dataset.id!;
           try {
             await buyListing(id);
-            (window as any).showToast('Purchase successful!', 'success');
+            toast(t('market.toast.bought'), 'success');
             loadListings();
-          } catch (e: any) {
-            (window as any).showToast(e.message || 'Purchase failed', 'error');
+          } catch (e) {
+            toast(errorText(e), 'error');
           }
         });
       });
@@ -241,73 +248,101 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
     async function loadMyListings() {
       if (!isLoggedIn()) {
-        myGrid.innerHTML = '<div class="col-span-full text-center py-12"><p class="text-sm text-obsidian-500">Sign in to see your listings.</p></div>';
-        return;
-      }
-      try {
-        const listings = await myListings();
-        if (listings.length === 0) {
-          myGrid.innerHTML = '<div class="col-span-full text-center py-12"><p class="text-sm text-obsidian-500">You have no active listings.</p></div>';
-          return;
+        mine = { state: 'signed-out' };
+      } else {
+        try {
+          mine = { state: 'ready', items: await myListings() };
+        } catch (e) {
+          mine = { state: 'failed', error: e };
         }
-        myGrid.innerHTML = listings.map(l => `
-          <div class="card-glass p-5">
-            <div class="flex items-center justify-between mb-3">
-              <span class="text-xs font-mono ${l.listing_type === 'sale' ? 'text-emerald-400' : 'text-purple-400'} bg-obsidian-800 px-2 py-0.5 rounded-full">
-                ${l.listing_type.toUpperCase()}
-              </span>
-              <span class="text-xs font-mono ${l.status === 'active' ? 'text-emerald-400' : 'text-obsidian-500'}">
-                ${l.status}
-              </span>
-            </div>
-            <h3 class="font-display font-bold text-obsidian-200 mb-1">${l.card_id}</h3>
-            ${l.price_credits != null ? `<p class="text-sm text-gold-400 mb-3">${l.price_credits} credits</p>` : ''}
-            ${l.status === 'active' ? `<button class="cancel-btn w-full text-xs text-obsidian-400 hover:text-crimson-400 py-2 border border-obsidian-700 rounded-lg transition-colors" data-id="${l.id}">Cancel Listing</button>` : ''}
-          </div>
-        `).join('');
-
-        myGrid.querySelectorAll('.cancel-btn').forEach(btn => {
-          btn.addEventListener('click', async () => {
-            const id = (btn as HTMLElement).dataset.id!;
-            try {
-              await cancelListing(id);
-              loadMyListings();
-            } catch (e: any) {
-              (window as any).showToast(e.message || 'Cancel failed', 'error');
-            }
-          });
-        });
-      } catch {
-        myGrid.innerHTML = '<div class="col-span-full text-center py-12"><p class="text-sm text-crimson-400">Failed to load your listings.</p></div>';
       }
+      renderMyListings();
     }
 
-    // Create Listing
+    function renderMyListings() {
+      if (mine.state === 'loading') return;
+      if (mine.state === 'signed-out') {
+        myGrid.innerHTML = panel('text-obsidian-500', t('market.mine.signIn'));
+        return;
+      }
+      if (mine.state === 'failed') {
+        myGrid.innerHTML = panel('text-crimson-400', errorText(mine.error), true);
+        return;
+      }
+      if (mine.items.length === 0) {
+        myGrid.innerHTML = panel('text-obsidian-500', t('market.mine.empty'));
+        return;
+      }
+      myGrid.innerHTML = mine.items.map(l => `
+        <div class="card-glass p-5">
+          <div class="flex items-center justify-between gap-2 mb-3">
+            <span class="text-xs ${l.listing_type === 'sale' ? 'text-emerald-400' : 'text-purple-400'} bg-obsidian-800 px-2 py-0.5 rounded-full uppercase">
+              ${esc(typeName(l.listing_type))}
+            </span>
+            <span class="text-xs ${l.status === 'active' ? 'text-emerald-400' : 'text-obsidian-500'}">
+              ${esc(statusName(l.status))}
+            </span>
+          </div>
+          <h3 class="font-display font-bold text-obsidian-200 mb-1" lang="en" dir="ltr" translate="no">${esc(l.card_id)}</h3>
+          ${l.price_credits != null ? `<p class="text-sm text-gold-400 mb-3">${esc(plural('credits', l.price_credits))}</p>` : ''}
+          ${l.status === 'active' ? `<button class="cancel-btn w-full text-xs text-obsidian-400 hover:text-crimson-400 py-2 border border-obsidian-700 rounded-lg transition-colors" data-id="${esc(l.id)}">${esc(t('market.cancel'))}</button>` : ''}
+        </div>
+      `).join('');
+
+      myGrid.querySelectorAll('.cancel-btn').forEach(btn => {
+        btn.addEventListener('click', async () => {
+          const id = (btn as HTMLElement).dataset.id!;
+          try {
+            await cancelListing(id);
+            loadMyListings();
+          } catch (e) {
+            toast(errorText(e), 'error');
+          }
+        });
+      });
+    }
+
+    // Create Listing. What the form last said is kept as a function, so it can be said again in another language.
+    const errEl = document.getElementById('sell-error')!;
+    const successEl = document.getElementById('sell-success')!;
+    let sellNotice: { text: () => string; ok: boolean } | null = null;
+
+    function drawSellNotice() {
+      errEl.classList.add('hidden');
+      successEl.classList.add('hidden');
+      if (!sellNotice) return;
+      const el = sellNotice.ok ? successEl : errEl;
+      el.textContent = sellNotice.text();
+      el.classList.remove('hidden');
+    }
+
+    function sellSays(text: () => string, ok = false) {
+      sellNotice = { text, ok };
+      drawSellNotice();
+    }
+
     document.getElementById('create-listing-btn')!.addEventListener('click', async () => {
-      if (!isLoggedIn()) { (window as any).showToast('Sign in to create a listing.', 'warning'); return; }
+      if (!isLoggedIn()) { toast(t('market.toast.signInSell'), 'warning'); return; }
 
       const cardId = (document.getElementById('sell-card') as HTMLSelectElement).value;
       const type = (document.querySelector<HTMLInputElement>('input[name="listing-type"]:checked'))!.value as 'sale' | 'trade';
       const price = type === 'sale' ? Number((document.getElementById('sell-price') as HTMLInputElement).value) : undefined;
       const wantedRaw = (document.getElementById('sell-wanted') as HTMLInputElement).value;
-      const wanted = type === 'trade' && wantedRaw ? wantedRaw.split(',').map(s => s.trim()).filter(Boolean) : undefined;
-      const errEl = document.getElementById('sell-error')!;
-      const successEl = document.getElementById('sell-success')!;
+      // A comma is written "," in most languages, "،" in Arabic, "、" or "，" in Chinese and Japanese.
+      const wanted = type === 'trade' && wantedRaw ? wantedRaw.split(/[,،、，]/).map(s => s.trim()).filter(Boolean) : undefined;
 
-      errEl.classList.add('hidden');
-      successEl.classList.add('hidden');
+      sellNotice = null;
+      drawSellNotice();
 
-      if (!cardId) { errEl.textContent = 'Select a card.'; errEl.classList.remove('hidden'); return; }
-      if (type === 'sale' && (!price || price < 1)) { errEl.textContent = 'Enter a valid price.'; errEl.classList.remove('hidden'); return; }
+      if (!cardId) { sellSays(() => t('market.sell.needCard')); return; }
+      if (type === 'sale' && (!price || price < 1)) { sellSays(() => t('market.sell.needPrice')); return; }
 
       try {
         await createListing(cardId, type, price, wanted);
-        successEl.textContent = 'Listing created!';
-        successEl.classList.remove('hidden');
+        sellSays(() => t('market.sell.done'), true);
         (document.getElementById('sell-card') as HTMLSelectElement).value = '';
-      } catch (e: any) {
-        errEl.textContent = e.message || 'Failed to create listing';
-        errEl.classList.remove('hidden');
+      } catch (e) {
+        sellSays(() => errorText(e));
       }
     });
 
@@ -322,7 +357,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         for (const id of ownedIds) {
           const opt = document.createElement('option');
           opt.value = id;
+          // Card names are not translated (src/lib/cards.ts).
           opt.textContent = `${cardMap.get(id) || id} (${id})`;
+          opt.lang = 'en';
           select.appendChild(opt);
         }
       } catch (e) {
@@ -330,8 +367,21 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       }
     }
 
-    // Init
-    loadListings();
-    populateSellCards();
+    /** Everything built with t(), drawn again. */
+    function redraw() {
+      renderListings();
+      renderMyListings();
+      drawSellNotice();
+    }
+
+    // Nothing is drawn with t() before the language and this page's strings are in.
+    initPage(['marketplace', 'shared'], { title: 'nav.marketplace', description: 'market.meta.description' })
+      .catch((e) => console.error('[marketplace] the language could not be loaded', e))
+      .then(() => {
+        redraw();
+        onLocaleChange(redraw);
+        loadListings();
+        populateSellCards();
+      });
   </script>
 </BaseLayout>
