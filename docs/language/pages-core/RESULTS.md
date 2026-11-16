@@ -61,3 +61,88 @@ Wikidata records or a form cut from the label by a recorded rule (Korean 호주 
 for Australia, Chinese and Japanese 大阪 for 大阪市, Thai นิวยอร์ก for นครนิวยอร์ก), one uses
 Wikidata's spelling where CLDR differs (Hindi मेक्सिको; the city label मेक्सिको सिटी agrees), and
 one matched no source: Hindi फ़िलीपींस, now CLDR's फ़िलिपींस.
+
+## Spelling (Hunspell)
+
+Self-test: every language with a dictionary rejects a misspelling and accepts the right word.
+The first run failed for Arabic: the dictionary accepts مجموعه for مجموعة (ه for ة), so that
+pair proved nothing; a doubled letter is what it rejects. **It will not catch a ه/ة
+confusion.** Italian elided articles (dell’, l’, un’) were spelled with their word and flagged
+forty words; they are now spelled apart, from a closed list.
+
+Words the dictionaries do not know, per language (second run), and what they were:
+
+| Language | Unknown | What they were | Changed |
+|---|---|---|---|
+| en | 31 | names, product names, gaming words (leaderboard, gameplay), British "Theatre" and "Harbour" against an en_US dictionary (the site's own spelling) | nothing |
+| es | 70 | names; ATQ, DEF, PV; Lógralo, súmate, bátete (right, with clitics); Completista (gaming word, in no dictionary) | nothing |
+| fr | 41 | names; ATQ, DÉF; "battle" (French hip-hop's own loanword); Complétiste | nothing |
+| de | 86 | compounds (Strophenduell, Quizantworten, KI-Gegner…), names, ANG/VER/LP; Arkan (the German gaming term for "arcane"); Gothic-Zirkel (see the labels note in the README) | nothing |
+| it | 74 | names, loanwords (cloud, blockchain), Capuleti, possiedi (right), ghanese, newyorkese, sfottò | nothing |
+| pt | 59 | names, quiz/quizzes, Montéquio (the family's Portuguese name), Complecionista | Complecionista → Completista |
+| pl | 30 | names, PŻ, Montekowie, Komplecista | Komplecista → Pełna kolekcja |
+| ru | 38 | names (Шекспир is not in the dictionary), АТК/ЗАЩ/ОЗ, рэп-баттл, Креативный (see grammar) | nothing |
+| ar | 25 | transliterated names and genres (الأفروبيت، الدانسهول), و joined to a Latin name (وApple), التوليفات, الحكّاء | nothing |
+| hi | 31 | verb forms the dictionary lacks (जीतें, कमाएँ, निभाएँ, जोड़ता), names, एआई | nothing |
+| ko | 86 | loanwords with particles (배틀에서, 셰익스피어의), 다운로드돼요, 환시 (see below) | nothing |
+| vi | 92 | names written in Latin letters (Brazil, Ghana, Philippines; CLDR's own Vietnamese names), the new tone placement (hòa, khóa) the dictionary's old style rejects, Úc | nothing |
+| th | 35 | pieces of loanwords cut by the word splitter; "ด้วยHamlet" | placeholders spaced (see above) |
+| id | 96 | affixed forms the dictionary lacks (memverifikasinya, -mu, -nya), names, Senturion | nothing |
+| zh, ja | not checked | Hunspell has no dictionary for languages written without spaces | |
+
+Doubtful and left for a native reader: Korean 환시 for the element "Vision" (a visual
+hallucination; lang/names-quotes has 환상, "fantasy"; neither is sourced), Russian
+Перфекционист for "Completionist" (it means perfectionist).
+
+## Grammar (LanguageTool 6.6, level "picky")
+
+Self-test, four known-bad sentences per language: en, es, fr, de 4 of 4; pt, ru 3; ar 2; zh, ja
+1; **it and pl 0 of 4**. So for Italian and Polish LanguageTool here checks spelling only, and for
+Chinese and Japanese very little: **their grammar has not been checked by any tool.** hi, ko, vi,
+th and id have no LanguageTool module.
+
+Hits apart from spelling and missing full stops on labels (pt FINAL_STOPS 29, pl BRAK_KROPKI
+44: list items and headings, which have none in English either): 83 (ar 47, pt 9, it 7, fr 6, zh 6,
+pl 5, en 1, de 1, ru 1), every one read.
+
+Changed: German "Karten nach Haus" (also reads "cards homeward") → "Karten nach Häusern";
+Arabic "لا نسخ حتى الآن" (readable as a verb, "does not copy") → "لا توجد نسخ حتى الآن".
+
+Read and not changed, with the reason:
+- Arabic number agreement (ثلاثة نزالات، ثلاثة قوالب، ثلاثة أرباع): the rule takes the
+  gender from the plural; Arabic takes it from the singular (نزال، قالب، ربع are masculine), so
+  ثلاثة is right. "Indefinite subject" (14 hits): headings and list labels, not sentences.
+  Purist replacements (نموذجات for نماذج, في الأقل for على الأقل, الملهى الليلي for
+  الكباريه, which would also change the meaning) and requests for diacritics.
+- Chinese 的/地 and 的 with 下: misparses of 新的互动娱乐 and 对手的下一首诗.
+- Italian "ai quiz" read as "hai quiz"; "o ottieni" / "od ottieni" (both admitted).
+- Portuguese style suggestions (onde for em que, a comma in ou… ou), "quiz" read as "quis",
+  Oriente and Ocidente capitalised as the regions they name.
+- Polish "w której" (a misparse) and the capitals of WebGPU, WebXR, FlipTop.
+- Russian Креативный директор (the usual job title; LanguageTool prefers творческий).
+- French "un Vision Pro" (the device), "l’afrobeats" (the genre's name), and a repeated
+  "entièrement" that only repeats across two strings checked in one batch.
+- Placeholder fill values of the checker itself (jest, a date range).
+- English source: a comma before "and" in main's own wording.
+
+## The pages, looked at (screenshots)
+
+Taken on the build host with `scripts/page-shots.mjs`: Arabic, German, Japanese and Spanish,
+each page at 1280 and 390 pixels wide, with the deck builder, its error, three card views, the
+city view and the phone menu. No page was wider than its screen in any of the 40 loads, and
+every document title was the language's own.
+
+Looked at, and fixed:
+- **Arabic**: an English line inside an Arabic rule ("To be, or not to be…") had its full stop
+  and quotation marks at the wrong ends; the English scene text was laid out right to left;
+  the stat labels in the monospace font fell apart into separate letters; every house badge
+  with the article showed ا. Rule lines without Arabic letters now go in `<bdi>`, scene text
+  takes `dir="auto"`, only the numbers are monospace, and the badge letter skips the article.
+- **Japanese**: the hero paragraph ended on a lone "う。", and 家門 was split one character per
+  line. The layout's `<main>` now breaks Japanese between phrases (`word-break: auto-phrase`)
+  and avoids one-word last lines (`text-wrap: pretty`).
+- **German, Spanish**: nothing to fix found; German's long compounds fit at 390 pixels.
+
+Looked at and right: arrows that point the reading way in Arabic, the paired brackets and
+Latin names inside Arabic sentences, the sentence-final full stop after "Inspired Mile" on the
+left, the house names, the city view with its English style names (by design).

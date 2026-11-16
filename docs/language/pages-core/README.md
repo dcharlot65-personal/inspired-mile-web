@@ -167,6 +167,16 @@ python3 scripts/pages-lang/typography.py --check
 QA_SRC=$(mktemp -d); git archive lang/qa-pipeline scripts/lang src/lib/verse/msg.ts docs/language | tar -x -C "$QA_SRC"
 QA_SRC=$QA_SRC node scripts/pages-lang/mechanical.mjs --selftest
 QA_SRC=$QA_SRC node scripts/pages-lang/mechanical.mjs
+# names inside sentences against CLDR and Wikidata (light)
+node scripts/pages-lang/names-in-text.mjs --selftest && node scripts/pages-lang/names-in-text.mjs
+# grammar: on the build host, start the LanguageTool server on a port of your own, then
+#   java -Xmx4g -cp $Q/LanguageTool-6.6/languagetool-server.jar org.languagetool.server.HTTPServer --port <port>
+LT_URL=http://127.0.0.1:<port> node scripts/pages-lang/grammar.mjs --selftest
+LT_URL=http://127.0.0.1:<port> node scripts/pages-lang/grammar.mjs --out grammar.json
+# back-translation, on the build host's CPU (its MPS backend failed: RESULTS.md); long, run it detached
+node scripts/pages-lang/pairs.mjs pairs.json [--min-words 6]
+MADLAD_DIR=$Q/models/madlad400-3b-mt-ct2-int8 MINILM_DIR=$Q/models/all-MiniLM-L6-v2 BT_BEAM=2 BT_BATCH=32 \
+  $Q/venv/bin/python -I scripts/pages-lang/backtranslate.py --pairs pairs.json --out bt.json
 # spelling (Hunspell) and back-translation (MADLAD-400), with the tools branch lang/qa-pipeline installed
 Q=/Volumes/macos_4TB_external_1/wai-build/im-lang/qa-pipeline
 ~/kani-logs/remote/rb . -- "$RB HSPELL=$Q/hunspell/bin/hspell DICT_DIR=$Q/dict node scripts/pages-lang/spell.mjs --selftest"
