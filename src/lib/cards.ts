@@ -262,6 +262,7 @@ export const CARD_CATALOG: Card[] = [
     gradient: 'from-red-500/20 to-stone-500/20', border: 'border-red-700/30',
     icon: '\u{1F451}',
     scene: 'A bloodstained throne room in Dunsinane. Macbeth grips his sword with trembling hands, the crown heavy on his brow. Birnam Wood stirs on the distant hill.',
+    image: '/images/cards/sc-001.webp',
   },
   {
     id: 'SC-002', name: 'Lady Macbeth', house: 'Scottish Court', type: 'Character',
@@ -270,6 +271,7 @@ export const CARD_CATALOG: Card[] = [
     gradient: 'from-zinc-500/20 to-red-500/20', border: 'border-zinc-500/30',
     icon: '\u{1F56F}',
     scene: 'A candlelit chamber in the Scottish castle. Lady Macbeth paces the cold stones, wringing phantom bloodstains from her hands. Shadows cling to her like a second skin.',
+    image: '/images/cards/sc-002.webp',
   },
   {
     id: 'SC-003', name: 'Banquo', house: 'Scottish Court', type: 'Character',
@@ -278,6 +280,7 @@ export const CARD_CATALOG: Card[] = [
     gradient: 'from-slate-500/20 to-blue-500/20', border: 'border-slate-500/30',
     icon: '\u{1F47B}',
     scene: 'A misty Scottish heath at twilight. Banquo stands resolute as three spectral figures whisper destinies into the wind. His ghost will haunt the living.',
+    image: '/images/cards/sc-003.webp',
   },
 
   // --- V2: Illyria (Twelfth Night) ---
@@ -288,6 +291,7 @@ export const CARD_CATALOG: Card[] = [
     gradient: 'from-teal-500/20 to-blue-500/20', border: 'border-teal-500/30',
     icon: '\u{1F3AD}',
     scene: 'A windswept Illyrian shore. Viola pulls a sailor\'s cap over her cropped hair, twin identities shimmering in her eyes. The sea whispers secrets of her lost brother.',
+    image: '/images/cards/il-001.webp',
   },
   {
     id: 'IL-002', name: 'Malvolio', house: 'Illyria', type: 'Character',
@@ -296,6 +300,7 @@ export const CARD_CATALOG: Card[] = [
     gradient: 'from-yellow-500/20 to-amber-500/20', border: 'border-yellow-500/30',
     icon: '\u{1F9E6}',
     scene: 'A sunlit garden in Olivia\'s estate. Malvolio struts in garish yellow stockings, cross-gartered and grinning, clutching a forged love letter to his chest.',
+    image: '/images/cards/il-002.webp',
   },
   {
     id: 'IL-003', name: 'Olivia', house: 'Illyria', type: 'Character',
@@ -304,6 +309,7 @@ export const CARD_CATALOG: Card[] = [
     gradient: 'from-indigo-500/20 to-cyan-500/20', border: 'border-indigo-500/30',
     icon: '\u{1F338}',
     scene: 'A veiled countess in mourning lifts her veil to reveal breathtaking beauty. Olivia\'s garden blooms with jasmine and lavender as the disguised messenger steals her heart.',
+    image: '/images/cards/il-003.webp',
   },
 
   // --- V2: Rome (Julius Caesar) ---
@@ -314,6 +320,7 @@ export const CARD_CATALOG: Card[] = [
     gradient: 'from-amber-500/20 to-stone-500/20', border: 'border-amber-700/30',
     icon: '\u{1F3DB}',
     scene: 'The Roman Senate, marble pillars stained crimson. Brutus stands among the conspirators, his blade still trembling. The weight of the republic rests on his bloodied hands.',
+    image: '/images/cards/rm-001.webp',
   },
   {
     id: 'RM-002', name: 'Cassius', house: 'Rome', type: 'Character',
@@ -322,6 +329,7 @@ export const CARD_CATALOG: Card[] = [
     gradient: 'from-emerald-500/20 to-zinc-500/20', border: 'border-emerald-700/30',
     icon: '\u{1F5E1}',
     scene: 'A torchlit Roman alley at midnight. Cassius leans close, whispering sedition with a lean and hungry look. Forged letters spill from his toga.',
+    image: '/images/cards/rm-002.webp',
   },
   {
     id: 'RM-003', name: 'Mark Antony', house: 'Rome', type: 'Character',
@@ -330,6 +338,7 @@ export const CARD_CATALOG: Card[] = [
     gradient: 'from-red-500/20 to-amber-500/20', border: 'border-red-500/30',
     icon: '\u{1F525}',
     scene: 'The Roman Forum erupts in fury. Mark Antony holds Caesar\'s bloodied cloak aloft before the mob, his words turning grief into fire. The republic crumbles with every syllable.',
+    image: '/images/cards/rm-003.webp',
   },
 
   // --- V2: Existing Houses Expanded ---
@@ -340,6 +349,7 @@ export const CARD_CATALOG: Card[] = [
     gradient: 'from-blue-500/20 to-slate-500/20', border: 'border-blue-500/30',
     icon: '\u{1F3F0}',
     scene: 'The Montague estate at dawn. Lord Montague watches from a high window as his son wanders the misty orchards below, lovesick and unreachable.',
+    image: '/images/cards/mo-004.webp',
   },
   {
     id: 'CA-003', name: 'Lady Capulet', house: 'Capulet', type: 'Character',
@@ -348,6 +358,7 @@ export const CARD_CATALOG: Card[] = [
     gradient: 'from-fuchsia-500/20 to-rose-500/20', border: 'border-fuchsia-500/30',
     icon: '\u{1F48D}',
     scene: 'The Capulet great hall draped in silk. Lady Capulet arranges her daughter\'s fate like flowers in a vase, ambition glittering behind every gracious smile.',
+    image: '/images/cards/ca-003.webp',
   },
   {
     id: 'DC-004', name: 'Horatio', house: 'Danish Court', type: 'Character',
@@ -356,6 +367,7 @@ export const CARD_CATALOG: Card[] = [
     gradient: 'from-slate-500/20 to-purple-500/20', border: 'border-slate-500/30',
     icon: '\u{1F91D}',
     scene: 'The battlements of Elsinore in the cold hour before dawn. Horatio stands vigil beside Hamlet, the one true friend in a court of serpents.',
+    image: '/images/cards/dc-004.webp',
   },
   {
     id: 'FA-004', name: 'Bottom', house: 'Forest of Arden', type: 'Character',
@@ -364,6 +376,7 @@ export const CARD_CATALOG: Card[] = [
     gradient: 'from-amber-500/20 to-green-500/20', border: 'border-amber-500/30',
     icon: '\u{1F434}',
     scene: 'A forest clearing aglow with fairy light. Bottom wears an ass\'s head with bewildered dignity as Titania drapes him in garlands. The fairies stifle their laughter.',
+    image: '/images/cards/fa-004.webp',
   },
   {
     id: 'VC-004', name: 'Paris', house: 'Verona Court', type: 'Character',
@@ -372,6 +385,7 @@ export const CARD_CATALOG: Card[] = [
     gradient: 'from-sky-500/20 to-amber-500/20', border: 'border-sky-500/30',
     icon: '\u{1F396}',
     scene: 'The churchyard of Verona at dusk. Paris lays flowers at Juliet\'s tomb, unaware of the desperate lover who approaches from the shadows.',
+    image: '/images/cards/vc-004.webp',
   },
   {
     id: 'TP-004', name: 'Miranda', house: 'The Tempest', type: 'Character',
@@ -380,6 +394,7 @@ export const CARD_CATALOG: Card[] = [
     gradient: 'from-cyan-500/20 to-rose-500/20', border: 'border-cyan-500/30',
     icon: '\u{1F31F}',
     scene: 'A pristine beach on Prospero\'s island. Miranda sees the shipwrecked sailors for the first time, her eyes wide with wonder at a world she never knew existed.',
+    image: '/images/cards/tp-004.webp',
   },
 
   // --- V2: New Relics ---
@@ -390,6 +405,7 @@ export const CARD_CATALOG: Card[] = [
     gradient: 'from-rose-500/20 to-gold-500/20', border: 'border-rose-500/30',
     icon: '\u{1F48D}',
     scene: 'A golden ring rests on a stone balcony ledge, catching moonlight. Inscribed inside is a vow that outlasts death itself. Rose petals spiral around it in an unseen wind.',
+    image: '/images/cards/rl-004.webp',
   },
   {
     id: 'RL-005', name: "Portia's Casket", house: 'Relic', type: 'Relic',
@@ -398,6 +414,7 @@ export const CARD_CATALOG: Card[] = [
     gradient: 'from-amber-500/20 to-zinc-500/20', border: 'border-amber-500/30',
     icon: '\u{1F4E6}',
     scene: 'Three caskets gleam in a candlelit chamber -- gold, silver, and lead. The lead casket hums with quiet truth, rewarding those wise enough to see past appearances.',
+    image: '/images/cards/rl-005.webp',
   },
   {
     id: 'RL-006', name: "Macbeth's Crown", house: 'Relic', type: 'Relic',
@@ -406,6 +423,7 @@ export const CARD_CATALOG: Card[] = [
     gradient: 'from-red-500/20 to-yellow-500/20', border: 'border-red-700/30',
     icon: '\u{1F451}',
     scene: 'A tarnished Scottish crown sits on a bloodstained pillow. It pulses with dark ambition, whispering promises of glory to any hand that dares reach for it.',
+    image: '/images/cards/rl-006.webp',
   },
   {
     id: 'RL-007', name: 'The Tempest Codex', house: 'Relic', type: 'Relic',
@@ -414,6 +432,7 @@ export const CARD_CATALOG: Card[] = [
     gradient: 'from-indigo-500/20 to-blue-500/20', border: 'border-indigo-500/30',
     icon: '\u{1F4D6}',
     scene: 'An ancient tome bound in sea-weathered leather floats above a stone altar. Its pages turn by themselves, each one summoning a different storm.',
+    image: '/images/cards/rl-007.webp',
   },
   {
     id: 'RL-008', name: "Cordelia's Tears", house: 'Relic', type: 'Relic',
@@ -422,6 +441,7 @@ export const CARD_CATALOG: Card[] = [
     gradient: 'from-cyan-500/20 to-blue-500/20', border: 'border-cyan-500/30',
     icon: '\u{1F4A7}',
     scene: 'A crystal vial holds tears that shimmer like captured starlight. Each drop carries the sorrow of a daughter who loved too truly and spoke too plainly.',
+    image: '/images/cards/rl-008.webp',
   },
   {
     id: 'RL-009', name: "Bottom's Mask", house: 'Relic', type: 'Relic',
@@ -430,6 +450,7 @@ export const CARD_CATALOG: Card[] = [
     gradient: 'from-amber-500/20 to-emerald-500/20', border: 'border-amber-500/30',
     icon: '\u{1F3AD}',
     scene: 'A donkey-headed mask hangs from a mossy branch in the fairy wood. Whoever dons it sees the world through enchanted eyes -- and becomes irresistible to fairy queens.',
+    image: '/images/cards/rl-009.webp',
   },
 
   // --- V2: New Potions ---
@@ -440,6 +461,7 @@ export const CARD_CATALOG: Card[] = [
     gradient: 'from-stone-500/20 to-green-500/20', border: 'border-stone-500/30',
     icon: '\u{1FAB4}',
     scene: 'A gnarled root shaped like a screaming figure is unearthed by candlelight. Soil crumbles away to reveal its twisted, ancient power. The apothecary handles it with trembling reverence.',
+    image: '/images/cards/pt-004.webp',
   },
   {
     id: 'PT-005', name: "Oberon's Dew", house: 'Potion', type: 'Potion',
@@ -448,6 +470,7 @@ export const CARD_CATALOG: Card[] = [
     gradient: 'from-violet-500/20 to-emerald-500/20', border: 'border-violet-500/30',
     icon: '\u{2728}',
     scene: 'A dewdrop clings to a moonlit orchid, glowing with otherworldly violet light. One drop upon sleeping eyelids and the dreamer falls in love with the first creature they see.',
+    image: '/images/cards/pt-005.webp',
   },
   {
     id: 'PT-006', name: 'Hemlock Tincture', house: 'Potion', type: 'Potion',
@@ -456,6 +479,7 @@ export const CARD_CATALOG: Card[] = [
     gradient: 'from-green-500/20 to-zinc-500/20', border: 'border-green-700/30',
     icon: '\u{2620}',
     scene: 'A black glass vial weeps green vapor in a darkened corridor. The tincture within has toppled kings and shattered dynasties, one silent drop at a time.',
+    image: '/images/cards/pt-006.webp',
   },
   {
     id: 'PT-007', name: 'Mistletoe Extract', house: 'Potion', type: 'Potion',
@@ -464,6 +488,7 @@ export const CARD_CATALOG: Card[] = [
     gradient: 'from-lime-500/20 to-green-500/20', border: 'border-lime-500/30',
     icon: '\u{1F33F}',
     scene: 'Pale berries glisten among dark evergreen leaves, harvested under a winter moon. The extract hums with the quiet, persistent magic of the natural world.',
+    image: '/images/cards/pt-007.webp',
   },
   {
     id: 'PT-008', name: "Mermaid's Tears", house: 'Potion', type: 'Potion',
@@ -472,6 +497,7 @@ export const CARD_CATALOG: Card[] = [
     gradient: 'from-blue-500/20 to-cyan-500/20', border: 'border-blue-500/30',
     icon: '\u{1F30A}',
     scene: 'A pearl-stoppered flask holds luminous blue liquid that shifts like a living sea. Within it, tiny coral formations grow and dissolve. It smells of salt and forgotten voyages.',
+    image: '/images/cards/pt-008.webp',
   },
   {
     id: 'PT-009', name: "Apothecary's Elixir", house: 'Potion', type: 'Potion',
@@ -480,6 +506,7 @@ export const CARD_CATALOG: Card[] = [
     gradient: 'from-amber-500/20 to-red-500/20', border: 'border-amber-700/30',
     icon: '\u{2697}',
     scene: 'A dusty apothecary shop in Mantua\'s poorest quarter. A desperate elixir glows amber in a cracked vial, potent enough to bridge the gap between life and death.',
+    image: '/images/cards/pt-009.webp',
   },
 
   // =========================================================================
@@ -494,6 +521,7 @@ export const CARD_CATALOG: Card[] = [
     gradient: 'from-emerald-500/20 to-sky-500/20', border: 'border-emerald-500/30',
     icon: '\u{1F33B}',
     scene: 'A carpet of golden daffodils stretches along the shores of a still lake. Wordsworth walks among them, notebook in hand, the Cumberland fells rising behind him.',
+    image: '/images/cards/ld-001.webp',
     era: 'romantic',
   },
   {
@@ -503,6 +531,7 @@ export const CARD_CATALOG: Card[] = [
     gradient: 'from-blue-500/20 to-gray-500/20', border: 'border-blue-700/30',
     icon: '\u{1F30A}',
     scene: 'A becalmed ship drifts on a painted ocean. The Ancient Mariner stares at the albatross around his neck as spectral figures rise from the glassy sea.',
+    image: '/images/cards/ld-002.webp',
     era: 'romantic',
   },
   {
@@ -512,6 +541,7 @@ export const CARD_CATALOG: Card[] = [
     gradient: 'from-rose-500/20 to-amber-500/20', border: 'border-rose-500/30',
     icon: '\u{1F33A}',
     scene: 'A Hampstead garden in autumn. Keats sits beneath a plum tree, writing feverishly as a nightingale sings from the darkening branches above.',
+    image: '/images/cards/ld-003.webp',
     era: 'romantic',
   },
 
@@ -523,6 +553,7 @@ export const CARD_CATALOG: Card[] = [
     gradient: 'from-violet-500/20 to-red-500/20', border: 'border-violet-500/30',
     icon: '\u{1F525}',
     scene: 'A Venetian palazzo at midnight. Byron stands on the balcony, cape billowing, gazing across the dark canal. A half-finished manuscript burns in the fireplace behind him.',
+    image: '/images/cards/gc-001.webp',
     era: 'romantic',
   },
   {
@@ -532,6 +563,7 @@ export const CARD_CATALOG: Card[] = [
     gradient: 'from-zinc-500/20 to-emerald-500/20', border: 'border-zinc-500/30',
     icon: '\u{26A1}',
     scene: 'A candlelit study in Geneva during a thunderstorm. Mary writes by lightning flash as the creature stirs in the shadows behind her. Science and horror become one.',
+    image: '/images/cards/gc-002.webp',
     era: 'romantic',
   },
   {
@@ -541,6 +573,7 @@ export const CARD_CATALOG: Card[] = [
     gradient: 'from-gray-500/20 to-purple-500/20', border: 'border-gray-700/30',
     icon: '\u{1F426}',
     scene: 'A dim chamber lit by a dying fire. Poe sits hunched at his desk as a raven alights on the bust of Pallas. The word "Nevermore" echoes in the shadows.',
+    image: '/images/cards/gc-003.webp',
     era: 'romantic',
   },
   {
@@ -550,6 +583,7 @@ export const CARD_CATALOG: Card[] = [
     gradient: 'from-amber-500/20 to-indigo-500/20', border: 'border-amber-500/30',
     icon: '\u{1F31F}',
     scene: 'A London printing workshop ablaze with visionary light. Blake etches a tiger into copper as the beast materializes from the plate, burning bright in the forests of the night.',
+    image: '/images/cards/gc-004.webp',
     era: 'romantic',
   },
 
@@ -561,6 +595,7 @@ export const CARD_CATALOG: Card[] = [
     gradient: 'from-sky-500/20 to-red-500/20', border: 'border-sky-500/30',
     icon: '\u{1F343}',
     scene: 'A windswept Italian clifftop. Shelley faces the storm, arms wide, as the west wind tears pages from his notebook and scatters them across the Mediterranean.',
+    image: '/images/cards/gc-005.webp',
     era: 'romantic',
   },
   {
@@ -570,6 +605,7 @@ export const CARD_CATALOG: Card[] = [
     gradient: 'from-rose-500/20 to-purple-500/20', border: 'border-rose-500/30',
     icon: '\u{1F4DC}',
     scene: 'A sunlit room in Florence. Elizabeth writes at a window overlooking the Arno, her spaniel at her feet. Love letters from Robert lie open on the desk.',
+    image: '/images/cards/ld-004.webp',
     era: 'romantic',
   },
   {
@@ -579,6 +615,7 @@ export const CARD_CATALOG: Card[] = [
     gradient: 'from-slate-500/20 to-rose-500/20', border: 'border-slate-500/30',
     icon: '\u{1F54A}',
     scene: 'A Pre-Raphaelite garden in fading autumn light. Christina sits among fallen leaves, composing verses that ache with beauty and quiet resignation.',
+    image: '/images/cards/ld-005.webp',
     era: 'romantic',
   },
 
@@ -594,6 +631,7 @@ export const CARD_CATALOG: Card[] = [
     gradient: 'from-gold-500/20 to-blue-500/20', border: 'border-gold-500/40',
     icon: '\u{26A1}',
     scene: 'Mount Olympus splits the sky. Zeus sits on a throne of clouds, lightning arcing between his fingers. Below, the mortal world trembles at his gaze.',
+    image: '/images/cards/ol-001.webp',
     era: 'mythology',
   },
   {
@@ -603,6 +641,7 @@ export const CARD_CATALOG: Card[] = [
     gradient: 'from-amber-500/20 to-gray-500/20', border: 'border-amber-500/30',
     icon: '\u{1F989}',
     scene: 'The Parthenon gleams in golden light. Athena stands in full armor, her owl perched on her shield, her grey eyes seeing through every mortal deception.',
+    image: '/images/cards/ol-002.webp',
     era: 'mythology',
   },
   {
@@ -612,6 +651,7 @@ export const CARD_CATALOG: Card[] = [
     gradient: 'from-yellow-500/20 to-orange-500/20', border: 'border-yellow-500/30',
     icon: '\u{2600}',
     scene: 'A golden chariot races across the dawn sky. Apollo plays his lyre as sunlight pours from the wheels, painting the world in color.',
+    image: '/images/cards/ol-003.webp',
     era: 'mythology',
   },
   {
@@ -621,6 +661,7 @@ export const CARD_CATALOG: Card[] = [
     gradient: 'from-pink-500/20 to-rose-500/20', border: 'border-pink-500/30',
     icon: '\u{1F338}',
     scene: 'The shores of Cyprus at dawn. Aphrodite rises from sea foam, doves circling above as waves lay pearls at her feet. The world holds its breath.',
+    image: '/images/cards/ol-004.webp',
     era: 'mythology',
   },
   {
@@ -630,6 +671,7 @@ export const CARD_CATALOG: Card[] = [
     gradient: 'from-cyan-500/20 to-amber-500/20', border: 'border-cyan-500/30',
     icon: '\u{1F4E8}',
     scene: 'A blur of winged sandals across the sky. Hermes weaves between thunderbolts, a divine message clutched in one hand and a thief\'s grin on his face.',
+    image: '/images/cards/ol-005.webp',
     era: 'mythology',
   },
 
@@ -641,6 +683,7 @@ export const CARD_CATALOG: Card[] = [
     gradient: 'from-zinc-500/20 to-purple-500/20', border: 'border-zinc-700/30',
     icon: '\u{1F480}',
     scene: 'The throne room of the Underworld, lit by rivers of pale fire. Hades sits with Cerberus at his feet, his helm of darkness on the armrest. The dead file past in endless silence.',
+    image: '/images/cards/uw-001.webp',
     era: 'mythology',
   },
   {
@@ -650,6 +693,7 @@ export const CARD_CATALOG: Card[] = [
     gradient: 'from-emerald-500/20 to-purple-500/20', border: 'border-emerald-500/30',
     icon: '\u{1F33E}',
     scene: 'A throne split between spring and shadow. Persephone holds a pomegranate in one hand and a crown of flowers in the other, queen of two realms.',
+    image: '/images/cards/uw-002.webp',
     era: 'mythology',
   },
   {
@@ -659,6 +703,7 @@ export const CARD_CATALOG: Card[] = [
     gradient: 'from-teal-500/20 to-amber-500/20', border: 'border-teal-500/30',
     icon: '\u{1F6A2}',
     scene: 'A storm-battered ship rounds a rocky headland. Odysseus lashes himself to the mast as the Sirens sing from the cliffs. His eyes burn with the memory of Ithaca.',
+    image: '/images/cards/ol-006.webp',
     era: 'mythology',
   },
   {
@@ -668,6 +713,7 @@ export const CARD_CATALOG: Card[] = [
     gradient: 'from-green-500/20 to-stone-500/20', border: 'border-green-700/30',
     icon: '\u{1F40D}',
     scene: 'A ruined temple at the edge of the world. Medusa turns, her serpent hair hissing. Stone warriors litter the floor, frozen in their final charge.',
+    image: '/images/cards/uw-003.webp',
     era: 'mythology',
   },
   {
@@ -677,6 +723,7 @@ export const CARD_CATALOG: Card[] = [
     gradient: 'from-red-500/20 to-gold-500/20', border: 'border-red-500/30',
     icon: '\u{1F6E1}',
     scene: 'The plains of Troy at dawn. Achilles charges in blazing armor, his war cry splitting the air. Behind him, Greek ships burn on the shore.',
+    image: '/images/cards/ol-007.webp',
     era: 'mythology',
   },
 ];
