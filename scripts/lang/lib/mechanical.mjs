@@ -140,7 +140,11 @@ export function checkLanguage(lang, strings, english, cldr, helpers, opts = {}) 
     // --- punctuation ---
     if (/([,;:!?،؛؟。、，；：！？])\1/u.test(whole)) bad(key, 'doubled-punctuation', whole.match(/([,;:!?،؛؟。、，；：！？])\1/u)[0]);
     if (/\.\.(?!\.)/.test(whole.replace(/\.{3}/g, ''))) bad(key, 'doubled-punctuation', '..');
-    if (lang !== 'fr' && /[^\s\uFFFC] [,.;:!?](?:\s|$)/u.test(whole)) bad(key, 'space-before-punctuation', whole.match(/\S [,.;:!?]/)?.[0] ?? '');
+    // A plain space before a comma or a full stop is wrong in every language here, whatever follows
+    // it ("Anmelden ,jetzt" passed when the rule asked for a space after the mark too); before ; : ! ?
+    // it is wrong everywhere but French, whose rule (fr-nbsp) wants a no-break space there instead.
+    const spaceBefore = whole.match(/[^\s\uFFFC] [,.](?!\.)/u) ?? (lang !== 'fr' ? whole.match(/[^\s\uFFFC] [;:!?]/u) : null);
+    if (spaceBefore) bad(key, 'space-before-punctuation', spaceBefore[0]);
     if (/[(\[] | [)\]]/.test(whole)) bad(key, 'space-inside-brackets', '');
     // One ellipsis character, not three full stops.
     if (/\.\.\./.test(whole)) bad(key, 'ascii-ellipsis', 'three full stops; the ellipsis is one character (…)');

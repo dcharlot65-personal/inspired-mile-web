@@ -37,13 +37,13 @@
    "lang": "pl",
    "key": "age.agreeBefore",
    "rule": "ending",
-   "reason": "As above: 'akceptujesz dokumenty:' then the titles, undeclined."
+   "reason": "Polish would have to decline the two document titles that follow as links; ending this piece on a colon ('… dokumenty:') lets them stand in the nominative."
   },
   {
    "lang": "pl",
    "key": "auth.legalBefore",
    "rule": "ending",
-   "reason": "As above."
+   "reason": "Polish would have to decline the two document titles that follow as links; ending this piece on a colon ('… dokumenty:') lets them stand in the nominative."
   },
   {
    "lang": "ru",
@@ -55,13 +55,13 @@
    "lang": "ru",
    "key": "age.agreeBefore",
    "rule": "ending",
-   "reason": "As above."
+   "reason": "Russian would have to decline the two document titles that follow as links; ending this piece on a colon ('… документы:') lets them stand in the nominative."
   },
   {
    "lang": "ru",
    "key": "auth.legalBefore",
    "rule": "ending",
-   "reason": "As above."
+   "reason": "Russian would have to decline the two document titles that follow as links; ending this piece on a colon ('… документы:') lets them stand in the nominative."
   }
  ]
 }
