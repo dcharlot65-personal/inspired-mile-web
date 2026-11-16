@@ -91,14 +91,16 @@
    "id": "tour.bracket.loading",
    "text": "جارٍ تحميل جدول البطولة…",
    "verdict": "kept",
-   "note": "the bracket, in the word of the Tournaments table of docs/language/pages-rest.md (Wikidata Q4953688 where it has a label); both models read it back as a table, chart, grid or tree, which is what a bracket is"
+   "term": "bracket",
+   "note": "the bracket, جدول البطولة: Wikidata's label for Q4953688 (terms record); both models read it back as a table, chart, grid or tree, which is what a bracket is"
   },
   {
    "lang": "ar",
    "id": "tour.bye",
    "text": "تأهّل دون لعب",
    "verdict": "kept",
-   "note": "the bye, as Wikidata labels it (Q1268659) or, where it has no usable label, a description (Tournaments table); a one-word sports term the round trip cannot keep"
+   "term": "bye",
+   "note": "the bye, تأهّل دون لعب: not Wikidata's word for Q1268659: A description: the label (لقاء) means a meeting, and the article's word (استبقاء) is not one a player would know (terms record); a one-word sports term the round trip cannot keep"
   },
   {
    "lang": "ar",
@@ -126,7 +128,8 @@
    "id": "tour.format.single_elimination",
    "text": "خروج المغلوب",
    "verdict": "kept",
-   "note": "the name of the format as Wikidata labels it (Q864897; Tournaments table); translated back word by word it comes out as knockout, cup system, direct elimination"
+   "term": "single_elimination",
+   "note": "the name of the format, خروج المغلوب: Wikidata's label for Q864897 (terms record); Tournaments table); translated back word by word it comes out as knockout, cup system, direct elimination"
   },
   {
    "lang": "ar",
@@ -154,29 +157,32 @@
    "id": "tour.tab.bracket",
    "text": "جدول البطولة",
    "verdict": "kept",
-   "note": "the bracket, in the word of the Tournaments table of docs/language/pages-rest.md (Wikidata Q4953688 where it has a label); both models read it back as a table, chart, grid or tree, which is what a bracket is"
+   "term": "bracket",
+   "note": "the bracket, جدول البطولة: Wikidata's label for Q4953688 (terms record); both models read it back as a table, chart, grid or tree, which is what a bracket is"
   },
   {
    "lang": "ar",
    "id": "tour.viewBracket",
    "text": "عرض جدول البطولة",
    "verdict": "kept",
-   "note": "the bracket, in the word of the Tournaments table of docs/language/pages-rest.md (Wikidata Q4953688 where it has a label); both models read it back as a table, chart, grid or tree, which is what a bracket is"
+   "term": "bracket",
+   "note": "the bracket, جدول البطولة: Wikidata's label for Q4953688 (terms record); both models read it back as a table, chart, grid or tree, which is what a bracket is"
   },
   {
    "lang": "ar",
    "id": "viewer.ar",
    "text": "عرض بالواقع المعزَّز",
    "verdict": "kept",
-   "note": "ar عرض بالواقع المعزَّز, view with augmented reality (Wikidata Q254183's label)"
+   "term": "ar",
+   "note": "augmented reality, واقع معزز: Wikidata's label for Q254183 (terms record); view with augmented reality"
   },
   {
    "lang": "de",
    "id": "classroom.wizard.s3.title",
    "text": "Aktivitäten zuweisen",
    "verdict": "changed",
-   "was": "Aktivitäten aufgeben",
-   "note": "Not flagged by both (back: \"Give up activities\", 0.56/0.85). \"aufgeben\" means to set only with Hausaufgaben; with Aktivitäten it reads \"give up\". Now \"assign activities\" (back: \"Assign activities\", 0.83/0.82)."
+   "note": "Not flagged by both (back: \"Give up activities\", 0.56/0.85). \"aufgeben\" means to set only with Hausaufgaben; with Aktivitäten it reads \"give up\". Now \"assign activities\" (back: \"Assign activities\", 0.83/0.82).",
+   "was": "Aktivitäten aufgeben"
   },
   {
    "lang": "de",
@@ -211,7 +217,8 @@
    "id": "tour.bye",
    "text": "Freilos",
    "verdict": "kept",
-   "note": "the bye, as Wikidata labels it (Q1268659) or, where it has no usable label, a description (Tournaments table); a one-word sports term the round trip cannot keep"
+   "term": "bye",
+   "note": "the bye, Freilos: Wikidata's label for Q1268659 (terms record); a one-word sports term the round trip cannot keep"
   },
   {
    "lang": "de",
@@ -225,14 +232,16 @@
    "id": "tour.format.round_robin",
    "text": "Jeder gegen jeden",
    "verdict": "kept",
-   "note": "the name of the format as Wikidata labels it (Q841144) or its everyday name (Tournaments table); translated back word by word, the name comes out as all against all, circle, league"
+   "term": "round_robin",
+   "note": "the name of the format, jeder gegen jeden: Wikidata's article title for Q841144, shortened (terms record); translated back word by word, the name comes out as all against all, circle, league"
   },
   {
    "lang": "de",
    "id": "tour.format.single_elimination",
    "text": "K.‑o.‑System",
    "verdict": "kept",
-   "note": "the name of the format as Wikidata labels it (Q864897; Tournaments table); translated back word by word it comes out as knockout, cup system, direct elimination"
+   "term": "single_elimination",
+   "note": "the name of the format, K.‑o.‑System: Wikidata's article title for Q864897 (terms record); Tournaments table); translated back word by word it comes out as knockout, cup system, direct elimination"
   },
   {
    "lang": "de",
@@ -260,7 +269,8 @@
    "id": "tour.tab.bracket",
    "text": "Turnierbaum",
    "verdict": "kept",
-   "note": "the bracket, in the word of the Tournaments table of docs/language/pages-rest.md (Wikidata Q4953688 where it has a label); both models read it back as a table, chart, grid or tree, which is what a bracket is"
+   "term": "bracket",
+   "note": "the bracket, Turnierbaum: Wikidata's label for Q4953688 (terms record); both models read it back as a table, chart, grid or tree, which is what a bracket is"
   },
   {
    "lang": "de",
@@ -274,14 +284,15 @@
    "id": "tour.viewBracket",
    "text": "Turnierbaum ansehen",
    "verdict": "kept",
-   "note": "the bracket, in the word of the Tournaments table of docs/language/pages-rest.md (Wikidata Q4953688 where it has a label); both models read it back as a table, chart, grid or tree, which is what a bracket is"
+   "term": "bracket",
+   "note": "the bracket, Turnierbaum: Wikidata's label for Q4953688 (terms record); both models read it back as a table, chart, grid or tree, which is what a bracket is"
   },
   {
    "lang": "es",
    "id": "boundary.retry",
    "text": "Reintentar",
    "verdict": "kept",
-   "note": "es Reintentar: Android's own word for Retry"
+   "note": "es Reintentar: try again, as a button says it; read back as retry (no source: the wording is the model’s)"
   },
   {
    "lang": "es",
@@ -302,14 +313,15 @@
    "id": "offline.retry",
    "text": "Reintentar",
    "verdict": "kept",
-   "note": "es Reintentar: Android's own word for Retry"
+   "note": "es Reintentar: try again, as a button says it; read back as retry (no source: the wording is the model’s)"
   },
   {
    "lang": "es",
    "id": "tour.bye",
    "text": "Exento",
    "verdict": "kept",
-   "note": "the bye, as Wikidata labels it (Q1268659) or, where it has no usable label, a description (Tournaments table); a one-word sports term the round trip cannot keep"
+   "term": "bye",
+   "note": "the bye, Exento: not Wikidata's word for Q1268659: The adjective of the article's Exención; the label is the English word (terms record); a one-word sports term the round trip cannot keep"
   },
   {
    "lang": "es",
@@ -330,14 +342,16 @@
    "id": "tour.format.round_robin",
    "text": "Todos contra todos",
    "verdict": "kept",
-   "note": "the name of the format as Wikidata labels it (Q841144) or its everyday name (Tournaments table); translated back word by word, the name comes out as all against all, circle, league"
+   "term": "round_robin",
+   "note": "the name of the format, todos contra todos: Wikidata's label for Q841144, shortened (terms record); translated back word by word, the name comes out as all against all, circle, league"
   },
   {
    "lang": "es",
    "id": "tour.tab.bracket",
    "text": "Cuadro",
    "verdict": "kept",
-   "note": "the bracket, in the word of the Tournaments table of docs/language/pages-rest.md (Wikidata Q4953688 where it has a label); both models read it back as a table, chart, grid or tree, which is what a bracket is"
+   "term": "bracket",
+   "note": "the bracket, cuadro: the model's word, no source in this language (terms record); both models read it back as a table, chart, grid or tree, which is what a bracket is"
   },
   {
    "lang": "es",
@@ -358,7 +372,8 @@
    "id": "classroom.badge.student",
    "text": "Élève",
    "verdict": "kept",
-   "note": "fr élève: a pupil at school (the label of Wikidata Q48942)"
+   "term": "student",
+   "note": "a pupil at school, élève: Wikidata's label for Q48942 (terms record); a pupil at school"
   },
   {
    "lang": "fr",
@@ -372,21 +387,24 @@
    "id": "tour.bye",
    "text": "Exempt",
    "verdict": "kept",
-   "note": "the bye, as Wikidata labels it (Q1268659) or, where it has no usable label, a description (Tournaments table); a one-word sports term the round trip cannot keep"
+   "term": "bye",
+   "note": "the bye, Exempt: not Wikidata's word for Q1268659: The label and the article are the English word. The model's choice; no recorded source (terms record); a one-word sports term the round trip cannot keep"
   },
   {
    "lang": "fr",
    "id": "tour.format.round_robin",
    "text": "Toutes rondes",
    "verdict": "kept",
-   "note": "the name of the format as Wikidata labels it (Q841144) or its everyday name (Tournaments table); translated back word by word, the name comes out as all against all, circle, league"
+   "term": "round_robin",
+   "note": "the name of the format, toutes rondes: Wikidata's label for Q841144, shortened (terms record); translated back word by word, the name comes out as all against all, circle, league"
   },
   {
    "lang": "fr",
    "id": "tour.tab.bracket",
    "text": "Tableau",
    "verdict": "kept",
-   "note": "the bracket, in the word of the Tournaments table of docs/language/pages-rest.md (Wikidata Q4953688 where it has a label); both models read it back as a table, chart, grid or tree, which is what a bracket is"
+   "term": "bracket",
+   "note": "the bracket, tableau: Wikidata's label for Q4953688 (terms record); both models read it back as a table, chart, grid or tree, which is what a bracket is"
   },
   {
    "lang": "hi",
@@ -414,8 +432,8 @@
    "id": "classroom.create.done",
    "text": "कक्षा बना दी गई है।",
    "verdict": "changed",
-   "was": "कक्षा बन गई है।",
-   "note": "Not flagged by both (back: \"The class is done.\", 0.66). The intransitive बन गई (\"has come into being\") read as \"is done\"; now the passive \"has been made\" (back: \"The class has been set up.\", 0.71/0.85)."
+   "note": "Not flagged by both (back: \"The class is done.\", 0.66). The intransitive बन गई (\"has come into being\") read as \"is done\"; now the passive \"has been made\" (back: \"The class has been set up.\", 0.71/0.85).",
+   "was": "कक्षा बन गई है।"
   },
   {
    "lang": "hi",
@@ -429,8 +447,8 @@
    "id": "error.teachers_only",
    "text": "केवल शिक्षक ही कार्य बना सकते हैं।",
    "verdict": "changed",
-   "was": "कार्य केवल शिक्षक बना सकते हैं।",
-   "note": "Not flagged by both (back: \"Work can only make a teacher.\", 0.67). Put केवल … ही before the subject, so it reads \"only teachers can create assignments\" (back: \"Only teachers can create tasks.\", 0.76/0.82)."
+   "note": "Not flagged by both (back: \"Work can only make a teacher.\", 0.67). Put केवल … ही before the subject, so it reads \"only teachers can create assignments\" (back: \"Only teachers can create tasks.\", 0.76/0.82).",
+   "was": "कार्य केवल शिक्षक बना सकते हैं।"
   },
   {
    "lang": "hi",
@@ -465,8 +483,8 @@
    "id": "tour.entry.active",
    "text": "अब भी मुक़ाबले में",
    "verdict": "changed",
-   "was": "मुक़ाबले में",
-   "note": "Flagged (back: \"Comparison\", 0.19/0.41). \"In the contest\" lost the \"still\" of \"Still in\"; now \"still in the contest\" (back: \"Still in confrontation\", 0.40/0.75)."
+   "note": "Flagged (back: \"Comparison\", 0.19/0.41). \"In the contest\" lost the \"still\" of \"Still in\"; now \"still in the contest\" (back: \"Still in confrontation\", 0.40/0.75).",
+   "was": "मुक़ाबले में"
   },
   {
    "lang": "hi",
@@ -529,21 +547,24 @@
    "id": "pwa.install.dismiss",
    "text": "Lain kali",
    "verdict": "kept",
-   "note": "Android's own \"Not now\" (AOSP autofill_save_notnow; docs/language/sources/pages-rest-android-terms.json)"
+   "term": "not_now",
+   "note": "the button, Lain kali: Android's own word (AOSP, term \"notNow\" of docs/language/sources/pages-rest-android-terms.json; terms record)"
   },
   {
    "lang": "id",
    "id": "tour.format.round_robin",
    "text": "Sistem kompetisi",
    "verdict": "kept",
-   "note": "the name of the format as Wikidata labels it (Q841144) or its everyday name (Tournaments table); translated back word by word, the name comes out as all against all, circle, league"
+   "term": "round_robin",
+   "note": "the name of the format, sistem kompetisi: Wikidata's label for Q841144 (terms record); translated back word by word, the name comes out as all against all, circle, league"
   },
   {
    "lang": "id",
    "id": "tour.format.single_elimination",
    "text": "Sistem gugur",
    "verdict": "kept",
-   "note": "the name of the format as Wikidata labels it (Q864897; Tournaments table); translated back word by word it comes out as knockout, cup system, direct elimination"
+   "term": "single_elimination",
+   "note": "the name of the format, sistem gugur: Wikidata's label for Q864897 (terms record); Tournaments table); translated back word by word it comes out as knockout, cup system, direct elimination"
   },
   {
    "lang": "id",
@@ -564,14 +585,16 @@
    "id": "tour.tab.bracket",
    "text": "Bagan pertandingan",
    "verdict": "kept",
-   "note": "the bracket, in the word of the Tournaments table of docs/language/pages-rest.md (Wikidata Q4953688 where it has a label); both models read it back as a table, chart, grid or tree, which is what a bracket is"
+   "term": "bracket",
+   "note": "the bracket, bagan pertandingan: the model's word, no source in this language (terms record); both models read it back as a table, chart, grid or tree, which is what a bracket is"
   },
   {
    "lang": "id",
    "id": "tour.viewBracket",
    "text": "Lihat bagan pertandingan",
    "verdict": "kept",
-   "note": "the bracket, in the word of the Tournaments table of docs/language/pages-rest.md (Wikidata Q4953688 where it has a label); both models read it back as a table, chart, grid or tree, which is what a bracket is"
+   "term": "bracket",
+   "note": "the bracket, bagan pertandingan: the model's word, no source in this language (terms record); both models read it back as a table, chart, grid or tree, which is what a bracket is"
   },
   {
    "lang": "it",
@@ -613,14 +636,16 @@
    "id": "tour.format.round_robin",
    "text": "Girone all’italiana",
    "verdict": "kept",
-   "note": "the name of the format as Wikidata labels it (Q841144) or its everyday name (Tournaments table); translated back word by word, the name comes out as all against all, circle, league"
+   "term": "round_robin",
+   "note": "the name of the format, girone all’italiana: Wikidata's article title for Q841144 (terms record); translated back word by word, the name comes out as all against all, circle, league"
   },
   {
    "lang": "it",
    "id": "tour.tab.bracket",
    "text": "Tabellone",
    "verdict": "kept",
-   "note": "the bracket, in the word of the Tournaments table of docs/language/pages-rest.md (Wikidata Q4953688 where it has a label); both models read it back as a table, chart, grid or tree, which is what a bracket is"
+   "term": "bracket",
+   "note": "the bracket, tabellone: the model's word, no source in this language (terms record); both models read it back as a table, chart, grid or tree, which is what a bracket is"
   },
   {
    "lang": "ja",
@@ -641,8 +666,8 @@
    "id": "classroom.wizard.s3.title",
    "text": "活動を割り当てる",
    "verdict": "changed",
-   "was": "活動を出題する",
-   "note": "Not flagged by both (back: \"I'm going to give you a task.\", 0.22/0.72). 出題 is setting questions for a test, not activities. Tried 課題を出す (0.18/0.46) and 活動を割り当てる, \"assign activities\" (back: \"Assign activity.\", 0.75/0.80); kept the second."
+   "note": "Not flagged by both (back: \"I'm going to give you a task.\", 0.22/0.72). 出題 is setting questions for a test, not activities. Tried 課題を出す (0.18/0.46) and 活動を割り当てる, \"assign activities\" (back: \"Assign activity.\", 0.75/0.80); kept the second.",
+   "was": "活動を出題する"
   },
   {
    "lang": "ja",
@@ -712,7 +737,8 @@
    "id": "pwa.install.dismiss",
    "text": "後で",
    "verdict": "kept",
-   "note": "Android's own \"Not now\" (AOSP autofill_save_notnow; docs/language/sources/pages-rest-android-terms.json)"
+   "term": "not_now",
+   "note": "the button, 後で: Android's own word (AOSP, term \"notNow\" of docs/language/sources/pages-rest-android-terms.json; terms record)"
   },
   {
    "lang": "ja",
@@ -733,21 +759,24 @@
    "id": "tour.bracket.loading",
    "text": "トーナメント表を読み込んでいます…",
    "verdict": "kept",
-   "note": "the bracket, in the word of the Tournaments table of docs/language/pages-rest.md (Wikidata Q4953688 where it has a label); both models read it back as a table, chart, grid or tree, which is what a bracket is"
+   "term": "bracket",
+   "note": "the bracket, トーナメント表: the model's word, no source in this language (terms record); both models read it back as a table, chart, grid or tree, which is what a bracket is"
   },
   {
    "lang": "ja",
    "id": "tour.bracket.none",
    "text": "トーナメント表の組み合わせは、まだ決まっていません。",
    "verdict": "kept",
-   "note": "the bracket, in the word of the Tournaments table of docs/language/pages-rest.md (Wikidata Q4953688 where it has a label); both models read it back as a table, chart, grid or tree, which is what a bracket is"
+   "term": "bracket",
+   "note": "the bracket, トーナメント表: the model's word, no source in this language (terms record); both models read it back as a table, chart, grid or tree, which is what a bracket is"
   },
   {
    "lang": "ja",
    "id": "tour.bye",
    "text": "不戦勝",
    "verdict": "kept",
-   "note": "the bye, as Wikidata labels it (Q1268659) or, where it has no usable label, a description (Tournaments table); a one-word sports term the round trip cannot keep"
+   "term": "bye",
+   "note": "the bye, 不戦勝: the model's word, no source in this language (terms record); a one-word sports term the round trip cannot keep"
   },
   {
    "lang": "ja",
@@ -768,14 +797,16 @@
    "id": "tour.format.round_robin",
    "text": "総当たり戦",
    "verdict": "kept",
-   "note": "the name of the format as Wikidata labels it (Q841144) or its everyday name (Tournaments table); translated back word by word, the name comes out as all against all, circle, league"
+   "term": "round_robin",
+   "note": "the name of the format, 総当たり戦: not Wikidata's word for Q841144: The Japanese article glosses its label, リーグ戦, as 総当たり戦; the plainer word was kept (terms record); translated back word by word, the name comes out as all against all, circle, league"
   },
   {
    "lang": "ja",
    "id": "tour.format.single_elimination",
    "text": "ノックアウト方式",
    "verdict": "kept",
-   "note": "the name of the format as Wikidata labels it (Q864897; Tournaments table); translated back word by word it comes out as knockout, cup system, direct elimination"
+   "term": "single_elimination",
+   "note": "the name of the format, ノックアウト方式: Wikidata's label for Q864897, shortened (terms record); Tournaments table); translated back word by word it comes out as knockout, cup system, direct elimination"
   },
   {
    "lang": "ja",
@@ -803,14 +834,16 @@
    "id": "tour.tab.bracket",
    "text": "トーナメント表",
    "verdict": "kept",
-   "note": "the bracket, in the word of the Tournaments table of docs/language/pages-rest.md (Wikidata Q4953688 where it has a label); both models read it back as a table, chart, grid or tree, which is what a bracket is"
+   "term": "bracket",
+   "note": "the bracket, トーナメント表: the model's word, no source in this language (terms record); both models read it back as a table, chart, grid or tree, which is what a bracket is"
   },
   {
    "lang": "ja",
    "id": "tour.viewBracket",
    "text": "トーナメント表を見る",
    "verdict": "kept",
-   "note": "the bracket, in the word of the Tournaments table of docs/language/pages-rest.md (Wikidata Q4953688 where it has a label); both models read it back as a table, chart, grid or tree, which is what a bracket is"
+   "term": "bracket",
+   "note": "the bracket, トーナメント表: the model's word, no source in this language (terms record); both models read it back as a table, chart, grid or tree, which is what a bracket is"
   },
   {
    "lang": "ko",
@@ -824,8 +857,8 @@
    "id": "classroom.wizard.s3.title",
    "text": "활동 배정하기",
    "verdict": "changed",
-   "was": "활동 내기",
-   "note": "Not flagged by both (back: \"Activities Betting\", 0.53/0.73): 내기 is also \"a bet\". Tried 과제 내기 (back: \"Challenge Betting\", 0.11/0.54) and 과제 내주기 (back: \"Submit a task\", 0.27/0.51); 활동 배정하기, \"assign activities\" (back: \"Assign an activity\", 0.76/0.88), is unambiguous."
+   "note": "Not flagged by both (back: \"Activities Betting\", 0.53/0.73): 내기 is also \"a bet\". Tried 과제 내기 (back: \"Challenge Betting\", 0.11/0.54) and 과제 내주기 (back: \"Submit a task\", 0.27/0.51); 활동 배정하기, \"assign activities\" (back: \"Assign an activity\", 0.76/0.88), is unambiguous.",
+   "was": "활동 내기"
   },
   {
    "lang": "ko",
@@ -867,7 +900,8 @@
    "id": "pwa.install.dismiss",
    "text": "나중에",
    "verdict": "kept",
-   "note": "Android's own \"Not now\" (AOSP autofill_save_notnow; docs/language/sources/pages-rest-android-terms.json)"
+   "term": "not_now",
+   "note": "the button, 나중에: Android's own word (AOSP, term \"notNow\" of docs/language/sources/pages-rest-android-terms.json; terms record)"
   },
   {
    "lang": "ko",
@@ -888,14 +922,16 @@
    "id": "tour.bracket.loading",
    "text": "대진표를 불러오는 중…",
    "verdict": "kept",
-   "note": "the bracket, in the word of the Tournaments table of docs/language/pages-rest.md (Wikidata Q4953688 where it has a label); both models read it back as a table, chart, grid or tree, which is what a bracket is"
+   "term": "bracket",
+   "note": "the bracket, 대진표: the model's word, no source in this language (terms record); both models read it back as a table, chart, grid or tree, which is what a bracket is"
   },
   {
    "lang": "ko",
    "id": "tour.bye",
    "text": "부전승",
    "verdict": "kept",
-   "note": "the bye, as Wikidata labels it (Q1268659) or, where it has no usable label, a description (Tournaments table); a one-word sports term the round trip cannot keep"
+   "term": "bye",
+   "note": "the bye, 부전승: Wikidata's label for Q1268659 (terms record); a one-word sports term the round trip cannot keep"
   },
   {
    "lang": "ko",
@@ -916,7 +952,8 @@
    "id": "tour.format.round_robin",
    "text": "리그전",
    "verdict": "kept",
-   "note": "the name of the format as Wikidata labels it (Q841144) or its everyday name (Tournaments table); translated back word by word, the name comes out as all against all, circle, league"
+   "term": "round_robin",
+   "note": "the name of the format, 리그전: Wikidata's label for Q841144 (terms record); translated back word by word, the name comes out as all against all, circle, league"
   },
   {
    "lang": "ko",
@@ -951,7 +988,8 @@
    "id": "tour.tab.bracket",
    "text": "대진표",
    "verdict": "kept",
-   "note": "the bracket, in the word of the Tournaments table of docs/language/pages-rest.md (Wikidata Q4953688 where it has a label); both models read it back as a table, chart, grid or tree, which is what a bracket is"
+   "term": "bracket",
+   "note": "the bracket, 대진표: the model's word, no source in this language (terms record); both models read it back as a table, chart, grid or tree, which is what a bracket is"
   },
   {
    "lang": "pl",
@@ -979,7 +1017,8 @@
    "id": "tour.bye",
    "text": "Wolny los",
    "verdict": "kept",
-   "note": "the bye, as Wikidata labels it (Q1268659) or, where it has no usable label, a description (Tournaments table); a one-word sports term the round trip cannot keep"
+   "term": "bye",
+   "note": "the bye, Wolny los: the model's word, no source in this language (terms record); a one-word sports term the round trip cannot keep"
   },
   {
    "lang": "pl",
@@ -993,14 +1032,16 @@
    "id": "tour.format.round_robin",
    "text": "System kołowy (każdy z każdym)",
    "verdict": "kept",
-   "note": "the name of the format as Wikidata labels it (Q841144) or its everyday name (Tournaments table); translated back word by word, the name comes out as all against all, circle, league"
+   "term": "round_robin",
+   "note": "the name of the format, system kołowy: Wikidata's label for Q841144 (terms record); translated back word by word, the name comes out as all against all, circle, league"
   },
   {
    "lang": "pl",
    "id": "tour.format.single_elimination",
    "text": "System pucharowy",
    "verdict": "kept",
-   "note": "the name of the format as Wikidata labels it (Q864897; Tournaments table); translated back word by word it comes out as knockout, cup system, direct elimination"
+   "term": "single_elimination",
+   "note": "the name of the format, system pucharowy: Wikidata's label for Q864897 (terms record); Tournaments table); translated back word by word it comes out as knockout, cup system, direct elimination"
   },
   {
    "lang": "pl",
@@ -1021,7 +1062,8 @@
    "id": "tour.tab.bracket",
    "text": "Drabinka",
    "verdict": "kept",
-   "note": "the bracket, in the word of the Tournaments table of docs/language/pages-rest.md (Wikidata Q4953688 where it has a label); both models read it back as a table, chart, grid or tree, which is what a bracket is"
+   "term": "bracket",
+   "note": "the bracket, drabinka: the model's word, no source in this language (terms record); both models read it back as a table, chart, grid or tree, which is what a bracket is"
   },
   {
    "lang": "pl",
@@ -1063,21 +1105,24 @@
    "id": "tour.bye",
    "text": "Folga",
    "verdict": "kept",
-   "note": "the bye, as Wikidata labels it (Q1268659) or, where it has no usable label, a description (Tournaments table); a one-word sports term the round trip cannot keep"
+   "term": "bye",
+   "note": "the bye, Folga: the model's word, no source in this language (terms record); a one-word sports term the round trip cannot keep"
   },
   {
    "lang": "pt",
    "id": "tour.format.round_robin",
    "text": "Todos contra todos",
    "verdict": "kept",
-   "note": "the name of the format as Wikidata labels it (Q841144) or its everyday name (Tournaments table); translated back word by word, the name comes out as all against all, circle, league"
+   "term": "round_robin",
+   "note": "the name of the format, todos contra todos: Wikidata's label for Q841144, shortened (terms record); translated back word by word, the name comes out as all against all, circle, league"
   },
   {
    "lang": "pt",
    "id": "tour.tab.bracket",
    "text": "Chave",
    "verdict": "kept",
-   "note": "the bracket, in the word of the Tournaments table of docs/language/pages-rest.md (Wikidata Q4953688 where it has a label); both models read it back as a table, chart, grid or tree, which is what a bracket is"
+   "term": "bracket",
+   "note": "the bracket, chave: the model's word, no source in this language (terms record); both models read it back as a table, chart, grid or tree, which is what a bracket is"
   },
   {
    "lang": "ru",
@@ -1119,7 +1164,8 @@
    "id": "tour.bye",
    "text": "Без соперника",
    "verdict": "kept",
-   "note": "the bye, as Wikidata labels it (Q1268659) or, where it has no usable label, a description (Tournaments table); a one-word sports term the round trip cannot keep"
+   "term": "bye",
+   "note": "the bye, Без соперника: the model's word, no source in this language (terms record); a one-word sports term the round trip cannot keep"
   },
   {
    "lang": "ru",
@@ -1133,7 +1179,8 @@
    "id": "tour.format.round_robin",
    "text": "Круговая система",
    "verdict": "kept",
-   "note": "the name of the format as Wikidata labels it (Q841144) or its everyday name (Tournaments table); translated back word by word, the name comes out as all against all, circle, league"
+   "term": "round_robin",
+   "note": "the name of the format, круговая система: Wikidata's article title for Q841144 (terms record); translated back word by word, the name comes out as all against all, circle, league"
   },
   {
    "lang": "ru",
@@ -1161,7 +1208,8 @@
    "id": "tour.tab.bracket",
    "text": "Турнирная сетка",
    "verdict": "kept",
-   "note": "the bracket, in the word of the Tournaments table of docs/language/pages-rest.md (Wikidata Q4953688 where it has a label); both models read it back as a table, chart, grid or tree, which is what a bracket is"
+   "term": "bracket",
+   "note": "the bracket, сетка: Wikidata's label for Q4953688 (terms record); both models read it back as a table, chart, grid or tree, which is what a bracket is"
   },
   {
    "lang": "ru",
@@ -1175,7 +1223,8 @@
    "id": "tour.viewBracket",
    "text": "Открыть сетку",
    "verdict": "kept",
-   "note": "the bracket, in the word of the Tournaments table of docs/language/pages-rest.md (Wikidata Q4953688 where it has a label); both models read it back as a table, chart, grid or tree, which is what a bracket is"
+   "term": "bracket",
+   "note": "the bracket, сетка: Wikidata's label for Q4953688 (terms record); both models read it back as a table, chart, grid or tree, which is what a bracket is"
   },
   {
    "lang": "ru",
@@ -1245,7 +1294,8 @@
    "id": "pwa.install.dismiss",
    "text": "ไว้ทีหลัง",
    "verdict": "kept",
-   "note": "Android's own \"Not now\" (AOSP autofill_save_notnow; docs/language/sources/pages-rest-android-terms.json)"
+   "term": "not_now",
+   "note": "the button, ไว้ทีหลัง: Android's own word (AOSP, term \"notNow\" of docs/language/sources/pages-rest-android-terms.json; terms record)"
   },
   {
    "lang": "th",
@@ -1273,14 +1323,16 @@
    "id": "tour.format.round_robin",
    "text": "พบกันหมด",
    "verdict": "kept",
-   "note": "the name of the format as Wikidata labels it (Q841144) or its everyday name (Tournaments table); translated back word by word, the name comes out as all against all, circle, league"
+   "term": "round_robin",
+   "note": "the name of the format, พบกันหมด: Wikidata's label for Q841144, shortened (terms record); translated back word by word, the name comes out as all against all, circle, league"
   },
   {
    "lang": "th",
    "id": "tour.format.single_elimination",
    "text": "แพ้คัดออก",
    "verdict": "kept",
-   "note": "the name of the format as Wikidata labels it (Q864897; Tournaments table); translated back word by word it comes out as knockout, cup system, direct elimination"
+   "term": "single_elimination",
+   "note": "the name of the format, แพ้คัดออก: Wikidata's label for Q864897, shortened (terms record); Tournaments table); translated back word by word it comes out as knockout, cup system, direct elimination"
   },
   {
    "lang": "th",
@@ -1308,7 +1360,8 @@
    "id": "tour.tab.bracket",
    "text": "สายการแข่งขัน",
    "verdict": "kept",
-   "note": "the bracket, in the word of the Tournaments table of docs/language/pages-rest.md (Wikidata Q4953688 where it has a label); both models read it back as a table, chart, grid or tree, which is what a bracket is"
+   "term": "bracket",
+   "note": "the bracket, สายการแข่งขัน: the model's word, no source in this language (terms record); both models read it back as a table, chart, grid or tree, which is what a bracket is"
   },
   {
    "lang": "vi",
@@ -1343,7 +1396,8 @@
    "id": "pwa.install.dismiss",
    "text": "Để sau",
    "verdict": "kept",
-   "note": "Android's own \"Not now\" (AOSP autofill_save_notnow; docs/language/sources/pages-rest-android-terms.json)"
+   "term": "not_now",
+   "note": "the button, Để sau: Android's own word (AOSP, term \"notNow\" of docs/language/sources/pages-rest-android-terms.json; terms record)"
   },
   {
    "lang": "vi",
@@ -1364,7 +1418,8 @@
    "id": "tour.bye",
    "text": "Miễn đấu",
    "verdict": "kept",
-   "note": "the bye, as Wikidata labels it (Q1268659) or, where it has no usable label, a description (Tournaments table); a one-word sports term the round trip cannot keep"
+   "term": "bye",
+   "note": "the bye, Miễn đấu: the model's word, no source in this language (terms record); a one-word sports term the round trip cannot keep"
   },
   {
    "lang": "vi",
@@ -1378,7 +1433,8 @@
    "id": "tour.format.single_elimination",
    "text": "Loại trực tiếp",
    "verdict": "kept",
-   "note": "the name of the format as Wikidata labels it (Q864897; Tournaments table); translated back word by word it comes out as knockout, cup system, direct elimination"
+   "term": "single_elimination",
+   "note": "the name of the format, loại trực tiếp: Wikidata's label for Q864897, shortened (terms record); Tournaments table); translated back word by word it comes out as knockout, cup system, direct elimination"
   },
   {
    "lang": "vi",
@@ -1399,14 +1455,16 @@
    "id": "tour.tab.bracket",
    "text": "Sơ đồ thi đấu",
    "verdict": "kept",
-   "note": "the bracket, in the word of the Tournaments table of docs/language/pages-rest.md (Wikidata Q4953688 where it has a label); both models read it back as a table, chart, grid or tree, which is what a bracket is"
+   "term": "bracket",
+   "note": "the bracket, sơ đồ thi đấu: the model's word, no source in this language (terms record); both models read it back as a table, chart, grid or tree, which is what a bracket is"
   },
   {
    "lang": "vi",
    "id": "tour.viewBracket",
    "text": "Xem sơ đồ thi đấu",
    "verdict": "kept",
-   "note": "the bracket, in the word of the Tournaments table of docs/language/pages-rest.md (Wikidata Q4953688 where it has a label); both models read it back as a table, chart, grid or tree, which is what a bracket is"
+   "term": "bracket",
+   "note": "the bracket, sơ đồ thi đấu: the model's word, no source in this language (terms record); both models read it back as a table, chart, grid or tree, which is what a bracket is"
   },
   {
    "lang": "vi",
@@ -1448,7 +1506,8 @@
    "id": "pwa.install.dismiss",
    "text": "以后再说",
    "verdict": "kept",
-   "note": "Android's own \"Not now\" (AOSP autofill_save_notnow; docs/language/sources/pages-rest-android-terms.json)"
+   "term": "not_now",
+   "note": "the button, 以后再说: Android's own word (AOSP, term \"notNow\" of docs/language/sources/pages-rest-android-terms.json; terms record)"
   },
   {
    "lang": "zh",
@@ -1462,7 +1521,8 @@
    "id": "tour.bye",
    "text": "轮空",
    "verdict": "kept",
-   "note": "the bye, as Wikidata labels it (Q1268659) or, where it has no usable label, a description (Tournaments table); a one-word sports term the round trip cannot keep"
+   "term": "bye",
+   "note": "the bye, 轮空: Wikidata's label for Q1268659 (terms record); a one-word sports term the round trip cannot keep"
   },
   {
    "lang": "zh",
@@ -1483,7 +1543,8 @@
    "id": "tour.tab.bracket",
    "text": "对阵表",
    "verdict": "kept",
-   "note": "the bracket, in the word of the Tournaments table of docs/language/pages-rest.md (Wikidata Q4953688 where it has a label); both models read it back as a table, chart, grid or tree, which is what a bracket is"
+   "term": "bracket",
+   "note": "the bracket, 对阵表: Wikidata's label for Q4953688 (terms record); both models read it back as a table, chart, grid or tree, which is what a bracket is"
   }
  ]
 }

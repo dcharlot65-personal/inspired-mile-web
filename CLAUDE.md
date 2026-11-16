@@ -94,13 +94,19 @@ left behind by a killed run is found by its port: `lsof -nP -iTCP:<port> -sTCP:L
   guidance and the storage note, `src/lib/pwa.ts`). Counted messages are
   `key.one`, `key.few`, … `key.other`, picked by `plural()` in `src/i18n/fmt.ts`; a language
   has exactly the forms CLDR gives it. Numbers, dates and lists go through `fmt.ts` (Intl).
-  `src/i18n/pages-rest.test.ts` checks all of it; `docs/language/pages-rest.md` says where
-  each term came from and what no tool has checked. After changing one of these strings,
+  `src/i18n/pages-rest.test.ts` checks all of it; `docs/language/pages-rest.md` says what no
+  tool has checked. One word per thing: `docs/language/pages-rest-terms.json` gives each
+  language's word for 21 terms and how it stands to its source (Wikidata, Apple, Android, or
+  none: the model's); `src/i18n/pages-rest-terms.test.ts` fails on a string that uses another
+  word, on a relation the saved source does not bear out, and on a verdict that claims a source
+  the record does not give. The doc's term tables are drawn from the record
+  (`node scripts/pages-rest/terms.mjs --write`). After changing one of these strings,
   back-translate it on the build host (`scripts/pages-rest/lang-host.sh bt-pairs`), merge the
-  rows into `docs/language/results/pages-rest/bt.json`, and run
-  `node scripts/pages-rest/summarise.mjs docs/language/results/pages-rest --strict`: it fails
-  on a string scored as it no longer stands, and on a flagged string with no verdict in
-  `docs/language/pages-rest-meaning.json`.
+  rows into `docs/language/results/pages-rest/bt.json`, rank the whole file
+  (`lang-host.sh rank`), run `lang-host.sh spell` and `grammar` again, copy the results in, and
+  run `node scripts/pages-rest/summarise.mjs docs/language/results/pages-rest --strict`: it
+  fails on a string back-translated, spelt or parsed as it no longer stands, and on a flagged
+  string with no verdict in `docs/language/pages-rest-meaning.json`.
 - **API errors**: a page never shows `e.message`. Client libraries throw `ApiError`; the page
   calls `errorText(e)`, which turns the failure into a code (`src/lib/api-errors.ts`) and the
   code into `error.<code>` in the `shared` area. A handler that gains a new answer fails
