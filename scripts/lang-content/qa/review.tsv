@@ -187,3 +187,36 @@ vi	trivia.48.o3	ok	reads: the violet; the flag is OPUS-MT vi-en's
 vi	trivia.53.o3	ok	reads: Vương công: the prince; the flag is OPUS-MT vi-en's
 vi	trivia.66.o3	ok	reads: he has no opinion; the flag is OPUS-MT vi-en's
 vi	trivia.75.o3	ok	reads: the Earl of Northumberland; the flag is OPUS-MT vi-en's
+ar	trivia.107.o1	ok	reads: رسالة: a letter; the flag is OPUS-MT ar-en's
+ar	trivia.114.o0	ok	reads: بلدغة أفعى: by the bite of an asp; the flag is OPUS-MT ar-en's
+ar	trivia.117.o2	ok	reads: بتاج: with a crown; the flag is OPUS-MT ar-en's
+ar	trivia.121.o0	ok	reads: صندوق الرصاص: the lead casket (الرصاص is also "bullets", which the checker took); the flag is OPUS-MT ar-en's
+ar	trivia.126.o1	ok	reads: تردد خطبًا: recites speeches; the flag is OPUS-MT ar-en's
+ar	trivia.127.q	ok	reads: in جعجعة بلا طحن (Wikidata's label of the play) who the scheming villain is; the flag is OPUS-MT ar-en's
+ar	trivia.137.q	ok	reads: whom Ferdinand falls in love with in العاصفة (The Tempest); the flag is OPUS-MT ar-en's
+ar	trivia.138.o3	ok	reads: شراب الحب: a love potion; the flag is OPUS-MT ar-en's
+ar	trivia.14.o1	ok	reads: كابوليت: Capulet (the table's name); the flag is OPUS-MT ar-en's
+ar	trivia.143.o2	ok	reads: ساحرة: a witch; the flag is OPUS-MT ar-en's
+ar	trivia.153.o0	ok	reads: an anti-Petrarchan sonnet that mocks conventional love poetry; the flag is OPUS-MT ar-en's
+ar	trivia.153.o1	ok	reads: written in free verse, not iambic pentameter; the flag is OPUS-MT ar-en's
+ar	trivia.154.o0	ok	reads: ظهر أحدب: a hunched back; the flag is OPUS-MT ar-en's
+ar	trivia.159.o1	ok	reads: من البندقية: from Venice (البندقية is also "the rifle", which the checker took); the flag is OPUS-MT ar-en's
+ar	trivia.170.q	ok	reads: who speaks the epilogue at the end of العاصفة; the flag is OPUS-MT ar-en's
+ar	trivia.174.o3	ok	reads: يصير ناسكًا: becomes a hermit; the flag is OPUS-MT ar-en's
+ar	trivia.181.o3	ok	reads: مسرحيات الأقنعة: masque plays; the flag is OPUS-MT ar-en's
+ar	trivia.185.o0	ok	reads: أن تضاجعه: that she lie with him (a formal verb, the English's meaning); the flag is OPUS-MT ar-en's
+ar	trivia.185.o2	ok	reads: اعترافًا علنيًّا: a public confession; the flag is OPUS-MT ar-en's
+ar	trivia.187.o2	ok	reads: the backstage for the actors; the flag is OPUS-MT ar-en's
+ar	trivia.191.o2	ok	reads: العرّافة: the oracle; the flag is OPUS-MT ar-en's
+ar	trivia.194.o2	ok	reads: القبة الزرقاء: the blue dome, the firmament; the flag is OPUS-MT ar-en's
+ar	trivia.199.o3	ok	reads: العامة: the common people; the flag is OPUS-MT ar-en's
+ar	trivia.34.o3	ok	reads: أو خير ما انتهى: "or, what ended best", a distractor for "Or, All's Well"; the flag is OPUS-MT ar-en's
+ar	trivia.59.q	ok	reads: which character the title تاجر البندقية refers to; the flag is OPUS-MT ar-en's
+ar	trivia.60.o0	ok	reads: بشراب منوّم: with a sleeping draught; the flag is OPUS-MT ar-en's
+ar	trivia.63.o0	ok	reads: كابوليت: Capulet; the flag is OPUS-MT ar-en's
+ar	trivia.68.o0	ok	reads: حمار: a donkey; the flag is OPUS-MT ar-en's
+ar	trivia.74.q	ok	reads: which poem begins with the famous line "…"; the flag is OPUS-MT ar-en's
+ar	trivia.83.o2	ok	reads: Calpurnia and Portia; the flag is OPUS-MT ar-en's
+ar	trivia.83.o3	ok	reads: Cicero and Casca; the flag is OPUS-MT ar-en's
+ar	trivia.97.q	ok	reads: in ترويض النمرة what "the shrew" is called; the flag is OPUS-MT ar-en's
+ar	trivia.90.o0	ok	reads: أمير كودور, "lord (amir) of Cawdor" for Thane of Cawdor: the bank renders thane as أمير throughout (75, 90), beside دوق and إيرل; no source held here gives Arabic for the title, so this is the translator's rendering, not a sourced one
