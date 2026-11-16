@@ -354,6 +354,7 @@ const pt: Record<string, string> = {
   'void.label': 'Não pontua',
   'void.thin': 'pouco demais para ser uma estrofe: é preciso ter mais palavras diferentes',
   'void.copied': 'tirada da outra estrofe: uma resposta precisa ser sua',
+  'live.judgeUnread': 'O juiz não lê a linha {lines}: toda linha com um número ou com palavras dirigidas ao juiz (nota, pontuação, vencer…) fica de fora',
   'signature.none': 'esta carta não tem fala de assinatura',
   'signature.hint': 'ecoe uma destas: {words}',
   'signature.hintTwo': 'ecoe duas destas: {words}',

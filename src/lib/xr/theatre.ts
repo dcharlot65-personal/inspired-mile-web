@@ -350,6 +350,8 @@ export class Theatre {
       if (preview.powerWords) checks.push(`${preview.powerWords.met ? '✓' : '○'} ${t('verdict.powerWords')}: ${s.duel.playerRelics[s.move.relicId!].words.join(', ')}`);
       if (preview.curse) checks.push(`${preview.curse.violations ? '✗' : '✓'} ${t('live.curse', { name: curseName(preview.curse.id) })}`);
       if (preview.voided && preview.voided !== 'empty') checks.push(`✗ ${t('void.label')}: ${t(`void.${preview.voided}`)}`);
+      const unread = s.judgeUnread();
+      if (unread.length) checks.push(`✗ ${t('live.judgeUnread', { lines: unread.join(', ') })}`);
       if (s.potionAtRisk()) checks.push(`! ${t('hand.potionGamble')}`);
       checks.push(`${t('round.craftSoFar')} ${preview.craft}`);
     } else checks.push(t('theatre.pick'));

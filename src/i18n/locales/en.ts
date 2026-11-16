@@ -256,6 +256,7 @@ const UI: Record<string, string> = {
   'void.label': 'Scores nothing',
   'void.thin': 'too little to be a verse: it needs more different words',
   'void.copied': 'taken from the other verse: an answer must be your own',
+  'live.judgeUnread': 'The judge does not read line {lines}: a line with a number, or with words that speak to the judge (grade, score, win…), is left out',
   'signature.none': 'this card has no signature line',
   'signature.hint': 'echo one of: {words}',
   'signature.hintTwo': 'echo two of: {words}',

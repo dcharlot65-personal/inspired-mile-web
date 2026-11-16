@@ -354,6 +354,7 @@ const it: Record<string, string> = {
   'void.label': 'Non dà punti',
   'void.thin': 'troppo poco per essere una strofa: servono più parole diverse',
   'void.copied': 'presa dall’altra strofa: una risposta dev’essere tua',
+  'live.judgeUnread': 'Il giudice non legge la riga {lines}: ogni riga con un numero o con parole rivolte al giudice (voto, punteggio, vincere…) viene tralasciata',
   'signature.none': 'questa carta non ha una battuta di firma',
   'signature.hint': 'riecheggia una di queste: {words}',
   'signature.hintTwo': 'riecheggia due di queste: {words}',

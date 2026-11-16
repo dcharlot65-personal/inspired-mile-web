@@ -354,6 +354,7 @@ const pl: Record<string, string> = {
   'void.label': 'Bez punktów',
   'void.thin': 'za mało na strofę: potrzeba więcej różnych słów',
   'void.copied': 'wzięte z drugiej strofy: odpowiedź musi być twoja własna',
+  'live.judgeUnread': 'Sędzia nie czyta wersu {lines}: każdy wers z liczbą lub ze słowami do sędziego (ocena, punkty, wygrać…) jest pomijany',
   'signature.none': 'ta karta nie ma kwestii-sygnatury',
   'signature.hint': 'nawiąż do jednego z tych słów: {words}',
   'signature.hintTwo': 'nawiąż do dwóch z tych słów: {words}',

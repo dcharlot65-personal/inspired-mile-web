@@ -200,7 +200,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     import { CRITERIA } from '../lib/verse/judge';
     import type { Difficulty } from '../lib/verse/opponent';
     import { PACK_LANGS, hasPack, loadPack } from '../lib/verse/packs';
-    import { loadPronunciation } from '../lib/verse/pronounce';
     import { DuelSession } from '../lib/verse/session';
     import { loadSound } from '../lib/verse/sound';
     import { initI18n, languageName, locale, onLocaleChange, t, tm } from '../i18n';
@@ -574,6 +573,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       }
       // Copied from the opponent, or too little to be a verse: say so, since it scores nothing.
       if (written && s.voided && s.voided !== 'empty') list.appendChild(checkRow(true, t('void.label'), t(`void.${s.voided}`), 'crimson'));
+      // A model judges: the lines it will not read (a number, or words that address the judge).
+      const unread = session.judgeUnread();
+      if (written && unread.length) {
+        const row = checkRow(true, t('live.judgeUnread', { lines: unread.join(', ') }), '', 'crimson');
+        row.id = 'live-judge-unread';
+        list.appendChild(row);
+      }
       $('live-craft').textContent = String(s.craft);
     }
 
@@ -973,9 +979,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       updateSubmit();
       mountStorageNote($('brain-status'));
       initBrain();
-      // English verse is measured by sound. Fetch the table while the player sets up, so the
-      // first round does not wait for it; it is a separate file, not part of this page's load.
-      void loadPronunciation();
+      // The English pronunciation table is fetched when an English duel starts (start(), and
+      // DuelSession.beginRound), never for a visitor who does not start one or duels in another language.
       onLocaleChange((l) => {
         // A visitor who changes the interface language most likely wants to duel in it:
         // make it the duel's language too, where it is on offer and no duel is under way.
