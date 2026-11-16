@@ -1,0 +1,9 @@
+{
+  "cookies": [],
+  "origins": [
+    {
+      "origin": "http://localhost:4399",
+      "localStorage": [{ "name": "inspired-mile-age-verified", "value": "adult" }]
+    }
+  ]
+}

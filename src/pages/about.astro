@@ -1,6 +1,5 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import '../styles/global.css';
 
 const team = [
   {
@@ -163,7 +162,7 @@ const timeline = [
         {timeline.map((item, i) => (
           <div class="flex gap-4">
             <div class="flex flex-col items-center">
-              <div class={`w-3 h-3 rounded-full ${i < 3 ? 'bg-gold-400' : 'bg-obsidian-600'} flex-shrink-0`}></div>
+              <div class={`w-3 h-3 rounded-full ${i < 3 ? 'bg-gold-400' : 'bg-obsidian-600'} shrink-0`}></div>
               {i < timeline.length - 1 && <div class="w-px h-16 bg-obsidian-700"></div>}
             </div>
             <div class="pb-8">

@@ -2,7 +2,7 @@
  * Classroom Mode — Client-side API for teacher/student classroom operations.
  */
 
-const API = import.meta.env.PUBLIC_API_URL ?? 'http://localhost:3849/api/v1';
+const API = import.meta.env.PUBLIC_API_URL ?? '/api/v1';
 
 export interface Classroom {
   id: number;

@@ -6,7 +6,7 @@
 import { getStorageMode } from './storage-backend';
 
 const STORAGE_KEY = 'inspired-mile-credits';
-const API_BASE = import.meta.env.PUBLIC_API_URL || 'http://localhost:3847';
+const API_BASE = import.meta.env.PUBLIC_API_URL || '';
 
 /** Get current credit balance (local or server) */
 export function getCredits(): number {

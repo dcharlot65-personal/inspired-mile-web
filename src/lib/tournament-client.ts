@@ -47,7 +47,7 @@ export interface LeaderboardEntry {
 }
 
 export async function listTournaments(): Promise<Tournament[]> {
-  return request('/');
+  return request('');
 }
 
 export async function getTournament(id: string): Promise<Tournament> {

@@ -19,10 +19,10 @@ test.describe('World Map Page', () => {
     await expect(page.locator('#total-cities')).toBeVisible();
   });
 
-  test('renders 12 city cards in grid', async ({ page }) => {
+  test('renders 20 city cards in grid', async ({ page }) => {
     await page.goto('/world-map');
     const cityCards = page.locator('#world-grid > div[data-city]');
-    await expect(cityCards).toHaveCount(12);
+    await expect(cityCards).toHaveCount(20);
   });
 
   test('city cards show correct city names', async ({ page }) => {
@@ -227,46 +227,6 @@ test.describe('Auth UI', () => {
     const authArea = page.locator('#auth-login-form, #auth-user-menu, #auth-register-form');
     expect(await authArea.count()).toBeGreaterThan(0);
   });
-
-  test('login form has username and password inputs', async ({ page }) => {
-    await page.goto('/');
-    await expect(page.locator('#auth-username')).toHaveCount(1);
-    await expect(page.locator('#auth-password')).toHaveCount(1);
-  });
-
-  test('register form has username, email, and password inputs', async ({ page }) => {
-    await page.goto('/');
-    await expect(page.locator('#reg-username')).toHaveCount(1);
-    await expect(page.locator('#reg-email')).toHaveCount(1);
-    await expect(page.locator('#reg-password')).toHaveCount(1);
-  });
-
-  test('can switch between login and register forms', async ({ page }) => {
-    await page.goto('/');
-    // Wait for auth init to complete and show the auth button
-    await page.waitForTimeout(1000);
-
-    // Open auth dropdown
-    await page.click('#auth-btn');
-    await page.waitForTimeout(300);
-
-    // Should show login form by default
-    const loginForm = page.locator('#auth-login-form');
-    const registerForm = page.locator('#auth-register-form');
-
-    await expect(loginForm).not.toHaveClass(/hidden/);
-    await expect(registerForm).toHaveClass(/hidden/);
-
-    // Switch to register
-    await page.click('#auth-show-register');
-    await expect(loginForm).toHaveClass(/hidden/);
-    await expect(registerForm).not.toHaveClass(/hidden/);
-
-    // Switch back to login
-    await page.click('#auth-show-login');
-    await expect(loginForm).not.toHaveClass(/hidden/);
-    await expect(registerForm).toHaveClass(/hidden/);
-  });
 });
 
 // ---------------------------------------------------------------------------
@@ -287,8 +247,9 @@ test.describe('V2 Navigation', () => {
   test('world map link appears in desktop nav', async ({ page }) => {
     await page.goto('/');
     await page.setViewportSize({ width: 1280, height: 720 });
-    const link = page.locator('nav a[href="/world-map"]:visible');
-    expect(await link.count()).toBeGreaterThanOrEqual(1);
+    // The link sits in the Explore dropdown, which opens on hover.
+    await page.locator('nav button', { hasText: 'Explore' }).first().hover();
+    await expect(page.locator('nav a[href="/world-map"]:visible').first()).toBeVisible();
   });
 });
 

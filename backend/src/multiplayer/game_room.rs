@@ -175,8 +175,8 @@ impl GameRoom {
     pub fn start_round(&mut self) {
         self.round_started_at = Some(Instant::now());
         if self.difficulty == "intermediate" {
-            use rand::Rng;
-            let idx = rand::thread_rng().gen_range(0..BATTLE_THEMES.len());
+            use rand::RngExt;
+            let idx = rand::rng().random_range(0..BATTLE_THEMES.len());
             self.theme = Some(BATTLE_THEMES[idx].to_string());
         } else {
             self.theme = None;

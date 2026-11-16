@@ -188,6 +188,13 @@ export class VRCardEngine {
   /** Try to enable WebXR immersive-vr mode */
   async enableVR(): Promise<boolean> {
     try {
+      // Without this check Babylon's WebXR helper throws from inside its own
+      // async set-up on browsers with no WebXR, where no catch here can see it.
+      const xr = (navigator as any).xr;
+      if (!xr || !(await xr.isSessionSupported('immersive-vr'))) {
+        this.options.onStatusChange?.('No VR headset detected — showing the gallery in 3D');
+        return false;
+      }
       this.xrExperience = await WebXRDefaultExperience.CreateAsync(this.scene, {
         uiOptions: {
           sessionMode: 'immersive-vr',

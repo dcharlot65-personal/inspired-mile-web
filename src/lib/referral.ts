@@ -2,7 +2,7 @@
  * Referral System — Client-side API for referral code generation and redemption.
  */
 
-const API = import.meta.env.PUBLIC_API_URL ?? 'http://localhost:3849/api/v1';
+const API = import.meta.env.PUBLIC_API_URL ?? '/api/v1';
 
 export interface ReferralInfo {
   code: string;

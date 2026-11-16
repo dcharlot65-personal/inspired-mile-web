@@ -130,23 +130,23 @@ pub async fn judge_battle(
 
 /// Fallback random judge when LLM is not available.
 pub fn judge_fallback() -> JudgeResult {
-    use rand::Rng;
-    let mut rng = rand::thread_rng();
+    use rand::RngExt;
+    let mut rng = rand::rng();
 
     let p1 = AxisScore {
-        wordplay: rng.gen_range(4..=9),
-        shakespeare: rng.gen_range(4..=9),
-        flow: rng.gen_range(4..=9),
-        wit: rng.gen_range(4..=9),
-        authenticity: rng.gen_range(6..=9),
+        wordplay: rng.random_range(4..=9),
+        shakespeare: rng.random_range(4..=9),
+        flow: rng.random_range(4..=9),
+        wit: rng.random_range(4..=9),
+        authenticity: rng.random_range(6..=9),
         total: 0,
     };
     let p2 = AxisScore {
-        wordplay: rng.gen_range(4..=9),
-        shakespeare: rng.gen_range(4..=9),
-        flow: rng.gen_range(4..=9),
-        wit: rng.gen_range(4..=9),
-        authenticity: rng.gen_range(6..=9),
+        wordplay: rng.random_range(4..=9),
+        shakespeare: rng.random_range(4..=9),
+        flow: rng.random_range(4..=9),
+        wit: rng.random_range(4..=9),
+        authenticity: rng.random_range(6..=9),
         total: 0,
     };
 

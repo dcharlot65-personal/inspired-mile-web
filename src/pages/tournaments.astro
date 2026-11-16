@@ -1,6 +1,5 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import '../styles/global.css';
 ---
 
 <BaseLayout title="Tournaments" description="Compete in Shakespearean rap battle tournaments for glory and prizes.">
@@ -39,13 +38,13 @@ import '../styles/global.css';
               <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <div class="flex-1 space-y-3">
                   <div class="flex items-center gap-3">
-                    <div class="bg-obsidian-800 rounded h-6 w-48"></div>
+                    <div class="bg-obsidian-800 rounded-sm h-6 w-48"></div>
                     <div class="bg-obsidian-800 rounded-full h-5 w-20"></div>
                   </div>
                   <div class="flex gap-4">
-                    <div class="bg-obsidian-800 rounded h-3 w-24"></div>
-                    <div class="bg-obsidian-800 rounded h-3 w-24"></div>
-                    <div class="bg-obsidian-800 rounded h-3 w-32"></div>
+                    <div class="bg-obsidian-800 rounded-sm h-3 w-24"></div>
+                    <div class="bg-obsidian-800 rounded-sm h-3 w-24"></div>
+                    <div class="bg-obsidian-800 rounded-sm h-3 w-32"></div>
                   </div>
                 </div>
                 <div class="flex gap-2">
@@ -63,7 +62,7 @@ import '../styles/global.css';
       <!-- Bracket View -->
       <div id="panel-bracket" class="hidden">
         <div class="mb-6">
-          <select id="bracket-tournament-select" class="bg-obsidian-800 border border-obsidian-700 rounded-lg px-4 py-2 text-sm text-obsidian-200 focus:outline-none focus:border-gold-500/50">
+          <select id="bracket-tournament-select" class="bg-obsidian-800 border border-obsidian-700 rounded-lg px-4 py-2 text-sm text-obsidian-200 focus:outline-hidden focus:border-gold-500/50">
             <option value="">Select a tournament...</option>
           </select>
         </div>

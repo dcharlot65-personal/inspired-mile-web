@@ -380,10 +380,12 @@ async fn complete_match(
     let next_match_id: Option<Uuid> = if let Some(nm) = next_match {
         let nm_id: Uuid = nm.get("id");
         // Update existing next-round match with the winner
-        let col = if is_first_slot { "player1_id" } else { "player2_id" };
-        sqlx::query(&format!(
-            "UPDATE tournament_matches SET {col} = $1 WHERE id = $2"
-        ))
+        // Two literal statements, not a formatted column name: sqlx 0.9 refuses dynamic SQL.
+        sqlx::query(if is_first_slot {
+            "UPDATE tournament_matches SET player1_id = $1 WHERE id = $2"
+        } else {
+            "UPDATE tournament_matches SET player2_id = $1 WHERE id = $2"
+        })
         .bind(body.winner_id)
         .bind(nm_id)
         .execute(&pool)

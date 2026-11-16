@@ -1,6 +1,5 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import '../styles/global.css';
 
 const features = [
   {
@@ -41,7 +40,7 @@ const houses = [
     <div class="absolute inset-0">
       <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-gold-500/5 rounded-full blur-3xl"></div>
       <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-crimson-500/5 rounded-full blur-3xl"></div>
-      <div class="absolute inset-0 bg-gradient-to-b from-obsidian-950 via-transparent to-obsidian-950"></div>
+      <div class="absolute inset-0 bg-linear-to-b from-obsidian-950 via-transparent to-obsidian-950"></div>
     </div>
 
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
@@ -102,7 +101,7 @@ const houses = [
 
             <!-- Main card -->
             <div class="relative w-72 h-[420px] rounded-2xl overflow-hidden animate-float glow-gold">
-              <div class="absolute inset-0 bg-gradient-to-br from-obsidian-800 via-obsidian-900 to-obsidian-950 border-2 border-gold-500/30 rounded-2xl">
+              <div class="absolute inset-0 bg-linear-to-br from-obsidian-800 via-obsidian-900 to-obsidian-950 border-2 border-gold-500/30 rounded-2xl">
                 <!-- Card header -->
                 <div class="p-4 flex items-center justify-between">
                   <span class="text-xs font-mono text-gold-500/60">SM-001</span>
@@ -110,7 +109,7 @@ const houses = [
                 </div>
 
                 <!-- Card art area -->
-                <div class="mx-4 h-48 rounded-lg bg-gradient-to-br from-gold-500/10 to-crimson-500/10 border border-gold-500/20 overflow-hidden">
+                <div class="mx-4 h-48 rounded-lg bg-linear-to-br from-gold-500/10 to-crimson-500/10 border border-gold-500/20 overflow-hidden">
                   <img src="/images/cards/sm-001.webp" alt="The Sonnet Man" class="w-full h-full object-cover" fetchpriority="high" decoding="async" />
                 </div>
 
@@ -119,8 +118,8 @@ const houses = [
                   <h3 class="font-display text-lg font-bold text-gold-300">The Sonnet Man</h3>
                   <p class="text-xs text-obsidian-400 mt-1">Master Thespian &middot; Legendary</p>
                   <div class="mt-3 flex items-center gap-2">
-                    <span class="px-2 py-0.5 text-xs rounded bg-crimson-500/20 text-crimson-400 border border-crimson-500/30">Fire</span>
-                    <span class="px-2 py-0.5 text-xs rounded bg-gold-500/20 text-gold-400 border border-gold-500/30">Bard</span>
+                    <span class="px-2 py-0.5 text-xs rounded-sm bg-crimson-500/20 text-crimson-400 border border-crimson-500/30">Fire</span>
+                    <span class="px-2 py-0.5 text-xs rounded-sm bg-gold-500/20 text-gold-400 border border-gold-500/30">Bard</span>
                   </div>
                   <p class="text-xs text-obsidian-400 mt-3 italic leading-relaxed">
                     "Shall I compare thee to a summer's day? Thou art more lovely and more temperate..."
@@ -145,8 +144,8 @@ const houses = [
             </div>
 
             <!-- Secondary floating cards -->
-            <div class="absolute -left-12 top-16 w-48 h-72 rounded-xl bg-gradient-to-br from-obsidian-800 to-obsidian-900 border border-crimson-500/20 rotate-[-12deg] opacity-40 -z-10"></div>
-            <div class="absolute -right-8 top-24 w-48 h-72 rounded-xl bg-gradient-to-br from-obsidian-800 to-obsidian-900 border border-blue-500/20 rotate-[8deg] opacity-30 -z-10"></div>
+            <div class="absolute -left-12 top-16 w-48 h-72 rounded-xl bg-linear-to-br from-obsidian-800 to-obsidian-900 border border-crimson-500/20 -rotate-12 opacity-40 -z-10"></div>
+            <div class="absolute -right-8 top-24 w-48 h-72 rounded-xl bg-linear-to-br from-obsidian-800 to-obsidian-900 border border-blue-500/20 rotate-[8deg] opacity-30 -z-10"></div>
           </div>
         </div>
       </div>
@@ -192,7 +191,7 @@ const houses = [
       <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {houses.map((house) => (
           <div class="card-glass p-6 hover:border-gold-500/30 transition-all duration-300 group cursor-pointer">
-            <div class={`w-12 h-12 rounded-lg bg-gradient-to-br ${house.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
+            <div class={`w-12 h-12 rounded-lg bg-linear-to-br ${house.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
               <span class="text-white font-display font-bold text-lg">{house.name[0]}</span>
             </div>
             <h3 class="font-display text-lg font-semibold text-obsidian-100 mb-1">{house.name}</h3>

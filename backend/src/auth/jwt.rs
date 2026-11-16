@@ -20,20 +20,32 @@ pub fn create_token(user_id: Uuid, username: &str, secret: &str) -> Result<Strin
         iat: now.timestamp(),
     };
 
-    encode(
-        &Header::default(),
-        &claims,
-        &EncodingKey::from_secret(secret.as_bytes()),
-    )
+    let key = EncodingKey::from_secret(secret.as_bytes())
+        .map_err(|e| format!("JWT key error: {e}"))?;
+    encode(&Header::default(), &claims, &key)
     .map_err(|e| format!("JWT encode error: {e}"))
 }
 
 pub fn verify_token(token: &str, secret: &str) -> Result<Claims, String> {
-    decode::<Claims>(
-        token,
-        &DecodingKey::from_secret(secret.as_bytes()),
-        &Validation::default(),
-    )
+    let key = DecodingKey::from_secret(secret.as_bytes())
+        .map_err(|e| format!("JWT key error: {e}"))?;
+    decode::<Claims>(token, &key, &Validation::default())
     .map(|data| data.claims)
     .map_err(|e| format!("JWT verify error: {e}"))
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn token_round_trips_and_rejects_a_wrong_secret() {
+        let id = Uuid::new_v4();
+        let token = create_token(id, "hamlet", "secret-a").expect("token is created");
+        let claims = verify_token(&token, "secret-a").expect("token verifies");
+        assert_eq!(claims.sub, id);
+        assert_eq!(claims.username, "hamlet");
+        assert!(verify_token(&token, "secret-b").is_err());
+        assert!(verify_token("not-a-token", "secret-a").is_err());
+    }
 }

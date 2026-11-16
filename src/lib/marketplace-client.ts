@@ -27,7 +27,7 @@ export interface Listing {
 }
 
 export async function browseListings(): Promise<Listing[]> {
-  return request('/');
+  return request('');
 }
 
 export async function createListing(cardId: string, type: 'sale' | 'trade', priceCredits?: number, wantedCardIds?: string[]): Promise<Listing> {

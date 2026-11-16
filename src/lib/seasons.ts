@@ -4,7 +4,7 @@
  */
 
 const STORAGE_KEY = 'inspired-mile-season';
-const API_BASE = import.meta.env.PUBLIC_API_URL || 'http://localhost:3847';
+const API_BASE = import.meta.env.PUBLIC_API_URL || '';
 
 export interface SeasonInfo {
   id: number;

@@ -2,108 +2,228 @@
 
 /* === Inter (Variable Font, weights 300-800) === */
 /* latin-ext */
-@font-face {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 300 800;
-  font-display: swap;
-  src: url('/fonts/inter-latin-ext.woff2') format('woff2');
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
+@import 'tailwindcss';
 /* latin */
-@font-face {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 300 800;
-  font-display: swap;
-  src: url('/fonts/inter-latin.woff2') format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-
 
 /* === JetBrains Mono (Variable Font, weights 400-500) === */
 /* latin-ext */
-@font-face {
-  font-family: 'JetBrains Mono';
-  font-style: normal;
-  font-weight: 400 500;
-  font-display: swap;
-  src: url('/fonts/jetbrains-mono-latin-ext.woff2') format('woff2');
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
 /* latin */
-@font-face {
-  font-family: 'JetBrains Mono';
-  font-style: normal;
-  font-weight: 400 500;
-  font-display: swap;
-  src: url('/fonts/jetbrains-mono-latin.woff2') format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
 
 /* === Playfair Display (Variable Font, weights 400-800) === */
 /* latin-ext */
-@font-face {
-  font-family: 'Playfair Display';
-  font-style: normal;
-  font-weight: 400 800;
-  font-display: swap;
-  src: url('/fonts/playfair-display-latin-ext.woff2') format('woff2');
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
 /* latin */
-@font-face {
-  font-family: 'Playfair Display';
-  font-style: normal;
-  font-weight: 400 800;
-  font-display: swap;
-  src: url('/fonts/playfair-display-latin.woff2') format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
 /* latin-ext italic */
-@font-face {
-  font-family: 'Playfair Display';
-  font-style: italic;
-  font-weight: 400 800;
-  font-display: swap;
-  src: url('/fonts/playfair-display-italic-latin-ext.woff2') format('woff2');
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
 /* latin italic */
-@font-face {
-  font-family: 'Playfair Display';
-  font-style: italic;
-  font-weight: 400 800;
-  font-display: swap;
-  src: url('/fonts/playfair-display-italic-latin.woff2') format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
 
 /* === Outfit (Variable Font, weights 600-800) === */
 /* latin-ext */
-@font-face {
-  font-family: 'Outfit';
-  font-style: normal;
-  font-weight: 600 800;
-  font-display: swap;
-  src: url('/fonts/outfit-latin-ext.woff2') format('woff2');
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
 /* latin */
-@font-face {
-  font-family: 'Outfit';
-  font-style: normal;
-  font-weight: 600 800;
-  font-display: swap;
-  src: url('/fonts/outfit-latin.woff2') format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+
+@import url('/fonts/fonts.css') layer(base);
+
+@theme {
+  --color-gold-50: #fdf8e8;
+  --color-gold-100: #faefc5;
+  --color-gold-200: #f5df8c;
+  --color-gold-300: #f0c94e;
+  --color-gold-400: #e8b420;
+  --color-gold-500: #d4960f;
+  --color-gold-600: #b7740a;
+  --color-gold-700: #92550c;
+  --color-gold-800: #794412;
+  --color-gold-900: #673815;
+
+  --color-obsidian-50: #f4f3f2;
+  --color-obsidian-100: #e3e1de;
+  --color-obsidian-200: #c9c4be;
+  --color-obsidian-300: #a9a197;
+  --color-obsidian-400: #908578;
+  --color-obsidian-500: #7f7567;
+  --color-obsidian-600: #6c6157;
+  --color-obsidian-700: #584e48;
+  --color-obsidian-800: #4c433f;
+  --color-obsidian-900: #1a1714;
+  --color-obsidian-950: #0d0b09;
+
+  --color-crimson-50: #fef2f2;
+  --color-crimson-100: #fee2e2;
+  --color-crimson-200: #fecaca;
+  --color-crimson-300: #fca5a5;
+  --color-crimson-400: #f87171;
+  --color-crimson-500: #dc2626;
+  --color-crimson-600: #b91c1c;
+  --color-crimson-700: #991b1b;
+  --color-crimson-800: #7f1d1d;
+  --color-crimson-900: #450a0a;
+
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: Inter, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
 }
 
-@import url('/fonts/fonts.css');
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
+
+@utility btn-primary {
+  @apply inline-flex items-center justify-center px-6 py-3 bg-gold-500 text-obsidian-950 font-semibold rounded-lg
+           hover:bg-gold-400 transition-all duration-300 hover:shadow-lg hover:shadow-gold-500/25;
+}
+
+@utility btn-secondary {
+  @apply inline-flex items-center justify-center px-6 py-3 border-2 border-gold-500 text-gold-400 font-semibold rounded-lg
+           hover:bg-gold-500/10 transition-all duration-300;
+}
+
+@utility btn-danger {
+  @apply inline-flex items-center justify-center px-6 py-3 bg-crimson-500 text-white font-semibold rounded-lg
+           hover:bg-crimson-600 transition-all duration-300 hover:shadow-lg hover:shadow-crimson-500/25;
+}
+
+@utility card-glass {
+  @apply bg-obsidian-900/60 backdrop-blur-md border border-obsidian-700/50 rounded-xl;
+}
+
+@utility text-gradient {
+  @apply bg-linear-to-r from-gold-400 via-gold-300 to-gold-500 bg-clip-text text-transparent;
+}
+
+@utility section-padding {
+  @apply px-4 sm:px-6 lg:px-8 py-16 sm:py-24;
+}
+
+@utility glow-gold {
+  box-shadow:
+    0 0 30px rgba(212, 150, 15, 0.15),
+    0 0 60px rgba(212, 150, 15, 0.05);
+}
+
+@layer base {
+  @font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 300 800;
+    font-display: swap;
+    src: url('/fonts/inter-latin-ext.woff2') format('woff2');
+    unicode-range:
+      U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304,
+      U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020,
+      U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  }
+  @font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 300 800;
+    font-display: swap;
+    src: url('/fonts/inter-latin.woff2') format('woff2');
+    unicode-range:
+      U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+      U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+      U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+  @font-face {
+    font-family: 'JetBrains Mono';
+    font-style: normal;
+    font-weight: 400 500;
+    font-display: swap;
+    src: url('/fonts/jetbrains-mono-latin-ext.woff2') format('woff2');
+    unicode-range:
+      U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304,
+      U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020,
+      U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  }
+  @font-face {
+    font-family: 'JetBrains Mono';
+    font-style: normal;
+    font-weight: 400 500;
+    font-display: swap;
+    src: url('/fonts/jetbrains-mono-latin.woff2') format('woff2');
+    unicode-range:
+      U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+      U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+      U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+  @font-face {
+    font-family: 'Playfair Display';
+    font-style: normal;
+    font-weight: 400 800;
+    font-display: swap;
+    src: url('/fonts/playfair-display-latin-ext.woff2') format('woff2');
+    unicode-range:
+      U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304,
+      U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020,
+      U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  }
+  @font-face {
+    font-family: 'Playfair Display';
+    font-style: normal;
+    font-weight: 400 800;
+    font-display: swap;
+    src: url('/fonts/playfair-display-latin.woff2') format('woff2');
+    unicode-range:
+      U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+      U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+      U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+  @font-face {
+    font-family: 'Playfair Display';
+    font-style: italic;
+    font-weight: 400 800;
+    font-display: swap;
+    src: url('/fonts/playfair-display-italic-latin-ext.woff2') format('woff2');
+    unicode-range:
+      U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304,
+      U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020,
+      U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  }
+  @font-face {
+    font-family: 'Playfair Display';
+    font-style: italic;
+    font-weight: 400 800;
+    font-display: swap;
+    src: url('/fonts/playfair-display-italic-latin.woff2') format('woff2');
+    unicode-range:
+      U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+      U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+      U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+  @font-face {
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 600 800;
+    font-display: swap;
+    src: url('/fonts/outfit-latin-ext.woff2') format('woff2');
+    unicode-range:
+      U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304,
+      U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020,
+      U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  }
+  @font-face {
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 600 800;
+    font-display: swap;
+    src: url('/fonts/outfit-latin.woff2') format('woff2');
+    unicode-range:
+      U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+      U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+      U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+}
 
 @layer base {
   html {
@@ -116,39 +236,6 @@
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-display;
-  }
-}
-
-@layer components {
-  .btn-primary {
-    @apply inline-flex items-center justify-center px-6 py-3 bg-gold-500 text-obsidian-950 font-semibold rounded-lg
-           hover:bg-gold-400 transition-all duration-300 hover:shadow-lg hover:shadow-gold-500/25;
-  }
-
-  .btn-secondary {
-    @apply inline-flex items-center justify-center px-6 py-3 border-2 border-gold-500 text-gold-400 font-semibold rounded-lg
-           hover:bg-gold-500/10 transition-all duration-300;
-  }
-
-  .btn-danger {
-    @apply inline-flex items-center justify-center px-6 py-3 bg-crimson-500 text-white font-semibold rounded-lg
-           hover:bg-crimson-600 transition-all duration-300 hover:shadow-lg hover:shadow-crimson-500/25;
-  }
-
-  .card-glass {
-    @apply bg-obsidian-900/60 backdrop-blur-md border border-obsidian-700/50 rounded-xl;
-  }
-
-  .text-gradient {
-    @apply bg-gradient-to-r from-gold-400 via-gold-300 to-gold-500 bg-clip-text text-transparent;
-  }
-
-  .section-padding {
-    @apply px-4 sm:px-6 lg:px-8 py-16 sm:py-24;
-  }
-
-  .glow-gold {
-    box-shadow: 0 0 30px rgba(212, 150, 15, 0.15), 0 0 60px rgba(212, 150, 15, 0.05);
   }
 }
 

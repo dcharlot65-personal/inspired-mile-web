@@ -1,6 +1,5 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import '../styles/global.css';
 ---
 
 <BaseLayout title="Season Pass" description="Level up your Season Pass to unlock exclusive rewards in Inspired Mile.">
@@ -33,7 +32,7 @@ import '../styles/global.css';
           </div>
         </div>
         <div class="w-full h-3 bg-obsidian-800 rounded-full overflow-hidden">
-          <div id="xp-bar" class="h-full bg-gradient-to-r from-purple-500 to-gold-400 rounded-full transition-all duration-500" style="width: 0%"></div>
+          <div id="xp-bar" class="h-full bg-linear-to-r from-purple-500 to-gold-400 rounded-full transition-all duration-500" style="width: 0%"></div>
         </div>
         <div class="flex justify-between mt-1">
           <span class="text-[10px] text-obsidian-500" id="xp-current">0 XP</span>
@@ -69,7 +68,7 @@ import '../styles/global.css';
       <h2 class="text-xl font-display font-bold text-obsidian-200 mb-4">Reward Track</h2>
       <div id="reward-track" class="space-y-2 mb-8">
         <div class="card-glass p-4 rounded-xl animate-pulse">
-          <div class="bg-obsidian-800 rounded h-4 w-1/3"></div>
+          <div class="bg-obsidian-800 rounded-sm h-4 w-1/3"></div>
         </div>
       </div>
 

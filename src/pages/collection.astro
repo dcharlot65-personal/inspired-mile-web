@@ -1,6 +1,5 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import '../styles/global.css';
 import { CARD_CATALOG, RARITY_COLORS } from '../lib/cards';
 ---
 
@@ -42,14 +41,14 @@ import { CARD_CATALOG, RARITY_COLORS } from '../lib/cards';
           <div class="card-glass rounded-xl overflow-hidden animate-pulse">
             <div class="bg-obsidian-800 h-48"></div>
             <div class="p-4 space-y-3">
-              <div class="bg-obsidian-800 rounded h-5 w-3/4"></div>
-              <div class="bg-obsidian-800 rounded h-3 w-1/2"></div>
+              <div class="bg-obsidian-800 rounded-sm h-5 w-3/4"></div>
+              <div class="bg-obsidian-800 rounded-sm h-3 w-1/2"></div>
               <div class="flex gap-4">
-                <div class="bg-obsidian-800 rounded h-3 w-12"></div>
-                <div class="bg-obsidian-800 rounded h-3 w-12"></div>
-                <div class="bg-obsidian-800 rounded h-3 w-12"></div>
+                <div class="bg-obsidian-800 rounded-sm h-3 w-12"></div>
+                <div class="bg-obsidian-800 rounded-sm h-3 w-12"></div>
+                <div class="bg-obsidian-800 rounded-sm h-3 w-12"></div>
               </div>
-              <div class="bg-obsidian-800 rounded h-3 w-full"></div>
+              <div class="bg-obsidian-800 rounded-sm h-3 w-full"></div>
             </div>
           </div>
         ))}
@@ -64,7 +63,7 @@ import { CARD_CATALOG, RARITY_COLORS } from '../lib/cards';
             data-rarity={card.rarity}
           >
             <!-- Card Art -->
-            <div class={`h-48 bg-gradient-to-br ${card.gradient} flex items-center justify-center relative overflow-hidden`}>
+            <div class={`h-48 bg-linear-to-br ${card.gradient} flex items-center justify-center relative overflow-hidden`}>
               {card.image ? (
                 <img
                   src={card.image}
@@ -159,7 +158,7 @@ import { CARD_CATALOG, RARITY_COLORS } from '../lib/cards';
         <!-- Deck Controls -->
         <div class="flex flex-wrap items-center gap-3 mb-6">
           <input id="deck-name" type="text" placeholder="Deck name..."
-            class="flex-1 min-w-[200px] bg-obsidian-800 border border-obsidian-700 rounded-lg px-4 py-2 text-sm text-obsidian-100 placeholder-obsidian-500 focus:outline-none focus:border-gold-500/50" />
+            class="flex-1 min-w-[200px] bg-obsidian-800 border border-obsidian-700 rounded-lg px-4 py-2 text-sm text-obsidian-100 placeholder-obsidian-500 focus:outline-hidden focus:border-gold-500/50" />
           <button id="save-deck-btn" class="btn-primary px-4 py-2 text-sm">Save Deck</button>
           <button id="clear-deck-btn" class="btn-secondary px-4 py-2 text-sm">Clear</button>
         </div>
@@ -214,7 +213,7 @@ import { CARD_CATALOG, RARITY_COLORS } from '../lib/cards';
 
   <!-- Card Detail Modal -->
   <div id="card-detail-modal" class="fixed inset-0 z-50 hidden">
-    <div class="absolute inset-0 bg-obsidian-950/90 backdrop-blur-sm" id="modal-backdrop"></div>
+    <div class="absolute inset-0 bg-obsidian-950/90 backdrop-blur-xs" id="modal-backdrop"></div>
     <div class="relative flex items-center justify-center min-h-screen p-4">
       <div class="card-glass max-w-lg w-full max-h-[90vh] overflow-y-auto relative">
         <button id="modal-close" class="absolute top-4 right-4 text-obsidian-400 hover:text-obsidian-200 z-10">
@@ -376,7 +375,7 @@ import { CARD_CATALOG, RARITY_COLORS } from '../lib/cards';
         const opacity = unlocked ? '' : 'opacity-40';
         const date = unlockedAt ? new Date(unlockedAt).toLocaleDateString() : '';
         return `
-          <div class="card-glass p-4 rounded-xl bg-gradient-to-br ${bg} border ${opacity} transition-opacity">
+          <div class="card-glass p-4 rounded-xl bg-linear-to-br ${bg} border ${opacity} transition-opacity">
             <div class="flex items-center gap-3 mb-2">
               <span class="text-2xl">${a.icon}</span>
               <div>
@@ -451,7 +450,7 @@ import { CARD_CATALOG, RARITY_COLORS } from '../lib/cards';
         const el = document.createElement('div');
         el.className = 'card-glass p-3 flex items-center gap-3';
         el.innerHTML = `
-          ${card.image ? `<img src="${card.image}" alt="${card.name}" class="w-12 h-12 rounded object-cover">` : `<span class="text-2xl">${card.icon}</span>`}
+          ${card.image ? `<img src="${card.image}" alt="${card.name}" class="w-12 h-12 rounded-sm object-cover">` : `<span class="text-2xl">${card.icon}</span>`}
           <div class="flex-1 min-w-0">
             <p class="text-sm font-display font-semibold text-obsidian-200 truncate">${card.name}</p>
             <p class="text-xs text-gold-400">${city}</p>
@@ -533,7 +532,7 @@ import { CARD_CATALOG, RARITY_COLORS } from '../lib/cards';
         </div>` : '';
 
       modalContent.innerHTML = `
-        <div class="h-56 bg-gradient-to-br ${card.gradient} flex items-center justify-center relative overflow-hidden rounded-t-xl">
+        <div class="h-56 bg-linear-to-br ${card.gradient} flex items-center justify-center relative overflow-hidden rounded-t-xl">
           ${card.image ? `<img src="${card.image}" alt="${card.name}" class="w-full h-full object-cover">` : `<div class="text-6xl">${card.icon}</div>`}
         </div>
         <div class="p-6">
@@ -666,7 +665,7 @@ import { CARD_CATALOG, RARITY_COLORS } from '../lib/cards';
         if (!card) return '';
         return `
           <div class="flex items-center gap-2 p-2 rounded-lg bg-obsidian-800/50 border border-obsidian-700/50 group/slot cursor-pointer" data-remove-id="${id}">
-            ${card.image ? `<img src="${card.image}" alt="${card.name}" class="w-8 h-8 rounded object-cover">` : `<span class="text-lg">${card.icon}</span>`}
+            ${card.image ? `<img src="${card.image}" alt="${card.name}" class="w-8 h-8 rounded-sm object-cover">` : `<span class="text-lg">${card.icon}</span>`}
             <span class="text-xs text-obsidian-200 flex-1">${card.name}</span>
             <span class="text-xs text-obsidian-600 group-hover/slot:text-crimson-400 transition-colors">&times;</span>
           </div>`;
@@ -725,9 +724,9 @@ import { CARD_CATALOG, RARITY_COLORS } from '../lib/cards';
               <p class="text-sm font-display font-semibold text-obsidian-200 truncate">${d.name}</p>
               <p class="text-xs text-obsidian-500">${d.characters.length} chars, ${d.relics.length} relics, ${d.potions.length} potions (${total} total)</p>
             </div>
-            ${isActive ? '<span class="text-xs text-gold-400 font-semibold">ACTIVE</span>' : `<button class="deck-activate text-xs text-obsidian-400 hover:text-gold-400 border border-obsidian-700 rounded px-2 py-1" data-deck-name="${d.name}">Activate</button>`}
-            <button class="deck-load text-xs text-obsidian-400 hover:text-obsidian-200 border border-obsidian-700 rounded px-2 py-1" data-deck-name="${d.name}">Edit</button>
-            <button class="deck-delete text-xs text-obsidian-400 hover:text-crimson-400 border border-obsidian-700 rounded px-2 py-1" data-deck-name="${d.name}">&times;</button>
+            ${isActive ? '<span class="text-xs text-gold-400 font-semibold">ACTIVE</span>' : `<button class="deck-activate text-xs text-obsidian-400 hover:text-gold-400 border border-obsidian-700 rounded-sm px-2 py-1" data-deck-name="${d.name}">Activate</button>`}
+            <button class="deck-load text-xs text-obsidian-400 hover:text-obsidian-200 border border-obsidian-700 rounded-sm px-2 py-1" data-deck-name="${d.name}">Edit</button>
+            <button class="deck-delete text-xs text-obsidian-400 hover:text-crimson-400 border border-obsidian-700 rounded-sm px-2 py-1" data-deck-name="${d.name}">&times;</button>
           </div>`;
       }).join('');
 

@@ -25,10 +25,10 @@ test.describe('Page Navigation', () => {
 });
 
 test.describe('Collection Page', () => {
-  test('renders all 24 cards', async ({ page }) => {
+  test('renders the whole catalog (71 cards)', async ({ page }) => {
     await page.goto('/collection');
     const cards = page.locator('.card-item');
-    await expect(cards).toHaveCount(24);
+    await expect(cards).toHaveCount(71);
   });
 
   test('filter buttons work', async ({ page }) => {
@@ -44,13 +44,13 @@ test.describe('Collection Page', () => {
     // Filter to All
     await page.click('[data-filter="all"]');
     const allCards = page.locator('.card-item:not([style*="display: none"])');
-    await expect(allCards).toHaveCount(24);
+    await expect(allCards).toHaveCount(71);
   });
 
   test('achievements section is visible', async ({ page }) => {
     await page.goto('/collection');
     await expect(page.locator('#achievement-grid')).toBeVisible();
-    await expect(page.locator('#achievement-total')).toHaveText('16');
+    await expect(page.locator('#achievement-total')).toHaveText('30');
   });
 
   test('locked cards have lock overlay', async ({ page }) => {
@@ -216,12 +216,12 @@ test.describe('Meta Tags', () => {
   test('og:image meta tag present', async ({ page }) => {
     await page.goto('/');
     const ogImage = page.locator('meta[property="og:image"]');
-    await expect(ogImage).toHaveAttribute('content', '/images/og-image.png');
+    await expect(ogImage).toHaveAttribute('content', '/images/cards/sm-001.webp');
   });
 
-  test('preconnect to Google Fonts', async ({ page }) => {
+  test('fonts are self-hosted, with no third-party font request', async ({ page }) => {
     await page.goto('/');
-    const preconnect = page.locator('link[rel="preconnect"][href="https://fonts.googleapis.com"]');
-    expect(await preconnect.count()).toBe(1);
+    expect(await page.locator('link[rel="preload"][href^="/fonts/"]').count()).toBeGreaterThanOrEqual(1);
+    expect(await page.locator('link[href*="fonts.googleapis.com"]').count()).toBe(0);
   });
 });

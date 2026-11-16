@@ -1,6 +1,5 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import '../styles/global.css';
 ---
 
 <BaseLayout title="Marketplace" description="Trade and buy Shakespearean collectible cards from other players.">
@@ -37,12 +36,12 @@ import '../styles/global.css';
       <div id="panel-browse">
         <!-- Filters -->
         <div class="flex flex-wrap gap-3 mb-6">
-          <select id="filter-type" class="bg-obsidian-800 border border-obsidian-700 rounded-lg px-3 py-2 text-xs text-obsidian-200 focus:outline-none focus:border-gold-500/50">
+          <select id="filter-type" class="bg-obsidian-800 border border-obsidian-700 rounded-lg px-3 py-2 text-xs text-obsidian-200 focus:outline-hidden focus:border-gold-500/50">
             <option value="">All Types</option>
             <option value="sale">For Sale</option>
             <option value="trade">For Trade</option>
           </select>
-          <input id="filter-search" type="text" placeholder="Search cards..." class="bg-obsidian-800 border border-obsidian-700 rounded-lg px-3 py-2 text-xs text-obsidian-200 focus:outline-none focus:border-gold-500/50 w-48" />
+          <input id="filter-search" type="text" placeholder="Search cards..." class="bg-obsidian-800 border border-obsidian-700 rounded-lg px-3 py-2 text-xs text-obsidian-200 focus:outline-hidden focus:border-gold-500/50 w-48" />
           <button id="refresh-btn" class="text-xs text-obsidian-400 hover:text-gold-400 transition-colors border border-obsidian-700 rounded-lg px-3 py-2 hover:border-gold-500/30">
             Refresh
           </button>
@@ -54,11 +53,11 @@ import '../styles/global.css';
             <div class="card-glass p-5">
               <div class="flex items-center justify-between mb-3">
                 <div class="bg-obsidian-800 rounded-full h-5 w-20"></div>
-                <div class="bg-obsidian-800 rounded h-3 w-16"></div>
+                <div class="bg-obsidian-800 rounded-sm h-3 w-16"></div>
               </div>
-              <div class="bg-obsidian-800 rounded h-6 w-24 mb-1"></div>
-              <div class="bg-obsidian-800 rounded h-3 w-32 mb-3"></div>
-              <div class="bg-obsidian-800 rounded h-5 w-20 mb-3"></div>
+              <div class="bg-obsidian-800 rounded-sm h-6 w-24 mb-1"></div>
+              <div class="bg-obsidian-800 rounded-sm h-3 w-32 mb-3"></div>
+              <div class="bg-obsidian-800 rounded-sm h-5 w-20 mb-3"></div>
               <div class="bg-obsidian-800 rounded-lg h-9 w-full"></div>
             </div>
           ))}
@@ -85,7 +84,7 @@ import '../styles/global.css';
           <div class="space-y-4">
             <div>
               <label class="block text-xs text-obsidian-400 mb-1">Card</label>
-              <select id="sell-card" class="w-full bg-obsidian-800 border border-obsidian-700 rounded-lg px-3 py-2 text-sm text-obsidian-200 focus:outline-none focus:border-gold-500/50">
+              <select id="sell-card" class="w-full bg-obsidian-800 border border-obsidian-700 rounded-lg px-3 py-2 text-sm text-obsidian-200 focus:outline-hidden focus:border-gold-500/50">
                 <option value="">Select a card to list...</option>
               </select>
             </div>
@@ -106,12 +105,12 @@ import '../styles/global.css';
 
             <div id="price-field">
               <label class="block text-xs text-obsidian-400 mb-1">Price (credits)</label>
-              <input id="sell-price" type="number" min="1" placeholder="100" class="w-full bg-obsidian-800 border border-obsidian-700 rounded-lg px-3 py-2 text-sm text-obsidian-200 focus:outline-none focus:border-gold-500/50" />
+              <input id="sell-price" type="number" min="1" placeholder="100" class="w-full bg-obsidian-800 border border-obsidian-700 rounded-lg px-3 py-2 text-sm text-obsidian-200 focus:outline-hidden focus:border-gold-500/50" />
             </div>
 
             <div id="wanted-field" class="hidden">
               <label class="block text-xs text-obsidian-400 mb-1">Wanted Cards (comma-separated IDs)</label>
-              <input id="sell-wanted" type="text" placeholder="MO-001, CA-001" class="w-full bg-obsidian-800 border border-obsidian-700 rounded-lg px-3 py-2 text-sm text-obsidian-200 focus:outline-none focus:border-gold-500/50" />
+              <input id="sell-wanted" type="text" placeholder="MO-001, CA-001" class="w-full bg-obsidian-800 border border-obsidian-700 rounded-lg px-3 py-2 text-sm text-obsidian-200 focus:outline-hidden focus:border-gold-500/50" />
             </div>
 
             <button id="create-listing-btn" class="w-full btn-primary py-3">

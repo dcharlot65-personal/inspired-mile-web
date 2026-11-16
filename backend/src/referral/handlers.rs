@@ -4,7 +4,7 @@ use axum::{
     routing::{get, post},
     Json, Router,
 };
-use rand::Rng;
+use rand::RngExt;
 use serde::{Deserialize, Serialize};
 use sqlx::{PgPool, Row};
 
@@ -30,9 +30,9 @@ pub struct RedeemResponse {
 }
 
 fn generate_referral_code() -> String {
-    let mut rng = rand::thread_rng();
+    let mut rng = rand::rng();
     let chars: Vec<char> = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789".chars().collect();
-    (0..8).map(|_| chars[rng.gen_range(0..chars.len())]).collect()
+    (0..8).map(|_| chars[rng.random_range(0..chars.len())]).collect()
 }
 
 pub fn router() -> Router<(PgPool, Config)> {
