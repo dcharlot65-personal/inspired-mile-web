@@ -16,7 +16,7 @@ result files; the rest of the page is written by hand.
 **66 of 96 cells measured** (16 languages, 3 models, judging and writing).
 
 - Measured for every model and both tasks: en, es, fr, de, it, pt, pl, ru, ar, hi, zh.
-- Not measured: ja, ko, vi, th, id. There no model writes or judges: the written opponent plays and the rules judge.
+- Not measured: ja, ko, vi, th, id. In those languages no model writes or judges: the written opponent plays and the rules judge.
 
 - **Gemma 4 E2B** writes the opponent's verse in en, es, fr, de, it, pt, pl, ru and judges in en, fr, de, pt, ru, ar, hi, zh.
 - **LFM3 1.7B** writes the opponent's verse in no language and judges in no language. It is used nowhere, so it is never offered.

@@ -141,7 +141,7 @@ const cellsOf = (l) => TIERS.flatMap((t) => ['judge', 'write'].filter((task) => 
 brief.push(`**${cells.length} of ${TIERS.length * LANGS.length * 2} cells measured** (${LANGS.length} languages, ${TIERS.length} models, judging and writing).`);
 brief.push('', `- Measured for every model and both tasks: ${full.join(', ') || 'none'}.`);
 if (part.length) brief.push(`- Measured in part: ${part.map((l) => `${l} (${cellsOf(l).join(', ')})`).join('; ')}.`);
-if (none.length) brief.push(`- Not measured: ${none.join(', ')}. There no model writes or judges: the written opponent plays and the rules judge.`);
+if (none.length) brief.push(`- Not measured: ${none.join(', ')}. In those languages no model writes or judges: the written opponent plays and the rules judge.`);
 brief.push('');
 for (const tier of TIERS) {
   const { writesIn: w, judgesIn: j } = models[tier];
