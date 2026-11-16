@@ -291,8 +291,10 @@ describe('the commentary check', () => {
     reasoning: "<think>We need to parse the user's request.",
     announceFr: 'To answer your challenge, I shall craft a heroic couplet in French, echoing Shakespeare’s form.\nNé, je me brise comme un dragon en vain,',
     title: "Crescendo\nThe shadows stretch, dark as dust\nBeneath the moon's pale witnessing light",
+    // grand.zh.write.json: the labels use the full-width colon, which the label rule once missed.
+    labelsZh: '清：心如止水，不為虛無。\n秋：眼淚流盡，映照真相。\n月：女兒之淚，是真心難測。',
   };
-  const LANG: Record<string, string> = { labelsEs: 'es', announceFr: 'fr' };
+  const LANG: Record<string, string> = { labelsEs: 'es', announceFr: 'fr', labelsZh: 'zh' };
   const PROMPT = ['You are Christina Rossetti…', 'Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Give every line the same number of words.\nOpen the duel: taunt your challenger.\nWrite only the verse, in English. No title, no notes, no explanation.'];
   it('flags what the first cells showed the rules committed before them missing', () => {
     const instructions = instructionLines(PROMPT, null);

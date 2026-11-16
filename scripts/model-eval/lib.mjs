@@ -171,8 +171,11 @@ export function commentary(verse, lang, { instructions = [], narrow = false } = 
     else if (TASK_TALK.test(l) || INTERRUPTION.test(l) || ANNOUNCE.test(l)) out.push('talk about the task');
     else if (echoesInstruction(l, instructions)) out.push('repeats the instructions');
   });
-  // Acrostic letters set out as labels ("W - Vivid rays", "L: Llevo"): two or more lines.
-  if (!narrow && lines.filter((l) => /^\s*\p{L}\s*[-–—:)]/u.test(l) && !/^\s*\p{L}\p{L}/u.test(l)).length >= 2) out.push('letters set out as labels');
+  // Acrostic letters set out as labels ("W - Vivid rays", "L: Llevo", "清：心如止水"): two or more
+  // lines. The full-width colon was missing until the Chinese cells were read (nine of Gemma's
+  // acrostics there used it; the rules above already treat it as a colon). Adding it flips one
+  // decision, which MODEL-EVAL.md states; no reference verse is flagged with or without it.
+  if (!narrow && lines.filter((l) => /^\s*\p{L}\s*[-–—:)：]/u.test(l) && !/^\s*\p{L}\p{L}/u.test(l)).length >= 2) out.push('letters set out as labels');
   return out;
 }
 

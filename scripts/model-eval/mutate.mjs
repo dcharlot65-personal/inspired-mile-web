@@ -27,6 +27,7 @@ const MUTATIONS = [
   ['the challenger\'s quoted verse read as instructions', 'scripts/model-eval/lib.mjs', '.filter((l) => l && !quoted.has(l));', '.filter((l) => l);'],
   ['a reasoning block no longer seen', 'scripts/model-eval/lib.mjs', "else if (REASONING.test(l)) out.push('a reasoning block');", ''],
   ['a title naming the form no longer seen', 'scripts/model-eval/lib.mjs', 'if (form && l === norm(form)) return true;', ''],
+  ['the full-width colon dropped from the label rule', 'scripts/model-eval/lib.mjs', '[-–—:)：]/u.test(l)', '[-–—:)]/u.test(l)'],
   ['vowel signs stripped before comparing words again', 'scripts/model-eval/lib.mjs', '.replace(/[^\\p{L}\\p{M}\\p{N}\\s]/gu', '.replace(/[^\\p{L}\\p{N}\\s]/gu'],
   ['a model used in no language offered for download', 'src/lib/brain.ts', 'return runnable.filter(usedAnywhere);', 'return runnable;'],
   // The cells against the game as it is now (the replay test).
