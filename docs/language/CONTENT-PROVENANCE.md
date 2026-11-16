@@ -45,6 +45,9 @@ This covers the playground and story pages, the trivia bank (200 questions), the
 | it-rusconi-romeo | it | Romeo and Juliet (Q83186) | Carlo Rusconi (1889) | https://it.wikisource.org/wiki/Giulietta_e_Romeo | Public domain: translator died 1889; Teatro completo di Shakspeare, 1858 |
 | fr-hugo-cesar | fr | Julius Caesar (Q215750) | François-Victor Hugo (1873) | https://fr.wikisource.org/wiki/Jules_César_(Shakespeare,_trad._Hugo) | Public domain: translator died 1873; Œuvres complètes de Shakespeare, Pagnerre, Paris |
 | it-rusconi-cesare | it | Julius Caesar (Q215750) | Carlo Rusconi (1889) | https://it.wikisource.org/wiki/Giulio_Cesare | Public domain: translator died 1889; Teatro completo di Shakspeare, 1858 |
+| ru-weinberg-othello | ru | Othello (Q26833) | Пётр Вейнберг (1908) | https://ru.wikisource.org/wiki/Отелло,_венецианский_мавр_(Шекспир;_Вейнберг) | Public domain: translator died 1908; translated 1864; text as ru.wikisource has it from a 2001 edition (Кристалл, Санкт-Петербург), modern spelling |
+| it-rusconi-macbeth | it | Macbeth (Q130283) | Carlo Rusconi (1889) | https://it.wikisource.org/wiki/Macbeth_(Shakespeare-Rusconi) | Public domain: translator died 1889; Teatro completo di Shakspeare, 1858 |
+| it-rusconi-otello | it | Othello (Q26833) | Carlo Rusconi (1889) | https://it.wikisource.org/wiki/Otello | Public domain: translator died 1889; Teatro completo di Shakspeare, 1858 |
 
 ## Names
 
@@ -855,6 +858,14 @@ Allowances: F.-V. Hugo's prose marks the original's verse lines with " — "; a 
 | 31 | Cowards die many times before their deaths; the valiant never taste of death but once. | I vili muoiono molte volte prima di morire; ma una volta sola gli uomini coraggiosi. | volta, coraggiosi | https://it.wikisource.org/w/index.php?title=Giulio_Cesare/Atto_secondo&oldid=3803537 |
 | 49 | Beware the ides of March. | Guardati dalle Idi di marzo. | Idi | https://it.wikisource.org/w/index.php?title=Giulio_Cesare/Atto_primo&oldid=3803534 |
 | 52 | This was the noblest Roman of them all. | Di quanti Romani furono, Bruto apparve certo il più nobile. | nobile | https://it.wikisource.org/w/index.php?title=Giulio_Cesare/Atto_quinto&oldid=3803536 |
+| 11 | Out, damned spot! Out, I say! | Cancellati, esecrabile macchia... cancellati, dico! | macchia | https://it.wikisource.org/w/index.php?title=Macbeth_%28Shakespeare-Rusconi%29/Atto_quinto&oldid=3817370 |
+| 28 | By the pricking of my thumbs, something wicked this way comes. | Al prurito che mi sento sulle dita, giurerei che s’appressa un profano | prurito, profano | https://it.wikisource.org/w/index.php?title=Macbeth_%28Shakespeare-Rusconi%29/Atto_quarto&oldid=3817369 |
+| 39 | Tomorrow, and tomorrow, and tomorrow, creeps in this petty pace from day to day. | Così il dimani, poi il dimani, poi un altro dimani ancora ci sorprende | dimani, sorprende | https://it.wikisource.org/w/index.php?title=Macbeth_%28Shakespeare-Rusconi%29/Atto_quinto&oldid=3817370 |
+| 94 | Come what come may, time and the hour runs through the roughest day. | Avvenga che può: la vita scorrerà egualmente rapida anche nel giorno del dolore. | vita, dolore | https://it.wikisource.org/w/index.php?title=Macbeth_%28Shakespeare-Rusconi%29/Atto_primo&oldid=3817368 |
+| 37 | I am not what I am. | No, non sono quello che sembro. | quello, sembro | https://it.wikisource.org/w/index.php?title=Otello/Atto_primo&oldid=3821125 |
+| 59 | I will wear my heart upon my sleeve for daws to peck at. | porterò il cuor nudo in mano per farne copia a tutti i malvagi e agli stolti | cuor, mano | https://it.wikisource.org/w/index.php?title=Otello/Atto_primo&oldid=3821125 |
+| 64 | The robbed that smiles steals something from the thief. | L’uomo che vede con fronte serena rapirsi il suo tesoro, ne conserva nell’anima uno ben maggiore, e delude il rapitore | serena, rapitore | https://it.wikisource.org/w/index.php?title=Otello/Atto_primo&oldid=3821125 |
+| 80 | Put out the light, and then put out the light. | Estinguiam quella face; e con essa si spenga in lei il lume della vita | face, lume | https://it.wikisource.org/w/index.php?title=Otello/Atto_quinto&oldid=3821127 |
 
 ### pl
 
@@ -898,6 +909,10 @@ Allowances: F.-V. Hugo's prose marks the original's verse lines with " — "; a 
 | 46 | But soft, what light through yonder window breaks? | Но тише! Что за свет в окне мелькнул? | свет | https://ru.wikisource.org/w/index.php?title=%D0%A0%D0%BE%D0%BC%D0%B5%D0%BE_%D0%B8_%D0%94%D0%B6%D1%83%D0%BB%D1%8C%D0%B5%D1%82%D1%82%D0%B0_%28%D0%A8%D0%B5%D0%BA%D1%81%D0%BF%D0%B8%D1%80%3B_%D0%93%D1%80%D0%B8%D0%B3%D0%BE%D1%80%D1%8C%D0%B5%D0%B2%29/1929&oldid=5658970 |
 | 79 | Wisely and slow; they stumble that run fast. | Осторожно-медленный шаг всегда верней. | медленный, верней | https://ru.wikisource.org/w/index.php?title=%D0%A0%D0%BE%D0%BC%D0%B5%D0%BE_%D0%B8_%D0%94%D0%B6%D1%83%D0%BB%D1%8C%D0%B5%D1%82%D1%82%D0%B0_%28%D0%A8%D0%B5%D0%BA%D1%81%D0%BF%D0%B8%D1%80%3B_%D0%93%D1%80%D0%B8%D0%B3%D0%BE%D1%80%D1%8C%D0%B5%D0%B2%29/1929&oldid=5658970 |
 | 96 | Thou know'st the mask of night is on my face, else would a maiden blush bepaint my cheek. | Ты знаешь, маска тьмы теперь скрывает | маска, тьмы | https://ru.wikisource.org/w/index.php?title=%D0%A0%D0%BE%D0%BC%D0%B5%D0%BE_%D0%B8_%D0%94%D0%B6%D1%83%D0%BB%D1%8C%D0%B5%D1%82%D1%82%D0%B0_%28%D0%A8%D0%B5%D0%BA%D1%81%D0%BF%D0%B8%D1%80%3B_%D0%93%D1%80%D0%B8%D0%B3%D0%BE%D1%80%D1%8C%D0%B5%D0%B2%29/1929&oldid=5658970 |
+| 37 | I am not what I am. | Нет, я не тот, каким кажусь! | тот, кажусь | https://ru.wikisource.org/w/index.php?title=%D0%9E%D1%82%D0%B5%D0%BB%D0%BB%D0%BE%2C_%D0%B2%D0%B5%D0%BD%D0%B5%D1%86%D0%B8%D0%B0%D0%BD%D1%81%D0%BA%D0%B8%D0%B9_%D0%BC%D0%B0%D0%B2%D1%80_%28%D0%A8%D0%B5%D0%BA%D1%81%D0%BF%D0%B8%D1%80%3B_%D0%92%D0%B5%D0%B9%D0%BD%D0%B1%D0%B5%D1%80%D0%B3%29&oldid=5658637 |
+| 59 | I will wear my heart upon my sleeve for daws to peck at. | Всю выложить и дать в добычу галкам? | выложить, галкам | https://ru.wikisource.org/w/index.php?title=%D0%9E%D1%82%D0%B5%D0%BB%D0%BB%D0%BE%2C_%D0%B2%D0%B5%D0%BD%D0%B5%D1%86%D0%B8%D0%B0%D0%BD%D1%81%D0%BA%D0%B8%D0%B9_%D0%BC%D0%B0%D0%B2%D1%80_%28%D0%A8%D0%B5%D0%BA%D1%81%D0%BF%D0%B8%D1%80%3B_%D0%92%D0%B5%D0%B9%D0%BD%D0%B1%D0%B5%D1%80%D0%B3%29&oldid=5658637 |
+| 64 | The robbed that smiles steals something from the thief. | Ограбленный, смеясь своей потере, | смеясь, потере | https://ru.wikisource.org/w/index.php?title=%D0%9E%D1%82%D0%B5%D0%BB%D0%BB%D0%BE%2C_%D0%B2%D0%B5%D0%BD%D0%B5%D1%86%D0%B8%D0%B0%D0%BD%D1%81%D0%BA%D0%B8%D0%B9_%D0%BC%D0%B0%D0%B2%D1%80_%28%D0%A8%D0%B5%D0%BA%D1%81%D0%BF%D0%B8%D1%80%3B_%D0%92%D0%B5%D0%B9%D0%BD%D0%B1%D0%B5%D1%80%D0%B3%29&oldid=5658637 |
+| 80 | Put out the light, and then put out the light. | Задуть свечу, а там… Задуть свечу? | свечу, свечу | https://ru.wikisource.org/w/index.php?title=%D0%9E%D1%82%D0%B5%D0%BB%D0%BB%D0%BE%2C_%D0%B2%D0%B5%D0%BD%D0%B5%D1%86%D0%B8%D0%B0%D0%BD%D1%81%D0%BA%D0%B8%D0%B9_%D0%BC%D0%B0%D0%B2%D1%80_%28%D0%A8%D0%B5%D0%BA%D1%81%D0%BF%D0%B8%D1%80%3B_%D0%92%D0%B5%D0%B9%D0%BD%D0%B1%D0%B5%D1%80%D0%B3%29&oldid=5658637 |
 
 ### zh
 
@@ -950,10 +965,10 @@ The English bank has 104 quote challenges. A language has only those listed abov
 | es | 29 | 75 | its own 29 |
 | fr | 32 | 72 | its own 32 |
 | de | 23 | 81 | its own 23 |
-| it | 27 | 77 | its own 27 |
+| it | 35 | 69 | its own 35 |
 | pt | 0 | 104 | the English originals (104) |
 | pl | 15 | 89 | its own 15 |
-| ru | 18 | 86 | its own 18 |
+| ru | 22 | 82 | its own 22 |
 | ar | 0 | 104 | the English originals (104) |
 | hi | 0 | 104 | the English originals (104) |
 | zh | 22 | 82 | its own 22 |
@@ -963,7 +978,7 @@ The English bank has 104 quote challenges. A language has only those listed abov
 | th | 0 | 104 | the English originals (104) |
 | id | 0 | 104 | the English originals (104) |
 
-Why so many are dropped. What was searched, on Wikisource unless said otherwise: *Hamlet* in one translation per language (es, fr, de, it, pl, ru); *Romeo and Juliet* in French (Hugo), German (Schlegel), Italian (Rusconi), Spanish (Menéndez y Pelayo), Russian (Grigoryev) and Polish (Ulrich); Menéndez y Pelayo's *Macbeth* and *Otelo*; *Julius Caesar* in French (Hugo) and Italian (Rusconi); for Chinese, every one of Zhu Shenghao's translations zh.wikisource has (*Hamlet*, *The Tempest*, *A Midsummer Night's Dream*; the other links of its Shakespeare portal are pages not yet made); for Japanese, Tsubouchi Shōyō's *Romeo and Juliet* on Aozora Bunko (his *Hamlet* is still in preparation there and is not on ja.wikisource). A line not found whole in one line or verse of the source was left out, not stitched together (many prose translations of the 1880s abridge or paraphrase); one found was left out for Japanese because its words are archaic forms a player could not type (79, 'they stumble that run fast': 賢う徐うぢゃ。馳出す者は蹉躓くわい). Not searched, so no finding either way: the other works in these languages; Portuguese, whose Wikisource has the *Hamlet* of King Luís I (1877) and of Bulhão Pato (1879) only as page scans. No public-domain translation is known to the author for Korean, Arabic, Hindi, Vietnamese, Thai or Indonesian; that was not researched.
+Why so many are dropped. What was searched, on Wikisource unless said otherwise: *Hamlet* in one translation per language (es, fr, de, it, pl, ru); *Romeo and Juliet* in French (Hugo), German (Schlegel), Italian (Rusconi), Spanish (Menéndez y Pelayo), Russian (Grigoryev) and Polish (Ulrich); *Julius Caesar* in French (Hugo) and Italian (Rusconi); *Macbeth* in Spanish (Menéndez y Pelayo) and Italian (Rusconi; Russian has Kroneberg's only in the pre-reform spelling, with letters a player cannot type, so it was not used); *Othello* in Spanish (Menéndez y Pelayo), Italian (Rusconi) and Russian (Weinberg); for Chinese, every one of Zhu Shenghao's translations zh.wikisource has (*Hamlet*, *The Tempest*, *A Midsummer Night's Dream*; the other links of its Shakespeare portal are pages not yet made); for Japanese, Tsubouchi Shōyō's *Romeo and Juliet* on Aozora Bunko (his *Hamlet* is still in preparation there and is not on ja.wikisource). A line not found whole in one line or verse of the source was left out, not stitched together (many prose translations of the 1880s abridge or paraphrase); one found was left out for Japanese because its words are archaic forms a player could not type (79, 'they stumble that run fast': 賢う徐うぢゃ。馳出す者は蹉躓くわい). Not searched, so no finding either way: the other works in these languages; Portuguese, whose Wikisource has the *Hamlet* of King Luís I (1877) and of Bulhão Pato (1879) only as page scans. No public-domain translation is known to the author for Korean, Arabic, Hindi, Vietnamese, Thai or Indonesian; that was not researched.
 
 The Japanese lines are in the old orthography of the 1933 edition (旧字旧仮名), as Aozora gives them; the missing words were chosen among those written the same today, so that a player can type them.
 
@@ -983,9 +998,10 @@ What the tools that did not write the text found, and what was done about it. Th
 |---|---|---|---|---|---|---|
 | th | madlad | 200 (trivia only) | 0.6 | 1 (1) | 12/12 | 0.9361 |
 | hi | opus | 451 (trivia only) | 0.3 | 56 (56) | 12/12 | 0.5971 |
+| vi | opus | 454 (trivia only) | 0.4 | 27 (27) | 12/12 | 0.8233 |
 | th | opus | 445 (trivia only) | 0.6 | 91 (91) | 12/12 | 0.8087 |
 
-Not run: es (madlad), fr (madlad), de (madlad), it (madlad), pt (madlad), pl (madlad), ru (madlad), ar (madlad), hi (madlad), zh (madlad), ja (madlad), ko (madlad), vi (madlad), id (madlad), es (opus), fr (opus), de (opus), it (opus), pt (opus), pl (opus), ru (opus), ar (opus), zh (opus), ja (opus), ko (opus), vi (opus), id (opus).
+Not run: es (madlad), fr (madlad), de (madlad), it (madlad), pt (madlad), pl (madlad), ru (madlad), ar (madlad), hi (madlad), zh (madlad), ja (madlad), ko (madlad), vi (madlad), id (madlad), es (opus), fr (opus), de (opus), it (opus), pt (opus), pl (opus), ru (opus), ar (opus), zh (opus), ja (opus), ko (opus), id (opus).
 
 Models: google/madlad400-3b-mt (CTranslate2 int8); Helsinki-NLP OPUS-MT <lang>-en, Portuguese through opus-mt-ROMANCE-en (CTranslate2 int8); embedder sentence-transformers/all-MiniLM-L6-v2. Threshold: per language and engine: the lower of --threshold and the best control score + 0.05, at most 0.6. A threshold under the controls' scores would flag nothing they could not; where a model translates a language poorly, the threshold falls to what an unrelated sentence scores, and below it a string cannot be told from one.
 
@@ -1014,7 +1030,7 @@ Models: google/madlad400-3b-mt (CTranslate2 int8); Helsinki-NLP OPUS-MT <lang>-e
 | th | th (not usable: no spaces between words) |  | 0 |
 | id | id | 32 | 0 |
 
-**Read by hand**: 161 flagged strings. 156 ok, 3 not usable, 2 fixed. *ok* means the translation says what the English says and the flag came from the checking model (a title it renders literally, a word it does not know); *fixed* means the translation was wrong and was changed; the note says how.
+**Read by hand**: 188 flagged strings. 183 ok, 3 not usable, 2 fixed. *ok* means the translation says what the English says and the flag came from the checking model (a title it renders literally, a word it does not know); *fixed* means the translation was wrong and was changed; the note says how.
 
 Fixed:
 

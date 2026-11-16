@@ -171,7 +171,47 @@
     "status": "not run"
    },
    "vi": {
-    "status": "not run"
+    "covered": "trivia only",
+    "strings": 454,
+    "flagged": 27,
+    "flaggedTrivia": 27,
+    "controlsCaught": 12,
+    "controls": 12,
+    "threshold": 0.4,
+    "maxControl": 0.3549,
+    "medianCos": 0.8233,
+    "beams": [
+     1
+    ],
+    "flaggedIds": [
+     "trivia.167.o3",
+     "trivia.125.o1",
+     "trivia.155.q",
+     "trivia.121.o3",
+     "trivia.103.q",
+     "trivia.75.o3",
+     "trivia.181.o3",
+     "trivia.4.o2",
+     "trivia.159.o2",
+     "trivia.194.o1",
+     "trivia.191.o2",
+     "trivia.194.o2",
+     "trivia.128.o3",
+     "trivia.199.o3",
+     "trivia.132.q",
+     "trivia.199.o2",
+     "trivia.129.o3",
+     "trivia.160.o3",
+     "trivia.181.o1",
+     "trivia.121.o1",
+     "trivia.66.o3",
+     "trivia.159.q",
+     "trivia.153.q",
+     "trivia.53.o3",
+     "trivia.172.q",
+     "trivia.48.o3",
+     "trivia.159.o3"
+    ]
    },
    "th": {
     "covered": "trivia only",

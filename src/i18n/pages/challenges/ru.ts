@@ -3,7 +3,7 @@
 // translation named in scripts/lang-content/challenges/sources.tsv; a challenge with no such
 // line in this language is left out (docs/language/CONTENT-PROVENANCE.md).
 const messages: Record<string, string> = {
-  'challenges.ids': "0,15,20,27,43,53,57,63,83,84,4,35,6,12,34,46,79,96",
+  'challenges.ids': "0,15,20,27,43,53,57,63,83,84,4,35,6,12,34,46,79,96,37,59,64,80",
   'challenge.0.full': "Быть, или не быть? вот в чём вопрос!",
   'challenge.0.display': "___, или не ___? вот в чём вопрос!",
   'challenge.0.missing': "Быть|быть",
@@ -112,6 +112,30 @@ const messages: Record<string, string> = {
   'challenge.96.play': "Ромео и Джульетта",
   'challenge.96.character': "Джульетта",
   'challenge.96.translator': "Аполлон Григорьев",
+  'challenge.37.full': "Нет, я не тот, каким кажусь!",
+  'challenge.37.display': "Нет, я не ___, каким ___!",
+  'challenge.37.missing': "тот|кажусь",
+  'challenge.37.play': "Отелло",
+  'challenge.37.character': "Яго",
+  'challenge.37.translator': "Пётр Вейнберг",
+  'challenge.59.full': "Всю выложить и дать в добычу галкам?",
+  'challenge.59.display': "Всю ___ и дать в добычу ___?",
+  'challenge.59.missing': "выложить|галкам",
+  'challenge.59.play': "Отелло",
+  'challenge.59.character': "Яго",
+  'challenge.59.translator': "Пётр Вейнберг",
+  'challenge.64.full': "Ограбленный, смеясь своей потере,",
+  'challenge.64.display': "Ограбленный, ___ своей ___,",
+  'challenge.64.missing': "смеясь|потере",
+  'challenge.64.play': "Отелло",
+  'challenge.64.character': "Duke of Venice",
+  'challenge.64.translator': "Пётр Вейнберг",
+  'challenge.80.full': "Задуть свечу, а там… Задуть свечу?",
+  'challenge.80.display': "Задуть ___, а там… Задуть ___?",
+  'challenge.80.missing': "свечу|свечу",
+  'challenge.80.play': "Отелло",
+  'challenge.80.character': "Отелло",
+  'challenge.80.translator': "Пётр Вейнберг",
 };
 
 export default messages;

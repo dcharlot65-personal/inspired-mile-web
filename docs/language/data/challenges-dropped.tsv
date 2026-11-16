@@ -232,7 +232,6 @@ it	3	The Tempest	We are such stuff as dreams are made on.
 it	7	Macbeth	Double, double toil and trouble; fire burn and cauldron bubble.
 it	9	Richard III	Now is the winter of our discontent.
 it	10	As You Like It	All the world's a stage, and all the men and women merely players.
-it	11	Macbeth	Out, damned spot! Out, I say!
 it	12	Romeo and Juliet	A plague on both your houses!
 it	13	Twelfth Night	If music be the food of love, play on.
 it	14	Hamlet	The lady doth protest too much, methinks.
@@ -246,13 +245,10 @@ it	24	Henry IV, Part 2	Uneasy lies the head that wears a crown.
 it	25	Henry IV, Part 1	The better part of valour is discretion.
 it	26	King Lear	How sharper than a serpent's tooth it is to have a thankless child.
 it	27	Hamlet	This above all: to thine own self be true.
-it	28	Macbeth	By the pricking of my thumbs, something wicked this way comes.
 it	30	A Midsummer Night's Dream	Though she be but little, she is fierce.
 it	32	The Tempest	Hell is empty and all the devils are here.
 it	33	The Merchant of Venice	The quality of mercy is not strained; it droppeth as the gentle rain from heaven.
-it	37	Othello	I am not what I am.
 it	38	Othello	O, beware, my lord, of jealousy! It is the green-eyed monster which doth mock the meat it feeds on.
-it	39	Macbeth	Tomorrow, and tomorrow, and tomorrow, creeps in this petty pace from day to day.
 it	40	Macbeth	Life's but a walking shadow, a poor player that struts and frets his hour upon the stage.
 it	41	Twelfth Night	Be not afraid of greatness. Some are born great, some achieve greatness, and others have greatness thrust upon them.
 it	44	Richard III	Off with his head!
@@ -265,11 +261,9 @@ it	54	Hamlet	Sweets to the sweet.
 it	55	The Merchant of Venice	If you prick us, do we not bleed?
 it	56	Richard III	My kingdom for a horse!
 it	58	King Lear	When we are born, we cry that we are come to this great stage of fools.
-it	59	Othello	I will wear my heart upon my sleeve for daws to peck at.
 it	60	Henry V	We few, we happy few, we band of brothers.
 it	61	King Lear	I am a man more sinned against than sinning.
 it	62	As You Like It	Who ever loved that loved not at first sight?
-it	64	Othello	The robbed that smiles steals something from the thief.
 it	65	Richard II	I wasted time, and now doth time waste me.
 it	66	Much Ado About Nothing	Sigh no more, ladies, sigh no more, men were deceivers ever.
 it	67	As You Like It	I pray you, do not fall in love with me, for I am falser than vows made in wine.
@@ -282,7 +276,6 @@ it	75	Henry VI, Part 2	The first thing we do, let's kill all the lawyers.
 it	76	Measure for Measure	Some rise by sin, and some by virtue fall.
 it	77	Measure for Measure	Our doubts are traitors, and make us lose the good we oft might win by fearing to attempt.
 it	78	Measure for Measure	They say best men are moulded out of faults.
-it	80	Othello	Put out the light, and then put out the light.
 it	81	Macbeth	It is a tale told by an idiot, full of sound and fury, signifying nothing.
 it	82	Othello	Reputation is an idle and most false imposition; oft got without merit, and lost without deserving.
 it	83	Hamlet	O, what a rogue and peasant slave am I!
@@ -295,7 +288,6 @@ it	90	Antony and Cleopatra	Age cannot wither her, nor custom stale her infinite 
 it	91	The Taming of the Shrew	My tongue will tell the anger of my heart, or else my heart concealing it will break.
 it	92	All's Well That Ends Well	No legacy is so rich as honesty.
 it	93	Richard II	This blessed plot, this earth, this realm, this England.
-it	94	Macbeth	Come what come may, time and the hour runs through the roughest day.
 it	95	Much Ado About Nothing	Speak low, if you speak love.
 it	96	Romeo and Juliet	Thou know'st the mask of night is on my face, else would a maiden blush bepaint my cheek.
 it	97	Othello	For I am nothing if not critical.
@@ -525,7 +517,6 @@ ru	31	Julius Caesar	Cowards die many times before their deaths; the valiant neve
 ru	32	The Tempest	Hell is empty and all the devils are here.
 ru	33	The Merchant of Venice	The quality of mercy is not strained; it droppeth as the gentle rain from heaven.
 ru	36	Julius Caesar	The evil that men do lives after them; the good is oft interred with their bones.
-ru	37	Othello	I am not what I am.
 ru	38	Othello	O, beware, my lord, of jealousy! It is the green-eyed monster which doth mock the meat it feeds on.
 ru	39	Macbeth	Tomorrow, and tomorrow, and tomorrow, creeps in this petty pace from day to day.
 ru	40	Macbeth	Life's but a walking shadow, a poor player that struts and frets his hour upon the stage.
@@ -543,11 +534,9 @@ ru	54	Hamlet	Sweets to the sweet.
 ru	55	The Merchant of Venice	If you prick us, do we not bleed?
 ru	56	Richard III	My kingdom for a horse!
 ru	58	King Lear	When we are born, we cry that we are come to this great stage of fools.
-ru	59	Othello	I will wear my heart upon my sleeve for daws to peck at.
 ru	60	Henry V	We few, we happy few, we band of brothers.
 ru	61	King Lear	I am a man more sinned against than sinning.
 ru	62	As You Like It	Who ever loved that loved not at first sight?
-ru	64	Othello	The robbed that smiles steals something from the thief.
 ru	65	Richard II	I wasted time, and now doth time waste me.
 ru	66	Much Ado About Nothing	Sigh no more, ladies, sigh no more, men were deceivers ever.
 ru	67	As You Like It	I pray you, do not fall in love with me, for I am falser than vows made in wine.
@@ -562,7 +551,6 @@ ru	75	Henry VI, Part 2	The first thing we do, let's kill all the lawyers.
 ru	76	Measure for Measure	Some rise by sin, and some by virtue fall.
 ru	77	Measure for Measure	Our doubts are traitors, and make us lose the good we oft might win by fearing to attempt.
 ru	78	Measure for Measure	They say best men are moulded out of faults.
-ru	80	Othello	Put out the light, and then put out the light.
 ru	81	Macbeth	It is a tale told by an idiot, full of sound and fury, signifying nothing.
 ru	82	Othello	Reputation is an idle and most false imposition; oft got without merit, and lost without deserving.
 ru	85	King Lear	As flies to wanton boys are we to the gods; they kill us for their sport.
