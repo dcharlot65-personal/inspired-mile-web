@@ -11,11 +11,14 @@
 //
 // The meaning check flags a string when both the back-translation (MADLAD-400, scored with
 // MiniLM against the English) and LaBSE (the translation against the English directly) score
-// it under 0.6: the rule of branch lang/qa-pipeline (scripts/lang/meaning.mjs). A flag is a
+// it under 0.6, the rule of branch lang/qa-pipeline (scripts/lang/meaning.mjs); and, since that
+// rule let one wrong pairing in eight through, also when LaBSE finds another of the page areas'
+// English strings nearer to the translation than its own (bitext.py --rank). A flag is a
 // question, not a verdict. Each flagged string that was read is recorded, with its exact
 // text and what was decided, in docs/language/pages-rest-meaning.json; a record whose text no
 // longer matches the string is void. --strict exits 1 when a flagged string has no valid
-// record, so a changed string is read again.
+// record, when a string was back-translated, spelt or parsed as it no longer stands (or never),
+// or when the ranking was not run, so a changed string is checked and read again.
 //
 // It decides nothing; docs/language/pages-rest.md says what was read and what was changed.
 import { existsSync, readFileSync } from 'node:fs';
@@ -42,11 +45,15 @@ const median = (xs) => {
   const s = [...xs].sort((a, b) => a - b);
   return s.length ? s[Math.floor(s.length / 2)] : NaN;
 };
-const flagged = (p) => typeof p.cos === 'number' && typeof p.xcos === 'number' && p.cos < T && p.xcos < T;
+const byPair = (p) => typeof p.cos === 'number' && typeof p.xcos === 'number' && p.cos < T && p.xcos < T;
+const byRank = (p) => typeof p.xrank === 'number' && p.xrank > 1;
+const flagged = (p) => byPair(p) || byRank(p);
+/** The same two rules, for the row's control: its translation against the wrong English. */
+const controlFlagged = (p) => (typeof p.controlCos === 'number' && typeof p.controlX === 'number' && p.controlCos < T && p.controlX < T) || (typeof p.controlRank === 'number' && p.controlRank > 1);
 const record = (p) => reviewed.find((r) => r.lang === p.lang && r.id === p.id && r.text === p.text);
 
-console.log('| | Hunspell: words rejected | LanguageTool: matches | back-translated | median cos (right English) | median cos (wrong English) | right > wrong | median LaBSE (right) | median LaBSE (wrong) | flagged (both < 0.6) | flagged, read |');
-console.log('|---|---|---|---|---|---|---|---|---|---|---|');
+console.log('| | Hunspell: words rejected | LanguageTool: matches | back-translated | median cos (right English) | median cos (wrong English) | right > wrong | median LaBSE (right) | median LaBSE (wrong) | flagged: both < 0.6 | flagged: another English nearer | flagged, read | control: wrong English flagged |');
+console.log('|---|---|---|---|---|---|---|---|---|---|---|---|---|');
 let open = 0;
 for (const l of LOCALES) {
   const s = spell?.languages?.[l];
@@ -63,9 +70,11 @@ for (const l of LOCALES) {
   const flags = rows.filter(flagged);
   const read_ = flags.filter(record).length;
   open += flags.length - read_;
+  const ranked = rows.filter((p) => typeof p.xrank === 'number');
+  const control = xc.filter((p) => typeof p.controlRank === 'number');
   const b = rows.length
-    ? `${rows.length} | ${median(rows.map((p) => p.cos)).toFixed(2)} | ${median(controlled.map((p) => p.controlCos)).toFixed(2)} | ${better} of ${controlled.length} | ${x.length ? median(x.map((p) => p.xcos)).toFixed(2) : 'not run'} | ${xc.length ? median(xc.map((p) => p.controlX)).toFixed(2) : ''} | ${x.length ? flags.length : ''} | ${x.length ? read_ : ''}`
-    : 'not run | | | | | | |';
+    ? `${rows.length} | ${median(rows.map((p) => p.cos)).toFixed(2)} | ${median(controlled.map((p) => p.controlCos)).toFixed(2)} | ${better} of ${controlled.length} | ${x.length ? median(x.map((p) => p.xcos)).toFixed(2) : 'not run'} | ${xc.length ? median(xc.map((p) => p.controlX)).toFixed(2) : ''} | ${x.length ? rows.filter(byPair).length : ''} | ${ranked.length ? rows.filter(byRank).length : 'not run'} | ${x.length ? `${read_} of ${flags.length}` : ''} | ${control.length ? `${control.filter(controlFlagged).length} of ${control.length}` : ''}`
+    : 'not run | | | | | | | | |';
   console.log(`| ${l} | ${sp} | ${gr} | ${b} |`);
 }
 
@@ -80,14 +89,15 @@ if (grammar) {
 }
 
 if (bt) {
-  console.log('\n## Flagged by the meaning check (back-translation and LaBSE both under 0.6)\n');
+  console.log('\n## Flagged by the meaning check (back-translation and LaBSE both under 0.6, or another English nearer)\n');
   for (const l of LOCALES) {
     const rows = bt.filter((p) => p.lang === l && flagged(p)).sort((a, b) => a.xcos - b.xcos);
     if (!rows.length) continue;
     console.log(`### ${l}`);
     for (const p of rows) {
       const r = record(p);
-      console.log(`- ${p.id} cos ${p.cos.toFixed(2)} LaBSE ${p.xcos.toFixed(2)}${r ? ` READ: ${r.verdict}${r.note ? ` (${r.note})` : ''}` : ' NOT READ'}\n  text: ${p.text}\n  back: ${p.back}\n  en:   ${p.english}`);
+      const nearer = byRank(p) ? ` rank ${p.xrank}, nearest: "${p.xbest}" (${p.xbestCos.toFixed(2)})` : '';
+      console.log(`- ${p.id} cos ${p.cos.toFixed(2)} LaBSE ${p.xcos.toFixed(2)}${nearer}${r ? ` READ: ${r.verdict}${r.note ? ` (${r.note})` : ''}` : ' NOT READ'}\n  text: ${p.text}\n  back: ${p.back}\n  en:   ${p.english}`);
     }
   }
   if (low) {
@@ -116,8 +126,35 @@ if (strict && bt) {
       else if (was !== item.text) stale.push(`${l} ${id}: changed since it was scored ("${was}" -> "${item.text}")`);
     }
   }
+  // The ranking needs the whole set: a row without it has not been placed among the others.
+  const unranked = bt.filter((p) => typeof p.xrank !== 'number').map((p) => `${p.lang} ${p.id}`);
+  if (unranked.length) stale.push(`${unranked.length} row(s) of bt.json have no rank (${unranked.slice(0, 5).join(', ')}…): run lang-host.sh rank on the merged bt.json`);
+  // Spelling and grammar must have been run on the same text.
+  const unchecked = [];
+  for (const [tool, data] of [['spell', spell], ['grammar', grammar]]) {
+    if (!data) {
+      unchecked.push(`${tool}.json is missing`);
+      continue;
+    }
+    for (const [l, items] of Object.entries(now)) {
+      const g = data.languages?.[l];
+      if (!g) unchecked.push(`${tool} ${l}: not run`);
+      if (!g?.checked) continue;
+      if (!g.texts) {
+        unchecked.push(`${tool} ${l}: the run did not record the texts it checked`);
+        continue;
+      }
+      for (const [id, item] of Object.entries(items)) {
+        const was = g.texts[id];
+        if (was === undefined) unchecked.push(`${tool} ${l} ${id}: never checked`);
+        else if (was !== item.text) unchecked.push(`${tool} ${l} ${id}: changed since it was checked ("${was}" -> "${item.text}")`);
+      }
+    }
+  }
   for (const s of stale) console.error(`STALE ${s}`);
-  if (stale.length) console.error(`${stale.length} string(s) not scored as they stand: back-translate them (scripts/pages-rest/lang-host.sh bt-pairs) and merge the rows`);
+  for (const s of unchecked) console.error(`UNCHECKED ${s}`);
+  if (stale.length) console.error(`${stale.length} problem(s) with the back-translations: back-translate changed strings (scripts/pages-rest/lang-host.sh bt-pairs), merge the rows, and rank the whole set (lang-host.sh rank)`);
+  if (unchecked.length) console.error(`${unchecked.length} string(s) not spelt or parsed as they stand: run lang-host.sh spell and grammar again`);
   if (open) console.error(`${open} flagged string(s) have no record in docs/language/pages-rest-meaning.json (or their text changed since)`);
-  process.exit(open || stale.length ? 1 : 0);
+  process.exit(open || stale.length || unchecked.length ? 1 : 0);
 }

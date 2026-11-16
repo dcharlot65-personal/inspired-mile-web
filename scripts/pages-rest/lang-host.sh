@@ -10,6 +10,7 @@
 #   bt-status    is it running, and the tail of its log          -> $OUT/bt.json when done
 #   bitext       add LaBSE's score of each translation against its English to $OUT/bt.json
 #   bt-pairs F O back-translate and score only the strings in F ([{id, lang, text, english}]) -> O
+#   rank F       place each translation in F (a whole bt.json) among all the English strings (LaBSE)
 #
 # The tools are the ones branch lang/qa-pipeline installed on the host
 # ($LANGQA_HOME: Hunspell with its dictionaries, LanguageTool, MADLAD-400, a Python
@@ -73,9 +74,11 @@ case "$STEP" in
     # A few strings (after a fix), in the foreground: the full set is bt-start's job.
     "$MEMGUARD" --max-gb 14 -- "$LANGQA_HOME/venv/bin/python" scripts/pages-rest/backtranslate.py --pairs "$2" --out "$3" ${BT_ARGS:-}
     "$MEMGUARD" --max-gb 8 -- "$LANGQA_HOME/venv/bin/python" scripts/pages-rest/bitext.py --bt "$3" ;;
+  rank)
+    "$MEMGUARD" --max-gb 8 -- "$LANGQA_HOME/venv/bin/python" scripts/pages-rest/bitext.py --bt "$2" --rank ;;
   bt-status)
     pgrep -fl "scripts/pages-rest/backtranslate.py --pairs pairs.json" || echo "not running"
     tail -20 "$MINE/logs/bt.log" 2>/dev/null || true
     ls -la "$OUT" ;;
-  *) sed -n 2,14p "$0"; exit 2 ;;
+  *) sed -n 2,15p "$0"; exit 2 ;;
 esac

@@ -137,6 +137,9 @@ export async function extract() {
   return out;
 }
 
+/** The text of every string a tool was asked about, by key. */
+const textsOf = (strings, locale) => Object.fromEntries(Object.entries(strings.locales[locale]).map(([key, item]) => [key, item.text]));
+
 // --- Spelling ---------------------------------------------------------------
 
 /** Words the game or the web brings with it, the same in every language; not a spelling matter. */
@@ -185,7 +188,15 @@ export function spell(strings) {
     const again = [...rejected].map((w) => [w, w.toLocaleLowerCase(locale)]).filter(([w, low]) => low !== w);
     const stillBad = hspell(dict, again.map(([, low]) => low));
     rejected = new Set([...rejected].filter((w) => { const low = w.toLocaleLowerCase(locale); return low === w || stillBad.has(low); }));
-    out.languages[locale] = { checked: true, dictionary: dict, words: words.length, rejected: Object.fromEntries([...rejected].sort().map((w) => [w, [...new Set(where.get(w))].slice(0, 4)])) };
+    out.languages[locale] = {
+      checked: true,
+      dictionary: dict,
+      words: words.length,
+      rejected: Object.fromEntries([...rejected].sort().map((w) => [w, [...new Set(where.get(w))].slice(0, 4)])),
+      // What was asked, string by string, so that summarise.mjs --strict can tell a result for
+      // the strings as they stand from one for strings changed since.
+      texts: textsOf(strings, locale),
+    };
   }
   return out;
 }
@@ -242,7 +253,7 @@ export async function grammar(strings) {
       if (item.filled.some((f) => f.includes(word) && word.trim()) || KNOWN.has(word)) continue;
       hits.push({ key, rule: m.rule.id, category: m.rule.category.id, message: m.message, text: item.text, at: word, suggestions: m.replacements.slice(0, 3).map((r) => r.value) });
     }
-    out.languages[locale] = { checked: true, code, strings: items.length, hits };
+    out.languages[locale] = { checked: true, code, strings: items.length, hits, texts: textsOf(strings, locale) };
     console.error(`${locale}: ${items.length} strings, ${hits.length} hits`);
   }
   return out;
