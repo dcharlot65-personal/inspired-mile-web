@@ -54,10 +54,12 @@ for the game in English. They can only ever be translated, never sourced.
 | Other published quotations | the Wikisource of each language, listed below per work | public domain, per work below | 2026-11-16 |
 | Stop words (words that never count as an echo) | stopwords-iso, commit 6e8e9a2 (`docs/language/sources/stopwords-iso.json`) | MIT, © 2020 Gene Diaz | 2026-11-16 |
 
-Translators' life dates and the years of the editions in the tables below were written from general reference knowledge, not fetched
-from a source in this run. They decide the copyright status, so check them before relying on it. The
+Translators' dates of birth and death are Wikidata's (properties P569 and P570, fetched 2026-11-16,
+`docs/language/sources/translators.json`); they decide the copyright status. The years of the editions were
+written from general reference knowledge and were not fetched: check them before relying on them. The
 United States test used is "published before 1931"; the home-country test is the author's life plus
-70 years.
+70 years. Every translator used died before 1926, so both tests are met with a wide margin whichever
+edition a transcription follows.
 
 ## How the game uses this
 
@@ -174,7 +176,7 @@ the lines used, each with the permanent link of the revision it was read from.
 | ru | rj | Дмитрий Михаловский (1828–1905) | «Ромео и Джульетта», 1888 (ru.wikisource.org transcription, modern orthography) | Public domain: Russia (life + 70 years; translator died 1905) and United States (published before 1931) |
 | ru | hamlet | Пётр Гнедич (1855–1925) | «Гамлет, принц датский», издание 1917 года (первое 1892) (ru.wikisource.org transcription, modern orthography) | Public domain: Russia (life + 70 years; translator died 1925) and United States (published before 1931) |
 | ru | jc | Павел Козлов (1841–1891) | «Юлий Цезарь», 1880 (ru.wikisource.org transcription, modern orthography) | Public domain: Russia (life + 70 years; translator died 1891) and United States (published before 1931) |
-| ru | othello | Пётр Вейнберг (1831–1908) | «Отелло, венецианский мавр», 1864 (ru.wikisource.org transcription, modern orthography) | Public domain: Russia (life + 70 years; translator died 1908) and United States (published before 1931) |
+| ru | othello | Пётр Вейнберг (1830–1908) | «Отелло, венецианский мавр», 1864 (ru.wikisource.org transcription, modern orthography) | Public domain: Russia (life + 70 years; translator died 1908) and United States (published before 1931) |
 | ru | tempest | Николай Сатин (1814–1873) | «Буря», 1840 (ru.wikisource.org transcription, modern orthography) | Public domain: Russia (life + 70 years; translator died 1873) and United States (published before 1931) |
 | ru | sonnet18 | Николай Гербель (1827–1883) | «Полное собрание сонетов Шекспира», 1880 (ru.wikisource.org transcription, modern orthography) | Public domain: Russia (life + 70 years; translator died 1883) and United States (published before 1931) |
 
@@ -1315,7 +1317,7 @@ English line: "Not poppy, nor mandragora, nor all the drowsy syrups of the world
 | it | Radice di mandragora | translated: the game's own name, translated for the game | Né il papavero, né la mandragora, né tutti gli sciroppi soporiferi del mondo. | NEW, unsourced: translated for the game, not reviewed |
 | pt | Raiz de mandrágora | translated: the game's own name, translated for the game | Nem a papoila, nem a mandrágora, nem todos os xaropes sonolentos do mundo. | NEW, unsourced: translated for the game, not reviewed |
 | pl | Korzeń mandragory | translated: the game's own name, translated for the game | Ani mak, ani mandragora, ani wszystkie usypiające syropy świata. | NEW, unsourced: translated for the game, not reviewed |
-| ru | Корень мандрагоры | translated: the game's own name, translated for the game | Ни мак, ни мандрагора, / Ни зелья все, какие есть на свете | published: Пётр Вейнберг (1831–1908), «Отелло, венецианский мавр», 1864 (ru.wikisource.org transcription, modern orthography); Public domain: Russia (life + 70 years; translator died 1908) and United States (published before 1931); [source](https://ru.wikisource.org/wiki/%D0%9E%D1%82%D0%B5%D0%BB%D0%BB%D0%BE%2C_%D0%B2%D0%B5%D0%BD%D0%B5%D1%86%D0%B8%D0%B0%D0%BD%D1%81%D0%BA%D0%B8%D0%B9_%D0%BC%D0%B0%D0%B2%D1%80_%28%D0%A8%D0%B5%D0%BA%D1%81%D0%BF%D0%B8%D1%80%3B_%D0%92%D0%B5%D0%B9%D0%BD%D0%B1%D0%B5%D1%80%D0%B3%29?oldid=5658637) |
+| ru | Корень мандрагоры | translated: the game's own name, translated for the game | Ни мак, ни мандрагора, / Ни зелья все, какие есть на свете | published: Пётр Вейнберг (1830–1908), «Отелло, венецианский мавр», 1864 (ru.wikisource.org transcription, modern orthography); Public domain: Russia (life + 70 years; translator died 1908) and United States (published before 1931); [source](https://ru.wikisource.org/wiki/%D0%9E%D1%82%D0%B5%D0%BB%D0%BB%D0%BE%2C_%D0%B2%D0%B5%D0%BD%D0%B5%D1%86%D0%B8%D0%B0%D0%BD%D1%81%D0%BA%D0%B8%D0%B9_%D0%BC%D0%B0%D0%B2%D1%80_%28%D0%A8%D0%B5%D0%BA%D1%81%D0%BF%D0%B8%D1%80%3B_%D0%92%D0%B5%D0%B9%D0%BD%D0%B1%D0%B5%D1%80%D0%B3%29?oldid=5658637) |
 | ar | جذر اليبروح | translated: the game's own name, translated for the game | لا الخشخاش ولا اليبروح ولا كل أشربة النعاس في العالم. | NEW, unsourced: translated for the game, not reviewed |
 | hi | मैंड्रेक की जड़ | translated: the game's own name, translated for the game | न अफ़ीम, न मैंड्रेक, न दुनिया के सारे नींद लाने वाले शरबत। | NEW, unsourced: translated for the game, not reviewed |
 | zh | 曼德拉草根 | translated: the game's own name, translated for the game | 无论罂粟、曼陀罗，还是世上一切催眠的药水。 | NEW, unsourced: translated for the game, not reviewed |

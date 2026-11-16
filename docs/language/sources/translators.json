@@ -1,0 +1,61 @@
+{
+ "fetched": "2026-11-16",
+ "source": "Wikidata wbgetentities, P569 date of birth and P570 date of death",
+ "licence": "CC0 1.0",
+ "translators": {
+  "Q3083678": {
+   "title": "François-Victor Hugo",
+   "label": "François-Victor Hugo",
+   "born": "1828-10-21",
+   "died": "1873-12-26"
+  },
+  "Q57281": {
+   "title": "August Wilhelm Schlegel",
+   "label": "August Wilhelm von Schlegel",
+   "born": "1767-09-08",
+   "died": "1845-05-12"
+  },
+  "Q15720347": {
+   "title": "Михаловский, Дмитрий Лаврентьевич",
+   "label": "Dmitry Mikhalovsky",
+   "born": "1828-01-28",
+   "died": "1905-02-09"
+  },
+  "Q4140637": {
+   "title": "Гнедич, Пётр Петрович",
+   "label": "Pyotr Gnedich",
+   "born": "1855-10-18",
+   "died": "1925-07-16"
+  },
+  "Q4226775": {
+   "title": "Козлов, Павел Алексеевич",
+   "label": "Pavel Kozlov",
+   "born": "1841-03-23",
+   "died": "1891-03-15"
+  },
+  "Q4106006": {
+   "title": "Вейнберг, Пётр Исаевич",
+   "label": "Pyotr Weinberg",
+   "born": "1830-00-00",
+   "died": "1908-07-03"
+  },
+  "Q4408990": {
+   "title": "Сатин, Николай Михайлович",
+   "label": "N. M. Satin",
+   "born": "1814-12-06",
+   "died": "1873-04-29"
+  },
+  "Q4136971": {
+   "title": "Гербель, Николай Васильевич",
+   "label": "Nikolaj Gerbel",
+   "born": "1827-11-26",
+   "died": "1883-03-08"
+  },
+  "Q11754423": {
+   "title": "Leon Ulrich",
+   "label": "Leon Ulrich",
+   "born": "1811-04-23",
+   "died": "1885-09-13"
+  }
+ }
+}

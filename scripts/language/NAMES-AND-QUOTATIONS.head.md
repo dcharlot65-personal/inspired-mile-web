@@ -54,10 +54,12 @@ for the game in English. They can only ever be translated, never sourced.
 | Other published quotations | the Wikisource of each language, listed below per work | public domain, per work below | 2026-11-16 |
 | Stop words (words that never count as an echo) | stopwords-iso, commit 6e8e9a2 (`docs/language/sources/stopwords-iso.json`) | MIT, © 2020 Gene Diaz | 2026-11-16 |
 
-Translators' life dates and the years of the editions in the tables below were written from general reference knowledge, not fetched
-from a source in this run. They decide the copyright status, so check them before relying on it. The
+Translators' dates of birth and death are Wikidata's (properties P569 and P570, fetched 2026-11-16,
+`docs/language/sources/translators.json`); they decide the copyright status. The years of the editions were
+written from general reference knowledge and were not fetched: check them before relying on them. The
 United States test used is "published before 1931"; the home-country test is the author's life plus
-70 years.
+70 years. Every translator used died before 1926, so both tests are met with a wide margin whichever
+edition a transcription follows.
 
 ## How the game uses this
 
