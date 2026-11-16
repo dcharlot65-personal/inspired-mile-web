@@ -26,7 +26,13 @@ ap.add_argument('--out', required=True)
 ap.add_argument('--model', default=os.environ.get('MADLAD_DIR', ''))
 ap.add_argument('--embedder', default=os.environ.get('MINILM_DIR', ''))
 ap.add_argument('--threads', type=int, default=int(os.environ.get('BT_THREADS', '6')))
-ap.add_argument('--batch', type=int, default=16)
+ap.add_argument('--batch', type=int, default=int(os.environ.get('BT_BATCH', '16')))
+# 'cpu', or 'mps' (Apple's GPU; CTranslate2 calls its MPS backend experimental). On the shared build
+# host the CPU is often saturated and the GPU idle: 16 strings took 795 s on the CPU at load 200.
+ap.add_argument('--device', default=os.environ.get('BT_DEVICE', 'cpu'))
+ap.add_argument('--compute', default=os.environ.get('BT_COMPUTE', ''))
+ap.add_argument('--beam', type=int, default=int(os.environ.get('BT_BEAM', '4')))
+ap.add_argument('--limit', type=int, default=int(os.environ.get('BT_LIMIT', '0')), help='translate only the first N pairs (a timing probe)')
 args = ap.parse_args()
 
 import ctranslate2
@@ -34,10 +40,14 @@ from transformers import AutoTokenizer
 from sentence_transformers import SentenceTransformer
 
 tok = AutoTokenizer.from_pretrained(args.model)
-translator = ctranslate2.Translator(args.model, device='cpu', compute_type='int8', inter_threads=1, intra_threads=args.threads)
+compute = args.compute or ('int8' if args.device == 'cpu' else 'auto')
+translator = ctranslate2.Translator(args.model, device=args.device, compute_type=compute, inter_threads=1, intra_threads=args.threads)
+print(f'device {args.device}, compute {compute}, beam {args.beam}, batch {args.batch}', file=sys.stderr, flush=True)
 embedder = SentenceTransformer(args.embedder, device='cpu')
 
 pairs = json.load(open(args.pairs, encoding='utf8'))
+if args.limit:
+    pairs = pairs[:args.limit]
 done = {}
 if os.path.exists(args.out):
     try:
@@ -62,7 +72,7 @@ fresh = {}
 for i in range(0, len(todo), args.batch):
     chunk = todo[i:i + args.batch]
     src = [tok.convert_ids_to_tokens(tok.encode('<2en> ' + p['text'])) for p in chunk]
-    res = translator.translate_batch(src, beam_size=4, max_decoding_length=256, repetition_penalty=1.1)
+    res = translator.translate_batch(src, beam_size=args.beam, max_decoding_length=256, repetition_penalty=1.1)
     for p, r in zip(chunk, res):
         fresh[(p['id'], p['lang'], p['text'])] = tok.decode(tok.convert_tokens_to_ids(r.hypotheses[0]), skip_special_tokens=True).strip()
     if (i // args.batch) % 10 == 0:
