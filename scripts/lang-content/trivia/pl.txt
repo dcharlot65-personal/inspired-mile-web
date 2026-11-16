@@ -15,7 +15,7 @@
 12 | Który słynny szkocki król jest bohaterem tragedii Szekspira? | = | = | = | =
 13 | W której sztuce jest magiczna wyspa? | = | = | = | =
 14 | Do którego rodu należy Romeo? | Montekich | Kapuletów | Escalusa | Laurentego
-15 | W której sztuce występuje Puck? | = | = | = | =
+15 | W której sztuce występuje Puk? | = | = | = | =
 16 | Kto jest czarodziejskim sługą Prospera w Burzy? | = | = | = | =
 17 | Z której sztuki pochodzi „Double, double toil and trouble”? | = | = | = | =
 18 | Ile sonetów napisał Szekspir? | 154 | 100 | 200 | 52

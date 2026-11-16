@@ -354,3 +354,7 @@ l.arden	ja	アーデンの森	Wikidata has no label in this language; the name i
 l.arden	ko	아든 숲	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
 l.arden	ar	غابة أردن	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
 c.rosalind	ko	로절린드	Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv)
+l.elsinore	zh	厄尔锡诺	the play's name for it, from the cast list of Zhu Shenghao's translation on zh.wikisource (names-evidence.tsv); Wikidata's label (赫尔辛格) is the modern town
+c.puck	pl	Puk	Wikidata has no Polish label; the pl.wikipedia article on the play names him so (names-evidence.tsv), as the Polish translations do
+c.bottom	pl	Spodek	Wikidata has no Polish label; the pl.wikipedia article on the play names him so (names-evidence.tsv)
+c.titania	pl	Tytania	Wikidata has no Polish label; the pl.wikipedia article on the play names her so, with the English beside it (names-evidence.tsv)

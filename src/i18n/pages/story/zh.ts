@@ -27,7 +27,7 @@ const messages: Record<string, string> = {
   'story.enc.1-4.desc': "在埃斯卡勒斯亲王面前证明你的价值。",
   'story.enc.1-4.narrative': "埃斯卡勒斯亲王召你进宫。“这些街上已经死了太多人。让我看看你使的是言辞而不是刀剑，我就准你通行。”",
   'story.act.2.label': "第二幕",
-  'story.act.2.name': "厄耳锡诺的厅堂",
+  'story.act.2.name': "厄尔锡诺的厅堂",
   'story.act.2.desc': "丹麦国里恐怕有些不可告人的坏事。解开宫廷里的黑暗秘密。",
   'story.enc.2-1.name': "鬼魂的警告",
   'story.enc.2-1.desc': "破解鬼魂那晦涩的诗句。",

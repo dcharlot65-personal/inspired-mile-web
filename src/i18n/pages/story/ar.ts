@@ -27,7 +27,7 @@ const messages: Record<string, string> = {
   'story.enc.1-4.desc': "أثبت جدارتك أمام الأمير Escalus.",
   'story.enc.1-4.narrative': "يستدعيك الأمير Escalus إلى القصر. «مات كثيرون في هذه الشوارع. أرني أنك تشهر الكلمات لا السيوف، وسأمنحك حق العبور».",
   'story.act.2.label': "الفصل الثاني",
-  'story.act.2.name': "قاعات إلسينور",
+  'story.act.2.name': "قاعات هيليسينكور",
   'story.act.2.desc': "ثمة شيء عفن في مملكة الدنمارك. اكشف أسرار البلاط المظلمة.",
   'story.enc.2-1.name': "تحذير الشبح",
   'story.enc.2-1.desc': "فكّ رموز أبيات الشبح الغامضة.",

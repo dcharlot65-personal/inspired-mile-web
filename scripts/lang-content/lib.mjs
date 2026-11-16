@@ -52,7 +52,7 @@ export function sourcesOf(key, lang) {
   const e = entities[key];
   const out = [];
   const add = (v, where) => v && out.push({ value: v, where });
-  for (const [k, l, name, url, , how] of nameEvidence) if (k === key && l === lang) add(name, `${lang}.wikipedia, ${decodeURIComponent(url.match(/title=([^&]+)/)?.[1] ?? '').replace(/_/g, ' ')} (oldid ${url.match(/oldid=(\d+)/)?.[1]}; ${how})`);
+  for (const [k, l, name, url, , how] of nameEvidence) if (k === key && l === lang) add(name, `${url.match(/^https:\/\/([a-z]+\.wiki[a-z]+)\.org/)?.[1] ?? 'the web'}, ${decodeURIComponent(url.match(/title=([^&]+)/)?.[1] ?? '').replace(/_/g, ' ')} (oldid ${url.match(/oldid=(\d+)/)?.[1]}; ${how})`);
   for (const code of lang === 'zh' ? ['zh-hans', 'zh-cn', 'zh', 'zh-hant'] : lang === 'pt' ? ['pt', 'pt-br'] : [lang]) {
     add(e.labels[code], `label (${code})`);
     for (const a of e.aliases?.[code] ?? []) add(a, `alias (${code})`);

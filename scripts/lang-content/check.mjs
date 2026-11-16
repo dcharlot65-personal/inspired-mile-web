@@ -40,7 +40,7 @@ for (const lang of langs.length ? langs : LANGS) {
       rest = rest.replace(re, ' ');
       // Every entity the game calls by this name: the play and its hero, the two Portias.
       // The table's name, and any form of it a Wikipedia article was read to use (names-evidence.tsv): an inflected one counts.
-      want.set(name, names.filter((x) => x.n === name).flatMap((x) => [nameOf(x.key, lang, x.which).name, ...sourcesOf(x.key, lang).filter((s) => s.where.includes('wikipedia')).map((s) => s.value)]));
+      want.set(name, names.filter((x) => x.n === name).flatMap((x) => [nameOf(x.key, lang, x.which).name, ...sourcesOf(x.key, lang).filter((s) => /wiki(pedia|source)/.test(s.where)).map((s) => s.value)]));
     }
     for (const [name, cands] of want) {
       const low = text.toLocaleLowerCase(lang);

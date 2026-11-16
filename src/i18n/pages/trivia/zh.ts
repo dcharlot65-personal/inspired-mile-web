@@ -12,7 +12,7 @@ const messages: Record<string, string> = {
   'trivia.1.o2': "哈姆雷特",
   'trivia.1.o3': "奥赛罗",
   'trivia.2.q': "哈姆雷特的城堡叫什么名字？",
-  'trivia.2.o0': "赫尔辛格",
+  'trivia.2.o0': "厄尔锡诺",
   'trivia.2.o1': "卡美洛",
   'trivia.2.o2': "Dunsinane",
   'trivia.2.o3': "因弗内斯",

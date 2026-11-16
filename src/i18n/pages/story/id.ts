@@ -27,7 +27,7 @@ const messages: Record<string, string> = {
   'story.enc.1-4.desc': "Buktikan kelayakanmu di hadapan Pangeran Escalus.",
   'story.enc.1-4.narrative': "Pangeran Escalus memanggilmu ke istana. \"Terlalu banyak yang mati di jalanan ini. Tunjukkan bahwa kau menghunus kata, bukan pedang, dan akan kuizinkan kau lewat.\"",
   'story.act.2.label': "Babak II",
-  'story.act.2.name': "Balairung Elsinore",
+  'story.act.2.name': "Balairung Helsingør",
   'story.act.2.desc': "Ada yang busuk di negeri Denmark. Uraikan rahasia kelam istana.",
   'story.enc.2-1.name': "Peringatan Sang Hantu",
   'story.enc.2-1.desc': "Pecahkan sajak samar sang hantu.",
