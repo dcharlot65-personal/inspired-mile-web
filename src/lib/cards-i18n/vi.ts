@@ -321,7 +321,7 @@ const pack: CardTextPack = {
   "PT-006": {
    "name": "Cồn thuốc độc cần",
    "nameSource": "translated",
-   "quote": "Vào giờ ta yên giấc, chú của con lẻn tới, mang theo một lọ nhựa hebona đáng nguyền rủa.",
+   "quote": "Vào giờ ta yên giấc, chú của con lẻn tới, mang theo nhựa hebona đáng nguyền rủa trong một chiếc lọ.",
    "quoteSource": "new",
    "scene": "Một lọ thủy tinh đen rỉ ra làn hơi xanh lục trong hành lang tối. Thứ cồn thuốc bên trong đã lật đổ các vị vua và làm tan nát các triều đại, từng giọt lặng lẽ một."
   },

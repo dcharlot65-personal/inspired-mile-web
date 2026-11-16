@@ -40,7 +40,7 @@ RL-002	Kini seluruh sihirku telah runtuh.
 PT-001	Jalan cinta sejati tak pernah mulus.
 PT-002	Berlipat, berlipat jerih dan susah.
 VC-001	Jika sekali lagi kalian mengusik jalan-jalan kami, nyawa kalian menjadi tebusan atas rusaknya kedamaian.
-VC-002	Kenikmatan yang menggelora ini berakhir dengan menggelora pula.
+VC-002	Kenikmatan yang ganas ini berakhir secara ganas pula.
 VC-003	Akulah si pekerja kasar yang berpayah-payah demi kesenanganmu.
 TP-001	Kita ini bahan yang darinya mimpi dibuat.
 TP-002	Salam, tuan agung! Tuan yang mulia, salam!

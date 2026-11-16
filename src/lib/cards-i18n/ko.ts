@@ -593,7 +593,7 @@ const pack: CardTextPack = {
   "Vanity": "허영",
   "Honor": "명예",
   "Envy": "질투",
-  "Rhetoric": "수사",
+  "Rhetoric": "수사학",
   "Authority": "권위",
   "Comedy": "희극",
   "Duty": "의무",
@@ -616,7 +616,7 @@ const pack: CardTextPack = {
   "Light": "빛",
   "Love": "사랑",
   "Speed": "속도",
-  "Rebirth": "재생",
+  "Rebirth": "부활",
   "Cunning": "꾀",
   "Petrification": "석화",
   "Glory": "영광"

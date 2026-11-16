@@ -171,6 +171,42 @@
    "old": "البعث",
    "new": "الانبعاث",
    "round": "this round"
+  },
+  {
+   "lang": "id",
+   "id": "VC-002",
+   "field": "quote",
+   "finding": "back-translation (cos 0.39, LaBSE 0.58): \"menggelora\" (surging) loses the \"violent ends\" of the line",
+   "old": "Kenikmatan yang menggelora ini berakhir dengan menggelora pula.",
+   "new": "Kenikmatan yang ganas ini berakhir secara ganas pula.",
+   "round": "this round"
+  },
+  {
+   "lang": "ko",
+   "id": "element:Rebirth",
+   "field": "element",
+   "finding": "back-translation (cos 0.22, LaBSE 0.48) read \"재생\" as \"Play\": in an interface the word is first of all \"playback\"",
+   "old": "재생",
+   "new": "부활",
+   "round": "this round"
+  },
+  {
+   "lang": "ko",
+   "id": "element:Rhetoric",
+   "field": "element",
+   "finding": "back-translation (cos 0.36, LaBSE 0.37) read \"수사\" as \"Investigation\", its commoner sense; the discipline is 수사학",
+   "old": "수사",
+   "new": "수사학",
+   "round": "this round"
+  },
+  {
+   "lang": "vi",
+   "id": "PT-006",
+   "field": "quote",
+   "finding": "back-translation (cos 0.55, LaBSE 0.52) read \"một lọ nhựa hebona\" as \"a plastic jar of hebona\": nhựa is both sap and plastic",
+   "old": "mang theo một lọ nhựa hebona đáng nguyền rủa.",
+   "new": "mang theo nhựa hebona đáng nguyền rủa trong một chiếc lọ.",
+   "round": "this round"
   }
  ]
 }

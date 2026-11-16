@@ -96,7 +96,7 @@ const pack: CardTextPack = {
   },
   "VC-002": {
    "nameSource": "missing",
-   "quote": "Kenikmatan yang menggelora ini berakhir dengan menggelora pula.",
+   "quote": "Kenikmatan yang ganas ini berakhir secara ganas pula.",
    "quoteSource": "new",
    "scene": "Sebuah bilik biara yang diterangi lilin. Sang biarawan merawat kebun herba dan racunnya, kebijaksanaan terukir di wajahnya yang termakan cuaca."
   },

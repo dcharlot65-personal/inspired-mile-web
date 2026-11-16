@@ -74,7 +74,7 @@ RL-008	Ôi cha yêu dấu, con đang lo liệu chính việc của cha.
 RL-009	Cầu trời phù hộ anh, Bottom! Anh đã bị biến hình rồi!
 PT-004	Không phải thuốc phiện, không phải khoai ma, cũng không phải mọi thứ xi-rô ru ngủ trên đời.
 PT-005	Hãy lấy cho ta bông hoa ấy; thứ cỏ ta đã chỉ cho ngươi một lần.
-PT-006	Vào giờ ta yên giấc, chú của con lẻn tới, mang theo một lọ nhựa hebona đáng nguyền rủa.
+PT-006	Vào giờ ta yên giấc, chú của con lẻn tới, mang theo nhựa hebona đáng nguyền rủa trong một chiếc lọ.
 PT-007	Trong vạc hãy sôi và nướng; mắt sa giông và ngón chân ếch.
 PT-008	Năm sải sâu cha ngươi nằm đó; xương người đã hóa thành san hô.
 PT-009	Hãy đổ thứ này vào bất cứ chất lỏng nào anh muốn rồi uống cạn; dù anh có sức mạnh của hai mươi người, nó cũng tiễn anh đi ngay.
