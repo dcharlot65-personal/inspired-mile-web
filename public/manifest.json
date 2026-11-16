@@ -1,29 +1,38 @@
 {
-  "name": "Inspired Mile — Shakespeare Card Game",
-  "short_name": "Inspired Mile",
+  "id": "/",
+  "name": "Sonnet Man: the duel of verses",
+  "short_name": "Sonnet Man",
+  "description": "A Shakespeare rap-battle card game from Inspired Mile. Play your cards, keep the form, and out-write an opponent that runs entirely on your device.",
+  "lang": "en",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
+  "orientation": "any",
   "background_color": "#0d0b09",
-  "theme_color": "#D4A017",
-  "description": "Digital collectible cards powered by AI and augmented reality. Interactive experiences that bring Shakespeare to life.",
+  "theme_color": "#0d0b09",
+  "categories": ["games", "education", "entertainment"],
   "icons": [
     {
       "src": "/icon-192.png",
       "sizes": "192x192",
-      "type": "image/png"
-    },
-    {
-      "src": "/icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
     },
     {
       "src": "/icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
       "purpose": "maskable"
     }
   ],
-  "categories": ["games", "education", "entertainment"],
-  "orientation": "any"
+  "shortcuts": [
+    { "name": "Battle Arena", "url": "/battle" },
+    { "name": "The Theatre", "url": "/theatre" }
+  ]
 }
