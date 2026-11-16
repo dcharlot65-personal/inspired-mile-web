@@ -28,7 +28,7 @@ case "${1:-}" in
     for e in meaning opus; do
       [ -f "$OUT/$e.pid" ] || continue
       # Under set -e a kill or pkill that finds nothing would end the script here, with the STOP file left behind.
-      p=$(cat "$OUT/$e.pid"); for c in $(pgrep -P "$p" 2>/dev/null || true); do pkill -P "$c" 2>/dev/null || true; kill "$c" 2>/dev/null || true; done; kill "$p" 2>/dev/null || true
+      for p in $(cat "$OUT/$e.pid"); do for c in $(pgrep -P "$p" 2>/dev/null || true); do pkill -P "$c" 2>/dev/null || true; kill "$c" 2>/dev/null || true; done; kill "$p" 2>/dev/null || true; done
     done
     sleep 2; rm -f "$OUT/STOP" "$OUT"/*.tmp; echo stopped ;;
   requeue)
@@ -36,7 +36,9 @@ case "${1:-}" in
     # result whose text has not changed), and start both again on the new pairs.
     bash "$0" stop
     for f in "$OUT"/bt-[0-9]-*.json "$OUT"/bto-[0-9]-*.json; do [ -e "$f" ] || continue; b=$(basename "$f"); mv "$f" "$OUT/${b%%-*}-old-${b#*-}"; done
-    bash "$0" detach-meaning; bash "$0" detach-opus ;;
+    # MEANING=0 restarts only OPUS-MT (MADLAD-400 3B needs about 5 s a string on a host this loaded).
+    if [ "${MEANING:-1}" = 1 ]; then bash "$0" detach-meaning; fi
+    bash "$0" detach-opus ;;
   spell)
     ls "$LANGQA_HOME/dict" | tr '\n' ' '; echo
     for f in "$OUT"/text-*.txt; do
@@ -69,12 +71,18 @@ SH
     cat "$OPUS_DIR/MODELS.tsv" ;;
   detach-opus)
     # Installs the models first if they are not there yet (in the same detached job, under the same memguard).
+    # OPUS_WORKERS loops (default 2) share the files, each taking every n-th one; greedy decoding.
     cp "$HERE/bt.py" "$HERE/install-opus.py" "$OUT/"
+    W=${OPUS_WORKERS:-2}
     cat > "$OUT/opus.sh" <<SH
 #!/bin/bash
-if [ ! -s $OPUS_DIR/MODELS.tsv ]; then echo "== installing OPUS-MT \$(date)"; HF_HOME=$TASK/hf-cache nice -n 10 $LANGQA_HOME/venv/bin/python $OUT/install-opus.py $OPUS_DIR || exit 1; cat $OPUS_DIR/MODELS.tsv; fi
-export BT_ENGINE=opus OPUS_DIR=$OPUS_DIR MINILM_DIR=$LANGQA_HOME/models/all-MiniLM-L6-v2 HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 TOKENIZERS_PARALLELISM=false BT_THREADS=4 BT_BEAM=4
+k=\$1
+if [ "\$k" = 0 ] && [ ! -s $OPUS_DIR/MODELS.tsv ]; then echo "== installing OPUS-MT \$(date)"; HF_HOME=$TASK/hf-cache nice -n 10 $LANGQA_HOME/venv/bin/python $OUT/install-opus.py $OPUS_DIR || exit 1; cat $OPUS_DIR/MODELS.tsv; fi
+while [ ! -s $OPUS_DIR/MODELS.tsv ]; do sleep 20; done
+export BT_ENGINE=opus OPUS_DIR=$OPUS_DIR MINILM_DIR=$LANGQA_HOME/models/all-MiniLM-L6-v2 HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 TOKENIZERS_PARALLELISM=false BT_THREADS=4 BT_BEAM=1
+i=0
 for f in $OUT/pairs-*.json; do
+  i=\$((i + 1)); [ \$((i % $W)) = "\$k" ] || continue
   l=\$(basename \$f .json); l=\${l#pairs-}
   [ -s $OUT/bto-\$l.json ] && continue
   [ -f $OUT/STOP ] && { echo "== STOP file found"; exit 0; }
@@ -85,15 +93,19 @@ echo "== DONE \$(date)"
 SH
     chmod +x "$OUT/opus.sh"
     if [ -f "$OUT/opus.pid" ] && kill -0 "$(cat "$OUT/opus.pid")" 2>/dev/null; then echo "already running: pid $(cat "$OUT/opus.pid")"; exit 0; fi
-    nohup "$MEMGUARD" --max-gb 8 -- "$OUT/opus.sh" > "$OUT/opus.log" 2>&1 &
-    echo $! > "$OUT/opus.pid"; echo "started: pid $!" ;;
+    : > "$OUT/opus.pid"
+    for k in $(seq 0 $((W - 1))); do
+      nohup "$MEMGUARD" --max-gb 6 -- "$OUT/opus.sh" "$k" > "$OUT/opus-$k.log" 2>&1 &
+      echo $! >> "$OUT/opus.pid"; echo "started worker $k: pid $!"
+    done ;;
   align)
     MINILM_DIR=$LANGQA_HOME/models/all-MiniLM-L6-v2 HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 nice -n 10 "$MEMGUARD" --max-gb 4 -- "$LANGQA_HOME/venv/bin/python" "$HERE/align.py" "$OUT" "$OUT/align.json" 2>&1 | grep -v Warning | tail -2 ;;
   status)
     for e in meaning opus; do
       p=bt; [ $e = opus ] && p=bto
-      echo "$e: $(ls "$OUT" | grep -c "^$p-.*json$" || true) files done; $(tail -1 "$OUT/$e.log" 2>/dev/null | tr -d '\r' | tail -c 120)"
-      if [ -f "$OUT/$e.pid" ] && kill -0 "$(cat "$OUT/$e.pid")" 2>/dev/null; then echo "  running"; else echo "  not running"; fi
+      echo "$e: $(ls "$OUT" | grep -c "^$p-[0-9].*json$" || true) files done"
+      for g in "$OUT/$e".log "$OUT/$e"-*.log; do [ -f "$g" ] && echo "  $(basename "$g"): $(tr '\r' '\n' < "$g" | grep -E '^ +[0-9]+/|==' | tail -1)"; done
+      for p in $(cat "$OUT/$e.pid" 2>/dev/null); do kill -0 "$p" 2>/dev/null && echo "  running: $p"; done
     done ;;
   *) sed -n 2,13p "$0" ;;
 esac
