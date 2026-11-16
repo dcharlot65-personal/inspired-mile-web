@@ -14,9 +14,6 @@
  * text, data-i18n-placeholder / -title / -aria-label for attributes. They are
  * filled when the locale is set. <html> gets lang, and dir="rtl" for Arabic.
  *
- * A page's own strings can live in a page area (./pages/<area>/<locale>.ts),
- * fetched with loadArea(name); see "Page areas" below.
- *
  * This is the interface language only. The language a duel is fought in is a
  * separate choice (the verse packs in src/lib/verse/packs).
  */
@@ -110,12 +107,12 @@ export function locale(): Locale {
 
 /** Is there a message for this key, in the current language or in English? */
 export function has(key: string): boolean {
-  return key in messages || key in areaMessages || key in en || key in areaEnglish;
+  return key in messages || key in en;
 }
 
 /** A message in the current language; English if the language lacks it; the key itself if nobody has it. */
 export function t(key: string, vars?: Msg['vars']): string {
-  return interpolate(messages[key] ?? areaMessages[key] ?? en[key] ?? areaEnglish[key] ?? key, vars);
+  return interpolate(messages[key] ?? en[key] ?? key, vars);
 }
 
 /** An engine message (a form's name, a check's label) in the current language. */
@@ -131,80 +128,61 @@ export async function loadMessages(l: Locale): Promise<Messages> {
   return loaded;
 }
 
-// --- Page areas -------------------------------------------------------------
-// The strings of one page (or one group of pages) live outside the core locale
-// files, in ./pages/<area>/<locale>.ts, and are fetched only by the pages that
-// ask for them with loadArea(name). An area's keys are looked up after the core
-// locale's, and its English after core English, so t() and data-i18n work the
-// same for both. Once asked for, an area follows every later change of language.
+/**
+ * A page's own messages. Each page (or data file) keeps its strings apart from the core
+ * locale files, in ./pages/<area>/<locale>.ts, and asks for them when it needs them:
+ *
+ *   await loadArea('collection')    then t('collection.title') as usual
+ *
+ * The area's English and its text in `l` are merged into that locale's messages, so t(),
+ * has() and applyTranslations() need no change. Ask again after the language changes
+ * (onLocaleChange): a language's areas are fetched only when that language is in use.
+ */
+const AREA_LOADERS = import.meta.glob<{ default: Messages }>('./pages/*/*.ts');
+const areasLoaded = new Map<string, Promise<void>>();
 
-const areaNames = new Set<string>();
-const areaCache = new Map<string, Messages>();
-let areaMessages: Messages = {};
-let areaEnglish: Messages = {};
-
-/** One area's messages in one language (cached). English must exist; another language may be missing and is then empty. */
-export async function loadAreaMessages(name: string, l: Locale): Promise<Messages> {
-  const id = `${name}/${l}`;
-  const have = areaCache.get(id);
-  if (have) return have;
-  let loaded: Messages;
-  try {
-    loaded = ((await import(`./pages/${name}/${l}.ts`)) as { default: Messages }).default;
-  } catch (err) {
-    if (l === 'en') throw err;
-    // Like a core locale that will not load: the page keeps its text, in English.
-    console.error(`[i18n] could not load area "${name}" in "${l}"; using English`, err);
-    loaded = {};
+export function loadArea(name: string, l: Locale = current): Promise<void> {
+  const id = `${l}/${name}`;
+  let pending = areasLoaded.get(id);
+  if (!pending) {
+    pending = (async () => {
+      const target = await loadMessages(l);
+      // English first, so a key the language lacks (or a file that will not load) still reads as text.
+      for (const code of l === 'en' ? ['en'] : ['en', l]) {
+        const load = AREA_LOADERS[`./pages/${name}/${code}.ts`];
+        if (!load) {
+          if (code === 'en') console.error(`[i18n] no such area: "${name}"`);
+          continue;
+        }
+        try {
+          Object.assign(target, (await load()).default);
+        } catch (err) {
+          console.error(`[i18n] could not load area "${name}" in "${code}"`, err);
+          areasLoaded.delete(id);
+        }
+      }
+    })();
+    areasLoaded.set(id, pending);
   }
-  areaCache.set(id, loaded);
-  return loaded;
-}
-
-async function collectAreas(l: Locale): Promise<{ mine: Messages; english: Messages }> {
-  const mine: Messages = {};
-  const english: Messages = {};
-  for (const name of areaNames) {
-    Object.assign(english, await loadAreaMessages(name, 'en'));
-    if (l !== 'en') Object.assign(mine, await loadAreaMessages(name, l));
-  }
-  return { mine, english };
+  return pending;
 }
 
 /**
- * Make a page area's messages available to t() and to data-i18n markup, in the
- * current language and in every language chosen afterwards. Safe to call more
- * than once and before, during or after initI18n().
+ * Fill every element under `root` that carries a data-i18n key. A key nobody has yet (a page
+ * area still on its way) is left alone: the markup keeps its own text rather than show the key.
  */
-export async function loadArea(name: string): Promise<void> {
-  // English first: an area that is not there must fail here, and never be asked for again.
-  await loadAreaMessages(name, 'en');
-  areaNames.add(name);
-  // The language can change while the files are on their way; settle on the one that is current at the end.
-  for (;;) {
-    const l = current;
-    const { mine, english } = await collectAreas(l);
-    if (l !== current) continue;
-    areaMessages = mine;
-    areaEnglish = english;
-    break;
-  }
-  if (typeof document !== 'undefined') applyTranslations();
-}
-
-/** Fill every element under `root` that carries a data-i18n key. */
 export function applyTranslations(root: ParentNode = document): void {
   root.querySelectorAll<HTMLElement>('[data-i18n]').forEach((el) => {
-    el.textContent = t(el.dataset.i18n!);
+    if (has(el.dataset.i18n!)) el.textContent = t(el.dataset.i18n!);
   });
   root.querySelectorAll<HTMLElement>('[data-i18n-placeholder]').forEach((el) => {
-    el.setAttribute('placeholder', t(el.dataset.i18nPlaceholder!));
+    if (has(el.dataset.i18nPlaceholder!)) el.setAttribute('placeholder', t(el.dataset.i18nPlaceholder!));
   });
   root.querySelectorAll<HTMLElement>('[data-i18n-title]').forEach((el) => {
-    el.setAttribute('title', t(el.dataset.i18nTitle!));
+    if (has(el.dataset.i18nTitle!)) el.setAttribute('title', t(el.dataset.i18nTitle!));
   });
   root.querySelectorAll<HTMLElement>('[data-i18n-aria-label]').forEach((el) => {
-    el.setAttribute('aria-label', t(el.dataset.i18nAriaLabel!));
+    if (has(el.dataset.i18nAriaLabel!)) el.setAttribute('aria-label', t(el.dataset.i18nAriaLabel!));
   });
 }
 
@@ -224,12 +202,8 @@ export async function setLocale(l: Locale, opts: { persist?: boolean } = {}): Pr
     next = 'en';
     loaded = en;
   }
-  // The page areas already asked for come along, before anything is drawn in the new language.
-  const areas = await collectAreas(next);
   current = next;
   messages = loaded;
-  areaMessages = areas.mine;
-  areaEnglish = areas.english;
   if (opts.persist !== false && next === l) {
     try {
       localStorage.setItem(LOCALE_STORAGE_KEY, next);

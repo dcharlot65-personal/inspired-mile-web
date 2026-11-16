@@ -119,9 +119,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <script>
     import { browseListings, createListing, cancelListing, buyListing, myListings, type Listing } from '../lib/marketplace-client';
     import { isLoggedIn } from '../lib/storage-backend';
-    import { has, onLocaleChange, t } from '../i18n';
+    import { has, t } from '../i18n';
     import { date, list, plural } from '../i18n/fmt';
-    import { errorText, esc, initPage, isolate } from '../i18n/page';
+    import { errorText, esc, initPage, onPageLocaleChange, isolate } from '../i18n/page';
 
     const toast = (message: string, type: 'success' | 'error' | 'warning') => (window as any).showToast?.(message, type);
 
@@ -379,7 +379,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       .catch((e) => console.error('[marketplace] the language could not be loaded', e))
       .then(() => {
         redraw();
-        onLocaleChange(redraw);
+        onPageLocaleChange(redraw);
         loadListings();
         populateSellCards();
       });

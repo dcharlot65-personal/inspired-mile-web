@@ -82,9 +82,9 @@ const english: Record<string, string> = { battle: 'Battle', trivia: 'Trivia', ch
   <script>
     import { claimReward, fetchCurrentSeason, getLevelProgress, getRewards, type SeasonProgress, type SeasonReward } from '../lib/seasons';
     import { apiErrorCode } from '../lib/api-errors';
-    import { onLocaleChange, t } from '../i18n';
+    import { t } from '../i18n';
     import { dateRange, num, plural } from '../i18n/fmt';
-    import { errorText, esc, initPage, isolate } from '../i18n/page';
+    import { errorText, esc, initPage, onPageLocaleChange, isolate } from '../i18n/page';
 
     const toast = (message: string, type: 'success' | 'error' | 'warning') => (window as any).showToast?.(message, type);
 
@@ -194,7 +194,7 @@ const english: Record<string, string> = { battle: 'Battle', trivia: 'Trivia', ch
       .catch((e) => console.error('[season] the language could not be loaded', e))
       .then(() => {
         draw();
-        onLocaleChange(draw);
+        onPageLocaleChange(draw);
         load();
       });
   </script>

@@ -40,12 +40,14 @@ export default class ErrorBoundary extends Component<Props, State> {
   }
 
   componentDidMount() {
-    // Draw again when the words arrive and whenever the language changes.
-    this.stopListening = onLocaleChange(() => this.forceUpdate());
-    loadArea('shared').then(
-      () => this.forceUpdate(),
-      (err) => console.error('[ErrorBoundary] could not load its messages', err),
-    );
+    // Draw again when the words arrive, and when they have arrived in each new language.
+    const words = () =>
+      loadArea('shared').then(
+        () => this.forceUpdate(),
+        (err) => console.error('[ErrorBoundary] could not load its messages', err),
+      );
+    this.stopListening = onLocaleChange(() => void words());
+    void words();
   }
 
   componentWillUnmount() {

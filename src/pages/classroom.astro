@@ -289,9 +289,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     import type { Assignment, Classroom, ClassroomMember } from '../lib/classroom';
     import { apiErrorCode } from '../lib/api-errors';
     import { getCurrentUser } from '../lib/storage-backend';
-    import { has, onLocaleChange, t } from '../i18n';
+    import { has, t } from '../i18n';
     import { date, plural } from '../i18n/fmt';
-    import { errorText, esc, initPage } from '../i18n/page';
+    import { errorText, esc, initPage, onPageLocaleChange } from '../i18n/page';
 
     const WIZARD_STEPS = 4;
 
@@ -690,7 +690,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       .catch((e) => console.error('[classroom] the language could not be loaded', e))
       .then(() => {
         redraw();
-        onLocaleChange(redraw);
+        onPageLocaleChange(redraw);
         loadClassrooms();
       });
   </script>

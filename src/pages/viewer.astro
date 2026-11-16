@@ -83,9 +83,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     import { AR_MODELS, buildModelViewerHTML } from '../lib/ar-viewer';
     import { CARD_CATALOG } from '../lib/cards';
     import type { Msg } from '../lib/verse/msg';
-    import { onLocaleChange, t, tm } from '../i18n';
+    import { t, tm } from '../i18n';
     import { num } from '../i18n/fmt';
-    import { initPage } from '../i18n/page';
+    import { initPage, onPageLocaleChange } from '../i18n/page';
 
     // DOM refs
     const canvas = document.getElementById('splat-canvas') as HTMLCanvasElement;
@@ -227,7 +227,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       .then(() => {
         ready = true;
         redraw();
-        onLocaleChange(redraw);
+        onPageLocaleChange(redraw);
       });
   </script>
 
