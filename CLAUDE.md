@@ -100,11 +100,19 @@ left behind by a killed run is found by its port: `lsof -nP -iTCP:<port> -sTCP:L
   `loadPack(lang)` loads a language's card text, so the signature and the invocation work in the
   duel's language (`src/lib/verse/echo.ts`); an English duel never goes through that file.
   Published lines keep the edition's spelling; a Japanese line in old kanji also carries its
-  modern reading (`echo`, OpenCC's JPVariants table) for the signature. The tool checks of the
-  translated text (Hunspell, LanguageTool, MADLAD back-translation) are
-  `scripts/language/check/run.sh` on the build host; their tools live in
-  `im-lang/names-quotes` there. When www.gutenberg.org is down, its files are on the mirror
-  gutenberg.pglaf.org (catalogue: GUTINDEX.ALL there).
+  modern reading (`echo`, OpenCC's JPVariants table) for the signature. The game's Portuguese is
+  Brazilian (the interface is): card text written for it is Brazilian, and names take Wikidata's
+  `pt-br` label first. The tool checks of the translated card text (Hunspell, LanguageTool, and
+  back-translation through lang/qa-pipeline's `scripts/lang/backtranslate.py`) are
+  `scripts/language/check/run.sh` on a build host (tools in `im-lang/names-quotes` under its rb
+  root); their output is committed in `docs/language/checks/`, with every finding fixed
+  (`fixes.json`) or accepted with a reason (`accepted.json`). `src/lib/cards-i18n/checks.test.ts`
+  fails when a translated text changes without the checks being run again, so after editing
+  `scripts/language/translated/*.txt` run the checks and commit their output. On an Intel Mac set
+  nothing: `run.sh` already sets `OMP_NUM_THREADS=1` (torch and ctranslate2 each load Intel's
+  OpenMP runtime, and the process hung). When www.gutenberg.org is down, its files are on the mirror
+  gutenberg.pglaf.org (catalogue: GUTINDEX.ALL there). Aozora Bunko has published only Tsubouchi's
+  Romeo and Juliet; his other Shakespeare is listed there as in preparation.
 - Every verse in every pack must keep its form as the code checks it (`verse.test.ts`).
   `node scripts/mutate-packs.mjs` (on the build host) proves those tests go red.
 - Writing a `\uXXXX` escape through an agent's file tools can turn it into the character

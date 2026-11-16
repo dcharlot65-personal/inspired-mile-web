@@ -17,6 +17,10 @@ English is the source of truth (`src/lib/cards.ts`) and is not repeated in the p
   languages written in Latin letters (es, fr, de, it, pt, pl, vi, id) the item's `mul` label is used when
   the language has no label of its own: Wikidata defines `mul` as the label for every language that has
   none. It is not used for other scripts, where a Latin-letter name would not be a name in that language.
+  Portuguese takes the item's `pt-br` label first, where Wikidata has one, because the game's Portuguese is
+  Brazilian (the interface, `src/i18n/locales/pt.ts`): "Marco Antônio", not "Marco António", and "Lord
+  Byron". Those labels were fetched separately (`docs/language/sources/wikidata-pt-br.json`), so no other
+  language's labels moved with them.
 - `wikipedia`: Wikidata has no label, but that language's Wikipedia has an article on the item; its title is used.
 - `derived`: cut by a fixed rule from a sourced label. Two rules exist. (1) The card shows one word of a
   longer name ("Brutus" from "Marcus Junius Brutus", "Cassius", "Bottom"): the word in the same position is
@@ -58,6 +62,7 @@ for the game in English. They can only ever be translated, never sourced.
 | What | Source | Licence | Fetched |
 |---|---|---|---|
 | Names of characters, authors, gods, places, works | Wikidata API, `wbgetentities` (`docs/language/sources/wikidata-names.json` keeps the item id, the revision id and every label read) | CC0 1.0 | 2026-11-16 |
+| Brazilian Portuguese labels | Wikidata API, `wbgetentities` with `languages=pt-br\|pt` (`scripts/language/fetch/names_ptbr.py`; `docs/language/sources/wikidata-pt-br.json` keeps each item's revision id) | CC0 1.0 | 2026-11-16 |
 | Wikipedia article titles (fallback for names) | Wikidata sitelinks | titles are used as names only | 2026-11-16 |
 | French quotations | fr.wikisource.org, translations by François-Victor Hugo, and Mallarmé, Saladin and Rabbe for the poems and Frankenstein (`docs/language/sources/quotes-fr.json` keeps the page, revision and matching pattern for each line) | public domain (see the table below); Wikisource transcription CC BY-SA 4.0 for its own additions | 2026-11-16 |
 | Other published quotations | the Wikisource of each language: Italian (Rusconi, Ragazzoni), Spanish (Menéndez y Pelayo, Moratín, Márquez, Pérez Bonalde), Portuguese (Luís I, Machado de Assis), Polish (Ulrich), Russian (several), German (Schlegel's Romeo, Lachmann, Strodtmann), Japanese (Tsubouchi); `docs/language/sources/quotes-<lang>.json` | public domain, per work below | 2026-11-16 |
@@ -66,11 +71,15 @@ for the game in English. They can only ever be translated, never sourced.
 | Stop words (words that never count as an echo) | stopwords-iso, commit 6e8e9a2 (`docs/language/sources/stopwords-iso.json`) | MIT, © 2020 Gene Diaz | 2026-11-16 |
 | Spelling check | Hunspell 1.7.2 (LGPL/GPL/MPL) with LibreOffice's dictionaries at commit c0865a85 (each under its own licence, README kept beside it on the build host) | as stated | 2026-11-16 |
 | Grammar check | LanguageTool 6.6, run locally (LGPL-2.1) | LGPL-2.1 | 2026-11-16 |
-| Back-translation | MADLAD-400 3B (google/madlad400-3b-mt; CTranslate2 int8 conversion Nextcloud-AI/madlad400-3b-mt-ct2-int8, revision aa32bbde) and all-MiniLM-L6-v2 (revision 1110a243) | Apache-2.0 | 2026-11-16 |
+| Back-translation | the language QA pipeline's `scripts/lang/backtranslate.py` (branch lang/qa-pipeline at d51089b, blob c5797969, sha256 1a3ca221…c79a), in its `--pairs` mode: MADLAD-400 3B (google/madlad400-3b-mt; CTranslate2 int8 conversion Nextcloud-AI/madlad400-3b-mt-ct2-int8, revision aa32bbde) back to English, scored by all-MiniLM-L6-v2 (revision 1110a243) against the English, and LaBSE (sentence-transformers/LaBSE, revision 836121a0) scoring the text itself against the English | Apache-2.0 (all three models) | 2026-11-16 |
 
-The checking tools were copied (APFS clones) from the files the language QA work had already fetched on the
-build host (`im-lang/qa-pipeline`, fetched by its `scripts/lang/host-setup.sh` at the pinned versions above)
-into this task's own folder, `im-lang/names-quotes`; nothing was installed system-wide.
+The checks of this round ran on the iMac Pro build host (Intel), in this task's own folder there,
+`~/wai-build/im-lang/names-quotes`: Hunspell 1.7.2 built from its release tarball (sha256 11ddfa39…5b8, the
+same file the QA pipeline fetched); LanguageTool 6.6 and the dictionaries copied from the folder the earlier
+checks used on the Mac Studio (fetched there by the QA pipeline's `scripts/lang/host-setup.sh` at the pinned
+versions above; LanguageTool's zip had sha256 53600506…1631); the three models downloaded at the revisions
+above; Python 3.12 with ctranslate2 4.9.0, sentence-transformers 3.3.1, transformers 4.46.3 and torch 2.2.2
+(the last torch for Intel Macs). Nothing was installed system-wide.
 
 Translators' dates of birth and death are Wikidata's (properties P569 and P570, fetched 2026-11-16,
 `docs/language/sources/translators.json`); they decide the copyright status, and a unit test checks every
@@ -105,8 +114,9 @@ Read this before treating any language as finished.
   of 1858–1859, all eleven plays, and Ragazzoni's Raven), French 51 (Hugo; Mallarmé's Raven, Saladin's
   Frankenstein, Rabbe's Shelley), German 50 (Schlegel's Romeo, Dream, Merchant and Julius Caesar; Dorothea
   Tieck's Macbeth; Wieland's 1762–1766 prose for Hamlet, the Tempest, Twelfth Night, Othello, Lear and Henry
-  IV; Lachmann's Raven, Strodtmann's Shelley), Spanish 29, Polish 28, Japanese 13 (Romeo and Juliet only),
-  Russian 15, Portuguese 6. Arabic, Hindi, Chinese, Korean, Vietnamese, Thai and Indonesian have none. Every
+  IV; Lachmann's Raven, Strodtmann's Shelley), Russian 35 (Mikhalovsky's Romeo, Gnedich's Hamlet, Satin's Tempest,
+  Kozlov's Julius Caesar, Weinberg's Othello and Merchant, Kroneberg's Twelfth Night, and the poems), Spanish 29,
+  Polish 28, Japanese 13 (Romeo and Juliet only), Portuguese 6. Arabic, Hindi, Chinese, Korean, Vietnamese, Thai and Indonesian have none. Every
   other line is `NEW, unsourced`.
 - **Where a published translation exists but was not used**, and why:
   - German: Schlegel–Tieck's Hamlet, Tempest, Twelfth Night, Othello and Lear are in the public domain, but
@@ -118,7 +128,10 @@ Read this before treating any language as finished.
     in a form that was found, so those two German lines are NEW. The Gutenberg Macbeth reads "entweiht mich"
     where Tieck printed "entweibt mich" (unsex me); the German line for Lady Macbeth stops before that word.
   - Polish and Russian: the plays are cached and searched; a line was taken only when it could be found and
-    recognised with certainty. The others are in the same texts and were not found in the time spent.
+    recognised with certainty (by its speaker and the lines around it). Twenty Russian lines were added in this
+    round from the same transcriptions (Romeo, Hamlet, the Tempest, Twelfth Night, the Merchant). Not found in
+    the time spent: Cordelia's "it is thy business that I go about" in Druzhinin's Lear, Olivia's "Love sought
+    is good" in Kroneberg, and the Polish lines still marked NEW.
     The Polish Macbeth page (Ulrich) could not be fetched under the title tried. The cached Russian Dream
     (Grigoryev) and Macbeth (Yuryev) are transcriptions in the pre-1918 spelling; lines were not taken from
     them, because players would not type that spelling, and modern-spelling versions were not looked for.
@@ -128,8 +141,13 @@ Read this before treating any language as finished.
     1959 (Spain: life plus 80), so it was not used.
   - Portuguese: Rebelo da Silva's Otelo (1856) and Luís I's O Mercador de Veneza (1879) are listed on
     pt.wikisource, but the page titles tried did not exist; not followed further.
-  - Japanese: only Tsubouchi's Romeo and Juliet is on ja.wikisource. Aozora Bunko holds more of his
-    translations (Hamlet, Macbeth, and others); not fetched.
+  - Japanese: only Tsubouchi's Romeo and Juliet is on ja.wikisource, and it is the only one of his Shakespeare
+    translations that Aozora Bunko has published. Aozora's page for him (index_pages/person141.html, read
+    2026-11-16) lists his Hamlet, Macbeth, Othello, King Lear, Julius Caesar, the Tempest (颶風), the Dream,
+    the Merchant and the Sonnets under 作業中の作品, works being prepared: they have no card page and no
+    text yet (card1491.html answers 404). When they are published, `scripts/language/fetch/aozora.py` reads
+    them; it was tested on the published Romeo and Juliet (card 42773), where it reproduces all 13 lines
+    taken from Wikisource.
   - Chinese: zh.wikisource has a 1924 classical-Chinese Hamlet (漢姆萊脫) whose translator's dates were not
     established, and a contributors' own translation of Sonnet 18 (CC BY-SA); neither was used. Korean
     Wikisource has a Hamlet page whose translator was not established. Arabic Wikisource has The Merchant of
@@ -142,6 +160,12 @@ Read this before treating any language as finished.
   neighbouring lines), not by act, scene and line numbers in the translation. The citation given is that of
   the English line. Some 19th-century prose translations render a line loosely (Rusconi's "Ti troverò al
   chiaro di luna, superba Titania" for "Ill met by moonlight"); the published wording is used as it stands.
+- **Portuguese is Brazilian.** The interface is Brazilian Portuguese; the card text first written for the game
+  was European (pirilampos, sumo, "a brilhar", "Marco António"). In this round every scene, every line
+  written for the game and the potion name "Sumo da flor de Puck" were rewritten in Brazilian usage, and a
+  scene names a character as its card does ("Mercutio", "Benvolio", "Tybalt", "Odisseu"). The rewrite is
+  again one language model's output, put through the same checks. The published lines keep their editions'
+  text: Luís I's Hamlet (Lisbon, 1877) is European Portuguese of its time; Machado de Assis is Brazilian.
 - **Everything translated for the game is one language model's output**: every `translated` name and label,
   every `NEW` line and every scene in every language. The scenes in Arabic, Hindi, Vietnamese and Thai were
   written in this round. In those scenes, a character whose name has no source in the language keeps the
@@ -171,14 +195,22 @@ Read this before treating any language as finished.
 ```
 # names (Wikidata), texts (Wikisource) and lines (patterns): scripts/language/fetch/
 python3 scripts/language/fetch/names.py            # writes wikidata-names.json
+python3 scripts/language/fetch/names_ptbr.py       # writes wikidata-pt-br.json (Brazilian Portuguese labels of the same items)
+python3 scripts/language/fetch/aozora.py ja rj 42773   # an Aozora Bunko text, pinned by the sha256 of its file
 python3 scripts/language/fetch/fetchwork.py fr.wikisource.org fr hamlet "Le second Hamlet (trad. Hugo)"
 python3 scripts/language/fetch/extract.py fr scripts/language/fetch/specs/fr.txt
 # then, from the repository root (needs: pip install regex opencc-python-reimplemented)
 python3 scripts/language/build_card_text.py
-# the tool checks, on the build host (writes docs/language/checks/); then run build_card_text.py again
-~/kani-logs/remote/rb . -- 'bash scripts/language/check/run.sh selftest'
+# the tool checks, on a build host (writes docs/language/checks/); then run build_card_text.py again.
+# The iMac Pro: RB_HOST=dcharlot@100.76.227.23 RB_ROOT_DIR=/Users/dcharlot/wai-build (prefix in ~/kani-logs/remote/HOSTS.md).
+# The back-translation script is lang/qa-pipeline's: until that branch is in main, put its scripts/lang/backtranslate.py
+# in $CHECK_HOME/qa-pipeline/ on the host (run.sh refuses a copy whose sha256 is not the pinned one).
+~/kani-logs/remote/rb . -- 'bash scripts/language/check/run.sh setup && bash scripts/language/check/run.sh selftest'
 ~/kani-logs/remote/rb . -- 'bash scripts/language/check/run.sh spell && bash scripts/language/check/run.sh grammar'
-~/kani-logs/remote/rb . -- 'bash scripts/language/check/run.sh detach meaning'   # about an hour; copy its result back
+~/kani-logs/remote/rb . -- 'bash scripts/language/check/run.sh detach meaning'   # about 2.5 s an item on the iMac's CPU; resumes
+~/kani-logs/remote/rb . -- 'bash scripts/language/check/run.sh status'
+# copy spelling.json, grammar.json and work/meaning/docs/language/checks/backtranslation.json back into docs/language/checks/;
+# read every new finding: fix the text (record it in fixes.json) or accept it with a reason (accepted.json).
 ```
 
 The fetch scripts write into the directory they are run from (`cache/`, `out/`); copy `out/<lang>.json`
