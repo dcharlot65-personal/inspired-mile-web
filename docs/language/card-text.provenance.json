@@ -5144,7 +5144,7 @@
       "detail": "Q1092632 label (pt)"
      },
      "quote": {
-      "text": "Que há num nome? Aquilo a que chamamos rosa...",
+      "text": "O que há num nome? Aquilo que chamamos de rosa...",
       "source": "new",
       "cite": "Romeo and Juliet 2.2"
      },
@@ -5195,7 +5195,7 @@
       "detail": "Q1767900 has no label in pt and no pt.wikipedia.org article"
      },
      "quote": {
-      "text": "Uma praga sobre as vossas duas casas!",
+      "text": "Uma praga sobre vossas duas casas!",
       "source": "new",
       "cite": "Romeo and Juliet 3.1"
      },
@@ -5253,7 +5253,7 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": "Agora os meus encantos estão todos desfeitos.",
+      "text": "Agora meus encantos estão todos desfeitos.",
       "source": "new",
       "cite": "The Tempest, Epilogue"
      },
@@ -5292,7 +5292,7 @@
       "detail": "Q15829750 has no label in pt and no pt.wikipedia.org article"
      },
      "quote": {
-      "text": "Se alguma vez voltardes a perturbar as nossas ruas, as vossas vidas pagarão a quebra da paz.",
+      "text": "Se alguma vez voltardes a perturbar nossas ruas, vossas vidas pagarão pela quebra da paz.",
       "source": "new",
       "cite": "Romeo and Juliet 1.1"
      },
@@ -5318,7 +5318,7 @@
       "detail": "Q7070187 has no label in pt and no pt.wikipedia.org article"
      },
      "quote": {
-      "text": "Sou eu a escrava que se cansa pelo vosso deleite.",
+      "text": "Sou eu a escrava que se cansa por vosso deleite.",
       "source": "new",
       "cite": "Romeo and Juliet 2.5"
      },
@@ -5328,7 +5328,7 @@
      "name": {
       "text": "Prospero",
       "source": "wikidata",
-      "detail": "Q978952 label (pt)"
+      "detail": "Q978952 label (pt-br)"
      },
      "quote": {
       "text": "Somos feitos da matéria de que são feitos os sonhos.",
@@ -5341,7 +5341,7 @@
      "name": {
       "text": "Ariel",
       "source": "wikidata",
-      "detail": "Q658028 label (pt)"
+      "detail": "Q658028 label (pt-br)"
      },
      "quote": {
       "text": "Salve, grande amo! Grave senhor, salve!",
@@ -5370,7 +5370,7 @@
       "detail": "Q939489 has no label in pt and no pt.wikipedia.org article"
      },
      "quote": {
-      "text": "Eu apenas mantenho a paz. Guarda a tua espada.",
+      "text": "Eu só mantenho a paz. Guarda tua espada.",
       "source": "new",
       "cite": "Romeo and Juliet 1.1"
      },
@@ -5383,7 +5383,7 @@
       "detail": "Q2412073 label (mul, the default for every language)"
      },
      "quote": {
-      "text": "Quê, de espada na mão e falas de paz? Odeio essa palavra.",
+      "text": "O quê? De espada na mão, e falas de paz? Odeio essa palavra.",
       "source": "new",
       "cite": "Romeo and Juliet 1.1"
      },
@@ -5428,7 +5428,7 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": "É um punhal isto que vejo diante de mim?",
+      "text": "É um punhal o que vejo diante de mim?",
       "source": "new",
       "cite": "Macbeth 2.1"
      },
@@ -5436,7 +5436,7 @@
     },
     "PT-003": {
      "name": {
-      "text": "Sumo da flor de Puck",
+      "text": "Suco da flor de Puck",
       "source": "translated",
       "detail": "the game's own name, translated for the game"
      },
@@ -5467,7 +5467,7 @@
       "detail": "Q2454065 label (pt)"
      },
      "quote": {
-      "text": "Vinde, espíritos que servis os pensamentos mortais, tirai-me aqui o meu sexo.",
+      "text": "Vinde, espíritos que servis os pensamentos mortais, tirai-me aqui meu sexo.",
       "source": "new",
       "cite": "Macbeth 1.5"
      },
@@ -5529,7 +5529,7 @@
      "name": {
       "text": "Bruto",
       "source": "derived",
-      "detail": "word 3 of 3 of \"Marco Júnio Bruto\" (Q172248 label (pt))"
+      "detail": "word 3 of 3 of \"Marco Júnio Bruto\" (Q172248 label (pt-br))"
      },
      "quote": {
       "text": "Não que eu amasse menos César, mas amava mais Roma.",
@@ -5542,10 +5542,10 @@
      "name": {
       "text": "Cássio",
       "source": "derived",
-      "detail": "word 2 of 3 of \"Caio Cássio Longino\" (Q207370 label (pt))"
+      "detail": "word 2 of 3 of \"Caio Cássio Longino\" (Q207370 label (pt-br))"
      },
      "quote": {
-      "text": "A culpa, caro Bruto, não está nas nossas estrelas, mas em nós mesmos.",
+      "text": "A culpa, caro Bruto, não está em nossas estrelas, mas em nós mesmos.",
       "source": "new",
       "cite": "Julius Caesar 1.2"
      },
@@ -5553,12 +5553,12 @@
     },
     "RM-003": {
      "name": {
-      "text": "Marco António",
+      "text": "Marco Antônio",
       "source": "wikidata",
-      "detail": "Q51673 label (pt)"
+      "detail": "Q51673 label (pt-br)"
      },
      "quote": {
-      "text": "Amigos, romanos, compatriotas, emprestai-me os vossos ouvidos!",
+      "text": "Amigos, romanos, compatriotas, emprestai-me vossos ouvidos!",
       "source": "new",
       "cite": "Julius Caesar 3.2"
      },
@@ -5584,7 +5584,7 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": "Casar, é esse mesmo o tema de que te vinha falar.",
+      "text": "Casar: é esse mesmo o assunto de que eu vinha te falar.",
       "source": "new",
       "cite": "Romeo and Juliet 1.3"
      },
@@ -5597,7 +5597,7 @@
       "detail": "Q3140503 has no label in pt and no pt.wikipedia.org article"
      },
      "quote": {
-      "text": "Quebra-se agora um nobre coração. Boa noite, doce príncipe.",
+      "text": "Agora se parte um nobre coração. Boa noite, doce príncipe.",
       "source": "new",
       "cite": "Hamlet 5.2"
      },
@@ -5633,7 +5633,7 @@
      "name": {
       "text": "Miranda",
       "source": "wikidata",
-      "detail": "Q634983 label (pt)"
+      "detail": "Q634983 label (pt-br)"
      },
      "quote": {
       "text": "Ó admirável mundo novo, que tem em si tal gente!",
@@ -5649,7 +5649,7 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": "A minha generosidade é tão ilimitada como o mar, o meu amor tão profundo.",
+      "text": "Minha generosidade é tão ilimitada quanto o mar, meu amor tão profundo.",
       "source": "new",
       "cite": "Romeo and Juliet 2.2"
      },
@@ -5688,7 +5688,7 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": "Afogarei o meu livro.",
+      "text": "Afogarei meu livro.",
       "source": "new",
       "cite": "The Tempest 5.1"
      },
@@ -5701,7 +5701,7 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": "Ó querido pai, é dos teus assuntos que me ocupo.",
+      "text": "Ó querido pai, é de teus assuntos que me ocupo.",
       "source": "new",
       "cite": "King Lear 4.4"
      },
@@ -5727,7 +5727,7 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": "Nem a papoila, nem a mandrágora, nem todos os xaropes sonolentos do mundo.",
+      "text": "Nem a papoula, nem a mandrágora, nem todos os xaropes sonolentos do mundo.",
       "source": "new",
       "cite": "Othello 3.3"
      },
@@ -5785,7 +5785,7 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": "A cinco braças jaz o teu pai; dos seus ossos se fez coral.",
+      "text": "A cinco braças jaz teu pai; de seus ossos se fez coral.",
       "source": "new",
       "cite": "The Tempest 1.2"
      },
@@ -5798,7 +5798,7 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": "Deita isto em qualquer líquido que queiras e bebe-o; e, ainda que tivesses a força de vinte homens, despachar-te-ia de imediato.",
+      "text": "Põe isto em qualquer líquido que quiseres e bebe; e, ainda que tivesses a força de vinte homens, isto te despacharia num instante.",
       "source": "new",
       "cite": "Romeo and Juliet 5.1"
      },
@@ -5808,10 +5808,10 @@
      "name": {
       "text": "William Wordsworth",
       "source": "wikidata",
-      "detail": "Q45546 label (pt)"
+      "detail": "Q45546 label (pt-br)"
      },
      "quote": {
-      "text": "Eu vagueava solitário como uma nuvem que flutua bem alto sobre vales e colinas.",
+      "text": "Eu vagava solitário como uma nuvem que flutua bem alto sobre vales e colinas.",
       "source": "new",
       "cite": "Wordsworth, \"I Wandered Lonely as a Cloud\", lines 1-2"
      },
@@ -5821,10 +5821,10 @@
      "name": {
       "text": "Samuel Taylor Coleridge",
       "source": "wikidata",
-      "detail": "Q82409 label (pt)"
+      "detail": "Q82409 label (pt-br)"
      },
      "quote": {
-      "text": "Água, água por toda a parte, e nem uma gota para beber.",
+      "text": "Água, água por toda parte, e nem uma gota para beber.",
       "source": "new",
       "cite": "Coleridge, The Rime of the Ancient Mariner, Part II"
      },
@@ -5834,10 +5834,10 @@
      "name": {
       "text": "John Keats",
       "source": "wikidata",
-      "detail": "Q82083 label (pt)"
+      "detail": "Q82083 label (pt-br)"
      },
      "quote": {
-      "text": "Uma coisa bela é uma alegria para sempre: o seu encanto cresce.",
+      "text": "Uma coisa bela é uma alegria para sempre: seu encanto cresce.",
       "source": "new",
       "cite": "Keats, Endymion, Book I, lines 1-2"
      },
@@ -5845,9 +5845,9 @@
     },
     "GC-001": {
      "name": {
-      "text": "Lorde Byron",
+      "text": "Lord Byron",
       "source": "wikidata",
-      "detail": "Q5679 label (pt)"
+      "detail": "Q5679 label (pt-br)"
      },
      "quote": {
       "text": "Ela caminha em beleza, como a noite de climas sem nuvens e céus estrelados.",
@@ -5860,7 +5860,7 @@
      "name": {
       "text": "Mary Shelley",
       "source": "wikidata",
-      "detail": "Q47152 label (pt)"
+      "detail": "Q47152 label (pt-br)"
      },
      "quote": {
       "text": "Cuidado; pois não tenho medo, e por isso sou poderoso.",
@@ -5873,7 +5873,7 @@
      "name": {
       "text": "Edgar Allan Poe",
       "source": "wikidata",
-      "detail": "Q16867 label (pt)"
+      "detail": "Q16867 label (pt-br)"
      },
      "quote": {
       "text": "Em certo dia, á hora, á hora / Da meia-noite que apavora, / Eu, cahindo de somno e exausto de fadiga",
@@ -5892,7 +5892,7 @@
      "name": {
       "text": "William Blake",
       "source": "wikidata",
-      "detail": "Q41513 label (pt)"
+      "detail": "Q41513 label (pt-br)"
      },
      "quote": {
       "text": "Ver um mundo num grão de areia e um céu numa flor silvestre.",
@@ -5905,7 +5905,7 @@
      "name": {
       "text": "Percy Bysshe Shelley",
       "source": "wikidata",
-      "detail": "Q93343 label (pt)"
+      "detail": "Q93343 label (pt-br)"
      },
      "quote": {
       "text": "Se o inverno chega, pode a primavera estar longe?",
@@ -5918,7 +5918,7 @@
      "name": {
       "text": "Elizabeth Barrett Browning",
       "source": "wikidata",
-      "detail": "Q228494 label (pt)"
+      "detail": "Q228494 label (pt-br)"
      },
      "quote": {
       "text": "Como te amo? Deixa-me contar as maneiras.",
@@ -5931,7 +5931,7 @@
      "name": {
       "text": "Christina Rossetti",
       "source": "wikidata",
-      "detail": "Q236596 label (pt)"
+      "detail": "Q236596 label (pt-br)"
      },
      "quote": {
       "text": "Lembra-te de mim quando eu tiver partido, partido para longe, para a terra silenciosa.",
@@ -6022,7 +6022,7 @@
      "name": {
       "text": "Perséfone",
       "source": "wikidata",
-      "detail": "Q45967 label (pt)"
+      "detail": "Q45967 label (pt-br)"
      },
      "quote": {
       "text": "Seis sementes comi, e prendi-me para sempre entre dois mundos.",
@@ -6038,7 +6038,7 @@
       "detail": "Q47231 label (pt)"
      },
      "quote": {
-      "text": "Fala-me, ó Musa, do homem de muitos caminhos, que vagueou por longe.",
+      "text": "Fala-me, ó Musa, do homem de muitos caminhos, que vagou para longe.",
       "source": "new",
       "cite": "the game's own paraphrase of Odyssey 1.1"
      },
@@ -6051,7 +6051,7 @@
       "detail": "Q160730 label (pt)"
      },
      "quote": {
-      "text": "Olha para mim, se te atreves. O meu olhar é a última coisa que verás.",
+      "text": "Olha para mim, se te atreves. Meu olhar é a última coisa que verás.",
       "source": "new",
       "cite": "the game's own line"
      },
@@ -6133,7 +6133,7 @@
     "Rome": {
      "text": "Roma",
      "source": "wikidata",
-     "detail": "Q220 label (pt)"
+     "detail": "Q220 label (pt-br)"
     },
     "Lake District": {
      "text": "Lake District",
@@ -7514,9 +7514,15 @@
       "detail": "Q15829750 label (ru)"
      },
      "quote": {
-      "text": "Если вы ещё раз нарушите покой наших улиц, вы заплатите жизнью за нарушенный мир.",
-      "source": "new",
-      "cite": "Romeo and Juliet 1.1"
+      "text": "когда вы снова / Осмелитесь нарушить тишину / На улицах, то жизнию своею / Ответите за возмущенный мир.",
+      "source": "published",
+      "cite": "Romeo and Juliet 1.1",
+      "translator": "Дмитрий Михаловский (1828–1905)",
+      "edition": "«Ромео и Джульетта», 1888 (ru.wikisource.org transcription, modern orthography)",
+      "status": "Public domain: Russia (life + 70 years; translator died 1905) and United States (published before 1931)",
+      "url": "https://ru.wikisource.org/wiki/%D0%A0%D0%BE%D0%BC%D0%B5%D0%BE_%D0%B8_%D0%94%D0%B6%D1%83%D0%BB%D1%8C%D0%B5%D1%82%D1%82%D0%B0_%28%D0%A8%D0%B5%D0%BA%D1%81%D0%BF%D0%B8%D1%80%3B_%D0%9C%D0%B8%D1%85%D0%B0%D0%BB%D0%BE%D0%B2%D1%81%D0%BA%D0%B8%D0%B9%29/2001?oldid=5750496",
+      "page": "Ромео и Джульетта (Шекспир; Михаловский)/2001",
+      "revid": 5750496
      },
      "scene": "translated"
     },
@@ -7527,9 +7533,15 @@
       "detail": "Q5503354 label (ru)"
      },
      "quote": {
-      "text": "У этих бурных радостей бурный конец.",
-      "source": "new",
-      "cite": "Romeo and Juliet 2.6"
+      "text": "Мой сын, восторг стремительный нередко / Имеет и стремительный конец",
+      "source": "published",
+      "cite": "Romeo and Juliet 2.6",
+      "translator": "Дмитрий Михаловский (1828–1905)",
+      "edition": "«Ромео и Джульетта», 1888 (ru.wikisource.org transcription, modern orthography)",
+      "status": "Public domain: Russia (life + 70 years; translator died 1905) and United States (published before 1931)",
+      "url": "https://ru.wikisource.org/wiki/%D0%A0%D0%BE%D0%BC%D0%B5%D0%BE_%D0%B8_%D0%94%D0%B6%D1%83%D0%BB%D1%8C%D0%B5%D1%82%D1%82%D0%B0_%28%D0%A8%D0%B5%D0%BA%D1%81%D0%BF%D0%B8%D1%80%3B_%D0%9C%D0%B8%D1%85%D0%B0%D0%BB%D0%BE%D0%B2%D1%81%D0%BA%D0%B8%D0%B9%29/2001?oldid=5750496",
+      "page": "Ромео и Джульетта (Шекспир; Михаловский)/2001",
+      "revid": 5750496
      },
      "scene": "translated"
     },
@@ -7540,9 +7552,15 @@
       "detail": "Q7070187 label (ru)"
      },
      "quote": {
-      "text": "Я работница и тружусь ради твоей радости.",
-      "source": "new",
-      "cite": "Romeo and Juliet 2.5"
+      "text": "Работница я вашему веселью",
+      "source": "published",
+      "cite": "Romeo and Juliet 2.5",
+      "translator": "Дмитрий Михаловский (1828–1905)",
+      "edition": "«Ромео и Джульетта», 1888 (ru.wikisource.org transcription, modern orthography)",
+      "status": "Public domain: Russia (life + 70 years; translator died 1905) and United States (published before 1931)",
+      "url": "https://ru.wikisource.org/wiki/%D0%A0%D0%BE%D0%BC%D0%B5%D0%BE_%D0%B8_%D0%94%D0%B6%D1%83%D0%BB%D1%8C%D0%B5%D1%82%D1%82%D0%B0_%28%D0%A8%D0%B5%D0%BA%D1%81%D0%BF%D0%B8%D1%80%3B_%D0%9C%D0%B8%D1%85%D0%B0%D0%BB%D0%BE%D0%B2%D1%81%D0%BA%D0%B8%D0%B9%29/2001?oldid=5750496",
+      "page": "Ромео и Джульетта (Шекспир; Михаловский)/2001",
+      "revid": 5750496
      },
      "scene": "translated"
     },
@@ -7553,9 +7571,15 @@
       "detail": "Q978952 label (ru)"
      },
      "quote": {
-      "text": "Мы созданы из того же вещества, что и сны.",
-      "source": "new",
-      "cite": "The Tempest 4.1"
+      "text": "Из вещества того же как и сон, / Мы созданы.",
+      "source": "published",
+      "cite": "The Tempest 4.1",
+      "translator": "Николай Сатин (1814–1873)",
+      "edition": "«Буря», 1840 (ru.wikisource.org transcription, modern orthography, of a later edition in which 41 lines of the masque in act 4 are by Olga Chyumina, 1864–1909; no line used here is among them)",
+      "status": "Public domain: Russia (life + 70 years; translator died 1873) and United States (published before 1931)",
+      "url": "https://ru.wikisource.org/wiki/%D0%91%D1%83%D1%80%D1%8F_%28%D0%A8%D0%B5%D0%BA%D1%81%D0%BF%D0%B8%D1%80%3B_%D0%A1%D0%B0%D1%82%D0%B8%D0%BD%29?oldid=5250007",
+      "page": "Буря (Шекспир; Сатин)",
+      "revid": 5250007
      },
      "scene": "translated"
     },
@@ -7566,9 +7590,15 @@
       "detail": "Q658028 label (ru)"
      },
      "quote": {
-      "text": "Привет тебе, великий господин! Почтенный повелитель, привет!",
-      "source": "new",
-      "cite": "The Tempest 1.2"
+      "text": "Я пред тобой, могучий повелитель! / Ученый муж, приветствую тебя!",
+      "source": "published",
+      "cite": "The Tempest 1.2",
+      "translator": "Николай Сатин (1814–1873)",
+      "edition": "«Буря», 1840 (ru.wikisource.org transcription, modern orthography, of a later edition in which 41 lines of the masque in act 4 are by Olga Chyumina, 1864–1909; no line used here is among them)",
+      "status": "Public domain: Russia (life + 70 years; translator died 1873) and United States (published before 1931)",
+      "url": "https://ru.wikisource.org/wiki/%D0%91%D1%83%D1%80%D1%8F_%28%D0%A8%D0%B5%D0%BA%D1%81%D0%BF%D0%B8%D1%80%3B_%D0%A1%D0%B0%D1%82%D0%B8%D0%BD%29?oldid=5250007",
+      "page": "Буря (Шекспир; Сатин)",
+      "revid": 5250007
      },
      "scene": "translated"
     },
@@ -7579,9 +7609,15 @@
       "detail": "Q533120 label (ru)"
      },
      "quote": {
-      "text": "Этот остров мой, он достался мне от Сикораксы, моей матери.",
-      "source": "new",
-      "cite": "The Tempest 1.2"
+      "text": "Ведь остров мой — зачем же отнимаешь? / Ступайте прочь! От матери моей / Я получил его один в наследство.",
+      "source": "published",
+      "cite": "The Tempest 1.2",
+      "translator": "Николай Сатин (1814–1873)",
+      "edition": "«Буря», 1840 (ru.wikisource.org transcription, modern orthography, of a later edition in which 41 lines of the masque in act 4 are by Olga Chyumina, 1864–1909; no line used here is among them)",
+      "status": "Public domain: Russia (life + 70 years; translator died 1873) and United States (published before 1931)",
+      "url": "https://ru.wikisource.org/wiki/%D0%91%D1%83%D1%80%D1%8F_%28%D0%A8%D0%B5%D0%BA%D1%81%D0%BF%D0%B8%D1%80%3B_%D0%A1%D0%B0%D1%82%D0%B8%D0%BD%29?oldid=5250007",
+      "page": "Буря (Шекспир; Сатин)",
+      "revid": 5250007
      },
      "scene": "translated"
     },
@@ -7592,9 +7628,15 @@
       "detail": "Q939489 label (ru)"
      },
      "quote": {
-      "text": "Я только охраняю мир. Вложи свой меч в ножны.",
-      "source": "new",
-      "cite": "Romeo and Juliet 1.1"
+      "text": "Я водворяю мир, / Не более. Вложи свой меч в ножны",
+      "source": "published",
+      "cite": "Romeo and Juliet 1.1",
+      "translator": "Дмитрий Михаловский (1828–1905)",
+      "edition": "«Ромео и Джульетта», 1888 (ru.wikisource.org transcription, modern orthography)",
+      "status": "Public domain: Russia (life + 70 years; translator died 1905) and United States (published before 1931)",
+      "url": "https://ru.wikisource.org/wiki/%D0%A0%D0%BE%D0%BC%D0%B5%D0%BE_%D0%B8_%D0%94%D0%B6%D1%83%D0%BB%D1%8C%D0%B5%D1%82%D1%82%D0%B0_%28%D0%A8%D0%B5%D0%BA%D1%81%D0%BF%D0%B8%D1%80%3B_%D0%9C%D0%B8%D1%85%D0%B0%D0%BB%D0%BE%D0%B2%D1%81%D0%BA%D0%B8%D0%B9%29/2001?oldid=5750496",
+      "page": "Ромео и Джульетта (Шекспир; Михаловский)/2001",
+      "revid": 5750496
      },
      "scene": "translated"
     },
@@ -7605,9 +7647,15 @@
       "detail": "Q2412073 label (ru)"
      },
      "quote": {
-      "text": "Как, с обнажённым мечом ты говоришь о мире? Я ненавижу это слово.",
-      "source": "new",
-      "cite": "Romeo and Juliet 1.1"
+      "text": "Ты вынул меч - и говоришь о мире! / Я ненавижу это слово",
+      "source": "published",
+      "cite": "Romeo and Juliet 1.1",
+      "translator": "Дмитрий Михаловский (1828–1905)",
+      "edition": "«Ромео и Джульетта», 1888 (ru.wikisource.org transcription, modern orthography)",
+      "status": "Public domain: Russia (life + 70 years; translator died 1905) and United States (published before 1931)",
+      "url": "https://ru.wikisource.org/wiki/%D0%A0%D0%BE%D0%BC%D0%B5%D0%BE_%D0%B8_%D0%94%D0%B6%D1%83%D0%BB%D1%8C%D0%B5%D1%82%D1%82%D0%B0_%28%D0%A8%D0%B5%D0%BA%D1%81%D0%BF%D0%B8%D1%80%3B_%D0%9C%D0%B8%D1%85%D0%B0%D0%BB%D0%BE%D0%B2%D1%81%D0%BA%D0%B8%D0%B9%29/2001?oldid=5750496",
+      "page": "Ромео и Джульетта (Шекспир; Михаловский)/2001",
+      "revid": 5750496
      },
      "scene": "translated"
     },
@@ -7715,9 +7763,15 @@
       "detail": "Q7932996 label (ru)"
      },
      "quote": {
-      "text": "Я не то, что я есть.",
-      "source": "new",
-      "cite": "Twelfth Night 3.1"
+      "text": "Вы не ошиблись: я - не я, синьора.",
+      "source": "published",
+      "cite": "Twelfth Night 3.1",
+      "translator": "Андрей Кронеберг (1814–1855)",
+      "edition": "«Двенадцатая ночь, или Что угодно», 1841 (ru.wikisource.org transcription, modern orthography)",
+      "status": "Public domain: Russia (life + 70 years; translator died 1855) and United States (published before 1931)",
+      "url": "https://ru.wikisource.org/wiki/%D0%94%D0%B2%D0%B5%D0%BD%D0%B0%D0%B4%D1%86%D0%B0%D1%82%D0%B0%D1%8F_%D0%BD%D0%BE%D1%87%D1%8C%2C_%D0%B8%D0%BB%D0%B8_%D0%A7%D1%82%D0%BE_%D1%83%D0%B3%D0%BE%D0%B4%D0%BD%D0%BE_%28%D0%A8%D0%B5%D0%BA%D1%81%D0%BF%D0%B8%D1%80%3B_%D0%9A%D1%80%D0%BE%D0%BD%D0%B5%D0%B1%D0%B5%D1%80%D0%B3%29?oldid=5657876",
+      "page": "Двенадцатая ночь, или Что угодно (Шекспир; Кронеберг)",
+      "revid": 5657876
      },
      "scene": "translated"
     },
@@ -7728,9 +7782,15 @@
       "detail": "Q3844047 has no label in ru and no ru.wikipedia.org article"
      },
      "quote": {
-      "text": "Одни рождаются великими, другие достигают величия, а третьим величие навязывают.",
-      "source": "new",
-      "cite": "Twelfth Night 2.5"
+      "text": "Одни родятся великими, - другие приобретают величие, а иным его бросают.",
+      "source": "published",
+      "cite": "Twelfth Night 2.5",
+      "translator": "Андрей Кронеберг (1814–1855)",
+      "edition": "«Двенадцатая ночь, или Что угодно», 1841 (ru.wikisource.org transcription, modern orthography)",
+      "status": "Public domain: Russia (life + 70 years; translator died 1855) and United States (published before 1931)",
+      "url": "https://ru.wikisource.org/wiki/%D0%94%D0%B2%D0%B5%D0%BD%D0%B0%D0%B4%D1%86%D0%B0%D1%82%D0%B0%D1%8F_%D0%BD%D0%BE%D1%87%D1%8C%2C_%D0%B8%D0%BB%D0%B8_%D0%A7%D1%82%D0%BE_%D1%83%D0%B3%D0%BE%D0%B4%D0%BD%D0%BE_%28%D0%A8%D0%B5%D0%BA%D1%81%D0%BF%D0%B8%D1%80%3B_%D0%9A%D1%80%D0%BE%D0%BD%D0%B5%D0%B1%D0%B5%D1%80%D0%B3%29?oldid=5657876",
+      "page": "Двенадцатая ночь, или Что угодно (Шекспир; Кронеберг)",
+      "revid": 5657876
      },
      "scene": "translated"
     },
@@ -7811,9 +7871,15 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": "Много раз по утрам его видели там, слезами умножающим свежую утреннюю росу.",
-      "source": "new",
-      "cite": "Romeo and Juliet 1.1"
+      "text": "Уж много раз его видали в роще, / В часы утра; холодную росу / Слезами там усиливал Ромео",
+      "source": "published",
+      "cite": "Romeo and Juliet 1.1",
+      "translator": "Дмитрий Михаловский (1828–1905)",
+      "edition": "«Ромео и Джульетта», 1888 (ru.wikisource.org transcription, modern orthography)",
+      "status": "Public domain: Russia (life + 70 years; translator died 1905) and United States (published before 1931)",
+      "url": "https://ru.wikisource.org/wiki/%D0%A0%D0%BE%D0%BC%D0%B5%D0%BE_%D0%B8_%D0%94%D0%B6%D1%83%D0%BB%D1%8C%D0%B5%D1%82%D1%82%D0%B0_%28%D0%A8%D0%B5%D0%BA%D1%81%D0%BF%D0%B8%D1%80%3B_%D0%9C%D0%B8%D1%85%D0%B0%D0%BB%D0%BE%D0%B2%D1%81%D0%BA%D0%B8%D0%B9%29/2001?oldid=5750496",
+      "page": "Ромео и Джульетта (Шекспир; Михаловский)/2001",
+      "revid": 5750496
      },
      "scene": "translated"
     },
@@ -7824,9 +7890,15 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": "Замужество, как раз о замужестве я и пришла говорить.",
-      "source": "new",
-      "cite": "Romeo and Juliet 1.3"
+      "text": "Об этом вот предмете и хочу я / Поговорить.",
+      "source": "published",
+      "cite": "Romeo and Juliet 1.3",
+      "translator": "Дмитрий Михаловский (1828–1905)",
+      "edition": "«Ромео и Джульетта», 1888 (ru.wikisource.org transcription, modern orthography)",
+      "status": "Public domain: Russia (life + 70 years; translator died 1905) and United States (published before 1931)",
+      "url": "https://ru.wikisource.org/wiki/%D0%A0%D0%BE%D0%BC%D0%B5%D0%BE_%D0%B8_%D0%94%D0%B6%D1%83%D0%BB%D1%8C%D0%B5%D1%82%D1%82%D0%B0_%28%D0%A8%D0%B5%D0%BA%D1%81%D0%BF%D0%B8%D1%80%3B_%D0%9C%D0%B8%D1%85%D0%B0%D0%BB%D0%BE%D0%B2%D1%81%D0%BA%D0%B8%D0%B9%29/2001?oldid=5750496",
+      "page": "Ромео и Джульетта (Шекспир; Михаловский)/2001",
+      "revid": 5750496
      },
      "scene": "translated"
     },
@@ -7837,9 +7909,15 @@
       "detail": "Q3140503 label (ru)"
      },
      "quote": {
-      "text": "Вот разбилось благородное сердце. Доброй ночи, милый принц.",
-      "source": "new",
-      "cite": "Hamlet 5.2"
+      "text": "Великое не бьется сердце! Милый / Принц, доброй ночи!",
+      "source": "published",
+      "cite": "Hamlet 5.2",
+      "translator": "Пётр Гнедич (1855–1925)",
+      "edition": "«Гамлет, принц датский», издание 1917 года (первое 1892) (ru.wikisource.org transcription, modern orthography)",
+      "status": "Public domain: Russia (life + 70 years; translator died 1925) and United States (published before 1931)",
+      "url": "https://ru.wikisource.org/wiki/%D0%93%D0%B0%D0%BC%D0%BB%D0%B5%D1%82%2C_%D0%BF%D1%80%D0%B8%D0%BD%D1%86_%D0%B4%D0%B0%D1%82%D1%81%D0%BA%D0%B8%D0%B9_%28%D0%A8%D0%B5%D0%BA%D1%81%D0%BF%D0%B8%D1%80%3B_%D0%93%D0%BD%D0%B5%D0%B4%D0%B8%D1%87%29/1917_%28%D0%A1%D0%9E%29?oldid=5657806",
+      "page": "Гамлет, принц датский (Шекспир; Гнедич)/1917 (СО)",
+      "revid": 5657806
      },
      "scene": "translated"
     },
@@ -7863,9 +7941,15 @@
       "detail": "Q3687815 label (ru)"
      },
      "quote": {
-      "text": "В эти дни скорби нет времени для сватовства.",
-      "source": "new",
-      "cite": "Romeo and Juliet 3.4"
+      "text": "В такие / Минуты горя не до сватовства.",
+      "source": "published",
+      "cite": "Romeo and Juliet 3.4",
+      "translator": "Дмитрий Михаловский (1828–1905)",
+      "edition": "«Ромео и Джульетта», 1888 (ru.wikisource.org transcription, modern orthography)",
+      "status": "Public domain: Russia (life + 70 years; translator died 1905) and United States (published before 1931)",
+      "url": "https://ru.wikisource.org/wiki/%D0%A0%D0%BE%D0%BC%D0%B5%D0%BE_%D0%B8_%D0%94%D0%B6%D1%83%D0%BB%D1%8C%D0%B5%D1%82%D1%82%D0%B0_%28%D0%A8%D0%B5%D0%BA%D1%81%D0%BF%D0%B8%D1%80%3B_%D0%9C%D0%B8%D1%85%D0%B0%D0%BB%D0%BE%D0%B2%D1%81%D0%BA%D0%B8%D0%B9%29/2001?oldid=5750496",
+      "page": "Ромео и Джульетта (Шекспир; Михаловский)/2001",
+      "revid": 5750496
      },
      "scene": "translated"
     },
@@ -7876,9 +7960,15 @@
       "detail": "Q634983 label (ru)"
      },
      "quote": {
-      "text": "О дивный новый мир, где есть такие люди!",
-      "source": "new",
-      "cite": "The Tempest 5.1"
+      "text": "Как мир хорош с такими существами!",
+      "source": "published",
+      "cite": "The Tempest 5.1",
+      "translator": "Николай Сатин (1814–1873)",
+      "edition": "«Буря», 1840 (ru.wikisource.org transcription, modern orthography, of a later edition in which 41 lines of the masque in act 4 are by Olga Chyumina, 1864–1909; no line used here is among them)",
+      "status": "Public domain: Russia (life + 70 years; translator died 1873) and United States (published before 1931)",
+      "url": "https://ru.wikisource.org/wiki/%D0%91%D1%83%D1%80%D1%8F_%28%D0%A8%D0%B5%D0%BA%D1%81%D0%BF%D0%B8%D1%80%3B_%D0%A1%D0%B0%D1%82%D0%B8%D0%BD%29?oldid=5250007",
+      "page": "Буря (Шекспир; Сатин)",
+      "revid": 5250007
      },
      "scene": "translated"
     },
@@ -7889,9 +7979,15 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": "Моя щедрость безбрежна, как море, моя любовь так же глубока.",
-      "source": "new",
-      "cite": "Romeo and Juliet 2.2"
+      "text": "Для щедрости моей пределов нет, / И глубока моя любовь, как море",
+      "source": "published",
+      "cite": "Romeo and Juliet 2.2",
+      "translator": "Дмитрий Михаловский (1828–1905)",
+      "edition": "«Ромео и Джульетта», 1888 (ru.wikisource.org transcription, modern orthography)",
+      "status": "Public domain: Russia (life + 70 years; translator died 1905) and United States (published before 1931)",
+      "url": "https://ru.wikisource.org/wiki/%D0%A0%D0%BE%D0%BC%D0%B5%D0%BE_%D0%B8_%D0%94%D0%B6%D1%83%D0%BB%D1%8C%D0%B5%D1%82%D1%82%D0%B0_%28%D0%A8%D0%B5%D0%BA%D1%81%D0%BF%D0%B8%D1%80%3B_%D0%9C%D0%B8%D1%85%D0%B0%D0%BB%D0%BE%D0%B2%D1%81%D0%BA%D0%B8%D0%B9%29/2001?oldid=5750496",
+      "page": "Ромео и Джульетта (Шекспир; Михаловский)/2001",
+      "revid": 5750496
      },
      "scene": "translated"
     },
@@ -7902,9 +7998,15 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": "Не всё то золото, что блестит.",
-      "source": "new",
-      "cite": "The Merchant of Venice 2.7"
+      "text": "Не все то злато, что блестит",
+      "source": "published",
+      "cite": "The Merchant of Venice 2.7",
+      "translator": "Пётр Вейнберг (1830–1908)",
+      "edition": "«Венецианский купец», 1866 (ru.wikisource.org transcription, modern orthography)",
+      "status": "Public domain: Russia (life + 70 years; translator died 1908) and United States (published before 1931)",
+      "url": "https://ru.wikisource.org/wiki/%D0%92%D0%B5%D0%BD%D0%B5%D1%86%D0%B8%D0%B0%D0%BD%D1%81%D0%BA%D0%B8%D0%B9_%D0%BA%D1%83%D0%BF%D0%B5%D1%86_%28%D0%A8%D0%B5%D0%BA%D1%81%D0%BF%D0%B8%D1%80%3B_%D0%92%D0%B5%D0%B9%D0%BD%D0%B1%D0%B5%D1%80%D0%B3%29?oldid=5657718",
+      "page": "Венецианский купец (Шекспир; Вейнберг)",
+      "revid": 5657718
      },
      "scene": "translated"
     },
@@ -7932,7 +8034,7 @@
       "source": "published",
       "cite": "The Tempest 5.1",
       "translator": "Николай Сатин (1814–1873)",
-      "edition": "«Буря», 1840 (ru.wikisource.org transcription, modern orthography)",
+      "edition": "«Буря», 1840 (ru.wikisource.org transcription, modern orthography, of a later edition in which 41 lines of the masque in act 4 are by Olga Chyumina, 1864–1909; no line used here is among them)",
       "status": "Public domain: Russia (life + 70 years; translator died 1873) and United States (published before 1931)",
       "url": "https://ru.wikisource.org/wiki/%D0%91%D1%83%D1%80%D1%8F_%28%D0%A8%D0%B5%D0%BA%D1%81%D0%BF%D0%B8%D1%80%3B_%D0%A1%D0%B0%D1%82%D0%B8%D0%BD%29?oldid=5250007",
       "page": "Буря (Шекспир; Сатин)",
@@ -8005,9 +8107,15 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": "В час моего покоя твой дядя подкрался с соком проклятой белены в склянке.",
-      "source": "new",
-      "cite": "Hamlet 1.5"
+      "text": "Твой дядя к сонному подкрался тихо / С проклятым соком белены в фиале",
+      "source": "published",
+      "cite": "Hamlet 1.5",
+      "translator": "Пётр Гнедич (1855–1925)",
+      "edition": "«Гамлет, принц датский», издание 1917 года (первое 1892) (ru.wikisource.org transcription, modern orthography)",
+      "status": "Public domain: Russia (life + 70 years; translator died 1925) and United States (published before 1931)",
+      "url": "https://ru.wikisource.org/wiki/%D0%93%D0%B0%D0%BC%D0%BB%D0%B5%D1%82%2C_%D0%BF%D1%80%D0%B8%D0%BD%D1%86_%D0%B4%D0%B0%D1%82%D1%81%D0%BA%D0%B8%D0%B9_%28%D0%A8%D0%B5%D0%BA%D1%81%D0%BF%D0%B8%D1%80%3B_%D0%93%D0%BD%D0%B5%D0%B4%D0%B8%D1%87%29/1917_%28%D0%A1%D0%9E%29?oldid=5657806",
+      "page": "Гамлет, принц датский (Шекспир; Гнедич)/1917 (СО)",
+      "revid": 5657806
      },
      "scene": "translated"
     },
@@ -8031,9 +8139,15 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": "На глубине пяти саженей лежит твой отец; из его костей стал коралл.",
-      "source": "new",
-      "cite": "The Tempest 1.2"
+      "text": "На пять сажен в воде уложен твой отец, / Его кости в коралл превратились",
+      "source": "published",
+      "cite": "The Tempest 1.2",
+      "translator": "Николай Сатин (1814–1873)",
+      "edition": "«Буря», 1840 (ru.wikisource.org transcription, modern orthography, of a later edition in which 41 lines of the masque in act 4 are by Olga Chyumina, 1864–1909; no line used here is among them)",
+      "status": "Public domain: Russia (life + 70 years; translator died 1873) and United States (published before 1931)",
+      "url": "https://ru.wikisource.org/wiki/%D0%91%D1%83%D1%80%D1%8F_%28%D0%A8%D0%B5%D0%BA%D1%81%D0%BF%D0%B8%D1%80%3B_%D0%A1%D0%B0%D1%82%D0%B8%D0%BD%29?oldid=5250007",
+      "page": "Буря (Шекспир; Сатин)",
+      "revid": 5250007
      },
      "scene": "translated"
     },
@@ -8044,9 +8158,15 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": "Влей это в любую жидкость и выпей; и будь в тебе сила двадцати человек, оно тотчас тебя прикончит.",
-      "source": "new",
-      "cite": "Romeo and Juliet 5.1"
+      "text": "Вот этот яд вы в жидкость опустите / И выпейте. Хотя бы ваших сил / Для двадцати людей довольно было, / Но этот яд тотчас бы вас убил.",
+      "source": "published",
+      "cite": "Romeo and Juliet 5.1",
+      "translator": "Дмитрий Михаловский (1828–1905)",
+      "edition": "«Ромео и Джульетта», 1888 (ru.wikisource.org transcription, modern orthography)",
+      "status": "Public domain: Russia (life + 70 years; translator died 1905) and United States (published before 1931)",
+      "url": "https://ru.wikisource.org/wiki/%D0%A0%D0%BE%D0%BC%D0%B5%D0%BE_%D0%B8_%D0%94%D0%B6%D1%83%D0%BB%D1%8C%D0%B5%D1%82%D1%82%D0%B0_%28%D0%A8%D0%B5%D0%BA%D1%81%D0%BF%D0%B8%D1%80%3B_%D0%9C%D0%B8%D1%85%D0%B0%D0%BB%D0%BE%D0%B2%D1%81%D0%BA%D0%B8%D0%B9%29/2001?oldid=5750496",
+      "page": "Ромео и Джульетта (Шекспир; Михаловский)/2001",
+      "revid": 5750496
      },
      "scene": "translated"
     },
@@ -10359,7 +10479,7 @@
      "source": "translated"
     },
     "Olympus": {
-     "text": "ओलंपस",
+     "text": "ओलिंपस",
      "source": "translated"
     },
     "Underworld": {
@@ -13387,7 +13507,7 @@
       "detail": "Q41746 label (ko)"
      },
      "quote": {
-      "text": "잊혀진 긴 삶보다 영광의 짧은 삶을 살겠다.",
+      "text": "잊힌 긴 삶보다 영광의 짧은 삶을 살겠다.",
       "source": "new",
       "cite": "the game's own paraphrase of Iliad 9.410-416"
      },
@@ -13864,7 +13984,7 @@
       "detail": "word 3 of 3 of \"Marcus Junius Brutus\" (Q172248 label (vi))"
      },
      "quote": {
-      "text": "Không phải tôi yêu Caesar ít hơn, mà là tôi yêu thành Rome nhiều hơn.",
+      "text": "Không phải tôi yêu Caesar ít hơn, mà là tôi yêu thành Roma nhiều hơn.",
       "source": "new",
       "cite": "Julius Caesar 3.2"
      },
@@ -14085,7 +14205,7 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": "Vào giờ ta yên giấc, chú của con lẻn tới, mang theo một lọ nhựa hebona đáng nguyền rủa.",
+      "text": "Vào giờ ta yên giấc, chú của con lẻn tới, mang theo nhựa hebona đáng nguyền rủa trong một chiếc lọ.",
       "source": "new",
       "cite": "Hamlet 1.5"
      },
@@ -15637,7 +15757,7 @@
       "detail": "Q5503354 has no label in id and no id.wikipedia.org article"
      },
      "quote": {
-      "text": "Kenikmatan yang menggelora ini berakhir dengan menggelora pula.",
+      "text": "Kenikmatan yang ganas ini berakhir secara ganas pula.",
       "source": "new",
       "cite": "Romeo and Juliet 2.6"
      },
