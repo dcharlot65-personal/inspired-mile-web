@@ -69,7 +69,7 @@ const messages: Record<string, string> = {
   'classroom.wizard.s2.board': 'An die Tafel schreiben',
   'classroom.wizard.s2.lms': 'Auf der Lernplattform einstellen',
   'classroom.wizard.s2.print': 'Arbeitsblatt ausdrucken',
-  'classroom.wizard.s3.title': 'Aktivitäten aufgeben',
+  'classroom.wizard.s3.title': 'Aktivitäten zuweisen',
   'classroom.wizard.s3.body': 'Lege Aufgaben für deine Klasse an: ein Shakespeare-Quiz zur Wissensabfrage, Zitat-Herausforderungen mit Lücken zum Ergänzen oder ein Strophenduell für kreatives Schreiben.',
   'classroom.wizard.s3.trivia': '5 Multiple-Choice-Fragen zu Shakespeare',
   'classroom.wizard.s3.challenge': 'Fehlende Wörter in berühmten Zitaten ergänzen',

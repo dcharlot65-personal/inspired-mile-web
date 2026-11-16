@@ -1,0 +1,2529 @@
+{
+ "tool": "LanguageTool (shared install), level picky; each language sent as one text, one string per paragraph (zh and ja one string at a time)",
+ "languages": {
+  "en": {
+   "checked": true,
+   "code": "en-US",
+   "strings": 287,
+   "hits": [
+    {
+     "key": "classroom.teacher.check1",
+     "rule": "SERIAL_COMMA_ON",
+     "category": "STYLE",
+     "message": "The serial comma (Oxford comma, Harvard comma) is missing.",
+     "text": "I am a teacher, an instructor or a school administrator, and I am authorised to use this with my students.",
+     "at": "instructor or",
+     "suggestions": [
+      "instructor, or"
+     ]
+    },
+    {
+     "key": "classroom.teacher.check1",
+     "rule": "MORFOLOGIK_RULE_EN_US",
+     "category": "TYPOS",
+     "message": "Possible spelling mistake. ‘authorised’ is British English.",
+     "text": "I am a teacher, an instructor or a school administrator, and I am authorised to use this with my students.",
+     "at": "authorised",
+     "suggestions": [
+      "authorized"
+     ]
+    },
+    {
+     "key": "classroom.wizard.s2.body",
+     "rule": "EN_REPEATEDWORDS_CHOOSE",
+     "category": "REPETITIONS_STYLE",
+     "message": "This word has been used in one of the immediately preceding sentences. Using a synonym could make your text more interesting to read, unless the repetition is intentional.",
+     "text": "Give your students the 6-letter code. They choose “I am a student”, confirm the consent and enter the code. No email address is needed.",
+     "at": "choose",
+     "suggestions": [
+      "decide",
+      "select",
+      "pick"
+     ]
+    },
+    {
+     "key": "market.by",
+     "rule": "UPPERCASE_SENTENCE_START",
+     "category": "CASING",
+     "message": "This sentence does not start with an uppercase letter.",
+     "text": "from Viola",
+     "at": "from",
+     "suggestions": [
+      "From"
+     ]
+    },
+    {
+     "key": "market.sell.needCard",
+     "rule": "EN_REPEATEDWORDS_CHOOSE",
+     "category": "REPETITIONS_STYLE",
+     "message": "This word has been used in one of the immediately preceding sentences. Using a synonym could make your text more interesting to read, unless the repetition is intentional.",
+     "text": "Choose a card.",
+     "at": "Choose",
+     "suggestions": [
+      "Decide",
+      "Select",
+      "Pick"
+     ]
+    },
+    {
+     "key": "tour.intro",
+     "rule": "MORFOLOGIK_RULE_EN_US",
+     "category": "TYPOS",
+     "message": "Possible spelling mistake. ‘organised’ is British English.",
+     "text": "Enter organised competitions and show your command of verse. Single elimination, round robin and more.",
+     "at": "organised",
+     "suggestions": [
+      "organized"
+     ]
+    },
+    {
+     "key": "tour.intro",
+     "rule": "EN_COMPOUNDS_ROUND_ROBIN",
+     "category": "MISC",
+     "message": "This word is normally spelled with a hyphen.",
+     "text": "Enter organised competitions and show your command of verse. Single elimination, round robin and more.",
+     "at": "round robin",
+     "suggestions": [
+      "round-robin"
+     ]
+    },
+    {
+     "key": "tour.selectHint",
+     "rule": "EN_REPEATEDWORDS_CHOOSE",
+     "category": "REPETITIONS_STYLE",
+     "message": "This word has been used in one of the immediately preceding sentences. Using a synonym could make your text more interesting to read, unless the repetition is intentional.",
+     "text": "Choose a tournament to see its bracket.",
+     "at": "Choose",
+     "suggestions": [
+      "Decide",
+      "Select",
+      "Pick"
+     ]
+    },
+    {
+     "key": "tour.format.round_robin",
+     "rule": "EN_COMPOUNDS_ROUND_ROBIN",
+     "category": "MISC",
+     "message": "This word is normally spelled with a hyphen.",
+     "text": "Round robin",
+     "at": "Round robin",
+     "suggestions": [
+      "Round-robin"
+     ]
+    },
+    {
+     "key": "season.intro",
+     "rule": "SERIAL_COMMA_ON",
+     "category": "STYLE",
+     "message": "The serial comma (Oxford comma, Harvard comma) is missing.",
+     "text": "Play battles, trivia and challenges to earn XP. Each new level unlocks cards, credits and titles.",
+     "at": "trivia and",
+     "suggestions": [
+      "trivia, and"
+     ]
+    },
+    {
+     "key": "season.intro",
+     "rule": "SERIAL_COMMA_ON",
+     "category": "STYLE",
+     "message": "The serial comma (Oxford comma, Harvard comma) is missing.",
+     "text": "Play battles, trivia and challenges to earn XP. Each new level unlocks cards, credits and titles.",
+     "at": "credits and",
+     "suggestions": [
+      "credits, and"
+     ]
+    },
+    {
+     "key": "viewer.status.ready",
+     "rule": "EN_REPEATEDWORDS_CHOOSE",
+     "category": "REPETITIONS_STYLE",
+     "message": "This word has been used in one of the immediately preceding sentences. Using a synonym could make your text more interesting to read, unless the repetition is intentional.",
+     "text": "The 3D viewer is ready. Choose a card.",
+     "at": "Choose",
+     "suggestions": [
+      "Decide",
+      "Select",
+      "Pick"
+     ]
+    },
+    {
+     "key": "viewer.card.splat.body",
+     "rule": "SERIAL_COMMA_ON",
+     "category": "STYLE",
+     "message": "The serial comma (Oxford comma, Harvard comma) is missing.",
+     "text": "Gaussian splats drawn by Babylon.js. Turn, zoom and move around a lifelike 3D picture of the model.",
+     "at": "zoom and",
+     "suggestions": [
+      "zoom, and"
+     ]
+    },
+    {
+     "key": "error.variant_already_unlocked",
+     "rule": "ENGLISH_WORD_REPEAT_BEGINNING_RULE",
+     "category": "REPETITIONS_STYLE",
+     "message": "Three successive sentences begin with the same word. Consider rewording the sentence or use a thesaurus to find a synonym.",
+     "text": "You have already unlocked that variant.",
+     "at": "You",
+     "suggestions": [
+      "Furthermore, you",
+      "Likewise, you",
+      "Not only that, but you"
+     ]
+    },
+    {
+     "key": "pwa.storage.keptNoSize",
+     "rule": "ENGLISH_WORD_REPEAT_BEGINNING_RULE",
+     "category": "REPETITIONS_STYLE",
+     "message": "Three successive sentences begin with the same word. Consider rewording the sentence or use a thesaurus to find a synonym.",
+     "text": "Your download is kept on this device. Your browser will not clear it on its own.",
+     "at": "Your",
+     "suggestions": []
+    },
+    {
+     "key": "pwa.storage.atRisk",
+     "rule": "COMMA_COMPOUND_SENTENCE",
+     "category": "PUNCTUATION",
+     "message": "Use a comma before ‘or’ if it connects two independent clauses (unless they are closely connected and short).",
+     "text": "1.1 GB stored, but your browser may clear this if the device runs short of space or you stay away for a while.",
+     "at": " or",
+     "suggestions": [
+      ", or"
+     ]
+    },
+    {
+     "key": "pwa.storage.atRiskNoSize",
+     "rule": "COMMA_COMPOUND_SENTENCE",
+     "category": "PUNCTUATION",
+     "message": "Use a comma before ‘or’ if it connects two independent clauses (unless they are closely connected and short).",
+     "text": "Your download is stored, but your browser may clear this if the device runs short of space or you stay away for a while.",
+     "at": " or",
+     "suggestions": [
+      ", or"
+     ]
+    }
+   ]
+  },
+  "es": {
+   "checked": true,
+   "code": "es",
+   "strings": 289,
+   "hits": [
+    {
+     "key": "classroom.role.teacherHint",
+     "rule": "REP_CREAR",
+     "category": "REPETITIONS_STYLE",
+     "message": "Esta expresión ya ha aparecido antes. Puede sustituirla por otra para hacer más variado el texto.",
+     "text": "Crear y gestionar clases",
+     "at": "Crear",
+     "suggestions": [
+      "Generar",
+      "Producir",
+      "Inventar"
+     ]
+    },
+    {
+     "key": "classroom.create.submit",
+     "rule": "REP_CREAR",
+     "category": "REPETITIONS_STYLE",
+     "message": "Esta expresión ya ha aparecido antes. Puede sustituirla por otra para hacer más variado el texto.",
+     "text": "Crear",
+     "at": "Crear",
+     "suggestions": [
+      "Generar",
+      "Producir",
+      "Inventar"
+     ]
+    },
+    {
+     "key": "classroom.create.done",
+     "rule": "REP_CREAR",
+     "category": "REPETITIONS_STYLE",
+     "message": "Esta expresión ya ha aparecido antes. Puede sustituirla por otra para hacer más variado el texto.",
+     "text": "La clase se ha creado.",
+     "at": "creado",
+     "suggestions": [
+      "generado",
+      "producido",
+      "inventado"
+     ]
+    },
+    {
+     "key": "classroom.wizard.s1.title",
+     "rule": "REP_CREAR",
+     "category": "REPETITIONS_STYLE",
+     "message": "Esta expresión ya ha aparecido antes. Puede sustituirla por otra para hacer más variado el texto.",
+     "text": "Crea tu clase",
+     "at": "Crea",
+     "suggestions": [
+      "Genere",
+      "Produzca",
+      "Invente"
+     ]
+    },
+    {
+     "key": "classroom.wizard.s1.body",
+     "rule": "REP_CREAR",
+     "category": "REPETITIONS_STYLE",
+     "message": "Esta expresión ya ha aparecido antes. Puede sustituirla por otra para hacer más variado el texto.",
+     "text": "Elige «Crear una clase» y ponle un nombre, por ejemplo «Literatura 3.º B» o «Shakespeare para empezar». Cada clase recibe su propio código de acceso de 6 letras.",
+     "at": "Crear",
+     "suggestions": [
+      "Generar",
+      "Producir",
+      "Inventar"
+     ]
+    },
+    {
+     "key": "classroom.wizard.s1.body",
+     "rule": "MORFOLOGIK_RULE_ES",
+     "category": "TYPOS",
+     "message": "Se ha encontrado un posible error ortográfico.",
+     "text": "Elige «Crear una clase» y ponle un nombre, por ejemplo «Literatura 3.º B» o «Shakespeare para empezar». Cada clase recibe su propio código de acceso de 6 letras.",
+     "at": "º",
+     "suggestions": []
+    },
+    {
+     "key": "classroom.wizard.s3.body",
+     "rule": "REP_CREAR",
+     "category": "REPETITIONS_STYLE",
+     "message": "Esta expresión ya ha aparecido antes. Puede sustituirla por otra para hacer más variado el texto.",
+     "text": "Crea tareas para tu clase: trivial sobre Shakespeare para comprobar lo aprendido, desafíos de citas para completar las palabras que faltan o un duelo de estrofas para la escritura creativa.",
+     "at": "Crea",
+     "suggestions": [
+      "Genere",
+      "Produzca",
+      "Invente"
+     ]
+    },
+    {
+     "key": "market.by",
+     "rule": "UPPERCASE_SENTENCE_START",
+     "category": "CASING",
+     "message": "Esta frase no empieza con mayúscula.",
+     "text": "de Viola",
+     "at": "de",
+     "suggestions": [
+      "De"
+     ]
+    },
+    {
+     "key": "market.mine.signIn",
+     "rule": "ES_REPEATEDWORDS_INICIAR",
+     "category": "REPETITIONS_STYLE",
+     "message": "Esta palabra ya ha aparecido en una de las frases inmediatamente anteriores. Puede usar un sinónimo para hacer más interesante el texto, excepto si la repetición es intencionada.",
+     "text": "Inicia sesión para ver tus anuncios.",
+     "at": "Inicia",
+     "suggestions": [
+      "Comienza",
+      "Empieza",
+      "Pone en marcha"
+     ]
+    },
+    {
+     "key": "market.toast.signInSell",
+     "rule": "ES_REPEATEDWORDS_INICIAR",
+     "category": "REPETITIONS_STYLE",
+     "message": "Esta palabra ya ha aparecido en una de las frases inmediatamente anteriores. Puede usar un sinónimo para hacer más interesante el texto, excepto si la repetición es intencionada.",
+     "text": "Inicia sesión para crear un anuncio.",
+     "at": "Inicia",
+     "suggestions": [
+      "Comienza",
+      "Empieza",
+      "Pone en marcha"
+     ]
+    },
+    {
+     "key": "tour.toast.signIn",
+     "rule": "ES_REPEATEDWORDS_INICIAR",
+     "category": "REPETITIONS_STYLE",
+     "message": "Esta palabra ya ha aparecido en una de las frases inmediatamente anteriores. Puede usar un sinónimo para hacer más interesante el texto, excepto si la repetición es intencionada.",
+     "text": "Inicia sesión para inscribirte.",
+     "at": "Inicia",
+     "suggestions": [
+      "Comienza",
+      "Empieza",
+      "Pone en marcha"
+     ]
+    },
+    {
+     "key": "season.signIn",
+     "rule": "ES_REPEATEDWORDS_INICIAR",
+     "category": "REPETITIONS_STYLE",
+     "message": "Esta palabra ya ha aparecido en una de las frases inmediatamente anteriores. Puede usar un sinónimo para hacer más interesante el texto, excepto si la repetición es intencionada.",
+     "text": "Inicia sesión para conservar el progreso de tu Pase de temporada en todos tus dispositivos.",
+     "at": "Inicia",
+     "suggestions": [
+      "Comienza",
+      "Empieza",
+      "Pone en marcha"
+     ]
+    },
+    {
+     "key": "viewer.error.init",
+     "rule": "ES_REPEATEDWORDS_INICIAR",
+     "category": "REPETITIONS_STYLE",
+     "message": "Esta palabra ya ha aparecido en una de las frases inmediatamente anteriores. Puede usar un sinónimo para hacer más interesante el texto, excepto si la repetición es intencionada.",
+     "text": "El visor 3D no ha podido iniciarse.",
+     "at": "iniciarse",
+     "suggestions": [
+      "comenzarse",
+      "empezarse",
+      "ponerse en marcha"
+     ]
+    },
+    {
+     "key": "error.not_signed_in",
+     "rule": "ES_REPEATEDWORDS_INICIAR",
+     "category": "REPETITIONS_STYLE",
+     "message": "Esta palabra ya ha aparecido en una de las frases inmediatamente anteriores. Puede usar un sinónimo para hacer más interesante el texto, excepto si la repetición es intencionada.",
+     "text": "Inicia sesión primero.",
+     "at": "Inicia",
+     "suggestions": [
+      "Comienza",
+      "Empieza",
+      "Pone en marcha"
+     ]
+    },
+    {
+     "key": "pwa.storage.keptNoSize",
+     "rule": "SPANISH_WORD_REPEAT_BEGINNING_RULE",
+     "category": "REPETITIONS_STYLE",
+     "message": "Tres frases consecutivas comienzan con la misma palabra. Considere reescribir la frase o usar un sinónimo.",
+     "text": "Tu descarga se conserva en este dispositivo. Tu navegador no la borrará por su cuenta.",
+     "at": "Tu",
+     "suggestions": []
+    },
+    {
+     "key": "pwa.storage.lessThan",
+     "rule": "UPPERCASE_SENTENCE_START",
+     "category": "CASING",
+     "message": "Esta frase no empieza con mayúscula.",
+     "text": "menos de 1,1 GB",
+     "at": "menos",
+     "suggestions": [
+      "Menos"
+     ]
+    }
+   ]
+  },
+  "fr": {
+   "checked": true,
+   "code": "fr",
+   "strings": 289,
+   "hits": [
+    {
+     "key": "classroom.role.student",
+     "rule": "POINT",
+     "category": "PONCTUATION_POINT",
+     "message": "Un point est requis pour indiquer la fin de cette phrase.",
+     "text": "Je suis élève",
+     "at": "élève",
+     "suggestions": [
+      "élève.",
+      "élève…"
+     ]
+    },
+    {
+     "key": "market.by",
+     "rule": "UPPERCASE_SENTENCE_START",
+     "category": "CASING",
+     "message": "Cette phrase ne commence pas par une majuscule.",
+     "text": "de Viola",
+     "at": "de",
+     "suggestions": [
+      "De"
+     ]
+    },
+    {
+     "key": "viewer.intro",
+     "rule": "FR_SPELLING_RULE",
+     "category": "TYPOS",
+     "message": "Faute de frappe possible trouvée.",
+     "text": "Explorez vos cartes en modèles 3D. Passez du splat gaussien au maillage GLB. Faites glisser pour tourner le modèle, utilisez la molette pour zoomer.",
+     "at": "du splat",
+     "suggestions": [
+      "dus plat",
+      "du plat",
+      "du aplat"
+     ]
+    },
+    {
+     "key": "viewer.card.splat.title",
+     "rule": "FR_SPELLING_RULE",
+     "category": "TYPOS",
+     "message": "Faute de frappe possible trouvée.",
+     "text": "Vue splat",
+     "at": "Vue splat",
+     "suggestions": [
+      "Vues plat",
+      "Vue plat",
+      "Vue aplat"
+     ]
+    },
+    {
+     "key": "app.description",
+     "rule": "FR_SPELLING_RULE",
+     "category": "TYPOS",
+     "message": "Faute de frappe possible trouvée.",
+     "text": "Un jeu de cartes shakespearien façon battle de rap, par Inspired Mile. Jouez vos cartes, respectez la forme et écrivez mieux qu’un adversaire qui tourne entièrement sur votre appareil.",
+     "at": "battle",
+     "suggestions": [
+      "battre",
+      "battue",
+      "bâtie"
+     ]
+    },
+    {
+     "key": "pwa.storage.atRiskNoSize",
+     "rule": "REP_PENDANT",
+     "category": "REPETITIONS_STYLE",
+     "message": "Dans un contexte formel, d’autres structures peuvent être utilisées pour enrichir votre style.",
+     "text": "Votre téléchargement est enregistré, mais votre navigateur peut l’effacer si l’appareil manque d’espace ou si vous ne revenez pas pendant un certain temps.",
+     "at": "pendant",
+     "suggestions": [
+      "durant"
+     ]
+    },
+    {
+     "key": "pwa.storage.lessThan",
+     "rule": "UPPERCASE_SENTENCE_START",
+     "category": "CASING",
+     "message": "Cette phrase ne commence pas par une majuscule.",
+     "text": "moins de 1,1 Go",
+     "at": "moins",
+     "suggestions": [
+      "Moins"
+     ]
+    }
+   ]
+  },
+  "de": {
+   "checked": true,
+   "code": "de-DE",
+   "strings": 287,
+   "hits": [
+    {
+     "key": "classroom.wizard.s4.ferpa",
+     "rule": "GERMAN_SPELLER_RULE",
+     "category": "TYPOS",
+     "message": "Möglicher Tippfehler gefunden.",
+     "text": "FERPA-konform",
+     "at": "FERPA-konform",
+     "suggestions": [
+      "ERP-konform",
+      "HEPA-konform",
+      "SEPA-konform"
+     ]
+    },
+    {
+     "key": "market.by",
+     "rule": "UPPERCASE_SENTENCE_START",
+     "category": "CASING",
+     "message": "Dieser Satz fängt nicht mit einem großgeschriebenen Wort an.",
+     "text": "von Viola",
+     "at": "von",
+     "suggestions": [
+      "Von"
+     ]
+    },
+    {
+     "key": "market.sell.needPrice",
+     "rule": "GERMAN_SPELLER_RULE",
+     "category": "TYPOS",
+     "message": "Möglicher Tippfehler gefunden.",
+     "text": "Gib einen Preis von mindestens 1 Credit ein.",
+     "at": "Credit",
+     "suggestions": [
+      "Kredit",
+      "Credits",
+      "Breit"
+     ]
+    },
+    {
+     "key": "viewer.meta.description",
+     "rule": "GERMAN_SPELLER_RULE",
+     "category": "TYPOS",
+     "message": "Möglicher Tippfehler gefunden.",
+     "text": "Sieh dir die 3D-Modelle der Karten an, als Gaussian Splats oder als GLB-Meshes.",
+     "at": "GLB-Meshes",
+     "suggestions": [
+      "GB-Bestes",
+      "GB-Messe",
+      "GB-Messen"
+     ]
+    },
+    {
+     "key": "viewer.intro",
+     "rule": "GERMAN_SPELLER_RULE",
+     "category": "TYPOS",
+     "message": "Möglicher Tippfehler gefunden.",
+     "text": "Erkunde deine Karten als 3D-Modelle. Wechsle zwischen Gaussian Splat und GLB-Mesh. Zieh, um das Modell zu drehen, und scrolle zum Zoomen.",
+     "at": "GLB-Mesh",
+     "suggestions": [
+      "GB-Mesh",
+      "GB-Des",
+      "GB-Es"
+     ]
+    },
+    {
+     "key": "viewer.status.glbLoaded",
+     "rule": "GERMAN_SPELLER_RULE",
+     "category": "TYPOS",
+     "message": "Möglicher Tippfehler gefunden.",
+     "text": "GLB-Modell geladen: Hamlet",
+     "at": "GLB-Modell",
+     "suggestions": [
+      "FUSS-Modell",
+      "GAS-Modell",
+      "GEN-Modell"
+     ]
+    },
+    {
+     "key": "viewer.status.noGlb",
+     "rule": "GERMAN_SPELLER_RULE",
+     "category": "TYPOS",
+     "message": "Möglicher Tippfehler gefunden.",
+     "text": "Für Hamlet gibt es kein GLB-Modell.",
+     "at": "GLB-Modell",
+     "suggestions": [
+      "FUSS-Modell",
+      "GAS-Modell",
+      "GEN-Modell"
+     ]
+    },
+    {
+     "key": "viewer.error.glbViewer",
+     "rule": "GERMAN_SPELLER_RULE",
+     "category": "TYPOS",
+     "message": "Möglicher Tippfehler gefunden.",
+     "text": "Die GLB-Ansicht konnte nicht geladen werden.",
+     "at": "GLB-Ansicht",
+     "suggestions": [
+      "FUSS-Ansicht",
+      "GAS-Ansicht",
+      "GEN-Ansicht"
+     ]
+    },
+    {
+     "key": "viewer.card.splat.title",
+     "rule": "GERMAN_SPELLER_RULE",
+     "category": "TYPOS",
+     "message": "Möglicher Tippfehler gefunden.",
+     "text": "Splat-Ansicht",
+     "at": "Splat-Ansicht",
+     "suggestions": [
+      "Salat-Ansicht",
+      "Spalt-Ansicht",
+      "Ablade-Ansicht"
+     ]
+    },
+    {
+     "key": "viewer.card.glb.title",
+     "rule": "GERMAN_SPELLER_RULE",
+     "category": "TYPOS",
+     "message": "Möglicher Tippfehler gefunden.",
+     "text": "GLB-Ansicht",
+     "at": "GLB-Ansicht",
+     "suggestions": [
+      "FUSS-Ansicht",
+      "GAS-Ansicht",
+      "GEN-Ansicht"
+     ]
+    },
+    {
+     "key": "viewer.card.glb.body",
+     "rule": "GERMAN_SPELLER_RULE",
+     "category": "TYPOS",
+     "message": "Möglicher Tippfehler gefunden.",
+     "text": "Ein gewöhnliches Mesh, angezeigt mit model-viewer. Auf dem Handy kann es das Modell in erweiterter Realität in dein Zimmer stellen.",
+     "at": "model-viewer",
+     "suggestions": [
+      "Model-Viewer",
+      "Model-vieler",
+      "Model-Kiewer"
+     ]
+    },
+    {
+     "key": "viewer.card.ar.body",
+     "rule": "GERMAN_SPELLER_RULE",
+     "category": "TYPOS",
+     "message": "Möglicher Tippfehler gefunden.",
+     "text": "Tipp in der GLB-Ansicht auf dem Handy auf „In AR ansehen“, um die Karte in deinem Zimmer zu sehen.",
+     "at": "GLB-Ansicht",
+     "suggestions": [
+      "FUSS-Ansicht",
+      "GAS-Ansicht",
+      "GEN-Ansicht"
+     ]
+    },
+    {
+     "key": "error.conflict",
+     "rule": "GERMAN_WORD_REPEAT_BEGINNING_RULE",
+     "category": "REPETITIONS_STYLE",
+     "message": "Drei aufeinanderfolgende Sätze beginnen mit dem gleichen Wort. Evtl. können Sie den Satz umformulieren, zum Beispiel, indem Sie ein Synonym nutzen.",
+     "text": "Das hat sich gerade geändert. Aktualisiere die Seite und versuch es noch einmal.",
+     "at": "Das",
+     "suggestions": []
+    },
+    {
+     "key": "credits.one",
+     "rule": "GERMAN_SPELLER_RULE",
+     "category": "TYPOS",
+     "message": "Möglicher Tippfehler gefunden.",
+     "text": "1 Credit",
+     "at": "Credit",
+     "suggestions": [
+      "Kredit",
+      "Credits",
+      "Breit"
+     ]
+    },
+    {
+     "key": "pwa.storage.keptNoSize",
+     "rule": "GERMAN_WORD_REPEAT_BEGINNING_RULE",
+     "category": "REPETITIONS_STYLE",
+     "message": "Drei aufeinanderfolgende Sätze beginnen mit dem gleichen Wort. Evtl. können Sie den Satz umformulieren, zum Beispiel, indem Sie ein Synonym nutzen.",
+     "text": "Dein Download ist dauerhaft auf diesem Gerät gespeichert. Dein Browser löscht ihn nicht von selbst.",
+     "at": "Dein",
+     "suggestions": []
+    },
+    {
+     "key": "pwa.storage.lessThan",
+     "rule": "UPPERCASE_SENTENCE_START",
+     "category": "CASING",
+     "message": "Dieser Satz fängt nicht mit einem großgeschriebenen Wort an.",
+     "text": "weniger als 1,1 GB",
+     "at": "weniger",
+     "suggestions": [
+      "Weniger"
+     ]
+    }
+   ]
+  },
+  "it": {
+   "checked": true,
+   "code": "it",
+   "strings": 289,
+   "hits": [
+    {
+     "key": "classroom.wizard.s3.trivia",
+     "rule": "ER_01_001",
+     "category": "CAT12",
+     "message": "Forse volevi dire \"ha scelta\"?",
+     "text": "5 domande a scelta multipla su Shakespeare",
+     "at": "a scelta",
+     "suggestions": [
+      "ha scelta"
+     ]
+    },
+    {
+     "key": "market.meta.description",
+     "rule": "MORFOLOGIK_RULE_IT_IT",
+     "category": "TYPOS",
+     "message": "Trovato un probabile errore di battitura.",
+     "text": "Compra e scambia carte collezionabili di Shakespeare con altri giocatori.",
+     "at": "collezionabili",
+     "suggestions": [
+      "collezionatili",
+      "colleziona bili"
+     ]
+    },
+    {
+     "key": "market.by",
+     "rule": "UPPERCASE_SENTENCE_START",
+     "category": "CASING",
+     "message": "Questa frase non inizia con una maiuscola",
+     "text": "di Viola",
+     "at": "di",
+     "suggestions": [
+      "Di"
+     ]
+    },
+    {
+     "key": "tour.bye",
+     "rule": "MORFOLOGIK_RULE_IT_IT",
+     "category": "TYPOS",
+     "message": "Trovato un probabile errore di battitura.",
+     "text": "Bye",
+     "at": "Bye",
+     "suggestions": [
+      "BSE",
+      "Bee",
+      "Be"
+     ]
+    },
+    {
+     "key": "season.meta.title",
+     "rule": "MORFOLOGIK_RULE_IT_IT",
+     "category": "TYPOS",
+     "message": "Trovato un probabile errore di battitura.",
+     "text": "Pass stagionale",
+     "at": "Pass",
+     "suggestions": [
+      "Mass",
+      "Passa",
+      "Passe"
+     ]
+    },
+    {
+     "key": "season.meta.description",
+     "rule": "MORFOLOGIK_RULE_IT_IT",
+     "category": "TYPOS",
+     "message": "Trovato un probabile errore di battitura.",
+     "text": "Fai salire di livello il tuo Pass stagionale per sbloccare ricompense in Inspired Mile.",
+     "at": "Pass",
+     "suggestions": [
+      "Mass",
+      "Passa",
+      "Passe"
+     ]
+    },
+    {
+     "key": "season.title",
+     "rule": "MORFOLOGIK_RULE_IT_IT",
+     "category": "TYPOS",
+     "message": "Trovato un probabile errore di battitura.",
+     "text": "Pass stagionale",
+     "at": "Pass",
+     "suggestions": [
+      "Mass",
+      "Passa",
+      "Passe"
+     ]
+    },
+    {
+     "key": "season.reward.premium",
+     "rule": "MORFOLOGIK_RULE_IT_IT",
+     "category": "TYPOS",
+     "message": "Trovato un probabile errore di battitura.",
+     "text": "Premium",
+     "at": "Premium",
+     "suggestions": [
+      "Premi",
+      "Premia",
+      "Premiai"
+     ]
+    },
+    {
+     "key": "season.signIn",
+     "rule": "MORFOLOGIK_RULE_IT_IT",
+     "category": "TYPOS",
+     "message": "Trovato un probabile errore di battitura.",
+     "text": "Accedi per conservare i progressi del tuo Pass stagionale su tutti i dispositivi.",
+     "at": "Pass",
+     "suggestions": [
+      "Mass",
+      "Passa",
+      "Passe"
+     ]
+    },
+    {
+     "key": "viewer.meta.description",
+     "rule": "MORFOLOGIK_RULE_IT_IT",
+     "category": "TYPOS",
+     "message": "Trovato un probabile errore di battitura.",
+     "text": "Guarda i modelli 3D delle carte, come splat gaussiani o come mesh GLB.",
+     "at": "mesh",
+     "suggestions": [
+      "mesa",
+      "mese",
+      "mesi"
+     ]
+    },
+    {
+     "key": "viewer.intro",
+     "rule": "MORFOLOGIK_RULE_IT_IT",
+     "category": "TYPOS",
+     "message": "Trovato un probabile errore di battitura.",
+     "text": "Esplora le tue carte come modelli 3D. Passa dallo splat gaussiano alla mesh GLB. Trascina per ruotare il modello, usa la rotellina per lo zoom.",
+     "at": "mesh",
+     "suggestions": [
+      "mesa",
+      "mese",
+      "mesi"
+     ]
+    },
+    {
+     "key": "viewer.card.glb.body",
+     "rule": "MORFOLOGIK_RULE_IT_IT",
+     "category": "TYPOS",
+     "message": "Trovato un probabile errore di battitura.",
+     "text": "Una normale mesh mostrata con model-viewer. Su un telefono può collocare il modello nella tua stanza in realtà aumentata.",
+     "at": "mesh",
+     "suggestions": [
+      "mesa",
+      "mese",
+      "mesi"
+     ]
+    },
+    {
+     "key": "viewer.card.glb.body",
+     "rule": "MORFOLOGIK_RULE_IT_IT",
+     "category": "TYPOS",
+     "message": "Trovato un probabile errore di battitura.",
+     "text": "Una normale mesh mostrata con model-viewer. Su un telefono può collocare il modello nella tua stanza in realtà aumentata.",
+     "at": "model-viewer",
+     "suggestions": []
+    },
+    {
+     "key": "vr.card.quest.body",
+     "rule": "MORFOLOGIK_RULE_IT_IT",
+     "category": "TYPOS",
+     "message": "Trovato un probabile errore di battitura.",
+     "text": "Premi «Entra in VR» per entrare. Usa i controller per muoverti e scegliere le carte.",
+     "at": "controller",
+     "suggestions": [
+      "controllar",
+      "controllerà",
+      "controllerò"
+     ]
+    },
+    {
+     "key": "error.passkey_not_found",
+     "rule": "MORFOLOGIK_RULE_IT_IT",
+     "category": "TYPOS",
+     "message": "Trovato un probabile errore di battitura.",
+     "text": "Quella passkey non è presente in questo account.",
+     "at": "passkey",
+     "suggestions": [
+      "passe"
+     ]
+    },
+    {
+     "key": "offline.link.home",
+     "rule": "MORFOLOGIK_RULE_IT_IT",
+     "category": "TYPOS",
+     "message": "Trovato un probabile errore di battitura.",
+     "text": "Home",
+     "at": "Home",
+     "suggestions": [
+      "Homo",
+      "Hoè",
+      "Hône"
+     ]
+    },
+    {
+     "key": "app.description",
+     "rule": "MORFOLOGIK_RULE_IT_IT",
+     "category": "TYPOS",
+     "message": "Trovato un probabile errore di battitura.",
+     "text": "Un gioco di carte di battaglie rap shakespeariane, di Inspired Mile. Gioca le tue carte, rispetta la forma e scrivi meglio di un avversario che gira interamente sul tuo dispositivo.",
+     "at": "rap",
+     "suggestions": [
+      "IRAP",
+      "RAI",
+      "Ra"
+     ]
+    },
+    {
+     "key": "pwa.install.iosBody",
+     "rule": "MORFOLOGIK_RULE_IT_IT",
+     "category": "TYPOS",
+     "message": "Trovato un probabile errore di battitura.",
+     "text": "Su iPhone e iPad l’app nella schermata Home non condivide nulla con questa scheda. Aggiungila prima di accedere o di scaricare un modello, altrimenti dovrai fare tutto due volte.",
+     "at": "Home",
+     "suggestions": [
+      "Homo",
+      "Hoè",
+      "Hône"
+     ]
+    },
+    {
+     "key": "pwa.install.iosStep2",
+     "rule": "MORFOLOGIK_RULE_IT_IT",
+     "category": "TYPOS",
+     "message": "Trovato un probabile errore di battitura.",
+     "text": "Scegli “Aggiungi alla schermata Home”.",
+     "at": "Home",
+     "suggestions": [
+      "Homo",
+      "Hoè",
+      "Hône"
+     ]
+    },
+    {
+     "key": "pwa.storage.lessThan",
+     "rule": "UPPERCASE_SENTENCE_START",
+     "category": "CASING",
+     "message": "Questa frase non inizia con una maiuscola",
+     "text": "meno di 1,1 GB",
+     "at": "meno",
+     "suggestions": [
+      "Meno"
+     ]
+    }
+   ]
+  },
+  "pt": {
+   "checked": true,
+   "code": "pt-BR",
+   "strings": 289,
+   "hits": [
+    {
+     "key": "classroom.meta.description",
+     "rule": "MORFOLOGIK_RULE_PT_BR",
+     "category": "TYPOS",
+     "message": "Encontrado possível erro de ortografia.",
+     "text": "Professores criam turmas, passam quizzes e desafios sobre Shakespeare e acompanham o progresso dos estudantes.",
+     "at": "quizzes",
+     "suggestions": [
+      "Ulisses",
+      "Ulysses",
+      "quinzes"
+     ]
+    },
+    {
+     "key": "classroom.intro",
+     "rule": "MORFOLOGIK_RULE_PT_BR",
+     "category": "TYPOS",
+     "message": "Encontrado possível erro de ortografia.",
+     "text": "Crie uma turma ou entre em uma. Professores passam quizzes e desafios sobre Shakespeare e acompanham o progresso dos estudantes.",
+     "at": "quizzes",
+     "suggestions": [
+      "Ulisses",
+      "Ulysses",
+      "quinzes"
+     ]
+    },
+    {
+     "key": "classroom.role.studentHint",
+     "rule": "FINAL_STOPS",
+     "category": "PUNCTUATION",
+     "message": "Se não é um título, falta um ponto no final da frase.",
+     "text": "Entrar em uma turma que já existe",
+     "at": "existe",
+     "suggestions": [
+      "existe.",
+      "existe?",
+      "existe!"
+     ]
+    },
+    {
+     "key": "classroom.student.check3",
+     "rule": "EU_NÓS_REMOVAL",
+     "category": "REMOVE_PRONOUN",
+     "message": "Para melhorar o estilo de escrita, pode omitir o pronome pessoal: “faço”.",
+     "text": "Entendo que meu professor pode ver meu progresso e o que eu faço na turma.",
+     "at": "eu faço",
+     "suggestions": [
+      "faço"
+     ]
+    },
+    {
+     "key": "classroom.wizard.s2.lms",
+     "rule": "FINAL_STOPS",
+     "category": "PUNCTUATION",
+     "message": "Se não é um título, falta um ponto no final da frase.",
+     "text": "Publique no ambiente virtual de aprendizagem",
+     "at": "aprendizagem",
+     "suggestions": [
+      "aprendizagem.",
+      "aprendizagem?",
+      "aprendizagem!"
+     ]
+    },
+    {
+     "key": "classroom.wizard.s3.challenge",
+     "rule": "FINAL_STOPS",
+     "category": "PUNCTUATION",
+     "message": "Se não é um título, falta um ponto no final da frase.",
+     "text": "Completar as palavras que faltam em citações famosas",
+     "at": "famosas",
+     "suggestions": [
+      "famosas.",
+      "famosas?",
+      "famosas!"
+     ]
+    },
+    {
+     "key": "classroom.wizard.s3.battle",
+     "rule": "FINAL_STOPS",
+     "category": "PUNCTUATION",
+     "message": "Se não é um título, falta um ponto no final da frase.",
+     "text": "Um duelo de estrofes em três rodadas, julgado no dispositivo",
+     "at": "dispositivo",
+     "suggestions": [
+      "dispositivo.",
+      "dispositivo?",
+      "dispositivo!"
+     ]
+    },
+    {
+     "key": "classroom.wizard.s4.body",
+     "rule": "DENTRO_DE_DA_DAS_DO_DOS_EM_NA_NAS_NO_NOS",
+     "category": "CLARITY",
+     "message": "Substitua por “na”.",
+     "text": "Veja o que cada estudante concluiu, suas pontuações e as cartas que ganhou. Os dados ficam dentro da turma: cada estudante vê o próprio progresso, e você vê o de todos.",
+     "at": "dentro da",
+     "suggestions": [
+      "na"
+     ]
+    },
+    {
+     "key": "classroom.wizard.s4.visibility",
+     "rule": "FINAL_STOPS",
+     "category": "PUNCTUATION",
+     "message": "Se não é um título, falta um ponto no final da frase.",
+     "text": "Quem pode ver o progresso de um estudante",
+     "at": "estudante",
+     "suggestions": [
+      "estudante.",
+      "estudante?",
+      "estudante!"
+     ]
+    },
+    {
+     "key": "classroom.wizard.s4.ferpa",
+     "rule": "PT_WORDINESS_REPLACE_EM_CONFORMIDADE_COM",
+     "category": "REDUNDANCY",
+     "message": "“Em conformidade com” é uma expressão prolixa. É preferível dizer “conforme”, “segundo” ou “consoante”.",
+     "text": "Em conformidade com a FERPA",
+     "at": "Em conformidade com",
+     "suggestions": [
+      "Conforme",
+      "Segundo",
+      "Consoante"
+     ]
+    },
+    {
+     "key": "market.by",
+     "rule": "UPPERCASE_SENTENCE_START",
+     "category": "CASING",
+     "message": "Esta frase não inicia com um letra maiúscula",
+     "text": "de Viola",
+     "at": "de",
+     "suggestions": [
+      "De"
+     ]
+    },
+    {
+     "key": "season.intro",
+     "rule": "MORFOLOGIK_RULE_PT_BR",
+     "category": "TYPOS",
+     "message": "Encontrado possível erro de ortografia.",
+     "text": "Jogue batalhas, quizzes e desafios para ganhar XP. Cada novo nível desbloqueia cartas, créditos e títulos.",
+     "at": "quizzes",
+     "suggestions": [
+      "Ulisses",
+      "Ulysses",
+      "quinzes"
+     ]
+    },
+    {
+     "key": "season.next",
+     "rule": "FINAL_STOPS",
+     "category": "PUNCTUATION",
+     "message": "Se não é um título, falta um ponto no final da frase.",
+     "text": "Faltam 150 XP para o próximo nível",
+     "at": "nível",
+     "suggestions": [
+      "nível.",
+      "nível?",
+      "nível!"
+     ]
+    },
+    {
+     "key": "viewer.error.init",
+     "rule": "PORTUGUESE_WORD_REPEAT_BEGINNING_RULE",
+     "category": "STYLE",
+     "message": "Duas frases seguidas começam com o mesmo advérbio. Considere reformular a frase ou use um dicionário para encontrar um sinônimo.",
+     "text": "Não foi possível iniciar o visualizador 3D.",
+     "at": "Não",
+     "suggestions": []
+    },
+    {
+     "key": "viewer.error.glbViewer",
+     "rule": "PORTUGUESE_WORD_REPEAT_BEGINNING_RULE",
+     "category": "STYLE",
+     "message": "Duas frases seguidas começam com o mesmo advérbio. Considere reformular a frase ou use um dicionário para encontrar um sinônimo.",
+     "text": "Não foi possível carregar a visão GLB.",
+     "at": "Não",
+     "suggestions": []
+    },
+    {
+     "key": "vr.status.noHeadset",
+     "rule": "MORFOLOGIK_RULE_PT_BR",
+     "category": "TYPOS",
+     "message": "Encontrado possível erro de ortografia.",
+     "text": "Nenhum headset de RV encontrado. A galeria é exibida em 3D.",
+     "at": "headset",
+     "suggestions": [
+      "Hades",
+      "haste",
+      "Hélder"
+     ]
+    },
+    {
+     "key": "error.variant_already_unlocked",
+     "rule": "PORTUGUESE_WORD_REPEAT_BEGINNING_RULE",
+     "category": "STYLE",
+     "message": "Três frases seguidas começam com a mesma palavra. Considere reformular a frase ou use um dicionário para encontrar um sinônimo.",
+     "text": "Você já desbloqueou essa variante.",
+     "at": "Você",
+     "suggestions": []
+    },
+    {
+     "key": "pwa.install.title",
+     "rule": "FINAL_STOPS",
+     "category": "PUNCTUATION",
+     "message": "Se não é um título, falta um ponto no final da frase.",
+     "text": "Instale o Sonnet Man primeiro",
+     "at": "primeiro",
+     "suggestions": [
+      "primeiro.",
+      "primeiro?",
+      "primeiro!"
+     ]
+    },
+    {
+     "key": "pwa.install.iosBody",
+     "rule": "OS_DOIS_AS_DUAS_AMBOS_AMBAS",
+     "category": "FORMAL",
+     "message": "Esta expressão pode ser considerada demasiado coloquial em contextos mais formais.",
+     "text": "No iPhone e no iPad, o app da Tela de Início não compartilha nada com esta aba. Adicione-o antes de entrar ou baixar um modelo, ou você terá de fazer as duas coisas duas vezes.",
+     "at": "as duas",
+     "suggestions": [
+      "ambas as"
+     ]
+    },
+    {
+     "key": "pwa.storage.keptNoSize",
+     "rule": "PORTUGUESE_WORD_REPEAT_BEGINNING_RULE",
+     "category": "STYLE",
+     "message": "Três frases seguidas começam com a mesma palavra. Considere reformular a frase ou use um dicionário para encontrar um sinônimo.",
+     "text": "Seu download está guardado neste dispositivo. Seu navegador não vai apagá-lo por conta própria.",
+     "at": "Seu",
+     "suggestions": []
+    },
+    {
+     "key": "pwa.storage.lessThan",
+     "rule": "UPPERCASE_SENTENCE_START",
+     "category": "CASING",
+     "message": "Esta frase não inicia com um letra maiúscula",
+     "text": "menos de 1,1 GB",
+     "at": "menos",
+     "suggestions": [
+      "Menos"
+     ]
+    },
+    {
+     "key": "vr.play",
+     "rule": "MORFOLOGIK_RULE_PT_BR",
+     "category": "TYPOS",
+     "message": "Encontrado possível erro de ortografia.",
+     "text": "Quer jogar? O Teatro encena o duelo inteiro no seu headset.",
+     "at": "headset",
+     "suggestions": [
+      "Hades",
+      "haste",
+      "Hélder"
+     ]
+    },
+    {
+     "key": "vr.title",
+     "rule": "FINAL_STOPS",
+     "category": "PUNCTUATION",
+     "message": "Se não é um título, falta um ponto no final da frase.",
+     "text": "Galeria de cartas",
+     "at": "cartas",
+     "suggestions": [
+      "cartas.",
+      "cartas?",
+      "cartas!"
+     ]
+    }
+   ]
+  },
+  "pl": {
+   "checked": true,
+   "code": "pl-PL",
+   "strings": 291,
+   "hits": [
+    {
+     "key": "classroom.gate.title",
+     "rule": "BRAK_KROPKI",
+     "category": "PUNCTUATION",
+     "message": "To zdanie kończy się przecinkiem. Prawdopodobnie powinno być: \"zaczniesz.\"",
+     "text": "Zanim zaczniesz",
+     "at": "zaczniesz",
+     "suggestions": [
+      "zaczniesz."
+     ]
+    },
+    {
+     "key": "classroom.role.teacher",
+     "rule": "BRAK_KROPKI",
+     "category": "PUNCTUATION",
+     "message": "To zdanie nie kończy się kropką ani innym znakiem interpunkcyjnym. Powinno być: \"nauczycielką.\"",
+     "text": "Jestem nauczycielem lub nauczycielką",
+     "at": "nauczycielką",
+     "suggestions": [
+      "nauczycielką."
+     ]
+    },
+    {
+     "key": "classroom.role.student",
+     "rule": "BRAK_KROPKI",
+     "category": "PUNCTUATION",
+     "message": "To zdanie nie kończy się kropką ani innym znakiem interpunkcyjnym. Powinno być: \"uczennicą.\"",
+     "text": "Jestem uczniem lub uczennicą",
+     "at": "uczennicą",
+     "suggestions": [
+      "uczennicą."
+     ]
+    },
+    {
+     "key": "classroom.join.tab",
+     "rule": "BRAK_KROPKI",
+     "category": "PUNCTUATION",
+     "message": "To zdanie nie kończy się kropką ani innym znakiem interpunkcyjnym. Powinno być: \"klasy.\"",
+     "text": "Dołącz do klasy",
+     "at": "klasy",
+     "suggestions": [
+      "klasy."
+     ]
+    },
+    {
+     "key": "classroom.create.tab",
+     "rule": "BRAK_KROPKI",
+     "category": "PUNCTUATION",
+     "message": "To zdanie nie kończy się kropką ani innym znakiem interpunkcyjnym. Powinno być: \"klasę.\"",
+     "text": "Utwórz klasę",
+     "at": "klasę",
+     "suggestions": [
+      "klasę."
+     ]
+    },
+    {
+     "key": "classroom.join.title",
+     "rule": "BRAK_KROPKI",
+     "category": "PUNCTUATION",
+     "message": "To zdanie nie kończy się kropką ani innym znakiem interpunkcyjnym. Powinno być: \"kodu.\"",
+     "text": "Dołącz za pomocą kodu",
+     "at": "kodu",
+     "suggestions": [
+      "kodu."
+     ]
+    },
+    {
+     "key": "classroom.join.submit",
+     "rule": "BRAK_KROPKI",
+     "category": "PUNCTUATION",
+     "message": "To zdanie kończy się przecinkiem. Prawdopodobnie powinno być: \"Dołącz.\"",
+     "text": "Dołącz",
+     "at": "Dołącz",
+     "suggestions": [
+      "Dołącz."
+     ]
+    },
+    {
+     "key": "classroom.create.title",
+     "rule": "BRAK_KROPKI",
+     "category": "PUNCTUATION",
+     "message": "To zdanie nie kończy się kropką ani innym znakiem interpunkcyjnym. Powinno być: \"klasę.\"",
+     "text": "Utwórz klasę",
+     "at": "klasę",
+     "suggestions": [
+      "klasę."
+     ]
+    },
+    {
+     "key": "classroom.create.submit",
+     "rule": "BRAK_KROPKI",
+     "category": "PUNCTUATION",
+     "message": "To zdanie kończy się przecinkiem. Prawdopodobnie powinno być: \"Utwórz.\"",
+     "text": "Utwórz",
+     "at": "Utwórz",
+     "suggestions": [
+      "Utwórz."
+     ]
+    },
+    {
+     "key": "classroom.detail.back",
+     "rule": "BRAK_KROPKI",
+     "category": "PUNCTUATION",
+     "message": "To zdanie nie kończy się kropką ani innym znakiem interpunkcyjnym. Powinno być: \"klas.\"",
+     "text": "Wróć do moich klas",
+     "at": "klas",
+     "suggestions": [
+      "klas."
+     ]
+    },
+    {
+     "key": "classroom.detail.copy",
+     "rule": "BRAK_KROPKI",
+     "category": "PUNCTUATION",
+     "message": "To zdanie nie kończy się kropką ani innym znakiem interpunkcyjnym. Powinno być: \"kod.\"",
+     "text": "Skopiuj kod",
+     "at": "kod",
+     "suggestions": [
+      "kod."
+     ]
+    },
+    {
+     "key": "classroom.detail.copied",
+     "rule": "BRAK_KROPKI",
+     "category": "PUNCTUATION",
+     "message": "To zdanie kończy się przecinkiem. Prawdopodobnie powinno być: \"Skopiowano.\"",
+     "text": "Skopiowano",
+     "at": "Skopiowano",
+     "suggestions": [
+      "Skopiowano."
+     ]
+    },
+    {
+     "key": "classroom.assign.add",
+     "rule": "BRAK_KROPKI",
+     "category": "PUNCTUATION",
+     "message": "To zdanie kończy się przecinkiem. Prawdopodobnie powinno być: \"Dodaj.\"",
+     "text": "Dodaj",
+     "at": "Dodaj",
+     "suggestions": [
+      "Dodaj."
+     ]
+    },
+    {
+     "key": "classroom.wizard.skip",
+     "rule": "BRAK_KROPKI",
+     "category": "PUNCTUATION",
+     "message": "To zdanie nie kończy się kropką ani innym znakiem interpunkcyjnym. Powinno być: \"przewodnik.\"",
+     "text": "Pomiń przewodnik",
+     "at": "przewodnik",
+     "suggestions": [
+      "przewodnik."
+     ]
+    },
+    {
+     "key": "classroom.wizard.start",
+     "rule": "BRAK_KROPKI",
+     "category": "PUNCTUATION",
+     "message": "To zdanie kończy się przecinkiem. Prawdopodobnie powinno być: \"Zaczynamy.\"",
+     "text": "Zaczynamy",
+     "at": "Zaczynamy",
+     "suggestions": [
+      "Zaczynamy."
+     ]
+    },
+    {
+     "key": "classroom.wizard.s1.title",
+     "rule": "BRAK_KROPKI",
+     "category": "PUNCTUATION",
+     "message": "To zdanie nie kończy się kropką ani innym znakiem interpunkcyjnym. Powinno być: \"klasę.\"",
+     "text": "Utwórz swoją klasę",
+     "at": "klasę",
+     "suggestions": [
+      "klasę."
+     ]
+    },
+    {
+     "key": "classroom.wizard.s1.body",
+     "rule": "MORFOLOGIK_RULE_PL_PL",
+     "category": "TYPOS",
+     "message": "Wykryto prawdopodobny błąd pisowni",
+     "text": "Wybierz „Utwórz klasę” i nadaj jej nazwę, na przykład „Język angielski, klasa 2b” albo „Szekspir na początek”. Każda klasa dostaje własny kod dołączenia z 6 liter.",
+     "at": "2b",
+     "suggestions": [
+      "MB",
+      "SB",
+      "UB"
+     ]
+    },
+    {
+     "key": "classroom.wizard.s2.title",
+     "rule": "BRAK_KROPKI",
+     "category": "PUNCTUATION",
+     "message": "To zdanie nie kończy się kropką ani innym znakiem interpunkcyjnym. Powinno być: \"uczniom.\"",
+     "text": "Udostępnij ją uczniom",
+     "at": "uczniom",
+     "suggestions": [
+      "uczniom."
+     ]
+    },
+    {
+     "key": "classroom.wizard.s2.board",
+     "rule": "BRAK_KROPKI",
+     "category": "PUNCTUATION",
+     "message": "To zdanie nie kończy się kropką ani innym znakiem interpunkcyjnym. Powinno być: \"tablicy.\"",
+     "text": "Zapisz go na tablicy",
+     "at": "tablicy",
+     "suggestions": [
+      "tablicy."
+     ]
+    },
+    {
+     "key": "classroom.wizard.s2.lms",
+     "rule": "BRAK_KROPKI",
+     "category": "PUNCTUATION",
+     "message": "To zdanie nie kończy się kropką ani innym znakiem interpunkcyjnym. Powinno być: \"edukacyjnej.\"",
+     "text": "Opublikuj go na platformie edukacyjnej",
+     "at": "edukacyjnej",
+     "suggestions": [
+      "edukacyjnej."
+     ]
+    },
+    {
+     "key": "classroom.wizard.s2.print",
+     "rule": "BRAK_KROPKI",
+     "category": "PUNCTUATION",
+     "message": "To zdanie nie kończy się kropką ani innym znakiem interpunkcyjnym. Powinno być: \"kartkę.\"",
+     "text": "Wydrukuj kartkę",
+     "at": "kartkę",
+     "suggestions": [
+      "kartkę."
+     ]
+    },
+    {
+     "key": "classroom.wizard.s3.title",
+     "rule": "BRAK_KROPKI",
+     "category": "PUNCTUATION",
+     "message": "To zdanie nie kończy się kropką ani innym znakiem interpunkcyjnym. Powinno być: \"aktywności.\"",
+     "text": "Zadaj aktywności",
+     "at": "aktywności",
+     "suggestions": [
+      "aktywności."
+     ]
+    },
+    {
+     "key": "classroom.wizard.s4.title",
+     "rule": "BRAK_KROPKI",
+     "category": "PUNCTUATION",
+     "message": "To zdanie nie kończy się kropką ani innym znakiem interpunkcyjnym. Powinno być: \"postępy.\"",
+     "text": "Śledź postępy",
+     "at": "postępy",
+     "suggestions": [
+      "postępy."
+     ]
+    },
+    {
+     "key": "classroom.wizard.s4.visibility",
+     "rule": "BRAK_KROPKI",
+     "category": "PUNCTUATION",
+     "message": "To zdanie nie kończy się kropką ani innym znakiem interpunkcyjnym. Powinno być: \"ucznia.\"",
+     "text": "Kto widzi postępy ucznia",
+     "at": "ucznia",
+     "suggestions": [
+      "ucznia."
+     ]
+    },
+    {
+     "key": "market.tab.browse",
+     "rule": "BRAK_KROPKI",
+     "category": "PUNCTUATION",
+     "message": "To zdanie kończy się przecinkiem. Prawdopodobnie powinno być: \"Przeglądaj.\"",
+     "text": "Przeglądaj",
+     "at": "Przeglądaj",
+     "suggestions": [
+      "Przeglądaj."
+     ]
+    },
+    {
+     "key": "market.tab.sell",
+     "rule": "BRAK_KROPKI",
+     "category": "PUNCTUATION",
+     "message": "To zdanie nie kończy się kropką ani innym znakiem interpunkcyjnym. Powinno być: \"wymień.\"",
+     "text": "Sprzedaj lub wymień",
+     "at": "wymień",
+     "suggestions": [
+      "wymień."
+     ]
+    },
+    {
+     "key": "market.refresh",
+     "rule": "BRAK_KROPKI",
+     "category": "PUNCTUATION",
+     "message": "To zdanie kończy się przecinkiem. Prawdopodobnie powinno być: \"Odśwież.\"",
+     "text": "Odśwież",
+     "at": "Odśwież",
+     "suggestions": [
+      "Odśwież."
+     ]
+    },
+    {
+     "key": "market.by",
+     "rule": "UPPERCASE_SENTENCE_START",
+     "category": "CASING",
+     "message": "To zdanie nie zaczyna się wielką literą",
+     "text": "od: Viola",
+     "at": "od",
+     "suggestions": [
+      "Od"
+     ]
+    },
+    {
+     "key": "market.buy",
+     "rule": "BRAK_KROPKI",
+     "category": "PUNCTUATION",
+     "message": "To zdanie kończy się przecinkiem. Prawdopodobnie powinno być: \"Kup.\"",
+     "text": "Kup",
+     "at": "Kup",
+     "suggestions": [
+      "Kup."
+     ]
+    },
+    {
+     "key": "market.offer",
+     "rule": "BRAK_KROPKI",
+     "category": "PUNCTUATION",
+     "message": "To zdanie nie kończy się kropką ani innym znakiem interpunkcyjnym. Powinno być: \"wymianę.\"",
+     "text": "Zaproponuj wymianę",
+     "at": "wymianę",
+     "suggestions": [
+      "wymianę."
+     ]
+    },
+    {
+     "key": "market.cancel",
+     "rule": "BRAK_KROPKI",
+     "category": "PUNCTUATION",
+     "message": "To zdanie nie kończy się kropką ani innym znakiem interpunkcyjnym. Powinno być: \"ofertę.\"",
+     "text": "Anuluj ofertę",
+     "at": "ofertę",
+     "suggestions": [
+      "ofertę."
+     ]
+    },
+    {
+     "key": "market.sell.title",
+     "rule": "BRAK_KROPKI",
+     "category": "PUNCTUATION",
+     "message": "To zdanie nie kończy się kropką ani innym znakiem interpunkcyjnym. Powinno być: \"ofertę.\"",
+     "text": "Utwórz ofertę",
+     "at": "ofertę",
+     "suggestions": [
+      "ofertę."
+     ]
+    },
+    {
+     "key": "market.sell.submit",
+     "rule": "BRAK_KROPKI",
+     "category": "PUNCTUATION",
+     "message": "To zdanie nie kończy się kropką ani innym znakiem interpunkcyjnym. Powinno być: \"ofertę.\"",
+     "text": "Utwórz ofertę",
+     "at": "ofertę",
+     "suggestions": [
+      "ofertę."
+     ]
+    },
+    {
+     "key": "tour.status.in_progress",
+     "rule": "BRAK_KROPKI",
+     "category": "PUNCTUATION",
+     "message": "To zdanie kończy się przecinkiem. Prawdopodobnie powinno być: \"Trwa.\"",
+     "text": "Trwa",
+     "at": "Trwa",
+     "suggestions": [
+      "Trwa."
+     ]
+    },
+    {
+     "key": "tour.register",
+     "rule": "BRAK_KROPKI",
+     "category": "PUNCTUATION",
+     "message": "To zdanie nie kończy się kropką ani innym znakiem interpunkcyjnym. Powinno być: \"się.\"",
+     "text": "Zapisz się",
+     "at": "się",
+     "suggestions": [
+      "się."
+     ]
+    },
+    {
+     "key": "tour.viewBracket",
+     "rule": "BRAK_KROPKI",
+     "category": "PUNCTUATION",
+     "message": "To zdanie nie kończy się kropką ani innym znakiem interpunkcyjnym. Powinno być: \"drabinkę.\"",
+     "text": "Zobacz drabinkę",
+     "at": "drabinkę",
+     "suggestions": [
+      "drabinkę."
+     ]
+    },
+    {
+     "key": "season.maxed",
+     "rule": "BRAK_KROPKI",
+     "category": "PUNCTUATION",
+     "message": "To zdanie nie kończy się kropką ani innym znakiem interpunkcyjnym. Powinno być: \"poziom.\"",
+     "text": "Osiągnięto najwyższy poziom",
+     "at": "poziom",
+     "suggestions": [
+      "poziom."
+     ]
+    },
+    {
+     "key": "season.claim",
+     "rule": "BRAK_KROPKI",
+     "category": "PUNCTUATION",
+     "message": "To zdanie kończy się przecinkiem. Prawdopodobnie powinno być: \"Odbierz.\"",
+     "text": "Odbierz",
+     "at": "Odbierz",
+     "suggestions": [
+      "Odbierz."
+     ]
+    },
+    {
+     "key": "season.claimed",
+     "rule": "BRAK_KROPKI",
+     "category": "PUNCTUATION",
+     "message": "To zdanie kończy się przecinkiem. Prawdopodobnie powinno być: \"Odebrano.\"",
+     "text": "Odebrano",
+     "at": "Odebrano",
+     "suggestions": [
+      "Odebrano."
+     ]
+    },
+    {
+     "key": "viewer.meta.description",
+     "rule": "MORFOLOGIK_RULE_PL_PL",
+     "category": "TYPOS",
+     "message": "Wykryto prawdopodobny błąd pisowni",
+     "text": "Oglądaj modele 3D kart jako splaty gaussowskie albo siatki GLB.",
+     "at": "splaty",
+     "suggestions": [
+      "spłaty",
+      "opłaty",
+      "płaty"
+     ]
+    },
+    {
+     "key": "viewer.meta.description",
+     "rule": "MORFOLOGIK_RULE_PL_PL",
+     "category": "TYPOS",
+     "message": "Wykryto prawdopodobny błąd pisowni",
+     "text": "Oglądaj modele 3D kart jako splaty gaussowskie albo siatki GLB.",
+     "at": "gaussowskie",
+     "suggestions": [
+      "Gąssowskie"
+     ]
+    },
+    {
+     "key": "viewer.intro",
+     "rule": "MORFOLOGIK_RULE_PL_PL",
+     "category": "TYPOS",
+     "message": "Wykryto prawdopodobny błąd pisowni",
+     "text": "Oglądaj swoje karty jako modele 3D. Przełączaj między splatem gaussowskim a siatką GLB. Przeciągnij, aby obrócić model, i przewiń, aby przybliżyć.",
+     "at": "splatem",
+     "suggestions": [
+      "spłatę",
+      "opłatę",
+      "płatem"
+     ]
+    },
+    {
+     "key": "viewer.intro",
+     "rule": "MORFOLOGIK_RULE_PL_PL",
+     "category": "TYPOS",
+     "message": "Wykryto prawdopodobny błąd pisowni",
+     "text": "Oglądaj swoje karty jako modele 3D. Przełączaj między splatem gaussowskim a siatką GLB. Przeciągnij, aby obrócić model, i przewiń, aby przybliżyć.",
+     "at": "gaussowskim",
+     "suggestions": [
+      "Gąssowskim"
+     ]
+    },
+    {
+     "key": "viewer.reset",
+     "rule": "BRAK_KROPKI",
+     "category": "PUNCTUATION",
+     "message": "To zdanie nie kończy się kropką ani innym znakiem interpunkcyjnym. Powinno być: \"kamerę.\"",
+     "text": "Zresetuj kamerę",
+     "at": "kamerę",
+     "suggestions": [
+      "kamerę."
+     ]
+    },
+    {
+     "key": "viewer.card.splat.body",
+     "rule": "MORFOLOGIK_RULE_PL_PL",
+     "category": "TYPOS",
+     "message": "Wykryto prawdopodobny błąd pisowni",
+     "text": "Splaty gaussowskie rysowane przez Babylon.js. Obracaj, przybliżaj i przesuwaj realistyczny obraz 3D modelu.",
+     "at": "Splaty",
+     "suggestions": [
+      "Spłaty",
+      "Opłaty",
+      "Płaty"
+     ]
+    },
+    {
+     "key": "viewer.card.splat.body",
+     "rule": "MORFOLOGIK_RULE_PL_PL",
+     "category": "TYPOS",
+     "message": "Wykryto prawdopodobny błąd pisowni",
+     "text": "Splaty gaussowskie rysowane przez Babylon.js. Obracaj, przybliżaj i przesuwaj realistyczny obraz 3D modelu.",
+     "at": "gaussowskie",
+     "suggestions": [
+      "Gąssowskie"
+     ]
+    },
+    {
+     "key": "viewer.card.glb.body",
+     "rule": "MORFOLOGIK_RULE_PL_PL",
+     "category": "TYPOS",
+     "message": "Wykryto prawdopodobny błąd pisowni",
+     "text": "Zwykła siatka wyświetlana przez model-viewer. Na telefonie może ustawić model w twoim pokoju w rozszerzonej rzeczywistości.",
+     "at": "model-viewer",
+     "suggestions": []
+    },
+    {
+     "key": "vr.status.selected",
+     "rule": "BRAK_KROPKI",
+     "category": "PUNCTUATION",
+     "message": "To zdanie nie kończy się kropką ani innym znakiem interpunkcyjnym. Powinno być: \").\"",
+     "text": "Wybrano: Hamlet (DC-001)",
+     "at": ")",
+     "suggestions": [
+      ")."
+     ]
+    },
+    {
+     "key": "error.conflict",
+     "rule": "ZDANIA_ZLOZONE",
+     "category": "PUNCTUATION",
+     "message": "W tym zdaniu złożonym brakuje przecinka lub spójnika między jednym czasownikiem („zmieniło”) a drugim („Odśwież”).",
+     "text": "To się właśnie zmieniło. Odśwież stronę i spróbuj ponownie.",
+     "at": "zmieniło. Odśwież stronę i",
+     "suggestions": []
+    },
+    {
+     "key": "error.bad_request",
+     "rule": "ZDANIA_ZLOZONE",
+     "category": "PUNCTUATION",
+     "message": "W tym zdaniu złożonym brakuje przecinka lub spójnika między jednym czasownikiem („udało”) a drugim („Sprawdź”).",
+     "text": "To się nie udało. Sprawdź wpisane dane i spróbuj ponownie.",
+     "at": "udało. Sprawdź wpisane dane i",
+     "suggestions": []
+    },
+    {
+     "key": "boundary.retry",
+     "rule": "BRAK_KROPKI",
+     "category": "PUNCTUATION",
+     "message": "To zdanie nie kończy się kropką ani innym znakiem interpunkcyjnym. Powinno być: \"ponownie.\"",
+     "text": "Spróbuj ponownie",
+     "at": "ponownie",
+     "suggestions": [
+      "ponownie."
+     ]
+    },
+    {
+     "key": "offline.retry",
+     "rule": "BRAK_KROPKI",
+     "category": "PUNCTUATION",
+     "message": "To zdanie nie kończy się kropką ani innym znakiem interpunkcyjnym. Powinno być: \"ponownie.\"",
+     "text": "Spróbuj ponownie",
+     "at": "ponownie",
+     "suggestions": [
+      "ponownie."
+     ]
+    },
+    {
+     "key": "pwa.install.accept",
+     "rule": "BRAK_KROPKI",
+     "category": "PUNCTUATION",
+     "message": "To zdanie kończy się przecinkiem. Prawdopodobnie powinno być: \"Zainstaluj.\"",
+     "text": "Zainstaluj",
+     "at": "Zainstaluj",
+     "suggestions": [
+      "Zainstaluj."
+     ]
+    },
+    {
+     "key": "pwa.storage.lessThan",
+     "rule": "UPPERCASE_SENTENCE_START",
+     "category": "CASING",
+     "message": "To zdanie nie zaczyna się wielką literą",
+     "text": "mniej niż 1,1 GB",
+     "at": "mniej",
+     "suggestions": [
+      "Mniej"
+     ]
+    }
+   ]
+  },
+  "ru": {
+   "checked": true,
+   "code": "ru-RU",
+   "strings": 291,
+   "hits": [
+    {
+     "key": "market.by",
+     "rule": "UPPERCASE_SENTENCE_START",
+     "category": "CASING",
+     "message": "Это предложение не начинается с заглавной буквы.",
+     "text": "от Viola",
+     "at": "от",
+     "suggestions": [
+      "От"
+     ]
+    },
+    {
+     "key": "viewer.meta.description",
+     "rule": "MORFOLOGIK_RULE_RU_RU",
+     "category": "TYPOS",
+     "message": "Возможно найдена орфографическая ошибка.",
+     "text": "Рассматривай 3D-модели карт: в виде гауссовых сплатов или сеток GLB.",
+     "at": "сплатов",
+     "suggestions": [
+      "платов",
+      "оплотов",
+      "салатов"
+     ]
+    },
+    {
+     "key": "viewer.intro",
+     "rule": "MORFOLOGIK_RULE_RU_RU",
+     "category": "TYPOS",
+     "message": "Возможно найдена орфографическая ошибка.",
+     "text": "Рассматривай свои карты как 3D-модели. Переключайся между гауссовым сплатом и сеткой GLB. Тяни, чтобы повернуть модель, и прокручивай, чтобы приблизить.",
+     "at": "сплатом",
+     "suggestions": [
+      "оплотом",
+      "платом",
+      "салатом"
+     ]
+    },
+    {
+     "key": "viewer.card.splat.title",
+     "rule": "MORFOLOGIK_RULE_RU_RU",
+     "category": "TYPOS",
+     "message": "Возможно найдена орфографическая ошибка.",
+     "text": "Режим сплатов",
+     "at": "сплатов",
+     "suggestions": [
+      "платов",
+      "оплотов",
+      "салатов"
+     ]
+    },
+    {
+     "key": "viewer.card.splat.body",
+     "rule": "MORFOLOGIK_RULE_RU_RU",
+     "category": "TYPOS",
+     "message": "Возможно найдена орфографическая ошибка.",
+     "text": "Гауссовы сплаты, которые рисует Babylon.js. Поворачивай, приближай и двигай реалистичное 3D-изображение модели.",
+     "at": "сплаты",
+     "suggestions": [
+      "сплат",
+      "оплаты",
+      "оплоты"
+     ]
+    },
+    {
+     "key": "app.description",
+     "rule": "MORFOLOGIK_RULE_RU_RU",
+     "category": "TYPOS",
+     "message": "Возможно найдена орфографическая ошибка.",
+     "text": "Карточная игра по Шекспиру в духе рэп-баттла от Inspired Mile. Разыгрывай карты, держи форму и напиши лучше соперника, который работает целиком на твоём устройстве.",
+     "at": "рэп-баттла",
+     "suggestions": []
+    },
+    {
+     "key": "pwa.storage.lessThan",
+     "rule": "UPPERCASE_SENTENCE_START",
+     "category": "CASING",
+     "message": "Это предложение не начинается с заглавной буквы.",
+     "text": "меньше 1,1 ГБ",
+     "at": "меньше",
+     "suggestions": [
+      "Меньше"
+     ]
+    }
+   ]
+  },
+  "ar": {
+   "checked": true,
+   "code": "ar",
+   "strings": 295,
+   "hits": [
+    {
+     "key": "classroom.teacher.check1",
+     "rule": "number_one_feminin",
+     "category": "NUMBER_AGREEMENT",
+     "message": "أتقصد \"إحدى\"؟\nهل تقصد؟\n      ",
+     "text": "أنا معلّم أو مدرّب أو أحد أعضاء إدارة مدرسة، ومصرَّح لي باستخدام هذه الخدمة مع طلابي.",
+     "at": "أحد",
+     "suggestions": [
+      "إحدى"
+     ]
+    },
+    {
+     "key": "classroom.mine.empty",
+     "rule": "grammar_0010_jazem_lm",
+     "category": "GRAMMAR_ERROR",
+     "message": "أتقصد؟\nالفعل المضارع بعد \"لم\" يأتي مجزوما.\n\n        \"لم تنضمم\"\n      ",
+     "text": "لم تنضم إلى أي صف بعد.",
+     "at": "لم تنضم",
+     "suggestions": [
+      "لم تنضمم"
+     ]
+    },
+    {
+     "key": "classroom.wizard.s1.example",
+     "rule": "syntax_125_mobtadaa_nakira_5",
+     "category": "TEST_NEW_FEATURES",
+     "message": "لا يجوز الابتداء بنكرة، فيتقدم الخبر شبه الجملة مثلا \"كتاب  في بيت الولد\" تصبح \"في بيت الولد كتاب\"\n\n: \"على رمز الانضمام مثال\"\n\n      ",
+     "text": "مثال على رمز الانضمام",
+     "at": "مثال على رمز الانضمام",
+     "suggestions": [
+      "على رمز الانضمام مثال"
+     ]
+    },
+    {
+     "key": "classroom.wizard.s3.battle",
+     "rule": "syntax_125_mobtadaa_nakira_3",
+     "category": "TEST_NEW_FEATURES",
+     "message": "لا يجوز الابتداء بنكرة، فيتقدم الخبر شبه الجملة مثلا \"كتاب  بالبيت\" تصبح \"بالبيت كتاب\"\n\n: \"بالأبيات مبارزة\"\n\n      ",
+     "text": "مبارزة بالأبيات من ثلاث جولات، يُحكَم فيها على الجهاز",
+     "at": "مبارزة بالأبيات",
+     "suggestions": [
+      "بالأبيات مبارزة"
+     ]
+    },
+    {
+     "key": "classroom.wizard.s4.ferpa",
+     "rule": "grammar_0000_jar_plural",
+     "category": "TEST_NEW_FEATURES",
+     "message": ":انتبه لحرف الجر فالجمع المذكر السالم  يُجَرّ بالياء\n        \"مع قانين\"\n      ",
+     "text": "متوافق مع قانون FERPA",
+     "at": "مع قانون",
+     "suggestions": [
+      "مع قانين"
+     ]
+    },
+    {
+     "key": "market.status.active",
+     "rule": "worduse_0038_nashet",
+     "category": "COMMON_ERRORS_ON_ONE_WORD_USE",
+     "message": "يفضل أن يقال:\n        \"نشيطٌ\"\n        \"ناشطٌ\"\n      ",
+     "text": "نشط",
+     "at": "نشط",
+     "suggestions": [
+      "نشيطٌ",
+      "ناشطٌ"
+     ]
+    },
+    {
+     "key": "market.sell.needPrice",
+     "rule": "grammar_0011_notjazem_lam_nafia",
+     "category": "GRAMMAR_ERROR",
+     "message": "\nالفرق بين لا الناهية ولا النافية، لا الناهية تأتي مع ضمائر المخاطب فقط. لذا فإن لا النافية لا تجزم الفعل المضارع أتقصد؟\n\n        \"لا يقال\", \"لا يقل\", \"لا يقلو\", \"لا يقلى\", \"لا يقلي\", \"لا يقول\", \"لا يقيل\"\n\n      ",
+     "text": "أدخل سعرًا لا يقل عن نقطة واحدة.",
+     "at": "لا يقل",
+     "suggestions": [
+      "لا يقال",
+      "لا يقل",
+      "لا يقلو"
+     ]
+    },
+    {
+     "key": "season.reward.pack",
+     "rule": "AR_DIACRITICS_REPLACE",
+     "category": "STYLE",
+     "message": "الحُزْمَة بضم الحاء، مثل حُزمة الحطب.",
+     "text": "حزمة بطاقات: Verona",
+     "at": "حزمة",
+     "suggestions": [
+      "حُزْمَة"
+     ]
+    },
+    {
+     "key": "viewer.meta.description",
+     "rule": "AR_SIMPLE_REPLACE",
+     "category": "CONFUSED_WORDS",
+     "message": "قل \"النموذجات\" أو  \"الأنموذجات\"",
+     "text": "شاهد النماذج ثلاثية الأبعاد للبطاقات، بتقنية Gaussian Splat أو بشبكات GLB.",
+     "at": "النماذج",
+     "suggestions": [
+      "النموذجات",
+      "الأنموذجات"
+     ]
+    },
+    {
+     "key": "viewer.badge",
+     "rule": "AR_SIMPLE_REPLACE",
+     "category": "CONFUSED_WORDS",
+     "message": "قل \"نموذجات\" أو  \"أنموذجات\"",
+     "text": "نماذج ثلاثية الأبعاد",
+     "at": "نماذج",
+     "suggestions": [
+      "نموذجات",
+      "أنموذجات"
+     ]
+    },
+    {
+     "key": "viewer.intro",
+     "rule": "AR_SIMPLE_REPLACE",
+     "category": "CONFUSED_WORDS",
+     "message": "قل \"نموذجات\" أو  \"أنموذجات\"",
+     "text": "استكشف بطاقاتك في صورة نماذج ثلاثية الأبعاد. بدّل بين عرض Splat وشبكة GLB. اسحب لتدير النموذج، ومرّر للتكبير.",
+     "at": "نماذج",
+     "suggestions": [
+      "نموذجات",
+      "أنموذجات"
+     ]
+    },
+    {
+     "key": "viewer.status.ready",
+     "rule": "AR_SIMPLE_REPLACE",
+     "category": "CONFUSED_WORDS",
+     "message": "لأن \"جاهز\" إذا عُدّ مشتقًّا من الفعل \"جهز\" كان معناه إسراع القتل، وقد يكون له وجه لغويّ إذا استعمل بمعنى \"ذو جهاز\"، فيقال: مدفع جاهز، أي ذو جهاز",
+     "text": "العارض ثلاثي الأبعاد جاهز. اختر بطاقة.",
+     "at": "جاهز",
+     "suggestions": [
+      "مُعدّ",
+      "معتدّ",
+      "محضَر"
+     ]
+    },
+    {
+     "key": "viewer.status.noGlb",
+     "rule": "grammar_0011_notjazem_lam_nafia",
+     "category": "GRAMMAR_ERROR",
+     "message": "\nالفرق بين لا الناهية ولا النافية، لا الناهية تأتي مع ضمائر المخاطب فقط. لذا فإن لا النافية لا تجزم الفعل المضارع أتقصد؟\n\n        \"لا يوجد\"\n\n      ",
+     "text": "لا يوجد نموذج GLB للبطاقة Hamlet.",
+     "at": "لا يوجد",
+     "suggestions": [
+      "لا يوجد"
+     ]
+    },
+    {
+     "key": "viewer.error.noMeshes",
+     "rule": "AR_DIACRITICS_REPLACE",
+     "category": "STYLE",
+     "message": "المِلَفّ بكسر الميم",
+     "text": "الملف لا يحتوي على أي نموذج.",
+     "at": "الملف",
+     "suggestions": [
+      "المِلَفّ"
+     ]
+    },
+    {
+     "key": "viewer.ar",
+     "rule": "syntax_125_mobtadaa_nakira_3",
+     "category": "TEST_NEW_FEATURES",
+     "message": "لا يجوز الابتداء بنكرة، فيتقدم الخبر شبه الجملة مثلا \"كتاب  بالبيت\" تصبح \"بالبيت كتاب\"\n\n: \"بالواقع عرض\"\n\n      ",
+     "text": "عرض بالواقع المعزَّز",
+     "at": "عرض بالواقع",
+     "suggestions": [
+      "بالواقع عرض"
+     ]
+    },
+    {
+     "key": "viewer.card.splat.body",
+     "rule": "AR_DIACRITICS_REPLACE",
+     "category": "STYLE",
+     "message": "نُقَط بضم النون|نِقَاط بكسر النون",
+     "text": "نقاط Gaussian Splat يرسمها Babylon.js. أدِر وكبّر وحرّك صورة ثلاثية الأبعاد واقعية للنموذج.",
+     "at": "نقاط",
+     "suggestions": [
+      "نُقَط",
+      "نِقَاط"
+     ]
+    },
+    {
+     "key": "vr.meta.description",
+     "rule": "syntax_125_mobtadaa_nakira_1",
+     "category": "TEST_NEW_FEATURES",
+     "message": "لا يجوز الابتداء بنكرة، فيتقدم الخبر شبه الجملة مثلا \"كتابان عندك\" تصبح \"عندك كتابان\"\n\n: \"في تجوّل\"\n\n      ",
+     "text": "تجوّل في مجموعة بطاقات شكسبير الخاصة بك في الواقع الافتراضي.",
+     "at": "تجوّل في",
+     "suggestions": [
+      "في تجوّل"
+     ]
+    },
+    {
+     "key": "vr.intro",
+     "rule": "syntax_125_mobtadaa_nakira_2",
+     "category": "TEST_NEW_FEATURES",
+     "message": "لا يجوز الابتداء بنكرة، فيتقدم الخبر شبه الجملة مثلا \"كتاب  في البيت\" تصبح \"في البيت كتاب\"\n\n: \"في مجموعتك تجوّل\"\n\n      ",
+     "text": "تجوّل في مجموعتك بالأبعاد الثلاثة. يعمل على Quest 3 و Vision Pro عبر WebXR، وبالفأرة على الحاسوب.",
+     "at": "تجوّل في مجموعتك",
+     "suggestions": [
+      "في مجموعتك تجوّل"
+     ]
+    },
+    {
+     "key": "vr.status.gallery",
+     "rule": "AR_DIACRITICS_REPLACE",
+     "category": "STYLE",
+     "message": "مَعْرِض بكسر الراء اسم المكان من \"عرض، يَعْرِض\" على وزن \"مَفْعِل\"",
+     "text": "تم تحميل المعرض ثلاثي الأبعاد. اسحب لتنظر حولك، ومرّر للتكبير.",
+     "at": "المعرض",
+     "suggestions": [
+      "المَعْرِض"
+     ]
+    },
+    {
+     "key": "vr.status.noHeadset",
+     "rule": "AR_DIACRITICS_REPLACE",
+     "category": "STYLE",
+     "message": "مَعْرِض بكسر الراء اسم المكان من \"عرض، يَعْرِض\" على وزن \"مَفْعِل\"",
+     "text": "لم يُعثر على نظّارة واقع افتراضي. يُعرض المعرض بالأبعاد الثلاثة.",
+     "at": "المعرض",
+     "suggestions": [
+      "المَعْرِض"
+     ]
+    },
+    {
+     "key": "vr.status.ready",
+     "rule": "AR_SIMPLE_REPLACE",
+     "category": "CONFUSED_WORDS",
+     "message": "لأن \"جاهز\" إذا عُدّ مشتقًّا من الفعل \"جهز\" كان معناه إسراع القتل، وقد يكون له وجه لغويّ إذا استعمل بمعنى \"ذو جهاز\"، فيقال: مدفع جاهز، أي ذو جهاز",
+     "text": "WebXR جاهز. اضغط «دخول الواقع الافتراضي».",
+     "at": "جاهز",
+     "suggestions": [
+      "مُعدّ",
+      "معتدّ",
+      "محضَر"
+     ]
+    },
+    {
+     "key": "vr.error.init",
+     "rule": "AR_DIACRITICS_REPLACE",
+     "category": "STYLE",
+     "message": "مَعْرِض بكسر الراء اسم المكان من \"عرض، يَعْرِض\" على وزن \"مَفْعِل\"",
+     "text": "تعذّر تشغيل المعرض ثلاثي الأبعاد.",
+     "at": "المعرض",
+     "suggestions": [
+      "المَعْرِض"
+     ]
+    },
+    {
+     "key": "vr.fallback",
+     "rule": "AR_DIACRITICS_REPLACE",
+     "category": "STYLE",
+     "message": "مَعْرِض بكسر الراء اسم المكان من \"عرض، يَعْرِض\" على وزن \"مَفْعِل\"",
+     "text": "WebXR غير متاح على هذا الجهاز. يُعرض المعرض بالأبعاد الثلاثة: اسحب لتنظر حولك، ومرّر للتكبير.",
+     "at": "المعرض",
+     "suggestions": [
+      "المَعْرِض"
+     ]
+    },
+    {
+     "key": "vr.card.desktop.body",
+     "rule": "syntax_125_mobtadaa_nakira_3",
+     "category": "TEST_NEW_FEATURES",
+     "message": "لا يجوز الابتداء بنكرة، فيتقدم الخبر شبه الجملة مثلا \"كتاب  بالبيت\" تصبح \"بالبيت كتاب\"\n\n: \"للتكبير مرّر\"\n\n      ",
+     "text": "انقر واسحب لتنظر حولك. مرّر للتكبير. انقر بطاقة لتحديدها.",
+     "at": "مرّر للتكبير",
+     "suggestions": [
+      "للتكبير مرّر"
+     ]
+    },
+    {
+     "key": "error.network",
+     "rule": "syntax_125_mobtadaa_nakira_2",
+     "category": "TEST_NEW_FEATURES",
+     "message": "لا يجوز الابتداء بنكرة، فيتقدم الخبر شبه الجملة مثلا \"كتاب  في البيت\" تصبح \"في البيت كتاب\"\n\n: \"من اتصالك تحقق\"\n\n      ",
+     "text": "تعذّر الوصول إلى الخادم. تحقق من اتصالك وحاول مجددًا.",
+     "at": "تحقق من اتصالك",
+     "suggestions": [
+      "من اتصالك تحقق"
+     ]
+    },
+    {
+     "key": "error.classroom_not_found",
+     "rule": "grammar_0011_notjazem_lam_nafia",
+     "category": "GRAMMAR_ERROR",
+     "message": "\nالفرق بين لا الناهية ولا النافية، لا الناهية تأتي مع ضمائر المخاطب فقط. لذا فإن لا النافية لا تجزم الفعل المضارع أتقصد؟\n\n        \"لا يوجد\"\n\n      ",
+     "text": "لا يوجد صف بهذا الرمز. تحقق منه مع معلّمك.",
+     "at": "لا يوجد",
+     "suggestions": [
+      "لا يوجد"
+     ]
+    },
+    {
+     "key": "error.classroom_not_found",
+     "rule": "syntax_125_mobtadaa_nakira_1",
+     "category": "TEST_NEW_FEATURES",
+     "message": "لا يجوز الابتداء بنكرة، فيتقدم الخبر شبه الجملة مثلا \"كتابان عندك\" تصبح \"عندك كتابان\"\n\n: \"منه تحقق\"\n\n      ",
+     "text": "لا يوجد صف بهذا الرمز. تحقق منه مع معلّمك.",
+     "at": "تحقق منه",
+     "suggestions": [
+      "منه تحقق"
+     ]
+    },
+    {
+     "key": "error.no_active_season",
+     "rule": "grammar_0011_notjazem_lam_nafia",
+     "category": "GRAMMAR_ERROR",
+     "message": "\nالفرق بين لا الناهية ولا النافية، لا الناهية تأتي مع ضمائر المخاطب فقط. لذا فإن لا النافية لا تجزم الفعل المضارع أتقصد؟\n\n        \"لا يوجد\"\n\n      ",
+     "text": "لا يوجد موسم جارٍ الآن.",
+     "at": "لا يوجد",
+     "suggestions": [
+      "لا يوجد"
+     ]
+    },
+    {
+     "key": "error.insufficient_credits",
+     "rule": "AR_DIACRITICS_REPLACE",
+     "category": "STYLE",
+     "message": "نُقَط بضم النون|نِقَاط بكسر النون",
+     "text": "ليست لديك نقاط كافية.",
+     "at": "نقاط",
+     "suggestions": [
+      "نُقَط",
+      "نِقَاط"
+     ]
+    },
+    {
+     "key": "credits.zero",
+     "rule": "AR_DIACRITICS_REPLACE",
+     "category": "STYLE",
+     "message": "نُقَط بضم النون|نِقَاط بكسر النون",
+     "text": "لا نقاط",
+     "at": "نقاط",
+     "suggestions": [
+      "نُقَط",
+      "نِقَاط"
+     ]
+    },
+    {
+     "key": "credits.few",
+     "rule": "AR_DIACRITICS_REPLACE",
+     "category": "STYLE",
+     "message": "نُقَط بضم النون|نِقَاط بكسر النون",
+     "text": "3 نقاط",
+     "at": "نقاط",
+     "suggestions": [
+      "نُقَط",
+      "نِقَاط"
+     ]
+    },
+    {
+     "key": "offline.body",
+     "rule": "syntax_125_mobtadaa_nakira_2",
+     "category": "TEST_NEW_FEATURES",
+     "message": "لا يجوز الابتداء بنكرة، فيتقدم الخبر شبه الجملة مثلا \"كتاب  في البيت\" تصبح \"في البيت كتاب\"\n\n: \"من اتصالك تحقق\"\n\n      ",
+     "text": "بعض أجزاء اللعبة تحتاج إلى اتصال بالإنترنت. تحقق من اتصالك وحاول مجددًا.",
+     "at": "تحقق من اتصالك",
+     "suggestions": [
+      "من اتصالك تحقق"
+     ]
+    },
+    {
+     "key": "offline.link.battle",
+     "rule": "AR_HOMOPHONES_REPLACE",
+     "category": "CONFUSED_WORDS",
+     "message": "الحُلْبَة نبات يشرب والحَلَبة مكان المصارعة",
+     "text": "حلبة النزال",
+     "at": "حلبة",
+     "suggestions": [
+      "حِلْبَة",
+      "حُلْبَة"
+     ]
+    },
+    {
+     "key": "app.description",
+     "rule": "AR_DIACRITICS_REPLACE",
+     "category": "STYLE",
+     "message": "اللُعبة بضم اللام",
+     "text": "لعبة بطاقات شكسبيرية على طريقة الباتل راب، من Inspired Mile. العب بطاقاتك، والتزم بالقالب، واكتب أفضل من خصم يعمل بالكامل على جهازك.",
+     "at": "لعبة",
+     "suggestions": [
+      "لُعْبَة"
+     ]
+    },
+    {
+     "key": "app.description",
+     "rule": "HUNSPELL_RULE_AR",
+     "category": "TYPOS",
+     "message": "وُجد خطأ إملائي محتمل",
+     "text": "لعبة بطاقات شكسبيرية على طريقة الباتل راب، من Inspired Mile. العب بطاقاتك، والتزم بالقالب، واكتب أفضل من خصم يعمل بالكامل على جهازك.",
+     "at": "شكسبيرية",
+     "suggestions": [
+      "شكسبير"
+     ]
+    },
+    {
+     "key": "app.description",
+     "rule": "HUNSPELL_RULE_AR",
+     "category": "TYPOS",
+     "message": "وُجد خطأ إملائي محتمل",
+     "text": "لعبة بطاقات شكسبيرية على طريقة الباتل راب، من Inspired Mile. العب بطاقاتك، والتزم بالقالب، واكتب أفضل من خصم يعمل بالكامل على جهازك.",
+     "at": "الباتل",
+     "suggestions": [
+      "التابل",
+      "القاتل",
+      "البات"
+     ]
+    },
+    {
+     "key": "app.description",
+     "rule": "AR_DIACRITICS_REPLACE",
+     "category": "STYLE",
+     "message": "الخَصْم كقوله تعالى: \"وهل أتاك نبأ الخصم إذ تسوروا المحراب\"",
+     "text": "لعبة بطاقات شكسبيرية على طريقة الباتل راب، من Inspired Mile. العب بطاقاتك، والتزم بالقالب، واكتب أفضل من خصم يعمل بالكامل على جهازك.",
+     "at": "خصم",
+     "suggestions": [
+      "خَصْم"
+     ]
+    },
+    {
+     "key": "app.shortcut.battle",
+     "rule": "AR_HOMOPHONES_REPLACE",
+     "category": "CONFUSED_WORDS",
+     "message": "الحُلْبَة نبات يشرب والحَلَبة مكان المصارعة",
+     "text": "حلبة النزال",
+     "at": "حلبة",
+     "suggestions": [
+      "حِلْبَة",
+      "حُلْبَة"
+     ]
+    },
+    {
+     "key": "pwa.install.iosBody",
+     "rule": "HUNSPELL_RULE_AR",
+     "category": "TYPOS",
+     "message": "وُجد خطأ إملائي محتمل",
+     "text": "على iPhone وiPad لا يشارك تطبيق الشاشة الرئيسية هذا التبويب أي شيء. أضِفه قبل تسجيل الدخول أو تنزيل نموذج، وإلا فستفعل الأمرين مرتين.",
+     "at": "وiPad",
+     "suggestions": []
+    },
+    {
+     "key": "pwa.install.iosBody",
+     "rule": "grammar_0011_notjazem_lam_nafia",
+     "category": "GRAMMAR_ERROR",
+     "message": "\nالفرق بين لا الناهية ولا النافية، لا الناهية تأتي مع ضمائر المخاطب فقط. لذا فإن لا النافية لا تجزم الفعل المضارع أتقصد؟\n\n        \"لا يشار\", \"لا يشارك\", \"لا يشاري\"\n\n      ",
+     "text": "على iPhone وiPad لا يشارك تطبيق الشاشة الرئيسية هذا التبويب أي شيء. أضِفه قبل تسجيل الدخول أو تنزيل نموذج، وإلا فستفعل الأمرين مرتين.",
+     "at": "لا يشارك",
+     "suggestions": [
+      "لا يشار",
+      "لا يشارك",
+      "لا يشاري"
+     ]
+    },
+    {
+     "key": "pwa.install.iosBody",
+     "rule": "wrong_adj_use",
+     "category": "COMMON_ERRORS_ON_ADJECTIVES",
+     "message": "لا تقل  شيء رئيسي  أو حاجة رئيسية بل قل شيء  رئيس و حاجة رئيسة،\n        أن كلمة \"رئيس\" أو \"رئيسة\" من الصفات وياء النسبة لا تُنسب للصفات فلا يصح مثلًا قول \"(رأيتُ الرجل العظيمي)\" أو \"(رأيتُ المرأة العظيمية)\"\n        \"الرئيسة\"\n      ",
+     "text": "على iPhone وiPad لا يشارك تطبيق الشاشة الرئيسية هذا التبويب أي شيء. أضِفه قبل تسجيل الدخول أو تنزيل نموذج، وإلا فستفعل الأمرين مرتين.",
+     "at": "الرئيسية",
+     "suggestions": [
+      "الرئيسة"
+     ]
+    },
+    {
+     "key": "pwa.install.iosStep2",
+     "rule": "wrong_adj_use",
+     "category": "COMMON_ERRORS_ON_ADJECTIVES",
+     "message": "لا تقل  شيء رئيسي  أو حاجة رئيسية بل قل شيء  رئيس و حاجة رئيسة،\n        أن كلمة \"رئيس\" أو \"رئيسة\" من الصفات وياء النسبة لا تُنسب للصفات فلا يصح مثلًا قول \"(رأيتُ الرجل العظيمي)\" أو \"(رأيتُ المرأة العظيمية)\"\n        \"الرئيسة\"\n      ",
+     "text": "اختر «إضافة إلى الشاشة الرئيسية».",
+     "at": "الرئيسية",
+     "suggestions": [
+      "الرئيسة"
+     ]
+    },
+    {
+     "key": "pwa.storage.kept",
+     "rule": "syntax_125_mobtadaa_nakira_1",
+     "category": "TEST_NEW_FEATURES",
+     "message": "لا يجوز الابتداء بنكرة، فيتقدم الخبر شبه الجملة مثلا \"كتابان عندك\" تصبح \"عندك كتابان\"\n\n: \"على محفوظ\"\n\n      ",
+     "text": "محفوظ على هذا الجهاز: 1.1 غ.ب. لن يحذفه متصفحك من تلقاء نفسه.",
+     "at": "محفوظ على",
+     "suggestions": [
+      "على محفوظ"
+     ]
+    },
+    {
+     "key": "pwa.storage.atRisk",
+     "rule": "syntax_125_mobtadaa_nakira_1",
+     "category": "TEST_NEW_FEATURES",
+     "message": "لا يجوز الابتداء بنكرة، فيتقدم الخبر شبه الجملة مثلا \"كتابان عندك\" تصبح \"عندك كتابان\"\n\n: \"على مخزَّن\"\n\n      ",
+     "text": "مخزَّن على هذا الجهاز: 1.1 غ.ب، لكن قد يحذفه متصفحك إذا ضاقت مساحة الجهاز أو غبتَ مدة.",
+     "at": "مخزَّن على",
+     "suggestions": [
+      "على مخزَّن"
+     ]
+    },
+    {
+     "key": "tour.title",
+     "rule": "AR_HOMOPHONES_REPLACE",
+     "category": "CONFUSED_WORDS",
+     "message": "الحُلْبَة نبات يشرب والحَلَبة مكان المصارعة",
+     "text": "حلبة البطولات",
+     "at": "حلبة",
+     "suggestions": [
+      "حِلْبَة",
+      "حُلْبَة"
+     ]
+    },
+    {
+     "key": "vr.title",
+     "rule": "AR_DIACRITICS_REPLACE",
+     "category": "STYLE",
+     "message": "مَعْرِض بكسر الراء اسم المكان من \"عرض، يَعْرِض\" على وزن \"مَفْعِل\"",
+     "text": "معرض البطاقات",
+     "at": "معرض",
+     "suggestions": [
+      "مَعْرِض"
+     ]
+    }
+   ]
+  },
+  "hi": {
+   "checked": false,
+   "why": "LanguageTool has no rules for this language"
+  },
+  "zh": {
+   "checked": true,
+   "code": "zh-CN",
+   "strings": 285,
+   "hits": [
+    {
+     "key": "classroom.wizard.s3.body",
+     "rule": "BU",
+     "category": "CAT1",
+     "message": "您的意思是“\"不\"全”？",
+     "text": "为你的班级创建作业：检验知识的莎士比亚问答、补全缺失词语的名句挑战，或用于创意写作的诗歌对决。",
+     "at": "补",
+     "suggestions": [
+      "不"
+     ]
+    },
+    {
+     "key": "classroom.wizard.s3.challenge",
+     "rule": "BU",
+     "category": "CAT1",
+     "message": "您的意思是“\"不\"全”？",
+     "text": "补全名句中缺失的词语",
+     "at": "补",
+     "suggestions": [
+      "不"
+     ]
+    },
+    {
+     "key": "classroom.teacher.check3",
+     "rule": "wb2",
+     "category": "CAT4",
+     "message": "“关于”组成的介词短语必需位于句首，或请改用\"对于\"代替。",
+     "text": "我已阅读并同意服务条款和隐私政策，包括其中关于课堂与教育用途以及 FERPA 的章节。",
+     "at": "关于",
+     "suggestions": [
+      "对于"
+     ]
+    }
+   ]
+  },
+  "ja": {
+   "checked": true,
+   "code": "ja-JP",
+   "strings": 285,
+   "hits": []
+  },
+  "ko": {
+   "checked": false,
+   "why": "LanguageTool has no rules for this language"
+  },
+  "vi": {
+   "checked": false,
+   "why": "LanguageTool has no rules for this language"
+  },
+  "th": {
+   "checked": false,
+   "why": "LanguageTool has no rules for this language"
+  },
+  "id": {
+   "checked": false,
+   "why": "LanguageTool has no rules for this language"
+  }
+ }
+}

@@ -1,0 +1,876 @@
+{
+ "tool": "Hunspell (shared install), asked word by word through hspell",
+ "languages": {
+  "en": {
+   "checked": true,
+   "dictionary": "en",
+   "words": 506,
+   "rejected": {
+    "Cancelled": [
+     "market.status.cancelled"
+    ],
+    "Theatre": [
+     "app.shortcut.theatre",
+     "vr.play"
+    ],
+    "authorised": [
+     "classroom.teacher.check1"
+    ],
+    "organised": [
+     "tour.intro"
+    ]
+   }
+  },
+  "es": {
+   "checked": true,
+   "dictionary": "es",
+   "words": 570,
+   "rejected": {
+    "B": [
+     "classroom.wizard.s1.body"
+    ],
+    "Escríbelo": [
+     "classroom.wizard.s2.board"
+    ],
+    "Prémium": [
+     "season.reward.premium"
+    ],
+    "Publícalo": [
+     "classroom.wizard.s2.lms"
+    ],
+    "Reintentar": [
+     "boundary.retry",
+     "offline.retry"
+    ],
+    "model-viewer": [
+     "viewer.card.glb.body"
+    ],
+    "shakespearianas": [
+     "app.description"
+    ],
+    "º": [
+     "classroom.wizard.s1.body"
+    ]
+   }
+  },
+  "fr": {
+   "checked": true,
+   "dictionary": "fr",
+   "words": 623,
+   "rejected": {
+    "battle": [
+     "app.description"
+    ],
+    "l’app": [
+     "pwa.install.iosBody",
+     "pwa.storage.installHint"
+    ],
+    "model-viewer": [
+     "viewer.card.glb.body"
+    ]
+   }
+  },
+  "de": {
+   "checked": true,
+   "dictionary": "de",
+   "words": 596,
+   "rejected": {
+    "Battle-Raps": [
+     "app.description"
+    ],
+    "Belohnungspfad": [
+     "season.track"
+    ],
+    "Credit": [
+     "market.sell.needPrice",
+     "credits.one"
+    ],
+    "Credits": [
+     "market.sell.price",
+     "season.intro",
+     "error.price_invalid",
+     "error.insufficient_credits"
+    ],
+    "D-Engine": [
+     "vr.status.loading"
+    ],
+    "FERPA-konform": [
+     "classroom.wizard.s4.ferpa"
+    ],
+    "GLB-Ansicht": [
+     "viewer.error.glbViewer",
+     "viewer.card.glb.title",
+     "viewer.card.ar.body"
+    ],
+    "GLB-Mesh": [
+     "viewer.intro"
+    ],
+    "GLB-Meshes": [
+     "viewer.meta.description"
+    ],
+    "GLB-Modell": [
+     "viewer.status.glbLoaded",
+     "viewer.status.noGlb"
+    ],
+    "Home-Bildschirm": [
+     "pwa.install.iosBody",
+     "pwa.install.iosStep2"
+    ],
+    "Mesh": [
+     "viewer.card.glb.body"
+    ],
+    "Passkey": [
+     "error.passkey_not_found"
+    ],
+    "Prüf": [
+     "error.network",
+     "error.bad_request",
+     "offline.body"
+    ],
+    "Splat-Ansicht": [
+     "viewer.card.splat.title"
+    ],
+    "Strophenduell": [
+     "classroom.wizard.s3.body",
+     "classroom.wizard.s3.battle",
+     "tour.meta.description"
+    ],
+    "VR-Headset": [
+     "vr.status.noHeadset"
+    ],
+    "VR-Knopf": [
+     "vr.status.useButton"
+    ],
+    "geht’s": [
+     "classroom.wizard.start"
+    ],
+    "model-viewer": [
+     "viewer.card.glb.body"
+    ]
+   }
+  },
+  "it": {
+   "checked": true,
+   "dictionary": "it",
+   "words": 604,
+   "rejected": {
+    "Bye": [
+     "tour.bye"
+    ],
+    "Home": [
+     "offline.link.home",
+     "pwa.install.iosBody",
+     "pwa.install.iosStep2"
+    ],
+    "L’annuncio": [
+     "market.sell.done"
+    ],
+    "Pass": [
+     "season.meta.title",
+     "season.meta.description",
+     "season.title",
+     "season.signIn"
+    ],
+    "Quell’annuncio": [
+     "error.listing_not_found",
+     "error.listing_inactive"
+    ],
+    "Quell’incontro": [
+     "error.match_not_found",
+     "error.match_finished"
+    ],
+    "all’italiana": [
+     "tour.intro",
+     "tour.format.round_robin"
+    ],
+    "collezionabili": [
+     "market.meta.description"
+    ],
+    "controller": [
+     "vr.card.quest.body"
+    ],
+    "c’è": [
+     "viewer.status.noGlb",
+     "error.no_active_season"
+    ],
+    "dell’immagine": [
+     "viewer.status.reduced",
+     "vr.status.useButton"
+    ],
+    "dell’insegnante": [
+     "classroom.teacher.title"
+    ],
+    "l’abbiamo": [
+     "error.not_found"
+    ],
+    "l’annuncio": [
+     "market.cancel",
+     "market.sell.submit"
+    ],
+    "l’app": [
+     "pwa.install.iosBody",
+     "pwa.storage.installHint"
+    ],
+    "l’insegnante": [
+     "error.teachers_only"
+    ],
+    "l’intero": [
+     "vr.play"
+    ],
+    "mesh": [
+     "viewer.meta.description",
+     "viewer.intro",
+     "viewer.card.glb.body"
+    ],
+    "model-viewer": [
+     "viewer.card.glb.body"
+    ],
+    "nell’angolo": [
+     "vr.status.useButton"
+    ],
+    "passkey": [
+     "error.passkey_not_found"
+    ],
+    "sull’uso": [
+     "classroom.teacher.check3"
+    ],
+    "un’app": [
+     "pwa.install.promptBody"
+    ],
+    "un’immagine": [
+     "viewer.card.splat.body"
+    ],
+    "ª": [
+     "classroom.wizard.s1.body"
+    ]
+   }
+  },
+  "pt": {
+   "checked": true,
+   "dictionary": "pt-BR",
+   "words": 575,
+   "rejected": {
+    "Premium": [
+     "season.reward.premium"
+    ],
+    "Quiz": [
+     "activity.trivia"
+    ],
+    "headset": [
+     "vr.status.noHeadset",
+     "vr.play"
+    ],
+    "model-viewer": [
+     "viewer.card.glb.body"
+    ],
+    "quiz": [
+     "classroom.wizard.s3.body"
+    ],
+    "quizzes": [
+     "classroom.meta.description",
+     "classroom.intro",
+     "season.intro"
+    ],
+    "rap": [
+     "app.description"
+    ]
+   }
+  },
+  "pl": {
+   "checked": true,
+   "dictionary": "pl",
+   "words": 660,
+   "rejected": {
+    "Splaty": [
+     "viewer.card.splat.body"
+    ],
+    "gaussowskie": [
+     "viewer.meta.description",
+     "viewer.card.splat.body"
+    ],
+    "gaussowskim": [
+     "viewer.intro"
+    ],
+    "model-viewer": [
+     "viewer.card.glb.body"
+    ],
+    "splatem": [
+     "viewer.intro"
+    ],
+    "splaty": [
+     "viewer.meta.description"
+    ]
+   }
+  },
+  "ru": {
+   "checked": true,
+   "dictionary": "ru",
+   "words": 680,
+   "rejected": {
+    "D": [
+     "vr.intro",
+     "vr.status.noHeadset",
+     "vr.fallback"
+    ],
+    "D-галерею": [
+     "vr.error.init"
+    ],
+    "D-галерея": [
+     "vr.status.gallery"
+    ],
+    "D-движка": [
+     "vr.status.loading"
+    ],
+    "D-изображение": [
+     "viewer.card.splat.body"
+    ],
+    "D-модели": [
+     "viewer.meta.description",
+     "viewer.badge",
+     "viewer.intro"
+    ],
+    "D-просмотр": [
+     "viewer.status.ready",
+     "viewer.error.init"
+    ],
+    "D-просмотра": [
+     "viewer.status.init"
+    ],
+    "VR-шлем": [
+     "vr.status.noHeadset"
+    ],
+    "model-viewer": [
+     "viewer.card.glb.body"
+    ],
+    "Б": [
+     "classroom.wizard.s1.body"
+    ],
+    "Премиум": [
+     "season.reward.premium"
+    ],
+    "Шекспиром": [
+     "classroom.wizard.s1.body"
+    ],
+    "Шекспиру": [
+     "classroom.meta.description",
+     "classroom.intro",
+     "classroom.wizard.s3.body",
+     "classroom.wizard.s3.trivia"
+    ],
+    "рэп-баттла": [
+     "app.description"
+    ],
+    "сплатов": [
+     "viewer.meta.description",
+     "viewer.card.splat.title"
+    ],
+    "сплатом": [
+     "viewer.intro"
+    ],
+    "сплаты": [
+     "viewer.card.splat.body"
+    ]
+   }
+  },
+  "ar": {
+   "checked": true,
+   "dictionary": "ar",
+   "words": 625,
+   "rejected": {
+    "model-viewer": [
+     "viewer.card.glb.body"
+    ],
+    "الباتل": [
+     "app.description"
+    ],
+    "شكسبيرية": [
+     "app.description"
+    ],
+    "وiPad": [
+     "pwa.install.iosBody"
+    ]
+   }
+  },
+  "hi": {
+   "checked": true,
+   "dictionary": "hi",
+   "words": 488,
+   "rejected": {
+    "model-viewer": [
+     "viewer.card.glb.body"
+    ],
+    "ऐप": [
+     "pwa.install.promptBody",
+     "pwa.install.iosBody",
+     "pwa.storage.installHint"
+    ],
+    "ऑगमेंटेड": [
+     "viewer.card.glb.body"
+    ],
+    "खिसकाएँ": [
+     "viewer.card.splat.body"
+    ],
+    "खींचें": [
+     "viewer.intro",
+     "viewer.status.loaded",
+     "viewer.status.loadedReduced",
+     "vr.status.gallery"
+    ],
+    "गॉसियन": [
+     "viewer.meta.description",
+     "viewer.intro",
+     "viewer.card.splat.body"
+    ],
+    "घुमाएँ": [
+     "viewer.card.splat.body"
+    ],
+    "चलने": [
+     "vr.card.quest.body"
+    ],
+    "टूर्नामेंटों": [
+     "tour.meta.description"
+    ],
+    "दिखाएँ": [
+     "tour.intro"
+    ],
+    "निभाएँ": [
+     "app.description"
+    ],
+    "पासकी": [
+     "error.passkey_not_found"
+    ],
+    "बहुविकल्पीय": [
+     "classroom.wizard.s3.trivia"
+    ],
+    "मेश": [
+     "viewer.meta.description",
+     "viewer.intro",
+     "viewer.card.glb.body"
+    ],
+    "रीफ़्रेश": [
+     "market.refresh",
+     "error.conflict"
+    ],
+    "रीसेट": [
+     "viewer.reset"
+    ],
+    "लिस्टिंग": [
+     "market.tab.mine",
+     "market.filter.all",
+     "market.empty",
+     "market.mine.signIn"
+    ],
+    "संख्याएँ": [
+     "market.sell.wanted"
+    ],
+    "सकी": [
+     "vr.error.init"
+    ],
+    "समझता": [
+     "classroom.student.check3"
+    ],
+    "समझती": [
+     "classroom.student.check3"
+    ],
+    "स्प्लैट": [
+     "viewer.meta.description",
+     "viewer.intro",
+     "viewer.card.splat.title",
+     "viewer.card.splat.body"
+    ],
+    "हेडसेट": [
+     "vr.status.noHeadset",
+     "vr.play"
+    ]
+   }
+  },
+  "zh": {
+   "checked": false,
+   "why": "no Hunspell dictionary for this language in the shared install"
+  },
+  "ja": {
+   "checked": false,
+   "why": "no Hunspell dictionary for this language in the shared install"
+  },
+  "ko": {
+   "checked": true,
+   "dictionary": "ko",
+   "words": 633,
+   "rejected": {
+    "가우시안": [
+     "viewer.meta.description",
+     "viewer.intro",
+     "viewer.card.splat.body"
+    ],
+    "드래그하면": [
+     "viewer.intro",
+     "viewer.status.loaded",
+     "viewer.status.loadedReduced"
+    ],
+    "드래그해서": [
+     "vr.status.gallery",
+     "vr.fallback",
+     "vr.card.desktop.body"
+    ],
+    "마켓": [
+     "market.title"
+    ],
+    "메시로": [
+     "viewer.meta.description"
+    ],
+    "메시를": [
+     "viewer.intro"
+    ],
+    "메시예요": [
+     "viewer.card.glb.body"
+    ],
+    "셰익스피어": [
+     "classroom.meta.description",
+     "classroom.intro",
+     "classroom.wizard.s1.body",
+     "classroom.wizard.s3.body"
+    ],
+    "셰익스피어에": [
+     "classroom.wizard.s3.trivia"
+    ],
+    "순위표": [
+     "tour.leaderboard"
+    ],
+    "스크롤하면": [
+     "viewer.intro",
+     "viewer.status.loaded",
+     "viewer.status.loadedReduced"
+    ],
+    "스크롤해서": [
+     "vr.status.gallery",
+     "vr.fallback",
+     "vr.card.desktop.body"
+    ],
+    "스플랫": [
+     "viewer.card.splat.title"
+    ],
+    "스플랫과": [
+     "viewer.intro"
+    ],
+    "스플랫이나": [
+     "viewer.meta.description"
+    ],
+    "스플랫이에요": [
+     "viewer.card.splat.body"
+    ],
+    "아레나": [
+     "offline.link.battle",
+     "app.shortcut.battle",
+     "tour.title"
+    ],
+    "엘리미네이션": [
+     "tour.intro",
+     "tour.format.single_elimination"
+    ],
+    "여기서는": [
+     "vr.error.webxr"
+    ],
+    "이어갈": [
+     "season.signIn"
+    ],
+    "처리방침을": [
+     "classroom.teacher.check3"
+    ],
+    "추가’를": [
+     "pwa.install.iosStep2"
+    ],
+    "크레딧": [
+     "market.sell.price",
+     "market.sell.needPrice",
+     "season.intro",
+     "error.price_invalid"
+    ],
+    "크레딧이": [
+     "error.insufficient_credits"
+    ],
+    "탭하세요": [
+     "pwa.install.iosStep1"
+    ],
+    "플레이어": [
+     "tour.col.player"
+    ],
+    "플레이어와": [
+     "market.meta.description",
+     "market.intro"
+    ],
+    "플레이어의": [
+     "error.daily_limit_reached"
+    ],
+    "플레이해": [
+     "season.intro"
+    ],
+    "헤드셋": [
+     "vr.play"
+    ],
+    "헤드셋을": [
+     "vr.status.noHeadset"
+    ]
+   }
+  },
+  "vi": {
+   "checked": true,
+   "dictionary": "vi",
+   "words": 526,
+   "rejected": {
+    "D": [
+     "viewer.meta.description",
+     "viewer.badge",
+     "viewer.intro",
+     "viewer.status.init"
+    ],
+    "Hủy": [
+     "market.cancel"
+    ],
+    "Khóa": [
+     "error.passkey_not_found"
+    ],
+    "hủy": [
+     "market.status.cancelled"
+    ],
+    "khóa": [
+     "season.meta.description",
+     "season.intro",
+     "error.variant_already_unlocked"
+    ],
+    "model-viewer": [
+     "viewer.card.glb.body"
+    ],
+    "rap": [
+     "app.description"
+    ],
+    "xóa": [
+     "pwa.install.promptBody",
+     "pwa.storage.kept",
+     "pwa.storage.keptNoSize",
+     "pwa.storage.atRisk"
+    ]
+   }
+  },
+  "th": {
+   "checked": true,
+   "dictionary": "th",
+   "words": 407,
+   "rejected": {
+    "Babylon.js": [
+     "viewer.card.splat.body"
+    ],
+    "ค": [
+     "classroom.meta.description",
+     "classroom.intro",
+     "classroom.wizard.s3.body"
+    ],
+    "ควิซ": [
+     "season.intro",
+     "activity.trivia"
+    ],
+    "คอล": [
+     "vr.meta.description",
+     "vr.intro",
+     "offline.link.collection"
+    ],
+    "จิน": [
+     "vr.status.loading"
+    ],
+    "ช": [
+     "viewer.card.glb.body"
+    ],
+    "ซัน": [
+     "season.meta.title",
+     "season.meta.description",
+     "season.badge",
+     "season.title"
+    ],
+    "ต์": [
+     "tour.meta.description",
+     "tour.select",
+     "tour.selectHint",
+     "tour.empty"
+    ],
+    "บนี้": [
+     "pwa.install.iosBody"
+    ],
+    "พาส": [
+     "season.meta.title",
+     "season.meta.description",
+     "season.title",
+     "season.signIn"
+    ],
+    "ม": [
+     "classroom.wizard.s1.body"
+    ],
+    "รีเซ็ต": [
+     "viewer.reset"
+    ],
+    "ร์": [
+     "classroom.meta.description",
+     "classroom.intro",
+     "classroom.wizard.s1.body",
+     "classroom.wizard.s3.body"
+    ],
+    "วิซเชกส": [
+     "classroom.wizard.s3.body"
+    ],
+    "เชกส": [
+     "classroom.meta.description",
+     "classroom.intro",
+     "classroom.wizard.s1.body",
+     "classroom.wizard.s3.trivia"
+    ],
+    "เทิล": [
+     "app.description"
+    ],
+    "เมช": [
+     "viewer.meta.description",
+     "viewer.intro"
+    ],
+    "แท็": [
+     "pwa.install.iosBody"
+    ],
+    "แร็ป": [
+     "app.description"
+    ],
+    "แล้วก": [
+     "classroom.wizard.s2.body"
+    ]
+   }
+  },
+  "id": {
+   "checked": true,
+   "dictionary": "id",
+   "words": 518,
+   "rejected": {
+    "Aplikasinya": [
+     "pwa.install.promptBody"
+    ],
+    "Beralihlah": [
+     "viewer.intro"
+    ],
+    "Bye": [
+     "tour.bye"
+    ],
+    "Headset": [
+     "vr.status.noHeadset"
+    ],
+    "Jelajahi": [
+     "market.tab.browse",
+     "viewer.intro",
+     "vr.meta.description",
+     "vr.intro"
+    ],
+    "Kodenya": [
+     "error.join_code_invalid"
+    ],
+    "Kreditmu": [
+     "error.insufficient_credits"
+    ],
+    "Lewati": [
+     "classroom.wizard.skip"
+    ],
+    "Masukkan": [
+     "classroom.join.needCode",
+     "classroom.create.needName",
+     "market.sell.needPrice"
+    ],
+    "Menginstal": [
+     "pwa.storage.installHint"
+    ],
+    "Mesh": [
+     "viewer.card.glb.body"
+    ],
+    "Penampil": [
+     "viewer.status.ready",
+     "viewer.error.init",
+     "viewer.title"
+    ],
+    "Perambanmu": [
+     "pwa.storage.kept",
+     "pwa.storage.keptNoSize"
+    ],
+    "Shakespeare-mu": [
+     "vr.meta.description"
+    ],
+    "Tawarkan": [
+     "market.intro"
+    ],
+    "Tersalin": [
+     "classroom.detail.copied"
+    ],
+    "belajarmu": [
+     "classroom.wizard.s2.lms"
+    ],
+    "diklaim": [
+     "season.claimed",
+     "error.reward_unavailable"
+    ],
+    "gandamu": [
+     "market.intro"
+    ],
+    "gelarnya": [
+     "tour.meta.description"
+    ],
+    "headset-mu": [
+     "vr.play"
+    ],
+    "kartumu": [
+     "viewer.intro",
+     "app.description"
+    ],
+    "kelasmu": [
+     "classroom.mine.signIn",
+     "classroom.wizard.s1.title",
+     "classroom.wizard.s3.body"
+    ],
+    "kodenya": [
+     "classroom.wizard.s2.body"
+    ],
+    "koleksimu": [
+     "vr.intro"
+    ],
+    "koneksimu": [
+     "error.network",
+     "offline.body"
+    ],
+    "masukkan": [
+     "error.bad_request"
+    ],
+    "mesh": [
+     "viewer.meta.description",
+     "viewer.intro"
+    ],
+    "model-viewer": [
+     "viewer.card.glb.body"
+    ],
+    "pemenangnya": [
+     "error.match_finished"
+    ],
+    "penampil": [
+     "viewer.status.init"
+    ],
+    "perambanmu": [
+     "pwa.storage.atRisk",
+     "pwa.storage.atRiskNoSize"
+    ],
+    "peranmu": [
+     "classroom.gate.body"
+    ],
+    "perbesar": [
+     "viewer.card.splat.body"
+    ],
+    "tab": [
+     "pwa.install.iosBody"
+    ],
+    "terinstal": [
+     "pwa.install.promptBody"
+    ],
+    "tertambah": [
+     "viewer.card.glb.body"
+    ]
+   }
+  }
+ }
+}

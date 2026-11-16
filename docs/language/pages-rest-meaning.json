@@ -1,0 +1,1489 @@
+{
+ "about": "Every string of the page areas that the meaning check flagged (back-translation by MADLAD-400 scored with MiniLM, and LaBSE scoring the translation against the English directly, both under 0.6: the rule of branch lang/qa-pipeline), read by the engineer on branch lang/pages-rest (a language model, Claude; not a native speaker), with what was decided. A record names the exact text it was made for: when the string changes, the record no longer matches and scripts/pages-rest/summarise.mjs --strict reports the string as not read. Also listed: strings changed after reading their back-translation although they were not flagged by both signals.",
+ "read": "2026-11-16",
+ "reviewed": [
+  {
+   "lang": "ar",
+   "id": "activity.battle",
+   "text": "نزال",
+   "verdict": "kept",
+   "note": "the core locale's word for a battle of verses (ar نزال, a bout; th ประชัน, a contest)"
+  },
+  {
+   "lang": "ar",
+   "id": "activity.trivia",
+   "text": "مسابقة",
+   "verdict": "kept",
+   "note": "the word for the trivia game that the core locale and the playground (branch lang/pages-play, pg.trivia.title) use in this language"
+  },
+  {
+   "lang": "ar",
+   "id": "app.shortcut.battle",
+   "text": "حلبة النزال",
+   "verdict": "kept",
+   "note": "the core locale's nav.battle, copied and held equal by a test"
+  },
+  {
+   "lang": "ar",
+   "id": "classroom.wizard.s3.title",
+   "text": "أسنِد أنشطة إلى طلابك",
+   "verdict": "kept",
+   "note": "the third step of the teacher's tour: give the class activities to do"
+  },
+  {
+   "lang": "ar",
+   "id": "classroom.wizard.skip",
+   "text": "تخطّي الجولة التعريفية",
+   "verdict": "kept",
+   "note": "skips the teacher's introductory tour: the language says skip the guide or the introduction, which is what the tour is"
+  },
+  {
+   "lang": "ar",
+   "id": "credits.one",
+   "text": "نقطة واحدة",
+   "verdict": "kept",
+   "note": "ar نقطة واحدة, one point: as credits.zero"
+  },
+  {
+   "lang": "ar",
+   "id": "credits.zero",
+   "text": "لا نقاط",
+   "verdict": "kept",
+   "note": "ar لا نقاط, no points: the game's currency is نقاط in Arabic (Credits, docs/language/pages-rest.md)"
+  },
+  {
+   "lang": "ar",
+   "id": "market.tab.mine",
+   "text": "عروضي",
+   "verdict": "kept",
+   "note": "the tab with the player's own listings: my ads, my offers, my items for sale"
+  },
+  {
+   "lang": "ar",
+   "id": "offline.link.battle",
+   "text": "حلبة النزال",
+   "verdict": "kept",
+   "note": "the core locale's nav.battle, copied and held equal by a test"
+  },
+  {
+   "lang": "ar",
+   "id": "season.claim",
+   "text": "استلام",
+   "verdict": "kept",
+   "note": "the button that takes a reward: the language's usual verb for receiving or collecting it; English \"claim\" has no one-word equivalent, and the round trip comes back as receive, take, pick up or redeem"
+  },
+  {
+   "lang": "ar",
+   "id": "season.claimed",
+   "text": "تم الاستلام",
+   "verdict": "kept",
+   "note": "the reward's state once taken: received, taken, collected, as for season.claim"
+  },
+  {
+   "lang": "ar",
+   "id": "season.reward.premium",
+   "text": "مميّزة",
+   "verdict": "kept",
+   "note": "ar مميّزة, distinguished: the premium track"
+  },
+  {
+   "lang": "ar",
+   "id": "tour.bracket.loading",
+   "text": "جارٍ تحميل جدول البطولة…",
+   "verdict": "kept",
+   "note": "the bracket, in the word of the Tournaments table of docs/language/pages-rest.md (Wikidata Q4953688 where it has a label); both models read it back as a table, chart, grid or tree, which is what a bracket is"
+  },
+  {
+   "lang": "ar",
+   "id": "tour.bye",
+   "text": "تأهّل دون لعب",
+   "verdict": "kept",
+   "note": "the bye, as Wikidata labels it (Q1268659) or, where it has no usable label, a description (Tournaments table); a one-word sports term the round trip cannot keep"
+  },
+  {
+   "lang": "ar",
+   "id": "tour.col.rank",
+   "text": "المركز",
+   "verdict": "kept",
+   "note": "a column: the player's place"
+  },
+  {
+   "lang": "ar",
+   "id": "tour.entry.active",
+   "text": "ما زال في المنافسة",
+   "verdict": "kept",
+   "note": "a player's state in the standings: still in the tournament"
+  },
+  {
+   "lang": "ar",
+   "id": "tour.entry.eliminated",
+   "text": "خرج من البطولة",
+   "verdict": "kept",
+   "note": "a player's state in the standings: out of the tournament"
+  },
+  {
+   "lang": "ar",
+   "id": "tour.format.single_elimination",
+   "text": "خروج المغلوب",
+   "verdict": "kept",
+   "note": "the name of the format as Wikidata labels it (Q864897; Tournaments table); translated back word by word it comes out as knockout, cup system, direct elimination"
+  },
+  {
+   "lang": "ar",
+   "id": "tour.match.live",
+   "text": "جارية الآن",
+   "verdict": "kept",
+   "note": "a match's state: being played now"
+  },
+  {
+   "lang": "ar",
+   "id": "tour.match.pending",
+   "text": "لم تُلعب بعد",
+   "verdict": "kept",
+   "note": "a match's state: not played yet"
+  },
+  {
+   "lang": "ar",
+   "id": "tour.status.in_progress",
+   "text": "جارية",
+   "verdict": "kept",
+   "note": "a tournament's state: under way, in progress"
+  },
+  {
+   "lang": "ar",
+   "id": "tour.tab.bracket",
+   "text": "جدول البطولة",
+   "verdict": "kept",
+   "note": "the bracket, in the word of the Tournaments table of docs/language/pages-rest.md (Wikidata Q4953688 where it has a label); both models read it back as a table, chart, grid or tree, which is what a bracket is"
+  },
+  {
+   "lang": "ar",
+   "id": "tour.viewBracket",
+   "text": "عرض جدول البطولة",
+   "verdict": "kept",
+   "note": "the bracket, in the word of the Tournaments table of docs/language/pages-rest.md (Wikidata Q4953688 where it has a label); both models read it back as a table, chart, grid or tree, which is what a bracket is"
+  },
+  {
+   "lang": "ar",
+   "id": "viewer.ar",
+   "text": "عرض بالواقع المعزَّز",
+   "verdict": "kept",
+   "note": "ar عرض بالواقع المعزَّز, view with augmented reality (Wikidata Q254183's label)"
+  },
+  {
+   "lang": "de",
+   "id": "classroom.wizard.s3.title",
+   "text": "Aktivitäten zuweisen",
+   "verdict": "changed",
+   "was": "Aktivitäten aufgeben",
+   "note": "Not flagged by both (back: \"Give up activities\", 0.56/0.85). \"aufgeben\" means to set only with Hausaufgaben; with Aktivitäten it reads \"give up\". Now \"assign activities\" (back: \"Assign activities\", 0.83/0.82)."
+  },
+  {
+   "lang": "de",
+   "id": "classroom.wizard.skip",
+   "text": "Einführung überspringen",
+   "verdict": "kept",
+   "note": "skips the teacher's introductory tour: the language says skip the guide or the introduction, which is what the tour is"
+  },
+  {
+   "lang": "de",
+   "id": "market.sell.trade",
+   "text": "Tausch",
+   "verdict": "kept",
+   "note": "the kind of listing: an exchange"
+  },
+  {
+   "lang": "de",
+   "id": "season.claim",
+   "text": "Abholen",
+   "verdict": "kept",
+   "note": "the button that takes a reward: the language's usual verb for receiving or collecting it; English \"claim\" has no one-word equivalent, and the round trip comes back as receive, take, pick up or redeem"
+  },
+  {
+   "lang": "de",
+   "id": "season.claimed",
+   "text": "Abgeholt",
+   "verdict": "kept",
+   "note": "the reward's state once taken: received, taken, collected, as for season.claim"
+  },
+  {
+   "lang": "de",
+   "id": "tour.bye",
+   "text": "Freilos",
+   "verdict": "kept",
+   "note": "the bye, as Wikidata labels it (Q1268659) or, where it has no usable label, a description (Tournaments table); a one-word sports term the round trip cannot keep"
+  },
+  {
+   "lang": "de",
+   "id": "tour.col.wins",
+   "text": "Siege",
+   "verdict": "kept",
+   "note": "a column: wins, the round trip left the word untranslated"
+  },
+  {
+   "lang": "de",
+   "id": "tour.format.round_robin",
+   "text": "Jeder gegen jeden",
+   "verdict": "kept",
+   "note": "the name of the format as Wikidata labels it (Q841144) or its everyday name (Tournaments table); translated back word by word, the name comes out as all against all, circle, league"
+  },
+  {
+   "lang": "de",
+   "id": "tour.format.single_elimination",
+   "text": "K.‑o.‑System",
+   "verdict": "kept",
+   "note": "the name of the format as Wikidata labels it (Q864897; Tournaments table); translated back word by word it comes out as knockout, cup system, direct elimination"
+  },
+  {
+   "lang": "de",
+   "id": "tour.match.pending",
+   "text": "Steht noch aus",
+   "verdict": "kept",
+   "note": "a match's state: not played yet"
+  },
+  {
+   "lang": "de",
+   "id": "tour.register",
+   "text": "Teilnehmen",
+   "verdict": "kept",
+   "note": "the verb for entering a tournament: sign up, take part, apply"
+  },
+  {
+   "lang": "de",
+   "id": "tour.status.in_progress",
+   "text": "Läuft",
+   "verdict": "kept",
+   "note": "a tournament's state: under way, in progress"
+  },
+  {
+   "lang": "de",
+   "id": "tour.tab.bracket",
+   "text": "Turnierbaum",
+   "verdict": "kept",
+   "note": "the bracket, in the word of the Tournaments table of docs/language/pages-rest.md (Wikidata Q4953688 where it has a label); both models read it back as a table, chart, grid or tree, which is what a bracket is"
+  },
+  {
+   "lang": "de",
+   "id": "tour.toast.registered",
+   "text": "Du nimmst am Turnier teil.",
+   "verdict": "kept",
+   "note": "says the player has a place in the tournament, or that the entry was accepted: registered"
+  },
+  {
+   "lang": "de",
+   "id": "tour.viewBracket",
+   "text": "Turnierbaum ansehen",
+   "verdict": "kept",
+   "note": "the bracket, in the word of the Tournaments table of docs/language/pages-rest.md (Wikidata Q4953688 where it has a label); both models read it back as a table, chart, grid or tree, which is what a bracket is"
+  },
+  {
+   "lang": "es",
+   "id": "boundary.retry",
+   "text": "Reintentar",
+   "verdict": "kept",
+   "note": "es Reintentar: Android's own word for Retry"
+  },
+  {
+   "lang": "es",
+   "id": "classroom.assign.title",
+   "text": "Tareas",
+   "verdict": "kept",
+   "note": "the word for an assignment in the School table of docs/language/pages-rest.md; the round trip says tasks or exercises"
+  },
+  {
+   "lang": "es",
+   "id": "classroom.wizard.skip",
+   "text": "Saltar la guía",
+   "verdict": "kept",
+   "note": "skips the teacher's introductory tour: the language says skip the guide or the introduction, which is what the tour is"
+  },
+  {
+   "lang": "es",
+   "id": "offline.retry",
+   "text": "Reintentar",
+   "verdict": "kept",
+   "note": "es Reintentar: Android's own word for Retry"
+  },
+  {
+   "lang": "es",
+   "id": "tour.bye",
+   "text": "Exento",
+   "verdict": "kept",
+   "note": "the bye, as Wikidata labels it (Q1268659) or, where it has no usable label, a description (Tournaments table); a one-word sports term the round trip cannot keep"
+  },
+  {
+   "lang": "es",
+   "id": "tour.col.rank",
+   "text": "Puesto",
+   "verdict": "kept",
+   "note": "a column: the player's place"
+  },
+  {
+   "lang": "es",
+   "id": "tour.col.wins",
+   "text": "Victorias",
+   "verdict": "kept",
+   "note": "a column: wins, the round trip left the word untranslated"
+  },
+  {
+   "lang": "es",
+   "id": "tour.format.round_robin",
+   "text": "Todos contra todos",
+   "verdict": "kept",
+   "note": "the name of the format as Wikidata labels it (Q841144) or its everyday name (Tournaments table); translated back word by word, the name comes out as all against all, circle, league"
+  },
+  {
+   "lang": "es",
+   "id": "tour.tab.bracket",
+   "text": "Cuadro",
+   "verdict": "kept",
+   "note": "the bracket, in the word of the Tournaments table of docs/language/pages-rest.md (Wikidata Q4953688 where it has a label); both models read it back as a table, chart, grid or tree, which is what a bracket is"
+  },
+  {
+   "lang": "es",
+   "id": "tour.toast.registered",
+   "text": "Ya tienes plaza en el torneo.",
+   "verdict": "kept",
+   "note": "says the player has a place in the tournament, or that the entry was accepted: registered"
+  },
+  {
+   "lang": "fr",
+   "id": "activity.challenge",
+   "text": "Défi",
+   "verdict": "kept",
+   "note": "fr Défi: a challenge"
+  },
+  {
+   "lang": "fr",
+   "id": "classroom.badge.student",
+   "text": "Élève",
+   "verdict": "kept",
+   "note": "fr élève: a pupil at school (the label of Wikidata Q48942)"
+  },
+  {
+   "lang": "fr",
+   "id": "season.claim",
+   "text": "Récupérer",
+   "verdict": "kept",
+   "note": "the button that takes a reward: the language's usual verb for receiving or collecting it; English \"claim\" has no one-word equivalent, and the round trip comes back as receive, take, pick up or redeem"
+  },
+  {
+   "lang": "fr",
+   "id": "tour.bye",
+   "text": "Exempt",
+   "verdict": "kept",
+   "note": "the bye, as Wikidata labels it (Q1268659) or, where it has no usable label, a description (Tournaments table); a one-word sports term the round trip cannot keep"
+  },
+  {
+   "lang": "fr",
+   "id": "tour.format.round_robin",
+   "text": "Toutes rondes",
+   "verdict": "kept",
+   "note": "the name of the format as Wikidata labels it (Q841144) or its everyday name (Tournaments table); translated back word by word, the name comes out as all against all, circle, league"
+  },
+  {
+   "lang": "fr",
+   "id": "tour.tab.bracket",
+   "text": "Tableau",
+   "verdict": "kept",
+   "note": "the bracket, in the word of the Tournaments table of docs/language/pages-rest.md (Wikidata Q4953688 where it has a label); both models read it back as a table, chart, grid or tree, which is what a bracket is"
+  },
+  {
+   "lang": "hi",
+   "id": "activity.trivia",
+   "text": "प्रश्नोत्तरी",
+   "verdict": "kept",
+   "note": "the word for the trivia game that the core locale and the playground (branch lang/pages-play, pg.trivia.title) use in this language"
+  },
+  {
+   "lang": "hi",
+   "id": "app.shortcut.theatre",
+   "text": "हमारी रंगशाला",
+   "verdict": "kept",
+   "note": "the core locale's heading of the Theatre (theatre.titleA + theatre.titleB), held equal by a test"
+  },
+  {
+   "lang": "hi",
+   "id": "classroom.assign.title",
+   "text": "कार्य",
+   "verdict": "kept",
+   "note": "the word for an assignment in the School table of docs/language/pages-rest.md; the round trip says tasks or exercises"
+  },
+  {
+   "lang": "hi",
+   "id": "classroom.create.done",
+   "text": "कक्षा बना दी गई है।",
+   "verdict": "changed",
+   "was": "कक्षा बन गई है।",
+   "note": "Not flagged by both (back: \"The class is done.\", 0.66). The intransitive बन गई (\"has come into being\") read as \"is done\"; now the passive \"has been made\" (back: \"The class has been set up.\", 0.71/0.85)."
+  },
+  {
+   "lang": "hi",
+   "id": "classroom.wizard.skip",
+   "text": "परिचय छोड़ें",
+   "verdict": "kept",
+   "note": "skips the teacher's introductory tour: the language says skip the guide or the introduction, which is what the tour is"
+  },
+  {
+   "lang": "hi",
+   "id": "error.teachers_only",
+   "text": "केवल शिक्षक ही कार्य बना सकते हैं।",
+   "verdict": "changed",
+   "was": "कार्य केवल शिक्षक बना सकते हैं।",
+   "note": "Not flagged by both (back: \"Work can only make a teacher.\", 0.67). Put केवल … ही before the subject, so it reads \"only teachers can create assignments\" (back: \"Only teachers can create tasks.\", 0.76/0.82)."
+  },
+  {
+   "lang": "hi",
+   "id": "market.sell.trade",
+   "text": "अदला-बदली",
+   "verdict": "kept",
+   "note": "the kind of listing: an exchange"
+  },
+  {
+   "lang": "hi",
+   "id": "season.claim",
+   "text": "इनाम लें",
+   "verdict": "kept",
+   "note": "the button that takes a reward: the language's usual verb for receiving or collecting it; English \"claim\" has no one-word equivalent, and the round trip comes back as receive, take, pick up or redeem"
+  },
+  {
+   "lang": "hi",
+   "id": "season.claimed",
+   "text": "ले लिया",
+   "verdict": "kept",
+   "note": "the reward's state once taken: received, taken, collected, as for season.claim"
+  },
+  {
+   "lang": "hi",
+   "id": "tour.col.rank",
+   "text": "स्थान",
+   "verdict": "kept",
+   "note": "a column: the player's place"
+  },
+  {
+   "lang": "hi",
+   "id": "tour.entry.active",
+   "text": "अब भी मुक़ाबले में",
+   "verdict": "changed",
+   "was": "मुक़ाबले में",
+   "note": "Flagged (back: \"Comparison\", 0.19/0.41). \"In the contest\" lost the \"still\" of \"Still in\"; now \"still in the contest\" (back: \"Still in confrontation\", 0.40/0.75)."
+  },
+  {
+   "lang": "hi",
+   "id": "tour.entry.eliminated",
+   "text": "बाहर",
+   "verdict": "kept",
+   "note": "a player's state in the standings: out of the tournament"
+  },
+  {
+   "lang": "hi",
+   "id": "tour.leaderboard",
+   "text": "अंक तालिका",
+   "verdict": "kept",
+   "note": "the tournament's standings: the language's usual name for a league or tournament table"
+  },
+  {
+   "lang": "hi",
+   "id": "tour.match.live",
+   "text": "अभी जारी",
+   "verdict": "kept",
+   "note": "a match's state: being played now"
+  },
+  {
+   "lang": "id",
+   "id": "activity.trivia",
+   "text": "Kuis",
+   "verdict": "kept",
+   "note": "the word for the trivia game that the core locale and the playground (branch lang/pages-play, pg.trivia.title) use in this language"
+  },
+  {
+   "lang": "id",
+   "id": "classroom.wizard.skip",
+   "text": "Lewati panduan",
+   "verdict": "kept",
+   "note": "skips the teacher's introductory tour: the language says skip the guide or the introduction, which is what the tour is"
+  },
+  {
+   "lang": "id",
+   "id": "market.filter.trade",
+   "text": "Ditukar",
+   "verdict": "kept",
+   "note": "a filter: listings offered for exchange"
+  },
+  {
+   "lang": "id",
+   "id": "market.sell.trade",
+   "text": "Tukar",
+   "verdict": "kept",
+   "note": "the kind of listing: an exchange"
+  },
+  {
+   "lang": "id",
+   "id": "offline.pageTitle",
+   "text": "Luring",
+   "verdict": "kept",
+   "note": "id Luring: the KBBI's word for offline (luar jaringan); the round trip left it untranslated"
+  },
+  {
+   "lang": "id",
+   "id": "pwa.install.dismiss",
+   "text": "Lain kali",
+   "verdict": "kept",
+   "note": "Android's own \"Not now\" (AOSP autofill_save_notnow; docs/language/sources/pages-rest-android-terms.json)"
+  },
+  {
+   "lang": "id",
+   "id": "tour.format.round_robin",
+   "text": "Sistem kompetisi",
+   "verdict": "kept",
+   "note": "the name of the format as Wikidata labels it (Q841144) or its everyday name (Tournaments table); translated back word by word, the name comes out as all against all, circle, league"
+  },
+  {
+   "lang": "id",
+   "id": "tour.format.single_elimination",
+   "text": "Sistem gugur",
+   "verdict": "kept",
+   "note": "the name of the format as Wikidata labels it (Q864897; Tournaments table); translated back word by word it comes out as knockout, cup system, direct elimination"
+  },
+  {
+   "lang": "id",
+   "id": "tour.match.live",
+   "text": "Sedang bertanding",
+   "verdict": "kept",
+   "note": "a match's state: being played now"
+  },
+  {
+   "lang": "id",
+   "id": "tour.match.pending",
+   "text": "Belum dimainkan",
+   "verdict": "kept",
+   "note": "a match's state: not played yet"
+  },
+  {
+   "lang": "id",
+   "id": "tour.tab.bracket",
+   "text": "Bagan pertandingan",
+   "verdict": "kept",
+   "note": "the bracket, in the word of the Tournaments table of docs/language/pages-rest.md (Wikidata Q4953688 where it has a label); both models read it back as a table, chart, grid or tree, which is what a bracket is"
+  },
+  {
+   "lang": "id",
+   "id": "tour.viewBracket",
+   "text": "Lihat bagan pertandingan",
+   "verdict": "kept",
+   "note": "the bracket, in the word of the Tournaments table of docs/language/pages-rest.md (Wikidata Q4953688 where it has a label); both models read it back as a table, chart, grid or tree, which is what a bracket is"
+  },
+  {
+   "lang": "it",
+   "id": "classroom.assign.title",
+   "text": "Compiti",
+   "verdict": "kept",
+   "note": "the word for an assignment in the School table of docs/language/pages-rest.md; the round trip says tasks or exercises"
+  },
+  {
+   "lang": "it",
+   "id": "season.claim",
+   "text": "Riscatta",
+   "verdict": "kept",
+   "note": "the button that takes a reward: the language's usual verb for receiving or collecting it; English \"claim\" has no one-word equivalent, and the round trip comes back as receive, take, pick up or redeem"
+  },
+  {
+   "lang": "it",
+   "id": "season.claimed",
+   "text": "Riscattata",
+   "verdict": "kept",
+   "note": "the reward's state once taken: received, taken, collected, as for season.claim"
+  },
+  {
+   "lang": "it",
+   "id": "tour.col.losses",
+   "text": "Sconfitte",
+   "verdict": "kept",
+   "note": "a column: losses"
+  },
+  {
+   "lang": "it",
+   "id": "tour.col.wins",
+   "text": "Vittorie",
+   "verdict": "kept",
+   "note": "a column: wins, the round trip left the word untranslated"
+  },
+  {
+   "lang": "it",
+   "id": "tour.format.round_robin",
+   "text": "Girone all’italiana",
+   "verdict": "kept",
+   "note": "the name of the format as Wikidata labels it (Q841144) or its everyday name (Tournaments table); translated back word by word, the name comes out as all against all, circle, league"
+  },
+  {
+   "lang": "it",
+   "id": "tour.tab.bracket",
+   "text": "Tabellone",
+   "verdict": "kept",
+   "note": "the bracket, in the word of the Tournaments table of docs/language/pages-rest.md (Wikidata Q4953688 where it has a label); both models read it back as a table, chart, grid or tree, which is what a bracket is"
+  },
+  {
+   "lang": "ja",
+   "id": "activity.trivia",
+   "text": "クイズ",
+   "verdict": "kept",
+   "note": "the word for the trivia game that the core locale and the playground (branch lang/pages-play, pg.trivia.title) use in this language"
+  },
+  {
+   "lang": "ja",
+   "id": "classroom.mine.title",
+   "text": "マイクラス",
+   "verdict": "kept",
+   "note": "ja マイクラス: my classes, written as Japanese interfaces write マイページ"
+  },
+  {
+   "lang": "ja",
+   "id": "classroom.wizard.s3.title",
+   "text": "活動を割り当てる",
+   "verdict": "changed",
+   "was": "活動を出題する",
+   "note": "Not flagged by both (back: \"I'm going to give you a task.\", 0.22/0.72). 出題 is setting questions for a test, not activities. Tried 課題を出す (0.18/0.46) and 活動を割り当てる, \"assign activities\" (back: \"Assign activity.\", 0.75/0.80); kept the second."
+  },
+  {
+   "lang": "ja",
+   "id": "classroom.wizard.skip",
+   "text": "案内をスキップ",
+   "verdict": "kept",
+   "note": "skips the teacher's introductory tour: the language says skip the guide or the introduction, which is what the tour is"
+  },
+  {
+   "lang": "ja",
+   "id": "error.listing_inactive",
+   "text": "その出品は受付を終了しています。",
+   "verdict": "kept",
+   "note": "the listing is closed, no longer taking buyers"
+  },
+  {
+   "lang": "ja",
+   "id": "market.filter.trade",
+   "text": "交換",
+   "verdict": "kept",
+   "note": "a filter: listings offered for exchange"
+  },
+  {
+   "lang": "ja",
+   "id": "market.offer",
+   "text": "交換を申し込む",
+   "verdict": "kept",
+   "note": "ja 交換を申し込む: propose an exchange"
+  },
+  {
+   "lang": "ja",
+   "id": "market.sell.done",
+   "text": "出品しました。",
+   "verdict": "kept",
+   "note": "the listing has been posted (the language's word for a classified ad or for putting up for sale)"
+  },
+  {
+   "lang": "ja",
+   "id": "market.sell.submit",
+   "text": "出品する",
+   "verdict": "kept",
+   "note": "as market.sell.title"
+  },
+  {
+   "lang": "ja",
+   "id": "market.sell.title",
+   "text": "出品する",
+   "verdict": "kept",
+   "note": "create a listing: ja 出品する, to put up for sale, the verb of Japanese marketplaces"
+  },
+  {
+   "lang": "ja",
+   "id": "market.status.active",
+   "text": "出品中",
+   "verdict": "kept",
+   "note": "a listing's state: open, for sale"
+  },
+  {
+   "lang": "ja",
+   "id": "market.tab.mine",
+   "text": "自分の出品",
+   "verdict": "kept",
+   "note": "the tab with the player's own listings: my ads, my offers, my items for sale"
+  },
+  {
+   "lang": "ja",
+   "id": "pwa.install.dismiss",
+   "text": "後で",
+   "verdict": "kept",
+   "note": "Android's own \"Not now\" (AOSP autofill_save_notnow; docs/language/sources/pages-rest-android-terms.json)"
+  },
+  {
+   "lang": "ja",
+   "id": "season.claim",
+   "text": "受け取る",
+   "verdict": "kept",
+   "note": "the button that takes a reward: the language's usual verb for receiving or collecting it; English \"claim\" has no one-word equivalent, and the round trip comes back as receive, take, pick up or redeem"
+  },
+  {
+   "lang": "ja",
+   "id": "season.claimed",
+   "text": "受け取り済み",
+   "verdict": "kept",
+   "note": "the reward's state once taken: received, taken, collected, as for season.claim"
+  },
+  {
+   "lang": "ja",
+   "id": "tour.bracket.loading",
+   "text": "トーナメント表を読み込んでいます…",
+   "verdict": "kept",
+   "note": "the bracket, in the word of the Tournaments table of docs/language/pages-rest.md (Wikidata Q4953688 where it has a label); both models read it back as a table, chart, grid or tree, which is what a bracket is"
+  },
+  {
+   "lang": "ja",
+   "id": "tour.bracket.none",
+   "text": "トーナメント表の組み合わせは、まだ決まっていません。",
+   "verdict": "kept",
+   "note": "the bracket, in the word of the Tournaments table of docs/language/pages-rest.md (Wikidata Q4953688 where it has a label); both models read it back as a table, chart, grid or tree, which is what a bracket is"
+  },
+  {
+   "lang": "ja",
+   "id": "tour.bye",
+   "text": "不戦勝",
+   "verdict": "kept",
+   "note": "the bye, as Wikidata labels it (Q1268659) or, where it has no usable label, a description (Tournaments table); a one-word sports term the round trip cannot keep"
+  },
+  {
+   "lang": "ja",
+   "id": "tour.entry.active",
+   "text": "勝ち残り",
+   "verdict": "kept",
+   "note": "a player's state in the standings: still in the tournament"
+  },
+  {
+   "lang": "ja",
+   "id": "tour.entry.eliminated",
+   "text": "敗退",
+   "verdict": "kept",
+   "note": "a player's state in the standings: out of the tournament"
+  },
+  {
+   "lang": "ja",
+   "id": "tour.format.round_robin",
+   "text": "総当たり戦",
+   "verdict": "kept",
+   "note": "the name of the format as Wikidata labels it (Q841144) or its everyday name (Tournaments table); translated back word by word, the name comes out as all against all, circle, league"
+  },
+  {
+   "lang": "ja",
+   "id": "tour.format.single_elimination",
+   "text": "ノックアウト方式",
+   "verdict": "kept",
+   "note": "the name of the format as Wikidata labels it (Q864897; Tournaments table); translated back word by word it comes out as knockout, cup system, direct elimination"
+  },
+  {
+   "lang": "ja",
+   "id": "tour.match.live",
+   "text": "対戦中",
+   "verdict": "kept",
+   "note": "a match's state: being played now"
+  },
+  {
+   "lang": "ja",
+   "id": "tour.match.pending",
+   "text": "未対戦",
+   "verdict": "kept",
+   "note": "a match's state: not played yet"
+  },
+  {
+   "lang": "ja",
+   "id": "tour.status.registration",
+   "text": "参加受付中",
+   "verdict": "kept",
+   "note": "a tournament's state: open for entries"
+  },
+  {
+   "lang": "ja",
+   "id": "tour.tab.bracket",
+   "text": "トーナメント表",
+   "verdict": "kept",
+   "note": "the bracket, in the word of the Tournaments table of docs/language/pages-rest.md (Wikidata Q4953688 where it has a label); both models read it back as a table, chart, grid or tree, which is what a bracket is"
+  },
+  {
+   "lang": "ja",
+   "id": "tour.viewBracket",
+   "text": "トーナメント表を見る",
+   "verdict": "kept",
+   "note": "the bracket, in the word of the Tournaments table of docs/language/pages-rest.md (Wikidata Q4953688 where it has a label); both models read it back as a table, chart, grid or tree, which is what a bracket is"
+  },
+  {
+   "lang": "ko",
+   "id": "activity.trivia",
+   "text": "퀴즈",
+   "verdict": "kept",
+   "note": "the word for the trivia game that the core locale and the playground (branch lang/pages-play, pg.trivia.title) use in this language"
+  },
+  {
+   "lang": "ko",
+   "id": "classroom.wizard.s3.title",
+   "text": "활동 배정하기",
+   "verdict": "changed",
+   "was": "활동 내기",
+   "note": "Not flagged by both (back: \"Activities Betting\", 0.53/0.73): 내기 is also \"a bet\". Tried 과제 내기 (back: \"Challenge Betting\", 0.11/0.54) and 과제 내주기 (back: \"Submit a task\", 0.27/0.51); 활동 배정하기, \"assign activities\" (back: \"Assign an activity\", 0.76/0.88), is unambiguous."
+  },
+  {
+   "lang": "ko",
+   "id": "error.listing_inactive",
+   "text": "그 매물은 이미 마감됐어요.",
+   "verdict": "kept",
+   "note": "the listing is closed, no longer taking buyers"
+  },
+  {
+   "lang": "ko",
+   "id": "market.cancel",
+   "text": "매물 내리기",
+   "verdict": "kept",
+   "note": "ko 매물 내리기: take the listing down"
+  },
+  {
+   "lang": "ko",
+   "id": "market.filter.trade",
+   "text": "교환",
+   "verdict": "kept",
+   "note": "a filter: listings offered for exchange"
+  },
+  {
+   "lang": "ko",
+   "id": "market.sell.done",
+   "text": "매물을 올렸어요.",
+   "verdict": "kept",
+   "note": "the listing has been posted (the language's word for a classified ad or for putting up for sale)"
+  },
+  {
+   "lang": "ko",
+   "id": "market.status.active",
+   "text": "판매 중",
+   "verdict": "kept",
+   "note": "a listing's state: open, for sale"
+  },
+  {
+   "lang": "ko",
+   "id": "pwa.install.dismiss",
+   "text": "나중에",
+   "verdict": "kept",
+   "note": "Android's own \"Not now\" (AOSP autofill_save_notnow; docs/language/sources/pages-rest-android-terms.json)"
+  },
+  {
+   "lang": "ko",
+   "id": "season.claim",
+   "text": "받기",
+   "verdict": "kept",
+   "note": "the button that takes a reward: the language's usual verb for receiving or collecting it; English \"claim\" has no one-word equivalent, and the round trip comes back as receive, take, pick up or redeem"
+  },
+  {
+   "lang": "ko",
+   "id": "season.claimed",
+   "text": "받음",
+   "verdict": "kept",
+   "note": "the reward's state once taken: received, taken, collected, as for season.claim"
+  },
+  {
+   "lang": "ko",
+   "id": "tour.bracket.loading",
+   "text": "대진표를 불러오는 중…",
+   "verdict": "kept",
+   "note": "the bracket, in the word of the Tournaments table of docs/language/pages-rest.md (Wikidata Q4953688 where it has a label); both models read it back as a table, chart, grid or tree, which is what a bracket is"
+  },
+  {
+   "lang": "ko",
+   "id": "tour.bye",
+   "text": "부전승",
+   "verdict": "kept",
+   "note": "the bye, as Wikidata labels it (Q1268659) or, where it has no usable label, a description (Tournaments table); a one-word sports term the round trip cannot keep"
+  },
+  {
+   "lang": "ko",
+   "id": "tour.col.losses",
+   "text": "패",
+   "verdict": "kept",
+   "note": "a column: losses"
+  },
+  {
+   "lang": "ko",
+   "id": "tour.entry.active",
+   "text": "생존",
+   "verdict": "kept",
+   "note": "a player's state in the standings: still in the tournament"
+  },
+  {
+   "lang": "ko",
+   "id": "tour.format.round_robin",
+   "text": "리그전",
+   "verdict": "kept",
+   "note": "the name of the format as Wikidata labels it (Q841144) or its everyday name (Tournaments table); translated back word by word, the name comes out as all against all, circle, league"
+  },
+  {
+   "lang": "ko",
+   "id": "tour.match.live",
+   "text": "경기 중",
+   "verdict": "kept",
+   "note": "a match's state: being played now"
+  },
+  {
+   "lang": "ko",
+   "id": "tour.match.pending",
+   "text": "경기 전",
+   "verdict": "kept",
+   "note": "a match's state: not played yet"
+  },
+  {
+   "lang": "ko",
+   "id": "tour.register",
+   "text": "참가 신청",
+   "verdict": "kept",
+   "note": "the verb for entering a tournament: sign up, take part, apply"
+  },
+  {
+   "lang": "ko",
+   "id": "tour.status.registration",
+   "text": "참가 신청 중",
+   "verdict": "kept",
+   "note": "a tournament's state: open for entries"
+  },
+  {
+   "lang": "ko",
+   "id": "tour.tab.bracket",
+   "text": "대진표",
+   "verdict": "kept",
+   "note": "the bracket, in the word of the Tournaments table of docs/language/pages-rest.md (Wikidata Q4953688 where it has a label); both models read it back as a table, chart, grid or tree, which is what a bracket is"
+  },
+  {
+   "lang": "pl",
+   "id": "classroom.wizard.skip",
+   "text": "Pomiń przewodnik",
+   "verdict": "kept",
+   "note": "skips the teacher's introductory tour: the language says skip the guide or the introduction, which is what the tour is"
+  },
+  {
+   "lang": "pl",
+   "id": "season.claim",
+   "text": "Odbierz",
+   "verdict": "kept",
+   "note": "the button that takes a reward: the language's usual verb for receiving or collecting it; English \"claim\" has no one-word equivalent, and the round trip comes back as receive, take, pick up or redeem"
+  },
+  {
+   "lang": "pl",
+   "id": "season.claimed",
+   "text": "Odebrano",
+   "verdict": "kept",
+   "note": "the reward's state once taken: received, taken, collected, as for season.claim"
+  },
+  {
+   "lang": "pl",
+   "id": "tour.bye",
+   "text": "Wolny los",
+   "verdict": "kept",
+   "note": "the bye, as Wikidata labels it (Q1268659) or, where it has no usable label, a description (Tournaments table); a one-word sports term the round trip cannot keep"
+  },
+  {
+   "lang": "pl",
+   "id": "tour.entry.eliminated",
+   "text": "Poza turniejem",
+   "verdict": "kept",
+   "note": "a player's state in the standings: out of the tournament"
+  },
+  {
+   "lang": "pl",
+   "id": "tour.format.round_robin",
+   "text": "System kołowy (każdy z każdym)",
+   "verdict": "kept",
+   "note": "the name of the format as Wikidata labels it (Q841144) or its everyday name (Tournaments table); translated back word by word, the name comes out as all against all, circle, league"
+  },
+  {
+   "lang": "pl",
+   "id": "tour.format.single_elimination",
+   "text": "System pucharowy",
+   "verdict": "kept",
+   "note": "the name of the format as Wikidata labels it (Q864897; Tournaments table); translated back word by word it comes out as knockout, cup system, direct elimination"
+  },
+  {
+   "lang": "pl",
+   "id": "tour.leaderboard",
+   "text": "Klasyfikacja",
+   "verdict": "kept",
+   "note": "the tournament's standings: the language's usual name for a league or tournament table"
+  },
+  {
+   "lang": "pl",
+   "id": "tour.status.in_progress",
+   "text": "Trwa",
+   "verdict": "kept",
+   "note": "a tournament's state: under way, in progress"
+  },
+  {
+   "lang": "pl",
+   "id": "tour.tab.bracket",
+   "text": "Drabinka",
+   "verdict": "kept",
+   "note": "the bracket, in the word of the Tournaments table of docs/language/pages-rest.md (Wikidata Q4953688 where it has a label); both models read it back as a table, chart, grid or tree, which is what a bracket is"
+  },
+  {
+   "lang": "pl",
+   "id": "tour.toast.registered",
+   "text": "Masz miejsce w turnieju.",
+   "verdict": "kept",
+   "note": "says the player has a place in the tournament, or that the entry was accepted: registered"
+  },
+  {
+   "lang": "pt",
+   "id": "classroom.wizard.skip",
+   "text": "Pular o guia",
+   "verdict": "kept",
+   "note": "skips the teacher's introductory tour: the language says skip the guide or the introduction, which is what the tour is"
+  },
+  {
+   "lang": "pt",
+   "id": "market.sell.trade",
+   "text": "Troca",
+   "verdict": "kept",
+   "note": "the kind of listing: an exchange"
+  },
+  {
+   "lang": "pt",
+   "id": "season.claim",
+   "text": "Resgatar",
+   "verdict": "kept",
+   "note": "the button that takes a reward: the language's usual verb for receiving or collecting it; English \"claim\" has no one-word equivalent, and the round trip comes back as receive, take, pick up or redeem"
+  },
+  {
+   "lang": "pt",
+   "id": "season.claimed",
+   "text": "Resgatada",
+   "verdict": "kept",
+   "note": "the reward's state once taken: received, taken, collected, as for season.claim"
+  },
+  {
+   "lang": "pt",
+   "id": "tour.bye",
+   "text": "Folga",
+   "verdict": "kept",
+   "note": "the bye, as Wikidata labels it (Q1268659) or, where it has no usable label, a description (Tournaments table); a one-word sports term the round trip cannot keep"
+  },
+  {
+   "lang": "pt",
+   "id": "tour.format.round_robin",
+   "text": "Todos contra todos",
+   "verdict": "kept",
+   "note": "the name of the format as Wikidata labels it (Q841144) or its everyday name (Tournaments table); translated back word by word, the name comes out as all against all, circle, league"
+  },
+  {
+   "lang": "pt",
+   "id": "tour.tab.bracket",
+   "text": "Chave",
+   "verdict": "kept",
+   "note": "the bracket, in the word of the Tournaments table of docs/language/pages-rest.md (Wikidata Q4953688 where it has a label); both models read it back as a table, chart, grid or tree, which is what a bracket is"
+  },
+  {
+   "lang": "ru",
+   "id": "activity.trivia",
+   "text": "Викторина",
+   "verdict": "kept",
+   "note": "the word for the trivia game that the core locale and the playground (branch lang/pages-play, pg.trivia.title) use in this language"
+  },
+  {
+   "lang": "ru",
+   "id": "classroom.wizard.s3.title",
+   "text": "Дай задания",
+   "verdict": "kept",
+   "note": "the third step of the teacher's tour: give the class activities to do"
+  },
+  {
+   "lang": "ru",
+   "id": "error.tournament_full",
+   "text": "В этом турнире больше нет мест.",
+   "verdict": "kept",
+   "note": "no places are left in this tournament: it is full"
+  },
+  {
+   "lang": "ru",
+   "id": "season.claim",
+   "text": "Забрать",
+   "verdict": "kept",
+   "note": "the button that takes a reward: the language's usual verb for receiving or collecting it; English \"claim\" has no one-word equivalent, and the round trip comes back as receive, take, pick up or redeem"
+  },
+  {
+   "lang": "ru",
+   "id": "season.claimed",
+   "text": "Получено",
+   "verdict": "kept",
+   "note": "the reward's state once taken: received, taken, collected, as for season.claim"
+  },
+  {
+   "lang": "ru",
+   "id": "tour.bye",
+   "text": "Без соперника",
+   "verdict": "kept",
+   "note": "the bye, as Wikidata labels it (Q1268659) or, where it has no usable label, a description (Tournaments table); a one-word sports term the round trip cannot keep"
+  },
+  {
+   "lang": "ru",
+   "id": "tour.entry.active",
+   "text": "Продолжает борьбу",
+   "verdict": "kept",
+   "note": "a player's state in the standings: still in the tournament"
+  },
+  {
+   "lang": "ru",
+   "id": "tour.format.round_robin",
+   "text": "Круговая система",
+   "verdict": "kept",
+   "note": "the name of the format as Wikidata labels it (Q841144) or its everyday name (Tournaments table); translated back word by word, the name comes out as all against all, circle, league"
+  },
+  {
+   "lang": "ru",
+   "id": "tour.leaderboard",
+   "text": "Турнирная таблица",
+   "verdict": "kept",
+   "note": "the tournament's standings: the language's usual name for a league or tournament table"
+  },
+  {
+   "lang": "ru",
+   "id": "tour.match.live",
+   "text": "Идёт сейчас",
+   "verdict": "kept",
+   "note": "a match's state: being played now"
+  },
+  {
+   "lang": "ru",
+   "id": "tour.match.pending",
+   "text": "Ещё не сыгран",
+   "verdict": "kept",
+   "note": "a match's state: not played yet"
+  },
+  {
+   "lang": "ru",
+   "id": "tour.tab.bracket",
+   "text": "Турнирная сетка",
+   "verdict": "kept",
+   "note": "the bracket, in the word of the Tournaments table of docs/language/pages-rest.md (Wikidata Q4953688 where it has a label); both models read it back as a table, chart, grid or tree, which is what a bracket is"
+  },
+  {
+   "lang": "ru",
+   "id": "tour.toast.registered",
+   "text": "Запись на турнир принята.",
+   "verdict": "kept",
+   "note": "says the player has a place in the tournament, or that the entry was accepted: registered"
+  },
+  {
+   "lang": "ru",
+   "id": "tour.viewBracket",
+   "text": "Открыть сетку",
+   "verdict": "kept",
+   "note": "the bracket, in the word of the Tournaments table of docs/language/pages-rest.md (Wikidata Q4953688 where it has a label); both models read it back as a table, chart, grid or tree, which is what a bracket is"
+  },
+  {
+   "lang": "ru",
+   "id": "viewer.card.splat.title",
+   "text": "Режим сплатов",
+   "verdict": "kept",
+   "note": "ru Режим сплатов: splat mode; сплат is a transliteration (Gaussian splatting, Technology in docs/language/pages-rest.md)"
+  },
+  {
+   "lang": "th",
+   "id": "activity.battle",
+   "text": "ประชัน",
+   "verdict": "kept",
+   "note": "the core locale's word for a battle of verses (ar نزال, a bout; th ประชัน, a contest)"
+  },
+  {
+   "lang": "th",
+   "id": "activity.trivia",
+   "text": "ควิซ",
+   "verdict": "kept",
+   "note": "the word for the trivia game that the core locale and the playground (branch lang/pages-play, pg.trivia.title) use in this language"
+  },
+  {
+   "lang": "th",
+   "id": "app.shortcut.battle",
+   "text": "สังเวียนประชัน",
+   "verdict": "kept",
+   "note": "the core locale's nav.battle, copied and held equal by a test"
+  },
+  {
+   "lang": "th",
+   "id": "classroom.wizard.skip",
+   "text": "ข้ามการแนะนำ",
+   "verdict": "kept",
+   "note": "skips the teacher's introductory tour: the language says skip the guide or the introduction, which is what the tour is"
+  },
+  {
+   "lang": "th",
+   "id": "market.filter.trade",
+   "text": "แลกเปลี่ยน",
+   "verdict": "kept",
+   "note": "a filter: listings offered for exchange"
+  },
+  {
+   "lang": "th",
+   "id": "market.sell.done",
+   "text": "สร้างประกาศแล้ว",
+   "verdict": "kept",
+   "note": "the listing has been posted (the language's word for a classified ad or for putting up for sale)"
+  },
+  {
+   "lang": "th",
+   "id": "market.tab.browse",
+   "text": "เลือกดู",
+   "verdict": "kept",
+   "note": "the tab that lists everything on sale: look through, choose to view"
+  },
+  {
+   "lang": "th",
+   "id": "offline.link.battle",
+   "text": "สังเวียนประชัน",
+   "verdict": "kept",
+   "note": "the core locale's nav.battle, copied and held equal by a test"
+  },
+  {
+   "lang": "th",
+   "id": "pwa.install.dismiss",
+   "text": "ไว้ทีหลัง",
+   "verdict": "kept",
+   "note": "Android's own \"Not now\" (AOSP autofill_save_notnow; docs/language/sources/pages-rest-android-terms.json)"
+  },
+  {
+   "lang": "th",
+   "id": "season.claim",
+   "text": "รับรางวัล",
+   "verdict": "kept",
+   "note": "the button that takes a reward: the language's usual verb for receiving or collecting it; English \"claim\" has no one-word equivalent, and the round trip comes back as receive, take, pick up or redeem"
+  },
+  {
+   "lang": "th",
+   "id": "season.claimed",
+   "text": "รับแล้ว",
+   "verdict": "kept",
+   "note": "the reward's state once taken: received, taken, collected, as for season.claim"
+  },
+  {
+   "lang": "th",
+   "id": "tour.entry.eliminated",
+   "text": "ตกรอบ",
+   "verdict": "kept",
+   "note": "a player's state in the standings: out of the tournament"
+  },
+  {
+   "lang": "th",
+   "id": "tour.format.round_robin",
+   "text": "พบกันหมด",
+   "verdict": "kept",
+   "note": "the name of the format as Wikidata labels it (Q841144) or its everyday name (Tournaments table); translated back word by word, the name comes out as all against all, circle, league"
+  },
+  {
+   "lang": "th",
+   "id": "tour.format.single_elimination",
+   "text": "แพ้คัดออก",
+   "verdict": "kept",
+   "note": "the name of the format as Wikidata labels it (Q864897; Tournaments table); translated back word by word it comes out as knockout, cup system, direct elimination"
+  },
+  {
+   "lang": "th",
+   "id": "tour.match.live",
+   "text": "กำลังแข่ง",
+   "verdict": "kept",
+   "note": "a match's state: being played now"
+  },
+  {
+   "lang": "th",
+   "id": "tour.match.pending",
+   "text": "ยังไม่แข่ง",
+   "verdict": "kept",
+   "note": "a match's state: not played yet"
+  },
+  {
+   "lang": "th",
+   "id": "tour.status.in_progress",
+   "text": "กำลังแข่งขัน",
+   "verdict": "kept",
+   "note": "a tournament's state: under way, in progress"
+  },
+  {
+   "lang": "th",
+   "id": "tour.tab.bracket",
+   "text": "สายการแข่งขัน",
+   "verdict": "kept",
+   "note": "the bracket, in the word of the Tournaments table of docs/language/pages-rest.md (Wikidata Q4953688 where it has a label); both models read it back as a table, chart, grid or tree, which is what a bracket is"
+  },
+  {
+   "lang": "vi",
+   "id": "classroom.assign.title",
+   "text": "Bài tập",
+   "verdict": "kept",
+   "note": "the word for an assignment in the School table of docs/language/pages-rest.md; the round trip says tasks or exercises"
+  },
+  {
+   "lang": "vi",
+   "id": "classroom.wizard.s2.print",
+   "text": "In phiếu phát cho học sinh",
+   "verdict": "kept",
+   "note": "vi: print a sheet to hand out to students"
+  },
+  {
+   "lang": "vi",
+   "id": "market.filter.trade",
+   "text": "Trao đổi",
+   "verdict": "kept",
+   "note": "a filter: listings offered for exchange"
+  },
+  {
+   "lang": "vi",
+   "id": "market.tab.browse",
+   "text": "Xem tin đăng",
+   "verdict": "kept",
+   "note": "the tab that lists everything on sale: look through, choose to view"
+  },
+  {
+   "lang": "vi",
+   "id": "pwa.install.dismiss",
+   "text": "Để sau",
+   "verdict": "kept",
+   "note": "Android's own \"Not now\" (AOSP autofill_save_notnow; docs/language/sources/pages-rest-android-terms.json)"
+  },
+  {
+   "lang": "vi",
+   "id": "season.claim",
+   "text": "Nhận",
+   "verdict": "kept",
+   "note": "the button that takes a reward: the language's usual verb for receiving or collecting it; English \"claim\" has no one-word equivalent, and the round trip comes back as receive, take, pick up or redeem"
+  },
+  {
+   "lang": "vi",
+   "id": "season.claimed",
+   "text": "Đã nhận",
+   "verdict": "kept",
+   "note": "the reward's state once taken: received, taken, collected, as for season.claim"
+  },
+  {
+   "lang": "vi",
+   "id": "tour.bye",
+   "text": "Miễn đấu",
+   "verdict": "kept",
+   "note": "the bye, as Wikidata labels it (Q1268659) or, where it has no usable label, a description (Tournaments table); a one-word sports term the round trip cannot keep"
+  },
+  {
+   "lang": "vi",
+   "id": "tour.entry.active",
+   "text": "Còn thi đấu",
+   "verdict": "kept",
+   "note": "a player's state in the standings: still in the tournament"
+  },
+  {
+   "lang": "vi",
+   "id": "tour.format.single_elimination",
+   "text": "Loại trực tiếp",
+   "verdict": "kept",
+   "note": "the name of the format as Wikidata labels it (Q864897; Tournaments table); translated back word by word it comes out as knockout, cup system, direct elimination"
+  },
+  {
+   "lang": "vi",
+   "id": "tour.match.live",
+   "text": "Đang đấu",
+   "verdict": "kept",
+   "note": "a match's state: being played now"
+  },
+  {
+   "lang": "vi",
+   "id": "tour.match.pending",
+   "text": "Chưa đấu",
+   "verdict": "kept",
+   "note": "a match's state: not played yet"
+  },
+  {
+   "lang": "vi",
+   "id": "tour.tab.bracket",
+   "text": "Sơ đồ thi đấu",
+   "verdict": "kept",
+   "note": "the bracket, in the word of the Tournaments table of docs/language/pages-rest.md (Wikidata Q4953688 where it has a label); both models read it back as a table, chart, grid or tree, which is what a bracket is"
+  },
+  {
+   "lang": "vi",
+   "id": "tour.viewBracket",
+   "text": "Xem sơ đồ thi đấu",
+   "verdict": "kept",
+   "note": "the bracket, in the word of the Tournaments table of docs/language/pages-rest.md (Wikidata Q4953688 where it has a label); both models read it back as a table, chart, grid or tree, which is what a bracket is"
+  },
+  {
+   "lang": "vi",
+   "id": "viewer.reset",
+   "text": "Đặt lại góc nhìn",
+   "verdict": "kept",
+   "note": "vi Đặt lại góc nhìn: reset the viewing angle, which is what resetting the camera does"
+  },
+  {
+   "lang": "zh",
+   "id": "classroom.wizard.s3.challenge",
+   "text": "补全名句中缺失的词语",
+   "verdict": "kept",
+   "note": "zh: complete the missing words of famous lines"
+  },
+  {
+   "lang": "zh",
+   "id": "classroom.wizard.skip",
+   "text": "跳过引导",
+   "verdict": "kept",
+   "note": "skips the teacher's introductory tour: the language says skip the guide or the introduction, which is what the tour is"
+  },
+  {
+   "lang": "zh",
+   "id": "market.filter.trade",
+   "text": "交换",
+   "verdict": "kept",
+   "note": "a filter: listings offered for exchange"
+  },
+  {
+   "lang": "zh",
+   "id": "market.status.active",
+   "text": "进行中",
+   "verdict": "kept",
+   "note": "a listing's state: open, for sale"
+  },
+  {
+   "lang": "zh",
+   "id": "pwa.install.dismiss",
+   "text": "以后再说",
+   "verdict": "kept",
+   "note": "Android's own \"Not now\" (AOSP autofill_save_notnow; docs/language/sources/pages-rest-android-terms.json)"
+  },
+  {
+   "lang": "zh",
+   "id": "season.claim",
+   "text": "领取",
+   "verdict": "kept",
+   "note": "the button that takes a reward: the language's usual verb for receiving or collecting it; English \"claim\" has no one-word equivalent, and the round trip comes back as receive, take, pick up or redeem"
+  },
+  {
+   "lang": "zh",
+   "id": "tour.bye",
+   "text": "轮空",
+   "verdict": "kept",
+   "note": "the bye, as Wikidata labels it (Q1268659) or, where it has no usable label, a description (Tournaments table); a one-word sports term the round trip cannot keep"
+  },
+  {
+   "lang": "zh",
+   "id": "tour.match.live",
+   "text": "进行中",
+   "verdict": "kept",
+   "note": "a match's state: being played now"
+  },
+  {
+   "lang": "zh",
+   "id": "tour.match.pending",
+   "text": "未开始",
+   "verdict": "kept",
+   "note": "a match's state: not played yet"
+  },
+  {
+   "lang": "zh",
+   "id": "tour.tab.bracket",
+   "text": "对阵表",
+   "verdict": "kept",
+   "note": "the bracket, in the word of the Tournaments table of docs/language/pages-rest.md (Wikidata Q4953688 where it has a label); both models read it back as a table, chart, grid or tree, which is what a bracket is"
+  }
+ ]
+}

@@ -17,7 +17,7 @@ const messages: Record<string, string> = {
   'error.join_code_invalid': 'वह कक्षा कोड मान्य नहीं है। कोड में 6 अक्षर होते हैं।',
   'error.classroom_not_found': 'इस कोड की कोई कक्षा नहीं है। अपने शिक्षक से कोड जाँच लें।',
   'error.not_classroom_member': 'आप इस कक्षा के सदस्य नहीं हैं।',
-  'error.teachers_only': 'कार्य केवल शिक्षक बना सकते हैं।',
+  'error.teachers_only': 'केवल शिक्षक ही कार्य बना सकते हैं।',
   'error.assignment_title_invalid': 'कार्य का शीर्षक 1 से 128 अक्षरों का होना चाहिए।',
   'error.card_invalid': 'वह कार्ड मान्य नहीं है।',
   'error.price_invalid': 'क़ीमत {min} से {max} क्रेडिट के बीच होनी चाहिए।',

@@ -37,7 +37,7 @@ const messages: Record<string, string> = {
   'classroom.create.placeholder': 'कक्षा का नाम',
   'classroom.create.submit': 'बनाएँ',
   'classroom.create.needName': 'कक्षा का नाम लिखें।',
-  'classroom.create.done': 'कक्षा बन गई है।',
+  'classroom.create.done': 'कक्षा बना दी गई है।',
   'classroom.mine.title': 'मेरी कक्षाएँ',
   'classroom.mine.empty': 'आप अभी किसी कक्षा में शामिल नहीं हुए हैं।',
   'classroom.mine.signIn': 'अपनी कक्षाएँ देखने के लिए साइन इन करें।',

@@ -37,7 +37,7 @@ const messages: Record<string, string> = {
   'tour.col.losses': 'हार',
   'tour.col.status': 'स्थिति',
   'tour.entry.eliminated': 'बाहर',
-  'tour.entry.active': 'मुक़ाबले में',
+  'tour.entry.active': 'अब भी मुक़ाबले में',
   'tour.option': '{name} ({status})',
 };
 

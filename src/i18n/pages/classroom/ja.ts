@@ -68,7 +68,7 @@ const messages: Record<string, string> = {
   'classroom.wizard.s2.board': '黒板に書く',
   'classroom.wizard.s2.lms': '学習支援システムに掲示する',
   'classroom.wizard.s2.print': 'プリントを配る',
-  'classroom.wizard.s3.title': '活動を出題する',
+  'classroom.wizard.s3.title': '活動を割り当てる',
   'classroom.wizard.s3.body': 'クラスに課題を出しましょう。知識を確かめるシェイクスピアクイズ、抜けている言葉を埋める名言チャレンジ、創作のための詩の決闘があります。',
   'classroom.wizard.s3.trivia': 'シェイクスピアについての選択式の問題5問',
   'classroom.wizard.s3.challenge': '有名な名言の抜けている言葉を埋める',

@@ -68,7 +68,7 @@ const messages: Record<string, string> = {
   'classroom.wizard.s2.board': '칠판에 적기',
   'classroom.wizard.s2.lms': '학습 플랫폼에 올리기',
   'classroom.wizard.s2.print': '유인물 인쇄하기',
-  'classroom.wizard.s3.title': '활동 내기',
+  'classroom.wizard.s3.title': '활동 배정하기',
   'classroom.wizard.s3.body': '학급에 과제를 만들어 주세요. 지식을 확인하는 셰익스피어 퀴즈, 빠진 낱말을 채우는 명언 도전 과제, 창의적 글쓰기를 위한 시 결투가 있어요.',
   'classroom.wizard.s3.trivia': '셰익스피어에 관한 객관식 문제 5개',
   'classroom.wizard.s3.challenge': '유명한 명언에서 빠진 낱말 채우기',
