@@ -42,6 +42,7 @@ const LT_CODE = { en: 'en-US', es: 'es', fr: 'fr', de: 'de-DE', it: 'it', pt: 'p
 const DICTS = { en: ['en'], es: ['es'], fr: ['fr'], de: ['de'], it: ['it'], pt: ['pt-BR'], pl: ['pl'], ru: ['ru'], ar: ['ar'], hi: ['hi'], ko: ['ko'], vi: ['vi'], th: ['th'], id: ['id'] };
 
 // ---------- LanguageTool ----------
+const BATCH_ARTEFACTS = ['ENGLISH_WORD_REPEAT_BEGINNING_RULE', 'SPANISH_WORD_REPEAT_BEGINNING_RULE', 'GERMAN_WORD_REPEAT_BEGINNING_RULE', 'PORTUGUESE_WORD_REPEAT_BEGINNING_RULE', 'FRENCH_WORD_REPEAT_BEGINNING_RULE', 'ITALIAN_WORD_REPEAT_BEGINNING_RULE', 'RUSSIAN_WORD_REPEAT_BEGINNING_RULE', 'POLISH_WORD_REPEAT_BEGINNING_RULE', 'ARABIC_WORD_REPEAT_BEGINNING_RULE'].join(',');
 async function ltLanguages() {
   const r = await fetch(`${LT_URL}/v2/languages`);
   if (!r.ok) throw new Error(`LanguageTool at ${LT_URL}: ${r.status}`);
@@ -49,7 +50,9 @@ async function ltLanguages() {
 }
 
 async function ltCheck(code, text) {
-  const body = new URLSearchParams({ language: code, text, level: 'picky' });
+  // Strings are checked together as paragraphs of one text, so a rule about neighbouring sentences
+  // ("three sentences in a row begin with the same word") would be judging our batching, not the text.
+  const body = new URLSearchParams({ language: code, text, level: 'picky', disabledRules: BATCH_ARTEFACTS });
   // Spelling is Hunspell's job where we have a dictionary of our own; LanguageTool's speller still runs (it knows compounds and names).
   const r = await fetch(`${LT_URL}/v2/check`, { method: 'POST', body });
   if (!r.ok) throw new Error(`LanguageTool ${code}: ${r.status} ${await r.text()}`);
@@ -192,7 +195,7 @@ for (const lang of langs) {
   const items = [];
   for (const [key, template] of Object.entries(strings[lang].ui)) {
     if (key in HOUSE_QUOTES) continue;
-    for (const s of await renderSamples(lang, template)) items.push({ id: `ui:${key}`, text: s.text, filled: s.filled, category: s.category });
+    for (const s of await renderSamples(lang, template, { key })) items.push({ id: `ui:${key}`, text: s.text, filled: s.filled, category: s.category });
   }
   for (const [id, text] of Object.entries(strings[lang].pack)) items.push({ id: `pack:${id}`, text, filled: [], category: null });
 

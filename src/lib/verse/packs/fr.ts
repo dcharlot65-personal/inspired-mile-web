@@ -23,7 +23,7 @@ const pack: LanguagePack = {
     ],
     'quatrain-aabb': [
       'Tu viens armé d’un esprit emprunté\nEt tu t’étonnes de n’avoir rien touché\nJ’ai vu des rois et des fous sur la scène\nToi, tu n’es qu’une note au bas d’une page vaine',
-      'La foule est venue voir un vrai combat\nEt tes vers ne sont que des restes de repas\nParle encore, plus fort, si tu l’oses\nMoi je réponds aux orages, toi aux roses',
+      'La foule est venue voir un vrai combat\nEt tes vers ne sont que des restes de repas\nParle encore, plus fort, si tu l’oses\nMoi, je réponds aux orages, toi aux roses',
     ],
     'quatrain-abab': [
       'J’arpentais ces planches avant ta naissance\nMes vers faisaient loi quand les tiens n’étaient que bruit\nVoici que tombe le rideau, et le silence\nLa scène veut un homme, pas un enfant qui fuit',

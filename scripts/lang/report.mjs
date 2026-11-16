@@ -87,7 +87,7 @@ if (bt) {
     let control = 0;
     for (const [key, template] of Object.entries(now[lang].ui)) {
       if (key in HOUSE_QUOTES) continue;
-      const text = (await renderSamples(lang, template, { typical: true }))[0].text;
+      const text = (await renderSamples(lang, template, { typical: true, key }))[0].text;
       const s = scored[key];
       if (!s || s.text !== text) {
         row.notScored++;

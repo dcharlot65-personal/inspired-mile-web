@@ -67,9 +67,9 @@ case "$STEP" in
   grammar) start_languagetool; node scripts/lang/grammar.mjs --out "$OUT/grammar.json" "$@" ;;
   meaning)
     node scripts/lang/extract.mjs --samples "$OUT/strings.json"
-    nice -n 10 "$MEMGUARD" --max-gb 14 -- "$LANGQA_HOME/venv/bin/python" scripts/lang/backtranslate.py --strings "$OUT/strings.json" --out "$OUT/bt.json" "$@" ;;
+    "$MEMGUARD" --max-gb 14 -- "$LANGQA_HOME/venv/bin/python" scripts/lang/backtranslate.py --strings "$OUT/strings.json" --out "$OUT/bt.json" "$@" ;;
   pairs)
-    nice -n 10 "$MEMGUARD" --max-gb 14 -- "$LANGQA_HOME/venv/bin/python" scripts/lang/backtranslate.py --pairs "$1" --out "${2:-$OUT/pairs-out.json}" ;;
+    "$MEMGUARD" --max-gb 14 -- "$LANGQA_HOME/venv/bin/python" scripts/lang/backtranslate.py --pairs "$1" --out "${2:-$OUT/pairs-out.json}" ;;
   review) start_llama; node scripts/lang/review.mjs --out "$OUT/review.json" "$@" ;;
   detach)
     WHAT=${1:?detach needs a step}; shift

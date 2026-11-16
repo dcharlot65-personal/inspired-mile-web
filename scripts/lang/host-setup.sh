@@ -47,7 +47,7 @@ fi
 # hspell: whole-word queries to the same library (scripts/lang/hspell.cpp says why).
 if [ -f "$SRC_DIR/hspell.cpp" ] && { [ ! -x "$HOME_DIR/hunspell/bin/hspell" ] || [ "$SRC_DIR/hspell.cpp" -nt "$HOME_DIR/hunspell/bin/hspell" ]; }; then
   step "hspell"
-  clang++ -std=c++17 -O1 -I"$HOME_DIR/hunspell/include" "$SRC_DIR/hspell.cpp" "$HOME_DIR"/hunspell/lib/libhunspell-1.7.a -o "$HOME_DIR/hunspell/bin/hspell"
+  clang++ -std=c++17 -O1 -I"$HOME_DIR/hunspell/include" "$SRC_DIR/hspell.cpp" "$HOME_DIR"/hunspell/lib/libhunspell-1.7.a -liconv -o "$HOME_DIR/hunspell/bin/hspell"
 fi
 
 # --- Hunspell dictionaries, from LibreOffice's dictionaries repository at a pinned commit ---

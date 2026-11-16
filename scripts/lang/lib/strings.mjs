@@ -107,6 +107,8 @@ function plain(template, vars, lang) {
 const NUMERIC = new Set(['n', 'total', 'points', 'bonus', 'penalty', 'a', 'b', 'line', 'done', 'mb', 'percent', 'cards', 'achievements']);
 const TYPICAL = { n: 3, total: 3, points: 2, bonus: 2, penalty: 1, a: 1, b: 2, line: 2, done: 512, mb: 75, percent: 40, cards: 12, achievements: 4 };
 
+// A name that means something else in one string: in the tally, {you} and {them} are rounds won.
+const BY_KEY = { 'end.tally': { you: 2, them: 1 } };
 const fillerCache = new Map();
 
 /**
@@ -115,7 +117,8 @@ const fillerCache = new Map();
  */
 export async function renderSamples(lang, template, opts = {}) {
   if (!fillerCache.has(lang)) fillerCache.set(lang, await fillers(lang));
-  const fill = fillerCache.get(lang);
+  const own = BY_KEY[opts.key] ?? {};
+  const fill = { ...fillerCache.get(lang), ...Object.fromEntries(Object.entries(own).map(([k, v]) => [k, formatNumber(v, lang)])) };
   const parts = parseMessage(template);
   const counted = new Set();
   const collect = (ps) => ps.forEach((p) => { if (p.type === 'plural') { counted.add(p.name); Object.values(p.options).forEach(collect); } });

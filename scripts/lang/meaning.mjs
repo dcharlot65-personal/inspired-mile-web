@@ -41,7 +41,7 @@ for (const lang of LOCALES) {
     if (key in HOUSE_QUOTES) continue;
     row.strings++;
     const s = scored[key];
-    const now = (await renderSamples(lang, template, { typical: true }))[0].text;
+    const now = (await renderSamples(lang, template, { typical: true, key }))[0].text;
     if (!s || s.text !== now) {
       row.notScored++;
       open.push({ lang, key, why: 'changed since it was scored; run the back-translation again', text: now });

@@ -20,8 +20,8 @@ if (withSamples) {
     s.typical = {};
     for (const [key, template] of Object.entries(s.ui)) {
       if (key in HOUSE_QUOTES) continue;
-      s.samples[key] = await renderSamples(lang, template);
-      s.typical[key] = (await renderSamples(lang, template, { typical: true }))[0].text;
+      s.samples[key] = await renderSamples(lang, template, { key });
+      s.typical[key] = (await renderSamples(lang, template, { typical: true, key }))[0].text;
     }
   }
 }

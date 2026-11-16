@@ -29,6 +29,8 @@ ap.add_argument('--model', default=os.environ.get('MADLAD_DIR', ''))
 ap.add_argument('--embedder', default=os.environ.get('MINILM_DIR', ''))
 ap.add_argument('--threads', type=int, default=int(os.environ.get('BT_THREADS', '6')))
 ap.add_argument('--batch', type=int, default=16)
+ap.add_argument('--device', default=os.environ.get('BT_DEVICE', 'cpu'))
+ap.add_argument('--beam', type=int, default=int(os.environ.get('BT_BEAM', '4')))
 args = ap.parse_args()
 
 import ctranslate2
@@ -37,19 +39,22 @@ from sentence_transformers import SentenceTransformer
 from sacrebleu.metrics import CHRF
 
 tok = AutoTokenizer.from_pretrained(args.model)
-translator = ctranslate2.Translator(args.model, device='cpu', compute_type='int8', inter_threads=1, intra_threads=args.threads)
+translator = ctranslate2.Translator(args.model, device=args.device, compute_type='int8' if args.device == 'cpu' else 'default', inter_threads=1, intra_threads=args.threads)
 embedder = SentenceTransformer(args.embedder, device='cpu')
 chrf = CHRF()
 
 
-def back(texts):
+def back(texts, label=''):
     out = []
+    t = time.time()
     for i in range(0, len(texts), args.batch):
         chunk = texts[i:i + args.batch]
-        src = [tok.convert_ids_to_tokens(tok.encode('<2en> ' + t)) for t in chunk]
-        res = translator.translate_batch(src, beam_size=4, max_decoding_length=256, repetition_penalty=1.1)
+        src = [tok.convert_ids_to_tokens(tok.encode('<2en> ' + x)) for x in chunk]
+        res = translator.translate_batch(src, beam_size=args.beam, max_decoding_length=256, repetition_penalty=1.1)
         for r in res:
             out.append(tok.decode(tok.convert_tokens_to_ids(r.hypotheses[0]), skip_special_tokens=True).strip())
+        if (i // args.batch) % 5 == 0:
+            print(f'  {label} {len(out)}/{len(texts)} ({time.time() - t:.0f}s)', file=sys.stderr, flush=True)
     return out
 
 
@@ -85,7 +90,7 @@ for lang in data:
     if lang == 'en' or (only and lang not in only) or lang in result['languages']:
         continue
     texts = [data[lang]['typical'][k] for k in keys]
-    bts = back(texts)
+    bts = back(texts, lang)
     right = score(bts, [en[k] for k in keys])
     # the control: the same back-translations against the next key's English
     wrong = score(bts, [en[keys[(i + 1) % len(keys)]] for i in range(len(keys))])

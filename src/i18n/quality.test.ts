@@ -172,6 +172,8 @@ describe('the checks can fail', () => {
     ['fr', 'e', 'Vers {line} : fait.', 'fr-nbsp'],
     ['fr', 'd', 'repris «{word}»', 'fr-nbsp'],
     ['es', 'c', 'Es tuyo?', 'es-inverted'],
+    ['de', 'b', 'Anmelden…', 'de-ellipsis-space'],
+    ['es', 'b', 'Iniciar sesión...', 'ascii-ellipsis'],
     ['zh', 'e', '第{line}行:完成。', 'cjk-halfwidth'],
     ['ja', 'c', 'あなたのですか?', 'cjk-halfwidth'],
     ['zh', 'b', '登 录', 'cjk-space'],

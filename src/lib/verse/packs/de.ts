@@ -61,7 +61,7 @@ const pack: LanguagePack = {
     d: ['Dein Vers geht unter, und keiner merkt den Fall', 'Du redest viel und sagst so wenig'],
     r: ['Reimen ist Fechten, und du bringst einen Löffel', 'Renn, solange die Türen offen stehen'],
     s: ['So endet die Lektion; nimm sie mit nach Haus', 'Selten sah ein Saal so schnell zur Uhr'],
-    e: ['Es reicht: das Publikum hat längst entschieden', 'Ein jeder deiner Verse starb im Flug'],
+    e: ['Es reicht: Das Publikum hat längst entschieden', 'Ein jeder deiner Verse starb im Flug'],
     w: ['Was war das für ein Laut? Ach, deine Niederlage', 'Worte lassen dich im Stich, wie stets'],
     t: ['Tritt ab, solang dir noch ein Rest von Stolz bleibt', 'Träum weiter, kleiner Dichter, träum vom Sieg'],
     u: ['Und wieder kommt dein Vers zu spät', 'Unter uns: selbst das Echo gähnt'],

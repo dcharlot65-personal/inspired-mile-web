@@ -66,7 +66,7 @@ if (mode === 'propose') {
   writeFileSync(`${dir}/overlay.json`, JSON.stringify(overlay, null, 1) + '\n');
   for (const [lang, keys] of Object.entries(overlay)) {
     for (const [key, text] of Object.entries(keys)) {
-      pairs.push({ id: `${lang}|${key}`, lang, text: (await renderSamples(lang, text, { typical: true }))[0].text, english: (await renderSamples('en', strings.en.ui[key], { typical: true }))[0].text });
+      pairs.push({ id: `${lang}|${key}`, lang, text: (await renderSamples(lang, text, { typical: true, key }))[0].text, english: (await renderSamples('en', strings.en.ui[key], { typical: true, key }))[0].text });
     }
   }
   writeFileSync(`${dir}/pairs.json`, JSON.stringify(pairs, null, 1) + '\n');
