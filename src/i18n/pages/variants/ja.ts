@@ -7,6 +7,7 @@
 const messages: Record<string, string> = {
   'variants.unlocked': '解除したバリエーション：<b>{n}</b>',
   'variants.count': 'バリエーション：{n}',
+  'variants.cities': '発見した都市：<b>{n}</b> / {total}',
   'variants.source.city-quest': '都市クエスト',
   'variants.source.battle-streak': '連勝',
   'variants.source.trivia-mastery': 'クイズの達人',
@@ -73,6 +74,20 @@ const messages: Record<string, string> = {
   'variants.city.OSA': '大阪市', // Wikidata Q35765 label
   'variants.city.KGN': 'キングストン', // Wikidata Q34692 label
   'variants.region.eurasia': 'ユーラシア', // Wikidata Q5401 label
+  'variants.region.142': 'アジア', // CLDR 46.0.0 territory 142
+  'variants.region.150': 'ヨーロッパ', // CLDR 46.0.0 territory 150
+  'variants.region.009': 'オセアニア', // CLDR 46.0.0 territory 009
+  'variants.region.029': 'カリブ', // CLDR 46.0.0 territory 029
+  'variants.region.003': '北アメリカ大陸', // CLDR 46.0.0 territory 003
+  'variants.region.013': '中央アメリカ', // CLDR 46.0.0 territory 013
+  'variants.region.005': '南アメリカ', // CLDR 46.0.0 territory 005
+  'variants.region.011': '西アフリカ', // CLDR 46.0.0 territory 011
+  'variants.region.014': '東アフリカ', // CLDR 46.0.0 territory 014
+  'variants.region.015': '北アフリカ', // CLDR 46.0.0 territory 015
+  'variants.region.018': '南部アフリカ', // CLDR 46.0.0 territory 018
+  'variants.region.030': '東アジア', // CLDR 46.0.0 territory 030
+  'variants.region.034': '南アジア', // CLDR 46.0.0 territory 034
+  'variants.region.035': '東南アジア', // CLDR 46.0.0 territory 035
 };
 
 export default messages;

@@ -9,7 +9,6 @@ const messages: Record<string, string> = {
   'world-map.badge': 'विश्व कार्ड',
   'world-map.title': 'विश्व <b>मानचित्र</b>',
   'world-map.intro': 'शेक्सपियर के पात्र दुनिया घूमते हैं। हर शहर युद्ध की एक अनोखी क्षमता देता है। युद्ध, प्रश्नोत्तरी और खोज से रूप खोलें।',
-  'world-map.cities': 'खोजे गए शहर: <b>{n}</b> / {total}',
   'world-map.combinations': 'संभव संयोजन: {n}',
   'world-map.view': 'देखें',
   'world-map.attire': 'पहनावे की शैलियाँ',

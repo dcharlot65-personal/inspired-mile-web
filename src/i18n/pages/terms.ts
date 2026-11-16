@@ -16,7 +16,7 @@ import { criterionName } from '../duel';
 import type { Achievement, AchievementTier } from '../../lib/achievements';
 import type { CardType, Rarity } from '../../lib/cards';
 import { CITY_CATALOG, type VariantAcquisitionSource, type WorldCity } from '../../lib/variants';
-import { num, regionName, tn } from './runtime';
+import { num, tn } from './runtime';
 
 const slug = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-');
 const orElse = (key: string, fallback: string) => (has(key) ? t(key) : fallback);
@@ -51,9 +51,10 @@ export function cityName(city: WorldCity): string {
 }
 
 /**
- * The catalog's regions as UN M.49 codes, which the browser names in any
- * language (Intl.DisplayNames, from Unicode CLDR). Eurasia has no code and is
- * a message of ours.
+ * The catalog's regions as UN M.49 codes. Their names are CLDR's territory names, kept in the
+ * 'variants' area (variants.region.<code>) rather than asked of Intl.DisplayNames at run time:
+ * Chromium's trimmed ICU data has no names for sub-regions and answers "011" for Western Africa.
+ * Eurasia has no code; its name is a Wikidata label.
  */
 const REGION_CODE: Record<string, string> = {
   Asia: '142',
@@ -70,13 +71,12 @@ const REGION_CODE: Record<string, string> = {
   'East Asia': '030',
   'South Asia': '034',
   'Southeast Asia': '035',
+  Eurasia: 'eurasia',
 };
 
 export function cityRegion(city: WorldCity): string {
   const region = CITY_CATALOG[city].region;
-  if (region === 'Eurasia') return t('variants.region.eurasia');
-  const code = REGION_CODE[region];
-  return code ? regionName(code) : region;
+  return orElse(`variants.region.${REGION_CODE[region]}`, region);
 }
 
 export function abilityName(city: WorldCity): string {

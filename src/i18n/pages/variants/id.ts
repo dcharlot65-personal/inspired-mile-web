@@ -7,6 +7,7 @@
 const messages: Record<string, string> = {
   'variants.unlocked': 'Varian terbuka: <b>{n}</b>',
   'variants.count': 'Varian: {n}',
+  'variants.cities': 'Kota yang ditemukan: <b>{n}</b> / {total}',
   'variants.source.city-quest': 'Misi kota',
   'variants.source.battle-streak': 'Kemenangan beruntun',
   'variants.source.trivia-mastery': 'Penguasaan kuis',
@@ -73,6 +74,20 @@ const messages: Record<string, string> = {
   'variants.city.OSA': 'Osaka', // Wikidata Q35765 label
   'variants.city.KGN': 'Kingston', // Wikidata Q34692 label
   'variants.region.eurasia': 'Eurasia', // Wikidata Q5401 label
+  'variants.region.142': 'Asia', // CLDR 46.0.0 territory 142
+  'variants.region.150': 'Eropa', // CLDR 46.0.0 territory 150
+  'variants.region.009': 'Oseania', // CLDR 46.0.0 territory 009
+  'variants.region.029': 'Kepulauan Karibia', // CLDR 46.0.0 territory 029
+  'variants.region.003': 'Amerika Utara', // CLDR 46.0.0 territory 003
+  'variants.region.013': 'Amerika Tengah', // CLDR 46.0.0 territory 013
+  'variants.region.005': 'Amerika Selatan', // CLDR 46.0.0 territory 005
+  'variants.region.011': 'Afrika Bagian Barat', // CLDR 46.0.0 territory 011
+  'variants.region.014': 'Afrika Bagian Timur', // CLDR 46.0.0 territory 014
+  'variants.region.015': 'Afrika Bagian Utara', // CLDR 46.0.0 territory 015
+  'variants.region.018': 'Afrika Bagian Selatan', // CLDR 46.0.0 territory 018
+  'variants.region.030': 'Asia Bagian Timur', // CLDR 46.0.0 territory 030
+  'variants.region.034': 'Asia Bagian Selatan', // CLDR 46.0.0 territory 034
+  'variants.region.035': 'Asia Tenggara', // CLDR 46.0.0 territory 035
 };
 
 export default messages;

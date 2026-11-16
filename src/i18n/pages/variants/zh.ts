@@ -7,6 +7,7 @@
 const messages: Record<string, string> = {
   'variants.unlocked': '已解锁变体：<b>{n}</b>',
   'variants.count': '变体：{n}',
+  'variants.cities': '已发现城市：<b>{n}</b> / {total}',
   'variants.source.city-quest': '城市任务',
   'variants.source.battle-streak': '连胜',
   'variants.source.trivia-mastery': '问答精通',
@@ -73,6 +74,20 @@ const messages: Record<string, string> = {
   'variants.city.OSA': '大阪市', // Wikidata Q35765 label (zh-cn)
   'variants.city.KGN': '金斯敦', // Wikidata Q34692 label (zh-cn)
   'variants.region.eurasia': '亚欧大陆', // Wikidata Q5401 label (zh-cn)
+  'variants.region.142': '亚洲', // CLDR 46.0.0 territory 142
+  'variants.region.150': '欧洲', // CLDR 46.0.0 territory 150
+  'variants.region.009': '大洋洲', // CLDR 46.0.0 territory 009
+  'variants.region.029': '加勒比地区', // CLDR 46.0.0 territory 029
+  'variants.region.003': '北美洲', // CLDR 46.0.0 territory 003
+  'variants.region.013': '中美洲', // CLDR 46.0.0 territory 013
+  'variants.region.005': '南美洲', // CLDR 46.0.0 territory 005
+  'variants.region.011': '西非', // CLDR 46.0.0 territory 011
+  'variants.region.014': '东非', // CLDR 46.0.0 territory 014
+  'variants.region.015': '北非', // CLDR 46.0.0 territory 015
+  'variants.region.018': '南部非洲', // CLDR 46.0.0 territory 018
+  'variants.region.030': '东亚', // CLDR 46.0.0 territory 030
+  'variants.region.034': '南亚', // CLDR 46.0.0 territory 034
+  'variants.region.035': '东南亚', // CLDR 46.0.0 territory 035
 };
 
 export default messages;

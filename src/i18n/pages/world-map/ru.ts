@@ -9,7 +9,6 @@ const messages: Record<string, string> = {
   'world-map.badge': 'Карты мира',
   'world-map.title': 'Карта <b>мира</b>',
   'world-map.intro': 'Персонажи Шекспира путешествуют по планете. Каждый город даёт особую боевую способность. Открывай варианты в битвах, викторинах и путешествиях.',
-  'world-map.cities': 'Открыто городов: <b>{n}</b> / {total}',
   'world-map.combinations': 'Возможных сочетаний: {n}',
   'world-map.view': 'Открыть',
   'world-map.attire': 'Стили одежды',

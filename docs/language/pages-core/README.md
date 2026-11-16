@@ -18,7 +18,7 @@ RESULTS.md, beside this file, says what those tools found.
 | Text | Source | Kept in |
 |---|---|---|
 | Numbers, percentages, dates, month names, lists | The browser's `Intl` (Unicode CLDR), at run time: `num`, `percent`, `day`, `monthOfYear`, `list` in `src/i18n/pages/runtime.ts`. No string of ours. | nowhere |
-| Regions of the world ("Western Africa") | `Intl.DisplayNames` with the UN M.49 code (CLDR territory names), at run time: `cityRegion` in `src/i18n/pages/terms.ts`. English changed with it: "West Africa" is now "Western Africa", "South Asia" "Southern Asia", as CLDR has them. | nowhere |
+| Regions of the world ("Western Africa") | CLDR 46 territory names by UN M.49 code (cldr-localenames-full 46.0.0), kept in the `variants` area. Not asked of `Intl.DisplayNames` at run time: Chromium's trimmed ICU data answers "011" for Western Africa (seen in the browser tests, 2026-11-16). English changed with it: "West Africa" is now "Western Africa", "South Asia" "Southern Asia", as CLDR has them. | `variants/<lang>.ts`, `cldr-exemplar-cities.json` |
 | City names, 16 of 20 | CLDR 46 `exemplarCity` (cldr-dates-full 46.0.0, timeZoneNames), where the language lists one; otherwise the Wikidata label. | `variants/<lang>.ts`, `cldr-exemplar-cities.json` |
 | City names: Brooklyn, Mumbai, Osaka, Kingston | Wikidata labels (CLDR has no time zone named for them). | `variants/<lang>.ts`, `wikidata-labels.json` |
 | "Eurasia"; the play titles on the home page; the houses Rome, Illyria, The Tempest, Lake District; Olympus where Wikidata has it | Wikidata labels. | `variants`, `card-terms`, `wikidata-labels.json` |
@@ -32,9 +32,10 @@ be "corrected" from memory without the record being changed too.
 ### Licences and dates
 
 - Unicode CLDR 46.0.0, Unicode License v3. Fetched 2026-11-16 from
-  `https://cdn.jsdelivr.net/npm/cldr-dates-full@46.0.0/main/<locale>/timeZoneNames.json`.
-  Region names and number, date and list formats are not fetched: they are whatever CLDR the
-  player's browser ships.
+  `https://cdn.jsdelivr.net/npm/cldr-dates-full@46.0.0/main/<locale>/timeZoneNames.json` and
+  `…/cldr-localenames-full@46.0.0/main/<locale>/territories.json`
+  (`node scripts/pages-lang/fetch-cldr-cities.mjs`). Number, date and list formats are not
+  fetched: they are whatever CLDR the player's browser ships.
 - Wikidata, CC0 1.0. Labels fetched 2026-11-16 with `wbgetentities` for the item ids recorded in
   `wikidata-labels.json`. For Chinese the `zh-cn` label is used, then `zh-hans`, then `zh`; for
   Portuguese `pt-br`, then `pt`. The file says which was used for each item.

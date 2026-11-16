@@ -7,6 +7,7 @@
 const messages: Record<string, string> = {
   'variants.unlocked': 'खुले रूप: <b>{n}</b>',
   'variants.count': 'रूप: {n}',
+  'variants.cities': 'खोजे गए शहर: <b>{n}</b> / {total}',
   'variants.source.city-quest': 'शहर की खोज',
   'variants.source.battle-streak': 'लगातार जीत',
   'variants.source.trivia-mastery': 'प्रश्नोत्तरी में महारत',
@@ -73,6 +74,20 @@ const messages: Record<string, string> = {
   'variants.city.OSA': 'ओसाका', // Wikidata Q35765 label
   'variants.city.KGN': 'किंग्सटन', // Wikidata Q34692 label
   'variants.region.eurasia': 'यूरेशिया', // Wikidata Q5401 label
+  'variants.region.142': 'एशिया', // CLDR 46.0.0 territory 142
+  'variants.region.150': 'यूरोप', // CLDR 46.0.0 territory 150
+  'variants.region.009': 'ओशिआनिया', // CLDR 46.0.0 territory 009
+  'variants.region.029': 'कैरिबियन', // CLDR 46.0.0 territory 029
+  'variants.region.003': 'उत्तर अमेरिका', // CLDR 46.0.0 territory 003
+  'variants.region.013': 'मध्य अमेरिका', // CLDR 46.0.0 territory 013
+  'variants.region.005': 'दक्षिण अमेरिका', // CLDR 46.0.0 territory 005
+  'variants.region.011': 'पश्चिमी अफ़्रीका', // CLDR 46.0.0 territory 011
+  'variants.region.014': 'पूर्वी अफ़्रीका', // CLDR 46.0.0 territory 014
+  'variants.region.015': 'उत्तरी अफ़्रीका', // CLDR 46.0.0 territory 015
+  'variants.region.018': 'दक्षिणी अफ़्रीका', // CLDR 46.0.0 territory 018
+  'variants.region.030': 'पूर्वी एशिया', // CLDR 46.0.0 territory 030
+  'variants.region.034': 'दक्षिणी एशिया', // CLDR 46.0.0 territory 034
+  'variants.region.035': 'दक्षिण-पूर्व एशिया', // CLDR 46.0.0 territory 035
 };
 
 export default messages;

@@ -59,15 +59,6 @@ export function list(items: string[], type: 'conjunction' | 'unit' = 'conjunctio
   return new Intl.ListFormat(locale(), { style: type === 'unit' ? 'narrow' : 'long', type }).format(items);
 }
 
-/** A region of the world by its UN M.49 code ("011" is Western Africa), named by CLDR. */
-export function regionName(code: string): string {
-  try {
-    return new Intl.DisplayNames([locale()], { type: 'region' }).of(code) ?? code;
-  } catch {
-    return code;
-  }
-}
-
 /** t(), with every number among the variables written through num(). */
 export function tn(key: string, vars: Vars = {}): string {
   const shown: Vars = {};

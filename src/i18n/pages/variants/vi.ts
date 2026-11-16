@@ -7,6 +7,7 @@
 const messages: Record<string, string> = {
   'variants.unlocked': 'Biến thể đã mở khóa: <b>{n}</b>',
   'variants.count': 'Biến thể: {n}',
+  'variants.cities': 'Thành phố đã khám phá: <b>{n}</b> / {total}',
   'variants.source.city-quest': 'Nhiệm vụ thành phố',
   'variants.source.battle-streak': 'Chuỗi thắng',
   'variants.source.trivia-mastery': 'Tinh thông đố vui',
@@ -73,6 +74,20 @@ const messages: Record<string, string> = {
   'variants.city.OSA': 'Ōsaka', // Wikidata Q35765 label
   'variants.city.KGN': 'Kingston', // Wikidata Q34692 label
   'variants.region.eurasia': 'Lục địa Á-Âu', // Wikidata Q5401 label
+  'variants.region.142': 'Châu Á', // CLDR 46.0.0 territory 142
+  'variants.region.150': 'Châu Âu', // CLDR 46.0.0 territory 150
+  'variants.region.009': 'Châu Đại Dương', // CLDR 46.0.0 territory 009
+  'variants.region.029': 'Ca-ri-bê', // CLDR 46.0.0 territory 029
+  'variants.region.003': 'Bắc Mỹ', // CLDR 46.0.0 territory 003
+  'variants.region.013': 'Trung Mỹ', // CLDR 46.0.0 territory 013
+  'variants.region.005': 'Nam Mỹ', // CLDR 46.0.0 territory 005
+  'variants.region.011': 'Tây Phi', // CLDR 46.0.0 territory 011
+  'variants.region.014': 'Đông Phi', // CLDR 46.0.0 territory 014
+  'variants.region.015': 'Bắc Phi', // CLDR 46.0.0 territory 015
+  'variants.region.018': 'Miền Nam Châu Phi', // CLDR 46.0.0 territory 018
+  'variants.region.030': 'Đông Á', // CLDR 46.0.0 territory 030
+  'variants.region.034': 'Nam Á', // CLDR 46.0.0 territory 034
+  'variants.region.035': 'Đông Nam Á', // CLDR 46.0.0 territory 035
 };
 
 export default messages;

@@ -7,6 +7,7 @@
 const messages: Record<string, string> = {
   'variants.unlocked': 'Variantes desbloqueadas: <b>{n}</b>',
   'variants.count': 'Variantes: {n}',
+  'variants.cities': 'Cidades descobertas: <b>{n}</b> / {total}',
   'variants.source.city-quest': 'Missão de cidade',
   'variants.source.battle-streak': 'Sequência de vitórias',
   'variants.source.trivia-mastery': 'Domínio do quiz',
@@ -73,6 +74,20 @@ const messages: Record<string, string> = {
   'variants.city.OSA': 'Osaka', // Wikidata Q35765 label (pt-br)
   'variants.city.KGN': 'Kingston', // Wikidata Q34692 label (pt-br)
   'variants.region.eurasia': 'Eurásia', // Wikidata Q5401 label (pt-br)
+  'variants.region.142': 'Ásia', // CLDR 46.0.0 territory 142
+  'variants.region.150': 'Europa', // CLDR 46.0.0 territory 150
+  'variants.region.009': 'Oceania', // CLDR 46.0.0 territory 009
+  'variants.region.029': 'Caribe', // CLDR 46.0.0 territory 029
+  'variants.region.003': 'América do Norte', // CLDR 46.0.0 territory 003
+  'variants.region.013': 'América Central', // CLDR 46.0.0 territory 013
+  'variants.region.005': 'América do Sul', // CLDR 46.0.0 territory 005
+  'variants.region.011': 'África Ocidental', // CLDR 46.0.0 territory 011
+  'variants.region.014': 'África Oriental', // CLDR 46.0.0 territory 014
+  'variants.region.015': 'África Setentrional', // CLDR 46.0.0 territory 015
+  'variants.region.018': 'África Meridional', // CLDR 46.0.0 territory 018
+  'variants.region.030': 'Ásia Oriental', // CLDR 46.0.0 territory 030
+  'variants.region.034': 'Ásia Meridional', // CLDR 46.0.0 territory 034
+  'variants.region.035': 'Sudeste Asiático', // CLDR 46.0.0 territory 035
 };
 
 export default messages;

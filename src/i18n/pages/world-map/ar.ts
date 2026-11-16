@@ -9,7 +9,6 @@ const messages: Record<string, string> = {
   'world-map.badge': 'بطاقات العالم',
   'world-map.title': 'خريطة <b>العالم</b>',
   'world-map.intro': 'شخصيات شكسبير تجوب العالم. كل مدينة تمنح قدرة فريدة في النزال. افتح النسخ بالنزالات والمسابقات والاستكشاف.',
-  'world-map.cities': 'المدن المكتشفة: <b>{n}</b> / {total}',
   'world-map.combinations': 'التوليفات الممكنة: {n}',
   'world-map.view': 'عرض',
   'world-map.attire': 'أنماط اللباس',

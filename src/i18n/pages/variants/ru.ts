@@ -7,6 +7,7 @@
 const messages: Record<string, string> = {
   'variants.unlocked': 'Открыто вариантов: <b>{n}</b>',
   'variants.count': 'Вариантов: {n}',
+  'variants.cities': 'Открыто городов: <b>{n}</b> / {total}',
   'variants.source.city-quest': 'Городское задание',
   'variants.source.battle-streak': 'Серия побед',
   'variants.source.trivia-mastery': 'Мастерство в викторине',
@@ -73,6 +74,20 @@ const messages: Record<string, string> = {
   'variants.city.OSA': 'Осака', // Wikidata Q35765 label
   'variants.city.KGN': 'Кингстон', // Wikidata Q34692 label
   'variants.region.eurasia': 'Евразия', // Wikidata Q5401 label
+  'variants.region.142': 'Азия', // CLDR 46.0.0 territory 142
+  'variants.region.150': 'Европа', // CLDR 46.0.0 territory 150
+  'variants.region.009': 'Океания', // CLDR 46.0.0 territory 009
+  'variants.region.029': 'Карибы', // CLDR 46.0.0 territory 029
+  'variants.region.003': 'Северная Америка', // CLDR 46.0.0 territory 003
+  'variants.region.013': 'Центральная Америка', // CLDR 46.0.0 territory 013
+  'variants.region.005': 'Южная Америка', // CLDR 46.0.0 territory 005
+  'variants.region.011': 'Западная Африка', // CLDR 46.0.0 territory 011
+  'variants.region.014': 'Восточная Африка', // CLDR 46.0.0 territory 014
+  'variants.region.015': 'Северная Африка', // CLDR 46.0.0 territory 015
+  'variants.region.018': 'Южная Африка', // CLDR 46.0.0 territory 018
+  'variants.region.030': 'Восточная Азия', // CLDR 46.0.0 territory 030
+  'variants.region.034': 'Южная Азия', // CLDR 46.0.0 territory 034
+  'variants.region.035': 'Юго-Восточная Азия', // CLDR 46.0.0 territory 035
 };
 
 export default messages;

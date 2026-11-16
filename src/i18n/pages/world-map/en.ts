@@ -10,7 +10,6 @@ const messages: Record<string, string> = {
   'world-map.badge': 'World Cards',
   'world-map.title': 'World <b>Map</b>',
   'world-map.intro': "Shakespeare's characters travel the globe. Each city grants a unique battle ability. Unlock variants through battles, trivia, and exploration.",
-  'world-map.cities': 'Cities discovered: <b>{n}</b> / {total}',
   'world-map.combinations': 'Possible combinations: {n}',
   'world-map.view': 'View',
   'world-map.attire': 'Attire Styles',

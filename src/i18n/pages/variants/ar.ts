@@ -7,6 +7,7 @@
 const messages: Record<string, string> = {
   'variants.unlocked': 'النسخ المفتوحة: <b>{n}</b>',
   'variants.count': 'النسخ: {n}',
+  'variants.cities': 'المدن المكتشفة: <b>{n}</b> / {total}',
   'variants.source.city-quest': 'مهمة مدينة',
   'variants.source.battle-streak': 'سلسلة انتصارات',
   'variants.source.trivia-mastery': 'إتقان المسابقة',
@@ -73,6 +74,20 @@ const messages: Record<string, string> = {
   'variants.city.OSA': 'أوساكا', // Wikidata Q35765 label
   'variants.city.KGN': 'كينغستون', // Wikidata Q34692 label
   'variants.region.eurasia': 'أوراسيا', // Wikidata Q5401 label
+  'variants.region.142': 'آسيا', // CLDR 46.0.0 territory 142
+  'variants.region.150': 'أوروبا', // CLDR 46.0.0 territory 150
+  'variants.region.009': 'أوقيانوسيا', // CLDR 46.0.0 territory 009
+  'variants.region.029': 'الكاريبي', // CLDR 46.0.0 territory 029
+  'variants.region.003': 'أمريكا الشمالية', // CLDR 46.0.0 territory 003
+  'variants.region.013': 'أمريكا الوسطى', // CLDR 46.0.0 territory 013
+  'variants.region.005': 'أمريكا الجنوبية', // CLDR 46.0.0 territory 005
+  'variants.region.011': 'غرب أفريقيا', // CLDR 46.0.0 territory 011
+  'variants.region.014': 'شرق أفريقيا', // CLDR 46.0.0 territory 014
+  'variants.region.015': 'شمال أفريقيا', // CLDR 46.0.0 territory 015
+  'variants.region.018': 'أفريقيا الجنوبية', // CLDR 46.0.0 territory 018
+  'variants.region.030': 'شرق آسيا', // CLDR 46.0.0 territory 030
+  'variants.region.034': 'جنوب آسيا', // CLDR 46.0.0 territory 034
+  'variants.region.035': 'جنوب شرق آسيا', // CLDR 46.0.0 territory 035
 };
 
 export default messages;

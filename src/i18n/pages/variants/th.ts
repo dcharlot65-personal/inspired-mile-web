@@ -7,6 +7,7 @@
 const messages: Record<string, string> = {
   'variants.unlocked': 'การ์ดแบบเมืองที่ปลดล็อกแล้ว: <b>{n}</b>',
   'variants.count': 'การ์ดแบบเมือง: {n}',
+  'variants.cities': 'เมืองที่ค้นพบแล้ว: <b>{n}</b> / {total}',
   'variants.source.city-quest': 'ภารกิจประจำเมือง',
   'variants.source.battle-streak': 'ชนะต่อเนื่อง',
   'variants.source.trivia-mastery': 'เชี่ยวชาญควิซ',
@@ -73,6 +74,20 @@ const messages: Record<string, string> = {
   'variants.city.OSA': 'โอซากะ', // Wikidata Q35765 label
   'variants.city.KGN': 'คิงส์ตัน', // Wikidata Q34692 label
   'variants.region.eurasia': 'ทวีปยูเรเชีย', // Wikidata Q5401 label
+  'variants.region.142': 'เอเชีย', // CLDR 46.0.0 territory 142
+  'variants.region.150': 'ยุโรป', // CLDR 46.0.0 territory 150
+  'variants.region.009': 'โอเชียเนีย', // CLDR 46.0.0 territory 009
+  'variants.region.029': 'แคริบเบียน', // CLDR 46.0.0 territory 029
+  'variants.region.003': 'อเมริกาเหนือ', // CLDR 46.0.0 territory 003
+  'variants.region.013': 'อเมริกากลาง', // CLDR 46.0.0 territory 013
+  'variants.region.005': 'อเมริกาใต้', // CLDR 46.0.0 territory 005
+  'variants.region.011': 'แอฟริกาตะวันตก', // CLDR 46.0.0 territory 011
+  'variants.region.014': 'แอฟริกาตะวันออก', // CLDR 46.0.0 territory 014
+  'variants.region.015': 'แอฟริกาเหนือ', // CLDR 46.0.0 territory 015
+  'variants.region.018': 'แอฟริกาตอนใต้', // CLDR 46.0.0 territory 018
+  'variants.region.030': 'เอเชียตะวันออก', // CLDR 46.0.0 territory 030
+  'variants.region.034': 'เอเชียใต้', // CLDR 46.0.0 territory 034
+  'variants.region.035': 'เอเชียตะวันออกเฉียงใต้', // CLDR 46.0.0 territory 035
 };
 
 export default messages;

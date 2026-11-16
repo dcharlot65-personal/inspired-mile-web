@@ -9,7 +9,6 @@ const messages: Record<string, string> = {
   'world-map.badge': 'ワールドカード',
   'world-map.title': 'ワールド<b>マップ</b>',
   'world-map.intro': 'シェイクスピアの登場人物たちが世界を旅します。都市ごとに固有のバトル能力が与えられます。バトル、クイズ、探索でバリエーションを解除しましょう。',
-  'world-map.cities': '発見した都市：<b>{n}</b> / {total}',
   'world-map.combinations': '組み合わせの総数：{n}',
   'world-map.view': '見る',
   'world-map.attire': '服装のスタイル',

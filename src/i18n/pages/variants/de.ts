@@ -7,6 +7,7 @@
 const messages: Record<string, string> = {
   'variants.unlocked': 'Freigeschaltete Varianten: <b>{n}</b>',
   'variants.count': 'Varianten: {n}',
+  'variants.cities': 'Entdeckte Städte: <b>{n}</b> / {total}',
   'variants.source.city-quest': 'Stadtquest',
   'variants.source.battle-streak': 'Siegesserie',
   'variants.source.trivia-mastery': 'Quizmeisterschaft',
@@ -73,6 +74,20 @@ const messages: Record<string, string> = {
   'variants.city.OSA': 'Osaka', // Wikidata Q35765 label
   'variants.city.KGN': 'Kingston', // Wikidata Q34692 label
   'variants.region.eurasia': 'Eurasien', // Wikidata Q5401 label
+  'variants.region.142': 'Asien', // CLDR 46.0.0 territory 142
+  'variants.region.150': 'Europa', // CLDR 46.0.0 territory 150
+  'variants.region.009': 'Ozeanien', // CLDR 46.0.0 territory 009
+  'variants.region.029': 'Karibik', // CLDR 46.0.0 territory 029
+  'variants.region.003': 'Nordamerika', // CLDR 46.0.0 territory 003
+  'variants.region.013': 'Mittelamerika', // CLDR 46.0.0 territory 013
+  'variants.region.005': 'Südamerika', // CLDR 46.0.0 territory 005
+  'variants.region.011': 'Westafrika', // CLDR 46.0.0 territory 011
+  'variants.region.014': 'Ostafrika', // CLDR 46.0.0 territory 014
+  'variants.region.015': 'Nordafrika', // CLDR 46.0.0 territory 015
+  'variants.region.018': 'Südliches Afrika', // CLDR 46.0.0 territory 018
+  'variants.region.030': 'Ostasien', // CLDR 46.0.0 territory 030
+  'variants.region.034': 'Südasien', // CLDR 46.0.0 territory 034
+  'variants.region.035': 'Südostasien', // CLDR 46.0.0 territory 035
 };
 
 export default messages;

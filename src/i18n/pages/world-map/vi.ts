@@ -9,7 +9,6 @@ const messages: Record<string, string> = {
   'world-map.badge': 'Lá bài thế giới',
   'world-map.title': 'Bản đồ <b>thế giới</b>',
   'world-map.intro': 'Các nhân vật của Shakespeare chu du khắp địa cầu. Mỗi thành phố ban một năng lực thi đấu riêng. Mở khóa biến thể qua trận đấu, đố vui và khám phá.',
-  'world-map.cities': 'Thành phố đã khám phá: <b>{n}</b> / {total}',
   'world-map.combinations': 'Số tổ hợp có thể có: {n}',
   'world-map.view': 'Xem',
   'world-map.attire': 'Phong cách trang phục',

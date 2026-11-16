@@ -89,8 +89,9 @@ left behind by a killed run is found by its port: `lsof -nP -iTCP:<port> -sTCP:L
   `src/i18n/pages/runtime.ts`, which also redraws on a language change). Static markup uses
   `<T k="area.key" />` (`src/components/T.astro`) or `data-i18n-html`, NOT `data-i18n`: the core
   fills `data-i18n` before a language's areas have arrived. A message may carry `<b>` and `<a>`
-  marks. Numbers, dates, lists and region names come from `Intl` (`num`, `day`, `list`,
-  `regionName`); a count is written "label: number", never number + noun. Card, city and
+  marks. Numbers, dates and lists come from `Intl` (`num`, `day`, `list`); names of places are
+  CLDR's or Wikidata's, kept in the areas (Chromium's ICU has no names for sub-regions, so
+  `Intl.DisplayNames` is not used for them); a count is written "label: number", never number + noun. Card, city and
   achievement data is named by `src/i18n/pages/terms.ts`, card rules by `rules-text.ts`.
   The layout takes `titleKey`, `descriptionKey` and `i18nAreas` for the document title and
   description. Translated so far: home, about, collection, profile, world map (areas `home`,

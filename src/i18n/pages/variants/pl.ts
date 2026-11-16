@@ -7,6 +7,7 @@
 const messages: Record<string, string> = {
   'variants.unlocked': 'Odblokowane warianty: <b>{n}</b>',
   'variants.count': 'Warianty: {n}',
+  'variants.cities': 'Odkryte miasta: <b>{n}</b> / {total}',
   'variants.source.city-quest': 'Zadanie miejskie',
   'variants.source.battle-streak': 'Seria zwycięstw',
   'variants.source.trivia-mastery': 'Mistrzostwo w quizie',
@@ -73,6 +74,20 @@ const messages: Record<string, string> = {
   'variants.city.OSA': 'Osaka', // Wikidata Q35765 label
   'variants.city.KGN': 'Kingston', // Wikidata Q34692 label
   'variants.region.eurasia': 'Eurazja', // Wikidata Q5401 label
+  'variants.region.142': 'Azja', // CLDR 46.0.0 territory 142
+  'variants.region.150': 'Europa', // CLDR 46.0.0 territory 150
+  'variants.region.009': 'Oceania', // CLDR 46.0.0 territory 009
+  'variants.region.029': 'Karaiby', // CLDR 46.0.0 territory 029
+  'variants.region.003': 'Ameryka Północna', // CLDR 46.0.0 territory 003
+  'variants.region.013': 'Ameryka Środkowa', // CLDR 46.0.0 territory 013
+  'variants.region.005': 'Ameryka Południowa', // CLDR 46.0.0 territory 005
+  'variants.region.011': 'Afryka Zachodnia', // CLDR 46.0.0 territory 011
+  'variants.region.014': 'Afryka Wschodnia', // CLDR 46.0.0 territory 014
+  'variants.region.015': 'Afryka Północna', // CLDR 46.0.0 territory 015
+  'variants.region.018': 'Afryka Południowa', // CLDR 46.0.0 territory 018
+  'variants.region.030': 'Azja Wschodnia', // CLDR 46.0.0 territory 030
+  'variants.region.034': 'Azja Południowa', // CLDR 46.0.0 territory 034
+  'variants.region.035': 'Azja Południowo-Wschodnia', // CLDR 46.0.0 territory 035
 };
 
 export default messages;

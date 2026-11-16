@@ -8,6 +8,7 @@
 const messages: Record<string, string> = {
   'variants.unlocked': 'Variants unlocked: <b>{n}</b>',
   'variants.count': 'Variants: {n}',
+  'variants.cities': 'Cities discovered: <b>{n}</b> / {total}',
   'variants.source.city-quest': 'City quest',
   'variants.source.battle-streak': 'Battle streak',
   'variants.source.trivia-mastery': 'Trivia mastery',
@@ -74,6 +75,20 @@ const messages: Record<string, string> = {
   'variants.city.OSA': 'Osaka', // Wikidata Q35765 label
   'variants.city.KGN': 'Kingston', // Wikidata Q34692 label
   'variants.region.eurasia': 'Eurasia', // Wikidata Q5401 label
+  'variants.region.142': 'Asia', // CLDR 46.0.0 territory 142
+  'variants.region.150': 'Europe', // CLDR 46.0.0 territory 150
+  'variants.region.009': 'Oceania', // CLDR 46.0.0 territory 009
+  'variants.region.029': 'Caribbean', // CLDR 46.0.0 territory 029
+  'variants.region.003': 'North America', // CLDR 46.0.0 territory 003
+  'variants.region.013': 'Central America', // CLDR 46.0.0 territory 013
+  'variants.region.005': 'South America', // CLDR 46.0.0 territory 005
+  'variants.region.011': 'Western Africa', // CLDR 46.0.0 territory 011
+  'variants.region.014': 'Eastern Africa', // CLDR 46.0.0 territory 014
+  'variants.region.015': 'Northern Africa', // CLDR 46.0.0 territory 015
+  'variants.region.018': 'Southern Africa', // CLDR 46.0.0 territory 018
+  'variants.region.030': 'Eastern Asia', // CLDR 46.0.0 territory 030
+  'variants.region.034': 'Southern Asia', // CLDR 46.0.0 territory 034
+  'variants.region.035': 'Southeast Asia', // CLDR 46.0.0 territory 035
 };
 
 export default messages;

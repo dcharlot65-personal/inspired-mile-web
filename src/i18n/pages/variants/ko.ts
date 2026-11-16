@@ -7,6 +7,7 @@
 const messages: Record<string, string> = {
   'variants.unlocked': '열린 변형: <b>{n}</b>',
   'variants.count': '변형: {n}',
+  'variants.cities': '발견한 도시: <b>{n}</b> / {total}',
   'variants.source.city-quest': '도시 퀘스트',
   'variants.source.battle-streak': '연승',
   'variants.source.trivia-mastery': '퀴즈 정복',
@@ -73,6 +74,20 @@ const messages: Record<string, string> = {
   'variants.city.OSA': '오사카시', // Wikidata Q35765 label
   'variants.city.KGN': '킹스턴', // Wikidata Q34692 label
   'variants.region.eurasia': '유라시아', // Wikidata Q5401 label
+  'variants.region.142': '아시아', // CLDR 46.0.0 territory 142
+  'variants.region.150': '유럽', // CLDR 46.0.0 territory 150
+  'variants.region.009': '오세아니아', // CLDR 46.0.0 territory 009
+  'variants.region.029': '카리브 제도', // CLDR 46.0.0 territory 029
+  'variants.region.003': '북아메리카', // CLDR 46.0.0 territory 003
+  'variants.region.013': '중앙 아메리카', // CLDR 46.0.0 territory 013
+  'variants.region.005': '남아메리카', // CLDR 46.0.0 territory 005
+  'variants.region.011': '서부 아프리카', // CLDR 46.0.0 territory 011
+  'variants.region.014': '동부 아프리카', // CLDR 46.0.0 territory 014
+  'variants.region.015': '북부 아프리카', // CLDR 46.0.0 territory 015
+  'variants.region.018': '남부 아프리카', // CLDR 46.0.0 territory 018
+  'variants.region.030': '동아시아', // CLDR 46.0.0 territory 030
+  'variants.region.034': '남아시아', // CLDR 46.0.0 territory 034
+  'variants.region.035': '동남아시아', // CLDR 46.0.0 territory 035
 };
 
 export default messages;

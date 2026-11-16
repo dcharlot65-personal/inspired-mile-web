@@ -7,7 +7,7 @@
  },
  "cldr": {
   "version": "46.0.0",
-  "fetched": "2026-11-16T17:37:29.722Z",
+  "fetched": "2026-11-16T18:17:35.321Z",
   "licence": "Unicode License v3",
   "source": "https://cdn.jsdelivr.net/npm/cldr-dates-full@46.0.0/main/<locale>/timeZoneNames.json"
  },
@@ -1396,6 +1396,930 @@
    "id": {
     "value": "Eurasia",
     "source": "Wikidata Q5401 label"
+   }
+  },
+  "variants.region.142": {
+   "en": {
+    "value": "Asia",
+    "source": "CLDR 46.0.0 territory 142"
+   },
+   "es": {
+    "value": "Asia",
+    "source": "CLDR 46.0.0 territory 142"
+   },
+   "fr": {
+    "value": "Asie",
+    "source": "CLDR 46.0.0 territory 142"
+   },
+   "de": {
+    "value": "Asien",
+    "source": "CLDR 46.0.0 territory 142"
+   },
+   "it": {
+    "value": "Asia",
+    "source": "CLDR 46.0.0 territory 142"
+   },
+   "pt": {
+    "value": "Ásia",
+    "source": "CLDR 46.0.0 territory 142"
+   },
+   "pl": {
+    "value": "Azja",
+    "source": "CLDR 46.0.0 territory 142"
+   },
+   "ru": {
+    "value": "Азия",
+    "source": "CLDR 46.0.0 territory 142"
+   },
+   "ar": {
+    "value": "آسيا",
+    "source": "CLDR 46.0.0 territory 142"
+   },
+   "hi": {
+    "value": "एशिया",
+    "source": "CLDR 46.0.0 territory 142"
+   },
+   "zh": {
+    "value": "亚洲",
+    "source": "CLDR 46.0.0 territory 142"
+   },
+   "ja": {
+    "value": "アジア",
+    "source": "CLDR 46.0.0 territory 142"
+   },
+   "ko": {
+    "value": "아시아",
+    "source": "CLDR 46.0.0 territory 142"
+   },
+   "vi": {
+    "value": "Châu Á",
+    "source": "CLDR 46.0.0 territory 142"
+   },
+   "th": {
+    "value": "เอเชีย",
+    "source": "CLDR 46.0.0 territory 142"
+   },
+   "id": {
+    "value": "Asia",
+    "source": "CLDR 46.0.0 territory 142"
+   }
+  },
+  "variants.region.150": {
+   "en": {
+    "value": "Europe",
+    "source": "CLDR 46.0.0 territory 150"
+   },
+   "es": {
+    "value": "Europa",
+    "source": "CLDR 46.0.0 territory 150"
+   },
+   "fr": {
+    "value": "Europe",
+    "source": "CLDR 46.0.0 territory 150"
+   },
+   "de": {
+    "value": "Europa",
+    "source": "CLDR 46.0.0 territory 150"
+   },
+   "it": {
+    "value": "Europa",
+    "source": "CLDR 46.0.0 territory 150"
+   },
+   "pt": {
+    "value": "Europa",
+    "source": "CLDR 46.0.0 territory 150"
+   },
+   "pl": {
+    "value": "Europa",
+    "source": "CLDR 46.0.0 territory 150"
+   },
+   "ru": {
+    "value": "Европа",
+    "source": "CLDR 46.0.0 territory 150"
+   },
+   "ar": {
+    "value": "أوروبا",
+    "source": "CLDR 46.0.0 territory 150"
+   },
+   "hi": {
+    "value": "यूरोप",
+    "source": "CLDR 46.0.0 territory 150"
+   },
+   "zh": {
+    "value": "欧洲",
+    "source": "CLDR 46.0.0 territory 150"
+   },
+   "ja": {
+    "value": "ヨーロッパ",
+    "source": "CLDR 46.0.0 territory 150"
+   },
+   "ko": {
+    "value": "유럽",
+    "source": "CLDR 46.0.0 territory 150"
+   },
+   "vi": {
+    "value": "Châu Âu",
+    "source": "CLDR 46.0.0 territory 150"
+   },
+   "th": {
+    "value": "ยุโรป",
+    "source": "CLDR 46.0.0 territory 150"
+   },
+   "id": {
+    "value": "Eropa",
+    "source": "CLDR 46.0.0 territory 150"
+   }
+  },
+  "variants.region.009": {
+   "en": {
+    "value": "Oceania",
+    "source": "CLDR 46.0.0 territory 009"
+   },
+   "es": {
+    "value": "Oceanía",
+    "source": "CLDR 46.0.0 territory 009"
+   },
+   "fr": {
+    "value": "Océanie",
+    "source": "CLDR 46.0.0 territory 009"
+   },
+   "de": {
+    "value": "Ozeanien",
+    "source": "CLDR 46.0.0 territory 009"
+   },
+   "it": {
+    "value": "Oceania",
+    "source": "CLDR 46.0.0 territory 009"
+   },
+   "pt": {
+    "value": "Oceania",
+    "source": "CLDR 46.0.0 territory 009"
+   },
+   "pl": {
+    "value": "Oceania",
+    "source": "CLDR 46.0.0 territory 009"
+   },
+   "ru": {
+    "value": "Океания",
+    "source": "CLDR 46.0.0 territory 009"
+   },
+   "ar": {
+    "value": "أوقيانوسيا",
+    "source": "CLDR 46.0.0 territory 009"
+   },
+   "hi": {
+    "value": "ओशिआनिया",
+    "source": "CLDR 46.0.0 territory 009"
+   },
+   "zh": {
+    "value": "大洋洲",
+    "source": "CLDR 46.0.0 territory 009"
+   },
+   "ja": {
+    "value": "オセアニア",
+    "source": "CLDR 46.0.0 territory 009"
+   },
+   "ko": {
+    "value": "오세아니아",
+    "source": "CLDR 46.0.0 territory 009"
+   },
+   "vi": {
+    "value": "Châu Đại Dương",
+    "source": "CLDR 46.0.0 territory 009"
+   },
+   "th": {
+    "value": "โอเชียเนีย",
+    "source": "CLDR 46.0.0 territory 009"
+   },
+   "id": {
+    "value": "Oseania",
+    "source": "CLDR 46.0.0 territory 009"
+   }
+  },
+  "variants.region.029": {
+   "en": {
+    "value": "Caribbean",
+    "source": "CLDR 46.0.0 territory 029"
+   },
+   "es": {
+    "value": "Caribe",
+    "source": "CLDR 46.0.0 territory 029"
+   },
+   "fr": {
+    "value": "Caraïbes",
+    "source": "CLDR 46.0.0 territory 029"
+   },
+   "de": {
+    "value": "Karibik",
+    "source": "CLDR 46.0.0 territory 029"
+   },
+   "it": {
+    "value": "Caraibi",
+    "source": "CLDR 46.0.0 territory 029"
+   },
+   "pt": {
+    "value": "Caribe",
+    "source": "CLDR 46.0.0 territory 029"
+   },
+   "pl": {
+    "value": "Karaiby",
+    "source": "CLDR 46.0.0 territory 029"
+   },
+   "ru": {
+    "value": "Карибы",
+    "source": "CLDR 46.0.0 territory 029"
+   },
+   "ar": {
+    "value": "الكاريبي",
+    "source": "CLDR 46.0.0 territory 029"
+   },
+   "hi": {
+    "value": "कैरिबियन",
+    "source": "CLDR 46.0.0 territory 029"
+   },
+   "zh": {
+    "value": "加勒比地区",
+    "source": "CLDR 46.0.0 territory 029"
+   },
+   "ja": {
+    "value": "カリブ",
+    "source": "CLDR 46.0.0 territory 029"
+   },
+   "ko": {
+    "value": "카리브 제도",
+    "source": "CLDR 46.0.0 territory 029"
+   },
+   "vi": {
+    "value": "Ca-ri-bê",
+    "source": "CLDR 46.0.0 territory 029"
+   },
+   "th": {
+    "value": "แคริบเบียน",
+    "source": "CLDR 46.0.0 territory 029"
+   },
+   "id": {
+    "value": "Kepulauan Karibia",
+    "source": "CLDR 46.0.0 territory 029"
+   }
+  },
+  "variants.region.003": {
+   "en": {
+    "value": "North America",
+    "source": "CLDR 46.0.0 territory 003"
+   },
+   "es": {
+    "value": "América del Norte",
+    "source": "CLDR 46.0.0 territory 003"
+   },
+   "fr": {
+    "value": "Amérique du Nord",
+    "source": "CLDR 46.0.0 territory 003"
+   },
+   "de": {
+    "value": "Nordamerika",
+    "source": "CLDR 46.0.0 territory 003"
+   },
+   "it": {
+    "value": "Nord America",
+    "source": "CLDR 46.0.0 territory 003"
+   },
+   "pt": {
+    "value": "América do Norte",
+    "source": "CLDR 46.0.0 territory 003"
+   },
+   "pl": {
+    "value": "Ameryka Północna",
+    "source": "CLDR 46.0.0 territory 003"
+   },
+   "ru": {
+    "value": "Северная Америка",
+    "source": "CLDR 46.0.0 territory 003"
+   },
+   "ar": {
+    "value": "أمريكا الشمالية",
+    "source": "CLDR 46.0.0 territory 003"
+   },
+   "hi": {
+    "value": "उत्तर अमेरिका",
+    "source": "CLDR 46.0.0 territory 003"
+   },
+   "zh": {
+    "value": "北美洲",
+    "source": "CLDR 46.0.0 territory 003"
+   },
+   "ja": {
+    "value": "北アメリカ大陸",
+    "source": "CLDR 46.0.0 territory 003"
+   },
+   "ko": {
+    "value": "북아메리카",
+    "source": "CLDR 46.0.0 territory 003"
+   },
+   "vi": {
+    "value": "Bắc Mỹ",
+    "source": "CLDR 46.0.0 territory 003"
+   },
+   "th": {
+    "value": "อเมริกาเหนือ",
+    "source": "CLDR 46.0.0 territory 003"
+   },
+   "id": {
+    "value": "Amerika Utara",
+    "source": "CLDR 46.0.0 territory 003"
+   }
+  },
+  "variants.region.013": {
+   "en": {
+    "value": "Central America",
+    "source": "CLDR 46.0.0 territory 013"
+   },
+   "es": {
+    "value": "Centroamérica",
+    "source": "CLDR 46.0.0 territory 013"
+   },
+   "fr": {
+    "value": "Amérique centrale",
+    "source": "CLDR 46.0.0 territory 013"
+   },
+   "de": {
+    "value": "Mittelamerika",
+    "source": "CLDR 46.0.0 territory 013"
+   },
+   "it": {
+    "value": "America Centrale",
+    "source": "CLDR 46.0.0 territory 013"
+   },
+   "pt": {
+    "value": "América Central",
+    "source": "CLDR 46.0.0 territory 013"
+   },
+   "pl": {
+    "value": "Ameryka Środkowa",
+    "source": "CLDR 46.0.0 territory 013"
+   },
+   "ru": {
+    "value": "Центральная Америка",
+    "source": "CLDR 46.0.0 territory 013"
+   },
+   "ar": {
+    "value": "أمريكا الوسطى",
+    "source": "CLDR 46.0.0 territory 013"
+   },
+   "hi": {
+    "value": "मध्य अमेरिका",
+    "source": "CLDR 46.0.0 territory 013"
+   },
+   "zh": {
+    "value": "中美洲",
+    "source": "CLDR 46.0.0 territory 013"
+   },
+   "ja": {
+    "value": "中央アメリカ",
+    "source": "CLDR 46.0.0 territory 013"
+   },
+   "ko": {
+    "value": "중앙 아메리카",
+    "source": "CLDR 46.0.0 territory 013"
+   },
+   "vi": {
+    "value": "Trung Mỹ",
+    "source": "CLDR 46.0.0 territory 013"
+   },
+   "th": {
+    "value": "อเมริกากลาง",
+    "source": "CLDR 46.0.0 territory 013"
+   },
+   "id": {
+    "value": "Amerika Tengah",
+    "source": "CLDR 46.0.0 territory 013"
+   }
+  },
+  "variants.region.005": {
+   "en": {
+    "value": "South America",
+    "source": "CLDR 46.0.0 territory 005"
+   },
+   "es": {
+    "value": "Sudamérica",
+    "source": "CLDR 46.0.0 territory 005"
+   },
+   "fr": {
+    "value": "Amérique du Sud",
+    "source": "CLDR 46.0.0 territory 005"
+   },
+   "de": {
+    "value": "Südamerika",
+    "source": "CLDR 46.0.0 territory 005"
+   },
+   "it": {
+    "value": "America del Sud",
+    "source": "CLDR 46.0.0 territory 005"
+   },
+   "pt": {
+    "value": "América do Sul",
+    "source": "CLDR 46.0.0 territory 005"
+   },
+   "pl": {
+    "value": "Ameryka Południowa",
+    "source": "CLDR 46.0.0 territory 005"
+   },
+   "ru": {
+    "value": "Южная Америка",
+    "source": "CLDR 46.0.0 territory 005"
+   },
+   "ar": {
+    "value": "أمريكا الجنوبية",
+    "source": "CLDR 46.0.0 territory 005"
+   },
+   "hi": {
+    "value": "दक्षिण अमेरिका",
+    "source": "CLDR 46.0.0 territory 005"
+   },
+   "zh": {
+    "value": "南美洲",
+    "source": "CLDR 46.0.0 territory 005"
+   },
+   "ja": {
+    "value": "南アメリカ",
+    "source": "CLDR 46.0.0 territory 005"
+   },
+   "ko": {
+    "value": "남아메리카",
+    "source": "CLDR 46.0.0 territory 005"
+   },
+   "vi": {
+    "value": "Nam Mỹ",
+    "source": "CLDR 46.0.0 territory 005"
+   },
+   "th": {
+    "value": "อเมริกาใต้",
+    "source": "CLDR 46.0.0 territory 005"
+   },
+   "id": {
+    "value": "Amerika Selatan",
+    "source": "CLDR 46.0.0 territory 005"
+   }
+  },
+  "variants.region.011": {
+   "en": {
+    "value": "Western Africa",
+    "source": "CLDR 46.0.0 territory 011"
+   },
+   "es": {
+    "value": "África occidental",
+    "source": "CLDR 46.0.0 territory 011"
+   },
+   "fr": {
+    "value": "Afrique occidentale",
+    "source": "CLDR 46.0.0 territory 011"
+   },
+   "de": {
+    "value": "Westafrika",
+    "source": "CLDR 46.0.0 territory 011"
+   },
+   "it": {
+    "value": "Africa occidentale",
+    "source": "CLDR 46.0.0 territory 011"
+   },
+   "pt": {
+    "value": "África Ocidental",
+    "source": "CLDR 46.0.0 territory 011"
+   },
+   "pl": {
+    "value": "Afryka Zachodnia",
+    "source": "CLDR 46.0.0 territory 011"
+   },
+   "ru": {
+    "value": "Западная Африка",
+    "source": "CLDR 46.0.0 territory 011"
+   },
+   "ar": {
+    "value": "غرب أفريقيا",
+    "source": "CLDR 46.0.0 territory 011"
+   },
+   "hi": {
+    "value": "पश्चिमी अफ़्रीका",
+    "source": "CLDR 46.0.0 territory 011"
+   },
+   "zh": {
+    "value": "西非",
+    "source": "CLDR 46.0.0 territory 011"
+   },
+   "ja": {
+    "value": "西アフリカ",
+    "source": "CLDR 46.0.0 territory 011"
+   },
+   "ko": {
+    "value": "서부 아프리카",
+    "source": "CLDR 46.0.0 territory 011"
+   },
+   "vi": {
+    "value": "Tây Phi",
+    "source": "CLDR 46.0.0 territory 011"
+   },
+   "th": {
+    "value": "แอฟริกาตะวันตก",
+    "source": "CLDR 46.0.0 territory 011"
+   },
+   "id": {
+    "value": "Afrika Bagian Barat",
+    "source": "CLDR 46.0.0 territory 011"
+   }
+  },
+  "variants.region.014": {
+   "en": {
+    "value": "Eastern Africa",
+    "source": "CLDR 46.0.0 territory 014"
+   },
+   "es": {
+    "value": "África oriental",
+    "source": "CLDR 46.0.0 territory 014"
+   },
+   "fr": {
+    "value": "Afrique orientale",
+    "source": "CLDR 46.0.0 territory 014"
+   },
+   "de": {
+    "value": "Ostafrika",
+    "source": "CLDR 46.0.0 territory 014"
+   },
+   "it": {
+    "value": "Africa orientale",
+    "source": "CLDR 46.0.0 territory 014"
+   },
+   "pt": {
+    "value": "África Oriental",
+    "source": "CLDR 46.0.0 territory 014"
+   },
+   "pl": {
+    "value": "Afryka Wschodnia",
+    "source": "CLDR 46.0.0 territory 014"
+   },
+   "ru": {
+    "value": "Восточная Африка",
+    "source": "CLDR 46.0.0 territory 014"
+   },
+   "ar": {
+    "value": "شرق أفريقيا",
+    "source": "CLDR 46.0.0 territory 014"
+   },
+   "hi": {
+    "value": "पूर्वी अफ़्रीका",
+    "source": "CLDR 46.0.0 territory 014"
+   },
+   "zh": {
+    "value": "东非",
+    "source": "CLDR 46.0.0 territory 014"
+   },
+   "ja": {
+    "value": "東アフリカ",
+    "source": "CLDR 46.0.0 territory 014"
+   },
+   "ko": {
+    "value": "동부 아프리카",
+    "source": "CLDR 46.0.0 territory 014"
+   },
+   "vi": {
+    "value": "Đông Phi",
+    "source": "CLDR 46.0.0 territory 014"
+   },
+   "th": {
+    "value": "แอฟริกาตะวันออก",
+    "source": "CLDR 46.0.0 territory 014"
+   },
+   "id": {
+    "value": "Afrika Bagian Timur",
+    "source": "CLDR 46.0.0 territory 014"
+   }
+  },
+  "variants.region.015": {
+   "en": {
+    "value": "Northern Africa",
+    "source": "CLDR 46.0.0 territory 015"
+   },
+   "es": {
+    "value": "África septentrional",
+    "source": "CLDR 46.0.0 territory 015"
+   },
+   "fr": {
+    "value": "Afrique septentrionale",
+    "source": "CLDR 46.0.0 territory 015"
+   },
+   "de": {
+    "value": "Nordafrika",
+    "source": "CLDR 46.0.0 territory 015"
+   },
+   "it": {
+    "value": "Nordafrica",
+    "source": "CLDR 46.0.0 territory 015"
+   },
+   "pt": {
+    "value": "África Setentrional",
+    "source": "CLDR 46.0.0 territory 015"
+   },
+   "pl": {
+    "value": "Afryka Północna",
+    "source": "CLDR 46.0.0 territory 015"
+   },
+   "ru": {
+    "value": "Северная Африка",
+    "source": "CLDR 46.0.0 territory 015"
+   },
+   "ar": {
+    "value": "شمال أفريقيا",
+    "source": "CLDR 46.0.0 territory 015"
+   },
+   "hi": {
+    "value": "उत्तरी अफ़्रीका",
+    "source": "CLDR 46.0.0 territory 015"
+   },
+   "zh": {
+    "value": "北非",
+    "source": "CLDR 46.0.0 territory 015"
+   },
+   "ja": {
+    "value": "北アフリカ",
+    "source": "CLDR 46.0.0 territory 015"
+   },
+   "ko": {
+    "value": "북부 아프리카",
+    "source": "CLDR 46.0.0 territory 015"
+   },
+   "vi": {
+    "value": "Bắc Phi",
+    "source": "CLDR 46.0.0 territory 015"
+   },
+   "th": {
+    "value": "แอฟริกาเหนือ",
+    "source": "CLDR 46.0.0 territory 015"
+   },
+   "id": {
+    "value": "Afrika Bagian Utara",
+    "source": "CLDR 46.0.0 territory 015"
+   }
+  },
+  "variants.region.018": {
+   "en": {
+    "value": "Southern Africa",
+    "source": "CLDR 46.0.0 territory 018"
+   },
+   "es": {
+    "value": "África meridional",
+    "source": "CLDR 46.0.0 territory 018"
+   },
+   "fr": {
+    "value": "Afrique australe",
+    "source": "CLDR 46.0.0 territory 018"
+   },
+   "de": {
+    "value": "Südliches Afrika",
+    "source": "CLDR 46.0.0 territory 018"
+   },
+   "it": {
+    "value": "Africa del Sud",
+    "source": "CLDR 46.0.0 territory 018"
+   },
+   "pt": {
+    "value": "África Meridional",
+    "source": "CLDR 46.0.0 territory 018"
+   },
+   "pl": {
+    "value": "Afryka Południowa",
+    "source": "CLDR 46.0.0 territory 018"
+   },
+   "ru": {
+    "value": "Южная Африка",
+    "source": "CLDR 46.0.0 territory 018"
+   },
+   "ar": {
+    "value": "أفريقيا الجنوبية",
+    "source": "CLDR 46.0.0 territory 018"
+   },
+   "hi": {
+    "value": "दक्षिणी अफ़्रीका",
+    "source": "CLDR 46.0.0 territory 018"
+   },
+   "zh": {
+    "value": "南部非洲",
+    "source": "CLDR 46.0.0 territory 018"
+   },
+   "ja": {
+    "value": "南部アフリカ",
+    "source": "CLDR 46.0.0 territory 018"
+   },
+   "ko": {
+    "value": "남부 아프리카",
+    "source": "CLDR 46.0.0 territory 018"
+   },
+   "vi": {
+    "value": "Miền Nam Châu Phi",
+    "source": "CLDR 46.0.0 territory 018"
+   },
+   "th": {
+    "value": "แอฟริกาตอนใต้",
+    "source": "CLDR 46.0.0 territory 018"
+   },
+   "id": {
+    "value": "Afrika Bagian Selatan",
+    "source": "CLDR 46.0.0 territory 018"
+   }
+  },
+  "variants.region.030": {
+   "en": {
+    "value": "Eastern Asia",
+    "source": "CLDR 46.0.0 territory 030"
+   },
+   "es": {
+    "value": "Asia oriental",
+    "source": "CLDR 46.0.0 territory 030"
+   },
+   "fr": {
+    "value": "Asie de l’Est",
+    "source": "CLDR 46.0.0 territory 030"
+   },
+   "de": {
+    "value": "Ostasien",
+    "source": "CLDR 46.0.0 territory 030"
+   },
+   "it": {
+    "value": "Asia orientale",
+    "source": "CLDR 46.0.0 territory 030"
+   },
+   "pt": {
+    "value": "Ásia Oriental",
+    "source": "CLDR 46.0.0 territory 030"
+   },
+   "pl": {
+    "value": "Azja Wschodnia",
+    "source": "CLDR 46.0.0 territory 030"
+   },
+   "ru": {
+    "value": "Восточная Азия",
+    "source": "CLDR 46.0.0 territory 030"
+   },
+   "ar": {
+    "value": "شرق آسيا",
+    "source": "CLDR 46.0.0 territory 030"
+   },
+   "hi": {
+    "value": "पूर्वी एशिया",
+    "source": "CLDR 46.0.0 territory 030"
+   },
+   "zh": {
+    "value": "东亚",
+    "source": "CLDR 46.0.0 territory 030"
+   },
+   "ja": {
+    "value": "東アジア",
+    "source": "CLDR 46.0.0 territory 030"
+   },
+   "ko": {
+    "value": "동아시아",
+    "source": "CLDR 46.0.0 territory 030"
+   },
+   "vi": {
+    "value": "Đông Á",
+    "source": "CLDR 46.0.0 territory 030"
+   },
+   "th": {
+    "value": "เอเชียตะวันออก",
+    "source": "CLDR 46.0.0 territory 030"
+   },
+   "id": {
+    "value": "Asia Bagian Timur",
+    "source": "CLDR 46.0.0 territory 030"
+   }
+  },
+  "variants.region.034": {
+   "en": {
+    "value": "Southern Asia",
+    "source": "CLDR 46.0.0 territory 034"
+   },
+   "es": {
+    "value": "Asia meridional",
+    "source": "CLDR 46.0.0 territory 034"
+   },
+   "fr": {
+    "value": "Asie du Sud",
+    "source": "CLDR 46.0.0 territory 034"
+   },
+   "de": {
+    "value": "Südasien",
+    "source": "CLDR 46.0.0 territory 034"
+   },
+   "it": {
+    "value": "Asia del Sud",
+    "source": "CLDR 46.0.0 territory 034"
+   },
+   "pt": {
+    "value": "Ásia Meridional",
+    "source": "CLDR 46.0.0 territory 034"
+   },
+   "pl": {
+    "value": "Azja Południowa",
+    "source": "CLDR 46.0.0 territory 034"
+   },
+   "ru": {
+    "value": "Южная Азия",
+    "source": "CLDR 46.0.0 territory 034"
+   },
+   "ar": {
+    "value": "جنوب آسيا",
+    "source": "CLDR 46.0.0 territory 034"
+   },
+   "hi": {
+    "value": "दक्षिणी एशिया",
+    "source": "CLDR 46.0.0 territory 034"
+   },
+   "zh": {
+    "value": "南亚",
+    "source": "CLDR 46.0.0 territory 034"
+   },
+   "ja": {
+    "value": "南アジア",
+    "source": "CLDR 46.0.0 territory 034"
+   },
+   "ko": {
+    "value": "남아시아",
+    "source": "CLDR 46.0.0 territory 034"
+   },
+   "vi": {
+    "value": "Nam Á",
+    "source": "CLDR 46.0.0 territory 034"
+   },
+   "th": {
+    "value": "เอเชียใต้",
+    "source": "CLDR 46.0.0 territory 034"
+   },
+   "id": {
+    "value": "Asia Bagian Selatan",
+    "source": "CLDR 46.0.0 territory 034"
+   }
+  },
+  "variants.region.035": {
+   "en": {
+    "value": "Southeast Asia",
+    "source": "CLDR 46.0.0 territory 035"
+   },
+   "es": {
+    "value": "Sudeste asiático",
+    "source": "CLDR 46.0.0 territory 035"
+   },
+   "fr": {
+    "value": "Asie du Sud-Est",
+    "source": "CLDR 46.0.0 territory 035"
+   },
+   "de": {
+    "value": "Südostasien",
+    "source": "CLDR 46.0.0 territory 035"
+   },
+   "it": {
+    "value": "Sud-est asiatico",
+    "source": "CLDR 46.0.0 territory 035"
+   },
+   "pt": {
+    "value": "Sudeste Asiático",
+    "source": "CLDR 46.0.0 territory 035"
+   },
+   "pl": {
+    "value": "Azja Południowo-Wschodnia",
+    "source": "CLDR 46.0.0 territory 035"
+   },
+   "ru": {
+    "value": "Юго-Восточная Азия",
+    "source": "CLDR 46.0.0 territory 035"
+   },
+   "ar": {
+    "value": "جنوب شرق آسيا",
+    "source": "CLDR 46.0.0 territory 035"
+   },
+   "hi": {
+    "value": "दक्षिण-पूर्व एशिया",
+    "source": "CLDR 46.0.0 territory 035"
+   },
+   "zh": {
+    "value": "东南亚",
+    "source": "CLDR 46.0.0 territory 035"
+   },
+   "ja": {
+    "value": "東南アジア",
+    "source": "CLDR 46.0.0 territory 035"
+   },
+   "ko": {
+    "value": "동남아시아",
+    "source": "CLDR 46.0.0 territory 035"
+   },
+   "vi": {
+    "value": "Đông Nam Á",
+    "source": "CLDR 46.0.0 territory 035"
+   },
+   "th": {
+    "value": "เอเชียตะวันออกเฉียงใต้",
+    "source": "CLDR 46.0.0 territory 035"
+   },
+   "id": {
+    "value": "Asia Tenggara",
+    "source": "CLDR 46.0.0 territory 035"
    }
   },
   "card-terms.house.rome": {
