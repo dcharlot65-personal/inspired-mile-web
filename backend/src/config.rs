@@ -70,8 +70,22 @@ pub const MIN_JWT_SECRET_BYTES: usize = 32;
 /// loud warning. Refused together with an https origin, so it cannot ride into production.
 pub const DEV_SECRET_FLAG: &str = "DEV_INSECURE_JWT_SECRET";
 
+/// A pause, in milliseconds, between a limit's check and the write it allows (sign-ups,
+/// email codes, sign-in challenges). For the end-to-end tests that prove those checks are
+/// atomic: with the pause, a check made without its lock lets every parallel request
+/// through, so the test goes red. Refused with an https origin, so it cannot be set in
+/// production; with an http localhost origin it is accepted with a loud warning.
+pub const TEST_RACE_DELAY_VAR: &str = "TEST_ONLY_LIMIT_RACE_DELAY_MS";
+/// The longest pause `TEST_ONLY_LIMIT_RACE_DELAY_MS` may ask for.
+pub const MAX_TEST_RACE_DELAY_MS: u64 = 5000;
+
 /// Passkey sign-ups allowed in any hour, over all visitors. See `auth/passkeys.rs`.
 pub const DEFAULT_SIGNUP_GLOBAL_PER_HOUR: i64 = 300;
+/// Passkey sign-ups that may be begun in any hour, over all visitors. Five tries per
+/// allowed account, as for one network.
+pub const DEFAULT_SIGNUP_BEGINS_GLOBAL_PER_HOUR: i64 = 1500;
+/// Rows the sign-in challenge table may hold, live or expired (`AUTH_CHALLENGES_MAX`).
+pub const DEFAULT_AUTH_CHALLENGES_MAX: i64 = 20_000;
 /// Days after which a passkey-only account that never played is deleted. See
 /// `auth::purge_unused_accounts`.
 pub const DEFAULT_UNUSED_ACCOUNT_PURGE_DAYS: i64 = 30;
@@ -126,6 +140,38 @@ fn resolve_jwt_secret(
     }
 }
 
+/// Decide the test-only race delay, or refuse to start.
+fn resolve_race_delay(
+    stated: Option<String>,
+    any_https_origin: bool,
+    warnings: &mut Vec<String>,
+) -> Result<Option<std::time::Duration>, String> {
+    let Some(stated) = stated.map(|s| s.trim().to_string()).filter(|s| !s.is_empty()) else {
+        return Ok(None);
+    };
+    if any_https_origin {
+        return Err(format!(
+            "{TEST_RACE_DELAY_VAR} is set, but WEBAUTHN_ORIGIN has an https site. It is a test-only \
+             setting that slows every limit check; remove it."
+        ));
+    }
+    let ms: u64 = stated
+        .parse()
+        .ok()
+        .filter(|ms| *ms <= MAX_TEST_RACE_DELAY_MS)
+        .ok_or_else(|| {
+            format!("{TEST_RACE_DELAY_VAR} must be a number of milliseconds up to {MAX_TEST_RACE_DELAY_MS}")
+        })?;
+    if ms == 0 {
+        return Ok(None);
+    }
+    warnings.push(format!(
+        "{TEST_RACE_DELAY_VAR} is {ms}: every sign-up, email-code and challenge limit pauses {ms} ms \
+         between its check and its write. For tests only."
+    ));
+    Ok(Some(std::time::Duration::from_millis(ms)))
+}
+
 /// A key for one purpose, derived from the session secret: knowing one derived key, or a
 /// value made with it, says nothing about the secret or about another purpose's key.
 fn derive_key(secret: &str, purpose: &str) -> String {
@@ -170,6 +216,13 @@ pub struct Config {
     pub trusted_proxies: Vec<TrustedProxy>,
     /// Passkey sign-ups allowed in any hour, over all visitors (`SIGNUP_GLOBAL_PER_HOUR`).
     pub signup_global_per_hour: i64,
+    /// Passkey sign-ups that may be begun in any hour, over all visitors
+    /// (`SIGNUP_BEGINS_GLOBAL_PER_HOUR`).
+    pub signup_begins_global_per_hour: i64,
+    /// Rows `auth_challenges` may hold, live or expired (`AUTH_CHALLENGES_MAX`).
+    pub auth_challenges_max: i64,
+    /// `TEST_ONLY_LIMIT_RACE_DELAY_MS`: never set outside the tests (refused with https).
+    pub test_race_delay: Option<std::time::Duration>,
     /// Days before an unused passkey-only account is deleted (`UNUSED_ACCOUNT_PURGE_DAYS`,
     /// 0 turns the purge off).
     pub unused_account_purge_days: i64,
@@ -192,6 +245,14 @@ impl Config {
     /// The cookie that ties an emailed code to the browser that asked for it.
     pub fn code_cookie_name(&self) -> &'static str {
         if self.host_locked_cookies { "__Host-im_code" } else { "im_code" }
+    }
+
+    /// Called between a limit's check and the write it allows. Does nothing unless the
+    /// test-only `TEST_ONLY_LIMIT_RACE_DELAY_MS` is set (see `TEST_RACE_DELAY_VAR`).
+    pub async fn test_race_window(&self) {
+        if let Some(pause) = self.test_race_delay {
+            tokio::time::sleep(pause).await;
+        }
     }
 }
 
@@ -224,6 +285,8 @@ impl Config {
             ));
         }
         let jwt_secret = resolve_jwt_secret(get("JWT_SECRET"), dev_flag, &mut warnings)?;
+        let any_https_origin = webauthn_origins.iter().any(|o| o.scheme() == "https");
+        let test_race_delay = resolve_race_delay(get(TEST_RACE_DELAY_VAR), any_https_origin, &mut warnings)?;
         let email_code_key = derive_key(&jwt_secret, "email-code");
         let trusted_proxies = parse_trusted_proxies(
             &get("TRUSTED_PROXIES").unwrap_or_else(|| DEFAULT_TRUSTED_PROXIES.into()),
@@ -256,6 +319,15 @@ impl Config {
                 .and_then(|v| v.trim().parse().ok())
                 .filter(|n| *n > 0)
                 .unwrap_or(DEFAULT_SIGNUP_GLOBAL_PER_HOUR),
+            signup_begins_global_per_hour: get("SIGNUP_BEGINS_GLOBAL_PER_HOUR")
+                .and_then(|v| v.trim().parse().ok())
+                .filter(|n| *n > 0)
+                .unwrap_or(DEFAULT_SIGNUP_BEGINS_GLOBAL_PER_HOUR),
+            auth_challenges_max: get("AUTH_CHALLENGES_MAX")
+                .and_then(|v| v.trim().parse().ok())
+                .filter(|n| *n > 0)
+                .unwrap_or(DEFAULT_AUTH_CHALLENGES_MAX),
+            test_race_delay,
             unused_account_purge_days: get("UNUSED_ACCOUNT_PURGE_DAYS")
                 .and_then(|v| v.trim().parse().ok())
                 .filter(|n| *n >= 0)
@@ -446,6 +518,60 @@ mod tests {
         assert_eq!(config.unused_account_purge_days, 0);
         let (config, _) = config_from(&[("SIGNUP_GLOBAL_PER_HOUR", "0")]).unwrap();
         assert_eq!(config.signup_global_per_hour, 300, "zero would refuse everyone");
+    }
+
+    #[test]
+    fn begin_and_challenge_ceilings_have_defaults_and_can_be_set() {
+        let (config, _) = config_from(&[]).unwrap();
+        assert_eq!(config.signup_begins_global_per_hour, 1500);
+        assert_eq!(config.auth_challenges_max, 20_000);
+        let (config, _) =
+            config_from(&[("SIGNUP_BEGINS_GLOBAL_PER_HOUR", "20"), ("AUTH_CHALLENGES_MAX", "30")]).unwrap();
+        assert_eq!(config.signup_begins_global_per_hour, 20);
+        assert_eq!(config.auth_challenges_max, 30);
+        let (config, _) =
+            config_from(&[("SIGNUP_BEGINS_GLOBAL_PER_HOUR", "0"), ("AUTH_CHALLENGES_MAX", "-1")]).unwrap();
+        assert_eq!(config.signup_begins_global_per_hour, 1500, "zero would refuse everyone");
+        assert_eq!(config.auth_challenges_max, 20_000);
+    }
+
+    #[test]
+    fn the_test_race_delay_is_off_by_default_and_refused_with_an_https_origin() {
+        let (config, warnings) = config_from(&[]).unwrap();
+        assert_eq!(config.test_race_delay, None);
+        assert!(warnings.is_empty());
+
+        // Production (the default origin is https): refused outright, whatever the value.
+        for value in ["300", "1", "0"] {
+            let err = config_from(&[(TEST_RACE_DELAY_VAR, value)]).err().expect("not in production");
+            assert!(err.contains("test-only"), "{err}");
+        }
+        // One https origin among several is enough to refuse it.
+        let err = config_from(&[
+            ("WEBAUTHN_RP_ID", "localhost"),
+            ("WEBAUTHN_ORIGIN", "http://localhost:4399,https://localhost:4400"),
+            (TEST_RACE_DELAY_VAR, "300"),
+        ])
+        .err()
+        .expect("an https origin refuses it");
+        assert!(err.contains("test-only"), "{err}");
+
+        // On http localhost: accepted, loudly.
+        let mut pairs = LOCALHOST.to_vec();
+        pairs.push((TEST_RACE_DELAY_VAR, "300"));
+        let (config, warnings) = config_from(&pairs).unwrap();
+        assert_eq!(config.test_race_delay, Some(std::time::Duration::from_millis(300)));
+        assert!(warnings.iter().any(|w| w.contains("For tests only")), "{warnings:?}");
+
+        // Zero is off; nonsense and more than five seconds are refused.
+        let mut zero = LOCALHOST.to_vec();
+        zero.push((TEST_RACE_DELAY_VAR, "0"));
+        assert_eq!(config_from(&zero).unwrap().0.test_race_delay, None);
+        for bad in ["fast", "-5", "5001"] {
+            let mut pairs = LOCALHOST.to_vec();
+            pairs.push((TEST_RACE_DELAY_VAR, bad));
+            assert!(config_from(&pairs).is_err(), "{bad}");
+        }
     }
 
     #[test]
