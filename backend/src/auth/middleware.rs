@@ -1,36 +1,27 @@
 use axum::{
-    extract::Request,
+    extract::{Request, State},
     http::StatusCode,
     middleware::Next,
     response::Response,
 };
 use axum_extra::extract::CookieJar;
+use sqlx::PgPool;
 
-use super::jwt::verify_token;
+use super::sessions;
+use crate::config::Config;
 
-const COOKIE_NAME: &str = "im_token";
-
-/// Extract and verify JWT from the `im_token` cookie.
-/// Injects `Claims` as a request extension for downstream handlers.
+/// Guard for every route outside `/auth`: the session cookie must carry a correctly signed
+/// token AND that token's session must still be live on the server (not signed out, not
+/// expired, its user not deleted). Injects `Claims` as a request extension.
 pub async fn auth_middleware(
+    State((pool, config)): State<(PgPool, Config)>,
     jar: CookieJar,
     mut request: Request,
     next: Next,
 ) -> Result<Response, StatusCode> {
-    let token = jar
-        .get(COOKIE_NAME)
-        .map(|c| c.value().to_string())
-        .ok_or(StatusCode::UNAUTHORIZED)?;
-
-    // Get JWT secret from app state
-    let secret = request
-        .extensions()
-        .get::<String>()
-        .cloned()
-        .unwrap_or_default();
-
-    let claims = verify_token(&token, &secret).map_err(|_| StatusCode::UNAUTHORIZED)?;
-
-    request.extensions_mut().insert(claims);
+    let session = sessions::authenticate(&pool, &config, &jar)
+        .await
+        .map_err(|e| e.status)?;
+    request.extensions_mut().insert(session.claims);
     Ok(next.run(request).await)
 }

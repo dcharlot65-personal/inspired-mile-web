@@ -1,4 +1,26 @@
 //! One-time email sign-in codes: the rules, kept free of I/O so they can be tested directly.
+//!
+//! What bounds guessing, and what keeps one party out of another's way:
+//!
+//!   - A code is tied to the browser that asked for it (a random cookie, `requester`).
+//!     A guess is only ever compared with the code that the guessing browser itself
+//!     requested. So a stranger can neither use up the attempts of your code nor withdraw
+//!     it by asking for another: their requests and guesses touch only their own codes.
+//!   - Wrong guesses are counted per address guessed at: `MAX_FAILED_PER_NETWORK_PER_DAY`
+//!     from one network (IPv4 address or IPv6 /64) and `MAX_FAILED_PER_EMAIL_PER_DAY` from
+//!     everyone together. The second is the hard bound on online guessing against one
+//!     account: 50 guesses a day at one in a million each, whatever the attacker's means.
+//!     It used to be 1,440 a day, for ever.
+//!   - The request limits are per address and network (`MAX_REQUESTS_PER_EMAIL`), with a
+//!     wider cap over all networks (`MAX_REQUESTS_PER_EMAIL_ALL`) so an inbox cannot be
+//!     flooded.
+//!
+//! What this cannot do, said plainly: somebody with several networks who is set on it can
+//! still stop one address from signing in BY EMAIL for a while, either by using up the
+//! all-network request cap (ten an hour) or the all-network failure cap (fifty a day).
+//! They cannot get in, and a passkey sign-in is not affected. Any limit that protects an
+//! account from guessing can be spent by the guesser; the caps are set so that it takes
+//! more than one machine to do it.
 
 use chrono::{DateTime, Duration, Utc};
 use hmac::{Hmac, KeyInit, Mac};
@@ -10,12 +32,21 @@ pub const CODE_DIGITS: usize = 6;
 pub const CODE_TTL_MINUTES: i64 = 10;
 /// Wrong guesses allowed against one code. The guess that reaches the limit kills the code.
 pub const MAX_ATTEMPTS: i32 = 5;
-/// Codes one address may ask for inside `EMAIL_WINDOW_MINUTES`.
+/// Codes one network may ask for, for one address, inside `EMAIL_WINDOW_MINUTES`.
 pub const MAX_REQUESTS_PER_EMAIL: i64 = 3;
 pub const EMAIL_WINDOW_MINUTES: i64 = 15;
-/// Codes one client IP may ask for inside `IP_WINDOW_MINUTES`.
+/// Codes that may be sent to one address inside `IP_WINDOW_MINUTES`, whoever asks.
+pub const MAX_REQUESTS_PER_EMAIL_ALL: i64 = 10;
+/// Codes one network (IPv4 address, IPv6 /64) may ask for inside `IP_WINDOW_MINUTES`.
 pub const MAX_REQUESTS_PER_IP: i64 = 10;
 pub const IP_WINDOW_MINUTES: i64 = 60;
+/// Wrong guesses one network may make at one address's codes inside `FAILURE_WINDOW_HOURS`.
+pub const MAX_FAILED_PER_NETWORK_PER_DAY: i64 = 10;
+/// Wrong guesses everyone together may make at one address's codes in the same window.
+pub const MAX_FAILED_PER_EMAIL_PER_DAY: i64 = 50;
+pub const FAILURE_WINDOW_HOURS: i64 = 24;
+/// How long the cookie that names the requesting browser lives: a code's life and a bit.
+pub const REQUESTER_COOKIE_MINUTES: i64 = 15;
 
 /// Trim and lower-case an address, or `None` when it cannot be one.
 ///
@@ -57,6 +88,32 @@ pub fn generate_code() -> String {
     }
 }
 
+/// A fresh random value for the cookie that names the browser asking for a code.
+pub fn new_requester_token() -> String {
+    format!("{:032x}", rand::random::<u128>())
+}
+
+/// Only a value this server could have issued is worth looking up.
+pub fn is_requester_token(value: &str) -> bool {
+    value.len() == 32 && value.bytes().all(|b| matches!(b, b'0'..=b'9' | b'a'..=b'f'))
+}
+
+/// What is stored of the requester cookie: an HMAC, so the database does not hold values
+/// that would pass as the cookie.
+pub fn hash_requester(key: &str, token: &str) -> String {
+    let mut mac = Hmac::<Sha256>::new_from_slice(key.as_bytes())
+        .expect("HMAC accepts a key of any length");
+    mac.update(b"inspired-mile:email-code-requester:v1\0");
+    mac.update(token.as_bytes());
+    hex::encode(mac.finalize().into_bytes())
+}
+
+/// Whether one more guess at an address's code may be judged, from the wrong guesses
+/// already made in the window by this network and by everyone.
+pub fn guessing_allowed(failed_by_network: i64, failed_by_everyone: i64) -> bool {
+    failed_by_network < MAX_FAILED_PER_NETWORK_PER_DAY && failed_by_everyone < MAX_FAILED_PER_EMAIL_PER_DAY
+}
+
 fn mac_for(secret: &str, email: &str, code: &str) -> Hmac<Sha256> {
     let mut mac = Hmac::<Sha256>::new_from_slice(secret.as_bytes())
         .expect("HMAC accepts a key of any length");
@@ -67,8 +124,8 @@ fn mac_for(secret: &str, email: &str, code: &str) -> Hmac<Sha256> {
     mac
 }
 
-/// What is stored instead of the code: an HMAC keyed by the server secret and bound to the
-/// address. A six-digit code has too little entropy for a bare hash to protect it, and a
+/// What is stored instead of the code: an HMAC keyed by the email-code key (derived from
+/// the server secret, never the session-signing secret itself) and bound to the address. A six-digit code has too little entropy for a bare hash to protect it, and a
 /// code issued to one address must not verify for another.
 pub fn hash_code(secret: &str, email: &str, code: &str) -> String {
     hex::encode(mac_for(secret, email, code).finalize().into_bytes())
@@ -142,15 +199,17 @@ pub fn expiry_from(now: DateTime<Utc>) -> DateTime<Utc> {
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum RateLimit {
     Allowed,
-    /// This address asked too often.
+    /// Too many codes for this address: from this network, or from everyone together.
     EmailLimited,
     /// This client asked too often.
     IpLimited,
 }
 
-/// Decide from the number of codes already issued inside each window.
-pub fn check_rate(recent_for_email: i64, recent_for_ip: i64) -> RateLimit {
-    if recent_for_email >= MAX_REQUESTS_PER_EMAIL {
+/// Decide from the number of codes already issued inside each window:
+/// `recent_for_email` to this address from this network, `recent_for_email_all` to this
+/// address from anyone, `recent_for_ip` to any address from this network.
+pub fn check_rate(recent_for_email: i64, recent_for_email_all: i64, recent_for_ip: i64) -> RateLimit {
+    if recent_for_email >= MAX_REQUESTS_PER_EMAIL || recent_for_email_all >= MAX_REQUESTS_PER_EMAIL_ALL {
         RateLimit::EmailLimited
     } else if recent_for_ip >= MAX_REQUESTS_PER_IP {
         RateLimit::IpLimited
@@ -295,12 +354,61 @@ mod tests {
 
     #[test]
     fn rate_limits_trip_at_their_thresholds() {
-        assert_eq!(check_rate(0, 0), RateLimit::Allowed);
-        assert_eq!(check_rate(MAX_REQUESTS_PER_EMAIL - 1, MAX_REQUESTS_PER_IP - 1), RateLimit::Allowed);
-        assert_eq!(check_rate(MAX_REQUESTS_PER_EMAIL, 0), RateLimit::EmailLimited);
-        assert_eq!(check_rate(0, MAX_REQUESTS_PER_IP), RateLimit::IpLimited);
-        assert_eq!(check_rate(MAX_REQUESTS_PER_EMAIL + 5, MAX_REQUESTS_PER_IP + 5), RateLimit::EmailLimited);
+        assert_eq!(check_rate(0, 0, 0), RateLimit::Allowed);
+        assert_eq!(
+            check_rate(MAX_REQUESTS_PER_EMAIL - 1, MAX_REQUESTS_PER_EMAIL_ALL - 1, MAX_REQUESTS_PER_IP - 1),
+            RateLimit::Allowed
+        );
+        assert_eq!(check_rate(MAX_REQUESTS_PER_EMAIL, MAX_REQUESTS_PER_EMAIL, 0), RateLimit::EmailLimited);
+        assert_eq!(check_rate(0, 0, MAX_REQUESTS_PER_IP), RateLimit::IpLimited);
+        assert_eq!(
+            check_rate(MAX_REQUESTS_PER_EMAIL + 5, MAX_REQUESTS_PER_EMAIL + 5, MAX_REQUESTS_PER_IP + 5),
+            RateLimit::EmailLimited
+        );
         assert_eq!(MAX_REQUESTS_PER_EMAIL, 3);
         assert_eq!(MAX_REQUESTS_PER_IP, 10);
+    }
+
+    #[test]
+    fn a_stranger_asking_for_codes_does_not_use_up_your_allowance() {
+        // Three codes were sent to this address at someone else's request. A request from
+        // another network is still served...
+        assert_eq!(check_rate(0, MAX_REQUESTS_PER_EMAIL, 0), RateLimit::Allowed);
+        assert_eq!(check_rate(0, MAX_REQUESTS_PER_EMAIL_ALL - 1, 0), RateLimit::Allowed);
+        // ...until the cap that keeps an inbox from being flooded.
+        assert_eq!(check_rate(0, MAX_REQUESTS_PER_EMAIL_ALL, 0), RateLimit::EmailLimited);
+        assert_eq!(MAX_REQUESTS_PER_EMAIL_ALL, 10);
+    }
+
+    #[test]
+    fn guessing_at_one_address_is_capped_per_network_and_overall() {
+        assert!(guessing_allowed(0, 0));
+        assert!(guessing_allowed(MAX_FAILED_PER_NETWORK_PER_DAY - 1, MAX_FAILED_PER_EMAIL_PER_DAY - 1));
+        // One network: ten wrong guesses a day.
+        assert!(!guessing_allowed(MAX_FAILED_PER_NETWORK_PER_DAY, MAX_FAILED_PER_NETWORK_PER_DAY));
+        // Someone else's ten wrong guesses do not stop a network that made none...
+        assert!(guessing_allowed(0, MAX_FAILED_PER_NETWORK_PER_DAY));
+        assert!(guessing_allowed(0, MAX_FAILED_PER_EMAIL_PER_DAY - 1));
+        // ...but fifty from everyone is the ceiling for the account, however many networks.
+        assert!(!guessing_allowed(0, MAX_FAILED_PER_EMAIL_PER_DAY));
+        assert_eq!(MAX_FAILED_PER_NETWORK_PER_DAY, 10);
+        assert_eq!(MAX_FAILED_PER_EMAIL_PER_DAY, 50);
+    }
+
+    #[test]
+    fn requester_tokens_are_random_well_formed_and_stored_hashed() {
+        let a = new_requester_token();
+        let b = new_requester_token();
+        assert_ne!(a, b);
+        assert!(is_requester_token(&a), "{a}");
+        for bad in ["", "abc", &a[..31], &format!("{a}0"), &a.to_uppercase().replace(char::is_numeric, "A"), "g".repeat(32).as_str()] {
+            assert!(!is_requester_token(bad), "{bad:?}");
+        }
+        let hash = hash_requester(SECRET, &a);
+        assert_eq!(hash.len(), 64);
+        assert!(!hash.contains(&a));
+        assert_eq!(hash, hash_requester(SECRET, &a));
+        assert_ne!(hash, hash_requester(SECRET, &b));
+        assert_ne!(hash, hash_requester("other-key", &a));
     }
 }

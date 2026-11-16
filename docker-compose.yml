@@ -22,7 +22,9 @@ services:
         condition: service_healthy
     environment:
       DATABASE_URL: postgres://inspired_mile:devpassword@db:5432/inspired_mile
-      JWT_SECRET: dev-secret-change-in-production
+      # No default: sessions are signed with it and the API refuses to start without one of
+      # at least 32 bytes. Export JWT_SECRET (openssl rand -base64 48) before `docker compose up`.
+      JWT_SECRET: ${JWT_SECRET:?JWT_SECRET is not set (generate one with openssl rand -base64 48)}
       PORT: "3849"
       CORS_ORIGIN: http://localhost:4321
       # Passkeys: the relying-party ID and the page origins that may use it.
