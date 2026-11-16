@@ -28,6 +28,11 @@ const MUTATIONS = [
   ['a reasoning block no longer seen', 'scripts/model-eval/lib.mjs', "else if (REASONING.test(l)) out.push('a reasoning block');", ''],
   ['a title naming the form no longer seen', 'scripts/model-eval/lib.mjs', 'if (form && l === norm(form)) return true;', ''],
   ['a model used in no language offered for download', 'src/lib/brain.ts', 'return runnable.filter(usedAnywhere);', 'return runnable;'],
+  // The cells against the game as it is now (the replay test).
+  ['a score in a cell edited', 'docs/language/model-eval/cells/grand.en.write.json', '"formKept": true', '"formKept": false'],
+  ['a scoring rule changed after the cells ran', 'src/lib/verse/duel.ts', '1 + (device.met ? 0.5 : 0)', '1 + (device.met ? 0.6 : 0)'],
+  ['the opponent\'s prompt changed after the cells ran', 'src/lib/verse/opponent.ts', 'No title, no notes, no explanation.', 'No title, no notes.'],
+  ['the opponent\'s tidy-up changed after the cells ran', 'src/lib/verse/opponent.ts', ".replace(/[*_`]+/g, '')", ".replace(/[*_]+/g, '')"],
   ['the report edited apart from the decisions', 'docs/language/MODEL-EVAL.md', /\| Gemma 4 E2B \| [^|]*\|/, '| Gemma 4 E2B | xx |'],
 ];
 
