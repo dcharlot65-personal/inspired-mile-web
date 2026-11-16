@@ -329,7 +329,7 @@ const ko: Record<string, string> = {
   'hand.curses': '상대에게 거는 저주: {rule}',
   'hand.relicNote': '{card}이(가) 빌려주는 낱말: {words}.',
   'hand.potionNote': '{card}이(가) 상대의 다음 시에 저주를 걸어요: {rule}',
-  'hand.potionLastRound': '{card}은(는) 상대의 다음 시에 저주를 걸지만, 지금이 마지막 라운드예요.',
+  'hand.potionLastRound': '{card}은(는) 상대의 다음 시에 저주를 걸 수 있지만, 지금이 마지막 라운드예요.',
   'variant.bonus': '{criterion} +{n}',
   'illegal.character-not-in-deck': '그 등장인물은 내 덱에 없어요.',
   'illegal.character-used': '등장인물은 한 경기에서 한 번만 무대에 오를 수 있어요.',

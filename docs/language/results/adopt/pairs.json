@@ -1,0 +1,1928 @@
+[
+ {
+  "id": "th|check.luc-bat-rhyme",
+  "lang": "th",
+  "text": "พยางค์ที่หกของแต่ละบรรทัดมีสัมผัสกัน",
+  "english": "The sixth syllable of each line rhymes"
+ },
+ {
+  "id": "th|nav.multiplayer",
+  "lang": "th",
+  "text": "เล่นหลายคน",
+  "english": "Multiplayer"
+ },
+ {
+  "id": "th|nav.viewer",
+  "lang": "th",
+  "text": "เครื่องมือดู 3 มิติ",
+  "english": "3D Viewer"
+ },
+ {
+  "id": "th|age.errorDob",
+  "lang": "th",
+  "text": "โปรดเลือกวันเดือนปีเกิดให้ครบถ้วน",
+  "english": "Please select your full date of birth."
+ },
+ {
+  "id": "th|auth.emailHint",
+  "lang": "th",
+  "text": "ใช้อุปกรณ์ที่ไม่มีพาสคีย์ของคุณอยู่หรือ? ลงชื่อเข้าใช้ด้วยอีเมล หากบัญชีของคุณมีอีเมลผูกไว้",
+  "english": "On a device without your passkey? Sign in by email, if your account has one."
+ },
+ {
+  "id": "th|auth.legalAfter",
+  "lang": "th",
+  "text": ".",
+  "english": "."
+ },
+ {
+  "id": "th|battle.intro",
+  "lang": "th",
+  "text": "สามยก สามฉันทลักษณ์ การ์ดของคุณกำหนดว่าบทกลอนของคุณต้องทำอะไร คู่ต่อสู้รันอยู่ในเบราว์เซอร์ของคุณ: สิ่งที่คุณเขียนจะไม่ถูกส่งออกจากอุปกรณ์เครื่องนี้",
+  "english": "Three rounds, three forms. Your cards decide what your verse must do. The opponent runs in your browser: nothing you write leaves this device."
+ },
+ {
+  "id": "th|battle.mind",
+  "lang": "th",
+  "text": "จิตใจของคู่ต่อสู้",
+  "english": "Your opponent's mind"
+ },
+ {
+  "id": "th|brain.downloading",
+  "lang": "th",
+  "text": "กำลังดาวน์โหลด Gemma: 512/3 MB",
+  "english": "Downloading Gemma: 512 of 3 MB"
+ },
+ {
+  "id": "th|round.opponentPlays",
+  "lang": "th",
+  "text": "คู่ต่อสู้ร่ายบทกลอน",
+  "english": "Your opponent plays"
+ },
+ {
+  "id": "th|round.whoAnswers",
+  "lang": "th",
+  "text": "ใครจะตอบโต้?",
+  "english": "Who answers?"
+ },
+ {
+  "id": "th|mic.none",
+  "lang": "th",
+  "text": "ไม่พบไมโครโฟน",
+  "english": "No microphone here"
+ },
+ {
+  "id": "th|mic.loadingEar",
+  "lang": "th",
+  "text": "กำลังโหลดระบบรับเสียง (75 MB, ครั้งเดียว)…",
+  "english": "Loading the ear (75 MB, once)…"
+ },
+ {
+  "id": "th|mic.loadingEarProgress",
+  "lang": "th",
+  "text": "กำลังโหลดระบบรับเสียง: 40%",
+  "english": "Loading the ear: 40%"
+ },
+ {
+  "id": "th|mic.earFailed",
+  "lang": "th",
+  "text": "โหลดระบบรับเสียงไม่ได้",
+  "english": "The ear could not load"
+ },
+ {
+  "id": "th|verdict.yourAnswer",
+  "lang": "th",
+  "text": "คำตอบของคุณ",
+  "english": "Your answer"
+ },
+ {
+  "id": "th|verdict.held",
+  "lang": "th",
+  "text": "ถือครอง",
+  "english": "held"
+ },
+ {
+  "id": "th|end.lost",
+  "lang": "th",
+  "text": "คืนนี้เวทีเป็นของพวกเขา",
+  "english": "The stage is theirs tonight."
+ },
+ {
+  "id": "th|badge.written",
+  "lang": "th",
+  "text": "คู่ต่อสู้แบบเขียนไว้",
+  "english": "Written opponent"
+ },
+ {
+  "id": "th|theatre.declined",
+  "lang": "th",
+  "text": "อุปกรณ์นี้ไม่รองรับโหมดดื่มด่ำ",
+  "english": "This device declined an immersive session."
+ },
+ {
+  "id": "th|theatre.cursesYou",
+  "lang": "th",
+  "text": "คุณถูกสาปด้วย: คำของคุณทุกคำต้องยาวไม่เกิน 5 ตัวอักษร",
+  "english": "Curses you: No word of yours may be longer than 5 letters."
+ },
+ {
+  "id": "th|theatre.versePrompt",
+  "lang": "th",
+  "text": "บทกลอนของคุณจะปรากฏที่นี่ กดไมโครโฟนแล้วขับกลอนออกมา โดยอ่านหนึ่งบรรทัดต่อหนึ่งลมหายใจ",
+  "english": "Your verse appears here. Press the microphone and speak it, one line at a breath."
+ },
+ {
+  "id": "hi|check.spells.words",
+  "lang": "hi",
+  "text": "पंक्तियाँ खोपड़ी से शुरू होकर क्रम में खुलती हैं",
+  "english": "Lines open, in order, with skull"
+ },
+ {
+  "id": "hi|check.growing",
+  "lang": "hi",
+  "text": "हर पंक्ति में पिछली पंक्ति से ज़्यादा शब्द हैं",
+  "english": "Each line has more words than the last"
+ },
+ {
+  "id": "hi|check.growing.char",
+  "lang": "hi",
+  "text": "हर पंक्ति में पिछली पंक्ति से ज़्यादा अक्षर हैं",
+  "english": "Each line has more characters than the last"
+ },
+ {
+  "id": "hi|check.luc-bat-rhyme",
+  "lang": "hi",
+  "text": "प्रत्येक पंक्ति का छठा शब्दांश तुक मिलाता है",
+  "english": "The sixth syllable of each line rhymes"
+ },
+ {
+  "id": "hi|device.riposte.brief",
+  "lang": "hi",
+  "text": "प्रतिद्वंद्वी के पिछले पद से 3 अक्षर या उससे अधिक का कोई शब्द लेकर उसी पर लौटा दें।",
+  "english": "Turn a word of 3 letters or more from your opponent's last verse back on them."
+ },
+ {
+  "id": "hi|device.brevity.brief",
+  "lang": "hi",
+  "text": "हर पंक्ति में 3 शब्द या उससे कम शब्द रखें।",
+  "english": "Keep every line to 3 words or fewer."
+ },
+ {
+  "id": "hi|device.brevity.brief.char",
+  "lang": "hi",
+  "text": "हर पंक्ति में 3 अक्षर या उससे कम अक्षर रखें।",
+  "english": "Keep every line to 3 characters or fewer."
+ },
+ {
+  "id": "hi|device.grandeur.brief",
+  "lang": "hi",
+  "text": "Use two words of 3 अक्षर or more.",
+  "english": "Use two words of 3 letters or more."
+ },
+ {
+  "id": "hi|curse.no-repeats.brief",
+  "lang": "hi",
+  "text": "आप 3 अक्षर या उससे अधिक लंबाई वाले किसी भी शब्द का दो बार उपयोग नहीं कर सकते।",
+  "english": "You may not use any word of 3 letters or more twice."
+ },
+ {
+  "id": "hi|curse.no-repeats.theirs",
+  "lang": "hi",
+  "text": "प्रतिद्वंद्वी 3 अक्षर या उससे अधिक लंबाई वाले किसी भी शब्द का दो बार उपयोग नहीं कर सकता।",
+  "english": "They may not use any word of 3 letters or more twice."
+ },
+ {
+  "id": "hi|curse.short-lines.brief",
+  "lang": "hi",
+  "text": "आपकी किसी भी पंक्ति में 3 शब्द से अधिक शब्द नहीं हो सकते।",
+  "english": "No line of yours may be longer than 3 words."
+ },
+ {
+  "id": "hi|curse.short-lines.brief.char",
+  "lang": "hi",
+  "text": "आपकी किसी भी पंक्ति में 3 अक्षर से अधिक अक्षर नहीं हो सकते।",
+  "english": "No line of yours may be longer than 3 characters."
+ },
+ {
+  "id": "hi|curse.short-lines.theirs",
+  "lang": "hi",
+  "text": "प्रतिद्वंद्वी की किसी भी पंक्ति में 3 शब्द से अधिक शब्द नहीं हो सकते।",
+  "english": "No line of theirs may be longer than 3 words."
+ },
+ {
+  "id": "hi|curse.short-lines.theirs.char",
+  "lang": "hi",
+  "text": "प्रतिद्वंद्वी की किसी भी पंक्ति में 3 अक्षर से अधिक अक्षर नहीं हो सकते।",
+  "english": "No line of theirs may be longer than 3 characters."
+ },
+ {
+  "id": "hi|footer.sonnetMan",
+  "lang": "hi",
+  "text": "द सोनेट मैन",
+  "english": "The Sonnet Man"
+ },
+ {
+  "id": "hi|age.consentAfter",
+  "lang": "hi",
+  "text": "और मेरे Inspired Mile के इस्तेमाल के लिए अपनी सहमति देते हैं।",
+  "english": "and consents to my use of Inspired Mile."
+ },
+ {
+  "id": "hi|age.agreeAfter",
+  "lang": "hi",
+  "text": "से सहमत हैं।",
+  "english": "."
+ },
+ {
+  "id": "hi|toast.achievement",
+  "lang": "hi",
+  "text": "उपलब्धि अनलॉक हुई",
+  "english": "Achievement Unlocked"
+ },
+ {
+  "id": "hi|auth.legalAfter",
+  "lang": "hi",
+  "text": "से सहमत हैं।",
+  "english": "."
+ },
+ {
+  "id": "hi|battle.difficulty.player",
+  "lang": "hi",
+  "text": "खिलाड़ी: दो मसौदों में से बेहतर चुनता है",
+  "english": "Player: picks the better of two drafts"
+ },
+ {
+  "id": "hi|round.cursesYou",
+  "lang": "hi",
+  "text": "Hamlet ने आप पर Ariel का शाप डाला है: आपका कोई भी शब्द 5 अक्षरों से लंबा नहीं हो सकता।",
+  "english": "Hamlet curses you with Ariel: No word of yours may be longer than 5 letters."
+ },
+ {
+  "id": "hi|round.versePlaceholder",
+  "lang": "hi",
+  "text": "प्रति पंक्ति एक पद की पंक्ति…",
+  "english": "One line of verse per line…"
+ },
+ {
+  "id": "hi|live.curseHolding",
+  "lang": "hi",
+  "text": "पकड़ में",
+  "english": "holding"
+ },
+ {
+  "id": "hi|verdict.form",
+  "lang": "hi",
+  "text": "शिल्प",
+  "english": "Form"
+ },
+ {
+  "id": "hi|verdict.missed",
+  "lang": "hi",
+  "text": "छूटा",
+  "english": "missed"
+ },
+ {
+  "id": "hi|verdict.held",
+  "lang": "hi",
+  "text": "बचाया",
+  "english": "held"
+ },
+ {
+  "id": "hi|criterion.allusion",
+  "lang": "hi",
+  "text": "प्रसंग",
+  "english": "allusion"
+ },
+ {
+  "id": "hi|rarity.epic",
+  "lang": "hi",
+  "text": "अति-दुर्लभ",
+  "english": "Epic"
+ },
+ {
+  "id": "hi|rarity.legendary",
+  "lang": "hi",
+  "text": "दिग्गज",
+  "english": "Legendary"
+ },
+ {
+  "id": "hi|badge.writtenJudged",
+  "lang": "hi",
+  "text": "लिखे हुए प्रतिद्वंद्वी · Gemma द्वारा निर्णायक",
+  "english": "Written opponent · judged by Gemma"
+ },
+ {
+  "id": "hi|theatre.titleA",
+  "lang": "hi",
+  "text": "द",
+  "english": "The"
+ },
+ {
+  "id": "hi|theatre.intro",
+  "lang": "hi",
+  "text": "वही द्वंद्व, आपके चारों ओर एक मंच पर। कार्ड खेलने के लिए इशारा करें या चुटकी भरें, माइक्रोफ़ोन दबाएँ और अपना पद बोलें। इसे इसी डिवाइस पर लिखा और परखा जाता है।",
+  "english": "The same duel, on a stage around you. Point or pinch to play a card, press the microphone and speak your verse. It is transcribed and judged on this device."
+ },
+ {
+  "id": "hi|theatre.questBody",
+  "lang": "hi",
+  "text": "पासथ्रू में खुलता है, जिससे मंच आपके कमरे में दिखाई देता है। कंट्रोलर से इशारा करें या हाथ से चुटकी भरें।",
+  "english": "Opens in passthrough, so the stage sits in your room. Point a controller or pinch with a hand."
+ },
+ {
+  "id": "hi|theatre.visionBody",
+  "lang": "hi",
+  "text": "पूरे मंच के रूप में खुलता है। किसी कार्ड को देखें और चुटकी भरें। visionOS पर Safari वेब पेजों के लिए पासथ्रू की सुविधा नहीं देता।",
+  "english": "Opens as a full stage. Look at a card and pinch. Safari on visionOS does not offer passthrough to web pages."
+ },
+ {
+  "id": "hi|theatre.writtenHint",
+  "lang": "hi",
+  "text": "लिखे हुए प्रतिद्वंद्वी से खेल रहे हैं। यहाँ मुकाबला करने के लिए युद्ध पेज पर एक मॉडल बुलाएँ।",
+  "english": "Playing the written opponent. Summon a model on the battle page to face one here."
+ },
+ {
+  "id": "hi|theatre.declined",
+  "lang": "hi",
+  "text": "इस डिवाइस ने इमर्सिव सत्र को अस्वीकार कर दिया है।",
+  "english": "This device declined an immersive session."
+ },
+ {
+  "id": "ar|check.spells.words",
+  "lang": "ar",
+  "text": "الأسطر تبدأ، بالترتيب، بـ جمجمة",
+  "english": "Lines open, in order, with skull"
+ },
+ {
+  "id": "ar|check.growing",
+  "lang": "ar",
+  "text": "كل سطر يحتوي كلمات أكثر من السطر الذي قبله",
+  "english": "Each line has more words than the last"
+ },
+ {
+  "id": "ar|check.growing.char",
+  "lang": "ar",
+  "text": "كل سطر يحتوي أحرفًا أكثر من السطر الذي قبله",
+  "english": "Each line has more characters than the last"
+ },
+ {
+  "id": "ar|check.jueju-length",
+  "lang": "ar",
+  "text": "كل سطر من خمسة أحرف، أو كل سطر من سبعة أحرف",
+  "english": "Every line has five characters, or every line has seven"
+ },
+ {
+  "id": "ar|check.luc-bat-rhyme",
+  "lang": "ar",
+  "text": "المقطع السادس من كل سطر له قافية",
+  "english": "The sixth syllable of each line rhymes"
+ },
+ {
+  "id": "ar|device.swell.brief",
+  "lang": "ar",
+  "text": "اجعل سطرك الأخير هو الأطول.",
+  "english": "Make your last line your longest."
+ },
+ {
+  "id": "ar|footer.sonnetMan",
+  "lang": "ar",
+  "text": "رجل السونيت",
+  "english": "The Sonnet Man"
+ },
+ {
+  "id": "ar|auth.nudgeBody",
+  "lang": "ar",
+  "text": "الآن مفتاح مرور واحد هو السبيل الوحيد لهذا الحساب. إن ضاع ضاع الحساب. أضف مفتاح مرور ثانيًا أو بريدًا إلكترونيًا لتتمكن من العودة.",
+  "english": "Right now one passkey is the only way into this account. If it is lost, the account is lost. Add a second passkey or an email so you can get back in."
+ },
+ {
+  "id": "ar|auth.nudgeBodyNoEmail",
+  "lang": "ar",
+  "text": "الآن مفتاح مرور واحد هو السبيل الوحيد لهذا الحساب. إن ضاع ضاع الحساب. أضف مفتاح مرور ثانيًا لتتمكن من العودة.",
+  "english": "Right now one passkey is the only way into this account. If it is lost, the account is lost. Add a second passkey so you can get back in."
+ },
+ {
+  "id": "ar|auth.emailHint",
+  "lang": "ar",
+  "text": "على جهاز لا يتوفر فيه مفتاح مرورك؟ سجل الدخول بالبريد الإلكتروني إذا كان لحسابك بريد.",
+  "english": "On a device without your passkey? Sign in by email, if your account has one."
+ },
+ {
+  "id": "ar|auth.offerBody",
+  "lang": "ar",
+  "text": "في المرة القادمة، سجّل الدخول ببصمة إصبعك أو وجهك أو قفل الشاشة. بلا رمز وبلا انتظار بريد إلكتروني.",
+  "english": "Next time, sign in with your fingerprint, face, or screen lock. No code, no waiting for an email."
+ },
+ {
+  "id": "ar|auth.passkeysEmpty",
+  "lang": "ar",
+  "text": "لا توجد مفاتيح مرور بعد. أضف مفتاحًا لتسجيل الدخول دون الحاجة لرمز بريدي.",
+  "english": "No passkeys yet. Add one to sign in without an email code."
+ },
+ {
+  "id": "ar|auth.passkeyAdded",
+  "lang": "ar",
+  "text": "تمت إضافة مفتاح المرور. يمكنك تسجيل الدخول به من الآن فصاعدًا.",
+  "english": "Passkey added. You can sign in with it from now on."
+ },
+ {
+  "id": "ar|auth.passkeyRemoveConfirm",
+  "lang": "ar",
+  "text": "إزالة؟",
+  "english": "Remove?"
+ },
+ {
+  "id": "ar|auth.error.passkey_not_accepted",
+  "lang": "ar",
+  "text": "لم يُقبل مفتاح المرور هذا. سجّل الدخول باستخدام رمز مرسل عبر البريد الإلكتروني، ثم أضف مفتاح مرور جديدًا.",
+  "english": "That passkey was not accepted. Sign in with an emailed code, then add a new passkey."
+ },
+ {
+  "id": "ar|battle.titleA",
+  "lang": "ar",
+  "text": "معركة",
+  "english": "Battle"
+ },
+ {
+  "id": "ar|battle.titleB",
+  "lang": "ar",
+  "text": "حلبة",
+  "english": "Arena"
+ },
+ {
+  "id": "ar|battle.difficulty.player",
+  "lang": "ar",
+  "text": "اللاعب: يختار الأفضل من مسودتين",
+  "english": "Player: picks the better of two drafts"
+ },
+ {
+  "id": "ar|hand.relicNote",
+  "lang": "ar",
+  "text": "Hamlet تمنحك: جمجمة ومزحة وقبر.",
+  "english": "Hamlet lends you: skull, jest, and grave."
+ },
+ {
+  "id": "ar|hand.potionNote",
+  "lang": "ar",
+  "text": "Hamlet تضع لعنة على أبيات خصمك القادمة: لا يجوز أن تزيد أي كلمة من كلماتك على 5 أحرف.",
+  "english": "Hamlet curses your opponent's next verse: No word of yours may be longer than 5 letters."
+ },
+ {
+  "id": "ar|hand.potionLastRound",
+  "lang": "ar",
+  "text": "Hamlet كانت ستضع لعنة على أبيات الخصم القادمة، لكن هذه هي الجولة الأخيرة.",
+  "english": "Hamlet would curse the opponent's next verse, but this is the last round."
+ },
+ {
+  "id": "ar|variant.bonus",
+  "lang": "ar",
+  "text": "+3 الظُّرف",
+  "english": "+3 wit"
+ },
+ {
+  "id": "ar|verdict.form",
+  "lang": "ar",
+  "text": "الصنعة",
+  "english": "Form"
+ },
+ {
+  "id": "ar|verdict.missed",
+  "lang": "ar",
+  "text": "لم تُستخدم",
+  "english": "missed"
+ },
+ {
+  "id": "ar|end.lost",
+  "lang": "ar",
+  "text": "المسرح له الليلة.",
+  "english": "The stage is theirs tonight."
+ },
+ {
+  "id": "ar|badge.written",
+  "lang": "ar",
+  "text": "خصم مكتوب",
+  "english": "Written opponent"
+ },
+ {
+  "id": "ar|stats.rounds",
+  "lang": "ar",
+  "text": "الجولات الملعوبة",
+  "english": "Rounds played"
+ },
+ {
+  "id": "ar|stats.won",
+  "lang": "ar",
+  "text": "الجولات المكتسبة",
+  "english": "Rounds won"
+ },
+ {
+  "id": "ar|theatre.declined",
+  "lang": "ar",
+  "text": "هذا الجهاز لا يدعم الجلسات الغامرة.",
+  "english": "This device declined an immersive session."
+ },
+ {
+  "id": "ar|theatre.judgedRules",
+  "lang": "ar",
+  "text": "التحكيم حسب القواعد: لا يوجد نموذج يعمل.",
+  "english": "Judged by rule: no model is running."
+ },
+ {
+  "id": "vi|form.luc-bat.brief",
+  "lang": "vi",
+  "text": "Một dòng sáu âm tiết, rồi một dòng tám âm tiết mà âm tiết thứ sáu hiệp vần với âm tiết cuối dòng trên.",
+  "english": "A line of six syllables, then one of eight whose sixth syllable rhymes with the end of the first."
+ },
+ {
+  "id": "vi|check.luc-bat-rhyme",
+  "lang": "vi",
+  "text": "Âm tiết thứ sáu của mỗi dòng hiệp vần",
+  "english": "The sixth syllable of each line rhymes"
+ },
+ {
+  "id": "vi|device.riposte.brief",
+  "lang": "vi",
+  "text": "Dùng lại một từ có 3 chữ cái trở lên từ bài thơ vừa rồi của đối thủ để đáp trả.",
+  "english": "Turn a word of 3 letters or more from your opponent's last verse back on them."
+ },
+ {
+  "id": "vi|device.swell.brief",
+  "lang": "vi",
+  "text": "Hãy để dòng cuối là dòng dài nhất.",
+  "english": "Make your last line your longest."
+ },
+ {
+  "id": "vi|device.balance.brief",
+  "lang": "vi",
+  "text": "Hãy để mọi dòng có cùng số từ.",
+  "english": "Give every line the same number of words."
+ },
+ {
+  "id": "vi|device.balance.brief.char",
+  "lang": "vi",
+  "text": "Hãy để mọi dòng có cùng số chữ.",
+  "english": "Give every line the same number of characters."
+ },
+ {
+  "id": "vi|device.grandeur.brief",
+  "lang": "vi",
+  "text": "Sử dụng hai từ có 3 chữ cái trở lên.",
+  "english": "Use two words of 3 letters or more."
+ },
+ {
+  "id": "vi|curse.no-repeats.brief",
+  "lang": "vi",
+  "text": "Bạn không được dùng bất cứ từ nào có 3 chữ cái trở lên quá hai lần.",
+  "english": "You may not use any word of 3 letters or more twice."
+ },
+ {
+  "id": "vi|curse.no-repeats.theirs",
+  "lang": "vi",
+  "text": "Đối thủ không được dùng bất cứ từ nào có 3 chữ cái trở lên quá hai lần.",
+  "english": "They may not use any word of 3 letters or more twice."
+ },
+ {
+  "id": "vi|footer.rights",
+  "lang": "vi",
+  "text": "Bản quyền thuộc về tác giả.",
+  "english": "All rights reserved."
+ },
+ {
+  "id": "vi|auth.createIntro",
+  "lang": "vi",
+  "text": "Tài khoản của bạn là một khoá truy cập được lưu trên thiết bị này hoặc trong trình quản lý mật khẩu. Chúng tôi không yêu cầu tên, email hay mật khẩu.",
+  "english": "Your account is a passkey saved on this device or in your password manager. We do not ask for a name, an email, or a password."
+ },
+ {
+  "id": "vi|auth.createWarning",
+  "lang": "vi",
+  "text": "Nếu bạn làm mất khoá truy cập, chúng tôi không thể giúp bạn đăng nhập lại. Sau bước này, hãy thêm một khoá thứ hai hoặc một email để có thể đăng nhập lại.",
+  "english": "If you lose the passkey, we cannot let you back in. After this, add a second passkey or an email so you can get back in."
+ },
+ {
+  "id": "vi|auth.createWarningNoEmail",
+  "lang": "vi",
+  "text": "Nếu bạn làm mất khoá truy cập, chúng tôi không thể giúp bạn đăng nhập lại. Sau bước này, hãy thêm một khoá thứ hai để có thể đăng nhập lại.",
+  "english": "If you lose the passkey, we cannot let you back in. After this, add a second passkey so you can get back in."
+ },
+ {
+  "id": "vi|auth.nudgeBody",
+  "lang": "vi",
+  "text": "Hiện tại, một khoá truy cập là cách duy nhất để vào tài khoản này. Nếu mất khoá, tài khoản sẽ bị mất vĩnh viễn. Hãy thêm một khoá thứ hai hoặc một email để có thể đăng nhập lại.",
+  "english": "Right now one passkey is the only way into this account. If it is lost, the account is lost. Add a second passkey or an email so you can get back in."
+ },
+ {
+  "id": "vi|auth.nudgeBodyNoEmail",
+  "lang": "vi",
+  "text": "Hiện tại, một khoá truy cập là cách duy nhất để vào tài khoản này. Nếu mất khoá, tài khoản sẽ bị mất vĩnh viễn. Hãy thêm một khoá thứ hai để có thể đăng nhập lại.",
+  "english": "Right now one passkey is the only way into this account. If it is lost, the account is lost. Add a second passkey so you can get back in."
+ },
+ {
+  "id": "vi|auth.recoveryWarning",
+  "lang": "vi",
+  "text": "Một khoá truy cập là cách duy nhất để đăng nhập. Hãy thêm một khoá thứ hai hoặc một email để có thể đăng nhập lại.",
+  "english": "One passkey is your only way in. Add a second passkey or an email so you can get back in."
+ },
+ {
+  "id": "vi|auth.recoveryWarningNoEmail",
+  "lang": "vi",
+  "text": "Một khoá truy cập là cách duy nhất để đăng nhập. Hãy thêm một khoá thứ hai để có thể đăng nhập lại.",
+  "english": "One passkey is your only way in. Add a second passkey so you can get back in."
+ },
+ {
+  "id": "vi|auth.emailHint",
+  "lang": "vi",
+  "text": "Đang dùng thiết bị không có khoá truy cập? Hãy đăng nhập qua email, nếu tài khoản có email.",
+  "english": "On a device without your passkey? Sign in by email, if your account has one."
+ },
+ {
+  "id": "vi|auth.emailPlaceholder",
+  "lang": "vi",
+  "text": "you@example.com",
+  "english": "you@example.com"
+ },
+ {
+  "id": "vi|auth.legalAfter",
+  "lang": "vi",
+  "text": ".",
+  "english": "."
+ },
+ {
+  "id": "vi|auth.passkeyAddedOn",
+  "lang": "vi",
+  "text": "Thêm vào 15 thg 11, 2026",
+  "english": "Added Nov 15, 2026"
+ },
+ {
+  "id": "vi|battle.titleA",
+  "lang": "vi",
+  "text": "Trận đấu",
+  "english": "Battle"
+ },
+ {
+  "id": "vi|battle.titleB",
+  "lang": "vi",
+  "text": "Đấu trường",
+  "english": "Arena"
+ },
+ {
+  "id": "vi|brain.downloading",
+  "lang": "vi",
+  "text": "Đang tải Gemma: 512/3 MB",
+  "english": "Downloading Gemma: 512 of 3 MB"
+ },
+ {
+  "id": "vi|verdict.notUsed",
+  "lang": "vi",
+  "text": "chưa sử dụng",
+  "english": "not used"
+ },
+ {
+  "id": "vi|verdict.missed",
+  "lang": "vi",
+  "text": "bỏ lỡ",
+  "english": "missed"
+ },
+ {
+  "id": "vi|verdict.held",
+  "lang": "vi",
+  "text": "không bị dính",
+  "english": "held"
+ },
+ {
+  "id": "vi|badge.written",
+  "lang": "vi",
+  "text": "Đối thủ viết sẵn",
+  "english": "Written opponent"
+ },
+ {
+  "id": "vi|theatre.inPassthrough",
+  "lang": "vi",
+  "text": "Chế độ kính (nhìn xuyên).",
+  "english": "In the headset (passthrough)."
+ },
+ {
+  "id": "vi|theatre.inFullStage",
+  "lang": "vi",
+  "text": "Chế độ kính (toàn cảnh).",
+  "english": "In the headset (full stage)."
+ },
+ {
+  "id": "vi|theatre.declined",
+  "lang": "vi",
+  "text": "Thiết bị này không hỗ trợ trải nghiệm nhập vai.",
+  "english": "This device declined an immersive session."
+ },
+ {
+  "id": "vi|theatre.xrFailed",
+  "lang": "vi",
+  "text": "Không thể bắt đầu phiên trong kính.",
+  "english": "The headset session could not start."
+ },
+ {
+  "id": "zh|check.luc-bat-rhyme",
+  "lang": "zh",
+  "text": "每行的第六个音节押韵",
+  "english": "The sixth syllable of each line rhymes"
+ },
+ {
+  "id": "zh|device.alliteration.brief",
+  "lang": "zh",
+  "text": "在同一行中，让三个词以相同的字母开头。",
+  "english": "Start three words in one line with the same letter."
+ },
+ {
+  "id": "zh|device.riposte.brief",
+  "lang": "zh",
+  "text": "从对手上一首诗中取一个不少于3个字母的词，回敬给对手。",
+  "english": "Turn a word of 3 letters or more from your opponent's last verse back on them."
+ },
+ {
+  "id": "zh|house.legendary.why",
+  "lang": "zh",
+  "text": "Sonnet Man 始终押一个韵，一路到底。",
+  "english": "The Sonnet Man rides one rhyme all the way down."
+ },
+ {
+  "id": "zh|footer.sonnetMan",
+  "lang": "zh",
+  "text": "Sonnet Man",
+  "english": "The Sonnet Man"
+ },
+ {
+  "id": "zh|auth.passkeysEmpty",
+  "lang": "zh",
+  "text": "还没有通行密钥。添加一个，就能不用邮件验证码登录。",
+  "english": "No passkeys yet. Add one to sign in without an email code."
+ },
+ {
+  "id": "zh|auth.passkeysAdd",
+  "lang": "zh",
+  "text": "再添加一个通行密钥",
+  "english": "Add another passkey"
+ },
+ {
+  "id": "zh|live.curseHolding",
+  "lang": "zh",
+  "text": "持有",
+  "english": "holding"
+ },
+ {
+  "id": "zh|verdict.held",
+  "lang": "zh",
+  "text": "未受影响",
+  "english": "held"
+ },
+ {
+  "id": "zh|end.lost",
+  "lang": "zh",
+  "text": "今夜的舞台属于他们。",
+  "english": "The stage is theirs tonight."
+ },
+ {
+  "id": "zh|badge.written",
+  "lang": "zh",
+  "text": "预先写好的对手",
+  "english": "Written opponent"
+ },
+ {
+  "id": "zh|theatre.declined",
+  "lang": "zh",
+  "text": "此设备不支持沉浸式体验。",
+  "english": "This device declined an immersive session."
+ },
+ {
+  "id": "zh|theatre.versePrompt",
+  "lang": "zh",
+  "text": "你的诗句会显示在这里。按下麦克风并开始吟诵，请一口气读完一行。",
+  "english": "Your verse appears here. Press the microphone and speak it, one line at a breath."
+ },
+ {
+  "id": "ja|check.luc-bat-rhyme",
+  "lang": "ja",
+  "text": "各行の6番目の音節が韻を踏む",
+  "english": "The sixth syllable of each line rhymes"
+ },
+ {
+  "id": "ja|age.consentBefore",
+  "lang": "ja",
+  "text": "親または法定保護者が以下の内容を",
+  "english": "I confirm that my parent or legal guardian has reviewed the"
+ },
+ {
+  "id": "ja|age.consentAnd",
+  "lang": "ja",
+  "text": "および",
+  "english": "and"
+ },
+ {
+  "id": "ja|age.consentAfter",
+  "lang": "ja",
+  "text": "私がInspired Mileを利用することに同意していることを確認します。",
+  "english": "and consents to my use of Inspired Mile."
+ },
+ {
+  "id": "ja|auth.legalBefore",
+  "lang": "ja",
+  "text": "サインインすることで、以下の ",
+  "english": "By signing in, you agree to our "
+ },
+ {
+  "id": "ja|round.opponentPlays",
+  "lang": "ja",
+  "text": "相手がプレイ中",
+  "english": "Your opponent plays"
+ },
+ {
+  "id": "ja|round.versePlaceholder",
+  "lang": "ja",
+  "text": "一行につき詩を一行…",
+  "english": "One line of verse per line…"
+ },
+ {
+  "id": "ja|hand.potionLastRound",
+  "lang": "ja",
+  "text": "Hamletは相手の次の詩に呪いをかけますが、これが最後のラウンドです。",
+  "english": "Hamlet would curse the opponent's next verse, but this is the last round."
+ },
+ {
+  "id": "ja|verdict.missed",
+  "lang": "ja",
+  "text": "失敗",
+  "english": "missed"
+ },
+ {
+  "id": "ja|badge.onDevice",
+  "lang": "ja",
+  "text": "Gemma · このデバイスで対戦",
+  "english": "Gemma · on this device"
+ },
+ {
+  "id": "ja|badge.written",
+  "lang": "ja",
+  "text": "書かれた相手",
+  "english": "Written opponent"
+ },
+ {
+  "id": "ja|theatre.declined",
+  "lang": "ja",
+  "text": "このデバイスは没入型セッションをサポートしていません。",
+  "english": "This device declined an immersive session."
+ },
+ {
+  "id": "ja|theatre.judgedRules",
+  "lang": "ja",
+  "text": "ルールによる判定：モデルは実行されていません。",
+  "english": "Judged by rule: no model is running."
+ },
+ {
+  "id": "ko|check.luc-bat-rhyme",
+  "lang": "ko",
+  "text": "각 행의 여섯째 음절이 운을 이룸",
+  "english": "The sixth syllable of each line rhymes"
+ },
+ {
+  "id": "ko|age.consentBefore",
+  "lang": "ko",
+  "text": "부모님 또는 법정 보호자가 다음 내용을",
+  "english": "I confirm that my parent or legal guardian has reviewed the"
+ },
+ {
+  "id": "ko|age.consentAfter",
+  "lang": "ko",
+  "text": "제가 Inspired Mile을 이용하는 것에 동의했음을 확인합니다.",
+  "english": "and consents to my use of Inspired Mile."
+ },
+ {
+  "id": "ko|age.agreeAfter",
+  "lang": "ko",
+  "text": "에 동의하는 것으로 간주합니다.",
+  "english": "."
+ },
+ {
+  "id": "ko|round.opponentPlays",
+  "lang": "ko",
+  "text": "상대가 시를 읊는 중",
+  "english": "Your opponent plays"
+ },
+ {
+  "id": "ko|hand.potionLastRound",
+  "lang": "ko",
+  "text": "Hamlet은(는) 상대의 다음 시에 저주를 걸 수 있지만, 지금이 마지막 라운드예요.",
+  "english": "Hamlet would curse the opponent's next verse, but this is the last round."
+ },
+ {
+  "id": "ko|live.signature",
+  "lang": "ko",
+  "text": "시그니처 (기교 +½): Hamlet의 대사를 인용하지 않고 반영하기",
+  "english": "Signature (+½ craft): echo Hamlet's line without quoting it"
+ },
+ {
+  "id": "ko|signature.quoted",
+  "lang": "ko",
+  "text": "그대로 인용함; 에코는 본인의 행이어야 함",
+  "english": "quoted outright; an echo must be your own line"
+ },
+ {
+  "id": "ko|verdict.notUsed",
+  "lang": "ko",
+  "text": "해당 없음",
+  "english": "not used"
+ },
+ {
+  "id": "ko|verdict.missed",
+  "lang": "ko",
+  "text": "실패",
+  "english": "missed"
+ },
+ {
+  "id": "ko|verdict.held",
+  "lang": "ko",
+  "text": "보유",
+  "english": "held"
+ },
+ {
+  "id": "ko|verdict.who.player",
+  "lang": "ko",
+  "text": "플레이어",
+  "english": "you"
+ },
+ {
+  "id": "ko|verdict.who.split",
+  "lang": "ko",
+  "text": "무승부",
+  "english": "split"
+ },
+ {
+  "id": "ko|end.over",
+  "lang": "ko",
+  "text": "결투가 종료되었습니다",
+  "english": "The duel is over"
+ },
+ {
+  "id": "ko|badge.written",
+  "lang": "ko",
+  "text": "쓰인 상대",
+  "english": "Written opponent"
+ },
+ {
+  "id": "ko|theatre.declined",
+  "lang": "ko",
+  "text": "이 기기는 몰입형 세션을 지원하지 않습니다.",
+  "english": "This device declined an immersive session."
+ },
+ {
+  "id": "ko|theatre.cursesYou",
+  "lang": "ko",
+  "text": "당신에게 걸린 저주: 내 낱말은 어느 것도 5글자를 넘을 수 없어요.",
+  "english": "Curses you: No word of yours may be longer than 5 letters."
+ },
+ {
+  "id": "pl|check.spells.words",
+  "lang": "pl",
+  "text": "Wersy otwierane kolejno przez czaszka",
+  "english": "Lines open, in order, with skull"
+ },
+ {
+  "id": "pl|age.agreeBefore",
+  "lang": "pl",
+  "text": "Przechodząc dalej, akceptujesz nasze",
+  "english": "By continuing, you agree to our"
+ },
+ {
+  "id": "pl|auth.emailPlaceholder",
+  "lang": "pl",
+  "text": "uzytkownik@przyklad.pl",
+  "english": "you@example.com"
+ },
+ {
+  "id": "pl|battle.titleA",
+  "lang": "pl",
+  "text": "Bitwa",
+  "english": "Battle"
+ },
+ {
+  "id": "pl|battle.titleB",
+  "lang": "pl",
+  "text": "Arena",
+  "english": "Arena"
+ },
+ {
+  "id": "pl|battle.cardInCity",
+  "lang": "pl",
+  "text": "Hamlet w Verona",
+  "english": "Hamlet in Verona"
+ },
+ {
+  "id": "pl|round.opponentPlays",
+  "lang": "pl",
+  "text": "Twój rywal gra",
+  "english": "Your opponent plays"
+ },
+ {
+  "id": "pl|round.versePlaceholder",
+  "lang": "pl",
+  "text": "Jeden wers w każdej linii…",
+  "english": "One line of verse per line…"
+ },
+ {
+  "id": "pl|variant.bonus",
+  "lang": "pl",
+  "text": "+3 dowcip",
+  "english": "+3 wit"
+ },
+ {
+  "id": "pl|signature.none",
+  "lang": "pl",
+  "text": "ta karta nie ma kwestii sygnatury",
+  "english": "this card has no signature line"
+ },
+ {
+  "id": "pl|verdict.notUsed",
+  "lang": "pl",
+  "text": "nieużywane",
+  "english": "not used"
+ },
+ {
+  "id": "pl|verdict.held",
+  "lang": "pl",
+  "text": "utrzymana",
+  "english": "held"
+ },
+ {
+  "id": "pl|badge.written",
+  "lang": "pl",
+  "text": "Gotowy rywal",
+  "english": "Written opponent"
+ },
+ {
+  "id": "pl|theatre.titleA",
+  "lang": "pl",
+  "text": "Teatr",
+  "english": "The"
+ },
+ {
+  "id": "pl|theatre.questBody",
+  "lang": "pl",
+  "text": "Otwiera się w trybie passthrough, więc scena pojawia się w twoim pokoju. Wskaż kontrolerem lub uszczypnij dłonią.",
+  "english": "Opens in passthrough, so the stage sits in your room. Point a controller or pinch with a hand."
+ },
+ {
+  "id": "pl|theatre.declined",
+  "lang": "pl",
+  "text": "To urządzenie nie obsługuje sesji immersyjnej.",
+  "english": "This device declined an immersive session."
+ },
+ {
+  "id": "pl|theatre.micLoading",
+  "lang": "pl",
+  "text": "Wczytywanie dźwięku…",
+  "english": "Loading the ear…"
+ },
+ {
+  "id": "ru|form.epistrophe.brief.char",
+  "lang": "ru",
+  "text": "Три строки, и все заканчиваются одним и тем же знаком.",
+  "english": "Three lines that all end on the same character."
+ },
+ {
+  "id": "ru|check.spells.words",
+  "lang": "ru",
+  "text": "Строки по порядку, начинаются с череп",
+  "english": "Lines open, in order, with skull"
+ },
+ {
+  "id": "ru|check.luc-bat-rhyme",
+  "lang": "ru",
+  "text": "Шестые слоги в строках рифмуются",
+  "english": "The sixth syllable of each line rhymes"
+ },
+ {
+  "id": "ru|device.ring.brief.char",
+  "lang": "ru",
+  "text": "Закончи строфу тем же знаком, с которого она началась.",
+  "english": "End your verse on the same character it began with."
+ },
+ {
+  "id": "ru|nav.explore",
+  "lang": "ru",
+  "text": "Исследовать",
+  "english": "Explore"
+ },
+ {
+  "id": "ru|nav.toggleAudio",
+  "lang": "ru",
+  "text": "Выключить звук",
+  "english": "Toggle audio"
+ },
+ {
+  "id": "ru|nav.toggleMenu",
+  "lang": "ru",
+  "text": "Открыть меню",
+  "english": "Toggle menu"
+ },
+ {
+  "id": "ru|age.intro",
+  "lang": "ru",
+  "text": "Пожалуйста, подтвердите свой возраст, чтобы продолжить.",
+  "english": "Please confirm your age to continue."
+ },
+ {
+  "id": "ru|age.errorDob",
+  "lang": "ru",
+  "text": "Пожалуйста, выберите полную дату рождения.",
+  "english": "Please select your full date of birth."
+ },
+ {
+  "id": "ru|age.minorBody",
+  "lang": "ru",
+  "text": "Для использования Inspired Mile вам должно быть не менее 13 лет. Пожалуйста, вернитесь, когда вы будете соответствовать возрастным требованиям.",
+  "english": "You must be at least 13 years old to use Inspired Mile. Please come back when you meet the age requirement."
+ },
+ {
+  "id": "ru|age.teenBody",
+  "lang": "ru",
+  "text": "Так как вам нет 18 лет, для использования Inspired Mile требуется согласие родителей или опекунов.",
+  "english": "Since you are under 18, you need parental or guardian consent to use Inspired Mile."
+ },
+ {
+  "id": "ru|age.agreeBefore",
+  "lang": "ru",
+  "text": "Продолжая, вы соглашаетесь с нашими",
+  "english": "By continuing, you agree to our"
+ },
+ {
+  "id": "ru|migrate.body",
+  "lang": "ru",
+  "text": "На этом устройстве найден локальный прогресс. Синхронизируй его с учётной записью, чтобы он был доступен на всех устройствах.",
+  "english": "We found local game progress. Sync it to your account so it's saved across devices."
+ },
+ {
+  "id": "ru|pwa.install",
+  "lang": "ru",
+  "text": "Установите Inspired Mile для лучшего игрового опыта",
+  "english": "Install Inspired Mile for the best experience"
+ },
+ {
+  "id": "ru|auth.emailHint",
+  "lang": "ru",
+  "text": "Нет ключа доступа на этом устройстве? Войдите по почте, если она привязана к учётной записи.",
+  "english": "On a device without your passkey? Sign in by email, if your account has one."
+ },
+ {
+  "id": "ru|auth.codeHeading",
+  "lang": "ru",
+  "text": "Введите код",
+  "english": "Enter your code"
+ },
+ {
+  "id": "ru|auth.legalBefore",
+  "lang": "ru",
+  "text": "Входя в систему, вы принимаете наши ",
+  "english": "By signing in, you agree to our "
+ },
+ {
+  "id": "ru|auth.offerBody",
+  "lang": "ru",
+  "text": "В следующий раз войдите с помощью отпечатка пальца, лица или блокировки экрана. Без кода и ожидания письма.",
+  "english": "Next time, sign in with your fingerprint, face, or screen lock. No code, no waiting for an email."
+ },
+ {
+  "id": "ru|auth.passkeysEmpty",
+  "lang": "ru",
+  "text": "Ключей доступа пока нет. Добавьте один, чтобы входить без кода из письма.",
+  "english": "No passkeys yet. Add one to sign in without an email code."
+ },
+ {
+  "id": "ru|auth.error.email_in_use",
+  "lang": "ru",
+  "text": "Этот адрес уже привязан к другой учётной записи. Выйдите и войдите с ним.",
+  "english": "That address already belongs to another account. Sign out and sign in with it instead."
+ },
+ {
+  "id": "ru|battle.cardInCity",
+  "lang": "ru",
+  "text": "Hamlet в Verona",
+  "english": "Hamlet in Verona"
+ },
+ {
+  "id": "ru|round.items",
+  "lang": "ru",
+  "text": "Реликвии и зелья (по 1 чернилам)",
+  "english": "Relics and potions (1 ink each)"
+ },
+ {
+  "id": "ru|hand.relicNote",
+  "lang": "ru",
+  "text": "Hamlet даёт тебе слова силы: череп, шутка и могила.",
+  "english": "Hamlet lends you: skull, jest, and grave."
+ },
+ {
+  "id": "ru|hand.potionLastRound",
+  "lang": "ru",
+  "text": "Hamlet наложила бы проклятие на следующую строфу соперника, но это последний раунд.",
+  "english": "Hamlet would curse the opponent's next verse, but this is the last round."
+ },
+ {
+  "id": "ru|variant.bonus",
+  "lang": "ru",
+  "text": "+3 остроумие",
+  "english": "+3 wit"
+ },
+ {
+  "id": "ru|verdict.notUsed",
+  "lang": "ru",
+  "text": "не использовалось",
+  "english": "not used"
+ },
+ {
+  "id": "ru|verdict.missed",
+  "lang": "ru",
+  "text": "промах",
+  "english": "missed"
+ },
+ {
+  "id": "ru|verdict.held",
+  "lang": "ru",
+  "text": "удержано",
+  "english": "held"
+ },
+ {
+  "id": "ru|verdict.seeResult",
+  "lang": "ru",
+  "text": "Посмотреть результат",
+  "english": "See the result"
+ },
+ {
+  "id": "ru|badge.written",
+  "lang": "ru",
+  "text": "Готовый соперник",
+  "english": "Written opponent"
+ },
+ {
+  "id": "ru|theatre.flat",
+  "lang": "ru",
+  "text": "Играть в плоском режиме",
+  "english": "Play the flat version"
+ },
+ {
+  "id": "id|check.spells.words",
+  "lang": "id",
+  "text": "Baris terbuka, berurutan, dengan tengkorak",
+  "english": "Lines open, in order, with skull"
+ },
+ {
+  "id": "id|check.growing",
+  "lang": "id",
+  "text": "Setiap baris memiliki lebih banyak kata dari sebelumnya",
+  "english": "Each line has more words than the last"
+ },
+ {
+  "id": "id|check.growing.char",
+  "lang": "id",
+  "text": "Setiap baris memiliki lebih banyak aksara dari sebelumnya",
+  "english": "Each line has more characters than the last"
+ },
+ {
+  "id": "id|check.luc-bat-rhyme",
+  "lang": "id",
+  "text": "Suku kata keenam di setiap baris berima",
+  "english": "The sixth syllable of each line rhymes"
+ },
+ {
+  "id": "id|device.swell.name",
+  "lang": "id",
+  "text": "Gelombang Besar",
+  "english": "The Swell"
+ },
+ {
+  "id": "id|nav.toggleAudio",
+  "lang": "id",
+  "text": "Atur suara",
+  "english": "Toggle audio"
+ },
+ {
+  "id": "id|nav.toggleMenu",
+  "lang": "id",
+  "text": "Buka/tutup menu",
+  "english": "Toggle menu"
+ },
+ {
+  "id": "id|age.agreeAfter",
+  "lang": "id",
+  "text": "kami.",
+  "english": "."
+ },
+ {
+  "id": "id|auth.legalAfter",
+  "lang": "id",
+  "text": "kami.",
+  "english": "."
+ },
+ {
+  "id": "id|auth.error.invalid_email",
+  "lang": "id",
+  "text": "Itu tidak terlihat seperti alamat email.",
+  "english": "That does not look like an email address."
+ },
+ {
+  "id": "id|battle.badge",
+  "lang": "id",
+  "text": "Arena Langsung",
+  "english": "Live Arena"
+ },
+ {
+  "id": "id|battle.titleA",
+  "lang": "id",
+  "text": "Pertarungan",
+  "english": "Battle"
+ },
+ {
+  "id": "id|battle.titleB",
+  "lang": "id",
+  "text": "Arena",
+  "english": "Arena"
+ },
+ {
+  "id": "id|battle.prepareNote",
+  "lang": "id",
+  "text": "Setiap aksara hanya bisa naik panggung satu kali. Relik dan ramuan memakan tinta.",
+  "english": "Each character can take the stage once. Relics and potions cost ink."
+ },
+ {
+  "id": "id|brain.failed",
+  "lang": "id",
+  "text": "Model tidak dapat berjalan di perangkat ini. Anda tetap bisa bermain melawan lawan tertulis.",
+  "english": "The model could not start on this device. You can still play against the written opponent."
+ },
+ {
+  "id": "id|hand.relicNote",
+  "lang": "id",
+  "text": "Hamlet memberikanmu: tengkorak, lelucon, dan kubur.",
+  "english": "Hamlet lends you: skull, jest, and grave."
+ },
+ {
+  "id": "id|hand.potionNote",
+  "lang": "id",
+  "text": "Hamlet mengutuk syair lawan berikutnya: Tidak satu pun katamu boleh lebih dari 5 huruf.",
+  "english": "Hamlet curses your opponent's next verse: No word of yours may be longer than 5 letters."
+ },
+ {
+  "id": "id|signature.none",
+  "lang": "id",
+  "text": "kartu ini tidak memiliki dialog tanda tangan",
+  "english": "this card has no signature line"
+ },
+ {
+  "id": "id|badge.written",
+  "lang": "id",
+  "text": "Lawan tertulis",
+  "english": "Written opponent"
+ },
+ {
+  "id": "id|theatre.titleA",
+  "lang": "id",
+  "text": "The",
+  "english": "The"
+ },
+ {
+  "id": "id|theatre.declined",
+  "lang": "id",
+  "text": "Perangkat ini tidak mendukung sesi imersif.",
+  "english": "This device declined an immersive session."
+ },
+ {
+  "id": "id|theatre.pick",
+  "lang": "id",
+  "text": "Pilih aksara dari tanganmu.",
+  "english": "Pick a character from your hand."
+ },
+ {
+  "id": "es|form.jueju.brief",
+  "lang": "es",
+  "text": "Cuatro versos, todos de cinco caracteres o todos de siete, la forma de una cuarteta clásica.",
+  "english": "Four lines, all of five characters or all of seven, the shape of a classical quatrain."
+ },
+ {
+  "id": "es|check.spells.words",
+  "lang": "es",
+  "text": "Versos abiertos, en orden, con calavera",
+  "english": "Lines open, in order, with skull"
+ },
+ {
+  "id": "es|footer.sonnetMan",
+  "lang": "es",
+  "text": "Sonnet Man",
+  "english": "The Sonnet Man"
+ },
+ {
+  "id": "es|auth.emailHint",
+  "lang": "es",
+  "text": "¿En un dispositivo sin tu llave de acceso? Inicia sesión por correo, si tu cuenta tiene uno.",
+  "english": "On a device without your passkey? Sign in by email, if your account has one."
+ },
+ {
+  "id": "es|battle.titleA",
+  "lang": "es",
+  "text": "Batalla",
+  "english": "Battle"
+ },
+ {
+  "id": "es|battle.titleB",
+  "lang": "es",
+  "text": "Arena",
+  "english": "Arena"
+ },
+ {
+  "id": "es|round.cursesYou",
+  "lang": "es",
+  "text": "Hamlet te lanza la maldición Ariel: Ninguna de tus palabras puede tener más de 5 letras.",
+  "english": "Hamlet curses you with Ariel: No word of yours may be longer than 5 letters."
+ },
+ {
+  "id": "es|verdict.notUsed",
+  "lang": "es",
+  "text": "no utilizado",
+  "english": "not used"
+ },
+ {
+  "id": "es|verdict.missed",
+  "lang": "es",
+  "text": "fallido",
+  "english": "missed"
+ },
+ {
+  "id": "es|verdict.held",
+  "lang": "es",
+  "text": "mantenida",
+  "english": "held"
+ },
+ {
+  "id": "es|badge.writtenJudged",
+  "lang": "es",
+  "text": "Rival de versos escritos · juzgado por Gemma",
+  "english": "Written opponent · judged by Gemma"
+ },
+ {
+  "id": "es|theatre.judgedRules",
+  "lang": "es",
+  "text": "Juzgado por regla: no hay ningún modelo en ejecución.",
+  "english": "Judged by rule: no model is running."
+ },
+ {
+  "id": "fr|check.spells.words",
+  "lang": "fr",
+  "text": "Vers ouverts, dans l'ordre, avec crâne",
+  "english": "Lines open, in order, with skull"
+ },
+ {
+  "id": "fr|device.ring.brief.char",
+  "lang": "fr",
+  "text": "Terminez votre strophe par le caractère qui l’a commencée.",
+  "english": "End your verse on the same character it began with."
+ },
+ {
+  "id": "fr|footer.sonnetMan",
+  "lang": "fr",
+  "text": "Sonnet Man",
+  "english": "The Sonnet Man"
+ },
+ {
+  "id": "fr|auth.createWarning",
+  "lang": "fr",
+  "text": "Si vous perdez la clé d’accès, nous ne pourrons pas vous laisser entrer. Ajoutez ensuite une seconde clé d’accès ou un e-mail pour pouvoir revenir.",
+  "english": "If you lose the passkey, we cannot let you back in. After this, add a second passkey or an email so you can get back in."
+ },
+ {
+  "id": "fr|auth.createWarningNoEmail",
+  "lang": "fr",
+  "text": "Si vous perdez la clé d’accès, nous ne pourrons pas vous laisser entrer. Ajoutez ensuite une seconde clé d’accès pour pouvoir revenir.",
+  "english": "If you lose the passkey, we cannot let you back in. After this, add a second passkey so you can get back in."
+ },
+ {
+  "id": "fr|auth.nudgeBody",
+  "lang": "fr",
+  "text": "Pour l’instant, une seule clé d’accès ouvre ce compte. Si elle est perdue, le compte l’est aussi. Ajoutez une seconde clé d’accès ou un e-mail pour pouvoir revenir.",
+  "english": "Right now one passkey is the only way into this account. If it is lost, the account is lost. Add a second passkey or an email so you can get back in."
+ },
+ {
+  "id": "fr|auth.nudgeBodyNoEmail",
+  "lang": "fr",
+  "text": "Pour l’instant, une seule clé d’accès ouvre ce compte. Si elle est perdue, le compte l’est aussi. Ajoutez une seconde clé d’accès pour pouvoir revenir.",
+  "english": "Right now one passkey is the only way into this account. If it is lost, the account is lost. Add a second passkey so you can get back in."
+ },
+ {
+  "id": "fr|battle.titleB",
+  "lang": "fr",
+  "text": "Combat",
+  "english": "Arena"
+ },
+ {
+  "id": "fr|brain.checking",
+  "lang": "fr",
+  "text": "Vérification de la compatibilité de cet appareil…",
+  "english": "Checking what this device can run…"
+ },
+ {
+  "id": "fr|signature.none",
+  "lang": "fr",
+  "text": "cette carte n’a pas de réplique signature",
+  "english": "this card has no signature line"
+ },
+ {
+  "id": "fr|verdict.notUsed",
+  "lang": "fr",
+  "text": "non utilisé",
+  "english": "not used"
+ },
+ {
+  "id": "fr|verdict.missed",
+  "lang": "fr",
+  "text": "manqué",
+  "english": "missed"
+ },
+ {
+  "id": "fr|badge.written",
+  "lang": "fr",
+  "text": "Adversaire écrit",
+  "english": "Written opponent"
+ },
+ {
+  "id": "fr|theatre.visionBody",
+  "lang": "fr",
+  "text": "S’ouvre en scène complète. Regardez une carte et pincez. Safari sur visionOS ne propose pas le mode passthrough pour les pages web.",
+  "english": "Opens as a full stage. Look at a card and pinch. Safari on visionOS does not offer passthrough to web pages."
+ },
+ {
+  "id": "fr|theatre.declined",
+  "lang": "fr",
+  "text": "Cet appareil ne permet pas de session immersive.",
+  "english": "This device declined an immersive session."
+ },
+ {
+  "id": "fr|theatre.composingDraft",
+  "lang": "fr",
+  "text": "composition en cours… jet 3 sur 3",
+  "english": "composing… draft 3 of 3"
+ },
+ {
+  "id": "fr|theatre.submit",
+  "lang": "fr",
+  "text": "Dites-la",
+  "english": "Speak it"
+ },
+ {
+  "id": "de|check.spells.words",
+  "lang": "de",
+  "text": "Zeilen beginnen fortlaufend mit Schädel",
+  "english": "Lines open, in order, with skull"
+ },
+ {
+  "id": "de|check.luc-bat-rhyme",
+  "lang": "de",
+  "text": "Die sechste Silbe jeder Zeile reimt sich",
+  "english": "The sixth syllable of each line rhymes"
+ },
+ {
+  "id": "de|device.riposte.brief",
+  "lang": "de",
+  "text": "Wende ein Wort mit 3 Buchstaben oder mehr aus der letzten Strophe deines Gegners gegen ihn.",
+  "english": "Turn a word of 3 letters or more from your opponent's last verse back on them."
+ },
+ {
+  "id": "de|device.grandeur.brief",
+  "lang": "de",
+  "text": "Verwende zwei Wörter mit 3 Buchstaben oder mehr.",
+  "english": "Use two words of 3 letters or more."
+ },
+ {
+  "id": "de|curse.no-repeats.brief",
+  "lang": "de",
+  "text": "Du darfst kein Wort mit 3 Buchstaben oder mehr zweimal verwenden.",
+  "english": "You may not use any word of 3 letters or more twice."
+ },
+ {
+  "id": "de|curse.no-repeats.theirs",
+  "lang": "de",
+  "text": "Sie dürfen kein Wort mit 3 Buchstaben oder mehr zweimal verwenden.",
+  "english": "They may not use any word of 3 letters or more twice."
+ },
+ {
+  "id": "de|auth.createWarning",
+  "lang": "de",
+  "text": "Wenn du den Passkey verlierst, können wir dich nicht wieder hereinlassen. Füge danach einen zweiten Passkey oder eine E-Mail hinzu, damit du wieder Zugriff hast.",
+  "english": "If you lose the passkey, we cannot let you back in. After this, add a second passkey or an email so you can get back in."
+ },
+ {
+  "id": "de|auth.createWarningNoEmail",
+  "lang": "de",
+  "text": "Wenn du den Passkey verlierst, können wir dich nicht wieder hereinlassen. Füge danach einen zweiten Passkey hinzu, damit du wieder Zugriff hast.",
+  "english": "If you lose the passkey, we cannot let you back in. After this, add a second passkey so you can get back in."
+ },
+ {
+  "id": "de|auth.nudgeBody",
+  "lang": "de",
+  "text": "Im Moment ist ein einziger Passkey der einzige Zugang zu diesem Konto. Geht er verloren, ist das Konto verloren. Füge einen zweiten Passkey oder eine E-Mail hinzu, damit du wieder Zugriff hast.",
+  "english": "Right now one passkey is the only way into this account. If it is lost, the account is lost. Add a second passkey or an email so you can get back in."
+ },
+ {
+  "id": "de|auth.nudgeBodyNoEmail",
+  "lang": "de",
+  "text": "Im Moment ist ein einziger Passkey der einzige Zugang zu diesem Konto. Geht er verloren, ist das Konto verloren. Füge einen zweiten Passkey hinzu, damit du wieder Zugriff hast.",
+  "english": "Right now one passkey is the only way into this account. If it is lost, the account is lost. Add a second passkey so you can get back in."
+ },
+ {
+  "id": "de|auth.recoveryWarning",
+  "lang": "de",
+  "text": "Ein einziger Passkey ist dein einziger Zugang. Füge einen zweiten Passkey oder eine E-Mail hinzu, damit du wieder Zugriff hast.",
+  "english": "One passkey is your only way in. Add a second passkey or an email so you can get back in."
+ },
+ {
+  "id": "de|auth.recoveryWarningNoEmail",
+  "lang": "de",
+  "text": "Ein einziger Passkey ist dein einziger Zugang. Füge einen zweiten Passkey hinzu, damit du wieder Zugriff hast.",
+  "english": "One passkey is your only way in. Add a second passkey so you can get back in."
+ },
+ {
+  "id": "de|auth.error.email_in_use",
+  "lang": "de",
+  "text": "Diese Adresse ist bereits mit einem anderen Konto verknüpft. Melde dich ab und stattdessen mit diesem Konto an.",
+  "english": "That address already belongs to another account. Sign out and sign in with it instead."
+ },
+ {
+  "id": "de|battle.titleA",
+  "lang": "de",
+  "text": "Kampf",
+  "english": "Battle"
+ },
+ {
+  "id": "de|battle.difficulty.player",
+  "lang": "de",
+  "text": "Spieler: wählt den besseren von zwei Entwürfen",
+  "english": "Player: picks the better of two drafts"
+ },
+ {
+  "id": "de|battle.worldCard",
+  "lang": "de",
+  "text": "Weltkarte",
+  "english": "World card"
+ },
+ {
+  "id": "de|illegal.character-used",
+  "lang": "de",
+  "text": "Jedes Zeichen darf pro Duell einmal auf die Bühne.",
+  "english": "Each character can take the stage once per match."
+ },
+ {
+  "id": "de|verdict.who.player",
+  "lang": "de",
+  "text": "Du",
+  "english": "you"
+ },
+ {
+  "id": "de|end.lost",
+  "lang": "de",
+  "text": "Heute Nacht gehört die Bühne ihnen.",
+  "english": "The stage is theirs tonight."
+ },
+ {
+  "id": "de|badge.written",
+  "lang": "de",
+  "text": "Geschriebener Gegner",
+  "english": "Written opponent"
+ },
+ {
+  "id": "de|theatre.intro",
+  "lang": "de",
+  "text": "Dasselbe Duell auf einer Bühne um dich herum. Zeig oder kneif, um eine Karte zu spielen, drück das Mikrofon und sprich deine Strophe. Sie wird auf diesem Gerät transkribiert und bewertet.",
+  "english": "The same duel, on a stage around you. Point or pinch to play a card, press the microphone and speak your verse. It is transcribed and judged on this device."
+ },
+ {
+  "id": "de|theatre.declined",
+  "lang": "de",
+  "text": "Dieses Gerät unterstützt keine immersive Sitzung.",
+  "english": "This device declined an immersive session."
+ },
+ {
+  "id": "de|age.errorDob",
+  "lang": "de",
+  "text": "Bitte wähle dein vollständiges Geburtsdatum aus.",
+  "english": "Please select your full date of birth."
+ },
+ {
+  "id": "de|age.minorBody",
+  "lang": "de",
+  "text": "Du musst mindestens 13 Jahre alt sein, um Inspired Mile zu nutzen. Bitte komm wieder, wenn du das erforderliche Alter erreicht hast.",
+  "english": "You must be at least 13 years old to use Inspired Mile. Please come back when you meet the age requirement."
+ },
+ {
+  "id": "de|age.consentAnd",
+  "lang": "de",
+  "text": "und",
+  "english": "and"
+ },
+ {
+  "id": "de|age.agreeBefore",
+  "lang": "de",
+  "text": "Indem du fortfährst, stimmst du unseren",
+  "english": "By continuing, you agree to our"
+ },
+ {
+  "id": "de|age.agreeAnd",
+  "lang": "de",
+  "text": "und",
+  "english": "and"
+ },
+ {
+  "id": "it|check.spells.words",
+  "lang": "it",
+  "text": "Versi aperti, in ordine, con teschio",
+  "english": "Lines open, in order, with skull"
+ },
+ {
+  "id": "it|check.luc-bat-rhyme",
+  "lang": "it",
+  "text": "La sesta sillaba di ogni verso rima",
+  "english": "The sixth syllable of each line rhymes"
+ },
+ {
+  "id": "it|device.swell.name",
+  "lang": "it",
+  "text": "L'Onda",
+  "english": "The Swell"
+ },
+ {
+  "id": "it|age.consentAnd",
+  "lang": "it",
+  "text": "e",
+  "english": "and"
+ },
+ {
+  "id": "it|auth.error.signup_retry",
+  "lang": "it",
+  "text": "L'operazione non è andata a buon fine. Riprova.",
+  "english": "That did not go through. Please try again."
+ },
+ {
+  "id": "it|auth.error.invalid_code",
+  "lang": "it",
+  "text": "Il codice non è corretto o è scaduto. Controllalo o fanne inviare uno nuovo.",
+  "english": "That code is not right, or it has expired. Check it, or send a new one."
+ },
+ {
+  "id": "it|battle.badge",
+  "lang": "it",
+  "text": "Live Arena",
+  "english": "Live Arena"
+ },
+ {
+  "id": "it|battle.titleA",
+  "lang": "it",
+  "text": "Battle",
+  "english": "Battle"
+ },
+ {
+  "id": "it|battle.titleB",
+  "lang": "it",
+  "text": "Arena",
+  "english": "Arena"
+ },
+ {
+  "id": "it|brain.failed",
+  "lang": "it",
+  "text": "Il modello non è riuscito ad avviarsi su questo dispositivo. Puoi comunque giocare contro l’avversario scritto.",
+  "english": "The model could not start on this device. You can still play against the written opponent."
+ },
+ {
+  "id": "it|brain.written",
+  "lang": "it",
+  "text": "Giochi contro l’avversario scritto.",
+  "english": "Playing against the written opponent."
+ },
+ {
+  "id": "it|round.items",
+  "lang": "it",
+  "text": "Reliquie e pozioni (1 inchiostro ciascuna)",
+  "english": "Relics and potions (1 ink each)"
+ },
+ {
+  "id": "it|signature.none",
+  "lang": "it",
+  "text": "questa carta non ha una battuta firma",
+  "english": "this card has no signature line"
+ },
+ {
+  "id": "it|verdict.held",
+  "lang": "it",
+  "text": "mantenuta",
+  "english": "held"
+ },
+ {
+  "id": "it|badge.writtenJudged",
+  "lang": "it",
+  "text": "Avversario scritto · giudicato da Gemma",
+  "english": "Written opponent · judged by Gemma"
+ },
+ {
+  "id": "it|theatre.declined",
+  "lang": "it",
+  "text": "Questo dispositivo non supporta la sessione immersiva.",
+  "english": "This device declined an immersive session."
+ },
+ {
+  "id": "it|theatre.judgedRules",
+  "lang": "it",
+  "text": "Giudicato secondo le regole: nessun modello è in funzione.",
+  "english": "Judged by rule: no model is running."
+ },
+ {
+  "id": "pt|check.spells.words",
+  "lang": "pt",
+  "text": "Versos abertos, em ordem, com caveira",
+  "english": "Lines open, in order, with skull"
+ },
+ {
+  "id": "pt|check.luc-bat-rhyme",
+  "lang": "pt",
+  "text": "A sexta sílaba de cada verso rima",
+  "english": "The sixth syllable of each line rhymes"
+ },
+ {
+  "id": "pt|device.swell.name",
+  "lang": "pt",
+  "text": "O Crescendo",
+  "english": "The Swell"
+ },
+ {
+  "id": "pt|nav.toggleAudio",
+  "lang": "pt",
+  "text": "Alternar áudio",
+  "english": "Toggle audio"
+ },
+ {
+  "id": "pt|nav.toggleMenu",
+  "lang": "pt",
+  "text": "Alternar menu",
+  "english": "Toggle menu"
+ },
+ {
+  "id": "pt|auth.nudgeBody",
+  "lang": "pt",
+  "text": "Por enquanto, uma única chave de acesso é a única forma de entrar nesta conta. Se ela for perdida, a conta será perdida. Adicione uma segunda chave de acesso ou um e-mail para poder voltar.",
+  "english": "Right now one passkey is the only way into this account. If it is lost, the account is lost. Add a second passkey or an email so you can get back in."
+ },
+ {
+  "id": "pt|auth.nudgeBodyNoEmail",
+  "lang": "pt",
+  "text": "Por enquanto, uma única chave de acesso é a única forma de entrar nesta conta. Se ela for perdida, a conta será perdida. Adicione uma segunda chave de acesso para poder voltar.",
+  "english": "Right now one passkey is the only way into this account. If it is lost, the account is lost. Add a second passkey so you can get back in."
+ },
+ {
+  "id": "pt|verdict.notUsed",
+  "lang": "pt",
+  "text": "não utilizadas",
+  "english": "not used"
+ },
+ {
+  "id": "pt|verdict.missed",
+  "lang": "pt",
+  "text": "não cumprida",
+  "english": "missed"
+ },
+ {
+  "id": "pt|end.lost",
+  "lang": "pt",
+  "text": "O palco é seu esta noite.",
+  "english": "The stage is theirs tonight."
+ },
+ {
+  "id": "pt|badge.written",
+  "lang": "pt",
+  "text": "Adversário escrito",
+  "english": "Written opponent"
+ },
+ {
+  "id": "pt|theatre.declined",
+  "lang": "pt",
+  "text": "Este dispositivo não suporta uma sessão imersiva.",
+  "english": "This device declined an immersive session."
+ },
+ {
+  "id": "pt|theatre.judgedRules",
+  "lang": "pt",
+  "text": "Julgado por regra: nenhum modelo está em execução.",
+  "english": "Judged by rule: no model is running."
+ },
+ {
+  "id": "pt|theatre.cursesYou",
+  "lang": "pt",
+  "text": "Amaldiçoa você: Nenhuma palavra sua pode ter mais de 5 letras.",
+  "english": "Curses you: No word of yours may be longer than 5 letters."
+ },
+ {
+  "id": "pt|theatre.submit",
+  "lang": "pt",
+  "text": "Diga-o",
+  "english": "Speak it"
+ }
+]

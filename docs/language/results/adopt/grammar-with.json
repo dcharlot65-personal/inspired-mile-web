@@ -1,0 +1,1474 @@
+{
+ "ran": "2026-11-16T22:13:33.450Z",
+ "languagetool": {
+  "version": "6.6",
+  "buildDate": "2025-03-27 20:50:25 +0100",
+  "languages": [
+   "ar",
+   "ast-ES",
+   "be-BY",
+   "br-FR",
+   "ca-ES",
+   "ca-ES-balear",
+   "ca-ES-valencia",
+   "crh-UA",
+   "da-DK",
+   "de",
+   "de-AT",
+   "de-CH",
+   "de-DE",
+   "de-DE-x-simple-language",
+   "de-DE-x-simple-language-DE",
+   "de-LU",
+   "el-GR",
+   "en",
+   "en-AU",
+   "en-CA",
+   "en-GB",
+   "en-NZ",
+   "en-US",
+   "en-ZA",
+   "eo",
+   "es",
+   "es-AR",
+   "es-ES",
+   "fa",
+   "fa-IR",
+   "fr",
+   "fr-BE",
+   "fr-CA",
+   "fr-CH",
+   "fr-FR",
+   "ga-IE",
+   "gl-ES",
+   "it",
+   "it-IT",
+   "ja-JP",
+   "km-KH",
+   "nl",
+   "nl-BE",
+   "nl-NL",
+   "pl-PL",
+   "pt",
+   "pt-AO",
+   "pt-BR",
+   "pt-MZ",
+   "pt-PT",
+   "ro-RO",
+   "ru-RU",
+   "sk-SK",
+   "sl-SI",
+   "sv",
+   "sv-SE",
+   "ta-IN",
+   "tl-PH",
+   "uk-UA",
+   "zh-CN"
+  ]
+ },
+ "hunspell": {
+  "version": "@(#) International Ispell Version 3.2.06 (but really Hunspell 1.7.2)"
+ },
+ "selftest": [
+  {
+   "lang": "es",
+   "languagetool": "flags 4 of 4 known-bad sentences",
+   "hunspell": "rejects the misspelling, accepts the word",
+   "languagetoolCaught": 4,
+   "languagetoolTried": 4,
+   "hunspellWorks": true
+  },
+  {
+   "lang": "fr",
+   "languagetool": "flags 4 of 4 known-bad sentences",
+   "hunspell": "rejects the misspelling, accepts the word",
+   "languagetoolCaught": 4,
+   "languagetoolTried": 4,
+   "hunspellWorks": true
+  },
+  {
+   "lang": "de",
+   "languagetool": "flags 4 of 4 known-bad sentences",
+   "hunspell": "rejects the misspelling, accepts the word",
+   "languagetoolCaught": 4,
+   "languagetoolTried": 4,
+   "hunspellWorks": true
+  },
+  {
+   "lang": "it",
+   "languagetool": "flags 0 of 4 known-bad sentences",
+   "hunspell": "rejects the misspelling, accepts the word",
+   "languagetoolCaught": 0,
+   "languagetoolTried": 4,
+   "hunspellWorks": true
+  },
+  {
+   "lang": "pt",
+   "languagetool": "flags 3 of 4 known-bad sentences",
+   "hunspell": "rejects the misspelling, accepts the word",
+   "languagetoolCaught": 3,
+   "languagetoolTried": 4,
+   "hunspellWorks": true
+  },
+  {
+   "lang": "pl",
+   "languagetool": "flags 0 of 4 known-bad sentences",
+   "hunspell": "rejects the misspelling, accepts the word",
+   "languagetoolCaught": 0,
+   "languagetoolTried": 4,
+   "hunspellWorks": true
+  },
+  {
+   "lang": "ru",
+   "languagetool": "flags 3 of 4 known-bad sentences",
+   "hunspell": "rejects the misspelling, accepts the word",
+   "languagetoolCaught": 3,
+   "languagetoolTried": 4,
+   "hunspellWorks": true
+  },
+  {
+   "lang": "ar",
+   "languagetool": "flags 2 of 4 known-bad sentences",
+   "hunspell": "rejects the misspelling, accepts the word",
+   "languagetoolCaught": 2,
+   "languagetoolTried": 4,
+   "hunspellWorks": true
+  },
+  {
+   "lang": "hi",
+   "languagetool": "no module",
+   "hunspell": "rejects the misspelling, accepts the word",
+   "hunspellWorks": true
+  },
+  {
+   "lang": "zh",
+   "languagetool": "flags 1 of 4 known-bad sentences",
+   "hunspell": "no dictionary",
+   "languagetoolCaught": 1,
+   "languagetoolTried": 4
+  },
+  {
+   "lang": "ja",
+   "languagetool": "flags 1 of 4 known-bad sentences",
+   "hunspell": "no dictionary",
+   "languagetoolCaught": 1,
+   "languagetoolTried": 4
+  },
+  {
+   "lang": "ko",
+   "languagetool": "no module",
+   "hunspell": "rejects the misspelling, accepts the word",
+   "hunspellWorks": true
+  },
+  {
+   "lang": "vi",
+   "languagetool": "no module",
+   "hunspell": "rejects the misspelling, accepts the word",
+   "hunspellWorks": true
+  },
+  {
+   "lang": "th",
+   "languagetool": "no module",
+   "hunspell": "rejects the misspelling, accepts the word",
+   "hunspellWorks": true
+  },
+  {
+   "lang": "id",
+   "languagetool": "no module",
+   "hunspell": "rejects the misspelling, accepts the word",
+   "hunspellWorks": true
+  }
+ ],
+ "languages": {
+  "es": {
+   "strings": {
+    "ui": 417,
+    "pack": 128,
+    "sentences": 12
+   },
+   "languagetool": "es",
+   "hunspell": [
+    "es"
+   ],
+   "counts": {
+    "languagetool": 2,
+    "hunspell": 1,
+    "allowed": 3,
+    "open": 0
+   },
+   "hits": [
+    {
+     "tool": "languagetool",
+     "id": "ui:footer.sonnetMan",
+     "rule": "MORFOLOGIK_RULE_ES",
+     "category": "TYPOS",
+     "text": "Sonnet Man",
+     "at": "Sonnet",
+     "message": "Se ha encontrado un posible error ortográfico.",
+     "replacements": [
+      "Bonnet"
+     ],
+     "allowed": "A proper name (a product, platform, browser, model, person or character, or a verse form's name sourced in docs/language/glossary.json), not a word of the language."
+    },
+    {
+     "tool": "languagetool",
+     "id": "ui:verdict.notUsed",
+     "rule": "UPPERCASE_SENTENCE_START",
+     "category": "CASING",
+     "text": "no utilizado",
+     "at": "no",
+     "message": "Esta frase no empieza con mayúscula.",
+     "replacements": [
+      "No"
+     ],
+     "allowed": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+    },
+    {
+     "tool": "hunspell",
+     "id": "ui:footer.sonnetMan",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "Sonnet Man",
+     "at": "Sonnet",
+     "message": "not in the es dictionary",
+     "replacements": [],
+     "allowed": "A proper name (a product, platform, browser, model, person or character, or a verse form's name sourced in docs/language/glossary.json), not a word of the language."
+    }
+   ]
+  },
+  "fr": {
+   "strings": {
+    "ui": 417,
+    "pack": 128,
+    "sentences": 17
+   },
+   "languagetool": "fr",
+   "hunspell": [
+    "fr"
+   ],
+   "counts": {
+    "languagetool": 4,
+    "hunspell": 2,
+    "allowed": 4,
+    "open": 2
+   },
+   "hits": [
+    {
+     "tool": "languagetool",
+     "id": "ui:signature.none",
+     "rule": "UPPERCASE_SENTENCE_START",
+     "category": "CASING",
+     "text": "cette carte n’a pas de réplique signature",
+     "at": "cette",
+     "message": "Cette phrase ne commence pas par une majuscule.",
+     "replacements": [
+      "Cette"
+     ],
+     "allowed": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+    },
+    {
+     "tool": "languagetool",
+     "id": "ui:verdict.notUsed",
+     "rule": "UPPERCASE_SENTENCE_START",
+     "category": "CASING",
+     "text": "non utilisé",
+     "at": "non",
+     "message": "Cette phrase ne commence pas par une majuscule.",
+     "replacements": [
+      "Non"
+     ],
+     "allowed": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+    },
+    {
+     "tool": "languagetool",
+     "id": "ui:theatre.visionBody",
+     "rule": "FR_SPELLING_RULE",
+     "category": "TYPOS",
+     "text": "S’ouvre en scène complète. Regardez une carte et pincez. Safari sur visionOS ne propose pas le mode passthrough pour les pages web.",
+     "at": "passthrough",
+     "message": "Faute de frappe possible trouvée.",
+     "replacements": [
+      "sastrugi"
+     ]
+    },
+    {
+     "tool": "languagetool",
+     "id": "ui:theatre.composingDraft",
+     "rule": "UPPERCASE_SENTENCE_START",
+     "category": "CASING",
+     "text": "composition en cours… jet 3 sur 3",
+     "at": "composition",
+     "message": "Cette phrase ne commence pas par une majuscule.",
+     "replacements": [
+      "Composition"
+     ],
+     "allowed": "Shown straight after other text on screen (a character's name, or the words before an ellipsis): it continues that text, so it starts in lower case."
+    },
+    {
+     "tool": "hunspell",
+     "id": "ui:theatre.visionBody",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "S’ouvre en scène complète. Regardez une carte et pincez. Safari sur visionOS ne propose pas le mode passthrough pour les pages web.",
+     "at": "visionOS",
+     "message": "not in the fr dictionary",
+     "replacements": [],
+     "allowed": "A proper name (a product, platform, browser, model, person or character, or a verse form's name sourced in docs/language/glossary.json), not a word of the language."
+    },
+    {
+     "tool": "hunspell",
+     "id": "ui:theatre.visionBody",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "S’ouvre en scène complète. Regardez une carte et pincez. Safari sur visionOS ne propose pas le mode passthrough pour les pages web.",
+     "at": "passthrough",
+     "message": "not in the fr dictionary",
+     "replacements": []
+    }
+   ]
+  },
+  "de": {
+   "strings": {
+    "ui": 417,
+    "pack": 132,
+    "sentences": 31
+   },
+   "languagetool": "de-DE",
+   "hunspell": [
+    "de"
+   ],
+   "counts": {
+    "languagetool": 0,
+    "hunspell": 8,
+    "allowed": 8,
+    "open": 0
+   },
+   "hits": [
+    {
+     "tool": "hunspell",
+     "id": "ui:age.minorBody",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "Du musst mindestens 13 Jahre alt sein, um Inspired Mile zu nutzen. Bitte komm wieder, wenn du das erforderliche Alter erreicht hast.",
+     "at": "Inspired",
+     "message": "not in the de dictionary",
+     "replacements": [],
+     "allowed": "A proper name (a product, platform, browser, model, person or character, or a verse form's name sourced in docs/language/glossary.json), not a word of the language."
+    },
+    {
+     "tool": "hunspell",
+     "id": "ui:age.minorBody",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "Du musst mindestens 13 Jahre alt sein, um Inspired Mile zu nutzen. Bitte komm wieder, wenn du das erforderliche Alter erreicht hast.",
+     "at": "Mile",
+     "message": "not in the de dictionary",
+     "replacements": [],
+     "allowed": "A proper name (a product, platform, browser, model, person or character, or a verse form's name sourced in docs/language/glossary.json), not a word of the language."
+    },
+    {
+     "tool": "hunspell",
+     "id": "ui:auth.createWarning",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "Wenn du den Passkey verlierst, können wir dich nicht wieder hereinlassen. Füge danach einen zweiten Passkey oder eine E-Mail hinzu, damit du wieder Zugriff hast.",
+     "at": "Passkey",
+     "message": "not in the de dictionary",
+     "replacements": [],
+     "allowed": "Passkey: Android's German term (AOSP CredentialManager, recorded in docs/language/glossary.json)."
+    },
+    {
+     "tool": "hunspell",
+     "id": "ui:auth.createWarningNoEmail",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "Wenn du den Passkey verlierst, können wir dich nicht wieder hereinlassen. Füge danach einen zweiten Passkey hinzu, damit du wieder Zugriff hast.",
+     "at": "Passkey",
+     "message": "not in the de dictionary",
+     "replacements": [],
+     "allowed": "Passkey: Android's German term (AOSP CredentialManager, recorded in docs/language/glossary.json)."
+    },
+    {
+     "tool": "hunspell",
+     "id": "ui:auth.nudgeBody",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "Im Moment ist ein einziger Passkey der einzige Zugang zu diesem Konto. Geht er verloren, ist das Konto verloren. Füge einen zweiten Passkey oder eine E-Mail hinzu, damit du wieder Zugriff hast.",
+     "at": "Passkey",
+     "message": "not in the de dictionary",
+     "replacements": [],
+     "allowed": "Passkey: Android's German term (AOSP CredentialManager, recorded in docs/language/glossary.json)."
+    },
+    {
+     "tool": "hunspell",
+     "id": "ui:auth.nudgeBodyNoEmail",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "Im Moment ist ein einziger Passkey der einzige Zugang zu diesem Konto. Geht er verloren, ist das Konto verloren. Füge einen zweiten Passkey hinzu, damit du wieder Zugriff hast.",
+     "at": "Passkey",
+     "message": "not in the de dictionary",
+     "replacements": [],
+     "allowed": "Passkey: Android's German term (AOSP CredentialManager, recorded in docs/language/glossary.json)."
+    },
+    {
+     "tool": "hunspell",
+     "id": "ui:auth.recoveryWarning",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "Ein einziger Passkey ist dein einziger Zugang. Füge einen zweiten Passkey oder eine E-Mail hinzu, damit du wieder Zugriff hast.",
+     "at": "Passkey",
+     "message": "not in the de dictionary",
+     "replacements": [],
+     "allowed": "Passkey: Android's German term (AOSP CredentialManager, recorded in docs/language/glossary.json)."
+    },
+    {
+     "tool": "hunspell",
+     "id": "ui:auth.recoveryWarningNoEmail",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "Ein einziger Passkey ist dein einziger Zugang. Füge einen zweiten Passkey hinzu, damit du wieder Zugriff hast.",
+     "at": "Passkey",
+     "message": "not in the de dictionary",
+     "replacements": [],
+     "allowed": "Passkey: Android's German term (AOSP CredentialManager, recorded in docs/language/glossary.json)."
+    }
+   ]
+  },
+  "it": {
+   "strings": {
+    "ui": 417,
+    "pack": 128,
+    "sentences": 17
+   },
+   "languagetool": "it",
+   "hunspell": [
+    "it"
+   ],
+   "counts": {
+    "languagetool": 4,
+    "hunspell": 3,
+    "allowed": 3,
+    "open": 4
+   },
+   "hits": [
+    {
+     "tool": "languagetool",
+     "id": "ui:battle.badge",
+     "rule": "MORFOLOGIK_RULE_IT_IT",
+     "category": "TYPOS",
+     "text": "Live Arena",
+     "at": "Live",
+     "message": "Trovato un probabile errore di battitura.",
+     "replacements": [
+      "Livo",
+      "Dive",
+      "Lave"
+     ]
+    },
+    {
+     "tool": "languagetool",
+     "id": "ui:battle.titleA",
+     "rule": "MORFOLOGIK_RULE_IT_IT",
+     "category": "TYPOS",
+     "text": "Battle",
+     "at": "Battle",
+     "message": "Trovato un probabile errore di battitura.",
+     "replacements": [
+      "Batte",
+      "Battile",
+      "Battole"
+     ]
+    },
+    {
+     "tool": "languagetool",
+     "id": "ui:signature.none",
+     "rule": "UPPERCASE_SENTENCE_START",
+     "category": "CASING",
+     "text": "questa carta non ha una battuta firma",
+     "at": "questa",
+     "message": "Questa frase non inizia con una maiuscola",
+     "replacements": [
+      "Questa"
+     ],
+     "allowed": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+    },
+    {
+     "tool": "languagetool",
+     "id": "ui:theatre.declined",
+     "rule": "MORFOLOGIK_RULE_IT_IT",
+     "category": "TYPOS",
+     "text": "Questo dispositivo non supporta la sessione immersiva.",
+     "at": "immersiva",
+     "message": "Trovato un probabile errore di battitura.",
+     "replacements": [
+      "immersi va"
+     ],
+     "allowed": "Immersivo, -a, in ordinary use for immersive sessions (WebXR 'immersive-vr')."
+    },
+    {
+     "tool": "hunspell",
+     "id": "ui:battle.badge",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "Live Arena",
+     "at": "Live",
+     "message": "not in the it dictionary",
+     "replacements": []
+    },
+    {
+     "tool": "hunspell",
+     "id": "ui:battle.titleA",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "Battle",
+     "at": "Battle",
+     "message": "not in the it dictionary",
+     "replacements": []
+    },
+    {
+     "tool": "hunspell",
+     "id": "ui:theatre.declined",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "Questo dispositivo non supporta la sessione immersiva.",
+     "at": "immersiva",
+     "message": "not in the it dictionary",
+     "replacements": [],
+     "allowed": "Immersivo, -a, in ordinary use for immersive sessions."
+    }
+   ]
+  },
+  "pt": {
+   "strings": {
+    "ui": 417,
+    "pack": 130,
+    "sentences": 15
+   },
+   "languagetool": "pt-BR",
+   "hunspell": [
+    "pt-BR"
+   ],
+   "counts": {
+    "languagetool": 4,
+    "hunspell": 0,
+    "allowed": 2,
+    "open": 2
+   },
+   "hits": [
+    {
+     "tool": "languagetool",
+     "id": "ui:check.luc-bat-rhyme",
+     "rule": "FINAL_STOPS",
+     "category": "PUNCTUATION",
+     "text": "A sexta sílaba de cada verso rima",
+     "at": "rima",
+     "message": "Se não é um título, falta um ponto no final da frase.",
+     "replacements": [
+      "rima.",
+      "rima?",
+      "rima!"
+     ],
+     "allowed": "An interface label, button, heading or checklist line, written without a closing full stop, as its English is. The mechanical check 'ending' (src/i18n/quality.test.ts) already holds every string's closing punctuation to the English's."
+    },
+    {
+     "tool": "languagetool",
+     "id": "ui:verdict.notUsed",
+     "rule": "UPPERCASE_SENTENCE_START",
+     "category": "CASING",
+     "text": "não utilizadas",
+     "at": "não",
+     "message": "Esta frase não inicia com um letra maiúscula",
+     "replacements": [
+      "Não"
+     ],
+     "allowed": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+    },
+    {
+     "tool": "languagetool",
+     "id": "ui:verdict.missed",
+     "rule": "UPPERCASE_SENTENCE_START",
+     "category": "CASING",
+     "text": "não cumprida",
+     "at": "não",
+     "message": "Esta frase não inicia com um letra maiúscula",
+     "replacements": [
+      "Não"
+     ]
+    },
+    {
+     "tool": "languagetool",
+     "id": "ui:end.lost",
+     "rule": "GENERAL_GENDER_AGREEMENT_ERRORS",
+     "category": "GRAMMAR",
+     "text": "O palco é seu esta noite.",
+     "at": "seu esta",
+     "message": "Possível erro de concordância.",
+     "replacements": [
+      "seu este",
+      "sua esta",
+      "seus estes"
+     ]
+    }
+   ]
+  },
+  "pl": {
+   "strings": {
+    "ui": 417,
+    "pack": 126,
+    "sentences": 17
+   },
+   "languagetool": "pl-PL",
+   "hunspell": [
+    "pl"
+   ],
+   "counts": {
+    "languagetool": 5,
+    "hunspell": 3,
+    "allowed": 5,
+    "open": 3
+   },
+   "hits": [
+    {
+     "tool": "languagetool",
+     "id": "ui:age.agreeBefore",
+     "rule": "BRAK_KROPKI",
+     "category": "PUNCTUATION",
+     "text": "Przechodząc dalej, akceptujesz nasze",
+     "at": "nasze",
+     "message": "To zdanie nie kończy się kropką ani innym znakiem interpunkcyjnym. Powinno być: \"nasze.\"",
+     "replacements": [
+      "nasze."
+     ],
+     "allowed": "An interface label, button, heading or checklist line, written without a closing full stop, as its English is. The mechanical check 'ending' (src/i18n/quality.test.ts) already holds every string's closing punctuation to the English's."
+    },
+    {
+     "tool": "languagetool",
+     "id": "ui:round.opponentPlays",
+     "rule": "BRAK_KROPKI",
+     "category": "PUNCTUATION",
+     "text": "Twój rywal gra",
+     "at": "gra",
+     "message": "To zdanie kończy się przecinkiem. Prawdopodobnie powinno być: \"gra.\"",
+     "replacements": [
+      "gra."
+     ],
+     "allowed": "An interface label, button, heading or checklist line, written without a closing full stop, as its English is. The mechanical check 'ending' (src/i18n/quality.test.ts) already holds every string's closing punctuation to the English's."
+    },
+    {
+     "tool": "languagetool",
+     "id": "ui:signature.none",
+     "rule": "UPPERCASE_SENTENCE_START",
+     "category": "CASING",
+     "text": "ta karta nie ma kwestii sygnatury",
+     "at": "ta",
+     "message": "To zdanie nie zaczyna się wielką literą",
+     "replacements": [
+      "Ta"
+     ],
+     "allowed": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+    },
+    {
+     "tool": "languagetool",
+     "id": "ui:signature.none",
+     "rule": "BRAK_KROPKI",
+     "category": "PUNCTUATION",
+     "text": "ta karta nie ma kwestii sygnatury",
+     "at": "sygnatury",
+     "message": "To zdanie nie kończy się kropką ani innym znakiem interpunkcyjnym. Powinno być: \"sygnatury.\"",
+     "replacements": [
+      "sygnatury."
+     ],
+     "allowed": "An interface label, button, heading or checklist line, written without a closing full stop, as its English is. The mechanical check 'ending' (src/i18n/quality.test.ts) already holds every string's closing punctuation to the English's."
+    },
+    {
+     "tool": "languagetool",
+     "id": "ui:theatre.questBody",
+     "rule": "MORFOLOGIK_RULE_PL_PL",
+     "category": "TYPOS",
+     "text": "Otwiera się w trybie passthrough, więc scena pojawia się w twoim pokoju. Wskaż kontrolerem lub uszczypnij dłonią.",
+     "at": "passthrough",
+     "message": "Wykryto prawdopodobny błąd pisowni",
+     "replacements": []
+    },
+    {
+     "tool": "hunspell",
+     "id": "ui:auth.emailPlaceholder",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "uzytkownik@przyklad.pl",
+     "at": "uzytkownik",
+     "message": "not in the pl dictionary",
+     "replacements": []
+    },
+    {
+     "tool": "hunspell",
+     "id": "ui:auth.emailPlaceholder",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "uzytkownik@przyklad.pl",
+     "at": "przyklad",
+     "message": "not in the pl dictionary",
+     "replacements": [],
+     "allowed": "Part of the placeholder address ty@przyklad.pl (an address carries no diacritics)."
+    },
+    {
+     "tool": "hunspell",
+     "id": "ui:theatre.questBody",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "Otwiera się w trybie passthrough, więc scena pojawia się w twoim pokoju. Wskaż kontrolerem lub uszczypnij dłonią.",
+     "at": "passthrough",
+     "message": "not in the pl dictionary",
+     "replacements": []
+    }
+   ]
+  },
+  "ru": {
+   "strings": {
+    "ui": 417,
+    "pack": 130,
+    "sentences": 31
+   },
+   "languagetool": "ru-RU",
+   "hunspell": [
+    "ru"
+   ],
+   "counts": {
+    "languagetool": 2,
+    "hunspell": 6,
+    "allowed": 7,
+    "open": 1
+   },
+   "hits": [
+    {
+     "tool": "languagetool",
+     "id": "ui:check.spells.words",
+     "rule": "PREP_C_and_Noun",
+     "category": "GRAMMAR",
+     "text": "Строки по порядку, начинаются с череп",
+     "at": "с череп",
+     "message": "Предлог «с» предполагает употребление существительного в родительном или творительном падеже.",
+     "replacements": []
+    },
+    {
+     "tool": "languagetool",
+     "id": "ui:verdict.notUsed",
+     "rule": "UPPERCASE_SENTENCE_START",
+     "category": "CASING",
+     "text": "не использовалось",
+     "at": "не",
+     "message": "Это предложение не начинается с заглавной буквы.",
+     "replacements": [
+      "Не"
+     ],
+     "allowed": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+    },
+    {
+     "tool": "hunspell",
+     "id": "ui:age.minorBody",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "Для использования Inspired Mile вам должно быть не менее 13 лет. Пожалуйста, вернитесь, когда вы будете соответствовать возрастным требованиям.",
+     "at": "Inspired",
+     "message": "not in the ru dictionary",
+     "replacements": [],
+     "allowed": "A proper name (a product, platform, browser, model, person or character, or a verse form's name sourced in docs/language/glossary.json), not a word of the language."
+    },
+    {
+     "tool": "hunspell",
+     "id": "ui:age.minorBody",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "Для использования Inspired Mile вам должно быть не менее 13 лет. Пожалуйста, вернитесь, когда вы будете соответствовать возрастным требованиям.",
+     "at": "Mile",
+     "message": "not in the ru dictionary",
+     "replacements": [],
+     "allowed": "A proper name (a product, platform, browser, model, person or character, or a verse form's name sourced in docs/language/glossary.json), not a word of the language."
+    },
+    {
+     "tool": "hunspell",
+     "id": "ui:age.teenBody",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "Так как вам нет 18 лет, для использования Inspired Mile требуется согласие родителей или опекунов.",
+     "at": "Inspired",
+     "message": "not in the ru dictionary",
+     "replacements": [],
+     "allowed": "A proper name (a product, platform, browser, model, person or character, or a verse form's name sourced in docs/language/glossary.json), not a word of the language."
+    },
+    {
+     "tool": "hunspell",
+     "id": "ui:age.teenBody",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "Так как вам нет 18 лет, для использования Inspired Mile требуется согласие родителей или опекунов.",
+     "at": "Mile",
+     "message": "not in the ru dictionary",
+     "replacements": [],
+     "allowed": "A proper name (a product, platform, browser, model, person or character, or a verse form's name sourced in docs/language/glossary.json), not a word of the language."
+    },
+    {
+     "tool": "hunspell",
+     "id": "ui:pwa.install",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "Установите Inspired Mile для лучшего игрового опыта",
+     "at": "Inspired",
+     "message": "not in the ru dictionary",
+     "replacements": [],
+     "allowed": "A proper name (a product, platform, browser, model, person or character, or a verse form's name sourced in docs/language/glossary.json), not a word of the language."
+    },
+    {
+     "tool": "hunspell",
+     "id": "ui:pwa.install",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "Установите Inspired Mile для лучшего игрового опыта",
+     "at": "Mile",
+     "message": "not in the ru dictionary",
+     "replacements": [],
+     "allowed": "A proper name (a product, platform, browser, model, person or character, or a verse form's name sourced in docs/language/glossary.json), not a word of the language."
+    }
+   ]
+  },
+  "ar": {
+   "strings": {
+    "ui": 417,
+    "pack": 115,
+    "sentences": 30
+   },
+   "languagetool": "ar",
+   "hunspell": [
+    "ar"
+   ],
+   "counts": {
+    "languagetool": 15,
+    "hunspell": 2,
+    "allowed": 13,
+    "open": 4
+   },
+   "hits": [
+    {
+     "tool": "languagetool",
+     "id": "ui:check.growing",
+     "rule": "syntax_0002_as_ka_2",
+     "category": "TEST_NEW_FEATURES",
+     "text": "كل سطر يحتوي كلمات أكثر من السطر الذي قبله",
+     "at": "كل سطر يحتوي كلمات",
+     "message": "استخدام الكاف للصفة استخدام أجنبي أدخله المترجمون، إذ يستعملون\n            \"as\"\n            بمعنى الكاف، فالأَوْلَى النصب على الحالية مثل  \" أعمل مديرًا \" أو على الاختصاص في: \"نحن المسلمين\".\n        \"كل سطر يحتوي لمات\"\n        \"كل سطر يحتوي بصفة لمات\"\n\n      ",
+     "replacements": [
+      "كل سطر يحتوي لمات",
+      "كل سطر يحتوي بصفة لمات"
+     ],
+     "allowed": "The rule misreads كلمات and كلمتين (words) as the particle كـ joined to the rest; its suggestions (لمات، لمتين) are not words."
+    },
+    {
+     "tool": "languagetool",
+     "id": "ui:check.jueju-length",
+     "rule": "grammar_0000_jar_plural",
+     "category": "TEST_NEW_FEATURES",
+     "text": "كل سطر من خمسة أحرف، أو كل سطر من سبعة أحرف",
+     "at": "من خمسة",
+     "message": ":انتبه لحرف الجر فالجمع المذكر السالم  يُجَرّ بالياء\n        \"من (خمسة)\"\n      ",
+     "replacements": [
+      "من (خمسة)"
+     ],
+     "allowed": "The rule is about a sound masculine plural after a preposition; خمسة، سبعة، ستة، ثمانية here are numbers, not plurals."
+    },
+    {
+     "tool": "languagetool",
+     "id": "ui:check.jueju-length",
+     "rule": "grammar_0000_jar_plural",
+     "category": "TEST_NEW_FEATURES",
+     "text": "كل سطر من خمسة أحرف، أو كل سطر من سبعة أحرف",
+     "at": "من سبعة",
+     "message": ":انتبه لحرف الجر فالجمع المذكر السالم  يُجَرّ بالياء\n        \"من (سبعة)\"\n      ",
+     "replacements": [
+      "من (سبعة)"
+     ],
+     "allowed": "The rule is about a sound masculine plural after a preposition; خمسة، سبعة، ستة، ثمانية here are numbers, not plurals."
+    },
+    {
+     "tool": "languagetool",
+     "id": "ui:footer.sonnetMan",
+     "rule": "HUNSPELL_RULE_AR",
+     "category": "TYPOS",
+     "text": "رجل السونيت",
+     "at": "السونيت",
+     "message": "وُجد خطأ إملائي محتمل",
+     "replacements": [
+      "يتجالسون"
+     ]
+    },
+    {
+     "tool": "languagetool",
+     "id": "ui:auth.nudgeBody",
+     "rule": "ARABIC_WORD_REPEAT_RULE",
+     "category": "MISC",
+     "text": "الآن مفتاح مرور واحد هو السبيل الوحيد لهذا الحساب. إن ضاع ضاع الحساب. أضف مفتاح مرور ثانيًا أو بريدًا إلكترونيًا لتتمكن من العودة.",
+     "at": "ضاع ضاع",
+     "message": "خطأ محتمل: كلمة مكررة",
+     "replacements": [
+      "ضاع"
+     ],
+     "allowed": "'إن ضاع ضاع الحساب' (if it is lost, the account is lost): the verb is repeated on purpose, once in the condition and once in the answer."
+    },
+    {
+     "tool": "languagetool",
+     "id": "ui:auth.nudgeBodyNoEmail",
+     "rule": "ARABIC_WORD_REPEAT_RULE",
+     "category": "MISC",
+     "text": "الآن مفتاح مرور واحد هو السبيل الوحيد لهذا الحساب. إن ضاع ضاع الحساب. أضف مفتاح مرور ثانيًا لتتمكن من العودة.",
+     "at": "ضاع ضاع",
+     "message": "خطأ محتمل: كلمة مكررة",
+     "replacements": [
+      "ضاع"
+     ],
+     "allowed": "'إن ضاع ضاع الحساب' (if it is lost, the account is lost): the verb is repeated on purpose, once in the condition and once in the answer."
+    },
+    {
+     "tool": "languagetool",
+     "id": "ui:auth.emailHint",
+     "rule": "grammar_0011_notjazem_lam_nafia",
+     "category": "GRAMMAR_ERROR",
+     "text": "على جهاز لا يتوفر فيه مفتاح مرورك؟ سجل الدخول بالبريد الإلكتروني إذا كان لحسابك بريد.",
+     "at": "لا يتوفر",
+     "message": "\nالفرق بين لا الناهية ولا النافية، لا الناهية تأتي مع ضمائر المخاطب فقط. لذا فإن لا النافية لا تجزم الفعل المضارع أتقصد؟\n\n        \"لا يتوفر\"\n\n      ",
+     "replacements": [
+      "لا يتوفر"
+     ],
+     "allowed": "لا here negates a present-tense verb (لا يجوز، لا يدعم، لا نطلب، لا يُرسَل), a correct negation; the rule's lā of prohibition, which would change the verb's ending, does not apply."
+    },
+    {
+     "tool": "languagetool",
+     "id": "ui:auth.offerBody",
+     "rule": "AR_DIACRITICS_REPLACE",
+     "category": "STYLE",
+     "text": "في المرة القادمة، سجّل الدخول ببصمة إصبعك أو وجهك أو قفل الشاشة. بلا رمز وبلا انتظار بريد إلكتروني.",
+     "at": "قفل",
+     "message": "القُفْل بالضم قفل الباب",
+     "replacements": [
+      "قُفْل"
+     ],
+     "allowed": "The rule only asks for vowel marks (تشكيل) to fix how an ambiguous word is read (مَعْرِض, الخَصْم, حَلَبة); Arabic interface text is written unvocalised, and the context decides."
+    },
+    {
+     "tool": "languagetool",
+     "id": "ui:auth.passkeyAdded",
+     "rule": "AR_DIACRITICS_REPLACE",
+     "category": "STYLE",
+     "text": "تمت إضافة مفتاح المرور. يمكنك تسجيل الدخول به من الآن فصاعدًا.",
+     "at": "من الآن",
+     "message": "ف \"الآنَ\" مبني على الظرفية",
+     "replacements": [
+      "من الْآنَ"
+     ],
+     "allowed": "The rule only asks for vowel marks (تشكيل) to fix how an ambiguous word is read (مَعْرِض, الخَصْم, حَلَبة); Arabic interface text is written unvocalised, and the context decides."
+    },
+    {
+     "tool": "languagetool",
+     "id": "ui:battle.titleB",
+     "rule": "AR_HOMOPHONES_REPLACE",
+     "category": "CONFUSED_WORDS",
+     "text": "حلبة",
+     "at": "حلبة",
+     "message": "الحُلْبَة نبات يشرب والحَلَبة مكان المصارعة",
+     "replacements": [
+      "حِلْبَة",
+      "حُلْبَة"
+     ],
+     "allowed": "The rule only asks for vowel marks (تشكيل) to fix how an ambiguous word is read (مَعْرِض, الخَصْم, حَلَبة); Arabic interface text is written unvocalised, and the context decides."
+    },
+    {
+     "tool": "languagetool",
+     "id": "ui:hand.potionLastRound",
+     "rule": "AR_DIACRITICS_REPLACE",
+     "category": "STYLE",
+     "text": "Hamlet كانت ستضع لعنة على أبيات الخصم القادمة، لكن هذه هي الجولة الأخيرة.",
+     "at": "الخصم",
+     "message": "الخَصْم كقوله تعالى: \"وهل أتاك نبأ الخصم إذ تسوروا المحراب\"",
+     "replacements": [
+      "الخَصْم"
+     ],
+     "allowed": "The rule only asks for vowel marks (تشكيل) to fix how an ambiguous word is read (مَعْرِض, الخَصْم, حَلَبة); Arabic interface text is written unvocalised, and the context decides."
+    },
+    {
+     "tool": "languagetool",
+     "id": "ui:badge.written",
+     "rule": "AR_DIACRITICS_REPLACE",
+     "category": "STYLE",
+     "text": "خصم مكتوب",
+     "at": "خصم",
+     "message": "الخَصْم كقوله تعالى: \"وهل أتاك نبأ الخصم إذ تسوروا المحراب\"",
+     "replacements": [
+      "خَصْم"
+     ],
+     "allowed": "The rule only asks for vowel marks (تشكيل) to fix how an ambiguous word is read (مَعْرِض, الخَصْم, حَلَبة); Arabic interface text is written unvocalised, and the context decides."
+    },
+    {
+     "tool": "languagetool",
+     "id": "ui:stats.rounds",
+     "rule": "HUNSPELL_RULE_AR",
+     "category": "TYPOS",
+     "text": "الجولات الملعوبة",
+     "at": "الملعوبة",
+     "message": "وُجد خطأ إملائي محتمل",
+     "replacements": [
+      "الملعوب",
+      "الملعبة",
+      "اللعوبة"
+     ]
+    },
+    {
+     "tool": "languagetool",
+     "id": "ui:theatre.declined",
+     "rule": "grammar_0011_notjazem_lam_nafia",
+     "category": "GRAMMAR_ERROR",
+     "text": "هذا الجهاز لا يدعم الجلسات الغامرة.",
+     "at": "لا يدعم",
+     "message": "\nالفرق بين لا الناهية ولا النافية، لا الناهية تأتي مع ضمائر المخاطب فقط. لذا فإن لا النافية لا تجزم الفعل المضارع أتقصد؟\n\n        \"لا يدعم\"\n\n      ",
+     "replacements": [
+      "لا يدعم"
+     ],
+     "allowed": "لا here negates a present-tense verb (لا يجوز، لا يدعم، لا نطلب، لا يُرسَل), a correct negation; the rule's lā of prohibition, which would change the verb's ending, does not apply."
+    },
+    {
+     "tool": "languagetool",
+     "id": "ui:theatre.judgedRules",
+     "rule": "grammar_0011_notjazem_lam_nafia",
+     "category": "GRAMMAR_ERROR",
+     "text": "التحكيم حسب القواعد: لا يوجد نموذج يعمل.",
+     "at": "لا يوجد",
+     "message": "\nالفرق بين لا الناهية ولا النافية، لا الناهية تأتي مع ضمائر المخاطب فقط. لذا فإن لا النافية لا تجزم الفعل المضارع أتقصد؟\n\n        \"لا يوجد\"\n\n      ",
+     "replacements": [
+      "لا يوجد"
+     ],
+     "allowed": "لا here negates a present-tense verb (لا يجوز، لا يدعم، لا نطلب، لا يُرسَل), a correct negation; the rule's lā of prohibition, which would change the verb's ending, does not apply."
+    },
+    {
+     "tool": "hunspell",
+     "id": "ui:footer.sonnetMan",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "رجل السونيت",
+     "at": "السونيت",
+     "message": "not in the ar dictionary",
+     "replacements": []
+    },
+    {
+     "tool": "hunspell",
+     "id": "ui:stats.rounds",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "الجولات الملعوبة",
+     "at": "الملعوبة",
+     "message": "not in the ar dictionary",
+     "replacements": []
+    }
+   ]
+  },
+  "hi": {
+   "strings": {
+    "ui": 417,
+    "pack": 120,
+    "sentences": 46
+   },
+   "languagetool": null,
+   "hunspell": [
+    "hi"
+   ],
+   "counts": {
+    "languagetool": 0,
+    "hunspell": 16,
+    "allowed": 8,
+    "open": 8
+   },
+   "hits": [
+    {
+     "tool": "hunspell",
+     "id": "ui:device.grandeur.brief",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "Use two words of 0 अक्षर or more.",
+     "at": "Use",
+     "message": "not in the hi dictionary",
+     "replacements": []
+    },
+    {
+     "tool": "hunspell",
+     "id": "ui:device.grandeur.brief",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "Use two words of 0 अक्षर or more.",
+     "at": "two",
+     "message": "not in the hi dictionary",
+     "replacements": []
+    },
+    {
+     "tool": "hunspell",
+     "id": "ui:device.grandeur.brief",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "Use two words of 0 अक्षर or more.",
+     "at": "words",
+     "message": "not in the hi dictionary",
+     "replacements": []
+    },
+    {
+     "tool": "hunspell",
+     "id": "ui:device.grandeur.brief",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "Use two words of 0 अक्षर or more.",
+     "at": "of",
+     "message": "not in the hi dictionary",
+     "replacements": []
+    },
+    {
+     "tool": "hunspell",
+     "id": "ui:device.grandeur.brief",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "Use two words of 0 अक्षर or more.",
+     "at": "or",
+     "message": "not in the hi dictionary",
+     "replacements": []
+    },
+    {
+     "tool": "hunspell",
+     "id": "ui:device.grandeur.brief",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "Use two words of 0 अक्षर or more.",
+     "at": "more",
+     "message": "not in the hi dictionary",
+     "replacements": []
+    },
+    {
+     "tool": "hunspell",
+     "id": "ui:footer.sonnetMan",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "द सोनेट मैन",
+     "at": "सोनेट",
+     "message": "not in the hi dictionary",
+     "replacements": []
+    },
+    {
+     "tool": "hunspell",
+     "id": "ui:age.consentAfter",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "और मेरे Inspired Mile के इस्तेमाल के लिए अपनी सहमति देते हैं।",
+     "at": "Inspired",
+     "message": "not in the hi dictionary",
+     "replacements": [],
+     "allowed": "A proper name (a product, platform, browser, model, person or character, or a verse form's name sourced in docs/language/glossary.json), not a word of the language."
+    },
+    {
+     "tool": "hunspell",
+     "id": "ui:age.consentAfter",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "और मेरे Inspired Mile के इस्तेमाल के लिए अपनी सहमति देते हैं।",
+     "at": "Mile",
+     "message": "not in the hi dictionary",
+     "replacements": [],
+     "allowed": "A proper name (a product, platform, browser, model, person or character, or a verse form's name sourced in docs/language/glossary.json), not a word of the language."
+    },
+    {
+     "tool": "hunspell",
+     "id": "ui:toast.achievement",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "उपलब्धि अनलॉक हुई",
+     "at": "अनलॉक",
+     "message": "not in the hi dictionary",
+     "replacements": []
+    },
+    {
+     "tool": "hunspell",
+     "id": "ui:theatre.questBody",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "पासथ्रू में खुलता है, जिससे मंच आपके कमरे में दिखाई देता है। कंट्रोलर से इशारा करें या हाथ से चुटकी भरें।",
+     "at": "पासथ्रू",
+     "message": "not in the hi dictionary",
+     "replacements": [],
+     "allowed": "An English loanword in Devanagari, as Hindi interfaces write it."
+    },
+    {
+     "tool": "hunspell",
+     "id": "ui:theatre.visionBody",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "पूरे मंच के रूप में खुलता है। किसी कार्ड को देखें और चुटकी भरें। visionOS पर Safari वेब पेजों के लिए पासथ्रू की सुविधा नहीं देता।",
+     "at": "visionOS",
+     "message": "not in the hi dictionary",
+     "replacements": [],
+     "allowed": "A proper name (a product, platform, browser, model, person or character, or a verse form's name sourced in docs/language/glossary.json), not a word of the language."
+    },
+    {
+     "tool": "hunspell",
+     "id": "ui:theatre.visionBody",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "पूरे मंच के रूप में खुलता है। किसी कार्ड को देखें और चुटकी भरें। visionOS पर Safari वेब पेजों के लिए पासथ्रू की सुविधा नहीं देता।",
+     "at": "Safari",
+     "message": "not in the hi dictionary",
+     "replacements": [],
+     "allowed": "A proper name (a product, platform, browser, model, person or character, or a verse form's name sourced in docs/language/glossary.json), not a word of the language."
+    },
+    {
+     "tool": "hunspell",
+     "id": "ui:theatre.visionBody",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "पूरे मंच के रूप में खुलता है। किसी कार्ड को देखें और चुटकी भरें। visionOS पर Safari वेब पेजों के लिए पासथ्रू की सुविधा नहीं देता।",
+     "at": "पासथ्रू",
+     "message": "not in the hi dictionary",
+     "replacements": [],
+     "allowed": "An English loanword in Devanagari, as Hindi interfaces write it."
+    },
+    {
+     "tool": "hunspell",
+     "id": "ui:theatre.writtenHint",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "लिखे हुए प्रतिद्वंद्वी से खेल रहे हैं। यहाँ मुकाबला करने के लिए युद्ध पेज पर एक मॉडल बुलाएँ।",
+     "at": "बुलाएँ",
+     "message": "not in the hi dictionary",
+     "replacements": [],
+     "allowed": "A polite imperative in -एँ, written with the chandrabindu as the game's Hindi does throughout (27 times, never with the anusvara); checked, the hi_IN list knows neither spelling (सुनाएँ, सुनाएं)."
+    },
+    {
+     "tool": "hunspell",
+     "id": "ui:theatre.declined",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "इस डिवाइस ने इमर्सिव सत्र को अस्वीकार कर दिया है।",
+     "at": "इमर्सिव",
+     "message": "not in the hi dictionary",
+     "replacements": [],
+     "allowed": "An English loanword in Devanagari, as Hindi interfaces write it."
+    }
+   ]
+  },
+  "zh": {
+   "strings": {
+    "ui": 417,
+    "pack": 107,
+    "sentences": 13
+   },
+   "languagetool": "zh-CN",
+   "hunspell": null,
+   "counts": {
+    "languagetool": 0,
+    "hunspell": 0,
+    "allowed": 0,
+    "open": 0
+   },
+   "hits": []
+  },
+  "ja": {
+   "strings": {
+    "ui": 417,
+    "pack": 103,
+    "sentences": 13
+   },
+   "languagetool": "ja-JP",
+   "hunspell": null,
+   "counts": {
+    "languagetool": 0,
+    "hunspell": 0,
+    "allowed": 0,
+    "open": 0
+   },
+   "hits": []
+  },
+  "ko": {
+   "strings": {
+    "ui": 417,
+    "pack": 127,
+    "sentences": 17
+   },
+   "languagetool": null,
+   "hunspell": [
+    "ko"
+   ],
+   "counts": {
+    "languagetool": 0,
+    "hunspell": 5,
+    "allowed": 3,
+    "open": 2
+   },
+   "hits": [
+    {
+     "tool": "hunspell",
+     "id": "ui:live.signature",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "시그니처 (기교 +½): Hamlet의 대사를 인용하지 않고 반영하기",
+     "at": "시그니처",
+     "message": "not in the ko dictionary",
+     "replacements": [],
+     "allowed": "A loanword in ordinary Korean use for games, headsets or the web, written as the 외래어 표기법 transcribes it."
+    },
+    {
+     "tool": "hunspell",
+     "id": "ui:signature.quoted",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "그대로 인용함; 에코는 본인의 행이어야 함",
+     "at": "에코는",
+     "message": "not in the ko dictionary",
+     "replacements": []
+    },
+    {
+     "tool": "hunspell",
+     "id": "ui:verdict.who.player",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "플레이어",
+     "at": "플레이어",
+     "message": "not in the ko dictionary",
+     "replacements": []
+    },
+    {
+     "tool": "hunspell",
+     "id": "ui:theatre.declined",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "이 기기는 몰입형 세션을 지원하지 않습니다.",
+     "at": "몰입형",
+     "message": "not in the ko dictionary",
+     "replacements": [],
+     "allowed": "A word with its particle or ending attached, as Korean writes it (덱+에, 세션+을, 셰익스피어+가, 동기화하+ㄹ까요); the ko_KR list lacks the word or this combination."
+    },
+    {
+     "tool": "hunspell",
+     "id": "ui:theatre.declined",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "이 기기는 몰입형 세션을 지원하지 않습니다.",
+     "at": "세션을",
+     "message": "not in the ko dictionary",
+     "replacements": [],
+     "allowed": "A word with its particle or ending attached, as Korean writes it (덱+에, 세션+을, 셰익스피어+가, 동기화하+ㄹ까요); the ko_KR list lacks the word or this combination."
+    }
+   ]
+  },
+  "vi": {
+   "strings": {
+    "ui": 417,
+    "pack": 131,
+    "sentences": 36
+   },
+   "languagetool": null,
+   "hunspell": [
+    "vi"
+   ],
+   "counts": {
+    "languagetool": 0,
+    "hunspell": 2,
+    "allowed": 0,
+    "open": 2
+   },
+   "hits": [
+    {
+     "tool": "hunspell",
+     "id": "ui:auth.emailPlaceholder",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "you@example.com",
+     "at": "you",
+     "message": "not in the vi dictionary",
+     "replacements": []
+    },
+    {
+     "tool": "hunspell",
+     "id": "ui:auth.emailPlaceholder",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "you@example.com",
+     "at": "example",
+     "message": "not in the vi dictionary",
+     "replacements": []
+    }
+   ]
+  },
+  "th": {
+   "strings": {
+    "ui": 417,
+    "pack": 91,
+    "sentences": 22
+   },
+   "languagetool": null,
+   "hunspell": [
+    "th"
+   ],
+   "counts": {
+    "languagetool": 0,
+    "hunspell": 1,
+    "allowed": 1,
+    "open": 0
+   },
+   "hits": [
+    {
+     "tool": "hunspell",
+     "id": "ui:auth.emailHint",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "ใช้อุปกรณ์ที่ไม่มีพาสคีย์ของคุณอยู่หรือ? ลงชื่อเข้าใช้ด้วยอีเมล หากบัญชีของคุณมีอีเมลผูกไว้",
+     "at": "พาส",
+     "message": "not in the th dictionary (between “ไม่มี” and “คีย์”)",
+     "replacements": [],
+     "allowed": "A piece of a word the ICU segmenter cut apart (Thai is written without spaces): พาส + คีย์ = พาสคีย์, Android's Thai word for passkey (docs/language/glossary.json). The joins with its neighbours were tried and the dictionary knows none of them; the whole word is a loanword or a name the th_TH list lacks."
+    }
+   ]
+  },
+  "id": {
+   "strings": {
+    "ui": 417,
+    "pack": 129,
+    "sentences": 22
+   },
+   "languagetool": null,
+   "hunspell": [
+    "id"
+   ],
+   "counts": {
+    "languagetool": 0,
+    "hunspell": 2,
+    "allowed": 2,
+    "open": 0
+   },
+   "hits": [
+    {
+     "tool": "hunspell",
+     "id": "ui:theatre.titleA",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "The",
+     "at": "The",
+     "message": "not in the id dictionary",
+     "replacements": [],
+     "allowed": "A proper name (a product, platform, browser, model, person or character, or a verse form's name sourced in docs/language/glossary.json), not a word of the language."
+    },
+    {
+     "tool": "hunspell",
+     "id": "ui:theatre.declined",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "Perangkat ini tidak mendukung sesi imersif.",
+     "at": "imersif",
+     "message": "not in the id dictionary",
+     "replacements": [],
+     "allowed": "Imersif (immersive), a loanword adjective, which the list lacks."
+    }
+   ]
+  }
+ },
+ "stale": [],
+ "open": 28
+}

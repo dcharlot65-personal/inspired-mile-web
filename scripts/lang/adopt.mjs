@@ -11,7 +11,9 @@
  *   node scripts/lang/adopt.mjs decide --proposals dir/proposals.json --base grammar.json \
  *        --with grammar-with-overlay.json --pairs pairs-out.json --bt bt.json [--out adoption.json]
  *       -> adoption.json      each proposal: adopted or rejected, and why
- *          changes.json       the adopted ones, for scripts/lang/apply.mjs
+ *          adoption-survivors.json  the ones that survived the tools, { lang: { key: text } }: read each
+ *                             against the English, record the decision in adoption-reading.json, and
+ *                             apply (scripts/lang/apply.mjs) only those marked adopt
  *
  * A correction is adopted only if (1) it passes the mechanical checks and keeps
  * the glossary, (2) LanguageTool and Hunspell raise nothing on it that they did
@@ -114,7 +116,7 @@ if (mode === 'propose') {
   }
   mkdirSync(dirname(out), { recursive: true });
   writeFileSync(out, JSON.stringify(result, null, 1) + '\n');
-  writeFileSync(out.replace(/adoption\.json$/, 'adoption-changes.json'), JSON.stringify(changes, null, 1) + '\n');
+  writeFileSync(out.replace(/adoption\.json$/, 'adoption-survivors.json'), JSON.stringify(changes, null, 1) + '\n');
   for (const [l, r] of Object.entries(result.languages)) console.log(`${l}: ${r.adopted.length} survive, ${r.rejected.length} rejected`);
 } else {
   console.error('usage: adopt.mjs propose <review.json> | decide --proposals … --base … --with … --pairs … --bt …');

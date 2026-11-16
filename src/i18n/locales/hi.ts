@@ -309,7 +309,7 @@ const hi: Record<string, string> = {
   'round.label': 'दौर {n} / {total}',
   'round.opponentPlays': 'आपका प्रतिद्वंद्वी खेलता है',
   'round.device': '{name}: {brief}',
-  'round.cursesYou': '{card} ने आप पर शाप डाला है, “{name}”: {rule}',
+  'round.cursesYou': '{card} ने आप पर {name} का शाप डाला है: {rule}',
   'round.composing': '{card} पद रच रहा है…',
   'round.composingDraft': '{card} पद रच रहा है… मसौदा {n} / {total}',
   'round.whoAnswers': 'जवाब कौन देगा?',

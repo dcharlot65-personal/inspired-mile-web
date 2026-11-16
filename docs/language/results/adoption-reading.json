@@ -1,0 +1,1319 @@
+{
+ "about": "The engineer’s reading of every correction the second model proposed that passed the mechanical and glossary checks (and so went on to LanguageTool, Hunspell and the meaning check). decision: adopt or reject; note: why. Only a correction that survived the tools AND is marked adopt here was applied. The reader was a language model (the engineer doing this work), not a native speaker. Written 2026-11-16.",
+ "languages": {
+  "th": {
+   "check.luc-bat-rhyme": {
+    "decision": "reject",
+    "note": "A lục bát pair is two lines, so 'of both lines' says the same as the English; no error."
+   },
+   "nav.multiplayer": {
+    "decision": "reject",
+    "note": "ผู้เล่นหลายคน is the usual Thai label for a multiplayer mode; no error."
+   },
+   "nav.viewer": {
+    "decision": "reject",
+    "note": "ตัวดู is an ordinary Thai word for a software viewer; a different wording, not a correction."
+   },
+   "age.errorDob": {
+    "decision": "adopt",
+    "note": "วันเดือนปีเกิด (day, month and year of birth) says 'full date of birth'; วันเกิด alone can be read as the birthday without the year, which the age gate needs."
+   },
+   "auth.emailHint": {
+    "decision": "reject",
+    "note": "Adds a question mark and rewords a sentence that was correct."
+   },
+   "auth.legalAfter": {
+    "decision": "reject",
+    "note": "Wrong: ของเรา ('our') closes the sentence 'you accept our Terms and Privacy Policy', which Thai word order puts after the links."
+   },
+   "battle.intro": {
+    "decision": "reject",
+    "note": "ทำงานอยู่ในเบราว์เซอร์ is correct Thai for 'runs in your browser'; the rest is a rewording."
+   },
+   "battle.mind": {
+    "decision": "reject",
+    "note": "The label picks the model that powers the opponent; สมอง (brain) suits that, and จิตใจ (spirit) does not."
+   },
+   "brain.downloading": {
+    "decision": "reject",
+    "note": "'{done} จาก {total} MB' is correct; a slash is a style choice."
+   },
+   "round.opponentPlays": {
+    "decision": "reject",
+    "note": "Wrong: the heading introduces the opponent's card, so ลงการ์ด (plays a card) is right; the verse comes later."
+   },
+   "round.whoAnswers": {
+    "decision": "reject",
+    "note": "Thai does not need a question mark here; no error."
+   },
+   "mic.none": {
+    "decision": "reject",
+    "note": "Read as right, but not adopted: the tools refused it (further from the English than the text it would replace: cosine 0.918 → 0.8647, LaBSE 0.938 → 0.7319 (“No microphone found.”)). ไม่พบไมโครโฟน ('no microphone found') is the usual system message; ที่นี่ไม่มี reads as 'there is none in this place'."
+   },
+   "mic.loadingEar": {
+    "decision": "reject",
+    "note": "The English calls the speech model 'the ear' on purpose, and every language keeps the figure; the reviewer finds หู odd here, which is listed for a native reader (HUMAN-REVIEW) rather than changed in one language alone."
+   },
+   "mic.loadingEarProgress": {
+    "decision": "reject",
+    "note": "As mic.loadingEar."
+   },
+   "mic.earFailed": {
+    "decision": "reject",
+    "note": "As mic.loadingEar."
+   },
+   "verdict.yourAnswer": {
+    "decision": "reject",
+    "note": "In a duel of verses the answer is a retort; คำตอบโต้ is right."
+   },
+   "verdict.held": {
+    "decision": "reject",
+    "note": "Wrong: 'held' means the curse was obeyed (ไม่ผิดคำสาป); ถือครอง means 'possesses'."
+   },
+   "end.lost": {
+    "decision": "reject",
+    "note": "เขา is the singular 'they' of the English; no error."
+   },
+   "badge.written": {
+    "decision": "reject",
+    "note": "The shorter 'opponent, written kind' loses what is written (verses)."
+   },
+   "theatre.declined": {
+    "decision": "reject",
+    "note": "Changes the meaning: a device that declines a session may support it."
+   },
+   "theatre.cursesYou": {
+    "decision": "reject",
+    "note": "A rewording of a correct line."
+   },
+   "theatre.versePrompt": {
+    "decision": "reject",
+    "note": "A rewording of a correct line."
+   }
+  },
+  "hi": {
+   "check.spells.words": {
+    "decision": "reject",
+    "note": "A rewording of a correct line ('open' rendered literally as खुलती)."
+   },
+   "check.growing": {
+    "decision": "reject",
+    "note": "'पिछली से' (than the last) is a normal ellipsis in Hindi; no error."
+   },
+   "check.growing.char": {
+    "decision": "reject",
+    "note": "As check.growing."
+   },
+   "check.luc-bat-rhyme": {
+    "decision": "reject",
+    "note": "A lục bát pair is two lines; 'of both lines' says the same as the English."
+   },
+   "device.riposte.brief": {
+    "decision": "reject",
+    "note": "Both wordings are correct; no error."
+   },
+   "device.brevity.brief": {
+    "decision": "reject",
+    "note": "'No line may have more than # words' is the same rule as 'keep every line to # or fewer'."
+   },
+   "device.brevity.brief.char": {
+    "decision": "reject",
+    "note": "As device.brevity.brief."
+   },
+   "device.grandeur.brief": {
+    "decision": "reject",
+    "note": "Wrong: the proposal is half English ('Use two words of … or more')."
+   },
+   "curse.no-repeats.brief": {
+    "decision": "reject",
+    "note": "The current text is correct; the proposal rewords it."
+   },
+   "curse.no-repeats.theirs": {
+    "decision": "reject",
+    "note": "As curse.no-repeats.brief."
+   },
+   "curse.short-lines.brief": {
+    "decision": "reject",
+    "note": "The current text is correct; the proposal rewords it."
+   },
+   "curse.short-lines.brief.char": {
+    "decision": "reject",
+    "note": "As curse.short-lines.brief."
+   },
+   "curse.short-lines.theirs": {
+    "decision": "reject",
+    "note": "As curse.short-lines.brief."
+   },
+   "curse.short-lines.theirs.char": {
+    "decision": "reject",
+    "note": "As curse.short-lines.brief."
+   },
+   "footer.sonnetMan": {
+    "decision": "reject",
+    "note": "The game's name stays as it is written."
+   },
+   "age.consentAfter": {
+    "decision": "reject",
+    "note": "A piece of a sentence split around links; the proposal drops 'have read', which the assembled sentence needs. Left for a native reader (HUMAN-REVIEW item 7)."
+   },
+   "age.agreeAfter": {
+    "decision": "reject",
+    "note": "'से सहमत होते हैं' is the usual form after 'by doing X, you…'; no error."
+   },
+   "auth.legalAfter": {
+    "decision": "reject",
+    "note": "As age.agreeAfter."
+   },
+   "toast.achievement": {
+    "decision": "reject",
+    "note": "उपलब्धि हासिल is correct; a loanword is not a correction."
+   },
+   "battle.difficulty.player": {
+    "decision": "reject",
+    "note": "Wrong: the three levels are a theatre company's ranks (apprentice, player, master), and a player there is an actor, which every language translates."
+   },
+   "round.cursesYou": {
+    "decision": "adopt",
+    "note": "'{card} ने आप पर {name} का शाप डाला है' (cast the curse of {name} on you) is the natural construction; the comma and quoted name were not."
+   },
+   "round.versePlaceholder": {
+    "decision": "reject",
+    "note": "Both wordings are awkward; the proposal is no better."
+   },
+   "live.curseHolding": {
+    "decision": "reject",
+    "note": "Wrong: 'holding' means the curse is being obeyed (निभ रहा है); पकड़ में means 'caught'."
+   },
+   "verdict.form": {
+    "decision": "reject",
+    "note": "Wrong: शिल्प is not the glossary's word for form; छंद-रूप names the verse form."
+   },
+   "verdict.missed": {
+    "decision": "reject",
+    "note": "चूक is a correct terse label for a missed bonus."
+   },
+   "verdict.held": {
+    "decision": "reject",
+    "note": "Wrong: 'held' means the curse was obeyed; बचाया means 'saved'."
+   },
+   "criterion.allusion": {
+    "decision": "reject",
+    "note": "संकेत is a usual rendering of a literary allusion; प्रसंग means context. No clear error."
+   },
+   "rarity.epic": {
+    "decision": "reject",
+    "note": "Read as right, but not adopted: the tools refused it (the meaning check flags it: back-translation cosine 0.1849, LaBSE 0.3387 (“Extremely rare”)). महाकाव्य is the noun 'an epic poem', not a rarity; अति-दुर्लभ (very rare) ranks between दुर्लभ and पौराणिक as the tier does."
+   },
+   "rarity.legendary": {
+    "decision": "reject",
+    "note": "पौराणिक (of legend) suits the tier; दिग्गज names a person eminent in a field."
+   },
+   "badge.writtenJudged": {
+    "decision": "reject",
+    "note": "'लिखे हुए प्रतिद्वंद्वी' loses what is written (the verses)."
+   },
+   "theatre.titleA": {
+    "decision": "reject",
+    "note": "Half of the heading 'हमारी रंगशाला' (our theatre); the proposal would leave a transliterated English article."
+   },
+   "theatre.intro": {
+    "decision": "reject",
+    "note": "सुनाएँ (recite) suits a verse better than बोलें (speak); the rest is rewording."
+   },
+   "theatre.questBody": {
+    "decision": "reject",
+    "note": "A rewording of a correct line."
+   },
+   "theatre.visionBody": {
+    "decision": "reject",
+    "note": "A rewording of a correct line."
+   },
+   "theatre.writtenHint": {
+    "decision": "reject",
+    "note": "Changes the glossary's term for the written opponent."
+   },
+   "theatre.declined": {
+    "decision": "reject",
+    "note": "Both wordings are correct."
+   }
+  },
+  "ar": {
+   "check.spells.words": {
+    "decision": "adopt",
+    "note": "على الترتيب means 'respectively'; 'in order' is بالترتيب."
+   },
+   "check.growing": {
+    "decision": "reject",
+    "note": "A correct nominal sentence with the predicate first; the proposal rewords it."
+   },
+   "check.growing.char": {
+    "decision": "reject",
+    "note": "As check.growing."
+   },
+   "check.jueju-length": {
+    "decision": "reject",
+    "note": "The ellipsis 'or every line of seven' is as complete as the English; no error."
+   },
+   "check.luc-bat-rhyme": {
+    "decision": "reject",
+    "note": "A lục bát pair is two lines; 'in the two lines' says the same as the English."
+   },
+   "device.swell.brief": {
+    "decision": "reject",
+    "note": "أطول الأسطر is a correct superlative; no error."
+   },
+   "footer.sonnetMan": {
+    "decision": "reject",
+    "note": "The game's name stays as it is written."
+   },
+   "auth.nudgeBody": {
+    "decision": "reject",
+    "note": "السبيل الوحيد إلى هذا الحساب is correct; no error."
+   },
+   "auth.nudgeBodyNoEmail": {
+    "decision": "reject",
+    "note": "As auth.nudgeBody."
+   },
+   "auth.emailHint": {
+    "decision": "adopt",
+    "note": "سجّل الدخول, the imperative of the platform term (Android and Google write تسجيل الدخول), for the colloquial ادخل. The shadda of سجّل, which the proposal left out, is written as in the other sign-in strings."
+   },
+   "auth.offerBody": {
+    "decision": "adopt",
+    "note": "As auth.emailHint, and البريد الإلكتروني for the bare بريد (post)."
+   },
+   "auth.passkeysEmpty": {
+    "decision": "reject",
+    "note": "Not adopted after a second reading: the proposal still says رمز بريدي (a postal code). Fixed instead as the sibling string auth.passkeyUnsupported words it, رمز يصلك بالبريد الإلكتروني (a code that reaches you by email), with سجّل الدخول, checked by the same tools."
+   },
+   "auth.passkeyAdded": {
+    "decision": "adopt",
+    "note": "تسجيل الدخول, the platform term, for الدخول."
+   },
+   "auth.passkeyRemoveConfirm": {
+    "decision": "reject",
+    "note": "أتريد الإزالة؟ is a correct confirmation question."
+   },
+   "auth.error.passkey_not_accepted": {
+    "decision": "adopt",
+    "note": "رمز بريدي means a postal code; the proposal says a code sent by email."
+   },
+   "battle.titleA": {
+    "decision": "reject",
+    "note": "Half of the heading حلبة النزال (the arena of combat), Arabic order; the proposal would make it 'Battle Arena' word for word."
+   },
+   "battle.titleB": {
+    "decision": "reject",
+    "note": "As battle.titleA."
+   },
+   "battle.difficulty.player": {
+    "decision": "reject",
+    "note": "Wrong: the levels are a theatre company's ranks (apprentice, player, master); a player there is an actor, الممثل."
+   },
+   "hand.relicNote": {
+    "decision": "reject",
+    "note": "The English says lends; يعيرك says it."
+   },
+   "hand.potionNote": {
+    "decision": "reject",
+    "note": "The proposal makes the verb feminine, but {card} is a character's name (Hamlet). The verb's agreement with card names is left for the names work and a native reader."
+   },
+   "hand.potionLastRound": {
+    "decision": "reject",
+    "note": "As hand.potionNote."
+   },
+   "variant.bonus": {
+    "decision": "reject",
+    "note": "+{n} في {criterion} (plus n in wit) is natural Arabic."
+   },
+   "verdict.form": {
+    "decision": "reject",
+    "note": "The proposal contradicts itself; القالب (the mould, the verse form) is kept."
+   },
+   "verdict.missed": {
+    "decision": "reject",
+    "note": "لم يتحقق (not achieved) fits a missed bonus."
+   },
+   "end.lost": {
+    "decision": "reject",
+    "note": "A rewording of a correct line."
+   },
+   "badge.written": {
+    "decision": "reject",
+    "note": "خصم مكتوب ('a written opponent') loses what is written (the verses)."
+   },
+   "stats.rounds": {
+    "decision": "reject",
+    "note": "Both are correct labels."
+   },
+   "stats.won": {
+    "decision": "reject",
+    "note": "Wrong: مكسوبة, passive participle of كسب, is correct; there is no spelling error."
+   },
+   "theatre.declined": {
+    "decision": "reject",
+    "note": "Changes the meaning: a device that declines a session may support it."
+   },
+   "theatre.judgedRules": {
+    "decision": "reject",
+    "note": "حُكم بالقواعد (it was judged by rule) is correct."
+   }
+  },
+  "vi": {
+   "form.luc-bat.brief": {
+    "decision": "reject",
+    "note": "tiếng is the traditional word for the syllables a lục bát counts; no error."
+   },
+   "check.luc-bat-rhyme": {
+    "decision": "reject",
+    "note": "A lục bát pair is two lines; 'of the two lines' says the same as the English."
+   },
+   "device.riposte.brief": {
+    "decision": "reject",
+    "note": "'mà ném trả lại' (and throw it back) is idiomatic; a rewording."
+   },
+   "device.swell.brief": {
+    "decision": "reject",
+    "note": "'Cho X là Y' (let X be Y) is a correct instruction; a rewording."
+   },
+   "device.balance.brief": {
+    "decision": "reject",
+    "note": "'Cho mọi dòng cùng một số từ' (give every line the same number of words) is correct; a rewording."
+   },
+   "device.balance.brief.char": {
+    "decision": "reject",
+    "note": "As device.balance.brief."
+   },
+   "device.grandeur.brief": {
+    "decision": "reject",
+    "note": "Dùng and sử dụng are both correct."
+   },
+   "curse.no-repeats.brief": {
+    "decision": "reject",
+    "note": "Wrong: 'quá hai lần' (more than twice) changes the rule, which forbids using a word twice."
+   },
+   "curse.no-repeats.theirs": {
+    "decision": "reject",
+    "note": "As curse.no-repeats.brief."
+   },
+   "footer.rights": {
+    "decision": "reject",
+    "note": "Bảo lưu mọi quyền is the usual Vietnamese for 'All rights reserved'; the proposal says something else (copyright belongs to the author)."
+   },
+   "auth.createIntro": {
+    "decision": "reject",
+    "note": "A rewording of a correct sentence."
+   },
+   "auth.createWarning": {
+    "decision": "reject",
+    "note": "'cho bạn vào lại' says what the English says (let you back in); a rewording."
+   },
+   "auth.createWarningNoEmail": {
+    "decision": "reject",
+    "note": "As auth.createWarning."
+   },
+   "auth.nudgeBody": {
+    "decision": "reject",
+    "note": "A rewording; 'vĩnh viễn' (for ever) adds what the English does not say."
+   },
+   "auth.nudgeBodyNoEmail": {
+    "decision": "reject",
+    "note": "As auth.nudgeBody."
+   },
+   "auth.recoveryWarning": {
+    "decision": "reject",
+    "note": "A rewording of a correct sentence."
+   },
+   "auth.recoveryWarningNoEmail": {
+    "decision": "reject",
+    "note": "As auth.recoveryWarning."
+   },
+   "auth.emailHint": {
+    "decision": "reject",
+    "note": "A rewording of a correct sentence."
+   },
+   "auth.emailPlaceholder": {
+    "decision": "reject",
+    "note": "A localised example address is fine."
+   },
+   "auth.legalAfter": {
+    "decision": "reject",
+    "note": "Wrong: 'của chúng tôi.' (our) closes the sentence that Vietnamese word order puts after the links."
+   },
+   "auth.passkeyAddedOn": {
+    "decision": "reject",
+    "note": "The point is right ('Thêm ngày {date}' can read as 'add the date'), but 'Thêm vào {date}' can read as 'add to'. Fixed instead as 'Đã thêm vào {date}' (added on), checked by the same tools."
+   },
+   "battle.titleA": {
+    "decision": "reject",
+    "note": "Half of the heading 'Đấu trường thơ' (the arena of verse); no error."
+   },
+   "battle.titleB": {
+    "decision": "reject",
+    "note": "As battle.titleA."
+   },
+   "brain.downloading": {
+    "decision": "reject",
+    "note": "'{done} trên {total} MB' is correct."
+   },
+   "verdict.notUsed": {
+    "decision": "reject",
+    "note": "dùng and sử dụng are both correct."
+   },
+   "verdict.missed": {
+    "decision": "reject",
+    "note": "trượt (missed, as a shot misses) is a correct label."
+   },
+   "verdict.held": {
+    "decision": "reject",
+    "note": "Wrong: không phạm (not broken) is what 'held' means for a curse."
+   },
+   "badge.written": {
+    "decision": "reject",
+    "note": "'Đối thủ viết sẵn' loses what is written (the verses)."
+   },
+   "theatre.inPassthrough": {
+    "decision": "reject",
+    "note": "The English is a status line; 'Đang trong kính' says it."
+   },
+   "theatre.inFullStage": {
+    "decision": "reject",
+    "note": "As theatre.inPassthrough."
+   },
+   "theatre.declined": {
+    "decision": "reject",
+    "note": "Changes the meaning: a device that declines a session may support it."
+   },
+   "theatre.xrFailed": {
+    "decision": "reject",
+    "note": "Both wordings are correct."
+   }
+  },
+  "zh": {
+   "check.luc-bat-rhyme": {
+    "decision": "reject",
+    "note": "A lục bát pair is two lines; 'of the two lines' says the same as the English."
+   },
+   "device.alliteration.brief": {
+    "decision": "reject",
+    "note": "Wrong for Chinese, which has no letters: a Chinese duel counts characters (字), as the game does."
+   },
+   "device.riposte.brief": {
+    "decision": "reject",
+    "note": "As device.alliteration.brief."
+   },
+   "house.legendary.why": {
+    "decision": "reject",
+    "note": "Read as right, but not adopted: the tools refused it (further from the English than the text it would replace: cosine 0.9448 → 0.8511, LaBSE 0.8433 → 0.7831 (“Sonnet Man keeps a rhyme all the way.”)). 骑着一个韵 renders 'rides one rhyme' word for word and reads oddly; 始终押一个韵，一路到底 (keeps one rhyme all the way) says it, close to the prosody term 一韵到底."
+   },
+   "footer.sonnetMan": {
+    "decision": "reject",
+    "note": "The game's name stays as it is written."
+   },
+   "auth.passkeysEmpty": {
+    "decision": "adopt",
+    "note": "The measure word: Android's Chinese writes '%1$s 个通行密钥' (CredentialManager more_options_usage_passkeys, sources/aosp-terms.json); 把 is for a key with a handle. Applied to every passkey string, not only the two the reviewer saw."
+   },
+   "auth.passkeysAdd": {
+    "decision": "adopt",
+    "note": "As auth.passkeysEmpty."
+   },
+   "live.curseHolding": {
+    "decision": "reject",
+    "note": "Wrong: 'holding' means the curse is being obeyed (未触犯); 持有 means 'possesses'."
+   },
+   "verdict.held": {
+    "decision": "reject",
+    "note": "Wrong: 'held' means the curse was obeyed (未触犯); 未受影响 means 'not affected'."
+   },
+   "end.lost": {
+    "decision": "reject",
+    "note": "对手 (the opponent) is who 'they' are; a rewording."
+   },
+   "badge.written": {
+    "decision": "reject",
+    "note": "预先写好的对手 loses what is written (the verses)."
+   },
+   "theatre.declined": {
+    "decision": "reject",
+    "note": "Changes the meaning: a device that declines a session may support it."
+   },
+   "theatre.versePrompt": {
+    "decision": "reject",
+    "note": "A rewording of a correct line."
+   }
+  },
+  "ja": {
+   "check.luc-bat-rhyme": {
+    "decision": "reject",
+    "note": "A lục bát pair is two lines; 'of both lines' says the same as the English."
+   },
+   "age.consentBefore": {
+    "decision": "reject",
+    "note": "A piece of a sentence split around links; changing one piece alone can break the assembled sentence. Left for a native reader (HUMAN-REVIEW item 7)."
+   },
+   "age.consentAnd": {
+    "decision": "reject",
+    "note": "As age.consentBefore."
+   },
+   "age.consentAfter": {
+    "decision": "reject",
+    "note": "As age.consentBefore; the proposal drops を確認し, which the assembled sentence needs."
+   },
+   "auth.legalBefore": {
+    "decision": "reject",
+    "note": "As age.consentBefore."
+   },
+   "round.opponentPlays": {
+    "decision": "reject",
+    "note": "Wrong: the heading introduces the opponent's card, so 相手が出したカード (the card the opponent played) is right."
+   },
+   "round.versePlaceholder": {
+    "decision": "reject",
+    "note": "A rewording of a correct line."
+   },
+   "hand.potionLastRound": {
+    "decision": "reject",
+    "note": "The proposal drops the 'would' of the English; ものですが keeps it."
+   },
+   "verdict.missed": {
+    "decision": "reject",
+    "note": "不成立 (did not come off) is a correct label for a missed bonus."
+   },
+   "badge.onDevice": {
+    "decision": "reject",
+    "note": "Changes the meaning: the badge says where the model runs (この端末で動作), not that a duel is played."
+   },
+   "badge.written": {
+    "decision": "reject",
+    "note": "書かれた相手 ('a written opponent') loses what is written (the verses)."
+   },
+   "theatre.declined": {
+    "decision": "reject",
+    "note": "Changes the meaning: a device that declines a session may support it."
+   },
+   "theatre.judgedRules": {
+    "decision": "reject",
+    "note": "Both wordings are correct."
+   }
+  },
+  "ko": {
+   "check.luc-bat-rhyme": {
+    "decision": "reject",
+    "note": "A lục bát pair is two lines; 'of the two lines' says the same as the English."
+   },
+   "age.consentBefore": {
+    "decision": "reject",
+    "note": "A piece of a sentence split around links; changing one piece alone can break the assembled sentence. Left for a native reader (HUMAN-REVIEW item 7)."
+   },
+   "age.consentAfter": {
+    "decision": "reject",
+    "note": "As age.consentBefore; the proposal drops 을(를) 읽었으며 (have read), which the assembled sentence needs."
+   },
+   "age.agreeAfter": {
+    "decision": "reject",
+    "note": "As age.consentBefore; 봅니다 and 간주합니다 both say 'is taken to'."
+   },
+   "round.opponentPlays": {
+    "decision": "reject",
+    "note": "Wrong: the heading introduces the opponent's card, so 상대가 내는 카드 (the card the opponent plays) is right."
+   },
+   "hand.potionLastRound": {
+    "decision": "adopt",
+    "note": "'걸 수 있지만' (could curse, but) keeps the English 'would'; '걸지만' says the curse is cast."
+   },
+   "live.signature": {
+    "decision": "reject",
+    "note": "A change of register (the interface speaks 해요체 throughout); not an error."
+   },
+   "signature.quoted": {
+    "decision": "reject",
+    "note": "As live.signature."
+   },
+   "verdict.notUsed": {
+    "decision": "reject",
+    "note": "Changes the meaning: 'not used' (쓰지 않음) is not 'not applicable' (해당 없음)."
+   },
+   "verdict.missed": {
+    "decision": "reject",
+    "note": "놓침 (missed) is the word; 실패 (failure) is harsher than the English."
+   },
+   "verdict.held": {
+    "decision": "reject",
+    "note": "Wrong: 'held' means the curse was obeyed (지킴); 보유 means 'possession'."
+   },
+   "verdict.who.player": {
+    "decision": "reject",
+    "note": "The score table speaks from the player's side (나, me), as the rest of the Korean interface does; a design choice, not an error."
+   },
+   "verdict.who.split": {
+    "decision": "reject",
+    "note": "Read as right, but not adopted: the tools refused it (the meaning check flags it: back-translation cosine 0.2617, LaBSE 0.3828 (“Draw.”)). 무승부 (a draw) is what a split criterion is; 반반 (half and half) reads as a share."
+   },
+   "end.over": {
+    "decision": "reject",
+    "note": "A change of register; the interface speaks 해요체 throughout."
+   },
+   "badge.written": {
+    "decision": "reject",
+    "note": "쓰인 상대 ('a written opponent') loses what is written (the verses)."
+   },
+   "theatre.declined": {
+    "decision": "reject",
+    "note": "Changes the meaning: a device that declines a session may support it."
+   },
+   "theatre.cursesYou": {
+    "decision": "reject",
+    "note": "Wrong: 내게 걸린 저주 (the curse on me) is the player speaking, as the Korean interface does throughout; it is the curse placed on the player."
+   }
+  },
+  "pl": {
+   "check.spells.words": {
+    "decision": "reject",
+    "note": "A rewording; but the reviewer's attention to this line found a real fault: 'od {word}' needs the genitive, which a word put in as written does not have. Fixed instead as 'od słów: {word}' (with the words:), checked by the same tools."
+   },
+   "age.agreeBefore": {
+    "decision": "reject",
+    "note": "Deliberate: the sentence ends on 'the documents:' so the linked titles need not be declined (HUMAN-REVIEW item 7)."
+   },
+   "auth.emailPlaceholder": {
+    "decision": "reject",
+    "note": "A localised example address is fine."
+   },
+   "battle.titleA": {
+    "decision": "reject",
+    "note": "Half of the heading 'Arena bitwy' (the arena of battle), Polish order."
+   },
+   "battle.titleB": {
+    "decision": "reject",
+    "note": "As battle.titleA."
+   },
+   "battle.cardInCity": {
+    "decision": "reject",
+    "note": "Wrong: 'w {city}' needs the city's locative (w Weronie), which a name put in as written does not have; the comma avoids that."
+   },
+   "round.opponentPlays": {
+    "decision": "reject",
+    "note": "The heading introduces the opponent's character card; no error."
+   },
+   "round.versePlaceholder": {
+    "decision": "reject",
+    "note": "linijka is the ordinary word for a line of text in a box; no error."
+   },
+   "variant.bonus": {
+    "decision": "reject",
+    "note": "A colon between the bonus and its criterion is correct."
+   },
+   "signature.none": {
+    "decision": "reject",
+    "note": "kwestia-sygnatura is a hyphenated apposition, both parts declined (kwestii-sygnatury), as Polish writes such compounds."
+   },
+   "verdict.notUsed": {
+    "decision": "reject",
+    "note": "nieużyte (not used, this time) is correct."
+   },
+   "verdict.held": {
+    "decision": "reject",
+    "note": "Wrong: 'held' means the curse's condition was kept (dotrzymana), not that a curse was maintained on someone."
+   },
+   "badge.written": {
+    "decision": "reject",
+    "note": "'Gotowy rywal' (a ready opponent) loses what is written (the verses)."
+   },
+   "theatre.titleA": {
+    "decision": "reject",
+    "note": "Half of the heading 'Nasz Teatr' (our theatre); no error."
+   },
+   "theatre.questBody": {
+    "decision": "reject",
+    "note": "A loanword and a rewording; tryb przezroczysty says passthrough."
+   },
+   "theatre.declined": {
+    "decision": "reject",
+    "note": "Changes the meaning: a device that declines a session may support it."
+   },
+   "theatre.micLoading": {
+    "decision": "reject",
+    "note": "Changes the meaning: what loads is the speech model, which the English calls 'the ear' on purpose; 'loading sound' is something else."
+   }
+  },
+  "ru": {
+   "form.epistrophe.brief.char": {
+    "decision": "reject",
+    "note": "кончаются and заканчиваются are both correct."
+   },
+   "check.spells.words": {
+    "decision": "reject",
+    "note": "'со слов {word}' (with the words) is correct; the proposal adds a stray comma."
+   },
+   "check.luc-bat-rhyme": {
+    "decision": "reject",
+    "note": "A lục bát pair is two lines; 'of both lines' says the same as the English."
+   },
+   "device.ring.brief.char": {
+    "decision": "adopt",
+    "note": "начинаться с + genitive is the construction: 'тем же знаком, с которого она началась'; 'каким она началась' is not. The word version, device.ring.brief, had the same fault and is fixed the same way, checked by the same tools."
+   },
+   "nav.explore": {
+    "decision": "reject",
+    "note": "A heading over a group of menu links; Обзор suits it, the verb Исследовать does not."
+   },
+   "nav.toggleAudio": {
+    "decision": "reject",
+    "note": "A label read out for a toggle button; 'turn on or off' is what it does."
+   },
+   "nav.toggleMenu": {
+    "decision": "reject",
+    "note": "As nav.toggleAudio."
+   },
+   "age.intro": {
+    "decision": "reject",
+    "note": "A change of register: the Russian interface addresses the player as ты throughout (its file header says so)."
+   },
+   "age.errorDob": {
+    "decision": "reject",
+    "note": "As age.intro."
+   },
+   "age.minorBody": {
+    "decision": "reject",
+    "note": "As age.intro."
+   },
+   "age.teenBody": {
+    "decision": "reject",
+    "note": "As age.intro."
+   },
+   "age.agreeBefore": {
+    "decision": "reject",
+    "note": "As age.intro; the sentence ends on 'документы:' so the linked titles need not be declined (HUMAN-REVIEW item 7)."
+   },
+   "migrate.body": {
+    "decision": "reject",
+    "note": "A rewording of a correct sentence."
+   },
+   "pwa.install": {
+    "decision": "reject",
+    "note": "As age.intro."
+   },
+   "auth.emailHint": {
+    "decision": "reject",
+    "note": "As age.intro."
+   },
+   "auth.codeHeading": {
+    "decision": "reject",
+    "note": "As age.intro."
+   },
+   "auth.legalBefore": {
+    "decision": "reject",
+    "note": "As age.agreeBefore."
+   },
+   "auth.offerBody": {
+    "decision": "reject",
+    "note": "As age.intro."
+   },
+   "auth.passkeysEmpty": {
+    "decision": "reject",
+    "note": "As age.intro."
+   },
+   "auth.error.email_in_use": {
+    "decision": "reject",
+    "note": "As age.intro; принадлежит (belongs to) is what the English says."
+   },
+   "battle.cardInCity": {
+    "decision": "reject",
+    "note": "Wrong: 'в {city}' needs the city's prepositional case (в Вероне), which a name put in as written does not have; the comma avoids that."
+   },
+   "round.items": {
+    "decision": "reject",
+    "note": "'по 1 чернилам' is not better; how a counted amount of ink (a plural-only noun) is written is listed for a native reader."
+   },
+   "hand.relicNote": {
+    "decision": "reject",
+    "note": "The English says 'lends you: {words}'; 'слова силы' is the glossary's term only where the English says power words."
+   },
+   "hand.potionLastRound": {
+    "decision": "reject",
+    "note": "Wrong: the feminine verb would not agree with a masculine card name (Hamlet); the current wording avoids the agreement on purpose."
+   },
+   "variant.bonus": {
+    "decision": "reject",
+    "note": "A colon between the bonus and its criterion is correct."
+   },
+   "verdict.notUsed": {
+    "decision": "reject",
+    "note": "The plural agrees with what it describes in the table; no error found."
+   },
+   "verdict.missed": {
+    "decision": "reject",
+    "note": "мимо (missed, as a shot) is a correct terse label."
+   },
+   "verdict.held": {
+    "decision": "reject",
+    "note": "Wrong: 'held' means the curse was obeyed, соблюдено; удержано means 'retained'."
+   },
+   "verdict.seeResult": {
+    "decision": "reject",
+    "note": "итог and результат are both correct."
+   },
+   "badge.written": {
+    "decision": "reject",
+    "note": "'Готовый соперник' (a ready opponent) loses what is written (the verses)."
+   },
+   "theatre.flat": {
+    "decision": "reject",
+    "note": "The flat version is the battle page, not a display mode; no error."
+   }
+  },
+  "id": {
+   "check.spells.words": {
+    "decision": "reject",
+    "note": "Wrong: 'Baris terbuka' means 'open lines'; 'dibuka dengan {word}' (are opened with) is what the English says."
+   },
+   "check.growing": {
+    "decision": "reject",
+    "note": "punya and memiliki are both correct; a rewording."
+   },
+   "check.growing.char": {
+    "decision": "reject",
+    "note": "As check.growing."
+   },
+   "check.luc-bat-rhyme": {
+    "decision": "reject",
+    "note": "A lục bát pair is two lines; 'in both lines' says the same as the English."
+   },
+   "device.swell.name": {
+    "decision": "reject",
+    "note": "A device's name; Gelombang (the wave) is the game's choice, and 'big wave' is no correction."
+   },
+   "nav.toggleAudio": {
+    "decision": "reject",
+    "note": "A label read out for a toggle button; 'turn on or off' is what it does."
+   },
+   "nav.toggleMenu": {
+    "decision": "reject",
+    "note": "As nav.toggleAudio."
+   },
+   "age.agreeAfter": {
+    "decision": "reject",
+    "note": "Wrong: the leading space separates the piece from the link before it in the assembled sentence."
+   },
+   "auth.legalAfter": {
+    "decision": "reject",
+    "note": "As age.agreeAfter."
+   },
+   "auth.error.invalid_email": {
+    "decision": "reject",
+    "note": "tampak and terlihat are both correct."
+   },
+   "battle.badge": {
+    "decision": "reject",
+    "note": "Sentence case is the interface's style for badges; no error."
+   },
+   "battle.titleA": {
+    "decision": "reject",
+    "note": "Half of the heading 'Arena Pertarungan'; Indonesian order."
+   },
+   "battle.titleB": {
+    "decision": "reject",
+    "note": "As battle.titleA."
+   },
+   "battle.prepareNote": {
+    "decision": "reject",
+    "note": "Wrong: here a character is a character card (tokoh), not the unit of writing (aksara)."
+   },
+   "brain.failed": {
+    "decision": "reject",
+    "note": "Changes the register (Anda for the interface's kamu) and the glossary's term for the written opponent."
+   },
+   "hand.relicNote": {
+    "decision": "reject",
+    "note": "The English says lends; meminjami says it."
+   },
+   "hand.potionNote": {
+    "decision": "reject",
+    "note": "lawanmu (your opponent) is what the English says."
+   },
+   "signature.none": {
+    "decision": "reject",
+    "note": "punya is the interface's register; no error."
+   },
+   "badge.written": {
+    "decision": "reject",
+    "note": "'Lawan tertulis' ('a written opponent') loses what is written (the verses)."
+   },
+   "theatre.titleA": {
+    "decision": "reject",
+    "note": "The proposal is English. Whether 'Sang Teater' reads well is left for a native reader."
+   },
+   "theatre.declined": {
+    "decision": "reject",
+    "note": "Changes the meaning: a device that declines a session may support it."
+   },
+   "theatre.pick": {
+    "decision": "reject",
+    "note": "Wrong: here a character is a character card (tokoh), not the unit of writing (aksara)."
+   }
+  },
+  "es": {
+   "form.jueju.brief": {
+    "decision": "reject",
+    "note": "'china' says what the English leaves to the form's name; no error."
+   },
+   "check.spells.words": {
+    "decision": "reject",
+    "note": "Wrong: 'Versos abiertos' means 'open lines'; the line says the verses begin with these words."
+   },
+   "footer.sonnetMan": {
+    "decision": "reject",
+    "note": "The game's name stays as it is written."
+   },
+   "auth.emailHint": {
+    "decision": "reject",
+    "note": "entrar is one of the glossary's accepted forms for sign in (auth.emailHeading uses it too); no error."
+   },
+   "battle.titleA": {
+    "decision": "reject",
+    "note": "Half of the heading 'Arena de batalla', Spanish order."
+   },
+   "battle.titleB": {
+    "decision": "reject",
+    "note": "As battle.titleA."
+   },
+   "round.cursesYou": {
+    "decision": "reject",
+    "note": "Deliberate: Spanish goes on in lower case after a colon, so the rule, a full sentence, follows a full stop (commit 3bfe45e)."
+   },
+   "verdict.notUsed": {
+    "decision": "reject",
+    "note": "sin usar is correct."
+   },
+   "verdict.missed": {
+    "decision": "reject",
+    "note": "fallado is correct."
+   },
+   "verdict.held": {
+    "decision": "reject",
+    "note": "Wrong: 'held' means the curse's rule was obeyed, cumplida; mantenida means kept in force."
+   },
+   "badge.writtenJudged": {
+    "decision": "reject",
+    "note": "'juzga {model}' ({model} judges) is correct and clear."
+   },
+   "theatre.judgedRules": {
+    "decision": "reject",
+    "note": "Both wordings are correct."
+   }
+  },
+  "fr": {
+   "check.spells.words": {
+    "decision": "reject",
+    "note": "Wrong: 'Vers ouverts' means 'open lines'; the line says the verses begin with these words."
+   },
+   "device.ring.brief.char": {
+    "decision": "reject",
+    "note": "ouvrir une strophe (to open a stanza) is correct French."
+   },
+   "footer.sonnetMan": {
+    "decision": "reject",
+    "note": "The game's name stays as it is written."
+   },
+   "auth.createWarning": {
+    "decision": "reject",
+    "note": "'une seconde clé' after 'la clé d’accès' in the same sentence is a normal ellipsis."
+   },
+   "auth.createWarningNoEmail": {
+    "decision": "reject",
+    "note": "As auth.createWarning."
+   },
+   "auth.nudgeBody": {
+    "decision": "reject",
+    "note": "As auth.createWarning."
+   },
+   "auth.nudgeBodyNoEmail": {
+    "decision": "reject",
+    "note": "As auth.createWarning."
+   },
+   "battle.titleB": {
+    "decision": "reject",
+    "note": "The second half of the heading 'Arène de combat'; lower case is right."
+   },
+   "brain.checking": {
+    "decision": "reject",
+    "note": "Correct; 'compatibilité' would say less."
+   },
+   "signature.none": {
+    "decision": "reject",
+    "note": "'réplique de signature' is correct."
+   },
+   "verdict.notUsed": {
+    "decision": "reject",
+    "note": "The plural agrees with what it describes in the table; no error found."
+   },
+   "verdict.missed": {
+    "decision": "reject",
+    "note": "The feminine agrees with la signature; no error."
+   },
+   "badge.written": {
+    "decision": "reject",
+    "note": "'Adversaire écrit' ('a written opponent') loses what is written (the verses)."
+   },
+   "theatre.visionBody": {
+    "decision": "reject",
+    "note": "A loanword for a correct French description."
+   },
+   "theatre.declined": {
+    "decision": "reject",
+    "note": "Changes the meaning: a device that declines a session may support it."
+   },
+   "theatre.composingDraft": {
+    "decision": "reject",
+    "note": "The status line follows the card's name ('… compose'); no error."
+   },
+   "theatre.submit": {
+    "decision": "adopt",
+    "note": "The same English 'Speak it' is 'Dites-la' on the battle page (mic.speak); 'La dire' was the odd one out."
+   }
+  },
+  "de": {
+   "check.spells.words": {
+    "decision": "reject",
+    "note": "A rewording of a correct line."
+   },
+   "check.luc-bat-rhyme": {
+    "decision": "reject",
+    "note": "A lục bát pair is two lines; 'of both lines' says the same as the English."
+   },
+   "device.riposte.brief": {
+    "decision": "reject",
+    "note": "'mit 1 oder mehr Buchstaben' is correct German; a rewording."
+   },
+   "device.grandeur.brief": {
+    "decision": "reject",
+    "note": "Wrong: after mit the noun is dative, Buchstaben, not Buchstabe."
+   },
+   "curse.no-repeats.brief": {
+    "decision": "reject",
+    "note": "As device.riposte.brief."
+   },
+   "curse.no-repeats.theirs": {
+    "decision": "reject",
+    "note": "er stands for der Gegner, the opponent; Sie dürfen would read as the formal 'you'."
+   },
+   "auth.createWarning": {
+    "decision": "adopt",
+    "note": "'damit du zurückkommst' (so that you come back) says returning, not getting back into the account; 'damit du wieder Zugriff hast' says it. Applied to the six strings with the phrase."
+   },
+   "auth.createWarningNoEmail": {
+    "decision": "adopt",
+    "note": "As auth.createWarning."
+   },
+   "auth.nudgeBody": {
+    "decision": "adopt",
+    "note": "As auth.createWarning."
+   },
+   "auth.nudgeBodyNoEmail": {
+    "decision": "adopt",
+    "note": "As auth.createWarning."
+   },
+   "auth.recoveryWarning": {
+    "decision": "adopt",
+    "note": "As auth.createWarning."
+   },
+   "auth.recoveryWarningNoEmail": {
+    "decision": "adopt",
+    "note": "As auth.createWarning."
+   },
+   "auth.error.email_in_use": {
+    "decision": "reject",
+    "note": "Changes the meaning: one signs in with the address (damit), not with 'this account'."
+   },
+   "battle.titleA": {
+    "decision": "reject",
+    "note": "Half of the heading 'Die Kampfarena'."
+   },
+   "battle.difficulty.player": {
+    "decision": "reject",
+    "note": "Wrong: the levels are a theatre company's ranks (apprentice, player, master); a player there is an actor, Schauspieler."
+   },
+   "battle.worldCard": {
+    "decision": "reject",
+    "note": "Wrong: Weltkarte means a map of the world, which is why it was changed (commit 47ad9b3)."
+   },
+   "illegal.character-used": {
+    "decision": "reject",
+    "note": "Wrong: here a character is a character card (Figur), not the unit of writing (Zeichen)."
+   },
+   "verdict.who.player": {
+    "decision": "reject",
+    "note": "A table cell with the English in lower case; du is correct."
+   },
+   "end.lost": {
+    "decision": "reject",
+    "note": "dem Gegner (the opponent) is who 'they' are; ihnen would read as a plural."
+   },
+   "badge.written": {
+    "decision": "reject",
+    "note": "'Geschriebener Gegner' ('a written opponent') loses what is written (the verses)."
+   },
+   "theatre.intro": {
+    "decision": "reject",
+    "note": "The comma sets off a fragment as the English does; 'drück auf das Mikrofon' is correct."
+   },
+   "theatre.declined": {
+    "decision": "reject",
+    "note": "Changes the meaning: a device that declines a session may support it."
+   },
+   "age.errorDob": {
+    "decision": "reject",
+    "note": "wählen and auswählen are both correct here."
+   },
+   "age.minorBody": {
+    "decision": "reject",
+    "note": "A change of register; the interface speaks to the player with du throughout."
+   },
+   "age.consentAnd": {
+    "decision": "reject",
+    "note": "A piece of a sentence split around links; the article belongs to the second linked title. Left for a native reader (HUMAN-REVIEW item 7)."
+   },
+   "age.agreeBefore": {
+    "decision": "reject",
+    "note": "As age.consentAnd; 'zustimmen' would need the dative for titles the page does not decline."
+   },
+   "age.agreeAnd": {
+    "decision": "reject",
+    "note": "As age.consentAnd."
+   }
+  },
+  "it": {
+   "check.spells.words": {
+    "decision": "reject",
+    "note": "Wrong: 'Versi aperti' means 'open lines'; the line says the verses begin with these words."
+   },
+   "check.luc-bat-rhyme": {
+    "decision": "reject",
+    "note": "A lục bát pair is two lines; 'of the two lines' says the same as the English."
+   },
+   "device.swell.name": {
+    "decision": "reject",
+    "note": "The typographic apostrophe (’) is correct Italian typography."
+   },
+   "age.consentAnd": {
+    "decision": "reject",
+    "note": "A piece of a sentence split around links; 'e la relativa' belongs to the second linked title. Left for a native reader (HUMAN-REVIEW item 7)."
+   },
+   "auth.error.signup_retry": {
+    "decision": "reject",
+    "note": "'Non è andata a buon fine' is idiomatic Italian with no stated subject."
+   },
+   "auth.error.invalid_code": {
+    "decision": "reject",
+    "note": "Wrong: fattene (farsi + ne, 'get yourself sent one') is correct; there is no error."
+   },
+   "battle.badge": {
+    "decision": "reject",
+    "note": "The proposal is English."
+   },
+   "battle.titleA": {
+    "decision": "reject",
+    "note": "Half of the heading 'Arena di battaglia', Italian order."
+   },
+   "battle.titleB": {
+    "decision": "reject",
+    "note": "As battle.titleA."
+   },
+   "brain.failed": {
+    "decision": "reject",
+    "note": "Changes the glossary's term for the written opponent."
+   },
+   "brain.written": {
+    "decision": "reject",
+    "note": "As brain.failed."
+   },
+   "round.items": {
+    "decision": "reject",
+    "note": "'1 di inchiostro' (one of ink) is the partitive Italian uses for a game resource; no error."
+   },
+   "signature.none": {
+    "decision": "reject",
+    "note": "'battuta di firma' is correct."
+   },
+   "verdict.held": {
+    "decision": "reject",
+    "note": "Wrong: 'held' means the curse was obeyed, rispettata; mantenuta means kept in force."
+   },
+   "badge.writtenJudged": {
+    "decision": "reject",
+    "note": "Changes the glossary's term for the written opponent; 'giudica {model}' ({model} judges) is correct."
+   },
+   "theatre.declined": {
+    "decision": "reject",
+    "note": "Changes the meaning: a device that declines a session may support it."
+   },
+   "theatre.judgedRules": {
+    "decision": "reject",
+    "note": "'secondo regole' (by rules, as the English 'by rule') is used in all three such strings; with the article it would read 'according to the rules'. Not clearly an error; left as it is."
+   }
+  },
+  "pt": {
+   "check.spells.words": {
+    "decision": "reject",
+    "note": "Wrong: 'Versos abertos' means 'open lines'; the line says the verses begin with these words."
+   },
+   "check.luc-bat-rhyme": {
+    "decision": "reject",
+    "note": "A lục bát pair is two lines; 'of the two lines' says the same as the English."
+   },
+   "device.swell.name": {
+    "decision": "reject",
+    "note": "A device's name; vaga (a great wave, literary) is the game's choice, and crescendo is another device's idea."
+   },
+   "nav.toggleAudio": {
+    "decision": "reject",
+    "note": "A label read out for a toggle button; 'turn on or off' is what it does."
+   },
+   "nav.toggleMenu": {
+    "decision": "reject",
+    "note": "As nav.toggleAudio."
+   },
+   "auth.nudgeBody": {
+    "decision": "reject",
+    "note": "The English repeats 'one … only' too; a rewording of a correct sentence."
+   },
+   "auth.nudgeBodyNoEmail": {
+    "decision": "reject",
+    "note": "As auth.nudgeBody."
+   },
+   "verdict.notUsed": {
+    "decision": "reject",
+    "note": "usadas and utilizadas are both correct."
+   },
+   "verdict.missed": {
+    "decision": "reject",
+    "note": "Changes the meaning: 'missed' is a bonus not landed, not a curse not fulfilled."
+   },
+   "end.lost": {
+    "decision": "reject",
+    "note": "Wrong: the line is shown when the player loses; the stage is the opponent's (deles)."
+   },
+   "badge.written": {
+    "decision": "reject",
+    "note": "'Adversário escrito' ('a written opponent') loses what is written (the verses)."
+   },
+   "theatre.declined": {
+    "decision": "reject",
+    "note": "Changes the meaning: a device that declines a session may support it."
+   },
+   "theatre.judgedRules": {
+    "decision": "reject",
+    "note": "rodando is the ordinary Brazilian word for a program running."
+   },
+   "theatre.cursesYou": {
+    "decision": "reject",
+    "note": "Deliberate: Portuguese goes on in lower case after a colon, so the rule, a full sentence, follows a full stop (commit 3bfe45e)."
+   },
+   "theatre.submit": {
+    "decision": "reject",
+    "note": "Wrong gender: the thing spoken is a estrofe (feminine), so it would be Diga-a; the infinitive button label Dizer is ordinary Brazilian UI."
+   }
+  }
+ }
+}

@@ -450,7 +450,7 @@ const fr: Record<string, string> = {
   'theatre.score': '{you} {a} – {b} {them}',
   'theatre.versePrompt': 'Votre strophe apparaît ici. Appuyez sur le micro et dites-la, un vers par souffle.',
   'theatre.clear': 'Effacer',
-  'theatre.submit': 'La dire',
+  'theatre.submit': 'Dites-la',
   'theatre.judging': 'Jugement…',
 };
 

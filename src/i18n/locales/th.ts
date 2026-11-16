@@ -148,7 +148,7 @@ const th: Record<string, string> = {
   'age.day': 'วัน',
   'age.year': 'ปี',
   'age.continue': 'ไปต่อ',
-  'age.errorDob': 'โปรดเลือกวันเกิดให้ครบ',
+  'age.errorDob': 'โปรดเลือกวันเดือนปีเกิดให้ครบถ้วน',
   'age.minorTitle': 'อายุยังไม่ถึงเกณฑ์',
   'age.minorBody': 'คุณต้องมีอายุอย่างน้อย 13 ปีจึงจะใช้ Inspired Mile ได้ โปรดกลับมาใหม่เมื่ออายุถึงเกณฑ์',
   'age.teenTitle': 'ต้องได้รับความยินยอมจากผู้ปกครอง',
