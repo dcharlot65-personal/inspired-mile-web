@@ -42,7 +42,7 @@ test.describe('TTS Audio', () => {
       (window as any).__speechSynthCalled = false;
     });
 
-    await page.goto('http://localhost:4399/battle', { waitUntil: 'networkidle' });
+    await page.goto('/battle', { waitUntil: 'networkidle' });
 
     // Wait for WebGPU check
     await page.waitForTimeout(3000);
@@ -112,7 +112,7 @@ test.describe('TTS Audio', () => {
       (window as any).__speechSynthCalled = false;
     });
 
-    await page.goto('http://localhost:4399/battle', { waitUntil: 'networkidle' });
+    await page.goto('/battle', { waitUntil: 'networkidle' });
     await page.waitForTimeout(3000);
 
     // Enter demo mode
