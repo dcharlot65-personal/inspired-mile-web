@@ -606,7 +606,6 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
     <script>
       import { loadArea, locale as currentLocale, t as tr } from '../i18n';
       import { escapeHtml } from '../i18n/pages/runtime';
-      import { achievementDescription, achievementName } from '../i18n/pages/terms';
 
       // ---- Toast notification system ----
       type ToastType = 'success' | 'error' | 'info' | 'warning';
@@ -662,8 +661,10 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
         const a = e.detail;
         const container = document.getElementById('achievement-toasts');
         if (!container) return;
-        // The achievement's name and description in the interface language (English if the area will not load).
+        // The achievement's name and description in the interface language (English if the area will not
+        // load). Fetched when the first toast is due: the card and city data behind it is not for every page.
         await loadArea('achievements', currentLocale()).catch(() => {});
+        const { achievementDescription, achievementName } = await import('../i18n/pages/terms');
 
         const toast = document.createElement('div');
         const colors = TIER_COLORS[a.tier] || TIER_COLORS.bronze;

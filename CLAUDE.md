@@ -82,8 +82,21 @@ left behind by a killed run is found by its port: `lsof -nP -iTCP:<port> -sTCP:L
   `locales/`). Markup carries keys (`data-i18n`, `data-i18n-placeholder`, …); scripts call
   `t()` and redraw on `onLocaleChange`. A new string goes into `locales/en.ts` and all fifteen
   others: `src/i18n/i18n.test.ts` fails on a missing key, an empty value or a different
-  `{placeholder}`. Translated so far: the layout (navigation, footer, age gate, sign-in), the
+  `{placeholder}`. Translated so far in the core files: the layout (navigation, footer, age gate, sign-in), the
   battle page and the theatre. Card names and Shakespeare's lines stay English.
+- **Pages beyond the duel** keep their strings out of the core locale files, in page areas:
+  `src/i18n/pages/<area>/<lang>.ts`, loaded when a page asks (`loadArea`, or `initPage` in
+  `src/i18n/pages/runtime.ts`, which also redraws on a language change). Static markup uses
+  `<T k="area.key" />` (`src/components/T.astro`) or `data-i18n-html`, NOT `data-i18n`: the core
+  fills `data-i18n` before a language's areas have arrived. A message may carry `<b>` and `<a>`
+  marks. Numbers, dates, lists and region names come from `Intl` (`num`, `day`, `list`,
+  `regionName`); a count is written "label: number", never number + noun. Card, city and
+  achievement data is named by `src/i18n/pages/terms.ts`, card rules by `rules-text.ts`.
+  The layout takes `titleKey`, `descriptionKey` and `i18nAreas` for the document title and
+  description. Translated so far: home, about, collection, profile, world map (areas `home`,
+  `about`, `collection`, `profile`, `world-map`, `variants`, `card-terms`, `rules`,
+  `achievements`). `src/i18n/pages.test.ts` and `tests/pages-i18n.spec.ts` check them; sources,
+  what is not translated and what the tools found are in `docs/language/pages-core/`.
 - **The duel's language** is a separate choice. The engine (`src/lib/verse`) returns message
   keys, never sentences; `english.ts` renders them for the model's prompt, which is always
   English. Per-language data (acrostic words, forbidden letters, power words, the written
