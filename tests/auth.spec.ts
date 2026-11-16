@@ -1,7 +1,8 @@
 import { test, expect, type APIRequestContext, type CDPSession, type Page } from '@playwright/test';
-import { execFileSync } from 'node:child_process';
+import { execFileSync, spawnSync } from 'node:child_process';
 import { createHmac } from 'node:crypto';
 import { existsSync, readFileSync } from 'node:fs';
+import os from 'node:os';
 import path from 'node:path';
 import { E2E } from './e2e-env';
 
@@ -19,7 +20,7 @@ const API_LOG = path.join(E2E.workDir, 'api.log');
 /** The same pages on a second origin whose /api is the email-off API. */
 const NO_EMAIL_WEB = E2E.webNoEmailOrigin;
 /** The JWT secret tests/start-backend.sh gives the test APIs. */
-const E2E_JWT_SECRET = 'e2e-secret-not-for-production';
+const E2E_JWT_SECRET = 'e2e-secret-not-for-production-0123456789abcdef';
 
 // ---------------------------------------------------------------------------
 // Helpers
@@ -85,17 +86,98 @@ function sql(statement: string): string {
   ).trim();
 }
 
-function requestCode(request: APIRequestContext, email: string, opts: { ip?: string; ageTier?: string | null; base?: string } = {}) {
-  const data: Record<string, unknown> = { email };
-  if (opts.ageTier !== null) data.age_tier = opts.ageTier ?? 'adult';
-  return request.post(`${opts.base ?? API}/auth/email/request`, {
-    data,
-    headers: { 'CF-Connecting-IP': opts.ip ?? uniqueIp() },
-  });
+/** An answer from the API, read once. The same shape as Playwright's APIResponse where the tests use it. */
+interface Answer {
+  status(): number;
+  json(): Promise<any>;
+  text(): Promise<string>;
+  headers(): Record<string, string>;
+  /** The value of one cookie this answer sets, or null. */
+  cookie(name: string): string | null;
 }
 
-function verifyCode(request: APIRequestContext, email: string, code: string, base = API) {
-  return request.post(`${base}/auth/email/verify`, { data: { email, code } });
+/**
+ * Call the API with Node's fetch: no cookie jar, so every cookie that is sent is one the
+ * test chose to send. (Playwright's request contexts keep a jar, and a test about whose
+ * session or whose code a request carries must not depend on what the jar holds.)
+ */
+async function call(
+  method: string,
+  url: string,
+  opts: { body?: unknown; cookie?: string | null; headers?: Record<string, string> } = {},
+): Promise<Answer> {
+  const headers: Record<string, string> = { ...(opts.headers ?? {}) };
+  if (opts.body !== undefined && !Object.keys(headers).some((h) => h.toLowerCase() === 'content-type')) {
+    headers['Content-Type'] = 'application/json';
+  }
+  if (opts.cookie) headers.Cookie = opts.cookie;
+  const res = await fetch(url, {
+    method,
+    headers,
+    body: opts.body === undefined ? undefined : typeof opts.body === 'string' ? opts.body : JSON.stringify(opts.body),
+    redirect: 'manual',
+  });
+  const text = await res.text();
+  const setCookies = res.headers.getSetCookie();
+  const flat: Record<string, string> = {};
+  res.headers.forEach((value, name) => { if (name !== 'set-cookie') flat[name] = value; });
+  if (setCookies.length) flat['set-cookie'] = setCookies.join('\n');
+  return {
+    status: () => res.status,
+    json: async () => JSON.parse(text),
+    text: async () => text,
+    headers: () => flat,
+    cookie: (name) => {
+      for (const line of setCookies) {
+        const match = line.match(new RegExp(`^${escapeRegExp(name)}=([^;]*)`));
+        if (match) return match[1];
+      }
+      return null;
+    },
+  };
+}
+
+/**
+ * A code is tied to the browser that asked for it (the `im_code` cookie). These API tests
+ * play that browser: the cookie from asking is kept per address and sent back when the
+ * code is submitted and when another code is asked for. `browser: 'other'` asks as somebody
+ * else: no cookie is sent and the one that comes back is not kept.
+ */
+const requesterCookies = new Map<string, string>();
+
+async function requestCode(
+  _request: APIRequestContext,
+  email: string,
+  opts: { ip?: string; ageTier?: string | null; base?: string; browser?: 'same' | 'other' } = {},
+): Promise<Answer> {
+  const body: Record<string, unknown> = { email };
+  if (opts.ageTier !== null) body.age_tier = opts.ageTier ?? 'adult';
+  const mine = opts.browser !== 'other';
+  const known = mine ? requesterCookies.get(email) : undefined;
+  const res = await call('POST', `${opts.base ?? API}/auth/email/request`, {
+    body,
+    headers: { 'CF-Connecting-IP': opts.ip ?? uniqueIp() },
+    cookie: known ? `im_code=${known}` : null,
+  });
+  const issued = res.cookie('im_code');
+  if (mine && issued) requesterCookies.set(email, issued);
+  return res;
+}
+
+/** Submit a code. `cookie` overrides whose browser this is: a value, or null for none. */
+function verifyCode(
+  _request: APIRequestContext,
+  email: string,
+  code: string,
+  base = API,
+  opts: { ip?: string; cookie?: string | null } = {},
+): Promise<Answer> {
+  const cookie = opts.cookie === undefined ? requesterCookies.get(email) : opts.cookie;
+  return call('POST', `${base}/auth/email/verify`, {
+    body: { email, code },
+    headers: opts.ip ? { 'CF-Connecting-IP': opts.ip } : {},
+    cookie: cookie ? `im_code=${cookie}` : null,
+  });
 }
 
 /** A code that is certainly not `code`. */
@@ -213,8 +295,29 @@ test.describe('Auth methods', () => {
     await expect(page.locator('#auth-create-btn')).toHaveText(/Create an account with a passkey/);
     await expect(page.locator('#auth-email-btn')).toBeHidden();
     await expect(page.locator('#auth-email-hint')).toBeHidden();
-    // Not a word about email on the panel a visitor first sees.
-    expect(await page.locator('#auth-step-choose').innerText()).not.toMatch(/e-?mail/i);
+    // No offer of email anywhere on the panel a visitor first sees: the only mention is
+    // the note that says the old ways in are off (tested below).
+    const offered = await page.locator('#auth-step-choose button:visible').allInnerTexts();
+    expect(offered.join(' ')).not.toMatch(/e-?mail/i);
+  });
+
+  test('with email off, the panel says an older Google or email account cannot be opened', async ({ page }) => {
+    // Such an account has no passkey, and its only way in (a code to its address) answers
+    // 503. Offering "create an account" without saying so would pass a new, empty account
+    // off as the way back to the old one.
+    await page.goto(`${NO_EMAIL_WEB}/`);
+    await openSignIn(page);
+    const note = page.locator('#auth-legacy-note');
+    await expect(note).toBeVisible();
+    await expect(note).toContainText('Google or an email address');
+    await expect(note).toContainText('cannot be opened yet');
+    await expect(note).toContainText('new, empty one');
+
+    // Where email works there is nothing to warn about.
+    await page.goto('/');
+    await openSignIn(page);
+    await expect(page.locator('#auth-email-btn')).toBeVisible();
+    await expect(page.locator('#auth-legacy-note')).toBeHidden();
   });
 
   test('the UI offers email sign-in when the API can deliver codes', async ({ page }) => {
@@ -248,7 +351,7 @@ test.describe('Email code API', () => {
     expect(body.user.email).toBe(email);
     expect(body.user.auth_provider).toBe('email');
     // The public username is generated, not taken from the address.
-    expect(body.user.username).toMatch(/^bard-[0-9a-f]{6}$/);
+    expect(body.user.username).toMatch(/^bard-[0-9a-f]{12}$/);
     expect(body.is_new_user).toBe(true);
     expect(body.passkey_count).toBe(0);
 
@@ -256,7 +359,9 @@ test.describe('Email code API', () => {
     expect(setCookie).toContain('im_token=');
     expect(setCookie).toContain('HttpOnly');
     expect(setCookie).toContain('Secure');
-    expect(setCookie).toContain('SameSite=Lax');
+    expect(setCookie).toContain('SameSite=Strict');
+    expect(setCookie).toContain('Path=/');
+    expect(setCookie).not.toMatch(/Domain=/i);
 
     // The age tier given with the request is stored on the new account.
     expect(sql(`SELECT age_tier FROM users WHERE email = '${email}'`)).toBe('teen');
@@ -339,12 +444,13 @@ test.describe('Email code API', () => {
     expect((await verifyCode(request, theirs, myCode)).status()).toBe(401);
   });
 
-  test('one address may ask for three codes in the window, not four', async ({ request }) => {
+  test('one network may ask for three codes for an address in the window, not four', async ({ request }) => {
     const email = uniqueEmail('per-email');
+    const ip = uniqueIp();
     for (let i = 0; i < 3; i++) {
-      expect((await requestCode(request, email)).status(), `request ${i + 1}`).toBe(200);
+      expect((await requestCode(request, email, { ip })).status(), `request ${i + 1}`).toBe(200);
     }
-    const fourth = await requestCode(request, email);
+    const fourth = await requestCode(request, email, { ip });
     expect(fourth.status()).toBe(429);
     expect((await fourth.json()).error).toBe('too_many_requests');
     // The refused request issued nothing.
@@ -458,9 +564,12 @@ test.describe('Session API', () => {
     const sessionToken = (secret: string) => {
       const b64 = (value: object) => Buffer.from(JSON.stringify(value)).toString('base64url');
       const now = Math.floor(Date.now() / 1000);
-      const body = `${b64({ alg: 'HS256', typ: 'JWT' })}.${b64({ sub: user.id, username: user.username, iat: now, exp: now + 3600 })}`;
+      const body = `${b64({ alg: 'HS256', typ: 'JWT' })}.${b64({ sub: user.id, username: user.username, sid, iat: now, exp: now + 3600 })}`;
       return `${body}.${createHmac('sha256', secret).update(body).digest('base64url')}`;
     };
+    // The token names the server-side session the sign-in above created.
+    const sid = sql(`SELECT id FROM auth_sessions WHERE user_id = '${user.id}'`);
+    expect(sid).toMatch(/^[0-9a-f-]{36}$/);
     // A context of its own: no cookie from the sign-in above rides along.
     const anonymous = await playwright.request.newContext();
     const meWith = (token: string) =>
@@ -474,6 +583,8 @@ test.describe('Session API', () => {
 
     expect((await meWith(sessionToken('some-other-secret'))).status()).toBe(401);
     expect((await meWith('not.a.token')).status()).toBe(401);
+    // The old development secret, which every checkout used to fall back to, signs nothing.
+    expect((await meWith(sessionToken('dev-secret-change-in-production'))).status()).toBe(401);
     await anonymous.dispose();
   });
 
@@ -844,7 +955,7 @@ test.describe('Passkey-only accounts, with email off', () => {
     const created = await (await me(page)).json();
     expect(created.user.email).toBeNull();
     expect(created.user.auth_provider).toBe('passkey');
-    expect(created.user.username).toMatch(/^bard-[0-9a-f]{6}$/);
+    expect(created.user.username).toMatch(/^bard-[0-9a-f]{12}$/);
     expect(created.passkey_count).toBe(1);
     const id = created.user.id;
     expect(Number(sql('SELECT COUNT(*) FROM users'))).toBe(usersBefore + 1);
@@ -932,7 +1043,7 @@ test.describe('Passkey-only accounts, with email off', () => {
     const { challenge_id, options } = await begun.json();
     // Usernameless and discoverable, with a random handle and a generated name.
     expect(options.authenticatorSelection.residentKey).toBe('required');
-    expect(options.user.name).toMatch(/^bard-[0-9a-f]{6}$/);
+    expect(options.user.name).toMatch(/^bard-[0-9a-f]{12}$/);
     expect(sql('SELECT COUNT(*) FROM users')).toBe(usersBefore);
     expect(sql(`SELECT kind, user_id IS NULL FROM auth_challenges WHERE id = '${challenge_id}'`)).toBe('signup|t');
 
@@ -990,11 +1101,23 @@ test.describe('Passkey-only accounts, with email off', () => {
     expect(Number(sql('SELECT COUNT(*) FROM users'))).toBe(Number(usersBefore) + 1);
   });
 
-  test('one client address may begin forty sign-ups in the window, not forty-one', async ({ request }) => {
+  test('begun sign-ups do not use up the account budget: the forty-first begin is still served', async ({ request }) => {
+    // A class behind one address where pupils cancel the prompt and try again. Begins used
+    // to count against the forty an hour, so the school was locked out by its own retries.
     const ip = uniqueIp();
-    for (let i = 0; i < 40; i++) {
+    for (let i = 0; i < 41; i++) {
       expect((await signupBegin(request, { ip })).status(), `begin ${i + 1}`).toBe(200);
     }
+    const key = ip.replace(/\.\d+$/, '.0/24');
+    expect(sql(`SELECT COUNT(*) FILTER (WHERE NOT completed), COUNT(*) FILTER (WHERE completed) FROM signup_attempts WHERE ip = '${key}'`)).toBe('41|0');
+  });
+
+  test('begins are still bounded: two hundred an hour from one network', async ({ request }) => {
+    const ip = uniqueIp();
+    const key = ip.replace(/\.\d+$/, '.0/24');
+    // 199 on record (written directly: only their count matters), then one real begin.
+    sql(`INSERT INTO signup_attempts (ip, completed) SELECT '${key}', FALSE FROM generate_series(1, 199)`);
+    expect((await signupBegin(request, { ip })).status()).toBe(200);
     const over = await signupBegin(request, { ip });
     expect(over.status()).toBe(429);
     expect((await over.json()).error).toBe('too_many_requests');
@@ -1012,7 +1135,7 @@ test.describe('Passkey-only accounts, with email off', () => {
     await expect(page.locator('#auth-email-btn')).toBeHidden();
     await expect(page.locator('#auth-passkey-unsupported')).toBeVisible();
     await expect(page.locator('#auth-passkey-unsupported')).toContainText('cannot use passkeys');
-    expect(await page.locator('#auth-step-choose').innerText()).not.toMatch(/e-?mail/i);
+    expect(await page.locator('#auth-passkey-unsupported').innerText()).not.toMatch(/e-?mail/i);
   });
 });
 
@@ -1086,5 +1209,856 @@ test.describe('Passkey-only accounts, with email on', () => {
     expect(ask.status()).toBe(401);
     const confirm = await request.post(`${API}/auth/email/add/verify`, { data: { email: uniqueEmail('anon'), code: '123456' } });
     expect(confirm.status()).toBe(401);
+  });
+});
+
+// ===========================================================================
+// Security hardening (review of 2026-11-16). Every test below failed on main as it stood
+// before the fixes; what each one is about is in its first comment.
+// ===========================================================================
+
+const INTERNAL_MESSAGE = 'Something went wrong on our side. Please try again.';
+
+/** An account made by emailed code, straight through the API, with its session cookie. */
+async function emailAccount(ageTier: 'adult' | 'teen' = 'adult', email = uniqueEmail('acct')) {
+  // Counted before asking: the new code is the next one the log shows for this address.
+  const before = loggedCodes(email).length;
+  const asked = await requestCode(null as never, email, { ageTier });
+  expect(asked.status()).toBe(200);
+  const verified = await verifyCode(null as never, email, await readCode(email, before + 1));
+  expect(verified.status()).toBe(200);
+  const token = verified.cookie('im_token');
+  expect(token, 'the sign-in sets the session cookie').toBeTruthy();
+  return { email, user: (await verified.json()).user, cookie: `im_token=${token}` };
+}
+
+/** Any request from inside the page, with the page's own cookies. */
+async function fetchFromPage(page: Page, method: string, route: string, body?: unknown) {
+  return page.evaluate(async ([m, url, data]) => {
+    const res = await fetch(url as string, {
+      method: m as string,
+      credentials: 'include',
+      headers: { 'Content-Type': 'application/json' },
+      body: data === null ? undefined : JSON.stringify(data),
+    });
+    return { status: res.status, body: await res.json().catch(() => null) };
+  }, [method, `/api/v1${route}`, body ?? null] as const);
+}
+
+/** Make a passkey for a begun registration, with the page's virtual authenticator. */
+async function createCredential(page: Page, options: unknown) {
+  return page.evaluate(async (o) => {
+    const publicKey = (PublicKeyCredential as any).parseCreationOptionsFromJSON(o);
+    const made = (await navigator.credentials.create({ publicKey })) as any;
+    return made.toJSON();
+  }, options);
+}
+
+/** Sign up with a passkey through the API, from inside the page. */
+async function signUpFromPage(page: Page, ip?: string) {
+  if (ip) await page.context().setExtraHTTPHeaders({ 'CF-Connecting-IP': ip });
+  const begun = await postFromPage(page, '/auth/passkey/signup/begin', { age_tier: 'adult' });
+  if (begun.status !== 200) return begun;
+  const credential = await createCredential(page, begun.body.options);
+  return postFromPage(page, '/auth/passkey/signup/finish', {
+    challenge_id: begun.body.challenge_id, credential, name: 'e2e',
+  });
+}
+
+/** Make the page's session look as if its user last proved who they are `minutes` ago. */
+function ageProof(userId: string, minutes: number) {
+  sql(`UPDATE auth_sessions SET verified_at = NOW() - INTERVAL '${minutes} minutes' WHERE user_id = '${userId}'`);
+}
+
+const meStatus = async (cookie: string) => (await call('GET', `${API}/auth/me`, { cookie })).status();
+
+// ---------------------------------------------------------------------------
+// Start-up: no session secret, no server
+// ---------------------------------------------------------------------------
+
+test.describe('Hardening: the session secret', () => {
+  /** Start the real binary with this environment and report how it ended. */
+  function startApi(env: Record<string, string>) {
+    const bin = readFileSync(path.join(E2E.workDir, 'api-bin'), 'utf8').trim();
+    expect(existsSync(bin), `${bin} (written by tests/start-backend.sh)`).toBe(true);
+    // An empty working directory: no .env to pick a secret up from.
+    const cwd = execFileSync('mktemp', ['-d'], { encoding: 'utf8' }).trim();
+    const done = spawnSync(bin, [], {
+      cwd,
+      env: {
+        PATH: process.env.PATH ?? '',
+        // Nothing listens here: a server that gets past its configuration fails at the database.
+        DATABASE_URL: 'postgres://nobody@127.0.0.1:9/none',
+        PORT: '9',
+        WEBAUTHN_RP_ID: 'localhost',
+        WEBAUTHN_ORIGIN: 'http://localhost:4399',
+        ...env,
+      },
+      encoding: 'utf8',
+      timeout: 20000,
+    });
+    return { status: done.status, stderr: done.stderr ?? '' };
+  }
+
+  test('the API refuses to start without a JWT_SECRET, with a short one, or with the old constant', async () => {
+    const none = startApi({});
+    expect(none.status).toBe(2);
+    expect(none.stderr).toContain('FATAL: invalid configuration');
+    expect(none.stderr).toContain('JWT_SECRET is not set');
+
+    const old = startApi({ JWT_SECRET: 'dev-secret-change-in-production' });
+    expect(old.status).toBe(2);
+    expect(old.stderr).toContain('old development constant');
+
+    const short = startApi({ JWT_SECRET: 'only-thirty-one-bytes-long-0123' });
+    expect(short.status).toBe(2);
+    expect(short.stderr).toContain('at least 32');
+
+    // Control: with a real secret the configuration is accepted, and the process goes on
+    // to fail at the database instead (nothing listens on that port).
+    const good = startApi({ JWT_SECRET: E2E_JWT_SECRET });
+    expect(good.stderr).not.toContain('invalid configuration');
+    expect(good.status).not.toBe(2);
+    expect(good.stderr).toMatch(/Failed to connect to PostgreSQL/);
+  });
+
+  test('the development flag lifts the rule on localhost only', async () => {
+    const dev = startApi({ DEV_INSECURE_JWT_SECRET: '1' });
+    expect(dev.stderr).not.toContain('invalid configuration');
+    expect(dev.stderr).toContain('using a random secret');
+    expect(dev.stderr).toMatch(/Failed to connect to PostgreSQL/);
+
+    const prod = startApi({
+      DEV_INSECURE_JWT_SECRET: '1',
+      WEBAUTHN_RP_ID: 'inspiredmile.com',
+      WEBAUTHN_ORIGIN: 'https://sonnetman.inspiredmile.com',
+    });
+    expect(prod.status).toBe(2);
+    expect(prod.stderr).toContain('local development');
+  });
+
+  test('email codes are hashed with a key of their own, not the session secret', async ({ request }) => {
+    const email = uniqueEmail('hmac');
+    expect((await requestCode(request, email)).status()).toBe(200);
+    const code = await readCode(email);
+    const stored = sql(`SELECT code_hash FROM email_login_codes WHERE email = '${email}'`);
+    const mac = (key: string) =>
+      createHmac('sha256', key).update(`inspired-mile:email-code:v1\0${email}\0${code}`).digest('hex');
+    // What main stored: the code's HMAC under the very secret that signs sessions.
+    expect(stored).not.toBe(mac(E2E_JWT_SECRET));
+    // What is stored now: the HMAC under a key derived from it for this purpose alone.
+    const derived = createHmac('sha256', E2E_JWT_SECRET).update('inspired-mile:derived-key:v1\0email-code').digest('hex');
+    expect(stored).toBe(mac(derived));
+  });
+});
+
+// ---------------------------------------------------------------------------
+// Sessions end on the server
+// ---------------------------------------------------------------------------
+
+test.describe('Hardening: sessions end on the server', () => {
+  test('a correctly signed token is refused unless it names a live session', async () => {
+    const { user } = await emailAccount();
+    const token = (claims: object) => {
+      const b64 = (value: object) => Buffer.from(JSON.stringify(value)).toString('base64url');
+      const body = `${b64({ alg: 'HS256', typ: 'JWT' })}.${b64(claims)}`;
+      return `im_token=${body}.${createHmac('sha256', E2E_JWT_SECRET).update(body).digest('base64url')}`;
+    };
+    const now = Math.floor(Date.now() / 1000);
+    const base = { sub: user.id, username: user.username, iat: now, exp: now + 3600 };
+    const sid = sql(`SELECT id FROM auth_sessions WHERE user_id = '${user.id}'`);
+
+    // Control: with the real session id, the hand-made token works.
+    expect(await meStatus(token({ ...base, sid }))).toBe(200);
+    // The shape of every token issued before sessions were kept server-side.
+    expect(await meStatus(token(base))).toBe(401);
+    // A session that never existed.
+    expect(await meStatus(token({ ...base, sid: '00000000-0000-4000-8000-000000000000' }))).toBe(401);
+    // Somebody else's session id does not make a token for this user.
+    const other = await emailAccount();
+    const otherSid = sql(`SELECT id FROM auth_sessions WHERE user_id = '${other.user.id}'`);
+    expect(await meStatus(token({ ...base, sid: otherSid }))).toBe(401);
+    // And the routes behind the middleware check the same thing.
+    expect((await call('GET', `${API}/credits`, { cookie: token(base) })).status()).toBe(401);
+    expect((await call('GET', `${API}/credits`, { cookie: token({ ...base, sid }) })).status()).toBe(200);
+  });
+
+  test('signing out ends the session for a copy of the cookie too', async () => {
+    const { user, cookie } = await emailAccount();
+    expect(await meStatus(cookie)).toBe(200);
+    expect((await call('GET', `${API}/credits`, { cookie })).status()).toBe(200);
+
+    const out = await call('POST', `${API}/auth/logout`, { cookie, headers: { 'Content-Type': 'application/json' } });
+    expect(out.status()).toBe(200);
+    expect(out.headers()['set-cookie']).toMatch(/im_token=;.*Max-Age=0/);
+
+    // The cookie value was never thrown away by this "browser": it must be dead anyway.
+    expect(await meStatus(cookie)).toBe(401);
+    expect((await call('GET', `${API}/credits`, { cookie })).status()).toBe(401);
+    expect(sql(`SELECT revoked_at IS NOT NULL FROM auth_sessions WHERE user_id = '${user.id}'`)).toBe('t');
+  });
+
+  test('"sign out everywhere" ends every session of the account, and nobody else\'s', async () => {
+    const first = await emailAccount();
+    const second = await emailAccount('adult', first.email);
+    expect(second.user.id).toBe(first.user.id);
+    expect(second.cookie).not.toBe(first.cookie);
+    const bystander = await emailAccount();
+
+    // Signing out of one browser leaves the other signed in...
+    const one = await call('POST', `${API}/auth/logout`, { cookie: first.cookie, headers: { 'Content-Type': 'application/json' } });
+    expect(one.status()).toBe(200);
+    expect(await meStatus(first.cookie)).toBe(401);
+    expect(await meStatus(second.cookie)).toBe(200);
+
+    // ...and "everywhere" ends them all.
+    const third = await emailAccount('adult', first.email);
+    const all = await call('POST', `${API}/auth/logout/all`, { cookie: second.cookie, headers: { 'Content-Type': 'application/json' } });
+    expect(all.status()).toBe(200);
+    expect(await meStatus(second.cookie)).toBe(401);
+    expect(await meStatus(third.cookie)).toBe(401);
+    expect(await meStatus(bystander.cookie)).toBe(200);
+    expect((await call('POST', `${API}/auth/logout/all`, { headers: { 'Content-Type': 'application/json' } })).status()).toBe(401);
+  });
+
+  test('the menu\'s "sign out on every device" signs out another browser', async ({ page }) => {
+    const email = uniqueEmail('everywhere');
+    await page.goto('/');
+    await signInByEmailUi(page, email);
+    await expect(page.locator('#user-badge')).toBeVisible();
+    const elsewhere = await emailAccount('adult', email);
+    expect(await meStatus(elsewhere.cookie)).toBe(200);
+
+    if (await page.locator('#auth-passkey-offer').isVisible()) await page.locator('#auth-passkey-skip').click();
+    await page.locator('#user-badge').click();
+    await expect(page.locator('#auth-logout-all-btn')).toBeVisible();
+    await expect(page.locator('#auth-logout-all-btn')).toHaveText('Sign out on every device');
+    await page.locator('#auth-logout-all-btn').click();
+    await expect(page.locator('#auth-btn')).toBeVisible();
+    expect((await me(page)).status()).toBe(401);
+    expect(await meStatus(elsewhere.cookie)).toBe(401);
+  });
+
+  test('removing a passkey ends the account\'s other sessions and keeps this one', async ({ page }) => {
+    const email = uniqueEmail('lost-device');
+    await page.goto('/');
+    await addVirtualAuthenticator(page);
+    await signInByEmailUi(page, email);
+    await page.locator('#auth-passkey-add').click();
+    await expect(page.locator('#auth-passkey-list li')).toHaveCount(1);
+    const elsewhere = await emailAccount('adult', email);
+    expect(await meStatus(elsewhere.cookie)).toBe(200);
+
+    const remove = page.locator('#auth-passkey-list li button');
+    await remove.click();
+    await remove.click();
+    await expect(page.locator('#auth-passkey-list li')).toHaveCount(0);
+    expect(await meStatus(elsewhere.cookie)).toBe(401);
+    expect((await me(page)).status()).toBe(200);
+  });
+});
+
+// ---------------------------------------------------------------------------
+// A session cookie alone does not change how an account is signed in to
+// ---------------------------------------------------------------------------
+
+test.describe('Hardening: a fresh proof before sign-in methods change', () => {
+  test('a stale session can neither add nor remove a passkey; a passkey check makes it fresh', async ({ page }) => {
+    // The shared-computer case: signed in a while ago, and somebody else is at the keyboard.
+    await page.goto(`${NO_EMAIL_WEB}/`);
+    await addVirtualAuthenticator(page);
+    const created = await signUpFromPage(page);
+    expect(created.status).toBe(200);
+    const id = created.body.user.id;
+    const passkeyId = sql(`SELECT id FROM webauthn_credentials WHERE user_id = '${id}'`);
+
+    // Just signed up: the session is fresh, and beginning a registration is allowed.
+    expect((await fetchFromPage(page, 'POST', '/auth/passkey/register/begin')).status).toBe(200);
+
+    ageProof(id, 6);
+    const add = await fetchFromPage(page, 'POST', '/auth/passkey/register/begin');
+    expect(add.status).toBe(403);
+    expect(add.body.error).toBe('reauth_required');
+    const del = await fetchFromPage(page, 'DELETE', `/auth/passkeys/${passkeyId}`);
+    expect(del.status).toBe(403);
+    expect(del.body.error).toBe('reauth_required');
+    expect(sql(`SELECT COUNT(*) FROM webauthn_credentials WHERE user_id = '${id}'`)).toBe('1');
+    // Everything else still works: the session itself is not in doubt.
+    expect((await me(page)).status()).toBe(200);
+    expect((await fetchFromPage(page, 'GET', '/auth/passkeys')).status).toBe(200);
+
+    // The proof: an assertion by a passkey of this account, with user verification.
+    const begun = await fetchFromPage(page, 'POST', '/auth/passkey/verify/begin');
+    expect(begun.status).toBe(200);
+    expect(begun.body.options.userVerification).toBe('required');
+    expect(begun.body.options.allowCredentials).toHaveLength(1);
+    const assertion = await page.evaluate(async (o) => {
+      const publicKey = (PublicKeyCredential as any).parseRequestOptionsFromJSON(o);
+      const got = (await navigator.credentials.get({ publicKey })) as any;
+      return got.toJSON();
+    }, begun.body.options);
+    const finished = await fetchFromPage(page, 'POST', '/auth/passkey/verify/finish', {
+      challenge_id: begun.body.challenge_id, credential: assertion,
+    });
+    expect(finished.status).toBe(200);
+    expect(finished.body).toEqual({ ok: true, fresh_for_seconds: 300 });
+    // Single use, like every other ceremony.
+    const replay = await fetchFromPage(page, 'POST', '/auth/passkey/verify/finish', {
+      challenge_id: begun.body.challenge_id, credential: assertion,
+    });
+    expect(replay.status).toBe(400);
+
+    expect((await fetchFromPage(page, 'POST', '/auth/passkey/register/begin')).status).toBe(200);
+    // Still the last passkey with email off, so it stays; but the refusal is no longer about proof.
+    const last = await fetchFromPage(page, 'DELETE', `/auth/passkeys/${passkeyId}`);
+    expect(last.status).toBe(409);
+    expect(last.body.error).toBe('last_sign_in_method');
+  });
+
+  test('in the menu, a stale session is asked for its passkey before one is removed', async ({ page }) => {
+    await page.goto(`${NO_EMAIL_WEB}/`);
+    const first = await addVirtualAuthenticator(page);
+    const { cdp } = first;
+    await createAccountWithPasskey(page);
+    const id = (await (await me(page)).json()).user.id;
+    await page.locator('#auth-nudge-later').click();
+    await page.locator('#user-badge').click();
+    await expect(page.locator('#auth-passkey-list li')).toHaveCount(1);
+
+    // A second passkey on a second authenticator, added while the sign-up is still fresh:
+    // no proof is asked for.
+    await cdp.send('WebAuthn.removeVirtualAuthenticator', { authenticatorId: first.authenticatorId });
+    const second = await cdp.send('WebAuthn.addVirtualAuthenticator', {
+      options: { protocol: 'ctap2', transport: 'usb', hasResidentKey: true, hasUserVerification: true, isUserVerified: true, automaticPresenceSimulation: true },
+    });
+    const proofs: string[] = [];
+    page.on('request', (r) => { if (r.url().includes('/auth/passkey/verify/')) proofs.push(r.url()); });
+    await page.locator('#auth-passkey-add-menu').click();
+    await expect(page.locator('#auth-passkey-list li')).toHaveCount(2);
+    expect(proofs).toEqual([]);
+
+    // Later, the same browser, the same cookie: removing a passkey now asks for one first.
+    ageProof(id, 30);
+    const proof = page.waitForResponse((r) => r.url().endsWith('/auth/passkey/verify/finish'));
+    const remove = page.locator('#auth-passkey-list li').first().locator('button');
+    await remove.click();
+    await remove.click();
+    expect((await proof).status()).toBe(200);
+    await expect(page.locator('#auth-passkey-list li')).toHaveCount(1);
+    expect(sql(`SELECT COUNT(*) FROM webauthn_credentials WHERE user_id = '${id}'`)).toBe('1');
+    // The proof was an assertion by the passkey that is present: its counter moved.
+    const { credentials } = await cdp.send('WebAuthn.getCredentials', { authenticatorId: second.authenticatorId });
+    expect(credentials[0].signCount).toBeGreaterThan(0);
+    expect(sql(`SELECT verified_at > NOW() - INTERVAL '1 minute' FROM auth_sessions WHERE user_id = '${id}' AND revoked_at IS NULL`)).toBe('t');
+  });
+
+  test('without the passkey there is no proof: a stale session with no authenticator cannot add one', async ({ page }) => {
+    await page.goto(`${NO_EMAIL_WEB}/`);
+    const { cdp, authenticatorId } = await addVirtualAuthenticator(page);
+    await createAccountWithPasskey(page);
+    const id = (await (await me(page)).json()).user.id;
+    await page.locator('#auth-nudge-later').click();
+    await page.locator('#user-badge').click();
+
+    // The owner's authenticator leaves with the owner; a stranger brings their own.
+    await cdp.send('WebAuthn.removeVirtualAuthenticator', { authenticatorId });
+    await cdp.send('WebAuthn.addVirtualAuthenticator', {
+      options: { protocol: 'ctap2', transport: 'usb', hasResidentKey: true, hasUserVerification: true, isUserVerified: true, automaticPresenceSimulation: true },
+    });
+    ageProof(id, 30);
+    await page.locator('#auth-passkey-add-menu').click();
+    await expect(page.locator('#auth-menu-message')).toBeVisible();
+    await expect(page.locator('#auth-passkey-list li')).toHaveCount(1);
+    expect(sql(`SELECT COUNT(*) FROM webauthn_credentials WHERE user_id = '${id}'`)).toBe('1');
+  });
+
+  test('adding a recovery email needs the proof too, and an email-only account has none to give', async ({ page }) => {
+    await page.goto('/');
+    await addVirtualAuthenticator(page);
+    await createAccountWithPasskey(page);
+    const id = (await (await me(page)).json()).user.id;
+
+    ageProof(id, 6);
+    const address = uniqueEmail('stale-add');
+    const refused = await postFromPage(page, '/auth/email/add/request', { email: address });
+    expect(refused.status).toBe(403);
+    expect(refused.body.error).toBe('reauth_required');
+    expect(sql(`SELECT COUNT(*) FROM email_login_codes WHERE email = '${address}'`)).toBe('0');
+    expect(loggedCodes(address)).toEqual([]);
+
+    // Through the menu the passkey is asked for, and then the code is sent.
+    const proof = page.waitForResponse((r) => r.url().endsWith('/auth/passkey/verify/finish'));
+    await page.locator('#auth-nudge-email').click();
+    await page.locator('#auth-add-email-input').fill(address);
+    await page.locator('#auth-add-email-send').click();
+    expect((await proof).status()).toBe(200);
+    await expect(page.locator('#auth-add-code-form')).toBeVisible();
+    await readCode(address);
+
+    // An account with no passkey at all: its proof is a new emailed code, so a stale
+    // session gets no further.
+    const emailOnly = await emailAccount();
+    ageProof(emailOnly.user.id, 6);
+    const add = await call('POST', `${API}/auth/passkey/register/begin`, { cookie: emailOnly.cookie, body: {} });
+    expect(add.status()).toBe(403);
+    expect((await add.json()).error).toBe('reauth_required');
+    const verify = await call('POST', `${API}/auth/passkey/verify/begin`, { cookie: emailOnly.cookie, body: {} });
+    expect(verify.status()).toBe(409);
+    expect((await verify.json()).error).toBe('reauth_unavailable');
+    // Signing in again by code is that proof.
+    const back = await emailAccount('adult', emailOnly.email);
+    expect((await call('POST', `${API}/auth/passkey/register/begin`, { cookie: back.cookie, body: {} })).status()).toBe(200);
+  });
+});
+
+// ---------------------------------------------------------------------------
+// Cookie and sign-out
+// ---------------------------------------------------------------------------
+
+test.describe('Hardening: the cookie and sign-out', () => {
+  test('a form posted from another site cannot sign anyone out', async () => {
+    const { cookie } = await emailAccount();
+    // What an auto-submitting <form method="post"> on another site produces.
+    const form = await call('POST', `${API}/auth/logout`, {
+      cookie, body: '', headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    });
+    expect(form.status()).toBe(403);
+    expect((await form.json()).error).toBe('cross_site_request');
+    // Not even a clearing cookie comes back: that alone would sign the browser out.
+    expect(form.headers()['set-cookie']).toBeUndefined();
+
+    const plain = await call('POST', `${API}/auth/logout`, { cookie, body: 'x', headers: { 'Content-Type': 'text/plain' } });
+    expect(plain.status()).toBe(403);
+    expect(plain.headers()['set-cookie']).toBeUndefined();
+    const bare = await call('POST', `${API}/auth/logout`, { cookie });
+    expect(bare.status()).toBe(403);
+    // A browser labels a cross-site request; that label is refused whatever else it carries.
+    const labelled = await call('POST', `${API}/auth/logout`, {
+      cookie, headers: { 'Content-Type': 'application/json', 'Sec-Fetch-Site': 'cross-site' },
+    });
+    expect(labelled.status()).toBe(403);
+    const everywhere = await call('POST', `${API}/auth/logout/all`, {
+      cookie, body: '', headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    });
+    expect(everywhere.status()).toBe(403);
+
+    // Through all of that the session lived.
+    expect(await meStatus(cookie)).toBe(200);
+    // The page's own request (JSON content type, same origin) does sign out.
+    const own = await call('POST', `${API}/auth/logout`, {
+      cookie, headers: { 'Content-Type': 'application/json', 'Sec-Fetch-Site': 'same-origin' },
+    });
+    expect(own.status()).toBe(200);
+    expect(await meStatus(cookie)).toBe(401);
+  });
+
+  test('the session cookie is HttpOnly, Secure, SameSite=Strict and host-only', async () => {
+    const email = uniqueEmail('cookie');
+    expect((await requestCode(null as never, email)).status()).toBe(200);
+    const verified = await verifyCode(null as never, email, await readCode(email));
+    const line = (verified.headers()['set-cookie'] ?? '').split('\n').find((l) => l.startsWith('im_token=')) ?? '';
+    const attributes = line.split(';').slice(1).map((a) => a.trim().toLowerCase());
+    expect(attributes).toContain('httponly');
+    expect(attributes).toContain('secure');
+    expect(attributes).toContain('samesite=strict');
+    expect(attributes).toContain('path=/');
+    expect(attributes.some((a) => a.startsWith('domain='))).toBe(false);
+    // (On an https origin the name carries the __Host- prefix; browsers refuse that prefix
+    // over http, so here, on localhost, it is the plain name. The unit tests cover the choice.)
+  });
+});
+
+// ---------------------------------------------------------------------------
+// Whose address is it, and how wide is a limit
+// ---------------------------------------------------------------------------
+
+test.describe('Hardening: client address and limits by network', () => {
+  test('ten codes an hour for a whole IPv6 /64, not for each of its addresses', async ({ request }) => {
+    const hex = () => (1 + Math.floor(Math.random() * 0xfffe)).toString(16);
+    const net = `2001:db8:${hex()}:${hex()}`;
+    for (let i = 1; i <= 10; i++) {
+      const res = await requestCode(request, uniqueEmail('v6'), { ip: `${net}:${hex()}:${hex()}:${hex()}:${i.toString(16)}` });
+      expect(res.status(), `request ${i}`).toBe(200);
+    }
+    // An eleventh address in the same /64 is the same client.
+    const over = await requestCode(request, uniqueEmail('v6'), { ip: `${net}:ffff:ffff:ffff:ffff` });
+    expect(over.status()).toBe(429);
+    expect((await over.json()).error).toBe('too_many_requests');
+    // The neighbouring /64 is somebody else.
+    const neighbour = uniqueEmail('v6-other');
+    expect((await requestCode(request, neighbour, { ip: `2001:db8:${hex()}:1::1` })).status()).toBe(200);
+    expect(sql(`SELECT DISTINCT ip FROM email_login_codes WHERE email LIKE 'v6-%' AND ip LIKE '${net}%'`)).toBe(`${net}::/64`);
+  });
+
+  test('forwarding headers are believed from the proxy and ignored from anyone else', async ({ request }) => {
+    // Through loopback (where Caddy and the tunnel are): the header names the client.
+    const viaProxy = uniqueEmail('proxy');
+    const claimed = uniqueIp();
+    expect((await requestCode(request, viaProxy, { ip: claimed })).status()).toBe(200);
+    expect(sql(`SELECT ip FROM email_login_codes WHERE email = '${viaProxy}'`)).toBe(claimed);
+
+    // Straight to the port from another address of this machine (how any device on the
+    // LAN or the tailnet reaches it): whatever the header says, the peer is the client.
+    const lan = Object.values(os.networkInterfaces())
+      .flat()
+      .filter((a) => a && a.family === 'IPv4' && !a.internal)
+      .map((a) => a!.address)
+      .find((a) => a !== '10.10.10.1' && a !== '100.64.224.0');
+    test.skip(!lan, 'this machine has no address other than loopback to connect from');
+    const direct = uniqueEmail('direct');
+    const spoofed = uniqueIp();
+    const res = await call('POST', `http://${lan}:${E2E.apiPort}/api/v1/auth/email/request`, {
+      body: { email: direct, age_tier: 'adult' },
+      headers: { 'CF-Connecting-IP': spoofed, 'X-Forwarded-For': spoofed },
+    });
+    expect(res.status()).toBe(200);
+    const stored = sql(`SELECT ip FROM email_login_codes WHERE email = '${direct}'`);
+    expect(stored).not.toBe(spoofed);
+    expect(stored).toBe(lan);
+  });
+});
+
+// ---------------------------------------------------------------------------
+// Sign-up accounting
+// ---------------------------------------------------------------------------
+
+test.describe('Hardening: sign-up accounting', () => {
+  test('forty accounts an hour for one /24, counted when created and checked under a lock', async ({ page }) => {
+    test.setTimeout(180000);
+    await page.goto('/');
+    await addVirtualAuthenticator(page);
+    const n = () => 1 + Math.floor(Math.random() * 253);
+    const net = `10.${n()}.${n()}`;
+    const key = `${net}.0/24`;
+
+    // Thirty-eight accounts, each from a different address of the same /24.
+    for (let i = 1; i <= 38; i++) {
+      const made = await signUpFromPage(page, `${net}.${i}`);
+      expect(made.status, `sign-up ${i}`).toBe(200);
+    }
+    expect(sql(`SELECT COUNT(*) FROM signup_attempts WHERE ip = '${key}' AND completed`)).toBe('38');
+
+    // Four more get as far as a verified passkey, then finish at the same moment. Two
+    // places are left; a count-then-insert without a lock would let all four in.
+    const pending: { challenge_id: string; credential: unknown; name: string }[] = [];
+    for (let i = 39; i <= 42; i++) {
+      await page.context().setExtraHTTPHeaders({ 'CF-Connecting-IP': `${net}.${i}` });
+      const begun = await postFromPage(page, '/auth/passkey/signup/begin', { age_tier: 'adult' });
+      expect(begun.status, `begin ${i}`).toBe(200);
+      pending.push({ challenge_id: begun.body.challenge_id, credential: await createCredential(page, begun.body.options), name: 'race' });
+    }
+    const usersBefore = Number(sql('SELECT COUNT(*) FROM users'));
+    const statuses = await page.evaluate(async (bodies) => Promise.all(bodies.map(async (body) => {
+      const res = await fetch('/api/v1/auth/passkey/signup/finish', {
+        method: 'POST', credentials: 'include', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body),
+      });
+      return res.status;
+    })), pending);
+    expect([...statuses].sort()).toEqual([200, 200, 429, 429]);
+    expect(Number(sql('SELECT COUNT(*) FROM users'))).toBe(usersBefore + 2);
+    expect(sql(`SELECT COUNT(*) FROM signup_attempts WHERE ip = '${key}' AND completed`)).toBe('40');
+
+    // The network is now refused before the prompt, from an address it has not used yet...
+    await page.context().setExtraHTTPHeaders({ 'CF-Connecting-IP': `${net}.250` });
+    const over = await postFromPage(page, '/auth/passkey/signup/begin', { age_tier: 'adult' });
+    expect(over.status).toBe(429);
+    expect(over.body.error).toBe('too_many_requests');
+    // ...and the /24 next door is not.
+    expect((await signUpFromPage(page, `10.${n()}.254.7`)).status).toBe(200);
+  });
+
+  test('a site-wide ceiling stops sign-ups for everyone, and says so loudly in the log', async ({ request }) => {
+    // Other tests in this file sign up; they run before or after this one, never during.
+    const marker = `ceiling-${unique()}`;
+    try {
+      sql(`INSERT INTO signup_attempts (ip, completed) SELECT '${marker}', TRUE FROM generate_series(1, 300)`);
+      const refused = await signupBegin(request, { base: API });
+      expect(refused.status()).toBe(429);
+      const body = await refused.json();
+      expect(body.error).toBe('too_many_requests');
+      expect(body.message).toContain('right now');
+      await expect.poll(() => readFileSync(API_LOG, 'utf8')).toContain('SIGN-UP CEILING HIT');
+      expect(readFileSync(API_LOG, 'utf8')).toContain('SIGNUP_GLOBAL_PER_HOUR = 300');
+    } finally {
+      sql(`DELETE FROM signup_attempts WHERE ip = '${marker}'`);
+    }
+    // One below the ceiling is still served.
+    expect((await signupBegin(request, { base: API })).status()).toBe(200);
+  });
+
+  test('a passkey-only account that never played is deleted after thirty days; one that did, or was used, is not', async ({ page }) => {
+    test.setTimeout(90000);
+    await page.goto('/');
+    await addVirtualAuthenticator(page);
+    const make = async () => {
+      const made = await signUpFromPage(page, uniqueIp());
+      expect(made.status).toBe(200);
+      return made.body.user.id as string;
+    };
+    const unused = await make();
+    const played = await make();
+    const usedLately = await make();
+    const young = await make();
+
+    sql(`UPDATE player_stats SET total_battles = 1 WHERE user_id = '${played}'`);
+    // Credentials first, accounts last: the sweep runs every few seconds here, and must
+    // never see an account that is old before the rest of its story is in place.
+    sql(`UPDATE webauthn_credentials SET created_at = NOW() - INTERVAL '31 days', last_used_at = NULL WHERE user_id IN ('${unused}', '${played}')`);
+    sql(`UPDATE webauthn_credentials SET created_at = NOW() - INTERVAL '31 days', last_used_at = NOW() - INTERVAL '2 days' WHERE user_id = '${usedLately}'`);
+    sql(`UPDATE users SET created_at = NOW() - INTERVAL '31 days' WHERE id IN ('${unused}', '${played}', '${usedLately}')`);
+
+    await expect
+      .poll(() => sql(`SELECT COUNT(*) FROM users WHERE id = '${unused}'`), {
+        message: 'the unused account should be swept (MAINTENANCE_INTERVAL_SECONDS is 3 in the tests)',
+        timeout: 30000,
+      })
+      .toBe('0');
+    // Everything of it went with it.
+    expect(sql(`SELECT COUNT(*) FROM webauthn_credentials WHERE user_id = '${unused}'`)).toBe('0');
+    expect(sql(`SELECT COUNT(*) FROM auth_sessions WHERE user_id = '${unused}'`)).toBe('0');
+    // Two more sweeps, and the others are all still there.
+    await page.waitForTimeout(7000);
+    expect(sql(`SELECT COUNT(*) FROM users WHERE id IN ('${played}', '${usedLately}', '${young}')`)).toBe('3');
+  });
+});
+
+// ---------------------------------------------------------------------------
+// Age tier
+// ---------------------------------------------------------------------------
+
+test.describe('Hardening: age tier', () => {
+  test('a teen account cannot make itself an adult one; an adult one can be made teen', async () => {
+    const teen = await emailAccount('teen');
+    const limits = async (cookie: string) => (await call('GET', `${API}/credits/limits`, { cookie })).json();
+    expect((await limits(teen.cookie)).daily_limit).toBe(200);
+
+    const lift = await call('POST', `${API}/credits/age-verify`, { cookie: teen.cookie, body: { age_tier: 'adult' } });
+    expect(lift.status()).toBe(200);
+    expect(await lift.json()).toEqual({ status: 'unchanged', age_tier: 'teen' });
+    expect(sql(`SELECT age_tier FROM users WHERE id = '${teen.user.id}'`)).toBe('teen');
+    expect((await limits(teen.cookie)).daily_limit).toBe(200);
+
+    const adult = await emailAccount('adult');
+    expect((await limits(adult.cookie)).daily_limit).toBeNull();
+    const same = await call('POST', `${API}/credits/age-verify`, { cookie: adult.cookie, body: { age_tier: 'adult' } });
+    expect(await same.json()).toEqual({ status: 'ok', age_tier: 'adult' });
+    const stricter = await call('POST', `${API}/credits/age-verify`, { cookie: adult.cookie, body: { age_tier: 'teen' } });
+    expect(await stricter.json()).toEqual({ status: 'ok', age_tier: 'teen' });
+    expect((await limits(adult.cookie)).daily_limit).toBe(200);
+    // And there is no way back.
+    const back = await call('POST', `${API}/credits/age-verify`, { cookie: adult.cookie, body: { age_tier: 'adult' } });
+    expect(await back.json()).toEqual({ status: 'unchanged', age_tier: 'teen' });
+    expect(sql(`SELECT age_tier FROM users WHERE id = '${adult.user.id}'`)).toBe('teen');
+
+    // An account from before the age gate takes the first answer it is given.
+    sql(`UPDATE users SET age_tier = 'unknown' WHERE id = '${teen.user.id}'`);
+    const first = await call('POST', `${API}/credits/age-verify`, { cookie: teen.cookie, body: { age_tier: 'adult' } });
+    expect(await first.json()).toEqual({ status: 'ok', age_tier: 'adult' });
+  });
+
+  test('a teen who re-enters an adult birth date in the browser stays a teen on the server', async ({ page }) => {
+    const email = uniqueEmail('teen-sync');
+    await page.goto('/about');
+    await page.evaluate(() => localStorage.setItem('inspired-mile-age-verified', 'teen-consented'));
+    await page.reload();
+    await signInByEmailUi(page, email);
+    await expect(page.locator('#user-badge')).toBeVisible();
+    expect(sql(`SELECT age_tier FROM users WHERE email = '${email}'`)).toBe('teen');
+
+    // Clear site data, give an adult date, come back: the page posts "adult" on load.
+    await page.evaluate(() => localStorage.setItem('inspired-mile-age-verified', 'adult'));
+    const synced = page.waitForResponse((r) => r.url().endsWith('/credits/age-verify'));
+    await page.reload();
+    const answer = await synced;
+    expect(JSON.parse(answer.request().postData()!)).toEqual({ age_tier: 'adult' });
+    expect(await answer.json()).toEqual({ status: 'unchanged', age_tier: 'teen' });
+    expect(sql(`SELECT age_tier FROM users WHERE email = '${email}'`)).toBe('teen');
+  });
+});
+
+// ---------------------------------------------------------------------------
+// What a failure says, and who may read a class
+// ---------------------------------------------------------------------------
+
+test.describe('Hardening: error text and classroom lists', () => {
+  test('a database failure is answered without the database\'s own words', async () => {
+    const { user, cookie } = await emailAccount();
+    // Take away the row the credits routes update: the statement then fails in the database.
+    sql(`DELETE FROM player_stats WHERE user_id = '${user.id}'`);
+    const res = await call('POST', `${API}/credits/earn`, { cookie, body: { source: 'daily' } });
+    expect(res.status()).toBe(500);
+    const text = await res.text();
+    expect(text).toBe(INTERNAL_MESSAGE);
+    expect(text).not.toMatch(/DB error|row|query|sqlx|database/i);
+  });
+
+  test('a classroom\'s members and assignments are for its teacher and its members only', async () => {
+    const teacher = await emailAccount();
+    const pupil = await emailAccount('teen');
+    const outsider = await emailAccount();
+
+    const made = await call('POST', `${API}/classroom`, { cookie: teacher.cookie, body: { name: `Class ${unique()}` } });
+    expect(made.status()).toBe(200);
+    const room = await made.json();
+    expect((await call('POST', `${API}/classroom/${room.id}/assignments`, {
+      cookie: teacher.cookie, body: { title: 'Sonnet 18', assignment_type: 'trivia' },
+    })).status()).toBe(200);
+    expect((await call('POST', `${API}/classroom/join`, { cookie: pupil.cookie, body: { code: room.join_code } })).status()).toBe(200);
+
+    for (const list of ['members', 'assignments']) {
+      const refused = await call('GET', `${API}/classroom/${room.id}/${list}`, { cookie: outsider.cookie });
+      expect(refused.status(), `${list} for an outsider`).toBe(403);
+      expect(await refused.text()).not.toContain(pupil.user.username);
+      // A classroom that does not exist answers the same, so ids in use cannot be told apart.
+      expect((await call('GET', `${API}/classroom/2000000000/${list}`, { cookie: outsider.cookie })).status()).toBe(403);
+    }
+
+    for (const who of [teacher, pupil]) {
+      const members = await call('GET', `${API}/classroom/${room.id}/members`, { cookie: who.cookie });
+      expect(members.status()).toBe(200);
+      expect((await members.json()).map((m: { user_id: string }) => m.user_id).sort()).toEqual([teacher.user.id, pupil.user.id].sort());
+      const assignments = await call('GET', `${API}/classroom/${room.id}/assignments`, { cookie: who.cookie });
+      expect(assignments.status()).toBe(200);
+      expect((await assignments.json()).map((a: { title: string }) => a.title)).toEqual(['Sonnet 18']);
+    }
+  });
+});
+
+// ---------------------------------------------------------------------------
+// Email codes: guessing is bounded, and strangers cannot get in the way
+// ---------------------------------------------------------------------------
+
+test.describe('Hardening: email codes', () => {
+  test('a code is only good in the browser that asked for it', async ({ request }) => {
+    const email = uniqueEmail('bound');
+    expect((await requestCode(request, email)).status()).toBe(200);
+    const code = await readCode(email);
+    // Somebody who has seen the code (over a shoulder, read out on the phone) but is in
+    // another browser: refused, and the code is not used up by the try.
+    const elsewhere = await verifyCode(request, email, code, API, { cookie: null });
+    expect(elsewhere.status()).toBe(401);
+    expect((await elsewhere.json()).error).toBe('invalid_code');
+    expect((await verifyCode(request, email, code, API, { cookie: '0123456789abcdef0123456789abcdef' })).status()).toBe(401);
+    expect(sql(`SELECT attempts, consumed_at IS NULL FROM email_login_codes WHERE email = '${email}'`)).toBe('0|t');
+    expect((await verifyCode(request, email, code)).status()).toBe(200);
+  });
+
+  test('a stranger asking for a code does not withdraw yours, nor use up your allowance', async ({ request }) => {
+    const email = uniqueEmail('withdraw');
+    const myIp = uniqueIp();
+    expect((await requestCode(request, email, { ip: myIp })).status()).toBe(200);
+    const mine = await readCode(email, 1);
+    // Three requests for the same address from elsewhere, just after.
+    for (let i = 0; i < 3; i++) {
+      expect((await requestCode(request, email, { browser: 'other' })).status()).toBe(200);
+    }
+    await readCode(email, 4);
+    // I may still ask again (three had been the limit for the address, whoever asked)...
+    expect((await requestCode(request, email, { ip: myIp })).status()).toBe(200);
+    const newest = await readCode(email, 5);
+    test.skip(mine === newest, 'both codes happened to be equal');
+    // ...my own new request is what withdraws my old code...
+    expect((await verifyCode(request, email, mine)).status()).toBe(401);
+    // ...and the code I was sent last opens the account.
+    expect((await verifyCode(request, email, newest)).status()).toBe(200);
+  });
+
+  test('a stranger\'s code request leaves a code you already hold working', async ({ request }) => {
+    const email = uniqueEmail('hold');
+    expect((await requestCode(request, email)).status()).toBe(200);
+    const mine = await readCode(email, 1);
+    expect((await requestCode(request, email, { browser: 'other' })).status()).toBe(200);
+    await readCode(email, 2);
+    expect((await verifyCode(request, email, mine)).status()).toBe(200);
+  });
+
+  test('a stranger\'s wrong guesses do not use up your code', async ({ request }) => {
+    const email = uniqueEmail('burn');
+    expect((await requestCode(request, email)).status()).toBe(200);
+    const mine = await readCode(email, 1);
+
+    const theirIp = uniqueIp();
+    const theirs = await requestCode(request, email, { browser: 'other', ip: theirIp });
+    expect(theirs.status()).toBe(200);
+    const theirCookie = theirs.cookie('im_code');
+    expect(theirCookie).toMatch(/^[0-9a-f]{32}$/);
+    const theirCode = await readCode(email, 2);
+    const miss = [mine, theirCode].includes('000000') ? ([mine, theirCode].includes('000001') ? '000002' : '000001') : '000000';
+    for (let i = 0; i < 5; i++) {
+      expect((await verifyCode(request, email, miss, API, { cookie: theirCookie, ip: theirIp })).status()).toBe(401);
+    }
+    // And a few with no cookie at all.
+    for (let i = 0; i < 3; i++) {
+      expect((await verifyCode(request, email, miss, API, { cookie: null, ip: theirIp })).status()).toBe(401);
+    }
+    // Their five misses killed their own code and nothing else.
+    expect(sql(`SELECT string_agg(attempts::text, ',' ORDER BY created_at) FROM email_login_codes WHERE email = '${email}'`)).toBe('0,5');
+    expect((await verifyCode(request, email, mine)).status()).toBe(200);
+  });
+
+  test('ten codes an hour to one address from everyone together, not eleven', async ({ request }) => {
+    const email = uniqueEmail('flood');
+    for (let i = 0; i < 10; i++) {
+      expect((await requestCode(request, email, { browser: 'other' })).status(), `request ${i + 1}`).toBe(200);
+    }
+    const over = await requestCode(request, email, { browser: 'other' });
+    expect(over.status()).toBe(429);
+    expect((await over.json()).error).toBe('too_many_requests');
+    expect(sql(`SELECT COUNT(*) FROM email_login_codes WHERE email = '${email}'`)).toBe('10');
+  });
+
+  test('ten wrong guesses a day at one address from one network, then no more codes and no more guesses', async ({ request }) => {
+    const email = uniqueEmail('guess');
+    const ip = uniqueIp();
+    let last = '';
+    for (let round = 1; round <= 2; round++) {
+      expect((await requestCode(request, email, { ip })).status(), `code ${round}`).toBe(200);
+      last = await readCode(email, round);
+      for (let i = 0; i < 5; i++) {
+        const miss = await verifyCode(request, email, wrongCodeFor(last), API, { ip });
+        expect(miss.status()).toBe(401);
+        expect((await miss.json()).error).toBe('invalid_code');
+      }
+    }
+    expect(sql(`SELECT COUNT(*) FROM email_code_failures WHERE email = '${email}'`)).toBe('10');
+
+    // On main this network could go on for ever: three codes every fifteen minutes, five
+    // guesses each. Now it gets no third code...
+    const third = await requestCode(request, email, { ip });
+    expect(third.status()).toBe(429);
+    expect((await third.json()).error).toBe('too_many_attempts');
+    expect(loggedCodes(email)).toHaveLength(2);
+    // ...and no further guess is even judged.
+    const guess = await verifyCode(request, email, last, API, { ip });
+    expect(guess.status()).toBe(429);
+    expect((await guess.json()).error).toBe('too_many_attempts');
+    expect(sql(`SELECT COUNT(*) FROM email_code_failures WHERE email = '${email}'`)).toBe('10');
+
+    // The address's owner, on another network, is not locked out by that.
+    requesterCookies.delete(email);
+    const ownerIp = uniqueIp();
+    expect((await requestCode(request, email, { ip: ownerIp })).status()).toBe(200);
+    expect((await verifyCode(request, email, await readCode(email, 3), API, { ip: ownerIp })).status()).toBe(200);
+  });
+
+  test('fifty wrong guesses a day at one address from everyone is the ceiling for the account', async ({ request }) => {
+    const email = uniqueEmail('ceiling');
+    expect((await requestCode(request, email)).status()).toBe(200);
+    const code = await readCode(email);
+    // Forty-nine misses on record from many networks (written directly: only their number
+    // matters), and the fiftieth made for real.
+    sql(`INSERT INTO email_code_failures (email, net_key) SELECT '${email}', '198.51.' || (g % 250) || '.' || g FROM generate_series(1, 49) g`);
+    const fiftieth = await verifyCode(request, email, wrongCodeFor(code));
+    expect(fiftieth.status()).toBe(401);
+    // From a network that has never guessed: refused all the same, right code or not.
+    const fresh = uniqueIp();
+    const locked = await verifyCode(request, email, code, API, { ip: fresh });
+    expect(locked.status()).toBe(429);
+    expect((await locked.json()).error).toBe('too_many_attempts');
+    expect((await requestCode(request, email, { browser: 'other', ip: fresh })).status()).toBe(429);
+    expect(sql(`SELECT COUNT(*) FROM users WHERE email = '${email}'`)).toBe('0');
+    // A day later the misses no longer count.
+    sql(`UPDATE email_code_failures SET created_at = NOW() - INTERVAL '25 hours' WHERE email = '${email}'`);
+    expect((await requestCode(request, email, { browser: 'other', ip: fresh })).status()).toBe(200);
   });
 });
