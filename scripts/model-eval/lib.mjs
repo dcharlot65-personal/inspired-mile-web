@@ -96,10 +96,12 @@ export function commentaryLine(line, lang, first = false) {
 // The rules above were committed before any cell ran (8e92604). The first English cells showed
 // them missing a small model talking to itself mid-verse ("— wait need rhyme pattern. / Let me
 // design:"), echoing its instructions ("Write exactly 3 lines.") and labelling an acrostic's
-// letters ("W - Vivid rays…"). The three rules below were added for that, and kept only because
-// they flag none of the 443 reference verses (and the echo rule none of them against any prompt
-// the game sent): src/lib/model-eval.test.ts holds both. A rule that ended a verse on a colon
-// was tried and dropped: it flagged 4 reference verses, Wikisource excerpts cut mid-sentence.
+// letters ("W - Vivid rays…"); the French cells added a reasoning block ("<think>…"), an
+// announcement ("I shall craft a heroic couplet in French") and the form's name as a title.
+// The rules below were added for those, and kept only because they flag none of the 443
+// reference verses (and the prompt rules none of them against any prompt the game sent):
+// src/lib/model-eval.test.ts holds both. A rule that ended a verse on a colon was tried and
+// dropped: it flagged 4 reference verses, Wikisource excerpts cut mid-sentence.
 
 /**
  * Talk about the task, in English (the language of the prompt). Narrow on purpose: "Let me not
@@ -108,6 +110,10 @@ export function commentaryLine(line, lang, first = false) {
  */
 const TASK_TALK = /\b(let me (craft|write|try|design|start|fix|redo|rewrite|think|check|compose|adjust|revise|count (the )?syllables)|let'?s (try|craft|write|count|fix|redo)|i need to|need to (rhyme|craft|write|start|end|count|include|make)|needs? (a )?rhyme|must (start|end|begin|rhyme|include|repeat|contain|use)|each line|every line|the (first|last|second|third|fourth) line|lines? \d|syllables?\b|rhyme (scheme|pattern)|the (prompt|instructions?|flourish)|write exactly|exactly \d+ lines|that'?s not right|try again|\((\d+|that'?s[^)]*)\))/i;
 const INTERRUPTION = /(^|[—–(-]\s*|\.\s+)wait\b\s*[—–,:.!-]/i;
+// Announcing the verse instead of writing it ("I shall craft a heroic couplet in French").
+const ANNOUNCE = /\b(i('ll| will| shall| must| need to)|let me|now to) (craft|write|compose)\b|\b(craft|write|compose) (a|an|the|my|this) (heroic )?(couplet|quatrain|tercet|haiku|acrostic|anaphora|epistrophe|crescendo|verse|poem)\b/i;
+// A reasoning block some models open with.
+const REASONING = /<\/?think>/i;
 
 const norm = (s) => s.toLowerCase().normalize('NFKC').replace(/[^\p{L}\p{N}\s]/gu, ' ').replace(/\s+/g, ' ').trim();
 const fourGrams = (s) => {
@@ -127,9 +133,14 @@ export function instructionLines(prompt, answering) {
   return String(prompt[prompt.length - 1]).split(/\r?\n/).map((l) => l.trim()).filter((l) => l && !quoted.has(l));
 }
 
-/** A verse line that repeats an instruction: four words in a row from it, or all of a line of three or more words. */
+/**
+ * A verse line that repeats an instruction: four words in a row from it, or all of a line of
+ * three or more words, or the form's name on its own (a title: "Crossed Quatrain").
+ */
 export function echoesInstruction(line, instructions) {
   const l = norm(line);
+  const form = instructions.map((i) => i.match(/^Form: ([^.]+)\./)?.[1]).find(Boolean);
+  if (form && l === norm(form)) return true;
   if (l.split(' ').filter(Boolean).length < 3) return false;
   const mine = fourGrams(line);
   return instructions.some((ins) => norm(ins).includes(l) || [...fourGrams(ins)].some((g) => mine.has(g)));
@@ -147,7 +158,8 @@ export function commentary(verse, lang, { instructions = [], narrow = false } = 
     const old = commentaryLine(l, lang, i === 0 && lines.length > 1);
     if (old) out.push(old);
     else if (narrow) return;
-    else if (TASK_TALK.test(l) || INTERRUPTION.test(l)) out.push('talk about the task');
+    else if (REASONING.test(l)) out.push('a reasoning block');
+    else if (TASK_TALK.test(l) || INTERRUPTION.test(l) || ANNOUNCE.test(l)) out.push('talk about the task');
     else if (echoesInstruction(l, instructions)) out.push('repeats the instructions');
   });
   // Acrostic letters set out as labels ("W - Vivid rays", "L: Llevo"): two or more lines.

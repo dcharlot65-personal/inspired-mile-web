@@ -72,6 +72,21 @@ describe('the measured language lists', () => {
     }
   });
 
+  it('MODEL-EVAL.md is finished and states the lists decisions.json holds', () => {
+    const doc = readFileSync(join(process.cwd(), 'docs', 'language', 'MODEL-EVAL.md'), 'utf8');
+    expect(doc).not.toMatch(/FILL-[A-Z]+/);
+    const LABEL: Record<string, string> = { grand: 'Gemma 4 E2B', standard: 'LFM3 1.7B', lite: 'LFM2.5 350M' };
+    const section = doc.slice(doc.indexOf('### What follows'), doc.indexOf('### Cells'));
+    expect(section.length, 'the generated "What follows" and "Cells" sections').toBeGreaterThan(20);
+    for (const tier of TIERS as string[]) {
+      const row = section.split('\n').find((l) => l.startsWith(`| ${LABEL[tier]} | `));
+      expect(row, `${tier}: the "What follows" row`).toBeTruthy();
+      const [, , writes, judges] = row!.split('|').map((c) => c.trim());
+      expect(writes, `${tier} writes`).toBe(decisions.models[tier].writesIn.join(', ') || 'none');
+      expect(judges, `${tier} judges`).toBe(decisions.models[tier].judgesIn.join(', ') || 'none');
+    }
+  });
+
   it('a regional tag is read as its language', () => {
     const spec = { ...MODELS.grand, writesIn: ['pt'], judgesIn: ['zh'] };
     expect(modelWrites(spec, 'pt-BR')).toBe(true);
@@ -243,17 +258,23 @@ describe('the commentary check', () => {
     echo: 'Open the duel\nFearless',
     labels: 'W - Vivid rays strike the dawning light,\nI - In harmony I draw my might.\nT - Tribute rings where hearts once sang,',
     labelsEs: 'L: Llevo mi veneno ardiente,\nU: Urte con mi sombra oscura,\nN: Nunca cesará mi furia,\nA: Ahora seré lo que debo ser.',
+    // standard.fr.write.json and lite.en.write.json
+    reasoning: "<think>We need to parse the user's request.",
+    announceFr: 'To answer your challenge, I shall craft a heroic couplet in French, echoing Shakespeare’s form.\nNé, je me brise comme un dragon en vain,',
+    title: "Crescendo\nThe shadows stretch, dark as dust\nBeneath the moon's pale witnessing light",
   };
+  const LANG: Record<string, string> = { labelsEs: 'es', announceFr: 'fr' };
   const PROMPT = ['You are Christina Rossetti…', 'Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Give every line the same number of words.\nOpen the duel: taunt your challenger.\nWrite only the verse, in English. No title, no notes, no explanation.'];
   it('flags what the first cells showed the rules committed before them missing', () => {
     const instructions = instructionLines(PROMPT, null);
     for (const [name, verse] of Object.entries(MISSED)) {
-      const lang = name === 'labelsEs' ? 'es' : 'en';
+      const lang = LANG[name] ?? 'en';
       expect(commentary(verse, lang, { instructions, narrow: true }), `${name}, narrow`).toEqual([]);
       expect(commentary(verse, lang, { instructions }).length, name).toBeGreaterThan(0);
     }
-    // Without the prompt the echo cannot be seen: the rule needs the instructions.
+    // Without the prompt the echo and the title cannot be seen: those rules need the instructions.
     expect(commentary(MISSED.echo, 'en')).toEqual([]);
+    expect(commentary(MISSED.title, 'en')).toEqual([]);
   });
   it('does not take verse that names its own making for commentary', () => {
     for (const verse of [

@@ -7,16 +7,35 @@ and the game offered the model in all of them. Nothing had been measured outside
 This page is the measurement. Its result is two lists per model in `src/lib/brain.ts`:
 the languages in which the model writes the opponent's verse (`writesIn`) and those in
 which it judges (`judgesIn`). In any other language the written opponent plays and the
-rule-based judge decides, both of which work in all sixteen; the battle page's language
-picker says so beside the language's name.
+rule-based judge decides, both of which work in all sixteen.
 
-RESULTS-SUMMARY
+FILL-SUMMARY
+
+## What the game does with the lists
+
+- **The language picker** on the battle page lists all sixteen languages whatever is loaded.
+  Beside a language the loaded model does not write in it says "Written opponent", and under
+  the picker a line says why, in the interface language: "Thai: you face the written opponent,
+  because LFM3 1.7B has not shown it can write verse well in this language", and the same for
+  judging ("judged by rule, because …").
+- **The verdict** says "judged by rule, because …" instead of "no model is running" when a
+  model is loaded but does not judge the duel's language. The Theatre says the same.
+- **A model used in no language is never offered and never loaded on its own**
+  (`modelsToOffer`, `usedAnywhere` in `brain.ts`): it would be a download that changes nothing.
+  Where no model the device can run is left, the model panel says so ("No model this device
+  can run has shown that it writes or judges verse well, so you face the written opponent and
+  the judging is by rule"). `?brain=<tier>` still loads any model; the tests use it.
+- `src/lib/model-eval.test.ts` fails when a list in `brain.ts` differs from
+  `decisions.json`, when `decisions.json` no longer follows from the result files and the
+  thresholds, or when a language without a result file is in a list.
 
 ## How it was measured
 
-Everything was run in headless Chromium with WebGPU on the build host (Apple Metal), through
-the game's own code served by its dev server: `scripts/model-eval/run.mjs`. Nothing about
-judging or writing is re-implemented in the harness.
+Everything was run in headless Chromium with WebGPU on the build host (Apple M3 Ultra, Metal),
+through the game's own code served by its dev server: `scripts/model-eval/run.mjs`. Nothing
+about judging or writing is re-implemented in the harness. One model, one language and one
+task make a cell; each cell is a JSON file in [`model-eval/cells/`](model-eval/cells/),
+written as soon as it finished.
 
 ### Judging
 
@@ -43,34 +62,59 @@ judging or writing is re-implemented in the harness.
   in duels made by `createDuel` from seeds 1001 upward with the starter deck, taking each
   round until every form offered in the language has 10 plays. Difficulty cycles
   apprentice, player, master (one, two and three drafts), so a form's 10 plays are 4, 3 and
-  3 of them and 19 drafts. After a duel's first round the opponent answers a Wikisource
-  excerpt in the language, as it would answer a player. No curse is cast on the opponent.
+  3 of them and 19 drafts. The cards are the ones each duel deals. After a duel's first round
+  the opponent answers a Wikisource excerpt in the language, as it would answer a player. No
+  curse is cast on the opponent.
 - **What is counted**, per play (one verse on the table), by the game's `scoreVerse`: whether
   the form is kept in full, form points, craft. Then, by `scripts/model-eval/lib.mjs`:
   - *in the language*: the verse's letters are in the language's script (Unicode Script
     property; Chinese is Han with no kana, Japanese has kana), and, where other languages
     share that script, the language identifier's first answer is the language. The identifier
     is fastText's `lid.176` model run locally. For Chinese, Japanese, Korean and Thai the
-    script settles it. Malay is accepted for Indonesian: a short verse cannot tell them apart.
+    script settles it (the identifier calls a classical Chinese couplet Korean). Malay is
+    accepted for Indonesian: a short verse cannot tell them apart.
   - *commentary*: a first line ending in a colon, a line opening like a note ("Here is…",
     "Note:"), markup, or, in a language not written in Latin letters, a line of three or more
-    Latin-script words (a translation or an explanation).
-  - tokens per second, from the model's own tokenizer over every draft.
+    Latin-script words; and, added after the first cells (below), talk about the task
+    ("— wait need rhyme pattern", "Let me craft:", "I shall craft a heroic couplet in
+    French"), a reasoning block (`<think>`), a line repeating the prompt's instructions or
+    naming the form as a title, and acrostic letters set out as labels ("W - Vivid rays…").
+  - tokens per second, from the model's own tokenizer over every draft. The build host was
+    shared and loaded (one-minute load 120 to 175 on 32 cores) and its GPU may have been
+    busy, so these are lower than an idle machine gives; compare them within a model, not
+    with other measurements.
 
 ### The checks were made to fail first
 
-- `MEVAL_CONTROL=same` judges pairs whose two verses are the same text. A judge that prefers
-  one of them, or a harness that reports a preference, is broken. CONTROL-RESULT
-- The language detector was run on real verse before any model output: the table below.
-- `node scripts/model-eval/mutate.mjs` breaks the decision code, the lists and the result
-  files fourteen ways and requires the tests to go red each time. MUTATE-RESULT
-- The commentary check flags 2 of the 443 reference verses (both open on a line of real verse
-  that ends in a colon). An earlier version that looked at every line flagged 10 and was
-  narrowed.
+- **Same-text control.** `MEVAL_CONTROL=same` judges pairs whose two verses are the same text.
+  A judge that prefers one of them, or a harness that reports a preference, is broken. All
+  three models, in English and Thai: 0 of 48 criteria were anything but a split
+  ([`control/`](model-eval/control/)).
+- **Repeat control.** `MEVAL_CONTROL=repeat` judges the real pairs again and compares the
+  verdicts with the cells. FILL-REPEAT
+- **The language detector** was run on real verse before any model output: the first table
+  below.
+- **The commentary check.** The rules committed before any cell ran found 6 of LFM3's 90
+  English plays with commentary; reading the plays showed many more. Rules were added (after
+  the English cells, and again after the French ones) and kept only because none of them flags
+  any of the 443 reference verses, and the rules that read the prompt none of them against any
+  prompt the game sent in its language: 0 of 25,563 such checks over the first nine writing
+  cells (both are tests, and the second runs over every cell). A rule for a
+  verse that ends on a colon was tried and dropped: it flagged 4 reference excerpts cut
+  mid-sentence. The table gives both counts; a line under it says whether the narrow rules
+  would change any decision.
+- **A per-line language check was tried and dropped.** Run on single lines, the identifier
+  called "¡All hail, great master! Grave sir, hail!" Spanish (0.98) and the Spanish line
+  "He visto sombras sin par" English; it is not used. An English line inside a verse in
+  another Latin-script language is therefore caught only when it tips the whole verse.
+- **Mutations.** `node scripts/model-eval/mutate.mjs` breaks the decision code, the lists, the
+  checkers, the result files and this page 22 ways and requires the tests to go red each time.
+  FILL-MUTATE
 
 ## The thresholds
 
-Committed in `scripts/model-eval/thresholds.json` (commit `8e92604`) before any cell was run.
+Committed in `scripts/model-eval/thresholds.json` (commit `8e92604`) before any cell was run,
+and not changed since.
 
 A model **judges** a language when all of these hold:
 
@@ -97,6 +141,14 @@ A language that was not measured fails both.
 <!-- table:start -->
 <!-- table:end -->
 
+## What else the plays showed
+
+FILL-FINDINGS
+
+## The strings this work added
+
+FILL-STRINGS
+
 ## What is not established
 
-NOT-ESTABLISHED
+FILL-LIMITS

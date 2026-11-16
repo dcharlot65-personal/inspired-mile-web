@@ -24,7 +24,10 @@ const MUTATIONS = [
   ['an echo of the instructions no longer seen', 'scripts/model-eval/lib.mjs', "else if (echoesInstruction(l, instructions)) out.push('repeats the instructions');", ''],
   ['acrostic letters set out as labels no longer seen', 'scripts/model-eval/lib.mjs', ".length >= 2) out.push('letters set out as labels');", ".length >= 99) out.push('letters set out as labels');"],
   ['the challenger\'s quoted verse read as instructions', 'scripts/model-eval/lib.mjs', '.filter((l) => l && !quoted.has(l));', '.filter((l) => l);'],
+  ['a reasoning block no longer seen', 'scripts/model-eval/lib.mjs', "else if (REASONING.test(l)) out.push('a reasoning block');", ''],
+  ['a title naming the form no longer seen', 'scripts/model-eval/lib.mjs', 'if (form && l === norm(form)) return true;', ''],
   ['a model used in no language offered for download', 'src/lib/brain.ts', 'return runnable.filter(usedAnywhere);', 'return runnable;'],
+  ['the report edited apart from the decisions', 'docs/language/MODEL-EVAL.md', /\| Gemma 4 E2B \| [^|]*\|/, '| Gemma 4 E2B | xx |'],
 ];
 
 const run = () => {
