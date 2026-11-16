@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { MODELS } from '../../src/lib/brain';
+import { allowedEntry } from '../third-party-allowlist';
 
 /**
  * A duel against each real model, in a browser with WebGPU. What is asserted is
@@ -21,6 +22,17 @@ for (const tier of TIERS) {
     const errors: string[] = [];
     page.on('pageerror', (e) => errors.push(e.message));
     page.on('console', (m) => { if (m.type() === 'error') errors.push(m.text()); });
+    // Every request to another origin while a real model loads and plays. Only the model's
+    // own files may leave the site: the runtime's WebAssembly must come from this origin.
+    const own = new URL(test.info().project.use.baseURL!).origin;
+    const foreign = new Set<string>();
+    const runtime = new Set<string>();
+    page.on('request', (r) => {
+      const url = r.url();
+      if (/^(data|blob):/.test(url)) return;
+      if (!url.startsWith(`${own}/`)) foreign.add(url.split('?')[0]);
+      else if (new URL(url).pathname.startsWith('/ort/')) runtime.add(new URL(url).pathname);
+    });
 
     expect(await page.goto('/about').then(() => page.evaluate(async () => !!(await (navigator as any).gpu?.requestAdapter()))), 'this browser must have WebGPU').toBe(true);
 
@@ -56,6 +68,12 @@ for (const tier of TIERS) {
     console.log(`[${tier}] opening verse:\n${opening}`);
     console.log(`[${tier}] verdict: ${(await page.locator('#verdict').innerText()).replace(/\n+/g, ' | ').slice(0, 700)}`);
     expect(errors, errors.join('\n')).toEqual([]);
+
+    const unlisted = [...foreign].filter((url) => !allowedEntry(url, ['page-load', 'on-use']));
+    console.log(`[${tier}] other origins asked: ${[...new Set([...foreign].map((u) => new URL(u).host))].join(', ')} | runtime: ${[...runtime].join(', ')}`);
+    expect(unlisted, 'requests to other origins that tests/third-party-allowlist.ts does not name').toEqual([]);
+    expect([...foreign].join('\n')).not.toMatch(/jsdelivr|unpkg|cdnjs/);
+    expect([...runtime].some((path) => path.endsWith('.wasm')), `the runtime's WebAssembly came from this site (saw ${[...runtime].join(', ')})`).toBe(true);
   });
 }
 

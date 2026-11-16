@@ -9,6 +9,7 @@
 
 import * as api from './api-client';
 import type { UserResponse } from './api-client';
+import { forgetUserCaches } from './pwa';
 
 export type StorageMode = 'local' | 'server';
 
@@ -93,4 +94,6 @@ export async function logoutUser(): Promise<void> {
     // Ignore — clear local state regardless
   }
   deactivateServerMode();
+  // Nothing of the account may stay in the service worker's caches (src/lib/pwa.ts).
+  await forgetUserCaches();
 }

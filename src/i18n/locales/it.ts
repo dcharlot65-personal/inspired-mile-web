@@ -290,7 +290,7 @@ const it: Record<string, string> = {
   'battle.begin': 'Inizia il duello',
   'brain.checking': 'Verifico che cosa può far girare questo dispositivo…',
   'brain.playNow': 'Gioca subito, senza scaricare nulla',
-  'brain.kept': 'Scaricato una volta e conservato dal tuo browser. Niente viene inviato altrove.',
+  'brain.kept': 'Scaricato una volta da Hugging Face e conservato dal tuo browser. Niente di ciò che scrivi o dici viene inviato altrove.',
   'brain.summoning': 'Evoco il tuo avversario…',
   'brain.downloading': 'Scaricamento di {model}: {done} di {total} MB',
   'brain.ready': '{model} pronto',

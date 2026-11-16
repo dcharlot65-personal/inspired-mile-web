@@ -3,7 +3,8 @@
  *
  * Nothing here calls a server for inference. Models are downloaded once from
  * the Hugging Face hub, cached by the browser, and run on the device through
- * Transformers.js on WebGPU.
+ * Transformers.js on WebGPU. The download is the only request to another origin:
+ * the runtime's WebAssembly and loader come from this site (model-runtime.ts).
  *
  * Which model loads is decided by what the device can do, not by which
  * browser it is:
@@ -12,6 +13,9 @@
  *   lite      LFM2.5-350M      phones and tablets, low memory      ~0.3 GB  judges only
  *   none      no model         no WebGPU: the built-in rules run the opponent
  */
+
+import { loadTransformers } from './model-runtime';
+import { protectStorage } from './pwa';
 
 export type Tier = 'grand' | 'standard' | 'lite' | 'none';
 
@@ -167,7 +171,8 @@ export function isBrainLoaded(): boolean {
 }
 
 async function loadSpec(spec: ModelSpec, onProgress?: (p: LoadProgress) => void): Promise<void> {
-  const T = await import('@huggingface/transformers');
+  // Not a bare import: loadTransformers() makes the runtime files come from this site.
+  const T = await loadTransformers();
   const sizes = new Map<string, { loaded: number; total: number }>();
   const generator = await T.pipeline('text-generation', spec.id, {
     dtype: spec.dtype as any,
@@ -202,6 +207,9 @@ export function loadBrain(tier: Exclude<Tier, 'none'>, onProgress?: (p: LoadProg
       try {
         await loadSpec(spec, onProgress);
         onProgress?.({ percent: 100, text: `${spec.label} ready` });
+        // The weights are in browser storage now: ask the browser not to evict them.
+        // Not awaited, so play never waits on the answer.
+        void protectStorage('model');
         return true;
       } catch (err) {
         console.error(`[brain] ${spec.id} failed to load`, err);
