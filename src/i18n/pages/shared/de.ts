@@ -56,7 +56,7 @@ const messages: Record<string, string> = {
   'offline.link.home': 'Start',
   'offline.link.collection': 'Sammlung',
   'offline.link.battle': 'Kampfarena',
-  'app.description': 'Ein Shakespeare-Kartenspiel im Stil eines Rap-Battles, von Inspired Mile. Spiel deine Karten, halte die Form und schreib besser als ein Gegner, der ganz auf deinem Gerät läuft.',
+  'app.description': 'Ein Shakespeare-Kartenspiel im Stil des Battle-Raps, von Inspired Mile. Spiel deine Karten, halte die Form und schreib besser als ein Gegner, der ganz auf deinem Gerät läuft.',
   'app.shortcut.battle': 'Kampfarena',
   'app.shortcut.theatre': 'Das Theater',
 };

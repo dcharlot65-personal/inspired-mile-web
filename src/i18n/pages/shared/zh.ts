@@ -55,7 +55,7 @@ const messages: Record<string, string> = {
   'offline.link.home': '首页',
   'offline.link.collection': '收藏',
   'offline.link.battle': '对战竞技场',
-  'app.description': 'Inspired Mile 出品的莎士比亚说唱对决卡牌游戏。打出你的卡牌，守住诗体，写得比完全运行在你设备上的对手更好。',
+  'app.description': 'Inspired Mile 出品的莎士比亚说唱对战卡牌游戏。打出你的卡牌，守住诗体，写得比完全运行在你设备上的对手更好。',
   'app.shortcut.battle': '对战竞技场',
   'app.shortcut.theatre': '立体剧场',
 };

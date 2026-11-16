@@ -1,0 +1,88 @@
+{
+ "source": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q12302979|Q142714&props=labels|descriptions|sitelinks&languages=en|es|fr|de|it|pt|pl|ru|ar|hi|zh|ja|ko|vi|th|id|zh-hans|zh-cn|pt-br&format=json",
+ "licence": "CC0 (Wikidata); article titles are facts",
+ "fetched": "2026-11-16T18:52:13.672Z",
+ "items": {
+  "Q12302979": {
+   "what": "battle rap (manifest description)",
+   "enDescription": "type of rapping that includes bragging, insults and boasting content, often recited or freestyled spontaneously in live “battles”; often written solely for the purpose of impressing people with technically inventive rapping",
+   "labels": {
+    "en": "battle rap",
+    "es": "batalla de rap",
+    "fr": "battle",
+    "de": "Battle-Rap",
+    "it": null,
+    "pt": "batalha de rap",
+    "pl": "battle rap",
+    "ru": "рэп-баттл",
+    "ar": "باتل راب",
+    "hi": null,
+    "zh": "饒舌戰",
+    "ja": "MCバトル",
+    "ko": "배틀 랩",
+    "vi": "Rap chiến",
+    "th": null,
+    "id": "Adu rap"
+   },
+   "articles": {
+    "en": "Battle rap",
+    "es": "Batalla de rap",
+    "fr": "Battle (confrontation artistique)",
+    "de": "Battle-Rap",
+    "it": null,
+    "pt": "Batalha de rap",
+    "pl": "Battle rap",
+    "ru": "Рэп-баттл",
+    "ar": "باتل راب",
+    "hi": null,
+    "zh": "對戰饒舌",
+    "ja": "MCバトル",
+    "ko": "배틀 랩",
+    "vi": "Rap chiến",
+    "th": null,
+    "id": "Adu rap"
+   }
+  },
+  "Q142714": {
+   "what": "card game (manifest description)",
+   "enDescription": "game using playing cards as the primary device",
+   "labels": {
+    "en": "card game",
+    "es": "juego de naipes",
+    "fr": "jeu de cartes",
+    "de": "Kartenspiel",
+    "it": "gioco di carte",
+    "pt": "jogo de cartas",
+    "pl": "gra karciana",
+    "ru": "карточная игра",
+    "ar": "لعبة ورق",
+    "hi": "ताश का खेल",
+    "zh": "卡牌游戏",
+    "ja": "カードゲーム",
+    "ko": "카드 게임",
+    "vi": "trò chơi bài",
+    "th": "เกมไพ่",
+    "id": "permainan kartu"
+   },
+   "articles": {
+    "en": "Card game",
+    "es": "Juego de naipes",
+    "fr": "Jeu de cartes",
+    "de": "Kartenspiel",
+    "it": "Gioco di carte",
+    "pt": "Jogos de cartas",
+    "pl": "Gra karciana",
+    "ru": "Карточная игра",
+    "ar": "لعبة ورق",
+    "hi": "ताश का खेल",
+    "zh": "卡牌遊戲",
+    "ja": "カードゲーム",
+    "ko": "카드 게임",
+    "vi": "Trò chơi bài",
+    "th": "เกมไพ่",
+    "id": "Permainan kartu"
+   },
+   "zhFrom": "zh-cn"
+  }
+ }
+}

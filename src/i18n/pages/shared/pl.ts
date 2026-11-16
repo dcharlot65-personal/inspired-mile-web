@@ -58,7 +58,7 @@ const messages: Record<string, string> = {
   'offline.link.home': 'Start',
   'offline.link.collection': 'Kolekcja',
   'offline.link.battle': 'Arena bitwy',
-  'app.description': 'Szekspirowska gra karciana w stylu bitwy rapowej od Inspired Mile. Zagraj kartami, zachowaj formę i napisz lepiej niż rywal, który działa w całości na twoim urządzeniu.',
+  'app.description': 'Szekspirowska gra karciana w stylu battle rapu od Inspired Mile. Zagraj kartami, zachowaj formę i napisz lepiej niż rywal, który działa w całości na twoim urządzeniu.',
   'app.shortcut.battle': 'Arena bitwy',
   'app.shortcut.theatre': 'Nasz Teatr',
 };

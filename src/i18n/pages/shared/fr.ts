@@ -57,7 +57,7 @@ const messages: Record<string, string> = {
   'offline.link.home': 'Accueil',
   'offline.link.collection': 'Collection',
   'offline.link.battle': 'Arène de combat',
-  'app.description': 'Un jeu de cartes de battle rap shakespearien, par Inspired Mile. Jouez vos cartes, respectez la forme et écrivez mieux qu’un adversaire qui tourne entièrement sur votre appareil.',
+  'app.description': 'Un jeu de cartes shakespearien façon battle de rap, par Inspired Mile. Jouez vos cartes, respectez la forme et écrivez mieux qu’un adversaire qui tourne entièrement sur votre appareil.',
   'app.shortcut.battle': 'Arène de combat',
   'app.shortcut.theatre': 'Le Théâtre',
 };
