@@ -437,6 +437,36 @@ const PASTED: string[] = (() => {
   return unique;
 })();
 
+/**
+ * Words the pronunciation table does not have, one for each spelling rule English rhyme and
+ * syllables fall back on (rhyme.ts spelledKey, text.ts englishSyllables). The corpus is
+ * mostly real words, which the table answers for, so without these a fallback rule could be
+ * dropped from the Rust port and no golden would notice. Kept out of VOCAB, so that the
+ * seeded verses are what they were.
+ */
+const STEMS = ['zorb', 'quimb', 'flund', 'trask', 'vrim'];
+const RHYME_ENDINGS = [
+  'eigh', 'ight', 'igh', 'ower', 'our', 'are', 'air', 'eir', 'ayer', 'awl', 'aul', 'all', 'oise', 'oys', 'ize', 'ise', 'ies', 'eyes',
+  'ighs', 'yme', 'ough', 'ow', 'oe', 'ue', 'ew', 'oo', 'ck', 'que', 'ph', 'ee', 'ea', 'ey', 'ie', 'y', 'ay', 'ite', 'o', 'k', 'f', 'e',
+];
+const SYLLABLE_ENDINGS = [
+  'le', 'aile', 'ake', 'ases', 'axes', 'aches', 'akes', 'les', 'ated', 'aded', 'aked', 'ation', 'acious', 'agion', 'ial', 'ian', 'ia', 'io',
+  'eo', 'iet', 'oem', 'oet', 'ying', 'eing', 'iing', 'uous', 'aya', 'oye',
+];
+const FALLBACK_ENDINGS = [...new Set([...RHYME_ENDINGS, ...SYLLABLE_ENDINGS])];
+const FALLBACK_WORDS: string[] = (() => {
+  const all = [...STEMS.flatMap((stem) => FALLBACK_ENDINGS.map((e) => stem + e)), 'zry', 'zrye', 'zrie', 'pfy', 'grzye'];
+  const unknown = [...new Set(all)].filter((w) => !pronounce(w));
+  // They are there to reach the fallback: almost none may be a word the table knows.
+  if (unknown.length < all.length * 0.95) throw new Error(`only ${unknown.length} of ${all.length} invented words are unknown to the table`);
+  return unknown;
+})();
+/** Lines of invented words, so that syllables and spans by spelling are measured on lines too. */
+const FALLBACK_VERSES: string[] = STEMS.map((stem, i) => {
+  const mine = FALLBACK_WORDS.filter((w) => w.startsWith(stem));
+  return [mine.slice(0, 5), mine.slice(5, 12), mine.slice(12, 17), mine.slice(17 + i, 24 + i)].map((ws) => ws.join(' ')).join('\n');
+});
+
 // ---------------------------------------------------------------------------
 // The files
 // ---------------------------------------------------------------------------
@@ -507,7 +537,7 @@ function tablesJson(): string {
 }
 
 function textJson(): string {
-  const verses = CORPUS.map((raw) => {
+  const verses = [...CORPUS, ...FALLBACK_VERSES].map((raw) => {
     const clean = cleanVerse(raw);
     return {
       raw,
@@ -531,7 +561,7 @@ function textJson(): string {
     };
   });
   const allWords = [...new Set([...VOCAB, ...CORPUS.flatMap((v) => wordsOf(v))])];
-  const words = allWords.map((w) => {
+  const words = [...allWords, ...FALLBACK_WORDS.filter((w) => !allWords.includes(w))].map((w) => {
     const known = pronounce(w);
     return {
       w, fold: fold(w), span: wordSpan(w), letters: letterCount(w), syllables: syllablesInWord(w, 'en'), counts: syllableCounts(w, 'en'),
@@ -542,6 +572,13 @@ function textJson(): string {
   const pairs: Array<[string, string]> = [];
   for (const fam of FAMILIES) for (const a of fam) for (const b of fam) pairs.push([a, b]);
   for (let i = 0; i < 3000; i++) pairs.push([pick(r, allWords), pick(r, allWords)]);
+  // Rhyme by spelling: each invented ending against itself on every stem, and invented words at random.
+  for (const e of FALLBACK_ENDINGS) {
+    const family = STEMS.map((stem) => stem + e).filter((w) => FALLBACK_WORDS.includes(w));
+    for (const a of family) for (const b of family) pairs.push([a, b]);
+  }
+  const rf = rng(78);
+  for (let i = 0; i < 600; i++) pairs.push([pick(rf, FALLBACK_WORDS), pick(rf, FALLBACK_WORDS)]);
   const rhymePairs = pairs.map(([a, b]) => ({ a, b, rhymes: rhymes(a, b) }));
   // How much of one verse is taken from another: the corpus against itself, and each hand-written
   // verse against copies of itself (whole, with its lines turned round, with a word changed).
@@ -633,6 +670,14 @@ function checksJson(): string {
     );
   });
 
+  // Every form on the lines of invented words: syllables counted by spelling, with a guess's slack.
+  for (const form of FORMS) {
+    for (const verse of FALLBACK_VERSES) {
+      const acrostic = form.id === 'acrostic' ? 'bard' : null;
+      const sc = scoreForm(form, verse, { lang: 'en', acrostic: acrostic ?? undefined });
+      forms.push({ formId: form.id, acrostic, verse, earned: sc.earned, kept: sc.kept, thin: !!sc.thin, checks: sc.checks.map((c) => ({ id: c.id, points: c.points, earned: c.earned, met: c.met })) });
+    }
+  }
   return block({ devices, curses, signature, power, forms });
 }
 
