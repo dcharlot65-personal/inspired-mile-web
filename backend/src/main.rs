@@ -8,6 +8,7 @@ mod inventory;
 mod marketplace;
 mod migration;
 mod multiplayer;
+mod notice;
 mod rate_limit;
 mod referral;
 mod seasons;
@@ -26,7 +27,6 @@ use axum::{
 use tower_http::cors::{AllowOrigin, CorsLayer};
 use tower_http::limit::RequestBodyLimitLayer;
 use tower_http::trace::TraceLayer;
-use tracing_subscriber::EnvFilter;
 
 use config::Config;
 use multiplayer::{RoomManager, MatchmakingQueue};
@@ -66,10 +66,9 @@ async fn main() {
     // Load .env if present
     dotenvy::dotenv().ok();
 
-    // Initialize tracing with env filter
-    tracing_subscriber::fmt()
-        .with_env_filter(EnvFilter::from_default_env())
-        .init();
+    // The log: what RUST_LOG asks for (errors only when it is unset), plus the operator
+    // notices of `notice.rs`, which are written whatever RUST_LOG says.
+    tracing_subscriber::fmt().with_env_filter(notice::log_filter()).init();
 
     let (config, config_warnings) = match Config::from_env() {
         Ok(loaded) => loaded,
@@ -212,11 +211,10 @@ async fn main() {
         .with_state(state);
 
     let addr = format!("0.0.0.0:{}", config.port);
-    tracing::info!("Inspired Mile API listening on {addr}");
-    tracing::info!(
-        "client addresses are taken from proxy headers only for these peers: {:?}",
-        config.trusted_proxies
-    );
+    // Both said once per start, at any RUST_LOG: the second is how an operator checks that
+    // the site's proxy is trusted (see auth/client_ip.rs).
+    tracing::info!(target: notice::TARGET, "Inspired Mile API listening on {addr}");
+    tracing::info!(target: notice::TARGET, "{}", auth::trusted_proxies_notice(&config.trusted_proxies));
 
     let listener = tokio::net::TcpListener::bind(&addr).await.unwrap();
     // Connect info gives every limiter the socket peer: the client address itself unless

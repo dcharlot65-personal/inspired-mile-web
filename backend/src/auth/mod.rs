@@ -9,7 +9,9 @@ mod middleware;
 mod passkeys;
 mod sessions;
 
-pub use client_ip::{client_addr, parse_trusted_proxies, TrustedProxy, DEFAULT_TRUSTED_PROXIES};
+pub use client_ip::{
+    client_addr, parse_trusted_proxies, trusted_proxies_notice, TrustedProxy, DEFAULT_TRUSTED_PROXIES,
+};
 pub use handlers::{router, AuthContext};
 pub use jwt::Claims;
 pub use middleware::auth_middleware;

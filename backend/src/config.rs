@@ -424,7 +424,10 @@ mod tests {
     #[test]
     fn trusted_proxies_default_to_loopback_and_the_fleet_and_can_be_set() {
         let (config, _) = config_from(&[]).unwrap();
-        assert_eq!(config.trusted_proxies, parse_trusted_proxies("127.0.0.1,::1,10.10.10.1,100.64.224.0").unwrap());
+        assert_eq!(
+            config.trusted_proxies,
+            parse_trusted_proxies("127.0.0.1,::1,10.10.10.1,100.64.224.0,100.98.101.113").unwrap()
+        );
         let (config, _) = config_from(&[("TRUSTED_PROXIES", "100.64.0.0/10")]).unwrap();
         assert_eq!(config.trusted_proxies.len(), 1);
         let (config, _) = config_from(&[("TRUSTED_PROXIES", "")]).unwrap();

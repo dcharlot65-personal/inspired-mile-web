@@ -9,15 +9,31 @@
 //!
 //! Limits are keyed on a network, not a single address: an ordinary IPv6 connection owns a
 //! whole /64 (2^64 addresses), so a limit per address is no limit at all.
+//!
+//! A proxy missing from the list is not an error the API can detect: it simply sees every
+//! visitor as that proxy, and then the whole site shares one client's allowance. So the
+//! API says, whatever `RUST_LOG` is (`crate::notice`): at start-up, which peers it trusts;
+//! and, rate-limited, which peer sent a forwarding header it did not believe.
 
+use std::collections::HashMap;
+use std::fmt;
 use std::net::{IpAddr, Ipv4Addr, Ipv6Addr, SocketAddr};
-use std::sync::atomic::{AtomicI64, Ordering};
+use std::sync::{LazyLock, Mutex};
 
 use axum::http::HeaderMap;
 
-/// Loopback (Caddy or a tunnel on the same host) and the two fleet hosts named in
-/// CLAUDE.md: the Caddy that fronts the site (10.10.10.1) and prod itself (100.64.224.0).
-pub const DEFAULT_TRUSTED_PROXIES: &str = "127.0.0.1,::1,10.10.10.1,100.64.224.0";
+/// The peers trusted when `TRUSTED_PROXIES` is not set:
+///   - `127.0.0.1`, `::1`: a proxy or tunnel on the API's own host;
+///   - `10.10.10.1`: the LAN address of the MacBook Pro M4 whose Caddy fronts the site;
+///   - `100.64.224.0`: prod's own Tailscale address (the API's host);
+///   - `100.98.101.113`: the Tailscale address of that same MacBook Pro M4 (10.10.10.1).
+///     Its Caddy reaches the API on prod at `100.64.224.0:3849` over the tailnet, so this is
+///     the peer the production API sees for every visitor (checked on prod, 2026-11-16).
+///     Without it every visitor was counted as one client.
+///
+/// If the site's proxy ever moves, its new address must be added (the start-up notice
+/// lists what is trusted; an ignored-header notice names the peer that is not).
+pub const DEFAULT_TRUSTED_PROXIES: &str = "127.0.0.1,::1,10.10.10.1,100.64.224.0,100.98.101.113";
 
 /// One entry of `TRUSTED_PROXIES`: an address, or a network in CIDR form.
 #[derive(Clone, Debug, PartialEq, Eq)]
@@ -79,6 +95,32 @@ impl TrustedProxy {
             _ => false,
         }
     }
+}
+
+/// An address as itself, a network in CIDR form.
+impl fmt::Display for TrustedProxy {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        let max = if self.network.is_ipv4() { 32 } else { 128 };
+        if self.prefix == max {
+            write!(f, "{}", self.network)
+        } else {
+            write!(f, "{}/{}", self.network, self.prefix)
+        }
+    }
+}
+
+/// The start-up notice that says which peers are trusted.
+pub fn trusted_proxies_notice(trusted: &[TrustedProxy]) -> String {
+    if trusted.is_empty() {
+        return "TRUSTED_PROXIES is empty: forwarding headers are never believed, and every \
+                client is counted by its socket address"
+            .to_string();
+    }
+    let list = trusted.iter().map(ToString::to_string).collect::<Vec<_>>().join(", ");
+    format!(
+        "TRUSTED_PROXIES: CF-Connecting-IP / X-Forwarded-For are believed only from {list}; \
+         from any other peer the socket address is the client"
+    )
 }
 
 /// Parse `TRUSTED_PROXIES`: addresses or CIDR networks separated by commas. An empty list
@@ -164,18 +206,86 @@ pub fn client_addr(
     ClientAddr(Some(from_header.unwrap_or(peer_ip)))
 }
 
-/// Say, at most once a minute, that a forwarding header was ignored. If the peer named is
-/// really the site's proxy, every visitor is being counted as that one address and the
-/// request limit will throttle the whole site: add it to `TRUSTED_PROXIES`.
-fn note_ignored_header(peer: IpAddr) {
-    static LAST: AtomicI64 = AtomicI64::new(0);
-    let now = chrono::Utc::now().timestamp();
-    let last = LAST.load(Ordering::Relaxed);
-    if now - last >= 60 && LAST.compare_exchange(last, now, Ordering::Relaxed, Ordering::Relaxed).is_ok() {
-        tracing::warn!(
+/// One peer's ignored-header notice is repeated at most this often.
+pub const IGNORED_NOTICE_EVERY_SECONDS: i64 = 600;
+/// At most this many ignored-header notices in any clock minute, over all peers.
+pub const IGNORED_NOTICES_PER_MINUTE: u32 = 10;
+/// Peers remembered for the per-peer interval. Past this the memory starts again, which can
+/// only make the notices more frequent, never hide the first one about a peer.
+const IGNORED_PEERS_REMEMBERED: usize = 1024;
+
+/// Which ignored-header notices to write. A notice tells an operator that a peer sent a
+/// forwarding header that was not believed. If that peer is really the site's proxy, every
+/// visitor is being counted as it and the request limit throttles the whole site; the fix
+/// is to add it to `TRUSTED_PROXIES`.
+///
+/// The bounds keep a peer that sends the header on every request (the misconfigured proxy
+/// itself, or anyone on the LAN) from flooding the log: each peer at most once every
+/// `IGNORED_NOTICE_EVERY_SECONDS`, and at most `IGNORED_NOTICES_PER_MINUTE` lines a minute.
+/// The first request from a new peer is always reported unless that minute's lines are
+/// already used, in which case its next request after the minute is.
+#[derive(Debug, Default)]
+pub struct IgnoredHeaderNotices {
+    /// Per peer: when it was last reported, and how many requests since were not.
+    peers: HashMap<IpAddr, (i64, u64)>,
+    minute: i64,
+    lines_this_minute: u32,
+    /// Reports left out because of the per-minute bound, said with the next line.
+    left_out: u64,
+}
+
+impl IgnoredHeaderNotices {
+    /// The line to write for an ignored header from `peer` at `now` (seconds), if any.
+    pub fn note(&mut self, peer: IpAddr, now: i64) -> Option<String> {
+        if let Some((last, since)) = self.peers.get_mut(&peer) {
+            if now - *last < IGNORED_NOTICE_EVERY_SECONDS {
+                *since += 1;
+                return None;
+            }
+        }
+        let minute = now.div_euclid(60);
+        if minute != self.minute {
+            self.minute = minute;
+            self.lines_this_minute = 0;
+        }
+        if self.lines_this_minute >= IGNORED_NOTICES_PER_MINUTE {
+            self.left_out += 1;
+            return None;
+        }
+        self.lines_this_minute += 1;
+        if self.peers.len() >= IGNORED_PEERS_REMEMBERED && !self.peers.contains_key(&peer) {
+            self.peers.clear();
+        }
+        let since = self.peers.insert(peer, (now, 0)).map(|(_, since)| since).unwrap_or(0);
+        let mut line = format!(
             "ignored CF-Connecting-IP / X-Forwarded-For from {peer}, which is not in TRUSTED_PROXIES; \
-             requests from it are counted as {peer}. If {peer} is the site's reverse proxy, add it."
+             requests from it are counted as {peer}. If {peer} is the site's reverse proxy, add it to \
+             TRUSTED_PROXIES."
         );
+        if since > 0 {
+            line.push_str(&format!(" {since} more such requests from it since the last notice."));
+        }
+        if self.left_out > 0 {
+            line.push_str(&format!(
+                " ({} notices about other peers were left out: at most {IGNORED_NOTICES_PER_MINUTE} a minute.)",
+                self.left_out
+            ));
+            self.left_out = 0;
+        }
+        Some(line)
+    }
+}
+
+/// Report an ignored forwarding header, within the bounds of `IgnoredHeaderNotices`, as an
+/// operator notice (written whatever `RUST_LOG` says).
+fn note_ignored_header(peer: IpAddr) {
+    static NOTICES: LazyLock<Mutex<IgnoredHeaderNotices>> = LazyLock::new(Default::default);
+    let line = {
+        let mut notices = NOTICES.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+        notices.note(peer, chrono::Utc::now().timestamp())
+    };
+    if let Some(line) = line {
+        tracing::warn!(target: crate::notice::TARGET, "{line}");
     }
 }
 
@@ -201,14 +311,69 @@ mod tests {
     }
 
     #[test]
-    fn the_default_list_is_loopback_and_the_two_fleet_hosts() {
+    fn the_default_list_is_loopback_the_fleet_hosts_and_the_proxys_tailnet_address() {
         let trusted = defaults();
-        for inside in ["127.0.0.1", "::1", "10.10.10.1", "100.64.224.0", "::ffff:127.0.0.1"] {
+        // 100.98.101.113 is the peer the production API sees: the Caddy on 10.10.10.1
+        // reaches it over the tailnet.
+        for inside in ["127.0.0.1", "::1", "10.10.10.1", "100.64.224.0", "100.98.101.113", "::ffff:127.0.0.1"] {
             assert!(is_trusted(inside.parse().unwrap(), &trusted), "{inside}");
         }
-        for outside in ["10.10.10.2", "10.10.10.4", "100.64.224.1", "192.168.4.37", "203.0.113.7", "::2"] {
+        for outside in [
+            "10.10.10.2", "10.10.10.4", "100.64.224.1", "100.98.101.112", "100.98.101.114",
+            "100.100.141.123", "192.168.4.37", "203.0.113.7", "::2",
+        ] {
             assert!(!is_trusted(outside.parse().unwrap(), &trusted), "{outside}");
         }
+        // Through the proxy's tailnet address, the visitor's address is the client.
+        let h = headers(&[("cf-connecting-ip", "203.0.113.7")]);
+        assert_eq!(client_addr(&h, peer("100.98.101.113:51000"), &trusted).limit_key(), "203.0.113.7");
+    }
+
+    #[test]
+    fn the_start_up_notice_lists_every_trusted_peer() {
+        let notice = trusted_proxies_notice(&defaults());
+        assert!(
+            notice.contains("127.0.0.1, ::1, 10.10.10.1, 100.64.224.0, 100.98.101.113"),
+            "{notice}"
+        );
+        let nets = parse_trusted_proxies("100.64.0.0/10,fd7a:115c:a1e0::/48").unwrap();
+        assert!(trusted_proxies_notice(&nets).contains("100.64.0.0/10, fd7a:115c:a1e0::/48"));
+        assert!(trusted_proxies_notice(&[]).contains("never believed"));
+    }
+
+    #[test]
+    fn an_ignored_header_is_reported_once_per_peer_per_ten_minutes() {
+        let mut notices = IgnoredHeaderNotices::default();
+        let proxy: IpAddr = "100.98.101.200".parse().unwrap();
+        let t0 = 1_800_000_000;
+        let first = notices.note(proxy, t0).expect("the first ignored header is reported");
+        assert!(first.contains("ignored CF-Connecting-IP / X-Forwarded-For from 100.98.101.200"), "{first}");
+        assert!(first.contains("not in TRUSTED_PROXIES"));
+        // Every request after it, for ten minutes: nothing.
+        for s in 1..IGNORED_NOTICE_EVERY_SECONDS {
+            assert_eq!(notices.note(proxy, t0 + s), None, "second {s}");
+        }
+        // Then once more, with the count of what was not reported.
+        let again = notices.note(proxy, t0 + IGNORED_NOTICE_EVERY_SECONDS).expect("reported again");
+        assert!(again.contains(&format!("{} more such requests", IGNORED_NOTICE_EVERY_SECONDS - 1)), "{again}");
+        assert_eq!(IGNORED_NOTICE_EVERY_SECONDS, 600);
+    }
+
+    #[test]
+    fn another_peer_is_still_reported_but_never_more_than_ten_lines_a_minute() {
+        let mut notices = IgnoredHeaderNotices::default();
+        let t0 = 1_800_000_020; // twenty seconds into a minute
+        let peers: Vec<IpAddr> = (1..=30).map(|i| format!("192.168.4.{i}").parse().unwrap()).collect();
+        // A second peer is not hidden by the first one's interval.
+        assert!(notices.note(peers[0], t0).is_some());
+        assert!(notices.note(peers[1], t0).is_some());
+        // Thirty peers in one minute: ten lines.
+        let lines = peers.iter().filter_map(|p| notices.note(*p, t0 + 1)).count();
+        assert_eq!(lines, (IGNORED_NOTICES_PER_MINUTE - 2) as usize);
+        // The next minute, a peer left out is reported, and the line says how many were.
+        let later = notices.note(peers[29], t0 + 60).expect("reported in the next minute");
+        assert!(later.contains("notices about other peers were left out"), "{later}");
+        assert_eq!(IGNORED_NOTICES_PER_MINUTE, 10);
     }
 
     #[test]
