@@ -1,4 +1,5 @@
 import { test, expect, type Page } from '@playwright/test';
+import { MODELS, usedAnywhere } from '../src/lib/brain';
 
 /**
  * The verse duel, played end to end against the written opponent.
@@ -163,4 +164,38 @@ test.describe('Verse duel', () => {
     await expect(page.locator('#deck-cards > div')).toHaveCount(5);
     await expect(page.locator('#start-duel')).toBeEnabled();
   });
+});
+
+/**
+ * The model panel offers only models measured to write or judge in some language
+ * (docs/language/MODEL-EVAL.md). The browser is made to report a GPU; no model is
+ * downloaded, because nothing is clicked and no earlier choice is stored.
+ */
+test.describe('Model panel', () => {
+  const fakeDevice = (page: Page, handheld: boolean) =>
+    page.addInitScript((h) => {
+      Object.defineProperty(Navigator.prototype, 'gpu', { configurable: true, get: () => ({ requestAdapter: async () => ({ features: new Set(['shader-f16']) }) }) });
+      Object.defineProperty(Navigator.prototype, 'deviceMemory', { configurable: true, get: () => (h ? 4 : 16) });
+      if (h) Object.defineProperty(Navigator.prototype, 'userAgent', { configurable: true, get: () => 'Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 Mobile/15E148' });
+    }, handheld);
+
+  for (const [name, handheld, runnable] of [['a desktop', false, ['grand', 'standard']], ['a phone', true, ['lite']]] as const) {
+    test(`${name} is offered the models it can run that are used in some language, and no others`, async ({ page }) => {
+      await fakeDevice(page, handheld);
+      const offers = runnable.map((t) => MODELS[t]).filter(usedAnywhere);
+      await page.goto('/battle?seed=11');
+      if (!offers.length) {
+        await expect(page.locator('#brain-status')).toContainText('No model this device can run has shown');
+        await expect(page.locator('#brain-choices')).toBeHidden();
+        await expect(page.locator('#start-duel')).toBeEnabled();
+      } else {
+        await expect(page.locator('#brain-choices')).toBeVisible();
+        await expect(page.locator('#brain-model-btn')).toContainText(offers[0].label);
+        if (offers[1]) await expect(page.locator('#brain-other-btn')).toContainText(offers[1].label);
+        else await expect(page.locator('#brain-other-btn')).toBeHidden();
+      }
+      // A model used in no language is named nowhere in the panel.
+      for (const t of runnable) if (!usedAnywhere(MODELS[t])) await expect(page.locator('#brain-choices')).not.toContainText(MODELS[t].label);
+    });
+  }
 });

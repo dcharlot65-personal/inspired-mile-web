@@ -456,6 +456,7 @@ const id: Record<string, string> = {
   // (measured: docs/language/MODEL-EVAL.md).
   'battle.lang.written': '{language}: kamu melawan lawan bersyair tertulis, karena {model} belum terbukti mampu menulis syair dengan baik dalam bahasa ini.',
   'battle.lang.rules': '{language}: dinilai dengan aturan, karena {model} belum terbukti mampu menilai syair dengan baik dalam bahasa ini.',
+  'brain.noneShown': 'Belum ada model yang bisa dijalankan perangkat ini yang terbukti mampu menulis atau menilai syair dengan baik, jadi kamu melawan lawan bersyair tertulis dan penilaian dilakukan dengan aturan.',
 };
 
 export default id;

@@ -456,6 +456,7 @@ const it: Record<string, string> = {
   // (measured: docs/language/MODEL-EVAL.md).
   'battle.lang.written': '{language}: affronti l’avversario dalle strofe scritte, perché {model} non ha dimostrato di scrivere bene versi in questa lingua.',
   'battle.lang.rules': '{language}: giudicato secondo regole, perché {model} non ha dimostrato di giudicare bene i versi in questa lingua.',
+  'brain.noneShown': 'Nessun modello che questo dispositivo possa eseguire ha dimostrato di scrivere o giudicare bene i versi, quindi affronti l’avversario dalle strofe scritte e si giudica secondo regole.',
 };
 
 export default it;

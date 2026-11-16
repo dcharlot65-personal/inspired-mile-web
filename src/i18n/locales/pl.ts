@@ -456,6 +456,7 @@ const pl: Record<string, string> = {
   // (measured: docs/language/MODEL-EVAL.md).
   'battle.lang.written': '{language}: grasz z rywalem z gotowymi strofami, bo model {model} nie wykazał, że dobrze pisze wiersze w tym języku.',
   'battle.lang.rules': '{language}: ocena według reguł, bo model {model} nie wykazał, że dobrze ocenia wiersze w tym języku.',
+  'brain.noneShown': 'Żaden model, który to urządzenie może uruchomić, nie wykazał, że dobrze pisze lub ocenia wiersze, więc grasz z rywalem z gotowymi strofami, a ocena odbywa się według reguł.',
 };
 
 export default pl;

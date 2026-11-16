@@ -53,7 +53,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   </section>
 
   <script>
-    import { brainInfo, chooseTier, detectCapability, loadBrain, modelJudges } from '../lib/brain';
+    import { brainInfo, chooseTier, detectCapability, loadBrain, modelJudges, MODELS, usedAnywhere } from '../lib/brain';
     import { getActiveDeck } from '../lib/deck-manager';
     import { cancelListening, isListening, loadEar, startListening, stopListening } from '../lib/ear';
     import { getOwnedCardIds } from '../lib/inventory';
@@ -201,9 +201,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       const cap = await detectCapability();
       const chosen = localStorage.getItem('inspired-mile-brain');
       const tier = chooseTier(cap);
-      if (params.get('brain') !== 'rules' && tier !== 'none' && chosen && chosen !== 'rules') {
+      const want = chosen === 'grand' && !cap.handheld ? 'grand' : tier;
+      // Nor a model used in no language (docs/language/MODEL-EVAL.md): it would change nothing.
+      if (params.get('brain') !== 'rules' && want !== 'none' && usedAnywhere(MODELS[want]) && chosen && chosen !== 'rules') {
         status('brain.summoning');
-        useModel = await loadBrain(chosen === 'grand' && !cap.handheld ? 'grand' : tier, (p) => {
+        useModel = await loadBrain(want, (p) => {
           // The loader reports its progress in English.
           const down = p.text.match(/^Downloading (.+): (\d+) of (\d+) MB$/);
           statusMsg = null;

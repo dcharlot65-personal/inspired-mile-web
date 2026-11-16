@@ -456,6 +456,7 @@ const vi: Record<string, string> = {
   // (measured: docs/language/MODEL-EVAL.md).
   'battle.lang.written': '{language}: bạn đấu với đối thủ dùng thơ viết sẵn, vì {model} chưa chứng tỏ được là nó viết thơ tốt bằng ngôn ngữ này.',
   'battle.lang.rules': '{language}: chấm theo quy tắc, vì {model} chưa chứng tỏ được là nó chấm thơ tốt bằng ngôn ngữ này.',
+  'brain.noneShown': 'Chưa có mô hình nào mà thiết bị này chạy được chứng tỏ là viết thơ hoặc chấm thơ tốt, nên bạn đấu với đối thủ dùng thơ viết sẵn và chấm theo quy tắc.',
 };
 
 export default vi;

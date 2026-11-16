@@ -185,7 +185,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   </section>
 
   <script>
-    import { brainInfo, canOfferGrand, chooseTier, detectCapability, generate, isBrainLoaded, loadBrain, modelJudges, modelWrites, MODELS, type Tier } from '../lib/brain';
+    import { brainInfo, chooseTier, detectCapability, generate, isBrainLoaded, loadBrain, modelJudges, modelsToOffer, modelWrites, type ModelSpec, type Tier } from '../lib/brain';
     import { CARD_CATALOG, drawRandomCard, getCardById, RARITY_COLORS, type Card, type Rarity } from '../lib/cards';
     import { addCard, getOwnedCardIds, getOwnedCards, getUniqueOwnedCount, recordBattleWin } from '../lib/inventory';
     import { getPlayerStats, incrementStat, setHighScore, syncCardStats } from '../lib/achievements';
@@ -428,7 +428,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         const info = brainInfo()!;
         useModel = true;
         localStorage.setItem(BRAIN_KEY, info.tier);
-        say$($('brain-status'), info.writesIn.length ? 'brain.loaded' : 'brain.loadedJudgeOnly', { model: info.label });
+        // What the model does depends on the duel's language; the note under the language picker says it.
+        say$($('brain-status'), 'brain.loaded', { model: info.label });
         fillLanguages(langSelect.value);
         loadDeck();
         ready(null);
@@ -449,10 +450,20 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         ready('brain.noModel');
         return;
       }
-      // Where the device can take it, Gemma is offered first: it writes better verse,
-      // judges more reliably and, measured on Apple Metal, answers faster than LFM3.
-      const first = canOfferGrand(cap) ? MODELS.grand : MODELS[tier];
-      const second = canOfferGrand(cap) ? MODELS.standard : null;
+      // ?brain=grand|standard|lite loads that model whatever it is measured to do (the model tests).
+      if (forced === 'grand' || forced === 'standard' || forced === 'lite') {
+        summon(forced);
+        return;
+      }
+      // Only models used in at least one language are offered (docs/language/MODEL-EVAL.md);
+      // where the device can take it, Gemma comes first: it writes and judges best.
+      const offers = modelsToOffer(cap);
+      if (!offers.length) {
+        say$($('brain-status'), 'brain.noneShown');
+        ready('brain.noModel');
+        return;
+      }
+      const [first, second = null] = offers;
       say$($('brain-status'), 'brain.canRun', { model: first.label, size: size(first.megabytes) });
       say$($('brain-model-btn'), 'brain.summon', { model: first.label, size: size(first.megabytes) });
       $('brain-choices').classList.remove('hidden');
@@ -470,14 +481,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         say$($('brain-status'), 'brain.writtenReload');
         ready('brain.noModel');
       });
-      // Someone who has already downloaded the model does not need asking again.
-      // ?brain=grand|standard|lite picks a model outright (used by the model tests).
-      if (forced === 'grand' || forced === 'standard' || forced === 'lite') summon(forced);
-      else {
-        const before = localStorage.getItem(BRAIN_KEY);
-        if (before === 'grand' && canOfferGrand(cap)) summon('grand');
-        else if (before === 'grand' || before === 'standard' || before === 'lite' || forced === 'model') summon(tier);
-      }
+      // Someone who has already downloaded a model does not need asking again, if it is still offered.
+      // Never a silent switch to a bigger download: if theirs is no longer offered, they are asked.
+      const before = localStorage.getItem(BRAIN_KEY);
+      const offered = (t: string | null) => offers.some((m: ModelSpec) => m.tier === t);
+      if (before === 'grand' && offered('grand')) summon('grand');
+      else if ((before === 'grand' || before === 'standard' || before === 'lite' || forced === 'model') && offered(tier)) summon(tier);
     }
 
     // --- Voice ---

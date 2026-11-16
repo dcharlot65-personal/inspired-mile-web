@@ -456,6 +456,7 @@ const ja: Record<string, string> = {
   // (measured: docs/language/MODEL-EVAL.md).
   'battle.lang.written': '{language}：あらかじめ書かれた詩を出す相手と対戦します。{model}がこの言語でうまく詩を書けることは確かめられていないためです。',
   'battle.lang.rules': '{language}：規則で審査します。{model}がこの言語の詩をうまく審査できることは確かめられていないためです。',
+  'brain.noneShown': 'この端末で動かせるモデルは、どれもうまく詩を書けることも審査できることも確かめられていません。そのため、あらかじめ書かれた詩を出す相手と対戦し、規則で審査します。',
 };
 
 export default ja;

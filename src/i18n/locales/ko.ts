@@ -456,6 +456,7 @@ const ko: Record<string, string> = {
   // (measured: docs/language/MODEL-EVAL.md).
   'battle.lang.written': '{language}: 미리 쓰인 시를 내는 상대와 겨뤄요. {model}이(가) 이 언어로 시를 잘 쓴다는 것이 확인되지 않았기 때문이에요.',
   'battle.lang.rules': '{language}: 규칙으로 심사해요. {model}이(가) 이 언어의 시를 잘 심사한다는 것이 확인되지 않았기 때문이에요.',
+  'brain.noneShown': '이 기기에서 실행할 수 있는 모델 중 시를 잘 쓰거나 잘 심사한다는 것이 확인된 모델이 없어요. 그래서 미리 쓰인 시를 내는 상대와 겨루고, 규칙으로 심사해요.',
 };
 
 export default ko;

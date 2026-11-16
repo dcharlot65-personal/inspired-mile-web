@@ -92,6 +92,15 @@ export function modelJudges(spec: ModelSpec | null | undefined, lang: string): b
   return !!spec && spec.judgesIn.includes(base(lang));
 }
 
+/**
+ * Is the model used in any language at all? One that is not would be a download that changes
+ * nothing, so the pages never offer it and never load it on their own (only `?brain=<tier>`,
+ * which the tests use, loads it anyway).
+ */
+export function usedAnywhere(spec: ModelSpec | null | undefined): boolean {
+  return !!spec && (spec.writesIn.length > 0 || spec.judgesIn.length > 0);
+}
+
 export interface Capability {
   webgpu: boolean;
   /** 16-bit float shaders, needed by the q4f16 weights. */
@@ -139,6 +148,17 @@ export function chooseTier(cap: Capability): Tier {
 /** Can this device be offered the grand tier as an option? */
 export function canOfferGrand(cap: Capability): boolean {
   return cap.webgpu && cap.f16 && !cap.handheld && (cap.memoryGb === null || cap.memoryGb >= 8);
+}
+
+/**
+ * The models to offer this device, best first: those it can run, less any that is used in no
+ * language (usedAnywhere). Empty when there is none, and then the written opponent plays.
+ */
+export function modelsToOffer(cap: Capability): ModelSpec[] {
+  const tier = chooseTier(cap);
+  if (tier === 'none') return [];
+  const runnable = canOfferGrand(cap) ? [MODELS.grand, MODELS.standard] : [MODELS[tier]];
+  return runnable.filter(usedAnywhere);
 }
 
 export type Role = 'system' | 'user' | 'assistant';
