@@ -106,8 +106,9 @@ async function waitFor(url, ms) {
 async function pageLoad(tier) {
   const brain = await import('/src/lib/brain.ts');
   const t0 = performance.now();
-  let last = '';
-  const ok = await brain.loadBrain(tier, (p) => { if (p.text !== last && p.percent % 10 === 0) { last = p.text; console.log('[meval]', p.text); } });
+  let last = -1;
+  // One line per quarter of the download, not one per megabyte.
+  const ok = await brain.loadBrain(tier, (p) => { const step = Math.floor(p.percent / 25); if (step !== last) { last = step; console.log('[meval]', p.text); } });
   const info = brain.brainInfo();
   const adapter = await navigator.gpu?.requestAdapter();
   return {
