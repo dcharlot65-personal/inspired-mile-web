@@ -6,19 +6,39 @@ Astro static site + Rust API (`backend/`, axum + sqlx + Postgres).
 ## Stack
 
 - Astro 7, Tailwind 4 (`@tailwindcss/vite`; theme lives in `src/styles/global.css`), React 19
-- Babylon.js 9 (3D/VR), Google Model Viewer
-- In-browser AI: `@mlc-ai/web-llm`, `kokoro-js` (being replaced; see owner direction below)
+- In-browser AI through `@huggingface/transformers` on WebGPU; no server does inference.
+  `src/lib/brain.ts` picks a tier by device capability: Gemma 4 E2B (3.1 GB), LFM3 1.7B
+  (1.1 GB), LFM2.5 350M (judge only), or none (written opponent, rule judging).
+- Speech: Whisper base on WebAssembly (`src/lib/ear.ts`); Kokoro for English voice.
+  The browser's Web Speech recognition is NOT used: it sends audio to a server.
+- Babylon.js 9 for the Theatre (`src/lib/xr/theatre.ts`, `/theatre`) and the VR gallery
 - Backend: Rust 1.100.0 (pinned in `backend/rust-toolchain.toml`), axum 0.8, sqlx 0.9
-- Playwright for end-to-end tests
+- Tests: vitest (pure logic), Playwright (browser), `tests/model` (real models, WebGPU)
+
+## The game
+
+A three-round duel of verses. Rules live in `src/lib/verse/` and are pure and seeded:
+`forms.ts` (what a verse must do, checked by code), `devices.ts` (what cards do),
+`duel.ts` (scoring: craft + judge), `judge.ts` (how a model's preference is read),
+`opponent.ts`, `session.ts` (order of play, shared by every front end).
+Read the header comment of `judge.ts` before changing judging: asked "A or B?" outright,
+small models answer by position. `scripts/judge-eval.mjs` measures a model's judging.
 
 ## Build and test — on the build host, never on the dev Mac
 
 ```bash
-~/kani-logs/remote/rb . -- 'export PATH=$HOME/.cargo/bin:/opt/homebrew/bin:$PATH; npm ci && npm run build && npx playwright test'
-~/kani-logs/remote/rb . -- 'export PATH=$HOME/.cargo/bin:$PATH; cd backend && cargo test --release && cargo build --release'
+RB='export PATH=$HOME/.cargo/bin:/opt/homebrew/bin:$PATH;'
+~/kani-logs/remote/rb . -- "$RB npm ci && npx vitest run && npm run build && npx playwright test"
+~/kani-logs/remote/rb . -- "$RB cd backend && cargo test --release && cargo build --release"
+# real models in a WebGPU browser (the build host's headless Chromium has Metal); downloads up to 3 GB
+~/kani-logs/remote/rb . -- "$RB TIERS=lite,standard,grand npx playwright test -c playwright.model.config.ts"
 # after a deploy:
-~/kani-logs/remote/rb . -- 'PROD_URL=https://sonnetman.inspiredmile.com npx playwright test'
+~/kani-logs/remote/rb . -- "$RB PROD_URL=https://sonnetman.inspiredmile.com npx playwright test"
 ```
+
+Do not start a second `rb` in this checkout while one is running: both use the same remote
+folder, and a stale `astro dev` left on port 4399 makes every browser test fail with
+connection refused (`pkill -f 'astro dev'` on the host).
 
 `.env` (git-ignored) holds `PUBLIC_GOOGLE_CLIENT_ID`; rb does not copy ignored files, so
 export it in the build command.
@@ -46,6 +66,10 @@ export it in the build command.
 - The age gate covers every page until a date of birth is stored; tests start past it
   (`tests/age-verified.json`).
 - No GitHub Actions (account-wide owner rule). CI is the build host.
+- `git add -A` here will pick up agent worktrees under `.claude/`; that folder is ignored.
+- Babylon's default WebXR set-up downloads hand and controller models from its own
+  servers; `theatre.ts` turns that off, and a test asserts no foreign request in a session.
+- To test WebXR under emulation, delete `Navigator.prototype.xr` before installing `iwer`.
 
 ## Owner direction (2026-11-16)
 
