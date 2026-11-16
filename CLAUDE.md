@@ -7,8 +7,11 @@ Astro static site + Rust API (`backend/`, axum + sqlx + Postgres).
 
 - Astro 7, Tailwind 4 (`@tailwindcss/vite`; theme lives in `src/styles/global.css`), React 19
 - In-browser AI through `@huggingface/transformers` on WebGPU; no server does inference.
-  `src/lib/brain.ts` picks a tier by device capability: Gemma 4 E2B (3.1 GB), LFM3 1.7B
-  (1.1 GB), LFM2.5 350M (judge only), or none (written opponent, rule judging).
+  `src/lib/brain.ts` knows three models: Gemma 4 E2B (3.1 GB), LFM3 1.7B (1.1 GB) and
+  LFM2.5 350M (295 MB). Which the device can run decides what is offered, and each model
+  writes and judges only in the languages it was measured to handle (`writesIn`, `judgesIn`);
+  one used in no language is never offered (`modelsToOffer`). Otherwise: the written opponent
+  and rule judging.
 - Speech: Whisper base on WebAssembly (`src/lib/ear.ts`); Kokoro for English voice.
   The browser's Web Speech recognition is NOT used: it sends audio to a server.
 - Babylon.js 9 for the Theatre (`src/lib/xr/theatre.ts`, `/theatre`) and the VR gallery
@@ -100,7 +103,9 @@ left behind by a killed run is found by its port: `lsof -nP -iTCP:<port> -sTCP:L
   `scripts/model-eval/thresholds.json`; `src/lib/model-eval.test.ts` fails when either drifts.
   Never edit a list by hand: run the cell again (`scripts/model-eval/run.mjs`, on the build host,
   one run at a time, under memguard; it resumes), then `analyze.mjs`, then copy the lists.
-  A language with no result file is unsupported for that model.
+  A language with no result file is unsupported for that model. A change to the prompts in
+  `opponent.ts`/`judge.ts`, to the models or to the runtime makes the cells stale: judging can be
+  re-checked cheaply with `MEVAL_CONTROL=repeat`, writing only by running its cells again.
 - Every verse in every pack must keep its form as the code checks it (`verse.test.ts`).
   `node scripts/mutate-packs.mjs` (on the build host) proves those tests go red.
 - Writing a `\uXXXX` escape through an agent's file tools can turn it into the character
