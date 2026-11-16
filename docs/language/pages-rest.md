@@ -447,7 +447,7 @@ runs the test that should notice, expects it to go red with a message that names
 and puts the file back. A mutation the tests miss, or catch for another reason, is counted
 against the checks.
 
-- **First run of the full set (15:48, before this continuation):** 8 of 47 not caught. Two were
+- **First run of the full set (15:48, before this continuation):** 8 of 45 not caught. Two were
   real blind spots: the unit test of `loadArea`'s English fallback asked `t()`, which also
   finds English the test itself had loaded (MISSED), and the browser test skipped every string
   that read the same as English in the locale file, so English left in the Spanish marketplace
