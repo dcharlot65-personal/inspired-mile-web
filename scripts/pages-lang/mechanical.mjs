@@ -105,8 +105,15 @@ const CORE_TERMS = {
 CORE_TERMS.battle.skip = ['about.vision.p1', 'variants.ability.BKN.why', 'variants.ability.MNL.why', 'variants.source.battle-streak'];
 const coreGlossary = { terms: CORE_TERMS, names: {} };
 
+/**
+ * Thai: a {placeholder} or a word in Latin letters is set off by spaces, as the core locale file
+ * does every time (71 places, none without). Glued, "ด้วยHamlet" reads as one word.
+ */
+const THAI_GLUED = /[\u0E00-\u0E7F](?:\{[a-zA-Z_]+\}|[A-Za-z0-9])|(?:\{[a-zA-Z_]+\}|[A-Za-z0-9])[\u0E00-\u0E7F]/u;
+
 function check(lang, strings, english) {
   const problems = checkLanguage(lang, strings, english, cldr.languages[lang], helpers, {});
+  if (lang === 'th') for (const [key, value] of Object.entries(strings)) if (THAI_GLUED.test(value)) problems.push({ lang, key, rule: 'th-space', detail: 'a placeholder or a Latin word touches Thai letters' });
   for (const key of untranslated(lang, strings, english)) problems.push({ lang, key, rule: 'same-as-english', detail: english[key] });
   problems.push(...checkGlossary(lang, strings, english, glossary).filter((p) => p.rule !== 'glossary-missing'));
   problems.push(...checkGlossary(lang, strings, english, coreGlossary).map((p) => ({ ...p, rule: p.rule === 'glossary' ? 'core-term' : p.rule })));
@@ -132,6 +139,7 @@ if (args.includes('--selftest')) {
     ['es', 'x.c', 'Tu poema está listo.', 'glossary'],
     ['fr', 'x.f', 'Chaque round a sa forme.', 'glossary'],
     ['es', 'x.g', 'Consigue una puntuación perfecta en las preguntas.', 'core-term'],
+    ['th', 'x.a', 'สำรับ{n}', 'th-space'],
     ['ar', 'x.c', '\u200fأبياتك جاهزة.', 'bidi-control'],
   ];
   let missed = 0;
