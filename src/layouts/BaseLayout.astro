@@ -38,7 +38,28 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
     <title>{title} | Inspired Mile</title>
-    <script is:inline defer data-domain="inspiredmile.com" src="https://plausible.io/js/script.js"></script>
+    <script is:inline>
+      // Analytics (Plausible) loads only for a visitor who has passed the age gate: never
+      // for one the gate has blocked, and not before it is answered. The gate script at the
+      // end of this page calls __loadAnalytics() again when the visitor passes it. The
+      // privacy policy describes this behaviour; change both together.
+      (function () {
+        var loaded = false;
+        window.__loadAnalytics = function () {
+          if (loaded) return;
+          var state = null;
+          try { state = localStorage.getItem('inspired-mile-age-verified'); } catch (e) { return; }
+          if (state !== 'adult' && state !== 'teen-consented') return;
+          loaded = true;
+          var s = document.createElement('script');
+          s.defer = true;
+          s.setAttribute('data-domain', 'inspiredmile.com');
+          s.src = 'https://plausible.io/js/script.js';
+          document.head.appendChild(s);
+        };
+        window.__loadAnalytics();
+      })();
+    </script>
     <script is:inline type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -1538,6 +1559,7 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
             // Adult — proceed
             localStorage.setItem(AGE_KEY, 'adult');
             gate.classList.add('hidden');
+            window.__loadAnalytics();
           }
         });
 
@@ -1557,6 +1579,7 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
             if (checkbox.checked) {
               localStorage.setItem(AGE_KEY, 'teen-consented');
               gate.classList.add('hidden');
+              window.__loadAnalytics();
             }
           });
         }
