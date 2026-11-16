@@ -12,7 +12,7 @@ const messages: Record<string, string> = {
   'trivia.1.o2': "햄릿",
   'trivia.1.o3': "오셀로",
   'trivia.2.q': "햄릿의 성 이름은 무엇일까요?",
-  'trivia.2.o0': "헬싱외르",
+  'trivia.2.o0': "엘시노르",
   'trivia.2.o1': "카멜롯",
   'trivia.2.o2': "Dunsinane",
   'trivia.2.o3': "인버네스",

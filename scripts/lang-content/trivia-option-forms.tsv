@@ -38,8 +38,6 @@ vi	53	0	Tu sĩ Laurence	title	Friar translated; Laurence as the item's English n
 vi	70	0	Tu sĩ Laurence	title	Friar translated; Laurence as the item's English name, which no source gives in this language
 vi	131	0	Vua Lia	title	Vua Lia is Wikidata's Vietnamese label of the play King Lear (Q181598), which is the character's name
 vi	160	0	Vua Henry V	title	King translated; the label without its disambiguator
-th	53	0	บาทหลวง Laurence	title	Friar translated; Laurence as the item's English name, which no source gives in this language
-th	70	0	บาทหลวง Laurence	title	Friar translated; Laurence as the item's English name, which no source gives in this language
 id	52	0	Soneta	title	the common noun (soneta, sonnets): the work has no Indonesian label
 id	53	0	Pastor Laurence	title	Friar translated; Laurence as the item's English name, which no source gives in this language
 id	70	0	Pastor Laurence	title	Friar translated; Laurence as the item's English name, which no source gives in this language
@@ -89,7 +87,9 @@ th	45	0	The Tempest	script	every option of this question in Latin letters: some 
 th	47	0	The Merchant of Venice	script	every option of this question in Latin letters: some have no name in this script in any source, and the one that did would give the answer away
 th	61	0	Hamlet	script	every option of this question in Latin letters: some have no name in this script in any source, and the one that did would give the answer away
 th	88	0	Miranda	script	every option of this question in Latin letters: some have no name in this script in any source, and the one that did would give the answer away
-th	92	0	Romeo	script	every option of this question in Latin letters: some have no name in this script in any source, and the one that did would give the answer away
+th	33	1	Paris	script	every option of this question in Latin letters: some have no name in this script in any source, and the one that did would give the answer away
+th	33	2	Mercutio	script	every option of this question in Latin letters: some have no name in this script in any source, and the one that did would give the answer away
+th	33	3	Tybalt	script	every option of this question in Latin letters: some have no name in this script in any source, and the one that did would give the answer away
 th	95	0	Twelfth Night	script	every option of this question in Latin letters: some have no name in this script in any source, and the one that did would give the answer away
 th	112	0	The Tempest	script	every option of this question in Latin letters: some have no name in this script in any source, and the one that did would give the answer away
 th	144	0	Twelfth Night	script	every option of this question in Latin letters: some have no name in this script in any source, and the one that did would give the answer away

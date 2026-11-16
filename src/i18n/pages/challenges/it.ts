@@ -38,7 +38,7 @@ const messages: Record<string, string> = {
   'challenge.53.display': "Vi è qualche molla ___ nel regno di ___.",
   'challenge.53.missing': "fracida|Danimarca",
   'challenge.53.play': "Amleto",
-  'challenge.53.character': "Marcellus",
+  'challenge.53.character': "Marcello",
   'challenge.53.translator': "Carlo Rusconi",
   'challenge.57.full': "Vi sono, Orazio, in cielo e nella terra più cose, che non sogni la nostra filosofia.",
   'challenge.57.display': "Vi sono, Orazio, in cielo e nella ___ più cose, che non sogni la nostra ___.",
@@ -212,7 +212,7 @@ const messages: Record<string, string> = {
   'challenge.80.display': "Estinguiam quella ___; e con essa si spenga in lei il ___ della vita",
   'challenge.80.missing': "face|lume",
   'challenge.80.play': "Otello",
-  'challenge.80.character': "Othello",
+  'challenge.80.character': "Otello",
   'challenge.80.translator': "Carlo Rusconi",
 };
 

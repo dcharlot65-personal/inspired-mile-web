@@ -658,7 +658,7 @@ const messages: Record<string, string> = {
   'trivia.130.o3': "Flute",
   'trivia.131.q': "Siapa ayah Cordelia dalam Raja Lear?",
   'trivia.131.o0': "Raja Lear",
-  'trivia.131.o1': "Adipati Gloucester",
+  'trivia.131.o1': "Earl Gloucester",
   'trivia.131.o2': "Earl Kent",
   'trivia.131.o3': "Adipati Cornwall",
   'trivia.132.q': "Dalam The Tempest, hubungan apa yang diakui Caliban dengan pulau itu?",

@@ -106,7 +106,7 @@
 103 | In Molto rumore per nulla, quale personaggio finge la propria morte? | = | = | = | Orsola
 104 | Quale dramma nel dramma fa rappresentare Amleto per catturare la coscienza del re? | La trappola per topi | L'assassinio di Gonzago | Il dramma del re | Lo specchio dei principi
 105 | Nel Giulio Cesare, chi pronuncia la celebre orazione funebre che comincia con «Friends, Romans, countrymen»? | = | = | = | =
-106 | Come si chiama il fedele compagno di Lear che si traveste da «Poor Tom»? | Edgar | = | Kent | Gloucester
+106 | Come si chiama il fedele compagno di Lear che si traveste da «Poor Tom»? | Edgardo | = | Kent | Gloucester
 107 | Nell'Otello, quale oggetto usa Iago per convincere Otello dell'infedeltà di Desdemona? | Un fazzoletto | Una lettera | Un anello | Un ritratto
 108 | Quale opera termina con la battuta «The rest is silence»? | = | = | = | =
 109 | Chi si traveste da ragazzo con il nome di Ganimede in Come vi piace? | = | = | Febe | =
@@ -131,7 +131,7 @@
 128 | Come si chiama la festa dei pastori ne Il racconto d'inverno? | La festa della tosatura | Il ballo del raccolto | Il carnevale di primavera | La festa di mezza estate
 129 | In Come vi piace, chi pronuncia il discorso delle «sette età dell'uomo»? | = | = | = | Il duca esiliato
 130 | Quale personaggio di Sogno di una notte di mezza estate dirige un gruppo di attori dilettanti? | = | = | = | =
-131 | Chi è il padre di Cordelia in Re Lear? | Re Lear | Il duca di Gloucester | Il conte di Kent | Il duca di Cornovaglia
+131 | Chi è il padre di Cordelia in Re Lear? | Re Lear | Il conte di Gloucester | Il conte di Kent | Il duca di Cornovaglia
 132 | Ne La tempesta, quale rapporto Calibano dice di avere con l'isola? | Dice di esserne il legittimo signore | Dice di esserne il creatore | Dice di esserne il protettore | Non ne rivendica alcuno
 133 | Come si chiama la moglie di Bruto nel Giulio Cesare? | = | = | = | =
 134 | Quale opera di Shakespeare si svolge nei boschi di Atene? | = | = | = | =
@@ -147,11 +147,11 @@
 144 | In quale opera un personaggio indossa calze gialle con giarrettiere incrociate? | = | = | = | =
 145 | Come si chiama il dramma nel dramma dell'Amleto, secondo il nome che gli dà Amleto stesso? | La trappola per topi | L'assassinio di Gonzago | La coscienza del re | La vendetta di Danimarca
 146 | In quale opera un personaggio sopravvive dopo essere stato abbandonato neonato in Boemia? | = | = | = | =
-147 | Come si chiama il figlio illegittimo di Gloucester in Re Lear? | = | Edgar | Oswald | Cornovaglia
+147 | Come si chiama il figlio illegittimo di Gloucester in Re Lear? | = | Edgardo | Oswald | Cornovaglia
 148 | Quale sonetto di Shakespeare comincia con «Let me not to the marriage of true minds / Admit impediments»? | = | = | = | =
 149 | In Misura per misura, come si chiama il duca che si traveste da frate? | Vincenzo | = | Escalo | Claudio
 150 | Quale opera è ritenuta l'ultima che Shakespeare scrisse da solo? | = | = | = | =
-151 | Come si chiamano le tre figlie di re Lear? | Goneril, Regan e Cordelia | Goneril, Rosalinda e Cordelia | Elena, Regan e Cordelia | Goneril, Regan e Ofelia
+151 | Come si chiamano le tre figlie di re Lear? | Gonerilla, Regana e Cordelia | Gonerilla, Rosalinda e Cordelia | Elena, Regana e Cordelia | Gonerilla, Regana e Ofelia
 152 | Ne Il mercante di Venezia, quale iscrizione porta lo scrigno di piombo? | «Who chooseth me must give and hazard all he hath» | «Who chooseth me shall gain what many men desire» | «Who chooseth me shall get as much as he deserves» | «Who chooseth me shall find true love»
 153 | Che cos'ha di particolare il Sonetto 130 («My mistress' eyes are nothing like the sun»)? | È un sonetto antipetrarchista che si fa beffe della poesia d'amore convenzionale | È scritto in versi liberi anziché in pentametri giambici | È l'unico sonetto rivolto a un uomo | Fu pubblicato separatamente dagli altri sonetti
 154 | Nel Riccardo III, quale deformità Riccardo dice di avere? | La gobba | Una mano mancante | Un piede equino | La cecità a un occhio

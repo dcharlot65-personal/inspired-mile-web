@@ -358,3 +358,46 @@ l.elsinore	zh	厄尔锡诺	the play's name for it, from the cast list of Zhu She
 c.puck	pl	Puk	Wikidata has no Polish label; the pl.wikipedia article on the play names him so (names-evidence.tsv), as the Polish translations do
 c.bottom	pl	Spodek	Wikidata has no Polish label; the pl.wikipedia article on the play names him so (names-evidence.tsv)
 c.titania	pl	Tytania	Wikidata has no Polish label; the pl.wikipedia article on the play names her so, with the English beside it (names-evidence.tsv)
+c.mercutio	pt	Mercúcio	Wikidata has no Portuguese label; the name as pt.wikipedia's article on the play writes it (names-evidence.tsv)
+c.benvolio	pt	Benvólio	as above
+c.paris	pt	Páris	as above
+c.rosaline	pt	Rosalina	as above
+c.claudius	pt	Cláudio	as above
+c.horatio	pt	Horácio	as above
+c.gertrude	pt	Gertrudes	as above
+c.polonius	pt	Polônio	Brazilian spelling, as pt.wikipedia's Hamlet writes it (names-evidence.tsv); the label Polónio is European, and the game's Portuguese is Brazilian
+c.cordelia	pt	Cordélia	Wikidata has no Portuguese label; the name as pt.wikipedia's article on the play writes it (names-evidence.tsv)
+c.edmund	pt	Edmundo	as above
+c.desdemona	pt	Desdêmona	as above
+c.cassio	pt	Cássio	as above
+c.roderigo	pt	Rodrigo	as above
+c.brabantio	pt	Brabâncio	as above
+c.emilia	pt	Emília	as above
+c.gratiano	pt	Graciano	as above
+p.merchant	pt	O Mercador de Veneza	the pt-br label writes it O mercador de veneza; capitalised as the pt.wikipedia title has it
+c.edmund	es	Edmundo	Wikidata has no Spanish label; the name as es.wikipedia's El rey Lear writes it (names-evidence.tsv)
+c.laertes	it	Laerte	Wikidata has no Italian label; the name as it.wikipedia's article on the play writes it (names-evidence.tsv)
+c.edmund	it	Edmondo	as above
+c.othello	it	Otello	as above
+c.brabantio	it	Brabanzio	as above
+c.goneril	it	Gonerilla	as above
+c.regan	it	Regana	as above
+c.gratiano	it	Graziano	as above
+c.marcellus	it	Marcello	as above
+c.portia	it	Porzia	Wikidata has no Italian label; it.wikipedia's William Shakespeare names her so, beside Il mercante di Venezia (names-evidence.tsv)
+c.paris	pl	Parys	Wikidata has no Polish label; the name as pl.wikipedia's Romeo i Julia writes it (names-evidence.tsv)
+c.regan	pl	Regana	the name as pl.wikipedia's Król Lear lists her (names-evidence.tsv)
+c.rosaline	pl	Rozalina	Wikidata has no Polish label; the name as pl.wikipedia's Romeo i Julia writes it (names-evidence.tsv)
+l.elsinore	ko	엘시노르	the label (헬싱외르) is the modern town's; ko.wikipedia's 햄릿 calls the castle town 엘시노르 (names-evidence.tsv)
+c.mercutio	th	เมอร์คิวชิโอ	Wikidata has no Thai label; the name as the cast list of th.wikipedia's article on the play has it (names-evidence.tsv)
+c.tybalt	th	ทีบอลต์	as above
+c.paris	th	ปารีส	as above, where he is เคานต์ปารีส (Count Paris)
+c.nurse	th	นางนม	as above
+c.rosaline	th	โรซาไลน์	as above
+c.benvolio	th	เบนโวลิโอ	as above
+c.laurence#0	th	บาทหลวงลอเรนซ์	as above
+c.laurence#1	th	ลอเรนซ์	as above, without the title
+c.claudius	th	คลอดิอัส	as above
+c.gertrude	th	เกอร์ทรูด	as above
+c.polonius	th	โพโลนีอัส	as above
+c.ophelia	th	โอฟีเลีย	as above

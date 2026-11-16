@@ -697,7 +697,7 @@ export const TRIVIA_BANK: TriviaQuestion[] = [
   },
   {
     question: 'Who is Cordelia\'s father in King Lear?',
-    options: ['King Lear', 'The Duke of Gloucester', 'The Earl of Kent', 'The Duke of Cornwall'],
+    options: ['King Lear', 'The Earl of Gloucester', 'The Earl of Kent', 'The Duke of Cornwall'],
     correctIndex: 0, difficulty: 'medium',
   },
   {

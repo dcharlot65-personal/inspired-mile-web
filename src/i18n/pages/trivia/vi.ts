@@ -658,7 +658,7 @@ const messages: Record<string, string> = {
   'trivia.130.o3': "Flute",
   'trivia.131.q': "Cha của Cordelia trong Vua Lia là ai?",
   'trivia.131.o0': "Vua Lia",
-  'trivia.131.o1': "Công tước xứ Gloucester",
+  'trivia.131.o1': "Bá tước xứ Gloucester",
   'trivia.131.o2': "Bá tước xứ Kent",
   'trivia.131.o3': "Công tước xứ Cornwall",
   'trivia.132.q': "Trong Giông tố, Caliban tự nhận mình có quan hệ gì với hòn đảo?",

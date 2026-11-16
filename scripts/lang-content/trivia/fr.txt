@@ -131,7 +131,7 @@
 128 | Comment s'appelle la fête des bergers dans Le Conte d'hiver ? | La fête de la tonte des moutons | Le bal des moissons | Le carnaval de printemps | La fête de la Saint-Jean
 129 | Dans Comme il vous plaira, qui prononce la tirade des « sept âges de l'homme » ? | = | = | = | Le vieux duc
 130 | Quel personnage du Songe d'une nuit d'été dirige une troupe de comédiens amateurs ? | = | = | = | =
-131 | Qui est le père de Cordelia dans Le Roi Lear ? | Le roi Lear | Le duc de Gloucester | Le comte de Kent | Le duc de Cornouailles
+131 | Qui est le père de Cordelia dans Le Roi Lear ? | Le roi Lear | Le comte de Gloucester | Le comte de Kent | Le duc de Cornouailles
 132 | Dans La Tempête, quel lien Caliban affirme-t-il avoir avec l'île ? | Il s'en dit le maître légitime | Il s'en dit le créateur | Il s'en dit le protecteur | Il n'en revendique aucun
 133 | Comment s'appelle l'épouse de Brutus dans Jules César ? | Portia | = | = | =
 134 | Quelle pièce de Shakespeare se passe dans les bois près d'Athènes ? | = | = | = | =

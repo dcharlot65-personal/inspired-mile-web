@@ -14,7 +14,7 @@
 11 | Quantas peças Shakespeare escreveu? | 37 | 15 | 50 | 100
 12 | Que famoso rei escocês é o tema de uma tragédia de Shakespeare? | = | = | = | =
 13 | Em que peça há uma ilha mágica? | = | = | = | =
-14 | A que família pertence Romeu? | Montéquio | Capuleto | Escalus | Lourenço
+14 | A que família pertence Romeu? | Montéquio | Capuleto | Escala | Lourenço
 15 | Em que peça aparece o personagem Puck? | = | = | = | =
 16 | Quem é o servo mágico de Prospero em A Tempestade? | = | = | = | =
 17 | De que peça é “Double, double toil and trouble”? | = | = | = | =
@@ -33,7 +33,7 @@
 30 | Em que peça um personagem segura uma caveira e diz “Alas, poor Yorick”? | = | = | = | =
 31 | Em que peça aparecem os personagens Beatrice e Benedick? | = | = | = | =
 32 | O que Macbeth vê flutuar diante de si, guiando-o ao quarto de Duncan? | Um punhal | Um fantasma | Uma coroa | Uma tocha
-33 | Quem é o príncipe de Verona em Romeu e Julieta? | Escalus | = | = | =
+33 | Quem é o príncipe de Verona em Romeu e Julieta? | Escala | = | = | =
 34 | Qual é o subtítulo de Noite de Reis? | Ou O Que Quiserdes | Ou Como Gostais | Ou A Comédia dos Erros | Ou Tudo Bem
 35 | Que peça contém o verso “All the world's a stage”? | = | = | = | =
 36 | Como se chama o rei das fadas em Sonho de uma Noite de Verão? | = | = | = | =
@@ -63,7 +63,7 @@
 60 | Em Romeu e Julieta, como Julieta finge a própria morte? | Com uma poção para dormir | Com um feitiço | Prendendo a respiração | Com veneno
 61 | Que personagem é o príncipe da Dinamarca? | = | = | = | =
 62 | Shakespeare é muitas vezes chamado de “The ____ of Avon”. Que palavra falta? | Bard | King | Poet | Master
-63 | A que família pertence Julieta? | Capuleto | Montéquio | Escalus | Lourenço
+63 | A que família pertence Julieta? | Capuleto | Montéquio | Escala | Lourenço
 64 | Em que país se passa a maioria das comédias de Shakespeare? | = | = | = | =
 65 | Quem mata Macbeth no fim da peça? | = | = | = | =
 66 | O que Hamlet quer dizer com “the rest is silence”? | Que está morrendo e não pode dizer mais nada | Que quer que todos se calem | Que vai dormir | Que não tem opinião
@@ -83,7 +83,7 @@
 80 | Em que peça uma personagem se disfarça de advogado com o nome de Balthazar? | = | = | = | =
 81 | Como se chamava a companhia de atores de Shakespeare sob o rei Jaime I? | = | The Queen's Players | = | The Chamberlain's Servants
 82 | Que peça começa com uma tempestade no mar? | = | = | = | =
-83 | Em Júlio César, quem lidera a conspiração para matar César? | Bruto e Cássio | Marco António e Otávio | Calpúrnia e Pórcia | Cícero e Casca
+83 | Em Júlio César, quem lidera a conspiração para matar César? | Bruto e Cássio | Marco Antônio e Otávio | Calpúrnia e Pórcia | Cícero e Casca
 84 | A que gênero pertence Sonho de uma Noite de Verão? | Comédia | Tragédia | Peça histórica | Romance
 85 | Em que peça de Shakespeare aparece a floresta de Arden? | = | = | = | =
 86 | Em que ano Shakespeare morreu? | 1616 | 1600 | 1623 | 1590
@@ -94,11 +94,11 @@
 91 | Em Noite de Reis, que nome masculino Viola adota no disfarce? | Cesário | = | = | =
 92 | Quem mata Tybalt em Romeu e Julieta? | = | = | = | =
 93 | Em Rei Lear, que filha ama de verdade o pai? | = | = | = | As três igualmente
-94 | Com o que Otelo mata Desdemona? | Com um travesseiro (ele a sufoca) | Com um punhal | Com veneno | Com uma corda
+94 | Com o que Otelo mata Desdêmona? | Com um travesseiro (ele a sufoca) | Com um punhal | Com veneno | Com uma corda
 95 | Em que peça aparece o personagem Malvolio? | = | = | = | =
 96 | Como se chama a mãe de Hamlet? | = | = | = | =
-97 | Em O Amansar da Fera, como se chama a “fera”? | Catarina (Kate) | Bianca | Adriana | =
-98 | Quem é o pai de Desdemona em Otelo? | = | = | = | =
+97 | Em A Megera Domada, como se chama a “megera”? | Catarina (Kate) | Bianca | Adriana | =
+98 | Quem é o pai de Desdêmona em Otelo? | = | = | = | =
 99 | Que personagem faz o discurso “Once more unto the breach”? | = | = | = | =
 100 | Em Conto do Inverno, de que reino Perdita é princesa? | = | = | = | =
 101 | Quem é o duque da Ilíria em Noite de Reis? | = | = | = | =
@@ -106,14 +106,14 @@
 103 | Em Muito Barulho por Nada, que personagem finge a própria morte? | = | = | = | Úrsula
 104 | Que peça dentro da peça Hamlet manda encenar para apanhar a consciência do rei? | A Ratoeira | O Assassinato de Gonzago | A Peça do Rei | O Espelho dos Príncipes
 105 | Em Júlio César, quem faz o famoso discurso fúnebre que começa com “Friends, Romans, countrymen”? | = | = | = | =
-106 | Como se chama o fiel companheiro de Lear que se disfarça de “Poor Tom”? | Edgar | = | Kent | Gloucester
-107 | Em Otelo, que objeto Iago usa para convencer Otelo da infidelidade de Desdemona? | Um lenço | Uma carta | Um anel | Um retrato
+106 | Como se chama o fiel companheiro de Lear que se disfarça de “Poor Tom”? | Edgar | = | Kent | Glócester
+107 | Em Otelo, que objeto Iago usa para convencer Otelo da infidelidade de Desdêmona? | Um lenço | Uma carta | Um anel | Um retrato
 108 | Que peça termina com a fala “The rest is silence”? | = | = | = | =
 109 | Quem se disfarça de rapaz com o nome de Ganimedes em Como Gostais? | = | = | Phebe | =
 110 | O que aconteceu com o Globe Theatre em 1613? | Pegou fogo durante uma apresentação | Foi fechado pelo rei | Desabou em uma tempestade | Foi demolido para ser reconstruído
 111 | Em Medida por Medida, quem é o delegado corrupto deixado no governo de Viena? | = | Escalus | Lucio | Claudio
 112 | Em que peça de Shakespeare há um personagem chamado Caliban? | = | = | = | =
-113 | Como se chama a noiva de Petruchio em O Amansar da Fera? | Catarina | Bianca | Adriana | =
+113 | Como se chama a noiva de Petruchio em A Megera Domada? | Catarina | Bianca | Adriana | =
 114 | Em Antônio e Cleópatra, como morre Cleópatra? | Pela picada de uma áspide (uma serpente) | Envenenada | Afogada | Com um punhal
 115 | A quem o fantasma de Banquo assombra em Macbeth? | = | = | = | =
 116 | Como se chama o tenente de Otelo de quem Iago tem inveja? | = | = | = | =
@@ -131,7 +131,7 @@
 128 | Como se chama a festa dos pastores em Conto do Inverno? | A festa da tosquia | O baile da colheita | O carnaval da primavera | A festa do solstício de verão
 129 | Em Como Gostais, quem faz o discurso das “sete idades do homem”? | = | = | = | O duque exilado
 130 | Que personagem de Sonho de uma Noite de Verão dirige um grupo de atores amadores? | = | = | = | =
-131 | Quem é o pai de Cordelia em Rei Lear? | O rei Lear | O duque de Gloucester | O conde de Kent | O duque da Cornualha
+131 | Quem é o pai de Cordélia em Rei Lear? | O rei Lear | O conde de Glócester | O conde de Kent | O duque da Cornualha
 132 | Em A Tempestade, que relação Caliban afirma ter com a ilha? | Diz ser o seu legítimo senhor | Diz ser o seu criador | Diz ser o seu protetor | Não afirma nenhuma
 133 | Como se chama a esposa de Bruto em Júlio César? | = | = | = | =
 134 | Que peça de Shakespeare se passa nos bosques de Atenas? | = | = | = | =
@@ -139,19 +139,19 @@
 136 | Como se chama o bobo de Noite de Reis? | = | = | = | =
 137 | Por quem Ferdinand se apaixona em A Tempestade? | = | = | Claribel | =
 138 | O que Romeu compra do boticário? | Veneno | Um sonífero | Um remédio | Uma poção do amor
-139 | Em Rei Lear, quem cega Gloucester? | Cornualha | = | = | Oswald
+139 | Em Rei Lear, quem cega Glócester? | Cornualha | = | = | Oswald
 140 | Como se chamava a companhia teatral de Shakespeare antes de o rei Jaime se tornar o seu patrono? | = | = | = | =
 141 | Em que peça aparece Dogberry, um guarda trapalhão? | = | = | = | =
 142 | Como morre Antônio em Antônio e Cleópatra? | Lança-se sobre a própria espada | É morto em batalha | É envenenado | É executado
 143 | Quem é Hermione em Conto do Inverno? | A rainha da Sicília | Uma pastora | Uma bruxa | Uma criada
 144 | Em que peça um personagem usa meias amarelas com ligas cruzadas? | = | = | = | =
 145 | Como se chama a peça dentro da peça em Hamlet, segundo o nome que o próprio Hamlet lhe dá? | A Ratoeira | O Assassinato de Gonzago | A Consciência do Rei | A Vingança da Dinamarca
-146 | Em que peça uma personagem sobrevive depois de ser abandonada ainda bebê na Boémia? | = | = | = | =
-147 | Como se chama o filho ilegítimo de Gloucester em Rei Lear? | = | Edgar | Oswald | Cornualha
+146 | Em que peça uma personagem sobrevive depois de ser abandonada ainda bebê na Boêmia? | = | = | = | =
+147 | Como se chama o filho ilegítimo de Glócester em Rei Lear? | = | Edgar | Oswald | Cornualha
 148 | Que soneto de Shakespeare começa com “Let me not to the marriage of true minds / Admit impediments”? | = | = | = | =
 149 | Em Medida por Medida, como se chama o duque que se disfarça de frade? | Vincentio | = | Escalus | Claudio
 150 | Que peça é considerada a última que Shakespeare escreveu sozinho? | = | = | = | =
-151 | Como se chamam as três filhas do rei Lear? | Goneril, Regan e Cordelia | Goneril, Rosalind e Cordelia | Helena, Regan e Cordelia | Goneril, Regan e Ofélia
+151 | Como se chamam as três filhas do rei Lear? | Goneril, Regan e Cordélia | Goneril, Rosalind e Cordélia | Helena, Regan e Cordélia | Goneril, Regan e Ofélia
 152 | Em O Mercador de Veneza, que inscrição há no cofre de chumbo? | “Who chooseth me must give and hazard all he hath” | “Who chooseth me shall gain what many men desire” | “Who chooseth me shall get as much as he deserves” | “Who chooseth me shall find true love”
 153 | O que o Soneto 130 (“My mistress' eyes are nothing like the sun”) tem de incomum? | É um soneto antipetrarquista que zomba da poesia amorosa convencional | É escrito em verso livre, e não em pentâmetro iâmbico | É o único soneto dirigido a um homem | Foi publicado separado dos outros sonetos
 154 | Em Ricardo III, que deformidade Ricardo diz ter? | Uma corcunda | Uma mão a menos | Um pé torto | Cegueira de um olho
@@ -162,7 +162,7 @@
 159 | Em Otelo, de onde é Otelo? | É um mouro (do Norte de África) | É de Veneza | É de Chipre | É da Espanha
 160 | Que personagem de Henrique V se disfarça para andar entre os seus soldados antes da batalha? | O rei Henrique V | O duque de Exeter | O capitão Fluellen | O conde de Westmoreland
 161 | Qual é o primeiro verso de Ricardo III? | “Now is the winter of our discontent / Made glorious summer by this sun of York” | “A horse, a horse, my kingdom for a horse” | “Was ever woman in this humour wooed” | “Off with his head! So much for Buckingham”
-162 | Em O Amansar da Fera, como se chama o personagem da moldura que assiste à peça? | = | = | = | =
+162 | Em A Megera Domada, como se chama o personagem da moldura que assiste à peça? | = | = | = | =
 163 | Qual destas obras de Shakespeare é considerada uma “peça-problema”? | = | = | = | =
 164 | Em que ano foi construído o Globe Theatre original? | 1599 | 1576 | 1610 | 1588
 165 | Em Macbeth, como se chama o castelo de Macduff, onde a sua família é assassinada? | = | = | = | =

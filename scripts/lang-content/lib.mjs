@@ -30,9 +30,20 @@ const TITLE = /^(?:King|Queen|Prince|Princess|Duke|Lord|Lady|Sir|Captain|Friar|E
 
 const tokens = (s) => s.split(/[\s·・]+/u).filter(Boolean);
 
+/**
+ * The game's Portuguese is Brazilian (the core locale says tela, você, registrada), and Wikidata's `pt`
+ * label is European: Marco António, Boémia, Octávia, O Amansar da Fera, where Brazil writes Marco Antônio,
+ * Boêmia, Otávia, A Megera Domada. So the `pt-br` label comes first, except where it only copies the
+ * English one (A Midsummer Night's Dream, As You Like It), which says nothing about Brazilian usage.
+ */
+function ptLabel(L) {
+  const br = L['pt-br'];
+  return br && br !== L.en ? br : L.pt ?? br;
+}
+
 function labelOf(e, lang) {
   const L = e.labels;
-  const raw = lang === 'zh' ? L['zh-hans'] ?? L['zh-cn'] ?? L.zh : lang === 'pt' ? L.pt ?? L['pt-br'] : L[lang];
+  const raw = lang === 'zh' ? L['zh-hans'] ?? L['zh-cn'] ?? L.zh : lang === 'pt' ? ptLabel(L) : L[lang];
   // A label should not carry a disambiguator, but some do: "Polonio (Hamlet)", "Enrique VIII (teatro)".
   return raw?.replace(/\s*[(（][^)）]*[)）]\s*$/u, '');
 }
@@ -53,7 +64,7 @@ export function sourcesOf(key, lang) {
   const out = [];
   const add = (v, where) => v && out.push({ value: v, where });
   for (const [k, l, name, url, , how] of nameEvidence) if (k === key && l === lang) add(name, `${url.match(/^https:\/\/([a-z]+\.wiki[a-z]+)\.org/)?.[1] ?? 'the web'}, ${decodeURIComponent(url.match(/title=([^&]+)/)?.[1] ?? '').replace(/_/g, ' ')} (oldid ${url.match(/oldid=(\d+)/)?.[1]}; ${how})`);
-  for (const code of lang === 'zh' ? ['zh-hans', 'zh-cn', 'zh', 'zh-hant'] : lang === 'pt' ? ['pt', 'pt-br'] : [lang]) {
+  for (const code of lang === 'zh' ? ['zh-hans', 'zh-cn', 'zh', 'zh-hant'] : lang === 'pt' ? ['pt-br', 'pt'] : [lang]) {
     add(e.labels[code], `label (${code})`);
     for (const a of e.aliases?.[code] ?? []) add(a, `alias (${code})`);
   }

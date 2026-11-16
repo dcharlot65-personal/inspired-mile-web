@@ -658,7 +658,7 @@ const messages: Record<string, string> = {
   'trivia.130.o3': "Flute",
   'trivia.131.q': "Qui est le père de Cordelia dans Le Roi Lear ?",
   'trivia.131.o0': "Le roi Lear",
-  'trivia.131.o1': "Le duc de Gloucester",
+  'trivia.131.o1': "Le comte de Gloucester",
   'trivia.131.o2': "Le comte de Kent",
   'trivia.131.o3': "Le duc de Cornouailles",
   'trivia.132.q': "Dans La Tempête, quel lien Caliban affirme-t-il avoir avec l'île ?",

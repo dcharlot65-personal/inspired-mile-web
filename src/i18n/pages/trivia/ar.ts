@@ -658,7 +658,7 @@ const messages: Record<string, string> = {
   'trivia.130.o3': "Flute",
   'trivia.131.q': "من هو والد Cordelia في الملك لير؟",
   'trivia.131.o0': "الملك لير",
-  'trivia.131.o1': "دوق غلوستر",
+  'trivia.131.o1': "إيرل غلوستر",
   'trivia.131.o2': "إيرل كِنت",
   'trivia.131.o3': "دوق كورنوال",
   'trivia.132.q': "في العاصفة، ما العلاقة التي يدّعيها Caliban بالجزيرة؟",
