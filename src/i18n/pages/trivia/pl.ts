@@ -786,7 +786,7 @@ const messages: Record<string, string> = {
   'trivia.156.o1': "ABBA ABBA CDE CDE",
   'trivia.156.o2': "AABB CCDD EEFF GG",
   'trivia.156.o3': "ABAB ABAB CDCD EE",
-  'trivia.157.q': "W której sztuce znajduje się didaskalium „Exit, pursued by a bear”?",
+  'trivia.157.q': "W której sztuce znajduje się wskazówka sceniczna „Exit, pursued by a bear”?",
   'trivia.157.o0': "Zimowa opowieść",
   'trivia.157.o1': "Burza",
   'trivia.157.o2': "Sen nocy letniej",

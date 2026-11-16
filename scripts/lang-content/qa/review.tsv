@@ -514,3 +514,31 @@ ru	trivia.48.o3	ok	reads: Фиалки: violets; the flag is OPUS-MT ru-en's
 ru	trivia.68.o0	ok	reads: Осла: a donkey's (head); the flag is OPUS-MT ru-en's
 ru	trivia.97.q	ok	reads: the shrew's name; the flag is OPUS-MT ru-en's
 ru	trivia.41.o0	ok	reads: Поручик (знаменосец), lieutenant (standard-bearer): the Russian translations make Iago поручик and Cassio лейтенант (Weinberg's cast list on ru.wikisource: «Яго, его поручик»), which is the distinction this question asks for; the gloss names the ensign's office
+pl	trivia.10.q	ok	reads: from which play "…" comes (sztuka: a play); the flag is OPUS-MT pl-en's
+pl	trivia.102.q	ok	reads: whom Portia disguises herself as; the flag is OPUS-MT pl-en's
+pl	trivia.109.o2	ok	reads: Febe: Phebe, as Polish writes her; the flag is OPUS-MT pl-en's
+pl	trivia.114.o2	ok	reads: Tonie: she drowns; the flag is OPUS-MT pl-en's
+pl	trivia.121.o3	ok	reads: Brązową: the bronze (casket); the flag is OPUS-MT pl-en's
+pl	trivia.128.o3	ok	reads: Zabawa w noc świętojańską: a midsummer-night revel; the flag is OPUS-MT pl-en's
+pl	trivia.129.o3	ok	reads: Książę wygnany: the exiled duke (Duke Senior); the flag is OPUS-MT pl-en's
+pl	trivia.132.o3	ok	reads: claims none; the flag is OPUS-MT pl-en's
+pl	trivia.14.o0	ok	reads: Montekich: the Montagues; the flag is OPUS-MT pl-en's
+pl	trivia.142.o3	ok	reads: Zostaje stracony: is executed; the flag is OPUS-MT pl-en's
+pl	trivia.154.o0	ok	reads: Garb: a hump; the flag is OPUS-MT pl-en's
+pl	trivia.161.o0	ok	reads: the English lines, kept; the flag is OPUS-MT pl-en's
+pl	trivia.17.q	ok	reads: from which play "…" comes; the flag is OPUS-MT pl-en's
+pl	trivia.172.q	ok	reads: the double meaning of "nunnery"; the flag is OPUS-MT pl-en's
+pl	trivia.177.q	ok	reads: what the "green-eyed monster" is; the flag is OPUS-MT pl-en's
+pl	trivia.180.q	ok	reads: in which play the exiled duke says "…"; the flag is OPUS-MT pl-en's
+pl	trivia.181.o3	ok	reads: Maski: masques; the flag is OPUS-MT pl-en's
+pl	trivia.186.q	ok	reads: who says "…"; the flag is OPUS-MT pl-en's
+pl	trivia.187.q	ok	reads: what the pit or yard was; the flag is OPUS-MT pl-en's
+pl	trivia.188.o0	ok	reads: the poem itself ("…"); the flag is OPUS-MT pl-en's
+pl	trivia.194.o1	ok	reads: Baldachim: the canopy; the flag is OPUS-MT pl-en's
+pl	trivia.35.q	ok	reads: which play has the line "…"; the flag is OPUS-MT pl-en's
+pl	trivia.63.o1	ok	reads: Montekich: the Montagues; the flag is OPUS-MT pl-en's
+pl	trivia.66.o3	ok	reads: Nie ma zdania: he has no opinion; the flag is OPUS-MT pl-en's
+pl	trivia.77.o0	ok	reads: Tonie: she drowns; the flag is OPUS-MT pl-en's
+pl	trivia.79.o0	ok	reads: the English line, kept; the flag is OPUS-MT pl-en's
+pl	trivia.79.o3	ok	reads: the English line, kept; the flag is OPUS-MT pl-en's
+pl	trivia.157.q	fixed	"didaskalium", a rare singular of didaskalia, is now "wskazówka sceniczna", the ordinary word for a stage direction
