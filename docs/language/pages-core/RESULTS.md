@@ -146,3 +146,30 @@ Looked at, and fixed:
 Looked at and right: arrows that point the reading way in Arabic, the paired brackets and
 Latin names inside Arabic sentences, the sentence-final full stop after "Inspired Mile" on the
 left, the house names, the city view with its English style names (by design).
+
+## The pages in a browser, and every suite
+
+All on the build host, with test ports 47611 (web), 47612 (web without email), 47613 (API),
+47614 (API without email) and 47615 (Postgres), `E2E_TIMEOUT=60000` and six workers (the host
+stood at load 130 to 230 on 32 cores).
+
+`tests/pages-i18n.spec.ts` loads home, about, collection, profile and world map in all sixteen
+languages, with a player who owns cards, variants, decks and achievements, opens the deck
+builder's error, the card views and a city, and reads `textContent`: no `{placeholder}`, no
+message key, no `<b>`/`<a>` mark, none of the page's English (taken from the English area files
+and a list of what the pages said before), the document title and description the language's
+own, nothing wider than a 390-pixel phone. Its "The checks can fail" test plants English in
+capitals and hidden, a key, a placeholder, a mark and an over-wide element, and each is caught.
+`scripts/mutate-pages.mjs` breaks the areas, the record and the quotation marks one at a time
+(11 breaks); the unit tests went red for every one and green again after.
+
+- First run, at c074c81 (main a0d485f merged): vitest 124 of 125 (the core `i18n.test.ts` timed
+  out at 5 s while loading sixteen locale files on the loaded host; run alone twice, it passed in
+  3.2 s both times), build passed, Playwright 139 of 143. The four failures were not in this
+  branch's pages: three `pwa.spec.ts` tests whose stand-in model library lacked what main's new
+  self-hosting loader reads (main fixed the stand-in in 61a3e95), and `v2-world-cards.spec.ts`,
+  where `locator('h1')` also found the Astro developer toolbar's headings (main turned the
+  toolbar off in 3015db5). Both commits are merged here. I did not run main itself to watch
+  those four fail there.
+- Run at 6afd468 (main 3015db5 merged, the screenshot fixes in): vitest 127 of 127, build passed, Playwright **143 of 143**
+  (7.4 min, none flaky), mutation proof 11 of 11 caught.
