@@ -877,7 +877,6 @@ hi	102	Love's Labour's Lost	A light heart lives long.
 hi	103	The Tempest	What is past is prologue.
 zh	1	The Merchant of Venice	All that glitters is not gold.
 zh	2	Romeo and Juliet	Parting is such sweet sorrow.
-zh	3	The Tempest	We are such stuff as dreams are made on.
 zh	4	Romeo and Juliet	Romeo, Romeo, wherefore art thou Romeo?
 zh	5	Julius Caesar	Friends, Romans, countrymen, lend me your ears.
 zh	6	Romeo and Juliet	A rose by any other name would smell as sweet.
@@ -888,11 +887,8 @@ zh	10	As You Like It	All the world's a stage, and all the men and women merely p
 zh	11	Macbeth	Out, damned spot! Out, I say!
 zh	12	Romeo and Juliet	A plague on both your houses!
 zh	13	Twelfth Night	If music be the food of love, play on.
-zh	16	A Midsummer Night's Dream	Love looks not with the eyes, but with the mind.
 zh	17	Twelfth Night	Some are born great, some achieve greatness, and some have greatness thrust upon them.
-zh	18	A Midsummer Night's Dream	The course of true love never did run smooth.
 zh	19	Romeo and Juliet	Good night, good night! Parting is such sweet sorrow, that I shall say good night till it be morrow.
-zh	21	A Midsummer Night's Dream	Lord, what fools these mortals be!
 zh	22	Macbeth	Is this a dagger which I see before me, the handle toward my hand?
 zh	23	Sonnet 18	Shall I compare thee to a summer's day? Thou art more lovely and more temperate.
 zh	24	Henry IV, Part 2	Uneasy lies the head that wears a crown.
@@ -900,9 +896,7 @@ zh	25	Henry IV, Part 1	The better part of valour is discretion.
 zh	26	King Lear	How sharper than a serpent's tooth it is to have a thankless child.
 zh	28	Macbeth	By the pricking of my thumbs, something wicked this way comes.
 zh	29	Julius Caesar	The fault, dear Brutus, is not in our stars, but in ourselves.
-zh	30	A Midsummer Night's Dream	Though she be but little, she is fierce.
 zh	31	Julius Caesar	Cowards die many times before their deaths; the valiant never taste of death but once.
-zh	32	The Tempest	Hell is empty and all the devils are here.
 zh	33	The Merchant of Venice	The quality of mercy is not strained; it droppeth as the gentle rain from heaven.
 zh	34	Romeo and Juliet	These violent delights have violent ends.
 zh	35	Romeo and Juliet	What's in a name? That which we call a rose by any other name would smell as sweet.
@@ -932,7 +926,6 @@ zh	64	Othello	The robbed that smiles steals something from the thief.
 zh	65	Richard II	I wasted time, and now doth time waste me.
 zh	66	Much Ado About Nothing	Sigh no more, ladies, sigh no more, men were deceivers ever.
 zh	67	As You Like It	I pray you, do not fall in love with me, for I am falser than vows made in wine.
-zh	68	The Tempest	Misery acquaints a man with strange bedfellows.
 zh	69	Julius Caesar	Men at some time are masters of their fates.
 zh	70	As You Like It	The fool doth think he is wise, but the wise man knows himself to be a fool.
 zh	71	As You Like It	Blow, blow, thou winter wind, thou art not so unkind as man's ingratitude.
@@ -964,7 +957,6 @@ zh	99	Romeo and Juliet	O, she doth teach the torches to burn bright!
 zh	100	King Lear	The wheel is come full circle; I am here.
 zh	101	As You Like It	I had rather have a fool to make me merry than experience to make me sad.
 zh	102	Love's Labour's Lost	A light heart lives long.
-zh	103	The Tempest	What is past is prologue.
 ja	0	Hamlet	To be, or not to be, that is the question.
 ja	1	The Merchant of Venice	All that glitters is not gold.
 ja	2	Romeo and Juliet	Parting is such sweet sorrow.
