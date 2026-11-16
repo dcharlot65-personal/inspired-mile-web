@@ -33,8 +33,12 @@ import { Rectangle } from '@babylonjs/gui/2D/controls/rectangle';
 import { TextBlock } from '@babylonjs/gui/2D/controls/textBlock';
 
 import { getCardById, type Card } from '../cards';
-import { CURSES, POTION_CURSE, deviceForHouse } from '../verse/devices';
+import { POTION_CURSE, deviceForHouse } from '../verse/devices';
 import { JUDGE_POOL, ROUNDS, type RoundResult, type VerseScore } from '../verse/duel';
+import { FORM_POINTS } from '../verse/forms';
+// Everything written on the stage is a message in the interface language (src/i18n).
+import { t, tm } from '../../i18n';
+import { curseName, curseRule, deviceBrief, deviceName, signatureText } from '../../i18n/duel';
 import type { DuelSession } from '../verse/session';
 
 export type Action =
@@ -259,14 +263,15 @@ export class Theatre {
     let x = -width / 2 + step / 2;
     for (const card of chars) {
       const state = s.characterUsed(card.id) ? 'spent' : s.move.charId === card.id ? 'chosen' : 'ready';
-      this.hand.push(this.cardMesh(card, new Vector3(x, 0.93, 0.78), { type: 'character', id: card.id }, state, deviceForHouse(card.house).name));
+      this.hand.push(this.cardMesh(card, new Vector3(x, 0.93, 0.78), { type: 'character', id: card.id }, state, tm(deviceForHouse(card.house, s.duel.lang).name)));
       x += step;
     }
     x += 0.06 - (step - itemStep) / 2;
     for (const card of items) {
       const chosen = s.move.relicId === card.id || s.move.potionId === card.id;
       const state = s.itemUsed(card.id) || (!chosen && s.ink < 1) ? 'spent' : chosen ? 'chosen' : 'ready';
-      const sub = card.type === 'Relic' ? 'Power words' : CURSES[POTION_CURSE[card.id]]?.name ?? 'Curse';
+      const cast = POTION_CURSE[card.id];
+      const sub = card.type === 'Relic' ? t('chip.powerWords') : cast ? curseName(cast) : t('chip.curse');
       this.hand.push(this.cardMesh(card, new Vector3(x, 0.915, 0.78), { type: 'item', id: card.id }, state, sub, 0.75));
       x += itemStep;
     }
@@ -279,30 +284,29 @@ export class Theatre {
   private side(title: string, v: VerseScore, judge: number, total: number): string {
     const lines = [
       title,
-      `Form ${v.form.earned}/20${v.form.kept ? ' ✓' : ''}`,
-      `${v.device.name}: ${v.device.met ? '+½' : 'missed'}   Signature: ${v.signature.met ? '+½' : 'missed'}`,
+      `${t('verdict.form')} ${v.form.earned}/${FORM_POINTS}${v.form.kept ? ' ✓' : ''}`,
+      `${deviceName(v.device.id)}: ${v.device.met ? '+½' : t('verdict.missed')}   ${t('verdict.signature')}: ${v.signature.met ? '+½' : t('verdict.missed')}`,
     ];
-    if (v.powerWords) lines.push(`Power words: ${v.powerWords.met ? '+6' : 'not used'}`);
-    if (v.curse) lines.push(`Curse ${v.curse.name}: ${v.curse.penalty ? `−${v.curse.penalty}` : 'held'}`);
-    lines.push(`Craft ${v.craft}  +  Judge ${judge}/${JUDGE_POOL}  =  ${total}`);
+    if (v.powerWords) lines.push(`${t('verdict.powerWords')}: ${v.powerWords.met ? `+${v.powerWords.bonus}` : t('verdict.notUsed')}`);
+    if (v.curse) lines.push(`${t('verdict.curse', { name: curseName(v.curse.id) })}: ${v.curse.penalty ? `−${v.curse.penalty}` : t('verdict.held')}`);
+    lines.push(`${t('verdict.craft')} ${v.craft}  +  ${t('verdict.judge')} ${judge}/${JUDGE_POOL}  =  ${total}`);
     return lines.join('\n');
   }
 
   private verdictText(s: DuelSession, r: RoundResult, status: TheatreStatus): string {
     if (s.phase === 'finished') {
       return [
-        s.winner === 'player' ? 'You won the duel.' : 'The stage is theirs tonight.',
+        s.winner === 'player' ? t('end.won') : t('end.lost'),
         '',
-        `Rounds: you ${s.playerRounds}, opponent ${s.opponentRounds}`,
-        `Your total: ${s.results.reduce((n, x) => n + x.playerTotal, 0)}`,
+        t('end.tally', { you: s.playerRounds, them: s.opponentRounds, total: s.results.reduce((n, x) => n + x.playerTotal, 0) }),
       ].join('\n');
     }
     return [
-      r.winner === 'player' ? 'The round is yours.' : `${s.opponentCard.name} takes the round.`,
+      r.winner === 'player' ? t('verdict.roundYours') : t('verdict.roundTheirs', { card: s.opponentCard.name }),
       '',
-      this.side('YOU', r.player, r.judge.player, r.playerTotal),
+      this.side(t('battle.you').toLocaleUpperCase(), r.player, r.judge.player, r.playerTotal),
       '',
-      this.side('OPPONENT', r.opponent, r.judge.opponent, r.opponentTotal),
+      this.side(t('battle.opponent').toLocaleUpperCase(), r.opponent, r.judge.opponent, r.opponentTotal),
       '',
       status.judge,
     ].join('\n');
@@ -324,44 +328,48 @@ export class Theatre {
     const curse = s.plan.opponent.curse;
     this.panels.opponent.text.text = [
       `${opp.name}`,
-      `${deviceForHouse(opp.house).name}`,
-      curse ? `\nCURSES YOU: ${CURSES[curse.curseId].brief(curse.param)}` : '',
+      `${tm(deviceForHouse(opp.house, s.duel.lang).name)}`,
+      curse ? `\n${t('theatre.cursesYou', { rule: curseRule(curse.curseId, curse.param, s.duel.lang) })}` : '',
       '',
       s.phase === 'opponent-writing'
         ? s.drafting && s.drafting.of > 1
-          ? `composing… draft ${s.drafting.draft} of ${s.drafting.of}`
-          : 'composing…'
+          ? t('theatre.composingDraft', { n: s.drafting.draft, total: s.drafting.of })
+          : t('theatre.composing')
         : s.opponentVerse,
     ].join('\n');
 
     const preview = s.preview();
     const checks: string[] = [];
     if (preview) {
-      for (const c of preview.form.checks) checks.push(`${c.met ? '✓' : '○'} ${c.label}`);
-      checks.push(`${preview.device.met ? '✓' : '○'} ${preview.device.name}: ${deviceForHouse(getCardById(s.move.charId)!.house).brief}`);
-      checks.push(`${preview.signature.met ? '✓' : '○'} Signature: ${preview.signature.detail}`);
-      if (preview.powerWords) checks.push(`${preview.powerWords.met ? '✓' : '○'} Power words: ${s.duel.playerRelics[s.move.relicId!].words.join(', ')}`);
-      if (preview.curse) checks.push(`${preview.curse.violations ? '✗' : '✓'} Curse: ${preview.curse.name}`);
-      checks.push(`Craft so far: ${preview.craft}`);
-    } else checks.push('Pick a character from your hand.');
+      for (const c of preview.form.checks) checks.push(`${c.met ? '✓' : '○'} ${tm(c.label)}`);
+      checks.push(`${preview.device.met ? '✓' : '○'} ${t('round.device', { name: deviceName(preview.device.id), brief: deviceBrief(preview.device.id, s.duel.lang) })}`);
+      checks.push(`${preview.signature.met ? '✓' : '○'} ${t('verdict.signature')}: ${signatureText(preview.signature)}`);
+      if (preview.powerWords) checks.push(`${preview.powerWords.met ? '✓' : '○'} ${t('verdict.powerWords')}: ${s.duel.playerRelics[s.move.relicId!].words.join(', ')}`);
+      if (preview.curse) checks.push(`${preview.curse.violations ? '✗' : '✓'} ${t('live.curse', { name: curseName(preview.curse.id) })}`);
+      checks.push(`${t('round.craftSoFar')} ${preview.craft}`);
+    } else checks.push(t('theatre.pick'));
     this.panels.round.text.text = [
-      `ROUND ${s.roundIndex + 1} OF ${ROUNDS}   ·   You ${s.playerRounds} – ${s.opponentRounds}   ·   Ink ${s.ink}`,
-      `${s.form.name}: ${s.form.brief(s.plan.ctx)}`,
+      [
+        t('round.label', { n: s.roundIndex + 1, total: ROUNDS }).toLocaleUpperCase(),
+        t('theatre.score', { you: t('battle.you'), a: s.playerRounds, b: s.opponentRounds, them: t('battle.opponent') }),
+        `${t('round.ink')} ${s.ink}`,
+      ].join('   ·   '),
+      t('round.device', { name: tm(s.form.name), brief: tm(s.form.brief(s.plan.ctx)) }),
       '',
       ...checks,
     ].join('\n');
 
-    this.panels.verse.text.text = s.verse || (s.phase === 'player-turn' ? 'Your verse appears here. Press the microphone and speak it, one line at a breath.' : '');
+    this.panels.verse.text.text = s.verse || (s.phase === 'player-turn' ? t('theatre.versePrompt') : '');
     this.panels.verse.text.color = s.verse ? PAPER : DIM;
 
     this.buttons.mic.text.text = status.mic;
     this.buttons.mic.frame.color = status.listening ? CRIMSON : '#584e48';
     this.buttons.mic.text.color = status.listening ? CRIMSON : PAPER;
-    this.buttons.clear.text.text = 'Clear';
-    this.buttons.submit.text.text = s.phase === 'judging' ? 'Judging…' : 'Speak it';
+    this.buttons.clear.text.text = t('theatre.clear');
+    this.buttons.submit.text.text = s.phase === 'judging' ? t('theatre.judging') : t('theatre.submit');
     this.buttons.submit.text.color = INK;
     this.buttons.submit.frame.alpha = s.blocked() ? 0.35 : 1;
-    this.buttons.next.text.text = s.phase === 'finished' ? 'Duel again' : s.winner ? 'See the result' : 'Next round';
+    this.buttons.next.text.text = s.phase === 'finished' ? t('end.again') : s.winner ? t('verdict.seeResult') : t('verdict.next');
     this.buttons.next.text.color = INK;
 
     if (ended && last) {
