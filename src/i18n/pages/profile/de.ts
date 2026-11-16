@@ -18,7 +18,7 @@ const messages: Record<string, string> = {
   'profile.stat.cards': 'Karten (verschiedene / gesamt)',
   'profile.stat.trivia': 'Richtige Quizantworten',
   'profile.achievements': 'Erfolge',
-  'profile.byHouse': 'Karten nach Haus',
+  'profile.byHouse': 'Karten nach Häusern',
   'profile.byRarity': 'Karten nach Seltenheit',
   'profile.collectFirst': 'Sammle Karten, um die Aufteilung zu sehen',
   'profile.leaderboard.title': 'Weltweite Rangliste',

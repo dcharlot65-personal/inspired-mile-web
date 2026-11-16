@@ -15,7 +15,7 @@ const messages: Record<string, string> = {
   'collection.locked': 'مقفلة',
   'collection.world.title': 'بطاقات العالم',
   'collection.world.intro': 'شخصياتك تجوب العالم. اربح النزالات وأجب عن أسئلة المسابقات كلها لتفتح نسخ المدن.',
-  'collection.world.empty': 'لا نسخ حتى الآن. اربح ثلاثة نزالات متتالية أو أحرز نتيجة كاملة في المسابقة لتفتح أول بطاقة عالم لك!',
+  'collection.world.empty': 'لا توجد نسخ حتى الآن. اربح ثلاثة نزالات متتالية أو أحرز نتيجة كاملة في المسابقة لتفتح أول بطاقة عالم لك!',
   'collection.deck.title': 'بناء الرزمة',
   'collection.deck.intro': 'الشخصيات: من {min} إلى {max}. الآثار: حتى {relics}. الجرعات: حتى {potions}. مجموع البطاقات: حتى {total}. انقر في الأعلى على البطاقات التي تملكها لإضافتها.',
   'collection.deck.namePlaceholder': 'اسم الرزمة…',
