@@ -200,11 +200,9 @@ async fn age_verify(
         _ => return Err((StatusCode::BAD_REQUEST, "Invalid age tier".into())),
     };
 
-    // The row is locked while the rule is applied, so two requests cannot race past it.
-    let mut tx = pool.begin().await.map_err(crate::error::internal)?;
-    let stored: String = sqlx::query_scalar("SELECT age_tier FROM users WHERE id = $1 FOR UPDATE")
+    let stored: String = sqlx::query_scalar("SELECT age_tier FROM users WHERE id = $1")
         .bind(claims.sub)
-        .fetch_optional(&mut *tx)
+        .fetch_optional(&pool)
         .await
         .map_err(crate::error::internal)?
         .ok_or((StatusCode::UNAUTHORIZED, "Sign in first.".to_string()))?;
@@ -217,13 +215,27 @@ async fn age_verify(
         }
         return Ok(Json(AgeTierResponse { status: status.into(), age_tier: stored }));
     };
-    sqlx::query("UPDATE users SET age_tier = $2 WHERE id = $1")
+    // Written only if the tier is still the one the rule was applied to, so two requests
+    // cannot race past it (and a row that became `teen` meanwhile is never touched). One
+    // statement, no transaction: the page calls this on every load.
+    let written = sqlx::query("UPDATE users SET age_tier = $2 WHERE id = $1 AND age_tier = $3 AND age_tier <> 'teen'")
         .bind(claims.sub)
         .bind(new_tier)
-        .execute(&mut *tx)
+        .bind(&stored)
+        .execute(&pool)
         .await
-        .map_err(crate::error::internal)?;
-    tx.commit().await.map_err(crate::error::internal)?;
+        .map_err(crate::error::internal)?
+        .rows_affected();
+    if written == 0 {
+        // Another request changed it in between; say what is stored now.
+        let now: String = sqlx::query_scalar("SELECT age_tier FROM users WHERE id = $1")
+            .bind(claims.sub)
+            .fetch_one(&pool)
+            .await
+            .map_err(crate::error::internal)?;
+        let status = if now == requested { "ok" } else { "unchanged" };
+        return Ok(Json(AgeTierResponse { status: status.into(), age_tier: now }));
+    }
 
     tracing::info!(user_id = %claims.sub, age_tier = %new_tier, "Age tier updated");
     Ok(Json(AgeTierResponse { status: "ok".into(), age_tier: new_tier.into() }))

@@ -31,6 +31,36 @@ use tracing_subscriber::EnvFilter;
 use config::Config;
 use multiplayer::{RoomManager, MatchmakingQueue};
 
+/// Run every request to its end, whether or not the client is still there.
+///
+/// Why: when a client goes away (a page navigates with a request in flight, a connection
+/// drops), the server drops the handler's future wherever it is waiting. A handler dropped
+/// between a statement and its commit is rolled back by sqlx, which is fine; but one
+/// end-to-end run on this branch (2026-11-16) showed a sign-in whose session row could not
+/// be seen by the next request, in the same second as Postgres logged "there is already a
+/// transaction in progress". Reading sqlx 0.9.0's `PgTransactionManager::begin`, a future
+/// dropped while `BEGIN` is awaited leaves the connection in a transaction that its
+/// depth counter does not know about, so the rollback guard does nothing and the next
+/// borrower's writes sit uncommitted. THAT CAUSE IS A READING OF THE CODE, NOT A
+/// REPRODUCTION: 600 requests reset mid-flight did not strand a connection, with or
+/// without this layer.
+///
+/// What this does regardless: the rest of the stack runs in its own task, so nothing above
+/// it can cancel it part-way and a transaction that begins also commits or rolls back.
+/// The cost is that work for a client that has left is finished rather than abandoned.
+async fn run_to_completion(
+    req: axum::http::Request<axum::body::Body>,
+    next: middleware::Next,
+) -> axum::response::Response {
+    match tokio::spawn(next.run(req)).await {
+        Ok(response) => response,
+        Err(e) => {
+            tracing::error!("request task failed: {e}");
+            (StatusCode::INTERNAL_SERVER_ERROR, error::INTERNAL_MESSAGE).into_response()
+        }
+    }
+}
+
 #[tokio::main]
 async fn main() {
     // Load .env if present
@@ -177,6 +207,8 @@ async fn main() {
         }))
         .layer(cors)
         .layer(TraceLayer::new_for_http())
+        // Outermost: see `run_to_completion`.
+        .layer(middleware::from_fn(run_to_completion))
         .with_state(state);
 
     let addr = format!("0.0.0.0:{}", config.port);
