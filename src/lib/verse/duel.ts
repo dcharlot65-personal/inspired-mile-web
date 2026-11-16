@@ -19,16 +19,15 @@ import {
   CURSES,
   CURSE_PENALTY,
   CURSE_PENALTY_CAP,
-  FORBIDDEN_LETTERS,
   POTION_CURSE,
   POWER_WORD_BONUS,
-  RELIC_WORDS,
   checkPowerWords,
   checkSignature,
   deviceForHouse,
   type DeviceResult,
 } from './devices';
-import { ACROSTIC_WORDS, formsFor, scoreForm, type Form, type FormContext, type FormScore } from './forms';
+import { formsFor, scoreForm, type Form, type FormContext, type FormScore } from './forms';
+import { getPack } from './packs';
 import { cleanVerse } from './text';
 
 export const ROUNDS = 3;
@@ -89,12 +88,14 @@ export interface PlayerMove {
 
 export interface VerseScore {
   form: FormScore;
-  device: DeviceResult & { id: string; name: string };
+  /** The device by id; its name and brief are the messages `device.<id>.name` and DEVICES[id].brief(lang). */
+  device: DeviceResult & { id: string };
   signature: DeviceResult;
   synergy: boolean;
   multiplier: number;
   powerWords?: { used: string[]; met: boolean; bonus: number };
-  curse?: { name: string; violations: number; penalty: number };
+  /** The curse by id; its name is the message `curse.<id>.name`. */
+  curse?: { id: string; violations: number; penalty: number };
   craft: number;
 }
 
@@ -147,19 +148,13 @@ function shuffled<T>(r: () => number, items: T[]): T[] {
   return a;
 }
 
-function baseLang(lang: string): string {
-  return lang.split('-')[0];
-}
-
 function castFor(r: () => number, potionId: string, lang: string): CastCurse {
   const curseId = POTION_CURSE[potionId] ?? 'no-repeats';
-  const letters = FORBIDDEN_LETTERS[baseLang(lang)] ?? FORBIDDEN_LETTERS.en;
-  return { potionId, curseId, param: curseId === 'forbidden-letter' ? pick(r, letters) : '' };
+  return { potionId, curseId, param: curseId === 'forbidden-letter' ? pick(r, getPack(lang).forbidden) : '' };
 }
 
 function wordsFor(relicId: string, lang: string): LentWords {
-  const table = RELIC_WORDS[baseLang(lang)] ?? RELIC_WORDS.en;
-  return { relicId, words: table[relicId] ?? [] };
+  return { relicId, words: getPack(lang).relics[relicId] ?? [] };
 }
 
 /** A deck for the house: three characters, one relic, one potion, drawn by seed. */
@@ -182,6 +177,10 @@ export function starterDeck(ownedIds: Iterable<string> = []): DuelDeck {
   return { characters: prefer(byType('Character'), ROUNDS), relics: prefer(byType('Relic'), 1), potions: prefer(byType('Potion'), 1) };
 }
 
+/**
+ * Plan a duel. The language's pack must be loaded first (loadPack in ./packs);
+ * English always is.
+ */
 export function createDuel(seed: number, lang: string, player: DuelDeck, opponent: DuelDeck = opponentDeck(seed)): Duel {
   if (player.characters.length < ROUNDS) throw new Error(`A deck needs at least ${ROUNDS} characters to duel`);
   const r = rng(seed);
@@ -191,7 +190,7 @@ export function createDuel(seed: number, lang: string, player: DuelDeck, opponen
   // round one is a clean read of the form for both sides.
   const curseRound = opponent.potions.length ? 1 + Math.floor(r() * (ROUNDS - 1)) : -1;
   const relicRound = opponent.relics.length ? (curseRound === 1 ? 2 : 1) : -1;
-  const acrostics = ACROSTIC_WORDS[baseLang(lang)] ?? ACROSTIC_WORDS.en;
+  const acrostics = getPack(lang).acrostic;
 
   const rounds: RoundPlan[] = forms.map((form, index) => ({
     index,
@@ -222,16 +221,26 @@ export function moveCost(move: PlayerMove): number {
   return (move.relicId ? RELIC_COST : 0) + (move.potionId ? POTION_COST : 0);
 }
 
+/** Why a move cannot be played. Each is the message `illegal.<code>`. */
+export type IllegalMove =
+  | 'character-not-in-deck'
+  | 'character-used'
+  | 'relic-not-in-deck'
+  | 'potion-not-in-deck'
+  | 'relic-spent'
+  | 'potion-spent'
+  | 'no-ink';
+
 /** Why a move cannot be played, or null when it can. */
-export function illegalMove(duel: Duel, roundIndex: number, move: PlayerMove, earlier: PlayerMove[]): string | null {
-  if (!duel.player.characters.includes(move.charId)) return 'That character is not in your deck.';
-  if (earlier.some((m) => m.charId === move.charId)) return 'Each character can take the stage once per match.';
-  if (move.relicId && !duel.player.relics.includes(move.relicId)) return 'That relic is not in your deck.';
-  if (move.potionId && !duel.player.potions.includes(move.potionId)) return 'That potion is not in your deck.';
-  if (move.relicId && earlier.some((m) => m.relicId === move.relicId)) return 'That relic is spent.';
-  if (move.potionId && earlier.some((m) => m.potionId === move.potionId)) return 'That potion is spent.';
+export function illegalMove(duel: Duel, roundIndex: number, move: PlayerMove, earlier: PlayerMove[]): IllegalMove | null {
+  if (!duel.player.characters.includes(move.charId)) return 'character-not-in-deck';
+  if (earlier.some((m) => m.charId === move.charId)) return 'character-used';
+  if (move.relicId && !duel.player.relics.includes(move.relicId)) return 'relic-not-in-deck';
+  if (move.potionId && !duel.player.potions.includes(move.potionId)) return 'potion-not-in-deck';
+  if (move.relicId && earlier.some((m) => m.relicId === move.relicId)) return 'relic-spent';
+  if (move.potionId && earlier.some((m) => m.potionId === move.potionId)) return 'potion-spent';
   const spent = earlier.reduce((s, m) => s + moveCost(m), 0);
-  if (moveCost(move) > inkAt(roundIndex, spent)) return 'Not enough ink.';
+  if (moveCost(move) > inkAt(roundIndex, spent)) return 'no-ink';
   return null;
 }
 
@@ -256,9 +265,10 @@ const CHARACTER_NAMES = CARD_CATALOG.filter((c) => c.type === 'Character').flatM
 export function scoreVerse(input: ScoreInput): VerseScore {
   const verse = cleanVerse(input.verse);
   const form = scoreForm(input.form, verse, input.ctx);
-  const dev = deviceForHouse(input.card.house);
-  const device = { id: dev.id, name: dev.name, ...dev.check(verse, { opponentVerse: input.opponentVerse, names: CHARACTER_NAMES }) };
-  const signature = checkSignature(input.card, verse);
+  const lang = input.ctx.lang;
+  const dev = deviceForHouse(input.card.house, lang);
+  const device = { id: dev.id, ...dev.check(verse, { lang, opponentVerse: input.opponentVerse, names: CHARACTER_NAMES }) };
+  const signature = checkSignature(input.card, verse, lang);
 
   const sameHouse = input.deckCharacters.filter((id) => getCardById(id)?.house === input.card.house).length;
   const synergy = device.met && sameHouse >= 2;
@@ -266,15 +276,15 @@ export function scoreVerse(input: ScoreInput): VerseScore {
 
   let power: VerseScore['powerWords'];
   if (input.lent) {
-    const p = checkPowerWords(input.lent.words, verse);
+    const p = checkPowerWords(input.lent.words, verse, lang);
     power = { ...p, bonus: p.met ? POWER_WORD_BONUS : 0 };
   }
 
   let curse: VerseScore['curse'];
   if (input.curse) {
     const c = CURSES[input.curse.curseId];
-    const violations = c.violations(verse, input.curse.param);
-    curse = { name: c.name, violations, penalty: Math.min(CURSE_PENALTY_CAP, violations * CURSE_PENALTY) };
+    const violations = c.violations(verse, input.curse.param, lang);
+    curse = { id: c.id, violations, penalty: Math.min(CURSE_PENALTY_CAP, violations * CURSE_PENALTY) };
   }
 
   // An empty verse earns nothing, whatever the cards say.
