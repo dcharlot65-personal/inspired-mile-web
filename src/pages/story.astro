@@ -81,7 +81,7 @@ const DIFFICULTY = { easy: 'text-emerald-400', medium: 'text-amber-400', hard: '
 
   <script>
     import { getStoryProgress, getTotalEncounters, isEncounterUnlocked } from '../lib/story-mode';
-    import { applyTranslations, initI18n, loadArea, onLocaleChange, t } from '../i18n';
+    import { applyTranslations, initI18n, loadArea, locale, onLocaleChange, t } from '../i18n';
 
     const progress = getStoryProgress();
     const total = getTotalEncounters();
@@ -110,6 +110,8 @@ const DIFFICULTY = { easy: 'text-emerald-400', medium: 'text-amber-400', hard: '
       await loadArea('story');
       applyTranslations();
       draw();
+      // Says which language the page's own strings are now in (until then the markup's English shows).
+      document.documentElement.dataset.pageArea = locale();
     }
     void initI18n().then(useLanguage);
     onLocaleChange(() => void useLanguage());

@@ -30,6 +30,10 @@ async function open(page: Page, path: string, locale: string) {
   await page.addInitScript((l) => localStorage.setItem('inspired-mile-locale', l), locale);
   await page.goto(path);
   await expect(page.locator('html')).toHaveAttribute('lang', locale);
+  // The page's own strings are a page area, fetched after the core locale: until it is applied the
+  // markup's English shows. Read the page only once it says the area is in (a busy dev server compiles
+  // each language's chunk on first request).
+  await expect(page.locator('html')).toHaveAttribute('data-page-area', locale);
 }
 
 /** The tooltip is placed beside what it points at, which can be outside a headless viewport: click it from the page. */

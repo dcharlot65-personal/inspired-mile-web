@@ -296,6 +296,8 @@ import { CARD_CATALOG, RARITY_COLORS, type Card, type Rarity } from '../lib/card
       document.title = `${t('pg.meta.title')} | Inspired Mile`;
       document.querySelector('meta[name="description"]')?.setAttribute('content', t('pg.meta.description'));
       for (const fn of redraw) fn();
+      // Says which language the page's own strings are now in (until then the markup's English shows).
+      document.documentElement.dataset.pageArea = locale();
     }
     const ready = initI18n().then(useLanguage);
     onLocaleChange(() => void useLanguage());

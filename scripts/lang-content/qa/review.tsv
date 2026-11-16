@@ -12,3 +12,4 @@ ar	spell:*	ok	read: names (هاملت, مكبث, بروسبيرو …) and words
 hi	spell:*	not usable	not usable as run: Hunspell splits Devanagari words at combining marks (ं, र्ड, ँ …), so its list is fragments, not words; nothing concluded from it
 ko	spell:*	not usable	not usable as run: every word with a particle attached (셰익스피어의, 햄릿은) is unknown to the dictionary; nothing concluded from it
 th	spell:*	not usable	not usable as run: Thai is written without spaces between words, so Hunspell reads whole phrases as one word; nothing concluded from it
+th	trivia.170.q	ok	พายุพิโรธ is Wikidata's Thai label of The Tempest; MADLAD renders it word by word ("Storm Pyro")
