@@ -14,6 +14,20 @@
  */
 import { interpolate, type Msg } from './msg';
 
+/**
+ * The lines from the plays behind six of the house devices. Quotations stay in
+ * English in every language (they are the source text of the signature
+ * mechanic), so every locale spreads this table rather than translating it.
+ */
+export const HOUSE_QUOTES: Record<string, string> = {
+  'house.danish-court.why': '"To be, or not to be, that is the question."',
+  'house.capulet.why': '"O Romeo, Romeo!"',
+  'house.forest-of-arden.why': '"Whereat, with blade, with bloody blameful blade."',
+  'house.scottish-court.why': '"Tomorrow, and tomorrow, and tomorrow."',
+  'house.illyria.why': '"Brevity is the soul of wit."',
+  'house.rome.why': '"Friends, Romans, countrymen."',
+};
+
 export const ENGINE_EN: Record<string, string> = {
   // Forms
   'form.couplet.name': 'Couplet',
@@ -111,16 +125,11 @@ export const ENGINE_EN: Record<string, string> = {
   'curse.short-lines.theirs': 'No line of theirs may be longer than {n} words.',
   'curse.short-lines.theirs.char': 'No line of theirs may be longer than {n} characters.',
 
-  // The line from the plays behind each house's device. Quotations stay in English in every language.
-  'house.danish-court.why': '"To be, or not to be, that is the question."',
-  'house.capulet.why': '"O Romeo, Romeo!"',
+  // Why each house fights as it does. Six of them are quotations (HOUSE_QUOTES above).
+  ...HOUSE_QUOTES,
   'house.montague.why': "Mercutio's quick tongue rhymes mid-line.",
-  'house.forest-of-arden.why': '"Whereat, with blade, with bloody blameful blade."',
   'house.verona-court.why': 'The court weighs every word said against you.',
   'house.the-tempest.why': 'The storm builds until it breaks.',
-  'house.scottish-court.why': '"Tomorrow, and tomorrow, and tomorrow."',
-  'house.illyria.why': '"Brevity is the soul of wit."',
-  'house.rome.why': '"Friends, Romans, countrymen."',
   'house.legendary.why': 'The Sonnet Man rides one rhyme all the way down.',
   'house.lake-district.why': 'The Romantics measured every line.',
   'house.gothic-circle.why': 'The tale ends where it began.',

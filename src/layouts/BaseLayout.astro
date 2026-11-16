@@ -74,14 +74,14 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
         <div class="w-16 h-16 rounded-2xl bg-linear-to-br from-gold-400 to-gold-600 flex items-center justify-center mx-auto mb-6">
           <span class="text-obsidian-950 font-display font-bold text-2xl">IM</span>
         </div>
-        <h2 class="font-display text-2xl font-bold text-white mb-2">Welcome to Inspired Mile</h2>
-        <p class="text-obsidian-400 text-sm mb-6">Please confirm your age to continue.</p>
+        <h2 class="font-display text-2xl font-bold text-white mb-2" data-i18n="age.title">Welcome to Inspired Mile</h2>
+        <p class="text-obsidian-400 text-sm mb-6" data-i18n="age.intro">Please confirm your age to continue.</p>
 
         <div id="age-gate-form">
-          <label class="block text-left text-xs text-obsidian-400 mb-2">Date of Birth</label>
+          <label class="block text-start text-xs text-obsidian-400 mb-2" data-i18n="age.dob">Date of Birth</label>
           <div class="flex gap-2 mb-4">
             <select id="age-month" class="flex-1 bg-obsidian-800 border border-obsidian-700 rounded-lg px-3 py-2.5 text-sm text-obsidian-200 focus:border-gold-500/50 focus:outline-hidden">
-              <option value="">Month</option>
+              <option value="" data-i18n="age.month">Month</option>
               <option value="1">January</option>
               <option value="2">February</option>
               <option value="3">March</option>
@@ -96,22 +96,22 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
               <option value="12">December</option>
             </select>
             <select id="age-day" class="w-20 bg-obsidian-800 border border-obsidian-700 rounded-lg px-3 py-2.5 text-sm text-obsidian-200 focus:border-gold-500/50 focus:outline-hidden">
-              <option value="">Day</option>
+              <option value="" data-i18n="age.day">Day</option>
             </select>
             <select id="age-year" class="w-24 bg-obsidian-800 border border-obsidian-700 rounded-lg px-3 py-2.5 text-sm text-obsidian-200 focus:border-gold-500/50 focus:outline-hidden">
-              <option value="">Year</option>
+              <option value="" data-i18n="age.year">Year</option>
             </select>
           </div>
-          <button id="age-gate-submit" class="btn-primary w-full py-3 font-display font-bold">Continue</button>
-          <p id="age-gate-error" class="text-crimson-400 text-xs mt-3 hidden"></p>
+          <button id="age-gate-submit" class="btn-primary w-full py-3 font-display font-bold" data-i18n="age.continue">Continue</button>
+          <p id="age-gate-error" class="text-crimson-400 text-xs mt-3 hidden" data-i18n="age.errorDob">Please select your full date of birth.</p>
         </div>
 
         <div id="age-gate-minor" class="hidden">
           <div class="w-12 h-12 rounded-full bg-crimson-500/20 border border-crimson-500/30 flex items-center justify-center mx-auto mb-4">
             <svg class="w-6 h-6 text-crimson-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
           </div>
-          <h3 class="font-display text-lg font-bold text-crimson-400 mb-2">Age Requirement Not Met</h3>
-          <p class="text-obsidian-400 text-sm">
+          <h3 class="font-display text-lg font-bold text-crimson-400 mb-2" data-i18n="age.minorTitle">Age Requirement Not Met</h3>
+          <p class="text-obsidian-400 text-sm" data-i18n="age.minorBody">
             You must be at least 13 years old to use Inspired Mile. Please come back when you meet the age requirement.
           </p>
         </div>
@@ -120,24 +120,24 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
           <div class="w-12 h-12 rounded-full bg-gold-500/20 border border-gold-500/30 flex items-center justify-center mx-auto mb-4">
             <svg class="w-6 h-6 text-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
           </div>
-          <h3 class="font-display text-lg font-bold text-gold-400 mb-2">Parental Consent Required</h3>
-          <p class="text-obsidian-400 text-sm mb-4">
+          <h3 class="font-display text-lg font-bold text-gold-400 mb-2" data-i18n="age.teenTitle">Parental Consent Required</h3>
+          <p class="text-obsidian-400 text-sm mb-4" data-i18n="age.teenBody">
             Since you are under 18, you need parental or guardian consent to use Inspired Mile.
           </p>
-          <label class="flex items-start gap-3 text-left mb-4 cursor-pointer">
+          <label class="flex items-start gap-3 text-start mb-4 cursor-pointer">
             <input type="checkbox" id="parental-consent" class="mt-1 w-4 h-4 rounded-sm border-obsidian-600 bg-obsidian-800 text-gold-500 focus:ring-gold-500/50" />
             <span class="text-xs text-obsidian-300 leading-relaxed">
-              I confirm that my parent or legal guardian has reviewed the
-              <a href="/terms" class="text-gold-400 hover:text-gold-300">Terms of Service</a> and
-              <a href="/privacy" class="text-gold-400 hover:text-gold-300">Privacy Policy</a>
-              and consents to my use of Inspired Mile.
+              <span data-i18n="age.consentBefore">I confirm that my parent or legal guardian has reviewed the</span>
+              <a href="/terms" class="text-gold-400 hover:text-gold-300" data-i18n="footer.terms">Terms of Service</a> <span data-i18n="age.consentAnd">and</span>
+              <a href="/privacy" class="text-gold-400 hover:text-gold-300" data-i18n="footer.privacy">Privacy Policy</a>
+              <span data-i18n="age.consentAfter">and consents to my use of Inspired Mile.</span>
             </span>
           </label>
-          <button id="teen-continue" class="btn-primary w-full py-3 font-display font-bold opacity-50 pointer-events-none">Continue with Consent</button>
+          <button id="teen-continue" class="btn-primary w-full py-3 font-display font-bold opacity-50 pointer-events-none" data-i18n="age.teenContinue">Continue with Consent</button>
         </div>
 
         <p class="text-[10px] text-obsidian-600 mt-6">
-          By continuing, you agree to our <a href="/terms" class="text-obsidian-500 hover:text-gold-400">Terms of Service</a> and <a href="/privacy" class="text-obsidian-500 hover:text-gold-400">Privacy Policy</a>.
+          <span data-i18n="age.agreeBefore">By continuing, you agree to our</span> <a href="/terms" class="text-obsidian-500 hover:text-gold-400" data-i18n="footer.terms">Terms of Service</a> <span data-i18n="age.agreeAnd">and</span> <a href="/privacy" class="text-obsidian-500 hover:text-gold-400" data-i18n="footer.privacy">Privacy Policy</a><span data-i18n="age.agreeAfter">.</span>
         </p>
       </div>
     </div>
@@ -158,52 +158,48 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
 
           <!-- Desktop Navigation -->
           <div class="hidden md:flex items-center gap-6">
-            <a href="/" class:list={["text-sm font-medium transition-colors", currentPath === "/" ? "text-gold-400" : "text-obsidian-300 hover:text-gold-400"]}>
-              Home
-            </a>
-            <a href="/collection" class:list={["text-sm font-medium transition-colors", currentPath === "/collection" ? "text-gold-400" : "text-obsidian-300 hover:text-gold-400"]}>
-              Collection
-            </a>
+            <a href="/" class:list={["text-sm font-medium transition-colors", currentPath === "/" ? "text-gold-400" : "text-obsidian-300 hover:text-gold-400"]} data-i18n="nav.home">Home</a>
+            <a href="/collection" class:list={["text-sm font-medium transition-colors", currentPath === "/collection" ? "text-gold-400" : "text-obsidian-300 hover:text-gold-400"]} data-i18n="nav.collection">Collection</a>
             <!-- Play dropdown -->
             <div class="relative group">
               <button class:list={["text-sm font-medium transition-colors flex items-center gap-1", ["/playground","/battle","/multiplayer","/tournaments"].includes(currentPath) ? "text-gold-400" : "text-obsidian-300 hover:text-gold-400"]}>
-                Play
+                <span data-i18n="nav.play">Play</span>
                 <svg class="w-3 h-3 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
               </button>
               <div class="absolute left-1/2 -translate-x-1/2 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150">
                 <div class="w-44 bg-obsidian-900/95 backdrop-blur-lg border border-obsidian-700 rounded-xl shadow-2xl py-2">
-                  <a href="/playground" class:list={["block px-4 py-2 text-sm transition-colors", currentPath === "/playground" ? "text-gold-400 bg-gold-500/5" : "text-obsidian-300 hover:text-gold-400 hover:bg-obsidian-800/50"]}>Playground</a>
-                  <a href="/battle" class:list={["block px-4 py-2 text-sm transition-colors", currentPath === "/battle" ? "text-gold-400 bg-gold-500/5" : "text-obsidian-300 hover:text-gold-400 hover:bg-obsidian-800/50"]}>Battle Arena</a>
-                  <a href="/multiplayer" class:list={["block px-4 py-2 text-sm transition-colors", currentPath === "/multiplayer" ? "text-gold-400 bg-gold-500/5" : "text-obsidian-300 hover:text-gold-400 hover:bg-obsidian-800/50"]}>Multiplayer</a>
-                  <a href="/tournaments" class:list={["block px-4 py-2 text-sm transition-colors", currentPath === "/tournaments" ? "text-gold-400 bg-gold-500/5" : "text-obsidian-300 hover:text-gold-400 hover:bg-obsidian-800/50"]}>Tournaments</a>
+                  <a href="/playground" class:list={["block px-4 py-2 text-sm transition-colors", currentPath === "/playground" ? "text-gold-400 bg-gold-500/5" : "text-obsidian-300 hover:text-gold-400 hover:bg-obsidian-800/50"]} data-i18n="nav.playground">Playground</a>
+                  <a href="/battle" class:list={["block px-4 py-2 text-sm transition-colors", currentPath === "/battle" ? "text-gold-400 bg-gold-500/5" : "text-obsidian-300 hover:text-gold-400 hover:bg-obsidian-800/50"]} data-i18n="nav.battle">Battle Arena</a>
+                  <a href="/multiplayer" class:list={["block px-4 py-2 text-sm transition-colors", currentPath === "/multiplayer" ? "text-gold-400 bg-gold-500/5" : "text-obsidian-300 hover:text-gold-400 hover:bg-obsidian-800/50"]} data-i18n="nav.multiplayer">Multiplayer</a>
+                  <a href="/tournaments" class:list={["block px-4 py-2 text-sm transition-colors", currentPath === "/tournaments" ? "text-gold-400 bg-gold-500/5" : "text-obsidian-300 hover:text-gold-400 hover:bg-obsidian-800/50"]} data-i18n="nav.tournaments">Tournaments</a>
                 </div>
               </div>
             </div>
             <!-- Explore dropdown -->
             <div class="relative group">
               <button class:list={["text-sm font-medium transition-colors flex items-center gap-1", ["/world-map","/marketplace","/vr","/viewer"].includes(currentPath) ? "text-gold-400" : "text-obsidian-300 hover:text-gold-400"]}>
-                Explore
+                <span data-i18n="nav.explore">Explore</span>
                 <svg class="w-3 h-3 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
               </button>
               <div class="absolute left-1/2 -translate-x-1/2 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150">
                 <div class="w-44 bg-obsidian-900/95 backdrop-blur-lg border border-obsidian-700 rounded-xl shadow-2xl py-2">
-                  <a href="/world-map" class:list={["block px-4 py-2 text-sm transition-colors", currentPath === "/world-map" ? "text-gold-400 bg-gold-500/5" : "text-obsidian-300 hover:text-gold-400 hover:bg-obsidian-800/50"]}>World Map</a>
-                  <a href="/marketplace" class:list={["block px-4 py-2 text-sm transition-colors", currentPath === "/marketplace" ? "text-gold-400 bg-gold-500/5" : "text-obsidian-300 hover:text-gold-400 hover:bg-obsidian-800/50"]}>Marketplace</a>
-                  <a href="/vr" class:list={["block px-4 py-2 text-sm transition-colors", currentPath === "/vr" ? "text-gold-400 bg-gold-500/5" : "text-obsidian-300 hover:text-gold-400 hover:bg-obsidian-800/50"]}>VR Gallery</a>
-                  <a href="/viewer" class:list={["block px-4 py-2 text-sm transition-colors", currentPath === "/viewer" ? "text-gold-400 bg-gold-500/5" : "text-obsidian-300 hover:text-gold-400 hover:bg-obsidian-800/50"]}>3D Viewer</a>
+                  <a href="/world-map" class:list={["block px-4 py-2 text-sm transition-colors", currentPath === "/world-map" ? "text-gold-400 bg-gold-500/5" : "text-obsidian-300 hover:text-gold-400 hover:bg-obsidian-800/50"]} data-i18n="nav.worldMap">World Map</a>
+                  <a href="/marketplace" class:list={["block px-4 py-2 text-sm transition-colors", currentPath === "/marketplace" ? "text-gold-400 bg-gold-500/5" : "text-obsidian-300 hover:text-gold-400 hover:bg-obsidian-800/50"]} data-i18n="nav.marketplace">Marketplace</a>
+                  <a href="/vr" class:list={["block px-4 py-2 text-sm transition-colors", currentPath === "/vr" ? "text-gold-400 bg-gold-500/5" : "text-obsidian-300 hover:text-gold-400 hover:bg-obsidian-800/50"]} data-i18n="nav.vr">VR Gallery</a>
+                  <a href="/viewer" class:list={["block px-4 py-2 text-sm transition-colors", currentPath === "/viewer" ? "text-gold-400 bg-gold-500/5" : "text-obsidian-300 hover:text-gold-400 hover:bg-obsidian-800/50"]} data-i18n="nav.viewer">3D Viewer</a>
                 </div>
               </div>
             </div>
-            <a href="/about" class:list={["text-sm font-medium transition-colors", currentPath === "/about" ? "text-gold-400" : "text-obsidian-300 hover:text-gold-400"]}>
-              About
-            </a>
-            <a href="/profile" class:list={["text-sm font-medium transition-colors", currentPath === "/profile" ? "text-gold-400" : "text-obsidian-300 hover:text-gold-400"]}>
-              Profile
-            </a>
+            <a href="/about" class:list={["text-sm font-medium transition-colors", currentPath === "/about" ? "text-gold-400" : "text-obsidian-300 hover:text-gold-400"]} data-i18n="nav.about">About</a>
+            <a href="/profile" class:list={["text-sm font-medium transition-colors", currentPath === "/profile" ? "text-gold-400" : "text-obsidian-300 hover:text-gold-400"]} data-i18n="nav.profile">Profile</a>
           </div>
 
           <!-- Auth + Audio toggle + Mobile menu button -->
           <div class="flex items-center gap-2">
+            <!-- Interface language. Filled by the i18n script below; each language under its own name. -->
+            <select id="locale-switch" aria-label="Language" data-i18n-aria-label="nav.language" class="max-w-[7.5rem] bg-obsidian-900 border border-obsidian-700 rounded-lg px-2 py-1.5 text-xs text-obsidian-300 hover:border-gold-500/30 focus:border-gold-500/50 focus:outline-hidden">
+              <option value="en">English</option>
+            </select>
             <!-- Auth: Login/User button -->
             <div id="auth-container" class="relative">
               <button id="auth-btn" type="button" data-auth-text="signIn" class="text-xs font-medium text-obsidian-300 hover:text-gold-400 transition-colors border border-obsidian-700 rounded-lg px-3 py-1.5 hover:border-gold-500/30">
@@ -216,9 +212,9 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
                 <span id="user-name" class="hidden md:inline text-xs font-medium text-obsidian-300"></span>
               </div>
               <!-- Auth dropdown -->
-              <!-- Every visible string below is filled from STRINGS in the auth script (data-auth-text / data-auth-label). -->
+              <!-- Every visible string below is filled from the locale files by the auth script (data-auth-text; keys auth.*). -->
               <!-- Narrow screens: pinned under the nav bar across the width (the nav is the containing block). -->
-              <div id="auth-dropdown" role="dialog" class="hidden fixed inset-x-4 top-[4.5rem] sm:absolute sm:inset-x-auto sm:right-0 sm:top-full sm:mt-2 sm:w-80 bg-obsidian-900 border border-obsidian-700 rounded-xl shadow-2xl z-50 p-4 max-h-[calc(100vh-6rem)] overflow-y-auto">
+              <div id="auth-dropdown" role="dialog" class="hidden fixed inset-x-4 top-[4.5rem] sm:absolute sm:inset-x-auto sm:end-0 sm:top-full sm:mt-2 sm:w-80 bg-obsidian-900 border border-obsidian-700 rounded-xl shadow-2xl z-50 p-4 max-h-[calc(100vh-6rem)] overflow-y-auto">
                 <!-- Signed out: choose a method, then (email only) address and code -->
                 <div id="auth-sign-in-options">
                   <!-- Step 1: choose -->
@@ -356,7 +352,7 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
                 </div>
               </div>
             </div>
-            <button id="audio-toggle" class="text-obsidian-400 hover:text-gold-400 transition-colors p-2 rounded-lg hover:bg-obsidian-800/50" aria-label="Toggle audio" title="Toggle audio">
+            <button id="audio-toggle" class="text-obsidian-400 hover:text-gold-400 transition-colors p-2 rounded-lg hover:bg-obsidian-800/50" aria-label="Toggle audio" title="Toggle audio" data-i18n-aria-label="nav.toggleAudio" data-i18n-title="nav.toggleAudio">
               <svg id="audio-icon-on" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
               </svg>
@@ -365,7 +361,7 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
               </svg>
             </button>
-          <button id="mobile-menu-btn" class="md:hidden text-obsidian-300 hover:text-gold-400 transition-colors" aria-label="Toggle menu">
+          <button id="mobile-menu-btn" class="md:hidden text-obsidian-300 hover:text-gold-400 transition-colors" aria-label="Toggle menu" data-i18n-aria-label="nav.toggleMenu">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
             </svg>
@@ -377,21 +373,21 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
       <!-- Mobile menu -->
       <div id="mobile-menu" class="hidden md:hidden border-t border-obsidian-800/50 bg-obsidian-950/95 backdrop-blur-lg">
         <div class="px-4 py-4 space-y-1">
-          <a href="/" class:list={["block text-sm font-medium py-2", currentPath === "/" ? "text-gold-400" : "text-obsidian-300"]}>Home</a>
-          <a href="/collection" class:list={["block text-sm font-medium py-2", currentPath === "/collection" ? "text-gold-400" : "text-obsidian-300"]}>Collection</a>
-          <div class="pt-2 pb-1"><span class="text-[10px] font-mono text-obsidian-600 uppercase tracking-widest">Play</span></div>
-          <a href="/playground" class:list={["block text-sm font-medium py-2 pl-3", currentPath === "/playground" ? "text-gold-400" : "text-obsidian-300"]}>Playground</a>
-          <a href="/battle" class:list={["block text-sm font-medium py-2 pl-3", currentPath === "/battle" ? "text-gold-400" : "text-obsidian-300"]}>Battle Arena</a>
-          <a href="/multiplayer" class:list={["block text-sm font-medium py-2 pl-3", currentPath === "/multiplayer" ? "text-gold-400" : "text-obsidian-300"]}>Multiplayer</a>
-          <a href="/tournaments" class:list={["block text-sm font-medium py-2 pl-3", currentPath === "/tournaments" ? "text-gold-400" : "text-obsidian-300"]}>Tournaments</a>
-          <div class="pt-2 pb-1"><span class="text-[10px] font-mono text-obsidian-600 uppercase tracking-widest">Explore</span></div>
-          <a href="/world-map" class:list={["block text-sm font-medium py-2 pl-3", currentPath === "/world-map" ? "text-gold-400" : "text-obsidian-300"]}>World Map</a>
-          <a href="/marketplace" class:list={["block text-sm font-medium py-2 pl-3", currentPath === "/marketplace" ? "text-gold-400" : "text-obsidian-300"]}>Marketplace</a>
-          <a href="/vr" class:list={["block text-sm font-medium py-2 pl-3", currentPath === "/vr" ? "text-gold-400" : "text-obsidian-300"]}>VR Gallery</a>
-          <a href="/viewer" class:list={["block text-sm font-medium py-2 pl-3", currentPath === "/viewer" ? "text-gold-400" : "text-obsidian-300"]}>3D Viewer</a>
+          <a href="/" class:list={["block text-sm font-medium py-2", currentPath === "/" ? "text-gold-400" : "text-obsidian-300"]} data-i18n="nav.home">Home</a>
+          <a href="/collection" class:list={["block text-sm font-medium py-2", currentPath === "/collection" ? "text-gold-400" : "text-obsidian-300"]} data-i18n="nav.collection">Collection</a>
+          <div class="pt-2 pb-1"><span class="text-[10px] font-mono text-obsidian-600 uppercase tracking-widest" data-i18n="nav.play">Play</span></div>
+          <a href="/playground" class:list={["block text-sm font-medium py-2 pl-3", currentPath === "/playground" ? "text-gold-400" : "text-obsidian-300"]} data-i18n="nav.playground">Playground</a>
+          <a href="/battle" class:list={["block text-sm font-medium py-2 pl-3", currentPath === "/battle" ? "text-gold-400" : "text-obsidian-300"]} data-i18n="nav.battle">Battle Arena</a>
+          <a href="/multiplayer" class:list={["block text-sm font-medium py-2 pl-3", currentPath === "/multiplayer" ? "text-gold-400" : "text-obsidian-300"]} data-i18n="nav.multiplayer">Multiplayer</a>
+          <a href="/tournaments" class:list={["block text-sm font-medium py-2 pl-3", currentPath === "/tournaments" ? "text-gold-400" : "text-obsidian-300"]} data-i18n="nav.tournaments">Tournaments</a>
+          <div class="pt-2 pb-1"><span class="text-[10px] font-mono text-obsidian-600 uppercase tracking-widest" data-i18n="nav.explore">Explore</span></div>
+          <a href="/world-map" class:list={["block text-sm font-medium py-2 pl-3", currentPath === "/world-map" ? "text-gold-400" : "text-obsidian-300"]} data-i18n="nav.worldMap">World Map</a>
+          <a href="/marketplace" class:list={["block text-sm font-medium py-2 pl-3", currentPath === "/marketplace" ? "text-gold-400" : "text-obsidian-300"]} data-i18n="nav.marketplace">Marketplace</a>
+          <a href="/vr" class:list={["block text-sm font-medium py-2 pl-3", currentPath === "/vr" ? "text-gold-400" : "text-obsidian-300"]} data-i18n="nav.vr">VR Gallery</a>
+          <a href="/viewer" class:list={["block text-sm font-medium py-2 pl-3", currentPath === "/viewer" ? "text-gold-400" : "text-obsidian-300"]} data-i18n="nav.viewer">3D Viewer</a>
           <div class="border-t border-obsidian-800/50 mt-2 pt-2">
-            <a href="/about" class:list={["block text-sm font-medium py-2", currentPath === "/about" ? "text-gold-400" : "text-obsidian-300"]}>About</a>
-            <a href="/profile" class:list={["block text-sm font-medium py-2", currentPath === "/profile" ? "text-gold-400" : "text-obsidian-300"]}>Profile</a>
+            <a href="/about" class:list={["block text-sm font-medium py-2", currentPath === "/about" ? "text-gold-400" : "text-obsidian-300"]} data-i18n="nav.about">About</a>
+            <a href="/profile" class:list={["block text-sm font-medium py-2", currentPath === "/profile" ? "text-gold-400" : "text-obsidian-300"]} data-i18n="nav.profile">Profile</a>
             <button id="mobile-auth-btn" type="button" data-auth-text="signIn" class="block text-sm font-medium py-2 text-gold-400">Sign In</button>
           </div>
         </div>
@@ -403,11 +399,11 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
 
     <!-- Data Migration Banner -->
     <div id="migration-banner" class="hidden fixed top-20 left-1/2 -translate-x-1/2 z-90 card-glass p-4 max-w-md bg-obsidian-900/95 backdrop-blur-lg border-gold-500/30 shadow-2xl rounded-xl">
-      <h4 class="text-sm font-display font-bold text-gold-300 mb-1">Sync Your Data?</h4>
-      <p class="text-xs text-obsidian-400 mb-3">We found local game progress. Sync it to your account so it's saved across devices.</p>
+      <h4 class="text-sm font-display font-bold text-gold-300 mb-1" data-i18n="migrate.title">Sync Your Data?</h4>
+      <p class="text-xs text-obsidian-400 mb-3" data-i18n="migrate.body">We found local game progress. Sync it to your account so it's saved across devices.</p>
       <div class="flex gap-2">
-        <button id="migrate-yes" class="btn-primary text-xs px-4 py-1.5">Sync Data</button>
-        <button id="migrate-no" class="btn-secondary text-xs px-4 py-1.5">Skip</button>
+        <button id="migrate-yes" class="btn-primary text-xs px-4 py-1.5" data-i18n="migrate.yes">Sync Data</button>
+        <button id="migrate-no" class="btn-secondary text-xs px-4 py-1.5" data-i18n="migrate.no">Skip</button>
       </div>
       <p id="migration-result" class="hidden text-xs mt-2"></p>
     </div>
@@ -428,30 +424,30 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
               </div>
               <span class="font-display text-lg font-semibold text-gold-400">Inspired Mile</span>
             </div>
-            <p class="text-obsidian-400 text-sm leading-relaxed">
+            <p class="text-obsidian-400 text-sm leading-relaxed" data-i18n="footer.tagline">
               Digital collectible cards powered by AI and augmented reality. Interactive experiences that bring Shakespeare to life.
             </p>
           </div>
           <div>
-            <h4 class="font-display text-sm font-semibold text-obsidian-200 mb-4">Platform</h4>
+            <h4 class="font-display text-sm font-semibold text-obsidian-200 mb-4" data-i18n="footer.platform">Platform</h4>
             <ul class="space-y-2 text-sm text-obsidian-400">
-              <li><a href="/collection" class="hover:text-gold-400 transition-colors">Card Collection</a></li>
-              <li><a href="/playground" class="hover:text-gold-400 transition-colors">Playground</a></li>
-              <li><a href="/battle" class="hover:text-gold-400 transition-colors">Battle Arena</a></li>
-              <li><a href="/multiplayer" class="hover:text-gold-400 transition-colors">Multiplayer</a></li>
-              <li><a href="/marketplace" class="hover:text-gold-400 transition-colors">Marketplace</a></li>
-              <li><a href="/tournaments" class="hover:text-gold-400 transition-colors">Tournaments</a></li>
-              <li><a href="/world-map" class="hover:text-gold-400 transition-colors">World Map</a></li>
-              <li><a href="/profile" class="hover:text-gold-400 transition-colors">Profile</a></li>
+              <li><a href="/collection" class="hover:text-gold-400 transition-colors" data-i18n="footer.cardCollection">Card Collection</a></li>
+              <li><a href="/playground" class="hover:text-gold-400 transition-colors" data-i18n="nav.playground">Playground</a></li>
+              <li><a href="/battle" class="hover:text-gold-400 transition-colors" data-i18n="nav.battle">Battle Arena</a></li>
+              <li><a href="/multiplayer" class="hover:text-gold-400 transition-colors" data-i18n="nav.multiplayer">Multiplayer</a></li>
+              <li><a href="/marketplace" class="hover:text-gold-400 transition-colors" data-i18n="nav.marketplace">Marketplace</a></li>
+              <li><a href="/tournaments" class="hover:text-gold-400 transition-colors" data-i18n="nav.tournaments">Tournaments</a></li>
+              <li><a href="/world-map" class="hover:text-gold-400 transition-colors" data-i18n="nav.worldMap">World Map</a></li>
+              <li><a href="/profile" class="hover:text-gold-400 transition-colors" data-i18n="nav.profile">Profile</a></li>
             </ul>
           </div>
           <div>
-            <h4 class="font-display text-sm font-semibold text-obsidian-200 mb-4">Company</h4>
+            <h4 class="font-display text-sm font-semibold text-obsidian-200 mb-4" data-i18n="footer.company">Company</h4>
             <ul class="space-y-2 text-sm text-obsidian-400">
-              <li><a href="/about" class="hover:text-gold-400 transition-colors">About Us</a></li>
-              <li><a href="https://sonnetman.com" target="_blank" rel="noopener noreferrer" class="hover:text-gold-400 transition-colors">The Sonnet Man</a></li>
-              <li><a href="/privacy" class="hover:text-gold-400 transition-colors">Privacy Policy</a></li>
-              <li><a href="/terms" class="hover:text-gold-400 transition-colors">Terms of Service</a></li>
+              <li><a href="/about" class="hover:text-gold-400 transition-colors" data-i18n="footer.aboutUs">About Us</a></li>
+              <li><a href="https://sonnetman.com" target="_blank" rel="noopener noreferrer" class="hover:text-gold-400 transition-colors" data-i18n="footer.sonnetMan">The Sonnet Man</a></li>
+              <li><a href="/privacy" class="hover:text-gold-400 transition-colors" data-i18n="footer.privacy">Privacy Policy</a></li>
+              <li><a href="/terms" class="hover:text-gold-400 transition-colors" data-i18n="footer.terms">Terms of Service</a></li>
             </ul>
             <div class="flex items-center gap-3 mt-4">
               <a href="https://www.youtube.com/TheSonnetManTV" target="_blank" rel="noopener noreferrer" class="text-obsidian-500 hover:text-gold-400 transition-colors" aria-label="YouTube">
@@ -470,15 +466,37 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
           </div>
         </div>
         <div class="mt-8 pt-8 border-t border-obsidian-800/50 text-center text-obsidian-500 text-xs">
-          <p>&copy; {new Date().getFullYear()} Voyage Tracable, LLC (DBA Inspired Mile). All rights reserved. Sarasota, FL.</p>
+          <p>&copy; {new Date().getFullYear()} Voyage Tracable, LLC (DBA Inspired Mile). <span data-i18n="footer.rights">All rights reserved.</span> Sarasota, FL.</p>
           <p class="mt-1">
-            <a href="/privacy" class="hover:text-gold-400 transition-colors">Privacy Policy</a>
+            <a href="/privacy" class="hover:text-gold-400 transition-colors" data-i18n="footer.privacy">Privacy Policy</a>
             <span class="mx-1">&middot;</span>
-            <a href="/terms" class="hover:text-gold-400 transition-colors">Terms of Service</a>
+            <a href="/terms" class="hover:text-gold-400 transition-colors" data-i18n="footer.terms">Terms of Service</a>
           </p>
         </div>
       </div>
     </footer>
+
+    <script>
+      // Interface language: detect it, fill the static markup (data-i18n), mark <html> with
+      // lang and dir, and wire the switcher. See src/i18n.
+      import { bindLocaleSwitch, initI18n, locale, onLocaleChange } from '../i18n';
+
+      // Month names come from the browser, in the interface language.
+      function nameMonths() {
+        const fmt = new Intl.DateTimeFormat(locale(), { month: 'long' });
+        document.querySelectorAll<HTMLOptionElement>('#age-month option').forEach((o) => {
+          const m = Number(o.value);
+          if (m >= 1 && m <= 12) o.textContent = fmt.format(new Date(2020, m - 1, 15));
+        });
+      }
+
+      initI18n().then(() => {
+        const select = document.getElementById('locale-switch') as HTMLSelectElement | null;
+        if (select) bindLocaleSwitch(select);
+        nameMonths();
+        onLocaleChange(nameMonths);
+      });
+    </script>
 
     <script>
       import { initAudio, toggleMute, getPrefs, isInitialized, stopMusic } from '../lib/audio-manager';
@@ -533,6 +551,8 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
     </script>
 
     <script>
+      import { t as tr } from '../i18n';
+
       // ---- Toast notification system ----
       type ToastType = 'success' | 'error' | 'info' | 'warning';
 
@@ -594,7 +614,7 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
         toast.innerHTML = `
           <span class="text-2xl">${a.icon}</span>
           <div class="flex-1 min-w-0">
-            <div class="text-xs font-semibold uppercase tracking-wider text-white/70">Achievement Unlocked</div>
+            <div class="text-xs font-semibold uppercase tracking-wider text-white/70">${tr('toast.achievement')}</div>
             <div class="font-display font-bold text-white truncate">${a.name}</div>
             <div class="text-xs text-white/80">${a.description}</div>
           </div>
@@ -618,6 +638,7 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
       import { initStorageBackend, isLoggedIn, getCurrentUser, logoutUser } from '../lib/storage-backend';
       import { getMigrationStatus, syncMigration, type AuthResponse, type MigrationPayload, type PasskeyInfo } from '../lib/api-client';
       import { getPlayerStats } from '../lib/achievements';
+      import { has, initI18n, onLocaleChange, t } from '../i18n';
       import {
         AuthFlowError,
         addPasskey,
@@ -636,111 +657,19 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
         signUpWithPasskey,
       } from '../lib/passwordless';
 
-      // Every user-facing string of the sign-in UI lives here, so it can be localised in
-      // one place. Markup carries only keys (data-auth-text, data-auth-placeholder).
-      // {email}, {date} and {name} are filled in at run time.
-      const STRINGS = {
-        signIn: 'Sign In',
-        signInHeading: 'Sign in',
-        signInIntro: 'No password to remember. A passkey signs you in with your fingerprint, face or screen lock.',
-        passkeyButton: 'Sign in with a passkey',
-        passkeyUnsupported: 'This browser cannot use passkeys. Sign in with an emailed code instead.',
-        passkeyUnsupportedNoEmail: 'This browser cannot use passkeys, and this site signs in with them. Try a current version of Chrome, Safari, Edge or Firefox.',
-        createButton: 'Create an account with a passkey',
-        createHeading: 'Create your account',
-        createIntro: 'Your account is a passkey saved on this device or in your password manager. We do not ask for a name, an email or a password.',
-        createWarning: 'If you lose the passkey, we cannot let you back in. After this, add a second passkey or an email so you can get back in.',
-        createWarningNoEmail: 'If you lose the passkey, we cannot let you back in. After this, add a second passkey so you can get back in.',
-        createConfirm: 'Create my account',
-        nudgeHeading: 'Your account is ready',
-        nudgeName: 'You are {name}.',
-        nudgeBody: 'Right now one passkey is the only way into this account. If it is lost, the account is lost. Add a second passkey or an email so you can get back in.',
-        nudgeBodyNoEmail: 'Right now one passkey is the only way into this account. If it is lost, the account is lost. Add a second passkey so you can get back in.',
-        nudgePasskey: 'Add a second passkey',
-        nudgePasskeyHint: 'Use another device, a password manager or a security key.',
-        nudgeEmail: 'Add an email instead',
-        nudgeLater: 'Later',
-        recoveryWarning: 'One passkey is your only way in. Add a second passkey or an email so you can get back in.',
-        recoveryWarningNoEmail: 'One passkey is your only way in. Add a second passkey so you can get back in.',
-        recoveryEmailHeading: 'Recovery email',
-        addEmailButton: 'Add an email for recovery',
-        addEmailLabel: 'Email address',
-        addEmailCodeIntro: 'We sent a 6-digit code to {email}. Enter it to confirm the address is yours.',
-        addEmailConfirm: 'Confirm email',
-        addEmailDone: 'Email added. You can now sign in with a code sent to it.',
-        emailButton: 'Email me a code',
-        emailHint: 'On a device without your passkey? Sign in by email, if your account has one.',
-        emailHeading: 'Sign in by email',
-        emailIntro: 'We will email you a 6-digit code. If the address is new, the code creates your account.',
-        emailLabel: 'Email address',
-        emailPlaceholder: 'you@example.com',
-        emailSend: 'Email me a code',
-        back: 'Back',
-        codeHeading: 'Enter your code',
-        codeIntro: 'We sent a 6-digit code to {email}. It works once and expires in 10 minutes.',
-        codeLabel: '6-digit code',
-        codeVerify: 'Sign in',
-        codeBack: 'Use a different email',
-        codeResend: 'Send a new code',
-        codeResent: 'A new code is on its way. The old one no longer works.',
-        legalBefore: 'By signing in, you agree to our ',
-        legalTerms: 'Terms of Service',
-        legalAnd: ' and ',
-        legalPrivacy: 'Privacy Policy',
-        legalAfter: '.',
-        offerHeading: 'Add a passkey to this device',
-        offerBody: 'Next time, sign in with your fingerprint, face or screen lock. No code, no waiting for an email.',
-        offerAdd: 'Add a passkey',
-        offerSkip: 'Not now',
-        passkeysHeading: 'Passkeys',
-        passkeysEmpty: 'No passkeys yet. Add one to sign in without an email code.',
-        passkeysAdd: 'Add another passkey',
-        passkeyAdded: 'Passkey added. You can sign in with it from now on.',
-        passkeyAddedOn: 'Added {date}',
-        passkeyRemove: 'Remove',
-        passkeyRemoveConfirm: 'Remove?',
-        passkeyRemoveLabel: 'Remove passkey {name}',
-        passkeyRemoved: 'Passkey removed.',
-        signedIn: 'Signed in',
-        viewProfile: 'View Profile',
-        signOut: 'Sign Out',
-        working: 'One moment…',
-        errors: {
-          age_required: 'Please confirm your age on the home page first. Accounts are for players aged 13 and over.',
-          email_in_use: 'That address already belongs to another account. Sign out and sign in with it instead.',
-          email_already_set: 'This account already has an email address.',
-          signup_retry: 'That did not go through. Please try again.',
-          invalid_email: 'That does not look like an email address.',
-          invalid_code: 'That code is not right, or it has expired. Check it, or send a new one.',
-          code_incomplete: 'Enter all 6 digits of the code.',
-          too_many_requests: 'Too many codes requested. Wait a few minutes, then try again.',
-          email_sign_in_unavailable: 'Email is not available right now.',
-          email_send_failed: 'We could not send the email. Please try again in a moment.',
-          passkey_unsupported: 'This browser cannot use passkeys.',
-          passkey_cancelled: 'No passkey was used. Try again when you are ready.',
-          passkey_not_accepted: 'That passkey was not accepted. Sign in with an emailed code, then add a new passkey.',
-          passkey_failed: 'The passkey did not work. Please try again.',
-          passkey_already_on_device: 'This device already has a passkey for your account.',
-          passkey_already_registered: 'That passkey is already registered.',
-          passkey_not_registered: 'That passkey could not be added. Please try again.',
-          too_many_passkeys: 'This account has the most passkeys it can hold. Remove one first.',
-          last_sign_in_method: 'This passkey is your only way to sign in. Add another one before removing it.',
-          challenge_expired: 'That took too long. Please try again.',
-          not_signed_in: 'Your session has ended. Please sign in again.',
-          network: 'We could not reach the server. Check your connection and try again.',
-          generic: 'Something went wrong. Please try again.',
-        } as Record<string, string>,
-      };
-
-      type StringKey = Exclude<keyof typeof STRINGS, 'errors'>;
+      // Every user-facing string of the sign-in UI is a message in the locale files
+      // (src/i18n/locales, keys auth.* and auth.error.*). Markup carries only keys
+      // (data-auth-text, data-auth-placeholder). {email}, {date} and {name} are filled in
+      // at run time.
+      type StringKey = string;
 
       function text(key: StringKey, values: Record<string, string> = {}): string {
-        return STRINGS[key].replace(/\{(\w+)\}/g, (whole, name) => values[name] ?? whole);
+        return t(`auth.${key}`, values);
       }
 
       function errorText(e: unknown): string {
         const code = e instanceof AuthFlowError ? e.code : 'generic';
-        return STRINGS.errors[code] ?? STRINGS.errors.generic;
+        return has(`auth.error.${code}`) ? t(`auth.error.${code}`) : t('auth.error.generic');
       }
 
       function applyStrings() {
@@ -1009,7 +938,7 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
         clearMessages();
         // No account is started unless the age gate allows one.
         if (!accountAgeTier()) {
-          showNotice(STRINGS.errors.age_required);
+          showNotice(t('auth.error.age_required'));
           return;
         }
         showStep('create');
@@ -1097,7 +1026,7 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
         clearMessages();
         // The same gate as every other place an address could be given.
         if (!accountAgeTier()) {
-          showEmailMessage(STRINGS.errors.age_required, 'error');
+          showEmailMessage(t('auth.error.age_required'), 'error');
           return;
         }
         openAddEmail();
@@ -1108,7 +1037,7 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
         clearMessages();
         const email = addEmailInput.value.trim();
         if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-          showEmailMessage(STRINGS.errors.invalid_email, 'error');
+          showEmailMessage(t('auth.error.invalid_email'), 'error');
           return;
         }
         setBusy(true);
@@ -1136,7 +1065,7 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
         clearMessages();
         const code = addCodeInput.value.replace(/\D/g, '');
         if (code.length !== 6) {
-          showEmailMessage(STRINGS.errors.code_incomplete, 'error');
+          showEmailMessage(t('auth.error.code_incomplete'), 'error');
           return;
         }
         setBusy(true);
@@ -1157,7 +1086,7 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
         clearMessages();
         // No address is asked for, let alone sent, unless the age gate allows it.
         if (!accountAgeTier()) {
-          showNotice(STRINGS.errors.age_required);
+          showNotice(t('auth.error.age_required'));
           return;
         }
         showStep('email');
@@ -1192,7 +1121,7 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
         e.preventDefault();
         const email = emailInput.value.trim();
         if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-          showError(STRINGS.errors.invalid_email);
+          showError(t('auth.error.invalid_email'));
           return;
         }
         requestCode(email, false);
@@ -1208,7 +1137,7 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
         clearMessages();
         const code = codeInput.value.replace(/\D/g, '');
         if (code.length !== 6) {
-          showError(STRINGS.errors.code_incomplete);
+          showError(t('auth.error.code_incomplete'));
           return;
         }
         setBusy(true);
@@ -1367,7 +1296,7 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
 
       document.getElementById('migrate-yes')?.addEventListener('click', async () => {
         const btn = document.getElementById('migrate-yes') as HTMLButtonElement;
-        btn.textContent = 'Syncing...';
+        btn.textContent = t('migrate.syncing');
         btn.disabled = true;
 
         try {
@@ -1407,7 +1336,7 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
           const resultEl = document.getElementById('migration-result')!;
           resultEl.classList.remove('hidden');
           resultEl.classList.add('text-emerald-400');
-          resultEl.textContent = `Synced ${result.cards_synced} cards, ${result.achievements_synced} achievements.`;
+          resultEl.textContent = t('migrate.done', { cards: result.cards_synced, achievements: result.achievements_synced });
           setTimeout(() => {
             document.getElementById('migration-banner')?.classList.add('hidden');
           }, 3000);
@@ -1415,8 +1344,8 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
           const resultEl = document.getElementById('migration-result')!;
           resultEl.classList.remove('hidden');
           resultEl.classList.add('text-crimson-400');
-          resultEl.textContent = 'Sync failed. You can try again later.';
-          btn.textContent = 'Sync Data';
+          resultEl.textContent = t('migrate.failed');
+          btn.textContent = t('migrate.yes');
           btn.disabled = false;
         }
       });
@@ -1441,8 +1370,18 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
       }
 
       // --- Init ---
+      // Said once now, and again whenever the interface language is known or changes.
+      function relabel() {
+        applyStrings();
+        authDropdown.setAttribute('aria-label', text('signInHeading'));
+        updateAuthUI();
+      }
       applyStrings();
       authDropdown.setAttribute('aria-label', text('signInHeading'));
+      initI18n().then(() => {
+        relabel();
+        onLocaleChange(relabel);
+      });
       authBtn.setAttribute('aria-haspopup', 'dialog');
       authBtn.setAttribute('aria-expanded', 'false');
       initStorageBackend().then(() => {
@@ -1512,7 +1451,6 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
           var errorEl = document.getElementById('age-gate-error');
 
           if (!month || !day || !year) {
-            errorEl.textContent = 'Please select your full date of birth.';
             errorEl.classList.remove('hidden');
             return;
           }
@@ -1565,15 +1503,15 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
 
     <!-- PWA Install Prompt -->
     <div id="pwa-install-banner" class="fixed bottom-0 left-0 right-0 z-150 bg-linear-to-r from-gold-600 to-gold-500 text-obsidian-950 p-3 flex items-center justify-center gap-3 hidden shadow-lg">
-      <span class="text-sm font-medium">Install Inspired Mile for the best experience</span>
-      <button id="pwa-install-btn" class="px-4 py-1.5 bg-obsidian-900 text-gold-400 rounded-lg text-xs font-bold hover:bg-obsidian-800 transition-colors">Install</button>
-      <button id="pwa-dismiss-btn" class="text-obsidian-800 hover:text-obsidian-950 transition-colors">
+      <span class="text-sm font-medium" data-i18n="pwa.install">Install Inspired Mile for the best experience</span>
+      <button id="pwa-install-btn" class="px-4 py-1.5 bg-obsidian-900 text-gold-400 rounded-lg text-xs font-bold hover:bg-obsidian-800 transition-colors" data-i18n="pwa.installButton">Install</button>
+      <button id="pwa-dismiss-btn" class="text-obsidian-800 hover:text-obsidian-950 transition-colors" aria-label="Dismiss" data-i18n-aria-label="pwa.dismiss">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
       </button>
     </div>
 
     <!-- Offline Indicator -->
-    <div id="offline-banner" class="fixed top-0 left-0 right-0 z-180 bg-crimson-600 text-white text-center py-2 text-xs font-medium hidden">
+    <div id="offline-banner" class="fixed top-0 left-0 right-0 z-180 bg-crimson-600 text-white text-center py-2 text-xs font-medium hidden" data-i18n="offline.banner">
       You're offline — Collection and Trivia still work. Multiplayer requires internet.
     </div>
 
