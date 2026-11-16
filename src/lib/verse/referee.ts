@@ -7,7 +7,7 @@ import { answerScores, brainInfo, isBrainLoaded } from '../brain';
 import { invocationNames, signatureWords } from './devices';
 import type { JudgeSplit } from './duel';
 import {
-  CRITERIA, GRADE_ANSWERS, combineGrades, combineMargins, compareMessages, expectedGrade, gradeMessages, rulesJudge, type Margins,
+  CRITERIA, GRADE_ANSWERS, checkedByRules, combineGrades, combineMargins, compareMessages, expectedGrade, gradeMessages, rulesJudge, type Margins,
 } from './judge';
 import { languageName } from './opponent';
 import { STOP_WORDS, fold, letterCount } from './text';
@@ -50,7 +50,9 @@ export async function referee(playerVerse: string, opponentVerse: string, lang: 
   if (isBrainLoaded()) {
     try {
       if (brainInfo()?.judge === 'grade') {
-        return combineGrades(await grades(playerVerse, lang), await grades(opponentVerse, lang));
+        // Graded alone, a verse can tell the grader what to answer; the rules may veto (judge.ts gradeMessages).
+        const model = combineGrades(await grades(playerVerse, lang), await grades(opponentVerse, lang));
+        return checkedByRules(model, rulesJudge(playerVerse, opponentVerse, lang, allusionLexicon(), previousPlayerVerse));
       }
       const forward = await margins(playerVerse, opponentVerse, lang);
       const reversed = await margins(opponentVerse, playerVerse, lang);
