@@ -133,6 +133,16 @@ describe('syllables, by sound', () => {
     }
     expect(pron.pronunciationLoaded()).toBe(true);
   });
+  it("carries the dictionary's licence inside the data, where a minified build keeps it", async () => {
+    const data = (await import('./pron-en')).default;
+    const notice = data.split('\n').filter((l) => l.startsWith('#'));
+    expect(notice.join('\n')).toContain('Copyright (C) 1993-2015 Carnegie Mellon');
+    expect(notice.join('\n')).toContain('POSSIBILITY OF SUCH DAMAGE.');
+    // The notice is read as no word at all.
+    expect(notice.every((l) => !l.includes('\t'))).toBe(true);
+    expect(pron.knownWord('carnegie')).toBe(true);
+    expect(pron.knownWord('#')).toBe(false);
+  });
 });
 
 describe('similarity: how much of a verse is taken from another', () => {
