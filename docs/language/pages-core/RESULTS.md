@@ -299,3 +299,12 @@ capitals and hidden, a key, a placeholder, a mark and an over-wide element, and 
   vitest 127 of 127, build passed, Playwright **143 of 143** (6.1 min), and new Arabic and
   Japanese screenshots of home and collection at both widths: no overflow, 家門 whole, the
   Arabic stats and card view as fixed.
+- Continuation, at 8f3a386 (every change of the continuation in; after it only these documents
+  and CLAUDE.md changed), on the **iMac Pro** (the Studio was above `rb`'s load limit, 4 a core,
+  all afternoon), test ports 47731 (web), 47732 (web without email), 47733 (API), 47734 (API without
+  email), 47735 (Postgres), `E2E_TIMEOUT=90000`: `npm ci` passed, vitest **129 of 129**, build passed,
+  mutation proof **15 of 15** caught and clean after, Playwright **146 of 146** (3.1 min, the two
+  model-runtime downloads included). New in the suites since the last run: the battle and theatre
+  titles in sixteen languages, the Arabic count and signed-number order (each with a planted
+  failure that goes red), lists of words in every language, signed numbers in Arabic, and areas of
+  other branches allowed beside these nine.
