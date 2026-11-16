@@ -206,7 +206,7 @@ const pack: CardTextPack = {
   "RM-001": {
    "nameSource": "derived",
    "name": "Brutus",
-   "quote": "Không phải tôi yêu Caesar ít hơn, mà là tôi yêu thành Rome nhiều hơn.",
+   "quote": "Không phải tôi yêu Caesar ít hơn, mà là tôi yêu thành Roma nhiều hơn.",
    "quoteSource": "new",
    "scene": "Viện Nguyên lão La Mã, những cột đá cẩm thạch nhuốm màu đỏ thẫm. Brutus đứng giữa những kẻ mưu phản, lưỡi kiếm vẫn còn run rẩy. Sức nặng của nền cộng hòa đè lên đôi bàn tay đẫm máu của ông."
   },

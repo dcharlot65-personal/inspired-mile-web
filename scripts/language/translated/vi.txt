@@ -57,7 +57,7 @@ SC-003	Ngươi sẽ sinh ra các vị vua, dù ngươi chẳng phải là vua.
 IL-001	Tôi không phải là tôi như người ta thấy.
 IL-002	Có người sinh ra đã vĩ đại, có người đạt tới vĩ đại, và có người bị sự vĩ đại ấn vào tay.
 IL-003	Tình yêu tìm mà có là tốt, nhưng được trao khi chẳng tìm thì còn tốt hơn.
-RM-001	Không phải tôi yêu Caesar ít hơn, mà là tôi yêu thành Rome nhiều hơn.
+RM-001	Không phải tôi yêu Caesar ít hơn, mà là tôi yêu thành Roma nhiều hơn.
 RM-002	Lỗi, Brutus thân mến, không nằm ở các vì sao của chúng ta, mà ở chính chúng ta.
 RM-003	Hỡi bạn bè, hỡi người La Mã, hỡi đồng bào, hãy cho tôi mượn đôi tai!
 MO-004	Đã nhiều buổi sáng người ta thấy nó ở đó, lấy nước mắt thêm vào sương sớm tinh khôi.

@@ -79,14 +79,14 @@ SC-001	Une salle du trône tachée de sang à Dunsinane. Macbeth serre son épé
 SC-002	Une chambre du château écossais, éclairée à la bougie. Lady Macbeth arpente les dalles froides, frottant sur ses mains des taches de sang imaginaires. Les ombres s’accrochent à elle comme une seconde peau.
 SC-003	Une lande écossaise brumeuse au crépuscule. Banquo se tient ferme tandis que trois figures spectrales murmurent des destins dans le vent. Son fantôme hantera les vivants.
 IL-001	Un rivage d’Illyrie battu par les vents. Viola enfonce un bonnet de marin sur ses cheveux coupés court ; deux identités miroitent dans ses yeux. La mer murmure les secrets de son frère perdu.
-IL-002	Un jardin ensoleillé dans le domaine d’Olivia. Malvolio se pavane en bas jaunes criards, jarretières croisées, tout sourire, serrant contre sa poitrine une fausse lettre d’amour.
+IL-002	Un jardin ensoleillé dans le domaine d’Olivia. Malvolio se pavane en bas d’un jaune criard, jarretières croisées, tout sourire, serrant contre sa poitrine une fausse lettre d’amour.
 IL-003	Une comtesse en deuil soulève son voile et révèle une beauté à couper le souffle. Le jardin d’Olivia fleurit de jasmin et de lavande tandis que le messager déguisé lui vole son cœur.
 RM-001	Le Sénat romain, ses colonnes de marbre tachées de cramoisi. Brutus se tient parmi les conjurés, la lame encore tremblante. Le poids de la république repose sur ses mains ensanglantées.
 RM-002	Une ruelle romaine à minuit, à la lueur des torches. Cassius se penche et murmure la sédition, l’air maigre et affamé. De fausses lettres s’échappent de sa toge.
 RM-003	Le Forum romain éclate de fureur. Marc Antoine brandit devant la foule le manteau ensanglanté de César ; ses mots changent le deuil en feu. La république s’effondre à chaque syllabe.
 MO-004	Le domaine des Montaigu à l’aube. Le seigneur Montaigu regarde d’une haute fenêtre son fils errer dans les vergers brumeux, malade d’amour et hors d’atteinte.
 CA-003	La grande salle des Capulet, tendue de soie. Dame Capulet arrange le destin de sa fille comme des fleurs dans un vase ; l’ambition brille derrière chaque sourire gracieux.
-DC-004	Les remparts d’Elseneur à l’heure froide qui précède l’aube. Horatio veille aux côtés d’Hamlet, seul ami véritable dans une cour de serpents.
+DC-004	Les remparts d’Elseneur à l’heure froide qui précède l’aube. Horatio veille aux côtés de Hamlet, seul ami véritable dans une cour de serpents.
 FA-004	Une clairière baignée de lumière féerique. Bottom porte une tête d’âne avec une dignité perplexe tandis que Titania le couvre de guirlandes. Les fées étouffent leurs rires.
 VC-004	Le cimetière de Vérone au crépuscule. Pâris dépose des fleurs sur le tombeau de Juliette, ignorant l’amant désespéré qui approche dans l’ombre.
 TP-004	Une plage intacte sur l’île de Prospero. Miranda voit pour la première fois les naufragés, les yeux écarquillés d’émerveillement devant un monde dont elle ignorait l’existence.

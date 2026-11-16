@@ -1,0 +1,176 @@
+{
+ "about": "Every change made to the text written for the game because a check flagged it. The full before and after of each change is in the git history of scripts/language/translated/.",
+ "fixes": [
+  {
+   "lang": "fr",
+   "id": "RL-002",
+   "field": "scene",
+   "finding": "Hunspell: \"arcanique\" is not a French word",
+   "old": "crépite d’énergie arcanique",
+   "new": "crépite d’une énergie occulte",
+   "round": "first checks (commit 0db982b)"
+  },
+  {
+   "lang": "pt",
+   "id": "VC-001",
+   "field": "scene",
+   "finding": "Hunspell (pt-BR): \"ceptro\", a European spelling",
+   "old": "Um ceptro dourado",
+   "new": "Um cetro dourado",
+   "round": "first checks (commit 0db982b)"
+  },
+  {
+   "lang": "pt",
+   "id": "SC-001",
+   "field": "scene",
+   "finding": "Hunspell (pt-BR): \"trémulas\", a European spelling",
+   "old": "mãos trémulas",
+   "new": "mãos trêmulas",
+   "round": "first checks (commit 0db982b)"
+  },
+  {
+   "lang": "pt",
+   "id": "PT-004",
+   "field": "scene",
+   "finding": "Hunspell (pt-BR): \"trémula\", a European spelling",
+   "old": "com trémula reverência",
+   "new": "com trêmula reverência",
+   "round": "first checks (commit 0db982b)"
+  },
+  {
+   "lang": "pl",
+   "id": "house:Verona Court",
+   "field": "house",
+   "finding": "Hunspell: \"werneński\" is not the adjective of Werona",
+   "old": "Dwór werneński",
+   "new": "Dwór weroński",
+   "round": "first checks (commit 0db982b)"
+  },
+  {
+   "lang": "pl",
+   "id": "GC-001",
+   "field": "quote",
+   "finding": "LanguageTool: no comma before a comparative \"jak\"",
+   "old": "w piękności, jak noc",
+   "new": "w piękności jak noc",
+   "round": "first checks (commit 0db982b)"
+  },
+  {
+   "lang": "ru",
+   "id": "OL-005",
+   "field": "scene",
+   "finding": "Hunspell: \"Промельк\", a rare colloquial form",
+   "old": "Промельк крылатых сандалий",
+   "new": "Мелькание крылатых сандалий",
+   "round": "first checks (commit 0db982b)"
+  },
+  {
+   "lang": "ru",
+   "id": "GC-003",
+   "field": "scene",
+   "finding": "LanguageTool read \"По сидит\" as a misspelt \"Посидит\"",
+   "old": "По сидит",
+   "new": "Эдгар По сидит",
+   "round": "first checks (commit 0db982b)"
+  },
+  {
+   "lang": "de",
+   "id": "LD-003",
+   "field": "quote",
+   "finding": "LanguageTool: a capital after a colon that opens a full clause",
+   "old": ": seine Lieblichkeit wächst",
+   "new": ": Seine Lieblichkeit wächst",
+   "round": "first checks (commit 0db982b)"
+  },
+  {
+   "lang": "zh",
+   "id": "FA-004",
+   "field": "scene",
+   "finding": "LanguageTool: 颗 is not the measure word for a head worn as a mask",
+   "old": "一颗驴头",
+   "new": "一个驴头",
+   "round": "first checks (commit 0db982b)"
+  },
+  {
+   "lang": "ar",
+   "id": "(20 lines)",
+   "field": "quote",
+   "finding": "LanguageTool: the tanwin of the accusative stands on the letter before the alif",
+   "old": "يوماً, ملكاً, ذهباً, …",
+   "new": "يومًا, ملكًا, ذهبًا, … (as the scenes already wrote it)",
+   "round": "first checks (commit 0db982b)"
+  },
+  {
+   "lang": "fr",
+   "id": "DC-004",
+   "field": "scene",
+   "finding": "LanguageTool PAS_D_ELISION: \"Hamlet\" takes no elision",
+   "old": "aux côtés d’Hamlet",
+   "new": "aux côtés de Hamlet",
+   "round": "this round"
+  },
+  {
+   "lang": "fr",
+   "id": "IL-002",
+   "field": "scene",
+   "finding": "LanguageTool PLACE_ADJ on \"bas jaunes criards\"; the agreement of a qualified colour is better avoided",
+   "old": "en bas jaunes criards",
+   "new": "en bas d’un jaune criard",
+   "round": "this round"
+  },
+  {
+   "lang": "ko",
+   "id": "OL-007",
+   "field": "quote",
+   "finding": "Hunspell: \"잊혀진\" is a double passive; the National Institute of Korean Language gives 잊힌",
+   "old": "잊혀진 긴 삶보다",
+   "new": "잊힌 긴 삶보다",
+   "round": "this round"
+  },
+  {
+   "lang": "vi",
+   "id": "RM-001",
+   "field": "quote",
+   "finding": "Hunspell: \"Rome\"; Wikidata's Vietnamese label for the city (the house label) is \"Roma\"",
+   "old": "yêu thành Rome nhiều hơn",
+   "new": "yêu thành Roma nhiều hơn",
+   "round": "this round"
+  },
+  {
+   "lang": "hi",
+   "id": "OL-001",
+   "field": "scene",
+   "finding": "Hunspell: \"ओलंपस\"; Wikidata's Hindi label is \"माउंट ओलिंपस\"",
+   "old": "ओलंपस पर्वत",
+   "new": "ओलिंपस पर्वत",
+   "round": "this round"
+  },
+  {
+   "lang": "hi",
+   "id": "house:Olympus",
+   "field": "house",
+   "finding": "as above",
+   "old": "ओलंपस",
+   "new": "ओलिंपस",
+   "round": "this round"
+  },
+  {
+   "lang": "pt",
+   "id": "(all)",
+   "field": "scene, quote, name",
+   "finding": "LanguageTool and Hunspell ran with pt-BR (the interface is Brazilian) and flagged European forms; read in full, the Portuguese card text was European Portuguese",
+   "old": "European Portuguese (\"a brilhar\", pirilampos, sumo, fumo, archotes, papoila, \"cá em baixo\", \"Sumo da flor de Puck\", \"Marco António\" in a scene)",
+   "new": "Brazilian Portuguese: 66 scenes, 27 lines and one potion name rewritten (see git log for the full diff); a scene names a character as its card does (Mercutio, Benvolio, Tybalt, Odisseu)",
+   "round": "this round"
+  },
+  {
+   "lang": "ar",
+   "id": "element:Rebirth",
+   "field": "element",
+   "finding": "back-translation (cos 0.20, LaBSE 0.43): MADLAD read \"البعث\" as \"Al-Baath\"; the word is also the name of the Ba'ath party",
+   "old": "البعث",
+   "new": "الانبعاث",
+   "round": "this round"
+  }
+ ]
+}

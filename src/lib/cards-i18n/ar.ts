@@ -604,7 +604,7 @@ const pack: CardTextPack = {
   "Light": "النور",
   "Love": "الحب",
   "Speed": "السرعة",
-  "Rebirth": "البعث",
+  "Rebirth": "الانبعاث",
   "Cunning": "الدهاء",
   "Petrification": "التحجر",
   "Glory": "المجد"

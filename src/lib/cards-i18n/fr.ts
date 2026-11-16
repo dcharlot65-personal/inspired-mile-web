@@ -218,7 +218,7 @@ const pack: CardTextPack = {
    "name": "Malvolio",
    "quote": "Il en est qui naissent grands, d’autres qui conquièrent les grandeurs, et d’autres à qui elles s’imposent.",
    "quoteSource": "published",
-   "scene": "Un jardin ensoleillé dans le domaine d’Olivia. Malvolio se pavane en bas jaunes criards, jarretières croisées, tout sourire, serrant contre sa poitrine une fausse lettre d’amour."
+   "scene": "Un jardin ensoleillé dans le domaine d’Olivia. Malvolio se pavane en bas d’un jaune criard, jarretières croisées, tout sourire, serrant contre sa poitrine une fausse lettre d’amour."
   },
   "IL-003": {
    "nameSource": "wikidata",
@@ -267,7 +267,7 @@ const pack: CardTextPack = {
    "name": "Horatio",
    "quote": "Voici un noble cœur qui se brise. Bonne nuit, doux prince",
    "quoteSource": "published",
-   "scene": "Les remparts d’Elseneur à l’heure froide qui précède l’aube. Horatio veille aux côtés d’Hamlet, seul ami véritable dans une cour de serpents."
+   "scene": "Les remparts d’Elseneur à l’heure froide qui précède l’aube. Horatio veille aux côtés de Hamlet, seul ami véritable dans une cour de serpents."
   },
   "FA-004": {
    "nameSource": "derived",
