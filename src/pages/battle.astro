@@ -1,8 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { t } from '../i18n';
 ---
 
-<BaseLayout title="Battle Arena" description="A duel of verses: play your cards, keep the form, and out-write an AI that runs entirely in your browser.">
+<BaseLayout title="Battle Arena" description={t('battle.intro')} descriptionKey="battle.intro">
 
   <!-- Every visible string on this page is a message key (src/i18n). The English here is what
        shows until the script has run; data-i18n fills it in the visitor's language. -->

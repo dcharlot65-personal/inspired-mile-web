@@ -329,4 +329,27 @@ test.describe('Translated pages: what a script draws', () => {
     await page.selectOption('#locale-switch', 'ko');
     await expect(page).toHaveTitle('배틀 아레나 | Inspired Mile');
   });
+
+  test('the battle page and the theatre: title and description in every language', async ({ page }) => {
+    test.setTimeout(240000);
+    // Both pages' descriptions are their own introductions (core keys); the theatre's name is the about page's.
+    const PAGES_ELSEWHERE = [
+      { path: '/battle?brain=rules', title: async (l: L) => (await messages('core', '', l))['nav.battle'], descriptionKey: 'battle.intro' },
+      { path: '/theatre', title: async (l: L) => (await messages('area', 'about', l))['about.tech.theatre.title'], descriptionKey: 'theatre.intro' },
+    ];
+    await page.goto('/battle?brain=rules');
+    for (const p of PAGES_ELSEWHERE) {
+      for (const l of LOCALES) {
+        const where = `${p.path} [${l}]`;
+        await show(page, p.path, l);
+        const title = `${await p.title(l)} | Inspired Mile`;
+        const description = (await messages('core', '', l))[p.descriptionKey];
+        expect([where, title.length > 16, (description ?? '').length > 20]).toEqual([where, true, true]);
+        await expect(page, where).toHaveTitle(title);
+        await expect(page.locator('meta[name="description"]'), where).toHaveAttribute('content', description);
+        await expect(page.locator('meta[property="og:description"]'), where).toHaveAttribute('content', description);
+        await expect(page.locator('meta[name="twitter:title"]'), where).toHaveAttribute('content', title);
+      }
+    }
+  });
 });
