@@ -2,7 +2,8 @@
  * The trivia bank and the quote challenges in the interface language.
  *
  * English is the data in trivia.ts and challenges.ts. Every other language is a
- * page area (src/i18n/pages/trivia, src/i18n/pages/challenges), loaded on demand.
+ * page area file (src/i18n/pages/trivia, src/i18n/pages/challenges), fetched here
+ * on demand and read directly: a thousand quiz strings have no business in t().
  * A question keeps its place in the bank and its options keep their order, so the
  * bank's correctIndex holds in every language.
  *
@@ -10,7 +11,7 @@
  * translation was found (never an invented one). A language with fewer than
  * MIN_LOCAL_CHALLENGES of them plays Shakespeare's own English lines, and says so.
  */
-import { loadArea, loadMessages, locale, type Locale, type Messages } from '../i18n';
+import { locale, type Locale, type Messages } from '../i18n';
 import { TRIVIA_BANK, type TriviaQuestion } from './trivia';
 import { CHALLENGE_BANK, type QuoteChallenge } from './challenges';
 
@@ -34,9 +35,18 @@ function shuffle<T>(arr: readonly T[]): T[] {
   return a;
 }
 
-async function area(name: string, l: Locale): Promise<Messages> {
-  await loadArea(name, l);
-  return loadMessages(l);
+const FILES = import.meta.glob<{ default: Messages }>('../i18n/pages/{trivia,challenges}/*.ts');
+
+/** One language's own file of an area; empty if there is none or it will not load. */
+async function own(name: 'trivia' | 'challenges', l: Locale): Promise<Messages> {
+  const load = FILES[`../i18n/pages/${name}/${l}.ts`];
+  if (!load) return {};
+  try {
+    return (await load()).default;
+  } catch (err) {
+    console.error(`[play-content] could not load ${name} in "${l}"; using English`, err);
+    return {};
+  }
 }
 
 /** The whole trivia bank in a language, in the bank's order. */
@@ -50,7 +60,7 @@ export function triviaBankFrom(m: Messages): TriviaQuestion[] {
 
 export async function localTriviaBank(l: Locale = locale()): Promise<TriviaQuestion[]> {
   if (l === 'en') return TRIVIA_BANK;
-  return triviaBankFrom(await area('trivia', l));
+  return triviaBankFrom(await own('trivia', l));
 }
 
 /** `count` questions in the interface language, options shuffled, correctIndex following the right answer. */
@@ -65,14 +75,14 @@ export async function localRandomQuestions(count: number, l: Locale = locale()):
 }
 
 /** The challenges a language's own file holds (not English filling in). */
-export function challengesFrom(own: Messages, l: Locale): LocalChallenge[] {
-  const ids = (own['challenges.ids'] ?? '').split(',').filter(Boolean).map(Number);
+export function challengesFrom(m: Messages, l: Locale): LocalChallenge[] {
+  const ids = (m['challenges.ids'] ?? '').split(',').filter(Boolean).map(Number);
   const out: LocalChallenge[] = [];
   for (const id of ids) {
     const base = CHALLENGE_BANK[id];
-    const full = own[`challenge.${id}.full`];
-    const display = own[`challenge.${id}.display`];
-    const missing = own[`challenge.${id}.missing`];
+    const full = m[`challenge.${id}.full`];
+    const display = m[`challenge.${id}.display`];
+    const missing = m[`challenge.${id}.missing`];
     if (!base || !full || !display || !missing) continue;
     out.push({
       id,
@@ -80,29 +90,25 @@ export function challengesFrom(own: Messages, l: Locale): LocalChallenge[] {
       fullQuote: full,
       displayQuote: display,
       missingWords: missing.split('|'),
-      play: own[`challenge.${id}.play`] ?? base.play,
-      character: own[`challenge.${id}.character`] ?? base.character,
+      play: m[`challenge.${id}.play`] ?? base.play,
+      character: m[`challenge.${id}.character`] ?? base.character,
       difficulty: base.difficulty,
-      translator: own[`challenge.${id}.translator`],
+      translator: m[`challenge.${id}.translator`],
     });
   }
   return out;
 }
 
-const CHALLENGE_FILES = import.meta.glob<{ default: Messages }>('../i18n/pages/challenges/*.ts');
-
-/** A language's own challenge file, without English merged in. */
+/** A language's own challenges, without English filling in. */
 export async function ownChallenges(l: Locale): Promise<LocalChallenge[]> {
-  const load = CHALLENGE_FILES[`../i18n/pages/challenges/${l}.ts`];
-  if (!load) return [];
-  return challengesFrom((await load()).default, l);
+  return challengesFrom(await own('challenges', l), l);
 }
 
 /** The challenges to play in a language: its own if it has enough, else the English originals. */
 export async function localChallenges(l: Locale = locale()): Promise<LocalChallenge[]> {
   if (l !== 'en') {
-    const own = await ownChallenges(l);
-    if (own.length >= MIN_LOCAL_CHALLENGES) return own;
+    const mine = await ownChallenges(l);
+    if (mine.length >= MIN_LOCAL_CHALLENGES) return mine;
   }
   return CHALLENGE_BANK.map((c, id) => ({ ...c, id, lang: 'en' as Locale }));
 }

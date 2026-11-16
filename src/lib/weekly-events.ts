@@ -5,8 +5,11 @@
 
 export interface WeeklyEvent {
   id: string;
+  /** English, for logs. To show them, use t(nameKey) and t(descriptionKey) after loadArea('playground'). */
   name: string;
   description: string;
+  nameKey: string;
+  descriptionKey: string;
   bonusType: string;
   multiplier: number;
   dayOfWeek: number; // 0=Sun, 1=Mon, ...6=Sat
@@ -17,6 +20,8 @@ export interface WeeklyEvent {
 export const WEEKLY_EVENTS: WeeklyEvent[] = [
   {
     id: 'trivia-tuesday',
+    nameKey: 'event.trivia-tuesday.name',
+    descriptionKey: 'event.trivia-tuesday.desc',
     name: 'Trivia Tuesday',
     description: '2x XP from trivia questions today!',
     bonusType: 'trivia',
@@ -27,6 +32,8 @@ export const WEEKLY_EVENTS: WeeklyEvent[] = [
   },
   {
     id: 'world-wednesday',
+    nameKey: 'event.world-wednesday.name',
+    descriptionKey: 'event.world-wednesday.desc',
     name: 'World Wednesday',
     description: 'Free city variant attempt today!',
     bonusType: 'variant',
@@ -37,6 +44,8 @@ export const WEEKLY_EVENTS: WeeklyEvent[] = [
   },
   {
     id: 'challenge-thursday',
+    nameKey: 'event.challenge-thursday.name',
+    descriptionKey: 'event.challenge-thursday.desc',
     name: 'Challenge Thursday',
     description: 'Bonus quote challenges available today!',
     bonusType: 'challenge',
@@ -47,6 +56,8 @@ export const WEEKLY_EVENTS: WeeklyEvent[] = [
   },
   {
     id: 'battle-weekend-sat',
+    nameKey: 'event.battle-weekend.name',
+    descriptionKey: 'event.battle-weekend.desc',
     name: 'Battle Weekend',
     description: '2x XP from battles this weekend!',
     bonusType: 'battle',
@@ -57,6 +68,8 @@ export const WEEKLY_EVENTS: WeeklyEvent[] = [
   },
   {
     id: 'battle-weekend-sun',
+    nameKey: 'event.battle-weekend.name',
+    descriptionKey: 'event.battle-weekend.desc',
     name: 'Battle Weekend',
     description: '2x XP from battles this weekend!',
     bonusType: 'battle',
@@ -106,7 +119,15 @@ export function getTimeUntilNextDay(): number {
   return midnight.getTime() - now.getTime();
 }
 
-/** Format countdown as "Xh Ym" */
+/** The countdown as a message for t(): `t(m.key, m.vars)` after loadArea('playground'). */
+export function countdownMessage(ms: number): { key: string; vars?: Record<string, number> } {
+  if (ms <= 0) return { key: 'event.now' };
+  const h = Math.floor(ms / (1000 * 60 * 60));
+  const m = Math.floor((ms % (1000 * 60 * 60)) / (1000 * 60));
+  return h > 0 ? { key: 'countdown.hm', vars: { h, m } } : { key: 'countdown.m', vars: { m } };
+}
+
+/** Format countdown as "Xh Ym" (English; countdownMessage is the translatable form) */
 export function formatCountdown(ms: number): string {
   if (ms <= 0) return 'Now!';
   const hours = Math.floor(ms / (1000 * 60 * 60));

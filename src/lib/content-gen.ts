@@ -161,6 +161,15 @@ function parseChallengeResponse(raw: string): QuoteChallenge | null {
 
 // --- Availability check ---
 
-export function isContentGenAvailable(): boolean {
-  return isBrainLoaded();
+/**
+ * May the model write trivia and challenges for a player reading `lang`?
+ *
+ * Only in English. The prompts above ask for English, and nothing checks what a
+ * 1 to 3 GB model writes in another language, or whether a "fact" it states is
+ * one: so every other language plays the banks, whose translations were checked
+ * (docs/language/CONTENT-PROVENANCE.md). Widen this when a model has been
+ * measured writing and fact-checking in a language, not before.
+ */
+export function isContentGenAvailable(lang: string = 'en'): boolean {
+  return lang === 'en' && isBrainLoaded();
 }

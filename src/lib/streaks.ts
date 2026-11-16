@@ -17,19 +17,21 @@ export interface DailyReward {
   day: number; // 1-7
   rarity: Rarity;
   packSize: number;
+  /** English, for logs. To show it, use t(labelKey) after loadArea('playground'). */
   label: string;
+  labelKey: string;
 }
 
 const STORAGE_KEY = 'inspired-mile-streaks';
 
 const DAILY_REWARDS: DailyReward[] = [
-  { day: 1, rarity: 'Common', packSize: 2, label: 'Common Pack' },
-  { day: 2, rarity: 'Common', packSize: 2, label: 'Common Pack' },
-  { day: 3, rarity: 'Uncommon', packSize: 3, label: 'Uncommon Pack' },
-  { day: 4, rarity: 'Uncommon', packSize: 3, label: 'Uncommon Pack' },
-  { day: 5, rarity: 'Rare', packSize: 3, label: 'Rare Pack' },
-  { day: 6, rarity: 'Rare', packSize: 4, label: 'Rare Pack' },
-  { day: 7, rarity: 'Epic', packSize: 5, label: 'Epic Reward Pack' },
+  { day: 1, rarity: 'Common', packSize: 2, label: 'Common Pack', labelKey: 'streak.pack.common' },
+  { day: 2, rarity: 'Common', packSize: 2, label: 'Common Pack', labelKey: 'streak.pack.common' },
+  { day: 3, rarity: 'Uncommon', packSize: 3, label: 'Uncommon Pack', labelKey: 'streak.pack.uncommon' },
+  { day: 4, rarity: 'Uncommon', packSize: 3, label: 'Uncommon Pack', labelKey: 'streak.pack.uncommon' },
+  { day: 5, rarity: 'Rare', packSize: 3, label: 'Rare Pack', labelKey: 'streak.pack.rare' },
+  { day: 6, rarity: 'Rare', packSize: 4, label: 'Rare Pack', labelKey: 'streak.pack.rare' },
+  { day: 7, rarity: 'Epic', packSize: 5, label: 'Epic Reward Pack', labelKey: 'streak.pack.epic' },
 ];
 
 function defaultStreak(): StreakData {
@@ -147,7 +149,15 @@ export function getTimeUntilNextDaily(): number {
   return midnight.getTime() - now.getTime();
 }
 
-/** Format ms into "Xh Ym" countdown string */
+/** The countdown as a message for t(): `t(m.key, m.vars)` after loadArea('playground'). */
+export function countdownMessage(ms: number): { key: string; vars?: Record<string, number> } {
+  if (ms <= 0) return { key: 'streak.available' };
+  const h = Math.floor(ms / (1000 * 60 * 60));
+  const m = Math.floor((ms % (1000 * 60 * 60)) / (1000 * 60));
+  return h > 0 ? { key: 'countdown.hm', vars: { h, m } } : { key: 'countdown.m', vars: { m } };
+}
+
+/** Format ms into "Xh Ym" countdown string (English; countdownMessage is the translatable form) */
 export function formatCountdown(ms: number): string {
   if (ms <= 0) return 'Available now!';
   const hours = Math.floor(ms / (1000 * 60 * 60));
