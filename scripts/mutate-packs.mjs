@@ -22,7 +22,7 @@ const MUTATIONS = [
   ['src/lib/verse/packs/ar.ts', 'وأنت بلا مقام', 'وأنت بلا مكان', 'ar couplet'],
   ['src/lib/verse/packs/ru.ts', "'пучина'],\n    'RL-003'", "],\n    'RL-003'", 'ru'],
   ['src/lib/verse/packs/pl.ts', "acrostic: ['noc', ", "acrostic: ['noc', 'żyć', ", 'pl acrostic'],
-  ['src/i18n/locales/es.ts', "'battle.start':", "'battle.startx':", 'es'],
+  ['src/i18n/locales/es.ts', "'battle.begin':", "'battle.beginx':", 'es'],
   ['src/i18n/locales/ja.ts', '{n}', '{m}', 'ja'],
   ['src/i18n/locales/ar.ts', "'nav.home': '", "'nav.home': '', 'nav.unused': '", 'ar'],
 ];

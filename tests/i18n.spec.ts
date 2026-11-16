@@ -34,16 +34,21 @@ async function switchTo(page: Page, locale: string) {
   await expect(page.locator('html')).toHaveAttribute('lang', locale);
 }
 
-/** Everything a visitor can read on the page, without what belongs to the cards and the verses. */
+/**
+ * Every piece of interface text in the page, shown or not, without what belongs to the cards
+ * and the verses.
+ *
+ * textContent, not innerText: innerText returns text as styled, and the labels here are
+ * styled in capitals, so an English "Who answers?" left in a locale read "WHO ANSWERS?" and
+ * slipped past this check (found by scripts/mutate-i18n-browser.mjs). textContent also
+ * covers the panels that are hidden at the moment, which must be translated just the same.
+ */
 async function interfaceText(page: Page): Promise<string> {
   return page.evaluate(() => {
     const clone = document.body.cloneNode(true) as HTMLElement;
-    // Verses are in the duel's language by design; card names and the language's own names are data.
-    clone.querySelectorAll('#opponent-verse, #verdict blockquote, #locale-switch, #language, script, style, #age-gate').forEach((n) => n.remove());
-    document.body.appendChild(clone);
-    const text = clone.innerText;
-    clone.remove();
-    return text;
+    // Verses are in the duel's language by design; card names and the languages' own names are data.
+    clone.querySelectorAll('#opponent-verse, #verdict blockquote, #locale-switch, #language, script, style, svg').forEach((n) => n.remove());
+    return (clone.textContent ?? '').replace(/\s+/g, ' ');
   });
 }
 
