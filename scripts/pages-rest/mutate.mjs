@@ -15,6 +15,10 @@ import { readFileSync, writeFileSync } from 'node:fs';
 const UNIT = 'src/i18n/pages-rest.test.ts';
 const ERRORS = 'src/lib/api-errors.test.ts';
 const BROWSER = 'tests/pages-rest.spec.ts';
+const TERMS = 'src/i18n/pages-rest-terms.test.ts';
+
+/** A string as Wikidata's API writes it into JSON: every character past ASCII as a backslash-u escape. */
+const asciiJson = (text) => [...text].map((c) => (c.codePointAt(0) > 127 ? '\\' + 'u' + c.codePointAt(0).toString(16).padStart(4, '0') : c)).join('');
 
 /** [what is broken, file, find, replace, test file, text the failure must contain] */
 const UNIT_MUTATIONS = [
@@ -55,6 +59,21 @@ const UNIT_MUTATIONS = [
   ['an error sentence needs a variable nothing supplies', 'src/i18n/pages/shared/es.ts', 'Este torneo está completo.', 'Este torneo está completo: {max}.', ERRORS, 'needs {max}'],
   ['the page shows the server’s text again', 'src/lib/api-errors.ts', '  const code = apiErrorCode(e);\n  const vars', '  if (e instanceof ApiError && e.body && !e.code) return e.body;\n  const code = apiErrorCode(e);\n  const vars', ERRORS, 'relation'],
   ['a client library throws a sentence again', 'src/lib/tournament-client.ts', 'throw new ApiError(response.status, await response.text())', 'throw new Error(`API ${response.status}: ${await response.text()}`)', ERRORS, 'tournament-client'],
+  // Found by the independent checker of 2026-11-16 (its M3, M12, M14) or by the fixes after it.
+  ['a plural form the language does not have (Russian "two")', 'src/i18n/pages/shared/ru.ts', "  'credits.one': '{n} кредит',", "  'credits.one': '{n} кредит',\n  'credits.two': '{n} кредита',", UNIT, 'credits has a "two" form, which CLDR does not give ru'],
+  ['Russian "one" written out, though it is also 21, 31, 101', 'src/i18n/pages/shared/ru.ts', "'credits.one': '{n} кредит'", "'credits.one': 'один кредит'", UNIT, 'ru: credits.one has {} but English has {n}'],
+  ['French "one" written out, though it is also 0', 'src/i18n/pages/shared/fr.ts', "'credits.one': '{n} crédit'", "'credits.one': 'un crédit'", UNIT, 'fr: credits.one has {} but English has {n}'],
+  ['Arabic و standing apart from a Latin name', 'src/i18n/pages/viewer/ar.ts', 'Quest 3 وVision Pro', 'Quest 3 و Vision Pro', UNIT, 'و stands apart'],
+  ['the Arabic manifest values without their direction', 'scripts/pages-rest/build-static.mjs', "RTL.includes(l) ? { value, dir: 'rtl' } : value", 'value', UNIT, 'public/manifest.json is out of date'],
+  ['a third Thai word for virtual reality on the VR page', 'src/i18n/pages/viewer/th.ts', "'vr.badge': 'ความเป็นจริงเสมือน'", "'vr.badge': 'โลกเสมือนจริง'", TERMS, 'vr/th: vr.badge does not say'],
+  ['Thai virtual reality back to the word the branch had', 'src/i18n/pages/viewer/th.ts', "'vr.badge': 'ความเป็นจริงเสมือน'", "'vr.badge': 'ความจริงเสมือน'", TERMS, 'vr/th: vr.badge does not say'],
+  ['Polish virtual reality back in the reversed order', 'src/i18n/pages/viewer/pl.ts', "'vr.badge': 'Rzeczywistość wirtualna'", "'vr.badge': 'Wirtualna rzeczywistość'", TERMS, 'vr/pl: vr.badge does not say'],
+  ['the German Vision Pro gesture back to pinching skin', 'src/i18n/pages/viewer/de.ts', 'tippe dann deinen Zeigefinger und Daumen zusammen, um sie auszuwählen', 'kneif, um sie auszuwählen', TERMS, 'select_gesture/de: vr.card.vision.body does not say'],
+  ['Spanish "the teaching staff" beside "docente"', 'src/i18n/pages/classroom/es.ts', 'Los docentes crean clases, ponen', 'El profesorado crea clases, pone', TERMS, 'teacher/es: classroom.meta.description does not say'],
+  ['the Japanese bye recorded as Wikidata’s', 'docs/language/pages-rest-terms.json', /("ja": \{\n\s*"word": "不戦勝",\n\s*"rel": )"none"/, '$1"same"', TERMS, 'bye/ja: "不戦勝" is said to be Wikidata'],
+  ['the Japanese bye’s verdict claiming Wikidata again', 'docs/language/pages-rest-meaning.json', "the bye, 不戦勝: the model's word, no source in this language (terms record)", 'the bye, as Wikidata labels it (Q1268659) or, where it has no usable label, a description (Tournaments table)', TERMS, 'which the terms record says is the model\'s word'],
+  ['a saved Wikidata answer that no longer has the Thai label the record cites', 'docs/language/sources/pages-rest-wikidata-terms-b.json', `"th":{"language":"th","value":"${asciiJson('ความเป็นจริงเสมือน')}"}`, `"th":{"language":"th","value":"${asciiJson('ความจริงเสมือน')}"}`, TERMS, 'vr/th: "ความเป็นจริงเสมือน" is said to be Wikidata'],
+  ['a term table of the doc edited by hand', 'docs/language/pages-rest.md', '| th | ครู =', '| th | ครู (Wikidata) =', TERMS, 'the term tables are stale'],
   ['the Rust scan stops finding anything', 'src/lib/api-errors.test.ts', "const SKIP_DIRS = ['multiplayer'];", "const SKIP_DIRS = ['multiplayer', 'classroom', 'marketplace', 'tournaments', 'seasons', 'credits', 'auth', 'stats', 'referral', 'variants', 'inventory', 'migration'];", ERRORS, 'toBeGreaterThan'],
 ];
 
@@ -118,7 +137,7 @@ if (process.argv.includes('--dry')) {
 }
 
 // First, unbroken: a suite that is already red cannot show that a mutation turned it red.
-for (const file of [UNIT, ERRORS]) {
+for (const file of [UNIT, ERRORS, TERMS]) {
   const clean = run(`npx vitest run ${file}`);
   console.log(`${clean.ok ? 'GREEN  ' : 'RED    '} ${file} before any mutation`);
   if (!clean.ok) {
