@@ -1,26 +1,42 @@
 //! One-time email sign-in codes: the rules, kept free of I/O so they can be tested directly.
 //!
-//! What bounds guessing, and what keeps one party out of another's way:
+//! "Network" below is the key `client_ip::ClientAddr::limit_key` gives, as everywhere else
+//! in the API: one IPv4 address, or one IPv6 /64.
 //!
-//!   - A code is tied to the browser that asked for it (a random cookie, `requester`).
-//!     A guess is only ever compared with the code that the guessing browser itself
-//!     requested. So a stranger can neither use up the attempts of your code nor withdraw
-//!     it by asking for another: their requests and guesses touch only their own codes.
-//!   - Wrong guesses are counted per address guessed at: `MAX_FAILED_PER_NETWORK_PER_DAY`
-//!     from one network (IPv4 address or IPv6 /64) and `MAX_FAILED_PER_EMAIL_PER_DAY` from
-//!     everyone together. The second is the hard bound on online guessing against one
-//!     account: 50 guesses a day at one in a million each, whatever the attacker's means.
-//!     It used to be 1,440 a day, for ever.
-//!   - The request limits are per address and network (`MAX_REQUESTS_PER_EMAIL`), with a
-//!     wider cap over all networks (`MAX_REQUESTS_PER_EMAIL_ALL`) so an inbox cannot be
-//!     flooded.
+//! THE GUARANTEE, for any one address and any 60 minutes (`REQUEST_WINDOW_MINUTES`):
 //!
-//! What this cannot do, said plainly: somebody with several networks who is set on it can
-//! still stop one address from signing in BY EMAIL for a while, either by using up the
-//! all-network request cap (ten an hour) or the all-network failure cap (fifty a day).
-//! They cannot get in, and a passkey sign-in is not affected. Any limit that protects an
-//! account from guessing can be spent by the guesser; the caps are set so that it takes
-//! more than one machine to do it.
+//!   1. Its inbox gets at most `MAX_CODES_PER_ADDRESS` (10) codes, whoever asks and from
+//!      however many networks, for sign-in and for "add this recovery email" together.
+//!   2. One network can have at most `MAX_CODES_PER_ADDRESS_PER_NETWORK` (3) of those ten.
+//!      A network that asks for more is refused its own excess, and only that. So one
+//!      network can never stop another from getting a code for the address, and nor can
+//!      any three together (3 x 3 = 9 < 10): using up an address's codes for an hour takes
+//!      at least `NETWORKS_TO_USE_UP_AN_ADDRESS` (4) networks, each spending its whole share
+//!      inside the same hour. (Every network also has its own cap over all addresses,
+//!      `MAX_CODES_PER_NETWORK`, which touches nobody else.)
+//!   3. Wrong guesses at the address's codes, over any 24 hours (`FAILURE_WINDOW_HOURS`):
+//!      at most `MAX_FAILED_PER_NETWORK_PER_DAY` (10) from one network and
+//!      `MAX_FAILED_PER_EMAIL_PER_DAY` (50) from everyone together, after which no code is
+//!      sent to the address and no guess is judged. Again one network cannot reach the
+//!      ceiling: that takes five. 50 guesses at one in a million each is the hard bound on
+//!      online guessing against one account, whatever the attacker's means.
+//!   4. Over all addresses, one network may make `MAX_FAILED_BY_NETWORK_PER_DAY` (30) wrong
+//!      guesses a day, so it cannot guess at a thousand accounts at ten guesses each.
+//!
+//! All of it holds under parallel requests: `email.rs` takes the address's advisory lock
+//! and then the network's, and holds both from the first count to the insert (or to the
+//! miss being recorded), in one transaction.
+//!
+//! What keeps one party out of another's way besides the shares: a code is tied to the
+//! browser that asked for it (a random cookie, `requester`). A guess is only ever compared
+//! with the code that the guessing browser itself requested. So a stranger can neither use
+//! up the attempts of your code nor withdraw it by asking for another.
+//!
+//! What this cannot do, said plainly: somebody with four or more networks who is set on it
+//! can stop one address from getting codes for an hour at a time (and with five, from
+//! signing in by email for a day, through the guessing ceiling). They cannot get in, and a
+//! passkey sign-in is not affected. Any limit that protects an inbox or an account from
+//! guessing can be spent by the attacker; the shares make that take several networks.
 
 use chrono::{DateTime, Duration, Utc};
 use hmac::{Hmac, KeyInit, Mac};
@@ -32,19 +48,29 @@ pub const CODE_DIGITS: usize = 6;
 pub const CODE_TTL_MINUTES: i64 = 10;
 /// Wrong guesses allowed against one code. The guess that reaches the limit kills the code.
 pub const MAX_ATTEMPTS: i32 = 5;
-/// Codes one network may ask for, for one address, inside `EMAIL_WINDOW_MINUTES`.
-pub const MAX_REQUESTS_PER_EMAIL: i64 = 3;
-pub const EMAIL_WINDOW_MINUTES: i64 = 15;
-/// Codes that may be sent to one address inside `IP_WINDOW_MINUTES`, whoever asks.
-pub const MAX_REQUESTS_PER_EMAIL_ALL: i64 = 10;
-/// Codes one network (IPv4 address, IPv6 /64) may ask for inside `IP_WINDOW_MINUTES`.
-pub const MAX_REQUESTS_PER_IP: i64 = 10;
-pub const IP_WINDOW_MINUTES: i64 = 60;
+/// The window every request cap counts over.
+pub const REQUEST_WINDOW_MINUTES: i64 = 60;
+/// Codes sent to one address in the window, whoever asks: the bound on its inbox.
+pub const MAX_CODES_PER_ADDRESS: i64 = 10;
+/// Codes one network may have sent to one address in the window: its share of the above.
+pub const MAX_CODES_PER_ADDRESS_PER_NETWORK: i64 = 3;
+/// Codes one network may ask for in the window, to any addresses.
+pub const MAX_CODES_PER_NETWORK: i64 = 10;
+/// The fewest networks that can use up one address's codes in the window together.
+pub const NETWORKS_TO_USE_UP_AN_ADDRESS: i64 =
+    (MAX_CODES_PER_ADDRESS + MAX_CODES_PER_ADDRESS_PER_NETWORK - 1) / MAX_CODES_PER_ADDRESS_PER_NETWORK;
+// The guarantee in the module comment, checked when the crate is compiled: one network's
+// share is less than the address's cap, and it takes at least four networks to use it up.
+const _: () = assert!(MAX_CODES_PER_ADDRESS_PER_NETWORK < MAX_CODES_PER_ADDRESS);
+const _: () = assert!(NETWORKS_TO_USE_UP_AN_ADDRESS >= 4);
 /// Wrong guesses one network may make at one address's codes inside `FAILURE_WINDOW_HOURS`.
 pub const MAX_FAILED_PER_NETWORK_PER_DAY: i64 = 10;
 /// Wrong guesses everyone together may make at one address's codes in the same window.
 pub const MAX_FAILED_PER_EMAIL_PER_DAY: i64 = 50;
+/// Wrong guesses one network may make at any addresses' codes in the same window.
+pub const MAX_FAILED_BY_NETWORK_PER_DAY: i64 = 30;
 pub const FAILURE_WINDOW_HOURS: i64 = 24;
+const _: () = assert!(MAX_FAILED_PER_NETWORK_PER_DAY < MAX_FAILED_PER_EMAIL_PER_DAY);
 /// How long the cookie that names the requesting browser lives: a code's life and a bit.
 pub const REQUESTER_COOKIE_MINUTES: i64 = 15;
 
@@ -108,10 +134,22 @@ pub fn hash_requester(key: &str, token: &str) -> String {
     hex::encode(mac.finalize().into_bytes())
 }
 
-/// Whether one more guess at an address's code may be judged, from the wrong guesses
-/// already made in the window by this network and by everyone.
-pub fn guessing_allowed(failed_by_network: i64, failed_by_everyone: i64) -> bool {
-    failed_by_network < MAX_FAILED_PER_NETWORK_PER_DAY && failed_by_everyone < MAX_FAILED_PER_EMAIL_PER_DAY
+/// Wrong guesses already made in the failure window.
+#[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]
+pub struct Failures {
+    /// At this address's codes, by this network.
+    pub at_address_by_network: i64,
+    /// At this address's codes, by everyone.
+    pub at_address_by_everyone: i64,
+    /// At any address's codes, by this network.
+    pub by_network: i64,
+}
+
+/// Whether one more guess at an address's code may be judged (and one more code sent).
+pub fn guessing_allowed(failed: Failures) -> bool {
+    failed.at_address_by_network < MAX_FAILED_PER_NETWORK_PER_DAY
+        && failed.at_address_by_everyone < MAX_FAILED_PER_EMAIL_PER_DAY
+        && failed.by_network < MAX_FAILED_BY_NETWORK_PER_DAY
 }
 
 fn mac_for(secret: &str, email: &str, code: &str) -> Hmac<Sha256> {
@@ -196,23 +234,37 @@ pub fn expiry_from(now: DateTime<Utc>) -> DateTime<Utc> {
     now + Duration::minutes(CODE_TTL_MINUTES)
 }
 
+/// Codes already issued inside `REQUEST_WINDOW_MINUTES`.
+#[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]
+pub struct Issued {
+    /// To this address, at this network's request.
+    pub to_address_by_network: i64,
+    /// To this address, at anyone's request.
+    pub to_address: i64,
+    /// To any address, at this network's request.
+    pub by_network: i64,
+}
+
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum RateLimit {
     Allowed,
-    /// Too many codes for this address: from this network, or from everyone together.
-    EmailLimited,
-    /// This client asked too often.
-    IpLimited,
+    /// This network has had its share of this address's codes.
+    NetworkShareUsed,
+    /// The address's inbox has had its codes for the hour, from several networks.
+    AddressFull,
+    /// This network has asked for its codes for the hour, to any addresses.
+    NetworkLimited,
 }
 
-/// Decide from the number of codes already issued inside each window:
-/// `recent_for_email` to this address from this network, `recent_for_email_all` to this
-/// address from anyone, `recent_for_ip` to any address from this network.
-pub fn check_rate(recent_for_email: i64, recent_for_email_all: i64, recent_for_ip: i64) -> RateLimit {
-    if recent_for_email >= MAX_REQUESTS_PER_EMAIL || recent_for_email_all >= MAX_REQUESTS_PER_EMAIL_ALL {
-        RateLimit::EmailLimited
-    } else if recent_for_ip >= MAX_REQUESTS_PER_IP {
-        RateLimit::IpLimited
+/// Decide whether one more code may be sent. The network's own caps are looked at first,
+/// so a network that is over its share hears about its share, not about the address.
+pub fn check_rate(issued: Issued) -> RateLimit {
+    if issued.to_address_by_network >= MAX_CODES_PER_ADDRESS_PER_NETWORK {
+        RateLimit::NetworkShareUsed
+    } else if issued.by_network >= MAX_CODES_PER_NETWORK {
+        RateLimit::NetworkLimited
+    } else if issued.to_address >= MAX_CODES_PER_ADDRESS {
+        RateLimit::AddressFull
     } else {
         RateLimit::Allowed
     }
@@ -352,47 +404,99 @@ mod tests {
         assert_eq!(check_code(&rec, SECRET, EMAIL, "111222", now), CodeCheck::Accepted);
     }
 
-    #[test]
-    fn rate_limits_trip_at_their_thresholds() {
-        assert_eq!(check_rate(0, 0, 0), RateLimit::Allowed);
-        assert_eq!(
-            check_rate(MAX_REQUESTS_PER_EMAIL - 1, MAX_REQUESTS_PER_EMAIL_ALL - 1, MAX_REQUESTS_PER_IP - 1),
-            RateLimit::Allowed
-        );
-        assert_eq!(check_rate(MAX_REQUESTS_PER_EMAIL, MAX_REQUESTS_PER_EMAIL, 0), RateLimit::EmailLimited);
-        assert_eq!(check_rate(0, 0, MAX_REQUESTS_PER_IP), RateLimit::IpLimited);
-        assert_eq!(
-            check_rate(MAX_REQUESTS_PER_EMAIL + 5, MAX_REQUESTS_PER_EMAIL + 5, MAX_REQUESTS_PER_IP + 5),
-            RateLimit::EmailLimited
-        );
-        assert_eq!(MAX_REQUESTS_PER_EMAIL, 3);
-        assert_eq!(MAX_REQUESTS_PER_IP, 10);
+    fn issued(to_address_by_network: i64, to_address: i64, by_network: i64) -> Issued {
+        Issued { to_address_by_network, to_address, by_network }
     }
 
     #[test]
-    fn a_stranger_asking_for_codes_does_not_use_up_your_allowance() {
-        // Three codes were sent to this address at someone else's request. A request from
-        // another network is still served...
-        assert_eq!(check_rate(0, MAX_REQUESTS_PER_EMAIL, 0), RateLimit::Allowed);
-        assert_eq!(check_rate(0, MAX_REQUESTS_PER_EMAIL_ALL - 1, 0), RateLimit::Allowed);
-        // ...until the cap that keeps an inbox from being flooded.
-        assert_eq!(check_rate(0, MAX_REQUESTS_PER_EMAIL_ALL, 0), RateLimit::EmailLimited);
-        assert_eq!(MAX_REQUESTS_PER_EMAIL_ALL, 10);
+    fn rate_limits_trip_at_their_thresholds() {
+        assert_eq!(check_rate(issued(0, 0, 0)), RateLimit::Allowed);
+        assert_eq!(
+            check_rate(issued(MAX_CODES_PER_ADDRESS_PER_NETWORK - 1, MAX_CODES_PER_ADDRESS - 1, MAX_CODES_PER_NETWORK - 1)),
+            RateLimit::Allowed
+        );
+        assert_eq!(check_rate(issued(MAX_CODES_PER_ADDRESS_PER_NETWORK, 3, 3)), RateLimit::NetworkShareUsed);
+        assert_eq!(check_rate(issued(0, 0, MAX_CODES_PER_NETWORK)), RateLimit::NetworkLimited);
+        assert_eq!(check_rate(issued(0, MAX_CODES_PER_ADDRESS, 0)), RateLimit::AddressFull);
+        assert_eq!(MAX_CODES_PER_ADDRESS_PER_NETWORK, 3);
+        assert_eq!(MAX_CODES_PER_ADDRESS, 10);
+        assert_eq!(MAX_CODES_PER_NETWORK, 10);
+        assert_eq!(REQUEST_WINDOW_MINUTES, 60);
+    }
+
+    /// The guarantee of the module comment, checked by playing it out: networks take turns
+    /// asking for codes to one address, five times each. No network gets more than its
+    /// share, the inbox gets at most its cap, and with up to four networks every one of
+    /// them gets at least one code.
+    #[test]
+    fn no_network_can_take_another_networks_codes_for_an_address() {
+        for networks in 1..=6usize {
+            let mut per_network = vec![0i64; networks];
+            let mut total = 0i64;
+            // Each network asks five times; the turns interleave.
+            for _round in 0..5 {
+                for n in 0..networks {
+                    let verdict = check_rate(issued(per_network[n], total, per_network[n]));
+                    if verdict == RateLimit::Allowed {
+                        per_network[n] += 1;
+                        total += 1;
+                    }
+                }
+            }
+            assert!(total <= MAX_CODES_PER_ADDRESS, "{networks} networks: {total} codes");
+            assert!(per_network.iter().all(|&c| c <= MAX_CODES_PER_ADDRESS_PER_NETWORK), "{per_network:?}");
+            if networks as i64 <= NETWORKS_TO_USE_UP_AN_ADDRESS {
+                assert!(per_network.iter().all(|&c| c >= 1), "{networks} networks: {per_network:?}");
+            }
+        }
+        // One network alone, however long it keeps asking, leaves the others seven.
+        let mut mine = 0;
+        for _ in 0..100 {
+            if check_rate(issued(mine, mine, mine)) == RateLimit::Allowed {
+                mine += 1;
+            }
+        }
+        assert_eq!(mine, MAX_CODES_PER_ADDRESS_PER_NETWORK);
+        assert_eq!(check_rate(issued(0, mine, 0)), RateLimit::Allowed, "the owner's network still gets one");
+        // Three networks at their shares: the fourth still gets one, the fifth does not.
+        let three = 3 * MAX_CODES_PER_ADDRESS_PER_NETWORK;
+        assert_eq!(check_rate(issued(0, three, 0)), RateLimit::Allowed);
+        assert_eq!(check_rate(issued(0, three + 1, 0)), RateLimit::AddressFull);
+        assert_eq!(NETWORKS_TO_USE_UP_AN_ADDRESS, 4);
+    }
+
+    fn failed(at_address_by_network: i64, at_address_by_everyone: i64, by_network: i64) -> Failures {
+        Failures { at_address_by_network, at_address_by_everyone, by_network }
     }
 
     #[test]
     fn guessing_at_one_address_is_capped_per_network_and_overall() {
-        assert!(guessing_allowed(0, 0));
-        assert!(guessing_allowed(MAX_FAILED_PER_NETWORK_PER_DAY - 1, MAX_FAILED_PER_EMAIL_PER_DAY - 1));
-        // One network: ten wrong guesses a day.
-        assert!(!guessing_allowed(MAX_FAILED_PER_NETWORK_PER_DAY, MAX_FAILED_PER_NETWORK_PER_DAY));
+        assert!(guessing_allowed(failed(0, 0, 0)));
+        assert!(guessing_allowed(failed(
+            MAX_FAILED_PER_NETWORK_PER_DAY - 1,
+            MAX_FAILED_PER_EMAIL_PER_DAY - 1,
+            MAX_FAILED_BY_NETWORK_PER_DAY - 1
+        )));
+        // One network: ten wrong guesses a day at one address.
+        let ten = MAX_FAILED_PER_NETWORK_PER_DAY;
+        assert!(!guessing_allowed(failed(ten, ten, ten)));
         // Someone else's ten wrong guesses do not stop a network that made none...
-        assert!(guessing_allowed(0, MAX_FAILED_PER_NETWORK_PER_DAY));
-        assert!(guessing_allowed(0, MAX_FAILED_PER_EMAIL_PER_DAY - 1));
+        assert!(guessing_allowed(failed(0, ten, 0)));
+        assert!(guessing_allowed(failed(0, MAX_FAILED_PER_EMAIL_PER_DAY - 1, 0)));
         // ...but fifty from everyone is the ceiling for the account, however many networks.
-        assert!(!guessing_allowed(0, MAX_FAILED_PER_EMAIL_PER_DAY));
+        assert!(!guessing_allowed(failed(0, MAX_FAILED_PER_EMAIL_PER_DAY, 0)));
         assert_eq!(MAX_FAILED_PER_NETWORK_PER_DAY, 10);
         assert_eq!(MAX_FAILED_PER_EMAIL_PER_DAY, 50);
+    }
+
+    #[test]
+    fn one_network_cannot_guess_at_many_addresses_for_ever() {
+        // Thirty wrong guesses a day over all addresses, wherever they were made...
+        assert!(guessing_allowed(failed(0, 0, MAX_FAILED_BY_NETWORK_PER_DAY - 1)));
+        assert!(!guessing_allowed(failed(0, 0, MAX_FAILED_BY_NETWORK_PER_DAY)));
+        // ...which stops only that network.
+        assert!(guessing_allowed(failed(0, 0, 0)));
+        assert_eq!(MAX_FAILED_BY_NETWORK_PER_DAY, 30);
     }
 
     #[test]
