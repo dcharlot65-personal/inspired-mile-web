@@ -1691,7 +1691,7 @@
       "entre",
       "conectado"
      ],
-     "source": "Android (AOSP core, kg_login_submit_button): Fazer login"
+     "source": "Mozilla Firefox (sources/mozilla-terms.json, fxa-menu-sign-in-promo-button): Entrar. Android (kg_login_submit_button) and Google's help write Fazer login; the game keeps Mozilla's Entrar."
     },
     "pl": {
      "term": "zaloguj",
@@ -1731,7 +1731,7 @@
     },
     "ja": {
      "term": "サインイン",
-     "source": "Android (AOSP core, kg_login_submit_button): ログイン"
+     "source": "Apple's word (sources/apple-passkeys.json). Android (kg_login_submit_button: ログイン), Google Help (ログイン) and Mozilla (ログイン) all write ログイン; the game keeps Apple's サインイン. For a native reader."
     },
     "ko": {
      "term": "로그인",
@@ -1742,12 +1742,12 @@
      "source": "Android (AOSP core, kg_login_submit_button): Đăng nhập"
     },
     "th": {
-     "term": "เข้าสู่ระบบ",
-     "source": "Android (AOSP core, kg_login_submit_button): ลงชื่อเข้าใช้"
+     "term": "ลงชื่อเข้าใช้",
+     "source": "Android (AOSP core, kg_login_submit_button): ลงชื่อเข้าใช้; Google Help, Gmail answer 8494: ลงชื่อเข้าใช้. (The game had written เข้าสู่ระบบ, which no vendor fetched uses; Mozilla writes ลงชื่อเข้า.) Pairs with ออกจากระบบ, Google's sign out."
     },
     "id": {
      "term": "masuk",
-     "source": "Android (AOSP core, kg_login_submit_button): Login"
+     "source": "Not vendor-sourced: Android (kg_login_submit_button) and Google Help (answer 8494) write the loanword Login; Mozilla has no Indonesian sign-in string. The game keeps the Indonesian word Masuk, paired with Keluar, Mozilla's sign out. For a native reader."
     }
    }
   },
@@ -1893,8 +1893,8 @@
      "source": "Android (AOSP core, permgrouplab_microphone): 마이크"
     },
     "vi": {
-     "term": "micro",
-     "source": "Android (AOSP core, permgrouplab_microphone): Micrô"
+     "term": "micrô",
+     "source": "Android (AOSP core, permgrouplab_microphone, and SystemUI, screenrecord_mic_label): Micrô. The game had written micro. (The LibreOffice vi_VN Hunspell list knows neither spelling: it holds Vietnamese syllables only.)"
     },
     "th": {
      "term": "ไมโครโฟน",
@@ -2018,8 +2018,8 @@
      "source": "Android (AOSP core, screen_lock): Verrouillage de l'écran"
     },
     "de": {
-     "term": "Bildschirmsperre",
-     "source": "Android (AOSP core, screen_lock): Displaysperre"
+     "term": "Displaysperre",
+     "source": "Android (AOSP core, screen_lock; CredentialManager, passkey_creation_intro_body_fingerprint): Displaysperre. (The game had written Bildschirmsperre, which no vendor string fetched uses.)"
     },
     "it": {
      "term": "blocco schermo",
@@ -2030,7 +2030,7 @@
     },
     "pt": {
      "term": "bloqueio de tela",
-     "source": "Android (AOSP core, screen_lock): Bloquear tela"
+     "source": "Android (AOSP CredentialManager, passkey_creation_intro_body_fingerprint): 'o bloqueio de tela' (core screen_lock is the verb phrase Bloquear tela)."
     },
     "pl": {
      "term": "blokada ekranu",
@@ -2052,7 +2052,7 @@
     },
     "hi": {
      "term": "स्क्रीन लॉक",
-     "source": "Android (AOSP core, screen_lock): स्‍क्रीन लॉक"
+     "source": "Android (AOSP core, screen_lock): स्‍क्रीन लॉक (Android's spelling carries a zero-width joiner, स्‍क्रीन; the same word.)"
     },
     "zh": {
      "term": "屏幕锁",
@@ -2060,7 +2060,7 @@
     },
     "ja": {
      "term": "画面ロック",
-     "source": "Android (AOSP core, screen_lock): 画面をロック"
+     "source": "Android (AOSP CredentialManager, passkey_creation_intro_body_fingerprint): 画面ロック (core screen_lock is the verb phrase 画面をロック)."
     },
     "ko": {
      "term": "화면 잠금",

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Fetch Mozilla's shipped translations of "Sign out" (the Firefox account menu
+ * Fetch Mozilla's shipped translations of "Sign out" and "Sign in" (the Firefox account menu
  * and its confirmation button), a platform term the Android strings fetched by
  * fetch-platform-terms.mjs do not carry.
  *
@@ -17,7 +17,7 @@ const L10N = `https://raw.githubusercontent.com/mozilla-l10n/firefox-l10n/${COMM
 const EN = 'https://raw.githubusercontent.com/mozilla-firefox/firefox/main/browser/locales/en-US/browser/sync.ftl';
 // our language -> Mozilla's locale
 const LOCALES = { es: 'es-ES', fr: 'fr', de: 'de', it: 'it', pt: 'pt-BR', pl: 'pl', ru: 'ru', ar: 'ar', hi: 'hi-IN', zh: 'zh-CN', ja: 'ja', ko: 'ko', vi: 'vi', th: 'th', id: 'id' };
-const IDS = ['fxa-menu-sign-out', 'fxa-signout-dialog2-button'];
+const IDS = ['fxa-menu-sign-out', 'fxa-signout-dialog2-button', 'fxa-menu-sign-in-promo-button', 'fxa-menu-send-to-mobile-sign-in'];
 const UA = 'language-qa-script/1.0 (terminology lookup)';
 
 /** The value of a Fluent message, or of its .label attribute when it has no value of its own. */

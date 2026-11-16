@@ -178,7 +178,7 @@ const de: Record<string, string> = {
   // --- Anmeldung ---
   'auth.signIn': 'Anmelden',
   'auth.signInHeading': 'Anmelden',
-  'auth.signInIntro': 'Kein Passwort zum Merken. Ein Passkey meldet dich mit Fingerabdruck, Gesicht oder Bildschirmsperre an.',
+  'auth.signInIntro': 'Kein Passwort zum Merken. Ein Passkey meldet dich mit Fingerabdruck, Gesicht oder Displaysperre an.',
   'auth.passkeyButton': 'Mit einem Passkey anmelden',
   'auth.passkeyUnsupported': 'Dieser Browser kann keine Passkeys verwenden. Melde dich stattdessen mit einem Code per E-Mail an.',
   'auth.passkeyUnsupportedNoEmail': 'Dieser Browser kann keine Passkeys verwenden, und diese Seite meldet damit an. Versuch es mit einer aktuellen Version von Chrome, Safari, Edge oder Firefox.',
@@ -225,7 +225,7 @@ const de: Record<string, string> = {
   'auth.legalPrivacy': 'Datenschutzerklärung',
   'auth.legalAfter': '.',
   'auth.offerHeading': 'Füge diesem Gerät einen Passkey hinzu',
-  'auth.offerBody': 'Melde dich beim nächsten Mal mit Fingerabdruck, Gesicht oder Bildschirmsperre an. Kein Code, kein Warten auf eine E-Mail.',
+  'auth.offerBody': 'Melde dich beim nächsten Mal mit Fingerabdruck, Gesicht oder Displaysperre an. Kein Code, kein Warten auf eine E-Mail.',
   'auth.offerAdd': 'Passkey hinzufügen',
   'auth.offerSkip': 'Nicht jetzt',
   'auth.passkeysHeading': 'Passkeys',

@@ -1,7 +1,7 @@
 {
  "source": "Google Help Center pages, ?hl=<language>",
  "licence": "© Google; a page title and a heading quoted per language as evidence of a term",
- "fetched": "2026-11-16T18:40:53.869Z",
+ "fetched": "2026-11-16T19:41:13.693Z",
  "hl": {
   "en": "en",
   "es": "es",
@@ -25,24 +25,24 @@
    "url": "https://support.google.com/mail/answer/8154",
    "text": {
     "en": {
-     "title": "Sign out of or remove your account from Gmail - Computer - Gmail Help",
-     "heading": "Sign out from Gmail"
+     "title": null,
+     "heading": null
     },
     "es": {
-     "title": "Cerrar sesión o eliminar una cuenta de Gmail - Ordenador - Ayuda de Gmail",
-     "heading": "Cerrar la sesión de Gmail"
+     "title": null,
+     "heading": null
     },
     "fr": {
-     "title": "Se déconnecter de Gmail ou supprimer votre compte - Ordinateur - Aide Gmail",
-     "heading": "Se déconnecter de Gmail"
+     "title": null,
+     "heading": null
     },
     "de": {
      "title": "Abmelden oder Konto aus Gmail entfernen - Computer - Gmail-Hilfe",
      "heading": "Aus Gmail abmelden"
     },
     "it": {
-     "title": "Uscire o rimuovere l'account da Gmail - Computer - Guida di Gmail",
-     "heading": "Uscire da Gmail"
+     "title": null,
+     "heading": null
     },
     "pt": {
      "title": "Sair da conta ou removê-la do Gmail - Computador - Ajuda do Gmail",
@@ -57,8 +57,8 @@
      "heading": "Как выйти из аккаунта Gmail"
     },
     "ar": {
-     "title": "تسجيل الخروج من حسابك أو إزالته من Gmail - جهاز الكمبيوتر - مساعدة Gmail",
-     "heading": "تسجيل الخروج من Gmail"
+     "title": null,
+     "heading": null
     },
     "hi": {
      "title": "Gmail से साइन आउट करना या अपना खाता हटाना - कंप्यूटर - Gmail मदद",
@@ -87,6 +87,75 @@
     "id": {
      "title": "Logout atau menghapus akun Anda dari Gmail - Komputer - Bantuan Gmail",
      "heading": "Logout dari Gmail"
+    }
+   }
+  },
+  "sign-in": {
+   "url": "https://support.google.com/mail/answer/8494",
+   "text": {
+    "en": {
+     "title": "Sign in to Gmail - Computer - Gmail Help",
+     "heading": "Sign in"
+    },
+    "es": {
+     "title": "Iniciar sesión en Gmail - Ordenador - Ayuda de Gmail",
+     "heading": "Iniciar sesión"
+    },
+    "fr": {
+     "title": "Se connecter à Gmail - Ordinateur - Aide Gmail",
+     "heading": "Se connecter"
+    },
+    "de": {
+     "title": "In Gmail anmelden - Computer - Gmail-Hilfe",
+     "heading": "Anmelden"
+    },
+    "it": {
+     "title": "Accedere a Gmail - Computer - Guida di Gmail",
+     "heading": "Accedere"
+    },
+    "pt": {
+     "title": "Fazer login no Gmail - Computador - Ajuda do Gmail",
+     "heading": "Fazer login"
+    },
+    "pl": {
+     "title": "Logowanie się w Gmailu - Komputer - Gmail - Pomoc",
+     "heading": "Logowanie się"
+    },
+    "ru": {
+     "title": "Вход в Gmail - Компьютер - Cправка - Gmail",
+     "heading": "Как выполнить вход"
+    },
+    "ar": {
+     "title": "تسجيل الدخول إلى Gmail - جهاز الكمبيوتر - مساعدة Gmail",
+     "heading": "تسجيل الدخول"
+    },
+    "hi": {
+     "title": null,
+     "heading": null
+    },
+    "zh": {
+     "title": "登录 Gmail - 计算机 - Gmail帮助",
+     "heading": "登录"
+    },
+    "ja": {
+     "title": "Gmail にログインする - パソコン - Gmail ヘルプ",
+     "heading": "ログイン"
+    },
+    "ko": {
+     "title": "Gmail에 로그인하기 - 컴퓨터 - Gmail 고객센터",
+     "heading": "로그인하기"
+    },
+    "vi": {
+     "title": "Đăng nhập vào Gmail - Máy tính - Gmail Trợ giúp",
+     "heading": "Đăng nhập"
+    },
+    "th": {
+     "title": "ลงชื่อเข้าใช้ Gmail - คอมพิวเตอร์ - Gmail ความช่วยเหลือ",
+     "heading": "ลงชื่อเข้าใช้"
+    },
+    "id": {
+     "title": "Login ke Gmail - Komputer - Bantuan Gmail",
+     "heading": "Login"
     }
    }
   }
