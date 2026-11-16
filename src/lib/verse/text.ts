@@ -130,6 +130,18 @@ export function letterCount(word: string): number {
   return n;
 }
 
+/**
+ * A word's length as the "of N letters or more" rules have always counted it in
+ * English: every character of the word, an inner apostrophe or hyphen included
+ * ("don't" is five). Marks that sit on a letter (Devanagari vowel signs, Thai
+ * tones) are not counted, so the measure also holds for scripts that use them.
+ */
+export function wordSpan(word: string): number {
+  let n = 0;
+  for (const ch of word.normalize('NFC')) if (!/\p{M}/u.test(ch)) n++;
+  return n;
+}
+
 /** The letters of a text, in order, without spaces, punctuation or marks. */
 function lettersOf(text: string): string[] {
   return [...text.normalize('NFC')].filter((ch) => HAS_LETTER.test(ch));
@@ -162,7 +174,7 @@ export function graphemes(text: string, lang = 'en'): string[] {
 /** Words that carry meaning: long enough for their language (four letters in English). */
 export function contentWords(text: string, lang = 'en'): string[] {
   const min = rulesFor(lang).content;
-  return wordsOf(text, lang).filter((w) => letterCount(w) >= min);
+  return wordsOf(text, lang).filter((w) => wordSpan(w) >= min);
 }
 
 /**

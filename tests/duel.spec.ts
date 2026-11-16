@@ -19,7 +19,6 @@ const VERSES: Record<string, string> = {
   Tercet: 'Who dares to stand upon my stage?\nI put the question plainly now\nAnd wait in vain to hear thy rage',
   Anaphora: 'Who dares to stand upon my stage?\nWho brings a candle to the sun?\nWho answers when the question comes?',
   Crescendo: 'Who dares?\nI put the question\nAnd none of thy poor lines can answer it tonight',
-  Epistrophe: 'Who dares to stand upon this stage?\nI put the question to the stage\nAnd none but I shall hold the stage',
   Haiku: 'Who dares to stand here?\nI put the question to thee\nThe night will not speak',
   'Heroic Couplet': 'Who dares to stand upon my midnight stage?\nI put the question to thy empty rage',
 };

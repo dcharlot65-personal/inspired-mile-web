@@ -57,6 +57,8 @@ export interface Form {
   needsRhyme?: boolean;
   /** Offered only in these languages: a form native to one tradition. */
   only?: string[];
+  /** Not offered in these languages. */
+  except?: string[];
   requirements: Requirement[];
 }
 
@@ -252,8 +254,12 @@ export const FORMS: Form[] = [
     ],
   },
   {
-    // The mirror of anaphora. Structural, so it can be played in every language.
+    // The mirror of anaphora. Structural, so it needs neither rhyme nor a syllable count, and
+    // gives the languages without rhyming forms a fourth form to draw from. It is left out
+    // of English so that an English duel draws from exactly the forms it always has: adding
+    // a form there is a change to the game, not to its languages.
     id: 'epistrophe',
+    except: ['en'],
     name: msg('form.epistrophe.name'),
     brief: (ctx) => msg(unitKey('form.epistrophe.brief', ctx.lang)),
     lines: () => 3,
@@ -340,7 +346,7 @@ export function getForm(id: string): Form {
 export function formsFor(lang: string): Form[] {
   const b = baseLang(lang);
   return FORMS.filter(
-    (f) => (!f.only || f.only.includes(b)) && (!f.needsSyllables || countsSyllables(lang)) && (!f.needsRhyme || rhymeChecked(lang)),
+    (f) => (!f.only || f.only.includes(b)) && !f.except?.includes(b) && (!f.needsSyllables || countsSyllables(lang)) && (!f.needsRhyme || rhymeChecked(lang)),
   );
 }
 

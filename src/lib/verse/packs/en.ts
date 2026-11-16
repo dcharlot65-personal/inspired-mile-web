@@ -41,10 +41,6 @@ const pack: LanguagePack = {
       'Thou art small\nThy verse is smaller still\nAnd I have crushed far greater things than thee before my breakfast',
       'Hear this\nThe stage is mine tonight\nAnd every word that leaves thy mouth is one more nail in thy defeat',
     ],
-    epistrophe: [
-      'Thou camest here to win, and found the stage\nThou spokest once, and lost the stage\nNow bow, and leave to me the stage',
-      'I lent thee ears, and thou hast wasted time\nThy rhyme ran dry before its time\nNow all thou hast to lose is time',
-    ],
     haiku: [
       'Thy verse falls like leaves\nNo one stoops to gather them\nThe wind takes them all',
       'A small voice, far off\nI turn my head to hear it\nIt was the wind, friend',

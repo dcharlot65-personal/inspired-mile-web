@@ -9,7 +9,7 @@ import {
   CRITERIA, GRADE_ANSWERS, combineGrades, combineMargins, compareMessages, expectedGrade, gradeMessages, rulesJudge, type Margins,
 } from './judge';
 import { languageName } from './opponent';
-import { contentWords, fold, letterCount, wordsOf } from './text';
+import { contentWords, fold, wordSpan, wordsOf } from './text';
 
 /** Words that count as literary allusion for the rule-based judge: names and quotation words. */
 let lexicon: Set<string> | null = null;
@@ -17,7 +17,7 @@ export function allusionLexicon(): Set<string> {
   if (!lexicon) {
     lexicon = new Set<string>();
     for (const c of CARD_CATALOG) {
-      for (const w of wordsOf(c.name)) if (letterCount(w) >= 4) lexicon.add(fold(w));
+      for (const w of wordsOf(c.name)) if (wordSpan(w) >= 4) lexicon.add(fold(w));
       for (const w of contentWords(c.quote)) lexicon.add(fold(w));
     }
   }

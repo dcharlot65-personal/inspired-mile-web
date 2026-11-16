@@ -22,7 +22,7 @@
 import { JUDGE_POOL, type JudgeSplit } from './duel';
 import { rulesFor } from './lang';
 import { rhymeEnds, rhymes } from './rhyme';
-import { fold, letterCount, lineLength, linesOf, syllablesInLine, wordsOf, cleanVerse } from './text';
+import { fold, lineLength, linesOf, syllablesInLine, wordSpan, wordsOf, cleanVerse } from './text';
 
 export const CRITERIA = ['wordplay', 'allusion', 'flow', 'wit'] as const;
 export type Criterion = (typeof CRITERIA)[number];
@@ -146,7 +146,7 @@ function allusionScore(verse: string, lang: string, lexicon: Set<string>): numbe
 
 function witScore(verse: string, other: string, lang: string): number {
   const min = rulesFor(lang).riposte;
-  const theirs = new Set(wordsOf(other, lang).filter((w) => letterCount(w) >= min).map(fold));
+  const theirs = new Set(wordsOf(other, lang).filter((w) => wordSpan(w) >= min).map(fold));
   const thrown = new Set(wordsOf(verse, lang).map(fold).filter((w) => theirs.has(w))).size;
   const marks = (verse.match(/[?!？！؟]/g) ?? []).length;
   return thrown * 2 + Math.min(marks, 2);

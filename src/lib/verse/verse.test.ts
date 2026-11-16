@@ -487,13 +487,17 @@ describe('languages', () => {
       const forms = formsFor(lang);
       expect([lang, forms.length >= ROUNDS]).toEqual([lang, true]);
       expect([lang, forms.some((f) => f.needsRhyme)]).toEqual([lang, rhymeChecked(lang)]);
-      for (const id of ['anaphora', 'crescendo', 'epistrophe', 'acrostic']) expect([lang, id, forms.some((f) => f.id === id)]).toEqual([lang, id, true]);
+      for (const id of ['anaphora', 'crescendo', 'acrostic']) expect([lang, id, forms.some((f) => f.id === id)]).toEqual([lang, id, true]);
+      // English draws from exactly the forms it had before the other languages arrived.
+      expect([lang, forms.some((f) => f.id === 'epistrophe')]).toEqual([lang, lang !== 'en']);
     }
     expect(formsFor('zh').map((f) => f.id).sort()).toEqual(['acrostic', 'anaphora', 'crescendo', 'epistrophe', 'haiku', 'jueju']);
     expect(formsFor('ja').map((f) => f.id).sort()).toEqual(['acrostic', 'anaphora', 'crescendo', 'epistrophe', 'haiku']);
     expect(formsFor('th').map((f) => f.id).sort()).toEqual(['acrostic', 'anaphora', 'crescendo', 'epistrophe']);
     expect(formsFor('vi').some((f) => f.id === 'luc-bat')).toBe(true);
-    expect(formsFor('en').some((f) => f.id === 'luc-bat' || f.id === 'jueju')).toBe(false);
+    expect(formsFor('en').map((f) => f.id)).toEqual(['couplet', 'quatrain-aabb', 'quatrain-abab', 'tercet', 'anaphora', 'acrostic', 'crescendo', 'haiku', 'heroic-couplet']);
+    // The English measure of a word's length is unchanged: an inner apostrophe counts.
+    expect(DEVICES.riposte.check("I don't", { opponentVerse: "You don't" }).met).toBe(true);
   });
 
   it('every engine message has English, and every message a form, device or curse can produce is in the table', () => {

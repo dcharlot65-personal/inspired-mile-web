@@ -17,7 +17,7 @@ import type { Card, House } from '../cards';
 import { baseLang, rulesFor, unitKey } from './lang';
 import { msg, type Msg } from './msg';
 import { rhymeChecked, rhymes } from './rhyme';
-import { contentWords, edgeUnit, fold, initial, lastWord, letterCount, lineLength, linesOf, wordsOf } from './text';
+import { contentWords, edgeUnit, fold, initial, lastWord, letterCount, lineLength, linesOf, wordSpan, wordsOf } from './text';
 
 export interface DeviceResult {
   met: boolean;
@@ -65,7 +65,7 @@ export const DEVICES: Record<string, Device> = {
     for (const line of linesOf(v)) {
       const counts = new Map<string, number>();
       for (const w of wordsOf(line, lang)) {
-        if (letterCount(w) < min) continue;
+        if (wordSpan(w) < min) continue;
         const k = initial(w, lang);
         counts.set(k, (counts.get(k) ?? 0) + 1);
       }
@@ -83,7 +83,7 @@ export const DEVICES: Record<string, Device> = {
     const lang = langOf(ctx);
     const min = Math.min(3, rulesFor(lang).content);
     for (const line of linesOf(v)) {
-      const ws = wordsOf(line, lang).filter((w) => letterCount(w) >= min);
+      const ws = wordsOf(line, lang).filter((w) => wordSpan(w) >= min);
       for (let i = 0; i < ws.length; i++) {
         for (let j = i + 1; j < ws.length; j++) {
           if (rhymes(ws[i], ws[j], lang)) return { met: true, detail: `${ws[i]} / ${ws[j]}` };
@@ -98,7 +98,7 @@ export const DEVICES: Record<string, Device> = {
       if (!ctx.opponentVerse) return { met: false, detail: '' };
       const lang = langOf(ctx);
       const min = rulesFor(lang).riposte;
-      const theirs = new Set(wordsOf(ctx.opponentVerse, lang).filter((w) => letterCount(w) >= min).map(fold));
+      const theirs = new Set(wordsOf(ctx.opponentVerse, lang).filter((w) => wordSpan(w) >= min).map(fold));
       const hit = wordsOf(v, lang).map(fold).find((w) => theirs.has(w));
       return { met: !!hit, detail: hit ?? '' };
     },
