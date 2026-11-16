@@ -91,7 +91,8 @@ left behind by a killed run is found by its port: `lsof -nP -iTCP:<port> -sTCP:L
   from <list>`, and, at most once every ten minutes per peer and ten lines a minute,
   `ignored CF-Connecting-IP / X-Forwarded-For from <peer>`. If that peer is the proxy, add it:
   otherwise every visitor shares one allowance. These are "operator notices"
-  (`backend/src/notice.rs`): the log filter is `RUST_LOG` OR that target),
+  (`backend/src/notice.rs`): the log filter is `RUST_LOG` with a directive for that target
+  added last),
   `SIGNUP_GLOBAL_PER_HOUR` (default 300; hitting it logs `SIGN-UP CEILING HIT`),
   `SIGNUP_BEGINS_GLOBAL_PER_HOUR` (default 1500 begun sign-ups an hour, site-wide; logs
   `SIGN-UP BEGIN CEILING HIT`), `AUTH_CHALLENGES_MAX` (default 20000 rows in `auth_challenges`;
