@@ -570,11 +570,15 @@ export const MIN_DISTINCT_WORDS = 3;
  *   - the verse has at least as many different words as it has lines, and never
  *     fewer than MIN_DISTINCT_WORDS. Lone letters, however many different ones,
  *     count as one word between them: "I" and "a" are words, but an alphabet is
- *     not a vocabulary.
- * "Never / Never / Never", "a / a a / a a a", "w / i / t" and a single word fail
- * it; the shortest honest verses ("I / I rise / I rise again", an acrostic of
- * one word to a line) keep it. Where lines are counted in characters, "words"
- * here are characters.
+ *     not a vocabulary;
+ *   - more than half of its lines are different lines: a line said again (same
+ *     words, whatever the case and punctuation) counts once. A refrain may come
+ *     back; a verse that is one line said over and over is one line.
+ * "Never / Never / Never", "a / a a / a a a", "w / i / t", a single word and
+ * "Never the night falls" said three times fail it; the shortest honest verses
+ * ("I / I rise / I rise again", an acrostic of one word to a line, a quatrain
+ * whose first line returns as its third) keep it. Where lines are counted in
+ * characters, "words" here are characters.
  */
 export function substance(verse: string, lang = 'en'): Substance {
   const ls = linesOf(verse);
@@ -582,7 +586,9 @@ export function substance(verse: string, lang = 'en'): Substance {
   const all = perLine.flat();
   const distinct = new Set(all.filter((u) => !loneLetter(u, lang))).size + (all.some((u) => loneLetter(u, lang)) ? 1 : 0);
   const needed = Math.max(ls.length, MIN_DISTINCT_WORDS);
-  return { ok: ls.length > 0 && perLine.every((units) => units.length > 0) && distinct >= needed, distinct, needed };
+  const differentLines = new Set(perLine.map((units) => units.join(' '))).size;
+  const ok = ls.length > 0 && perLine.every((units) => units.length > 0) && distinct >= needed && differentLines * 2 > ls.length;
+  return { ok, distinct, needed };
 }
 
 /**
