@@ -118,5 +118,165 @@
   "offset": 98274,
   "matches": 2,
   "regex": "Teraz zniknęły wszystkie czary moje"
+ },
+ "CA-001": {
+  "text": "Cóż jest w nazwisku? Co różą zowiemy, / Pod innem mianem dawną woń zachowa",
+  "work": "rj",
+  "page": "Romeo i Julia (Shakespeare, tłum. Ulrich, 1895)/Akt drugi",
+  "url": "https://pl.wikisource.org/wiki/Romeo_i_Julia_%28Shakespeare%2C_t%C5%82um._Ulrich%2C_1895%29/Akt_drugi?oldid=3285360",
+  "revid": 3285360,
+  "offset": 23640,
+  "matches": 2,
+  "regex": "Cóż jest w nazwisku\\? Co różą zowiemy, Pod innem mianem dawną woń zachowa"
+ },
+ "VC-001": {
+  "text": "Jeśli raz jeszcze zaburzycie pokój, / Żywotem wasze opłacicie waśnie.",
+  "work": "rj",
+  "page": "Romeo i Julia (Shakespeare, tłum. Ulrich, 1895)/Akt pierwszy",
+  "url": "https://pl.wikisource.org/wiki/Romeo_i_Julia_%28Shakespeare%2C_t%C5%82um._Ulrich%2C_1895%29/Akt_pierwszy?oldid=3285361",
+  "revid": 3285361,
+  "offset": 53043,
+  "matches": 2,
+  "regex": "Jeśli raz jeszcze zaburzycie pokój, Żywotem wasze opłacicie waśnie\\."
+ },
+ "VC-003": {
+  "text": "Dziś ciężar mojem tylko jest strapieniem, / Lecz i na ciebie spadnie z nocy cieniem.",
+  "work": "rj",
+  "page": "Romeo i Julia (Shakespeare, tłum. Ulrich, 1895)/Akt drugi",
+  "url": "https://pl.wikisource.org/wiki/Romeo_i_Julia_%28Shakespeare%2C_t%C5%82um._Ulrich%2C_1895%29/Akt_drugi?oldid=3285360",
+  "revid": 3285360,
+  "offset": 46290,
+  "matches": 2,
+  "regex": "Dziś ciężar mojem tylko jest strapieniem, Lecz i na ciebie spadnie z nocy cieniem\\."
+ },
+ "MO-003": {
+  "text": "Włóż miecz do pochwy",
+  "work": "rj",
+  "page": "Romeo i Julia (Shakespeare, tłum. Ulrich, 1895)/Akt pierwszy",
+  "url": "https://pl.wikisource.org/wiki/Romeo_i_Julia_%28Shakespeare%2C_t%C5%82um._Ulrich%2C_1895%29/Akt_pierwszy?oldid=3285361",
+  "revid": 3285361,
+  "offset": 51678,
+  "matches": 2,
+  "regex": "Włóż miecz do pochwy"
+ },
+ "CA-002": {
+  "text": "Z dobytym mieczem o pokoju prawisz? / Tak nienawidzę z twych ust słów pokoju",
+  "work": "rj",
+  "page": "Romeo i Julia (Shakespeare, tłum. Ulrich, 1895)/Akt pierwszy",
+  "url": "https://pl.wikisource.org/wiki/Romeo_i_Julia_%28Shakespeare%2C_t%C5%82um._Ulrich%2C_1895%29/Akt_pierwszy?oldid=3285361",
+  "revid": 3285361,
+  "offset": 51765,
+  "matches": 2,
+  "regex": "Z dobytym mieczem o pokoju prawisz\\? Tak nienawidzę z twych ust słów pokoju"
+ },
+ "MO-004": {
+  "text": "Już to niejeden ranek go tam widzą, / Jak łzami świeżą, ranną mnoży rosę",
+  "work": "rj",
+  "page": "Romeo i Julia (Shakespeare, tłum. Ulrich, 1895)/Akt pierwszy",
+  "url": "https://pl.wikisource.org/wiki/Romeo_i_Julia_%28Shakespeare%2C_t%C5%82um._Ulrich%2C_1895%29/Akt_pierwszy?oldid=3285361",
+  "revid": 3285361,
+  "offset": 54457,
+  "matches": 2,
+  "regex": "Już to niejeden ranek go tam widzą, Jak łzami świeżą, ranną mnoży rosę"
+ },
+ "CA-003": {
+  "text": "Właśnie, że zamęźcie / Dziś będzie naszej rozmowy przedmiotem.",
+  "work": "rj",
+  "page": "Romeo i Julia (Shakespeare, tłum. Ulrich, 1895)/Akt pierwszy",
+  "url": "https://pl.wikisource.org/wiki/Romeo_i_Julia_%28Shakespeare%2C_t%C5%82um._Ulrich%2C_1895%29/Akt_pierwszy?oldid=3285361",
+  "revid": 3285361,
+  "offset": 66075,
+  "matches": 2,
+  "regex": "Właśnie, że zamęźcie Dziś będzie naszej rozmowy przedmiotem\\."
+ },
+ "VC-004": {
+  "text": "Czas żalu złym jest czasem do zalotów.",
+  "work": "rj",
+  "page": "Romeo i Julia (Shakespeare, tłum. Ulrich, 1895)/Akt trzeci",
+  "url": "https://pl.wikisource.org/wiki/Romeo_i_Julia_%28Shakespeare%2C_t%C5%82um._Ulrich%2C_1895%29/Akt_trzeci?oldid=3285363",
+  "revid": 3285363,
+  "offset": 121379,
+  "matches": 2,
+  "regex": "Czas żalu złym jest czasem do zalotów\\."
+ },
+ "RL-004": {
+  "text": "Bo miłość moja, jak morze bez granic / I niezgłębione",
+  "work": "rj",
+  "page": "Romeo i Julia (Shakespeare, tłum. Ulrich, 1895)/Akt drugi",
+  "url": "https://pl.wikisource.org/wiki/Romeo_i_Julia_%28Shakespeare%2C_t%C5%82um._Ulrich%2C_1895%29/Akt_drugi?oldid=3285360",
+  "revid": 3285360,
+  "offset": 27422,
+  "matches": 2,
+  "regex": "Bo miłość moja, jak morze bez granic I niezgłębione"
+ },
+ "PT-009": {
+  "text": "Wsypiesz ten proszek w jakikolwiek napój, / A gdy wypijesz, chociażbyś miał siły / Dwudziestu mężów, upadniesz bez ducha.",
+  "work": "rj",
+  "page": "Romeo i Julia (Shakespeare, tłum. Ulrich, 1895)/Akt piąty",
+  "url": "https://pl.wikisource.org/wiki/Romeo_i_Julia_%28Shakespeare%2C_t%C5%82um._Ulrich%2C_1895%29/Akt_pi%C4%85ty?oldid=3285362",
+  "revid": 3285362,
+  "offset": 83359,
+  "matches": 2,
+  "regex": "Wsypiesz ten proszek w jakikolwiek napój, A gdy wypijesz, chociażbyś miał siły Dwudziestu mężów, upadniesz bez ducha\\."
+ },
+ "DC-004": {
+  "text": "Wielkie pękło serce. / Dobra noc, książę!",
+  "work": "hamlet",
+  "page": "Hamlet (Shakespeare, tłum. Ulrich, 1895)/Akt piąty",
+  "url": "https://pl.wikisource.org/wiki/Hamlet_%28Shakespeare%2C_t%C5%82um._Ulrich%2C_1895%29/Akt_pi%C4%85ty?oldid=3257296",
+  "revid": 3257296,
+  "offset": 132278,
+  "matches": 2,
+  "regex": "Wielkie pękło serce\\. Dobra noc, książę!"
+ },
+ "PT-005": {
+  "text": "Pamiętam, że ci kwiat ten pokazałem; / Leć mi go przynieść.",
+  "work": "mnd",
+  "page": "Sen nocy letniej (Shakespeare, tłum. Ulrich, 1895)/Akt drugi",
+  "url": "https://pl.wikisource.org/wiki/Sen_nocy_letniej_%28Shakespeare%2C_t%C5%82um._Ulrich%2C_1895%29/Akt_drugi?oldid=3286441",
+  "revid": 3286441,
+  "offset": 20521,
+  "matches": 2,
+  "regex": "Pamiętam, że ci kwiat ten pokazałem; Leć mi go przynieść\\."
+ },
+ "RL-007": {
+  "text": "A potem księgę na dno rzucę morza, / Głębiej, niż sonda kiedybądż dosięgła.",
+  "work": "tempest",
+  "page": "Burza (Shakespeare, tłum. Ulrich, 1895)/Akt piąty",
+  "url": "https://pl.wikisource.org/wiki/Burza_%28Shakespeare%2C_t%C5%82um._Ulrich%2C_1895%29/Akt_pi%C4%85ty?oldid=3248990",
+  "revid": 3248990,
+  "offset": 66695,
+  "matches": 2,
+  "regex": "A potem księgę na dno rzucę morza, Głębiej, niż sonda kiedybądż dosięgła\\."
+ },
+ "PT-008": {
+  "text": "Ojca morskie tulą fale; / Z kości jego są korale",
+  "work": "tempest",
+  "page": "Burza (Shakespeare, tłum. Ulrich, 1895)/Akt pierwszy",
+  "url": "https://pl.wikisource.org/wiki/Burza_%28Shakespeare%2C_t%C5%82um._Ulrich%2C_1895%29/Akt_pierwszy?oldid=3248989",
+  "revid": 3248989,
+  "offset": 58634,
+  "matches": 2,
+  "regex": "Ojca morskie tulą fale; Z kości jego są korale"
+ },
+ "RL-005": {
+  "text": "Nie wszystko ma wagę złota, / Co jak złoto czyste świeci",
+  "work": "mov",
+  "page": "Kupiec wenecki (Shakespeare, tłum. Ulrich, 1895)/Akt drugi",
+  "url": "https://pl.wikisource.org/wiki/Kupiec_wenecki_%28Shakespeare%2C_t%C5%82um._Ulrich%2C_1895%29/Akt_drugi?oldid=3263783",
+  "revid": 3263783,
+  "offset": 44235,
+  "matches": 2,
+  "regex": "Nie wszystko ma wagę złota, Co jak złoto czyste świeci"
+ },
+ "RM-003": {
+  "text": "Obywatele, rodacy, Rzymianie, / O jedną chwilę posłuchania proszę.",
+  "work": "jc",
+  "page": "Juliusz Cezar (Shakespeare, tłum. Ulrich, 1895)/Akt trzeci",
+  "url": "https://pl.wikisource.org/wiki/Juliusz_Cezar_%28Shakespeare%2C_t%C5%82um._Ulrich%2C_1895%29/Akt_trzeci?oldid=3260502",
+  "revid": 3260502,
+  "offset": 104816,
+  "matches": 2,
+  "regex": "Obywatele, rodacy, Rzymianie, O jedną chwilę posłuchania proszę\\."
  }
 }

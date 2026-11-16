@@ -18,6 +18,7 @@ def search(site,q,n=12,ns='0'):
     return [(x['title'],x['size']) for x in r['query']['search']]
 def strip(h):
     h=re.sub(r'(?is)<(script|style).*?</\1>','',h)
+    h=re.sub(r'(?is)<(rt|rp)\b[^>]*>.*?</\1>','',h)  # ruby readings (Japanese): keep the base text only
     h=re.sub(r'(?i)<br\s*/?>','\n',h)
     h=re.sub(r'(?i)</(p|div|dd|dt|li|tr|h\d|table)>','\n',h)
     h=re.sub(r'(?s)<[^>]+>','',h)

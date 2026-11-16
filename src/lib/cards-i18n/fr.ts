@@ -370,7 +370,7 @@ const pack: CardTextPack = {
   "PT-009": {
    "name": "Élixir de l’apothicaire",
    "nameSource": "translated",
-   "quote": "Mettez ceci dans le liquide que vous voudrez, — et avalez ; eussiez-vous la force de vingt hommes, vous serez expédié immédiatement (129).",
+   "quote": "Mettez ceci dans le liquide que vous voudrez, — et avalez ; eussiez-vous la force de vingt hommes, vous serez expédié immédiatement.",
    "quoteSource": "published",
    "scene": "Une boutique d’apothicaire poussiéreuse dans le quartier le plus pauvre de Mantoue. Un élixir du désespoir luit, ambré, dans une fiole fêlée, assez puissant pour franchir l’écart entre la vie et la mort."
   },
@@ -408,15 +408,15 @@ const pack: CardTextPack = {
   "GC-002": {
    "nameSource": "wikidata",
    "name": "Mary Shelley",
-   "quote": "Prends garde ; car je suis sans peur, et par là même puissant.",
-   "quoteSource": "new",
+   "quote": "Prends-y garde ; car je suis sans crainte, et par conséquent / puissant.",
+   "quoteSource": "published",
    "scene": "Un cabinet éclairé à la bougie, à Genève, pendant un orage. Mary écrit à la lueur des éclairs tandis que la créature remue dans l’ombre derrière elle. La science et l’horreur ne font plus qu’un."
   },
   "GC-003": {
    "nameSource": "wikidata",
    "name": "Edgar Allan Poe",
-   "quote": "Une fois, par un minuit lugubre, tandis que je méditais, faible et las.",
-   "quoteSource": "new",
+   "quote": "Une fois, par un minuit lugubre, tandis que je m’appesantissais, faible et fatigué",
+   "quoteSource": "published",
    "scene": "Une chambre sombre qu’éclaire un feu mourant. Poe est voûté sur son bureau lorsqu’un corbeau se pose sur le buste de Pallas. Le mot « Jamais plus » résonne dans l’ombre."
   },
   "GC-004": {
@@ -429,8 +429,8 @@ const pack: CardTextPack = {
   "GC-005": {
    "nameSource": "wikidata",
    "name": "Percy Bysshe Shelley",
-   "quote": "Si l’hiver vient, le printemps peut-il être loin ?",
-   "quoteSource": "new",
+   "quote": "Ô Vent, si l’Hiver s’approche, le Printemps peut-il être loin derrière ?",
+   "quoteSource": "published",
    "scene": "Le sommet d’une falaise italienne battue par les vents. Shelley fait face à l’orage, les bras ouverts, tandis que le vent d’ouest arrache les pages de son carnet et les disperse sur la Méditerranée."
   },
   "LD-004": {

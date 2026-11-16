@@ -8,6 +8,7 @@ def load(work):
     if work not in texts:
         t=open(f'cache/{lang}/{work}.txt',encoding='utf8').read()
         t=re.sub(r'\[\d+\]|\s?\(\d+\)','',t.replace('\ufeff','').replace('\u200c',''))  # footnote markers, zero-width marks
+        t=re.sub(r'\[p\. \d+ modifica\]','',t)  # it.wikisource page-number marks
         texts[work]=(t,json.load(open(f'cache/{lang}/{work}.meta.json')))
     return texts[work]
 for line in open(spec,encoding='utf8'):

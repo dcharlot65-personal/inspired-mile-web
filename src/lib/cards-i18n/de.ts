@@ -402,8 +402,8 @@ const pack: CardTextPack = {
   "GC-003": {
    "nameSource": "wikidata",
    "name": "Edgar Allan Poe",
-   "quote": "Einst, um eine trübe Mitternacht, als ich grübelte, schwach und müde.",
-   "quoteSource": "new",
+   "quote": "Eines Nachts aus gelben Blättern mit verblichnen Runenlettern",
+   "quoteSource": "published",
    "scene": "Ein düsteres Gemach, von einem erlöschenden Feuer erhellt. Poe sitzt gebeugt an seinem Schreibtisch, als sich ein Rabe auf der Büste der Pallas niederlässt. Das Wort „Nimmermehr“ hallt in den Schatten."
   },
   "GC-004": {
@@ -416,8 +416,8 @@ const pack: CardTextPack = {
   "GC-005": {
    "nameSource": "wikidata",
    "name": "Percy Bysshe Shelley",
-   "quote": "Wenn der Winter kommt, kann der Frühling fern sein?",
-   "quoteSource": "new",
+   "quote": "Wenn Winter naht, kann fern der Frühling sein?",
+   "quoteSource": "published",
    "scene": "Eine windgepeitschte italienische Klippe. Shelley stellt sich dem Sturm mit ausgebreiteten Armen, während der Westwind Seiten aus seinem Notizbuch reißt und sie über das Mittelmeer verstreut."
   },
   "LD-004": {

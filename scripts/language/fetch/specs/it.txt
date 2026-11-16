@@ -1,0 +1,51 @@
+MO-001|rj|Che veggo\? Qual luce scende da quel verone\?
+CA-001|rj|Or che è un nome per te\? Il fiore che chiamiam rosa, con ogni altro nome rosa pure sarebbe
+MO-002|rj|Maledizione sulle vostre due famiglie!
+VC-001|rj|colla sua testa s’apparecchi a scontar la sua colpa colui che anche una volta sturbasse il pubblico riposo
+VC-002|rj|Questi violenti trasporti terminano fra violenti dolori
+VC-003|rj|Per ora in me sola gravita tutta la fatica dei vostri piaceri
+MO-003|rj|Feci opera di paciere, e nulla più; rimetti la spada
+CA-002|rj|Colla spada ignuda osi parlare di pace\? Odio questa parola
+MO-004|rj|Molte volte lo si è visto prevenir con queste corse l’aurora, per mescolar le sue lagrime colla rugiada del mattino
+CA-003|rj|Ed è appunto di maritaggio che venni a favellarle\.
+VC-004|rj|Questi giorni di sventura non dànno agio alle cure d’amore\.
+RL-004|rj|il mio amore per te è vasto come l’Oceano; come l’Oceano è inesauribile
+PT-009|rj|Mettete questa droga in quel liquido che più vi piacerà; bevete poscia: e se anche aveste la lena di venti uomini, sarete in breve consunto\.
+DC-001|hamlet|Essere o non essere, ecco il gran problema
+DC-002|hamlet|Ecco il rosmarino che fortifica le rimembranze
+RL-001|hamlet|Oimè! povero Yorick!\.\.\. L’ho conosciuto, Orazio
+DC-003|hamlet|Le mie parole s’innalzano, ma i miei pensieri rimangono in terra
+DC-004|hamlet|Ora scoppia il più nobile cuore! Amabile principe, addio
+PT-006|hamlet|fra pacifico sonno tuo zio mi sorprese, munito d’una fiala di veleno
+FA-001|mnd|Quanto pazzi, o mio re, sono i mortali\.
+FA-002|mnd|Vieni, assiditi sopra questo letto di fiori
+PT-001|mnd|il corso degli amori sinceri non fu mai senza torbidi e tempeste
+FA-003|mnd|Ti troverò al chiaro di luna, superba Titania\.
+PT-003|mnd|Porrei una cintura alla terra in meno di quaranta minuti\.
+FA-004|mnd|Ho avuta una ben strana visione\. Ho avuto un sogno che è oltre le forze dell’uomo di poter esplicare
+RL-009|mnd|Il ciel ti benedica, Bottom, il Ciel ti benedica! tu sei ben cangiato\.
+PT-005|mnd|vammi a trovare quel fiore\. Io già te l’ho indicato\.
+RL-002|tempest|Ora tutti i miei incantesimi son rotti
+TP-001|tempest|Modellati noi siamo della vana sustanza di che s’informano i sogni
+TP-002|tempest|Omaggio e salute al mio signore! potente e venerando signore, salute!
+TP-003|tempest|Ma quest’isola è mia, e tu mi rubi quello che fu di mia madre\.
+TP-004|tempest|come bello è il genere umano; come incantatore il mondo che possiede una tal gente!
+RL-007|tempest|tufferò sotto le acque il mio libro magico
+PT-008|tempest|Sotto l’acque del mare tuo padre è sepolto; ma l’ossa sue rivivono cangiate in puro corallo\.
+PT-002|macbeth|Raddoppiamo, raddoppiamo cure e travagli
+RL-003|macbeth|È egli un pugnale quel che mi veggo dinanzi, coll’elsa rivolta verso la mia mano\.\.\.\.\?
+SC-001|macbeth|io oso fare tutto quello che ad un uomo s’addice; ma chi di più far vuole, cessa d’esser tale\.
+SC-002|macbeth|Venite ora, venite tutti, o spiriti d’inferno, che incuorate all’omicidio i mortali
+SC-003|macbeth|Creerai i re senza esserlo\.
+PT-007|macbeth|Aggiungiamo anche il tronco d’un serpe di palude, e l’occhio d’una lucertola, e il piede d’una rana
+IL-001|tn|io non sono quel che sembro\.
+IL-002|tn|Alcuni nascono grandi, altri, mercè lunghi sforzi, giungono alla grandezza, e ve n’ha a cui la grandezza di per sè si offre\.
+IL-003|tn|l’amore che si arrende alle preghiere è di gran prezzo, ma quello che spontaneo si dona gli è d’assai superiore\.
+RM-001|jc|Bruto amò Roma, a preferenza di Cesare\.
+RM-002|jc|Sonovi età, in cui gli uomini riescono arbitri de’ loro destini; e se schiavi noi siamo, la colpa è in noi soli\.
+RM-003|jc|Amici, Romani, concittadini, porgetemi attento ascolto
+RL-005|mov|Tutto quello che splende non è oro
+RL-006|h4p2|godete del dolce riposo! Esso non è fatto per la testa che cinge una corona!
+GC-003|raven|Una volta, a mezzanotte, mentre stanco e affaticato
+RL-008|lear|Oh caro padre! è per te solo che m’adopero
+PT-004|othello|nè l’oppio, nè la mandragola, nè tutti i calmanti dell’universo ti faran più trovare quel dolce sonno che ieri hai gustato per l’ultima volta\.

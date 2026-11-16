@@ -7,55 +7,169 @@
    "title": "François-Victor Hugo",
    "label": "François-Victor Hugo",
    "born": "1828-10-21",
-   "died": "1873-12-26"
+   "died": "1873-12-26",
+   "lastrevid": null
   },
   "Q57281": {
    "title": "August Wilhelm Schlegel",
    "label": "August Wilhelm von Schlegel",
    "born": "1767-09-08",
-   "died": "1845-05-12"
+   "died": "1845-05-12",
+   "lastrevid": null
+  },
+  "Q351132": {
+   "title": "Leandro Fernández de Moratín",
+   "label": "Leandro Fernández de Moratín",
+   "born": "1760-03-10",
+   "died": "1828-06-21",
+   "lastrevid": null
+  },
+  "Q163285": {
+   "title": "Juan Antonio Pérez Bonalde",
+   "label": "Juan Luis Antonio Pérez Bonalde",
+   "born": "1846-01-01",
+   "died": "1892-01-01",
+   "lastrevid": null
+  },
+  "Q156175": {
+   "title": "Luís I of Portugal",
+   "label": "Luís I of Portugal",
+   "born": "1838-10-31",
+   "died": "1889-10-19",
+   "lastrevid": null
+  },
+  "Q311145": {
+   "title": "Machado de Assis",
+   "label": "Machado de Assis",
+   "born": "1839-06-21",
+   "died": "1908-09-29",
+   "lastrevid": null
+  },
+  "Q706196": {
+   "title": "Tsubouchi Shōyō",
+   "label": "Tsubouchi Shōyō",
+   "born": "1859-05-22",
+   "died": "1935-02-28",
+   "lastrevid": null
+  },
+  "Q767": {
+   "title": "Stéphane Mallarmé",
+   "label": "Stéphane Mallarmé",
+   "born": "1842-03-18",
+   "died": "1898-09-09",
+   "lastrevid": null
+  },
+  "Q316374": {
+   "title": "Valery Bryusov",
+   "label": "Valery Bryusov",
+   "born": "1873-12-01",
+   "died": "1924-10-09",
+   "lastrevid": null
+  },
+  "Q72070": {
+   "title": "Hedwig Lachmann",
+   "label": "Hedwig Lachmann",
+   "born": "1865-08-21",
+   "died": "1918-02-21",
+   "lastrevid": null
+  },
+  "Q119527": {
+   "title": "Adolf Strodtmann",
+   "label": "Adolf Strodtmann",
+   "born": "1829-03-24",
+   "died": "1879-03-17",
+   "lastrevid": null
+  },
+  "Q311033": {
+   "title": "Гумилёв, Николай Степанович",
+   "label": "Nikolay Gumilev",
+   "born": "1886-04-03",
+   "died": "1921-08-26",
+   "lastrevid": null
   },
   "Q15720347": {
    "title": "Михаловский, Дмитрий Лаврентьевич",
    "label": "Dmitry Mikhalovsky",
    "born": "1828-01-28",
-   "died": "1905-02-09"
+   "died": "1905-02-09",
+   "lastrevid": null
   },
   "Q4140637": {
    "title": "Гнедич, Пётр Петрович",
    "label": "Pyotr Gnedich",
    "born": "1855-10-18",
-   "died": "1925-07-16"
+   "died": "1925-07-16",
+   "lastrevid": null
   },
   "Q4226775": {
    "title": "Козлов, Павел Алексеевич",
    "label": "Pavel Kozlov",
    "born": "1841-03-23",
-   "died": "1891-03-15"
+   "died": "1891-03-15",
+   "lastrevid": null
   },
   "Q4106006": {
    "title": "Вейнберг, Пётр Исаевич",
    "label": "Pyotr Weinberg",
    "born": "1830-00-00",
-   "died": "1908-07-03"
+   "died": "1908-07-03",
+   "lastrevid": null
   },
   "Q4408990": {
    "title": "Сатин, Николай Михайлович",
    "label": "N. M. Satin",
    "born": "1814-12-06",
-   "died": "1873-04-29"
+   "died": "1873-04-29",
+   "lastrevid": null
   },
   "Q4136971": {
    "title": "Гербель, Николай Васильевич",
    "label": "Nikolaj Gerbel",
    "born": "1827-11-26",
-   "died": "1883-03-08"
+   "died": "1883-03-08",
+   "lastrevid": null
+  },
+  "Q17741205": {
+   "title": "Carlo Rusconi",
+   "label": "Carlo Rusconi",
+   "born": "1812-03-05",
+   "died": "1889-05-22",
+   "lastrevid": null
+  },
+  "Q3732317": {
+   "title": "Ernesto Ragazzoni",
+   "label": "Ernesto Ragazzoni",
+   "born": "1870-01-08",
+   "died": "1920-01-05",
+   "lastrevid": null
+  },
+  "Q5938327": {
+   "title": "José Arnaldo Márquez",
+   "label": "José Arnaldo Márquez",
+   "born": "1832-01-12",
+   "died": "1903-12-05",
+   "lastrevid": null
+  },
+  "Q716799": {
+   "title": "Marcelino Menéndez Pelayo",
+   "label": "Marcelino Menéndez y Pelayo",
+   "born": "1856-11-03",
+   "died": "1912-05-19",
+   "lastrevid": null
+  },
+  "Q18115775": {
+   "title": "Félix Rabbe",
+   "label": "Félix Rabbe",
+   "born": "1840-01-01",
+   "died": "1900-01-17",
+   "lastrevid": null
   },
   "Q11754423": {
    "title": "Leon Ulrich",
    "label": "Leon Ulrich",
    "born": "1811-04-23",
-   "died": "1885-09-13"
+   "died": "1885-09-13",
+   "lastrevid": null
   }
  }
 }

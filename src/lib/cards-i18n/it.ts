@@ -15,125 +15,125 @@ const pack: CardTextPack = {
   "MO-001": {
    "nameSource": "wikidata",
    "name": "Romeo Montecchi",
-   "quote": "Ma piano, quale luce irrompe da quella finestra?",
-   "quoteSource": "new",
+   "quote": "Che veggo? Qual luce scende da quel verone?",
+   "quoteSource": "published",
    "scene": "Si apre la scena di un balcone al chiaro di luna. Romeo tende la mano verso l’alto mentre Giulietta appare di sopra. Petali di rosa fluttuano nell’aria. La scena pulsa di un caldo bagliore cremisi."
   },
   "CA-001": {
    "nameSource": "wikidata",
    "name": "Giulietta Capuleti",
-   "quote": "Che cosa c’è in un nome? Ciò che chiamiamo rosa...",
-   "quoteSource": "new",
+   "quote": "Or che è un nome per te? Il fiore che chiamiam rosa, con ogni altro nome rosa pure sarebbe",
+   "quoteSource": "published",
    "scene": "Il giardino dei Capuleti fiorisce al chiaro di luna. Giulietta sta fra le rose, gli occhi accesi di sfida. Un usignolo canta dai rami."
   },
   "DC-001": {
    "nameSource": "wikidata",
    "name": "Amleto",
-   "quote": "Essere o non essere, questo è il problema.",
-   "quoteSource": "new",
+   "quote": "Essere o non essere, ecco il gran problema",
+   "quoteSource": "published",
    "scene": "Il castello di Elsinore emerge dall’ombra. Amleto sta sugli spalti, con il teschio di Yorick sospeso accanto a lui. Una figura spettrale appare sui bastioni."
   },
   "DC-002": {
    "nameSource": "wikidata",
    "name": "Ofelia",
-   "quote": "Ecco del rosmarino, che è per il ricordo.",
-   "quoteSource": "new",
+   "quote": "Ecco il rosmarino che fortifica le rimembranze",
+   "quoteSource": "published",
    "scene": "Un ruscello tranquillo serpeggia in un boschetto di salici. Ofelia galleggia tra i fiori di campo, sussurrando versi dimenticati. I petali girano nella corrente."
   },
   "MO-002": {
    "nameSource": "wikidata",
    "name": "Mercuzio",
-   "quote": "La peste a tutte e due le vostre case!",
-   "quoteSource": "new",
+   "quote": "Maledizione sulle vostre due famiglie!",
+   "quoteSource": "published",
    "scene": "Una strada di Verona esplode nel caos. Mercuzio danza tra le lame, ridendo in faccia al pericolo. Scintille sprizzano dall’acciaio che si scontra."
   },
   "FA-001": {
    "nameSource": "wikidata",
    "name": "Puck",
-   "quote": "Signore, che pazzi sono questi mortali!",
-   "quoteSource": "new",
+   "quote": "Quanto pazzi, o mio re, sono i mortali.",
+   "quoteSource": "published",
    "scene": "La foresta incantata luccica di malizia. Puck guizza tra querce antiche, lasciando scie di polvere di fata. Sotto, i mortali addormentati fanno strani sogni."
   },
   "FA-002": {
    "nameSource": "wikidata",
    "name": "Titania",
-   "quote": "Vieni, siediti su questo letto fiorito.",
-   "quoteSource": "new",
+   "quote": "Vieni, assiditi sopra questo letto di fiori",
+   "quoteSource": "published",
    "scene": "Un trono di rampicanti vivi si leva dal suolo della foresta. Titania comanda la sua corte di fate mentre le lucciole illuminano le fronde. La natura stessa si inchina al suo volere."
   },
   "RL-001": {
    "name": "Il teschio di Yorick",
    "nameSource": "translated",
-   "quote": "Ahimè, povero Yorick! Io lo conoscevo, Orazio.",
-   "quoteSource": "new",
+   "quote": "Oimè! povero Yorick!... L’ho conosciuto, Orazio",
+   "quoteSource": "published",
    "scene": "Un teschio riposa sul velluto in una cripta in penombra. Una risata spettrale riecheggia mentre i ricordi del buffone di corte tremolano come la fiamma di una candela."
   },
   "RL-002": {
    "name": "Il bastone di Prospero",
    "nameSource": "translated",
-   "quote": "Ora i miei incanti sono tutti spezzati.",
-   "quoteSource": "new",
+   "quote": "Ora tutti i miei incantesimi son rotti",
+   "quoteSource": "published",
    "scene": "Un bastone nodoso crepita di energia arcana. La tempesta gli vortica attorno mentre Prospero sussurra il suo ultimo incantesimo. Il fulmine squarcia il cielo."
   },
   "PT-001": {
    "name": "Filtro d’amore",
    "nameSource": "translated",
-   "quote": "Il corso del vero amore non fu mai liscio.",
-   "quoteSource": "new",
+   "quote": "il corso degli amori sinceri non fu mai senza torbidi e tempeste",
+   "quoteSource": "published",
    "scene": "Una fiala luminosa pulsa di luce rosata. Cuori salgono dalla sua superficie mentre una dolce melodia riempie l’aria."
   },
   "PT-002": {
    "name": "Intruglio delle streghe",
    "nameSource": "translated",
-   "quote": "Doppio, doppio, fatica e travaglio.",
-   "quoteSource": "new",
+   "quote": "Raddoppiamo, raddoppiamo cure e travagli",
+   "quoteSource": "published",
    "scene": "Un calderone ribollente erutta fumo verde. Tre figure d’ombra gli girano intorno salmodiando. Occhi brillano dal bosco oscuro."
   },
   "VC-001": {
    "nameSource": "missing",
-   "quote": "Se mai turberete ancora le nostre strade, le vostre vite pagheranno la pace violata.",
-   "quoteSource": "new",
+   "quote": "colla sua testa s’apparecchi a scontar la sua colpa colui che anche una volta sturbasse il pubblico riposo",
+   "quoteSource": "published",
    "scene": "Il Principe sta sui gradini del palazzo di Verona; la sua voce impone il silenzio alla folla in lotta. Uno scettro d’oro arde di autorità."
   },
   "VC-002": {
    "nameSource": "wikidata",
    "name": "Frate Lorenzo",
-   "quote": "Queste gioie violente hanno fini violente.",
-   "quoteSource": "new",
+   "quote": "Questi violenti trasporti terminano fra violenti dolori",
+   "quoteSource": "published",
    "scene": "Una cella di monastero a lume di candela. Il frate cura il suo orto di erbe e veleni, con la saggezza incisa sul volto segnato dal tempo."
   },
   "VC-003": {
    "nameSource": "missing",
-   "quote": "Io sono la serva che fatica per il tuo piacere.",
-   "quoteSource": "new",
+   "quote": "Per ora in me sola gravita tutta la fatica dei vostri piaceri",
+   "quoteSource": "published",
    "scene": "Una cucina calda in casa Capuleti. La balia si affaccenda con feroce devozione, una lettera segreta infilata nel grembiule."
   },
   "TP-001": {
    "nameSource": "wikidata",
    "name": "Prospero",
-   "quote": "Siamo fatti della stessa sostanza di cui sono fatti i sogni.",
-   "quoteSource": "new",
+   "quote": "Modellati noi siamo della vana sustanza di che s’informano i sogni",
+   "quoteSource": "published",
    "scene": "Un’isola avvolta dalla tempesta. Prospero alza le mani mentre il fulmine obbedisce al suo volere e il mare ribolle al suo comando."
   },
   "TP-002": {
    "nameSource": "wikidata",
    "name": "Ariel",
-   "quote": "Salve, grande padrone! Grave signore, salve!",
-   "quoteSource": "new",
+   "quote": "Omaggio e salute al mio signore! potente e venerando signore, salute!",
+   "quoteSource": "published",
    "scene": "Uno spirito scintillante si dissolve in vento e luce, e si ricompone in musica. Ariel danza tra il visibile e l’invisibile."
   },
   "TP-003": {
    "nameSource": "wikidata",
    "name": "Calibano",
-   "quote": "Quest’isola è mia, per via di Sycorax, mia madre.",
-   "quoteSource": "new",
+   "quote": "Ma quest’isola è mia, e tu mi rubi quello che fu di mia madre.",
+   "quoteSource": "published",
    "scene": "L’imbocco di una grotta su una costa selvaggia. Calibano sta acquattato fra le rocce, gli occhi ardenti di rancore e di un’intelligenza primordiale."
   },
   "MO-003": {
    "nameSource": "wikidata",
    "name": "Benvolio",
-   "quote": "Io non faccio che mantenere la pace. Rinfodera la spada.",
-   "quoteSource": "new",
+   "quote": "Feci opera di paciere, e nulla più; rimetti la spada",
+   "quoteSource": "published",
    "scene": "Una piazza di Verona all’alba. Benvolio sta fra le spade sguainate; le sue mani aperte sono l’unica arma contro la tempesta che si addensa."
   },
   "CA-002": {
@@ -142,222 +142,222 @@ const pack: CardTextPack = {
    "aliases": [
     "Teobaldo"
    ],
-   "quote": "Come, con la spada in pugno parli di pace? Odio questa parola.",
-   "quoteSource": "new",
+   "quote": "Colla spada ignuda osi parlare di pace? Odio questa parola",
+   "quoteSource": "published",
    "scene": "Un vicolo di Verona acceso dalle torce. Tebaldo sguaina lo stocco con grazia letale, gli occhi fissi sul nemico."
   },
   "DC-003": {
    "nameSource": "wikidata",
    "name": "Re Claudio",
-   "quote": "Le mie parole volano in alto, i miei pensieri restano in basso.",
-   "quoteSource": "new",
+   "quote": "Le mie parole s’innalzano, ma i miei pensieri rimangono in terra",
+   "quoteSource": "published",
    "scene": "La sala del trono di Elsinore, drappeggiata di falso splendore. Claudio stringe la corona, con una fiala di veleno nascosta nelle vesti."
   },
   "FA-003": {
    "nameSource": "wikidata",
    "name": "Oberon",
-   "quote": "Malaugurato incontro al chiaro di luna, superba Titania.",
-   "quoteSource": "new",
+   "quote": "Ti troverò al chiaro di luna, superba Titania.",
+   "quoteSource": "published",
    "scene": "Una radura illuminata dalla luna nel folto della foresta incantata. Oberon prende corpo dall’ombra; la sua corona di corna cattura la luce d’argento."
   },
   "RL-003": {
    "name": "Il pugnale della mente",
    "nameSource": "translated",
-   "quote": "È un pugnale questo che vedo davanti a me?",
-   "quoteSource": "new",
+   "quote": "È egli un pugnale quel che mi veggo dinanzi, coll’elsa rivolta verso la mia mano....?",
+   "quoteSource": "published",
    "scene": "Un pugnale spettrale fluttua nel buio, con la lama che gocciola sangue fantasma. La mano di Macbeth si protende, ma non riesce mai ad afferrarlo."
   },
   "PT-003": {
    "name": "Succo del fiore di Puck",
    "nameSource": "translated",
-   "quote": "Metterò una cintura intorno alla terra in quaranta minuti.",
-   "quoteSource": "new",
+   "quote": "Porrei una cintura alla terra in meno di quaranta minuti.",
+   "quoteSource": "published",
    "scene": "Un fiore purpureo schiacciato stilla nettare iridescente in un palmo in attesa. Ovunque cada, gli occhi cambiano, e i cuori li seguono."
   },
   "SC-001": {
    "nameSource": "wikidata",
    "name": "Macbeth",
-   "quote": "Oso tutto ciò che si addice a un uomo; chi osa di più non lo è.",
-   "quoteSource": "new",
+   "quote": "io oso fare tutto quello che ad un uomo s’addice; ma chi di più far vuole, cessa d’esser tale.",
+   "quoteSource": "published",
    "scene": "Una sala del trono macchiata di sangue a Dunsinane. Macbeth stringe la spada con mani tremanti, la corona pesante sulla fronte. Il bosco di Birnam si muove sul colle lontano."
   },
   "SC-002": {
    "nameSource": "wikidata",
    "name": "Lady Macbeth",
-   "quote": "Venite, spiriti che servite i pensieri di morte, toglietemi qui il mio sesso.",
-   "quoteSource": "new",
+   "quote": "Venite ora, venite tutti, o spiriti d’inferno, che incuorate all’omicidio i mortali",
+   "quoteSource": "published",
    "scene": "Una stanza del castello scozzese a lume di candela. Lady Macbeth percorre le fredde pietre, strofinandosi dalle mani macchie di sangue immaginarie. Le ombre le si attaccano come una seconda pelle."
   },
   "SC-003": {
    "nameSource": "wikidata",
    "name": "Banco",
-   "quote": "Genererai dei re, pur non essendo re tu stesso.",
-   "quoteSource": "new",
+   "quote": "Creerai i re senza esserlo.",
+   "quoteSource": "published",
    "scene": "Una brughiera scozzese nebbiosa al crepuscolo. Banquo sta saldo mentre tre figure spettrali sussurrano destini nel vento. Il suo fantasma tormenterà i vivi."
   },
   "IL-001": {
    "nameSource": "missing",
-   "quote": "Io non sono quello che sono.",
-   "quoteSource": "new",
+   "quote": "io non sono quel che sembro.",
+   "quoteSource": "published",
    "scene": "Una costa dell’Illiria battuta dal vento. Viola si calca un berretto da marinaio sui capelli tagliati corti; due identità le brillano negli occhi. Il mare sussurra segreti del fratello perduto."
   },
   "IL-002": {
    "nameSource": "wikidata",
    "name": "Malvolio",
-   "quote": "Alcuni nascono grandi, alcuni conquistano la grandezza, e ad alcuni la grandezza viene imposta.",
-   "quoteSource": "new",
+   "quote": "Alcuni nascono grandi, altri, mercè lunghi sforzi, giungono alla grandezza, e ve n’ha a cui la grandezza di per sè si offre.",
+   "quoteSource": "published",
    "scene": "Un giardino assolato nella tenuta di Olivia. Malvolio si pavoneggia in sgargianti calze gialle con le giarrettiere incrociate, sorridente, stringendo al petto una falsa lettera d’amore."
   },
   "IL-003": {
    "nameSource": "missing",
-   "quote": "L’amore cercato è buono, ma dato senza essere cercato è migliore.",
-   "quoteSource": "new",
+   "quote": "l’amore che si arrende alle preghiere è di gran prezzo, ma quello che spontaneo si dona gli è d’assai superiore.",
+   "quoteSource": "published",
    "scene": "Una contessa in lutto solleva il velo e rivela una bellezza che toglie il fiato. Il giardino di Olivia fiorisce di gelsomino e lavanda mentre il messaggero travestito le ruba il cuore."
   },
   "RM-001": {
    "nameSource": "derived",
    "name": "Bruto",
-   "quote": "Non perché amassi meno Cesare, ma perché amavo di più Roma.",
-   "quoteSource": "new",
+   "quote": "Bruto amò Roma, a preferenza di Cesare.",
+   "quoteSource": "published",
    "scene": "Il Senato romano, con le colonne di marmo macchiate di cremisi. Bruto sta fra i congiurati, la lama ancora tremante. Il peso della repubblica grava sulle sue mani insanguinate."
   },
   "RM-002": {
    "nameSource": "derived",
    "name": "Cassio",
-   "quote": "La colpa, caro Bruto, non è nelle nostre stelle, ma in noi stessi.",
-   "quoteSource": "new",
+   "quote": "Sonovi età, in cui gli uomini riescono arbitri de’ loro destini; e se schiavi noi siamo, la colpa è in noi soli.",
+   "quoteSource": "published",
    "scene": "Un vicolo romano a mezzanotte, alla luce delle torce. Cassio si china e sussurra sedizione con il suo aspetto magro e affamato. Lettere false gli scivolano dalla toga."
   },
   "RM-003": {
    "nameSource": "wikidata",
    "name": "Marco Antonio",
-   "quote": "Amici, Romani, concittadini, prestatemi orecchio!",
-   "quoteSource": "new",
+   "quote": "Amici, Romani, concittadini, porgetemi attento ascolto",
+   "quoteSource": "published",
    "scene": "Il Foro romano esplode di furia. Marco Antonio leva davanti alla folla il mantello insanguinato di Cesare; le sue parole mutano il lutto in fuoco. La repubblica crolla a ogni sillaba."
   },
   "MO-004": {
    "name": "Messer Montecchi",
    "nameSource": "translated",
-   "quote": "Molte mattine lo si è visto là, ad accrescere con le lacrime la fresca rugiada del mattino.",
-   "quoteSource": "new",
+   "quote": "Molte volte lo si è visto prevenir con queste corse l’aurora, per mescolar le sue lagrime colla rugiada del mattino",
+   "quoteSource": "published",
    "scene": "La tenuta dei Montecchi all’alba. Messer Montecchi guarda da un’alta finestra il figlio che vaga nei frutteti nebbiosi, malato d’amore e irraggiungibile."
   },
   "CA-003": {
    "name": "Madonna Capuleti",
    "nameSource": "translated",
-   "quote": "Sposarti, è proprio questo l’argomento di cui venivo a parlare.",
-   "quoteSource": "new",
+   "quote": "Ed è appunto di maritaggio che venni a favellarle.",
+   "quoteSource": "published",
    "scene": "Il salone dei Capuleti, parato di seta. Madonna Capuleti dispone il destino della figlia come fiori in un vaso; l’ambizione luccica dietro ogni sorriso cortese."
   },
   "DC-004": {
    "nameSource": "missing",
-   "quote": "Ora si spezza un nobile cuore. Buona notte, dolce principe.",
-   "quoteSource": "new",
+   "quote": "Ora scoppia il più nobile cuore! Amabile principe, addio",
+   "quoteSource": "published",
    "scene": "Gli spalti di Elsinore nell’ora fredda che precede l’alba. Orazio veglia accanto ad Amleto, l’unico vero amico in una corte di serpenti."
   },
   "FA-004": {
    "nameSource": "derived",
    "name": "Bottom",
-   "quote": "Ho avuto una visione rarissima. Ho fatto un sogno che supera l’ingegno dell’uomo.",
-   "quoteSource": "new",
+   "quote": "Ho avuta una ben strana visione. Ho avuto un sogno che è oltre le forze dell’uomo di poter esplicare",
+   "quoteSource": "published",
    "scene": "Una radura nel bosco accesa di luce fatata. Bottom porta una testa d’asino con stupefatta dignità mentre Titania lo copre di ghirlande. Le fate soffocano le risa."
   },
   "VC-004": {
    "nameSource": "wikidata",
    "name": "Conte Paride",
-   "quote": "Questi tempi di lutto non lasciano tempo al corteggiamento.",
-   "quoteSource": "new",
+   "quote": "Questi giorni di sventura non dànno agio alle cure d’amore.",
+   "quoteSource": "published",
    "scene": "Il cimitero di Verona all’imbrunire. Paride depone fiori sulla tomba di Giulietta, ignaro dell’amante disperato che si avvicina dall’ombra."
   },
   "TP-004": {
    "nameSource": "wikidata",
    "name": "Miranda",
-   "quote": "O splendido mondo nuovo, che ha in sé gente simile!",
-   "quoteSource": "new",
+   "quote": "come bello è il genere umano; come incantatore il mondo che possiede una tal gente!",
+   "quoteSource": "published",
    "scene": "Una spiaggia incontaminata sull’isola di Prospero. Miranda vede per la prima volta i naufraghi, con gli occhi spalancati di meraviglia davanti a un mondo che non sapeva esistesse."
   },
   "RL-004": {
    "name": "L’anello di Romeo",
    "nameSource": "translated",
-   "quote": "La mia generosità è sconfinata come il mare, il mio amore altrettanto profondo.",
-   "quoteSource": "new",
+   "quote": "il mio amore per te è vasto come l’Oceano; come l’Oceano è inesauribile",
+   "quoteSource": "published",
    "scene": "Un anello d’oro riposa sul davanzale di pietra di un balcone e cattura la luce della luna. All’interno è inciso un voto che sopravvive alla morte stessa. Petali di rosa gli turbinano attorno in un vento invisibile."
   },
   "RL-005": {
    "name": "Lo scrigno di Porzia",
    "nameSource": "translated",
-   "quote": "Non è tutto oro quel che luccica.",
-   "quoteSource": "new",
+   "quote": "Tutto quello che splende non è oro",
+   "quoteSource": "published",
    "scene": "Tre scrigni brillano in una stanza a lume di candela: oro, argento e piombo. Lo scrigno di piombo vibra di una quieta verità e premia chi è abbastanza saggio da guardare oltre le apparenze."
   },
   "RL-006": {
    "name": "La corona di Macbeth",
    "nameSource": "translated",
-   "quote": "Inquieto giace il capo che porta una corona.",
-   "quoteSource": "new",
+   "quote": "godete del dolce riposo! Esso non è fatto per la testa che cinge una corona!",
+   "quoteSource": "published",
    "scene": "Una corona scozzese annerita posa su un cuscino macchiato di sangue. Pulsa di oscura ambizione e sussurra promesse di gloria a ogni mano che osi tendersi verso di lei."
   },
   "RL-007": {
    "name": "Il codice della tempesta",
    "nameSource": "translated",
-   "quote": "Annegherò il mio libro.",
-   "quoteSource": "new",
+   "quote": "tufferò sotto le acque il mio libro magico",
+   "quoteSource": "published",
    "scene": "Un antico tomo, rilegato in cuoio consumato dal mare, fluttua sopra un altare di pietra. Le sue pagine si voltano da sole, e ognuna evoca una tempesta diversa."
   },
   "RL-008": {
    "name": "Le lacrime di Cordelia",
    "nameSource": "translated",
-   "quote": "O caro padre, sono i tuoi affari quelli di cui mi occupo.",
-   "quoteSource": "new",
+   "quote": "Oh caro padre! è per te solo che m’adopero",
+   "quoteSource": "published",
    "scene": "Una fiala di cristallo custodisce lacrime che brillano come luce di stelle imprigionata. Ogni goccia porta il dolore di una figlia che amò con troppa verità e parlò con troppa schiettezza."
   },
   "RL-009": {
    "name": "La maschera di Bottom",
    "nameSource": "translated",
-   "quote": "Dio ti benedica, Bottom! Sei trasformato!",
-   "quoteSource": "new",
+   "quote": "Il ciel ti benedica, Bottom, il Ciel ti benedica! tu sei ben cangiato.",
+   "quoteSource": "published",
    "scene": "Una maschera a testa d’asino pende da un ramo muscoso nel bosco delle fate. Chi la indossa vede il mondo con occhi incantati, e diventa irresistibile per le regine delle fate."
   },
   "PT-004": {
    "name": "Radice di mandragora",
    "nameSource": "translated",
-   "quote": "Né il papavero, né la mandragora, né tutti gli sciroppi soporiferi del mondo.",
-   "quoteSource": "new",
+   "quote": "nè l’oppio, nè la mandragola, nè tutti i calmanti dell’universo ti faran più trovare quel dolce sonno che ieri hai gustato per l’ultima volta.",
+   "quoteSource": "published",
    "scene": "Una radice nodosa, a forma di figura urlante, viene dissotterrata a lume di candela. La terra si sgretola e ne rivela il potere antico e contorto. Lo speziale la maneggia con tremante riverenza."
   },
   "PT-005": {
    "name": "Rugiada di Oberon",
    "nameSource": "translated",
-   "quote": "Portami quel fiore; l’erba che una volta ti mostrai.",
-   "quoteSource": "new",
+   "quote": "vammi a trovare quel fiore. Io già te l’ho indicato.",
+   "quoteSource": "published",
    "scene": "Una goccia di rugiada resta sospesa su un’orchidea al chiaro di luna e brilla di una luce violetta ultraterrena. Una goccia sulle palpebre addormentate, e chi sogna s’innamora della prima creatura che vede."
   },
   "PT-006": {
    "name": "Tintura di cicuta",
    "nameSource": "translated",
-   "quote": "Nella mia ora di quiete tuo zio si avvicinò furtivo, con il succo del maledetto giusquiamo in una fiala.",
-   "quoteSource": "new",
+   "quote": "fra pacifico sonno tuo zio mi sorprese, munito d’una fiala di veleno",
+   "quoteSource": "published",
    "scene": "Una fiala di vetro nero trasuda vapore verde in un corridoio buio. La tintura che contiene ha rovesciato re e spezzato dinastie, una goccia silenziosa dopo l’altra."
   },
   "PT-007": {
    "name": "Estratto di vischio",
    "nameSource": "translated",
-   "quote": "Nel calderone bolli e cuoci; occhio di tritone e dito di rana.",
-   "quoteSource": "new",
+   "quote": "Aggiungiamo anche il tronco d’un serpe di palude, e l’occhio d’una lucertola, e il piede d’una rana",
+   "quoteSource": "published",
    "scene": "Bacche pallide luccicano tra scure foglie sempreverdi, raccolte sotto una luna d’inverno. L’estratto vibra della magia quieta e tenace del mondo naturale."
   },
   "PT-008": {
    "name": "Lacrime di sirena",
    "nameSource": "translated",
-   "quote": "A cinque tese giace tuo padre; delle sue ossa si è fatto corallo.",
-   "quoteSource": "new",
+   "quote": "Sotto l’acque del mare tuo padre è sepolto; ma l’ossa sue rivivono cangiate in puro corallo.",
+   "quoteSource": "published",
    "scene": "Una fiasca dal tappo di perla custodisce un liquido azzurro luminoso che si muove come un mare vivo. Dentro, minuscoli coralli crescono e si dissolvono. Sa di sale e di viaggi dimenticati."
   },
   "PT-009": {
    "name": "Elisir dello speziale",
    "nameSource": "translated",
-   "quote": "Metti questo in qualunque liquido tu voglia e bevilo; e, avessi anche la forza di venti uomini, ti spaccerebbe all’istante.",
-   "quoteSource": "new",
+   "quote": "Mettete questa droga in quel liquido che più vi piacerà; bevete poscia: e se anche aveste la lena di venti uomini, sarete in breve consunto.",
+   "quoteSource": "published",
    "scene": "Una polverosa bottega di speziale nel quartiere più povero di Mantova. Un elisir disperato riluce d’ambra in una fiala incrinata, potente abbastanza da colmare il varco tra la vita e la morte."
   },
   "LD-001": {
@@ -401,8 +401,8 @@ const pack: CardTextPack = {
   "GC-003": {
    "nameSource": "wikidata",
    "name": "Edgar Allan Poe",
-   "quote": "Una volta, in una tetra mezzanotte, mentre meditavo, debole e stanco.",
-   "quoteSource": "new",
+   "quote": "Una volta, a mezzanotte, mentre stanco e affaticato",
+   "quoteSource": "published",
    "scene": "Una stanza in penombra, rischiarata da un fuoco morente. Poe è curvo sulla scrivania quando un corvo si posa sul busto di Pallade. La parola «Mai più» riecheggia nell’ombra."
   },
   "GC-004": {

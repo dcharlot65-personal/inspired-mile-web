@@ -66,3 +66,6 @@ DC-002|hamlet|Voici du romarin ; c’est comme souvenir
 CA-002|rj|Quoi, l’épée à la main, tu parles de paix ! Ce mot, je le hais
 SC-003|macbeth|Tu engendreras des rois, — sans être roi toi-même
 MO-004|rj|Voilà bien des matinées qu’on l’a vu là — augmenter de ses larmes la fraîche rosée du matin
+GC-003|raven|Une fois, par un minuit lugubre, tandis que je m’appesantissais, faible et fatigué
+GC-002|frankenstein|Prends-y garde ; car je suis sans crainte, et par conséquent puissant\.
+GC-005|westwind|Ô Vent, si l’Hiver s’approche, le Printemps peut-il être loin derrière \?

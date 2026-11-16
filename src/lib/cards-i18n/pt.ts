@@ -32,15 +32,15 @@ const pack: CardTextPack = {
   "DC-001": {
    "nameSource": "wikidata",
    "name": "Príncipe Hamlet",
-   "quote": "Ser ou não ser, eis a questão.",
-   "quoteSource": "new",
+   "quote": "Ser ou não ser, eis o problema.",
+   "quoteSource": "published",
    "scene": "O castelo de Elsinore emerge da sombra. Hamlet está nas ameias, com a caveira de Yorick a pairar ao seu lado. Uma figura espectral aparece nas muralhas."
   },
   "DC-002": {
    "nameSource": "wikidata",
    "name": "Ofélia",
-   "quote": "Aqui está o alecrim, que é para a lembrança.",
-   "quoteSource": "new",
+   "quote": "Toma, é rosmaninho a flor da lembrança.",
+   "quoteSource": "published",
    "scene": "Um regato manso serpenteia por um bosque de salgueiros. Ofélia flutua entre flores silvestres, sussurrando versos esquecidos. As pétalas rodopiam na corrente."
   },
   "MO-002": {
@@ -65,8 +65,8 @@ const pack: CardTextPack = {
   "RL-001": {
    "name": "A caveira de Yorick",
    "nameSource": "translated",
-   "quote": "Ai, pobre Yorick! Eu conheci-o, Horácio.",
-   "quoteSource": "new",
+   "quote": "Pobre Yorick! Conheci-o, Horacio",
+   "quoteSource": "published",
    "scene": "Uma caveira repousa sobre veludo numa cripta sombria. Um riso fantasmagórico ecoa enquanto as memórias do bobo da corte tremeluzem como a luz de uma vela."
   },
   "RL-002": {
@@ -144,8 +144,8 @@ const pack: CardTextPack = {
   },
   "DC-003": {
    "nameSource": "missing",
-   "quote": "As minhas palavras voam para o alto, os meus pensamentos ficam cá em baixo.",
-   "quoteSource": "new",
+   "quote": "Sobem as minhas palavras, o pensamento não, e as palavras sem o pensamento não chegam ao céu.",
+   "quoteSource": "published",
    "scene": "A sala do trono de Elsinore, coberta de falso esplendor. Cláudio agarra a coroa, com um frasco de veneno escondido nas vestes."
   },
   "FA-003": {
@@ -327,8 +327,8 @@ const pack: CardTextPack = {
   "PT-006": {
    "name": "Tintura de cicuta",
    "nameSource": "translated",
-   "quote": "Na minha hora de sossego o teu tio aproximou-se furtivo, com sumo de maldito meimendro num frasco.",
-   "quoteSource": "new",
+   "quote": "teu tio, aproveitando a minha inconsciencia, approximou-se de mim, munido de um frasco de meimendro",
+   "quoteSource": "published",
    "scene": "Um frasco de vidro negro exala vapor verde num corredor às escuras. A tintura que contém derrubou reis e desfez dinastias, uma gota silenciosa de cada vez."
   },
   "PT-007": {
@@ -393,8 +393,8 @@ const pack: CardTextPack = {
   "GC-003": {
    "nameSource": "wikidata",
    "name": "Edgar Allan Poe",
-   "quote": "Certa vez, numa meia-noite sombria, enquanto eu meditava, fraco e cansado.",
-   "quoteSource": "new",
+   "quote": "Em certo dia, á hora, á hora / Da meia-noite que apavora, / Eu, cahindo de somno e exausto de fadiga",
+   "quoteSource": "published",
    "scene": "Um aposento sombrio alumiado por um fogo que morre. Poe está curvado sobre a secretária quando um corvo pousa no busto de Palas. A palavra «Nunca mais» ecoa nas sombras."
   },
   "GC-004": {

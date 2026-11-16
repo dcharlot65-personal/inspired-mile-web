@@ -58,5 +58,25 @@
   "offset": 129986,
   "matches": 1,
   "regex": "So grenzenlos ist meine Huld, die Liebe So tief ja wie das Meer"
+ },
+ "GC-003": {
+  "text": "Eines Nachts aus gelben Blättern mit verblichnen Runenlettern",
+  "work": "raven",
+  "page": "Der Rabe (Übersetzung Lachmann)",
+  "url": "https://de.wikisource.org/wiki/Der_Rabe_%28%C3%9Cbersetzung_Lachmann%29?oldid=3780040",
+  "revid": 3780040,
+  "offset": 1013,
+  "matches": 1,
+  "regex": "Eines Nachts aus gelben Blättern mit verblichnen Runenlettern"
+ },
+ "GC-005": {
+  "text": "Wenn Winter naht, kann fern der Frühling sein?",
+  "work": "westwind",
+  "page": "Ode an den Westwind",
+  "url": "https://de.wikisource.org/wiki/Ode_an_den_Westwind?oldid=1624821",
+  "revid": 1624821,
+  "offset": 3909,
+  "matches": 1,
+  "regex": "Wenn Winter naht, kann fern der Frühling sein\\?"
  }
 }

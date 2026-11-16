@@ -22,8 +22,8 @@ const pack: CardTextPack = {
   "CA-001": {
    "nameSource": "wikidata",
    "name": "Julia Kapulet",
-   "quote": "Cóż jest w imieniu? To, co zwiemy różą...",
-   "quoteSource": "new",
+   "quote": "Cóż jest w nazwisku? Co różą zowiemy, / Pod innem mianem dawną woń zachowa",
+   "quoteSource": "published",
    "scene": "Ogród Kapuletów kwitnie w świetle księżyca. Julia stoi wśród róż, a jej oczy błyszczą przekorą. W gałęziach śpiewa słowik."
   },
   "DC-001": {
@@ -89,8 +89,8 @@ const pack: CardTextPack = {
   },
   "VC-001": {
    "nameSource": "missing",
-   "quote": "Jeśli jeszcze raz zakłócicie spokój naszych ulic, życiem zapłacicie za złamanie pokoju.",
-   "quoteSource": "new",
+   "quote": "Jeśli raz jeszcze zaburzycie pokój, / Żywotem wasze opłacicie waśnie.",
+   "quoteSource": "published",
    "scene": "Książę stoi na stopniach pałacu w Weronie; jego głos nakazuje milczenie zwaśnionemu tłumowi. Złote berło płonie władzą."
   },
   "VC-002": {
@@ -101,8 +101,8 @@ const pack: CardTextPack = {
   },
   "VC-003": {
    "nameSource": "missing",
-   "quote": "Jestem wyrobnicą i trudzę się dla twojej rozkoszy.",
-   "quoteSource": "new",
+   "quote": "Dziś ciężar mojem tylko jest strapieniem, / Lecz i na ciebie spadnie z nocy cieniem.",
+   "quoteSource": "published",
    "scene": "Ciepła kuchnia w domu Kapuletów. Niania krząta się z zaciętym oddaniem, z tajnym listem wsuniętym za fartuch."
   },
   "TP-001": {
@@ -128,15 +128,15 @@ const pack: CardTextPack = {
   "MO-003": {
    "nameSource": "wikidata",
    "name": "Benvolio",
-   "quote": "Ja tylko strzegę pokoju. Schowaj swój miecz.",
-   "quoteSource": "new",
+   "quote": "Włóż miecz do pochwy",
+   "quoteSource": "published",
    "scene": "Plac w Weronie o świcie. Benvolio staje między dobytymi mieczami; jego otwarte dłonie to jedyna broń przeciw nadciągającej burzy."
   },
   "CA-002": {
    "nameSource": "wikidata",
    "name": "Tybalt",
-   "quote": "Co, z dobytym mieczem mówisz o pokoju? Nienawidzę tego słowa.",
-   "quoteSource": "new",
+   "quote": "Z dobytym mieczem o pokoju prawisz? / Tak nienawidzę z twych ust słów pokoju",
+   "quoteSource": "published",
    "scene": "Zaułek Werony rozświetlony pochodniami. Tybalt dobywa rapiera ze śmiertelnym wdziękiem, z oczami utkwionymi we wrogu."
   },
   "DC-003": {
@@ -225,29 +225,29 @@ const pack: CardTextPack = {
   "RM-003": {
    "nameSource": "wikidata",
    "name": "Marek Antoniusz",
-   "quote": "Przyjaciele, Rzymianie, rodacy, użyczcie mi uszu!",
-   "quoteSource": "new",
+   "quote": "Obywatele, rodacy, Rzymianie, / O jedną chwilę posłuchania proszę.",
+   "quoteSource": "published",
    "scene": "Forum Romanum wybucha wściekłością. Marek Antoniusz unosi przed tłumem zakrwawiony płaszcz Cezara; jego słowa zmieniają żałobę w ogień. Republika rozpada się z każdą sylabą."
   },
   "MO-004": {
    "name": "Pan Monteki",
    "nameSource": "translated",
-   "quote": "Wiele poranków widziano go tam, jak łzami pomnażał świeżą poranną rosę.",
-   "quoteSource": "new",
+   "quote": "Już to niejeden ranek go tam widzą, / Jak łzami świeżą, ranną mnoży rosę",
+   "quoteSource": "published",
    "scene": "Posiadłość Montekich o świcie. Pan Monteki patrzy z wysokiego okna, jak jego syn błąka się po zamglonych sadach, chory z miłości i nieosiągalny."
   },
   "CA-003": {
    "name": "Pani Kapulet",
    "nameSource": "translated",
-   "quote": "Zamążpójście, to właśnie sprawa, o której przyszłam mówić.",
-   "quoteSource": "new",
+   "quote": "Właśnie, że zamęźcie / Dziś będzie naszej rozmowy przedmiotem.",
+   "quoteSource": "published",
    "scene": "Wielka sala Kapuletów, udrapowana jedwabiem. Pani Kapulet układa los córki jak kwiaty w wazonie; za każdym łaskawym uśmiechem lśni ambicja."
   },
   "DC-004": {
    "nameSource": "wikidata",
    "name": "Horacy",
-   "quote": "Teraz pęka szlachetne serce. Dobranoc, słodki książę.",
-   "quoteSource": "new",
+   "quote": "Wielkie pękło serce. / Dobra noc, książę!",
+   "quoteSource": "published",
    "scene": "Blanki Elsynoru w zimnej godzinie przed świtem. Horacy czuwa u boku Hamleta, jedyny prawdziwy przyjaciel na dworze pełnym węży."
   },
   "FA-004": {
@@ -258,8 +258,8 @@ const pack: CardTextPack = {
   },
   "VC-004": {
    "nameSource": "missing",
-   "quote": "Te czasy żałoby nie dają czasu na zaloty.",
-   "quoteSource": "new",
+   "quote": "Czas żalu złym jest czasem do zalotów.",
+   "quoteSource": "published",
    "scene": "Cmentarz w Weronie o zmierzchu. Parys składa kwiaty na grobie Julii, nieświadom zrozpaczonego kochanka, który zbliża się z cienia."
   },
   "TP-004": {
@@ -272,15 +272,15 @@ const pack: CardTextPack = {
   "RL-004": {
    "name": "Pierścień Romea",
    "nameSource": "translated",
-   "quote": "Moja hojność jest bezbrzeżna jak morze, moja miłość równie głęboka.",
-   "quoteSource": "new",
+   "quote": "Bo miłość moja, jak morze bez granic / I niezgłębione",
+   "quoteSource": "published",
    "scene": "Złoty pierścień leży na kamiennej balustradzie balkonu i chwyta blask księżyca. Wewnątrz wyryto przysięgę, która przetrwa samą śmierć. Płatki róż wirują wokół niego w niewidzialnym wietrze."
   },
   "RL-005": {
    "name": "Szkatułka Porcji",
    "nameSource": "translated",
-   "quote": "Nie wszystko złoto, co się świeci.",
-   "quoteSource": "new",
+   "quote": "Nie wszystko ma wagę złota, / Co jak złoto czyste świeci",
+   "quoteSource": "published",
    "scene": "Trzy szkatułki lśnią w komnacie oświetlonej świecami: złota, srebrna i ołowiana. Ołowiana szkatułka brzmi cichą prawdą i nagradza tych, którzy są dość mądrzy, by spojrzeć poza pozory."
   },
   "RL-006": {
@@ -293,8 +293,8 @@ const pack: CardTextPack = {
   "RL-007": {
    "name": "Kodeks burzy",
    "nameSource": "translated",
-   "quote": "Utopię moją księgę.",
-   "quoteSource": "new",
+   "quote": "A potem księgę na dno rzucę morza, / Głębiej, niż sonda kiedybądż dosięgła.",
+   "quoteSource": "published",
    "scene": "Pradawna księga, oprawna w skórę zniszczoną przez morze, unosi się nad kamiennym ołtarzem. Jej karty przewracają się same, a każda przywołuje inną burzę."
   },
   "RL-008": {
@@ -321,8 +321,8 @@ const pack: CardTextPack = {
   "PT-005": {
    "name": "Rosa Oberona",
    "nameSource": "translated",
-   "quote": "Przynieś mi ten kwiat; ziele, które ci kiedyś pokazałem.",
-   "quoteSource": "new",
+   "quote": "Pamiętam, że ci kwiat ten pokazałem; / Leć mi go przynieść.",
+   "quoteSource": "published",
    "scene": "Kropla rosy trzyma się storczyka w blasku księżyca i jarzy się nieziemskim fioletowym światłem. Jedna kropla na uśpione powieki, a śniący zakocha się w pierwszym stworzeniu, które zobaczy."
   },
   "PT-006": {
@@ -342,15 +342,15 @@ const pack: CardTextPack = {
   "PT-008": {
    "name": "Łzy syreny",
    "nameSource": "translated",
-   "quote": "Na pięć sążni głęboko leży twój ojciec; z jego kości powstał koral.",
-   "quoteSource": "new",
+   "quote": "Ojca morskie tulą fale; / Z kości jego są korale",
+   "quoteSource": "published",
    "scene": "Flakon z perłowym korkiem kryje świetlisty błękitny płyn, który porusza się jak żywe morze. Wewnątrz rosną i rozpuszczają się maleńkie koralowce. Pachnie solą i zapomnianymi podróżami."
   },
   "PT-009": {
    "name": "Eliksir aptekarza",
    "nameSource": "translated",
-   "quote": "Wlej to do jakiegokolwiek płynu i wypij; a choćbyś miał siłę dwudziestu ludzi, zgładzi cię natychmiast.",
-   "quoteSource": "new",
+   "quote": "Wsypiesz ten proszek w jakikolwiek napój, / A gdy wypijesz, chociażbyś miał siły / Dwudziestu mężów, upadniesz bez ducha.",
+   "quoteSource": "published",
    "scene": "Zakurzona apteka w najuboższej dzielnicy Mantui. Eliksir rozpaczy jarzy się bursztynowo w pękniętej fiolce, dość mocny, by przerzucić most między życiem a śmiercią."
   },
   "LD-001": {

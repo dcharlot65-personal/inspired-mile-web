@@ -15,36 +15,36 @@ const pack: CardTextPack = {
   "MO-001": {
    "nameSource": "wikidata",
    "name": "Romeo",
-   "quote": "Pero, ¡silencio! ¿Qué luz asoma por aquella ventana?",
-   "quoteSource": "new",
+   "quote": "¿Pero qué luz es la que asoma por allí?",
+   "quoteSource": "published",
    "scene": "Se despliega la escena de un balcón a la luz de la luna. Romeo tiende la mano hacia lo alto mientras Julieta aparece arriba. Pétalos de rosa flotan en el aire. La escena late con un cálido resplandor carmesí."
   },
   "CA-001": {
    "nameSource": "wikidata",
    "name": "Julieta",
-   "quote": "¿Qué hay en un nombre? Lo que llamamos rosa...",
-   "quoteSource": "new",
+   "quote": "¿Porqué no tomas otro nombre? La rosa no dejaria de ser rosa, y de esparcir su aroma, aunque se llamase de otro modo.",
+   "quoteSource": "published",
    "scene": "El jardín de los Capuleto florece a la luz de la luna. Julieta está entre las rosas, con los ojos brillantes de desafío. Un ruiseñor canta desde las ramas."
   },
   "DC-001": {
    "nameSource": "wikidata",
    "name": "Príncipe Hamlet",
-   "quote": "Ser o no ser, esa es la cuestión.",
-   "quoteSource": "new",
+   "quote": "Ser, o no ser, ésa es la cuestión.",
+   "quoteSource": "published",
    "scene": "El castillo de Elsinor emerge de la sombra. Hamlet está en las almenas, con la calavera de Yorick flotando a su lado. Una figura espectral aparece en lo alto de la muralla."
   },
   "DC-002": {
    "nameSource": "wikidata",
    "name": "Ofelia",
-   "quote": "Aquí hay romero, que es para el recuerdo.",
-   "quoteSource": "new",
+   "quote": "Aquí traigo romero, que es bueno para la memoria.",
+   "quoteSource": "published",
    "scene": "Un arroyo manso serpentea por un bosque de sauces. Ofelia flota entre flores silvestres, susurrando versos olvidados. Los pétalos giran en la corriente."
   },
   "MO-002": {
    "nameSource": "wikidata",
    "name": "Mercucio",
-   "quote": "¡Mala peste a vuestras dos casas!",
-   "quoteSource": "new",
+   "quote": "¡Mala peste á Capuletos y Móntescos!",
+   "quoteSource": "published",
    "scene": "Una calle de Verona estalla en caos. Mercucio baila entre las espadas, riéndose del peligro. Saltan chispas del acero que choca."
   },
   "FA-001": {
@@ -64,8 +64,8 @@ const pack: CardTextPack = {
   "RL-001": {
    "name": "La calavera de Yorick",
    "nameSource": "translated",
-   "quote": "¡Ay, pobre Yorick! Yo lo conocí, Horacio.",
-   "quoteSource": "new",
+   "quote": "¡Ay! ¡Pobre Yorick! Yo le conocí, Horacio",
+   "quoteSource": "published",
    "scene": "Una calavera reposa sobre terciopelo en una cripta en penumbra. Resuena una risa fantasmal mientras los recuerdos del bufón de la corte tiemblan como la luz de una vela."
   },
   "RL-002": {
@@ -85,21 +85,21 @@ const pack: CardTextPack = {
   "PT-002": {
    "name": "Brebaje de las brujas",
    "nameSource": "translated",
-   "quote": "Dobla, dobla, afán y tormento.",
-   "quoteSource": "new",
+   "quote": "Aumente el trabajo: crezca la labor: hierva la caldera.",
+   "quoteSource": "published",
    "scene": "Un caldero burbujeante escupe humo verde. Tres figuras sombrías lo rodean, salmodiando. Unos ojos brillan desde el bosque oscuro."
   },
   "VC-001": {
    "nameSource": "missing",
-   "quote": "Si alguna vez volvéis a perturbar nuestras calles, vuestras vidas pagarán el quebranto de la paz.",
-   "quoteSource": "new",
+   "quote": "Si volveis á turbar el sosiego de nuestra ciudad, me respondereis con vuestras cabezas.",
+   "quoteSource": "published",
    "scene": "El Príncipe está en la escalinata del palacio de Verona; su voz impone silencio a la multitud enfrentada. Un cetro dorado arde de autoridad."
   },
   "VC-002": {
    "nameSource": "wikidata",
    "name": "Fray Lorenzo",
-   "quote": "Estos placeres violentos tienen finales violentos.",
-   "quoteSource": "new",
+   "quote": "Nada violento es duradero: ni el placer ni la pena",
+   "quoteSource": "published",
    "scene": "Una celda de monasterio a la luz de las velas. El fraile cuida su huerto de hierbas y venenos, con la sabiduría grabada en el rostro curtido."
   },
   "VC-003": {
@@ -139,15 +139,15 @@ const pack: CardTextPack = {
   "MO-003": {
    "nameSource": "wikidata",
    "name": "Benvolio",
-   "quote": "Yo solo mantengo la paz. Envaina tu espada.",
-   "quoteSource": "new",
+   "quote": "Los estoy poniendo en paz. Envaina tú",
+   "quoteSource": "published",
    "scene": "Una plaza de Verona al amanecer. Benvolio se interpone entre espadas desnudas; sus manos abiertas son la única arma contra la tormenta que se avecina."
   },
   "CA-002": {
    "nameSource": "wikidata",
    "name": "Teobaldo",
-   "quote": "¿Qué, espada en mano y hablas de paz? Odio esa palabra.",
-   "quoteSource": "new",
+   "quote": "¡Hablarme de paz, cuando tengo el acero en la mano! Más odiosa me es tal palabra que el infierno mismo",
+   "quoteSource": "published",
    "scene": "Un callejón de Verona incendiado por las antorchas. Tebaldo desenvaina su estoque con gracia letal, con los ojos clavados en su enemigo."
   },
   "DC-003": {
@@ -156,8 +156,8 @@ const pack: CardTextPack = {
    "aliases": [
     "Claudio"
    ],
-   "quote": "Mis palabras vuelan a lo alto, mis pensamientos quedan abajo.",
-   "quoteSource": "new",
+   "quote": "Mis palabras suben al cielo, mis afectos quedan en la tierra.",
+   "quoteSource": "published",
    "scene": "El salón del trono de Elsinor, revestido de falso esplendor. Claudio aferra la corona, con un frasco de veneno oculto en sus ropas."
   },
   "FA-003": {
@@ -173,8 +173,8 @@ const pack: CardTextPack = {
   "RL-003": {
    "name": "La daga de la mente",
    "nameSource": "translated",
-   "quote": "¿Es un puñal esto que veo ante mí?",
-   "quoteSource": "new",
+   "quote": "¡Me parece estar viendo el puño de una daga vuelta hacia mí!",
+   "quoteSource": "published",
    "scene": "Una daga espectral flota en la oscuridad, con la hoja goteando sangre fantasma. La mano de Macbeth se alarga, pero nunca logra asirla."
   },
   "PT-003": {
@@ -187,22 +187,22 @@ const pack: CardTextPack = {
   "SC-001": {
    "nameSource": "wikidata",
    "name": "Macbeth",
-   "quote": "Me atrevo a todo lo que conviene a un hombre; quien se atreve a más no lo es.",
-   "quoteSource": "new",
+   "quote": "Me atrevo á hacer lo que cualquiera otro hombre haría, pero esto no es humano.",
+   "quoteSource": "published",
    "scene": "Un salón del trono manchado de sangre en Dunsinane. Macbeth empuña la espada con manos temblorosas; la corona le pesa en la frente. El bosque de Birnam se mueve en la colina lejana."
   },
   "SC-002": {
    "nameSource": "wikidata",
    "name": "Lady Macbeth",
-   "quote": "Venid, espíritus que servís a los pensamientos de muerte, quitadme aquí mi sexo.",
-   "quoteSource": "new",
+   "quote": "¡Espíritus agitadores del pensamiento, despojadme de mi sexo",
+   "quoteSource": "published",
    "scene": "Una cámara del castillo escocés a la luz de las velas. Lady Macbeth recorre las frías losas, frotándose de las manos manchas de sangre que no existen. Las sombras se le pegan como una segunda piel."
   },
   "SC-003": {
    "nameSource": "wikidata",
    "name": "Banquo",
-   "quote": "Engendrarás reyes, aunque tú no lo seas.",
-   "quoteSource": "new",
+   "quote": "No rey, pero padre de reyes.",
+   "quoteSource": "published",
    "scene": "Un páramo escocés brumoso al crepúsculo. Banquo se mantiene firme mientras tres figuras espectrales susurran destinos al viento. Su fantasma perseguirá a los vivos."
   },
   "IL-001": {
@@ -226,29 +226,29 @@ const pack: CardTextPack = {
   "RM-001": {
    "nameSource": "derived",
    "name": "Bruto",
-   "quote": "No porque amara menos a César, sino porque amaba más a Roma.",
-   "quoteSource": "new",
+   "quote": "no porque amara menos á César, sino porque amaba más á Roma.",
+   "quoteSource": "published",
    "scene": "El Senado romano, con las columnas de mármol teñidas de carmesí. Bruto está entre los conjurados, con la hoja aún temblando. El peso de la república descansa en sus manos ensangrentadas."
   },
   "RM-002": {
    "nameSource": "derived",
    "name": "Casio",
-   "quote": "La culpa, querido Bruto, no está en nuestras estrellas, sino en nosotros mismos.",
-   "quoteSource": "new",
+   "quote": "La culpa, querido Bruto, no es de nuestras estrellas, sino de nosotros mismos, si consentimos en ser inferiores.",
+   "quoteSource": "published",
    "scene": "Un callejón romano a medianoche, a la luz de las antorchas. Casio se acerca y susurra sedición con mirada flaca y hambrienta. De su toga caen cartas falsificadas."
   },
   "RM-003": {
    "nameSource": "wikidata",
    "name": "Marco Antonio",
-   "quote": "¡Amigos, romanos, compatriotas, prestadme oídos!",
-   "quoteSource": "new",
+   "quote": "Amigos, romanos, compatriotas, prestadme atención.",
+   "quoteSource": "published",
    "scene": "El Foro romano estalla de furia. Marco Antonio alza ante la turba el manto ensangrentado de César; sus palabras convierten el duelo en fuego. La república se derrumba con cada sílaba."
   },
   "MO-004": {
    "name": "Señor Montesco",
    "nameSource": "translated",
-   "quote": "Muchas mañanas se le ha visto allí, aumentando con lágrimas el fresco rocío de la mañana.",
-   "quoteSource": "new",
+   "quote": "Dicen que va allí con frecuencia á juntar su llanto con el rocío de la mañana",
+   "quoteSource": "published",
    "scene": "La hacienda de los Montesco al amanecer. El señor Montesco mira desde una ventana alta a su hijo, que vaga por los huertos brumosos, enfermo de amor e inalcanzable."
   },
   "CA-003": {
@@ -261,8 +261,8 @@ const pack: CardTextPack = {
   "DC-004": {
    "nameSource": "wikidata",
    "name": "Horacio",
-   "quote": "Ahora se quiebra un noble corazón. Buenas noches, dulce príncipe.",
-   "quoteSource": "new",
+   "quote": "En fin, ¡se rompe ese gran corazón! Adiós, adiós, amado Príncipe.",
+   "quoteSource": "published",
    "scene": "Las almenas de Elsinor en la hora fría que precede al alba. Horacio vela junto a Hamlet, el único amigo verdadero en una corte de serpientes."
   },
   "FA-004": {
@@ -275,8 +275,8 @@ const pack: CardTextPack = {
   "VC-004": {
    "nameSource": "wikidata",
    "name": "Conde París",
-   "quote": "Estos tiempos de duelo no dejan tiempo para el cortejo.",
-   "quoteSource": "new",
+   "quote": "Ni es ésta ocasion de galanterías sino de duelo.",
+   "quoteSource": "published",
    "scene": "El cementerio de Verona al anochecer. Paris deja flores en la tumba de Julieta, sin saber del amante desesperado que se acerca desde las sombras."
   },
   "TP-004": {
@@ -289,15 +289,15 @@ const pack: CardTextPack = {
   "RL-004": {
    "name": "El anillo de Romeo",
    "nameSource": "translated",
-   "quote": "Mi generosidad es tan ilimitada como el mar, mi amor tan profundo.",
-   "quoteSource": "new",
+   "quote": "mi afán de dártelo toda es tan profundo y tan sin límite como los abismos de la mar.",
+   "quoteSource": "published",
    "scene": "Un anillo de oro descansa en el antepecho de piedra de un balcón y recoge la luz de la luna. Dentro lleva grabado un voto que sobrevive a la muerte misma. Pétalos de rosa giran a su alrededor en un viento invisible."
   },
   "RL-005": {
    "name": "El cofre de Portia",
    "nameSource": "translated",
-   "quote": "No es oro todo lo que reluce.",
-   "quoteSource": "new",
+   "quote": "No es oro todo lo que reluce",
+   "quoteSource": "published",
    "scene": "Tres cofres relucen en una cámara a la luz de las velas: oro, plata y plomo. El de plomo vibra con una verdad callada y premia a quien sabe ver más allá de las apariencias."
   },
   "RL-006": {
@@ -331,8 +331,8 @@ const pack: CardTextPack = {
   "PT-004": {
    "name": "Raíz de mandrágora",
    "nameSource": "translated",
-   "quote": "Ni la adormidera, ni la mandrágora, ni todos los jarabes soporíferos del mundo.",
-   "quoteSource": "new",
+   "quote": "No podrás conciliar hoy el sueño tan apaciblemente como ayer, aunque la adormidera, el beleño y la mandrágora mezclen para tí sus adormecedores jugos.",
+   "quoteSource": "published",
    "scene": "Una raíz nudosa con forma de figura que grita es desenterrada a la luz de una vela. La tierra se desmorona y deja ver su poder antiguo y retorcido. El boticario la maneja con reverencia temblorosa."
   },
   "PT-005": {
@@ -345,15 +345,15 @@ const pack: CardTextPack = {
   "PT-006": {
    "name": "Tintura de cicuta",
    "nameSource": "translated",
-   "quote": "En mi hora de descanso tu tío se acercó a hurtadillas, con jugo de maldito beleño en un frasco.",
-   "quoteSource": "new",
+   "quote": "Tu tío me sorprende en aquella hora de quietud, y trayendo consigo una ampolla de licor venenoso",
+   "quoteSource": "published",
    "scene": "Un frasco de vidrio negro exhala vapor verde en un corredor a oscuras. La tintura que encierra ha derribado reyes y deshecho dinastías, gota silenciosa a gota silenciosa."
   },
   "PT-007": {
    "name": "Extracto de muérdago",
    "nameSource": "translated",
-   "quote": "En el caldero hierve y cuece; ojo de tritón y dedo de rana.",
-   "quoteSource": "new",
+   "quote": "ojos de lagarto, músculos de rana",
+   "quoteSource": "published",
    "scene": "Unas bayas pálidas relucen entre oscuras hojas perennes, recogidas bajo una luna de invierno. El extracto vibra con la magia callada y tenaz del mundo natural."
   },
   "PT-008": {
@@ -366,8 +366,8 @@ const pack: CardTextPack = {
   "PT-009": {
    "name": "Elixir del boticario",
    "nameSource": "translated",
-   "quote": "Echa esto en cualquier líquido que quieras y bébelo; y, aunque tuvieras la fuerza de veinte hombres, te despacharía al instante.",
-   "quoteSource": "new",
+   "quote": "desleidlo en agua ó en un licor cualquiera, bebedlo, y caereis muerto en seguida, aunque tengais la fuerza de veinte hombres.",
+   "quoteSource": "published",
    "scene": "Una polvorienta botica en el barrio más pobre de Mantua. Un elixir desesperado brilla, ambarino, en un frasco agrietado, con fuerza bastante para salvar la distancia entre la vida y la muerte."
   },
   "LD-001": {
@@ -411,8 +411,8 @@ const pack: CardTextPack = {
   "GC-003": {
    "nameSource": "wikidata",
    "name": "Edgar Allan Poe",
-   "quote": "Una vez, en una lúgubre medianoche, mientras meditaba, débil y cansado.",
-   "quoteSource": "new",
+   "quote": "Una fosca media noche, cuando en tristes reflexiones",
+   "quoteSource": "published",
    "scene": "Una estancia en penumbra, alumbrada por un fuego que muere. Poe está encorvado sobre su escritorio cuando un cuervo se posa en el busto de Palas. La palabra «Nunca más» resuena en las sombras."
   },
   "GC-004": {
