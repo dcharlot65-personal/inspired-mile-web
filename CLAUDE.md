@@ -93,6 +93,8 @@ left behind by a killed run is found by its port: `lsof -nP -iTCP:<port> -sTCP:L
   CLDR's or Wikidata's, kept in the areas (Chromium's ICU has no names for sub-regions, so
   `Intl.DisplayNames` is not used for them); a count is written "label: number", never number + noun. Card, city and
   achievement data is named by `src/i18n/pages/terms.ts`, card rules by `rules-text.ts`.
+  A quotation goes through `quoted()` (the language's marks from CLDR, the line in `<bdi>` so
+  an English line keeps its punctuation on the Arabic page).
   The layout takes `titleKey`, `descriptionKey` and `i18nAreas` for the document title and
   description. Translated so far: home, about, collection, profile, world map (areas `home`,
   `about`, `collection`, `profile`, `world-map`, `variants`, `card-terms`, `rules`,

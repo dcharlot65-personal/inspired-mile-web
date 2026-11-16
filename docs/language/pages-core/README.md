@@ -18,6 +18,7 @@ RESULTS.md, beside this file, says what those tools found.
 | Text | Source | Kept in |
 |---|---|---|
 | Numbers, percentages, dates, month names, lists | The browser's `Intl` (Unicode CLDR), at run time: `num`, `percent`, `day`, `monthOfYear`, `list` in `src/i18n/pages/runtime.ts`. No string of ours. | nowhere |
+| Quotation marks around a card's line | CLDR 49 `delimiters.json` (quotationStart, quotationEnd); French adds its no-break spaces inside « ». `quoted()` in `src/i18n/pages/runtime.ts`. | `cldr-quotes.json` |
 | Regions of the world ("Western Africa") | CLDR 46 territory names by UN M.49 code (cldr-localenames-full 46.0.0), kept in the `variants` area. Not asked of `Intl.DisplayNames` at run time: Chromium's trimmed ICU data answers "011" for Western Africa (seen in the browser tests, 2026-11-16). English changed with it: "West Africa" is now "Western Africa", "South Asia" "Southern Asia", as CLDR has them. | `variants/<lang>.ts`, `cldr-exemplar-cities.json` |
 | City names, 16 of 20 | CLDR 46 `exemplarCity` (cldr-dates-full 46.0.0, timeZoneNames), where the language lists one; otherwise the Wikidata label. | `variants/<lang>.ts`, `cldr-exemplar-cities.json` |
 | City names: Brooklyn, Mumbai, Osaka, Kingston | Wikidata labels (CLDR has no time zone named for them). | `variants/<lang>.ts`, `wikidata-labels.json` |
@@ -36,6 +37,10 @@ be "corrected" from memory without the record being changed too.
   `…/cldr-localenames-full@46.0.0/main/<locale>/territories.json`
   (`node scripts/pages-lang/fetch-cldr-cities.mjs`). Number, date and list formats are not
   fetched: they are whatever CLDR the player's browser ships.
+- Unicode CLDR 49.0.0, Unicode License v3. Quotation marks fetched 2026-11-16 from
+  `https://raw.githubusercontent.com/unicode-org/cldr-json/49.0.0/cldr-json/cldr-misc-full/main/<lang>/delimiters.json`
+  (`node scripts/pages-lang/fetch-cldr-quotes.mjs`). The same values as `docs/language/sources/cldr.json`
+  on branch `lang/qa-pipeline`.
 - Wikidata, CC0 1.0. Labels fetched 2026-11-16 with `wbgetentities` for the item ids recorded in
   `wikidata-labels.json`. For Chinese the `zh-cn` label is used, then `zh-hans`, then `zh`; for
   Portuguese `pt-br`, then `pt`. The file says which was used for each item.
@@ -115,6 +120,21 @@ Taken from the core locale files; these pages introduce no second word for any o
 | th | บทกลอน | ยก | สำรับ | การ์ด | ของวิเศษ | ยาวิเศษ | การประชัน | การประชัน | ฝีมือ | ตระกูล |
 | id | syair | ronde | dek | kartu | relik | ramuan | duel | pertarungan | keahlian | wangsa |
 
+Also from the core files, and held to them by `scripts/pages-lang/mechanical.mjs` (its
+`CORE_TERMS`, each with the key it was read from): trivia (es **el Trivial**, fr/de/it/pt/pl
+Quiz, ru викторина, ar مسابقة, hi प्रश्नोत्तरी, zh 问答, ja クイズ, ko 퀴즈, vi đố vui, th ควิซ, id
+kuis), achievement, world card, collection and multiplayer. A card variant is संस्करण in Hindi:
+the core files use रूप for the verse form (छंद-रूप), so it cannot also mean a variant.
+
+### Labels that another branch also translates
+
+Branch `lang/names-quotes` (the card data layer) carries its own house, element, rarity and
+type labels per language, translated for the game as these are. 126 of the 1,214 labels the
+two have in common differ (`labels-vs-names-quotes.tsv`; for example Polish Montekowie and
+Monteki, Russian Подземный мир and Подземное царство). When both branches are in main, one
+module should own these labels and the other should read them from it; that is not decided
+here.
+
 Things found in the core files while reading them, left as they are (those files belong to the
 quality pass on branch `lang/qa-pipeline`):
 
@@ -137,6 +157,14 @@ RB='export PATH=$HOME/.cargo/bin:/opt/homebrew/bin:$PATH;'
 ~/kani-logs/remote/rb . -- "$RB npx vitest run src/i18n/pages.test.ts"
 # the five pages in sixteen languages, in a browser
 ~/kani-logs/remote/rb . -- "$RB npx playwright test tests/pages-i18n.spec.ts"
+# that the page unit tests can go red (one break at a time, every file restored)
+~/kani-logs/remote/rb . -- "$RB node scripts/mutate-pages.mjs"
+# French and German spacing (light: runs anywhere); --check changes nothing
+python3 scripts/pages-lang/typography.py --check
+# the mechanical rules and glossary of lang/qa-pipeline over these areas (light: runs anywhere)
+QA_SRC=$(mktemp -d); git archive lang/qa-pipeline scripts/lang src/lib/verse/msg.ts docs/language | tar -x -C "$QA_SRC"
+QA_SRC=$QA_SRC node scripts/pages-lang/mechanical.mjs --selftest
+QA_SRC=$QA_SRC node scripts/pages-lang/mechanical.mjs
 # spelling (Hunspell) and back-translation (MADLAD-400), with the tools branch lang/qa-pipeline installed
 Q=/Volumes/macos_4TB_external_1/wai-build/im-lang/qa-pipeline
 ~/kani-logs/remote/rb . -- "$RB HSPELL=$Q/hunspell/bin/hspell DICT_DIR=$Q/dict node scripts/pages-lang/spell.mjs --selftest"
