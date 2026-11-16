@@ -1,0 +1,63 @@
+// Proves the page-area tests can fail: breaks one thing at a time in a page area, a data file or
+// the provenance record, runs the page unit tests, and expects them to go red. Run it on the
+// build host, in a checkout that can be thrown away (rb's is one):
+//
+//   node scripts/mutate-pages.mjs
+//
+// Every file is restored afterwards. Exit status 1 if any mutation went unnoticed.
+import { execSync } from 'node:child_process';
+import { readFileSync, writeFileSync } from 'node:fs';
+
+const MUTATIONS = [
+  // [file, text to find, replacement, what a red run must mention]
+  ['src/i18n/pages/home/de.ts', "'home.cta.collection':", "'home.cta.collectionx':", 'home/de: missing home.cta.collection'],
+  ['src/i18n/pages/home/ja.ts', "'home.houses.cards': 'カード：{n}'", "'home.houses.cards': 'カード：{m}'", 'home/ja: home.houses.cards has {m}'],
+  ['src/i18n/pages/home/ja.ts', '<b>命を得る場所</b>', '命を得る場所', 'home/ja: home.hero.title has marks'],
+  ['src/i18n/pages/about/ar.ts', "'about.vision.title': '", "'about.vision.title': '', 'about.unused': '", 'about/ar'],
+  ['src/i18n/pages/collection/th.ts', "'collection.deck.save': '", "'collection.deck.save': ' ", 'collection/th: collection.deck.save starts or ends with a space'],
+  // A sourced name changed by hand, without the record.
+  ['src/i18n/pages/variants/hi.ts', "'variants.city.CAI': 'कायरो',", "'variants.city.CAI': 'काहिरा',", 'variants.city.CAI'],
+  // A card's element with no word for it.
+  ['src/i18n/pages/card-terms/en.ts', "  'card-terms.element.wisdom': 'Wisdom',\n", '', 'card-terms.element.wisdom'],
+  // An achievement whose number no longer matches what it checks.
+  ['src/lib/achievements.ts', 'check: (s) => s.battleWins >= 25,', 'check: (s) => s.battleWins >= 26,', 'master-thespian'],
+  // A language file put back into English.
+  ['src/i18n/pages/profile/pl.ts', null, 'COPY:src/i18n/pages/profile/en.ts', 'pl'],
+  // An area that names a key outside itself.
+  ['src/i18n/pages/rules/en.ts', "'rules.landIt':", "'nav.home':", 'nav.home'],
+];
+
+let unnoticed = 0;
+for (const [file, find, replace, mention] of MUTATIONS) {
+  const original = readFileSync(file, 'utf8');
+  let mutated;
+  if (replace.startsWith('COPY:')) mutated = readFileSync(replace.slice(5), 'utf8');
+  else if (!original.includes(find)) {
+    console.log(`STALE   ${file}: "${find}" is no longer in the file; update this mutation`);
+    unnoticed++;
+    continue;
+  } else mutated = original.replace(find, replace);
+  writeFileSync(file, mutated);
+  let out = '';
+  let red = false;
+  try {
+    out = execSync('npx vitest run src/i18n/pages.test.ts 2>&1', { encoding: 'utf8' });
+  } catch (err) {
+    red = true;
+    out = String(err.stdout ?? '');
+  } finally {
+    writeFileSync(file, original);
+  }
+  const named = out.includes(mention);
+  console.log(`${red && named ? 'CAUGHT ' : red ? 'RED?   ' : 'MISSED '} ${file}: ${String(find ?? 'whole file').slice(0, 34)} -> ${replace.slice(0, 34)}${red && !named ? ` (red, but "${mention}" not in the output)` : ''}`);
+  if (!red || !named) unnoticed++;
+}
+// And a clean run after all of it: the restores worked.
+try {
+  execSync('npx vitest run src/i18n/pages.test.ts 2>&1', { encoding: 'utf8' });
+  console.log('CLEAN   the tests pass again with every file restored');
+} catch {
+  console.log('BROKEN  the tests fail after the files were restored');
+  unnoticed++;
+}
+process.exit(unnoticed ? 1 : 0);
