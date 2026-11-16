@@ -11,6 +11,9 @@ const apiTarget = process.env.API_PROXY_TARGET ?? 'http://127.0.0.1:3849';
 
 export default defineConfig({
   compressHTML: true,
+  // Off: the browser tests run against the dev server, and the toolbar adds its own headings
+  // and controls to every page, which production never has.
+  devToolbar: { enabled: false },
   // selfHostedRuntime: the model runtime and 3D decoders come from this site, not a CDN.
   integrations: [react(), selfHostedRuntime()],
   vite: {
