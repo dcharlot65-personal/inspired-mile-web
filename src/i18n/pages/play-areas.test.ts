@@ -103,6 +103,11 @@ export function challengeProblems(l: string, m: Messages | undefined): string[] 
   return out;
 }
 
+/** Strings a language writes exactly as English does. Each is a decision, not an oversight. */
+const SAME_AS_ENGLISH: Record<string, string[]> = {
+  fr: ['pg.trivia.progress'], // "Question {n} / {total}"
+};
+
 describe('page areas of the play content', () => {
   for (const name of ['playground', 'story'] as const) {
     it(`${name}: every language has exactly the English keys, with the same placeholders`, async () => {
@@ -118,8 +123,8 @@ describe('page areas of the play content', () => {
       for (const l of LOCALES) {
         if (l === 'en') continue;
         const m = (await area(name, l))!;
-        // The same in both: a lone full stop, a rhyme-free unit like "{m}m" in no language we have, a proper name.
-        const same = Object.keys(en).filter((k) => m[k] === en[k] && en[k].length > 2);
+        // The same in both only where the two languages really do say it the same way.
+        const same = Object.keys(en).filter((k) => m[k] === en[k] && en[k].length > 2 && !(SAME_AS_ENGLISH[l] ?? []).includes(k));
         expect([l, same]).toEqual([l, []]);
       }
     });
