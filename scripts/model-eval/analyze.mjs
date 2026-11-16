@@ -128,6 +128,9 @@ for (const tier of TIERS) out.push(`| ${LABEL[tier]} | ${measured[tier].judge.jo
 const dates = cells.map((c) => c.date).sort();
 const commits = [...new Set(cells.map((c) => c.commit))];
 if (cells.length) out.push('', `${cells.length} cells, run from ${dates[0].slice(0, 16).replace('T', ' ')} to ${dates.at(-1).slice(0, 16).replace('T', ' ')} UTC, from ${commits.length === 1 ? 'one snapshot of the code' : `${commits.length} snapshots of the code`} (${commits.map((c) => c?.slice(0, 8)).join(', ')}); Transformers.js ${[...new Set(cells.map((c) => c.transformers))].join(', ')}; GPU ${[...new Set(cells.map((c) => `${c.gpu?.vendor} ${c.gpu?.architecture}`))].join(', ')}.`);
+// Writing cells scored again from their stored drafts after a rule change (src/lib/model-eval.rescore.test.ts).
+const rescored = cells.filter((c) => c.rescored?.length);
+if (rescored.length) out.push('', `${rescored.length} writing cells were scored again from their stored drafts after a change to the rules, without running the model: ${rescored.map((c) => `${c.file.replace('cells/', '')} (${c.rescored.map((r) => `${r.playsChanged} plays, at ${String(r.commit).slice(0, 8)}`).join('; ')})`).join(', ')}.`);
 
 // --- The result in brief, at the top of the page ---
 const brief = [];

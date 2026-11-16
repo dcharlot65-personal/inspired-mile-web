@@ -14,10 +14,7 @@ import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { MODELS, modelJudges, modelsToOffer, modelWrites, usedAnywhere, type Capability } from './brain';
-import { getCardById } from './cards';
-import { createDuel, scoreVerse, starterDeck } from './verse/duel';
-import { getForm } from './verse/forms';
-import { expectedLines, opponentMessages, tidyModelVerse } from './verse/opponent';
+import { replayPlay, scoredFields, type StoredPlay } from './model-eval-replay';
 import { PACK_LANGS, loadAllPacks } from './verse/packs';
 // @ts-expect-error a plain module, shared with the scripts that run the evaluation
 import { LANGS, TIERS, commentary, decideJudge, decideWrite, derive, inLanguage, instructionLines, scriptOk, summarizeJudge, summarizeWrite, wilson } from '../../scripts/model-eval/lib.mjs';
@@ -87,33 +84,16 @@ describe('the measured language lists', () => {
     const problems: string[] = [];
     let plays = 0;
     for (const cell of cells.filter((c) => c.task === 'write')) {
-      for (const p of cell.plays) {
+      for (const p of cell.plays as StoredPlay[]) {
         plays++;
         const where = `${cell.tier}.${cell.lang} seed ${p.seed} round ${p.roundIndex} (${p.formId})`;
-        const duel = createDuel(p.seed, cell.lang, starterDeck());
-        const plan = duel.rounds[p.roundIndex];
-        if (plan.formId !== p.formId) { problems.push(`${where}: the duel now draws ${plan.formId}`); continue; }
-        const form = getForm(plan.formId);
-        const card = getCardById(plan.opponent.charId)!;
-        const n = expectedLines(form, plan.ctx);
-        const previous = p.answering ?? undefined;
-        const prompt = opponentMessages(plan, card, form, cell.lang, previous).map((m) => m.content);
-        if (JSON.stringify(prompt) !== JSON.stringify(p.prompt)) problems.push(`${where}: the prompt is not the one the model was given`);
-        const score = (verse: string) => scoreVerse({ verse, form, ctx: plan.ctx, card, deckCharacters: duel.opponent.characters, opponentVerse: previous, lent: plan.opponent.relic });
-        // As writeOpponentVerse chooses: the first draft with the most craft.
-        let best = { verse: '', craft: -1 };
-        for (const d of p.drafts) {
-          const tidy = tidyModelVerse(d.raw, n);
-          if (tidy !== (d.tidy ?? '')) { problems.push(`${where}: a draft tidies to other text`); continue; }
-          if (!tidy) continue;
-          const s = score(tidy);
-          if (s.form.kept !== d.formKept || s.craft !== d.craft) problems.push(`${where}: a draft now scores kept=${s.form.kept} craft=${s.craft}, the cell has kept=${d.formKept} craft=${d.craft}`);
-          if (s.craft > best.craft) best = { verse: tidy, craft: s.craft };
+        const r = await replayPlay(cell.lang, p);
+        if (r.drawn !== p.formId) { problems.push(`${where}: the duel now draws ${r.drawn}`); continue; }
+        if (JSON.stringify(r.prompt) !== JSON.stringify(p.prompt)) { problems.push(`${where}: the prompt is not the one the model was given (the cell needs the model again)`); continue; }
+        const [was, now] = [scoredFields(p), scoredFields(r.play)];
+        for (const k of Object.keys(was) as (keyof typeof was)[]) {
+          if (JSON.stringify(was[k]) !== JSON.stringify(now[k])) problems.push(`${where}: ${k} differs (re-score: MEVAL_RESCORE=1 npx vitest run src/lib/model-eval.rescore.test.ts)`);
         }
-        // A play from written verse is one where no draft was usable.
-        if (best.verse !== (p.source === 'model' ? p.verse : '')) problems.push(`${where}: the opponent would now play ${best.verse ? 'another draft' : 'written verse'}`);
-        const s = score(p.verse);
-        if (s.form.kept !== p.formKept || s.craft !== p.craft) problems.push(`${where}: the verse played now scores kept=${s.form.kept} craft=${s.craft}, the cell has kept=${p.formKept} craft=${p.craft}`);
       }
     }
     expect(problems.slice(0, 12), `${problems.length} differences over ${plays} plays`).toEqual([]);

@@ -128,8 +128,12 @@ written as soon as it finished.
     stored draft, each draft's score, the draft the opponent chose, and the verse's score must
     all come out as the cell recorded them. A rule change from another branch (rhyme,
     syllables, forms) or a prompt change therefore turns the tests red instead of leaving
-    stale decisions. Judging cells store verdicts, not prompts, so the same cannot be done for
-    them: the repeat control is the check there.
+    stale decisions. After a rule change,
+    `MEVAL_RESCORE=1 npx vitest run src/lib/model-eval.rescore.test.ts` scores the stored drafts
+    again, through `writeOpponentVerse` itself, without the model, and records it in each cell
+    it changes; after a prompt change it refuses, because the drafts answer another question.
+    Judging cells store verdicts, not prompts, so the same cannot be done for them: the repeat
+    control is the check there.
 
   To run once the matrix has finished (on the build host, one run at a time):
   `MEVAL_CONTROL=repeat TIERS=grand,standard,lite LANGS=en,th MEVAL_DIR=$M memguard --max-gb 24 -- node scripts/model-eval/run.mjs`.

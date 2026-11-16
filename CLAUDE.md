@@ -102,10 +102,15 @@ left behind by a killed run is found by its port: `lsof -nP -iTCP:<port> -sTCP:L
   the result files in `docs/language/model-eval/cells/` by the thresholds in
   `scripts/model-eval/thresholds.json`; `src/lib/model-eval.test.ts` fails when either drifts.
   Never edit a list by hand: run the cell again (`scripts/model-eval/run.mjs`, on the build host,
-  one run at a time, under memguard; it resumes), then `analyze.mjs`, then copy the lists.
-  A language with no result file is unsupported for that model. A change to the prompts in
-  `opponent.ts`/`judge.ts`, to the models or to the runtime makes the cells stale: judging can be
-  re-checked cheaply with `MEVAL_CONTROL=repeat`, writing only by running its cells again.
+  one run at a time, under memguard; it resumes), then `analyze.mjs`, then `copy-lists.mjs`.
+  A language with no result file is unsupported for that model. The test "every writing cell
+  replays…" re-runs the game's code over each stored draft and fails when the rules or the
+  opponent's prompt changed after the cells ran. A rule change (forms, devices, rhyme,
+  syllables, the tidy-up): `MEVAL_RESCORE=1 npx vitest run src/lib/model-eval.rescore.test.ts`
+  scores the stored drafts again (no model), then `analyze.mjs` and `copy-lists.mjs`. A change
+  to the prompts in `opponent.ts`/`judge.ts`, to the models or to the runtime needs the model:
+  judging can be re-checked cheaply with `MEVAL_CONTROL=repeat`, writing only by running its
+  cells again.
 - Every verse in every pack must keep its form as the code checks it (`verse.test.ts`).
   `node scripts/mutate-packs.mjs` (on the build host) proves those tests go red.
 - Writing a `\uXXXX` escape through an agent's file tools can turn it into the character
