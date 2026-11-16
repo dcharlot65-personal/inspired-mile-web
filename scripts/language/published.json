@@ -175,6 +175,56 @@
    "translator": "Adolf Strodtmann (1829–1879)",
    "edition": "„Ode an den Westwind“, in Lieder- und Balladenbuch amerikanischer und englischer Dichter der Gegenwart, Hoffmann & Campe, Hamburg, 1862 (de.wikisource.org transcription)",
    "status": "Public domain: Germany (life + 70 years; translator died 1879) and United States (published before 1931)"
+  },
+  "mnd": {
+   "translator": "August Wilhelm Schlegel (1767–1845)",
+   "edition": "„Ein Sommernachtstraum“, in Shakspeare’s dramatische Werke, übersetzt von A. W. Schlegel (1797); Project Gutenberg EBook #7022 (plain text, ISO-8859-1). The Gutenberg file does not name its edition; the year is that of the translation’s first publication, from general reference, not checked.",
+   "status": "Public domain: Germany (life + 70 years; translator died 1845) and United States (published before 1931)"
+  },
+  "mov": {
+   "translator": "August Wilhelm Schlegel (1767–1845)",
+   "edition": "„Der Kaufmann von Venedig“, in Shakspeare’s dramatische Werke, übersetzt von A. W. Schlegel (1799); Project Gutenberg EBook #7043 (plain text, ISO-8859-1). The Gutenberg file does not name its edition; the year is that of the translation’s first publication, from general reference, not checked.",
+   "status": "Public domain: Germany (life + 70 years; translator died 1845) and United States (published before 1931)"
+  },
+  "jc": {
+   "translator": "August Wilhelm Schlegel (1767–1845)",
+   "edition": "„Julius Caesar“, in Shakspeare’s dramatische Werke, übersetzt von A. W. Schlegel (1797); Project Gutenberg EBook #9875 (plain text, ISO-8859-1). The Gutenberg file does not name its edition; the year is that of the translation’s first publication, from general reference, not checked.",
+   "status": "Public domain: Germany (life + 70 years; translator died 1845) and United States (published before 1931)"
+  },
+  "macbeth": {
+   "translator": "Dorothea Tieck (1799–1841)",
+   "edition": "„Macbeth“, in Shakspeare’s dramatische Werke, übersetzt von A. W. von Schlegel, ergänzt und erläutert von L. Tieck (1833); Project Gutenberg EBook #6975 (plain text, ISO-8859-1). The Gutenberg file does not name its edition; the year is that of the translation’s first publication, from general reference, not checked.",
+   "status": "Public domain: Germany (life + 70 years; translator died 1841) and United States (published before 1931)"
+  },
+  "hamlet": {
+   "translator": "Christoph Martin Wieland (1733–1813)",
+   "edition": "„Hamlet, Prinz von Dännemark“, in Shakespear Theatralische Werke, aus dem Englischen übersezt von Herrn Wieland, Zürich, 1762–1766 (prose); Project Gutenberg EBook #7276 (plain text, ISO-8859-1), 18th-century spelling as printed. The Gutenberg file does not name its edition; the year is that of the translation’s first publication, from general reference, not checked.",
+   "status": "Public domain: Germany (life + 70 years; translator died 1813) and United States (published before 1931)"
+  },
+  "tempest": {
+   "translator": "Christoph Martin Wieland (1733–1813)",
+   "edition": "„Der Sturm“, in Shakespear Theatralische Werke, aus dem Englischen übersezt von Herrn Wieland, Zürich, 1762–1766 (prose); Project Gutenberg EBook #7236 (plain text, ISO-8859-1), 18th-century spelling as printed. The Gutenberg file does not name its edition; the year is that of the translation’s first publication, from general reference, not checked.",
+   "status": "Public domain: Germany (life + 70 years; translator died 1813) and United States (published before 1931)"
+  },
+  "tn": {
+   "translator": "Christoph Martin Wieland (1733–1813)",
+   "edition": "„Was ihr wollt“, in Shakespear Theatralische Werke, aus dem Englischen übersezt von Herrn Wieland, Zürich, 1762–1766 (prose); Project Gutenberg EBook #7186 (plain text, ISO-8859-1), 18th-century spelling as printed. The Gutenberg file does not name its edition; the year is that of the translation’s first publication, from general reference, not checked.",
+   "status": "Public domain: Germany (life + 70 years; translator died 1813) and United States (published before 1931)"
+  },
+  "othello": {
+   "translator": "Christoph Martin Wieland (1733–1813)",
+   "edition": "„Othello“, in Shakespear Theatralische Werke, aus dem Englischen übersezt von Herrn Wieland, Zürich, 1762–1766 (prose); Project Gutenberg EBook #7185 (plain text, ISO-8859-1), 18th-century spelling as printed. The Gutenberg file does not name its edition; the year is that of the translation’s first publication, from general reference, not checked.",
+   "status": "Public domain: Germany (life + 70 years; translator died 1813) and United States (published before 1931)"
+  },
+  "lear": {
+   "translator": "Christoph Martin Wieland (1733–1813)",
+   "edition": "„Das Leben und der Tod des Königs Lear“, in Shakespear Theatralische Werke, aus dem Englischen übersezt von Herrn Wieland, Zürich, 1762–1766 (prose); Project Gutenberg EBook #7240 (plain text, ISO-8859-1), 18th-century spelling as printed. The Gutenberg file does not name its edition; the year is that of the translation’s first publication, from general reference, not checked.",
+   "status": "Public domain: Germany (life + 70 years; translator died 1813) and United States (published before 1931)"
+  },
+  "h4p2": {
+   "translator": "Christoph Martin Wieland (1733–1813)",
+   "edition": "„Der zweyte Theil von König Heinrich dem vierten“, in Shakespear Theatralische Werke, aus dem Englischen übersezt von Herrn Wieland, Zürich, 1762–1766 (prose); Project Gutenberg EBook #7934 (plain text, ISO-8859-1), 18th-century spelling as printed. The Gutenberg file does not name its edition; the year is that of the translation’s first publication, from general reference, not checked.",
+   "status": "Public domain: Germany (life + 70 years; translator died 1813) and United States (published before 1931)"
   }
  },
  "it": {

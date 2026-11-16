@@ -32,15 +32,15 @@ const pack: CardTextPack = {
    "aliases": [
     "Hamlet"
    ],
-   "quote": "Sein oder Nichtsein, das ist hier die Frage.",
-   "quoteSource": "new",
+   "quote": "Seyn oder nicht seyn—Das ist die Frage",
+   "quoteSource": "published",
    "scene": "Das Schloss Helsingör taucht aus dem Schatten auf. Hamlet steht auf den Zinnen, Yoricks Schädel schwebt neben ihm. Auf dem Wall darüber erscheint eine geisterhafte Gestalt."
   },
   "DC-002": {
    "nameSource": "wikidata",
    "name": "Ophelia",
-   "quote": "Da ist Rosmarin, das ist zur Erinnerung.",
-   "quoteSource": "new",
+   "quote": "Hier ist Rosmarin, es ist zum Angedenken",
+   "quoteSource": "published",
    "scene": "Ein sanfter Bach windet sich durch einen Weidenhain. Ophelia treibt zwischen Wildblumen und flüstert vergessene Verse. Blütenblätter kreisen in der Strömung."
   },
   "MO-002": {
@@ -57,21 +57,21 @@ const pack: CardTextPack = {
     "Puk",
     "Droll"
    ],
-   "quote": "Herr, was für Narren diese Sterblichen sind!",
-   "quoteSource": "new",
+   "quote": "O die tollen Sterblichen!",
+   "quoteSource": "published",
    "scene": "Der Zauberwald schimmert vor Schabernack. Puck huscht zwischen uralten Eichen umher und zieht Spuren von Feenstaub hinter sich her. Unten träumen schlafende Sterbliche seltsame Träume."
   },
   "FA-002": {
    "nameSource": "missing",
-   "quote": "Komm, setz dich nieder auf dies Blumenbett.",
-   "quoteSource": "new",
+   "quote": "Komm, laß uns hier auf Blumenbetten kosen!",
+   "quoteSource": "published",
    "scene": "Ein Thron aus lebenden Ranken wächst aus dem Waldboden. Titania gebietet über ihren Feenhof, während Glühwürmchen das Blätterdach erhellen. Die Natur selbst beugt sich ihrem Willen."
   },
   "RL-001": {
    "name": "Yoricks Schädel",
    "nameSource": "translated",
-   "quote": "Ach, armer Yorick! Ich kannte ihn, Horatio.",
-   "quoteSource": "new",
+   "quote": "Ach der arme Yorik. Ich kannte ihn, Horatio",
+   "quoteSource": "published",
    "scene": "Ein Schädel ruht auf Samt in einer düsteren Gruft. Geisterhaftes Lachen hallt wider, während Erinnerungen an den Hofnarren wie Kerzenlicht flackern."
   },
   "RL-002": {
@@ -84,21 +84,21 @@ const pack: CardTextPack = {
   "PT-001": {
    "name": "Liebestrank",
    "nameSource": "translated",
-   "quote": "Der Lauf der wahren Liebe ging noch niemals glatt.",
-   "quoteSource": "new",
+   "quote": "Rann nie der Strom der treuen Liebe sanft",
+   "quoteSource": "published",
    "scene": "Ein leuchtendes Fläschchen pulsiert in rosenfarbenem Licht. Herzen steigen von seiner Oberfläche auf, während eine süße Melodie die Luft erfüllt."
   },
   "PT-002": {
    "name": "Hexengebräu",
    "nameSource": "translated",
-   "quote": "Doppelt, doppelt Müh und Plage.",
-   "quoteSource": "new",
+   "quote": "Doppelt plagt euch, mengt und mischt!",
+   "quoteSource": "published",
    "scene": "Ein brodelnder Kessel stößt grünen Rauch aus. Drei schattenhafte Gestalten umkreisen ihn mit Sprechgesang. Aus dem dunklen Wald dahinter glühen Augen."
   },
   "VC-001": {
    "nameSource": "missing",
-   "quote": "Wenn ihr je wieder unsere Straßen stört, so zahlt euer Leben für den gebrochenen Frieden.",
-   "quoteSource": "new",
+   "quote": "Verstört ihr jemals wieder unsre Stadt, / So zahl’ eu’r Leben mir den Friedensbruch.",
+   "quoteSource": "published",
    "scene": "Der Prinz steht auf den Stufen des Palastes von Verona; seine Stimme gebietet der verfeindeten Menge Schweigen. Ein goldenes Zepter glüht vor Autorität."
   },
   "VC-002": {
@@ -111,29 +111,29 @@ const pack: CardTextPack = {
   "VC-003": {
    "nameSource": "wikidata",
    "name": "Wärterin",
-   "quote": "Ich bin die Magd und plage mich für Eure Lust.",
-   "quoteSource": "new",
+   "quote": "Ich bin das Lasttier, muß für euch mich plagen",
+   "quoteSource": "published",
    "scene": "Eine warme Küche im Hause Capulet. Die Amme eilt mit grimmiger Hingabe umher, einen geheimen Brief in der Schürze verborgen."
   },
   "TP-001": {
    "nameSource": "wikidata",
    "name": "Prospero",
-   "quote": "Wir sind aus solchem Stoff, aus dem die Träume sind.",
-   "quoteSource": "new",
+   "quote": "Wir sind solcher Zeug, woraus Träume gemacht werden",
+   "quoteSource": "published",
    "scene": "Eine Insel, vom Sturm umhüllt. Prospero hebt die Hände, während der Blitz seinem Willen gehorcht und das Meer auf seinen Befehl aufwallt."
   },
   "TP-002": {
    "nameSource": "wikidata",
    "name": "Ariel",
-   "quote": "Heil dir, großer Meister! Würdiger Herr, Heil!",
-   "quoteSource": "new",
+   "quote": "Heil dir, mein grosser Meister! Ehrwürdiger Herr, Heil dir!",
+   "quoteSource": "published",
    "scene": "Ein schimmernder Geist löst sich in Wind und Licht auf und formt sich als Musik neu. Ariel tanzt zwischen dem Sichtbaren und dem Unsichtbaren."
   },
   "TP-003": {
    "nameSource": "wikidata",
    "name": "Caliban",
-   "quote": "Diese Insel ist mein, von Sycorax, meiner Mutter.",
-   "quoteSource": "new",
+   "quote": "Diese Insel ist mein, ich habe sie von Sycorax, meiner Mutter geerbt, und du hast sie mir abgenommen.",
+   "quoteSource": "published",
    "scene": "Ein Höhleneingang an einer wilden Küste. Caliban kauert zwischen den Felsen, die Augen brennend vor Groll und ursprünglicher Klugheit."
   },
   "MO-003": {
@@ -146,138 +146,138 @@ const pack: CardTextPack = {
   "CA-002": {
    "nameSource": "wikidata",
    "name": "Tybalt",
-   "quote": "Was, mit gezogenem Schwert sprichst du von Frieden? Ich hasse das Wort.",
-   "quoteSource": "new",
+   "quote": "Was? Ziehn, und Friede rufen? Wie die Hölle / Hass’ ich das Wort",
+   "quoteSource": "published",
    "scene": "Eine Gasse in Verona, vom Fackelschein erhellt. Tybalt zieht seinen Degen mit tödlicher Anmut, die Augen auf seinen Feind geheftet."
   },
   "DC-003": {
    "nameSource": "wikidata",
    "name": "König Claudius",
-   "quote": "Meine Worte fliegen auf, meine Gedanken bleiben unten.",
-   "quoteSource": "new",
+   "quote": "Meine Worte fliegen auf, meine Gedanken bleiben zurük; und Worte ohne Gedanken langen nie im Himmel an.",
+   "quoteSource": "published",
    "scene": "Der Thronsaal von Helsingör, in falschen Glanz gehüllt. Claudius umklammert die Krone, ein Fläschchen Gift in seinem Gewand verborgen."
   },
   "FA-003": {
    "nameSource": "wikidata",
    "name": "Oberon",
-   "quote": "Schlimm getroffen im Mondlicht, stolze Titania.",
-   "quoteSource": "new",
+   "quote": "Schlimm treffen wir bei Mondenlicht, du stolze / Titania!",
+   "quoteSource": "published",
    "scene": "Eine mondbeschienene Lichtung tief im Zauberwald. Oberon tritt aus dem Schatten hervor; seine Geweihkrone fängt das silberne Licht."
   },
   "RL-003": {
    "name": "Dolch der Einbildung",
    "nameSource": "translated",
-   "quote": "Ist das ein Dolch, was ich vor mir erblicke?",
-   "quoteSource": "new",
+   "quote": "Ist das ein Dolch, was ich vor mir erblicke, / Der Griff mir zugekehrt?",
+   "quoteSource": "published",
    "scene": "Ein geisterhafter Dolch schwebt in der Dunkelheit, von seiner Klinge tropft Phantomblut. Macbeths Hand greift danach und kann ihn doch nie fassen."
   },
   "PT-003": {
    "name": "Pucks Blumensaft",
    "nameSource": "translated",
-   "quote": "Ich lege einen Gürtel um die Erde in vierzig Minuten.",
-   "quoteSource": "new",
+   "quote": "Rund um die Erde zieh ich einen Gürtel / In viermal zehn Minuten.",
+   "quoteSource": "published",
    "scene": "Eine zerdrückte purpurne Blume tropft schillernden Nektar in eine wartende Handfläche. Wohin er fällt, verwandeln sich die Augen, und die Herzen folgen."
   },
   "SC-001": {
    "nameSource": "wikidata",
    "name": "Macbeth",
-   "quote": "Ich wage alles, was dem Manne ziemt; wer mehr wagt, der ist keiner.",
-   "quoteSource": "new",
+   "quote": "Ich wage alles, was dem Menschen ziemt; / Wer mehr wagt, der ist keiner.",
+   "quoteSource": "published",
    "scene": "Ein blutbefleckter Thronsaal in Dunsinane. Macbeth umklammert sein Schwert mit zitternden Händen, die Krone schwer auf der Stirn. Auf dem fernen Hügel regt sich der Wald von Birnam."
   },
   "SC-002": {
    "nameSource": "wikidata",
    "name": "Lady Macbeth",
-   "quote": "Kommt, ihr Geister, die ihr den Mordgedanken dient, entweibt mich hier.",
-   "quoteSource": "new",
+   "quote": "Kommt, ihr Geister, / Die ihr auf Mordgedanken lauscht",
+   "quoteSource": "published",
    "scene": "Ein Gemach im schottischen Schloss bei Kerzenlicht. Lady Macbeth schreitet über die kalten Steine und reibt sich eingebildete Blutflecken von den Händen. Schatten haften an ihr wie eine zweite Haut."
   },
   "SC-003": {
    "nameSource": "wikidata",
    "name": "Banquo",
-   "quote": "Du wirst Könige zeugen, obgleich du selbst keiner bist.",
-   "quoteSource": "new",
+   "quote": "Könge erzeugst du, bist du selbst auch keiner.",
+   "quoteSource": "published",
    "scene": "Eine neblige schottische Heide in der Dämmerung. Banquo steht unbeirrt, während drei geisterhafte Gestalten Schicksale in den Wind flüstern. Sein Geist wird die Lebenden heimsuchen."
   },
   "IL-001": {
    "nameSource": "missing",
-   "quote": "Ich bin nicht, was ich bin.",
-   "quoteSource": "new",
+   "quote": "ich bin nicht was ich bin.",
+   "quoteSource": "published",
    "scene": "Eine windgepeitschte Küste Illyriens. Viola zieht eine Matrosenmütze über ihr kurz geschnittenes Haar; zwei Identitäten schimmern in ihren Augen. Das Meer flüstert Geheimnisse von ihrem verlorenen Bruder."
   },
   "IL-002": {
    "nameSource": "wikidata",
    "name": "Malvolio",
-   "quote": "Einige werden groß geboren, einige erringen Größe, und einigen wird die Größe aufgedrängt.",
-   "quoteSource": "new",
+   "quote": "einige werden groß gebohren, andre arbeiten sich zu Grösse empor, andern wird sie zugeworffen.",
+   "quoteSource": "published",
    "scene": "Ein sonniger Garten auf Olivias Gut. Malvolio stolziert in grellgelben Strümpfen mit kreuzweise gebundenen Kniegürteln umher, grinsend, einen gefälschten Liebesbrief an die Brust gedrückt."
   },
   "IL-003": {
    "nameSource": "missing",
-   "quote": "Gesuchte Liebe ist gut, doch ungesucht geschenkte ist besser.",
-   "quoteSource": "new",
+   "quote": "gesuchte Liebe ist gut; aber ungesucht geschenkt, ist sie noch besser.",
+   "quoteSource": "published",
    "scene": "Eine verschleierte Gräfin in Trauer hebt ihren Schleier und enthüllt atemberaubende Schönheit. Olivias Garten blüht von Jasmin und Lavendel, während der verkleidete Bote ihr Herz stiehlt."
   },
   "RM-001": {
    "nameSource": "derived",
    "name": "Brutus",
-   "quote": "Nicht weil ich Cäsar weniger liebte, sondern weil ich Rom mehr liebte.",
-   "quoteSource": "new",
+   "quote": "nicht, weil ich Cäsarn weniger liebte, sondern weil ich Rom mehr liebte.",
+   "quoteSource": "published",
    "scene": "Der römische Senat, die Marmorsäulen karmesinrot befleckt. Brutus steht unter den Verschwörern, die Klinge zittert noch. Die Last der Republik ruht auf seinen blutigen Händen."
   },
   "RM-002": {
    "nameSource": "derived",
    "name": "Cassius",
-   "quote": "Die Schuld, lieber Brutus, liegt nicht in unseren Sternen, sondern in uns selbst.",
-   "quoteSource": "new",
+   "quote": "Nicht durch die Schuld der Sterne, lieber Brutus, / Durch eigne Schuld nur sind wir Schwächlinge.",
+   "quoteSource": "published",
    "scene": "Eine römische Gasse um Mitternacht im Fackelschein. Cassius beugt sich nah heran und flüstert Aufruhr, mit hagerem, hungrigem Blick. Gefälschte Briefe quellen aus seiner Toga."
   },
   "RM-003": {
    "nameSource": "wikidata",
    "name": "Marcus Antonius",
-   "quote": "Freunde, Römer, Landsleute, leiht mir euer Ohr!",
-   "quoteSource": "new",
+   "quote": "Mitbürger! Freunde! Römer! hört mich an",
+   "quoteSource": "published",
    "scene": "Das Forum Romanum bricht in Wut aus. Marcus Antonius hält Caesars blutigen Mantel vor der Menge empor; seine Worte verwandeln Trauer in Feuer. Mit jeder Silbe zerfällt die Republik."
   },
   "MO-004": {
    "name": "Graf Montague",
    "nameSource": "translated",
-   "quote": "So manchen Morgen ward er dort gesehen, wie er mit Tränen den frischen Morgentau vermehrte.",
-   "quoteSource": "new",
+   "quote": "Schon manchen Morgen ward er dort gesehn, / Wie er den frischen Tau durch Thränen mehret",
+   "quoteSource": "published",
    "scene": "Das Anwesen der Montagues bei Tagesanbruch. Graf Montague sieht von einem hohen Fenster zu, wie sein Sohn unten durch die nebligen Obstgärten irrt, liebeskrank und unerreichbar."
   },
   "CA-003": {
    "name": "Gräfin Capulet",
    "nameSource": "translated",
-   "quote": "Heiraten, eben das Heiraten ist das Thema, über das ich sprechen wollte.",
-   "quoteSource": "new",
+   "quote": "Die Hochzeit, ja! das ist der Punkt, von dem / Ich sprechen wollte.",
+   "quoteSource": "published",
    "scene": "Der große Saal der Capulets, mit Seide verhängt. Gräfin Capulet ordnet das Schicksal ihrer Tochter wie Blumen in einer Vase; hinter jedem huldvollen Lächeln glitzert der Ehrgeiz."
   },
   "DC-004": {
    "nameSource": "wikidata",
    "name": "Horatio",
-   "quote": "Nun bricht ein edles Herz. Gute Nacht, süßer Prinz.",
-   "quoteSource": "new",
+   "quote": "Nun bricht ein edles Herz; gute Nacht, liebster Prinz",
+   "quoteSource": "published",
    "scene": "Die Zinnen von Helsingör in der kalten Stunde vor Tagesanbruch. Horatio hält Wache an Hamlets Seite, der eine wahre Freund an einem Hof voller Schlangen."
   },
   "FA-004": {
    "nameSource": "wikidata",
    "name": "Zettel",
-   "quote": "Ich hatte ein höchst seltenes Gesicht. Ich hatte einen Traum, der über Menschenwitz geht.",
-   "quoteSource": "new",
+   "quote": "Ich habe ein äußerst rares Gesicht gehabt. Ich hatte 'nen Traum",
+   "quoteSource": "published",
    "scene": "Eine Waldlichtung im Feenlicht. Zettel trägt einen Eselskopf mit verdutzter Würde, während Titania ihn mit Girlanden behängt. Die Feen unterdrücken ihr Lachen."
   },
   "VC-004": {
    "nameSource": "missing",
-   "quote": "Diese Zeiten des Wehs lassen keine Zeit zum Werben.",
-   "quoteSource": "new",
+   "quote": "So trübe Zeit gewährt nicht Zeit zum Frein",
+   "quoteSource": "published",
    "scene": "Der Kirchhof von Verona in der Abenddämmerung. Paris legt Blumen an Julias Gruft und ahnt nichts von dem verzweifelten Liebenden, der sich aus den Schatten nähert."
   },
   "TP-004": {
    "nameSource": "wikidata",
    "name": "Miranda",
-   "quote": "O schöne neue Welt, die solche Menschen trägt!",
-   "quoteSource": "new",
+   "quote": "O brave neue Welt, die solche Einwohner hat!",
+   "quoteSource": "published",
    "scene": "Ein unberührter Strand auf Prosperos Insel. Miranda sieht die Schiffbrüchigen zum ersten Mal, die Augen weit vor Staunen über eine Welt, von der sie nichts wusste."
   },
   "RL-004": {
@@ -290,15 +290,15 @@ const pack: CardTextPack = {
   "RL-005": {
    "name": "Portias Kästchen",
    "nameSource": "translated",
-   "quote": "Nicht alles, was glänzt, ist Gold.",
-   "quoteSource": "new",
+   "quote": "Alles ist nicht Gold, was gleißt",
+   "quoteSource": "published",
    "scene": "Drei Kästchen schimmern in einem Gemach bei Kerzenlicht: Gold, Silber und Blei. Das bleierne Kästchen summt von stiller Wahrheit und belohnt jene, die weise genug sind, hinter den Schein zu blicken."
   },
   "RL-006": {
    "name": "Macbeths Krone",
    "nameSource": "translated",
-   "quote": "Unruhig liegt das Haupt, das eine Krone trägt.",
-   "quoteSource": "new",
+   "quote": "Das Haupt ligt übel, das eine Crone trägt.",
+   "quoteSource": "published",
    "scene": "Eine angelaufene schottische Krone liegt auf einem blutbefleckten Kissen. Sie pulsiert von dunklem Ehrgeiz und flüstert jeder Hand, die nach ihr zu greifen wagt, Versprechen von Ruhm zu."
   },
   "RL-007": {
@@ -311,57 +311,57 @@ const pack: CardTextPack = {
   "RL-008": {
    "name": "Cordelias Tränen",
    "nameSource": "translated",
-   "quote": "O lieber Vater, es ist deine Sache, um die ich mich bemühe.",
-   "quoteSource": "new",
+   "quote": "O theurer Vater, es ist deine Sache die mich hieher gebracht hat",
+   "quoteSource": "published",
    "scene": "Ein Kristallfläschchen birgt Tränen, die wie eingefangenes Sternenlicht schimmern. Jeder Tropfen trägt den Kummer einer Tochter, die zu wahr liebte und zu offen sprach."
   },
   "RL-009": {
    "name": "Zettels Maske",
    "nameSource": "translated",
-   "quote": "Gott segne dich, Zettel! Du bist verwandelt!",
-   "quoteSource": "new",
+   "quote": "Gott behüte dich, Zettel! Gott behüte dich! du bist transferiert.",
+   "quoteSource": "published",
    "scene": "Eine Maske mit Eselskopf hängt an einem moosigen Ast im Feenwald. Wer sie aufsetzt, sieht die Welt mit verzauberten Augen, und wird für Feenköniginnen unwiderstehlich."
   },
   "PT-004": {
    "name": "Alraunwurzel",
    "nameSource": "translated",
-   "quote": "Nicht Mohn, nicht Mandragora, noch alle Schlummersäfte dieser Welt.",
-   "quoteSource": "new",
+   "quote": "Weder Mohn-Saamen, noch Mandragora, noch alle einschläfernde Säfte in der Welt zusammen genommen werden dir jemals diesen süssen Schlaf wiedergeben",
+   "quoteSource": "published",
    "scene": "Eine knorrige Wurzel in Gestalt einer schreienden Figur wird bei Kerzenlicht ausgegraben. Die Erde bröckelt ab und gibt ihre verdrehte, uralte Kraft frei. Der Apotheker fasst sie mit zitternder Ehrfurcht an."
   },
   "PT-005": {
    "name": "Oberons Tau",
    "nameSource": "translated",
-   "quote": "Hol mir die Blume; das Kraut, das ich dir einst gezeigt.",
-   "quoteSource": "new",
+   "quote": "Hol mir die Blum! Ich wies dir einst das Kraut",
+   "quoteSource": "published",
    "scene": "Ein Tautropfen haftet an einer mondbeschienenen Orchidee und glüht in überirdischem violettem Licht. Ein Tropfen auf schlafende Lider, und der Träumende verliebt sich in das erste Geschöpf, das er erblickt."
   },
   "PT-006": {
    "name": "Schierlingstinktur",
    "nameSource": "translated",
-   "quote": "In meiner sicheren Stunde schlich dein Oheim herbei, mit dem Saft verfluchten Bilsenkrauts in einem Fläschchen.",
-   "quoteSource": "new",
+   "quote": "als dein Oheim sich ingeheim mit einer Phiole voll Gift herbeyschlich",
+   "quoteSource": "published",
    "scene": "Ein Fläschchen aus schwarzem Glas verströmt grünen Dunst in einem dunklen Gang. Die Tinktur darin hat Könige gestürzt und Dynastien zerschlagen, einen lautlosen Tropfen nach dem anderen."
   },
   "PT-007": {
    "name": "Mistelextrakt",
    "nameSource": "translated",
-   "quote": "Im Kessel sied und brat; Molchesauge und Froschzehe.",
-   "quoteSource": "new",
+   "quote": "Molchesaug und Unkenzehe",
+   "quoteSource": "published",
    "scene": "Blasse Beeren glänzen zwischen dunklen, immergrünen Blättern, geerntet unter einem Wintermond. Der Extrakt summt von der stillen, beharrlichen Magie der Natur."
   },
   "PT-008": {
    "name": "Tränen der Meerjungfrau",
    "nameSource": "translated",
-   "quote": "Fünf Faden tief liegt dein Vater; aus seinen Gebeinen sind Korallen geworden.",
-   "quoteSource": "new",
+   "quote": "Fünf Faden tief dein Vater ligt, / Sein Gebein ward zu Corallen",
+   "quoteSource": "published",
    "scene": "Eine Flasche mit Perlenstöpsel birgt eine leuchtend blaue Flüssigkeit, die sich wie ein lebendiges Meer bewegt. Darin wachsen und vergehen winzige Korallengebilde. Sie riecht nach Salz und vergessenen Reisen."
   },
   "PT-009": {
    "name": "Elixier des Apothekers",
    "nameSource": "translated",
-   "quote": "Tut dies in irgendeine Flüssigkeit und trinkt es aus; und hättet Ihr die Kraft von zwanzig Männern, es würde Euch sogleich hinraffen.",
-   "quoteSource": "new",
+   "quote": "Thut dies in welche Flüssigkeit ihr wollt, / Und trinkt es aus; und hättet ihr die Stärke / Von Zwanzigen, es hilf’ euch gleich davon.",
+   "quoteSource": "published",
    "scene": "Eine staubige Apotheke im ärmsten Viertel von Mantua. Ein Elixier der Verzweiflung glüht bernsteinfarben in einem gesprungenen Fläschchen, stark genug, die Kluft zwischen Leben und Tod zu überbrücken."
   },
   "LD-001": {

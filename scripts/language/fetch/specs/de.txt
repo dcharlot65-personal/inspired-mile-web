@@ -6,3 +6,45 @@ MO-003|rj|Ich stifte Frieden: steck’ dein Schwert nur ein
 RL-004|rj|So grenzenlos ist meine Huld, die Liebe So tief ja wie das Meer
 GC-003|raven|Eines Nachts aus gelben Blättern mit verblichnen Runenlettern
 GC-005|westwind|Wenn Winter naht, kann fern der Frühling sein\?
+VC-001|rj|Verstört ihr jemals wieder unsre Stadt, So zahl’ eu’r Leben mir den Friedensbruch\.
+VC-003|rj|Ich bin das Lasttier, muß für euch mich plagen
+CA-002|rj|Was\? Ziehn, und Friede rufen\? Wie die Hölle Hass’ ich das Wort
+MO-004|rj|Schon manchen Morgen ward er dort gesehn, Wie er den frischen Tau durch Thränen mehret
+CA-003|rj|Die Hochzeit, ja! das ist der Punkt, von dem Ich sprechen wollte\.
+VC-004|rj|So trübe Zeit gewährt nicht Zeit zum Frein
+PT-009|rj|Thut dies in welche Flüssigkeit ihr wollt, Und trinkt es aus; und hättet ihr die Stärke Von Zwanzigen, es hilf’ euch gleich davon\.
+FA-001|mnd|O die tollen Sterblichen!
+FA-002|mnd|Komm, laß uns hier auf Blumenbetten kosen!
+PT-001|mnd|Rann nie der Strom der treuen Liebe sanft
+FA-003|mnd|Schlimm treffen wir bei Mondenlicht, du stolze Titania!
+PT-003|mnd|Rund um die Erde zieh ich einen Gürtel In viermal zehn Minuten\.
+FA-004|mnd|Ich habe ein äußerst rares Gesicht gehabt\. Ich hatte 'nen Traum||prose
+RL-009|mnd|Gott behüte dich, Zettel! Gott behüte dich! du bist transferiert\.
+PT-005|mnd|Hol mir die Blum! Ich wies dir einst das Kraut
+RL-005|mov|Alles ist nicht Gold, was gleißt
+RM-001|jc|nicht, weil ich Cäsarn weniger liebte, sondern weil ich Rom mehr liebte\.||prose
+RM-002|jc|Nicht durch die Schuld der Sterne, lieber Brutus, Durch eigne Schuld nur sind wir Schwächlinge\.
+RM-003|jc|Mitbürger! Freunde! Römer! hört mich an
+PT-002|macbeth|Doppelt plagt euch, mengt und mischt!
+RL-003|macbeth|Ist das ein Dolch, was ich vor mir erblicke, Der Griff mir zugekehrt\?
+SC-001|macbeth|Ich wage alles, was dem Menschen ziemt; Wer mehr wagt, der ist keiner\.
+SC-002|macbeth|Kommt, ihr Geister, Die ihr auf Mordgedanken lauscht
+SC-003|macbeth|Könge erzeugst du, bist du selbst auch keiner\.
+PT-007|macbeth|Molchesaug und Unkenzehe
+DC-001|hamlet|Seyn oder nicht seyn--Das ist die Frage
+DC-002|hamlet|Hier ist Rosmarin, es ist zum Angedenken||prose
+RL-001|hamlet|Ach der arme Yorik\. Ich kannte ihn, Horatio||prose
+DC-003|hamlet|Meine Worte fliegen auf, meine Gedanken bleiben zurük; und Worte ohne Gedanken langen nie im Himmel an\.||prose
+DC-004|hamlet|Nun bricht ein edles Herz; gute Nacht, liebster Prinz||prose
+PT-006|hamlet|als dein Oheim sich ingeheim mit einer Phiole voll Gift herbeyschlich||prose
+TP-001|tempest|Wir sind solcher Zeug, woraus Träume gemacht werden||prose
+TP-002|tempest|Heil dir, mein grosser Meister! Ehrwürdiger Herr, Heil dir!
+TP-003|tempest|Diese Insel ist mein, ich habe sie von Sycorax, meiner Mutter geerbt, und du hast sie mir abgenommen\.||prose
+TP-004|tempest|O brave neue Welt, die solche Einwohner hat!||prose
+PT-008|tempest|Fünf Faden tief dein Vater ligt, Sein Gebein ward zu Corallen
+IL-001|tn|ich bin nicht was ich bin\.
+IL-002|tn|einige werden groß gebohren, andre arbeiten sich zu Grösse empor, andern wird sie zugeworffen\.||prose
+IL-003|tn|gesuchte Liebe ist gut; aber ungesucht geschenkt, ist sie noch besser\.||prose
+PT-004|othello|Weder Mohn-Saamen, noch Mandragora, noch alle einschläfernde Säfte in der Welt zusammen genommen werden dir jemals diesen süssen Schlaf wiedergeben||prose
+RL-008|lear|O theurer Vater, es ist deine Sache die mich hieher gebracht hat||prose
+RL-006|h4p2|Das Haupt ligt übel, das eine Crone trägt\.||prose

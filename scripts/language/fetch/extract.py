@@ -15,7 +15,8 @@ for line in open(spec,encoding='utf8'):
     line=line.rstrip('\n')
     if not line.strip() or line.startswith('#'): continue
     p=line.split('|',2); cid,work,rx=p[0],p[1],p[2]
-    n=0
+    n=0; prose=False
+    if rx.endswith('||prose'): prose=True; rx=rx[:-len('||prose')]  # hard-wrapped prose: a line end is a space, not a verse break
     m2=re.search(r'\|\|(\d+)$',rx)
     if m2: n=int(m2.group(1)); rx=rx[:m2.start()]
     t,meta=load(work)
@@ -26,8 +27,10 @@ for line in open(spec,encoding='utf8'):
     pg=None
     for h in re.finditer(r'=====PAGE (.*?) =====',t[:m.start()]): pg=h.group(1)
     mm=next((x for x in meta if x['title']==pg),meta[0])
-    txt=re.sub(r'\s*\n\s*',' / ',m.group(0).strip()); txt=re.sub(r'[ \t]+',' ',txt)
-    res[cid]={'text':txt,'work':work,'page':mm['title'],'url':mm['url'],'revid':mm['revid'],'offset':m.start(),'matches':len(ms),'regex':rx}
+    txt=re.sub(r'\s*\n\s*',' ' if prose else ' / ',m.group(0).strip()); txt=re.sub(r'[ \t]+',' ',txt)
+    if mm.get('site')=='www.gutenberg.org': txt=txt.replace('--','—')  # Project Gutenberg's plain-text sign for a dash
+    res[cid]={'text':txt,'work':work,'page':mm['title'],'url':mm['url'],'revid':mm['revid'],'offset':m.start(),'matches':len(ms),'regex':rx+('||prose' if prose else '')}
+    if mm.get('file'): res[cid]['file']=mm['file']
     pre=t[max(0,m.start()-50):m.start()].replace('\n','⏎'); post=t[m.end():m.end()+40].replace('\n','⏎')
     print(f'{cid} [{len(ms)}] …{pre}【{txt}】{post}…')
 os.makedirs('out',exist_ok=True)

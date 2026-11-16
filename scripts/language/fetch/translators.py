@@ -3,7 +3,7 @@ Writes translators.json; copy it to docs/language/sources/translators.json."""
 import json,urllib.parse,time,sys,os
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from search import get
-Q=[('enwiki','François-Victor Hugo|August Wilhelm Schlegel|Leandro Fernández de Moratín|Juan Antonio Pérez Bonalde|Luís I of Portugal|Machado de Assis|Tsubouchi Shōyō|Stéphane Mallarmé|Valery Bryusov|Hedwig Lachmann|Adolf Strodtmann'),
+Q=[('enwiki','François-Victor Hugo|August Wilhelm Schlegel|Leandro Fernández de Moratín|Juan Antonio Pérez Bonalde|Luís I of Portugal|Machado de Assis|Tsubouchi Shōyō|Stéphane Mallarmé|Valery Bryusov|Hedwig Lachmann|Adolf Strodtmann|Christoph Martin Wieland|Dorothea Tieck'),
    ('ruwiki','Гумилёв, Николай Степанович|Михаловский, Дмитрий Лаврентьевич|Гнедич, Пётр Петрович|Козлов, Павел Алексеевич|Вейнберг, Пётр Исаевич|Сатин, Николай Михайлович|Гербель, Николай Васильевич'),
    ('itwiki','Carlo Rusconi|Ernesto Ragazzoni'),('eswiki','José Arnaldo Márquez|Marcelino Menéndez Pelayo'),('frwiki','Félix Rabbe'),('plwiki','Leon Ulrich')]
 out={}

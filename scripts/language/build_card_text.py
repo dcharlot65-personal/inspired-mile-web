@@ -282,6 +282,8 @@ def main():
                 entry['quote'], entry['quoteSource'] = clean_quote(q['text']), 'published'
                 rec['quote'] = {'text': entry['quote'], 'source': 'published', 'cite': cite, 'translator': meta['translator'], 'edition': meta['edition'],
                                 'status': meta['status'], 'url': q['url'], 'page': q['page'], 'revid': q['revid']}
+                if q.get('file'):
+                    rec['quote']['file'] = q['file']  # the mirror file read, pinned by its sha256 (revid)
                 if lang == 'ja':
                     # The published line keeps its old character forms on the card; the signature also reads it in the forms players type.
                     modern = shinjitai(entry['quote'])
