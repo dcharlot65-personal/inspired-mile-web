@@ -141,7 +141,7 @@
   },
   "tempest": {
    "translator": "Николай Сатин (1814–1873)",
-   "edition": "«Буря», 1840 (ru.wikisource.org transcription, modern orthography)",
+   "edition": "«Буря», 1840 (ru.wikisource.org transcription, modern orthography, of a later edition in which 41 lines of the masque in act 4 are by Olga Chyumina, 1864–1909; no line used here is among them)",
    "status": "Public domain: Russia (life + 70 years; translator died 1873) and United States (published before 1931)"
   },
   "sonnet18": {
@@ -158,6 +158,16 @@
    "translator": "Николай Гумилёв (1886–1921)",
    "edition": "«Поэма о старом моряке», «Всемирная литература», Петроград, 1919 (ru.wikisource.org transcription)",
    "status": "Public domain: Russia (life + 70 years; translator died 1921) and United States (published before 1931)"
+  },
+  "tn": {
+   "translator": "Андрей Кронеберг (1814–1855)",
+   "edition": "«Двенадцатая ночь, или Что угодно», 1841 (ru.wikisource.org transcription, modern orthography)",
+   "status": "Public domain: Russia (life + 70 years; translator died 1855) and United States (published before 1931)"
+  },
+  "mov": {
+   "translator": "Пётр Вейнберг (1830–1908)",
+   "edition": "«Венецианский купец», 1866 (ru.wikisource.org transcription, modern orthography)",
+   "status": "Public domain: Russia (life + 70 years; translator died 1908) and United States (published before 1931)"
   }
  },
  "de": {
