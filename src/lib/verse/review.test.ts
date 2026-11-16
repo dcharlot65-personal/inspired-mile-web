@@ -252,6 +252,21 @@ describe('finding 24: a copied verse, however it is dressed, is void; an answer 
     expect(isCopy('Dull verse, hollow skull? Mine sings', 'Thy verse is dull\nAn empty, hollow skull', 'en')).toBe(true);
   });
 
+  it('each word of the source is taken once: saying its one word in every line takes one word', () => {
+    const c = copyOf('Thy stage is mine tonight\nThe stage is old and cold\nMy stage, my rule, my song', 'The stage is set for thee', 'en');
+    // Own: tonight, old, cold, rule, song ("mine" is one of the little words).
+    expect([c.taken, c.own]).toEqual([1, 5]);
+  });
+
+  it("content words are told by each language's list of little words (stopwords-iso), loaded with its pack", () => {
+    const cases: Array<[string, string, boolean]> = [
+      ['es', 'para', false], ['es', 'noche', true], ['fr', 'avec', false], ['fr', 'lune', true], ['de', 'nicht', false], ['de', 'Nacht', true],
+      ['ru', 'когда', false], ['ru', 'луна', true], ['hi', 'रहा', false], ['hi', 'रात', true], ['id', 'adalah', false], ['id', 'malam', true],
+      ['ja', 'から', false], ['ja', 'かぜ', true], ['zh', '我的', false], ['zh', '舞台', true], ['en', 'the', false], ['en', 'night', true],
+    ];
+    for (const [lang, w, content] of cases) expect([lang, w, isContentWord(w, lang)]).toEqual([lang, w, content]);
+  });
+
   it("the penalty: a copy scores nothing and gives the judge's pool to the other side", () => {
     // Without the forfeit two identical verses split the judge and the tie went to the player (the finding).
     const d = createDuel(3, 'en', { characters: ['VC-001', 'VC-002', 'UW-001'], relics: [], potions: [] });
@@ -502,6 +517,11 @@ describe('concern: look-alike letters are read with Unicode confusables (UTS #39
     expect(cleanVerse(`r${cp(0x585)}se`)).toBe('rose');
     expect(cleanVerse(`r${cp(0x2c9f)}se`)).toBe('rose');
     expect(cleanVerse(`${cp(0x43c)}o${cp(0x43b)}o${cp(0x43a)}o`)).toBe(cp(0x43c, 0x43e, 0x43b, 0x43e, 0x43a, 0x43e));
+  });
+  it('a scored verse is read as typed under a curse, and as seen everywhere else', () => {
+    const verse = `Thy ro${cp(0x57d)}e${cp(0x57d)} fade\nAnd ${cp(0x57d)}ing no more`;
+    const s = scoreVerse({ verse, form: getForm('couplet'), ctx: { lang: 'en' }, card: getCardById('DC-001')!, deckCharacters: ['DC-001'], curse: { potionId: 'PT-002', curseId: 'forbidden-letter', param: 's' } });
+    expect(s.curse?.violations).toBe(2);
   });
   it('the letters of a language are its own: Vietnamese đ is not d, Polish ł is not l', () => {
     expect(v('đêm dài', 'd', 'vi')).toBe(1);

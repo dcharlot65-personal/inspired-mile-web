@@ -76,8 +76,11 @@ test.describe('Verse duel', () => {
     await expect(page.locator('#live-checks')).toContainText('The Question');
     await expect(page.locator('#live-checks li', { hasText: 'The Question' }).locator('span').first()).toHaveText('✓');
     await expect(page.locator('#live-checks li', { hasText: 'Signature' }).locator('span').first()).toHaveText('✓');
-    // Form kept (20) with the device and the signature both landed (×2).
-    await expect(page.locator('#live-craft')).toHaveText('40');
+    // Form kept (20) with the device and the signature both landed. Seed 11 opens with an acrostic,
+    // and this one says little beyond them: four words of its own ("pray", "lost", "waits", "yield")
+    // for four lines, where a multiplier applies in full from 1.5 a line (duel.ts OWN_WORDS_PER_LINE),
+    // so ×1.67, not ×2.
+    await expect(page.locator('#live-craft')).toHaveText('33');
   });
 
   test('spending ink on a relic and a potion empties the well and shows the power words', async ({ page }) => {

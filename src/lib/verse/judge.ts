@@ -258,8 +258,11 @@ export function checkedByRules(model: JudgeSplit, rules: JudgeSplit): JudgeSplit
 
 /**
  * Smallest grade gap by which the model may decide a criterion the rules split. Measured with
- * LFM2.5 350M on honest pairs (docs/language/JUDGE-INJECTION.md): above it the model never
- * gave a criterion to the worse verse of a pair.
+ * LFM2.5 350M on eight honest pairs, 32 criteria (tests/model/grade-injection.spec.ts,
+ * docs/language/JUDGE-INJECTION.md): the largest gap it showed toward the worse verse was
+ * 0.223; 0.5 is above it with room for what eight pairs cannot show. On those pairs no
+ * criterion the rules split reached it (the largest was 0.16), so on the lite tier the rules
+ * decide nearly everything and the model breaks only clear ties.
  */
 export const GRADE_MARGIN = 0.5;
 
