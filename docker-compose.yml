@@ -31,7 +31,6 @@ services:
       # Email sign-in is off (503) until a Resend key is set here.
       RESEND_API_KEY: ""
       EMAIL_FROM: "Sonnet Man <signin@inspiredmile.com>"
-      LLM_API_KEY: ""
     ports:
       - "3849:3849"
 

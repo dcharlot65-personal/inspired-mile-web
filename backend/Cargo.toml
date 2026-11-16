@@ -37,3 +37,7 @@ hex = "0.4"
 # The verse engine (src/verse): Unicode letter and mark classes, and NFD for accent folding.
 regex = "1"
 unicode-normalization = "0.1"
+
+[dev-dependencies]
+# Paused time, so the room's timers are tested without waiting for them.
+tokio = { version = "1", features = ["full", "test-util"] }

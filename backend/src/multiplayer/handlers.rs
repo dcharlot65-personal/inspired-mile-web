@@ -1,34 +1,67 @@
+//! The multiplayer routes: the quick-match queue, private rooms, reports, and the
+//! WebSocket a match is played over.
+//!
+//! The socket carries the small protocol in `game_room.rs`. A connection can do three
+//! things: join a room with a deck, submit a verse for the round being played, forfeit.
+//! Everything else, scores above all, is decided in the room.
+
 use std::sync::Arc;
+use std::time::{Duration, Instant};
+
 use axum::{
     extract::{
         ws::{Message, WebSocket},
-        Extension, State, WebSocketUpgrade,
+        Extension, Path, State, WebSocketUpgrade,
     },
-    http::StatusCode,
-    response::IntoResponse,
+    http::{header, HeaderMap, StatusCode},
+    response::{IntoResponse, Response},
     routing::{get, post},
     Json, Router,
 };
-use futures::{SinkExt, StreamExt};
+use futures::{stream::SplitSink, SinkExt, StreamExt};
 use serde::Serialize;
 use sqlx::PgPool;
+use tokio::sync::{mpsc, Mutex};
 use uuid::Uuid;
 
+use super::game_room::{
+    run_effects, ClientEvent, GameRoom, RoomError, RoomManager, RoomState, ServerEvent, EVENT_BUFFER,
+};
+use super::matchmaking::{Enqueued, MatchmakingQueue};
 use crate::auth::Claims;
 use crate::config::Config;
-use super::content_filter;
-use super::game_room::{ClientEvent, RoomManager, RoomState, ServerEvent, AxisScores};
-use super::judge;
-use super::matchmaking::MatchmakingQueue;
+
+/// Largest WebSocket message accepted. The largest honest one is a verse of
+/// `MAX_VERSE_BYTES` in a small JSON envelope; a JSON string can at worst double it.
+pub const MAX_MESSAGE_BYTES: usize = 6 * 1024;
+/// A connection that has joined no room by then is closed.
+const JOIN_WITHIN: Duration = Duration::from_secs(30);
+/// No connection outlives the oldest room it could be in.
+const MAX_CONNECTION: Duration = Duration::from_secs(45 * 60);
+/// Messages one connection may send in a window before it is closed. A match needs a
+/// handful in total.
+const MESSAGES_PER_WINDOW: u32 = 30;
+const MESSAGE_WINDOW: Duration = Duration::from_secs(10);
+/// How long a quick-match request waits for another player before answering "timeout".
+const QUEUE_WAIT: Duration = Duration::from_secs(30);
 
 pub fn router() -> Router<(PgPool, Config)> {
     Router::new()
         .route("/ws", get(ws_handler))
-        .route("/queue", post(join_queue))
+        .route("/queue", post(join_queue).delete(leave_queue))
         .route("/rooms", get(list_rooms))
         .route("/create-private", post(create_private_room))
         .route("/join/{token}", get(join_private_room))
         .route("/report", post(report_content))
+}
+
+fn refused(error: RoomError) -> (StatusCode, String) {
+    let status = match error {
+        RoomError::NotFound => StatusCode::NOT_FOUND,
+        RoomError::ServerFull => StatusCode::SERVICE_UNAVAILABLE,
+        _ => StatusCode::BAD_REQUEST,
+    };
+    (status, error.message())
 }
 
 // --- Content Report ---
@@ -53,15 +86,17 @@ async fn report_content(
         return Err((StatusCode::BAD_REQUEST, "Reason must be 1-500 characters".into()));
     }
 
-    sqlx::query(
-        "INSERT INTO content_reports (reporter_id, room_id, reason) VALUES ($1, $2, $3)"
-    )
-    .bind(claims.sub)
-    .bind(body.room_id)
-    .bind(&body.reason)
-    .execute(&pool)
-    .await
-    .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("Failed to submit report: {e}")))?;
+    sqlx::query("INSERT INTO content_reports (reporter_id, room_id, reason) VALUES ($1, $2, $3)")
+        .bind(claims.sub)
+        .bind(body.room_id)
+        .bind(&body.reason)
+        .execute(&pool)
+        .await
+        .map_err(|e| {
+            // The database's words stay in the log, not in the answer.
+            tracing::error!(error = %e, "Could not store a content report");
+            (StatusCode::INTERNAL_SERVER_ERROR, "The report could not be saved. Please try again.".to_string())
+        })?;
 
     tracing::warn!(
         reporter = %claims.sub,
@@ -70,10 +105,10 @@ async fn report_content(
         "Content report submitted"
     );
 
-    Ok(Json(ReportResponse {
-        status: "reported".into(),
-    }))
+    Ok(Json(ReportResponse { status: "reported".into() }))
 }
+
+// --- Quick match ---
 
 #[derive(Serialize)]
 struct QueueResponse {
@@ -82,44 +117,43 @@ struct QueueResponse {
     status: String,
 }
 
+fn queue_answer(room_id: Option<Uuid>, position: usize, status: &str) -> Json<QueueResponse> {
+    Json(QueueResponse { room_id, position, status: status.into() })
+}
+
+/// Ask for a match and wait up to `QUEUE_WAIT` for one. The answer is "matched" with the
+/// room to join, "timeout", or "cancelled" (the player left the queue or asked again from
+/// another tab).
 async fn join_queue(
     Extension(claims): Extension<Claims>,
     Extension(queue): Extension<Arc<MatchmakingQueue>>,
     Extension(rooms): Extension<Arc<RoomManager>>,
 ) -> Result<Json<QueueResponse>, (StatusCode, String)> {
-    let rx = queue.enqueue(claims.sub, claims.username.clone()).await;
-
-    // Wait up to 30 seconds for a match
-    match tokio::time::timeout(std::time::Duration::from_secs(30), rx).await {
-        Ok(Ok(result)) => {
-            // Create the room
-            let room_id = rooms.create_room(3).await;
-            if let Some(room) = rooms.get_room(room_id).await {
-                let mut room = room.lock().await;
-                room.add_player(claims.sub, claims.username.clone());
-                room.add_player(result.opponent_user_id, result.opponent_username);
-            }
-
-            Ok(Json(QueueResponse {
-                room_id: Some(result.room_id),
-                position: 0,
-                status: "matched".into(),
-            }))
-        }
-        Ok(Err(_)) => Ok(Json(QueueResponse {
-            room_id: None,
-            position: 0,
-            status: "cancelled".into(),
-        })),
+    let mut rx = match queue.enqueue(claims.sub, claims.username.clone(), &rooms).await.map_err(refused)? {
+        Enqueued::Matched(room_id) => return Ok(queue_answer(Some(room_id), 0, "matched")),
+        Enqueued::Waiting(rx) => rx,
+    };
+    match tokio::time::timeout(QUEUE_WAIT, &mut rx).await {
+        Ok(Ok(room_id)) => Ok(queue_answer(Some(room_id), 0, "matched")),
+        Ok(Err(_)) => Ok(queue_answer(None, 0, "cancelled")),
         Err(_) => {
             queue.dequeue(claims.sub).await;
-            Ok(Json(QueueResponse {
-                room_id: None,
-                position: queue.size().await,
-                status: "timeout".into(),
-            }))
+            // Someone may have arrived in the instant between the timeout and leaving the
+            // queue; the room made for the two of them must not be left with one player.
+            match rx.try_recv() {
+                Ok(room_id) => Ok(queue_answer(Some(room_id), 0, "matched")),
+                Err(_) => Ok(queue_answer(None, queue.size().await, "timeout")),
+            }
         }
     }
+}
+
+async fn leave_queue(
+    Extension(claims): Extension<Claims>,
+    Extension(queue): Extension<Arc<MatchmakingQueue>>,
+) -> StatusCode {
+    queue.dequeue(claims.sub).await;
+    StatusCode::NO_CONTENT
 }
 
 #[derive(Serialize)]
@@ -129,19 +163,11 @@ struct RoomInfo {
     player_count: usize,
 }
 
-async fn list_rooms(
-    Extension(rooms): Extension<Arc<RoomManager>>,
-) -> Json<Vec<RoomInfo>> {
-    let list = rooms.list_rooms().await;
-    Json(
-        list.into_iter()
-            .map(|(id, state, count)| RoomInfo {
-                id,
-                state,
-                player_count: count,
-            })
-            .collect(),
-    )
+/// The caller's own rooms. A room's id is also the token that lets a player into a private
+/// room, so nobody is shown anyone else's.
+async fn list_rooms(Extension(claims): Extension<Claims>, Extension(rooms): Extension<Arc<RoomManager>>) -> Json<Vec<RoomInfo>> {
+    let list = rooms.rooms_of(claims.sub).await;
+    Json(list.into_iter().map(|(id, state, player_count)| RoomInfo { id, state, player_count }).collect())
 }
 
 // --- Challenge-a-Friend: Private Rooms ---
@@ -156,18 +182,11 @@ async fn create_private_room(
     Extension(claims): Extension<Claims>,
     Extension(rooms): Extension<Arc<RoomManager>>,
 ) -> Result<Json<PrivateRoomResponse>, (StatusCode, String)> {
-    let room_id = rooms.create_room(3).await;
-
-    // Add the creator as the first player
-    if let Some(room_arc) = rooms.get_room(room_id).await {
-        let mut room = room_arc.lock().await;
-        room.add_player(claims.sub, claims.username.clone());
-    }
-
-    // Use the room_id as the shareable token (simple but effective)
-    let token = room_id.to_string();
-
-    Ok(Json(PrivateRoomResponse { room_id, token }))
+    // One open invitation per player: a new one withdraws the last.
+    rooms.close_waiting_rooms_of(claims.sub).await;
+    let room_id = rooms.create_room(&[(claims.sub, claims.username.clone())]).await.map_err(refused)?;
+    // The room's id is the token a friend joins with: 122 random bits, shown to nobody else.
+    Ok(Json(PrivateRoomResponse { room_id, token: room_id.to_string() }))
 }
 
 #[derive(Serialize)]
@@ -176,271 +195,239 @@ struct JoinPrivateResponse {
     status: String,
 }
 
+/// Check an invitation before connecting: the room exists and has a seat for the caller.
+/// The seat itself is taken when the player joins over the WebSocket with a deck.
 async fn join_private_room(
     Extension(claims): Extension<Claims>,
     Extension(rooms): Extension<Arc<RoomManager>>,
-    axum::extract::Path(token): axum::extract::Path<String>,
+    Path(token): Path<String>,
 ) -> Result<Json<JoinPrivateResponse>, (StatusCode, String)> {
-    let room_id: Uuid = token.parse()
-        .map_err(|_| (StatusCode::BAD_REQUEST, "Invalid room token".into()))?;
-
-    let room_arc = rooms.get_room(room_id).await
-        .ok_or((StatusCode::NOT_FOUND, "Room not found or expired".into()))?;
-
-    let mut room = room_arc.lock().await;
-    if room.players.len() >= 2 {
-        return Err((StatusCode::BAD_REQUEST, "Room is full".into()));
+    let room_id: Uuid = token.parse().map_err(|_| (StatusCode::BAD_REQUEST, "Invalid room token".to_string()))?;
+    let room_arc = rooms.get_room(room_id).await.ok_or_else(|| refused(RoomError::NotFound))?;
+    let room = room_arc.lock().await;
+    if !room.has_player(claims.sub) && !room.has_open_seat() {
+        return Err(refused(RoomError::Full));
     }
+    Ok(Json(JoinPrivateResponse { room_id, status: "ok".into() }))
+}
 
-    room.add_player(claims.sub, claims.username.clone());
+// --- The WebSocket ---
 
-    Ok(Json(JoinPrivateResponse {
-        room_id,
-        status: "joined".into(),
-    }))
+/// A browser sends the page's origin with a WebSocket handshake, and sends the session
+/// cookie whatever page opened the socket. Only this site's own pages may open one.
+fn origin_allowed(headers: &HeaderMap, config: &Config) -> bool {
+    let Some(origin) = headers.get(header::ORIGIN) else {
+        // Not a browser. Without the session cookie it would not have got this far.
+        return true;
+    };
+    let Ok(origin) = origin.to_str() else { return false };
+    origin == config.cors_origin || config.webauthn_origins.iter().any(|o| o.origin().ascii_serialization() == origin)
 }
 
 async fn ws_handler(
     ws: WebSocketUpgrade,
+    headers: HeaderMap,
     Extension(claims): Extension<Claims>,
     Extension(rooms): Extension<Arc<RoomManager>>,
     State((_pool, config)): State<(PgPool, Config)>,
-) -> impl IntoResponse {
-    ws.on_upgrade(move |socket| handle_socket(socket, claims, rooms, config))
+) -> Response {
+    if !origin_allowed(&headers, &config) {
+        return (StatusCode::FORBIDDEN, "This page may not open a game connection.").into_response();
+    }
+    ws.max_message_size(MAX_MESSAGE_BYTES)
+        .max_frame_size(MAX_MESSAGE_BYTES)
+        .on_upgrade(move |socket| handle_socket(socket, claims, rooms))
 }
 
-async fn handle_socket(
-    socket: WebSocket,
-    claims: Claims,
-    rooms: Arc<RoomManager>,
-    config: Config,
-) {
-    let (ws_tx, mut ws_rx) = socket.split();
-    let ws_tx = Arc::new(tokio::sync::Mutex::new(ws_tx));
-    let mut current_room_id: Option<Uuid> = None;
+/// The room a connection has joined.
+struct Joined {
+    room: Arc<Mutex<GameRoom>>,
+    /// The number the room gave this connection.
+    conn: u64,
+    /// Events from the room. It closes when the room drops this connection: the player
+    /// joined again from elsewhere, or this connection fell too far behind.
+    rx: mpsc::Receiver<ServerEvent>,
+}
 
-    while let Some(Ok(msg)) = ws_rx.next().await {
-        let text = match msg {
-            Message::Text(t) => t,
-            Message::Close(_) => break,
-            _ => continue,
-        };
+async fn next_event(joined: &mut Option<Joined>) -> Option<ServerEvent> {
+    match joined {
+        Some(j) => j.rx.recv().await,
+        None => std::future::pending().await,
+    }
+}
 
-        let event: ClientEvent = match serde_json::from_str(&text) {
-            Ok(e) => e,
-            Err(_) => {
-                let err = ServerEvent::Error {
-                    message: "Invalid message format".into(),
-                };
-                let _ = ws_tx.lock().await.send(Message::Text(serde_json::to_string(&err).unwrap().into())).await;
-                continue;
+async fn send(sink: &mut SplitSink<WebSocket, Message>, event: &ServerEvent) -> Result<(), axum::Error> {
+    let json = serde_json::to_string(event).expect("server events serialise");
+    sink.send(Message::Text(json.into())).await
+}
+
+fn error(code: &'static str, message: &str) -> ServerEvent {
+    ServerEvent::Error { code, message: message.into() }
+}
+
+async fn handle_socket(socket: WebSocket, claims: Claims, rooms: Arc<RoomManager>) {
+    let (mut sink, mut stream) = socket.split();
+    let mut joined: Option<Joined> = None;
+    let join_deadline = tokio::time::sleep(JOIN_WITHIN);
+    let lifetime = tokio::time::sleep(MAX_CONNECTION);
+    tokio::pin!(join_deadline, lifetime);
+    let mut window_started = Instant::now();
+    let mut in_window = 0u32;
+
+    loop {
+        let waiting_to_join = joined.is_none();
+        tokio::select! {
+            event = next_event(&mut joined) => match event {
+                Some(event) => {
+                    if send(&mut sink, &event).await.is_err() {
+                        break;
+                    }
+                    // The match is over and the player has been told: nothing more to say.
+                    if matches!(event, ServerEvent::MatchComplete { .. }) {
+                        break;
+                    }
+                }
+                None => {
+                    let _ = send(&mut sink, &error("connection_replaced", "This game is open in another window, or the connection fell behind.")).await;
+                    break;
+                }
+            },
+            _ = &mut join_deadline, if waiting_to_join => {
+                let _ = send(&mut sink, &error("join_timeout", "No room was joined in time.")).await;
+                break;
             }
-        };
-
-        match event {
-            ClientEvent::JoinRoom { room_id } => {
-                let room_arc = match rooms.get_room(room_id).await {
-                    Some(r) => r,
-                    None => {
-                        let err = ServerEvent::Error {
-                            message: "Room not found".into(),
-                        };
-                        let _ = ws_tx.lock().await.send(Message::Text(serde_json::to_string(&err).unwrap().into())).await;
+            _ = &mut lifetime => break,
+            message = stream.next() => {
+                let text = match message {
+                    Some(Ok(Message::Text(text))) => text,
+                    // Pings are answered by the library; binary frames mean nothing here.
+                    Some(Ok(Message::Ping(_) | Message::Pong(_) | Message::Binary(_))) => continue,
+                    // Closed, broken, or a message over the size limit.
+                    Some(Ok(Message::Close(_))) | Some(Err(_)) | None => break,
+                };
+                if window_started.elapsed() > MESSAGE_WINDOW {
+                    window_started = Instant::now();
+                    in_window = 0;
+                }
+                in_window += 1;
+                if in_window > MESSAGES_PER_WINDOW {
+                    let _ = send(&mut sink, &error("too_many_messages", "Too many messages. The connection is closed.")).await;
+                    break;
+                }
+                let event: ClientEvent = match serde_json::from_str(text.as_str()) {
+                    Ok(event) => event,
+                    Err(_) => {
+                        if send(&mut sink, &error("bad_message", "Invalid message format")).await.is_err() {
+                            break;
+                        }
                         continue;
                     }
                 };
-
-                let mut room = room_arc.lock().await;
-                room.add_player(claims.sub, claims.username.clone());
-                current_room_id = Some(room_id);
-
-                // Send join confirmation directly (before subscribing to avoid echo)
-                let joined = ServerEvent::RoomJoined {
-                    room_id,
-                    opponent: room.get_opponent(claims.sub).map(|p| p.username.clone()).unwrap_or_default(),
-                    round: room.current_round,
-                    total_rounds: room.total_rounds,
-                    difficulty: room.difficulty.clone(),
-                };
-                let _ = ws_tx.lock().await.send(Message::Text(serde_json::to_string(&joined).unwrap().into())).await;
-
-                // Subscribe to room broadcasts and forward to this player's WebSocket
-                let mut rx = room.subscribe();
-                let fwd_tx = ws_tx.clone();
-                tokio::spawn(async move {
-                    while let Ok(event) = rx.recv().await {
-                        let json = serde_json::to_string(&event).unwrap();
-                        if fwd_tx.lock().await.send(Message::Text(json.into())).await.is_err() {
-                            break;
-                        }
-                    }
-                });
-
-                // If both players joined, broadcast round start (received by both via subscription)
-                if room.players.len() == 2 {
-                    room.start_round();
-                    room.broadcast(ServerEvent::RoundStart {
-                        round: room.current_round,
-                        total_rounds: room.total_rounds,
-                        theme: room.theme.clone(),
-                    });
-                }
-            }
-
-            ClientEvent::SubmitVerse { text: verse } => {
-                // Input validation: verse length
-                if verse.is_empty() || verse.len() > 2000 {
-                    let err = ServerEvent::Error {
-                        message: "Verse must be between 1 and 2000 characters".into(),
-                    };
-                    let _ = ws_tx.lock().await.send(Message::Text(serde_json::to_string(&err).unwrap().into())).await;
-                    continue;
-                }
-
-                // Content moderation filter
-                let filter_result = content_filter::check_content(&verse);
-                if !filter_result.allowed {
-                    let err = ServerEvent::Error {
-                        message: filter_result.reason.unwrap_or_else(|| "Content rejected by moderation filter.".into()),
-                    };
-                    let _ = ws_tx.lock().await.send(Message::Text(serde_json::to_string(&err).unwrap().into())).await;
-                    continue;
-                }
-
-                let room_id = match current_room_id {
-                    Some(id) => id,
-                    None => continue,
-                };
-                let room_arc = match rooms.get_room(room_id).await {
-                    Some(r) => r,
-                    None => continue,
-                };
-
-                let mut room = room_arc.lock().await;
-                room.submit_verse(claims.sub, verse);
-                room.broadcast(ServerEvent::OpponentSubmitted);
-
-                if room.both_submitted() {
-                    let subs = room.take_submissions();
-                    let s1 = &subs[0];
-                    let s2 = &subs[1];
-
-                    // Build timing notes for AI authenticity detection
-                    let mut timing_notes = String::new();
-                    let s1_secs = s1.submitted_after.as_secs();
-                    let s2_secs = s2.submitted_after.as_secs();
-                    if s1.text.len() > 200 && s1_secs < 8 {
-                        timing_notes.push_str(&format!(
-                            "Note: Player 1 submitted {} chars in {} seconds (possible copy-paste). ", s1.text.len(), s1_secs
-                        ));
-                    }
-                    if s2.text.len() > 200 && s2_secs < 8 {
-                        timing_notes.push_str(&format!(
-                            "Note: Player 2 submitted {} chars in {} seconds (possible copy-paste). ", s2.text.len(), s2_secs
-                        ));
-                    }
-
-                    let difficulty = room.difficulty.clone();
-                    let result = match judge::judge_battle(&s1.text, &s2.text, &config, &difficulty, &timing_notes).await {
-                        Ok(r) => r,
-                        Err(_) => judge::judge_fallback(),
-                    };
-
-                    // Update scores
-                    for p in room.players.iter_mut() {
-                        if p.user_id == s1.user_id {
-                            if result.player1_wins { p.score += 1; }
-                        } else {
-                            if !result.player1_wins { p.score += 1; }
-                        }
-                    }
-
-                    let round = room.current_round;
-
-                    room.broadcast(ServerEvent::RoundResult {
-                        round,
-                        player_score: AxisScores {
-                            wordplay: result.player1_score.wordplay,
-                            shakespeare: result.player1_score.shakespeare,
-                            flow: result.player1_score.flow,
-                            wit: result.player1_score.wit,
-                            authenticity: result.player1_score.authenticity,
-                            total: result.player1_score.total,
-                        },
-                        opponent_score: AxisScores {
-                            wordplay: result.player2_score.wordplay,
-                            shakespeare: result.player2_score.shakespeare,
-                            flow: result.player2_score.flow,
-                            wit: result.player2_score.wit,
-                            authenticity: result.player2_score.authenticity,
-                            total: result.player2_score.total,
-                        },
-                        player_wins: result.player1_wins,
-                        reason: result.reason,
-                    });
-
-                    // Warn if authenticity is suspiciously low
-                    if result.player1_score.authenticity < 4 || result.player2_score.authenticity < 4 {
-                        room.broadcast(ServerEvent::AuthenticityWarning {
-                            message: "A verse in this round may not be original. Battles are more fun when you write your own!".into(),
-                        });
-                    }
-
-                    room.advance_round();
-
-                    if room.state == RoomState::Completed {
-                        let winner = room.players.iter()
-                            .max_by_key(|p| p.score)
-                            .map(|p| p.username.clone())
-                            .unwrap_or_default();
-
-                        room.broadcast(ServerEvent::MatchComplete {
-                            winner,
-                            player_total: room.players.first().map(|p| p.score).unwrap_or(0),
-                            opponent_total: room.players.last().map(|p| p.score).unwrap_or(0),
-                        });
-                    } else {
-                        room.start_round();
-                        room.broadcast(ServerEvent::RoundStart {
-                            round: room.current_round,
-                            total_rounds: room.total_rounds,
-                            theme: room.theme.clone(),
-                        });
+                if let Some(problem) = handle_event(event, &claims, &rooms, &mut joined).await {
+                    if send(&mut sink, &problem).await.is_err() {
+                        break;
                     }
                 }
-            }
-
-            ClientEvent::Forfeit => {
-                if let Some(room_id) = current_room_id {
-                    if let Some(room_arc) = rooms.get_room(room_id).await {
-                        let room = room_arc.lock().await;
-                        let opponent = room.get_opponent(claims.sub)
-                            .map(|p| p.username.clone())
-                            .unwrap_or_default();
-
-                        room.broadcast(ServerEvent::MatchComplete {
-                            winner: opponent,
-                            player_total: 0,
-                            opponent_total: 3,
-                        });
-                        drop(room);
-                        rooms.remove_room(room_id).await;
-                        current_room_id = None;
-                    }
-                }
-            }
-
-            ClientEvent::UseItem { .. } => {
-                // Item effects are applied client-side; no server-side action needed
             }
         }
     }
 
-    // Player disconnected — notify opponent
-    if let Some(room_id) = current_room_id {
-        if let Some(room_arc) = rooms.get_room(room_id).await {
-            let room = room_arc.lock().await;
-            room.broadcast(ServerEvent::OpponentDisconnected);
+    if let Some(j) = joined {
+        let effects = j.room.lock().await.disconnect(claims.sub, j.conn);
+        run_effects(&j.room, effects);
+    }
+    let _ = sink.close().await;
+}
+
+/// Act on one message. Returns the error to tell the player, if the room refused it.
+async fn handle_event(
+    event: ClientEvent,
+    claims: &Claims,
+    rooms: &RoomManager,
+    joined: &mut Option<Joined>,
+) -> Option<ServerEvent> {
+    match event {
+        ClientEvent::JoinRoom { room_id, deck } => {
+            if joined.is_some() {
+                return Some(error("already_in_room", "This connection is already in a room."));
+            }
+            let Some(room) = rooms.get_room(room_id).await else {
+                return Some(RoomError::NotFound.event());
+            };
+            let (tx, rx) = mpsc::channel(EVENT_BUFFER);
+            let outcome = room.lock().await.join(claims.sub, &claims.username, &deck, tx);
+            match outcome {
+                Ok((conn, effects)) => {
+                    run_effects(&room, effects);
+                    *joined = Some(Joined { room, conn, rx });
+                    None
+                }
+                Err(refusal) => Some(refusal.event()),
+            }
         }
+        ClientEvent::SubmitVerse { round, char_id, text } => {
+            let Some(j) = joined else {
+                return Some(RoomError::NotInRoom.event());
+            };
+            let outcome = j.room.lock().await.submit(claims.sub, round, &char_id, &text);
+            match outcome {
+                Ok(effects) => {
+                    run_effects(&j.room, effects);
+                    None
+                }
+                Err(refusal) => Some(refusal.event()),
+            }
+        }
+        ClientEvent::Forfeit => {
+            if let Some(j) = joined {
+                j.room.lock().await.forfeit(claims.sub);
+            }
+            None
+        }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    fn config(pairs: &[(&str, &str)]) -> Config {
+        let lookup = |name: &str| {
+            let given = pairs.iter().find(|(k, _)| *k == name).map(|(_, v)| v.to_string());
+            given.or_else(|| (name == "JWT_SECRET").then(|| "a-test-secret-that-is-long-enough-0123456789abcdef".to_string()))
+        };
+        Config::from_lookup(lookup).expect("a valid configuration").0
+    }
+
+    fn with_origin(origin: &str) -> HeaderMap {
+        let mut headers = HeaderMap::new();
+        headers.insert(header::ORIGIN, origin.parse().unwrap());
+        headers
+    }
+
+    #[test]
+    fn only_this_sites_pages_may_open_the_game_socket() {
+        let c = config(&[
+            ("CORS_ORIGIN", "http://localhost:4399"),
+            ("WEBAUTHN_RP_ID", "localhost"),
+            ("WEBAUTHN_ORIGIN", "http://localhost:4399,http://localhost:4398"),
+        ]);
+        assert!(origin_allowed(&with_origin("http://localhost:4399"), &c));
+        assert!(origin_allowed(&with_origin("http://localhost:4398"), &c));
+        assert!(!origin_allowed(&with_origin("http://localhost:9999"), &c));
+        assert!(!origin_allowed(&with_origin("https://evil.example"), &c));
+        assert!(!origin_allowed(&with_origin("null"), &c));
+        // No Origin header: not a browser.
+        assert!(origin_allowed(&HeaderMap::new(), &c));
+
+        let production = config(&[]);
+        assert!(origin_allowed(&with_origin("https://sonnetman.inspiredmile.com"), &production));
+        assert!(!origin_allowed(&with_origin("https://inspiredmile.com.evil.example"), &production));
+    }
+
+    #[test]
+    fn the_message_limit_holds_the_largest_honest_verse() {
+        // Every byte of a verse escaped as two, plus the envelope.
+        assert!(MAX_MESSAGE_BYTES >= 2 * super::super::game_room::MAX_VERSE_BYTES + 200);
     }
 }

@@ -1,18 +1,27 @@
-use tokio::sync::{Mutex, oneshot};
+//! The quick-match queue: first come, first paired.
+//!
+//! A player who asks for a match either meets someone already waiting, or waits. When two
+//! meet, one room is made with a seat held for each, and both are told its id.
+
+use tokio::sync::{oneshot, Mutex};
 use uuid::Uuid;
 
-/// A player waiting in the matchmaking queue.
-pub struct QueueEntry {
-    pub user_id: Uuid,
-    pub username: String,
-    pub tx: oneshot::Sender<MatchResult>,
+use super::game_room::{RoomError, RoomManager};
+
+struct QueueEntry {
+    user_id: Uuid,
+    username: String,
+    /// Fires with the room's id when this player is paired. Dropped if they are removed.
+    tx: oneshot::Sender<Uuid>,
 }
 
-/// Result sent back to a queued player when matched.
-pub struct MatchResult {
-    pub room_id: Uuid,
-    pub opponent_user_id: Uuid,
-    pub opponent_username: String,
+/// What asking for a match gave.
+pub enum Enqueued {
+    /// Someone was waiting: the room is ready.
+    Matched(Uuid),
+    /// Nobody was waiting. The receiver fires when someone arrives, and fails if this
+    /// player leaves the queue or asks again from somewhere else.
+    Waiting(oneshot::Receiver<Uuid>),
 }
 
 /// In-memory FIFO matchmaking queue.
@@ -22,54 +31,92 @@ pub struct MatchmakingQueue {
 
 impl MatchmakingQueue {
     pub fn new() -> Self {
-        Self {
-            queue: Mutex::new(Vec::new()),
-        }
+        Self { queue: Mutex::new(Vec::new()) }
     }
 
-    /// Add a player to the queue. Returns a oneshot receiver that will fire when matched.
-    pub async fn enqueue(&self, user_id: Uuid, username: String) -> oneshot::Receiver<MatchResult> {
-        let (tx, rx) = oneshot::channel();
+    /// Pair this player with the longest-waiting other player, or put them in the queue.
+    pub async fn enqueue(&self, user_id: Uuid, username: String, rooms: &RoomManager) -> Result<Enqueued, RoomError> {
         let mut q = self.queue.lock().await;
+        // One place in the queue per player: asking again replaces the earlier request,
+        // so a player with two tabs open is never paired with themselves.
+        q.retain(|e| e.user_id != user_id);
 
-        // Check if there's already someone waiting
-        if let Some(opponent) = q.pop() {
-            // We have a match!
-            let room_id = Uuid::new_v4();
-
-            // Notify the waiting player
-            let _ = opponent.tx.send(MatchResult {
-                room_id,
-                opponent_user_id: user_id,
-                opponent_username: username.clone(),
-            });
-
-            // Notify the new player immediately via the receiver
-            let (tx2, rx2) = oneshot::channel();
-            let _ = tx2.send(MatchResult {
-                room_id,
-                opponent_user_id: opponent.user_id,
-                opponent_username: opponent.username,
-            });
-
-            // Drop the original tx (unused) and return the matched rx
-            drop(tx);
-            return rx2;
+        while !q.is_empty() {
+            let waiting = q.remove(0);
+            // Their request ended (timed out, cancelled, connection gone): not a player.
+            if waiting.tx.is_closed() {
+                continue;
+            }
+            let room_id = rooms
+                .create_room(&[(waiting.user_id, waiting.username.clone()), (user_id, username.clone())])
+                .await?;
+            if waiting.tx.send(room_id).is_ok() {
+                return Ok(Enqueued::Matched(room_id));
+            }
+            // They left between the check and the send: the room was for nobody.
+            rooms.remove_room(room_id).await;
         }
 
-        // No one waiting — queue up
+        let (tx, rx) = oneshot::channel();
         q.push(QueueEntry { user_id, username, tx });
-        rx
+        Ok(Enqueued::Waiting(rx))
     }
 
-    /// Remove a player from the queue (e.g., on disconnect).
+    /// Remove a player from the queue (they gave up, or their wait timed out).
     pub async fn dequeue(&self, user_id: Uuid) {
         let mut q = self.queue.lock().await;
         q.retain(|e| e.user_id != user_id);
     }
 
-    /// Get the current queue size.
+    /// Players waiting right now, not counting requests that have ended.
     pub async fn size(&self) -> usize {
-        self.queue.lock().await.len()
+        self.queue.lock().await.iter().filter(|e| !e.tx.is_closed()).count()
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::multiplayer::game_room::RoomState;
+
+    #[tokio::test]
+    async fn two_players_are_paired_into_one_room_with_both_seats_held() {
+        let (rooms, queue) = (RoomManager::new(), MatchmakingQueue::new());
+        let (a, b) = (Uuid::new_v4(), Uuid::new_v4());
+        let Enqueued::Waiting(mut rx) = queue.enqueue(a, "ann".into(), &rooms).await.unwrap() else {
+            panic!("the first player waits")
+        };
+        assert_eq!(queue.size().await, 1);
+        let Enqueued::Matched(room_id) = queue.enqueue(b, "bob".into(), &rooms).await.unwrap() else {
+            panic!("the second player is matched")
+        };
+        // Both are told the same room, and it exists with a seat for each.
+        assert_eq!(rx.try_recv(), Ok(room_id));
+        assert_eq!(queue.size().await, 0);
+        assert_eq!(rooms.rooms_of(a).await, vec![(room_id, RoomState::Waiting, 2)]);
+        assert_eq!(rooms.rooms_of(b).await, vec![(room_id, RoomState::Waiting, 2)]);
+    }
+
+    #[tokio::test]
+    async fn a_player_is_never_paired_with_themselves_or_with_someone_who_left() {
+        let (rooms, queue) = (RoomManager::new(), MatchmakingQueue::new());
+        let (a, b, c) = (Uuid::new_v4(), Uuid::new_v4(), Uuid::new_v4());
+        // The same player asks twice: the first request is cancelled, and they still wait.
+        let Enqueued::Waiting(mut first) = queue.enqueue(a, "ann".into(), &rooms).await.unwrap() else { panic!() };
+        let Enqueued::Waiting(second) = queue.enqueue(a, "ann".into(), &rooms).await.unwrap() else {
+            panic!("a player is not matched with themselves")
+        };
+        assert!(first.try_recv().is_err());
+        assert_eq!(queue.size().await, 1);
+        // Their request ends without a word (the connection went): they are skipped.
+        drop(second);
+        let Enqueued::Waiting(mut rx_b) = queue.enqueue(b, "bob".into(), &rooms).await.unwrap() else {
+            panic!("nobody real was waiting")
+        };
+        assert!(rooms.rooms_of(a).await.is_empty(), "no room was left behind for the player who went");
+        // Bob leaves the queue; Cy then waits rather than being paired with him.
+        queue.dequeue(b).await;
+        assert!(rx_b.try_recv().is_err());
+        assert!(matches!(queue.enqueue(c, "cy".into(), &rooms).await.unwrap(), Enqueued::Waiting(_)));
     }
 }
