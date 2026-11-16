@@ -181,7 +181,7 @@ const ADDRESS: Record<string, { rule: string; wrong: RegExp[] }> = {
   it: { rule: 'tu', wrong: [word('voi', 'vostr[oaie]'), /(?<![.!?:]\s|^)\bLei\b/u] },
   pt: { rule: 'você', wrong: [word('tu', 'teu', 'tua', 'teus', 'tuas', 'contigo', 'vós')] },
   pl: { rule: 'ty', wrong: [word('pan', 'pani', 'pana', 'panu', 'panią', 'państwo', 'państwa', 'wy', 'was', 'wam')] },
-  ru: { rule: 'ты', wrong: [word('вы', 'вас', 'вам', 'вами', 'ваш', 'ваша', 'ваше', 'ваши', 'вашего', 'вашей', 'вашему', 'вашу', 'вашим', 'ваших'), /[а-яё]{3,}(?:айте|яйте|ейте|ите)(?![\p{L}])/iu] },
+  ru: { rule: 'ты', wrong: [word('вы', 'вас', 'вам', 'вами', 'ваш', 'ваша', 'ваше', 'ваши', 'вашего', 'вашей', 'вашему', 'вашу', 'вашим', 'ваших'), /[а-яё]{3,}(?:[аяеоую]йте|ите)(?![\p{L}])/iu] },
   id: { rule: 'kamu', wrong: [word('anda')] },
   ko: { rule: '해요체', wrong: [/(?:습니다|입니다|ㅂ니다|십시오)/u] },
   ja: { rule: 'です・ます', wrong: [/(?:だ|である)[。！!]/u] },
@@ -399,7 +399,7 @@ describe('these checks can fail', () => {
     // Question 1 ("Which play features Romeo and Juliet?"): its options are all plays.
     const swapped = { ...ja, 'trivia.1.o0': ja['trivia.1.o1'], 'trivia.1.o1': ja['trivia.1.o0'] };
     expect(nameOptionProblems('ja', swapped, optionKeys, nameOf, ucfirst).length).toBe(2);
-    expect(nameOptionProblems('ja', { ...ja, 'trivia.1.o0': 'ロミオとジュリエット物語' }, optionKeys, nameOf, ucfirst)[0]).toContain('the correct answer');
+    expect(nameOptionProblems('ja', { ...ja, 'trivia.1.o0': 'ハムレット' }, optionKeys, nameOf, ucfirst)[0]).toContain('the correct answer');
   });
 
   it('scriptTells objects to a right answer that is the one option in Thai, or the one in Latin letters', async () => {
