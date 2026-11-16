@@ -1,23 +1,18 @@
 lang	challenge	work	English line
 es	0	Hamlet	To be, or not to be, that is the question.
 es	1	The Merchant of Venice	All that glitters is not gold.
-es	2	Romeo and Juliet	Parting is such sweet sorrow.
 es	3	The Tempest	We are such stuff as dreams are made on.
-es	4	Romeo and Juliet	Romeo, Romeo, wherefore art thou Romeo?
 es	5	Julius Caesar	Friends, Romans, countrymen, lend me your ears.
-es	6	Romeo and Juliet	A rose by any other name would smell as sweet.
 es	7	Macbeth	Double, double toil and trouble; fire burn and cauldron bubble.
 es	8	Julius Caesar	Et tu, Brute?
 es	9	Richard III	Now is the winter of our discontent.
 es	10	As You Like It	All the world's a stage, and all the men and women merely players.
 es	11	Macbeth	Out, damned spot! Out, I say!
-es	12	Romeo and Juliet	A plague on both your houses!
 es	13	Twelfth Night	If music be the food of love, play on.
 es	14	Hamlet	The lady doth protest too much, methinks.
 es	16	A Midsummer Night's Dream	Love looks not with the eyes, but with the mind.
 es	17	Twelfth Night	Some are born great, some achieve greatness, and some have greatness thrust upon them.
 es	18	A Midsummer Night's Dream	The course of true love never did run smooth.
-es	19	Romeo and Juliet	Good night, good night! Parting is such sweet sorrow, that I shall say good night till it be morrow.
 es	21	A Midsummer Night's Dream	Lord, what fools these mortals be!
 es	22	Macbeth	Is this a dagger which I see before me, the handle toward my hand?
 es	23	Sonnet 18	Shall I compare thee to a summer's day? Thou art more lovely and more temperate.
@@ -30,8 +25,6 @@ es	30	A Midsummer Night's Dream	Though she be but little, she is fierce.
 es	31	Julius Caesar	Cowards die many times before their deaths; the valiant never taste of death but once.
 es	32	The Tempest	Hell is empty and all the devils are here.
 es	33	The Merchant of Venice	The quality of mercy is not strained; it droppeth as the gentle rain from heaven.
-es	34	Romeo and Juliet	These violent delights have violent ends.
-es	35	Romeo and Juliet	What's in a name? That which we call a rose by any other name would smell as sweet.
 es	36	Julius Caesar	The evil that men do lives after them; the good is oft interred with their bones.
 es	37	Othello	I am not what I am.
 es	38	Othello	O, beware, my lord, of jealousy! It is the green-eyed monster which doth mock the meat it feeds on.
@@ -40,7 +33,6 @@ es	40	Macbeth	Life's but a walking shadow, a poor player that struts and frets h
 es	41	Twelfth Night	Be not afraid of greatness. Some are born great, some achieve greatness, and others have greatness thrust upon them.
 es	44	Richard III	Off with his head!
 es	45	Henry V	Once more unto the breach, dear friends, once more.
-es	46	Romeo and Juliet	But soft, what light through yonder window breaks?
 es	47	Julius Caesar	Cry havoc, and let slip the dogs of war!
 es	48	All's Well That Ends Well	Love all, trust a few, do wrong to none.
 es	49	Julius Caesar	Beware the ides of March.
@@ -87,7 +79,6 @@ es	92	All's Well That Ends Well	No legacy is so rich as honesty.
 es	93	Richard II	This blessed plot, this earth, this realm, this England.
 es	94	Macbeth	Come what come may, time and the hour runs through the roughest day.
 es	95	Much Ado About Nothing	Speak low, if you speak love.
-es	96	Romeo and Juliet	Thou know'st the mask of night is on my face, else would a maiden blush bepaint my cheek.
 es	97	Othello	For I am nothing if not critical.
 es	98	The Winter's Tale	Exit, pursued by a bear.
 es	99	Romeo and Juliet	O, she doth teach the torches to burn bright!
@@ -96,23 +87,18 @@ es	101	As You Like It	I had rather have a fool to make me merry than experience 
 es	102	Love's Labour's Lost	A light heart lives long.
 es	103	The Tempest	What is past is prologue.
 fr	1	The Merchant of Venice	All that glitters is not gold.
-fr	2	Romeo and Juliet	Parting is such sweet sorrow.
 fr	3	The Tempest	We are such stuff as dreams are made on.
-fr	4	Romeo and Juliet	Romeo, Romeo, wherefore art thou Romeo?
 fr	5	Julius Caesar	Friends, Romans, countrymen, lend me your ears.
-fr	6	Romeo and Juliet	A rose by any other name would smell as sweet.
 fr	7	Macbeth	Double, double toil and trouble; fire burn and cauldron bubble.
 fr	8	Julius Caesar	Et tu, Brute?
 fr	9	Richard III	Now is the winter of our discontent.
 fr	10	As You Like It	All the world's a stage, and all the men and women merely players.
 fr	11	Macbeth	Out, damned spot! Out, I say!
-fr	12	Romeo and Juliet	A plague on both your houses!
 fr	13	Twelfth Night	If music be the food of love, play on.
 fr	14	Hamlet	The lady doth protest too much, methinks.
 fr	16	A Midsummer Night's Dream	Love looks not with the eyes, but with the mind.
 fr	17	Twelfth Night	Some are born great, some achieve greatness, and some have greatness thrust upon them.
 fr	18	A Midsummer Night's Dream	The course of true love never did run smooth.
-fr	19	Romeo and Juliet	Good night, good night! Parting is such sweet sorrow, that I shall say good night till it be morrow.
 fr	20	Hamlet	There is nothing either good or bad, but thinking makes it so.
 fr	21	A Midsummer Night's Dream	Lord, what fools these mortals be!
 fr	22	Macbeth	Is this a dagger which I see before me, the handle toward my hand?
@@ -126,8 +112,6 @@ fr	30	A Midsummer Night's Dream	Though she be but little, she is fierce.
 fr	31	Julius Caesar	Cowards die many times before their deaths; the valiant never taste of death but once.
 fr	32	The Tempest	Hell is empty and all the devils are here.
 fr	33	The Merchant of Venice	The quality of mercy is not strained; it droppeth as the gentle rain from heaven.
-fr	34	Romeo and Juliet	These violent delights have violent ends.
-fr	35	Romeo and Juliet	What's in a name? That which we call a rose by any other name would smell as sweet.
 fr	36	Julius Caesar	The evil that men do lives after them; the good is oft interred with their bones.
 fr	37	Othello	I am not what I am.
 fr	38	Othello	O, beware, my lord, of jealousy! It is the green-eyed monster which doth mock the meat it feeds on.
@@ -136,7 +120,6 @@ fr	40	Macbeth	Life's but a walking shadow, a poor player that struts and frets h
 fr	41	Twelfth Night	Be not afraid of greatness. Some are born great, some achieve greatness, and others have greatness thrust upon them.
 fr	44	Richard III	Off with his head!
 fr	45	Henry V	Once more unto the breach, dear friends, once more.
-fr	46	Romeo and Juliet	But soft, what light through yonder window breaks?
 fr	47	Julius Caesar	Cry havoc, and let slip the dogs of war!
 fr	48	All's Well That Ends Well	Love all, trust a few, do wrong to none.
 fr	49	Julius Caesar	Beware the ides of March.
@@ -165,7 +148,6 @@ fr	75	Henry VI, Part 2	The first thing we do, let's kill all the lawyers.
 fr	76	Measure for Measure	Some rise by sin, and some by virtue fall.
 fr	77	Measure for Measure	Our doubts are traitors, and make us lose the good we oft might win by fearing to attempt.
 fr	78	Measure for Measure	They say best men are moulded out of faults.
-fr	79	Romeo and Juliet	Wisely and slow; they stumble that run fast.
 fr	80	Othello	Put out the light, and then put out the light.
 fr	81	Macbeth	It is a tale told by an idiot, full of sound and fury, signifying nothing.
 fr	82	Othello	Reputation is an idle and most false imposition; oft got without merit, and lost without deserving.
@@ -180,10 +162,8 @@ fr	92	All's Well That Ends Well	No legacy is so rich as honesty.
 fr	93	Richard II	This blessed plot, this earth, this realm, this England.
 fr	94	Macbeth	Come what come may, time and the hour runs through the roughest day.
 fr	95	Much Ado About Nothing	Speak low, if you speak love.
-fr	96	Romeo and Juliet	Thou know'st the mask of night is on my face, else would a maiden blush bepaint my cheek.
 fr	97	Othello	For I am nothing if not critical.
 fr	98	The Winter's Tale	Exit, pursued by a bear.
-fr	99	Romeo and Juliet	O, she doth teach the torches to burn bright!
 fr	100	King Lear	The wheel is come full circle; I am here.
 fr	101	As You Like It	I had rather have a fool to make me merry than experience to make me sad.
 fr	102	Love's Labour's Lost	A light heart lives long.
