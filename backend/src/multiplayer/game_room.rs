@@ -41,6 +41,8 @@ pub const MAX_VERSE_BYTES: usize = 2000;
 pub const EVENT_BUFFER: usize = 32;
 /// Rooms the server will hold at once.
 pub const MAX_ROOMS: usize = 500;
+/// How long a room that has not started may stand with nobody connected to it.
+const UNVISITED_ROOM: Duration = Duration::from_secs(300);
 
 /// How long things may take.
 #[derive(Clone, Copy, Debug)]
@@ -812,9 +814,12 @@ impl GameRoom {
             // the end still gets the result.
             Some(done) => done.elapsed() > linger,
             None => {
+                let nobody_here = self.seats.iter().all(|s| s.tx.is_none());
                 self.created_at.elapsed() > max_age
-                    // A waiting room nobody is connected to and nobody holds a seat in.
-                    || (self.state == RoomState::Waiting && self.seats.is_empty())
+                    // A waiting room nobody holds a seat in, or one that was made (a queue
+                    // match, an invitation) and that nobody has come to for a while.
+                    || (self.state == RoomState::Waiting
+                        && (self.seats.is_empty() || (nobody_here && self.created_at.elapsed() > UNVISITED_ROOM)))
             }
         }
     }
@@ -1368,6 +1373,23 @@ mod tests {
         assert!(manager.get_room(mine).await.is_some());
         manager.cleanup_stale_rooms(Duration::ZERO).await;
         assert!(manager.get_room(mine).await.is_none());
+    }
+
+    #[tokio::test]
+    async fn a_room_nobody_comes_to_is_swept_but_one_with_a_player_waiting_is_kept() {
+        let manager = RoomManager::new();
+        let (a, b) = (Uuid::new_v4(), Uuid::new_v4());
+        let unvisited = manager.create_room(&[(a, "ann".into()), (b, "bob".into())]).await.unwrap();
+        let waited_in = manager.create_room(&[(a, "ann".into())]).await.unwrap();
+        let (tx, _rx) = mpsc::channel(EVENT_BUFFER);
+        manager.get_room(waited_in).await.unwrap().lock().await.join(a, "ann", &deck(&DECK_A), tx).unwrap();
+        let long_ago = Instant::now().checked_sub(UNVISITED_ROOM + Duration::from_secs(1)).expect("the clock is past start-up");
+        for id in [unvisited, waited_in] {
+            manager.get_room(id).await.unwrap().lock().await.created_at = long_ago;
+        }
+        manager.cleanup_stale_rooms(Duration::from_secs(1800)).await;
+        assert!(manager.get_room(unvisited).await.is_none());
+        assert!(manager.get_room(waited_in).await.is_some());
     }
 
     #[test]

@@ -272,6 +272,43 @@ test.describe('Online duel', () => {
     }
   });
 
+  test('quick match pairs two players into one room, and a forfeit ends it for both', async ({ browser }) => {
+    test.setTimeout(120000);
+    const ann = await newPlayer(browser);
+    const bob = await newPlayer(browser);
+    try {
+      await ann.page.locator('#find-match-btn').click();
+      await expect(ann.page.locator('#queue-status')).toBeVisible();
+      await bob.page.locator('#find-match-btn').click();
+      await expect(ann.page.locator('#mp-arena')).toBeVisible({ timeout: 20000 });
+      await expect(bob.page.locator('#mp-arena')).toBeVisible({ timeout: 20000 });
+      const startAnn = (await waitForEvent(ann, 'match_start')) as MatchStart;
+      const startBob = (await waitForEvent(bob, 'match_start')) as MatchStart;
+      // One room, one plan, one seat each, and each is the other's opponent.
+      expect(startAnn.room_id).toBe(startBob.room_id);
+      expect(startAnn.seed).toBe(startBob.seed);
+      expect(startAnn.rounds).toEqual(startBob.rounds);
+      expect([startAnn.seat, startBob.seat].sort()).toEqual([0, 1]);
+      expect(startAnn.opponent.username).toBe(startBob.you.username);
+      expect(startAnn.you.username).not.toBe(startBob.you.username);
+      await expect(ann.page.locator('#mp-opponent-name')).toHaveText(startBob.you.username);
+
+      // Bob forfeits, and says yes when asked.
+      bob.page.once('dialog', (d) => void d.accept());
+      await bob.page.locator('#mp-forfeit-btn').click();
+      for (const [who, winner] of [[ann, 'you'], [bob, 'opponent']] as const) {
+        const box = who.page.locator('#mp-match-result');
+        await expect(box).toBeVisible({ timeout: 15000 });
+        await expect(box).toHaveAttribute('data-winner', winner);
+        await expect(box).toHaveAttribute('data-reason', 'forfeit');
+        await expect(who.page.locator('#mp-move-panel')).toBeHidden();
+      }
+    } finally {
+      await ann.context.close();
+      await bob.context.close();
+    }
+  });
+
   test('the socket itself: no session no socket, a sent score is ignored, twice is refused, too big is cut off, a dropped player can return', async ({ browser }) => {
     test.setTimeout(120000);
     const ann = await newPlayer(browser);
