@@ -5,7 +5,11 @@
  * sentence per plural form; see lib/strings.mjs).
  *
  *   LT_URL=http://127.0.0.1:8099 HUNSPELL=/path/hunspell DICT_DIR=/path/dict \
- *     node scripts/lang/grammar.mjs [--selftest] [--lang xx,yy] [--out file.json]
+ *     node scripts/lang/grammar.mjs [--selftest] [--lang xx,yy] [--keys file.json] [--out file.json]
+ *
+ * --keys: only the strings named in a JSON file, { lang: [key, …] } (or { lang: { key: … } }, such
+ * as an overlay of proposed corrections), so a handful of strings is checked in a minute instead
+ * of every string in half an hour. Like --lang, it skips the check for stale exceptions.
  *
  * scripts/lang/run.sh starts the LanguageTool server and sets these.
  *
@@ -19,13 +23,15 @@
  * exists in DICT_DIR or does not. The result file says which.
  */
 import { spawnSync } from 'node:child_process';
-import { existsSync, mkdirSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { allStrings, renderSamples, readJson, ROOT, HOUSE_QUOTES, LOCALES } from './lib/strings.mjs';
 
 const args = process.argv.slice(2);
+// The last occurrence wins: run.sh puts its default --out first, and an --out given to run.sh after it
+// must replace it (with the first, 'run.sh grammar --out with.json' overwrote grammar.json).
 const opt = (name, dflt) => {
-  const i = args.indexOf(name);
+  const i = args.lastIndexOf(name);
   return i >= 0 ? args[i + 1] : dflt;
 };
 const LT_URL = process.env.LT_URL ?? 'http://127.0.0.1:8099';
@@ -34,7 +40,9 @@ const HSPELL = process.env.HSPELL ?? 'hspell';
 const DICT_DIR = process.env.DICT_DIR ?? '';
 const OUT = resolve(opt('--out', `${ROOT}.langqa/grammar.json`));
 const only = opt('--lang', '')?.split(',').filter(Boolean);
-const langs = only?.length ? LOCALES.filter((l) => only.includes(l)) : [...LOCALES];
+const keysFile = opt('--keys', '');
+const onlyKeys = keysFile ? Object.fromEntries(Object.entries(JSON.parse(readFileSync(keysFile, 'utf8'))).map(([l, ks]) => [l, new Set(Array.isArray(ks) ? ks : Object.keys(ks))])) : null;
+const langs = (only?.length ? LOCALES.filter((l) => only.includes(l)) : [...LOCALES]).filter((l) => !onlyKeys || onlyKeys[l]);
 
 // Our language code -> LanguageTool's. A language missing here is one LanguageTool has no module for.
 const LT_CODE = { en: 'en-US', es: 'es', fr: 'fr', de: 'de-DE', it: 'it', pt: 'pt-BR', pl: 'pl-PL', ru: 'ru-RU', ar: 'ar', zh: 'zh-CN', ja: 'ja-JP' };
@@ -185,10 +193,10 @@ for (const lang of langs) {
   // Every sentence to check: interface strings as rendered samples, pack text as written.
   const items = [];
   for (const [key, template] of Object.entries(strings[lang].ui)) {
-    if (key in HOUSE_QUOTES) continue;
+    if (key in HOUSE_QUOTES || (onlyKeys && !onlyKeys[lang].has(key))) continue;
     for (const s of await renderSamples(lang, template, { key })) items.push({ id: `ui:${key}`, text: s.text, filled: s.filled, category: s.category });
   }
-  for (const [id, text] of Object.entries(strings[lang].pack)) items.push({ id: `pack:${id}`, text, filled: [], category: null });
+  for (const [id, text] of Object.entries(strings[lang].pack)) if (!onlyKeys || onlyKeys[lang].has(`pack:${id}`)) items.push({ id: `pack:${id}`, text, filled: [], category: null });
 
   const hits = [];
   // --- LanguageTool ---
@@ -249,9 +257,10 @@ for (const lang of langs) {
         usedWords.add(`${lang in allowSpelling && h.at in allowSpelling[lang] ? lang : '*'}|${h.at}`);
       }
     } else {
-      // id: one string ('ui:auth.signOut'), every string ('*'), or a group by prefix ('pack:written.*').
+      // id: one string ('ui:auth.signOut'), every string ('*'), or a group by prefix ('pack:written.*');
+      // at: the flagged text, or a list of them (a rule excused across strings for these words only).
       const idMatches = (id) => id === '*' || id === h.id || (id.endsWith('*') && h.id.startsWith(id.slice(0, -1)));
-      const i = allowGrammar.findIndex((a) => (a.lang === '*' || a.lang === lang) && a.rule === h.rule && idMatches(a.id) && (a.at === undefined || a.at === h.at));
+      const i = allowGrammar.findIndex((a) => (a.lang === '*' || a.lang === lang) && a.rule === h.rule && idMatches(a.id) && (a.at === undefined || [].concat(a.at).includes(h.at)));
       if (i >= 0) {
         h.allowed = allowGrammar[i].reason;
         usedGrammar.add(i);
@@ -275,7 +284,7 @@ for (const lang of langs) {
 }
 // A stale exception is a problem too (only judged on a full run).
 const stale = [];
-if (!only?.length) {
+if (!only?.length && !onlyKeys) {
   allowGrammar.forEach((a, i) => { if (!usedGrammar.has(i)) stale.push(`grammar: ${a.lang} ${a.rule} ${a.id} ${a.at ?? ''}`); });
   for (const [l, ws] of Object.entries(allowSpelling)) for (const w of Object.keys(ws)) if (!usedWords.has(`${l}|${w}`)) stale.push(`spelling: ${l} ${w}`);
 }

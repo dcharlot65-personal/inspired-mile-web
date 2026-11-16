@@ -1,5 +1,5 @@
 {
- "about": "LanguageTool hits accepted after reading, each with its reason. id: one string ('ui:key', 'pack:id'), every string ('*') or a group ('ui:*', 'pack:written.*'); at: only that flagged text. scripts/lang/grammar.mjs fails on a hit no entry covers and on an entry that covers nothing.",
+ "about": "LanguageTool hits accepted after reading, each with its reason. id: one string ('ui:key', 'pack:id'), every string ('*') or a group ('ui:*', 'pack:written.*'); at: only that flagged text, or only the flagged texts listed. scripts/lang/grammar.mjs fails on a hit no entry covers and on an entry that covers nothing.",
  "entries": [
   {
    "lang": "ar",

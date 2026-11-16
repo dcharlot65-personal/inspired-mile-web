@@ -78,17 +78,28 @@ and `llama-server` listen on 127.0.0.1, on ports of their own (`LT_PORT`,
 It is adopted only when it survives the tools:
 
 ```bash
-node scripts/lang/adopt.mjs propose docs/language/results/review.json          # overlay.json + pairs.json
-LANGQA_OVERLAY=overlay.json bash scripts/lang/run.sh grammar --out with.json   # on the host
-bash scripts/lang/run.sh pairs pairs.json pairs-out.json                       # on the host
-node scripts/lang/adopt.mjs decide --base grammar.json --with with.json --pairs pairs-out.json --bt bt.json
+A=docs/language/results/adopt
+node scripts/lang/adopt.mjs propose docs/language/results/review.json --out $A        # overlay.json, pairs.json, proposals.json
+# on the host (rb leaves git-ignored files behind, so $A must be a tracked path):
+bash scripts/lang/run.sh grammar --keys $A/overlay.json --out $OUT/grammar-base.json                         # the strings as they are
+LANGQA_OVERLAY=$A/overlay.json bash scripts/lang/run.sh grammar --keys $A/overlay.json --out $OUT/grammar-with.json   # with the corrections
+BT_DEVICE=mps bash scripts/lang/run.sh pairs $A/pairs.json $OUT/pairs-out.json
+# back here, with those three files and the current bt.json copied into $A:
+node scripts/lang/adopt.mjs decide --proposals $A/proposals.json --base $A/grammar-base.json --with $A/grammar-with.json --pairs $A/pairs-out.json --bt docs/language/results/bt.json
 ```
+
+`--keys` checks only the strings named (a minute, against half an hour for every string).
+An `--out` given to `run.sh` replaces its default (before 2026-11-16 the default won, so the
+run with the overlay overwrote `grammar.json`).
 
 `decide` writes `docs/language/results/adoption.json`: each proposal, whether it
 passed the mechanical and glossary checks, raised a new LanguageTool or Hunspell
 hit, and back-translated at least as close to the English as the text it would
-replace. A person (or the engineer doing the work) still reads each survivor
-before applying it.
+replace. Surviving is not enough: on 2026-11-16 survivors included corrections that
+changed the meaning (an actor made a games player, a curse "obeyed" made "possessed").
+Each survivor is read against the English and where it appears, and the decision and
+its reason go in `docs/language/results/adoption-reading.json`; only those marked
+`adopt` are applied (`apply.mjs`), and the report lists both.
 
 ## Sources
 

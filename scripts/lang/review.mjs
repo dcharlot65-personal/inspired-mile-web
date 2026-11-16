@@ -23,7 +23,8 @@ import { allStrings, HOUSE_QUOTES, LOCALES, ROOT, readJson } from './lib/strings
 import { contextOf } from './lib/context.mjs';
 
 const args = process.argv.slice(2);
-const opt = (name, dflt) => (args.includes(name) ? args[args.indexOf(name) + 1] : dflt);
+// The last occurrence wins, as in grammar.mjs: run.sh's default --out comes first.
+const opt = (name, dflt) => (args.includes(name) ? args[args.lastIndexOf(name) + 1] : dflt);
 const URL_ = process.env.LLAMA_URL ?? 'http://127.0.0.1:18732';
 const OUT = resolve(opt('--out', `${ROOT}.langqa/review.json`));
 const BATCH = Number(opt('--batch', '20'));
