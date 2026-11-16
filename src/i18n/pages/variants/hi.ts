@@ -5,8 +5,8 @@
  * Where the text came from and how it was checked: docs/language/pages-core/README.md.
  */
 const messages: Record<string, string> = {
-  'variants.unlocked': 'खुले रूप: <b>{n}</b>',
-  'variants.count': 'रूप: {n}',
+  'variants.unlocked': 'खुले संस्करण: <b>{n}</b>',
+  'variants.count': 'संस्करण: {n}',
   'variants.cities': 'खोजे गए शहर: <b>{n}</b> / {total}',
   'variants.source.city-quest': 'शहर की खोज',
   'variants.source.battle-streak': 'लगातार जीत',

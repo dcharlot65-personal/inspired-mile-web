@@ -22,7 +22,7 @@ const messages: Record<string, string> = {
   'home.feature.duel.title': 'El duelo de estrofas',
   'home.feature.duel.body': 'Tres rondas, tres formas. Respeta la forma, logra el recurso de tu carta y escribe mejor que un rival que funciona en tu navegador.',
   'home.feature.earn.title': 'Gana y colecciona',
-  'home.feature.earn.body': 'Gana cartas con minijuegos, preguntas, desafíos y victorias en batalla. Construye tu colección.',
+  'home.feature.earn.body': 'Gana cartas con minijuegos, el Trivial, desafíos y victorias en batalla. Construye tu colección.',
   'home.feature.private.title': 'Privado por diseño',
   'home.feature.private.body': 'En un duelo en solitario, el rival de IA, el juez y el reconocimiento de voz funcionan en tu dispositivo, y nada de lo que escribes o dices se envía a un servidor. Las batallas multijugador sí envían tus estrofas a nuestro servidor.',
   'home.houses.title': 'Las <b>casas</b> de Shakespeare',

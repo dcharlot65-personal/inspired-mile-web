@@ -5,9 +5,9 @@
  * Where the text came from and how it was checked: docs/language/pages-core/README.md.
  */
 const messages: Record<string, string> = {
-  'home.meta.description': 'Inspired Mile: um jogo de cartas em que a sua jogada é uma estrofe. Colecione os personagens de Shakespeare e duele com uma IA que roda inteiramente no seu navegador.',
+  'home.meta.description': 'Inspired Mile: um jogo de cartas em que a sua jogada é uma estrofe. Colecione os personagens de Shakespeare e enfrente em duelo uma IA que roda inteiramente no seu navegador.',
   'home.hero.title': 'Onde as cartas <b>ganham vida</b>',
-  'home.hero.body': 'Um jogo de cartas em que a sua jogada é uma estrofe. Jogue um personagem, respeite a forma e duele com uma IA que roda no seu navegador. Colecione os maiores personagens de Shakespeare e participe da próxima evolução dos jogos de cartas colecionáveis.',
+  'home.hero.body': 'Um jogo de cartas em que a sua jogada é uma estrofe. Jogue um personagem, respeite a forma e enfrente em duelo uma IA que roda no seu navegador. Colecione os maiores personagens de Shakespeare e participe da próxima evolução dos jogos de cartas colecionáveis.',
   'home.cta.playground': 'Entrar na Área de jogo',
   'home.cta.collection': 'Ver a coleção',
   'home.stat.cards': 'Cartas para colecionar',

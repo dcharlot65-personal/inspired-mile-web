@@ -42,7 +42,7 @@ const messages: Record<string, string> = {
   'about.tech.theatre.title': '극장',
   'about.tech.theatre.body': 'WebXR로 3D 무대에 올린 결투예요. Meta Quest 3에서는 패스스루로, Apple Vision Pro에서는 온전한 무대로, 그리고 어느 화면에서나 같은 장면으로 볼 수 있어요.',
   'about.tech.speech.title': '기기 안의 음성 인식',
-  'about.tech.speech.body': '시를 말하면 Whisper가 내 브라우저 안에서 글로 옮겨요. 녹음은 내 기기 밖으로 나가지 않아요. Whisper 모델 자체는 처음 쓸 때 Hugging Face에서 내려받아요.',
+  'about.tech.speech.body': '시를 말하면 Whisper가 내 브라우저 안에서 글로 옮겨요. 녹음은 내 기기 밖으로 나가지 않아요. Whisper 모델 자체는 처음 쓸 때 Hugging Face에서 다운로드돼요.',
   'about.tech.market.title': '마켓',
   'about.tech.market.body': '디지털 자산 마켓이에요. 카드의 가치는 배틀 순위와 커뮤니티 참여도의 영향을 받아요.',
   'about.free.title': '언제나 <b>무료</b>',

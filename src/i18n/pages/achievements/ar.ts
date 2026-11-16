@@ -27,7 +27,7 @@ const messages: Record<string, string> = {
   'achievements.scholar.description': 'أحرز نتيجة كاملة في المسابقة',
   'achievements.pack-rat.name': 'مكدّس الحزم',
   'achievements.pack-rat.description': 'حزم البطاقات المفتوحة: {n}',
-  'achievements.verse-veteran.name': 'محارب الشعر القديم',
+  'achievements.verse-veteran.name': 'محارب الأبيات القديم',
   'achievements.verse-veteran.description': 'جولات النزال المكتملة: {n}',
   'achievements.challenge-master.name': 'سيد التحديات',
   'achievements.challenge-master.description': 'تحديات الاقتباسات المكتملة: {n}',

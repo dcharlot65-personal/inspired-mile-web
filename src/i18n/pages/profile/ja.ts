@@ -23,7 +23,7 @@ const messages: Record<string, string> = {
   'profile.collectFirst': 'カードを集めると内訳が表示されます',
   'profile.leaderboard.title': '世界ランキング',
   'profile.leaderboard.loading': 'ランキングを読み込んでいます…',
-  'profile.leaderboard.empty': 'ランキングのデータはまだありません。バトルに勝つとここに載ります。',
+  'profile.leaderboard.empty': 'ランキングのデータはまだありません。バトルに勝つとここに載ります！',
   'profile.leaderboard.player': 'プレイヤー',
   'profile.leaderboard.wins': '勝利',
   'profile.leaderboard.battles': 'バトル',

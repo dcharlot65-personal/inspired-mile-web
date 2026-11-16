@@ -23,7 +23,7 @@ const messages: Record<string, string> = {
   'profile.collectFirst': 'สะสมการ์ดเพื่อดูสัดส่วน',
   'profile.leaderboard.title': 'กระดานผู้นำระดับโลก',
   'profile.leaderboard.loading': 'กำลังโหลดกระดานผู้นำ…',
-  'profile.leaderboard.empty': 'ยังไม่มีข้อมูลบนกระดานผู้นำ ชนะการประชันเพื่อให้มีชื่อที่นี่',
+  'profile.leaderboard.empty': 'ยังไม่มีข้อมูลบนกระดานผู้นำ ชนะการประชันเพื่อให้มีชื่อที่นี่!',
   'profile.leaderboard.player': 'ผู้เล่น',
   'profile.leaderboard.wins': 'ชนะ',
   'profile.leaderboard.battles': 'การประชัน',

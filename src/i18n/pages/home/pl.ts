@@ -7,7 +7,7 @@
 const messages: Record<string, string> = {
   'home.meta.description': 'Inspired Mile: gra karciana, w której twoim ruchem jest strofa. Zbieraj postacie Szekspira i stawaj do pojedynku ze sztuczną inteligencją, która działa w całości w twojej przeglądarce.',
   'home.hero.title': 'Tu karty <b>ożywają</b>',
-  'home.hero.body': 'Gra karciana, w której twoim ruchem jest strofa. Zagraj postać, zachowaj formę i zmierz się ze sztuczną inteligencją, która działa w twojej przeglądarce. Zbieraj największe postacie Szekspira i dołącz do kolejnego etapu rozwoju kolekcjonerskich gier karcianych.',
+  'home.hero.body': 'Gra karciana, w której twoim ruchem jest strofa. Zagraj postać, zachowaj formę i stocz pojedynek ze sztuczną inteligencją, która działa w twojej przeglądarce. Zbieraj największe postacie Szekspira i dołącz do kolejnego etapu rozwoju kolekcjonerskich gier karcianych.',
   'home.cta.playground': 'Wejdź na Plac zabaw',
   'home.cta.collection': 'Zobacz kolekcję',
   'home.stat.cards': 'Karty do zebrania',

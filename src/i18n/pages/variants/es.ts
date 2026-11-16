@@ -10,7 +10,7 @@ const messages: Record<string, string> = {
   'variants.cities': 'Ciudades descubiertas: <b>{n}</b> / {total}',
   'variants.source.city-quest': 'Misión de ciudad',
   'variants.source.battle-streak': 'Racha de batallas',
-  'variants.source.trivia-mastery': 'Dominio de las preguntas',
+  'variants.source.trivia-mastery': 'Dominio del Trivial',
   'variants.source.daily-travel': 'Viaje diario',
   'variants.source.event': 'Evento',
   'variants.ability.TKY.name': 'Precisión de neón',

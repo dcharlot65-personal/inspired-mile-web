@@ -27,7 +27,7 @@ const messages: Record<string, string> = {
   'achievements.scholar.description': 'Faça uma pontuação perfeita no quiz',
   'achievements.pack-rat.name': 'Acumulador de pacotes',
   'achievements.pack-rat.description': 'Pacotes de cartas abertos: {n}',
-  'achievements.verse-veteran.name': 'Veterano do verso',
+  'achievements.verse-veteran.name': 'Veterano das estrofes',
   'achievements.verse-veteran.description': 'Rodadas de batalha concluídas: {n}',
   'achievements.challenge-master.name': 'Mestre dos desafios',
   'achievements.challenge-master.description': 'Desafios de citações concluídos: {n}',

@@ -27,7 +27,7 @@ const messages: Record<string, string> = {
   'achievements.scholar.description': 'Пройди викторину без единой ошибки',
   'achievements.pack-rat.name': 'Запасливый хомяк',
   'achievements.pack-rat.description': 'Открыто наборов карт: {n}',
-  'achievements.verse-veteran.name': 'Ветеран стиха',
+  'achievements.verse-veteran.name': 'Ветеран строф',
   'achievements.verse-veteran.description': 'Пройдено раундов битв: {n}',
   'achievements.challenge-master.name': 'Мастер испытаний',
   'achievements.challenge-master.description': 'Пройдено испытаний с цитатой: {n}',
