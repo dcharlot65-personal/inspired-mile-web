@@ -1,0 +1,202 @@
+# Kuis bahasa Indonesia. n | pertanyaan | pilihan 0 (yang benar) | 1 | 2 | 3.   "=": nama diambil dari tabel nama (Wikidata).
+# Larik Shakespeare tetap dalam bahasa Inggris, seperti pada kartu. Nama yang belum punya label Indonesia di Wikidata dibiarkan apa adanya.
+0 | Siapa yang menulis "To be, or not to be, that is the question"? | = | = | = | =
+1 | Dalam lakon apa Romeo dan Juliet muncul? | = | = | = | =
+2 | Apa nama kastel Hamlet? | = | = | = | =
+3 | Tokoh mana yang berkata "A plague on both your houses!"? | = | = | = | =
+4 | Shakespeare paling terkenal karena jenis tulisan apa? | Lakon dan soneta | Novel | Puisi epik | Cerita pendek
+5 | Di mana Shakespeare lahir? | = | = | = | =
+6 | Siapa yang membunuh Romeo dalam lakon Romeo dan Juliet? | Tidak ada; ia mengakhiri hidupnya sendiri | = | = | Ayah Juliet
+7 | Apa nama teater Shakespeare? | = | = | = | Teater Kerajaan
+8 | Manakah dari lakon berikut yang merupakan komedi Shakespeare? | = | = | = | =
+9 | Di mana Juliet berdiri ketika Romeo berbicara kepadanya? | Di balkon | Di menara | Di jembatan | Di atap
+10 | Dari lakon apa kalimat "Friends, Romans, countrymen, lend me your ears"? | = | = | = | =
+11 | Berapa banyak lakon yang ditulis Shakespeare? | 37 | 15 | 50 | 100
+12 | Raja Skotlandia terkenal mana yang menjadi tokoh utama sebuah tragedi Shakespeare? | = | = | = | =
+13 | Lakon mana yang berlatar di sebuah pulau ajaib? | = | = | = | =
+14 | Romeo berasal dari keluarga mana? | Montague | Capulet | Escalus | Laurence
+15 | Dalam lakon apa tokoh Puck muncul? | = | = | = | =
+16 | Siapa pelayan ajaib Prospero dalam The Tempest? | = | = | = | =
+17 | Dari lakon apa kalimat "Double, double toil and trouble"? | = | = | = | =
+18 | Berapa banyak soneta yang ditulis Shakespeare? | 154 | 100 | 200 | 52
+19 | Tokoh mana yang merupakan ratu para peri? | = | = | = | =
+20 | Di kota mana Romeo dan Juliet berlatar? | = | = | = | =
+21 | Siapa paman Hamlet? | = | = | = | =
+22 | Apa yang menewaskan Hamlet di akhir lakon? | Pedang beracun | Belati | Racun dalam minumannya | Jatuh dari menara
+23 | Lakon mana yang menampilkan tiga penyihir? | = | = | = | =
+24 | Siapa yang berkata "Et tu, Brute?" saat sekarat? | = | = | = | =
+25 | Siapa nama roh jahil dalam Impian di Tengah Musim? | Puck (Robin Goodfellow) | = | = | =
+26 | Kepada tokoh mana dalam Hamlet dikatakan "Get thee to a nunnery"? | = | = | = | =
+27 | Dalam The Merchant of Venice, apa yang dituntut Shylock sebagai jaminan? | Satu pon daging | Sekantong emas | Sebuah kapal | Sebuah cincin
+28 | Siapa pelayan Prospero yang buruk rupa dalam The Tempest? | = | = | = | =
+29 | Lady Macbeth berkata "Out, damned ___!". Kata apa yang hilang? | Spot | Blood | Hand | Stain
+30 | Dalam lakon apa seorang tokoh memegang tengkorak dan berkata "Alas, poor Yorick"? | = | = | = | =
+31 | Dalam lakon apa tokoh Beatrice dan Benedick muncul? | = | = | = | =
+32 | Apa yang dilihat Macbeth melayang di hadapannya dan menuntunnya ke kamar Duncan? | Sebilah belati | Hantu | Mahkota | Obor
+33 | Siapa pangeran Verona dalam Romeo dan Juliet? | Escalus | = | = | =
+34 | Apa subjudul Twelfth Night? | Or, What You Will | Or, As You Like It | Or, The Comedy of Errors | Or, All's Well
+35 | Lakon mana yang memuat larik "All the world's a stage"? | = | = | = | =
+36 | Siapa nama raja peri dalam Impian di Tengah Musim? | = | = | = | =
+37 | Tokoh mana yang berkata "Brevity is the soul of wit"? | = | = | = | =
+38 | Apa maksud Juliet ketika berkata "What's in a name?"? | Nama tidak mengubah siapa seseorang sebenarnya | Ia lupa nama Romeo | Ia ingin mengganti namanya sendiri | Nama lebih penting daripada perbuatan
+39 | Manakah dari lakon berikut yang BUKAN karya Shakespeare? | = | = | = | =
+40 | Dalam lakon apa seorang tokoh berubah menjadi berkepala keledai? | = | = | = | =
+41 | Apa pangkat Iago dalam Othello? | Pembawa panji | Kapten | Jenderal | Letnan
+42 | Lakon Shakespeare mana yang juga dikenal sebagai "lakon Skotlandia"? | = | = | = | =
+43 | Lakon mana yang dibuka dengan "Now is the winter of our discontent"? | = | = | = | =
+44 | Lakon Shakespeare mana yang paling panjang? | = | = | = | =
+45 | Di akhir lakon apa Prospero mematahkan tongkatnya dan menenggelamkan bukunya? | = | = | = | =
+46 | Tokoh mana yang berkata "Lord, what fools these mortals be!"? | = | = | = | =
+47 | Dari lakon apa kalimat "The quality of mercy is not strained"? | = | = | = | =
+48 | Sari bunga apa yang dipakai Oberon untuk membuat orang jatuh cinta? | Bunga pansy (love-in-idleness) | Mawar | Lili | Violet
+49 | Dalam Raja Lear, berapa putri yang dimiliki Lear? | Tiga | Dua | Empat | Satu
+50 | Tokoh jahat Shakespeare mana yang berkata "I am not what I am"? | = | = | = | Aaron
+51 | Apa ramalan para penyihir kepada Macbeth tentang Hutan Birnam? | Ia tidak akan kalah sampai hutan itu bergerak ke kastelnya | Ia harus membakar hutan itu agar selamat | Hutan itu menyembunyikan musuh-musuhnya | Sebatang pohon akan tumbang dan menimpanya
+52 | Dalam kelompok karya mana "Dark Lady" Shakespeare muncul? | Soneta | Lakon sejarah | Lakon romansa | Lakon problem
+53 | Tokoh mana yang berkata "These violent delights have violent ends"? | Pastor Laurence | = | = | Sang Pangeran
+54 | Dalam lakon apa Rosalind dan Orlando berada di Hutan Arden? | = | = | = | =
+55 | Siapa nama istri Shakespeare? | = | = | = | =
+56 | Pada abad keberapa Shakespeare lahir? | Abad ke-16 | Abad ke-15 | Abad ke-17 | Abad ke-14
+57 | Manakah dari lakon berikut yang merupakan tragedi Shakespeare? | = | = | = | =
+58 | Di mana Hamlet berlatar? | = | = | = | =
+59 | Siapa tokoh yang dimaksud judul The Merchant of Venice? | = | = | = | =
+60 | Dalam Romeo dan Juliet, bagaimana Juliet berpura-pura mati? | Dengan ramuan tidur | Dengan mantra | Dengan menahan napas | Dengan racun
+61 | Tokoh mana yang merupakan Pangeran Denmark? | = | = | = | =
+62 | Shakespeare sering dijuluki "The ____ of Avon". Kata apa yang hilang? | Bard | King | Poet | Master
+63 | Juliet berasal dari keluarga mana? | Capulet | Montague | Escalus | Laurence
+64 | Di negara mana sebagian besar komedi Shakespeare berlatar? | = | = | = | =
+65 | Siapa yang membunuh Macbeth di akhir lakon? | = | = | = | =
+66 | Apa maksud Hamlet ketika berkata "the rest is silence"? | Ia sekarat dan tidak dapat berkata apa-apa lagi | Ia ingin semua orang diam | Ia hendak tidur | Ia tidak punya pendapat
+67 | Lakon Shakespeare mana yang berkisah tentang saudara kembar yang karam kapalnya? | = | = | = | =
+68 | Kepala hewan apa yang didapat Bottom dalam Impian di Tengah Musim? | Keledai | Kuda | Beruang | Babi
+69 | Di kota Inggris mana Shakespeare menghabiskan sebagian besar kariernya? | = | = | = | =
+70 | Siapa nama pastor dalam Romeo dan Juliet? | Pastor Laurence | = | Pastor John | Pastor Francis
+71 | Siapa penguasa pulau ajaib dalam The Tempest? | = | = | = | =
+72 | Lakon mana yang memiliki tokoh bernama Shylock? | = | = | = | =
+73 | Hantu siapa yang muncul di awal Hamlet? | Ayah Hamlet | Kakek Hamlet | = | =
+74 | Puisi mana yang dibuka dengan larik terkenal "Shall I compare thee to a summer's day?" | Soneta 18 | Soneta 1 | Soneta 130 | Soneta 116
+75 | Apa gelar Macbeth di awal lakon? | Thane Glamis | Raja Skotlandia | Adipati Albany | Earl Northumberland
+76 | Lakon Shakespeare mana yang berkisah tentang seorang Moor yang cemburu? | = | = | = | =
+77 | Bagaimana Ophelia meninggal dalam Hamlet? | Ia tenggelam | Ia diracun | Ia ditikam | Ia jatuh dari menara
+78 | Penguasa mana yang memerintah Inggris selama sebagian besar karier Shakespeare? | = | = | = | =
+79 | Apa yang dikatakan Miranda, putri Prospero, ketika pertama kali melihat orang lain? | "O brave new world" | "What magic is this" | "Father, who are they" | "I must be dreaming"
+80 | Dalam lakon apa seorang tokoh menyamar sebagai ahli hukum bernama Balthazar? | = | = | = | =
+81 | Apa nama kelompok teater Shakespeare pada masa Raja James I? | = | The Queen's Players | = | The Chamberlain's Servants
+82 | Lakon mana yang dibuka dengan badai di laut? | = | = | = | =
+83 | Dalam Julius Caesar, siapa yang memimpin persekongkolan untuk membunuh Caesar? | Brutus dan Cassius | Mark Antony dan Octavius | Calpurnia dan Portia | Cicero dan Casca
+84 | Apa genre Impian di Tengah Musim? | Komedi | Tragedi | Lakon sejarah | Romansa
+85 | Lakon Shakespeare mana yang menampilkan Hutan Arden? | = | = | = | =
+86 | Pada tahun berapa Shakespeare wafat? | 1616 | 1600 | 1623 | 1590
+87 | Siapa sahabat karib Romeo? | = | = | = | =
+88 | Siapa nama putri Prospero dalam The Tempest? | = | = | = | =
+89 | Lakon mana yang memuat kalimat "If music be the food of love, play on"? | = | = | = | =
+90 | Gelar apa yang diterima Macbeth setelah kemenangan pertamanya dalam pertempuran? | Thane Cawdor | Thane Glamis | Adipati Albany | Earl Ross
+91 | Dalam Twelfth Night, nama apa yang dipakai Viola saat menyamar sebagai laki-laki? | Cesario | = | = | =
+92 | Siapa yang membunuh Tybalt dalam Romeo dan Juliet? | = | = | = | =
+93 | Dalam Raja Lear, putri mana yang sungguh-sungguh mencintai ayahnya? | = | = | = | Ketiganya sama besar
+94 | Dengan apa Othello membunuh Desdemona? | Bantal (ia membekapnya) | Belati | Racun | Tali
+95 | Dalam lakon apa tokoh Malvolio muncul? | = | = | = | =
+96 | Siapa nama ibu Hamlet? | = | = | = | =
+97 | Dalam The Taming of the Shrew, siapa nama si "perempuan galak"? | Katherina (Kate) | Bianca | Adriana | =
+98 | Siapa ayah Desdemona dalam Othello? | = | = | = | =
+99 | Tokoh mana yang menyampaikan pidato "Once more unto the breach"? | = | = | = | =
+100 | Dalam The Winter's Tale, Perdita adalah putri dari kerajaan mana? | = | = | = | =
+101 | Siapa Adipati Illyria dalam Twelfth Night? | = | = | = | =
+102 | Dalam The Merchant of Venice, Portia menyamar sebagai apa? | Ahli hukum laki-laki | Saudagar | Pelaut | Biarawan
+103 | Dalam Much Ado About Nothing, tokoh mana yang berpura-pura mati? | = | = | = | Ursula
+104 | Lakon dalam lakon apa yang dipentaskan Hamlet untuk menjerat hati nurani raja? | Perangkap Tikus (The Mousetrap) | Pembunuhan Gonzago (The Murder of Gonzago) | Lakon Sang Raja | Cermin bagi Para Pangeran
+105 | Dalam Julius Caesar, siapa yang menyampaikan pidato pemakaman terkenal yang dibuka dengan "Friends, Romans, countrymen"? | = | = | = | =
+106 | Siapa nama pendamping setia Lear yang menyamar sebagai "Poor Tom"? | Edgar | = | Kent | Gloucester
+107 | Dalam Othello, benda apa yang dipakai Iago untuk meyakinkan Othello bahwa Desdemona tidak setia? | Sapu tangan | Surat | Cincin | Potret
+108 | Lakon mana yang diakhiri dengan larik "The rest is silence"? | = | = | = | =
+109 | Siapa yang menyamar sebagai pemuda bernama Ganymede dalam As You Like It? | = | = | Phebe | =
+110 | Apa yang terjadi pada Globe Theatre pada tahun 1613? | Terbakar habis saat sebuah pementasan | Ditutup oleh raja | Runtuh diterjang badai | Dibongkar untuk dibangun kembali
+111 | Dalam Measure for Measure, siapa wakil penguasa yang korup yang ditinggalkan untuk memerintah Wina? | = | Escalus | Lucio | Claudio
+112 | Lakon Shakespeare mana yang memiliki tokoh bernama Caliban? | = | = | = | =
+113 | Siapa nama mempelai Petruchio dalam The Taming of the Shrew? | Katherina | Bianca | Adriana | =
+114 | Dalam Antonius dan Cleopatra, bagaimana Cleopatra meninggal? | Digigit ular berbisa | Diracun | Tenggelam | Dengan belati
+115 | Siapa yang dihantui arwah Banquo dalam Macbeth? | = | = | = | =
+116 | Siapa nama letnan Othello yang membuat Iago iri? | = | = | = | =
+117 | Dalam Richard III, dengan apa Richard bersedia menukar kerajaannya? | Seekor kuda | Sebilah pedang | Sebuah mahkota | Nyawanya
+118 | Siapa saudara kembar Viola dalam Twelfth Night? | = | = | = | =
+119 | Dalam Henry V, pertempuran apa yang didahului pidato terkenal Hari Santo Krispinus? | = | = | = | =
+120 | Siapa yang membunuh Raja Duncan dalam Macbeth? | = | = | = | =
+121 | Dalam The Merchant of Venice, peti mana yang harus dipilih Bassanio untuk memenangkan Portia? | Peti timah | Peti emas | Peti perak | Peti perunggu
+122 | Siapa nama sahabat dekat dan orang kepercayaan Hamlet? | = | = | = | =
+123 | Lakon Shakespeare mana yang berlatar di Mesir Kuno? | = | = | = | =
+124 | Dalam Raja Lear, apa yang diminta Lear untuk dinyatakan putri-putrinya sebelum ia membagi kerajaannya? | Seberapa besar cinta mereka kepadanya | Rencana mereka untuk memerintah | Peluang pernikahan mereka | Kekuatan militer mereka
+125 | Siapa yang berkata "Parting is such sweet sorrow"? | Juliet dalam Romeo dan Juliet | Hamlet dalam Hamlet | Portia dalam The Merchant of Venice | Viola dalam Twelfth Night
+126 | Apa yang terus-menerus dilakukan Lady Macbeth saat berjalan dalam tidur? | Mencuci tangan | Mengucapkan pidato | Mencari belati | Memanggil suaminya
+127 | Dalam Much Ado About Nothing, siapa tokoh jahat yang menyusun siasat? | = | = | = | Borachio
+128 | Apa nama pesta para gembala dalam The Winter's Tale? | Pesta pencukuran bulu domba | Pesta dansa panen | Karnaval musim semi | Pesta pertengahan musim panas
+129 | Dalam As You Like It, siapa yang mengucapkan pidato "tujuh babak usia manusia"? | = | = | = | Adipati yang terbuang
+130 | Tokoh mana dalam Impian di Tengah Musim yang memimpin sekelompok aktor amatir? | = | = | = | =
+131 | Siapa ayah Cordelia dalam Raja Lear? | Raja Lear | Adipati Gloucester | Earl Kent | Adipati Cornwall
+132 | Dalam The Tempest, hubungan apa yang diakui Caliban dengan pulau itu? | Ia mengaku sebagai penguasanya yang sah | Ia mengaku sebagai penciptanya | Ia mengaku sebagai pelindungnya | Ia tidak mengaku punya hubungan apa pun
+133 | Siapa nama istri Brutus dalam Julius Caesar? | = | = | = | =
+134 | Lakon Shakespeare mana yang berlangsung di hutan dekat Athena? | = | = | = | =
+135 | Dalam Measure for Measure, karena kejahatan apa Claudio ditangkap? | Menghamili tunangannya sebelum menikah | Pencurian | Pembunuhan | Pengkhianatan
+136 | Siapa nama badut dalam Twelfth Night? | = | = | = | =
+137 | Kepada siapa Ferdinand jatuh cinta dalam The Tempest? | = | = | Claribel | =
+138 | Apa yang dibeli Romeo dari peramu obat? | Racun | Obat tidur | Obat | Ramuan cinta
+139 | Dalam Raja Lear, siapa yang membutakan Gloucester? | Cornwall | = | = | Oswald
+140 | Apa nama kelompok teater Shakespeare sebelum Raja James menjadi pelindungnya? | = | = | = | =
+141 | Dalam lakon apa Dogberry, seorang petugas keamanan yang kikuk, muncul? | = | = | = | =
+142 | Bagaimana Antonius meninggal dalam Antonius dan Cleopatra? | Ia menjatuhkan diri ke pedangnya sendiri | Ia tewas dalam pertempuran | Ia diracun | Ia dihukum mati
+143 | Siapakah Hermione dalam The Winter's Tale? | Ratu Sisilia | Seorang gembala perempuan | Seorang penyihir | Seorang pelayan
+144 | Dalam lakon apa seorang tokoh memakai stoking kuning dengan tali pengikat bersilang? | = | = | = | =
+145 | Apa nama lakon dalam lakon di Hamlet, menurut sebutan Hamlet sendiri? | Perangkap Tikus (The Mousetrap) | Pembunuhan Gonzago (The Murder of Gonzago) | Hati Nurani Raja | Balas Dendam Denmark
+146 | Dalam lakon apa seorang tokoh selamat setelah ditinggalkan saat masih bayi di Bohemia? | = | = | = | =
+147 | Siapa nama anak tidak sah Gloucester dalam Raja Lear? | = | Edgar | Oswald | Cornwall
+148 | Soneta Shakespeare mana yang dibuka dengan "Let me not to the marriage of true minds / Admit impediments"? | Soneta 116 | Soneta 18 | Soneta 130 | Soneta 73
+149 | Dalam Measure for Measure, siapa nama adipati yang menyamar sebagai biarawan? | Vincentio | = | Escalus | Claudio
+150 | Lakon mana yang dianggap sebagai karya terakhir yang ditulis Shakespeare seorang diri? | = | = | = | =
+151 | Siapa nama ketiga putri Raja Lear? | Goneril, Regan, dan Cordelia | Goneril, Rosalind, dan Cordelia | Helena, Regan, dan Cordelia | Goneril, Regan, dan Ophelia
+152 | Dalam The Merchant of Venice, tulisan apa yang tertera pada peti timah? | "Who chooseth me must give and hazard all he hath" | "Who chooseth me shall gain what many men desire" | "Who chooseth me shall get as much as he deserves" | "Who chooseth me shall find true love"
+153 | Apa yang tidak biasa pada Soneta 130 (Sonnet 130, "My mistress' eyes are nothing like the sun")? | Soneta ini anti-Petrarka dan mengolok-olok puisi cinta yang konvensional | Ditulis dalam sajak bebas, bukan pentameter iambik | Satu-satunya soneta yang ditujukan kepada seorang laki-laki | Diterbitkan terpisah dari soneta-soneta lain
+154 | Dalam Richard III, cacat apa yang menurut Richard dimilikinya? | Punggung bungkuk | Satu tangan hilang | Kaki pengkor | Buta sebelah mata
+155 | Siapakah Sycorax dalam The Tempest? | Ibu Caliban, penyihir yang menguasai pulau itu sebelum Prospero | Saudari Ariel | Istri pertama Prospero | Dewi laut
+156 | Apa pola rima soneta Shakespeare? | ABAB CDCD EFEF GG | ABBA ABBA CDE CDE | AABB CCDD EEFF GG | ABAB ABAB CDCD EE
+157 | Dalam lakon apa petunjuk pentas "Exit, pursued by a bear" muncul? | = | = | = | =
+158 | Siapa nama putra Shakespeare yang meninggal saat masih kecil? | = | Hamlet | Edmund | William
+159 | Dalam Othello, dari mana Othello berasal? | Ia seorang Moor (dari Afrika Utara) | Ia berasal dari Venesia | Ia berasal dari Siprus | Ia berasal dari Spanyol
+160 | Tokoh mana dalam Henry V yang menyamar untuk berjalan di antara para prajuritnya sebelum pertempuran? | Raja Henry V | Adipati Exeter | Kapten Fluellen | Earl Westmoreland
+161 | Apa larik pertama Richard III? | "Now is the winter of our discontent / Made glorious summer by this sun of York" | "A horse, a horse, my kingdom for a horse" | "Was ever woman in this humour wooed" | "Off with his head! So much for Buckingham"
+162 | Dalam The Taming of the Shrew, siapa nama tokoh cerita bingkai yang menonton lakon itu? | = | = | = | =
+163 | Manakah dari karya Shakespeare berikut yang dianggap sebagai "lakon problem"? | = | = | = | =
+164 | Pada tahun berapa Globe Theatre yang pertama dibangun? | 1599 | 1576 | 1610 | 1588
+165 | Dalam Macbeth, apa nama kastel Macduff, tempat keluarganya dibunuh? | = | = | = | =
+166 | Tokoh mana dalam Julius Caesar yang bermimpi lalu memperingatkan suaminya agar tidak pergi ke Senat? | = | = | = | =
+167 | Apa nama kumpulan yang pertama kali menerbitkan lakon-lakon Shakespeare bersama-sama? | = | Karya Lengkap | Kumpulan Kuarto | Antologi Sang Pujangga
+168 | Pada tahun berapa Folio Pertama diterbitkan? | 1623 | 1616 | 1599 | 1609
+169 | Lakon Shakespeare mana yang menampilkan Autolycus, seorang penjaja keliling yang licik? | = | = | = | =
+170 | Siapa yang mengucapkan epilog di akhir The Tempest? | = | = | = | Narator
+171 | Dalam Antonius dan Cleopatra, apa nama pertempuran laut yang menentukan? | = | = | = | =
+172 | Apa kemungkinan makna ganda kata "nunnery" dalam ucapan Hamlet "Get thee to a nunnery"? | Biara, dan dalam bahasa gaul zaman Elizabeth juga rumah bordil | Hanya biara | Penjara | Sekolah untuk perempuan
+173 | Lakon Shakespeare mana yang memuat solilokui "To-morrow, and to-morrow, and to-morrow"? | = | = | = | =
+174 | Dalam Raja Lear, apa yang dilakukan Kent setelah diusir? | Menyamar sebagai pelayan bernama Caius agar tetap dekat dengan Lear | Melarikan diri ke Prancis | Bergabung dengan tentara Prancis | Menjadi pertapa
+175 | Penyair dan penulis lakon mana, pesaing sezaman Shakespeare, yang tewas dalam perkelahian di kedai minum pada tahun 1593? | = | = | = | =
+176 | Dalam The Winter's Tale, berapa lama waktu berlalu antara Babak 3 dan Babak 4? | 16 tahun | 5 tahun | 1 tahun | 20 tahun
+177 | Apakah "green-eyed monster" yang diperingatkan Iago kepada Othello? | Kecemburuan | Ambisi | Keserakahan | Balas dendam
+178 | Dalam Impian di Tengah Musim, lakon apa yang dipentaskan para tukang di pesta pernikahan? | = | = | = | =
+179 | Seperti apa tradisi aktor anak laki-laki dalam teater zaman Elizabeth? | Anak laki-laki memerankan semua peran perempuan karena perempuan dilarang naik panggung | Anak laki-laki hanya memerankan peran anak-anak | Anak laki-laki menjadi pengatur panggung | Anak laki-laki hanya tampil dalam komedi
+180 | Dalam lakon apa adipati yang terbuang berkata "Sweet are the uses of adversity"? | = | = | = | =
+181 | Apa sebutan untuk lakon-lakon akhir Shakespeare seperti The Winter's Tale dan The Tempest? | Romansa (atau romansa akhir) | Tragikomedi | Lakon pastoral | Masque
+182 | Dalam Macbeth, siapa yang berkata "By the pricking of my thumbs, / Something wicked this way comes"? | Penyihir Kedua | Penyihir Pertama | = | =
+183 | Putri Lear yang mana yang menikah dengan Adipati Cornwall? | = | = | = | Tidak ada
+184 | Apa judul lengkap lakon yang umum dikenal sebagai Henry V? | The Life of King Henry the Fifth | The Chronicle History of Henry V | Henry V: The Warrior King | The Reign of King Henry V
+185 | Dalam Measure for Measure, apa yang dituntut Angelo dari Isabella sebagai ganti nyawa saudaranya? | Agar ia tidur dengannya | Uang dalam jumlah besar | Pengakuan di depan umum | Agar ia meninggalkan biara
+186 | Siapa yang berkata "Cowards die many times before their deaths; the valiant never taste of death but once"? | = | = | = | =
+187 | Apakah "pit" atau "yard" di Globe Theatre? | Area berdiri di depan panggung dengan harga tiket termurah | Gudang di bawah panggung | Belakang panggung untuk para aktor | Tempat para pemusik
+188 | Dalam Soneta 18 (Sonnet 18), menurut penyair, apa yang akan membuat sang kekasih abadi? | Puisi itu sendiri ("So long lives this, and this gives life to thee") | Kecantikan sang kekasih | Matahari musim panas | Lukisan sang kekasih
+189 | Tokoh mana dalam Hamlet yang berkata "Though this be madness, yet there is method in't"? | = | = | = | =
+190 | Dalam The Merchant of Venice, syarat apa yang ditetapkan mendiang ayah Portia bagi para pelamarnya? | Mereka harus memilih peti yang benar dari tiga peti (emas, perak, timah) | Mereka harus saling mengalahkan dalam pertarungan | Mereka harus memecahkan teka-teki | Mereka harus membuktikan kekayaan mereka
+191 | Apa nama tokoh yang mewujudkan Waktu dalam The Winter's Tale? | Waktu (sebagai Paduan Suara) | Bapa Waktu | Sang Orakel | Autolycus
+192 | Lakon Shakespeare mana yang kemungkinan ditulis sebagai penghormatan kepada Raja James I yang baru dinobatkan? | = | = | = | =
+193 | Dalam Twelfth Night, tipuan apa yang dimainkan Maria dan Sir Toby terhadap Malvolio? | Mereka memalsukan surat cinta dari Olivia yang menyuruhnya memakai stoking kuning | Mereka mengurungnya di sebuah kamar | Mereka mencuri pakaiannya | Mereka meyakinkannya bahwa ia mulai tuli
+194 | Apa nama bangunan di atas panggung Globe Theatre yang dilukisi bintang-bintang? | Langit (the Heavens) | Kanopi | Cakrawala | Atap
+195 | Dalam lakon apa seorang tokoh meminta petunjuk Orakel di Delfi? | = | = | = | =
+196 | Siapa yang menerbitkan soneta-soneta Shakespeare pada tahun 1609? | = | = | = | =
+197 | Dalam Henry V, hadiah penghinaan apa yang dikirim Dauphin kepada Henry? | Bola tenis | Mahkota mainan | Topi badut | Pedang kayu
+198 | Lakon Shakespeare mana yang memuat pidato terkenal "band of brothers"? | = | = | = | =
+199 | Apa sebutan bagi penonton yang berdiri di halaman Globe Theatre? | Groundlings | Penny standers | Gerombolan | Rakyat jelata
