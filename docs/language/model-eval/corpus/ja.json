@@ -1,0 +1,198 @@
+{
+ "lang": "ja",
+ "licence": "The poems are in the public domain by age (each poet died 71 or more years before 2026). Wikisource transcriptions are offered under CC BY-SA 4.0; excerpts are attributed to their page and revision.",
+ "excerpts": [
+  {
+   "id": "ja-01",
+   "poet": "島崎藤村",
+   "poem": "椰子の実",
+   "died": 1943,
+   "text": "名も知らぬ遠き島より\n流れ寄る椰子の実一つ",
+   "firstLineOnPage": "名も知らぬ遠き島より",
+   "source": {
+    "site": "ja.wikisource.org",
+    "page": "椰子の実",
+    "url": "https://ja.wikisource.org/wiki/%E6%A4%B0%E5%AD%90%E3%81%AE%E5%AE%9F",
+    "permalink": "https://ja.wikisource.org/w/index.php?oldid=211253",
+    "revid": 211253,
+    "fetched": "2026-11-16"
+   }
+  },
+  {
+   "id": "ja-02",
+   "poet": "島崎藤村",
+   "poem": "椰子の実",
+   "died": 1943,
+   "text": "故郷の岸を離れて\n汝はそも波に幾月",
+   "firstLineOnPage": "故郷の岸を離れて",
+   "source": {
+    "site": "ja.wikisource.org",
+    "page": "椰子の実",
+    "url": "https://ja.wikisource.org/wiki/%E6%A4%B0%E5%AD%90%E3%81%AE%E5%AE%9F",
+    "permalink": "https://ja.wikisource.org/w/index.php?oldid=211253",
+    "revid": 211253,
+    "fetched": "2026-11-16"
+   }
+  },
+  {
+   "id": "ja-03",
+   "poet": "島崎藤村",
+   "poem": "椰子の実",
+   "died": 1943,
+   "text": "思ひやる八重の汐々\nいづれの日にか国に帰らん",
+   "firstLineOnPage": "思ひやる八重の汐々",
+   "source": {
+    "site": "ja.wikisource.org",
+    "page": "椰子の実",
+    "url": "https://ja.wikisource.org/wiki/%E6%A4%B0%E5%AD%90%E3%81%AE%E5%AE%9F",
+    "permalink": "https://ja.wikisource.org/w/index.php?oldid=211253",
+    "revid": 211253,
+    "fetched": "2026-11-16"
+   }
+  },
+  {
+   "id": "ja-04",
+   "poet": "宮沢賢治",
+   "poem": "雨ニモマケズ",
+   "died": 1933,
+   "text": "東ニ病気ノコドモアレバ\n行ッテ看病シテヤリ",
+   "firstLineOnPage": "東ニ病気ノコドモアレバ",
+   "source": {
+    "site": "ja.wikisource.org",
+    "page": "雨ニモマケズ",
+    "url": "https://ja.wikisource.org/wiki/%E9%9B%A8%E3%83%8B%E3%83%A2%E3%83%9E%E3%82%B1%E3%82%BA",
+    "permalink": "https://ja.wikisource.org/w/index.php?oldid=231217",
+    "revid": 231217,
+    "fetched": "2026-11-16"
+   }
+  },
+  {
+   "id": "ja-05",
+   "poet": "宮沢賢治",
+   "poem": "雨ニモマケズ",
+   "died": 1933,
+   "text": "野原ノ松ノ林ノ䕃ノ\n小サナ萱ブキノ小屋ニヰテ",
+   "firstLineOnPage": "野原ノ松ノ林ノ䕃ノ",
+   "source": {
+    "site": "ja.wikisource.org",
+    "page": "雨ニモマケズ",
+    "url": "https://ja.wikisource.org/wiki/%E9%9B%A8%E3%83%8B%E3%83%A2%E3%83%9E%E3%82%B1%E3%82%BA",
+    "permalink": "https://ja.wikisource.org/w/index.php?oldid=231217",
+    "revid": 231217,
+    "fetched": "2026-11-16"
+   }
+  },
+  {
+   "id": "ja-06",
+   "poet": "島崎藤村",
+   "poem": "若菜集（序）",
+   "died": 1943,
+   "text": "こゝろなきうたのしらべは\nひとふさのぶだうのごとし\nなさけあるてにもつまれて\nあたゝかきさけとなるらむ",
+   "firstLineOnPage": "こゝろなきうたのしらべは",
+   "source": {
+    "site": "ja.wikisource.org",
+    "page": "若菜集",
+    "url": "https://ja.wikisource.org/wiki/%E8%8B%A5%E8%8F%9C%E9%9B%86",
+    "permalink": "https://ja.wikisource.org/w/index.php?oldid=144157",
+    "revid": 144157,
+    "fetched": "2026-11-16"
+   }
+  },
+  {
+   "id": "ja-07",
+   "poet": "島崎藤村",
+   "poem": "若菜集（序）",
+   "died": 1943,
+   "text": "ぶだうだなふかくかゝれる\nむらさきのそれにあらねど\nこゝろあるひとのなさけに\nかげにおくふさのみつよつ",
+   "firstLineOnPage": "ぶだうだなふかくかゝれる",
+   "source": {
+    "site": "ja.wikisource.org",
+    "page": "若菜集",
+    "url": "https://ja.wikisource.org/wiki/%E8%8B%A5%E8%8F%9C%E9%9B%86",
+    "permalink": "https://ja.wikisource.org/w/index.php?oldid=144157",
+    "revid": 144157,
+    "fetched": "2026-11-16"
+   }
+  },
+  {
+   "id": "ja-08",
+   "poet": "島崎藤村",
+   "poem": "若菜集（序）",
+   "died": 1943,
+   "text": "そはうたのわかきゆゑなり\nあぢはひもいろもあさくて",
+   "firstLineOnPage": "そはうたのわかきゆゑなり",
+   "source": {
+    "site": "ja.wikisource.org",
+    "page": "若菜集",
+    "url": "https://ja.wikisource.org/wiki/%E8%8B%A5%E8%8F%9C%E9%9B%86",
+    "permalink": "https://ja.wikisource.org/w/index.php?oldid=144157",
+    "revid": 144157,
+    "fetched": "2026-11-16"
+   }
+  },
+  {
+   "id": "ja-09",
+   "poet": "島崎藤村",
+   "poem": "椰子の実",
+   "died": 1943,
+   "text": "旧の樹は生ひや茂れる\n枝はなほ影をやなせる",
+   "firstLineOnPage": "旧の樹は生ひや茂れる",
+   "source": {
+    "site": "ja.wikisource.org",
+    "page": "椰子の実",
+    "url": "https://ja.wikisource.org/wiki/%E6%A4%B0%E5%AD%90%E3%81%AE%E5%AE%9F",
+    "permalink": "https://ja.wikisource.org/w/index.php?oldid=211253",
+    "revid": 211253,
+    "fetched": "2026-11-16"
+   }
+  },
+  {
+   "id": "ja-10",
+   "poet": "島崎藤村",
+   "poem": "椰子の実",
+   "died": 1943,
+   "text": "われもまた渚を枕\n孤身の浮寝の旅ぞ",
+   "firstLineOnPage": "われもまた渚を枕",
+   "source": {
+    "site": "ja.wikisource.org",
+    "page": "椰子の実",
+    "url": "https://ja.wikisource.org/wiki/%E6%A4%B0%E5%AD%90%E3%81%AE%E5%AE%9F",
+    "permalink": "https://ja.wikisource.org/w/index.php?oldid=211253",
+    "revid": 211253,
+    "fetched": "2026-11-16"
+   }
+  },
+  {
+   "id": "ja-11",
+   "poet": "島崎藤村",
+   "poem": "椰子の実",
+   "died": 1943,
+   "text": "実をとりて胸にあつれば\n新なり流離の憂",
+   "firstLineOnPage": "実をとりて胸にあつれば",
+   "source": {
+    "site": "ja.wikisource.org",
+    "page": "椰子の実",
+    "url": "https://ja.wikisource.org/wiki/%E6%A4%B0%E5%AD%90%E3%81%AE%E5%AE%9F",
+    "permalink": "https://ja.wikisource.org/w/index.php?oldid=211253",
+    "revid": 211253,
+    "fetched": "2026-11-16"
+   }
+  },
+  {
+   "id": "ja-12",
+   "poet": "宮沢賢治",
+   "poem": "雨ニモマケズ",
+   "died": 1933,
+   "text": "アラユルコトヲ\nジブンヲカンジョウニ入レズニ",
+   "firstLineOnPage": "アラユルコトヲ",
+   "source": {
+    "site": "ja.wikisource.org",
+    "page": "雨ニモマケズ",
+    "url": "https://ja.wikisource.org/wiki/%E9%9B%A8%E3%83%8B%E3%83%A2%E3%83%9E%E3%82%B1%E3%82%BA",
+    "permalink": "https://ja.wikisource.org/w/index.php?oldid=231217",
+    "revid": 231217,
+    "fetched": "2026-11-16"
+   }
+  }
+ ]
+}

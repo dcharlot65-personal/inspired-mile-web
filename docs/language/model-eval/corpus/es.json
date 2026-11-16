@@ -1,0 +1,198 @@
+{
+ "lang": "es",
+ "licence": "The poems are in the public domain by age (each poet died 71 or more years before 2026). Wikisource transcriptions are offered under CC BY-SA 4.0; excerpts are attributed to their page and revision.",
+ "excerpts": [
+  {
+   "id": "es-01",
+   "poet": "Antonio Machado",
+   "poem": "A un olmo seco",
+   "died": 1939,
+   "text": "Al olmo viejo, hendido por el rayo\ny en su mitad podrido,\ncon las lluvias de abril y el sol de mayo\nalgunas hojas verdes le han salido.",
+   "firstLineOnPage": "Al olmo viejo, hendido por el rayo",
+   "source": {
+    "site": "es.wikisource.org",
+    "page": "A un olmo seco",
+    "url": "https://es.wikisource.org/wiki/A_un_olmo_seco",
+    "permalink": "https://es.wikisource.org/w/index.php?oldid=1564295",
+    "revid": 1564295,
+    "fetched": "2026-11-16"
+   }
+  },
+  {
+   "id": "es-02",
+   "poet": "Rubén Darío",
+   "poem": "Sonatina",
+   "died": 1916,
+   "text": "Los suspiros se escapan de su boca de fresa,\nQue ha perdido la risa, que ha perdido el color.",
+   "firstLineOnPage": "Los suspiros se escapan de su boca de fresa,",
+   "source": {
+    "site": "es.wikisource.org",
+    "page": "Sonatina",
+    "url": "https://es.wikisource.org/wiki/Sonatina",
+    "permalink": "https://es.wikisource.org/w/index.php?oldid=1321030",
+    "revid": 1321030,
+    "fetched": "2026-11-16"
+   }
+  },
+  {
+   "id": "es-03",
+   "poet": "Teresa de Jesús",
+   "poem": "Vivo sin vivir en mí",
+   "died": 1582,
+   "text": "Vivo sin vivir en mí,\ny de tal manera espero,\nque muero porque no muero.",
+   "firstLineOnPage": "Vivo sin vivir en mí,",
+   "source": {
+    "site": "es.wikisource.org",
+    "page": "Vivo sin vivir en mí",
+    "url": "https://es.wikisource.org/wiki/Vivo_sin_vivir_en_m%C3%AD",
+    "permalink": "https://es.wikisource.org/w/index.php?oldid=1393256",
+    "revid": 1393256,
+    "fetched": "2026-11-16"
+   }
+  },
+  {
+   "id": "es-04",
+   "poet": "Rubén Darío",
+   "poem": "Lo fatal",
+   "died": 1916,
+   "text": "Dichoso el árbol, que es apenas sensitivo,\ny más la piedra dura porque esa ya no siente,\npues no hay dolor más grande que el dolor de ser vivo,\nni mayor pesadumbre que la vida consciente.",
+   "firstLineOnPage": "Dichoso el árbol, que es apenas sensitivo,",
+   "source": {
+    "site": "es.wikisource.org",
+    "page": "Lo fatal",
+    "url": "https://es.wikisource.org/wiki/Lo_fatal",
+    "permalink": "https://es.wikisource.org/w/index.php?oldid=1637355",
+    "revid": 1637355,
+    "fetched": "2026-11-16"
+   }
+  },
+  {
+   "id": "es-05",
+   "poet": "Francisco de Quevedo",
+   "poem": "A una nariz",
+   "died": 1645,
+   "text": "Érase un hombre a una nariz pegado,\nérase una nariz superlativa,\nérase una alquitara medio viva,\nérase un peje espada mal barbado;",
+   "firstLineOnPage": "Érase un hombre a una nariz pegado,",
+   "source": {
+    "site": "es.wikisource.org",
+    "page": "A una nariz",
+    "url": "https://es.wikisource.org/wiki/A_una_nariz",
+    "permalink": "https://es.wikisource.org/w/index.php?oldid=1633815",
+    "revid": 1633815,
+    "fetched": "2026-11-16"
+   }
+  },
+  {
+   "id": "es-06",
+   "poet": "Francisco de Quevedo",
+   "poem": "Miré los muros de la patria mía",
+   "died": 1645,
+   "text": "Miré los muros de la patria mía,\nsi un tiempo fuertes, ya desmoronados,\nde la carrera de la edad cansados,\npor quien caduca ya su valentía.",
+   "firstLineOnPage": "Miré los muros de la patria mía,",
+   "source": {
+    "site": "es.wikisource.org",
+    "page": "Miré los muros de la patria mía",
+    "url": "https://es.wikisource.org/wiki/Mir%C3%A9_los_muros_de_la_patria_m%C3%ADa",
+    "permalink": "https://es.wikisource.org/w/index.php?oldid=1671300",
+    "revid": 1671300,
+    "fetched": "2026-11-16"
+   }
+  },
+  {
+   "id": "es-07",
+   "poet": "Francisco de Quevedo",
+   "poem": "Amor constante más allá de la muerte",
+   "died": 1645,
+   "text": "Cerrar podrá mis ojos la postrera\nsombra que me llevare el blanco día,\ny podrá desatar esta alma mía\nhora a su afán ansioso lisonjera;",
+   "firstLineOnPage": "Cerrar podrá mis ojos la postrera",
+   "source": {
+    "site": "es.wikisource.org",
+    "page": "Amor constante más allá de la muerte",
+    "url": "https://es.wikisource.org/wiki/Amor_constante_m%C3%A1s_all%C3%A1_de_la_muerte",
+    "permalink": "https://es.wikisource.org/w/index.php?oldid=1543460",
+    "revid": 1543460,
+    "fetched": "2026-11-16"
+   }
+  },
+  {
+   "id": "es-08",
+   "poet": "José de Espronceda",
+   "poem": "Canción del pirata",
+   "died": 1842,
+   "text": "Con diez cañones por banda,\nViento en popa á toda vela\nNo corta el mar, sino vuela\nMi velero bergantin:",
+   "firstLineOnPage": "Con diez cañones por banda,",
+   "source": {
+    "site": "es.wikisource.org",
+    "page": "Canción del pirata",
+    "url": "https://es.wikisource.org/wiki/Canci%C3%B3n_del_pirata",
+    "permalink": "https://es.wikisource.org/w/index.php?oldid=1248127",
+    "revid": 1248127,
+    "fetched": "2026-11-16"
+   }
+  },
+  {
+   "id": "es-09",
+   "poet": "José de Espronceda",
+   "poem": "Canción del pirata",
+   "died": 1842,
+   "text": "La luna en el mar riela,\nEn la lona gime el viento,",
+   "firstLineOnPage": "La luna en el mar riela,",
+   "source": {
+    "site": "es.wikisource.org",
+    "page": "Canción del pirata",
+    "url": "https://es.wikisource.org/wiki/Canci%C3%B3n_del_pirata",
+    "permalink": "https://es.wikisource.org/w/index.php?oldid=1248127",
+    "revid": 1248127,
+    "fetched": "2026-11-16"
+   }
+  },
+  {
+   "id": "es-10",
+   "poet": "José Martí",
+   "poem": "Versos sencillos, XXXIX",
+   "died": 1895,
+   "text": "Cultivo una rosa blanca\nEn julio como enero,\nPara el amigo sincero\nQue me da su mano franca.",
+   "firstLineOnPage": "Cultivo una rosa blanca",
+   "source": {
+    "site": "es.wikisource.org",
+    "page": "Versos sencillos/XXXIX",
+    "url": "https://es.wikisource.org/wiki/Versos_sencillos%2FXXXIX",
+    "permalink": "https://es.wikisource.org/w/index.php?oldid=1506459",
+    "revid": 1506459,
+    "fetched": "2026-11-16"
+   }
+  },
+  {
+   "id": "es-11",
+   "poet": "Luis de Góngora",
+   "poem": "Mientras por competir con tu cabello",
+   "died": 1627,
+   "text": "mientras con menosprecio en medio el llano\nmira tu blanca frente el lilio bello;",
+   "firstLineOnPage": "mientras con menosprecio en medio el llano",
+   "source": {
+    "site": "es.wikisource.org",
+    "page": "Mientras por competir con tu cabello",
+    "url": "https://es.wikisource.org/wiki/Mientras_por_competir_con_tu_cabello",
+    "permalink": "https://es.wikisource.org/w/index.php?oldid=1642338",
+    "revid": 1642338,
+    "fetched": "2026-11-16"
+   }
+  },
+  {
+   "id": "es-12",
+   "poet": "Garcilaso de la Vega",
+   "poem": "Soneto XXIII",
+   "died": 1536,
+   "text": "y en tanto que el cabello, que en la vena\ndel oro se escogió, con vuelo presto,\npor el hermoso cuello blanco, enhiesto,\nel viento mueve, esparce y desordena;",
+   "firstLineOnPage": "y en tanto que el cabello, que en la vena",
+   "source": {
+    "site": "es.wikisource.org",
+    "page": "En tanto que de rosa y azucena",
+    "url": "https://es.wikisource.org/wiki/En_tanto_que_de_rosa_y_azucena",
+    "permalink": "https://es.wikisource.org/w/index.php?oldid=1496735",
+    "revid": 1496735,
+    "fetched": "2026-11-16"
+   }
+  }
+ ]
+}

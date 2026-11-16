@@ -1,0 +1,198 @@
+{
+ "lang": "de",
+ "licence": "The poems are in the public domain by age (each poet died 71 or more years before 2026). Wikisource transcriptions are offered under CC BY-SA 4.0; excerpts are attributed to their page and revision.",
+ "excerpts": [
+  {
+   "id": "de-01",
+   "poet": "Johann Wolfgang von Goethe",
+   "poem": "Erlkönig",
+   "died": 1832,
+   "text": "Wer reitet so spät durch Nacht und Wind?\nEs ist der Vater mit seinem Kind;\nEr hat den Knaben wohl in dem Arm,\nEr faßt ihn sicher, er hält ihn warm.",
+   "firstLineOnPage": "Wer reitet so spät durch Nacht und Wind?",
+   "source": {
+    "site": "de.wikisource.org",
+    "page": "Erlkönig",
+    "url": "https://de.wikisource.org/wiki/Erlk%C3%B6nig",
+    "permalink": "https://de.wikisource.org/w/index.php?oldid=3778237",
+    "revid": 3778237,
+    "fetched": "2026-11-16"
+   }
+  },
+  {
+   "id": "de-02",
+   "poet": "Heinrich Heine",
+   "poem": "Die Lorelei",
+   "died": 1856,
+   "text": "Ich weiß nicht, was soll das bedeuten,\nDaß ich so traurig bin.\nEin Märchen aus alten Zeiten,\nDas kommt mir nicht aus dem Sinn.",
+   "firstLineOnPage": "Ich weiß nicht, was soll das bedeuten,",
+   "source": {
+    "site": "de.wikisource.org",
+    "page": "Die Lorelei",
+    "url": "https://de.wikisource.org/wiki/Die_Lorelei",
+    "permalink": "https://de.wikisource.org/w/index.php?oldid=3534026",
+    "revid": 3534026,
+    "fetched": "2026-11-16"
+   }
+  },
+  {
+   "id": "de-03",
+   "poet": "Johann Wolfgang von Goethe",
+   "poem": "Wandrers Nachtlied",
+   "died": 1832,
+   "text": "Der du von dem Himmel bist,\nAlles Leid und Schmerzen stillest,\nDen, der doppelt elend ist,\nDoppelt mit Erquickung füllest,",
+   "firstLineOnPage": "Der du von dem Himmel bist,",
+   "source": {
+    "site": "de.wikisource.org",
+    "page": "Wandrers Nachtlied",
+    "url": "https://de.wikisource.org/wiki/Wandrers_Nachtlied",
+    "permalink": "https://de.wikisource.org/w/index.php?oldid=3778644",
+    "revid": 3778644,
+    "fetched": "2026-11-16"
+   }
+  },
+  {
+   "id": "de-04",
+   "poet": "Rainer Maria Rilke",
+   "poem": "Der Panther",
+   "died": 1926,
+   "text": "Sein Blick ist vom Vorübergehn der Stäbe\nso müd geworden, daß er nichts mehr hält.\nIhm ist, als ob es tausend Stäbe gäbe\nund hinter tausend Stäben keine Welt.",
+   "firstLineOnPage": "Sein Blick ist vom Vorübergehn der Stäbe",
+   "source": {
+    "site": "de.wikisource.org",
+    "page": "Der Panther",
+    "url": "https://de.wikisource.org/wiki/Der_Panther",
+    "permalink": "https://de.wikisource.org/w/index.php?oldid=3502516",
+    "revid": 3502516,
+    "fetched": "2026-11-16"
+   }
+  },
+  {
+   "id": "de-05",
+   "poet": "Joseph von Eichendorff",
+   "poem": "Mondnacht",
+   "died": 1857,
+   "text": "Es war, als hätt’ der Himmel\nDie Erde still geküßt,\nDaß sie im Blütenschimmer\nVon ihm nun träumen müßt’.",
+   "firstLineOnPage": "Es war, als hätt’ der Himmel",
+   "source": {
+    "site": "de.wikisource.org",
+    "page": "Mondnacht",
+    "url": "https://de.wikisource.org/wiki/Mondnacht",
+    "permalink": "https://de.wikisource.org/w/index.php?oldid=4067390",
+    "revid": 4067390,
+    "fetched": "2026-11-16"
+   }
+  },
+  {
+   "id": "de-06",
+   "poet": "Joseph von Eichendorff",
+   "poem": "Mondnacht",
+   "died": 1857,
+   "text": "Die Luft ging durch die Felder,\nDie Aehren wogten sacht,\nEs rauschten leis die Wälder,\nSo sternklar war die Nacht.",
+   "firstLineOnPage": "Die Luft ging durch die Felder,",
+   "source": {
+    "site": "de.wikisource.org",
+    "page": "Mondnacht",
+    "url": "https://de.wikisource.org/wiki/Mondnacht",
+    "permalink": "https://de.wikisource.org/w/index.php?oldid=4067390",
+    "revid": 4067390,
+    "fetched": "2026-11-16"
+   }
+  },
+  {
+   "id": "de-07",
+   "poet": "Friedrich Schiller",
+   "poem": "Die Bürgschaft",
+   "died": 1805,
+   "text": "Zu Dionys dem Tirannen schlich\nMöros, den Dolch im Gewande,\nIhn schlugen die Häscher in Bande.",
+   "firstLineOnPage": "Zu Dionys dem Tirannen schlich",
+   "source": {
+    "site": "de.wikisource.org",
+    "page": "Die Bürgschaft",
+    "url": "https://de.wikisource.org/wiki/Die_B%C3%BCrgschaft",
+    "permalink": "https://de.wikisource.org/w/index.php?oldid=3785932",
+    "revid": 3785932,
+    "fetched": "2026-11-16"
+   }
+  },
+  {
+   "id": "de-08",
+   "poet": "Rainer Maria Rilke",
+   "poem": "Herbsttag",
+   "died": 1926,
+   "text": "Herr: es ist Zeit. Der Sommer war sehr groß.\nLeg Deinen Schatten auf die Sonnenuhren\nund auf den Fluren laß die Winde los.",
+   "firstLineOnPage": "Herr: es ist Zeit. Der Sommer war sehr groß.",
+   "source": {
+    "site": "de.wikisource.org",
+    "page": "Herbsttag",
+    "url": "https://de.wikisource.org/wiki/Herbsttag",
+    "permalink": "https://de.wikisource.org/w/index.php?oldid=2353125",
+    "revid": 2353125,
+    "fetched": "2026-11-16"
+   }
+  },
+  {
+   "id": "de-09",
+   "poet": "Friedrich Schiller",
+   "poem": "Der Handschuh",
+   "died": 1805,
+   "text": "Vor seinem Löwengarten,\nDas Kampfspiel zu erwarten,\nSaß König Franz,",
+   "firstLineOnPage": "Vor seinem Löwengarten,",
+   "source": {
+    "site": "de.wikisource.org",
+    "page": "Der Handschuh",
+    "url": "https://de.wikisource.org/wiki/Der_Handschuh",
+    "permalink": "https://de.wikisource.org/w/index.php?oldid=3785942",
+    "revid": 3785942,
+    "fetched": "2026-11-16"
+   }
+  },
+  {
+   "id": "de-10",
+   "poet": "Friedrich Schiller",
+   "poem": "Der Taucher",
+   "died": 1805,
+   "text": "Wer wagt es, Rittersmann oder Knapp,\nZu tauchen in diesen Schlund?\nEinen goldnen Becher werf ich hinab,\nVerschlungen schon hat ihn der schwarze Mund.",
+   "firstLineOnPage": "Wer wagt es, Rittersmann oder Knapp,",
+   "source": {
+    "site": "de.wikisource.org",
+    "page": "Der Taucher",
+    "url": "https://de.wikisource.org/wiki/Der_Taucher",
+    "permalink": "https://de.wikisource.org/w/index.php?oldid=3785951",
+    "revid": 3785951,
+    "fetched": "2026-11-16"
+   }
+  },
+  {
+   "id": "de-11",
+   "poet": "Johann Wolfgang von Goethe",
+   "poem": "Erlkönig",
+   "died": 1832,
+   "text": "Mein Sohn, was birgst du so bang dein Gesicht? —\nSiehst, Vater, du den Erlkönig nicht?\nDen Erlenkönig mit Kron’ und Schweif? —\nMein Sohn, es ist ein Nebelstreif. —",
+   "firstLineOnPage": "Mein Sohn, was birgst du so bang dein Gesicht? —",
+   "source": {
+    "site": "de.wikisource.org",
+    "page": "Erlkönig",
+    "url": "https://de.wikisource.org/wiki/Erlk%C3%B6nig",
+    "permalink": "https://de.wikisource.org/w/index.php?oldid=3778237",
+    "revid": 3778237,
+    "fetched": "2026-11-16"
+   }
+  },
+  {
+   "id": "de-12",
+   "poet": "Heinrich Heine",
+   "poem": "Die Lorelei",
+   "died": 1856,
+   "text": "Der Gipfel des Berges funkelt\nIm Abendsonnenschein.",
+   "firstLineOnPage": "Der Gipfel des Berges funkelt",
+   "source": {
+    "site": "de.wikisource.org",
+    "page": "Die Lorelei",
+    "url": "https://de.wikisource.org/wiki/Die_Lorelei",
+    "permalink": "https://de.wikisource.org/w/index.php?oldid=3534026",
+    "revid": 3534026,
+    "fetched": "2026-11-16"
+   }
+  }
+ ]
+}

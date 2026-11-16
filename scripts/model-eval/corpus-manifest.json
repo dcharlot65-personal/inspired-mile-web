@@ -1,0 +1,1578 @@
+{
+ "note": "The better side of each judging pair: public-domain verse cut from Wikisource pages by scripts/model-eval/corpus-fetch.mjs. An entry names the page and where its excerpt starts (anchor: the opening words of the first line; pick: its place among the page's verse-like lines; offset: whole lines further on). The text itself is never typed here. \"died\" is the year of the poet's death as generally recorded (approximate for the early Arabic poets and for Hamzah al-Fansuri); it was not fetched, and is here only so the build can refuse a poet dead less than 71 years.",
+ "licence": "The poems are in the public domain by age (each poet died 71 or more years before 2026). Wikisource transcriptions are offered under CC BY-SA 4.0; excerpts are attributed to their page and revision.",
+ "languages": {
+  "en": [
+   {
+    "title": "Shakespeare's Sonnets (1883)/Sonnet 18",
+    "poet": "William Shakespeare",
+    "poem": "Sonnet 18",
+    "died": 1616,
+    "lines": 4,
+    "anchor": "Shall I compare thee to a summer's day?"
+   },
+   {
+    "title": "Shakespeare's Sonnets (1883)/Sonnet 130",
+    "poet": "William Shakespeare",
+    "poem": "Sonnet 130",
+    "died": 1616,
+    "lines": 4,
+    "anchor": "My mistress' eyes are nothing like the sun;"
+   },
+   {
+    "title": "Shakespeare's Sonnets (1883)/Sonnet 29",
+    "poet": "William Shakespeare",
+    "poem": "Sonnet 29",
+    "died": 1616,
+    "lines": 4,
+    "anchor": "When, in disgrace with fortune and men's eyes,"
+   },
+   {
+    "title": "Shakespeare's Sonnets (1883)/Sonnet 116",
+    "poet": "William Shakespeare",
+    "poem": "Sonnet 116",
+    "died": 1616,
+    "lines": 4,
+    "anchor": "Let me not to the marriage of true minds"
+   },
+   {
+    "title": "Shakespeare's Sonnets (1883)/Sonnet 73",
+    "poet": "William Shakespeare",
+    "poem": "Sonnet 73",
+    "died": 1616,
+    "lines": 4,
+    "anchor": "That time of year thou mayst in me behold"
+   },
+   {
+    "title": "Shakespeare's Sonnets (1883)/Sonnet 55",
+    "poet": "William Shakespeare",
+    "poem": "Sonnet 55",
+    "died": 1616,
+    "lines": 4,
+    "anchor": "Not marble"
+   },
+   {
+    "title": "Shakespeare's Sonnets (1883)/Sonnet 30",
+    "poet": "William Shakespeare",
+    "poem": "Sonnet 30",
+    "died": 1616,
+    "lines": 4,
+    "anchor": "When to the sessions of sweet silent thought"
+   },
+   {
+    "title": "Shakespeare's Sonnets (1883)/Sonnet 60",
+    "poet": "William Shakespeare",
+    "poem": "Sonnet 60",
+    "died": 1616,
+    "lines": 4,
+    "anchor": "Like as the waves make towards the pebbled shore"
+   },
+   {
+    "title": "Shakespeare's Sonnets (1883)/Sonnet 12",
+    "poet": "William Shakespeare",
+    "poem": "Sonnet 12",
+    "died": 1616,
+    "lines": 4,
+    "anchor": "When I do count the clock that tells the time"
+   },
+   {
+    "title": "Shakespeare's Sonnets (1883)/Sonnet 65",
+    "poet": "William Shakespeare",
+    "poem": "Sonnet 65",
+    "died": 1616,
+    "lines": 4,
+    "anchor": "Since brass, nor stone, nor earth, nor boundless sea"
+   },
+   {
+    "title": "Shakespeare's Sonnets (1883)/Sonnet 2",
+    "poet": "William Shakespeare",
+    "poem": "Sonnet 2",
+    "died": 1616,
+    "lines": 4,
+    "anchor": "When forty winters shall besiege thy brow"
+   },
+   {
+    "title": "Holy Sonnets/Holy Sonnet 10",
+    "poet": "John Donne",
+    "poem": "Holy Sonnet 10",
+    "died": 1631,
+    "lines": 4,
+    "anchor": "Death be not proud"
+   }
+  ],
+  "es": [
+   {
+    "title": "A un olmo seco",
+    "poet": "Antonio Machado",
+    "poem": "A un olmo seco",
+    "died": 1939,
+    "lines": 4,
+    "anchor": "Al olmo viejo, hendido por el rayo"
+   },
+   {
+    "title": "Sonatina",
+    "poet": "Rubén Darío",
+    "poem": "Sonatina",
+    "died": 1916,
+    "lines": 2,
+    "anchor": "Los suspiros se escapan de su boca de fresa,"
+   },
+   {
+    "title": "Vivo sin vivir en mí",
+    "poet": "Teresa de Jesús",
+    "poem": "Vivo sin vivir en mí",
+    "died": 1582,
+    "lines": 3,
+    "anchor": "Vivo sin vivir en mí,"
+   },
+   {
+    "title": "Lo fatal",
+    "poet": "Rubén Darío",
+    "poem": "Lo fatal",
+    "died": 1916,
+    "lines": 4,
+    "anchor": "Dichoso el árbol, que es apenas sensitivo,"
+   },
+   {
+    "title": "A una nariz",
+    "poet": "Francisco de Quevedo",
+    "poem": "A una nariz",
+    "died": 1645,
+    "lines": 4,
+    "anchor": "Érase un hombre a una nariz pegado,"
+   },
+   {
+    "title": "Miré los muros de la patria mía",
+    "poet": "Francisco de Quevedo",
+    "poem": "Miré los muros de la patria mía",
+    "died": 1645,
+    "lines": 4,
+    "anchor": "Miré los muros de la patria mía,"
+   },
+   {
+    "title": "Amor constante más allá de la muerte",
+    "poet": "Francisco de Quevedo",
+    "poem": "Amor constante más allá de la muerte",
+    "died": 1645,
+    "lines": 4,
+    "anchor": "Cerrar podrá mis ojos la postrera"
+   },
+   {
+    "title": "Canción del pirata",
+    "poet": "José de Espronceda",
+    "poem": "Canción del pirata",
+    "died": 1842,
+    "lines": 4,
+    "anchor": "Con diez cañones por banda,"
+   },
+   {
+    "title": "Canción del pirata",
+    "poet": "José de Espronceda",
+    "poem": "Canción del pirata",
+    "died": 1842,
+    "lines": 2,
+    "anchor": "La luna en el mar riela,"
+   },
+   {
+    "title": "Versos sencillos/XXXIX",
+    "poet": "José Martí",
+    "poem": "Versos sencillos, XXXIX",
+    "died": 1895,
+    "lines": 4,
+    "anchor": "Cultivo una rosa blanca"
+   },
+   {
+    "title": "Mientras por competir con tu cabello",
+    "poet": "Luis de Góngora",
+    "poem": "Mientras por competir con tu cabello",
+    "died": 1627,
+    "lines": 2,
+    "anchor": "mientras con menosprecio en medio el llano"
+   },
+   {
+    "title": "En tanto que de rosa y azucena",
+    "poet": "Garcilaso de la Vega",
+    "poem": "Soneto XXIII",
+    "died": 1536,
+    "lines": 4,
+    "anchor": "y en tanto que el cabello, que en la vena"
+   }
+  ],
+  "fr": [
+   {
+    "title": "Alcools/Le Pont Mirabeau",
+    "poet": "Guillaume Apollinaire",
+    "poem": "Le Pont Mirabeau",
+    "died": 1918,
+    "lines": 4,
+    "anchor": "Sous le pont Mirabeau coule la Seine"
+   },
+   {
+    "title": "Les Chimères/El Desdichado",
+    "poet": "Gérard de Nerval",
+    "poem": "El Desdichado",
+    "died": 1855,
+    "lines": 4,
+    "anchor": "Je suis le ténébreux,"
+   },
+   {
+    "title": "Les Fleurs du mal (1861)/L’Albatros",
+    "poet": "Charles Baudelaire",
+    "poem": "L’Albatros",
+    "died": 1867,
+    "lines": 4,
+    "anchor": "Souvent, pour s’amuser,"
+   },
+   {
+    "title": "Les Fleurs du mal (1861)/Correspondances",
+    "poet": "Charles Baudelaire",
+    "poem": "Correspondances",
+    "died": 1867,
+    "lines": 4,
+    "anchor": "La Nature est un temple"
+   },
+   {
+    "title": "Les Fleurs du mal (1861)/Correspondances",
+    "poet": "Charles Baudelaire",
+    "poem": "Correspondances",
+    "died": 1867,
+    "lines": 4,
+    "anchor": "Comme de longs échos"
+   },
+   {
+    "title": "Les Fleurs du mal (1861)/L’Invitation au voyage",
+    "poet": "Charles Baudelaire",
+    "poem": "L’Invitation au voyage",
+    "died": 1867,
+    "lines": 3,
+    "anchor": "Mon enfant, ma sœur,"
+   },
+   {
+    "title": "Les Fleurs du mal (1861)/Harmonie du soir",
+    "poet": "Charles Baudelaire",
+    "poem": "Harmonie du soir",
+    "died": 1867,
+    "lines": 4,
+    "anchor": "Voici venir les temps"
+   },
+   {
+    "title": "Les Fleurs du mal (1861)/Au lecteur",
+    "poet": "Charles Baudelaire",
+    "poem": "Au lecteur",
+    "died": 1867,
+    "lines": 4,
+    "anchor": "La sottise, l’erreur,"
+   },
+   {
+    "title": "Les Fleurs du mal (1861)/Au lecteur",
+    "poet": "Charles Baudelaire",
+    "poem": "Au lecteur",
+    "died": 1867,
+    "lines": 4,
+    "anchor": "Nos péchés sont têtus,"
+   },
+   {
+    "title": "Poèmes saturniens (1902)/Chanson d’automne",
+    "poet": "Paul Verlaine",
+    "poem": "Chanson d’automne",
+    "died": 1896,
+    "lines": 6,
+    "anchor": "Les sanglots longs"
+   },
+   {
+    "title": "Poèmes saturniens (1902)/Mon rêve familier",
+    "poet": "Paul Verlaine",
+    "poem": "Mon rêve familier",
+    "died": 1896,
+    "lines": 4,
+    "anchor": "Je fais souvent ce rêve"
+   },
+   {
+    "title": "Les Contemplations/« Demain, dès l’aube, à l’heure où blanchit la campagne »",
+    "poet": "Victor Hugo",
+    "poem": "Demain, dès l’aube…",
+    "died": 1885,
+    "lines": 4,
+    "anchor": "Demain, dès l’aube, à l’heure"
+   }
+  ],
+  "de": [
+   {
+    "title": "Erlkönig",
+    "poet": "Johann Wolfgang von Goethe",
+    "poem": "Erlkönig",
+    "died": 1832,
+    "lines": 4,
+    "anchor": "Wer reitet so spät durch Nacht und Wind?"
+   },
+   {
+    "title": "Die Lorelei",
+    "poet": "Heinrich Heine",
+    "poem": "Die Lorelei",
+    "died": 1856,
+    "lines": 4,
+    "anchor": "Ich weiß nicht, was soll das bedeuten,"
+   },
+   {
+    "title": "Wandrers Nachtlied",
+    "poet": "Johann Wolfgang von Goethe",
+    "poem": "Wandrers Nachtlied",
+    "died": 1832,
+    "lines": 4,
+    "anchor": "Der du von dem Himmel bist,"
+   },
+   {
+    "title": "Der Panther",
+    "poet": "Rainer Maria Rilke",
+    "poem": "Der Panther",
+    "died": 1926,
+    "lines": 4,
+    "anchor": "Sein Blick ist vom Vorübergehn der Stäbe"
+   },
+   {
+    "title": "Mondnacht",
+    "poet": "Joseph von Eichendorff",
+    "poem": "Mondnacht",
+    "died": 1857,
+    "lines": 4,
+    "anchor": "Es war, als hätt’ der Himmel"
+   },
+   {
+    "title": "Mondnacht",
+    "poet": "Joseph von Eichendorff",
+    "poem": "Mondnacht",
+    "died": 1857,
+    "lines": 4,
+    "anchor": "Die Luft ging durch die Felder,"
+   },
+   {
+    "title": "Die Bürgschaft",
+    "poet": "Friedrich Schiller",
+    "poem": "Die Bürgschaft",
+    "died": 1805,
+    "lines": 3,
+    "anchor": "Zu Dionys dem Tirannen schlich"
+   },
+   {
+    "title": "Herbsttag",
+    "poet": "Rainer Maria Rilke",
+    "poem": "Herbsttag",
+    "died": 1926,
+    "lines": 3,
+    "anchor": "Herr: es ist Zeit."
+   },
+   {
+    "title": "Der Handschuh",
+    "poet": "Friedrich Schiller",
+    "poem": "Der Handschuh",
+    "died": 1805,
+    "lines": 3,
+    "anchor": "Vor seinem Löwengarten,"
+   },
+   {
+    "title": "Der Taucher",
+    "poet": "Friedrich Schiller",
+    "poem": "Der Taucher",
+    "died": 1805,
+    "lines": 4,
+    "anchor": "Wer wagt es, Rittersmann oder Knapp,"
+   },
+   {
+    "title": "Erlkönig",
+    "poet": "Johann Wolfgang von Goethe",
+    "poem": "Erlkönig",
+    "died": 1832,
+    "lines": 4,
+    "anchor": "Wer reitet so spät durch Nacht und Wind?",
+    "offset": 4
+   },
+   {
+    "title": "Die Lorelei",
+    "poet": "Heinrich Heine",
+    "poem": "Die Lorelei",
+    "died": 1856,
+    "lines": 2,
+    "anchor": "Der Gipfel des Berges funkelt"
+   }
+  ],
+  "it": [
+   {
+    "title": "Divina Commedia/Inferno/Canto V",
+    "poet": "Dante Alighieri",
+    "poem": "Inferno, canto V",
+    "died": 1321,
+    "lines": 3,
+    "anchor": "Dico che quando l’anima mal nata"
+   },
+   {
+    "title": "Divina Commedia/Inferno/Canto I",
+    "poet": "Dante Alighieri",
+    "poem": "Inferno, canto I",
+    "died": 1321,
+    "lines": 3,
+    "anchor": "Ahi quanto a dir qual era è cosa dura"
+   },
+   {
+    "title": "Divina Commedia/Inferno/Canto III",
+    "poet": "Dante Alighieri",
+    "poem": "Inferno, canto III",
+    "died": 1321,
+    "lines": 3,
+    "anchor": "Dinanzi a me non fuor cose create"
+   },
+   {
+    "title": "Divina Commedia/Inferno/Canto III",
+    "poet": "Dante Alighieri",
+    "poem": "Inferno, canto III",
+    "died": 1321,
+    "lines": 3,
+    "anchor": "Giustizia mosse il mio alto fattore;"
+   },
+   {
+    "title": "Divina Commedia/Inferno/Canto V",
+    "poet": "Dante Alighieri",
+    "poem": "Inferno, canto V",
+    "died": 1321,
+    "lines": 3,
+    "anchor": "Stavvi Minòs orribilmente, e ringhia:"
+   },
+   {
+    "title": "Divina Commedia/Inferno/Canto XXVI",
+    "poet": "Dante Alighieri",
+    "poem": "Inferno, canto XXVI",
+    "died": 1321,
+    "lines": 3,
+    "anchor": "Tra li ladron trovai cinque cotali"
+   },
+   {
+    "title": "Divina Commedia/Paradiso/Canto XXXIII",
+    "poet": "Dante Alighieri",
+    "poem": "Paradiso, canto XXXIII",
+    "died": 1321,
+    "lines": 3,
+    "anchor": "Nel ventre tuo si raccese l’amore,"
+   },
+   {
+    "title": "Divina Commedia/Purgatorio/Canto I",
+    "poet": "Dante Alighieri",
+    "poem": "Purgatorio, canto I",
+    "died": 1321,
+    "lines": 3,
+    "anchor": "Per correr miglior acque alza le vele"
+   },
+   {
+    "title": "Canti (Leopardi - Donati)/XII. L'infinito",
+    "poet": "Giacomo Leopardi",
+    "poem": "L’infinito",
+    "died": 1837,
+    "lines": 3,
+    "anchor": "Sempre caro mi fu quest’ermo colle,"
+   },
+   {
+    "title": "Canti (Leopardi - Donati)/XXI. A Silvia",
+    "poet": "Giacomo Leopardi",
+    "poem": "A Silvia",
+    "died": 1837,
+    "lines": 4,
+    "anchor": "Silvia, rimembri ancora"
+   },
+   {
+    "title": "Orlando furioso (1928)/Canto 1",
+    "poet": "Ludovico Ariosto",
+    "poem": "Orlando furioso, canto I",
+    "died": 1533,
+    "lines": 4,
+    "anchor": "Le donne, i cavallier, l’arme, gli amori,"
+   },
+   {
+    "title": "Canzoniere (Rerum vulgarium fragmenta)/Voi ch'ascoltate in rime sparse il suono",
+    "poet": "Francesco Petrarca",
+    "poem": "Canzoniere, I",
+    "died": 1374,
+    "lines": 4,
+    "anchor": "Voi ch’ascoltate in rime sparse il suono"
+   }
+  ],
+  "pt": [
+   {
+    "title": "Via Láctea",
+    "poet": "Olavo Bilac",
+    "poem": "Via Láctea",
+    "died": 1918,
+    "lines": 4,
+    "anchor": "Talvez sonhasse, quando a vi. Mas via"
+   },
+   {
+    "title": "Via Láctea",
+    "poet": "Olavo Bilac",
+    "poem": "Via Láctea",
+    "died": 1918,
+    "lines": 4,
+    "anchor": "E eu olhava-a de baixo, olhava-a... Em cada"
+   },
+   {
+    "title": "Via Láctea",
+    "poet": "Olavo Bilac",
+    "poem": "Via Láctea",
+    "died": 1918,
+    "lines": 3,
+    "anchor": "Tu, mãe sagrada! Vós também, formosas"
+   },
+   {
+    "title": "Mar Portuguez",
+    "poet": "Fernando Pessoa",
+    "poem": "Mar Portuguez",
+    "died": 1935,
+    "lines": 4,
+    "anchor": "Valeu a pena? Tudo vale a pena"
+   },
+   {
+    "title": "Mar Portuguez",
+    "poet": "Fernando Pessoa",
+    "poem": "Mar Portuguez",
+    "died": 1935,
+    "lines": 4,
+    "anchor": "Por te cruzarmos, quantas mães choraram,"
+   },
+   {
+    "title": "As primaveras (1925)/Primaveras/Livro Primeiro/Meus oito annos",
+    "poet": "Casimiro de Abreu",
+    "poem": "Meus oito annos",
+    "died": 1860,
+    "lines": 4,
+    "anchor": "Oh! que saudades que tenho"
+   },
+   {
+    "title": "As primaveras (1925)/Primaveras/Livro Primeiro/Meus oito annos",
+    "poet": "Casimiro de Abreu",
+    "poem": "Meus oito annos",
+    "died": 1860,
+    "lines": 4,
+    "anchor": "Que amor, que sonhos, que flôres,"
+   },
+   {
+    "title": "Eu (Augusto dos Anjos, 1912)/Versos intimos",
+    "poet": "Augusto dos Anjos",
+    "poem": "Versos intimos",
+    "died": 1914,
+    "lines": 4,
+    "anchor": "Vês?! Ninguem assistiu ao formidavel"
+   },
+   {
+    "title": "Amor he hum fogo que arde sem se ver",
+    "poet": "Luís de Camões",
+    "poem": "Amor he hum fogo que arde sem se ver",
+    "died": 1580,
+    "lines": 4,
+    "anchor": "Amor he hum fogo que arde sem se ver;"
+   },
+   {
+    "title": "O Navio Negreiro",
+    "poet": "Castro Alves",
+    "poem": "O Navio Negreiro",
+    "died": 1871,
+    "lines": 4,
+    "anchor": "'Stamos em pleno mar... Doudo no espaço"
+   },
+   {
+    "title": "O Navio Negreiro",
+    "poet": "Castro Alves",
+    "poem": "O Navio Negreiro",
+    "died": 1871,
+    "lines": 4,
+    "anchor": "'Stamos em pleno mar... Doudo no espaço",
+    "offset": 4
+   },
+   {
+    "title": "O Navio Negreiro",
+    "poet": "Castro Alves",
+    "poem": "O Navio Negreiro",
+    "died": 1871,
+    "lines": 4,
+    "anchor": "'Stamos em pleno mar... Doudo no espaço",
+    "offset": 8
+   }
+  ],
+  "pl": [
+   {
+    "title": "Stepy Akermańskie (Mickiewicz, 1929)",
+    "poet": "Adam Mickiewicz",
+    "poem": "Stepy akermańskie",
+    "died": 1855,
+    "lines": 4,
+    "anchor": "Wpłynąłem na suchego przestwór oceanu"
+   },
+   {
+    "title": "Burza (Mickiewicz, 1929)",
+    "poet": "Adam Mickiewicz",
+    "poem": "Burza",
+    "died": 1855,
+    "lines": 4,
+    "anchor": "Zdarto żagle, ster prysnął"
+   },
+   {
+    "title": "Niepewność (Mickiewicz, 1929)",
+    "poet": "Adam Mickiewicz",
+    "poem": "Niepewność",
+    "died": 1855,
+    "lines": 4,
+    "anchor": "Gdy cię nie widzę, — nie wzdycham, nie płaczę,"
+   },
+   {
+    "title": "Oda do młodości (Mickiewicz, 1929)",
+    "poet": "Adam Mickiewicz",
+    "poem": "Oda do młodości",
+    "died": 1855,
+    "lines": 3,
+    "anchor": "Bez serc, bez ducha"
+   },
+   {
+    "title": "Powrót taty (Mickiewicz, 1929)",
+    "poet": "Adam Mickiewicz",
+    "poem": "Powrót taty",
+    "died": 1855,
+    "lines": 4,
+    "anchor": "«Pójdźcie o dziatki, pójdźcie wszystkie razem"
+   },
+   {
+    "title": "Reduta Ordona (Mickiewicz, 1929)",
+    "poet": "Adam Mickiewicz",
+    "poem": "Reduta Ordona",
+    "died": 1855,
+    "lines": 2,
+    "anchor": "Nam strzelać nie kazano"
+   },
+   {
+    "title": "Romantyczność (Mickiewicz, 1929)",
+    "poet": "Adam Mickiewicz",
+    "poem": "Romantyczność",
+    "died": 1855,
+    "lines": 4,
+    "anchor": "«Słuchaj, dzieweczko!»"
+   },
+   {
+    "title": "Świtezianka (1899)",
+    "poet": "Adam Mickiewicz",
+    "poem": "Świtezianka",
+    "died": 1855,
+    "lines": 4,
+    "anchor": "Skąd przyszła? darmo śledzić kto pragnie,"
+   },
+   {
+    "title": "Pani Twardowska (Mickiewicz, 1899)",
+    "poet": "Adam Mickiewicz",
+    "poem": "Pani Twardowska",
+    "died": 1855,
+    "lines": 4,
+    "anchor": "Na patrona z trybunału,"
+   },
+   {
+    "title": "Jana Kochanowskiego Dzieła polskie (1919)/Treny/Tren VIII",
+    "poet": "Jan Kochanowski",
+    "poem": "Tren VIII",
+    "died": 1584,
+    "lines": 4,
+    "anchor": "Wielkieś mi uczyniła pustki w domu moim,"
+   },
+   {
+    "title": "Świtezianka (1899)",
+    "poet": "Adam Mickiewicz",
+    "poem": "Świtezianka",
+    "died": 1855,
+    "lines": 2,
+    "anchor": "Młody jest strzelcem w tutejszym borze;"
+   },
+   {
+    "title": "Pan Tadeusz (wyd. 1834)/Księga druga",
+    "poet": "Adam Mickiewicz",
+    "poem": "Pan Tadeusz, księga druga",
+    "died": 1855,
+    "lines": 2,
+    "anchor": "Kto z nas tych lat niepomni,"
+   }
+  ],
+  "ru": [
+   {
+    "title": "Парус (Лермонтов)",
+    "poet": "Михаил Лермонтов",
+    "poem": "Парус",
+    "died": 1841,
+    "lines": 4,
+    "anchor": "Белеет парус одинокой"
+   },
+   {
+    "title": "Парус (Лермонтов)",
+    "poet": "Михаил Лермонтов",
+    "poem": "Парус",
+    "died": 1841,
+    "lines": 4,
+    "anchor": "Играют волны — ветер свищет,"
+   },
+   {
+    "title": "Зимнее утро (Пушкин)",
+    "poet": "Александр Пушкин",
+    "poem": "Зимнее утро",
+    "died": 1837,
+    "lines": 3,
+    "anchor": "Мороз и солнце; день чудесный!"
+   },
+   {
+    "title": "Пророк (Пушкин)",
+    "poet": "Александр Пушкин",
+    "poem": "Пророк",
+    "died": 1837,
+    "lines": 4,
+    "anchor": "Духовной жаждою томим,"
+   },
+   {
+    "title": "К Чедаеву (Пушкин)",
+    "poet": "Александр Пушкин",
+    "poem": "К Чаадаеву",
+    "died": 1837,
+    "lines": 4,
+    "anchor": "Любви, надежды, тихой славы"
+   },
+   {
+    "title": "Смерть поэта (Лермонтов)",
+    "poet": "Михаил Лермонтов",
+    "poem": "Смерть поэта",
+    "died": 1841,
+    "lines": 4,
+    "anchor": "Погиб поэт! — невольник чести"
+   },
+   {
+    "title": "Утес (Лермонтов)",
+    "poet": "Михаил Лермонтов",
+    "poem": "Утёс",
+    "died": 1841,
+    "lines": 4,
+    "anchor": "Ночевала тучка золотая"
+   },
+   {
+    "title": "Тучи (Лермонтов)",
+    "poet": "Михаил Лермонтов",
+    "poem": "Тучи",
+    "died": 1841,
+    "lines": 4,
+    "anchor": "Тучки небесные, вечные странники!"
+   },
+   {
+    "title": "Узник (Пушкин)",
+    "poet": "Александр Пушкин",
+    "poem": "Узник",
+    "died": 1837,
+    "lines": 4,
+    "anchor": "Сижу за решёткой в темнице сырой."
+   },
+   {
+    "title": "Анчар (Пушкин)",
+    "poet": "Александр Пушкин",
+    "poem": "Анчар",
+    "died": 1837,
+    "lines": 4,
+    "anchor": "Природа жаждущих степей"
+   },
+   {
+    "title": "Я вас любил: любовь ещё, быть может (Пушкин)",
+    "poet": "Александр Пушкин",
+    "poem": "Я вас любил",
+    "died": 1837,
+    "lines": 4,
+    "anchor": "Я вас любил: любовь ещё, быть может,"
+   },
+   {
+    "title": "К *** Керн (Пушкин)",
+    "poet": "Александр Пушкин",
+    "poem": "К*** (Я помню чудное мгновенье)",
+    "died": 1837,
+    "lines": 4,
+    "anchor": "Я помню чудное мгновенье:"
+   }
+  ],
+  "ar": [
+   {
+    "title": "معلقة امرئ القيس",
+    "poet": "امرؤ القيس",
+    "poem": "معلقة امرئ القيس",
+    "died": 544,
+    "lines": 2,
+    "pick": 6
+   },
+   {
+    "title": "معلقة امرئ القيس",
+    "poet": "امرؤ القيس",
+    "poem": "معلقة امرئ القيس",
+    "died": 544,
+    "lines": 2,
+    "pick": 10
+   },
+   {
+    "title": "على قدر أهل العزم تأتي العزائم",
+    "poet": "المتنبي",
+    "poem": "على قدر أهل العزم تأتي العزائم",
+    "died": 965,
+    "lines": 2,
+    "pick": 5
+   },
+   {
+    "title": "على قدر أهل العزم تأتي العزائم",
+    "poet": "المتنبي",
+    "poem": "على قدر أهل العزم تأتي العزائم",
+    "died": 965,
+    "lines": 2,
+    "pick": 7
+   },
+   {
+    "title": "وا حر قلباه ممن قلبه شبم",
+    "poet": "المتنبي",
+    "poem": "وا حر قلباه ممن قلبه شبم",
+    "died": 965,
+    "lines": 2,
+    "pick": 4
+   },
+   {
+    "title": "معلقة طرفة بن العبد",
+    "poet": "طرفة بن العبد",
+    "poem": "معلقة طرفة بن العبد",
+    "died": 569,
+    "lines": 2,
+    "pick": 4
+   },
+   {
+    "title": "معلقة عمرو بن كلثوم",
+    "poet": "عمرو بن كلثوم",
+    "poem": "معلقة عمرو بن كلثوم",
+    "died": 584,
+    "lines": 2,
+    "pick": 4
+   },
+   {
+    "title": "معلقة لبيد بن ربيعة",
+    "poet": "لبيد بن ربيعة",
+    "poem": "معلقة لبيد بن ربيعة",
+    "died": 661,
+    "lines": 2,
+    "pick": 4
+   },
+   {
+    "title": "لامية العجم",
+    "poet": "الطغرائي",
+    "poem": "لامية العجم",
+    "died": 1121,
+    "lines": 2,
+    "pick": 4
+   },
+   {
+    "title": "لامية العرب",
+    "poet": "الشنفرى",
+    "poem": "لامية العرب",
+    "died": 525,
+    "lines": 2,
+    "pick": 4
+   },
+   {
+    "title": "أراك عصي الدمع",
+    "poet": "أبو فراس الحمداني",
+    "poem": "أراك عصي الدمع",
+    "died": 968,
+    "lines": 2,
+    "pick": 4
+   },
+   {
+    "title": "إرادة الحياة",
+    "poet": "أبو القاسم الشابي",
+    "poem": "إرادة الحياة",
+    "died": 1934,
+    "lines": 2,
+    "pick": 1
+   }
+  ],
+  "hi": [
+   {
+    "title": "कामायनी/चिंता",
+    "poet": "जयशंकर प्रसाद",
+    "poem": "कामायनी, चिंता सर्ग",
+    "died": 1937,
+    "lines": 2,
+    "pick": 3
+   },
+   {
+    "title": "कामायनी/चिंता",
+    "poet": "जयशंकर प्रसाद",
+    "poem": "कामायनी, चिंता सर्ग",
+    "died": 1937,
+    "lines": 2,
+    "pick": 5
+   },
+   {
+    "title": "कामायनी/चिंता",
+    "poet": "जयशंकर प्रसाद",
+    "poem": "कामायनी, चिंता सर्ग",
+    "died": 1937,
+    "lines": 2,
+    "pick": 7
+   },
+   {
+    "title": "कामायनी/चिंता",
+    "poet": "जयशंकर प्रसाद",
+    "poem": "कामायनी, चिंता सर्ग",
+    "died": 1937,
+    "lines": 2,
+    "pick": 9
+   },
+   {
+    "title": "कामायनी/चिंता",
+    "poet": "जयशंकर प्रसाद",
+    "poem": "कामायनी, चिंता सर्ग",
+    "died": 1937,
+    "lines": 2,
+    "pick": 11
+   },
+   {
+    "title": "कामायनी/श्रद्धा",
+    "poet": "जयशंकर प्रसाद",
+    "poem": "कामायनी, श्रद्धा सर्ग",
+    "died": 1937,
+    "lines": 2,
+    "pick": 1
+   },
+   {
+    "title": "कामायनी/श्रद्धा",
+    "poet": "जयशंकर प्रसाद",
+    "poem": "कामायनी, श्रद्धा सर्ग",
+    "died": 1937,
+    "lines": 2,
+    "pick": 3
+   },
+   {
+    "title": "कामायनी/आशा",
+    "poet": "जयशंकर प्रसाद",
+    "poem": "कामायनी, आशा सर्ग",
+    "died": 1937,
+    "lines": 2,
+    "pick": 14
+   },
+   {
+    "title": "कामायनी/आशा",
+    "poet": "जयशंकर प्रसाद",
+    "poem": "कामायनी, आशा सर्ग",
+    "died": 1937,
+    "lines": 2,
+    "pick": 16
+   },
+   {
+    "title": "कामायनी/लज्जा",
+    "poet": "जयशंकर प्रसाद",
+    "poem": "कामायनी, लज्जा सर्ग",
+    "died": 1937,
+    "lines": 2,
+    "pick": 15
+   },
+   {
+    "title": "कामायनी/लज्जा",
+    "poet": "जयशंकर प्रसाद",
+    "poem": "कामायनी, लज्जा सर्ग",
+    "died": 1937,
+    "lines": 2,
+    "pick": 17
+   },
+   {
+    "title": "कामायनी/काम",
+    "poet": "जयशंकर प्रसाद",
+    "poem": "कामायनी, काम सर्ग",
+    "died": 1937,
+    "lines": 2,
+    "pick": 16
+   }
+  ],
+  "zh": [
+   {
+    "title": "江雪",
+    "poet": "柳宗元",
+    "poem": "江雪",
+    "died": 819,
+    "lines": 2,
+    "anchor": "千山鳥飛絕，萬徑人蹤滅。"
+   },
+   {
+    "title": "靜夜思",
+    "poet": "李白",
+    "poem": "靜夜思",
+    "died": 762,
+    "lines": 4,
+    "anchor": "牀前看月光，"
+   },
+   {
+    "title": "楓橋夜泊",
+    "poet": "張繼",
+    "poem": "楓橋夜泊",
+    "died": 779,
+    "lines": 2,
+    "anchor": "月落烏啼霜滿天，江楓漁火對愁眠。"
+   },
+   {
+    "title": "清明 (杜牧)",
+    "poet": "杜牧",
+    "poem": "清明",
+    "died": 852,
+    "lines": 4,
+    "anchor": "清明時節雨紛紛，"
+   },
+   {
+    "title": "泊秦淮",
+    "poet": "杜牧",
+    "poem": "泊秦淮",
+    "died": 852,
+    "lines": 4,
+    "anchor": "煙籠寒水月籠沙"
+   },
+   {
+    "title": "賦得古原草送別",
+    "poet": "白居易",
+    "poem": "賦得古原草送別",
+    "died": 846,
+    "lines": 2,
+    "anchor": "離離原上草，一歲一枯榮。"
+   },
+   {
+    "title": "尋隱者不遇",
+    "poet": "賈島",
+    "poem": "尋隱者不遇",
+    "died": 843,
+    "lines": 2,
+    "anchor": "松下問童子，言師採藥去。"
+   },
+   {
+    "title": "登幽州臺歌",
+    "poet": "陳子昂",
+    "poem": "登幽州臺歌",
+    "died": 702,
+    "lines": 2,
+    "anchor": "前不見古人，後不見來者。"
+   },
+   {
+    "title": "夜雨寄北",
+    "poet": "李商隱",
+    "poem": "夜雨寄北",
+    "died": 858,
+    "lines": 2,
+    "anchor": "君問歸期未有期"
+   },
+   {
+    "title": "涼州詞 (王翰)",
+    "poet": "王翰",
+    "poem": "涼州詞",
+    "died": 726,
+    "lines": 2,
+    "anchor": "葡萄美酒夜光杯，欲飲琵琶馬上催。"
+   },
+   {
+    "title": "早發白帝城",
+    "poet": "李白",
+    "poem": "早發白帝城",
+    "died": 762,
+    "lines": 2,
+    "anchor": "朝辭白帝彩雲間，"
+   },
+   {
+    "title": "賦得古原草送別",
+    "poet": "白居易",
+    "poem": "賦得古原草送別",
+    "died": 846,
+    "lines": 2,
+    "anchor": "遠芳侵古道，晴翠接荒城。"
+   }
+  ],
+  "ja": [
+   {
+    "title": "椰子の実",
+    "poet": "島崎藤村",
+    "poem": "椰子の実",
+    "died": 1943,
+    "lines": 2,
+    "anchor": "名も知らぬ遠き島より"
+   },
+   {
+    "title": "椰子の実",
+    "poet": "島崎藤村",
+    "poem": "椰子の実",
+    "died": 1943,
+    "lines": 2,
+    "anchor": "故郷の岸を離れて"
+   },
+   {
+    "title": "椰子の実",
+    "poet": "島崎藤村",
+    "poem": "椰子の実",
+    "died": 1943,
+    "lines": 2,
+    "anchor": "思ひやる八重の汐々"
+   },
+   {
+    "title": "雨ニモマケズ",
+    "poet": "宮沢賢治",
+    "poem": "雨ニモマケズ",
+    "died": 1933,
+    "lines": 2,
+    "anchor": "東ニ病気ノコドモアレバ"
+   },
+   {
+    "title": "雨ニモマケズ",
+    "poet": "宮沢賢治",
+    "poem": "雨ニモマケズ",
+    "died": 1933,
+    "lines": 2,
+    "anchor": "野原ノ松ノ林ノ"
+   },
+   {
+    "title": "若菜集",
+    "poet": "島崎藤村",
+    "poem": "若菜集（序）",
+    "died": 1943,
+    "lines": 4,
+    "anchor": "こゝろなきうたのしらべは"
+   },
+   {
+    "title": "若菜集",
+    "poet": "島崎藤村",
+    "poem": "若菜集（序）",
+    "died": 1943,
+    "lines": 4,
+    "anchor": "ぶだうだなふかくかゝれる"
+   },
+   {
+    "title": "若菜集",
+    "poet": "島崎藤村",
+    "poem": "若菜集（序）",
+    "died": 1943,
+    "lines": 2,
+    "anchor": "そはうたのわかきゆゑなり"
+   },
+   {
+    "title": "椰子の実",
+    "poet": "島崎藤村",
+    "poem": "椰子の実",
+    "died": 1943,
+    "lines": 2,
+    "anchor": "旧の樹は生ひや茂れる"
+   },
+   {
+    "title": "椰子の実",
+    "poet": "島崎藤村",
+    "poem": "椰子の実",
+    "died": 1943,
+    "lines": 2,
+    "anchor": "われもまた渚を枕"
+   },
+   {
+    "title": "椰子の実",
+    "poet": "島崎藤村",
+    "poem": "椰子の実",
+    "died": 1943,
+    "lines": 2,
+    "anchor": "実をとりて胸にあつれば"
+   },
+   {
+    "title": "雨ニモマケズ",
+    "poet": "宮沢賢治",
+    "poem": "雨ニモマケズ",
+    "died": 1933,
+    "lines": 2,
+    "anchor": "アラユルコトヲ"
+   }
+  ],
+  "ko": [
+   {
+    "title": "진달래꽃 (시집)/엄마야 누나야",
+    "poet": "김소월",
+    "poem": "엄마야 누나야",
+    "died": 1934,
+    "lines": 4,
+    "anchor": "엄마야 누나야 강변 살자,"
+   },
+   {
+    "title": "청포도",
+    "poet": "이육사",
+    "poem": "청포도",
+    "died": 1944,
+    "lines": 2,
+    "anchor": "내 고장 칠월은"
+   },
+   {
+    "title": "청포도",
+    "poet": "이육사",
+    "poem": "청포도",
+    "died": 1944,
+    "lines": 2,
+    "anchor": "이 마을 전설이 주절이주절이 열리고"
+   },
+   {
+    "title": "절정",
+    "poet": "이육사",
+    "poem": "절정",
+    "died": 1944,
+    "lines": 2,
+    "anchor": "매운 계절(季節)의 채찍에 갈겨"
+   },
+   {
+    "title": "진달래꽃 (시집)/가는 길",
+    "poet": "김소월",
+    "poem": "가는 길",
+    "died": 1934,
+    "lines": 2,
+    "anchor": "말을 할까"
+   },
+   {
+    "title": "진달래꽃 (시집)/접동새",
+    "poet": "김소월",
+    "poem": "접동새",
+    "died": 1934,
+    "lines": 3,
+    "anchor": "진두강 가람가에 살던 누나는"
+   },
+   {
+    "title": "진달래꽃 (시집)/먼 후일",
+    "poet": "김소월",
+    "poem": "먼 후일",
+    "died": 1934,
+    "lines": 2,
+    "anchor": "먼 훗날 당신이 찾으시면"
+   },
+   {
+    "title": "진달래꽃 (시집)/진달래꽃",
+    "poet": "김소월",
+    "poem": "진달래꽃",
+    "died": 1934,
+    "lines": 3,
+    "anchor": "나 보기가 역겨워"
+   },
+   {
+    "title": "진달래꽃 (시집)/진달래꽃",
+    "poet": "김소월",
+    "poem": "진달래꽃",
+    "died": 1934,
+    "lines": 3,
+    "anchor": "가시는 걸음 걸음"
+   },
+   {
+    "title": "쉽게 씌어진 시",
+    "poet": "윤동주",
+    "poem": "쉽게 씌어진 시",
+    "died": 1945,
+    "lines": 2,
+    "anchor": "창밖에 밤비가 속살거려"
+   },
+   {
+    "title": "하늘과 바람과 별과 시 (1948년)/참회록",
+    "poet": "윤동주",
+    "poem": "참회록",
+    "died": 1945,
+    "lines": 2,
+    "anchor": "파란 녹이 낀 구리거울 속에"
+   },
+   {
+    "title": "진달래꽃 (시집)/금잔디",
+    "poet": "김소월",
+    "poem": "금잔디",
+    "died": 1934,
+    "lines": 2,
+    "anchor": "심심산천에 붙는 불은"
+   }
+  ],
+  "vi": [
+   {
+    "title": "Truyện Kiều",
+    "poet": "Nguyễn Du",
+    "poem": "Truyện Kiều",
+    "died": 1820,
+    "lines": 2,
+    "anchor": "Trăm năm trong cõi người ta,"
+   },
+   {
+    "title": "Bánh trôi nước",
+    "poet": "Hồ Xuân Hương",
+    "poem": "Bánh trôi nước",
+    "died": 1822,
+    "lines": 2,
+    "anchor": "Thân em vừa trắng lại vừa tròn,"
+   },
+   {
+    "title": "Thu điếu",
+    "poet": "Nguyễn Khuyến",
+    "poem": "Thu điếu",
+    "died": 1909,
+    "lines": 2,
+    "anchor": "Ao thu lạnh lẽo nước trong veo,"
+   },
+   {
+    "title": "Thu ẩm",
+    "poet": "Nguyễn Khuyến",
+    "poem": "Thu ẩm",
+    "died": 1909,
+    "lines": 2,
+    "anchor": "Năm gian nhà cỏ thấp le te,"
+   },
+   {
+    "title": "Thu vịnh",
+    "poet": "Nguyễn Khuyến",
+    "poem": "Thu vịnh",
+    "died": 1909,
+    "lines": 2,
+    "anchor": "Trời thu xanh ngắt mấy tầng cao,"
+   },
+   {
+    "title": "Thương vợ",
+    "poet": "Trần Tế Xương",
+    "poem": "Thương vợ",
+    "died": 1907,
+    "lines": 2,
+    "anchor": "Quanh năm buôn bán ở mom sông"
+   },
+   {
+    "title": "Bạn đến chơi nhà",
+    "poet": "Nguyễn Khuyến",
+    "poem": "Bạn đến chơi nhà",
+    "died": 1909,
+    "lines": 2,
+    "anchor": "Đã bấy lâu kia, bác tới nhà,"
+   },
+   {
+    "title": "Khóc Dương Khuê",
+    "poet": "Nguyễn Khuyến",
+    "poem": "Khóc Dương Khuê",
+    "died": 1909,
+    "lines": 2,
+    "anchor": "Bác Dương thôi đã thôi rồi,"
+   },
+   {
+    "title": "Tự tình II",
+    "poet": "Hồ Xuân Hương",
+    "poem": "Tự tình II",
+    "died": 1822,
+    "lines": 2,
+    "anchor": "Đêm khuya văng vẳng trống canh dồn,"
+   },
+   {
+    "title": "Muốn làm thằng Cuội",
+    "poet": "Tản Đà",
+    "poem": "Muốn làm thằng Cuội",
+    "died": 1939,
+    "lines": 2,
+    "anchor": "Đêm thu buồn lắm chị Hằng ơi!"
+   },
+   {
+    "title": "Thăng Long thành hoài cổ",
+    "poet": "Bà Huyện Thanh Quan",
+    "poem": "Thăng Long thành hoài cổ",
+    "died": 1848,
+    "lines": 2,
+    "anchor": "Tạo hóa gây chi cuộc hí trường,"
+   },
+   {
+    "title": "Chiều hôm nhớ nhà",
+    "poet": "Bà Huyện Thanh Quan",
+    "poem": "Chiều hôm nhớ nhà",
+    "died": 1848,
+    "lines": 2,
+    "anchor": "Vàng tỏa non tây, bóng ác tà;"
+   }
+  ],
+  "th": [
+   {
+    "title": "นิราศภูเขาทอง",
+    "poet": "สุนทรภู่",
+    "poem": "นิราศภูเขาทอง",
+    "died": 1855,
+    "lines": 2,
+    "anchor": "ออกจากวัดทัศนาดูอาวาส"
+   },
+   {
+    "title": "นิราศภูเขาทอง",
+    "poet": "สุนทรภู่",
+    "poem": "นิราศภูเขาทอง",
+    "died": 1855,
+    "lines": 2,
+    "anchor": "สามฤดูอยู่ดีไม่มีภัย"
+   },
+   {
+    "title": "นิราศภูเขาทอง",
+    "poet": "สุนทรภู่",
+    "poem": "นิราศภูเขาทอง",
+    "died": 1855,
+    "lines": 2,
+    "anchor": "โอ้อาวาสราชบุรณะพระวิหาร"
+   },
+   {
+    "title": "นิราศภูเขาทอง",
+    "poet": "สุนทรภู่",
+    "poem": "นิราศภูเขาทอง",
+    "died": 1855,
+    "lines": 2,
+    "anchor": "โอ้อาวาสราชบุรณะพระวิหาร",
+    "offset": 4
+   },
+   {
+    "title": "นิราศนรินทร์",
+    "poet": "นายนรินทรธิเบศร์ (อิน)",
+    "poem": "นิราศนรินทร์",
+    "died": 1824,
+    "lines": 2,
+    "anchor": "ศรีอยุธเยนทร์แย้มฟ้า"
+   },
+   {
+    "title": "นิราศนรินทร์",
+    "poet": "นายนรินทรธิเบศร์ (อิน)",
+    "poem": "นิราศนรินทร์",
+    "died": 1824,
+    "lines": 2,
+    "anchor": "ขุนหาญห้าวแหนบาท"
+   },
+   {
+    "title": "ลิลิตตะเลงพ่าย",
+    "poet": "สมเด็จพระมหาสมณเจ้า กรมพระปรมานุชิตชิโนรส",
+    "poem": "ลิลิตตะเลงพ่าย",
+    "died": 1853,
+    "lines": 4,
+    "anchor": "๏ บุญเจ้าจอมภพพื้น"
+   },
+   {
+    "title": "ลิลิตตะเลงพ่าย",
+    "poet": "สมเด็จพระมหาสมณเจ้า กรมพระปรมานุชิตชิโนรส",
+    "poem": "ลิลิตตะเลงพ่าย",
+    "died": 1853,
+    "lines": 2,
+    "anchor": "พระฤทธิ์ดังฤทธิ์ราม"
+   },
+   {
+    "title": "อิเหนา",
+    "poet": "พระบาทสมเด็จพระพุทธเลิศหล้านภาลัย",
+    "poem": "อิเหนา",
+    "died": 1824,
+    "lines": 2,
+    "anchor": "๏ พระเสด็จลดเลี้ยวเที่ยวชม"
+   },
+   {
+    "title": "อิเหนา",
+    "poet": "พระบาทสมเด็จพระพุทธเลิศหล้านภาลัย",
+    "poem": "อิเหนา",
+    "died": 1824,
+    "lines": 2,
+    "anchor": "เพดานดาราระย้าย้อย"
+   },
+   {
+    "title": "กฤษณาสอนน้อง",
+    "poet": "สมเด็จพระมหาสมณเจ้า กรมพระปรมานุชิตชิโนรส",
+    "poem": "กฤษณาสอนน้องคำฉันท์",
+    "died": 1853,
+    "lines": 3,
+    "anchor": "๏ ขอถวายภิวาทนศาสดาดิลกธรรม์"
+   },
+   {
+    "title": "กฤษณาสอนน้อง",
+    "poet": "สมเด็จพระมหาสมณเจ้า กรมพระปรมานุชิตชิโนรส",
+    "poem": "กฤษณาสอนน้องคำฉันท์",
+    "died": 1853,
+    "lines": 3,
+    "anchor": "นบพรหมินทร์วชรินทรวิษณุศิวา"
+   }
+  ],
+  "id": [
+   {
+    "title": "Gurindam Dua Belas",
+    "poet": "Raja Ali Haji",
+    "poem": "Gurindam Dua Belas",
+    "died": 1873,
+    "lines": 2,
+    "anchor": "Barang siapa tiada memegang agama,"
+   },
+   {
+    "title": "Gurindam Dua Belas",
+    "poet": "Raja Ali Haji",
+    "poem": "Gurindam Dua Belas",
+    "died": 1873,
+    "lines": 2,
+    "anchor": "Barang siapa mengenal yang empat,"
+   },
+   {
+    "title": "Gurindam Dua Belas",
+    "poet": "Raja Ali Haji",
+    "poem": "Gurindam Dua Belas",
+    "died": 1873,
+    "lines": 2,
+    "anchor": "Barang siapa mengenal Allah,"
+   },
+   {
+    "title": "Gurindam Dua Belas",
+    "poet": "Raja Ali Haji",
+    "poem": "Gurindam Dua Belas",
+    "died": 1873,
+    "lines": 2,
+    "anchor": "Barang siapa mengenal diri,"
+   },
+   {
+    "title": "Syair Perahu",
+    "poet": "Hamzah al-Fansuri",
+    "poem": "Syair Perahu",
+    "died": 1590,
+    "lines": 4,
+    "anchor": "Wahai muda kenali dirimu,"
+   },
+   {
+    "title": "Syair Perahu",
+    "poet": "Hamzah al-Fansuri",
+    "poem": "Syair Perahu",
+    "died": 1590,
+    "lines": 4,
+    "anchor": "Hai muda arif-budiman,"
+   },
+   {
+    "title": "Berdiri Aku",
+    "poet": "Amir Hamzah",
+    "poem": "Berdiri Aku",
+    "died": 1946,
+    "lines": 4,
+    "anchor": "Berdiri aku di senja senyap"
+   },
+   {
+    "title": "Berdiri Aku",
+    "poet": "Amir Hamzah",
+    "poem": "Berdiri Aku",
+    "died": 1946,
+    "lines": 4,
+    "anchor": "Angin pulang menyejuk bumi"
+   },
+   {
+    "title": "Padamu Jua",
+    "poet": "Amir Hamzah",
+    "poem": "Padamu Jua",
+    "died": 1946,
+    "lines": 3,
+    "anchor": "Habis kikis"
+   },
+   {
+    "title": "Hanyut Aku",
+    "poet": "Amir Hamzah",
+    "poem": "Hanyut Aku",
+    "died": 1946,
+    "lines": 3,
+    "anchor": "Hanyut aku, kekasihku!"
+   },
+   {
+    "title": "Derai-Derai Cemara",
+    "poet": "Chairil Anwar",
+    "poem": "Derai-Derai Cemara",
+    "died": 1949,
+    "lines": 4,
+    "anchor": "cemara menderai sampai jauh"
+   },
+   {
+    "title": "Aku (Chairil Anwar)",
+    "poet": "Chairil Anwar",
+    "poem": "Aku",
+    "died": 1949,
+    "lines": 3,
+    "anchor": "Melangkahkan aku bukan tuak menggelegak"
+   }
+  ]
+ }
+}
