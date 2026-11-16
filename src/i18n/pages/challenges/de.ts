@@ -3,7 +3,7 @@
 // translation named in scripts/lang-content/challenges/sources.tsv; a challenge with no such
 // line in this language is left out (docs/language/CONTENT-PROVENANCE.md).
 const messages: Record<string, string> = {
-  'challenges.ids': "0,14,15,20,27,42,43,53,57,63,83,84,4,35,6,2,19,12,34,46,79,96,99",
+  'challenges.ids': "0,14,15,20,27,42,43,53,57,63,83,84,4,35,6,2,19,12,34,46,79,96,99,97,38,64,80",
   'challenge.0.full': "Sein oder Nichtsein, das ist hier die Frage",
   'challenge.0.display': "___ oder ___, das ist hier die Frage",
   'challenge.0.missing': "Sein|Nichtsein",
@@ -142,6 +142,30 @@ const messages: Record<string, string> = {
   'challenge.99.play': "Romeo und Julia",
   'challenge.99.character': "Romeo",
   'challenge.99.translator': "August Wilhelm von Schlegel",
+  'challenge.97.full': "ich bin nichts, oder ich bin ein Criticus.",
+  'challenge.97.display': "ich bin ___, oder ich bin ein ___.",
+  'challenge.97.missing': "nichts|Criticus",
+  'challenge.97.play': "Othello",
+  'challenge.97.character': "Iago",
+  'challenge.97.translator': "Christoph Martin Wieland",
+  'challenge.38.full': "nehmt euch vor der Eifersucht in Acht; sie ist ein grün-äugiges Ungeheuer",
+  'challenge.38.display': "nehmt euch vor der ___ in Acht; sie ist ein ___ Ungeheuer",
+  'challenge.38.missing': "Eifersucht|grün-äugiges",
+  'challenge.38.play': "Othello",
+  'challenge.38.character': "Iago",
+  'challenge.38.translator': "Christoph Martin Wieland",
+  'challenge.64.full': "Der Beraubte, der dazu lächelt, stiehlt dem Räuber etwas",
+  'challenge.64.display': "Der Beraubte, der dazu ___, stiehlt dem ___ etwas",
+  'challenge.64.missing': "lächelt|Räuber",
+  'challenge.64.play': "Othello",
+  'challenge.64.character': "Duke of Venice",
+  'challenge.64.translator': "Christoph Martin Wieland",
+  'challenge.80.full': "Das Licht ausgelöscht, und dann – – Das Licht auslöschen",
+  'challenge.80.display': "Das ___ ausgelöscht, und dann – – Das ___ auslöschen",
+  'challenge.80.missing': "Licht|Licht",
+  'challenge.80.play': "Othello",
+  'challenge.80.character': "Othello",
+  'challenge.80.translator': "Christoph Martin Wieland",
 };
 
 export default messages;

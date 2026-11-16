@@ -48,6 +48,7 @@ This covers the playground and story pages, the trivia bank (200 questions), the
 | ru-weinberg-othello | ru | Othello (Q26833) | Пётр Вейнберг (1908) | https://ru.wikisource.org/wiki/Отелло,_венецианский_мавр_(Шекспир;_Вейнберг) | Public domain: translator died 1908; translated 1864; text as ru.wikisource has it from a 2001 edition (Кристалл, Санкт-Петербург), modern spelling |
 | it-rusconi-macbeth | it | Macbeth (Q130283) | Carlo Rusconi (1889) | https://it.wikisource.org/wiki/Macbeth_(Shakespeare-Rusconi) | Public domain: translator died 1889; Teatro completo di Shakspeare, 1858 |
 | it-rusconi-otello | it | Othello (Q26833) | Carlo Rusconi (1889) | https://it.wikisource.org/wiki/Otello | Public domain: translator died 1889; Teatro completo di Shakspeare, 1858 |
+| de-wieland-othello | de | Othello (Q26833) | Christoph Martin Wieland (1813) | https://de.wikisource.org/wiki/Othello,_der_Mohr_von_Venedig | Public domain: translator died 1813; Shakespear Theatralische Werke VII, Orell, Geßner & Comp., Zürich, 1766, in its spelling (Criticus) |
 
 ## Names
 
@@ -826,6 +827,10 @@ Allowances: F.-V. Hugo's prose marks the original's verse lines with " — "; a 
 | 79 | Wisely and slow; they stumble that run fast. | Wer hastig läuft, der fällt: drum eile nur mit Weil’. | hastig, fällt | https://de.wikisource.org/w/index.php?title=Romeo_und_Julia_%28%C3%9Cbersetzung_Schlegel%29/Zweiter_Aufzug&oldid=1730815 |
 | 96 | Thou know'st the mask of night is on my face, else would a maiden blush bepaint my cheek. | Du weißt, die Nacht verschleiert mein Gesicht, | Nacht, Gesicht | https://de.wikisource.org/w/index.php?title=Romeo_und_Julia_%28%C3%9Cbersetzung_Schlegel%29/Zweiter_Aufzug&oldid=1730815 |
 | 99 | O, she doth teach the torches to burn bright! | O, sie nur lehrt die Kerzen, hell zu glühn! | Kerzen, hell | https://de.wikisource.org/w/index.php?title=Romeo_und_Julia_%28%C3%9Cbersetzung_Schlegel%29/Erster_Aufzug&oldid=4062133 |
+| 97 | For I am nothing if not critical. | ich bin nichts, oder ich bin ein Criticus. | nichts, Criticus | https://de.wikisource.org/w/index.php?title=Othello%2C_der_Mohr_von_Venedig&oldid=4423105 |
+| 38 | O, beware, my lord, of jealousy! It is the green-eyed monster which doth mock the meat it feeds on. | nehmt euch vor der Eifersucht in Acht; sie ist ein grün-äugiges Ungeheuer | Eifersucht, grün-äugiges | https://de.wikisource.org/w/index.php?title=Othello%2C_der_Mohr_von_Venedig&oldid=4423105 |
+| 64 | The robbed that smiles steals something from the thief. | Der Beraubte, der dazu lächelt, stiehlt dem Räuber etwas | lächelt, Räuber | https://de.wikisource.org/w/index.php?title=Othello%2C_der_Mohr_von_Venedig&oldid=4423105 |
+| 80 | Put out the light, and then put out the light. | Das Licht ausgelöscht, und dann – – Das Licht auslöschen | Licht, Licht | https://de.wikisource.org/w/index.php?title=Othello%2C_der_Mohr_von_Venedig&oldid=4423105 |
 
 ### it
 
@@ -964,7 +969,7 @@ The English bank has 104 quote challenges. A language has only those listed abov
 |---|---|---|---|
 | es | 29 | 75 | its own 29 |
 | fr | 32 | 72 | its own 32 |
-| de | 23 | 81 | its own 23 |
+| de | 27 | 77 | its own 27 |
 | it | 35 | 69 | its own 35 |
 | pt | 0 | 104 | the English originals (104) |
 | pl | 15 | 89 | its own 15 |
@@ -978,7 +983,7 @@ The English bank has 104 quote challenges. A language has only those listed abov
 | th | 0 | 104 | the English originals (104) |
 | id | 0 | 104 | the English originals (104) |
 
-Why so many are dropped. What was searched, on Wikisource unless said otherwise: *Hamlet* in one translation per language (es, fr, de, it, pl, ru); *Romeo and Juliet* in French (Hugo), German (Schlegel), Italian (Rusconi), Spanish (Menéndez y Pelayo), Russian (Grigoryev) and Polish (Ulrich); *Julius Caesar* in French (Hugo) and Italian (Rusconi); *Macbeth* in Spanish (Menéndez y Pelayo) and Italian (Rusconi; Russian has Kroneberg's only in the pre-reform spelling, with letters a player cannot type, so it was not used); *Othello* in Spanish (Menéndez y Pelayo), Italian (Rusconi) and Russian (Weinberg); for Chinese, every one of Zhu Shenghao's translations zh.wikisource has (*Hamlet*, *The Tempest*, *A Midsummer Night's Dream*; the other links of its Shakespeare portal are pages not yet made); for Japanese, Tsubouchi Shōyō's *Romeo and Juliet* on Aozora Bunko (his *Hamlet* is still in preparation there and is not on ja.wikisource). A line not found whole in one line or verse of the source was left out, not stitched together (many prose translations of the 1880s abridge or paraphrase); one found was left out for Japanese because its words are archaic forms a player could not type (79, 'they stumble that run fast': 賢う徐うぢゃ。馳出す者は蹉躓くわい). Not searched, so no finding either way: the other works in these languages; Portuguese, whose Wikisource has the *Hamlet* of King Luís I (1877) and of Bulhão Pato (1879) only as page scans. No public-domain translation is known to the author for Korean, Arabic, Hindi, Vietnamese, Thai or Indonesian; that was not researched.
+Why so many are dropped. What was searched, on Wikisource unless said otherwise: *Hamlet* in one translation per language (es, fr, de, it, pl, ru); *Romeo and Juliet* in French (Hugo), German (Schlegel), Italian (Rusconi), Spanish (Menéndez y Pelayo), Russian (Grigoryev) and Polish (Ulrich); *Julius Caesar* in French (Hugo) and Italian (Rusconi); *Macbeth* in Spanish (Menéndez y Pelayo) and Italian (Rusconi; Russian has Kroneberg's only in the pre-reform spelling, with letters a player cannot type, so it was not used); *Othello* in Spanish (Menéndez y Pelayo), Italian (Rusconi), Russian (Weinberg) and German (Wieland's prose of 1766; German Wikisource has no Schlegel-Tieck text of the other plays); for Chinese, every one of Zhu Shenghao's translations zh.wikisource has (*Hamlet*, *The Tempest*, *A Midsummer Night's Dream*; the other links of its Shakespeare portal are pages not yet made); for Japanese, Tsubouchi Shōyō's *Romeo and Juliet* on Aozora Bunko (his *Hamlet* is still in preparation there and is not on ja.wikisource). A line not found whole in one line or verse of the source was left out, not stitched together (many prose translations of the 1880s abridge or paraphrase); one found was left out for Japanese because its words are archaic forms a player could not type (79, 'they stumble that run fast': 賢う徐うぢゃ。馳出す者は蹉躓くわい). Not searched, so no finding either way: the other works in these languages; Portuguese, whose Wikisource has the *Hamlet* of King Luís I (1877) and of Bulhão Pato (1879) only as page scans. No public-domain translation is known to the author for Korean, Arabic, Hindi, Vietnamese, Thai or Indonesian; that was not researched.
 
 The Japanese lines are in the old orthography of the 1933 edition (旧字旧仮名), as Aozora gives them; the missing words were chosen among those written the same today, so that a player can type them.
 
@@ -1030,7 +1035,7 @@ Models: google/madlad400-3b-mt (CTranslate2 int8); Helsinki-NLP OPUS-MT <lang>-e
 | th | th (not usable: no spaces between words) |  | 0 |
 | id | id | 32 | 0 |
 
-**Read by hand**: 188 flagged strings. 183 ok, 3 not usable, 2 fixed. *ok* means the translation says what the English says and the flag came from the checking model (a title it renders literally, a word it does not know); *fixed* means the translation was wrong and was changed; the note says how.
+**Read by hand**: 221 flagged strings. 216 ok, 3 not usable, 2 fixed. *ok* means the translation says what the English says and the flag came from the checking model (a title it renders literally, a word it does not know); *fixed* means the translation was wrong and was changed; the note says how.
 
 Fixed:
 
