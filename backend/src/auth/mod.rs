@@ -11,7 +11,8 @@ mod passkeys;
 mod sessions;
 
 pub use client_ip::{
-    client_addr, parse_trusted_proxies, trusted_proxies_notice, TrustedProxy, DEFAULT_TRUSTED_PROXIES,
+    client_addr, parse_proxy_secret, parse_trusted_proxies, trusted_proxies_notice, ProxyTrust,
+    DEFAULT_TRUSTED_PROXIES,
 };
 pub use handlers::{router, AuthContext};
 pub use jwt::Claims;

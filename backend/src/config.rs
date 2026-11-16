@@ -4,7 +4,7 @@ use hmac::{Hmac, KeyInit, Mac};
 use sha2::Sha256;
 use url::Url;
 
-use crate::auth::{parse_trusted_proxies, TrustedProxy, DEFAULT_TRUSTED_PROXIES};
+use crate::auth::{parse_proxy_secret, parse_trusted_proxies, ProxyTrust, DEFAULT_TRUSTED_PROXIES};
 
 pub const DEFAULT_RP_ID: &str = "inspiredmile.com";
 pub const DEFAULT_WEBAUTHN_ORIGIN: &str = "https://sonnetman.inspiredmile.com";
@@ -84,8 +84,9 @@ pub const DEFAULT_SIGNUP_GLOBAL_PER_HOUR: i64 = 300;
 /// Passkey sign-ups that may be begun in any hour, over all visitors. Five tries per
 /// allowed account, as for one network.
 pub const DEFAULT_SIGNUP_BEGINS_GLOBAL_PER_HOUR: i64 = 1500;
-/// Rows the sign-in challenge table may hold, live or expired (`AUTH_CHALLENGES_MAX`).
-pub const DEFAULT_AUTH_CHALLENGES_MAX: i64 = 20_000;
+/// Rows the sign-in challenge table may hold before only networks under their share are
+/// served (`AUTH_CHALLENGES_MAX`; see `auth/passkeys.rs`). A row is a few hundred bytes.
+pub const DEFAULT_AUTH_CHALLENGES_MAX: i64 = 50_000;
 /// Days after which a passkey-only account that never played is deleted. See
 /// `auth::purge_unused_accounts`.
 pub const DEFAULT_UNUSED_ACCOUNT_PURGE_DAYS: i64 = 30;
@@ -212,8 +213,9 @@ pub struct Config {
     /// Requests per minute allowed to one client address.
     pub rate_limit_per_minute: u32,
     /// Socket peers whose `CF-Connecting-IP` / `X-Forwarded-For` are believed
-    /// (`TRUSTED_PROXIES`). From anyone else the socket address is the client address.
-    pub trusted_proxies: Vec<TrustedProxy>,
+    /// (`TRUSTED_PROXIES`), and the secret they must send with them when `PROXY_SECRET` is
+    /// set. From anyone else the socket address is the client address.
+    pub trusted_proxies: ProxyTrust,
     /// Passkey sign-ups allowed in any hour, over all visitors (`SIGNUP_GLOBAL_PER_HOUR`).
     pub signup_global_per_hour: i64,
     /// Passkey sign-ups that may be begun in any hour, over all visitors
@@ -288,9 +290,10 @@ impl Config {
         let any_https_origin = webauthn_origins.iter().any(|o| o.scheme() == "https");
         let test_race_delay = resolve_race_delay(get(TEST_RACE_DELAY_VAR), any_https_origin, &mut warnings)?;
         let email_code_key = derive_key(&jwt_secret, "email-code");
-        let trusted_proxies = parse_trusted_proxies(
-            &get("TRUSTED_PROXIES").unwrap_or_else(|| DEFAULT_TRUSTED_PROXIES.into()),
-        )?;
+        let trusted_proxies = ProxyTrust::new(
+            parse_trusted_proxies(&get("TRUSTED_PROXIES").unwrap_or_else(|| DEFAULT_TRUSTED_PROXIES.into()))?,
+            parse_proxy_secret(get("PROXY_SECRET").as_deref())?,
+        );
 
         let config = Self {
             database_url: get("DATABASE_URL")
@@ -497,14 +500,26 @@ mod tests {
     fn trusted_proxies_default_to_loopback_and_the_fleet_and_can_be_set() {
         let (config, _) = config_from(&[]).unwrap();
         assert_eq!(
-            config.trusted_proxies,
+            config.trusted_proxies.proxies,
             parse_trusted_proxies("127.0.0.1,::1,10.10.10.1,100.64.224.0,100.98.101.113").unwrap()
         );
+        assert!(!config.trusted_proxies.requires_secret(), "no PROXY_SECRET unless one is set");
         let (config, _) = config_from(&[("TRUSTED_PROXIES", "100.64.0.0/10")]).unwrap();
-        assert_eq!(config.trusted_proxies.len(), 1);
+        assert_eq!(config.trusted_proxies.proxies.len(), 1);
         let (config, _) = config_from(&[("TRUSTED_PROXIES", "")]).unwrap();
-        assert!(config.trusted_proxies.is_empty(), "an empty list trusts nobody");
+        assert!(config.trusted_proxies.proxies.is_empty(), "an empty list trusts nobody");
         assert!(config_from(&[("TRUSTED_PROXIES", "caddy")]).is_err());
+    }
+
+    #[test]
+    fn a_proxy_secret_is_optional_but_must_be_strong_when_set() {
+        let secret = "0123456789abcdef0123456789abcdef";
+        let (config, _) = config_from(&[("PROXY_SECRET", secret)]).unwrap();
+        assert!(config.trusted_proxies.requires_secret());
+        let (config, _) = config_from(&[("PROXY_SECRET", "  ")]).unwrap();
+        assert!(!config.trusted_proxies.requires_secret());
+        let err = config_from(&[("PROXY_SECRET", "short")]).err().expect("a short secret must not start");
+        assert!(err.contains("PROXY_SECRET"), "{err}");
     }
 
     #[test]
@@ -524,7 +539,7 @@ mod tests {
     fn begin_and_challenge_ceilings_have_defaults_and_can_be_set() {
         let (config, _) = config_from(&[]).unwrap();
         assert_eq!(config.signup_begins_global_per_hour, 1500);
-        assert_eq!(config.auth_challenges_max, 20_000);
+        assert_eq!(config.auth_challenges_max, 50_000);
         let (config, _) =
             config_from(&[("SIGNUP_BEGINS_GLOBAL_PER_HOUR", "20"), ("AUTH_CHALLENGES_MAX", "30")]).unwrap();
         assert_eq!(config.signup_begins_global_per_hour, 20);
@@ -532,7 +547,7 @@ mod tests {
         let (config, _) =
             config_from(&[("SIGNUP_BEGINS_GLOBAL_PER_HOUR", "0"), ("AUTH_CHALLENGES_MAX", "-1")]).unwrap();
         assert_eq!(config.signup_begins_global_per_hour, 1500, "zero would refuse everyone");
-        assert_eq!(config.auth_challenges_max, 20_000);
+        assert_eq!(config.auth_challenges_max, 50_000);
     }
 
     #[test]

@@ -67,8 +67,12 @@ async fn main() {
     dotenvy::dotenv().ok();
 
     // The log: what RUST_LOG asks for (errors only when it is unset), plus the operator
-    // notices of `notice.rs`, which are written whatever RUST_LOG says.
-    tracing_subscriber::fmt().with_env_filter(notice::log_filter()).init();
+    // notices of `notice.rs`, which are written whatever RUST_LOG says. Colour only on a
+    // terminal: under launchd the log is a file, and an operator greps it for the notices.
+    tracing_subscriber::fmt()
+        .with_env_filter(notice::log_filter())
+        .with_ansi(notice::colour_wanted())
+        .init();
 
     let (config, config_warnings) = match Config::from_env() {
         Ok(loaded) => loaded,
@@ -196,7 +200,7 @@ async fn main() {
                     .get::<axum::extract::ConnectInfo<std::net::SocketAddr>>()
                     .map(|info| info.0);
                 // One allowance per IPv4 address or IPv6 /64; proxy headers are believed
-                // only from a trusted proxy (auth/client_ip.rs).
+                // only from a trusted proxy, with PROXY_SECRET when it is set (auth/client_ip.rs).
                 let client = auth::client_addr(req.headers(), peer, &trusted).limit_key();
                 if limiter.check_key(&client).is_err() {
                     return (StatusCode::TOO_MANY_REQUESTS, "Rate limit exceeded").into_response();

@@ -34,6 +34,18 @@ pub fn log_filter() -> EnvFilter {
     with_notices(EnvFilter::from_default_env())
 }
 
+/// Whether the log may use colour: only when standard output is a terminal, and `NO_COLOR`
+/// is not set. Under launchd standard output is a file, and colour codes there break the
+/// plain `grep` an operator runs for the notices.
+pub fn colour_wanted() -> bool {
+    use std::io::IsTerminal;
+    colour_for(std::io::stdout().is_terminal(), std::env::var_os("NO_COLOR").as_deref())
+}
+
+fn colour_for(terminal: bool, no_color: Option<&std::ffi::OsStr>) -> bool {
+    terminal && no_color.is_none_or(|v| v.is_empty())
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -75,6 +87,16 @@ mod tests {
             let (notices, _) = written(rust_log);
             assert!(notices, "RUST_LOG={rust_log:?}: both notices must be written");
         }
+    }
+
+    #[test]
+    fn colour_only_on_a_terminal_without_no_color() {
+        use std::ffi::OsStr;
+        assert!(colour_for(true, None));
+        assert!(colour_for(true, Some(OsStr::new(""))));
+        assert!(!colour_for(true, Some(OsStr::new("1"))));
+        assert!(!colour_for(false, None), "a file (launchd) gets no colour codes");
+        assert!(!colour_for(false, Some(OsStr::new(""))));
     }
 
     #[test]
