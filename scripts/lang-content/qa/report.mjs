@@ -38,6 +38,26 @@ for (const [engine, prefix] of Object.entries(ENGINES)) {
     if (list === l && (!only || only === engine)) for (const r of flagged) console.log(`${reviewed.has(`${l}/${r.id}`) ? '  ' : '* '}${engine} ${r.cos.toFixed(2)} ${r.id}\n   ${r.text}\n   BACK: ${r.back}\n   EN:   ${r.english}`);
   }
 }
+// LaBSE (qa/labse.py): the translation against the English with no translation model between them.
+// Same rule as above: flagged under the lower of T and the best control + 0.05.
+const labseFile = join(dir, 'labse.json');
+if (existsSync(labseFile)) {
+  summary.models += '; second signal sentence-transformers/LaBSE (the translation scored against the English directly)';
+  summary.engines.labse = {};
+  const all = JSON.parse(readFileSync(labseFile, 'utf8'));
+  for (const l of LANGS) {
+    const rows = all.filter((r) => r.lang === l).map((r) => ({ ...r, cos: r.labse }));
+    if (!rows.length) { summary.engines.labse[l] = { status: 'not run' }; continue; }
+    const real = rows.filter((r) => !r.id.includes('control:') && !r.id.startsWith('alignctl:'));
+    const controls = rows.filter((r) => r.id.startsWith('control:'));
+    const maxControl = Math.max(...controls.map((r) => r.cos));
+    const Tl = Math.min(T, Math.round((maxControl + 0.05) * 100) / 100);
+    const flagged = real.filter((r) => r.cos < Tl).sort((a, b) => a.cos - b.cos);
+    const cos = real.map((r) => r.cos).sort((a, b) => a - b);
+    summary.engines.labse[l] = { covered: 'all strings', strings: real.length, flagged: flagged.length, flaggedTrivia: flagged.filter((r) => r.id.startsWith('trivia.')).length, controlsCaught: controls.filter((r) => r.cos < Tl).length, controls: controls.length, threshold: Tl, maxControl, medianCos: cos[Math.floor(cos.length / 2)], flaggedIds: flagged.map((r) => r.id) };
+    if (list === l && (!only || only === 'labse')) for (const r of flagged) console.log(`${reviewed.has(`${l}/${r.id}`) ? '  ' : '* '}labse ${r.cos.toFixed(2)} ${r.id}\n   ${r.text}\n   EN:   ${r.english}`);
+  }
+}
 const alignFile = join(dir, 'align.json');
 const align = { rows: [] };
 if (existsSync(alignFile)) {

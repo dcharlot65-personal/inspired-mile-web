@@ -6,6 +6,7 @@
 #   bash scripts/lang-content/qa/run.sh install-opus     OPUS-MT models into $TASK/opus (this task's own directory), under memguard
 #   bash scripts/lang-content/qa/run.sh detach-opus      back-translate every language with OPUS-MT, detached, under memguard -> $OUT/bto-<lang>.json
 #   bash scripts/lang-content/qa/run.sh align            does each translated option still mean its own English option? -> $OUT/align.json
+#   bash scripts/lang-content/qa/run.sh labse            LaBSE: each translation against its English directly, a second signal -> $OUT/labse.json
 #   bash scripts/lang-content/qa/run.sh requeue          after the pairs changed: restart both, reusing every unchanged result
 #   bash scripts/lang-content/qa/run.sh stop
 #   bash scripts/lang-content/qa/run.sh status
@@ -98,6 +99,8 @@ SH
       nohup "$MEMGUARD" --max-gb 6 -- "$OUT/opus.sh" "$k" > "$OUT/opus-$k.log" 2>&1 &
       echo $! >> "$OUT/opus.pid"; echo "started worker $k: pid $!"
     done ;;
+  labse)
+    LABSE_DIR=$LANGQA_HOME/models/LaBSE HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 TOKENIZERS_PARALLELISM=false nice -n 10 "$MEMGUARD" --max-gb 6 -- "$LANGQA_HOME/venv/bin/python" "$HERE/labse.py" "$OUT" "$OUT/labse.json" 2>&1 | grep -v Warning | tail -3 ;;
   align)
     MINILM_DIR=$LANGQA_HOME/models/all-MiniLM-L6-v2 HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 nice -n 10 "$MEMGUARD" --max-gb 4 -- "$LANGQA_HOME/venv/bin/python" "$HERE/align.py" "$OUT" "$OUT/align.json" 2>&1 | grep -v Warning | tail -2 ;;
   status)
