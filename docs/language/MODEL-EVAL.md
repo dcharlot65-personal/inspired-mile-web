@@ -155,8 +155,8 @@ written as soon as it finished.
   another Latin-script language is therefore caught only when it tips the whole verse.
 - **Mutations.** `node scripts/model-eval/mutate.mjs` breaks the decision code, the lists, the
   checkers, the result files, the game's scoring, prompt and tidy-up (for the replay test) and
-  this page 28 ways, and requires the tests to go red each time. Run on the iMac Pro build host
-  at `d4f6066`: all 28 caught. An earlier run caught 26 of 27: one mutation (the backtick taken
+  this page 29 ways, and requires the tests to go red each time. Run on the iMac Pro build host
+  at `e1c6f18`: all 29 caught. An earlier run caught 26 of 27: one mutation (the backtick taken
   out of the tidy-up's markup rule) changed no stored draft, so the replay test was right to stay
   green; it was replaced by one that changes 34 drafts, which the test catches (58 plays differ).
   The re-score was also run against a changed scoring rule: the replay test went red, the
