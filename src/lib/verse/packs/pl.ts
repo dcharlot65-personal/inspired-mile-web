@@ -62,7 +62,7 @@ const pack: LanguagePack = {
     s: ['Słowa cię zawodzą, jak zawsze', 'Scena pamięta dziś tylko mnie'],
     e: ['Echo twoich wersów ziewa z nudów', 'E, to już wszystko? Tłum czekał na więcej'],
     m: ['Mój najgorszy wers wart jest twego najlepszego', 'Mierz słowa, bo niewiele ci ich zostało'],
-    r: ['Rymować to fechtować, a ty przyszedłeś z łyżką', 'Raz jeszcze otwierasz usta na próżno'],
+    r: ['Rymować to fechtować się, a ty przyszedłeś z łyżką', 'Raz jeszcze otwierasz usta na próżno'],
     k: ['Klęknij, bo wyrok już zapadł', 'Królowie ze mną przegrywali; kimże ty jesteś?'],
     t: ['Twój język jest szybki, lecz pośpiech to nie dowcip', 'Tej nocy kurtyna opada na ciebie'],
   },

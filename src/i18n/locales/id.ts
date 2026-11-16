@@ -31,7 +31,7 @@ const id: Record<string, string> = {
   'form.heroic-couplet.name': 'Kuplet heroik',
   'form.heroic-couplet.brief': 'Dua baris berima, masing-masing kira-kira sepuluh suku kata, seperti cara Shakespeare menutup sonetanya.',
   'form.jueju.name': 'Jueju',
-  'form.jueju.brief': 'Empat baris, semuanya lima aksara atau semuanya tujuh: bentuk kuatrin klasik Tiongkok.',
+  'form.jueju.brief': 'Empat baris, semuanya lima aksara atau semuanya tujuh: bentuk sajak empat baris klasik Tiongkok.',
   'form.luc-bat.name': 'Lục bát',
   'form.luc-bat.brief': 'Satu baris enam suku kata, lalu satu baris delapan suku kata yang suku keenamnya berima dengan akhir baris pertama.',
 
@@ -167,7 +167,7 @@ const id: Record<string, string> = {
   'migrate.yes': 'Sinkronkan',
   'migrate.no': 'Lewati',
   'migrate.syncing': 'Menyinkronkan…',
-  'migrate.done': '{cards} kartu dan {achievements} pencapaian tersinkron.',
+  'migrate.done': '{cards} kartu dan {achievements} pencapaian disinkronkan.',
   'migrate.failed': 'Sinkronisasi gagal. Kamu bisa mencoba lagi nanti.',
   'toast.achievement': 'Pencapaian terbuka',
   'pwa.install': 'Pasang Inspired Mile untuk pengalaman terbaik',
