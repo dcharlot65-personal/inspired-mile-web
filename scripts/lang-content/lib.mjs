@@ -66,7 +66,7 @@ export function nameOf(key, lang, which = 0) {
   if (!e) throw new Error(`no such entity: ${key}`);
   const game = gameNames[key][which] ?? gameNames[key][0];
   if (lang === 'en') return { name: game, how: 'english' };
-  const pick = picks.get(`${key}/${lang}`) ?? picks.get(`${key}#${which}/${lang}`);
+  const pick = picks.get(`${key}#${which}/${lang}`) ?? picks.get(`${key}/${lang}`);
   if (pick) {
     const found = sourcesOf(key, lang).find((s) => s.value.toLocaleLowerCase().includes(pick.name.toLocaleLowerCase()));
     return { name: pick.name, how: found ? 'pick' : 'unsourced', where: found?.where, note: pick.note };

@@ -43,7 +43,9 @@ for (const lang of langs.length ? langs : LANGS) {
     }
     for (const [name, cands] of want) {
       const low = text.toLocaleLowerCase(lang);
-      const ok = cands.some((c) => { const s = c.toLocaleLowerCase(lang); return low.includes(s.slice(0, Math.max(2, Math.ceil(s.length * (STEM[lang] ?? 1))))); });
+      // Word by word, each by its stem: "Kupcu weneckim" is "Kupiec wenecki", "Гамлета" is "Гамлет".
+      const stem = (w) => (w.length <= 3 ? w : w.slice(0, Math.max(3, Math.ceil(w.length * (STEM[lang] ?? 1)))));
+      const ok = cands.some((c) => c.toLocaleLowerCase(lang).split(/[\s,]+/u).filter(Boolean).every((w) => low.includes(stem(w))));
       if (!ok) soft.push(`${n}:${name}→${[...new Set(cands)].join('/')}`);
     }
   });
