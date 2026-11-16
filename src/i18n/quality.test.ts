@@ -23,7 +23,7 @@ const cldr = read('docs/language/sources/cldr.json');
 const allow = read('docs/language/allow/mechanical.json');
 const same = read('docs/language/allow/untranslated.json');
 const glossary = read('docs/language/glossary.json');
-const SOURCE_FILES = ['aosp-terms', 'mozilla-terms', 'google-help', 'apple-passkeys', 'wikidata-names'];
+const SOURCE_FILES = ['aosp-terms', 'mozilla-terms', 'google-help', 'apple-passkeys', 'wikidata-names', 'wikidata-terms', 'wikidata-titles'];
 const sources = Object.fromEntries(SOURCE_FILES.map((f) => [f, read(`docs/language/sources/${f}.json`)]));
 const helpers = { parseMessage, argumentNames, pluralBlocks };
 
@@ -142,8 +142,9 @@ describe('every locale passes the mechanical checks', () => {
   it('every word the glossary quotes from a fetched source is in that source file', () => {
     const { problems, count } = checkCitations(glossary, sources);
     expect(show(problems)).toEqual([]);
-    // The pattern must still be finding the citations (about 137 on 2026-11-16), or this passes on nothing.
-    expect(count).toBeGreaterThan(120);
+    // The patterns must still be finding the citations (139 vendor and label quotations and 90
+    // Wikipedia article titles on 2026-11-16), or this passes on nothing.
+    expect(count).toBeGreaterThan(200);
   });
 });
 
@@ -256,12 +257,26 @@ describe('the checks can fail', () => {
           },
         },
       },
-      names: {},
+      names: {
+        'form.couplet.name': {
+          langs: {
+            it: { source: 'it Wikipedia article Distico (Wikidata Q4779829)' },
+            pt: { source: 'pt Wikipedia article Dístico (Wikidata Q4779829)' },
+            hi: { source: 'दोहा is the rhymed couplet (hi Wikipedia article दोहा, Wikidata Q5288532)' },
+          },
+        },
+      },
     };
-    const src = { 'google-help': { pages: { 'sign-out': { text: { es: { title: null, heading: null } } } } }, 'aosp-terms': { t: 'Connexion' }, 'mozilla-terms': { t: 'Se déconnecter…' } };
+    const src = {
+      'google-help': { pages: { 'sign-out': { text: { es: { title: null, heading: null } } } } },
+      'aosp-terms': { t: 'Connexion' },
+      'mozilla-terms': { t: 'Se déconnecter…' },
+      'wikidata-terms': { concepts: { couplet: { qid: 'Q4779829', langs: { it: { sitelink: 'Distico' }, pt: { sitelink: 'Parelha' } } } } },
+      'wikidata-titles': { languages: {} },
+    };
     const { problems, count } = checkCitations(fake, src);
-    expect(count).toBe(4);
-    expect(problems.map((p: Problem) => `${p.lang} ${p.rule}`)).toEqual(['es citation-not-in-source', 'de citation-no-file']);
+    expect(count).toBe(6);
+    expect(problems.map((p: Problem) => `${p.lang} ${p.rule}`)).toEqual(['es citation-not-in-source', 'de citation-no-file', 'pt citation-not-in-source']);
   });
 
   it('a string left in English is caught unless it is on the list', () => {

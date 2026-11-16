@@ -57,6 +57,10 @@ export function checkGlossary(lang, strings, english, glossary) {
  * sign-out entries quoted Google's help in Spanish, French, Italian and Arabic while
  * sources/google-help.json held nothing for those languages (the fetch had come back empty).
  *
+ * And a form's name that cites '<lang> Wikipedia article <title> (Wikidata Q…)' must be that article's
+ * title in the fetched Wikidata data: a sitelink of item Q… in sources/wikidata-terms.json, or the
+ * reverse lookup of the title in sources/wikidata-titles.json giving Q….
+ *
  * `sources` maps a file's base name (aosp-terms, google-help, …) to its parsed JSON.
  */
 const CITATION = /(Android \(AOSP [^)]*\)|\(sources\/([a-z-]+)\.json[^)]*\)|Wikidata (?:label|alias) \(Q\d+\)): ([^;]+?)(?=;|\. |\.$|$| \()/g;
@@ -90,6 +94,20 @@ export function checkCitations(glossary, sources) {
             else if (!strings.some((s) => s.includes(part))) problems.push({ lang, key: `${sect}:${id}`, rule: 'citation-not-in-source', detail: `quotes “${part}” from sources/${file}.json, which does not contain it` });
           }
         }
+      }
+    }
+  }
+  const terms = sources['wikidata-terms'];
+  const titles = sources['wikidata-titles'];
+  for (const [id, item] of Object.entries(glossary.names ?? {})) {
+    for (const [lang, entry] of Object.entries(item.langs ?? {})) {
+      for (const m of (entry.source ?? '').matchAll(/(?:^|[ (])([a-z]{2}) Wikipedia article ([^(;]+?) \((?:Wikidata )?(Q\d+)\)/g)) {
+        const [, wiki, title, qid] = m;
+        count++;
+        const t = title.trim();
+        const sitelink = Object.values(terms?.concepts ?? {}).some((c) => c.qid === qid && c.langs?.[wiki]?.sitelink === t);
+        const reverse = titles?.languages?.[wiki]?.[t]?.qid === qid;
+        if (!sitelink && !reverse) problems.push({ lang, key: `names:${id}`, rule: 'citation-not-in-source', detail: `cites the ${wiki} Wikipedia article “${t}” as ${qid}, which neither sources/wikidata-terms.json nor sources/wikidata-titles.json records` });
       }
     }
   }
