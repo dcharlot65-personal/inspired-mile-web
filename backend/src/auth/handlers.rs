@@ -1,158 +1,138 @@
+use std::sync::Arc;
+
 use axum::{
-    extract::{Extension, State},
-    http::StatusCode,
-    routing::{get, post},
-    Json, Router,
+    extract::State,
+    routing::{delete, get, post},
+    Extension, Json, Router,
 };
 use axum_extra::extract::cookie::{Cookie, SameSite};
 use axum_extra::extract::CookieJar;
-use serde::{Deserialize, Serialize};
+use serde::Serialize;
 use sqlx::{PgPool, Row};
 use uuid::Uuid;
+use webauthn_rs::prelude::{Webauthn, WebauthnBuilder};
 
-use super::google;
-use super::jwt::{create_token, Claims};
+use super::error::ApiError;
+use super::jwt::{create_token, verify_token, Claims};
+use super::{email, passkeys};
 use crate::config::Config;
 
-const COOKIE_NAME: &str = "im_token";
+pub const COOKIE_NAME: &str = "im_token";
 
-// ---------------------------------------------------------------------------
-// Request / Response types
-// ---------------------------------------------------------------------------
-
-#[derive(Deserialize)]
-pub struct GoogleSignInRequest {
-    id_token: String,
+/// What the auth handlers share besides the database: the WebAuthn relying party and an
+/// HTTP client for the mail API.
+pub struct AuthContext {
+    pub webauthn: Webauthn,
+    pub http: reqwest::Client,
 }
+
+impl AuthContext {
+    pub fn new(config: &Config) -> Result<Self, String> {
+        let primary = config
+            .webauthn_origins
+            .first()
+            .ok_or("no WebAuthn origin configured")?;
+        let mut builder = WebauthnBuilder::new(&config.webauthn_rp_id, primary)
+            .map_err(|e| format!("WebAuthn configuration is invalid: {e}"))?
+            .rp_name("Sonnet Man");
+        for origin in config.webauthn_origins.iter().skip(1) {
+            builder = builder.append_allowed_origin(origin);
+        }
+        let webauthn = builder
+            .build()
+            .map_err(|e| format!("WebAuthn configuration is invalid: {e}"))?;
+        Ok(Self { webauthn, http: reqwest::Client::new() })
+    }
+}
+
+pub type Ctx = Extension<Arc<AuthContext>>;
+
+// ---------------------------------------------------------------------------
+// Response types
+// ---------------------------------------------------------------------------
 
 #[derive(Serialize)]
 pub struct UserResponse {
-    id: Uuid,
-    username: String,
-    email: Option<String>,
-    display_name: Option<String>,
-    auth_provider: String,
-    avatar_url: Option<String>,
+    pub id: Uuid,
+    pub username: String,
+    pub email: Option<String>,
+    pub display_name: Option<String>,
+    pub auth_provider: String,
+    pub avatar_url: Option<String>,
 }
 
 #[derive(Serialize)]
 pub struct AuthResponse {
-    user: UserResponse,
+    pub user: UserResponse,
     #[serde(skip_serializing_if = "Option::is_none")]
-    founding_player: Option<bool>,
+    pub founding_player: Option<bool>,
+    /// How many passkeys the account has; 0 is the cue to offer adding one.
+    pub passkey_count: i64,
+    /// True only on the email sign-in that created the account.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub is_new_user: Option<bool>,
+}
+
+#[derive(Serialize)]
+pub struct MethodsResponse {
+    /// Passkey sign-in is always offered by the server; the browser decides if it can.
+    passkey: bool,
+    /// False until a mail key is configured: the UI hides email sign-in.
+    email: bool,
 }
 
 // ---------------------------------------------------------------------------
 // Router
 // ---------------------------------------------------------------------------
 
-pub fn router() -> Router<(PgPool, Config)> {
+pub fn router(ctx: Arc<AuthContext>) -> Router<(PgPool, Config)> {
     Router::new()
-        .route("/google", post(google_sign_in))
+        .route("/methods", get(methods))
+        .route("/passkey/register/begin", post(passkeys::register_begin))
+        .route("/passkey/register/finish", post(passkeys::register_finish))
+        .route("/passkey/login/begin", post(passkeys::login_begin))
+        .route("/passkey/login/finish", post(passkeys::login_finish))
+        .route("/passkeys", get(passkeys::list))
+        .route("/passkeys/{id}", delete(passkeys::remove))
+        .route("/email/request", post(email::request_code))
+        .route("/email/verify", post(email::verify_code))
         .route("/logout", post(logout))
         .route("/me", get(me))
+        .layer(Extension(ctx))
 }
 
 // ---------------------------------------------------------------------------
-// Google Sign-In
+// Methods, logout, me
 // ---------------------------------------------------------------------------
 
-async fn google_sign_in(
-    State((pool, config)): State<(PgPool, Config)>,
-    Json(body): Json<GoogleSignInRequest>,
-) -> Result<(CookieJar, Json<AuthResponse>), (StatusCode, String)> {
-    if config.google_client_id.is_empty() {
-        return Err((
-            StatusCode::SERVICE_UNAVAILABLE,
-            "Google sign-in not configured".into(),
-        ));
-    }
-
-    let info = google::verify_google_token(&body.id_token, &config.google_client_id)
-        .await
-        .map_err(|e| (StatusCode::UNAUTHORIZED, e))?;
-
-    // Look up existing user by google_id
-    let existing = sqlx::query(
-        "SELECT id, username, email, display_name, auth_provider, avatar_url
-         FROM users WHERE google_id = $1",
-    )
-    .bind(&info.sub)
-    .fetch_optional(&pool)
-    .await
-    .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?;
-
-    if let Some(row) = existing {
-        // Existing user — issue token
-        let user_id: Uuid = row.get("id");
-        let username: String = row.get("username");
-        let token = create_token(user_id, &username, &config.jwt_secret)
-            .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, e))?;
-        let jar = CookieJar::new().add(build_cookie(token));
-        return Ok((jar, Json(AuthResponse { user: row_to_user(&row), founding_player: None })));
-    }
-
-    // New user — create from Google profile
-    let username = generate_username_from_email(&info.email);
-    let unique_username = ensure_unique_username(&pool, &username).await?;
-
-    let row = sqlx::query(
-        "INSERT INTO users (username, email, display_name, google_id, google_email, avatar_url, auth_provider)
-         VALUES ($1, $2, $3, $4, $5, $6, 'google')
-         RETURNING id, username, email, display_name, auth_provider, avatar_url",
-    )
-    .bind(&unique_username)
-    .bind(&info.email)
-    .bind(&info.name)
-    .bind(&info.sub)
-    .bind(&info.email)
-    .bind(&info.picture)
-    .fetch_one(&pool)
-    .await
-    .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?;
-
-    let user_id: Uuid = row.get("id");
-
-    // Initialize player stats
-    sqlx::query("INSERT INTO player_stats (user_id) VALUES ($1) ON CONFLICT DO NOTHING")
-        .bind(user_id)
-        .execute(&pool)
-        .await
-        .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("Failed to init stats: {e}")))?;
-
-    let token = create_token(user_id, &unique_username, &config.jwt_secret)
-        .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, e))?;
-    let jar = CookieJar::new().add(build_cookie(token));
-
-    Ok((jar, Json(AuthResponse { user: row_to_user(&row), founding_player: None })))
+async fn methods(State((_, config)): State<(PgPool, Config)>) -> Json<MethodsResponse> {
+    Json(MethodsResponse { passkey: true, email: config.email_mode.is_available() })
 }
-
-// ---------------------------------------------------------------------------
-// Logout + Me
-// ---------------------------------------------------------------------------
 
 async fn logout() -> CookieJar {
     let cookie = Cookie::build((COOKIE_NAME, ""))
         .path("/")
         .http_only(true)
+        .secure(true)
+        .same_site(SameSite::Lax)
         .max_age(time::Duration::ZERO)
         .build();
     CookieJar::new().add(cookie)
 }
 
 async fn me(
-    Extension(claims): Extension<Claims>,
+    jar: CookieJar,
     State((pool, config)): State<(PgPool, Config)>,
-) -> Result<Json<AuthResponse>, (StatusCode, String)> {
+) -> Result<Json<AuthResponse>, ApiError> {
+    let claims = session(&jar, &config)?;
     let row = sqlx::query(
         "SELECT id, username, email, display_name, auth_provider, avatar_url, created_at
          FROM users WHERE id = $1",
     )
     .bind(claims.sub)
     .fetch_optional(&pool)
-    .await
-    .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?
-    .ok_or((StatusCode::NOT_FOUND, "User not found".into()))?;
+    .await?
+    .ok_or_else(ApiError::unauthorized)?;
 
     // Check founding player status
     let founding = if let Ok(launch) = chrono::NaiveDate::parse_from_str(&config.launch_date, "%Y-%m-%d") {
@@ -174,14 +154,42 @@ async fn me(
         None
     };
 
-    Ok(Json(AuthResponse { user: row_to_user(&row), founding_player: founding }))
+    Ok(Json(AuthResponse {
+        user: row_to_user(&row),
+        founding_player: founding,
+        passkey_count: passkey_count(&pool, claims.sub).await?,
+        is_new_user: None,
+    }))
 }
 
 // ---------------------------------------------------------------------------
-// Helpers
+// Shared helpers
 // ---------------------------------------------------------------------------
 
-fn row_to_user(row: &sqlx::postgres::PgRow) -> UserResponse {
+/// The signed-in user, from the `im_token` cookie. The auth routes sit outside the
+/// middleware that guards the rest of the API, so they check the session themselves.
+pub fn session(jar: &CookieJar, config: &Config) -> Result<Claims, ApiError> {
+    let token = jar.get(COOKIE_NAME).ok_or_else(ApiError::unauthorized)?;
+    verify_token(token.value(), &config.jwt_secret).map_err(|_| ApiError::unauthorized())
+}
+
+/// Start a session: the same JWT-in-cookie every other route already reads.
+pub fn session_cookie(user_id: Uuid, username: &str, config: &Config) -> Result<CookieJar, ApiError> {
+    let token = create_token(user_id, username, &config.jwt_secret)
+        .map_err(|e| ApiError::internal("could not create session token", e))?;
+    let cookie = Cookie::build((COOKIE_NAME, token))
+        .path("/")
+        .http_only(true)
+        .secure(true)
+        .same_site(SameSite::Lax)
+        .max_age(time::Duration::days(7))
+        .build();
+    Ok(CookieJar::new().add(cookie))
+}
+
+/// Reads the columns every user query in this module selects:
+/// `id, username, email, display_name, auth_provider, avatar_url`.
+pub fn row_to_user(row: &sqlx::postgres::PgRow) -> UserResponse {
     UserResponse {
         id: row.get("id"),
         username: row.get("username"),
@@ -192,65 +200,9 @@ fn row_to_user(row: &sqlx::postgres::PgRow) -> UserResponse {
     }
 }
 
-fn generate_username_from_email(email: &str) -> String {
-    email
-        .split('@')
-        .next()
-        .unwrap_or("user")
-        .chars()
-        .filter(|c| c.is_alphanumeric() || *c == '.' || *c == '_' || *c == '-')
-        .take(32)
-        .collect()
-}
-
-async fn ensure_unique_username(
-    pool: &PgPool,
-    base: &str,
-) -> Result<String, (StatusCode, String)> {
-    let base = if base.len() < 3 {
-        format!("{base}user")
-    } else {
-        base.to_string()
-    };
-
-    // Check if base username is available
-    let exists: bool = sqlx::query_scalar("SELECT EXISTS(SELECT 1 FROM users WHERE username = $1)")
-        .bind(&base)
+pub async fn passkey_count(pool: &PgPool, user_id: Uuid) -> Result<i64, ApiError> {
+    Ok(sqlx::query_scalar("SELECT COUNT(*) FROM webauthn_credentials WHERE user_id = $1")
+        .bind(user_id)
         .fetch_one(pool)
-        .await
-        .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?;
-
-    if !exists {
-        return Ok(base);
-    }
-
-    // Append random suffix
-    for _ in 0..10 {
-        let suffix: u16 = rand::random();
-        let candidate = format!("{}{}", &base[..base.len().min(28)], suffix);
-        let exists: bool =
-            sqlx::query_scalar("SELECT EXISTS(SELECT 1 FROM users WHERE username = $1)")
-                .bind(&candidate)
-                .fetch_one(pool)
-                .await
-                .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?;
-        if !exists {
-            return Ok(candidate);
-        }
-    }
-
-    Err((
-        StatusCode::CONFLICT,
-        "Could not generate unique username".into(),
-    ))
-}
-
-fn build_cookie(token: String) -> Cookie<'static> {
-    Cookie::build((COOKIE_NAME, token))
-        .path("/")
-        .http_only(true)
-        .secure(true)
-        .same_site(SameSite::Lax)
-        .max_age(time::Duration::days(7))
-        .build()
+        .await?)
 }
