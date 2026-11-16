@@ -9,365 +9,428 @@ const pack: CardTextPack = {
    "name": "The Sonnet Man",
    "nameSource": "translated",
    "quote": "Haruskah kubandingkan engkau dengan hari di musim panas?",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Sebuah panggung megah menjelma. The Sonnet Man melangkah keluar dari sorot lampu keemasan, mikrofon di tangan. Kata-kata Shakespeare berubah menjadi bait-bait hip-hop sementara penonton bersorak."
   },
   "MO-001": {
    "nameSource": "wikidata",
    "name": "Romeo Montague",
    "quote": "Tapi diam, cahaya apakah yang memancar dari jendela di sana?",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Adegan balkon di bawah sinar bulan terbentang. Romeo mengulurkan tangan ke atas saat Juliet muncul di atasnya. Kelopak mawar melayang di udara. Adegan itu berdenyut dengan cahaya merah tua yang hangat."
   },
   "CA-001": {
    "nameSource": "wikidata",
    "name": "Juliet",
    "quote": "Apalah arti sebuah nama? Yang kita sebut mawar...",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Taman keluarga Capulet bermekaran di bawah sinar bulan. Juliet berdiri di antara mawar, matanya bersinar menantang. Seekor burung bulbul bernyanyi dari dahan."
   },
   "DC-001": {
    "nameSource": "wikidata",
    "name": "Pangeran Hamlet",
    "quote": "Ada atau tiada, itulah persoalannya.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Kastel Elsinore muncul dari bayang-bayang. Hamlet berdiri di atas benteng, tengkorak Yorick melayang di sisinya. Sesosok hantu tampak di tembok di atasnya."
   },
   "DC-002": {
    "nameSource": "wikidata",
    "name": "Ophelia",
    "quote": "Ini rosemari, itu untuk kenangan.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Sungai kecil yang tenang berkelok melalui rumpun pohon dedalu. Ophelia mengapung di antara bunga liar, membisikkan sajak-sajak yang terlupakan. Kelopak bunga berputar dalam arus."
   },
   "MO-002": {
    "nameSource": "missing",
    "quote": "Kutukan atas kedua rumah kalian!",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Sebuah jalan di Verona pecah dalam kekacauan. Mercutio menari di antara bilah pedang, menertawakan bahaya. Bunga api memercik dari baja yang beradu."
   },
   "FA-001": {
    "nameSource": "wikidata",
    "name": "Puck",
    "quote": "Tuhan, betapa bodohnya para manusia fana ini!",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Hutan ajaib berkilau penuh kejahilan. Puck melesat di antara pohon ek tua, meninggalkan jejak serbuk peri. Di bawah, manusia fana yang tertidur memimpikan mimpi-mimpi aneh."
   },
   "FA-002": {
    "nameSource": "wikidata",
    "name": "Titania",
    "quote": "Mari, duduklah di ranjang penuh bunga ini.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Sebuah takhta dari sulur hidup menjulang dari lantai hutan. Titania memerintah istana perinya sementara kunang-kunang menerangi tajuk pepohonan. Alam sendiri tunduk pada kehendaknya."
   },
   "RL-001": {
    "name": "Tengkorak Yorick",
    "nameSource": "translated",
    "quote": "Aduhai, Yorick yang malang! Aku mengenalnya, Horatio.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Sebuah tengkorak terbaring di atas beludru dalam ruang makam yang remang. Tawa hantu bergema sementara kenangan tentang badut istana berkelip seperti nyala lilin."
   },
   "RL-002": {
    "name": "Tongkat Prospero",
    "nameSource": "translated",
    "quote": "Kini seluruh sihirku telah runtuh.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Sebatang tongkat berbonggol berderak dengan tenaga gaib. Badai berpusar di sekelilingnya saat Prospero membisikkan mantra terakhirnya. Petir membelah langit."
   },
   "PT-001": {
    "name": "Ramuan Cinta",
    "nameSource": "translated",
    "quote": "Jalan cinta sejati tak pernah mulus.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Sebuah botol kecil yang berpendar berdenyut dengan cahaya merah mawar. Hati-hati mungil naik dari permukaannya sementara melodi manis memenuhi udara."
   },
   "PT-002": {
    "name": "Rebusan Para Penyihir",
    "nameSource": "translated",
    "quote": "Berlipat, berlipat jerih dan susah.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Sebuah kuali yang menggelegak menyemburkan asap hijau. Tiga sosok bayangan mengelilinginya sambil merapal mantra. Mata-mata menyala dari hutan gelap di baliknya."
   },
   "VC-001": {
    "nameSource": "missing",
    "quote": "Jika sekali lagi kalian mengusik jalan-jalan kami, nyawa kalian menjadi tebusan atas rusaknya kedamaian.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Sang Pangeran berdiri di tangga istana Verona, suaranya memerintahkan kerumunan yang bertikai untuk diam. Sebuah tongkat kerajaan emas menyala dengan wibawa."
   },
   "VC-002": {
    "nameSource": "missing",
    "quote": "Kenikmatan yang menggelora ini berakhir dengan menggelora pula.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Sebuah bilik biara yang diterangi lilin. Sang biarawan merawat kebun herba dan racunnya, kebijaksanaan terukir di wajahnya yang termakan cuaca."
   },
   "VC-003": {
    "nameSource": "missing",
    "quote": "Akulah si pekerja kasar yang berpayah-payah demi kesenanganmu.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Dapur yang hangat di rumah keluarga Capulet. Sang Inang sibuk ke sana kemari dengan pengabdian yang membara, sepucuk surat rahasia terselip di celemeknya."
   },
   "TP-001": {
    "nameSource": "wikidata",
    "name": "Prospero",
    "quote": "Kita ini bahan yang darinya mimpi dibuat.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Sebuah pulau yang diselimuti badai. Prospero mengangkat tangannya saat petir menuruti kehendaknya dan laut bergolak atas perintahnya."
   },
   "TP-002": {
    "nameSource": "wikidata",
    "name": "Ariel",
    "quote": "Salam, tuan agung! Tuan yang mulia, salam!",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Sesosok roh yang berkilauan luruh menjadi angin dan cahaya, lalu terbentuk kembali sebagai musik. Ariel menari di antara yang terlihat dan yang tak terlihat."
   },
   "TP-003": {
    "nameSource": "missing",
    "quote": "Pulau ini milikku, warisan Sycorax ibuku.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Mulut gua di pantai yang liar. Caliban meringkuk di antara bebatuan, matanya menyala oleh dendam dan kecerdasan purba."
   },
   "MO-003": {
    "nameSource": "missing",
    "quote": "Aku hanya menjaga kedamaian. Sarungkan pedangmu.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Sebuah alun-alun Verona saat fajar. Benvolio berdiri di antara pedang-pedang terhunus; tangannya yang terbuka adalah satu-satunya senjata melawan badai yang menghimpun."
   },
   "CA-002": {
    "nameSource": "wikidata",
    "name": "Tybalt",
    "quote": "Apa, pedang terhunus dan kau bicara damai? Aku benci kata itu.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Sebuah lorong Verona yang terang benderang oleh cahaya obor. Tybalt menghunus pedang rampingnya dengan keanggunan yang mematikan, matanya terpaku pada musuhnya."
   },
   "DC-003": {
    "nameSource": "missing",
    "quote": "Kata-kataku terbang ke atas, pikiranku tetap tinggal di bawah.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Ruang takhta Elsinore, berselubung kemegahan palsu. Claudius mencengkeram mahkota, sebotol kecil racun tersembunyi di jubahnya."
   },
   "FA-003": {
    "nameSource": "wikidata",
    "name": "Oberon",
    "quote": "Pertemuan sial di bawah cahaya bulan, Titania yang angkuh.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Sebuah tanah lapang bermandi cahaya bulan jauh di dalam hutan ajaib. Oberon menjelma dari bayangan, mahkota tanduk rusanya menangkap cahaya perak."
   },
   "RL-003": {
    "name": "Belati Khayalan",
    "nameSource": "translated",
    "quote": "Belatikah ini yang kulihat di hadapanku?",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Sebilah belati hantu melayang dalam kegelapan, bilahnya meneteskan darah khayali. Tangan Macbeth menggapai, tetapi tak pernah dapat menggenggamnya."
   },
   "PT-003": {
    "name": "Sari Bunga Puck",
    "nameSource": "translated",
    "quote": "Akan kulilitkan sabuk mengelilingi bumi dalam empat puluh menit.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Sekuntum bunga ungu yang diremas meneteskan nektar berkilau pelangi ke telapak tangan yang menanti. Di mana pun ia jatuh, mata berubah, dan hati mengikutinya."
   },
   "SC-001": {
    "nameSource": "derived",
    "name": "Macbeth",
    "quote": "Aku berani melakukan segala yang pantas bagi seorang lelaki; yang berani lebih, bukanlah lelaki.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Ruang takhta berlumur darah di Dunsinane. Macbeth mencengkeram pedangnya dengan tangan gemetar, mahkota terasa berat di dahinya. Hutan Birnam bergerak di bukit yang jauh."
   },
   "SC-002": {
    "nameSource": "missing",
    "quote": "Datanglah, roh-roh yang melayani pikiran maut, cabutlah keperempuananku di sini.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Sebuah kamar di kastel Skotlandia yang diterangi lilin. Lady Macbeth mondar-mandir di atas batu yang dingin, menggosok noda darah khayali dari tangannya. Bayang-bayang melekat padanya seperti kulit kedua."
   },
   "SC-003": {
    "nameSource": "missing",
    "quote": "Engkau akan menurunkan raja-raja, meski engkau sendiri bukan raja.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Padang Skotlandia yang berkabut saat senja. Banquo berdiri teguh sementara tiga sosok hantu membisikkan takdir ke dalam angin. Arwahnya akan menghantui yang hidup."
   },
   "IL-001": {
    "nameSource": "missing",
    "quote": "Aku bukanlah diriku yang tampak.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Pantai Illyria yang diterpa angin. Viola menarik topi pelaut menutupi rambutnya yang dipangkas pendek, dua jati diri berkilau di matanya. Laut membisikkan rahasia tentang kakaknya yang hilang."
   },
   "IL-002": {
    "nameSource": "missing",
    "quote": "Ada yang terlahir agung, ada yang meraih keagungan, dan ada yang dipaksa menerima keagungan.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Sebuah taman yang cerah di kediaman Olivia. Malvolio berjalan pongah dengan kaus kaki kuning mencolok berpengikat silang, menyeringai, mendekap sepucuk surat cinta palsu di dadanya."
   },
   "IL-003": {
    "nameSource": "missing",
    "quote": "Cinta yang dicari itu baik, tetapi yang diberikan tanpa dicari lebih baik.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Seorang putri bangsawan yang berkabung menyingkap kerudungnya dan memperlihatkan kecantikan yang memukau. Taman Olivia bermekaran melati dan lavendel saat utusan yang menyamar mencuri hatinya."
   },
   "RM-001": {
    "nameSource": "derived",
    "name": "Brutus",
    "quote": "Bukan karena aku kurang mencintai Caesar, tetapi karena aku lebih mencintai Roma.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Senat Romawi, pilar-pilar marmernya bernoda merah tua. Brutus berdiri di antara para komplotan, bilahnya masih bergetar. Beban republik bertumpu pada tangannya yang berlumur darah."
   },
   "RM-002": {
    "nameSource": "derived",
    "name": "Cassius",
    "quote": "Kesalahan itu, Brutus yang baik, bukan pada bintang-bintang kita, melainkan pada diri kita sendiri.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Sebuah lorong Romawi yang diterangi obor pada tengah malam. Cassius mencondongkan badan, membisikkan hasutan dengan rupa yang kurus dan lapar. Surat-surat palsu berjatuhan dari toganya."
   },
   "RM-003": {
    "nameSource": "wikidata",
    "name": "Marcus Antonius",
    "quote": "Kawan-kawan, orang Roma, saudara sebangsa, pinjamkan telinga kalian!",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Forum Romawi meledak dalam amarah. Markus Antonius mengangkat jubah Caesar yang berlumur darah di hadapan khalayak, kata-katanya mengubah duka menjadi api. Republik runtuh bersama setiap suku kata."
   },
   "MO-004": {
    "name": "Tuan Montague",
    "nameSource": "translated",
    "quote": "Sudah banyak pagi ia terlihat di sana, menambah embun pagi yang segar dengan air matanya.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Kediaman keluarga Montague saat fajar. Tuan Montague memandang dari jendela tinggi saat putranya mengembara di kebun buah yang berkabut di bawah, mabuk cinta dan tak terjangkau."
   },
   "CA-003": {
    "name": "Nyonya Capulet",
    "nameSource": "translated",
    "quote": "Menikah, justru itulah pokok yang hendak kubicarakan.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Balairung besar keluarga Capulet yang berhias sutra. Nyonya Capulet menata nasib putrinya seperti bunga dalam jambangan, ambisi berkilat di balik setiap senyum yang anggun."
   },
   "DC-004": {
    "nameSource": "missing",
    "quote": "Kini pecahlah sebuah hati yang mulia. Selamat malam, pangeran yang manis.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Benteng Elsinore pada jam dingin menjelang fajar. Horatio berjaga di sisi Hamlet, satu-satunya sahabat sejati di istana yang penuh ular."
   },
   "FA-004": {
    "nameSource": "derived",
    "name": "Bottom",
    "quote": "Aku mendapat penglihatan yang amat langka. Aku bermimpi, melampaui akal manusia.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Sebuah tanah lapang di hutan yang bercahaya oleh sinar peri. Bottom mengenakan kepala keledai dengan wibawa yang kebingungan saat Titania menghiasinya dengan karangan bunga. Para peri menahan tawa."
   },
   "VC-004": {
    "nameSource": "missing",
    "quote": "Masa duka ini tak memberi waktu untuk merayu.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Pekuburan Verona saat senja. Paris meletakkan bunga di makam Juliet, tak menyadari kekasih putus asa yang mendekat dari bayang-bayang."
   },
   "TP-004": {
    "nameSource": "wikidata",
    "name": "Miranda",
    "quote": "O dunia baru yang gagah, yang dihuni orang-orang seperti ini!",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Pantai yang masih murni di pulau Prospero. Miranda melihat para pelaut yang karam untuk pertama kalinya, matanya terbelalak takjub pada dunia yang tak pernah ia tahu ada."
   },
   "RL-004": {
    "name": "Cincin Romeo",
    "nameSource": "translated",
    "quote": "Kemurahanku tak bertepi seperti laut, cintaku sedalam itu pula.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Sebentuk cincin emas terletak di birai batu sebuah balkon, menangkap cahaya bulan. Di dalamnya terukir sumpah yang bertahan melampaui kematian itu sendiri. Kelopak mawar berpusar di sekelilingnya dalam angin yang tak terlihat."
   },
   "RL-005": {
    "name": "Peti Portia",
    "nameSource": "translated",
    "quote": "Tak semua yang berkilau itu emas.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Tiga peti berkilau di sebuah kamar yang diterangi lilin: emas, perak, dan timah. Peti timah bersenandung dengan kebenaran yang tenang, mengganjar mereka yang cukup bijak untuk melihat melampaui rupa."
   },
   "RL-006": {
    "name": "Mahkota Macbeth",
    "nameSource": "translated",
    "quote": "Gelisah berbaring kepala yang memakai mahkota.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Sebuah mahkota Skotlandia yang kusam terletak di atas bantal bernoda darah. Ia berdenyut dengan ambisi gelap, membisikkan janji kemuliaan kepada setiap tangan yang berani meraihnya."
   },
   "RL-007": {
    "name": "Kitab Badai",
    "nameSource": "translated",
    "quote": "Akan kutenggelamkan kitabku.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Sebuah kitab kuno bersampul kulit yang lapuk oleh laut melayang di atas altar batu. Halaman-halamannya membalik sendiri, masing-masing memanggil badai yang berbeda."
   },
   "RL-008": {
    "name": "Air Mata Cordelia",
    "nameSource": "translated",
    "quote": "O ayah tercinta, urusanmulah yang sedang kujalankan.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Sebuah botol kristal menyimpan air mata yang berkilau seperti cahaya bintang yang tertangkap. Setiap tetes membawa duka seorang putri yang mencintai terlalu tulus dan berbicara terlalu terus terang."
   },
   "RL-009": {
    "name": "Topeng Bottom",
    "nameSource": "translated",
    "quote": "Diberkatilah engkau, Bottom! Engkau telah berubah wujud!",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Sebuah topeng berkepala keledai tergantung pada dahan berlumut di hutan peri. Siapa pun yang mengenakannya melihat dunia dengan mata yang tersihir, dan menjadi tak tertahankan bagi para ratu peri."
   },
   "PT-004": {
    "name": "Akar Mandrake",
    "nameSource": "translated",
    "quote": "Bukan candu, bukan mandragora, bukan pula segala sirop pelelap di dunia.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Sebatang akar berbonggol yang berbentuk sosok menjerit digali dalam cahaya lilin. Tanah berguguran dan menyingkap kekuatannya yang terpilin dan purba. Sang apoteker memegangnya dengan takzim yang gemetar."
   },
   "PT-005": {
    "name": "Embun Oberon",
    "nameSource": "translated",
    "quote": "Ambilkan aku bunga itu; tumbuhan yang pernah kutunjukkan padamu.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Setetes embun melekat pada anggrek yang disinari bulan, berpendar dengan cahaya ungu dari dunia lain. Satu tetes pada kelopak mata yang terlelap, dan si pemimpi jatuh cinta pada makhluk pertama yang dilihatnya."
   },
   "PT-006": {
    "name": "Tingtur Hemlock",
    "nameSource": "translated",
    "quote": "Pada saat aku lengah pamanmu menyelinap, membawa sari hebona terkutuk dalam sebuah botol kecil.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Sebuah botol kaca hitam mengeluarkan uap hijau di lorong yang gelap. Tingtur di dalamnya telah menumbangkan raja-raja dan menghancurkan wangsa-wangsa, setetes sunyi demi setetes."
   },
   "PT-007": {
    "name": "Sari Benalu",
    "nameSource": "translated",
    "quote": "Dalam kuali rebus dan panggang; mata kadal dan jari katak.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Buah-buah beri pucat berkilau di antara daun hijau abadi yang gelap, dipanen di bawah bulan musim dingin. Sarinya bersenandung dengan sihir dunia alam yang tenang dan gigih."
   },
   "PT-008": {
    "name": "Air Mata Putri Duyung",
    "nameSource": "translated",
    "quote": "Lima depa dalamnya ayahmu terbaring; dari tulangnya karang terbentuk.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Sebuah labu bersumbat mutiara menyimpan cairan biru bercahaya yang bergerak seperti laut yang hidup. Di dalamnya, karang-karang mungil tumbuh dan luruh. Baunya seperti garam dan pelayaran yang terlupakan."
   },
   "PT-009": {
    "name": "Eliksir Sang Apoteker",
    "nameSource": "translated",
    "quote": "Tuangkan ini ke dalam cairan apa pun yang kau mau, lalu minumlah; walau kau punya kekuatan dua puluh lelaki, ia akan langsung menghabisimu.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Sebuah toko obat berdebu di kawasan termiskin Mantua. Eliksir keputusasaan berpendar kuning sawo dalam botol yang retak, cukup ampuh untuk menjembatani jurang antara hidup dan mati."
   },
   "LD-001": {
    "nameSource": "wikidata",
    "name": "William Wordsworth",
    "quote": "Aku mengembara sendirian bagai awan yang melayang tinggi di atas lembah dan bukit.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Hamparan bunga bakung kuning keemasan membentang di sepanjang tepi danau yang tenang. Wordsworth berjalan di antaranya, buku catatan di tangan, perbukitan Cumberland menjulang di belakangnya."
   },
   "LD-002": {
    "nameSource": "wikidata",
    "name": "Samuel Taylor Coleridge",
    "quote": "Air, air, di mana-mana, tapi setetes pun tak dapat diminum.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Sebuah kapal yang terhenti tanpa angin hanyut di atas samudra bagai lukisan. Si Pelaut Tua menatap albatros di lehernya sementara sosok-sosok hantu bangkit dari laut yang bagai kaca."
   },
   "LD-003": {
    "nameSource": "wikidata",
    "name": "John Keats",
    "quote": "Sesuatu yang indah adalah sukacita selamanya: keelokannya kian bertambah.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Sebuah taman di Hampstead pada musim gugur. Keats duduk di bawah pohon prem, menulis dengan menggebu sementara burung bulbul bernyanyi dari dahan-dahan yang menggelap."
   },
   "GC-001": {
    "nameSource": "wikidata",
    "name": "George Gordon Byron",
    "quote": "Ia berjalan dalam keindahan, laksana malam di negeri tak berawan dan langit berbintang.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Sebuah istana Venesia pada tengah malam. Byron berdiri di balkon, jubahnya berkibar, menatap ke seberang kanal yang gelap. Sebuah naskah setengah jadi terbakar di perapian di belakangnya."
   },
   "GC-002": {
    "nameSource": "wikidata",
    "name": "Mary Shelley",
    "quote": "Waspadalah; sebab aku tak kenal takut, dan karena itu berkuasa.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Sebuah ruang kerja yang diterangi lilin di Jenewa, di tengah badai petir. Mary menulis dalam kilat cahaya petir sementara sang makhluk bergerak di bayang-bayang di belakangnya. Ilmu dan kengerian menjadi satu."
   },
   "GC-003": {
    "nameSource": "wikidata",
    "name": "Edgar Allan Poe",
    "quote": "Suatu ketika, pada tengah malam yang suram, saat aku merenung, lemah dan letih.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Sebuah kamar remang yang diterangi api yang hampir padam. Poe duduk membungkuk di mejanya saat seekor gagak hinggap di patung dada Pallas. Kata \"Tak akan lagi\" bergema di bayang-bayang."
   },
   "GC-004": {
    "nameSource": "wikidata",
    "name": "William Blake",
    "quote": "Melihat dunia dalam sebutir pasir dan surga dalam sekuntum bunga liar.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Sebuah bengkel cetak di London yang menyala oleh cahaya penglihatan. Blake mengukir seekor harimau pada tembaga sementara binatang itu menjelma dari pelat, menyala terang di hutan-hutan malam."
   },
   "GC-005": {
    "nameSource": "wikidata",
    "name": "Percy Bysshe Shelley",
    "quote": "Jika musim dingin datang, mungkinkah musim semi masih jauh?",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Puncak tebing Italia yang diterpa angin. Shelley menghadapi badai dengan tangan terentang, sementara angin barat merenggut halaman-halaman dari buku catatannya dan menebarkannya ke Laut Tengah."
   },
   "LD-004": {
    "nameSource": "wikidata",
    "name": "Elizabeth Barrett Browning",
    "quote": "Bagaimana aku mencintaimu? Biar kuhitung caranya.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Sebuah kamar yang cerah di Firenze. Elizabeth menulis di jendela yang menghadap Sungai Arno, anjing spanielnya di kakinya. Surat-surat cinta dari Robert terbuka di atas meja."
   },
   "LD-005": {
    "nameSource": "wikidata",
    "name": "Christina Rossetti",
    "quote": "Ingatlah aku ketika aku telah pergi, pergi jauh ke negeri yang sunyi.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Sebuah taman Pra-Raphael dalam cahaya musim gugur yang memudar. Christina duduk di antara daun-daun gugur, menggubah sajak yang pedih oleh keindahan dan kepasrahan yang tenang."
   },
   "OL-001": {
    "nameSource": "wikidata",
    "name": "Zeus",
    "quote": "Akulah pengumpul awan, penguasa langit yang luas.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Gunung Olimpus membelah langit. Zeus duduk di atas takhta awan, petir melompat di antara jari-jarinya. Di bawah, dunia fana gemetar di bawah tatapannya."
   },
   "OL-002": {
    "nameSource": "wikidata",
    "name": "Athena",
    "quote": "Burung hantu kebijaksanaan baru terbang ketika senja tiba.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Parthenon berkilau dalam cahaya keemasan. Athena berdiri berbaju zirah lengkap, burung hantunya bertengger di perisainya, mata kelabunya menembus setiap tipu daya manusia."
   },
   "OL-003": {
    "nameSource": "wikidata",
@@ -376,25 +439,29 @@ const pack: CardTextPack = {
     "Foibos"
    ],
    "quote": "Akulah dewa nyanyian, penyembuhan, dan matahari yang bersinar.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Sebuah kereta emas melaju melintasi langit fajar. Apollo memetik liranya sementara cahaya matahari tercurah dari roda-rodanya, mewarnai dunia."
   },
   "OL-004": {
    "nameSource": "wikidata",
    "name": "Afrodit",
    "quote": "Bahkan para dewa tak mampu menolak kuasa cinta.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Pantai Siprus saat fajar. Afrodit bangkit dari buih laut, merpati berputar di atasnya sementara ombak meletakkan mutiara di kakinya. Dunia menahan napas."
   },
   "OL-005": {
    "nameSource": "wikidata",
    "name": "Hermes",
    "quote": "Secepat pikiran, kubawa sabda para dewa ke telinga manusia fana.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Sekelebat sandal bersayap melintasi langit. Hermes berkelit di antara halilintar, pesan ilahi tergenggam di satu tangan dan seringai pencuri di wajahnya."
   },
   "UW-001": {
    "nameSource": "wikidata",
    "name": "Hades",
    "quote": "Semua jiwa pada akhirnya datang kepadaku. Aku sabar.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Ruang takhta Dunia Bawah, diterangi sungai-sungai api pucat. Hades duduk dengan Kerberos di kakinya, ketopong kegelapannya di sandaran lengan. Orang-orang mati berbaris lewat dalam kesunyian tanpa akhir."
   },
   "UW-002": {
    "nameSource": "wikidata",
@@ -404,7 +471,8 @@ const pack: CardTextPack = {
     "Persefon"
    ],
    "quote": "Enam biji kumakan, dan kuikat diriku selamanya di antara dua dunia.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Sebuah takhta yang terbelah antara musim semi dan bayangan. Persefone memegang buah delima di satu tangan dan mahkota bunga di tangan lain, ratu dari dua alam."
   },
   "OL-006": {
    "nameSource": "wikidata",
@@ -415,13 +483,15 @@ const pack: CardTextPack = {
     "Odysseus"
    ],
    "quote": "Kisahkan kepadaku, wahai Musa, tentang lelaki banyak akal yang mengembara jauh.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Sebuah kapal yang dihantam badai mengitari tanjung berbatu. Odisseus mengikat dirinya ke tiang kapal saat para Siren bernyanyi dari tebing. Matanya menyala oleh kenangan akan Ithaka."
   },
   "UW-003": {
    "nameSource": "wikidata",
    "name": "Medusa",
    "quote": "Pandanglah aku, jika kau berani. Tatapanku adalah hal terakhir yang akan kau lihat.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Sebuah kuil yang runtuh di tepi dunia. Medusa berpaling, rambut ularnya mendesis. Para prajurit batu berserakan di lantai, membeku dalam serbuan terakhir mereka."
   },
   "OL-007": {
    "nameSource": "wikidata",
@@ -430,7 +500,8 @@ const pack: CardTextPack = {
     "Akhiles"
    ],
    "quote": "Aku lebih suka hidup singkat penuh kemuliaan daripada hidup panjang yang terlupakan.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "Dataran Troya saat fajar. Akhilles menyerbu dengan baju zirah yang menyala, pekik perangnya membelah udara. Di belakangnya, kapal-kapal Yunani terbakar di pantai."
   }
  },
  "houses": {

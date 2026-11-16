@@ -9,13 +9,15 @@ const pack: CardTextPack = {
    "name": "The Sonnet Man",
    "nameSource": "translated",
    "quote": "我可否把你比作夏日的一天？",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "一座宏大的舞台渐渐成形。The Sonnet Man 手持麦克风，从金色的聚光灯中走出。莎士比亚的词句化作嘻哈的节拍，观众欢呼不已。"
   },
   "MO-001": {
    "nameSource": "wikidata",
    "name": "罗密欧·蒙泰古",
    "quote": "轻声！那边窗子里亮起来的是什么光？",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "月光下的阳台一幕徐徐展开。罗密欧向上伸出手，朱丽叶出现在上方。玫瑰花瓣在空中飘荡。整个场景闪动着温暖的绯红光芒。"
   },
   "CA-001": {
    "nameSource": "wikidata",
@@ -26,7 +28,8 @@ const pack: CardTextPack = {
     "茱麗葉"
    ],
    "quote": "名字里有什么呢？我们叫做玫瑰的那一种花……",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "凯普莱特家的花园在月光下盛开。朱丽叶站在玫瑰丛中，眼里闪着倔强的光。一只夜莺在枝头歌唱。"
   },
   "DC-001": {
    "nameSource": "wikidata",
@@ -36,7 +39,8 @@ const pack: CardTextPack = {
     "哈姆王子"
    ],
    "quote": "生存还是毁灭，这是一个问题。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "埃尔西诺城堡从阴影中浮现。哈姆雷特站在城垛上，约里克的骷髅悬浮在他身旁。城墙上方出现了一个幽灵般的身影。"
   },
   "DC-002": {
    "nameSource": "wikidata",
@@ -47,7 +51,8 @@ const pack: CardTextPack = {
     "奧菲利亞"
    ],
    "quote": "这是迷迭香，是表示记忆的。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "一条平缓的小溪蜿蜒穿过柳林。奥菲莉娅漂浮在野花之间，低声念着被遗忘的诗句。花瓣在水流中打转。"
   },
   "MO-002": {
    "nameSource": "wikidata",
@@ -57,13 +62,15 @@ const pack: CardTextPack = {
     "默庫蒂奧"
    ],
    "quote": "你们两家都遭瘟疫去吧！",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "维罗纳的一条街道陷入混乱。茂丘西奥在刀剑之间起舞，当着危险的面大笑。相击的钢刃迸出火花。"
   },
   "FA-001": {
    "nameSource": "wikidata",
    "name": "帕克",
    "quote": "天哪，这些凡人多么愚蠢！",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "魔法森林里闪动着恶作剧的光。帕克在古老的橡树间穿梭，留下一道道仙尘。下方沉睡的凡人做着奇异的梦。"
   },
   "FA-002": {
    "nameSource": "wikipedia",
@@ -73,42 +80,49 @@ const pack: CardTextPack = {
     "提泰妮婭"
    ],
    "quote": "来，在这铺满鲜花的床上坐下。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "一座由活藤蔓编成的王座从林地升起。提泰妮娅统率着她的仙子宫廷，萤火虫照亮了树冠。大自然也向她的意志低头。"
   },
   "RL-001": {
    "name": "约里克的骷髅",
    "nameSource": "translated",
    "quote": "唉，可怜的约里克！我认识他，赫瑞修。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "一颗骷髅安放在昏暗墓穴的天鹅绒上。幽灵般的笑声回荡，关于宫廷小丑的记忆像烛光一样摇曳。"
   },
   "RL-002": {
    "name": "普洛斯彼罗的魔杖",
    "nameSource": "translated",
    "quote": "现在我的魔法已经全部破除。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "一根多节的魔杖噼啪作响，迸发奥术之力。普洛斯彼罗低声念出最后的咒语，暴风雨在它周围盘旋。闪电劈开天空。"
   },
   "PT-001": {
    "name": "爱情魔药",
    "nameSource": "translated",
    "quote": "真爱的道路从来不曾平坦。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "一只发光的小瓶跳动着玫瑰色的光。一颗颗心从瓶面升起，甜美的旋律弥漫在空气中。"
   },
   "PT-002": {
    "name": "女巫的汤药",
    "nameSource": "translated",
    "quote": "加倍，加倍，辛劳和烦恼。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "一口翻滚的大锅喷出绿烟。三个阴暗的身影绕着它念念有词。远处漆黑的树林里有眼睛在发光。"
   },
   "VC-001": {
    "nameSource": "missing",
    "quote": "你们若再扰乱我们的街道，就要用性命抵偿破坏和平的罪过。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "亲王站在维罗纳宫殿的台阶上，他的声音让争斗的人群安静下来。一柄金色权杖燃烧着威严。"
   },
   "VC-002": {
    "nameSource": "wikidata",
    "name": "劳伦斯神父",
    "quote": "这些狂暴的欢乐必有狂暴的结局。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "修道院里一间烛光摇曳的小室。神父照料着他种满草药与毒草的园子，智慧刻在他饱经风霜的脸上。"
   },
   "VC-003": {
    "nameSource": "wikidata",
@@ -117,7 +131,8 @@ const pack: CardTextPack = {
     "奶媽"
    ],
    "quote": "我是个苦工，为了您的快乐而奔忙。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "凯普莱特家温暖的厨房。奶妈怀着炽烈的忠心忙前忙后，围裙里塞着一封密信。"
   },
   "TP-001": {
    "nameSource": "wikidata",
@@ -126,12 +141,14 @@ const pack: CardTextPack = {
     "普羅斯佩羅"
    ],
    "quote": "我们都是构成梦幻的材料。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "一座被暴风雨笼罩的岛屿。普洛斯彼罗举起双手，闪电听从他的意志，大海随他的号令翻腾。"
   },
   "TP-002": {
    "nameSource": "missing",
    "quote": "万福，伟大的主人！尊严的先生，万福！",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "一个闪烁的精灵化作风与光，又重新聚成音乐。爱丽儿在可见与不可见之间起舞。"
   },
   "TP-003": {
    "nameSource": "wikidata",
@@ -141,7 +158,8 @@ const pack: CardTextPack = {
     "卡利班"
    ],
    "quote": "这岛是我的，是我母亲西考拉克斯传给我的。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "荒凉海岸上的一个洞口。凯列班蹲伏在岩石间，眼里燃烧着怨恨与原始的智慧。"
   },
   "MO-003": {
    "nameSource": "wikidata",
@@ -150,7 +168,8 @@ const pack: CardTextPack = {
     "班伏里歐"
    ],
    "quote": "我只是在维持和平。收起你的剑。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "黎明时分维罗纳的一座广场。班伏里奥站在出鞘的刀剑之间，他摊开的双手是抵挡这场风暴的唯一武器。"
   },
   "CA-002": {
    "nameSource": "wikidata",
@@ -161,7 +180,8 @@ const pack: CardTextPack = {
     "泰伯爾特"
    ],
    "quote": "什么，拔出了剑还谈和平？我痛恨这个字眼。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "维罗纳一条被火把照得通明的小巷。提伯尔特以致命的优雅拔出长剑，目光紧盯着他的仇敌。"
   },
   "DC-003": {
    "nameSource": "wikidata",
@@ -170,7 +190,8 @@ const pack: CardTextPack = {
     "克勞地國王"
    ],
    "quote": "我的言语飞上天去，我的思想却留在地下。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "埃尔西诺的王座厅，披挂着虚假的华丽。克劳狄斯紧握王冠，袍子里藏着一小瓶毒药。"
   },
   "FA-003": {
    "nameSource": "wikidata",
@@ -180,19 +201,22 @@ const pack: CardTextPack = {
     "奧布朗"
    ],
    "quote": "月光下相遇真是不巧，骄傲的提泰妮娅。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "魔法森林深处一片月光下的空地。奥伯伦从阴影中显形，他的鹿角王冠映着银光。"
   },
   "RL-003": {
    "name": "心中的匕首",
    "nameSource": "translated",
    "quote": "在我面前的是一把匕首吗？",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "一把幽灵般的匕首悬浮在黑暗里，刀刃滴着虚幻的血。马克白伸手去抓，却永远握不住它。"
   },
   "PT-003": {
    "name": "帕克的花汁",
    "nameSource": "translated",
    "quote": "我要在四十分钟内给地球围上一条腰带。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "一朵被揉碎的紫花，把虹彩般的花蜜滴进一只等待的手掌。花蜜落在哪里，哪里的眼睛就改变，心也随之改变。"
   },
   "SC-001": {
    "nameSource": "wikidata",
@@ -201,30 +225,35 @@ const pack: CardTextPack = {
     "麦克白"
    ],
    "quote": "凡是男子汉该做的事我都敢做；敢做得更多的就不是人了。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "邓西嫩一间血迹斑斑的王座厅。马克白双手颤抖地握着剑，王冠沉沉地压在额上。远处山丘上，勃南森林开始移动。"
   },
   "SC-002": {
    "nameSource": "wikidata",
    "name": "麦克白夫人",
    "quote": "来吧，侍奉杀人念头的精灵们，在这里除去我的女性。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "苏格兰城堡里一间烛光摇曳的房间。马克白夫人在冰冷的石地上踱步，搓洗着手上并不存在的血迹。阴影像第二层皮肤一样贴着她。"
   },
   "SC-003": {
    "nameSource": "wikidata",
    "name": "班柯",
    "quote": "你虽然不是君王，却要生下许多君王。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "黄昏时分雾气弥漫的苏格兰荒原。班柯坚定地站着，三个幽灵般的身影把命运低语进风里。他的鬼魂将纠缠活人。"
   },
   "IL-001": {
    "nameSource": "missing",
    "quote": "我并不是我现在的样子。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "伊利里亚一处风吹浪打的海岸。薇奥拉把水手帽压在剪短的头发上，两重身份在她眼中闪烁。大海低诉着她失散兄长的秘密。"
   },
   "IL-002": {
    "nameSource": "wikidata",
    "name": "马伏里奥",
    "quote": "有的人生来伟大，有的人挣得伟大，有的人是伟大硬加在他们身上的。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "奥丽维娅庄园里一座阳光明媚的花园。马伏里奥穿着刺眼的黄袜子、扎着十字交叉的袜带，得意洋洋地踱步，把一封伪造的情书紧紧按在胸前。"
   },
   "IL-003": {
    "nameSource": "wikidata",
@@ -233,133 +262,155 @@ const pack: CardTextPack = {
     "奧利維亞"
    ],
    "quote": "求来的爱是好的，不求而得的爱更好。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "一位服丧的伯爵小姐掀起面纱，露出令人屏息的美貌。奥丽维娅的花园里茉莉与薰衣草盛开，乔装的信使偷走了她的心。"
   },
   "RM-001": {
    "nameSource": "derived",
    "name": "布鲁图",
    "quote": "不是我爱恺撒少，而是我爱罗马更多。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "罗马元老院，大理石柱染成了绯红。布鲁图站在密谋者中间，手中的刀刃仍在颤抖。共和国的重量压在他沾血的双手上。"
   },
   "RM-002": {
    "nameSource": "derived",
    "name": "卡西乌斯",
    "quote": "亲爱的布鲁图，过错不在我们的星辰，而在我们自己。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "午夜时分火把照亮的罗马小巷。卡西乌斯凑近身来，带着一副消瘦而饥饿的神情，低声煽动叛乱。伪造的信件从他的长袍里滑落。"
   },
   "RM-003": {
    "nameSource": "wikidata",
    "name": "马克·安东尼",
    "quote": "朋友们，罗马人，同胞们，请借给我你们的耳朵！",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "罗马广场爆发出怒火。马克·安东尼在人群面前高举恺撒染血的披风，他的话把悲痛化为烈火。每一个音节都让共和国崩塌一分。"
   },
   "MO-004": {
    "name": "蒙太古老爷",
    "nameSource": "translated",
    "quote": "好多个早晨有人看见他在那里，用眼泪增添清晨新鲜的露水。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "黎明时分的蒙太古庄园。蒙太古老爷从高高的窗口望着儿子在雾气笼罩的果园里游荡，害着相思，无法靠近。"
   },
   "CA-003": {
    "name": "凯普莱特夫人",
    "nameSource": "translated",
    "quote": "结婚，我正是为了谈结婚这件事来的。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "悬挂着丝绸的凯普莱特大厅。凯普莱特夫人像在花瓶里插花一样安排女儿的命运，每一个得体的微笑背后都闪着野心。"
   },
   "DC-004": {
    "nameSource": "wikidata",
    "name": "赫瑞修",
    "quote": "一颗高贵的心现在碎裂了。晚安，亲爱的王子。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "黎明前寒冷时刻的埃尔西诺城垛。赫瑞修守在哈姆雷特身旁，在这满是毒蛇的宫廷里，他是唯一真正的朋友。"
   },
   "FA-004": {
    "nameSource": "derived",
    "name": "波顿",
    "quote": "我看见了一个极其稀奇的幻象。我做了一个梦，超出人的智慧所能说明。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "一片被仙子之光照亮的林间空地。波顿顶着一颗驴头，神情茫然却不失庄重，提泰妮娅给他披上花环。仙子们忍着笑。"
   },
   "VC-004": {
    "nameSource": "wikidata",
    "name": "帕里斯伯爵",
    "quote": "这样悲伤的时候没有工夫谈情求爱。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "黄昏时分维罗纳的墓园。帕里斯在朱丽叶的墓前献上鲜花，全然不知那个绝望的恋人正从阴影中走近。"
   },
   "TP-004": {
    "nameSource": "wikidata",
    "name": "米兰达",
    "quote": "啊，美丽的新世界，有这样的人在里头！",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "普洛斯彼罗岛上一片洁净的海滩。米兰达第一次看见遇难的水手，睁大了眼睛，惊叹于一个她从不知道存在的世界。"
   },
   "RL-004": {
    "name": "罗密欧的戒指",
    "nameSource": "translated",
    "quote": "我的慷慨像海一样无边，我的爱也像海一样深。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "一枚金戒指放在阳台的石栏上，映着月光。戒指内侧刻着一句比死亡更长久的誓言。玫瑰花瓣在看不见的风里绕着它旋转。"
   },
   "RL-005": {
    "name": "波西亚的匣子",
    "nameSource": "translated",
    "quote": "闪光的不都是金子。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "烛光下的房间里，三只匣子闪闪发亮：金的、银的和铅的。铅匣低鸣着沉静的真理，奖赏那些有智慧看透表象的人。"
   },
   "RL-006": {
    "name": "马克白的王冠",
    "nameSource": "translated",
    "quote": "戴王冠的头是不能安睡的。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "一顶失去光泽的苏格兰王冠放在染血的枕垫上。它跳动着黑暗的野心，向每一只敢于伸向它的手低语荣耀的许诺。"
   },
   "RL-007": {
    "name": "暴风雨魔法书",
    "nameSource": "translated",
    "quote": "我要把我的书沉入海底。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "一部用海水侵蚀过的皮革装订的古书，悬浮在石坛之上。书页自行翻动，每一页都召来一场不同的风暴。"
   },
   "RL-008": {
    "name": "寇蒂莉亚的眼泪",
    "nameSource": "translated",
    "quote": "啊，亲爱的父亲，我奔走的正是您的事情。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "一只水晶小瓶盛着泪水，像被捕获的星光一样闪烁。每一滴都带着一个女儿的悲伤，她爱得太真，说得太直。"
   },
   "RL-009": {
    "name": "波顿的面具",
    "nameSource": "translated",
    "quote": "天保佑你，波顿！你变了样子了！",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "一副驴头面具挂在仙林里长满青苔的树枝上。戴上它的人会用被施了魔法的眼睛看世界，也会让仙后们无法抗拒。"
   },
   "PT-004": {
    "name": "曼德拉草根",
    "nameSource": "translated",
    "quote": "无论罂粟、曼陀罗，还是世上一切催眠的药水。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "烛光下，一条形如尖叫人形的多节根茎被挖出土来。泥土剥落，露出它扭曲而古老的力量。药剂师怀着颤抖的敬畏捧着它。"
   },
   "PT-005": {
    "name": "奥伯伦的露水",
    "nameSource": "translated",
    "quote": "给我把那朵花采来；我曾经指给你看过的那种草。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "一滴露珠挂在月光下的兰花上，发出不属于人间的紫色光芒。滴一滴在沉睡者的眼皮上，做梦的人就会爱上醒来看见的第一个生灵。"
   },
   "PT-006": {
    "name": "毒芹酊",
    "nameSource": "translated",
    "quote": "在我安心熟睡的时候，你的叔父带着一小瓶可诅咒的毒草汁偷偷走来。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "昏暗的走廊里，一只黑玻璃小瓶渗出绿色的雾气。瓶中的酊剂曾一滴一滴、无声无息地推翻君王，粉碎王朝。"
   },
   "PT-007": {
    "name": "槲寄生萃取液",
    "nameSource": "translated",
    "quote": "在大锅里煮吧，烤吧；蝾螈的眼睛，青蛙的脚趾。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "苍白的浆果在深色的常青叶间闪光，采于冬夜的月下。这萃取液低鸣着自然界安静而持久的魔力。"
   },
   "PT-008": {
    "name": "美人鱼的眼泪",
    "nameSource": "translated",
    "quote": "五噚深处躺着你的父亲；他的骨头已化成珊瑚。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "一只珍珠塞子的瓶子盛着发光的蓝色液体，像活的海洋一样流转。瓶中细小的珊瑚生长又消融。它闻起来有盐和被遗忘的航行的气味。"
   },
   "PT-009": {
    "name": "药剂师的灵药",
    "nameSource": "translated",
    "quote": "把这个放进随便什么液体里喝下去；即使你有二十个人的力气，它也会立刻送你上路。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "曼图亚最贫穷的街区里一间落满灰尘的药铺。一瓶孤注一掷的灵药在裂了纹的小瓶中泛着琥珀色的光，药力足以跨越生与死的界限。"
   },
   "LD-001": {
    "nameSource": "wikidata",
@@ -369,7 +420,8 @@ const pack: CardTextPack = {
     "華滋華斯"
    ],
    "quote": "我独自漫游，像一朵云高高飘过山谷和丘陵。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "金色的水仙像地毯一样沿着平静的湖岸铺开。华兹华斯手拿笔记本走在花间，身后耸立着坎伯兰的山岭。"
   },
   "LD-002": {
    "nameSource": "wikidata",
@@ -380,7 +432,8 @@ const pack: CardTextPack = {
     "柯勒律治"
    ],
    "quote": "水，水，到处是水，却没有一滴可以喝。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "一艘无风停驶的船漂在画一般的海面上。老水手盯着挂在自己颈上的信天翁，幽灵般的身影从镜面似的海中升起。"
   },
   "LD-003": {
    "nameSource": "wikidata",
@@ -391,7 +444,8 @@ const pack: CardTextPack = {
     "濟慈"
    ],
    "quote": "美的事物是永恒的喜悦：它的可爱与日俱增。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "秋天汉普斯特德的一座花园。济慈坐在李子树下奋笔疾书，一只夜莺在渐暗的枝头歌唱。"
   },
   "GC-001": {
    "nameSource": "wikidata",
@@ -402,7 +456,8 @@ const pack: CardTextPack = {
     "拜伦，G.G."
    ],
    "quote": "她走在美的光彩中，像无云的地方繁星满天的夜晚。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "午夜的威尼斯宫殿。拜伦站在阳台上，斗篷翻飞，凝望着幽暗的运河。他身后的壁炉里烧着一份写了一半的手稿。"
   },
   "GC-002": {
    "nameSource": "wikidata",
@@ -411,7 +466,8 @@ const pack: CardTextPack = {
     "科學怪人之母：瑪麗雪萊"
    ],
    "quote": "当心；因为我无所畏惧，所以强大。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "暴风雨中，日内瓦一间点着蜡烛的书房。玛丽借着闪电的光写作，那个造物在她身后的阴影里蠢动。科学与恐怖合而为一。"
   },
   "GC-003": {
    "nameSource": "wikidata",
@@ -421,13 +477,15 @@ const pack: CardTextPack = {
     "坡，E.A."
    ],
    "quote": "从前一个阴郁的午夜，我独自沉思，虚弱而疲倦。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "一间昏暗的房间，只有将熄的炉火照着。爱伦·坡伏在书桌前，一只乌鸦落在帕拉斯的半身像上。“永不复还”这个词在阴影中回响。"
   },
   "GC-004": {
    "nameSource": "wikidata",
    "name": "威廉·布莱克",
    "quote": "在一粒沙里看见一个世界，在一朵野花里看见一座天堂。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "伦敦一间印刷作坊，燃烧着幻象般的光。布莱克在铜版上蚀刻一只老虎，那猛兽从版中现身，在黑夜的森林里灼灼燃烧。"
   },
   "GC-005": {
    "nameSource": "wikidata",
@@ -437,7 +495,8 @@ const pack: CardTextPack = {
     "雪萊"
    ],
    "quote": "冬天来了，春天还会远吗？",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "意大利一处狂风呼啸的崖顶。雪莱张开双臂迎向风暴，西风从他的笔记本里撕下书页，撒向地中海。"
   },
   "LD-004": {
    "nameSource": "wikidata",
@@ -446,13 +505,15 @@ const pack: CardTextPack = {
     "勃朗宁夫人"
    ],
    "quote": "我怎样爱你？让我一一细数。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "佛罗伦萨一间洒满阳光的房间。伊丽莎白在俯瞰阿诺河的窗前写作，她的西班牙猎犬卧在脚边。罗伯特的情书摊开在书桌上。"
   },
   "LD-005": {
    "nameSource": "wikidata",
    "name": "克里斯蒂娜·罗塞蒂",
    "quote": "请记着我，当我已经离去，远远地去了那寂静的国度。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "秋光渐暗的一座拉斐尔前派花园。克里斯蒂娜坐在落叶之间，写着因美与平静的顺从而令人心痛的诗句。"
   },
   "OL-001": {
    "nameSource": "wikidata",
@@ -462,13 +523,15 @@ const pack: CardTextPack = {
     "丟斯"
    ],
    "quote": "我是聚集云朵的神，广阔天空的主宰。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "奥林匹斯山劈开天空。宙斯坐在云的王座上，闪电在他指间跳跃。下方的凡人世界在他的注视下颤抖。"
   },
   "OL-002": {
    "nameSource": "wikidata",
    "name": "雅典娜",
    "quote": "智慧的猫头鹰只在黄昏时起飞。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "帕特农神庙在金光中闪耀。雅典娜全副武装地站着，猫头鹰栖在她的盾上，她灰色的眼睛看穿凡人的一切欺骗。"
   },
   "OL-003": {
    "nameSource": "wikidata",
@@ -478,7 +541,8 @@ const pack: CardTextPack = {
     "阿波羅"
    ],
    "quote": "我是歌唱、医治和灿烂太阳的神。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "一辆金色的战车驰过黎明的天空。阿波罗弹着里拉琴，阳光从车轮倾泻而下，把世界染上颜色。"
   },
   "OL-004": {
    "nameSource": "wikidata",
@@ -490,7 +554,8 @@ const pack: CardTextPack = {
     "阿芙羅狄忒"
    ],
    "quote": "连众神也无法抗拒爱的力量。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "黎明时分的塞浦路斯海岸。阿佛洛狄忒从海的泡沫中升起，鸽子在上空盘旋，海浪把珍珠送到她脚边。世界屏住了呼吸。"
   },
   "OL-005": {
    "nameSource": "wikidata",
@@ -502,7 +567,8 @@ const pack: CardTextPack = {
     "荷米斯"
    ],
    "quote": "快如思想，我把众神的话带到凡人的耳边。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "带翼的凉鞋在天空划过一道模糊的影子。赫耳墨斯在雷霆之间穿梭，一只手紧握神的讯息，脸上挂着窃贼的笑。"
   },
   "UW-001": {
    "nameSource": "wikidata",
@@ -514,7 +580,8 @@ const pack: CardTextPack = {
     "哈里斯"
    ],
    "quote": "所有的灵魂最终都来到我这里。我有耐心。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "冥界的王座厅，由苍白的火河照亮。哈得斯端坐其上，刻耳柏洛斯伏在他脚边，隐身头盔放在扶手上。亡者在无尽的沉默中列队走过。"
   },
   "UW-002": {
    "nameSource": "wikidata",
@@ -526,7 +593,8 @@ const pack: CardTextPack = {
     "佩爾塞福涅"
    ],
    "quote": "我吃下六颗种子，把自己永远系在两个世界之间。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "一座在春天与阴影之间一分为二的王座。珀耳塞福涅一手拿着石榴，一手拿着花冠，是两个国度的王后。"
   },
   "OL-006": {
    "nameSource": "wikidata",
@@ -538,7 +606,8 @@ const pack: CardTextPack = {
     "尤利西斯"
    ],
    "quote": "缪斯啊，请为我讲述那个足智多谋、漂泊远方的人。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "一艘被风暴摧残的船绕过嶙峋的海岬。奥德修斯把自己绑在桅杆上，塞壬在悬崖上歌唱。他的眼中燃烧着对伊萨卡的思念。"
   },
   "UW-003": {
    "nameSource": "wikidata",
@@ -550,7 +619,8 @@ const pack: CardTextPack = {
     "墨杜萨"
    ],
    "quote": "你若敢，就看着我。我的目光是你最后看见的东西。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "世界尽头一座倾颓的神庙。美杜莎转过身来，她的蛇发嘶嘶作响。石化的战士倒满地面，凝固在最后一次冲锋里。"
   },
   "OL-007": {
    "nameSource": "wikidata",
@@ -562,7 +632,8 @@ const pack: CardTextPack = {
     "阿溪里"
    ],
    "quote": "我宁愿过短暂而光荣的一生，也不愿过漫长而被遗忘的一生。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "黎明时分的特洛伊平原。阿喀琉斯身披耀眼的铠甲冲锋，他的战吼撕裂长空。在他身后，希腊人的战船在岸边燃烧。"
   }
  },
  "houses": {

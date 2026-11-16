@@ -9,25 +9,29 @@ const pack: CardTextPack = {
    "name": "The Sonnet Man",
    "nameSource": "translated",
    "quote": "그대를 여름날에 비겨 볼까요?",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "웅장한 무대가 모습을 드러낸다. The Sonnet Man이 마이크를 손에 들고 금빛 조명 속에서 걸어 나온다. 셰익스피어의 말이 힙합 가사로 바뀌고 관객이 환호한다."
   },
   "MO-001": {
    "nameSource": "wikidata",
    "name": "로미오",
    "quote": "가만, 저 창문으로 비쳐 오는 빛은 무엇인가?",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "달빛 어린 발코니 장면이 펼쳐진다. 로미오가 위로 손을 뻗자 줄리엣이 위에 나타난다. 장미 꽃잎이 공중에 흩날린다. 장면 전체가 따뜻한 진홍빛으로 고동친다."
   },
   "CA-001": {
    "nameSource": "wikidata",
    "name": "줄리엣",
    "quote": "이름이 무엇이란 말인가? 우리가 장미라 부르는 그것은...",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "캐풀렛 가문의 정원이 달빛 아래 피어난다. 줄리엣은 장미 사이에 서 있고, 그녀의 눈은 반항으로 빛난다. 나뭇가지에서 나이팅게일이 노래한다."
   },
   "DC-001": {
    "nameSource": "wikidata",
    "name": "햄릿",
    "quote": "사느냐 죽느냐, 그것이 문제로다.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "엘시노어 성이 그림자 속에서 떠오른다. 햄릿은 성벽 위에 서 있고, 그 곁에 요릭의 해골이 떠 있다. 성벽 위쪽에 유령 같은 형체가 나타난다."
   },
   "DC-002": {
    "nameSource": "wikidata",
@@ -36,7 +40,8 @@ const pack: CardTextPack = {
     "오필리어"
    ],
    "quote": "여기 로즈메리가 있어요, 기억을 위한 것이지요.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "잔잔한 시내가 버드나무 숲 사이로 굽이쳐 흐른다. 오필리아는 들꽃 사이에 떠서 잊힌 시구를 속삭인다. 꽃잎이 물살 속에서 맴돈다."
   },
   "MO-002": {
    "nameSource": "wikidata",
@@ -48,64 +53,75 @@ const pack: CardTextPack = {
     "메르쿠티오"
    ],
    "quote": "너희 두 집안에 저주가 내려라!",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "베로나의 거리가 혼란에 휩싸인다. 머큐쇼는 칼날 사이에서 춤추며 위험 앞에서 웃는다. 부딪치는 강철에서 불꽃이 튄다."
   },
   "FA-001": {
    "nameSource": "missing",
    "quote": "아, 인간들이란 얼마나 어리석은가!",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "마법의 숲이 장난기로 반짝인다. 퍽은 오래된 참나무 사이를 쏜살같이 지나가며 요정 가루의 자취를 남긴다. 아래에서는 잠든 인간들이 이상한 꿈을 꾼다."
   },
   "FA-002": {
    "nameSource": "wikidata",
    "name": "티타니아",
    "quote": "자, 이 꽃 침대 위에 앉으세요.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "살아 있는 덩굴로 된 왕좌가 숲 바닥에서 솟아오른다. 티타니아가 요정 궁정을 다스리고, 반딧불이가 나무 꼭대기를 밝힌다. 자연마저 그녀의 뜻에 고개를 숙인다."
   },
   "RL-001": {
    "name": "요릭의 해골",
    "nameSource": "translated",
    "quote": "아, 불쌍한 요릭! 나는 그를 알았네, 호레이쇼.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "어둑한 지하 묘실, 벨벳 위에 해골이 놓여 있다. 유령 같은 웃음소리가 울리고, 궁정 광대의 기억이 촛불처럼 흔들린다."
   },
   "RL-002": {
    "name": "프로스페로의 지팡이",
    "nameSource": "translated",
    "quote": "이제 나의 마법은 모두 무너졌습니다.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "옹이 진 지팡이가 신비한 힘으로 타닥거린다. 프로스페로가 마지막 주문을 속삭이자 폭풍이 그 주위를 휘돈다. 번개가 하늘을 가른다."
   },
   "PT-001": {
    "name": "사랑의 묘약",
    "nameSource": "translated",
    "quote": "참된 사랑의 길은 결코 순탄한 적이 없었다.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "빛나는 작은 병이 장밋빛으로 고동친다. 그 표면에서 하트들이 떠오르고 달콤한 선율이 공기를 채운다."
   },
   "PT-002": {
    "name": "마녀들의 약",
    "nameSource": "translated",
    "quote": "곱절로, 곱절로 고생과 근심.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "부글거리는 가마솥이 초록 연기를 뿜어낸다. 그림자 같은 세 형체가 그 주위를 돌며 주문을 왼다. 저편 어두운 숲에서 눈들이 빛난다."
   },
   "VC-001": {
    "nameSource": "missing",
    "quote": "또다시 우리 거리를 어지럽힌다면 너희 목숨으로 평화를 깬 값을 치르리라.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "영주가 베로나 궁전의 계단에 서 있고, 그의 목소리가 싸우는 군중을 침묵시킨다. 황금 홀이 권위로 타오른다."
   },
   "VC-002": {
    "nameSource": "wikidata",
    "name": "프리어 로렌스",
    "quote": "이 격렬한 기쁨은 격렬한 끝을 맞는다.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "촛불이 켜진 수도원의 작은 방. 수사는 약초와 독초의 정원을 돌보고, 풍파에 시달린 그의 얼굴에는 지혜가 새겨져 있다."
   },
   "VC-003": {
    "nameSource": "missing",
    "quote": "저는 아가씨의 기쁨을 위해 고생하는 일꾼이랍니다.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "캐풀렛 집안의 따뜻한 부엌. 유모는 맹렬한 헌신으로 분주히 움직이고, 앞치마에는 비밀 편지가 끼워져 있다."
   },
   "TP-001": {
    "nameSource": "wikidata",
    "name": "프로스페로",
    "quote": "우리는 꿈을 이루는 것과 같은 재료로 되어 있다.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "폭풍에 휩싸인 섬. 프로스페로가 두 손을 들자 번개가 그의 뜻에 복종하고 바다가 그의 명령에 요동친다."
   },
   "TP-002": {
    "nameSource": "wikidata",
@@ -114,18 +130,21 @@ const pack: CardTextPack = {
     "에어리얼"
    ],
    "quote": "만세, 위대한 주인님! 엄숙하신 어른, 만세!",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "반짝이는 정령이 바람과 빛으로 흩어졌다가 음악으로 다시 모인다. 에어리얼은 보이는 것과 보이지 않는 것 사이에서 춤춘다."
   },
   "TP-003": {
    "nameSource": "missing",
    "quote": "이 섬은 내 것이다, 내 어머니 시코락스가 물려준.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "거친 바닷가의 동굴 입구. 캘리번은 바위 사이에 웅크리고 있고, 그의 눈은 원한과 원시적인 지성으로 타오른다."
   },
   "MO-003": {
    "nameSource": "wikidata",
    "name": "벤볼리오",
    "quote": "나는 평화를 지키려는 것뿐이네. 칼을 거두게.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "새벽의 베로나 광장. 벤볼리오는 뽑아 든 칼들 사이에 서 있고, 펼친 두 손만이 몰려오는 폭풍에 맞서는 유일한 무기다."
   },
   "CA-002": {
    "nameSource": "wikidata",
@@ -135,7 +154,8 @@ const pack: CardTextPack = {
     "티발트"
    ],
    "quote": "뭐라고, 칼을 뽑아 들고 평화를 말해? 나는 그 말을 증오한다.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "횃불로 환한 베로나의 골목. 티볼트는 적에게 눈을 고정한 채 치명적인 우아함으로 가는 칼을 뽑는다."
   },
   "DC-003": {
    "nameSource": "wikidata",
@@ -146,182 +166,213 @@ const pack: CardTextPack = {
     "클로디어스"
    ],
    "quote": "내 말은 위로 날아가나, 내 생각은 아래에 남는구나.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "거짓 화려함으로 뒤덮인 엘시노어의 알현실. 클로디어스는 왕관을 움켜쥐고, 옷 속에 독약 병을 숨기고 있다."
   },
   "FA-003": {
    "nameSource": "wikidata",
    "name": "오베론",
    "quote": "달빛 아래 잘못 만났군, 오만한 티타니아.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "마법의 숲 깊은 곳, 달빛 어린 빈터. 오베론이 그림자 속에서 모습을 드러내고, 사슴뿔 왕관이 은빛을 받는다."
   },
   "RL-003": {
    "name": "마음의 단검",
    "nameSource": "translated",
    "quote": "내 눈앞에 보이는 이것이 단검인가?",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "유령 같은 단검이 어둠 속에 떠 있고, 칼날에서 환영의 피가 떨어진다. 맥베스의 손이 뻗지만 결코 잡을 수 없다."
   },
   "PT-003": {
    "name": "퍽의 꽃즙",
    "nameSource": "translated",
    "quote": "사십 분 안에 지구에 띠를 한 바퀴 두르겠습니다.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "으깨진 자줏빛 꽃이 기다리는 손바닥에 무지갯빛 꿀을 떨어뜨린다. 그것이 떨어지는 곳마다 눈이 바뀌고, 마음이 그 뒤를 따른다."
   },
   "SC-001": {
    "nameSource": "wikidata",
    "name": "맥베스",
    "quote": "사내다운 일이라면 무엇이든 감히 하겠소. 그 이상을 감히 하는 자는 사내가 아니오.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "던시네인의 피로 얼룩진 알현실. 맥베스는 떨리는 손으로 칼을 움켜쥐고, 왕관이 이마를 무겁게 누른다. 먼 언덕에서 버남 숲이 움직인다."
   },
   "SC-002": {
    "nameSource": "wikidata",
    "name": "맥베스 부인",
    "quote": "오라, 죽음의 생각을 시중드는 정령들아, 여기서 나의 여성을 없애 다오.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "스코틀랜드 성의 촛불 켜진 방. 맥베스 부인은 차가운 돌바닥을 서성이며 손에서 있지도 않은 핏자국을 문질러 닦는다. 그림자가 두 번째 살갗처럼 그녀에게 달라붙는다."
   },
   "SC-003": {
    "nameSource": "wikidata",
    "name": "뱅쿠오",
    "quote": "그대는 왕이 되지 못하나 왕들을 낳으리라.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "해 질 녘 안개 낀 스코틀랜드 황야. 뱅코는 굳게 서 있고, 유령 같은 세 형체가 운명을 바람 속에 속삭인다. 그의 유령은 산 자들을 따라다닐 것이다."
   },
   "IL-001": {
    "nameSource": "missing",
    "quote": "나는 지금의 내가 아닙니다.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "바람이 휘몰아치는 일리리아의 바닷가. 바이올라는 짧게 자른 머리 위로 선원 모자를 눌러쓰고, 그녀의 눈에는 두 개의 정체가 어른거린다. 바다는 잃어버린 오빠의 비밀을 속삭인다."
   },
   "IL-002": {
    "nameSource": "missing",
    "quote": "어떤 이는 위대하게 태어나고, 어떤 이는 위대함을 이루며, 어떤 이는 위대함을 떠안게 된다.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "올리비아 저택의 햇살 가득한 정원. 말볼리오는 요란한 노란 스타킹에 십자 대님을 매고 히죽거리며 으스대고, 위조된 연애편지를 가슴에 꼭 안고 있다."
   },
   "IL-003": {
    "nameSource": "missing",
    "quote": "구해서 얻은 사랑도 좋지만, 구하지 않았는데 주어진 사랑은 더 좋습니다.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "상복을 입은 백작 영애가 베일을 들어 올려 숨 막히는 아름다움을 드러낸다. 올리비아의 정원에는 재스민과 라벤더가 피고, 변장한 전령이 그녀의 마음을 훔친다."
   },
   "RM-001": {
    "nameSource": "derived",
    "name": "브루투스",
    "quote": "내가 시저를 덜 사랑해서가 아니라 로마를 더 사랑했기 때문입니다.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "로마 원로원, 대리석 기둥이 진홍으로 물들어 있다. 브루투스는 공모자들 사이에 서 있고, 그의 칼날은 아직 떨린다. 공화국의 무게가 피 묻은 그의 두 손에 얹혀 있다."
   },
   "RM-002": {
    "nameSource": "derived",
    "name": "카시우스",
    "quote": "친애하는 브루투스, 잘못은 우리의 별에 있는 것이 아니라 우리 자신에게 있네.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "한밤중 횃불이 밝힌 로마의 골목. 카시우스는 여위고 굶주린 표정으로 가까이 몸을 기울여 반역을 속삭인다. 위조된 편지들이 그의 토가에서 쏟아진다."
   },
   "RM-003": {
    "nameSource": "wikidata",
    "name": "마르쿠스 안토니우스",
    "quote": "친구들이여, 로마인들이여, 동포들이여, 귀를 빌려 주시오!",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "로마 광장이 분노로 들끓는다. 마르쿠스 안토니우스는 군중 앞에서 카이사르의 피 묻은 망토를 높이 들고, 그의 말은 슬픔을 불로 바꾼다. 음절 하나하나에 공화국이 무너진다."
   },
   "MO-004": {
    "name": "몬터규 경",
    "nameSource": "translated",
    "quote": "여러 날 아침 그 애가 거기 있는 것이 보였소, 눈물로 싱그러운 아침 이슬을 더하면서.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "새벽의 몬터규 저택. 몬터규 경은 높은 창에서, 사랑에 병들어 다가갈 수 없는 아들이 안개 낀 과수원을 헤매는 것을 지켜본다."
   },
   "CA-003": {
    "name": "캐풀렛 부인",
    "nameSource": "translated",
    "quote": "결혼, 바로 그 결혼 이야기를 하러 왔단다.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "비단으로 장식된 캐풀렛 가문의 대연회장. 캐풀렛 부인은 꽃병에 꽃을 꽂듯 딸의 운명을 배치하고, 우아한 미소마다 그 뒤에서 야망이 반짝인다."
   },
   "DC-004": {
    "nameSource": "wikidata",
    "name": "호레이쇼",
    "quote": "이제 고귀한 심장이 부서지는구나. 편히 잠드소서, 다정한 왕자님.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "동트기 전 차가운 시간의 엘시노어 성벽. 호레이쇼는 햄릿 곁에서 밤을 지킨다. 뱀들의 궁정에서 단 하나뿐인 참된 벗이다."
   },
   "FA-004": {
    "nameSource": "missing",
    "quote": "참으로 희한한 환상을 보았네. 사람의 지혜로는 알 수 없는 꿈을 꾸었네.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "요정의 빛으로 환한 숲속 빈터. 보텀은 어리둥절하면서도 위엄 있게 당나귀 머리를 쓰고 있고, 티타니아는 그를 화환으로 꾸민다. 요정들은 웃음을 참는다."
   },
   "VC-004": {
    "nameSource": "missing",
    "quote": "이런 슬픔의 때에는 구애할 시간이 없군요.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "해 질 녘 베로나의 묘지. 패리스는 줄리엣의 무덤에 꽃을 놓는다. 그림자 속에서 다가오는 절박한 연인을 알지 못한 채."
   },
   "TP-004": {
    "nameSource": "wikidata",
    "name": "미란다",
    "quote": "오, 멋진 신세계여, 이런 사람들이 살고 있다니!",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "프로스페로의 섬에 있는 때 묻지 않은 해변. 미란다는 난파한 선원들을 처음으로 보고, 있는 줄도 몰랐던 세상에 대한 경이로 눈을 크게 뜬다."
   },
   "RL-004": {
    "name": "로미오의 반지",
    "nameSource": "translated",
    "quote": "내 너그러움은 바다처럼 끝이 없고, 내 사랑도 그만큼 깊어요.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "금반지가 발코니의 돌난간 위에 놓여 달빛을 받고 있다. 안쪽에는 죽음보다 오래가는 맹세가 새겨져 있다. 보이지 않는 바람 속에서 장미 꽃잎이 그 주위를 맴돈다."
   },
   "RL-005": {
    "name": "포샤의 상자",
    "nameSource": "translated",
    "quote": "반짝이는 것이 모두 금은 아니다.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "촛불이 켜진 방에서 세 개의 상자가 빛난다. 금, 은, 그리고 납. 납 상자는 조용한 진실로 나직이 울리며, 겉모습 너머를 볼 만큼 지혜로운 이에게 보답한다."
   },
   "RL-006": {
    "name": "맥베스의 왕관",
    "nameSource": "translated",
    "quote": "왕관을 쓴 머리는 편히 눕지 못한다.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "빛바랜 스코틀랜드 왕관이 피 묻은 베개 위에 놓여 있다. 그것은 어두운 야망으로 고동치며, 감히 손을 뻗는 모든 이에게 영광의 약속을 속삭인다."
   },
   "RL-007": {
    "name": "폭풍의 고서",
    "nameSource": "translated",
    "quote": "나의 책을 물에 빠뜨리겠다.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "바닷물에 닳은 가죽으로 장정한 오래된 책이 돌 제단 위에 떠 있다. 책장은 저절로 넘어가고, 장마다 다른 폭풍을 불러낸다."
   },
   "RL-008": {
    "name": "코델리아의 눈물",
    "nameSource": "translated",
    "quote": "오, 사랑하는 아버지, 제가 하는 일은 아버지의 일입니다.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "수정 병에 붙잡힌 별빛처럼 반짝이는 눈물이 담겨 있다. 방울마다, 너무 진실하게 사랑하고 너무 솔직하게 말한 딸의 슬픔이 실려 있다."
   },
   "RL-009": {
    "name": "보텀의 가면",
    "nameSource": "translated",
    "quote": "맙소사, 보텀! 자네 모습이 바뀌었네!",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "당나귀 머리 가면이 요정 숲의 이끼 낀 가지에 걸려 있다. 그것을 쓰는 이는 마법에 걸린 눈으로 세상을 보고, 요정 여왕들이 거부할 수 없는 존재가 된다."
   },
   "PT-004": {
    "name": "맨드레이크 뿌리",
    "nameSource": "translated",
    "quote": "양귀비도, 맨드레이크도, 세상의 어떤 졸음 오는 시럽도.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "비명을 지르는 사람 모양의 옹이 진 뿌리가 촛불 아래에서 캐내어진다. 흙이 부서져 내리며 뒤틀린 태고의 힘이 드러난다. 약제사는 떨리는 경외심으로 그것을 다룬다."
   },
   "PT-005": {
    "name": "오베론의 이슬",
    "nameSource": "translated",
    "quote": "그 꽃을 가져오너라. 내가 전에 네게 보여 준 그 풀이다.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "이슬 한 방울이 달빛 어린 난초에 맺혀 이 세상 것이 아닌 보랏빛으로 빛난다. 잠든 눈꺼풀에 한 방울 떨어뜨리면, 꿈꾸는 이는 처음 보는 존재와 사랑에 빠진다."
   },
   "PT-006": {
    "name": "독미나리 팅크",
    "nameSource": "translated",
    "quote": "내가 마음 놓고 쉬던 시간에 네 숙부가 저주받은 헤보나 즙을 병에 담아 몰래 다가왔다.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "어두운 복도에서 검은 유리병이 초록 증기를 흘린다. 그 안의 팅크는 소리 없는 한 방울 한 방울로 왕들을 쓰러뜨리고 왕조를 무너뜨렸다."
   },
   "PT-007": {
    "name": "겨우살이 추출액",
    "nameSource": "translated",
    "quote": "가마솥에서 끓고 익어라. 영원의 눈과 개구리의 발가락.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "겨울 달 아래에서 거둔 창백한 열매가 짙은 상록 잎 사이에서 반짝인다. 그 추출액은 자연의 조용하고 끈질긴 마법으로 나직이 울린다."
   },
   "PT-008": {
    "name": "인어의 눈물",
    "nameSource": "translated",
    "quote": "다섯 길 물속에 그대 아버지 누워 있네. 그의 뼈는 산호가 되었네.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "진주 마개를 한 병에 살아 있는 바다처럼 일렁이는 빛나는 푸른 액체가 담겨 있다. 그 안에서 작은 산호들이 자라났다가 녹아 사라진다. 소금과 잊힌 항해의 냄새가 난다."
   },
   "PT-009": {
    "name": "약제사의 영약",
    "nameSource": "translated",
    "quote": "이것을 아무 액체에나 타서 다 마시시오. 스무 사람의 힘이 있더라도 곧바로 저세상으로 보낼 것이오.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "만토바의 가장 가난한 구역에 있는 먼지투성이 약방. 금 간 병 속에서 절박한 영약이 호박빛으로 빛난다. 삶과 죽음 사이의 틈을 잇기에 충분할 만큼 강하다."
   },
   "LD-001": {
    "nameSource": "wikidata",
@@ -330,7 +381,8 @@ const pack: CardTextPack = {
     "워즈워스"
    ],
    "quote": "나는 골짜기와 언덕 위 높이 떠도는 구름처럼 외로이 헤매었네.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "황금빛 수선화가 융단처럼 잔잔한 호숫가를 따라 펼쳐져 있다. 워즈워스는 공책을 손에 들고 그 사이를 걷고, 그의 뒤로 컴벌랜드의 산들이 솟아 있다."
   },
   "LD-002": {
    "nameSource": "wikidata",
@@ -340,7 +392,8 @@ const pack: CardTextPack = {
     "코울리지"
    ],
    "quote": "물, 물, 어디에나 물, 그러나 마실 물은 한 방울도 없네.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "바람이 멎어 멈춘 배가 그림 같은 바다 위를 떠돈다. 늙은 뱃사람은 자기 목에 걸린 앨버트로스를 응시하고, 유리 같은 바다에서 유령 같은 형체들이 떠오른다."
   },
   "LD-003": {
    "nameSource": "wikidata",
@@ -349,55 +402,64 @@ const pack: CardTextPack = {
     "키츠"
    ],
    "quote": "아름다운 것은 영원한 기쁨이다. 그 사랑스러움은 더해 간다.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "가을의 햄스테드 정원. 키츠는 자두나무 아래 앉아 열에 들뜬 듯 쓰고, 어두워지는 가지에서 나이팅게일이 노래한다."
   },
   "GC-001": {
    "nameSource": "wikidata",
    "name": "바이런 경",
    "quote": "그녀는 아름다움 속을 걷는다, 구름 없는 땅과 별이 빛나는 하늘의 밤처럼.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "한밤중의 베네치아 저택. 바이런은 발코니에 서서 망토를 휘날리며 어두운 운하를 바라본다. 그의 뒤 벽난로에서는 쓰다 만 원고가 타고 있다."
   },
   "GC-002": {
    "nameSource": "wikidata",
    "name": "메리 셸리",
    "quote": "조심하라. 나는 두려움이 없고, 그래서 강하다.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "천둥 번개가 치는 밤, 촛불이 켜진 제네바의 서재. 메리는 번갯불에 의지해 글을 쓰고, 그녀 뒤의 그림자 속에서 피조물이 꿈틀거린다. 과학과 공포가 하나가 된다."
   },
   "GC-003": {
    "nameSource": "wikidata",
    "name": "에드거 앨런 포",
    "quote": "어느 음울한 한밤중, 내가 지치고 약해져 생각에 잠겨 있을 때.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "꺼져 가는 불빛이 비추는 어둑한 방. 포가 책상에 웅크리고 앉아 있을 때 까마귀 한 마리가 팔라스의 흉상 위에 내려앉는다. \"이제는 없으리\"라는 말이 그림자 속에 메아리친다."
   },
   "GC-004": {
    "nameSource": "wikidata",
    "name": "윌리엄 블레이크",
    "quote": "한 알의 모래에서 세계를 보고 한 송이 들꽃에서 천국을 본다.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "환상의 빛으로 타오르는 런던의 인쇄 공방. 블레이크가 동판에 호랑이를 새기자 그 짐승이 판에서 걸어 나와 밤의 숲속에서 환히 타오른다."
   },
   "GC-005": {
    "nameSource": "wikidata",
    "name": "퍼시 비시 셸리",
    "quote": "겨울이 오면 봄이 멀 수 있으랴?",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "바람이 휘몰아치는 이탈리아의 절벽 꼭대기. 셸리는 두 팔을 벌려 폭풍에 맞서고, 서풍은 그의 공책에서 책장을 뜯어내 지중해 위로 흩뿌린다."
   },
   "LD-004": {
    "nameSource": "wikidata",
    "name": "엘리자베스 배럿 브라우닝",
    "quote": "내가 그대를 어떻게 사랑하느냐고요? 그 방법을 세어 볼게요.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "피렌체의 햇살 가득한 방. 엘리자베스는 아르노강이 내려다보이는 창가에서 글을 쓰고, 발치에는 스패니얼이 있다. 로버트가 보낸 연애편지가 책상 위에 펼쳐져 있다."
   },
   "LD-005": {
    "nameSource": "wikidata",
    "name": "크리스티나 로제티",
    "quote": "내가 떠나거든 나를 기억해 주세요, 멀리 고요한 땅으로 떠나거든.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "스러져 가는 가을빛 속의 라파엘 전파풍 정원. 크리스티나는 낙엽 사이에 앉아, 아름다움과 고요한 체념으로 가슴 아린 시를 짓는다."
   },
   "OL-001": {
    "nameSource": "wikidata",
    "name": "제우스",
    "quote": "나는 구름을 모으는 자, 넓은 하늘의 주인이다.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "올림포스산이 하늘을 가른다. 제우스는 구름의 왕좌에 앉아 있고, 그의 손가락 사이로 번개가 튄다. 아래에서는 인간 세상이 그의 시선에 떤다."
   },
   "OL-002": {
    "nameSource": "wikidata",
@@ -406,7 +468,8 @@ const pack: CardTextPack = {
     "아테네"
    ],
    "quote": "지혜의 올빼미는 황혼에야 날아오른다.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "파르테논 신전이 금빛 속에 빛난다. 아테나는 완전 무장을 하고 서 있고, 방패 위에는 올빼미가 앉아 있으며, 그녀의 잿빛 눈은 인간의 모든 속임수를 꿰뚫어 본다."
   },
   "OL-003": {
    "nameSource": "wikidata",
@@ -415,19 +478,22 @@ const pack: CardTextPack = {
     "스민테우스"
    ],
    "quote": "나는 노래와 치유와 빛나는 태양의 신이다.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "황금 전차가 새벽 하늘을 가로질러 달린다. 아폴론이 리라를 타자 바퀴에서 햇빛이 쏟아져 세상을 색으로 물들인다."
   },
   "OL-004": {
    "nameSource": "wikidata",
    "name": "아프로디테",
    "quote": "신들조차 사랑의 힘을 거스르지 못한다.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "새벽의 키프로스 해안. 아프로디테가 바다 거품에서 솟아오르고, 비둘기들이 위를 맴돌며, 파도가 그녀의 발치에 진주를 놓는다. 세상이 숨을 죽인다."
   },
   "OL-005": {
    "nameSource": "wikidata",
    "name": "헤르메스",
    "quote": "생각처럼 빠르게, 나는 신들의 말을 인간의 귀에 전한다.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "날개 달린 샌들이 하늘을 스쳐 지나간다. 헤르메스는 벼락 사이를 누비고, 한 손에는 신의 전언을 움켜쥐고 얼굴에는 도둑의 웃음을 띠고 있다."
   },
   "UW-001": {
    "nameSource": "wikidata",
@@ -437,13 +503,15 @@ const pack: CardTextPack = {
     "하이데스"
    ],
    "quote": "모든 영혼은 끝내 내게로 온다. 나는 참을성이 있다.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "창백한 불의 강들이 비추는 저승의 알현실. 하데스는 발치에 케르베로스를 두고 앉아 있고, 어둠의 투구는 팔걸이에 놓여 있다. 죽은 자들이 끝없는 침묵 속에 줄지어 지나간다."
   },
   "UW-002": {
    "nameSource": "wikidata",
    "name": "페르세포네",
    "quote": "나는 씨앗 여섯 알을 먹고 두 세계 사이에 영원히 묶였다.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "봄과 그림자로 반씩 나뉜 왕좌. 페르세포네는 한 손에 석류를, 다른 손에 화관을 들고 있다. 두 세계의 여왕이다."
   },
   "OL-006": {
    "nameSource": "wikidata",
@@ -455,13 +523,15 @@ const pack: CardTextPack = {
     "오디세이스"
    ],
    "quote": "무사 여신이여, 멀리 떠돌았던 꾀 많은 사내의 이야기를 들려주소서.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "폭풍에 시달린 배가 바위투성이 곶을 돌아간다. 오디세우스는 자신을 돛대에 묶고, 절벽에서는 세이렌들이 노래한다. 그의 눈에는 이타카의 기억이 타오른다."
   },
   "UW-003": {
    "nameSource": "wikidata",
    "name": "메두사",
    "quote": "용기가 있다면 나를 보아라. 내 눈길이 네가 보는 마지막이 될 것이다.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "세상 끝의 무너진 신전. 메두사가 돌아서고, 뱀으로 된 머리카락이 쉿쉿거린다. 돌이 된 전사들이 바닥에 널려 있다. 마지막 돌격의 모습 그대로 굳은 채."
   },
   "OL-007": {
    "nameSource": "wikidata",
@@ -470,7 +540,8 @@ const pack: CardTextPack = {
     "아킬레스"
    ],
    "quote": "잊혀진 긴 삶보다 영광의 짧은 삶을 살겠다.",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "새벽의 트로이 평원. 아킬레우스가 눈부신 갑옷을 입고 돌격하고, 그의 함성이 공기를 가른다. 그의 뒤로 그리스의 배들이 해안에서 불타고 있다."
   }
  },
  "houses": {

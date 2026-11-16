@@ -72,3 +72,57 @@ United States test used is "published before 1931"; the home-country test is the
 - Invocation: each word of each character's name in the duel's language counts, with the item's one-word
   aliases, as well as the English names.
 - An English duel does not go through any of this.
+
+## What was not done, and what has not been checked
+
+Read this before treating any language as finished.
+
+- **Published lines were only taken for French (Hugo, all the plays and the sonnet), Polish (Ulrich),
+  Russian (several translators) and German (Schlegel, Romeo und Julia only).** In Polish, Russian and German
+  only the lines that a search pattern found and that could be recognised with certainty were taken; the
+  rest of those plays is in the same sources and was not extracted. Every other line in every language is
+  marked `NEW, unsourced`.
+- **Leads not followed up** (Wikisource pages that Wikidata links to the works, seen on 2026-11-16, not
+  opened): Spanish (Romeo y Julieta, Hamlet, El sueño de una noche de verano, Macbeth, Julio César, El
+  mercader de Venecia, El rey Lear, Otelo), Italian (Giulietta e Romeo, Amleto, La tempesta, Macbeth, La
+  dodicesima notte, Il mercante di Venezia, Il re Lear, Otello), Portuguese (Romeu e Julieta, Hamlet),
+  Chinese (Hamlet as 漢姆萊脫; Sonnet 18), Japanese (ロミオとヂュリエット), Korean (햄릿), Arabic (تاجر البندقية;
+  Sonnet 18), German (Sonnet 18). Their translators and copyright status were not established. For the
+  Romantic poems, Wikisource has The Raven in German, Spanish, French, Italian, Portuguese and Russian,
+  "She Walks in Beauty" in Polish and Frankenstein in French; none was used. No library other than
+  Wikisource was searched. Nothing was found, or looked for, in Hindi, Vietnamese, Thai or Indonesian.
+- **The place of each published line in its play was recognised by reading the passage around the match**
+  (speaker, neighbouring lines), not by act, scene and line numbers in the translation. The citation given
+  is that of the English line.
+- **Scene descriptions are translated in es, fr, de, it, pt, pl, ru, zh, ja, ko and id. They are not
+  translated in Arabic, Hindi, Vietnamese or Thai**, the four languages the translating model is least sure
+  of; those show the English scene.
+- **No independent tool has checked any translated text.** LanguageTool, Hunspell and a back-translation
+  model were not run: the build host refused work for load during this task. Every `translated` name,
+  every `NEW` line and every scene is one model's output, unreviewed.
+- **Wikidata labels are community-edited and a few look doubtful.** They are used as found. For review:
+  Russian Horatio is labelled "Гораций" (the usual stage name is Горацио); Chinese Macbeth is "马克白", the
+  Taiwan form, converted to Simplified characters (the mainland form is 麦克白); Romans carry their Latin
+  names (Japanese ブルトゥス for Brutus, where the stage tradition says ブルータス); some poets carry a full
+  formal name (Vietnamese and Thai Byron). Brand-new translated relic names follow these labels.
+- **The stop-word list is broad.** stopwords-iso counts some content words as stop words (Portuguese
+  "questão"), so a few lines have no telling word of their own in a language; the test suite prints which.
+  For those cards the English words decide, as before.
+- The telling words of a line depend on `Intl.Segmenter` for Chinese, Japanese and Thai, so they can differ
+  slightly between browsers and Node versions.
+
+## How to rebuild
+
+```
+# names (Wikidata), texts (Wikisource) and lines (patterns): scripts/language/fetch/
+python3 scripts/language/fetch/names.py            # writes wikidata-names.json
+python3 scripts/language/fetch/fetchwork.py fr.wikisource.org fr hamlet "Le second Hamlet (trad. Hugo)"
+python3 scripts/language/fetch/extract.py fr scripts/language/fetch/specs/fr.txt
+# then, from the repository root (needs: pip install regex opencc-python-reimplemented)
+python3 scripts/language/build_card_text.py
+```
+
+The fetch scripts write into the directory they are run from (`cache/`, `out/`); copy `out/<lang>.json`
+to `docs/language/sources/quotes-<lang>.json`. The texts themselves are not kept in the repository, only
+the lines used, each with the permanent link of the revision it was read from.
+

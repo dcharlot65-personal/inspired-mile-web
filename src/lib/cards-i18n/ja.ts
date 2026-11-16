@@ -9,13 +9,15 @@ const pack: CardTextPack = {
    "name": "The Sonnet Man",
    "nameSource": "translated",
    "quote": "君を夏の一日にたとえようか。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "壮大な舞台が姿を現す。The Sonnet Man がマイクを手に、金色のスポットライトの中から進み出る。シェイクスピアの言葉がヒップホップの詩行に変わり、観客が歓声を上げる。"
   },
   "MO-001": {
    "nameSource": "wikidata",
    "name": "ロミオ・モンタギュー",
    "quote": "だが待て、あの窓からこぼれる光は何だろう。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "月明かりのバルコニーの場面が広がる。ロミオが上へ手を伸ばすと、頭上にジュリエットが現れる。薔薇の花びらが宙を漂う。場面全体があたたかな深紅の光に脈打つ。"
   },
   "CA-001": {
    "nameSource": "wikidata",
@@ -24,81 +26,95 @@ const pack: CardTextPack = {
     "ジュリエット"
    ],
    "quote": "名前に何があるというの。私たちが薔薇と呼ぶあの花は……",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "キャピュレット家の庭が月明かりに咲き誇る。ジュリエットは薔薇の中に立ち、その目は反抗の光に輝く。枝の上でナイチンゲールが歌う。"
   },
   "DC-001": {
    "nameSource": "wikidata",
    "name": "ハムレット",
    "quote": "生きるべきか、死ぬべきか、それが問題だ。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "エルシノア城が影の中から浮かび上がる。ハムレットは胸壁に立ち、その傍らにヨリックの髑髏が浮かぶ。城壁の上に亡霊のような姿が現れる。"
   },
   "DC-002": {
    "nameSource": "wikidata",
    "name": "オフィーリア",
    "quote": "これはローズマリー、思い出のしるし。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "穏やかな小川が柳の林を縫って流れる。オフィーリアは野の花の間に浮かび、忘れられた詩をささやく。花びらが流れの中で輪を描く。"
   },
   "MO-002": {
    "nameSource": "missing",
    "quote": "どちらの家もくたばってしまえ！",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "ヴェローナの通りが大混乱に陥る。マキューシオは刃の間で踊り、危険を前に笑い声を上げる。ぶつかり合う鋼から火花が散る。"
   },
   "FA-001": {
    "nameSource": "wikidata",
    "name": "パック",
    "quote": "まったく、人間というのは何と愚かなのだろう！",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "魔法の森がいたずらの気配にきらめく。パックは古い樫の木の間を駆け抜け、妖精の粉の跡を残していく。下では眠る人間たちが奇妙な夢を見ている。"
   },
   "FA-002": {
    "nameSource": "wikidata",
    "name": "タイターニア",
    "quote": "さあ、この花の寝床にお座りなさい。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "生きた蔓でできた玉座が森の地面からせり上がる。タイターニアが妖精の宮廷を従え、蛍が木々の梢を照らす。自然そのものが彼女の意志にひれ伏す。"
   },
   "RL-001": {
    "name": "ヨリックの髑髏",
    "nameSource": "translated",
    "quote": "ああ、哀れなヨリック！ 私はこの男を知っていたのだ、ホレイショー。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "薄暗い地下墓所で、髑髏がビロードの上に置かれている。亡霊のような笑い声が響き、宮廷道化師の記憶が蝋燭の火のように揺らめく。"
   },
   "RL-002": {
    "name": "プロスペロの杖",
    "nameSource": "translated",
    "quote": "いまや私の魔法はすべて破れた。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "節くれだった杖が秘術の力で火花を散らす。プロスペロが最後の呪文をささやくと、嵐がその周りに渦を巻く。稲妻が空を裂く。"
   },
   "PT-001": {
    "name": "惚れ薬",
    "nameSource": "translated",
    "quote": "まことの恋の道は、けっして平らであったためしがない。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "光を放つ小瓶が薔薇色の輝きに脈打つ。その表面から小さなハートが立ちのぼり、甘い旋律があたりに満ちる。"
   },
   "PT-002": {
    "name": "魔女の煮汁",
    "nameSource": "translated",
    "quote": "倍だ、倍だ、苦労も苦しみも。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "煮えたぎる大釜が緑の煙を吐き出す。三つの影のような人影がその周りを巡り、呪文を唱える。向こうの暗い森から目が光っている。"
   },
   "VC-001": {
    "nameSource": "missing",
    "quote": "ふたたび街を騒がせるなら、平和を乱した償いにお前たちの命をもらう。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "大公はヴェローナの宮殿の石段に立ち、その声が争う群衆を黙らせる。黄金の笏が権威に燃える。"
   },
   "VC-002": {
    "nameSource": "missing",
    "quote": "激しい喜びには激しい終わりが来る。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "蝋燭の灯る修道院の小部屋。修道士は薬草と毒草の庭の手入れをし、風雪に耐えたその顔には知恵が刻まれている。"
   },
   "VC-003": {
    "nameSource": "missing",
    "quote": "あなたの喜びのために骨を折る下働きは、この私ですよ。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "キャピュレット家のあたたかな台所。乳母はひたむきな忠義でせわしなく立ち働き、エプロンには秘密の手紙が忍ばせてある。"
   },
   "TP-001": {
    "nameSource": "wikidata",
    "name": "プロスペロ",
    "quote": "我々は夢と同じ材料でできている。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "嵐に包まれた島。プロスペロが両手を上げると、稲妻は彼の意志に従い、海は彼の命令で逆巻く。"
   },
   "TP-002": {
    "nameSource": "wikidata",
@@ -107,30 +123,35 @@ const pack: CardTextPack = {
     "アリエル"
    ],
    "quote": "ばんざい、偉大なるご主人さま！ 厳かな殿、ばんざい！",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "きらめく精霊が風と光に溶け、音楽となってふたたび形を結ぶ。エアリエルは見えるものと見えないもののあいだで踊る。"
   },
   "TP-003": {
    "nameSource": "wikidata",
    "name": "キャリバン",
    "quote": "この島はおれのものだ、母シコラクスから受け継いだ。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "荒々しい海岸に開いた洞窟の口。キャリバンは岩の間にうずくまり、その目は恨みと原始の知性に燃えている。"
   },
   "MO-003": {
    "nameSource": "missing",
    "quote": "私はただ平和を守っているだけだ。剣を収めろ。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "夜明けのヴェローナの広場。ベンヴォーリオは抜かれた剣の間に立ち、開いた両手だけが迫りくる嵐に立ち向かう武器である。"
   },
   "CA-002": {
    "nameSource": "wikidata",
    "name": "ティボルト",
    "quote": "何だと、剣を抜いておいて平和を語るのか。その言葉は大嫌いだ。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "松明の光に燃え立つヴェローナの路地。ティボルトは敵を見据えたまま、命を奪うほど優美な手つきで細身の剣を抜く。"
   },
   "DC-003": {
    "nameSource": "wikidata",
    "name": "クローディアス",
    "quote": "言葉は天へ飛んでいくが、思いは地に残る。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "偽りの華やかさに包まれたエルシノアの玉座の間。クローディアスは王冠を握りしめ、衣の中に毒の小瓶を隠している。"
   },
   "FA-003": {
    "nameSource": "wikidata",
@@ -139,31 +160,36 @@ const pack: CardTextPack = {
     "オベロン"
    ],
    "quote": "月夜に悪い出会いだな、高慢なタイターニア。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "魔法の森の奥深く、月明かりの空き地。オーベロンが影の中から姿を現し、鹿の角の冠が銀色の光を受ける。"
   },
   "RL-003": {
    "name": "心の短剣",
    "nameSource": "translated",
    "quote": "目の前に見えるこれは短剣か。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "亡霊のような短剣が闇に浮かび、刃から幻の血がしたたる。マクベスの手は伸びるが、けっしてつかむことができない。"
   },
   "PT-003": {
    "name": "パックの花の汁",
    "nameSource": "translated",
    "quote": "四十分で地球に帯をひと巻きしてみせます。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "つぶされた紫の花が、待ち受ける手のひらに虹色の蜜をしたたらせる。それが落ちるところでは目が変わり、心もそれに続く。"
   },
   "SC-001": {
    "nameSource": "wikidata",
    "name": "マクベス",
    "quote": "男にふさわしいことなら何でもやってみせる。それ以上をやる者は男ではない。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "ダンシネインの血に染まった玉座の間。マクベスは震える手で剣を握り、王冠が額に重くのしかかる。遠くの丘でバーナムの森が動き出す。"
   },
   "SC-002": {
    "nameSource": "wikidata",
    "name": "マクベス夫人",
    "quote": "来い、人殺しの思いに仕える悪霊たちよ、この場で私を女でなくしておくれ。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "スコットランドの城の、蝋燭の灯る一室。マクベス夫人は冷たい石の上を行き来し、ありもしない血の染みを手からこすり落とそうとする。影が第二の肌のように彼女にまとわりつく。"
   },
   "SC-003": {
    "nameSource": "wikidata",
@@ -174,25 +200,29 @@ const pack: CardTextPack = {
     "バンクォー"
    ],
    "quote": "おまえは王にはならぬが、王たちを生むだろう。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "たそがれ時の霧深いスコットランドの荒野。バンクォウは毅然と立ち、三つの亡霊のような人影が運命を風にささやく。彼の亡霊は生者に取り憑くだろう。"
   },
   "IL-001": {
    "nameSource": "wikidata",
    "name": "ヴァイオラ",
    "quote": "私は今の私ではありません。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "風の吹きすさぶイリリアの海岸。ヴァイオラは短く切った髪に水夫の帽子を深くかぶり、その目には二つの素性が揺らめく。海は行方知れずの兄の秘密をささやく。"
   },
   "IL-002": {
    "nameSource": "wikidata",
    "name": "マルヴォーリオ",
    "quote": "生まれながらに偉大な者もあり、努力して偉大になる者もあり、偉大さを押しつけられる者もある。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "オリヴィアの屋敷の日の当たる庭。マルヴォーリオはけばけばしい黄色の靴下に十字の靴下留めをして、にやにやしながら気取って歩き、偽の恋文を胸に抱きしめている。"
   },
   "IL-003": {
    "nameSource": "wikidata",
    "name": "オリヴィア",
    "quote": "求めて得た恋もよいけれど、求めずに与えられた恋はもっとよい。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "喪に服す伯爵令嬢がヴェールを上げ、息をのむほどの美しさをあらわにする。オリヴィアの庭にはジャスミンとラベンダーが咲き、変装した使者が彼女の心を奪う。"
   },
   "RM-001": {
    "nameSource": "derived",
@@ -201,131 +231,153 @@ const pack: CardTextPack = {
     "ブルトゥス家"
    ],
    "quote": "シーザーを愛さなかったのではない、ローマをより深く愛したのだ。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "ローマの元老院、大理石の柱は深紅に染まっている。ブルトゥスは陰謀者たちの中に立ち、その刃はまだ震えている。共和国の重みが血に濡れた彼の手にかかっている。"
   },
   "RM-002": {
    "nameSource": "derived",
    "name": "カッシウス",
    "quote": "ブルータスよ、罪は我々の星にあるのではない、我々自身にあるのだ。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "真夜中、松明の灯るローマの路地。カッシウスは身を寄せ、痩せて飢えたような顔つきで謀反をささやく。偽造した手紙がトーガからこぼれ落ちる。"
   },
   "RM-003": {
    "nameSource": "wikidata",
    "name": "マルクス・アントニウス",
    "quote": "友よ、ローマ市民よ、同胞よ、耳を貸してくれ！",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "ローマのフォルムが怒りに沸き返る。マルクス・アントニウスは群衆の前でカエサルの血染めの外套を高く掲げ、その言葉が悲しみを炎に変える。一音ごとに共和国が崩れていく。"
   },
   "MO-004": {
    "name": "モンタギュー卿",
    "nameSource": "translated",
    "quote": "幾朝もあの子はあそこで姿を見られています、涙でさわやかな朝露を増やしながら。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "夜明けのモンタギュー家の屋敷。モンタギュー卿は高い窓から、霧のかかる果樹園をさまよう息子を見つめる。恋に病み、手の届かない息子を。"
   },
   "CA-003": {
    "name": "キャピュレット夫人",
    "nameSource": "translated",
    "quote": "結婚、まさにその結婚の話をしに来たのですよ。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "絹をめぐらせたキャピュレット家の大広間。キャピュレット夫人は花瓶に花を生けるように娘の運命を整え、しとやかな微笑みの一つ一つの奥に野心がきらめく。"
   },
   "DC-004": {
    "nameSource": "wikidata",
    "name": "ホレイショー",
    "quote": "いま気高い心が砕けた。おやすみなさい、優しい王子さま。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "夜明け前の冷たい時刻、エルシノアの胸壁。ホレイショーはハムレットの傍らで見張りに立つ。蛇ばかりの宮廷でただ一人の真の友である。"
   },
   "FA-004": {
    "nameSource": "derived",
    "name": "ボトム",
    "quote": "世にも珍しい幻を見た。人間の知恵では測れない夢を見た。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "妖精の光に輝く森の空き地。ボトムは戸惑いながらも威厳を保ってロバの頭をかぶり、タイターニアが彼を花輪で飾る。妖精たちは笑いをこらえている。"
   },
   "VC-004": {
    "nameSource": "missing",
    "quote": "この悲しみの時には、求婚する暇もありません。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "夕暮れのヴェローナの墓地。パリスはジュリエットの墓に花を手向ける。影の中から近づいてくる必死の恋人には気づかずに。"
   },
   "TP-004": {
    "nameSource": "missing",
    "quote": "ああ、すばらしい新世界、こんな人たちがいるなんて！",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "プロスペロの島の汚れのない浜辺。ミランダは難破した船乗りたちを初めて目にし、知らなかった世界への驚きに目を見開く。"
   },
   "RL-004": {
    "name": "ロミオの指輪",
    "nameSource": "translated",
    "quote": "私の気前のよさは海のように果てしなく、私の愛も同じくらい深いのです。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "金の指輪がバルコニーの石の手すりに置かれ、月の光を受けている。内側には死そのものよりも長く続く誓いが刻まれている。見えない風の中で、薔薇の花びらがその周りを舞う。"
   },
   "RL-005": {
    "name": "ポーシャの小箱",
    "nameSource": "translated",
    "quote": "光るものすべてが金ではない。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "蝋燭の灯る部屋に三つの小箱が輝く。金、銀、そして鉛。鉛の小箱は静かな真実に低く響き、見かけの奥を見抜く知恵のある者に報いる。"
   },
   "RL-006": {
    "name": "マクベスの王冠",
    "nameSource": "translated",
    "quote": "王冠をいただく頭は安らかに眠れない。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "くすんだスコットランドの王冠が血に染まった枕の上に置かれている。それは暗い野心に脈打ち、手を伸ばす勇気のある者すべてに栄光の約束をささやく。"
   },
   "RL-007": {
    "name": "嵐の古写本",
    "nameSource": "translated",
    "quote": "私の書物を海に沈めよう。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "海にさらされた革で綴じられた古い書物が、石の祭壇の上に浮かんでいる。頁はひとりでにめくれ、その一枚一枚が別の嵐を呼び起こす。"
   },
   "RL-008": {
    "name": "コーディリアの涙",
    "nameSource": "translated",
    "quote": "ああ、お父さま、私が取りかかっているのはあなたのご用なのです。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "水晶の小瓶に、捕らえられた星明かりのようにきらめく涙が収められている。その一滴一滴が、あまりに真実に愛し、あまりに率直に語った娘の悲しみを宿している。"
   },
   "RL-009": {
    "name": "ボトムの仮面",
    "nameSource": "translated",
    "quote": "おやおや、ボトム！ おまえは姿が変わってしまった！",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "ロバの頭の仮面が、妖精の森の苔むした枝にかかっている。それをかぶる者は魔法のかかった目で世界を見、妖精の女王たちにとって抗いがたい存在となる。"
   },
   "PT-004": {
    "name": "マンドレイクの根",
    "nameSource": "translated",
    "quote": "芥子も、マンドラゴラも、この世のどんな眠り薬も。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "叫ぶ人の形をした節くれだった根が、蝋燭の明かりのもとで掘り出される。土が崩れ落ち、ねじれた太古の力があらわになる。薬屋は震えるほどの畏れをもってそれを扱う。"
   },
   "PT-005": {
    "name": "オーベロンの露",
    "nameSource": "translated",
    "quote": "あの花を取ってきておくれ。いつかおまえに見せたあの草だ。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "月明かりの蘭に一粒の露がとどまり、この世ならぬ紫の光を放つ。眠るまぶたに一滴落とせば、夢見る者は最初に目にした生き物に恋をする。"
   },
   "PT-006": {
    "name": "毒人参のチンキ",
    "nameSource": "translated",
    "quote": "私が安心して眠る時刻に、おまえの叔父は呪わしいヘボナの汁を小瓶に入れて忍び寄った。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "暗い廊下で、黒いガラスの小瓶が緑の蒸気をにじませる。中のチンキは、音もない一滴また一滴で、王たちを倒し王朝を砕いてきた。"
   },
   "PT-007": {
    "name": "宿り木のエキス",
    "nameSource": "translated",
    "quote": "大釜で煮えろ、焼けろ。いもりの目に蛙の指。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "冬の月の下で摘まれた淡い色の実が、暗い常緑の葉の間で光る。そのエキスは、自然界の静かで粘り強い魔法に低く響く。"
   },
   "PT-008": {
    "name": "人魚の涙",
    "nameSource": "translated",
    "quote": "五尋の深みにそなたの父は眠る。その骨は珊瑚となった。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "真珠の栓をした瓶に、生きた海のように揺れ動く、光る青い液体が収められている。その中で小さな珊瑚が育っては溶けていく。塩と、忘れられた航海の匂いがする。"
   },
   "PT-009": {
    "name": "薬屋の霊薬",
    "nameSource": "translated",
    "quote": "これを好きな飲み物に入れて飲み干しなさい。二十人力の男でも、たちどころにあの世行きです。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "マントヴァの最も貧しい界隈にある、ほこりっぽい薬屋。ひびの入った小瓶の中で、窮余の霊薬が琥珀色に光る。生と死のあいだの隔たりを越えるほどに強い。"
   },
   "LD-001": {
    "nameSource": "wikidata",
    "name": "ウィリアム・ワーズワース",
    "quote": "私は谷や丘の上高く漂う雲のように、ひとりさまよった。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "金色の水仙の絨毯が、静かな湖の岸辺に沿って広がる。ワーズワースは手帳を手にその中を歩き、背後にはカンバーランドの山々がそびえる。"
   },
   "LD-002": {
    "nameSource": "wikidata",
@@ -335,7 +387,8 @@ const pack: CardTextPack = {
     "コウルリッジ"
    ],
    "quote": "水、水、どこもかしこも水、それなのに飲める水は一滴もない。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "凪で止まった船が、絵に描いたような海の上を漂う。老水夫は首にかけられたアホウドリを見つめ、鏡のような海から亡霊のような人影が立ちのぼる。"
   },
   "LD-003": {
    "nameSource": "wikidata",
@@ -344,7 +397,8 @@ const pack: CardTextPack = {
     "キーツ"
    ],
    "quote": "美しいものは永遠の喜びである。その愛らしさは増していく。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "秋のハムステッドの庭。キーツは李の木の下に座って熱に浮かされたように書き、暗くなっていく枝からナイチンゲールが歌う。"
   },
   "GC-001": {
    "nameSource": "wikidata",
@@ -353,13 +407,15 @@ const pack: CardTextPack = {
     "バイロン"
    ],
    "quote": "彼女は美しさの中を歩む、雲ひとつない国の星空の夜のように。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "真夜中のヴェネツィアの館。バイロンはバルコニーに立ち、外套をはためかせ、暗い運河を見つめている。背後の暖炉では書きかけの原稿が燃えている。"
   },
   "GC-002": {
    "nameSource": "wikidata",
    "name": "メアリー・シェリー",
    "quote": "気をつけるがいい。私は恐れを知らない、それゆえに強いのだ。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "雷雨のさなか、蝋燭の灯るジュネーヴの書斎。メアリーは稲光を頼りに書き、背後の影の中であの被造物がうごめく。科学と恐怖がひとつになる。"
   },
   "GC-003": {
    "nameSource": "wikidata",
@@ -371,31 +427,36 @@ const pack: CardTextPack = {
     "ポー"
    ],
    "quote": "あるわびしい真夜中のこと、弱り疲れて思いにふけっていると。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "消えかけた火に照らされた薄暗い部屋。ポーが机にかがみ込んでいると、一羽の大鴉がパラスの胸像にとまる。「またとない」という言葉が影の中にこだまする。"
   },
   "GC-004": {
    "nameSource": "wikidata",
    "name": "ウィリアム・ブレイク",
    "quote": "一粒の砂に世界を見、一輪の野の花に天国を見る。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "幻視の光に燃え立つロンドンの印刷工房。ブレイクが銅板に虎を刻むと、その獣が版から現れ、夜の森で赤々と燃える。"
   },
   "GC-005": {
    "nameSource": "wikidata",
    "name": "パーシー・ビッシュ・シェリー",
    "quote": "冬が来たなら、春は遠くないのではないか。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "風の吹きすさぶイタリアの崖の上。シェリーは両腕を広げて嵐に向かい、西風が手帳から頁を引きちぎって地中海にまき散らす。"
   },
   "LD-004": {
    "nameSource": "wikidata",
    "name": "エリザベス・ブラウニング",
    "quote": "どのようにあなたを愛しているか。その数々を数えさせてください。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "フィレンツェの日の当たる部屋。エリザベスはアルノ川を見下ろす窓辺で書き、足もとにはスパニエル犬がいる。ロバートからの恋文が机の上に開かれている。"
   },
   "LD-005": {
    "nameSource": "wikidata",
    "name": "クリスティーナ・ロセッティ",
    "quote": "私を思い出してください、私が去ったあと、遠く静かな国へ去ったあとに。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "薄れゆく秋の光に包まれたラファエル前派の庭。クリスティーナは落ち葉の中に座り、美しさと静かな諦めに胸の痛む詩を紡ぐ。"
   },
   "OL-001": {
    "nameSource": "wikidata",
@@ -405,7 +466,8 @@ const pack: CardTextPack = {
     "ZEUS"
    ],
    "quote": "我は雲を集める者、広き天の主である。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "オリュンポス山が空を裂く。ゼウスは雲の玉座に座り、その指の間に稲妻が走る。下では人間の世界が彼のまなざしに震える。"
   },
   "OL-002": {
    "nameSource": "wikidata",
@@ -415,7 +477,8 @@ const pack: CardTextPack = {
     "アテナ女神"
    ],
    "quote": "知恵の梟は夕暮れにのみ飛び立つ。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "パルテノン神殿が金色の光に輝く。アテーナーは全身に鎧をまとって立ち、盾には梟がとまり、その灰色の目は人間のあらゆる欺きを見抜く。"
   },
   "OL-003": {
    "nameSource": "wikidata",
@@ -425,7 +488,8 @@ const pack: CardTextPack = {
     "アポロー"
    ],
    "quote": "我は歌と癒やしと輝く太陽の神である。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "黄金の戦車が夜明けの空を駆ける。アポローンが竪琴を奏でると、車輪から陽の光があふれ、世界を色で染めていく。"
   },
   "OL-004": {
    "nameSource": "wikidata",
@@ -437,7 +501,8 @@ const pack: CardTextPack = {
     "アフロディテー"
    ],
    "quote": "神々でさえ愛の力には逆らえない。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "夜明けのキプロスの海岸。アプロディーテーが海の泡から立ち上がり、頭上を鳩が舞い、波が彼女の足もとに真珠を置く。世界が息をひそめる。"
   },
   "OL-005": {
    "nameSource": "wikidata",
@@ -449,7 +514,8 @@ const pack: CardTextPack = {
     "ハーミース"
    ],
    "quote": "思いのように速く、我は神々の言葉を人の耳に運ぶ。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "翼のあるサンダルが空をかすめて走る。ヘルメースは雷の間を縫い、片手に神々の伝言を握り、顔には盗人の笑みを浮かべている。"
   },
   "UW-001": {
    "nameSource": "wikidata",
@@ -461,7 +527,8 @@ const pack: CardTextPack = {
     "ハーイデス"
    ],
    "quote": "すべての魂は最後に我のもとへ来る。我は辛抱強い。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "青白い炎の川に照らされた冥界の玉座の間。ハーデースは足もとにケルベロスを従えて座り、姿を隠す兜が肘掛けに置かれている。死者たちが果てしない沈黙の中を列をなして過ぎていく。"
   },
   "UW-002": {
    "nameSource": "wikidata",
@@ -473,7 +540,8 @@ const pack: CardTextPack = {
     "プラクシディケー"
    ],
    "quote": "私は六粒の種を食べ、二つの世界のあいだに永遠に身を縛った。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "春と影とに分かたれた玉座。ペルセポネーは片手に柘榴を、もう片方の手に花の冠を持つ、二つの国の女王である。"
   },
   "OL-006": {
    "nameSource": "wikidata",
@@ -484,7 +552,8 @@ const pack: CardTextPack = {
     "ウリクセス"
    ],
    "quote": "語りたまえ、ムーサよ、遠くさすらった知略に富む男のことを。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "嵐に打たれた船が岩だらけの岬を回る。オデュッセウスは帆柱にわが身を縛りつけ、崖の上からセイレーンたちが歌う。その目にはイタケーの記憶が燃えている。"
   },
   "UW-003": {
    "nameSource": "wikidata",
@@ -494,7 +563,8 @@ const pack: CardTextPack = {
     "メドゥサ"
    ],
    "quote": "勇気があるなら私を見よ。私のまなざしがおまえの見る最後のものとなる。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "世界の果ての崩れた神殿。メドゥーサが振り向き、蛇の髪がしゅうしゅうと音を立てる。石の戦士たちが床に散らばり、最後の突撃の姿のまま固まっている。"
   },
   "OL-007": {
    "nameSource": "wikidata",
@@ -504,7 +574,8 @@ const pack: CardTextPack = {
     "アキレス"
    ],
    "quote": "忘れられた長い生よりも、栄光の短い生を生きたい。",
-   "quoteSource": "new"
+   "quoteSource": "new",
+   "scene": "夜明けのトロイアの平原。アキレウスは燃え立つような鎧をまとって突進し、その雄叫びが空気を裂く。背後では、ギリシアの船が岸辺で燃えている。"
   }
  },
  "houses": {
