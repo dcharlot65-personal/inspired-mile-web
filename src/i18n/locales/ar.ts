@@ -455,7 +455,7 @@ const ar: Record<string, string> = {
   // The language picker and the verdict, when the loaded model is not used in the duel's language
   // (measured: docs/language/MODEL-EVAL.md).
   'battle.lang.written': '{language}: تواجه خصم الأبيات المكتوبة، لأن {model} لم يُثبت أنه يجيد كتابة الشعر بهذه اللغة.',
-  'battle.lang.rules': '{language}: الحكم بالقواعد، لأن {model} لم يُثبت أنه يجيد الحكم على الشعر بهذه اللغة.',
+  'battle.lang.rules': '{language}: الحكم بالقواعد، لأن {model} لم يُثبت أنه يجيد الحكم على الأبيات بهذه اللغة.',
   'brain.noneShown': 'لم يُثبت أيّ نموذج يستطيع هذا الجهاز تشغيله أنه يجيد كتابة الشعر أو الحكم عليه، لذا تواجه خصم الأبيات المكتوبة ويكون الحكم بالقواعد.',
 };
 

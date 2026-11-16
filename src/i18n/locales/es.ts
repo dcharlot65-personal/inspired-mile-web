@@ -454,9 +454,9 @@ const es: Record<string, string> = {
   'theatre.judging': 'Juzgando…',
   // The language picker and the verdict, when the loaded model is not used in the duel's language
   // (measured: docs/language/MODEL-EVAL.md).
-  'battle.lang.written': '{language}: te enfrentas al rival de versos escritos, porque {model} no ha demostrado que escriba bien versos en este idioma.',
-  'battle.lang.rules': '{language}: se juzga por reglas, porque {model} no ha demostrado que juzgue bien los versos en este idioma.',
-  'brain.noneShown': 'Ningún modelo que este dispositivo pueda ejecutar ha demostrado que escriba o juzgue bien los versos, así que te enfrentas al rival de versos escritos y se juzga por reglas.',
+  'battle.lang.written': '{language}: te enfrentas al rival de versos escritos, porque {model} no ha demostrado que escriba bien estrofas en este idioma.',
+  'battle.lang.rules': '{language}: se juzga por reglas, porque {model} no ha demostrado ser buen juez de estrofas en este idioma.',
+  'brain.noneShown': 'Ningún modelo que este dispositivo pueda ejecutar ha demostrado que escriba o juzgue bien las estrofas, así que te enfrentas al rival de versos escritos y se juzga por reglas.',
 };
 
 export default es;

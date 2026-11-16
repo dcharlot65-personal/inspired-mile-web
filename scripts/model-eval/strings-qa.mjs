@@ -58,7 +58,10 @@ async function strings() {
     out[lang] = Object.fromEntries(KEYS.map((k) => {
       const m = src.match(new RegExp(`^\\s*'${k.replace(/\./g, '\\.')}': '([^'\\n]*)',$`, 'm'));
       if (!m) throw new Error(`${lang}: ${k} is not one single-quoted line`);
-      return [k, fill(m[1], lang)];
+      // The source text, not the string: a   written as an escape (French spacing) is six characters here.
+      const value = m[1].replace(/\\u([0-9a-fA-F]{4})/g, (_, h) => String.fromCharCode(parseInt(h, 16)));
+      if (/\\/.test(value)) throw new Error(`${lang}: ${k} holds an escape this reader does not decode`);
+      return [k, fill(value, lang)];
     }));
   }
   return out;

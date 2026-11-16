@@ -455,7 +455,7 @@ const th: Record<string, string> = {
   // The language picker and the verdict, when the loaded model is not used in the duel's language
   // (measured: docs/language/MODEL-EVAL.md).
   'battle.lang.written': '{language}: คุณจะพบกับคู่ต่อสู้ที่ใช้บทกลอนเขียนไว้แล้ว เพราะ {model} ยังไม่ได้แสดงให้เห็นว่าเขียนบทกลอนภาษานี้ได้ดี',
-  'battle.lang.rules': '{language}: ตัดสินด้วยกฎ เพราะ {model} ยังไม่ได้แสดงให้เห็นว่าตัดสินบทกลอนภาษานี้ได้ดี',
+  'battle.lang.rules': '{language}: ตัดสินด้วยกฎ เพราะ {model} ยังไม่ได้แสดงให้เห็นว่าเป็นกรรมการตัดสินบทกลอนภาษานี้ได้ดี',
   'brain.noneShown': 'ยังไม่มีโมเดลใดที่อุปกรณ์นี้ใช้งานได้แสดงให้เห็นว่าเขียนหรือตัดสินบทกลอนได้ดี คุณจึงจะพบกับคู่ต่อสู้ที่ใช้บทกลอนเขียนไว้แล้ว และตัดสินด้วยกฎ',
 };
 

@@ -454,9 +454,9 @@ const it: Record<string, string> = {
   'theatre.judging': 'Giudizio in corso…',
   // The language picker and the verdict, when the loaded model is not used in the duel's language
   // (measured: docs/language/MODEL-EVAL.md).
-  'battle.lang.written': '{language}: affronti l’avversario dalle strofe scritte, perché {model} non ha dimostrato di scrivere bene versi in questa lingua.',
-  'battle.lang.rules': '{language}: giudicato secondo regole, perché {model} non ha dimostrato di giudicare bene i versi in questa lingua.',
-  'brain.noneShown': 'Nessun modello che questo dispositivo possa eseguire ha dimostrato di scrivere o giudicare bene i versi, quindi affronti l’avversario dalle strofe scritte e si giudica secondo regole.',
+  'battle.lang.written': '{language}: affronti l’avversario dalle strofe scritte, perché {model} non ha dimostrato di scrivere bene strofe in questa lingua.',
+  'battle.lang.rules': '{language}: giudicato secondo regole, perché {model} non ha dimostrato di essere un buon giudice di strofe in questa lingua.',
+  'brain.noneShown': 'Nessun modello che questo dispositivo possa eseguire ha dimostrato di scrivere o giudicare bene le strofe, quindi affronti l’avversario dalle strofe scritte e si giudica secondo regole.',
 };
 
 export default it;

@@ -454,9 +454,9 @@ const de: Record<string, string> = {
   'theatre.judging': 'Wird bewertet…',
   // The language picker and the verdict, when the loaded model is not used in the duel's language
   // (measured: docs/language/MODEL-EVAL.md).
-  'battle.lang.written': '{language}: Du spielst gegen den Gegner mit geschriebenen Strophen, weil {model} nicht gezeigt hat, dass es in dieser Sprache gute Verse schreibt.',
-  'battle.lang.rules': '{language}: Nach Regeln bewertet, weil {model} nicht gezeigt hat, dass es Verse in dieser Sprache gut bewertet.',
-  'brain.noneShown': 'Keines der Modelle, die auf diesem Gerät laufen können, hat gezeigt, dass es gute Verse schreibt oder Verse gut bewertet. Du spielst daher gegen den Gegner mit geschriebenen Strophen, und bewertet wird nach Regeln.',
+  'battle.lang.written': '{language}: Du spielst gegen den Gegner mit geschriebenen Strophen, weil {model} nicht gezeigt hat, dass es in dieser Sprache gute Strophen schreibt.',
+  'battle.lang.rules': '{language}: Nach Regeln bewertet, weil {model} nicht gezeigt hat, dass es für Strophen in dieser Sprache ein guter Richter ist.',
+  'brain.noneShown': 'Keines der Modelle, die auf diesem Gerät laufen können, hat gezeigt, dass es gute Strophen schreibt oder Strophen gut bewertet. Du spielst daher gegen den Gegner mit geschriebenen Strophen, und bewertet wird nach Regeln.',
 };
 
 export default de;

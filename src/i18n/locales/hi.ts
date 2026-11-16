@@ -455,7 +455,7 @@ const hi: Record<string, string> = {
   // The language picker and the verdict, when the loaded model is not used in the duel's language
   // (measured: docs/language/MODEL-EVAL.md).
   'battle.lang.written': '{language}: आपका सामना लिखे हुए पदों वाले प्रतिद्वंद्वी से होगा, क्योंकि {model} ने यह नहीं दिखाया है कि वह इस भाषा में अच्छे पद लिख सकता है।',
-  'battle.lang.rules': '{language}: निर्णय नियमों से होगा, क्योंकि {model} ने यह नहीं दिखाया है कि वह इस भाषा के पदों का ठीक निर्णय कर सकता है।',
+  'battle.lang.rules': '{language}: निर्णय नियमों से होगा, क्योंकि {model} ने यह नहीं दिखाया है कि वह इस भाषा के पदों का अच्छा निर्णायक है।',
   'brain.noneShown': 'इस डिवाइस पर चल सकने वाले किसी भी मॉडल ने यह नहीं दिखाया है कि वह अच्छे पद लिखता है या पदों का ठीक निर्णय करता है, इसलिए आपका सामना लिखे हुए पदों वाले प्रतिद्वंद्वी से होगा और निर्णय नियमों से होगा।',
 };
 
