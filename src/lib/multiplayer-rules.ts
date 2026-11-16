@@ -146,13 +146,21 @@ export function onlineCraft(plan: OnlineRoundPlan, side: OnlineSide): VerseScore
   });
 }
 
+export interface OnlinePreview {
+  /** The verse as typed, settled: the text the page sends and the server keeps and scores. */
+  verse: string;
+  /** Its craft, exactly as the server will award it. */
+  score: VerseScore;
+}
+
 /**
- * The craft the server will award for a verse as the player typed it: the craft of the
- * settled verse, which is the text the page sends and the server scores (see settleVerse).
- * The page's live checklist shows this, never onlineCraft of the raw text.
+ * What the server will make of a verse as the player typed it: the settled text (see
+ * settleVerse) and its craft. The page previews this and sends this text, so the two cannot
+ * part; its live checklist never shows onlineCraft of the raw text.
  */
-export function previewCraft(plan: OnlineRoundPlan, side: OnlineSide): VerseScore {
-  return onlineCraft(plan, { ...side, verse: settleVerse(side.verse) });
+export function previewCraft(plan: OnlineRoundPlan, side: OnlineSide): OnlinePreview {
+  const verse = settleVerse(side.verse);
+  return { verse, score: onlineCraft(plan, { ...side, verse }) };
 }
 
 export type OnlineVerdict = 'a' | 'b' | 'split';

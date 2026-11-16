@@ -1084,7 +1084,7 @@ describe('online rules', () => {
       const charId = pick(r, CHARACTERS).id;
       const side = { charId, deck: randomDeck(r, charId), verse: raw, previousOpponentVerse: chance(r, 0.5) ? held(pick(r, CORPUS)) : undefined };
       // The page: its checklist shows previewCraft of the textarea, and it sends settleVerse of it.
-      const preview = previewCraft(plan, side);
+      const preview = previewCraft(plan, side).score;
       // The server (game_room.rs): settles what it receives, refuses it if nothing is left, resolves the round.
       const kept = settleVerse(settleVerse(raw));
       if (!kept) continue;

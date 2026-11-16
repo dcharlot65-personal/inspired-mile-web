@@ -140,11 +140,12 @@ const mirrored = (w: string | null) => (w === 'you' ? 'opponent' : w === 'oppone
  * itself, instead of the settled verse it sends, would show the wrong craft for it. Null if
  * no such place exists in this verse under this form.
  */
+const PASTE = '\u200b\u0301';
 function pastedVariant(plan: OnlineRoundPlan, side: Omit<OnlineSide, 'verse'>, verse: string): string | null {
   const points = Array.from(verse);
   for (let at = 1; at < points.length; at++) {
-    const pasted = [...points.slice(0, at), '\u200b\u0301', ...points.slice(at)].join('');
-    if (onlineCraft(plan, { ...side, verse: pasted }).craft !== previewCraft(plan, { ...side, verse: pasted }).craft) return pasted;
+    const pasted = [...points.slice(0, at), PASTE, ...points.slice(at)].join('');
+    if (onlineCraft(plan, { ...side, verse: pasted }).craft !== previewCraft(plan, { ...side, verse: pasted }).score.craft) return pasted;
   }
   return null;
 }
@@ -208,23 +209,31 @@ test.describe('Online duel', () => {
         const bobChar = bobDeck.characters[round];
 
         const previews: number[] = [];
+        const previewed: string[] = [];
         for (const [who, verse, char] of [[ann, annVerse, annChar], [bob, bobVerse, bobChar]] as const) {
           await expect(who.page.locator('#mp-send-btn')).toBeDisabled();
           await who.page.locator(`#mp-hand [data-char-id="${char}"]`).click();
-          if (who === ann && !pastedChecked) {
-            // Pasted text first: the live craft must be the server's, not the raw text's.
+          if (who === ann && (round === 0 || !pastedChecked)) {
+            // Pasted text first: a zero-width space and an accent after a letter, which one
+            // cleaning leaves apart and a second composes. Where this form scores that text
+            // cleaned once differently, put it there.
             const rules: OnlineRoundPlan = { index: plan.index, formId: plan.form_id, acrostic: plan.acrostic };
             const side = { charId: char, deck: startAnn.you.deck, previousOpponentVerse: round > 0 ? seenAnn[round - 1].opponent.verse : undefined };
-            const pasted = pastedVariant(rules, side, verse);
-            if (pasted) {
-              await who.page.locator('#mp-input').fill(pasted);
-              await expect(who.page.locator('#mp-live-craft'), `round ${round + 1}: the preview of a pasted verse`).toHaveText(String(previewCraft(rules, { ...side, verse: pasted }).craft));
-              pastedChecked = true;
-            }
+            const sensitive = pastedVariant(rules, side, verse);
+            const pasted = sensitive ?? verse.replace(/([a-z])/i, `$1${PASTE}`);
+            const want = previewCraft(rules, { ...side, verse: pasted });
+            expect(want.verse, 'the pasted text is not what is sent').not.toBe(pasted);
+            await who.page.locator('#mp-input').fill(pasted);
+            const live = who.page.locator('#mp-live-craft');
+            // Under any form: the page previews the settled text it will send, not the textarea's.
+            await expect(live, `round ${round + 1}: the text a pasted verse is previewed as`).toHaveAttribute('data-verse', want.verse);
+            await expect(live, `round ${round + 1}: the preview of a pasted verse`).toHaveText(String(want.score.craft));
+            if (sensitive) pastedChecked = true;
           }
           await who.page.locator('#mp-input').fill(verse);
           await expect(who.page.locator('#mp-live-checks li').first()).toHaveAttribute('data-met', /true|false/);
           previews.push(Number(await who.page.locator('#mp-live-craft').textContent()));
+          previewed.push((await who.page.locator('#mp-live-craft').getAttribute('data-verse')) ?? '(none)');
           await expect(who.page.locator('#mp-send-btn')).toBeEnabled();
         }
         await ann.page.locator('#mp-send-btn').click();
@@ -248,7 +257,9 @@ test.describe('Online duel', () => {
         expect(frameAnn.you.total).toBe(frameAnn.you.score.craft + frameAnn.you.judge);
         expect(frameAnn.you.judge + frameAnn.opponent.judge).toBe(24);
 
-        // 2. The server's craft is the number each page showed before the verse was sent.
+        // 2. Each page sent the text its preview scored, and the server's craft is the number it showed.
+        const lastSent = (p: Player) => [...p.sent].reverse().find((m) => m.type === 'submit_verse')?.text;
+        expect([lastSent(ann), lastSent(bob)], `round ${round + 1}: sent, against previewed`).toEqual(previewed);
         expect(frameAnn.you.score.craft, `round ${round + 1}: Ann's craft, server against preview`).toBe(previews[0]);
         expect(frameBob.you.score.craft, `round ${round + 1}: Bob's craft, server against preview`).toBe(previews[1]);
 
@@ -302,8 +313,8 @@ test.describe('Online duel', () => {
       expect(anyCraft, "Ann's craft over the match").toBeGreaterThan(0);
       // Whether a pasted verse was found that only a settled preview gets right. If cleanVerse
       // ever becomes idempotent there is none, and that check had nothing to tell apart.
-      test.info().annotations.push({ type: 'pasted-preview', description: pastedChecked ? 'checked' : 'no pasted verse scored differently' });
-      console.log(`pasted-preview: ${pastedChecked ? 'checked' : 'none found'}`);
+      test.info().annotations.push({ type: 'pasted-preview', description: pastedChecked ? 'craft checked on a form that scores it differently' : 'text checked; no form here scores it differently' });
+      console.log(`pasted-preview: ${pastedChecked ? 'craft and text checked' : 'text checked; no sensitive form drawn'}`);
 
       // Nothing a browser sent was a score.
       for (const message of [...ann.sent, ...bob.sent]) {

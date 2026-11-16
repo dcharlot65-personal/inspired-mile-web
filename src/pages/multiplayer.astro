@@ -167,9 +167,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       MultiplayerClient, auditRound, checkInvitation, createPrivateRoom, joinQueue, leaveQueue, planMatchesSeed, reportContent,
       type MatchStart, type RoundView, type ServerEvent, type WireSide,
     } from '../lib/multiplayer-client';
-    import { ONLINE_DECK_MAX, ONLINE_LANG, onlineDeckProblem, previewCraft, settleVerse } from '../lib/multiplayer-rules';
+    import { ONLINE_DECK_MAX, ONLINE_LANG, onlineDeckProblem, previewCraft, settleVerse, type OnlinePreview } from '../lib/multiplayer-rules';
     import { deviceForHouse, deviceInPlay, houseWhy } from '../lib/verse/devices';
-    import { JUDGE_POOL, ROUNDS, starterDeck, type VerseScore } from '../lib/verse/duel';
+    import { JUDGE_POOL, ROUNDS, starterDeck } from '../lib/verse/duel';
     import { getForm } from '../lib/verse/forms';
     import { CRITERIA } from '../lib/verse/judge';
     import { loadPronunciation } from '../lib/verse/pronounce';
@@ -558,8 +558,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       }
     }
 
-    /** The craft this verse would earn: the server's rules, on the text the server will score (settleVerse). */
-    function preview(): VerseScore | null {
+    /** What the server will score for the verse in the box: the settled text this page sends, and its craft. */
+    function preview(): OnlinePreview | null {
       if (!start || !charId) return null;
       const plan = start.rounds[round];
       return previewCraft(
@@ -582,12 +582,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     function renderChecks() {
       const list = $('mp-live-checks');
       list.replaceChildren();
-      const s = preview();
-      if (!s) {
+      const p = preview();
+      const craft = $('mp-live-craft');
+      if (!p) {
         list.appendChild(el('li', 'text-obsidian-500', t('live.chooseWho')));
-        $('mp-live-craft').textContent = '0';
+        craft.textContent = '0';
+        delete craft.dataset.verse;
         return;
       }
+      const s = p.score;
       const written = verseInput.value.trim().length > 0;
       const card = getCardById(charId)!;
       for (const c of s.form.checks) list.appendChild(checkRow(c.met, t('live.points', { label: tm(c.label), points: c.points }), written ? c.detail : ''));
@@ -601,7 +604,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         li.dataset.void = s.voided;
         list.appendChild(li);
       }
-      $('mp-live-craft').textContent = String(s.craft);
+      craft.textContent = String(s.craft);
+      // The text this craft is for: what the send button sends.
+      craft.dataset.verse = p.verse;
     }
 
     function updateSubmit() {
@@ -614,9 +619,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
     sendBtn.addEventListener('click', () => {
       if (!client || !start || submitted || !charId) return;
-      // Sent as the server will hold it and the preview scored it: settled (cleaned until
-      // cleaning changes nothing), capped, and without half a character at the cut.
-      const text = settleVerse(verseInput.value);
+      // Sent exactly as the preview scored it: the settled verse (cleaned until cleaning
+      // changes nothing), capped, and without half a character at the cut.
+      const text = preview()?.verse ?? '';
       if (!text) return;
       if (!client.submitVerse(round, charId, text)) {
         $('mp-hint').textContent = 'Not connected. Your verse will be kept here; try again in a moment.';
