@@ -5,9 +5,9 @@
  * Where the text came from and how it was checked: docs/language/pages-core/README.md.
  */
 const messages: Record<string, string> = {
-  'variants.unlocked': 'Variantes débloquées : <b>{n}</b>',
-  'variants.count': 'Variantes : {n}',
-  'variants.cities': 'Villes découvertes : <b>{n}</b> / {total}',
+  'variants.unlocked': 'Variantes débloquées\u00a0: <b>{n}</b>',
+  'variants.count': 'Variantes\u00a0: {n}',
+  'variants.cities': 'Villes découvertes\u00a0: <b>{n}</b> / {total}',
   'variants.source.city-quest': 'Quête de ville',
   'variants.source.battle-streak': 'Série de victoires',
   'variants.source.trivia-mastery': 'Maîtrise du quiz',

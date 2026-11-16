@@ -27,7 +27,7 @@ const messages: Record<string, string> = {
   'achievements.scholar.description': 'Schaffe ein fehlerfreies Quiz',
   'achievements.pack-rat.name': 'Packhamster',
   'achievements.pack-rat.description': 'Geöffnete Kartenpacks: {n}',
-  'achievements.verse-veteran.name': 'Veteran der Verse',
+  'achievements.verse-veteran.name': 'Strophen-Veteran',
   'achievements.verse-veteran.description': 'Abgeschlossene Kampfrunden: {n}',
   'achievements.challenge-master.name': 'Meister der Herausforderungen',
   'achievements.challenge-master.description': 'Abgeschlossene Zitat-Herausforderungen: {n}',

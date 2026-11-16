@@ -23,7 +23,7 @@ const messages: Record<string, string> = {
   'profile.collectFirst': 'Obtenez des cartes pour voir la répartition',
   'profile.leaderboard.title': 'Classement mondial',
   'profile.leaderboard.loading': 'Chargement du classement…',
-  'profile.leaderboard.empty': 'Pas encore de données au classement. Gagnez des combats pour y figurer !',
+  'profile.leaderboard.empty': 'Pas encore de données au classement. Gagnez des combats pour y figurer\u202f!',
   'profile.leaderboard.player': 'Joueur',
   'profile.leaderboard.wins': 'Victoires',
   'profile.leaderboard.battles': 'Combats',

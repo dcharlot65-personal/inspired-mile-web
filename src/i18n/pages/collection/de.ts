@@ -18,7 +18,7 @@ const messages: Record<string, string> = {
   'collection.world.empty': 'Noch keine Varianten. Gewinne drei Kämpfe in Folge oder schaffe ein fehlerfreies Quiz, um deine erste Weltkarte freizuschalten!',
   'collection.deck.title': 'Deckbau',
   'collection.deck.intro': 'Figuren: {min} bis {max}. Relikte: bis zu {relics}. Tränke: bis zu {potions}. Karten insgesamt: bis zu {total}. Klick oben auf Karten, die du besitzt, um sie hinzuzufügen.',
-  'collection.deck.namePlaceholder': 'Name des Decks…',
+  'collection.deck.namePlaceholder': 'Name des Decks\u00a0…',
   'collection.deck.save': 'Deck speichern',
   'collection.deck.clear': 'Leeren',
   'collection.deck.addCharacters': 'Klick auf deine Figuren, um sie hinzuzufügen',

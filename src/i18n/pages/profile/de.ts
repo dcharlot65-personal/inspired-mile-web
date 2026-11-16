@@ -22,7 +22,7 @@ const messages: Record<string, string> = {
   'profile.byRarity': 'Karten nach Seltenheit',
   'profile.collectFirst': 'Sammle Karten, um die Aufteilung zu sehen',
   'profile.leaderboard.title': 'Weltweite Rangliste',
-  'profile.leaderboard.loading': 'Rangliste wird geladen…',
+  'profile.leaderboard.loading': 'Rangliste wird geladen\u00a0…',
   'profile.leaderboard.empty': 'Noch keine Ranglistendaten. Gewinne Kämpfe, um hier zu erscheinen!',
   'profile.leaderboard.player': 'Spieler',
   'profile.leaderboard.wins': 'Siege',

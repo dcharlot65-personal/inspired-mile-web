@@ -5,7 +5,7 @@
  * Where the text came from and how it was checked: docs/language/pages-core/README.md.
  */
 const messages: Record<string, string> = {
-  'home.meta.description': 'Inspired Mile : un jeu de cartes où votre coup est une strophe. Collectionnez les personnages de Shakespeare et affrontez en duel une IA qui tourne entièrement dans votre navigateur.',
+  'home.meta.description': 'Inspired Mile\u00a0: un jeu de cartes où votre coup est une strophe. Collectionnez les personnages de Shakespeare et affrontez en duel une IA qui tourne entièrement dans votre navigateur.',
   'home.hero.title': 'Là où les cartes <b>prennent vie</b>',
   'home.hero.body': 'Un jeu de cartes où votre coup est une strophe. Jouez un personnage, respectez la forme et affrontez en duel une IA qui tourne dans votre navigateur. Collectionnez les plus grands personnages de Shakespeare et rejoignez la prochaine évolution des jeux de cartes à collectionner.',
   'home.cta.playground': 'Entrer sur le Terrain de jeu',
@@ -27,8 +27,8 @@ const messages: Record<string, string> = {
   'home.feature.private.body': 'En duel solo, l’adversaire IA, le juge et la reconnaissance vocale tournent tous sur votre appareil, et rien de ce que vous écrivez ou dites n’est envoyé à un serveur. Les combats multijoueurs, eux, envoient vos strophes à notre serveur.',
   'home.houses.title': 'Les <b>maisons</b> de Shakespeare',
   'home.houses.body': 'Choisissez votre camp. Chaque maison s’inspire d’une pièce différente de Shakespeare, avec ses personnages, ses capacités et ses stratégies.',
-  'home.houses.cards': 'Cartes : {n}',
-  'home.ready.title': 'Prêt pour le <b>combat</b> ?',
+  'home.houses.cards': 'Cartes\u00a0: {n}',
+  'home.ready.title': 'Prêt pour le <b>combat</b>\u202f?',
   'home.ready.body': 'Jouez vos cartes, dites votre strophe et montez sur scène. Sur un écran, ou avec un Quest 3 ou un Vision Pro dans le Théâtre.',
   'home.ready.arena': 'Entrer dans l’arène',
   'home.ready.earn': 'Gagner des cartes',
