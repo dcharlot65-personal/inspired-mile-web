@@ -3,24 +3,37 @@
  * the rule-based comparison when no model is loaded or a reading fails.
  */
 import { CARD_CATALOG } from '../cards';
+import { getCardText } from '../cards-i18n';
 import { answerScores, brainInfo, isBrainLoaded } from '../brain';
 import type { JudgeSplit } from './duel';
 import {
   CRITERIA, GRADE_ANSWERS, combineGrades, combineMargins, compareMessages, expectedGrade, gradeMessages, rulesJudge, type Margins,
 } from './judge';
+import { localCharacterNames, localSignatureWords } from './echo';
+import { baseLang } from './lang';
 import { languageName } from './opponent';
 import { contentWords, fold, wordSpan, wordsOf } from './text';
 
-/** Words that count as literary allusion for the rule-based judge: names and quotation words. */
-let lexicon: Set<string> | null = null;
-export function allusionLexicon(): Set<string> {
-  if (!lexicon) {
-    lexicon = new Set<string>();
-    for (const c of CARD_CATALOG) {
-      for (const w of wordsOf(c.name)) if (wordSpan(w) >= 4) lexicon.add(fold(w));
-      for (const w of contentWords(c.quote)) lexicon.add(fold(w));
-    }
+/**
+ * Words that count as literary allusion for the rule-based judge: names and quotation words.
+ * In a language that has its own names and lines for the cards (src/lib/cards-i18n, loaded with
+ * the language pack) those count as well as the English ones.
+ */
+const lexicons = new Map<string, Set<string>>();
+export function allusionLexicon(lang = 'en'): Set<string> {
+  const b = baseLang(lang);
+  // Not cached until the language's card text is there: it arrives with loadPack.
+  const ready = b === 'en' || !!getCardText(b);
+  const have = lexicons.get(b);
+  if (have) return have;
+  const lexicon = new Set<string>();
+  for (const c of CARD_CATALOG) {
+    for (const w of wordsOf(c.name)) if (wordSpan(w) >= 4) lexicon.add(fold(w));
+    for (const w of contentWords(c.quote)) lexicon.add(fold(w));
+    if (b !== 'en') for (const w of localSignatureWords(c, b)) lexicon.add(w);
   }
+  if (b !== 'en') for (const n of localCharacterNames(b)) lexicon.add(fold(n));
+  if (ready) lexicons.set(b, lexicon);
   return lexicon;
 }
 
@@ -52,5 +65,5 @@ export async function referee(playerVerse: string, opponentVerse: string, lang: 
       console.error('[referee] model judging failed; using the rules', err);
     }
   }
-  return rulesJudge(playerVerse, opponentVerse, lang, allusionLexicon());
+  return rulesJudge(playerVerse, opponentVerse, lang, allusionLexicon(lang));
 }

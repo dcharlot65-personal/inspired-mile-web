@@ -14,6 +14,7 @@
  * it should in each script. A `detail` is language-neutral evidence.
  */
 import type { Card, House } from '../cards';
+import { localSignature, localSignatureWords, saidLocalName } from './echo';
 import { baseLang, rulesFor, unitKey } from './lang';
 import { msg, type Msg } from './msg';
 import { rhymeChecked, rhymes } from './rhyme';
@@ -145,7 +146,8 @@ export const DEVICES: Record<string, Device> = {
   ),
   invocation: d('invocation', (v, ctx) => {
     const said = new Set(wordsOf(v, langOf(ctx)).map(fold));
-    const hit = (ctx.names ?? []).find((n) => said.has(fold(n)));
+    // The character's name as the duel's language writes it counts as well (./echo).
+    const hit = (ctx.names ?? []).find((n) => said.has(fold(n))) ?? saidLocalName(v, langOf(ctx));
     return { met: !!hit, detail: hit ?? '' };
   }),
   grandeur: d(
@@ -210,9 +212,15 @@ const COMMON = new Set(
   'that this with from have what when where which thou thee thy your their there these those shall will would should could been were upon into then than them they more most some such very much come here hath doth lord'.split(' '),
 );
 
-/** The quotations are English, so their telling words are found by the English measure. */
-export function signatureWords(card: Card): string[] {
-  return [...new Set(contentWords(card.quote, 'en').map(fold).filter((w) => !COMMON.has(w)))];
+/**
+ * The telling words of a card's line. The English line is measured the English
+ * way; in another language the line as published in that language comes first
+ * (./echo), and the English words still count after it.
+ */
+export function signatureWords(card: Card, lang = 'en'): string[] {
+  const english = [...new Set(contentWords(card.quote, 'en').map(fold).filter((w) => !COMMON.has(w)))];
+  if (baseLang(lang) === 'en') return english;
+  return [...new Set([...localSignatureWords(card, lang), ...english])];
 }
 
 /**
@@ -223,6 +231,9 @@ export function signatureWords(card: Card): string[] {
  */
 export function checkSignature(card: Card, verse: string, lang = 'en'): DeviceResult {
   const sig = signatureWords(card);
+  // A language with its own line for this card is judged by that line (and the English one).
+  const local = localSignature(card, verse, lang, sig);
+  if (local) return local;
   if (!sig.length) return { met: false, detail: '', code: 'none' };
   const said = [...new Set([...wordsOf(verse, lang), ...wordsOf(verse, 'en')])].map(fold);
   const echoed = sig.filter((w) => said.includes(w));

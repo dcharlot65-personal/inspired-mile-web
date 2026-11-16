@@ -1,0 +1,49 @@
+[names]
+The Sonnet Man
+Señor Montesco
+Señora Capuleto
+La calavera de Yorick
+El báculo de Próspero
+La daga de la mente
+El anillo de Romeo
+El cofre de Portia
+La corona de Macbeth
+El códice de la tempestad
+Las lágrimas de Cordelia
+La máscara de Bottom
+Filtro de amor
+Brebaje de las brujas
+Jugo de la flor de Puck
+Raíz de mandrágora
+Rocío de Oberón
+Tintura de cicuta
+Extracto de muérdago
+Lágrimas de sirena
+Elixir del boticario
+[houses]
+Montesco|Capuleto|Corte danesa|Bosque de Arden|Corte de Verona|Corte escocesa|Legendario|Reliquia|Poción|Círculo gótico|Olimpo|Inframundo
+[elements]
+Fuego|Pasión|Gracia|Sombra|Agua|Viento|Embaucador|Naturaleza|Muerte|Arcano|Encantamiento|Oscuro|Justicia|Tierra|Lealtad|Tormenta|Aire|Bestia|Paz|Veneno|Luz de luna|Ilusión|Travesura|Ambición|Oscuridad|Profecía|Disfraz|Vanidad|Honor|Envidia|Retórica|Autoridad|Comedia|Deber|Inocencia|Devoción|Sabiduría|Poder|Conocimiento|Compasión|Transformación|Alquimia|Océano|Visión|Belleza|Rebelión|Creación|Revolución|Pena|Trueno|Luz|Amor|Velocidad|Renacimiento|Astucia|Petrificación|Gloria
+[types]
+Personaje|Reliquia|Poción
+[quotes]
+LD-001	Vagaba solitario como una nube que flota en lo alto sobre valles y colinas.
+LD-002	Agua, agua por todas partes, y ni una gota que beber.
+LD-003	Una cosa bella es un gozo para siempre: su encanto crece.
+GC-001	Camina en la belleza, como la noche de climas sin nubes y cielos estrellados.
+GC-002	Cuidado; pues no tengo miedo, y por eso soy poderoso.
+GC-003	Una vez, en una lúgubre medianoche, mientras meditaba, débil y cansado.
+GC-004	Ver un mundo en un grano de arena y un cielo en una flor silvestre.
+GC-005	Si llega el invierno, ¿puede estar lejos la primavera?
+LD-004	¿Cómo te amo? Déjame contar las maneras.
+LD-005	Recuérdame cuando me haya ido, ido lejos, a la tierra silenciosa.
+OL-001	Soy el que amontona las nubes, señor de los anchos cielos.
+OL-002	La lechuza de la sabiduría solo alza el vuelo al anochecer.
+OL-003	Soy el dios del canto, de la curación y del sol radiante.
+OL-004	Ni siquiera los dioses pueden resistir el poder del amor.
+OL-005	Veloz como el pensamiento, llevo las palabras de los dioses a oídos mortales.
+UW-001	Todas las almas vienen a mí al final. Soy paciente.
+UW-002	Seis semillas comí, y me até para siempre entre dos mundos.
+OL-006	Háblame, oh Musa, del hombre de muchos caminos, que anduvo errante muy lejos.
+UW-003	Mírame, si te atreves. Mi mirada es lo último que verás.
+OL-007	Prefiero vivir una vida corta de gloria que una vida larga en el olvido.

@@ -1,0 +1,49 @@
+[names]
+The Sonnet Man
+Pan Monteki
+Pani Kapulet
+Czaszka Yorika
+Laska Prospera
+Sztylet umysłu
+Pierścień Romea
+Szkatułka Porcji
+Korona Makbeta
+Kodeks burzy
+Łzy Kordelii
+Maska Spodka
+Napój miłosny
+Wywar czarownic
+Sok z kwiatu Puka
+Korzeń mandragory
+Rosa Oberona
+Nalewka z cykuty
+Wyciąg z jemioły
+Łzy syreny
+Eliksir aptekarza
+[houses]
+Monteki|Kapulet|Dwór duński|Las Ardeński|Dwór werneński|Dwór szkocki|Legendarny|Relikwia|Mikstura|Krąg gotycki|Olimp|Podziemie
+[elements]
+Ogień|Namiętność|Wdzięk|Cień|Woda|Wiatr|Psotnik|Natura|Śmierć|Magia tajemna|Zaklęcie|Mrok|Sprawiedliwość|Ziemia|Wierność|Burza|Powietrze|Bestia|Pokój|Trucizna|Blask księżyca|Złudzenie|Psota|Ambicja|Ciemność|Proroctwo|Przebranie|Próżność|Honor|Zawiść|Retoryka|Władza|Komedia|Obowiązek|Niewinność|Oddanie|Mądrość|Moc|Wiedza|Współczucie|Przemiana|Alchemia|Ocean|Wizja|Piękno|Bunt|Stworzenie|Rewolucja|Smutek|Grom|Światło|Miłość|Szybkość|Odrodzenie|Spryt|Skamienienie|Chwała
+[types]
+Postać|Relikwia|Mikstura
+[quotes]
+LD-001	Wędrowałem samotny jak obłok, co płynie wysoko nad dolinami i wzgórzami.
+LD-002	Woda, woda, wszędzie woda, a ani kropli do picia.
+LD-003	Rzecz piękna jest radością na zawsze: jej urok wciąż rośnie.
+GC-001	Kroczy w piękności, jak noc bezchmurnych krain i gwiaździstych niebios.
+GC-002	Strzeż się; bo jestem nieustraszony, a przeto potężny.
+GC-003	Raz, o posępnej północy, gdy dumałem, słaby i znużony.
+GC-004	Zobaczyć świat w ziarenku piasku i niebo w polnym kwiecie.
+GC-005	Jeśli nadchodzi zima, czy wiosna może być daleko?
+LD-004	Jak cię kocham? Pozwól, że policzę sposoby.
+LD-005	Pamiętaj o mnie, gdy odejdę, odejdę daleko, do cichej krainy.
+OL-001	Jestem tym, który gromadzi chmury, panem szerokich niebios.
+OL-002	Sowa mądrości wzlatuje dopiero o zmierzchu.
+OL-003	Jestem bogiem pieśni, uzdrawiania i promiennego słońca.
+OL-004	Nawet bogowie nie mogą oprzeć się potędze miłości.
+OL-005	Szybki jak myśl, niosę słowa bogów do uszu śmiertelnych.
+UW-001	Wszystkie dusze przychodzą w końcu do mnie. Jestem cierpliwy.
+UW-002	Zjadłam sześć ziaren i związałam się na zawsze między dwoma światami.
+OL-006	Opowiedz mi, Muzo, o mężu wielu dróg, który błąkał się daleko.
+UW-003	Spójrz na mnie, jeśli śmiesz. Mój wzrok jest ostatnią rzeczą, jaką zobaczysz.
+OL-007	Wolę żyć krótko w chwale niż długo w zapomnieniu.

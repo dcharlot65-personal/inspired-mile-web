@@ -1,0 +1,52 @@
+[names]
+The Sonnet Man
+Seigneur Montaigu
+Dame Capulet
+Le crâne de Yorick
+Le bâton de Prospero
+Le poignard de l’esprit
+L’anneau de Roméo
+Le coffret de Portia
+La couronne de Macbeth
+Le codex de la tempête
+Les larmes de Cordélia
+Le masque de Bottom
+Philtre d’amour
+Breuvage des sorcières
+Suc de la fleur de Puck
+Racine de mandragore
+Rosée d’Obéron
+Teinture de ciguë
+Extrait de gui
+Larmes de sirène
+Élixir de l’apothicaire
+[houses]
+Montaigu|Capulet|Cour de Danemark|Forêt d’Arden|Cour de Vérone|Cour d’Écosse|Légendaire|Relique|Potion|Cercle gothique|Olympe|Enfers
+[elements]
+Feu|Passion|Grâce|Ombre|Eau|Vent|Farceur|Nature|Mort|Arcane|Enchantement|Obscur|Justice|Terre|Loyauté|Tempête|Air|Bête|Paix|Poison|Clair de lune|Illusion|Malice|Ambition|Ténèbres|Prophétie|Déguisement|Vanité|Honneur|Envie|Rhétorique|Autorité|Comédie|Devoir|Innocence|Dévotion|Sagesse|Pouvoir|Savoir|Compassion|Métamorphose|Alchimie|Océan|Vision|Beauté|Rébellion|Création|Révolution|Chagrin|Tonnerre|Lumière|Amour|Vitesse|Renaissance|Ruse|Pétrification|Gloire
+[types]
+Personnage|Relique|Potion
+[quotes]
+LD-001	J’errais, solitaire comme un nuage qui flotte bien haut au-dessus des vallons et des collines.
+LD-002	De l’eau, de l’eau partout, et pas une goutte à boire.
+LD-003	Une chose de beauté est une joie pour toujours : son charme ne cesse de croître.
+GC-001	Elle marche dans sa beauté, pareille à la nuit des climats sans nuages et des cieux étoilés.
+GC-002	Prends garde ; car je suis sans peur, et par là même puissant.
+GC-003	Une fois, par un minuit lugubre, tandis que je méditais, faible et las.
+GC-004	Voir un monde dans un grain de sable et un ciel dans une fleur sauvage.
+GC-005	Si l’hiver vient, le printemps peut-il être loin ?
+LD-004	Comment je t’aime ? Laisse-moi en compter les façons.
+LD-005	Souviens-toi de moi quand je serai partie, partie au loin dans la terre du silence.
+OL-001	Je suis l’assembleur de nuées, seigneur des vastes cieux.
+OL-002	La chouette de la sagesse ne prend son vol qu’au crépuscule.
+OL-003	Je suis le dieu du chant, de la guérison et du soleil radieux.
+OL-004	Même les dieux ne peuvent résister au pouvoir de l’amour.
+OL-005	Rapide comme la pensée, je porte les paroles des dieux aux oreilles des mortels.
+UW-001	Toutes les âmes viennent à moi à la fin. Je suis patient.
+UW-002	J’ai mangé six graines, et je me suis liée pour toujours entre deux mondes.
+OL-006	Dis-moi, ô Muse, l’homme aux mille détours, qui erra si longtemps.
+UW-003	Regarde-moi, si tu l’oses. Mon regard est la dernière chose que tu verras.
+OL-007	J’aime mieux vivre une courte vie de gloire qu’une longue vie d’oubli.
+IL-003	L’amour que l’on recherche est bon, mais donné sans qu’on le recherche, il est meilleur.
+CA-003	Marier, justement : c’est de te marier que je venais te parler.
+TP-004	Ô merveilleux nouveau monde, qui compte de pareils habitants !

@@ -1,0 +1,49 @@
+[names]
+The Sonnet Man
+Messer Montecchi
+Madonna Capuleti
+Il teschio di Yorick
+Il bastone di Prospero
+Il pugnale della mente
+L’anello di Romeo
+Lo scrigno di Porzia
+La corona di Macbeth
+Il codice della tempesta
+Le lacrime di Cordelia
+La maschera di Bottom
+Filtro d’amore
+Intruglio delle streghe
+Succo del fiore di Puck
+Radice di mandragora
+Rugiada di Oberon
+Tintura di cicuta
+Estratto di vischio
+Lacrime di sirena
+Elisir dello speziale
+[houses]
+Montecchi|Capuleti|Corte danese|Foresta di Arden|Corte di Verona|Corte scozzese|Leggendario|Reliquia|Pozione|Circolo gotico|Olimpo|Oltretomba
+[elements]
+Fuoco|Passione|Grazia|Ombra|Acqua|Vento|Burlone|Natura|Morte|Arcano|Incantesimo|Oscuro|Giustizia|Terra|Lealtà|Tempesta|Aria|Bestia|Pace|Veleno|Chiaro di luna|Illusione|Malizia|Ambizione|Tenebra|Profezia|Travestimento|Vanità|Onore|Invidia|Retorica|Autorità|Commedia|Dovere|Innocenza|Devozione|Saggezza|Potere|Conoscenza|Compassione|Trasformazione|Alchimia|Oceano|Visione|Bellezza|Ribellione|Creazione|Rivoluzione|Dolore|Tuono|Luce|Amore|Velocità|Rinascita|Astuzia|Pietrificazione|Gloria
+[types]
+Personaggio|Reliquia|Pozione
+[quotes]
+LD-001	Vagavo solitario come una nuvola che fluttua in alto sopra valli e colline.
+LD-002	Acqua, acqua dappertutto, e nemmeno una goccia da bere.
+LD-003	Una cosa bella è una gioia per sempre: la sua grazia cresce.
+GC-001	Ella cammina nella bellezza, come la notte di climi senza nubi e di cieli stellati.
+GC-002	Bada; perché sono senza paura, e perciò potente.
+GC-003	Una volta, in una tetra mezzanotte, mentre meditavo, debole e stanco.
+GC-004	Vedere un mondo in un granello di sabbia e un cielo in un fiore selvatico.
+GC-005	Se viene l’inverno, può la primavera essere lontana?
+LD-004	Come ti amo? Lascia che ne conti i modi.
+LD-005	Ricordati di me quando sarò andata via, lontano, nella terra silenziosa.
+OL-001	Io sono l’adunatore di nubi, signore degli ampi cieli.
+OL-002	La civetta della saggezza spicca il volo soltanto al crepuscolo.
+OL-003	Io sono il dio del canto, della guarigione e del sole radioso.
+OL-004	Nemmeno gli dèi possono resistere al potere dell’amore.
+OL-005	Rapido come il pensiero, porto le parole degli dèi a orecchie mortali.
+UW-001	Tutte le anime vengono a me, alla fine. Sono paziente.
+UW-002	Sei semi mangiai, e mi legai per sempre fra due mondi.
+OL-006	Narrami, o Musa, dell’uomo dalle molte vie, che errò lontano.
+UW-003	Guardami, se osi. Il mio sguardo è l’ultima cosa che vedrai.
+OL-007	Preferisco vivere una breve vita di gloria che una lunga vita dimenticata.

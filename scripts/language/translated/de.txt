@@ -1,0 +1,49 @@
+[names]
+The Sonnet Man
+Graf Montague
+Gräfin Capulet
+Yoricks Schädel
+Prosperos Stab
+Dolch der Einbildung
+Romeos Ring
+Portias Kästchen
+Macbeths Krone
+Der Sturm-Kodex
+Cordelias Tränen
+Zettels Maske
+Liebestrank
+Hexengebräu
+Pucks Blumensaft
+Alraunwurzel
+Oberons Tau
+Schierlingstinktur
+Mistelextrakt
+Tränen der Meerjungfrau
+Elixier des Apothekers
+[houses]
+Montague|Capulet|Dänischer Hof|Ardenner Wald|Hof von Verona|Schottischer Hof|Legendär|Relikt|Trank|Schauerkreis|Olymp|Unterwelt
+[elements]
+Feuer|Leidenschaft|Anmut|Schatten|Wasser|Wind|Schelm|Natur|Tod|Arkan|Verzauberung|Dunkel|Gerechtigkeit|Erde|Treue|Sturm|Luft|Bestie|Frieden|Gift|Mondlicht|Trugbild|Schabernack|Ehrgeiz|Finsternis|Prophezeiung|Verkleidung|Eitelkeit|Ehre|Neid|Redekunst|Autorität|Komödie|Pflicht|Unschuld|Hingabe|Weisheit|Macht|Wissen|Mitgefühl|Verwandlung|Alchemie|Ozean|Vision|Schönheit|Rebellion|Schöpfung|Revolution|Kummer|Donner|Licht|Liebe|Schnelligkeit|Wiedergeburt|List|Versteinerung|Ruhm
+[types]
+Figur|Relikt|Trank
+[quotes]
+LD-001	Ich wanderte einsam wie eine Wolke, die hoch über Täler und Hügel zieht.
+LD-002	Wasser, Wasser überall, und kein Tropfen zu trinken.
+LD-003	Ein Ding der Schönheit ist eine Freude für immer: seine Lieblichkeit wächst.
+GC-001	Sie geht in Schönheit, wie die Nacht wolkenloser Himmelsstriche und gestirnter Himmel.
+GC-002	Hüte dich; denn ich bin furchtlos und darum mächtig.
+GC-003	Einst, um eine trübe Mitternacht, als ich grübelte, schwach und müde.
+GC-004	Eine Welt in einem Sandkorn sehen und einen Himmel in einer wilden Blume.
+GC-005	Wenn der Winter kommt, kann der Frühling fern sein?
+LD-004	Wie ich dich liebe? Lass mich die Weisen zählen.
+LD-005	Gedenke mein, wenn ich gegangen bin, weit fort gegangen in das stille Land.
+OL-001	Ich bin der Wolkensammler, Herr der weiten Himmel.
+OL-002	Die Eule der Weisheit beginnt ihren Flug erst in der Dämmerung.
+OL-003	Ich bin der Gott des Gesangs, der Heilung und der strahlenden Sonne.
+OL-004	Selbst die Götter können der Macht der Liebe nicht widerstehen.
+OL-005	Schnell wie der Gedanke trage ich die Worte der Götter an sterbliche Ohren.
+UW-001	Alle Seelen kommen am Ende zu mir. Ich bin geduldig.
+UW-002	Sechs Kerne aß ich und band mich für immer zwischen zwei Welten.
+OL-006	Sage mir, o Muse, von dem Mann der vielen Wege, der weit umherirrte.
+UW-003	Sieh mich an, wenn du es wagst. Mein Blick ist das Letzte, was du sehen wirst.
+OL-007	Lieber lebe ich ein kurzes Leben voll Ruhm als ein langes in Vergessenheit.

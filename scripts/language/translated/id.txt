@@ -1,0 +1,100 @@
+[names]
+The Sonnet Man
+Tuan Montague
+Nyonya Capulet
+Tengkorak Yorick
+Tongkat Prospero
+Belati Khayalan
+Cincin Romeo
+Peti Portia
+Mahkota Macbeth
+Kitab Badai
+Air Mata Cordelia
+Topeng Bottom
+Ramuan Cinta
+Rebusan Para Penyihir
+Sari Bunga Puck
+Akar Mandrake
+Embun Oberon
+Tingtur Hemlock
+Sari Benalu
+Air Mata Putri Duyung
+Eliksir Sang Apoteker
+[houses]
+Montague|Capulet|Istana Denmark|Hutan Arden|Istana Verona|Istana Skotlandia|Legendaris|Relik|Ramuan|Lingkaran Gotik|Olimpus|Dunia Bawah
+[elements]
+Api|Gairah|Keanggunan|Bayangan|Air|Angin|Si Jahil|Alam|Kematian|Gaib|Pesona|Gelap|Keadilan|Bumi|Kesetiaan|Badai|Udara|Binatang Buas|Damai|Racun|Cahaya Bulan|Ilusi|Kenakalan|Ambisi|Kegelapan|Nubuat|Penyamaran|Kesombongan|Kehormatan|Iri Hati|Retorika|Wibawa|Komedi|Kewajiban|Kepolosan|Pengabdian|Kebijaksanaan|Kuasa|Pengetahuan|Belas Kasih|Perubahan Wujud|Alkimia|Samudra|Penglihatan|Keindahan|Pemberontakan|Penciptaan|Revolusi|Duka|Guntur|Cahaya|Cinta|Kecepatan|Kelahiran Kembali|Kecerdikan|Pembatuan|Kemuliaan
+[types]
+Tokoh|Relik|Ramuan
+[quotes]
+SM-001	Haruskah kubandingkan engkau dengan hari di musim panas?
+MO-001	Tapi diam, cahaya apakah yang memancar dari jendela di sana?
+CA-001	Apalah arti sebuah nama? Yang kita sebut mawar...
+DC-001	Ada atau tiada, itulah persoalannya.
+DC-002	Ini rosemari, itu untuk kenangan.
+MO-002	Kutukan atas kedua rumah kalian!
+FA-001	Tuhan, betapa bodohnya para manusia fana ini!
+FA-002	Mari, duduklah di ranjang penuh bunga ini.
+RL-001	Aduhai, Yorick yang malang! Aku mengenalnya, Horatio.
+RL-002	Kini seluruh sihirku telah runtuh.
+PT-001	Jalan cinta sejati tak pernah mulus.
+PT-002	Berlipat, berlipat jerih dan susah.
+VC-001	Jika sekali lagi kalian mengusik jalan-jalan kami, nyawa kalian menjadi tebusan atas rusaknya kedamaian.
+VC-002	Kenikmatan yang menggelora ini berakhir dengan menggelora pula.
+VC-003	Akulah si pekerja kasar yang berpayah-payah demi kesenanganmu.
+TP-001	Kita ini bahan yang darinya mimpi dibuat.
+TP-002	Salam, tuan agung! Tuan yang mulia, salam!
+TP-003	Pulau ini milikku, warisan Sycorax ibuku.
+MO-003	Aku hanya menjaga kedamaian. Sarungkan pedangmu.
+CA-002	Apa, pedang terhunus dan kau bicara damai? Aku benci kata itu.
+DC-003	Kata-kataku terbang ke atas, pikiranku tetap tinggal di bawah.
+FA-003	Pertemuan sial di bawah cahaya bulan, Titania yang angkuh.
+RL-003	Belatikah ini yang kulihat di hadapanku?
+PT-003	Akan kulilitkan sabuk mengelilingi bumi dalam empat puluh menit.
+SC-001	Aku berani melakukan segala yang pantas bagi seorang lelaki; yang berani lebih, bukanlah lelaki.
+SC-002	Datanglah, roh-roh yang melayani pikiran maut, cabutlah keperempuananku di sini.
+SC-003	Engkau akan menurunkan raja-raja, meski engkau sendiri bukan raja.
+IL-001	Aku bukanlah diriku yang tampak.
+IL-002	Ada yang terlahir agung, ada yang meraih keagungan, dan ada yang dipaksa menerima keagungan.
+IL-003	Cinta yang dicari itu baik, tetapi yang diberikan tanpa dicari lebih baik.
+RM-001	Bukan karena aku kurang mencintai Caesar, tetapi karena aku lebih mencintai Roma.
+RM-002	Kesalahan itu, Brutus yang baik, bukan pada bintang-bintang kita, melainkan pada diri kita sendiri.
+RM-003	Kawan-kawan, orang Roma, saudara sebangsa, pinjamkan telinga kalian!
+MO-004	Sudah banyak pagi ia terlihat di sana, menambah embun pagi yang segar dengan air matanya.
+CA-003	Menikah, justru itulah pokok yang hendak kubicarakan.
+DC-004	Kini pecahlah sebuah hati yang mulia. Selamat malam, pangeran yang manis.
+FA-004	Aku mendapat penglihatan yang amat langka. Aku bermimpi, melampaui akal manusia.
+VC-004	Masa duka ini tak memberi waktu untuk merayu.
+TP-004	O dunia baru yang gagah, yang dihuni orang-orang seperti ini!
+RL-004	Kemurahanku tak bertepi seperti laut, cintaku sedalam itu pula.
+RL-005	Tak semua yang berkilau itu emas.
+RL-006	Gelisah berbaring kepala yang memakai mahkota.
+RL-007	Akan kutenggelamkan kitabku.
+RL-008	O ayah tercinta, urusanmulah yang sedang kujalankan.
+RL-009	Diberkatilah engkau, Bottom! Engkau telah berubah wujud!
+PT-004	Bukan candu, bukan mandragora, bukan pula segala sirop pelelap di dunia.
+PT-005	Ambilkan aku bunga itu; tumbuhan yang pernah kutunjukkan padamu.
+PT-006	Pada saat aku lengah pamanmu menyelinap, membawa sari hebona terkutuk dalam sebuah botol kecil.
+PT-007	Dalam kuali rebus dan panggang; mata kadal dan jari katak.
+PT-008	Lima depa dalamnya ayahmu terbaring; dari tulangnya karang terbentuk.
+PT-009	Tuangkan ini ke dalam cairan apa pun yang kau mau, lalu minumlah; walau kau punya kekuatan dua puluh lelaki, ia akan langsung menghabisimu.
+LD-001	Aku mengembara sendirian bagai awan yang melayang tinggi di atas lembah dan bukit.
+LD-002	Air, air, di mana-mana, tapi setetes pun tak dapat diminum.
+LD-003	Sesuatu yang indah adalah sukacita selamanya: keelokannya kian bertambah.
+GC-001	Ia berjalan dalam keindahan, laksana malam di negeri tak berawan dan langit berbintang.
+GC-002	Waspadalah; sebab aku tak kenal takut, dan karena itu berkuasa.
+GC-003	Suatu ketika, pada tengah malam yang suram, saat aku merenung, lemah dan letih.
+GC-004	Melihat dunia dalam sebutir pasir dan surga dalam sekuntum bunga liar.
+GC-005	Jika musim dingin datang, mungkinkah musim semi masih jauh?
+LD-004	Bagaimana aku mencintaimu? Biar kuhitung caranya.
+LD-005	Ingatlah aku ketika aku telah pergi, pergi jauh ke negeri yang sunyi.
+OL-001	Akulah pengumpul awan, penguasa langit yang luas.
+OL-002	Burung hantu kebijaksanaan baru terbang ketika senja tiba.
+OL-003	Akulah dewa nyanyian, penyembuhan, dan matahari yang bersinar.
+OL-004	Bahkan para dewa tak mampu menolak kuasa cinta.
+OL-005	Secepat pikiran, kubawa sabda para dewa ke telinga manusia fana.
+UW-001	Semua jiwa pada akhirnya datang kepadaku. Aku sabar.
+UW-002	Enam biji kumakan, dan kuikat diriku selamanya di antara dua dunia.
+OL-006	Kisahkan kepadaku, wahai Musa, tentang lelaki banyak akal yang mengembara jauh.
+UW-003	Pandanglah aku, jika kau berani. Tatapanku adalah hal terakhir yang akan kau lihat.
+OL-007	Aku lebih suka hidup singkat penuh kemuliaan daripada hidup panjang yang terlupakan.

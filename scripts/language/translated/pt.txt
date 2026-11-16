@@ -1,0 +1,100 @@
+[names]
+The Sonnet Man
+Senhor Montéquio
+Senhora Capuleto
+A caveira de Yorick
+O cajado de Prospero
+O punhal da mente
+O anel de Romeu
+O cofre de Pórcia
+A coroa de Macbeth
+O códice da tempestade
+As lágrimas de Cordélia
+A máscara de Bottom
+Poção do amor
+Caldo das bruxas
+Sumo da flor de Puck
+Raiz de mandrágora
+Orvalho de Oberon
+Tintura de cicuta
+Extrato de visco
+Lágrimas de sereia
+Elixir do boticário
+[houses]
+Montéquio|Capuleto|Corte dinamarquesa|Floresta de Arden|Corte de Verona|Corte escocesa|Lendário|Relíquia|Poção|Círculo gótico|Olimpo|Submundo
+[elements]
+Fogo|Paixão|Graça|Sombra|Água|Vento|Trapaceiro|Natureza|Morte|Arcano|Encantamento|Sombrio|Justiça|Terra|Lealdade|Tempestade|Ar|Fera|Paz|Veneno|Luar|Ilusão|Travessura|Ambição|Escuridão|Profecia|Disfarce|Vaidade|Honra|Inveja|Retórica|Autoridade|Comédia|Dever|Inocência|Devoção|Sabedoria|Poder|Conhecimento|Compaixão|Transformação|Alquimia|Oceano|Visão|Beleza|Rebelião|Criação|Revolução|Tristeza|Trovão|Luz|Amor|Velocidade|Renascimento|Astúcia|Petrificação|Glória
+[types]
+Personagem|Relíquia|Poção
+[quotes]
+SM-001	Devo comparar-te a um dia de verão?
+MO-001	Mas, silêncio! Que luz irrompe por aquela janela?
+CA-001	Que há num nome? Aquilo a que chamamos rosa...
+DC-001	Ser ou não ser, eis a questão.
+DC-002	Aqui está o alecrim, que é para a lembrança.
+MO-002	Uma praga sobre as vossas duas casas!
+FA-001	Senhor, que tolos são estes mortais!
+FA-002	Vem, senta-te neste leito florido.
+RL-001	Ai, pobre Yorick! Eu conheci-o, Horácio.
+RL-002	Agora os meus encantos estão todos desfeitos.
+PT-001	O curso do verdadeiro amor nunca correu sereno.
+PT-002	Dobra, dobra, canseira e tormento.
+VC-001	Se alguma vez voltardes a perturbar as nossas ruas, as vossas vidas pagarão a quebra da paz.
+VC-002	Estes prazeres violentos têm fins violentos.
+VC-003	Sou eu a escrava que se cansa pelo vosso deleite.
+TP-001	Somos feitos da matéria de que são feitos os sonhos.
+TP-002	Salve, grande amo! Grave senhor, salve!
+TP-003	Esta ilha é minha, por Sycorax, minha mãe.
+MO-003	Eu apenas mantenho a paz. Guarda a tua espada.
+CA-002	Quê, de espada na mão e falas de paz? Odeio essa palavra.
+DC-003	As minhas palavras voam para o alto, os meus pensamentos ficam cá em baixo.
+FA-003	Mau encontro ao luar, orgulhosa Titania.
+RL-003	É um punhal isto que vejo diante de mim?
+PT-003	Porei um cinto em volta da terra em quarenta minutos.
+SC-001	Ouso tudo o que convém a um homem; quem ousa mais não o é.
+SC-002	Vinde, espíritos que servis os pensamentos mortais, tirai-me aqui o meu sexo.
+SC-003	Gerarás reis, embora não sejas rei.
+IL-001	Não sou o que sou.
+IL-002	Uns nascem grandes, outros alcançam a grandeza, e a outros a grandeza é imposta.
+IL-003	O amor procurado é bom, mas dado sem ser procurado é melhor.
+RM-001	Não que eu amasse menos César, mas amava mais Roma.
+RM-002	A culpa, caro Bruto, não está nas nossas estrelas, mas em nós mesmos.
+RM-003	Amigos, romanos, compatriotas, emprestai-me os vossos ouvidos!
+MO-004	Muitas manhãs ali foi visto, aumentando com lágrimas o fresco orvalho da manhã.
+CA-003	Casar, é esse mesmo o tema de que te vinha falar.
+DC-004	Quebra-se agora um nobre coração. Boa noite, doce príncipe.
+FA-004	Tive uma visão raríssima. Tive um sonho que excede o entendimento do homem.
+VC-004	Estes tempos de dor não dão tempo para cortejar.
+TP-004	Ó admirável mundo novo, que tem em si tal gente!
+RL-004	A minha generosidade é tão ilimitada como o mar, o meu amor tão profundo.
+RL-005	Nem tudo o que reluz é ouro.
+RL-006	Inquieta repousa a cabeça que usa uma coroa.
+RL-007	Afogarei o meu livro.
+RL-008	Ó querido pai, é dos teus assuntos que me ocupo.
+RL-009	Deus te abençoe, Bottom! Estás transformado!
+PT-004	Nem a papoila, nem a mandrágora, nem todos os xaropes sonolentos do mundo.
+PT-005	Traz-me aquela flor; a erva que uma vez te mostrei.
+PT-006	Na minha hora de sossego o teu tio aproximou-se furtivo, com sumo de maldito meimendro num frasco.
+PT-007	No caldeirão fervei e cozei; olho de salamandra e dedo de rã.
+PT-008	A cinco braças jaz o teu pai; dos seus ossos se fez coral.
+PT-009	Deita isto em qualquer líquido que queiras e bebe-o; e, ainda que tivesses a força de vinte homens, despachar-te-ia de imediato.
+LD-001	Eu vagueava solitário como uma nuvem que flutua bem alto sobre vales e colinas.
+LD-002	Água, água por toda a parte, e nem uma gota para beber.
+LD-003	Uma coisa bela é uma alegria para sempre: o seu encanto cresce.
+GC-001	Ela caminha em beleza, como a noite de climas sem nuvens e céus estrelados.
+GC-002	Cuidado; pois não tenho medo, e por isso sou poderoso.
+GC-003	Certa vez, numa meia-noite sombria, enquanto eu meditava, fraco e cansado.
+GC-004	Ver um mundo num grão de areia e um céu numa flor silvestre.
+GC-005	Se o inverno chega, pode a primavera estar longe?
+LD-004	Como te amo? Deixa-me contar as maneiras.
+LD-005	Lembra-te de mim quando eu tiver partido, partido para longe, para a terra silenciosa.
+OL-001	Sou o que ajunta as nuvens, senhor dos vastos céus.
+OL-002	A coruja da sabedoria só levanta voo ao anoitecer.
+OL-003	Sou o deus do canto, da cura e do sol radiante.
+OL-004	Nem os deuses conseguem resistir ao poder do amor.
+OL-005	Veloz como o pensamento, levo as palavras dos deuses a ouvidos mortais.
+UW-001	Todas as almas vêm a mim no fim. Sou paciente.
+UW-002	Seis sementes comi, e prendi-me para sempre entre dois mundos.
+OL-006	Fala-me, ó Musa, do homem de muitos caminhos, que vagueou por longe.
+UW-003	Olha para mim, se te atreves. O meu olhar é a última coisa que verás.
+OL-007	Prefiro viver uma vida curta de glória a uma vida longa esquecida.

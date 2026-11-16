@@ -1,0 +1,100 @@
+[names]
+The Sonnet Man
+Lãnh chúa Montague
+Phu nhân Capulet
+Đầu lâu của Yorick
+Cây trượng của Prospero
+Con dao găm của tâm trí
+Chiếc nhẫn của Romeo
+Chiếc tráp của Portia
+Vương miện của Macbeth
+Sách phép của Giông tố
+Nước mắt của Cordelia
+Mặt nạ của Bottom
+Tình dược
+Nồi thuốc của phù thủy
+Nhựa hoa của Puck
+Rễ khoai ma
+Sương của Oberon
+Cồn thuốc độc cần
+Tinh chất tầm gửi
+Nước mắt nàng tiên cá
+Thuốc tiên của người bào chế
+[houses]
+Montague|Capulet|Triều đình Đan Mạch|Rừng Arden|Triều đình Verona|Triều đình Scotland|Huyền thoại|Thánh tích|Độc dược|Hội Gothic|Olympus|Âm phủ
+[elements]
+Lửa|Đam mê|Duyên dáng|Bóng tối|Nước|Gió|Kẻ tinh quái|Thiên nhiên|Cái chết|Huyền bí|Bùa mê|U tối|Công lý|Đất|Trung thành|Bão tố|Không khí|Dã thú|Hòa bình|Chất độc|Ánh trăng|Ảo ảnh|Tinh nghịch|Tham vọng|Tăm tối|Lời tiên tri|Cải trang|Phù phiếm|Danh dự|Đố kỵ|Hùng biện|Uy quyền|Hài kịch|Bổn phận|Ngây thơ|Tận tụy|Trí tuệ|Quyền lực|Tri thức|Lòng trắc ẩn|Biến hình|Giả kim|Đại dương|Thị kiến|Vẻ đẹp|Nổi loạn|Sáng tạo|Cách mạng|Nỗi buồn|Sấm sét|Ánh sáng|Tình yêu|Tốc độ|Tái sinh|Mưu trí|Hóa đá|Vinh quang
+[types]
+Nhân vật|Thánh tích|Độc dược
+[quotes]
+SM-001	Ta có nên ví nàng với một ngày hè?
+MO-001	Nhưng khoan, ánh sáng nào vừa lóe lên nơi cửa sổ kia?
+CA-001	Cái tên thì có nghĩa gì? Thứ ta gọi là hoa hồng...
+DC-001	Tồn tại hay không tồn tại, đó là vấn đề.
+DC-002	Đây là hương thảo, để mà tưởng nhớ.
+MO-002	Tai ương giáng xuống cả hai nhà các người!
+FA-001	Trời ơi, người trần mới dại dột làm sao!
+FA-002	Lại đây, hãy ngồi xuống chiếc giường đầy hoa này.
+RL-001	Than ôi, Yorick tội nghiệp! Ta từng biết hắn, Horatio ạ.
+RL-002	Giờ đây mọi phép thuật của ta đã tan hết.
+PT-001	Đường đi của tình yêu chân thật chưa bao giờ êm ả.
+PT-002	Gấp đôi, gấp đôi nhọc nhằn và rắc rối.
+VC-001	Nếu các ngươi còn quấy rối đường phố của ta lần nữa, mạng sống các ngươi sẽ phải đền cho sự yên bình bị phá vỡ.
+VC-002	Những niềm vui cuồng nhiệt này sẽ có kết cục cuồng nhiệt.
+VC-003	Tôi là kẻ tôi đòi nhọc nhằn vì niềm vui của cô.
+TP-001	Chúng ta là thứ chất liệu dệt nên những giấc mơ.
+TP-002	Kính chào chủ nhân vĩ đại! Kính chào ngài tôn nghiêm!
+TP-003	Hòn đảo này là của ta, do Sycorax mẹ ta để lại.
+MO-003	Tôi chỉ giữ hòa khí thôi. Hãy tra gươm vào vỏ.
+CA-002	Sao, gươm đã tuốt mà còn nói chuyện hòa bình? Ta ghét cái từ ấy.
+DC-003	Lời ta bay lên cao, ý nghĩ ta vẫn nằm lại dưới thấp.
+FA-003	Gặp nhau dưới ánh trăng thật chẳng lành, Titania kiêu hãnh.
+RL-003	Có phải con dao găm ta đang thấy trước mặt đây không?
+PT-003	Tôi sẽ quấn một vòng đai quanh trái đất trong bốn mươi phút.
+SC-001	Ta dám làm mọi điều xứng với một con người; kẻ dám làm hơn thế thì không còn là người.
+SC-002	Hãy đến đây, hỡi các hồn ma phục vụ ý nghĩ giết chóc, hãy tước bỏ nữ tính của ta ngay tại đây.
+SC-003	Ngươi sẽ sinh ra các vị vua, dù ngươi chẳng phải là vua.
+IL-001	Tôi không phải là tôi như người ta thấy.
+IL-002	Có người sinh ra đã vĩ đại, có người đạt tới vĩ đại, và có người bị sự vĩ đại ấn vào tay.
+IL-003	Tình yêu tìm mà có là tốt, nhưng được trao khi chẳng tìm thì còn tốt hơn.
+RM-001	Không phải tôi yêu Caesar ít hơn, mà là tôi yêu thành Rome nhiều hơn.
+RM-002	Lỗi, Brutus thân mến, không nằm ở các vì sao của chúng ta, mà ở chính chúng ta.
+RM-003	Hỡi bạn bè, hỡi người La Mã, hỡi đồng bào, hãy cho tôi mượn đôi tai!
+MO-004	Đã nhiều buổi sáng người ta thấy nó ở đó, lấy nước mắt thêm vào sương sớm tinh khôi.
+CA-003	Cưới xin, đó chính là chuyện mẹ đến để nói.
+DC-004	Giờ đây một trái tim cao quý đã vỡ. Chúc ngủ ngon, hoàng tử dịu hiền.
+FA-004	Tôi vừa có một thị kiến hiếm có. Tôi vừa có một giấc mơ, vượt quá trí khôn con người.
+VC-004	Những ngày tang tóc này chẳng còn thì giờ cho chuyện tỏ tình.
+TP-004	Ôi thế giới mới tươi đẹp, có những con người như thế này!
+RL-004	Lòng hào phóng của em mênh mông như biển, tình em cũng sâu như thế.
+RL-005	Không phải mọi thứ lấp lánh đều là vàng.
+RL-006	Mái đầu đội vương miện chẳng bao giờ nằm yên.
+RL-007	Ta sẽ dìm cuốn sách của ta.
+RL-008	Ôi cha yêu dấu, con đang lo liệu chính việc của cha.
+RL-009	Cầu trời phù hộ anh, Bottom! Anh đã bị biến hình rồi!
+PT-004	Không phải thuốc phiện, không phải khoai ma, cũng không phải mọi thứ xi-rô ru ngủ trên đời.
+PT-005	Hãy lấy cho ta bông hoa ấy; thứ cỏ ta đã chỉ cho ngươi một lần.
+PT-006	Vào giờ ta yên giấc, chú của con lẻn tới, mang theo một lọ nhựa hebona đáng nguyền rủa.
+PT-007	Trong vạc hãy sôi và nướng; mắt sa giông và ngón chân ếch.
+PT-008	Năm sải sâu cha ngươi nằm đó; xương người đã hóa thành san hô.
+PT-009	Hãy đổ thứ này vào bất cứ chất lỏng nào anh muốn rồi uống cạn; dù anh có sức mạnh của hai mươi người, nó cũng tiễn anh đi ngay.
+LD-001	Tôi lang thang cô đơn như đám mây trôi trên cao qua thung lũng và đồi núi.
+LD-002	Nước, nước, khắp nơi, mà chẳng có một giọt để uống.
+LD-003	Một vật đẹp là niềm vui mãi mãi: vẻ yêu kiều của nó càng thêm.
+GC-001	Nàng bước đi trong vẻ đẹp, như đêm của miền không mây và trời đầy sao.
+GC-002	Hãy coi chừng; vì ta không biết sợ, và vì thế mà mạnh mẽ.
+GC-003	Một lần vào nửa đêm ảm đạm, khi tôi trầm ngâm, yếu ớt và mỏi mệt.
+GC-004	Thấy một thế giới trong hạt cát và một thiên đường trong đóa hoa dại.
+GC-005	Nếu mùa đông đến, mùa xuân liệu có còn xa?
+LD-004	Em yêu anh thế nào? Hãy để em đếm những cách.
+LD-005	Hãy nhớ em khi em đã đi xa, đi thật xa vào miền đất lặng im.
+OL-001	Ta là kẻ gom mây, chúa tể của bầu trời rộng lớn.
+OL-002	Con cú của trí tuệ chỉ cất cánh lúc hoàng hôn.
+OL-003	Ta là thần của bài ca, của sự chữa lành và của mặt trời rực rỡ.
+OL-004	Ngay cả các vị thần cũng không cưỡng nổi sức mạnh của tình yêu.
+OL-005	Nhanh như ý nghĩ, ta mang lời các thần đến tai người trần.
+UW-001	Mọi linh hồn rồi cũng đến với ta. Ta kiên nhẫn.
+UW-002	Ta đã ăn sáu hạt, và tự trói mình mãi mãi giữa hai thế giới.
+OL-006	Hỡi Nàng Thơ, hãy kể cho ta về người đàn ông lắm mưu nhiều kế, kẻ đã lang thang rất xa.
+UW-003	Hãy nhìn ta, nếu ngươi dám. Ánh mắt ta là thứ cuối cùng ngươi thấy.
+OL-007	Ta thà sống một đời ngắn ngủi vinh quang còn hơn một đời dài bị lãng quên.
