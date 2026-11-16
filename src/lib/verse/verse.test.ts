@@ -1,17 +1,24 @@
-import { describe, expect, it } from 'vitest';
+import { beforeAll, describe, expect, it } from 'vitest';
 import { CARD_CATALOG, getCardById } from '../cards';
-import { cleanVerse, rhymes, syllablesInLine, syllablesInWord, wordsOf, MAX_VERSE_CHARS, MAX_VERSE_LINES } from './text';
-import { FORMS, FORM_POINTS, formsFor, getForm, scoreForm } from './forms';
-import { CURSES, DEVICES, HOUSE_DEVICE, POTION_CURSE, RELIC_WORDS, checkSignature, deviceForHouse } from './devices';
+import { cleanVerse, fold, lineLength, syllablesInLine, syllablesInWord, wordsOf, MAX_VERSE_CHARS, MAX_VERSE_LINES } from './text';
+import { rhymeChecked, rhymes } from './rhyme';
+import { FORMS, FORM_POINTS, acrosticUnits, formsFor, getForm, scoreForm } from './forms';
+import { CURSES, DEVICES, HOUSE_DEVICE, POTION_CURSE, checkPowerWords, checkSignature, deviceForHouse, houseWhy } from './devices';
+import { ENGINE_EN, en as english } from './english';
+import { PACK_LANGS, getPack, loadAllPacks } from './packs';
 import {
   JUDGE_POOL, ROUNDS, createDuel, illegalMove, inkAt, matchWinner, opponentDeck, resolveRound, scoreVerse, starterDeck,
   type JudgeSplit,
 } from './duel';
 import { CRITERIA, combineGrades, combineMargins, compareMessages, expectedGrade, gradeMessages, rulesJudge } from './judge';
 import { expectedLines, opponentMessages, tidyModelVerse, writeOpponentVerse, writtenVerse } from './opponent';
-import { ACROSTIC_WORDS } from './forms';
 
 const en = { lang: 'en' };
+
+// The duel engine is synchronous; packs other than English load on demand.
+beforeAll(async () => {
+  await loadAllPacks();
+});
 const evenJudge: JudgeSplit = { player: JUDGE_POOL / 2, opponent: JUDGE_POOL / 2, criteria: {}, source: 'rules' };
 
 describe('text', () => {
@@ -85,8 +92,8 @@ describe('forms', () => {
   it('checks haiku syllables and offers it only where syllables can be counted', () => {
     expect(scoreForm(getForm('haiku'), 'An old silent pond\nA frog jumps into the pond\nSplash silence again', en).kept).toBe(true);
     expect(formsFor('en').some((f) => f.id === 'haiku')).toBe(true);
-    expect(formsFor('ja').some((f) => f.needsSyllables)).toBe(false);
-    expect(formsFor('ja').length).toBeGreaterThanOrEqual(ROUNDS);
+    expect(formsFor('th').some((f) => f.needsSyllables)).toBe(false);
+    expect(formsFor('th').length).toBeGreaterThanOrEqual(ROUNDS);
   });
   it('checks anaphora and crescendo', () => {
     expect(scoreForm(getForm('anaphora'), 'Never fear\nNever yield\nNever kneel', en).kept).toBe(true);
@@ -140,7 +147,7 @@ describe('devices', () => {
   it('every potion and relic in the catalogue has an effect', () => {
     for (const c of CARD_CATALOG) {
       if (c.type === 'Potion') expect([c.id, !!CURSES[POTION_CURSE[c.id]]]).toEqual([c.id, true]);
-      if (c.type === 'Relic') expect([c.id, (RELIC_WORDS.en[c.id] ?? []).length >= 4]).toEqual([c.id, true]);
+      if (c.type === 'Relic') expect([c.id, (getPack('en').relics[c.id] ?? []).length >= 4]).toEqual([c.id, true]);
     }
   });
 });
@@ -164,7 +171,7 @@ describe('scoring', () => {
     expect(s).toMatchObject({ synergy: true, multiplier: 2.25, craft: 45 });
   });
   it('pays for power words and charges for a broken curse', () => {
-    const lent = { relicId: 'RL-001', words: RELIC_WORDS.en['RL-001'] };
+    const lent = { relicId: 'RL-001', words: getPack('en').relics['RL-001'] };
     const v = 'Who laughs beside the skull upon my stage?\nI put the question to the grave and rage';
     expect(scoreVerse({ ...base, verse: v, lent }).powerWords).toMatchObject({ met: true, bonus: 6 });
     const cursed = scoreVerse({ ...base, verse: kept, curse: { potionId: 'PT-002', curseId: 'forbidden-letter', param: 'q' } });
@@ -215,11 +222,11 @@ describe('duel', () => {
     expect(inkAt(0, 0)).toBe(2);
     expect(illegalMove(d, 0, { charId: 'DC-001', relicId: 'RL-001', potionId: 'PT-002' }, [])).toBeNull();
     const first = [{ charId: 'DC-001', relicId: 'RL-001', potionId: 'PT-002' }];
-    expect(illegalMove(d, 1, { charId: 'DC-001' }, first)).toMatch(/once per match/);
-    expect(illegalMove(d, 1, { charId: 'MO-001', relicId: 'RL-001' }, first)).toMatch(/spent/);
-    expect(illegalMove(d, 1, { charId: 'MO-001', relicId: 'RL-002', potionId: 'PT-001' }, first)).toMatch(/ink/);
+    expect(illegalMove(d, 1, { charId: 'DC-001' }, first)).toBe('character-used');
+    expect(illegalMove(d, 1, { charId: 'MO-001', relicId: 'RL-001' }, first)).toBe('relic-spent');
+    expect(illegalMove(d, 1, { charId: 'MO-001', relicId: 'RL-002', potionId: 'PT-001' }, first)).toBe('no-ink');
     expect(illegalMove(d, 1, { charId: 'MO-001', relicId: 'RL-002' }, first)).toBeNull();
-    expect(illegalMove(d, 0, { charId: 'ZZ-999' }, [])).toMatch(/not in your deck/);
+    expect(illegalMove(d, 0, { charId: 'ZZ-999' }, [])).toBe('character-not-in-deck');
   });
   it('resolves a round: craft plus judge, the better total wins, and the player can answer the opening verse', () => {
     const d = createDuel(11, 'en', deck);
@@ -306,21 +313,45 @@ describe('judge', () => {
 describe('opponent', () => {
   const deck = { characters: ['DC-001', 'MO-001', 'CA-001'], relics: ['RL-001'], potions: ['PT-002'] };
 
-  it('every written verse keeps its form, for every seed and every acrostic word', () => {
+  it('every written verse keeps its form: every language, every form offered in it, every acrostic word', () => {
     const broken: string[] = [];
-    for (const form of FORMS) {
-      const words = form.id === 'acrostic' ? ACROSTIC_WORDS.en : [undefined];
-      for (const acrostic of words) {
-        for (let seed = 0; seed < 12; seed++) {
-          const ctx = { lang: 'en', acrostic };
-          const verse = writtenVerse(form, ctx, seed);
-          for (const c of scoreForm(form, verse, ctx).checks) {
-            if (!c.met) broken.push(`${form.id}${acrostic ? ' ' + acrostic : ''} | ${c.id}: ${c.detail} | ${verse.split('\n')[0]}`);
-          }
-        }
+    let checked = 0;
+    const check = (lang: string, formId: string, verse: string, acrostic?: string) => {
+      checked++;
+      const ctx = { lang, acrostic };
+      for (const c of scoreForm(getForm(formId), verse, ctx).checks) {
+        if (!c.met) broken.push(`${lang} ${formId}${acrostic ? ' ' + acrostic : ''} | ${c.id}: ${c.detail} | ${verse.split('\n')[0]}`);
       }
+    };
+    for (const lang of PACK_LANGS) {
+      const pack = getPack(lang);
+      expect(pack.lang).toBe(lang);
+      for (const form of formsFor(lang)) {
+        if (form.id === 'acrostic') {
+          for (const word of pack.acrostic) {
+            const units = acrosticUnits(word, lang);
+            // Every line in the bank, not only those a seed happens to draw.
+            const banks = units.map((u) => pack.acrosticLines[fold(u)] ?? []);
+            for (const [i, bank] of banks.entries()) {
+              if (bank.length < 2) broken.push(`${lang} acrostic ${word}: fewer than two lines for "${units[i]}"`);
+            }
+            const most = Math.max(0, ...banks.map((bk) => bk.length));
+            for (let n = 0; n < most; n++) check(lang, 'acrostic', banks.map((bk) => bk[n % Math.max(1, bk.length)] ?? '').join('\n'), word);
+            for (let seed = 0; seed < 12; seed++) check(lang, 'acrostic', writtenVerse(form, { lang, acrostic: word }, seed), word);
+          }
+          continue;
+        }
+        const bank = pack.written[form.id] ?? [];
+        if (bank.length < 2) broken.push(`${lang} ${form.id}: fewer than two written verses`);
+        for (const verse of bank) check(lang, form.id, verse);
+        for (let seed = 0; seed < 12; seed++) check(lang, form.id, writtenVerse(form, { lang }, seed));
+      }
+      // No verse sits in a pack for a form its language does not offer: it would never be checked.
+      const offered = new Set(formsFor(lang).map((f) => f.id));
+      for (const id of Object.keys(pack.written)) if (!offered.has(id)) broken.push(`${lang}: verses for "${id}", which is not offered`);
     }
     expect([...new Set(broken)]).toEqual([]);
+    expect(checked).toBeGreaterThan(2000);
   });
   it('trims what a small model appends after its verse', () => {
     const raw = 'Here is my couplet:\n**Thy rhymes are thin as winter light**\n1. And mine shall bury thee tonight (rhymes with light)\n\n(Each line is eight syllables: count carefully.)\nLine 1: "Thy rhymes"';
@@ -332,7 +363,10 @@ describe('opponent', () => {
     const plan = d.rounds.find((r) => r.opponent.relic)!;
     const form = getForm(plan.formId);
     const [, user] = opponentMessages(plan, getCardById(plan.opponent.charId)!, form, 'es');
-    expect(user.content).toContain(form.name);
+    expect(user.content).toContain(english(form.name));
+    expect(user.content).toContain(english(form.brief(plan.ctx)));
+    // The prompt is English whatever the duel's language: no message key leaks into it.
+    expect(user.content).not.toMatch(/(form|device|check|curse)\.[a-z-]+\.(name|brief)/);
     expect(user.content).toContain(`exactly ${expectedLines(form, plan.ctx)} lines`);
     expect(user.content).toContain(plan.opponent.relic!.words[0]);
     expect(user.content).toContain('Spanish');
@@ -384,10 +418,10 @@ describe('session', () => {
     expect(s.phase).toBe('player-turn');
     expect(s.opponentVerse.length).toBeGreaterThan(10);
     expect(s.opponentSource).toBe('written');
-    expect(s.blocked()).toBe('Choose who answers.');
+    expect(s.blocked()).toBe('choose-character');
     expect(s.chooseCharacter('ZZ-999')).toBe(false);
     expect(s.chooseCharacter('DC-001')).toBe(true);
-    expect(s.blocked()).toBe('Write or speak a verse.');
+    expect(s.blocked()).toBe('write-verse');
     s.setVerse('Who dares to stand upon my stage?\nI put the question to thy rage');
     expect(s.blocked()).toBeNull();
     expect(s.preview()!.device.met).toBe(true);
@@ -436,7 +470,211 @@ describe('session', () => {
     s.chooseCharacter('MO-001');
     s.setVerse('a line\nanother line');
     const r2 = await s.submit();
-    expect(r2!.opponent.curse?.name).toBe('Forbidden Letter');
+    expect(r2!.opponent.curse?.id).toBe('forbidden-letter');
     expect(s.itemUsed('PT-002')).toBe(true);
+  });
+});
+
+describe('languages', () => {
+  const deck = { characters: ['DC-001', 'MO-001', 'CA-001'], relics: ['RL-001'], potions: ['PT-002'] };
+
+  it('names sixteen languages, each with a pack', () => {
+    expect([...PACK_LANGS].sort()).toEqual(['ar', 'de', 'en', 'es', 'fr', 'hi', 'id', 'it', 'ja', 'ko', 'pl', 'pt', 'ru', 'th', 'vi', 'zh']);
+  });
+
+  it('offers at least three forms in every language, and rhyming forms only where rhyme is checked', () => {
+    for (const lang of PACK_LANGS) {
+      const forms = formsFor(lang);
+      expect([lang, forms.length >= ROUNDS]).toEqual([lang, true]);
+      expect([lang, forms.some((f) => f.needsRhyme)]).toEqual([lang, rhymeChecked(lang)]);
+      for (const id of ['anaphora', 'crescendo', 'acrostic']) expect([lang, id, forms.some((f) => f.id === id)]).toEqual([lang, id, true]);
+      // English draws from exactly the forms it had before the other languages arrived.
+      expect([lang, forms.some((f) => f.id === 'epistrophe')]).toEqual([lang, lang !== 'en']);
+    }
+    expect(formsFor('zh').map((f) => f.id).sort()).toEqual(['acrostic', 'anaphora', 'crescendo', 'epistrophe', 'haiku', 'jueju']);
+    expect(formsFor('ja').map((f) => f.id).sort()).toEqual(['acrostic', 'anaphora', 'crescendo', 'epistrophe', 'haiku']);
+    expect(formsFor('th').map((f) => f.id).sort()).toEqual(['acrostic', 'anaphora', 'crescendo', 'epistrophe']);
+    expect(formsFor('vi').some((f) => f.id === 'luc-bat')).toBe(true);
+    expect(formsFor('en').map((f) => f.id)).toEqual(['couplet', 'quatrain-aabb', 'quatrain-abab', 'tercet', 'anaphora', 'acrostic', 'crescendo', 'haiku', 'heroic-couplet']);
+    // The English measure of a word's length is unchanged: an inner apostrophe counts.
+    expect(DEVICES.riposte.check("I don't", { opponentVerse: "You don't" }).met).toBe(true);
+  });
+
+  it('every engine message has English, and every message a form, device or curse can produce is in the table', () => {
+    const missing: string[] = [];
+    const need = (key: string) => { if (!ENGINE_EN[key]) missing.push(key); };
+    for (const lang of PACK_LANGS) {
+      const pack = getPack(lang);
+      for (const form of formsFor(lang)) {
+        const ctx = { lang, acrostic: form.id === 'acrostic' ? pack.acrostic[0] : undefined };
+        need(form.name.key);
+        need(form.brief(ctx).key);
+        for (const c of scoreForm(form, 'x', ctx).checks) need(c.label.key);
+      }
+      for (const d of Object.values(DEVICES)) { need(d.name.key); need(d.brief(lang).key); }
+      for (const c of Object.values(CURSES)) {
+        need(c.name.key);
+        need(c.brief('x', lang).key);
+        need(c.brief('x', lang).key.replace('.brief', '.theirs'));
+      }
+    }
+    for (const house of Object.keys(HOUSE_DEVICE)) need(houseWhy(house)!.key);
+    expect([...new Set(missing)]).toEqual([]);
+    expect(english(getForm('acrostic').brief({ lang: 'en', acrostic: 'bard' }))).toBe('One line per letter: the first letters must spell BARD.');
+    expect(english(CURSES['short-lines'].brief('', 'zh'))).toContain('5 characters');
+    // A rendered message never leaves a placeholder behind.
+    expect(english(DEVICES.riposte.brief('ko'))).not.toMatch(/[{}]/);
+  });
+
+  it('plans a duel for fifty seeds in every language', () => {
+    for (const lang of PACK_LANGS) {
+      const offered = new Set(formsFor(lang).map((f) => f.id));
+      for (let seed = 1; seed <= 50; seed++) {
+        const d = createDuel(seed, lang, deck);
+        expect(d.rounds).toHaveLength(ROUNDS);
+        expect([lang, seed, new Set(d.rounds.map((r) => r.formId)).size]).toEqual([lang, seed, ROUNDS]);
+        for (const r of d.rounds) {
+          expect([lang, r.formId, offered.has(r.formId)]).toEqual([lang, r.formId, true]);
+          if (r.formId === 'acrostic') expect([lang, getPack(lang).acrostic.includes(r.ctx.acrostic!)]).toEqual([lang, true]);
+          if (r.opponent.curse?.curseId === 'forbidden-letter') expect(getPack(lang).forbidden).toContain(r.opponent.curse.param);
+          if (r.opponent.relic) expect([lang, r.opponent.relic.words.length]).toEqual([lang, 5]);
+          // The written opponent has a verse that keeps the form, whatever was drawn.
+          const form = getForm(r.formId);
+          expect([lang, seed, r.formId, scoreForm(form, writtenVerse(form, r.ctx, seed + r.index), r.ctx).kept]).toEqual([lang, seed, r.formId, true]);
+        }
+        expect(getPack(lang).forbidden).toContain(d.playerCurses['PT-002'].param);
+        expect(d.playerRelics['RL-001'].words).toHaveLength(5);
+      }
+    }
+  });
+
+  it('every potion and relic has data in every language', () => {
+    for (const lang of PACK_LANGS) {
+      const pack = getPack(lang);
+      expect([lang, pack.acrostic.length >= 6 && pack.acrostic.length <= 8]).toEqual([lang, true]);
+      expect([lang, pack.forbidden.length >= 5 && pack.forbidden.length <= 6]).toEqual([lang, true]);
+      expect([lang, new Set(pack.forbidden).size]).toEqual([lang, pack.forbidden.length]);
+      for (const word of pack.acrostic) {
+        const n = acrosticUnits(word, lang).length;
+        expect([lang, word, n >= 3 && n <= 5]).toEqual([lang, word, true]);
+      }
+      for (const c of CARD_CATALOG) {
+        if (c.type === 'Relic') {
+          const words = pack.relics[c.id] ?? [];
+          expect([lang, c.id, words.length]).toEqual([lang, c.id, 5]);
+          expect([lang, c.id, new Set(words).size]).toEqual([lang, c.id, 5]);
+          // Each power word can be found by the check that pays for it, as written.
+          for (const w of words) expect([lang, c.id, w, checkPowerWords([w, w], `x ${w} y`, lang).met]).toEqual([lang, c.id, w, true]);
+        }
+        if (c.type === 'Potion') expect([c.id, !!CURSES[POTION_CURSE[c.id]]]).toEqual([c.id, true]);
+      }
+      // A forbidden letter must be able to bite: it occurs somewhere in the pack's own verses.
+      const verses = [...Object.values(pack.written).flat(), ...Object.values(pack.acrosticLines).flat()];
+      for (const letter of pack.forbidden) {
+        const hit = verses.filter((v) => CURSES['forbidden-letter'].violations(v, letter, lang) > 0).length;
+        expect([lang, letter, hit > 0]).toEqual([lang, letter, true]);
+      }
+    }
+  });
+
+  it('finds rhyme by the rule of each language: three true pairs and two false ones', () => {
+    const pairs: Record<string, { yes: Array<[string, string]>; no: Array<[string, string]> }> = {
+      en: { yes: [['night', 'light'], ['stage', 'rage'], ['crown', 'drown']], no: [['king', 'moon'], ['stage', 'large']] },
+      es: { yes: [['vida', 'herida'], ['corazón', 'canción'], ['amor', 'dolor']], no: [['vida', 'nada'], ['luna', 'cielo']] },
+      fr: { yes: [['nuit', 'bruit'], ['amour', 'toujours'], ['été', 'chanter']], no: [['nuit', 'jour'], ['roi', 'reine']] },
+      de: { yes: [['Nacht', 'Macht'], ['Leben', 'geben'], ['Hund', 'bunt']], no: [['Nacht', 'Licht'], ['Leben', 'lieben']] },
+      it: { yes: [['notte', 'rotte'], ['amore', 'cuore'], ['città', 'verità']], no: [['amore', 'amaro'], ['notte', 'note']] },
+      pt: { yes: [['coração', 'canção'], ['saudade', 'verdade'], ['dia', 'alegria']], no: [['vida', 'nada'], ['amor', 'amar']] },
+      pl: { yes: [['kocha', 'szlocha'], ['noc', 'moc'], ['serce', 'kobierce']], no: [['noc', 'dzień'], ['kocha', 'kochał']] },
+      ru: { yes: [['любовь', 'кровь'], ['она', 'луна'], ['меня', 'тебя']], no: [['она', 'вода'], ['ночь', 'день']] },
+      id: { yes: [['malam', 'dalam'], ['hati', 'mati'], ['bintang', 'datang']], no: [['malam', 'hati'], ['bulan', 'bulat']] },
+      vi: { yes: [['tối', 'lối'], ['hoa', 'xa'], ['tàn', 'vàn']], no: [['tối', 'tôi'], ['trời', 'đêm']] },
+      ar: { yes: [['كتاب', 'باب'], ['قلبي', 'دربي'], ['جميل', 'طويل']], no: [['قمر', 'نور'], ['كتاب', 'قلم']] },
+      hi: { yes: [['रात', 'बात'], ['कहानी', 'रानी'], ['दिल', 'मिल']], no: [['रात', 'दिन'], ['कहानी', 'कहना']] },
+      ko: { yes: [['사랑', '자랑'], ['밤', '삼'], ['하늘', '오늘']], no: [['사랑', '사람'], ['하늘', '바다']] },
+    };
+    for (const lang of PACK_LANGS) expect([lang, !!pairs[lang]]).toEqual([lang, rhymeChecked(lang)]);
+    for (const [lang, { yes, no }] of Object.entries(pairs)) {
+      expect([yes.length, no.length]).toEqual([3, 2]);
+      for (const [a, b] of yes) expect([lang, a, b, rhymes(a, b, lang)]).toEqual([lang, a, b, true]);
+      for (const [a, b] of no) expect([lang, a, b, rhymes(a, b, lang)]).toEqual([lang, a, b, false]);
+      // A word never rhymes with itself, in any language.
+      expect([lang, rhymes(yes[0][0], yes[0][0], lang)]).toEqual([lang, false]);
+    }
+    // Vietnamese: the same letters with another tone is another word, and rhymes only within its tone class.
+    expect(rhymes('tàn', 'tan', 'vi')).toBe(true);
+    expect(rhymes('tàn', 'tán', 'vi')).toBe(false);
+    // Hindi: lines closing on the same word are compared on the word before it.
+    const hi = { lang: 'hi' };
+    expect(scoreForm(getForm('couplet'), 'रात बहुत काली है\nबात बहुत निराली है', hi).kept).toBe(true);
+    expect(scoreForm(getForm('couplet'), 'रात बहुत काली है\nबात बहुत छोटी है', hi).kept).toBe(false);
+  });
+
+  it('counts syllables where the spelling allows, and declines elsewhere', () => {
+    const cases: Array<[string, string, number | null]> = [
+      ['es', 'poesía', 4], ['es', 'cielo', 2], ['es', 'que', 1], ['it', 'città', 2], ['pt', 'coração', 3], ['pt', 'dia', 2], ['pt', 'história', 3],
+      ['pl', 'niebo', 2], ['pl', 'miłość', 2], ['pl', 'w', 0], ['ru', 'любовь', 2], ['ru', 'в', 0], ['id', 'pantai', 2], ['id', 'laut', 2],
+      ['de', 'Leben', 2], ['ko', '사랑', 2], ['vi', 'nghiêng', 1],
+      ['ar', 'قمر', null], ['hi', 'रात', null], ['th', 'รัก', null],
+    ];
+    for (const [lang, word, n] of cases) expect([lang, word, syllablesInWord(word, lang)]).toEqual([lang, word, n]);
+    expect(syllablesInLine('La lune se lève', 'fr')).toBe(5);
+    expect(syllablesInLine('你诗如落叶', 'zh')).toBe(5);
+    expect(syllablesInLine('ふるいけや', 'ja')).toBe(5);
+    expect(syllablesInLine('きょうのつき', 'ja')).toBe(5);
+    // A kanji's reading is not in its spelling.
+    expect(syllablesInLine('古池や', 'ja')).toBeNull();
+    expect(scoreForm(getForm('haiku'), '古池や\nかわずとびこむ\nみずのおと', { lang: 'ja' }).checks[1]).toMatchObject({ met: false, detail: '?' });
+  });
+
+  it('measures lines in characters for Chinese and Japanese, in words elsewhere', () => {
+    expect(lineLength('你的诗更加渺小', 'zh')).toBe(7);
+    expect(lineLength('お前は小さい', 'ja')).toBe(6);
+    expect(lineLength('Thy verse is small', 'en')).toBe(4);
+    expect(lineLength('네 시는 더 작다', 'ko')).toBe(4);
+    // Thai has no spaces: its words come from the platform's segmenter.
+    expect(wordsOf('ฟังให้ดี', 'th').length).toBeGreaterThan(1);
+    const zh = { lang: 'zh' };
+    expect(scoreForm(getForm('jueju'), '尔诗如残烛\n风来便自灭\n我句似朝阳\n照尔无处躲', zh).kept).toBe(true);
+    expect(scoreForm(getForm('jueju'), '尔诗如残烛\n风来便自灭\n我句似朝阳\n照尔无处可躲', zh).kept).toBe(false);
+    expect(scoreForm(getForm('anaphora'), '说吧一\n说吧二\n讲吧三', zh).kept).toBe(false);
+    expect(scoreForm(getForm('epistrophe'), '一台\n二台\n三台', zh).kept).toBe(true);
+  });
+
+  it('spells an acrostic by what a line can open on in each script', () => {
+    expect(acrosticUnits('bard', 'en')).toEqual(['b', 'a', 'r', 'd']);
+    expect(acrosticUnits('소나기', 'ko')).toEqual(['소', '나', '기']);
+    expect(acrosticUnits('सपना', 'hi')).toEqual(['स', 'प', 'न']);
+    expect(acrosticUnits('ฟ้า ดิน น้ำ ลม', 'th')).toEqual(['ฟ้า', 'ดิน', 'น้ำ', 'ลม']);
+    const acro = getForm('acrostic');
+    // Korean: the block itself, not merely its first consonant.
+    expect(scoreForm(acro, '소리\n나는\n기억', { lang: 'ko', acrostic: '소나기' }).kept).toBe(true);
+    expect(scoreForm(acro, '사리\n나는\n기억', { lang: 'ko', acrostic: '소나기' }).kept).toBe(false);
+    // Hindi: the consonant, with any vowel sign.
+    expect(scoreForm(acro, 'सुन\nपानी\nनींद', { lang: 'hi', acrostic: 'सपना' }).kept).toBe(true);
+    expect(scoreForm(acro, 'सुन\nबात\nनींद', { lang: 'hi', acrostic: 'सपना' }).kept).toBe(false);
+    // Japanese: katakana opens a hiragana letter; kanji does not.
+    expect(scoreForm(acro, 'サクラ\nくも\nらくだ', { lang: 'ja', acrostic: 'さくら' }).kept).toBe(true);
+    expect(scoreForm(acro, '桜\nくも\nらくだ', { lang: 'ja', acrostic: 'さくら' }).kept).toBe(false);
+    expect(english(acro.brief({ lang: 'th', acrostic: 'ลม ฝน ฟ้า' }))).toContain('ลม · ฝน · ฟ้า');
+  });
+
+  it('lets a power word take the endings of its language', () => {
+    expect(checkPowerWords(['кровь', 'корона'], 'В крови и с короной', 'ru').met).toBe(true);
+    expect(checkPowerWords(['왕', '무덤'], '왕이 무덤에서 웃는다', 'ko').met).toBe(true);
+    expect(checkPowerWords(['تاج', 'عرش'], 'التاج والعرش لي', 'ar').met).toBe(true);
+    expect(checkPowerWords(['王冠', '魔女'], '魔女戴上了王冠', 'zh').met).toBe(true);
+    expect(checkPowerWords(['đầu lâu', 'tiếng cười'], 'Đầu lâu còn vang tiếng cười', 'vi').met).toBe(true);
+    expect(checkPowerWords(['đầu lâu', 'tiếng cười'], 'Đầu ta lâu rồi chẳng cười', 'vi').met).toBe(false);
+    // English keeps the exact match it always had.
+    expect(checkPowerWords(['king', 'crown'], 'A kingdom of crowns', 'en').met).toBe(false);
+  });
+
+  it('swaps a rhyming device for a structural one where rhyme is not checked', () => {
+    expect(deviceForHouse('Montague', 'en').id).toBe('internal-rhyme');
+    expect(deviceForHouse('Montague', 'zh').id).toBe('repetition');
+    expect(deviceForHouse('Legendary', 'th').id).toBe('ring');
+    expect(houseWhy('Montague', 'zh')).toBeNull();
+    expect(houseWhy('Montague', 'en')?.key).toBe('house.montague.why');
   });
 });
