@@ -183,6 +183,8 @@ describe('finding: one word repeated swept Anaphora, and forms accepted single l
       ['anaphora', 'dare\ndare\ndare', 'SC-001', undefined],
       ['crescendo', 'a\na a\na a a', 'TP-001', undefined],
       ['acrostic', 'w\ni\nt', 'DC-001', 'wit'],
+      // Not in the finding, the same exploit with more words: one line said three times.
+      ['anaphora', 'Never the night falls\nNever the night falls\nNever the night falls', 'SC-001', undefined],
     ];
     for (const [formId, verse, charId, acrostic] of cases) {
       const s = scoreVerse({ verse, form: getForm(formId), ctx: { lang: 'en', acrostic }, card: card(charId), deckCharacters: scottish });

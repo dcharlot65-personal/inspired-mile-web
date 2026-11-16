@@ -133,6 +133,16 @@ describe('syllables, by sound', () => {
     }
     expect(pron.pronunciationLoaded()).toBe(true);
   });
+  it("carries the dictionary's licence inside the data, where a minified build keeps it", async () => {
+    const data = (await import('./pron-en')).default;
+    const notice = data.split('\n').filter((l) => l.startsWith('#'));
+    expect(notice.join('\n')).toContain('Copyright (C) 1993-2015 Carnegie Mellon');
+    expect(notice.join('\n')).toContain('POSSIBILITY OF SUCH DAMAGE.');
+    // The notice is read as no word at all.
+    expect(notice.every((l) => !l.includes('\t'))).toBe(true);
+    expect(pron.knownWord('carnegie')).toBe(true);
+    expect(pron.knownWord('#')).toBe(false);
+  });
 });
 
 describe('similarity: how much of a verse is taken from another', () => {
@@ -168,10 +178,10 @@ describe('similarity: how much of a verse is taken from another', () => {
 
 describe('substance: a verse, or tokens laid out like one', () => {
   it('needs a word in every line and as many different words as lines', () => {
-    for (const thin of ['Never\nNever\nNever', 'dare\ndare\ndare', 'a\na a\na a a', 'w\ni\nt', 'x', '?\n?', 'so\nso', 'go go\ngo go', 'Never fear\nNever\nNever', 'question', 'zz!!', 'Hear this']) {
+    for (const thin of ['Never\nNever\nNever', 'dare\ndare\ndare', 'a\na a\na a a', 'w\ni\nt', 'x', '?\n?', 'so\nso', 'go go\ngo go', 'Never fear\nNever\nNever', 'question', 'zz!!', 'Hear this', 'Never the night falls\nnever the night falls!\nNever, the night falls', 'Thy verse is weak\nThy verse is weak']) {
       expect([thin, text.substance(thin, 'en').ok]).toEqual([thin, false]);
     }
-    for (const real of ['Never fear\nNever yield\nNever kneel', 'Kneel\nWeep, fool\nThy doom has come', 'A candle?\nThen I snuff it', 'To be or not to be', 'Bold\nAnd\nRash\nDeeds', 'I\nI rise\nI rise again', 'O!\nRomeo, wherefore art thou']) {
+    for (const real of ['Never fear\nNever yield\nNever kneel', 'Kneel\nWeep, fool\nThy doom has come', 'A candle?\nThen I snuff it', 'To be or not to be', 'Bold\nAnd\nRash\nDeeds', 'I\nI rise\nI rise again', 'O!\nRomeo, wherefore art thou', 'Oh Rome, oh Rome\nThy walls are tall\nOh Rome, oh Rome\nThy walls shall fall']) {
       expect([real, text.substance(real, 'en').ok]).toEqual([real, true]);
     }
     expect(text.substance('Never\nNever\nNever')).toEqual({ ok: false, distinct: 1, needed: 3 });
