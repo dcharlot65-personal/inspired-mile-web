@@ -129,13 +129,33 @@ const dates = cells.map((c) => c.date).sort();
 const commits = [...new Set(cells.map((c) => c.commit))];
 if (cells.length) out.push('', `${cells.length} cells, run from ${dates[0].slice(0, 16).replace('T', ' ')} to ${dates.at(-1).slice(0, 16).replace('T', ' ')} UTC, from ${commits.length === 1 ? 'one snapshot of the code' : `${commits.length} snapshots of the code`} (${commits.map((c) => c?.slice(0, 8)).join(', ')}); Transformers.js ${[...new Set(cells.map((c) => c.transformers))].join(', ')}; GPU ${[...new Set(cells.map((c) => `${c.gpu?.vendor} ${c.gpu?.architecture}`))].join(', ')}.`);
 
-const docFile = join(ROOT, 'docs', 'language', 'MODEL-EVAL.md');
-const START = '<!-- table:start -->';
-const END = '<!-- table:end -->';
-if (existsSync(docFile)) {
-  const doc = readFileSync(docFile, 'utf8');
-  const a = doc.indexOf(START);
-  const b = doc.indexOf(END);
-  if (a >= 0 && b > a) writeFileSync(docFile, `${doc.slice(0, a + START.length)}\n${out.join('\n')}\n${doc.slice(b)}`);
+// --- The result in brief, at the top of the page ---
+const brief = [];
+const full = LANGS.filter((l) => TIERS.every((t) => ['judge', 'write'].every((task) => table[t][l][task])));
+const part = LANGS.filter((l) => !full.includes(l) && TIERS.some((t) => ['judge', 'write'].some((task) => table[t][l][task])));
+const none = LANGS.filter((l) => !full.includes(l) && !part.includes(l));
+const cellsOf = (l) => TIERS.flatMap((t) => ['judge', 'write'].filter((task) => table[t][l][task]).map((task) => `${LABEL[t]} ${task === 'judge' ? 'judging' : 'writing'}`));
+brief.push(`**${cells.length} of ${TIERS.length * LANGS.length * 2} cells measured** (${LANGS.length} languages, ${TIERS.length} models, judging and writing).`);
+brief.push('', `- Measured for every model and both tasks: ${full.join(', ') || 'none'}.`);
+if (part.length) brief.push(`- Measured in part: ${part.map((l) => `${l} (${cellsOf(l).join(', ')})`).join('; ')}.`);
+if (none.length) brief.push(`- Not measured: ${none.join(', ')}. There no model writes or judges: the written opponent plays and the rules judge.`);
+brief.push('');
+for (const tier of TIERS) {
+  const { writesIn: w, judgesIn: j } = models[tier];
+  brief.push(`- **${LABEL[tier]}** writes the opponent's verse in ${w.join(', ') || 'no language'} and judges in ${j.join(', ') || 'no language'}.${!w.length && !j.length ? ' It is used nowhere, so it is never offered.' : ''}`);
 }
+
+const docFile = join(ROOT, 'docs', 'language', 'MODEL-EVAL.md');
+const between = (doc, start, end, body) => {
+  const a = doc.indexOf(start);
+  const b = doc.indexOf(end);
+  return a >= 0 && b > a ? `${doc.slice(0, a + start.length)}\n${body}\n${doc.slice(b)}` : doc;
+};
+if (existsSync(docFile)) {
+  let doc = readFileSync(docFile, 'utf8');
+  doc = between(doc, '<!-- brief:start -->', '<!-- brief:end -->', brief.join('\n'));
+  doc = between(doc, '<!-- table:start -->', '<!-- table:end -->', out.join('\n'));
+  writeFileSync(docFile, doc);
+}
+console.log(brief.join('\n'), '\n');
 console.log(out.join('\n'));
