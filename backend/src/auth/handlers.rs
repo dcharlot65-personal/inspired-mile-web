@@ -281,8 +281,16 @@ mod tests {
     #[test]
     fn usernames_carry_48_random_bits_and_fit_the_column() {
         let names: std::collections::HashSet<String> = (0..5000).map(|_| random_username()).collect();
-        // With 24 bits, 5000 draws clash about half the time; with 48 they never do.
         assert_eq!(names.len(), 5000);
+        // The upper 24 of the 48 bits are in use: among 5000 names, some value is above
+        // anything the old 24-bit names could hold. (Chance of a false alarm: 2^-120000.)
+        let widest = names
+            .iter()
+            .map(|n| u64::from_str_radix(n.strip_prefix("bard-").expect("prefix"), 16).expect("hex"))
+            .max()
+            .unwrap();
+        assert!(widest > 0x00ff_ffff, "names carry only 24 bits: {widest:#x}");
+        assert!(widest <= 0xffff_ffff_ffff);
         for name in names.iter().take(50) {
             let hex = name.strip_prefix("bard-").expect("prefix");
             assert_eq!(hex.len(), 12, "{name}");
