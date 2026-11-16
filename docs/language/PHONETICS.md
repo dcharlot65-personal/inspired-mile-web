@@ -278,7 +278,17 @@ to m); when it lands, the dictionary's count belongs in it as the upper bound.
 | ru | table | 3.72 MB | 515 kB |
 | ja | analyser code and twelve dictionary files | 17.8 MB | 17.8 MB (already compressed) |
 
-Load times in a browser: see "Not verified".
+In the production build (`npm run build`, 2026-11-16) the table chunks are, gzip -9: es
+4.9 kB, id 4.7 kB, hi 5.8 kB, pt 7.0 kB, it 65 kB, th 86 kB, zh 160 kB, fr 232 kB, de 446 kB,
+ru 477 kB. The Japanese dictionary is 17.79 MB: eight files as assets and the four smallest
+inlined in the analyser's chunk.
+
+Time for `loadSound(lang)` to resolve in headless Chromium, measured by `tests/sound.spec.ts`
+on the Intel build host **against the dev server on the same machine**: es 5 ms, id 9 ms,
+pt 15 ms, hi 41 ms, it 52 ms, th 63 ms, zh 88 ms, fr 146 ms, de 209 ms, ru 813 ms, ja 1,068 ms;
+pl, ko, vi, ar 0. That is parse and install time with no network in the way. **Download
+time over a real connection was not measured**; it follows from the gzip sizes above
+(Russian's 477 kB and Japanese's 17.8 MB are the two a player on a slow link will notice).
 
 ## Sources and provenance
 
@@ -349,6 +359,12 @@ expects the sound tests to go red each time.
 - **Thai counts greedily.** `thaiSyllables` cuts a line into dictionary words longest-first
   from the left with no backtracking; it is not used by any form.
 - **Attribution for the CC BY-SA sources is not on the site.**
+- **The Japanese analyser has not been loaded in a browser from the production build.** The
+  browser tests run against the dev server. The build emits the dictionary files and the
+  loader handles both an asset URL and an inlined one, but no test fetched them from `dist/`
+  or through Caddy; a server that adds `Content-Encoding: gzip` to `.gz` files is handled in
+  code (the loader checks the gzip magic bytes) and likewise untested.
+- **No download was timed over a real network.**
 
 Anything measured in a browser, and the state of the test suites on the build host, is in
 the branch report rather than here, because it depends on the run.
