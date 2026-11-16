@@ -159,6 +159,22 @@ export async function renderSamples(lang, template, opts = {}) {
   return out.filter((s) => (seen.has(s.text) ? false : (seen.add(s.text), true)));
 }
 
+/**
+ * What the meaning check (back-translation and LaBSE) compares with the English, as { key: text }:
+ * every interface string as a player reads it (one sentence, typical numbers), but the house
+ * quotations, which are the source text; and each relic's power words, keyed 'pack:relics.<id>.<i>'.
+ * A relic's list translates the English list word for word (word i in every language is English
+ * word i; src/i18n/quality.test.ts holds the lists to the same length). The written opponent's
+ * verses and the acrostic words are not here: each language's were written to keep a form, not
+ * translated line by line, so there is no English line to compare them with.
+ */
+export async function meaningTexts(lang, s) {
+  const out = {};
+  for (const [key, template] of Object.entries(s.ui)) if (!(key in HOUSE_QUOTES)) out[key] = (await renderSamples(lang, template, { typical: true, key }))[0].text;
+  for (const [id, text] of Object.entries(s.pack)) if (id.startsWith('relics.')) out[`pack:${id}`] = text;
+  return out;
+}
+
 /** Everything, for every language: { lang: { ui: {key: template}, pack: {id: text} } }. */
 export async function allStrings() {
   const out = {};

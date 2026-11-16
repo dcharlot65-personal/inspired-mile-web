@@ -11,6 +11,7 @@ import { describe, expect, it } from 'vitest';
 import { LOCALES, loadMessages, setLocale, t, num, list, type Locale } from './index';
 import en from './locales/en';
 import { HOUSE_QUOTES } from '../lib/verse/english';
+import { loadPack, PACK_LANGS } from '../lib/verse/packs';
 import { argumentNames, interpolate, parseMessage, pluralBlocks, pluralCategory, MessageSyntaxError } from '../lib/verse/msg';
 // @ts-expect-error a plain JavaScript module shared with the command-line tools
 import { applyAllowlist, checkLanguage, untranslated } from '../../scripts/lang/lib/mechanical.mjs';
@@ -143,6 +144,16 @@ describe('every locale passes the mechanical checks', () => {
     expect(show(problems)).toEqual([]);
     // The pattern must still be finding the citations (about 137 on 2026-11-16), or this passes on nothing.
     expect(count).toBeGreaterThan(120);
+  });
+});
+
+describe('relic power words translate the English list word for word', () => {
+  // The meaning check (scripts/lang/lib/strings.mjs, meaningTexts) compares word i of a relic in each
+  // language with English word i, so the lists must line up.
+  it('every pack has the same relics as English, each with as many words', async () => {
+    const en = await loadPack('en');
+    const shape = (p: { relics: Record<string, string[]> }) => Object.fromEntries(Object.entries(p.relics).map(([id, ws]) => [id, ws.length]));
+    for (const l of PACK_LANGS) expect([l, shape(await loadPack(l))]).toEqual([l, shape(en)]);
   });
 });
 

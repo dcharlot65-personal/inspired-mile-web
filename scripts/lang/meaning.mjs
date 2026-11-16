@@ -20,7 +20,7 @@
  * share of deliberately mismatched pairs (each back-translation against the
  * next key's English) that fall under the same threshold.
  */
-import { allStrings, renderSamples, readJson, ROOT, HOUSE_QUOTES, LOCALES } from './lib/strings.mjs';
+import { allStrings, meaningTexts, readJson, ROOT, LOCALES } from './lib/strings.mjs';
 
 const args = process.argv.slice(2);
 const opt = (name, dflt) => (args.includes(name) ? args[args.indexOf(name) + 1] : dflt);
@@ -39,16 +39,14 @@ for (const lang of LOCALES) {
   const scored = bt.languages?.[lang];
   const row = (summary[lang] = { strings: 0, scored: 0, backOnly: 0, flagged: 0, allowed: 0, open: 0, notScored: 0, controlCaught: null });
   if (!scored) {
-    row.notScored = Object.keys(strings[lang].ui).length - Object.keys(HOUSE_QUOTES).length;
+    row.notScored = Object.keys(await meaningTexts(lang, strings[lang])).length;
     open.push({ lang, key: '*', why: 'this language has not been back-translated' });
     continue;
   }
   let control = 0;
-  for (const [key, template] of Object.entries(strings[lang].ui)) {
-    if (key in HOUSE_QUOTES) continue;
+  for (const [key, now] of Object.entries(await meaningTexts(lang, strings[lang]))) {
     row.strings++;
     const s = scored[key];
-    const now = (await renderSamples(lang, template, { typical: true, key }))[0].text;
     if (!s || s.text !== now) {
       row.notScored++;
       open.push({ lang, key, why: 'changed since it was scored; run the back-translation again', text: now });

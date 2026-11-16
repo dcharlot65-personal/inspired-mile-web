@@ -8,7 +8,7 @@
  */
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
-import { allStrings, renderSamples, ROOT, HOUSE_QUOTES } from './lib/strings.mjs';
+import { allStrings, meaningTexts, renderSamples, ROOT, HOUSE_QUOTES } from './lib/strings.mjs';
 
 const args = process.argv.slice(2);
 const withSamples = args.includes('--samples');
@@ -17,12 +17,12 @@ const strings = await allStrings();
 if (withSamples) {
   for (const [lang, s] of Object.entries(strings)) {
     s.samples = {};
-    s.typical = {};
     for (const [key, template] of Object.entries(s.ui)) {
       if (key in HOUSE_QUOTES) continue;
       s.samples[key] = await renderSamples(lang, template, { key });
-      s.typical[key] = (await renderSamples(lang, template, { typical: true, key }))[0].text;
     }
+    // What back-translation compares with the English: see meaningTexts().
+    s.typical = await meaningTexts(lang, s);
   }
 }
 mkdirSync(dirname(out), { recursive: true });

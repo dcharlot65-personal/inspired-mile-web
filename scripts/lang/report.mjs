@@ -11,7 +11,7 @@
  * was not run, in those words; nothing is filled in.
  */
 import { existsSync, readFileSync, writeFileSync } from 'node:fs';
-import { allStrings, renderSamples, readJson, ROOT, HOUSE_QUOTES, LOCALES, parseMessage } from './lib/strings.mjs';
+import { allStrings, meaningTexts, readJson, ROOT, HOUSE_QUOTES, LOCALES, parseMessage } from './lib/strings.mjs';
 import { applyAllowlist, checkLanguage, untranslated } from './lib/mechanical.mjs';
 import { checkGlossary } from './lib/glossary.mjs';
 const { argumentNames, pluralBlocks } = await import('../../src/lib/verse/msg.ts');
@@ -91,9 +91,7 @@ if (bt) {
       continue;
     }
     let control = 0;
-    for (const [key, template] of Object.entries(now[lang].ui)) {
-      if (key in HOUSE_QUOTES) continue;
-      const text = (await renderSamples(lang, template, { typical: true, key }))[0].text;
+    for (const [key, text] of Object.entries(await meaningTexts(lang, now[lang]))) {
       const s = scored[key];
       if (!s || s.text !== text) {
         row.notScored++;
