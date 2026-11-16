@@ -11,7 +11,8 @@
 # Each language in the pairs goes through `backtranslate.py --pairs` on its own (MADLAD-400 back to
 # English, MiniLM cosine and chrF against the English, LaBSE against the English directly), so a run
 # the host stops loses one language, not all of them, and a second start skips the languages done.
-# With BASE, each language's rows from the earlier run are kept except those translated again.
+# With BASE, each language's rows from the earlier run (its merged/ files when it was itself a
+# re-run, otherwise its lang/ files) are kept except those translated again.
 # Then bt-control.py adds the control (each string against the wrong English) into $WORK/bt.json.
 #
 # Every model runs under the host's memguard. Start it detached:
@@ -52,7 +53,7 @@ rows = json.load(open(base)) if os.path.exists(base) else []
 fresh = json.load(open(new)) if os.path.exists(new) else []
 again = {r['id'] for r in fresh}
 json.dump([r for r in rows if r['id'] not in again] + fresh, open(out, 'w'), ensure_ascii=False)
-" "$BASE/lang/bt-$l.json" "$WORK/lang/bt-$l.json" "$WORK/merged/bt-$l.json"
+" "$( [ -s "$BASE/merged/bt-$l.json" ] && echo "$BASE/merged/bt-$l.json" || echo "$BASE/lang/bt-$l.json" )" "$WORK/lang/bt-$l.json" "$WORK/merged/bt-$l.json"
     files+=("$WORK/merged/bt-$l.json")
   done
 else
