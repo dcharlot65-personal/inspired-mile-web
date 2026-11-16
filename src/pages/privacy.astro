@@ -6,7 +6,7 @@ import Layout from '../layouts/BaseLayout.astro';
   <section class="pt-32 pb-20 px-6">
     <div class="max-w-3xl mx-auto">
       <h1 class="text-4xl font-display font-bold text-white mb-4">Privacy Policy</h1>
-      <p class="text-brand-gray text-sm mb-12">Last updated: February 16, 2026</p>
+      <p class="text-brand-gray text-sm mb-12">Last updated: November 16, 2026</p>
 
       <div class="space-y-8 text-brand-slate text-[15px] leading-relaxed">
         <div>
@@ -14,6 +14,12 @@ import Layout from '../layouts/BaseLayout.astro';
           <p>
             Inspired Mile (<a href="https://sonnetman.inspiredmile.com" class="text-accent hover:text-accent-light transition-colors">sonnetman.inspiredmile.com</a>) is operated by Voyage Tracable, LLC, a Florida limited liability company. This policy describes what personal data we collect, why we collect it, how we store it, and your rights regarding that data.
           </p>
+          <p class="mt-3 mb-2">The short version:</p>
+          <ul class="list-disc list-inside space-y-1 ml-2">
+            <li><strong class="text-white">Solo duels stay on your device.</strong> The AI opponent, the judge and speech recognition run in your browser. What you write or say in a solo duel is never sent to us or to anyone else.</li>
+            <li><strong class="text-white">Multiplayer is different.</strong> Verses you submit in a multiplayer battle are sent to our server.</li>
+            <li><strong class="text-white">Some files come from other companies.</strong> The AI models are downloaded from Hugging Face the first time you use them, all traffic to this site passes through Cloudflare, and page views are counted by Plausible once you have passed the age check. Each is described under <a href="#third-parties" class="text-accent hover:text-accent-light transition-colors">Other Companies Involved</a>.</li>
+          </ul>
         </div>
 
         <div>
@@ -24,12 +30,12 @@ import Layout from '../layouts/BaseLayout.astro';
           <ul class="list-disc list-inside space-y-1 ml-2">
             <li><strong class="text-white">A passkey public key</strong> and a label for the device or browser it was made on (for example "Chrome on macOS"), so you can tell your passkeys apart</li>
             <li><strong class="text-white">A random account identifier and a generated username</strong> (for example <code class="text-xs bg-obsidian-800 px-1 rounded-sm">bard-4f2a9c</code>), neither derived from anything about you</li>
-            <li><strong class="text-white">Your age group</strong> from the age check: "adult" or "teen with consent". We do not store your date of birth.</li>
+            <li><strong class="text-white">Your age group</strong> as you declared it at the age check: "adult" or "teen". Your date of birth is checked in your browser and is never sent to us.</li>
           </ul>
           <p class="mt-3 mb-2">An email address is optional. If you choose to add one for account recovery, or to sign in by email, we also store:</p>
           <ul class="list-disc list-inside space-y-1 ml-2">
-            <li><strong class="text-white">Your email address,</strong> used only to send you one-time sign-in codes. We ask for it only after the age check, and never from visitors under 13.</li>
-            <li><strong class="text-white">Accounts created before passkeys:</strong> if you first signed in with Google, we still hold the name, email address and profile picture Google provided then. We no longer use Google Sign-In.</li>
+            <li><strong class="text-white">Your email address,</strong> used only to send you one-time sign-in codes. We ask for it only after the age check, and never from a visitor who told the age check they are under 13.</li>
+            <li><strong class="text-white">Accounts created before passkeys:</strong> if you signed in with Google before we removed that option, we still hold the name, email address and profile picture Google gave us then. Google is no longer part of signing in, and we receive nothing from it now.</li>
           </ul>
 
           <h3 class="text-md font-semibold text-obsidian-200 mt-4 mb-2">Gameplay Data</h3>
@@ -45,21 +51,23 @@ import Layout from '../layouts/BaseLayout.astro';
             <li>Season pass progress and reward claims</li>
           </ul>
 
-          <h3 class="text-md font-semibold text-obsidian-200 mt-4 mb-2">User-Generated Content</h3>
-          <p class="mb-2">In multiplayer battles, you submit creative writing (verses) that are:</p>
+          <h3 class="text-md font-semibold text-obsidian-200 mt-4 mb-2">What You Write and Say</h3>
+          <p class="mb-2"><strong class="text-white">Solo duels (the Battle Arena and the Theatre).</strong> Your verse stays in your browser. The AI opponent and the judge are models that run on your device. If you speak your verse, the recording is turned into text in your browser and is not sent anywhere. We never receive your verse or your voice, and neither does any other company.</p>
+          <p class="mb-2"><strong class="text-white">Multiplayer battles.</strong> Here your verse does leave your device:</p>
           <ul class="list-disc list-inside space-y-1 ml-2">
-            <li>Sent to our server, which scores them by fixed rules during the match (no AI model reads them)</li>
-            <li>Shared with your opponent in real-time</li>
-            <li>Not permanently stored after the battle session ends</li>
+            <li>It is sent to our server, which checks it against a word filter and scores the round by fixed rules. No AI model reads it, and no outside company receives it.</li>
+            <li>Once both verses of a round are in, your opponent is sent your verse, as the server scored it, with the full breakdown of both scores.</li>
+            <li>The verse is held in our server's memory while the battle lasts, and for a few minutes after it ends so that a player whose connection dropped can still see the result. It is not written to our database or to our server log.</li>
           </ul>
+          <p class="mt-3"><strong class="text-white">Reports.</strong> If you report a multiplayer battle, we store your account identifier, the battle's identifier and the reason you type (up to 500 characters), in our database and in our server log.</p>
 
           <h3 class="text-md font-semibold text-obsidian-200 mt-4 mb-2">Classroom Data</h3>
           <p class="mb-2">If you use Classroom Mode:</p>
           <ul class="list-disc list-inside space-y-1 ml-2">
-            <li>Classroom names, join codes, and membership</li>
-            <li>Assignment titles and types</li>
-            <li>Student progress within classroom assignments</li>
+            <li>Classroom names, join codes, and membership (which accounts are in the class, as teacher or student, and when they joined)</li>
+            <li>Assignment titles, types and due dates</li>
           </ul>
+          <p class="mt-2">We do not store grades, student work, or progress on assignments. The class list shows each member's username, role and joining date.</p>
 
           <h3 class="text-md font-semibold text-obsidian-200 mt-4 mb-2">Referral Data</h3>
           <p>If you use our referral system, we store your referral code and track which accounts were referred by you, solely for the purpose of issuing referral rewards.</p>
@@ -69,32 +77,42 @@ import Layout from '../layouts/BaseLayout.astro';
           <h2 class="text-xl font-display font-semibold text-white mb-3">Cookies &amp; Local Storage</h2>
           <ul class="list-disc list-inside space-y-2 ml-2">
             <li><strong class="text-white">Authentication cookie (<code class="text-xs bg-obsidian-800 px-1 rounded-sm">im_token</code>):</strong> A secure, HTTP-only JWT cookie used to maintain your login session. This cookie is essential for the service to function and cannot be disabled while logged in.</li>
-            <li><strong class="text-white">Local Storage:</strong> We store game state (card inventory, stats, achievements, preferences) in your browser's local storage. This data stays on your device and is synced to our server only when you create an account.</li>
-            <li><strong class="text-white">Service Worker:</strong> We use a service worker to cache static assets for offline access and faster loading. No personal data is cached.</li>
+            <li><strong class="text-white">Local Storage:</strong> We store game state (card inventory, stats, achievements, preferences) and the result of the age check in your browser's local storage. This data stays on your device; game state is synced to our server only when you create an account.</li>
+            <li><strong class="text-white">Service Worker:</strong> We use a service worker to keep copies of pages, images and scripts in your browser so the site loads faster and works offline. It does not keep our server's answers about your account, and when you sign out it removes anything it was holding for you.</li>
+            <li><strong class="text-white">AI models:</strong> A model you download is kept in your browser's storage so it is not downloaded again. Clearing the browser's data for this site removes it.</li>
           </ul>
         </div>
 
         <div>
           <h2 class="text-xl font-display font-semibold text-white mb-3">Analytics</h2>
           <p>
-            We use <a href="https://plausible.io" target="_blank" rel="noopener noreferrer" class="text-accent hover:text-accent-light transition-colors">Plausible Analytics</a>, a privacy-focused analytics service. Plausible does not use cookies, does not collect personal data, and does not track you across websites. It provides us only with aggregate statistics (page views, referral sources, device types). Plausible is fully compliant with GDPR, CCPA, and PECR.
+            We use <a href="https://plausible.io" target="_blank" rel="noopener noreferrer" class="text-accent hover:text-accent-light transition-colors">Plausible Analytics</a> to count page views. Plausible's script is loaded from plausible.io, a different company's server, and runs on every page, but only after you have passed the age check. It is not loaded for a visitor who has not yet answered the age check, or whom the age check has turned away.
+          </p>
+          <p class="mt-3">
+            When it runs, your browser sends Plausible the address of the page you are on (including anything after a "?" in the address), the address of the page that linked you here, and, as with any web request, your IP address and browser type. It may also send the width of your browser window. It never receives anything you write or say.
+          </p>
+          <p class="mt-3">
+            Plausible says that it sets no cookies, does not store your IP address, and does not follow you from site to site. Those are Plausible's statements; its <a href="https://plausible.io/data-policy" target="_blank" rel="noopener noreferrer" class="text-accent hover:text-accent-light transition-colors">data policy</a> has the details. What we see is totals: page views, where visitors came from, and kinds of device.
           </p>
         </div>
 
         <div>
-          <h2 class="text-xl font-display font-semibold text-white mb-3">Third-Party Services</h2>
+          <h2 id="third-parties" class="text-xl font-display font-semibold text-white mb-3">Other Companies Involved</h2>
+          <p class="mb-2">Fonts, images, the game's code, the software that runs the AI models, and the 3D engine are all served from our own site. These are the only other companies your browser or our server deals with:</p>
           <ul class="list-disc list-inside space-y-2 ml-2">
+            <li><strong class="text-white">Cloudflare (always):</strong> Everything between your browser and this site travels through Cloudflare's network, which protects and delivers the site. Cloudflare can see your IP address, which pages you ask for, and what is sent while it passes through. That includes sign-in requests, an email address you type, and multiplayer verses. Cloudflare keeps its own records under its <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer" class="text-accent hover:text-accent-light transition-colors">Privacy Policy</a>.</li>
+            <li><strong class="text-white">Hugging Face (when you download a model):</strong> The AI opponent and judge, the Whisper speech-recognition model and the Kokoro voice are downloaded from Hugging Face (huggingface.co and the storage servers it passes the download to) the first time you use each one. After that your browser keeps its own copy. Each download tells Hugging Face your IP address, your browser type, that the request came from this site, and which model you asked for. It never receives what you write or say. Hugging Face's <a href="https://huggingface.co/privacy" target="_blank" rel="noopener noreferrer" class="text-accent hover:text-accent-light transition-colors">Privacy Policy</a> applies to those downloads.</li>
+            <li><strong class="text-white">Google (only if you tap "View in AR" on Android):</strong> That button opens Google's Scene Viewer app and gives it the web address of the 3D model. Nothing is sent to Google unless you tap it. We do not use Google Fonts, Google Sign-In or Google Analytics.</li>
             <li><strong class="text-white">Resend:</strong> Only if you give us an email address: sign-in codes are emailed through Resend, which receives that address and the message in order to deliver it. Resend's <a href="https://resend.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer" class="text-accent hover:text-accent-light transition-colors">Privacy Policy</a> applies to that delivery. A passkey-only account sends nothing to Resend.</li>
-            <li><strong class="text-white">Google Fonts:</strong> We load fonts from Google Fonts, which means your browser makes requests to Google's servers. Google's <a href="https://developers.google.com/fonts/faq/privacy" target="_blank" rel="noopener noreferrer" class="text-accent hover:text-accent-light transition-colors">Fonts Privacy FAQ</a> applies.</li>
-            <li><strong class="text-white">Plausible Analytics:</strong> Privacy-focused analytics as described above.</li>
-            <li><strong class="text-white">Hugging Face:</strong> Our in-browser AI assistant downloads models from Hugging Face. No user data is sent to Hugging Face.</li>
+            <li><strong class="text-white">Plausible Analytics:</strong> Page-view counting, as described under Analytics above.</li>
           </ul>
+          <p class="mt-3">Links to other sites (YouTube, X, LinkedIn, Facebook, the Southern Shakespeare Festival) are ordinary links: nothing is sent to those sites unless you follow one.</p>
         </div>
 
         <div>
-          <h2 class="text-xl font-display font-semibold text-white mb-3">AI Assistant</h2>
+          <h2 class="text-xl font-display font-semibold text-white mb-3">AI in Your Browser</h2>
           <p>
-            This site includes an AI assistant that runs <strong class="text-white">entirely in your browser</strong> using WebLLM technology. The AI model is downloaded to your device and all inference happens locally. No conversations, prompts, or responses are sent to any server. Your interactions with the AI assistant are completely private.
+            In solo duels the AI opponent and the judge are open models that run <strong class="text-white">entirely in your browser</strong>, using the Transformers.js library. So do speech recognition (Whisper) and the spoken voice (Kokoro). A model is downloaded to your device from Hugging Face, as described above, and everything it does happens on your device: what you write, what you say and what the model answers are not sent to any server. If your device cannot run a model, the opponent and the judge are ordinary program rules, which also run in your browser. Multiplayer battles do not work this way; see What You Write and Say.
           </p>
         </div>
 
@@ -108,7 +126,7 @@ import Layout from '../layouts/BaseLayout.astro';
         <div>
           <h2 class="text-xl font-display font-semibold text-white mb-3">Server Logs</h2>
           <p>
-            Our web server (Caddy) automatically logs standard access information (IP address, page requested, timestamp, browser type) as part of normal server operation. These logs are used solely for security monitoring and debugging. They are retained for no more than 30 days and are not shared with any third party.
+            Our web server (Caddy) automatically logs standard access information (IP address, page requested, timestamp, browser type) as part of normal server operation. The game's server keeps its own log of errors and of reports sent to it. These logs are used solely for security monitoring and debugging. They are retained for no more than 30 days, and we do not give them to anyone else. Cloudflare, which carries the traffic before it reaches us, keeps its own records as described above.
           </p>
         </div>
 
@@ -116,9 +134,9 @@ import Layout from '../layouts/BaseLayout.astro';
           <h2 class="text-xl font-display font-semibold text-white mb-3">Data Storage &amp; Security</h2>
           <ul class="list-disc list-inside space-y-2 ml-2">
             <li>Account and gameplay data is stored in a PostgreSQL database on our secured server infrastructure</li>
-            <li>All connections are encrypted via TLS (HTTPS)</li>
+            <li>Connections between your browser and the site are encrypted (HTTPS)</li>
             <li>Authentication tokens are signed with a server-side secret key</li>
-            <li>Passwords are never stored (we use third-party authentication only)</li>
+            <li>We never ask for or store a password. You sign in with a passkey or, where it is offered, a one-time code sent to your email address</li>
             <li>We do not sell, rent, or share your personal data with third parties for marketing purposes</li>
           </ul>
         </div>
@@ -128,19 +146,23 @@ import Layout from '../layouts/BaseLayout.astro';
           <ul class="list-disc list-inside space-y-2 ml-2">
             <li><strong class="text-white">Account data:</strong> Retained as long as your account is active. You may request deletion at any time.</li>
             <li><strong class="text-white">Gameplay data:</strong> Retained as long as your account is active and deleted upon account deletion.</li>
-            <li><strong class="text-white">Battle verses:</strong> Exist only during active battle sessions and are not permanently stored.</li>
+            <li><strong class="text-white">Battle verses:</strong> Solo verses never reach us. Multiplayer verses are held in our server's memory during the battle and are not written to our database.</li>
+            <li><strong class="text-white">Reports:</strong> A report you send about a multiplayer battle is kept until we delete it.</li>
             <li><strong class="text-white">Server logs:</strong> Retained for up to 30 days.</li>
-            <li><strong class="text-white">Classroom data:</strong> Retained as long as the classroom exists. Teachers may delete classrooms at any time.</li>
+            <li><strong class="text-white">Classroom data:</strong> Retained until it is deleted. There is no delete button for a classroom yet: a teacher who wants one deleted should write to us at the address below.</li>
           </ul>
         </div>
 
         <div>
-          <h2 class="text-xl font-display font-semibold text-white mb-3">Children&rsquo;s Privacy (COPPA)</h2>
+          <h2 class="text-xl font-display font-semibold text-white mb-3">Children&rsquo;s Privacy</h2>
           <p class="mb-3">
-            Inspired Mile is not directed at children under the age of 13. We do not knowingly collect personal information from children under 13. Users must verify they are at least 13 years old before creating an account.
+            Inspired Mile is not directed at children under the age of 13. We do not knowingly collect personal information from children under 13.
           </p>
           <p class="mb-3">
-            Users between the ages of 13 and 17 may use the service with parental or guardian consent. Parents or guardians may contact us to review, delete, or restrict the processing of their child's data.
+            <strong class="text-white">How the age check works.</strong> The first time you visit, we ask for a date of birth. The date is checked in your browser and is never sent to us; only the result (adult, teen, or under 13) is kept, in your browser. We take the visitor's word for the date: we have no way to confirm it, and the question is asked again if the browser's data for this site is cleared. A visitor who says they are under 13 is shown a notice instead of the site, cannot create an account, is never asked for an email address, and the analytics script is not loaded for them. This page, the Terms of Service and the About page can be read without answering.
+          </p>
+          <p class="mb-3">
+            <strong class="text-white">Ages 13 to 17.</strong> A visitor who says they are 13 to 17 is asked to tick a box confirming that a parent or guardian has read this policy and the Terms of Service and agrees to their use of Inspired Mile. We do not contact the parent or guardian, and we do not check that the confirmation is true. Teen accounts have a daily limit on spending Credits. Parents or guardians may contact us to review, delete, or restrict the processing of their child's data.
           </p>
           <p>
             If we learn that we have collected personal information from a child under 13 without verifiable parental consent, we will delete that information promptly. If you believe a child under 13 has provided us with personal data, please contact us immediately.
@@ -148,9 +170,12 @@ import Layout from '../layouts/BaseLayout.astro';
         </div>
 
         <div>
-          <h2 class="text-xl font-display font-semibold text-white mb-3">Classroom &amp; Educational Use (FERPA)</h2>
+          <h2 class="text-xl font-display font-semibold text-white mb-3">Classroom &amp; Educational Use</h2>
+          <p class="mb-3">
+            Classroom Mode lets a teacher create a class and give students a code to join it. What we store is listed under Classroom Data above: the class, who is in it, and its assignments. We do not store grades, student work or progress, and we do not use classroom data for advertising. A student needs an account to join; an account can be made with a passkey alone, with a generated username and no name or email address.
+          </p>
           <p>
-            When Inspired Mile is used in an educational setting through Classroom Mode, the teacher acts as the data controller for their students' classroom data. We process this data solely as directed by the teacher. We do not use student educational records for advertising or any purpose other than providing the educational service. Teachers must obtain appropriate consent from parents or guardians before enrolling students under 18 in a classroom.
+            Before creating a class, a teacher is asked to confirm that they will obtain consent from parents or guardians before enrolling students under 18, and a student is asked to confirm that a parent or guardian has given permission. These are confirmations by the teacher and the student; we do not check them. Whether Classroom Mode meets a school's obligations under laws such as FERPA is for the school to decide. Write to us at the address below if you need more detail to make that decision.
           </p>
         </div>
 

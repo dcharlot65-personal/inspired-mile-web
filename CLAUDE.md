@@ -159,6 +159,35 @@ left behind by a killed run is found by its port: `lsof -nP -iTCP:<port> -sTCP:L
   servers; `theatre.ts` turns that off, and a test asserts no foreign request in a session.
 - To test WebXR under emulation, delete `Navigator.prototype.xr` before installing `iwer`.
 
+## Requests to other origins (the privacy policy depends on this)
+
+The policy (`src/pages/privacy.astro`, "Other Companies Involved") tells visitors exactly
+which other companies their browser talks to. `tests/third-party.spec.ts` loads every page in
+every age-gate state and fails on a request that `tests/third-party-allowlist.ts` does not
+list. Add a third-party request only by adding it to that file **and** to the policy.
+
+- A page may fetch from another origin only: the Plausible script (after the age gate is
+  passed, never before and never for a blocked visitor: `window.__loadAnalytics` in
+  `BaseLayout.astro`), and model weights from the Hugging Face hub when a model is asked for.
+- Libraries default to public CDNs; each default is overridden, and the files are shipped
+  from this site by `scripts/self-hosted-runtime.mjs` (an Astro integration: served by a
+  middleware in dev, copied to `dist/ort/` and `dist/vendor/` in a build, about 90 MB):
+  - Transformers.js takes onnxruntime-web's `.wasm`/`.mjs` from cdn.jsdelivr.net. Import it
+    only through `loadTransformers()` (`src/lib/model-runtime.ts`), never directly.
+  - kokoro-js carries its own Transformers.js 3; `thespian-voice.ts` sets `env.wasmPaths`.
+  - model-viewer takes Draco/KTX2 decoders from www.gstatic.com. Load it only through
+    `loadModelViewer()` (`src/lib/ar-viewer.ts`), never with a script tag.
+  - Babylon WebXR: both `theatre.ts` and `vr-engine.ts` turn off hand tracking, near
+    interaction and online controller models (they come from Babylon's servers).
+- An upgrade of any of these libraries can move the files: the integration then stops the
+  build, and the tests show what the browser asks for.
+- `tests/warm-up.ts` (Playwright `globalSetup`) opens every page once before the tests
+  start, so the dev server's cold compile is not inside any test's 30 seconds. Without it
+  the first tests of a run sat at 15 to 26 seconds on main, and timed out with one more spec.
+- The two "model runtime" tests download Whisper and Kokoro (about 80 MB each) from the hub;
+  `E2E_NO_DOWNLOADS=1` skips them. `playwright.model.config.ts` takes its port from
+  `E2E_WEB_PORT` like the main config.
+
 ## Owner direction (2026-11-16)
 
 Passwordless sign-in (passkeys + Resend email) replacing Google OAuth; in-browser models
