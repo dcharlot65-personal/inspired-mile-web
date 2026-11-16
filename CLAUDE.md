@@ -102,7 +102,23 @@ left behind by a killed run is found by its port: `lsof -nP -iTCP:<port> -sTCP:L
   English. Per-language data (acrostic words, forbidden letters, power words, the written
   opponent's verses) is in `src/lib/verse/packs/`, loaded with `loadPack(lang)` before
   `createDuel`. Rhyme and syllable rules per language: `rhyme.ts`, `text.ts`; thresholds:
-  `lang.ts`. Rhyming forms are not offered in zh, ja, th.
+  `lang.ts`.
+- **Rhyme and syllables go by sound**, not spelling, where the spelling does not show it:
+  `src/lib/verse/sound/` holds one lazily loaded table per language (stress, pronunciation,
+  character readings; built by `scripts/sound/build.mjs` from Wiktionary, Unihan and
+  CC-CEDICT) and a Japanese analyser (kuromoji). `loadSound(lang)` goes beside
+  `loadPack(lang)` before `createDuel`. Chinese, Japanese and Thai offer rhyming forms only
+  once their data is loaded; Arabic and Thai offer no syllable forms. Sources, licences,
+  measured accuracy and how to rebuild: `docs/language/PHONETICS.md`. After changing a rule
+  or a table, run `scripts/sound/measure.mjs --write` (it records the digests the unit and
+  browser tests must reproduce). `node scripts/sound/mutate-sound.mjs` (build host) proves
+  those tests go red.
+- **The test sets mostly come from the dictionaries the tables are built from**, so they
+  cannot show a table's faults. `sound/corpus/espeak.json` can: common words and their
+  phonemes from espeak-ng, which shares no data with the tables. After rebuilding a table,
+  run `scripts/sound/crosscheck.mjs --show 40` and read the disagreements. It found, on
+  2026-11-16, that the build had let one transcription stand for a word: Wiktionary lists
+  several per word (careful, casual, regional) in no useful order, so never take the first.
 - Every verse in every pack must keep its form as the code checks it (`verse.test.ts`).
   `node scripts/mutate-packs.mjs` (on the build host) proves those tests go red.
 - Writing a `\uXXXX` escape through an agent's file tools can turn it into the character

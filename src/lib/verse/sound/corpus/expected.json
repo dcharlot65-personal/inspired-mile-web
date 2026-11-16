@@ -1,0 +1,167 @@
+{
+ "es": {
+  "heard": 42,
+  "yes": 43,
+  "refused": 38,
+  "no": 38,
+  "counted": 60,
+  "words": 60,
+  "kept": 18,
+  "verses": 18,
+  "digest": "b5092c20"
+ },
+ "fr": {
+  "heard": 49,
+  "yes": 50,
+  "refused": 50,
+  "no": 50,
+  "counted": 60,
+  "words": 60,
+  "kept": 18,
+  "verses": 18,
+  "digest": "a402457f"
+ },
+ "de": {
+  "heard": 57,
+  "yes": 60,
+  "refused": 60,
+  "no": 60,
+  "counted": 60,
+  "words": 60,
+  "kept": 18,
+  "verses": 18,
+  "digest": "72de1019"
+ },
+ "it": {
+  "heard": 56,
+  "yes": 59,
+  "refused": 30,
+  "no": 30,
+  "counted": 59,
+  "words": 60,
+  "kept": 18,
+  "verses": 18,
+  "digest": "34e628b3"
+ },
+ "pt": {
+  "heard": 45,
+  "yes": 45,
+  "refused": 27,
+  "no": 27,
+  "counted": 59,
+  "words": 60,
+  "kept": 18,
+  "verses": 18,
+  "digest": "e66b06bb"
+ },
+ "pl": {
+  "heard": 48,
+  "yes": 50,
+  "refused": 50,
+  "no": 50,
+  "counted": 60,
+  "words": 60,
+  "kept": 18,
+  "verses": 18,
+  "digest": "6a2474fb"
+ },
+ "ru": {
+  "heard": 47,
+  "yes": 48,
+  "refused": 47,
+  "no": 48,
+  "counted": 60,
+  "words": 60,
+  "kept": 18,
+  "verses": 18,
+  "digest": "b8b19c06"
+ },
+ "ar": {
+  "heard": 50,
+  "yes": 50,
+  "refused": 38,
+  "no": 38,
+  "counted": 0,
+  "words": 0,
+  "kept": 14,
+  "verses": 14,
+  "digest": "179fc35e"
+ },
+ "hi": {
+  "heard": 42,
+  "yes": 48,
+  "refused": 45,
+  "no": 45,
+  "counted": 60,
+  "words": 60,
+  "kept": 18,
+  "verses": 18,
+  "digest": "a663e67a"
+ },
+ "zh": {
+  "heard": 46,
+  "yes": 49,
+  "refused": 48,
+  "no": 49,
+  "counted": 60,
+  "words": 60,
+  "kept": 20,
+  "verses": 20,
+  "digest": "f250886a"
+ },
+ "ja": {
+  "heard": 0,
+  "yes": 0,
+  "refused": 0,
+  "no": 0,
+  "counted": 60,
+  "words": 60,
+  "kept": 18,
+  "verses": 18,
+  "digest": "7fb746bd"
+ },
+ "ko": {
+  "heard": 0,
+  "yes": 0,
+  "refused": 0,
+  "no": 0,
+  "counted": 60,
+  "words": 60,
+  "kept": 18,
+  "verses": 18,
+  "digest": "bfa3e4b4"
+ },
+ "vi": {
+  "heard": 56,
+  "yes": 60,
+  "refused": 30,
+  "no": 30,
+  "counted": 58,
+  "words": 60,
+  "kept": 20,
+  "verses": 20,
+  "digest": "8e88c992"
+ },
+ "th": {
+  "heard": 60,
+  "yes": 60,
+  "refused": 40,
+  "no": 40,
+  "counted": 60,
+  "words": 60,
+  "kept": 14,
+  "verses": 14,
+  "digest": "5b17d6a7"
+ },
+ "id": {
+  "heard": 45,
+  "yes": 46,
+  "refused": 43,
+  "no": 43,
+  "counted": 60,
+  "words": 60,
+  "kept": 18,
+  "verses": 18,
+  "digest": "9f401751"
+ }
+}

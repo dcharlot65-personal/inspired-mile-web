@@ -1,7 +1,7 @@
 import type { LanguagePack } from './index';
 
 // Chinese (Simplified). The acrostic is the hidden-head poem (藏头诗): each line opens on one character
-// of the phrase. No rhyming forms: a character does not show its sound.
+// of the phrase. Rhyme is checked from a table of readings (../sound), in modern Mandarin.
 const pack: LanguagePack = {
   lang: 'zh',
   acrostic: ['风花雪月', '天下第一', '明月清风', '春花秋月', '月下花', '清秋月'],
@@ -18,6 +18,27 @@ const pack: LanguagePack = {
     'RL-009': ['面具', '梦', '丑角', '戏', '月亮'],
   },
   written: {
+    // The five rhyming forms below were added when Chinese rhyme became checkable (sound table, 2026-11-16).
+    couplet: [
+      '你的诗句轻如一缕烟\n我一开口它就散在天边',
+      '台下的看客早已睡着\n只有我的句子还在燃烧',
+    ],
+    'quatrain-aabb': [
+      '你借来的词句没有分量\n像纸糊的刀剑不堪一挡\n我见过君王也见过小丑\n你连做配角都还不够',
+      '观众来这里想看一场好戏\n你却只带来一口残羹冷气\n再说一遍吧，大声一点\n我连风暴都敢当面翻脸',
+    ],
+    'quatrain-abab': [
+      '这座舞台我早已熟悉\n你的声音只像蚊子哼吟\n幕布落下，你该休息\n留下的只有我的回音',
+      '你的诗瘸着一条腿走来\n向观众讨一点可怜\n我不忍心把它踢开\n就让它坐到天黑以前',
+    ],
+    tercet: [
+      '你有舌头，却没有本领\n它像醉汉在黑夜里乱撞\n敲不开任何人的心灵',
+      '这也叫诗？我说是失误\n一句跛脚的话想找地方歇\n我心肠好，送它一条归路',
+    ],
+    'heroic-couplet': [
+      '舞台从来只认我的声音\n你的词句不过一阵烟尘',
+      '我的诗是照亮长夜的灯\n你的诗是没人理会的风',
+    ],
     anaphora: [
       '从未听过如此多的话说如此少的事\n从未有舞台忍受过这样单薄的嗓音\n从今以后，恐怕再没有人肯听你开口',
       '说吧，烛火都偏过头去\n说吧，观众在数着出口\n说吧，等值得的时候我自会回答',

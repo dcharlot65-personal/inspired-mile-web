@@ -7,6 +7,7 @@ import { FORMS, FORM_POINTS, acrosticUnits, formsFor, getForm, scoreForm } from 
 import { CURSES, DEVICES, HOUSE_DEVICE, POTION_CURSE, checkPowerWords, checkSignature, deviceForHouse, houseWhy } from './devices';
 import { ENGINE_EN, en as english } from './english';
 import { PACK_LANGS, getPack, loadAllPacks } from './packs';
+import { loadSound } from './sound';
 import {
   JUDGE_POOL, ROUNDS, createDuel, illegalMove, inkAt, matchWinner, opponentDeck, resolveRound, scoreVerse, starterDeck,
   type JudgeSplit,
@@ -16,13 +17,16 @@ import { expectedLines, opponentMessages, tidyModelVerse, writeOpponentVerse, wr
 
 const en = { lang: 'en' };
 
-// The duel engine is synchronous; packs other than English load on demand, and so does the
-// table English is measured by. Every front end loads both before a duel (DuelSession.beginRound,
-// the pages' start), and so do these tests. findings.test.ts covers the spelling fallback.
+// The duel engine is synchronous; packs other than English load on demand, and so does each
+// language's sound data: the CMU table English is measured by, the tables of stress and
+// pronunciation, the Japanese analyser. Every front end loads them before a duel
+// (DuelSession.beginRound, the pages' start), and so do these tests. findings.test.ts covers
+// the English spelling fallback.
 beforeAll(async () => {
   await loadAllPacks();
+  await Promise.all(PACK_LANGS.map((l) => loadSound(l)));
   expect(await loadPronunciation()).toBe(true);
-});
+}, 120_000);
 const evenJudge: JudgeSplit = { player: JUDGE_POOL / 2, opponent: JUDGE_POOL / 2, criteria: {}, source: 'rules' };
 
 describe('text', () => {
@@ -498,9 +502,12 @@ describe('languages', () => {
       // English draws from exactly the forms it had before the other languages arrived.
       expect([lang, forms.some((f) => f.id === 'epistrophe')]).toEqual([lang, lang !== 'en']);
     }
-    expect(formsFor('zh').map((f) => f.id).sort()).toEqual(['acrostic', 'anaphora', 'crescendo', 'epistrophe', 'haiku', 'jueju']);
-    expect(formsFor('ja').map((f) => f.id).sort()).toEqual(['acrostic', 'anaphora', 'crescendo', 'epistrophe', 'haiku']);
-    expect(formsFor('th').map((f) => f.id).sort()).toEqual(['acrostic', 'anaphora', 'crescendo', 'epistrophe']);
+    // With their sound data loaded, Chinese, Japanese and Thai rhyme like the rest (sound/sound.test.ts
+    // checks that they do not when it is not). Thai has no syllable forms, so no heroic couplet either.
+    const rhyming = ['couplet', 'quatrain-aabb', 'quatrain-abab', 'tercet'];
+    expect(formsFor('zh').map((f) => f.id).sort()).toEqual(['acrostic', 'anaphora', 'crescendo', 'epistrophe', 'haiku', 'heroic-couplet', 'jueju', ...rhyming].sort());
+    expect(formsFor('ja').map((f) => f.id).sort()).toEqual(['acrostic', 'anaphora', 'crescendo', 'epistrophe', 'haiku', 'heroic-couplet', ...rhyming].sort());
+    expect(formsFor('th').map((f) => f.id).sort()).toEqual(['acrostic', 'anaphora', 'crescendo', 'epistrophe', ...rhyming].sort());
     expect(formsFor('vi').some((f) => f.id === 'luc-bat')).toBe(true);
     expect(formsFor('en').map((f) => f.id)).toEqual(['couplet', 'quatrain-aabb', 'quatrain-abab', 'tercet', 'anaphora', 'acrostic', 'crescendo', 'haiku', 'heroic-couplet']);
     // The English measure of a word's length is unchanged: an inner apostrophe counts ("ne'er" is five).
@@ -601,6 +608,9 @@ describe('languages', () => {
       ar: { yes: [['كتاب', 'باب'], ['قلبي', 'دربي'], ['جميل', 'طويل']], no: [['قمر', 'نور'], ['كتاب', 'قلم']] },
       hi: { yes: [['रात', 'बात'], ['कहानी', 'रानी'], ['दिल', 'मिल']], no: [['रात', 'दिन'], ['कहानी', 'कहना']] },
       ko: { yes: [['사랑', '자랑'], ['밤', '삼'], ['하늘', '오늘']], no: [['사랑', '사람'], ['하늘', '바다']] },
+      zh: { yes: [['光', '乡'], ['来', '开'], ['银行', '太阳']], no: [['光', '来'], ['流行', '太阳']] },
+      ja: { yes: [['花', '刀'], ['こころ', 'ところ'], ['世界', '未来']], no: [['花', '月'], ['こころ', 'そら']] },
+      th: { yes: [['ใจ', 'ไป'], ['กัน', 'วัน'], ['ความรัก', 'หนัก']], no: [['ใจ', 'กัน'], ['วัน', 'นาน']] },
     };
     for (const lang of PACK_LANGS) expect([lang, !!pairs[lang]]).toEqual([lang, rhymeChecked(lang)]);
     for (const [lang, { yes, no }] of Object.entries(pairs)) {
@@ -624,16 +634,18 @@ describe('languages', () => {
       ['es', 'poesía', 4], ['es', 'cielo', 2], ['es', 'que', 1], ['it', 'città', 2], ['pt', 'coração', 3], ['pt', 'dia', 2], ['pt', 'história', 3],
       ['pl', 'niebo', 2], ['pl', 'miłość', 2], ['pl', 'w', 0], ['ru', 'любовь', 2], ['ru', 'в', 0], ['id', 'pantai', 2], ['id', 'laut', 2],
       ['de', 'Leben', 2], ['ko', '사랑', 2], ['vi', 'nghiêng', 1],
-      ['ar', 'قمر', null], ['hi', 'रात', null], ['th', 'รัก', null],
+      ['ar', 'قمر', null], ['hi', 'रात', 1], ['hi', 'कहानी', 3], ['hi', 'लड़का', 2], ['th', 'รัก', null],
     ];
     for (const [lang, word, n] of cases) expect([lang, word, syllablesInWord(word, lang)]).toEqual([lang, word, n]);
     expect(syllablesInLine('La lune se lève', 'fr')).toBe(5);
     expect(syllablesInLine('你诗如落叶', 'zh')).toBe(5);
     expect(syllablesInLine('ふるいけや', 'ja')).toBe(5);
     expect(syllablesInLine('きょうのつき', 'ja')).toBe(5);
-    // A kanji's reading is not in its spelling.
-    expect(syllablesInLine('古池や', 'ja')).toBeNull();
-    expect(scoreForm(getForm('haiku'), '古池や\nかわずとびこむ\nみずのおと', { lang: 'ja' }).checks[1]).toMatchObject({ met: false, detail: '?' });
+    // A kanji's reading is not in its spelling; the analyser reads it.
+    expect(syllablesInLine('古池や', 'ja')).toBe(5);
+    expect(scoreForm(getForm('haiku'), '古池や\nかわずとびこむ\nみずのおと', { lang: 'ja' }).checks[1]).toMatchObject({ met: true, detail: '5/5' });
+    // What has no reading cannot be counted: Latin letters in a Japanese line.
+    expect(scoreForm(getForm('haiku'), 'ABCや\nかわずとびこむ\nみずのおと', { lang: 'ja' }).checks[1]).toMatchObject({ met: false, detail: '?' });
   });
 
   it('measures lines in characters for Chinese and Japanese, in words elsewhere', () => {
@@ -681,9 +693,11 @@ describe('languages', () => {
 
   it('swaps a rhyming device for a structural one where rhyme is not checked', () => {
     expect(deviceForHouse('Montague', 'en').id).toBe('internal-rhyme');
-    expect(deviceForHouse('Montague', 'zh').id).toBe('repetition');
-    expect(deviceForHouse('Legendary', 'th').id).toBe('ring');
-    expect(houseWhy('Montague', 'zh')).toBeNull();
+    // Chinese and Thai rhyme once their sound tables are loaded, so nothing is swapped here;
+    // sound/sound.test.ts takes the table away and sees the swap.
+    expect(deviceForHouse('Montague', 'zh').id).toBe('internal-rhyme');
+    expect(deviceForHouse('Legendary', 'th').id).toBe('monorhyme');
+    expect(houseWhy('Montague', 'zh')?.key).toBe('house.montague.why');
     expect(houseWhy('Montague', 'en')?.key).toBe('house.montague.why');
   });
 });

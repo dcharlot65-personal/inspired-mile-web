@@ -13,10 +13,9 @@ import {
   type CastCurse, type Duel, type DuelDeck, type IllegalMove, type PlayerMove, type RoundResult, type VerseScore, type WorldCard,
 } from './duel';
 import { getForm } from './forms';
-import { baseLang } from './lang';
 import { writeOpponentVerse, type Difficulty } from './opponent';
-import { loadPronunciation } from './pronounce';
 import { referee } from './referee';
+import { loadSound } from './sound';
 import { cleanVerse } from './text';
 
 export type Phase = 'opponent-writing' | 'player-turn' | 'judging' | 'verdict' | 'finished';
@@ -98,9 +97,10 @@ export class DuelSession {
     this.opponentVerse = '';
     this.drafting = null;
     this.changed();
-    // English is measured by sound; the table is fetched once, here, before anything is scored.
-    // If it cannot be fetched the duel goes on by spelling (pronounce.ts).
-    if (baseLang(this.duel.lang) === 'en') await loadPronunciation();
+    // Rhyme and syllables are measured by sound: the language's data (the CMU table for English,
+    // a sound table, the Japanese analyser) is fetched once, here, before anything is scored. If it
+    // cannot be fetched the duel goes on by spelling (sound/index.ts, pronounce.ts).
+    await loadSound(this.duel.lang);
     const canWrite = this.opts.useModel && isBrainLoaded() && !!brainInfo()?.writes;
     const written = await writeOpponentVerse({
       duel: this.duel,

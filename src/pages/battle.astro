@@ -202,6 +202,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     import { PACK_LANGS, hasPack, loadPack } from '../lib/verse/packs';
     import { loadPronunciation } from '../lib/verse/pronounce';
     import { DuelSession } from '../lib/verse/session';
+    import { loadSound } from '../lib/verse/sound';
     import { initI18n, languageName, locale, onLocaleChange, t, tm } from '../i18n';
     import { criterionName, curseName, curseRule, curseRuleTheirs, deviceBrief, deviceName, signatureText } from '../i18n/duel';
     import type { Msg } from '../lib/verse/msg';
@@ -900,9 +901,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     async function start(seed: number) {
       const lang = langSelect.value || 'en';
       startBtn.disabled = true;
-      // The verses, acrostic words and power words of the duel's language; and, for English,
-      // the table its words are measured by (the session waits for it too, before it scores).
-      await loadPack(lang);
+      // The verses, acrostic words and power words of the duel's language, and how that language
+      // sounds (the CMU table for English, a table of stress and pronunciation, or the Japanese
+      // analyser): rhyme and syllables are judged from it, and which forms the duel draws depends
+      // on it, so it is in before the session plans the duel. Only this language's data is
+      // fetched, and only when a duel starts; if it cannot be, the engine falls back to spelling
+      // rules and offers no form it cannot check.
+      await Promise.all([loadPack(lang), loadSound(lang)]);
       // The world card's bonus is scored with the round, by the same code on every front end.
       const worldCard: WorldCard | undefined = variantAbility
         ? { label: equippedCity, criterion: variantAbility.axis === 'shakespeare' ? 'allusion' : variantAbility.axis, bonus: variantAbility.bonus }
