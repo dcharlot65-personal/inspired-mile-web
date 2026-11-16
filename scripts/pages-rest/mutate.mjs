@@ -3,6 +3,7 @@
 //
 //   node scripts/pages-rest/mutate.mjs            the unit tests (vitest)
 //   node scripts/pages-rest/mutate.mjs --browser  the browser tests too (needs the E2E_* ports of your own run)
+//   node scripts/pages-rest/mutate.mjs --dry      only check that each mutation still applies
 //
 // Each mutation breaks one thing, runs the test file that should notice, expects it to go
 // red with a message that names the damage, and puts the file back. A mutation that leaves
@@ -34,7 +35,12 @@ const UNIT_MUTATIONS = [
   ['a script asks for a key nobody has', 'src/pages/tournaments.astro', "t('tour.bye')", "t('tour.byee')", UNIT, 'tour.byee'],
   ['a viewer library goes back to an English sentence', 'src/lib/splat-viewer.ts', "this.options.onStatusChange?.(msg('viewer.status.loading'));", "this.options.onStatusChange?.('Loading splat model...' as any);", UNIT, 'splat-viewer'],
   ['the offline page is stale', 'public/offline.html', 'data-k="title">You are offline<', 'data-k="title">You are Offline<', UNIT, 'public/offline.html is out of date'],
-  ['the manifest lost a language', 'public/manifest.json', /^\s*"th": "Inspired Mile[^\n]*\n/m, '', UNIT, 'public/manifest.json is out of date'],
+  ['the manifest lost a language', 'public/manifest.json', /^\s*"th": "Sonnet Man[^\n]*\n/m, '', UNIT, 'public/manifest.json is out of date'],
+  ['the manifest’s English renamed with no new translations', 'public/manifest.json', '"name": "Sonnet Man: the duel of verses"', '"name": "Sonnet Man: verses at dawn"', UNIT, 'translate the new English'],
+  ['a shortcut named otherwise than the site names the place', 'src/i18n/pages/shared/de.ts', "'app.shortcut.battle': 'Kampfarena'", "'app.shortcut.battle': 'Kampfplatz'", UNIT, 'Kampfplatz'],
+  ['src/lib/pwa.ts says an English sentence again', 'src/lib/pwa.ts', "title: say('pwa.install.title'),", "title: 'Install Sonnet Man first',", UNIT, 'pwa.install.title'],
+  ['sizes written the English way whatever the language', 'src/lib/pwa.ts', 'return new Intl.NumberFormat(intlLocale(), { style: \'unit\'', 'return new Intl.NumberFormat(\'en\', { style: \'unit\'', UNIT, 'Go'],
+  ['the install guidance loses a Japanese string', 'src/i18n/pages/pwa/ja.ts', /^  'pwa\.install\.dismiss': .*\n/m, '', UNIT, 'missing pwa.install.dismiss'],
   ['loadArea stops filling in English for a missing string', 'src/i18n/index.ts', "for (const code of l === 'en' ? ['en'] : ['en', l])", "for (const code of [l])", UNIT, "'Join'"],
   ['a page redraws before its areas are in the new language', 'src/i18n/page.ts', 'void areasReady().then(() => {', 'void Promise.resolve().then(() => {', UNIT, 'season.claim'],
   ['the server gains an answer nobody mapped', 'backend/src/classroom/handlers.rs', '"Invalid join code".into()', '"That join code has expired".into()', ERRORS, 'That join code has expired'],
@@ -65,6 +71,7 @@ const BROWSER_MUTATIONS = [
   ['Arabic no longer right to left on the offline page', 'public/offline.html', "RTL.indexOf(locale) >= 0 ? 'rtl' : 'ltr'", "'ltr'", 'speaks the language the player chose'],
   ['the server’s text shown when the API fails', 'src/i18n/page.ts', '  return apiErrorMessage(e, t, has, num);', "  return (e as any)?.body || apiErrorMessage(e, t, has, num);", 'a broken server is reported'],
   ['a classroom name run as markup', 'src/pages/classroom.astro', '<bdi>${esc(c.name)}</bdi>', '<bdi>${c.name}</bdi>', 'never run as markup'],
+  ['the install box not drawn again when the language changes', 'src/lib/pwa.ts', "if (document.getElementById('pwa-install')) void showInstall();", 'void 0;', 'names Apple’s own buttons'],
   ['the status of a tournament shown as the server spells it', 'src/pages/tournaments.astro', "const statusName = (status: string) => (has(`tour.status.${status}`) ? t(`tour.status.${status}`) : status.replace(/_/g, ' '));", "const statusName = (status: string) => status.replace(/_/g, ' ');", 'tournaments: states, formats'],
 ];
 
@@ -85,6 +92,21 @@ function mutate(file, find, replace) {
 }
 
 let wrong = 0;
+
+// --dry: only check that every mutation still finds what it breaks (no test is run).
+if (process.argv.includes('--dry')) {
+  let stale = 0;
+  for (const [what, file, find] of [...UNIT_MUTATIONS, ...BROWSER_MUTATIONS]) {
+    const text = readFileSync(file, 'utf8');
+    const found = typeof find === 'string' ? text.includes(find) : find.test(text);
+    if (!found) {
+      stale++;
+      console.log(`STALE  ${what}: ${file}`);
+    }
+  }
+  console.log(`${UNIT_MUTATIONS.length} unit and ${BROWSER_MUTATIONS.length} browser mutations, ${stale} stale`);
+  process.exit(stale ? 1 : 0);
+}
 
 // First, unbroken: a suite that is already red cannot show that a mutation turned it red.
 for (const file of [UNIT, ERRORS]) {

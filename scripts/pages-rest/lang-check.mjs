@@ -25,7 +25,7 @@ import path from 'node:path';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 export const LOCALES = ['en', 'es', 'fr', 'de', 'it', 'pt', 'pl', 'ru', 'ar', 'hi', 'zh', 'ja', 'ko', 'vi', 'th', 'id'];
-export const AREAS = ['classroom', 'marketplace', 'tournaments', 'season', 'viewer', 'shared'];
+export const AREAS = ['classroom', 'marketplace', 'tournaments', 'season', 'viewer', 'shared', 'pwa'];
 const CATEGORIES = ['zero', 'one', 'two', 'few', 'many', 'other'];
 
 /** Hunspell dictionary of each language in the shared install; a language not listed has none there. */
@@ -81,6 +81,8 @@ function render(template, locale, key, messages) {
     file: 'hamlet.ply',
     card: 'Hamlet',
     id: 'DC-001',
+    // A stored download, written as src/lib/pwa.ts writes it (Intl unit formatting).
+    size: new Intl.NumberFormat(intl(locale), { style: 'unit', unit: 'gigabyte', unitDisplay: 'short', minimumFractionDigits: 1, maximumFractionDigits: 1 }).format(1.1),
   };
   const filled = [];
   const text = template.replace(/\{([a-zA-Z_]+)\}/g, (whole, name) => {
@@ -139,7 +141,8 @@ export async function extract() {
 
 /** Words the game or the web brings with it, the same in every language; not a spelling matter. */
 const KNOWN = new Set(['Inspired', 'Mile', 'Shakespeare', 'Verona', 'Viola', 'Hamlet', 'FERPA', 'GLB', 'WebXR', 'Quest', 'Vision', 'Pro', 'Babylon', 'js', 'model', 'viewer',
-  'Gaussian', 'splat', 'Splat', 'Splats', 'splats', 'XP', 'AR', 'VR', 'RA', 'RV', 'fps', 'ply', 'hamlet', 'MO', 'CA', 'DC', 'email', 'e', 'mail', 'internet', 'Internet', 'online', 'offline', 'Offline']);
+  'Gaussian', 'splat', 'Splat', 'Splats', 'splats', 'XP', 'AR', 'VR', 'RA', 'RV', 'fps', 'ply', 'hamlet', 'MO', 'CA', 'DC', 'email', 'e', 'mail', 'internet', 'Internet', 'online', 'offline', 'Offline',
+  'Sonnet', 'Man', 'iPhone', 'iPad', 'iPhonie', 'iPadzie', 'app', 'App', 'MB', 'GB', 'Mo', 'Go']);
 
 /** The words of a sentence that a dictionary can be asked about. */
 function wordsOf(text, locale) {
