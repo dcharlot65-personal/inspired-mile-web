@@ -542,3 +542,410 @@ pl	trivia.77.o0	ok	reads: Tonie: she drowns; the flag is OPUS-MT pl-en's
 pl	trivia.79.o0	ok	reads: the English line, kept; the flag is OPUS-MT pl-en's
 pl	trivia.79.o3	ok	reads: the English line, kept; the flag is OPUS-MT pl-en's
 pl	trivia.157.q	fixed	"didaskalium", a rare singular of didaskalia, is now "wskazówka sceniczna", the ordinary word for a stage direction
+es	pg.challenge.title	ok	interface text; says what the English says; the model mistranslated a game word or the title
+es	pg.credits	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+es	pg.odds.rarity	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+es	pg.odds.title	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+es	pg.reveal.starter	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+es	pg.starter.name	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+es	pg.stat.cards	ok	card read as map or letter by the model (one word means both in this language); otherwise as the English
+es	pg.stat.trivia	ok	card read as map or letter by the model (one word means both in this language); otherwise as the English
+es	pg.trivia.progress	ok	a count: numbers and words are right; the back-translation garbled or dropped them
+es	pg.trivia.start	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+es	story.enc.1-2.desc	ok	read against the English: same events, same speaker, Shakespeare's line kept in English; the flag is the model's misreading of a name or idiom
+es	story.enc.3-1.desc	ok	burlar is to outwit (burlarse de would be to mock)
+es	story.enc.5-3.name	ok	the name of an encounter, a title read literally by the model; the names in it are the sourced ones
+es	streak.pack.uncommon	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+es	trivia.14.o0	ok	Montesco, the Spanish name of the family (Montescos y Capuletos)
+es	trivia.34.o3	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+es	trivia.63.o1	ok	as trivia.14.o0
+es	trivia.68.o0	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+es	trivia.70.o2	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+es	trivia.70.o3	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+es	trivia.83.o1	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+es	trivia.97.q	ok	the question asks what the English asks; the flag comes from a title or name the model renders literally or leaves as it is
+es	trivia.102.o0	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+es	trivia.102.o1	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+es	trivia.128.o0	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+es	trivia.128.o3	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+es	trivia.142.o3	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+es	trivia.154.o0	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+es	trivia.154.o2	ok	pie zambo is club foot
+es	trivia.181.o1	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+es	trivia.194.o1	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+es	trivia.199.o2	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+fr	pg.challenge.check	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+fr	pg.claimed	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+fr	pg.collect	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+fr	pg.packs.sub	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+fr	story.enc.1-2.name	ok	the name of an encounter, a title read literally by the model; the names in it are the sourced ones
+fr	story.enc.2-1.desc	fixed	the ghost's verse in the duel is a strophe, the game's word for a player's or opponent's verse (vers is one line): now la strophe énigmatique
+fr	story.enc.2-3.name	ok	La Souricière, the French name of the Mousetrap
+fr	story.enc.3-1.desc	fixed	Soyez plus rusé addressed the player as a man; now Déjouez les tours du lutin farceur, which says the same of anyone
+fr	story.enc.5-3.name	ok	the name of an encounter, a title read literally by the model; the names in it are the sourced ones
+fr	trivia.4.o3	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+fr	trivia.14.o0	ok	Montaigu, the French name of the family
+fr	trivia.34.o2	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+fr	trivia.41.o0	ok	enseigne is Iago's rank in the French translations (Hugo: son enseigne)
+fr	trivia.63.o1	ok	as trivia.14.o0
+fr	trivia.70.o2	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+fr	trivia.70.o3	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+fr	trivia.83.o1	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+fr	trivia.97.q	ok	the question asks what the English asks; the flag comes from a title or name the model renders literally or leaves as it is
+fr	trivia.104.o0	ok	La Souricière, the French name of the Mousetrap
+fr	trivia.128.o3	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+fr	trivia.135.o3	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+fr	trivia.145.o0	ok	as trivia.104.o0
+fr	trivia.181.o1	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+fr	trivia.181.o3	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+fr	trivia.194.o1	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+fr	trivia.197.o2	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+de	pg.challenge.translator	ok	a label and a translator's name; the translation model returned noise for it
+de	pg.claimed	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+de	pg.spending	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+de	pg.trivia.complete	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+de	trivia.4.o2	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+de	trivia.109.o2	ok	Phöbe, the German form of Phebe (Schlegel's Wie es euch gefällt); a decoy
+de	trivia.154.o2	ok	Klumpfuß is club foot
+de	trivia.181.o3	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+it	pg.challenge.translator	ok	a label and a translator's name; the translation model returned noise for it
+it	pg.claimed	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+it	pg.collect	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+it	pg.difficulty.medium	ok	a difficulty level, the ordinary word for it
+it	pg.odds.title	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+it	pg.onb.1.title	ok	interface text; says what the English says; the model mistranslated a game word or the title
+it	pg.trivia.lost	ok	a count: numbers and words are right; the back-translation garbled or dropped them
+it	story.enc.1-2.name	ok	the name of an encounter, a title read literally by the model; the names in it are the sourced ones
+it	story.enc.3-1.desc	ok	read against the English: same events, same speaker, Shakespeare's line kept in English; the flag is the model's misreading of a name or idiom
+it	trivia.43.q	ok	the question asks what the English asks; the flag comes from a title or name the model renders literally or leaves as it is
+it	trivia.52.q	ok	the question asks what the English asks; the flag comes from a title or name the model renders literally or leaves as it is
+it	trivia.79.o2	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+it	trivia.83.o1	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+it	trivia.97.q	ok	the question asks what the English asks; the flag comes from a title or name the model renders literally or leaves as it is
+it	trivia.103.o3	ok	Orsola, Ursula's Italian name in the translations of Molto rumore per nulla; a decoy
+it	trivia.109.o2	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+it	trivia.128.o0	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+it	trivia.141.q	ok	Dogberry with the Italian translations' Carruba beside it
+it	trivia.154.o0	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+it	trivia.167.o2	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+it	trivia.177.q	ok	the question asks what the English asks; the flag comes from a title or name the model renders literally or leaves as it is
+it	trivia.187.q	ok	the question asks what the English asks; the flag comes from a title or name the model renders literally or leaves as it is
+it	trivia.194.o1	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+it	trivia.194.o2	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+pt	pg.challenge.translator	ok	a label and a translator's name; the translation model returned noise for it
+pt	pg.claimed	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+pt	pg.meta.title	ok	interface text; says what the English says; the model mistranslated a game word or the title
+pt	pg.onb.1.title	ok	interface text; says what the English says; the model mistranslated a game word or the title
+pt	pg.stat.cards	ok	card read as map or letter by the model (one word means both in this language); otherwise as the English
+pt	pg.stat.trivia	ok	card read as map or letter by the model (one word means both in this language); otherwise as the English
+pt	pg.trivia.progress	ok	a count: numbers and words are right; the back-translation garbled or dropped them
+pt	story.enc.1-2.name	ok	the name of an encounter, a title read literally by the model; the names in it are the sourced ones
+pt	story.enc.3-1.desc	fixed	Seja mais esperto addressed the player as a man; now Vença em esperteza
+pt	story.enc.5-3.name	ok	the name of an encounter, a title read literally by the model; the names in it are the sourced ones
+pt	trivia.4.o3	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+pt	trivia.14.o0	ok	Montéquio, as pt.wikipedia's Romeu e Julieta writes the family
+pt	trivia.34.o3	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+pt	trivia.63.o1	ok	as trivia.14.o0
+pt	trivia.66.o1	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+pt	trivia.70.o2	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+pt	trivia.70.o3	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+pt	trivia.83.o1	fixed	Marco António is the European spelling; the game's Portuguese is Brazilian: Marco Antônio, as the pt-br Wikidata label has it
+pt	trivia.84.q	ok	the question asks what the English asks; the flag comes from a title or name the model renders literally or leaves as it is
+pt	trivia.97.q	fixed	O Amansar da Fera is the European title; Brazil's (the pt-br Wikidata label) is A Megera Domada, and the question now asks for the megera
+pt	trivia.110.o0	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+pt	trivia.128.o3	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+pt	trivia.142.o3	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+pt	trivia.181.o3	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+pt	trivia.194.o1	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+pt	trivia.194.o2	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+pt	trivia.197.o2	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+pt	trivia.199.o2	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+pt	trivia.199.o3	ok	the option means its English option (a name in this language's established form, or a common noun the model misread); the right answer is unchanged
+pl	pg.challenge.blank	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+pl	pg.claimed	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+pl	pg.collect	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+pl	pg.free	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+pl	pg.odds.moreBefore	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+pl	pg.odds.tiers	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+pl	pg.odds.title	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+pl	pg.onb.done	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+pl	pg.onb.next	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+pl	story.badge	ok	a title or label of the story page; the model rendered it literally or misread a name
+pl	story.enc.1-2.name	ok	the name of an encounter, a title read literally by the model; the names in it are the sourced ones
+pl	story.enc.1-2.narrative	ok	read against the English: same events, same speaker, Shakespeare's line kept in English; the flag is the model's misreading of a name or idiom
+pl	story.enc.3-1.desc	ok	read against the English: same events, same speaker, Shakespeare's line kept in English; the flag is the model's misreading of a name or idiom
+pl	story.enc.3-1.name	ok	the name of an encounter, a title read literally by the model; the names in it are the sourced ones
+pl	story.enc.4-1.desc	ok	read against the English: same events, same speaker, Shakespeare's line kept in English; the flag is the model's misreading of a name or idiom
+pl	story.stars	ok	a title or label of the story page; the model rendered it literally or misread a name
+ru	event.trivia-tuesday.desc	ok	interface text; says what the English says; the model mistranslated a game word or the title
+ru	pg.challenge.check	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+ru	pg.challenge.correct	ok	card read as map or letter by the model (one word means both in this language); otherwise as the English
+ru	pg.challenge.crafting	ok	interface text; says what the English says; the model mistranslated a game word or the title
+ru	pg.challenge.translator	ok	a label and a translator's name; the translation model returned noise for it
+ru	pg.collect	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+ru	pg.difficulty.medium	ok	a difficulty level, the ordinary word for it
+ru	pg.earned	ok	card read as map or letter by the model (one word means both in this language); otherwise as the English
+ru	pg.free	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+ru	pg.meta.title	ok	interface text; says what the English says; the model mistranslated a game word or the title
+ru	pg.odds.moreBefore	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+ru	pg.odds.rarity	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+ru	pg.odds.tiers	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+ru	pg.onb.done	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+ru	pg.packs.title	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+ru	pg.reveal.title	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+ru	pg.starter.name	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+ru	pg.stat.cards	ok	card read as map or letter by the model (one word means both in this language); otherwise as the English
+ru	pg.stat.trivia	ok	card read as map or letter by the model (one word means both in this language); otherwise as the English
+ru	pg.title	ok	interface text; says what the English says; the model mistranslated a game word or the title
+ru	pg.trivia.aiBadge	ok	interface text; says what the English says; the model mistranslated a game word or the title
+ru	pg.trivia.generating	ok	interface text; says what the English says; the model mistranslated a game word or the title
+ru	pg.trivia.need	ok	card read as map or letter by the model (one word means both in this language); otherwise as the English
+ru	pg.trivia.sub	ok	card read as map or letter by the model (one word means both in this language); otherwise as the English
+ru	pg.worldCard	fixed	карта мира reads as 'map of the world'; now игральная карта мира, the term the core locale moves to on lang/qa-pipeline
+ru	story.difficulty.hard	ok	a difficulty level, the ordinary word for it
+ru	story.difficulty.medium	ok	a difficulty level, the ordinary word for it
+ru	story.enc.1-2.desc	ok	read against the English: same events, same speaker, Shakespeare's line kept in English; the flag is the model's misreading of a name or idiom
+ru	story.enc.1-2.name	ok	the name of an encounter, a title read literally by the model; the names in it are the sourced ones
+ru	story.enc.3-1.name	ok	the name of an encounter, a title read literally by the model; the names in it are the sourced ones
+ru	story.enc.3-2.name	ok	the name of an encounter, a title read literally by the model; the names in it are the sourced ones
+ru	story.progress	ok	a count: numbers and words are right; the back-translation garbled or dropped them
+ru	streak.pack.common	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+ru	streak.pack.uncommon	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+ar	event.trivia-tuesday.desc	ok	interface text; says what the English says; the model mistranslated a game word or the title
+ar	pg.battle.cta	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+ar	pg.challenge.correct	ok	card read as map or letter by the model (one word means both in this language); otherwise as the English
+ar	pg.challenge.translator	ok	a label and a translator's name; the translation model returned noise for it
+ar	pg.collect	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+ar	pg.difficulty.medium	ok	a difficulty level, the ordinary word for it
+ar	pg.odds.moreBefore	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+ar	pg.odds.rarity	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+ar	pg.odds.standardNote	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+ar	pg.onb.done	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+ar	pg.onb.skip	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+ar	pg.stat.trivia	ok	card read as map or letter by the model (one word means both in this language); otherwise as the English
+ar	pg.trivia.start	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+ar	pg.viewCollection	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+ar	story.act.1.label	ok	a title or label of the story page; the model rendered it literally or misread a name
+ar	story.difficulty.medium	ok	a difficulty level, the ordinary word for it
+ar	story.enc.3-1.desc	ok	read against the English: same events, same speaker, Shakespeare's line kept in English; the flag is the model's misreading of a name or idiom
+ar	story.enc.3-3.name	ok	the name of an encounter, a title read literally by the model; the names in it are the sourced ones
+ar	story.enc.3-4.desc	ok	read against the English: same events, same speaker, Shakespeare's line kept in English; the flag is the model's misreading of a name or idiom
+ar	story.meta.title	ok	a title or label of the story page; the model rendered it literally or misread a name
+ar	story.title	ok	a title or label of the story page; the model rendered it literally or misread a name
+hi	pg.claimed	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+hi	pg.trivia.title	fixed	Shakespeare as शेक्सपियर; the core locale and the Wikidata label write शेक्सपीयर: every play string now does
+hi	story.act.1.name	ok	a title or label of the story page; the model rendered it literally or misread a name
+hi	story.act.3.desc	ok	a title or label of the story page; the model rendered it literally or misread a name
+hi	story.badge	ok	a title or label of the story page; the model rendered it literally or misread a name
+hi	story.enc.1-2.name	ok	the name of an encounter, a title read literally by the model; the names in it are the sourced ones
+hi	story.enc.2-3.name	ok	the name of an encounter, a title read literally by the model; the names in it are the sourced ones
+hi	story.enc.2-4.name	ok	the name of an encounter, a title read literally by the model; the names in it are the sourced ones
+zh	event.battle-weekend.name	ok	interface text; says what the English says; the model mistranslated a game word or the title
+zh	event.trivia-tuesday.desc	ok	interface text; says what the English says; the model mistranslated a game word or the title
+zh	pg.challenge.crafting	ok	interface text; says what the English says; the model mistranslated a game word or the title
+zh	pg.challenge.sub	ok	interface text; says what the English says; the model mistranslated a game word or the title
+zh	pg.challenge.translator	ok	a label and a translator's name; the translation model returned noise for it
+zh	pg.collect	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+zh	pg.difficulty.medium	ok	a difficulty level, the ordinary word for it
+zh	pg.odds.epic	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+zh	pg.odds.epicNote	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+zh	pg.odds.moreBefore	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+zh	pg.odds.rare	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+zh	pg.odds.tiers	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+zh	pg.onb.1.title	ok	interface text; says what the English says; the model mistranslated a game word or the title
+zh	pg.onb.done	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+zh	pg.reveal.starter	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+zh	pg.spending	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+zh	pg.starter.name	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+zh	pg.stat.wins	ok	card read as map or letter by the model (one word means both in this language); otherwise as the English
+zh	pg.trivia.lost	ok	a count: numbers and words are right; the back-translation garbled or dropped them
+zh	pg.trivia.start	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+zh	pg.trivia.won	ok	a count: numbers and words are right; the back-translation garbled or dropped them
+zh	story.difficulty.medium	ok	a difficulty level, the ordinary word for it
+zh	story.enc.2-2.narrative	ok	read against the English: same events, same speaker, Shakespeare's line kept in English; the flag is the model's misreading of a name or idiom
+zh	story.enc.2-3.desc	ok	read against the English: same events, same speaker, Shakespeare's line kept in English; the flag is the model's misreading of a name or idiom
+zh	story.enc.3-1.desc	ok	read against the English: same events, same speaker, Shakespeare's line kept in English; the flag is the model's misreading of a name or idiom
+zh	story.enc.4-1.desc	ok	read against the English: same events, same speaker, Shakespeare's line kept in English; the flag is the model's misreading of a name or idiom
+zh	story.enc.4-1.name	ok	the name of an encounter, a title read literally by the model; the names in it are the sourced ones
+zh	story.enc.5-3.name	ok	the name of an encounter, a title read literally by the model; the names in it are the sourced ones
+zh	streak.available	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+zh	streak.pack.common	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+zh	streak.pack.rare	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+zh	streak.pack.uncommon	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+ja	event.now	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+ja	event.trivia-tuesday.desc	ok	interface text; says what the English says; the model mistranslated a game word or the title
+ja	event.trivia-tuesday.name	ok	interface text; says what the English says; the model mistranslated a game word or the title
+ja	pg.challenge.hint	ok	interface text; says what the English says; the model mistranslated a game word or the title
+ja	pg.challenge.title	ok	interface text; says what the English says; the model mistranslated a game word or the title
+ja	pg.challenge.translator	ok	a label and a translator's name; the translation model returned noise for it
+ja	pg.challenge.wrong	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+ja	pg.collect	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+ja	pg.difficulty.easy	ok	a difficulty level, the ordinary word for it
+ja	pg.difficulty.medium	ok	a difficulty level, the ordinary word for it
+ja	pg.meta.title	ok	interface text; says what the English says; the model mistranslated a game word or the title
+ja	pg.odds.moreBefore	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+ja	pg.odds.rare	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+ja	pg.odds.rarity	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+ja	pg.odds.standardNote	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+ja	pg.odds.tiers	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+ja	pg.onb.1.title	ok	interface text; says what the English says; the model mistranslated a game word or the title
+ja	pg.onb.3.title	ok	interface text; says what the English says; the model mistranslated a game word or the title
+ja	pg.spending	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+ja	pg.starter.name	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+ja	pg.stat.trivia	ok	card read as map or letter by the model (one word means both in this language); otherwise as the English
+ja	pg.title	ok	interface text; says what the English says; the model mistranslated a game word or the title
+ja	pg.trivia.complete	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+ja	pg.trivia.correct	ok	a count: numbers and words are right; the back-translation garbled or dropped them
+ja	pg.trivia.generating	ok	interface text; says what the English says; the model mistranslated a game word or the title
+ja	pg.trivia.lost	ok	a count: numbers and words are right; the back-translation garbled or dropped them
+ja	pg.trivia.start	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+ja	pg.trivia.won	ok	a count: numbers and words are right; the back-translation garbled or dropped them
+ja	story.act.4.label	ok	a title or label of the story page; the model rendered it literally or misread a name
+ja	story.act.5.label	ok	a title or label of the story page; the model rendered it literally or misread a name
+ja	story.difficulty.easy	ok	a difficulty level, the ordinary word for it
+ja	story.difficulty.medium	ok	a difficulty level, the ordinary word for it
+ja	story.enc.1-1.desc	ok	read against the English: same events, same speaker, Shakespeare's line kept in English; the flag is the model's misreading of a name or idiom
+ja	story.enc.1-2.name	ok	the name of an encounter, a title read literally by the model; the names in it are the sourced ones
+ja	story.enc.1-3.narrative	ok	read against the English: same events, same speaker, Shakespeare's line kept in English; the flag is the model's misreading of a name or idiom
+ja	story.enc.1-4.desc	ok	read against the English: same events, same speaker, Shakespeare's line kept in English; the flag is the model's misreading of a name or idiom
+ja	story.enc.2-2.narrative	ok	read against the English: same events, same speaker, Shakespeare's line kept in English; the flag is the model's misreading of a name or idiom
+ja	story.enc.2-3.name	ok	the name of an encounter, a title read literally by the model; the names in it are the sourced ones
+ja	story.enc.2-4.name	ok	the name of an encounter, a title read literally by the model; the names in it are the sourced ones
+ja	story.enc.3-1.desc	ok	read against the English: same events, same speaker, Shakespeare's line kept in English; the flag is the model's misreading of a name or idiom
+ja	story.enc.3-1.narrative	ok	read against the English: same events, same speaker, Shakespeare's line kept in English; the flag is the model's misreading of a name or idiom
+ja	story.enc.4-1.desc	ok	read against the English: same events, same speaker, Shakespeare's line kept in English; the flag is the model's misreading of a name or idiom
+ja	story.enc.4-1.name	ok	the name of an encounter, a title read literally by the model; the names in it are the sourced ones
+ja	story.enc.4-2.desc	ok	read against the English: same events, same speaker, Shakespeare's line kept in English; the flag is the model's misreading of a name or idiom
+ja	story.enc.4-2.narrative	ok	read against the English: same events, same speaker, Shakespeare's line kept in English; the flag is the model's misreading of a name or idiom
+ja	story.enc.5-2.desc	ok	read against the English: same events, same speaker, Shakespeare's line kept in English; the flag is the model's misreading of a name or idiom
+ja	story.enc.5-3.name	ok	the name of an encounter, a title read literally by the model; the names in it are the sourced ones
+ja	story.enc.5-3.narrative	fixed	最後の一篇 now 最後の詩, the core locale's word for a verse
+ja	streak.available	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+ja	streak.pack.rare	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+ko	event.trivia-tuesday.name	ok	interface text; says what the English says; the model mistranslated a game word or the title
+ko	pg.challenge.placeholder	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+ko	pg.challenge.title	ok	interface text; says what the English says; the model mistranslated a game word or the title
+ko	pg.challenge.wrong	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+ko	pg.claimed	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+ko	pg.credits	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+ko	pg.difficulty.medium	ok	a difficulty level, the ordinary word for it
+ko	pg.odds.moreBefore	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+ko	pg.odds.rarity	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+ko	pg.spending	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+ko	pg.stat.trivia	ok	card read as map or letter by the model (one word means both in this language); otherwise as the English
+ko	pg.trivia.generating	ok	interface text; says what the English says; the model mistranslated a game word or the title
+ko	pg.trivia.lost	ok	a count: numbers and words are right; the back-translation garbled or dropped them
+ko	pg.trivia.progress	ok	a count: numbers and words are right; the back-translation garbled or dropped them
+ko	story.act.2.name	fixed	헬싱외르 is the modern Danish town (the Wikidata label); ko.wikipedia's 햄릿 calls the play's castle town 엘시노르
+ko	story.act.4.label	ok	a title or label of the story page; the model rendered it literally or misread a name
+ko	story.act.4.name	ok	a title or label of the story page; the model rendered it literally or misread a name
+ko	story.difficulty.medium	ok	a difficulty level, the ordinary word for it
+ko	story.enc.1-2.name	ok	the name of an encounter, a title read literally by the model; the names in it are the sourced ones
+ko	story.enc.3-1.desc	ok	read against the English: same events, same speaker, Shakespeare's line kept in English; the flag is the model's misreading of a name or idiom
+ko	story.enc.3-3.narrative	ok	read against the English: same events, same speaker, Shakespeare's line kept in English; the flag is the model's misreading of a name or idiom
+ko	story.enc.3-4.name	ok	the name of an encounter, a title read literally by the model; the names in it are the sourced ones
+ko	story.enc.4-2.desc	ok	read against the English: same events, same speaker, Shakespeare's line kept in English; the flag is the model's misreading of a name or idiom
+ko	story.enc.5-3.name	ok	the name of an encounter, a title read literally by the model; the names in it are the sourced ones
+vi	event.battle-weekend.name	ok	interface text; says what the English says; the model mistranslated a game word or the title
+vi	pg.challenge.crafting	ok	interface text; says what the English says; the model mistranslated a game word or the title
+vi	pg.collect	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+vi	pg.free	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+vi	pg.odds.epic	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+vi	pg.odds.epicNote	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+vi	pg.starter.name	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+vi	story.act.4.name	ok	a title or label of the story page; the model rendered it literally or misread a name
+vi	story.badge	ok	a title or label of the story page; the model rendered it literally or misread a name
+vi	story.enc.3-1.desc	ok	read against the English: same events, same speaker, Shakespeare's line kept in English; the flag is the model's misreading of a name or idiom
+vi	story.enc.4-1.name	ok	the name of an encounter, a title read literally by the model; the names in it are the sourced ones
+vi	story.enc.4-2.desc	ok	read against the English: same events, same speaker, Shakespeare's line kept in English; the flag is the model's misreading of a name or idiom
+vi	streak.available	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+vi	streak.pack.epic	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+vi	streak.pack.uncommon	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+th	countdown.hm	ok	a count: numbers and words are right; the back-translation garbled or dropped them
+th	countdown.m	ok	a count: numbers and words are right; the back-translation garbled or dropped them
+th	event.battle-weekend.name	ok	interface text; says what the English says; the model mistranslated a game word or the title
+th	event.trivia-tuesday.desc	ok	interface text; says what the English says; the model mistranslated a game word or the title
+th	event.trivia-tuesday.name	ok	interface text; says what the English says; the model mistranslated a game word or the title
+th	pg.challenge.blank	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+th	pg.challenge.correct	ok	card read as map or letter by the model (one word means both in this language); otherwise as the English
+th	pg.challenge.crafting	ok	interface text; says what the English says; the model mistranslated a game word or the title
+th	pg.challenge.title	ok	interface text; says what the English says; the model mistranslated a game word or the title
+th	pg.challenge.wrong	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+th	pg.claimed	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+th	pg.collect	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+th	pg.meta.title	ok	interface text; says what the English says; the model mistranslated a game word or the title
+th	pg.odds.epic	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+th	pg.odds.epicNote	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+th	pg.odds.moreBefore	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+th	pg.odds.rare	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+th	pg.odds.standard	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+th	pg.odds.standardNote	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+th	pg.odds.tiers	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+th	pg.onb.1.title	ok	interface text; says what the English says; the model mistranslated a game word or the title
+th	pg.onb.done	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+th	pg.packs.sub	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+th	pg.reveal.daily	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+th	pg.reveal.starter	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+th	pg.reveal.title	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+th	pg.spending	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+th	pg.starter.name	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+th	pg.stat.trivia	ok	card read as map or letter by the model (one word means both in this language); otherwise as the English
+th	pg.title	ok	interface text; says what the English says; the model mistranslated a game word or the title
+th	pg.trivia.complete	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+th	pg.trivia.lost	ok	a count: numbers and words are right; the back-translation garbled or dropped them
+th	pg.trivia.progress	ok	a count: numbers and words are right; the back-translation garbled or dropped them
+th	pg.trivia.start	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+th	pg.trivia.sub	ok	card read as map or letter by the model (one word means both in this language); otherwise as the English
+th	pg.trivia.title	ok	interface text; says what the English says; the model mistranslated a game word or the title
+th	pg.trivia.won	ok	a count: numbers and words are right; the back-translation garbled or dropped them
+th	pg.worldCard	ok	interface text; says what the English says; the model mistranslated a game word or the title
+th	story.act.2.name	ok	a title or label of the story page; the model rendered it literally or misread a name
+th	story.act.5.label	ok	a title or label of the story page; the model rendered it literally or misread a name
+th	story.act.5.name	ok	a title or label of the story page; the model rendered it literally or misread a name
+th	story.badge	ok	a title or label of the story page; the model rendered it literally or misread a name
+th	story.enc.1-1.name	ok	the name of an encounter, a title read literally by the model; the names in it are the sourced ones
+th	story.enc.1-2.desc	fixed	as above
+th	story.enc.1-2.name	fixed	แม่นม now นางนม, the Nurse as th.wikipedia's โรเมโอและจูเลียต lists her
+th	story.enc.1-3.desc	fixed	Mercutio in Latin letters; now เมอร์คิวชิโอ, as th.wikipedia's cast list writes him
+th	story.enc.1-4.narrative	ok	read against the English: same events, same speaker, Shakespeare's line kept in English; the flag is the model's misreading of a name or idiom
+th	story.enc.2-2.name	fixed	Ophelia in Latin letters; now โอฟีเลีย, as th.wikipedia's แฮมเลต writes her
+th	story.enc.2-3.name	ok	the name of an encounter, a title read literally by the model; the names in it are the sourced ones
+th	story.enc.2-3.narrative	fixed	บทกวี (a poem) for the player's verse; the core locale's word is บทกลอน
+th	story.enc.2-4.narrative	ok	read against the English: same events, same speaker, Shakespeare's line kept in English; the flag is the model's misreading of a name or idiom
+th	story.enc.3-1.desc	ok	read against the English: same events, same speaker, Shakespeare's line kept in English; the flag is the model's misreading of a name or idiom
+th	story.enc.3-2.name	ok	the name of an encounter, a title read literally by the model; the names in it are the sourced ones
+th	story.enc.3-2.narrative	ok	read against the English: same events, same speaker, Shakespeare's line kept in English; the flag is the model's misreading of a name or idiom
+th	story.enc.3-3.desc	ok	read against the English: same events, same speaker, Shakespeare's line kept in English; the flag is the model's misreading of a name or idiom
+th	story.enc.4-1.desc	ok	read against the English: same events, same speaker, Shakespeare's line kept in English; the flag is the model's misreading of a name or idiom
+th	story.enc.4-2.desc	fixed	as above
+th	story.enc.4-4.desc	ok	read against the English: same events, same speaker, Shakespeare's line kept in English; the flag is the model's misreading of a name or idiom
+th	story.enc.5-1.narrative	ok	read against the English: same events, same speaker, Shakespeare's line kept in English; the flag is the model's misreading of a name or idiom
+th	story.enc.5-3.desc	ok	read against the English: same events, same speaker, Shakespeare's line kept in English; the flag is the model's misreading of a name or idiom
+th	story.meta.title	ok	a title or label of the story page; the model rendered it literally or misread a name
+th	story.title	ok	a title or label of the story page; the model rendered it literally or misread a name
+th	streak.available	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+th	streak.pack.common	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+th	streak.pack.epic	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+th	streak.pack.rare	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+th	streak.pack.uncommon	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+id	countdown.m	ok	a count: numbers and words are right; the back-translation garbled or dropped them
+id	pg.battle.cta	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+id	pg.challenge.blank	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+id	pg.challenge.body	ok	interface text; says what the English says; the model mistranslated a game word or the title
+id	pg.collect	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+id	pg.free	ok	a button or badge of one to three words, the usual wording for it in apps; read out of context the model guesses another sense
+id	pg.odds.rarity	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+id	pg.odds.title	ok	pack, odds or credits wording: the model read the pack as an envelope, parcel or set, or the odds as chances; in a card game the words say what the English says
+id	pg.onb.1.title	ok	interface text; says what the English says; the model mistranslated a game word or the title
+id	pg.onb.3.title	ok	interface text; says what the English says; the model mistranslated a game word or the title
+id	pg.stat.trivia	ok	card read as map or letter by the model (one word means both in this language); otherwise as the English
+id	pg.trivia.lost	ok	a count: numbers and words are right; the back-translation garbled or dropped them
+id	pg.trivia.won	ok	a count: numbers and words are right; the back-translation garbled or dropped them
+id	story.act.1.label	ok	a title or label of the story page; the model rendered it literally or misread a name
+id	story.act.2.label	ok	a title or label of the story page; the model rendered it literally or misread a name
+id	story.act.2.name	ok	a title or label of the story page; the model rendered it literally or misread a name
+id	story.act.3.label	ok	a title or label of the story page; the model rendered it literally or misread a name
+id	story.enc.1-2.name	ok	the name of an encounter, a title read literally by the model; the names in it are the sourced ones
+id	story.enc.3-1.desc	ok	read against the English: same events, same speaker, Shakespeare's line kept in English; the flag is the model's misreading of a name or idiom
+id	story.enc.5-3.name	ok	the name of an encounter, a title read literally by the model; the names in it are the sourced ones
+id	story.progress	ok	a count: numbers and words are right; the back-translation garbled or dropped them
