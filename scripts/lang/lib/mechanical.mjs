@@ -115,6 +115,10 @@ export function checkLanguage(lang, strings, english, cldr, helpers, opts = {}) 
 
     // --- Unicode hygiene ---
     if (value.normalize('NFC') !== value) bad(key, 'not-nfc', 'not in Unicode normal form C');
+    // A backslash is never text a player should see: it is an escape that did not become its
+    // character (two French strings showed "petit :" because the source held \\u00a0; the
+    // French spacing rule let it pass, reading "0:" as a time).
+    if (value.includes('\\')) bad(key, 'escape-literal', value.match(/\\.{0,5}/)[0]);
     for (const ch of value) {
       const cp = ch.codePointAt(0);
       if (cp === 0xfffd) bad(key, 'replacement-char', 'U+FFFD');

@@ -186,6 +186,8 @@ describe('the checks can fail', () => {
     ['ru', 'b', 'Sign in', 'no-native-script'],
     ['ru', 'b', 'Вoйти', 'mixed-script-word'],
     ['de', 'b', 'Anmelden�', 'replacement-char'],
+    // The escape written twice in the source: the player saw the six characters.
+    ['fr', 'e', 'Vers {line}\\u00a0: fait.', 'escape-literal'],
     ['de', 'b', 'Änmelden', 'not-nfc'],
   ];
 
