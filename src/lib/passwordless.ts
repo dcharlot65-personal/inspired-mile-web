@@ -21,7 +21,7 @@ import type {
 
 import * as api from './api-client';
 import type { AuthMethods, AuthResponse, EmailAgeTier, PasskeyInfo } from './api-client';
-import { activateServerMode } from './storage-backend';
+import { activateServerMode, deactivateServerMode } from './storage-backend';
 
 const AGE_KEY = 'inspired-mile-age-verified';
 
@@ -134,7 +134,7 @@ export async function signInWithEmailCode(email: string, code: string): Promise<
  */
 export async function requestRecoveryEmail(email: string): Promise<void> {
   if (!accountAgeTier()) throw new AuthFlowError('age_required');
-  await call(() => api.addEmailRequest(email.trim()));
+  await withFreshProof(() => call(() => api.addEmailRequest(email.trim())));
 }
 
 export async function confirmRecoveryEmail(email: string, code: string): Promise<AuthResponse> {
@@ -198,7 +198,7 @@ export async function signUpWithPasskey(name: string = defaultPasskeyName()): Pr
 /** Add a passkey on this device to the signed-in account. */
 export async function addPasskey(name: string = defaultPasskeyName()): Promise<PasskeyInfo> {
   if (!passkeysSupported()) throw new AuthFlowError('passkey_unsupported');
-  const begin = await call(() => api.passkeyRegisterBegin());
+  const begin = await withFreshProof(() => call(() => api.passkeyRegisterBegin()));
   let credential;
   try {
     credential = await startRegistration({
@@ -224,7 +224,49 @@ export async function listPasskeys(): Promise<PasskeyInfo[]> {
 }
 
 export async function removePasskey(id: string): Promise<void> {
-  await call(() => api.deletePasskey(id));
+  await withFreshProof(() => call(() => api.deletePasskey(id)));
+}
+
+/**
+ * Prove again, with a passkey of the signed-in account, that its owner is at the browser.
+ * The proof counts for a few minutes.
+ */
+export async function confirmWithPasskey(): Promise<void> {
+  if (!passkeysSupported()) throw new AuthFlowError('passkey_unsupported');
+  const begin = await call(() => api.passkeyVerifyBegin());
+  let credential;
+  try {
+    credential = await startAuthentication({
+      optionsJSON: begin.options as unknown as PublicKeyCredentialRequestOptionsJSON,
+    });
+  } catch (e) {
+    throw ceremonyError(e);
+  }
+  await call(() => api.passkeyVerifyFinish(begin.challenge_id, credential));
+}
+
+/**
+ * Run a step that changes how the account is signed in to. A session cookie is not enough
+ * for those: if the server answers `reauth_required`, ask for the passkey, then try once
+ * more. Right after signing in no prompt is needed.
+ */
+async function withFreshProof<T>(step: () => Promise<T>): Promise<T> {
+  try {
+    return await step();
+  } catch (e) {
+    if (!(e instanceof AuthFlowError) || e.code !== 'reauth_required') throw e;
+    await confirmWithPasskey();
+    return step();
+  }
+}
+
+/** Sign out on every device. Local state is cleared whether or not the server answered. */
+export async function signOutEverywhere(): Promise<void> {
+  try {
+    await api.logoutEverywhere();
+  } finally {
+    deactivateServerMode();
+  }
 }
 
 /** A label the owner will recognise in a list, such as "Chrome on macOS". Not localised. */

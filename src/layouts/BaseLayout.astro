@@ -239,6 +239,7 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
                       <span data-auth-text="emailButton"></span>
                     </button>
                     <p id="auth-email-hint" class="hidden text-[11px] text-obsidian-500 mt-2 text-center leading-relaxed" data-auth-text="emailHint"></p>
+                    <p id="auth-legacy-note" class="hidden text-[11px] text-obsidian-500 mt-3 leading-relaxed" data-auth-text="legacyAccountNote"></p>
                   </div>
 
                   <!-- Create an account with a passkey: what it is, and the one catch -->
@@ -353,6 +354,7 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
 
                   <a href="/profile" class="block text-xs text-obsidian-400 hover:text-gold-400 py-2 text-center transition-colors" data-auth-text="viewProfile"></a>
                   <button id="auth-logout-btn" type="button" class="w-full text-xs text-obsidian-400 hover:text-crimson-400 py-2 text-center transition-colors" data-auth-text="signOut"></button>
+                  <button id="auth-logout-all-btn" type="button" class="w-full text-[11px] text-obsidian-500 hover:text-crimson-400 py-1 text-center transition-colors" data-auth-text="signOutEverywhere"></button>
                 </div>
               </div>
             </div>
@@ -633,6 +635,7 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
         sendEmailCode,
         signInWithEmailCode,
         signInWithPasskey,
+        signOutEverywhere,
         signUpWithPasskey,
       } from '../lib/passwordless';
 
@@ -704,6 +707,8 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
         signedIn: 'Signed in',
         viewProfile: 'View Profile',
         signOut: 'Sign Out',
+        signOutEverywhere: 'Sign out on every device',
+        legacyAccountNote: 'Signed in here before with Google or an email address? That way in is switched off for now, so an older account cannot be opened yet. Creating an account here makes a new, empty one.',
         working: 'One moment…',
         errors: {
           age_required: 'Please confirm your age on the home page first. Accounts are for players aged 13 and over.',
@@ -719,6 +724,10 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
           passkey_unsupported: 'This browser cannot use passkeys.',
           passkey_cancelled: 'No passkey was used. Try again when you are ready.',
           passkey_not_accepted: 'That passkey was not accepted. Sign in with an emailed code, then add a new passkey.',
+          passkey_not_accepted_no_email: 'That passkey was not accepted. It may have been removed from the account, or the account may no longer exist.',
+          reauth_required: 'Confirm it is you first: sign out, sign in again, then try once more.',
+          reauth_unavailable: 'To do this, sign out and sign in again with an emailed code first.',
+          too_many_attempts: 'Too many wrong codes for this address. Try again tomorrow, or sign in with a passkey.',
           passkey_failed: 'The passkey did not work. Please try again.',
           passkey_already_on_device: 'This device already has a passkey for your account.',
           passkey_already_registered: 'That passkey is already registered.',
@@ -739,7 +748,9 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
       }
 
       function errorText(e: unknown): string {
-        const code = e instanceof AuthFlowError ? e.code : 'generic';
+        let code = e instanceof AuthFlowError ? e.code : 'generic';
+        // With email off there is no emailed code to point to.
+        if (code === 'passkey_not_accepted' && !emailAvailable) code = 'passkey_not_accepted_no_email';
         return STRINGS.errors[code] ?? STRINGS.errors.generic;
       }
 
@@ -936,6 +947,9 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
         // With no mail key the server cannot send anything: email is shown nowhere.
         show($('auth-email-btn'), emailAvailable);
         show($('auth-email-hint'), emailAvailable && canPasskey);
+        // With email off, an account that was only ever reached by Google or email cannot
+        // be opened at all. Say so, rather than let "create an account" look like the way in.
+        show($('auth-legacy-note'), !emailAvailable);
       }
 
       authBtn.addEventListener('click', toggleDropdown);
@@ -1336,6 +1350,19 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
       }
 
       // --- Logout ---
+      $('auth-logout-all-btn').addEventListener('click', async () => {
+        try {
+          await signOutEverywhere();
+        } catch {
+          // Local state is cleared either way; a session that outlived this fails its next request.
+        }
+        $('auth-passkey-list').replaceChildren();
+        passkeyTotal = 0;
+        resetAddEmail();
+        closeDropdown();
+        updateAuthUI();
+      });
+
       $('auth-logout-btn').addEventListener('click', async () => {
         await logoutUser();
         $('auth-passkey-list').replaceChildren();
