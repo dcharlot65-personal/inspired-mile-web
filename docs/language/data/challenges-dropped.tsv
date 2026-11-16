@@ -157,22 +157,17 @@ fr	101	As You Like It	I had rather have a fool to make me merry than experience 
 fr	102	Love's Labour's Lost	A light heart lives long.
 fr	103	The Tempest	What is past is prologue.
 de	1	The Merchant of Venice	All that glitters is not gold.
-de	2	Romeo and Juliet	Parting is such sweet sorrow.
 de	3	The Tempest	We are such stuff as dreams are made on.
-de	4	Romeo and Juliet	Romeo, Romeo, wherefore art thou Romeo?
 de	5	Julius Caesar	Friends, Romans, countrymen, lend me your ears.
-de	6	Romeo and Juliet	A rose by any other name would smell as sweet.
 de	7	Macbeth	Double, double toil and trouble; fire burn and cauldron bubble.
 de	8	Julius Caesar	Et tu, Brute?
 de	9	Richard III	Now is the winter of our discontent.
 de	10	As You Like It	All the world's a stage, and all the men and women merely players.
 de	11	Macbeth	Out, damned spot! Out, I say!
-de	12	Romeo and Juliet	A plague on both your houses!
 de	13	Twelfth Night	If music be the food of love, play on.
 de	16	A Midsummer Night's Dream	Love looks not with the eyes, but with the mind.
 de	17	Twelfth Night	Some are born great, some achieve greatness, and some have greatness thrust upon them.
 de	18	A Midsummer Night's Dream	The course of true love never did run smooth.
-de	19	Romeo and Juliet	Good night, good night! Parting is such sweet sorrow, that I shall say good night till it be morrow.
 de	21	A Midsummer Night's Dream	Lord, what fools these mortals be!
 de	22	Macbeth	Is this a dagger which I see before me, the handle toward my hand?
 de	23	Sonnet 18	Shall I compare thee to a summer's day? Thou art more lovely and more temperate.
@@ -185,8 +180,6 @@ de	30	A Midsummer Night's Dream	Though she be but little, she is fierce.
 de	31	Julius Caesar	Cowards die many times before their deaths; the valiant never taste of death but once.
 de	32	The Tempest	Hell is empty and all the devils are here.
 de	33	The Merchant of Venice	The quality of mercy is not strained; it droppeth as the gentle rain from heaven.
-de	34	Romeo and Juliet	These violent delights have violent ends.
-de	35	Romeo and Juliet	What's in a name? That which we call a rose by any other name would smell as sweet.
 de	36	Julius Caesar	The evil that men do lives after them; the good is oft interred with their bones.
 de	37	Othello	I am not what I am.
 de	38	Othello	O, beware, my lord, of jealousy! It is the green-eyed monster which doth mock the meat it feeds on.
@@ -195,7 +188,6 @@ de	40	Macbeth	Life's but a walking shadow, a poor player that struts and frets h
 de	41	Twelfth Night	Be not afraid of greatness. Some are born great, some achieve greatness, and others have greatness thrust upon them.
 de	44	Richard III	Off with his head!
 de	45	Henry V	Once more unto the breach, dear friends, once more.
-de	46	Romeo and Juliet	But soft, what light through yonder window breaks?
 de	47	Julius Caesar	Cry havoc, and let slip the dogs of war!
 de	48	All's Well That Ends Well	Love all, trust a few, do wrong to none.
 de	49	Julius Caesar	Beware the ides of March.
@@ -225,7 +217,6 @@ de	75	Henry VI, Part 2	The first thing we do, let's kill all the lawyers.
 de	76	Measure for Measure	Some rise by sin, and some by virtue fall.
 de	77	Measure for Measure	Our doubts are traitors, and make us lose the good we oft might win by fearing to attempt.
 de	78	Measure for Measure	They say best men are moulded out of faults.
-de	79	Romeo and Juliet	Wisely and slow; they stumble that run fast.
 de	80	Othello	Put out the light, and then put out the light.
 de	81	Macbeth	It is a tale told by an idiot, full of sound and fury, signifying nothing.
 de	82	Othello	Reputation is an idle and most false imposition; oft got without merit, and lost without deserving.
@@ -240,10 +231,8 @@ de	92	All's Well That Ends Well	No legacy is so rich as honesty.
 de	93	Richard II	This blessed plot, this earth, this realm, this England.
 de	94	Macbeth	Come what come may, time and the hour runs through the roughest day.
 de	95	Much Ado About Nothing	Speak low, if you speak love.
-de	96	Romeo and Juliet	Thou know'st the mask of night is on my face, else would a maiden blush bepaint my cheek.
 de	97	Othello	For I am nothing if not critical.
 de	98	The Winter's Tale	Exit, pursued by a bear.
-de	99	Romeo and Juliet	O, she doth teach the torches to burn bright!
 de	100	King Lear	The wheel is come full circle; I am here.
 de	101	As You Like It	I had rather have a fool to make me merry than experience to make me sad.
 de	102	Love's Labour's Lost	A light heart lives long.
