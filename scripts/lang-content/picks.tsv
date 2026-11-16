@@ -207,3 +207,33 @@ l.swan	ko	스완 극장	the item has no Korean label
 b.alexandria	ko	알렉산드리아 전투	the item has no Korean label
 w.pyramus	ko	피라모스와 티스베	the item has no Korean label
 w.hero	ko	헤로와 레안드로스	the item has no Korean label
+p.twelfth	ar	الليلة الثانية عشرة
+c.macbeth	ar	مكبث	the play's label, so the quiz says one name; the character's label is ماكبث
+c.ladymacbeth	ar	ليدي مكبث	as above
+l.elsinore	ar	إلسينور	the label is a garbled form of the modern town's name
+c.hamlet	hi	हैमलेट
+c.claudius	hi	क्लॉडियस
+c.paris	hi	पेरिस
+c.bottom	hi	बॉटम
+c.flute	hi	फ़्लूट
+h.shakespeare#1	hi	शेक्सपीयर
+h.caesar#1	hi	सीसर
+h.cassius	hi	कैसियस
+p.tempest	hi	द टेम्पेस्ट	the label is the English title in lower case
+h.shakespeare#1	th	เชกสเปียร์
+h.caesar#1	th	ซีซาร์
+h.brutus	th	บรูตุส
+h.cassius	th	กัสซิอุส
+p.twelfth	id	Twelfth Night
+c.romeo	id	Romeo
+c.iago	id	Iago
+h.field	ar	Richard Field
+h.field	hi	Richard Field
+h.field	th	Richard Field
+h.field	vi	Richard Field
+h.field	id	Richard Field
+h.field	pt	Richard Field
+c.lear	ar	لير	as in the play's label الملك لير
+c.lear	hi	लीयर	as in the play's label किंग लीयर
+h.brutus	hi	ब्रूटस	the usual Hindi form; the item has no Hindi label
+l.bohemia	hi	बोहेमिया	the usual Hindi form; the item has no Hindi label
