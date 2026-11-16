@@ -92,22 +92,35 @@ left behind by a killed run is found by its port: `lsof -nP -iTCP:<port> -sTCP:L
   `ignored CF-Connecting-IP / X-Forwarded-For from <peer>`. If that peer is the proxy, add it:
   otherwise every visitor shares one allowance. These are "operator notices"
   (`backend/src/notice.rs`): the log filter is `RUST_LOG` with a directive for that target
-  added last),
-  `SIGNUP_GLOBAL_PER_HOUR` (default 300; hitting it logs `SIGN-UP CEILING HIT`),
+  added last; the log has no colour codes unless standard output is a terminal),
+  `PROXY_SECRET` (optional, 32+ characters: when set, a trusted peer's forwarding headers are
+  believed only on requests carrying it as `X-Proxy-Secret`, which every proxying Caddy must
+  add with `header_up`; the proxy's host is a shared build host, so without it any program
+  there can choose the address it is counted as),
+  `SIGNUP_GLOBAL_PER_HOUR` (default 300; logs `SIGN-UP CEILING HIT`),
   `SIGNUP_BEGINS_GLOBAL_PER_HOUR` (default 1500 begun sign-ups an hour, site-wide; logs
-  `SIGN-UP BEGIN CEILING HIT`), `AUTH_CHALLENGES_MAX` (default 20000 rows in `auth_challenges`;
-  one network may hold 100 live; at the ceiling expired rows are deleted on the spot, and if it
-  is still full new ceremonies get 503 and `SIGN-IN CHALLENGE CEILING HIT` is logged),
+  `SIGN-UP BEGIN CEILING HIT`), `AUTH_CHALLENGES_MAX` (default 50000 rows in `auth_challenges`;
+  one network may hold 300 live; logs `SIGN-IN CHALLENGE CEILING HIT`),
   `UNUSED_ACCOUNT_PURGE_DAYS` (default 30, 0 = never: passkey-only accounts that never played
   are deleted, see `purge_unused_accounts` in `auth/passkeys.rs`).
-- Limits are per network, not per address: an IPv6 /64 is one client, and the sign-up budget
-  (40 accounts an hour, counted when created) is per IPv4 /24 or IPv6 /64.
-- Email codes (`backend/src/auth/email_code.rs`, top comment, is the statement): an address's
-  inbox gets at most 10 codes an hour; one network (IPv4 address or IPv6 /64) may have at most
-  3 of them, so no network, and no three together, can stop another from getting a code; it
-  takes four. Wrong guesses: 10 a day per network per address, 50 per address from everyone, 30
-  per network over all addresses. All checked under the address's and the network's advisory
-  locks in the transaction that inserts, so parallel requests cannot pass them.
+- **A site-wide ceiling never refuses everyone** (`auth/passkeys.rs`, top). At one, only a
+  network that has already had a small share is refused: 2 accounts or 10 begun sign-ups in the
+  hour, or 10 live sign-in ceremonies; everyone else is served. Before 2026-11-16 (second
+  review) a full challenge table refused every visitor, so one IPv6 /48 split into 200 /64s
+  stopped all passkey sign-in in nine seconds. Do not bring back a ceiling that refuses all.
+- Limits are per network, never per address, at three widths (`auth/client_ip.rs`, top): the
+  request rate limit per IPv4 address or IPv6 /64; everything one party could turn on another
+  or use to fill a table (email codes and guesses, sign-in ceremonies) per IPv4 address or
+  IPv6 /48, because one home line holds 256 or 65,536 /64s; the sign-up budget (40 accounts an
+  hour, counted when created) per IPv4 /24 or IPv6 /48.
+- Email codes (`backend/src/auth/email_code.rs`, top comment, is the statement): an inbox (the
+  address without its `+tag`, and for Gmail without dots) gets at most 10 codes an hour; one
+  network (IPv4 address or IPv6 /48) may have at most 3 of them, so no network, and no three
+  together, can stop another from getting a code; it takes four. Wrong guesses: 10 a day per
+  network per address, 50 per address from everyone, 30 per network over all addresses (a miss
+  is forgiven for that last count once the same network signs in with a code for the
+  address). All checked under the inbox's and the network's advisory locks in the transaction
+  that inserts, so parallel requests cannot pass them.
 - `TEST_ONLY_LIMIT_RACE_DELAY_MS` pauses between each limit's check and its write, so the
   end-to-end tests can show a check made without its lock letting parallel requests through.
   The API refuses to start with it when any `WEBAUTHN_ORIGIN` is https. Never set it in a
@@ -162,7 +175,12 @@ left behind by a killed run is found by its port: `lsof -nP -iTCP:<port> -sTCP:L
   `DATABASE_URL` needs an explicit user (sqlx 0.9 no longer infers it). Migrations are read
   from `./migrations` at start-up, so sync that folder with the binary.
 - Replace the binary by writing a new file and renaming it, then
-  `launchctl bootout` + `bootstrap` (not an in-place copy).
+  `launchctl bootout` + `bootstrap` (not an in-place copy). Prod is arm64 macOS: build the
+  release binary on an Apple Silicon build host (the Studio, or the M4), never the Intel iMac.
+- **Rolling back keeps the newer migrations.** sqlx refuses to start when the database has a
+  migration its folder lacks (`VersionMissing`), so to go back to an older binary, put the old
+  binary in place and leave `./migrations` as it is (every migration here only adds, and keeps
+  the old binary working). Never delete an applied migration file.
 
 ## Gotchas
 
