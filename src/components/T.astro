@@ -1,0 +1,36 @@
+---
+// A piece of text from a page area (src/i18n/pages): rendered in English when the site is built,
+// and marked so the page's script rewrites it in the visitor's language (applyRich in
+// src/i18n/pages/runtime.ts). The page must have loaded the area in its frontmatter:
+//   await loadArea('home');
+//   <T k="home.hero.title" as="h1" class="…" />
+// <b>…</b> in the message becomes the accent span, <a>…</a> a link to `aHref`.
+import { rich } from '../i18n/pages/runtime';
+
+interface Props {
+  k: string;
+  as?: string;
+  vars?: Record<string, string | number>;
+  bClass?: string;
+  aHref?: string;
+  aClass?: string;
+  aExternal?: boolean;
+  /** Wrap a variable's value in a span with this id: { n: 'owned-count' }. */
+  varIds?: Record<string, string>;
+  [attr: string]: unknown;
+}
+
+const { k, as: Tag = 'span', vars, bClass, aHref, aClass, aExternal, varIds, ...rest } = Astro.props;
+---
+
+<Tag
+  data-i18n-html={k}
+  data-i18n-vars={vars ? JSON.stringify(vars) : undefined}
+  data-b-class={bClass}
+  data-a-href={aHref}
+  data-a-class={aClass}
+  data-a-external={aExternal ? '' : undefined}
+  data-var-ids={varIds ? JSON.stringify(varIds) : undefined}
+  set:html={rich(k, vars, { bClass, aHref, aClass, aExternal, varIds })}
+  {...rest}
+/>

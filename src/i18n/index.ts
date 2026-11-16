@@ -128,6 +128,45 @@ export async function loadMessages(l: Locale): Promise<Messages> {
   return loaded;
 }
 
+/**
+ * A page's own messages. Each page (or data file) keeps its strings apart from the core
+ * locale files, in ./pages/<area>/<locale>.ts, and asks for them when it needs them:
+ *
+ *   await loadArea('collection')    then t('collection.title') as usual
+ *
+ * The area's English and its text in `l` are merged into that locale's messages, so t(),
+ * has() and applyTranslations() need no change. Ask again after the language changes
+ * (onLocaleChange): a language's areas are fetched only when that language is in use.
+ */
+const AREA_LOADERS = import.meta.glob<{ default: Messages }>('./pages/*/*.ts');
+const areasLoaded = new Map<string, Promise<void>>();
+
+export function loadArea(name: string, l: Locale = current): Promise<void> {
+  const id = `${l}/${name}`;
+  let pending = areasLoaded.get(id);
+  if (!pending) {
+    pending = (async () => {
+      const target = await loadMessages(l);
+      // English first, so a key the language lacks (or a file that will not load) still reads as text.
+      for (const code of l === 'en' ? ['en'] : ['en', l]) {
+        const load = AREA_LOADERS[`./pages/${name}/${code}.ts`];
+        if (!load) {
+          if (code === 'en') console.error(`[i18n] no such area: "${name}"`);
+          continue;
+        }
+        try {
+          Object.assign(target, (await load()).default);
+        } catch (err) {
+          console.error(`[i18n] could not load area "${name}" in "${code}"`, err);
+          areasLoaded.delete(id);
+        }
+      }
+    })();
+    areasLoaded.set(id, pending);
+  }
+  return pending;
+}
+
 /** Fill every element under `root` that carries a data-i18n key. */
 export function applyTranslations(root: ParentNode = document): void {
   root.querySelectorAll<HTMLElement>('[data-i18n]').forEach((el) => {
