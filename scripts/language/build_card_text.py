@@ -472,6 +472,22 @@ def write_checks(L, CARDS, prov):
     opens += [(lang, 'meaning', f"{o['id']} {o['field']}: {o['text']} → {o['back']}") for lang in LANGS if res[lang]['meaning'] for o in res[lang]['meaning']['open']]
     L.append('### Open findings\n')
     L.append('None.\n' if not opens else '\n'.join(f'- {l} {k}: {esc(t)}' for l, k, t in opens) + '\n')
+    # What no tool can settle: the acceptances the reading itself doubted, then the text a reviewer should read first.
+    review = [(lang, f"{a['id']} {a['field']}", a['found'] if k == 'grammar' else a['text'], a['reason']) for k in ('grammar', 'meaning')
+              for lang in LANGS if res[lang][k] for a in res[lang][k]['accepted'] if re.search(r'for review|doubtful|reviewer', a['reason'])]
+    review += [(lang, 'word', w, why) for lang in LANGS for w, why in sorted(acc.get('spelling', {}).get(lang, {}).items()) if re.search(r'for review|doubtful|reviewer', why)]
+    L.append('### For a native-speaking reviewer, first\n')
+    L.append('No tool certifies tone or verse, and every reading above is one language model\'s. A reviewer should read first: the '
+             'scenes and lines written for the game in Thai, Hindi, Arabic and Vietnamese (written in one pass, and the languages where '
+             'the back-translations ran lowest), then the translated relic and potion names and the element labels of every language '
+             '(one or two words, which back-translation cannot judge), then these, which the reading itself left in doubt:\n')
+    seen = set()
+    for lang, item, text, why in review:
+        if (lang, item, text) in seen:
+            continue
+        seen.add((lang, item, text))
+        L.append(f'- {lang} {item}: {esc(text)} ({esc(why)})')
+    L.append('')
     L.append('### Changes made because of a finding\n')
     if fixes['fixes']:
         L.append('| Language | Item | Finding | Before | After |')

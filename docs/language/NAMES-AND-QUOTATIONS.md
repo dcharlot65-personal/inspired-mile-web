@@ -380,6 +380,22 @@ Meaning is judged by the rule of the language QA pipeline: an item is flagged wh
 
 None.
 
+### For a native-speaking reviewer, first
+
+No tool certifies tone or verse, and every reading above is one language model's. A reviewer should read first: the scenes and lines written for the game in Thai, Hindi, Arabic and Vietnamese (written in one pass, and the languages where the back-translations ran lowest), then the translated relic and potion names and the element labels of every language (one or two words, which back-translation cannot judge), then these, which the reading itself left in doubt:
+
+- de house:Gothic Circle house: Schauerkreis (Schauerkreis: a coinage after Schauerroman (Gothic novel); copied through; for review)
+- ar element:Trickster element: المحتال (المحتال (the swindler) for Trickster: right in sense, harsher in tone; for review)
+- ar element:Arcane element: الغامض (الغامض (the mysterious) for Arcane: a looser word, for review)
+- hi element:Petrification element: पाषाण (पाषाण (stone) for Petrification: looser than the English, for review)
+- zh element:Cunning element: 机智 (机智 (quick wit) for Cunning: kinder than the English, for review)
+- ja element:Rhetoric element: 弁論 (弁論 (oratory, argument) for Rhetoric: close, for review)
+- ja element:Rebellion element: 反逆 (反逆 (rebellion, also treason): harsher than the English, for review)
+- ko element:Rebellion element: 반역 (반역 (rebellion, also treason): harsher than the English, for review)
+- de word: Arkan (element label for "Arcane": coined after the game term (Arkanmagie); a reviewer may prefer another)
+- de word: Schauerkreis (house label for "Gothic Circle", after Schauerroman (the German term for the Gothic novel); a coinage, for review)
+- id word: pelelap ("sirop pelelap" (drowsy syrups): a pe- noun from "lelap"; doubtful, for a reviewer)
+
 ### Changes made because of a finding
 
 | Language | Item | Finding | Before | After |
