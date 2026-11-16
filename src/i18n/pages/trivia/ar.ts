@@ -530,7 +530,7 @@ const messages: Record<string, string> = {
   'trivia.105.o0': "مرقس أنطونيوس",
   'trivia.105.o1': "بروتس",
   'trivia.105.o2': "كاسيوس",
-  'trivia.105.o3': "أغسطس قيصر",
+  'trivia.105.o3': "أوكتافيوس",
   'trivia.106.q': "ما اسم رفيق لير الوفي الذي يتنكر في شخصية «Poor Tom»؟",
   'trivia.106.o0': "Edgar",
   'trivia.106.o1': "Edmund",

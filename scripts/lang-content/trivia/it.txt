@@ -83,7 +83,7 @@
 80 | In quale opera un personaggio si traveste da avvocato con il nome di Balthazar? | = | = | = | =
 81 | Come si chiamava la compagnia di attori di Shakespeare sotto il re Giacomo I? | = | The Queen's Players | = | The Chamberlain's Servants
 82 | Quale opera si apre con una tempesta in mare? | = | = | = | =
-83 | Nel Giulio Cesare, chi guida la congiura per uccidere Cesare? | Bruto e Cassio | Marco Antonio e Ottavio | Calpurnia e Porzia | Cicerone e Casca
+83 | Nel Giulio Cesare, chi guida la congiura per uccidere Cesare? | Bruto e Cassio | Marco Antonio e Ottaviano | Calpurnia e Porzia | Cicerone e Casca
 84 | A quale genere appartiene Sogno di una notte di mezza estate? | Commedia | Tragedia | Dramma storico | Dramma romanzesco
 85 | In quale opera di Shakespeare compare la foresta di Arden? | = | = | = | =
 86 | In quale anno morì Shakespeare? | 1616 | 1600 | 1623 | 1590

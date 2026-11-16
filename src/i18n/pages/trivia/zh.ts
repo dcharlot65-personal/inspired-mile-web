@@ -530,7 +530,7 @@ const messages: Record<string, string> = {
   'trivia.105.o0': "马克·安东尼",
   'trivia.105.o1': "布鲁图",
   'trivia.105.o2': "卡西乌斯",
-  'trivia.105.o3': "奥古斯都",
+  'trivia.105.o3': "屋大维",
   'trivia.106.q': "李尔那位假扮成“Poor Tom”的忠实同伴叫什么名字？",
   'trivia.106.o0': "Edgar",
   'trivia.106.o1': "爱德蒙",
