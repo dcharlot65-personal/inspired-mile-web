@@ -15,6 +15,7 @@
  */
 
 import { loadTransformers } from './model-runtime';
+import { protectStorage } from './pwa';
 
 export type Tier = 'grand' | 'standard' | 'lite' | 'none';
 
@@ -175,6 +176,9 @@ export function loadBrain(tier: Exclude<Tier, 'none'>, onProgress?: (p: LoadProg
       try {
         await loadSpec(spec, onProgress);
         onProgress?.({ percent: 100, text: `${spec.label} ready` });
+        // The weights are in browser storage now: ask the browser not to evict them.
+        // Not awaited, so play never waits on the answer.
+        void protectStorage('model');
         return true;
       } catch (err) {
         console.error(`[brain] ${spec.id} failed to load`, err);

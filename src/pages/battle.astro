@@ -190,6 +190,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     import { getPlayerStats, incrementStat, setHighScore, syncCardStats } from '../lib/achievements';
     import { initAudio, isInitialized, playMusic, playRarityFanfare, playSfx, preloadSfx, duckMusic, unduckMusic, type Rarity as AudioRarity } from '../lib/audio-manager';
     import { getActiveDeck } from '../lib/deck-manager';
+    import { holdWakeLock, mountStorageNote, releaseWakeLock } from '../lib/pwa';
     import { CITY_CATALOG, decodeVariantId, getCityByCode, getOwnedVariants, type CityAbility } from '../lib/variants';
     import { isSpeaking, isVoiceLoaded, loadVoice, speak, stopSpeaking } from '../lib/thespian-voice';
     import { POTION_CURSE, POWER_WORD_BONUS, deviceForHouse, houseWhy } from '../lib/verse/devices';
@@ -875,6 +876,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     }
 
     function finish(winner: 'player' | 'opponent') {
+      releaseWakeLock('duel');
       view = 'finished';
       matchResult = winner;
       reward = null;
@@ -938,6 +940,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       $('player-score').textContent = '0';
       $('ai-score').textContent = '0';
       renderBadge();
+      holdWakeLock('duel');
       $('duel-setup').classList.add('hidden');
       $('battle-arena').classList.remove('hidden');
       incrementStat('totalBattles');
@@ -979,6 +982,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       loadDeck();
       renderVariantPicker();
       updateSubmit();
+      mountStorageNote($('brain-status'));
       initBrain();
       onLocaleChange((l) => {
         // A visitor who changes the interface language most likely wants to duel in it:
