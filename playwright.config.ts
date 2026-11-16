@@ -20,7 +20,11 @@ const prodUrl = process.env.PROD_URL;
 
 export default defineConfig({
   testDir: './tests',
-  timeout: 30000,
+  // The dev server compiles each page on first request; on a loaded build host that alone can
+  // pass 30 s. warm-up.ts compiles every page before any test's clock starts, and E2E_TIMEOUT
+  // raises the per-test limit when the host is busy.
+  timeout: Number(process.env.E2E_TIMEOUT ?? 30000),
+  globalSetup: prodUrl ? undefined : './tests/warm-up.ts',
   use: {
     baseURL: prodUrl ?? E2E.webOrigin,
     headless: true,

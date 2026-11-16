@@ -248,7 +248,7 @@ const count = 'text-gold-400 font-mono';
     } from '../lib/variants';
     import { CARD_CATALOG, getCardById } from '../lib/cards';
     import { initAudio, isInitialized, playMusic, playSfx } from '../lib/audio-manager';
-    import { getARModel, isARLikelySupported } from '../lib/ar-viewer';
+    import { getARModel, isARLikelySupported, loadModelViewer } from '../lib/ar-viewer';
     import { DECK_RULES, type Deck } from '../lib/battle-rules';
     import { getSavedDecks, saveDeck, deleteDeck, setActiveDeck, getActiveDeckName } from '../lib/deck-manager';
     import { ACHIEVEMENTS, getAchievementProgress } from '../lib/achievements';
@@ -462,14 +462,8 @@ const count = 'text-gold-400 font-mono';
     const modalContent = byId('modal-content')!;
     const modalClose = byId('modal-close')!;
     const modalBackdrop = byId('modal-backdrop')!;
-    let modelViewerLoaded = false;
     let openCardId: string | null = null;
 
-    async function loadModelViewer() {
-      if (modelViewerLoaded) return;
-      await import('@google/model-viewer');
-      modelViewerLoaded = true;
-    }
 
     function openCardModal(cardId: string) {
       const card = getCardById(cardId);
@@ -542,7 +536,7 @@ const count = 'text-gold-400 font-mono';
       modal.classList.remove('hidden');
 
       // Load model-viewer if needed
-      if (arModel) loadModelViewer();
+      if (arModel) loadModelViewer().catch((err) => console.error('[collection] 3D viewer failed to load', err));
 
       // Add-to-deck button
       byId('modal-add-to-deck')?.addEventListener('click', () => {

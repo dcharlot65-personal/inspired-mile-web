@@ -1,7 +1,12 @@
 /**
  * Master Thespian Voice — Kokoro TTS for in-browser speech synthesis.
- * Runs entirely client-side via WASM. No data leaves the device.
+ * Runs entirely client-side via WASM. No text or audio leaves the device.
+ *
+ * The first use downloads the Kokoro model and the voice from the Hugging Face hub
+ * (download requests: IP address and browser details, nothing that is spoken).
  */
+
+import { selfHosted } from './self-hosted';
 
 let tts: any = null;
 let loading = false;
@@ -19,7 +24,10 @@ export async function loadVoice(onProgress?: VoiceProgressCallback): Promise<boo
   loading = true;
 
   try {
-    const { KokoroTTS } = await import('kokoro-js');
+    const { KokoroTTS, env } = await import('kokoro-js');
+    // kokoro-js carries its own Transformers.js, which would fetch its WebAssembly runtime
+    // from cdn.jsdelivr.net. This site ships it (scripts/self-hosted-runtime.mjs).
+    env.wasmPaths = selfHosted().kokoroOrt;
     tts = await KokoroTTS.from_pretrained('onnx-community/Kokoro-82M-v1.0-ONNX', {
       dtype: 'q8',
       device: 'wasm',
