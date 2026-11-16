@@ -27,7 +27,7 @@ const messages: Record<string, string> = {
   'card-terms.house.relic': 'Relikt',
   'card-terms.house.potion': 'Trank',
   'card-terms.house.lake-district': 'Lake District', // Wikidata Q211778 label
-  'card-terms.house.gothic-circle': 'Schauerkreis',
+  'card-terms.house.gothic-circle': 'Gothic-Zirkel',
   'card-terms.house.olympus': 'Olymp', // Wikidata Q70054479 label
   'card-terms.house.underworld': 'Unterwelt',
   'card-terms.element.air': 'Luft',

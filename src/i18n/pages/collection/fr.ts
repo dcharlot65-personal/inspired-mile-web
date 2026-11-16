@@ -16,7 +16,7 @@ const messages: Record<string, string> = {
   'collection.world.title': 'Cartes du monde',
   'collection.world.intro': 'Vos personnages parcourent le globe. Gagnez des combats et réussissez les quiz pour débloquer des variantes de villes.',
   'collection.world.empty': 'Aucune variante pour l’instant. Gagnez trois combats d’affilée ou obtenez un score parfait au quiz pour débloquer votre première carte du monde !',
-  'collection.deck.title': 'Atelier de jeux',
+  'collection.deck.title': 'Composition du jeu',
   'collection.deck.intro': 'Personnages : de {min} à {max}. Reliques : jusqu’à {relics}. Potions : jusqu’à {potions}. Cartes au total : jusqu’à {total}. Cliquez ci-dessus sur les cartes que vous possédez pour les ajouter.',
   'collection.deck.namePlaceholder': 'Nom du jeu…',
   'collection.deck.save': 'Enregistrer le jeu',
