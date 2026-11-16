@@ -158,7 +158,8 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
           <button id="teen-continue" class="btn-primary w-full py-3 font-display font-bold opacity-50 pointer-events-none" data-i18n="age.teenContinue">Continue with Consent</button>
         </div>
 
-        <!-- Only when the question was opened from the account menu: leave without answering -->
+        <!-- Only when the question was opened from the account menu: leave without answering,
+             or, on the under-13 screen right after that answer, go back to the question -->
         <button id="age-gate-cancel" type="button" class="hidden w-full text-xs text-obsidian-400 hover:text-gold-400 py-2 mt-3 transition-colors" data-i18n="auth.back">Back</button>
 
         <p class="text-[10px] text-obsidian-600 mt-6">
@@ -1478,6 +1479,12 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
         // browser stored earlier is never sent on its own: on a shared browser it may be
         // someone else's.
         var forAccount = false;
+        // True while the under-13 screen shows an answer just given from the account menu.
+        // Its "Back" then returns to the question, so a wrong year can be put right at once
+        // (answering again replaces this browser's stored answer; making the account adult
+        // again asks for a passkey, backend src/auth/age.rs). Reached any other way (the
+        // first visit, or a later page load), the screen keeps no way back, as before.
+        var minorBack = false;
         var filled = false;
 
         // Populate day/year dropdowns (once)
@@ -1501,14 +1508,17 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
           }
         }
 
-        function openGate(account) {
+        // `mustAnswer`: no "Back" on the question itself (it was reached from the under-13
+        // screen, and leaving now would leave that answer standing without a second look).
+        function openGate(account, mustAnswer) {
           forAccount = !!account;
+          minorBack = false;
           fillSelects();
           form.classList.remove('hidden');
           minor.classList.add('hidden');
           teenStep.classList.add('hidden');
           errorEl.classList.add('hidden');
-          cancel.classList.toggle('hidden', !forAccount);
+          cancel.classList.toggle('hidden', !forAccount || !!mustAnswer);
           gate.classList.remove('hidden');
         }
 
@@ -1516,6 +1526,10 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
         window.__openAgeGate = function() { openGate(true); };
 
         cancel.addEventListener('click', function() {
+          if (minorBack) {
+            openGate(true, true);
+            return;
+          }
           forAccount = false;
           cancel.classList.add('hidden');
           gate.classList.add('hidden');
@@ -1525,6 +1539,10 @@ const canonicalUrl = `https://sonnetman.inspiredmile.com${currentPath}`;
           if (!forAccount) return;
           forAccount = false;
           cancel.classList.add('hidden');
+          if (stored === 'blocked') {
+            minorBack = true;
+            cancel.classList.remove('hidden');
+          }
           // Under 13 has no tier of its own: the account gets the strictest one there is.
           var tier = stored === 'adult' ? 'adult' : 'teen';
           window.dispatchEvent(new CustomEvent('im-age-answered', { detail: { tier: tier } }));
