@@ -8,18 +8,19 @@ This covers the playground and story pages, the trivia bank (200 questions), the
 
 | Content | Who wrote it | What checked it |
 |---|---|---|
-| Titles of works, names of characters, people and places, as trivia options (460 of the 800 options) | Nobody: filled from Wikidata by `build.mjs` | The table below; `used.mjs <lang> flags` |
+| Titles of works, names of characters, people and places, as trivia options (458 of the 800 options) | Nobody: filled from the names table by `build.mjs` (Wikidata labels; names read in a Wikipedia article; otherwise the English name) | `play-areas.test.ts`: each is its source's name, or a form listed below with its reason |
 | Quotations in the quote challenges | Nobody: copied from Wikisource pages by `wikisource.py take` | `verify-challenges.mjs` (each line must be in the evidence file of its source) |
 | Shakespeare's lines inside questions, options and story scenes | Left in English on purpose, as on the cards | `play-areas.test.ts` (quotation unchanged) |
-| Trivia questions and the 340 options that are sentences or common nouns; the playground and story text | A language model (Claude), in one pass per language | Mechanical tests; `check.mjs` (names against the table); spelling and back-translation: see `PLAY-CONTENT-QA.md` |
+| Trivia questions and the 342 options that are sentences or common nouns; the playground and story text | A language model (Claude), in one pass per language | Mechanical tests; `check.mjs` (names in questions against the table); Hunspell; back-translation by two translation models and an alignment check of the answers: see **Checks** below |
 
-**Not verified by a native speaker.** Nothing in the last row has been read by one.
+**Not verified by a native speaker.** Nothing in the last row has been read by one. The checks below find what a tool can find; a back-translation that reads well is not proof that a sentence is idiomatic.
 
 ## Sources
 
 - **Wikidata** (labels, aliases and sitelinks; CC0). Fetched 2026-11-16T17:18Z by `fetch-wikidata.py` through the public API (`wbgetentities`); stored whole in `scripts/lang-content/wikidata-labels.json`. 238 items.
 - **Wikipedia article titles**, as Wikidata's sitelinks give them, where an item has no label in a language. A title is a name, not text.
-- **Chinese**: labels and titles in Traditional characters were converted to Simplified by MediaWiki's own converter on zh.wikipedia.org (`action=parse`, `variant=zh-cn`; `zh-simplify.py`). The result is marked `zh-hans:from` in the JSON.
+- **Wikipedia articles** (text CC BY-SA 4.0; only names are taken from them, never text), fetched 2026-11-16 by `wikipedia.py`: the articles on the plays, on Shakespeare and on the Globe, one revision each, read through `index.php` (the API was refusing this address with HTTP 429). A name Wikidata has no label for is taken from an article only where the article has it as a word, or writes it with the English beside it ("愛麗兒（Ariel）", "Пигва (Peter Quince)"). Each such name is a line of `scripts/lang-content/names-evidence.tsv`: the item, the language, the name, the URL of the article revision, the date, and the words around it. 196 lines.
+- **Chinese**: labels and titles in Traditional characters were converted to Simplified by MediaWiki's own converter on zh.wikipedia.org (`zh-simplify.py`; marked `zh-hans:from` in the JSON); Chinese articles and Zhu Shenghao's translation were read as zh.wikipedia and zh.wikisource serve them in Simplified (`variant=zh-cn` / `zh-hans`).
 - **Wikisource** (public-domain translations), fetched 2026-11-16:
 
 | Source id | Language | Work | Translator (died) | Page | Status |
@@ -30,64 +31,69 @@ This covers the playground and story pages, the trivia bank (200 questions), the
 | es-moratin-hamlet | es | Hamlet (Q41567) | Leandro Fernández de Moratín (1828) | https://es.wikisource.org/wiki/Hamlet_(Inarco_Celenio_trad.) | Public domain: translator died 1828; first published 1798 under the name Inarco Celenio |
 | it-rusconi-amleto | it | Hamlet (Q41567) | Carlo Rusconi (1889) | https://it.wikisource.org/wiki/Amleto_(Rusconi) | Public domain: translator died 1889 |
 | ru-kroneberg-hamlet | ru | Hamlet (Q41567) | Андрей Кронеберг (1855) | https://ru.wikisource.org/wiki/Гамлет_(Шекспир;_Кронеберг) | Public domain: translator died 1855; text of the 1902 complete works, in the modern spelling Wikisource gives beside it (ВТ:Ё) |
+| zh-zhu-hamlet | zh | Hamlet (Q41567) | 朱生豪 (Zhu Shenghao) (1944) | https://zh.wikisource.org/wiki/漢姆萊脫 | Public domain: translator died 1944; public domain in China (50 years after death) at home on 1 January 1996, never published in the US before, so not restored under the URAA, as the licence notice on the Wikisource page states; source named there 莎士比亞戲劇集; quoted in Simplified characters as zh.wikisource serves the page (variant=zh-hans) |
 
 ## Names
 
 Every name the game's content uses, with its Wikidata item. The name in each language, and how it was arrived at, is in `docs/language/data/content-names.tsv` (one row per name, two columns per language).
 
-How a name is arrived at, in this order: a hand pick if there is one; the Wikidata label; where there is none (or, for a work, only a copy of the English), the title of that language's Wikipedia article; where the English label says more than the game does ("Prince Hamlet" for "Hamlet"), the matching part of the label, in languages that put a title before a name; otherwise the English name is left as it is. **A name is never transliterated by guesswork**: in Arabic, Hindi, Thai and the other non-Latin scripts, a name with no label stays in Latin letters.
+How a name is arrived at, in this order: a pick (`picks.tsv`), which must be found in a source; the Wikidata label; where there is none (or, for a work, only a copy of the English), the title of that language's Wikipedia article; where the English label says more than the game does ("Prince Hamlet" for "Hamlet"), the matching part of the label, in languages that put a title before a name; otherwise the English name is left as it is. **A name is never transliterated by guesswork**: in the languages not written in Latin letters, a name no source has stays in Latin letters.
 
 ### How the names used as trivia options were arrived at, per language
 
-| Language | names from the table | Wikidata label | title of that language's Wikipedia article | part of the Wikidata label | chosen by hand; found in a Wikidata label, alias or article title | chosen by hand; in no source held here | Wikidata's language-neutral label | no label: left as in English | names typed by the translator instead |
+| Language | names from the table | Wikidata label | title of that language's Wikipedia article | part of the Wikidata label | chosen, and found in a label, alias, article title or article text | chosen; in no source held here | Wikidata's language-neutral label | no source: left as in English | options written otherwise, with a reason |
 |---|---|---|---|---|---|---|---|---|---|
-| es | 197 | 136 | 1 | 14 | 8 | 0 | 2 | 36 | 11 |
-| fr | 198 | 139 | 3 | 13 | 8 | 2 | 1 | 32 | 11 |
-| de | 195 | 133 | 2 | 11 | 3 | 3 | 1 | 42 | 13 |
+| es | 197 | 136 | 1 | 14 | 8 | 0 | 2 | 36 | 12 |
+| fr | 199 | 140 | 3 | 13 | 9 | 1 | 1 | 32 | 11 |
+| de | 196 | 134 | 2 | 11 | 3 | 3 | 1 | 42 | 15 |
 | it | 199 | 123 | 2 | 11 | 9 | 5 | 2 | 47 | 9 |
-| pt | 198 | 98 | 17 | 8 | 5 | 2 | 6 | 62 | 10 |
-| pl | 197 | 113 | 0 | 6 | 17 | 6 | 4 | 51 | 11 |
-| ru | 172 | 141 | 0 | 9 | 9 | 13 | 0 | 0 | 40 |
-| ar | 189 | 102 | 0 | 7 | 1 | 4 | 0 | 75 | 19 |
-| hi | 189 | 88 | 0 | 0 | 7 | 3 | 0 | 91 | 19 |
-| zh | 167 | 128 | 0 | 0 | 20 | 11 | 0 | 8 | 41 |
-| ja | 172 | 143 | 0 | 0 | 15 | 14 | 0 | 0 | 36 |
-| ko | 140 | 113 | 0 | 0 | 5 | 22 | 0 | 0 | 74 |
-| vi | 194 | 63 | 2 | 4 | 0 | 1 | 14 | 110 | 14 |
-| th | 194 | 54 | 0 | 0 | 2 | 6 | 0 | 132 | 14 |
-| id | 194 | 93 | 4 | 9 | 3 | 1 | 10 | 74 | 14 |
+| pt | 199 | 99 | 17 | 8 | 5 | 0 | 6 | 64 | 10 |
+| pl | 197 | 113 | 0 | 6 | 19 | 3 | 4 | 52 | 13 |
+| ru | 174 | 141 | 0 | 9 | 19 | 3 | 0 | 2 | 46 |
+| ar | 194 | 108 | 0 | 7 | 4 | 0 | 0 | 75 | 22 |
+| hi | 195 | 88 | 0 | 0 | 9 | 0 | 0 | 98 | 32 |
+| zh | 183 | 126 | 0 | 0 | 48 | 0 | 0 | 9 | 34 |
+| ja | 176 | 145 | 0 | 0 | 26 | 0 | 0 | 5 | 43 |
+| ko | 165 | 114 | 0 | 0 | 20 | 4 | 0 | 27 | 77 |
+| vi | 194 | 63 | 2 | 4 | 0 | 0 | 14 | 111 | 18 |
+| th | 194 | 54 | 0 | 0 | 16 | 0 | 0 | 124 | 35 |
+| id | 194 | 93 | 4 | 9 | 3 | 0 | 10 | 75 | 18 |
 
-The last column: options that are a name, but where the translator typed the name instead of taking it from the table, because the table had no form in that script or had the form of a different thing (a Roman consul for a character in a play). **Those are model-written names, not sourced ones.** They are:
+### Name options written otherwise than the table
 
-- **es** (11): Laurence → Lorenzo; The Sonnets → Los sonetos; Sonnet 116 → Soneto 116; Perdita → Perdita; Claudio → Claudio; King Lear → El rey Lear; Sonnet 73 → Soneto 73; Hamlet → Hamlet; Edmund → Edmund; King Henry V → El rey Enrique V; Captain Fluellen → El capitán Fluellen
-- **fr** (11): Laurence → Laurent; The Sonnets → Les Sonnets; Friar Lawrence → Frère Laurent; Perdita → Perdita; Claudio → Claudio; King Lear → Le roi Lear; Portia → Portia; Hamlet → Hamlet; Edmund → Edmund; King Henry V → Le roi Henri V; Captain Fluellen → Le capitaine Fluellen
-- **de** (13): Laurence → Lorenzo; The Sonnets → Die Sonette; Friar Lawrence → Bruder Lorenzo; Sonnet 116 → Sonett 116; Perdita → Perdita; Claudio → Claudio; King Lear → König Lear; Portia → Portia; Hamlet → Hamlet; Edmund → Edmund; King Henry V → König Heinrich V.; Captain Fluellen → Hauptmann Fluellen; The First Folio → First Folio
-- **it** (9): Laurence → Lorenzo; The Sonnets → I Sonetti; Perdita → Perdita; Claudio → Claudio; King Lear → Re Lear; Hamlet → Hamlet; Edmund → Edmund; King Henry V → Il re Enrico V; Captain Fluellen → Il capitano Fluellen
-- **pt** (10): Laurence → Lourenço; The Sonnets → Os Sonetos; Friar Lawrence → Frei Lourenço; Perdita → Perdita; Claudio → Claudio; King Lear → O rei Lear; Hamlet → Hamlet; Edmund → Edmund; King Henry V → O rei Henrique V; Captain Fluellen → O capitão Fluellen
-- **pl** (11): Laurence → Laurentego; The Sonnets → W Sonetach; Friar Lawrence → Ojciec Laurenty; Perdita → Perdita; Claudio → Claudio; King Lear → Król Lear; Portia → Porcja; Hamlet → Hamlet; Edmund → Edmund; King Henry V → Król Henryk V; Captain Fluellen → Kapitan Fluellen
-- **ru** (40): Laurence → Лоренцо; The Sonnets → В сонетах; The King's Men → Слуги короля (King's Men); The Admiral's Men → Слуги лорда-адмирала (Admiral's Men); Hero → Геро; Beatrice → Беатриче; Margaret → Маргарита; Edmund → Эдмунд; Rosalind → Розалинда; Celia → Селия; Audrey → Одри; Angelo → Анджело; Claudio → Клавдио; Silvia → Сильвия; Sebastian → Себастьян; Antonio → Антонио; Orsino → Орсино; Feste → Фесте; Don John → Дон Хуан; Don Pedro → Дон Педро; Jaques → Жак; Orlando → Орландо; Peter Quince → Питер Пигва (Peter Quince); Bottom → Основа (Bottom); Snug → Миляга (Snug); Flute → Дудка (Flute); King Lear → Король Лир; Touchstone → Оселок; Launcelot → Ланчелот; Dogberry → Кизил; Regan → Регана; The Lord Chamberlain's Men → Слуги лорда-камергера (Lord Chamberlain's Men); The Queen's Men → Слуги королевы (Queen's Men); The Earl of Leicester's Men → Слуги графа Лестера (Leicester's Men); Hamlet → Гамлет; King Henry V → Король Генрих V; Captain Fluellen → Капитан Флюэллен; Richard Field → Ричард Филд; William Jaggard → Уильям Джаггард; Edward Blount → Эдвард Блаунт
-- **ar** (19): Laurence → Laurence; The Sonnets → السونيتات; Friar Lawrence → الراهب لورنس; Sonnet 18 → السونيتة 18; Sonnet 1 → السونيتة 1; Sonnet 130 → السونيتة 130; Sonnet 116 → السونيتة 116; The King's Men → رجال الملك (King's Men); The Admiral's Men → رجال الأميرال (Admiral's Men); Claudio → Claudio; King Lear → الملك لير; The Lord Chamberlain's Men → رجال اللورد تشامبرلين (Lord Chamberlain's Men); The Queen's Men → رجال الملكة (Queen's Men); The Earl of Leicester's Men → رجال إيرل ليستر (Leicester's Men); Sonnet 73 → السونيتة 73; Hamlet → هاملت; Edmund → Edmund; King Henry V → الملك هنري الخامس; Captain Fluellen → النقيب Fluellen
-- **hi** (19): Laurence → Laurence; The Sonnets → सॉनेट; Friar Lawrence → फ़्रायर लॉरेंस; Sonnet 18 → सॉनेट 18; Sonnet 1 → सॉनेट 1; Sonnet 130 → सॉनेट 130; Sonnet 116 → सॉनेट 116; The King's Men → किंग्स मेन (King's Men); The Admiral's Men → एडमिरल्स मेन (Admiral's Men); Claudio → Claudio; King Lear → राजा लीयर; The Lord Chamberlain's Men → लॉर्ड चेम्बरलेन्स मेन (Lord Chamberlain's Men); The Queen's Men → क्वीन्स मेन (Queen's Men); The Earl of Leicester's Men → लेस्टर्स मेन (Leicester's Men); Sonnet 73 → सॉनेट 73; Hamlet → हैमलेट; Edmund → एडमंड; King Henry V → राजा हेनरी पंचम; Captain Fluellen → कैप्टन Fluellen
-- **zh** (41): Laurence → 劳伦斯; The Sonnets → 十四行诗; Sonnet 18 → 第 18 首十四行诗; Sonnet 1 → 第 1 首十四行诗; Sonnet 130 → 第 130 首十四行诗; Sonnet 116 → 第 116 首十四行诗; The Admiral's Men → 海军大臣剧团（Admiral's Men）; Perdita → Perdita; Helena → Helena; Sebastian → Sebastian; Orsino → Orsino; Brabantio → Brabantio; Gratiano → Gratiano; Lodovico → Lodovico; Montano → Montano; Hero → Hero; Margaret → Margaret; Celia → Celia; Audrey → Audrey; Claudio → Claudio; Silvia → Silvia; Roderigo → Roderigo; Feste → Feste; Don John → Don John; Don Pedro → Don Pedro; Jaques → Jaques; Peter Quince → Peter Quince; Snug → Snug; King Lear → 李尔王; Launcelot → Launcelot; The Queen's Men → The Queen's Men; The Earl of Leicester's Men → The Earl of Leicester's Men; Sonnet 73 → 第 73 首十四行诗; Hamlet → 哈姆雷特; Edmund → Edmund; King Henry V → 国王亨利五世; Captain Fluellen → 弗鲁爱林上尉（Fluellen）; Lucentio → Lucentio; Tranio → Tranio; Grumio → Grumio; Dunsinane → Dunsinane
-- **ja** (36): Laurence → ロレンス家; The Sonnets → ソネット集; Friar Lawrence → ロレンス神父; Sonnet 18 → ソネット 18 番; Sonnet 1 → ソネット 1 番; Sonnet 130 → ソネット 130 番; Sonnet 116 → ソネット 116 番; Miranda → ミランダ; Perdita → パーディタ; Goneril → ゴネリル; Regan → リーガン; Gratiano → グラシアーノ; Lodovico → ロドヴィーコ; Hero → ヒーロー; Beatrice → ベアトリス; Margaret → マーガレット; Audrey → オードリー; Angelo → アンジェロ; Claudio → クローディオ; Silvia → シルヴィア; Don John → ドン・ジョン; Don Pedro → ドン・ペドロ; King Lear → リア王; Launcelot → ランスロット; Dogberry → ドグベリー; Sycorax → シコラクス; Sonnet 73 → ソネット 73 番; Hamlet → ハムレット; Edmund → エドマンド; King Henry V → ヘンリー五世; Captain Fluellen → フルーエリン大尉; Christopher Sly → クリストファー・スライ; Ferdinand → ファーディナンド; Thomas Thorpe → トマス・ソープ; William Jaggard → ウィリアム・ジャガード; Edward Blount → エドワード・ブラント
-- **ko** (74): Laurence → 로렌스; The Sonnets → 소네트; Macduff → 맥더프; Sonnet 18 → 소네트 18번; Sonnet 1 → 소네트 1번; Sonnet 130 → 소네트 130번; Sonnet 116 → 소네트 116번; The King's Men → 국왕 극단(King's Men); The Admiral's Men → 해군 대신 극단(Admiral's Men); Cordelia → 코델리아; Perdita → 퍼디타; Helena → 헬레나; Sebastian → 세바스찬; Orsino → 오시노; Goneril → 고너릴; Regan → 리건; Gertrude → 거트루드; Ophelia → 오필리아; Desdemona → 데스데모나; Brabantio → 브라반쇼; Gratiano → 그라시아노; Lodovico → 로도비코; Montano → 몬타노; Malvolio → 말볼리오; Sir Toby Belch → 토비 벨치 경; Hero → 히어로; Beatrice → 베아트리체; Margaret → 마거릿; Edmund → 에드먼드; Rosalind → 로잘린드; Celia → 실리아; Audrey → 오드리; Angelo → 안젤로; Claudio → 클라우디오; Silvia → 실비아; Macbeth → 맥베스; Lady Macbeth → 맥베스 부인; Cassio → 카시오; Roderigo → 로데리고; Feste → 페스테; Don John → 돈 존; Don Pedro → 돈 페드로; Jaques → 제이퀴즈; Orlando → 올란도; Peter Quince → 피터 퀸스; Bottom → 보텀; Snug → 스너그; Flute → 플루트; King Lear → 리어 왕; Portia → 포샤; Calpurnia → 칼푸르니아; Octavia → 옥타비아; Cornelia → 코르넬리아; Touchstone → 터치스톤; Launcelot → 랜슬롯; Dogberry → 도그베리; Sycorax → 시코락스; The Lord Chamberlain's Men → 궁내 대신 극단(Lord Chamberlain's Men); The Queen's Men → 여왕 극단(Queen's Men); The Earl of Leicester's Men → 레스터 백작 극단(Leicester's Men); Sonnet 73 → 소네트 73번; Hamnet → 햄닛; Hamlet → 햄릿; King Henry V → 헨리 5세; Captain Fluellen → 플루엘렌 대위; Christopher Sly → 크리스토퍼 슬라이; Lucentio → 루센시오; Tranio → 트라니오; Grumio → 그루미오; Dunsinane → 던시네인; Thomas Thorpe → 토머스 소프; Richard Field → 리처드 필드; William Jaggard → 윌리엄 재거드; Edward Blount → 에드워드 블런트
-- **vi** (14): Laurence → Laurence; The Sonnets → Các bài sonnet; Friar Lawrence → Tu sĩ Laurence; Sonnet 18 → Sonnet 18; Sonnet 1 → Sonnet 1; Sonnet 130 → Sonnet 130; Sonnet 116 → Sonnet 116; Claudio → Claudio; King Lear → Vua Lia; Sonnet 73 → Sonnet 73; Hamlet → Hamlet; Edmund → Edmund; King Henry V → Vua Henry V; Captain Fluellen → Đại úy Fluellen
-- **th** (14): Laurence → Laurence; The Sonnets → ซอนเน็ต; Friar Lawrence → บาทหลวง Laurence; Sonnet 18 → ซอนเน็ตบทที่ 18; Sonnet 1 → ซอนเน็ตบทที่ 1; Sonnet 130 → ซอนเน็ตบทที่ 130; Sonnet 116 → ซอนเน็ตบทที่ 116; Claudio → Claudio; King Lear → กษัตริย์ Lear; Sonnet 73 → ซอนเน็ตบทที่ 73; Hamlet → Hamlet; Edmund → Edmund; King Henry V → พระเจ้าเฮนรีที่ 5; Captain Fluellen → ร้อยเอก Fluellen
-- **id** (14): Laurence → Laurence; The Sonnets → Soneta; Friar Lawrence → Pastor Laurence; Sonnet 18 → Soneta 18; Sonnet 1 → Soneta 1; Sonnet 130 → Soneta 130; Sonnet 116 → Soneta 116; Claudio → Claudio; King Lear → Raja Lear; Sonnet 73 → Soneta 73; Hamlet → Hamlet; Edmund → Edmund; King Henry V → Raja Henry V; Captain Fluellen → Kapten Fluellen
+An option that is a name, written by hand. `play-areas.test.ts` accepts one only if it is the table's name shortened (a label's disambiguator dropped), the table's name with a title or a common noun translated around it ("El rey Lear", "Soneto 116"), or listed in `trivia-option-forms.tsv` with its reason. Reasons: **title** (a title or a common noun translated, the name as the table has it); **inflected** (the case the question needs); **number** (an ordinal or numeral the language writes); **script** (every option of that question in Latin letters, because a lone label in the language's script would have shown which option is right). A name typed by the translator in a script no source has is not among them: those were replaced by the table's name.
 
-In a Latin-alphabet language, "left as in English" is usually right (Orsino is Orsino). In the others it means the player reads a Latin-letter name inside a sentence in their own script: correct, but not localised. Those are listed here so a reviewer can supply the established form:
+- **es** (12): *contains the table's name*: Laurence → Lorenzo; The Sonnets → Los sonetos; Sonnet 116 → Soneto 116; Perdita → Perdita; Claudio → Claudio; King Lear → El rey Lear; Sonnet 73 → Soneto 73; King Henry V → El rey Enrique V; Captain Fluellen → El capitán Fluellen
+- **fr** (11): *contains the table's name*: Laurence → Laurent; Friar Lawrence → Frère Laurent; Perdita → Perdita; Claudio → Claudio; King Lear → Le roi Lear; Portia → Portia; King Henry V → Le roi Henri V; Captain Fluellen → Le capitaine Fluellen
+- **de** (15): *contains the table's name*: Laurence → Lorenzo; Friar Lawrence → Bruder Lorenzo; Sonnet 116 → Sonett 116; Perdita → Perdita; Claudio → Claudio; King Lear → König Lear; Portia → Portia; King Henry V → König Heinrich V.; Captain Fluellen → Hauptmann Fluellen; The First Folio → First Folio
+- **it** (9): *contains the table's name*: Laurence → Lorenzo; The Sonnets → I Sonetti; Perdita → Perdita; Claudio → Claudio; King Lear → Re Lear; King Henry V → Il re Enrico V; Captain Fluellen → Il capitano Fluellen
+- **pt** (10): *contains the table's name*: Laurence → Lourenço; Friar Lawrence → Frei Lourenço; Perdita → Perdita; Claudio → Claudio; King Lear → O rei Lear; Captain Fluellen → O capitão Fluellen. *title*: King Henry V → O rei Henrique V
+- **pl** (13): *inflected*: Laurence → Laurentego; The Sonnets → W Sonetach. *contains the table's name*: Friar Lawrence → Ojciec Laurenty; Perdita → Perdita; Claudio → Claudio; King Lear → Król Lear; Portia → Porcja; Captain Fluellen → Kapitan Fluellen. *title*: King Henry V → Król Henryk V
+- **ru** (46): *contains the table's name*: Laurence → Лоренцо; Hero → Геро; Beatrice → Беатриче; Margaret → Маргарита; Edmund → Эдмунд; Rosalind → Розалинда; Celia → Селия; Audrey → Одри; Angelo → Анджело; Claudio → Клавдио; Silvia → Сильвия; Sebastian → Себастьян; Antonio → Антонио; Orsino → Орсино; Feste → Фесте; Don John → Дон Хуан; Don Pedro → Дон Педро; Jaques → Жак; Orlando → Орландо; Peter Quince → Пигва (Peter Quince); Bottom → Основа (Bottom); Flute → Дудка (Flute); King Lear → Король Лир; Touchstone → Оселок; Launcelot → Ланчелот; Dogberry → Кизил; Regan → Регана; The Lord Chamberlain's Men → Слуги лорда-камергера (Lord Chamberlain's Men); King Henry V → Король Генрих V; Richard Field → Ричард Филд; William Jaggard → Уильям Джаггард; Edward Blount → Эдвард Блаунт. *inflected*: The Sonnets → В сонетах. *title*: The King's Men → Слуги короля (King's Men); The Admiral's Men → Слуги лорда-адмирала (Admiral's Men); The Queen's Men → Слуги королевы (Queen's Men); The Earl of Leicester's Men → Слуги графа Лестера (Leicester's Men)
+- **ar** (22): *script*: Ariel → Ariel; Claudius → Claudius; Paris → Paris; Mercutio → Mercutio; Tybalt → Tybalt. *contains the table's name*: Friar Lawrence → الراهب لورنس; Sonnet 130 → السونيتة 130; Sonnet 116 → السونيتة 116; Claudio → Claudio; King Lear → الملك لير; Captain Fluellen → النقيب Fluellen. *title*: The King's Men → رجال الملك (King's Men); The Admiral's Men → رجال الأميرال (Admiral's Men); The Lord Chamberlain's Men → رجال اللورد تشامبرلين (Lord Chamberlain's Men); The Queen's Men → رجال الملكة (Queen's Men); The Earl of Leicester's Men → رجال إيرل ليستر (Leicester's Men); King Henry V → الملك هنري الخامس
+- **hi** (32): *script*: The Tempest → The Tempest; Paris → Paris; Mercutio → Mercutio; Tybalt → Tybalt; A Midsummer Night's Dream → A Midsummer Night's Dream; Romeo and Juliet → Romeo and Juliet; Angelo → Angelo; Miranda → Miranda; Edmund → Edmund; As You Like It → As You Like It; Christopher Marlowe → Christopher Marlowe. *contains the table's name*: The Sonnets → सॉनेट; Friar Lawrence → फ़्रायर लॉरेंस; Sonnet 18 → सॉनेट 18; Sonnet 1 → सॉनेट 1; Sonnet 130 → सॉनेट 130; Sonnet 116 → सॉनेट 116; Claudio → Claudio; King Lear → राजा लीयर; Sonnet 73 → सॉनेट 73; King Henry V → राजा हेनरी पंचम; Captain Fluellen → कैप्टन Fluellen
+- **zh** (34): *contains the table's name*: Laurence → 劳伦斯; The Sonnets → 十四行诗; Sonnet 1 → 第 1 首十四行诗; Sonnet 130 → 第 130 首十四行诗; Orsino → Orsino; Silvia → Silvia; Peter Quince → Peter Quince; King Lear → 李尔王; Launcelot → Launcelot; The Queen's Men → The Queen's Men; The Earl of Leicester's Men → The Earl of Leicester's Men; Sonnet 73 → 第 73 首十四行诗; King Henry V → 国王亨利五世; Captain Fluellen → 弗鲁爱林上尉（Fluellen）; Dunsinane → Dunsinane. *number*: Sonnet 18 → 第 18 首十四行诗; Sonnet 116 → 第 116 首十四行诗. *title*: The Admiral's Men → 海军大臣剧团（Admiral's Men）. *script*: Malvolio → Malvolio; Sebastian → Sebastian; Sir Toby Belch → Sir Toby Belch; Bottom → Bottom; Snug → Snug; Flute → Flute; Troilus and Cressida → Troilus and Cressida; Romeo and Juliet → Romeo and Juliet; Hero and Leander → Hero and Leander
+- **ja** (43): *contains the table's name*: Laurence → ロレンス家; The Sonnets → ソネット集; Friar Lawrence → ロレンス神父; Sonnet 18 → ソネット18番; Sonnet 1 → ソネット1番; Sonnet 130 → ソネット130番; Sonnet 116 → ソネット116番; Miranda → ミランダ; Perdita → パーディタ; Goneril → ゴネリル; Regan → リーガン; Gratiano → グラシアーノ; Hero → ヒーロー; Beatrice → ベアトリス; Margaret → マーガレット; Angelo → アンジェロ; Claudio → クローディオ; Silvia → シルヴィア; Don John → ドン・ジョン; Don Pedro → ドン・ペドロ; King Lear → リア王; Launcelot → ランスロット; Dogberry → ドグベリー; Sycorax → シコラクス; Sonnet 73 → ソネット73番; Christopher Sly → クリストファー・スライ; Ferdinand → ファーディナンド; Thomas Thorpe → トマス・ソープ; William Jaggard → ウィリアム・ジャガード. *number*: King Henry V → ヘンリー五世
+- **ko** (77): *contains the table's name*: Laurence → 로렌스; The Sonnets → 소네트; Macduff → 맥더프; Sonnet 18 → 소네트 18번; Sonnet 1 → 소네트 1번; Sonnet 130 → 소네트 130번; Sonnet 116 → 소네트 116번; Cordelia → 코델리아; Helena → 헬레나; Sebastian → 세바스찬; Orsino → 오시노; Goneril → 고너릴; Regan → 리건; Gertrude → 거트루드; Ophelia → 오필리아; Desdemona → 데스데모나; Gratiano → 그라시아노; Malvolio → 말볼리오; Sir Toby Belch → 토비 벨치 경; Beatrice → 베아트리체; Edmund → 에드먼드; Celia → 실리아; Silvia → 실비아; Macbeth → 맥베스; Lady Macbeth → 맥베스 부인; Cassio → 카시오; Feste → 페스테; Don John → 돈 존; Don Pedro → 돈 페드로; Claudio → 클라우디오; King Lear → 리어 왕; Portia → 포샤; Octavia → 옥타비아; Dogberry → 도그베리; Sycorax → 시코락스; Sonnet 73 → 소네트 73번; King Henry V → 헨리 5세; Tranio → 트라니오; Grumio → 그루미오. *script*: Ariel → Ariel; Ferdinand → Ferdinand; Stephano → Stephano; Claudio → Claudio; Rosalind → Rosalind; Orlando → Orlando. *title*: The King's Men → 국왕 극단(King's Men); The Admiral's Men → 해군 대신 극단(Admiral's Men); The Lord Chamberlain's Men → 궁내 대신 극단(Lord Chamberlain's Men); The Queen's Men → 여왕 극단(Queen's Men); The Earl of Leicester's Men → 레스터 백작 극단(Leicester's Men)
+- **vi** (18): *contains the table's name*: Laurence → Laurence; The Sonnets → Các bài sonnet; Sonnet 18 → Sonnet 18; Sonnet 1 → Sonnet 1; Sonnet 130 → Sonnet 130; Sonnet 116 → Sonnet 116; Claudio → Claudio; Sonnet 73 → Sonnet 73; Captain Fluellen → Đại úy Fluellen. *title*: Friar Lawrence → Tu sĩ Laurence; King Lear → Vua Lia; King Henry V → Vua Henry V
+- **th** (35): *script*: Hamlet → Hamlet; Macbeth → Macbeth; Othello → Othello; Ariel → Ariel; The Tempest → The Tempest; The Merchant of Venice → The Merchant of Venice; Miranda → Miranda; Romeo → Romeo; Twelfth Night → Twelfth Night; Romeo and Juliet → Romeo and Juliet. *contains the table's name*: Laurence → Laurence; The Sonnets → ซอนเน็ต; Sonnet 18 → ซอนเน็ตบทที่ 18; Sonnet 1 → ซอนเน็ตบทที่ 1; Sonnet 130 → ซอนเน็ตบทที่ 130; Sonnet 116 → ซอนเน็ตบทที่ 116; Claudio → Claudio; King Lear → กษัตริย์ Lear; Sonnet 73 → ซอนเน็ตบทที่ 73; King Henry V → พระเจ้าเฮนรีที่ 5; Captain Fluellen → ร้อยเอก Fluellen. *title*: Friar Lawrence → บาทหลวง Laurence
+- **id** (18): *contains the table's name*: Laurence → Laurence; Sonnet 18 → Soneta 18; Sonnet 1 → Soneta 1; Sonnet 130 → Soneta 130; Sonnet 116 → Soneta 116; Claudio → Claudio; King Lear → Raja Lear; Sonnet 73 → Soneta 73; Captain Fluellen → Kapten Fluellen. *title*: The Sonnets → Soneta; Friar Lawrence → Pastor Laurence; King Henry V → Raja Henry V
 
-- **ru** (0): none
-- **ar** (75): Dunsinane (Q68340), The Rose Theatre (Q1120943), The Swan Theatre (Q2625304), Duncan (Q15698348), Malcolm (Q16203840), Puck (Q1248616), Caliban (Q533120), Oberon (Q1139234), Ophelia (Q1800888), Cordelia (Q5169921), Polonius (Q780191), Horatio (Q3140503), Laertes (Q2471533), Gertrude (Q546616), Rosencrantz (Q1627478), Ferdinand (Q5443792), Stephano (Q7608448), Bottom (Q2190927), Edmund (Q5339222), Antonio (Q4776379), Bassanio (Q85745665), Portia (Q7231797), Fortinbras (Q2568064), Macduff (Q3842048), Alonso (Q3337857), Yorick (Q1650633), Miranda (Q634983), Perdita (Q7167694), Helena (Q2498540), Sebastian (Q7442354), Orsino (Q7104140), Goneril (Q16385853), Regan (Q7307943), Desdemona (Q3272719), Brabantio (Q4953161), Gratiano (Q61635995), Lodovico (Q61636041), Montano (Q61636065), Malvolio (Q3844047), Sir Toby Belch (Q7811769), Hero (Q108757945), Beatrice (Q97156756), Margaret (Q26904362), Rosalind (Q60834955), Celia (Q5057966), Audrey (Q136447402), Angelo (Q4762821), Silvia (Q136447457), Cassio (Q6829164), Roderigo (Q7356703), Feste (Q5445659), Guildenstern (Q1627478), Don John (Q125374125), Don Pedro (Q5293299), Claudio (Q125374118), Jaques (Q6159398), Orlando (Q7103025), Peter Quince (Q3089658), Snug (Q2289762), Flute (Q2538905), Portia (Q255448), Cornelia (Q235423), Touchstone (Q7828727), Launcelot (Q64145690), Dogberry (Q5288312), Sycorax (Q1226010), Christopher Sly (Q16238343), Lucentio (Q20823065), Tranio (Q20823071), Grumio (Q20823070), Forres (Q1010531), Hero and Leander (Q747392), Thomas Thorpe (Q1056900), William Jaggard (Q8013416), Edward Blount (Q3431800)
-- **hi** (91): Othello (Q26833), Camelot (Q220437), Dunsinane (Q68340), The Globe Theatre (Q272434), The Rose Theatre (Q1120943), The Swan Theatre (Q2625304), Coriolanus (Q463126), Titus Andronicus (Q272169), Duncan (Q15698348), Malcolm (Q16203840), Twelfth Night (Q221211), The Winter's Tale (Q743194), Pericles (Q584729), Ariel (Q658028), Puck (Q1248616), Caliban (Q533120), Oberon (Q1139234), Rosencrantz (Q1627478), Ferdinand (Q5443792), Stephano (Q7608448), Richard III (Q652011), Much Ado About Nothing (Q130851), The Taming of the Shrew (Q332387), The Merchant of Venice (Q206400), Doctor Faustus (Q50919), The Merry Wives of Windsor (Q844836), Henry V (Q495954), Cymbeline (Q730212), Measure for Measure (Q665446), All's Well That Ends Well (Q506865), Love's Labour's Lost (Q128610), Anne Hathaway (Q237251), Mary Arden (Q467805), Catherine Parr (Q192943), Bassanio (Q85745665), Macduff (Q3842048), Perdita (Q7167694), Sebastian (Q7442354), Orsino (Q7104140), Goneril (Q16385853), Regan (Q7307943), Brabantio (Q4953161), Gratiano (Q61635995), Lodovico (Q61636041), Montano (Q61636065), Navarre (Q200262), Sir Toby Belch (Q7811769), Hero (Q108757945), Beatrice (Q97156756), Margaret (Q26904362), Rosalind (Q60834955), Celia (Q5057966), Audrey (Q136447402), Silvia (Q136447457), Cassio (Q6829164), Roderigo (Q7356703), Feste (Q5445659), Guildenstern (Q1627478), Don John (Q125374125), Don Pedro (Q5293299), Claudio (Q125374118), Jaques (Q6159398), Orlando (Q7103025), Portia (Q255448), Calpurnia (Q235627), Octavia (Q229483), Cornelia (Q235423), Timon of Athens (Q284641), Touchstone (Q7828727), Launcelot (Q64145690), Sycorax (Q1226010), Henry VIII (Q672059), Hamnet (Q2312807), Christopher Sly (Q16238343), Lucentio (Q20823065), Tranio (Q20823071), Grumio (Q20823070), The First Folio (Q833645), The Battle of Actium (Q160387), The Battle of Salamis (Q178850), Richard II (Q649562), Thomas Kyd (Q337082), John Webster (Q225904), Pyramus and Thisbe (Q1230688), Troilus and Cressida (Q183304), Hero and Leander (Q747392), Hecate (Q131575), Thomas Thorpe (Q1056900), William Jaggard (Q8013416), Edward Blount (Q3431800), Henry IV Part 1 (Q631855)
-- **zh** (8): Dunsinane (Q68340), The Swan Theatre (Q2625304), Alonso (Q3337857), John Webster (Q225904), Pyramus and Thisbe (Q1230688), Thomas Thorpe (Q1056900), William Jaggard (Q8013416), Edward Blount (Q3431800)
-- **ja** (0): none
-- **ko** (0): none
-- **th** (132): Christopher Marlowe (Q28975), A Midsummer Night's Dream (Q104871), Camelot (Q220437), Dunsinane (Q68340), Mercutio (Q1767900), Tybalt (Q2412073), Benvolio (Q939489), Paris (Q3687815), The Rose Theatre (Q1120943), The Swan Theatre (Q2625304), Julius Caesar (Q215750), Coriolanus (Q463126), Antony and Cleopatra (Q606830), Titus Andronicus (Q272169), Duncan (Q15698348), Malcolm (Q16203840), Banquo (Q806945), The Winter's Tale (Q743194), Pericles (Q584729), As You Like It (Q237572), Ariel (Q658028), Puck (Q1248616), Caliban (Q533120), Oberon (Q1139234), King Lear (Q181598), Titania (Q2332221), Ophelia (Q1800888), Cordelia (Q5169921), Claudius (Q1811294), Polonius (Q780191), Horatio (Q3140503), Laertes (Q2471533), Tinker Bell (Q853847), Gertrude (Q546616), Rosencrantz (Q1627478), Ferdinand (Q5443792), Stephano (Q7608448), Richard III (Q652011), Much Ado About Nothing (Q130851), The Taming of the Shrew (Q332387), Prospero (Q978952), Doctor Faustus (Q50919), The Merry Wives of Windsor (Q844836), Henry V (Q495954), Cymbeline (Q730212), Bottom (Q2190927), Measure for Measure (Q665446), All's Well That Ends Well (Q506865), Iago (Q1655364), Edmund (Q5339222), Love's Labour's Lost (Q128610), Anne Hathaway (Q237251), Mary Arden (Q467805), Antonio (Q4776379), Shylock (Q2362952), Bassanio (Q85745665), Portia (Q7231797), Fortinbras (Q2568064), Macduff (Q3842048), The Comedy of Errors (Q506505), Friar Tuck (Q2074170), Alonso (Q3337857), Yorick (Q1650633), The King's Men (Q2715005), The Admiral's Men (Q2064081), Miranda (Q634983), Perdita (Q7167694), Helena (Q2498540), Sebastian (Q7442354), Orsino (Q7104140), Goneril (Q16385853), Regan (Q7307943), Desdemona (Q3272719), Brabantio (Q4953161), Gratiano (Q61635995), Lodovico (Q61636041), Montano (Q61636065), Malvolio (Q3844047), Sir Toby Belch (Q7811769), Hero (Q108757945), Beatrice (Q97156756), Margaret (Q26904362), Rosalind (Q60834955), Celia (Q5057966), Audrey (Q136447402), Angelo (Q4762821), Silvia (Q136447457), Cassio (Q6829164), Roderigo (Q7356703), Feste (Q5445659), Guildenstern (Q1627478), Don John (Q125374125), Don Pedro (Q5293299), Claudio (Q125374118), Jaques (Q6159398), Orlando (Q7103025), Peter Quince (Q3089658), Snug (Q2289762), Flute (Q2538905), Portia (Q255448), Calpurnia (Q235627), Octavia (Q229483), Cornelia (Q235423), The Two Gentlemen of Verona (Q232042), Timon of Athens (Q284641), Touchstone (Q7828727), Launcelot (Q64145690), Dogberry (Q5288312), Sycorax (Q1226010), The Lord Chamberlain's Men (Q1899451), The Queen's Men (Q7270305), The Earl of Leicester's Men (Q6519139), Henry VIII (Q672059), Hamnet (Q2312807), Christopher Sly (Q16238343), Lucentio (Q20823065), Tranio (Q20823071), Grumio (Q20823070), Forres (Q1010531), The First Folio (Q833645), The Battle of Philippi (Q335330), The Battle of Alexandria (Q3636319), Richard II (Q649562), Thomas Kyd (Q337082), John Webster (Q225904), Troilus and Cressida (Q183304), Hero and Leander (Q747392), Hecate (Q131575), Thomas Thorpe (Q1056900), William Jaggard (Q8013416), Edward Blount (Q3431800), Henry IV Part 1 (Q631855)
+Questions written in Latin letters throughout for that reason: ar 16, 21, 33; hi 13, 33, 82, 89, 111, 137, 147, 150, 157, 175; zh 101, 130, 178; ko 28, 111, 129; th 8, 12, 16, 45, 47, 61, 88, 92, 95, 112, 144, 150, 163.
 
-### Names chosen by hand (`picks.tsv`)
+In a Latin-alphabet language, "left as in English" is usually right (Orsino is Orsino). In the others it means the player reads a Latin-letter name inside a sentence in their own script: correct, but not localised. These had no label and no article that names them; a reviewer with a published translation can supply the form (with its source):
 
-A pick overrides the label: where the label is of something else (a real king, not the play's character; the modern town, not the castle), carries a title or a disambiguator, or is missing. "Found in" names the source that has the picked form. **Not found** means the form is the model's own recollection of the published translations: it has not been checked against a source and should be the first thing a reviewer looks at.
+- **ru** (2): Snug (Q2289762), Captain Fluellen (Q5462646)
+- **ar** (75): Dunsinane (Q68340), The Rose Theatre (Q1120943), The Swan Theatre (Q2625304), Duncan (Q15698348), Malcolm (Q16203840), Puck (Q1248616), Caliban (Q533120), Oberon (Q1139234), Ophelia (Q1800888), Cordelia (Q5169921), Polonius (Q780191), Horatio (Q3140503), Laertes (Q2471533), Gertrude (Q546616), Rosencrantz (Q1627478), Ferdinand (Q5443792), Stephano (Q7608448), Bottom (Q2190927), Edmund (Q5339222), Antonio (Q4776379), Bassanio (Q85745665), Portia (Q7231797), Fortinbras (Q2568064), Macduff (Q3842048), Alonso (Q3337857), Yorick (Q1650633), Miranda (Q634983), Perdita (Q7167694), Helena (Q2498540), Sebastian (Q7442354), Orsino (Q7104140), Goneril (Q16385853), Regan (Q7307943), Desdemona (Q3272719), Brabantio (Q4953161), Gratiano (Q61635995), Lodovico (Q61636041), Montano (Q61636065), Sir Toby Belch (Q7811769), Hero (Q108757945), Beatrice (Q97156756), Margaret (Q26904362), Rosalind (Q60834955), Celia (Q5057966), Audrey (Q136447402), Angelo (Q4762821), Silvia (Q136447457), Cassio (Q6829164), Roderigo (Q7356703), Feste (Q5445659), Guildenstern (Q1627478), Don John (Q125374125), Don Pedro (Q5293299), Claudio (Q125374118), Jaques (Q6159398), Orlando (Q7103025), Peter Quince (Q3089658), Snug (Q2289762), Flute (Q2538905), Portia (Q255448), Cornelia (Q235423), Touchstone (Q7828727), Launcelot (Q64145690), Dogberry (Q5288312), Sycorax (Q1226010), Christopher Sly (Q16238343), Lucentio (Q20823065), Tranio (Q20823071), Grumio (Q20823070), Forres (Q1010531), Hero and Leander (Q747392), Thomas Thorpe (Q1056900), Richard Field (Q7325667), William Jaggard (Q8013416), Edward Blount (Q3431800)
+- **hi** (98): Othello (Q26833), Camelot (Q220437), Dunsinane (Q68340), The Globe Theatre (Q272434), The Rose Theatre (Q1120943), The Swan Theatre (Q2625304), Coriolanus (Q463126), Titus Andronicus (Q272169), Duncan (Q15698348), Malcolm (Q16203840), Twelfth Night (Q221211), The Winter's Tale (Q743194), Pericles (Q584729), Ariel (Q658028), Puck (Q1248616), Caliban (Q533120), Oberon (Q1139234), Rosencrantz (Q1627478), Ferdinand (Q5443792), Stephano (Q7608448), Richard III (Q652011), Much Ado About Nothing (Q130851), The Taming of the Shrew (Q332387), The Merchant of Venice (Q206400), Doctor Faustus (Q50919), The Merry Wives of Windsor (Q844836), Henry V (Q495954), Cymbeline (Q730212), Measure for Measure (Q665446), All's Well That Ends Well (Q506865), Love's Labour's Lost (Q128610), Anne Hathaway (Q237251), Mary Arden (Q467805), Catherine Parr (Q192943), Bassanio (Q85745665), Macduff (Q3842048), The King's Men (Q2715005), The Admiral's Men (Q2064081), Perdita (Q7167694), Sebastian (Q7442354), Orsino (Q7104140), Goneril (Q16385853), Regan (Q7307943), Brabantio (Q4953161), Gratiano (Q61635995), Lodovico (Q61636041), Montano (Q61636065), Bohemia (Q39193), Navarre (Q200262), Sir Toby Belch (Q7811769), Hero (Q108757945), Beatrice (Q97156756), Margaret (Q26904362), Rosalind (Q60834955), Celia (Q5057966), Audrey (Q136447402), Silvia (Q136447457), Cassio (Q6829164), Roderigo (Q7356703), Feste (Q5445659), Guildenstern (Q1627478), Don John (Q125374125), Don Pedro (Q5293299), Claudio (Q125374118), Jaques (Q6159398), Orlando (Q7103025), Portia (Q255448), Calpurnia (Q235627), Octavia (Q229483), Cornelia (Q235423), Timon of Athens (Q284641), Touchstone (Q7828727), Launcelot (Q64145690), Sycorax (Q1226010), The Lord Chamberlain's Men (Q1899451), The Queen's Men (Q7270305), The Earl of Leicester's Men (Q6519139), Henry VIII (Q672059), Hamnet (Q2312807), Christopher Sly (Q16238343), Lucentio (Q20823065), Tranio (Q20823071), Grumio (Q20823070), The First Folio (Q833645), The Battle of Actium (Q160387), The Battle of Salamis (Q178850), Richard II (Q649562), Thomas Kyd (Q337082), John Webster (Q225904), Pyramus and Thisbe (Q1230688), Troilus and Cressida (Q183304), Hero and Leander (Q747392), Hecate (Q131575), Thomas Thorpe (Q1056900), Richard Field (Q7325667), William Jaggard (Q8013416), Edward Blount (Q3431800), Henry IV Part 1 (Q631855)
+- **zh** (9): Dunsinane (Q68340), The Swan Theatre (Q2625304), Yorick (Q1650633), John Webster (Q225904), Pyramus and Thisbe (Q1230688), Thomas Thorpe (Q1056900), Richard Field (Q7325667), William Jaggard (Q8013416), Edward Blount (Q3431800)
+- **ja** (5): Lodovico (Q61636041), Audrey (Q136447402), Cornelia (Q235423), Captain Fluellen (Q5462646), Edward Blount (Q3431800)
+- **ko** (27): Dunsinane (Q68340), Caliban (Q533120), Bottom (Q2190927), Friar Tuck (Q2074170), Perdita (Q7167694), Brabantio (Q4953161), Lodovico (Q61636041), Montano (Q61636065), Hero (Q108757945), Margaret (Q26904362), Audrey (Q136447402), Angelo (Q4762821), Roderigo (Q7356703), Jaques (Q6159398), Peter Quince (Q3089658), Snug (Q2289762), Flute (Q2538905), Calpurnia (Q235627), Cornelia (Q235423), Touchstone (Q7828727), Launcelot (Q64145690), Hamnet (Q2312807), Captain Fluellen (Q5462646), Christopher Sly (Q16238343), Lucentio (Q20823065), Richard Field (Q7325667), William Jaggard (Q8013416)
+- **th** (124): Christopher Marlowe (Q28975), A Midsummer Night's Dream (Q104871), Camelot (Q220437), Dunsinane (Q68340), Mercutio (Q1767900), Tybalt (Q2412073), Benvolio (Q939489), Paris (Q3687815), The Rose Theatre (Q1120943), The Swan Theatre (Q2625304), Julius Caesar (Q215750), Coriolanus (Q463126), Antony and Cleopatra (Q606830), Titus Andronicus (Q272169), Duncan (Q15698348), Malcolm (Q16203840), Banquo (Q806945), The Winter's Tale (Q743194), Pericles (Q584729), As You Like It (Q237572), Puck (Q1248616), Caliban (Q533120), Oberon (Q1139234), King Lear (Q181598), Titania (Q2332221), Ophelia (Q1800888), Cordelia (Q5169921), Claudius (Q1811294), Polonius (Q780191), Horatio (Q3140503), Laertes (Q2471533), Tinker Bell (Q853847), Gertrude (Q546616), Rosencrantz (Q1627478), Stephano (Q7608448), Richard III (Q652011), Much Ado About Nothing (Q130851), The Taming of the Shrew (Q332387), Doctor Faustus (Q50919), The Merry Wives of Windsor (Q844836), Henry V (Q495954), Cymbeline (Q730212), Bottom (Q2190927), Measure for Measure (Q665446), All's Well That Ends Well (Q506865), Iago (Q1655364), Edmund (Q5339222), Love's Labour's Lost (Q128610), Anne Hathaway (Q237251), Mary Arden (Q467805), Fortinbras (Q2568064), Macduff (Q3842048), The Comedy of Errors (Q506505), Friar Tuck (Q2074170), Yorick (Q1650633), The King's Men (Q2715005), The Admiral's Men (Q2064081), Perdita (Q7167694), Helena (Q2498540), Sebastian (Q7442354), Orsino (Q7104140), Goneril (Q16385853), Regan (Q7307943), Desdemona (Q3272719), Brabantio (Q4953161), Gratiano (Q61635995), Lodovico (Q61636041), Montano (Q61636065), Malvolio (Q3844047), Sir Toby Belch (Q7811769), Hero (Q108757945), Beatrice (Q97156756), Margaret (Q26904362), Rosalind (Q60834955), Celia (Q5057966), Audrey (Q136447402), Angelo (Q4762821), Silvia (Q136447457), Cassio (Q6829164), Roderigo (Q7356703), Feste (Q5445659), Guildenstern (Q1627478), Don John (Q125374125), Don Pedro (Q5293299), Claudio (Q125374118), Jaques (Q6159398), Orlando (Q7103025), Peter Quince (Q3089658), Snug (Q2289762), Flute (Q2538905), Portia (Q255448), Calpurnia (Q235627), Octavia (Q229483), Cornelia (Q235423), The Two Gentlemen of Verona (Q232042), Timon of Athens (Q284641), Touchstone (Q7828727), Launcelot (Q64145690), Dogberry (Q5288312), Sycorax (Q1226010), The Lord Chamberlain's Men (Q1899451), The Queen's Men (Q7270305), The Earl of Leicester's Men (Q6519139), Henry VIII (Q672059), Hamnet (Q2312807), Christopher Sly (Q16238343), Lucentio (Q20823065), Tranio (Q20823071), Grumio (Q20823070), Forres (Q1010531), The First Folio (Q833645), The Battle of Philippi (Q335330), The Battle of Alexandria (Q3636319), Richard II (Q649562), Thomas Kyd (Q337082), John Webster (Q225904), Troilus and Cressida (Q183304), Hero and Leander (Q747392), Hecate (Q131575), Thomas Thorpe (Q1056900), Richard Field (Q7325667), William Jaggard (Q8013416), Edward Blount (Q3431800), Henry IV Part 1 (Q631855)
+
+### Names chosen (`picks.tsv`)
+
+A pick overrides the label: where the label is of something else (a real king, not the play's character; the historical Porcia, not Brutus's wife as the play names her), carries a title or a disambiguator, or is missing. "Found in" names the source that has the form. **Not found** means no source held here has it; in the languages not written in Latin letters no such pick is left that is a name in that script, only translated common nouns ("Битва при Александрии").
 
 | Item | Name in the game | Language | Picked | Found in | Note |
 |---|---|---|---|---|---|
@@ -104,7 +110,7 @@ A pick overrides the label: where the label is of something else (a real king, n
 | Q26833 | Othello | fr | Othello | label (fr) |  |
 | Q673361 | Romeo | fr | Roméo | label (fr) |  |
 | Q1092632 | Juliet | fr | Juliette | label (fr) |  |
-| Q5503354 | Friar Lawrence | fr | Frère Laurent | **not found** | no French label on the item; the form of the French translations |
+| Q5503354 | Friar Lawrence | fr | Frère Laurent | fr.wikipedia, Roméo et Juliette (oldid 241279915; 11 mentions) | no French label on the item; the form of the French translations |
 | Q235627 | Calpurnia | fr | Calpurnia | label (fr) |  |
 | Q235423 | Cornelia | fr | Cornelia | label (fr) |  |
 | Q3636319 | The Battle of Alexandria | fr | Bataille d'Alexandrie | **not found** | no French label on the item |
@@ -119,7 +125,7 @@ A pick overrides the label: where the label is of something else (a real king, n
 | Q3490581 | Sonnet 73 | de | Sonett 73 | **not found** | the German label is the title of a Wikisource page |
 | Q229483 | Octavia | de | Octavia | label (de) |  |
 | Q635 | Cleopatra | de | Kleopatra | label (de) |  |
-| Q5503354 | Friar Lawrence | de | Bruder Lorenzo | **not found** | the German label repeats the English; this is the form of the Schlegel translation |
+| Q5503354 | Friar Lawrence | de | Bruder Lorenzo | de.wikipedia, Romeo und Julia (oldid 267914682; 4 mentions) | the German label repeats the English; this is the form of the Schlegel translation |
 | Q1048 | Caesar | de | Cäsar | alias (de) | as in the German title of the play |
 | Q7325667 | Richard Field | de | Richard Field | label (de) |  |
 | Q673361 | Romeo | it | Romeo | label (it) |  |
@@ -143,10 +149,10 @@ A pick overrides the label: where the label is of something else (a real king, n
 | Q235627 | Calpurnia | pt | Calpúrnia | label (pt) |  |
 | Q1243545 | Casca | pt | Casca | label (pt) |  |
 | Q235423 | Cornelia | pt | Cornélia | label (pt) |  |
-| Q26881 | Elsinore | pt | Elsinore | **not found** | the Portuguese label is the modern town's; no Portuguese alias on the item |
+| Q26881 | Elsinore | pt | Elsinore | the English name, kept | the Portuguese label is the modern town's; no Portuguese alias on the item |
 | Q104871 | A Midsummer Night's Dream | pt | Sonho de uma Noite de Verão | alias (pt) |  |
 | Q652011 | Richard III | pl | Ryszard III | label (pl) |  |
-| Q50919 | Doctor Faustus | pl | Doktor Faustus | **not found** | the Polish label is of another work |
+| Q50919 | Doctor Faustus | pl | Doktor Faustus | label (pl), with the title translated | the Polish label is of another work |
 | Q1048 | Julius Caesar | pl | Juliusz Cezar | label (pl) |  |
 | Q1092632 | Juliet | pl | Julia | label (pl) |  |
 | Q546616 | Gertrude | pl | Gertruda | label (pl) |  |
@@ -154,7 +160,7 @@ A pick overrides the label: where the label is of something else (a real king, n
 | Q229483 | Octavia | pl | Oktawia | label (pl) |  |
 | Q1405 | Octavius | pl | Oktawian | label (pl) |  |
 | Q133028 | Richard III | pl | Ryszard III | label (pl) |  |
-| Q7325667 | Richard Field | pl | Richard Field | **not found** |  |
+| Q7325667 | Richard Field | pl | Richard Field | the English name, kept |  |
 | Q50919 | Doctor Faustus | ru | Доктор Фауст | **not found** | the label has the name in the genitive (Трагическая история доктора Фауста) |
 | Q1048 | Julius Caesar | ru | Юлий Цезарь | label (ru) |  |
 | Q235627 | Calpurnia | ru | Кальпурния | label (ru) |  |
@@ -169,7 +175,7 @@ A pick overrides the label: where the label is of something else (a real king, n
 | Q692 | William Shakespeare | pl | William Szekspir | alias (pl) | the form Polish uses, and the core Polish locale of this site |
 | Q692 | Shakespeare | pl | Szekspir | alias (pl) | the form Polish uses, and the core Polish locale of this site |
 | Q673361 | Romeo | pl | Romeo | label (pl) |  |
-| Q7231797 | Portia | pl | Porcja | **not found** | as in the Polish translations; the item has no Polish label |
+| Q7231797 | Portia | pl | Porcja | pl.wikipedia, Juliusz Cezar (sztuka) (oldid 76321310; 1 mentions) | as in the Polish translations; the item has no Polish label |
 | Q533120 | Caliban | pl | Kaliban | **not found** | as in the Polish translations; the item has no Polish label |
 | Q806945 | Banquo | pl | Banko | alias (pl) | as in the Polish translations |
 | Q5443792 | Ferdinand | pl | Ferdynand | **not found** | as in the Polish translations; the item has no Polish label |
@@ -180,23 +186,23 @@ A pick overrides the label: where the label is of something else (a real king, n
 | Q3490581 | Sonnet 73 | pl | Sonet 73 | label (pl) |  |
 | Q272434 | The Globe Theatre | pl | Globe | label (pl) |  |
 | Q200262 | Navarre | pl | Nawarra | **not found** | the label is "Królestwo Nawarry" |
-| Q68340 | Dunsinane | ru | Дунсинан | **not found** | as in the Russian translations of Macbeth; the item has no Russian label |
-| Q1120943 | The Rose Theatre | ru | «Роза» | **not found** | the usual Russian name of the theatre; the item has no Russian label |
+| Q68340 | Dunsinane | ru | Дунсинан | ru.wikipedia, Макбет (пьеса) (oldid 156061439; 1 mentions) | as in the Russian translations of Macbeth; the item has no Russian label |
+| Q1120943 | The Rose Theatre | ru | «Роза» | ru.wikipedia, Шекспир, Уильям (oldid 155603742; 1 mentions) | the usual Russian name of the theatre; the item has no Russian label |
 | Q2625304 | The Swan Theatre | ru | «Лебедь» | **not found** | the usual Russian name of the theatre; the item has no Russian label |
-| Q7608448 | Stephano | ru | Стефано | **not found** | as in the Russian translations; the item has no Russian label |
-| Q2190927 | Bottom | ru | Основа | **not found** | as in the Russian translations; the item has no Russian label |
-| Q5339222 | Edmund | ru | Эдмунд | **not found** | as in the Russian translations; the item has no Russian label |
-| Q4776379 | Antonio | ru | Антонио | **not found** | as in the Russian translations; the item has no Russian label |
-| Q85745665 | Bassanio | ru | Бассанио | **not found** | as in the Russian translations; the item has no Russian label |
-| Q7231797 | Portia | ru | Порция | **not found** | as in the Russian translations; the item has no Russian label |
-| Q3337857 | Alonso | ru | Алонзо | **not found** | as in the Russian translations; the item has no Russian label |
-| Q3844047 | Malvolio | ru | Мальволио | **not found** | as in the Russian translations; the item has no Russian label |
+| Q7608448 | Stephano | ru | Стефано | ru.wikipedia, Буря (пьеса) (oldid 156192120; 11 mentions) | as in the Russian translations; the item has no Russian label |
+| Q2190927 | Bottom | ru | Основа | ru.wikipedia, Сон в летнюю ночь (oldid 156077158; 10 mentions) | as in the Russian translations; the item has no Russian label |
+| Q5339222 | Edmund | ru | Эдмунд | ru.wikipedia, Ричард III (пьеса) (oldid 154656377; glossed) | as in the Russian translations; the item has no Russian label |
+| Q4776379 | Antonio | ru | Антонио | ru.wikipedia, Гамлет (oldid 156116418; glossed) | as in the Russian translations; the item has no Russian label |
+| Q85745665 | Bassanio | ru | Бассанио | ru.wikipedia, Венецианский купец (oldid 154786841; 25 mentions) | as in the Russian translations; the item has no Russian label |
+| Q7231797 | Portia | ru | Порция | ru.wikipedia, Венецианский купец (oldid 154786841; 42 mentions) | as in the Russian translations; the item has no Russian label |
+| Q3337857 | Alonso | ru | Алонзо | ru.wikipedia, Буря (пьеса) (oldid 156192120; 11 mentions) | as in the Russian translations; the item has no Russian label |
+| Q3844047 | Malvolio | ru | Мальволио | ru.wikipedia, Двенадцатая ночь (oldid 155551207; glossed) | as in the Russian translations; the item has no Russian label |
 | Q3636319 | The Battle of Alexandria | ru | Битва при Александрии | **not found** | the item has no Russian label |
 | Q7811769 | Sir Toby Belch | ru | Сэр Тоби Белч | alias (ru) |  |
 | Q7325667 | Richard Field | ru | Ричард Филд | label (ru) |  |
 | Q10322723 | Macbeth | zh | 麦克白 | alias (zh) | the character's label is 马克白; this is the play's label, so the quiz says one name |
-| Q1767900 | Mercutio | zh | 茂丘西奥 | **not found** | the label is the English name in lower case; this is Zhu Shenghao's form |
-| Q2332221 | Titania | zh | 提泰妮娅 | **not found** | the label is the English name in lower case; this is Zhu Shenghao's form |
+| Q1767900 | Mercutio | zh | 茂丘西奥 | zh.wikipedia, 罗密欧与朱丽叶 (oldid 93879994; 1 mentions) | the label is the English name in lower case; this is Zhu Shenghao's form |
+| Q2332221 | Titania | zh | 提泰妮娅 | zh.wikipedia, 仲夏夜之夢 (oldid 88658354; glossed) | the label is the English name in lower case; this is Zhu Shenghao's form |
 | Q2447542 | Hamlet | zh | 哈姆雷特 | label (zh-hans) |  |
 | Q1811294 | Claudius | zh | 克劳迪 | label (zh-hans) |  |
 | Q1092632 | Juliet | zh | 朱丽叶 | label (zh-hans) |  |
@@ -215,42 +221,36 @@ A pick overrides the label: where the label is of something else (a real king, n
 | Q229483 | Octavia | zh | 屋大薇 | label (zh-hans) |  |
 | Q200262 | Navarre | zh | 纳瓦拉 | label (zh-hans) |  |
 | Q1460 | Sicilia | zh | 西西里 | label (zh-cn) |  |
-| Q506505 | The Comedy of Errors | zh | 错误的喜剧 | **not found** | the label is the English title in lower case; this is Zhu Shenghao's title |
+| Q506505 | The Comedy of Errors | zh | 错误的喜剧 | zh.wikipedia, 威廉·莎士比亚 (oldid 95346598; glossed) | the label is the English title in lower case; this is Zhu Shenghao's title |
 | Q1236216 | Henry VI, Part 2 | zh | 亨利六世中篇 | **not found** | the label lacks the part; this is Zhu Shenghao's title |
-| Q26881 | Elsinore | zh | 厄耳锡诺 | **not found** | the label is the modern town's; this is Zhu Shenghao's form |
-| Q4787912 | Forest of Arden | zh | 亚登森林 | **not found** | Zhu Shenghao's form; the label (雅顿) is of the real forest |
-| Q7070187 | The Nurse | zh | 奶妈 | **not found** | the label (护士) means a hospital nurse; the item's alias is 奶媽 |
-| Q658028 | Ariel | zh | 爱丽儿 | **not found** | Zhu Shenghao's form; the item has no Chinese label |
+| Q7070187 | The Nurse | zh | 奶妈 | zh.wikipedia, 罗密欧与朱丽叶 (oldid 93879994; glossed) | the label (护士) means a hospital nurse; the item's alias is 奶媽 |
+| Q658028 | Ariel | zh | 爱丽儿 | zh.wikipedia, 暴風雨 (莎士比亞) (oldid 94402669; glossed) | Zhu Shenghao's form; the item has no Chinese label |
 | Q806945 | Banquo | zh | 班柯 | label (zh) | Zhu Shenghao's form |
-| Q7932996 | Viola | zh | 薇奥拉 | **not found** | Zhu Shenghao's form; the item has no Chinese label |
-| Q16385853 | Goneril | zh | 高纳里尔 | **not found** | Zhu Shenghao's form; the item has no Chinese label |
-| Q7307943 | Regan | zh | 里根 | **not found** | Zhu Shenghao's form; the item has no Chinese label |
-| Q6829164 | Cassio | zh | 凯西奥 | **not found** | Zhu Shenghao's form; the item has no Chinese label |
-| Q7103025 | Orlando | zh | 奥兰多 | **not found** | Zhu Shenghao's form; the item has no Chinese label |
-| Q125374100 | Benedick | zh | 培尼狄克 | **not found** | Zhu Shenghao's form; the item has no Chinese label |
-| Q7179191 | Petruchio | zh | 彼特鲁乔 | **not found** | Zhu Shenghao's form; the item has no Chinese label |
-| Q28469410 | Lear | zh | 李尔 | **not found** | as in the play's label 李尔王 |
-| Q1650633 | Yorick | zh | 郁利克 | **not found** | Zhu Shenghao's form; the item has no Chinese label |
-| Q7325667 | Richard Field | zh | Richard Field | **not found** |  |
+| Q7932996 | Viola | zh | 薇奥拉 | zh.wikipedia, 第十二夜 (oldid 90685481; glossed) | Zhu Shenghao's form; the item has no Chinese label |
+| Q16385853 | Goneril | zh | 高纳里尔 | zh.wikipedia, 李爾王 (oldid 95193985; glossed) | Zhu Shenghao's form; the item has no Chinese label |
+| Q7307943 | Regan | zh | 里根 | zh.wikipedia, 李爾王 (oldid 95193985; glossed) | Zhu Shenghao's form; the item has no Chinese label |
+| Q6829164 | Cassio | zh | 凯西奥 | zh.wikipedia, 奧賽羅 (oldid 93512966; 18 mentions) | Zhu Shenghao's form; the item has no Chinese label |
+| Q7103025 | Orlando | zh | 奥兰多 | zh.wikipedia, 皆大歡喜 (話劇) (oldid 94770557; glossed) | Zhu Shenghao's form; the item has no Chinese label |
+| Q125374100 | Benedick | zh | 本尼狄克 | zh.wikipedia, 无事生非 (oldid 91350238; glossed) | replaces an unsourced choice (培尼狄克): the name the language's Wikipedia article gives, with the English beside it (names-evidence.tsv) |
+| Q7179191 | Petruchio | zh | 彼特鲁乔 | zh.wikipedia, 馴悍記 (oldid 94759652; glossed) | Zhu Shenghao's form; the item has no Chinese label |
+| Q28469410 | Lear | zh | 李尔 | zh.wikipedia, 李爾王 (oldid 95193985; glossed) | as in the play's label 李尔王 |
+| Q7325667 | Richard Field | zh | Richard Field | the English name, kept |  |
 | Q673361 | Romeo | zh | 罗密欧 | label (zh-hans) |  |
 | Q692 | Shakespeare | ja | シェイクスピア | label (ja) |  |
 | Q2312807 | Hamnet | ja | ハムネット | label (ja) |  |
 | Q1048 | Julius Caesar | ja | ジュリアス・シーザー | alias (ja) | the name the Japanese translations of the play use (and the play's label); the person's label is ガイウス・ユリウス・カエサル |
 | Q1048 | Caesar | ja | シーザー | alias (ja) | as above |
-| Q172248 | Brutus | ja | ブルータス | **not found** | the name the Japanese translations of the play use; the person's label is マルクス・ユニウス・ブルトゥス |
-| Q207370 | Cassius | ja | キャシアス | **not found** | the name the Japanese translations of the play use |
-| Q51673 | Mark Antony | ja | マーク・アントニー | **not found** | the name the Japanese translations of the play use |
-| Q235627 | Calpurnia | ja | カルパーニア | **not found** | the name the Japanese translations of the play use |
+| Q172248 | Brutus | ja | ブルータス | ja.wikipedia, ジュリアス・シーザー (シェイクスピア) (oldid 109691092; 4 mentions) | the name the Japanese translations of the play use; the person's label is マルクス・ユニウス・ブルトゥス |
+| Q51673 | Mark Antony | ja | マーク・アントニー | ja.wikipedia, ジュリアス・シーザー (シェイクスピア) (oldid 109691092; 1 mentions) | the name the Japanese translations of the play use |
+| Q235627 | Calpurnia | ja | カルパーニア | ja.wikipedia, ジュリアス・シーザー (シェイクスピア) (oldid 109691092; glossed) | the name the Japanese translations of the play use |
 | Q255448 | Portia | ja | ポーシャ | alias (ja) | the name the Japanese translations of the play use |
-| Q229483 | Octavia | ja | オクテーヴィア | **not found** | the name the Japanese translations use |
-| Q235423 | Cornelia | ja | コルネリア | **not found** |  |
 | Q1092632 | Juliet | ja | ジュリエット | label (ja) |  |
 | Q1627478 | Rosencrantz | ja | ローゼンクランツ | label (ja) |  |
 | Q1627478 | Guildenstern | ja | ギルデンスターン | label (ja) |  |
 | Q2190927 | Bottom | ja | ボトム | label (ja) |  |
 | Q2538905 | Flute | ja | フルート | label (ja) |  |
 | Q15698348 | Duncan | ja | ダンカン | label (ja) |  |
-| Q26881 | Elsinore | ja | エルシノア | **not found** | the label is the modern town's; this is the form of the Japanese translations |
+| Q26881 | Elsinore | ja | エルシノア | ja.wikipedia, ハムレット (oldid 111653152; 2 mentions) | the label is the modern town's; this is the form of the Japanese translations |
 | Q68340 | Dunsinane | ja | ダンシネイン | label (ja) |  |
 | Q1460 | Sicilia | ja | シチリア | label (ja) |  |
 | Q200262 | Navarre | ja | ナバラ | label (ja) |  |
@@ -263,46 +263,39 @@ A pick overrides the label: where the label is of something else (a real king, n
 | Q1243545 | Casca | ko | 카스카 | label (ko) |  |
 | Q229483 | Octavia | ko | 옥타비아 | label (ko) |  |
 | Q1811294 | Claudius | ko | 클라우디우스 | label (ko) |  |
-| Q5503354 | Friar Lawrence | ko | 로렌스 신부 | **not found** | the label transliterates the English word Friar |
+| Q5503354 | Friar Lawrence | ko | 로렌스 신부 | ko.wikipedia, 로미오와 줄리엣 (oldid 41984599; 8 mentions), with the title translated | the label transliterates the English word Friar |
 | Q1233109 | Falstaff | ko | 팔스타프 | label (ko) |  |
 | Q200262 | Navarre | ko | 나바라 | label (ko) |  |
-| Q26881 | Elsinore | ko | 엘시노어 | **not found** | the label is the modern town's |
-| Q7325667 | Richard Field | ko | Richard Field | **not found** |  |
+| Q7325667 | Richard Field | ko | Richard Field | the English name, kept |  |
 | Q673361 | Romeo | ja | ロミオ | label (ja) |  |
-| Q1767900 | Mercutio | ja | マキューシオ | **not found** | the form of the Japanese translations; the item has no Japanese label |
-| Q939489 | Benvolio | ja | ベンヴォーリオ | **not found** | the form of the Japanese translations; the item has no Japanese label |
-| Q3687815 | Paris | ja | パリス | **not found** | the form of the Japanese translations; the item has no Japanese label |
-| Q5443792 | Ferdinand | ja | ファーディナンド | **not found** | the form of the Japanese translations; the item has no Japanese label |
-| Q7608448 | Stephano | ja | ステファノー | **not found** | the form of the Japanese translations; the item has no Japanese label |
-| Q3337857 | Alonso | ja | アロンゾー | **not found** | the form of the Japanese translations; the item has no Japanese label |
-| Q634983 | Miranda | ja | ミランダ | **not found** | the form of the Japanese translations; the item has no Japanese label |
-| Q28469410 | Lear | ja | リア | **not found** | as in the play's label リア王 |
-| Q1405 | Octavius | ja | オクテイヴィアス | **not found** | the name the Japanese translations of the plays use |
+| Q1767900 | Mercutio | ja | マキューシオ | ja.wikipedia, ロミオとジュリエット (oldid 111636434; 2 mentions) | the form of the Japanese translations; the item has no Japanese label |
+| Q939489 | Benvolio | ja | ベンヴォーリオ | ja.wikipedia, ロミオとジュリエット (oldid 111636434; 1 mentions) | the form of the Japanese translations; the item has no Japanese label |
+| Q3687815 | Paris | ja | パリス | ja.wikipedia, ロミオとジュリエット (oldid 111636434; 4 mentions) | the form of the Japanese translations; the item has no Japanese label |
+| Q5443792 | Ferdinand | ja | ファーディナンド | ja.wikipedia, テンペスト (シェイクスピア) (oldid 107637146; 5 mentions) | the form of the Japanese translations; the item has no Japanese label |
+| Q7608448 | Stephano | ja | ステファノー | ja.wikipedia, テンペスト (シェイクスピア) (oldid 107637146; 1 mentions) | the form of the Japanese translations; the item has no Japanese label |
+| Q3337857 | Alonso | ja | アロンゾー | ja.wikipedia, テンペスト (シェイクスピア) (oldid 107637146; 4 mentions) | the form of the Japanese translations; the item has no Japanese label |
+| Q634983 | Miranda | ja | ミランダ | ja.wikipedia, テンペスト (シェイクスピア) (oldid 107637146; 7 mentions) | the form of the Japanese translations; the item has no Japanese label |
+| Q28469410 | Lear | ja | リア | ja.wikipedia, リア王 (oldid 111653098; glossed) | as in the play's label リア王 |
+| Q1405 | Octavius | ja | オクテイヴィアス | ja.wikipedia, アントニーとクレオパトラ (oldid 109690301; 17 mentions) | the name the Japanese translations of the plays use |
 | Q7811769 | Sir Toby Belch | ja | サー・トービー・ベルチ | alias (ja) |  |
-| Q3687815 | Paris | ko | 패리스 | **not found** | the usual Korean form; the item has no Korean label |
-| Q1248616 | Puck | ko | 퍽 | **not found** | the usual Korean form; the item has no Korean label |
-| Q533120 | Caliban | ko | 캘리번 | **not found** | the usual Korean form; the item has no Korean label |
-| Q5169921 | Cordelia | ko | 코델리아 | **not found** | the usual Korean form; the item has no Korean label |
-| Q1627478 | Rosencrantz | ko | 로젠크란츠 | **not found** | the usual Korean form; the item has no Korean label |
-| Q1627478 | Guildenstern | ko | 길든스턴 | **not found** | the usual Korean form; the item has no Korean label |
-| Q2190927 | Bottom | ko | 보텀 | **not found** | the usual Korean form; the item has no Korean label |
-| Q5339222 | Edmund | ko | 에드먼드 | **not found** | the usual Korean form; the item has no Korean label |
-| Q2568064 | Fortinbras | ko | 포틴브라스 | **not found** | the usual Korean form; the item has no Korean label |
-| Q584729 | Pericles | ko | 페리클레스 | **not found** | the usual Korean title; the item has no Korean label |
-| Q730212 | Cymbeline | ko | 심벨린 | **not found** | the usual Korean title; the item has no Korean label |
+| Q3687815 | Paris | ko | 패리스 | ko.wikipedia, 로미오와 줄리엣 (oldid 41984599; 8 mentions) | the usual Korean form; the item has no Korean label |
+| Q1248616 | Puck | ko | 퍽 | ko.wikipedia, 한여름 밤의 꿈 (oldid 41389563; 1 mentions) | the usual Korean form; the item has no Korean label |
+| Q5169921 | Cordelia | ko | 코델리아 | ko.wikipedia, 리어왕 (oldid 39035256; 11 mentions) | the usual Korean form; the item has no Korean label |
+| Q1627478 | Rosencrantz | ko | 로젠크란츠 | ko.wikipedia, 햄릿 (oldid 42765952; 2 mentions) | the usual Korean form; the item has no Korean label |
+| Q1627478 | Guildenstern | ko | 길든스턴 | ko.wikipedia, 햄릿 (oldid 42765952; 1 mentions) | the usual Korean form; the item has no Korean label |
+| Q5339222 | Edmund | ko | 에드먼드 | ko.wikipedia, 리어왕 (oldid 39035256; 9 mentions) | the usual Korean form; the item has no Korean label |
+| Q2568064 | Fortinbras | ko | 포틴브라스 | ko.wikipedia, 햄릿 (oldid 42765952; 4 mentions) | the usual Korean form; the item has no Korean label |
+| Q584729 | Pericles | ko | 페리클레스 | ko.wikipedia, 윌리엄 셰익스피어 (oldid 42719290; 2 mentions) | the usual Korean title; the item has no Korean label |
+| Q730212 | Cymbeline | ko | 심벨린 | ko.wikipedia, 윌리엄 셰익스피어 (oldid 42719290; 1 mentions) | the usual Korean title; the item has no Korean label |
 | Q50919 | Doctor Faustus | ko | 포스터스 박사 | **not found** | the usual Korean title; the item has no Korean label |
-| Q2074170 | Friar Tuck | ko | 터크 수사 | **not found** | the usual Korean form; the item has no Korean label |
-| Q3337857 | Alonso | ko | 알론소 | **not found** | the usual Korean form; the item has no Korean label |
-| Q68340 | Dunsinane | ko | 던시네인 | **not found** | the usual Korean form; the item has no Korean label |
+| Q3337857 | Alonso | ko | 알론소 | ko.wikipedia, 템페스트 (oldid 39118676; 14 mentions) | the usual Korean form; the item has no Korean label |
 | Q1120943 | The Rose Theatre | ko | 로즈 극장 | **not found** | the item has no Korean label |
 | Q2625304 | The Swan Theatre | ko | 스완 극장 | **not found** | the item has no Korean label |
 | Q3636319 | The Battle of Alexandria | ko | 알렉산드리아 전투 | **not found** | the item has no Korean label |
-| Q1230688 | Pyramus and Thisbe | ko | 피라모스와 티스베 | **not found** | the item has no Korean label |
-| Q747392 | Hero and Leander | ko | 헤로와 레안드로스 | **not found** | the item has no Korean label |
+| Q1230688 | Pyramus and Thisbe | ko | 피라모스와 티스베 | ko.wikipedia, 로미오와 줄리엣 (oldid 41984599; 2 mentions) | the item has no Korean label |
+| Q747392 | Hero and Leander | ko | 헤로와 레안드로스 | ko.wikipedia, 로미오와 줄리엣 (oldid 41984599; 1 mentions) | the item has no Korean label |
 | Q221211 | Twelfth Night | ar | الليلة الثانية عشرة | label (ar) |  |
-| Q10322723 | Macbeth | ar | مكبث | **not found** | the play's label, so the quiz says one name; the character's label is ماكبث |
-| Q2454065 | Lady Macbeth | ar | ليدي مكبث | **not found** | as above |
-| Q26881 | Elsinore | ar | إلسينور | **not found** | the label is a garbled form of the modern town's name |
+| Q10322723 | Macbeth | ar | مكبث | ar.wikipedia, مكبث (مسرحية) (oldid 76456481; glossed) | the play's label, so the quiz says one name; the character's label is ماكبث |
 | Q2447542 | Hamlet | hi | हैमलेट | label (hi) |  |
 | Q1811294 | Claudius | hi | क्लॉडियस | label (hi) |  |
 | Q3687815 | Paris | hi | पेरिस | label (hi) |  |
@@ -319,28 +312,152 @@ A pick overrides the label: where the label is of something else (a real king, n
 | Q221211 | Twelfth Night | id | Twelfth Night | label (id) |  |
 | Q673361 | Romeo | id | Romeo | label (id) |  |
 | Q1655364 | Iago | id | Iago | label (id) |  |
-| Q7325667 | Richard Field | ar | Richard Field | **not found** |  |
-| Q7325667 | Richard Field | hi | Richard Field | **not found** |  |
-| Q7325667 | Richard Field | th | Richard Field | **not found** |  |
-| Q7325667 | Richard Field | vi | Richard Field | **not found** |  |
-| Q7325667 | Richard Field | id | Richard Field | **not found** |  |
-| Q7325667 | Richard Field | pt | Richard Field | **not found** |  |
-| Q28469410 | Lear | ar | لير | **not found** | as in the play's label الملك لير |
-| Q28469410 | Lear | hi | लीयर | **not found** | as in the play's label किंग लीयर |
-| Q172248 | Brutus | hi | ब्रूटस | **not found** | the usual Hindi form; the item has no Hindi label |
-| Q39193 | Bohemia | hi | बोहेमिया | **not found** | the usual Hindi form; the item has no Hindi label |
-| Q673361 | Romeo | th | โรเมโอ | **not found** | from the play's Thai label โรเมโอและจูเลียต; the character's item has no Thai label |
-| Q1092632 | Juliet | th | จูเลียต | **not found** | from the play's Thai label โรเมโอและจูเลียต; the character's item has no Thai label |
-| Q2447542 | Hamlet | th | แฮมเลต | **not found** | the play's Thai label; the character's item has no Thai label |
-| Q10322723 | Macbeth | th | แม็คเบ็ธ | **not found** | the play's Thai label; the character's item has no Thai label |
-| Q1966171 | Othello | th | โอเทลโล | **not found** | the play's Thai label; the character's item has no Thai label |
-| Q2454065 | Lady Macbeth | th | เลดี้แม็คเบ็ธ | **not found** | from the play's Thai label; the character's item has no Thai label |
+| Q7325667 | Richard Field | ar | Richard Field | the English name, kept |  |
+| Q7325667 | Richard Field | hi | Richard Field | the English name, kept |  |
+| Q7325667 | Richard Field | th | Richard Field | the English name, kept |  |
+| Q7325667 | Richard Field | vi | Richard Field | the English name, kept |  |
+| Q7325667 | Richard Field | id | Richard Field | the English name, kept |  |
+| Q7325667 | Richard Field | pt | Richard Field | the English name, kept |  |
+| Q28469410 | Lear | ar | لير | ar.wikipedia, الملك لير (oldid 76660117; glossed) | as in the play's label الملك لير |
+| Q28469410 | Lear | hi | लीयर | hi.wikipedia, मैकबेथ (oldid 6633869; 1 mentions) | as in the play's label किंग लीयर |
+| Q172248 | Brutus | hi | ब्रूटस | hi.wikipedia, जुलियस सीजर (नाटक) (oldid 5288572; 2 mentions) | the usual Hindi form; the item has no Hindi label |
+| Q673361 | Romeo | th | โรเมโอ | th.wikipedia, โรเมโอและจูเลียต (oldid 13382650; glossed) | from the play's Thai label โรเมโอและจูเลียต; the character's item has no Thai label |
+| Q1092632 | Juliet | th | จูเลียต | th.wikipedia, โรเมโอและจูเลียต (oldid 13382650; glossed) | from the play's Thai label โรเมโอและจูเลียต; the character's item has no Thai label |
+| Q2447542 | Hamlet | th | แฮมเลต | th.wikipedia, แฮมเลต (oldid 13060454; glossed) | the play's Thai label; the character's item has no Thai label |
+| Q10322723 | Macbeth | th | แม็คเบ็ธ | th.wikipedia, แม็คเบ็ธ (oldid 13073140; glossed) | the play's Thai label; the character's item has no Thai label |
+| Q1966171 | Othello | th | โอเทลโล | th.wikipedia, โอเทลโล (วรรณกรรม) (oldid 13381798; glossed) | the play's Thai label; the character's item has no Thai label |
+| Q2454065 | Lady Macbeth | th | เลดี้แม็คเบ็ธ | th.wikipedia, แม็คเบ็ธ (oldid 13073140; 4 mentions) | from the play's Thai label; the character's item has no Thai label |
+| Q108757945 | Hero | ru | Геро | ru.wikipedia, Много шума из ничего (oldid 155987550; glossed) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q97156756 | Beatrice | ru | Беатриче | ru.wikipedia, Много шума из ничего (oldid 155987550; glossed) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q26904362 | Margaret | ru | Маргарита | ru.wikipedia, Много шума из ничего (oldid 155987550; glossed) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q60834955 | Rosalind | ru | Розалинда | ru.wikipedia, Как вам это понравится (oldid 156001763; 26 mentions) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q5057966 | Celia | ru | Селия | ru.wikipedia, Как вам это понравится (oldid 156001763; 4 mentions) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q136447402 | Audrey | ru | Одри | ru.wikipedia, Как вам это понравится (oldid 156001763; 6 mentions) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q4762821 | Angelo | ru | Анджело | ru.wikipedia, Мера за меру (oldid 155561487; 39 mentions) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q125374118 | Claudio | ru | Клавдио | ru.wikipedia, Много шума из ничего (oldid 155987550; glossed) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q136447457 | Silvia | ru | Сильвия | ru.wikipedia, Два веронца (oldid 136461230; 7 mentions) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q125374125 | Don John | ru | Дон Хуан | ru.wikipedia, Много шума из ничего (oldid 155987550; glossed) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q5293299 | Don Pedro | ru | Дон Педро | ru.wikipedia, Много шума из ничего (oldid 155987550; glossed) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q6159398 | Jaques | ru | Жак | ru.wikipedia, Как вам это понравится (oldid 156001763; 8 mentions) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q7103025 | Orlando | ru | Орландо | ru.wikipedia, Как вам это понравится (oldid 156001763; 25 mentions) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q7828727 | Touchstone | ru | Оселок | ru.wikipedia, Как вам это понравится (oldid 156001763; glossed) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q64145690 | Launcelot | ru | Ланчелот | ru.wikipedia, Венецианский купец (oldid 154786841; 2 mentions) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q5288312 | Dogberry | ru | Кизил | ru.wikipedia, Много шума из ничего (oldid 155987550; glossed) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q8013416 | William Jaggard | ru | Уильям Джаггард | ru.wikipedia, Буря (пьеса) (oldid 156192120; 1 mentions) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q3431800 | Edward Blount | ru | Эдвард Блаунт | ru.wikipedia, Буря (пьеса) (oldid 156192120; 1 mentions) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q662550 | The Sonnets | hi | सॉनेट | hi.wikipedia, रोमियो और जूलियट (oldid 6552289; 1 mentions) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q7167694 | Perdita | ja | パーディタ | ja.wikipedia, 冬物語 (シェイクスピア) (oldid 100684665; 8 mentions) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q16385853 | Goneril | ja | ゴネリル | ja.wikipedia, リア王 (oldid 111653098; glossed) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q7307943 | Regan | ja | リーガン | ja.wikipedia, リア王 (oldid 111653098; glossed) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q61635995 | Gratiano | ja | グラシアーノ | ja.wikipedia, ヴェニスの商人 (oldid 110766480; glossed) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q108757945 | Hero | ja | ヒーロー | ja.wikipedia, 空騒ぎ (oldid 109400578; 40 mentions) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q97156756 | Beatrice | ja | ベアトリス | ja.wikipedia, 空騒ぎ (oldid 109400578; glossed) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q26904362 | Margaret | ja | マーガレット | ja.wikipedia, 空騒ぎ (oldid 109400578; 11 mentions) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q4762821 | Angelo | ja | アンジェロ | ja.wikipedia, 尺には尺を (oldid 104789035; 33 mentions) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q125374118 | Claudio | ja | クローディオ | ja.wikipedia, 空騒ぎ (oldid 109400578; 31 mentions) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q136447457 | Silvia | ja | シルヴィア | ja.wikipedia, ヴェローナの二紳士 (oldid 100684597; 18 mentions) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q125374125 | Don John | ja | ドン・ジョン | ja.wikipedia, 空騒ぎ (oldid 109400578; 16 mentions) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q5293299 | Don Pedro | ja | ドン・ペドロ | ja.wikipedia, 空騒ぎ (oldid 109400578; 14 mentions) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q64145690 | Launcelot | ja | ランスロット | ja.wikipedia, ヴェニスの商人 (oldid 110766480; glossed) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q5288312 | Dogberry | ja | ドグベリー | ja.wikipedia, 空騒ぎ (oldid 109400578; 8 mentions) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q1226010 | Sycorax | ja | シコラクス | ja.wikipedia, テンペスト (シェイクスピア) (oldid 107637146; 1 mentions) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q16238343 | Christopher Sly | ja | クリストファー・スライ | ja.wikipedia, じゃじゃ馬ならし (oldid 106659512; glossed) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q8013416 | William Jaggard | ja | ウィリアム・ジャガード | ja.wikipedia, ヘンリー五世 (シェイクスピア) (oldid 105888256; glossed) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q3842048 | Macduff | ko | 맥더프 | ko.wikipedia, 맥베스 (희곡) (oldid 40339403; 7 mentions) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q2498540 | Helena | ko | 헬레나 | ko.wikipedia, 한여름 밤의 꿈 (oldid 41389563; 1 mentions) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q7442354 | Sebastian | ko | 세바스찬 | ko.wikipedia, 십이야 (oldid 42456114; 16 mentions) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q7104140 | Orsino | ko | 오시노 | ko.wikipedia, 십이야 (oldid 42456114; 13 mentions) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q16385853 | Goneril | ko | 고너릴 | ko.wikipedia, 리어왕 (oldid 39035256; 10 mentions) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q7307943 | Regan | ko | 리건 | ko.wikipedia, 리어왕 (oldid 39035256; 12 mentions) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q61635995 | Gratiano | ko | 그라시아노 | ko.wikipedia, 베니스의 상인 (oldid 39116322; 3 mentions) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q3844047 | Malvolio | ko | 말볼리오 | ko.wikipedia, 십이야 (oldid 42456114; 11 mentions) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q97156756 | Beatrice | ko | 베아트리체 | ko.wikipedia, 헛소동 (oldid 39362047; 5 mentions) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q5057966 | Celia | ko | 실리아 | ko.wikipedia, 당신 뜻대로 (oldid 39618582; 3 mentions) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q125374118 | Claudio | ko | 클라우디오 | ko.wikipedia, 헛소동 (oldid 39362047; 2 mentions) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q136447457 | Silvia | ko | 실비아 | ko.wikipedia, 베로나의 두 신사 (oldid 40557015; 7 mentions) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q6829164 | Cassio | ko | 카시오 | ko.wikipedia, 오셀로 (oldid 39862416; 3 mentions) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q5445659 | Feste | ko | 페스테 | ko.wikipedia, 십이야 (oldid 42456114; 1 mentions) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q125374125 | Don John | ko | 돈 존 | ko.wikipedia, 헛소동 (oldid 39362047; 3 mentions) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q5293299 | Don Pedro | ko | 돈 페드로 | ko.wikipedia, 헛소동 (oldid 39362047; 5 mentions) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q7103025 | Orlando | ko | 올란도 | ko.wikipedia, 템페스트 (oldid 39118676; glossed) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q28469410 | Lear | ko | 리어 왕 | ko.wikipedia, 리어왕 (oldid 39035256; glossed) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q255448 | Portia | ko | 포샤 | ko.wikipedia, 베니스의 상인 (oldid 39116322; 8 mentions) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q5288312 | Dogberry | ko | 도그베리 | ko.wikipedia, 헛소동 (oldid 39362047; 2 mentions) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q1226010 | Sycorax | ko | 시코락스 | ko.wikipedia, 템페스트 (oldid 39118676; 6 mentions) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q20823071 | Tranio | ko | 트라니오 | ko.wikipedia, 말괄량이 길들이기 (oldid 39882955; 1 mentions) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q20823070 | Grumio | ko | 그루미오 | ko.wikipedia, 말괄량이 길들이기 (oldid 39882955; 1 mentions) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q662550 | The Sonnets | th | ซอนเน็ต | th.wikipedia, โรเมโอและจูเลียต (oldid 13382650; 1 mentions) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q5503354 | Friar Lawrence | ar | لورنس | ar.wikipedia, روميو وجولييت (oldid 77118501; 4 mentions) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q5503354 | Friar Lawrence | hi | लॉरेंस | hi.wikipedia, ऐज़ यू लाइक इट (oldid 6357168; 1 mentions) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q5503354 | Friar Lawrence | ja | ロレンス | ja.wikipedia, ロミオとジュリエット (oldid 111636434; 9 mentions) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q7811769 | Sir Toby Belch | ko | 토비 벨치 | ko.wikipedia, 십이야 (oldid 42456114; 2 mentions) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q2538905 | Flute | ru | Дудка | ru.wikipedia, Сон в летнюю ночь (oldid 156077158; 1 mentions) | Wikidata has no Russian label; the ru.wikipedia cast list (names-evidence.tsv) names him so, as the Russian translations do |
+| Q3089658 | Peter Quince | ru | Пигва | ru.wikipedia, Сон в летнюю ночь (oldid 156077158; glossed) | Wikidata's label (Питер Куинс) transliterates the English; the Russian translations and the ru.wikipedia cast list call him Пигва, as they call Bottom Основа, which is Wikidata's label for him |
+| Q5462646 | Captain Fluellen | zh | 弗鲁爱林 | zh.wikipedia, 亨利五世 (戏剧) (oldid 83861012; glossed) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q255448 | Portia | pl | Porcja | pl.wikipedia, Juliusz Cezar (sztuka) (oldid 76321310; 1 mentions) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q5503354 | Friar Lawrence | pt | Frei Lourenço | pt.wikipedia, Romeu e Julieta (oldid 73337159; 10 mentions) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q5503354 | Friar Lawrence | pl | Ojciec Laurenty | pl.wikipedia, Romeo i Julia (oldid 79326866; 1 mentions) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q658028 | Ariel | th | แอเรียล | th.wikipedia, พายุพิโรธ (oldid 11956128; glossed) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q978952 | Prospero | th | พรอสเพโร | th.wikipedia, พายุพิโรธ (oldid 11956128; glossed) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q5443792 | Ferdinand | th | เฟอร์ดินานด์ | th.wikipedia, พายุพิโรธ (oldid 11956128; glossed) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q634983 | Miranda | th | มิแรนดา | th.wikipedia, พายุพิโรธ (oldid 11956128; glossed) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q7356703 | Roderigo | zh | 洛特利哥 | zh.wikipedia, 奧賽羅 (oldid 93512966; glossed) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q4953161 | Brabantio | zh | 勃拉班修 | zh.wikipedia, 奧賽羅 (oldid 93512966; glossed) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q5371628 | Emilia | zh | 艾米莉娅 | zh.wikipedia, 冬天的故事 (oldid 88080686; glossed) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q2362952 | Shylock | th | ไชล็อก | th.wikipedia, เวนิสวาณิช (oldid 13265923; glossed) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q4776379 | Antonio | th | อันโตนิโย | th.wikipedia, เวนิสวาณิช (oldid 13265923; glossed) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q85745665 | Bassanio | th | บัสสานิโย | th.wikipedia, เวนิสวาณิช (oldid 13265923; glossed) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q108757945 | Hero | zh | 希洛 | zh.wikipedia, 无事生非 (oldid 91350238; glossed) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q5293299 | Don Pedro | zh | 唐·彼德罗 | zh.wikipedia, 无事生非 (oldid 91350238; glossed) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q7442354 | Sebastian | zh | 西巴斯辛 | zh.wikipedia, 暴風雨 (莎士比亞) (oldid 94402669; glossed) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q5445659 | Feste | zh | 费斯特 | zh.wikipedia, 第十二夜 (oldid 90685481; glossed) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q6159398 | Jaques | zh | 杰奎斯 | zh.wikipedia, 皆大歡喜 (話劇) (oldid 94770557; glossed) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q7167694 | Perdita | zh | 珀迪塔 | zh.wikipedia, 冬天的故事 (oldid 88080686; glossed) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q2289762 | Snug | zh | 斯纳格 | zh.wikipedia, 仲夏夜之夢 (oldid 88658354; glossed) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q2498540 | Helena | zh | 海丽娜 | zh.wikipedia, 仲夏夜之夢 (oldid 88658354; glossed) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q2637148 | Lysander | zh | 拉山德 | zh.wikipedia, 仲夏夜之夢 (oldid 88658354; glossed) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q125374118 | Claudio | zh | 克劳迪奥 | zh.wikipedia, 无事生非 (oldid 91350238; glossed) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q125374125 | Don John | zh | 唐·约翰 | zh.wikipedia, 无事生非 (oldid 91350238; glossed) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q136447402 | Audrey | zh | 奥德蕾 | zh.wikipedia, 皆大歡喜 (話劇) (oldid 94770557; glossed) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q20823065 | Lucentio | zh | 路森修 | zh.wikipedia, 馴悍記 (oldid 94759652; glossed) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q20823070 | Grumio | zh | 葛鲁米奥 | zh.wikipedia, 馴悍記 (oldid 94759652; glossed) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q20823071 | Tranio | zh | 特拉尼奥 | zh.wikipedia, 馴悍記 (oldid 94759652; glossed) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q26904362 | Margaret | zh | 玛格丽特 | zh.wikipedia, 无事生非 (oldid 91350238; glossed) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q3337857 | Alonso | zh | 阿隆索 | zh.wikipedia, 暴風雨 (莎士比亞) (oldid 94402669; glossed) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q3337857 | Alonso | th | อลองโซ | th.wikipedia, พายุพิโรธ (oldid 11956128; glossed) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q5057966 | Celia | zh | 西莉亚 | zh.wikipedia, 皆大歡喜 (話劇) (oldid 94770557; glossed) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q61635995 | Gratiano | zh | 葛莱西安诺 | zh.wikipedia, 奧賽羅 (oldid 93512966; glossed) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q61636041 | Lodovico | zh | 罗多维科 | zh.wikipedia, 奧賽羅 (oldid 93512966; glossed) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q61636065 | Montano | zh | 蒙泰诺 | zh.wikipedia, 奧賽羅 (oldid 93512966; glossed) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q64145698 | Morocco | ja | モロッコ公 | ja.wikipedia, ヴェニスの商人 (oldid 110766480; glossed) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q3431800 | Edward Blount | ko | 에드워드 블라운트 | ko.wikipedia, 템페스트 (oldid 39118676; glossed) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q3844047 | Malvolio | ar | ملفوليو | ar.wikipedia, الليلة الثانية عشرة أو كما تشاء (oldid 68169993; glossed) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q7088017 | Olivia | ar | اوليفيا | ar.wikipedia, الليلة الثانية عشرة أو كما تشاء (oldid 68169993; glossed) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q7231797 | Portia | th | ปอร์เชีย | th.wikipedia, เวนิสวาณิช (oldid 13265923; glossed) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q255448 | Portia | fr | Portia | fr.wikipedia, Jules César (Shakespeare) (oldid 240303141; glossed) | the name the play gives her in French (the fr.wikipedia cast list of Jules César, names-evidence.tsv); Wikidata's label (Porcie) is the historians' name for Porcia Catonis |
+| Q255448 | Portia | de | Portia | de.wikipedia, Julius Caesar (Drama) (oldid 271463104; glossed) | the name the play gives her in German (the de.wikipedia cast list of Julius Caesar, names-evidence.tsv); Wikidata's label (Porcia) is the historians' name for Porcia Catonis |
+| Q833645 | The First Folio | de | First Folio | de.wikipedia, Ein Sommernachtstraum (oldid 271869178; glossed) | the de.wikipedia article on the book calls it so, with the English beside it (names-evidence.tsv); Wikidata's label is Shakespeares Folio |
+| Q5503354 | Laurence | ko | 로렌스 | ko.wikipedia, 로미오와 줄리엣 (oldid 41984599; 8 mentions) | the ko.wikipedia article on the play names him so (names-evidence.tsv) |
+| Q125374100 | Benedick | ko | 베네딕 | ko.wikipedia, 헛소동 (oldid 39362047; 1 mentions) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q7932996 | Viola | ko | 비올라 | ko.wikipedia, 십이야 (oldid 42456114; 22 mentions) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q136447144 | Isabella | ko | 이사벨라 | ko.wikipedia, 자에는 자로 (oldid 39618586; 2 mentions) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q6760968 | Maria | ko | 마리아 | ko.wikipedia, 십이야 (oldid 42456114; 3 mentions) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q125374100 | Benedick | ja | ベネディック | ja.wikipedia, 空騒ぎ (oldid 109400578; glossed) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q64145707 | Balthazar | ja | バルサザー | ja.wikipedia, 空騒ぎ (oldid 109400578; 4 mentions) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q136447144 | Isabella | ja | イザベラ | ja.wikipedia, 尺には尺を (oldid 104789035; 24 mentions) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q125374100 | Benedick | ru | Бенедикт | ru.wikipedia, Много шума из ничего (oldid 155987550; glossed) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q64145707 | Balthazar | ru | Бальтазар | ru.wikipedia, Венецианский купец (oldid 154786841; 1 mentions) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q136447144 | Isabella | ru | Изабелла | ru.wikipedia, Мера за меру (oldid 155561487; glossed) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q4787912 | Forest of Arden | ja | アーデンの森 | ja.wikipedia, お気に召すまま (oldid 108541061; 3 mentions) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q4787912 | Forest of Arden | ko | 아든 숲 | ko.wikipedia, 당신 뜻대로 (oldid 39618582; 2 mentions) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q4787912 | Forest of Arden | ar | غابة أردن | ar.wikipedia, كما تشاء (oldid 70748661; 1 mentions) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
+| Q60834955 | Rosalind | ko | 로절린드 | ko.wikipedia, 당신 뜻대로 (oldid 39618582; 4 mentions) | Wikidata has no label in this language; the name is the one the language's Wikipedia article uses (names-evidence.tsv) |
 
-244 picks; 108 of them not found in a source.
+355 picks; 21 of them not found in a source.
 
 ### Names inside the question sentences
 
-A name inside a question ("In *King Lear*, who blinds Gloucester?") was typed by the translator, in the grammatical form the sentence needs. `node scripts/lang-content/check.mjs` compares each with the table, by word stem, and prints what differs. What it still prints is either an inflected form its stemmer does not reach, a name the table has only in English, or a deliberate difference (a monarch named without "of England"). Those lists were read; they are not a proof.
+A name inside a question ("In *King Lear*, who blinds Gloucester?") is typed in the grammatical form the sentence needs. `node scripts/lang-content/check.mjs` compares each with the table and with every form a Wikipedia article was read to use, by word stem, and prints what differs. Names it printed that no source had were replaced by the table's name (in Latin letters where it has no other). What it still prints was read: an inflected or shortened form ("Ромео" for the label "Ромео Монтекки", "Сне в летнюю ночь"), a phrase that translates a title around a name ("Король Яков I"), or a place named with a common noun ("Арденском лесу", as ru.wikipedia writes it). That reading is not a proof.
 
 ### All items
 
@@ -589,7 +706,7 @@ A name inside a question ("In *King Lear*, who blinds Gloucester?") was typed by
 
 A quote challenge is shown in a language only where its line was found in a published public-domain translation. Each line below was copied by `wikisource.py take` from the page revision linked; `verify-challenges.mjs` fails if a challenge quotes anything else. The missing words were chosen from the translated line.
 
-One allowance: F.-V. Hugo's prose marks the original's verse lines with " — "; a quotation may leave that mark out.
+Allowances: F.-V. Hugo's prose marks the original's verse lines with " — "; a quotation may leave that mark out. Zhu Shenghao's prose sometimes says less than the English line (Ophelia's "We know what we are, but know not what we may be" is "我们谁也不知道自己将来会变成什么"): the challenge quotes what he wrote.
 
 ### es
 
@@ -681,6 +798,25 @@ One allowance: F.-V. Hugo's prose marks the original's verse lines with " — ";
 | 83 | O, what a rogue and peasant slave am I! | Какой злодей, какой я раб презренный! | злодей, раб | https://ru.wikisource.org/w/index.php?title=%D0%93%D0%B0%D0%BC%D0%BB%D0%B5%D1%82_%28%D0%A8%D0%B5%D0%BA%D1%81%D0%BF%D0%B8%D1%80%3B_%D0%9A%D1%80%D0%BE%D0%BD%D0%B5%D0%B1%D0%B5%D1%80%D0%B3%29/%D0%9F%D0%A1%D0%A1_1902_%28%D0%92%D0%A2%3A%D0%81%29/%D0%94%D0%B5%D0%B9%D1%81%D1%82%D0%B2%D0%B8%D0%B5_II&oldid=3719740 |
 | 84 | The rest is silence. | конец — молчанье. | конец, молчанье | https://ru.wikisource.org/w/index.php?title=%D0%93%D0%B0%D0%BC%D0%BB%D0%B5%D1%82_%28%D0%A8%D0%B5%D0%BA%D1%81%D0%BF%D0%B8%D1%80%3B_%D0%9A%D1%80%D0%BE%D0%BD%D0%B5%D0%B1%D0%B5%D1%80%D0%B3%29/%D0%9F%D0%A1%D0%A1_1902_%28%D0%92%D0%A2%3A%D0%81%29/%D0%94%D0%B5%D0%B9%D1%81%D1%82%D0%B2%D0%B8%D0%B5_V&oldid=3719752 |
 
+### zh
+
+| # | English line | Line used | Missing words | Page revision |
+|---|---|---|---|---|
+| 0 | To be, or not to be, that is the question. | 生存还是毁灭，这是一个值得考虑的问题 | 生存, 毁灭 | https://zh.wikisource.org/w/index.php?title=%E6%BC%A2%E5%A7%86%E8%90%8A%E8%84%AB/%E7%AC%AC%E4%B8%89%E5%B9%95&oldid=1749886&variant=zh-hans |
+| 14 | The lady doth protest too much, methinks. | 我想那女人发的誓太重了 | 誓 | https://zh.wikisource.org/w/index.php?title=%E6%BC%A2%E5%A7%86%E8%90%8A%E8%84%AB/%E7%AC%AC%E4%B8%89%E5%B9%95&oldid=1749886&variant=zh-hans |
+| 15 | Brevity is the soul of wit. | 简洁是智慧的灵魂 | 简洁, 智慧 | https://zh.wikisource.org/w/index.php?title=%E6%BC%A2%E5%A7%86%E8%90%8A%E8%84%AB/%E7%AC%AC%E4%BA%8C%E5%B9%95&oldid=7905639&variant=zh-hans |
+| 20 | There is nothing either good or bad, but thinking makes it so. | 世上的事情本来没有善恶，都是各人的思想把它们分别出来的 | 思想 | https://zh.wikisource.org/w/index.php?title=%E6%BC%A2%E5%A7%86%E8%90%8A%E8%84%AB/%E7%AC%AC%E4%BA%8C%E5%B9%95&oldid=7905639&variant=zh-hans |
+| 27 | This above all: to thine own self be true. | 尤其要紧的，你必须对你自己忠实 | 自己, 忠实 | https://zh.wikisource.org/w/index.php?title=%E6%BC%A2%E5%A7%86%E8%90%8A%E8%84%AB/%E7%AC%AC%E4%B8%80%E5%B9%95&oldid=1489093&variant=zh-hans |
+| 42 | We know what we are, but know not what we may be. | 我们谁也不知道自己将来会变成什么 | 变成 | https://zh.wikisource.org/w/index.php?title=%E6%BC%A2%E5%A7%86%E8%90%8A%E8%84%AB/%E7%AC%AC%E5%9B%9B%E5%B9%95&oldid=384745&variant=zh-hans |
+| 43 | Frailty, thy name is woman! | 脆弱啊，你的名字就是女人 | 女人 | https://zh.wikisource.org/w/index.php?title=%E6%BC%A2%E5%A7%86%E8%90%8A%E8%84%AB/%E7%AC%AC%E4%B8%80%E5%B9%95&oldid=1489093&variant=zh-hans |
+| 53 | Something is rotten in the state of Denmark. | 丹麦国里恐怕有些不可告人的坏事 | 丹麦, 坏事 | https://zh.wikisource.org/w/index.php?title=%E6%BC%A2%E5%A7%86%E8%90%8A%E8%84%AB/%E7%AC%AC%E4%B8%80%E5%B9%95&oldid=1489093&variant=zh-hans |
+| 54 | Sweets to the sweet. | 好花是应当散在美人身上的 | 好花, 美人 | https://zh.wikisource.org/w/index.php?title=%E6%BC%A2%E5%A7%86%E8%90%8A%E8%84%AB/%E7%AC%AC%E4%BA%94%E5%B9%95&oldid=7905641&variant=zh-hans |
+| 57 | There are more things in heaven and earth, Horatio, than are dreamt of in your philosophy. | 天地之间有许多事情，是你们的哲学里所没有梦想到的 | 天地, 哲学 | https://zh.wikisource.org/w/index.php?title=%E6%BC%A2%E5%A7%86%E8%90%8A%E8%84%AB/%E7%AC%AC%E4%B8%80%E5%B9%95&oldid=1489093&variant=zh-hans |
+| 63 | What a piece of work is a man! How noble in reason! How infinite in faculty! | 人类是一件多么了不得的杰作！多么高贵的理性！多么广大的能力！ | 人类, 理性 | https://zh.wikisource.org/w/index.php?title=%E6%BC%A2%E5%A7%86%E8%90%8A%E8%84%AB/%E7%AC%AC%E4%BA%8C%E5%B9%95&oldid=7905639&variant=zh-hans |
+| 73 | I must be cruel only to be kind. | 为了顾全母子的恩慈，我不得不忍情暴戾 | 恩慈, 暴戾 | https://zh.wikisource.org/w/index.php?title=%E6%BC%A2%E5%A7%86%E8%90%8A%E8%84%AB/%E7%AC%AC%E4%B8%89%E5%B9%95&oldid=1749886&variant=zh-hans |
+| 83 | O, what a rogue and peasant slave am I! | 啊，我是一个多么不中用的蠢才 | 不中用, 蠢才 | https://zh.wikisource.org/w/index.php?title=%E6%BC%A2%E5%A7%86%E8%90%8A%E8%84%AB/%E7%AC%AC%E4%BA%8C%E5%B9%95&oldid=7905639&variant=zh-hans |
+| 84 | The rest is silence. | 此外惟馀沉默 | 沉默 | https://zh.wikisource.org/w/index.php?title=%E6%BC%A2%E5%A7%86%E8%90%8A%E8%84%AB/%E7%AC%AC%E4%BA%94%E5%B9%95&oldid=7905641&variant=zh-hans |
+
 ## Dropped
 
 The English bank has 104 quote challenges. A language has only those listed above; the rest are dropped for that language, not translated. A language with fewer than 8 of its own plays the English originals, marked "In Shakespeare's original English".
@@ -696,16 +832,24 @@ The English bank has 104 quote challenges. A language has only those listed abov
 | ru | 10 | 94 | its own 10 |
 | ar | 0 | 104 | the English originals (104) |
 | hi | 0 | 104 | the English originals (104) |
-| zh | 0 | 104 | the English originals (104) |
+| zh | 14 | 90 | its own 14 |
 | ja | 0 | 104 | the English originals (104) |
 | ko | 0 | 104 | the English originals (104) |
 | vi | 0 | 104 | the English originals (104) |
 | th | 0 | 104 | the English originals (104) |
 | id | 0 | 104 | the English originals (104) |
 
-Why so many are dropped: only *Hamlet* was searched, in one translation per language, and only on Wikisource. Lines that were looked for and not found as a single line of the page were left out rather than stitched together. The other 26 works, and Portuguese, Chinese and Japanese (which have public-domain translations: D. Luís I, Zhu Shenghao, Tsubouchi Shōyō), were not searched: that is work not done, not a finding that no translation exists. No usable public-domain translation is known to the author for Korean, Arabic, Hindi, Vietnamese, Thai or Indonesian; that was not researched either.
+Why so many are dropped: only *Hamlet* was searched, in one translation per language, on Wikisource. A line that was not found whole in one line of the page was left out, not stitched together. Not searched, so no finding either way: the other 26 works in every language; Portuguese, whose Wikisource has the *Hamlet* of King Luís I (1877) and of Bulhão Pato (1879) only as page scans; Japanese (Tsubouchi Shōyō, d. 1935, is public domain, but his *Hamlet* is not on ja.wikisource under that title, and Aozora Bunko was not searched). No public-domain translation is known to the author for Korean, Arabic, Hindi, Vietnamese, Thai or Indonesian; that was not researched.
 
 The full list, one row per dropped challenge and language: `docs/language/data/challenges-dropped.tsv`.
 
 Nothing was dropped from the trivia bank or from story mode: all 200 questions and all 19 encounters exist in every language.
+
+## Checks
+
+What the tools that did not write the text found, and what was done about it. The scores and flags are in `docs/language/data/play-*-summary.json`; every flagged string that was read is a row of `scripts/lang-content/qa/review.tsv`.
+
+**Mechanical** (`npx vitest run src/i18n/pages`): the same keys and {placeholders} as English in every area; every question with its four options; quotations and numbers kept; every name option its source's name or a listed form; no question whose script gives the answer away; the player addressed as each core locale says (du, vous, ты, kamu, 해요체, …); every challenge's missing words in its line, in order, filling back to the line; generated files what their sources make. Each rule is also fed a known-bad input and must object.
+
+**Back-translation**: not run to completion; see the report of this branch.
 

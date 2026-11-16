@@ -1,30 +1,40 @@
 // Writes docs/language/CONTENT-PROVENANCE.md from the data this folder holds, so the record cannot
-// drift from what is shipped. Run after build.mjs:  node scripts/lang-content/provenance.mjs
+// drift from what is shipped. Run after build.mjs, and after qa/report.mjs for the checks' section:
+//   node scripts/lang-content/provenance.mjs
 import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { HERE, ROOT, LANGS, LATIN, entities, gameNames, nameOf, readTsv, wikidata, sourcesOf } from './lib.mjs';
+import { HERE, ROOT, LANGS, LATIN, entities, gameNames, nameOf, readTsv, wikidata } from './lib.mjs';
 const { CHALLENGE_BANK } = await import(join(ROOT, 'src/lib/challenges.ts'));
+const { TRIVIA_BANK } = await import(join(ROOT, 'src/lib/trivia.ts'));
 const optionKeys = JSON.parse(readFileSync(join(HERE, 'trivia-options.json'), 'utf8'));
+const DATA = join(ROOT, 'docs/language/data');
+const json = (f) => (existsSync(join(DATA, f)) ? JSON.parse(readFileSync(join(DATA, f), 'utf8')) : null);
 
-// Which names does each language's trivia take from the table?
+// Which names does each language's trivia take from the table, and which options are written otherwise?
 const used = {};
-const typed = {}; // options that are a name but were typed by the translator, not taken from the table
+const written = {}; // name options written otherwise than the table, with the reason trivia-option-forms.tsv gives
+const forms = new Map(readTsv(join(HERE, 'trivia-option-forms.tsv')).map(([l, n, i, text, reason, why]) => [`${l}/${n}/${i}`, { text, reason, why }]));
 for (const l of LANGS) {
   used[l] = new Map();
+  written[l] = [];
   for (const line of readFileSync(join(HERE, 'trivia', `${l}.txt`), 'utf8').split('\n')) {
     if (!line.trim() || line.startsWith('#')) continue;
     const p = line.split(' | ').map((x) => x.trim());
     p.slice(2).forEach((o, i) => {
       const e = optionKeys[p[0]][i];
-      if (o === '=') used[l].set(`${e.key}#${e.which}`, nameOf(e.key, l, e.which));
-      else if (e) (typed[l] ??= new Map()).set(`${e.key}#${e.which}`, o);
+      if (!e) return;
+      const r = nameOf(e.key, l, e.which);
+      if (o === '=') used[l].set(`${e.key}#${e.which}`, r);
+      else written[l].push({ n: p[0], i, key: e.key, which: e.which, text: o, table: r.name, form: forms.get(`${l}/${p[0]}/${i}`) });
     });
   }
 }
-const HOW = { label: 'Wikidata label', sitelink: "title of that language's Wikipedia article", part: 'part of the Wikidata label', pick: 'chosen by hand; found in a Wikidata label, alias or article title', unsourced: 'chosen by hand; in no source held here', mul: "Wikidata's language-neutral label", english: 'no label: left as in English' };
+const HOW = { label: 'Wikidata label', sitelink: "title of that language's Wikipedia article", part: 'part of the Wikidata label', pick: 'chosen, and found in a label, alias, article title or article text', unsourced: 'chosen; in no source held here', mul: "Wikidata's language-neutral label", english: 'no source: left as in English' };
 const count = (l, how) => [...used[l].values()].filter((r) => r.how === how).length;
 const picks = readTsv(join(HERE, 'picks.tsv'));
+const evidence = readTsv(join(HERE, 'names-evidence.tsv'));
 const sources = readTsv(join(HERE, 'challenges', 'sources.tsv'));
+const nameOptions = Object.values(optionKeys).flat().filter(Boolean).length;
 const out = [];
 const P = (...s) => out.push(...s);
 
@@ -33,52 +43,68 @@ P('# Play content: where every title, name and quotation comes from', '',
   'This covers the playground and story pages, the trivia bank (200 questions), the quote challenges and story mode, in the fifteen languages other than English.', '',
   '## What was written by whom', '',
   '| Content | Who wrote it | What checked it |', '|---|---|---|',
-  '| Titles of works, names of characters, people and places, as trivia options (460 of the 800 options) | Nobody: filled from Wikidata by `build.mjs` | The table below; `used.mjs <lang> flags` |',
+  `| Titles of works, names of characters, people and places, as trivia options (${nameOptions} of the 800 options) | Nobody: filled from the names table by \`build.mjs\` (Wikidata labels; names read in a Wikipedia article; otherwise the English name) | \`play-areas.test.ts\`: each is its source's name, or a form listed below with its reason |`,
   '| Quotations in the quote challenges | Nobody: copied from Wikisource pages by `wikisource.py take` | `verify-challenges.mjs` (each line must be in the evidence file of its source) |',
   "| Shakespeare's lines inside questions, options and story scenes | Left in English on purpose, as on the cards | `play-areas.test.ts` (quotation unchanged) |",
-  '| Trivia questions and the 340 options that are sentences or common nouns; the playground and story text | A language model (Claude), in one pass per language | Mechanical tests; `check.mjs` (names against the table); spelling and back-translation: see `PLAY-CONTENT-QA.md` |', '',
-  '**Not verified by a native speaker.** Nothing in the last row has been read by one.', '',
+  `| Trivia questions and the ${800 - nameOptions} options that are sentences or common nouns; the playground and story text | A language model (Claude), in one pass per language | Mechanical tests; \`check.mjs\` (names in questions against the table); Hunspell; back-translation by two translation models and an alignment check of the answers: see **Checks** below |`, '',
+  '**Not verified by a native speaker.** Nothing in the last row has been read by one. The checks below find what a tool can find; a back-translation that reads well is not proof that a sentence is idiomatic.', '',
   '## Sources', '',
   `- **Wikidata** (labels, aliases and sitelinks; CC0). Fetched ${wikidata.fetched} by \`fetch-wikidata.py\` through the public API (\`wbgetentities\`); stored whole in \`scripts/lang-content/wikidata-labels.json\`. ${Object.keys(entities).length} items.`,
   "- **Wikipedia article titles**, as Wikidata's sitelinks give them, where an item has no label in a language. A title is a name, not text.",
-  '- **Chinese**: labels and titles in Traditional characters were converted to Simplified by MediaWiki\'s own converter on zh.wikipedia.org (`action=parse`, `variant=zh-cn`; `zh-simplify.py`). The result is marked `zh-hans:from` in the JSON.',
+  `- **Wikipedia articles** (text CC BY-SA 4.0; only names are taken from them, never text), fetched 2026-11-16 by \`wikipedia.py\`: the articles on the plays, on Shakespeare and on the Globe, one revision each, read through \`index.php\` (the API was refusing this address with HTTP 429). A name Wikidata has no label for is taken from an article only where the article has it as a word, or writes it with the English beside it ("愛麗兒（Ariel）", "Пигва (Peter Quince)"). Each such name is a line of \`scripts/lang-content/names-evidence.tsv\`: the item, the language, the name, the URL of the article revision, the date, and the words around it. ${evidence.length} lines.`,
+  "- **Chinese**: labels and titles in Traditional characters were converted to Simplified by MediaWiki's own converter on zh.wikipedia.org (`zh-simplify.py`; marked `zh-hans:from` in the JSON); Chinese articles and Zhu Shenghao's translation were read as zh.wikipedia and zh.wikisource serve them in Simplified (`variant=zh-cn` / `zh-hans`).",
   '- **Wikisource** (public-domain translations), fetched 2026-11-16:', '');
 P('| Source id | Language | Work | Translator (died) | Page | Status |', '|---|---|---|---|---|---|');
 for (const [id, lang, work, tr, died, url, status] of sources) P(`| ${id} | ${lang} | ${entities[work]?.labels.en ?? work} (${entities[work]?.id}) | ${tr} (${died}) | ${url} | ${status} |`);
 
 P('', '## Names', '',
-  'Every name the game\'s content uses, with its Wikidata item. The name in each language, and how it was arrived at, is in `docs/language/data/content-names.tsv` (one row per name, two columns per language).', '',
-  'How a name is arrived at, in this order: a hand pick if there is one; the Wikidata label; where there is none (or, for a work, only a copy of the English), the title of that language\'s Wikipedia article; where the English label says more than the game does ("Prince Hamlet" for "Hamlet"), the matching part of the label, in languages that put a title before a name; otherwise the English name is left as it is. **A name is never transliterated by guesswork**: in Arabic, Hindi, Thai and the other non-Latin scripts, a name with no label stays in Latin letters.', '',
+  "Every name the game's content uses, with its Wikidata item. The name in each language, and how it was arrived at, is in `docs/language/data/content-names.tsv` (one row per name, two columns per language).", '',
+  "How a name is arrived at, in this order: a pick (`picks.tsv`), which must be found in a source; the Wikidata label; where there is none (or, for a work, only a copy of the English), the title of that language's Wikipedia article; where the English label says more than the game does (\"Prince Hamlet\" for \"Hamlet\"), the matching part of the label, in languages that put a title before a name; otherwise the English name is left as it is. **A name is never transliterated by guesswork**: in the languages not written in Latin letters, a name no source has stays in Latin letters.", '',
   '### How the names used as trivia options were arrived at, per language', '',
-  '| Language | names from the table | ' + Object.keys(HOW).map((h) => HOW[h]).join(' | ') + ' | names typed by the translator instead |', '|---|---|' + Object.keys(HOW).map(() => '---').join('|') + '|---|');
-for (const l of LANGS) P(`| ${l} | ${used[l].size} | ` + Object.keys(HOW).map((h) => count(l, h)).join(' | ') + ` | ${typed[l]?.size ?? 0} |`);
-P('', 'The last column: options that are a name, but where the translator typed the name instead of taking it from the table, because the table had no form in that script or had the form of a different thing (a Roman consul for a character in a play). **Those are model-written names, not sourced ones.** They are:', '');
-for (const l of LANGS) if (typed[l]?.size) P(`- **${l}** (${typed[l].size}): ` + [...typed[l].entries()].map(([k, v]) => { const [key, w] = k.split('#'); return `${gameNames[key][w]} → ${v}`; }).join('; '));
-P('', 'In a Latin-alphabet language, "left as in English" is usually right (Orsino is Orsino). In the others it means the player reads a Latin-letter name inside a sentence in their own script: correct, but not localised. Those are listed here so a reviewer can supply the established form:', '');
+  '| Language | names from the table | ' + Object.keys(HOW).map((h) => HOW[h]).join(' | ') + ' | options written otherwise, with a reason |', '|---|---|' + Object.keys(HOW).map(() => '---').join('|') + '|---|');
+for (const l of LANGS) P(`| ${l} | ${used[l].size} | ` + Object.keys(HOW).map((h) => count(l, h)).join(' | ') + ` | ${written[l].length} |`);
+
+P('', '### Name options written otherwise than the table', '',
+  'An option that is a name, written by hand. `play-areas.test.ts` accepts one only if it is the table\'s name shortened (a label\'s disambiguator dropped), the table\'s name with a title or a common noun translated around it ("El rey Lear", "Soneto 116"), or listed in `trivia-option-forms.tsv` with its reason. Reasons: **title** (a title or a common noun translated, the name as the table has it); **inflected** (the case the question needs); **number** (an ordinal or numeral the language writes); **script** (every option of that question in Latin letters, because a lone label in the language\'s script would have shown which option is right). A name typed by the translator in a script no source has is not among them: those were replaced by the table\'s name.', '');
+const unlisted = [];
+for (const l of LANGS) {
+  if (!written[l].length) continue;
+  const byReason = {};
+  for (const w of written[l]) {
+    const reason = w.form ? w.form.reason : 'contains the table\'s name';
+    (byReason[reason] ??= []).push(`${gameNames[w.key][w.which]} → ${w.text}`);
+    if (w.form && w.form.text !== w.text) unlisted.push(`${l} ${w.n}/${w.i}`);
+  }
+  P(`- **${l}** (${written[l].length}): ` + Object.entries(byReason).map(([r, xs]) => `*${r}*: ${[...new Set(xs)].join('; ')}`).join('. '));
+}
+const scriptQs = [...forms.entries()].filter(([, f]) => f.reason === 'script').reduce((m, [k]) => { const [l, n] = k.split('/'); (m[l] ??= new Set()).add(n); return m; }, {});
+P('', 'Questions written in Latin letters throughout for that reason: ' + Object.entries(scriptQs).map(([l, s]) => `${l} ${[...s].join(', ')}`).join('; ') + '.', '');
+P('In a Latin-alphabet language, "left as in English" is usually right (Orsino is Orsino). In the others it means the player reads a Latin-letter name inside a sentence in their own script: correct, but not localised. These had no label and no article that names them; a reviewer with a published translation can supply the form (with its source):', '');
 for (const l of LANGS.filter((x) => !LATIN.has(x))) {
   const left = [...used[l].entries()].filter(([, r]) => r.how === 'english').map(([k]) => { const [key, w] = k.split('#'); return `${gameNames[key][w]} (${entities[key].id})`; });
   P(`- **${l}** (${left.length}): ${left.join(', ') || 'none'}`);
 }
-P('', '### Names chosen by hand (`picks.tsv`)', '',
-  'A pick overrides the label: where the label is of something else (a real king, not the play\'s character; the modern town, not the castle), carries a title or a disambiguator, or is missing. "Found in" names the source that has the picked form. **Not found** means the form is the model\'s own recollection of the published translations: it has not been checked against a source and should be the first thing a reviewer looks at.', '',
+P('', '### Names chosen (`picks.tsv`)', '',
+  "A pick overrides the label: where the label is of something else (a real king, not the play's character; the historical Porcia, not Brutus's wife as the play names her), carries a title or a disambiguator, or is missing. \"Found in\" names the source that has the form. **Not found** means no source held here has it; in the languages not written in Latin letters no such pick is left that is a name in that script, only translated common nouns (\"Битва при Александрии\").", '',
   '| Item | Name in the game | Language | Picked | Found in | Note |', '|---|---|---|---|---|---|');
 let unsourced = 0;
 for (const [k, lang, name, note] of picks) {
   const [key, w] = k.split('#');
   if (!entities[key]) continue;
-  const found = sourcesOf(key, lang).find((s) => s.value.toLocaleLowerCase().includes(name.toLocaleLowerCase()));
+  const r = nameOf(key, lang, Number(w ?? 0));
+  const found = r.how === 'pick' ? r.where : r.how === 'english' ? 'the English name, kept' : null;
   if (!found) unsourced++;
-  P(`| ${entities[key].id} | ${gameNames[key][Number(w ?? 0)]} | ${lang} | ${name} | ${found ? found.where : '**not found**'} | ${note ?? ''} |`);
+  P(`| ${entities[key].id} | ${gameNames[key][Number(w ?? 0)]} | ${lang} | ${name} | ${found ?? '**not found**'} | ${note ?? ''} |`);
 }
 P('', `${picks.length} picks; ${unsourced} of them not found in a source.`, '',
   '### Names inside the question sentences', '',
-  'A name inside a question ("In *King Lear*, who blinds Gloucester?") was typed by the translator, in the grammatical form the sentence needs. `node scripts/lang-content/check.mjs` compares each with the table, by word stem, and prints what differs. What it still prints is either an inflected form its stemmer does not reach, a name the table has only in English, or a deliberate difference (a monarch named without "of England"). Those lists were read; they are not a proof.', '',
+  'A name inside a question ("In *King Lear*, who blinds Gloucester?") is typed in the grammatical form the sentence needs. `node scripts/lang-content/check.mjs` compares each with the table and with every form a Wikipedia article was read to use, by word stem, and prints what differs. Names it printed that no source had were replaced by the table\'s name (in Latin letters where it has no other). What it still prints was read: an inflected or shortened form ("Ромео" for the label "Ромео Монтекки", "Сне в летнюю ночь"), a phrase that translates a title around a name ("Король Яков I"), or a place named with a common noun ("Арденском лесу", as ru.wikipedia writes it). That reading is not a proof.', '',
   '### All items', '', '| Key | Wikidata | English name(s) in the game | English label |', '|---|---|---|---|');
 for (const key of Object.keys(gameNames)) P(`| ${key} | ${entities[key].id} | ${gameNames[key].join(', ')} | ${entities[key].labels.en ?? ''} |`);
 
 P('', '## Quotations', '',
   'A quote challenge is shown in a language only where its line was found in a published public-domain translation. Each line below was copied by `wikisource.py take` from the page revision linked; `verify-challenges.mjs` fails if a challenge quotes anything else. The missing words were chosen from the translated line.', '',
-  "One allowance: F.-V. Hugo's prose marks the original's verse lines with \" — \"; a quotation may leave that mark out.", '');
+  "Allowances: F.-V. Hugo's prose marks the original's verse lines with \" — \"; a quotation may leave that mark out. Zhu Shenghao's prose sometimes says less than the English line (Ophelia's \"We know what we are, but know not what we may be\" is \"我们谁也不知道自己将来会变成什么\"): the challenge quotes what he wrote.", '');
 const ev = {};
 for (const [id] of sources) ev[id] = existsSync(join(HERE, 'challenges', 'evidence', `${id}.txt`)) ? readFileSync(join(HERE, 'challenges', 'evidence', `${id}.txt`), 'utf8').split('\n').filter(Boolean).map((l) => l.split('\t')) : [];
 const have = {};
@@ -96,8 +122,40 @@ for (const l of LANGS) {
 P('## Dropped', '', `The English bank has ${CHALLENGE_BANK.length} quote challenges. A language has only those listed above; the rest are dropped for that language, not translated. A language with fewer than 8 of its own plays the English originals, marked "In Shakespeare's original English".`, '',
   '| Language | Has | Dropped | Plays |', '|---|---|---|---|');
 for (const l of LANGS) P(`| ${l} | ${have[l].length} | ${CHALLENGE_BANK.length - have[l].length} | ${have[l].length >= 8 ? 'its own ' + have[l].length : 'the English originals (' + CHALLENGE_BANK.length + ')'} |`);
-P('', 'Why so many are dropped: only *Hamlet* was searched, in one translation per language, and only on Wikisource. Lines that were looked for and not found as a single line of the page were left out rather than stitched together. The other 26 works, and Portuguese, Chinese and Japanese (which have public-domain translations: D. Luís I, Zhu Shenghao, Tsubouchi Shōyō), were not searched: that is work not done, not a finding that no translation exists. No usable public-domain translation is known to the author for Korean, Arabic, Hindi, Vietnamese, Thai or Indonesian; that was not researched either.', '',
+P('', 'Why so many are dropped: only *Hamlet* was searched, in one translation per language, on Wikisource. A line that was not found whole in one line of the page was left out, not stitched together. Not searched, so no finding either way: the other 26 works in every language; Portuguese, whose Wikisource has the *Hamlet* of King Luís I (1877) and of Bulhão Pato (1879) only as page scans; Japanese (Tsubouchi Shōyō, d. 1935, is public domain, but his *Hamlet* is not on ja.wikisource under that title, and Aozora Bunko was not searched). No public-domain translation is known to the author for Korean, Arabic, Hindi, Vietnamese, Thai or Indonesian; that was not researched.', '',
   'The full list, one row per dropped challenge and language: `docs/language/data/challenges-dropped.tsv`.', '',
   'Nothing was dropped from the trivia bank or from story mode: all 200 questions and all 19 encounters exist in every language.', '');
+
+// ---------- the checks ----------
+const bt = json('play-bt-summary.json');
+const al = json('play-align-summary.json');
+const sp = json('play-spell-summary.json');
+const review = readTsv(join(HERE, 'qa', 'review.tsv'));
+P('## Checks', '', 'What the tools that did not write the text found, and what was done about it. The scores and flags are in `docs/language/data/play-*-summary.json`; every flagged string that was read is a row of `scripts/lang-content/qa/review.tsv`.', '');
+P('**Mechanical** (`npx vitest run src/i18n/pages`): the same keys and {placeholders} as English in every area; every question with its four options; quotations and numbers kept; every name option its source\'s name or a listed form; no question whose script gives the answer away; the player addressed as each core locale says (du, vous, ты, kamu, 해요체, …); every challenge\'s missing words in its line, in order, filling back to the line; generated files what their sources make. Each rule is also fed a known-bad input and must object.', '');
+if (bt) {
+  P('**Back-translation** (each string into English by a translation model, compared with the English source by sentence embedding; a string under the threshold is flagged and read). Twelve controls per language pair a translation with the wrong English sentence and must be flagged.', '',
+    '| Language | Engine | Strings | Flagged (trivia) | Controls caught | Median similarity |', '|---|---|---|---|---|---|');
+  for (const [eng, langs] of Object.entries(bt.engines)) for (const [l, s] of Object.entries(langs)) P(`| ${l} | ${eng} | ${s.status ?? s.strings} | ${s.status ? '' : `${s.flagged} (${s.flaggedTrivia})`} | ${s.status ? '' : `${s.controlsCaught}/${s.controls}`} | ${s.medianCos ?? ''} |`);
+  P('', `Models: ${bt.models}. Threshold ${bt.threshold}.`, '');
+} else P('**Back-translation**: not run to completion; see the report of this branch.', '');
+if (al) {
+  P('**Answers** (`qa/align.py`): the back-translation of each translated option, compared with all four English options of its question. Misplaced means closer to another option than to its own: a changed answer, or a swap. Ten controls per language file one option\'s translation under another\'s place and must come out misplaced.', '',
+    '| Language | Engine | Options | Misplaced | Controls caught |', '|---|---|---|---|---|');
+  for (const r of al.rows) P(`| ${r.lang} | ${r.engine} | ${r.options} | ${r.misplaced} | ${r.controlsCaught}/${r.controls} |`);
+  P('');
+}
+if (sp) {
+  P(`**Spelling** (Hunspell ${sp.hunspell}, dictionaries of the shared language pipeline): words the dictionary does not know, after names are set aside. Every one was read.`, '', '| Language | Dictionary | Unknown words | Of them, real errors (fixed) |', '|---|---|---|---|');
+  for (const [l, s] of Object.entries(sp.languages)) P(`| ${l} | ${s.dictionary ?? 'none'} | ${s.unknown ?? ''} | ${s.errors ?? ''} |`);
+  P('');
+}
+if (review.length) {
+  const v = review.reduce((m, r) => ((m[r[2]] = (m[r[2]] ?? 0) + 1), m), {});
+  P(`**Read by hand**: ${review.length} flagged strings. ` + Object.entries(v).map(([k, n]) => `${n} ${k}`).join(', ') + '. *ok* means the translation says what the English says and the flag came from the checking model (a title it renders literally, a word it does not know); *fixed* means the translation was wrong and was changed; the note says how.', '');
+  const fixed = review.filter((r) => r[2] === 'fixed');
+  if (fixed.length) { P('Fixed:', ''); for (const [l, id, , note] of fixed) P(`- ${l} \`${id}\`: ${note}`); P(''); }
+}
+if (unlisted.length) throw new Error('forms whose text does not match the option: ' + unlisted.join(', '));
 writeFileSync(join(ROOT, 'docs/language/CONTENT-PROVENANCE.md'), out.join('\n') + '\n');
 console.log('CONTENT-PROVENANCE.md:', out.length, 'lines;', unsourced, 'unsourced picks');
