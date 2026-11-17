@@ -132,6 +132,7 @@
     "zh",
     "ja",
     "ko",
+    "vi",
     "th",
     "id"
    ]
@@ -4972,7 +4973,331 @@
      },
      "injectionPairsLost": 0
     },
-    "write": null,
+    "write": {
+     "plays": 110,
+     "modelSourced": 110,
+     "formKept": 29,
+     "formKeptWilson": {
+      "rate": 0.2636363636363636,
+      "low": 0.19028324402641963,
+      "high": 0.35294116199405234
+     },
+     "meanCraft": 16.172727272727272,
+     "meanFormPoints": 10.736363636363636,
+     "inLanguage": 107,
+     "inLanguageWilson": {
+      "rate": 0.9727272727272728,
+      "low": 0.9228691577444634,
+      "high": 0.9906820302145929
+     },
+     "commentary": 5,
+     "commentaryNarrow": 0,
+     "formKeptIfRhymeWaived": 63,
+     "drafts": 209,
+     "draftsFormKept": 47,
+     "draftsRanOn": 1,
+     "draftsEmpty": 0,
+     "tokensPerSecond": 19.47490665333843,
+     "minPlaysPerForm": 10,
+     "byForm": {
+      "luc-bat": {
+       "plays": 10,
+       "modelSourced": 10,
+       "formKept": 0,
+       "formKeptWilson": {
+        "rate": 0,
+        "low": 0,
+        "high": 0.2775328030260577
+       },
+       "meanCraft": 10.8,
+       "meanFormPoints": 6.4,
+       "inLanguage": 10,
+       "inLanguageWilson": {
+        "rate": 1,
+        "low": 0.7224671969739421,
+        "high": 0.9999999999999999
+       },
+       "commentary": 1,
+       "commentaryNarrow": 0,
+       "formKeptIfRhymeWaived": 1
+      },
+      "haiku": {
+       "plays": 10,
+       "modelSourced": 10,
+       "formKept": 0,
+       "formKeptWilson": {
+        "rate": 0,
+        "low": 0,
+        "high": 0.2775328030260577
+       },
+       "meanCraft": 13.2,
+       "meanFormPoints": 9.5,
+       "inLanguage": 10,
+       "inLanguageWilson": {
+        "rate": 1,
+        "low": 0.7224671969739421,
+        "high": 0.9999999999999999
+       },
+       "commentary": 0,
+       "commentaryNarrow": 0,
+       "formKeptIfRhymeWaived": 0
+      },
+      "crescendo": {
+       "plays": 10,
+       "modelSourced": 10,
+       "formKept": 4,
+       "formKeptWilson": {
+        "rate": 0.4,
+        "low": 0.1681803285264069,
+        "high": 0.6873262320788047
+       },
+       "meanCraft": 19.7,
+       "meanFormPoints": 11.6,
+       "inLanguage": 10,
+       "inLanguageWilson": {
+        "rate": 1,
+        "low": 0.7224671969739421,
+        "high": 0.9999999999999999
+       },
+       "commentary": 0,
+       "commentaryNarrow": 0,
+       "formKeptIfRhymeWaived": 4
+      },
+      "heroic-couplet": {
+       "plays": 10,
+       "modelSourced": 10,
+       "formKept": 0,
+       "formKeptWilson": {
+        "rate": 0,
+        "low": 0,
+        "high": 0.2775328030260577
+       },
+       "meanCraft": 10.7,
+       "meanFormPoints": 8,
+       "inLanguage": 8,
+       "inLanguageWilson": {
+        "rate": 0.8,
+        "low": 0.4901624691221323,
+        "high": 0.9433178490622331
+       },
+       "commentary": 0,
+       "commentaryNarrow": 0,
+       "formKeptIfRhymeWaived": 2
+      },
+      "quatrain-abab": {
+       "plays": 10,
+       "modelSourced": 10,
+       "formKept": 1,
+       "formKeptWilson": {
+        "rate": 0.1,
+        "low": 0.017876212896073995,
+        "high": 0.4041500295247722
+       },
+       "meanCraft": 16.4,
+       "meanFormPoints": 9.5,
+       "inLanguage": 10,
+       "inLanguageWilson": {
+        "rate": 1,
+        "low": 0.7224671969739421,
+        "high": 0.9999999999999999
+       },
+       "commentary": 0,
+       "commentaryNarrow": 0,
+       "formKeptIfRhymeWaived": 10
+      },
+      "quatrain-aabb": {
+       "plays": 10,
+       "modelSourced": 10,
+       "formKept": 1,
+       "formKeptWilson": {
+        "rate": 0.1,
+        "low": 0.017876212896073995,
+        "high": 0.4041500295247722
+       },
+       "meanCraft": 16.9,
+       "meanFormPoints": 10.9,
+       "inLanguage": 9,
+       "inLanguageWilson": {
+        "rate": 0.9,
+        "low": 0.5958499704752279,
+        "high": 0.982123787103926
+       },
+       "commentary": 0,
+       "commentaryNarrow": 0,
+       "formKeptIfRhymeWaived": 10
+      },
+      "couplet": {
+       "plays": 10,
+       "modelSourced": 10,
+       "formKept": 6,
+       "formKeptWilson": {
+        "rate": 0.6,
+        "low": 0.3126737679211953,
+        "high": 0.831819671473593
+       },
+       "meanCraft": 20,
+       "meanFormPoints": 14.4,
+       "inLanguage": 10,
+       "inLanguageWilson": {
+        "rate": 1,
+        "low": 0.7224671969739421,
+        "high": 0.9999999999999999
+       },
+       "commentary": 0,
+       "commentaryNarrow": 0,
+       "formKeptIfRhymeWaived": 10
+      },
+      "anaphora": {
+       "plays": 10,
+       "modelSourced": 10,
+       "formKept": 8,
+       "formKeptWilson": {
+        "rate": 0.8,
+        "low": 0.4901624691221323,
+        "high": 0.9433178490622331
+       },
+       "meanCraft": 25.1,
+       "meanFormPoints": 17.2,
+       "inLanguage": 10,
+       "inLanguageWilson": {
+        "rate": 1,
+        "low": 0.7224671969739421,
+        "high": 0.9999999999999999
+       },
+       "commentary": 0,
+       "commentaryNarrow": 0,
+       "formKeptIfRhymeWaived": 8
+      },
+      "epistrophe": {
+       "plays": 10,
+       "modelSourced": 10,
+       "formKept": 0,
+       "formKeptWilson": {
+        "rate": 0,
+        "low": 0,
+        "high": 0.2775328030260577
+       },
+       "meanCraft": 10.8,
+       "meanFormPoints": 6,
+       "inLanguage": 10,
+       "inLanguageWilson": {
+        "rate": 1,
+        "low": 0.7224671969739421,
+        "high": 0.9999999999999999
+       },
+       "commentary": 0,
+       "commentaryNarrow": 0,
+       "formKeptIfRhymeWaived": 0
+      },
+      "tercet": {
+       "plays": 10,
+       "modelSourced": 10,
+       "formKept": 1,
+       "formKeptWilson": {
+        "rate": 0.1,
+        "low": 0.017876212896073995,
+        "high": 0.4041500295247722
+       },
+       "meanCraft": 11.6,
+       "meanFormPoints": 7.4,
+       "inLanguage": 10,
+       "inLanguageWilson": {
+        "rate": 1,
+        "low": 0.7224671969739421,
+        "high": 0.9999999999999999
+       },
+       "commentary": 0,
+       "commentaryNarrow": 0,
+       "formKeptIfRhymeWaived": 10
+      },
+      "acrostic": {
+       "plays": 10,
+       "modelSourced": 10,
+       "formKept": 8,
+       "formKeptWilson": {
+        "rate": 0.8,
+        "low": 0.4901624691221323,
+        "high": 0.9433178490622331
+       },
+       "meanCraft": 22.7,
+       "meanFormPoints": 17.2,
+       "inLanguage": 10,
+       "inLanguageWilson": {
+        "rate": 1,
+        "low": 0.7224671969739421,
+        "high": 0.9999999999999999
+       },
+       "commentary": 4,
+       "commentaryNarrow": 0,
+       "formKeptIfRhymeWaived": 8
+      }
+     },
+     "byDifficulty": {
+      "apprentice": {
+       "plays": 44,
+       "modelSourced": 44,
+       "formKept": 9,
+       "formKeptWilson": {
+        "rate": 0.20454545454545456,
+        "low": 0.11153253016317785,
+        "high": 0.3450057818370671
+       },
+       "meanCraft": 15.25,
+       "meanFormPoints": 8.977272727272727,
+       "inLanguage": 43,
+       "inLanguageWilson": {
+        "rate": 0.9772727272727273,
+        "low": 0.8819229018613075,
+        "high": 0.9959767479844506
+       },
+       "commentary": 3,
+       "commentaryNarrow": 0,
+       "formKeptIfRhymeWaived": 23
+      },
+      "player": {
+       "plays": 33,
+       "modelSourced": 33,
+       "formKept": 8,
+       "formKeptWilson": {
+        "rate": 0.24242424242424243,
+        "low": 0.1283171331191419,
+        "high": 0.41024619970721604
+       },
+       "meanCraft": 14.757575757575758,
+       "meanFormPoints": 11.06060606060606,
+       "inLanguage": 32,
+       "inLanguageWilson": {
+        "rate": 0.9696969696969697,
+        "low": 0.8468127447352589,
+        "high": 0.9946305895225589
+       },
+       "commentary": 1,
+       "commentaryNarrow": 0,
+       "formKeptIfRhymeWaived": 19
+      },
+      "master": {
+       "plays": 33,
+       "modelSourced": 33,
+       "formKept": 12,
+       "formKeptWilson": {
+        "rate": 0.36363636363636365,
+        "low": 0.22187178144210248,
+        "high": 0.5338382182894987
+       },
+       "meanCraft": 18.818181818181817,
+       "meanFormPoints": 12.757575757575758,
+       "inLanguage": 32,
+       "inLanguageWilson": {
+        "rate": 0.9696969696969697,
+        "low": 0.8468127447352589,
+        "high": 0.9946305895225589
+       },
+       "commentary": 1,
+       "commentaryNarrow": 0,
+       "formKeptIfRhymeWaived": 21
+      }
+     }
+    },
     "judges": {
      "ok": true,
      "why": []
@@ -4980,7 +5305,7 @@
     "writes": {
      "ok": false,
      "why": [
-      "not measured"
+      "kept the form in full in 29/110 plays (26%), under 30%"
      ]
     }
    },
