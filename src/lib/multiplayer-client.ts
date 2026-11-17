@@ -358,9 +358,12 @@ export async function joinQueue(signal?: AbortSignal): Promise<{ room_id: string
   return response.json();
 }
 
-/** Leave the quick-match queue. */
-export async function leaveQueue(): Promise<void> {
-  await fetch('/api/v1/multiplayer/queue', { method: 'DELETE', credentials: 'include' }).catch(() => undefined);
+/**
+ * Leave the quick-match queue. `keepalive` lets the request outlive the page: for a page that
+ * is being left (pagehide), so a closed tab does not stay matchable while the server waits.
+ */
+export async function leaveQueue(opts: { keepalive?: boolean } = {}): Promise<void> {
+  await fetch('/api/v1/multiplayer/queue', { method: 'DELETE', credentials: 'include', keepalive: opts.keepalive === true }).catch(() => undefined);
 }
 
 /** Open a private room. The token is what a friend joins with. */

@@ -910,6 +910,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     });
     window.addEventListener('pagehide', (e) => {
       client?.disconnect();
+      // A page left while it waits for a quick match leaves the queue, so the next player is
+      // not paired with a closed tab. The server also gives up a request whose connection has
+      // gone (handlers.rs join_queue); this covers a proxy that does not pass the close on.
+      if (queueAbort) {
+        queueAbort.abort();
+        resetQueue();
+        void leaveQueue({ keepalive: true });
+      }
       // Kept in the back/forward cache: if the page is shown again, it takes its seat again.
       if (e.persisted) {
         client = null;
