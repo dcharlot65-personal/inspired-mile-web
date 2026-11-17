@@ -55,6 +55,11 @@ cleanup() {
 }
 trap cleanup EXIT
 
+# Is the process in a step's pid file still that step? A pid is reused once its process has ended:
+# on 2026-11-16 logs/review.pid, left by a review that had finished, named another session's job
+# (a build queue), which `status` reported as our review and `stop review` would have killed.
+ours() { [ -n "${1:-}" ] && ps -o command= -p "$1" 2>/dev/null | grep -q "scripts/lang/run.sh $2"; }
+
 wait_http() {  # wait_http <url> <seconds> <log>
   for _ in $(seq 1 "$2"); do curl -fsS -o /dev/null "$1" 2>/dev/null && return 0; sleep 1; done
   echo "run.sh: $1 did not answer in $2 s" >&2; tail -20 "$3" >&2 || true; return 1
@@ -92,7 +97,7 @@ case "$STEP" in
     WORK=$LANGQA_HOME/work/$WHAT
     PIDF=$LANGQA_HOME/logs/$WHAT.pid
     # One copy of a step at a time: two would write the same result file.
-    if [ -s "$PIDF" ] && kill -0 "$(cat "$PIDF")" 2>/dev/null; then echo "run.sh: $WHAT is already running (pid $(cat "$PIDF")); not starting another" >&2; exit 3; fi
+    if [ -s "$PIDF" ] && ours "$(cat "$PIDF")" "$WHAT"; then echo "run.sh: $WHAT is already running (pid $(cat "$PIDF")); not starting another" >&2; exit 3; fi
     rm -rf "$WORK"; mkdir -p "$WORK"
     # A copy, so the job does not change under the next rb run in this checkout.
     tar -cf - --exclude node_modules --exclude .git --exclude dist --exclude .e2e --exclude backend/target --exclude .langqa scripts/lang src docs/language | tar -xf - -C "$WORK"
@@ -105,9 +110,9 @@ case "$STEP" in
   stop)
     # Stop a detached step of ours, by its pid file, and everything under it.
     WHAT=${1:?stop needs a step}; PIDF=$LANGQA_HOME/logs/$WHAT.pid
-    if [ -s "$PIDF" ] && kill -0 "$(cat "$PIDF")" 2>/dev/null; then kill_tree "$(cat "$PIDF")"; echo "stopped $WHAT"; else echo "$WHAT is not running"; fi ;;
+    if [ -s "$PIDF" ] && ours "$(cat "$PIDF")" "$WHAT"; then kill_tree "$(cat "$PIDF")"; echo "stopped $WHAT"; else echo "$WHAT is not running (no process of ours under that pid)"; fi ;;
   status)
-    for w in meaning review; do f=$LANGQA_HOME/logs/$w.pid; if [ -s "$f" ] && kill -0 "$(cat "$f")" 2>/dev/null; then echo "$w: running (pid $(cat "$f"))"; else echo "$w: not running"; fi; done
+    for w in grammar meaning review; do f=$LANGQA_HOME/logs/$w.pid; if [ -s "$f" ] && ours "$(cat "$f")" "$w"; then echo "$w: running (pid $(cat "$f"))"; else echo "$w: not running"; fi; done
     for f in "$LANGQA_HOME"/logs/{grammar,meaning,review}.log; do [ -f "$f" ] && { echo "== $f"; tail -5 "$f"; }; done; ls -la "$OUT" ;;
   *) sed -n 2,18p "$0"; exit 2 ;;
 esac

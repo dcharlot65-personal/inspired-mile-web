@@ -18,7 +18,9 @@ language model, whose opinion is only ever a proposal.
 | 1. Plurals and numbers | The form of a counted noun, by CLDR plural rule (`Intl.PluralRules`); numbers by `Intl.NumberFormat`; lists by `Intl.ListFormat`. Every count has exactly the forms its language has. | `npx vitest run` (`src/i18n/quality.test.ts`) | yes |
 | 7. Mechanical checks | Same keys and placeholders everywhere, nothing left in English, spacing, punctuation and quotation marks by language, hidden and bidirectional characters, script. | `npx vitest run`; `node scripts/lang/check.mjs` | yes |
 | 5. Terminology | One word per game term per language; platform terms as the vendors publish them. | `npx vitest run`; `node scripts/lang/glossary.mjs` | yes |
-| 6. Form names | The name of each verse form is the one recorded in the glossary, with its source. | `npx vitest run` | yes |
+| 6. Form names | The name of each verse form is the one recorded in the glossary. Each has a status (sourced, head word sourced, the form's own name, not sourced) that its cited evidence must bear out, and an exception about a name (meaning, spelling, grammar) must say the same. | `npx vitest run` | yes |
+| 5b. Citations | Every `cite` in `docs/language/glossary.json` is true of the fetched file it names, exactly (an Android or Firefox string, a Google Help title or heading, a Wikipedia title as item Q…, a Wikidata label or alias, a Wiktionary word); prose that names a source has cites. | `npx vitest run` | yes |
+| 3b. Single words | Relic power words, the four criteria and the glossary's core terms against English Wiktionary's translation tables for the English word (or the word's own entry where the table has nothing for the language). Not listed: changed, or kept with a reason in `allow/words.json`. | `npx vitest run` | yes |
 | 2. Grammar and spelling | LanguageTool and Hunspell over every string as a rendered sentence, each string on its own (joined into one text, LanguageTool's text-level rules judged a string by its neighbours). Thai is cut into words by ICU first, and a rejected piece counts only if no join with the pieces touching it is a known word. | build host: `run.sh grammar` | yes (exit 1 on an unlisted hit, or on an exception that no longer matches anything) |
 | 3. Meaning | Back-translation with MADLAD-400 scored against the English (MiniLM cosine), and LaBSE scoring the translation against the English directly. Flagged when both are under 0.6; a control scores each against the wrong English sentence with the same rule. | build host: `run.sh meaning`, then `node scripts/lang/meaning.mjs` | yes (exit 1 on an unreviewed flag or a string changed since it was scored) |
 | 4. Second opinion | A different model, run locally, reviews each string as a native-speaking reviewer. | build host: `run.sh review` | no: it proposes, steps 2 and 3 decide |
@@ -46,6 +48,10 @@ RB='export PATH=$HOME/.cargo/bin:/opt/homebrew/bin:$PATH;'
 
 Both long steps resume: a string already scored or reviewed is asked about again only if its
 text (or the English) has changed since.
+
+`grammar.json` keeps every sentence it read; `node scripts/lang/fresh.mjs` lists each string whose
+grammar result is not about its current text (exit 1), and how much of each language the second
+model has read as it is now. Run it before trusting a clean grammar result.
 
 Copy the result files from `$LANGQA_HOME/out/` on the host into
 `docs/language/results/`, then:
@@ -101,12 +107,22 @@ Each survivor is read against the English and where it appears, and the decision
 its reason go in `docs/language/results/adoption-reading.json`; only those marked
 `adopt` are applied (`apply.mjs`), and the report lists both.
 
+## How the tools read a template
+
+`lib/strings.mjs` turns each template into the sentences a player sees, as the pages fill them:
+`{rule}` with the caster's wording in the keys `lib/context.mjs` lists (a unit test holds that list to
+the pages' calls), the model's label as the page shows it, a curse's name where the page passes one,
+the link texts in a sentence's `{terms}` / `{privacy}` slots, and a Korean particle after a value in
+the form `src/lib/verse/msg.ts` chooses.
+
 ## Sources
 
 `fetch-cldr.mjs` (plural rules, quotation marks), `fetch-wikidata.mjs` and
 `fetch-wikidata-titles.mjs` (names of verse forms), `fetch-wikidata-names.mjs` (how
 each language writes Shakespeare and Mercutio), `fetch-wiktionary.mjs`
 (Wiktionary's translation tables, for forms no Wikipedia names),
+`fetch-wiktionary-words.mjs` (Wiktionary's tables for the game's single words, and the own entries
+of words those tables do not cover), `fetch-opencc.mjs` (OpenCC's traditional-to-simplified table),
 `fetch-platform-terms.mjs` (Android's translations of platform terms),
 `fetch-apple-terms.mjs` (Apple's wording for passkeys), `fetch-mozilla-terms.mjs`
 and `fetch-google-help.mjs` ("sign out", which Android's strings lack). Each writes a file under `docs/language/sources/` with

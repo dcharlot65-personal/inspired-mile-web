@@ -11,10 +11,12 @@
  * was not run, in those words; nothing is filled in.
  */
 import { existsSync, readFileSync, writeFileSync } from 'node:fs';
-import { allStrings, meaningTexts, readJson, ROOT, HOUSE_QUOTES, LOCALES, parseMessage } from './lib/strings.mjs';
+import { allStrings, checkedTexts, grammarItems, meaningTexts, readJson, ROOT, HOUSE_QUOTES, LOCALES, parseMessage } from './lib/strings.mjs';
 import { applyAllowlist, checkLanguage, untranslated } from './lib/mechanical.mjs';
-import { checkGlossary } from './lib/glossary.mjs';
+import { checkCitations, checkGlossary } from './lib/glossary.mjs';
+import { checkWords, wordsToCheck } from './lib/words.mjs';
 const { argumentNames, pluralBlocks } = await import('../../src/lib/verse/msg.ts');
+const { loadPack } = await import('../../src/lib/verse/packs/index.ts');
 
 const D = `${ROOT}docs/language/`;
 const R = `${D}results/`;
@@ -39,6 +41,24 @@ const adoption = opt(`${R}adoption.json`);
 const reading = opt(`${R}adoption-reading.json`);
 const readOf = (lang) => reading?.languages?.[lang] ?? {};
 const now = await allStrings();
+const SOURCE_FILES = ['aosp-terms', 'mozilla-terms', 'google-help', 'apple-passkeys', 'wikidata-names', 'wikidata-terms', 'wikidata-titles', 'wiktionary-translations', 'wiktionary-words'];
+const sources = Object.fromEntries(SOURCE_FILES.map((f) => [f, readJson(`${D}sources/${f}.json`)]));
+const citations = checkCitations(glossary, sources);
+// Single words against the dictionary (lib/words.mjs).
+const packs = {};
+const uiAll = {};
+for (const l of LOCALES) {
+  packs[l] = await loadPack(l);
+  uiAll[l] = now[l].ui;
+}
+const words = checkWords(wordsToCheck(LOCALES, packs, uiAll, glossary), sources['wiktionary-words'], readJson(`${D}allow/words.json`, { entries: [] }).entries, readJson(`${D}sources/opencc-ts.json`).map);
+// Is each grammar result about the string as it is now? (scripts/lang/fresh.mjs makes the same comparison.)
+const grammarStale = {};
+if (grammar) for (const l of LOCALES) {
+  const want = checkedTexts(await grammarItems(l, now[l]));
+  const got = grammar.languages?.[l]?.checked;
+  grammarStale[l] = got ? Object.keys(want).filter((id) => JSON.stringify(got[id] ?? null) !== JSON.stringify(want[id])).length : Object.keys(want).length;
+}
 const helpers = { parseMessage, argumentNames, pluralBlocks };
 const THRESHOLD = 0.6;
 const XTHRESHOLD = 0.6;
@@ -121,8 +141,8 @@ p('What this report can and cannot say. A tool that covers a language can show t
 p('## Summary by language', '');
 p('Strings: interface strings (the six Shakespeare quotations, which are the source text, are not counted) + player-facing strings in the language pack (verse lines, power words, acrostic words).', '');
 p(`"Changed" and "before" are measured against \`${baselineFile.ref}\` at \`${baselineFile.commit.slice(0, 10)}\` (\`docs/language/baseline.json\`, made by \`node scripts/lang/baseline.mjs\`): the strings as they stand without this work.`, '');
-p('| Language | Strings (interface + pack) | Changed | Mechanical: before → now (accepted) | Glossary: before → now | LanguageTool: first run → now (accepted / open) | Hunspell: first run → now (accepted / open) | Meaning: flagged (accepted / open) | Second model: proposed / survived the tools / adopted after reading |');
-p('|---|---|---|---|---|---|---|---|---|');
+p('| Language | Strings (interface + pack) | Changed | Mechanical: before → now (accepted) | Glossary: before → now | LanguageTool: first run → now (accepted / open) | Hunspell: first run → now (accepted / open) | Meaning: flagged (accepted / open) | Dictionary: listed / read and kept / no entry | Second model: proposed / survived the tools / adopted after reading |');
+p('|---|---|---|---|---|---|---|---|---|---|');
 for (const lang of LOCALES) {
   const g = grammar?.languages?.[lang];
   const hits = (tool) => (g ? g.hits.filter((h) => h.tool === tool) : []);
@@ -137,7 +157,9 @@ for (const lang of LOCALES) {
   const taken = survived ? survived.filter((a) => readOf(lang)[a.key]?.decision === 'adopt').length : null;
   const rt = lang === 'en' ? 'source' : !rv ? 'not run' : `${proposed} / ${survived ? survived.length : 'not decided'} / ${taken ?? 'not read'} (of ${Object.keys(rv.reviewed).length} reviewed)`;
   const ui = Object.keys(now[lang].ui).length - Object.keys(HOUSE_QUOTES).length;
-  p(`| ${NAME[lang]} (${lang}) | ${ui} + ${Object.keys(now[lang].pack).length} | ${changes[lang].ui.length} + ${changes[lang].pack.length} | ${mech[lang].before ? mech[lang].before.length : 'n/a'} → ${mech[lang].open.length} (${mech[lang].accepted}) | ${lang === 'en' ? '—' : `${mech[lang].glossBefore.length} → ${mech[lang].gloss.length}`} | ${lt} | ${hs} | ${mt} | ${rt} |`);
+  const wr = words.rows.filter((r) => r.lang === lang);
+  const dict = lang === 'en' ? 'source' : `${wr.filter((r) => r.state === 'listed').length} / ${wr.filter((r) => r.state === 'not-listed' && r.allowed).length} / ${wr.filter((r) => r.state === 'not-covered' || r.state === 'no-page').length}${wr.some((r) => r.state === 'not-listed' && !r.allowed) ? ` (**${wr.filter((r) => r.state === 'not-listed' && !r.allowed).length} open**)` : ''}`;
+  p(`| ${NAME[lang]} (${lang}) | ${ui} + ${Object.keys(now[lang].pack).length} | ${changes[lang].ui.length} + ${changes[lang].pack.length} | ${mech[lang].before ? mech[lang].before.length : 'n/a'} → ${mech[lang].open.length} (${mech[lang].accepted}) | ${lang === 'en' ? '—' : `${mech[lang].glossBefore.length} → ${mech[lang].gloss.length}`} | ${lt} | ${hs} | ${mt} | ${dict} | ${rt} |`);
 }
 p('');
 p('"First run → now": hits on the first full run (2026-11-16, after the earlier mechanical and plural fixes, before this triage) and on the final run; a hit that is gone was fixed in the string. Every hit still there is accepted, with its reason, in `docs/language/allow/`.', '');
@@ -164,6 +186,8 @@ if (grammar) {
   p(`- **No spelling dictionary** for ${noHs.map((l) => NAME[l]).join(', ')}: Hunspell works on words separated by spaces and has no dictionary for them.`);
   p('- Thai is written without spaces; its words are found with the ICU word segmenter (`Intl.Segmenter`) before they are put to the dictionary, so a Thai "misspelling" can also be a segmentation the dictionary does not know.');
   p('- Neither tool reads verse as verse. The pack lines (the written opponent\'s verses) are checked for spelling and for outright grammar errors only.', '');
+  const staleTotal = Object.values(grammarStale).reduce((a, b) => a + b, 0);
+  p(grammar.languages?.en?.checked ? (staleTotal ? `**${staleTotal} strings changed after this grammar run** and were not checked as they are now (\`node scripts/lang/fresh.mjs\` lists them): ${Object.entries(grammarStale).filter(([, n]) => n).map(([l, n]) => `${l} ${n}`).join(', ')}.` : 'Every string was checked by LanguageTool and Hunspell as it is now: `grammar.json` keeps each sentence it read, and `node scripts/lang/fresh.mjs` finds none that has changed since.') : '**This grammar result keeps no record of the text it read**, so it cannot show that it is about the current strings.', '');
 } else p('**LanguageTool and Hunspell were not run** (no `docs/language/results/grammar.json`). Nothing is claimed about grammar or spelling.', '');
 
 if (bt) {
@@ -171,9 +195,19 @@ if (bt) {
   p('| Language | Scored | Under the threshold by back-translation alone | Flagged (both signals) | Mismatched control pairs the rule catches |');
   p('|---|---|---|---|---|');
   for (const lang of LOCALES) if (lang !== 'en') p(`| ${NAME[lang]} | ${meaning[lang].missing ? 'not run' : meaning[lang].scored} | ${meaning[lang].missing ? '—' : meaning[lang].backOnly} | ${meaning[lang].missing ? '—' : meaning[lang].flagged.length} | ${meaning[lang].control === null ? '—' : meaning[lang].control + '%'} |`);
-  p('', 'Back-translation finds a changed meaning; it does not find a translation that is faithful and clumsy, and it is unreliable on one-word labels, where the translation model has no context. What is scored: every interface string, and each relic\'s power words against the English word they translate. The written opponent\'s verses and the acrostic words are not: each language\'s were written to keep a form, with no English line to compare.', '');
+  p('', 'A string is flagged only when **both** signals doubt it, so a drift that one of them sees and the other does not is not flagged: the column "under the threshold by back-translation alone" counts those, and they were not all read. Single words, where this matters most (Hindi लालसा, greed, for "ambition", passed with LaBSE 0.72), are checked against a dictionary instead (next section). Back-translation finds a changed meaning; it does not find a translation that is faithful and clumsy, and it is unreliable on one-word labels, where the translation model has no context. What is scored: every interface string, and each relic\'s power words against the English word they translate. The written opponent\'s verses and the acrostic words are not: each language\'s were written to keep a form, with no English line to compare.', '');
   p(`Every flagged string was read, and either changed (then scored again) or accepted with its reason in \`docs/language/allow/meaning.json\` (${allowMeaning.entries.length} entries). Most flags are names and one-word labels that MADLAD copies through or reads in another sense (Spanish *Mazo* came back as 'Mazo', Arabic الخصم, the opponent, as 'discount'). The reader was the engineer doing this work, a language model, not a native speaker: an accepted flag means a second reading found the string right, not that a native speaker did.`, '');
 } else p('**Back-translation was not run** (no `docs/language/results/bt.json`). Nothing is claimed about meaning beyond the mechanical and glossary checks.', '');
+
+{
+  const changedWords = [];
+  for (const lang of LOCALES) for (const c of changes[lang].pack) if (c.key.startsWith('relics.')) changedWords.push(`${lang} ${c.key}: ${c.before} → ${c.after}`);
+  p('## Single words against a dictionary', '');
+  p(`Each relic's power words (they score in a duel), the judge's four criteria and the glossary's core terms, ${words.rows.length} words in 15 languages, are looked up in English Wiktionary's translation tables for their English word (\`docs/language/sources/wiktionary-words.json\`, fetched by \`scripts/lang/fetch-wiktionary-words.mjs\`; Chinese is compared through OpenCC's traditional-to-simplified table, since Wiktionary writes Mandarin in traditional characters). Where a table has nothing for the language, the word's own Wiktionary entry decides by its English glosses. A word that is not listed is changed or read and kept with its reason in \`docs/language/allow/words.json\`; the unit tests fail on one that is neither, and name the old Hindi लालसा and Portuguese *engenho* when they are planted.`, '');
+  p(`- Listed: ${words.rows.filter((r) => r.state === 'listed').length}. Not listed, read and kept: ${words.rows.filter((r) => r.state === 'not-listed' && r.allowed).length} (most are a sense the table lacks: Shakespeare's Fool as the jester, the stage play, "drown" given as a noun, plurals, the word games use for a deck). Open: ${words.open.length}. No entry at all: ${words.rows.filter((r) => r.state === 'not-covered' || r.state === 'no-page').length}, which proves nothing either way.`);
+  p(`- Power words changed: ${changedWords.length ? changedWords.join('; ') : 'none'}.`, '');
+  p(`The glossary's citations (${citations.count} of them: Android's, Firefox's, Google's and Apple's strings, Wikipedia titles, Wikidata labels, Wiktionary words) are each checked exactly against the fetched file by the unit tests: ${citations.problems.length ? `**${citations.problems.length} do not hold**` : 'all hold'}.`, '');
+}
 
 if (review) {
   p(`Second opinion: ${String(review.server?.model ?? review.model ?? 'a local model').split('/').pop()} (see PROVENANCE.md for the repository, revision and checksum) under llama.cpp ${review.server?.build ?? ''}, asked per language to review each string as a native-speaking localisation reviewer. Its control (planted errors it must catch, a correct line it must pass):`, '');
@@ -254,11 +288,18 @@ if (allowGrammar.entries.length) {
 // ---------- form names ----------
 p('## Form names: where each comes from', '');
 const names = Object.entries(glossary.names ?? {});
-const unsourced = [];
-for (const [key, n] of names) for (const [lang, e] of Object.entries(n.langs)) if (/not sourced|coined|not verified/i.test(e.source)) unsourced.push({ key, lang, ...e });
-p(`${names.length} names × 15 languages = ${names.length * 15}. ${names.length * 15 - unsourced.length} are an article title, label or alias found through Wikidata (the record is \`docs/language/glossary.json\`, with the fetched data in \`docs/language/sources/\`). **${unsourced.length} have no such source** and are listed here for a native reader:`, '');
+const byStatus = { sourced: [], head: [], 'own-name': [], 'not-sourced': [] };
+for (const [key, n] of names) for (const [lang, e] of Object.entries(n.langs)) (byStatus[e.status] ??= []).push({ key, lang, ...e });
+p(`${names.length} names × 15 languages = ${names.length * 15}, each with a status in \`docs/language/glossary.json\` that the unit tests hold to its cited evidence:`, '');
+p(`- **Sourced** (${byStatus.sourced.length}): the name is that language's Wikipedia article title, a Wikidata label or alias, or a Wiktionary translation, in the fetched data.`);
+p(`- **Head word sourced** (${byStatus.head.length}): the quatrains, whose head word is sourced (Cuarteta, Vierzeiler, 四行诗) and whose words for the rhyme pattern are the translator's.`);
+p(`- **The form's own name** (${byStatus['own-name'].length}): Jueju and Lục bát, as other languages' Wikipedias title them, where this language has no article.`);
+p(`- **Not sourced** (${byStatus['not-sourced'].length}): the translator's name; no article, label or dictionary entry gives one in this language. Listed here for a native reader. Where the meaning check doubted one of these, the exception says "Not sourced" and gives the reading it was kept on, which is a language model's reading.`, '');
 p('| Name | Language | Text | Why it is not sourced |', '|---|---|---|---|');
-for (const u of unsourced) p(`| ${code(u.key)} | ${u.lang} | ${cell(u.value)} | ${cell(u.source)} |`);
+for (const u of byStatus['not-sourced']) p(`| ${code(u.key)} | ${u.lang} | ${cell(u.value)} | ${cell(u.source)} |`);
+p('', 'Head-sourced names (the rhyme-pattern words are not sourced):', '');
+p('| Name | Language | Text | Sourced head |', '|---|---|---|---|');
+for (const u of byStatus.head) p(`| ${code(u.key)} | ${u.lang} | ${cell(u.value)} | ${cell(u.head)} |`);
 p('');
 
 // ---------- second-model corrections, as read ----------
