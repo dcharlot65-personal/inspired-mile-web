@@ -438,6 +438,24 @@ for (const v of CORPUS) {
   if (!v.isWellFormed()) throw new Error('a corpus verse holds a lone surrogate; the server can never receive one');
 }
 
+/**
+ * Pairs of English words for the stem a copy measure compares by (text.ts englishStem): the
+ * plural and third person, "-ies", "-eth" and "-est", "-ing", "-ed", "-es" after a hiss, the
+ * possessive, a doubled consonant and a silent e left behind, the stem taken off twice; and
+ * pairs too short to lose an ending, or whose ending is part of the word.
+ */
+const STEM_PAIRS: Array<[string, string]> = [
+  ['stories', 'story'], ['parties', 'party'], ['cities', 'city'], ['lies', 'lie'], ['skies', 'sky'],
+  ['speaketh', 'speak'], ['dreameth', 'dream'], ['boldest', 'bold'], ['brightest', 'bright'], ['best', 'be'],
+  ['singing', 'sing'], ['burning', 'burn'], ['ring', 'r'], ['wandered', 'wander'], ['turned', 'turn'], ['red', 'r'],
+  ['kisses', 'kiss'], ['boxes', 'box'], ['wishes', 'wish'], ['churches', 'church'], ['buzzes', 'buzz'],
+  ['hears', 'hear'], ['kings', 'king'], ['is', 'i'], ['grass', 'gras'], ['virus', 'viru'],
+  ["night's", 'night'], ["king's", 'kings'],
+  ['stopped', 'stop'], ['running', 'run'], ['hopped', 'hop'], ['falls', 'fall'], ['kissed', 'kiss'], ['shallow', 'shall'],
+  ['hoped', 'hope'], ['stages', 'stage'], ['raged', 'rage'], ['the', 'th'],
+  ['limpings', 'limp'], ['wanderings', 'wander'], ['flatteries', 'flattery'],
+];
+
 /** Each written and hand-written verse of two lines or more, against its copies (copiesOf). */
 const COPY_PAIRS: Array<[string, string]> = (() => {
   const r = rng(2424);
@@ -691,6 +709,13 @@ function textJson(): string {
     measure(v.toUpperCase(), v);
   }
   for (const [copy, source] of COPY_PAIRS) measure(copy, source);
+  // Words that differ only by an ending a copy may change (sameWordFor: the English stem), each
+  // ending the stem takes off, and words it must leave alone: line by line, so the copy measure
+  // (taken, own, carry) shows whether two words were read as one.
+  for (const [mine, theirs] of STEM_PAIRS) {
+    measure(`The ${mine} of the ${mine}\nAnd ${mine} again tonight`, `The ${theirs} of the ${theirs}\nAnd ${theirs} again tonight`);
+    measure(`${mine} ${mine} ${mine}`, `${theirs}`);
+  }
   for (let i = 0; i < 500; i++) measure(pick(r, CORPUS), pick(r, CORPUS));
   // The two words a pair of lines is compared on for rhyme.
   const ends = Array.from({ length: 400 }, () => {
