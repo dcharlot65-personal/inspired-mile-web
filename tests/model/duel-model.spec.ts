@@ -89,7 +89,7 @@ for (const tier of TIERS) {
       const writes = spec.writesIn.includes(o.code);
       expect(o.opponent, o.code).toBe(writes ? 'model' : 'written');
       // A language the model does not write in is listed under "Written opponent", and only such a one.
-      expect(o.heading, `${o.code}: listed under`).toBe(writes ? `${LABEL[tier]} · on this device` : 'Written opponent');
+      expect(o.heading, `${o.code}: listed under`).toBe(writes ? `${spec.label} · on this device` : 'Written opponent');
       expect(o.text, `${o.code}: the language's name alone`).not.toContain('·');
     }
     for (const code of ['en', 'th', 'ja', 'es']) {
