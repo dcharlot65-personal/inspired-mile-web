@@ -129,7 +129,12 @@ requester is paired with the next player or waits (`matchmaking.rs`). A quick-ma
 second player does not arrive within `Timing::arrival` (60 s, from the pairing) closes with
 `opponent_absent`, and so does a private room where a friend waits that long for an inviter who
 is away. The page stops asking for a quick match after `QUICK_MATCH_LIMIT_MS` (3 min) and says
-so. A reconnect keeps the verse being written and the character chosen while the round is the
+so. Nobody is paired with a player who has gone: every request runs to its end
+(`backend/src/request_task.rs`, so a transaction is never cut off part-way), but a request is
+told when its client has gone (`ClientGone`), and a quick-match request then gives up its place;
+the page also leaves the queue on `pagehide` (a keepalive `DELETE /queue`), for a proxy that
+does not pass the close on. Only a handler that holds no transaction may stop early on
+`ClientGone`. A reconnect keeps the verse being written and the character chosen while the round is the
 same; the client keeps trying for `RECONNECT_WINDOW_MS` (60 s, longer than the 45 s grace); a
 reload, a visit to another page or a back/forward-cache restore (`pageshow`) takes the seat back
 (the tab keeps it in sessionStorage, `inspired-mile-mp-seat`, with the draft); a returning player
@@ -198,11 +203,15 @@ left behind by a killed run is found by its port: `lsof -nP -iTCP:<port> -sTCP:L
   (all its strings are in one `STRINGS` object).
 - **Sessions live on the server** (`auth_sessions`, `backend/src/auth/sessions.rs`). The cookie
   holds a JWT whose `sid` names a row; a request is signed in only while that row is live.
-  Sign-out revokes the row, `POST /auth/logout/all` revokes all of the account's. The game's
-  WebSocket outlives the request that opened it, so it checks its row again on every message it
-  acts on and every `SESSION_CHECK_EVERY` (15 s) while quiet, and closes with `signed_out` once
-  the row is gone (`multiplayer/handlers.rs session_ended`; a database that cannot be asked
-  within 3 s is not taken for a sign-out, so an outage does not cost a match). The cookie is
+  Sign-out revokes the row, `POST /auth/logout/all` revokes all of the account's. Every check
+  reads one condition (`sessions.rs live_session!`). The game's WebSocket outlives the request
+  that opened it, so it checks its row again before it acts on a message (a seat, a verse, a
+  forfeit; a message that can do nothing costs no lookup, and an answer is good for
+  `SESSION_FRESH_FOR`, 1 s) and every `SESSION_CHECK_EVERY` (15 s) while in a room, and closes
+  with `signed_out` once the row is gone (`multiplayer/handlers.rs SessionGate`; a database that
+  cannot be asked within 3 s is not taken for a sign-out, so an outage does not cost a match). A
+  quick-match request checks its partner's row before answering "matched": a player who signed
+  out while waiting is not paired (`join_queue`). The cookie is
   `__Host-im_token` when every `WEBAUTHN_ORIGIN` is https (production) and `im_token` over
   http (localhost, tests: browsers refuse the prefix there); HttpOnly, Secure, SameSite=Strict.
 - **Adding or removing a passkey, and adding an email, need a fresh proof** (a passkey

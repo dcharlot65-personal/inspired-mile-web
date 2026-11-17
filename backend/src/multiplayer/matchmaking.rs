@@ -3,6 +3,13 @@
 //! A player who asks for a match either meets someone already waiting, or waits. When two
 //! meet, one room is made with a seat held for each, and both are told its id.
 //!
+//! The queue knows nothing of sessions. A waiting player may have signed out since they asked
+//! (here, or on every device elsewhere): `Enqueued::Matched` names the partner and the session
+//! they asked with, and the requester's handler checks it before answering (handlers.rs
+//! `join_queue`). A waiting player whose request has ended (their client went: closed tab,
+//! page left, connection lost) is skipped here; with every request run to its end
+//! (request_task.rs), the handler ends it itself when its client goes.
+//!
 //! A limit is the business of the player who reached it. The requester is checked before
 //! anything else. A waiting player who has since reached a limit (they opened rooms while
 //! they waited) is told so and leaves the queue; the requester goes on to the next player,
@@ -18,6 +25,8 @@ pub type Pairing = Result<Uuid, RoomError>;
 
 struct QueueEntry {
     user_id: Uuid,
+    /// The session they asked with.
+    sid: Uuid,
     username: String,
     /// The network they asked from (`handlers::origin_of`).
     origin: String,
@@ -25,10 +34,19 @@ struct QueueEntry {
     tx: oneshot::Sender<Pairing>,
 }
 
+/// The player a requester was paired with, and the session they asked with.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub struct Partner {
+    pub user_id: Uuid,
+    pub sid: Uuid,
+}
+
 /// What asking for a match gave.
 pub enum Enqueued {
-    /// Someone was waiting: the room is ready.
-    Matched(Uuid),
+    /// Someone was waiting: the room is ready, with a seat for each, and they have been told.
+    /// They asked up to a wait ago: whether their session is still live is the caller's to
+    /// check (the queue holds no database).
+    Matched { room_id: Uuid, partner: Partner },
     /// Nobody was waiting. The receiver fires when someone arrives (or with the limit this
     /// player has reached by then), and fails if this player leaves the queue or asks again
     /// from somewhere else.
@@ -46,9 +64,10 @@ impl MatchmakingQueue {
     }
 
     /// Pair this player with the longest-waiting other player, or put them in the queue.
-    /// `origin` is the network they ask from (`handlers::origin_of`). A player who
-    /// already holds as many rooms as they may (or whose network does) is refused at once.
-    pub async fn enqueue(&self, user_id: Uuid, username: String, origin: String, rooms: &RoomManager) -> Result<Enqueued, RoomError> {
+    /// `sid` is the session they ask with, `origin` the network they ask from
+    /// (`handlers::origin_of`). A player who already holds as many rooms as they may (or whose
+    /// network does) is refused at once.
+    pub async fn enqueue(&self, user_id: Uuid, sid: Uuid, username: String, origin: String, rooms: &RoomManager) -> Result<Enqueued, RoomError> {
         rooms.room_limit(user_id, &origin).await?;
         let mut q = self.queue.lock().await;
         // One place in the queue per player: asking again replaces the earlier request,
@@ -102,15 +121,16 @@ impl MatchmakingQueue {
                     }
                 }
             };
+            let partner = Partner { user_id: waiting.user_id, sid: waiting.sid };
             if waiting.tx.send(Ok(room_id)).is_ok() {
-                return Ok(Enqueued::Matched(room_id));
+                return Ok(Enqueued::Matched { room_id, partner });
             }
             // They left between the check and the send: the room was for nobody.
             rooms.remove_room(room_id).await;
         }
 
         let (tx, rx) = oneshot::channel();
-        q.push(QueueEntry { user_id, username, origin, tx });
+        q.push(QueueEntry { user_id, sid, username, origin, tx });
         Ok(Enqueued::Waiting(rx))
     }
 
@@ -131,17 +151,26 @@ mod tests {
     use super::*;
     use crate::multiplayer::game_room::RoomState;
 
+    /// A session for a request; the queue only passes it on.
+    fn sid() -> Uuid {
+        Uuid::new_v4()
+    }
+
     #[tokio::test]
     async fn two_players_are_paired_into_one_room_with_both_seats_held() {
         let (rooms, queue) = (RoomManager::new(), MatchmakingQueue::new());
         let (a, b) = (Uuid::new_v4(), Uuid::new_v4());
-        let Enqueued::Waiting(mut rx) = queue.enqueue(a, "ann".into(), "203.0.113.1".into(), &rooms).await.unwrap() else {
+        let ann_sid = sid();
+        let Enqueued::Waiting(mut rx) = queue.enqueue(a, ann_sid, "ann".into(), "203.0.113.1".into(), &rooms).await.unwrap() else {
             panic!("the first player waits")
         };
         assert_eq!(queue.size().await, 1);
-        let Enqueued::Matched(room_id) = queue.enqueue(b, "bob".into(), "203.0.113.1".into(), &rooms).await.unwrap() else {
+        let Enqueued::Matched { room_id, partner } = queue.enqueue(b, sid(), "bob".into(), "203.0.113.1".into(), &rooms).await.unwrap() else {
             panic!("the second player is matched")
         };
+        // The requester is told who they were paired with, and the session that player asked
+        // with, so the handler can check it is still live.
+        assert_eq!(partner, Partner { user_id: a, sid: ann_sid });
         // Both are told the same room, and it exists with a seat for each.
         assert_eq!(rx.try_recv(), Ok(Ok(room_id)));
         assert_eq!(queue.size().await, 0);
@@ -154,22 +183,22 @@ mod tests {
         let (rooms, queue) = (RoomManager::new(), MatchmakingQueue::new());
         let (a, b, c) = (Uuid::new_v4(), Uuid::new_v4(), Uuid::new_v4());
         // The same player asks twice: the first request is cancelled, and they still wait.
-        let Enqueued::Waiting(mut first) = queue.enqueue(a, "ann".into(), "203.0.113.1".into(), &rooms).await.unwrap() else { panic!() };
-        let Enqueued::Waiting(second) = queue.enqueue(a, "ann".into(), "203.0.113.1".into(), &rooms).await.unwrap() else {
+        let Enqueued::Waiting(mut first) = queue.enqueue(a, sid(), "ann".into(), "203.0.113.1".into(), &rooms).await.unwrap() else { panic!() };
+        let Enqueued::Waiting(second) = queue.enqueue(a, sid(), "ann".into(), "203.0.113.1".into(), &rooms).await.unwrap() else {
             panic!("a player is not matched with themselves")
         };
         assert!(first.try_recv().is_err());
         assert_eq!(queue.size().await, 1);
         // Their request ends without a word (the connection went): they are skipped.
         drop(second);
-        let Enqueued::Waiting(mut rx_b) = queue.enqueue(b, "bob".into(), "203.0.113.1".into(), &rooms).await.unwrap() else {
+        let Enqueued::Waiting(mut rx_b) = queue.enqueue(b, sid(), "bob".into(), "203.0.113.1".into(), &rooms).await.unwrap() else {
             panic!("nobody real was waiting")
         };
         assert!(rooms.rooms_of(a).await.is_empty(), "no room was left behind for the player who went");
         // Bob leaves the queue; Cy then waits rather than being paired with him.
         queue.dequeue(b).await;
         assert!(rx_b.try_recv().is_err());
-        assert!(matches!(queue.enqueue(c, "cy".into(), "203.0.113.1".into(), &rooms).await.unwrap(), Enqueued::Waiting(_)));
+        assert!(matches!(queue.enqueue(c, sid(), "cy".into(), "203.0.113.1".into(), &rooms).await.unwrap(), Enqueued::Waiting(_)));
     }
     /// Ann holds two rooms, asks for a match and waits; while she waits she opens a third.
     async fn ann_waits_holding_the_limit(rooms: &RoomManager, queue: &MatchmakingQueue, ann: Uuid, net: &str) -> oneshot::Receiver<Pairing> {
@@ -177,7 +206,7 @@ mod tests {
         for _ in 0..MAX_ROOMS_PER_USER - 1 {
             rooms.create_room(&[(ann, "ann".into())], &[net.to_string()]).await.unwrap();
         }
-        let Enqueued::Waiting(rx) = queue.enqueue(ann, "ann".into(), net.into(), rooms).await.unwrap() else {
+        let Enqueued::Waiting(rx) = queue.enqueue(ann, sid(), "ann".into(), net.into(), rooms).await.unwrap() else {
             panic!("nobody else is waiting")
         };
         rooms.create_room(&[(ann, "ann".into())], &[net.to_string()]).await.unwrap();
@@ -191,13 +220,13 @@ mod tests {
         let mut ann_rx = ann_waits_holding_the_limit(&rooms, &queue, ann, "203.0.113.1").await;
         // Cy holds no room. He is not refused for Ann's rooms: he waits, and Ann is told why
         // she was not paired.
-        let cy_asks = queue.enqueue(cy, "cy".into(), "198.51.100.2".into(), &rooms).await;
+        let cy_asks = queue.enqueue(cy, sid(), "cy".into(), "198.51.100.2".into(), &rooms).await;
         assert!(matches!(cy_asks, Ok(Enqueued::Waiting(_))), "Cy was refused for Ann's rooms");
         assert_eq!(ann_rx.try_recv(), Ok(Err(RoomError::TooManyRooms)));
         assert!(rooms.rooms_of(cy).await.is_empty());
         // And the next player is paired with Cy.
         let Ok(Enqueued::Waiting(cy_rx)) = cy_asks else { unreachable!() };
-        let Enqueued::Matched(room) = queue.enqueue(dee, "dee".into(), "198.51.100.3".into(), &rooms).await.unwrap() else {
+        let Enqueued::Matched { room_id: room, .. } = queue.enqueue(dee, sid(), "dee".into(), "198.51.100.3".into(), &rooms).await.unwrap() else {
             panic!("Dee is paired with Cy")
         };
         assert_eq!(cy_rx.await, Ok(Ok(room)));
@@ -209,12 +238,12 @@ mod tests {
         let (rooms, queue) = (RoomManager::new(), MatchmakingQueue::new());
         let (ann, cy) = (Uuid::new_v4(), Uuid::new_v4());
         let school = "203.0.113.9";
-        let Enqueued::Waiting(mut ann_rx) = queue.enqueue(ann, "ann".into(), school.into(), &rooms).await.unwrap() else { panic!() };
+        let Enqueued::Waiting(mut ann_rx) = queue.enqueue(ann, sid(), "ann".into(), school.into(), &rooms).await.unwrap() else { panic!() };
         // While Ann waits, her network fills up with other players' rooms.
         for _ in 0..MAX_ROOMS_PER_ADDRESS {
             rooms.create_room(&[(Uuid::new_v4(), "pupil".into())], &[school.to_string()]).await.unwrap();
         }
-        let cy_asks = queue.enqueue(cy, "cy".into(), "198.51.100.2".into(), &rooms).await;
+        let cy_asks = queue.enqueue(cy, sid(), "cy".into(), "198.51.100.2".into(), &rooms).await;
         assert!(matches!(cy_asks, Ok(Enqueued::Waiting(_))), "Cy was refused for Ann's network");
         assert_eq!(ann_rx.try_recv(), Ok(Err(RoomError::TooManyFromAddress)));
     }
@@ -223,16 +252,16 @@ mod tests {
     async fn a_requester_over_a_limit_is_refused_and_the_waiting_player_keeps_their_place() {
         let (rooms, queue) = (RoomManager::new(), MatchmakingQueue::new());
         let (ann, bob, cy) = (Uuid::new_v4(), Uuid::new_v4(), Uuid::new_v4());
-        let Enqueued::Waiting(mut ann_rx) = queue.enqueue(ann, "ann".into(), "203.0.113.1".into(), &rooms).await.unwrap() else { panic!() };
+        let Enqueued::Waiting(mut ann_rx) = queue.enqueue(ann, sid(), "ann".into(), "203.0.113.1".into(), &rooms).await.unwrap() else { panic!() };
         // Bob holds as many rooms as he may: he is refused, and Ann still waits, first in line.
         for _ in 0..crate::multiplayer::game_room::MAX_ROOMS_PER_USER {
             rooms.create_room(&[(bob, "bob".into())], &["198.51.100.7".to_string()]).await.unwrap();
         }
-        let refused = queue.enqueue(bob, "bob".into(), "198.51.100.7".into(), &rooms).await;
+        let refused = queue.enqueue(bob, sid(), "bob".into(), "198.51.100.7".into(), &rooms).await;
         assert!(matches!(refused, Err(RoomError::TooManyRooms)));
         assert!(ann_rx.try_recv().is_err(), "Ann is neither paired nor refused");
         assert_eq!(queue.size().await, 1);
-        let Enqueued::Matched(room) = queue.enqueue(cy, "cy".into(), "192.0.2.4".into(), &rooms).await.unwrap() else { panic!() };
+        let Enqueued::Matched { room_id: room, .. } = queue.enqueue(cy, sid(), "cy".into(), "192.0.2.4".into(), &rooms).await.unwrap() else { panic!() };
         assert_eq!(ann_rx.await, Ok(Ok(room)));
     }
 }

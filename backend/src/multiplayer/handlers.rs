@@ -34,6 +34,7 @@ use super::game_room::{
 use super::matchmaking::{Enqueued, MatchmakingQueue};
 use crate::auth::{client_addr, Claims};
 use crate::config::Config;
+use crate::request_task::ClientGone;
 
 /// Largest WebSocket message accepted. The largest honest one is a verse of
 /// `MAX_VERSE_BYTES` in a small JSON envelope; a JSON string can at worst double it.
@@ -50,11 +51,16 @@ const MESSAGE_WINDOW: Duration = Duration::from_secs(10);
 const QUEUE_WAIT: Duration = Duration::from_secs(30);
 /// Errors with which a room lets a connection go: nothing follows them.
 const ROOM_GOODBYES: [&str; 2] = ["opponent_absent", "room_closed"];
-/// How often an open connection checks that its session is still live. The socket's session
-/// is checked once, at the handshake (`auth_middleware`); signing out, on this device or "on
-/// every device", ends the session on the server (auth/sessions.rs), and a game connection
-/// opened before then is closed within this long, or at once if it sends anything.
+/// How often a connection in a room checks that its session is still live. The socket's
+/// session is checked once, at the handshake (`auth_middleware`); signing out, on this device or
+/// "on every device", ends the session on the server (auth/sessions.rs), and a game connection
+/// opened before then is closed within this long, or when it next asks for something to be done
+/// (`SessionGate`).
 pub const SESSION_CHECK_EVERY: Duration = Duration::from_secs(15);
+/// How long a connection takes a live answer as still good: a burst of messages costs one
+/// lookup, not one each. A message sent within this long of the last check is acted on
+/// without asking again.
+pub const SESSION_FRESH_FOR: Duration = Duration::from_secs(1);
 /// The longest a session check may take. A slower database is treated as one that cannot be
 /// asked (`session_ended`), so a stalled check cannot hold the connection's events back.
 const SESSION_CHECK_WITHIN: Duration = Duration::from_secs(3);
@@ -151,20 +157,43 @@ fn queue_answer(room_id: Option<Uuid>, position: usize, status: &str) -> Json<Qu
 /// Ask for a match and wait up to `QUEUE_WAIT` for one. The answer is "matched" with the
 /// room to join, "timeout", or "cancelled" (the player left the queue or asked again from
 /// another tab).
+///
+/// Two players are never paired with someone who has gone:
+///   - a client that goes while waiting (closed tab, page left, connection lost) ends its
+///     request (`ClientGone`), and the queue skips a request that has ended;
+///   - a partner who has signed out since they asked (here, or on every device) is not a
+///     player: their room is closed unused and the requester is paired with the next, or waits.
 async fn join_queue(
     Extension(claims): Extension<Claims>,
     Extension(queue): Extension<Arc<MatchmakingQueue>>,
     Extension(rooms): Extension<Arc<RoomManager>>,
-    State((_pool, config)): State<(PgPool, Config)>,
+    Extension(gone): Extension<ClientGone>,
+    State((pool, config)): State<(PgPool, Config)>,
     ConnectInfo(peer): ConnectInfo<SocketAddr>,
     headers: HeaderMap,
 ) -> Result<Json<QueueResponse>, (StatusCode, String)> {
     let origin = origin_of(&headers, peer, &config);
-    let mut rx = match queue.enqueue(claims.sub, claims.username.clone(), origin, &rooms).await.map_err(refused)? {
-        Enqueued::Matched(room_id) => return Ok(queue_answer(Some(room_id), 0, "matched")),
-        Enqueued::Waiting(rx) => rx,
+    let mut rx = loop {
+        match queue.enqueue(claims.sub, claims.sid, claims.username.clone(), origin.clone(), &rooms).await.map_err(refused)? {
+            Enqueued::Matched { room_id, partner } => {
+                // The partner was checked when they asked, up to `QUEUE_WAIT` ago. Each pass
+                // takes one player off the queue, so this ends.
+                if session_ended(&pool, partner.user_id, partner.sid).await {
+                    rooms.remove_room(room_id).await;
+                    continue;
+                }
+                return Ok(queue_answer(Some(room_id), 0, "matched"));
+            }
+            Enqueued::Waiting(rx) => break rx,
+        }
     };
-    match tokio::time::timeout(QUEUE_WAIT, &mut rx).await {
+    let waited = tokio::select! {
+        waited = tokio::time::timeout(QUEUE_WAIT, &mut rx) => waited,
+        // The client has gone: give up the place. Dropping `rx` ends the request for the queue
+        // (`matchmaking.rs` skips it). Nobody reads this answer.
+        () = gone.wait() => return Ok(queue_answer(None, 0, "cancelled")),
+    };
+    match waited {
         Ok(Ok(Ok(room_id))) => Ok(queue_answer(Some(room_id), 0, "matched")),
         // This player reached a limit while waiting (they opened rooms meanwhile).
         Ok(Ok(Err(refusal))) => Err(refused(refusal)),
@@ -328,21 +357,53 @@ fn signed_out() -> ServerEvent {
     error("signed_out", "You are signed out, so this game connection is closed. Sign in again to play.")
 }
 
-/// Whether the connection's session has ended since the socket opened: signed out (here or on
-/// every device), expired, or its account deleted. A database that cannot be asked in time is
-/// not taken for an ending: the next message or check asks again, so an outage does not cost a
-/// player the match (the same choice as for a returning player's cards, `handle_event`).
-async fn session_ended(pool: &PgPool, claims: &Claims) -> bool {
-    match tokio::time::timeout(SESSION_CHECK_WITHIN, crate::auth::session_is_live(pool, claims)).await {
+/// Whether session `sid` of `user_id` has ended since it was last checked: signed out (here or
+/// on every device), expired, or its account deleted. A database that cannot be asked in time
+/// is not taken for an ending: the next message or check asks again, so an outage does not cost
+/// a player the match (the same choice as for a returning player's cards, `handle_event`).
+async fn session_ended(pool: &PgPool, user_id: Uuid, sid: Uuid) -> bool {
+    match tokio::time::timeout(SESSION_CHECK_WITHIN, crate::auth::session_is_live(pool, user_id, sid)).await {
         Ok(Ok(live)) => !live,
         Ok(Err(e)) => {
-            tracing::debug!(error = %e, "Could not check a game connection's session");
+            tracing::debug!(error = %e, "Could not check a session that outlives its request");
             false
         }
         Err(_) => {
-            tracing::debug!("A game connection's session check took too long");
+            tracing::debug!("A session check took too long");
             false
         }
+    }
+}
+
+/// A connection's checks of its session. It asks only before something is done for the player
+/// (a seat taken, a verse played, a forfeit) and on the room's clock (`SESSION_CHECK_EVERY`),
+/// and takes an answer as good for `SESSION_FRESH_FOR`. A message that can do nothing (it names
+/// no room that exists, or plays in no room) costs no lookup, so a connection's database load is
+/// at most one lookup a second, whatever it sends.
+struct SessionGate {
+    user_id: Uuid,
+    sid: Uuid,
+    /// When the session was last asked about, if it has been since the handshake.
+    asked_at: Option<Instant>,
+    /// How many times the database was asked (for the tests).
+    lookups: u32,
+}
+
+impl SessionGate {
+    fn new(claims: &Claims) -> Self {
+        Self { user_id: claims.sub, sid: claims.sid, asked_at: None, lookups: 0 }
+    }
+
+    /// Whether the session has ended. Asks the database unless it was asked within
+    /// `SESSION_FRESH_FOR`.
+    async fn ended(&mut self, pool: &PgPool) -> bool {
+        if self.asked_at.is_some_and(|at| at.elapsed() < SESSION_FRESH_FOR) {
+            return false;
+        }
+        self.lookups += 1;
+        let ended = session_ended(pool, self.user_id, self.sid).await;
+        self.asked_at = Some(Instant::now());
+        ended
     }
 }
 
@@ -354,6 +415,7 @@ async fn handle_socket(socket: WebSocket, claims: Claims, rooms: Arc<RoomManager
     tokio::pin!(join_deadline, lifetime);
     let mut window_started = Instant::now();
     let mut in_window = 0u32;
+    let mut gate = SessionGate::new(&claims);
     let mut session_check = tokio::time::interval_at(tokio::time::Instant::now() + SESSION_CHECK_EVERY, SESSION_CHECK_EVERY);
     session_check.set_missed_tick_behavior(tokio::time::MissedTickBehavior::Delay);
 
@@ -383,9 +445,11 @@ async fn handle_socket(socket: WebSocket, claims: Claims, rooms: Arc<RoomManager
                 break;
             }
             _ = &mut lifetime => break,
-            // A connection that only listens is closed too once its session ends.
-            _ = session_check.tick() => {
-                if session_ended(&pool, &claims).await {
+            // A connection in a room that only listens is closed too once its session ends. One
+            // that has joined nothing can do nothing without asking (`handle_event`), and is
+            // closed at `JOIN_WITHIN` anyway.
+            _ = session_check.tick(), if !waiting_to_join => {
+                if gate.ended(&pool).await {
                     let _ = send(&mut sink, &signed_out()).await;
                     break;
                 }
@@ -416,14 +480,15 @@ async fn handle_socket(socket: WebSocket, claims: Claims, rooms: Arc<RoomManager
                         continue;
                     }
                 };
-                // Nothing is done for a session that has ended since the socket opened: no
-                // seat taken, no verse played, no forfeit.
-                if session_ended(&pool, &claims).await {
-                    let _ = send(&mut sink, &signed_out()).await;
-                    break;
-                }
-                if let Some(problem) = handle_event(event, &claims, &rooms, &pool, &mut joined).await {
-                    if send(&mut sink, &problem).await.is_err() {
+                match handle_event(event, &claims, &rooms, &pool, &mut gate, &mut joined).await {
+                    Outcome::Done => {}
+                    Outcome::Tell(problem) => {
+                        if send(&mut sink, &problem).await.is_err() {
+                            break;
+                        }
+                    }
+                    Outcome::SignedOut => {
+                        let _ = send(&mut sink, &signed_out()).await;
                         break;
                     }
                 }
@@ -438,27 +503,45 @@ async fn handle_socket(socket: WebSocket, claims: Claims, rooms: Arc<RoomManager
     let _ = sink.close().await;
 }
 
-/// Act on one message. Returns the error to tell the player, if the room refused it.
+/// What came of one message.
+#[derive(Debug)]
+enum Outcome {
+    /// Done, or nothing to do: nothing to say.
+    Done,
+    /// The room refused it, or there was nothing to act on: tell the player why.
+    Tell(ServerEvent),
+    /// The session has ended since the socket opened: nothing was done, and the connection
+    /// closes (`signed_out`).
+    SignedOut,
+}
+
+/// Act on one message. Nothing is done for a session that has ended since the socket opened:
+/// no seat taken, no verse played, no forfeit. The session is asked about (`gate`) only when
+/// something would be done.
 async fn handle_event(
     event: ClientEvent,
     claims: &Claims,
     rooms: &RoomManager,
     pool: &PgPool,
+    gate: &mut SessionGate,
     joined: &mut Option<Joined>,
-) -> Option<ServerEvent> {
+) -> Outcome {
     match event {
         ClientEvent::JoinRoom { room_id, deck, lang } => {
             if joined.is_some() {
-                return Some(error("already_in_room", "This connection is already in a room."));
+                return Outcome::Tell(error("already_in_room", "This connection is already in a room."));
             }
             // The server scores English only: a duel in another language is refused, not
             // quietly scored by the English rules.
             if lang != LANG {
-                return Some(error("language_not_offered", "Online duels are fought in English only."));
+                return Outcome::Tell(error("language_not_offered", "Online duels are fought in English only."));
             }
             let Some(room) = rooms.get_room(room_id).await else {
-                return Some(RoomError::NotFound.event());
+                return Outcome::Tell(RoomError::NotFound.event());
             };
+            if gate.ended(pool).await {
+                return Outcome::SignedOut;
+            }
             // A player coming back to a match under way, or to its result, keeps the deck they
             // started with: the room does not read the deck sent now, so it is not checked
             // again (a database that cannot be reached must not cost them the match).
@@ -474,14 +557,14 @@ async fn handle_event(
                         .iter()
                         .map(|id| inspired_mile_api::verse::card_by_id(id).map_or_else(|| "a card".to_string(), |c| c.name.clone()))
                         .collect();
-                    return Some(ServerEvent::Error {
+                    return Outcome::Tell(ServerEvent::Error {
                         code: "card_not_held",
                         message: format!("Your account does not hold {}. Choose characters you hold, or the starter ones.", names.join(", ")),
                     });
                 }
                 Err(e) => {
                     tracing::error!(error = %e, "Could not read a player's cards");
-                    return Some(error("cards_unchecked", "Your cards could not be checked. Try again in a moment."));
+                    return Outcome::Tell(error("cards_unchecked", "Your cards could not be checked. Try again in a moment."));
                 }
             }
             let (tx, rx) = mpsc::channel(EVENT_BUFFER);
@@ -490,29 +573,34 @@ async fn handle_event(
                 Ok((conn, effects)) => {
                     run_effects(&room, effects);
                     *joined = Some(Joined { room, conn, rx });
-                    None
+                    Outcome::Done
                 }
-                Err(refusal) => Some(refusal.event()),
+                Err(refusal) => Outcome::Tell(refusal.event()),
             }
         }
         ClientEvent::SubmitVerse { round, char_id, text } => {
             let Some(j) = joined else {
-                return Some(RoomError::NotInRoom.event());
+                return Outcome::Tell(RoomError::NotInRoom.event());
             };
+            if gate.ended(pool).await {
+                return Outcome::SignedOut;
+            }
             let outcome = j.room.lock().await.submit(claims.sub, round, &char_id, &text);
             match outcome {
                 Ok(effects) => {
                     run_effects(&j.room, effects);
-                    None
+                    Outcome::Done
                 }
-                Err(refusal) => Some(refusal.event()),
+                Err(refusal) => Outcome::Tell(refusal.event()),
             }
         }
         ClientEvent::Forfeit => {
-            if let Some(j) = joined {
-                j.room.lock().await.forfeit(claims.sub);
+            let Some(j) = joined else { return Outcome::Done };
+            if gate.ended(pool).await {
+                return Outcome::SignedOut;
             }
-            None
+            j.room.lock().await.forfeit(claims.sub);
+            Outcome::Done
         }
     }
 }
@@ -649,10 +737,12 @@ mod tests {
         // ...and claiming yet another address does not get it past the limit.
         assert_eq!(open_private(&rooms, &production, lan, claiming("198.51.100.1", None)).await, Err(StatusCode::TOO_MANY_REQUESTS));
         // Nor does asking for a quick match from there.
+        let (_present, gone) = ClientGone::new();
         let queued = join_queue(
             Extension(someone()),
             Extension(Arc::new(MatchmakingQueue::new())),
             Extension(rooms.clone()),
+            Extension(gone),
             State((unreachable_database(), production.clone())),
             ConnectInfo(lan),
             claiming("198.51.100.2", None),
@@ -684,8 +774,7 @@ mod tests {
     #[tokio::test]
     async fn a_session_that_cannot_be_checked_is_not_taken_for_a_sign_out() {
         // The database cannot be reached: the connection is kept, and asked about again later.
-        let claims = Claims { sub: Uuid::new_v4(), username: "ann".into(), sid: Uuid::new_v4(), exp: i64::MAX, iat: 0 };
-        assert!(!session_ended(&unreachable_database(), &claims).await);
+        assert!(!session_ended(&unreachable_database(), Uuid::new_v4(), Uuid::new_v4()).await);
         // The check gives up well within the period it runs at.
         assert!(SESSION_CHECK_WITHIN < SESSION_CHECK_EVERY);
     }
@@ -718,8 +807,8 @@ mod tests {
         let claims = Claims { sub: a, username: "ann".into(), sid: uuid::Uuid::new_v4(), exp: i64::MAX, iat: 0 };
         let mut joined = None;
         let back = ClientEvent::JoinRoom { room_id: id, deck: deck_a.clone(), lang: LANG.to_string() };
-        let problem = handle_event(back, &claims, &rooms, &pool, &mut joined).await;
-        assert!(problem.is_none(), "Ann was turned away on her way back: {problem:?}");
+        let problem = handle_event(back, &claims, &rooms, &pool, &mut SessionGate::new(&claims), &mut joined).await;
+        assert!(matches!(problem, Outcome::Done), "Ann was turned away on her way back: {problem:?}");
         assert!(joined.is_some(), "Ann has her seat again");
 
         // Before a match starts, the cards are checked, and an unreadable record says so.
@@ -728,8 +817,101 @@ mod tests {
         let claims = Claims { sub: c, username: "cy".into(), sid: uuid::Uuid::new_v4(), exp: i64::MAX, iat: 0 };
         let mut joined = None;
         let first = ClientEvent::JoinRoom { room_id: open, deck: deck_a, lang: LANG.to_string() };
-        let problem = handle_event(first, &claims, &rooms, &pool, &mut joined).await;
-        assert!(matches!(problem, Some(ServerEvent::Error { code: "cards_unchecked", .. })), "{problem:?}");
+        let problem = handle_event(first, &claims, &rooms, &pool, &mut SessionGate::new(&claims), &mut joined).await;
+        assert!(matches!(problem, Outcome::Tell(ServerEvent::Error { code: "cards_unchecked", .. })), "{problem:?}");
         assert!(joined.is_none());
+    }
+
+    /// The integration checker's concern (2026-11-17): every message that parsed cost one
+    /// session lookup, so 30 messages in 10 s on each of hundreds of sockets. Now a message that
+    /// can do nothing costs none, and a burst costs one.
+    #[tokio::test]
+    async fn a_message_that_can_do_nothing_costs_no_session_lookup_and_a_burst_costs_one() {
+        let pool = unreachable_database();
+        let rooms = RoomManager::new();
+        let deck = starter_characters();
+        let ann = someone();
+        let mut gate = SessionGate::new(&ann);
+        let mut joined = None;
+
+        // Joined to nothing: a room that does not exist, another language, a verse, a forfeit.
+        for _ in 0..5 {
+            let nowhere = ClientEvent::JoinRoom { room_id: Uuid::new_v4(), deck: deck.clone(), lang: LANG.to_string() };
+            assert!(matches!(handle_event(nowhere, &ann, &rooms, &pool, &mut gate, &mut joined).await, Outcome::Tell(_)));
+            let french = ClientEvent::JoinRoom { room_id: Uuid::new_v4(), deck: deck.clone(), lang: "fr".into() };
+            assert!(matches!(handle_event(french, &ann, &rooms, &pool, &mut gate, &mut joined).await, Outcome::Tell(_)));
+            let verse = ClientEvent::SubmitVerse { round: 0, char_id: deck[0].clone(), text: "A line".into() };
+            assert!(matches!(handle_event(verse, &ann, &rooms, &pool, &mut gate, &mut joined).await, Outcome::Tell(_)));
+            assert!(matches!(handle_event(ClientEvent::Forfeit, &ann, &rooms, &pool, &mut gate, &mut joined).await, Outcome::Done));
+        }
+        assert_eq!(gate.lookups, 0, "a message that could do nothing asked the database");
+
+        // Taking a seat asks (the database cannot be reached here: that is not a sign-out).
+        let id = rooms.create_room(&[(ann.sub, ann.username.clone())], &[]).await.unwrap();
+        let join = ClientEvent::JoinRoom { room_id: id, deck: deck.clone(), lang: LANG.to_string() };
+        assert!(matches!(handle_event(join, &ann, &rooms, &pool, &mut gate, &mut joined).await, Outcome::Done));
+        assert!(joined.is_some());
+        assert_eq!(gate.lookups, 1);
+        // A burst right after: no more lookups.
+        for _ in 0..10 {
+            let verse = ClientEvent::SubmitVerse { round: 0, char_id: deck[0].clone(), text: "A line".into() };
+            handle_event(verse, &ann, &rooms, &pool, &mut gate, &mut joined).await;
+        }
+        assert_eq!(gate.lookups, 1, "a burst asked more than once");
+        // Once the answer is older than SESSION_FRESH_FOR, the next act asks again.
+        tokio::time::sleep(SESSION_FRESH_FOR + Duration::from_millis(100)).await;
+        handle_event(ClientEvent::Forfeit, &ann, &rooms, &pool, &mut gate, &mut joined).await;
+        assert_eq!(gate.lookups, 2);
+    }
+
+    /// The integration checker's blocker (probe P1, 2026-11-17): with every request run to its
+    /// end (request_task.rs), a quick-match request whose client had gone kept its place for
+    /// the whole wait, and the next player was paired with nobody.
+    #[tokio::test]
+    async fn a_quick_match_request_whose_client_has_gone_gives_up_its_place() {
+        let production = config(&[]);
+        let queue = Arc::new(MatchmakingQueue::new());
+        let rooms = Arc::new(RoomManager::new());
+        let peer: SocketAddr = "198.51.100.20:50000".parse().unwrap();
+        let ask = |who: Claims, gone: ClientGone| {
+            tokio::spawn(join_queue(
+                Extension(who),
+                Extension(queue.clone()),
+                Extension(rooms.clone()),
+                Extension(gone),
+                State((unreachable_database(), production.clone())),
+                ConnectInfo(peer),
+                HeaderMap::new(),
+            ))
+        };
+        let status = |answer: Result<Json<QueueResponse>, (StatusCode, String)>| answer.map(|Json(r)| r.status).map_err(|(s, _)| s);
+
+        // Ann asks and waits; then her client goes.
+        let (ann, bob, cy) = (someone(), someone(), someone());
+        let (ann_present, ann_gone) = ClientGone::new();
+        let ann_asks = ask(ann.clone(), ann_gone);
+        tokio::time::sleep(Duration::from_millis(100)).await;
+        assert_eq!(queue.size().await, 1, "Ann is waiting");
+        drop(ann_present);
+        let ann_answer = tokio::time::timeout(Duration::from_secs(2), ann_asks).await.expect("Ann's request ended with her client").unwrap();
+        assert_eq!(status(ann_answer), Ok("cancelled".to_string()));
+        assert_eq!(queue.size().await, 0, "Ann's place was given up");
+
+        // Bob asks: nobody is waiting, so he waits; no room was opened for Ann.
+        let (bob_present, bob_gone) = ClientGone::new();
+        let bob_asks = ask(bob.clone(), bob_gone);
+        tokio::time::sleep(Duration::from_millis(100)).await;
+        assert!(!bob_asks.is_finished(), "Bob was answered at once: paired with a player who had gone");
+        assert!(rooms.rooms_of(ann.sub).await.is_empty());
+        assert!(rooms.rooms_of(bob.sub).await.is_empty());
+
+        // And a player who is there is paired with him (the test can see a pairing).
+        let (_cy_present, cy_gone) = ClientGone::new();
+        let cy_answer = tokio::time::timeout(Duration::from_secs(2), ask(cy.clone(), cy_gone)).await.unwrap().unwrap();
+        assert_eq!(status(cy_answer), Ok("matched".to_string()));
+        let bob_answer = tokio::time::timeout(Duration::from_secs(2), bob_asks).await.unwrap().unwrap();
+        assert_eq!(status(bob_answer), Ok("matched".to_string()));
+        assert_eq!(rooms.rooms_of(bob.sub).await.len(), 1);
+        drop(bob_present);
     }
 }

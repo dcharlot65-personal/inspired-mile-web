@@ -113,13 +113,22 @@ pub fn claims_from(jar: &CookieJar, config: &Config) -> Option<Claims> {
     verify_token(token.value(), &config.jwt_secret).ok()
 }
 
+/// The condition on an `auth_sessions` row for it to be live, with `$1` the session's id and
+/// `$2` its user: not signed out (here or "everywhere") and not expired (a deleted user's rows
+/// go with the user: ON DELETE CASCADE). ONE text for every check, so a request (`authenticate`)
+/// and a game connection that outlives its request (`is_live`) cannot drift apart: the
+/// sign-out end-to-end tests then hold both (tests/auth.spec.ts for requests,
+/// tests/multiplayer.spec.ts for the socket and the quick-match queue).
+macro_rules! live_session {
+    () => {
+        "id = $1 AND user_id = $2 AND revoked_at IS NULL AND expires_at > NOW()"
+    };
+}
+
 /// The signed-in user of a request, or `not_signed_in`. Checks the token and then its row.
 pub async fn authenticate(pool: &PgPool, config: &Config, jar: &CookieJar) -> Result<Session, ApiError> {
     let claims = claims_from(jar, config).ok_or_else(ApiError::unauthorized)?;
-    let row = sqlx::query(
-        "SELECT verified_at FROM auth_sessions
-         WHERE id = $1 AND user_id = $2 AND revoked_at IS NULL AND expires_at > NOW()",
-    )
+    let row = sqlx::query(concat!("SELECT verified_at FROM auth_sessions WHERE ", live_session!()))
     .bind(claims.sid)
     .bind(claims.sub)
     .fetch_optional(pool)
@@ -128,16 +137,14 @@ pub async fn authenticate(pool: &PgPool, config: &Config, jar: &CookieJar) -> Re
     Ok(Session { claims, verified_at: row.get("verified_at") })
 }
 
-/// Whether the session a token names is still live: not signed out (here or "everywhere"),
-/// not expired, and its user not deleted. The same condition as `authenticate`, for a
-/// connection that outlives the request that opened it (the game's WebSocket).
-pub async fn is_live(pool: &PgPool, claims: &Claims) -> Result<bool, sqlx::Error> {
-    let live: Option<i32> = sqlx::query_scalar(
-        "SELECT 1 FROM auth_sessions
-         WHERE id = $1 AND user_id = $2 AND revoked_at IS NULL AND expires_at > NOW()",
-    )
-    .bind(claims.sid)
-    .bind(claims.sub)
+/// Whether session `sid` of `user_id` is still live: not signed out (here or "everywhere"),
+/// not expired, and its user not deleted. The same condition as `authenticate`
+/// (`live_session!`), for what outlives the request that was checked: the game's WebSocket,
+/// and a quick-match request's partner, who asked up to half a minute before.
+pub async fn is_live(pool: &PgPool, user_id: Uuid, sid: Uuid) -> Result<bool, sqlx::Error> {
+    let live: Option<i32> = sqlx::query_scalar(concat!("SELECT 1 FROM auth_sessions WHERE ", live_session!()))
+    .bind(sid)
+    .bind(user_id)
     .fetch_optional(pool)
     .await?;
     Ok(live.is_some())

@@ -49,8 +49,8 @@ pub const MAX_ROOMS: usize = 500;
 /// waiting for a friend, with one to spare. Two accounts that queue against each other again
 /// and again cannot fill the server.
 pub const MAX_ROOMS_PER_USER: usize = 3;
-/// Rooms opened from one network at once (an IPv4 address, or an IPv6 /64: one connection
-/// owns a whole /64), finished ones aside. A school or a family behind one address shares
+/// Rooms opened from one network at once (an IPv4 address, or an IPv6 /48: one home line can
+/// hold 65,536 /64s; `handlers::origin_of`), finished ones aside. A school or a family behind one address shares
 /// this: a class of 80 playing in pairs holds 40 (two players of one network in one room
 /// count once). It bounds what many accounts on one network can hold: a tenth of `MAX_ROOMS`.
 pub const MAX_ROOMS_PER_ADDRESS: usize = 40;
