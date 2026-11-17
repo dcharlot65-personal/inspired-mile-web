@@ -412,8 +412,8 @@ const hi: Record<string, string> = {
   'rarity.epic': 'महाकाव्य',
   'rarity.legendary': 'पौराणिक',
   'badge.onDevice': '{model} · इसी डिवाइस पर',
-  'badge.writtenJudged': 'लिखे हुए पदों वाला प्रतिद्वंद्वी · निर्णायक {model}',
-  'badge.written': 'लिखे हुए पदों वाला प्रतिद्वंद्वी',
+  'badge.writtenJudged': 'लिखी हुई कविताओं वाला प्रतिद्वंद्वी · निर्णायक {model}',
+  'badge.written': 'लिखी हुई कविताओं वाला प्रतिद्वंद्वी',
   'stats.rounds': 'खेले गए दौर',
   'stats.duels': 'द्वंद्व',
   'stats.won': 'जीते गए दौर',
@@ -454,9 +454,9 @@ const hi: Record<string, string> = {
   'theatre.judging': 'परखा जा रहा है…',
   // The language picker and the verdict, when the loaded model is not used in the duel's language
   // (measured: docs/language/MODEL-EVAL.md).
-  'battle.lang.written': '{language}: आपका सामना लिखे हुए पदों वाले प्रतिद्वंद्वी से होगा, क्योंकि {model} ने यह नहीं दिखाया है कि वह इस भाषा में अच्छे पद लिख सकता है।',
-  'battle.lang.rules': '{language}: निर्णय नियमों से होगा, क्योंकि {model} ने यह नहीं दिखाया है कि वह इस भाषा के पदों का अच्छा निर्णायक है।',
-  'brain.noneShown': 'इस डिवाइस पर चल सकने वाले किसी भी मॉडल ने यह नहीं दिखाया है कि वह अच्छे पद लिखता है या पदों का ठीक निर्णय करता है, इसलिए आपका सामना लिखे हुए पदों वाले प्रतिद्वंद्वी से होगा और निर्णय नियमों से होगा।',
+  'battle.lang.written': '{language}: आपका सामना लिखी हुई कविताओं वाले प्रतिद्वंद्वी से होगा, क्योंकि {model} ने यह नहीं दिखाया है कि वह इस भाषा में अच्छी कविता लिख सकता है।',
+  'battle.lang.rules': '{language}: निर्णय नियमों से होगा, क्योंकि {model} ने यह नहीं दिखाया है कि वह इस भाषा की कविता का अच्छा निर्णायक है।',
+  'brain.noneShown': 'इस डिवाइस पर चल सकने वाले किसी भी मॉडल ने यह नहीं दिखाया है कि वह अच्छी कविता लिखता है या कविता का ठीक निर्णय करता है, इसलिए आपका सामना लिखी हुई कविताओं वाले प्रतिद्वंद्वी से होगा और निर्णय नियमों से होगा।',
 };
 
 export default hi;
