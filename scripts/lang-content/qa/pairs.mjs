@@ -19,7 +19,8 @@ const en = { playground: await load('playground', 'en'), story: await load('stor
 // Every English option of every question, names included, for qa/align.py.
 const { TRIVIA_BANK } = await import(join(ROOT, 'src/lib/trivia.ts'));
 writeFileSync(join(out, 'english-options.json'), JSON.stringify(Object.fromEntries(TRIVIA_BANK.map((q, n) => [n, q.options]))));
-const show = (s) => s.replace(/\{(\w+)\}/g, (_, k) => ({ n: '3', total: '5', city: 'Tokyo', bonus: '2', axis: 'wit', translator: 'A. W. von Schlegel', done: '4', h: '2', m: '15' })[k] ?? k);
+// Bidirectional isolates (bidi.mjs) are layout, not text: the models read the text without them.
+const show = (s) => s.replace(/[\u2066-\u2069]/gu, '').replace(/\{(\w+)\}/g, (_, k) => ({ n: '3', total: '5', city: 'Tokyo', bonus: '2', axis: 'wit', translator: 'A. W. von Schlegel', done: '4', h: '2', m: '15' })[k] ?? k);
 for (const l of LANGS) {
   const pairs = [];
   for (const area of ['playground', 'story', 'trivia']) {

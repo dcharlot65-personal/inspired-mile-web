@@ -14,11 +14,13 @@
 import { existsSync, mkdirSync, readFileSync, writeFileSync as write } from 'node:fs';
 import { join } from 'node:path';
 import { HERE, ROOT, LANGS, entities, gameNames, nameOf, readTsv, ucfirst } from './lib.mjs';
+import { RTL, isolateLatin } from './bidi.mjs';
 
 const { TRIVIA_BANK } = await import(join(ROOT, 'src/lib/trivia.ts'));
 const { CHALLENGE_BANK } = await import(join(ROOT, 'src/lib/challenges.ts'));
 const optionKeys = JSON.parse(readFileSync(join(HERE, 'trivia-options.json'), 'utf8'));
-const q = (s) => JSON.stringify(s);
+// Bidirectional isolates are written as escapes, so the generated file shows where they are.
+const q = (s) => JSON.stringify(s).replace(/[\u2066-\u2069]/gu, (c) => '\\u' + c.codePointAt(0).toString(16));
 let failed = false;
 const CHECK = process.argv.includes('--check');
 const stale = [];
@@ -41,10 +43,12 @@ for (const lang of LANGS) {
     rows.set(Number(parts[0]), parts.slice(1));
   }
   const out = [];
+  // In a right-to-left language, English inside the text (a quoted line, a name with no source) is an isolate (bidi.mjs).
+  const show = (s) => (RTL.has(lang) ? isolateLatin(s) : s);
   TRIVIA_BANK.forEach((en, n) => {
     const row = rows.get(n);
     if (!row) return fail(`trivia ${lang}: question ${n} missing`);
-    out.push(`  'trivia.${n}.q': ${q(row[0])},`);
+    out.push(`  'trivia.${n}.q': ${q(show(row[0]))},`);
     en.options.forEach((_, i) => {
       const ent = optionKeys[n][i];
       let text = row[1 + i];
@@ -53,7 +57,7 @@ for (const lang of LANGS) {
         text = ucfirst(nameOf(ent.key, lang, ent.which).name);
       }
       if (!text) return fail(`trivia ${lang}: ${n} option ${i} empty`);
-      out.push(`  'trivia.${n}.o${i}': ${q(text)},`);
+      out.push(`  'trivia.${n}.o${i}': ${q(show(text))},`);
     });
   });
   if (failed) continue;
