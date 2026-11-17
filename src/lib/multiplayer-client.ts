@@ -129,15 +129,29 @@ export type ConnectionState = 'open' | 'reconnecting' | 'closed';
 type EventHandler = (event: ServerEvent) => void;
 type StateHandler = (state: ConnectionState) => void;
 
-/** Error codes after which the server has closed the connection for good. */
-const FINAL_ERRORS = new Set(['connection_replaced', 'too_many_messages', 'join_timeout']);
+/**
+ * Error codes after which the server has closed the connection for good, or the room is gone
+ * (the opponent never came, the duel closed, or it ended longer ago than the server keeps it):
+ * there is nothing to reconnect to.
+ */
+const FINAL_ERRORS = new Set(['connection_replaced', 'too_many_messages', 'join_timeout', 'opponent_absent', 'room_closed', 'room_not_found']);
+
+/**
+ * How long the client keeps trying to reconnect after a connection drops. The server holds a
+ * dropped player's seat for 45 seconds (Timing::reconnect in backend/src/multiplayer/game_room.rs);
+ * this outlasts it, so a player whose network comes back in time is never left out by the page.
+ */
+export const RECONNECT_WINDOW_MS = 60_000;
+/** The longest pause between two attempts. */
+const RECONNECT_MAX_PAUSE_MS = 5_000;
 
 export class MultiplayerClient {
   private ws: WebSocket | null = null;
   private handlers: EventHandler[] = [];
   private stateHandlers: StateHandler[] = [];
   private attempts = 0;
-  private readonly maxAttempts = 5;
+  /** When the connection last dropped, while the client is trying to get it back. */
+  private droppedAt: number | null = null;
   /** Set once nothing more should be sent or retried: the match is over, or we left. */
   private finished = false;
   private room: { id: string; deck: string[] } | null = null;
@@ -155,6 +169,7 @@ export class MultiplayerClient {
       ws.onopen = () => {
         settled = true;
         this.attempts = 0;
+        this.droppedAt = null;
         // After a dropped connection the server still holds our seat: ask for it back.
         // It answers with the whole match as it stands.
         if (this.room) this.send({ type: 'join_room', room_id: this.room.id, deck: this.room.deck, lang: ONLINE_LANG });
@@ -183,7 +198,8 @@ export class MultiplayerClient {
       ws.onclose = () => {
         if (this.ws !== ws) return;
         this.ws = null;
-        if (this.finished || !this.room || this.attempts >= this.maxAttempts) {
+        this.droppedAt ??= Date.now();
+        if (this.finished || !this.room || Date.now() - this.droppedAt >= RECONNECT_WINDOW_MS) {
           this.stateHandlers.forEach((h) => h('closed'));
           return;
         }
@@ -193,7 +209,7 @@ export class MultiplayerClient {
           this.connect().catch(() => {
             /* onclose of that attempt schedules the next */
           });
-        }, 1000 * this.attempts);
+        }, Math.min(1000 * this.attempts, RECONNECT_MAX_PAUSE_MS));
       };
     });
   }

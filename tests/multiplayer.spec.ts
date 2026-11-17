@@ -426,6 +426,20 @@ test.describe('Online duel', () => {
       await expect(ann.page.locator(`#mp-hand [data-char-id="${card}"]`), 'the character chosen before the blip').toHaveAttribute('aria-pressed', 'true');
       await expect(ann.page.locator('#mp-send-btn')).toBeEnabled();
 
+      // 1b. The page is put in the back/forward cache and shown again (the events a browser
+      // sends; Chromium here does not cache this page, Safari or Firefox may): it takes its seat
+      // again, with what was written.
+      const socketsBefore = await ann.page.evaluate(() => (window as unknown as { __sockets: WebSocket[] }).__sockets.length);
+      const startsBeforeCache = events(ann, 'match_start').length;
+      await ann.page.evaluate(() => window.dispatchEvent(new PageTransitionEvent('pagehide', { persisted: true })));
+      await expect.poll(() => ann.page.evaluate(() => (window as unknown as { __sockets: WebSocket[] }).__sockets.at(-1)!.readyState), { message: 'the old socket is closed', timeout: 10000 }).toBe(3);
+      await ann.page.evaluate(() => window.dispatchEvent(new PageTransitionEvent('pageshow', { persisted: true })));
+      await expect.poll(() => events(ann, 'match_start').length, { message: 'the restored page took its seat again', timeout: 20000 }).toBeGreaterThan(startsBeforeCache);
+      expect(await ann.page.evaluate(() => (window as unknown as { __sockets: WebSocket[] }).__sockets.length)).toBe(socketsBefore + 1);
+      await expect(ann.page.locator('#mp-input'), 'the verse typed before the page was put away').toHaveValue(verse);
+      await expect(ann.page.locator(`#mp-hand [data-char-id="${card}"]`)).toHaveAttribute('aria-pressed', 'true');
+      await expect(ann.page.locator('#mp-send-btn')).toBeEnabled();
+
       // 2. A reload: the page takes its seat back within the grace, with the verse and the character.
       // (Leaving mid-match asks first; the reload says yes.)
       const backBefore = events(bob, 'opponent_reconnected').length;
@@ -458,6 +472,42 @@ test.describe('Online duel', () => {
     } finally {
       await ann.context.close();
       await bob.context.close();
+    }
+  });
+
+  test('a player in the queue who has reached the room limit is told so, and the next player is not refused for it', async ({ browser }) => {
+    test.setTimeout(150000);
+    const ann = await newPlayer(browser);
+    const bob = await newPlayer(browser);
+    const cy = await newPlayer(browser);
+    try {
+      const ask = (p: Player) => p.context.request.post('/api/v1/multiplayer/queue', { timeout: 60000 });
+      // Ann and Bob are paired twice and never connect: Ann holds two rooms.
+      for (let k = 0; k < 2; k++) {
+        const annAsks = ask(ann);
+        await ann.page.waitForTimeout(1000);
+        expect((await (await ask(bob)).json()).status).toBe('matched');
+        expect((await (await annAsks).json()).status).toBe('matched');
+      }
+      // Ann asks again (two rooms: allowed) and waits; meanwhile she opens a private room (three).
+      const annWaits = ask(ann);
+      await ann.page.waitForTimeout(1500);
+      expect((await ann.context.request.post('/api/v1/multiplayer/create-private')).status()).toBe(200);
+      expect(await (await ann.context.request.get('/api/v1/multiplayer/rooms')).json()).toHaveLength(3);
+      // Cy holds no room. He is not refused for Ann's rooms: he waits, and Ann is told why she was not paired.
+      const cyAsks = ask(cy);
+      const annAnswer = await annWaits;
+      expect(annAnswer.status(), 'Ann is refused at once').toBe(429);
+      expect(await annAnswer.text()).toContain('You already have duels open');
+      const cyAnswer = await cyAsks;
+      const cyText = await cyAnswer.text();
+      expect(cyAnswer.status(), `Cy was answered: ${cyText}`).toBe(200);
+      expect(JSON.parse(cyText).status).toBe('timeout');
+      expect(await (await cy.context.request.get('/api/v1/multiplayer/rooms')).json()).toEqual([]);
+    } finally {
+      await ann.context.close();
+      await bob.context.close();
+      await cy.context.close();
     }
   });
 

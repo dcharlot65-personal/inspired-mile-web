@@ -2,8 +2,8 @@
  * The browser's check on the server: auditRound() must pass a round scored by the rules
  * and must name every number that is not what the rules give.
  */
-import { describe, expect, it } from 'vitest';
-import { auditRound, planMatchesSeed, recomputeRound, type MatchStart, type RoundView, type WireSide } from './multiplayer-client';
+import { afterEach, describe, expect, it, vi } from 'vitest';
+import { MultiplayerClient, RECONNECT_WINDOW_MS, auditRound, planMatchesSeed, recomputeRound, type MatchStart, type RoundView, type WireSide } from './multiplayer-client';
 import { onlinePlan, resolveOnlineRound, type OnlineSideResult } from './multiplayer-rules';
 import { CRITERIA } from './verse/judge';
 import PRON from './verse/pron-en';
@@ -158,5 +158,108 @@ describe('planMatchesSeed', () => {
     swapped.rounds = [swapped.rounds[1], swapped.rounds[0], swapped.rounds[2]];
     expect(planMatchesSeed(swapped)).toBe(false);
     expect(planMatchesSeed({ ...start(0), rounds: start(0).rounds.slice(0, 2) })).toBe(false);
+  });
+});
+
+/** A WebSocket that does what the test says: open, or fail. */
+class FakeSocket {
+  static readonly OPEN = 1;
+  static all: FakeSocket[] = [];
+  readyState = 0;
+  sent: string[] = [];
+  onopen: (() => void) | null = null;
+  onclose: (() => void) | null = null;
+  onerror: (() => void) | null = null;
+  onmessage: ((m: { data: string }) => void) | null = null;
+  constructor(readonly url: string) {
+    FakeSocket.all.push(this);
+  }
+  send(data: string) {
+    this.sent.push(data);
+  }
+  close() {
+    this.drop();
+  }
+  open() {
+    this.readyState = 1;
+    this.onopen?.();
+  }
+  /** The connection goes (or never came): what a browser reports when a network drops. */
+  drop() {
+    if (this.readyState === 3) return;
+    if (this.readyState === 0) this.onerror?.();
+    this.readyState = 3;
+    this.onclose?.();
+  }
+}
+
+describe('a dropped connection', () => {
+  afterEach(() => {
+    vi.useRealTimers();
+    vi.unstubAllGlobals();
+    FakeSocket.all = [];
+  });
+
+  /** A client in a room whose connection has just dropped, with every attempt to come back failing at once. */
+  async function dropped() {
+    vi.useFakeTimers();
+    vi.stubGlobal('WebSocket', FakeSocket);
+    const client = new MultiplayerClient('http://localhost');
+    const states: string[] = [];
+    client.onState((s) => states.push(s));
+    const opening = client.connect();
+    FakeSocket.all[0].open();
+    await opening;
+    client.joinRoom('room-1', ['DC-001', 'MO-001', 'CA-001']);
+    FakeSocket.all[0].drop();
+    /** Let `ms` pass, failing every attempt made meanwhile. */
+    const unreachableFor = async (ms: number) => {
+      for (let t = 0; t < ms; t += 250) {
+        await vi.advanceTimersByTimeAsync(250);
+        for (const s of FakeSocket.all) if (s.readyState === 0) s.drop();
+      }
+    };
+    return { client, states, unreachableFor };
+  }
+
+  it('keeps trying for longer than the server holds the seat (45 s), then asks for the seat again', async () => {
+    const { states, unreachableFor } = await dropped();
+    await unreachableFor(50_000);
+    expect(states.at(-1), 'still trying 50 s after the drop').toBe('reconnecting');
+    expect(states).not.toContain('closed');
+    const before = FakeSocket.all.length;
+    await vi.advanceTimersByTimeAsync(5_000);
+    expect(FakeSocket.all.length, 'another attempt within five seconds').toBeGreaterThan(before);
+    // The network is back: the next attempt opens, and the client asks for its seat.
+    const next = FakeSocket.all.at(-1)!;
+    next.open();
+    expect(states.at(-1)).toBe('open');
+    expect(next.sent.map((m) => JSON.parse(m))).toEqual([{ type: 'join_room', room_id: 'room-1', deck: ['DC-001', 'MO-001', 'CA-001'], lang: 'en' }]);
+  });
+
+  it('gives up once the seat is surely gone, and says so', async () => {
+    const { states, unreachableFor } = await dropped();
+    await unreachableFor(RECONNECT_WINDOW_MS + 6_000);
+    expect(states.at(-1)).toBe('closed');
+    const made = FakeSocket.all.length;
+    await vi.advanceTimersByTimeAsync(30_000);
+    expect(FakeSocket.all.length, 'no attempt after giving up').toBe(made);
+  });
+
+  it('does not come back to a room that is gone', async () => {
+    vi.useFakeTimers();
+    vi.stubGlobal('WebSocket', FakeSocket);
+    const client = new MultiplayerClient('http://localhost');
+    const states: string[] = [];
+    client.onState((s) => states.push(s));
+    const opening = client.connect();
+    FakeSocket.all[0].open();
+    await opening;
+    client.joinRoom('room-1', ['DC-001', 'MO-001', 'CA-001']);
+    FakeSocket.all[0].onmessage?.({ data: JSON.stringify({ type: 'error', code: 'room_closed', message: 'This duel has closed.' }) });
+    FakeSocket.all[0].drop();
+    await vi.advanceTimersByTimeAsync(10_000);
+    expect(FakeSocket.all).toHaveLength(1);
+    expect(states).toEqual(['open', 'closed']);
   });
 });

@@ -306,11 +306,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       return message || fallback;
     }
 
-    async function signedIn(): Promise<boolean> {
+    /** Whether this browser is signed in; null if the server could not be asked. */
+    async function signedIn(): Promise<boolean | null> {
       try {
-        return (await fetch('/api/v1/auth/me', { credentials: 'include' })).ok;
+        const me = await fetch('/api/v1/auth/me', { credentials: 'include' });
+        return me.ok ? true : me.status === 401 ? false : null;
       } catch {
-        return false;
+        return null;
       }
     }
 
@@ -322,6 +324,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         show('mp-invited');
         show('mp-choices', false);
       }
+      // Signed out: a seat this tab held is not this browser's to take back, and its draft goes.
+      if (yes === false) forgetSeat();
       if (!yes) return;
       playable = new Set([...ONLINE_STARTER, ...(await accountCards())]);
       loadDeck();
@@ -581,6 +585,19 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           break;
 
         case 'error':
+          if (start && !over && (event.code === 'room_closed' || event.code === 'room_not_found')) {
+            // Coming back to a duel the server no longer holds (it ended a while ago, or closed):
+            // nothing is left to play or to fetch. This tab lets the seat and the draft go.
+            over = true;
+            deadline = 0;
+            forgetSeat();
+            client?.disconnect();
+            show('mp-move-panel', false);
+            $('mp-forfeit-btn').classList.add('hidden');
+            notice('This duel is no longer on the game server: it ended, or it closed, while this page was away.');
+            $('mp-arena').dataset.closed = event.code;
+            break;
+          }
           if (start && !over) {
             $('mp-hint').textContent = event.message;
             // A refused verse was not taken: the player may change it and send again.
@@ -593,6 +610,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             // tab no longer holds the seat.
             forgetSeat();
             show('mp-waiting', false);
+            show('mp-arena', false);
             show('mp-lobby');
             lobbyError(event.message);
             $('match-error').dataset.reason = event.code;
@@ -886,6 +904,22 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         e.returnValue = '';
       }
     });
-    window.addEventListener('pagehide', () => client?.disconnect());
+    window.addEventListener('pagehide', (e) => {
+      client?.disconnect();
+      // Kept in the back/forward cache: if the page is shown again, it takes its seat again.
+      if (e.persisted) {
+        client = null;
+        entered = false;
+      }
+    });
+    window.addEventListener('pageshow', (e) => {
+      if (!e.persisted || entered || over) return;
+      const seat = readJson<SavedSeat>(SEAT_KEY);
+      if (!seat) return;
+      // What the page showed stays; the server sends the match as it stands. Until it does, a
+      // refusal (the duel ended or closed meanwhile) takes the page back to the lobby.
+      start = null;
+      void enterRoom(seat.room_id, seat.invite, seat.deck);
+    });
   </script>
 </BaseLayout>
