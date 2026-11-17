@@ -10,16 +10,16 @@ In the Romance languages, German, Polish and Russian the cognate of 'verse' mean
 
 | Language | Term | Also accepted (stems) | Source |
 |---|---|---|---|
-| es | estrofa | estrof | game term (no outside source) |
+| es | estrofa | estrof | English Wiktionary's “verse” table lists estrofa (sources/wiktionary-words.json) |
 | fr | strophe | stroph | game term (no outside source) |
-| de | Strophe | stroph | game term (no outside source) |
-| it | strofa | strof | game term (no outside source) |
+| de | Strophe | stroph | English Wiktionary's “verse” table lists Strophe (sources/wiktionary-words.json) |
+| it | strofa | strof | English Wiktionary's “verse” table lists strofa (sources/wiktionary-words.json) |
 | pt | estrofe | estrof | game term (no outside source) |
 | pl | strofa | strof | game term (no outside source) |
-| ru | строфа | строф | game term (no outside source) |
+| ru | строфа | строф | English Wiktionary's “verse” table lists строфа (sources/wiktionary-words.json) |
 | ar | أبيات | بيت | game term (no outside source) |
-| hi | पद |  | game term (no outside source) |
-| zh | 诗 |  | game term (no outside source) |
+| hi | कविता |  | English Wiktionary’s “verse” table lists कविता for the sense “poetic form in general” (sources/wiktionary-words.json). Replaces पद, which the table does not list and which reads as “post” or “foot” (Wiktionary’s Hindi entry for पद: foot, footstep, mark; MADLAD back-translated it as “position”). |
+| zh | 诗 |  | English Wiktionary's “verse” table lists 詩 (诗) (sources/wiktionary-words.json) |
 | ja | 詩 |  | game term (no outside source) |
 | ko | 시 |  | game term (no outside source) |
 | vi | bài thơ | thơ | game term (no outside source) |
@@ -98,21 +98,21 @@ The game's own term, fixed by the translator's note at the top of the locale fil
 
 | Language | Term | Also accepted (stems) | Source |
 |---|---|---|---|
-| es | ronda |  | game term (no outside source) |
+| es | ronda |  | English Wiktionary's “round” table lists ronda (sources/wiktionary-words.json) |
 | fr | manche |  | game term (no outside source) |
-| de | Runde |  | game term (no outside source) |
+| de | Runde |  | English Wiktionary's “round” table lists Runde (sources/wiktionary-words.json) |
 | it | round |  | game term (no outside source) |
-| pt | rodada |  | game term (no outside source) |
-| pl | runda | rund | game term (no outside source) |
-| ru | раунд |  | game term (no outside source) |
-| ar | جولة | جولات | game term (no outside source) |
+| pt | rodada |  | English Wiktionary's “round” table lists rodada (sources/wiktionary-words.json) |
+| pl | runda | rund | English Wiktionary's “round” table lists runda (sources/wiktionary-words.json) |
+| ru | раунд |  | English Wiktionary's “round” table lists раунд (sources/wiktionary-words.json) |
+| ar | جولة | جولات | English Wiktionary's “round” table lists جَوْلَة (جولة) (sources/wiktionary-words.json) |
 | hi | दौर |  | game term (no outside source) |
-| zh | 回合 |  | game term (no outside source) |
-| ja | ラウンド |  | game term (no outside source) |
+| zh | 回合 |  | English Wiktionary's “round” table lists 回合 (sources/wiktionary-words.json) |
+| ja | ラウンド |  | English Wiktionary's “round” table lists ラウンド (sources/wiktionary-words.json) |
 | ko | 라운드 |  | game term (no outside source) |
 | vi | hiệp |  | game term (no outside source) |
 | th | ยก |  | game term (no outside source) |
-| id | ronde |  | game term (no outside source) |
+| id | ronde |  | English Wiktionary's “round” table lists ronde (sources/wiktionary-words.json) |
 
 ### ink (the resource that pays for relics and potions)
 
@@ -120,21 +120,21 @@ The game's own term, fixed by the translator's note at the top of the locale fil
 
 | Language | Term | Also accepted (stems) | Source |
 |---|---|---|---|
-| es | tinta |  | game term (no outside source) |
-| fr | encre |  | game term (no outside source) |
-| de | Tinte |  | game term (no outside source) |
-| it | inchiostro |  | game term (no outside source) |
-| pt | tinta |  | game term (no outside source) |
-| pl | atrament |  | game term (no outside source) |
-| ru | чернила | чернил | game term (no outside source) |
-| ar | حبر |  | game term (no outside source) |
-| hi | स्याही |  | game term (no outside source) |
-| zh | 墨水 |  | game term (no outside source) |
-| ja | インク |  | game term (no outside source) |
-| ko | 잉크 |  | game term (no outside source) |
-| vi | mực |  | game term (no outside source) |
-| th | หมึก |  | game term (no outside source) |
-| id | tinta |  | game term (no outside source) |
+| es | tinta |  | English Wiktionary's “ink” table lists tinta (sources/wiktionary-words.json) |
+| fr | encre |  | English Wiktionary's “ink” table lists encre (sources/wiktionary-words.json) |
+| de | Tinte |  | English Wiktionary's “ink” table lists Tinte (sources/wiktionary-words.json) |
+| it | inchiostro |  | English Wiktionary's “ink” table lists inchiostro (sources/wiktionary-words.json) |
+| pt | tinta |  | English Wiktionary's “ink” table lists tinta (sources/wiktionary-words.json) |
+| pl | atrament |  | English Wiktionary's “ink” table lists atrament (sources/wiktionary-words.json) |
+| ru | чернила | чернил | English Wiktionary's “ink” table lists чернила (sources/wiktionary-words.json) |
+| ar | حبر |  | English Wiktionary's “ink” table lists حِبْر (حبر) (sources/wiktionary-words.json) |
+| hi | स्याही |  | English Wiktionary's “ink” table lists स्याही (sources/wiktionary-words.json) |
+| zh | 墨水 |  | English Wiktionary's “ink” table lists 墨水 (sources/wiktionary-words.json) |
+| ja | インク |  | English Wiktionary's “ink” table lists インク (sources/wiktionary-words.json) |
+| ko | 잉크 |  | English Wiktionary's “ink” table lists 잉크 (sources/wiktionary-words.json) |
+| vi | mực |  | English Wiktionary's “ink” table lists mực (sources/wiktionary-words.json) |
+| th | หมึก |  | English Wiktionary's “ink” table lists หมึก (sources/wiktionary-words.json) |
+| id | tinta |  | English Wiktionary's “ink” table lists tinta (sources/wiktionary-words.json) |
 
 ### curse (a restriction placed on the other player's next verse)
 
@@ -142,20 +142,20 @@ The game's own term, fixed by the translator's note at the top of the locale fil
 
 | Language | Term | Also accepted (stems) | Source |
 |---|---|---|---|
-| es | maldición | maldi, maldec | game term (no outside source) |
-| fr | malédiction | maudi, malédi | game term (no outside source) |
-| de | Fluch | fluch, flüch | game term (no outside source) |
-| it | maledizione | maledi | game term (no outside source) |
-| pt | maldição | maldi, amaldiço | game term (no outside source) |
-| pl | klątwa | klątw, przekl | game term (no outside source) |
-| ru | проклятие | прокл | game term (no outside source) |
-| ar | لعنة | لعن | game term (no outside source) |
-| hi | शाप |  | game term (no outside source) |
-| zh | 诅咒 |  | game term (no outside source) |
-| ja | 呪い | 呪 | game term (no outside source) |
-| ko | 저주 |  | game term (no outside source) |
-| vi | lời nguyền | nguyền | game term (no outside source) |
-| th | คำสาป | สาป | game term (no outside source) |
+| es | maldición | maldi, maldec | English Wiktionary's “curse” table lists maldición (sources/wiktionary-words.json) |
+| fr | malédiction | maudi, malédi | English Wiktionary's “curse” table lists malédiction (sources/wiktionary-words.json) |
+| de | Fluch | fluch, flüch | English Wiktionary's “curse” table lists Fluch (sources/wiktionary-words.json) |
+| it | maledizione | maledi | English Wiktionary's “curse” table lists maledizione (sources/wiktionary-words.json) |
+| pt | maldição | maldi, amaldiço | English Wiktionary's “curse” table lists maldição (sources/wiktionary-words.json) |
+| pl | klątwa | klątw, przekl | English Wiktionary's “curse” table lists klątwa (sources/wiktionary-words.json) |
+| ru | проклятие | прокл | English Wiktionary's “curse” table lists проклятие (sources/wiktionary-words.json) |
+| ar | لعنة | لعن | English Wiktionary's “curse” table lists لَعْنَة (لعنة) (sources/wiktionary-words.json) |
+| hi | शाप |  | English Wiktionary's “curse” table lists शाप (sources/wiktionary-words.json) |
+| zh | 诅咒 |  | English Wiktionary's “curse” table lists 詛咒 (诅咒) (sources/wiktionary-words.json) |
+| ja | 呪い | 呪 | English Wiktionary's “curse” table lists 呪い (sources/wiktionary-words.json) |
+| ko | 저주 |  | English Wiktionary's “curse” table lists 저주(詛呪) (저주) (sources/wiktionary-words.json) |
+| vi | lời nguyền | nguyền | English Wiktionary's “curse” table lists lời nguyền (sources/wiktionary-words.json) |
+| th | คำสาป | สาป | English Wiktionary's “curse” table lists คำสาป (sources/wiktionary-words.json) |
 | id | kutukan | kutuk, ngutuk | game term (no outside source) |
 
 ### relic (a card that lends power words)
@@ -164,21 +164,21 @@ The game's own term, fixed by the translator's note at the top of the locale fil
 
 | Language | Term | Also accepted (stems) | Source |
 |---|---|---|---|
-| es | reliquia |  | game term (no outside source) |
-| fr | relique |  | game term (no outside source) |
-| de | Relikt |  | game term (no outside source) |
-| it | reliquia | reliqui | game term (no outside source) |
-| pt | relíquia |  | game term (no outside source) |
-| pl | relikwia | relikwi | game term (no outside source) |
-| ru | реликвия | реликви | game term (no outside source) |
-| ar | أثر | آثار | game term (no outside source) |
+| es | reliquia |  | English Wiktionary's “relic” table lists reliquia (sources/wiktionary-words.json) |
+| fr | relique |  | English Wiktionary's “relic” table lists relique (sources/wiktionary-words.json) |
+| de | Relikt |  | English Wiktionary's “relic” table lists Relikt (sources/wiktionary-words.json) |
+| it | reliquia | reliqui | English Wiktionary's “relic” table lists reliquia (sources/wiktionary-words.json) |
+| pt | relíquia |  | English Wiktionary's “relic” table lists relíquia (sources/wiktionary-words.json) |
+| pl | relikwia | relikwi | English Wiktionary's “relic” table lists relikwia (sources/wiktionary-words.json) |
+| ru | реликвия | реликви | English Wiktionary's “relic” table lists реликвия (sources/wiktionary-words.json) |
+| ar | أثر | آثار | English Wiktionary's “relic” table lists أَثَر (أثر) (sources/wiktionary-words.json) |
 | hi | अवशेष |  | game term (no outside source) |
 | zh | 圣物 |  | game term (no outside source) |
-| ja | 遺物 |  | game term (no outside source) |
-| ko | 유물 |  | game term (no outside source) |
+| ja | 遺物 |  | English Wiktionary's “relic” table lists 遺物 (sources/wiktionary-words.json) |
+| ko | 유물 |  | English Wiktionary's “relic” table lists 유물(遺物) (유물) (sources/wiktionary-words.json) |
 | vi | bảo vật |  | game term (no outside source) |
 | th | ของวิเศษ |  | game term (no outside source) |
-| id | relik |  | game term (no outside source) |
+| id | relik |  | English Wiktionary's “relic” table lists relik (sources/wiktionary-words.json) |
 
 ### potion (a card that curses the opponent)
 
@@ -186,18 +186,18 @@ The game's own term, fixed by the translator's note at the top of the locale fil
 
 | Language | Term | Also accepted (stems) | Source |
 |---|---|---|---|
-| es | poción | poci | game term (no outside source) |
-| fr | potion |  | game term (no outside source) |
-| de | Trank | tränk | game term (no outside source) |
-| it | pozione | pozion | game term (no outside source) |
-| pt | poção | poções | game term (no outside source) |
-| pl | mikstura | mikstur | game term (no outside source) |
-| ru | зелье | зель | game term (no outside source) |
-| ar | جرعة | جرع | game term (no outside source) |
-| hi | काढ़ा | काढ़े | game term (no outside source) |
-| zh | 药水 |  | game term (no outside source) |
+| es | poción | poci | English Wiktionary's “potion” table lists poción (sources/wiktionary-words.json) |
+| fr | potion |  | English Wiktionary's “potion” table lists potion (sources/wiktionary-words.json) |
+| de | Trank | tränk | English Wiktionary's “potion” table lists Trank (sources/wiktionary-words.json) |
+| it | pozione | pozion | English Wiktionary's “potion” table lists pozione (sources/wiktionary-words.json) |
+| pt | poção | poções | English Wiktionary's “potion” table lists poção (sources/wiktionary-words.json) |
+| pl | mikstura | mikstur | English Wiktionary's “potion” table lists mikstura (sources/wiktionary-words.json) |
+| ru | зелье | зель | English Wiktionary's “potion” table lists зелье (sources/wiktionary-words.json) |
+| ar | جرعة | جرع | English Wiktionary's “potion” table lists جُرْعَة (جرعة) (sources/wiktionary-words.json) |
+| hi | काढ़ा | काढ़े | English Wiktionary's “potion” table lists काढ़ा (sources/wiktionary-words.json) |
+| zh | 药水 |  | English Wiktionary's “potion” table lists 藥水 (药水) (sources/wiktionary-words.json) |
 | ja | 薬 |  | game term (no outside source) |
-| ko | 물약 |  | game term (no outside source) |
+| ko | 물약 |  | English Wiktionary's “potion” table lists 물약 (sources/wiktionary-words.json) |
 | vi | thuốc phép |  | game term (no outside source) |
 | th | ยาวิเศษ |  | game term (no outside source) |
 | id | ramuan |  | game term (no outside source) |
@@ -210,18 +210,18 @@ The game's own term, fixed by the translator's note at the top of the locale fil
 |---|---|---|---|
 | es | mazo |  | game term (no outside source) |
 | fr | jeu |  | game term (no outside source) |
-| de | Deck |  | game term (no outside source) |
-| it | mazzo |  | game term (no outside source) |
-| pt | baralho |  | game term (no outside source) |
-| pl | talia | tali | game term (no outside source) |
-| ru | колода | колод | game term (no outside source) |
+| de | Deck |  | English Wiktionary's “deck” table lists Deck (sources/wiktionary-words.json) |
+| it | mazzo |  | English Wiktionary's “deck” table lists mazzo (sources/wiktionary-words.json) |
+| pt | baralho |  | English Wiktionary's “deck” table lists baralho (sources/wiktionary-words.json) |
+| pl | talia | tali | English Wiktionary's “deck” table lists talia (sources/wiktionary-words.json) |
+| ru | колода | колод | English Wiktionary's “deck” table lists колода (sources/wiktionary-words.json) |
 | ar | رزمة | رزمت | game term (no outside source) |
 | hi | डेक |  | game term (no outside source) |
 | zh | 牌组 |  | game term (no outside source) |
-| ja | デッキ |  | game term (no outside source) |
+| ja | デッキ |  | English Wiktionary's “deck” table lists デッキ (sources/wiktionary-words.json) |
 | ko | 덱 |  | game term (no outside source) |
 | vi | bộ bài |  | game term (no outside source) |
-| th | สำรับ |  | game term (no outside source) |
+| th | สำรับ |  | English Wiktionary's “deck” table lists สำรับ (sources/wiktionary-words.json) |
 | id | dek |  | game term (no outside source) |
 
 ### duel (a match of three rounds)
@@ -230,18 +230,18 @@ The game's own term, fixed by the translator's note at the top of the locale fil
 
 | Language | Term | Also accepted (stems) | Source |
 |---|---|---|---|
-| es | duelo |  | game term (no outside source) |
-| fr | duel |  | game term (no outside source) |
-| de | Duell |  | game term (no outside source) |
-| it | duello | duell | game term (no outside source) |
-| pt | duelo |  | game term (no outside source) |
-| pl | pojedynek | pojedyn | game term (no outside source) |
-| ru | дуэль | дуэл | game term (no outside source) |
-| ar | مبارزة | مبارز | game term (no outside source) |
+| es | duelo |  | English Wiktionary's “duel” table lists duelo (sources/wiktionary-words.json) |
+| fr | duel |  | English Wiktionary's “duel” table lists duel (sources/wiktionary-words.json) |
+| de | Duell |  | English Wiktionary's “duel” table lists Duell (sources/wiktionary-words.json) |
+| it | duello | duell | English Wiktionary's “duel” table lists duello (sources/wiktionary-words.json) |
+| pt | duelo |  | English Wiktionary's “duel” table lists duelo (sources/wiktionary-words.json) |
+| pl | pojedynek | pojedyn | English Wiktionary's “duel” table lists pojedynek (sources/wiktionary-words.json) |
+| ru | дуэль | дуэл | English Wiktionary's “duel” table lists дуэль (sources/wiktionary-words.json) |
+| ar | مبارزة | مبارز | English Wiktionary's “duel” table lists مُبَارَزَة (مبارزة) (sources/wiktionary-words.json) |
 | hi | द्वंद्व |  | game term (no outside source) |
 | zh | 对决 | 一场 | game term (no outside source) |
-| ja | 決闘 |  | game term (no outside source) |
-| ko | 결투 |  | game term (no outside source) |
+| ja | 決闘 |  | English Wiktionary's “duel” table lists 決闘 (sources/wiktionary-words.json) |
+| ko | 결투 |  | English Wiktionary's “duel” table lists 결투(決鬪) (결투) (sources/wiktionary-words.json) |
 | vi | trận đấu | đấu, trận | game term (no outside source) |
 | th | การประชัน | ประชัน | game term (no outside source) |
 | id | duel |  | game term (no outside source) |
@@ -252,14 +252,14 @@ The game's own term, fixed by the translator's note at the top of the locale fil
 
 | Language | Term | Also accepted (stems) | Source |
 |---|---|---|---|
-| es | oficio |  | game term (no outside source) |
-| fr | métier |  | game term (no outside source) |
-| de | Handwerk |  | game term (no outside source) |
-| it | mestiere |  | game term (no outside source) |
-| pt | ofício |  | game term (no outside source) |
+| es | oficio |  | English Wiktionary's “craft” table lists oficio (sources/wiktionary-words.json) |
+| fr | métier |  | English Wiktionary's “craft” table lists métier (sources/wiktionary-words.json) |
+| de | Handwerk |  | English Wiktionary's “craft” table lists Handwerk (sources/wiktionary-words.json) |
+| it | mestiere |  | English Wiktionary's “craft” table lists mestiere (sources/wiktionary-words.json) |
+| pt | ofício |  | English Wiktionary's “craft” table lists ofício (sources/wiktionary-words.json) |
 | pl | kunszt |  | game term (no outside source) |
 | ru | мастерство | мастерств | game term (no outside source) |
-| ar | صنعة |  | game term (no outside source) |
+| ar | صنعة |  | English Wiktionary's “craft” table lists صَنْعَة (صنعة) (sources/wiktionary-words.json) |
 | hi | शिल्प |  | game term (no outside source) |
 | zh | 技艺 |  | game term (no outside source) |
 | ja | 技巧 |  | game term (no outside source) |
@@ -274,21 +274,21 @@ The game's own term, fixed by the translator's note at the top of the locale fil
 
 | Language | Term | Also accepted (stems) | Source |
 |---|---|---|---|
-| es | juez |  | game term (no outside source) |
-| fr | juge |  | game term (no outside source) |
-| de | Richter |  | game term (no outside source) |
-| it | giudice |  | game term (no outside source) |
-| pt | juiz |  | game term (no outside source) |
-| pl | sędzia | sędzi | game term (no outside source) |
-| ru | судья | судь | game term (no outside source) |
-| ar | حَكَم | الحكم | game term (no outside source) |
+| es | juez |  | English Wiktionary's “judge” table lists juez (sources/wiktionary-words.json) |
+| fr | juge |  | English Wiktionary's “judge” table lists juge (sources/wiktionary-words.json) |
+| de | Richter |  | English Wiktionary's “judge” table lists Richter (sources/wiktionary-words.json) |
+| it | giudice |  | English Wiktionary's “judge” table lists giudice (sources/wiktionary-words.json) |
+| pt | juiz |  | English Wiktionary's “judge” table lists juiz (sources/wiktionary-words.json) |
+| pl | sędzia | sędzi | English Wiktionary's “judge” table lists sędzia (sources/wiktionary-words.json) |
+| ru | судья | судь | English Wiktionary's “judge” table lists судья (sources/wiktionary-words.json) |
+| ar | حَكَم | الحكم | English Wiktionary's “judge” table lists حَكَمَ (حَكَم) (sources/wiktionary-words.json) |
 | hi | निर्णायक |  | game term (no outside source) |
-| zh | 裁判 |  | game term (no outside source) |
-| ja | 審判 |  | game term (no outside source) |
-| ko | 심판 |  | game term (no outside source) |
+| zh | 裁判 |  | English Wiktionary's “judge” table lists 裁判 (sources/wiktionary-words.json) |
+| ja | 審判 |  | English Wiktionary's “judge” table lists 審判 (sources/wiktionary-words.json) |
+| ko | 심판 |  | English Wiktionary's “judge” table lists 심판(審判) (심판) (sources/wiktionary-words.json) |
 | vi | giám khảo |  | game term (no outside source) |
 | th | กรรมการ |  | game term (no outside source) |
-| id | juri |  | game term (no outside source) |
+| id | juri |  | English Wiktionary's “judge” table lists juri (sources/wiktionary-words.json) |
 
 ### opponent
 
@@ -297,19 +297,19 @@ The game's own term, fixed by the translator's note at the top of the locale fil
 | Language | Term | Also accepted (stems) | Source |
 |---|---|---|---|
 | es | rival |  | game term (no outside source) |
-| fr | adversaire |  | game term (no outside source) |
-| de | Gegner |  | game term (no outside source) |
-| it | avversario | avversari | game term (no outside source) |
+| fr | adversaire |  | English Wiktionary's “opponent” table lists adversaire (sources/wiktionary-words.json) |
+| de | Gegner |  | English Wiktionary's “opponent” table lists Gegner (sources/wiktionary-words.json) |
+| it | avversario | avversari | English Wiktionary's “opponent” table lists avversario (sources/wiktionary-words.json) |
 | pt | adversário |  | game term (no outside source) |
 | pl | rywal |  | game term (no outside source) |
 | ru | соперник |  | game term (no outside source) |
-| ar | خصم |  | game term (no outside source) |
+| ar | خصم |  | English Wiktionary's “opponent” table lists خَصْم (خصم) (sources/wiktionary-words.json) |
 | hi | प्रतिद्वंद्वी |  | game term (no outside source) |
-| zh | 对手 |  | game term (no outside source) |
-| ja | 相手 |  | game term (no outside source) |
-| ko | 상대 |  | game term (no outside source) |
+| zh | 对手 |  | English Wiktionary's “opponent” table lists 對手 (对手) (sources/wiktionary-words.json) |
+| ja | 相手 |  | English Wiktionary's “opponent” table lists 相手 (sources/wiktionary-words.json) |
+| ko | 상대 |  | English Wiktionary's “opponent” table lists 상대(相對) (상대) (sources/wiktionary-words.json) |
 | vi | đối thủ |  | game term (no outside source) |
-| th | คู่ต่อสู้ |  | game term (no outside source) |
+| th | คู่ต่อสู้ |  | English Wiktionary's “opponent” table lists คู่ต่อสู้ (sources/wiktionary-words.json) |
 | id | lawan |  | game term (no outside source) |
 
 ### signature (the bonus for echoing a card's famous line)
@@ -318,21 +318,21 @@ The game's own term, fixed by the translator's note at the top of the locale fil
 
 | Language | Term | Also accepted (stems) | Source |
 |---|---|---|---|
-| es | firma |  | game term (no outside source) |
-| fr | signature |  | game term (no outside source) |
-| de | Signatur |  | game term (no outside source) |
-| it | firma |  | game term (no outside source) |
-| pt | assinatura |  | game term (no outside source) |
-| pl | sygnatura | sygnatur | game term (no outside source) |
-| ru | подпись | подпис | game term (no outside source) |
-| ar | توقيع |  | game term (no outside source) |
-| hi | हस्ताक्षर |  | game term (no outside source) |
-| zh | 签名 |  | game term (no outside source) |
+| es | firma |  | English Wiktionary's “signature” table lists firma (sources/wiktionary-words.json) |
+| fr | signature |  | English Wiktionary's “signature” table lists signature (sources/wiktionary-words.json) |
+| de | Signatur |  | English Wiktionary's “signature” table lists Signatur (sources/wiktionary-words.json) |
+| it | firma |  | English Wiktionary's “signature” table lists firma (sources/wiktionary-words.json) |
+| pt | assinatura |  | English Wiktionary's “signature” table lists assinatura (sources/wiktionary-words.json) |
+| pl | sygnatura | sygnatur | English Wiktionary's “signature” table lists sygnatura (sources/wiktionary-words.json) |
+| ru | подпись | подпис | English Wiktionary's “signature” table lists подпись (sources/wiktionary-words.json) |
+| ar | توقيع |  | English Wiktionary's “signature” table lists تَوْقِيع (توقيع) (sources/wiktionary-words.json) |
+| hi | हस्ताक्षर |  | English Wiktionary's “signature” table lists हस्ताक्षर (sources/wiktionary-words.json) |
+| zh | 签名 |  | English Wiktionary's “signature” table lists 簽名 (签名) (sources/wiktionary-words.json) |
 | ja | シグネチャー |  | game term (no outside source) |
 | ko | 시그니처 |  | game term (no outside source) |
 | vi | dấu ấn |  | game term (no outside source) |
-| th | ลายเซ็น |  | game term (no outside source) |
-| id | tanda tangan |  | game term (no outside source) |
+| th | ลายเซ็น |  | English Wiktionary's “signature” table lists ลายเซ็น (sources/wiktionary-words.json) |
+| id | tanda tangan |  | English Wiktionary's “signature” table lists tanda tangan (sources/wiktionary-words.json) |
 
 ### power words (words a relic lends)
 
@@ -362,21 +362,21 @@ The word for a syllable in each language: the title of its Wikipedia article (Wi
 
 | Language | Term | Also accepted (stems) | Source |
 |---|---|---|---|
-| es | sílaba |  | Wikidata Q8188 (docs/language/sources/wikidata-terms.json) |
-| fr | syllabe |  | Wikidata Q8188 (docs/language/sources/wikidata-terms.json) |
-| de | Silbe |  | Wikidata Q8188 (docs/language/sources/wikidata-terms.json) |
-| it | sillaba | sillabe | Wikidata Q8188 (docs/language/sources/wikidata-terms.json) |
-| pt | sílaba |  | Wikidata Q8188 (docs/language/sources/wikidata-terms.json) |
-| pl | sylaba | sylab | Wikidata Q8188 (docs/language/sources/wikidata-terms.json) |
-| ru | слог |  | Wikidata Q8188 (docs/language/sources/wikidata-terms.json) |
-| ar | مقطع | مقاطع | Wikidata Q8188 (docs/language/sources/wikidata-terms.json) |
-| hi | शब्दांश |  | Wikidata Q8188 (docs/language/sources/wikidata-terms.json) |
-| zh | 音节 |  | Wikidata Q8188 (docs/language/sources/wikidata-terms.json) |
-| ja | 音節 |  | Wikidata Q8188 (docs/language/sources/wikidata-terms.json) |
-| ko | 음절 |  | Wikidata Q8188 (docs/language/sources/wikidata-terms.json) |
-| vi | âm tiết | tiếng | Wikidata Q8188 (docs/language/sources/wikidata-terms.json) |
-| th | พยางค์ |  | Wikidata Q8188 (docs/language/sources/wikidata-terms.json) |
-| id | suku kata |  | Wikidata Q8188 (docs/language/sources/wikidata-terms.json) |
+| es | sílaba |  | Wikidata's es label for the syllable (Q8188), sources/wikidata-terms.json |
+| fr | syllabe |  | Wikidata's fr label for the syllable (Q8188), sources/wikidata-terms.json |
+| de | Silbe |  | Wikidata's de label for the syllable (Q8188), sources/wikidata-terms.json |
+| it | sillaba | sillabe | Wikidata's it label for the syllable (Q8188), sources/wikidata-terms.json |
+| pt | sílaba |  | Wikidata's pt label for the syllable (Q8188), sources/wikidata-terms.json |
+| pl | sylaba | sylab | Wikidata's pl label for the syllable (Q8188), sources/wikidata-terms.json |
+| ru | слог |  | Wikidata's ru label for the syllable (Q8188), sources/wikidata-terms.json |
+| ar | مقطع | مقاطع | A Wikidata ar alias of the syllable (Q8188), whose label is مقطع لفظي (sources/wikidata-terms.json) |
+| hi | शब्दांश |  | Wikidata's hi label for the syllable (Q8188), sources/wikidata-terms.json |
+| zh | 音节 |  | Wikidata's zh label for the syllable (Q8188), sources/wikidata-terms.json |
+| ja | 音節 |  | Wikidata's ja label for the syllable (Q8188), sources/wikidata-terms.json |
+| ko | 음절 |  | Wikidata's ko label for the syllable (Q8188), sources/wikidata-terms.json |
+| vi | âm tiết | tiếng | Wikidata's vi label for the syllable (Q8188), sources/wikidata-terms.json |
+| th | พยางค์ |  | Wikidata's th label for the syllable (Q8188), sources/wikidata-terms.json |
+| id | suku kata |  | Wikidata's id label for the syllable (Q8188), sources/wikidata-terms.json |
 
 ### rhyme
 
@@ -384,21 +384,21 @@ Each language's word for rhyme (Wikidata Q178715 where the article title is the 
 
 | Language | Term | Also accepted (stems) | Source |
 |---|---|---|---|
-| es | rima | rim | Wikidata Q178715 (docs/language/sources/wikidata-terms.json); verb forms by the translator |
-| fr | rime | rim | Wikidata Q178715 (docs/language/sources/wikidata-terms.json); verb forms by the translator |
-| de | Reim | reim | Wikidata Q178715 (docs/language/sources/wikidata-terms.json); verb forms by the translator |
-| it | rima | rim | Wikidata Q178715 (docs/language/sources/wikidata-terms.json); verb forms by the translator |
-| pt | rima | rim | Wikidata Q178715 (docs/language/sources/wikidata-terms.json); verb forms by the translator |
-| pl | rym |  | Wikidata Q178715 (docs/language/sources/wikidata-terms.json); verb forms by the translator |
-| ru | рифма | рифм | Wikidata Q178715 (docs/language/sources/wikidata-terms.json); verb forms by the translator |
-| ar | قافية | قافي, يقفّي, مقفّ | Wikidata Q178715 (docs/language/sources/wikidata-terms.json); verb forms by the translator |
-| hi | तुक |  | Wikidata Q178715 (docs/language/sources/wikidata-terms.json); verb forms by the translator |
-| zh | 押韵 | 韵 | Wikidata Q178715 (docs/language/sources/wikidata-terms.json); verb forms by the translator |
-| ja | 韻 |  | Wikidata Q178715 (docs/language/sources/wikidata-terms.json); verb forms by the translator |
-| ko | 운 |  | Wikidata Q178715 (docs/language/sources/wikidata-terms.json); verb forms by the translator |
-| vi | vần | vận | Wikidata Q178715 (docs/language/sources/wikidata-terms.json); verb forms by the translator |
-| th | สัมผัส |  | Wikidata Q178715 (docs/language/sources/wikidata-terms.json); verb forms by the translator |
-| id | rima |  | Wikidata Q178715 (docs/language/sources/wikidata-terms.json); verb forms by the translator |
+| es | rima | rim | Wikidata's es label for rhyme (Q178715), sources/wikidata-terms.json; verb forms by the translator |
+| fr | rime | rim | Wikidata's fr label for rhyme (Q178715), sources/wikidata-terms.json; verb forms by the translator |
+| de | Reim | reim | Wikidata's de label for rhyme (Q178715), sources/wikidata-terms.json; verb forms by the translator |
+| it | rima | rim | Wikidata's it label for rhyme (Q178715), sources/wikidata-terms.json; verb forms by the translator |
+| pt | rima | rim | Wikidata's pt label for rhyme (Q178715), sources/wikidata-terms.json; verb forms by the translator |
+| pl | rym |  | Wikidata's pl label for rhyme (Q178715), sources/wikidata-terms.json; verb forms by the translator |
+| ru | рифма | рифм | Wikidata's ru label for rhyme (Q178715), sources/wikidata-terms.json; verb forms by the translator |
+| ar | قافية | قافي, يقفّي, مقفّ | Wikidata's ar label for rhyme (Q178715), sources/wikidata-terms.json; verb forms by the translator |
+| hi | तुक |  | English Wiktionary's “rhyme” table lists तुक (sources/wiktionary-words.json); Wikidata's hi label for rhyme (Q178715) is क़ाफ़िया; verb forms by the translator |
+| zh | 押韵 | 韵 | English Wiktionary's “rhyme” table lists 押韻 (押韵) (sources/wiktionary-words.json); Wikidata's zh label for rhyme (Q178715) is 押韻; verb forms by the translator |
+| ja | 韻 |  | English Wiktionary's “rhyme” table lists 韻 (sources/wiktionary-words.json); Wikidata's ja label for rhyme (Q178715) is 韻文; verb forms by the translator |
+| ko | 운 |  | English Wiktionary's “rhyme” table lists 운(韻) (운) (sources/wiktionary-words.json); Wikidata's ko label for rhyme (Q178715) is 압운; verb forms by the translator |
+| vi | vần | vận | Wikidata's vi label for rhyme (Q178715), sources/wikidata-terms.json; verb forms by the translator |
+| th | สัมผัส |  | English Wiktionary's “rhyme” table lists สัมผัส (sources/wiktionary-words.json); Wikidata's th label for rhyme (Q178715) is คำคล้องจอง; verb forms by the translator |
+| id | rima |  | Wikidata's id label for rhyme (Q178715), sources/wikidata-terms.json; verb forms by the translator |
 
 ### written opponent / written verse (the opponent that plays prepared verses when no model runs)
 
@@ -414,7 +414,7 @@ The game's own term, fixed by the translator's note at the top of the locale fil
 | pl | gotow |  | game term (no outside source) |
 | ru | готов |  | game term (no outside source) |
 | ar | مكتوب |  | game term (no outside source) |
-| hi | लिखे |  | game term (no outside source) |
+| hi | लिखी | लिखे | game term (no outside source) Feminine since the verse became कविता: लिखी हुई कविताएँ. |
 | zh | 预先写好 |  | game term (no outside source) |
 | ja | 書かれた |  | game term (no outside source) |
 | ko | 쓰인 |  | game term (no outside source) |
@@ -460,7 +460,7 @@ Platform term. Reference: Android's translation of the 'Sign in' button (AOSP co
 | ar | تسجيل الدخول | الدخول, دخول, ادخل, تدخل | Android (AOSP core, kg_login_submit_button): تسجيل الدخول |
 | hi | साइन इन |  | Android (AOSP core, kg_login_submit_button): साइन इन करें |
 | zh | 登录 |  | Android (AOSP core, kg_login_submit_button): 登录 |
-| ja | サインイン |  | Apple's word (sources/apple-passkeys.json). Android (kg_login_submit_button: ログイン), Google Help (ログイン) and Mozilla (ログイン) all write ログイン; the game keeps Apple's サインイン. For a native reader. |
+| ja | サインイン |  | Apple's word: Apple's Japanese passkey article writes サインイン (sources/apple-passkeys.json). Android (kg_login_submit_button: ログイン), Google Help (ログイン) and Mozilla (ログイン) all write ログイン; the game keeps Apple's サインイン. For a native reader. |
 | ko | 로그인 |  | Android (AOSP core, kg_login_submit_button): 로그인 |
 | vi | đăng nhập |  | Android (AOSP core, kg_login_submit_button): Đăng nhập |
 | th | ลงชื่อเข้าใช้ |  | Android (AOSP core, kg_login_submit_button): ลงชื่อเข้าใช้; Google Help, Gmail answer 8494 (sources/google-help.json): ลงชื่อเข้าใช้. (The game had written เข้าสู่ระบบ, which no vendor fetched uses; Mozilla writes ลงชื่อเข้า.) Pairs with ออกจากระบบ, Google's sign out. |
@@ -611,12 +611,12 @@ A character's name, as Wikidata records it in the language (sources/wikidata-nam
 | pt | Dístico | pt Wikipedia article Dístico (Wikidata Q4779829) (English Wiktionary's translation table gives parelha; the Wikipedia title is kept.) |
 | pl | Dystych | Title of the pl Wikipedia article Dystych (Wikidata Q906442, distich); the couplet item itself has no Polish article. (English Wiktionary's translation table gives dwuwiersz; the Wikipedia title is kept.) |
 | ru | Двустишие | ru Wikipedia article Двустишие (Wikidata Q4779829) |
-| ar | بيتان مقفّيان | A description (two rhymed lines), not a term. Wikidata links the Arabic article مربع (شعر) to this concept; it was not adopted because, to the translator's knowledge, مربع names a four-part stanza in Arabic prosody. Not verified: for a native reader. |
+| ar | بيتان مقفّيان | Not sourced. A description (two rhymed lines), not a term. Wikidata links the Arabic article مربع (شعر) to this concept; it was not adopted because, to the translator's knowledge, مربع names a four-part stanza in Arabic prosody. Not verified: for a native reader. |
 | hi | दोहा | दोहा is the rhymed couplet of the Hindi tradition (hi Wikipedia article दोहा, Wikidata Q5288532). A doha also has a fixed metre, which the game does not check. Replaces the coined दोहा-युग्म. |
 | zh | 对句 | zh Wikipedia article 对句 (Wikidata Q4779829) |
 | ja | 二行連 | ja Wikipedia article 二行連 (Wikidata Q4779829) (English Wiktionary's translation table gives 対句; the Wikipedia title is kept.) |
 | ko | 쿠플레 | ko Wikipedia article 쿠플레 (Wikidata Q4779829) (English Wiktionary's translation table gives 대구(對句); the Wikipedia title is kept.) |
-| vi | Câu đối vần | No article for this concept. Câu đối (vi Wikipedia, Q1168671) is the antithetical couplet, a different form; the name here adds vần (rhyme). Coined: for a native reader. |
+| vi | Câu đối vần | Not sourced. No article for this concept. Câu đối (vi Wikipedia, Q1168671) is the antithetical couplet, a different form; the name here adds vần (rhyme). Coined: for a native reader. |
 | th | กลอนคู่ | No article for this concept and none titled กลอนคู่. Not sourced: for a native reader. |
 | id | Kuplet | English Wiktionary (docs/language/sources/wiktionary-translations.json), couplet, sense 'in poetry, a pair of lines with rhyming end words': Indonesian bait, kuplet, untai. Kuplet is taken because bait is also the everyday word for a stanza, which is what Wikidata's link (the id article Bait (sastra)) is about. |
 
@@ -632,12 +632,12 @@ A character's name, as Wikidata records it in the language (sources/wikidata-nam
 | pl | Czterowiersz parzysty | Czterowiersz + the rhyme pattern. Czterowiersz: English Wiktionary (docs/language/sources/wiktionary-translations.json), quatrain, 'a stanza of four lines': Polish czterowiersz (also tetrastych, kwartyna). The rhyme-pattern words are not sourced. |
 | ru | Катрен с парной рифмой | Катрен + the rhyme pattern. Катрен: ru Wikipedia article Катрен (Wikidata Q570948) |
 | ar | رباعية مزدوجة القافية | رباعية + the rhyme pattern. رباعية: ar Wikipedia article رباعية (شعر) (Wikidata Q570948) |
-| hi | जोड़ीदार चौपदी | चौपदी + the rhyme pattern. चौपदी: not sourced: for a native reader |
+| hi | जोड़ीदार चौपदी | Not sourced. चौपदी + the rhyme pattern. चौपदी: not sourced: for a native reader |
 | zh | 连韵四行诗 | 四行诗 + the rhyme pattern. 四行诗: zh Wikipedia article 四行诗 (Wikidata Q570948) |
 | ja | 対韻の四行連 | 四行連 + the rhyme pattern. 四行連: ja Wikipedia article 四行連 (Wikidata Q570948) |
-| ko | 짝운 4행시 | 4행시 + the rhyme pattern. 4행시: not sourced |
+| ko | 짝운 4행시 | Not sourced. 4행시 + the rhyme pattern. 4행시: not sourced |
 | vi | Thơ bốn câu vần liền | Thơ bốn câu + the rhyme pattern (vần liền, consecutive rhyme). Thơ bốn câu: English Wiktionary (docs/language/sources/wiktionary-translations.json), quatrain, 'a stanza of four lines': Vietnamese thơ bốn câu. Replaces Tứ tuyệt, which names the Chinese four-line jueju (the game's own Tuyệt cú form, whose brief calls it bài tứ tuyệt). The rhyme-pattern words are not sourced. |
-| th | กลอนสี่สัมผัสคู่ | กลอนสี่ + the rhyme pattern. กลอนสี่: not an article title; not sourced |
+| th | กลอนสี่สัมผัสคู่ | Not sourced. กลอนสี่ + the rhyme pattern. กลอนสี่: not an article title; not sourced |
 | id | Sajak empat baris berpasangan | Sajak empat baris + the rhyme pattern. Sajak empat baris: id Wikipedia article Sajak empat baris (Wikidata Q570948) |
 
 ### Crossed Quatrain (`form.quatrain-abab.name`, Wikidata Q570948)
@@ -652,12 +652,12 @@ A character's name, as Wikidata records it in the language (sources/wikidata-nam
 | pl | Czterowiersz krzyżowy | Czterowiersz + the rhyme pattern. Czterowiersz: English Wiktionary (docs/language/sources/wiktionary-translations.json), quatrain, 'a stanza of four lines': Polish czterowiersz (also tetrastych, kwartyna). The rhyme-pattern words are not sourced. |
 | ru | Катрен с перекрёстной рифмой | Катрен + the rhyme pattern. Катрен: ru Wikipedia article Катрен (Wikidata Q570948) |
 | ar | رباعية متقاطعة القافية | رباعية + the rhyme pattern. رباعية: ar Wikipedia article رباعية (شعر) (Wikidata Q570948) |
-| hi | एकांतर चौपदी | चौपदी + the rhyme pattern. चौपदी: not sourced: for a native reader |
+| hi | एकांतर चौपदी | Not sourced. चौपदी + the rhyme pattern. चौपदी: not sourced: for a native reader |
 | zh | 交韵四行诗 | 四行诗 + the rhyme pattern. 四行诗: zh Wikipedia article 四行诗 (Wikidata Q570948) |
 | ja | 交差韻の四行連 | 四行連 + the rhyme pattern. 四行連: ja Wikipedia article 四行連 (Wikidata Q570948) |
-| ko | 교차운 4행시 | 4행시 + the rhyme pattern. 4행시: not sourced |
+| ko | 교차운 4행시 | Not sourced. 4행시 + the rhyme pattern. 4행시: not sourced |
 | vi | Thơ bốn câu vần chéo | Thơ bốn câu + the rhyme pattern (vần chéo, crossed rhyme). Thơ bốn câu: English Wiktionary (docs/language/sources/wiktionary-translations.json), quatrain, 'a stanza of four lines': Vietnamese thơ bốn câu. Replaces Tứ tuyệt, which names the Chinese four-line jueju (the game's own Tuyệt cú form). The rhyme-pattern words are not sourced. |
-| th | กลอนสี่สัมผัสไขว้ | กลอนสี่ + the rhyme pattern. กลอนสี่: not an article title; not sourced |
+| th | กลอนสี่สัมผัสไขว้ | Not sourced. กลอนสี่ + the rhyme pattern. กลอนสี่: not an article title; not sourced |
 | id | Sajak empat baris bersilang | Sajak empat baris + the rhyme pattern. Sajak empat baris: id Wikipedia article Sajak empat baris (Wikidata Q570948) |
 
 ### Tercet (`form.tercet.name`, Wikidata Q1353779)
@@ -673,7 +673,7 @@ A character's name, as Wikidata records it in the language (sources/wikidata-nam
 | ru | Терцет | ru Wikipedia article Терцет (Wikidata Q1353779) |
 | ar | ثلاثية | Not sourced: no article for this concept in this language. For a native reader. |
 | hi | त्रिपदी | No article for this concept. The hi Wikipedia article त्रिपदी is about the trinomial in algebra. Not sourced: for a native reader. |
-| zh | 三行诗 | No zh article for this concept; Wikidata's zh label is 三行体. Not sourced: for a native reader. |
+| zh | 三行体 | Wikidata's zh label for the tercet (Q1353779): 三行体. No zh article. Replaces 三行诗, which was not sourced. |
 | ja | 三行連 | ja Wikipedia article 三行連 (Wikidata Q1353779) |
 | ko | 3행 연 | Not sourced: no article for this concept in this language. For a native reader. |
 | vi | Khổ ba dòng | Not sourced: no article for this concept in this language. For a native reader. |
@@ -693,10 +693,10 @@ A character's name, as Wikidata records it in the language (sources/wikidata-nam
 | ru | Анафора | ru Wikipedia article Анафора (Wikidata Q486050) |
 | ar | تكرار الصدارة | ar Wikipedia article تكرار الصدارة (Wikidata Q486050) |
 | hi | आदि-आवृत्ति | Not sourced: no article for this concept in this language. For a native reader. |
-| zh | 首语重复 | No zh article; Wikidata's zh label is 句首照应反复. 首语重复 is not sourced: for a native reader. |
+| zh | 首语重复 | Not sourced. No zh article; Wikidata's zh label is 句首照应反复. 首语重复 is not sourced: for a native reader. |
 | ja | 首句反復 | ja Wikipedia article 首句反復 (Wikidata Q486050) |
 | ko | 첫말 반복 | No ko article. A plain description (repeat the first word), chosen over the earlier 두운 반복, which used the word for alliteration. Not sourced. |
-| vi | Điệp đầu | Wikidata's vi sitelink is the untranslated 'Anaphora (tu từ học)'. Điệp đầu is not sourced: for a native reader. |
+| vi | Điệp đầu | Not sourced. Wikidata's vi sitelink is the untranslated 'Anaphora (tu từ học)'. Điệp đầu is not sourced: for a native reader. |
 | th | ซ้ำคำขึ้นต้น | Not sourced: no article for this concept in this language. For a native reader. |
 | id | Anafora | English Wiktionary (docs/language/sources/wiktionary-translations.json), anaphora, sense 'rhetoric: repetition of a phrase used for emphasis': Indonesian anafora. (The id Wikipedia article Anafora, Q262575, is about the eucharistic prayer, so Wikidata gives no sitelink for the rhetorical sense.) |
 
@@ -717,7 +717,7 @@ A character's name, as Wikidata records it in the language (sources/wikidata-nam
 | ja | 折句 | ja Wikipedia article 折句 (Wikidata Q173287) |
 | ko | 이합체시 | ko Wikipedia article 이합체시 (Wikidata Q173287) (English Wiktionary's translation table gives 아크로스틱; the Wikipedia title is kept.) |
 | vi | Thơ khoán thủ | No vi article for this concept and none titled Thơ khoán thủ. Not sourced: for a native reader. |
-| th | กลอนกระทู้ | Wikidata links the Thai article อักษรกล. The game's Thai acrostic is word by word, which is the กระทู้ form of Thai verse; กลอนกระทู้ is not an article title: for a native reader. |
+| th | กลอนกระทู้ | Not sourced. Wikidata links the Thai article อักษรกล. The game's Thai acrostic is word by word, which is the กระทู้ form of Thai verse; กลอนกระทู้ is not an article title: for a native reader. |
 | id | Akrostik | id Wikipedia article Akrostik (Wikidata Q173287) |
 
 ### Epistrophe (`form.epistrophe.name`, Wikidata Q963102)
@@ -853,7 +853,7 @@ A character's name, as Wikidata records it in the language (sources/wikidata-nam
 | ru | Внутренняя рифма | Wikidata label (внутренняя рифма); no ru article. |
 | ar | القافية الداخلية | Not sourced: no article for this concept in this language (Wikidata label: السجع في الشعر). For a native reader. |
 | hi | भीतरी तुक | Not sourced: no article for this concept in this language. For a native reader. |
-| zh | 行内韵 | Not sourced: no article for this concept in this language (Wikidata label: 内韵). For a native reader. |
+| zh | 内韵 | Wikidata's zh label for internal rhyme (Q2098331): 内韵. No zh article. Replaces 行内韵, which was not sourced. |
 | ja | 中間韻 | ja Wikipedia article 中間韻 (Wikidata Q2098331) |
 | ko | 행 안의 운 | Not sourced: no article for this concept in this language. For a native reader. |
 | vi | Vần lưng | Not sourced: no article for this concept in this language. For a native reader. |

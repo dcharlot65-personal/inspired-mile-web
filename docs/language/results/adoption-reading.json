@@ -1315,5 +1315,521 @@
     "note": "Wrong gender: the thing spoken is a estrofe (feminine), so it would be Diga-a; the infinitive button label Dizer is ordinary Brazilian UI."
    }
   }
+ },
+ "secondPass": {
+  "about": "The reviewer's proposals from its run of 2026-11-17 over the strings changed since its first run and over the pack (power words and verse lines), which it had not read before; each read against the English and where it appears. Read by a language model, not a native speaker. None was adopted.",
+  "languages": {
+   "th": {
+    "pack:relics.RL-002.4": {
+     "text": "จมน้ำ",
+     "proposal": "การจมน้ำ",
+     "reviewerReason": "The English source 'drown' is used as a noun in the context of power words (a noun where it can be). 'จมน้ำ' is a verb; 'การจมน้ำ' is the noun form.",
+     "decision": "not adopted",
+     "note": "Not adopted: \"drown\" is given as a noun of the sea (shipwreck, the deep) in this pack, a choice read and kept in allow/words.json; the direct translation the reviewer asks for is a design question (which form the stem rule in devices.ts meets best), listed in HUMAN-REVIEW for the designer and a native reader."
+    },
+    "pack:relics.RL-003.3": {
+     "text": "ภาพลวง",
+     "proposal": "นิมิต",
+     "reviewerReason": "In a poetic/literary context like a verse-based game, 'vision' is better translated as 'นิมิต' (vision/apparition) rather than 'ภาพลวง' (illusion), which implies something false.",
+     "decision": "not adopted",
+     "note": "Not adopted: the vision is Macbeth's dagger, an apparition (\"a false creation\"); the current word says that, the proposal says sight or fantasy."
+    },
+    "pack:relics.RL-004.3": {
+     "text": "เนรเทศ",
+     "proposal": "ถูกเนรเทศ",
+     "reviewerReason": "The English 'banished' is a past participle/adjective in this context; 'เนรเทศ' is a verb, so adding 'ถูก' makes it a proper noun/state for a power word.",
+     "decision": "not adopted",
+     "note": "Not adopted: the pack gives the noun (exile) by design, and the stem rule meets the participle too where the stems agree (or, in an unspaced language, the word anywhere in the line); the change would narrow what scores."
+    },
+    "pack:relics.RL-006.2": {
+     "text": "ทะเยอทะยาน",
+     "proposal": "ความทะเยอทะยาน",
+     "reviewerReason": "The English 'ambition' is a noun. 'ทะเยอทะยาน' is an adjective in Thai; adding 'ความ' turns it into a noun.",
+     "decision": "not adopted",
+     "note": "Not adopted: Thai is matched anywhere in the line, so ทะเยอทะยาน already meets ความทะเยอทะยาน; the proposal would no longer meet the adjective."
+    },
+    "pack:relics.RL-007.3": {
+     "text": "หน้ากระดาษ",
+     "proposal": "หน้า",
+     "reviewerReason": "In the context of a book/relic, 'หน้า' is more natural for a single page than 'หน้ากระดาษ' which sounds like a physical sheet of paper.",
+     "decision": "not adopted",
+     "note": "Not adopted: หน้า alone (face, front, next) would be met by most Thai lines."
+    }
+   },
+   "hi": {
+    "device.riposte.brief": {
+     "text": "प्रतिद्वंद्वी की पिछली कविता से {n, plural, one {# या ज़्यादा अक्षरों} other {# या ज़्यादा अक्षरों}} वाला कोई शब्द लेकर उसी पर लौटा दें।",
+     "proposal": "प्रतिद्वंद्वी की पिछली कविता से {n, plural, one {# अक्षर} other {# अक्षर}} या उससे ज़्यादा का कोई शब्द लेकर उसी पर लौटा दें।",
+     "reviewerReason": "The original translation had a grammatical error in the pluralization logic and was slightly clunky. The corrected version is more natural and follows the ICU logic correctly for Hindi.",
+     "decision": "not adopted",
+     "note": "Not adopted: an equally good wording; the current sentence is correct (a word \"having N or more letters\")."
+    },
+    "pack:relics.RL-003.3": {
+     "text": "भ्रम",
+     "proposal": "दृष्टि",
+     "reviewerReason": "The translation 'भ्रम' means 'illusion/confusion', whereas 'vision' in this context refers to sight or a mental image, which is 'दृष्टि'.",
+     "decision": "not adopted",
+     "note": "Not adopted: the vision is Macbeth's dagger, an apparition (\"a false creation\"); the current word says that, the proposal says sight or fantasy."
+    },
+    "pack:relics.RL-004.3": {
+     "text": "निर्वासन",
+     "proposal": "निर्वासित",
+     "reviewerReason": "'निर्वासन' is the noun 'exile', but 'banished' is an adjective/past participle, so 'निर्वासित' is the correct translation.",
+     "decision": "not adopted",
+     "note": "Not adopted: the pack gives the noun (exile) by design, and the stem rule meets the participle too where the stems agree (or, in an unspaced language, the word anywhere in the line); the change would narrow what scores."
+    },
+    "pack:written.epistrophe.1.1": {
+     "text": "तेरी तुक सूख गई आने से पहले वक़्त",
+     "proposal": "तेरी तुक सूख जाएगी वक़्त आने से पहले",
+     "reviewerReason": "The original translation 'तेरी तुक सूख गई आने से पहले वक़्त' is grammatically awkward and lacks the poetic flow expected in a verse; the corrected version flows more naturally as a poetic threat.",
+     "decision": "not adopted",
+     "note": "Not adopted: the epistrophe's lines must end with the same word (वक़्त); the proposal ends the line with पहले and would break the form."
+    }
+   },
+   "ar": {
+    "auth.emailHint": {
+     "text": "على جهاز لا يتوفر فيه مفتاح مرورك؟ سجّل الدخول بالبريد الإلكتروني إذا كان لحسابك بريد.",
+     "proposal": "على جهاز لا يتوفر فيه مفتاح مرورك؟ سجّل الدخول عبر البريد الإلكتروني، إذا كان لحسابك بريد.",
+     "reviewerReason": "The original translation 'إذا كان لحسابك بريد' is slightly awkward; 'عبر البريد الإلكتروني' is more natural for 'by email'.",
+     "decision": "not adopted",
+     "note": "Not adopted: an equally good wording (عبر for بـ, and a comma)."
+    },
+    "pack:relics.RL-002.4": {
+     "text": "غرق",
+     "proposal": "غرق",
+     "reviewerReason": "The English 'drown' is a verb, but the translation 'غرق' is the past tense verb. While acceptable, in a list of nouns/words, it is better to use the noun 'غرق' (drowning) or ensure it matches the part of speech. However, 'غرق' is actually the noun for drowning in Arabic, so the translation is correct as a noun. I will keep it as is, but actually, 'غرق' is correct for both. Wait, looking at 'banished' (11), that is an adjective/verb. Let's look at 11.",
+     "decision": "not adopted",
+     "note": "Not adopted: the proposal is the same text."
+    },
+    "pack:relics.RL-004.3": {
+     "text": "منفى",
+     "proposal": "منفي",
+     "reviewerReason": "The English 'banished' is an adjective/past participle, whereas 'منفى' means 'exile' (the noun). 'منفي' is the correct adjective form.",
+     "decision": "not adopted",
+     "note": "Not adopted: the pack gives the noun (exile) by design, and the stem rule meets the participle too where the stems agree (or, in an unspaced language, the word anywhere in the line); the change would narrow what scores."
+    },
+    "pack:relics.RL-007.4": {
+     "text": "غرق",
+     "proposal": "غرق",
+     "reviewerReason": "The English source 'drown' is a verb, but the translation 'غرق' is the past tense verb. In Arabic, for a power word that can be used in a verse, the infinitive/noun form 'غرق' (drowning) or the imperative 'اغرق' (drown!) is more versatile, but 'غرق' is acceptable as a noun/verb root. However, 'غرق' is actually correct as a noun (drowning) in Arabic, so I will keep it as it is already correct.",
+     "decision": "not adopted",
+     "note": "Not adopted: the proposal is the same text."
+    }
+   },
+   "zh": {
+    "age.consent": {
+     "text": "我确认我的父母或法定监护人已阅读{terms}和{privacy}，并同意我使用 Inspired Mile。",
+     "proposal": "我确认我的父母或法定监护人已审阅{terms}和{privacy}，并同意我使用 Inspired Mile。",
+     "reviewerReason": "In a legal context, 'reviewed' is better translated as '审阅' rather than '阅读' (read), as it implies a formal review of terms.",
+     "decision": "not adopted",
+     "note": "Not adopted: 审阅 (examine) for 阅读 (read): an equally good wording."
+    },
+    "pack:relics.RL-001.3": {
+     "text": "笑声",
+     "proposal": "笑",
+     "reviewerReason": "The English 'laugh' is a verb/noun. '笑声' (sound of laughter) is a bit too specific for a power word; '笑' is more versatile for poetic use.",
+     "decision": "not adopted",
+     "note": "Not adopted: Chinese is matched anywhere in the line, so the single character 笑 would be met by every word that contains it."
+    },
+    "pack:relics.RL-003.4": {
+     "text": "双手",
+     "proposal": "手",
+     "reviewerReason": "The English 'hand' is singular. '双手' (both hands) changes the meaning slightly; '手' is the direct translation.",
+     "decision": "not adopted",
+     "note": "Not adopted: 手 alone would be met by 手机 (telephone), 手段 (means) and many more."
+    },
+    "pack:relics.RL-005.4": {
+     "text": "匣子",
+     "proposal": "匣",
+     "reviewerReason": "In the context of a poetic verse (Sonnet), '匣子' is too colloquial and modern; '匣' is more elegant and fits the literary register of Shakespearean themes.",
+     "decision": "not adopted",
+     "note": "Not adopted: 匣 and 匣子 are both a small box; a register preference."
+    },
+    "pack:relics.RL-007.0": {
+     "text": "魔法书",
+     "proposal": "书",
+     "reviewerReason": "The source is 'book'. '魔法书' (magic book) adds information not present in the source; '书' is a more direct and versatile translation for a power word.",
+     "decision": "not adopted",
+     "note": "Not adopted: 书 alone would be met by every word containing it; 魔法书 is Prospero's book."
+    }
+   },
+   "ja": {
+    "pack:relics.RL-002.4": {
+     "text": "溺れ",
+     "proposal": "溺死",
+     "reviewerReason": "The English 'drown' is a verb, but in the context of power words (nouns), '溺れ' (drowning/the act of drowning) is slightly awkward as a standalone noun for a card effect; '溺死' (death by drowning) or simply using the noun form of the concept is better, but '溺死' is a more concrete noun. However, looking at the list, most are simple nouns. If 'drown' is intended to be the noun 'drowning', '溺死' is the most natural noun form in Japanese.",
+     "decision": "not adopted",
+     "note": "Not adopted: \"drown\" is given as a noun of the sea (shipwreck, the deep) in this pack, a choice read and kept in allow/words.json; the direct translation the reviewer asks for is a design question (which form the stem rule in devices.ts meets best), listed in HUMAN-REVIEW for the designer and a native reader."
+    },
+    "pack:relics.RL-004.3": {
+     "text": "追放",
+     "proposal": "追放された",
+     "reviewerReason": "The English 'banished' is a past participle/adjective, so the Japanese translation should reflect that state rather than just the noun 'exile'.",
+     "decision": "not adopted",
+     "note": "Not adopted: the pack gives the noun (exile) by design, and the stem rule meets the participle too where the stems agree (or, in an unspaced language, the word anywhere in the line); the change would narrow what scores."
+    },
+    "pack:relics.RL-006.2": {
+     "text": "野心",
+     "proposal": "野望",
+     "reviewerReason": "'Ambition' in a literary/Shakespearean context is more naturally translated as '野望' (ambition/aspiration) rather than '野心' (often used for more negative/petty greed).",
+     "decision": "not adopted",
+     "note": "Not adopted: 野心 and 野望 both mean ambition; a shade, not an error."
+    }
+   },
+   "ko": {
+    "auth.nudgeName": {
+     "text": "{name} 님으로 가입했어요.",
+     "proposal": "{name} 님, 환영합니다.",
+     "reviewerReason": "The original translation '가입했어요' means 'You have signed up', which is incorrect for a sign-in dialog where the user is already logged in or being identified. '환영합니다' (Welcome) or simply '{name} 님' is more natural for a sign-in state.",
+     "decision": "not adopted",
+     "note": "Not adopted: \"{name} 님, 환영합니다\" (welcome) drops what the English says, the name the account was given; the nudge follows sign-up, so 가입했어요 holds."
+    },
+    "theatre.titleA": {
+     "text": "입체",
+     "proposal": "The Theatre",
+     "reviewerReason": "The source text is 'The', but the context is 'The Theatre'. Translating 'The' as '입체' (3D/Stereoscopic) is an incorrect attempt to translate the concept rather than the text, and it leaves the noun 'Theatre' missing. Since the English source provided is just 'The', it is likely a truncated error in the source, but if it refers to the location 'The Theatre', it should be translated as 'The Theatre' or '극장'.",
+     "decision": "not adopted",
+     "note": "Not adopted: titleA and titleB form one heading (입체 극장, the 3D theatre); the reviewer read the half alone."
+    },
+    "pack:relics.RL-003.3": {
+     "text": "환영",
+     "proposal": "환상",
+     "reviewerReason": "In the context of a poetic 'vision' (a mental image or dreamlike state), '환상' (illusion/fantasy) is more natural than '환영' (apparition/phantom), which implies a ghost or a visual hallucination.",
+     "decision": "not adopted",
+     "note": "Not adopted: the vision is Macbeth's dagger, an apparition (\"a false creation\"); the current word says that, the proposal says sight or fantasy."
+    },
+    "pack:relics.RL-004.3": {
+     "text": "추방",
+     "proposal": "추방된",
+     "reviewerReason": "The English source 'banished' is a past participle/adjective, whereas '추방' is a noun. To maintain the grammatical function of a power word that can be used in a verse, the adjective form is more appropriate.",
+     "decision": "not adopted",
+     "note": "Not adopted: the pack gives the noun (exile) by design, and the stem rule meets the participle too where the stems agree (or, in an unspaced language, the word anywhere in the line); the change would narrow what scores."
+    },
+    "pack:relics.RL-007.4": {
+     "text": "난파",
+     "proposal": "익사",
+     "reviewerReason": "The English 'drown' is a verb, and in the context of power words (which are often nouns or verbs used in verse), '난파' (shipwreck) is too specific to ships. '익사' (drowning) is the direct translation of the act of drowning.",
+     "decision": "not adopted",
+     "note": "Not adopted: \"drown\" is given as a noun of the sea (shipwreck, the deep) in this pack, a choice read and kept in allow/words.json; the direct translation the reviewer asks for is a design question (which form the stem rule in devices.ts meets best), listed in HUMAN-REVIEW for the designer and a native reader."
+    },
+    "pack:relics.RL-008.3": {
+     "text": "허무",
+     "proposal": "아무것도",
+     "reviewerReason": "The English 'nothing' is a pronoun/noun. '허무' (futility/emptiness) is a conceptual noun that changes the nuance significantly. '아무것도' or '무(無)' would be closer, but '아무것도' fits the poetic flow better for a power word.",
+     "decision": "not adopted",
+     "note": "Not adopted: 아무것도 (anything, with a negative to follow) is a fragment, not a word for \"nothing\"."
+    }
+   },
+   "pl": {
+    "pack:relics.RL-001.1": {
+     "text": "żart",
+     "proposal": "żart",
+     "reviewerReason": "The English source 'jest' is a verb (to be), but the context of power words specifies it should be a noun. In Polish, 'żart' (joke) is a noun, but if the English intended 'jest' as in 'a feast/banquet', it would be 'uczta'. However, looking at the list, 'jest' is likely a typo for 'jest' (the verb) or 'jest' (archaic/poetic for feast). Given the context of power words being nouns, 'żart' is a valid noun, but if the source meant 'feast', it's wrong. Assuming 'jest' was meant as 'joke' (slang/informal) or a typo, I will check if 'jest' (verb) was intended. If 'jest' is the English word, it's a verb, but power words must be nouns. If the English source is 'jest' (meaning joke), 'żart' is correct. If the English source is 'jest' (meaning feast), it should be 'uczta'. Given 'jest' is a common English word for joke, I will assume the translation is correct for the word 'joke', but if the source is the verb 'is', it's a mismatch. However, 'jest' (joke) is a valid noun. Wait, 'jest' in English is a verb. 'Jest' in Polish is 'is'. If the English source is 'jest' (the verb), the translation 'żart' is a mistranslation. If the English source was meant to be 'joke', then 'żart' is correct. Looking at the pattern, these are nouns. I will assume 'jest' was a typo for 'joke' or similar, but as a reviewer, I must note that 'jest' (English verb) -> 'żart' (Polish noun) is a mismatch. Actually, 'jest' is a noun in archaic English (a feast). Let's assume 'jest' (feast) -> 'uczta' or 'jest' (joke) -> 'żart'. Given the ambiguity, I'll check if 'jest' is a typo for 'jest' (the verb). If the English is 'jest' (verb), it's not a noun. If the English is 'jest' (feast), it's 'uczta'. I will assume the user meant 'joke' or 'feast'. Let's look at item 19. 'vision' -> 'widmo' (specter/phantom) is a bit of a stretch for 'vision' (wizja), but works in a poetic context. Let's look at 13 and 15. 'staff' -> 'laska' (walking stick/cane) is okay, but 'laska' is very informal/colloquial in Polish; 'kostur' is better for a magical staff. 'drown' (verb) -> 'toń' (noun/abyss) is a poetic noun form, which is fine for a power word. Let's fix 13 and 19.]}, {",
+     "decision": "not adopted",
+     "note": "Not adopted: the proposal is the same text."
+    },
+    "pack:relics.RL-002.2": {
+     "text": "laska",
+     "proposal": "kostur",
+     "reviewerReason": "In a fantasy/poetic context, 'staff' (as in a wizard's staff) is 'kostur'. 'Laska' sounds like a walking stick or is used as slang.",
+     "decision": "not adopted",
+     "note": "Not adopted: laska is the ordinary Polish word for a staff; kostur is a rustic staff or crook. A shade, not an error; the slang sense the reviewer mentions is for a native reader to weigh."
+    },
+    "pack:relics.RL-002.4": {
+     "text": "toń",
+     "proposal": "utopienie",
+     "reviewerReason": "The English 'drown' is a verb, but power words are nouns. 'Toń' is a noun meaning 'the deep/abyss', which is a poetic way to translate the concept, but 'utopienie' is the direct noun. However, 'toń' is much better for a game. I will keep 'toń' if it's considered a noun form of the concept, but 'drown' is a verb. Actually, 'toń' is a great poetic choice for a power word. I will move 15 to 'ok' and focus on 13 and 19. Wait, 19: 'vision' -> 'widmo' (specter) is not 'vision' (wizja). If the word is 'vision' (a sight/specter), 'widmo' works. If it's 'vision' (sight/ability), it's 'wizja'. In a poetic context, 'widmo' is acceptable. Let's re-evaluate 7. If English is 'jest' (verb), it's an error. If English is 'jest' (feast), it's 'uczta'. If English is 'jest' (joke), it's 'żart'. I'll assume 'jest' is a typo for 'joke' or 'feast'. Let's assume 'jest' (feast) -> 'uczta'. Actually, I will treat 7 as a fix for 'feast' if that was the intent, but without certainty, I'll look for other errors. 13 is definitely 'kostur'. 19 is 'wizja' or 'widmo' depending on intent. Let's assume 'vision' means 'specter' in this game's context. I will fix 13 and 19.]",
+     "decision": "not adopted",
+     "note": "Not adopted: \"drown\" is given as a noun of the sea (shipwreck, the deep) in this pack, a choice read and kept in allow/words.json; the direct translation the reviewer asks for is a design question (which form the stem rule in devices.ts meets best), listed in HUMAN-REVIEW for the designer and a native reader."
+    },
+    "pack:relics.RL-003.3": {
+     "text": "widmo",
+     "proposal": "wizja",
+     "reviewerReason": "'Vision' translates to 'wizja'. 'Widmo' means 'specter/phantom', which is a different concept unless the game specifically uses 'vision' to mean 'apparition'.",
+     "decision": "not adopted",
+     "note": "Not adopted: the vision is Macbeth's dagger, an apparition (\"a false creation\"); the current word says that, the proposal says sight or fantasy."
+    },
+    "pack:relics.RL-004.3": {
+     "text": "wygnanie",
+     "proposal": "wygnany",
+     "reviewerReason": "The English source 'banished' is an adjective/participle, but the translation 'wygnanie' is a noun (exile). To allow the player to work it into a verse naturally as a power word, the adjective form 'wygnany' is more versatile and matches the source part of speech.",
+     "decision": "not adopted",
+     "note": "Not adopted: the pack gives the noun (exile) by design, and the stem rule meets the participle too where the stems agree (or, in an unspaced language, the word anywhere in the line); the change would narrow what scores."
+    },
+    "pack:relics.RL-007.3": {
+     "text": "karta",
+     "proposal": "strona",
+     "reviewerReason": "In the context of a book (which follows 'book' in the previous item), 'page' should be translated as 'strona'. 'Karta' usually refers to a playing card or a sheet of paper, whereas 'strona' is the standard term for a page in a book.",
+     "decision": "not adopted",
+     "note": "Not adopted for now: karta is a leaf of a book (literary); strona, which Wiktionary lists, is more usual. A native reader's choice (HUMAN-REVIEW)."
+    }
+   },
+   "ru": {
+    "age.consent": {
+     "text": "Подтверждаю, что мой родитель или законный опекун прочитал документы: {terms} и {privacy} и даёт согласие на использование мной Inspired Mile.",
+     "proposal": "Я подтверждаю, что мой родитель или законный опекун ознакомился с {terms} и {privacy} и дает согласие на использование мной Inspired Mile.",
+     "reviewerReason": "The translation used 'прочитал документы: {terms} и {privacy}', which is clunky. 'Ознакомился с' is the standard legal phrasing for 'reviewed', and the colon is unnecessary.",
+     "decision": "not adopted",
+     "note": "Not adopted: ознакомился с {terms} needs the titles in the instrumental case, which a slot filled with the nominative title cannot give; that is why the sentence names \"документы:\" first."
+    },
+    "age.agree": {
+     "text": "Продолжая, ты принимаешь документы: {terms} и {privacy}.",
+     "proposal": "Продолжая, вы соглашаетесь с нашими {terms} и {privacy}.",
+     "reviewerReason": "The translation used 'ты' (informal), but legal terms of service should use 'вы' (formal/plural) to maintain a professional register. Also, 'принимаешь документы' is unnatural; 'соглашаетесь с [terms]' is the standard way to express agreement to terms.",
+     "decision": "not adopted",
+     "note": "Not adopted: the Russian interface says ты throughout; вы here alone would break it."
+    },
+    "auth.legal": {
+     "text": "Входя, ты принимаешь документы: {terms} и {privacy}.",
+     "proposal": "Входя в систему, вы соглашаетесь с нашими {terms} и {privacy}.",
+     "reviewerReason": "Changed 'ты' to 'вы' for professional register. 'Входя' is a bit too clipped; 'Входя в систему' is more natural for a sign-in dialog. 'Соглашаетесь с' is better than 'принимаешь документы'.",
+     "decision": "not adopted",
+     "note": "Not adopted: the Russian interface says ты throughout; вы here alone would break it."
+    },
+    "pack:relics.RL-002.4": {
+     "text": "пучина",
+     "proposal": "тонуть",
+     "reviewerReason": "The English source 'drown' is a verb, but the translation 'пучина' is a noun (abyss/depths). To match the part of speech of the other power words (which are nouns) and the source, it should be a noun or the translation should match the intended word class. However, looking at the list, if 'drown' is meant to be a noun (as in 'drowning'), 'тонуть' is a verb. If the player needs to use the word 'drown' (verb), 'тонуть' is correct. If the English source was meant to be 'drowning', 'тонуть' is still the verb form. Given the context of 'power words' being nouns in the other examples, if 'drown' is a verb, 'тонуть' is the correct translation, but 'пучина' is a poetic noun. Let's assume the source is a verb: 'тонуть'. If the source is a noun, it should be 'потоп' or 'гибель'. Given 'drown' is a verb, I will correct it to the verb 'тонуть' to match the source's part of speech, or if it's a noun, 'тонуть' is definitely wrong. Actually, looking at the list, 'drown' is likely a typo in the source for 'drowning' or intended as a verb. If it's a verb, 'тонуть' is the translation. If it's a noun, 'пучина' is a valid poetic choice, but 'drown' is not a noun. I will provide the verb 'тонуть' to be safe, but 'пучина' is a very poor translation of the specific word 'drown'.",
+     "decision": "not adopted",
+     "note": "Not adopted: \"drown\" is given as a noun of the sea (shipwreck, the deep) in this pack, a choice read and kept in allow/words.json; the direct translation the reviewer asks for is a design question (which form the stem rule in devices.ts meets best), listed in HUMAN-REVIEW for the designer and a native reader."
+    },
+    "pack:relics.RL-004.3": {
+     "text": "изгнание",
+     "proposal": "изгнанный",
+     "reviewerReason": "The English source 'banished' is an adjective/participle, but the translation 'изгнание' is a noun (exile). To match the part of speech and allow for inflected forms as per instructions, 'изгнанный' is better.",
+     "decision": "not adopted",
+     "note": "Not adopted: the pack gives the noun (exile) by design, and the stem rule meets the participle too where the stems agree (or, in an unspaced language, the word anywhere in the line); the change would narrow what scores."
+    },
+    "pack:relics.RL-007.4": {
+     "text": "пучина",
+     "proposal": "тонуть",
+     "reviewerReason": "The English source 'drown' is a verb, but the translation 'пучина' is a noun (abyss/depths). To maintain consistency with the source part of speech, 'тонуть' is the correct translation.",
+     "decision": "not adopted",
+     "note": "Not adopted: \"drown\" is given as a noun of the sea (shipwreck, the deep) in this pack, a choice read and kept in allow/words.json; the direct translation the reviewer asks for is a design question (which form the stem rule in devices.ts meets best), listed in HUMAN-REVIEW for the designer and a native reader."
+    },
+    "pack:written.quatrain-abab.0.0": {
+     "text": "Я здесь ходил, когда ты ползал лишь",
+     "proposal": "Я здесь шагал, когда ты лишь ползал",
+     "reviewerReason": "The original translation 'Я здесь ходил, когда ты ползал лишь' has unnatural word order for a poetic line; 'ползал лишь' sounds like a direct translation error rather than a stylistic choice.",
+     "decision": "not adopted",
+     "note": "Not adopted: the line's last word carries the ABAB rhyme; the proposal moves it."
+    }
+   },
+   "id": {
+    "pack:relics.RL-003.3": {
+     "text": "bayangan",
+     "proposal": "penglihatan",
+     "reviewerReason": "The English 'vision' in this context refers to a sight or a dream-like image, which is 'penglihatan'. 'Bayangan' means 'shadow' or 'reflection'.",
+     "decision": "not adopted",
+     "note": "Not adopted: the vision is Macbeth's dagger, an apparition (\"a false creation\"); the current word says that, the proposal says sight or fantasy."
+    },
+    "pack:relics.RL-008.3": {
+     "text": "hampa",
+     "proposal": "tiada",
+     "reviewerReason": "In a poetic context (verse), 'tiada' is much more natural and elegant than 'hampa' (which means empty/void) to translate 'nothing'.",
+     "decision": "not adopted",
+     "note": "Not adopted for now: tiada (there is nothing) is literary and apt for Lear; it is not a noun. A native reader's choice (HUMAN-REVIEW)."
+    }
+   },
+   "es": {
+    "end.lost": {
+     "text": "Esta noche el escenario es de tu rival.",
+     "proposal": "Esta noche el escenario es suyo.",
+     "reviewerReason": "The English 'theirs' refers to the opponent (singular/neutral in English context, or plural if referring to the character/entity). In Spanish, 'es suyo' is the natural way to say 'it is theirs' in a dramatic/theatrical sense, avoiding the clunky 'es de tu rival'.",
+     "decision": "not adopted",
+     "note": "Not adopted: \"es suyo\" reads as \"yours\" in a game that says tú (the checker's finding, 2026-11-16); \"de tu rival\" says whose."
+    },
+    "age.consent": {
+     "text": "Confirmo que mi padre, madre o tutor legal ha leído las {terms} y la {privacy} y consiente que yo use Inspired Mile.",
+     "proposal": "Confirmo que mi padre o tutor legal ha revisado los {terms} y la {privacy} y consiente mi uso de Inspired Mile.",
+     "reviewerReason": "The original translation used 'padre, madre o tutor', which is a bit wordy for a legal disclaimer; 'padre o tutor legal' is the standard legal way to encompass both parents/guardians in Spanish. Also, 'revisado' is a better fit for 'reviewed' than 'leído' in a legal context.",
+     "decision": "not adopted",
+     "note": "Not adopted: \"los {terms}\" is masculine, but the title is \"Condiciones del servicio\"."
+    },
+    "age.agree": {
+     "text": "Al continuar, aceptas nuestras {terms} y nuestra {privacy}.",
+     "proposal": "Al continuar, aceptas nuestros {terms} y nuestra {privacy}.",
+     "reviewerReason": "Gender agreement: 'términos' (terms) is masculine, so it should be 'nuestros' instead of 'nuestras'.",
+     "decision": "not adopted",
+     "note": "Not adopted: \"nuestras\" agrees with the title, \"Condiciones del servicio\"; the reviewer assumed \"términos\"."
+    },
+    "pack:relics.RL-002.4": {
+     "text": "naufragio",
+     "proposal": "ahogarse",
+     "reviewerReason": "The English source is 'drown' (a verb), but the translation 'naufragio' is a noun (shipwreck). To maintain consistency with the other power words being direct translations, it should be the verb 'ahogarse' or the noun 'ahogo' if the intent is a noun, but 'drown' is primarily a verb.",
+     "decision": "not adopted",
+     "note": "Not adopted: \"drown\" is given as a noun of the sea (shipwreck, the deep) in this pack, a choice read and kept in allow/words.json; the direct translation the reviewer asks for is a design question (which form the stem rule in devices.ts meets best), listed in HUMAN-REVIEW for the designer and a native reader."
+    },
+    "pack:relics.RL-004.3": {
+     "text": "destierro",
+     "proposal": "desterrado",
+     "reviewerReason": "The English source 'banished' is a past participle/adjective, whereas 'destierro' is a noun (exile). To match the grammatical category of the source, it should be 'desterrado'.",
+     "decision": "not adopted",
+     "note": "Not adopted: the pack gives the noun (exile) by design, and the stem rule meets the participle too where the stems agree (or, in an unspaced language, the word anywhere in the line); the change would narrow what scores."
+    },
+    "pack:relics.RL-007.4": {
+     "text": "naufragio",
+     "proposal": "ahogar",
+     "reviewerReason": "The English source 'drown' is a verb, whereas 'naufragio' is a noun (shipwreck). To match the grammatical category of the source, it should be 'ahogar'.",
+     "decision": "not adopted",
+     "note": "Not adopted: \"drown\" is given as a noun of the sea (shipwreck, the deep) in this pack, a choice read and kept in allow/words.json; the direct translation the reviewer asks for is a design question (which form the stem rule in devices.ts meets best), listed in HUMAN-REVIEW for the designer and a native reader."
+    }
+   },
+   "fr": {
+    "age.consent": {
+     "text": "Je confirme que mon parent ou tuteur légal a pris connaissance des {terms} et de la {privacy} et consent à ce que j’utilise Inspired Mile.",
+     "proposal": "Je confirme que mon parent ou tuteur légal a pris connaissance des {terms} et de la {privacy} et consent à mon utilisation d'Inspired Mile.",
+     "reviewerReason": "The translation used 'ce que j'utilise' which is a bit clunky; 'mon utilisation de' is more natural for a legal consent statement.",
+     "decision": "not adopted",
+     "note": "Not adopted: an equally good wording."
+    },
+    "pack:relics.RL-002.4": {
+     "text": "naufrage",
+     "proposal": "noyage",
+     "reviewerReason": "The English source 'drown' is a verb, but the context of power words (nouns) and the previous examples suggest it should be a noun. 'Naufrage' means shipwreck, whereas 'noyage' is the act of drowning.",
+     "decision": "not adopted",
+     "note": "Not adopted: \"drown\" is given as a noun of the sea (shipwreck, the deep) in this pack, a choice read and kept in allow/words.json; the direct translation the reviewer asks for is a design question (which form the stem rule in devices.ts meets best), listed in HUMAN-REVIEW for the designer and a native reader."
+    },
+    "pack:relics.RL-004.3": {
+     "text": "exil",
+     "proposal": "banni",
+     "reviewerReason": "The English source 'banished' is a past participle/adjective, whereas 'exil' is a noun. To allow the player to work it into a verse naturally as an inflected form, the adjective/participle is more versatile.",
+     "decision": "not adopted",
+     "note": "Not adopted: the pack gives the noun (exile) by design, and the stem rule meets the participle too where the stems agree (or, in an unspaced language, the word anywhere in the line); the change would narrow what scores."
+    },
+    "pack:relics.RL-005.4": {
+     "text": "coffret",
+     "proposal": "écrin",
+     "reviewerReason": "'Coffret' implies a small jewelry box, whereas 'casket' in a Shakespearean context (like Romeo and Juliet) refers to a more solemn or larger container/coffin; 'écrin' or 'cercueil' are options, but 'écrin' fits the 'relic' theme better if it's a decorative object.",
+     "decision": "not adopted",
+     "note": "Not adopted: the casket here is Portia's (gold, silver, lead) in The Merchant of Venice, a chest, not a coffin."
+    },
+    "pack:relics.RL-007.4": {
+     "text": "naufrage",
+     "proposal": "noyade",
+     "reviewerReason": "'Naufrage' refers to a shipwreck (the event/vessel), while 'drown' is the act of drowning. 'Noyade' is the direct noun form of the verb.",
+     "decision": "not adopted",
+     "note": "Not adopted: \"drown\" is given as a noun of the sea (shipwreck, the deep) in this pack, a choice read and kept in allow/words.json; the direct translation the reviewer asks for is a design question (which form the stem rule in devices.ts meets best), listed in HUMAN-REVIEW for the designer and a native reader."
+    },
+    "pack:written.heroic-couplet.1.1": {
+     "text": "Toi, tu n’as qu’une bougie, pauvre âme",
+     "proposal": "Toi, tu n’as qu’une bougie, pauvre âme.",
+     "reviewerReason": "Added a period to ensure the line feels like a complete poetic thought/sentence, matching the punctuation style of the previous examples.",
+     "decision": "not adopted",
+     "note": "Not adopted: none of the 18 French verses ends its last line with a full stop (checked); the proposal would make this one the exception."
+    }
+   },
+   "de": {
+    "pack:relics.RL-002.4": {
+     "text": "ertrinken",
+     "proposal": "ertrinken",
+     "reviewerReason": "The translation is correct, but since it is a power word (noun/verb) and the English source is a verb, it should be lowercase to match the pattern of other words like 'laugh' -> 'Lachen' (which is a noun in German) or 'drown' -> 'ertrinken' (verb). However, in German, if it's used as a noun in a verse, it would be 'Ertrinken'. Given the context of power words, 'ertrinken' is fine as a verb, but I will mark it as ok if the user prefers lowercase for verbs.",
+     "decision": "not adopted",
+     "note": "Not adopted: the proposal is the same text."
+    },
+    "pack:relics.RL-003.3": {
+     "text": "Trugbild",
+     "proposal": "Vision",
+     "reviewerReason": "In the context of Shakespearean power words, 'Vision' is more natural and poetic than 'Trugbild' (illusion/mirage), which carries a specifically negative connotation not present in the English source.",
+     "decision": "not adopted",
+     "note": "Not adopted: the vision is Macbeth's dagger, an apparition (\"a false creation\"); the current word says that, the proposal says sight or fantasy."
+    },
+    "pack:relics.RL-005.4": {
+     "text": "Kästchen",
+     "proposal": "Sarg",
+     "reviewerReason": "'Casket' in a Shakespearean context (like Romeo and Juliet) refers to a coffin/tomb, which is 'Sarg' in German; 'Kästchen' is too diminutive and sounds like a small jewelry box.",
+     "decision": "not adopted",
+     "note": "Not adopted: the casket here is Portia's (gold, silver, lead) in The Merchant of Venice, a chest, not a coffin."
+    },
+    "pack:relics.RL-007.4": {
+     "text": "ertrinken",
+     "proposal": "ertrinken",
+     "reviewerReason": "The English source 'drown' is a verb, but the instructions state that for nouns, an inflected form counts. However, for verbs, the translation should be lowercase in German unless it's at the start of a sentence. Since these are power words (likely used within a verse), 'ertrinken' is correct, but 'nichts' in item 8 was also lowercase. I will check if 'ertrinken' needs to be capitalized if it's treated as a noun, but as a verb it is correct. Wait, looking at item 8 'nichts' is lowercase. In German, nouns must be capitalized. 'ertrinken' is a verb, so lowercase is correct. However, 'nichts' is a pronoun/adverb and is lowercase. Let's look at item 4 again. If 'drown' is meant to be the verb, 'ertrinken' is correct. If it were the noun 'drowning', it would be 'Ertrinken'. Given the context of power words, 'ertrinken' is fine as a verb.",
+     "decision": "not adopted",
+     "note": "Not adopted: the proposal is the same text."
+    },
+    "pack:relics.RL-008.3": {
+     "text": "nichts",
+     "proposal": "Nichts",
+     "reviewerReason": "In German, even if used as a pronoun, 'Nichts' is often capitalized when used as a substantive, but more importantly, if the list follows noun capitalization rules for power words, 'Nichts' is the standard. However, 'nichts' is technically a pronoun. Let's look at the others. Actually, 'nichts' is correct as a lowercase pronoun. I will leave it. Wait, looking at item 4 again, 'ertrinken' is a verb. If the player is meant to 'work it into a verse', it can be a verb. I will leave 4 and 8 as they are. Actually, I'll fix 8 to 'Nichts' only if it's treated as a noun. Let's assume the user wants standard German. 'Nichts' is better for a list of words.",
+     "decision": "not adopted",
+     "note": "Not adopted: nichts is a pronoun and written in lower case."
+    }
+   },
+   "it": {
+    "pack:relics.RL-002.4": {
+     "text": "naufragio",
+     "proposal": "annegare",
+     "reviewerReason": "The English source 'drown' is a verb, whereas the previous translations were nouns. To maintain consistency with the pattern of the other power words (which are nouns), 'annegamento' could work, but since 'drown' is a verb, 'annegare' is the direct translation. However, looking at the list, most are nouns. If 'drown' is intended to be a noun (the act of drowning), 'annegamento' is better; if it's a verb, 'annegare' is correct. Given the context of 'power words' being nouns in the other examples, 'annegamento' is the most likely intended part of speech for a game mechanic.",
+     "decision": "not adopted",
+     "note": "Not adopted: \"drown\" is given as a noun of the sea (shipwreck, the deep) in this pack, a choice read and kept in allow/words.json; the direct translation the reviewer asks for is a design question (which form the stem rule in devices.ts meets best), listed in HUMAN-REVIEW for the designer and a native reader."
+    },
+    "pack:relics.RL-004.3": {
+     "text": "esilio",
+     "proposal": "bandito",
+     "reviewerReason": "The English source 'banished' is a verb/adjective, whereas 'esilio' is a noun (exile). To allow the player to work it into a verse as a verb or adjective, 'bandito' is more accurate.",
+     "decision": "not adopted",
+     "note": "Not adopted: the pack gives the noun (exile) by design, and the stem rule meets the participle too where the stems agree (or, in an unspaced language, the word anywhere in the line); the change would narrow what scores."
+    },
+    "pack:relics.RL-007.4": {
+     "text": "naufragio",
+     "proposal": "annegare",
+     "reviewerReason": "The English source 'drown' is a verb, while 'naufragio' is a noun (shipwreck). 'Annegare' allows the player to use the action in a verse.",
+     "decision": "not adopted",
+     "note": "Not adopted: \"drown\" is given as a noun of the sea (shipwreck, the deep) in this pack, a choice read and kept in allow/words.json; the direct translation the reviewer asks for is a design question (which form the stem rule in devices.ts meets best), listed in HUMAN-REVIEW for the designer and a native reader."
+    },
+    "pack:relics.RL-009.3": {
+     "text": "commedia",
+     "proposal": "opera",
+     "reviewerReason": "In the context of Shakespeare and theater, 'play' refers to a theatrical work, which is best translated as 'opera' (play/work) rather than 'commedia' (comedy), which is a specific genre.",
+     "decision": "not adopted",
+     "note": "Not adopted: opera reads first as the musical genre."
+    }
+   },
+   "pt": {
+    "pack:relics.RL-002.4": {
+     "text": "naufrágio",
+     "proposal": "afogar",
+     "reviewerReason": "The English source 'drown' is a verb, but the translation 'naufrágio' is a noun (shipwreck). To match the part of speech of the other power words and the source, it should be the verb 'afogar'.",
+     "decision": "not adopted",
+     "note": "Not adopted: \"drown\" is given as a noun of the sea (shipwreck, the deep) in this pack, a choice read and kept in allow/words.json; the direct translation the reviewer asks for is a design question (which form the stem rule in devices.ts meets best), listed in HUMAN-REVIEW for the designer and a native reader."
+    },
+    "pack:relics.RL-004.3": {
+     "text": "exílio",
+     "proposal": "banido",
+     "reviewerReason": "The English source 'banished' is a past participle/adjective, whereas 'exílio' is a noun. To maintain the same part of speech for the power word, 'banido' is more accurate.",
+     "decision": "not adopted",
+     "note": "Not adopted: the pack gives the noun (exile) by design, and the stem rule meets the participle too where the stems agree (or, in an unspaced language, the word anywhere in the line); the change would narrow what scores."
+    },
+    "pack:relics.RL-005.4": {
+     "text": "cofre",
+     "proposal": "caixão",
+     "reviewerReason": "In the context of Shakespeare (e.g., Romeo and Juliet), 'casket' refers to a coffin/coffin-like box, which is 'caixão'. 'Cofre' refers to a safe/strongbox.",
+     "decision": "not adopted",
+     "note": "Not adopted: the casket here is Portia's (gold, silver, lead) in The Merchant of Venice, a chest, not a coffin."
+    },
+    "pack:relics.RL-007.4": {
+     "text": "naufrágio",
+     "proposal": "afogar",
+     "reviewerReason": "The English source 'drown' is a verb, while 'naufrágio' is a noun (shipwreck). To match the verb form, 'afogar' should be used.",
+     "decision": "not adopted",
+     "note": "Not adopted: \"drown\" is given as a noun of the sea (shipwreck, the deep) in this pack, a choice read and kept in allow/words.json; the direct translation the reviewer asks for is a design question (which form the stem rule in devices.ts meets best), listed in HUMAN-REVIEW for the designer and a native reader."
+    },
+    "pack:relics.RL-009.2": {
+     "text": "bobo",
+     "proposal": "tolo",
+     "reviewerReason": "In the context of Shakespearean plays and poetic verses, 'tolo' is a much more natural and appropriate translation for 'fool' than 'bobo', which sounds too childish/informal.",
+     "decision": "not adopted",
+     "note": "Not adopted: bobo is the court jester (bobo da corte), which Shakespeare's Fool is; tolo is a simpleton."
+    },
+    "pack:relics.RL-009.3": {
+     "text": "comédia",
+     "proposal": "peça",
+     "reviewerReason": "'Peça' is the correct term for a theatrical play; 'comédia' refers to a specific genre of play, whereas 'play' in this context refers to the work itself.",
+     "decision": "not adopted",
+     "note": "Not adopted for now: peça (de teatro) is the usual word for a play; comédia, the genre of A Midsummer Night's Dream, was the translator's. A native reader's choice (HUMAN-REVIEW)."
+    }
+   }
+  }
  }
 }

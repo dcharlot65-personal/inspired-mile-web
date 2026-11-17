@@ -646,8 +646,8 @@
   {
    "lang": "hi",
    "key": "curse.forbidden-letter.theirs",
-   "text": "प्रतिद्वंद्वी के पद में म अक्षर नहीं आ सकता।",
-   "reason": "'प्रतिद्वंद्वी के पद में म अक्षर नहीं आ सकता' (the letter म may not appear in the opponent's verse); पद is the glossary's verse, which MADLAD read as 'position'."
+   "text": "प्रतिद्वंद्वी की कविता में म अक्षर नहीं आ सकता।",
+   "reason": "प्रतिद्वंद्वी की कविता में म अक्षर नहीं आ सकता (the letter म may not appear in the opponent’s poem): MADLAD read it so. The sample letter is the Hindi pack’s, the English one the English pack’s. कविता is the glossary’s word for a verse since 2026-11-16."
   },
   {
    "lang": "hi",
@@ -766,8 +766,8 @@
   {
    "lang": "hi",
    "key": "pack:relics.RL-003.3",
-   "text": "छाया",
-   "reason": "A relic power word: छाया (a shadow, an apparition: Macbeth's vision), for the English “vision”. A single word back-translated alone scores low (MADLAD gave “Shadow”)."
+   "text": "भ्रम",
+   "reason": "A relic power word: भ्रम (an illusion), for Macbeth’s “vision”, the dagger that is not there. English Wiktionary’s “vision” table lists भ्रम for the sense “something imaginary one thinks one sees” (sources/wiktionary-words.json)."
   },
   {
    "lang": "hi",
@@ -796,8 +796,8 @@
   {
    "lang": "hi",
    "key": "theatre.composing",
-   "text": "पद रचा जा रहा है…",
-   "reason": "'पद रचा जा रहा है…' (the verse is being composed…) is 'composing…'; पद is the glossary's verse."
+   "text": "कविता रची जा रही है…",
+   "reason": "कविता रची जा रही है… (a poem is being composed): what the English label says, as a sentence."
   },
   {
    "lang": "hi",
@@ -2904,6 +2904,12 @@
    "key": "verdict.who.split",
    "text": "平分",
    "reason": "平分 (shared equally) is what a split criterion is."
+  },
+  {
+   "lang": "zh",
+   "key": "form.tercet.name",
+   "text": "三行体",
+   "reason": "Sourced name: 三行体 is Wikidata’s zh label “三行体” (Q1353779) (glossary.json). Back-translated on its own the name reads “Triad”; a name alone scores low whatever its quality."
   }
  ]
 }

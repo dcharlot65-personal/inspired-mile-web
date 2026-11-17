@@ -221,6 +221,9 @@ if (review) {
     const vals = Object.values(r.reviewed);
     p(`| ${NAME[lang]} | ${yn(c.passedGood)} | ${yn(c.caughtWrongWord)} | ${yn(c.caughtEnglish)} | ${yn(c.caughtGrammar)} | ${vals.length} | ${vals.filter((v) => v.verdict === 'fix').length} | ${vals.filter((v) => v.verdict === 'no answer').length}${r.failedBatches ? ` (${r.failedBatches} failed batch${r.failedBatches > 1 ? 'es' : ''}, asked again on a later run)` : ''} |`);
   }
+  const second = reading?.secondPass?.languages ?? {};
+  const secondN = Object.values(second).reduce((n, x) => n + Object.keys(x).length, 0);
+  if (secondN) p('', `A second run (2026-11-17) read the strings changed since the first and, for the first time, the pack: each power word beside its English word, and each verse line for the language alone. It proposed ${secondN} new corrections (${Object.values(second).flatMap(Object.keys).filter((k) => k.startsWith('pack:relics')).length} power words, ${Object.values(second).flatMap(Object.keys).filter((k) => k.startsWith('pack:written')).length} verse lines, the rest interface strings); each was read and recorded with its reason in \`results/adoption-reading.json\` (\`secondPass\`), and none was adopted. Its counts above include them.`);
   p('', 'A correction was adopted only if it passed the mechanical checks and the glossary, raised no new LanguageTool or Hunspell hit, was not flagged by the meaning check nor further from the English than the text it replaced, and then read as right (the section on the second model\'s corrections, below). A model\'s "ok" is not counted as verification anywhere in this report.', '');
 } else p('**The second-model review was not run** (no `docs/language/results/review.json`).', '');
 
