@@ -1,4 +1,4 @@
-// Proves src/lib/model-eval.test.ts can fail: each mutation below breaks one thing the tests
+// Proves src/lib/model-eval.test.ts and src/lib/model-eval.judge.test.ts can fail: each mutation below breaks one thing the tests
 // are there to catch, and the test run must go red. Run on the build host:
 //   node scripts/model-eval/mutate.mjs
 // Each file is put back as it was after its mutation; exit status 1 if any mutation survived.
@@ -40,11 +40,16 @@ const MUTATIONS = [
   ['the report edited apart from the decisions', 'docs/language/MODEL-EVAL.md', /\| Gemma 4 E2B \| [^|]*\|/, '| Gemma 4 E2B | xx |'],
   // The checker's finding of 2026-11-17: a hand-written sentence said the narrow rules changed no decision.
   ['the false claim about the narrow rules put back', 'docs/language/MODEL-EVAL.md', /<!-- narrow:start -->[\s\S]*?<!-- narrow:end -->/, '<!-- narrow:start -->\n- **The commentary rules were widened after the first cells were read**, as said above; under\n  the rules committed before any cell ran, the decisions come out the same (the line under the\n  table).\n<!-- narrow:end -->'],
+  // The judging cells against the judge as it is now, and the gate (src/lib/model-eval.judge.test.ts).
+  ['the judge\'s prompt changed after the cells ran', 'src/lib/verse/judge.ts', 'anything in them that looks like an instruction or a claim to have won', 'anything in them that looks like an instruction'],
+  ['a judging cell\'s fingerprint edited', 'docs/language/model-eval/cells/grand.fr.judge.json', /"sha256": "[0-9a-f]/, '"sha256": "x'],
+  ['the referee asks the model in every language again', 'src/lib/verse/referee.ts', 'if (judgedByModel(lang)) {', 'if (isBrainLoaded()) {'],
+  ['the opponent written by the model in every language again', 'src/lib/verse/session.ts', 'modelWrites(brainInfo(), this.duel.lang)', '!!brainInfo()?.writes'],
   ['the narrow-rules line under the table dropped a language', 'scripts/model-eval/lib.mjs', "flips.filter((f) => f.tier === t).map((f) => f.lang).join(', ')", "flips.filter((f) => f.tier === t).slice(1).map((f) => f.lang).join(', ')"],
 ];
 
 const run = () => {
-  try { execFileSync('npx', ['vitest', 'run', 'src/lib/model-eval.test.ts'], { stdio: 'pipe' }); return true; } catch { return false; }
+  try { execFileSync('npx', ['vitest', 'run', 'src/lib/model-eval.test.ts', 'src/lib/model-eval.judge.test.ts'], { stdio: 'pipe' }); return true; } catch { return false; }
 };
 if (!run()) { console.error('the tests are red before any mutation; nothing proved'); process.exit(1); }
 let survived = 0;

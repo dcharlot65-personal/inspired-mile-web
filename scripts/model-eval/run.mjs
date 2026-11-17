@@ -40,7 +40,7 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { execFileSync } from 'node:child_process';
 import { chromium } from '@playwright/test';
-import { LANGS as ALL_LANGS, TIERS as ALL_TIERS } from './lib.mjs';
+import { LANGS as ALL_LANGS, TIERS as ALL_TIERS, judgingCode } from './lib.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
 const REPO_CELLS = join(ROOT, 'docs', 'language', 'model-eval', 'cells');
@@ -252,9 +252,13 @@ try {
     return page;
   }
 
+  // The judging code this run serves (src/lib/model-eval.judge.test.ts records the judge's prompts for a cell when it matches the code then).
+  const verseDir = join(ROOT, 'src', 'lib', 'verse');
+  const verseFiles = readdirSync(verseDir, { recursive: true }).map(String).filter((p) => /\.ts$/.test(p)).map((p) => ({ path: `src/lib/verse/${p.split('\\').join('/')}`, text: readFileSync(join(verseDir, p), 'utf8') }));
+  const code = { ...judgingCode(verseFiles, readFileSync(join(ROOT, 'src', 'lib', 'brain.ts'), 'utf8')), from: 'the checkout the run served, by run.mjs' };
   const meta = (tier, lang, task) => ({
     tier, lang, task, model: loaded[tier].id, dtype: loaded[tier].dtype, judgeMethod: loaded[tier].judge,
-    date: new Date().toISOString(), commit, transformers, gpu: loaded[tier].gpu, userAgent: loaded[tier].userAgent, origin: ORIGIN,
+    date: new Date().toISOString(), commit, transformers, gpu: loaded[tier].gpu, userAgent: loaded[tier].userAgent, origin: ORIGIN, code,
   });
   const readJson = (...p) => JSON.parse(readFileSync(join(ROOT, 'docs', 'language', 'model-eval', ...p), 'utf8'));
   const overBudget = () => MINUTES > 0 && (Date.now() - started) / 60000 > MINUTES;

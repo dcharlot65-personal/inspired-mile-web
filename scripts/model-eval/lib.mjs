@@ -1,5 +1,6 @@
 // What the evaluation computes from what the browser recorded. Pure functions, no model,
 // no network: src/lib/model-eval.test.ts runs them against known-bad input.
+import { createHash } from 'node:crypto';
 
 export const LANGS = ['en', 'es', 'fr', 'de', 'it', 'pt', 'pl', 'ru', 'ar', 'hi', 'zh', 'ja', 'ko', 'vi', 'th', 'id'];
 export const TIERS = ['grand', 'standard', 'lite'];
@@ -294,6 +295,24 @@ export function decideWrite(s, t, recall) {
   if (!(s.commentary / n <= t.commentaryAtMost)) why.push(`commentary in ${s.commentary}/${n} plays`);
   if (!(s.formKept / n >= t.formKeptAtLeast)) why.push(`kept the form in full in ${s.formKept}/${n} plays (${((s.formKept / n) * 100).toFixed(0)}%), under ${t.formKeptAtLeast * 100}%`);
   return { ok: why.length === 0, why };
+}
+
+// --- Which code a judging cell ran ---
+
+/**
+ * A digest of the code that decides what the judge asks a model: every file under src/lib/verse
+ * (the prompts in judge.ts, how referee.ts reads a model, the language names in opponent.ts, and,
+ * more than needed, the rules) and brain.ts's answerScores, which sends the request. `files` is
+ * [{ path, text }] for src/lib/verse; `brainSrc` the text of src/lib/brain.ts. The same digest from
+ * the code a cell ran and from the code now is what lets src/lib/model-eval.judge.test.ts record
+ * the judge's prompts for that cell after the fact.
+ */
+export function judgingCode(files, brainSrc) {
+  const h = createHash('sha256');
+  for (const f of [...files].sort((a, b) => (a.path < b.path ? -1 : a.path > b.path ? 1 : 0))) h.update(`${f.path}\0${f.text}\0`);
+  const i = brainSrc.indexOf('export async function answerScores');
+  const body = i < 0 ? '' : brainSrc.slice(i, brainSrc.indexOf('\n}\n', i));
+  return { verse: h.digest('hex'), answerScores: body ? createHash('sha256').update(body).digest('hex') : null };
 }
 
 // --- What the rules added after the first cells decide ---
