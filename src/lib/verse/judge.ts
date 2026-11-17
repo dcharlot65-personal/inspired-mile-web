@@ -366,11 +366,17 @@ export function boundedByRules(player: Margins, opponent: Margins, rules: JudgeS
 //
 // Each criterion is a measurement a verse cannot raise without doing the thing
 // measured. Filler words, bare punctuation and one-word verses earn nothing:
-//   wordplay  how many different words that carry meaning, for the verse's length (words of the
-//             language, long enough for it, not its little words)
+//   wordplay  how many different words that carry meaning (words of the language, long enough for
+//             it, not its little words). Only how many: a share of the verse's words rewarded
+//             stuffing, and words strung with nothing between them won it outright (the second
+//             check's word salads; review2.test.ts measures the balance)
 //   allusion  names and telling words from the plays (the lexicon)
 //   flow      rhymes between line ends, and lines of even length
-//   wit       words of the verse being answered, turned back on it
+//   wit       words of the verse being answered, turned back on it; nothing else (an "!" at the
+//             end of a line decided it whenever no words were thrown, which is every first round)
+
+/** Most different telling words wordplay counts: past this a verse is long, not varied. */
+const MAX_VARIETY = 30;
 
 function variety(verse: string, lang: string): number {
   const all = wordParts(verse, lang).map(fold);
@@ -379,7 +385,7 @@ function variety(verse: string, lang: string): number {
   // language are not variety either ("ab cd ga", where it has a lexicon: text.ts lexiconHas).
   const min = rulesFor(lang).content;
   const telling = new Set(all.filter((w) => wordSpan(w) >= min && !isStopWord(w, lang) && lexiconHas(w, lang) !== false));
-  return all.length ? telling.size / all.length + Math.min(telling.size, 30) / 60 : 0;
+  return Math.min(telling.size, MAX_VARIETY);
 }
 
 /** Below anything a verse of two lines or more can score: one line has no flow to judge. */
@@ -411,17 +417,15 @@ function allusionScore(verse: string, lang: string, lexicon: Set<string>): numbe
 const MAX_THROWN = 3;
 
 /**
- * A comeback: telling words, long enough for the language, taken from the verse
- * being answered, and lines that end in a question or an outcry, which break a
- * tie and no more. Thrown words are compared only when both sides answered a
- * verse (see rulesJudge), so `answered` is given for both or for neither.
+ * A comeback: telling words, long enough for the language, taken from the verse being answered.
+ * Thrown words are compared only when both sides answered a verse (see rulesJudge), so `answered`
+ * is given for both or for neither; with neither, wit is a split. Punctuation counts for nothing.
  */
 function witScore(verse: string, lang: string, answered?: string): number {
   const min = rulesFor(lang).riposte;
   const theirs = new Set(wordsOf(answered ?? '', lang).filter((w) => wordSpan(w) >= min && !isStopWord(w, lang)).map(fold));
   const thrown = new Set(wordsOf(verse, lang).map(fold).filter((w) => theirs.has(w))).size;
-  const pointed = linesOf(verse).filter((l) => /[?!？！؟]\s*["'”’)»」』]*$/.test(l) && lineLength(l, lang) >= 2).length;
-  return Math.min(thrown, MAX_THROWN) + Math.min(pointed, 2) * 0.1;
+  return Math.min(thrown, MAX_THROWN);
 }
 
 /**
@@ -431,8 +435,8 @@ function witScore(verse: string, lang: string, answered?: string): number {
  * `previousPlayerVerse` is given when the opponent's verse answers the player's
  * verse of the round before (a model wrote it to). Wit is fair to both sides:
  * words thrown back count only when both verses answered one, so in the first
- * round, and against the written opponent, whose verses answer nothing, both
- * are compared on what both could do (their pointed lines).
+ * round, and against the written opponent, whose verses answer nothing, wit is
+ * a split: neither side could do the thing it measures.
  *
  * Text too thin to be a verse (text.ts `substance`) loses every criterion to a
  * real one.

@@ -1005,8 +1005,10 @@ describe("concern: the rule judge's wit is fair to both sides", () => {
     const after = await winRates(true);
     log('wit: before (one-sided)', before);
     log('wit: after (both sides compared on what both can do)', after);
-    // One-sided, wit went to the player whenever a word was thrown back; fair, the opponent can take it too.
-    expect(after.wit.opponent).toBeGreaterThan(0);
+    // One-sided, wit went to the player whenever a word was thrown back. Fair, neither side answered a
+    // verse here, so neither takes wit; an "!" no longer breaks the tie (second check: it decided wit in
+    // every first round). The player's share of rounds is printed beside it, before and after.
+    expect(after.wit).toEqual({ player: 0, opponent: 0, split: after.rounds });
     expect(after.wit.player).toBeLessThan(before.wit.player);
   }, 300_000);
   it('in round 1 a verse that throws words back takes no wit for it from an opener that could not', () => {
