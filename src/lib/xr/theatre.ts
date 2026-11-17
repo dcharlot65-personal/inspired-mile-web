@@ -39,7 +39,7 @@ import { FORM_POINTS } from '../verse/forms';
 // Everything written on the stage is a message in the interface language (src/i18n).
 import { list, num, t, tm } from '../../i18n';
 import { curseName, curseRule, deviceBrief, deviceName, signatureText } from '../../i18n/duel';
-import { startsRtl, wrapUnits } from './text-wrap';
+import { readsRtl, wrapUnits } from './text-wrap';
 import type { DuelSession } from '../verse/session';
 
 export type Action =
@@ -75,7 +75,7 @@ function readable(tb: TextBlock, align = Control.HORIZONTAL_ALIGNMENT_LEFT): voi
 
 function direct(tb: TextBlock): void {
   const align = tb.metadata?.align ?? Control.HORIZONTAL_ALIGNMENT_LEFT;
-  tb.textHorizontalAlignment = align === Control.HORIZONTAL_ALIGNMENT_LEFT && startsRtl(tb.text) ? Control.HORIZONTAL_ALIGNMENT_RIGHT : align;
+  tb.textHorizontalAlignment = align === Control.HORIZONTAL_ALIGNMENT_LEFT && readsRtl(tb.text) ? Control.HORIZONTAL_ALIGNMENT_RIGHT : align;
 }
 const INK = '#0d0b09';
 const PAPER = '#f4f3f2';

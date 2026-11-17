@@ -21,7 +21,7 @@ import { checkCitations, checkGlossary, checkNameExceptions } from '../../script
 import { checkWords, wordsToCheck } from '../../scripts/lang/lib/words.mjs';
 // @ts-expect-error as above
 import { RULE_TOLD_TO_CASTER } from '../../scripts/lang/lib/context.mjs';
-import { startsRtl, wrapUnits } from '../lib/xr/text-wrap';
+import { readsRtl, startsRtl, wrapUnits } from '../lib/xr/text-wrap';
 
 const read = (path: string) => JSON.parse(readFileSync(new URL(`../../${path}`, import.meta.url), 'utf8'));
 const cldr = read('docs/language/sources/cldr.json');
@@ -232,6 +232,9 @@ describe('the theatre draws text in every script', () => {
     expect(startsRtl('Your verse')).toBe(false);
     expect(wrapUnits('هنا.').every((u) => u.startsWith(RLM) && u.endsWith(RLM))).toBe(true);
     expect(wrapUnits('Here.').some((u) => u.includes(RLM))).toBe(false);
+    // A panel is aligned by most of its letters: a Latin card name above an Arabic verse reads right to left.
+    expect(readsRtl('Apollo\nالفخامة\n\nأعرتك سمعي فأضعت الوقت')).toBe(true);
+    expect(readsRtl('Apollo\nVerse in English, with one word عربي')).toBe(false);
   });
 });
 

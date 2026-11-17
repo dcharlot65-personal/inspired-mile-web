@@ -22,6 +22,21 @@ export function startsRtl(text: string): boolean {
 }
 
 /**
+ * Does a block of text read right to left as a whole: are most of its letters Arabic, Hebrew, …? The
+ * theatre's opponent panel begins with the card's Latin name (Apollo) above an Arabic verse; by its
+ * first letter it was set left-aligned.
+ */
+export function readsRtl(text: string): boolean {
+  let rtl = 0;
+  let ltr = 0;
+  for (const m of text.matchAll(/\p{L}/gu)) {
+    if (RTL_LETTER.test(m[0])) rtl++;
+    else ltr++;
+  }
+  return rtl > ltr;
+}
+
+/**
  * A line cut where it may wrap, so that joining the pieces gives the line back: at the word boundaries
  * Intl.Segmenter finds (which are the words of Japanese, Chinese and Thai too), with spaces and
  * punctuation kept with the word before them (a line never begins with 、 or a comma) and opening
