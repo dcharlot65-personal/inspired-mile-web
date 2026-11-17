@@ -7,7 +7,7 @@ import { answerScores, brainInfo, isBrainLoaded } from '../brain';
 import { invocationNames, signatureWords } from './devices';
 import type { JudgeSplit } from './duel';
 import {
-  CRITERIA, GRADE_ANSWERS, boundedByRules, combineMargins, compareMessages, expectedGrade, gradeMessages, rulesJudge, type Margins,
+  CRITERIA, GRADE_ANSWERS, boundedByRules, combineMargins, compareMessages, expectedGrade, gradeMessages, judgeLines, rulesJudge, type Margins,
 } from './judge';
 import { languageName } from './opponent';
 import { STOP_WORDS, fold, letterCount } from './text';
@@ -34,7 +34,7 @@ export function allusionLexicon(): Set<string> {
 async function margins(verseA: string, verseB: string, lang: string): Promise<Margins> {
   const out = {} as Margins;
   for (const c of CRITERIA) {
-    const [a, b] = await answerScores(compareMessages(verseA, verseB, c, languageName(lang), lang), ['A', 'B']);
+    const [a, b] = await answerScores(compareMessages(verseA, verseB, c, languageName(lang)), ['A', 'B']);
     out[c] = a - b;
   }
   return out;
@@ -57,6 +57,9 @@ export async function referee(playerVerse: string, opponentVerse: string, lang: 
         // Graded alone, a verse can tell the grader what to answer: the grader never reads such a
         // line, and decides only what the rules split, by a measured margin (judge.ts gradeMessages).
         const rules = rulesJudge(playerVerse, opponentVerse, lang, allusionLexicon(), previousPlayerVerse);
+        // A line left out must not help its verse (an empty verse is not a better one): a round
+        // with a line the grader would not read is decided by the rules alone, for both sides.
+        if (judgeLines(playerVerse, lang).left.length || judgeLines(opponentVerse, lang).left.length) return { ...rules, reason: 'unread' };
         return boundedByRules(await grades(playerVerse, lang), await grades(opponentVerse, lang), rules);
       }
       const forward = await margins(playerVerse, opponentVerse, lang);

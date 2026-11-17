@@ -191,13 +191,15 @@ export class DuelSession {
   }
 
   /**
-   * The lines of the verse being written (from 1) that the judge model will not read, because
-   * they hold a number or address the judge (judge.ts judgeLines). Empty when no model judges:
-   * the rule-based judge reads every line. Shown in the live checklist.
+   * The lines of the verse being written (from 1) that the grading model will not read, each with
+   * the number or judge word that leaves it out (judge.ts judgeLines); a round with such a line is
+   * judged by the rules alone (referee.ts). Empty unless a model grades verses one at a time (the
+   * lite tier): the compare path and the rule-based judge read every line. Shown in the live checklist.
    */
-  judgeUnread(): number[] {
-    if (!this.modelJudges || !cleanVerse(this.verse)) return [];
-    return judgeLines(this.verse, this.duel.lang).left;
+  judgeUnread(): Array<{ line: number; word: string }> {
+    if (!this.modelJudges || brainInfo()?.judge !== 'grade' || !cleanVerse(this.verse)) return [];
+    const j = judgeLines(this.verse, this.duel.lang);
+    return j.left.map((line, i) => ({ line, word: j.why[i] }));
   }
 
   /** Why the verse cannot be submitted yet, or null when it can. */

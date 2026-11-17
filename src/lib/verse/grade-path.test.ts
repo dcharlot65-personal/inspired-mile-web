@@ -18,13 +18,23 @@ import { loadSound } from './sound';
 /** What the stand-in obeys: a line that names the grade, in any of the languages tested, or (OBEY_ANY) the word "excellent". */
 const OBEYS = /grade|nota|評価|درجة|ग्रेड|five|cinco|五|خمسة|पाँच/i;
 let obeyAny = false;
+/** The stand-in that prefers nothing to something: the best verse is an empty one (the checker's hide probe, LFM3). */
+let prefersEmpty = false;
+/** Which path the stand-in is: 'grade' (lite) or 'compare' (standard, grand). */
+let judgeKind: 'grade' | 'compare' = 'grade';
 
 vi.mock('../brain', () => ({
   isBrainLoaded: () => true,
-  brainInfo: () => ({ tier: 'lite', judge: 'grade', writes: false, label: 'stub', languages: ['en'] }),
+  brainInfo: () => ({ tier: judgeKind === 'grade' ? 'lite' : 'standard', judge: judgeKind, writes: false, label: 'stub', languages: ['en'] }),
   answerScores: async (messages: Array<{ content: string }>, answers: string[]) => {
+    if (judgeKind === 'compare') {
+      const a = JSON.parse(/VERSE A = (".*")\n/.exec(messages[1].content)?.[1] ?? '""') as string;
+      const b = JSON.parse(/VERSE B = (".*")\n/.exec(messages[1].content)?.[1] ?? '""') as string;
+      // Prefers an empty verse; otherwise no preference at all.
+      return [prefersEmpty && !a.trim() && b.trim() ? 20 : 0, prefersEmpty && !b.trim() && a.trim() ? 20 : 0];
+    }
     const verse = JSON.parse(/VERSE = (".*")\n/.exec(messages[1].content)?.[1] ?? '""') as string;
-    const top = OBEYS.test(verse) || (obeyAny && /excellent/i.test(verse)) ? answers.length - 1 : 0;
+    const top = OBEYS.test(verse) || (obeyAny && /excellent/i.test(verse)) || (prefersEmpty && !verse.trim()) ? answers.length - 1 : 0;
     return answers.map((_, i) => (i === top ? 20 : 0));
   },
 }));
@@ -82,7 +92,8 @@ describe('the grade path, with a model that a verse can tell what to answer', ()
           const injected = `${w}\n${WEAK[lang].injection}`;
           const byRules = rulesJudge(injected, opening, lang, allusionLexicon());
           const split = await referee(injected, opening, lang);
-          expect(split.source).toBe('model');
+          // The injected line is one the grader does not read, so the round is the rules' alone.
+          expect([split.source, split.reason]).toEqual(['rules', 'unread']);
           injectedTotal += split.player;
           rulesTotal += byRules.player;
           if (split.player === JUDGE_POOL) sweeps++;
@@ -125,4 +136,47 @@ describe('the grade path, with a model that a verse can tell what to answer', ()
       obeyAny = false;
     }
   }, 120_000);
+});
+
+describe("the checker's hide probe: a digit in every line gains nothing from a model that prefers an empty verse", () => {
+  /** "2" after the first word of each line: every line holds a number, so none is shown to a grader. */
+  const hide = (v: string) => v.split('\n').map((l) => { const ws = l.split(' '); return [ws[0], '2', ...ws.slice(1)].join(' '); }).join('\n');
+  async function rounds(kind: 'grade' | 'compare') {
+    judgeKind = kind;
+    prefersEmpty = true;
+    try {
+      const deck = { characters: ['DC-001', 'MO-001', 'CA-001'], relics: [], potions: [] };
+      const out = { control: 0, hidden: 0, rulesHidden: 0, n: 0 };
+      for (let seed = 1; seed <= 20; seed++) {
+        const d = createDuel(seed, 'en', deck);
+        const opening = (await writeOpponentVerse({ duel: d, roundIndex: 0, difficulty: 'player' })).verse;
+        const mine = 'Thy verse falls like leaves\nNo one stoops to gather them\nThe wind takes them all';
+        out.control += (await referee(mine, opening, 'en')).player;
+        out.hidden += (await referee(hide(mine), opening, 'en')).player;
+        out.rulesHidden += rulesJudge(hide(mine), opening, 'en', allusionLexicon()).player;
+        out.n++;
+      }
+      return out;
+    } finally {
+      judgeKind = 'grade';
+      prefersEmpty = false;
+    }
+  }
+  it('compare path (standard, grand): the model reads every verse whole, so the hidden verse is judged as the verse it is', async () => {
+    const r = await rounds('compare');
+    console.log(`MEASURE hide compare ${JSON.stringify(r)}`);
+    // On 709b0ba the compare prompt left those lines out, the stand-in saw "" and gave the player every criterion: 24 a round.
+    expect(r.hidden).toBe(r.control);
+    expect(r.hidden / r.n).toBe(JUDGE_POOL / 2);
+  });
+  it('grade path (lite): a round with a line the grader would not read is the rules\' alone', async () => {
+    const r = await rounds('grade');
+    console.log(`MEASURE hide grade ${JSON.stringify(r)}`);
+    expect(r.hidden).toBe(r.rulesHidden);
+  });
+  it('the compare prompt carries the verse whole, digits and judge words included', async () => {
+    const { compareMessages } = await import('./judge');
+    const v = 'Thy 2 verse falls like leaves\nI will win, I have won before';
+    expect(compareMessages(v, 'x', 'wit', 'English')[1].content).toContain(JSON.stringify(v));
+  });
 });

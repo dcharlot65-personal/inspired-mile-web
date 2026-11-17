@@ -698,10 +698,13 @@ function loneLetter(unit: string, lang: string): boolean {
 // --- Is it a word? ---
 //
 // The substance floor and the rule judge count words, not strings, so they ask the
-// language's own lexicon, where the engine has one loaded for the duel's language: the CMU
-// table for English (./pronounce), the readings of Chinese characters (Unihan and CC-CEDICT,
-// ./sound), and kuromoji's dictionary for Japanese. Nothing extra is fetched: these are the
-// data the duel's rhyme and syllable rules already loaded. The other tables are not
+// language's own lexicon, where the engine has one loaded for the duel's language: for
+// English the CMU table (./pronounce) less what a dictionary of words does not list (its
+// names, abbreviations and fragments, marked from SCOWL when the table is built:
+// Pronunciation.unlisted), the readings of Chinese characters (Unihan and CC-CEDICT,
+// ./sound), and kuromoji's dictionary for Japanese, where a word in katakana counts too (the
+// script loanwords are written in, which a dictionary cannot keep up with: スマホ, バズる).
+// Nothing extra is fetched: these are the data the duel's rhyme and syllable rules already loaded. The other tables are not
 // lexicons: Spanish, Italian, Portuguese, Hindi and Indonesian list only the words their
 // spelling rule gets wrong, and the French, German and Russian tables, measured against the
 // published verse of the phonetics corpora (review.test.ts), lack too many inflected and old
@@ -746,8 +749,10 @@ export function lexiconHas(word: string, lang = 'en'): boolean | null {
   if (gameWords(b).has(w)) return true;
   const parts = w.split('-').filter((part) => HAS_LETTER.test(part));
   if (parts.length > 1) return parts.every((part) => lexiconHas(part, b) === true);
-  // An abbreviation the dictionary only spells out ("cd", "tv") is not a word.
-  return !!pronounce(w) && !pronounce(w)!.spelled;
+  // An abbreviation the dictionary only spells out ("cd", "tv") is not a word, nor a name, an
+  // abbreviation said as a word or a fragment that a dictionary of words does not list ("dr", "ul").
+  const p = pronounce(w);
+  return !!p && !p.spelled && !p.unlisted;
 }
 
 /**
@@ -767,13 +772,17 @@ function knownUnits(line: string, lang: string): boolean[] | null {
     const words = japaneseWords(line);
     if (!words) return null;
     const flags: boolean[] = [];
-    for (const w of words) for (const ch of lettersOf(hiragana(fold(w.surface)))) flags.push(w.known);
+    // A word in katakana is a loanword or a name, written in the script for them: a word.
+    for (const w of words) for (const ch of lettersOf(hiragana(fold(w.surface)))) flags.push(w.known || KATAKANA_WORD.test(w.surface));
     return flags.length === units.length ? flags : null;
   }
   if (!LEXICON_LANGS.has(b)) return null;
   const flags = units.map((u) => lexiconHas(u, b));
   return flags.some((f) => f === null) ? null : (flags as boolean[]);
 }
+
+/** A word of two katakana or more (a long-vowel mark may follow one): the script of loanwords. */
+const KATAKANA_WORD = /^(?:[ァ-ヺ][ァ-ヺー]+|[ァ-ヺ]ー+)$/u;
 
 /** Chinese particles that make a word a modifier or mark its aspect: "我的" is "my", "不过" is "but". */
 const ZH_PARTICLE_END = /[的地得了着过]$/u;
@@ -802,6 +811,31 @@ export function isContentWord(word: string, lang = 'en'): boolean {
   return list ? true : wordSpan(word) >= rulesFor(lang).content;
 }
 
+/**
+ * A word that tells: one that carries meaning (isContentWord) and is a word of the language where
+ * it has a lexicon (lexiconHas). In English it must also be long enough to tell (lang.ts `content`,
+ * four letters, as the devices count a strong word), because the English list of little words is
+ * short and made by hand: "the", "ab", "ed" and "pig" do not tell; "rise", "night" and "Romeo" do.
+ * The other languages' lists (stopwords-iso) are long enough to say alone what does not tell; a
+ * length rule there would take honest words ("मंच", stage, is two letters and two marks).
+ */
+export function isTellingWord(word: string, lang = 'en'): boolean {
+  if (!isContentWord(word, lang) || lexiconHas(word, lang) === false) return false;
+  return baseLang(lang) !== 'en' || wordSpan(word) >= rulesFor(lang).content;
+}
+
+/** The engine's words of a line: its word parts, or where words run together the best segmentation (segmentedWords). */
+function readWords(line: string, lang: string): string[] {
+  return UNSPACED.has(baseLang(lang)) ? segmentedWords(line, lang) : wordParts(line, lang);
+}
+
+/** The different telling words of a text (isTellingWord), folded. */
+export function tellingWords(text: string, lang = 'en'): Set<string> {
+  const out = new Set<string>();
+  for (const line of linesOf(text)) for (const w of readWords(line, lang)) if (isTellingWord(w, lang)) out.add(fold(w));
+  return out;
+}
+
 export interface Substance {
   ok: boolean;
   /** Different words (or characters) found that are words of the language, and how many the verse needs. */
@@ -809,6 +843,8 @@ export interface Substance {
   needed: number;
   /** Share of the verse's words (or characters) that are words of its language: 1 where it has no lexicon. */
   known: number;
+  /** Different telling words (isTellingWord): what the verse says, as against how it is laid out. */
+  telling: number;
 }
 
 /** Fewest different words anything that calls itself a verse can have. */
@@ -823,6 +859,16 @@ export const MIN_DISTINCT_WORDS = 3;
 export const MIN_KNOWN_SHARE = 0.6;
 /** At and above this share of real words a verse keeps its full form points; between the two they scale down. */
 export const FULL_KNOWN_SHARE = 0.7;
+/**
+ * Different telling words (isTellingWord) a verse needs per line before it keeps its full form
+ * points (forms.ts scoreForm), where lines are counted in words: below, they scale down with them.
+ * A form is laid out by anything ("ab ed ma ti", "oh ha lo", a chant of one word); what the lines
+ * say is the verse. Set from measurement (review.test.ts, finding 25): the honest verse closest to
+ * it is "I rise / I rise again / I rise again and louder", two telling words in three lines. Where
+ * lines are counted in characters (Chinese, Japanese) the segmenter cuts classical verse into
+ * single characters, which tell nothing on their own, so there only the lexicon's share counts.
+ */
+export const TELLING_PER_LINE = 0.5;
 
 /**
  * Is this a verse, or tokens arranged to satisfy a checker? The floor every
@@ -855,22 +901,19 @@ export function substance(verse: string, lang = 'en'): Substance {
   const known = all.length ? real.length / all.length : 0;
   const ok =
     ls.length > 0 && flags.every((f) => f.some(Boolean)) && distinct >= needed && differentLines * 2 > ls.length && known >= MIN_KNOWN_SHARE;
-  return { ok, distinct, needed, known };
+  return { ok, distinct, needed, known, telling: tellingWords(verse, lang).size };
 }
 
 /**
- * Distinct content words of the verse (isContentWord, and words of its language) that are not
- * among `used`: what the verse says beyond the words that land its device and signature.
- * duel.ts scales a multiplier by it, so a verse that is only its device cannot multiply itself.
+ * Distinct telling words of the verse (isTellingWord) that are not among `used`: what the verse
+ * says beyond the words that land its device and signature. duel.ts scales a multiplier by it,
+ * so a verse that is only its device, or tokens too short to say anything, cannot multiply itself.
  */
 export function ownContent(verse: string, lang: string, used: Iterable<string>): number {
-  const taken = new Set([...used].map(fold));
-  const mine = new Set<string>();
-  for (const w of wordParts(verse, lang)) {
-    const f = fold(w);
-    if (isContentWord(w, lang) && !taken.has(f) && lexiconHas(w, lang) !== false) mine.add(f);
-  }
-  return mine.size;
+  const taken = new Set([...used].flatMap((u) => [fold(u), ...fold(u).split(' ')]));
+  let n = 0;
+  for (const w of tellingWords(verse, lang)) if (!taken.has(w)) n++;
+  return n;
 }
 
 // --- Copying ---
@@ -908,22 +951,77 @@ function copyWords(line: string, lang: string, known: Set<string>, all = false):
 }
 
 /**
+ * English endings a copy can change without making a word its own: the plural and the
+ * third person ("hears"), the past ("turned"), "-ing", the stage's "-eth" and "-est", the
+ * possessive, and the "e" or doubled consonant they leave ("hoped", "stopped").
+ */
+function englishStem(w: string): string {
+  // Endings come off one at a time until none is left ("limpings", "limping", "limp").
+  let s = w.replace(/'s$/, '');
+  for (let pass = 0; pass < 3; pass++) {
+    const before = s;
+    if (s.length > 5 && /ies$/.test(s)) s = `${s.slice(0, -3)}y`;
+    else if (s.length > 5 && /(?:eth|est)$/.test(s)) s = s.slice(0, -3);
+    else if (s.length > 5 && /ing$/.test(s)) s = s.slice(0, -3);
+    else if (s.length > 4 && /ed$/.test(s)) s = s.slice(0, -2);
+    else if (s.length > 4 && /(?:ss|x|z|ch|sh)es$/.test(s)) s = s.slice(0, -2);
+    else if (s.length > 3 && /[^su]s$/.test(s)) s = s.slice(0, -1);
+    if (s === before) break;
+  }
+  if (/([^aeiouls])\1$/.test(s)) s = s.slice(0, -1);
+  return s.length > 3 ? s.replace(/e$/, '') : s;
+}
+
+/**
+ * Do two folded words of a copy measure count as the same word? The same spelling; in English
+ * the same stem (englishStem); in the other languages written with spaces, the same word with
+ * another ending: both of five letters or more, alike but for the last two letters of the
+ * shorter or less ("noche" and "noches", "dorado" and "dorada", "Nacht" and "Nächte").
+ */
+function sameWordFor(lang: string): (a: string, b: string) => boolean {
+  const b0 = baseLang(lang);
+  if (UNSPACED.has(b0) || rulesFor(b0).unit === 'char') return (a, b) => a === b;
+  if (b0 === 'en') {
+    const stems = new Map<string, string>();
+    const st = (w: string) => {
+      let v = stems.get(w);
+      if (v === undefined) stems.set(w, (v = englishStem(w)));
+      return v;
+    };
+    return (a, b) => a === b || st(a) === st(b);
+  }
+  return (a, b) => {
+    if (a === b) return true;
+    const x = [...a];
+    const y = [...b];
+    const n = Math.min(x.length, y.length);
+    if (n < 5 || Math.abs(x.length - y.length) > 3) return false;
+    let k = 0;
+    while (k < n && x[k] === y[k]) k++;
+    return k >= n - 2;
+  };
+}
+
+/**
  * The longest common subsequence of `a` in `b`, where two neighbours of `a` swapped
  * ("night dark" for "dark night") still match both: which items of `a` it takes, and which
- * items of `b` they are. Items of `b` already in `used` are not available.
+ * items of `b` they are. Items of `b` already in `used` are not available. `eq` says which
+ * items are the same word (sameWordFor).
  */
-function takenInOrder(a: string[], b0: string[], used: boolean[]): { taken: boolean[]; at: number[] } {
+function takenInOrder(a: string[], b0: string[], used: boolean[], eq: (x: string, y: string) => boolean): { taken: boolean[]; at: number[] } {
   // The source without what earlier lines took, remembering where each item came from.
   const at0 = b0.map((_, j) => j).filter((j) => !used[j]);
   const b = at0.map((j) => b0[j]);
   const n = a.length;
   const m = b.length;
+  const E = a.map((x) => b.map((y) => eq(x, y)));
+  const swap = (i: number, j: number) => i > 1 && j > 1 && E[i - 1][j - 2] && E[i - 2][j - 1] && a[i - 1] !== a[i - 2];
   const L: number[][] = Array.from({ length: n + 1 }, () => new Array<number>(m + 1).fill(0));
   for (let i = 1; i <= n; i++) {
     for (let j = 1; j <= m; j++) {
       let v = Math.max(L[i - 1][j], L[i][j - 1]);
-      if (a[i - 1] === b[j - 1]) v = Math.max(v, L[i - 1][j - 1] + 1);
-      if (i > 1 && j > 1 && a[i - 1] === b[j - 2] && a[i - 2] === b[j - 1] && a[i - 1] !== a[i - 2]) v = Math.max(v, L[i - 2][j - 2] + 2);
+      if (E[i - 1][j - 1]) v = Math.max(v, L[i - 1][j - 1] + 1);
+      if (swap(i, j)) v = Math.max(v, L[i - 2][j - 2] + 2);
       L[i][j] = v;
     }
   }
@@ -932,12 +1030,12 @@ function takenInOrder(a: string[], b0: string[], used: boolean[]): { taken: bool
   let i = n;
   let j = m;
   while (i > 0 && j > 0) {
-    if (a[i - 1] === b[j - 1] && L[i][j] === L[i - 1][j - 1] + 1) {
+    if (E[i - 1][j - 1] && L[i][j] === L[i - 1][j - 1] + 1) {
       taken[i - 1] = true;
       at.push(at0[j - 1]);
       i--;
       j--;
-    } else if (i > 1 && j > 1 && a[i - 1] === b[j - 2] && a[i - 2] === b[j - 1] && a[i - 1] !== a[i - 2] && L[i][j] === L[i - 2][j - 2] + 2) {
+    } else if (swap(i, j) && L[i][j] === L[i - 2][j - 2] + 2) {
       taken[i - 1] = taken[i - 2] = true;
       at.push(at0[j - 1], at0[j - 2]);
       i -= 2;
@@ -955,24 +1053,28 @@ export interface CopyMeasure {
   own: number;
   /** taken / (taken + own): 0 when the verse takes nothing, 1 when it adds nothing. */
   share: number;
+  /** Content words of the source. */
+  source: number;
+  /** taken / source: how much of the source the verse carries, in its order; 1 when all of it, whatever was added. */
+  coverage: number;
+  /**
+   * Content words of the source the verse says in any order (each at most as often as the source
+   * does), as a share of them; in Chinese, the share of their characters the verse holds.
+   */
+  anyOrder: number;
+  /**
+   * For each line of the source with two content words or more: the largest share of them that
+   * one line of the verse says (in any order). A copy carries the source's lines over, each
+   * into a line of its own, however much it adds around them; an answer throws words back
+   * from one line or two.
+   */
+  lines: number[];
+  /** Words each line of the verse takes in order (taken, line by line). */
+  perLine: number[];
+  /** Lines of the verse that end on the word the source's line in the same place ends on: the rhymes a copy keeps. */
+  ends: number;
 }
 
-/**
- * How much of `verse` is taken from `source`: its content words (isContentWord) that
- * follow the source's content words in order, as a share of the verse's content words.
- *
- * Each line of the verse is matched against the whole source, its lines run together, so
- * a copy is found however its lines are reordered or re-broken; each word of the source
- * can be taken once; two neighbours swapped still match; a dropped word only leaves the
- * rest matched; case, accents and punctuation are folded away, and the little words are
- * not counted at all. A word of the verse's own
- * counts once however often it is said, so a filler put between every two copied words
- * adds one word, not half the verse. Words of the source said out of its order count on
- * neither side. Where words are written without spaces (Chinese, Japanese, Thai) the words
- * are the engine's segmentation (wordsOf), the verse read in the source's words (copyWords).
- * With `all: true` every word counts, the little ones too: for a verse that keeps too few
- * content words to tell (duel.ts isCopy).
- */
 /**
  * The words of a line by the engine's best segmentation: for Japanese the dictionary's
  * (kuromoji, the same on every device) when it is loaded, otherwise wordsOf.
@@ -985,26 +1087,119 @@ export function segmentedWords(line: string, lang = 'en'): string[] {
   return wordsOf(line, lang);
 }
 
+/**
+ * How much of `verse` is taken from `source`, seen from both sides: its content words
+ * (isContentWord) that follow the source's content words in order, as a share of the verse's
+ * own content words (`share`) and of the source's (`coverage`).
+ *
+ * Each line of the verse is matched against the whole source, its lines run together, so
+ * a copy is found however its lines are reordered or re-broken; each word of the source
+ * can be taken once; two neighbours swapped still match; a dropped word only leaves the
+ * rest matched; case, accents and punctuation are folded away, a changed ending does not
+ * make a word new (sameWordFor), and the little words are not counted at all. A word of the
+ * verse's own counts once however often it is said, so a filler put between every two copied
+ * words adds one word, not half the verse; and words added to every line of a copy leave its
+ * coverage whole. Words of the source said out of its order count on neither side of `share`,
+ * and in `anyOrder`. Where words are written without spaces (Chinese, Japanese, Thai) the
+ * words are the engine's segmentation (wordsOf), the verse read in the source's words
+ * (copyWords). With `all: true` every word counts, the little ones too: for a verse that
+ * keeps too few content words to tell (duel.ts isCopy).
+ */
 export function copyOf(verse: string, source: string, lang = 'en', opts: { all?: boolean } = {}): CopyMeasure {
   const all = opts.all ?? false;
   const known = new Set(UNSPACED.has(baseLang(lang)) ? linesOf(source).flatMap((l) => segmentedWords(l, lang)).filter((w) => [...w].length >= 2) : []);
   const mine = linesOf(verse).map((l) => copyWords(l, lang, known, all)).filter((ws) => ws.length > 0);
   const theirs = linesOf(source).flatMap((l) => copyWords(l, lang, new Set(), all));
-  if (!mine.length || !theirs.length) return { taken: 0, own: 0, share: 0 };
-  const theirSet = new Set(theirs);
+  if (!mine.length || !theirs.length) return { taken: 0, own: 0, share: 0, source: theirs.length, coverage: 0, anyOrder: 0, lines: [], perLine: [], ends: 0 };
+  const eq = sameWordFor(lang);
+  const inSource = (w: string) => theirs.some((t) => eq(w, t));
   // Each word of the source is taken once: a verse that says the opponent's "stage" in every line took one word.
   const used = new Array<boolean>(theirs.length).fill(false);
   let taken = 0;
   const own = new Set<string>();
+  const perLine: number[] = [];
   for (const line of mine) {
-    const t = takenInOrder(line, theirs, used);
+    const t = takenInOrder(line, theirs, used, eq);
     for (const j of t.at) used[j] = true;
+    perLine.push(t.at.length);
     line.forEach((w, k) => {
       if (t.taken[k]) taken++;
-      else if (!theirSet.has(w)) own.add(w);
+      else if (!inSource(w)) own.add(w);
     });
   }
-  return { taken, own: own.size, share: taken + own.size ? taken / (taken + own.size) : 0 };
+  // In any order: each word of the source is matched by one word of the verse at most. In Chinese,
+  // by its characters: shuffled and filled out, a line is cut into other words, and a character is
+  // a word or the root of one. (Not in Japanese or Thai, whose kana and letters spell sounds: two
+  // honest verses of those share most of them, measured.)
+  let said = 0;
+  if (baseLang(lang) === 'zh') {
+    const pool = new Map<string, number>();
+    for (const ch of mine.flat().join('')) pool.set(ch, (pool.get(ch) ?? 0) + 1);
+    const chars = [...theirs.join('')];
+    let hit = 0;
+    for (const ch of chars) {
+      const n = pool.get(ch) ?? 0;
+      if (n > 0) {
+        pool.set(ch, n - 1);
+        hit++;
+      }
+    }
+    said = chars.length ? (hit / chars.length) * theirs.length : 0;
+  } else {
+    const free = new Array<boolean>(theirs.length).fill(true);
+    for (const w of mine.flat()) {
+      const j = theirs.findIndex((t, k) => free[k] && eq(w, t));
+      if (j >= 0) {
+        free[j] = false;
+        said++;
+      }
+    }
+  }
+  // Line by line: how much of each line of the source one line of the verse says.
+  const said1 = (src: string[], line: string[]) => {
+    const open = new Array<boolean>(line.length).fill(true);
+    let n = 0;
+    for (const w of src) {
+      const k = line.findIndex((x, i) => open[i] && eq(x, w));
+      if (k >= 0) {
+        open[k] = false;
+        n++;
+      }
+    }
+    return n / src.length;
+  };
+  const sourceLines = linesOf(source).map((l) => copyWords(l, lang, new Set(), all));
+  const lines = sourceLines.filter((ws) => ws.length >= 2).map((ws) => Math.max(...mine.map((line) => said1(ws, line))));
+  // Line ends: a copy keeps the other verse's rhymes, line for line; an answer seldom ends its
+  // lines on the other's in the same places. A line's end is its last word; in Chinese and
+  // Japanese, a line that ends on a Han character ends on that character, however the words
+  // around it are cut.
+  const b = baseLang(lang);
+  const lineEnd = (l: string, k: Set<string>) => {
+    if (b === 'zh' || b === 'ja') {
+      const ch = lettersOf(l).at(-1);
+      if (ch && /\p{Script=Han}/u.test(ch)) return ch;
+    }
+    return copyWords(l, lang, k, true).at(-1);
+  };
+  const theirEnds = linesOf(source).map((l) => lineEnd(l, new Set()));
+  let ends = 0;
+  linesOf(verse).forEach((l, i) => {
+    const w = lineEnd(l, known);
+    const e = theirEnds[i];
+    if (w && e && eq(w, e)) ends++;
+  });
+  return {
+    taken,
+    own: own.size,
+    share: taken + own.size ? taken / (taken + own.size) : 0,
+    source: theirs.length,
+    coverage: taken / theirs.length,
+    anyOrder: said / theirs.length,
+    lines,
+    perLine,
+    ends,
+  };
 }
 
 /** copyOf(verse, source, lang).share: how much of `verse` is taken from `source`, from 0 to 1. */

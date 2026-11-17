@@ -11,10 +11,10 @@
  * model's prompt. The `detail` of a check is data that reads the same in any
  * language: the words compared, a count such as "3/4".
  */
-import { baseLang, unitKey } from './lang';
+import { baseLang, rulesFor, unitKey } from './lang';
 import { msg, type Msg } from './msg';
 import { rhymeChecked, rhymeEnds, rhymes } from './rhyme';
-import { FULL_KNOWN_SHARE, countsSyllables, edgeUnit, fold, graphemes, hiragana, lineLength, linesOf, substance, syllableSpan, wordsOf } from './text';
+import { FULL_KNOWN_SHARE, TELLING_PER_LINE, countsSyllables, edgeUnit, fold, graphemes, hiragana, lineLength, linesOf, substance, syllableSpan, wordsOf } from './text';
 
 export { countsSyllables };
 
@@ -371,8 +371,9 @@ export interface FormScore {
   /** The text is too thin to be a verse (text.ts `substance`): no requirement is met and nothing is earned. */
   thin?: boolean;
   /**
-   * The share of the points kept, from the share of the verse that is words of its language
-   * (text.ts substance `known`): 1 at FULL_KNOWN_SHARE and above, less below it.
+   * The share of the points kept: 1 when the verse is words of its language (text.ts substance
+   * `known`, FULL_KNOWN_SHARE and above) and says something in each line (`telling`, TELLING_PER_LINE
+   * telling words a line), less when it falls short of either.
    */
   scale: number;
 }
@@ -388,8 +389,11 @@ export function scoreForm(form: Form, verse: string, ctx: FormContext): FormScor
     return { id: r.id, label: r.label(ctx), points: r.points, earned: met ? r.points : 0, met, detail };
   });
   if (thin) return { formId: form.id, checks, earned: 0, kept: false, thin, scale: 0 };
-  // Points are for words: where a lexicon says part of the verse is not words, that part earns nothing.
-  const scale = lines.length === 0 ? 1 : Math.min(1, body.known / FULL_KNOWN_SHARE);
+  // Points are for words that say something: where a lexicon says part of the verse is not words,
+  // that part earns nothing, and a verse of words too slight to tell anything ("ab ed ma ti",
+  // "oh ha lo") earns for the lines it fills with telling words, not for the lines it lays out.
+  const told = rulesFor(ctx.lang).unit === 'char' ? 1 : body.telling / (TELLING_PER_LINE * lines.length);
+  const scale = lines.length === 0 ? 1 : Math.min(1, body.known / FULL_KNOWN_SHARE, told);
   const earned = Math.round(checks.reduce((s, c) => s + c.earned, 0) * scale);
   return { formId: form.id, checks, earned, kept: checks.every((c) => c.met), scale };
 }

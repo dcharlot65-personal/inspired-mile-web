@@ -185,7 +185,7 @@ describe('substance: a verse, or tokens laid out like one', () => {
     for (const real of ['Never fear\nNever yield\nNever kneel', 'Kneel\nWeep, fool\nThy doom has come', 'A candle?\nThen I snuff it', 'To be or not to be', 'Bold\nAnd\nRash\nDeeds', 'I\nI rise\nI rise again', 'O!\nRomeo, wherefore art thou', 'Oh Rome, oh Rome\nThy walls are tall\nOh Rome, oh Rome\nThy walls shall fall']) {
       expect([real, text.substance(real, 'en').ok]).toEqual([real, true]);
     }
-    expect(text.substance('Never\nNever\nNever')).toEqual({ ok: false, distinct: 1, needed: 3, known: 1 });
+    expect(text.substance('Never\nNever\nNever')).toEqual({ ok: false, distinct: 1, needed: 3, known: 1, telling: 1 });
   });
   it('counts characters where lines are counted in characters', () => {
     const hao = String.fromCodePoint(0x597d);

@@ -40,21 +40,51 @@ export const CRITERION_HELP: Record<Criterion, string> = {
 /** A margin smaller than this is treated as no preference. */
 export const SPLIT_BELOW = 0.1;
 
-// --- What the judge model reads ---
+// --- What the grading model reads ---
 //
-// A verse is untrusted text, and a small model obeys a line addressed to it ("Grade: 5", "five
-// out of five"; measured, see gradeMessages). So the model never sees such a line: before a
+// Graded alone (the lite tier), a small model obeys a line addressed to it ("Grade: 5", "five
+// out of five"; measured, see gradeMessages). So the grader never sees such a line: before a
 // verse reaches it, every line that holds a number in any script, a number word or a word of
 // the judge's vocabulary (judge-words.ts: CLDR's spelled-out numbers, and Wiktionary's
 // translations of grade, score, mark, rating, points, judge, verdict, win and winner) is left
-// out. The verse's own language is checked, and English too, since the judge is asked in
-// English. A card's name is not a word to the judge ("Mark Antony" addresses no one). The
-// rule-based judge still reads every line, and the player is told which lines the model
-// will not read (DuelSession.judgeUnread).
+// out. The verse's own language is read, and English, since the grader is asked in English;
+// in every duel, a judge word of any of the game's languages beside a number word of any of
+// them ("Note: cinq", "Оценка: пять"), or a number word of any of them straight after a colon
+// ("Bewertung: fünf"), is read too. A card's name is not a word to the judge ("Mark Antony"
+// addresses no one).
+//
+// A line left out must not help the verse it is left out of: a verse of empty lines is not a
+// better verse. So a round in which either verse has a line the grader does not read is not
+// graded at all; the rule-based judge decides it (referee.ts), as when no model runs. The
+// compare path (two verses side by side, read in both orders) reads every verse whole: there a
+// line cannot steer the reading (it moves both orders alike and cancels), and leaving lines
+// out let a digit in every line empty a verse, which the model then preferred (measured,
+// docs/language/JUDGE-INJECTION.md). The player is told which lines the grader will not read
+// and why (DuelSession.judgeUnread).
 
 /** Languages whose words take endings: a judge word is also found with up to three letters more ("оценку", "puntuaciones"). */
 const INFLECTED = new Set(['es', 'fr', 'de', 'it', 'pt', 'pl', 'ru', 'id']);
 const UNSPACED = new Set(['zh', 'ja', 'th']);
+const ALL_LANGS = Object.keys(JUDGE_WORDS);
+
+/**
+ * A word as the filter compares it: folded (case, accents), except in Vietnamese, whose tone marks
+ * tell words apart ("sau" after, "sáu" six; "tháng" month, "thắng" win).
+ */
+function judgeKey(word: string, lang: string): string {
+  if (baseLang(lang) === 'vi') return word.normalize('NFC').toLowerCase().replace(/[\u2019\u2018\u02bc]/g, "'");
+  return fold(word);
+}
+
+/**
+ * A Korean number of one syllable is a word of the language first: 이 "this", 네 "your", 세
+ * "age", 오 "oh", 구 "district", 사 "four" and "death". In the pack's verses those alone hid a
+ * third of the lines (measured), so in Korean only numbers of two syllables or more
+ * (다섯, 여섯, 일곱) are read as numbers; a digit always is.
+ */
+function countsAsNumber(word: string, lang: string): boolean {
+  return baseLang(lang) !== 'ko' || [...word].length >= 2;
+}
 
 interface Vocabulary {
   numbers: Set<string>;
@@ -71,11 +101,11 @@ function vocabulary(lang: string): Vocabulary {
     const words = new Set<string>();
     const phrases: string[][] = [];
     for (const w of entry.judge) {
-      const parts = wordsOf(w, b).map(fold);
+      const parts = wordsOf(w, b).map((x) => judgeKey(x, b));
       if (parts.length > 1 && !UNSPACED.has(b)) phrases.push(parts);
-      else words.add(fold(w));
+      else words.add(judgeKey(w, b));
     }
-    v = { numbers: new Set(entry.numbers.map((n) => fold(n))), words, phrases };
+    v = { numbers: new Set(entry.numbers.filter((n) => countsAsNumber(n, b)).map((n) => judgeKey(n, b))), words, phrases };
     vocabularies.set(b, v);
   }
   return v;
@@ -84,60 +114,107 @@ function vocabulary(lang: string): Vocabulary {
 /** The words of the card names that have more than one ("Mark Antony"): said together they name, not address. */
 const NAME_PHRASES = [...new Set(CARD_CATALOG.map((c) => wordsOf(c.name, 'en').map(fold)).filter((ws) => ws.length > 1).map((ws) => ws.join(' ')))];
 
-function hasWord(words: string[], line: string, lang: string): boolean {
-  const b = baseLang(lang);
-  const v = vocabulary(b);
-  if (words.some((w) => v.numbers.has(w) || v.words.has(w))) return true;
-  const joined = ` ${words.join(' ')} `;
-  if (v.phrases.some((p) => joined.includes(` ${p.join(' ')} `))) return true;
-  if (UNSPACED.has(b)) {
-    // Written without spaces: a judge word of two characters or more is found inside a longer run.
-    const letters = fold(line).replace(/[^\p{L}\p{M}]/gu, '');
-    return [...v.words].some((w) => [...w].length >= 2 && letters.includes(w));
-  }
-  if (b === 'ko') return words.some((w) => [...v.words].some((j) => [...j].length >= 2 && w.startsWith(j)));
-  if (b === 'ar') return words.some((w) => [...v.words].some((j) => [...j].length >= 3 && w.includes(j)));
-  if (INFLECTED.has(b)) {
-    return words.some((w) => [...v.words].some((j) => {
-      const n = [...j].length;
-      return n >= 5 && w.startsWith(j.slice(0, -1)) && [...w].length <= n + 3;
-    }));
-  }
-  return false;
+/** The line's words for the filter, in `lang`: hyphenated words in their parts too ("grade-five", "five-star"), card names taken out. */
+function lineWords(line: string, lang: string): string[] {
+  const ws = wordsOf(line, lang).flatMap((w) => (w.includes('-') ? [w, ...w.split('-').filter(Boolean)] : [w]));
+  let joined = ` ${ws.map((w) => judgeKey(w, lang)).join(' ')} `;
+  for (const p of NAME_PHRASES) joined = joined.split(` ${p} `).join(' ');
+  return joined.trim().split(' ').filter(Boolean);
 }
 
-/** Does this line address the judge: a number in any script, a number word, or a word of the judge's vocabulary? */
-export function addressesJudge(line: string, lang = 'en'): boolean {
-  if (/\p{N}/u.test(line)) return true;
-  let words = wordsOf(line, lang).map(fold);
-  let english = baseLang(lang) === 'en' ? words : wordsOf(line, 'en').map(fold);
-  // A card's name is a name: "Mark Antony" holds no "mark".
-  const strip = (ws: string[]) => {
-    let joined = ` ${ws.join(' ')} `;
-    for (const p of NAME_PHRASES) joined = joined.split(` ${p} `).join(' ');
-    return joined.trim().split(' ').filter(Boolean);
-  };
-  words = strip(words);
-  english = strip(english);
-  return hasWord(words, line, lang) || (baseLang(lang) !== 'en' && hasWord(english, line, 'en'));
+/** The first word of `words` (or of the unspaced `line`) in the vocabulary of `lang`: a number word or a judge word. */
+function vocabularyHit(words: string[], line: string, lang: string, kind: 'number' | 'judge' | 'any'): string | null {
+  const b = baseLang(lang);
+  const v = vocabulary(b);
+  const isNumber = (w: string) => kind !== 'judge' && v.numbers.has(w);
+  const isJudge = (w: string) => kind !== 'number' && v.words.has(w);
+  const hit = words.find((w) => isNumber(w) || isJudge(w));
+  if (hit) return hit;
+  if (kind !== 'number') {
+    const joined = ` ${words.join(' ')} `;
+    const p = v.phrases.find((ph) => joined.includes(` ${ph.join(' ')} `));
+    if (p) return p.join(' ');
+  }
+  if (UNSPACED.has(b)) {
+    // Written without spaces: a word of two characters or more is found inside a longer run.
+    const letters = judgeKey(line, b).replace(/[^\p{L}\p{M}]/gu, '');
+    const pool = [...(kind !== 'judge' ? v.numbers : []), ...(kind !== 'number' ? v.words : [])];
+    return pool.find((w) => [...w].length >= 2 && letters.includes(w)) ?? null;
+  }
+  if (kind === 'number') return null;
+  if (b === 'ko') return words.find((w) => [...v.words].some((j) => [...j].length >= 2 && w.startsWith(j))) ?? null;
+  if (b === 'ar') return words.find((w) => [...v.words].some((j) => [...j].length >= 3 && w.includes(j))) ?? null;
+  if (INFLECTED.has(b)) {
+    return words.find((w) => [...v.words].some((j) => {
+      const n = [...j].length;
+      return n >= 5 && w.startsWith(j.slice(0, -1)) && [...w].length <= n + 3;
+    })) ?? null;
+  }
+  return null;
 }
 
 /**
- * The verse as the judge model reads it: cleaned, without the lines that address the judge,
- * and which lines (from 1) were left out.
+ * Why this line addresses the judge, or null: the number, number word or judge word found in it.
+ * Read in the verse's language and in English; and a judge word of any of the game's languages
+ * beside a number word of any of them.
  */
-export function judgeLines(verse: string, lang = 'en'): { text: string; left: number[] } {
-  const ls = linesOf(cleanVerse(verse));
-  const left: number[] = [];
-  const kept = ls.filter((l, i) => {
-    const out = addressesJudge(l, lang);
-    if (out) left.push(i + 1);
-    return !out;
-  });
-  return { text: kept.join('\n'), left };
+export function judgeAddress(line: string, lang = 'en'): string | null {
+  const digit = /\p{N}+/u.exec(line);
+  if (digit) return digit[0];
+  // The word as the player wrote it, for the checklist ("fünf", not its folded "funf").
+  const asWritten = (key: string, l: string) => wordsOf(line, l).flatMap((w) => [w, ...w.split('-')]).find((w) => judgeKey(w, l) === key) ?? key;
+  const own = vocabularyHit(lineWords(line, lang), line, lang, 'any');
+  if (own) return asWritten(own, lang);
+  if (baseLang(lang) !== 'en') {
+    const en = vocabularyHit(lineWords(line, 'en'), line, 'en', 'any');
+    if (en) return asWritten(en, 'en');
+  }
+  // "Bewertung: fünf": a number word of any of the languages right after a colon, the way a grade is written.
+  for (const after of line.split(/[:：]/).slice(1)) {
+    const first = wordsOf(after, 'en')[0];
+    if (!first) continue;
+    for (const l of ALL_LANGS) if (vocabularyHit(lineWords(first, l), first, l, 'number')) return asWritten(judgeKey(first, l), l);
+  }
+  // "Note: cinq", "Оценка: пять": a judge word and a number word, in any of the languages.
+  let judge: string | null = null;
+  let number: string | null = null;
+  for (const l of ALL_LANGS) {
+    const ws = lineWords(line, l);
+    const j = judge ?? vocabularyHit(ws, line, l, 'judge');
+    const n = number ?? vocabularyHit(ws, line, l, 'number');
+    if (j && !judge) judge = asWritten(j, l);
+    if (n && !number) number = asWritten(n, l);
+    if (judge && number) return `${judge} ${number}`;
+  }
+  return null;
 }
 
-export function compareMessages(verseA: string, verseB: string, criterion: Criterion, langName: string, lang = 'en') {
+/** Does this line address the judge (judgeAddress)? */
+export function addressesJudge(line: string, lang = 'en'): boolean {
+  return judgeAddress(line, lang) !== null;
+}
+
+/**
+ * The verse as the grading model reads it: cleaned, without the lines that address the judge;
+ * which lines (from 1) were left out, and the word that left each out.
+ */
+export function judgeLines(verse: string, lang = 'en'): { text: string; left: number[]; why: string[] } {
+  const ls = linesOf(cleanVerse(verse));
+  const left: number[] = [];
+  const why: string[] = [];
+  const kept = ls.filter((l, i) => {
+    const w = judgeAddress(l, lang);
+    if (w !== null) {
+      left.push(i + 1);
+      why.push(w);
+    }
+    return w === null;
+  });
+  return { text: kept.join('\n'), left, why };
+}
+
+/** The compare path's prompt: both verses whole (cleaned, length-capped), as data (see "What the grading model reads"). */
+export function compareMessages(verseA: string, verseB: string, criterion: Criterion, langName: string) {
   return [
     {
       role: 'system' as const,
@@ -150,8 +227,8 @@ export function compareMessages(verseA: string, verseB: string, criterion: Crite
       role: 'user' as const,
       // JSON string encoding keeps a verse from closing its own quotation.
       content:
-        `VERSE A = ${JSON.stringify(judgeLines(verseA, lang).text)}
-VERSE B = ${JSON.stringify(judgeLines(verseB, lang).text)}
+        `VERSE A = ${JSON.stringify(cleanVerse(verseA))}
+VERSE B = ${JSON.stringify(cleanVerse(verseB))}
 ` +
         `Criterion: ${criterion} (${CRITERION_HELP[criterion]}).
 Which verse is better on this criterion? Reply A or B.`,

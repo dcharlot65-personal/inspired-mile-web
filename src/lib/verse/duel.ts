@@ -51,16 +51,29 @@ export const POTION_COST = 1;
 /** Points the judge shares between the two verses each round. */
 export const JUDGE_POOL = 24;
 /**
- * A verse is a copy, not an answer, when at least COPY_THRESHOLD of its content words follow
- * the other side's verse in order (text.ts `copyOf`), and either more than three of them do
- * (COPY_MIN_TAKEN: the Riposte asks for two or three thrown back) or the verse has no
- * content word of its own. A verse with too few content words to tell is measured on all
- * its words, the little ones too, by the same rule: a short verse retouched until one
- * content word is left is still the other's verse. Set from measurement (review.test.ts,
- * finding 24): see docs/language/RULES-MEASUREMENTS.md for the lowest mechanical copy and
- * the highest honest pair in each language.
+ * A verse is a copy, not an answer (isCopy), when it takes more than three of the other side's
+ * content words in order (COPY_MIN_TAKEN: the Riposte asks for two or three thrown back) and
+ * either
+ *   - they are at least COPY_THRESHOLD of its own content words (it adds little), or
+ *   - they are at least COPY_COVERAGE of the other verse's content words, two or more of them in
+ *     each of two lines or more, or COPY_COVERAGE_ALONE of them however laid out (it carries the
+ *     other verse over, whatever it adds: two words put into every line leave all of the other's
+ *     in place); or COPY_COVERAGE_ENDS of them so laid out when two of its lines also end on the
+ *     other verse's line ends (it keeps the other's rhymes: a word of every line dropped, one or
+ *     two put in), or
+ *   - it says COPY_COVERAGE_ALONE of the other verse's content words in any order (its lines
+ *     shuffled word by word);
+ * or it has no content word of its own and takes two. A verse with too few content words to
+ * tell is measured on all its words, the little ones too, by the same rules: a short verse
+ * retouched until one content word is left is still the other's verse. Set from measurement
+ * (review.test.ts, finding 24): see docs/language/RULES-MEASUREMENTS.md for the copies and the
+ * honest pairs and answers on either side of each threshold, in every language.
  */
 export const COPY_THRESHOLD = 0.7;
+export const COPY_COVERAGE = 0.85;
+export const COPY_COVERAGE_ALONE = 0.9;
+/** With the other verse's line ends kept in two lines or more (its rhymes), this much of it in order is enough. */
+export const COPY_COVERAGE_ENDS = 0.6;
 /**
  * Content words of its own, beyond those that land its device and signature, that a verse
  * needs per line its form asks for before its multiplier's bonuses apply in full (scoreVerse).
@@ -348,7 +361,19 @@ const CHARACTER_NAMES = invocationNames(CARD_CATALOG.filter((c) => c.type === 'C
 /** Is `verse` a copy of `answered` (see COPY_THRESHOLD)? */
 export function isCopy(verse: string, answered: string, lang: string): boolean {
   if (!answered) return false;
-  const rule = (c: ReturnType<typeof copyOf>) => c.share >= COPY_THRESHOLD && (c.taken >= COPY_MIN_TAKEN || (c.own === 0 && c.taken >= 2));
+  const rule = (c: ReturnType<typeof copyOf>) => {
+    if (c.own === 0 && c.taken >= 2 && c.share >= COPY_THRESHOLD) return true;
+    // Said in any order, as often as the source says them.
+    if (Math.round(c.anyOrder * c.source) >= COPY_MIN_TAKEN && c.anyOrder >= COPY_COVERAGE_ALONE) return true;
+    if (c.taken < COPY_MIN_TAKEN) return false;
+    const spread = c.perLine.filter((n) => n >= 2).length >= 2;
+    return (
+      c.share >= COPY_THRESHOLD ||
+      c.coverage >= COPY_COVERAGE_ALONE ||
+      (spread && c.coverage >= COPY_COVERAGE) ||
+      (spread && c.ends >= 2 && c.coverage >= COPY_COVERAGE_ENDS)
+    );
+  };
   const content = copyOf(verse, answered, lang);
   if (rule(content)) return true;
   // Too few content words taken to tell: every word counts, the little ones too.
