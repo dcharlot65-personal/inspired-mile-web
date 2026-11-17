@@ -20,7 +20,7 @@
  */
 import { createHash } from 'node:crypto';
 import { execFileSync } from 'node:child_process';
-import { existsSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import type { ModelSpec } from './brain';
@@ -89,7 +89,26 @@ describe('the judging cells', () => {
     expect(refused, 'cells whose judging code is not the code now').toEqual([]);
   }, 120_000);
 
-  it('were judged with the prompts the game sends now', async () => {
+  // After a change to the judge's prompts, until the cells are judged again: as the re-score does for
+  // writing cells (src/lib/model-eval.rescore.test.ts), move them to set-aside/, where they count as
+  // not measured and run.mjs measures them again.
+  it.runIf(process.env.MEVAL_SET_ASIDE === '1')('sets aside the judging cells whose prompts the game no longer sends', async () => {
+    const aside = join(DIR, 'set-aside');
+    mkdirSync(aside, { recursive: true });
+    for (const f of cellFiles) {
+      const file = join(DIR, 'cells', f);
+      if (!existsSync(file)) continue;
+      const cell = JSON.parse(readFileSync(file, 'utf8'));
+      if (cell.judgePrompts && (await fingerprint(cell)).sha256 === cell.judgePrompts.sha256) continue;
+      const at = (() => { try { return execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim(); } catch { return null; } })();
+      cell.setAside = { date: new Date().toISOString(), commit: at, why: cell.judgePrompts ? 'the judge\'s prompts changed since this cell ran; judge it again (scripts/model-eval/run.mjs)' : 'no fingerprint of the judge\'s prompts; judge it again (scripts/model-eval/run.mjs)' };
+      writeFileSync(join(aside, f), JSON.stringify(cell, null, 1) + '\n');
+      rmSync(file);
+      console.log(`${f}: set aside; it counts as not measured`);
+    }
+  }, 120_000);
+
+  it.skipIf(process.env.MEVAL_SET_ASIDE === '1')('were judged with the prompts the game sends now', async () => {
     const differ: string[] = [];
     for (const f of cellFiles) {
       const cell = read('cells', f) as JudgeCell;
@@ -102,7 +121,7 @@ describe('the judging cells', () => {
     if (cellFiles.length) expect(cellFiles.length).toBeGreaterThan(10);
   }, 120_000);
 
-  it('a fingerprint tells two pairs apart, and two judging methods', async () => {
+  it.skipIf(process.env.MEVAL_SET_ASIDE === '1')('a fingerprint tells two pairs apart, and two judging methods', async () => {
     const cell = read('cells', cellFiles.find((f) => f.startsWith('grand.'))!) as JudgeCell;
     const a = await fingerprint(cell);
     const b = await fingerprint({ ...cell, pairs: [...cell.pairs].reverse() });

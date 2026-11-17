@@ -122,11 +122,12 @@ for (const tier of TIERS) out.push(`| ${LABEL[tier]} | ${measured[tier].judge.jo
 const dates = cells.map((c) => c.date).sort();
 const commits = [...new Set(cells.map((c) => c.commit))];
 if (cells.length) out.push('', `${cells.length} cells, run from ${dates[0].slice(0, 16).replace('T', ' ')} to ${dates.at(-1).slice(0, 16).replace('T', ' ')} UTC, from ${commits.length === 1 ? 'one snapshot of the code' : `${commits.length} snapshots of the code`} (${commits.map((c) => c?.slice(0, 8)).join(', ')}); Transformers.js ${[...new Set(cells.map((c) => c.transformers))].join(', ')}; GPU ${[...new Set(cells.map((c) => `${c.gpu?.vendor} ${c.gpu?.architecture}`))].join(', ')}.`);
-// Writing cells that a change to the game left unable to be re-scored, set aside until run again (src/lib/model-eval.rescore.test.ts).
+// Cells a change to the game left describing something it no longer does, set aside until run again
+// (writing: src/lib/model-eval.rescore.test.ts; judging: src/lib/model-eval.judge.test.ts).
 const asideDir = join(DIR, 'set-aside');
 // One that has been run again since (a cell of that name is back in cells/) is history, not a gap.
 const aside = existsSync(asideDir) ? readdirSync(asideDir).filter((f) => f.endsWith('.json') && !existsSync(join(cellsDir, f))).sort() : [];
-if (aside.length) out.push('', `${aside.length} writing cell(s) set aside, and counted as not measured until they are run again: ${aside.map((f) => `${f.replace(/\.json$/, '')} (${read(join(asideDir, f)).setAside?.why ?? 'no reason recorded'})`).join('; ')}. They are in \`model-eval/set-aside/\`.`);
+if (aside.length) out.push('', `${aside.length} cell(s) set aside, and counted as not measured until they are run again: ${aside.map((f) => `${f.replace(/\.json$/, '')} (${read(join(asideDir, f)).setAside?.why ?? 'no reason recorded'})`).join('; ')}. They are in \`model-eval/set-aside/\`.`);
 // Writing cells scored again from their stored drafts after a rule change (src/lib/model-eval.rescore.test.ts).
 const rescored = cells.filter((c) => c.rescored?.length);
 if (rescored.length) out.push('', `${rescored.length} writing cells were scored again from their stored drafts after a change to the rules, without running the model: ${rescored.map((c) => `${c.file.replace('cells/', '')} (${c.rescored.map((r) => `${r.playsChanged} plays, at ${String(r.commit).slice(0, 8)}`).join('; ')})`).join(', ')}.`);
