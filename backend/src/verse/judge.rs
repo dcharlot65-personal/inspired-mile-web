@@ -10,8 +10,8 @@ use serde::Serialize;
 use super::cards::{CARDS, CHARACTER_NAMES};
 use super::devices::signature_words;
 use super::text::{
-    clean_verse, fold, is_stop_word, letter_count, lexicon_has, line_length, lines_of, rhyme_ends, rhymes, rules,
-    substance, syllables_in_line, word_parts, word_span, words_of, STOP_WORDS,
+    clean_verse, first_unit, fold, is_content_word, is_stop_word, letter_count, line_length, lines_of, rhyme_ends, rhymes, rules, substance,
+    syllables_in_line, telling_words, word_span, words_of, STOP_WORDS,
 };
 
 /// Points the judge shares between the two verses each round.
@@ -77,23 +77,21 @@ pub static LEXICON: LazyLock<HashSet<String>> = LazyLock::new(|| {
 /// Most different telling words wordplay counts: past this a verse is long, not varied.
 const MAX_VARIETY: usize = 30;
 
-/// Wordplay: how many different words that carry meaning (long enough, not the little words,
-/// and words of the language: the lexicon). Only how many: a share of the verse's words
-/// rewarded stuffing, and words strung with nothing between them won it outright.
-fn variety(verse: &str) -> f64 {
-    let telling = word_parts(verse)
-        .iter()
-        .map(|w| fold(w))
-        .filter(|w| word_span(w) >= rules::CONTENT && !is_stop_word(w) && lexicon_has(w))
-        .collect::<HashSet<_>>()
-        .len();
-    telling.min(MAX_VARIETY) as f64
+/// Wordplay: how many different telling words (`text::telling_words`), in the first `lines`
+/// lines of the verse: the two verses are compared over as many lines as both have, so a line
+/// added past the other verse's length adds nothing (`variety`). Only how many: a share of the
+/// verse's words rewarded stuffing, and words strung with nothing between them won it outright.
+fn variety(verse: &str, lines: usize) -> f64 {
+    let first: Vec<&str> = lines_of(verse).into_iter().take(lines).collect();
+    telling_words(&first.join("\n")).len().min(MAX_VARIETY) as f64
 }
 
 /// Below anything a verse of two lines or more can score: one line has no flow to judge.
 const NO_FLOW: f64 = -10.0;
 
-/// Flow: rhymes between line ends, and lines of even length.
+/// Flow: rhymes between line ends; lines that open on the line before's first word, a word that
+/// carries meaning (anaphora); three lines or more, each longer than the one before (momentum);
+/// and lines of even length (`soundScore`).
 fn sound_score(verse: &str, lang: &str) -> f64 {
     let ls = lines_of(verse);
     if ls.len() < 2 {
@@ -108,14 +106,22 @@ fn sound_score(verse: &str, lang: &str) -> f64 {
             }
         }
     }
+    // Anaphora: a line that opens on the line before's first word, a word that carries meaning.
+    let opening = (1..ls.len())
+        .filter(|&i| {
+            let first = first_unit(ls[i]);
+            !first.is_empty() && first == first_unit(ls[i - 1]) && is_content_word(&first)
+        })
+        .count();
     let lens: Vec<f64> = ls
         .iter()
         .map(|l| syllables_in_line(l, lang).map(|n| n as usize).unwrap_or_else(|| line_length(l)) as f64)
         .collect();
+    let growing = if lens.len() >= 3 && lens.windows(2).all(|w| w[1] > w[0]) { 1.0 } else { 0.0 };
     let n = lens.len() as f64;
     let mean = lens.iter().fold(0.0, |a, b| a + b) / n;
     let spread = (lens.iter().fold(0.0, |s, len| s + (len - mean) * (len - mean)) / n).sqrt();
-    (NO_FLOW + 1.0).max(f64::from(rhymed) * 2.0 - spread / mean.max(1.0))
+    (NO_FLOW + 1.0).max(f64::from(rhymed) * 2.0 + opening as f64 + growing - spread / mean.max(1.0))
 }
 
 /// Allusion: names and telling words from the plays. The verse is read for them as written.
@@ -166,8 +172,10 @@ fn decide(scores: [(f64, f64); 4], real: (bool, bool)) -> JudgeSplit {
 /// pair of verses each side's comeback is read against, when both sides answered one; with
 /// none, wit is level (a split): neither side could do the thing it measures.
 fn scores(p: &str, o: &str, lang: &str, lexicon: &HashSet<String>, answered: Option<(&str, &str)>) -> [(f64, f64); 4] {
+    // Line for line: a verse is not richer for running past the other's length.
+    let shared = lines_of(p).len().min(lines_of(o).len());
     [
-        (variety(p), variety(o)),
+        (variety(p, shared), variety(o, shared)),
         (allusion_score(p, lexicon), allusion_score(o, lexicon)),
         (sound_score(p, lang), sound_score(o, lang)),
         match answered {

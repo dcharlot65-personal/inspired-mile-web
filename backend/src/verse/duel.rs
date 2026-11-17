@@ -25,7 +25,7 @@ use super::devices::{
 };
 use super::forms::{forms_for_english, get_form, score_form, Form, FormContext, FormScore, ACROSTIC_WORDS};
 use super::judge::{online_judge, rules_judge, JudgeSplit, Verdict, CRITERIA, LEXICON};
-use super::text::{clean_verse, clean_verse_with, copy_of, js_round, own_content, words_of, CopyMeasure};
+use super::text::{clean_verse, clean_verse_with, copy_of, js_round, lines_of, own_content, rhyme_ends, rhymes, words_of, CopyMeasure, LineCarry};
 use super::LANG;
 
 pub const ROUNDS: usize = 3;
@@ -40,29 +40,51 @@ pub const COPY_MIN_TAKEN: usize = 4;
 pub const COPY_ANY_ORDER_MIN: f64 = 4.0;
 /// Words a line of the other verse needs before the line rule counts it.
 pub const COPY_LINE_WORDS: usize = 3;
-/// Share of a line's words, its last among them, that a line of the verse says in order when it carries that line over.
+/// Share of a line's words a line of the verse says in order, when that line keeps its rhyme
+/// (it says the line's last word, or ends on a word that rhymes with it), for it to carry that line over.
 pub const COPY_LINE_SHARE: f64 = 0.6;
 /// Words the other verse needs before the line rule applies at all.
 pub const COPY_LINE_SOURCE: usize = 7;
+/// Share of a line's words a line of the verse says in order when it carries the line over with
+/// its last word changed for one that does not rhyme; counted only for a verse with no line of its
+/// own beyond the other's (`COPY_LINE_NEAR`).
+pub const COPY_LINE_NEAR: f64 = 0.67;
 /// Content words of its own, beyond those that land its device and signature, that a verse
 /// needs per line its form asks for before its multiplier's bonuses apply in full.
 pub const OWN_WORDS_PER_LINE: f64 = 1.5;
 
 /// Does `c` carry the other verse's lines over, each into a line of its own (`carriesLines`)?
 /// Every line of `COPY_LINE_WORDS` words or more but one (all of them in a couplet) has
-/// `COPY_LINE_SHARE` of its words said in its order by a line of the verse, its last word
-/// among them; only for a verse of `COPY_LINE_SOURCE` words or more.
-pub fn carries_lines(c: &CopyMeasure) -> bool {
+/// `COPY_LINE_SHARE` of its words said in its order by a line of the verse that keeps its rhyme
+/// (`rhymed(line, i)` for source line `i`); or, when the verse has no more lines than the source,
+/// `COPY_LINE_NEAR` of them whatever the line ends on. Only for a verse of `COPY_LINE_SOURCE`
+/// words or more.
+pub fn carries_lines_with(c: &CopyMeasure, rhymed: impl Fn(&LineCarry, usize) -> bool) -> bool {
     let words: usize = c.carry.iter().map(|l| l.source).sum();
-    let lines: Vec<_> = c.carry.iter().filter(|l| l.source >= COPY_LINE_WORDS).collect();
-    if lines.len() < 2 || words < COPY_LINE_SOURCE {
+    let counted: Vec<(usize, &LineCarry)> = c.carry.iter().enumerate().filter(|(_, l)| l.source >= COPY_LINE_WORDS).collect();
+    if counted.len() < 2 || words < COPY_LINE_SOURCE {
         return false;
     }
-    let carried = lines
+    let need = if counted.len() >= 3 { counted.len() - 1 } else { counted.len() };
+    let kept = |l: &LineCarry, i: usize| l.said >= 2 && l.said as f64 >= (COPY_LINE_SHARE * l.source as f64).ceil() && rhymed(l, i);
+    if counted.iter().filter(|(i, l)| kept(l, *i)).count() >= need {
+        return true;
+    }
+    // Nothing of its own beyond the other's lines: each line nearly whole, whatever it now ends on.
+    if c.verse_lines > c.carry.len() {
+        return false;
+    }
+    counted
         .iter()
-        .filter(|l| l.end && l.said >= 2 && l.said as f64 >= (COPY_LINE_SHARE * l.source as f64).ceil())
-        .count();
-    carried >= if lines.len() >= 3 { lines.len() - 1 } else { lines.len() }
+        .filter(|(i, l)| kept(l, *i) || (l.said >= 2 && l.said as f64 >= (COPY_LINE_NEAR * l.source as f64).ceil()))
+        .count()
+        >= need
+}
+
+/// `carriesLines(c)`: the line rule with only the measure to go on, a line keeping its rhyme
+/// when it says the source line's last word.
+pub fn carries_lines(c: &CopyMeasure) -> bool {
+    carries_lines_with(c, |l, _| l.end)
 }
 
 /// Is `verse` a copy of `answered` (`isCopy`)? Both are cleaned verses.
@@ -71,7 +93,22 @@ pub fn is_copy(verse: &str, answered: &str) -> bool {
         return false;
     }
     let c = copy_of(verse, answered, false);
-    if carries_lines(&c) {
+    let theirs = lines_of(answered);
+    let mine = lines_of(verse);
+    // A line keeps its rhyme when it ends on the source line's word or on one that rhymes with it.
+    let rhymed = |l: &LineCarry, i: usize| {
+        if l.end {
+            return true;
+        }
+        match (l.line.and_then(|j| mine.get(j)), theirs.get(i)) {
+            (Some(m), Some(t)) => {
+                let (a, b) = rhyme_ends(t, m);
+                rhymes(&a, &b)
+            }
+            _ => false,
+        }
+    };
+    if carries_lines_with(&c, rhymed) {
         return true;
     }
     // Every word counted, the little ones too: asked only when the content words leave it open.

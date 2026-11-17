@@ -863,8 +863,20 @@ fn lone_letter(unit: &str) -> bool {
 pub const UNLISTED_SPAN: usize = 4;
 
 /// Letters a word the lexicon lacks needs to count toward the substance floor inside a phrase
-/// (a line that holds one of the little words) (`PHRASE_SPAN`).
+/// (a line that holds one of the little words) (`PHRASE_SPAN`). It must also be spelled as
+/// English spells (`spelled_as_english`).
 pub const PHRASE_SPAN: usize = 4;
+
+/// Is this string spelled as English spells: every run of three of its letters, its start and
+/// end marked, found in a word the table lists (`spelledAsEnglish`)?
+fn spelled_as_english(word: &str) -> bool {
+    let letters: String = fold(word).chars().filter(|c| c.is_ascii_lowercase() || *c == '\'').collect();
+    let s: Vec<char> = format!("^{letters}$").chars().collect();
+    if s.len() < 3 {
+        return false;
+    }
+    (0..s.len() - 2).all(|i| super::pronounce::listed_trigram(&s[i..i + 3].iter().collect::<String>()))
+}
 
 /// Letters an English word needs to tell inside a phrase (`SHORT_TELLING`).
 pub const SHORT_TELLING: usize = 3;
@@ -915,7 +927,7 @@ fn known_units(line: &str) -> Vec<bool> {
         .iter()
         .map(|u| {
             let has = lexicon_has(u);
-            if !has && phrase && word_span(u) >= PHRASE_SPAN { true } else { has }
+            if !has && phrase && word_span(u) >= PHRASE_SPAN && spelled_as_english(u) { true } else { has }
         })
         .collect()
 }
@@ -1184,6 +1196,9 @@ pub struct LineCarry {
     pub verse: usize,
     /// It says the source line's last word.
     pub end: bool,
+    /// Which line of the verse it is (an index into `lines_of(verse)`); `None` when no line
+    /// says any of it (`line: -1`).
+    pub line: Option<usize>,
 }
 
 /// How much of a verse is taken from another (`CopyMeasure`).
@@ -1199,6 +1214,8 @@ pub struct CopyMeasure {
     pub per_line: Vec<usize>,
     pub ends: usize,
     pub carry: Vec<LineCarry>,
+    /// Lines of the verse (`lines_of`).
+    pub verse_lines: usize,
 }
 
 /// `lineCarry`: every line of `source`, all its words, matched one to one with the lines of
@@ -1206,10 +1223,11 @@ pub struct CopyMeasure {
 /// lines first.
 fn line_carry(verse: &str, source: &str) -> Vec<LineCarry> {
     let theirs: Vec<Vec<String>> = lines_of(source).iter().map(|l| copy_words(l, true)).collect();
-    let mine: Vec<Vec<String>> = lines_of(verse).iter().map(|l| copy_words(l, true)).filter(|ws| !ws.is_empty()).collect();
+    let mine: Vec<(usize, Vec<String>)> =
+        lines_of(verse).iter().enumerate().map(|(at, l)| (at, copy_words(l, true))).filter(|(_, ws)| !ws.is_empty()).collect();
     let mut pairs: Vec<(usize, usize, usize)> = Vec::new();
     for (i, s) in theirs.iter().enumerate() {
-        for (j, v) in mine.iter().enumerate() {
+        for (j, (_, v)) in mine.iter().enumerate() {
             let said = taken_in_order(v, s, &vec![false; s.len()]).at.len();
             if said > 0 {
                 pairs.push((said, i, j));
@@ -1217,14 +1235,15 @@ fn line_carry(verse: &str, source: &str) -> Vec<LineCarry> {
         }
     }
     pairs.sort_by(|x, y| y.0.cmp(&x.0).then(x.1.cmp(&y.1)).then(x.2.cmp(&y.2)));
-    let mut out: Vec<LineCarry> = theirs.iter().map(|s| LineCarry { source: s.len(), said: 0, verse: 0, end: false }).collect();
+    let mut out: Vec<LineCarry> = theirs.iter().map(|s| LineCarry { source: s.len(), said: 0, verse: 0, end: false, line: None }).collect();
     let mut taken: HashSet<usize> = HashSet::new();
     for (said, i, j) in pairs {
         if out[i].said > 0 || taken.contains(&j) {
             continue;
         }
         let last = theirs[i].last().expect("a line that says something has a last word");
-        out[i] = LineCarry { source: theirs[i].len(), said, verse: mine[j].len(), end: mine[j].iter().any(|w| same_word(w, last)) };
+        let (at, ws) = &mine[j];
+        out[i] = LineCarry { source: theirs[i].len(), said, verse: ws.len(), end: ws.iter().any(|w| same_word(w, last)), line: Some(*at) };
         taken.insert(j);
     }
     out
@@ -1236,6 +1255,7 @@ pub fn copy_of(verse: &str, source: &str, all: bool) -> CopyMeasure {
     let mine: Vec<Vec<String>> = lines_of(verse).iter().map(|l| copy_words(l, all)).filter(|ws| !ws.is_empty()).collect();
     let theirs: Vec<String> = lines_of(source).iter().flat_map(|l| copy_words(l, all)).collect();
     let carry = line_carry(verse, source);
+    let verse_lines = lines_of(verse).len();
     if mine.is_empty() || theirs.is_empty() {
         return CopyMeasure {
             taken: 0,
@@ -1248,6 +1268,7 @@ pub fn copy_of(verse: &str, source: &str, all: bool) -> CopyMeasure {
             per_line: Vec::new(),
             ends: 0,
             carry,
+            verse_lines,
         };
     }
     let in_source = |w: &str| theirs.iter().any(|t| same_word(w, t));
@@ -1321,6 +1342,7 @@ pub fn copy_of(verse: &str, source: &str, all: bool) -> CopyMeasure {
         per_line,
         ends,
         carry,
+        verse_lines,
     }
 }
 

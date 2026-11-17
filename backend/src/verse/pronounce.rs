@@ -10,6 +10,7 @@
 //! always present, so a lookup here answers "not known" only for a word the table lacks.
 
 use std::collections::HashMap;
+use std::collections::HashSet;
 use std::sync::LazyLock;
 
 use unicode_normalization::UnicodeNormalization;
@@ -82,6 +83,27 @@ static TABLE: LazyLock<HashMap<&'static str, Pronunciation>> = LazyLock::new(|| 
 /// Words in the table.
 pub fn table_len() -> usize {
     TABLE.len()
+}
+
+/// Every run of three letters the table's listed words hold, a word's start and end marked `^`
+/// and `$` (`listedTrigrams`): how English spells.
+static TRIGRAMS: LazyLock<HashSet<String>> = LazyLock::new(|| {
+    let mut t = HashSet::new();
+    for (w, p) in TABLE.iter() {
+        if p.spelled || p.unlisted {
+            continue;
+        }
+        let s: Vec<char> = format!("^{w}$").chars().collect();
+        for i in 0..s.len().saturating_sub(2) {
+            t.insert(s[i..i + 3].iter().collect::<String>());
+        }
+    }
+    t
+});
+
+/// Is this run of three letters one the table's listed words hold (`listedTrigrams().has`)?
+pub fn listed_trigram(tri: &str) -> bool {
+    TRIGRAMS.contains(tri)
 }
 
 /// A word as the table spells it: lower case, no accents, straight apostrophes, letters only.

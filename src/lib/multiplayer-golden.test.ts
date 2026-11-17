@@ -39,7 +39,7 @@ import {
   checkPowerWords, checkSignature, deviceInPlay, invocationNames, signatureNeeded, signatureWords,
 } from './verse/devices';
 import {
-  COPY_ANY_ORDER_MIN, COPY_COVERAGE, COPY_COVERAGE_ALONE, COPY_LINE_SHARE, COPY_LINE_SOURCE, COPY_LINE_WORDS, COPY_MIN_TAKEN,
+  COPY_ANY_ORDER_MIN, COPY_COVERAGE, COPY_COVERAGE_ALONE, COPY_LINE_NEAR, COPY_LINE_SHARE, COPY_LINE_SOURCE, COPY_LINE_WORDS, COPY_MIN_TAKEN,
   COPY_THRESHOLD, JUDGE_POOL, OWN_WORDS_PER_LINE, ROUNDS, carriesLines, createDuel, isCopy, matchWinner, resolveRound, rng,
   scoreVerse, type CastCurse, type LentWords, type PlayerMove, type RoundResult, type VerseScore,
 } from './verse/duel';
@@ -134,6 +134,12 @@ const HAND: string[] = [
   // Words no dictionary has: counted and rhymed by spelling.
   'The zorblat sat upon a splat\nA quixing thing, a mimsy tove',
   'Blorptions of the frabjous glimbo\nSlithy in the borogove',
+  // Words no list has, inside a phrase: counted when spelled as English spells, not when mashed.
+  "Shawty, I'm finna flex, my drip is too clean\nYour opps be trippin, lil bruh, you ain't never been seen",
+  'Sirrah, thou varlet, verily thy wit is spent\nThou strumpet muse, thou cuckold, coxcomb, recreant',
+  'The qwrt sdfg zxcv night\nThe hjkl wrtp dfgh light',
+  // Flow: lines that open alike on a little word, and lines that grow.
+  'The night\nThe day is long\nThe end of all of it is near',
   // What the anti-exploit rules are for.
   'Never\nNever\nNever',
   'a\na a\na a a',
@@ -592,7 +598,7 @@ function tablesJson(): string {
     constants: {
       MAX_VERSE_CHARS, MAX_VERSE_LINES, FORM_POINTS, JUDGE_POOL, ROUNDS, CURSE_PENALTY, CURSE_PENALTY_CAP, POWER_WORD_BONUS, POWER_WORDS_NEEDED,
       MIN_DISTINCT_WORDS, COPY_THRESHOLD, SETTLE_PASSES, COPY_COVERAGE, COPY_COVERAGE_ALONE, COPY_MIN_TAKEN, COPY_ANY_ORDER_MIN,
-      COPY_LINE_WORDS, COPY_LINE_SHARE, COPY_LINE_SOURCE, OWN_WORDS_PER_LINE, MIN_KNOWN_SHARE, FULL_KNOWN_SHARE, TELLING_PER_LINE,
+      COPY_LINE_WORDS, COPY_LINE_SHARE, COPY_LINE_SOURCE, COPY_LINE_NEAR, OWN_WORDS_PER_LINE, MIN_KNOWN_SHARE, FULL_KNOWN_SHARE, TELLING_PER_LINE,
       SHORT_TELLING, UNLISTED_SPAN, PHRASE_SPAN,
     },
     forms: FORMS.map((f) => ({
