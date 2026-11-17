@@ -1,11 +1,13 @@
 import { beforeAll, describe, expect, it } from 'vitest';
 import { CARD_CATALOG, getCardById } from '../cards';
-import { cleanVerse, fold, lineLength, syllablesInLine, syllablesInWord, wordsOf, MAX_VERSE_CHARS, MAX_VERSE_LINES } from './text';
+import { cleanVerse, fold, lineLength, syllableCounts, syllablesInLine, syllablesInWord, wordsOf, MAX_VERSE_CHARS, MAX_VERSE_LINES } from './text';
+import { loadPronunciation } from './pronounce';
 import { rhymeChecked, rhymes } from './rhyme';
 import { FORMS, FORM_POINTS, acrosticUnits, formsFor, getForm, scoreForm } from './forms';
 import { CURSES, DEVICES, HOUSE_DEVICE, POTION_CURSE, checkPowerWords, checkSignature, deviceForHouse, houseWhy } from './devices';
 import { ENGINE_EN, en as english } from './english';
 import { PACK_LANGS, getPack, loadAllPacks } from './packs';
+import { loadSound } from './sound';
 import {
   JUDGE_POOL, ROUNDS, createDuel, illegalMove, inkAt, matchWinner, opponentDeck, resolveRound, scoreVerse, starterDeck,
   type JudgeSplit,
@@ -15,20 +17,28 @@ import { expectedLines, opponentMessages, tidyModelVerse, writeOpponentVerse, wr
 
 const en = { lang: 'en' };
 
-// The duel engine is synchronous; packs other than English load on demand.
+// The duel engine is synchronous; packs other than English load on demand, and so does each
+// language's sound data: the CMU table English is measured by, the tables of stress and
+// pronunciation, the Japanese analyser. Every front end loads them before a duel
+// (DuelSession.beginRound, the pages' start), and so do these tests. findings.test.ts covers
+// the English spelling fallback.
 beforeAll(async () => {
   await loadAllPacks();
-});
+  await Promise.all(PACK_LANGS.map((l) => loadSound(l)));
+  expect(await loadPronunciation()).toBe(true);
+}, 120_000);
 const evenJudge: JudgeSplit = { player: JUDGE_POOL / 2, opponent: JUDGE_POOL / 2, criteria: {}, source: 'rules' };
 
 describe('text', () => {
   it('counts English syllables in common verse words', () => {
     const cases: Array<[string, number]> = [
-      ['stage', 1], ['candle', 2], ['fire', 1], ['question', 2], ['banished', 2], ['wanted', 2],
-      ['tomorrow', 3], ['beautiful', 3], ['the', 1], ['queen', 1], ['rhythm', 1],
+      ['stage', 1], ['candle', 2], ['question', 2], ['banished', 2], ['wanted', 2],
+      ['tomorrow', 3], ['beautiful', 3], ['the', 1], ['queen', 1], ['rhythm', 2],
       ['leaves', 1], ['takes', 1], ['roses', 2], ['wishes', 2], ['ages', 2], ['them', 1],
     ];
     for (const [w, n] of cases) expect([w, syllablesInWord(w)]).toEqual([w, n]);
+    // "fire" is said in one syllable or two, and verse uses both.
+    expect(syllableCounts('fire')).toEqual([2, 1]);
   });
   it('counts a haiku line', () => {
     expect(syllablesInLine('An old silent pond')).toBe(5);
@@ -40,7 +50,7 @@ describe('text', () => {
   it('finds rhymes and refuses identical words', () => {
     expect(rhymes('night', 'light')).toBe(true);
     expect(rhymes('stage', 'rage')).toBe(true);
-    expect(rhymes('fire', 'pyre')).toBe(false); // spelled differently: known limit of spelling-based rhyme
+    expect(rhymes('fire', 'pyre')).toBe(true); // spelled differently, sounds the same: the table knows
     expect(rhymes('crown', 'drown')).toBe(true);
     expect(rhymes('night', 'night')).toBe(false);
     expect(rhymes('king', 'moon')).toBe(false);
@@ -50,7 +60,6 @@ describe('text', () => {
     for (const [a, b] of [['hour', 'flower'], ['dare', 'air'], ['crawl', 'fall'], ['noise', 'boys'], ['there', 'care'], ['eyes', 'lies'], ['back', 'attack']]) {
       expect([a, b, rhymes(a, b)]).toEqual([a, b, true]);
     }
-    // "hour"/"four" is allowed: they rhyme to the eye, and the checker errs towards yes.
     for (const [a, b] of [['stage', 'large'], ['noise', 'nose'], ['king', 'crown']]) expect([a, b, rhymes(a, b)]).toEqual([a, b, false]);
     expect(rhymes('corazón', 'canción')).toBe(true);
   });
@@ -306,7 +315,9 @@ describe('judge', () => {
     expect(j.player + j.opponent).toBe(JUDGE_POOL);
     expect(j.source).toBe('rules');
     expect(j.player).toBeGreaterThan(j.opponent);
-    expect(rulesJudge(a, a, 'en', lex).player).toBe(JUDGE_POOL / 2);
+    // The same verse on both sides ties on everything a verse can be measured by; only the comeback,
+    // which belongs to the side that answers, differs. (In a duel such a verse is a copy and forfeits: duel.ts.)
+    expect(rulesJudge(a, a, 'en', lex).criteria).toMatchObject({ wordplay: 'split', allusion: 'split', flow: 'split' });
   });
 });
 
@@ -491,13 +502,18 @@ describe('languages', () => {
       // English draws from exactly the forms it had before the other languages arrived.
       expect([lang, forms.some((f) => f.id === 'epistrophe')]).toEqual([lang, lang !== 'en']);
     }
-    expect(formsFor('zh').map((f) => f.id).sort()).toEqual(['acrostic', 'anaphora', 'crescendo', 'epistrophe', 'haiku', 'jueju']);
-    expect(formsFor('ja').map((f) => f.id).sort()).toEqual(['acrostic', 'anaphora', 'crescendo', 'epistrophe', 'haiku']);
-    expect(formsFor('th').map((f) => f.id).sort()).toEqual(['acrostic', 'anaphora', 'crescendo', 'epistrophe']);
+    // With their sound data loaded, Chinese, Japanese and Thai rhyme like the rest (sound/sound.test.ts
+    // checks that they do not when it is not). Thai has no syllable forms, so no heroic couplet either.
+    const rhyming = ['couplet', 'quatrain-aabb', 'quatrain-abab', 'tercet'];
+    expect(formsFor('zh').map((f) => f.id).sort()).toEqual(['acrostic', 'anaphora', 'crescendo', 'epistrophe', 'haiku', 'heroic-couplet', 'jueju', ...rhyming].sort());
+    expect(formsFor('ja').map((f) => f.id).sort()).toEqual(['acrostic', 'anaphora', 'crescendo', 'epistrophe', 'haiku', 'heroic-couplet', ...rhyming].sort());
+    expect(formsFor('th').map((f) => f.id).sort()).toEqual(['acrostic', 'anaphora', 'crescendo', 'epistrophe', ...rhyming].sort());
     expect(formsFor('vi').some((f) => f.id === 'luc-bat')).toBe(true);
     expect(formsFor('en').map((f) => f.id)).toEqual(['couplet', 'quatrain-aabb', 'quatrain-abab', 'tercet', 'anaphora', 'acrostic', 'crescendo', 'haiku', 'heroic-couplet']);
-    // The English measure of a word's length is unchanged: an inner apostrophe counts.
-    expect(DEVICES.riposte.check("I don't", { opponentVerse: "You don't" }).met).toBe(true);
+    // The English measure of a word's length is unchanged: an inner apostrophe counts ("ne'er" is five).
+    // (Not "don't": the little words of English are no longer worth throwing back.)
+    expect(DEVICES.riposte.check("I ne'er", { opponentVerse: "You ne'er" }).met).toBe(true);
+    expect(DEVICES.riposte.check("I don't", { opponentVerse: "You don't" }).met).toBe(false);
   });
 
   it('every engine message has English, and every message a form, device or curse can produce is in the table', () => {
@@ -592,6 +608,9 @@ describe('languages', () => {
       ar: { yes: [['كتاب', 'باب'], ['قلبي', 'دربي'], ['جميل', 'طويل']], no: [['قمر', 'نور'], ['كتاب', 'قلم']] },
       hi: { yes: [['रात', 'बात'], ['कहानी', 'रानी'], ['दिल', 'मिल']], no: [['रात', 'दिन'], ['कहानी', 'कहना']] },
       ko: { yes: [['사랑', '자랑'], ['밤', '삼'], ['하늘', '오늘']], no: [['사랑', '사람'], ['하늘', '바다']] },
+      zh: { yes: [['光', '乡'], ['来', '开'], ['银行', '太阳']], no: [['光', '来'], ['流行', '太阳']] },
+      ja: { yes: [['花', '刀'], ['こころ', 'ところ'], ['世界', '未来']], no: [['花', '月'], ['こころ', 'そら']] },
+      th: { yes: [['ใจ', 'ไป'], ['กัน', 'วัน'], ['ความรัก', 'หนัก']], no: [['ใจ', 'กัน'], ['วัน', 'นาน']] },
     };
     for (const lang of PACK_LANGS) expect([lang, !!pairs[lang]]).toEqual([lang, rhymeChecked(lang)]);
     for (const [lang, { yes, no }] of Object.entries(pairs)) {
@@ -615,16 +634,18 @@ describe('languages', () => {
       ['es', 'poesía', 4], ['es', 'cielo', 2], ['es', 'que', 1], ['it', 'città', 2], ['pt', 'coração', 3], ['pt', 'dia', 2], ['pt', 'história', 3],
       ['pl', 'niebo', 2], ['pl', 'miłość', 2], ['pl', 'w', 0], ['ru', 'любовь', 2], ['ru', 'в', 0], ['id', 'pantai', 2], ['id', 'laut', 2],
       ['de', 'Leben', 2], ['ko', '사랑', 2], ['vi', 'nghiêng', 1],
-      ['ar', 'قمر', null], ['hi', 'रात', null], ['th', 'รัก', null],
+      ['ar', 'قمر', null], ['hi', 'रात', 1], ['hi', 'कहानी', 3], ['hi', 'लड़का', 2], ['th', 'รัก', null],
     ];
     for (const [lang, word, n] of cases) expect([lang, word, syllablesInWord(word, lang)]).toEqual([lang, word, n]);
     expect(syllablesInLine('La lune se lève', 'fr')).toBe(5);
     expect(syllablesInLine('你诗如落叶', 'zh')).toBe(5);
     expect(syllablesInLine('ふるいけや', 'ja')).toBe(5);
     expect(syllablesInLine('きょうのつき', 'ja')).toBe(5);
-    // A kanji's reading is not in its spelling.
-    expect(syllablesInLine('古池や', 'ja')).toBeNull();
-    expect(scoreForm(getForm('haiku'), '古池や\nかわずとびこむ\nみずのおと', { lang: 'ja' }).checks[1]).toMatchObject({ met: false, detail: '?' });
+    // A kanji's reading is not in its spelling; the analyser reads it.
+    expect(syllablesInLine('古池や', 'ja')).toBe(5);
+    expect(scoreForm(getForm('haiku'), '古池や\nかわずとびこむ\nみずのおと', { lang: 'ja' }).checks[1]).toMatchObject({ met: true, detail: '5/5' });
+    // What has no reading cannot be counted: Latin letters in a Japanese line.
+    expect(scoreForm(getForm('haiku'), 'ABCや\nかわずとびこむ\nみずのおと', { lang: 'ja' }).checks[1]).toMatchObject({ met: false, detail: '?' });
   });
 
   it('measures lines in characters for Chinese and Japanese, in words elsewhere', () => {
@@ -672,9 +693,11 @@ describe('languages', () => {
 
   it('swaps a rhyming device for a structural one where rhyme is not checked', () => {
     expect(deviceForHouse('Montague', 'en').id).toBe('internal-rhyme');
-    expect(deviceForHouse('Montague', 'zh').id).toBe('repetition');
-    expect(deviceForHouse('Legendary', 'th').id).toBe('ring');
-    expect(houseWhy('Montague', 'zh')).toBeNull();
+    // Chinese and Thai rhyme once their sound tables are loaded, so nothing is swapped here;
+    // sound/sound.test.ts takes the table away and sees the swap.
+    expect(deviceForHouse('Montague', 'zh').id).toBe('internal-rhyme');
+    expect(deviceForHouse('Legendary', 'th').id).toBe('monorhyme');
+    expect(houseWhy('Montague', 'zh')?.key).toBe('house.montague.why');
     expect(houseWhy('Montague', 'en')?.key).toBe('house.montague.why');
   });
 });

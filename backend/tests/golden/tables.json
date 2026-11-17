@@ -1,0 +1,4824 @@
+{
+ "constants": {
+  "MAX_VERSE_CHARS": 600,
+  "MAX_VERSE_LINES": 8,
+  "FORM_POINTS": 20,
+  "JUDGE_POOL": 24,
+  "ROUNDS": 3,
+  "CURSE_PENALTY": 4,
+  "CURSE_PENALTY_CAP": 12,
+  "POWER_WORD_BONUS": 6,
+  "POWER_WORDS_NEEDED": 2,
+  "MIN_DISTINCT_WORDS": 3,
+  "COPY_THRESHOLD": 0.7,
+  "SETTLE_PASSES": 8,
+  "COPY_COVERAGE": 0.85,
+  "COPY_COVERAGE_ALONE": 0.9,
+  "COPY_MIN_TAKEN": 4,
+  "COPY_ANY_ORDER_MIN": 4,
+  "COPY_LINE_WORDS": 3,
+  "COPY_LINE_SHARE": 0.6,
+  "COPY_LINE_SOURCE": 7,
+  "OWN_WORDS_PER_LINE": 1.5,
+  "MIN_KNOWN_SHARE": 0.6,
+  "FULL_KNOWN_SHARE": 0.7,
+  "TELLING_PER_LINE": 0.5,
+  "SHORT_TELLING": 3,
+  "UNLISTED_SPAN": 4,
+  "PHRASE_SPAN": 4
+ },
+ "forms": [
+  {
+   "id": "couplet",
+   "needsSyllables": false,
+   "requirements": [
+    {
+     "id": "lines",
+     "points": 6
+    },
+    {
+     "id": "rhyme-1-2",
+     "points": 14
+    }
+   ]
+  },
+  {
+   "id": "quatrain-aabb",
+   "needsSyllables": false,
+   "requirements": [
+    {
+     "id": "lines",
+     "points": 6
+    },
+    {
+     "id": "rhyme-1-2",
+     "points": 7
+    },
+    {
+     "id": "rhyme-3-4",
+     "points": 7
+    }
+   ]
+  },
+  {
+   "id": "quatrain-abab",
+   "needsSyllables": false,
+   "requirements": [
+    {
+     "id": "lines",
+     "points": 6
+    },
+    {
+     "id": "rhyme-1-3",
+     "points": 7
+    },
+    {
+     "id": "rhyme-2-4",
+     "points": 7
+    }
+   ]
+  },
+  {
+   "id": "tercet",
+   "needsSyllables": false,
+   "requirements": [
+    {
+     "id": "lines",
+     "points": 6
+    },
+    {
+     "id": "rhyme-1-3",
+     "points": 14
+    }
+   ]
+  },
+  {
+   "id": "anaphora",
+   "needsSyllables": false,
+   "requirements": [
+    {
+     "id": "lines",
+     "points": 6
+    },
+    {
+     "id": "same-opening",
+     "points": 14
+    }
+   ]
+  },
+  {
+   "id": "acrostic",
+   "needsSyllables": false,
+   "requirements": [
+    {
+     "id": "lines",
+     "points": 6
+    },
+    {
+     "id": "spells",
+     "points": 14
+    }
+   ]
+  },
+  {
+   "id": "crescendo",
+   "needsSyllables": false,
+   "requirements": [
+    {
+     "id": "lines",
+     "points": 6
+    },
+    {
+     "id": "growing",
+     "points": 14
+    }
+   ]
+  },
+  {
+   "id": "haiku",
+   "needsSyllables": true,
+   "requirements": [
+    {
+     "id": "lines",
+     "points": 5
+    },
+    {
+     "id": "syllables-1",
+     "points": 5
+    },
+    {
+     "id": "syllables-2",
+     "points": 5
+    },
+    {
+     "id": "syllables-3",
+     "points": 5
+    }
+   ]
+  },
+  {
+   "id": "heroic-couplet",
+   "needsSyllables": true,
+   "requirements": [
+    {
+     "id": "lines",
+     "points": 4
+    },
+    {
+     "id": "rhyme-1-2",
+     "points": 8
+    },
+    {
+     "id": "syllables-1",
+     "points": 4
+    },
+    {
+     "id": "syllables-2",
+     "points": 4
+    }
+   ]
+  }
+ ],
+ "formsForEnglish": [
+  "couplet",
+  "quatrain-aabb",
+  "quatrain-abab",
+  "tercet",
+  "anaphora",
+  "acrostic",
+  "crescendo",
+  "haiku",
+  "heroic-couplet"
+ ],
+ "rules": {
+  "unit": "word",
+  "content": 4,
+  "riposte": 5,
+  "grand": 9,
+  "shortWord": 6,
+  "brevity": 6,
+  "shortLine": 5
+ },
+ "stopWords": [
+  "a",
+  "an",
+  "the",
+  "and",
+  "or",
+  "but",
+  "nor",
+  "so",
+  "yet",
+  "for",
+  "of",
+  "to",
+  "in",
+  "on",
+  "at",
+  "by",
+  "with",
+  "from",
+  "into",
+  "upon",
+  "onto",
+  "over",
+  "under",
+  "up",
+  "down",
+  "out",
+  "off",
+  "as",
+  "is",
+  "am",
+  "are",
+  "was",
+  "were",
+  "be",
+  "been",
+  "being",
+  "have",
+  "has",
+  "had",
+  "having",
+  "do",
+  "does",
+  "did",
+  "done",
+  "will",
+  "would",
+  "shall",
+  "should",
+  "can",
+  "could",
+  "may",
+  "might",
+  "must",
+  "not",
+  "no",
+  "none",
+  "this",
+  "that",
+  "these",
+  "those",
+  "there",
+  "here",
+  "where",
+  "when",
+  "what",
+  "which",
+  "who",
+  "whom",
+  "whose",
+  "why",
+  "how",
+  "i",
+  "me",
+  "my",
+  "mine",
+  "we",
+  "us",
+  "our",
+  "ours",
+  "you",
+  "your",
+  "yours",
+  "he",
+  "him",
+  "his",
+  "she",
+  "her",
+  "hers",
+  "it",
+  "its",
+  "they",
+  "them",
+  "their",
+  "theirs",
+  "thou",
+  "thee",
+  "thy",
+  "thine",
+  "ye",
+  "all",
+  "any",
+  "both",
+  "each",
+  "every",
+  "few",
+  "more",
+  "most",
+  "much",
+  "many",
+  "some",
+  "such",
+  "only",
+  "own",
+  "same",
+  "than",
+  "then",
+  "too",
+  "very",
+  "just",
+  "also",
+  "even",
+  "ever",
+  "again",
+  "once",
+  "if",
+  "because",
+  "while",
+  "though",
+  "although",
+  "about",
+  "above",
+  "after",
+  "before",
+  "against",
+  "between",
+  "through",
+  "during",
+  "until",
+  "unless",
+  "cannot",
+  "hath",
+  "doth",
+  "art",
+  "dost",
+  "hast",
+  "wilt",
+  "shalt",
+  "lord",
+  "what's",
+  "that's",
+  "there's",
+  "it's",
+  "i'm",
+  "i'll",
+  "don't",
+  "can't",
+  "won't",
+  "tis",
+  "twas",
+  "come",
+  "comes",
+  "came",
+  "go",
+  "goes",
+  "went",
+  "get",
+  "gets",
+  "got",
+  "make",
+  "makes",
+  "made",
+  "take",
+  "takes",
+  "took",
+  "like",
+  "look",
+  "looks",
+  "thing",
+  "things"
+ ],
+ "pronunciationWords": 124986,
+ "deviceInPlay": [
+  {
+   "house": "Danish Court",
+   "answering": true,
+   "device": "question"
+  },
+  {
+   "house": "Danish Court",
+   "answering": false,
+   "device": "question"
+  },
+  {
+   "house": "Capulet",
+   "answering": true,
+   "device": "exclaim"
+  },
+  {
+   "house": "Capulet",
+   "answering": false,
+   "device": "exclaim"
+  },
+  {
+   "house": "Montague",
+   "answering": true,
+   "device": "internal-rhyme"
+  },
+  {
+   "house": "Montague",
+   "answering": false,
+   "device": "internal-rhyme"
+  },
+  {
+   "house": "Forest of Arden",
+   "answering": true,
+   "device": "alliteration"
+  },
+  {
+   "house": "Forest of Arden",
+   "answering": false,
+   "device": "alliteration"
+  },
+  {
+   "house": "Verona Court",
+   "answering": true,
+   "device": "riposte"
+  },
+  {
+   "house": "Verona Court",
+   "answering": false,
+   "device": "exclaim"
+  },
+  {
+   "house": "The Tempest",
+   "answering": true,
+   "device": "swell"
+  },
+  {
+   "house": "The Tempest",
+   "answering": false,
+   "device": "swell"
+  },
+  {
+   "house": "Scottish Court",
+   "answering": true,
+   "device": "repetition"
+  },
+  {
+   "house": "Scottish Court",
+   "answering": false,
+   "device": "repetition"
+  },
+  {
+   "house": "Illyria",
+   "answering": true,
+   "device": "brevity"
+  },
+  {
+   "house": "Illyria",
+   "answering": false,
+   "device": "brevity"
+  },
+  {
+   "house": "Rome",
+   "answering": true,
+   "device": "invocation"
+  },
+  {
+   "house": "Rome",
+   "answering": false,
+   "device": "invocation"
+  },
+  {
+   "house": "Legendary",
+   "answering": true,
+   "device": "monorhyme"
+  },
+  {
+   "house": "Legendary",
+   "answering": false,
+   "device": "monorhyme"
+  },
+  {
+   "house": "Lake District",
+   "answering": true,
+   "device": "balance"
+  },
+  {
+   "house": "Lake District",
+   "answering": false,
+   "device": "balance"
+  },
+  {
+   "house": "Gothic Circle",
+   "answering": true,
+   "device": "ring"
+  },
+  {
+   "house": "Gothic Circle",
+   "answering": false,
+   "device": "ring"
+  },
+  {
+   "house": "Olympus",
+   "answering": true,
+   "device": "grandeur"
+  },
+  {
+   "house": "Olympus",
+   "answering": false,
+   "device": "grandeur"
+  },
+  {
+   "house": "Underworld",
+   "answering": true,
+   "device": "riposte"
+  },
+  {
+   "house": "Underworld",
+   "answering": false,
+   "device": "exclaim"
+  },
+  {
+   "house": "No Such House",
+   "answering": true,
+   "device": "question"
+  },
+  {
+   "house": "No Such House",
+   "answering": false,
+   "device": "question"
+  }
+ ],
+ "signatures": [
+  {
+   "cardId": "SM-001",
+   "words": [
+    "compare",
+    "summer"
+   ],
+   "needed": 1
+  },
+  {
+   "cardId": "MO-001",
+   "words": [
+    "soft",
+    "light",
+    "yonder",
+    "window",
+    "breaks"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "CA-001",
+   "words": [
+    "name",
+    "call",
+    "rose"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "DC-001",
+   "words": [
+    "question"
+   ],
+   "needed": 1
+  },
+  {
+   "cardId": "DC-002",
+   "words": [
+    "rosemary",
+    "remembrance"
+   ],
+   "needed": 1
+  },
+  {
+   "cardId": "MO-002",
+   "words": [
+    "plague",
+    "houses"
+   ],
+   "needed": 1
+  },
+  {
+   "cardId": "FA-001",
+   "words": [
+    "fools",
+    "mortals"
+   ],
+   "needed": 1
+  },
+  {
+   "cardId": "FA-002",
+   "words": [
+    "flowery"
+   ],
+   "needed": 1
+  },
+  {
+   "cardId": "RL-001",
+   "words": [
+    "alas",
+    "poor",
+    "yorick",
+    "knew",
+    "horatio"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "RL-002",
+   "words": [
+    "charms",
+    "o'erthrown"
+   ],
+   "needed": 1
+  },
+  {
+   "cardId": "PT-001",
+   "words": [
+    "course",
+    "true",
+    "love",
+    "never",
+    "smooth"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "PT-002",
+   "words": [
+    "double",
+    "toil",
+    "trouble"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "VC-001",
+   "words": [
+    "disturb",
+    "streets",
+    "lives",
+    "forfeit",
+    "peace"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "VC-002",
+   "words": [
+    "violent",
+    "delights",
+    "ends"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "VC-003",
+   "words": [
+    "drudge",
+    "toil",
+    "delight"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "TP-001",
+   "words": [
+    "stuff",
+    "dreams"
+   ],
+   "needed": 1
+  },
+  {
+   "cardId": "TP-002",
+   "words": [
+    "hail",
+    "great",
+    "master",
+    "grave"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "TP-003",
+   "words": [
+    "island",
+    "sycorax",
+    "mother"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "MO-003",
+   "words": [
+    "keep",
+    "peace",
+    "sword"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "CA-002",
+   "words": [
+    "drawn",
+    "talk",
+    "peace",
+    "hate",
+    "word"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "DC-003",
+   "words": [
+    "words",
+    "thoughts",
+    "remain",
+    "below"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "FA-003",
+   "words": [
+    "moonlight",
+    "proud",
+    "titania"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "RL-003",
+   "words": [
+    "dagger"
+   ],
+   "needed": 1
+  },
+  {
+   "cardId": "PT-003",
+   "words": [
+    "girdle",
+    "round",
+    "earth",
+    "forty",
+    "minutes"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "SC-001",
+   "words": [
+    "dare",
+    "become",
+    "dares"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "SC-002",
+   "words": [
+    "spirits",
+    "tend",
+    "mortal",
+    "thoughts",
+    "unsex"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "SC-003",
+   "words": [
+    "kings"
+   ],
+   "needed": 1
+  },
+  {
+   "cardId": "IL-001",
+   "words": [
+    "not what"
+   ],
+   "needed": 1
+  },
+  {
+   "cardId": "IL-002",
+   "words": [
+    "born",
+    "great",
+    "achieve",
+    "greatness",
+    "thrust"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "IL-003",
+   "words": [
+    "love",
+    "sought",
+    "good",
+    "given",
+    "unsought",
+    "better"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "RM-001",
+   "words": [
+    "loved",
+    "caesar",
+    "less",
+    "rome"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "RM-002",
+   "words": [
+    "fault",
+    "dear",
+    "brutus",
+    "stars",
+    "ourselves"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "RM-003",
+   "words": [
+    "friends",
+    "romans",
+    "countrymen",
+    "lend",
+    "ears"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "MO-004",
+   "words": [
+    "morning",
+    "seen",
+    "tears",
+    "augmenting",
+    "fresh"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "CA-003",
+   "words": [
+    "marry",
+    "theme",
+    "talk"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "DC-004",
+   "words": [
+    "cracks",
+    "noble",
+    "heart",
+    "good",
+    "night",
+    "sweet",
+    "prince"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "FA-004",
+   "words": [
+    "rare",
+    "vision",
+    "dream",
+    "past"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "VC-004",
+   "words": [
+    "times",
+    "afford",
+    "time"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "TP-004",
+   "words": [
+    "brave",
+    "world",
+    "people"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "RL-004",
+   "words": [
+    "bounty",
+    "boundless",
+    "love",
+    "deep"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "RL-005",
+   "words": [
+    "glisters",
+    "gold"
+   ],
+   "needed": 1
+  },
+  {
+   "cardId": "RL-006",
+   "words": [
+    "uneasy",
+    "lies",
+    "head",
+    "wears",
+    "crown"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "RL-007",
+   "words": [
+    "drown",
+    "book"
+   ],
+   "needed": 1
+  },
+  {
+   "cardId": "RL-008",
+   "words": [
+    "dear",
+    "father",
+    "business"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "RL-009",
+   "words": [
+    "bless",
+    "bottom",
+    "translated"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "PT-004",
+   "words": [
+    "poppy",
+    "mandragora",
+    "drowsy",
+    "syrups",
+    "world"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "PT-005",
+   "words": [
+    "fetch",
+    "flower",
+    "herb",
+    "showed"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "PT-006",
+   "words": [
+    "secure",
+    "hour",
+    "uncle",
+    "stole",
+    "juice",
+    "cursed",
+    "hebona",
+    "vial"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "PT-007",
+   "words": [
+    "cauldron",
+    "boil",
+    "bake",
+    "newt",
+    "frog"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "PT-008",
+   "words": [
+    "full",
+    "fathom",
+    "five",
+    "father",
+    "lies",
+    "bones",
+    "coral"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "PT-009",
+   "words": [
+    "liquid",
+    "drink",
+    "strength",
+    "twenty",
+    "dispatch",
+    "straight"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "LD-001",
+   "words": [
+    "wandered",
+    "lonely",
+    "cloud",
+    "floats",
+    "high",
+    "vales",
+    "hills"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "LD-002",
+   "words": [
+    "water",
+    "drop",
+    "drink"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "LD-003",
+   "words": [
+    "beauty",
+    "loveliness",
+    "increases"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "GC-001",
+   "words": [
+    "walks",
+    "beauty",
+    "night",
+    "cloudless",
+    "climes",
+    "starry",
+    "skies"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "GC-002",
+   "words": [
+    "beware",
+    "fearless",
+    "therefore",
+    "powerful"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "GC-003",
+   "words": [
+    "midnight",
+    "dreary",
+    "pondered",
+    "weak",
+    "weary"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "GC-004",
+   "words": [
+    "world",
+    "grain",
+    "sand",
+    "heaven",
+    "wild",
+    "flower"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "GC-005",
+   "words": [
+    "winter",
+    "spring",
+    "behind"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "LD-004",
+   "words": [
+    "love",
+    "count",
+    "ways"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "LD-005",
+   "words": [
+    "remember",
+    "gone",
+    "away",
+    "silent",
+    "land"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "OL-001",
+   "words": [
+    "cloud",
+    "gatherer",
+    "wide",
+    "heavens"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "OL-002",
+   "words": [
+    "wisdom",
+    "flight",
+    "dusk"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "OL-003",
+   "words": [
+    "song",
+    "healing",
+    "radiant"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "OL-004",
+   "words": [
+    "gods",
+    "resist",
+    "power",
+    "love"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "OL-005",
+   "words": [
+    "swift",
+    "thought",
+    "carry",
+    "words",
+    "gods",
+    "mortal",
+    "ears"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "UW-001",
+   "words": [
+    "souls",
+    "patient"
+   ],
+   "needed": 1
+  },
+  {
+   "cardId": "UW-002",
+   "words": [
+    "seeds",
+    "bound",
+    "myself",
+    "worlds",
+    "forever"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "OL-006",
+   "words": [
+    "tell",
+    "muse",
+    "ways",
+    "wandered"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "UW-003",
+   "words": [
+    "dare",
+    "gaze",
+    "last"
+   ],
+   "needed": 2
+  },
+  {
+   "cardId": "OL-007",
+   "words": [
+    "rather",
+    "live",
+    "short",
+    "life",
+    "glory",
+    "long",
+    "forgotten"
+   ],
+   "needed": 2
+  }
+ ],
+ "devices": [
+  "question",
+  "exclaim",
+  "alliteration",
+  "repetition",
+  "internal-rhyme",
+  "riposte",
+  "brevity",
+  "swell",
+  "balance",
+  "ring",
+  "invocation",
+  "grandeur",
+  "monorhyme"
+ ],
+ "houseDevice": {
+  "Danish Court": "question",
+  "Capulet": "exclaim",
+  "Montague": "internal-rhyme",
+  "Forest of Arden": "alliteration",
+  "Verona Court": "riposte",
+  "The Tempest": "swell",
+  "Scottish Court": "repetition",
+  "Illyria": "brevity",
+  "Rome": "invocation",
+  "Legendary": "monorhyme",
+  "Lake District": "balance",
+  "Gothic Circle": "ring",
+  "Olympus": "grandeur",
+  "Underworld": "riposte"
+ },
+ "curses": [
+  "forbidden-letter",
+  "short-words",
+  "no-repeats",
+  "short-lines"
+ ],
+ "potionCurse": {
+  "PT-001": "no-repeats",
+  "PT-002": "forbidden-letter",
+  "PT-003": "short-lines",
+  "PT-004": "short-words",
+  "PT-005": "no-repeats",
+  "PT-006": "forbidden-letter",
+  "PT-007": "short-lines",
+  "PT-008": "short-words",
+  "PT-009": "forbidden-letter"
+ },
+ "relicWords": {
+  "RL-001": [
+   "skull",
+   "jest",
+   "grave",
+   "laugh",
+   "dust"
+  ],
+  "RL-002": [
+   "storm",
+   "spell",
+   "staff",
+   "island",
+   "drown"
+  ],
+  "RL-003": [
+   "dagger",
+   "blood",
+   "sleep",
+   "vision",
+   "hand"
+  ],
+  "RL-004": [
+   "ring",
+   "vow",
+   "night",
+   "banished",
+   "kiss"
+  ],
+  "RL-005": [
+   "gold",
+   "choice",
+   "mercy",
+   "lead",
+   "casket"
+  ],
+  "RL-006": [
+   "crown",
+   "throne",
+   "ambition",
+   "witch",
+   "king"
+  ],
+  "RL-007": [
+   "book",
+   "tempest",
+   "magic",
+   "page",
+   "drown"
+  ],
+  "RL-008": [
+   "tears",
+   "truth",
+   "daughter",
+   "nothing",
+   "heart"
+  ],
+  "RL-009": [
+   "mask",
+   "dream",
+   "fool",
+   "play",
+   "moon"
+  ]
+ },
+ "acrosticWords": [
+  "bard",
+  "moon",
+  "king",
+  "rose",
+  "fate",
+  "wit",
+  "play",
+  "star"
+ ],
+ "forbiddenLetters": [
+  "s",
+  "t",
+  "r",
+  "n",
+  "o",
+  "i"
+ ],
+ "criteria": [
+  "wordplay",
+  "allusion",
+  "flow",
+  "wit"
+ ],
+ "lexicon": [
+  "achieve",
+  "achilles",
+  "afford",
+  "alas",
+  "antony",
+  "aphrodite",
+  "apollo",
+  "ariel",
+  "athena",
+  "augmenting",
+  "away",
+  "bake",
+  "banquo",
+  "beauty",
+  "become",
+  "behind",
+  "below",
+  "benvolio",
+  "better",
+  "beware",
+  "blake",
+  "bless",
+  "boil",
+  "bones",
+  "book",
+  "born",
+  "bottom",
+  "bound",
+  "boundless",
+  "bounty",
+  "brave",
+  "breaks",
+  "browning",
+  "brutus",
+  "business",
+  "byron",
+  "caesar",
+  "caliban",
+  "call",
+  "capulet",
+  "carry",
+  "cassius",
+  "cauldron",
+  "charms",
+  "claudius",
+  "climes",
+  "cloud",
+  "cloudless",
+  "coleridge",
+  "compare",
+  "coral",
+  "count",
+  "countrymen",
+  "course",
+  "cracks",
+  "crown",
+  "cursed",
+  "dagger",
+  "dare",
+  "dares",
+  "dear",
+  "deep",
+  "delight",
+  "delights",
+  "dispatch",
+  "disturb",
+  "double",
+  "drawn",
+  "dream",
+  "dreams",
+  "dreary",
+  "drink",
+  "drop",
+  "drown",
+  "drowsy",
+  "drudge",
+  "dusk",
+  "ears",
+  "earth",
+  "ends",
+  "escalus",
+  "father",
+  "fathom",
+  "fault",
+  "fearless",
+  "fetch",
+  "five",
+  "flight",
+  "floats",
+  "flower",
+  "flowery",
+  "fools",
+  "forever",
+  "forfeit",
+  "forgotten",
+  "forty",
+  "fresh",
+  "friends",
+  "frog",
+  "full",
+  "gatherer",
+  "gaze",
+  "girdle",
+  "given",
+  "glisters",
+  "glory",
+  "gods",
+  "gold",
+  "gone",
+  "good",
+  "grain",
+  "grave",
+  "great",
+  "greatness",
+  "hades",
+  "hail",
+  "hamlet",
+  "hate",
+  "head",
+  "healing",
+  "heart",
+  "heaven",
+  "heavens",
+  "hebona",
+  "herb",
+  "hermes",
+  "high",
+  "hills",
+  "horatio",
+  "hour",
+  "houses",
+  "increases",
+  "island",
+  "juice",
+  "juliet",
+  "keats",
+  "keep",
+  "kings",
+  "knew",
+  "land",
+  "last",
+  "lawrence",
+  "lend",
+  "less",
+  "lies",
+  "life",
+  "light",
+  "liquid",
+  "live",
+  "lives",
+  "lonely",
+  "long",
+  "love",
+  "loved",
+  "loveliness",
+  "macbeth",
+  "malvolio",
+  "mandragora",
+  "marry",
+  "master",
+  "medusa",
+  "mercutio",
+  "midnight",
+  "minutes",
+  "miranda",
+  "montague",
+  "moonlight",
+  "morning",
+  "mortal",
+  "mortals",
+  "mother",
+  "muse",
+  "myself",
+  "name",
+  "never",
+  "newt",
+  "night",
+  "noble",
+  "o'erthrown",
+  "oberon",
+  "odysseus",
+  "olivia",
+  "ophelia",
+  "ourselves",
+  "paris",
+  "past",
+  "patient",
+  "peace",
+  "people",
+  "persephone",
+  "plague",
+  "pondered",
+  "poor",
+  "poppy",
+  "power",
+  "powerful",
+  "prince",
+  "prospero",
+  "proud",
+  "puck",
+  "question",
+  "radiant",
+  "rare",
+  "rather",
+  "remain",
+  "remember",
+  "remembrance",
+  "resist",
+  "romans",
+  "rome",
+  "romeo",
+  "rose",
+  "rosemary",
+  "rossetti",
+  "round",
+  "sand",
+  "secure",
+  "seeds",
+  "seen",
+  "shelley",
+  "short",
+  "showed",
+  "silent",
+  "skies",
+  "smooth",
+  "soft",
+  "song",
+  "sought",
+  "souls",
+  "spirits",
+  "spring",
+  "starry",
+  "stars",
+  "stole",
+  "straight",
+  "streets",
+  "strength",
+  "stuff",
+  "summer",
+  "sweet",
+  "swift",
+  "sword",
+  "sycorax",
+  "syrups",
+  "talk",
+  "tears",
+  "tell",
+  "tend",
+  "theme",
+  "therefore",
+  "thought",
+  "thoughts",
+  "thrust",
+  "time",
+  "times",
+  "titania",
+  "toil",
+  "translated",
+  "trouble",
+  "true",
+  "twenty",
+  "tybalt",
+  "uncle",
+  "uneasy",
+  "unsex",
+  "unsought",
+  "vales",
+  "vial",
+  "viola",
+  "violent",
+  "vision",
+  "walks",
+  "wandered",
+  "water",
+  "ways",
+  "weak",
+  "wears",
+  "weary",
+  "wide",
+  "wild",
+  "window",
+  "winter",
+  "wisdom",
+  "word",
+  "words",
+  "wordsworth",
+  "world",
+  "worlds",
+  "yonder",
+  "yorick",
+  "zeus"
+ ],
+ "characterNames": [
+  "Sonnet Man",
+  "Romeo",
+  "Juliet",
+  "Hamlet",
+  "Ophelia",
+  "Mercutio",
+  "Puck",
+  "Titania",
+  "Escalus",
+  "Prince Escalus",
+  "Lawrence",
+  "Friar Lawrence",
+  "The Nurse",
+  "Prospero",
+  "Ariel",
+  "Caliban",
+  "Benvolio",
+  "Tybalt",
+  "Claudius",
+  "King Claudius",
+  "Oberon",
+  "Macbeth",
+  "Lady Macbeth",
+  "Banquo",
+  "Viola",
+  "Malvolio",
+  "Olivia",
+  "Brutus",
+  "Cassius",
+  "Antony",
+  "Mark Antony",
+  "Montague",
+  "Lord Montague",
+  "Capulet",
+  "Lady Capulet",
+  "Horatio",
+  "Nick Bottom",
+  "Bully Bottom",
+  "Bottom the weaver",
+  "Paris",
+  "Miranda",
+  "Wordsworth",
+  "William Wordsworth",
+  "Coleridge",
+  "Samuel Coleridge",
+  "Keats",
+  "John Keats",
+  "Byron",
+  "Lord Byron",
+  "Shelley",
+  "Mary Shelley",
+  "Poe",
+  "Edgar Allan Poe",
+  "Blake",
+  "William Blake",
+  "Percy Bysshe Shelley",
+  "Browning",
+  "Elizabeth Barrett Browning",
+  "Rossetti",
+  "Christina Rossetti",
+  "Zeus",
+  "Athena",
+  "Apollo",
+  "Aphrodite",
+  "Hermes",
+  "Hades",
+  "Persephone",
+  "Odysseus",
+  "Medusa",
+  "Achilles"
+ ],
+ "onlineStarter": [
+  "SM-001",
+  "MO-001",
+  "CA-001"
+ ],
+ "confusables": [
+  [
+   "I",
+   "l",
+   "Latin"
+  ],
+  [
+   "Ð",
+   "D",
+   "Latin"
+  ],
+  [
+   "Ø",
+   "O",
+   "Latin"
+  ],
+  [
+   "ø",
+   "o",
+   "Latin"
+  ],
+  [
+   "þ",
+   "p",
+   "Latin"
+  ],
+  [
+   "Đ",
+   "D",
+   "Latin"
+  ],
+  [
+   "đ",
+   "d",
+   "Latin"
+  ],
+  [
+   "Ħ",
+   "H",
+   "Latin"
+  ],
+  [
+   "ħ",
+   "h",
+   "Latin"
+  ],
+  [
+   "ı",
+   "i",
+   "Latin"
+  ],
+  [
+   "Ł",
+   "L",
+   "Latin"
+  ],
+  [
+   "ł",
+   "l",
+   "Latin"
+  ],
+  [
+   "ŋ",
+   "n",
+   "Latin"
+  ],
+  [
+   "Ŧ",
+   "T",
+   "Latin"
+  ],
+  [
+   "ŧ",
+   "t",
+   "Latin"
+  ],
+  [
+   "ƀ",
+   "b",
+   "Latin"
+  ],
+  [
+   "Ƃ",
+   "b",
+   "Latin"
+  ],
+  [
+   "ƃ",
+   "b",
+   "Latin"
+  ],
+  [
+   "Ƅ",
+   "b",
+   "Latin"
+  ],
+  [
+   "Ɖ",
+   "D",
+   "Latin"
+  ],
+  [
+   "Ƌ",
+   "d",
+   "Latin"
+  ],
+  [
+   "ƌ",
+   "d",
+   "Latin"
+  ],
+  [
+   "ƍ",
+   "g",
+   "Latin"
+  ],
+  [
+   "Ƒ",
+   "F",
+   "Latin"
+  ],
+  [
+   "ƒ",
+   "f",
+   "Latin"
+  ],
+  [
+   "Ɩ",
+   "l",
+   "Latin"
+  ],
+  [
+   "Ɨ",
+   "l",
+   "Latin"
+  ],
+  [
+   "ƙ",
+   "k",
+   "Latin"
+  ],
+  [
+   "ƚ",
+   "l",
+   "Latin"
+  ],
+  [
+   "Ɲ",
+   "N",
+   "Latin"
+  ],
+  [
+   "ƞ",
+   "n",
+   "Latin"
+  ],
+  [
+   "Ɵ",
+   "O",
+   "Latin"
+  ],
+  [
+   "ƥ",
+   "p",
+   "Latin"
+  ],
+  [
+   "Ʀ",
+   "R",
+   "Latin"
+  ],
+  [
+   "ƫ",
+   "t",
+   "Latin"
+  ],
+  [
+   "ƭ",
+   "t",
+   "Latin"
+  ],
+  [
+   "Ʈ",
+   "T",
+   "Latin"
+  ],
+  [
+   "ƴ",
+   "y",
+   "Latin"
+  ],
+  [
+   "Ƶ",
+   "Z",
+   "Latin"
+  ],
+  [
+   "ƶ",
+   "z",
+   "Latin"
+  ],
+  [
+   "ƽ",
+   "s",
+   "Latin"
+  ],
+  [
+   "ƿ",
+   "p",
+   "Latin"
+  ],
+  [
+   "ǀ",
+   "l",
+   "Latin"
+  ],
+  [
+   "Ǥ",
+   "G",
+   "Latin"
+  ],
+  [
+   "ǥ",
+   "g",
+   "Latin"
+  ],
+  [
+   "Ȥ",
+   "Z",
+   "Latin"
+  ],
+  [
+   "ȥ",
+   "z",
+   "Latin"
+  ],
+  [
+   "ȷ",
+   "j",
+   "Latin"
+  ],
+  [
+   "ȼ",
+   "c",
+   "Latin"
+  ],
+  [
+   "Ⱦ",
+   "T",
+   "Latin"
+  ],
+  [
+   "Ʉ",
+   "U",
+   "Latin"
+  ],
+  [
+   "Ɇ",
+   "E",
+   "Latin"
+  ],
+  [
+   "ɇ",
+   "e",
+   "Latin"
+  ],
+  [
+   "Ɉ",
+   "J",
+   "Latin"
+  ],
+  [
+   "ɉ",
+   "j",
+   "Latin"
+  ],
+  [
+   "Ɍ",
+   "R",
+   "Latin"
+  ],
+  [
+   "ɍ",
+   "r",
+   "Latin"
+  ],
+  [
+   "Ɏ",
+   "Y",
+   "Latin"
+  ],
+  [
+   "ɏ",
+   "y",
+   "Latin"
+  ],
+  [
+   "ɑ",
+   "a",
+   "Latin"
+  ],
+  [
+   "ɓ",
+   "b",
+   "Latin"
+  ],
+  [
+   "ɖ",
+   "d",
+   "Latin"
+  ],
+  [
+   "ɗ",
+   "d",
+   "Latin"
+  ],
+  [
+   "ɟ",
+   "j",
+   "Latin"
+  ],
+  [
+   "ɠ",
+   "g",
+   "Latin"
+  ],
+  [
+   "ɡ",
+   "g",
+   "Latin"
+  ],
+  [
+   "ɣ",
+   "y",
+   "Latin"
+  ],
+  [
+   "ɦ",
+   "h",
+   "Latin"
+  ],
+  [
+   "ɨ",
+   "i",
+   "Latin"
+  ],
+  [
+   "ɩ",
+   "i",
+   "Latin"
+  ],
+  [
+   "ɪ",
+   "i",
+   "Latin"
+  ],
+  [
+   "ɫ",
+   "l",
+   "Latin"
+  ],
+  [
+   "ɭ",
+   "l",
+   "Latin"
+  ],
+  [
+   "ɯ",
+   "w",
+   "Latin"
+  ],
+  [
+   "ɲ",
+   "n",
+   "Latin"
+  ],
+  [
+   "ɳ",
+   "n",
+   "Latin"
+  ],
+  [
+   "ɵ",
+   "o",
+   "Latin"
+  ],
+  [
+   "ɼ",
+   "r",
+   "Latin"
+  ],
+  [
+   "ɽ",
+   "r",
+   "Latin"
+  ],
+  [
+   "ʂ",
+   "s",
+   "Latin"
+  ],
+  [
+   "ʄ",
+   "f",
+   "Latin"
+  ],
+  [
+   "ʋ",
+   "u",
+   "Latin"
+  ],
+  [
+   "ʏ",
+   "y",
+   "Latin"
+  ],
+  [
+   "ʐ",
+   "z",
+   "Latin"
+  ],
+  [
+   "ʠ",
+   "q",
+   "Latin"
+  ],
+  [
+   "Ϳ",
+   "J",
+   "Greek"
+  ],
+  [
+   "Α",
+   "A",
+   "Greek"
+  ],
+  [
+   "Β",
+   "B",
+   "Greek"
+  ],
+  [
+   "Ε",
+   "E",
+   "Greek"
+  ],
+  [
+   "Ζ",
+   "Z",
+   "Greek"
+  ],
+  [
+   "Η",
+   "H",
+   "Greek"
+  ],
+  [
+   "Θ",
+   "O",
+   "Greek"
+  ],
+  [
+   "Ι",
+   "l",
+   "Greek"
+  ],
+  [
+   "Κ",
+   "K",
+   "Greek"
+  ],
+  [
+   "Μ",
+   "M",
+   "Greek"
+  ],
+  [
+   "Ν",
+   "N",
+   "Greek"
+  ],
+  [
+   "Ο",
+   "O",
+   "Greek"
+  ],
+  [
+   "Ρ",
+   "P",
+   "Greek"
+  ],
+  [
+   "Τ",
+   "T",
+   "Greek"
+  ],
+  [
+   "Υ",
+   "Y",
+   "Greek"
+  ],
+  [
+   "Χ",
+   "X",
+   "Greek"
+  ],
+  [
+   "α",
+   "a",
+   "Greek"
+  ],
+  [
+   "γ",
+   "y",
+   "Greek"
+  ],
+  [
+   "η",
+   "n",
+   "Greek"
+  ],
+  [
+   "θ",
+   "O",
+   "Greek"
+  ],
+  [
+   "ι",
+   "i",
+   "Greek"
+  ],
+  [
+   "ν",
+   "v",
+   "Greek"
+  ],
+  [
+   "ο",
+   "o",
+   "Greek"
+  ],
+  [
+   "ρ",
+   "p",
+   "Greek"
+  ],
+  [
+   "σ",
+   "o",
+   "Greek"
+  ],
+  [
+   "υ",
+   "u",
+   "Greek"
+  ],
+  [
+   "Ϝ",
+   "F",
+   "Greek"
+  ],
+  [
+   "ϭ",
+   "o",
+   "Coptic"
+  ],
+  [
+   "ϳ",
+   "j",
+   "Greek"
+  ],
+  [
+   "ϸ",
+   "p",
+   "Greek"
+  ],
+  [
+   "Ϻ",
+   "M",
+   "Greek"
+  ],
+  [
+   "Ѕ",
+   "S",
+   "Cyrillic"
+  ],
+  [
+   "І",
+   "l",
+   "Cyrillic"
+  ],
+  [
+   "Ј",
+   "J",
+   "Cyrillic"
+  ],
+  [
+   "А",
+   "A",
+   "Cyrillic"
+  ],
+  [
+   "Б",
+   "b",
+   "Cyrillic"
+  ],
+  [
+   "В",
+   "B",
+   "Cyrillic"
+  ],
+  [
+   "Е",
+   "E",
+   "Cyrillic"
+  ],
+  [
+   "К",
+   "K",
+   "Cyrillic"
+  ],
+  [
+   "М",
+   "M",
+   "Cyrillic"
+  ],
+  [
+   "Н",
+   "H",
+   "Cyrillic"
+  ],
+  [
+   "О",
+   "O",
+   "Cyrillic"
+  ],
+  [
+   "Р",
+   "P",
+   "Cyrillic"
+  ],
+  [
+   "С",
+   "C",
+   "Cyrillic"
+  ],
+  [
+   "Т",
+   "T",
+   "Cyrillic"
+  ],
+  [
+   "У",
+   "Y",
+   "Cyrillic"
+  ],
+  [
+   "Х",
+   "X",
+   "Cyrillic"
+  ],
+  [
+   "Ь",
+   "b",
+   "Cyrillic"
+  ],
+  [
+   "а",
+   "a",
+   "Cyrillic"
+  ],
+  [
+   "г",
+   "r",
+   "Cyrillic"
+  ],
+  [
+   "е",
+   "e",
+   "Cyrillic"
+  ],
+  [
+   "о",
+   "o",
+   "Cyrillic"
+  ],
+  [
+   "р",
+   "p",
+   "Cyrillic"
+  ],
+  [
+   "с",
+   "c",
+   "Cyrillic"
+  ],
+  [
+   "у",
+   "y",
+   "Cyrillic"
+  ],
+  [
+   "х",
+   "x",
+   "Cyrillic"
+  ],
+  [
+   "ш",
+   "w",
+   "Cyrillic"
+  ],
+  [
+   "ѕ",
+   "s",
+   "Cyrillic"
+  ],
+  [
+   "і",
+   "i",
+   "Cyrillic"
+  ],
+  [
+   "ј",
+   "j",
+   "Cyrillic"
+  ],
+  [
+   "ћ",
+   "h",
+   "Cyrillic"
+  ],
+  [
+   "џ",
+   "u",
+   "Cyrillic"
+  ],
+  [
+   "ѡ",
+   "w",
+   "Cyrillic"
+  ],
+  [
+   "Ѣ",
+   "b",
+   "Cyrillic"
+  ],
+  [
+   "ѣ",
+   "b",
+   "Cyrillic"
+  ],
+  [
+   "Ѳ",
+   "O",
+   "Cyrillic"
+  ],
+  [
+   "ѳ",
+   "o",
+   "Cyrillic"
+  ],
+  [
+   "Ѵ",
+   "V",
+   "Cyrillic"
+  ],
+  [
+   "ѵ",
+   "v",
+   "Cyrillic"
+  ],
+  [
+   "ѽ",
+   "w",
+   "Cyrillic"
+  ],
+  [
+   "Ҍ",
+   "b",
+   "Cyrillic"
+  ],
+  [
+   "ҍ",
+   "b",
+   "Cyrillic"
+  ],
+  [
+   "ғ",
+   "r",
+   "Cyrillic"
+  ],
+  [
+   "Қ",
+   "K",
+   "Cyrillic"
+  ],
+  [
+   "Ҟ",
+   "K",
+   "Cyrillic"
+  ],
+  [
+   "Ң",
+   "H",
+   "Cyrillic"
+  ],
+  [
+   "Ҫ",
+   "C",
+   "Cyrillic"
+  ],
+  [
+   "ҫ",
+   "c",
+   "Cyrillic"
+  ],
+  [
+   "Ҭ",
+   "T",
+   "Cyrillic"
+  ],
+  [
+   "Ү",
+   "Y",
+   "Cyrillic"
+  ],
+  [
+   "ү",
+   "y",
+   "Cyrillic"
+  ],
+  [
+   "Ұ",
+   "Y",
+   "Cyrillic"
+  ],
+  [
+   "ұ",
+   "y",
+   "Cyrillic"
+  ],
+  [
+   "Ҳ",
+   "X",
+   "Cyrillic"
+  ],
+  [
+   "Һ",
+   "h",
+   "Cyrillic"
+  ],
+  [
+   "һ",
+   "h",
+   "Cyrillic"
+  ],
+  [
+   "ҽ",
+   "e",
+   "Cyrillic"
+  ],
+  [
+   "ҿ",
+   "e",
+   "Cyrillic"
+  ],
+  [
+   "Ӏ",
+   "l",
+   "Cyrillic"
+  ],
+  [
+   "Ӈ",
+   "H",
+   "Cyrillic"
+  ],
+  [
+   "Ӊ",
+   "H",
+   "Cyrillic"
+  ],
+  [
+   "Ӎ",
+   "M",
+   "Cyrillic"
+  ],
+  [
+   "ӏ",
+   "l",
+   "Cyrillic"
+  ],
+  [
+   "Ө",
+   "O",
+   "Cyrillic"
+  ],
+  [
+   "ө",
+   "o",
+   "Cyrillic"
+  ],
+  [
+   "ԁ",
+   "d",
+   "Cyrillic"
+  ],
+  [
+   "Ԍ",
+   "G",
+   "Cyrillic"
+  ],
+  [
+   "Ԛ",
+   "Q",
+   "Cyrillic"
+  ],
+  [
+   "ԛ",
+   "q",
+   "Cyrillic"
+  ],
+  [
+   "Ԝ",
+   "W",
+   "Cyrillic"
+  ],
+  [
+   "ԝ",
+   "w",
+   "Cyrillic"
+  ],
+  [
+   "Ս",
+   "U",
+   "Armenian"
+  ],
+  [
+   "Տ",
+   "S",
+   "Armenian"
+  ],
+  [
+   "Օ",
+   "O",
+   "Armenian"
+  ],
+  [
+   "ա",
+   "w",
+   "Armenian"
+  ],
+  [
+   "գ",
+   "q",
+   "Armenian"
+  ],
+  [
+   "զ",
+   "q",
+   "Armenian"
+  ],
+  [
+   "հ",
+   "h",
+   "Armenian"
+  ],
+  [
+   "ղ",
+   "n",
+   "Armenian"
+  ],
+  [
+   "յ",
+   "j",
+   "Armenian"
+  ],
+  [
+   "ո",
+   "n",
+   "Armenian"
+  ],
+  [
+   "ռ",
+   "n",
+   "Armenian"
+  ],
+  [
+   "ս",
+   "u",
+   "Armenian"
+  ],
+  [
+   "ց",
+   "g",
+   "Armenian"
+  ],
+  [
+   "ւ",
+   "i",
+   "Armenian"
+  ],
+  [
+   "ք",
+   "f",
+   "Armenian"
+  ],
+  [
+   "օ",
+   "o",
+   "Armenian"
+  ],
+  [
+   "ו",
+   "l",
+   "Hebrew"
+  ],
+  [
+   "ט",
+   "v",
+   "Hebrew"
+  ],
+  [
+   "ן",
+   "l",
+   "Hebrew"
+  ],
+  [
+   "ס",
+   "o",
+   "Hebrew"
+  ],
+  [
+   "ا",
+   "l",
+   "Arabic"
+  ],
+  [
+   "ة",
+   "o",
+   "Arabic"
+  ],
+  [
+   "ه",
+   "o",
+   "Arabic"
+  ],
+  [
+   "ٳ",
+   "l",
+   "Arabic"
+  ],
+  [
+   "ھ",
+   "o",
+   "Arabic"
+  ],
+  [
+   "ہ",
+   "o",
+   "Arabic"
+  ],
+  [
+   "ۃ",
+   "o",
+   "Arabic"
+  ],
+  [
+   "ە",
+   "o",
+   "Arabic"
+  ],
+  [
+   "ۿ",
+   "o",
+   "Arabic"
+  ],
+  [
+   "ߊ",
+   "l",
+   "Nko"
+  ],
+  [
+   "ߋ",
+   "o",
+   "Nko"
+  ],
+  [
+   "ߌ",
+   "Y",
+   "Nko"
+  ],
+  [
+   "ߓ",
+   "F",
+   "Nko"
+  ],
+  [
+   "ߕ",
+   "b",
+   "Nko"
+  ],
+  [
+   "ߠ",
+   "T",
+   "Nko"
+  ],
+  [
+   "ࡀ",
+   "o",
+   "Other"
+  ],
+  [
+   "ଠ",
+   "O",
+   "Oriya"
+  ],
+  [
+   "ട",
+   "s",
+   "Malayalam"
+  ],
+  [
+   "ഠ",
+   "o",
+   "Malayalam"
+  ],
+  [
+   "င",
+   "c",
+   "Myanmar"
+  ],
+  [
+   "တ",
+   "o",
+   "Myanmar"
+  ],
+  [
+   "ဝ",
+   "o",
+   "Myanmar"
+  ],
+  [
+   "ၚ",
+   "c",
+   "Myanmar"
+  ],
+  [
+   "Ⴙ",
+   "h",
+   "Georgian"
+  ],
+  [
+   "Ⴝ",
+   "S",
+   "Georgian"
+  ],
+  [
+   "Ⴭ",
+   "Z",
+   "Georgian"
+  ],
+  [
+   "თ",
+   "o",
+   "Georgian"
+  ],
+  [
+   "ყ",
+   "y",
+   "Georgian"
+  ],
+  [
+   "ჽ",
+   "S",
+   "Georgian"
+  ],
+  [
+   "ჿ",
+   "o",
+   "Georgian"
+  ],
+  [
+   "ᄋ",
+   "o",
+   "Hangul"
+  ],
+  [
+   "ᆼ",
+   "o",
+   "Hangul"
+  ],
+  [
+   "ሀ",
+   "U",
+   "Ethiopic"
+  ],
+  [
+   "ዐ",
+   "O",
+   "Ethiopic"
+  ],
+  [
+   "ፀ",
+   "O",
+   "Ethiopic"
+  ],
+  [
+   "Ꭰ",
+   "D",
+   "Cherokee"
+  ],
+  [
+   "Ꭱ",
+   "R",
+   "Cherokee"
+  ],
+  [
+   "Ꭲ",
+   "T",
+   "Cherokee"
+  ],
+  [
+   "Ꭴ",
+   "O",
+   "Cherokee"
+  ],
+  [
+   "Ꭵ",
+   "i",
+   "Cherokee"
+  ],
+  [
+   "Ꭹ",
+   "Y",
+   "Cherokee"
+  ],
+  [
+   "Ꭺ",
+   "A",
+   "Cherokee"
+  ],
+  [
+   "Ꭻ",
+   "J",
+   "Cherokee"
+  ],
+  [
+   "Ꭼ",
+   "E",
+   "Cherokee"
+  ],
+  [
+   "Ꮃ",
+   "W",
+   "Cherokee"
+  ],
+  [
+   "Ꮇ",
+   "M",
+   "Cherokee"
+  ],
+  [
+   "Ꮋ",
+   "H",
+   "Cherokee"
+  ],
+  [
+   "Ꮍ",
+   "Y",
+   "Cherokee"
+  ],
+  [
+   "Ꮎ",
+   "O",
+   "Cherokee"
+  ],
+  [
+   "Ꮏ",
+   "t",
+   "Cherokee"
+  ],
+  [
+   "Ꮐ",
+   "G",
+   "Cherokee"
+  ],
+  [
+   "Ꮒ",
+   "h",
+   "Cherokee"
+  ],
+  [
+   "Ꮓ",
+   "Z",
+   "Cherokee"
+  ],
+  [
+   "Ꮜ",
+   "U",
+   "Cherokee"
+  ],
+  [
+   "Ꮟ",
+   "b",
+   "Cherokee"
+  ],
+  [
+   "Ꮢ",
+   "R",
+   "Cherokee"
+  ],
+  [
+   "Ꮤ",
+   "W",
+   "Cherokee"
+  ],
+  [
+   "Ꮥ",
+   "S",
+   "Cherokee"
+  ],
+  [
+   "Ꮩ",
+   "V",
+   "Cherokee"
+  ],
+  [
+   "Ꮪ",
+   "S",
+   "Cherokee"
+  ],
+  [
+   "Ꮮ",
+   "L",
+   "Cherokee"
+  ],
+  [
+   "Ꮯ",
+   "C",
+   "Cherokee"
+  ],
+  [
+   "Ꮲ",
+   "P",
+   "Cherokee"
+  ],
+  [
+   "Ꮶ",
+   "K",
+   "Cherokee"
+  ],
+  [
+   "Ꮷ",
+   "d",
+   "Cherokee"
+  ],
+  [
+   "Ꮻ",
+   "O",
+   "Cherokee"
+  ],
+  [
+   "Ᏺ",
+   "h",
+   "Cherokee"
+  ],
+  [
+   "Ᏻ",
+   "G",
+   "Cherokee"
+  ],
+  [
+   "Ᏼ",
+   "B",
+   "Cherokee"
+  ],
+  [
+   "ᐯ",
+   "V",
+   "Canadian_Aboriginal"
+  ],
+  [
+   "ᑌ",
+   "U",
+   "Canadian_Aboriginal"
+  ],
+  [
+   "ᑭ",
+   "P",
+   "Canadian_Aboriginal"
+  ],
+  [
+   "ᑯ",
+   "d",
+   "Canadian_Aboriginal"
+  ],
+  [
+   "ᑲ",
+   "b",
+   "Canadian_Aboriginal"
+  ],
+  [
+   "ᑳ",
+   "b",
+   "Canadian_Aboriginal"
+  ],
+  [
+   "ᒍ",
+   "J",
+   "Canadian_Aboriginal"
+  ],
+  [
+   "ᒪ",
+   "L",
+   "Canadian_Aboriginal"
+  ],
+  [
+   "ᕁ",
+   "x",
+   "Canadian_Aboriginal"
+  ],
+  [
+   "ᕼ",
+   "H",
+   "Canadian_Aboriginal"
+  ],
+  [
+   "ᕽ",
+   "x",
+   "Canadian_Aboriginal"
+  ],
+  [
+   "ᖇ",
+   "R",
+   "Canadian_Aboriginal"
+  ],
+  [
+   "ᖯ",
+   "b",
+   "Canadian_Aboriginal"
+  ],
+  [
+   "ᖴ",
+   "F",
+   "Canadian_Aboriginal"
+  ],
+  [
+   "ᗅ",
+   "A",
+   "Canadian_Aboriginal"
+  ],
+  [
+   "ᗞ",
+   "D",
+   "Canadian_Aboriginal"
+  ],
+  [
+   "ᗪ",
+   "D",
+   "Canadian_Aboriginal"
+  ],
+  [
+   "ᗰ",
+   "M",
+   "Canadian_Aboriginal"
+  ],
+  [
+   "ᗷ",
+   "B",
+   "Canadian_Aboriginal"
+  ],
+  [
+   "ᚷ",
+   "X",
+   "Runic"
+  ],
+  [
+   "ᛁ",
+   "l",
+   "Runic"
+  ],
+  [
+   "ᛅ",
+   "l",
+   "Runic"
+  ],
+  [
+   "ᛐ",
+   "l",
+   "Runic"
+  ],
+  [
+   "ᛕ",
+   "K",
+   "Runic"
+  ],
+  [
+   "ᛖ",
+   "M",
+   "Runic"
+  ],
+  [
+   "ᝣ",
+   "x",
+   "Other"
+  ],
+  [
+   "ᨲ",
+   "o",
+   "Other"
+  ],
+  [
+   "ᩅ",
+   "o",
+   "Other"
+  ],
+  [
+   "ᲂ",
+   "o",
+   "Cyrillic"
+  ],
+  [
+   "ᲃ",
+   "c",
+   "Cyrillic"
+  ],
+  [
+   "Ჽ",
+   "S",
+   "Georgian"
+  ],
+  [
+   "Ჿ",
+   "O",
+   "Georgian"
+  ],
+  [
+   "ᳵ",
+   "X",
+   "Other"
+  ],
+  [
+   "ᴄ",
+   "c",
+   "Latin"
+  ],
+  [
+   "ᴏ",
+   "o",
+   "Latin"
+  ],
+  [
+   "ᴑ",
+   "o",
+   "Latin"
+  ],
+  [
+   "ᴜ",
+   "u",
+   "Latin"
+  ],
+  [
+   "ᴠ",
+   "v",
+   "Latin"
+  ],
+  [
+   "ᴡ",
+   "w",
+   "Latin"
+  ],
+  [
+   "ᴢ",
+   "z",
+   "Latin"
+  ],
+  [
+   "ᴦ",
+   "r",
+   "Greek"
+  ],
+  [
+   "ᵮ",
+   "f",
+   "Latin"
+  ],
+  [
+   "ᵰ",
+   "n",
+   "Latin"
+  ],
+  [
+   "ᵲ",
+   "r",
+   "Latin"
+  ],
+  [
+   "ᵴ",
+   "s",
+   "Latin"
+  ],
+  [
+   "ᵵ",
+   "t",
+   "Latin"
+  ],
+  [
+   "ᵶ",
+   "z",
+   "Latin"
+  ],
+  [
+   "ᵻ",
+   "i",
+   "Latin"
+  ],
+  [
+   "ᵼ",
+   "i",
+   "Latin"
+  ],
+  [
+   "ᵽ",
+   "p",
+   "Latin"
+  ],
+  [
+   "ᵾ",
+   "u",
+   "Latin"
+  ],
+  [
+   "ᶃ",
+   "g",
+   "Latin"
+  ],
+  [
+   "ᶌ",
+   "y",
+   "Latin"
+  ],
+  [
+   "ẝ",
+   "f",
+   "Latin"
+  ],
+  [
+   "ỿ",
+   "y",
+   "Latin"
+  ],
+  [
+   "Ⱨ",
+   "H",
+   "Latin"
+  ],
+  [
+   "Ⱪ",
+   "K",
+   "Latin"
+  ],
+  [
+   "Ⱬ",
+   "Z",
+   "Latin"
+  ],
+  [
+   "ⱬ",
+   "z",
+   "Latin"
+  ],
+  [
+   "Ⲃ",
+   "B",
+   "Coptic"
+  ],
+  [
+   "ⲅ",
+   "r",
+   "Coptic"
+  ],
+  [
+   "Ⲍ",
+   "Z",
+   "Coptic"
+  ],
+  [
+   "ⲍ",
+   "z",
+   "Coptic"
+  ],
+  [
+   "Ⲏ",
+   "H",
+   "Coptic"
+  ],
+  [
+   "Ⲑ",
+   "O",
+   "Coptic"
+  ],
+  [
+   "ⲑ",
+   "o",
+   "Coptic"
+  ],
+  [
+   "Ⲓ",
+   "l",
+   "Coptic"
+  ],
+  [
+   "ⲓ",
+   "i",
+   "Coptic"
+  ],
+  [
+   "Ⲕ",
+   "K",
+   "Coptic"
+  ],
+  [
+   "Ⲙ",
+   "M",
+   "Coptic"
+  ],
+  [
+   "Ⲛ",
+   "N",
+   "Coptic"
+  ],
+  [
+   "Ⲟ",
+   "O",
+   "Coptic"
+  ],
+  [
+   "ⲟ",
+   "o",
+   "Coptic"
+  ],
+  [
+   "Ⲣ",
+   "P",
+   "Coptic"
+  ],
+  [
+   "ⲣ",
+   "p",
+   "Coptic"
+  ],
+  [
+   "Ⲥ",
+   "C",
+   "Coptic"
+  ],
+  [
+   "ⲥ",
+   "c",
+   "Coptic"
+  ],
+  [
+   "Ⲧ",
+   "T",
+   "Coptic"
+  ],
+  [
+   "Ⲩ",
+   "Y",
+   "Coptic"
+  ],
+  [
+   "ⲩ",
+   "y",
+   "Coptic"
+  ],
+  [
+   "Ⲭ",
+   "X",
+   "Coptic"
+  ],
+  [
+   "ⲽ",
+   "w",
+   "Coptic"
+  ],
+  [
+   "Ⳏ",
+   "P",
+   "Coptic"
+  ],
+  [
+   "ⳏ",
+   "p",
+   "Coptic"
+  ],
+  [
+   "Ⳑ",
+   "L",
+   "Coptic"
+  ],
+  [
+   "ⴭ",
+   "z",
+   "Georgian"
+  ],
+  [
+   "ⴱ",
+   "O",
+   "Tifinagh"
+  ],
+  [
+   "ⴸ",
+   "V",
+   "Tifinagh"
+  ],
+  [
+   "ⴹ",
+   "E",
+   "Tifinagh"
+  ],
+  [
+   "ⵁ",
+   "O",
+   "Tifinagh"
+  ],
+  [
+   "ⵊ",
+   "l",
+   "Tifinagh"
+  ],
+  [
+   "ⵏ",
+   "l",
+   "Tifinagh"
+  ],
+  [
+   "ⵔ",
+   "O",
+   "Tifinagh"
+  ],
+  [
+   "ⵕ",
+   "Q",
+   "Tifinagh"
+  ],
+  [
+   "ⵝ",
+   "X",
+   "Tifinagh"
+  ],
+  [
+   "ㄒ",
+   "T",
+   "Bopomofo"
+  ],
+  [
+   "ㄚ",
+   "Y",
+   "Bopomofo"
+  ],
+  [
+   "丅",
+   "T",
+   "Han"
+  ],
+  [
+   "丫",
+   "Y",
+   "Han"
+  ],
+  [
+   "ꓐ",
+   "B",
+   "Lisu"
+  ],
+  [
+   "ꓑ",
+   "P",
+   "Lisu"
+  ],
+  [
+   "ꓒ",
+   "d",
+   "Lisu"
+  ],
+  [
+   "ꓓ",
+   "D",
+   "Lisu"
+  ],
+  [
+   "ꓔ",
+   "T",
+   "Lisu"
+  ],
+  [
+   "ꓖ",
+   "G",
+   "Lisu"
+  ],
+  [
+   "ꓗ",
+   "K",
+   "Lisu"
+  ],
+  [
+   "ꓙ",
+   "J",
+   "Lisu"
+  ],
+  [
+   "ꓚ",
+   "C",
+   "Lisu"
+  ],
+  [
+   "ꓜ",
+   "Z",
+   "Lisu"
+  ],
+  [
+   "ꓝ",
+   "F",
+   "Lisu"
+  ],
+  [
+   "ꓟ",
+   "M",
+   "Lisu"
+  ],
+  [
+   "ꓠ",
+   "N",
+   "Lisu"
+  ],
+  [
+   "ꓡ",
+   "L",
+   "Lisu"
+  ],
+  [
+   "ꓢ",
+   "S",
+   "Lisu"
+  ],
+  [
+   "ꓣ",
+   "R",
+   "Lisu"
+  ],
+  [
+   "ꓦ",
+   "V",
+   "Lisu"
+  ],
+  [
+   "ꓧ",
+   "H",
+   "Lisu"
+  ],
+  [
+   "ꓪ",
+   "W",
+   "Lisu"
+  ],
+  [
+   "ꓫ",
+   "X",
+   "Lisu"
+  ],
+  [
+   "ꓬ",
+   "Y",
+   "Lisu"
+  ],
+  [
+   "ꓮ",
+   "A",
+   "Lisu"
+  ],
+  [
+   "ꓰ",
+   "E",
+   "Lisu"
+  ],
+  [
+   "ꓲ",
+   "l",
+   "Lisu"
+  ],
+  [
+   "ꓳ",
+   "O",
+   "Lisu"
+  ],
+  [
+   "ꓴ",
+   "U",
+   "Lisu"
+  ],
+  [
+   "ꔋ",
+   "T",
+   "Vai"
+  ],
+  [
+   "ꕗ",
+   "B",
+   "Vai"
+  ],
+  [
+   "ꕯ",
+   "l",
+   "Vai"
+  ],
+  [
+   "ꕶ",
+   "S",
+   "Vai"
+  ],
+  [
+   "ꗋ",
+   "E",
+   "Vai"
+  ],
+  [
+   "ꙇ",
+   "i",
+   "Cyrillic"
+  ],
+  [
+   "Ꚍ",
+   "T",
+   "Cyrillic"
+  ],
+  [
+   "ꚕ",
+   "h",
+   "Cyrillic"
+  ],
+  [
+   "ꚢ",
+   "o",
+   "Other"
+  ],
+  [
+   "ꚲ",
+   "Y",
+   "Other"
+  ],
+  [
+   "ꛉ",
+   "Z",
+   "Other"
+  ],
+  [
+   "ꛟ",
+   "V",
+   "Other"
+  ],
+  [
+   "ꜱ",
+   "s",
+   "Latin"
+  ],
+  [
+   "Ꝁ",
+   "K",
+   "Latin"
+  ],
+  [
+   "Ꝋ",
+   "O",
+   "Latin"
+  ],
+  [
+   "ꝋ",
+   "o",
+   "Latin"
+  ],
+  [
+   "ꝡ",
+   "w",
+   "Latin"
+  ],
+  [
+   "ꞁ",
+   "l",
+   "Latin"
+  ],
+  [
+   "Ꞙ",
+   "F",
+   "Latin"
+  ],
+  [
+   "ꞙ",
+   "f",
+   "Latin"
+  ],
+  [
+   "ꞟ",
+   "u",
+   "Latin"
+  ],
+  [
+   "Ɪ",
+   "l",
+   "Latin"
+  ],
+  [
+   "Ʝ",
+   "J",
+   "Latin"
+  ],
+  [
+   "Ꭓ",
+   "X",
+   "Latin"
+  ],
+  [
+   "Ꞵ",
+   "B",
+   "Latin"
+  ],
+  [
+   "Ʂ",
+   "S",
+   "Latin"
+  ],
+  [
+   "ꟺ",
+   "w",
+   "Latin"
+  ],
+  [
+   "ꟾ",
+   "l",
+   "Latin"
+  ],
+  [
+   "ꬲ",
+   "e",
+   "Latin"
+  ],
+  [
+   "ꬵ",
+   "f",
+   "Latin"
+  ],
+  [
+   "ꬽ",
+   "o",
+   "Latin"
+  ],
+  [
+   "ꬾ",
+   "o",
+   "Latin"
+  ],
+  [
+   "ꭇ",
+   "r",
+   "Latin"
+  ],
+  [
+   "ꭈ",
+   "r",
+   "Latin"
+  ],
+  [
+   "ꭎ",
+   "u",
+   "Latin"
+  ],
+  [
+   "ꭒ",
+   "u",
+   "Latin"
+  ],
+  [
+   "ꭚ",
+   "y",
+   "Latin"
+  ],
+  [
+   "ꭤ",
+   "a",
+   "Latin"
+  ],
+  [
+   "ꭴ",
+   "o",
+   "Cherokee"
+  ],
+  [
+   "ꭵ",
+   "i",
+   "Cherokee"
+  ],
+  [
+   "ꮁ",
+   "r",
+   "Cherokee"
+  ],
+  [
+   "ꮃ",
+   "w",
+   "Cherokee"
+  ],
+  [
+   "ꮎ",
+   "o",
+   "Cherokee"
+  ],
+  [
+   "ꮓ",
+   "z",
+   "Cherokee"
+  ],
+  [
+   "ꮜ",
+   "u",
+   "Cherokee"
+  ],
+  [
+   "ꮤ",
+   "w",
+   "Cherokee"
+  ],
+  [
+   "ꮩ",
+   "v",
+   "Cherokee"
+  ],
+  [
+   "ꮪ",
+   "s",
+   "Cherokee"
+  ],
+  [
+   "ꮯ",
+   "c",
+   "Cherokee"
+  ],
+  [
+   "ꮻ",
+   "o",
+   "Cherokee"
+  ],
+  [
+   "𐊂",
+   "B",
+   "Other"
+  ],
+  [
+   "𐊆",
+   "E",
+   "Other"
+  ],
+  [
+   "𐊇",
+   "F",
+   "Other"
+  ],
+  [
+   "𐊊",
+   "l",
+   "Other"
+  ],
+  [
+   "𐊐",
+   "X",
+   "Other"
+  ],
+  [
+   "𐊒",
+   "O",
+   "Other"
+  ],
+  [
+   "𐊕",
+   "P",
+   "Other"
+  ],
+  [
+   "𐊖",
+   "S",
+   "Other"
+  ],
+  [
+   "𐊗",
+   "T",
+   "Other"
+  ],
+  [
+   "𐊠",
+   "A",
+   "Other"
+  ],
+  [
+   "𐊡",
+   "B",
+   "Other"
+  ],
+  [
+   "𐊢",
+   "C",
+   "Other"
+  ],
+  [
+   "𐊥",
+   "F",
+   "Other"
+  ],
+  [
+   "𐊫",
+   "O",
+   "Other"
+  ],
+  [
+   "𐊰",
+   "M",
+   "Other"
+  ],
+  [
+   "𐊱",
+   "T",
+   "Other"
+  ],
+  [
+   "𐊲",
+   "Y",
+   "Other"
+  ],
+  [
+   "𐊴",
+   "X",
+   "Other"
+  ],
+  [
+   "𐋏",
+   "H",
+   "Other"
+  ],
+  [
+   "𐌁",
+   "B",
+   "Old_Italic"
+  ],
+  [
+   "𐌂",
+   "C",
+   "Old_Italic"
+  ],
+  [
+   "𐌉",
+   "l",
+   "Old_Italic"
+  ],
+  [
+   "𐌏",
+   "O",
+   "Old_Italic"
+  ],
+  [
+   "𐌑",
+   "M",
+   "Old_Italic"
+  ],
+  [
+   "𐌕",
+   "T",
+   "Old_Italic"
+  ],
+  [
+   "𐌗",
+   "X",
+   "Old_Italic"
+  ],
+  [
+   "𐌜",
+   "b",
+   "Old_Italic"
+  ],
+  [
+   "𐐄",
+   "O",
+   "Deseret"
+  ],
+  [
+   "𐐕",
+   "C",
+   "Deseret"
+  ],
+  [
+   "𐐛",
+   "L",
+   "Deseret"
+  ],
+  [
+   "𐐠",
+   "S",
+   "Deseret"
+  ],
+  [
+   "𐐬",
+   "o",
+   "Deseret"
+  ],
+  [
+   "𐐽",
+   "c",
+   "Deseret"
+  ],
+  [
+   "𐑈",
+   "s",
+   "Deseret"
+  ],
+  [
+   "𐒴",
+   "R",
+   "Osage"
+  ],
+  [
+   "𐓂",
+   "O",
+   "Osage"
+  ],
+  [
+   "𐓎",
+   "U",
+   "Osage"
+  ],
+  [
+   "𐓪",
+   "o",
+   "Osage"
+  ],
+  [
+   "𐓶",
+   "u",
+   "Osage"
+  ],
+  [
+   "𐔇",
+   "Z",
+   "Other"
+  ],
+  [
+   "𐔎",
+   "l",
+   "Other"
+  ],
+  [
+   "𐔓",
+   "N",
+   "Other"
+  ],
+  [
+   "𐔖",
+   "O",
+   "Other"
+  ],
+  [
+   "𐔘",
+   "K",
+   "Other"
+  ],
+  [
+   "𐔛",
+   "C",
+   "Other"
+  ],
+  [
+   "𐔝",
+   "V",
+   "Other"
+  ],
+  [
+   "𐔞",
+   "O",
+   "Other"
+  ],
+  [
+   "𐔥",
+   "F",
+   "Other"
+  ],
+  [
+   "𐔦",
+   "L",
+   "Other"
+  ],
+  [
+   "𐔧",
+   "X",
+   "Other"
+  ],
+  [
+   "𐤦",
+   "l",
+   "Other"
+  ],
+  [
+   "𐤬",
+   "o",
+   "Other"
+  ],
+  [
+   "𐰓",
+   "X",
+   "Other"
+  ],
+  [
+   "𐰗",
+   "O",
+   "Other"
+  ],
+  [
+   "𐰟",
+   "V",
+   "Other"
+  ],
+  [
+   "𐰠",
+   "Y",
+   "Other"
+  ],
+  [
+   "𐰡",
+   "M",
+   "Other"
+  ],
+  [
+   "𐰾",
+   "l",
+   "Other"
+  ],
+  [
+   "𐲂",
+   "X",
+   "Other"
+  ],
+  [
+   "𐲥",
+   "l",
+   "Other"
+  ],
+  [
+   "𐳂",
+   "x",
+   "Other"
+  ],
+  [
+   "𐴇",
+   "o",
+   "Other"
+  ],
+  [
+   "𑄖",
+   "o",
+   "Other"
+  ],
+  [
+   "𑄤",
+   "o",
+   "Other"
+  ],
+  [
+   "𑓅",
+   "w",
+   "Other"
+  ],
+  [
+   "𑜆",
+   "v",
+   "Other"
+  ],
+  [
+   "𑜊",
+   "w",
+   "Other"
+  ],
+  [
+   "𑜎",
+   "w",
+   "Other"
+  ],
+  [
+   "𑜏",
+   "w",
+   "Other"
+  ],
+  [
+   "𑢠",
+   "V",
+   "Other"
+  ],
+  [
+   "𑢢",
+   "F",
+   "Other"
+  ],
+  [
+   "𑢣",
+   "L",
+   "Other"
+  ],
+  [
+   "𑢤",
+   "Y",
+   "Other"
+  ],
+  [
+   "𑢦",
+   "E",
+   "Other"
+  ],
+  [
+   "𑢩",
+   "Z",
+   "Other"
+  ],
+  [
+   "𑢮",
+   "E",
+   "Other"
+  ],
+  [
+   "𑢲",
+   "L",
+   "Other"
+  ],
+  [
+   "𑢵",
+   "O",
+   "Other"
+  ],
+  [
+   "𑢸",
+   "U",
+   "Other"
+  ],
+  [
+   "𑢼",
+   "T",
+   "Other"
+  ],
+  [
+   "𑣀",
+   "v",
+   "Other"
+  ],
+  [
+   "𑣁",
+   "s",
+   "Other"
+  ],
+  [
+   "𑣂",
+   "F",
+   "Other"
+  ],
+  [
+   "𑣃",
+   "i",
+   "Other"
+  ],
+  [
+   "𑣄",
+   "y",
+   "Other"
+  ],
+  [
+   "𑣈",
+   "o",
+   "Other"
+  ],
+  [
+   "𑣗",
+   "o",
+   "Other"
+  ],
+  [
+   "𑣘",
+   "u",
+   "Other"
+  ],
+  [
+   "𑣜",
+   "y",
+   "Other"
+  ],
+  [
+   "𑪼",
+   "Z",
+   "Canadian_Aboriginal"
+  ],
+  [
+   "𑪾",
+   "N",
+   "Canadian_Aboriginal"
+  ],
+  [
+   "𑷚",
+   "l",
+   "Other"
+  ],
+  [
+   "𖦛",
+   "O",
+   "Other"
+  ],
+  [
+   "𖨙",
+   "r",
+   "Other"
+  ],
+  [
+   "𖫖",
+   "S",
+   "Other"
+  ],
+  [
+   "𖫤",
+   "l",
+   "Other"
+  ],
+  [
+   "𖫩",
+   "O",
+   "Other"
+  ],
+  [
+   "𖵣",
+   "l",
+   "Other"
+  ],
+  [
+   "𖺪",
+   "l",
+   "Other"
+  ],
+  [
+   "𖺶",
+   "b",
+   "Other"
+  ],
+  [
+   "𖼈",
+   "V",
+   "Other"
+  ],
+  [
+   "𖼊",
+   "T",
+   "Other"
+  ],
+  [
+   "𖼖",
+   "L",
+   "Other"
+  ],
+  [
+   "𖼨",
+   "l",
+   "Other"
+  ],
+  [
+   "𖼵",
+   "R",
+   "Other"
+  ],
+  [
+   "𖼺",
+   "S",
+   "Other"
+  ],
+  [
+   "𖽀",
+   "A",
+   "Other"
+  ],
+  [
+   "𖽂",
+   "U",
+   "Other"
+  ],
+  [
+   "𖽃",
+   "Y",
+   "Other"
+  ],
+  [
+   "𝼭",
+   "d",
+   "Latin"
+  ],
+  [
+   "𝼱",
+   "y",
+   "Latin"
+  ],
+  [
+   "𝼲",
+   "h",
+   "Latin"
+  ],
+  [
+   "𝼴",
+   "q",
+   "Latin"
+  ],
+  [
+   "𝼷",
+   "r",
+   "Latin"
+  ],
+  [
+   "𝼹",
+   "u",
+   "Latin"
+  ],
+  [
+   "𝼼",
+   "O",
+   "Latin"
+  ],
+  [
+   "𝼿",
+   "w",
+   "Latin"
+  ],
+  [
+   "𝽀",
+   "A",
+   "Latin"
+  ],
+  [
+   "𝽁",
+   "a",
+   "Latin"
+  ],
+  [
+   "𝽅",
+   "g",
+   "Latin"
+  ],
+  [
+   "𝽆",
+   "h",
+   "Latin"
+  ],
+  [
+   "𝽇",
+   "h",
+   "Latin"
+  ],
+  [
+   "𝽈",
+   "K",
+   "Latin"
+  ],
+  [
+   "𝽉",
+   "k",
+   "Latin"
+  ],
+  [
+   "𝽊",
+   "M",
+   "Latin"
+  ],
+  [
+   "𝽍",
+   "N",
+   "Latin"
+  ],
+  [
+   "𝽎",
+   "n",
+   "Latin"
+  ],
+  [
+   "𝽏",
+   "n",
+   "Latin"
+  ],
+  [
+   "𝽑",
+   "V",
+   "Latin"
+  ],
+  [
+   "𝽒",
+   "v",
+   "Latin"
+  ],
+  [
+   "𝽕",
+   "y",
+   "Latin"
+  ],
+  [
+   "𝽚",
+   "a",
+   "Latin"
+  ],
+  [
+   "𝽪",
+   "A",
+   "Latin"
+  ],
+  [
+   "𝽮",
+   "l",
+   "Latin"
+  ],
+  [
+   "𝽽",
+   "w",
+   "Latin"
+  ],
+  [
+   "𝾁",
+   "E",
+   "Latin"
+  ]
+ ],
+ "rng": [
+  {
+   "seed": 0,
+   "draws": [
+    266429208,
+    329745,
+    223272027,
+    146202147,
+    467327822,
+    545049082,
+    615251384,
+    648985379
+   ]
+  },
+  {
+   "seed": 1,
+   "draws": [
+    627073940,
+    2735721,
+    527447039,
+    981050967,
+    968377898,
+    281103502,
+    612838860,
+    720743141
+   ]
+  },
+  {
+   "seed": 2,
+   "draws": [
+    734250944,
+    324998432,
+    285296055,
+    537955157,
+    875287947,
+    630833341,
+    499201573,
+    357244655
+   ]
+  },
+  {
+   "seed": 7,
+   "draws": [
+    11704753,
+    61958257,
+    976907632,
+    699028705,
+    521445268,
+    405521688,
+    466232632,
+    239925185
+   ]
+  },
+  {
+   "seed": 11,
+   "draws": [
+    511587048,
+    529946408,
+    608118564,
+    590157635,
+    850776696,
+    538022297,
+    80026161,
+    530505511
+   ]
+  },
+  {
+   "seed": 42,
+   "draws": [
+    601103751,
+    448290558,
+    852465793,
+    669734041,
+    174813898,
+    526592542,
+    273227994,
+    624744653
+   ]
+  },
+  {
+   "seed": 1000,
+   "draws": [
+    795194906,
+    827687913,
+    691516105,
+    880575214,
+    17807392,
+    425102789,
+    300603043,
+    110680880
+   ]
+  },
+  {
+   "seed": 20261116,
+   "draws": [
+    249040501,
+    103141203,
+    486959399,
+    381446528,
+    516915888,
+    863210243,
+    96994980,
+    532665658
+   ]
+  },
+  {
+   "seed": 2147483647,
+   "draws": [
+    429098088,
+    127135249,
+    385277498,
+    396391890,
+    119627466,
+    953187596,
+    680683038,
+    995780501
+   ]
+  },
+  {
+   "seed": 2147483648,
+   "draws": [
+    820577560,
+    448108955,
+    783611285,
+    512045796,
+    838809826,
+    420514852,
+    894480626,
+    932692676
+   ]
+  },
+  {
+   "seed": 4294967295,
+   "draws": [
+    896422614,
+    189478256,
+    715652678,
+    944059909,
+    845236431,
+    539139998,
+    680497738,
+    475572096
+   ]
+  }
+ ]
+}

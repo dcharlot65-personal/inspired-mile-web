@@ -10,11 +10,13 @@ import { getCardById } from '../cards';
 import { brainInfo, generate, isBrainLoaded } from '../brain';
 import {
   ROUNDS, createDuel, illegalMove, inkAt, matchWinner, moveCost, resolveRound, scoreVerse,
-  type CastCurse, type Duel, type DuelDeck, type IllegalMove, type PlayerMove, type RoundResult, type VerseScore,
+  type CastCurse, type Duel, type DuelDeck, type IllegalMove, type PlayerMove, type RoundResult, type VerseScore, type WorldCard,
 } from './duel';
 import { getForm } from './forms';
 import { writeOpponentVerse, type Difficulty } from './opponent';
+import { judgeLines } from './judge';
 import { referee } from './referee';
+import { loadSound } from './sound';
 import { cleanVerse } from './text';
 
 export type Phase = 'opponent-writing' | 'player-turn' | 'judging' | 'verdict' | 'finished';
@@ -29,6 +31,8 @@ export interface SessionOptions {
   difficulty: Difficulty;
   /** Use the loaded model to write and judge. False plays the written opponent with rule judging. */
   useModel: boolean;
+  /** The player's world card, if one is equipped: its bonus is scored with the round (duel.ts). */
+  worldCard?: WorldCard;
   /** Called whenever something a screen shows has changed. */
   onChange?: () => void;
 }
@@ -51,7 +55,7 @@ export class DuelSession {
 
   /** The language's pack must be loaded first (loadPack in ./packs); English always is. */
   constructor(private readonly opts: SessionOptions) {
-    this.duel = createDuel(opts.seed, opts.lang, opts.deck);
+    this.duel = createDuel(opts.seed, opts.lang, opts.deck, undefined, opts.worldCard);
   }
 
   private changed() {
@@ -69,7 +73,9 @@ export class DuelSession {
   }
   /** Ink left after what is already chosen this round. */
   get ink(): number {
-    return inkAt(this.roundIndex, this.moves.reduce((n, m) => n + moveCost(m), 0)) - moveCost(this.move);
+    // Once a round is submitted its move is in `moves`; counting `move` as well would charge it twice.
+    const pending = this.moves.length > this.roundIndex ? 0 : moveCost(this.move);
+    return inkAt(this.roundIndex, this.moves.reduce((n, m) => n + moveCost(m), 0)) - pending;
   }
   get playerRounds(): number {
     return this.results.filter((r) => r.winner === 'player').length;
@@ -92,6 +98,10 @@ export class DuelSession {
     this.opponentVerse = '';
     this.drafting = null;
     this.changed();
+    // Rhyme and syllables are measured by sound: the language's data (the CMU table for English,
+    // a sound table, the Japanese analyser) is fetched once, here, before anything is scored. If it
+    // cannot be fetched the duel goes on by spelling (sound/index.ts, pronounce.ts).
+    await loadSound(this.duel.lang);
     const canWrite = this.opts.useModel && isBrainLoaded() && !!brainInfo()?.writes;
     const written = await writeOpponentVerse({
       duel: this.duel,
@@ -128,12 +138,31 @@ export class DuelSession {
     const key = relic ? 'relicId' : 'potionId';
     if (this.move[key] === id) this.move[key] = undefined;
     else {
+      if (this.itemRefused(id)) return false;
       const swap = this.move[key] ? 0 : 1;
       if (this.ink < swap) return false;
       this.move[key] = id;
     }
     this.changed();
     return true;
+  }
+
+  /** Why a relic or potion cannot be played this round whatever the ink, or null. The message `illegal.<code>`. */
+  itemRefused(id: string): IllegalMove | null {
+    // A potion curses the opponent's NEXT verse; in the last round there is none.
+    if (this.duel.player.potions.includes(id) && this.roundIndex >= ROUNDS - 1) return 'potion-last-round';
+    return null;
+  }
+
+  /**
+   * Is the potion on the table a gamble? It curses the opponent's next verse,
+   * and if this round settles the match there will not be one. True from the
+   * round in which either side can win the match. (The message `hand.potionGamble`.)
+   */
+  potionAtRisk(): boolean {
+    if (!this.move.potionId || this.phase !== 'player-turn') return false;
+    const need = Math.floor(ROUNDS / 2) + 1;
+    return Math.max(this.playerRounds, this.opponentRounds) >= need - 1;
   }
 
   setVerse(text: string) {
@@ -156,11 +185,29 @@ export class DuelSession {
     });
   }
 
+  /** Is a model judging this duel's rounds (and so reading the verse without the lines that address it)? */
+  get modelJudges(): boolean {
+    return this.opts.useModel && isBrainLoaded();
+  }
+
+  /**
+   * The lines of the verse being written (from 1) that the grading model will not read, each with
+   * the number or judge word that leaves it out (judge.ts judgeLines); a round with such a line is
+   * judged by the rules alone (referee.ts). Empty unless a model grades verses one at a time (the
+   * lite tier): the compare path and the rule-based judge read every line. Shown in the live checklist.
+   */
+  judgeUnread(): Array<{ line: number; word: string }> {
+    if (!this.modelJudges || brainInfo()?.judge !== 'grade' || !cleanVerse(this.verse)) return [];
+    const j = judgeLines(this.verse, this.duel.lang);
+    return j.left.map((line, i) => ({ line, word: j.why[i] }));
+  }
+
   /** Why the verse cannot be submitted yet, or null when it can. */
   blocked(): Blocked | null {
     if (this.phase !== 'player-turn') return 'not-your-turn';
     if (!this.move.charId) return 'choose-character';
-    if (!cleanVerse(this.verse)) return 'write-verse';
+    // Punctuation or invisible characters alone are not a verse.
+    if (!/\p{L}/u.test(cleanVerse(this.verse))) return 'write-verse';
     return illegalMove(this.duel, this.roundIndex, this.move, this.moves);
   }
 
@@ -169,14 +216,19 @@ export class DuelSession {
     this.phase = 'judging';
     this.changed();
     const playerVerse = cleanVerse(this.verse);
+    const previous = this.results.at(-1)?.playerVerse;
+    // The judge compares comebacks only when the opponent's verse answers the player's last one,
+    // which a model's does and the written opponent's never does (judge.ts rulesJudge).
+    const answered = this.opponentSource === 'model' ? previous : undefined;
     const judge = this.opts.useModel
-      ? await referee(playerVerse, this.opponentVerse, this.duel.lang)
-      : (await import('./judge')).rulesJudge(playerVerse, this.opponentVerse, this.duel.lang, (await import('./referee')).allusionLexicon());
+      ? await referee(playerVerse, this.opponentVerse, this.duel.lang, answered)
+      : (await import('./judge')).rulesJudge(playerVerse, this.opponentVerse, this.duel.lang, (await import('./referee')).allusionLexicon(), answered);
 
     // The opponent's verse this round was written under the curse carried in, if any.
     const carried = this.carried;
     const duel = carried ? { ...this.duel, playerCurses: { ...this.duel.playerCurses, __carried: carried } } : this.duel;
-    const result = resolveRound(duel, this.roundIndex, { ...this.move, potionId: carried ? '__carried' : undefined }, playerVerse, this.opponentVerse, judge, this.results.at(-1)?.playerVerse);
+    // The verse as typed: a curse reads a word that mixes alphabets as the trick it is (duel.ts scoreVerse).
+    const result = resolveRound(duel, this.roundIndex, { ...this.move, potionId: carried ? '__carried' : undefined }, this.verse, this.opponentVerse, judge, previous);
 
     this.results.push(result);
     this.moves.push({ ...this.move });

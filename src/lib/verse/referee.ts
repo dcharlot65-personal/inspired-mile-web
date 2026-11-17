@@ -4,21 +4,28 @@
  */
 import { CARD_CATALOG } from '../cards';
 import { answerScores, brainInfo, isBrainLoaded } from '../brain';
+import { invocationNames, signatureWords } from './devices';
 import type { JudgeSplit } from './duel';
 import {
-  CRITERIA, GRADE_ANSWERS, combineGrades, combineMargins, compareMessages, expectedGrade, gradeMessages, rulesJudge, type Margins,
+  CRITERIA, GRADE_ANSWERS, boundedByRules, combineMargins, compareMessages, expectedGrade, gradeMessages, judgeLines, rulesJudge, type Margins,
 } from './judge';
 import { languageName } from './opponent';
-import { contentWords, fold, wordSpan, wordsOf } from './text';
+import { STOP_WORDS, fold, letterCount } from './text';
 
-/** Words that count as literary allusion for the rule-based judge: names and quotation words. */
+/**
+ * Words that count as literary allusion for the rule-based judge: the names a
+ * character is called by, and the telling words of every card's line. Everyday
+ * words in those lines ("that", "this", "with", "have") are not allusions.
+ */
 let lexicon: Set<string> | null = null;
 export function allusionLexicon(): Set<string> {
   if (!lexicon) {
     lexicon = new Set<string>();
+    const names = invocationNames(CARD_CATALOG.filter((c) => c.type === 'Character').map((c) => c.name));
+    for (const n of names) if (!n.includes(' ') && letterCount(n) >= 4) lexicon.add(fold(n));
     for (const c of CARD_CATALOG) {
-      for (const w of wordsOf(c.name)) if (wordSpan(w) >= 4) lexicon.add(fold(w));
-      for (const w of contentWords(c.quote)) lexicon.add(fold(w));
+      // A signature phrase (Viola's "not what") is not a word.
+      for (const w of signatureWords(c)) if (!w.includes(' ') && letterCount(w) >= 4 && !STOP_WORDS.has(w)) lexicon.add(w);
     }
   }
   return lexicon;
@@ -35,15 +42,25 @@ async function margins(verseA: string, verseB: string, lang: string): Promise<Ma
 
 async function grades(verse: string, lang: string): Promise<Margins> {
   const out = {} as Margins;
-  for (const c of CRITERIA) out[c] = expectedGrade(await answerScores(gradeMessages(verse, c, languageName(lang)), GRADE_ANSWERS));
+  for (const c of CRITERIA) out[c] = expectedGrade(await answerScores(gradeMessages(verse, c, languageName(lang), lang), GRADE_ANSWERS));
   return out;
 }
 
-export async function referee(playerVerse: string, opponentVerse: string, lang: string): Promise<JudgeSplit> {
+/**
+ * `previousPlayerVerse` is what the opponent's verse answers, when it answers one (a model
+ * wrote it to); the rule-based judge then compares the comebacks of both (judge.ts rulesJudge).
+ */
+export async function referee(playerVerse: string, opponentVerse: string, lang: string, previousPlayerVerse?: string): Promise<JudgeSplit> {
   if (isBrainLoaded()) {
     try {
       if (brainInfo()?.judge === 'grade') {
-        return combineGrades(await grades(playerVerse, lang), await grades(opponentVerse, lang));
+        // Graded alone, a verse can tell the grader what to answer: the grader never reads such a
+        // line, and decides only what the rules split, by a measured margin (judge.ts gradeMessages).
+        const rules = rulesJudge(playerVerse, opponentVerse, lang, allusionLexicon(), previousPlayerVerse);
+        // A line left out must not help its verse (an empty verse is not a better one): a round
+        // with a line the grader would not read is decided by the rules alone, for both sides.
+        if (judgeLines(playerVerse, lang).left.length || judgeLines(opponentVerse, lang).left.length) return { ...rules, reason: 'unread' };
+        return boundedByRules(await grades(playerVerse, lang), await grades(opponentVerse, lang), rules);
       }
       const forward = await margins(playerVerse, opponentVerse, lang);
       const reversed = await margins(opponentVerse, playerVerse, lang);
@@ -52,5 +69,5 @@ export async function referee(playerVerse: string, opponentVerse: string, lang: 
       console.error('[referee] model judging failed; using the rules', err);
     }
   }
-  return rulesJudge(playerVerse, opponentVerse, lang, allusionLexicon());
+  return rulesJudge(playerVerse, opponentVerse, lang, allusionLexicon(), previousPlayerVerse);
 }

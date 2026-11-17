@@ -65,8 +65,6 @@ pub struct Config {
     pub jwt_secret: String,
     pub port: u16,
     pub cors_origin: String,
-    pub llm_api_key: Option<String>,
-    pub llm_api_url: String,
     pub db_max_connections: u32,
     pub launch_date: String,
     /// WebAuthn relying-party ID. Passkeys are bound to it for good: changing it orphans
@@ -107,9 +105,6 @@ impl Config {
                 .unwrap_or_else(|| "dev-secret-change-in-production".into()),
             port: get("PORT").and_then(|p| p.parse().ok()).unwrap_or(3849),
             cors_origin: get("CORS_ORIGIN").unwrap_or_else(|| "http://localhost:4321".into()),
-            llm_api_key: get("LLM_API_KEY"),
-            llm_api_url: get("LLM_API_URL")
-                .unwrap_or_else(|| "https://api.anthropic.com/v1/messages".into()),
             db_max_connections: get("DB_MAX_CONNECTIONS")
                 .and_then(|v| v.parse().ok())
                 .unwrap_or(25),
