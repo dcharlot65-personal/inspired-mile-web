@@ -26,7 +26,7 @@ import { CARD_CATALOG } from '../cards';
 import { functionKey, functionWords } from './function-words';
 import JUDGE_WORDS from './judge-words';
 import { baseLang } from './lang';
-import { fold, isStopWord, letterCount, lexiconHas, lineLength, linesOf, substance, syllablesInLine, wordParts, wordSpan, wordsOf, cleanVerse } from './text';
+import { edgeUnit, fold, isContentWord, isStopWord, lineLength, linesOf, substance, syllablesInLine, tellingWords, wordSpan, wordsOf, cleanVerse } from './text';
 
 export const CRITERIA = ['wordplay', 'allusion', 'flow', 'wit'] as const;
 export type Criterion = (typeof CRITERIA)[number];
@@ -370,26 +370,26 @@ export function boundedByRules(player: Margins, opponent: Margins, rules: JudgeS
 //
 // Each criterion is a measurement a verse cannot raise without doing the thing
 // measured. Filler words, bare punctuation and one-word verses earn nothing:
-//   wordplay  how many different words that carry meaning (words of the language, long enough for
-//             it, not its little words). Only how many: a share of the verse's words rewarded
+//   wordplay  how many different telling words (text.ts tellingWords: words of the language that
+//             carry meaning, as the floor counts them), over as many lines as both verses have: a
+//             line added past the other verse's length adds nothing (the third check: any line put
+//             in raised wordplay by its words). Only how many: a share of the verse's words rewarded
 //             stuffing, and words strung with nothing between them won it outright (the second
 //             check's word salads; review2.test.ts measures the balance)
 //   allusion  names and telling words from the plays (the lexicon)
-//   flow      rhymes between line ends, and lines of even length
+//   flow      rhymes between line ends; lines that open alike on a word that carries meaning
+//             (anaphora); lines that grow (a crescendo builds); and lines of even length
 //   wit       words of the verse being answered, turned back on it; nothing else (an "!" at the
 //             end of a line decided it whenever no words were thrown, which is every first round)
+// Measured on labelled pairs in all sixteen languages (judge-accuracy.test.ts): the rule judge must
+// prefer the better verse at least as often as main's did.
 
 /** Most different telling words wordplay counts: past this a verse is long, not varied. */
 const MAX_VARIETY = 30;
 
-function variety(verse: string, lang: string): number {
-  const all = wordParts(verse, lang).map(fold);
-  // Words that carry meaning are long enough for their language (lang.ts `content`, as contentWords
-  // counts them) and not its little words (English has a list); strings that are not words of the
-  // language are not variety either ("ab cd ga", where it has a lexicon: text.ts lexiconHas).
-  const min = rulesFor(lang).content;
-  const telling = new Set(all.filter((w) => wordSpan(w) >= min && !isStopWord(w, lang) && lexiconHas(w, lang) !== false));
-  return Math.min(telling.size, MAX_VARIETY);
+/** Different telling words in the first `lines` lines of the verse (text.ts tellingWords). */
+function variety(verse: string, lang: string, lines: number): number {
+  return Math.min(tellingWords(linesOf(verse).slice(0, lines).join('\n'), lang).size, MAX_VARIETY);
 }
 
 /** Below anything a verse of two lines or more can score: one line has no flow to judge. */
@@ -405,10 +405,21 @@ function soundScore(verse: string, lang: string): number {
       if (rhymes(a, b, lang)) rhymed++;
     }
   }
+  // Lines that open on the line before's first word (or character), a word that carries meaning:
+  // anaphora, the drum of a speech ("Never ... / Never ..."). "The" at the head of every line is not
+  // one (keyboard mash laid out as "The qwrt night / The zxcv light" took flow by it).
+  const char = rulesFor(lang).unit === 'char';
+  const opening = ls.filter((l, i) => {
+    if (i === 0) return false;
+    const first = edgeUnit(l, lang, 'first');
+    return first !== '' && first === edgeUnit(ls[i - 1], lang, 'first') && (char || isContentWord(first, lang));
+  }).length;
   const lens = ls.map((l) => syllablesInLine(l, lang) ?? lineLength(l, lang));
+  // Three lines or more, each longer than the one before: momentum.
+  const growing = lens.length >= 3 && lens.every((n, i) => i === 0 || n > lens[i - 1]) ? 1 : 0;
   const mean = lens.reduce((a, b) => a + b, 0) / lens.length;
   const spread = Math.sqrt(lens.reduce((s, n) => s + (n - mean) ** 2, 0) / lens.length);
-  return Math.max(NO_FLOW + 1, rhymed * 2 - spread / Math.max(1, mean));
+  return Math.max(NO_FLOW + 1, rhymed * 2 + opening + growing - spread / Math.max(1, mean));
 }
 
 // The lexicon is the card catalogue's names and quotation words, which are English
@@ -448,8 +459,10 @@ function witScore(verse: string, lang: string, answered?: string): number {
 export function rulesJudge(playerVerse: string, opponentVerse: string, lang: string, lexicon: Set<string>, previousPlayerVerse?: string): JudgeSplit {
   const p = cleanVerse(playerVerse);
   const o = cleanVerse(opponentVerse);
+  const shared = Math.min(linesOf(p).length, linesOf(o).length);
   const scores: Record<Criterion, [number, number]> = {
-    wordplay: [variety(p, lang), variety(o, lang)],
+    // Line for line: a verse is not richer for running past the other's length.
+    wordplay: [variety(p, lang, shared), variety(o, lang, shared)],
     allusion: [allusionScore(p, lang, lexicon), allusionScore(o, lang, lexicon)],
     flow: [soundScore(p, lang), soundScore(o, lang)],
     wit: previousPlayerVerse !== undefined ? [witScore(p, lang, o), witScore(o, lang, cleanVerse(previousPlayerVerse))] : [witScore(p, lang), witScore(o, lang)],
