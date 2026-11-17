@@ -35,6 +35,8 @@ const picks = readTsv(join(HERE, 'picks.tsv'));
 const evidence = readTsv(join(HERE, 'names-evidence.tsv'));
 const sources = readTsv(join(HERE, 'challenges', 'sources.tsv'));
 const nameOptions = Object.values(optionKeys).flat().filter(Boolean).length;
+const handNames = readTsv(join(HERE, 'trivia-option-handnames.tsv'));
+const places = JSON.parse(readFileSync(join(HERE, 'wikidata-places.json'), 'utf8'));
 const out = [];
 const P = (...s) => out.push(...s);
 
@@ -46,12 +48,14 @@ P('# Play content: where every title, name and quotation comes from', '',
   `| Titles of works, names of characters, people and places, as trivia options (${nameOptions} of the 800 options) | Nobody: filled from the names table by \`build.mjs\` (Wikidata labels; names read in a Wikipedia article; otherwise the English name) | \`play-areas.test.ts\`: each is its source's name, or a form listed below with its reason |`,
   '| Quotations in the quote challenges | Nobody: copied from Wikisource pages by `wikisource.py take` | `verify-challenges.mjs` (each line must be in the evidence file of its source) |',
   "| Shakespeare's lines inside questions, options and story scenes | Left in English on purpose, as on the cards | `play-areas.test.ts` (quotation unchanged) |",
-  `| Trivia questions and the ${800 - nameOptions} options that are sentences or common nouns; the playground and story text | A language model (Claude), in one pass per language | Mechanical tests; \`check.mjs\` (names in questions against the table); Hunspell; back-translation by two translation models and an alignment check of the answers: see **Checks** below |`, '',
+  `| Names inside ${handNames.length} other options (Montague, Escalus, Cesario, "Brutus and Cassius", "Goneril, Regan, and Cordelia", …), not filled from the table | Typed in each language's file; every name in them checked against a source | \`play-areas.test.ts\` (handNameProblems): each is a form a Wikidata label or alias, a names-evidence line or a place's label gives, or the English name; see **Name options written in each language** |`,
+  `| Trivia questions and the ${800 - nameOptions - handNames.length} options that are sentences or common nouns; the playground and story text | A language model (Claude), in one pass per language | Mechanical tests; \`check.mjs\` (names in questions against the table); Hunspell; back-translation by two translation models and an alignment check of the answers: see **Checks** below |`, '',
   '**Not verified by a native speaker.** Nothing in the last row has been read by one. The checks below find what a tool can find; a back-translation that reads well is not proof that a sentence is idiomatic.', '',
   '## Sources', '',
   `- **Wikidata** (labels, aliases and sitelinks; CC0). Fetched ${wikidata.fetched} by \`fetch-wikidata.py\` through the public API (\`wbgetentities\`); stored whole in \`scripts/lang-content/wikidata-labels.json\`. ${Object.keys(entities).length} items.`,
   "- **Wikipedia article titles**, as Wikidata's sitelinks give them, where an item has no label in a language. A title is a name, not text.",
-  `- **Wikipedia articles** (text CC BY-SA 4.0; only names are taken from them, never text), fetched 2026-11-16 by \`wikipedia.py\`: the articles on the plays, on Shakespeare and on the Globe, one revision each, read through \`index.php\` (the API was refusing this address with HTTP 429). A name Wikidata has no label for is taken from an article only where the article has it as a word, or writes it with the English beside it ("愛麗兒（Ariel）", "Пигва (Peter Quince)"). Each such name is a line of \`scripts/lang-content/names-evidence.tsv\`: the item, the language, the name, the URL of the article revision, the date, and the words around it. ${evidence.length} lines.`,
+  `- **Wikipedia articles** (text CC BY-SA 4.0; only names are taken from them, never text), fetched 2026-11-16 by \`wikipedia.py\`: the articles on the plays, on Shakespeare and on the Globe, one revision each, read through \`index.php\` (the API was refusing this address with HTTP 429). A name Wikidata has no label for is taken from an article only where the article is the play's own (its Wikidata sitelink; for a person, place or work, the articles \`evidence.mjs\` lists), and the name stands there as the character: in the cast list, the plot, or with the English beside it ("愛麗兒（Ariel）", "Пигва (Peter Quince)"), not as part of somebody else's name (Барри Эдгар, Laurence Olivier, アーロン・ヒル) and not among film credits. Each such name is a line of \`scripts/lang-content/names-evidence.tsv\`: the item, the language, the name, the URL of the article revision, the date, and the words around it, which must be one of those sound occurrences. ${evidence.length} lines. \`node scripts/lang-content/evidence.mjs audit\` checks every line against the cached revision; \`play-areas.test.ts\` checks the article and the recorded words of every line. Before 2026-11-16 these rules did not exist, and the lines were only required to hold the word: an independent checker found six that named somebody else, and the audit 48 that broke a rule (see **Checks**). A line accepted by hand despite a rule is listed in \`evidence.mjs\` (ACCEPTED) with the reason.`,
+  `- **Wikidata labels of three places** (CC0), fetched ${places.fetched} by \`fetch-places.py\` (\`wikidata-places.json\`): Kent (${places.entities['l.kent'].id}), Cornwall (${places.entities['l.cornwall'].id}), Gloucester (${places.entities['l.gloucester'].id}). The Earl of Kent, the Duke of Cornwall and the Earl of Gloucester are named after them; in a language with no article on *King Lear* the place's label is the source for the name in their title.`,
   "- **Chinese**: labels and titles in Traditional characters were converted to Simplified by MediaWiki's own converter on zh.wikipedia.org (`zh-simplify.py`; marked `zh-hans:from` in the JSON); Chinese articles and Zhu Shenghao's translation were read as zh.wikipedia and zh.wikisource serve them in Simplified (`variant=zh-cn` / `zh-hans`).",
   '- **Wikisource** and **Aozora Bunko** (public-domain translations), fetched 2026-11-16. An Aozora file has no revision id: the evidence records the SHA-256 of the bytes read.', '');
 P('| Source id | Language | Work | Translator (died) | Page | Status |', '|---|---|---|---|---|---|');
@@ -84,8 +88,35 @@ for (const l of LANGS.filter((x) => !LATIN.has(x))) {
   const left = [...used[l].entries()].filter(([, r]) => r.how === 'english').map(([k]) => { const [key, w] = k.split('#'); return `${gameNames[key][w]} (${entities[key].id})`; });
   P(`- **${l}** (${left.length}): ${left.join(', ') || 'none'}`);
 }
+// The name options written in each language's file.
+{
+  const sources = (key, l) => {
+    const out = evidence.filter((r) => r[0] === key && r[1] === l).map((r) => r[2]);
+    if (entities[key]) out.push(nameOf(key, l).name);
+    const pl = places.entities[{ 'x.kent': 'l.kent', 'x.gloucester': 'l.gloucester', 'x.cornwall': 'l.cornwall' }[key]];
+    if (pl?.labels[l === 'zh' ? 'zh-hans' : l === 'pt' ? 'pt-br' : l]) out.push(pl.labels[l === 'zh' ? 'zh-hans' : l === 'pt' ? 'pt-br' : l]);
+    return out;
+  };
+  P('', '### Name options written in each language', '',
+    `${handNames.length} options name characters the names table has no item for (Montague, Capulet, Escalus of Verona and Escalus of Vienna, Cesario, Katherina, Edgar, Kent, Cornwall, Vincentio, …) or several characters at once ("Brutus and Cassius", "Goneril, Regan, and Cordelia", "Juliet in Romeo and Juliet"). They are written in each language's \`trivia/<lang>.txt\`, and \`trivia-option-handnames.tsv\` names the characters in each. Every name in them must be a form a source gives for that character in that language (a Wikidata label or alias, a line of names-evidence.tsv, the place's label for the earls), or the English name; a stem is enough in Polish and Russian. "Duke Senior" is a description (the elder, exiled duke), translated like "Thane of Glamis", and is not among them.`, '',
+    '| Language | Options | Every name from a source | With an English name |', '|---|---|---|---|');
+  for (const l of LANGS) {
+    const m = readFileSync(join(HERE, 'trivia', `${l}.txt`), 'utf8').split('\n').filter((x) => x.trim() && !x.startsWith('#')).map((x) => x.split(' | ').map((y) => y.trim()));
+    const byN = new Map(m.map((r) => [r[0], r]));
+    let sourced = 0, english = 0;
+    for (const [n, i, keys, names] of handNames) {
+      const text = (byN.get(n)?.[2 + Number(i)] ?? '').toLocaleLowerCase(l);
+      const en = names.split('|');
+      const ks = keys.split(',');
+      if (ks.every((k, j) => sources(k, l).some((f) => f && text.includes(f.toLocaleLowerCase(l).slice(0, ['ru', 'pl'].includes(l) && f.length > 4 ? Math.ceil(f.length * 0.7) : undefined))))) sourced++;
+      else if (ks.some((k, j) => text.includes(en[j].toLocaleLowerCase(l)))) english++;
+    }
+    P(`| ${l} | ${handNames.length} | ${sourced} | ${english} |`);
+  }
+  P('', 'The two columns need not add up: an option listed in `trivia-option-forms.tsv` (an inflected or shortened form) is in neither.', '');
+}
 P('', '### Names chosen (`picks.tsv`)', '',
-  "A pick overrides the label: where the label is of something else (a real king, not the play's character; the historical Porcia, not Brutus's wife as the play names her), carries a title or a disambiguator, or is missing. \"Found in\" names the source that has the form. **Not found** means no source held here has it; in the languages not written in Latin letters no such pick is left that is a name in that script, only translated common nouns (\"Битва при Александрии\").", '',
+  "A pick overrides the label: where the label is of something else (a real king, not the play's character; the historical Porcia, not Brutus's wife as the play names her), carries a title or a disambiguator, or is missing. \"Found in\" names the source that has the form. **Not found** means no source held here has it; what is left not found is a title or a common noun translated (\"Sonett 116\", «Лебедь» for the Swan, 中篇 for Part 2), at times around a place's own name (\"Битва при Александрии\", \"알렉산드리아 전투\": Alexandria as the city is called in those languages); no name of a person in a script other than Latin is left without a source.", '',
   '| Item | Name in the game | Language | Picked | Found in | Note |', '|---|---|---|---|---|---|');
 let unsourced = 0;
 for (const [k, lang, name, note] of picks) {
@@ -146,6 +177,12 @@ if (al) {
   P('**Answers** (`qa/align.py`): the back-translation of each translated option, compared with all four English options of its question. Misplaced means closer to another option than to its own: a changed answer, or a swap. Ten controls per language file one option\'s translation under another\'s place and must come out misplaced.', '',
     '| Language | Engine | Options | Misplaced | Controls caught |', '|---|---|---|---|---|');
   for (const r of al.rows) P(`| ${r.lang} | ${r.engine} | ${r.options} | ${r.misplaced} | ${r.controlsCaught}/${r.controls} |`);
+  P('');
+}
+const sw = json('play-spell-whole-words.json');
+if (sw) {
+  P(`**Spelling of Korean, Thai and Hindi** (${sw.run}): each word asked of Hunspell whole, as the shared pipeline's hspell does; an earlier run here used the hunspell command, which cuts Thai and Devanagari words at their vowel signs, and wrongly concluded that these dictionaries could not be used. Each run had one planted non-word, which it rejected.`, '', '| Language | Words | Rejected | Planted word | Real errors | Read |', '|---|---|---|---|---|---|');
+  for (const [l, s] of Object.entries(sw.languages)) P(`| ${l} | ${s.words} | ${s.rejected} | ${s.planted} | ${s.errors} | ${s.read} |`);
   P('');
 }
 if (sp) {

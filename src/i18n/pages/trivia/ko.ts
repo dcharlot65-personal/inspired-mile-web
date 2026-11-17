@@ -39,7 +39,7 @@ const messages: Record<string, string> = {
   'trivia.7.q': "셰익스피어의 극장 이름은 무엇일까요?",
   'trivia.7.o0': "글로브 극장",
   'trivia.7.o1': "로즈 극장",
-  'trivia.7.o2': "스완 극장",
+  'trivia.7.o2': "The Swan Theatre",
   'trivia.7.o3': "왕립 극장",
   'trivia.8.q': "다음 중 셰익스피어의 희극은 무엇일까요?",
   'trivia.8.o0': "한여름 밤의 꿈",

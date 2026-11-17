@@ -78,9 +78,9 @@ h.shakespeare	pl	William Szekspir	the form Polish uses, and the core Polish loca
 h.shakespeare#1	pl	Szekspir	the form Polish uses, and the core Polish locale of this site
 c.romeo	pl	Romeo
 c.portia	pl	Porcja	as in the Polish translations; the item has no Polish label
-c.caliban	pl	Kaliban	as in the Polish translations; the item has no Polish label
+c.caliban	pl	Kaliban	the item has no Polish label; pl.wikipedia's Burza (sztuka) names him so (names-evidence.tsv)
 c.banquo	pl	Banko	as in the Polish translations
-c.ferdinand	pl	Ferdynand	as in the Polish translations; the item has no Polish label
+c.ferdinand	pl	Ferdynand	the item has no Polish label; pl.wikipedia's Burza (sztuka) names him so (names-evidence.tsv)
 w.sonnet130	pl	Sonet 130
 w.sonnet18	pl	Sonet 18
 w.sonnet1	pl	Sonet 1
@@ -189,10 +189,9 @@ c.edmund	ko	에드먼드	the usual Korean form; the item has no Korean label
 c.fortinbras	ko	포틴브라스	the usual Korean form; the item has no Korean label
 p.pericles	ko	페리클레스	the usual Korean title; the item has no Korean label
 p.cymbeline	ko	심벨린	the usual Korean title; the item has no Korean label
-p.faustus	ko	포스터스 박사	the usual Korean title; the item has no Korean label
+p.faustus	ko	포스터스 박사	the item has no Korean label; ko.wikipedia's 크리스토퍼 말로 names it so (names-evidence.tsv)
 c.alonso	ko	알론소	the usual Korean form; the item has no Korean label
-l.rose	ko	로즈 극장	the item has no Korean label
-l.swan	ko	스완 극장	the item has no Korean label
+l.rose	ko	로즈 극장	the item has no Korean label; ko.wikipedia's 크리스토퍼 말로 names it so (names-evidence.tsv)
 b.alexandria	ko	알렉산드리아 전투	the item has no Korean label
 w.pyramus	ko	피라모스와 티스베	the item has no Korean label
 w.hero	ko	헤로와 레안드로스	the item has no Korean label

@@ -68,7 +68,9 @@ const OWN = {
   'h.octavius': ['p.caesar', 'p.antony'], 'h.porcia': ['p.caesar'], 'h.henry5': ['p.henry5'],
   'h.cassius': ['p.caesar'], 'h.cicero': ['p.caesar'], 'h.casca': ['p.caesar'], 'h.caesar': ['p.caesar'],
   'h.blount': ['w.folio'], 'h.jaggard': ['w.folio', 'w.sonnets'], 'l.arden': ['p.asyou'],
-  'l.dunsinane': ['p.macbeth'], 'l.elsinore': ['p.hamlet'], 'l.rose': ['h.shakespeare'], 'l.globe': ['h.shakespeare'],
+  'l.dunsinane': ['p.macbeth'], 'l.elsinore': ['p.hamlet'], 'l.rose': ['h.shakespeare', 'h.marlowe'], 'l.globe': ['h.shakespeare'],
+  // Marlowe's own play, in the list of his works in the article on him.
+  'p.faustus': ['h.marlowe'],
   // Ovid's Pyramus and Thisbe and Marlowe's Hero and Leander, named as sources of Romeo and Juliet and in the plays that use them.
   'w.pyramus': ['p.romeo', 'p.dream'], 'w.hero': ['p.romeo', 'p.asyou'],
 };
