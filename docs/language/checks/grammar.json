@@ -3195,22 +3195,6 @@
      ]
     },
     {
-     "id": "RL-002",
-     "field": "name",
-     "text": "O cajado de Prospero",
-     "matches": [
-      {
-       "rule": "LP_PARONYMS",
-       "category": "CONFUSED_WORDS",
-       "message": "Quando escrita sem acento, esta palavra é um verbo. Se pretende referir-se a um substantivo ou adjetivo, deve utilizar a forma acentuada.",
-       "found": "Prospero",
-       "suggestions": [
-        "Próspero"
-       ]
-      }
-     ]
-    },
-    {
      "id": "TP-003",
      "field": "scene",
      "text": "A boca de uma caverna numa costa selvagem. Caliban se agacha entre as rochas, com os olhos ardendo de rancor e de uma inteligência primitiva.",
@@ -3527,22 +3511,6 @@
      ]
     },
     {
-     "id": "TP-004",
-     "field": "scene",
-     "text": "Uma praia intocada na ilha de Prospero. Miranda vê os náufragos pela primeira vez, de olhos arregalados de espanto diante de um mundo que ela não sabia que existia.",
-     "matches": [
-      {
-       "rule": "LP_PARONYMS",
-       "category": "CONFUSED_WORDS",
-       "message": "Quando escrita sem acento, esta palavra é um verbo. Se pretende referir-se a um substantivo ou adjetivo, deve utilizar a forma acentuada.",
-       "found": "Prospero",
-       "suggestions": [
-        "Próspero"
-       ]
-      }
-     ]
-    },
-    {
      "id": "RL-009",
      "field": "quote",
      "text": "Deus te abençoe, Bottom! Estás transformado!",
@@ -3775,9 +3743,9 @@
     "FA-002|quote": "3eae120f6d839b42",
     "RL-001|scene": "5ee150acf226fdab",
     "RL-001|name": "d8c0b6289cfcfe34",
-    "RL-002|scene": "7c48ab2b668746f5",
+    "RL-002|scene": "2130e95e6b1b9ff0",
     "RL-002|quote": "a34f57d66d3b96bb",
-    "RL-002|name": "45f54950414c0704",
+    "RL-002|name": "12a9bd8963224d6a",
     "PT-001|scene": "e03c2bfad63fb7f1",
     "PT-001|quote": "39a2e49f9eac0bb3",
     "PT-001|name": "f29f17110ec53826",
@@ -3790,7 +3758,7 @@
     "VC-002|quote": "400f40814fd50d0e",
     "VC-003|scene": "6a3158613eebfd20",
     "VC-003|quote": "f3588caa23a48497",
-    "TP-001|scene": "5ac2d6e8364b69c0",
+    "TP-001|scene": "3dd1fb99f17b5b25",
     "TP-001|quote": "f9d461f509aa954f",
     "TP-002|scene": "7631ea3891e97a45",
     "TP-002|quote": "62e51f87854fdaa4",
@@ -3839,7 +3807,7 @@
     "FA-004|quote": "6e619becd0b79794",
     "VC-004|scene": "ad1e22a2ca2af481",
     "VC-004|quote": "baa3e64a1260b34b",
-    "TP-004|scene": "ff74dda37a0af03b",
+    "TP-004|scene": "48918af78508b64e",
     "TP-004|quote": "70b250deef5a5608",
     "RL-004|scene": "788770b73afa8615",
     "RL-004|quote": "c978b444e7cf7164",
@@ -4541,7 +4509,7 @@
    }
   },
   "ru": {
-   "items": 219,
+   "items": 199,
    "flagged": [
     {
      "id": "CA-001",
@@ -4707,22 +4675,6 @@
      ]
     },
     {
-     "id": "TP-002",
-     "field": "quote",
-     "text": "Привет тебе, великий господин! Почтенный повелитель, привет!",
-     "matches": [
-      {
-       "rule": "POZHALUJSTA",
-       "category": "PUNCTUATION",
-       "message": "Пропущена запятая: «Привет, тебе».",
-       "found": "Привет тебе",
-       "suggestions": [
-        "Привет, тебе"
-       ]
-      }
-     ]
-    },
-    {
      "id": "TP-003",
      "field": "scene",
      "text": "Вход в пещеру на диком берегу. Калибан притаился среди скал, его глаза горят обидой и первобытным умом.",
@@ -4736,24 +4688,6 @@
         "Талибан",
         "Калбан",
         "Калибин"
-       ]
-      }
-     ]
-    },
-    {
-     "id": "TP-003",
-     "field": "quote",
-     "text": "Этот остров мой, он достался мне от Сикораксы, моей матери.",
-     "matches": [
-      {
-       "rule": "MORFOLOGIK_RULE_RU_RU",
-       "category": "TYPOS",
-       "message": "Возможно найдена орфографическая ошибка.",
-       "found": "Сикораксы",
-       "suggestions": [
-        "Сикорскисы",
-        "Сикорук",
-        "Сикорука"
        ]
       }
      ]
@@ -5193,21 +5127,13 @@
     "PT-002|quote": "05bf8558d30e79a0",
     "PT-002|name": "f41f24820df4f0f8",
     "VC-001|scene": "63cc36f7f8793b39",
-    "VC-001|quote": "bb928889765384fe",
     "VC-002|scene": "99c9cf4a4b79d09f",
-    "VC-002|quote": "36705179725b9789",
     "VC-003|scene": "0f34f45ac93cb960",
-    "VC-003|quote": "6b5ce8695787ed74",
     "TP-001|scene": "86635c6bfbad6b00",
-    "TP-001|quote": "da25191d44a8938e",
     "TP-002|scene": "e4a2dcffad381cf3",
-    "TP-002|quote": "347eb2477bc39385",
     "TP-003|scene": "702348d91ac2ca81",
-    "TP-003|quote": "fe622df573f490d5",
     "MO-003|scene": "f12eab8679174385",
-    "MO-003|quote": "019d508c552dbdbf",
     "CA-002|scene": "db6086a0bf4d54ca",
-    "CA-002|quote": "052b1d44246edb40",
     "DC-003|scene": "92998e850d39d6d5",
     "FA-003|scene": "ee055840ae24f02b",
     "FA-003|quote": "e122ec4d82583f6d",
@@ -5224,33 +5150,24 @@
     "SC-003|scene": "c66bfc467b763645",
     "SC-003|quote": "c787b55bc5407b62",
     "IL-001|scene": "ef141268e779f565",
-    "IL-001|quote": "790ec52e4990ab5c",
     "IL-002|scene": "73d2f74818b9aade",
-    "IL-002|quote": "ba94df4cd64f18d7",
     "IL-003|scene": "4c9b903a56dd9640",
     "IL-003|quote": "5d98b9c4721772d1",
     "RM-001|scene": "3d6fb045ea855469",
     "RM-002|scene": "f07ba0c980816d78",
     "RM-003|scene": "46fbc246712fdc7d",
     "MO-004|scene": "83a8e8a9190e2c44",
-    "MO-004|quote": "e2084224be6dc594",
     "MO-004|name": "a4ce49374754b14e",
     "CA-003|scene": "b53fe74a7989f056",
-    "CA-003|quote": "c75a1beb211086f5",
     "CA-003|name": "8e031afa40422224",
     "DC-004|scene": "5f3ce585b4e42a0c",
-    "DC-004|quote": "2b51a88671854630",
     "FA-004|scene": "a77e98ba13d6d98d",
     "FA-004|quote": "fce1c28572b58f78",
     "VC-004|scene": "6518bf8be01ded3d",
-    "VC-004|quote": "6f8acd164faf53e9",
     "TP-004|scene": "c8e74a1439fb9a28",
-    "TP-004|quote": "210733541e68fd5b",
     "RL-004|scene": "4b7e014f580de4c6",
-    "RL-004|quote": "98dfa6384edf8854",
     "RL-004|name": "b8a42c8e5a54f16d",
     "RL-005|scene": "285d8b13ac5b823a",
-    "RL-005|quote": "ee0c54d602fae586",
     "RL-005|name": "1a69a1c5c1d83b47",
     "RL-006|scene": "56372b6cc62e7ced",
     "RL-006|quote": "4a44dce9bad18358",
@@ -5269,16 +5186,13 @@
     "PT-005|quote": "6380b5eb6e297f28",
     "PT-005|name": "4d2a4579170af16e",
     "PT-006|scene": "16ac0cf8a98b5c09",
-    "PT-006|quote": "e322e70eb15df514",
     "PT-006|name": "e5f33fab0eb8646c",
     "PT-007|scene": "f335c05327e4a433",
     "PT-007|quote": "36c4612bd622a80f",
     "PT-007|name": "f46222fc29351f89",
     "PT-008|scene": "f7ba24134126ca67",
-    "PT-008|quote": "440206ec4f27a85b",
     "PT-008|name": "50c81cd10b0ffbb2",
     "PT-009|scene": "5c735612ad02f60b",
-    "PT-009|quote": "642eb66e0d7cb6b1",
     "PT-009|name": "5e25eaa0dcfcde39",
     "LD-001|scene": "9ec24f728eac3c28",
     "LD-001|quote": "d1c580d89a7dc67f",
@@ -5695,6 +5609,7 @@
        "message": "وُجد خطأ إملائي محتمل",
        "found": "بروسبيرو",
        "suggestions": [
+        "بروس بيرو",
         "بروبير",
         "بروسي"
        ]
@@ -5712,6 +5627,7 @@
        "message": "وُجد خطأ إملائي محتمل",
        "found": "بروسبيرو",
        "suggestions": [
+        "بروس بيرو",
         "بروبير",
         "بروسي"
        ]
@@ -5930,7 +5846,8 @@
        "message": "وُجد خطأ إملائي محتمل",
        "found": "بنفوليو",
        "suggestions": [
-        "بنجوليو"
+        "بنجوليو",
+        "بنابولي"
        ]
       }
      ]
@@ -6194,7 +6111,8 @@
        "found": "اسكتلندية",
        "suggestions": [
         "إسكتلندية",
-        "إسكتلنديه"
+        "إسكتلنديه",
+        "اسكت لندية"
        ]
       },
       {
@@ -7571,8 +7489,9 @@
        "message": "وُجد خطأ إملائي محتمل",
        "found": "بيرسيفون",
        "suggestions": [
-        "بيونسيف",
-        "يرسفون"
+        "بير سيفون",
+        "بيرس يفون",
+        "بيونسيف"
        ]
       }
      ]
@@ -7845,7 +7764,7 @@
     "RL-005|quote": "758486b20865989d",
     "RL-005|name": "bb806366387da1ab",
     "RL-006|scene": "ee0e7e76ee185141",
-    "RL-006|quote": "9336242d65155dc3",
+    "RL-006|quote": "60689536613876ef",
     "RL-006|name": "e95ef2b6fa84a61f",
     "RL-007|scene": "5bc1570e9bf6c32e",
     "RL-007|quote": "d5e7d2ad3a8469b9",

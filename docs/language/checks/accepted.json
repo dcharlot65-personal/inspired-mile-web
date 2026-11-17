@@ -1666,14 +1666,6 @@
   },
   {
    "lang": "pt",
-   "id": "RL-002",
-   "field": "name",
-   "rule": "LP_PARONYMS",
-   "found": "Prospero",
-   "reason": "\"Prospero\" is the Wikidata label the card uses (TP-001); the relic name follows it"
-  },
-  {
-   "lang": "pt",
    "id": "TP-003",
    "field": "scene",
    "rule": "MORFOLOGIK_RULE_PT_BR",
@@ -1823,14 +1815,6 @@
    "rule": "MORFOLOGIK_RULE_PT_BR",
    "found": "Titania",
    "reason": "a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it"
-  },
-  {
-   "lang": "pt",
-   "id": "TP-004",
-   "field": "scene",
-   "rule": "LP_PARONYMS",
-   "found": "Prospero",
-   "reason": "\"Prospero\" is the Wikidata label the card uses (TP-001)"
   },
   {
    "lang": "pt",

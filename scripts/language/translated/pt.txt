@@ -3,7 +3,7 @@ The Sonnet Man
 Senhor Montéquio
 Senhora Capuleto
 A caveira de Yorick
-O cajado de Prospero
+O cajado de Próspero
 O punhal da mente
 O anel de Romeu
 O cofre de Pórcia
@@ -108,13 +108,13 @@ MO-002	Uma rua de Verona irrompe em caos. Mercutio dança entre as lâminas, rin
 FA-001	A floresta encantada cintila de travessura. Puck se esgueira entre carvalhos antigos, deixando rastros de pó de fada. Lá embaixo, mortais adormecidos sonham sonhos estranhos.
 FA-002	Um trono de trepadeiras vivas se ergue do chão da floresta. Titania comanda sua corte de fadas enquanto os vaga-lumes iluminam a copa das árvores. A própria natureza se curva à sua vontade.
 RL-001	Uma caveira repousa sobre veludo numa cripta sombria. Um riso fantasmagórico ecoa enquanto as memórias do bobo da corte tremeluzem como a luz de uma vela.
-RL-002	Um cajado nodoso crepita de energia arcana. A tempestade rodopia à sua volta enquanto Prospero sussurra seu último feitiço. O relâmpago rasga o céu.
+RL-002	Um cajado nodoso crepita de energia arcana. A tempestade rodopia à sua volta enquanto Próspero sussurra seu último feitiço. O relâmpago rasga o céu.
 PT-001	Um frasco luminoso pulsa com luz rosada. Corações sobem de sua superfície enquanto uma doce melodia enche o ar.
 PT-002	Um caldeirão borbulhante solta fumaça verde. Três figuras sombrias o rodeiam, entoando cânticos. Olhos brilham na floresta escura.
 VC-001	O Príncipe está nos degraus do palácio de Verona; sua voz impõe silêncio à multidão em conflito. Um cetro dourado arde de autoridade.
 VC-002	Uma cela de mosteiro à luz de velas. O frade cuida de seu jardim de ervas e venenos, com a sabedoria gravada no rosto curtido pelo tempo.
 VC-003	Uma cozinha acolhedora na casa dos Capuleto. A ama anda atarefada com devoção feroz, uma carta secreta guardada no avental.
-TP-001	Uma ilha envolta em tempestade. Prospero ergue as mãos enquanto o relâmpago obedece à sua vontade e o mar se agita a seu comando.
+TP-001	Uma ilha envolta em tempestade. Próspero ergue as mãos enquanto o relâmpago obedece à sua vontade e o mar se agita a seu comando.
 TP-002	Um espírito cintilante se dissolve em vento e luz e se refaz em música. Ariel dança entre o visível e o invisível.
 TP-003	A boca de uma caverna numa costa selvagem. Caliban se agacha entre as rochas, com os olhos ardendo de rancor e de uma inteligência primitiva.
 MO-003	Uma praça de Verona ao amanhecer. Benvolio está entre espadas desembainhadas; suas mãos abertas são a única arma contra a tempestade que se forma.
@@ -137,7 +137,7 @@ CA-003	O grande salão dos Capuleto, forrado de seda. A senhora Capuleto arranja
 DC-004	As ameias de Elsinore na hora fria antes do alvorecer. Horatio vigia ao lado de Hamlet, o único amigo verdadeiro numa corte de serpentes.
 FA-004	Uma clareira da floresta banhada de luz de fadas. Bottom usa uma cabeça de burro com perplexa dignidade enquanto Titania o cobre de guirlandas. As fadas abafam o riso.
 VC-004	O cemitério de Verona ao anoitecer. Paris deposita flores no túmulo de Julieta, sem saber do amante desesperado que se aproxima vindo das sombras.
-TP-004	Uma praia intocada na ilha de Prospero. Miranda vê os náufragos pela primeira vez, de olhos arregalados de espanto diante de um mundo que ela não sabia que existia.
+TP-004	Uma praia intocada na ilha de Próspero. Miranda vê os náufragos pela primeira vez, de olhos arregalados de espanto diante de um mundo que ela não sabia que existia.
 RL-004	Um anel de ouro repousa no parapeito de pedra de uma sacada e capta o luar. Por dentro, traz gravado um voto que sobrevive à própria morte. Pétalas de rosa rodopiam à sua volta num vento invisível.
 RL-005	Três cofres brilham num aposento à luz de velas: ouro, prata e chumbo. O cofre de chumbo vibra com uma verdade serena e recompensa quem é sábio o bastante para ver além das aparências.
 RL-006	Uma coroa escocesa embaçada repousa numa almofada manchada de sangue. Pulsa de ambição sombria e sussurra promessas de glória a qualquer mão que ouse se estender para ela.

@@ -207,6 +207,51 @@
    "old": "mang theo một lọ nhựa hebona đáng nguyền rủa.",
    "new": "mang theo nhựa hebona đáng nguyền rủa trong một chiếc lọ.",
    "round": "this round"
+  },
+  {
+   "lang": "pt",
+   "id": "RL-002",
+   "field": "name",
+   "finding": "LanguageTool LP_PARONYMS (and an independent check, 2026-11-16): unaccented \"Prospero\" is the verb \"prospero\", \"I prosper\"; Portuguese writes the name Próspero (pt.wikipedia.org, \"A Tempestade\", revision 72539005), and the card name TP-001 now does too",
+   "old": "O cajado de Prospero",
+   "new": "O cajado de Próspero",
+   "round": "second pass"
+  },
+  {
+   "lang": "pt",
+   "id": "RL-002",
+   "field": "scene",
+   "finding": "LanguageTool LP_PARONYMS (and an independent check, 2026-11-16): unaccented \"Prospero\" is the verb \"prospero\", \"I prosper\"; Portuguese writes the name Próspero (pt.wikipedia.org, \"A Tempestade\", revision 72539005), and the card name TP-001 now does too",
+   "old": "… enquanto Prospero sussurra …",
+   "new": "… enquanto Próspero sussurra …",
+   "round": "second pass"
+  },
+  {
+   "lang": "pt",
+   "id": "TP-001",
+   "field": "scene",
+   "finding": "LanguageTool LP_PARONYMS (and an independent check, 2026-11-16): unaccented \"Prospero\" is the verb \"prospero\", \"I prosper\"; Portuguese writes the name Próspero (pt.wikipedia.org, \"A Tempestade\", revision 72539005), and the card name TP-001 now does too",
+   "old": "… Prospero ergue as mãos …",
+   "new": "… Próspero ergue as mãos …",
+   "round": "second pass"
+  },
+  {
+   "lang": "pt",
+   "id": "TP-004",
+   "field": "scene",
+   "finding": "LanguageTool LP_PARONYMS (and an independent check, 2026-11-16): unaccented \"Prospero\" is the verb \"prospero\", \"I prosper\"; Portuguese writes the name Próspero (pt.wikipedia.org, \"A Tempestade\", revision 72539005), and the card name TP-001 now does too",
+   "old": "… na ilha de Prospero …",
+   "new": "… na ilha de Próspero …",
+   "round": "second pass"
+  },
+  {
+   "lang": "ar",
+   "id": "RL-006",
+   "field": "quote",
+   "finding": "an independent check (2026-11-16): to render \"Uneasy lies the head\" the word must be the circumstantial accusative (ḥāl) قلقًا; as written, قلق is the noun \"anxiety\", and MADLAD read the line as \"Anxiety lies on the head…\" (cos 0.78), which no tool flagged",
+   "old": "قلق يرقد الرأس الذي يلبس التاج.",
+   "new": "قلقًا يرقد الرأس الذي يلبس التاج.",
+   "round": "second pass"
   }
  ]
 }
