@@ -201,12 +201,18 @@ export const env = { backends: { onnx: { wasm: { wasmPaths: {
 
     const options = page.locator('#language option');
     await expect(options).toHaveCount(16);
-    const marks = await options.evaluateAll((os) => os.map((o) => [(o as HTMLOptionElement).value, (o as HTMLOptionElement).dataset.opponent, o.textContent!.includes('Written opponent')]));
-    for (const [code, opponent, marked] of marks) {
+    // Each language sits under the heading of who writes there; the option itself is the language's
+    // name alone, so the chosen one is never cut short on a phone ("Thailändisch · Gegner mit…").
+    const marks = await options.evaluateAll((os) => os.map((o) => [(o as HTMLOptionElement).value, (o as HTMLOptionElement).dataset.opponent, (o.parentElement as HTMLOptGroupElement).label ?? null, o.textContent]));
+    for (const [code, opponent, heading, text] of marks) {
       const writes = m.writesIn.includes(code as string);
       expect(opponent, `${code}: who writes`).toBe(writes ? 'model' : 'written');
-      expect(marked, `${code}: marked "Written opponent"`).toBe(!writes);
+      expect(heading, `${code}: the group it is listed under`).toBe(writes ? `${m.label} · on this device` : 'Written opponent');
+      expect(text, `${code}: the option is the language's name alone`).not.toContain('·');
     }
+    // The note describes the picker; inside its label it would become part of the picker's name.
+    await expect(page.locator('label #language-note')).toHaveCount(0);
+    await expect(page.locator('#language')).toHaveAttribute('aria-describedby', 'language-note');
 
     const note = page.locator('#language-note');
     if (both) {
@@ -230,6 +236,34 @@ export const env = { backends: { onnx: { wasm: { wasmPaths: {
       await expect(note).toHaveAttribute('data-judge', 'rules');
       await expect(note).toContainText(`you face the written opponent, because ${m.label} has not shown it can write verse well`);
       await expect(note).toContainText('judged by rule');
+      // Two facts, two lines: nothing joins them, so Chinese and Japanese get no space after 。
+      await expect(note.locator(':scope > span')).toHaveCount(2);
+    }
+  });
+
+  test('in a Chinese or Japanese interface the two lines of the note carry no space after the full stop', async ({ page }) => {
+    // A model and a language it neither writes nor judges in, so the note has both lines. ?brain= loads
+    // any model, used anywhere or not; the lists decide which pair there is.
+    const all = ['en', 'es', 'fr', 'de', 'it', 'pt', 'pl', 'ru', 'ar', 'hi', 'zh', 'ja', 'ko', 'vi', 'th', 'id'];
+    const pick = (['grand', 'standard', 'lite'] as const).flatMap((tier) => all.filter((l) => !MODELS[tier].writesIn.includes(l) && !MODELS[tier].judgesIn.includes(l)).map((l) => ({ tier, l })))[0];
+    expect(pick, 'a model and a language with a two-line note').toBeTruthy();
+    const { tier, l: neither } = pick!;
+    const m = MODELS[tier];
+    await page.addInitScript(() => {
+      Object.defineProperty(Navigator.prototype, 'gpu', { configurable: true, get: () => ({ requestAdapter: async () => ({ features: new Set(['shader-f16']) }) }) });
+    });
+    await page.route(/huggingface[_/]transformers/, (route) => route.fulfill({ contentType: 'text/javascript', body: STUB }));
+    for (const ui of ['ja', 'zh']) {
+      await page.addInitScript((l) => localStorage.setItem('inspired-mile-locale', l), ui);
+      await page.goto(`/battle?brain=${tier}&seed=11`);
+      await expect(page.locator('html')).toHaveAttribute('lang', ui);
+      await expect(page.locator('#brain-status')).toContainText(m.label);
+      await page.selectOption('#language', neither!);
+      const note = page.locator('#language-note');
+      await expect(note.locator(':scope > span')).toHaveCount(2);
+      const text = await note.evaluate((n) => n.textContent ?? '');
+      expect(text, `${ui}: the note as read`).toContain('。');
+      expect(text, `${ui}: no space after a full stop`).not.toMatch(/。\s/);
     }
   });
 });

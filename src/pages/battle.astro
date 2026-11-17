@@ -43,11 +43,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                 <option value="master" data-i18n="battle.difficulty.master">Master: picks the best of three drafts</option>
               </select>
             </label>
-            <label class="block">
-              <span class="text-xs uppercase tracking-wider text-obsidian-500" data-i18n="battle.duelLanguage">Language of the duel</span>
-              <select id="language" class="mt-1 w-full bg-obsidian-900 border border-obsidian-700 rounded-lg px-3 py-2 text-sm text-obsidian-100"></select>
-              <span id="language-note" class="hidden mt-1 block text-xs text-obsidian-400" role="status"></span>
-            </label>
+            <div>
+              <label class="block">
+                <span class="text-xs uppercase tracking-wider text-obsidian-500" data-i18n="battle.duelLanguage">Language of the duel</span>
+                <select id="language" aria-describedby="language-note" class="mt-1 w-full bg-obsidian-900 border border-obsidian-700 rounded-lg px-3 py-2 text-sm text-obsidian-100"></select>
+              </label>
+              <!-- Outside the label, so it describes the picker instead of becoming part of its name. -->
+              <div id="language-note" class="hidden mt-1 text-xs text-obsidian-400" role="status"></div>
+            </div>
           </div>
         </div>
 
@@ -310,20 +313,26 @@ import BaseLayout from '../layouts/BaseLayout.astro';
      * Every language the game has verse data for is offered, with or without a model.
      * What changes with a model is who the player meets: in a language the loaded model
      * has not been shown to write verse in (docs/language/MODEL-EVAL.md) the opponent
-     * plays written verse, and the picker says so beside the language's name.
+     * plays written verse. With a model loaded the picker lists the languages in two groups,
+     * headed by who writes ("Gemma 4 E2B · on this device", "Written opponent"); the chosen
+     * language shows its name alone, so a long group name is never cut short on a phone, and
+     * the note under the picker says why.
      */
     function fillLanguages(prefer?: string) {
       const want = prefer ?? params.get('lang') ?? localStorage.getItem('inspired-mile-duel-lang') ?? locale();
       const info = useModel ? brainInfo() : null;
       langSelect.replaceChildren();
+      const group = (label: string) => { const g = document.createElement('optgroup'); g.label = label; return g; };
+      const groups = info ? { model: group(t('badge.onDevice', { model: info.label })), written: group(t('badge.written')) } : null;
       for (const code of offered) {
         const o = document.createElement('option');
         o.value = code;
-        const written = !!info && !modelWrites(info, code);
-        o.dataset.opponent = info ? (written ? 'written' : 'model') : 'written';
-        o.textContent = written ? `${languageName(code)} · ${t('badge.written')}` : languageName(code);
-        langSelect.appendChild(o);
+        o.textContent = languageName(code);
+        const writer = info && modelWrites(info, code) ? 'model' : 'written';
+        o.dataset.opponent = writer;
+        (groups ? groups[writer] : langSelect).appendChild(o);
       }
+      if (groups) for (const g of [groups.model, groups.written]) if (g.children.length) langSelect.appendChild(g);
       langSelect.value = offered.includes(want) ? want : 'en';
       languageNote();
     }
@@ -335,7 +344,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       const lines: string[] = [];
       if (info && !modelWrites(info, lang)) lines.push(t('battle.lang.written', { language: languageName(lang), model: info.label }));
       if (info && !modelJudges(info, lang)) lines.push(t('battle.lang.rules', { language: languageName(lang), model: info.label }));
-      note.textContent = lines.join(' ');
+      // One line per fact, each its own block: no joining space, which Chinese and Japanese do not put after 。
+      note.replaceChildren(...lines.map((line) => el('span', 'block', line)));
       note.dataset.writer = info && modelWrites(info, lang) ? 'model' : 'written';
       note.dataset.judge = info && modelJudges(info, lang) ? 'model' : 'rules';
       note.classList.toggle('hidden', lines.length === 0);

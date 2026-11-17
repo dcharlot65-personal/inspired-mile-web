@@ -83,13 +83,14 @@ for (const tier of TIERS) {
     await page.goto(`/battle?seed=11&brain=${tier}`);
     await expect(page.locator('#start-duel')).toBeEnabled({ timeout: 12 * 60 * 1000 });
     await expect(page.locator('#brain-status')).toContainText(LABEL[tier]);
-    const options = await page.locator('#language option').evaluateAll((os) => os.map((o) => ({ code: (o as HTMLOptionElement).value, opponent: (o as HTMLOptionElement).dataset.opponent, text: o.textContent ?? '' })));
+    const options = await page.locator('#language option').evaluateAll((os) => os.map((o) => ({ code: (o as HTMLOptionElement).value, opponent: (o as HTMLOptionElement).dataset.opponent, heading: (o.parentElement as HTMLOptGroupElement).label ?? null, text: o.textContent ?? '' })));
     expect(options.length).toBe(16);
     for (const o of options) {
       const writes = spec.writesIn.includes(o.code);
       expect(o.opponent, o.code).toBe(writes ? 'model' : 'written');
-      // "Written opponent" stands beside the name of a language the model does not write in, and only there.
-      expect(o.text.includes('Written opponent'), `${o.code}: "${o.text}"`).toBe(!writes);
+      // A language the model does not write in is listed under "Written opponent", and only such a one.
+      expect(o.heading, `${o.code}: listed under`).toBe(writes ? `${LABEL[tier]} · on this device` : 'Written opponent');
+      expect(o.text, `${o.code}: the language's name alone`).not.toContain('·');
     }
     for (const code of ['en', 'th', 'ja', 'es']) {
       await page.selectOption('#language', code);
