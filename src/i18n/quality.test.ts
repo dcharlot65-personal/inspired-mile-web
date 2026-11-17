@@ -21,6 +21,7 @@ import { checkCitations, checkGlossary, checkNameExceptions } from '../../script
 import { checkWords, wordsToCheck } from '../../scripts/lang/lib/words.mjs';
 // @ts-expect-error as above
 import { RULE_TOLD_TO_CASTER } from '../../scripts/lang/lib/context.mjs';
+import { startsRtl, wrapUnits } from '../lib/xr/text-wrap';
 
 const read = (path: string) => JSON.parse(readFileSync(new URL(`../../${path}`, import.meta.url), 'utf8'));
 const cldr = read('docs/language/sources/cldr.json');
@@ -205,6 +206,32 @@ describe('the tools read what the player reads', () => {
     }
     expect([...theirs].sort()).toEqual([...RULE_TOLD_TO_CASTER].sort());
     expect([...brief].sort()).toEqual(['round.cursesYou', 'theatre.cursesYou']);
+  });
+});
+
+describe('the theatre draws text in every script', () => {
+  // src/lib/xr/text-wrap.ts: the pieces Babylon's TextBlock may break a line between (it broke only at
+  // spaces, so Japanese ran off its panel), and the direction marks a right-to-left line needs.
+  const RLM = String.fromCharCode(0x200f);
+  it('breaks Japanese, Chinese and Thai between words, never before closing punctuation, and gives each line back whole', async () => {
+    for (const l of ['ja', 'zh', 'th', 'de', 'ar'] as Locale[]) {
+      const m = await loadMessages(l);
+      for (const key of ['theatre.versePrompt', 'theatre.intro']) {
+        const line = m[key];
+        const units = wrapUnits(line);
+        expect([l, key, units.join('').split(RLM).join('')]).toEqual([l, key, line]);
+        expect([l, key, units.length > 4]).toEqual([l, key, true]);
+        for (const u of units) expect([l, u, /^[\p{Pe}\p{Pf}\p{Po}]/u.test(u.split(RLM).join(''))]).toEqual([l, u, false]);
+      }
+    }
+    expect(wrapUnits('「詩」を書く')).toEqual(['「詩」', 'を', '書く']);
+  });
+
+  it('marks a right-to-left line, and only such a line', () => {
+    expect(startsRtl('سيظهر بيتك هنا.')).toBe(true);
+    expect(startsRtl('Your verse')).toBe(false);
+    expect(wrapUnits('هنا.').every((u) => u.startsWith(RLM) && u.endsWith(RLM))).toBe(true);
+    expect(wrapUnits('Here.').some((u) => u.includes(RLM))).toBe(false);
   });
 });
 

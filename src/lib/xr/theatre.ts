@@ -39,6 +39,7 @@ import { FORM_POINTS } from '../verse/forms';
 // Everything written on the stage is a message in the interface language (src/i18n).
 import { list, num, t, tm } from '../../i18n';
 import { curseName, curseRule, deviceBrief, deviceName, signatureText } from '../../i18n/duel';
+import { startsRtl, wrapUnits } from './text-wrap';
 import type { DuelSession } from '../verse/session';
 
 export type Action =
@@ -58,6 +59,24 @@ export interface TheatreStatus {
 }
 
 const GOLD = '#e8b420';
+
+/**
+ * Wrap a TextBlock at word boundaries in every script, and draw a right-to-left text from the right
+ * (./text-wrap.ts says why). `align` is the alignment the block has for left-to-right text.
+ */
+function readable(tb: TextBlock, align = Control.HORIZONTAL_ALIGNMENT_LEFT): void {
+  tb.wordDivider = '';
+  tb.wordSplittingFunction = wrapUnits;
+  const first = !tb.metadata?.readable;
+  tb.metadata = { ...(tb.metadata ?? {}), readable: true, align };
+  if (first) tb.onTextChangedObservable.add(() => direct(tb));
+  direct(tb);
+}
+
+function direct(tb: TextBlock): void {
+  const align = tb.metadata?.align ?? Control.HORIZONTAL_ALIGNMENT_LEFT;
+  tb.textHorizontalAlignment = align === Control.HORIZONTAL_ALIGNMENT_LEFT && startsRtl(tb.text) ? Control.HORIZONTAL_ALIGNMENT_RIGHT : align;
+}
 const INK = '#0d0b09';
 const PAPER = '#f4f3f2';
 const DIM = '#a9a197';
@@ -160,7 +179,7 @@ export class Theatre {
     text.fontSize = fontPx;
     text.fontFamily = 'Georgia, serif';
     text.textWrapping = true;
-    text.textHorizontalAlignment = Control.HORIZONTAL_ALIGNMENT_LEFT;
+    readable(text);
     text.textVerticalAlignment = Control.VERTICAL_ALIGNMENT_TOP;
     text.paddingLeft = text.paddingRight = text.paddingTop = text.paddingBottom = '26px';
     text.lineSpacing = '8px';
@@ -170,7 +189,7 @@ export class Theatre {
 
   private button(name: string, pos: Vector3, action: Action, w = 0.42): Panel {
     const p = this.panel(name, w, 0.13, pos, 0.45, 40);
-    p.text.textHorizontalAlignment = Control.HORIZONTAL_ALIGNMENT_CENTER;
+    readable(p.text, Control.HORIZONTAL_ALIGNMENT_CENTER);
     p.text.textVerticalAlignment = Control.VERTICAL_ALIGNMENT_CENTER;
     p.text.paddingTop = p.text.paddingBottom = '0px';
     p.text.fontFamily = 'system-ui, sans-serif';
@@ -240,6 +259,7 @@ export class Theatre {
     label.fontFamily = 'system-ui, sans-serif';
     label.fontStyle = 'normal';
     label.textWrapping = true;
+    readable(label, Control.HORIZONTAL_ALIGNMENT_CENTER);
     label.height = '32%';
     label.verticalAlignment = Control.VERTICAL_ALIGNMENT_BOTTOM;
     frame.addControl(label);
