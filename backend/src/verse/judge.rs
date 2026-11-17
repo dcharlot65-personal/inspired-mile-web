@@ -106,11 +106,14 @@ fn sound_score(verse: &str, lang: &str) -> f64 {
             }
         }
     }
-    // Anaphora: a line that opens on the line before's first word, a word that carries meaning.
+    // Anaphora: a line that opens on the line before's first word, a word that carries meaning, and
+    // is not the line before said again with more after it.
+    let said: Vec<Vec<String>> = ls.iter().map(|l| words_of(l).iter().map(|w| fold(w)).collect()).collect();
     let opening = (1..ls.len())
         .filter(|&i| {
             let first = first_unit(ls[i]);
-            !first.is_empty() && first == first_unit(ls[i - 1]) && is_content_word(&first)
+            let again = said[i - 1].len() <= said[i].len() && said[i - 1].iter().zip(&said[i]).all(|(a, b)| a == b);
+            !first.is_empty() && first == first_unit(ls[i - 1]) && is_content_word(&first) && !again
         })
         .count();
     let lens: Vec<f64> = ls

@@ -135,7 +135,13 @@ test.describe('Theatre', () => {
       await page.waitForFunction(() => (window as any).__theatre?.session?.phase === 'player-turn', undefined, { timeout: 120_000 });
       const first = await page.evaluate(() => (window as any).__theatre.session.duel.player.characters[0]);
       await page.evaluate((id) => (window as any).__theatre.act({ type: 'character', id }), first);
-      await page.fill('#typed-verse', { ja: '古池や\n蛙飛び込む\n水の音', zh: '床前明月光\n疑是地上霜\n举头望明月', th: 'ดวงจันทร์ส่องฟ้า\nลมพัดผ่านมา\nใจข้าไม่หวั่น' }[lang]);
+      // A verse long enough that its panel must wrap it, with the punctuation the rules are about.
+      const verse = {
+        ja: '古池や蛙飛び込む水の音、お前の言葉は「風」のように消えていく。（舞台の上で）誰も聞いてはいない！\n月の光が落ちてくる、静かな夜の終わりに。',
+        zh: '床前明月光，疑是地上霜。举头望明月，低头思故乡。（李白《静夜思》）你的诗句像风一样，吹过舞台就不见了！\n月光落在台上，没有人听你说话。',
+        th: 'ดวงจันทร์ส่องฟ้าสว่างไสวในคืนที่เงียบเหงา เด็กๆ เล่นกันอยู่ริมฝั่งแม่น้ำ (ใต้แสงจันทร์) ลมพัดผ่านมาเบาๆ ใจข้าไม่หวั่นไหวเลยแม้แต่น้อย\nถ้อยคำของเจ้าหายไปกับสายลมยามค่ำคืน',
+      }[lang];
+      await page.fill('#typed-verse', verse);
       const read = () =>
         page.evaluate(() => {
           const t = (window as any).__theatre.theatre;
@@ -143,6 +149,7 @@ test.describe('Theatre', () => {
         });
       const drawn: Array<{ name: string; text: string; lines: string[] }> = [];
       await expect.poll(async () => (await read()).find((p) => p.name === 'round')?.lines.length ?? 0, { timeout: 20_000 }).toBeGreaterThan(1);
+      await expect.poll(async () => (await read()).find((p) => p.name === 'verse')?.lines.length ?? 0, { timeout: 20_000 }).toBeGreaterThan(2);
       drawn.push(...(await read()));
       await page.evaluate(() => (window as any).__theatre.act({ type: 'submit' }));
       await page.waitForFunction(() => (window as any).__theatre.session.phase === 'verdict', undefined, { timeout: 60_000 });
@@ -159,9 +166,43 @@ test.describe('Theatre', () => {
           if (f) faults.push(`${p.name}: ${f} | ${a} | ${b}`);
         }
       }
-      // The check can see something: these panels do wrap in every one of the three languages.
+      // The check can see something: the verse panel wraps the long verse in every one of the three languages.
       expect(wraps).toBeGreaterThan(0);
       expect(faults).toEqual([]);
+
+      // Where a panel wraps depends on the font, so one text may never put its punctuation at a break.
+      // A sweep does: text dense with punctuation, shifted one character at a time, so that every
+      // character of it comes to stand at the panel's edge.
+      const dense = { ja: 'お前の詩は、細い。舞台は「私」のものだ！', zh: '你的诗，很弱。舞台是《我的》！', th: 'เด็กๆ เล่นกัน ฯลฯ (ใต้แสงจันทร์) ' }[lang];
+      const pad = { ja: 'あ', zh: '的', th: 'ก' }[lang];
+      const swept = await page.evaluate(
+        async ({ dense, pad }) => {
+          const panel = (window as any).__theatre.theatre.panels.verse.text;
+          const frame = () => new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
+          const out: Array<{ text: string; lines: string[] }> = [];
+          for (let k = 0; k < 24; k++) {
+            const text = pad.repeat(k) + dense.repeat(4);
+            panel.text = text;
+            await frame();
+            out.push({ text, lines: ((panel.lines ?? []) as Array<{ text: string }>).map((l) => l.text) });
+          }
+          return out;
+        },
+        { dense, pad },
+      );
+      let sweptWraps = 0;
+      const sweptFaults: string[] = [];
+      for (const p of swept) {
+        for (let i = 0; i + 1 < p.lines.length; i++) {
+          const [a, b] = [p.lines[i], p.lines[i + 1]];
+          if (!a || !b || !p.text.includes(a + b)) continue;
+          sweptWraps++;
+          const f = lineBreakFault(a, b);
+          if (f) sweptFaults.push(`${f} | ${a} | ${b}`);
+        }
+      }
+      expect(sweptWraps).toBeGreaterThan(24);
+      expect(sweptFaults.slice(0, 5)).toEqual([]);
     });
   }
 });

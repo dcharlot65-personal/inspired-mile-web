@@ -405,14 +405,18 @@ function soundScore(verse: string, lang: string): number {
       if (rhymes(a, b, lang)) rhymed++;
     }
   }
-  // Lines that open on the line before's first word (or character), a word that carries meaning:
-  // anaphora, the drum of a speech ("Never ... / Never ..."). "The" at the head of every line is not
-  // one (keyboard mash laid out as "The qwrt night / The zxcv light" took flow by it).
+  // Lines that open on the line before's first word (or character), a word that carries meaning,
+  // and go on to say something else: anaphora, the drum of a speech ("Never ... / Never ...").
+  // "The" at the head of every line is not one (keyboard mash laid out as "The qwrt night / The zxcv
+  // light" took flow by it), nor a line that is the line before said again with more after it (the
+  // chant "Dare / Dare me / Dare me, who dares", finding 25's probe P9).
   const char = rulesFor(lang).unit === 'char';
+  const said = ls.map((l) => wordsOf(l, lang).map(fold));
   const opening = ls.filter((l, i) => {
     if (i === 0) return false;
     const first = edgeUnit(l, lang, 'first');
-    return first !== '' && first === edgeUnit(ls[i - 1], lang, 'first') && (char || isContentWord(first, lang));
+    const again = said[i - 1].length <= said[i].length && said[i - 1].every((w, k) => said[i][k] === w);
+    return first !== '' && first === edgeUnit(ls[i - 1], lang, 'first') && (char || isContentWord(first, lang)) && !again;
   }).length;
   const lens = ls.map((l) => syllablesInLine(l, lang) ?? lineLength(l, lang));
   // Three lines or more, each longer than the one before: momentum.

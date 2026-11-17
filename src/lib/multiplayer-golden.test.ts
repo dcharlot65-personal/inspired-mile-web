@@ -138,8 +138,9 @@ const HAND: string[] = [
   "Shawty, I'm finna flex, my drip is too clean\nYour opps be trippin, lil bruh, you ain't never been seen",
   'Sirrah, thou varlet, verily thy wit is spent\nThou strumpet muse, thou cuckold, coxcomb, recreant',
   'The qwrt sdfg zxcv night\nThe hjkl wrtp dfgh light',
-  // Flow: lines that open alike on a little word, and lines that grow.
+  // Flow: lines that open alike on a little word, a chant that says the line before again, and lines that grow.
   'The night\nThe day is long\nThe end of all of it is near',
+  'Dare\nDare me\nDare me, who dares',
   // What the anti-exploit rules are for.
   'Never\nNever\nNever',
   'a\na a\na a a',
