@@ -313,6 +313,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     langSelect.addEventListener('change', () => {
       localStorage.setItem('inspired-mile-duel-lang', langSelect.value);
       loadDeck();
+      // A player who picks a language is about to duel in it: its verse data and sound data
+      // (the Japanese analyser's dictionary is 13 MB) start loading now, not when the duel starts,
+      // so the opponent's first verse need not wait for them. A page load alone fetches none.
+      if (!session) void Promise.all([loadPack(langSelect.value), loadSound(langSelect.value)]);
     });
 
     // --- World card ---

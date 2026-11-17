@@ -251,8 +251,20 @@ usable dictionary word, with no table loaded.
 
 ### Japanese (ja)
 - **Engine, not a table**: kuromoji.js 0.1.2 with the mecab-ipadic 2.7.0 dictionary, run in
-  the browser. Twelve dictionary files, 17.8 MB as fetched (they are already gzip), loaded
-  only for a Japanese duel.
+  the browser, loaded only for a Japanese duel (from the moment the player picks Japanese).
+  The dictionary is kuromoji's, cut to what the engine reads (`scripts/sound/build-ipadic.mjs`,
+  `src/lib/verse/sound/ipadic/`): its 325,871 words in a sorted list (each written with how much
+  it shares with the one before) in place of kuromoji's double-array trie and its map from trie
+  node to entries; each entry's reading and pronunciation without its part of speech,
+  conjugation and base form; and none of the zero padding kuromoji's builder left in every file.
+  Ten files, 4.7 MB as fetched (17.8 MB before) and 16 MB unpacked in memory (100 MB before).
+  The entries' costs and ids, the connection matrix and the unknown-word rules are kuromoji's,
+  byte for byte, and its Viterbi search runs unchanged; `src/lib/verse/sound/ipadic.test.ts` reads
+  every Japanese verse and interface string of the game, 1,500 generated strings and every 40th
+  word of the dictionary with both and requires the same words, readings and known flags
+  (2,014 texts and 9,804 words, 0 different). On a throttled phone (DevTools' Fast 4G, CPU 4x,
+  `tests/battle-ja-cost.spec.ts`, built site) the opponent's first verse came 4.7 s after the
+  start instead of 16.2 s, and 0.17 s when the duel started ten seconds after Japanese was picked.
 - **Syllables**: morae of the reading, so a haiku may be written in kanji.
 - **Rhyme**: the vowels of the last two morae of each line agree, as Japanese lyric writing
   rhymes; lines that close on the same word are compared on the word before.

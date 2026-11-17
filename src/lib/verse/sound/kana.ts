@@ -32,6 +32,11 @@ export function japaneseLoaded(): boolean {
   return analyse !== null;
 }
 
+/** The analyser installed now, or null (tests compare two). */
+export function japaneseAnalyser(): ((text: string) => KuromojiToken[]) | null {
+  return analyse;
+}
+
 /** Katakana to hiragana, so the two kana spellings of a sound compare equal. */
 export function hira(text: string): string {
   return text.replace(/[ァ-ヶ]/g, (c) => String.fromCharCode(c.charCodeAt(0) - 0x60));
