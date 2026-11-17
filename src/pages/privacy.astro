@@ -56,8 +56,9 @@ import Layout from '../layouts/BaseLayout.astro';
           <p class="mb-2"><strong class="text-white">Multiplayer battles.</strong> Here your verse does leave your device:</p>
           <ul class="list-disc list-inside space-y-1 ml-2">
             <li>It is sent to our server, which checks it against a word filter and scores the round by fixed rules. No AI model reads it, and no outside company receives it.</li>
-            <li>Once both verses of a round are in, your opponent is sent your verse, as the server scored it, with the full breakdown of both scores.</li>
-            <li>The verse is held in our server's memory while the battle lasts, and for a few minutes after it ends so that a player whose connection dropped can still see the result. It is not written to our database or to our server log.</li>
+            <li>When the round ends, your opponent is sent your verse, as the server scored it, with the full breakdown of both scores. A round ends when both verses are in, or when its time runs out: then your verse is sent even if your opponent sent none. Before that, your opponent is told only that you have submitted. A player who comes back to the battle after a dropped connection is sent the rounds already played again.</li>
+            <li>The verse is held in our server's memory while the battle lasts, and for up to two minutes after it ends so that a player whose connection dropped can still see the result. A battle that never finishes is removed from memory about half an hour after it began. The verse is not written to our database or to our server log.</li>
+            <li>While you write, the page keeps your unsent verse in its own tab's storage on your device, so that a reload does not lose it. It is removed when the battle ends, when you leave the room, or when you close the tab, and it is never sent anywhere until you submit it.</li>
           </ul>
           <p class="mt-3"><strong class="text-white">Reports.</strong> If you report a multiplayer battle, we store your account identifier, the battle's identifier and the reason you type (up to 500 characters), in our database and in our server log.</p>
 
@@ -146,7 +147,7 @@ import Layout from '../layouts/BaseLayout.astro';
           <ul class="list-disc list-inside space-y-2 ml-2">
             <li><strong class="text-white">Account data:</strong> Retained as long as your account is active. You may request deletion at any time.</li>
             <li><strong class="text-white">Gameplay data:</strong> Retained as long as your account is active and deleted upon account deletion.</li>
-            <li><strong class="text-white">Battle verses:</strong> Solo verses never reach us. Multiplayer verses are held in our server's memory during the battle and are not written to our database.</li>
+            <li><strong class="text-white">Battle verses:</strong> Solo verses never reach us. Multiplayer verses are held in our server's memory during the battle and for up to two minutes after it ends (a battle that never finishes, about half an hour after it began), and are not written to our database or our server log.</li>
             <li><strong class="text-white">Reports:</strong> A report you send about a multiplayer battle is kept until we delete it.</li>
             <li><strong class="text-white">Server logs:</strong> Retained for up to 30 days.</li>
             <li><strong class="text-white">Classroom data:</strong> Retained until it is deleted. There is no delete button for a classroom yet: a teacher who wants one deleted should write to us at the address below.</li>
