@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-16",
+ "generated": "2026-11-17",
  "thresholds": {
   "note": "Written and committed before any cell was run, so that the bar could not follow the results. scripts/model-eval/lib.mjs (decide) applies it; docs/language/MODEL-EVAL.md explains each number.",
   "judge": {

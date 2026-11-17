@@ -38,6 +38,9 @@ const MUTATIONS = [
   // (Dropping the backtick from the markup rule changed no stored draft, and survived: the wrong mutation, not a weak test.)
   ['the opponent\'s tidy-up changed after the cells ran', 'src/lib/verse/opponent.ts', ".replace(/\\s*\\([^)]*\\)\\s*$/, '')", ''],
   ['the report edited apart from the decisions', 'docs/language/MODEL-EVAL.md', /\| Gemma 4 E2B \| [^|]*\|/, '| Gemma 4 E2B | xx |'],
+  // The checker's finding of 2026-11-17: a hand-written sentence said the narrow rules changed no decision.
+  ['the false claim about the narrow rules put back', 'docs/language/MODEL-EVAL.md', /<!-- narrow:start -->[\s\S]*?<!-- narrow:end -->/, '<!-- narrow:start -->\n- **The commentary rules were widened after the first cells were read**, as said above; under\n  the rules committed before any cell ran, the decisions come out the same (the line under the\n  table).\n<!-- narrow:end -->'],
+  ['the narrow-rules line under the table dropped a language', 'scripts/model-eval/lib.mjs', "flips.filter((f) => f.tier === t).map((f) => f.lang).join(', ')", "flips.filter((f) => f.tier === t).slice(1).map((f) => f.lang).join(', ')"],
 ];
 
 const run = () => {

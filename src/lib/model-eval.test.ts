@@ -17,7 +17,7 @@ import { MODELS, modelJudges, modelsToOffer, modelWrites, usedAnywhere, type Cap
 import { replayPlay, scoredFields, type StoredPlay } from './model-eval-replay';
 import { PACK_LANGS, loadAllPacks } from './verse/packs';
 // @ts-expect-error a plain module, shared with the scripts that run the evaluation
-import { LANGS, TIERS, commentary, decideJudge, decideWrite, derive, inLanguage, instructionLines, scriptOk, summarizeJudge, summarizeWrite, wilson } from '../../scripts/model-eval/lib.mjs';
+import { LANGS, TIERS, commentary, decideJudge, decideWrite, derive, inLanguage, instructionLines, narrowFlips, narrowLine, narrowNote, scriptOk, summarizeJudge, summarizeWrite, wilson } from '../../scripts/model-eval/lib.mjs';
 
 const DIR = join(process.cwd(), 'docs', 'language', 'model-eval');
 const read = (...p: string[]) => JSON.parse(readFileSync(join(DIR, ...p), 'utf8'));
@@ -114,6 +114,23 @@ describe('the measured language lists', () => {
       expect(writes, `${tier} writes`).toBe(decisions.models[tier].writesIn.join(', ') || 'none');
       expect(judges, `${tier} judges`).toBe(decisions.models[tier].judgesIn.join(', ') || 'none');
     }
+  });
+
+  // The commentary rules were widened after the first cells were read. Which refusals rest on that
+  // is a fact about the cells, so the page states it in generated text, twice (under the table and
+  // in "What is not established"), and a hand-written sentence cannot contradict it unnoticed.
+  it('MODEL-EVAL.md says which refusals rest on the commentary rules added after cells were read', async () => {
+    const doc = readFileSync(join(process.cwd(), 'docs', 'language', 'MODEL-EVAL.md'), 'utf8');
+    const packs = await loadAllPacks();
+    const reference: Record<string, string[]> = {};
+    for (const pack of packs) reference[pack.lang] = [...read('corpus', `${pack.lang}.json`).excerpts.map((e: { text: string }) => e.text), ...Object.values(pack.written).flat()];
+    const flips = narrowFlips(derive(cells, lid, thresholds, reference).table, thresholds);
+    expect(doc, 'the line under the table').toContain(narrowLine(flips));
+    const [a, b] = [doc.indexOf('<!-- narrow:start -->'), doc.indexOf('<!-- narrow:end -->')];
+    expect(a, 'the generated note in "What is not established"').toBeGreaterThan(doc.indexOf('## What is not established'));
+    expect(doc.slice(a + '<!-- narrow:start -->'.length, b).trim()).toBe(narrowNote(flips));
+    // The sentence that once stood here by hand, and was false: three decisions did depend on it.
+    if (flips.length) expect(doc).not.toMatch(/decisions come out the same/);
   });
 
   it('a regional tag is read as its language', () => {

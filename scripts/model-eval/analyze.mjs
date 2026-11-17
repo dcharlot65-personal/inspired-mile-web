@@ -15,7 +15,7 @@
 import { existsSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
-import { CRITERIA, LANGS, TIERS, derive, wilson } from './lib.mjs';
+import { CRITERIA, LABEL, LANGS, TIERS, derive, narrowFlips, narrowLine, narrowNote, wilson } from './lib.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
 const DIR = join(ROOT, 'docs', 'language', 'model-eval');
@@ -63,7 +63,6 @@ writeFileSync(join(DIR, 'decisions.json'), JSON.stringify({
 }, null, 1) + '\n');
 
 // --- The table ---
-const LABEL = { grand: 'Gemma 4 E2B', standard: 'LFM3 1.7B', lite: 'LFM2.5 350M' };
 const pct = (k, n) => (n ? `${Math.round((k / n) * 100)}%` : '–');
 const ci = (w) => (w?.rate == null ? '' : ` [${Math.round(w.low * 100)}–${Math.round(w.high * 100)}]`);
 const out = [];
@@ -104,15 +103,10 @@ for (const tier of TIERS) {
 out.push('', '### What follows', '', '| Model | Writes in | Judges in |', '|---|---|---|');
 for (const tier of TIERS) out.push(`| ${LABEL[tier]} | ${models[tier].writesIn.join(', ') || 'none'} | ${models[tier].judgesIn.join(', ') || 'none'} |`);
 // The commentary rules were widened after the first cells (scripts/model-eval/lib.mjs says why):
-// say which decisions the narrow rules, committed before any cell ran, would have changed.
-const narrowFlips = [];
-for (const tier of TIERS) for (const l of LANGS) {
-  const w = table[tier][l].write;
-  if (!w || table[tier][l].writes.ok) continue;
-  const others = table[tier][l].writes.why.filter((x) => !x.startsWith('commentary'));
-  if (!others.length && w.commentaryNarrow / w.plays <= thresholds.write.commentaryAtMost) narrowFlips.push(`${LABEL[tier]} in ${l}`);
-}
-out.push('', `Under the commentary rules committed before any cell ran (the narrow count in brackets above), ${narrowFlips.length ? `these would also write: ${narrowFlips.join(', ')}` : 'no decision would be different'}.`);
+// say which decisions the narrow rules, committed before any cell ran, would have changed. The
+// same fact goes into "What is not established" below, generated too, so it cannot go stale.
+const flips = narrowFlips(table, thresholds);
+out.push('', narrowLine(flips));
 // The rhyme check is the game's own and goes by spelling; a refusal it should not have made can
 // only lower "form kept". Which refusals to write could it have caused?
 const rhymeFlips = [];
@@ -158,6 +152,7 @@ if (existsSync(docFile)) {
   let doc = readFileSync(docFile, 'utf8');
   doc = between(doc, '<!-- brief:start -->', '<!-- brief:end -->', brief.join('\n'));
   doc = between(doc, '<!-- table:start -->', '<!-- table:end -->', out.join('\n'));
+  doc = between(doc, '<!-- narrow:start -->', '<!-- narrow:end -->', narrowNote(flips));
   writeFileSync(docFile, doc);
 }
 console.log(brief.join('\n'), '\n');

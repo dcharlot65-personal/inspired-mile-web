@@ -296,6 +296,41 @@ export function decideWrite(s, t, recall) {
   return { ok: why.length === 0, why };
 }
 
+// --- What the rules added after the first cells decide ---
+
+export const LABEL = { grand: 'Gemma 4 E2B', standard: 'LFM3 1.7B', lite: 'LFM2.5 350M' };
+
+/**
+ * The refusals to write that rest on the commentary rules added after the first cells were read
+ * (commentaryLine's wider rules, the label and echo rules): every other writing rule is met, and
+ * under the narrow rules, committed before any cell ran, commentary would be within the bar too.
+ * `table` and `thresholds` as derive() uses them.
+ */
+export function narrowFlips(table, thresholds) {
+  const out = [];
+  for (const tier of TIERS) for (const lang of LANGS) {
+    const c = table[tier][lang];
+    if (!c.write || c.writes.ok) continue;
+    const others = c.writes.why.filter((x) => !x.startsWith('commentary'));
+    if (!others.length && c.write.commentaryNarrow / c.write.plays <= thresholds.write.commentaryAtMost) out.push({ tier, lang });
+  }
+  return out;
+}
+
+const byTier = (flips) => TIERS.filter((t) => flips.some((f) => f.tier === t)).map((t) => `${LABEL[t]} in ${flips.filter((f) => f.tier === t).map((f) => f.lang).join(', ')}`).join('; ');
+
+/** The line under the results table. MODEL-EVAL.md must carry exactly this (src/lib/model-eval.test.ts). */
+export function narrowLine(flips) {
+  return `Under the commentary rules committed before any cell ran (the narrow count in brackets above), ${flips.length ? `these would also write: ${byTier(flips)}` : 'no decision would be different'}.`;
+}
+
+/** The same fact, for "What is not established"; generated, so that it cannot go stale beside the table. */
+export function narrowNote(flips) {
+  return flips.length
+    ? `- **${flips.length === 1 ? 'One refusal rests' : `${flips.length} refusals rest`} on commentary rules added after cells were read.** The rules were widened after the first cells (above). Under the rules committed before any cell ran, these would also write: ${byTier(flips)}. Those refusals stand on the wider rules, not on rules fixed before every cell was measured; "What else the plays showed" says, per language, when each rule was committed beside that language's cells and what it caught.`
+    : '- **The commentary rules were widened after the first cells were read** (above). Under the rules committed before any cell ran, no decision would be different.';
+}
+
 // --- From result files to decisions ---
 
 /**
