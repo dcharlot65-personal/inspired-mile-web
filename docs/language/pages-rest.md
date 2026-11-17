@@ -106,7 +106,7 @@ will see at once if one is off.
 "6-letter code", and the translations said letters (es *letras*, de *Buchstaben*, zh *字母*, id
 *huruf*, …), which tells a player that a code with a digit in it is wrong. The English now says
 "6-character code" (the placeholder, the two tour steps and the prompt; the page's own fallback
-text too), and the error for a wrong code says "It has 6 characters, letters and digits". The
+text too), and the error for a wrong code says "It has 6 characters: letters and digits". The
 word for a character is Android's (`policydesc_limitPassword`, "the characters allowed in screen
 lock passwords"), except in Chinese and Korean (see the table).
 
@@ -304,7 +304,7 @@ These were translated as they stood; they are claims, not wording:
 - **Changed**: the join code was a "6-letter code" (the placeholder, the prompt, two steps of the
   teacher's tour), but it has digits (A–Z without I and O, and 2–9, `generate_join_code` in
   `backend/src/classroom/handlers.rs`). The English now says "6-character code", and the error for
-  a wrong code says "It has 6 characters, letters and digits" (it said "It has 6 letters"); the
+  a wrong code says "It has 6 characters: letters and digits" (it said "It has 6 letters"); the
   fifteen translations follow. Old and new English are in the commit that made the change.
 - The third teacher checkbox refers to "the sections on classroom and educational use and
   on FERPA" of the Terms and the Privacy Policy, which are being rewritten on another branch
@@ -366,24 +366,25 @@ The dictionaries of branch lang/qa-pipeline's install on the build host (`im-lan
 en is en_US, pt is pt_BR), asked word by word. A word that opens a sentence is asked again in
 lower case. Before the run, the self-test showed each dictionary rejects a misspelt word and
 accepts the right one, in all fourteen languages that have one. The table is the last run
-(17:17, after every change on this page; `docs/language/results/pages-rest/spell.json`); the
-first run's counts are given where they differ.
+(2026-11-16, after the last change of the second pass; `docs/language/results/pages-rest/spell.json`,
+which now records the text of every string it asked about); the first run's counts are given
+where they differ, and the words the second pass's changes brought in are named.
 
 | | words asked | rejected | what they were | changed |
 |---|---|---|---|---|
-| es | 570 | 8 | imperative with a clitic (*Escríbelo*, *Publícalo*), *Reintentar*, *Prémium*, *shakespearianas* (read as correct Spanish by the model; not checked against the RAE's dictionary, which refused the request), the ordinal *3.º B* | none |
-| fr | 623 | 3 (first run 4) | *battle* (Wikidata's label), *l’app*, *model-viewer*; first run also *l’XP* | *l’XP* rewritten (see LanguageTool) |
-| de | 596 | 20 (first run 23) | compounds and loanwords (*Belohnungspfad*, *Strophenduell*, *GLB-Mesh*, *Credits*, *Home-Bildschirm*), the du-imperative *Prüf*; first run also *Nutz*, *Scroll* | *Nutz* → *Nutze* (the core locale's form), *scroll* → *scrolle* |
-| it | 604 | 25 | elisions written with a typographic apostrophe (*l’annuncio*, *dell’insegnante*: the dictionary knows them with `'`), loanwords (*Pass*, *Bye*, *Home*, *mesh*, *controller*, *passkey*), *collezionabili* | none |
-| pt | 575 | 7 | loanwords (*Premium*, *quiz*, *quizzes*, *headset*, *rap*) | none |
-| pl | 660 | 6 | *splat*, *gaussowski* (technical) | none |
-| ru | 680 | 18 | words split at *3D-* by the word breaker, inflected *Шекспир*, *сплат*, *Премиум*, *рэп-баттл* (Wikidata's label) | none |
-| ar | 625 | 4 | *شكسبيرية*, *الباتل* (Wikidata's باتل راب), *وiPad* | none |
-| hi | 488 | 23 | loanwords in Devanagari (*ऐप*, *पासकी*, *रीसेट*, *हेडसेट*) and ordinary forms the dictionary lacks (*चलने*, *सकी*, *समझती*, *दिखाएँ*) | none |
-| ko | 633 | 31 | loanwords (*스플랫*, *크레딧*, *헤드셋*) and inflected forms (*드래그하면*, *이어갈*) | none |
+| es | 574 | 8 | imperative with a clitic (*Escríbelo*, *Publícalo*), *Reintentar*, *Prémium*, *shakespearianas* (read as correct Spanish by the model; not checked against the RAE's dictionary, which refused the request), the ordinal *3.º B* | none |
+| fr | 629 | 3 (first run 4) | *battle* (Wikidata's label), *l’app*, *model-viewer*; first run also *l’XP* | *l’XP* rewritten (see LanguageTool) |
+| de | 600 | 20 (first run 23) | compounds and loanwords (*Belohnungspfad*, *Strophenduell*, *GLB-Mesh*, *Credits*, *Home-Bildschirm*), the du-imperative *Prüf*; first run also *Nutz*, *Scroll* | *Nutz* → *Nutze* (the core locale's form), *scroll* → *scrolle* |
+| it | 609 | 27 | elisions written with a typographic apostrophe (*l’annuncio*, *dell’insegnante*, and from the second pass *l’autorizzazione*, *l’indice*: the dictionary knows them with `'`), loanwords (*Pass*, *Bye*, *Home*, *mesh*, *controller*, *passkey*), *collezionabili* | none |
+| pt | 579 | 7 | loanwords (*Premium*, *quiz*, *quizzes*, *headset*, *rap*) | none |
+| pl | 663 | 6 | *splat*, *gaussowski* (technical) | none |
+| ru | 681 | 18 | words split at *3D-* by the word breaker, inflected *Шекспир*, *сплат*, *Премиум*, *рэп-баттл* (Wikidata's label) | none |
+| ar | 631 | 5 | *شكسبيرية*, *الباتل* (Wikidata's باتل راب), *وiPad*, and from the second pass *وVision* (و written on a Latin name) | none |
+| hi | 487 | 22 | loanwords in Devanagari (*ऐप*, *पासकी*, *रीसेट*, *हेडसेट*, and from the second pass Android's *पिंच*) and ordinary forms the dictionary lacks (*चलने*, *सकी*, *दिखाएँ*); *समझता*, *समझती* went with the gender hedge | none |
+| ko | 637 | 32 | loanwords (*스플랫*, *크레딧*, *헤드셋*) and inflected forms (*드래그하면*, *이어갈*, and from the second pass *탭하면*, Apple's 탭) | none |
 | vi | 526 | 8 | tone mark placed on the first vowel (*khóa*, *xóa*, *hủy*): the core locale writes it that way (41 *khóa*, 1 *khoá*); the dictionary has the other convention | none |
-| th | 407 | 20 | pieces of loanwords cut by the word breaker (*ควิซ*, *เชกส*/*เปียร์*, *เอน*/*จิน*, *แท็*/*บนี้*); each read in its sentence, none a typo | none |
-| id | 518 | 37 | affixed forms the word list lacks (*kartumu*, *Perambanmu*, *Menginstal*, *tertambah*) and loanwords | none |
+| th | 409 | 20 | pieces of loanwords cut by the word breaker (*ควิซ*, *เชกส*/*เปียร์*, *เอน*/*จิน*, *แท็*/*บนี้*); each read in its sentence, none a typo | none |
+| id | 520 | 37 | affixed forms the word list lacks (*kartumu*, *Perambanmu*, *Menginstal*, *tertambah*) and loanwords | none |
 | zh, ja | | | no Hunspell dictionary | not checked |
 
 ### Grammar: LanguageTool 6.6
@@ -402,8 +403,9 @@ a text too, in every language that has rules. (A note in commit 31115d2 said the
 shown Chinese and Japanese miss a planted error only inside a text; the log shows they missed
 it alone too. They are asked one string at a time anyway.)
 
-Matches per language in the last run (17:17, out of about 290 strings, after the fixes below):
-es 16, fr 7, de 16, it 20, pt 23, pl 54, ru 7, ar 46, zh 3, ja 0. Every match was read. Most are
+Matches per language in the last run (2026-11-16, after the second pass; out of about 290
+strings, after the fixes below): en 17, es 16, fr 7, de 16, it 20, pt 23, pl 54, ru 7, ar 46,
+zh 3, ja 0. Every match was read. Most are
 of four kinds that are not errors here: a rule against repeating a word, which fires across
 separate strings once they share a text; a fragment that sits inside a sentence by design
 (`market.by` "de Viola", the size "menos de 1 MB"); a button or a heading with no full stop
@@ -430,7 +432,13 @@ sentence-initial phrase); pt *dentro da turma*, *as duas coisas* (style).
 LanguageTool has no rules for hi, ko, vi, th or id: their grammar was not checked by any tool.
 
 Both tools were run again at 17:17, after the changes that reading the back-translations led
-to (see "Meaning"): the same matches in every language (`docs/language/results/pages-rest/grammar.json`).
+to (see "Meaning"): the same matches in every language. They were run twice more in the second
+pass, after its changes (`docs/language/results/pages-rest/grammar.json`, which now records the
+text of every string it checked). The first of those runs found one thing worth changing: the
+new English error "It has 6 characters, letters and digits" (and its French and German) reads as
+a list of three, which the serial-comma rule saw; it is now "It has 6 characters: letters and
+digits". Otherwise: Arabic *وVision* (the Hunspell rule inside LanguageTool, as for *وiPad*), and
+the rule on أحد with a feminine noun went with the rephrased teacher's declaration.
 
 ### Meaning: back-translation, and LaBSE beside it
 
@@ -441,46 +449,57 @@ by **all-MiniLM-L6-v2** cosine; and, with no back-translation in between, the tr
 compared with the English by **LaBSE** (a bitext model). This is the simplest equivalent of
 branch lang/qa-pipeline's `scripts/lang/backtranslate.py` (that branch had not landed in main):
 the same model files and Python environment, which it installed on the host. A string is
-**flagged when both scores are under 0.6**, that branch's rule (`scripts/lang/meaning.mjs`).
+**flagged when both scores are under 0.6**, that branch's rule (`scripts/lang/meaning.mjs`),
+**or when LaBSE finds another English string of the page areas nearer to the translation than
+its own** (`bitext.py --rank`, `lang-host.sh rank`: each translation is placed among all the
+English strings of its language, 279 to 289 of them).
 
-**The control.** Each string is also scored against the wrong English (the next string's). With
-the same rule, 3,814 of the 4,319 wrong pairings (88 %) were flagged in the full run, against
-206 of the right ones (4.8 %; 205 after the changes below): the two signals tell a right English
-sentence from a wrong one. One signal alone
-cannot: MADLAD copies a one-word label through ("Klasemen", "Vittorie") or turns it into a
-right word that is not the English one, so the back-translation alone put 838 strings under
-0.6.
+**The control.** Each string is also scored against the wrong English (the next string's). The
+pair rule alone let one wrong pairing in eight through: an independent check found that, and the
+record said it (88 % flagged), so the second rule was added. On the 4,185 rows that have a
+control (the 134 scored again on their own have none), the pair rule flags 3,683 wrong pairings
+(88.0 %); with the rank rule beside it, 4,172 (99.7 %). Of the 4,319 right pairings, the pair
+rule flags 210 and the two rules 309 (7.2 %). One signal alone cannot tell right from wrong:
+MADLAD copies a one-word label through ("Klasemen", "Vittorie") or turns it into a right word
+that is not the English one, so the back-translation alone put 838 strings under 0.6. The rank
+rule's flags are mostly two English strings that say nearly the same ("Create the listing" and
+"Create a listing", "Standings" and "Rank", "For sale" and "Sale"); it cannot tell a translation
+of one of those from a translation of the other, and it says nothing of a string whose English
+has no near neighbour and whose translation is still wrong in a way LaBSE does not see.
 
 Run on 2026-11-16 (MADLAD from 15:27, 4,319 strings, 79 minutes on the shared GPU; LaBSE in 24
 seconds there, after a CPU run had managed two CPU-minutes in fifteen on the loaded host and was
 stopped). 23 strings were scored again on their own afterwards (`lang-host.sh bt-pairs`): the
 six changed below, and 17 that had changed between the copy the run made and the end of the
 first session (the XP gain lost its "+", *K.‑o.‑System* got non-breaking hyphens); those rows
-carry `scoredAlone` and are left out of the control columns. Results:
-`docs/language/results/pages-rest/bt.json` (every string, its back-translation and the four
-scores).
+carry `scoredAlone` and are left out of the control columns. In the second pass, 114 strings
+were scored again the same way (102 with a new text, 12 whose English changed:
+`bt-merge.mjs stale`, `lang-host.sh bt-pairs`, `bt-merge.mjs merge`), and the whole file was
+ranked again. Results: `docs/language/results/pages-rest/bt.json` (every string, its
+back-translation, the four scores and the rank).
 
-| | Hunspell: words rejected | LanguageTool: matches | back-translated | median cos (right English) | median cos (wrong English) | right > wrong | median LaBSE (right) | median LaBSE (wrong) | flagged (both < 0.6) | flagged, read |
-|---|---|---|---|---|---|---|---|---|---|---|
-| es | 8 of 570 | 16 in 289 strings | 289 | 0.92 | 0.29 | 279 of 288 | 0.91 | 0.30 | 10 | 10 |
-| fr | 3 of 623 | 7 in 289 strings | 289 | 0.90 | 0.28 | 281 of 288 | 0.91 | 0.31 | 6 | 6 |
-| de | 20 of 596 | 16 in 287 strings | 287 | 0.89 | 0.29 | 273 of 283 | 0.90 | 0.31 | 14 | 14 |
-| it | 25 of 604 | 20 in 289 strings | 289 | 0.94 | 0.29 | 280 of 288 | 0.92 | 0.30 | 7 | 7 |
-| pt | 7 of 575 | 23 in 289 strings | 289 | 0.90 | 0.28 | 280 of 288 | 0.90 | 0.32 | 7 | 7 |
-| pl | 6 of 660 | 54 in 291 strings | 291 | 0.89 | 0.28 | 279 of 290 | 0.89 | 0.32 | 11 | 11 |
-| ru | 18 of 680 | 7 in 291 strings | 291 | 0.82 | 0.28 | 277 of 290 | 0.89 | 0.31 | 15 | 15 |
-| ar | 4 of 625 | 46 in 295 strings | 295 | 0.81 | 0.28 | 283 of 294 | 0.84 | 0.28 | 24 | 24 |
-| hi | 23 of 488 | no rules for the language | 287 | 0.93 | 0.30 | 278 of 286 | 0.88 | 0.30 | 11 | 11 |
-| zh | no dictionary | 3 in 285 strings | 285 | 0.83 | 0.28 | 273 of 284 | 0.87 | 0.30 | 10 | 10 |
-| ja | no dictionary | 0 in 285 strings | 285 | 0.83 | 0.28 | 273 of 283 | 0.86 | 0.29 | 26 | 26 |
-| ko | 31 of 633 | no rules for the language | 285 | 0.86 | 0.28 | 275 of 283 | 0.86 | 0.28 | 19 | 19 |
-| vi | 8 of 526 | no rules for the language | 287 | 0.85 | 0.28 | 278 of 286 | 0.87 | 0.31 | 15 | 15 |
-| th | 20 of 407 | no rules for the language | 285 | 0.84 | 0.27 | 275 of 284 | 0.83 | 0.30 | 18 | 18 |
-| id | 37 of 518 | no rules for the language | 285 | 0.87 | 0.28 | 274 of 284 | 0.90 | 0.31 | 12 | 12 |
+| | Hunspell: words rejected | LanguageTool: matches | back-translated | median cos (right English) | median cos (wrong English) | right > wrong | median LaBSE (right) | median LaBSE (wrong) | flagged: both < 0.6 | flagged: another English nearer | flagged, read | control: wrong English flagged |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| es | 8 of 574 | 16 in 289 strings | 289 | 0.92 | 0.29 | 271 of 279 | 0.91 | 0.30 | 11 | 11 | 13 of 13 | 278 of 279 |
+| fr | 3 of 629 | 7 in 289 strings | 289 | 0.89 | 0.28 | 272 of 279 | 0.90 | 0.31 | 7 | 11 | 11 of 11 | 278 of 279 |
+| de | 20 of 600 | 16 in 287 strings | 287 | 0.89 | 0.30 | 267 of 277 | 0.90 | 0.31 | 14 | 20 | 23 of 23 | 276 of 277 |
+| it | 27 of 609 | 20 in 289 strings | 289 | 0.93 | 0.29 | 271 of 278 | 0.91 | 0.30 | 8 | 12 | 13 of 13 | 277 of 278 |
+| pt | 7 of 579 | 23 in 289 strings | 289 | 0.90 | 0.28 | 273 of 280 | 0.90 | 0.32 | 8 | 10 | 11 of 11 | 279 of 280 |
+| pl | 6 of 663 | 54 in 291 strings | 291 | 0.88 | 0.28 | 269 of 280 | 0.89 | 0.32 | 11 | 14 | 15 of 15 | 279 of 280 |
+| ru | 18 of 681 | 7 in 291 strings | 291 | 0.82 | 0.28 | 272 of 284 | 0.89 | 0.31 | 16 | 19 | 21 of 21 | 283 of 284 |
+| ar | 5 of 631 | 46 in 295 strings | 295 | 0.81 | 0.28 | 274 of 285 | 0.84 | 0.28 | 24 | 31 | 38 of 38 | 282 of 285 |
+| hi | 22 of 487 | no rules for the language | 287 | 0.93 | 0.30 | 270 of 277 | 0.88 | 0.30 | 11 | 11 | 13 of 13 | 276 of 277 |
+| zh | no dictionary | 3 in 285 strings | 285 | 0.83 | 0.28 | 267 of 278 | 0.87 | 0.30 | 10 | 16 | 18 of 18 | 278 of 278 |
+| ja | no dictionary | 0 in 285 strings | 285 | 0.83 | 0.28 | 267 of 277 | 0.86 | 0.29 | 26 | 34 | 37 of 37 | 276 of 277 |
+| ko | 32 of 637 | no rules for the language | 285 | 0.86 | 0.28 | 269 of 277 | 0.86 | 0.29 | 19 | 28 | 31 of 31 | 276 of 277 |
+| vi | 8 of 526 | no rules for the language | 287 | 0.85 | 0.28 | 273 of 281 | 0.87 | 0.31 | 15 | 19 | 23 of 23 | 281 of 281 |
+| th | 20 of 409 | no rules for the language | 285 | 0.84 | 0.27 | 265 of 274 | 0.83 | 0.30 | 18 | 23 | 26 of 26 | 274 of 274 |
+| id | 37 of 520 | no rules for the language | 285 | 0.87 | 0.28 | 269 of 279 | 0.90 | 0.31 | 12 | 13 | 16 of 16 | 279 of 279 |
 
-**Every flagged string was read**, and so was every string whose back-translation alone scored
-under 0.6 in Hindi, Thai, Arabic and Vietnamese (the languages least sure of), and under 0.55
-in the rest. Each flagged string's verdict is in `docs/language/pages-rest-meaning.json`, with
+**Every flagged string was read**, by both rules, and so was every string whose back-translation
+alone scored under 0.6 in Hindi, Thai, Arabic and Vietnamese (the languages least sure of), and
+under 0.55 in the rest. The 99 strings only the rank rule flags were read in the second pass;
+none was a mistranslation by that reading. Each flagged string's verdict is in `docs/language/pages-rest-meaning.json`, with
 the exact text it was made for; `node scripts/pages-rest/summarise.mjs
 docs/language/results/pages-rest --strict` fails when a flagged string has no verdict, or a
 string has changed (or been added) since it was scored. Most flags are short labels whose word
@@ -500,12 +519,53 @@ Changed after reading (each scored again, before and after, in the record):
 | ja | `classroom.wizard.s3.title` | 活動を出題する | 活動を割り当てる | 出題 is setting test questions, not activities |
 | ko | `classroom.wizard.s3.title` | 활동 내기 | 활동 배정하기 | 내기 is also "a bet" (read back as "Activities Betting"); 과제 내기 and 과제 내주기 were tried and read back as "Challenge Betting" and "Submit a task" |
 
+Changed in the second pass, after the independent check of 2026-11-16, besides the join code
+(see "School") and the Vision Pro gesture (see "Technology"); each scored again, and each
+flagged one read (`pages-rest-meaning.json`):
+
+| | key | was | now | why |
+|---|---|---|---|---|
+| th | `vr.badge` | ความจริงเสมือน | ความเป็นจริงเสมือน | Wikidata's label (Q170519); the page's description already said it |
+| th | `viewer.card.glb.body` | เมชทั่วไปที่แสดงด้วย model-viewer บนโทรศัพท์จะวางโมเดลไว้ในห้องของคุณด้วยความจริงเสริมได้ | เมชทั่วไปที่แสดงด้วย model-viewer บนโทรศัพท์จะวางโมเดลไว้ในห้องของคุณด้วยความเป็นจริงเสริมได้ | Wikidata's label (Q254183) |
+| pl | `vr.badge` | Wirtualna rzeczywistość | Rzeczywistość wirtualna | Wikidata's order (Q170519) |
+| pl | `vr.meta.description` | Przejdź się po swojej kolekcji kart z Szekspirem w wirtualnej rzeczywistości. | Przejdź się po swojej kolekcji kart z Szekspirem w rzeczywistości wirtualnej. | Wikidata's order (Q170519) |
+| pl | `viewer.card.glb.body` | Zwykła siatka wyświetlana przez model-viewer. Na telefonie może ustawić model w twoim pokoju w rozszerzonej rzeczywistości. | Zwykła siatka wyświetlana przez model-viewer. Na telefonie może ustawić model w twoim pokoju w rzeczywistości rozszerzonej. | Wikidata's order (Q254183) |
+| es | `classroom.intro` | Crea una clase o únete a una. El profesorado pone trivial y desafíos sobre Shakespeare y sigue el progreso de sus estudiantes. | Crea una clase o únete a una. Los docentes ponen trivial y desafíos sobre Shakespeare y siguen el progreso de sus estudiantes. | one word for teacher: docente, as every other Spanish string |
+| es | `classroom.meta.description` | El profesorado crea clases, pone trivial y desafíos sobre Shakespeare y sigue el progreso de sus estudiantes. | Los docentes crean clases, ponen trivial y desafíos sobre Shakespeare y siguen el progreso de sus estudiantes. | as classroom.intro |
+| ar | `vr.intro` | تجوّل في مجموعتك بالأبعاد الثلاثة. يعمل على Quest 3 و Vision Pro عبر WebXR، وبالفأرة على الحاسوب. | تجوّل في مجموعتك بالأبعاد الثلاثة. يعمل على Quest 3 وVision Pro عبر WebXR، وبالفأرة على الحاسوب. | و written on the Latin name, as وiPad |
+| th | `pwa.storage.kept` | เก็บข้อมูลไว้ในอุปกรณ์เครื่องนี้ {size} เบราว์เซอร์จะไม่ลบเอง | ข้อมูล {size} ถูกเก็บไว้ในอุปกรณ์เครื่องนี้ เบราว์เซอร์จะไม่ลบเอง | it read as an instruction ("keep the data …"); now it says what is kept |
+| th | `pwa.storage.atRisk` | บันทึกข้อมูลไว้ {size} แต่เบราว์เซอร์อาจลบได้หากพื้นที่ในอุปกรณ์ไม่พอหรือคุณไม่ได้เข้ามาสักพัก | ข้อมูล {size} ถูกบันทึกไว้แล้ว แต่เบราว์เซอร์อาจลบได้หากพื้นที่ในอุปกรณ์ไม่พอหรือคุณไม่ได้เข้ามาสักพัก | as pwa.storage.kept |
+| hi | `classroom.teacher.check2` | 18 वर्ष से कम आयु के किसी भी विद्यार्थी को जोड़ने से पहले मैं उसके माता-पिता या अभिभावक की सहमति लूँगा/लूँगी। | 18 वर्ष से कम आयु के किसी भी विद्यार्थी को जोड़ने से पहले उसके माता-पिता या अभिभावक की सहमति लेना मेरी ज़िम्मेदारी है। | a gender hedge (लूँगा/लूँगी); now "obtaining … consent is my responsibility" |
+| hi | `classroom.student.check1` | मेरे माता-पिता या क़ानूनी अभिभावक जानते हैं कि मैं पढ़ाई के काम के लिए Inspired Mile इस्तेमाल कर रहा/रही हूँ, और उन्होंने इसकी अनुमति दी है। | मेरे माता-पिता या क़ानूनी अभिभावक को इसकी जानकारी है, और उन्होंने मुझे पढ़ाई के काम के लिए Inspired Mile इस्तेमाल करने की अनुमति दी है। | a gender hedge (रहा/रही); now "… know of it, and have allowed me to use …" |
+| hi | `classroom.student.check3` | मैं समझता/समझती हूँ कि मेरे शिक्षक कक्षा में मेरी प्रगति और गतिविधि देख सकते हैं। | मुझे पता है कि मेरे शिक्षक कक्षा में मेरी प्रगति और गतिविधि देख सकते हैं। | a gender hedge (समझता/समझती); now "I know that …" |
+| fr | `classroom.teacher.check1` | Je suis enseignant, formateur ou membre de la direction d’un établissement scolaire, et je suis autorisé à utiliser ce service avec mes élèves. | J’enseigne, j’assure des formations ou je fais partie de la direction d’un établissement scolaire, et j’ai l’autorisation d’utiliser ce service avec mes élèves. | masculine nouns and participle for a teacher who may be a woman; verbs now |
+| it | `classroom.teacher.check1` | Sono insegnante, formatore o dirigente scolastico e sono autorizzato a usare questo servizio con i miei studenti. | Insegno, mi occupo di formazione o faccio parte della dirigenza di una scuola, e ho l’autorizzazione a usare questo servizio con i miei studenti. | as fr |
+| pt | `classroom.teacher.check1` | Sou professor, instrutor ou gestor escolar e tenho autorização para usar este serviço com meus estudantes. | Dou aulas, trabalho com formação ou faço parte da gestão de uma escola e tenho autorização para usar este serviço com meus estudantes. | as fr |
+| pl | `classroom.teacher.check1` | Jestem nauczycielem, instruktorem albo członkiem dyrekcji szkoły i mam prawo korzystać z tej usługi z moimi uczniami. | Uczę, prowadzę szkolenia albo należę do dyrekcji szkoły i mam prawo korzystać z tej usługi z moimi uczniami. | as fr |
+| ar | `classroom.teacher.check1` | أنا معلّم أو مدرّب أو أحد أعضاء إدارة مدرسة، ومصرَّح لي باستخدام هذه الخدمة مع طلابي. | أعمل في التدريس أو التدريب أو في إدارة مدرسة، ومصرَّح لي باستخدام هذه الخدمة مع طلابي. | as fr |
+| fr | `error.forbidden` | Vous n’êtes pas autorisé à faire cela. | Vous n’avez pas l’autorisation de faire cela. | autorisé is masculine; avoir l’autorisation is not |
+| it | `classroom.join.done` | Sei entrato in «{name}». | Ora fai parte di «{name}». | entrato is masculine; fare parte is not |
+| it | `classroom.mine.empty` | Non sei ancora entrato in nessuna classe. | Non fai ancora parte di nessuna classe. | as classroom.join.done |
+| es | `tour.entry.eliminated` | Eliminado | Fuera del torneo | a player's state, in the masculine; "out of the tournament" is the same for anyone |
+| pt | `tour.entry.eliminated` | Eliminado | Fora do torneio | as es |
+| it | `tour.entry.eliminated` | Eliminato | Fuori dal torneo | as es |
+| fr | `tour.entry.eliminated` | Éliminé | Hors du tournoi | as es |
+| ru | `tour.entry.eliminated` | Выбыл из турнира | Вне турнира | as es |
+| ar | `tour.entry.eliminated` | خرج من البطولة | خارج البطولة | as es |
+
 Read and left for a native reviewer to decide (the meaning is right; the choice of word is
 the question): id *penawaran* (an offer) for a marketplace listing, where Indonesian
 classifieds often say *iklan*; zh 挂单, the trading word (a standing order) for a listing; es
 *Diario* and pt *Diário* for the daily bonus, which also read as "diary"; ar مسابقة for trivia
 and for competitions (the playground on branch lang/pages-play uses the same word); th ควิซ,
 a transliteration of "quiz" (the playground uses it too); ko 생존 ("survival") for "Still in".
+And from the second pass: German writes the student's badge *Schüler/in*, a short form some style
+guides write *Schüler/-in* (elsewhere the strings write *Schülerin oder Schüler*); third persons
+stay in the generic masculine where the language's school writing uses it (fr *mon enseignant*,
+it *il mio insegnante*, pt *meu professor*, ar *معلّمي*, ru *учитель*), and Arabic addresses the
+player in the masculine singular, as the core locale does; Russian *сожми пальцы* for the Vision
+Pro gesture has no source (Apple has no Russian guide, and Android's Russian names the zoom); the
+Thai storage notes were rephrased by the model and have only the tools' check.
 
 A string shorter than a sentence is scored loosely by both models whatever its quality, and a
 model can translate an awkward sentence back to the right English: a string that passes this
@@ -568,6 +628,15 @@ consent. Found and fixed in the first run:
   fallback pulled the letters of *الخطوة* apart. Tabular figures instead.
 - German: *K.-o.-System* broke at its own hyphen on a phone; non-breaking hyphens.
 
+Retaken in the second pass (iMac Pro, after every change of that pass): all 136 again, nothing
+past the edge of the screen. Looked at: the VR gallery in Arabic on a phone (وVision Pro in its
+line, the Apple gesture on the Vision Pro card) and in German on a desktop (the gesture, three
+lines in its card), the teacher's consent in Arabic on a phone (the declaration with verbs), the
+Arabic bracket and standings on a desktop (خارج البطولة in the status column) and the Spanish
+bracket on a phone. Seen there and not this branch's to change: a match of a later round whose
+players are not known yet shows the bye word for both (the page's logic, as on main: an empty
+slot is drawn as a bye whatever the round).
+
 Seen and right: right-to-left order of headings, badges, chevrons (open points left, back
 points right in Arabic), radio buttons and the "+" of "New assignment"; Latin user names inside
 Arabic lines and the reverse (`<bdi>`); Japanese and Spanish dates and number grouping (Spanish
@@ -593,16 +662,30 @@ against the checks.
   the tests give their list of problems as the assertion's message. Added: the page's script
   writing English with no key (browser), and three spellings that differ from the core locale
   (unit).
-- **Last run** (iMac Pro, finished 17:22, US Eastern time, west of Greenwich, so the date mutation
-  ran): **49 of 49 caught**, 38 against the unit tests and 11 against the browser tests,
-  "English left in the Spanish marketplace" and "loadArea stops filling in English" among
-  them.
+- **Run of the first pass** (iMac Pro, finished 17:22, US Eastern time, west of Greenwich, so the
+  date mutation ran): 49 of 49 caught, 38 against the unit tests and 11 against the browser tests.
+- **Second pass.** An independent checker's own mutations found three gaps (its M3, an extra
+  Russian "two" form; M12, Russian "one" written out; M14, a third Thai word for VR), and its
+  reading found records that claimed more than their sources. Each now has a mutation, with the
+  other defects of that check: French "one" written out, a Hindi hedge and a bracketed Polish
+  one, Arabic و apart, the Arabic manifest without its direction, Thai and Polish VR as they were,
+  the German gesture back to *kneif*, Spanish *el profesorado*, the Japanese bye recorded as
+  Wikidata's and its verdict claiming Wikidata again, a saved Wikidata answer changed under the
+  record, a term table edited by hand. `src/i18n/pages-rest-terms.test.ts` also breaks the
+  record itself in six cases of its own.
+- **Last run** (iMac Pro, 2026-11-16, 19:03 to 19:12 US Eastern, after every change of the
+  second pass): **65 of 65 caught**, 54 against the unit tests (the three files green before any
+  mutation) and 11 against the browser tests.
 
 The meaning check was shown to fail twice on real data before its record was complete:
 `summarise.mjs --strict` named 17 strings changed after the back-translation run had copied
 them (German non-breaking hyphens in *K.‑o.‑System*, the XP gain written without its "+"), and
-then one flagged string whose verdict had been made for its old text. Its control is described
-under "Meaning".
+then one flagged string whose verdict had been made for its old text. In the second pass it
+failed on real data again before the record was complete (86 strings back-translated before
+they changed, no rank, and spelling and grammar results with no record of the text they were run
+on), and on a tampered copy it named each of four planted faults: a Thai string changed after
+every tool ran, a verdict removed, a German grammar result for an older text, a row with no
+rank. Its control is described under "Meaning".
 
 ## What could not be checked
 
@@ -615,6 +698,15 @@ under "Meaning".
   it saw one of four. Hunspell's Hindi, Korean, Thai and Indonesian lists are thin: in those
   languages a rejected word was more often the list's gap than a typo, and an accepted word
   says little.
+- **The rank rule** finds a translation nearer to another English string than to its own; it
+  cannot tell which of two near-identical English strings a translation renders, and a wrong
+  translation that LaBSE still places beside its own English passes it. On the control, the two
+  rules together let 13 of 4,185 wrong pairings through (0.3 %).
+- **Gender**: the unit test refuses a hedge written with a slash or brackets. A sentence that
+  simply takes one gender (a masculine participle, a masculine noun for the player) is not caught
+  by any tool; the ones fixed in the second pass were found by reading, and others may remain.
+- **The Vision Pro gesture** follows Apple's own guide in eight languages; in the other seven
+  Apple serves its English page, and the strings use Android's verb (six) or the model's (Russian).
 - **The reading of flagged strings** was done by the engineer on this branch, a language model;
   the verdicts in `docs/language/pages-rest-meaning.json` are its judgement, not a native
   speaker's.
