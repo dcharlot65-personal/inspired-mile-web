@@ -354,7 +354,7 @@ const fr: Record<string, string> = {
   'void.label': 'Ne rapporte rien',
   'void.thin': 'trop peu pour faire une strophe : il faut davantage de mots différents',
   'void.copied': 'reprise de l’autre strophe : une réponse doit être de vous',
-  'live.judgeUnread': 'Le juge ne lit pas la ligne {lines} : toute ligne avec un nombre ou des mots adressés au juge (note, score, gagner…) est laissée de côté',
+  'live.judgeUnread': 'Lignes que le modèle notateur ne lira pas : {lines}. Toute ligne contenant un nombre ou un mot de notation (note, score, gagner…) est laissée de côté, et cette manche est alors jugée par les seules règles',
   'signature.none': 'cette carte n’a pas de réplique de signature',
   'signature.hint': 'faites écho à l’un de ces mots : {words}',
   'signature.hintTwo': 'faites écho à deux de ces mots : {words}',

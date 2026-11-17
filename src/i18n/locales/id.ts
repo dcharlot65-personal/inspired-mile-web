@@ -354,7 +354,7 @@ const id: Record<string, string> = {
   'void.label': 'Tanpa nilai',
   'void.thin': 'terlalu sedikit untuk disebut syair: perlu lebih banyak kata yang berbeda',
   'void.copied': 'diambil dari syair lawan: jawaban harus buatanmu sendiri',
-  'live.judgeUnread': 'Juri tidak membaca baris {lines}: baris yang memuat angka atau kata yang ditujukan kepada juri (nilai, skor, menang…) dilewati',
+  'live.judgeUnread': 'Baris yang tidak akan dibaca model penilai: {lines}. Baris yang memuat angka atau kata penilaian (nilai, skor, menang…) dilewati, dan babak ini lalu diputuskan oleh aturan saja',
   'signature.none': 'kartu ini tidak punya dialog tanda tangan',
   'signature.hint': 'gemakan salah satu dari: {words}',
   'signature.hintTwo': 'gemakan dua dari: {words}',

@@ -573,10 +573,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       }
       // Copied from the opponent, or too little to be a verse: say so, since it scores nothing.
       if (written && s.voided && s.voided !== 'empty') list.appendChild(checkRow(true, t('void.label'), t(`void.${s.voided}`), 'crimson'));
-      // A model judges: the lines it will not read (a number, or words that address the judge).
+      // A model grades verses one at a time: the lines it will not read, and the word that leaves each out.
       const unread = session.judgeUnread();
       if (written && unread.length) {
-        const row = checkRow(true, t('live.judgeUnread', { lines: unread.join(', ') }), '', 'crimson');
+        const row = checkRow(true, t('live.judgeUnread', { lines: unread.map((u) => `${u.line} (${u.word})`).join(', ') }), '', 'crimson');
         row.id = 'live-judge-unread';
         list.appendChild(row);
       }
