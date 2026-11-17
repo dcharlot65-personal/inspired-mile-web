@@ -53,9 +53,9 @@
   "opus": {
    "es": {
     "covered": "all strings",
-    "strings": 662,
-    "flagged": 32,
-    "flaggedTrivia": 18,
+    "strings": 659,
+    "flagged": 36,
+    "flaggedTrivia": 21,
     "controlsCaught": 12,
     "controls": 12,
     "threshold": 0.43,
@@ -75,6 +75,9 @@
      "story.enc.3-1.desc",
      "trivia.154.o0",
      "pg.stat.cards",
+     "trivia.14.o2",
+     "trivia.33.o0",
+     "trivia.63.o2",
      "trivia.34.o3",
      "trivia.128.o0",
      "trivia.194.o1",
@@ -96,19 +99,20 @@
      "trivia.199.o2",
      "trivia.154.o2",
      "pg.reveal.starter",
-     "pg.credits"
+     "pg.credits",
+     "pg.trivia.correct"
     ]
    },
    "fr": {
     "covered": "all strings",
     "strings": 657,
     "flagged": 26,
-    "flaggedTrivia": 17,
+    "flaggedTrivia": 16,
     "controlsCaught": 12,
     "controls": 12,
     "threshold": 0.41,
     "maxControl": 0.3627,
-    "medianCos": 0.8927,
+    "medianCos": 0.892,
     "beams": [
      1
     ],
@@ -128,6 +132,7 @@
      "trivia.14.o0",
      "trivia.63.o1",
      "trivia.128.o3",
+     "pg.trivia.correct",
      "trivia.194.o1",
      "trivia.197.o2",
      "pg.collect",
@@ -136,7 +141,6 @@
      "trivia.34.o2",
      "trivia.4.o3",
      "pg.claimed",
-     "trivia.70.o3",
      "pg.challenge.check",
      "story.enc.2-1.desc"
     ]
@@ -150,7 +154,7 @@
     "controls": 12,
     "threshold": 0.33,
     "maxControl": 0.2772,
-    "medianCos": 0.9219,
+    "medianCos": 0.9204,
     "beams": [
      1
     ],
@@ -174,7 +178,7 @@
     "controls": 12,
     "threshold": 0.4,
     "maxControl": 0.3472,
-    "medianCos": 0.8943,
+    "medianCos": 0.8942,
     "beams": [
      1
     ],
@@ -207,14 +211,14 @@
    },
    "pt": {
     "covered": "all strings",
-    "strings": 661,
-    "flagged": 34,
+    "strings": 660,
+    "flagged": 35,
     "flaggedTrivia": 24,
     "controlsCaught": 12,
     "controls": 12,
     "threshold": 0.46,
     "maxControl": 0.4069,
-    "medianCos": 0.8666,
+    "medianCos": 0.8657,
     "beams": [
      1
     ],
@@ -251,15 +255,16 @@
      "pg.onb.1.title",
      "trivia.34.o3",
      "pg.meta.title",
+     "pg.trivia.correct",
      "trivia.110.o0",
      "trivia.66.o1"
     ]
    },
    "pl": {
     "covered": "all strings",
-    "strings": 664,
-    "flagged": 43,
-    "flaggedTrivia": 27,
+    "strings": 661,
+    "flagged": 42,
+    "flaggedTrivia": 26,
     "controlsCaught": 12,
     "controls": 12,
     "threshold": 0.43,
@@ -295,7 +300,6 @@
      "pg.onb.done",
      "story.enc.3-1.name",
      "pg.challenge.blank",
-     "trivia.109.o2",
      "pg.onb.next",
      "story.enc.3-1.desc",
      "pg.odds.tiers",
@@ -395,14 +399,14 @@
    },
    "ar": {
     "covered": "all strings",
-    "strings": 651,
-    "flagged": 54,
-    "flaggedTrivia": 33,
+    "strings": 700,
+    "flagged": 43,
+    "flaggedTrivia": 29,
     "controlsCaught": 12,
     "controls": 12,
-    "threshold": 0.44,
-    "maxControl": 0.3934,
-    "medianCos": 0.811,
+    "threshold": 0.39,
+    "maxControl": 0.3357,
+    "medianCos": 0.8227,
     "beams": [
      1
     ],
@@ -412,6 +416,7 @@
      "pg.challenge.translator",
      "trivia.143.o2",
      "trivia.117.o2",
+     "trivia.29.o3",
      "trivia.159.o1",
      "trivia.194.o2",
      "trivia.181.o3",
@@ -425,6 +430,8 @@
      "trivia.63.o0",
      "trivia.137.q",
      "story.enc.3-1.desc",
+     "trivia.14.o0",
+     "trivia.63.o1",
      "pg.stat.trivia",
      "trivia.83.o3",
      "pg.trivia.start",
@@ -446,21 +453,7 @@
      "trivia.74.q",
      "trivia.185.o2",
      "trivia.127.q",
-     "trivia.107.o1",
-     "pg.odds.moreBefore",
-     "trivia.138.o3",
-     "pg.onb.done",
-     "trivia.60.o0",
-     "pg.odds.rarity",
-     "trivia.187.o2",
-     "pg.battle.cta",
-     "pg.difficulty.medium",
-     "story.difficulty.medium",
-     "trivia.170.q",
-     "trivia.34.o3",
-     "trivia.121.o0",
-     "trivia.114.o0",
-     "story.act.1.label"
+     "trivia.107.o1"
     ]
    },
    "hi": {
@@ -472,7 +465,7 @@
     "controls": 12,
     "threshold": 0.3,
     "maxControl": 0.2476,
-    "medianCos": 0.6118,
+    "medianCos": 0.6083,
     "beams": [
      1
     ],
@@ -518,7 +511,6 @@
      "trivia.121.o3",
      "trivia.177.o1",
      "trivia.181.o3",
-     "trivia.83.o3",
      "story.badge",
      "trivia.121.o0",
      "trivia.68.o0",
@@ -532,6 +524,7 @@
      "trivia.151.o1",
      "trivia.46.q",
      "trivia.176.q",
+     "trivia.83.o2",
      "trivia.136.q",
      "trivia.135.o2",
      "trivia.158.o2",
@@ -544,13 +537,13 @@
    "zh": {
     "covered": "all strings",
     "strings": 661,
-    "flagged": 73,
+    "flagged": 74,
     "flaggedTrivia": 41,
     "controlsCaught": 12,
     "controls": 12,
     "threshold": 0.45,
     "maxControl": 0.3967,
-    "medianCos": 0.796,
+    "medianCos": 0.7954,
     "beams": [
      1
     ],
@@ -610,6 +603,7 @@
      "pg.trivia.start",
      "trivia.104.o3",
      "pg.onb.done",
+     "pg.trivia.correct",
      "trivia.132.q",
      "trivia.47.q",
      "trivia.191.o1",
@@ -633,13 +627,13 @@
    "ja": {
     "covered": "all strings",
     "strings": 677,
-    "flagged": 169,
-    "flaggedTrivia": 119,
+    "flagged": 171,
+    "flaggedTrivia": 121,
     "controlsCaught": 12,
     "controls": 12,
     "threshold": 0.46,
     "maxControl": 0.4127,
-    "medianCos": 0.6707,
+    "medianCos": 0.6703,
     "beams": [
      1
     ],
@@ -658,6 +652,7 @@
      "trivia.75.o0",
      "trivia.90.o1",
      "trivia.121.q",
+     "trivia.80.q",
      "trivia.171.q",
      "trivia.48.o0",
      "trivia.39.q",
@@ -692,7 +687,6 @@
      "trivia.33.q",
      "trivia.174.o3",
      "story.enc.5-2.desc",
-     "pg.trivia.correct",
      "trivia.14.o1",
      "trivia.63.o0",
      "trivia.75.o3",
@@ -701,8 +695,10 @@
      "trivia.154.o2",
      "pg.title",
      "pg.odds.moreBefore",
+     "pg.trivia.correct",
      "event.trivia-tuesday.name",
      "trivia.48.o3",
+     "trivia.50.o3",
      "trivia.161.o2",
      "pg.odds.rare",
      "streak.pack.rare",
@@ -819,12 +815,12 @@
     "covered": "all strings",
     "strings": 643,
     "flagged": 87,
-    "flaggedTrivia": 64,
+    "flaggedTrivia": 63,
     "controlsCaught": 12,
     "controls": 12,
     "threshold": 0.45,
     "maxControl": 0.4019,
-    "medianCos": 0.7756,
+    "medianCos": 0.7739,
     "beams": [
      1
     ],
@@ -896,6 +892,7 @@
      "story.enc.4-2.desc",
      "trivia.103.o3",
      "story.enc.1-2.name",
+     "pg.trivia.correct",
      "trivia.167.o2",
      "trivia.124.o1",
      "story.act.4.name",
@@ -910,7 +907,6 @@
      "trivia.31.q",
      "trivia.191.o1",
      "pg.trivia.generating",
-     "trivia.83.o2",
      "trivia.34.o2",
      "trivia.48.o3",
      "trivia.162.q",
@@ -921,7 +917,7 @@
    "vi": {
     "covered": "all strings",
     "strings": 636,
-    "flagged": 43,
+    "flagged": 44,
     "flaggedTrivia": 28,
     "controlsCaught": 12,
     "controls": 12,
@@ -969,6 +965,7 @@
      "pg.collect",
      "pg.odds.epic",
      "trivia.53.o3",
+     "pg.trivia.correct",
      "trivia.172.q",
      "streak.pack.uncommon",
      "streak.pack.epic",
@@ -1160,7 +1157,7 @@
     "controls": 12,
     "threshold": 0.5,
     "maxControl": 0.4454,
-    "medianCos": 0.8922,
+    "medianCos": 0.8915,
     "beams": [
      1
     ],
@@ -1210,14 +1207,14 @@
   "labse": {
    "es": {
     "covered": "all strings",
-    "strings": 662,
+    "strings": 659,
     "flagged": 17,
     "flaggedTrivia": 11,
     "controlsCaught": 12,
     "controls": 12,
     "threshold": 0.46,
     "maxControl": 0.4146,
-    "medianCos": 0.8842,
+    "medianCos": 0.8843,
     "flaggedIds": [
      "trivia.114.o2",
      "trivia.114.o1",
@@ -1247,7 +1244,7 @@
     "controls": 12,
     "threshold": 0.48,
     "maxControl": 0.4341,
-    "medianCos": 0.8986,
+    "medianCos": 0.8976,
     "flaggedIds": [
      "trivia.194.o1",
      "trivia.135.o1",
@@ -1265,7 +1262,7 @@
     "controls": 12,
     "threshold": 0.44,
     "maxControl": 0.3851,
-    "medianCos": 0.8824,
+    "medianCos": 0.882,
     "flaggedIds": [
      "trivia.135.o3",
      "trivia.4.o2",
@@ -1286,7 +1283,7 @@
     "controls": 12,
     "threshold": 0.46,
     "maxControl": 0.4061,
-    "medianCos": 0.8816,
+    "medianCos": 0.8815,
     "flaggedIds": [
      "trivia.114.o2",
      "trivia.41.o0",
@@ -1300,14 +1297,14 @@
    },
    "pt": {
     "covered": "all strings",
-    "strings": 661,
+    "strings": 660,
     "flagged": 7,
     "flaggedTrivia": 6,
     "controlsCaught": 12,
     "controls": 12,
     "threshold": 0.46,
     "maxControl": 0.405,
-    "medianCos": 0.8817,
+    "medianCos": 0.8801,
     "flaggedIds": [
      "trivia.114.o1",
      "trivia.114.o2",
@@ -1320,14 +1317,14 @@
    },
    "pl": {
     "covered": "all strings",
-    "strings": 664,
+    "strings": 661,
     "flagged": 26,
     "flaggedTrivia": 22,
     "controlsCaught": 12,
     "controls": 12,
     "threshold": 0.47,
     "maxControl": 0.4175,
-    "medianCos": 0.8421,
+    "medianCos": 0.843,
     "flaggedIds": [
      "trivia.114.o2",
      "trivia.154.o0",
@@ -1366,7 +1363,7 @@
     "controls": 12,
     "threshold": 0.45,
     "maxControl": 0.4009,
-    "medianCos": 0.8402,
+    "medianCos": 0.8404,
     "flaggedIds": [
      "trivia.114.o2",
      "trivia.154.o2",
@@ -1387,14 +1384,14 @@
    },
    "ar": {
     "covered": "all strings",
-    "strings": 651,
+    "strings": 700,
     "flagged": 21,
     "flaggedTrivia": 20,
     "controlsCaught": 12,
     "controls": 12,
     "threshold": 0.45,
     "maxControl": 0.401,
-    "medianCos": 0.8357,
+    "medianCos": 0.8446,
     "flaggedIds": [
      "trivia.188.o3",
      "trivia.194.o2",
@@ -1428,7 +1425,7 @@
     "controls": 12,
     "threshold": 0.53,
     "maxControl": 0.4787,
-    "medianCos": 0.8398,
+    "medianCos": 0.8395,
     "flaggedIds": [
      "trivia.128.o1",
      "trivia.194.o2",
@@ -1524,7 +1521,7 @@
     "controls": 12,
     "threshold": 0.38,
     "maxControl": 0.3286,
-    "medianCos": 0.7995,
+    "medianCos": 0.7997,
     "flaggedIds": [
      "trivia.187.o3",
      "trivia.181.o2",
@@ -1575,7 +1572,7 @@
     "controls": 12,
     "threshold": 0.46,
     "maxControl": 0.4145,
-    "medianCos": 0.791,
+    "medianCos": 0.7903,
     "flaggedIds": [
      "trivia.174.o3",
      "trivia.102.o2",
@@ -1616,7 +1613,7 @@
     "controls": 12,
     "threshold": 0.51,
     "maxControl": 0.4639,
-    "medianCos": 0.871,
+    "medianCos": 0.8709,
     "flaggedIds": [
      "trivia.194.o2",
      "trivia.22.o1",

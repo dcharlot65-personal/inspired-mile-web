@@ -1108,3 +1108,27 @@ zh	trivia.4.o0	ok	align (qa/align.py) put the back-translation nearer another En
 zh	trivia.4.o3	ok	align (qa/align.py) put the back-translation nearer another English option; read: the text means its own option, the back-translation was what went wrong (a name or a rare word, or two options that are near in meaning by design)
 zh	trivia.151.o0	ok	align (qa/align.py) put the back-translation nearer another English option; read: the text means its own option, the back-translation was what went wrong (a name or a rare word, or two options that are near in meaning by design)
 zh	trivia.152.o0	ok	align (qa/align.py) put the back-translation nearer another English option; read: the text means its own option, the back-translation was what went wrong (a name or a rare word, or two options that are near in meaning by design)
+es	trivia.14.o2	ok	second pass, OPUS-MT: "Escala" back as "Scale": the model reads the name as a noun; Escala is es.wikipedia Romeo y Julieta's form for the Prince (names-evidence.tsv)
+es	trivia.33.o0	ok	second pass, OPUS-MT: as trivia.14.o2 (Escala)
+es	trivia.63.o2	ok	second pass, OPUS-MT: as trivia.14.o2 (Escala)
+fr	pg.trivia.correct	ok	second pass, OPUS-MT: "Bonnes réponses : {n}" back as "Good answers : 3"; it says Correct: 3
+hi	trivia.83.o2	ok	second pass, OPUS-MT: Latin names inside Hindi come back garbled ("Cluppania and Pattia"); the option is Calpurnia और Portia
+ja	trivia.50.o3	ok	second pass, OPUS-MT: エアロン back as "Aeron"; ja.wikipedia's cast list writes エアロン(アーロン) for Aaron
+ja	trivia.80.q	ok	second pass, OPUS-MT: back as "So, let's go back to the original." The model fails on the Latin name inside; the sentence reads: in which play does a character disguise herself as a jurist named Balthazar
+pt	pg.trivia.correct	ok	second pass, OPUS-MT: "Acertos: {n}" back as "Hits: 3"; acertos is the usual word for correct answers
+vi	pg.trivia.correct	ok	second pass, OPUS-MT: "Số câu đúng: {n}" back as "Number of verses true: 3"; câu is a question here, the usual quiz phrase for the number of correct answers
+hi	trivia.83.o2	ok	second pass, align: nearer option 0 only because the back-translation garbles the Latin names (Cluppania and Pattia); the option is Calpurnia और Portia
+hi	trivia.131.o1	ok	second pass, align: back as "Earl of Görster", nearer the Earl of Kent by noise; ग्लस्टर is hi.wikipedia King Lear's Gloucester
+ko	trivia.83.o1	ok	second pass, align: back as "Marcus Antonius and Occavis": Antony and Octavius, as its own option
+ko	trivia.151.o1	ok	second pass, align: back as "Gourrily, Roslind, and Cordelia": Goneril, Rosalind and Cordelia, its own option
+ja	trivia.50.o3	ok	second pass, align: エアロン back as "Aeron", Aaron
+ko	pg.trivia.correct	ok	second pass: flagged because the English is now "Correct: {n}"; 정답 {n}개 is the number of correct answers
+zh	pg.trivia.correct	ok	second pass: flagged because the English is now "Correct: {n}"; 答对 {n} 题 is questions answered correctly
+ja	trivia.3.q	ok	second pass, OPUS-MT: back as "A plan on both your houses!"; the quotation is kept verbatim in the question
+ja	trivia.124.o3	ok	second pass, LaBSE: 軍事力 is military strength
+ar	trivia.14.o0	ok	second pass: an option left in English by design (Montague, no Arabic source), scored only because pairs.mjs compared it with its isolates; pairs.mjs now strips them
+ar	trivia.63.o1	ok	second pass: as trivia.14.o0
+ar	trivia.29.o3	ok	second pass: the missing word of an English quotation (Stain), English by design
+fr	pg.difficulty.medium	ok	second pass, OPUS-MT: moyen back as "Average"; it is the medium difficulty
+ru	story.enc.3-1.desc	ok	second pass, OPUS-MT: back as "Sneak out the bad spirit"; Перехитри озорного духа is Outwit the mischievous spirit
+id	trivia.41.o3	ok	second pass, LaBSE: Letnan is Lieutenant (the back-translation came back empty)

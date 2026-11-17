@@ -1102,36 +1102,36 @@ What the tools that did not write the text found, and what was done about it. Th
 
 | Language | Engine | Strings | Threshold | Flagged (trivia) | Controls caught | Median similarity |
 |---|---|---|---|---|---|---|
-| es | opus | 662 (all strings) | 0.43 | 32 (18) | 12/12 | 0.903 |
-| fr | opus | 657 (all strings) | 0.41 | 26 (17) | 12/12 | 0.8927 |
-| de | opus | 645 (all strings) | 0.33 | 8 (4) | 12/12 | 0.9219 |
-| it | opus | 668 (all strings) | 0.4 | 24 (15) | 12/12 | 0.8943 |
-| pt | opus | 661 (all strings) | 0.46 | 34 (24) | 12/12 | 0.8666 |
-| pl | opus | 664 (all strings) | 0.43 | 43 (27) | 12/12 | 0.8318 |
+| es | opus | 659 (all strings) | 0.43 | 36 (21) | 12/12 | 0.903 |
+| fr | opus | 657 (all strings) | 0.41 | 26 (16) | 12/12 | 0.892 |
+| de | opus | 645 (all strings) | 0.33 | 8 (4) | 12/12 | 0.9204 |
+| it | opus | 668 (all strings) | 0.4 | 24 (15) | 12/12 | 0.8942 |
+| pt | opus | 660 (all strings) | 0.46 | 35 (24) | 12/12 | 0.8657 |
+| pl | opus | 661 (all strings) | 0.43 | 42 (26) | 12/12 | 0.8318 |
 | ru | opus | 681 (all strings) | 0.42 | 63 (29) | 12/12 | 0.8272 |
-| ar | opus | 651 (all strings) | 0.44 | 54 (33) | 12/12 | 0.811 |
-| hi | opus | 627 (all strings) | 0.3 | 62 (54) | 12/12 | 0.6118 |
-| zh | opus | 661 (all strings) | 0.45 | 73 (41) | 12/12 | 0.796 |
-| ja | opus | 677 (all strings) | 0.46 | 169 (119) | 12/12 | 0.6707 |
-| ko | opus | 643 (all strings) | 0.45 | 87 (64) | 12/12 | 0.7756 |
-| vi | opus | 636 (all strings) | 0.4 | 43 (28) | 12/12 | 0.7957 |
+| ar | opus | 700 (all strings) | 0.39 | 43 (29) | 12/12 | 0.8227 |
+| hi | opus | 627 (all strings) | 0.3 | 62 (54) | 12/12 | 0.6083 |
+| zh | opus | 661 (all strings) | 0.45 | 74 (41) | 12/12 | 0.7954 |
+| ja | opus | 677 (all strings) | 0.46 | 171 (121) | 12/12 | 0.6703 |
+| ko | opus | 643 (all strings) | 0.45 | 87 (63) | 12/12 | 0.7739 |
+| vi | opus | 636 (all strings) | 0.4 | 44 (28) | 12/12 | 0.7957 |
 | th | opus | 627 (all strings) | 0.6 | 158 (90) | 12/12 | 0.7788 |
-| id | opus | 632 (all strings) | 0.5 | 39 (18) | 12/12 | 0.8922 |
-| es | labse | 662 (all strings) | 0.46 | 17 (11) | 12/12 | 0.8842 |
-| fr | labse | 657 (all strings) | 0.48 | 5 (5) | 12/12 | 0.8986 |
-| de | labse | 645 (all strings) | 0.44 | 8 (7) | 12/12 | 0.8824 |
-| it | labse | 668 (all strings) | 0.46 | 8 (6) | 12/12 | 0.8816 |
-| pt | labse | 661 (all strings) | 0.46 | 7 (6) | 12/12 | 0.8817 |
-| pl | labse | 664 (all strings) | 0.47 | 26 (22) | 12/12 | 0.8421 |
-| ru | labse | 681 (all strings) | 0.45 | 15 (14) | 12/12 | 0.8402 |
-| ar | labse | 651 (all strings) | 0.45 | 21 (20) | 12/12 | 0.8357 |
-| hi | labse | 627 (all strings) | 0.53 | 24 (19) | 12/12 | 0.8398 |
+| id | opus | 632 (all strings) | 0.5 | 39 (18) | 12/12 | 0.8915 |
+| es | labse | 659 (all strings) | 0.46 | 17 (11) | 12/12 | 0.8843 |
+| fr | labse | 657 (all strings) | 0.48 | 5 (5) | 12/12 | 0.8976 |
+| de | labse | 645 (all strings) | 0.44 | 8 (7) | 12/12 | 0.882 |
+| it | labse | 668 (all strings) | 0.46 | 8 (6) | 12/12 | 0.8815 |
+| pt | labse | 660 (all strings) | 0.46 | 7 (6) | 12/12 | 0.8801 |
+| pl | labse | 661 (all strings) | 0.47 | 26 (22) | 12/12 | 0.843 |
+| ru | labse | 681 (all strings) | 0.45 | 15 (14) | 12/12 | 0.8404 |
+| ar | labse | 700 (all strings) | 0.45 | 21 (20) | 12/12 | 0.8446 |
+| hi | labse | 627 (all strings) | 0.53 | 24 (19) | 12/12 | 0.8395 |
 | zh | labse | 661 (all strings) | 0.47 | 16 (13) | 12/12 | 0.8072 |
 | ja | labse | 677 (all strings) | 0.46 | 17 (12) | 12/12 | 0.7985 |
-| ko | labse | 643 (all strings) | 0.38 | 14 (13) | 12/12 | 0.7995 |
+| ko | labse | 643 (all strings) | 0.38 | 14 (13) | 12/12 | 0.7997 |
 | vi | labse | 636 (all strings) | 0.43 | 11 (9) | 12/12 | 0.847 |
-| th | labse | 627 (all strings) | 0.46 | 28 (24) | 12/12 | 0.791 |
-| id | labse | 632 (all strings) | 0.51 | 25 (19) | 12/12 | 0.871 |
+| th | labse | 627 (all strings) | 0.46 | 28 (24) | 12/12 | 0.7903 |
+| id | labse | 632 (all strings) | 0.51 | 25 (19) | 12/12 | 0.8709 |
 
 Not run: es (madlad), fr (madlad), de (madlad), it (madlad), pt (madlad), pl (madlad), ru (madlad), ar (madlad), hi (madlad), zh (madlad), ja (madlad), ko (madlad), vi (madlad), th (madlad), id (madlad).
 
@@ -1141,18 +1141,18 @@ Models: google/madlad400-3b-mt (CTranslate2 int8); Helsinki-NLP OPUS-MT <lang>-e
 
 | Language | Engine | Options | Misplaced | Controls caught |
 |---|---|---|---|---|
-| es | opus | 280 | 8 | 10/10 |
+| es | opus | 277 | 8 | 10/10 |
 | fr | opus | 275 | 8 | 10/10 |
 | de | opus | 263 | 5 | 10/10 |
 | it | opus | 286 | 11 | 10/10 |
-| pt | opus | 279 | 12 | 10/10 |
-| pl | opus | 282 | 13 | 10/10 |
+| pt | opus | 278 | 12 | 10/10 |
+| pl | opus | 279 | 12 | 10/10 |
 | ru | opus | 299 | 12 | 10/10 |
-| ar | opus | 269 | 13 | 9/10 |
-| hi | opus | 245 | 35 | 10/10 |
+| ar | opus | 318 | 16 | 10/10 |
+| hi | opus | 245 | 36 | 10/10 |
 | zh | opus | 279 | 23 | 10/10 |
-| ja | opus | 295 | 39 | 10/10 |
-| ko | opus | 261 | 29 | 9/10 |
+| ja | opus | 295 | 40 | 10/10 |
+| ko | opus | 261 | 31 | 9/10 |
 | vi | opus | 254 | 18 | 10/10 |
 | th | opus | 245 | 14 | 10/10 |
 | id | opus | 250 | 3 | 10/10 |
@@ -1185,7 +1185,7 @@ Models: google/madlad400-3b-mt (CTranslate2 int8); Helsinki-NLP OPUS-MT <lang>-e
 | th | th (not usable: no spaces between words) |  | 0 |
 | id | id | 32 | 0 |
 
-**Read by hand**: 1109 flagged strings. 1072 ok, 3 not usable, 34 fixed. *ok* means the translation says what the English says and the flag came from the checking model (a title it renders literally, a word it does not know); *fixed* means the translation was wrong and was changed; the note says how.
+**Read by hand**: 1133 flagged strings. 1096 ok, 3 not usable, 34 fixed. *ok* means the translation says what the English says and the flag came from the checking model (a title it renders literally, a word it does not know); *fixed* means the translation was wrong and was changed; the note says how.
 
 Fixed:
 

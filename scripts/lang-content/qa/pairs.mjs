@@ -29,7 +29,7 @@ for (const l of LANGS) {
       const e = en[area][k];
       if (!e || e.length < 3) continue;
       const opt = k.match(/^trivia\.(\d+)\.o(\d)$/);
-      if (opt && (optionKeys[opt[1]][opt[2]] || /^[\dA-Z ]+$/.test(e) || v === e)) continue; // a name, a number, or left as in English by design
+      if (opt && (optionKeys[opt[1]][opt[2]] || /^[\dA-Z ]+$/.test(e) || v.replace(/[\u2066-\u2069]/gu, '') === e)) continue; // a name, a number, or left as in English by design (an Arabic one isolated)
       pairs.push({ id: k, lang: l, text: show(v), english: show(e) });
     }
   }
