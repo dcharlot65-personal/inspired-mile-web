@@ -13,7 +13,7 @@
  * the server scores English by sound, and without the table the browser falls back to
  * spelling rules that can answer differently.
  */
-import { onlinePlan, resolveOnlineRound, type OnlineRound, type OnlineRoundPlan } from './multiplayer-rules';
+import { ONLINE_LANG, onlinePlan, resolveOnlineRound, type OnlineRound, type OnlineRoundPlan } from './multiplayer-rules';
 import type { VerseScore } from './verse/duel';
 import { CRITERIA } from './verse/judge';
 
@@ -32,6 +32,8 @@ export interface WireScore {
     kept: boolean;
     /** Too little to be a verse: nothing is earned. */
     thin: boolean;
+    /** The share of the form's points kept (words of the language, and lines that say something). */
+    scale: number;
   };
   device: { id: string; met: boolean };
   signature: boolean;
@@ -39,6 +41,8 @@ export interface WireScore {
   multiplier: number;
   power_words: { used: string[]; met: boolean; bonus: number } | null;
   curse: { id: string; violations: number; penalty: number } | null;
+  /** How far the multiplier's bonuses apply: what the verse says beyond its device and signature. */
+  substance: number;
   craft: number;
   /** Why the verse earns nothing, when it does: empty, too thin to be a verse, or copied. */
   voided: 'empty' | 'thin' | 'copied' | null;
@@ -114,7 +118,8 @@ export type ServerEvent =
 // --- What the client sends. There is no score here. ---
 
 export type ClientEvent =
-  | { type: 'join_room'; room_id: string; deck: string[] }
+  /** `lang` is the duel's language: the server scores English only and refuses any other. */
+  | { type: 'join_room'; room_id: string; deck: string[]; lang: string }
   | { type: 'submit_verse'; round: number; char_id: string; text: string }
   | { type: 'forfeit' };
 
@@ -152,7 +157,7 @@ export class MultiplayerClient {
         this.attempts = 0;
         // After a dropped connection the server still holds our seat: ask for it back.
         // It answers with the whole match as it stands.
-        if (this.room) this.send({ type: 'join_room', room_id: this.room.id, deck: this.room.deck });
+        if (this.room) this.send({ type: 'join_room', room_id: this.room.id, deck: this.room.deck, lang: ONLINE_LANG });
         this.stateHandlers.forEach((h) => h('open'));
         resolve();
       };
@@ -202,7 +207,7 @@ export class MultiplayerClient {
   /** Take a seat in a room with a deck of three to five character ids. */
   joinRoom(roomId: string, deck: string[]): void {
     this.room = { id: roomId, deck };
-    this.send({ type: 'join_room', room_id: roomId, deck });
+    this.send({ type: 'join_room', room_id: roomId, deck, lang: ONLINE_LANG });
   }
 
   /** Submit the verse for a round. False if the connection is not open. */
@@ -260,6 +265,8 @@ function sideProblems(who: string, wire: WireSide, local: { verse: string; score
   differ('signature', wire.score.signature, local.score.signature.met);
   differ('synergy', wire.score.synergy, local.score.synergy);
   differ('multiplier', wire.score.multiplier, local.score.multiplier);
+  differ('substance', wire.score.substance, local.score.substance);
+  differ('form scale', wire.score.form.scale, local.score.form.scale);
   differ('judge share', wire.judge, local.judge);
   differ('total', wire.total, local.total);
   return out;
@@ -321,6 +328,12 @@ async function refusal(response: Response, fallback: string): Promise<Error> {
   return new Error(text && text.length < 200 && !text.trimStart().startsWith('<') ? text : fallback);
 }
 
+/**
+ * How long a page keeps asking for a quick match before it gives up and says so. The server
+ * answers each request within about half a minute; the page asks again until this is over.
+ */
+export const QUICK_MATCH_LIMIT_MS = 3 * 60 * 1000;
+
 /** Ask for a quick match. Waits up to about half a minute for another player. */
 export async function joinQueue(signal?: AbortSignal): Promise<{ room_id: string | null; status: 'matched' | 'timeout' | 'cancelled' }> {
   const response = await fetch('/api/v1/multiplayer/queue', { method: 'POST', credentials: 'include', signal });
@@ -345,6 +358,22 @@ export async function checkInvitation(token: string): Promise<{ room_id: string 
   const response = await fetch(`/api/v1/multiplayer/join/${encodeURIComponent(token)}`, { credentials: 'include' });
   if (!response.ok) throw await refusal(response, 'That invitation is no longer open.');
   return response.json();
+}
+
+/**
+ * The cards the server records for this account (bought in the market, or moved from a browser's
+ * collection): with the starter characters, what the account may field online. Empty if they
+ * cannot be read; the server checks a deck itself either way.
+ */
+export async function accountCards(): Promise<Set<string>> {
+  try {
+    const response = await fetch('/api/v1/inventory', { credentials: 'include' });
+    if (!response.ok) return new Set();
+    const rows = (await response.json()) as Array<{ card_id: string }>;
+    return new Set(rows.map((r) => r.card_id));
+  } catch {
+    return new Set();
+  }
 }
 
 /** The rooms this player has a seat in. */

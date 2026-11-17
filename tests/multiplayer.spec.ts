@@ -72,7 +72,11 @@ interface Player {
   sent: Array<Record<string, unknown>>;
 }
 
-async function newPlayer(browser: Browser, storage: Array<{ name: string; value: string }> = []): Promise<Player> {
+/**
+ * A signed-in player on the multiplayer page. `cards` are put in the account's record of its
+ * cards first (the server lets an account field the starter characters and those it holds).
+ */
+async function newPlayer(browser: Browser, storage: Array<{ name: string; value: string }> = [], cards: string[] = []): Promise<Player> {
   const context = await browser.newContext({
     baseURL: E2E.webOrigin,
     extraHTTPHeaders: { 'CF-Connecting-IP': uniqueIp() },
@@ -101,9 +105,14 @@ async function newPlayer(browser: Browser, storage: Array<{ name: string; value:
   await page.locator('#auth-create-btn').click();
   await expect(page.locator('#auth-step-create')).toBeVisible();
   await page.locator('#auth-create-confirm').click();
-  await expect(page.locator('#auth-recovery-nudge')).toBeVisible();
+  // A loaded build host's Postgres can take several seconds over a sign-up.
+  await expect(page.locator('#auth-recovery-nudge')).toBeVisible({ timeout: 20000 });
   const me = await page.evaluate(async () => (await fetch('/api/v1/auth/me', { credentials: 'include' })).status);
   expect(me, 'the new account is signed in').toBe(200);
+  for (const card_id of cards) {
+    const added = await context.request.post('/api/v1/inventory/add', { data: { card_id, source: 'e2e' } });
+    expect(added.status(), `the account is given ${card_id}`).toBe(200);
+  }
   // A fresh page: the sign-in panel is closed and the lobby knows who we are.
   await page.goto('/multiplayer');
   await expect(page.locator('#mp-signin-note')).toBeHidden();
@@ -159,7 +168,7 @@ test.describe('Online duel', () => {
     const bob = await newPlayer(browser, [
       { name: 'inspired-mile-decks', value: JSON.stringify([bobDeck]) },
       { name: 'inspired-mile-active-deck', value: bobDeck.name },
-    ]);
+    ], bobDeck.characters);
     try {
       // Ann opens a room; Bob follows her link.
       await ann.page.locator('#create-private-btn').click();
@@ -319,8 +328,9 @@ test.describe('Online duel', () => {
       // Nothing a browser sent was a score.
       for (const message of [...ann.sent, ...bob.sent]) {
         expect(['join_room', 'submit_verse']).toContain(message.type);
-        const allowed = message.type === 'join_room' ? ['type', 'room_id', 'deck'] : ['type', 'round', 'char_id', 'text'];
+        const allowed = message.type === 'join_room' ? ['type', 'room_id', 'deck', 'lang'] : ['type', 'round', 'char_id', 'text'];
         expect(Object.keys(message).sort()).toEqual([...allowed].sort());
+        if (message.type === 'join_room') expect(message.lang).toBe('en');
       }
     } finally {
       await ann.context.close();
@@ -365,10 +375,121 @@ test.describe('Online duel', () => {
     }
   });
 
-  test('the socket itself: no session no socket, a sent score is ignored, twice is refused, too big is cut off, a dropped player can return', async ({ browser }) => {
-    test.setTimeout(120000);
+  test('a dropped connection keeps the verse and the character; a reload takes the seat back; leaving warns', async ({ browser }) => {
+    test.setTimeout(150000);
+    // Every socket the page opens is kept, so the test can drop one as a network blip would.
+    const keepSockets = (context: BrowserContext) => context.addInitScript(() => {
+      const Real = window.WebSocket;
+      const all: WebSocket[] = [];
+      (window as unknown as { __sockets: WebSocket[] }).__sockets = all;
+      class Kept extends Real {
+        constructor(url: string | URL, protocols?: string | string[]) {
+          super(url, protocols);
+          all.push(this);
+        }
+      }
+      (window as unknown as { WebSocket: typeof WebSocket }).WebSocket = Kept as unknown as typeof WebSocket;
+    });
     const ann = await newPlayer(browser);
     const bob = await newPlayer(browser);
+    await keepSockets(ann.context);
+    const warns = (page: Page) => page.evaluate(() => {
+      const e = new Event('beforeunload', { cancelable: true });
+      window.dispatchEvent(e);
+      return e.defaultPrevented;
+    });
+    try {
+      // The init script applies from the next page load.
+      await ann.page.goto('/multiplayer');
+      await expect(ann.page.locator('#mp-signin-note')).toBeHidden();
+      expect(await warns(ann.page), 'no warning in the lobby').toBe(false);
+      await ann.page.locator('#create-private-btn').click();
+      await expect(ann.page.locator('#mp-invite-link')).toHaveValue(/room=/);
+      await bob.page.goto(await ann.page.locator('#mp-invite-link').inputValue());
+      await bob.page.locator('#mp-accept-btn').click();
+      await expect(ann.page.locator('#mp-round-label')).toHaveText('Round 1 of 3', { timeout: 20000 });
+      expect(await warns(ann.page), 'leaving mid-match warns').toBe(true);
+
+      const start = (await waitForEvent(ann, 'match_start')) as MatchStart;
+      const verse = verseFor(start.rounds[0]);
+      const card = start.you.deck[1];
+      await ann.page.locator(`#mp-hand [data-char-id="${card}"]`).click();
+      await ann.page.locator('#mp-input').fill(verse);
+      await expect(ann.page.locator('#mp-send-btn')).toBeEnabled();
+
+      // 1. A blip: the socket closes; the client reconnects by itself and the server sends the match again.
+      const startsBefore = events(ann, 'match_start').length;
+      await ann.page.evaluate(() => (window as unknown as { __sockets: WebSocket[] }).__sockets.at(-1)!.close());
+      await expect.poll(() => events(ann, 'match_start').length, { timeout: 20000 }).toBeGreaterThan(startsBefore);
+      await expect.poll(() => events(ann, 'round_start').length, { timeout: 20000 }).toBeGreaterThan(1);
+      await expect(ann.page.locator('#mp-input'), 'the verse typed before the blip').toHaveValue(verse);
+      await expect(ann.page.locator(`#mp-hand [data-char-id="${card}"]`), 'the character chosen before the blip').toHaveAttribute('aria-pressed', 'true');
+      await expect(ann.page.locator('#mp-send-btn')).toBeEnabled();
+
+      // 2. A reload: the page takes its seat back within the grace, with the verse and the character.
+      // (Leaving mid-match asks first; the reload says yes.)
+      const backBefore = events(bob, 'opponent_reconnected').length;
+      ann.page.once('dialog', (d) => void d.accept());
+      await ann.page.reload();
+      await expect(ann.page.locator('#mp-arena')).toBeVisible({ timeout: 20000 });
+      await expect(ann.page.locator('#mp-round-label')).toHaveText('Round 1 of 3');
+      await expect(ann.page.locator('#mp-input'), 'the verse typed before the reload').toHaveValue(verse);
+      await expect(ann.page.locator(`#mp-hand [data-char-id="${card}"]`)).toHaveAttribute('aria-pressed', 'true');
+      await expect.poll(() => events(bob, 'opponent_reconnected').length, { message: 'Bob is told Ann is back', timeout: 20000 }).toBeGreaterThan(backBefore);
+
+      // 3. A new tab, with nothing remembered: the lobby offers the way back to the duel.
+      const other = await ann.context.newPage();
+      await other.goto('/multiplayer');
+      await expect(other.locator('#mp-resume')).toBeVisible({ timeout: 15000 });
+      await other.close();
+
+      // The match goes on: both submit, and the round is scored from Ann's kept verse and card.
+      await ann.page.locator('#mp-send-btn').click();
+      await bob.page.locator('#mp-hand [data-char-id]').first().click();
+      await bob.page.locator('#mp-input').fill('The sun is up above the quiet hills\nThe day is here and I am glad of it');
+      await bob.page.locator('#mp-send-btn').click();
+      const result = (await waitForEvent(bob, 'round_result')) as RoundView;
+      expect([result.opponent.verse, result.opponent.char_id]).toEqual([verse, card]);
+      // Over, nothing more to lose: no warning.
+      bob.page.once('dialog', (d) => void d.accept());
+      await bob.page.locator('#mp-forfeit-btn').click();
+      await expect(ann.page.locator('#mp-match-result')).toBeVisible({ timeout: 15000 });
+      expect(await warns(ann.page), 'no warning once the match is over').toBe(false);
+    } finally {
+      await ann.context.close();
+      await bob.context.close();
+    }
+  });
+
+  test('quick match gives up after its time limit and says so', async ({ browser }) => {
+    test.setTimeout(150000);
+    const ann = await newPlayer(browser);
+    try {
+      // Nobody else is looking. The clock is moved past the limit while the first request waits.
+      await ann.page.clock.install();
+      await ann.page.goto('/multiplayer');
+      await expect(ann.page.locator('#mp-signin-note')).toBeHidden();
+      await ann.page.locator('#find-match-btn').click();
+      await expect(ann.page.locator('#queue-status')).toBeVisible();
+      await ann.page.clock.fastForward('03:30');
+      const error = ann.page.locator('#match-error');
+      await expect(error).toBeVisible({ timeout: 60000 });
+      await expect(error).toHaveAttribute('data-reason', 'queue-timeout');
+      await expect(error).toContainText('Nobody else looked for a duel');
+      await expect(ann.page.locator('#find-match-btn')).toBeVisible();
+      await expect(ann.page.locator('#queue-status')).toBeHidden();
+    } finally {
+      await ann.context.close();
+    }
+  });
+
+  test('the socket itself: no session no socket, a sent score is ignored, twice is refused, too big is cut off, a dropped player can return', async ({ browser }) => {
+    test.setTimeout(120000);
+    const deckA = ['DC-001', 'MO-001', 'CA-001'];
+    const deckB = ['MO-002', 'CA-002', 'DC-002'];
+    // Ann holds Hamlet (Romeo and Juliet are starter characters); Bob holds his three.
+    const ann = await newPlayer(browser, [], ['DC-001']);
+    const bob = await newPlayer(browser, [], deckB);
     const stranger = await browser.newContext({ baseURL: E2E.webOrigin });
     try {
       // A page that keeps one raw connection and everything it received.
@@ -399,14 +520,18 @@ test.describe('Online duel', () => {
       expect(await (await bob.context.request.get('/api/v1/multiplayer/rooms')).json()).toEqual([]);
       expect(await (await ann.context.request.get('/api/v1/multiplayer/rooms')).json()).toEqual([{ id: room.room_id, state: 'waiting', player_count: 1 }]);
 
-      const deckA = ['DC-001', 'MO-001', 'CA-001'];
-      const deckB = ['MO-002', 'CA-002', 'DC-002'];
       expect(await open(ann.page)).toBe(true);
       expect(await open(bob.page)).toBe(true);
 
       // A deck that is not three to five different characters is refused.
-      await send(bob.page, { type: 'join_room', room_id: room.room_id, deck: ['DC-001', 'DC-001', 'RL-001'] });
+      await send(bob.page, { type: 'join_room', room_id: room.room_id, deck: ['MO-002', 'MO-002', 'CA-002'] });
       expect((await next(bob.page, 'error')).code).toBe('bad_deck');
+      // A character the account does not hold is refused, and so is a duel in another language.
+      await send(bob.page, { type: 'join_room', room_id: room.room_id, deck: ['MO-002', 'CA-002', 'VC-001'] });
+      const notHeld = await next(bob.page, 'error', 2);
+      expect([notHeld.code, notHeld.message]).toEqual(['card_not_held', expect.stringContaining('Escalus')]);
+      await send(bob.page, { type: 'join_room', room_id: room.room_id, deck: deckB, lang: 'fr' });
+      expect((await next(bob.page, 'error', 3)).code).toBe('language_not_offered');
       await send(ann.page, { type: 'join_room', room_id: room.room_id, deck: deckA });
       await send(bob.page, { type: 'join_room', room_id: room.room_id, deck: deckB });
       const startAnn = (await next(ann.page, 'match_start')) as MatchStart;
@@ -422,13 +547,16 @@ test.describe('Online duel', () => {
 
       // Bob: not JSON, a verse over the limit, a foul one, a card he does not hold. None is taken.
       await send(bob.page, 'this is not json');
-      expect((await next(bob.page, 'error', 2)).code).toBe('bad_message');
+      expect((await next(bob.page, 'error', 4)).code).toBe('bad_message');
       await send(bob.page, { type: 'submit_verse', round: 0, char_id: 'MO-002', text: 'ab '.repeat(700) });
-      expect((await next(bob.page, 'error', 3)).code).toBe('verse_too_long');
+      expect((await next(bob.page, 'error', 5)).code).toBe('verse_too_long');
       await send(bob.page, { type: 'submit_verse', round: 0, char_id: 'MO-002', text: 'What the fuck is this' });
-      expect((await next(bob.page, 'error', 4)).code).toBe('content_rejected');
+      expect((await next(bob.page, 'error', 6)).code).toBe('content_rejected');
       await send(bob.page, { type: 'submit_verse', round: 0, char_id: 'DC-001', text: 'Not my card\nBut I try' });
-      expect((await next(bob.page, 'error', 5)).code).toBe('not_in_deck');
+      expect((await next(bob.page, 'error', 7)).code).toBe('not_in_deck');
+      // A character newer than the server's Unicode tables: refused, not scored differently from the preview.
+      await send(bob.page, { type: 'submit_verse', round: 0, char_id: 'MO-002', text: 'A plain line\nAnd one \u0378 more' });
+      expect((await next(bob.page, 'error', 8)).code).toBe('unknown_character');
       expect((await got(ann.page)).some((e) => e.type === 'round_result'), 'no round was scored from refused verses').toBe(false);
 
       // A message far over the size limit: the server hangs up rather than read it.

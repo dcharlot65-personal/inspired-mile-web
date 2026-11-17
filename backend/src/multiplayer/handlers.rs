@@ -5,13 +5,14 @@
 //! things: join a room with a deck, submit a verse for the round being played, forfeit.
 //! Everything else, scores above all, is decided in the room.
 
+use std::net::SocketAddr;
 use std::sync::Arc;
 use std::time::{Duration, Instant};
 
 use axum::{
     extract::{
         ws::{Message, WebSocket},
-        Extension, Path, State, WebSocketUpgrade,
+        ConnectInfo, Extension, Path, State, WebSocketUpgrade,
     },
     http::{header, HeaderMap, StatusCode},
     response::{IntoResponse, Response},
@@ -24,11 +25,14 @@ use sqlx::PgPool;
 use tokio::sync::{mpsc, Mutex};
 use uuid::Uuid;
 
+use inspired_mile_api::verse::cards::starter_characters;
+use inspired_mile_api::verse::LANG;
+
 use super::game_room::{
-    run_effects, ClientEvent, GameRoom, RoomError, RoomManager, RoomState, ServerEvent, EVENT_BUFFER,
+    address_key, run_effects, ClientEvent, GameRoom, RoomError, RoomManager, RoomState, ServerEvent, EVENT_BUFFER,
 };
 use super::matchmaking::{Enqueued, MatchmakingQueue};
-use crate::auth::Claims;
+use crate::auth::{client_ip, Claims};
 use crate::config::Config;
 
 /// Largest WebSocket message accepted. The largest honest one is a verse of
@@ -55,13 +59,20 @@ pub fn router() -> Router<(PgPool, Config)> {
         .route("/report", post(report_content))
 }
 
+/// A room's refusal as an answer: its fixed sentence, never anything from the database.
 fn refused(error: RoomError) -> (StatusCode, String) {
     let status = match error {
         RoomError::NotFound => StatusCode::NOT_FOUND,
         RoomError::ServerFull => StatusCode::SERVICE_UNAVAILABLE,
+        RoomError::TooManyRooms | RoomError::TooManyFromAddress => StatusCode::TOO_MANY_REQUESTS,
         _ => StatusCode::BAD_REQUEST,
     };
     (status, error.message())
+}
+
+/// The network a request came from (`address_key` of its client address).
+fn origin_of(headers: &HeaderMap, peer: SocketAddr) -> String {
+    address_key(&client_ip(headers, Some(peer)))
 }
 
 // --- Content Report ---
@@ -128,8 +139,11 @@ async fn join_queue(
     Extension(claims): Extension<Claims>,
     Extension(queue): Extension<Arc<MatchmakingQueue>>,
     Extension(rooms): Extension<Arc<RoomManager>>,
+    ConnectInfo(peer): ConnectInfo<SocketAddr>,
+    headers: HeaderMap,
 ) -> Result<Json<QueueResponse>, (StatusCode, String)> {
-    let mut rx = match queue.enqueue(claims.sub, claims.username.clone(), &rooms).await.map_err(refused)? {
+    let origin = origin_of(&headers, peer);
+    let mut rx = match queue.enqueue(claims.sub, claims.username.clone(), origin, &rooms).await.map_err(refused)? {
         Enqueued::Matched(room_id) => return Ok(queue_answer(Some(room_id), 0, "matched")),
         Enqueued::Waiting(rx) => rx,
     };
@@ -181,10 +195,13 @@ struct PrivateRoomResponse {
 async fn create_private_room(
     Extension(claims): Extension<Claims>,
     Extension(rooms): Extension<Arc<RoomManager>>,
+    ConnectInfo(peer): ConnectInfo<SocketAddr>,
+    headers: HeaderMap,
 ) -> Result<Json<PrivateRoomResponse>, (StatusCode, String)> {
     // One open invitation per player: a new one withdraws the last.
     rooms.close_waiting_rooms_of(claims.sub).await;
-    let room_id = rooms.create_room(&[(claims.sub, claims.username.clone())]).await.map_err(refused)?;
+    let origin = origin_of(&headers, peer);
+    let room_id = rooms.create_room(&[(claims.sub, claims.username.clone())], &[origin]).await.map_err(refused)?;
     // The room's id is the token a friend joins with: 122 random bits, shown to nobody else.
     Ok(Json(PrivateRoomResponse { room_id, token: room_id.to_string() }))
 }
@@ -229,14 +246,31 @@ async fn ws_handler(
     headers: HeaderMap,
     Extension(claims): Extension<Claims>,
     Extension(rooms): Extension<Arc<RoomManager>>,
-    State((_pool, config)): State<(PgPool, Config)>,
+    State((pool, config)): State<(PgPool, Config)>,
 ) -> Response {
     if !origin_allowed(&headers, &config) {
         return (StatusCode::FORBIDDEN, "This page may not open a game connection.").into_response();
     }
     ws.max_message_size(MAX_MESSAGE_BYTES)
         .max_frame_size(MAX_MESSAGE_BYTES)
-        .on_upgrade(move |socket| handle_socket(socket, claims, rooms))
+        .on_upgrade(move |socket| handle_socket(socket, claims, rooms, pool))
+}
+
+/// The characters of `deck` this account may not field: those that are not starter
+/// characters and that the server's record of the account's cards (`owned_cards`: the
+/// market, and collections moved to the account) does not hold.
+async fn not_held(pool: &PgPool, user_id: uuid::Uuid, deck: &[String]) -> Result<Vec<String>, sqlx::Error> {
+    let starter = starter_characters();
+    let asked: Vec<String> = deck.iter().filter(|id| !starter.contains(id)).cloned().collect();
+    if asked.is_empty() {
+        return Ok(Vec::new());
+    }
+    let held: Vec<String> = sqlx::query_scalar("SELECT DISTINCT card_id FROM owned_cards WHERE user_id = $1 AND card_id = ANY($2)")
+        .bind(user_id)
+        .bind(&asked)
+        .fetch_all(pool)
+        .await?;
+    Ok(asked.into_iter().filter(|id| !held.contains(id)).collect())
 }
 
 /// The room a connection has joined.
@@ -265,7 +299,7 @@ fn error(code: &'static str, message: &str) -> ServerEvent {
     ServerEvent::Error { code, message: message.into() }
 }
 
-async fn handle_socket(socket: WebSocket, claims: Claims, rooms: Arc<RoomManager>) {
+async fn handle_socket(socket: WebSocket, claims: Claims, rooms: Arc<RoomManager>, pool: PgPool) {
     let (mut sink, mut stream) = socket.split();
     let mut joined: Option<Joined> = None;
     let join_deadline = tokio::time::sleep(JOIN_WITHIN);
@@ -323,7 +357,7 @@ async fn handle_socket(socket: WebSocket, claims: Claims, rooms: Arc<RoomManager
                         continue;
                     }
                 };
-                if let Some(problem) = handle_event(event, &claims, &rooms, &mut joined).await {
+                if let Some(problem) = handle_event(event, &claims, &rooms, &pool, &mut joined).await {
                     if send(&mut sink, &problem).await.is_err() {
                         break;
                     }
@@ -344,16 +378,40 @@ async fn handle_event(
     event: ClientEvent,
     claims: &Claims,
     rooms: &RoomManager,
+    pool: &PgPool,
     joined: &mut Option<Joined>,
 ) -> Option<ServerEvent> {
     match event {
-        ClientEvent::JoinRoom { room_id, deck } => {
+        ClientEvent::JoinRoom { room_id, deck, lang } => {
             if joined.is_some() {
                 return Some(error("already_in_room", "This connection is already in a room."));
+            }
+            // The server scores English only: a duel in another language is refused, not
+            // quietly scored by the English rules.
+            if lang != LANG {
+                return Some(error("language_not_offered", "Online duels are fought in English only."));
             }
             let Some(room) = rooms.get_room(room_id).await else {
                 return Some(RoomError::NotFound.event());
             };
+            // Only characters the account may field: the starter ones and those it holds.
+            match not_held(pool, claims.sub, &deck).await {
+                Ok(missing) if missing.is_empty() => {}
+                Ok(missing) => {
+                    let names: Vec<String> = missing
+                        .iter()
+                        .map(|id| inspired_mile_api::verse::card_by_id(id).map_or_else(|| "a card".to_string(), |c| c.name.clone()))
+                        .collect();
+                    return Some(ServerEvent::Error {
+                        code: "card_not_held",
+                        message: format!("Your account does not hold {}. Choose characters you hold, or the starter ones.", names.join(", ")),
+                    });
+                }
+                Err(e) => {
+                    tracing::error!(error = %e, "Could not read a player's cards");
+                    return Some(error("cards_unchecked", "Your cards could not be checked. Try again in a moment."));
+                }
+            }
             let (tx, rx) = mpsc::channel(EVENT_BUFFER);
             let outcome = room.lock().await.join(claims.sub, &claims.username, &deck, tx);
             match outcome {
@@ -423,6 +481,39 @@ mod tests {
         let production = config(&[]);
         assert!(origin_allowed(&with_origin("https://sonnetman.inspiredmile.com"), &production));
         assert!(!origin_allowed(&with_origin("https://inspiredmile.com.evil.example"), &production));
+    }
+
+    #[tokio::test]
+    async fn a_report_that_cannot_be_stored_says_so_without_the_databases_words() {
+        // A database that cannot be reached: the error sqlx gives names the address and the
+        // cause. The player is told only that the report was not saved.
+        let pool = sqlx::postgres::PgPoolOptions::new()
+            .acquire_timeout(Duration::from_millis(300))
+            .connect_lazy("postgres://nobody:secret@127.0.0.1:1/inspired_mile")
+            .expect("a lazy pool");
+        let claims = Claims { sub: uuid::Uuid::new_v4(), username: "ann".into(), exp: i64::MAX, iat: 0 };
+        let answer = report_content(
+            Extension(claims),
+            State((pool, config(&[]))),
+            Json(ReportRequest { room_id: uuid::Uuid::new_v4(), reason: "foul words".into() }),
+        )
+        .await;
+        let Err((status, message)) = answer else { panic!("a report with no database was stored") };
+        assert_eq!(status, StatusCode::INTERNAL_SERVER_ERROR);
+        assert_eq!(message, "The report could not be saved. Please try again.");
+        for leak in ["127.0.0.1", "nobody", "secret", "pool", "connect", "error"] {
+            assert!(!message.to_lowercase().contains(leak), "{message:?} holds {leak:?}");
+        }
+    }
+
+    #[test]
+    fn a_client_that_names_no_language_means_english_and_another_is_named() {
+        let id = uuid::Uuid::new_v4();
+        let plain: ClientEvent = serde_json::from_str(&format!(r#"{{"type":"join_room","room_id":"{id}","deck":[]}}"#)).unwrap();
+        assert!(matches!(plain, ClientEvent::JoinRoom { ref lang, .. } if lang == "en"));
+        let other: ClientEvent =
+            serde_json::from_str(&format!(r#"{{"type":"join_room","room_id":"{id}","deck":[],"lang":"fr"}}"#)).unwrap();
+        assert!(matches!(other, ClientEvent::JoinRoom { ref lang, .. } if lang == "fr"));
     }
 
     #[test]

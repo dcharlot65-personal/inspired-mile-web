@@ -12,9 +12,12 @@
 //! running out, a disconnected player's grace) comes back as an [`Effect`] for the caller
 //! to arm with [`run_effects`]. That keeps the rules of the room testable without sockets.
 //!
-//! Not in this first version: relics, potions and ink. Decks are character cards only, and
-//! any character in the catalogue may be played (ownership is not checked, as in the
-//! single-player duel's starter deck).
+//! Not in this first version: relics, potions and ink. Decks are character cards only: the
+//! starter characters, and the characters the account holds (checked against the server's
+//! record of its cards in `handlers.rs` before a deck reaches a room).
+//!
+//! Online duels are English only: the room scores with the server's port of the English
+//! rules, and a client that asks for another language is refused (`handlers.rs`).
 
 use std::collections::HashMap;
 use std::sync::Arc;
@@ -25,6 +28,7 @@ use tokio::sync::{mpsc, Mutex};
 use uuid::Uuid;
 
 use inspired_mile_api::verse::judge::Verdict;
+use inspired_mile_api::verse::text::unknown_character;
 use inspired_mile_api::verse::{
     card_by_id, online_deck_problem, online_match_winner, online_plan, resolve_online_round, settle_verse, MatchWinner,
     OnlineSide, RoundPlan, RoundWinner, VerseScore, LANG, MAX_VERSE_CHARS, MAX_VERSE_LINES, ONLINE_DECK_MAX,
@@ -41,6 +45,14 @@ pub const MAX_VERSE_BYTES: usize = 2000;
 pub const EVENT_BUFFER: usize = 32;
 /// Rooms the server will hold at once.
 pub const MAX_ROOMS: usize = 500;
+/// Rooms one account may hold a seat in at once, finished ones aside: a match and a room
+/// waiting for a friend, with one to spare. Two accounts that queue against each other again
+/// and again cannot fill the server.
+pub const MAX_ROOMS_PER_USER: usize = 3;
+/// Rooms opened from one network at once (an IPv4 address, or an IPv6 /64: one connection
+/// owns a whole /64), finished ones aside. A family or a classroom behind one address shares
+/// this, so it is not tight; it bounds what many accounts on one network can hold.
+pub const MAX_ROOMS_PER_ADDRESS: usize = 12;
 /// How long a room that has not started may stand with nobody connected to it.
 const UNVISITED_ROOM: Duration = Duration::from_secs(300);
 
@@ -52,11 +64,14 @@ pub struct Timing {
     pub round: Duration,
     /// Time a disconnected player has to come back before the match goes to the other.
     pub reconnect: Duration,
+    /// Time a quick-match player waits for the opponent they were paired with to arrive,
+    /// before the room is closed and they are told to look again.
+    pub arrival: Duration,
 }
 
 impl Default for Timing {
     fn default() -> Self {
-        Self { round: Duration::from_secs(180), reconnect: Duration::from_secs(45) }
+        Self { round: Duration::from_secs(180), reconnect: Duration::from_secs(45), arrival: Duration::from_secs(60) }
     }
 }
 
@@ -215,6 +230,10 @@ pub enum ClientEvent {
         room_id: Uuid,
         #[serde(default)]
         deck: Vec<String>,
+        /// The duel's language. Online duels are English only (`LANG`); a page that does not
+        /// say is taken to mean English.
+        #[serde(default = "english")]
+        lang: String,
     },
     SubmitVerse {
         round: usize,
@@ -222,6 +241,10 @@ pub enum ClientEvent {
         text: String,
     },
     Forfeit,
+}
+
+fn english() -> String {
+    LANG.to_string()
 }
 
 /// Why the room refused something. Nothing changes in the room when it does.
@@ -240,6 +263,12 @@ pub enum RoomError {
     NotInDeck,
     CharacterUsed,
     Filtered(String),
+    /// The verse holds a character newer than the server's Unicode tables (`unknown_character`).
+    UnknownCharacter(char),
+    /// The account already holds seats in `MAX_ROOMS_PER_USER` rooms.
+    TooManyRooms,
+    /// Its network already holds `MAX_ROOMS_PER_ADDRESS` rooms.
+    TooManyFromAddress,
 }
 
 impl RoomError {
@@ -258,6 +287,9 @@ impl RoomError {
             Self::NotInDeck => "not_in_deck",
             Self::CharacterUsed => "character_used",
             Self::Filtered(_) => "content_rejected",
+            Self::UnknownCharacter(_) => "unknown_character",
+            Self::TooManyRooms => "too_many_rooms",
+            Self::TooManyFromAddress => "too_many_rooms_here",
         }
     }
 
@@ -276,6 +308,14 @@ impl RoomError {
             Self::NotInDeck => "That character is not in your deck.".into(),
             Self::CharacterUsed => "Each character can take the stage once per match.".into(),
             Self::Filtered(why) => why.clone(),
+            Self::UnknownCharacter(c) => format!(
+                "Your verse holds a character the game cannot read yet (U+{:04X}). Take it out and send the verse again.",
+                u32::from(*c)
+            ),
+            Self::TooManyRooms => {
+                "You already have duels open. Finish one, or leave the room you opened, before you start another.".into()
+            }
+            Self::TooManyFromAddress => "Too many duels are open from your network right now. Try again in a few minutes.".into(),
         }
     }
 
@@ -291,6 +331,8 @@ pub enum Effect {
     RoundTimer { round: usize },
     /// When the grace is over, call `abandon(user_id, conn)`.
     GraceTimer { user_id: Uuid, conn: u64 },
+    /// When a paired opponent has had time to arrive, call `arrival_expired()`.
+    ArrivalTimer,
 }
 
 struct Seat {
@@ -351,6 +393,14 @@ pub struct GameRoom {
     round_started_at: Instant,
     completed_at: Option<Instant>,
     next_conn: u64,
+    /// The networks the room was opened from (`address_key`), for `MAX_ROOMS_PER_ADDRESS`.
+    origins: Vec<String>,
+    /// Both seats were held from the start (a quick match): the first to arrive waits
+    /// `Timing::arrival` for the other.
+    paired: bool,
+    arrival_armed: bool,
+    /// Closed before it began: the paired opponent never came.
+    closed: bool,
 }
 
 impl GameRoom {
@@ -385,7 +435,16 @@ impl GameRoom {
             round_started_at: now,
             completed_at: None,
             next_conn: 1,
+            origins: Vec::new(),
+            paired: reserved.len() >= 2,
+            arrival_armed: false,
+            closed: false,
         }
+    }
+
+    /// Whether the room still counts against its players' and network's limits.
+    fn live(&self) -> bool {
+        self.state != RoomState::Completed
     }
 
     pub fn state(&self) -> RoomState {
@@ -548,6 +607,9 @@ impl GameRoom {
         deck: &[String],
         tx: mpsc::Sender<ServerEvent>,
     ) -> Result<(u64, Vec<Effect>), RoomError> {
+        if self.closed {
+            return Err(RoomError::NotFound);
+        }
         let seat = match self.seat_of(user_id) {
             Some(seat) => seat,
             None if self.has_open_seat() => self.seats.len(),
@@ -601,6 +663,10 @@ impl GameRoom {
                             effects.push(Effect::GraceTimer { user_id: self.seats[s].user_id, conn: self.seats[s].conn });
                         }
                     }
+                } else if self.paired && !self.arrival_armed {
+                    // A quick match: the first to arrive waits a bounded time for the other.
+                    self.arrival_armed = true;
+                    effects.push(Effect::ArrivalTimer);
                 }
             }
             RoomState::InProgress => {
@@ -637,6 +703,11 @@ impl GameRoom {
         if text.len() > MAX_VERSE_BYTES {
             return Err(RoomError::VerseTooLong);
         }
+        // A character newer than the server's Unicode tables would not be read the way the
+        // page previewed it: refuse the verse rather than score it differently.
+        if let Some(c) = unknown_character(text) {
+            return Err(RoomError::UnknownCharacter(c));
+        }
         if !self.seats[seat].deck.iter().any(|id| id == char_id) {
             return Err(RoomError::NotInDeck);
         }
@@ -664,6 +735,25 @@ impl GameRoom {
             return Ok(self.resolve());
         }
         Ok(Vec::new())
+    }
+
+    /// The opponent of a quick match has had their time to arrive. If the match has not begun,
+    /// the room closes: whoever is waiting is told so, and their connection is let go.
+    pub fn arrival_expired(&mut self) {
+        if self.state != RoomState::Waiting || self.closed {
+            return;
+        }
+        let event = ServerEvent::Error {
+            code: "opponent_absent",
+            message: "Your opponent did not arrive. Look for another match.".into(),
+        };
+        for seat in 0..self.seats.len() {
+            self.send(seat, event.clone());
+            self.seats[seat].tx = None;
+        }
+        self.closed = true;
+        self.state = RoomState::Completed;
+        self.completed_at = Some(Instant::now());
     }
 
     /// The round's time is up. A late timer for a round already decided does nothing.
@@ -826,6 +916,23 @@ impl GameRoom {
     }
 }
 
+/// The network a client address belongs to, for the per-network room limit: an IPv4 address
+/// itself, or the /64 of an IPv6 address (one connection is given a whole /64, so a limit per
+/// IPv6 address would be no limit). An address that does not parse is its own key.
+pub fn address_key(ip: &str) -> String {
+    match ip.parse::<std::net::IpAddr>() {
+        Ok(std::net::IpAddr::V4(v4)) => v4.to_string(),
+        Ok(std::net::IpAddr::V6(v6)) => match v6.to_ipv4_mapped() {
+            Some(v4) => v4.to_string(),
+            None => {
+                let s = v6.segments();
+                format!("{:x}:{:x}:{:x}:{:x}::/64", s[0], s[1], s[2], s[3])
+            }
+        },
+        Err(_) => ip.to_string(),
+    }
+}
+
 /// Arm what a room asked for. Each timer holds the room only through its `Arc`, and does
 /// nothing if the room has moved on by the time it fires.
 pub fn run_effects(room: &Arc<Mutex<GameRoom>>, effects: Vec<Effect>) {
@@ -842,6 +949,10 @@ pub fn run_effects(room: &Arc<Mutex<GameRoom>>, effects: Vec<Effect>) {
                 Effect::GraceTimer { user_id, conn } => {
                     tokio::time::sleep(timing.reconnect).await;
                     room.lock().await.abandon(user_id, conn);
+                }
+                Effect::ArrivalTimer => {
+                    tokio::time::sleep(timing.arrival).await;
+                    room.lock().await.arrival_expired();
                 }
             }
         });
@@ -864,15 +975,65 @@ impl RoomManager {
     }
 
     /// A new room with seats held for these players (one for a private room, two for a
-    /// queue match). The server draws the seed.
-    pub async fn create_room(&self, reserved: &[(Uuid, String)]) -> Result<Uuid, RoomError> {
+    /// queue match), opened from these networks (`address_key` of each player's address).
+    /// The server draws the seed. Refused when the server, a player or a network already
+    /// holds as many rooms as it may.
+    pub async fn create_room(&self, reserved: &[(Uuid, String)], origins: &[String]) -> Result<Uuid, RoomError> {
         let mut rooms = self.rooms.lock().await;
         if rooms.len() >= MAX_ROOMS {
             return Err(RoomError::ServerFull);
         }
+        let (mut per_user, mut per_origin) = (vec![0usize; reserved.len()], vec![0usize; origins.len()]);
+        for room in rooms.values() {
+            // A room busy right now is counted as live: it is being played.
+            let Ok(room) = room.try_lock() else {
+                continue;
+            };
+            if !room.live() {
+                continue;
+            }
+            for (i, (user, _)) in reserved.iter().enumerate() {
+                per_user[i] += usize::from(room.has_player(*user));
+            }
+            for (i, origin) in origins.iter().enumerate() {
+                per_origin[i] += usize::from(room.origins.contains(origin));
+            }
+        }
+        if per_user.iter().any(|n| *n >= MAX_ROOMS_PER_USER) {
+            return Err(RoomError::TooManyRooms);
+        }
+        if per_origin.iter().any(|n| *n >= MAX_ROOMS_PER_ADDRESS) {
+            return Err(RoomError::TooManyFromAddress);
+        }
         let id = Uuid::new_v4();
-        rooms.insert(id, Arc::new(Mutex::new(GameRoom::new(id, rand::random::<u32>(), reserved, self.timing))));
+        let mut room = GameRoom::new(id, rand::random::<u32>(), reserved, self.timing);
+        room.origins = origins.to_vec();
+        room.origins.dedup();
+        rooms.insert(id, Arc::new(Mutex::new(room)));
         Ok(id)
+    }
+
+    /// Whether this player, from this network, may have another room opened for them.
+    pub async fn room_limit(&self, user_id: Uuid, origin: &str) -> Result<(), RoomError> {
+        let rooms = self.rooms.lock().await;
+        if rooms.len() >= MAX_ROOMS {
+            return Err(RoomError::ServerFull);
+        }
+        let (mut mine, mut here) = (0, 0);
+        for room in rooms.values() {
+            let Ok(room) = room.try_lock() else { continue };
+            if room.live() {
+                mine += usize::from(room.has_player(user_id));
+                here += usize::from(room.origins.iter().any(|o| o == origin));
+            }
+        }
+        if mine >= MAX_ROOMS_PER_USER {
+            return Err(RoomError::TooManyRooms);
+        }
+        if here >= MAX_ROOMS_PER_ADDRESS {
+            return Err(RoomError::TooManyFromAddress);
+        }
+        Ok(())
     }
 
     pub async fn get_room(&self, id: Uuid) -> Option<Arc<Mutex<GameRoom>>> {
@@ -1349,10 +1510,10 @@ mod tests {
 
     #[tokio::test(start_paused = true)]
     async fn timers_end_a_round_and_then_an_abandoned_match() {
-        let timing = Timing { round: Duration::from_secs(60), reconnect: Duration::from_secs(20) };
+        let timing = Timing { round: Duration::from_secs(60), reconnect: Duration::from_secs(20), arrival: Duration::from_secs(30) };
         let manager = RoomManager::with_timing(timing);
         let (a, b) = (Uuid::new_v4(), Uuid::new_v4());
-        let id = manager.create_room(&[(a, "ann".into()), (b, "bob".into())]).await.unwrap();
+        let id = manager.create_room(&[(a, "ann".into()), (b, "bob".into())], &[]).await.unwrap();
         let room = manager.get_room(id).await.unwrap();
         let (tx_a, mut rx_a) = mpsc::channel(EVENT_BUFFER);
         let (tx_b, _rx_b) = mpsc::channel(EVENT_BUFFER);
@@ -1384,19 +1545,19 @@ mod tests {
     async fn the_server_holds_a_bounded_number_of_rooms_and_one_waiting_room_per_player() {
         let manager = RoomManager::new();
         let me = Uuid::new_v4();
-        let first = manager.create_room(&[(me, "me".into())]).await.unwrap();
+        let first = manager.create_room(&[(me, "me".into())], &[]).await.unwrap();
         manager.close_waiting_rooms_of(me).await;
         assert!(manager.get_room(first).await.is_none());
-        let mine = manager.create_room(&[(me, "me".into())]).await.unwrap();
+        let mine = manager.create_room(&[(me, "me".into())], &[]).await.unwrap();
         assert_eq!(manager.rooms_of(me).await, vec![(mine, RoomState::Waiting, 1)]);
         assert!(manager.rooms_of(Uuid::new_v4()).await.is_empty());
         for _ in 1..MAX_ROOMS {
-            manager.create_room(&[]).await.unwrap();
+            manager.create_room(&[], &[]).await.unwrap();
         }
-        assert_eq!(manager.create_room(&[]).await, Err(RoomError::ServerFull));
+        assert_eq!(manager.create_room(&[], &[]).await, Err(RoomError::ServerFull));
         // Rooms nobody sits in are swept; the one with a held seat stays until it is old.
         manager.cleanup_stale_rooms(Duration::from_secs(1800)).await;
-        assert!(manager.create_room(&[]).await.is_ok());
+        assert!(manager.create_room(&[], &[]).await.is_ok());
         assert!(manager.get_room(mine).await.is_some());
         manager.cleanup_stale_rooms(Duration::ZERO).await;
         assert!(manager.get_room(mine).await.is_none());
@@ -1406,8 +1567,8 @@ mod tests {
     async fn a_room_nobody_comes_to_is_swept_but_one_with_a_player_waiting_is_kept() {
         let manager = RoomManager::new();
         let (a, b) = (Uuid::new_v4(), Uuid::new_v4());
-        let unvisited = manager.create_room(&[(a, "ann".into()), (b, "bob".into())]).await.unwrap();
-        let waited_in = manager.create_room(&[(a, "ann".into())]).await.unwrap();
+        let unvisited = manager.create_room(&[(a, "ann".into()), (b, "bob".into())], &[]).await.unwrap();
+        let waited_in = manager.create_room(&[(a, "ann".into())], &[]).await.unwrap();
         let (tx, _rx) = mpsc::channel(EVENT_BUFFER);
         manager.get_room(waited_in).await.unwrap().lock().await.join(a, "ann", &deck(&DECK_A), tx).unwrap();
         let long_ago = Instant::now().checked_sub(UNVISITED_ROOM + Duration::from_secs(1)).expect("the clock is past start-up");
@@ -1417,6 +1578,90 @@ mod tests {
         manager.cleanup_stale_rooms(Duration::from_secs(1800)).await;
         assert!(manager.get_room(unvisited).await.is_none());
         assert!(manager.get_room(waited_in).await.is_some());
+    }
+
+    #[tokio::test]
+    async fn one_account_and_one_network_hold_a_bounded_number_of_rooms() {
+        let manager = RoomManager::new();
+        let me = Uuid::new_v4();
+        for _ in 0..MAX_ROOMS_PER_USER {
+            manager.create_room(&[(me, "me".into())], &[]).await.unwrap();
+        }
+        assert_eq!(manager.create_room(&[(me, "me".into())], &[]).await, Err(RoomError::TooManyRooms));
+        // A queue match for this account is refused too, whoever it is with.
+        assert_eq!(
+            manager.create_room(&[(Uuid::new_v4(), "other".into()), (me, "me".into())], &[]).await,
+            Err(RoomError::TooManyRooms)
+        );
+        assert_eq!(manager.room_limit(me, "198.51.100.7").await, Err(RoomError::TooManyRooms));
+        // A finished room no longer counts.
+        let id = manager.rooms_of(me).await[0].0;
+        {
+            let room = manager.get_room(id).await.unwrap();
+            let mut room = room.lock().await;
+            room.state = RoomState::Completed;
+            room.completed_at = Some(Instant::now());
+        }
+        assert!(manager.create_room(&[(me, "me".into())], &[]).await.is_ok());
+
+        // Many accounts on one IPv6 /64 are one network.
+        let net = address_key("2001:db8:1:2:aaaa::1");
+        assert_eq!(net, address_key("2001:db8:1:2:ffff:ffff:ffff:ffff"));
+        assert_ne!(net, address_key("2001:db8:1:3::1"));
+        for _ in 0..MAX_ROOMS_PER_ADDRESS {
+            manager.create_room(&[(Uuid::new_v4(), "someone".into())], std::slice::from_ref(&net)).await.unwrap();
+        }
+        let refused = manager.create_room(&[(Uuid::new_v4(), "next".into())], &[address_key("2001:db8:1:2:1234::9")]).await;
+        assert_eq!(refused, Err(RoomError::TooManyFromAddress));
+        assert!(manager.create_room(&[(Uuid::new_v4(), "elsewhere".into())], &[address_key("2001:db8:1:3::1")]).await.is_ok());
+    }
+
+    #[test]
+    fn an_address_key_is_the_ipv4_address_or_the_ipv6_slash_64() {
+        assert_eq!(address_key("203.0.113.7"), "203.0.113.7");
+        assert_eq!(address_key("::ffff:203.0.113.7"), "203.0.113.7");
+        assert_eq!(address_key("2001:db8:0:1::5"), "2001:db8:0:1::/64");
+        assert_eq!(address_key("unknown"), "unknown");
+    }
+
+    #[test]
+    fn a_paired_opponent_who_never_arrives_closes_the_room_and_says_so() {
+        let (a, b) = (Uuid::new_v4(), Uuid::new_v4());
+        let mut room = GameRoom::new(Uuid::new_v4(), 5, &[(a, "ann".into()), (b, "bob".into())], Timing::default());
+        let (tx, mut rx) = mpsc::channel(EVENT_BUFFER);
+        let (_, fx) = room.join(a, "ann", &deck(&DECK_A), tx).unwrap();
+        assert_eq!(fx, vec![Effect::ArrivalTimer]);
+        drain(&mut rx);
+        room.arrival_expired();
+        let events = drain(&mut rx);
+        assert!(matches!(&events[0], ServerEvent::Error { code: "opponent_absent", .. }), "{events:?}");
+        // The waiting player's connection is let go, and the room takes nobody now.
+        assert!(matches!(rx.try_recv(), Err(mpsc::error::TryRecvError::Disconnected)));
+        assert_eq!(room.join(b, "bob", &deck(&DECK_B), mpsc::channel(EVENT_BUFFER).0).unwrap_err(), RoomError::NotFound);
+        assert!(!room.live());
+
+        // When both arrive in time, the timer finds a match under way and does nothing.
+        let mut room = GameRoom::new(Uuid::new_v4(), 5, &[(a, "ann".into()), (b, "bob".into())], Timing::default());
+        let (tx_a, _rx_a) = mpsc::channel(EVENT_BUFFER);
+        let (tx_b, _rx_b) = mpsc::channel(EVENT_BUFFER);
+        room.join(a, "ann", &deck(&DECK_A), tx_a).unwrap();
+        room.join(b, "bob", &deck(&DECK_B), tx_b).unwrap();
+        room.arrival_expired();
+        assert_eq!(room.state(), RoomState::InProgress);
+        // A private room (one seat held) arms no such timer: a friend may take a while.
+        let mut room = GameRoom::new(Uuid::new_v4(), 5, &[(a, "ann".into())], Timing::default());
+        let (_, fx) = room.join(a, "ann", &deck(&DECK_A), mpsc::channel(EVENT_BUFFER).0).unwrap();
+        assert!(fx.is_empty());
+    }
+
+    #[test]
+    fn a_verse_with_a_character_the_server_cannot_read_is_refused_not_scored() {
+        let mut t = table(1);
+        let refused = t.room.submit(t.a, 0, "DC-001", "A line of mine\nAnd one more \u{0378} here");
+        assert_eq!(refused, Err(RoomError::UnknownCharacter('\u{0378}')));
+        assert!(drain(&mut t.rx_b).is_empty());
+        assert!(RoomError::UnknownCharacter('\u{0378}').message().contains("U+0378"));
+        assert_eq!(t.room.submit(t.a, 0, "DC-001", GOOD), Ok(vec![]));
     }
 
     #[test]

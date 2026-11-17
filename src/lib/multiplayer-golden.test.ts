@@ -31,7 +31,7 @@ import path from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { CARD_CATALOG, getCardById } from './cards';
 import {
-  ONLINE_LANG, SETTLE_PASSES, onlineLexicon, onlineMatchWinner, onlinePlan, onlineWit, previewCraft, resolveOnlineRound,
+  ONLINE_LANG, ONLINE_STARTER, SETTLE_PASSES, onlineLexicon, onlineMatchWinner, onlinePlan, onlineWit, previewCraft, resolveOnlineRound,
   settleVerse, type OnlineRoundOutcome,
 } from './multiplayer-rules';
 import {
@@ -614,6 +614,8 @@ function tablesJson(): string {
     criteria: [...CRITERIA],
     lexicon: [...onlineLexicon()].sort(),
     characterNames: CHARACTER_NAMES,
+    // The characters any account may field online (the server checks the rest against its record).
+    onlineStarter: ONLINE_STARTER,
     // Unicode's confusable letters as the engine reads them: each letter's prototype and script.
     confusables: [...CONFUSABLE_PAIRS].filter((_, i) => i % 2 === 0).map((ch) => [ch, prototypeOf(ch), scriptOf(ch)]),
     rng: samples,

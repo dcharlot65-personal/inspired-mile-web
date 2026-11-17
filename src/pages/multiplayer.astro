@@ -19,6 +19,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           Unlike a solo duel, your verses here are sent to our server, which scores both by fixed rules: the same
           rules this page shows you as you write. No language model reads your verse. Requires an account.
         </p>
+        <p id="mp-english-only" class="text-obsidian-400 max-w-2xl mx-auto mt-3 text-sm" lang="en">
+          Online duels are fought in English: the server scores English verse only, by the same English rules this page
+          previews with. Solo duels are offered in all sixteen languages.
+        </p>
       </div>
 
       <!-- Lobby -->
@@ -34,6 +38,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           </div>
           <div id="mp-deck-cards" class="flex flex-wrap gap-2"></div>
           <p class="mt-2 text-xs text-obsidian-500">Three to five characters. One takes the stage each round, each only once. Relics and potions are not played online yet.</p>
+          <p class="mt-1 text-xs text-obsidian-500">Online you can field the three starter characters and any character your account holds. Cards this browser holds but your account does not are left out.</p>
+        </div>
+
+        <div id="mp-resume" class="hidden mb-6 rounded-lg border border-gold-500/40 bg-gold-500/10 p-4">
+          <p class="text-sm text-obsidian-200 mb-3">You have a duel in progress.</p>
+          <button id="mp-resume-btn" class="btn-primary px-6">Return to your duel</button>
         </div>
 
         <div id="mp-invited" class="hidden mb-6 rounded-lg border border-purple-500/30 bg-purple-500/10 p-4">
@@ -164,10 +174,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     import { getActiveDeck } from '../lib/deck-manager';
     import { getOwnedCardIds } from '../lib/inventory';
     import {
-      MultiplayerClient, auditRound, checkInvitation, createPrivateRoom, joinQueue, leaveQueue, planMatchesSeed, reportContent,
-      type MatchStart, type RoundView, type ServerEvent, type WireSide,
+      MultiplayerClient, QUICK_MATCH_LIMIT_MS, accountCards, auditRound, checkInvitation, createPrivateRoom, joinQueue, leaveQueue, listRooms,
+      planMatchesSeed, reportContent, type MatchStart, type RoundView, type ServerEvent, type WireSide,
     } from '../lib/multiplayer-client';
-    import { ONLINE_DECK_MAX, ONLINE_LANG, onlineDeckProblem, previewCraft, settleVerse, type OnlinePreview } from '../lib/multiplayer-rules';
+    import {
+      ONLINE_DECK_MAX, ONLINE_LANG, ONLINE_STARTER, onlineDeckProblem, previewCraft, settleVerse, type OnlinePreview,
+    } from '../lib/multiplayer-rules';
     import { deviceForHouse, deviceInPlay, houseWhy } from '../lib/verse/devices';
     import { JUDGE_POOL, ROUNDS, starterDeck } from '../lib/verse/duel';
     import { getForm } from '../lib/verse/forms';
@@ -188,6 +200,35 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     // rules' and can differ from the server's. Fetched now; awaited before a room is joined.
     const pronunciation = loadPronunciation();
 
+    // --- What this tab remembers (sessionStorage: this tab only, gone when it closes) ---
+    // The seat this tab holds, so a reload or a visit to another page comes back to the duel
+    // within the server's grace; and the verse being written, so neither a dropped connection
+    // nor a reload loses it while the round is the same.
+    const SEAT_KEY = 'inspired-mile-mp-seat';
+    const DRAFT_KEY = 'inspired-mile-mp-draft';
+    interface SavedSeat { room_id: string; deck: string[]; invite: boolean }
+    interface Draft { room_id: string; round: number; char_id: string; verse: string }
+    function readJson<T>(key: string): T | null {
+      try {
+        const raw = sessionStorage.getItem(key);
+        return raw ? (JSON.parse(raw) as T) : null;
+      } catch {
+        return null;
+      }
+    }
+    function writeJson(key: string, value: unknown) {
+      try {
+        if (value === null) sessionStorage.removeItem(key);
+        else sessionStorage.setItem(key, JSON.stringify(value));
+      } catch {
+        /* storage blocked: the page still works, it just cannot come back after a reload */
+      }
+    }
+    function forgetSeat() {
+      writeJson(SEAT_KEY, null);
+      writeJson(DRAFT_KEY, null);
+    }
+
     // --- State ---
     let deck: string[] = [];
     let client: MultiplayerClient | null = null;
@@ -198,6 +239,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     let submitted = false;
     let over = false;
     let deadline = 0;
+    /** The round the move panel was last drawn for: a round_start for it again (a reconnect) keeps what is written. */
+    let shownRound = -1;
+    /** A room has been entered on this page: the lobby's own offers (rejoin, resume) stand down. */
+    let entered = false;
     let queueAbort: AbortController | null = null;
     const verseInput = $<HTMLTextAreaElement>('mp-input');
     const sendBtn = $<HTMLButtonElement>('mp-send-btn');
@@ -221,14 +266,22 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       return b;
     }
 
+    /**
+     * The characters the server lets this account field (it checks again): the starter
+     * characters, and those the account holds. Unknown until the account's cards are read.
+     */
+    let playable = new Set<string>(ONLINE_STARTER);
     function loadDeck() {
       const saved = getActiveDeck();
-      const mine = saved ? [...new Set(saved.characters)].filter((id) => getCardById(id)?.type === 'Character').slice(0, ONLINE_DECK_MAX) : [];
+      const mine = saved
+        ? [...new Set(saved.characters)].filter((id) => getCardById(id)?.type === 'Character' && playable.has(id)).slice(0, ONLINE_DECK_MAX)
+        : [];
       if (saved && !onlineDeckProblem(mine)) {
         deck = mine;
         $('mp-deck-name').textContent = saved.name;
       } else {
-        deck = starterDeck(getOwnedCardIds()).characters;
+        // Characters the account holds first, then the starter characters.
+        deck = starterDeck([...getOwnedCardIds()].filter((id) => playable.has(id))).characters;
         $('mp-deck-name').textContent = 'Starter deck';
       }
       const wrap = $('mp-deck-cards');
@@ -262,12 +315,38 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     }
 
     const invitation = new URLSearchParams(location.search).get('room');
-    void signedIn().then((yes) => {
+    let resumable: string | null = null;
+    void signedIn().then(async (yes) => {
       show('mp-signin-note', !yes);
       if (invitation) {
         show('mp-invited');
         show('mp-choices', false);
       }
+      if (!yes) return;
+      playable = new Set([...ONLINE_STARTER, ...(await accountCards())]);
+      loadDeck();
+      // Nothing more to offer if the player went into a room while this was being worked out.
+      if (entered) return;
+      // This tab held a seat (a reload, or back from another page): take it again.
+      const seat = readJson<SavedSeat>(SEAT_KEY);
+      if (seat && (!invitation || invitation === seat.room_id)) {
+        await enterRoom(seat.room_id, seat.invite, seat.deck);
+        return;
+      }
+      // A duel in progress from another tab or a closed one: offer the way back.
+      try {
+        const live = (await listRooms()).find((r) => r.state === 'in_progress');
+        if (live && !invitation && !entered) {
+          resumable = live.id;
+          show('mp-resume');
+        }
+      } catch {
+        /* the lobby works without it */
+      }
+    });
+
+    $('mp-resume-btn').addEventListener('click', () => {
+      if (resumable) void enterRoom(resumable, false, deck);
     });
 
     function resetQueue() {
@@ -282,9 +361,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       show('find-match-btn', false);
       queueAbort = new AbortController();
       const mine = queueAbort;
+      const until = Date.now() + QUICK_MATCH_LIMIT_MS;
       try {
-        // The server answers "timeout" after about half a minute; keep asking until
-        // there is a match or the player cancels.
+        // The server answers "timeout" after about half a minute; ask again until there is a
+        // match, the player cancels, or the wait is over.
         while (queueAbort === mine) {
           const result = await joinQueue(mine.signal);
           if (queueAbort !== mine) return;
@@ -294,6 +374,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             return;
           }
           if (result.status === 'cancelled') break;
+          if (Date.now() >= until) {
+            void leaveQueue();
+            lobbyError(`Nobody else looked for a duel in the last ${Math.round(QUICK_MATCH_LIMIT_MS / 60000)} minutes. Try again later, or challenge a friend with a link.`);
+            $('match-error').dataset.reason = 'queue-timeout';
+            break;
+          }
         }
       } catch (err) {
         if (mine.signal.aborted) return;
@@ -335,13 +421,20 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     });
 
     $('mp-leave-btn').addEventListener('click', () => {
+      forgetSeat();
       client?.forfeit();
       client?.disconnect();
       location.href = '/multiplayer';
     });
 
     // --- Connection ---
-    async function enterRoom(roomId: string, invite: boolean) {
+    async function enterRoom(roomId: string, invite: boolean, withDeck: string[] = deck) {
+      // One connection per page: a second would take the seat from the first.
+      if (entered) return;
+      entered = true;
+      deck = withDeck;
+      writeJson(SEAT_KEY, { room_id: roomId, deck, invite } satisfies SavedSeat);
+      show('mp-resume', false);
       show('mp-lobby', false);
       show('mp-waiting');
       if (invite) {
@@ -366,10 +459,17 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         await client.connect();
         client.joinRoom(roomId, deck);
       } catch {
+        entered = false;
         show('mp-waiting', false);
         show('mp-lobby');
         lobbyError('The game server cannot be reached right now. Try again in a moment.');
       }
+    }
+
+    /** The verse being written, kept for this tab so that a dropped connection or a reload does not lose it. */
+    function saveDraft() {
+      if (!start || over) return;
+      writeJson(DRAFT_KEY, { room_id: start.room_id, round, char_id: charId, verse: verseInput.value } satisfies Draft);
     }
 
     function notice(message: string) {
@@ -379,7 +479,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
     // --- The match ---
     /** Errors that mean the verse just sent was not taken. */
-    const REFUSED_VERSE = new Set(['content_rejected', 'verse_too_long', 'empty_verse', 'not_in_deck', 'character_used', 'wrong_round', 'bad_message']);
+    const REFUSED_VERSE = new Set(['content_rejected', 'verse_too_long', 'empty_verse', 'not_in_deck', 'character_used', 'wrong_round', 'bad_message', 'unknown_character']);
 
     function handleServerEvent(event: ServerEvent) {
       switch (event.type) {
@@ -388,6 +488,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           break;
 
         case 'match_start':
+          if (event.lang !== ONLINE_LANG) {
+            // This page previews English rules only; it cannot check a duel in another language.
+            notice(`This duel is scored in a language this page cannot preview (${event.lang}).`);
+          }
           start = event;
           results = [];
           $('mp-results').replaceChildren();
@@ -402,16 +506,27 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           renderPlan();
           break;
 
-        case 'round_start':
+        case 'round_start': {
           if (!start) break;
+          // The same round again (the connection dropped and came back): what is written and the
+          // character chosen stay. A new round starts clean, unless this tab kept a draft of it (a reload).
+          const again = event.round === shownRound;
           round = event.round;
           submitted = event.submitted;
           deadline = Date.now() + event.seconds_left * 1000;
-          charId = '';
-          if (!submitted) verseInput.value = '';
+          if (!again) {
+            const draft = readJson<Draft>(DRAFT_KEY);
+            const kept = draft && draft.room_id === start.room_id && draft.round === round ? draft : null;
+            charId = kept?.char_id ?? '';
+            verseInput.value = kept?.verse ?? '';
+          }
+          // A character the server has since marked as played cannot be chosen.
+          if (charId && (usedCharacters().includes(charId) || !start.you.deck.includes(charId))) charId = '';
+          shownRound = round;
           show('mp-move-panel');
           renderRound(event.opponent_submitted);
           break;
+        }
 
         case 'verse_accepted':
           submitted = true;
@@ -430,6 +545,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         case 'match_complete': {
           over = true;
           deadline = 0;
+          forgetSeat();
           show('mp-move-panel', false);
           notice('');
           const headline = event.winner === 'you' ? 'You win the duel' : event.winner === 'opponent' ? `${start?.opponent.username ?? 'Your opponent'} wins the duel` : 'The duel is a draw';
@@ -473,10 +589,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             renderHand();
             updateSubmit();
           } else if (!start) {
+            // Refused before the match began (or the room is gone): back to the lobby, and this
+            // tab no longer holds the seat.
+            forgetSeat();
             show('mp-waiting', false);
             show('mp-lobby');
             lobbyError(event.message);
+            $('match-error').dataset.reason = event.code;
             client?.disconnect();
+            client = null;
+            entered = false;
           }
           break;
       }
@@ -548,6 +670,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         const choose = () => {
           if (spent || submitted) return;
           charId = id;
+          saveDraft();
           renderHand();
           renderChecks();
           updateSubmit();
@@ -615,7 +738,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       verseInput.disabled = submitted || over;
     }
 
-    verseInput.addEventListener('input', () => { renderChecks(); updateSubmit(); });
+    verseInput.addEventListener('input', () => { saveDraft(); renderChecks(); updateSubmit(); });
 
     sendBtn.addEventListener('click', () => {
       if (!client || !start || submitted || !charId) return;
@@ -755,7 +878,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       renderChecks();
     });
 
-    // A closed tab is a disconnect: the server gives this player time to come back.
+    // A closed tab is a disconnect: the server gives this player time to come back, and this
+    // tab takes its seat again when it loads (SEAT_KEY). Leaving mid-match is still a risk: say so.
+    window.addEventListener('beforeunload', (e) => {
+      if (start && !over) {
+        e.preventDefault();
+        e.returnValue = '';
+      }
+    });
     window.addEventListener('pagehide', () => client?.disconnect());
   </script>
 </BaseLayout>

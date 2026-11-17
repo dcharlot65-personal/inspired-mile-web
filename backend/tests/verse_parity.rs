@@ -8,7 +8,7 @@
 use std::fmt::Debug;
 use std::path::PathBuf;
 
-use inspired_mile_api::verse::cards::{card_by_id, CARDS, CHARACTER_NAMES};
+use inspired_mile_api::verse::cards::{card_by_id, starter_characters, CARDS, CHARACTER_NAMES};
 use inspired_mile_api::verse::devices::{
     check_device, check_power_words, check_signature_words, curse_violations, device_for_house, device_in_play,
     signature_needed, signature_words, DeviceContext, CURSE_IDS, CURSE_PENALTY, CURSE_PENALTY_CAP, DEVICE_IDS,
@@ -218,8 +218,9 @@ fn cards_json_is_the_catalogue_the_golden_files_were_written_from() {
     want.sort();
     report.same(|| "allusion lexicon".into(), &lexicon, &want);
     report.same(|| "character names".into(), &*CHARACTER_NAMES, &strings(&tables["characterNames"]));
+    report.same(|| "starter characters (ONLINE_STARTER)".into(), &starter_characters(), &strings(&tables["onlineStarter"]));
     assert!(CARDS.iter().filter(|c| c.is_character()).count() >= 3);
-    report.finish(2);
+    report.finish(3);
 }
 
 #[test]

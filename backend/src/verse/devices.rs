@@ -2,7 +2,7 @@
 //! `src/lib/verse/devices.ts`. All of it is checked by code, so the same verse always
 //! scores the same.
 
-use std::collections::{HashMap, HashSet};
+use std::collections::HashSet;
 use std::sync::LazyLock;
 
 use regex::Regex;

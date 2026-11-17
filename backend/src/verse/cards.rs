@@ -37,6 +37,13 @@ pub fn card_by_id(id: &str) -> Option<&'static Card> {
     BY_ID.get(id).copied()
 }
 
+/// The characters every account may field online without holding them: the first
+/// `ROUNDS` characters of the catalogue, which is what a new player's starter deck holds
+/// (`starterDeck([])` in duel.ts; `ONLINE_STARTER` in multiplayer-rules.ts).
+pub fn starter_characters() -> Vec<String> {
+    CARDS.iter().filter(|c| c.is_character()).take(super::duel::ROUNDS).map(|c| c.id.clone()).collect()
+}
+
 /// What the server needs of the English language pack (`src/lib/verse/packs/en.ts`) beyond
 /// the words written into the rules: the letters its texts are written in, which a curse
 /// reads a look-alike letter as (`nativeLetters('en')` in text.ts). Generated with

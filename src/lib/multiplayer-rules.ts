@@ -40,7 +40,7 @@
  */
 import { CARD_CATALOG, getCardById } from './cards';
 import { invocationNames, signatureWords } from './verse/devices';
-import { JUDGE_POOL, ROUNDS, rng, scoreVerse, type VerseScore } from './verse/duel';
+import { JUDGE_POOL, ROUNDS, rng, scoreVerse, starterDeck, type VerseScore } from './verse/duel';
 import { formsFor, getForm } from './verse/forms';
 import { CRITERIA, rulesJudge } from './verse/judge';
 import { rulesFor } from './verse/lang';
@@ -51,6 +51,12 @@ import { STOP_WORDS, cleanVerse, fold, isStopWord, letterCount, substance, wordS
 export const ONLINE_LANG = 'en';
 export const ONLINE_DECK_MIN = 3;
 export const ONLINE_DECK_MAX = 5;
+/**
+ * The characters every account may field online without holding them: the ones a new player's
+ * starter deck gives (starterDeck with nothing owned). Any other character must be one the
+ * account holds (the server's record of its cards); the server checks (handlers.rs).
+ */
+export const ONLINE_STARTER: readonly string[] = starterDeck([]).characters;
 
 export interface OnlineRoundPlan {
   index: number;

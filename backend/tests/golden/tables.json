@@ -1739,6 +1739,11 @@
   "Medusa",
   "Achilles"
  ],
+ "onlineStarter": [
+  "SM-001",
+  "MO-001",
+  "CA-001"
+ ],
  "confusables": [
   [
    "I",
