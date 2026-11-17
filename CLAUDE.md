@@ -98,7 +98,13 @@ left behind by a killed run is found by its port: `lsof -nP -iTCP:<port> -sTCP:L
   and is marked as such. Never hand-edit a generated module. The record, with everything that is
   unsourced, unreviewed or missing, is `docs/language/NAMES-AND-QUOTATIONS.md`.
   `loadPack(lang)` loads a language's card text, so the signature and the invocation work in the
-  duel's language (`src/lib/verse/echo.ts`); an English duel never goes through that file.
+  duel's language (`src/lib/verse/echo.ts`); an English duel never goes through that file. Its header says
+  what counts as the same word in each language (Snowball stems in `src/lib/verse/stem/`, Vietnamese tones,
+  Korean particles, segmenter words in zh/ja/th) and what is not a telling word (stopwords-iso plus
+  Wiktionary's function words, `scripts/language/fetch/closed_class.py`). `src/lib/cards-i18n/accidents.test.ts`
+  measures how often verses written for no card land the signature or the invocation, per language, against
+  English: keep it green. After a character name or alias changes, run `run.sh names` (Hunspell decides which
+  words of a longer name are titles) before `build_card_text.py`.
   Published lines keep the edition's spelling; a Japanese line in old kanji also carries its
   modern reading (`echo`, OpenCC's JPVariants table) for the signature. The game's Portuguese is
   Brazilian (the interface is): card text written for it is Brazilian, and names take Wikidata's

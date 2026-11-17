@@ -5,8 +5,8 @@
     "SM-001": {
      "name": {
       "text": "The Sonnet Man",
-      "source": "translated",
-      "detail": "the product name, kept as it is"
+      "source": "kept",
+      "detail": "the product name, the same in every language"
      },
      "quote": {
       "text": "¿He de compararte con un día de verano?",
@@ -1176,8 +1176,8 @@
     "SM-001": {
      "name": {
       "text": "The Sonnet Man",
-      "source": "translated",
-      "detail": "the product name, kept as it is"
+      "source": "kept",
+      "detail": "the product name, the same in every language"
      },
      "quote": {
       "text": "Te comparerai-je à un jour d’été ?",
@@ -2479,8 +2479,8 @@
     "SM-001": {
      "name": {
       "text": "The Sonnet Man",
-      "source": "translated",
-      "detail": "the product name, kept as it is"
+      "source": "kept",
+      "detail": "the product name, the same in every language"
      },
      "quote": {
       "text": "Soll ich dich einem Sommertag vergleichen?",
@@ -3811,8 +3811,8 @@
     "SM-001": {
      "name": {
       "text": "The Sonnet Man",
-      "source": "translated",
-      "detail": "the product name, kept as it is"
+      "source": "kept",
+      "detail": "the product name, the same in every language"
      },
      "quote": {
       "text": "Dovrò paragonarti a un giorno d’estate?",
@@ -5114,8 +5114,8 @@
     "SM-001": {
      "name": {
       "text": "The Sonnet Man",
-      "source": "translated",
-      "detail": "the product name, kept as it is"
+      "source": "kept",
+      "detail": "the product name, the same in every language"
      },
      "quote": {
       "text": "Devo comparar-te a um dia de verão?",
@@ -5248,7 +5248,7 @@
     },
     "RL-002": {
      "name": {
-      "text": "O cajado de Prospero",
+      "text": "O cajado de Próspero",
       "source": "translated",
       "detail": "the game's own name, translated for the game"
      },
@@ -5326,9 +5326,9 @@
     },
     "TP-001": {
      "name": {
-      "text": "Prospero",
-      "source": "wikidata",
-      "detail": "Q978952 label (pt-br)"
+      "text": "Próspero",
+      "source": "wikipedia",
+      "detail": "pt.wikipedia.org \"A Tempestade\", revision 72539005, writes Próspero (17 times, Prospero once); Wikidata's pt and pt-br label \"Prospero\" is the verb prospero, \"I prosper\" (LanguageTool LP_PARONYMS) (Q978952)"
      },
      "quote": {
       "text": "Somos feitos da matéria de que são feitos os sonhos.",
@@ -6147,8 +6147,8 @@
     "SM-001": {
      "name": {
       "text": "The Sonnet Man",
-      "source": "translated",
-      "detail": "the product name, kept as it is"
+      "source": "kept",
+      "detail": "the product name, the same in every language"
      },
      "quote": {
       "text": "Czy mam cię porównać do letniego dnia?",
@@ -7312,8 +7312,8 @@
     "SM-001": {
      "name": {
       "text": "The Sonnet Man",
-      "source": "translated",
-      "detail": "the product name, kept as it is"
+      "source": "kept",
+      "detail": "the product name, the same in every language"
      },
      "quote": {
       "text": "Как я сравню тебя с роскошным летним днем",
@@ -8195,7 +8195,7 @@
       "cite": "Coleridge, The Rime of the Ancient Mariner, Part II",
       "translator": "Николай Гумилёв (1886–1921)",
       "edition": "«Поэма о старом моряке», «Всемирная литература», Петроград, 1919 (ru.wikisource.org transcription)",
-      "status": "Public domain: Russia (life + 70 years; translator died 1921) and United States (published before 1931)",
+      "status": "Public domain: United States (published before 1931). Russia: life + 70 years would make it public domain (translator died 1921), but Gumilyov was executed in 1921 and rehabilitated in 1992, and for a repressed and rehabilitated author the Russian Civil Code (art. 1281 p. 5) counts the term from the year after rehabilitation, which would run to 2062. The term rules apply only to works whose protection had not ended by 1 January 1993 (the law that put part IV of the Code into force, art. 6), and under the Soviet terms (15, then 25 years after death) this one had; on that reading it is in the public domain in Russia. That reading is this work's, not a lawyer's, and was not checked against Russian case law. ru.wikisource carries the text with a public-domain template (seen 2026-11-16 by an independent check).",
       "url": "https://ru.wikisource.org/wiki/%D0%9F%D0%BE%D1%8D%D0%BC%D0%B0_%D0%BE_%D1%81%D1%82%D0%B0%D1%80%D0%BE%D0%BC_%D0%BC%D0%BE%D1%80%D1%8F%D0%BA%D0%B5_%28%D0%9A%D0%BE%D0%BB%D1%8C%D1%80%D0%B8%D0%B4%D0%B6%3B_%D0%93%D1%83%D0%BC%D0%B8%D0%BB%D1%91%D0%B2%29?oldid=5058375",
       "page": "Поэма о старом моряке (Кольридж; Гумилёв)",
       "revid": 5058375
@@ -8519,8 +8519,8 @@
     "SM-001": {
      "name": {
       "text": "The Sonnet Man",
-      "source": "translated",
-      "detail": "the product name, kept as it is"
+      "source": "kept",
+      "detail": "the product name, the same in every language"
      },
      "quote": {
       "text": "هل أشبهك بيوم من أيام الصيف؟",
@@ -9056,7 +9056,7 @@
       "detail": "the game's own name, translated for the game"
      },
      "quote": {
-      "text": "قلق يرقد الرأس الذي يلبس التاج.",
+      "text": "قلقًا يرقد الرأس الذي يلبس التاج.",
       "source": "new",
       "cite": "Henry IV, Part 2 3.1"
      },
@@ -9516,8 +9516,8 @@
     "SM-001": {
      "name": {
       "text": "The Sonnet Man",
-      "source": "translated",
-      "detail": "the product name, kept as it is"
+      "source": "kept",
+      "detail": "the product name, the same in every language"
      },
      "quote": {
       "text": "क्या मैं तुम्हारी तुलना गर्मी के दिन से करूँ?",
@@ -10513,8 +10513,8 @@
     "SM-001": {
      "name": {
       "text": "The Sonnet Man",
-      "source": "translated",
-      "detail": "the product name, kept as it is"
+      "source": "kept",
+      "detail": "the product name, the same in every language"
      },
      "quote": {
       "text": "我可否把你比作夏日的一天？",
@@ -11510,8 +11510,8 @@
     "SM-001": {
      "name": {
       "text": "The Sonnet Man",
-      "source": "translated",
-      "detail": "the product name, kept as it is"
+      "source": "kept",
+      "detail": "the product name, the same in every language"
      },
      "quote": {
       "text": "君を夏の一日にたとえようか。",
@@ -12593,8 +12593,8 @@
     "SM-001": {
      "name": {
       "text": "The Sonnet Man",
-      "source": "translated",
-      "detail": "the product name, kept as it is"
+      "source": "kept",
+      "detail": "the product name, the same in every language"
      },
      "quote": {
       "text": "그대를 여름날에 비겨 볼까요?",
@@ -13590,8 +13590,8 @@
     "SM-001": {
      "name": {
       "text": "The Sonnet Man",
-      "source": "translated",
-      "detail": "the product name, kept as it is"
+      "source": "kept",
+      "detail": "the product name, the same in every language"
      },
      "quote": {
       "text": "Ta có nên ví nàng với một ngày hè?",
@@ -14587,8 +14587,8 @@
     "SM-001": {
      "name": {
       "text": "The Sonnet Man",
-      "source": "translated",
-      "detail": "the product name, kept as it is"
+      "source": "kept",
+      "detail": "the product name, the same in every language"
      },
      "quote": {
       "text": "จะให้ฉันเปรียบเธอกับวันในฤดูร้อนหรือ",
@@ -15584,8 +15584,8 @@
     "SM-001": {
      "name": {
       "text": "The Sonnet Man",
-      "source": "translated",
-      "detail": "the product name, kept as it is"
+      "source": "kept",
+      "detail": "the product name, the same in every language"
      },
      "quote": {
       "text": "Haruskah kubandingkan engkau dengan hari di musim panas?",

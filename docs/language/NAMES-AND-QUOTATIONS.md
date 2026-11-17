@@ -22,6 +22,11 @@ English is the source of truth (`src/lib/cards.ts`) and is not repeated in the p
   Byron". Those labels were fetched separately (`docs/language/sources/wikidata-pt-br.json`), so no other
   language's labels moved with them.
 - `wikipedia`: Wikidata has no label, but that language's Wikipedia has an article on the item; its title is used.
+  One name is spelled as that language's Wikipedia writes it instead of as Wikidata labels it: Portuguese
+  "Próspero" (TP-001), because Wikidata's `pt` and `pt-br` label "Prospero" is the verb *prospero*, "I
+  prosper" (LanguageTool's LP_PARONYMS rule flagged it), and pt.wikipedia.org's article on the play, "A
+  Tempestade" (revision 72539005, `docs/language/sources/ptwiki-a-tempestade.json`), writes Próspero 17 times
+  and Prospero once. The relic name and the scenes follow the card.
 - `derived`: cut by a fixed rule from a sourced label. Two rules exist. (1) The card shows one word of a
   longer name ("Brutus" from "Marcus Junius Brutus", "Cassius", "Bottom"): the word in the same position is
   taken when the label in that language has the same number of words, otherwise the whole label is used.
@@ -31,6 +36,7 @@ English is the source of truth (`src/lib/cards.ts`) and is not repeated in the p
   elements). Written for the game by the language model that did this work. **Not reviewed by a native
   speaker.** Checked by tools that did not write it (see "Checks by tools that did not write the text");
   a name with no finding is not thereby right.
+- `kept`: SM-001, "The Sonnet Man", the product name, the same in every language: neither sourced nor translated.
 - `missing`: no source has the name in that language. Nothing was invented: the card shows the English
   name there, and the invocation accepts the English name.
 
@@ -69,6 +75,11 @@ for the game in English. They can only ever be translated, never sourced.
 | German plays beyond Romeo | Project Gutenberg, plain-text files read from the official mirror gutenberg.pglaf.org (Schlegel #7022, #7043, #9875; Dorothea Tieck #6975; Wieland #7276, #7236, #7186, #7185, #7240, #7934); each line's record keeps the ebook URL, the mirror file and the file's sha256 | public domain in the US (Project Gutenberg) and by the translators' dates | 2026-11-16 |
 | Modern reading of Japanese old character forms | OpenCC 1.1.9, `data/dictionary/JPVariants.txt` (https://github.com/BYVoid/OpenCC, tag ver.1.1.9; `docs/language/sources/opencc-JPVariants.txt`, sha256 db09543d…afab8) | Apache-2.0 | 2026-11-16 |
 | Stop words (words that never count as an echo) | stopwords-iso, commit 6e8e9a2 (`docs/language/sources/stopwords-iso.json`) | MIT, © 2020 Gene Diaz | 2026-11-16 |
+| Function words added to the stop words, and the Korean particles | English Wiktionary's headwords filed as pronoun, particle, conjunction, preposition, postposition, determiner or article, as Wiktextract extracts them (kaikki.org per-part-of-speech files, extracted 2026-10-30 from the dump of 2026-10-01, Wiktextract commit 19f9a30; `scripts/language/fetch/closed_class.py`, `docs/language/sources/wiktionary-closed-class.json`, which keeps each file's sha256). The Wiktionary API itself answered 429 (rate limited) that day | Wiktionary CC BY-SA 4.0 and GFDL (headwords only); Wiktextract MIT | 2026-11-16 |
+| Forms of one word (stems), for the signature and for names that decline | Snowball 3.2.0 stemmers, the project's generated JavaScript (jsstemmer-3.2.0.tar.gz from snowballstem.org/dist, sha256 1d3f3926…a15e5bd), copied unchanged into `src/lib/verse/stem/snowball/` for es, fr, de, it, pt, pl, ru, ar, hi, id; a unit test checks each file's sha256 | BSD 3-clause (`src/lib/verse/stem/snowball/COPYING`) | 2026-11-16 |
+| French and Italian elided articles (l’, c’, dell’ …) | Apache Lucene, `FrenchAnalyzer.DEFAULT_ARTICLES` and `ItalianAnalyzer.DEFAULT_ARTICLES` (main branch, read 2026-11-16), copied into `src/lib/verse/echo.ts` | Apache-2.0 | 2026-11-16 |
+| Which words of a longer character name are ordinary words | Hunspell 1.7.2 with the same LibreOffice dictionaries (`run.sh names`, `docs/language/checks/name-words.json`) | as stated | 2026-11-16 |
+| Portuguese spelling of Próspero | pt.wikipedia.org, "A Tempestade", revision 72539005 (`docs/language/sources/ptwiki-a-tempestade.json`) | CC BY-SA 4.0 (one name's spelling) | 2026-11-16 |
 | Spelling check | Hunspell 1.7.2 (LGPL/GPL/MPL) with LibreOffice's dictionaries at commit c0865a85 (each under its own licence, README kept beside it on the build host) | as stated | 2026-11-16 |
 | Grammar check | LanguageTool 6.6, run locally (LGPL-2.1) | LGPL-2.1 | 2026-11-16 |
 | Back-translation | the language QA pipeline's `scripts/lang/backtranslate.py` (branch lang/qa-pipeline at d51089b, blob c5797969, sha256 1a3ca221…c79a), in its `--pairs` mode: MADLAD-400 3B (google/madlad400-3b-mt; CTranslate2 int8 conversion Nextcloud-AI/madlad400-3b-mt-ct2-int8, revision aa32bbde) back to English, scored by all-MiniLM-L6-v2 (revision 1110a243) against the English, and LaBSE (sentence-transformers/LaBSE, revision 836121a0) scoring the text itself against the English | Apache-2.0 (all three models) | 2026-11-16 |
@@ -96,13 +107,44 @@ have died within the last seventy years.
 - `src/lib/cards-i18n/<lang>.ts` holds the names, lines, scenes, labels and stop words of one language. It is
   loaded with the interface language (for display) and with a duel's language pack (`loadPack`).
 - Signature: in a duel fought in a language that has its own line for the card, the telling words are the
-  words of that line that are long enough for the language (`lang.ts`) and are not on the stop list. A word
-  is echoed when a verse word begins with it (or with all but its last letter, for words of five letters or
-  more), which allows for endings; in Arabic it may sit inside a word; in Chinese, Japanese and Thai words
-  are cut by `Intl.Segmenter` and matched on letters. Four words running from the line is a quotation and is
-  refused. The English line's words still count, and reciting the English line is still refused.
-- Invocation: each word of each character's name in the duel's language counts, with the item's one-word
-  aliases, as well as the English names.
+  words of that line that are long enough for the language (`lang.ts`) and are not function words: not on
+  stopwords-iso's list, not filed by Wiktionary as a pronoun, particle, conjunction, preposition,
+  postposition, determiner or article (a headword is left out of that only when every sense of it in the
+  class is a variant spelling, a heading with no definition, a misspelling, slang, or the usage of one region:
+  Vietnamese "hè", a Central particle, is also "summer"), not a Korean such word with its particle (나는, "I"),
+  not a Chinese or Japanese word made only of stop characters (你的, "your"), and in Japanese not a word with no
+  kanji or katakana (particles, auxiliaries and endings are written in hiragana: した, あなた). French and
+  Italian elided articles are taken off first (c’est is "est", l’amour is "amour"). The card shows a telling
+  word as the line writes it (German "Rose", not "rose").
+- A word of the verse echoes a telling word when it is the same word as the language counts it: the same
+  Snowball stem in Spanish, French, German, Italian, Portuguese, Polish, Russian, Arabic, Hindi and
+  Indonesian (Russian «Гамлета» and «Гамлет», Spanish «rosas» and «rosa»); in Vietnamese the same syllable
+  with the same tone (ngủ "sleep" is not ngu, nor the start of người; hoà and hòa are one spelling); in Korean
+  the same word with or without its particles (햄릿이 says 햄릿); in Chinese, Japanese and Thai, whole words of
+  the verse (`Intl.Segmenter`) that spell it in a row (Japanese: whose letters begin with it, since a verb's
+  ending is often cut off as a word of its own). Thai SARA AM is compared in one piece (stopwords-iso writes
+  ทํา and สําหรับ in two). A verse word that is itself a stop word never echoes.
+- Reciting the line is refused: four of its words running, as in English, or the whole of a line of two or
+  three words. In Chinese, Japanese and Thai the segmenter's words are often single particles, so a recital
+  there is a run of the line's letters as long as four English words of the game's lines are in that
+  language: Chinese 6, Japanese 9, Thai 19 (letters with their marks), measured as four times the median
+  letters per English word over the 71 lines, and measured again by a test. The English line's words still
+  count (except a word of the duel's language spelled like one: Italian "dove" is a stop word there), and
+  reciting the English line is still refused.
+- Invocation: every character's full name in the duel's language counts, and so does each word of a longer
+  name and each one-word alias, unless it is a stop word or an ordinary word of the language by Hunspell
+  (`run.sh names`; the rule is `common_name_words` in the build script): a title such as Russian «граф»,
+  Vietnamese «Phu nhân» or «Lãnh chúa», or Russian «Кора» (bark), an alias of Persephone. Where the script has
+  letter case Hunspell is asked in lower case, so a name the dictionary holds is not taken for a word; in
+  German (whose nouns are capitalised) and in Arabic, Hindi and Thai (which have no case) a word Hunspell knows
+  is taken for a title only before the last word of the name, where those languages put titles; Korean puts
+  the title after the name (맥베스 부인), so there any word Hunspell knows is. A word that is also a word of an
+  English character name (Romeo, Lady, William) counts, as it does in English. Names match by stem in Polish,
+  Russian, German and Arabic, where names decline («Персефону» says «Персефона»), with particles in Korean, as
+  whole words in Chinese, Japanese and Thai, and exactly elsewhere («prosperidad» is not «Próspero», «marche» is
+  not «Marc»). "The Sonnet Man" counts only whole. The English names count in every language, compared as
+  the duel's language compares words (Vietnamese «màn» is not "Man").
+- The rule judge's allusion count takes the same telling words, and the one-word names.
 - An English duel does not go through any of this.
 
 ## What was not done, and what has not been checked
@@ -178,12 +220,47 @@ Read this before treating any language as finished.
   Taiwan form, converted to Simplified characters (the mainland form is 麦克白); Romans carry their Latin
   names (Japanese ブルトゥス for Brutus, where the stage tradition says ブルータス); some poets carry a full
   formal name (Vietnamese and Thai Byron). Translated relic names follow these labels.
-- **The stop-word list is broad.** stopwords-iso counts some content words as stop words. Two were taken
+- **The stop-word lists are broad.** stopwords-iso counts some content words as stop words. Two were taken
   off it because they are the one telling word of Hamlet's line: Portuguese "questão" and Russian "вопрос"
-  (`NOT_STOP` in the build script). Otherwise the lists are used as published. A line with no telling word
-  of its own leaves the English words to decide, as before; the test suite prints every such line.
+  (`NOT_STOP` in the build script). Wiktionary's function-word classes contain homographs, which are left out
+  of the telling words with them: Thai เวลา (time; also "when"), หน้า (face; "in front of"), เพื่อน (friend; an
+  old pronoun), Vietnamese thần (god; an old "I"), trái (fruit, left; "contrary to"), thành (city; "into"),
+  German "fern", Polish "dobra". Otherwise the lists are used as published. A line with no telling word of its
+  own leaves the English words to decide, as before. Seven lines have none although the English line has some:
+  hi UW-002, zh LD-004, ja VC-003, ja PT-005, ja OL-004, vi SM-001 and th LD-004 (their words are function
+  words, or shorter than the language's measure, or single Chinese or Japanese characters, which do not count:
+  花, 草, 愛, 力); a test pins that list.
+- **Accidental landings** were measured over every pack's written-opponent and acrostic verses, which were
+  not written for any card, against every character card (`accidents.test.ts`). English: the signature lands
+  on 2.2% of verse–card pairs and the invocation on 3.8% of verses. After this round every other language is
+  at or under 2.6% for the signature and 2.3% for the invocation (German "Wärterin", the Nurse's whole name, as
+  English counts "Nurse"), except the Vietnamese signature, 6.0%: most of it is three
+  adverbs, chẳng ("not"), hãy (the imperative) and giờ ("now"), which neither stopwords-iso nor Wiktionary's
+  function-word classes list (Wiktionary files Vietnamese adverbs with content words, so that class could not
+  be added). English lands on the same kind of word ("again", "only", "once"). Before this round: Vietnamese
+  12.5% and 31%, Thai 10.4%, Korean 4.7%, Japanese 3.9% (the independent check's own probe, re-run on the old
+  code at 83e17c4, gave the same numbers).
+- **German Hamlet is Wieland's.** "Seyn oder nicht seyn—Das ist die Frage" is Wieland's 1766 prose (Gutenberg
+  #7276), where the file has "Seyn oder nicht seyn--Das ist die Frage"; "--" is Gutenberg's plain-text dash and
+  is shown as "—". Schlegel's canonical "Sein oder Nichtsein, das ist hier die Frage" was looked for again
+  in this round and not found: not in Project Gutenberg's index (GUTINDEX.ALL from gutenberg.pglaf.org) under
+  Schlegel or "Prinz von Dänemark", and de.wikisource.org's search finds no transcription of it. A German
+  player who recites Schlegel's line is therefore not refused for quoting: it shares "die Frage" with
+  Wieland's but no four words running. "Seyn" is a Wiktionary function word (an old spelling of "sein",
+  "his"), so the telling word of the line is "Frage".
+- **Back-translation is one run.** An independent check re-ran the meaning step on a sample with the same
+  script and models and got different back-translations for 38 of 175 items scored on the iMac and 11 of 25
+  Korean items scored on the Studio (cosine moved by up to 0.53), though no item crossed the flag rule. The
+  output depends on the host and on which items share a batch. `backtranslation.json` records one run; treat
+  its scores as indicative, not as reproducible numbers. The meaning rule (both MiniLM and LaBSE under 0.6)
+  catches only gross mismatches: it passed the Arabic RL-006 line that read "Anxiety lies on the head", fixed
+  in this round to the circumstantial قلقًا on a reading of the grammar, not by a tool.
 - The telling words of a line depend on `Intl.Segmenter` for Chinese, Japanese and Thai, so they can differ
   slightly between browsers and Node versions.
+- **Names recorded as missing are shown in English**, in the card's name and in scenes (Arabic and Thai scenes
+  name Oberon, Horatio and Malvolio in Latin letters). The Japanese scene for Mercutio writes マキューシオ although
+  the card shows "Mercutio": the name has no Wikidata label and no ja.wikipedia article, and Tsubouchi's
+  published Romeo and Juliet, which names him, was not read for names. Scenes are not shown on any page yet.
 - **The card detail view** (`src/pages/collection.astro`) is being translated on another branch
   (lang/pages-core), which marks the card's name, line and scene `data-card-text` and leaves them to this
   work. This branch does not touch that page; when the two meet, those spots take `cardName`, `cardQuote`
@@ -197,6 +274,7 @@ Read this before treating any language as finished.
 python3 scripts/language/fetch/names.py            # writes wikidata-names.json
 python3 scripts/language/fetch/names_ptbr.py       # writes wikidata-pt-br.json (Brazilian Portuguese labels of the same items)
 python3 scripts/language/fetch/aozora.py ja rj 42773   # an Aozora Bunko text, pinned by the sha256 of its file
+python3 -I scripts/language/fetch/closed_class.py <empty dir>   # Wiktionary function words (kaikki.org) -> wiktionary-closed-class.json
 python3 scripts/language/fetch/fetchwork.py fr.wikisource.org fr hamlet "Le second Hamlet (trad. Hugo)"
 python3 scripts/language/fetch/extract.py fr scripts/language/fetch/specs/fr.txt
 # then, from the repository root (needs: pip install regex opencc-python-reimplemented)
@@ -207,6 +285,7 @@ python3 scripts/language/build_card_text.py
 # in $CHECK_HOME/qa-pipeline/ on the host (run.sh refuses a copy whose sha256 is not the pinned one).
 ~/kani-logs/remote/rb . -- 'bash scripts/language/check/run.sh setup && bash scripts/language/check/run.sh selftest'
 ~/kani-logs/remote/rb . -- 'bash scripts/language/check/run.sh spell && bash scripts/language/check/run.sh grammar'
+~/kani-logs/remote/rb . -- 'bash scripts/language/check/run.sh names'   # after a name or alias changes; then build_card_text.py
 ~/kani-logs/remote/rb . -- 'bash scripts/language/check/run.sh detach meaning'   # about 2.5 s an item on the iMac's CPU; resumes
 ~/kani-logs/remote/rb . -- 'bash scripts/language/check/run.sh status'
 # copy spelling.json, grammar.json and work/meaning/docs/language/checks/backtranslation.json back into docs/language/checks/;
@@ -221,21 +300,21 @@ the lines used, each with the permanent link of the revision it was read from.
 
 | Language | Names from Wikidata | from a Wikipedia title | derived by rule | translated (own inventions) | missing | Lines from a published translation | new, unsourced | Scenes translated |
 |---|---|---|---|---|---|---|---|---|
-| es | 43 | 0 | 3 | 21 | 4 | 29 | 42 | 71 |
-| fr | 45 | 0 | 3 | 21 | 2 | 51 | 20 | 71 |
-| de | 43 | 0 | 2 | 21 | 5 | 50 | 21 | 71 |
-| it | 42 | 0 | 3 | 21 | 5 | 51 | 20 | 71 |
-| pt | 35 | 0 | 2 | 21 | 13 | 6 | 65 | 71 |
-| pl | 36 | 0 | 2 | 21 | 12 | 28 | 43 | 71 |
-| ru | 46 | 0 | 2 | 21 | 2 | 35 | 36 | 71 |
-| ar | 36 | 0 | 1 | 21 | 13 | 0 | 71 | 71 |
-| hi | 36 | 0 | 2 | 21 | 12 | 0 | 71 | 71 |
-| zh | 43 | 1 | 3 | 21 | 3 | 0 | 71 | 71 |
-| ja | 40 | 0 | 3 | 21 | 7 | 13 | 58 | 71 |
-| ko | 39 | 0 | 2 | 21 | 9 | 0 | 71 | 71 |
-| vi | 28 | 0 | 3 | 21 | 19 | 0 | 71 | 71 |
-| th | 18 | 0 | 6 | 21 | 26 | 0 | 71 | 71 |
-| id | 32 | 0 | 4 | 21 | 14 | 0 | 71 | 71 |
+| es | 43 | 0 | 3 | 20 | 4 | 29 | 42 | 71 |
+| fr | 45 | 0 | 3 | 20 | 2 | 51 | 20 | 71 |
+| de | 43 | 0 | 2 | 20 | 5 | 50 | 21 | 71 |
+| it | 42 | 0 | 3 | 20 | 5 | 51 | 20 | 71 |
+| pt | 34 | 1 | 2 | 20 | 13 | 6 | 65 | 71 |
+| pl | 36 | 0 | 2 | 20 | 12 | 28 | 43 | 71 |
+| ru | 46 | 0 | 2 | 20 | 2 | 35 | 36 | 71 |
+| ar | 36 | 0 | 1 | 20 | 13 | 0 | 71 | 71 |
+| hi | 36 | 0 | 2 | 20 | 12 | 0 | 71 | 71 |
+| zh | 43 | 1 | 3 | 20 | 3 | 0 | 71 | 71 |
+| ja | 40 | 0 | 3 | 20 | 7 | 13 | 58 | 71 |
+| ko | 39 | 0 | 2 | 20 | 9 | 0 | 71 | 71 |
+| vi | 28 | 0 | 3 | 20 | 19 | 0 | 71 | 71 |
+| th | 18 | 0 | 6 | 20 | 26 | 0 | 71 | 71 |
+| id | 32 | 0 | 4 | 20 | 14 | 0 | 71 | 71 |
 
 ## Published translations used
 
@@ -305,7 +384,7 @@ the lines used, each with the permanent link of the revision it was read from.
 | ru | tempest | Николай Сатин (1814–1873) | «Буря», 1840 (ru.wikisource.org transcription, modern orthography, of a later edition in which 41 lines of the masque in act 4 are by Olga Chyumina, 1864–1909; no line used here is among them) | Public domain: Russia (life + 70 years; translator died 1873) and United States (published before 1931) |
 | ru | sonnet18 | Николай Гербель (1827–1883) | «Полное собрание сонетов Шекспира», 1880 (ru.wikisource.org transcription, modern orthography) | Public domain: Russia (life + 70 years; translator died 1883) and United States (published before 1931) |
 | ru | raven | Валерий Брюсов (1873–1924) | «Ворон», в книге «Эдгар По. Полное собрание поэм и стихотворений», 1924 (ru.wikisource.org transcription) | Public domain: Russia (life + 70 years; translator died 1924) and United States (published before 1931) |
-| ru | mariner | Николай Гумилёв (1886–1921) | «Поэма о старом моряке», «Всемирная литература», Петроград, 1919 (ru.wikisource.org transcription) | Public domain: Russia (life + 70 years; translator died 1921) and United States (published before 1931) |
+| ru | mariner | Николай Гумилёв (1886–1921) | «Поэма о старом моряке», «Всемирная литература», Петроград, 1919 (ru.wikisource.org transcription) | Public domain: United States (published before 1931). Russia: life + 70 years would make it public domain (translator died 1921), but Gumilyov was executed in 1921 and rehabilitated in 1992, and for a repressed and rehabilitated author the Russian Civil Code (art. 1281 p. 5) counts the term from the year after rehabilitation, which would run to 2062. The term rules apply only to works whose protection had not ended by 1 January 1993 (the law that put part IV of the Code into force, art. 6), and under the Soviet terms (15, then 25 years after death) this one had; on that reading it is in the public domain in Russia. That reading is this work's, not a lawyer's, and was not checked against Russian case law. ru.wikisource carries the text with a public-domain template (seen 2026-11-16 by an independent check). |
 | ru | tn | Андрей Кронеберг (1814–1855) | «Двенадцатая ночь, или Что угодно», 1841 (ru.wikisource.org transcription, modern orthography) | Public domain: Russia (life + 70 years; translator died 1855) and United States (published before 1931) |
 | ru | mov | Пётр Вейнберг (1830–1908) | «Венецианский купец», 1866 (ru.wikisource.org transcription, modern orthography) | Public domain: Russia (life + 70 years; translator died 1908) and United States (published before 1931) |
 | ja | rj | 坪内逍遙 Tsubouchi Shōyō (1859–1935) | 『ロミオとヂュリエット』新修シェークスピヤ全集 第二十五卷, 中央公論社, 1933 (ja.wikisource.org transcription of the Aozora Bunko text, card 42773; old orthography as printed) | Public domain: Japan (translator died 1935; Japan’s term was then life + 50, so the work fell into the public domain on 1 January 1986, and the 2018 extension to life + 70 did not revive it; life + 70 is met as well) and United States (published in 1933, but already in the public domain in Japan on 1 January 1996, so US copyright was not restored) |
@@ -348,7 +427,7 @@ the lines used, each with the permanent link of the revision it was read from.
 
 ## Names translated for the game, not sourced
 
-In every language: SM-001, MO-004, CA-003, RL-001, RL-002, RL-003, RL-004, RL-005, RL-006, RL-007, RL-008, RL-009, PT-001, PT-002, PT-003, PT-004, PT-005, PT-006, PT-007, PT-008, PT-009 (SM-001 is the product name and is kept as it is), the house labels Montague, Capulet, Danish Court, Forest of Arden, Verona Court, Scottish Court, Legendary, Relic, Potion, Gothic Circle, Olympus, Underworld, all element labels and the three card types. Rarity names are the ones already in src/i18n/locales. Scene descriptions are translated wherever present.
+In every language: MO-004, CA-003, RL-001, RL-002, RL-003, RL-004, RL-005, RL-006, RL-007, RL-008, RL-009, PT-001, PT-002, PT-003, PT-004, PT-005, PT-006, PT-007, PT-008, PT-009, the house labels Montague, Capulet, Danish Court, Forest of Arden, Verona Court, Scottish Court, Legendary, Relic, Potion, Gothic Circle, Olympus, Underworld, all element labels and the three card types. Rarity names are the ones already in src/i18n/locales. Scene descriptions are translated wherever present. SM-001, "The Sonnet Man", is the product name: it is the same in every language and recorded as kept, neither sourced nor translated.
 
 ## Checks by tools that did not write the text
 
@@ -364,7 +443,7 @@ Meaning is judged by the rule of the language QA pipeline: an item is flagged wh
 | fr | 183 | 8 (8 / 0) | 30 (30 / 0) | 183, 0.93 | 8 (8 / 0) | 180 of 183 | 0 |
 | de | 184 | 21 (21 / 0) | 34 (34 / 0) | 184, 0.93 | 15 (15 / 0) | 181 of 184 | 0 |
 | it | 183 | 13 (13 / 0) | 44 (44 / 0) | 183, 0.91 | 15 (15 / 0) | 180 of 183 | 0 |
-| pt | 228 | 12 (12 / 0) | 40 (40 / 0) | 228, 0.90 | 10 (10 / 0) | 226 of 228 | 0 |
+| pt | 228 | 12 (12 / 0) | 38 (38 / 0) | 228, 0.90 | 10 (10 / 0) | 226 of 228 | 0 |
 | pl | 206 | 8 (8 / 0) | 23 (23 / 0) | 206, 0.84 | 12 (12 / 0) | 202 of 206 | 0 |
 | ru | 199 | 16 (16 / 0) | 36 (36 / 0) | 199, 0.88 | 15 (15 / 0) | 197 of 199 | 0 |
 | ar | 234 | 36 (36 / 0) | 169 (169 / 0) | 234, 0.82 | 16 (16 / 0) | 232 of 234 | 0 |
@@ -423,6 +502,11 @@ No tool certifies tone or verse, and every reading above is one language model's
 | ko | element:Rebirth element | back-translation (cos 0.22, LaBSE 0.48) read "재생" as "Play": in an interface the word is first of all "playback" | 재생 | 부활 |
 | ko | element:Rhetoric element | back-translation (cos 0.36, LaBSE 0.37) read "수사" as "Investigation", its commoner sense; the discipline is 수사학 | 수사 | 수사학 |
 | vi | PT-006 quote | back-translation (cos 0.55, LaBSE 0.52) read "một lọ nhựa hebona" as "a plastic jar of hebona": nhựa is both sap and plastic | mang theo một lọ nhựa hebona đáng nguyền rủa. | mang theo nhựa hebona đáng nguyền rủa trong một chiếc lọ. |
+| pt | RL-002 name | LanguageTool LP_PARONYMS (and an independent check, 2026-11-16): unaccented "Prospero" is the verb "prospero", "I prosper"; Portuguese writes the name Próspero (pt.wikipedia.org, "A Tempestade", revision 72539005), and the card name TP-001 now does too | O cajado de Prospero | O cajado de Próspero |
+| pt | RL-002 scene | LanguageTool LP_PARONYMS (and an independent check, 2026-11-16): unaccented "Prospero" is the verb "prospero", "I prosper"; Portuguese writes the name Próspero (pt.wikipedia.org, "A Tempestade", revision 72539005), and the card name TP-001 now does too | … enquanto Prospero sussurra … | … enquanto Próspero sussurra … |
+| pt | TP-001 scene | LanguageTool LP_PARONYMS (and an independent check, 2026-11-16): unaccented "Prospero" is the verb "prospero", "I prosper"; Portuguese writes the name Próspero (pt.wikipedia.org, "A Tempestade", revision 72539005), and the card name TP-001 now does too | … Prospero ergue as mãos … | … Próspero ergue as mãos … |
+| pt | TP-004 scene | LanguageTool LP_PARONYMS (and an independent check, 2026-11-16): unaccented "Prospero" is the verb "prospero", "I prosper"; Portuguese writes the name Próspero (pt.wikipedia.org, "A Tempestade", revision 72539005), and the card name TP-001 now does too | … na ilha de Prospero … | … na ilha de Próspero … |
+| ar | RL-006 quote | an independent check (2026-11-16): to render "Uneasy lies the head" the word must be the circumstantial accusative (ḥāl) قلقًا; as written, قلق is the noun "anxiety", and MADLAD read the line as "Anxiety lies on the head…" (cos 0.78), which no tool flagged | قلق يرقد الرأس الذي يلبس التاج. | قلقًا يرقد الرأس الذي يلبس التاج. |
 
 ### Accepted: words Hunspell does not know
 
@@ -612,7 +696,6 @@ No tool certifies tone or verse, and every reading above is one language model's
 | FA-001 scene | Puck | MORFOLOGIK_RULE_PT_BR | a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it |
 | FA-002 scene | Titania | MORFOLOGIK_RULE_PT_BR | a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it |
 | RL-001 name | Yorick | MORFOLOGIK_RULE_PT_BR | a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it |
-| RL-002 name | Prospero | LP_PARONYMS | "Prospero" is the Wikidata label the card uses (TP-001); the relic name follows it |
 | TP-003 scene | Caliban | MORFOLOGIK_RULE_PT_BR | a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it |
 | TP-003 quote | Sycorax | MORFOLOGIK_RULE_PT_BR | a proper name (place, person or work); the dictionary does not hold it |
 | MO-003 scene | Benvolio | MORFOLOGIK_RULE_PT_BR | a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it |
@@ -633,7 +716,6 @@ No tool certifies tone or verse, and every reading above is one language model's
 | DC-004 scene | Horatio | MORFOLOGIK_RULE_PT_BR | a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it |
 | FA-004 scene | Bottom | MORFOLOGIK_RULE_PT_BR | a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it |
 | FA-004 scene | Titania | MORFOLOGIK_RULE_PT_BR | a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it |
-| TP-004 scene | Prospero | LP_PARONYMS | "Prospero" is the Wikidata label the card uses (TP-001) |
 | RL-009 quote | Bottom | MORFOLOGIK_RULE_PT_BR | a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it |
 | RL-009 name | Bottom | MORFOLOGIK_RULE_PT_BR | a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it |
 | PT-005 name | Oberon | MORFOLOGIK_RULE_PT_BR | a proper name (character, author, god or place), or this language's form of one; LanguageTool's speller does not hold it |
@@ -1292,21 +1374,21 @@ English line: "Shall I compare thee to a summer's day?" (Shakespeare, Sonnet 18,
 
 | Language | Name | Name source | Line | Line source |
 |---|---|---|---|---|
-| es | The Sonnet Man | translated: the product name, kept as it is | ¿He de compararte con un día de verano? | NEW, unsourced: translated for the game, not reviewed |
-| fr | The Sonnet Man | translated: the product name, kept as it is | Te comparerai-je à un jour d’été ? | published: François-Victor Hugo (1828–1873), Sonnets de Shakespeare, Michel Lévy, Paris, 1857 (fr.wikisource.org transcription); Public domain: France (life + 70 years; translator died 1873) and United States (published before 1931); [source](https://fr.wikisource.org/wiki/Sonnets_de_Shakespeare_%28trad._Hugo%29/018?oldid=7372651) |
-| de | The Sonnet Man | translated: the product name, kept as it is | Soll ich dich einem Sommertag vergleichen? | NEW, unsourced: translated for the game, not reviewed |
-| it | The Sonnet Man | translated: the product name, kept as it is | Dovrò paragonarti a un giorno d’estate? | NEW, unsourced: translated for the game, not reviewed |
-| pt | The Sonnet Man | translated: the product name, kept as it is | Devo comparar-te a um dia de verão? | NEW, unsourced: translated for the game, not reviewed |
-| pl | The Sonnet Man | translated: the product name, kept as it is | Czy mam cię porównać do letniego dnia? | NEW, unsourced: translated for the game, not reviewed |
-| ru | The Sonnet Man | translated: the product name, kept as it is | Как я сравню тебя с роскошным летним днем | published: Николай Гербель (1827–1883), «Полное собрание сонетов Шекспира», 1880 (ru.wikisource.org transcription, modern orthography); Public domain: Russia (life + 70 years; translator died 1883) and United States (published before 1931); [source](https://ru.wikisource.org/wiki/%D0%A1%D0%BE%D0%BD%D0%B5%D1%82_18_%28%D0%A8%D0%B5%D0%BA%D1%81%D0%BF%D0%B8%D1%80%3B_%D0%93%D0%B5%D1%80%D0%B1%D0%B5%D0%BB%D1%8C%29?oldid=4689902) |
-| ar | The Sonnet Man | translated: the product name, kept as it is | هل أشبهك بيوم من أيام الصيف؟ | NEW, unsourced: translated for the game, not reviewed |
-| hi | The Sonnet Man | translated: the product name, kept as it is | क्या मैं तुम्हारी तुलना गर्मी के दिन से करूँ? | NEW, unsourced: translated for the game, not reviewed |
-| zh | The Sonnet Man | translated: the product name, kept as it is | 我可否把你比作夏日的一天？ | NEW, unsourced: translated for the game, not reviewed |
-| ja | The Sonnet Man | translated: the product name, kept as it is | 君を夏の一日にたとえようか。 | NEW, unsourced: translated for the game, not reviewed |
-| ko | The Sonnet Man | translated: the product name, kept as it is | 그대를 여름날에 비겨 볼까요? | NEW, unsourced: translated for the game, not reviewed |
-| vi | The Sonnet Man | translated: the product name, kept as it is | Ta có nên ví nàng với một ngày hè? | NEW, unsourced: translated for the game, not reviewed |
-| th | The Sonnet Man | translated: the product name, kept as it is | จะให้ฉันเปรียบเธอกับวันในฤดูร้อนหรือ | NEW, unsourced: translated for the game, not reviewed |
-| id | The Sonnet Man | translated: the product name, kept as it is | Haruskah kubandingkan engkau dengan hari di musim panas? | NEW, unsourced: translated for the game, not reviewed |
+| es | The Sonnet Man | kept: the product name, the same in every language | ¿He de compararte con un día de verano? | NEW, unsourced: translated for the game, not reviewed |
+| fr | The Sonnet Man | kept: the product name, the same in every language | Te comparerai-je à un jour d’été ? | published: François-Victor Hugo (1828–1873), Sonnets de Shakespeare, Michel Lévy, Paris, 1857 (fr.wikisource.org transcription); Public domain: France (life + 70 years; translator died 1873) and United States (published before 1931); [source](https://fr.wikisource.org/wiki/Sonnets_de_Shakespeare_%28trad._Hugo%29/018?oldid=7372651) |
+| de | The Sonnet Man | kept: the product name, the same in every language | Soll ich dich einem Sommertag vergleichen? | NEW, unsourced: translated for the game, not reviewed |
+| it | The Sonnet Man | kept: the product name, the same in every language | Dovrò paragonarti a un giorno d’estate? | NEW, unsourced: translated for the game, not reviewed |
+| pt | The Sonnet Man | kept: the product name, the same in every language | Devo comparar-te a um dia de verão? | NEW, unsourced: translated for the game, not reviewed |
+| pl | The Sonnet Man | kept: the product name, the same in every language | Czy mam cię porównać do letniego dnia? | NEW, unsourced: translated for the game, not reviewed |
+| ru | The Sonnet Man | kept: the product name, the same in every language | Как я сравню тебя с роскошным летним днем | published: Николай Гербель (1827–1883), «Полное собрание сонетов Шекспира», 1880 (ru.wikisource.org transcription, modern orthography); Public domain: Russia (life + 70 years; translator died 1883) and United States (published before 1931); [source](https://ru.wikisource.org/wiki/%D0%A1%D0%BE%D0%BD%D0%B5%D1%82_18_%28%D0%A8%D0%B5%D0%BA%D1%81%D0%BF%D0%B8%D1%80%3B_%D0%93%D0%B5%D1%80%D0%B1%D0%B5%D0%BB%D1%8C%29?oldid=4689902) |
+| ar | The Sonnet Man | kept: the product name, the same in every language | هل أشبهك بيوم من أيام الصيف؟ | NEW, unsourced: translated for the game, not reviewed |
+| hi | The Sonnet Man | kept: the product name, the same in every language | क्या मैं तुम्हारी तुलना गर्मी के दिन से करूँ? | NEW, unsourced: translated for the game, not reviewed |
+| zh | The Sonnet Man | kept: the product name, the same in every language | 我可否把你比作夏日的一天？ | NEW, unsourced: translated for the game, not reviewed |
+| ja | The Sonnet Man | kept: the product name, the same in every language | 君を夏の一日にたとえようか。 | NEW, unsourced: translated for the game, not reviewed |
+| ko | The Sonnet Man | kept: the product name, the same in every language | 그대를 여름날에 비겨 볼까요? | NEW, unsourced: translated for the game, not reviewed |
+| vi | The Sonnet Man | kept: the product name, the same in every language | Ta có nên ví nàng với một ngày hè? | NEW, unsourced: translated for the game, not reviewed |
+| th | The Sonnet Man | kept: the product name, the same in every language | จะให้ฉันเปรียบเธอกับวันในฤดูร้อนหรือ | NEW, unsourced: translated for the game, not reviewed |
+| id | The Sonnet Man | kept: the product name, the same in every language | Haruskah kubandingkan engkau dengan hari di musim panas? | NEW, unsourced: translated for the game, not reviewed |
 
 ### MO-001 Romeo
 
@@ -1494,7 +1576,7 @@ English line: "Now my charms are all o'erthrown." (The Tempest, Epilogue)
 | fr | Le bâton de Prospero | translated: the game's own name, translated for the game | Maintenant, tous mes charmes sont détruits. | published: François-Victor Hugo (1828–1873), Œuvres complètes de W. Shakespeare, Pagnerre, Paris, 1859–1866 (fr.wikisource.org transcription); Public domain: France (life + 70 years; translator died 1873) and United States (published before 1931); [source](https://fr.wikisource.org/wiki/La_Temp%C3%AAte_%28Shakespeare%2C_trad._Hugo%29?oldid=15966548) |
 | de | Prosperos Stab | translated: the game's own name, translated for the game | Nun sind all meine Zauber dahin. | NEW, unsourced: translated for the game, not reviewed |
 | it | Il bastone di Prospero | translated: the game's own name, translated for the game | Ora tutti i miei incantesimi son rotti | published: Carlo Rusconi (1812–1889), Teatro completo di Shakspeare, Torino, 1858–1859 (it.wikisource.org transcription of the 1858–1859 volumes); Public domain: Italy (life + 70 years; translator died 1889) and United States (published before 1931); [source](https://it.wikisource.org/wiki/La_tempesta_%28Shakespeare-Rusconi%29/Atto_quinto?oldid=3813467) |
-| pt | O cajado de Prospero | translated: the game's own name, translated for the game | Agora meus encantos estão todos desfeitos. | NEW, unsourced: translated for the game, not reviewed |
+| pt | O cajado de Próspero | translated: the game's own name, translated for the game | Agora meus encantos estão todos desfeitos. | NEW, unsourced: translated for the game, not reviewed |
 | pl | Laska Prospera | translated: the game's own name, translated for the game | Teraz zniknęły wszystkie czary moje | published: Leon Ulrich (1811–1885), Dzieła dramatyczne Williama Shakespeare, Kraków, 1895 (pl.wikisource.org transcription); Public domain: Poland (life + 70 years; translator died 1885) and United States (published before 1931); [source](https://pl.wikisource.org/wiki/Burza_%28Shakespeare%2C_t%C5%82um._Ulrich%2C_1895%29/Epilog?oldid=3248992) |
 | ru | Посох Просперо | translated: the game's own name, translated for the game | Теперь все мои чары разрушены. | NEW, unsourced: translated for the game, not reviewed |
 | ar | عصا بروسبيرو | translated: the game's own name, translated for the game | الآن قد بطل سحري كله. | NEW, unsourced: translated for the game, not reviewed |
@@ -1626,7 +1708,7 @@ English line: "We are such stuff as dreams are made on." (The Tempest 4.1)
 | fr | Prospero | wikidata: Q978952 label (fr) | Nous sommes de l’étoffe — dont sont faits les rêves | published: François-Victor Hugo (1828–1873), Œuvres complètes de W. Shakespeare, Pagnerre, Paris, 1859–1866 (fr.wikisource.org transcription); Public domain: France (life + 70 years; translator died 1873) and United States (published before 1931); [source](https://fr.wikisource.org/wiki/La_Temp%C3%AAte_%28Shakespeare%2C_trad._Hugo%29?oldid=15966548) |
 | de | Prospero | wikidata: Q978952 label (de) | Wir sind solcher Zeug, woraus Träume gemacht werden | published: Christoph Martin Wieland (1733–1813), „Der Sturm“, in Shakespear Theatralische Werke, aus dem Englischen übersezt von Herrn Wieland, Zürich, 1762–1766 (prose); Project Gutenberg EBook #7236 (plain text, ISO-8859-1), 18th-century spelling as printed. The Gutenberg file does not name its edition; the year is that of the translation’s first publication, from general reference, not checked.; Public domain: Germany (life + 70 years; translator died 1813) and United States (published before 1931); [source](https://www.gutenberg.org/ebooks/7236) |
 | it | Prospero | wikidata: Q978952 label (it) | Modellati noi siamo della vana sustanza di che s’informano i sogni | published: Carlo Rusconi (1812–1889), Teatro completo di Shakspeare, Torino, 1858–1859 (it.wikisource.org transcription of the 1858–1859 volumes); Public domain: Italy (life + 70 years; translator died 1889) and United States (published before 1931); [source](https://it.wikisource.org/wiki/La_tempesta_%28Shakespeare-Rusconi%29/Atto_quarto?oldid=3813466) |
-| pt | Prospero | wikidata: Q978952 label (pt-br) | Somos feitos da matéria de que são feitos os sonhos. | NEW, unsourced: translated for the game, not reviewed |
+| pt | Próspero | wikipedia: pt.wikipedia.org "A Tempestade", revision 72539005, writes Próspero (17 times, Prospero once); Wikidata's pt and pt-br label "Prospero" is the verb prospero, "I prosper" (LanguageTool LP_PARONYMS) (Q978952) | Somos feitos da matéria de que são feitos os sonhos. | NEW, unsourced: translated for the game, not reviewed |
 | pl | Prospero | wikidata: Q978952 label (pl) | Jesteśmy z tej samej materii, z której zrobione są sny. | NEW, unsourced: translated for the game, not reviewed |
 | ru | Просперо | wikidata: Q978952 label (ru) | Из вещества того же как и сон, / Мы созданы. | published: Николай Сатин (1814–1873), «Буря», 1840 (ru.wikisource.org transcription, modern orthography, of a later edition in which 41 lines of the masque in act 4 are by Olga Chyumina, 1864–1909; no line used here is among them); Public domain: Russia (life + 70 years; translator died 1873) and United States (published before 1931); [source](https://ru.wikisource.org/wiki/%D0%91%D1%83%D1%80%D1%8F_%28%D0%A8%D0%B5%D0%BA%D1%81%D0%BF%D0%B8%D1%80%3B_%D0%A1%D0%B0%D1%82%D0%B8%D0%BD%29?oldid=5250007) |
 | ar | بروسبيرو | wikidata: Q978952 label (ar) | نحن من المادة نفسها التي تصنع منها الأحلام. | NEW, unsourced: translated for the game, not reviewed |
@@ -2201,7 +2283,7 @@ English line: "Uneasy lies the head that wears a crown." (Henry IV, Part 2 3.1)
 | pt | A coroa de Macbeth | translated: the game's own name, translated for the game | Inquieta repousa a cabeça que usa uma coroa. | NEW, unsourced: translated for the game, not reviewed |
 | pl | Korona Makbeta | translated: the game's own name, translated for the game | Niespokojnie spoczywa głowa, która nosi koronę. | NEW, unsourced: translated for the game, not reviewed |
 | ru | Корона Макбета | translated: the game's own name, translated for the game | Беспокойно лежит голова, носящая корону. | NEW, unsourced: translated for the game, not reviewed |
-| ar | تاج ماكبث | translated: the game's own name, translated for the game | قلق يرقد الرأس الذي يلبس التاج. | NEW, unsourced: translated for the game, not reviewed |
+| ar | تاج ماكبث | translated: the game's own name, translated for the game | قلقًا يرقد الرأس الذي يلبس التاج. | NEW, unsourced: translated for the game, not reviewed |
 | hi | मैकबेथ का मुकुट | translated: the game's own name, translated for the game | मुकुट पहनने वाला सिर बेचैन सोता है। | NEW, unsourced: translated for the game, not reviewed |
 | zh | 马克白的王冠 | translated: the game's own name, translated for the game | 戴王冠的头是不能安睡的。 | NEW, unsourced: translated for the game, not reviewed |
 | ja | マクベスの王冠 | translated: the game's own name, translated for the game | 王冠をいただく頭は安らかに眠れない。 | NEW, unsourced: translated for the game, not reviewed |
@@ -2442,7 +2524,7 @@ English line: "Water, water, every where, nor any drop to drink." (Coleridge, Th
 | it | Samuel Taylor Coleridge | wikidata: Q82409 label (it) | Acqua, acqua dappertutto, e nemmeno una goccia da bere. | NEW, unsourced: translated for the game, not reviewed |
 | pt | Samuel Taylor Coleridge | wikidata: Q82409 label (pt-br) | Água, água por toda parte, e nem uma gota para beber. | NEW, unsourced: translated for the game, not reviewed |
 | pl | Samuel Taylor Coleridge | wikidata: Q82409 label (pl) | Woda, woda, wszędzie woda, a ani kropli do picia. | NEW, unsourced: translated for the game, not reviewed |
-| ru | Сэмюэл Тейлор Кольридж | wikidata: Q82409 label (ru) | Вода, вода, одна вода, / Мы ничего не пьём. | published: Николай Гумилёв (1886–1921), «Поэма о старом моряке», «Всемирная литература», Петроград, 1919 (ru.wikisource.org transcription); Public domain: Russia (life + 70 years; translator died 1921) and United States (published before 1931); [source](https://ru.wikisource.org/wiki/%D0%9F%D0%BE%D1%8D%D0%BC%D0%B0_%D0%BE_%D1%81%D1%82%D0%B0%D1%80%D0%BE%D0%BC_%D0%BC%D0%BE%D1%80%D1%8F%D0%BA%D0%B5_%28%D0%9A%D0%BE%D0%BB%D1%8C%D1%80%D0%B8%D0%B4%D0%B6%3B_%D0%93%D1%83%D0%BC%D0%B8%D0%BB%D1%91%D0%B2%29?oldid=5058375) |
+| ru | Сэмюэл Тейлор Кольридж | wikidata: Q82409 label (ru) | Вода, вода, одна вода, / Мы ничего не пьём. | published: Николай Гумилёв (1886–1921), «Поэма о старом моряке», «Всемирная литература», Петроград, 1919 (ru.wikisource.org transcription); Public domain: United States (published before 1931). Russia: life + 70 years would make it public domain (translator died 1921), but Gumilyov was executed in 1921 and rehabilitated in 1992, and for a repressed and rehabilitated author the Russian Civil Code (art. 1281 p. 5) counts the term from the year after rehabilitation, which would run to 2062. The term rules apply only to works whose protection had not ended by 1 January 1993 (the law that put part IV of the Code into force, art. 6), and under the Soviet terms (15, then 25 years after death) this one had; on that reading it is in the public domain in Russia. That reading is this work's, not a lawyer's, and was not checked against Russian case law. ru.wikisource carries the text with a public-domain template (seen 2026-11-16 by an independent check).; [source](https://ru.wikisource.org/wiki/%D0%9F%D0%BE%D1%8D%D0%BC%D0%B0_%D0%BE_%D1%81%D1%82%D0%B0%D1%80%D0%BE%D0%BC_%D0%BC%D0%BE%D1%80%D1%8F%D0%BA%D0%B5_%28%D0%9A%D0%BE%D0%BB%D1%8C%D1%80%D0%B8%D0%B4%D0%B6%3B_%D0%93%D1%83%D0%BC%D0%B8%D0%BB%D1%91%D0%B2%29?oldid=5058375) |
 | ar | صامويل تايلر كولريدج | wikidata: Q82409 label (ar) | ماء، ماء في كل مكان، ولا قطرة للشرب. | NEW, unsourced: translated for the game, not reviewed |
 | hi | सैम्युअल टेलर कॉलरिज | wikidata: Q82409 label (hi) | पानी, पानी, हर तरफ़ समुद्र का पानी, पर पीने को एक बूँद नहीं। | NEW, unsourced: translated for the game, not reviewed |
 | zh | 塞缪尔·泰勒·柯勒律治 | wikidata: Q82409 label (zh) | 水，水，到处是水，却没有一滴可以喝。 | NEW, unsourced: translated for the game, not reviewed |
