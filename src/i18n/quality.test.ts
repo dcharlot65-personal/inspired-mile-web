@@ -6,19 +6,21 @@
  * What these cannot see (grammar, spelling, meaning, tone) is the business of
  * the tools in scripts/lang/, which run on the build host: see its README.
  */
-import { readFileSync } from 'node:fs';
+import { readdirSync, readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
-import { LOCALES, loadMessages, setLocale, t, num, list, type Locale } from './index';
+import { LOCALES, loadMessages, setLocale, slotPieces, t, num, list, type Locale } from './index';
 import en from './locales/en';
 import { HOUSE_QUOTES } from '../lib/verse/english';
 import { loadPack, PACK_LANGS } from '../lib/verse/packs';
-import { argumentNames, interpolate, parseMessage, pluralBlocks, pluralCategory, MessageSyntaxError } from '../lib/verse/msg';
+import { argumentNames, interpolate, koreanFinal, parseMessage, pluralBlocks, pluralCategory, MessageSyntaxError } from '../lib/verse/msg';
 // @ts-expect-error a plain JavaScript module shared with the command-line tools
 import { applyAllowlist, checkLanguage, untranslated } from '../../scripts/lang/lib/mechanical.mjs';
 // @ts-expect-error as above
 import { checkCitations, checkGlossary, checkNameExceptions } from '../../scripts/lang/lib/glossary.mjs';
 // @ts-expect-error as above
 import { checkWords, wordsToCheck } from '../../scripts/lang/lib/words.mjs';
+// @ts-expect-error as above
+import { RULE_TOLD_TO_CASTER } from '../../scripts/lang/lib/context.mjs';
 
 const read = (path: string) => JSON.parse(readFileSync(new URL(`../../${path}`, import.meta.url), 'utf8'));
 const cldr = read('docs/language/sources/cldr.json');
@@ -100,6 +102,31 @@ describe('plural rules', () => {
     expect(t('check.lines', { n: 4 })).toBe('Exactly 4 lines');
   });
 
+  it('a Korean particle after a value takes the form the value\'s last sound asks for, where the spelling tells it', () => {
+    const ko = (template: string, vars: Record<string, string | number>) => interpolate(template, vars, 'ko');
+    // A Hangul syllable carries its final consonant: 햄릿 ends in ㅅ, 오필리아 in a vowel.
+    expect(ko('{card}이(가) 이겼어요', { card: '햄릿' })).toBe('햄릿이 이겼어요');
+    expect(ko('{card}이(가) 이겼어요', { card: '오필리아' })).toBe('오필리아가 이겼어요');
+    expect(ko('‘{word}’을(를) 떠올렸어요', { word: '왕관' })).toBe('‘왕관’을 떠올렸어요');
+    expect(ko('‘{word}’을(를) 떠올렸어요', { word: '바다' })).toBe('‘바다’를 떠올렸어요');
+    // 으로 after a consonant, 로 after a vowel and after ㄹ.
+    expect([ko('{w}(으)로', { w: '밤' }), ko('{w}(으)로', { w: '바다' }), ko('{w}(으)로', { w: '달' })]).toEqual(['밤으로', '바다로', '달로']);
+    // A letter by its name (ㄱ 기역), a number in Sino-Korean (3 삼, 2 이, 10 십), a capital as a letter (B 비, M 엠).
+    expect([ko('{l}을(를)', { l: 'ㄱ' }), ko('{l}을(를)', { l: '이' }), ko('{n}이(가)', { n: 3 }), ko('{n}이(가)', { n: 2 }), ko('{n}이(가)', { n: 10 })]).toEqual(['ㄱ을', '이를', '3이', '2가', '10이']);
+    expect([ko('{m}을(를)', { m: 'Gemma 4 E2B' }), ko('{m}을(를)', { m: 'LFM2.5 350M' })]).toEqual(['Gemma 4 E2B를', 'LFM2.5 350M을']);
+    // An English word's last sound is not in its spelling: the hedge stays.
+    expect(ko('{card}이(가) 이겼어요', { card: 'Hamlet' })).toBe('Hamlet이(가) 이겼어요');
+    expect(koreanFinal('Hamlet')).toBeNull();
+    // Other languages are untouched.
+    expect(interpolate('{card}이(가)', { card: '햄릿' }, 'en')).toBe('햄릿이(가)');
+  });
+
+  it('a sentence with links splits at its slots, and only there', () => {
+    expect(slotPieces('親が{terms}と{privacy}を確認し')).toEqual([{ text: '親が' }, { slot: 'terms' }, { text: 'と' }, { slot: 'privacy' }, { text: 'を確認し' }]);
+    expect(slotPieces('{terms}')).toEqual([{ slot: 'terms' }]);
+    expect(slotPieces('no slot')).toEqual([{ text: 'no slot' }]);
+  });
+
   it('every count in every language renders for every number without leaving syntax behind', async () => {
     const numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 11, 12, 14, 20, 21, 22, 25, 99, 100, 101, 102, 111, 1000, 1.5];
     const leftovers: string[] = [];
@@ -161,6 +188,23 @@ describe('relic power words translate the English list word for word', () => {
     const en = await loadPack('en');
     const shape = (p: { relics: Record<string, string[]> }) => Object.fromEntries(Object.entries(p.relics).map(([id, ws]) => [id, ws.length]));
     for (const l of PACK_LANGS) expect([l, shape(await loadPack(l))]).toEqual([l, shape(en)]);
+  });
+});
+
+describe('the tools read what the player reads', () => {
+  it('a curse rule is filled into {rule} as the pages fill it: told to the caster or to the one cursed', () => {
+    // scripts/lang/lib/strings.mjs (renderSamples) fills {rule} with the caster's wording for the keys in
+    // RULE_TOLD_TO_CASTER and with the cursed player's for the rest; the pages decide by calling
+    // curseRuleTheirs or curseRule. The two must agree, or the tools judge a sentence nobody sees.
+    const theirs = new Set<string>();
+    const brief = new Set<string>();
+    const src = new URL('../', import.meta.url);
+    for (const f of readdirSync(src, { recursive: true }) as string[]) {
+      if (!/\.(astro|ts|tsx)$/.test(f) || f.endsWith('.test.ts')) continue;
+      for (const m of readFileSync(new URL(f, src), 'utf8').matchAll(/\bt\('([\w.-]+)',\s*\{[^}]*?\brule:\s*(curseRuleTheirs|curseRule)\(/g)) (m[2] === 'curseRuleTheirs' ? theirs : brief).add(m[1]);
+    }
+    expect([...theirs].sort()).toEqual([...RULE_TOLD_TO_CASTER].sort());
+    expect([...brief].sort()).toEqual(['round.cursesYou', 'theatre.cursesYou']);
   });
 });
 
@@ -261,6 +305,13 @@ describe('the checks can fail', () => {
     // The escape written twice in the source: the player saw the six characters.
     ['fr', 'e', 'Vers {line}\\u00a0: fait.', 'escape-literal'],
     ['de', 'b', 'Änmelden', 'not-nfc'],
+    // Hedges (the checker planted the first; none of the rules named it).
+    ['es', 'b', 'Atrás, querido(a)', 'hedge'],
+    ['es', 'b', 'Bienvenido/a', 'hedge'],
+    ['pl', 'b', 'Zalogowany(-a)', 'hedge'],
+    ['ru', 'b', 'Вы вошли(-ла)', 'hedge'],
+    ['hi', 'b', 'मैं पुष्टि करता/करती हूँ', 'hedge'],
+    ['ko', 'b', '개인정보 처리방침을(를) 읽었어요', 'ko-particle-hedge'],
   ];
 
   it('each rule names a known-bad string', () => {
@@ -281,6 +332,9 @@ describe('the checks can fail', () => {
       ['vi', { a: 'Đúng {n, plural, one {# dòng} other {# dòng}}', b: 'Đăng nhập bằng khoá truy cập', c: 'Bạn có khoẻ không, quý khách?', d: 'lặp lại “{word}”', e: 'Dòng {line}: hoàng hôn, khoản cuối.', f: ' và ' }],
     ];
     for (const [lang, strings] of clean) expect(show(checkLanguage(lang, strings, EN, cldr.languages[lang], helpers))).toEqual([]);
+    // A Korean hedge right after a value is the runtime's to resolve (msg.ts), and a slash in "km/h" is no hedge.
+    const enKo = { a: '{card} wins', b: 'Echoed “{word}”', c: 'Starts with {word}', d: '{n} km/h' };
+    expect(show(checkLanguage('ko', { a: '{card}이(가) 이겨요', b: '‘{word}’을(를) 떠올렸어요', c: '{word}(으)로 시작해요', d: '시속 {n} km/h' }, enKo, cldr.languages.ko, helpers))).toEqual([]);
   });
 
   it('the glossary check names a string that strays from the term, a ruled-out word, and a changed form name', async () => {

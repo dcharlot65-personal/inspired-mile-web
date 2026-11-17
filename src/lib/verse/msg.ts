@@ -175,12 +175,81 @@ function value(v: MsgValue, locale: string): string {
   return formatList(v, locale);
 }
 
+// ---------- Korean particles ----------
+//
+// A Korean particle has two forms, chosen by the sound the word before it ends with: 이/가, 을/를,
+// 은/는, 과/와 after a final consonant or a vowel, and 으로/로 (로 also after ㄹ). Korean interface
+// text writes both, 을(를), where the word is a variable. Here the choice is made by rule wherever the
+// value's last sound is knowable from its spelling: a Hangul syllable (its final consonant is part of
+// the code point), a Hangul letter (by its name: ㄱ 기역), a number (read in Sino-Korean: 3 삼, 10 십),
+// or a capital letter read as a letter's name, as in a model's name (E2B: 비; 350M: 엠). Otherwise
+// (an English word such as "Hamlet", whose pronunciation spelling does not give) the template's
+// hedge stays, which is the established convention of Korean software.
+
+type Final = 'none' | 'consonant' | 'rieul';
+const HEDGES: Record<string, [string, string, boolean?]> = {
+  // hedge: [after a consonant, after a vowel, true if ㄹ takes the vowel form]
+  '이(가)': ['이', '가'], '가(이)': ['이', '가'],
+  '을(를)': ['을', '를'], '를(을)': ['을', '를'],
+  '은(는)': ['은', '는'], '는(은)': ['은', '는'],
+  '과(와)': ['과', '와'], '와(과)': ['과', '와'],
+  '(으)로': ['으로', '로', true],
+};
+const HEDGE_AT_START = /^([’”」』'")\]]*)(이\(가\)|가\(이\)|을\(를\)|를\(을\)|은\(는\)|는\(은\)|과\(와\)|와\(과\)|\(으\)로)/;
+// The final sound of a letter's or digit's Korean name.
+const LETTER_NAME_FINAL: Record<string, Final> = { L: 'rieul', M: 'consonant', N: 'consonant', R: 'rieul' };
+const DIGIT_FINAL: Final[] = ['consonant', 'rieul', 'none', 'consonant', 'none', 'none', 'consonant', 'rieul', 'rieul', 'none'];
+
+/** The sound a value ends with, as far as its spelling tells; null when it does not. */
+export function koreanFinal(text: string): Final | null {
+  const s = text.replace(/[\s’”」』'")\].,!?…]+$/u, '');
+  const c = s.at(-1);
+  if (!c) return null;
+  const cp = c.codePointAt(0)!;
+  if (cp >= 0xac00 && cp <= 0xd7a3) {
+    const jong = (cp - 0xac00) % 28;
+    return jong === 0 ? 'none' : jong === 8 ? 'rieul' : 'consonant';
+  }
+  if (cp >= 0x3131 && cp <= 0x314e) return c === 'ㄹ' ? 'rieul' : 'consonant'; // 기역, 니은, … 리을: each name ends in a consonant
+  if (cp >= 0x314f && cp <= 0x3163) return 'none'; // 아, 애, 야, …
+  if (/[0-9]/.test(c)) {
+    const num = s.match(/[0-9][0-9,.]*$/)![0];
+    if (num.includes('.')) return DIGIT_FINAL[Number(c)];
+    const digits = num.replace(/\D/g, '');
+    if (/^0+$/.test(digits)) return 'consonant'; // 영
+    const zeros = digits.length - digits.replace(/0+$/, '').length;
+    // A number ending in zeros is read with its unit, 십, 백, 천, 만 or 억, each of which ends in a consonant.
+    return zeros === 0 ? DIGIT_FINAL[Number(c)] : 'consonant';
+  }
+  // A capital read as a letter: an acronym or a model's code (GPT, E2B, 350M), not a capitalised word.
+  if (/[A-Z]/.test(c) && !/[a-z]/.test(s.at(-2) ?? '')) return LETTER_NAME_FINAL[c] ?? 'none';
+  return null;
+}
+
+/** The text that follows a value, with a Korean particle hedge at its start resolved where the value allows. */
+export function koreanParticleAfter(value: string, following: string): string {
+  const m = following.match(HEDGE_AT_START);
+  if (!m) return following;
+  const fin = koreanFinal(value);
+  if (!fin) return following;
+  const [afterConsonant, afterVowel, rieulTakesVowel] = HEDGES[m[2]];
+  const form = fin === 'none' || (fin === 'rieul' && rieulTakesVowel) ? afterVowel : afterConsonant;
+  return m[1] + form + following.slice(m[0].length);
+}
+
 function render(parts: Part[], vars: Record<string, MsgValue>, locale: string, pound: string | null): string {
   let out = '';
+  const korean = locale === 'ko' || locale.startsWith('ko-');
+  let last: string | null = null; // the value just written, for the particle after it
   for (const p of parts) {
-    if (p.type === 'text') out += p.value;
+    if (p.type !== 'text') last = null;
+    if (p.type === 'text') out += korean && last !== null ? koreanParticleAfter(last, p.value) : p.value;
     else if (p.type === 'pound') out += pound ?? '#';
-    else if (p.type === 'arg') out += p.name in vars ? value(vars[p.name], locale) : `{${p.name}}`;
+    else if (p.type === 'arg') {
+      const v = p.name in vars ? value(vars[p.name], locale) : `{${p.name}}`;
+      out += v;
+      if (p.name in vars) last = v;
+    }
     else {
       const raw = vars[p.name];
       const n = typeof raw === 'number' ? raw : typeof raw === 'string' && raw.trim() !== '' ? Number(raw) : NaN;

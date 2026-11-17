@@ -196,3 +196,35 @@ test.describe('Interface language from the browser', () => {
     await expect(page.locator('#locale-switch')).toHaveValue('fr');
   });
 });
+
+/**
+ * A sentence with links in it is one template per language (age.consent, age.agree, auth.legal), with
+ * the links in its slots. Built from pieces around the links, it showed the markup's own white space
+ * between the links and the words around them: Japanese "親または法定保護者が 利用規約 と プライバシー
+ * ポリシー を確認し", Chinese "隐私政策 ，并同意", Korean "개인정보 처리방침 을(를)" (seen in screenshots,
+ * 2026-11-16). textContent, with white space collapsed as the browser draws it.
+ */
+test.describe('Sentences with links in them', () => {
+  const CASES: [string, string, string, string][] = [
+    // language, the consent sentence, the "by continuing" line, the sign-in legal line (a piece of each)
+    ['ja', '親または法定保護者が利用規約とプライバシーポリシーを確認し、', '続けることで、利用規約とプライバシーポリシーに同意したものとみなされます。', 'サインインすることで、利用規約とプライバシーポリシーに同意'],
+    ['zh', '已阅读服务条款和隐私政策，并同意', '继续即表示你同意我们的服务条款和隐私政策。', '登录即表示你同意我们的服务条款和隐私政策。'],
+    ['ko', '서비스 약관 및 개인정보 처리방침을 읽었으며', '계속하면 서비스 약관 및 개인정보 처리방침에 동의하는', '로그인하면 서비스 약관 및 개인정보 처리방침에 동의하는'],
+    ['th', 'ได้อ่านข้อกำหนดการให้บริการและนโยบายความเป็นส่วนตัวแล้ว', 'ถือว่าคุณยอมรับข้อกำหนดการให้บริการและนโยบายความเป็นส่วนตัวของเรา', 'ถือว่าคุณยอมรับข้อกำหนดการให้บริการและนโยบายความเป็นส่วนตัวของเรา'],
+    ['en', 'has reviewed the Terms of Service and Privacy Policy and consents', 'By continuing, you agree to our Terms of Service and Privacy Policy.', 'By signing in, you agree to our Terms of Service and Privacy Policy.'],
+  ];
+  for (const [lang, consent, agree, legal] of CASES) {
+    test(`${lang}: each reads as one sentence, the links in place`, async ({ page }) => {
+      await page.addInitScript((l) => localStorage.setItem('inspired-mile-locale', l), lang);
+      await page.goto('/about');
+      await expect(page.locator('html')).toHaveAttribute('lang', lang);
+      const text = (selector: string) => page.locator(selector).first().evaluate((el) => (el.textContent ?? '').replace(/\s+/g, ' ').trim());
+      await expect.poll(() => text('label:has(#parental-consent) > span')).toContain(consent);
+      await expect.poll(() => text('#age-gate p:has(a[href="/privacy"])')).toContain(agree);
+      await expect.poll(() => text('#auth-dropdown p:has(a[href="/privacy"])')).toContain(legal);
+      // The links are still links, in the sentence.
+      await expect(page.locator('label:has(#parental-consent) a[href="/terms"]')).toHaveCount(1);
+      await expect(page.locator('label:has(#parental-consent) a[href="/privacy"]')).toHaveCount(1);
+    });
+  }
+});

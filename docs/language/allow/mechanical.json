@@ -26,42 +26,6 @@
    "key": "auth.emailPlaceholder",
    "rule": "no-native-script",
    "reason": "An example e-mail address; addresses are Latin-script."
-  },
-  {
-   "lang": "pl",
-   "key": "age.consentBefore",
-   "rule": "ending",
-   "reason": "Polish would have to decline the two document titles that follow as links; ending on 'dokumentami:' lets them stand in the nominative."
-  },
-  {
-   "lang": "pl",
-   "key": "age.agreeBefore",
-   "rule": "ending",
-   "reason": "Polish would have to decline the two document titles that follow as links; ending this piece on a colon ('… dokumenty:') lets them stand in the nominative."
-  },
-  {
-   "lang": "pl",
-   "key": "auth.legalBefore",
-   "rule": "ending",
-   "reason": "Polish would have to decline the two document titles that follow as links; ending this piece on a colon ('… dokumenty:') lets them stand in the nominative."
-  },
-  {
-   "lang": "ru",
-   "key": "age.consentBefore",
-   "rule": "ending",
-   "reason": "Russian would have to decline the two document titles that follow as links; ending on 'документы:' lets them stand in the nominative."
-  },
-  {
-   "lang": "ru",
-   "key": "age.agreeBefore",
-   "rule": "ending",
-   "reason": "Russian would have to decline the two document titles that follow as links; ending this piece on a colon ('… документы:') lets them stand in the nominative."
-  },
-  {
-   "lang": "ru",
-   "key": "auth.legalBefore",
-   "rule": "ending",
-   "reason": "Russian would have to decline the two document titles that follow as links; ending this piece on a colon ('… документы:') lets them stand in the nominative."
   }
  ]
 }

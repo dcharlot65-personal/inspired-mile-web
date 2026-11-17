@@ -621,18 +621,6 @@
   },
   {
    "lang": "hi",
-   "key": "age.agreeAfter",
-   "text": " से सहमत होते हैं।",
-   "reason": "A piece of a sentence the page assembles around links (the age gate, the sign-in terms); alone it has no sense to compare with the English piece. The assembled sentence is listed for a native reader (HUMAN-REVIEW item 7)."
-  },
-  {
-   "lang": "hi",
-   "key": "auth.legalAfter",
-   "text": " से सहमत होते हैं।",
-   "reason": "A piece of a sentence the page assembles around links (the age gate, the sign-in terms); alone it has no sense to compare with the English piece. The assembled sentence is listed for a native reader (HUMAN-REVIEW item 7)."
-  },
-  {
-   "lang": "hi",
    "key": "auth.passkeysHeading",
    "text": "पासकी",
    "reason": "पासकी is Android's Hindi for passkey, singular and plural alike (glossary)."
@@ -840,18 +828,6 @@
    "key": "verdict.who.split",
    "text": "बराबर",
    "reason": "बराबर (equal, a tie) is what a split criterion is."
-  },
-  {
-   "lang": "id",
-   "key": "age.agreeAfter",
-   "text": " kami.",
-   "reason": "A piece of a sentence the page assembles around links (the age gate, the sign-in terms); alone it has no sense to compare with the English piece. The assembled sentence is listed for a native reader (HUMAN-REVIEW item 7)."
-  },
-  {
-   "lang": "id",
-   "key": "auth.legalAfter",
-   "text": " kami.",
-   "reason": "A piece of a sentence the page assembles around links (the age gate, the sign-in terms); alone it has no sense to compare with the English piece. The assembled sentence is listed for a native reader (HUMAN-REVIEW item 7)."
   },
   {
    "lang": "id",
@@ -1209,18 +1185,6 @@
   },
   {
    "lang": "ja",
-   "key": "age.agreeAfter",
-   "text": "に同意したものとみなされます。",
-   "reason": "A piece of a sentence the page assembles around links (the age gate, the sign-in terms); alone it has no sense to compare with the English piece. The assembled sentence is listed for a native reader (HUMAN-REVIEW item 7)."
-  },
-  {
-   "lang": "ja",
-   "key": "auth.legalAfter",
-   "text": "に同意したものとみなされます。",
-   "reason": "A piece of a sentence the page assembles around links (the age gate, the sign-in terms); alone it has no sense to compare with the English piece. The assembled sentence is listed for a native reader (HUMAN-REVIEW item 7)."
-  },
-  {
-   "lang": "ja",
    "key": "auth.passkeysHeading",
    "text": "パスキー",
    "reason": "パスキー is Android's and Apple's Japanese for passkey (glossary)."
@@ -1428,30 +1392,6 @@
    "key": "verdict.missed",
    "text": "不成立",
    "reason": "不成立 (did not come off) is a correct label for a missed bonus."
-  },
-  {
-   "lang": "ko",
-   "key": "age.agreeAfter",
-   "text": "에 동의하는 것으로 봅니다.",
-   "reason": "A piece of a sentence the page assembles around links (the age gate, the sign-in terms); alone it has no sense to compare with the English piece. The assembled sentence is listed for a native reader (HUMAN-REVIEW item 7)."
-  },
-  {
-   "lang": "ko",
-   "key": "age.agreeBefore",
-   "text": "계속하면",
-   "reason": "A piece of a sentence the page assembles around links (the age gate, the sign-in terms); alone it has no sense to compare with the English piece. The assembled sentence is listed for a native reader (HUMAN-REVIEW item 7)."
-  },
-  {
-   "lang": "ko",
-   "key": "auth.legalAfter",
-   "text": "에 동의하는 것으로 봅니다.",
-   "reason": "A piece of a sentence the page assembles around links (the age gate, the sign-in terms); alone it has no sense to compare with the English piece. The assembled sentence is listed for a native reader (HUMAN-REVIEW item 7)."
-  },
-  {
-   "lang": "ko",
-   "key": "auth.legalBefore",
-   "text": "로그인하면 ",
-   "reason": "A piece of a sentence the page assembles around links (the age gate, the sign-in terms); alone it has no sense to compare with the English piece. The assembled sentence is listed for a native reader (HUMAN-REVIEW item 7)."
   },
   {
    "lang": "ko",
@@ -2175,18 +2115,6 @@
   },
   {
    "lang": "th",
-   "key": "age.agreeAfter",
-   "text": " ของเรา",
-   "reason": "A piece of a sentence the page assembles around links (the age gate, the sign-in terms); alone it has no sense to compare with the English piece. The assembled sentence is listed for a native reader (HUMAN-REVIEW item 7)."
-  },
-  {
-   "lang": "th",
-   "key": "auth.legalAfter",
-   "text": "ของเรา",
-   "reason": "A piece of a sentence the page assembles around links (the age gate, the sign-in terms); alone it has no sense to compare with the English piece. The assembled sentence is listed for a native reader (HUMAN-REVIEW item 7)."
-  },
-  {
-   "lang": "th",
    "key": "auth.passkeyRemoved",
    "text": "นำพาสคีย์ออกแล้ว",
    "reason": "'นำพาสคีย์ออกแล้ว' (the passkey has been removed); the back-translation says it."
@@ -2538,18 +2466,6 @@
    "key": "verdict.roundYours",
    "text": "ยกนี้เป็นของคุณ",
    "reason": "'ยกนี้เป็นของคุณ' (this round is yours); ยก is the glossary's round."
-  },
-  {
-   "lang": "vi",
-   "key": "age.agreeAfter",
-   "text": " của chúng tôi.",
-   "reason": "A piece of a sentence the page assembles around links (the age gate, the sign-in terms); alone it has no sense to compare with the English piece. The assembled sentence is listed for a native reader (HUMAN-REVIEW item 7)."
-  },
-  {
-   "lang": "vi",
-   "key": "auth.legalAfter",
-   "text": " của chúng tôi.",
-   "reason": "A piece of a sentence the page assembles around links (the age gate, the sign-in terms); alone it has no sense to compare with the English piece. The assembled sentence is listed for a native reader (HUMAN-REVIEW item 7)."
   },
   {
    "lang": "vi",

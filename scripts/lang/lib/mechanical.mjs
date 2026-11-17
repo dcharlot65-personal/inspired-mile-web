@@ -129,6 +129,32 @@ export function checkLanguage(lang, strings, english, cldr, helpers, opts = {}) 
       if ((cp === 0x200c || cp === 0x200d) && lang !== 'hi') bad(key, 'invisible-char', `U+${cp.toString(16).toUpperCase()}`);
       if (cp < 0x20 || (cp >= 0x7f && cp < 0xa0)) bad(key, 'control-char', `U+${cp.toString(16).toUpperCase().padStart(4, '0')}`);
     }
+    // --- hedges: the reader left to pick the form ---
+    // "querido(a)", "zalogowany(-a)", "line(s)", "bienvenido/a": a form the text should choose, never a
+    // hedge (CLAUDE.md, Languages). Korean writes a particle's two forms, 을(를), where the word before it
+    // is a value: msg.ts picks the form at run time when the value's last sound is knowable, so a hedge
+    // right after a placeholder is allowed, and one after fixed text, whose last sound is known, is not.
+    // (On 2026-11-16 nothing named a planted "querido(a)", and ko age.consentAfter began with 을(를)
+    // after the fixed 개인정보 처리방침.)
+    for (const m of value.matchAll(/\p{L}\((-?\p{L}{1,4})\)|\(으\)로/gu)) {
+      const ko = lang === 'ko' && /^(?:.?\((?:가|이|를|을|는|은|와|과)\)|\(으\)로)$/u.test(m[0]);
+      if (!ko) {
+        if (lang !== 'ko') bad(key, 'hedge', m[0]);
+        continue;
+      }
+      // What comes before the hedge: a placeholder (perhaps inside quotation marks), or fixed text?
+      if (!/\}[’”」』'")\]]*$/u.test(value.slice(0, m.index))) bad(key, 'ko-particle-hedge', `${m[0]} after fixed text: write the form its last sound takes`);
+    }
+    // A slash between two forms of one word: an ending (querido/a, zalogowany/-a) or the same stem
+    // with another ending (Hindi करता/करती, "I confirm" said by a man / by a woman).
+    for (const m of value.matchAll(/(\p{L}[\p{L}\p{M}]*)\/(-?[\p{L}\p{M}]+)/gu)) {
+      const a = m[1];
+      const b = m[2].replace(/^-/, '');
+      let common = 0;
+      while (common < Math.min(a.length, b.length) && a[common] === b[common]) common++;
+      if (/^(?:a|o|as|os|e|es|in|ka|а|ая|ась|ла)$/u.test(b) || (common >= 2 && a.length - common <= 3 && b.length - common <= 3)) bad(key, 'hedge', m[0]);
+    }
+
     // A word that mixes Latin with Cyrillic or Greek letters is a look-alike typo.
     for (const w of whole.split(/[^\p{L}]+/u)) {
       if (/\p{Script=Latin}/u.test(w) && /[\p{Script=Cyrillic}\p{Script=Greek}]/u.test(w)) bad(key, 'mixed-script-word', w);

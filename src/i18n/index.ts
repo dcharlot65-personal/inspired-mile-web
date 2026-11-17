@@ -149,8 +149,39 @@ export async function loadMessages(l: Locale): Promise<Messages> {
   return loaded;
 }
 
+/**
+ * A sentence with elements inside it, such as "I agree to the {terms} and {privacy}.": the template
+ * split at its {slot} placeholders, [text, slot, text, …]. One template per sentence lets each
+ * language put the links where its word order puts them and space them as it writes: built from
+ * pieces around the links, the markup's own white space showed between the links and the Japanese,
+ * Chinese and Thai around them, and before a Korean particle (개인정보 처리방침 을).
+ */
+export function slotPieces(template: string): ({ text: string } | { slot: string })[] {
+  const out: ({ text: string } | { slot: string })[] = [];
+  for (const piece of template.split(/(\{[a-zA-Z_]+\})/)) {
+    const m = piece.match(/^\{([a-zA-Z_]+)\}$/);
+    if (m) out.push({ slot: m[1] });
+    else if (piece) out.push({ text: piece });
+  }
+  return out;
+}
+
+/**
+ * Fill an element with a sentence whose {slot}s are its own children marked data-i18n-slot="slot"
+ * (they are moved, not rebuilt, so their links and listeners stay). A slot the template names that
+ * the element lacks is left as written, so a test sees it.
+ */
+export function fillSlots(el: HTMLElement, template: string): void {
+  const slots = new Map<string, HTMLElement>();
+  el.querySelectorAll<HTMLElement>('[data-i18n-slot]').forEach((s) => slots.set(s.dataset.i18nSlot!, s));
+  el.replaceChildren(...slotPieces(template).map((p) => ('slot' in p ? (slots.get(p.slot) ?? document.createTextNode(`{${p.slot}}`)) : document.createTextNode(p.text))));
+}
+
 /** Fill every element under `root` that carries a data-i18n key. */
 export function applyTranslations(root: ParentNode = document): void {
+  root.querySelectorAll<HTMLElement>('[data-i18n-slots]').forEach((el) => {
+    fillSlots(el, t(el.dataset.i18nSlots!));
+  });
   root.querySelectorAll<HTMLElement>('[data-i18n]').forEach((el) => {
     el.textContent = t(el.dataset.i18n!);
   });

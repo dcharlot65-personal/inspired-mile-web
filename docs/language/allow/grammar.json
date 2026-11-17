@@ -3,18 +3,6 @@
  "entries": [
   {
    "lang": "ar",
-   "rule": "ARABIC_SC_WHITESPACE",
-   "id": "ui:age.agreeAfter",
-   "reason": "A piece of a sentence the page assembles around links (the age gate's consent and the sign-in terms: '… the Terms of Service and the Privacy Policy.'); it starts in lower case, or is the closing full stop, because the sentence continues across the link."
-  },
-  {
-   "lang": "ar",
-   "rule": "ARABIC_SC_WHITESPACE",
-   "id": "ui:auth.legalAfter",
-   "reason": "A piece of a sentence the page assembles around links (the age gate's consent and the sign-in terms: '… the Terms of Service and the Privacy Policy.'); it starts in lower case, or is the closing full stop, because the sentence continues across the link."
-  },
-  {
-   "lang": "ar",
    "rule": "ARABIC_WORD_REPEAT_RULE",
    "id": "*",
    "at": "ضاع ضاع",
@@ -326,18 +314,6 @@
   },
   {
    "lang": "de",
-   "rule": "COMMA_PARENTHESIS_WHITESPACE",
-   "id": "ui:age.agreeAfter",
-   "reason": "A piece of a sentence the page assembles around links (the age gate's consent and the sign-in terms: '… the Terms of Service and the Privacy Policy.'); it starts in lower case, or is the closing full stop, because the sentence continues across the link."
-  },
-  {
-   "lang": "de",
-   "rule": "COMMA_PARENTHESIS_WHITESPACE",
-   "id": "ui:auth.legalAfter",
-   "reason": "A piece of a sentence the page assembles around links (the age gate's consent and the sign-in terms: '… the Terms of Service and the Privacy Policy.'); it starts in lower case, or is the closing full stop, because the sentence continues across the link."
-  },
-  {
-   "lang": "de",
    "rule": "DE_AGREEMENT",
    "id": "pack:written.quatrain-abab.0.1",
    "reason": "Verse word order: 'als deiner Lärm nur war' = 'when yours was only noise' (deiner is the pronoun, Lärm the predicate); the rule read 'deiner Lärm' as article and noun."
@@ -459,30 +435,6 @@
   {
    "lang": "de",
    "rule": "UPPERCASE_SENTENCE_START",
-   "id": "ui:age.agreeAnd",
-   "reason": "A piece of a sentence the page assembles around links (the age gate's consent and the sign-in terms: '… the Terms of Service and the Privacy Policy.'); it starts in lower case, or is the closing full stop, because the sentence continues across the link."
-  },
-  {
-   "lang": "de",
-   "rule": "UPPERCASE_SENTENCE_START",
-   "id": "ui:age.consentAfter",
-   "reason": "A piece of a sentence the page assembles around links (the age gate's consent and the sign-in terms: '… the Terms of Service and the Privacy Policy.'); it starts in lower case, or is the closing full stop, because the sentence continues across the link."
-  },
-  {
-   "lang": "de",
-   "rule": "UPPERCASE_SENTENCE_START",
-   "id": "ui:age.consentAnd",
-   "reason": "A piece of a sentence the page assembles around links (the age gate's consent and the sign-in terms: '… the Terms of Service and the Privacy Policy.'); it starts in lower case, or is the closing full stop, because the sentence continues across the link."
-  },
-  {
-   "lang": "de",
-   "rule": "UPPERCASE_SENTENCE_START",
-   "id": "ui:auth.legalAnd",
-   "reason": "A piece of a sentence the page assembles around links (the age gate's consent and the sign-in terms: '… the Terms of Service and the Privacy Policy.'); it starts in lower case, or is the closing full stop, because the sentence continues across the link."
-  },
-  {
-   "lang": "de",
-   "rule": "UPPERCASE_SENTENCE_START",
    "id": "ui:live.powerUsed",
    "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
   },
@@ -533,18 +485,6 @@
    "rule": "COMMA_COMPOUND_SENTENCE_2",
    "id": "ui:form.haiku.brief.kana",
    "reason": "Here 'so' means 'so that' (purpose), which takes no comma; the rule reads it as joining two independent clauses."
-  },
-  {
-   "lang": "en",
-   "rule": "COMMA_PARENTHESIS_WHITESPACE",
-   "id": "ui:age.agreeAfter",
-   "reason": "A piece of a sentence the page assembles around links (the age gate's consent and the sign-in terms: '… the Terms of Service and the Privacy Policy.'); it starts in lower case, or is the closing full stop, because the sentence continues across the link."
-  },
-  {
-   "lang": "en",
-   "rule": "COMMA_PARENTHESIS_WHITESPACE",
-   "id": "ui:auth.legalAfter",
-   "reason": "A piece of a sentence the page assembles around links (the age gate's consent and the sign-in terms: '… the Terms of Service and the Privacy Policy.'); it starts in lower case, or is the closing full stop, because the sentence continues across the link."
   },
   {
    "lang": "en",
@@ -600,18 +540,6 @@
    "rule": "PUNCTUATION_PARAGRAPH_END",
    "id": "pack:*",
    "reason": "A pack string read on its own: a line of the written opponent's verse (a verse line is not a sentence and has no full stop or sentence capital of its own) or one word of a word list (acrostic and power words, shown in capitals or matched as typed)."
-  },
-  {
-   "lang": "en",
-   "rule": "UPPERCASE_SENTENCE_START",
-   "id": "ui:age.consentAfter",
-   "reason": "A piece of a sentence the page assembles around links (the age gate's consent and the sign-in terms: '… the Terms of Service and the Privacy Policy.'); it starts in lower case, or is the closing full stop, because the sentence continues across the link."
-  },
-  {
-   "lang": "en",
-   "rule": "UPPERCASE_SENTENCE_START",
-   "id": "ui:auth.legalAnd",
-   "reason": "A piece of a sentence the page assembles around links (the age gate's consent and the sign-in terms: '… the Terms of Service and the Privacy Policy.'); it starts in lower case, or is the closing full stop, because the sentence continues across the link."
   },
   {
    "lang": "en",
@@ -675,18 +603,6 @@
   },
   {
    "lang": "es",
-   "rule": "COMMA_PARENTHESIS_WHITESPACE",
-   "id": "ui:age.agreeAfter",
-   "reason": "A piece of a sentence the page assembles around links (the age gate's consent and the sign-in terms: '… the Terms of Service and the Privacy Policy.'); it starts in lower case, or is the closing full stop, because the sentence continues across the link."
-  },
-  {
-   "lang": "es",
-   "rule": "COMMA_PARENTHESIS_WHITESPACE",
-   "id": "ui:auth.legalAfter",
-   "reason": "A piece of a sentence the page assembles around links (the age gate's consent and the sign-in terms: '… the Terms of Service and the Privacy Policy.'); it starts in lower case, or is the closing full stop, because the sentence continues across the link."
-  },
-  {
-   "lang": "es",
    "rule": "EL_TILDE",
    "id": "ui:theatre.titleA",
    "reason": "The article of the two-part heading 'El' + 'Teatro' (theatre.titleA, theatre.titleB), not the pronoun él."
@@ -746,30 +662,6 @@
    "id": "ui:nav.vr",
    "at": "VR",
    "reason": "The acronym VR as headset makers brand it, kept as in the English menu (the Spanish acronym would be RV): a product label, not prose."
-  },
-  {
-   "lang": "es",
-   "rule": "UPPERCASE_SENTENCE_START",
-   "id": "ui:age.agreeAnd",
-   "reason": "A piece of a sentence the page assembles around links (the age gate's consent and the sign-in terms: '… the Terms of Service and the Privacy Policy.'); it starts in lower case, or is the closing full stop, because the sentence continues across the link."
-  },
-  {
-   "lang": "es",
-   "rule": "UPPERCASE_SENTENCE_START",
-   "id": "ui:age.consentAfter",
-   "reason": "A piece of a sentence the page assembles around links (the age gate's consent and the sign-in terms: '… the Terms of Service and the Privacy Policy.'); it starts in lower case, or is the closing full stop, because the sentence continues across the link."
-  },
-  {
-   "lang": "es",
-   "rule": "UPPERCASE_SENTENCE_START",
-   "id": "ui:age.consentAnd",
-   "reason": "A piece of a sentence the page assembles around links (the age gate's consent and the sign-in terms: '… the Terms of Service and the Privacy Policy.'); it starts in lower case, or is the closing full stop, because the sentence continues across the link."
-  },
-  {
-   "lang": "es",
-   "rule": "UPPERCASE_SENTENCE_START",
-   "id": "ui:auth.legalAnd",
-   "reason": "A piece of a sentence the page assembles around links (the age gate's consent and the sign-in terms: '… the Terms of Service and the Privacy Policy.'); it starts in lower case, or is the closing full stop, because the sentence continues across the link."
   },
   {
    "lang": "es",
@@ -845,18 +737,6 @@
   },
   {
    "lang": "fr",
-   "rule": "COMMA_PARENTHESIS_WHITESPACE",
-   "id": "ui:age.agreeAfter",
-   "reason": "A piece of a sentence the page assembles around links (the age gate's consent and the sign-in terms: '… the Terms of Service and the Privacy Policy.'); it starts in lower case, or is the closing full stop, because the sentence continues across the link."
-  },
-  {
-   "lang": "fr",
-   "rule": "COMMA_PARENTHESIS_WHITESPACE",
-   "id": "ui:auth.legalAfter",
-   "reason": "A piece of a sentence the page assembles around links (the age gate's consent and the sign-in terms: '… the Terms of Service and the Privacy Policy.'); it starts in lower case, or is the closing full stop, because the sentence continues across the link."
-  },
-  {
-   "lang": "fr",
    "rule": "ETRE_VPPA_OU_ADJ",
    "id": "ui:brain.kept",
    "at": "envoyé",
@@ -895,12 +775,6 @@
    "id": "*",
    "at": "bát",
    "reason": "A word of a verse form's or device's name, taken from a published source (docs/language/glossary.json, 'names'), which the speller does not know."
-  },
-  {
-   "lang": "fr",
-   "rule": "LA_LA",
-   "id": "ui:age.consentAnd",
-   "reason": "'la' is the article before the linked title ('… et de la Politique de confidentialité'), in a piece of the sentence the page assembles around links."
   },
   {
    "lang": "fr",
@@ -968,30 +842,6 @@
   {
    "lang": "fr",
    "rule": "UPPERCASE_SENTENCE_START",
-   "id": "ui:age.agreeAnd",
-   "reason": "A piece of a sentence the page assembles around links (the age gate's consent and the sign-in terms: '… the Terms of Service and the Privacy Policy.'); it starts in lower case, or is the closing full stop, because the sentence continues across the link."
-  },
-  {
-   "lang": "fr",
-   "rule": "UPPERCASE_SENTENCE_START",
-   "id": "ui:age.consentAfter",
-   "reason": "A piece of a sentence the page assembles around links (the age gate's consent and the sign-in terms: '… the Terms of Service and the Privacy Policy.'); it starts in lower case, or is the closing full stop, because the sentence continues across the link."
-  },
-  {
-   "lang": "fr",
-   "rule": "UPPERCASE_SENTENCE_START",
-   "id": "ui:age.consentAnd",
-   "reason": "A piece of a sentence the page assembles around links (the age gate's consent and the sign-in terms: '… the Terms of Service and the Privacy Policy.'); it starts in lower case, or is the closing full stop, because the sentence continues across the link."
-  },
-  {
-   "lang": "fr",
-   "rule": "UPPERCASE_SENTENCE_START",
-   "id": "ui:auth.legalAnd",
-   "reason": "A piece of a sentence the page assembles around links (the age gate's consent and the sign-in terms: '… the Terms of Service and the Privacy Policy.'); it starts in lower case, or is the closing full stop, because the sentence continues across the link."
-  },
-  {
-   "lang": "fr",
-   "rule": "UPPERCASE_SENTENCE_START",
    "id": "ui:criterion.wordplay",
    "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
   },
@@ -1048,18 +898,6 @@
    "rule": "UPPERCASE_SENTENCE_START",
    "id": "ui:verdict.notUsed",
    "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
-  },
-  {
-   "lang": "it",
-   "rule": "COMMA_PARENTHESIS_WHITESPACE",
-   "id": "ui:age.agreeAfter",
-   "reason": "A piece of a sentence the page assembles around links (the age gate's consent and the sign-in terms: '… the Terms of Service and the Privacy Policy.'); it starts in lower case, or is the closing full stop, because the sentence continues across the link."
-  },
-  {
-   "lang": "it",
-   "rule": "COMMA_PARENTHESIS_WHITESPACE",
-   "id": "ui:auth.legalAfter",
-   "reason": "A piece of a sentence the page assembles around links (the age gate's consent and the sign-in terms: '… the Terms of Service and the Privacy Policy.'); it starts in lower case, or is the closing full stop, because the sentence continues across the link."
   },
   {
    "lang": "it",
@@ -1220,30 +1058,6 @@
   {
    "lang": "it",
    "rule": "UPPERCASE_SENTENCE_START",
-   "id": "ui:age.agreeAnd",
-   "reason": "A piece of a sentence the page assembles around links (the age gate's consent and the sign-in terms: '… the Terms of Service and the Privacy Policy.'); it starts in lower case, or is the closing full stop, because the sentence continues across the link."
-  },
-  {
-   "lang": "it",
-   "rule": "UPPERCASE_SENTENCE_START",
-   "id": "ui:age.consentAfter",
-   "reason": "A piece of a sentence the page assembles around links (the age gate's consent and the sign-in terms: '… the Terms of Service and the Privacy Policy.'); it starts in lower case, or is the closing full stop, because the sentence continues across the link."
-  },
-  {
-   "lang": "it",
-   "rule": "UPPERCASE_SENTENCE_START",
-   "id": "ui:age.consentAnd",
-   "reason": "A piece of a sentence the page assembles around links (the age gate's consent and the sign-in terms: '… the Terms of Service and the Privacy Policy.'); it starts in lower case, or is the closing full stop, because the sentence continues across the link."
-  },
-  {
-   "lang": "it",
-   "rule": "UPPERCASE_SENTENCE_START",
-   "id": "ui:auth.legalAnd",
-   "reason": "A piece of a sentence the page assembles around links (the age gate's consent and the sign-in terms: '… the Terms of Service and the Privacy Policy.'); it starts in lower case, or is the closing full stop, because the sentence continues across the link."
-  },
-  {
-   "lang": "it",
-   "rule": "UPPERCASE_SENTENCE_START",
    "id": "ui:criterion.wordplay",
    "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
   },
@@ -1327,18 +1141,6 @@
   },
   {
    "lang": "pl",
-   "rule": "COMMA_PARENTHESIS_WHITESPACE",
-   "id": "ui:age.agreeAfter",
-   "reason": "A piece of a sentence the page assembles around links (the age gate's consent and the sign-in terms: '… the Terms of Service and the Privacy Policy.'); it starts in lower case, or is the closing full stop, because the sentence continues across the link."
-  },
-  {
-   "lang": "pl",
-   "rule": "COMMA_PARENTHESIS_WHITESPACE",
-   "id": "ui:auth.legalAfter",
-   "reason": "A piece of a sentence the page assembles around links (the age gate's consent and the sign-in terms: '… the Terms of Service and the Privacy Policy.'); it starts in lower case, or is the closing full stop, because the sentence continues across the link."
-  },
-  {
-   "lang": "pl",
    "rule": "MORFOLOGIK_RULE_PL_PL",
    "id": "*",
    "at": "Inspired",
@@ -1395,18 +1197,6 @@
     "WebGPU",
     "visionOS"
    ]
-  },
-  {
-   "lang": "pl",
-   "rule": "UPPERCASE_SENTENCE_START",
-   "id": "ui:age.consentAfter",
-   "reason": "A piece of a sentence the page assembles around links (the age gate's consent and the sign-in terms: '… the Terms of Service and the Privacy Policy.'); it starts in lower case, or is the closing full stop, because the sentence continues across the link."
-  },
-  {
-   "lang": "pl",
-   "rule": "UPPERCASE_SENTENCE_START",
-   "id": "ui:auth.legalAnd",
-   "reason": "A piece of a sentence the page assembles around links (the age gate's consent and the sign-in terms: '… the Terms of Service and the Privacy Policy.'); it starts in lower case, or is the closing full stop, because the sentence continues across the link."
   },
   {
    "lang": "pl",
@@ -1479,18 +1269,6 @@
    "rule": "COLOCACAO_PRONOMINAL_COM_ATRATOR_SIMPLES",
    "id": "ui:live.signature",
    "reason": "'Sem citá-la': in Brazilian Portuguese an infinitive after a preposition takes the pronoun after it; the rule's 'sem a citar' is the European order."
-  },
-  {
-   "lang": "pt",
-   "rule": "COMMA_PARENTHESIS_WHITESPACE",
-   "id": "ui:age.agreeAfter",
-   "reason": "A piece of a sentence the page assembles around links (the age gate's consent and the sign-in terms: '… the Terms of Service and the Privacy Policy.'); it starts in lower case, or is the closing full stop, because the sentence continues across the link."
-  },
-  {
-   "lang": "pt",
-   "rule": "COMMA_PARENTHESIS_WHITESPACE",
-   "id": "ui:auth.legalAfter",
-   "reason": "A piece of a sentence the page assembles around links (the age gate's consent and the sign-in terms: '… the Terms of Service and the Privacy Policy.'); it starts in lower case, or is the closing full stop, because the sentence continues across the link."
   },
   {
    "lang": "pt",
@@ -1639,30 +1417,6 @@
   {
    "lang": "pt",
    "rule": "UPPERCASE_SENTENCE_START",
-   "id": "ui:age.agreeAnd",
-   "reason": "A piece of a sentence the page assembles around links (the age gate's consent and the sign-in terms: '… the Terms of Service and the Privacy Policy.'); it starts in lower case, or is the closing full stop, because the sentence continues across the link."
-  },
-  {
-   "lang": "pt",
-   "rule": "UPPERCASE_SENTENCE_START",
-   "id": "ui:age.consentAfter",
-   "reason": "A piece of a sentence the page assembles around links (the age gate's consent and the sign-in terms: '… the Terms of Service and the Privacy Policy.'); it starts in lower case, or is the closing full stop, because the sentence continues across the link."
-  },
-  {
-   "lang": "pt",
-   "rule": "UPPERCASE_SENTENCE_START",
-   "id": "ui:age.consentAnd",
-   "reason": "A piece of a sentence the page assembles around links (the age gate's consent and the sign-in terms: '… the Terms of Service and the Privacy Policy.'); it starts in lower case, or is the closing full stop, because the sentence continues across the link."
-  },
-  {
-   "lang": "pt",
-   "rule": "UPPERCASE_SENTENCE_START",
-   "id": "ui:auth.legalAnd",
-   "reason": "A piece of a sentence the page assembles around links (the age gate's consent and the sign-in terms: '… the Terms of Service and the Privacy Policy.'); it starts in lower case, or is the closing full stop, because the sentence continues across the link."
-  },
-  {
-   "lang": "pt",
-   "rule": "UPPERCASE_SENTENCE_START",
    "id": "ui:criterion.wordplay",
    "reason": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
   },
@@ -1725,18 +1479,6 @@
    "rule": "AllCaps",
    "id": "ui:end.cardEarned",
    "reason": "A banner in capitals, as its English is (CARD EARNED)."
-  },
-  {
-   "lang": "ru",
-   "rule": "COMMA_PARENTHESIS_WHITESPACE",
-   "id": "ui:age.agreeAfter",
-   "reason": "A piece of a sentence the page assembles around links (the age gate's consent and the sign-in terms: '… the Terms of Service and the Privacy Policy.'); it starts in lower case, or is the closing full stop, because the sentence continues across the link."
-  },
-  {
-   "lang": "ru",
-   "rule": "COMMA_PARENTHESIS_WHITESPACE",
-   "id": "ui:auth.legalAfter",
-   "reason": "A piece of a sentence the page assembles around links (the age gate's consent and the sign-in terms: '… the Terms of Service and the Privacy Policy.'); it starts in lower case, or is the closing full stop, because the sentence continues across the link."
   },
   {
    "lang": "ru",
@@ -1812,18 +1554,6 @@
    "at": [
     "она."
    ]
-  },
-  {
-   "lang": "ru",
-   "rule": "UPPERCASE_SENTENCE_START",
-   "id": "ui:age.consentAfter",
-   "reason": "A piece of a sentence the page assembles around links (the age gate's consent and the sign-in terms: '… the Terms of Service and the Privacy Policy.'); it starts in lower case, or is the closing full stop, because the sentence continues across the link."
-  },
-  {
-   "lang": "ru",
-   "rule": "UPPERCASE_SENTENCE_START",
-   "id": "ui:auth.legalAnd",
-   "reason": "A piece of a sentence the page assembles around links (the age gate's consent and the sign-in terms: '… the Terms of Service and the Privacy Policy.'); it starts in lower case, or is the closing full stop, because the sentence continues across the link."
   },
   {
    "lang": "ru",

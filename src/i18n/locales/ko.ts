@@ -102,13 +102,13 @@ const ko: Record<string, string> = {
 
   // 가문
   'house.montague.why': '머큐시오의 재빠른 혀는 행 한가운데서 운을 맞춰요.',
-  'house.verona-court.why': '궁정은 당신에게 던져진 말 한 마디 한 마디를 저울질해요.',
+  'house.verona-court.why': '궁정은 내게 던져진 말 한 마디 한 마디를 저울질해요.',
   'house.the-tempest.why': '폭풍은 터질 때까지 커져요.',
   'house.legendary.why': 'Sonnet Man은 한 가지 운을 끝까지 타고 가요.',
   'house.lake-district.why': '낭만파 시인들은 모든 행을 재어 썼어요.',
   'house.gothic-circle.why': '이야기는 시작한 곳에서 끝나요.',
   'house.olympus.why': '신들은 천둥 같은 말로 이야기해요.',
-  'house.underworld.why': '죽은 자들은 당신이 한 말을 모두 기억해요.',
+  'house.underworld.why': '죽은 자들은 내가 한 말을 모두 기억해요.',
 
   // --- 내비게이션 ---
   'nav.home': '홈',
@@ -153,13 +153,9 @@ const ko: Record<string, string> = {
   'age.minorBody': 'Inspired Mile은 만 13세 이상부터 이용할 수 있어요. 나이 조건이 되면 다시 찾아와 주세요.',
   'age.teenTitle': '보호자 동의가 필요해요',
   'age.teenBody': '만 18세 미만이므로 Inspired Mile을 이용하려면 부모님이나 보호자의 동의가 필요해요.',
-  'age.consentBefore': '부모님 또는 법정 보호자가',
-  'age.consentAnd': '및',
-  'age.consentAfter': '을(를) 읽었으며 제가 Inspired Mile을 이용하는 데 동의했음을 확인합니다.',
+  'age.consent': '부모님 또는 법정 보호자가 {terms} 및 {privacy}을 읽었으며 제가 Inspired Mile을 이용하는 데 동의했음을 확인합니다.',
   'age.teenContinue': '동의하고 계속',
-  'age.agreeBefore': '계속하면',
-  'age.agreeAnd': '및',
-  'age.agreeAfter': '에 동의하는 것으로 봅니다.',
+  'age.agree': '계속하면 {terms} 및 {privacy}에 동의하는 것으로 봅니다.',
 
   // --- 알림 ---
   'migrate.title': '데이터를 동기화할까요?',
@@ -189,7 +185,7 @@ const ko: Record<string, string> = {
   'auth.createWarningNoEmail': '패스키를 잃어버리면 다시 들여보내 드릴 방법이 없어요. 만든 뒤에 두 번째 패스키를 추가해 두면 다시 들어올 수 있어요.',
   'auth.createConfirm': '내 계정 만들기',
   'auth.nudgeHeading': '계정이 준비됐어요',
-  'auth.nudgeName': '당신은 {name} 님이에요.',
+  'auth.nudgeName': '{name} 님으로 가입했어요.',
   'auth.nudgeBody': '지금은 패스키 하나가 이 계정으로 들어오는 유일한 길이에요. 그것을 잃으면 계정도 잃어요. 두 번째 패스키나 이메일을 추가해 두면 다시 들어올 수 있어요.',
   'auth.nudgeBodyNoEmail': '지금은 패스키 하나가 이 계정으로 들어오는 유일한 길이에요. 그것을 잃으면 계정도 잃어요. 두 번째 패스키를 추가해 두면 다시 들어올 수 있어요.',
   'auth.nudgePasskey': '두 번째 패스키 추가',
@@ -219,11 +215,9 @@ const ko: Record<string, string> = {
   'auth.codeBack': '다른 이메일 쓰기',
   'auth.codeResend': '새 코드 보내기',
   'auth.codeResent': '새 코드를 보냈어요. 이전 코드는 더 이상 쓸 수 없어요.',
-  'auth.legalBefore': '로그인하면 ',
+  'auth.legal': '로그인하면 {terms} 및 {privacy}에 동의하는 것으로 봅니다.',
   'auth.legalTerms': '서비스 약관',
-  'auth.legalAnd': ' 및 ',
   'auth.legalPrivacy': '개인정보 처리방침',
-  'auth.legalAfter': '에 동의하는 것으로 봅니다.',
   'auth.offerHeading': '이 기기에 패스키 추가',
   'auth.offerBody': '다음부터는 지문, 얼굴 또는 화면 잠금으로 로그인하세요. 코드도, 이메일을 기다릴 일도 없어요.',
   'auth.offerAdd': '패스키 추가',
@@ -371,7 +365,7 @@ const ko: Record<string, string> = {
 
   // --- 결투: 판정과 결과 ---
   'verdict.yourAnswer': '내 답',
-  'verdict.roundYours': '이번 라운드는 내 것이에요.',
+  'verdict.roundYours': '이번 라운드를 이겼어요.',
   'verdict.roundTheirs': '{card}이(가) 이번 라운드를 가져가요.',
   'verdict.form': '형식',
   'verdict.powerWords': '힘의 낱말',
