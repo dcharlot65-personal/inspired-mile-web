@@ -1,4 +1,5 @@
 import { test, expect, type Browser, type BrowserContext, type Page } from '@playwright/test';
+import http from 'node:http';
 import { E2E } from './e2e-env';
 import { auditRound, type MatchStart, type RoundView, type ServerEvent } from '../src/lib/multiplayer-client';
 import { onlineCraft, previewCraft, type OnlineRoundPlan, type OnlineSide } from '../src/lib/multiplayer-rules';
@@ -183,6 +184,61 @@ const raw = {
     return found[count - 1] as Extract<ServerEvent, { type: T }>;
   },
 };
+
+/** The session cookie of a player's browser, to talk to the API as that player from here. */
+async function cookieOf(player: Player): Promise<string> {
+  const cookie = (await player.context.cookies()).find((c) => c.name === 'im_token');
+  expect(cookie, 'the player is signed in').toBeTruthy();
+  return `im_token=${cookie!.value}`;
+}
+
+/**
+ * A quick-match request on a connection of its own, straight to the API (`via: 'api'`) or
+ * through the dev server's proxy (`'web'`), that can be dropped the way a closed tab or a lost
+ * network drops it.
+ */
+function waitInQueue(cookie: string, ip: string, via: 'api' | 'web') {
+  let answer = '';
+  const req = http.request({
+    host: via === 'api' ? '127.0.0.1' : 'localhost',
+    port: via === 'api' ? E2E.apiPort : E2E.webPort,
+    path: '/api/v1/multiplayer/queue',
+    method: 'POST',
+    headers: { Cookie: cookie, 'CF-Connecting-IP': ip, 'Content-Length': '0' },
+  });
+  req.on('response', (r) => {
+    let body = '';
+    r.on('data', (c) => { body += String(c); });
+    r.on('end', () => { answer = `${r.statusCode} ${body}`; });
+  });
+  req.on('error', () => { /* dropped on purpose */ });
+  req.end();
+  return { answer: () => answer, drop: () => req.destroy() };
+}
+
+/**
+ * Ask for a quick match straight from the API and give up after `ms`: the status, or 'still
+ * waiting'. A request given up also leaves the queue, as the page's Cancel does, so it never
+ * stands in the way of the next step of a test.
+ */
+async function askFor(cookie: string, ip: string, ms: number): Promise<string> {
+  const queue = `http://127.0.0.1:${E2E.apiPort}/api/v1/multiplayer/queue`;
+  const headers = { Cookie: cookie, 'CF-Connecting-IP': ip };
+  const stop = new AbortController();
+  const timer = setTimeout(() => stop.abort(), ms);
+  try {
+    const r = await fetch(queue, { method: 'POST', headers, signal: stop.signal });
+    return `${r.status} ${(await r.json()).status}`;
+  } catch {
+    await fetch(queue, { method: 'DELETE', headers });
+    return 'still waiting';
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+const roomsOf = async (cookie: string, ip: string) =>
+  (await fetch(`http://127.0.0.1:${E2E.apiPort}/api/v1/multiplayer/rooms`, { headers: { Cookie: cookie, 'CF-Connecting-IP': ip } })).json();
 
 test.describe('Online duel', () => {
   test('two signed-in players play a whole match; both see the same server scores, equal to the preview', async ({ browser }) => {
@@ -680,8 +736,11 @@ test.describe('Online duel', () => {
       await next(bob.page, 'match_start');
 
       // Ann signs out on every device. Her connection is still open; the first thing it sends
-      // after that is not played, and the server closes it.
+      // after that is not played, and the server closes it. (A connection takes a live answer as
+      // good for handlers.rs SESSION_FRESH_FOR, 1 s: what it sends within a second of its last
+      // check is not asked about again. Her last check was her join.)
       expect(await signOut(ann.page, true)).toBe(200);
+      await ann.page.waitForTimeout(1200);
       await send(ann.page, { type: 'submit_verse', round: 0, char_id: deck[0], text: verseFor(start.rounds[0]) });
       const bye = await next(ann.page, 'error');
       expect([bye.code, bye.message]).toEqual(['signed_out', expect.stringContaining('signed out')]);
@@ -700,6 +759,148 @@ test.describe('Online duel', () => {
       expect((await got(bob.page)).some((e) => e.type === 'match_complete'), 'closed by the check, not by the end of the match').toBe(false);
       // And a new connection is refused at the handshake.
       expect(await open(bob.page)).toBe(false);
+    } finally {
+      await ann.context.close();
+      await bob.context.close();
+    }
+  });
+
+  // The integration checker's blocker (probe P1, 2026-11-17): every request runs to its end
+  // (backend/src/request_task.rs), so a quick-match request whose client had gone kept its place
+  // in the queue for the whole wait, and the next player was paired with nobody.
+  test('a player whose quick-match request was dropped is not paired with the next player, straight or through the proxy', async ({ browser }) => {
+    test.setTimeout(150000);
+    const ann = await newPlayer(browser);
+    const bob = await newPlayer(browser);
+    try {
+      const [annCookie, bobCookie] = [await cookieOf(ann), await cookieOf(bob)];
+      const [annIp, bobIp] = [uniqueIp(), uniqueIp()];
+      for (const via of ['api', 'web'] as const) {
+        // Ann asks, waits, and her connection goes (a closed tab, a lost network).
+        const annWaits = waitInQueue(annCookie, annIp, via);
+        await new Promise((r) => setTimeout(r, 1500));
+        expect(annWaits.answer(), `Ann is waiting (${via})`).toBe('');
+        annWaits.drop();
+        await new Promise((r) => setTimeout(r, 1500));
+        // Bob asks: nobody is waiting.
+        expect(await askFor(bobCookie, bobIp, 6000), `Bob was paired with a dropped request (${via})`).toBe('still waiting');
+        expect(await roomsOf(annCookie, annIp), `no room was opened for Ann (${via})`).toEqual([]);
+        expect(await roomsOf(bobCookie, bobIp)).toEqual([]);
+      }
+      // A request that stays is paired (the test can see a pairing).
+      const annStays = waitInQueue(annCookie, annIp, 'web');
+      await new Promise((r) => setTimeout(r, 1500));
+      expect(await askFor(bobCookie, bobIp, 6000)).toBe('200 matched');
+      await expect.poll(() => annStays.answer(), { timeout: 5000 }).toMatch(/^200 .*"matched"/);
+    } finally {
+      await ann.context.close();
+      await bob.context.close();
+    }
+  });
+
+  test('leaving the page while waiting for a quick match leaves the queue', async ({ browser }) => {
+    test.setTimeout(150000);
+    const ann = await newPlayer(browser);
+    const bob = await newPlayer(browser);
+    try {
+      const bobCookie = await cookieOf(bob);
+      const bobIp = uniqueIp();
+      await ann.page.locator('#find-match-btn').click();
+      await expect(ann.page.locator('#queue-status')).toBeVisible();
+      await ann.page.waitForTimeout(1500);
+      // Ann goes to another page of the site.
+      await ann.page.goto('/about');
+      await ann.page.waitForTimeout(1500);
+      expect(await askFor(bobCookie, bobIp, 6000), 'Bob was paired with a page that had been left').toBe('still waiting');
+      expect(await (await ann.context.request.get('/api/v1/multiplayer/rooms')).json()).toEqual([]);
+      // Back on the page, Ann asks again and is paired with Bob (the test can see a pairing).
+      await ann.page.goto('/multiplayer');
+      await expect(ann.page.locator('#mp-signin-note')).toBeHidden();
+      await ann.page.locator('#find-match-btn').click();
+      await expect(ann.page.locator('#queue-status')).toBeVisible();
+      await ann.page.waitForTimeout(1500);
+      expect(await askFor(bobCookie, bobIp, 6000)).toBe('200 matched');
+      await expect(ann.page.locator('#mp-waiting')).toBeVisible({ timeout: 15000 });
+    } finally {
+      await ann.context.close();
+      await bob.context.close();
+    }
+  });
+
+  // The checker's concern: the session is checked when a quick-match request starts, and a
+  // player who then signs out (here or on every device) stayed matchable for the whole wait.
+  test('a player who signs out while waiting for a quick match is not paired with the next player', async ({ browser }) => {
+    test.setTimeout(150000);
+    const ann = await newPlayer(browser);
+    const bob = await newPlayer(browser);
+    const cy = await newPlayer(browser);
+    try {
+      const [annCookie, bobCookie, cyCookie] = [await cookieOf(ann), await cookieOf(bob), await cookieOf(cy)];
+      const [annIp, bobIp, cyIp] = [uniqueIp(), uniqueIp(), uniqueIp()];
+      const annWaits = waitInQueue(annCookie, annIp, 'api');
+      await new Promise((r) => setTimeout(r, 1500));
+      expect(annWaits.answer(), 'Ann is waiting').toBe('');
+      // Ann signs out on every device (from another device: her request is still open).
+      const out = await fetch(`http://127.0.0.1:${E2E.apiPort}/api/v1/auth/logout/all`, {
+        method: 'POST', headers: { Cookie: annCookie, 'CF-Connecting-IP': annIp, 'Content-Type': 'application/json' },
+      });
+      expect(out.status).toBe(200);
+      expect((await fetch(`http://127.0.0.1:${E2E.apiPort}/api/v1/multiplayer/rooms`, { headers: { Cookie: annCookie } })).status, 'Ann is signed out').toBe(401);
+      // Bob asks: the only player waiting is signed out.
+      expect(await askFor(bobCookie, bobIp, 6000), 'Bob was paired with a signed-out player').toBe('still waiting');
+      expect(await roomsOf(bobCookie, bobIp)).toEqual([]);
+      annWaits.drop();
+      // A player who is signed in is paired with him (the test can see a pairing).
+      const cyWaits = waitInQueue(cyCookie, cyIp, 'api');
+      await new Promise((r) => setTimeout(r, 1500));
+      expect(await askFor(bobCookie, bobIp, 6000)).toBe('200 matched');
+      await expect.poll(() => cyWaits.answer(), { timeout: 5000 }).toMatch(/^200 .*"matched"/);
+    } finally {
+      await ann.context.close();
+      await bob.context.close();
+      await cy.context.close();
+    }
+  });
+
+  // The page's side of a sign-out mid-match (multiplayer.astro, the 'signed_out' error): the
+  // duel ends on that page, the seat and the draft are let go, and nothing reconnects.
+  test('signing out elsewhere mid-match: the page says so, lets the seat and the draft go, and does not reconnect', async ({ browser }) => {
+    test.setTimeout(150000);
+    const ann = await newPlayer(browser);
+    const bob = await newPlayer(browser);
+    try {
+      await ann.page.locator('#create-private-btn').click();
+      await expect(ann.page.locator('#mp-invite-link')).toHaveValue(/room=/);
+      await bob.page.goto(await ann.page.locator('#mp-invite-link').inputValue());
+      await bob.page.locator('#mp-accept-btn').click();
+      await expect(ann.page.locator('#mp-round-label')).toHaveText('Round 1 of 3', { timeout: 20000 });
+      const start = (await waitForEvent(ann, 'match_start')) as MatchStart;
+      await ann.page.locator(`#mp-hand [data-char-id="${start.you.deck[0]}"]`).click();
+      await ann.page.locator('#mp-input').fill(verseFor(start.rounds[0]));
+      const stored = (key: string) => ann.page.evaluate((k) => sessionStorage.getItem(k), key);
+      expect(await stored('inspired-mile-mp-seat'), 'the tab holds its seat').not.toBeNull();
+      expect(await stored('inspired-mile-mp-draft'), 'and its draft').not.toBeNull();
+      let sockets = 0;
+      ann.page.on('websocket', (ws) => { if (ws.url().includes('/multiplayer/ws')) sockets += 1; });
+
+      // Ann signs out on every device, from another tab. The duel's page sends nothing: the
+      // server's own check (handlers.rs SESSION_CHECK_EVERY, 15 s) closes its connection.
+      const other = await ann.context.newPage();
+      await other.goto('/about');
+      expect(await other.evaluate(async () => (await fetch('/api/v1/auth/logout/all', { method: 'POST', credentials: 'include', headers: { 'Content-Type': 'application/json' } })).status)).toBe(200);
+      await other.close();
+
+      await expect(ann.page.locator('#mp-arena')).toHaveAttribute('data-closed', 'signed_out', { timeout: 30000 });
+      await expect(ann.page.locator('#mp-notice')).toBeVisible();
+      await expect(ann.page.locator('#mp-notice')).toContainText('You are signed out');
+      await expect(ann.page.locator('#mp-move-panel')).toBeHidden();
+      await expect(ann.page.locator('#mp-forfeit-btn')).toBeHidden();
+      expect(await stored('inspired-mile-mp-seat'), 'the seat is let go').toBeNull();
+      expect(await stored('inspired-mile-mp-draft'), 'the draft is let go').toBeNull();
+      // No new connection: signed_out is final for the client.
+      await ann.page.waitForTimeout(5000);
+      expect(sockets, 'the page tried to reconnect').toBe(0);
+      expect((await waitForEvent(bob, 'opponent_disconnected')).grace_seconds).toBeGreaterThan(0);
     } finally {
       await ann.context.close();
       await bob.context.close();
