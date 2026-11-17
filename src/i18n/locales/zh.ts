@@ -354,7 +354,7 @@ const zh: Record<string, string> = {
   'void.label': '不得分',
   'void.thin': '内容太少，算不上一首诗：需要更多不同的字词',
   'void.copied': '取自对方的诗：回应必须是你自己写的',
-  'live.judgeUnread': '评分模型不会读的诗行：{lines}。含有数字或评分用语（分数、评分、赢……）的诗行会被略去，这一回合便只按规则判定',
+  'live.judgeUnread': '评分模型不会读的诗行：{lines}。含有数字或评分用语（得分、评价、赢家……）的诗行会被略去，这一回合便只按规则判定',
   'signature.none': '这张牌没有签名台词',
   'signature.hint': '呼应其中之一：{words}',
   'signature.hintTwo': '呼应其中两个：{words}',

@@ -23,6 +23,7 @@ import { JUDGE_POOL, type JudgeSplit } from './duel';
 import { rulesFor } from './lang';
 import { rhymeEnds, rhymes } from './rhyme';
 import { CARD_CATALOG } from '../cards';
+import { functionKey, functionWords } from './function-words';
 import JUDGE_WORDS from './judge-words';
 import { baseLang } from './lang';
 import { fold, isStopWord, letterCount, lexiconHas, lineLength, linesOf, substance, syllablesInLine, wordParts, wordSpan, wordsOf, cleanVerse } from './text';
@@ -166,7 +167,10 @@ export function judgeAddress(line: string, lang = 'en'): string | null {
   const own = vocabularyHit(lineWords(line, lang), line, lang, 'any');
   if (own) return asWritten(own, lang);
   if (baseLang(lang) !== 'en') {
-    const en = vocabularyHit(lineWords(line, 'en'), line, 'en', 'any');
+    // English, because the grader is asked in English; but a little word of the verse's own language
+    // is that word first: Polish "ten" is "this", not the English number.
+    const little = functionWords(lang);
+    const en = vocabularyHit(lineWords(line, 'en').filter((w) => !little?.has(functionKey(w))), line, 'en', 'any');
     if (en) return asWritten(en, 'en');
   }
   // "Bewertung: fünf": a number word of any of the languages right after a colon, the way a grade is written.
