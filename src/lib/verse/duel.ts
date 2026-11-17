@@ -41,7 +41,8 @@ import {
 } from './devices';
 import { formsFor, scoreForm, type Form, type FormContext, type FormScore } from './forms';
 import { getPack } from './packs';
-import { cleanVerse, copyOf, ownContent, wordsOf, type CopyMeasure } from './text';
+import { rhymeEnds, rhymes } from './rhyme';
+import { cleanVerse, copyOf, linesOf, ownContent, wordsOf, type CopyMeasure } from './text';
 
 export const ROUNDS = 3;
 export const START_INK = 2;
@@ -54,12 +55,16 @@ export const JUDGE_POOL = 24;
  * A verse is a copy, not an answer (isCopy), when either
  *   - it carries the other verse's lines over, each into a line of its own (text.ts copyOf
  *     `carry`, every word counted): every line of COPY_LINE_WORDS words or more but one (all of
- *     them in a couplet) has COPY_LINE_SHARE of its words said in its order by a line of the verse,
- *     its last word, the one its rhyme stands on, among them. Words dropped from each line, a few
- *     put in, neighbours swapped and the lines moved however the form allows leave this whole; an
- *     answer throws words back into one line or two, and its little words seldom fall in the
- *     other's order. Only for a verse of COPY_LINE_SOURCE words or more: in a shorter one a line of
- *     three words is two thrown words and a little one. Or
+ *     them in a couplet) has COPY_LINE_SHARE of its words said in its order by a line of the verse
+ *     that keeps its rhyme: it ends on the same word, or on a word that rhymes with it (a copy that
+ *     swaps each line's rhyme word for another rhyme keeps the form and is still the other's verse:
+ *     the third check's blocker). Or, when the verse has no line of its own beyond the other's
+ *     (no more lines than it), COPY_LINE_NEAR of each line's words in order, whatever the line ends
+ *     on (each line's last word swapped for any other, in a form that asks no rhyme). Words dropped
+ *     from each line, a few put in, neighbours swapped and the lines moved however the form allows
+ *     leave this whole; an answer throws words back into one line or two, and its little words
+ *     seldom fall in the other's order. Only for a verse of COPY_LINE_SOURCE words or more: in a
+ *     shorter one a line of three words is two thrown words and a little one. Or
  *   - it takes more than three of the other side's content words in order (COPY_MIN_TAKEN: the
  *     Riposte asks for two or three thrown back) and they are at least COPY_THRESHOLD of its own
  *     content words (it adds little), or at least COPY_COVERAGE_ALONE of the other verse's content
@@ -73,8 +78,9 @@ export const JUDGE_POOL = 24;
  *     COPY_LINE_SOURCE words or more, in any order, or
  *   - it has no content word of its own and COPY_THRESHOLD of all its words, three or more, are the
  *     other's in order (the other verse with words deleted).
- * Set from measurement (review.test.ts, finding 24): see docs/language/RULES-MEASUREMENTS.md for the
- * copies and the honest pairs and answers on either side of each threshold, in every language.
+ * Set from measurement (review.test.ts, review3.test.ts, finding 24): see
+ * docs/language/RULES-MEASUREMENTS.md for the copies and the honest pairs and answers on either side
+ * of each threshold, in every language.
  */
 export const COPY_THRESHOLD = 0.7;
 export const COPY_COVERAGE = 0.85;
@@ -88,6 +94,13 @@ export const COPY_LINE_WORDS = 3;
 export const COPY_LINE_SHARE = 0.6;
 /** Words the other verse needs before the line rule applies at all. */
 export const COPY_LINE_SOURCE = 7;
+/**
+ * Share of a line's words a line of the verse says in order when it carries that line over with
+ * its last word changed for one that does not rhyme; counted only for a verse with no line of its
+ * own beyond the other's. (0.6 with that condition voided three honest Ripostes of the packs; at
+ * 0.67 none, measured in review3.test.ts.)
+ */
+export const COPY_LINE_NEAR = 0.67;
 /**
  * Content words of its own, beyond those that land its device and signature, that a verse
  * needs per line its form asks for before its multiplier's bonuses apply in full (scoreVerse).
@@ -371,20 +384,41 @@ export interface ScoreInput {
 
 const CHARACTER_NAMES = invocationNames(CARD_CATALOG.filter((c) => c.type === 'Character').map((c) => c.name));
 
-/** Does `c` carry the other verse's lines over, each into a line of its own (see COPY_LINE_SHARE)? */
-export function carriesLines(c: CopyMeasure): boolean {
+/** A line of the copy measure (text.ts CopyMeasure `carry`) and its index among the source's lines. */
+type CarriedLine = CopyMeasure['carry'][number];
+
+/**
+ * Does `c` carry the other verse's lines over, each into a line of its own (see COPY_LINE_SHARE)?
+ * `rhymed` says whether the verse line matched to source line `i` keeps its rhyme: by default only
+ * when it says the source line's last word (all the measure alone can tell); isCopy also asks
+ * whether the two lines rhyme.
+ */
+export function carriesLines(c: CopyMeasure, rhymed: (l: CarriedLine, i: number) => boolean = (l) => l.end): boolean {
   const words = c.carry.reduce((n, l) => n + l.source, 0);
-  const lines = c.carry.filter((l) => l.source >= COPY_LINE_WORDS);
-  if (lines.length < 2 || words < COPY_LINE_SOURCE) return false;
-  const carried = lines.filter((l) => l.end && l.said >= 2 && l.said >= Math.ceil(COPY_LINE_SHARE * l.source)).length;
-  return carried >= (lines.length >= 3 ? lines.length - 1 : lines.length);
+  const counted = c.carry.map((l, i) => [l, i] as const).filter(([l]) => l.source >= COPY_LINE_WORDS);
+  if (counted.length < 2 || words < COPY_LINE_SOURCE) return false;
+  const need = counted.length >= 3 ? counted.length - 1 : counted.length;
+  const kept = (l: CarriedLine, i: number) => l.said >= 2 && l.said >= Math.ceil(COPY_LINE_SHARE * l.source) && rhymed(l, i);
+  if (counted.filter(([l, i]) => kept(l, i)).length >= need) return true;
+  // Nothing of its own beyond the other's lines: each line nearly whole, whatever it now ends on.
+  if (c.verseLines > c.carry.length) return false;
+  return counted.filter(([l, i]) => kept(l, i) || (l.said >= 2 && l.said >= Math.ceil(COPY_LINE_NEAR * l.source))).length >= need;
 }
 
 /** Is `verse` a copy of `answered` (see COPY_THRESHOLD)? */
 export function isCopy(verse: string, answered: string, lang: string): boolean {
   if (!answered) return false;
   const c = copyOf(verse, answered, lang);
-  if (carriesLines(c)) return true;
+  const theirs = linesOf(answered);
+  const mine = linesOf(verse);
+  // A line keeps its rhyme when it ends on the source line's word or on one that rhymes with it.
+  const rhymed = (l: CarriedLine, i: number) => {
+    if (l.end) return true;
+    if (l.line < 0 || !theirs[i] || !mine[l.line]) return false;
+    const [a, b] = rhymeEnds(theirs[i], mine[l.line], lang);
+    return rhymes(a, b, lang);
+  };
+  if (carriesLines(c, rhymed)) return true;
   // Every word counted, the little ones too: asked only when the content words leave it open.
   let all: CopyMeasure | undefined;
   const allWords = () => (all ??= copyOf(verse, answered, lang, { all: true }));

@@ -23,7 +23,7 @@ import { baseLang, rulesFor } from './lang';
 import { CARD_CATALOG } from '../cards';
 import { functionKey, functionWords } from './function-words';
 import { getPack } from './packs';
-import { pronounce, pronunciationLoaded } from './pronounce';
+import { listedTrigrams, pronounce, pronunciationLoaded } from './pronounce';
 import { soundOf, soundReady } from './sound';
 import { japaneseMorae, japaneseWords } from './sound/kana';
 import { countOverride, frenchSound, germanSound, hindiSyllablesByRule, thaiSyllables } from './sound/lookup';
@@ -771,20 +771,36 @@ export const UNLISTED_SPAN = 4;
 /**
  * Letters a word the lexicon lacks needs to count toward the substance floor inside a phrase (a
  * line that holds one of the language's little words): the vernacular, the stage's English and
- * names no word list keeps up with ("Shawty, I'm finna flex", "Prithee, sirrah"), used as words in
- * a sentence. It still tells nothing (isTellingWord asks the lexicon): a phrase of made-up words
- * keeps the floor and earns no form points. Keyboard mash and letter pairs, with no little word
- * between them, stay what they are.
+ * names no word list keeps up with ("Shawty, I'm finna flex", "Sirrah, thou varlet"), used as words
+ * in a sentence. It still tells nothing (isTellingWord asks the lexicon). Such a word must be spelled
+ * as English spells (spelledAsEnglish): keyboard mash between "the" and one real word ("The qwrt
+ * sdfg zxcv night", the third check's probe) is not a phrase of the language, and letter pairs, with
+ * no little word between them, stay what they are.
  */
 export const PHRASE_SPAN = 4;
+
+/**
+ * Is this string spelled as English spells: every run of three of its letters, its start and end
+ * marked, found in a word the table lists (pronounce.ts listedTrigrams)? "finna", "shawty",
+ * "varlet" and "coxcomb" are; "qwrt", "sdfg" and "asdf" are not.
+ */
+function spelledAsEnglish(word: string): boolean {
+  const t = listedTrigrams();
+  if (!t) return true;
+  const s = `^${fold(word).replace(/[^a-z']/g, '')}$`;
+  if (s.length < 3) return false;
+  for (let i = 0; i + 3 <= s.length; i++) if (!t.has(s.slice(i, i + 3))) return false;
+  return true;
+}
 
 /**
  * For each unit of a line (unitsOf), whether it is a word of the language: null where the
  * language has no lexicon loaded. Chinese and Japanese are measured in characters: a
  * character counts when the reading tables know it (Chinese) or when the dictionary
- * recognises the word it is part of (Japanese).
+ * recognises the word it is part of (Japanese). `japaneseVerse`: in Japanese, whether the verse
+ * the line belongs to is read as Japanese (japaneseLine on at least half of its lines).
  */
-function knownUnits(line: string, lang: string): boolean[] | null {
+function knownUnits(line: string, lang: string, japaneseVerse = false): boolean[] | null {
   const b = baseLang(lang);
   const units = unitsOf(line, lang).filter((u) => letterCount(u) > 0);
   if (b === 'zh') {
@@ -798,11 +814,33 @@ function knownUnits(line: string, lang: string): boolean[] | null {
     // A word in katakana is a loanword or a name when the sentence uses it as one: a word of the
     // dictionary's written otherwise (a particle, an auxiliary, a verb, a noun in kanji) stands beside
     // it (スマホの, インフルエンサーは, ガチで, …のフロー), whether the dictionary has the katakana word
-    // or not; or the dictionary has it and it is the whole line (サクラ). A run of katakana among other
-    // katakana is letters, not words, even where the dictionary finds one of its nouns inside (ココア, テツ).
+    // or not; or the dictionary has it and it is the whole line (サクラ). In a verse read as Japanese
+    // (japaneseVerse), the dictionary's words of two characters or more in a run of katakana are
+    // loanwords when the run holds two of them or more, or is one of them: a line of them alone
+    // (サッカーボール, ジェットコースター, ヒップホップ ドリーム) or a compound inside a sentence
+    // (コーヒーカップに); the rest of such a run counts only as the other rules let it (in
+    // マイクチェック ワンツー, ワンツー, which the dictionary lacks). Elsewhere a run of katakana among
+    // other katakana is letters, not words, even where the dictionary finds one of its nouns inside
+    // (ココア, テツ): a verse of katakana alone is not read as Japanese, and one noun found by chance
+    // in random katakana is not a run of loanwords.
     const anchor = (w: (typeof words)[number] | undefined) => !!w && w.known && !KATAKANA_ONLY.test(w.surface);
+    const loanword = (w: (typeof words)[number]) => w.known && [...w.surface].length >= 2;
+    const inLoanRun = new Array<boolean>(words.length).fill(false);
+    if (japaneseVerse) {
+      for (let i = 0; i < words.length; ) {
+        if (!KATAKANA_ONLY.test(words[i].surface)) {
+          i++;
+          continue;
+        }
+        let j = i;
+        while (j < words.length && KATAKANA_ONLY.test(words[j].surface)) j++;
+        const found = words.slice(i, j).filter(loanword).length;
+        if (found >= 2 || (found === 1 && j - i === 1)) for (let k = i; k < j; k++) inLoanRun[k] = loanword(words[k]);
+        i = j;
+      }
+    }
     words.forEach((w, i) => {
-      const word = KATAKANA_ONLY.test(w.surface) ? anchor(words[i - 1]) || anchor(words[i + 1]) || (w.known && words.length === 1) : w.known;
+      const word = KATAKANA_ONLY.test(w.surface) ? anchor(words[i - 1]) || anchor(words[i + 1]) || (w.known && words.length === 1) || inLoanRun[i] : w.known;
       flags.push(...lettersOf(hiragana(fold(w.surface))).map(() => word));
     });
     return flags.length === units.length ? flags : null;
@@ -811,13 +849,17 @@ function knownUnits(line: string, lang: string): boolean[] | null {
   const phrase = units.some((u) => isStopWord(u, b));
   const flags = units.map((u) => {
     const has = lexiconHas(u, b);
-    return has === false && phrase && wordSpan(u) >= PHRASE_SPAN ? true : has;
+    return has === false && phrase && wordSpan(u) >= PHRASE_SPAN && spelledAsEnglish(u) ? true : has;
   });
   return flags.some((f) => f === null) ? null : (flags as boolean[]);
 }
 
 /** A word written in katakana alone (long-vowel marks included): the script of loanwords and names. */
 const KATAKANA_ONLY = /^[ァ-ヺー]+$/u;
+/** Is this line read as Japanese: does the dictionary find a word in it not written in katakana? */
+function japaneseLine(line: string): boolean {
+  return !!japaneseWords(line)?.some((w) => w.known && !KATAKANA_ONLY.test(w.surface));
+}
 
 /** Chinese particles that make a word a modifier or mark its aspect: "我的" is "my", "不过" is "but". */
 const ZH_PARTICLE_END = /[的地得了着过]$/u;
@@ -944,7 +986,10 @@ export const TELLING_PER_LINE = 0.5;
 export function substance(verse: string, lang = 'en'): Substance {
   const ls = linesOf(verse);
   const perLine = ls.map((l) => unitsOf(l, lang).filter((u) => letterCount(u) > 0));
-  const flags = ls.map((l, i) => knownUnits(l, lang) ?? perLine[i].map(() => true));
+  // A verse is read as Japanese when at least half its lines hold a word the dictionary has that is
+  // not written in katakana; then its lines of loanwords count (knownUnits).
+  const japaneseVerse = baseLang(lang) === 'ja' && ls.filter(japaneseLine).length * 2 >= ls.length;
+  const flags = ls.map((l, i) => knownUnits(l, lang, japaneseVerse) ?? perLine[i].map(() => true));
   const real = perLine.flatMap((units, i) => units.filter((_, k) => flags[i][k]));
   const all = perLine.flat();
   const distinct = new Set(real.filter((u) => !loneLetter(u, lang))).size + (real.some((u) => loneLetter(u, lang)) ? 1 : 0);
@@ -1132,12 +1177,16 @@ export interface CopyMeasure {
    * Each line of the source, every word counted (the little ones too), against the line of the
    * verse that says most of it in its order, one line of the verse to a line of the source
    * whatever order the verse puts its lines in: the source line's words (`source`), how many of
-   * them that verse line says in order (`said`), that verse line's words (`verse`), and whether it
-   * says the source line's last word (`end`: the word a rhyme stands on). A copy carries each line
-   * over into a line of its own, rhyme and all, with a word dropped and a few put in; an answer
-   * throws words back into one line or two, and its little words seldom fall in the other's order.
+   * them that verse line says in order (`said`), that verse line's words (`verse`), whether it
+   * says the source line's last word (`end`: the word a rhyme stands on), and which line of the
+   * verse it is (`line`, an index into linesOf(verse); -1 when no line says any of it). A copy
+   * carries each line over into a line of its own, rhyme and all, with a word dropped and a few
+   * put in; an answer throws words back into one line or two, and its little words seldom fall in
+   * the other's order.
    */
-  carry: Array<{ source: number; said: number; verse: number; end: boolean }>;
+  carry: Array<{ source: number; said: number; verse: number; end: boolean; line: number }>;
+  /** Lines of the verse (linesOf), to tell a verse that adds lines of its own from one that has only the source's. */
+  verseLines: number;
 }
 
 /**
@@ -1177,7 +1226,8 @@ export function copyOf(verse: string, source: string, lang = 'en', opts: { all?:
   const theirs = linesOf(source).flatMap((l) => copyWords(l, lang, new Set(), all));
   const eq = sameWordFor(lang);
   const carry = lineCarry(verse, source, lang, known, eq);
-  if (!mine.length || !theirs.length) return { taken: 0, own: 0, share: 0, source: theirs.length, coverage: 0, anyOrder: 0, lines: [], perLine: [], ends: 0, carry };
+  const verseLines = linesOf(verse).length;
+  if (!mine.length || !theirs.length) return { taken: 0, own: 0, share: 0, source: theirs.length, coverage: 0, anyOrder: 0, lines: [], perLine: [], ends: 0, carry, verseLines };
   const inSource = (w: string) => theirs.some((t) => eq(w, t));
   // Each word of the source is taken once: a verse that says the opponent's "stage" in every line took one word.
   const used = new Array<boolean>(theirs.length).fill(false);
@@ -1266,6 +1316,7 @@ export function copyOf(verse: string, source: string, lang = 'en', opts: { all?:
     perLine,
     ends,
     carry,
+    verseLines,
   };
 }
 
@@ -1277,21 +1328,23 @@ export function copyOf(verse: string, source: string, lang = 'en', opts: { all?:
  */
 function lineCarry(verse: string, source: string, lang: string, known: Set<string>, eq: (a: string, b: string) => boolean): CopyMeasure['carry'] {
   const theirs = linesOf(source).map((l) => copyWords(l, lang, new Set(), true));
-  const mine = linesOf(verse).map((l) => copyWords(l, lang, known, true)).filter((ws) => ws.length > 0);
+  const mine = linesOf(verse)
+    .map((l, at) => ({ at, ws: copyWords(l, lang, known, true) }))
+    .filter((m) => m.ws.length > 0);
   const pairs: Array<[number, number, number]> = [];
   theirs.forEach((s, i) =>
     mine.forEach((v, j) => {
-      const said = takenInOrder(v, s, new Array<boolean>(s.length).fill(false), eq).at.length;
+      const said = takenInOrder(v.ws, s, new Array<boolean>(s.length).fill(false), eq).at.length;
       if (said > 0) pairs.push([said, i, j]);
     }),
   );
   pairs.sort((x, y) => y[0] - x[0] || x[1] - y[1] || x[2] - y[2]);
-  const out = theirs.map((s) => ({ source: s.length, said: 0, verse: 0, end: false }));
+  const out = theirs.map((s) => ({ source: s.length, said: 0, verse: 0, end: false, line: -1 }));
   const taken = new Set<number>();
   for (const [said, i, j] of pairs) {
     if (out[i].said || taken.has(j)) continue;
     const last = theirs[i].at(-1)!;
-    out[i] = { source: theirs[i].length, said, verse: mine[j].length, end: mine[j].some((w) => eq(w, last)) };
+    out[i] = { source: theirs[i].length, said, verse: mine[j].ws.length, end: mine[j].ws.some((w) => eq(w, last)), line: mine[j].at };
     taken.add(j);
   }
   return out;

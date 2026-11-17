@@ -64,6 +64,28 @@ export function pronunciationLoaded(): boolean {
   return table !== null;
 }
 
+let trigrams: Set<string> | null = null;
+let trigramsOf: Map<string, Pronunciation> | null = null;
+
+/**
+ * Every run of three letters the table's listed words hold, a word's start and end marked "^" and
+ * "$" ("^th", "the", "he$"): how English spells. Null while the table is not loaded.
+ */
+export function listedTrigrams(): Set<string> | null {
+  if (!table) return null;
+  if (trigramsOf !== table) {
+    const t = new Set<string>();
+    for (const [w, p] of table) {
+      if (p.spelled || p.unlisted) continue;
+      const s = `^${w}$`;
+      for (let i = 0; i + 3 <= s.length; i++) t.add(s.slice(i, i + 3));
+    }
+    trigrams = t;
+    trigramsOf = table;
+  }
+  return trigrams;
+}
+
 /**
  * Load the English table. Safe to call often; resolves true once it is in, and
  * false (after saying why on the console) if it could not be fetched.

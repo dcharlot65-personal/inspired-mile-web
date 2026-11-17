@@ -185,7 +185,9 @@ describe('second check, blocker 1: a copy whose lines are moved the way the form
     expect(c.carry.map((l) => [l.said, l.source, l.end])).toEqual([[8, 9, true], [8, 9, true], [7, 8, true]]);
     expect(carriesLines(c)).toBe(true);
     // The same lines in any order measure the same: the assignment does not depend on where the verse puts them.
-    expect(copyOf(linesOf(moved).reverse().join('\n'), opp, 'en').carry).toEqual(c.carry);
+    // (`line` names the verse's line, which moves with it; the rest is the same.)
+    const bare = (x: typeof c.carry) => x.map(({ line: _line, ...rest }) => rest);
+    expect(bare(copyOf(linesOf(moved).reverse().join('\n'), opp, 'en').carry)).toEqual(bare(c.carry));
     const flip = copyOf('My crown is gold, my kingdom wide, while yours is dust\nMy sword is sharp and bright, and yours is rust', 'Your crown is brass, your kingdom dust\nYour sword has turned to idle rust', 'en');
     expect(carriesLines(flip)).toBe(false);
   });
@@ -308,7 +310,10 @@ describe('second check, concerns', () => {
     for (const w of ['oz', 'mt', 'ul', 'ab', 'fsi']) expect([w, lexiconHas(w, 'en')]).toEqual([w, false]);
     // A word no list has counts toward the floor inside a phrase, and tells nothing.
     const v = "Shawty, I'm finna flex, my drip is too clean\nYour opps be trippin, lil bruh, you ain't never been seen";
-    expect(substance(v, 'en').known).toBeGreaterThan(0.85);
+    // (The third check's pass also asks such a word to be spelled as English spells; this verse keeps
+    // 0.85 of its words and its full form points: FULL_KNOWN_SHARE is 0.7.)
+    expect(substance(v, 'en').known).toBeGreaterThanOrEqual(0.85);
+    expect(scoreForm(getForm('couplet'), v, { lang: 'en' }).scale).toBe(1);
     expect(substance('qwer asdf zxcv\nsdfg xcvb hjkl', 'en').known).toBe(0);
   });
 
