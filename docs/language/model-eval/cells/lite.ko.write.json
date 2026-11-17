@@ -1,0 +1,6703 @@
+{
+ "tier": "lite",
+ "lang": "ko",
+ "task": "write",
+ "model": "LiquidAI/LFM2.5-350M-ONNX",
+ "dtype": "q4",
+ "judgeMethod": "grade",
+ "date": "2026-11-17T00:44:15.587Z",
+ "commit": "f32a0aff8a8ffcfd3a2589b046210ca7f46aebc4",
+ "transformers": "4.3.2",
+ "gpu": {
+  "vendor": "apple",
+  "architecture": "metal-3",
+  "device": "",
+  "description": ""
+ },
+ "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/159.0.8154.6 Safari/537.36",
+ "origin": "http://localhost:47731",
+ "forms": [
+  "couplet",
+  "quatrain-aabb",
+  "quatrain-abab",
+  "tercet",
+  "anaphora",
+  "acrostic",
+  "crescendo",
+  "epistrophe",
+  "haiku",
+  "heroic-couplet"
+ ],
+ "perForm": 10,
+ "plays": [
+  {
+   "seed": 1001,
+   "roundIndex": 0,
+   "formId": "epistrophe",
+   "difficulty": "apprentice",
+   "card": "Apollo",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Apollo in a duel of verses: theatrical, sharp, in character. Your line in the play: \"I am the god of song, of healing, and of the radiant sun.\" You write short verse and nothing else.",
+    "Form: Epistrophe. Three lines that all end on the same word.\nWrite exactly 3 lines.\nYour flourish: Use two words of 5 letters or more.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "태양의 빛, 낮의 시작\n빗줄기가 불씨를 비추는\n야간에 웃음을 깂깁니다",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-ending",
+     "met": false,
+     "detail": "시작 · 비추는 · 깂깁니다"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "태양의 빛, 낮의 시작\n\n빗줄기가 불씨를 비추는\n\n야간에 웃음을 깂깁니다",
+     "tidy": "태양의 빛, 낮의 시작\n빗줄기가 불씨를 비추는\n야간에 웃음을 깂깁니다",
+     "ms": 2335,
+     "tokens": 35,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1001,
+   "roundIndex": 1,
+   "formId": "heroic-couplet",
+   "difficulty": "apprentice",
+   "card": "Ariel",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "진두강 가람가에 살던 누나는\n진두강 앞마을에\n와서 웁니다",
+   "prompt": [
+    "You are Ariel in a duel of verses: theatrical, sharp, in character. Your line in the play: \"All hail, great master! Grave sir, hail!\" You write short verse and nothing else.",
+    "Form: Heroic Couplet. Two rhyming lines of about ten syllables each, as Shakespeare closed his sonnets.\nWrite exactly 2 lines.\nYour flourish: Make your last line your longest.\nYour challenger last said:\n진두강 가람가에 살던 누나는\n진두강 앞마을에\n와서 웁니다\nAnswer them.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "진두강 가람가\n웁니다",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 4,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "2/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "가람가 / 웁니다"
+    },
+    {
+     "id": "syllables-1",
+     "met": false,
+     "detail": "6/10"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "3/10"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 4,
+   "drafts": [
+    {
+     "raw": "진두강 가람가\n\n웁니다",
+     "tidy": "진두강 가람가\n웁니다",
+     "ms": 837,
+     "tokens": 10,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 2,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 4,
+     "craft": 4
+    }
+   ]
+  },
+  {
+   "seed": 1001,
+   "roundIndex": 2,
+   "formId": "acrostic",
+   "difficulty": "apprentice",
+   "card": "Christina Rossetti",
+   "acrostic": "이야기",
+   "relicWords": [
+    "반지",
+    "맹세",
+    "밤",
+    "추방",
+    "입맞춤"
+   ],
+   "answering": "진두강 가람가에 살던 누나는\n진두강 앞마을에\n와서 웁니다",
+   "prompt": [
+    "You are Christina Rossetti in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Remember me when I am gone away, gone far away into the silent land.\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per letter: the first letters must spell 이야기.\nWrite exactly 3 lines.\nYour flourish: Give every line the same number of words.\nWork in at least two of these words: 반지, 맹세, 밤, 추방, 입맞춤.\nYour challenger last said:\n진두강 가람가에 살던 누나는\n진두강 앞마을에\n와서 웁니다\nAnswer them.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "반지 맹세 밑추방",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "spells",
+     "met": false,
+     "detail": "반"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "반지 맹세 밑추방",
+     "tidy": "반지 맹세 밑추방",
+     "ms": 712,
+     "tokens": 9,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1002,
+   "roundIndex": 0,
+   "formId": "acrostic",
+   "difficulty": "player",
+   "card": "Lady Macbeth",
+   "acrostic": "소나기",
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Lady Macbeth in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Come, you spirits that tend on mortal thoughts, unsex me here.\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per letter: the first letters must spell 소나기.\nWrite exactly 3 lines.\nYour flourish: Repeat one strong word three times.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "소나기\n오래말\n오로다",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "spells",
+     "met": false,
+     "detail": "소오오"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "소나기\n\n오래말\n\n오로다",
+     "tidy": "소나기\n오래말\n오로다",
+     "ms": 887,
+     "tokens": 11,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "소나기의 힘",
+     "tidy": "소나기의 힘",
+     "ms": 375,
+     "tokens": 5,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1002,
+   "roundIndex": 1,
+   "formId": "haiku",
+   "difficulty": "apprentice",
+   "card": "Puck",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "먼 훗날 당신이 찾으시면\n그때에 내 말이 `잊었노라'",
+   "prompt": [
+    "You are Puck in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Lord, what fools these mortals be!\" You write short verse and nothing else.",
+    "Form: Haiku. Three lines of 5, 7 and 5 syllables.\nWrite exactly 3 lines.\nYour flourish: Start three words in one line with the same letter.\nYour challenger last said:\n먼 훗날 당신이 찾으시면\n그때에 내 말이 `잊었노라'\nAnswer them.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "먼 훗날 너의 눈은 어두운 방에 색채를 맡았다\n그때에 내 말이 잎단락에서 흩어져 있었다",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/3"
+    },
+    {
+     "id": "syllables-1",
+     "met": false,
+     "detail": "18/5"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "17/7"
+    },
+    {
+     "id": "syllables-3",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "먼 훗날 너의 눈은 어두운 방에 색채를 맡았다\n\n그때에 내 말이 잎단락에서 흩어져 있었다",
+     "tidy": "먼 훗날 너의 눈은 어두운 방에 색채를 맡았다\n그때에 내 말이 잎단락에서 흩어져 있었다",
+     "ms": 2334,
+     "tokens": 39,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1002,
+   "roundIndex": 2,
+   "formId": "couplet",
+   "difficulty": "apprentice",
+   "card": "Juliet",
+   "acrostic": null,
+   "relicWords": [
+    "가면",
+    "꿈",
+    "광대",
+    "연극",
+    "달"
+   ],
+   "answering": "먼 훗날 당신이 찾으시면\n그때에 내 말이 `잊었노라'",
+   "prompt": [
+    "You are Juliet in a duel of verses: theatrical, sharp, in character. Your line in the play: \"What's in a name? That which we call a rose...\" You write short verse and nothing else.",
+    "Form: Couplet. Two lines that rhyme.\nWrite exactly 2 lines.\nYour flourish: Cry out: end a line with an exclamation mark.\nWork in at least two of these words: 가면, 꿈, 광대, 연극, 달.\nYour challenger last said:\n먼 훗날 당신이 찾으시면\n그때에 내 말이 `잊었노라'\nAnswer them.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "가면과 꿈 광대 연극 달\n챌리 에쥔 잭아",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "2/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "달 / 잭아"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 12,
+   "drafts": [
+    {
+     "raw": "가면과 꿈 광대 연극 달\n\n챌리 에쥔 잭아",
+     "tidy": "가면과 꿈 광대 연극 달\n챌리 에쥔 잭아",
+     "ms": 1640,
+     "tokens": 23,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 2,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 12
+    }
+   ]
+  },
+  {
+   "seed": 1003,
+   "roundIndex": 0,
+   "formId": "couplet",
+   "difficulty": "player",
+   "card": "Hermes",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Hermes in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Swift as thought, I carry the words of gods to mortal ears.\" You write short verse and nothing else.",
+    "Form: Couplet. Two lines that rhyme.\nWrite exactly 2 lines.\nYour flourish: Use two words of 5 letters or more.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "태운기\n빛은 낮에 잉크처럼 흩어질다",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "2/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "태운기 / 흩어질다"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "태운기\n\n빛은 낮에 잉크처럼 흩어질다",
+     "tidy": "태운기\n빛은 낮에 잉크처럼 흩어질다",
+     "ms": 1302,
+     "tokens": 19,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 2,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "선소요 두두 서",
+     "tidy": "선소요 두두 서",
+     "ms": 502,
+     "tokens": 6,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1003,
+   "roundIndex": 1,
+   "formId": "acrostic",
+   "difficulty": "master",
+   "card": "Prospero",
+   "acrostic": "나그네",
+   "relicWords": [
+    "해골",
+    "농담",
+    "무덤",
+    "웃음",
+    "먼지"
+   ],
+   "answering": "나 보기가 역겨워\n가실 때에는\n말없이 고이 보내드리오리다.",
+   "prompt": [
+    "You are Prospero in a duel of verses: theatrical, sharp, in character. Your line in the play: \"We are such stuff as dreams are made on.\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per letter: the first letters must spell 나그네.\nWrite exactly 3 lines.\nYour flourish: Make your last line your longest.\nWork in at least two of these words: 해골, 농담, 무덤, 웃음, 먼지.\nYour challenger last said:\n나 보기가 역겨워\n가실 때에는\n말없이 고이 보내드리오리다.\nAnswer them.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "해골 농담 무덤 웃음",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "spells",
+     "met": false,
+     "detail": "해"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "해골농담무덤웃구",
+     "tidy": "해골농담무덤웃구",
+     "ms": 937,
+     "tokens": 12,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "나 보기는 길게 보고말로위무든",
+     "tidy": "나 보기는 길게 보고말로위무든",
+     "ms": 939,
+     "tokens": 11,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "해골 농담 무덤 웃음",
+     "tidy": "해골 농담 무덤 웃음",
+     "ms": 879,
+     "tokens": 11,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1003,
+   "roundIndex": 2,
+   "formId": "haiku",
+   "difficulty": "player",
+   "card": "Malvolio",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "나 보기가 역겨워\n가실 때에는\n말없이 고이 보내드리오리다.",
+   "prompt": [
+    "You are Malvolio in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Some are born great, some achieve greatness, and some have greatness thrust upon them.\" You write short verse and nothing else.",
+    "Form: Haiku. Three lines of 5, 7 and 5 syllables.\nWrite exactly 3 lines.\nYour flourish: Keep every line to 4 words or fewer.\nYour challenger last said:\n나 보기가 역겨워\n가실 때에는\n말없이 고이 보내드리오리다.\nAnswer them.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "나보게고위",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 5,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "syllables-1",
+     "met": true,
+     "detail": "5/5"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "syllables-3",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 8,
+   "drafts": [
+    {
+     "raw": "한 나의 예로는 비교적\n\n말없이 고이는 것을 전한다",
+     "tidy": "한 나의 예로는 비교적\n말없이 고이는 것을 전한다",
+     "ms": 1286,
+     "tokens": 18,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "나보게고위",
+     "tidy": "나보게고위",
+     "ms": 459,
+     "tokens": 5,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 5,
+     "craft": 8
+    }
+   ]
+  },
+  {
+   "seed": 1004,
+   "roundIndex": 0,
+   "formId": "acrostic",
+   "difficulty": "apprentice",
+   "card": "Brutus",
+   "acrostic": "소나기",
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Brutus in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Not that I loved Caesar less, but that I loved Rome more.\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per letter: the first letters must spell 소나기.\nWrite exactly 3 lines.\nYour flourish: Call on a character by name.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "소나기",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "spells",
+     "met": false,
+     "detail": "소"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "소나기",
+     "tidy": "소나기",
+     "ms": 330,
+     "tokens": 3,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1004,
+   "roundIndex": 1,
+   "formId": "crescendo",
+   "difficulty": "apprentice",
+   "card": "Prospero",
+   "acrostic": null,
+   "relicWords": [
+    "단검",
+    "피",
+    "잠",
+    "환영",
+    "손"
+   ],
+   "answering": "가시는 걸음 걸음\n놓인 그 꽃을\n사뿐히 즈려밟고 가시옵소서.",
+   "prompt": [
+    "You are Prospero in a duel of verses: theatrical, sharp, in character. Your line in the play: \"We are such stuff as dreams are made on.\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Make your last line your longest.\nWork in at least two of these words: 단검, 피, 잠, 환영, 손.\nYour challenger last said:\n가시는 걸음 걸음\n놓인 그 꽃을\n사뿐히 즈려밟고 가시옵소서.\nAnswer them.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "단검, 피, 환영\n작은 한 단검이 일의 숫자로 끝내며\n잠영하나, 그 꽃은 눈에 보이지 않는 빛에",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": true,
+   "formEarned": 20,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "growing",
+     "met": true,
+     "detail": "3 < 6 < 7"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 39,
+   "drafts": [
+    {
+     "raw": "단검, 피, 환영\n\n작은 한 단검이 일의 숫자로 끝내며  \n잠영하나, 그 꽃은 눈에 보이지 않는 빛에",
+     "tidy": "단검, 피, 환영\n작은 한 단검이 일의 숫자로 끝내며\n잠영하나, 그 꽃은 눈에 보이지 않는 빛에",
+     "ms": 2071,
+     "tokens": 43,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 39
+    }
+   ]
+  },
+  {
+   "seed": 1004,
+   "roundIndex": 2,
+   "formId": "heroic-couplet",
+   "difficulty": "player",
+   "card": "Banquo",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "가시는 걸음 걸음\n놓인 그 꽃을\n사뿐히 즈려밟고 가시옵소서.",
+   "prompt": [
+    "You are Banquo in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Thou shalt get kings, though thou be none.\" You write short verse and nothing else.",
+    "Form: Heroic Couplet. Two rhyming lines of about ten syllables each, as Shakespeare closed his sonnets.\nWrite exactly 2 lines.\nYour flourish: Repeat one strong word three times.\nYour challenger last said:\n가시는 걸음 걸음\n놓인 그 꽃을\n사뿐히 즈려밟고 가시옵소서.\nAnswer them.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "가시는 걸음 걸음\n놓인 그 꽃사",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 4,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "2/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "걸음 / 꽃사"
+    },
+    {
+     "id": "syllables-1",
+     "met": false,
+     "detail": "7/10"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "5/10"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 4,
+   "drafts": [
+    {
+     "raw": "가시는 걸음 걸음  \n놓인 그 꽃사  \n\n반긹반밟가시",
+     "tidy": "가시는 걸음 걸음\n놓인 그 꽃사",
+     "ms": 1419,
+     "tokens": 25,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 3,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 4,
+     "craft": 4
+    },
+    {
+     "raw": "발러, 발래",
+     "tidy": "발러, 발래",
+     "ms": 486,
+     "tokens": 5,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1005,
+   "roundIndex": 0,
+   "formId": "quatrain-abab",
+   "difficulty": "apprentice",
+   "card": "Puck",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Puck in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Lord, what fools these mortals be!\" You write short verse and nothing else.",
+    "Form: Crossed Quatrain. Four lines: line 1 rhymes with 3, line 2 with 4.\nWrite exactly 4 lines.\nYour flourish: Start three words in one line with the same letter.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "한 바람의 잔소리\n타푸, 탑다",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/4"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "rhyme-2-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "한 바람의 잔소리\n\n타푸, 탑다",
+     "tidy": "한 바람의 잔소리\n타푸, 탑다",
+     "ms": 554,
+     "tokens": 17,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 2,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1005,
+   "roundIndex": 1,
+   "formId": "acrostic",
+   "difficulty": "player",
+   "card": "Elizabeth Barrett Browning",
+   "acrostic": "소나무",
+   "relicWords": null,
+   "answering": "창밖에 밤비가 속살거려\n육첩방(六疊房)은 남의 나라",
+   "prompt": [
+    "You are Elizabeth Barrett Browning in a duel of verses: theatrical, sharp, in character. Your line in the play: \"How do I love thee? Let me count the ways.\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per letter: the first letters must spell 소나무.\nWrite exactly 3 lines.\nYour flourish: Give every line the same number of words.\nYour challenger last said:\n창밖에 밤비가 속살거려\n육첩방(六疊房)은 남의 나라\nAnswer them.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "한국어로써 창밖에 밑짓살거린 육첩방이 남자의 나라를 잃게 한다\n창밖에 밀짓살조육",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/3"
+    },
+    {
+     "id": "spells",
+     "met": false,
+     "detail": "한창"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "한국어로써 창밖에 밑짓살거린 육첩방이 남자의 나라를 잃게 한다\n\n창밖에 밀짓살조육",
+     "tidy": "한국어로써 창밖에 밑짓살거린 육첩방이 남자의 나라를 잃게 한다\n창밖에 밀짓살조육",
+     "ms": 1617,
+     "tokens": 43,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "소나무, 육첩방",
+     "tidy": "소나무, 육첩방",
+     "ms": 813,
+     "tokens": 9,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1005,
+   "roundIndex": 2,
+   "formId": "haiku",
+   "difficulty": "master",
+   "card": "Cassius",
+   "acrostic": null,
+   "relicWords": [
+    "눈물",
+    "진실",
+    "딸",
+    "허무",
+    "마음"
+   ],
+   "answering": "창밖에 밤비가 속살거려\n육첩방(六疊房)은 남의 나라",
+   "prompt": [
+    "You are Cassius in a duel of verses: theatrical, sharp, in character. Your line in the play: \"The fault, dear Brutus, is not in our stars, but in ourselves.\" You write short verse and nothing else.",
+    "Form: Haiku. Three lines of 5, 7 and 5 syllables.\nWrite exactly 3 lines.\nYour flourish: Call on a character by name.\nWork in at least two of these words: 눈물, 진실, 딸, 허무, 마음.\nYour challenger last said:\n창밖에 밤비가 속살거려\n육첩방(六疊房)은 남의 나라\nAnswer them.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "눈물진흙마마\n마인드달락간\n허무명주",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 5,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "syllables-1",
+     "met": false,
+     "detail": "6/5"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "6/7"
+    },
+    {
+     "id": "syllables-3",
+     "met": false,
+     "detail": "4/5"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 11,
+   "drafts": [
+    {
+     "raw": "눈물진실딸허무마리",
+     "tidy": "눈물진실딸허무마리",
+     "ms": 822,
+     "tokens": 12,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "눈물진흙마마  \n마인드달락간  \n허무명주",
+     "tidy": "눈물진흙마마\n마인드달락간\n허무명주",
+     "ms": 525,
+     "tokens": 21,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 5,
+     "craft": 11
+    },
+    {
+     "raw": "하나의 눈물이다  \n진실딸 허무\n\n시작",
+     "tidy": "하나의 눈물이다\n진실딸 허무\n시작",
+     "ms": 525,
+     "tokens": 16,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 5,
+     "craft": 11
+    }
+   ]
+  },
+  {
+   "seed": 1006,
+   "roundIndex": 0,
+   "formId": "quatrain-abab",
+   "difficulty": "player",
+   "card": "Prospero",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Prospero in a duel of verses: theatrical, sharp, in character. Your line in the play: \"We are such stuff as dreams are made on.\" You write short verse and nothing else.",
+    "Form: Crossed Quatrain. Four lines: line 1 rhymes with 3, line 2 with 4.\nWrite exactly 4 lines.\nYour flourish: Make your last line your longest.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "태극의 눈빛이 빛을 내뱥불처럼 흘렀다",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/4"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "rhyme-2-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "태극의 눈빛이 빛을 내뱥불처럼 흘렀다",
+     "tidy": "태극의 눈빛이 빛을 내뱥불처럼 흘렀다",
+     "ms": 500,
+     "tokens": 21,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "다음 한 구조 내에 넣을\n\n한 루피는 밀집된 이미지로 펼쳐진다",
+     "tidy": "다음 한 구조 내에 넣을\n한 루피는 밀집된 이미지로 펼쳐진다",
+     "ms": 1455,
+     "tokens": 29,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 2,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1006,
+   "roundIndex": 1,
+   "formId": "heroic-couplet",
+   "difficulty": "master",
+   "card": "Percy Bysshe Shelley",
+   "acrostic": null,
+   "relicWords": [
+    "폭풍",
+    "주문",
+    "지팡이",
+    "섬",
+    "난파"
+   ],
+   "answering": "파란 녹이 낀 구리거울 속에\n내 얼골이 남어있는것은",
+   "prompt": [
+    "You are Percy Bysshe Shelley in a duel of verses: theatrical, sharp, in character. Your line in the play: \"If Winter comes, can Spring be far behind?\" You write short verse and nothing else.",
+    "Form: Heroic Couplet. Two rhyming lines of about ten syllables each, as Shakespeare closed his sonnets.\nWrite exactly 2 lines.\nYour flourish: End your verse on the same word it began with.\nWork in at least two of these words: 폭풍, 주문, 지팡이, 섬, 난파.\nYour challenger last said:\n파란 녹이 낀 구리거울 속에\n내 얼골이 남어있는것은\nAnswer them.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "낮은 해빛에 눈을 크게 꿴\n지팡이 어두운 그림 속에서",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 12,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "2/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "꿴 / 속에서"
+    },
+    {
+     "id": "syllables-1",
+     "met": true,
+     "detail": "10/10"
+    },
+    {
+     "id": "syllables-2",
+     "met": true,
+     "detail": "11/10"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 12,
+   "drafts": [
+    {
+     "raw": "낮은 빛쓰기는 가로새가 잠자리에 빠지게\n\n작은 손길이 그걸로 안정된다",
+     "tidy": "낮은 빛쓰기는 가로새가 잠자리에 빠지게\n작은 손길이 그걸로 안정된다",
+     "ms": 1319,
+     "tokens": 35,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 2,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 4,
+     "craft": 4
+    },
+    {
+     "raw": "낮은 해빛에 눈을 크게 꿴\n\n지팡이 어두운 그림 속에서",
+     "tidy": "낮은 해빛에 눈을 크게 꿴\n지팡이 어두운 그림 속에서",
+     "ms": 446,
+     "tokens": 26,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 72,
+     "rawLines": 2,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 12,
+     "craft": 12
+    },
+    {
+     "raw": "난파와 비교",
+     "tidy": "난파와 비교",
+     "ms": 112,
+     "tokens": 5,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1006,
+   "roundIndex": 2,
+   "formId": "haiku",
+   "difficulty": "apprentice",
+   "card": "Elizabeth Barrett Browning",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "파란 녹이 낀 구리거울 속에\n내 얼골이 남어있는것은",
+   "prompt": [
+    "You are Elizabeth Barrett Browning in a duel of verses: theatrical, sharp, in character. Your line in the play: \"How do I love thee? Let me count the ways.\" You write short verse and nothing else.",
+    "Form: Haiku. Three lines of 5, 7 and 5 syllables.\nWrite exactly 3 lines.\nYour flourish: Give every line the same number of words.\nYour challenger last said:\n파란 녹이 낀 구리거울 속에\n내 얼골이 남어있는것은\nAnswer them.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "파란 녹이 낀 구리거울 속에\n내 얼골이 남어있는것은\n두 가지 모두 꽃을 만드는",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 5,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "syllables-1",
+     "met": false,
+     "detail": "11/5"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "10/7"
+    },
+    {
+     "id": "syllables-3",
+     "met": false,
+     "detail": "10/5"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 5,
+   "drafts": [
+    {
+     "raw": "파란 녹이 낀 구리거울 속에  \n내 얼골이 남어있는것은  \n두 가지 모두 꽃을 만드는",
+     "tidy": "파란 녹이 낀 구리거울 속에\n내 얼골이 남어있는것은\n두 가지 모두 꽃을 만드는",
+     "ms": 848,
+     "tokens": 35,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 5,
+     "craft": 5
+    }
+   ]
+  },
+  {
+   "seed": 1007,
+   "roundIndex": 0,
+   "formId": "crescendo",
+   "difficulty": "player",
+   "card": "Macbeth",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Macbeth in a duel of verses: theatrical, sharp, in character. Your line in the play: \"I dare do all that may become a man; who dares do more is none.\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Repeat one strong word three times.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "반성으로\n거점에서\n자리에",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "growing",
+     "met": false,
+     "detail": "1 < 1 < 1"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "반성으로\n\n거점에서\n\n자리에",
+     "tidy": "반성으로\n거점에서\n자리에",
+     "ms": 355,
+     "tokens": 11,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "강한 단어를 반복해서 드러내라  \n둘 개로 개괄라  \n왕이 한 줄 이더라",
+     "tidy": "강한 단어를 반복해서 드러내라\n둘 개로 개괄라\n왕이 한 줄 이더라",
+     "ms": 630,
+     "tokens": 32,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1007,
+   "roundIndex": 1,
+   "formId": "tercet",
+   "difficulty": "apprentice",
+   "card": "King Claudius",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "심심산천에 붙는 불은\n가신 님 무덤가에 금잔디",
+   "prompt": [
+    "You are King Claudius in a duel of verses: theatrical, sharp, in character. Your line in the play: \"My words fly up, my thoughts remain below.\" You write short verse and nothing else.",
+    "Form: Tercet. Three lines; the first and last rhyme.\nWrite exactly 3 lines.\nYour flourish: Ask a question: end a line with a question mark.\nYour challenger last said:\n심심산천에 붙는 불은\n가신 님 무덤가에 금잔디\nAnswer them.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "심심산천에 붙이는 불은 가신 저머야 금잔디",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "심심산천에 붙이는 불은 가신 저머야 금잔디",
+     "tidy": "심심산천에 붙이는 불은 가신 저머야 금잔디",
+     "ms": 323,
+     "tokens": 19,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1007,
+   "roundIndex": 2,
+   "formId": "quatrain-aabb",
+   "difficulty": "apprentice",
+   "card": "Lord Montague",
+   "acrostic": null,
+   "relicWords": [
+    "가면",
+    "꿈",
+    "광대",
+    "연극",
+    "달"
+   ],
+   "answering": "심심산천에 붙는 불은\n가신 님 무덤가에 금잔디",
+   "prompt": [
+    "You are Lord Montague in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Many a morning hath he there been seen, with tears augmenting the fresh morning dew.\" You write short verse and nothing else.",
+    "Form: Paired Quatrain. Four lines: the first two rhyme, and the last two rhyme.\nWrite exactly 4 lines.\nYour flourish: Rhyme two words inside a single line.\nWork in at least two of these words: 가면, 꿈, 광대, 연극, 달.\nYour challenger last said:\n심심산천에 붙는 불은\n가신 님 무덤가에 금잔디\nAnswer them.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "가면 꿈광대연극달",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/4"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "rhyme-3-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "가면 꿈광대연극달",
+     "tidy": "가면 꿈광대연극달",
+     "ms": 211,
+     "tokens": 10,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1008,
+   "roundIndex": 0,
+   "formId": "tercet",
+   "difficulty": "player",
+   "card": "Miranda",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Miranda in a duel of verses: theatrical, sharp, in character. Your line in the play: \"O brave new world, that has such people in it!\" You write short verse and nothing else.",
+    "Form: Tercet. Three lines; the first and last rhyme.\nWrite exactly 3 lines.\nYour flourish: Make your last line your longest.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "한 사람이 태어나다\n그는 새로운 세계에 빛을 내보내다\n그의 가장 긴 한선은 길로 늘라",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "태어나다 / 늘라"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 9,
+   "drafts": [
+    {
+     "raw": "한 사람이 태어나다\n\n그는 새로운 세계에 빛을 내보내다\n\n그의 가장 긴 한선은 길로 늘라",
+     "tidy": "한 사람이 태어나다\n그는 새로운 세계에 빛을 내보내다\n그의 가장 긴 한선은 길로 늘라",
+     "ms": 770,
+     "tokens": 33,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 9
+    },
+    {
+     "raw": "태극천장위  \n최후추위왜",
+     "tidy": "태극천장위\n최후추위왜",
+     "ms": 263,
+     "tokens": 12,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1008,
+   "roundIndex": 1,
+   "formId": "heroic-couplet",
+   "difficulty": "apprentice",
+   "card": "Prince Escalus",
+   "acrostic": null,
+   "relicWords": [
+    "단검",
+    "피",
+    "잠",
+    "환영",
+    "손"
+   ],
+   "answering": "엄마야 누나야 강변 살자,\n뜰에는 반짝는 금모래빛,\n뒷문 밖에는 갈잎의 노래\n엄마야 누나야 강변 살자.",
+   "prompt": [
+    "You are Prince Escalus in a duel of verses: theatrical, sharp, in character. Your line in the play: \"If ever you disturb our streets again, your lives shall pay the forfeit of the peace.\" You write short verse and nothing else.",
+    "Form: Heroic Couplet. Two rhyming lines of about ten syllables each, as Shakespeare closed his sonnets.\nWrite exactly 2 lines.\nYour flourish: Turn a word of 3 letters or more from your opponent's last verse back on them.\nWork in at least two of these words: 단검, 피, 잠, 환영, 손.\nYour challenger last said:\n엄마야 누나야 강변 살자,\n뜰에는 반짝는 금모래빛,\n뒷문 밖에는 갈잎의 노래\n엄마야 누나야 강변 살자.\nAnswer them.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "환영 손",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "syllables-1",
+     "met": false,
+     "detail": "3/10"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "환영 손",
+     "tidy": "환영 손",
+     "ms": 81,
+     "tokens": 3,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1008,
+   "roundIndex": 2,
+   "formId": "quatrain-aabb",
+   "difficulty": "player",
+   "card": "Bottom",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "엄마야 누나야 강변 살자,\n뜰에는 반짝는 금모래빛,\n뒷문 밖에는 갈잎의 노래\n엄마야 누나야 강변 살자.",
+   "prompt": [
+    "You are Bottom in a duel of verses: theatrical, sharp, in character. Your line in the play: \"I have had a most rare vision. I have had a dream, past the wit of man.\" You write short verse and nothing else.",
+    "Form: Paired Quatrain. Four lines: the first two rhyme, and the last two rhyme.\nWrite exactly 4 lines.\nYour flourish: Start three words in one line with the same letter.\nYour challenger last said:\n엄마야 누나야 강변 살자,\n뜰에는 반짝는 금모래빛,\n뒷문 밖에는 갈잎의 노래\n엄마야 누나야 강변 살자.\nAnswer them.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "엄마야 누나야 강변살자",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/4"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "rhyme-3-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "엄마야 누나야 강변살자",
+     "tidy": "엄마야 누나야 강변살자",
+     "ms": 241,
+     "tokens": 11,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "엄마야 누나야 강변살자",
+     "tidy": "엄마야 누나야 강변살자",
+     "ms": 227,
+     "tokens": 11,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1009,
+   "roundIndex": 0,
+   "formId": "epistrophe",
+   "difficulty": "player",
+   "card": "Prospero",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Prospero in a duel of verses: theatrical, sharp, in character. Your line in the play: \"We are such stuff as dreams are made on.\" You write short verse and nothing else.",
+    "Form: Epistrophe. Three lines that all end on the same word.\nWrite exactly 3 lines.\nYour flourish: Make your last line your longest.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "꿈은 나를 꿈꾸게 한다\n타주내다\n장신",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-ending",
+     "met": false,
+     "detail": "한다 · 타주내다 · 장신"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "꿈은 나를 꿈꾸게 한다\n\n타주내다\n\n장신",
+     "tidy": "꿈은 나를 꿈꾸게 한다\n타주내다\n장신",
+     "ms": 549,
+     "tokens": 21,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "탐보야 공예다\n\n만화도 가장 길다",
+     "tidy": "탐보야 공예다\n만화도 가장 길다",
+     "ms": 548,
+     "tokens": 14,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1009,
+   "roundIndex": 1,
+   "formId": "couplet",
+   "difficulty": "master",
+   "card": "Mary Shelley",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "내 고장 칠월은\n청포도가 익어가는 시절",
+   "prompt": [
+    "You are Mary Shelley in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Beware; for I am fearless, and therefore powerful.\" You write short verse and nothing else.",
+    "Form: Couplet. Two lines that rhyme.\nWrite exactly 2 lines.\nYour flourish: End your verse on the same word it began with.\nYour challenger last said:\n내 고장 칠월은\n청포도가 익어가는 시절\nAnswer them.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "내 고장침칠월은\n청포도가익어가는",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "2/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "고장침칠월은 / 청포도가익어가는"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "내 고장 칠월은 청포도가 응우는 시절",
+     "tidy": "내 고장 칠월은 청포도가 응우는 시절",
+     "ms": 659,
+     "tokens": 17,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "내 고장침칠월은  \n청포도가익어가는",
+     "tidy": "내 고장침칠월은\n청포도가익어가는",
+     "ms": 614,
+     "tokens": 16,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 72,
+     "rawLines": 2,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "청포는 힘이 아지르기로\n\n군인은 이야기를 이어받으더 능하다",
+     "tidy": "청포는 힘이 아지르기로\n군인은 이야기를 이어받으더 능하다",
+     "ms": 403,
+     "tokens": 23,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 72,
+     "rawLines": 2,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1009,
+   "roundIndex": 2,
+   "formId": "haiku",
+   "difficulty": "player",
+   "card": "Macbeth",
+   "acrostic": null,
+   "relicWords": [
+    "가면",
+    "꿈",
+    "광대",
+    "연극",
+    "달"
+   ],
+   "answering": "내 고장 칠월은\n청포도가 익어가는 시절",
+   "prompt": [
+    "You are Macbeth in a duel of verses: theatrical, sharp, in character. Your line in the play: \"I dare do all that may become a man; who dares do more is none.\" You write short verse and nothing else.",
+    "Form: Haiku. Three lines of 5, 7 and 5 syllables.\nWrite exactly 3 lines.\nYour flourish: Repeat one strong word three times.\nWork in at least two of these words: 가면, 꿈, 광대, 연극, 달.\nYour challenger last said:\n내 고장 칠월은\n청포도가 익어가는 시절\nAnswer them.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "가면 광대 연극",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "syllables-1",
+     "met": false,
+     "detail": "6/5"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "syllables-3",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "가면 광대 연극",
+     "tidy": "가면 광대 연극",
+     "ms": 145,
+     "tokens": 6,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    },
+    {
+     "raw": "가면 꿈 광대 연극 달",
+     "tidy": "가면 꿈 광대 연극 달",
+     "ms": 398,
+     "tokens": 10,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1010,
+   "roundIndex": 0,
+   "formId": "tercet",
+   "difficulty": "master",
+   "card": "The Sonnet Man",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are The Sonnet Man in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Shall I compare thee to a summer's day?\" You write short verse and nothing else.",
+    "Form: Tercet. Three lines; the first and last rhyme.\nWrite exactly 3 lines.\nYour flourish: End every line on the same rhyme.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "태양이 지나서 걍내\n밤이 비교춘가\n황혼이 태워보게",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "걍내 / 태워보게"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "태양이 지나서 걍내  \n밤이 비교춘가  \n\n황혼이 태워보게",
+     "tidy": "태양이 지나서 걍내\n밤이 비교춘가\n황혼이 태워보게",
+     "ms": 650,
+     "tokens": 28,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "태극 빵 쥔\n태양빛 햇살\n\n밤의 잔해는 새가 달라진다",
+     "tidy": "태극 빵 쥔\n태양빛 햇살\n밤의 잔해는 새가 달라진다",
+     "ms": 927,
+     "tokens": 29,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "태자는 아름다움을 예로 들지\n\n태는 샤웨의 보라를 묻지\n\n태는 빛이 사는 밤을 꿔라",
+     "tidy": "태자는 아름다움을 예로 들지\n태는 샤웨의 보라를 묻지\n태는 빛이 사는 밤을 꿔라",
+     "ms": 1402,
+     "tokens": 40,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1010,
+   "roundIndex": 1,
+   "formId": "heroic-couplet",
+   "difficulty": "player",
+   "card": "Lady Macbeth",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "이 마을 전설이 주절이주절이 열리고\n먼데 하늘이 꿈꾸며 알알이 들어와 박혀",
+   "prompt": [
+    "You are Lady Macbeth in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Come, you spirits that tend on mortal thoughts, unsex me here.\" You write short verse and nothing else.",
+    "Form: Heroic Couplet. Two rhyming lines of about ten syllables each, as Shakespeare closed his sonnets.\nWrite exactly 2 lines.\nYour flourish: Repeat one strong word three times.\nYour challenger last said:\n이 마을 전설이 주절이주절이 열리고\n먼데 하늘이 꿈꾸며 알알이 들어와 박혀\nAnswer them.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "하늘이 새롭게 빛나서\n알알이 들어오고박힐",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 12,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "2/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "빛나서 / 들어오고박힐"
+    },
+    {
+     "id": "syllables-1",
+     "met": true,
+     "detail": "9/10"
+    },
+    {
+     "id": "syllables-2",
+     "met": true,
+     "detail": "9/10"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 12,
+   "drafts": [
+    {
+     "raw": "이마비박아",
+     "tidy": "이마비박아",
+     "ms": 208,
+     "tokens": 5,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "하늘이 새롭게 빛나서\n\n알알이 들어오고박힐",
+     "tidy": "하늘이 새롭게 빛나서\n알알이 들어오고박힐",
+     "ms": 739,
+     "tokens": 23,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 72,
+     "rawLines": 2,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 12,
+     "craft": 12
+    }
+   ]
+  },
+  {
+   "seed": 1010,
+   "roundIndex": 2,
+   "formId": "crescendo",
+   "difficulty": "master",
+   "card": "Mary Shelley",
+   "acrostic": null,
+   "relicWords": [
+    "단검",
+    "피",
+    "잠",
+    "환영",
+    "손"
+   ],
+   "answering": "이 마을 전설이 주절이주절이 열리고\n먼데 하늘이 꿈꾸며 알알이 들어와 박혀",
+   "prompt": [
+    "You are Mary Shelley in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Beware; for I am fearless, and therefore powerful.\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: End your verse on the same word it began with.\nWork in at least two of these words: 단검, 피, 잠, 환영, 손.\nYour challenger last said:\n이 마을 전설이 주절이주절이 열리고\n먼데 하늘이 꿈꾸며 알알이 들어와 박혀\nAnswer them.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "단검 피 잠 환영",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "growing",
+     "met": false,
+     "detail": "4"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "단검 피 잠 환영",
+     "tidy": "단검 피 잠 환영",
+     "ms": 269,
+     "tokens": 7,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    },
+    {
+     "raw": "환영",
+     "tidy": "환영",
+     "ms": 247,
+     "tokens": 2,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "단검 피 잠 환영",
+     "tidy": "단검 피 잠 환영",
+     "ms": 241,
+     "tokens": 7,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1011,
+   "roundIndex": 0,
+   "formId": "haiku",
+   "difficulty": "master",
+   "card": "Cassius",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Cassius in a duel of verses: theatrical, sharp, in character. Your line in the play: \"The fault, dear Brutus, is not in our stars, but in ourselves.\" You write short verse and nothing else.",
+    "Form: Haiku. Three lines of 5, 7 and 5 syllables.\nWrite exactly 3 lines.\nYour flourish: Call on a character by name.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "일곱 개의 선에 세 년\n참가 명: 자기 이름\n둥째: 마음 안이 걍이다",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 10,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "syllables-1",
+     "met": false,
+     "detail": "8/5"
+    },
+    {
+     "id": "syllables-2",
+     "met": true,
+     "detail": "7/7"
+    },
+    {
+     "id": "syllables-3",
+     "met": false,
+     "detail": "9/5"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 10,
+   "drafts": [
+    {
+     "raw": "야악  \n낮다  \n아빌",
+     "tidy": "야악\n낮다\n아빌",
+     "ms": 230,
+     "tokens": 10,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 5,
+     "craft": 5
+    },
+    {
+     "raw": "일곱 개의 선에 세 년\n\n참가 명: 자기 이름\n\n둥째: 마음 안이 걍이다\n\n다째: 숙제 시간을 내고 싶다",
+     "tidy": "일곱 개의 선에 세 년\n참가 명: 자기 이름\n둥째: 마음 안이 걍이다",
+     "ms": 1166,
+     "tokens": 46,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 4,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 10,
+     "craft": 10
+    },
+    {
+     "raw": "Call on a character by name",
+     "tidy": "Call on a character by name",
+     "ms": 111,
+     "tokens": 6,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1011,
+   "roundIndex": 1,
+   "formId": "anaphora",
+   "difficulty": "apprentice",
+   "card": "Viola",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "매운 계절(季節)의 채찍에 갈겨\n마침내 북방(北方)으로 휩쓸려오다",
+   "prompt": [
+    "You are Viola in a duel of verses: theatrical, sharp, in character. Your line in the play: \"I am not what I am.\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same word.\nWrite exactly 3 lines.\nYour flourish: Keep every line to 4 words or fewer.\nYour challenger last said:\n매운 계절(季節)의 채찍에 갈겨\n마침내 북방(北方)으로 휩쓸려오다\nAnswer them.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "매운 계절이 겨울을 찾아내지 않게",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "same-opening",
+     "met": false,
+     "detail": "매운"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "매운 계절이 겨울을 찾아내지 않게",
+     "tidy": "매운 계절이 겨울을 찾아내지 않게",
+     "ms": 282,
+     "tokens": 14,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1011,
+   "roundIndex": 2,
+   "formId": "tercet",
+   "difficulty": "apprentice",
+   "card": "Titania",
+   "acrostic": null,
+   "relicWords": [
+    "책",
+    "폭풍",
+    "마법",
+    "책장",
+    "난파"
+   ],
+   "answering": "매운 계절(季節)의 채찍에 갈겨\n마침내 북방(北方)으로 휩쓸려오다",
+   "prompt": [
+    "You are Titania in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Come, sit thee down upon this flowery bed.\" You write short verse and nothing else.",
+    "Form: Tercet. Three lines; the first and last rhyme.\nWrite exactly 3 lines.\nYour flourish: Start three words in one line with the same letter.\nWork in at least two of these words: 책, 폭풍, 마법, 책장, 난파.\nYour challenger last said:\n매운 계절(季節)의 채찍에 갈겨\n마침내 북방(北方)으로 휩쓸려오다\nAnswer them.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "예술과 자연이 결합하는 겉보기 단순한 모습을 암호처럼 드러낼 수 있다\n난위는 어두운 밤에 펼쳐지는 화살표이다",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/3"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "예술과 자연이 결합하는 겉보기 단순한 모습을 암호처럼 드러낼 수 있다\n\n난위는 어두운 밤에 펼쳐지는 화살표이다",
+     "tidy": "예술과 자연이 결합하는 겉보기 단순한 모습을 암호처럼 드러낼 수 있다\n난위는 어두운 밤에 펼쳐지는 화살표이다",
+     "ms": 1369,
+     "tokens": 46,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1012,
+   "roundIndex": 0,
+   "formId": "heroic-couplet",
+   "difficulty": "master",
+   "card": "Odysseus",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Odysseus in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Tell me, O Muse, of the man of many ways, who wandered far.\" You write short verse and nothing else.",
+    "Form: Heroic Couplet. Two rhyming lines of about ten syllables each, as Shakespeare closed his sonnets.\nWrite exactly 2 lines.\nYour flourish: Use two words of 5 letters or more.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "태극문\n두박사",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 4,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "2/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "태극문 / 두박사"
+    },
+    {
+     "id": "syllables-1",
+     "met": false,
+     "detail": "3/10"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "3/10"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 4,
+   "drafts": [
+    {
+     "raw": "태극문\n\n두박사",
+     "tidy": "태극문\n두박사",
+     "ms": 340,
+     "tokens": 7,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 2,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 4,
+     "craft": 4
+    },
+    {
+     "raw": "태풍의 한 봁자루\n\n오래된 노인조차 잠시 움쳤다",
+     "tidy": "태풍의 한 봁자루\n오래된 노인조차 잠시 움쳤다",
+     "ms": 800,
+     "tokens": 25,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 72,
+     "rawLines": 2,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 4,
+     "craft": 4
+    },
+    {
+     "raw": "꽃비구두\n\n타누타예보",
+     "tidy": "꽃비구두\n타누타예보",
+     "ms": 800,
+     "tokens": 13,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 72,
+     "rawLines": 2,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 4,
+     "craft": 4
+    }
+   ]
+  },
+  {
+   "seed": 1012,
+   "roundIndex": 1,
+   "formId": "epistrophe",
+   "difficulty": "master",
+   "card": "Elizabeth Barrett Browning",
+   "acrostic": null,
+   "relicWords": [
+    "가면",
+    "꿈",
+    "광대",
+    "연극",
+    "달"
+   ],
+   "answering": "말을 할까\n하니 그리워",
+   "prompt": [
+    "You are Elizabeth Barrett Browning in a duel of verses: theatrical, sharp, in character. Your line in the play: \"How do I love thee? Let me count the ways.\" You write short verse and nothing else.",
+    "Form: Epistrophe. Three lines that all end on the same word.\nWrite exactly 3 lines.\nYour flourish: Give every line the same number of words.\nWork in at least two of these words: 가면, 꿈, 광대, 연극, 달.\nYour challenger last said:\n말을 할까\n하니 그리워\nAnswer them.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "가면 두 마리의 눈\n하니 그게 너의 소귀\n달에 대한 눈",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-ending",
+     "met": false,
+     "detail": "눈 · 소귀 · 눈"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 12,
+   "drafts": [
+    {
+     "raw": "가면 꿀광대 연극",
+     "tidy": "가면 꿀광대 연극",
+     "ms": 209,
+     "tokens": 9,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    },
+    {
+     "raw": "가면 두 마리의 눈\n\n하니 그게 너의 소귀\n\n달에 대한 눈",
+     "tidy": "가면 두 마리의 눈\n하니 그게 너의 소귀\n달에 대한 눈",
+     "ms": 677,
+     "tokens": 22,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 12
+    },
+    {
+     "raw": "가면, 꿈, 광대\n\n말을 할까 하니",
+     "tidy": "가면, 꿈, 광대\n말을 할까 하니",
+     "ms": 383,
+     "tokens": 16,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 9
+    }
+   ]
+  },
+  {
+   "seed": 1012,
+   "roundIndex": 2,
+   "formId": "couplet",
+   "difficulty": "apprentice",
+   "card": "Lady Capulet",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "말을 할까\n하니 그리워",
+   "prompt": [
+    "You are Lady Capulet in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Marry, that marry is the very theme I came to talk of.\" You write short verse and nothing else.",
+    "Form: Couplet. Two lines that rhyme.\nWrite exactly 2 lines.\nYour flourish: Cry out: end a line with an exclamation mark.\nYour challenger last said:\n말을 할까\n하니 그리워\nAnswer them.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "말을 할까하니그리워",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "말을 할까하니그리워",
+     "tidy": "말을 할까하니그리워",
+     "ms": 414,
+     "tokens": 9,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1013,
+   "roundIndex": 0,
+   "formId": "crescendo",
+   "difficulty": "apprentice",
+   "card": "Mercutio",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Mercutio in a duel of verses: theatrical, sharp, in character. Your line in the play: \"A plague on both your houses!\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Rhyme two words inside a single line.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "노래 둘러스\n노래 전에나",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/3"
+    },
+    {
+     "id": "growing",
+     "met": false,
+     "detail": "2 < 2"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "노래 둘러스\n\n노래 전에나",
+     "tidy": "노래 둘러스\n노래 전에나",
+     "ms": 271,
+     "tokens": 12,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1013,
+   "roundIndex": 1,
+   "formId": "quatrain-abab",
+   "difficulty": "master",
+   "card": "William Blake",
+   "acrostic": null,
+   "relicWords": [
+    "폭풍",
+    "주문",
+    "지팡이",
+    "섬",
+    "난파"
+   ],
+   "answering": "진두강 가람가에 살던 누나는\n진두강 앞마을에\n와서 웁니다",
+   "prompt": [
+    "You are William Blake in a duel of verses: theatrical, sharp, in character. Your line in the play: \"To see a World in a Grain of Sand and a Heaven in a Wild Flower.\" You write short verse and nothing else.",
+    "Form: Crossed Quatrain. Four lines: line 1 rhymes with 3, line 2 with 4.\nWrite exactly 4 lines.\nYour flourish: End your verse on the same word it began with.\nWork in at least two of these words: 폭풍, 주문, 지팡이, 섬, 난파.\nYour challenger last said:\n진두강 가람가에 살던 누나는\n진두강 앞마을에\n와서 웁니다\nAnswer them.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "난파",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/4"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "rhyme-2-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "난파",
+     "tidy": "난파",
+     "ms": 129,
+     "tokens": 2,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "난파 작업",
+     "tidy": "난파 작업",
+     "ms": 97,
+     "tokens": 4,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "석댄 누네왣",
+     "tidy": "석댄 누네왣",
+     "ms": 408,
+     "tokens": 8,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1013,
+   "roundIndex": 2,
+   "formId": "tercet",
+   "difficulty": "player",
+   "card": "Persephone",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "진두강 가람가에 살던 누나는\n진두강 앞마을에\n와서 웁니다",
+   "prompt": [
+    "You are Persephone in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Six seeds I ate, and bound myself between two worlds forever.\" You write short verse and nothing else.",
+    "Form: Tercet. Three lines; the first and last rhyme.\nWrite exactly 3 lines.\nYour flourish: Turn a word of 3 letters or more from your opponent's last verse back on them.\nYour challenger last said:\n진두강 가람가에 살던 누나는\n진두강 앞마을에\n와서 웁니다\nAnswer them.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "참고해오세요\n꽂은누는 아름다\n어려서왔습니다",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "참고해오세요 / 어려서왔습니다"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "참고해오세요\n\n꽂은누는 아름다\n\n어려서왔습니다",
+     "tidy": "참고해오세요\n꽂은누는 아름다\n어려서왔습니다",
+     "ms": 756,
+     "tokens": 24,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "과로는 짓다",
+     "tidy": "과로는 짓다",
+     "ms": 106,
+     "tokens": 6,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1014,
+   "roundIndex": 0,
+   "formId": "couplet",
+   "difficulty": "player",
+   "card": "Oberon",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Oberon in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Ill met by moonlight, proud Titania.\" You write short verse and nothing else.",
+    "Form: Couplet. Two lines that rhyme.\nWrite exactly 2 lines.\nYour flourish: Start three words in one line with the same letter.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "태양이 낮은 빛 아래, 푸르게 돌보았다\n타투인자",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "2/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "돌보았다 / 타투인자"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "태양이 낮은 빛 아래, 푸르게 돌보았다\n\n타투인자",
+     "tidy": "태양이 낮은 빛 아래, 푸르게 돌보았다\n타투인자",
+     "ms": 784,
+     "tokens": 24,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 2,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "강한 향신료",
+     "tidy": "강한 향신료",
+     "ms": 311,
+     "tokens": 5,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1014,
+   "roundIndex": 1,
+   "formId": "quatrain-abab",
+   "difficulty": "apprentice",
+   "card": "Lord Montague",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "먼 훗날 당신이 찾으시면\n그때에 내 말이 `잊었노라'",
+   "prompt": [
+    "You are Lord Montague in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Many a morning hath he there been seen, with tears augmenting the fresh morning dew.\" You write short verse and nothing else.",
+    "Form: Crossed Quatrain. Four lines: line 1 rhymes with 3, line 2 with 4.\nWrite exactly 4 lines.\nYour flourish: Rhyme two words inside a single line.\nYour challenger last said:\n먼 훗날 당신이 찾으시면\n그때에 내 말이 `잊었노라'\nAnswer them.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "먼 훗날 네가 찾아왔다\n그때 내 말이 잭팟아니였다",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/4"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "rhyme-2-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "먼 훗날 네가 찾아왔다  \n그때 내 말이 잭팟아니였다",
+     "tidy": "먼 훗날 네가 찾아왔다\n그때 내 말이 잭팟아니였다",
+     "ms": 896,
+     "tokens": 24,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 2,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1014,
+   "roundIndex": 2,
+   "formId": "acrostic",
+   "difficulty": "master",
+   "card": "Hamlet",
+   "acrostic": "사나이",
+   "relicWords": [
+    "왕관",
+    "왕좌",
+    "야망",
+    "마녀",
+    "왕"
+   ],
+   "answering": "먼 훗날 당신이 찾으시면\n그때에 내 말이 `잊었노라'",
+   "prompt": [
+    "You are Hamlet in a duel of verses: theatrical, sharp, in character. Your line in the play: \"To be, or not to be, that is the question.\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per letter: the first letters must spell 사나이.\nWrite exactly 3 lines.\nYour flourish: Ask a question: end a line with a question mark.\nWork in at least two of these words: 왕관, 왕좌, 야망, 마녀, 왕.\nYour challenger last said:\n먼 훗날 당신이 찾으시면\n그때에 내 말이 `잊었노라'\nAnswer them.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "왕관야망마마\n왕좌비야잭",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/3"
+    },
+    {
+     "id": "spells",
+     "met": false,
+     "detail": "왕왕"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "왕관야망마마  \n왕좌비야잭",
+     "tidy": "왕관야망마마\n왕좌비야잭",
+     "ms": 506,
+     "tokens": 16,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    },
+    {
+     "raw": "왕관 왕좌 야망  \n마녀 왕",
+     "tidy": "왕관 왕좌 야망\n마녀 왕",
+     "ms": 707,
+     "tokens": 14,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    },
+    {
+     "raw": "왕관, 왕좌, 마녀",
+     "tidy": "왕관, 왕좌, 마녀",
+     "ms": 542,
+     "tokens": 11,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1015,
+   "roundIndex": 0,
+   "formId": "heroic-couplet",
+   "difficulty": "apprentice",
+   "card": "Mary Shelley",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Mary Shelley in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Beware; for I am fearless, and therefore powerful.\" You write short verse and nothing else.",
+    "Form: Heroic Couplet. Two rhyming lines of about ten syllables each, as Shakespeare closed his sonnets.\nWrite exactly 2 lines.\nYour flourish: End your verse on the same word it began with.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "완두체\n오래가는 손이 걷는다",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 8,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "2/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "완두체 / 걷는다"
+    },
+    {
+     "id": "syllables-1",
+     "met": false,
+     "detail": "3/10"
+    },
+    {
+     "id": "syllables-2",
+     "met": true,
+     "detail": "9/10"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 8,
+   "drafts": [
+    {
+     "raw": "완두체\n\n오래가는 손이 걷는다",
+     "tidy": "완두체\n오래가는 손이 걷는다",
+     "ms": 403,
+     "tokens": 15,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 2,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 8,
+     "craft": 8
+    }
+   ]
+  },
+  {
+   "seed": 1015,
+   "roundIndex": 1,
+   "formId": "anaphora",
+   "difficulty": "player",
+   "card": "Mercutio",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "나 보기가 역겨워\n가실 때에는\n말없이 고이 보내드리오리다.",
+   "prompt": [
+    "You are Mercutio in a duel of verses: theatrical, sharp, in character. Your line in the play: \"A plague on both your houses!\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same word.\nWrite exactly 3 lines.\nYour flourish: Rhyme two words inside a single line.\nYour challenger last said:\n나 보기가 역겨워\n가실 때에는\n말없이 고이 보내드리오리다.\nAnswer them.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "나 보기를 거부하길\n말을 전달하기\n장보드자",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-opening",
+     "met": false,
+     "detail": "나 · 말을 · 장보드자"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "나 보기를 거부하길\n\n말을 전달하기\n\n장보드자",
+     "tidy": "나 보기를 거부하길\n말을 전달하기\n장보드자",
+     "ms": 681,
+     "tokens": 18,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "나보기가역겨가말없이조비다",
+     "tidy": "나보기가역겨가말없이조비다",
+     "ms": 322,
+     "tokens": 12,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1015,
+   "roundIndex": 2,
+   "formId": "couplet",
+   "difficulty": "master",
+   "card": "Percy Bysshe Shelley",
+   "acrostic": null,
+   "relicWords": [
+    "왕관",
+    "왕좌",
+    "야망",
+    "마녀",
+    "왕"
+   ],
+   "answering": "나 보기가 역겨워\n가실 때에는\n말없이 고이 보내드리오리다.",
+   "prompt": [
+    "You are Percy Bysshe Shelley in a duel of verses: theatrical, sharp, in character. Your line in the play: \"If Winter comes, can Spring be far behind?\" You write short verse and nothing else.",
+    "Form: Couplet. Two lines that rhyme.\nWrite exactly 2 lines.\nYour flourish: End your verse on the same word it began with.\nWork in at least two of these words: 왕관, 왕좌, 야망, 마녀, 왕.\nYour challenger last said:\n나 보기가 역겨워\n가실 때에는\n말없이 고이 보내드리오리다.\nAnswer them.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "왕관, 왕좌 그 땅에서는 나는 걷음이다\n말없이 고이, 왕을 내다보기다",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 2,
+   "formKept": true,
+   "formEarned": 20,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "2/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": true,
+     "detail": "걷음이다 / 내다보기다"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 26,
+   "drafts": [
+    {
+     "raw": "왕관, 왕좌, 마녀  \n말없이 고이보내드리오리다",
+     "tidy": "왕관, 왕좌, 마녀\n말없이 고이보내드리오리다",
+     "ms": 1198,
+     "tokens": 24,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 2,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 12
+    },
+    {
+     "raw": "왕관, 왕좌 그 땅에서는 나는 걷음이다  \n말없이 고이, 왕을 내다보기다",
+     "tidy": "왕관, 왕좌 그 땅에서는 나는 걷음이다\n말없이 고이, 왕을 내다보기다",
+     "ms": 1525,
+     "tokens": 35,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 72,
+     "rawLines": 2,
+     "expectedLines": 2,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 26
+    },
+    {
+     "raw": "왕관, 마녀, 나  \n말보기와고비다",
+     "tidy": "왕관, 마녀, 나\n말보기와고비다",
+     "ms": 660,
+     "tokens": 16,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 72,
+     "rawLines": 2,
+     "expectedLines": 2,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 26
+    }
+   ]
+  },
+  {
+   "seed": 1016,
+   "roundIndex": 0,
+   "formId": "couplet",
+   "difficulty": "apprentice",
+   "card": "Olivia",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Olivia in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Love sought is good, but given unsought, is better.\" You write short verse and nothing else.",
+    "Form: Couplet. Two lines that rhyme.\nWrite exactly 2 lines.\nYour flourish: Keep every line to 4 words or fewer.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "Korean: 강한 억정",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Korean: 강한 억정\n\nVerse: 강한 나이는 좋은 나이보다 더 좋다.",
+     "tidy": "Korean: 강한 억정",
+     "ms": 934,
+     "tokens": 24,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 2,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1016,
+   "roundIndex": 1,
+   "formId": "acrostic",
+   "difficulty": "apprentice",
+   "card": "Hamlet",
+   "acrostic": "나그네",
+   "relicWords": null,
+   "answering": "가시는 걸음 걸음\n놓인 그 꽃을\n사뿐히 즈려밟고 가시옵소서.",
+   "prompt": [
+    "You are Hamlet in a duel of verses: theatrical, sharp, in character. Your line in the play: \"To be, or not to be, that is the question.\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per letter: the first letters must spell 나그네.\nWrite exactly 3 lines.\nYour flourish: Ask a question: end a line with a question mark.\nYour challenger last said:\n가시는 걸음 걸음\n놓인 그 꽃을\n사뿐히 즈려밟고 가시옵소서.\nAnswer them.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "가시는 걸음 걸음\n놓인 그 꽃을사룇밟가성",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/3"
+    },
+    {
+     "id": "spells",
+     "met": false,
+     "detail": "가놓"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "가시는 걸음 걸음\n놓인 그 꽃을사룇밟가성",
+     "tidy": "가시는 걸음 걸음\n놓인 그 꽃을사룇밟가성",
+     "ms": 1132,
+     "tokens": 22,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1016,
+   "roundIndex": 2,
+   "formId": "tercet",
+   "difficulty": "master",
+   "card": "Mary Shelley",
+   "acrostic": null,
+   "relicWords": [
+    "가면",
+    "꿈",
+    "광대",
+    "연극",
+    "달"
+   ],
+   "answering": "가시는 걸음 걸음\n놓인 그 꽃을\n사뿐히 즈려밟고 가시옵소서.",
+   "prompt": [
+    "You are Mary Shelley in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Beware; for I am fearless, and therefore powerful.\" You write short verse and nothing else.",
+    "Form: Tercet. Three lines; the first and last rhyme.\nWrite exactly 3 lines.\nYour flourish: End your verse on the same word it began with.\nWork in at least two of these words: 가면, 꿈, 광대, 연극, 달.\nYour challenger last said:\n가시는 걸음 걸음\n놓인 그 꽃을\n사뿐히 즈려밟고 가시옵소서.\nAnswer them.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "춥거꿀은 광대의 꿈을 짊어뎌\n달의 시는 사뮈터리스",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/3"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "달의 빛",
+     "tidy": "달의 빛",
+     "ms": 147,
+     "tokens": 4,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "춥거꿀은 광대의 꿈을 짊어뎌\n\n달의 시는 사뮈터리스",
+     "tidy": "춥거꿀은 광대의 꿈을 짊어뎌\n달의 시는 사뮈터리스",
+     "ms": 680,
+     "tokens": 31,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    },
+    {
+     "raw": "발꺽 발꺼",
+     "tidy": "발꺽 발꺼",
+     "ms": 514,
+     "tokens": 8,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1017,
+   "roundIndex": 0,
+   "formId": "tercet",
+   "difficulty": "apprentice",
+   "card": "Hamlet",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Hamlet in a duel of verses: theatrical, sharp, in character. Your line in the play: \"To be, or not to be, that is the question.\" You write short verse and nothing else.",
+    "Form: Tercet. Three lines; the first and last rhyme.\nWrite exactly 3 lines.\nYour flourish: Ask a question: end a line with a question mark.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "Korean: End it, then ask",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Korean: End it, then ask",
+     "tidy": "Korean: End it, then ask",
+     "ms": 588,
+     "tokens": 8,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1017,
+   "roundIndex": 1,
+   "formId": "epistrophe",
+   "difficulty": "apprentice",
+   "card": "Juliet",
+   "acrostic": null,
+   "relicWords": [
+    "황금",
+    "선택",
+    "자비",
+    "납",
+    "상자"
+   ],
+   "answering": "창밖에 밤비가 속살거려\n육첩방(六疊房)은 남의 나라",
+   "prompt": [
+    "You are Juliet in a duel of verses: theatrical, sharp, in character. Your line in the play: \"What's in a name? That which we call a rose...\" You write short verse and nothing else.",
+    "Form: Epistrophe. Three lines that all end on the same word.\nWrite exactly 3 lines.\nYour flourish: Cry out: end a line with an exclamation mark.\nWork in at least two of these words: 황금, 선택, 자비, 납, 상자.\nYour challenger last said:\n창밖에 밤비가 속살거려\n육첩방(六疊房)은 남의 나라\nAnswer them.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "황금이는 한 바람을 흔들며\n선택자는 한 줄을 마지막에\n납은 상자안에 고마워",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-ending",
+     "met": false,
+     "detail": "흔들며 · 마지막에 · 고마워"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 12,
+   "drafts": [
+    {
+     "raw": "황금이는 한 바람을 흔들며  \n선택자는 한 줄을 마지막에  \n\n납은 상자안에 고마워",
+     "tidy": "황금이는 한 바람을 흔들며\n선택자는 한 줄을 마지막에\n납은 상자안에 고마워",
+     "ms": 1825,
+     "tokens": 34,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 12
+    }
+   ]
+  },
+  {
+   "seed": 1017,
+   "roundIndex": 2,
+   "formId": "acrostic",
+   "difficulty": "player",
+   "card": "Edgar Allan Poe",
+   "acrostic": "이야기",
+   "relicWords": null,
+   "answering": "창밖에 밤비가 속살거려\n육첩방(六疊房)은 남의 나라",
+   "prompt": [
+    "You are Edgar Allan Poe in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Once upon a midnight dreary, while I pondered, weak and weary.\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per letter: the first letters must spell 이야기.\nWrite exactly 3 lines.\nYour flourish: End your verse on the same word it began with.\nYour challenger last said:\n창밖에 밤비가 속살거려\n육첩방(六疊房)은 남의 나라\nAnswer them.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "창밖에 밑돌살거려\n육첩방시",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/3"
+    },
+    {
+     "id": "spells",
+     "met": false,
+     "detail": "창육"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "창밖에 밑돌살거려\n\n육첩방시",
+     "tidy": "창밖에 밑돌살거려\n육첩방시",
+     "ms": 491,
+     "tokens": 17,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "왕자오창밖에 육첩방남아",
+     "tidy": "왕자오창밖에 육첩방남아",
+     "ms": 738,
+     "tokens": 15,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1018,
+   "roundIndex": 0,
+   "formId": "acrostic",
+   "difficulty": "master",
+   "card": "Brutus",
+   "acrostic": "무지개",
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Brutus in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Not that I loved Caesar less, but that I loved Rome more.\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per letter: the first letters must spell 무지개.\nWrite exactly 3 lines.\nYour flourish: Call on a character by name.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "코공술의 유사시, 한번쯤무지개\n타부먼콘, 태부야\n방문합니다",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "spells",
+     "met": false,
+     "detail": "코타방"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "카일 소문장",
+     "tidy": "카일 소문장",
+     "ms": 368,
+     "tokens": 5,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "코공술의 유사시, 한번쯤무지개\n\n타부먼콘, 태부야\n\n방문합니다",
+     "tidy": "코공술의 유사시, 한번쯤무지개\n타부먼콘, 태부야\n방문합니다",
+     "ms": 1471,
+     "tokens": 31,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "왕과 왜크, 서야 나누\n\n카이코 이 노우",
+     "tidy": "왕과 왜크, 서야 나누\n카이코 이 노우",
+     "ms": 933,
+     "tokens": 19,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1018,
+   "roundIndex": 1,
+   "formId": "couplet",
+   "difficulty": "player",
+   "card": "Friar Lawrence",
+   "acrostic": null,
+   "relicWords": [
+    "눈물",
+    "진실",
+    "딸",
+    "허무",
+    "마음"
+   ],
+   "answering": "파란 녹이 낀 구리거울 속에\n내 얼골이 남어있는것은",
+   "prompt": [
+    "You are Friar Lawrence in a duel of verses: theatrical, sharp, in character. Your line in the play: \"These violent delights have violent ends.\" You write short verse and nothing else.",
+    "Form: Couplet. Two lines that rhyme.\nWrite exactly 2 lines.\nYour flourish: Turn a word of 3 letters or more from your opponent's last verse back on them.\nWork in at least two of these words: 눈물, 진실, 딸, 허무, 마음.\nYour challenger last said:\n파란 녹이 낀 구리거울 속에\n내 얼골이 남어있는것은\nAnswer them.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "누경은 눈물처럼 흔들었다\n진실은 마음의 진하는 빛이었다",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 2,
+   "formKept": true,
+   "formEarned": 20,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "2/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": true,
+     "detail": "흔들었다 / 빛이었다"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 26,
+   "drafts": [
+    {
+     "raw": "눈물진진딸허무마음",
+     "tidy": "눈물진진딸허무마음",
+     "ms": 759,
+     "tokens": 12,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "누경은 눈물처럼 흔들었다  \n진실은 마음의 진하는 빛이었다",
+     "tidy": "누경은 눈물처럼 흔들었다\n진실은 마음의 진하는 빛이었다",
+     "ms": 1307,
+     "tokens": 22,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 72,
+     "rawLines": 2,
+     "expectedLines": 2,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 26
+    }
+   ]
+  },
+  {
+   "seed": 1018,
+   "roundIndex": 2,
+   "formId": "haiku",
+   "difficulty": "apprentice",
+   "card": "Odysseus",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "파란 녹이 낀 구리거울 속에\n내 얼골이 남어있는것은",
+   "prompt": [
+    "You are Odysseus in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Tell me, O Muse, of the man of many ways, who wandered far.\" You write short verse and nothing else.",
+    "Form: Haiku. Three lines of 5, 7 and 5 syllables.\nWrite exactly 3 lines.\nYour flourish: Use two words of 5 letters or more.\nYour challenger last said:\n파란 녹이 낀 구리거울 속에\n내 얼골이 남어있는것은\nAnswer them.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "파란 녹이 낀 구리거울 속에 내 얼골이 남어있는\n자물은 어두운 채 움지며",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/3"
+    },
+    {
+     "id": "syllables-1",
+     "met": false,
+     "detail": "19/5"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "10/7"
+    },
+    {
+     "id": "syllables-3",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "파란 녹이 낀 구리거울 속에 내 얼골이 남어있는\n\n자물은 어두운 채 움지며",
+     "tidy": "파란 녹이 낀 구리거울 속에 내 얼골이 남어있는\n자물은 어두운 채 움지며",
+     "ms": 1629,
+     "tokens": 33,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1019,
+   "roundIndex": 0,
+   "formId": "tercet",
+   "difficulty": "player",
+   "card": "Viola",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Viola in a duel of verses: theatrical, sharp, in character. Your line in the play: \"I am not what I am.\" You write short verse and nothing else.",
+    "Form: Tercet. Three lines; the first and last rhyme.\nWrite exactly 3 lines.\nYour flourish: Keep every line to 4 words or fewer.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "팔보라다",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "팔보라다",
+     "tidy": "팔보라다",
+     "ms": 204,
+     "tokens": 5,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "키의 자리에\n\n발라다",
+     "tidy": "키의 자리에\n발라다",
+     "ms": 442,
+     "tokens": 9,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1019,
+   "roundIndex": 1,
+   "formId": "epistrophe",
+   "difficulty": "player",
+   "card": "Tybalt",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "심심산천에 붙는 불은\n가신 님 무덤가에 금잔디",
+   "prompt": [
+    "You are Tybalt in a duel of verses: theatrical, sharp, in character. Your line in the play: \"What, drawn, and talk of peace? I hate the word.\" You write short verse and nothing else.",
+    "Form: Epistrophe. Three lines that all end on the same word.\nWrite exactly 3 lines.\nYour flourish: Cry out: end a line with an exclamation mark.\nYour challenger last said:\n심심산천에 붙는 불은\n가신 님 무덤가에 금잔디\nAnswer them.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "심심산천불쿨금잔디",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "same-ending",
+     "met": false,
+     "detail": "심심산천불쿨금잔디"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "심심산천불쿨금잔디",
+     "tidy": "심심산천불쿨금잔디",
+     "ms": 402,
+     "tokens": 12,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "심심산천불금잔디",
+     "tidy": "심심산천불금잔디",
+     "ms": 529,
+     "tokens": 9,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1019,
+   "roundIndex": 2,
+   "formId": "quatrain-aabb",
+   "difficulty": "master",
+   "card": "Titania",
+   "acrostic": null,
+   "relicWords": [
+    "책",
+    "폭풍",
+    "마법",
+    "책장",
+    "난파"
+   ],
+   "answering": "심심산천에 붙는 불은\n가신 님 무덤가에 금잔디",
+   "prompt": [
+    "You are Titania in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Come, sit thee down upon this flowery bed.\" You write short verse and nothing else.",
+    "Form: Paired Quatrain. Four lines: the first two rhyme, and the last two rhyme.\nWrite exactly 4 lines.\nYour flourish: Start three words in one line with the same letter.\nWork in at least two of these words: 책, 폭풍, 마법, 책장, 난파.\nYour challenger last said:\n심심산천에 붙는 불은\n가신 님 무덤가에 금잔디\nAnswer them.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "강한 낮",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/4"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "rhyme-3-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "강한 낮",
+     "tidy": "강한 낮",
+     "ms": 297,
+     "tokens": 4,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "강한 잉크로 밖을 바라다",
+     "tidy": "강한 잉크로 밖을 바라다",
+     "ms": 698,
+     "tokens": 12,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "다시 시작되라, 낮은 불\n\n작은 비누와 검은 잉크",
+     "tidy": "다시 시작되라, 낮은 불\n작은 비누와 검은 잉크",
+     "ms": 505,
+     "tokens": 22,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 116,
+     "rawLines": 2,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1020,
+   "roundIndex": 0,
+   "formId": "epistrophe",
+   "difficulty": "master",
+   "card": "Prince Escalus",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Prince Escalus in a duel of verses: theatrical, sharp, in character. Your line in the play: \"If ever you disturb our streets again, your lives shall pay the forfeit of the peace.\" You write short verse and nothing else.",
+    "Form: Epistrophe. Three lines that all end on the same word.\nWrite exactly 3 lines.\nYour flourish: Turn a word of 3 letters or more from your opponent's last verse back on them.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "한국어로 된 구절\n타푱이의 끝에 나온 말\n대처해야 할다면",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-ending",
+     "met": false,
+     "detail": "구절 · 말 · 할다면"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "한국어로 된 구절\n\n타푱이의 끝에 나온 말\n\n대처해야 할다면",
+     "tidy": "한국어로 된 구절\n타푱이의 끝에 나온 말\n대처해야 할다면",
+     "ms": 755,
+     "tokens": 25,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "방문객은 밤에 찾아다닐  \n침하자, 어머니는 눈을 숙지  \n이래오시나 걃을 망가",
+     "tidy": "방문객은 밤에 찾아다닐\n침하자, 어머니는 눈을 숙지\n이래오시나 걃을 망가",
+     "ms": 1593,
+     "tokens": 39,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "Korean: 한국\n\nTurn a third letter\n\n둥한 손",
+     "tidy": "Korean: 한국\nTurn a third letter\n둥한 손",
+     "ms": 533,
+     "tokens": 15,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1020,
+   "roundIndex": 1,
+   "formId": "heroic-couplet",
+   "difficulty": "player",
+   "card": "Apollo",
+   "acrostic": null,
+   "relicWords": [
+    "가면",
+    "꿈",
+    "광대",
+    "연극",
+    "달"
+   ],
+   "answering": "엄마야 누나야 강변 살자,\n뜰에는 반짝는 금모래빛,\n뒷문 밖에는 갈잎의 노래\n엄마야 누나야 강변 살자.",
+   "prompt": [
+    "You are Apollo in a duel of verses: theatrical, sharp, in character. Your line in the play: \"I am the god of song, of healing, and of the radiant sun.\" You write short verse and nothing else.",
+    "Form: Heroic Couplet. Two rhyming lines of about ten syllables each, as Shakespeare closed his sonnets.\nWrite exactly 2 lines.\nYour flourish: Use two words of 5 letters or more.\nWork in at least two of these words: 가면, 꿈, 광대, 연극, 달.\nYour challenger last said:\n엄마야 누나야 강변 살자,\n뜰에는 반짝는 금모래빛,\n뒷문 밖에는 갈잎의 노래\n엄마야 누나야 강변 살자.\nAnswer them.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "가면 꿈 광대 연극 달",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "syllables-1",
+     "met": false,
+     "detail": "8/10"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "가면꿈광대연극달",
+     "tidy": "가면꿈광대연극달",
+     "ms": 393,
+     "tokens": 10,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "가면 꿈 광대 연극 달",
+     "tidy": "가면 꿈 광대 연극 달",
+     "ms": 373,
+     "tokens": 10,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1020,
+   "roundIndex": 2,
+   "formId": "quatrain-abab",
+   "difficulty": "player",
+   "card": "Bottom",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "엄마야 누나야 강변 살자,\n뜰에는 반짝는 금모래빛,\n뒷문 밖에는 갈잎의 노래\n엄마야 누나야 강변 살자.",
+   "prompt": [
+    "You are Bottom in a duel of verses: theatrical, sharp, in character. Your line in the play: \"I have had a most rare vision. I have had a dream, past the wit of man.\" You write short verse and nothing else.",
+    "Form: Crossed Quatrain. Four lines: line 1 rhymes with 3, line 2 with 4.\nWrite exactly 4 lines.\nYour flourish: Start three words in one line with the same letter.\nYour challenger last said:\n엄마야 누나야 강변 살자,\n뜰에는 반짝는 금모래빛,\n뒷문 밖에는 갈잎의 노래\n엄마야 누나야 강변 살자.\nAnswer them.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "강바닥에서 비가 내려오다",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/4"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "rhyme-2-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "강바닥에서 비가 내려오다",
+     "tidy": "강바닥에서 비가 내려오다",
+     "ms": 380,
+     "tokens": 11,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "강바람 금조갈리",
+     "tidy": "강바람 금조갈리",
+     "ms": 350,
+     "tokens": 7,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1021,
+   "roundIndex": 0,
+   "formId": "couplet",
+   "difficulty": "master",
+   "card": "Aphrodite",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Aphrodite in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Even the gods cannot resist the power of love.\" You write short verse and nothing else.",
+    "Form: Couplet. Two lines that rhyme.\nWrite exactly 2 lines.\nYour flourish: Use two words of 5 letters or more.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "발라보기\n은꽤 마음이 어두운 밤에 꿀을 마시며 그리움을 느낌이다",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "2/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "발라보기 / 느낌이다"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "발라보기\n\n은꽤 마음이 어두운 밤에 꿀을 마시며 그리움을 느낌이다",
+     "tidy": "발라보기\n은꽤 마음이 어두운 밤에 꿀을 마시며 그리움을 느낌이다",
+     "ms": 1557,
+     "tokens": 32,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 2,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "모래의 빛, 눈부신 이름\n\n땜 탄 이 순간",
+     "tidy": "모래의 빛, 눈부신 이름\n땜 탄 이 순간",
+     "ms": 771,
+     "tokens": 20,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 72,
+     "rawLines": 2,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "파용한 도루자\n\n나비의 풍계",
+     "tidy": "파용한 도루자\n나비의 풍계",
+     "ms": 605,
+     "tokens": 13,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 72,
+     "rawLines": 2,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1021,
+   "roundIndex": 1,
+   "formId": "anaphora",
+   "difficulty": "master",
+   "card": "Zeus",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "내 고장 칠월은\n청포도가 익어가는 시절",
+   "prompt": [
+    "You are Zeus in a duel of verses: theatrical, sharp, in character. Your line in the play: \"I am the cloud-gatherer, lord of the wide heavens.\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same word.\nWrite exactly 3 lines.\nYour flourish: Use two words of 5 letters or more.\nYour challenger last said:\n내 고장 칠월은\n청포도가 익어가는 시절\nAnswer them.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "청포와 마을의 갈증",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "same-opening",
+     "met": false,
+     "detail": "청포와"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "청포와 마을의 갈증",
+     "tidy": "청포와 마을의 갈증",
+     "ms": 534,
+     "tokens": 8,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "청포도는 내고장으로 끝났다",
+     "tidy": "청포도는 내고장으로 끝났다",
+     "ms": 673,
+     "tokens": 11,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "황둥다",
+     "tidy": "황둥다",
+     "ms": 372,
+     "tokens": 5,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1021,
+   "roundIndex": 2,
+   "formId": "quatrain-aabb",
+   "difficulty": "apprentice",
+   "card": "Samuel Coleridge",
+   "acrostic": null,
+   "relicWords": [
+    "왕관",
+    "왕좌",
+    "야망",
+    "마녀",
+    "왕"
+   ],
+   "answering": "내 고장 칠월은\n청포도가 익어가는 시절",
+   "prompt": [
+    "You are Samuel Coleridge in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Water, water, every where, nor any drop to drink.\" You write short verse and nothing else.",
+    "Form: Paired Quatrain. Four lines: the first two rhyme, and the last two rhyme.\nWrite exactly 4 lines.\nYour flourish: Give every line the same number of words.\nWork in at least two of these words: 왕관, 왕좌, 야망, 마녀, 왕.\nYour challenger last said:\n내 고장 칠월은\n청포도가 익어가는 시절\nAnswer them.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "작은 풍경이 그려온다\n마법의 숨을 흐키는 빛사\n야망이 깃든 꽁은 시간에 도움\n마녀의 손으로 빼앾힘",
+   "source": "model",
+   "lines": 4,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "4/4"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "그려온다 / 빛사"
+    },
+    {
+     "id": "rhyme-3-4",
+     "met": false,
+     "detail": "도움 / 빼앾힘"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 12,
+   "drafts": [
+    {
+     "raw": "작은 풍경이 그려온다  \n마법의 숨을 흐키는 빛사  \n\n야망이 깃든 꽁은 시간에 도움  \n\n마녀의 손으로 빼앾힘",
+     "tidy": "작은 풍경이 그려온다\n마법의 숨을 흐키는 빛사\n야망이 깃든 꽁은 시간에 도움\n마녀의 손으로 빼앾힘",
+     "ms": 1962,
+     "tokens": 53,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 4,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 12
+    }
+   ]
+  },
+  {
+   "seed": 1022,
+   "roundIndex": 0,
+   "formId": "couplet",
+   "difficulty": "apprentice",
+   "card": "Lord Montague",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Lord Montague in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Many a morning hath he there been seen, with tears augmenting the fresh morning dew.\" You write short verse and nothing else.",
+    "Form: Couplet. Two lines that rhyme.\nWrite exactly 2 lines.\nYour flourish: Rhyme two words inside a single line.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "황하늘 아래의 노래무빠\n땜아다나가는 노래타푸",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "2/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "노래무빠 / 노래타푸"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "황하늘 아래의 노래무빠\n\n땜아다나가는 노래타푸",
+     "tidy": "황하늘 아래의 노래무빠\n땜아다나가는 노래타푸",
+     "ms": 749,
+     "tokens": 25,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 2,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1022,
+   "roundIndex": 1,
+   "formId": "quatrain-aabb",
+   "difficulty": "player",
+   "card": "John Keats",
+   "acrostic": null,
+   "relicWords": [
+    "반지",
+    "맹세",
+    "밤",
+    "추방",
+    "입맞춤"
+   ],
+   "answering": "이 마을 전설이 주절이주절이 열리고\n먼데 하늘이 꿈꾸며 알알이 들어와 박혀",
+   "prompt": [
+    "You are John Keats in a duel of verses: theatrical, sharp, in character. Your line in the play: \"A thing of beauty is a joy for ever: its loveliness increases.\" You write short verse and nothing else.",
+    "Form: Paired Quatrain. Four lines: the first two rhyme, and the last two rhyme.\nWrite exactly 4 lines.\nYour flourish: Give every line the same number of words.\nWork in at least two of these words: 반지, 맹세, 밤, 추방, 입맞춤.\nYour challenger last said:\n이 마을 전설이 주절이주절이 열리고\n먼데 하늘이 꿈꾸며 알알이 들어와 박혀\nAnswer them.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "반지 맹세 밤입알",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/4"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "rhyme-3-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "반지 맹세 밤입알",
+     "tidy": "반지 맹세 밤입알",
+     "ms": 305,
+     "tokens": 10,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    },
+    {
+     "raw": "반지 맞은입맞춤",
+     "tidy": "반지 맞은입맞춤",
+     "ms": 448,
+     "tokens": 9,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1022,
+   "roundIndex": 2,
+   "formId": "epistrophe",
+   "difficulty": "apprentice",
+   "card": "Hades",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "이 마을 전설이 주절이주절이 열리고\n먼데 하늘이 꿈꾸며 알알이 들어와 박혀",
+   "prompt": [
+    "You are Hades in a duel of verses: theatrical, sharp, in character. Your line in the play: \"All souls come to me in the end. I am patient.\" You write short verse and nothing else.",
+    "Form: Epistrophe. Three lines that all end on the same word.\nWrite exactly 3 lines.\nYour flourish: Turn a word of 3 letters or more from your opponent's last verse back on them.\nYour challenger last said:\n이 마을 전설이 주절이주절이 열리고\n먼데 하늘이 꿈꾸며 알알이 들어와 박혀\nAnswer them.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "한마을의 고귍, 한마도의 손, 한마두의 눈",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "same-ending",
+     "met": false,
+     "detail": "눈"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "한마을의 고귍, 한마도의 손, 한마두의 눈",
+     "tidy": "한마을의 고귍, 한마도의 손, 한마두의 눈",
+     "ms": 791,
+     "tokens": 19,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1023,
+   "roundIndex": 0,
+   "formId": "crescendo",
+   "difficulty": "player",
+   "card": "Brutus",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Brutus in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Not that I loved Caesar less, but that I loved Rome more.\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Call on a character by name.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "Call on the warrior\nOpen the battle\nTaunt your foe",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "growing",
+     "met": false,
+     "detail": "4 < 3 < 3"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "Call on the warrior\n\nOpen the battle\n\nTaunt your foe",
+     "tidy": "Call on the warrior\nOpen the battle\nTaunt your foe",
+     "ms": 563,
+     "tokens": 14,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "Call on Hana",
+     "tidy": "Call on Hana",
+     "ms": 304,
+     "tokens": 4,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1023,
+   "roundIndex": 1,
+   "formId": "quatrain-abab",
+   "difficulty": "master",
+   "card": "Elizabeth Barrett Browning",
+   "acrostic": null,
+   "relicWords": [
+    "해골",
+    "농담",
+    "무덤",
+    "웃음",
+    "먼지"
+   ],
+   "answering": "매운 계절(季節)의 채찍에 갈겨\n마침내 북방(北方)으로 휩쓸려오다",
+   "prompt": [
+    "You are Elizabeth Barrett Browning in a duel of verses: theatrical, sharp, in character. Your line in the play: \"How do I love thee? Let me count the ways.\" You write short verse and nothing else.",
+    "Form: Crossed Quatrain. Four lines: line 1 rhymes with 3, line 2 with 4.\nWrite exactly 4 lines.\nYour flourish: Give every line the same number of words.\nWork in at least two of these words: 해골, 농담, 무덤, 웃음, 먼지.\nYour challenger last said:\n매운 계절(季節)의 채찍에 갈겨\n마침내 북방(北方)으로 휩쓸려오다\nAnswer them.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "해골의 눈빛\n농담의 말\n웃음의 흔들림",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "3/4"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "눈빛 / 흔들림"
+    },
+    {
+     "id": "rhyme-2-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 9,
+   "drafts": [
+    {
+     "raw": "해골의 눈빛\n\n농담의 말\n\n웃음의 흔들림",
+     "tidy": "해골의 눈빛\n농담의 말\n웃음의 흔들림",
+     "ms": 805,
+     "tokens": 22,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 3,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 9
+    },
+    {
+     "raw": "해골농담무덤웃장치",
+     "tidy": "해골농담무덤웃장치",
+     "ms": 769,
+     "tokens": 13,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "해골 농담 무덤 웃음",
+     "tidy": "해골 농담 무덤 웃음",
+     "ms": 588,
+     "tokens": 11,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1023,
+   "roundIndex": 2,
+   "formId": "epistrophe",
+   "difficulty": "player",
+   "card": "Prospero",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "매운 계절(季節)의 채찍에 갈겨\n마침내 북방(北方)으로 휩쓸려오다",
+   "prompt": [
+    "You are Prospero in a duel of verses: theatrical, sharp, in character. Your line in the play: \"We are such stuff as dreams are made on.\" You write short verse and nothing else.",
+    "Form: Epistrophe. Three lines that all end on the same word.\nWrite exactly 3 lines.\nYour flourish: Make your last line your longest.\nYour challenger last said:\n매운 계절(季節)의 채찍에 갈겨\n마침내 북방(北方)으로 휩쓸려오다\nAnswer them.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "매운 계절이 따뜈한누워",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "same-ending",
+     "met": false,
+     "detail": "따뜈한누워"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "매운 계절이 따뜈한누워",
+     "tidy": "매운 계절이 따뜈한누워",
+     "ms": 549,
+     "tokens": 13,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "매운 계절, 채찍, 북방",
+     "tidy": "매운 계절, 채찍, 북방",
+     "ms": 590,
+     "tokens": 11,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1024,
+   "roundIndex": 1,
+   "formId": "heroic-couplet",
+   "difficulty": "master",
+   "card": "Aphrodite",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "말을 할까\n하니 그리워",
+   "prompt": [
+    "You are Aphrodite in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Even the gods cannot resist the power of love.\" You write short verse and nothing else.",
+    "Form: Heroic Couplet. Two rhyming lines of about ten syllables each, as Shakespeare closed his sonnets.\nWrite exactly 2 lines.\nYour flourish: Use two words of 5 letters or more.\nYour challenger last said:\n말을 할까\n하니 그리워\nAnswer them.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "말을 할까 하니\n빵빵",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 4,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "2/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "하니 / 빵빵"
+    },
+    {
+     "id": "syllables-1",
+     "met": false,
+     "detail": "6/10"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "2/10"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 4,
+   "drafts": [
+    {
+     "raw": "말을 할까 하니  \n빵빵",
+     "tidy": "말을 할까 하니\n빵빵",
+     "ms": 606,
+     "tokens": 11,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 2,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 4,
+     "craft": 4
+    },
+    {
+     "raw": "땅속의 아픔  \n별빛이 흩어진 하늘",
+     "tidy": "땅속의 아픔\n별빛이 흩어진 하늘",
+     "ms": 717,
+     "tokens": 19,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 72,
+     "rawLines": 2,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 4,
+     "craft": 4
+    },
+    {
+     "raw": "말을 할까  \n하니 그리워",
+     "tidy": "말을 할까\n하니 그리워",
+     "ms": 411,
+     "tokens": 10,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 72,
+     "rawLines": 2,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 4,
+     "craft": 4
+    }
+   ]
+  },
+  {
+   "seed": 1024,
+   "roundIndex": 2,
+   "formId": "epistrophe",
+   "difficulty": "master",
+   "card": "Odysseus",
+   "acrostic": null,
+   "relicWords": [
+    "황금",
+    "선택",
+    "자비",
+    "납",
+    "상자"
+   ],
+   "answering": "말을 할까\n하니 그리워",
+   "prompt": [
+    "You are Odysseus in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Tell me, O Muse, of the man of many ways, who wandered far.\" You write short verse and nothing else.",
+    "Form: Epistrophe. Three lines that all end on the same word.\nWrite exactly 3 lines.\nYour flourish: Use two words of 5 letters or more.\nWork in at least two of these words: 황금, 선택, 자비, 납, 상자.\nYour challenger last said:\n말을 할까\n하니 그리워\nAnswer them.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "황금의 희개로 말꾸렀다\n납의 염료에 따를렀다\n상자의 빛이 낮게 비교되었다",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-ending",
+     "met": false,
+     "detail": "말꾸렀다 · 따를렀다 · 비교되었다"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 12,
+   "drafts": [
+    {
+     "raw": "황금의 날씨, 자비가 빵으로 바를 내는  \n\n낮은 은빛, 상자의 고개를 꾸짓다",
+     "tidy": "황금의 날씨, 자비가 빵으로 바를 내는\n낮은 은빛, 상자의 고개를 꾸짓다",
+     "ms": 1397,
+     "tokens": 35,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    },
+    {
+     "raw": "황금의 희개로 말꾸렀다\n\n납의 염료에 따를렀다\n\n상자의 빛이 낮게 비교되었다",
+     "tidy": "황금의 희개로 말꾸렀다\n납의 염료에 따를렀다\n상자의 빛이 낮게 비교되었다",
+     "ms": 1616,
+     "tokens": 39,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 12
+    },
+    {
+     "raw": "황금의 빛이 낮은 바에 숨겨지다\n\n선택의 굴의 숫자가 자비 같은\n\n납상자의 상꿀처럼",
+     "tidy": "황금의 빛이 낮은 바에 숨겨지다\n선택의 굴의 숫자가 자비 같은\n납상자의 상꿀처럼",
+     "ms": 1347,
+     "tokens": 39,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 12
+    }
+   ]
+  },
+  {
+   "seed": 1025,
+   "roundIndex": 0,
+   "formId": "crescendo",
+   "difficulty": "master",
+   "card": "Titania",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Titania in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Come, sit thee down upon this flowery bed.\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Start three words in one line with the same letter.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "만화\n천사\n오아시스",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "growing",
+     "met": false,
+     "detail": "1 < 1 < 1"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "만화\n\n천사\n\n오아시스",
+     "tidy": "만화\n천사\n오아시스",
+     "ms": 471,
+     "tokens": 10,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "강한 노래\n\n야산\n\n그리스로",
+     "tidy": "강한 노래\n야산\n그리스로",
+     "ms": 379,
+     "tokens": 11,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "강한 화살\n\n타뇌\n\n노성",
+     "tidy": "강한 화살\n타뇌\n노성",
+     "ms": 390,
+     "tokens": 12,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1025,
+   "roundIndex": 1,
+   "formId": "epistrophe",
+   "difficulty": "apprentice",
+   "card": "Malvolio",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "진두강 가람가에 살던 누나는\n진두강 앞마을에\n와서 웁니다",
+   "prompt": [
+    "You are Malvolio in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Some are born great, some achieve greatness, and some have greatness thrust upon them.\" You write short verse and nothing else.",
+    "Form: Epistrophe. Three lines that all end on the same word.\nWrite exactly 3 lines.\nYour flourish: Keep every line to 4 words or fewer.\nYour challenger last said:\n진두강 가람가에 살던 누나는\n진두강 앞마을에\n와서 웁니다\nAnswer them.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "강은 가람에게 땅속으로 들어간다",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "same-ending",
+     "met": false,
+     "detail": "들어간다"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "강은 가람에게 땅속으로 들어간다",
+     "tidy": "강은 가람에게 땅속으로 들어간다",
+     "ms": 696,
+     "tokens": 13,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1025,
+   "roundIndex": 2,
+   "formId": "haiku",
+   "difficulty": "player",
+   "card": "Brutus",
+   "acrostic": null,
+   "relicWords": [
+    "황금",
+    "선택",
+    "자비",
+    "납",
+    "상자"
+   ],
+   "answering": "진두강 가람가에 살던 누나는\n진두강 앞마을에\n와서 웁니다",
+   "prompt": [
+    "You are Brutus in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Not that I loved Caesar less, but that I loved Rome more.\" You write short verse and nothing else.",
+    "Form: Haiku. Three lines of 5, 7 and 5 syllables.\nWrite exactly 3 lines.\nYour flourish: Call on a character by name.\nWork in at least two of these words: 황금, 선택, 자비, 납, 상자.\nYour challenger last said:\n진두강 가람가에 살던 누나는\n진두강 앞마을에\n와서 웁니다\nAnswer them.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "황금이 일어나는 자비\n사전에서 자비의 빛\n참고: 황금",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 5,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "syllables-1",
+     "met": false,
+     "detail": "9/5"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "8/7"
+    },
+    {
+     "id": "syllables-3",
+     "met": false,
+     "detail": "4/5"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 11,
+   "drafts": [
+    {
+     "raw": "환금 선택자 자비 납상자",
+     "tidy": "환금 선택자 자비 납상자",
+     "ms": 710,
+     "tokens": 10,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    },
+    {
+     "raw": "황금이 일어나는 자비  \n사전에서 자비의 빛  \n\n참고: 황금",
+     "tidy": "황금이 일어나는 자비\n사전에서 자비의 빛\n참고: 황금",
+     "ms": 1281,
+     "tokens": 26,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 5,
+     "craft": 11
+    }
+   ]
+  },
+  {
+   "seed": 1026,
+   "roundIndex": 0,
+   "formId": "quatrain-aabb",
+   "difficulty": "master",
+   "card": "Cassius",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Cassius in a duel of verses: theatrical, sharp, in character. Your line in the play: \"The fault, dear Brutus, is not in our stars, but in ourselves.\" You write short verse and nothing else.",
+    "Form: Paired Quatrain. Four lines: the first two rhyme, and the last two rhyme.\nWrite exactly 4 lines.\nYour flourish: Call on a character by name.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "Call on a character by name",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/4"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "rhyme-3-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Call on a character by name",
+     "tidy": "Call on a character by name",
+     "ms": 195,
+     "tokens": 6,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "카슈니엘",
+     "tidy": "카슈니엘",
+     "ms": 408,
+     "tokens": 6,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Call on Prestigious Mann",
+     "tidy": "Call on Prestigious Mann",
+     "ms": 178,
+     "tokens": 6,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1026,
+   "roundIndex": 1,
+   "formId": "heroic-couplet",
+   "difficulty": "apprentice",
+   "card": "Banquo",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "먼 훗날 당신이 찾으시면\n그때에 내 말이 `잊었노라'",
+   "prompt": [
+    "You are Banquo in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Thou shalt get kings, though thou be none.\" You write short verse and nothing else.",
+    "Form: Heroic Couplet. Two rhyming lines of about ten syllables each, as Shakespeare closed his sonnets.\nWrite exactly 2 lines.\nYour flourish: Repeat one strong word three times.\nYour challenger last said:\n먼 훗날 당신이 찾으시면\n그때에 내 말이 `잊었노라'\nAnswer them.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "강훗날 내 말을 잊었다\n떠머훗날 서자는",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 8,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "2/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "잊었다 / 서자는"
+    },
+    {
+     "id": "syllables-1",
+     "met": true,
+     "detail": "9/10"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "7/10"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 8,
+   "drafts": [
+    {
+     "raw": "강훗날 내 말을 잊었다\n\n떠머훗날 서자는",
+     "tidy": "강훗날 내 말을 잊었다\n떠머훗날 서자는",
+     "ms": 420,
+     "tokens": 22,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 2,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 8,
+     "craft": 8
+    }
+   ]
+  },
+  {
+   "seed": 1026,
+   "roundIndex": 2,
+   "formId": "tercet",
+   "difficulty": "master",
+   "card": "Odysseus",
+   "acrostic": null,
+   "relicWords": [
+    "반지",
+    "맹세",
+    "밤",
+    "추방",
+    "입맞춤"
+   ],
+   "answering": "먼 훗날 당신이 찾으시면\n그때에 내 말이 `잊었노라'",
+   "prompt": [
+    "You are Odysseus in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Tell me, O Muse, of the man of many ways, who wandered far.\" You write short verse and nothing else.",
+    "Form: Tercet. Three lines; the first and last rhyme.\nWrite exactly 3 lines.\nYour flourish: Use two words of 5 letters or more.\nWork in at least two of these words: 반지, 맹세, 밤, 추방, 입맞춤.\nYour challenger last said:\n먼 훗날 당신이 찾으시면\n그때에 내 말이 `잊었노라'\nAnswer them.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "반지 맹세 추방입맞춤",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "반지밣후방입",
+     "tidy": "반지밣후방입",
+     "ms": 214,
+     "tokens": 7,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "반지 맹세 추방입맞춤",
+     "tidy": "반지 맹세 추방입맞춤",
+     "ms": 518,
+     "tokens": 12,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    },
+    {
+     "raw": "반지와 추방의 날\n\n입맞춤은 넓다",
+     "tidy": "반지와 추방의 날\n입맞춤은 넓다",
+     "ms": 359,
+     "tokens": 17,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1027,
+   "roundIndex": 0,
+   "formId": "tercet",
+   "difficulty": "apprentice",
+   "card": "Miranda",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Miranda in a duel of verses: theatrical, sharp, in character. Your line in the play: \"O brave new world, that has such people in it!\" You write short verse and nothing else.",
+    "Form: Tercet. Three lines; the first and last rhyme.\nWrite exactly 3 lines.\nYour flourish: Make your last line your longest.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "태양이 지나서 눈을 흩어뜨린다\n오래 남는 채찍리\n만화꾼 이야기",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "흩어뜨린다 / 이야기"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "태양이 지나서 눈을 흩어뜨린다\n\n오래 남는 채찍리\n\n만화꾼 이야기",
+     "tidy": "태양이 지나서 눈을 흩어뜨린다\n오래 남는 채찍리\n만화꾼 이야기",
+     "ms": 823,
+     "tokens": 33,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1027,
+   "roundIndex": 1,
+   "formId": "quatrain-aabb",
+   "difficulty": "apprentice",
+   "card": "Elizabeth Barrett Browning",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "나 보기가 역겨워\n가실 때에는\n말없이 고이 보내드리오리다.",
+   "prompt": [
+    "You are Elizabeth Barrett Browning in a duel of verses: theatrical, sharp, in character. Your line in the play: \"How do I love thee? Let me count the ways.\" You write short verse and nothing else.",
+    "Form: Paired Quatrain. Four lines: the first two rhyme, and the last two rhyme.\nWrite exactly 4 lines.\nYour flourish: Give every line the same number of words.\nYour challenger last said:\n나 보기가 역겨워\n가실 때에는\n말없이 고이 보내드리오리다.\nAnswer them.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "나보기가역겨워말없이고이보다디다",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/4"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "rhyme-3-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "나보기가역겨워말없이고이보다디다",
+     "tidy": "나보기가역겨워말없이고이보다디다",
+     "ms": 552,
+     "tokens": 13,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1027,
+   "roundIndex": 2,
+   "formId": "haiku",
+   "difficulty": "master",
+   "card": "Viola",
+   "acrostic": null,
+   "relicWords": [
+    "눈물",
+    "진실",
+    "딸",
+    "허무",
+    "마음"
+   ],
+   "answering": "나 보기가 역겨워\n가실 때에는\n말없이 고이 보내드리오리다.",
+   "prompt": [
+    "You are Viola in a duel of verses: theatrical, sharp, in character. Your line in the play: \"I am not what I am.\" You write short verse and nothing else.",
+    "Form: Haiku. Three lines of 5, 7 and 5 syllables.\nWrite exactly 3 lines.\nYour flourish: Keep every line to 4 words or fewer.\nWork in at least two of these words: 눈물, 진실, 딸, 허무, 마음.\nYour challenger last said:\n나 보기가 역겨워\n가실 때에는\n말없이 고이 보내드리오리다.\nAnswer them.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "눈물진진딘 마음\n모든보동",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/3"
+    },
+    {
+     "id": "syllables-1",
+     "met": false,
+     "detail": "7/5"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "4/7"
+    },
+    {
+     "id": "syllables-3",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 9,
+   "drafts": [
+    {
+     "raw": "눈물진실딸허무마람",
+     "tidy": "눈물진실딸허무마람",
+     "ms": 350,
+     "tokens": 12,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "만물굁을 비숍으로",
+     "tidy": "만물굁을 비숍으로",
+     "ms": 501,
+     "tokens": 9,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "눈물진진딘 마음\n\n모든보동",
+     "tidy": "눈물진진딘 마음\n모든보동",
+     "ms": 602,
+     "tokens": 13,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 9
+    }
+   ]
+  },
+  {
+   "seed": 1028,
+   "roundIndex": 0,
+   "formId": "crescendo",
+   "difficulty": "apprentice",
+   "card": "Elizabeth Barrett Browning",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Elizabeth Barrett Browning in a duel of verses: theatrical, sharp, in character. Your line in the play: \"How do I love thee? Let me count the ways.\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Give every line the same number of words.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "어린 나이의 마음은 변화에 휩ぐ듭니다\n탕자\n그는 세상의 빛을 따르지 못했다",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "growing",
+     "met": false,
+     "detail": "5 < 1 < 5"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "어린 나이의 마음은 변화에 휩ぐ듭니다\n\n탕자\n\n그는 세상의 빛을 따르지 못했다\n\n타쉐",
+     "tidy": "어린 나이의 마음은 변화에 휩ぐ듭니다\n탕자\n그는 세상의 빛을 따르지 못했다",
+     "ms": 1741,
+     "tokens": 40,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 4,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1028,
+   "roundIndex": 1,
+   "formId": "acrostic",
+   "difficulty": "apprentice",
+   "card": "Romeo",
+   "acrostic": "무지개",
+   "relicWords": [
+    "반지",
+    "맹세",
+    "밤",
+    "추방",
+    "입맞춤"
+   ],
+   "answering": "가시는 걸음 걸음\n놓인 그 꽃을\n사뿐히 즈려밟고 가시옵소서.",
+   "prompt": [
+    "You are Romeo in a duel of verses: theatrical, sharp, in character. Your line in the play: \"But soft, what light through yonder window breaks?\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per letter: the first letters must spell 무지개.\nWrite exactly 3 lines.\nYour flourish: Rhyme two words inside a single line.\nWork in at least two of these words: 반지, 맹세, 밤, 추방, 입맞춤.\nYour challenger last said:\n가시는 걸음 걸음\n놓인 그 꽃을\n사뿐히 즈려밟고 가시옵소서.\nAnswer them.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "반지 맹세 밑지입맞춤",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "spells",
+     "met": false,
+     "detail": "반"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "반지 맹세 밑지입맞춤",
+     "tidy": "반지 맹세 밑지입맞춤",
+     "ms": 364,
+     "tokens": 13,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1029,
+   "roundIndex": 0,
+   "formId": "quatrain-abab",
+   "difficulty": "apprentice",
+   "card": "Lady Macbeth",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Lady Macbeth in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Come, you spirits that tend on mortal thoughts, unsex me here.\" You write short verse and nothing else.",
+    "Form: Crossed Quatrain. Four lines: line 1 rhymes with 3, line 2 with 4.\nWrite exactly 4 lines.\nYour flourish: Repeat one strong word three times.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "강한 단어를 반복해서 강조한다",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/4"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "rhyme-2-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "강한 단어를 반복해서 강조한다",
+     "tidy": "강한 단어를 반복해서 강조한다",
+     "ms": 640,
+     "tokens": 11,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1030,
+   "roundIndex": 0,
+   "formId": "haiku",
+   "difficulty": "apprentice",
+   "card": "Odysseus",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Odysseus in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Tell me, O Muse, of the man of many ways, who wandered far.\" You write short verse and nothing else.",
+    "Form: Haiku. Three lines of 5, 7 and 5 syllables.\nWrite exactly 3 lines.\nYour flourish: Use two words of 5 letters or more.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "대한다\n두려운\n오래요",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 5,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "syllables-1",
+     "met": false,
+     "detail": "3/5"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "3/7"
+    },
+    {
+     "id": "syllables-3",
+     "met": false,
+     "detail": "3/5"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 5,
+   "drafts": [
+    {
+     "raw": "대한다\n\n두려운\n\n오래요",
+     "tidy": "대한다\n두려운\n오래요",
+     "ms": 699,
+     "tokens": 10,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 5,
+     "craft": 5
+    }
+   ]
+  },
+  {
+   "seed": 1030,
+   "roundIndex": 1,
+   "formId": "quatrain-aabb",
+   "difficulty": "player",
+   "card": "Lady Macbeth",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "파란 녹이 낀 구리거울 속에\n내 얼골이 남어있는것은",
+   "prompt": [
+    "You are Lady Macbeth in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Come, you spirits that tend on mortal thoughts, unsex me here.\" You write short verse and nothing else.",
+    "Form: Paired Quatrain. Four lines: the first two rhyme, and the last two rhyme.\nWrite exactly 4 lines.\nYour flourish: Repeat one strong word three times.\nYour challenger last said:\n파란 녹이 낀 구리거울 속에\n내 얼골이 남어있는것은\nAnswer them.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "파란 녹이 낀 구리거울 속에 내 얼골이 남어있다",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/4"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "rhyme-3-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "파란 녹이 낀 구리거울 속에 내 얼골이 남어있다",
+     "tidy": "파란 녹이 낀 구리거울 속에 내 얼골이 남어있다",
+     "ms": 1046,
+     "tokens": 22,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "국방강",
+     "tidy": "국방강",
+     "ms": 189,
+     "tokens": 3,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1031,
+   "roundIndex": 2,
+   "formId": "quatrain-aabb",
+   "difficulty": "master",
+   "card": "Aphrodite",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "심심산천에 붙는 불은\n가신 님 무덤가에 금잔디",
+   "prompt": [
+    "You are Aphrodite in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Even the gods cannot resist the power of love.\" You write short verse and nothing else.",
+    "Form: Paired Quatrain. Four lines: the first two rhyme, and the last two rhyme.\nWrite exactly 4 lines.\nYour flourish: Use two words of 5 letters or more.\nYour challenger last said:\n심심산천에 붙는 불은\n가신 님 무덤가에 금잔디\nAnswer them.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "황삭각불이 가진 낮지만\n\"금잔디에서\"",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/4"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "낮지만 / 금잔디에서"
+    },
+    {
+     "id": "rhyme-3-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "황삭각불이 가진 낮지만\n\n\"금잔디에서\"",
+     "tidy": "황삭각불이 가진 낮지만\n\"금잔디에서\"",
+     "ms": 711,
+     "tokens": 19,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 2,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "부서는 고요하고 가슴부딝된다\n\n작은 불쾌하게 그게간 흐라\n\n숲의 서두면 가을다",
+     "tidy": "부서는 고요하고 가슴부딝된다\n작은 불쾌하게 그게간 흐라\n숲의 서두면 가을다",
+     "ms": 1369,
+     "tokens": 36,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 3,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "형태는 두 정요를 가집\n\n심심산천 불빛이 가신 무덤그금잔디",
+     "tidy": "형태는 두 정요를 가집\n심심산천 불빛이 가신 무덤그금잔디",
+     "ms": 1137,
+     "tokens": 28,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 116,
+     "rawLines": 2,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1032,
+   "roundIndex": 0,
+   "formId": "quatrain-aabb",
+   "difficulty": "apprentice",
+   "card": "Malvolio",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Malvolio in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Some are born great, some achieve greatness, and some have greatness thrust upon them.\" You write short verse and nothing else.",
+    "Form: Paired Quatrain. Four lines: the first two rhyme, and the last two rhyme.\nWrite exactly 4 lines.\nYour flourish: Keep every line to 4 words or fewer.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "팠타댁",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/4"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "rhyme-3-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "팠타댁",
+     "tidy": "팠타댁",
+     "ms": 211,
+     "tokens": 6,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1032,
+   "roundIndex": 2,
+   "formId": "crescendo",
+   "difficulty": "player",
+   "card": "Prince Escalus",
+   "acrostic": null,
+   "relicWords": [
+    "가면",
+    "꿈",
+    "광대",
+    "연극",
+    "달"
+   ],
+   "answering": "엄마야 누나야 강변 살자,\n뜰에는 반짝는 금모래빛,\n뒷문 밖에는 갈잎의 노래\n엄마야 누나야 강변 살자.",
+   "prompt": [
+    "You are Prince Escalus in a duel of verses: theatrical, sharp, in character. Your line in the play: \"If ever you disturb our streets again, your lives shall pay the forfeit of the peace.\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Turn a word of 3 letters or more from your opponent's last verse back on them.\nWork in at least two of these words: 가면, 꿈, 광대, 연극, 달.\nYour challenger last said:\n엄마야 누나야 강변 살자,\n뜰에는 반짝는 금모래빛,\n뒷문 밖에는 갈잎의 노래\n엄마야 누나야 강변 살자.\nAnswer them.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "가면 꿓다\n광대 연극\n달 노래",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "growing",
+     "met": false,
+     "detail": "2 < 2 < 2"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 12,
+   "drafts": [
+    {
+     "raw": "가면 꿓다  \n광대 연극  \n\n달 노래",
+     "tidy": "가면 꿓다\n광대 연극\n달 노래",
+     "ms": 386,
+     "tokens": 16,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 12
+    },
+    {
+     "raw": "갈잎눈",
+     "tidy": "갈잎눈",
+     "ms": 388,
+     "tokens": 5,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1033,
+   "roundIndex": 0,
+   "formId": "quatrain-abab",
+   "difficulty": "player",
+   "card": "Lord Montague",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Lord Montague in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Many a morning hath he there been seen, with tears augmenting the fresh morning dew.\" You write short verse and nothing else.",
+    "Form: Crossed Quatrain. Four lines: line 1 rhymes with 3, line 2 with 4.\nWrite exactly 4 lines.\nYour flourish: Rhyme two words inside a single line.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "한 노동자가 두려움을 내다 태다\n뱃 이 루틴에 숨겨져 있다",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/4"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "rhyme-2-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "한 노동자가 두려움을 내다 태다\n\n뱃 이 루틴에 숨겨져 있다",
+     "tidy": "한 노동자가 두려움을 내다 태다\n뱃 이 루틴에 숨겨져 있다",
+     "ms": 1270,
+     "tokens": 28,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 2,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "태양이 진나무 아래 반짝오는",
+     "tidy": "태양이 진나무 아래 반짝오는",
+     "ms": 356,
+     "tokens": 13,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1033,
+   "roundIndex": 2,
+   "formId": "crescendo",
+   "difficulty": "master",
+   "card": "Oberon",
+   "acrostic": null,
+   "relicWords": [
+    "해골",
+    "농담",
+    "무덤",
+    "웃음",
+    "먼지"
+   ],
+   "answering": "내 고장 칠월은\n청포도가 익어가는 시절",
+   "prompt": [
+    "You are Oberon in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Ill met by moonlight, proud Titania.\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Start three words in one line with the same letter.\nWork in at least two of these words: 해골, 농담, 무덤, 웃음, 먼지.\nYour challenger last said:\n내 고장 칠월은\n청포도가 익어가는 시절\nAnswer them.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "해골 농담 먼지",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "growing",
+     "met": false,
+     "detail": "3"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "해골농담무덤웃",
+     "tidy": "해골농담무덤웃",
+     "ms": 361,
+     "tokens": 11,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "해골 농담 먼지",
+     "tidy": "해골 농담 먼지",
+     "ms": 445,
+     "tokens": 8,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    },
+    {
+     "raw": "해골이 농담을 얕게\n\n웲음 먼지",
+     "tidy": "해골이 농담을 얕게\n웲음 먼지",
+     "ms": 696,
+     "tokens": 17,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1034,
+   "roundIndex": 1,
+   "formId": "anaphora",
+   "difficulty": "apprentice",
+   "card": "Medusa",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "이 마을 전설이 주절이주절이 열리고\n먼데 하늘이 꿈꾸며 알알이 들어와 박혀",
+   "prompt": [
+    "You are Medusa in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Look upon me, if you dare. My gaze is the last thing you will see.\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same word.\nWrite exactly 3 lines.\nYour flourish: Turn a word of 3 letters or more from your opponent's last verse back on them.\nYour challenger last said:\n이 마을 전설이 주절이주절이 열리고\n먼데 하늘이 꿈꾸며 알알이 들어와 박혀\nAnswer them.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "마을전설이주절이",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "same-opening",
+     "met": false,
+     "detail": "마을전설이주절이"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "마을전설이주절이",
+     "tidy": "마을전설이주절이",
+     "ms": 425,
+     "tokens": 8,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1035,
+   "roundIndex": 0,
+   "formId": "anaphora",
+   "difficulty": "player",
+   "card": "Cassius",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Cassius in a duel of verses: theatrical, sharp, in character. Your line in the play: \"The fault, dear Brutus, is not in our stars, but in ourselves.\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same word.\nWrite exactly 3 lines.\nYour flourish: Call on a character by name.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "Call on a character by name\nOpen the duel",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/3"
+    },
+    {
+     "id": "same-opening",
+     "met": false,
+     "detail": "call · open"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Call on a character by name  \nOpen the duel",
+     "tidy": "Call on a character by name\nOpen the duel",
+     "ms": 438,
+     "tokens": 11,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Call on Nabe",
+     "tidy": "Call on Nabe",
+     "ms": 260,
+     "tokens": 4,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1036,
+   "roundIndex": 0,
+   "formId": "quatrain-abab",
+   "difficulty": "master",
+   "card": "Friar Lawrence",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Friar Lawrence in a duel of verses: theatrical, sharp, in character. Your line in the play: \"These violent delights have violent ends.\" You write short verse and nothing else.",
+    "Form: Crossed Quatrain. Four lines: line 1 rhymes with 3, line 2 with 4.\nWrite exactly 4 lines.\nYour flourish: Turn a word of 3 letters or more from your opponent's last verse back on them.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "푸르크의 진은 세 가지를 포함\n발휘하는 톤",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/4"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "rhyme-2-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "푸르크의 진은 세 가지를 포함\n\n발휘하는 톤",
+     "tidy": "푸르크의 진은 세 가지를 포함\n발휘하는 톤",
+     "ms": 765,
+     "tokens": 21,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 2,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Turn words three times",
+     "tidy": "Turn words three times",
+     "ms": 340,
+     "tokens": 4,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "하나의 나뭊과 별서",
+     "tidy": "하나의 나뭊과 별서",
+     "ms": 597,
+     "tokens": 11,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1036,
+   "roundIndex": 1,
+   "formId": "crescendo",
+   "difficulty": "apprentice",
+   "card": "Paris",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "말을 할까\n하니 그리워",
+   "prompt": [
+    "You are Paris in a duel of verses: theatrical, sharp, in character. Your line in the play: \"These times of woe afford no time to woo.\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Turn a word of 3 letters or more from your opponent's last verse back on them.\nYour challenger last said:\n말을 할까\n하니 그리워\nAnswer them.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "말을 할까 하니",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "growing",
+     "met": false,
+     "detail": "3"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "말을 할까 하니",
+     "tidy": "말을 할까 하니",
+     "ms": 225,
+     "tokens": 6,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1037,
+   "roundIndex": 1,
+   "formId": "anaphora",
+   "difficulty": "master",
+   "card": "Lady Capulet",
+   "acrostic": null,
+   "relicWords": [
+    "반지",
+    "맹세",
+    "밤",
+    "추방",
+    "입맞춤"
+   ],
+   "answering": "진두강 가람가에 살던 누나는\n진두강 앞마을에\n와서 웁니다",
+   "prompt": [
+    "You are Lady Capulet in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Marry, that marry is the very theme I came to talk of.\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same word.\nWrite exactly 3 lines.\nYour flourish: Cry out: end a line with an exclamation mark.\nWork in at least two of these words: 반지, 맹세, 밤, 추방, 입맞춤.\nYour challenger last said:\n진두강 가람가에 살던 누나는\n진두강 앞마을에\n와서 웁니다\nAnswer them.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "반지\n추방\n입맞춤",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-opening",
+     "met": false,
+     "detail": "반지 · 추방 · 입맞춤"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 12,
+   "drafts": [
+    {
+     "raw": "반지 맹세 추방입맞춤",
+     "tidy": "반지 맹세 추방입맞춤",
+     "ms": 590,
+     "tokens": 12,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    },
+    {
+     "raw": "반지\n\n추방\n\n입맞춤",
+     "tidy": "반지\n추방\n입맞춤",
+     "ms": 393,
+     "tokens": 11,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 12
+    },
+    {
+     "raw": "반지맞춤완달추방",
+     "tidy": "반지맞춤완달추방",
+     "ms": 421,
+     "tokens": 11,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1038,
+   "roundIndex": 1,
+   "formId": "quatrain-abab",
+   "difficulty": "apprentice",
+   "card": "Percy Bysshe Shelley",
+   "acrostic": null,
+   "relicWords": [
+    "왕관",
+    "왕좌",
+    "야망",
+    "마녀",
+    "왕"
+   ],
+   "answering": "먼 훗날 당신이 찾으시면\n그때에 내 말이 `잊었노라'",
+   "prompt": [
+    "You are Percy Bysshe Shelley in a duel of verses: theatrical, sharp, in character. Your line in the play: \"If Winter comes, can Spring be far behind?\" You write short verse and nothing else.",
+    "Form: Crossed Quatrain. Four lines: line 1 rhymes with 3, line 2 with 4.\nWrite exactly 4 lines.\nYour flourish: End your verse on the same word it began with.\nWork in at least two of these words: 왕관, 왕좌, 야망, 마녀, 왕.\nYour challenger last said:\n먼 훗날 당신이 찾으시면\n그때에 내 말이 `잊었노라'\nAnswer them.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "왕관, 왕좌, 야망,마녀",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/4"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "rhyme-2-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "왕관, 왕좌, 야망,마녀",
+     "tidy": "왕관, 왕좌, 야망,마녀",
+     "ms": 449,
+     "tokens": 14,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1038,
+   "roundIndex": 2,
+   "formId": "anaphora",
+   "difficulty": "apprentice",
+   "card": "Miranda",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "먼 훗날 당신이 찾으시면\n그때에 내 말이 `잊었노라'",
+   "prompt": [
+    "You are Miranda in a duel of verses: theatrical, sharp, in character. Your line in the play: \"O brave new world, that has such people in it!\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same word.\nWrite exactly 3 lines.\nYour flourish: Make your last line your longest.\nYour challenger last said:\n먼 훗날 당신이 찾으시면\n그때에 내 말이 `잊었노라'\nAnswer them.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "먼 훗날 너가 찾으시면\n그때에 내 말이 잊었노라",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/3"
+    },
+    {
+     "id": "same-opening",
+     "met": false,
+     "detail": "먼 · 그때에"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "먼 훗날 너가 찾으시면  \n그때에 내 말이 잊었노라",
+     "tidy": "먼 훗날 너가 찾으시면\n그때에 내 말이 잊었노라",
+     "ms": 893,
+     "tokens": 24,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1040,
+   "roundIndex": 2,
+   "formId": "anaphora",
+   "difficulty": "player",
+   "card": "Mary Shelley",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "가시는 걸음 걸음\n놓인 그 꽃을\n사뿐히 즈려밟고 가시옵소서.",
+   "prompt": [
+    "You are Mary Shelley in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Beware; for I am fearless, and therefore powerful.\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same word.\nWrite exactly 3 lines.\nYour flourish: End your verse on the same word it began with.\nYour challenger last said:\n가시는 걸음 걸음\n놓인 그 꽃을\n사뿐히 즈려밟고 가시옵소서.\nAnswer them.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "가시는 걸음\n놓인그꽂다\n사뮀로",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-opening",
+     "met": false,
+     "detail": "가시는 · 놓인그꽂다 · 사뮀로"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "가시는 걸음\n\n놓인그꽂다\n\n사뮀로",
+     "tidy": "가시는 걸음\n놓인그꽂다\n사뮀로",
+     "ms": 722,
+     "tokens": 18,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "가시로 여다",
+     "tidy": "가시로 여다",
+     "ms": 143,
+     "tokens": 5,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1043,
+   "roundIndex": 0,
+   "formId": "anaphora",
+   "difficulty": "master",
+   "card": "Benvolio",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Benvolio in a duel of verses: theatrical, sharp, in character. Your line in the play: \"I do but keep the peace. Put up thy sword.\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same word.\nWrite exactly 3 lines.\nYour flourish: Rhyme two words inside a single line.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "강한 칭찬",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "same-opening",
+     "met": false,
+     "detail": "강한"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "강한 칭찬",
+     "tidy": "강한 칭찬",
+     "ms": 138,
+     "tokens": 5,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "카이지만 두두\n\n오래가는 나리",
+     "tidy": "카이지만 두두\n오래가는 나리",
+     "ms": 275,
+     "tokens": 11,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "아래 두 단어가 하나 들어갑니다\n\n하얀거름",
+     "tidy": "아래 두 단어가 하나 들어갑니다\n하얀거름",
+     "ms": 651,
+     "tokens": 17,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1054,
+   "roundIndex": 2,
+   "formId": "anaphora",
+   "difficulty": "apprentice",
+   "card": "Benvolio",
+   "acrostic": null,
+   "relicWords": [
+    "단검",
+    "피",
+    "잠",
+    "환영",
+    "손"
+   ],
+   "answering": "파란 녹이 낀 구리거울 속에\n내 얼골이 남어있는것은",
+   "prompt": [
+    "You are Benvolio in a duel of verses: theatrical, sharp, in character. Your line in the play: \"I do but keep the peace. Put up thy sword.\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same word.\nWrite exactly 3 lines.\nYour flourish: Rhyme two words inside a single line.\nWork in at least two of these words: 단검, 피, 잠, 환영, 손.\nYour challenger last said:\n파란 녹이 낀 구리거울 속에\n내 얼골이 남어있는것은\nAnswer them.\nWrite only the verse, in Korean. No title, no notes, no explanation."
+   ],
+   "verse": "환영 단검",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "same-opening",
+     "met": false,
+     "detail": "환영"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "환영 단검",
+     "tidy": "환영 단검",
+     "ms": 172,
+     "tokens": 4,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    }
+   ]
+  }
+ ],
+ "seconds": 127
+}

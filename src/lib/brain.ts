@@ -62,7 +62,7 @@ export const MODELS: Record<Exclude<Tier, 'none'>, ModelSpec> = {
     // docs/language/model-eval/cells/grand.<lang>.write.json
     writesIn: ['en', 'es', 'fr', 'de', 'it', 'pt', 'pl', 'ru'],
     // docs/language/model-eval/cells/grand.<lang>.judge.json
-    judgesIn: ['en', 'fr', 'de', 'pt', 'ru', 'ar', 'hi', 'zh'],
+    judgesIn: ['en', 'fr', 'de', 'pt', 'ru', 'ar', 'hi', 'zh', 'ja', 'ko'],
   },
   standard: {
     tier: 'standard', id: 'onnx-community/LFM3-1.7B-ONNX', dtype: 'q4f16', label: 'LFM3 1.7B', megabytes: 1090, judge: 'compare',

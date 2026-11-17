@@ -20,7 +20,9 @@
     "ru",
     "ar",
     "hi",
-    "zh"
+    "zh",
+    "ja",
+    "ko"
    ]
   },
   "standard": {
@@ -45,7 +47,9 @@
     "ru",
     "ar",
     "hi",
-    "zh"
+    "zh",
+    "ja",
+    "ko"
    ],
    "write": [
     "en",
@@ -58,7 +62,9 @@
     "ru",
     "ar",
     "hi",
-    "zh"
+    "zh",
+    "ja",
+    "ko"
    ]
   },
   "standard": {
@@ -73,7 +79,9 @@
     "ru",
     "ar",
     "hi",
-    "zh"
+    "zh",
+    "ja",
+    "ko"
    ],
    "write": [
     "en",
@@ -86,7 +94,9 @@
     "ru",
     "ar",
     "hi",
-    "zh"
+    "zh",
+    "ja",
+    "ko"
    ]
   },
   "lite": {
@@ -101,7 +111,9 @@
     "ru",
     "ar",
     "hi",
-    "zh"
+    "zh",
+    "ja",
+    "ko"
    ],
    "write": [
     "en",
@@ -114,7 +126,9 @@
     "ru",
     "ar",
     "hi",
-    "zh"
+    "zh",
+    "ja",
+    "ko"
    ]
   }
  },
@@ -178,19 +192,15 @@
    },
    "ja": {
     "writes": [
-     "not measured"
+     "commentary in 11/50 plays"
     ],
-    "judges": [
-     "not measured"
-    ]
+    "judges": []
    },
    "ko": {
     "writes": [
-     "not measured"
+     "kept the form in full in 29/100 plays (29%), under 30%"
     ],
-    "judges": [
-     "not measured"
-    ]
+    "judges": []
    },
    "vi": {
     "writes": [
@@ -338,18 +348,24 @@
    },
    "ja": {
     "writes": [
-     "not measured"
+     "in the language in 6/50 plays (12%), under 90%",
+     "commentary in 45/50 plays",
+     "kept the form in full in 5/50 plays (10%), under 30%"
     ],
     "judges": [
-     "not measured"
+     "better verse won 6/12 pairs: the 95% interval reaches down to 0.25, not above chance",
+     "preferred the better verse on 21/48 criteria (44%), under 70%"
     ]
    },
    "ko": {
     "writes": [
-     "not measured"
+     "in the language in 4/100 plays (4%), under 90%",
+     "commentary in 96/100 plays",
+     "kept the form in full in 4/100 plays (4%), under 30%"
     ],
     "judges": [
-     "not measured"
+     "better verse won 8/12 pairs: the 95% interval reaches down to 0.39, not above chance",
+     "preferred the better verse on 31/48 criteria (65%), under 70%"
     ]
    },
    "vi": {
@@ -487,18 +503,20 @@
    },
    "ja": {
     "writes": [
-     "not measured"
+     "kept the form in full in 1/50 plays (2%), under 30%"
     ],
     "judges": [
-     "not measured"
+     "better verse won 4/12 pairs: the 95% interval reaches down to 0.14, not above chance",
+     "preferred the better verse on 7/48 criteria (15%), under 70%"
     ]
    },
    "ko": {
     "writes": [
-     "not measured"
+     "kept the form in full in 3/100 plays (3%), under 30%"
     ],
     "judges": [
-     "not measured"
+     "better verse won 4/12 pairs: the 95% interval reaches down to 0.14, not above chance",
+     "preferred the better verse on 5/48 criteria (10%), under 70%"
     ]
    },
    "vi": {
