@@ -11,8 +11,14 @@
  *   judge = this side's share of JUDGE_POOL, from comparing the two verses
  *
  * A verse that is empty, too thin to be a verse (text.ts `substance`) or taken
- * from the other side's verse (text.ts `similarity`) is void: it lands nothing
- * and its craft is 0. A player's copied verse also forfeits the judge.
+ * from the other side's verse (text.ts `copyOf`) is void: it lands nothing and
+ * its craft is 0. A player's copied verse also forfeits the judge.
+ *
+ * Form points scale with the share of the verse that is words of its language
+ * (FormScore.scale), and the multiplier's bonuses with what the verse says
+ * beyond the words that land its device and signature (VerseScore.substance),
+ * so tokens laid out in a form's shape, or a chant that is only its device,
+ * cannot multiply themselves into a winning score.
  *
  * Everything in this file is pure and seeded: the same seed, deck and verses
  * always produce the same plan and the same scores. No randomness is applied
@@ -35,7 +41,7 @@ import {
 } from './devices';
 import { formsFor, scoreForm, type Form, type FormContext, type FormScore } from './forms';
 import { getPack } from './packs';
-import { cleanVerse, similarity, wordsOf } from './text';
+import { cleanVerse, copyOf, ownContent, wordsOf, type CopyMeasure } from './text';
 
 export const ROUNDS = 3;
 export const START_INK = 2;
@@ -44,8 +50,50 @@ export const RELIC_COST = 1;
 export const POTION_COST = 1;
 /** Points the judge shares between the two verses each round. */
 export const JUDGE_POOL = 24;
-/** A verse this similar to the other side's (text.ts `similarity`) is a copy, not an answer. */
-export const COPY_THRESHOLD = 0.5;
+/**
+ * A verse is a copy, not an answer (isCopy), when either
+ *   - it carries the other verse's lines over, each into a line of its own (text.ts copyOf
+ *     `carry`, every word counted): every line of COPY_LINE_WORDS words or more but one (all of
+ *     them in a couplet) has COPY_LINE_SHARE of its words said in its order by a line of the verse,
+ *     its last word, the one its rhyme stands on, among them. Words dropped from each line, a few
+ *     put in, neighbours swapped and the lines moved however the form allows leave this whole; an
+ *     answer throws words back into one line or two, and its little words seldom fall in the
+ *     other's order. Only for a verse of COPY_LINE_SOURCE words or more: in a shorter one a line of
+ *     three words is two thrown words and a little one. Or
+ *   - it takes more than three of the other side's content words in order (COPY_MIN_TAKEN: the
+ *     Riposte asks for two or three thrown back) and they are at least COPY_THRESHOLD of its own
+ *     content words (it adds little), or at least COPY_COVERAGE_ALONE of the other verse's content
+ *     words however laid out, or COPY_COVERAGE of them with two or more in each of two lines or
+ *     more (it carries the other verse over, whatever it adds: words put into every line leave all
+ *     of the other's in place), or
+ *   - it says COPY_ANY_ORDER_MIN or more of the other verse's content words in any order, and
+ *     COPY_COVERAGE_ALONE of them, and COPY_THRESHOLD of all its words, the little ones too (its
+ *     lines shuffled word by word; a Riposte's thrown words and one more said by chance leave the
+ *     other's little words behind), or COPY_COVERAGE_ALONE of all the words of a verse of
+ *     COPY_LINE_SOURCE words or more, in any order, or
+ *   - it has no content word of its own and COPY_THRESHOLD of all its words, three or more, are the
+ *     other's in order (the other verse with words deleted).
+ * Set from measurement (review.test.ts, finding 24): see docs/language/RULES-MEASUREMENTS.md for the
+ * copies and the honest pairs and answers on either side of each threshold, in every language.
+ */
+export const COPY_THRESHOLD = 0.7;
+export const COPY_COVERAGE = 0.85;
+export const COPY_COVERAGE_ALONE = 0.9;
+export const COPY_MIN_TAKEN = 4;
+/** Content words said in any order that a shuffled copy must carry: more than a Riposte's three. */
+export const COPY_ANY_ORDER_MIN = 4;
+/** Words a line of the other verse needs before the line rule counts it (shorter lines are a word or two). */
+export const COPY_LINE_WORDS = 3;
+/** Share of a line's words, its last among them, that a line of the verse says in order when it carries that line over. */
+export const COPY_LINE_SHARE = 0.6;
+/** Words the other verse needs before the line rule applies at all. */
+export const COPY_LINE_SOURCE = 7;
+/**
+ * Content words of its own, beyond those that land its device and signature, that a verse
+ * needs per line its form asks for before its multiplier's bonuses apply in full (scoreVerse).
+ * Measured in review.test.ts (finding 25) against the bank's honest verses.
+ */
+export const OWN_WORDS_PER_LINE = 1.5;
 
 export interface DuelDeck {
   characters: string[];
@@ -117,6 +165,11 @@ export interface VerseScore {
   powerWords?: { used: string[]; met: boolean; bonus: number };
   /** The curse by id; its name is the message `curse.<id>.name`. */
   curse?: { id: string; violations: number; penalty: number };
+  /**
+   * How far the multiplier's bonuses apply, from 0 to 1: the verse's own content words beyond
+   * those that land its device and signature, one a line the form asks for (text.ts ownContent).
+   */
+  substance: number;
   craft: number;
   /**
    * Set when the verse earns nothing: it is empty, too thin to be a verse, or
@@ -318,16 +371,49 @@ export interface ScoreInput {
 
 const CHARACTER_NAMES = invocationNames(CARD_CATALOG.filter((c) => c.type === 'Character').map((c) => c.name));
 
+/** Does `c` carry the other verse's lines over, each into a line of its own (see COPY_LINE_SHARE)? */
+export function carriesLines(c: CopyMeasure): boolean {
+  const words = c.carry.reduce((n, l) => n + l.source, 0);
+  const lines = c.carry.filter((l) => l.source >= COPY_LINE_WORDS);
+  if (lines.length < 2 || words < COPY_LINE_SOURCE) return false;
+  const carried = lines.filter((l) => l.end && l.said >= 2 && l.said >= Math.ceil(COPY_LINE_SHARE * l.source)).length;
+  return carried >= (lines.length >= 3 ? lines.length - 1 : lines.length);
+}
+
+/** Is `verse` a copy of `answered` (see COPY_THRESHOLD)? */
+export function isCopy(verse: string, answered: string, lang: string): boolean {
+  if (!answered) return false;
+  const c = copyOf(verse, answered, lang);
+  if (carriesLines(c)) return true;
+  // Every word counted, the little ones too: asked only when the content words leave it open.
+  let all: CopyMeasure | undefined;
+  const allWords = () => (all ??= copyOf(verse, answered, lang, { all: true }));
+  // Nothing of its own: every content word is the other's, and so are nearly all its little words
+  // (a short verse with words deleted, or two of the other's words said with "so" between them).
+  if (c.own === 0 && allWords().taken >= 3 && allWords().share >= COPY_THRESHOLD) return true;
+  // Said in any order, as often as the source says them, and most of the source's little words with them
+  // (a Riposte's thrown words and one more said by chance leave the little words behind); or nearly
+  // every word of a verse of COPY_LINE_SOURCE words or more, the little ones too, in any order (where
+  // a shuffle leaves too few content words to count: a Chinese line cut into single characters).
+  if (Math.round(c.anyOrder * c.source) >= COPY_ANY_ORDER_MIN && c.anyOrder >= COPY_COVERAGE_ALONE && allWords().anyOrder >= COPY_THRESHOLD) return true;
+  if (allWords().source >= COPY_LINE_SOURCE && allWords().anyOrder >= COPY_COVERAGE_ALONE) return true;
+  if (c.taken < COPY_MIN_TAKEN) return false;
+  const spread = c.perLine.filter((n) => n >= 2).length >= 2;
+  return c.share >= COPY_THRESHOLD || c.coverage >= COPY_COVERAGE_ALONE || (spread && c.coverage >= COPY_COVERAGE);
+}
+
 /** Why a verse earns nothing, or undefined when it is a verse of the writer's own. */
 function voidReason(verse: string, form: FormScore, lang: string, answered: string): VerseScore['voided'] {
   if (!verse || !wordsOf(verse, lang).length) return 'empty';
   if (form.thin) return 'thin';
-  if (answered && similarity(verse, answered, lang) >= COPY_THRESHOLD) return 'copied';
+  if (isCopy(verse, answered, lang)) return 'copied';
   return undefined;
 }
 
 export function scoreVerse(input: ScoreInput): VerseScore {
   const verse = cleanVerse(input.verse);
+  // A curse reads the verse as typed: a word that mixes alphabets is itself the trick (text.ts wordsAsRead).
+  const typed = cleanVerse(input.verse, { unmix: false });
   const form = scoreForm(input.form, verse, input.ctx);
   const lang = input.ctx.lang;
   const answered = input.opponentVerse ? cleanVerse(input.opponentVerse) : '';
@@ -341,7 +427,13 @@ export function scoreVerse(input: ScoreInput): VerseScore {
 
   const sameHouse = input.deckCharacters.filter((id) => getCardById(id)?.house === input.card.house).length;
   const synergy = device.met && sameHouse >= 2;
-  const multiplier = 1 + (device.met ? 0.5 : 0) + (signature.met ? 0.5 : 0) + (synergy ? 0.25 : 0);
+  // A multiplier multiplies what the verse says: its own content words beyond those that land the
+  // device and the signature, one a line the form asks for. "Dare / Dare me / Dare me, who dares" is
+  // its device and its signature and nothing else, so it multiplies nothing.
+  const used = [...(device.met ? device.words ?? [] : []), ...(signature.met ? signature.words ?? [] : [])];
+  const substance = voided ? 0 : Math.min(1, ownContent(verse, lang, used) / (OWN_WORDS_PER_LINE * Math.max(1, input.form.lines(input.ctx))));
+  const bonus = (device.met ? 0.5 : 0) + (signature.met ? 0.5 : 0) + (synergy ? 0.25 : 0);
+  const multiplier = 1 + Math.round(bonus * substance * 100) / 100;
 
   let power: VerseScore['powerWords'];
   if (input.lent) {
@@ -352,14 +444,14 @@ export function scoreVerse(input: ScoreInput): VerseScore {
   let curse: VerseScore['curse'];
   if (input.curse) {
     const c = CURSES[input.curse.curseId];
-    const violations = c.violations(verse, input.curse.param, lang);
+    const violations = c.violations(typed, input.curse.param, lang);
     curse = { id: c.id, violations, penalty: Math.min(CURSE_PENALTY_CAP, violations * CURSE_PENALTY) };
   }
 
   // A void verse earns nothing, whatever the cards say.
   const base = voided ? 0 : form.earned + (power?.bonus ?? 0);
   const craft = Math.max(0, Math.round(base * multiplier) - (curse?.penalty ?? 0));
-  return { form, device, signature, synergy, multiplier, powerWords: power, curse, craft, ...(voided ? { voided } : {}) };
+  return { form, device, signature, synergy, multiplier, powerWords: power, curse, substance, craft, ...(voided ? { voided } : {}) };
 }
 
 /** The judge's split when a verse is a copy: every criterion goes to the other side. */
@@ -384,7 +476,8 @@ export function resolveRound(
   const opponentVerse = cleanVerse(opponentVerseRaw);
 
   const player = scoreVerse({
-    verse: playerVerse,
+    // As typed, so a curse can see a word that mixes alphabets; scoreVerse cleans it.
+    verse: playerVerseRaw,
     form,
     ctx: plan.ctx,
     card: getCardById(move.charId)!,

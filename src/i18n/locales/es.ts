@@ -354,6 +354,7 @@ const es: Record<string, string> = {
   'void.label': 'No puntúa',
   'void.thin': 'demasiado poco para ser una estrofa: hacen falta más palabras distintas',
   'void.copied': 'tomada de la otra estrofa: una respuesta debe ser tuya',
+  'live.judgeUnread': 'Líneas que el modelo evaluador no leerá: {lines}. Se omite toda línea con un número o una palabra de puntuación (nota, puntuación, ganar…), y esta ronda la deciden entonces solo las reglas',
   'signature.none': 'esta carta no tiene frase de firma',
   'signature.hint': 'evoca una de: {words}',
   'signature.hintTwo': 'evoca dos de: {words}',

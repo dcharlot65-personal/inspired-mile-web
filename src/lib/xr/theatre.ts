@@ -74,6 +74,23 @@ interface Panel {
   frame: Rectangle;
 }
 
+/**
+ * Where a panel's line may break (TextBlock.wordSplittingFunction, joined with no divider): after each
+ * word and the spaces that follow it, as Intl.Segmenter finds words, so lines written without spaces
+ * break between their words too. Without a segmenter, after each run of spaces, and between the
+ * characters of a run of CJK or Thai script.
+ */
+function breakPoints(line: string): string[] {
+  const out: string[] = [];
+  const Segmenter = (Intl as unknown as { Segmenter?: new (l?: string, o?: { granularity: string }) => { segment(s: string): Iterable<{ segment: string }> } }).Segmenter;
+  const pieces = Segmenter ? [...new Segmenter(undefined, { granularity: 'word' }).segment(line)].map((x) => x.segment) : line.split(/(\s+|[\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}\p{Script=Thai}])/u).filter(Boolean);
+  for (const piece of pieces) {
+    if (/^\s+$/.test(piece) && out.length) out[out.length - 1] += piece;
+    else out.push(piece);
+  }
+  return out;
+}
+
 export class Theatre {
   readonly engine: Engine;
   readonly scene: Scene;
@@ -160,6 +177,10 @@ export class Theatre {
     text.fontSize = fontPx;
     text.fontFamily = 'Georgia, serif';
     text.textWrapping = true;
+    // Break where the browser's segmenter finds a word ends, not only at spaces: Japanese, Chinese and
+    // Thai are written without them, and a long line of theirs ran off the panel.
+    text.wordDivider = '';
+    text.wordSplittingFunction = breakPoints;
     text.textHorizontalAlignment = Control.HORIZONTAL_ALIGNMENT_LEFT;
     text.textVerticalAlignment = Control.VERTICAL_ALIGNMENT_TOP;
     text.paddingLeft = text.paddingRight = text.paddingTop = text.paddingBottom = '26px';
@@ -350,6 +371,8 @@ export class Theatre {
       if (preview.powerWords) checks.push(`${preview.powerWords.met ? '✓' : '○'} ${t('verdict.powerWords')}: ${s.duel.playerRelics[s.move.relicId!].words.join(', ')}`);
       if (preview.curse) checks.push(`${preview.curse.violations ? '✗' : '✓'} ${t('live.curse', { name: curseName(preview.curse.id) })}`);
       if (preview.voided && preview.voided !== 'empty') checks.push(`✗ ${t('void.label')}: ${t(`void.${preview.voided}`)}`);
+      const unread = s.judgeUnread();
+      if (unread.length) checks.push(`✗ ${t('live.judgeUnread', { lines: unread.map((u) => `${u.line} (${u.word})`).join(', ') })}`);
       if (s.potionAtRisk()) checks.push(`! ${t('hand.potionGamble')}`);
       checks.push(`${t('round.craftSoFar')} ${preview.craft}`);
     } else checks.push(t('theatre.pick'));

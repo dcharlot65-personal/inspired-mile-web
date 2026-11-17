@@ -25,6 +25,13 @@ export interface Pronunciation {
   counts: number[];
   /** Rhyme keys: the sounds from the last stressed vowel on, one per pronunciation. */
   keys: string[];
+  /** The dictionary only says it letter by letter ("cd", "tv"): an abbreviation, not a word. */
+  spelled?: boolean;
+  /**
+   * A dictionary of words (SCOWL, scripts/build-pronunciation.mjs) does not list it: a name, an
+   * abbreviation said as a word ("dr", "oz") or a fragment ("ul"). Rhyme and syllables still use it.
+   */
+  unlisted?: boolean;
 }
 
 let table: Map<string, Pronunciation> | null = null;
@@ -43,11 +50,11 @@ export function installPronunciation(data: string | null): void {
     if (tab < 1) continue;
     const key = line.slice(0, tab);
     for (const entry of line.slice(tab + 1).split(' ')) {
-      const m = /^(.*?)(\d+)$/.exec(entry);
+      const m = /^(.*?)(\d+)([*^]?)$/.exec(entry);
       if (!m) continue;
       const p = t.get(m[1]);
       if (p) p.keys.push(key);
-      else t.set(m[1], { counts: [...m[2]].map(Number), keys: [key] });
+      else t.set(m[1], { counts: [...m[2]].map(Number), keys: [key], ...(m[3] === '*' ? { spelled: true } : {}), ...(m[3] === '^' ? { unlisted: true } : {}) });
     }
   }
   table = t;

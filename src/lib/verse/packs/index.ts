@@ -10,6 +10,7 @@
  * duel is created in its language. getPack() throws for a known language that
  * has not been loaded rather than quietly playing English verses.
  */
+import { loadFunctionWords } from '../function-words';
 import { baseLang } from '../lang';
 import en from './en';
 
@@ -70,7 +71,8 @@ export async function loadPack(lang: string): Promise<LanguagePack> {
   if (have) return have;
   const loader = (LOADERS as Record<string, (() => Promise<{ default: LanguagePack }>) | undefined>)[b];
   if (!loader) return en;
-  const pack = (await loader()).default;
+  // The language's little words come with its pack: the copy measure needs them (text.ts isContentWord).
+  const [pack] = await Promise.all([loader().then((m) => m.default), loadFunctionWords(b)]);
   loaded.set(b, pack);
   return pack;
 }

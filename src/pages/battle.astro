@@ -200,8 +200,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     import { CRITERIA } from '../lib/verse/judge';
     import type { Difficulty } from '../lib/verse/opponent';
     import { PACK_LANGS, hasPack, loadPack } from '../lib/verse/packs';
-    import { loadPronunciation } from '../lib/verse/pronounce';
     import { DuelSession } from '../lib/verse/session';
+    import { loadSound } from '../lib/verse/sound';
     import { initI18n, languageName, locale, onLocaleChange, t, tm } from '../i18n';
     import { criterionName, curseName, curseRule, curseRuleTheirs, deviceBrief, deviceName, signatureText } from '../i18n/duel';
     import type { Msg } from '../lib/verse/msg';
@@ -573,6 +573,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       }
       // Copied from the opponent, or too little to be a verse: say so, since it scores nothing.
       if (written && s.voided && s.voided !== 'empty') list.appendChild(checkRow(true, t('void.label'), t(`void.${s.voided}`), 'crimson'));
+      // A model grades verses one at a time: the lines it will not read, and the word that leaves each out.
+      const unread = session.judgeUnread();
+      if (written && unread.length) {
+        const row = checkRow(true, t('live.judgeUnread', { lines: unread.map((u) => `${u.line} (${u.word})`).join(', ') }), '', 'crimson');
+        row.id = 'live-judge-unread';
+        list.appendChild(row);
+      }
       $('live-craft').textContent = String(s.craft);
     }
 
@@ -900,9 +907,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     async function start(seed: number) {
       const lang = langSelect.value || 'en';
       startBtn.disabled = true;
-      // The verses, acrostic words and power words of the duel's language; and, for English,
-      // the table its words are measured by (the session waits for it too, before it scores).
-      await loadPack(lang);
+      // The verses, acrostic words and power words of the duel's language, and how that language
+      // sounds (the CMU table for English, a table of stress and pronunciation, or the Japanese
+      // analyser): rhyme and syllables are judged from it, and which forms the duel draws depends
+      // on it, so it is in before the session plans the duel. Only this language's data is
+      // fetched, and only when a duel starts; if it cannot be, the engine falls back to spelling
+      // rules and offers no form it cannot check.
+      await Promise.all([loadPack(lang), loadSound(lang)]);
       // The world card's bonus is scored with the round, by the same code on every front end.
       const worldCard: WorldCard | undefined = variantAbility
         ? { label: equippedCity, criterion: variantAbility.axis === 'shakespeare' ? 'allusion' : variantAbility.axis, bonus: variantAbility.bonus }
@@ -968,9 +979,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       updateSubmit();
       mountStorageNote($('brain-status'));
       initBrain();
-      // English verse is measured by sound. Fetch the table while the player sets up, so the
-      // first round does not wait for it; it is a separate file, not part of this page's load.
-      void loadPronunciation();
+      // The English pronunciation table is fetched when an English duel starts (start(), and
+      // DuelSession.beginRound), never for a visitor who does not start one or duels in another language.
       onLocaleChange((l) => {
         // A visitor who changes the interface language most likely wants to duel in it:
         // make it the duel's language too, where it is on offer and no duel is under way.
