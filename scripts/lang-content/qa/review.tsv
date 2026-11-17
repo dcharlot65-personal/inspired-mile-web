@@ -1132,3 +1132,7 @@ ar	trivia.29.o3	ok	second pass: the missing word of an English quotation (Stain)
 fr	pg.difficulty.medium	ok	second pass, OPUS-MT: moyen back as "Average"; it is the medium difficulty
 ru	story.enc.3-1.desc	ok	second pass, OPUS-MT: back as "Sneak out the bad spirit"; Перехитри озорного духа is Outwit the mischievous spirit
 id	trivia.41.o3	ok	second pass, LaBSE: Letnan is Lieutenant (the back-translation came back empty)
+es	pg.trivia.correct	ok	second pass, MADLAD: "Aciertos: {n}" back as "Number of hits: 3"; aciertos are correct answers
+it	pg.trivia.correct	ok	second pass, MADLAD: "Risposte esatte: {n}" back as "Exact answers: 3"; esatte is correct, as in a quiz
+vi	countdown.hm	ok	second pass, MADLAD: "{h} tiếng {m} phút" back as "Two hours and fifteen minutes"; the English is "2h 15m"
+de	trivia.70.o2	ok	second pass, MADLAD: Bruder John back as "Brother John"; Friar John with the title translated and the name in English (no German source names him)

@@ -1,0 +1,11 @@
+{
+ "run": "2026-11-16, on the Studio, under memguard: lang/qa-pipeline's scripts/lang/backtranslate.py (copied, run read-only against its installation) with --pairs, MADLAD-400 3B (CTranslate2 int8), all-MiniLM-L6-v2 for the cosine, LaBSE for xcos",
+ "strings": 88,
+ "note": "the strings this second pass changed that are sentences (names from the table are not back-translated)",
+ "controls": 30,
+ "controlsUnder0.6": 26,
+ "controlsOver": "the same mismatched pair in it, pt, ru and id: trivia 7 (\"What is the name of Shakespeare's theatre?\") against the English of trivia 12 (\"What famous Scottish king is the subject of a Shakespeare tragedy?\"), two questions alike in form; cos 0.638 to 0.643",
+ "medianCos": 0.892,
+ "flagged": 11,
+ "read": "all 11: names the model reads as words (Escala as Scale, エアロン as Aeron), the score in its label form, the Vietnamese countdown spelt out, Bruder John; none changed meaning (qa/review.tsv)"
+}

@@ -1157,6 +1157,8 @@ Models: google/madlad400-3b-mt (CTranslate2 int8); Helsinki-NLP OPUS-MT <lang>-e
 | th | opus | 245 | 14 | 10/10 |
 | id | opus | 250 | 3 | 10/10 |
 
+**MADLAD-400 over the second pass's changes** (2026-11-16, on the Studio, under memguard: lang/qa-pipeline's scripts/lang/backtranslate.py (copied, run read-only against its installation) with --pairs, MADLAD-400 3B (CTranslate2 int8), all-MiniLM-L6-v2 for the cosine, LaBSE for xcos): 88 strings (the strings this second pass changed that are sentences (names from the table are not back-translated)), median similarity 0.892, 11 flagged; 26 of 30 mismatched controls under 0.6. Not caught: the same mismatched pair in it, pt, ru and id: trivia 7 ("What is the name of Shakespeare's theatre?") against the English of trivia 12 ("What famous Scottish king is the subject of a Shakespeare tragedy?"), two questions alike in form; cos 0.638 to 0.643. Read: all 11: names the model reads as words (Escala as Scale, エアロン as Aeron), the score in its label form, the Vietnamese countdown spelt out, Bruder John; none changed meaning (qa/review.tsv).
+
 **Spelling of Korean, Thai and Hindi** (2026-11-16, on the Studio, through rb: scripts/lang-content/qa/words.mjs (Intl.Segmenter) and the shared pipeline's hspell (whole words) with its dictionaries): each word asked of Hunspell whole, as the shared pipeline's hspell does; an earlier run here used the hunspell command, which cuts Thai and Devanagari words at their vowel signs, and wrongly concluded that these dictionaries could not be used. Each run had one planted non-word, which it rejected.
 
 | Language | Words | Rejected | Planted word | Real errors | Read |
@@ -1185,7 +1187,7 @@ Models: google/madlad400-3b-mt (CTranslate2 int8); Helsinki-NLP OPUS-MT <lang>-e
 | th | th (not usable: no spaces between words) |  | 0 |
 | id | id | 32 | 0 |
 
-**Read by hand**: 1133 flagged strings. 1096 ok, 3 not usable, 34 fixed. *ok* means the translation says what the English says and the flag came from the checking model (a title it renders literally, a word it does not know); *fixed* means the translation was wrong and was changed; the note says how.
+**Read by hand**: 1137 flagged strings. 1100 ok, 3 not usable, 34 fixed. *ok* means the translation says what the English says and the flag came from the checking model (a title it renders literally, a word it does not know); *fixed* means the translation was wrong and was changed; the note says how.
 
 Fixed:
 

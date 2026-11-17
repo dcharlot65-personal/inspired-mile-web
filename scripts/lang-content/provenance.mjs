@@ -179,6 +179,8 @@ if (al) {
   for (const r of al.rows) P(`| ${r.lang} | ${r.engine} | ${r.options} | ${r.misplaced} | ${r.controlsCaught}/${r.controls} |`);
   P('');
 }
+const mp = json('play-madlad-second-pass.json');
+if (mp) P(`**MADLAD-400 over the second pass's changes** (${mp.run}): ${mp.strings} strings (${mp.note}), median similarity ${mp.medianCos}, ${mp.flagged} flagged; ${mp.controlsUnder0_6 ?? mp['controlsUnder0.6']} of ${mp.controls} mismatched controls under 0.6. Not caught: ${mp.controlsOver}. Read: ${mp.read}.`, '');
 const sw = json('play-spell-whole-words.json');
 if (sw) {
   P(`**Spelling of Korean, Thai and Hindi** (${sw.run}): each word asked of Hunspell whole, as the shared pipeline's hspell does; an earlier run here used the hunspell command, which cuts Thai and Devanagari words at their vowel signs, and wrongly concluded that these dictionaries could not be used. Each run had one planted non-word, which it rejected.`, '', '| Language | Words | Rejected | Planted word | Real errors | Read |', '|---|---|---|---|---|---|');
