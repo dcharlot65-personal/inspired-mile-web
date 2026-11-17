@@ -530,7 +530,7 @@ const messages: Record<string, string> = {
   'trivia.105.o0': "Marcus Antonius",
   'trivia.105.o1': "Brutus",
   'trivia.105.o2': "Cassius",
-  'trivia.105.o3': "Augustus",
+  'trivia.105.o3': "Octavius",
   'trivia.106.q': "Người bạn đồng hành trung thành của vua Lia, kẻ cải trang thành \"Poor Tom\", tên là gì?",
   'trivia.106.o0': "Edgar",
   'trivia.106.o1': "Edmund",

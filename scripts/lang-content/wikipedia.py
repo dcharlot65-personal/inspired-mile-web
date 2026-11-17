@@ -3,6 +3,10 @@
   python3 -I wikipedia.py get <lang> <title> [...]               fetch articles (wikitext) into the cache
   python3 -I wikipedia.py find <lang> <title> <text>             print where <text> occurs in a cached article
   python3 -I wikipedia.py take <key> <lang> <title> <name> [<English name>]
+  python3 -I wikipedia.py take-title <key> <lang> <title> <name>
+        the same, for a name read in the article's own title ("किंग लीयर" names Lear): the words recorded
+        are the title. Then run `node evidence.mjs audit`: a line is only true if it was read in the
+        play's own article, beside the character (evidence.mjs says how that is checked).
         if <name> occurs in the article, append one line to names-evidence.tsv: the entity key, the
         language, the name, the permanent URL of the article revision it was read in, the date, and
         the words around it (with the English name beside it, if the article glosses it so). Nothing
@@ -143,6 +147,15 @@ if cmd == 'gloss':
     print(f'GLOSS {key} {lang} {english} -> {name}  (all: ' + '; '.join(f'{n} x{len(t)}' for n, t in found.items()) + ')', file=sys.stderr)
     sys.argv[1:] = ['take', key, lang, found[name][0], name, english]
     cmd = 'take'
+if cmd == 'take-title':
+    key, lang, title, name = sys.argv[2:6]
+    r = get(lang, title)
+    if not re.search(pattern(name, lang), r['title']): raise SystemExit(f'NOT FOUND: "{name}" is not in the title "{r["title"]}"')
+    url = f'https://{lang}.wikipedia.org/w/index.php?title={urllib.parse.quote(r["title"].replace(" ", "_"))}&oldid={r["revid"]}'
+    line = '\t'.join([key, lang, name, url, r['fetched'], "the article's title", r['title']]) + '\n'
+    have = open(EVIDENCE, encoding='utf-8').read()
+    if f'{key}\t{lang}\t{name}\t' not in have: open(EVIDENCE, 'w', encoding='utf-8').write(have + line)
+    print(line.strip()); sys.exit(0)
 if cmd == 'take':
     key, lang, title, name = sys.argv[2:6]
     english = sys.argv[6] if len(sys.argv) > 6 else ''

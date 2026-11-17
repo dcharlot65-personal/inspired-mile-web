@@ -16,7 +16,7 @@
 13 | Em que peça há uma ilha mágica? | = | = | = | =
 14 | A que família pertence Romeu? | Montéquio | Capuleto | Escala | Lourenço
 15 | Em que peça aparece o personagem Puck? | = | = | = | =
-16 | Quem é o servo mágico de Prospero em A Tempestade? | = | = | = | =
+16 | Quem é o servo mágico de Próspero em A Tempestade? | = | = | = | =
 17 | De que peça é “Double, double toil and trouble”? | = | = | = | =
 18 | Quantos sonetos Shakespeare escreveu? | 154 | 100 | 200 | 52
 19 | Que personagem é a rainha das fadas? | = | = | = | =
@@ -28,7 +28,7 @@
 25 | Como se chama o espírito travesso de Sonho de uma Noite de Verão? | Puck (Robin Goodfellow) | = | = | =
 26 | A que personagem de Hamlet se diz “Get thee to a nunnery”? | = | = | = | =
 27 | Em O Mercador de Veneza, o que Shylock exige como garantia? | Uma libra de carne | Um saco de ouro | Um navio | Um anel
-28 | Quem é o servo monstruoso de Prospero em A Tempestade? | = | = | = | =
+28 | Quem é o servo monstruoso de Próspero em A Tempestade? | = | = | = | =
 29 | Lady Macbeth diz “Out, damned ___!”. Que palavra falta? | Spot | Blood | Hand | Stain
 30 | Em que peça um personagem segura uma caveira e diz “Alas, poor Yorick”? | = | = | = | =
 31 | Em que peça aparecem os personagens Beatrice e Benedick? | = | = | = | =
@@ -45,12 +45,12 @@
 42 | Que peça de Shakespeare também é conhecida como “a peça escocesa”? | = | = | = | =
 43 | Que peça começa com “Now is the winter of our discontent”? | = | = | = | =
 44 | Qual é a peça mais longa de Shakespeare? | = | = | = | =
-45 | No fim de que peça Prospero quebra o seu cajado e afunda o seu livro? | = | = | = | =
+45 | No fim de que peça Próspero quebra o seu cajado e afunda o seu livro? | = | = | = | =
 46 | Que personagem diz “Lord, what fools these mortals be!”? | = | = | = | =
 47 | De que peça é “The quality of mercy is not strained”? | = | = | = | =
 48 | Com o suco de que flor Oberon faz as pessoas se apaixonarem? | Amor-perfeito (love-in-idleness) | Uma rosa | Um lírio | Uma violeta
 49 | Em Rei Lear, quantas filhas Lear tem? | Três | Duas | Quatro | Uma
-50 | Que vilão de Shakespeare diz “I am not what I am”? | = | = | = | Aarão
+50 | Que vilão de Shakespeare diz “I am not what I am”? | = | = | = | Aaron
 51 | O que as bruxas profetizam a Macbeth sobre o bosque de Birnam? | Que ele não será vencido até que o bosque avance sobre o seu castelo | Que ele deve queimar o bosque para ficar a salvo | Que o bosque esconde os seus inimigos | Que uma árvore cairá e o esmagará
 52 | Em que grupo de obras aparece a “Dark Lady” de Shakespeare? | = | As peças históricas | Os romances | As peças-problema
 53 | Que personagem diz “These violent delights have violent ends”? | Frei Lourenço | = | = | O Príncipe
@@ -79,7 +79,7 @@
 76 | Que peça de Shakespeare trata de um mouro ciumento? | = | = | = | =
 77 | Como morre Ofélia em Hamlet? | Ela se afoga | É envenenada | É apunhalada | Cai de uma torre
 78 | Que monarca reinou na Inglaterra durante a maior parte da carreira de Shakespeare? | = | = | = | =
-79 | O que diz Miranda, filha de Prospero, quando vê outras pessoas pela primeira vez? | “O brave new world” | “What magic is this” | “Father, who are they” | “I must be dreaming”
+79 | O que diz Miranda, filha de Próspero, quando vê outras pessoas pela primeira vez? | “O brave new world” | “What magic is this” | “Father, who are they” | “I must be dreaming”
 80 | Em que peça uma personagem se disfarça de advogado com o nome de Balthazar? | = | = | = | =
 81 | Como se chamava a companhia de atores de Shakespeare sob o rei Jaime I? | = | The Queen's Players | = | The Chamberlain's Servants
 82 | Que peça começa com uma tempestade no mar? | = | = | = | =
@@ -88,7 +88,7 @@
 85 | Em que peça de Shakespeare aparece a floresta de Arden? | = | = | = | =
 86 | Em que ano Shakespeare morreu? | 1616 | 1600 | 1623 | 1590
 87 | Quem é o melhor amigo de Romeu? | = | = | = | =
-88 | Como se chama a filha de Prospero em A Tempestade? | = | = | Perdita | =
+88 | Como se chama a filha de Próspero em A Tempestade? | = | = | Perdita | =
 89 | Em que peça está a frase “If music be the food of love, play on”? | = | = | = | =
 90 | Que título Macbeth recebe depois da sua primeira vitória em batalha? | Thane de Cawdor | Thane de Glamis | Duque de Albany | Conde de Ross
 91 | Em Noite de Reis, que nome masculino Viola adota no disfarce? | Cesário | = | = | =
@@ -112,7 +112,7 @@
 109 | Quem se disfarça de rapaz com o nome de Ganimedes em Como Gostais? | = | = | Phebe | =
 110 | O que aconteceu com o Globe Theatre em 1613? | Pegou fogo durante uma apresentação | Foi fechado pelo rei | Desabou em uma tempestade | Foi demolido para ser reconstruído
 111 | Em Medida por Medida, quem é o delegado corrupto deixado no governo de Viena? | = | Escalus | Lucio | Claudio
-112 | Em que peça de Shakespeare há um personagem chamado Caliban? | = | = | = | =
+112 | Em que peça de Shakespeare há um personagem chamado Calibã? | = | = | = | =
 113 | Como se chama a noiva de Petruchio em A Megera Domada? | Catarina | Bianca | Adriana | =
 114 | Em Antônio e Cleópatra, como morre Cleópatra? | Pela picada de uma áspide (uma serpente) | Envenenada | Afogada | Com um punhal
 115 | A quem o fantasma de Banquo assombra em Macbeth? | = | = | = | =
@@ -132,7 +132,7 @@
 129 | Em Como Gostais, quem faz o discurso das “sete idades do homem”? | = | = | = | O duque exilado
 130 | Que personagem de Sonho de uma Noite de Verão dirige um grupo de atores amadores? | = | = | = | =
 131 | Quem é o pai de Cordélia em Rei Lear? | O rei Lear | O conde de Glócester | O conde de Kent | O duque da Cornualha
-132 | Em A Tempestade, que relação Caliban afirma ter com a ilha? | Diz ser o seu legítimo senhor | Diz ser o seu criador | Diz ser o seu protetor | Não afirma nenhuma
+132 | Em A Tempestade, que relação Calibã afirma ter com a ilha? | Diz ser o seu legítimo senhor | Diz ser o seu criador | Diz ser o seu protetor | Não afirma nenhuma
 133 | Como se chama a esposa de Bruto em Júlio César? | = | = | = | =
 134 | Que peça de Shakespeare se passa nos bosques de Atenas? | = | = | = | =
 135 | Em Medida por Medida, por que crime Claudio foi preso? | Por engravidar a noiva antes do casamento | Por roubo | Por assassinato | Por traição
@@ -155,7 +155,7 @@
 152 | Em O Mercador de Veneza, que inscrição há no cofre de chumbo? | “Who chooseth me must give and hazard all he hath” | “Who chooseth me shall gain what many men desire” | “Who chooseth me shall get as much as he deserves” | “Who chooseth me shall find true love”
 153 | O que o Soneto 130 (“My mistress' eyes are nothing like the sun”) tem de incomum? | É um soneto antipetrarquista que zomba da poesia amorosa convencional | É escrito em verso livre, e não em pentâmetro iâmbico | É o único soneto dirigido a um homem | Foi publicado separado dos outros sonetos
 154 | Em Ricardo III, que deformidade Ricardo diz ter? | Uma corcunda | Uma mão a menos | Um pé torto | Cegueira de um olho
-155 | Quem é Sycorax em A Tempestade? | A mãe de Caliban, uma bruxa que governava a ilha antes de Prospero | A irmã de Ariel | A primeira esposa de Prospero | Uma deusa do mar
+155 | Quem é Sycorax em A Tempestade? | A mãe de Calibã, uma bruxa que governava a ilha antes de Próspero | A irmã de Ariel | A primeira esposa de Próspero | Uma deusa do mar
 156 | Qual é o esquema de rimas de um soneto shakespeariano? | ABAB CDCD EFEF GG | ABBA ABBA CDE CDE | AABB CCDD EEFF GG | ABAB ABAB CDCD EE
 157 | Em que peça aparece a rubrica “Exit, pursued by a bear”? | = | = | = | =
 158 | Como se chamava o filho de Shakespeare que morreu na infância? | = | Hamlet | Edmund | William

@@ -354,7 +354,7 @@ const messages: Record<string, string> = {
   'trivia.70.q': "Wie heißt der Mönch in Romeo und Julia?",
   'trivia.70.o0': "Bruder Lorenzo",
   'trivia.70.o1': "Bruder Tuck",
-  'trivia.70.o2': "Bruder Johannes",
+  'trivia.70.o2': "Bruder John",
   'trivia.70.o3': "Bruder Franziskus",
   'trivia.71.q': "Wer herrscht über die Zauberinsel in Der Sturm?",
   'trivia.71.o0': "Prospero",

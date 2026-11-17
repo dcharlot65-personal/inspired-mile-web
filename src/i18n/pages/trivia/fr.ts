@@ -355,7 +355,7 @@ const messages: Record<string, string> = {
   'trivia.70.o0': "Frère Laurent",
   'trivia.70.o1': "Frère Tuck",
   'trivia.70.o2': "Frère Jean",
-  'trivia.70.o3': "Frère François",
+  'trivia.70.o3': "Frère Francis",
   'trivia.71.q': "Qui règne sur l'île magique de La Tempête ?",
   'trivia.71.o0': "Prospero",
   'trivia.71.o1': "Ariel",

@@ -103,13 +103,13 @@
 100 | Księżniczką którego królestwa jest Perdita w Zimowej opowieści? | = | = | = | =
 101 | Kto jest księciem Ilirii w Wieczorze Trzech Króli? | = | = | = | =
 102 | Za kogo przebiera się Porcja w Kupcu weneckim? | Za prawnika | Za kupca | Za żeglarza | Za mnicha
-103 | Która postać w Wiele hałasu o nic upozorowuje własną śmierć? | = | = | = | Urszula
+103 | Która postać w Wiele hałasu o nic upozorowuje własną śmierć? | = | = | = | Ursula
 104 | Jaką sztukę w sztuce wystawia Hamlet, by schwytać sumienie króla? | Pułapkę na myszy | Zabójstwo Gonzagi | Sztukę o królu | Zwierciadło władców
 105 | Kto w Juliuszu Cezarze wygłasza słynną mowę pogrzebową zaczynającą się od „Friends, Romans, countrymen”? | = | = | = | =
 106 | Jak ma na imię wierny towarzysz Leara, który udaje „Poor Toma”? | Edgar | = | Kent | Gloucester
 107 | Jakim przedmiotem Jago w Otellu przekonuje Otella o niewierności Desdemony? | Chusteczką | Listem | Pierścieniem | Portretem
 108 | Która sztuka kończy się słowami „The rest is silence”? | = | = | = | =
-109 | Kto w Jak wam się podoba przebiera się za chłopca o imieniu Ganimedes? | = | = | Febe | =
+109 | Kto w Jak wam się podoba przebiera się za chłopca o imieniu Ganimedes? | = | = | Phebe | =
 110 | Co stało się z teatrem Globe w 1613 roku? | Spłonął podczas przedstawienia | Zamknął go król | Zawalił się podczas burzy | Rozebrano go, by go odbudować
 111 | Kto w Miarce za miarkę jest skorumpowanym namiestnikiem, któremu powierzono Wiedeń? | = | Escalus | Lucio | Claudio
 112 | W której sztuce Szekspira występuje postać o imieniu Kaliban? | = | = | = | =
@@ -191,7 +191,7 @@
 188 | Co według poety uczyni ukochaną osobę nieśmiertelną w Sonecie 18? | Sam wiersz („So long lives this, and this gives life to thee”) | Uroda ukochanej osoby | Letnie słońce | Portret ukochanej osoby
 189 | Która postać w Hamlecie mówi „Though this be madness, yet there is method in't”? | = | = | = | =
 190 | Jaki warunek postawił zalotnikom zmarły ojciec Porcji w Kupcu weneckim? | Muszą wybrać właściwą z trzech szkatuł (złotej, srebrnej i ołowianej) | Muszą pokonać się nawzajem w walce | Muszą rozwiązać zagadkę | Muszą dowieść swojego bogactwa
-191 | Jak nazywa się postać uosabiająca Czas w Zimowej opowieści? | Czas (jako Chór) | Ojciec Czas | Wyrocznia | Autolikus
+191 | Jak nazywa się postać uosabiająca Czas w Zimowej opowieści? | Czas (jako Chór) | Ojciec Czas | Wyrocznia | Autolycus
 192 | Którą sztukę Szekspir napisał prawdopodobnie w hołdzie nowo koronowanemu królowi Jakubowi I? | = | = | = | =
 193 | Jakiego figla płatają Malvoliowi Maria i sir Toby w Wieczorze Trzech Króli? | Podrabiają list miłosny od Olivii, w którym prosi go, by nosił żółte pończochy | Zamykają go w pokoju | Kradną mu ubranie | Wmawiają mu, że głuchnie
 194 | Jak nazywa się pomalowana w gwiazdy konstrukcja nad sceną teatru Globe? | Niebiosa (the Heavens) | Baldachim | Firmament | Dach

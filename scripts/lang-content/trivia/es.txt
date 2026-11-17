@@ -14,7 +14,7 @@
 11 | ¿Cuántas obras de teatro escribió Shakespeare? | 37 | 15 | 50 | 100
 12 | ¿Qué famoso rey escocés protagoniza una tragedia de Shakespeare? | = | = | = | =
 13 | ¿En qué obra hay una isla mágica? | = | = | = | =
-14 | ¿A qué familia pertenece Romeo? | Montesco | Capuleto | Escalo | Lorenzo
+14 | ¿A qué familia pertenece Romeo? | Montesco | Capuleto | Escala | Lorenzo
 15 | ¿En qué obra aparece el personaje de Puck? | = | = | = | =
 16 | ¿Quién es el sirviente mágico de Próspero en La tempestad? | = | = | = | =
 17 | ¿De qué obra es «Double, double toil and trouble»? | = | = | = | =
@@ -33,7 +33,7 @@
 30 | ¿En qué obra un personaje sostiene una calavera y dice «Alas, poor Yorick»? | = | = | = | =
 31 | ¿En qué obra aparecen los personajes Beatrice y Benedick? | = | = | = | =
 32 | ¿Qué ve Macbeth flotando ante él, que lo guía hasta la alcoba de Duncan? | Una daga | Un fantasma | Una corona | Una antorcha
-33 | ¿Quién es el príncipe de Verona en Romeo y Julieta? | Escalo | = | = | =
+33 | ¿Quién es el príncipe de Verona en Romeo y Julieta? | Escala | = | = | =
 34 | ¿Cuál es el subtítulo de Noche de reyes? | O lo que queráis | O como gustéis | O la comedia de las equivocaciones | O a buen fin
 35 | ¿Qué obra contiene el verso «All the world's a stage»? | = | = | = | =
 36 | ¿Cómo se llama el rey de las hadas en El sueño de una noche de verano? | = | = | = | =
@@ -63,7 +63,7 @@
 60 | En Romeo y Julieta, ¿cómo finge Julieta su muerte? | Con una poción para dormir | Con un hechizo | Aguantando la respiración | Con veneno
 61 | ¿Qué personaje es el príncipe de Dinamarca? | = | = | = | =
 62 | A Shakespeare se le suele llamar «The ____ of Avon». ¿Qué palabra falta? | Bard | King | Poet | Master
-63 | ¿A qué familia pertenece Julieta? | Capuleto | Montesco | Escalo | Lorenzo
+63 | ¿A qué familia pertenece Julieta? | Capuleto | Montesco | Escala | Lorenzo
 64 | ¿En qué país transcurre la mayoría de las comedias de Shakespeare? | = | = | = | =
 65 | ¿Quién mata a Macbeth al final de la obra? | = | = | = | =
 66 | ¿Qué quiere decir Hamlet con «the rest is silence»? | Que se muere y ya no puede decir más | Que quiere que todos se callen | Que se va a dormir | Que no tiene opinión
@@ -103,7 +103,7 @@
 100 | En Cuento de invierno, ¿de qué reino es princesa Perdita? | = | = | = | =
 101 | ¿Quién es el duque de Iliria en Noche de reyes? | = | = | = | =
 102 | ¿De qué se disfraza Porcia en El mercader de Venecia? | De abogado | De mercader | De marinero | De monje
-103 | En Mucho ruido y pocas nueces, ¿qué personaje finge su propia muerte? | = | = | = | Úrsula
+103 | En Mucho ruido y pocas nueces, ¿qué personaje finge su propia muerte? | = | = | = | Ursula
 104 | ¿Qué obra dentro de la obra hace representar Hamlet para atrapar la conciencia del rey? | La ratonera | El asesinato de Gonzago | La obra del rey | Espejo de príncipes
 105 | En Julio César, ¿quién pronuncia el famoso discurso fúnebre que empieza «Friends, Romans, countrymen»? | = | = | = | =
 106 | ¿Cómo se llama el leal compañero de Lear que se disfraza de «Poor Tom»? | Edgar | = | Kent | Gloucester
@@ -111,7 +111,7 @@
 108 | ¿Qué obra termina con la frase «The rest is silence»? | = | = | = | =
 109 | ¿Quién se disfraza de muchacho con el nombre de Ganimedes en Como gustéis? | = | = | Phebe | =
 110 | ¿Qué le ocurrió al teatro The Globe en 1613? | Se incendió durante una representación | Lo cerró el rey | Se derrumbó en una tormenta | Lo demolieron para reconstruirlo
-111 | En Medida por medida, ¿quién es el delegado corrupto que queda al mando de Viena? | = | Escalo | Lucio | Claudio
+111 | En Medida por medida, ¿quién es el delegado corrupto que queda al mando de Viena? | = | Escalus | Lucio | Claudio
 112 | ¿En qué obra de Shakespeare aparece un personaje llamado Calibán? | = | = | = | =
 113 | ¿Cómo se llama la novia de Petruchio en La fierecilla domada? | Catalina | Bianca | Adriana | =
 114 | En Antonio y Cleopatra, ¿cómo muere Cleopatra? | Por la mordedura de un áspid (una serpiente) | Envenenada | Ahogada | Con una daga
@@ -149,7 +149,7 @@
 146 | ¿En qué obra un personaje sobrevive tras ser abandonado de bebé en Bohemia? | = | = | = | =
 147 | ¿Cómo se llama el hijo ilegítimo de Gloucester en El rey Lear? | = | Edgar | Oswald | Cornualles
 148 | ¿Qué soneto de Shakespeare empieza «Let me not to the marriage of true minds / Admit impediments»? | Soneto 116 | = | = | Soneto 73
-149 | En Medida por medida, ¿cómo se llama el duque que se disfraza de fraile? | Vincentio | = | Escalo | Claudio
+149 | En Medida por medida, ¿cómo se llama el duque que se disfraza de fraile? | Vincentio | = | Escalus | Claudio
 150 | ¿Cuál se considera la última obra que Shakespeare escribió en solitario? | = | = | = | =
 151 | ¿Cómo se llaman las tres hijas del rey Lear? | Goneril, Regan y Cordelia | Goneril, Rosalind y Cordelia | Helena, Regan y Cordelia | Goneril, Regan y Ofelia
 152 | En El mercader de Venecia, ¿qué inscripción lleva el cofre de plomo? | «Who chooseth me must give and hazard all he hath» | «Who chooseth me shall gain what many men desire» | «Who chooseth me shall get as much as he deserves» | «Who chooseth me shall find true love»

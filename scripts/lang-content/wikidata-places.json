@@ -1,0 +1,131 @@
+{
+ "fetched": "2026-11-17T00:27Z",
+ "source": "https://www.wikidata.org (labels, CC0)",
+ "entities": {
+  "l.kent": {
+   "id": "Q23298",
+   "enwiki": "Kent",
+   "description": "ceremonial county of England, United Kingdom",
+   "labels": {
+    "en": "Kent",
+    "ar": "كنت",
+    "de": "Kent",
+    "es": "Kent",
+    "fr": "Kent",
+    "hi": "केंट",
+    "id": "Kent",
+    "it": "Kent",
+    "ja": "ケント",
+    "ko": "켄트주",
+    "pl": "Kent",
+    "pt": "Kent",
+    "ru": "Кент",
+    "th": "เคนต์",
+    "vi": "Kent",
+    "zh": "肯特郡",
+    "zh-cn": "肯特郡",
+    "zh-hans": "肯特郡",
+    "pt-br": "Kent",
+    "mul": "Kent"
+   },
+   "aliases": {
+    "de": [
+     "Zeremonielle Grafschaft Kent"
+    ],
+    "en": [
+     "Kent, England",
+     "County of Kent"
+    ],
+    "zh": [
+     "根德郡"
+    ],
+    "fr": [
+     "comté du Kent"
+    ]
+   }
+  },
+  "l.cornwall": {
+   "id": "Q23148",
+   "enwiki": "Cornwall",
+   "description": "historic county of England and Celtic nation",
+   "labels": {
+    "ar": "كورنوال",
+    "es": "Cornualles",
+    "fr": "Cornouailles",
+    "hi": "कॉर्नवल",
+    "id": "Kornwalia",
+    "it": "Cornovaglia",
+    "ja": "コーンウォール",
+    "ko": "콘월주",
+    "pl": "Kornwalia",
+    "pt": "Cornualha",
+    "ru": "Корнуолл",
+    "th": "คอร์นวอลล์",
+    "zh": "康沃爾郡",
+    "zh-cn": "康沃尔郡",
+    "zh-hans": "康沃尔郡",
+    "pt-br": "Cornualha",
+    "mul": "Cornwall",
+    "en": "Cornwall"
+   },
+   "aliases": {
+    "ru": [
+     "Корнуэлл",
+     "Корнваллис",
+     "Западный Уэльс"
+    ],
+    "mul": [
+     "GB-CON",
+     "Kernow"
+    ],
+    "de": [
+     "Kornwales",
+     "Cornwallis"
+    ]
+   }
+  },
+  "l.gloucester": {
+   "id": "Q170497",
+   "enwiki": "Gloucester",
+   "description": "city and county town of Gloucestershire, England, UK",
+   "labels": {
+    "zh-hans": "格洛斯特",
+    "zh-cn": "格洛斯特",
+    "pl": "Gloucester",
+    "fr": "Gloucester",
+    "ko": "글로스터",
+    "es": "Gloucester",
+    "it": "Gloucester",
+    "de": "Gloucester",
+    "ja": "グロスター",
+    "en": "Gloucester",
+    "ar": "غلوستر",
+    "pt": "Gloucester",
+    "ru": "Глостер",
+    "th": "กลอสเตอร์",
+    "zh": "格洛斯特",
+    "vi": "Gloucester",
+    "hi": "ग्लॉसेस्टर",
+    "id": "Gloucester",
+    "mul": "Gloucester"
+   },
+   "aliases": {
+    "fr": [
+     "Glocester"
+    ],
+    "ar": [
+     "جلوشيستر",
+     "غلوشستر",
+     "جلوشستر",
+     "غلوشيستر"
+    ],
+    "pt": [
+     "Glevum"
+    ],
+    "ru": [
+     "Глочестер"
+    ]
+   }
+  }
+ }
+}

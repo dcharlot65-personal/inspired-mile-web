@@ -103,3 +103,9 @@ ko	33	3	Tybalt	script	every option of this question in Latin letters: some have 
 ko	70	0	Friar Lawrence	script	every option of this question in Latin letters: some have no name in this script in any source, and the one that did would give the answer away
 th	14	3	Laurence	script	every option of this question in Latin letters: some have no name in this script in any source, and the one that did would give the answer away
 th	63	3	Laurence	script	every option of this question in Latin letters: some have no name in this script in any source, and the one that did would give the answer away
+ko	116	0	Cassio	script	every option of this question in Latin letters: Othello's Gratiano has no Korean name in any source (ko.wikipedia's 오셀로 does not name him), and 카시오 alone in Hangul would give the answer away
+ja	83	0	ブルータスとキャシアス	shortened	the cast list of ja.wikipedia's ジュリアス・シーザー names him ケイアス・キャシアス (Caius Cassius); the option uses his family name, as the play does
+pl	125	2	Porcja w Kupcu weneckim	inflected	the locative of Kupiec wenecki (the Wikidata label), after "w"
+pl	125	3	Viola w Wieczorze Trzech Króli	inflected	the locative of Wieczór Trzech Króli (the Wikidata label), after "w"
+ru	125	2	Порция в «Венецианском купце»	inflected	the prepositional of Венецианский купец (the Wikidata label), after "в"
+ru	125	3	Виола в «Двенадцатой ночи»	inflected	the prepositional of Двенадцатая ночь (the Wikidata label), after "в"
