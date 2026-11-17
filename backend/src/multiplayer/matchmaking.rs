@@ -19,7 +19,7 @@ pub type Pairing = Result<Uuid, RoomError>;
 struct QueueEntry {
     user_id: Uuid,
     username: String,
-    /// The network they asked from (`game_room::address_key`).
+    /// The network they asked from (`handlers::origin_of`).
     origin: String,
     /// Fires when this player is paired, or refused. Dropped if they are removed.
     tx: oneshot::Sender<Pairing>,
@@ -46,7 +46,7 @@ impl MatchmakingQueue {
     }
 
     /// Pair this player with the longest-waiting other player, or put them in the queue.
-    /// `origin` is the network they ask from (`game_room::address_key`). A player who
+    /// `origin` is the network they ask from (`handlers::origin_of`). A player who
     /// already holds as many rooms as they may (or whose network does) is refused at once.
     pub async fn enqueue(&self, user_id: Uuid, username: String, origin: String, rooms: &RoomManager) -> Result<Enqueued, RoomError> {
         rooms.room_limit(user_id, &origin).await?;

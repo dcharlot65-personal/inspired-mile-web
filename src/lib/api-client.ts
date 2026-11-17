@@ -165,6 +165,22 @@ export async function passkeyRegisterFinish(challengeId: string, credential: unk
   });
 }
 
+/**
+ * Signed in: start proving again, with a passkey of this account, that its owner is here.
+ * The server asks for this (403 `reauth_required`) before a passkey is added or removed or
+ * an email is added, when the last proof is more than a few minutes old.
+ */
+export async function passkeyVerifyBegin(): Promise<CeremonyStart> {
+  return request('/auth/passkey/verify/begin', { method: 'POST' });
+}
+
+export async function passkeyVerifyFinish(challengeId: string, credential: unknown): Promise<{ ok: boolean; fresh_for_seconds: number }> {
+  return request('/auth/passkey/verify/finish', {
+    method: 'POST',
+    body: JSON.stringify({ challenge_id: challengeId, credential }),
+  });
+}
+
 export async function listPasskeys(): Promise<PasskeyInfo[]> {
   return request('/auth/passkeys');
 }
@@ -173,8 +189,28 @@ export async function deletePasskey(id: string): Promise<void> {
   await request(`/auth/passkeys/${encodeURIComponent(id)}`, { method: 'DELETE' });
 }
 
+// The server only honours a sign-out that carries `Content-Type: application/json`, which
+// request() always sends and a form on another site cannot.
 export async function logout(): Promise<void> {
   await request('/auth/logout', { method: 'POST' });
+}
+
+/**
+ * The signed-in user's own answer to the age question, opened from the account menu. The
+ * only call that changes an account's age tier after it is created (rules: backend
+ * src/auth/age.rs). 403 `reauth_required` asks for a passkey check first (going back to
+ * adult); 403 `age_tier_locked` means the account was made for a teen and stays one.
+ */
+export async function setAgeTier(ageTier: EmailAgeTier): Promise<{ age_tier: string; changed: boolean }> {
+  return request('/auth/age-tier', {
+    method: 'POST',
+    body: JSON.stringify({ age_tier: ageTier }),
+  });
+}
+
+/** End every session of the account, on every device, this one included. */
+export async function logoutEverywhere(): Promise<void> {
+  await request('/auth/logout/all', { method: 'POST' });
 }
 
 export async function getMe(): Promise<AuthResponse> {

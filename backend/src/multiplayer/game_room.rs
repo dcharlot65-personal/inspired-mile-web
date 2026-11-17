@@ -424,7 +424,8 @@ pub struct GameRoom {
     round_started_at: Instant,
     completed_at: Option<Instant>,
     next_conn: u64,
-    /// The networks the room was opened from (`address_key`), for `MAX_ROOMS_PER_ADDRESS`.
+    /// The networks the room was opened from (`handlers::origin_of`: an IPv4 address or an
+    /// IPv6 /48), for `MAX_ROOMS_PER_ADDRESS`.
     origins: Vec<String>,
     /// Both seats were held from the start (a quick match): the first to arrive waits
     /// `Timing::arrival` for the other.
@@ -996,23 +997,6 @@ impl GameRoom {
     }
 }
 
-/// The network a client address belongs to, for the per-network room limit: an IPv4 address
-/// itself, or the /64 of an IPv6 address (one connection is given a whole /64, so a limit per
-/// IPv6 address would be no limit). An address that does not parse is its own key.
-pub fn address_key(ip: &str) -> String {
-    match ip.parse::<std::net::IpAddr>() {
-        Ok(std::net::IpAddr::V4(v4)) => v4.to_string(),
-        Ok(std::net::IpAddr::V6(v6)) => match v6.to_ipv4_mapped() {
-            Some(v4) => v4.to_string(),
-            None => {
-                let s = v6.segments();
-                format!("{:x}:{:x}:{:x}:{:x}::/64", s[0], s[1], s[2], s[3])
-            }
-        },
-        Err(_) => ip.to_string(),
-    }
-}
-
 /// Arm what a room asked for. Each timer holds the room only through its `Arc`, and does
 /// nothing if the room has moved on by the time it fires.
 pub fn run_effects(room: &Arc<Mutex<GameRoom>>, effects: Vec<Effect>) {
@@ -1108,8 +1092,8 @@ impl RoomManager {
     }
 
     /// A new room with seats held for these players (one for a private room, two for a
-    /// queue match), opened from these networks (`origins[i]` is `address_key` of player i's
-    /// address). The server draws the seed. Refused when the server, a player or a network
+    /// queue match), opened from these networks (`origins[i]` is player i's network,
+    /// `handlers::origin_of`). The server draws the seed. Refused when the server, a player or a network
     /// already holds as many rooms as it may; the refusal says whose limit it is. A queue
     /// match's clock to arrive (`Timing::arrival`) starts now.
     pub async fn open_room(&self, reserved: &[(Uuid, String)], origins: &[String]) -> Result<Uuid, Refusal> {
@@ -1727,24 +1711,31 @@ mod tests {
         }
         assert!(manager.create_room(&[(me, "me".into())], &[]).await.is_ok());
 
-        // Many accounts on one IPv6 /64 are one network.
-        let net = address_key("2001:db8:1:2:aaaa::1");
-        assert_eq!(net, address_key("2001:db8:1:2:ffff:ffff:ffff:ffff"));
-        assert_ne!(net, address_key("2001:db8:1:3::1"));
+        // Many accounts on one IPv6 /48 are one network, whichever of its /64s they use.
+        let here = net("2001:db8:1:2:aaaa::1");
+        assert_eq!(here, net("2001:db8:1:ffff::1"));
+        assert_ne!(here, net("2001:db8:2::1"));
         for _ in 0..MAX_ROOMS_PER_ADDRESS {
-            manager.create_room(&[(Uuid::new_v4(), "someone".into())], std::slice::from_ref(&net)).await.unwrap();
+            manager.create_room(&[(Uuid::new_v4(), "someone".into())], std::slice::from_ref(&here)).await.unwrap();
         }
-        let refused = manager.create_room(&[(Uuid::new_v4(), "next".into())], &[address_key("2001:db8:1:2:1234::9")]).await;
+        let refused = manager.create_room(&[(Uuid::new_v4(), "next".into())], &[net("2001:db8:1:3::9")]).await;
         assert_eq!(refused, Err(RoomError::TooManyFromAddress));
-        assert!(manager.create_room(&[(Uuid::new_v4(), "elsewhere".into())], &[address_key("2001:db8:1:3::1")]).await.is_ok());
+        assert!(manager.create_room(&[(Uuid::new_v4(), "elsewhere".into())], &[net("2001:db8:2::1")]).await.is_ok());
+    }
+
+    /// A room's network, for an address seen directly (no proxy): what `handlers::origin_of`
+    /// gives for a request from it.
+    fn net(ip: &str) -> String {
+        let peer = std::net::SocketAddr::new(ip.parse().expect("an address"), 0);
+        crate::auth::client_addr(&axum::http::HeaderMap::new(), Some(peer), &crate::auth::ProxyTrust::nobody()).network_key()
     }
 
     #[test]
-    fn an_address_key_is_the_ipv4_address_or_the_ipv6_slash_64() {
-        assert_eq!(address_key("203.0.113.7"), "203.0.113.7");
-        assert_eq!(address_key("::ffff:203.0.113.7"), "203.0.113.7");
-        assert_eq!(address_key("2001:db8:0:1::5"), "2001:db8:0:1::/64");
-        assert_eq!(address_key("unknown"), "unknown");
+    fn a_rooms_network_is_the_ipv4_address_or_the_ipv6_slash_48() {
+        assert_eq!(net("203.0.113.7"), "203.0.113.7");
+        assert_eq!(net("::ffff:203.0.113.7"), "203.0.113.7");
+        assert_eq!(net("2001:db8:0:1::5"), "2001:db8::/48");
+        assert_eq!(net("2001:db8:7:ffff:1::5"), "2001:db8:7::/48");
     }
 
     #[test]

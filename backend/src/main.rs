@@ -3,10 +3,12 @@ mod classroom;
 mod config;
 mod credits;
 mod db;
+mod error;
 mod inventory;
 mod marketplace;
 mod migration;
 mod multiplayer;
+mod notice;
 mod rate_limit;
 mod referral;
 mod seasons;
@@ -25,19 +27,51 @@ use axum::{
 use tower_http::cors::{AllowOrigin, CorsLayer};
 use tower_http::limit::RequestBodyLimitLayer;
 use tower_http::trace::TraceLayer;
-use tracing_subscriber::EnvFilter;
 
 use config::Config;
 use multiplayer::{RoomManager, MatchmakingQueue};
+
+/// Run every request to its end, whether or not the client is still there.
+///
+/// Why: when a client goes away (a page navigates with a request in flight, a connection
+/// drops), the server drops the handler's future wherever it is waiting. A handler dropped
+/// between a statement and its commit is rolled back by sqlx, which is fine; but one
+/// end-to-end run on this branch (2026-11-16) showed a sign-in whose session row could not
+/// be seen by the next request, in the same second as Postgres logged "there is already a
+/// transaction in progress". Reading sqlx 0.9.0's `PgTransactionManager::begin`, a future
+/// dropped while `BEGIN` is awaited leaves the connection in a transaction that its
+/// depth counter does not know about, so the rollback guard does nothing and the next
+/// borrower's writes sit uncommitted. THAT CAUSE IS A READING OF THE CODE, NOT A
+/// REPRODUCTION: 600 requests reset mid-flight did not strand a connection, with or
+/// without this layer.
+///
+/// What this does regardless: the rest of the stack runs in its own task, so nothing above
+/// it can cancel it part-way and a transaction that begins also commits or rolls back.
+/// The cost is that work for a client that has left is finished rather than abandoned.
+async fn run_to_completion(
+    req: axum::http::Request<axum::body::Body>,
+    next: middleware::Next,
+) -> axum::response::Response {
+    match tokio::spawn(next.run(req)).await {
+        Ok(response) => response,
+        Err(e) => {
+            tracing::error!("request task failed: {e}");
+            (StatusCode::INTERNAL_SERVER_ERROR, error::INTERNAL_MESSAGE).into_response()
+        }
+    }
+}
 
 #[tokio::main]
 async fn main() {
     // Load .env if present
     dotenvy::dotenv().ok();
 
-    // Initialize tracing with env filter
+    // The log: what RUST_LOG asks for (errors only when it is unset), plus the operator
+    // notices of `notice.rs`, which are written whatever RUST_LOG says. Colour only on a
+    // terminal: under launchd the log is a file, and an operator greps it for the notices.
     tracing_subscriber::fmt()
-        .with_env_filter(EnvFilter::from_default_env())
+        .with_env_filter(notice::log_filter())
+        .with_ansi(notice::colour_wanted())
         .init();
 
     let (config, config_warnings) = match Config::from_env() {
@@ -95,15 +129,19 @@ async fn main() {
         }
     });
 
-    // Sweep expired sign-in challenges and old email codes in the background
+    // Sweep expired sign-in challenges, old email codes, ended sessions and passkey-only
+    // accounts that never played, in the background
     let purge_pool = pool.clone();
     let limiter = rate_limit::create_rate_limiter(config.rate_limit_per_minute);
     let purge_limiter = limiter.clone();
+    let purge_days = config.unused_account_purge_days;
+    let purge_every = std::time::Duration::from_secs(config.maintenance_interval_seconds);
     tokio::spawn(async move {
         loop {
             auth::purge_expired(&purge_pool).await;
+            auth::purge_unused_accounts(&purge_pool, purge_days).await;
             purge_limiter.retain_recent();
-            tokio::time::sleep(std::time::Duration::from_secs(600)).await;
+            tokio::time::sleep(purge_every).await;
         }
     });
 
@@ -130,8 +168,8 @@ async fn main() {
         .nest("/referral", referral::router())
         .layer(Extension(rooms))
         .layer(Extension(queue))
-        .layer(middleware::from_fn(auth::auth_middleware))
-        .layer(Extension(config.jwt_secret.clone()));
+        // Every protected request is checked against its server-side session row.
+        .layer(middleware::from_fn_with_state(state.clone(), auth::auth_middleware));
 
     let cors = CorsLayer::new()
         .allow_origin(AllowOrigin::exact(
@@ -151,17 +189,21 @@ async fn main() {
             axum::http::Method::OPTIONS,
         ]);
 
+    let trusted_proxies = Arc::new(config.trusted_proxies.clone());
     let app = Router::new()
         .nest("/api/v1", public_routes.merge(protected_routes))
         .layer(RequestBodyLimitLayer::new(1_048_576)) // 1MB max body
         .layer(middleware::from_fn(move |req: axum::http::Request<axum::body::Body>, next: middleware::Next| {
             let limiter = limiter.clone();
+            let trusted = trusted_proxies.clone();
             async move {
                 let peer = req
                     .extensions()
                     .get::<axum::extract::ConnectInfo<std::net::SocketAddr>>()
                     .map(|info| info.0);
-                let client = auth::client_ip(req.headers(), peer);
+                // One allowance per IPv4 address or IPv6 /64; proxy headers are believed
+                // only from a trusted proxy, with PROXY_SECRET when it is set (auth/client_ip.rs).
+                let client = auth::client_addr(req.headers(), peer, &trusted).limit_key();
                 if limiter.check_key(&client).is_err() {
                     return (StatusCode::TOO_MANY_REQUESTS, "Rate limit exceeded").into_response();
                 }
@@ -170,13 +212,19 @@ async fn main() {
         }))
         .layer(cors)
         .layer(TraceLayer::new_for_http())
+        // Outermost: see `run_to_completion`.
+        .layer(middleware::from_fn(run_to_completion))
         .with_state(state);
 
     let addr = format!("0.0.0.0:{}", config.port);
-    tracing::info!("Inspired Mile API listening on {addr}");
+    // Both said once per start, at any RUST_LOG: the second is how an operator checks that
+    // the site's proxy is trusted (see auth/client_ip.rs).
+    tracing::info!(target: notice::TARGET, "Inspired Mile API listening on {addr}");
+    tracing::info!(target: notice::TARGET, "{}", auth::trusted_proxies_notice(&config.trusted_proxies));
 
     let listener = tokio::net::TcpListener::bind(&addr).await.unwrap();
-    // Connect info gives the email-code limiter a peer address when no proxy header is set.
+    // Connect info gives every limiter the socket peer: the client address itself unless
+    // the peer is a trusted proxy.
     axum::serve(
         listener,
         app.into_make_service_with_connect_info::<std::net::SocketAddr>(),

@@ -29,10 +29,10 @@ use inspired_mile_api::verse::cards::starter_characters;
 use inspired_mile_api::verse::LANG;
 
 use super::game_room::{
-    address_key, run_effects, ClientEvent, GameRoom, RoomError, RoomManager, RoomState, ServerEvent, EVENT_BUFFER,
+    run_effects, ClientEvent, GameRoom, RoomError, RoomManager, RoomState, ServerEvent, EVENT_BUFFER,
 };
 use super::matchmaking::{Enqueued, MatchmakingQueue};
-use crate::auth::{client_ip, Claims};
+use crate::auth::{client_addr, Claims};
 use crate::config::Config;
 
 /// Largest WebSocket message accepted. The largest honest one is a verse of
@@ -72,9 +72,15 @@ fn refused(error: RoomError) -> (StatusCode, String) {
     (status, error.message())
 }
 
-/// The network a request came from (`address_key` of its client address).
-fn origin_of(headers: &HeaderMap, peer: SocketAddr) -> String {
-    address_key(&client_ip(headers, Some(peer)))
+/// The network a request came from, for the per-network room limit (`MAX_ROOMS_PER_ADDRESS`).
+///
+/// The client address is found as for every other limit (`auth::client_addr`): forwarding
+/// headers are believed only from a peer in `TRUSTED_PROXIES`, and only with the proxy's
+/// secret when `PROXY_SECRET` is set; from anyone else the socket peer is the client. It is
+/// keyed by `network_key` (an IPv4 address or an IPv6 /48), the width of every limit one
+/// party could use against another or to fill a table: rooms are a table of `MAX_ROOMS`.
+fn origin_of(headers: &HeaderMap, peer: SocketAddr, config: &Config) -> String {
+    client_addr(headers, Some(peer), &config.trusted_proxies).network_key()
 }
 
 // --- Content Report ---
@@ -141,10 +147,11 @@ async fn join_queue(
     Extension(claims): Extension<Claims>,
     Extension(queue): Extension<Arc<MatchmakingQueue>>,
     Extension(rooms): Extension<Arc<RoomManager>>,
+    State((_pool, config)): State<(PgPool, Config)>,
     ConnectInfo(peer): ConnectInfo<SocketAddr>,
     headers: HeaderMap,
 ) -> Result<Json<QueueResponse>, (StatusCode, String)> {
-    let origin = origin_of(&headers, peer);
+    let origin = origin_of(&headers, peer, &config);
     let mut rx = match queue.enqueue(claims.sub, claims.username.clone(), origin, &rooms).await.map_err(refused)? {
         Enqueued::Matched(room_id) => return Ok(queue_answer(Some(room_id), 0, "matched")),
         Enqueued::Waiting(rx) => rx,
@@ -200,12 +207,13 @@ struct PrivateRoomResponse {
 async fn create_private_room(
     Extension(claims): Extension<Claims>,
     Extension(rooms): Extension<Arc<RoomManager>>,
+    State((_pool, config)): State<(PgPool, Config)>,
     ConnectInfo(peer): ConnectInfo<SocketAddr>,
     headers: HeaderMap,
 ) -> Result<Json<PrivateRoomResponse>, (StatusCode, String)> {
     // One open invitation per player: a new one withdraws the last.
     rooms.close_waiting_rooms_of(claims.sub).await;
-    let origin = origin_of(&headers, peer);
+    let origin = origin_of(&headers, peer, &config);
     let room_id = rooms.create_room(&[(claims.sub, claims.username.clone())], &[origin]).await.map_err(refused)?;
     // The room's id is the token a friend joins with: 122 random bits, shown to nobody else.
     Ok(Json(PrivateRoomResponse { room_id, token: room_id.to_string() }))
@@ -509,7 +517,7 @@ mod tests {
             .acquire_timeout(Duration::from_millis(300))
             .connect_lazy("postgres://nobody:secret@127.0.0.1:1/inspired_mile")
             .expect("a lazy pool");
-        let claims = Claims { sub: uuid::Uuid::new_v4(), username: "ann".into(), exp: i64::MAX, iat: 0 };
+        let claims = Claims { sub: uuid::Uuid::new_v4(), username: "ann".into(), sid: uuid::Uuid::new_v4(), exp: i64::MAX, iat: 0 };
         let answer = report_content(
             Extension(claims),
             State((pool, config(&[]))),
@@ -572,7 +580,7 @@ mod tests {
         room.lock().await.disconnect(a, conn_a);
 
         let pool = unreachable_database();
-        let claims = Claims { sub: a, username: "ann".into(), exp: i64::MAX, iat: 0 };
+        let claims = Claims { sub: a, username: "ann".into(), sid: uuid::Uuid::new_v4(), exp: i64::MAX, iat: 0 };
         let mut joined = None;
         let back = ClientEvent::JoinRoom { room_id: id, deck: deck_a.clone(), lang: LANG.to_string() };
         let problem = handle_event(back, &claims, &rooms, &pool, &mut joined).await;
@@ -582,7 +590,7 @@ mod tests {
         // Before a match starts, the cards are checked, and an unreadable record says so.
         let c = Uuid::new_v4();
         let open = rooms.create_room(&[(c, "cy".into())], &[]).await.unwrap();
-        let claims = Claims { sub: c, username: "cy".into(), exp: i64::MAX, iat: 0 };
+        let claims = Claims { sub: c, username: "cy".into(), sid: uuid::Uuid::new_v4(), exp: i64::MAX, iat: 0 };
         let mut joined = None;
         let first = ClientEvent::JoinRoom { room_id: open, deck: deck_a, lang: LANG.to_string() };
         let problem = handle_event(first, &claims, &rooms, &pool, &mut joined).await;

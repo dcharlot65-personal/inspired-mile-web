@@ -119,8 +119,10 @@ What the room enforces besides the rules: three to five characters, each a start
 (`ONLINE_STARTER`: the first three of the catalogue) or one the account's `owned_cards` holds
 (`handlers.rs not_held`; the collection is otherwise the browser's, so this binds a deck to
 what the account records, not to what a player paid for); at most `MAX_ROOMS_PER_USER` live
-rooms per account and `MAX_ROOMS_PER_ADDRESS` (40) per network (an IPv4 address or an IPv6 /64,
-`address_key`), counted over every room (a busy room is waited for, never skipped) and opened
+rooms per account and `MAX_ROOMS_PER_ADDRESS` (40) per network (an IPv4 address or an IPv6 /48:
+`handlers.rs origin_of`, the client address as every other limit finds it, `auth::client_addr`,
+so a forwarding header counts only from `TRUSTED_PROXIES` and with `PROXY_SECRET` when it is
+set), counted over every room (a busy room is waited for, never skipped) and opened
 one at a time (`RoomManager::open_room`). A limit is the business of the player who reached it:
 a quick-match player who reaches one while waiting is told so (429) and leaves the queue, and the
 requester is paired with the next player or waits (`matchmaking.rs`). A quick-match room whose
@@ -192,18 +194,85 @@ left behind by a killed run is found by its port: `lsof -nP -iTCP:<port> -sTCP:L
 
 - No passwords, no Google. Passkeys (WebAuthn, discoverable, no username) are primary; a
   6-digit emailed code creates an account, signs in where there is no passkey, and recovers.
-  Session is still the `im_token` JWT cookie. Code: `backend/src/auth/`, `src/lib/passwordless.ts`,
-  the auth script in `BaseLayout.astro` (all its strings are in one `STRINGS` object).
+  Code: `backend/src/auth/`, `src/lib/passwordless.ts`, the auth script in `BaseLayout.astro`
+  (all its strings are in one `STRINGS` object).
+- **Sessions live on the server** (`auth_sessions`, `backend/src/auth/sessions.rs`). The cookie
+  holds a JWT whose `sid` names a row; a request is signed in only while that row is live.
+  Sign-out revokes the row, `POST /auth/logout/all` revokes all of the account's. The cookie is
+  `__Host-im_token` when every `WEBAUTHN_ORIGIN` is https (production) and `im_token` over
+  http (localhost, tests: browsers refuse the prefix there); HttpOnly, Secure, SameSite=Strict.
+- **Adding or removing a passkey, and adding an email, need a fresh proof** (a passkey
+  assertion or an emailed code in the last 5 minutes), not just the cookie. The page gets
+  403 `reauth_required`, runs `/auth/passkey/verify/{begin,finish}` and retries
+  (`withFreshProof` in `passwordless.ts`).
+- **`JWT_SECRET` is mandatory**: the API exits at start-up if it is absent, under 32 bytes,
+  or the old development constant. `DEV_INSECURE_JWT_SECRET=1` lifts that on localhost only
+  (refused with an https origin). Email codes use a key derived from it, not the secret itself.
 - API env: `WEBAUTHN_RP_ID` (default `inspiredmile.com`; **never change it once passkeys
   exist, it orphans all of them**), `WEBAUTHN_ORIGIN` (default
   `https://sonnetman.inspiredmile.com`; comma-separated list; each must be https, or http on
   localhost, and on the RP ID), `RESEND_API_KEY` (absent: email endpoints answer 503 and
-  the UI hides email), `EMAIL_FROM`, `RATE_LIMIT_PER_MINUTE` (global limiter, default 60).
+  the UI hides email), `EMAIL_FROM`, `RATE_LIMIT_PER_MINUTE` (per client, default 600),
+  `TRUSTED_PROXIES` (peers whose `CF-Connecting-IP` / `X-Forwarded-For` are believed; default
+  `127.0.0.1,::1,10.10.10.1,100.64.224.0,100.98.101.113`. The last is the Tailscale address of
+  the M4 MacBook Pro (10.10.10.1): its Caddy reaches the API on prod at `100.64.224.0:3849` over
+  the tailnet, so that is the peer production sees (checked 2026-11-16). From any other peer the
+  socket address is the client. **Check this on every deploy**, in the API log: whatever
+  `RUST_LOG` says (even `off`), the API writes at start-up `TRUSTED_PROXIES: ... believed only
+  from <list>`, and, at most once every ten minutes per peer and ten lines a minute,
+  `ignored CF-Connecting-IP / X-Forwarded-For from <peer>`. If that peer is the proxy, add it:
+  otherwise every visitor shares one allowance. These are "operator notices"
+  (`backend/src/notice.rs`): the log filter is `RUST_LOG` with a directive for that target
+  added last; the log has no colour codes unless standard output is a terminal),
+  `PROXY_SECRET` (optional, 32+ characters: when set, a trusted peer's forwarding headers are
+  believed only on requests carrying it as `X-Proxy-Secret`, which every proxying Caddy must
+  add with `header_up`; the proxy's host is a shared build host, so without it any program
+  there can choose the address it is counted as),
+  `SIGNUP_GLOBAL_PER_HOUR` (default 300; logs `SIGN-UP CEILING HIT`),
+  `SIGNUP_BEGINS_GLOBAL_PER_HOUR` (default 1500 begun sign-ups an hour, site-wide; logs
+  `SIGN-UP BEGIN CEILING HIT`), `AUTH_CHALLENGES_MAX` (default 50000 rows in `auth_challenges`;
+  one network may hold 300 live; logs `SIGN-IN CHALLENGE CEILING HIT`),
+  `UNUSED_ACCOUNT_PURGE_DAYS` (default 30, 0 = never: passkey-only accounts that never played
+  are deleted, see `purge_unused_accounts` in `auth/passkeys.rs`).
+- **A site-wide ceiling never refuses everyone** (`auth/passkeys.rs`, top). At one, only a
+  network that has already had a small share is refused: 2 accounts or 10 begun sign-ups in the
+  hour, or 10 live sign-in ceremonies; everyone else is served. Before 2026-11-16 (second
+  review) a full challenge table refused every visitor, so one IPv6 /48 split into 200 /64s
+  stopped all passkey sign-in in nine seconds. Do not bring back a ceiling that refuses all.
+- Limits are per network, never per address, at three widths (`auth/client_ip.rs`, top): the
+  request rate limit per IPv4 address or IPv6 /64; everything one party could turn on another
+  or use to fill a table (email codes and guesses, sign-in ceremonies, game rooms) per IPv4
+  address or IPv6 /48, because one home line holds 256 or 65,536 /64s; the sign-up budget (40 accounts an
+  hour, counted when created) per IPv4 /24 or IPv6 /48.
+- Email codes (`backend/src/auth/email_code.rs`, top comment, is the statement): an inbox (the
+  address without its `+tag`, and for Gmail without dots) gets at most 10 codes an hour; one
+  network (IPv4 address or IPv6 /48) may have at most 3 of them, so no network, and no three
+  together, can stop another from getting a code; it takes four. Wrong guesses: 10 a day per
+  network per address, 50 per address from everyone, 30 per network over all addresses (a miss
+  is forgiven for that last count once the same network signs in with a code for the
+  address). All checked under the inbox's and the network's advisory locks in the transaction
+  that inserts, so parallel requests cannot pass them.
+- `TEST_ONLY_LIMIT_RACE_DELAY_MS` pauses between each limit's check and its write, so the
+  end-to-end tests can show a check made without its lock letting parallel requests through.
+  The API refuses to start with it when any `WEBAUTHN_ORIGIN` is https. Never set it in a
+  deployed `.env`.
+- **Accounts that exist only by email cannot sign in while email is off** (no `RESEND_API_KEY`):
+  an old Google or email account has no passkey and its only way in answers 503. Production
+  had no users when this was accepted (2026-11-16); the sign-in panel says so. Check
+  `SELECT COUNT(*) FROM users u WHERE NOT EXISTS (SELECT 1 FROM webauthn_credentials c WHERE c.user_id = u.id)`
+  before relying on it.
 - `DEV_EMAIL_LOG=1` writes codes to stderr instead of sending. Tests only. A real key wins
   over it, with a loud start-up warning.
 - Local dev: `WEBAUTHN_RP_ID=localhost WEBAUTHN_ORIGIN=http://localhost:4321`.
 - The email step requires the age gate's stored tier (`adult` or `teen-consented`), in the
-  browser and again in the API. Do not loosen either.
+  browser and again in the API. Do not loosen either. The tier is self-declared (nobody's
+  age is verified). Rules in `backend/src/auth/age.rs`: set at account creation; afterwards
+  only the signed-in user's own answer changes it (the age question opened by "Date of Birth"
+  in the account menu, `POST /auth/age-tier`). The page never posts the browser's stored gate
+  answer by itself (on a shared browser it may be someone else's), and `/credits/age-verify`,
+  which pages cached before 2026-11-16 still call, never writes. Adult may become teen; teen
+  becomes adult again only for an account declared adult, with a proof from the last five
+  minutes; an account declared teen stays teen (the operator can change it in the database).
 
 ## Languages (16: en es fr de it pt pl ru ar hi zh ja ko vi th id)
 
@@ -253,7 +322,12 @@ left behind by a killed run is found by its port: `lsof -nP -iTCP:<port> -sTCP:L
   `DATABASE_URL` needs an explicit user (sqlx 0.9 no longer infers it). Migrations are read
   from `./migrations` at start-up, so sync that folder with the binary.
 - Replace the binary by writing a new file and renaming it, then
-  `launchctl bootout` + `bootstrap` (not an in-place copy).
+  `launchctl bootout` + `bootstrap` (not an in-place copy). Prod is arm64 macOS: build the
+  release binary on an Apple Silicon build host (the Studio, or the M4), never the Intel iMac.
+- **Rolling back keeps the newer migrations.** sqlx refuses to start when the database has a
+  migration its folder lacks (`VersionMissing`), so to go back to an older binary, put the old
+  binary in place and leave `./migrations` as it is (every migration here only adds, and keeps
+  the old binary working). Never delete an applied migration file.
 
 ## Gotchas
 

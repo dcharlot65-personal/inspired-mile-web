@@ -81,7 +81,7 @@ async fn migration_status(
     .bind(claims.sub)
     .fetch_optional(&pool)
     .await
-    .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?;
+    .map_err(crate::error::internal)?;
 
     match row {
         Some(r) => Ok(Json(MigrationStatus {
@@ -127,7 +127,7 @@ async fn sync_migration(
         .bind(&card.source)
         .fetch_optional(&pool)
         .await
-        .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?;
+        .map_err(crate::error::internal)?;
 
         if result.is_some() {
             cards_synced += 1;
@@ -163,7 +163,7 @@ async fn sync_migration(
     .bind(payload.stats.packs_opened)
     .execute(&pool)
     .await
-    .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?;
+    .map_err(crate::error::internal)?;
 
     // Sync achievements (union)
     for achievement_id in &payload.achievements {
@@ -177,7 +177,7 @@ async fn sync_migration(
         .bind(achievement_id)
         .fetch_optional(&pool)
         .await
-        .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?;
+        .map_err(crate::error::internal)?;
 
         if result.is_some() {
             achievements_synced += 1;
@@ -205,7 +205,7 @@ async fn sync_migration(
             .bind(&v.source)
             .fetch_optional(&pool)
             .await
-            .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?;
+            .map_err(crate::error::internal)?;
 
             if result.is_some() {
                 variants_synced += 1;
