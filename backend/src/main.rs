@@ -84,12 +84,14 @@ async fn main() {
         tournaments::scheduler::run_scheduler(scheduler_pool, scheduler_rooms).await;
     });
 
-    // Start room cleanup background task
+    // Sweep the rooms: finished ones once their linger is over (the privacy policy's "up to two
+    // minutes" rests on how often this runs: multiplayer::game_room::POLICY_AFTER_THE_END), and
+    // rooms nobody came to or that are too old.
     let cleanup_rooms = rooms.clone();
     tokio::spawn(async move {
         loop {
-            tokio::time::sleep(std::time::Duration::from_secs(60)).await;
-            cleanup_rooms.cleanup_stale_rooms(std::time::Duration::from_secs(1800)).await;
+            tokio::time::sleep(multiplayer::game_room::SWEEP_EVERY).await;
+            cleanup_rooms.cleanup_stale_rooms(multiplayer::game_room::MAX_ROOM_AGE).await;
         }
     });
 

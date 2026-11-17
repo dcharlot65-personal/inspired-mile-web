@@ -50,11 +50,23 @@ pub const MAX_ROOMS: usize = 500;
 /// and again cannot fill the server.
 pub const MAX_ROOMS_PER_USER: usize = 3;
 /// Rooms opened from one network at once (an IPv4 address, or an IPv6 /64: one connection
-/// owns a whole /64), finished ones aside. A family or a classroom behind one address shares
-/// this, so it is not tight; it bounds what many accounts on one network can hold.
-pub const MAX_ROOMS_PER_ADDRESS: usize = 12;
+/// owns a whole /64), finished ones aside. A school or a family behind one address shares
+/// this: a class of 80 playing in pairs holds 40 (two players of one network in one room
+/// count once). It bounds what many accounts on one network can hold: a tenth of `MAX_ROOMS`.
+pub const MAX_ROOMS_PER_ADDRESS: usize = 40;
 /// How long a room that has not started may stand with nobody connected to it.
 const UNVISITED_ROOM: Duration = Duration::from_secs(300);
+/// How long a room may stand before it is swept whatever its state: a room that has not
+/// started, counted from when it was opened; a match, counted from its first round. A match
+/// ends long before this (three rounds of `Timing::round`, and a grace).
+pub const MAX_ROOM_AGE: Duration = Duration::from_secs(30 * 60);
+/// How often the server sweeps its rooms (`RoomManager::cleanup_stale_rooms`).
+pub const SWEEP_EVERY: Duration = Duration::from_secs(15);
+/// What the privacy policy promises (src/pages/privacy.astro, "for up to two minutes after it
+/// ends"): a finished battle's verses are gone from the server's memory by then. A finished room
+/// stops answering after `Timing::linger`, and the first sweep after that empties and removes
+/// it, so `linger + SWEEP_EVERY` must not pass this. A test holds the two together.
+pub const POLICY_AFTER_THE_END: Duration = Duration::from_secs(120);
 
 /// How long things may take.
 #[derive(Clone, Copy, Debug)]
@@ -65,13 +77,23 @@ pub struct Timing {
     /// Time a disconnected player has to come back before the match goes to the other.
     pub reconnect: Duration,
     /// Time a quick-match player waits for the opponent they were paired with to arrive,
-    /// before the room is closed and they are told to look again.
+    /// before the room is closed and they are told to look again. Counted from the pairing.
+    /// Also the time a friend who followed an invitation waits for the player who sent it,
+    /// when that player is not in the room.
     pub arrival: Duration,
+    /// How long a finished room still answers a player who comes back for the result. After
+    /// this it is closed: it takes nobody and shows nothing, and the next sweep empties it.
+    pub linger: Duration,
 }
 
 impl Default for Timing {
     fn default() -> Self {
-        Self { round: Duration::from_secs(180), reconnect: Duration::from_secs(45), arrival: Duration::from_secs(60) }
+        Self {
+            round: Duration::from_secs(180),
+            reconnect: Duration::from_secs(45),
+            arrival: Duration::from_secs(60),
+            linger: Duration::from_secs(90),
+        }
     }
 }
 
@@ -390,6 +412,8 @@ pub struct GameRoom {
     ended: Option<(MatchWinner, EndReason)>,
     timing: Timing,
     created_at: Instant,
+    /// When the first round began.
+    started_at: Option<Instant>,
     round_started_at: Instant,
     completed_at: Option<Instant>,
     next_conn: u64,
@@ -399,7 +423,7 @@ pub struct GameRoom {
     /// `Timing::arrival` for the other.
     paired: bool,
     arrival_armed: bool,
-    /// Closed before it began: the paired opponent never came.
+    /// Closed: the opponent never came, or the room was swept. It takes nobody now.
     closed: bool,
 }
 
@@ -432,6 +456,7 @@ impl GameRoom {
             ended: None,
             timing,
             created_at: now,
+            started_at: None,
             round_started_at: now,
             completed_at: None,
             next_conn: 1,
@@ -445,6 +470,38 @@ impl GameRoom {
     /// Whether the room still counts against its players' and network's limits.
     fn live(&self) -> bool {
         self.state != RoomState::Completed
+    }
+
+    /// Closed, or finished longer ago than `Timing::linger`: the room answers nobody now and
+    /// is not listed, even before the sweep removes it.
+    pub fn gone(&self) -> bool {
+        self.closed || self.completed_at.is_some_and(|done| done.elapsed() > self.timing.linger)
+    }
+
+    /// Someone sits ready in the room while a seat held for another player is empty: the
+    /// first to arrive in a quick match, or a friend who followed an invitation while the
+    /// player who sent it is away.
+    fn waits_for_held_seat(&self) -> bool {
+        let here = |s: &Seat| s.joined() && s.tx.is_some();
+        self.seats.iter().any(here) && self.seats.iter().any(|s| s.reserved && !here(s))
+    }
+
+    /// The sweep takes the room away: whoever is still connected is told, and the verses go
+    /// from memory now, even while a timer still holds the room.
+    fn retire(&mut self) {
+        let event = ServerEvent::Error { code: "room_closed", message: "This duel has closed.".into() };
+        for seat in 0..self.seats.len() {
+            if self.state != RoomState::Completed {
+                self.send(seat, event.clone());
+            }
+            self.seats[seat].tx = None;
+        }
+        self.results.clear();
+        self.pending = [None, None];
+        self.closed = true;
+        // A timer that fires later finds nothing to play.
+        self.state = RoomState::Completed;
+        self.completed_at.get_or_insert_with(Instant::now);
     }
 
     pub fn state(&self) -> RoomState {
@@ -607,7 +664,7 @@ impl GameRoom {
         deck: &[String],
         tx: mpsc::Sender<ServerEvent>,
     ) -> Result<(u64, Vec<Effect>), RoomError> {
-        if self.closed {
+        if self.gone() {
             return Err(RoomError::NotFound);
         }
         let seat = match self.seat_of(user_id) {
@@ -649,6 +706,7 @@ impl GameRoom {
                     self.state = RoomState::InProgress;
                     self.round = 0;
                     self.round_started_at = Instant::now();
+                    self.started_at = Some(self.round_started_at);
                     for s in 0..2 {
                         self.send(s, self.match_start_event(s));
                         self.send(s, self.round_start_event(s));
@@ -663,8 +721,10 @@ impl GameRoom {
                             effects.push(Effect::GraceTimer { user_id: self.seats[s].user_id, conn: self.seats[s].conn });
                         }
                     }
-                } else if self.paired && !self.arrival_armed {
-                    // A quick match: the first to arrive waits a bounded time for the other.
+                } else if !self.arrival_armed && self.waits_for_held_seat() {
+                    // Someone waits for a player whose seat is held (a quick match, or a friend
+                    // who came while the inviter is away): only for a bounded time. A quick
+                    // match made by the manager is armed at the pairing already.
                     self.arrival_armed = true;
                     effects.push(Effect::ArrivalTimer);
                 }
@@ -737,16 +797,24 @@ impl GameRoom {
         Ok(Vec::new())
     }
 
-    /// The opponent of a quick match has had their time to arrive. If the match has not begun,
-    /// the room closes: whoever is waiting is told so, and their connection is let go.
+    /// The time to arrive is over. A quick match that has not begun closes. A private room
+    /// closes if a friend is still waiting for the player who invited them; if not (the
+    /// inviter came back, or the friend left), it stays open and the timer can be armed again.
+    /// Whoever is waiting is told, and their connection is let go.
     pub fn arrival_expired(&mut self) {
         if self.state != RoomState::Waiting || self.closed {
             return;
         }
-        let event = ServerEvent::Error {
-            code: "opponent_absent",
-            message: "Your opponent did not arrive. Look for another match.".into(),
+        if !self.paired && !self.waits_for_held_seat() {
+            self.arrival_armed = false;
+            return;
+        }
+        let message = if self.paired {
+            "Your opponent did not arrive. Look for another match."
+        } else {
+            "The player who invited you is not here. Ask them for a new link."
         };
+        let event = ServerEvent::Error { code: "opponent_absent", message: message.into() };
         for seat in 0..self.seats.len() {
             self.send(seat, event.clone());
             self.seats[seat].tx = None;
@@ -899,18 +967,23 @@ impl GameRoom {
         }
     }
 
-    fn is_stale(&self, max_age: Duration, linger: Duration) -> bool {
-        match self.completed_at {
-            // A finished room stays a little while, so a player who reconnects just after
-            // the end still gets the result.
-            Some(done) => done.elapsed() > linger,
-            None => {
+    fn is_stale(&self, max_age: Duration) -> bool {
+        // A finished room stays `Timing::linger`, so a player who reconnects just after the
+        // end still gets the result; a closed one has nothing more to say.
+        if self.gone() {
+            return true;
+        }
+        match self.state {
+            RoomState::Completed => false,
+            // A match is counted from its first round: an invitation accepted late is not cut short.
+            RoomState::InProgress => self.started_at.is_some_and(|t| t.elapsed() > max_age),
+            RoomState::Waiting => {
                 let nobody_here = self.seats.iter().all(|s| s.tx.is_none());
                 self.created_at.elapsed() > max_age
                     // A waiting room nobody holds a seat in, or one that was made (a queue
                     // match, an invitation) and that nobody has come to for a while.
-                    || (self.state == RoomState::Waiting
-                        && (self.seats.is_empty() || (nobody_here && self.created_at.elapsed() > UNVISITED_ROOM)))
+                    || self.seats.is_empty()
+                    || (nobody_here && self.created_at.elapsed() > UNVISITED_ROOM)
             }
         }
     }
@@ -962,7 +1035,30 @@ pub fn run_effects(room: &Arc<Mutex<GameRoom>>, effects: Vec<Effect>) {
 /// Registry of active game rooms.
 pub struct RoomManager {
     rooms: Mutex<HashMap<Uuid, Arc<Mutex<GameRoom>>>>,
+    /// Held while a room is counted for and opened, so two rooms opened at once cannot both
+    /// pass a limit that only one of them fits under.
+    opening: Mutex<()>,
     timing: Timing,
+}
+
+/// Why a room could not be opened.
+#[derive(Clone, Debug, PartialEq, Eq)]
+pub enum Refusal {
+    /// The server holds `MAX_ROOMS`: nobody's fault, nobody's limit.
+    ServerFull,
+    /// For each player asked for, in order, the limit they (or their network) have reached,
+    /// if any. At least one is `Some`.
+    Over(Vec<Option<RoomError>>),
+}
+
+impl Refusal {
+    /// The refusal as one error: the first player's that applies.
+    pub fn error(&self) -> RoomError {
+        match self {
+            Self::ServerFull => RoomError::ServerFull,
+            Self::Over(over) => over.iter().flatten().next().cloned().unwrap_or(RoomError::ServerFull),
+        }
+    }
 }
 
 impl RoomManager {
@@ -971,66 +1067,88 @@ impl RoomManager {
     }
 
     pub fn with_timing(timing: Timing) -> Self {
-        Self { rooms: Mutex::new(HashMap::new()), timing }
+        Self { rooms: Mutex::new(HashMap::new()), opening: Mutex::new(()), timing }
     }
 
-    /// A new room with seats held for these players (one for a private room, two for a
-    /// queue match), opened from these networks (`address_key` of each player's address).
-    /// The server draws the seed. Refused when the server, a player or a network already
-    /// holds as many rooms as it may.
-    pub async fn create_room(&self, reserved: &[(Uuid, String)], origins: &[String]) -> Result<Uuid, RoomError> {
-        let mut rooms = self.rooms.lock().await;
+    /// Every room, as it stands. The map's lock is let go before any room is locked: a room is
+    /// never waited for while the map is held.
+    async fn all(&self) -> Vec<(Uuid, Arc<Mutex<GameRoom>>)> {
+        self.rooms.lock().await.iter().map(|(id, room)| (*id, room.clone())).collect()
+    }
+
+    /// The live rooms each of these players holds a seat in, and the live rooms opened from
+    /// each of these networks. Every room is counted: one that is busy is waited for, not
+    /// skipped. `None` when the server already holds `MAX_ROOMS`.
+    async fn holdings(&self, players: &[Uuid], origins: &[String]) -> Option<(Vec<usize>, Vec<usize>)> {
+        let rooms = self.all().await;
         if rooms.len() >= MAX_ROOMS {
-            return Err(RoomError::ServerFull);
+            return None;
         }
-        let (mut per_user, mut per_origin) = (vec![0usize; reserved.len()], vec![0usize; origins.len()]);
-        for room in rooms.values() {
-            // A room busy right now is counted as live: it is being played.
-            let Ok(room) = room.try_lock() else {
-                continue;
-            };
+        let (mut per_user, mut per_origin) = (vec![0usize; players.len()], vec![0usize; origins.len()]);
+        for (_, room) in rooms {
+            let room = room.lock().await;
             if !room.live() {
                 continue;
             }
-            for (i, (user, _)) in reserved.iter().enumerate() {
+            for (i, user) in players.iter().enumerate() {
                 per_user[i] += usize::from(room.has_player(*user));
             }
             for (i, origin) in origins.iter().enumerate() {
                 per_origin[i] += usize::from(room.origins.contains(origin));
             }
         }
-        if per_user.iter().any(|n| *n >= MAX_ROOMS_PER_USER) {
-            return Err(RoomError::TooManyRooms);
-        }
-        if per_origin.iter().any(|n| *n >= MAX_ROOMS_PER_ADDRESS) {
-            return Err(RoomError::TooManyFromAddress);
+        Some((per_user, per_origin))
+    }
+
+    /// A new room with seats held for these players (one for a private room, two for a
+    /// queue match), opened from these networks (`origins[i]` is `address_key` of player i's
+    /// address). The server draws the seed. Refused when the server, a player or a network
+    /// already holds as many rooms as it may; the refusal says whose limit it is. A queue
+    /// match's clock to arrive (`Timing::arrival`) starts now.
+    pub async fn open_room(&self, reserved: &[(Uuid, String)], origins: &[String]) -> Result<Uuid, Refusal> {
+        let _one_at_a_time = self.opening.lock().await;
+        let players: Vec<Uuid> = reserved.iter().map(|(user, _)| *user).collect();
+        let (per_user, per_origin) = self.holdings(&players, origins).await.ok_or(Refusal::ServerFull)?;
+        let over: Vec<Option<RoomError>> = (0..players.len())
+            .map(|i| {
+                if per_user[i] >= MAX_ROOMS_PER_USER {
+                    Some(RoomError::TooManyRooms)
+                } else if per_origin.get(i).is_some_and(|n| *n >= MAX_ROOMS_PER_ADDRESS) {
+                    Some(RoomError::TooManyFromAddress)
+                } else {
+                    None
+                }
+            })
+            .collect();
+        if over.iter().any(Option::is_some) {
+            return Err(Refusal::Over(over));
         }
         let id = Uuid::new_v4();
         let mut room = GameRoom::new(id, rand::random::<u32>(), reserved, self.timing);
         room.origins = origins.to_vec();
         room.origins.dedup();
-        rooms.insert(id, Arc::new(Mutex::new(room)));
+        let paired = room.paired;
+        room.arrival_armed = paired;
+        let room = Arc::new(Mutex::new(room));
+        self.rooms.lock().await.insert(id, room.clone());
+        if paired {
+            run_effects(&room, vec![Effect::ArrivalTimer]);
+        }
         Ok(id)
+    }
+
+    /// `open_room`, with the refusal as one error.
+    pub async fn create_room(&self, reserved: &[(Uuid, String)], origins: &[String]) -> Result<Uuid, RoomError> {
+        self.open_room(reserved, origins).await.map_err(|refusal| refusal.error())
     }
 
     /// Whether this player, from this network, may have another room opened for them.
     pub async fn room_limit(&self, user_id: Uuid, origin: &str) -> Result<(), RoomError> {
-        let rooms = self.rooms.lock().await;
-        if rooms.len() >= MAX_ROOMS {
-            return Err(RoomError::ServerFull);
-        }
-        let (mut mine, mut here) = (0, 0);
-        for room in rooms.values() {
-            let Ok(room) = room.try_lock() else { continue };
-            if room.live() {
-                mine += usize::from(room.has_player(user_id));
-                here += usize::from(room.origins.iter().any(|o| o == origin));
-            }
-        }
-        if mine >= MAX_ROOMS_PER_USER {
+        let (mine, here) = self.holdings(&[user_id], &[origin.to_string()]).await.ok_or(RoomError::ServerFull)?;
+        if mine[0] >= MAX_ROOMS_PER_USER {
             return Err(RoomError::TooManyRooms);
         }
-        if here >= MAX_ROOMS_PER_ADDRESS {
+        if here[0] >= MAX_ROOMS_PER_ADDRESS {
             return Err(RoomError::TooManyFromAddress);
         }
         Ok(())
@@ -1044,51 +1162,49 @@ impl RoomManager {
         self.rooms.lock().await.remove(&id);
     }
 
-    /// The rooms a player has a seat in.
+    /// The rooms a player has a seat in, closed ones and those finished longer ago than
+    /// `Timing::linger` aside.
     pub async fn rooms_of(&self, user_id: Uuid) -> Vec<(Uuid, RoomState, usize)> {
-        let rooms: Vec<(Uuid, Arc<Mutex<GameRoom>>)> =
-            self.rooms.lock().await.iter().map(|(id, room)| (*id, room.clone())).collect();
         let mut mine = Vec::new();
-        for (id, room) in rooms {
+        for (id, room) in self.all().await {
             let room = room.lock().await;
-            if room.has_player(user_id) {
+            if room.has_player(user_id) && !room.gone() {
                 mine.push((id, room.state(), room.player_count()));
             }
         }
         mine
     }
 
+    /// Take these rooms away: each is closed under its own lock (it takes nobody from then
+    /// on, and its verses are dropped), then removed from the map.
+    async fn retire_where(&self, mut doomed: impl FnMut(&GameRoom) -> bool) -> usize {
+        let mut gone = Vec::new();
+        for (id, room) in self.all().await {
+            let mut room = room.lock().await;
+            if doomed(&room) {
+                room.retire();
+                gone.push(id);
+            }
+        }
+        let mut rooms = self.rooms.lock().await;
+        for id in &gone {
+            rooms.remove(id);
+        }
+        gone.len()
+    }
+
     /// Close the waiting rooms a player opened and nobody else has joined, so that opening
     /// room after room cannot fill the server.
     pub async fn close_waiting_rooms_of(&self, user_id: Uuid) {
-        let mut rooms = self.rooms.lock().await;
-        let mut closing = Vec::new();
-        for (id, room) in rooms.iter() {
-            if let Ok(room) = room.try_lock() {
-                if room.state() == RoomState::Waiting && room.player_count() == 1 && room.has_player(user_id) {
-                    closing.push(*id);
-                }
-            }
-        }
-        for id in closing {
-            rooms.remove(&id);
-        }
+        self.retire_where(|room| room.state() == RoomState::Waiting && room.player_count() == 1 && room.has_player(user_id))
+            .await;
     }
 
+    /// Remove finished rooms past their linger, and rooms nobody came to or that are older
+    /// than `max_age` (`MAX_ROOM_AGE` in service). Every room is looked at: a busy one is
+    /// waited for, so none escapes a sweep.
     pub async fn cleanup_stale_rooms(&self, max_age: Duration) {
-        let mut rooms = self.rooms.lock().await;
-        let stale_ids: Vec<Uuid> = rooms
-            .iter()
-            .filter_map(|(id, room_arc)| match room_arc.try_lock() {
-                Ok(room) => room.is_stale(max_age, Duration::from_secs(120)).then_some(*id),
-                Err(_) => None, // locked = active, skip
-            })
-            .collect();
-
-        let count = stale_ids.len();
-        for id in stale_ids {
-            rooms.remove(&id);
-        }
+        let count = self.retire_where(|room| room.is_stale(max_age)).await;
         if count > 0 {
             tracing::info!(removed = count, "Cleaned up stale game rooms");
         }
@@ -1510,7 +1626,7 @@ mod tests {
 
     #[tokio::test(start_paused = true)]
     async fn timers_end_a_round_and_then_an_abandoned_match() {
-        let timing = Timing { round: Duration::from_secs(60), reconnect: Duration::from_secs(20), arrival: Duration::from_secs(30) };
+        let timing = Timing { round: Duration::from_secs(60), reconnect: Duration::from_secs(20), arrival: Duration::from_secs(30), ..Timing::default() };
         let manager = RoomManager::with_timing(timing);
         let (a, b) = (Uuid::new_v4(), Uuid::new_v4());
         let id = manager.create_room(&[(a, "ann".into()), (b, "bob".into())], &[]).await.unwrap();
@@ -1648,10 +1764,155 @@ mod tests {
         room.join(b, "bob", &deck(&DECK_B), tx_b).unwrap();
         room.arrival_expired();
         assert_eq!(room.state(), RoomState::InProgress);
-        // A private room (one seat held) arms no such timer: a friend may take a while.
+        // A private room (one seat held) arms no such timer while its creator waits: a friend
+        // may take a while.
         let mut room = GameRoom::new(Uuid::new_v4(), 5, &[(a, "ann".into())], Timing::default());
         let (_, fx) = room.join(a, "ann", &deck(&DECK_A), mpsc::channel(EVENT_BUFFER).0).unwrap();
         assert!(fx.is_empty());
+    }
+
+    #[test]
+    fn a_friend_who_follows_an_invitation_waits_a_bounded_time_for_the_inviter() {
+        let (a, c) = (Uuid::new_v4(), Uuid::new_v4());
+        // Ann opened the room and is not in it. Cy follows the link: he waits a bounded time.
+        let mut room = GameRoom::new(Uuid::new_v4(), 5, &[(a, "ann".into())], Timing::default());
+        let (tx, mut rx) = mpsc::channel(EVENT_BUFFER);
+        let (_, fx) = room.join(c, "cy", &deck(&DECK_B), tx).unwrap();
+        assert_eq!(fx, vec![Effect::ArrivalTimer]);
+        drain(&mut rx);
+        room.arrival_expired();
+        let events = drain(&mut rx);
+        assert!(
+            matches!(&events[0], ServerEvent::Error { code: "opponent_absent", message } if message.contains("invited you")),
+            "{events:?}"
+        );
+        assert!(matches!(rx.try_recv(), Err(mpsc::error::TryRecvError::Disconnected)));
+        assert!(room.gone());
+        assert_eq!(room.join(a, "ann", &deck(&DECK_A), mpsc::channel(EVENT_BUFFER).0).unwrap_err(), RoomError::NotFound);
+
+        // Ann comes back in time: the timer finds the match under way.
+        let mut room = GameRoom::new(Uuid::new_v4(), 5, &[(a, "ann".into())], Timing::default());
+        let (tx_c, _rx_c) = mpsc::channel(EVENT_BUFFER);
+        room.join(c, "cy", &deck(&DECK_B), tx_c).unwrap();
+        let (tx_a, _rx_a) = mpsc::channel(EVENT_BUFFER);
+        room.join(a, "ann", &deck(&DECK_A), tx_a).unwrap();
+        room.arrival_expired();
+        assert_eq!(room.state(), RoomState::InProgress);
+
+        // Cy leaves before it fires: the room stays open for Ann's invitation, and the timer
+        // is armed again for the next friend.
+        let mut room = GameRoom::new(Uuid::new_v4(), 5, &[(a, "ann".into())], Timing::default());
+        let (tx_c, _rx_c) = mpsc::channel(EVENT_BUFFER);
+        let (conn_c, _) = room.join(c, "cy", &deck(&DECK_B), tx_c).unwrap();
+        room.disconnect(c, conn_c);
+        room.arrival_expired();
+        assert!(!room.gone());
+        let (_, fx) = room.join(c, "cy", &deck(&DECK_B), mpsc::channel(EVENT_BUFFER).0).unwrap();
+        assert_eq!(fx, vec![Effect::ArrivalTimer]);
+    }
+
+    /// A match Ann wins by forfeit, as the manager holds it.
+    async fn finished_match(manager: &RoomManager) -> (Uuid, Arc<Mutex<GameRoom>>, Uuid) {
+        let (a, b) = (Uuid::new_v4(), Uuid::new_v4());
+        let id = manager.create_room(&[(a, "ann".into())], &[]).await.unwrap();
+        let room = manager.get_room(id).await.unwrap();
+        {
+            let mut r = room.lock().await;
+            r.join(a, "ann", &deck(&DECK_A), mpsc::channel(EVENT_BUFFER).0).unwrap();
+            r.join(b, "bob", &deck(&DECK_B), mpsc::channel(EVENT_BUFFER).0).unwrap();
+            r.submit(a, 0, "DC-001", GOOD).unwrap();
+            r.submit(b, 0, "MO-002", PLAIN).unwrap();
+            r.forfeit(b);
+            assert_eq!(r.state(), RoomState::Completed);
+        }
+        (id, room, a)
+    }
+
+    #[test]
+    fn a_finished_battle_is_gone_within_what_the_privacy_policy_says() {
+        // The room stops answering after its linger; the next sweep empties and removes it.
+        assert!(Timing::default().linger + SWEEP_EVERY <= POLICY_AFTER_THE_END);
+    }
+
+    #[tokio::test]
+    async fn a_finished_room_answers_for_its_linger_then_is_closed_emptied_and_swept() {
+        let manager = RoomManager::new();
+        let (id, room, a) = finished_match(&manager).await;
+        // Just after the end, a player who comes back gets the result, verses and all.
+        let (tx, mut rx) = mpsc::channel(EVENT_BUFFER);
+        room.lock().await.join(a, "ann", &[], tx).unwrap();
+        let events = drain(&mut rx);
+        assert!(matches!(&events[1], ServerEvent::MatchStart { results, .. } if results[0].you.verse == GOOD), "{events:?}");
+        assert!(matches!(events[2], ServerEvent::MatchComplete { .. }));
+        assert_eq!(manager.rooms_of(a).await.len(), 1);
+        manager.cleanup_stale_rooms(MAX_ROOM_AGE).await;
+        assert!(manager.get_room(id).await.is_some(), "kept for its linger");
+
+        // Once the linger is over it shows nothing, even before a sweep comes.
+        let linger = Timing::default().linger;
+        room.lock().await.completed_at = Some(Instant::now().checked_sub(linger + Duration::from_secs(1)).unwrap());
+        assert_eq!(room.lock().await.join(a, "ann", &[], mpsc::channel(EVENT_BUFFER).0).unwrap_err(), RoomError::NotFound);
+        assert!(manager.rooms_of(a).await.is_empty());
+        // The sweep removes it and drops the verses, though a timer (here, `room`) still holds it.
+        manager.cleanup_stale_rooms(MAX_ROOM_AGE).await;
+        assert!(manager.get_room(id).await.is_none());
+        let r = room.lock().await;
+        assert!(r.results.is_empty() && r.pending.iter().all(Option::is_none), "the verses are still held");
+    }
+
+    #[tokio::test]
+    async fn a_busy_room_is_waited_for_by_the_sweep_and_by_the_limits_not_skipped() {
+        // The sweep: a finished room past its linger whose lock is held when the sweep starts.
+        let manager = Arc::new(RoomManager::new());
+        let (id, room, _) = finished_match(&manager).await;
+        room.lock().await.completed_at = Some(Instant::now().checked_sub(Timing::default().linger * 2).unwrap());
+        let busy = room.lock().await;
+        let sweep = tokio::spawn({
+            let manager = manager.clone();
+            async move { manager.cleanup_stale_rooms(MAX_ROOM_AGE).await }
+        });
+        tokio::time::sleep(Duration::from_millis(50)).await;
+        drop(busy);
+        sweep.await.unwrap();
+        assert!(manager.get_room(id).await.is_none(), "the sweep skipped a room that was busy");
+
+        // The limits: one of the rooms an account holds is busy when another is asked for.
+        let me = Uuid::new_v4();
+        for _ in 0..MAX_ROOMS_PER_USER {
+            manager.create_room(&[(me, "me".into())], &[]).await.unwrap();
+        }
+        let held = manager.get_room(manager.rooms_of(me).await[0].0).await.unwrap();
+        let busy = held.lock().await;
+        let ask = tokio::spawn({
+            let manager = manager.clone();
+            async move { manager.create_room(&[(me, "me".into())], &[]).await }
+        });
+        tokio::time::sleep(Duration::from_millis(50)).await;
+        drop(busy);
+        assert_eq!(ask.await.unwrap(), Err(RoomError::TooManyRooms), "a busy room was not counted");
+        assert_eq!(manager.room_limit(me, "203.0.113.5").await, Err(RoomError::TooManyRooms));
+    }
+
+    #[tokio::test]
+    async fn a_match_begun_in_an_old_invitation_is_not_cut_short_by_the_sweep() {
+        let manager = RoomManager::new();
+        let (a, b) = (Uuid::new_v4(), Uuid::new_v4());
+        let id = manager.create_room(&[(a, "ann".into())], &[]).await.unwrap();
+        let room = manager.get_room(id).await.unwrap();
+        {
+            let mut r = room.lock().await;
+            // The invitation has stood for almost the room's whole age when the friend comes.
+            r.created_at = Instant::now().checked_sub(MAX_ROOM_AGE + Duration::from_secs(60)).unwrap();
+            r.join(a, "ann", &deck(&DECK_A), mpsc::channel(EVENT_BUFFER).0).unwrap();
+            r.join(b, "bob", &deck(&DECK_B), mpsc::channel(EVENT_BUFFER).0).unwrap();
+            assert_eq!(r.state(), RoomState::InProgress);
+        }
+        manager.cleanup_stale_rooms(MAX_ROOM_AGE).await;
+        assert!(manager.get_room(id).await.is_some(), "a match just begun was swept");
+        // A match is swept only once it has itself lasted that long.
+        room.lock().await.started_at = Some(Instant::now().checked_sub(MAX_ROOM_AGE + Duration::from_secs(1)).unwrap());
+        manager.cleanup_stale_rooms(MAX_ROOM_AGE).await;
+        assert!(manager.get_room(id).await.is_none());
     }
 
     #[test]
@@ -1683,5 +1944,44 @@ mod tests {
         assert!(serde_json::from_str::<ClientEvent>(r#"{"type":"submit_verse","round":-1,"char_id":"x","text":"y"}"#).is_err());
         assert!(serde_json::from_str::<ClientEvent>(r#"{"type":"use_item","item_id":"x"}"#).is_err());
         assert!(serde_json::from_str::<ClientEvent>(r#"{"type":"join_room","room_id":"nope"}"#).is_err());
+    }
+    #[test]
+    fn a_score_on_the_wire_has_the_names_the_page_reads() {
+        // src/lib/multiplayer-client.ts, WireScore and WireSide: the page reads these names, and
+        // `voided` as one of "empty", "thin", "copied" or null. A name it does not know is a score
+        // the page cannot show or check.
+        let keys = |v: &serde_json::Value| {
+            let mut k: Vec<String> = v.as_object().expect("an object").keys().cloned().collect();
+            k.sort();
+            k
+        };
+        let mut t = table(1);
+        t.room.submit(t.a, 0, "DC-001", "rose").unwrap();
+        t.room.expire_round(0);
+        let events = drain(&mut t.rx_a);
+        let json = serde_json::to_value(events.iter().find(|e| matches!(e, ServerEvent::RoundResult(_))).unwrap()).unwrap();
+        assert_eq!(keys(&json["you"]), ["char_id", "judge", "score", "timed_out", "total", "verse"]);
+        let score = &json["you"]["score"];
+        assert_eq!(
+            keys(score),
+            ["craft", "curse", "device", "form", "multiplier", "power_words", "signature", "substance", "synergy", "voided"]
+        );
+        assert_eq!(keys(&score["form"]), ["checks", "earned", "form_id", "kept", "scale", "thin"]);
+        assert_eq!(keys(&score["device"]), ["id", "met"]);
+        assert_eq!(keys(&score["form"]["checks"][0]), ["earned", "id", "met", "points"]);
+        assert_eq!(score["voided"], "thin", "one word is too thin to be a verse");
+        assert_eq!(json["opponent"]["score"]["voided"], "empty", "nothing arrived in time");
+        assert_eq!(json["opponent"]["timed_out"], true);
+
+        let mut t = table(1);
+        t.room.submit(t.a, 0, "DC-001", GOOD).unwrap();
+        t.room.submit(t.b, 0, "MO-002", PLAIN).unwrap();
+        let json = serde_json::to_value(drain(&mut t.rx_a).iter().find(|e| matches!(e, ServerEvent::RoundResult(_))).unwrap()).unwrap();
+        assert_eq!(json["you"]["score"]["voided"], serde_json::Value::Null);
+        // Round two answers round one: Bob throws Ann's verse back at her, word for word.
+        t.room.submit(t.b, 1, "CA-002", GOOD).unwrap();
+        t.room.submit(t.a, 1, "MO-001", PLAIN).unwrap();
+        let json = serde_json::to_value(drain(&mut t.rx_a).iter().find(|e| matches!(e, ServerEvent::RoundResult(_))).unwrap()).unwrap();
+        assert_eq!(json["opponent"]["score"]["voided"], "copied");
     }
 }

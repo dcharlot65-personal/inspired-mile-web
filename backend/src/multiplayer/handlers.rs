@@ -48,6 +48,8 @@ const MESSAGES_PER_WINDOW: u32 = 30;
 const MESSAGE_WINDOW: Duration = Duration::from_secs(10);
 /// How long a quick-match request waits for another player before answering "timeout".
 const QUEUE_WAIT: Duration = Duration::from_secs(30);
+/// Errors with which a room lets a connection go: nothing follows them.
+const ROOM_GOODBYES: [&str; 2] = ["opponent_absent", "room_closed"];
 
 pub fn router() -> Router<(PgPool, Config)> {
     Router::new()
@@ -148,14 +150,17 @@ async fn join_queue(
         Enqueued::Waiting(rx) => rx,
     };
     match tokio::time::timeout(QUEUE_WAIT, &mut rx).await {
-        Ok(Ok(room_id)) => Ok(queue_answer(Some(room_id), 0, "matched")),
+        Ok(Ok(Ok(room_id))) => Ok(queue_answer(Some(room_id), 0, "matched")),
+        // This player reached a limit while waiting (they opened rooms meanwhile).
+        Ok(Ok(Err(refusal))) => Err(refused(refusal)),
         Ok(Err(_)) => Ok(queue_answer(None, 0, "cancelled")),
         Err(_) => {
             queue.dequeue(claims.sub).await;
             // Someone may have arrived in the instant between the timeout and leaving the
             // queue; the room made for the two of them must not be left with one player.
             match rx.try_recv() {
-                Ok(room_id) => Ok(queue_answer(Some(room_id), 0, "matched")),
+                Ok(Ok(room_id)) => Ok(queue_answer(Some(room_id), 0, "matched")),
+                Ok(Err(refusal)) => Err(refused(refusal)),
                 Err(_) => Ok(queue_answer(None, queue.size().await, "timeout")),
             }
         }
@@ -222,6 +227,9 @@ async fn join_private_room(
     let room_id: Uuid = token.parse().map_err(|_| (StatusCode::BAD_REQUEST, "Invalid room token".to_string()))?;
     let room_arc = rooms.get_room(room_id).await.ok_or_else(|| refused(RoomError::NotFound))?;
     let room = room_arc.lock().await;
+    if room.gone() {
+        return Err(refused(RoomError::NotFound));
+    }
     if !room.has_player(claims.sub) && !room.has_open_seat() {
         return Err(refused(RoomError::Full));
     }
@@ -316,8 +324,11 @@ async fn handle_socket(socket: WebSocket, claims: Claims, rooms: Arc<RoomManager
                     if send(&mut sink, &event).await.is_err() {
                         break;
                     }
-                    // The match is over and the player has been told: nothing more to say.
-                    if matches!(event, ServerEvent::MatchComplete { .. }) {
+                    // The match is over, or the room has closed, and the player has been told:
+                    // nothing more to say (the room lets this connection go next).
+                    if matches!(event, ServerEvent::MatchComplete { .. })
+                        || matches!(event, ServerEvent::Error { code, .. } if ROOM_GOODBYES.contains(&code))
+                    {
                         break;
                     }
                 }
@@ -394,8 +405,15 @@ async fn handle_event(
             let Some(room) = rooms.get_room(room_id).await else {
                 return Some(RoomError::NotFound.event());
             };
+            // A player coming back to a match under way, or to its result, keeps the deck they
+            // started with: the room does not read the deck sent now, so it is not checked
+            // again (a database that cannot be reached must not cost them the match).
+            let returning = {
+                let room = room.lock().await;
+                room.has_player(claims.sub) && room.state() != RoomState::Waiting
+            };
             // Only characters the account may field: the starter ones and those it holds.
-            match not_held(pool, claims.sub, &deck).await {
+            match if returning { Ok(Vec::new()) } else { not_held(pool, claims.sub, &deck).await } {
                 Ok(missing) if missing.is_empty() => {}
                 Ok(missing) => {
                     let names: Vec<String> = missing
@@ -520,5 +538,55 @@ mod tests {
     fn the_message_limit_holds_the_largest_honest_verse() {
         // Every byte of a verse escaped as two, plus the envelope.
         assert!(MAX_MESSAGE_BYTES >= 2 * super::super::game_room::MAX_VERSE_BYTES + 200);
+    }
+
+    fn unreachable_database() -> PgPool {
+        sqlx::postgres::PgPoolOptions::new()
+            .acquire_timeout(Duration::from_millis(300))
+            .connect_lazy("postgres://nobody:secret@127.0.0.1:1/inspired_mile")
+            .expect("a lazy pool")
+    }
+
+    #[tokio::test]
+    async fn a_player_coming_back_mid_match_is_not_checked_for_cards_again() {
+        // Ann's deck holds a character that is not a starter one. The match is under way; the
+        // database then cannot be reached, and Ann's connection drops.
+        let starter = starter_characters();
+        let other = inspired_mile_api::verse::cards::CARDS
+            .iter()
+            .find(|c| c.is_character() && !starter.contains(&c.id))
+            .expect("a character that is not a starter one")
+            .id
+            .clone();
+        let deck_a = vec![other, starter[1].clone(), starter[2].clone()];
+        let deck_b = starter.clone();
+        let rooms = RoomManager::new();
+        let (a, b) = (Uuid::new_v4(), Uuid::new_v4());
+        let id = rooms.create_room(&[(a, "ann".into()), (b, "bob".into())], &[]).await.unwrap();
+        let room = rooms.get_room(id).await.unwrap();
+        let (tx_a, _rx_a) = mpsc::channel(EVENT_BUFFER);
+        let (tx_b, _rx_b) = mpsc::channel(EVENT_BUFFER);
+        let (conn_a, _) = room.lock().await.join(a, "ann", &deck_a, tx_a).unwrap();
+        room.lock().await.join(b, "bob", &deck_b, tx_b).unwrap();
+        assert_eq!(room.lock().await.state(), RoomState::InProgress);
+        room.lock().await.disconnect(a, conn_a);
+
+        let pool = unreachable_database();
+        let claims = Claims { sub: a, username: "ann".into(), exp: i64::MAX, iat: 0 };
+        let mut joined = None;
+        let back = ClientEvent::JoinRoom { room_id: id, deck: deck_a.clone(), lang: LANG.to_string() };
+        let problem = handle_event(back, &claims, &rooms, &pool, &mut joined).await;
+        assert!(problem.is_none(), "Ann was turned away on her way back: {problem:?}");
+        assert!(joined.is_some(), "Ann has her seat again");
+
+        // Before a match starts, the cards are checked, and an unreadable record says so.
+        let c = Uuid::new_v4();
+        let open = rooms.create_room(&[(c, "cy".into())], &[]).await.unwrap();
+        let claims = Claims { sub: c, username: "cy".into(), exp: i64::MAX, iat: 0 };
+        let mut joined = None;
+        let first = ClientEvent::JoinRoom { room_id: open, deck: deck_a, lang: LANG.to_string() };
+        let problem = handle_event(first, &claims, &rooms, &pool, &mut joined).await;
+        assert!(matches!(problem, Some(ServerEvent::Error { code: "cards_unchecked", .. })), "{problem:?}");
+        assert!(joined.is_none());
     }
 }
