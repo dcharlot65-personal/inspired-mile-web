@@ -144,6 +144,10 @@ async function pagePlan({ lang, perForm }) {
   const { createDuel, starterDeck } = await import('/src/lib/verse/duel.ts');
   const { formsFor } = await import('/src/lib/verse/forms.ts');
   await loadPack(lang);
+  // The game loads a language's sound data beside its pack once the phonetics work is in
+  // (src/lib/verse/sound); which forms a language offers depends on it. Absent, nothing to load.
+  const sound = await import('/src/lib/verse/sound/index.ts').catch(() => null);
+  if (sound && !(await sound.loadSound(lang))) throw new Error(`the sound data for ${lang} did not load`);
   const forms = formsFor(lang).map((f) => f.id);
   const count = Object.fromEntries(forms.map((f) => [f, 0]));
   const DIFFICULTIES = ['apprentice', 'player', 'master'];
@@ -168,6 +172,9 @@ async function pageWrite({ lang, slots, replies }) {
   const { writeOpponentVerse, opponentMessages, tidyModelVerse, expectedLines } = await import('/src/lib/verse/opponent.ts');
   const { linesOf } = await import('/src/lib/verse/text.ts');
   await loadPack(lang);
+  // As the game does before a duel (see pagePlan).
+  const sound = await import('/src/lib/verse/sound/index.ts').catch(() => null);
+  if (sound && !(await sound.loadSound(lang))) throw new Error(`the sound data for ${lang} did not load`);
   const plays = [];
   for (const slot of slots) {
     const duel = createDuel(slot.seed, lang, starterDeck());

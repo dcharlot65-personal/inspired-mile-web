@@ -21,6 +21,20 @@ export interface StoredPlay {
   drafts: StoredDraft[]; [k: string]: unknown;
 }
 
+/**
+ * The game loads a language's sound data (rhyme and syllables by pronunciation) beside its pack
+ * before a duel, once the phonetics work (branch lang/phonetics, src/lib/verse/sound/) is in: the
+ * forms a duel draws and how a verse scores depend on it. Where that module exists the replay
+ * loads it too, so it scores as the game does; where it does not, the pattern matches nothing and
+ * nothing is loaded.
+ */
+const soundModules = import.meta.glob<{ loadSound: (lang: string) => Promise<boolean> }>('./verse/sound/index.ts');
+export async function loadSoundIfAny(lang: string): Promise<boolean> {
+  let all = true;
+  for (const load of Object.values(soundModules)) all = (await (await load()).loadSound(lang)) && all;
+  return all;
+}
+
 /** The fields of a play that follow from the code, for comparing a stored play with its replay. */
 export function scoredFields(p: StoredPlay) {
   return {
@@ -36,6 +50,7 @@ export function scoredFields(p: StoredPlay) {
  * play cannot be replayed, only written again by the model.
  */
 export async function replayPlay(lang: string, p: StoredPlay): Promise<{ prompt: string[] | null; drawn: string; play: StoredPlay }> {
+  if (!(await loadSoundIfAny(lang))) throw new Error(`the sound data for ${lang} did not load: a replay without it would not score as the game does`);
   const duel = createDuel(p.seed, lang, starterDeck());
   const plan = duel.rounds[p.roundIndex];
   const form = getForm(plan.formId);
