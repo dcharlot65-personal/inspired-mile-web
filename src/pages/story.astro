@@ -20,7 +20,7 @@ const DIFFICULTY = { easy: 'text-emerald-400', medium: 'text-amber-400', hard: '
       <div class="text-center mb-12">
         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 mb-6">
           <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-          <span class="text-emerald-400 text-xs font-medium tracking-wide uppercase" data-i18n="story.badge">Campaign</span>
+          <span class="text-emerald-400 text-xs font-medium tracking-wide rtl:tracking-normal uppercase" data-i18n="story.badge">Campaign</span>
         </div>
         <h1 class="text-4xl sm:text-5xl font-display font-bold mb-4">
           <span class="text-gradient" data-i18n="story.title">Story Mode</span>
@@ -35,7 +35,7 @@ const DIFFICULTY = { easy: 'text-emerald-400', medium: 'text-amber-400', hard: '
             <h3 class="text-lg font-display font-bold text-obsidian-200" data-i18n="story.journey">Your Journey</h3>
             <p class="text-xs text-obsidian-500" id="progress-text">0 / {ACTS.reduce((n, a) => n + a.encounters.length, 0)} encounters completed</p>
           </div>
-          <div class="text-right">
+          <div class="text-end">
             <span class="text-2xl font-display font-bold text-gold-400" id="total-stars">0</span>
             <span class="text-xs text-obsidian-500 block" data-i18n="story.stars">Stars</span>
           </div>
@@ -51,7 +51,7 @@ const DIFFICULTY = { easy: 'text-emerald-400', medium: 'text-amber-400', hard: '
           <div class={`card-glass p-6 rounded-2xl border-s-4 ${LOOK[act.id].border}`}>
             <div class="flex items-center justify-between mb-3">
               <div>
-                <span class={`text-xs ${LOOK[act.id].text} font-mono uppercase tracking-wider`} data-i18n={`story.act.${act.id}.label`}>Act {ROMAN[act.id - 1]}</span>
+                <span class={`text-xs ${LOOK[act.id].text} font-mono uppercase tracking-wider rtl:tracking-normal`} data-i18n={`story.act.${act.id}.label`}>Act {ROMAN[act.id - 1]}</span>
                 <h3 class="text-lg font-display font-bold text-obsidian-200" data-i18n={`story.act.${act.id}.name`}>{act.name}</h3>
               </div>
               <span class="text-2xl" set:html={LOOK[act.id].icon}></span>

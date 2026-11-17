@@ -116,6 +116,49 @@ for (const locale of LOCALES) {
   });
 }
 
+/**
+ * In Arabic the page runs right to left, and the bidirectional algorithm gives the "?" closing an English
+ * line the direction of the Arabic around it, so it is drawn at the line's other end: "?Do you bite your
+ * thumb at me, sir". The line is an isolate (scripts/lang-content/bidi.mjs); this measures where the
+ * browser actually draws the question mark: on the same line as the "r" of "sir", and just to its right.
+ */
+test('Arabic: an English line in a story scene keeps its question mark at its end', async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await open(page, '/story', 'ar');
+  await page.click('.encounter-card[data-encounter="1-1"]');
+  await expect(page.locator('#scene-narrative')).toContainText('sir?');
+  const at = await page.evaluate(() => {
+    const node = document.getElementById('scene-narrative')!.firstChild as Text;
+    const q = node.data.indexOf('sir?') + 3;
+    const box = (i: number) => { const r = document.createRange(); r.setStart(node, i); r.setEnd(node, i + 1); const b = r.getBoundingClientRect(); return { left: b.left, right: b.right, top: b.top }; };
+    return { mark: box(q), r: box(q - 1) };
+  });
+  expect(Math.abs(at.mark.top - at.r.top), 'the question mark is on the line of "sir"').toBeLessThan(3);
+  expect(at.mark.left, 'the question mark is drawn right after "sir", not at the far end of the line').toBeGreaterThanOrEqual(at.r.right - 1);
+  expect(at.mark.left - at.r.right).toBeLessThan(6);
+});
+
+/**
+ * The onboarding tooltip lives in a fixed overlay, so it must be placed in the viewport, after the page
+ * has scrolled its target into view. At phone width the second target is far below the fold.
+ */
+for (const locale of ['en', 'ar']) {
+  test(`onboarding at phone width in ${locale}: every step's tooltip is on screen beside its target`, async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await open(page, '/playground', locale);
+    const tip = page.locator('#onboarding-tooltip');
+    for (let step = 1; step <= 3; step++) {
+      await expect(page.locator('#onboarding-step')).toHaveText(`${step} / 3`);
+      await expect.poll(async () => {
+        const b = await tip.boundingBox();
+        return !!b && b.y >= 0 && b.y + b.height <= 844 && b.x >= 0 && b.x + b.width <= 390;
+      }, { message: `step ${step}: the tooltip is inside the 390 x 844 viewport` }).toBe(true);
+      await page.locator('#onboarding-next').click();
+    }
+    await expect(page.locator('#onboarding-overlay')).toBeHidden();
+  });
+}
+
 test('a change of language relabels the open playground', async ({ page }) => {
   await open(page, '/playground', 'en');
   await expect(page.locator('#onboarding-overlay')).toBeVisible();

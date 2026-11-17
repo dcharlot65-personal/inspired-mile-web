@@ -10,7 +10,7 @@ import { CARD_CATALOG, RARITY_COLORS, type Card, type Rarity } from '../lib/card
       <div class="text-center mb-12">
         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold-500/10 border border-gold-500/20 mb-6">
           <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-          <span class="text-gold-400 text-xs font-medium tracking-wide uppercase" data-i18n="pg.badge">Digital Playground</span>
+          <span class="text-gold-400 text-xs font-medium tracking-wide rtl:tracking-normal uppercase" data-i18n="pg.badge">Digital Playground</span>
         </div>
         <h1 class="text-4xl sm:text-5xl font-display font-bold mb-4">
           <span class="text-gradient" data-i18n="pg.title">The Playground</span>
@@ -66,14 +66,14 @@ import { CARD_CATALOG, RARITY_COLORS, type Card, type Rarity } from '../lib/card
             </div>
           </div>
           <div class="space-y-3">
-            <button id="starter-pack-btn" class="w-full card-glass p-3 text-left hover:border-gold-500/30 transition-all flex items-center justify-between">
+            <button id="starter-pack-btn" class="w-full card-glass p-3 text-start hover:border-gold-500/30 transition-all flex items-center justify-between">
               <div>
                 <span class="text-sm font-semibold text-gold-300" data-i18n="pg.starter.name">Starter Pack</span>
                 <p class="text-xs text-obsidian-500" data-i18n="pg.starter.desc">3 cards to begin your collection</p>
               </div>
               <span id="starter-badge" class="text-xs px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30" data-i18n="pg.free">FREE</span>
             </button>
-            <button id="daily-pack-btn" class="w-full card-glass p-3 text-left hover:border-gold-500/30 transition-all flex items-center justify-between">
+            <button id="daily-pack-btn" class="w-full card-glass p-3 text-start hover:border-gold-500/30 transition-all flex items-center justify-between">
               <div>
                 <span class="text-sm font-semibold text-blue-300" data-i18n="pg.daily.name">Daily Pack</span>
                 <p class="text-xs text-obsidian-500" data-i18n="pg.daily.desc">1 free card every 24 hours</p>
@@ -85,8 +85,8 @@ import { CARD_CATALOG, RARITY_COLORS, type Card, type Rarity } from '../lib/card
 
         <!-- Pack Odds Disclosure -->
         <div class="col-span-full card-glass p-4 border-obsidian-700/50">
-          <button id="odds-toggle" class="w-full flex items-center justify-between text-left">
-            <span class="text-xs font-semibold text-obsidian-400 uppercase tracking-wide" data-i18n="pg.odds.title">Card Pack Drop Rates</span>
+          <button id="odds-toggle" class="w-full flex items-center justify-between text-start">
+            <span class="text-xs font-semibold text-obsidian-400 uppercase tracking-wide rtl:tracking-normal" data-i18n="pg.odds.title">Card Pack Drop Rates</span>
             <svg id="odds-chevron" class="w-4 h-4 text-obsidian-500 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
           </button>
           <div id="odds-content" class="hidden mt-4 space-y-4">
@@ -96,27 +96,27 @@ import { CARD_CATALOG, RARITY_COLORS, type Card, type Rarity } from '../lib/card
                 <div class="flex items-center gap-3">
                   <span class="text-xs text-obsidian-400 w-24" data-i18n="rarity.common">Common</span>
                   <div class="flex-1 h-2 rounded-full bg-obsidian-800 overflow-hidden"><div class="h-full rounded-full bg-obsidian-500" style="width:50%"></div></div>
-                  <span class="text-xs font-mono text-obsidian-400 w-10 text-right">50%</span>
+                  <span class="text-xs font-mono text-obsidian-400 w-10 text-end">50%</span>
                 </div>
                 <div class="flex items-center gap-3">
                   <span class="text-xs text-obsidian-400 w-24" data-i18n="rarity.uncommon">Uncommon</span>
                   <div class="flex-1 h-2 rounded-full bg-obsidian-800 overflow-hidden"><div class="h-full rounded-full bg-emerald-500/60" style="width:30%"></div></div>
-                  <span class="text-xs font-mono text-obsidian-400 w-10 text-right">30%</span>
+                  <span class="text-xs font-mono text-obsidian-400 w-10 text-end">30%</span>
                 </div>
                 <div class="flex items-center gap-3">
                   <span class="text-xs text-obsidian-400 w-24" data-i18n="rarity.rare">Rare</span>
                   <div class="flex-1 h-2 rounded-full bg-obsidian-800 overflow-hidden"><div class="h-full rounded-full bg-blue-500/60" style="width:15%"></div></div>
-                  <span class="text-xs font-mono text-obsidian-400 w-10 text-right">15%</span>
+                  <span class="text-xs font-mono text-obsidian-400 w-10 text-end">15%</span>
                 </div>
                 <div class="flex items-center gap-3">
                   <span class="text-xs text-obsidian-400 w-24" data-i18n="rarity.epic">Epic</span>
                   <div class="flex-1 h-2 rounded-full bg-obsidian-800 overflow-hidden"><div class="h-full rounded-full bg-purple-500/60" style="width:4%"></div></div>
-                  <span class="text-xs font-mono text-obsidian-400 w-10 text-right">4%</span>
+                  <span class="text-xs font-mono text-obsidian-400 w-10 text-end">4%</span>
                 </div>
                 <div class="flex items-center gap-3">
                   <span class="text-xs text-obsidian-400 w-24" data-i18n="rarity.legendary">Legendary</span>
                   <div class="flex-1 h-2 rounded-full bg-obsidian-800 overflow-hidden"><div class="h-full rounded-full bg-gold-500/60" style="width:1%"></div></div>
-                  <span class="text-xs font-mono text-obsidian-400 w-10 text-right">1%</span>
+                  <span class="text-xs font-mono text-obsidian-400 w-10 text-end">1%</span>
                 </div>
               </div>
             </div>
@@ -161,7 +161,7 @@ import { CARD_CATALOG, RARITY_COLORS, type Card, type Rarity } from '../lib/card
           <p class="text-sm text-obsidian-400 mb-4" data-i18n="pg.battle.body">Challenge the Master Thespian in a Shakespeare rap battle. Win a round and earn a random card from the collection.</p>
           <a href="/battle" class="btn-danger text-sm w-full justify-center">
             <span data-i18n="pg.battle.cta">Enter the Arena</span>
-            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-4 h-4 ms-2 rtl:-scale-x-100" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
             </svg>
           </a>
@@ -422,7 +422,7 @@ import { CARD_CATALOG, RARITY_COLORS, type Card, type Rarity } from '../lib/card
           <div class="card-glass p-4 bg-linear-to-br ${card.gradient} ${card.border} animate-float" style="animation-delay: ${Math.random() * 0.5}s">
             <div class="flex items-center gap-4">
               ${artHtml}
-              <div class="text-left">
+              <div class="text-start">
                 <h4 class="font-display font-bold text-obsidian-100">${card.name}</h4>
                 <p class="text-xs text-obsidian-400">${card.house} &middot; ${card.element}</p>
                 <span class="inline-block mt-1 px-2 py-0.5 text-xs rounded-full ${rarityClass}">${rarityName(card.rarity)}</span>
@@ -761,6 +761,8 @@ import { CARD_CATALOG, RARITY_COLORS, type Card, type Rarity } from '../lib/card
       ];
 
       let currentStep = 0;
+      /** Stops placing the open step's tooltip (its listeners are removed). */
+      let reposition: (() => void) | null = null;
 
       function showStep(i: number) {
         if (i >= steps.length) {
@@ -785,36 +787,37 @@ import { CARD_CATALOG, RARITY_COLORS, type Card, type Rarity } from '../lib/card
         target.style.boxShadow = '0 0 0 4px rgba(212,175,55,0.4), 0 0 20px rgba(212,175,55,0.2)';
         target.style.borderRadius = '12px';
 
-        // Position tooltip near target
-        const rect = target.getBoundingClientRect();
-        const ttWidth = 288; // max-w-xs
-        const padding = 16;
-
-        if (s.position === 'bottom') {
-          tooltip.style.top = `${rect.bottom + window.scrollY + padding}px`;
-          tooltip.style.left = `${Math.max(padding, Math.min(rect.left + rect.width / 2 - ttWidth / 2, window.innerWidth - ttWidth - padding))}px`;
-          arrow.style.top = '-6px';
-          arrow.style.left = '50%';
+        // The overlay is fixed, so the tooltip is placed in the viewport: after the target has been scrolled
+        // into view (at once, so its box is where it will stay), from the tooltip's measured size, beside the
+        // target where there is room and never outside the screen. At phone width the second target is far
+        // below the fold; placed from page coordinates before the scroll, the tooltip landed off-screen.
+        target.scrollIntoView({ block: 'center', behavior: 'instant' as ScrollBehavior });
+        const place = () => {
+          const rect = target.getBoundingClientRect();
+          const pad = 16;
+          const w = tooltip.offsetWidth || 288, h = tooltip.offsetHeight || 160;
+          const left = Math.max(pad, Math.min(rect.left + rect.width / 2 - w / 2, window.innerWidth - w - pad));
+          const below = rect.bottom + pad, above = rect.top - pad - h;
+          const fitsBelow = below + h <= window.innerHeight - pad, fitsAbove = above >= pad;
+          const wantBelow = s.position === 'bottom' ? fitsBelow || !fitsAbove : !fitsAbove && fitsBelow;
+          const top = Math.max(pad, Math.min(wantBelow ? below : above, window.innerHeight - h - pad));
+          tooltip.style.top = `${top}px`;
+          tooltip.style.left = `${left}px`;
+          // The arrow on the side that faces the target, under the target's middle.
+          const edge = '1px solid rgba(212,175,55,0.4)';
+          arrow.style.left = `${Math.max(14, Math.min(rect.left + rect.width / 2 - left, w - 14))}px`;
           arrow.style.transform = 'translateX(-50%) rotate(45deg)';
-          arrow.style.borderTop = '1px solid rgba(212,175,55,0.4)';
-          arrow.style.borderLeft = '1px solid rgba(212,175,55,0.4)';
-          arrow.style.borderBottom = 'none';
-          arrow.style.borderRight = 'none';
-        } else {
-          tooltip.style.top = `${rect.top + window.scrollY - padding - 140}px`;
-          tooltip.style.left = `${Math.max(padding, Math.min(rect.left + rect.width / 2 - ttWidth / 2, window.innerWidth - ttWidth - padding))}px`;
-          arrow.style.bottom = '-6px';
-          arrow.style.top = 'auto';
-          arrow.style.left = '50%';
-          arrow.style.transform = 'translateX(-50%) rotate(45deg)';
-          arrow.style.borderBottom = '1px solid rgba(212,175,55,0.4)';
-          arrow.style.borderRight = '1px solid rgba(212,175,55,0.4)';
-          arrow.style.borderTop = 'none';
-          arrow.style.borderLeft = 'none';
-        }
-
-        // Scroll target into view
-        target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          if (wantBelow) Object.assign(arrow.style, { top: '-6px', bottom: 'auto', borderTop: edge, borderLeft: edge, borderBottom: 'none', borderRight: 'none' });
+          else Object.assign(arrow.style, { top: 'auto', bottom: '-6px', borderBottom: edge, borderRight: edge, borderTop: 'none', borderLeft: 'none' });
+        };
+        place();
+        // Placed again when the text arrives in another language, the page scrolls or the window changes size.
+        reposition?.();
+        window.addEventListener('scroll', place, { passive: true });
+        window.addEventListener('resize', place);
+        const watch = new ResizeObserver(place);
+        watch.observe(tooltip);
+        reposition = () => { window.removeEventListener('scroll', place); window.removeEventListener('resize', place); watch.disconnect(); reposition = null; };
       }
 
       function clearHighlights() {
@@ -830,6 +833,7 @@ import { CARD_CATALOG, RARITY_COLORS, type Card, type Rarity } from '../lib/card
       }
 
       function finishOnboarding() {
+        reposition?.();
         clearHighlights();
         overlay.classList.add('hidden');
         overlay.classList.remove('flex');
