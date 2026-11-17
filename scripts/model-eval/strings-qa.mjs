@@ -28,7 +28,8 @@ import { LANGS } from './lib.mjs';
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
 const [step, dir] = process.argv.slice(2);
 const KEYS = ['battle.lang.written', 'battle.lang.rules', 'brain.noneShown'];
-const MODEL = 'LFM3 1.7B';
+// The model a player can have loaded: the only one used in any language (docs/language/MODEL-EVAL.md).
+const MODEL = 'Gemma 4 E2B';
 const read = (p) => JSON.parse(readFileSync(p, 'utf8'));
 
 // As src/i18n/index.ts languageName(): the CLDR name of a language, in the interface language, capitalised.
@@ -73,7 +74,7 @@ const words = (lang, text) => {
 };
 /** One word misspelled: the longest word's two middle letters swapped (or a letter doubled where they are the same). */
 function misspell(lang, text) {
-  const ws = words(lang, text).filter((w) => !/^(LFM|Thai|th)$/i.test(w)).sort((a, b) => [...b].length - [...a].length);
+  const ws = words(lang, text).filter((w) => !/^(LFM|Gemma|Thai|th)$/i.test(w)).sort((a, b) => [...b].length - [...a].length);
   const w = ws[0];
   const ch = [...w];
   const i = Math.floor(ch.length / 2) - 1;
