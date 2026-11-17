@@ -138,8 +138,10 @@ How long the server keeps a battle's verses is a published promise (privacy.astr
 two minutes after it ends"). A finished room answers a returning player for `Timing::linger`
 (90 s); after that it is `gone()`: it takes nobody, is not listed, and the next sweep
 (`SWEEP_EVERY`, 15 s) empties it (`retire`: the verses are dropped even while a timer still
-holds the room) and removes it. A test holds `linger + SWEEP_EVERY <= POLICY_AFTER_THE_END`
-(120 s). Change any of these and the policy together.
+holds the room) and removes it. The build itself (a const assertion in game_room.rs) holds
+`FINISHED_LINGER + SWEEP_EVERY <= POLICY_AFTER_THE_END` (120 s), and
+src/lib/privacy-retention.test.ts holds the policy's words to `POLICY_AFTER_THE_END`. Change any
+of these and the policy together.
 
 ## Building the API
 

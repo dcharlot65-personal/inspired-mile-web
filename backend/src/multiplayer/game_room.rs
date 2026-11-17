@@ -64,9 +64,16 @@ pub const MAX_ROOM_AGE: Duration = Duration::from_secs(30 * 60);
 pub const SWEEP_EVERY: Duration = Duration::from_secs(15);
 /// What the privacy policy promises (src/pages/privacy.astro, "for up to two minutes after it
 /// ends"): a finished battle's verses are gone from the server's memory by then. A finished room
-/// stops answering after `Timing::linger`, and the first sweep after that empties and removes
-/// it, so `linger + SWEEP_EVERY` must not pass this. A test holds the two together.
+/// stops answering after `Timing::linger` (`FINISHED_LINGER`), and the first sweep after that
+/// empties and removes it, so `linger + SWEEP_EVERY` must not pass this: the build checks it
+/// below, and src/lib/privacy-retention.test.ts checks the policy's words against this number.
 pub const POLICY_AFTER_THE_END: Duration = Duration::from_secs(120);
+/// How long a finished room answers a returning player (`Timing::linger` in service).
+pub const FINISHED_LINGER: Duration = Duration::from_secs(90);
+const _: () = assert!(
+    FINISHED_LINGER.as_secs() + SWEEP_EVERY.as_secs() <= POLICY_AFTER_THE_END.as_secs(),
+    "a finished battle would outlive what the privacy policy says"
+);
 
 /// How long things may take.
 #[derive(Clone, Copy, Debug)]
@@ -92,7 +99,7 @@ impl Default for Timing {
             round: Duration::from_secs(180),
             reconnect: Duration::from_secs(45),
             arrival: Duration::from_secs(60),
-            linger: Duration::from_secs(90),
+            linger: FINISHED_LINGER,
         }
     }
 }
