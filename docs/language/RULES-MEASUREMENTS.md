@@ -599,4 +599,23 @@ alone; the baseline (`review4.test.ts` and `review3.test.ts`'s MASH and KATA tes
 | copy: no every-line rule | the copy families |
 | copy: no any-order share | the copy families |
 
-RUSTMUT
+In the Rust port (the Studio, against the committed goldens), each broken alone:
+
+| broken | `verse_parity` comparisons that disagree |
+|---|---|
+| held sound: no "mh" opening | 10 |
+| held sound: an h may close it | 12 |
+| held sound: any consonant held | 12 |
+| held sound: no "shhh" | 83 |
+| no drawn-out letter said once | 16 |
+| no drawn-out letter said twice | 0 at a0c8fb0; 74 once "dizzzy" and the like were in the corpus |
+| y not a vowel letter | 0 at a0c8fb0; 11 with "Rhys", "Bryn", "myrrrh" |
+| trigrams of SCOWL's words only | 155 |
+| trigrams kept with their apostrophes | 0 at a0c8fb0; 12 with "wasnt", "doesnt", "didnt" |
+| `is_copy` asks the line in the source line's place whether it rhymes (the check's M5) | 0 at a0c8fb0; 6 with moved, rhyme-swapped copies that add a line |
+| no every-line rule | 182 |
+| no any-order share | 150 |
+| the any-order count uses a word twice | 116 |
+| no roll call | 75 |
+
+Unbroken, 8 of 8 at each step.
