@@ -916,7 +916,7 @@ const messages: Record<string, string> = {
   'trivia.182.o1': "पहली चुड़ैल",
   'trivia.182.o2': "लेडी मैकबेथ",
   'trivia.182.o3': "Hecate",
-  'trivia.183.q': "लीयर की कौन-सी बेटी कॉर्नवाल के ड्यूक से ब्याही है?",
+  'trivia.183.q': "लीयर की कौन-सी बेटी कार्नवाल के ड्यूक से ब्याही है?",
   'trivia.183.o0': "Regan",
   'trivia.183.o1': "Goneril",
   'trivia.183.o2': "कॉर्डेलिया",
