@@ -37,22 +37,33 @@ if the grade path changes, and measure with `tests/model/grade-injection.spec.ts
 `tests/model/judge-hide.spec.ts` (real models; results in `docs/language/JUDGE-INJECTION.md`) and
 `src/lib/verse/grade-path.test.ts` (stand-in models).
 
-What counts as a copy, a verse or a word is measured, not guessed: `src/lib/verse/review.test.ts`
-and `review2.test.ts` print the measurements every threshold in `duel.ts` (COPY_THRESHOLD,
-COPY_COVERAGE*, COPY_LINE_*, OWN_WORDS_PER_LINE) and `text.ts` (MIN_KNOWN_SHARE, FULL_KNOWN_SHARE,
-TELLING_PER_LINE, SHORT_TELLING, UNLISTED_SPAN, PHRASE_SPAN) was set from, and assert them, with the
-checkers' probes as tests; a run is recorded in `docs/language/RULES-MEASUREMENTS.md`. A copy is
-measured from both sides (`copyOf`: how much of the player's verse is the opponent's, and how much
-of the opponent's it carries), so words added to every line do not hide one; and line by line
+What counts as a copy, a verse or a word is measured, not guessed: `src/lib/verse/review.test.ts`,
+`review2.test.ts` and `review3.test.ts` print the measurements every threshold in `duel.ts`
+(COPY_THRESHOLD, COPY_COVERAGE*, COPY_LINE_*, OWN_WORDS_PER_LINE) and `text.ts` (MIN_KNOWN_SHARE,
+FULL_KNOWN_SHARE, TELLING_PER_LINE, SHORT_TELLING, UNLISTED_SPAN, PHRASE_SPAN) was set from, and assert
+them, with the checkers' probes as tests; a run is recorded in `docs/language/RULES-MEASUREMENTS.md`. A
+copy is measured from both sides (`copyOf`: how much of the player's verse is the opponent's, and how
+much of the opponent's it carries), so words added to every line do not hide one; and line by line
 (`copyOf().carry`, `duel.ts carriesLines`: each of the opponent's lines carried into a line of its
-own, its last word kept), so moving the lines the way the form allows does not hide one either. A
-word the lexicon lacks counts toward the floor inside a phrase (its line holds a little word), and
-in Japanese a katakana word counts beside a word written otherwise; neither tells anything. The rule
-judge's wordplay is a count of different telling words and its wit is a split unless both verses
-answered one (an "!" decides nothing). Generated data, each from a pinned source with its
+own that keeps its rhyme, the same last word or one that rhymes with it; or, when the verse has no
+line of its own beyond the other's, nearly whole whatever it ends on), so moving the lines the way
+the form allows, or swapping each rhyme word for another rhyme, does not hide one either. A word the
+lexicon lacks counts toward the floor inside a phrase (its line holds a little word) when it is
+spelled as English spells (every three letters of it found in a listed word: `pronounce.ts
+listedTrigrams`), so "finna" and "varlet" count and keyboard mash does not; in Japanese a katakana
+word counts beside a word written otherwise, and in a verse read as Japanese the dictionary's own
+katakana words count in a run of two or more (サッカーボール); neither tells anything. The rule
+judge's wordplay is a count of different telling words over as many lines as both verses have (a
+line added past the other's length adds nothing), its flow is rhyme, lines opening on the same
+word that carries meaning (not a line that says the one before again: a chant), lines that grow and
+even lengths, and its wit is a split unless both verses answered one (an "!" decides nothing). `judge-accuracy.test.ts`
+holds it to main's accuracy on labelled pairs in all sixteen languages (`judge-pairs/pairs.json`,
+`scripts/judge-pairs.mjs`). Generated data, each from a pinned source with its
 sha256 (the script refuses a different file): `confusables.ts` (UTS #39, `build-confusables.mjs`),
 `function-words/<lang>.ts` (stopwords-iso, `build-function-words.mjs`, loaded with the pack),
-`judge-words.ts` (above), `pron-en.ts` (below).
+`judge-words.ts` (above), `pron-en.ts` (below), `sound/ipadic/*.dat.gz` (kuromoji 0.1.2's IPADIC cut
+to what the engine reads, `scripts/sound/build-ipadic.mjs`; `sound/ipadic.test.ts` requires the same
+readings as the full dictionary).
 
 English rhyme and syllables are read from a pronunciation table, not guessed from spelling:
 `src/lib/verse/pron-en.ts` is GENERATED from the CMU Pronouncing Dictionary by
@@ -305,8 +316,12 @@ left behind by a killed run is found by its port: `lsof -nP -iTCP:<port> -sTCP:L
 - **Rhyme and syllables go by sound**, not spelling, where the spelling does not show it:
   `src/lib/verse/sound/` holds one lazily loaded table per language (stress, pronunciation,
   character readings; built by `scripts/sound/build.mjs` from Wiktionary, Unihan and
-  CC-CEDICT) and a Japanese analyser (kuromoji). `loadSound(lang)` goes beside
-  `loadPack(lang)` before `createDuel`. Chinese, Japanese and Thai offer rhyming forms only
+  CC-CEDICT) and a Japanese analyser (kuromoji, with its dictionary cut to what the engine reads:
+  `sound/ipadic`, 4.7 MB compressed and 16 MB unpacked where kuromoji's own was 17.8 and 100;
+  rebuild with `node scripts/sound/build-ipadic.mjs` after `npm ci`). `loadSound(lang)` goes beside
+  `loadPack(lang)` before `createDuel`; the battle page also starts it when the player picks a
+  language, so a Japanese duel need not wait for the dictionary when it starts (a page load alone
+  fetches nothing). Chinese, Japanese and Thai offer rhyming forms only
   once their data is loaded; Arabic and Thai offer no syllable forms. Sources, licences,
   measured accuracy and how to rebuild: `docs/language/PHONETICS.md`. After changing a rule
   or a table, run `scripts/sound/measure.mjs --write` (it records the digests the unit and
@@ -360,6 +375,10 @@ left behind by a killed run is found by its port: `lsof -nP -iTCP:<port> -sTCP:L
 - Babylon's default WebXR set-up downloads hand and controller models from its own
   servers; `theatre.ts` turns that off, and a test asserts no foreign request in a session.
 - To test WebXR under emulation, delete `Navigator.prototype.xr` before installing `iwer`.
+- The theatre's panels break lines between words as `Intl.Segmenter` finds them, and keep the
+  line-break rules of Japanese and Chinese (no closing punctuation opens a line, no opening
+  bracket ends one) and Thai's ๆ and ฯ: `src/lib/xr/line-break.ts`, checked on what Babylon drew
+  in `tests/theatre.spec.ts`.
 
 ## Requests to other origins (the privacy policy depends on this)
 

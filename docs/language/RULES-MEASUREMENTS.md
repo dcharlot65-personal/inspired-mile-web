@@ -42,7 +42,9 @@ source word at each point), then by the engine's segmentation (kuromoji for Japa
 
 1. *It carries the other's lines over* (`carriesLines`): every source line of `COPY_LINE_WORDS` = 3
    words or more but one (all of them in a couplet) has `COPY_LINE_SHARE` = 0.6 of its words said in
-   order by a line of the verse, its last word among them; only for a source of `COPY_LINE_SOURCE` =
+   order by a line of the verse that keeps its rhyme (the last word, or since the engine pass a word
+   that rhymes with it); or, when the verse has no more lines than the source, `COPY_LINE_NEAR` =
+   0.67 of them whatever it ends on (engine pass, below); only for a source of `COPY_LINE_SOURCE` =
    7 words or more.
 2. It takes four content words or more in order (`COPY_MIN_TAKEN`) and `share` >= 0.7, or
    `coverage` >= 0.9, or `coverage` >= 0.85 with two or more words taken in each of two lines.
@@ -280,6 +282,113 @@ and its analyser: lang/phonetics' choice, which this branch merged and did not c
 to call `loadPronunciation()` at start-up for every visitor; the table now comes with an English duel
 only (`start()` and `DuelSession.beginRound` through `loadSound`).
 
+## Engine pass (after the third check, 2026-11-17)
+
+The third check refused the merge with two blockers (rhyme-swap copies; honest Japanese lines of
+katakana loanwords voided as thin) and concerns (keyboard mash inside a phrase, a line added raising
+the rule judge's points, the rule judge's accuracy). Its probes are `review3.test.ts`; runs on the
+iMac Pro and the M4 through `rb`.
+
+**Copies with their rhyme words swapped** (finding 24, blocker 1). The line rule now asks whether a
+line of the verse keeps the source line's *rhyme*, not its word: it says the last word, or it ends on
+a word that rhymes with it (`rhymeEnds`, `rhymes`), with `COPY_LINE_SHARE` (0.6) of the line's words
+in order. And when the verse has no line of its own beyond the source's (no more lines), a line also
+counts when it says `COPY_LINE_NEAR` (0.67) of the source line's words in order, whatever it ends on.
+Chosen from candidates measured on every honest set and every copy family (`zz-eng-copy`, not kept):
+
+| candidate (beyond the head's rule) | pack pairs (14,914) | pack ripostes (1,000) | flips | published pairs / ripostes |
+|---|---|---|---|---|
+| a line said at 0.75 or 0.8, any end | 1 (ja "舞台はわたしの城" pair) | 0 | 0 | 4 / 2 |
+| rhyme kept, 0.6 | 0 | 0 | 0 | 4 / 2 |
+| rhyme kept 0.6, or 0.67 any end with no line of its own (kept) | 0 | 0 | 0 | 4 / 2 |
+| the same at 0.6 any end | 0 | 3 | 0 | 4 / 2 |
+
+The published pairs and ripostes flagged are the four and two the third pass already had (Busch's
+refrain, the gurindam formula; "queredlas", "голубушки-сестрицы").
+
+Copy families, written opponent's verse, every line's last word replaced (by a rhyme of the same
+syllables, or by any word of the same syllables), void of rows and rounds won:
+
+| family | en (14 houses x 20 seeds x 3) | the other 15 languages (x 6 seeds) |
+|---|---|---|
+| rhyme swap; + one or two words a line; + lines moved | all void, 0 won (was 140 to 616 of 728 void, up to 730 won) | all void, 0 won |
+| rhyme swap with a word dropped too, + one added | 1,456 of 1,456 void | 1,218 of 1,386 void, 59 won (ar, ja, ko, id) |
+| any-word swap; + one or two words; + moved | all void, 0 won (674 won before) | 3,388 of 3,528 void, 17 won |
+| any-word swap with a word dropped, + one added | 1,232 of 1,680 void, 302 won | 2,016 of 3,528 void, 462 won |
+| any-word swap with two words dropped, + one added | 0 void, 356 won | |
+| the checker's eight hand-made copies (deck VC-001) | 8 void, 0 won (6 won before) | |
+
+The committed test (`review3.test.ts`, the checker's ENDSWAP: en, es, fr, de, it, pt; rhyme and in
+English any-word swaps, one or two words put in, lines moved): every row void, 0 won; the honest
+control wins in every language (en 483 of 840). The second check's SWAP families stay all void, and
+"a copy that drops a random word of every line and adds one or two" is now 1,680 of 1,680 void, 0
+won (it was 42 won). What still escapes: a line's last word changed for a word that does not rhyme
+*and* another word dropped (or two), in a verse of short lines (haiku, crescendo, acrostic): two or
+three of a five-word line's words changed. Lowering the any-end share to 0.6 caught more of those
+and voided three honest Ripostes.
+
+**Japanese lines of loanwords** (blocker 2). A verse is read as Japanese when at least half its lines
+hold a word the dictionary has that is not written in katakana. In such a verse, the dictionary's
+katakana words of two characters or more count in a run of two or more (サッカー|ボール,
+ジェット|コースター, ヒップ|ホップ|ドリーム, マイク|チェック), or alone. The checker's 14 verses: 13
+keep `ok` with known share 1 (the rap opener 0.88: ワンツー, which the dictionary lacks, does not
+count). Still void: 八月の / 空に祈りを / ノーモアウォー, a loanword the dictionary lacks alone on its
+line. Two ways to let it in were measured and set aside: reading such a word as dictionary words of
+two characters or more (ノー|モア|ウォー: the dictionary lacks one of them), and counting a katakana
+word spelled as only loanwords are (ー, small kana), which let random katakana with long marks, beside
+real lines, win 89 rounds of 280 (KATA-MIX, best of 60). With the rule kept, KATA-MIX (half a verse
+of the pack's real lines, random katakana for the rest): 10 of 280 won, 6 with long marks; the honest
+verse 219. The second check's KATA (katakana alone): 0 of 280 won, all void.
+
+**Keyboard mash in a phrase** (concern). A word the lexicon lacks counts toward the floor inside a
+phrase only when it is spelled as English spells: every run of three letters of it, its start and end
+marked, occurs in a word the table lists (`pronounce.ts listedTrigrams`). "The qwrt sdfg zxcv night /
+The hjkl wrtp dfgh light" is void again (known 0.4). The checker's MASH (best of 60, 14 houses x 20
+seeds): 1 of 280 won, 2 with full form, 109 void (at the head 26 won, 240 full; at ce2cb67 0 won,
+112 void); honest 203. Kept: the vernacular, archaic and Kreyòl verses keep known 0.85 to 0.96 and
+full form ("Sirrah, thou varlet, verily thy wit is spent / Thou strumpet muse..." 0.93). A rule
+tried first, at most as many unlisted words in a line as listed ones, voided that couplet (0.53).
+
+**The rule judge** (concerns, and the decision-judge spike's measurement). `judge-accuracy.test.ts`
+scores it on the spike's labelled pairs (en, es, ja, ar, hi: a pack verse against a weak verse, and
+against itself with its neighbouring words swapped) and on swapped pairs for the other eleven
+languages; main's numbers come from the spike's own harness run in a checkout of 3015db5 on the same
+file (it reproduces the spike's 0.73 / 0.73 / 0.58 / 0.69 / 0.74). Forced accuracy (a split counts
+half):
+
+| | en | es | ja | ar | hi | fr | de | it | pt | pl | ru | zh | ko | vi | th | id |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| main | 0.725 | 0.731 | 0.580 | 0.695 | 0.737 | 0.639 | 0.583 | 0.583 | 0.597 | 0.625 | 0.625 | 0.500 | 0.625 | 0.625 | 0.554 | 0.556 |
+| head (spike: fix/rules-findings) | 0.68 | 0.70 | 0.32 | 0.63 | 0.64 | | | | | | | | | | | |
+| head (this branch, before) | 0.730 | 0.734 | 0.563 | 0.705 | 0.740 | 0.667 | 0.583 | 0.583 | 0.597 | 0.625 | 0.625 | 0.637 | 0.625 | 0.637 | 0.625 | 0.556 |
+| now | 0.775 | 0.744 | 0.648 | 0.753 | 0.786 | 0.667 | 0.597 | 0.597 | 0.611 | 0.639 | 0.639 | 0.675 | 0.625 | 0.662 | 0.643 | 0.569 |
+
+What changed: wordplay counts telling words (`tellingWords`, kuromoji's words in Japanese) over as many
+lines as both verses have; flow adds one for each line that opens on the line before's first word when
+that word carries meaning and the line is not the line before said again with more after it
+(anaphora: "Never ... / Never ..."; "The" at every line's head is not one: keyboard mash took flow by
+it; nor the chant "Dare / Dare me / Dare me, who dares", finding 25's probe P9, which otherwise won
+more than 5% of its rounds), and one when three lines or more each grow (a crescendo), beside rhyme
+and even lengths. P9 now: 0 of 100 rounds won. Variants measured (`zz-eng-judge`): wordplay over every line raised the judge's
+points for any added line; a term for long lines (a metre needs syllables) raised accuracy further
+(en 0.80, ja 0.68) but cost honest verses of short lines against the written opponent (player's rounds
+31% against 43%), so it was not kept. Now, in the same set-ups: honest player's rounds against the
+written opponent 43.3% (43.7% before); SALAD-MATCH matches won salad / salad! / honest / honest! 210 /
+230 / 231 / 250 (240 / 260 / 231 / 250 before); a line added to a decent verse (the checker's lines
+the grader still reads, 882 rounds): wordplay never moves to the player, and the judge's points fall
+by 2 on average (the line breaks the even lengths).
+
+**The Japanese dictionary's bytes** (concern). See PHONETICS.md: kuromoji's IPADIC cut to what the
+engine reads, 4.7 MB fetched instead of 17.8 MB, read identically. Built site, a first visit on a
+throttled phone (DevTools' Fast 4G: 9 Mbit/s down, 60 ms; CPU 4x; `tests/battle-ja-cost.spec.ts`, the
+Studio):
+
+| | dictionary bytes | first verse after the start | first verse, started 10 s after picking the language |
+|---|---|---|---|
+| head | 17,791,262 (8 responses) | 16.2 s | 16.2 s |
+| now | 4,676,238 (4 responses) | 4.7 s | 0.17 s |
+| an English duel (both) | | 1.0 s | 0.1 s |
+
 ## Mutation runs
 
 First pass: each defence broken in turn, on a build host (22 mutations): every one turned at least
@@ -331,3 +440,25 @@ the tests meant to catch it run; the baseline (the same tests, unbroken) passed,
 The new tests were also run against ce2cb67, the head the second check refused (M4, a throwaway
 worktree with `review2.test.ts` copied in, its one test of the new `carry` measure left out): 13 of
 the 14 failed; the 14th checks that every pack verse keeps its form, a guard, not a fix.
+
+Engine pass (Studio and iMac, 2026-11-17, a script not kept): each new defence broken alone, the
+tests meant to catch it run; the baseline (the same tests, unbroken) passed.
+
+| broken | went red |
+|---|---|
+| copy: no rhyme branch (a line keeps its rhyme only by its own last word) | the checker's own couplet |
+| copy: no rhyme branch and no near branch | ENDSWAP, the hand-made copies, the couplet |
+| copy: the near branch for a verse with lines of its own too | no honest pair is a copy (the ja "舞台" pair) |
+| copy: the near branch at 0.6 | a Riposte is an answer (three Ripostes flagged) |
+| Japanese: no loanword runs | the checker's Japanese verses |
+| Japanese: loanword runs in a verse of katakana alone | the loanword list with no Japanese line (first survived; the case was added) |
+| Japanese: one chance noun in a run counts | random katakana holding a chance noun (first survived; the case was added) |
+| phrase: any string of four letters counts (as at the head) | MASH, the checker's example |
+| judge: wordplay over every line | a line added buys no wordplay |
+| judge: flow as at the head | judge accuracy (en below main) |
+| judge: anaphora on any first word ("The") | MASH |
+| theatre: breaking only after spaces | line-break.test.ts, and the theatre spec's sweep (ja, zh, th) |
+| dictionary: the reader drops the pronunciation | ipadic.test.ts |
+
+In the Rust port, each broken alone (no rhyme branch, no near branch, any string in a phrase,
+anaphora on any word, wordplay over every line) turned `verse_parity` red; restored, 8 of 8.
