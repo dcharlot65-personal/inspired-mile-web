@@ -276,7 +276,7 @@
    },
    "auth.emailHint": {
     "decision": "adopt",
-    "note": "سجّل الدخول, the imperative of the platform term (Android and Google write تسجيل الدخول), for the colloquial ادخل. The shadda of سجّل, which the proposal left out, is written as in the other sign-in strings."
+    "note": "سجّل الدخول, the imperative of the platform term (Android and Google write تسجيل الدخول), for the colloquial ادخل. The shadda of سجّل, which the proposal left out, is written as in the other sign-in strings. So the adoption checks judged the proposal as written, without the shadda; the text applied, with it, was read again by the full LanguageTool and Hunspell run that followed (Hunspell compares Arabic without its vowel marks) and back-translated (docs/language/results/bt.json holds the applied text)."
    },
    "auth.offerBody": {
     "decision": "adopt",

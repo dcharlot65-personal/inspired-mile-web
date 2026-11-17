@@ -1,7 +1,7 @@
 {
  "ref": "main",
- "commit": "61a3e95a07f3450638ea08c3d41f0d2888a36737",
- "made": "2026-11-16T18:49:29.989Z",
+ "commit": "3015db5539f388dd31785520e485537b8c033035",
+ "made": "2026-11-17T00:57:30.484Z",
  "note": "Every interface string (ui) and player-facing pack string (pack) per language, as at this commit. scripts/lang/report.mjs reports changes against it.",
  "strings": {
   "en": {

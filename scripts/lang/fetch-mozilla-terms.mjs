@@ -14,7 +14,9 @@ import { writeFileSync } from 'node:fs';
 
 const COMMIT = 'bb61adaeeaefe5db067571d42d0eb7a1c2309b1a';
 const L10N = `https://raw.githubusercontent.com/mozilla-l10n/firefox-l10n/${COMMIT}`;
-const EN = 'https://raw.githubusercontent.com/mozilla-firefox/firefox/main/browser/locales/en-US/browser/sync.ftl';
+// The English too is pinned (it was read from "main" until 2026-11-16): Firefox's main at that date.
+const EN_COMMIT = 'f612f4a72980aeb8d7a868d53534ad698b2ee602';
+const EN = `https://raw.githubusercontent.com/mozilla-firefox/firefox/${EN_COMMIT}/browser/locales/en-US/browser/sync.ftl`;
 // our language -> Mozilla's locale
 const LOCALES = { es: 'es-ES', fr: 'fr', de: 'de', it: 'it', pt: 'pt-BR', pl: 'pl', ru: 'ru', ar: 'ar', hi: 'hi-IN', zh: 'zh-CN', ja: 'ja', ko: 'ko', vi: 'vi', th: 'th', id: 'id' };
 const IDS = ['fxa-menu-sign-out', 'fxa-signout-dialog2-button', 'fxa-menu-sign-in-promo-button', 'fxa-menu-send-to-mobile-sign-in'];
@@ -33,7 +35,7 @@ const get = async (url) => {
   if (!r.ok) throw new Error(`${r.status} ${url}`);
   return r.text();
 };
-const out = { source: `${L10N}/<locale>/browser/browser/sync.ftl`, english: EN, commit: COMMIT, licence: 'Mozilla Public License 2.0 (Firefox localization)', fetched: new Date().toISOString(), locales: LOCALES, terms: {} };
+const out = { source: `${L10N}/<locale>/browser/browser/sync.ftl`, english: EN, commit: COMMIT, englishCommit: EN_COMMIT, licence: 'Mozilla Public License 2.0 (Firefox localization)', fetched: new Date().toISOString(), locales: LOCALES, terms: {} };
 const en = await get(EN);
 for (const id of IDS) out.terms[id] = { text: { en: message(en, id) } };
 for (const [lang, loc] of Object.entries(LOCALES)) {

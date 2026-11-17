@@ -1,9 +1,10 @@
 {
  "source": "https://raw.githubusercontent.com/mozilla-l10n/firefox-l10n/bb61adaeeaefe5db067571d42d0eb7a1c2309b1a/<locale>/browser/browser/sync.ftl",
- "english": "https://raw.githubusercontent.com/mozilla-firefox/firefox/main/browser/locales/en-US/browser/sync.ftl",
+ "english": "https://raw.githubusercontent.com/mozilla-firefox/firefox/f612f4a72980aeb8d7a868d53534ad698b2ee602/browser/locales/en-US/browser/sync.ftl",
  "commit": "bb61adaeeaefe5db067571d42d0eb7a1c2309b1a",
+ "englishCommit": "f612f4a72980aeb8d7a868d53534ad698b2ee602",
  "licence": "Mozilla Public License 2.0 (Firefox localization)",
- "fetched": "2026-11-16T19:40:40.129Z",
+ "fetched": "2026-11-17T00:57:13.095Z",
  "locales": {
   "es": "es-ES",
   "fr": "fr",
