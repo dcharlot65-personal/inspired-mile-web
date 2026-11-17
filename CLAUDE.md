@@ -38,12 +38,18 @@ if the grade path changes, and measure with `tests/model/grade-injection.spec.ts
 `src/lib/verse/grade-path.test.ts` (stand-in models).
 
 What counts as a copy, a verse or a word is measured, not guessed: `src/lib/verse/review.test.ts`
-prints the measurements every threshold in `duel.ts` (COPY_THRESHOLD, COPY_COVERAGE*,
-OWN_WORDS_PER_LINE) and `text.ts` (MIN_KNOWN_SHARE, FULL_KNOWN_SHARE, TELLING_PER_LINE) was set
-from, and asserts them, with the checkers' probes as tests; a run is recorded in
-`docs/language/RULES-MEASUREMENTS.md`. A copy is measured from both sides (`copyOf`: how much of
-the player's verse is the opponent's, and how much of the opponent's it carries), so words added
-to every line do not hide one. Generated data, each from a pinned source with its
+and `review2.test.ts` print the measurements every threshold in `duel.ts` (COPY_THRESHOLD,
+COPY_COVERAGE*, COPY_LINE_*, OWN_WORDS_PER_LINE) and `text.ts` (MIN_KNOWN_SHARE, FULL_KNOWN_SHARE,
+TELLING_PER_LINE, SHORT_TELLING, UNLISTED_SPAN, PHRASE_SPAN) was set from, and assert them, with the
+checkers' probes as tests; a run is recorded in `docs/language/RULES-MEASUREMENTS.md`. A copy is
+measured from both sides (`copyOf`: how much of the player's verse is the opponent's, and how much
+of the opponent's it carries), so words added to every line do not hide one; and line by line
+(`copyOf().carry`, `duel.ts carriesLines`: each of the opponent's lines carried into a line of its
+own, its last word kept), so moving the lines the way the form allows does not hide one either. A
+word the lexicon lacks counts toward the floor inside a phrase (its line holds a little word), and
+in Japanese a katakana word counts beside a word written otherwise; neither tells anything. The rule
+judge's wordplay is a count of different telling words and its wit is a split unless both verses
+answered one (an "!" decides nothing). Generated data, each from a pinned source with its
 sha256 (the script refuses a different file): `confusables.ts` (UTS #39, `build-confusables.mjs`),
 `function-words/<lang>.ts` (stopwords-iso, `build-function-words.mjs`, loaded with the pack),
 `judge-words.ts` (above), `pron-en.ts` (below).
