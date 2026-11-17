@@ -40,7 +40,7 @@ const messages: Record<string, string> = {
   'story.enc.2-3.narrative': "\"The play's the thing wherein I'll catch the conscience of the king.\" Kamu harus membawakan syair yang begitu menusuk sehingga kebenaran sendiri naik ke panggung.",
   'story.enc.2-4.name': "Solilokui Hamlet",
   'story.enc.2-4.desc': "Hadapi sang pangeran sendiri dalam pertarungan kata.",
-  'story.enc.2-4.narrative': "Di balairung agung, Hamlet mondar-mandir. \"To be, or not to be...\" Ia berpaling kepadamu. \"Tetapi apa jawabanMU, orang asing? Bicaralah, dan biarlah semesta yang menilai.\"",
+  'story.enc.2-4.narrative': "Di balairung agung, Hamlet mondar-mandir. \"To be, or not to be...\" Ia berpaling kepadamu. \"Tetapi apa jawabanmu sendiri, orang asing? Bicaralah, dan biarlah semesta yang menilai.\"",
   'story.act.3.label': "Babak III",
   'story.act.3.name': "Hutan Ajaib",
   'story.act.3.desc': "Mengembaralah di hutan ajaib tempat para peri bermain dan manusia bermimpi.",

@@ -7,7 +7,8 @@
         SHA-256 of the exact bytes read (Aozora has no revision ids; the hash says which text was quoted).
 
 The file is the card's XHTML in Shift_JIS. Ruby readings (<rt>, <rp>) are dropped and the base text kept;
-one line per <br />. Nothing is converted: the text keeps the old orthography the edition has.
+one line per <br />. Nothing is converted: the text keeps the old orthography the edition has, and its
+ideographic spaces (U+3000); only ASCII white space is collapsed, and the indent at a line's start dropped.
 Cache outside the repository (AOZORA_CACHE, default ~/.cache/im-aozora).
 """
 import hashlib, html, json, os, re, sys, time, urllib.request
@@ -17,7 +18,9 @@ UA = {'User-Agent': 'quote-fetch-script/1.0 (build tooling for a static site)'}
 
 def get(url):
     if not url.startswith('https://www.aozora.gr.jp/cards/'): raise SystemExit('not an Aozora Bunko file: ' + url)
-    p = os.path.join(CACHE, re.sub(r'[^\w.-]+', '_', url) + '.json')
+    # .v2: lines keep U+3000 IDEOGRAPHIC SPACE (the first version collapsed it with the ASCII spaces, so a
+    # quotation was not the source character for character).
+    p = os.path.join(CACHE, re.sub(r'[^\w.-]+', '_', url) + '.v2.json')
     if os.path.exists(p): return json.load(open(p, encoding='utf-8'))
     with urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=90) as r:
         raw = r.read()
@@ -25,7 +28,8 @@ def get(url):
     body = h.split('<div class="main_text">', 1)[-1].split('<div class="bibliographical_information">', 1)[0]
     body = re.sub(r'<rt>.*?</rt>|<rp>.*?</rp>', '', body, flags=re.S)
     body = re.sub(r'<br\s*/?>', '\n', body)
-    lines = [re.sub(r'\s+', ' ', html.unescape(re.sub(r'<[^>]+>', '', l))).strip() for l in body.split('\n')]
+    # Only ASCII white space is layout here; U+3000 between sentences is the text's own.
+    lines = [re.sub(r'[ \t\r\n\f\v]+', ' ', html.unescape(re.sub(r'<[^>]+>', '', l))).strip(' \t\r\n\f\v\u3000') for l in body.split('\n')]
     rec = {'url': url, 'sha256': hashlib.sha256(raw).hexdigest(), 'fetched': time.strftime('%Y-%m-%d'), 'lines': [l for l in lines if l]}
     os.makedirs(CACHE, exist_ok=True)
     json.dump(rec, open(p, 'w', encoding='utf-8'), ensure_ascii=False)
