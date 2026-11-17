@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { fileURLToPath } from 'node:url';
+import { lineBreakFault } from '../src/lib/xr/line-break';
 
 /**
  * The 3D theatre. The scene is a canvas, so these tests drive it the way a
@@ -120,4 +121,47 @@ test.describe('Theatre', () => {
     expect(errors, errors.join('\n')).toEqual([]);
     expect(foreign, 'requests to other origins').toEqual([]);
   });
+  // What the panels draw, read back from Babylon (TextBlock.lines): at every place a line was wrapped
+  // (not an explicit new line of the text), no closing punctuation opens the next line and no opening
+  // bracket ends the one before (src/lib/xr/line-break.ts). The check saw "。" open a line of the
+  // Japanese rules panel and "（" close one.
+  for (const lang of ['ja', 'zh', 'th'] as const) {
+    test(`${lang}: the panels wrap their lines where the script allows`, async ({ page }) => {
+      await page.addInitScript((l) => {
+        localStorage.setItem('inspired-mile-locale', l);
+        localStorage.setItem('inspired-mile-duel-lang', l);
+      }, lang);
+      await page.goto('/theatre?seed=11&brain=rules');
+      await page.waitForFunction(() => (window as any).__theatre?.session?.phase === 'player-turn', undefined, { timeout: 120_000 });
+      const first = await page.evaluate(() => (window as any).__theatre.session.duel.player.characters[0]);
+      await page.evaluate((id) => (window as any).__theatre.act({ type: 'character', id }), first);
+      await page.fill('#typed-verse', { ja: '古池や\n蛙飛び込む\n水の音', zh: '床前明月光\n疑是地上霜\n举头望明月', th: 'ดวงจันทร์ส่องฟ้า\nลมพัดผ่านมา\nใจข้าไม่หวั่น' }[lang]);
+      const read = () =>
+        page.evaluate(() => {
+          const t = (window as any).__theatre.theatre;
+          return Object.entries(t.panels as Record<string, any>).map(([name, p]) => ({ name, text: String(p.text.text ?? ''), lines: ((p.text.lines ?? []) as Array<{ text: string }>).map((l) => l.text) }));
+        });
+      const drawn: Array<{ name: string; text: string; lines: string[] }> = [];
+      await expect.poll(async () => (await read()).find((p) => p.name === 'round')?.lines.length ?? 0, { timeout: 20_000 }).toBeGreaterThan(1);
+      drawn.push(...(await read()));
+      await page.evaluate(() => (window as any).__theatre.act({ type: 'submit' }));
+      await page.waitForFunction(() => (window as any).__theatre.session.phase === 'verdict', undefined, { timeout: 60_000 });
+      await expect.poll(async () => (await read()).find((p) => p.name === 'verdict')?.lines.length ?? 0, { timeout: 20_000 }).toBeGreaterThan(1);
+      drawn.push(...(await read()).filter((p) => p.name === 'verdict'));
+      let wraps = 0;
+      const faults: string[] = [];
+      for (const p of drawn) {
+        for (let i = 0; i + 1 < p.lines.length; i++) {
+          const [a, b] = [p.lines[i], p.lines[i + 1]];
+          if (!a || !b || !p.text.includes(a + b)) continue;
+          wraps++;
+          const f = lineBreakFault(a, b);
+          if (f) faults.push(`${p.name}: ${f} | ${a} | ${b}`);
+        }
+      }
+      // The check can see something: these panels do wrap in every one of the three languages.
+      expect(wraps).toBeGreaterThan(0);
+      expect(faults).toEqual([]);
+    });
+  }
 });
