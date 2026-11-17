@@ -585,16 +585,20 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           break;
 
         case 'error':
-          if (start && !over && (event.code === 'room_closed' || event.code === 'room_not_found')) {
-            // Coming back to a duel the server no longer holds (it ended a while ago, or closed):
-            // nothing is left to play or to fetch. This tab lets the seat and the draft go.
+          if (start && !over && (event.code === 'room_closed' || event.code === 'room_not_found' || event.code === 'signed_out')) {
+            // Coming back to a duel the server no longer holds (it ended a while ago, or closed),
+            // or signed out meanwhile (here or on every device; the server has closed the game
+            // connection): nothing more can be played from this tab. It lets the seat and the
+            // draft go, as it does whenever it finds itself signed out.
             over = true;
             deadline = 0;
             forgetSeat();
             client?.disconnect();
             show('mp-move-panel', false);
             $('mp-forfeit-btn').classList.add('hidden');
-            notice('This duel is no longer on the game server: it ended, or it closed, while this page was away.');
+            notice(event.code === 'signed_out'
+              ? event.message
+              : 'This duel is no longer on the game server: it ended, or it closed, while this page was away.');
             $('mp-arena').dataset.closed = event.code;
             break;
           }

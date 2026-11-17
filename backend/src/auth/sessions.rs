@@ -128,6 +128,21 @@ pub async fn authenticate(pool: &PgPool, config: &Config, jar: &CookieJar) -> Re
     Ok(Session { claims, verified_at: row.get("verified_at") })
 }
 
+/// Whether the session a token names is still live: not signed out (here or "everywhere"),
+/// not expired, and its user not deleted. The same condition as `authenticate`, for a
+/// connection that outlives the request that opened it (the game's WebSocket).
+pub async fn is_live(pool: &PgPool, claims: &Claims) -> Result<bool, sqlx::Error> {
+    let live: Option<i32> = sqlx::query_scalar(
+        "SELECT 1 FROM auth_sessions
+         WHERE id = $1 AND user_id = $2 AND revoked_at IS NULL AND expires_at > NOW()",
+    )
+    .bind(claims.sid)
+    .bind(claims.sub)
+    .fetch_optional(pool)
+    .await?;
+    Ok(live.is_some())
+}
+
 /// Record a new proof of identity on a session.
 pub async fn mark_verified(pool: &PgPool, session_id: Uuid, proof: Proof) -> Result<(), ApiError> {
     sqlx::query("UPDATE auth_sessions SET verified_at = NOW(), verified_by = $2 WHERE id = $1")

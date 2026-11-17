@@ -159,6 +159,31 @@ function pastedVariant(plan: OnlineRoundPlan, side: Omit<OnlineSide, 'verse'>, v
   return null;
 }
 
+/**
+ * A page's own raw connection to the game server (one per page), and everything it received:
+ * for tests about the socket itself rather than the page.
+ */
+const raw = {
+  /** Open it; true once open, false if the server refused or closed it first. */
+  open: (page: Page) => page.evaluate(() => new Promise<boolean>((resolve) => {
+    const w = window as unknown as { mp: { ws: WebSocket; got: unknown[]; closed: boolean } };
+    const ws = new WebSocket(`${location.origin.replace(/^http/, 'ws')}/api/v1/multiplayer/ws`);
+    w.mp = { ws, got: [], closed: false };
+    ws.onmessage = (m) => w.mp.got.push(JSON.parse(m.data));
+    ws.onopen = () => resolve(true);
+    ws.onclose = () => { w.mp.closed = true; resolve(false); };
+  })),
+  send: (page: Page, message: unknown) => page.evaluate((m) => (window as unknown as { mp: { ws: WebSocket } }).mp.ws.send(typeof m === 'string' ? m : JSON.stringify(m)), message),
+  got: (page: Page) => page.evaluate(() => (window as unknown as { mp: { got: ServerEvent[] } }).mp.got),
+  closed: (page: Page) => page.evaluate(() => (window as unknown as { mp: { closed: boolean } }).mp.closed),
+  /** The `count`-th event of this type, waiting for it. */
+  async next<T extends ServerEvent['type']>(page: Page, type: T, count = 1) {
+    let found: ServerEvent[] = [];
+    await expect.poll(async () => { found = (await raw.got(page)).filter((e) => e.type === type); return found.length; }, { message: `waiting for ${type}`, timeout: 15000 }).toBeGreaterThanOrEqual(count);
+    return found[count - 1] as Extract<ServerEvent, { type: T }>;
+  },
+};
+
 test.describe('Online duel', () => {
   test('two signed-in players play a whole match; both see the same server scores, equal to the preview', async ({ browser }) => {
     test.setTimeout(180000);
@@ -542,23 +567,7 @@ test.describe('Online duel', () => {
     const bob = await newPlayer(browser, [], deckB);
     const stranger = await browser.newContext({ baseURL: E2E.webOrigin });
     try {
-      // A page that keeps one raw connection and everything it received.
-      const open = (page: Page) => page.evaluate(() => new Promise<boolean>((resolve) => {
-        const w = window as unknown as { mp: { ws: WebSocket; got: unknown[]; closed: boolean } };
-        const ws = new WebSocket(`${location.origin.replace(/^http/, 'ws')}/api/v1/multiplayer/ws`);
-        w.mp = { ws, got: [], closed: false };
-        ws.onmessage = (m) => w.mp.got.push(JSON.parse(m.data));
-        ws.onopen = () => resolve(true);
-        ws.onclose = () => { w.mp.closed = true; resolve(false); };
-      }));
-      const send = (page: Page, message: unknown) => page.evaluate((m) => (window as unknown as { mp: { ws: WebSocket } }).mp.ws.send(typeof m === 'string' ? m : JSON.stringify(m)), message);
-      const got = (page: Page) => page.evaluate(() => (window as unknown as { mp: { got: ServerEvent[] } }).mp.got);
-      const closed = (page: Page) => page.evaluate(() => (window as unknown as { mp: { closed: boolean } }).mp.closed);
-      const next = async <T extends ServerEvent['type']>(page: Page, type: T, count = 1) => {
-        let found: ServerEvent[] = [];
-        await expect.poll(async () => { found = (await got(page)).filter((e) => e.type === type); return found.length; }, { message: `waiting for ${type}`, timeout: 15000 }).toBeGreaterThanOrEqual(count);
-        return found[count - 1] as Extract<ServerEvent, { type: T }>;
-      };
+      const { open, send, got, closed, next } = raw;
 
       // Not signed in: the handshake is refused.
       const outsider = await stranger.newPage();
@@ -646,6 +655,54 @@ test.describe('Online duel', () => {
       await ann.context.close();
       await bob.context.close();
       await stranger.close();
+    }
+  });
+
+  // The socket's session is checked at the handshake. Signing out (here, or on every device)
+  // ends the session on the server, and must end a game connection opened before it too.
+  test('signing out closes a game connection opened before: at once if it sends, within the check if it only listens', async ({ browser }) => {
+    test.setTimeout(150000);
+    const { open, send, got, closed, next } = raw;
+    // The starter characters: no account needs a card for them.
+    const deck = ['SM-001', 'MO-001', 'CA-001'];
+    const ann = await newPlayer(browser);
+    const bob = await newPlayer(browser);
+    const signOut = (page: Page, everywhere: boolean) => page.evaluate(async (all) => (await fetch(`/api/v1/auth/logout${all ? '/all' : ''}`, {
+      method: 'POST', credentials: 'include', headers: { 'Content-Type': 'application/json' },
+    })).status, everywhere);
+    try {
+      const room = await (await ann.context.request.post('/api/v1/multiplayer/create-private')).json();
+      expect(await open(ann.page)).toBe(true);
+      expect(await open(bob.page)).toBe(true);
+      await send(ann.page, { type: 'join_room', room_id: room.room_id, deck });
+      await send(bob.page, { type: 'join_room', room_id: room.room_id, deck });
+      const start = (await next(ann.page, 'match_start')) as MatchStart;
+      await next(bob.page, 'match_start');
+
+      // Ann signs out on every device. Her connection is still open; the first thing it sends
+      // after that is not played, and the server closes it.
+      expect(await signOut(ann.page, true)).toBe(200);
+      await send(ann.page, { type: 'submit_verse', round: 0, char_id: deck[0], text: verseFor(start.rounds[0]) });
+      const bye = await next(ann.page, 'error');
+      expect([bye.code, bye.message]).toEqual(['signed_out', expect.stringContaining('signed out')]);
+      await expect.poll(() => closed(ann.page), { message: "Ann's connection is closed", timeout: 10000 }).toBe(true);
+      expect((await got(ann.page)).some((e) => e.type === 'verse_accepted'), 'the verse sent after signing out was not played').toBe(false);
+      expect((await got(bob.page)).some((e) => e.type === 'opponent_submitted'), 'Bob was not told of a verse').toBe(false);
+      expect((await next(bob.page, 'opponent_disconnected')).grace_seconds).toBeGreaterThan(0);
+
+      // Bob signs out of this browser. His connection sends nothing; the server's own check
+      // (handlers.rs SESSION_CHECK_EVERY, 15 s) closes it.
+      const signedOutAt = Date.now();
+      expect(await signOut(bob.page, false)).toBe(200);
+      await expect.poll(() => closed(bob.page), { message: "Bob's quiet connection is closed", timeout: 30000 }).toBe(true);
+      expect(Date.now() - signedOutAt, 'closed within the check period, plus a margin').toBeLessThan(25000);
+      expect((await got(bob.page)).filter((e) => e.type === 'error').map((e) => (e as { code: string }).code)).toContain('signed_out');
+      expect((await got(bob.page)).some((e) => e.type === 'match_complete'), 'closed by the check, not by the end of the match').toBe(false);
+      // And a new connection is refused at the handshake.
+      expect(await open(bob.page)).toBe(false);
+    } finally {
+      await ann.context.close();
+      await bob.context.close();
     }
   });
 });

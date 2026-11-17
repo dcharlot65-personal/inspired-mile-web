@@ -50,6 +50,14 @@ const MESSAGE_WINDOW: Duration = Duration::from_secs(10);
 const QUEUE_WAIT: Duration = Duration::from_secs(30);
 /// Errors with which a room lets a connection go: nothing follows them.
 const ROOM_GOODBYES: [&str; 2] = ["opponent_absent", "room_closed"];
+/// How often an open connection checks that its session is still live. The socket's session
+/// is checked once, at the handshake (`auth_middleware`); signing out, on this device or "on
+/// every device", ends the session on the server (auth/sessions.rs), and a game connection
+/// opened before then is closed within this long, or at once if it sends anything.
+pub const SESSION_CHECK_EVERY: Duration = Duration::from_secs(15);
+/// The longest a session check may take. A slower database is treated as one that cannot be
+/// asked (`session_ended`), so a stalled check cannot hold the connection's events back.
+const SESSION_CHECK_WITHIN: Duration = Duration::from_secs(3);
 
 pub fn router() -> Router<(PgPool, Config)> {
     Router::new()
@@ -315,6 +323,29 @@ fn error(code: &'static str, message: &str) -> ServerEvent {
     ServerEvent::Error { code, message: message.into() }
 }
 
+/// The goodbye to a connection whose session has ended. Nothing follows it.
+fn signed_out() -> ServerEvent {
+    error("signed_out", "You are signed out, so this game connection is closed. Sign in again to play.")
+}
+
+/// Whether the connection's session has ended since the socket opened: signed out (here or on
+/// every device), expired, or its account deleted. A database that cannot be asked in time is
+/// not taken for an ending: the next message or check asks again, so an outage does not cost a
+/// player the match (the same choice as for a returning player's cards, `handle_event`).
+async fn session_ended(pool: &PgPool, claims: &Claims) -> bool {
+    match tokio::time::timeout(SESSION_CHECK_WITHIN, crate::auth::session_is_live(pool, claims)).await {
+        Ok(Ok(live)) => !live,
+        Ok(Err(e)) => {
+            tracing::debug!(error = %e, "Could not check a game connection's session");
+            false
+        }
+        Err(_) => {
+            tracing::debug!("A game connection's session check took too long");
+            false
+        }
+    }
+}
+
 async fn handle_socket(socket: WebSocket, claims: Claims, rooms: Arc<RoomManager>, pool: PgPool) {
     let (mut sink, mut stream) = socket.split();
     let mut joined: Option<Joined> = None;
@@ -323,6 +354,8 @@ async fn handle_socket(socket: WebSocket, claims: Claims, rooms: Arc<RoomManager
     tokio::pin!(join_deadline, lifetime);
     let mut window_started = Instant::now();
     let mut in_window = 0u32;
+    let mut session_check = tokio::time::interval_at(tokio::time::Instant::now() + SESSION_CHECK_EVERY, SESSION_CHECK_EVERY);
+    session_check.set_missed_tick_behavior(tokio::time::MissedTickBehavior::Delay);
 
     loop {
         let waiting_to_join = joined.is_none();
@@ -350,6 +383,13 @@ async fn handle_socket(socket: WebSocket, claims: Claims, rooms: Arc<RoomManager
                 break;
             }
             _ = &mut lifetime => break,
+            // A connection that only listens is closed too once its session ends.
+            _ = session_check.tick() => {
+                if session_ended(&pool, &claims).await {
+                    let _ = send(&mut sink, &signed_out()).await;
+                    break;
+                }
+            }
             message = stream.next() => {
                 let text = match message {
                     Some(Ok(Message::Text(text))) => text,
@@ -376,6 +416,12 @@ async fn handle_socket(socket: WebSocket, claims: Claims, rooms: Arc<RoomManager
                         continue;
                     }
                 };
+                // Nothing is done for a session that has ended since the socket opened: no
+                // seat taken, no verse played, no forfeit.
+                if session_ended(&pool, &claims).await {
+                    let _ = send(&mut sink, &signed_out()).await;
+                    break;
+                }
                 if let Some(problem) = handle_event(event, &claims, &rooms, &pool, &mut joined).await {
                     if send(&mut sink, &problem).await.is_err() {
                         break;
@@ -553,6 +599,15 @@ mod tests {
             .acquire_timeout(Duration::from_millis(300))
             .connect_lazy("postgres://nobody:secret@127.0.0.1:1/inspired_mile")
             .expect("a lazy pool")
+    }
+
+    #[tokio::test]
+    async fn a_session_that_cannot_be_checked_is_not_taken_for_a_sign_out() {
+        // The database cannot be reached: the connection is kept, and asked about again later.
+        let claims = Claims { sub: Uuid::new_v4(), username: "ann".into(), sid: Uuid::new_v4(), exp: i64::MAX, iat: 0 };
+        assert!(!session_ended(&unreachable_database(), &claims).await);
+        // The check gives up well within the period it runs at.
+        assert!(SESSION_CHECK_WITHIN < SESSION_CHECK_EVERY);
     }
 
     #[tokio::test]

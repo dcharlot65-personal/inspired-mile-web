@@ -246,7 +246,8 @@ describe('a dropped connection', () => {
     expect(FakeSocket.all.length, 'no attempt after giving up').toBe(made);
   });
 
-  it('does not come back to a room that is gone', async () => {
+  /** A client in a room that the server says goodbye to with `code`, then hangs up on. */
+  async function toldGoodbye(code: string, message: string) {
     vi.useFakeTimers();
     vi.stubGlobal('WebSocket', FakeSocket);
     const client = new MultiplayerClient('http://localhost');
@@ -256,10 +257,23 @@ describe('a dropped connection', () => {
     FakeSocket.all[0].open();
     await opening;
     client.joinRoom('room-1', ['DC-001', 'MO-001', 'CA-001']);
-    FakeSocket.all[0].onmessage?.({ data: JSON.stringify({ type: 'error', code: 'room_closed', message: 'This duel has closed.' }) });
+    FakeSocket.all[0].onmessage?.({ data: JSON.stringify({ type: 'error', code, message }) });
     FakeSocket.all[0].drop();
     await vi.advanceTimersByTimeAsync(10_000);
+    return states;
+  }
+
+  it('does not come back to a room that is gone', async () => {
+    const states = await toldGoodbye('room_closed', 'This duel has closed.');
     expect(FakeSocket.all).toHaveLength(1);
+    expect(states).toEqual(['open', 'closed']);
+  });
+
+  it('does not come back once the session has ended (signed out here or on every device)', async () => {
+    // The server closes a game connection whose session was signed out (backend
+    // multiplayer/handlers.rs session_ended). Coming back would only be refused at the handshake.
+    const states = await toldGoodbye('signed_out', 'You are signed out, so this game connection is closed. Sign in again to play.');
+    expect(FakeSocket.all, 'no attempt to reconnect').toHaveLength(1);
     expect(states).toEqual(['open', 'closed']);
   });
 });

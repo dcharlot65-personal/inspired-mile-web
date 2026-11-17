@@ -130,11 +130,12 @@ type EventHandler = (event: ServerEvent) => void;
 type StateHandler = (state: ConnectionState) => void;
 
 /**
- * Error codes after which the server has closed the connection for good, or the room is gone
- * (the opponent never came, the duel closed, or it ended longer ago than the server keeps it):
- * there is nothing to reconnect to.
+ * Error codes after which the server has closed the connection for good, the room is gone
+ * (the opponent never came, the duel closed, or it ended longer ago than the server keeps it),
+ * or the session has ended (`signed_out`: signed out here or on every device): there is
+ * nothing to reconnect to.
  */
-const FINAL_ERRORS = new Set(['connection_replaced', 'too_many_messages', 'join_timeout', 'opponent_absent', 'room_closed', 'room_not_found']);
+const FINAL_ERRORS = new Set(['connection_replaced', 'too_many_messages', 'join_timeout', 'opponent_absent', 'room_closed', 'room_not_found', 'signed_out']);
 
 /**
  * How long the client keeps trying to reconnect after a connection drops. The server holds a

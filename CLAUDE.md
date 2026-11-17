@@ -198,7 +198,11 @@ left behind by a killed run is found by its port: `lsof -nP -iTCP:<port> -sTCP:L
   (all its strings are in one `STRINGS` object).
 - **Sessions live on the server** (`auth_sessions`, `backend/src/auth/sessions.rs`). The cookie
   holds a JWT whose `sid` names a row; a request is signed in only while that row is live.
-  Sign-out revokes the row, `POST /auth/logout/all` revokes all of the account's. The cookie is
+  Sign-out revokes the row, `POST /auth/logout/all` revokes all of the account's. The game's
+  WebSocket outlives the request that opened it, so it checks its row again on every message it
+  acts on and every `SESSION_CHECK_EVERY` (15 s) while quiet, and closes with `signed_out` once
+  the row is gone (`multiplayer/handlers.rs session_ended`; a database that cannot be asked
+  within 3 s is not taken for a sign-out, so an outage does not cost a match). The cookie is
   `__Host-im_token` when every `WEBAUTHN_ORIGIN` is https (production) and `im_token` over
   http (localhost, tests: browsers refuse the prefix there); HttpOnly, Secure, SameSite=Strict.
 - **Adding or removing a passkey, and adding an email, need a fresh proof** (a passkey
