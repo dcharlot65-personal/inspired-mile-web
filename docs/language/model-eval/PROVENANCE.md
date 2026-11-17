@@ -23,8 +23,10 @@ JSON file named; this page says what the sources are, under what terms, and what
 
 ## What was done to the text
 
-- An excerpt is consecutive lines of the page as fetched: tags removed, runs of spaces made one
-  space, and these characters removed: zero-width space, the two direction marks, word joiner,
+- An excerpt is consecutive lines of the page as fetched: tags removed, along with what some
+  elements hold (`<sup>`, which on Wikisource carries footnote and reference marks; `<style>`,
+  `<script>`; and spans of page numbers, line numbers, edit links and reference marks, by their
+  class), runs of spaces made one space, and these characters removed: zero-width space, the two direction marks, word joiner,
   byte-order mark, soft hyphen, and the Arabic tatweel (U+0640, which only stretches a word to
   fill a printed line). Nothing else is changed: old spellings stay (Camões's *he hum fogo*, the
   1834 *Pan Tadeusz*, Shimazaki's historical kana), and so do the traditional characters of the
@@ -37,7 +39,12 @@ JSON file named; this page says what the sources are, under what terms, and what
   (approximate for the pre-Islamic Arabic poets and for Hamzah al-Fansuri) and serve only as the
   build's public-domain guard.
 - A Wikipedia sentence is the first paragraph that names its subject in bold, cut at the first
-  sentence end past 60 characters (at 300 characters where no sentence ends in reach).
+  sentence end past 60 characters (at 300 characters where no sentence ends in reach). Citation
+  markers are removed from it: every bracketed run of up to 12 characters ("[1]", "[2]",
+  "[nota 3]"; `build-pairs.mjs`), then runs of spaces made one. So the stored sentence differs
+  from the page by those markers, as in the Portuguese *Pão* (revision 73084145) and the Arabic
+  قط (76650814) records; an independent reviewer compared four such records with their revisions
+  on 2026-11-17 and found no other difference.
 - Wikimedia's API answered 429 for minutes at a time from this network on the day, so pages were
   read as ordinary page views (which its cache serves), one at a time, 250 to 300 ms apart, with a
   descriptive user agent.

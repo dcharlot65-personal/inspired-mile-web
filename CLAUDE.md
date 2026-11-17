@@ -97,7 +97,8 @@ left behind by a killed run is found by its port: `lsof -nP -iTCP:<port> -sTCP:L
 - **Where a model is used is measured, not assumed** (`docs/language/MODEL-EVAL.md`).
   `MODELS[tier].writesIn` / `.judgesIn` in `src/lib/brain.ts` list the languages in which each
   model writes the opponent's verse and judges; anywhere else the written opponent plays and the
-  rules judge, and the language picker on the battle page says so. The lists are copied from
+  rules judge, and the language picker on the battle page says so (with a model loaded it lists
+  the languages under two headings, who writes there, and a note under it says why). The lists are copied from
   `docs/language/model-eval/decisions.json`, which `scripts/model-eval/analyze.mjs` derives from
   the result files in `docs/language/model-eval/cells/` by the thresholds in
   `scripts/model-eval/thresholds.json`; `src/lib/model-eval.test.ts` fails when either drifts.
@@ -105,12 +106,20 @@ left behind by a killed run is found by its port: `lsof -nP -iTCP:<port> -sTCP:L
   one run at a time, under memguard; it resumes), then `analyze.mjs`, then `copy-lists.mjs`.
   A language with no result file is unsupported for that model. The test "every writing cell
   replays…" re-runs the game's code over each stored draft and fails when the rules or the
-  opponent's prompt changed after the cells ran. A rule change (forms, devices, rhyme,
-  syllables, the tidy-up): `MEVAL_RESCORE=1 npx vitest run src/lib/model-eval.rescore.test.ts`
-  scores the stored drafts again (no model), then `analyze.mjs` and `copy-lists.mjs`. A change
-  to the prompts in `opponent.ts`/`judge.ts`, to the models or to the runtime needs the model:
-  judging can be re-checked cheaply with `MEVAL_CONTROL=repeat`, writing only by running its
-  cells again.
+  opponent's prompt changed after the cells ran; `src/lib/model-eval.judge.test.ts` fails when
+  the judge's prompts differ from the fingerprint each judging cell carries, and when the gate in
+  `referee.ts`/`session.ts` (model only in its listed languages) is lost in a merge. After a
+  rule change (forms, devices, rhyme, syllables, the tidy-up):
+  `MEVAL_RESCORE=1 npx vitest run src/lib/model-eval.rescore.test.ts` scores the stored drafts
+  again (no model), cell by cell, then `analyze.mjs` and `copy-lists.mjs`. A cell it cannot
+  re-score (its prompt changed, or the duel now draws other forms) needs the model: run it again,
+  or meanwhile add `MEVAL_SET_ASIDE=1` to move it to `docs/language/model-eval/set-aside/`, where
+  it counts as not measured. The same variable with `model-eval.judge.test.ts` sets aside judging
+  cells whose prompts changed. `run.mjs` measures set-aside cells again. New cells: copy them into
+  `cells/`, then `node scripts/model-eval/judge-code.mjs` (git only) and
+  `MEVAL_FINGERPRINT=1 npx vitest run src/lib/model-eval.judge.test.ts` before `analyze.mjs`.
+  The replay, the re-score and `run.mjs` load a language's sound data (`src/lib/verse/sound`,
+  from the phonetics work) wherever the game does.
 - Every verse in every pack must keep its form as the code checks it (`verse.test.ts`).
   `node scripts/mutate-packs.mjs` (on the build host) proves those tests go red.
 - Writing a `\uXXXX` escape through an agent's file tools can turn it into the character
