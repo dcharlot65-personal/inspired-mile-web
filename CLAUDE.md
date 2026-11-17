@@ -119,13 +119,27 @@ What the room enforces besides the rules: three to five characters, each a start
 (`ONLINE_STARTER`: the first three of the catalogue) or one the account's `owned_cards` holds
 (`handlers.rs not_held`; the collection is otherwise the browser's, so this binds a deck to
 what the account records, not to what a player paid for); at most `MAX_ROOMS_PER_USER` live
-rooms per account and `MAX_ROOMS_PER_ADDRESS` per network (an IPv4 address or an IPv6 /64,
-`address_key`); a quick-match room whose second player does not arrive within
-`Timing::arrival` (60 s) closes with `opponent_absent`; the page stops asking for a quick match
-after `QUICK_MATCH_LIMIT_MS` (3 min) and says so. A reconnect keeps the verse being written and
-the character chosen while the round is the same; a reload or a visit to another page takes the
-seat back (the tab keeps it in sessionStorage, `inspired-mile-mp-seat`, with the draft), a new
-tab offers "Return to your duel" (`/rooms`), and leaving mid-match asks first (beforeunload).
+rooms per account and `MAX_ROOMS_PER_ADDRESS` (40) per network (an IPv4 address or an IPv6 /64,
+`address_key`), counted over every room (a busy room is waited for, never skipped) and opened
+one at a time (`RoomManager::open_room`). A limit is the business of the player who reached it:
+a quick-match player who reaches one while waiting is told so (429) and leaves the queue, and the
+requester is paired with the next player or waits (`matchmaking.rs`). A quick-match room whose
+second player does not arrive within `Timing::arrival` (60 s, from the pairing) closes with
+`opponent_absent`, and so does a private room where a friend waits that long for an inviter who
+is away. The page stops asking for a quick match after `QUICK_MATCH_LIMIT_MS` (3 min) and says
+so. A reconnect keeps the verse being written and the character chosen while the round is the
+same; the client keeps trying for `RECONNECT_WINDOW_MS` (60 s, longer than the 45 s grace); a
+reload, a visit to another page or a back/forward-cache restore (`pageshow`) takes the seat back
+(the tab keeps it in sessionStorage, `inspired-mile-mp-seat`, with the draft); a returning player
+is not checked for cards again; a new tab offers "Return to your duel" (`/rooms`), and leaving
+mid-match asks first (beforeunload).
+
+How long the server keeps a battle's verses is a published promise (privacy.astro: "for up to
+two minutes after it ends"). A finished room answers a returning player for `Timing::linger`
+(90 s); after that it is `gone()`: it takes nobody, is not listed, and the next sweep
+(`SWEEP_EVERY`, 15 s) empties it (`retire`: the verses are dropped even while a timer still
+holds the room) and removes it. A test holds `linger + SWEEP_EVERY <= POLICY_AFTER_THE_END`
+(120 s). Change any of these and the policy together.
 
 ## Building the API
 
