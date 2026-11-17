@@ -30,9 +30,10 @@ export function allusionLexicon(lang = 'en'): Set<string> {
   for (const c of CARD_CATALOG) {
     for (const w of wordsOf(c.name)) if (wordSpan(w) >= 4) lexicon.add(fold(w));
     for (const w of contentWords(c.quote)) lexicon.add(fold(w));
-    if (b !== 'en') for (const w of localSignatureWords(c, b)) lexicon.add(w);
+    if (b !== 'en') for (const w of localSignatureWords(c, b)) lexicon.add(fold(w));
   }
-  if (b !== 'en') for (const n of localCharacterNames(b)) lexicon.add(fold(n));
+  // One-word names only: a longer name's titles (Russian «граф») are not allusions by themselves.
+  if (b !== 'en') for (const n of localCharacterNames(b)) if (wordsOf(n, b).length === 1) lexicon.add(fold(n));
   if (ready) lexicons.set(b, lexicon);
   return lexicon;
 }

@@ -1,7 +1,7 @@
 #!/bin/bash
 # Tool checks of the card text written for the game, on a build host.
 #
-#   ~/kani-logs/remote/rb . -- 'bash scripts/language/check/run.sh [setup|selftest|spell|grammar|meaning|all|detach <step>|status]'
+#   ~/kani-logs/remote/rb . -- 'bash scripts/language/check/run.sh [setup|selftest|spell|grammar|meaning|names|all|detach <step>|status]'
 #
 # The tools live in $CHECK_HOME, this task's own directory on the host: LanguageTool 6.6, Hunspell
 # 1.7.2 with LibreOffice's dictionaries, MADLAD-400 3B (CTranslate2 int8), all-MiniLM-L6-v2 and LaBSE,
@@ -69,12 +69,14 @@ node scripts/language/check/collect.mjs "$TMPDIR/card-items.json"
 case "$STEP" in
   selftest) build_hspell; bt_script_ok; start_lt; "$MEMGUARD" --max-gb 14 -- "$PY" scripts/language/check/check.py selftest ;;
   spell) build_hspell; "$PY" scripts/language/check/check.py spell "$TMPDIR/card-items.json" "$OUT/spelling.json" ;;
+  names) build_hspell; "$PY" scripts/language/check/check.py names "$TMPDIR/card-items.json" "$OUT/name-words.json" ;;
   grammar) start_lt; "$PY" scripts/language/check/check.py grammar "$TMPDIR/card-items.json" "$OUT/grammar.json" ;;
   meaning) bt_script_ok; "$MEMGUARD" --max-gb 14 -- "$PY" scripts/language/check/check.py meaning "$TMPDIR/card-items.json" "$OUT/backtranslation.json" ;;
   all)
     build_hspell; bt_script_ok; start_lt
     "$MEMGUARD" --max-gb 14 -- "$PY" scripts/language/check/check.py selftest
     "$PY" scripts/language/check/check.py spell "$TMPDIR/card-items.json" "$OUT/spelling.json"
+    "$PY" scripts/language/check/check.py names "$TMPDIR/card-items.json" "$OUT/name-words.json"
     "$PY" scripts/language/check/check.py grammar "$TMPDIR/card-items.json" "$OUT/grammar.json"
     "$MEMGUARD" --max-gb 14 -- "$PY" scripts/language/check/check.py meaning "$TMPDIR/card-items.json" "$OUT/backtranslation.json" ;;
   detach)

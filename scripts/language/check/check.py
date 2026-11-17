@@ -5,6 +5,8 @@
   check.py grammar ITEMS OUT      LanguageTool (a local server at $LT_URL), item by item
   check.py meaning ITEMS OUT      MADLAD-400 translates each item back to English (lang/qa-pipeline's
                                   backtranslate.py); MiniLM cosine, chrF and LaBSE against the English
+  check.py names   ITEMS OUT      Hunspell: which words of a character's longer name (and which one-word aliases)
+                                  are ordinary words of the language, so that they do not count as a name alone
   check.py selftest               each check is fed a known-bad input and must flag it
 
 ITEMS is the output of collect.mjs. Nothing here changes any text: it writes findings, and a person
@@ -223,6 +225,34 @@ def meaning(items_path, out_path):
               f'{time.time() - t0:.0f}s', file=sys.stderr, flush=True)
 
 
+CASED = set('es fr it pt pl ru vi id'.split())  # scripts with letter case, where a dictionary writes its proper names capitalised
+
+
+def accepted_name_words(lang, words):
+    """The words Hunspell accepts. Where the script has letter case the word is asked in lower case, so a name the
+    dictionary holds (capitalised) is not taken for an ordinary word. German writes its nouns with a capital (Graf,
+    König), and Arabic, Hindi, Korean and Thai have no case: there the word is asked as the name writes it."""
+    asked = {w: (w.lower() if lang in CASED else w) for w in words}
+    bad = hunspell_unknown(lang, sorted(set(asked.values())))
+    return sorted(w for w, a in asked.items() if a not in bad)
+
+
+def names(items_path, out_path):
+    data = json.load(open(items_path, encoding='utf8'))
+    out = {'tool': 'Hunspell 1.7.2 library, whole-word queries (hspell.cpp), LibreOffice dictionaries at commit c0865a85',
+           'asked': 'in lower case for es fr it pt pl ru vi id; as written for de ar hi ko th; zh and ja have no dictionary',
+           'use': 'build_card_text.py decides from these verdicts which words of a longer name count as a name by themselves',
+           'languages': {}}
+    for lang, words in sorted(data['nameWords'].items()):
+        if lang not in HUNSPELL_DICT:
+            out['languages'][lang] = {'checked': words, 'accepted': [], 'dictionary': None}
+            continue
+        acc = accepted_name_words(lang, words)
+        out['languages'][lang] = {'checked': words, 'accepted': acc}
+        print(f'names {lang}: {len(words)} words, {len(acc)} accepted: {" ".join(acc)}', file=sys.stderr)
+    json.dump(out, open(out_path, 'w', encoding='utf8'), ensure_ascii=False, indent=1)
+
+
 def selftest():
     """Each check must flag a known-bad input; a check that cannot fail is not a check."""
     ok = True
@@ -235,6 +265,9 @@ def selftest():
     bad = hunspell_unknown('th', ['ปราสาท', 'ปราสาาท'])
     print('spell th flags', sorted(bad)); ok &= bad == {'ปราสาาท'}
     # In a sentence: the misspelt word is still found after the joins are tried; the name's pieces are not counted.
+    # Name words: a title is an ordinary word, a name is not.
+    got = accepted_name_words('ru', ['граф', 'Персефона']) + accepted_name_words('vi', ['Phu', 'Capulet']) + accepted_name_words('de', ['Graf', 'Xyzzyburg'])
+    print('names: ordinary words', got); ok &= got == ['граф', 'Phu', 'Graf']
     items = [{'id': 'x', 'field': 'scene', 'words': ['ปราสาาท', 'ของ', 'แฮม', 'เล็ต']}]
     got = thai_unknown(items, ['แฮมเล็ต'], hunspell_unknown('th', items[0]['words']))
     print('spell th in a sentence flags', got); ok &= got == {'x|scene': {'ปราสาาท'}}
@@ -263,4 +296,5 @@ def selftest():
 
 if __name__ == '__main__':
     cmd = sys.argv[1]
-    {'spell': lambda: spell(*sys.argv[2:4]), 'grammar': lambda: grammar(*sys.argv[2:4]), 'meaning': lambda: meaning(*sys.argv[2:4]), 'selftest': selftest}[cmd]()
+    {'spell': lambda: spell(*sys.argv[2:4]), 'grammar': lambda: grammar(*sys.argv[2:4]), 'meaning': lambda: meaning(*sys.argv[2:4]),
+     'names': lambda: names(*sys.argv[2:4]), 'selftest': selftest}[cmd]()

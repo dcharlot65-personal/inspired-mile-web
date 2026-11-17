@@ -14,7 +14,7 @@
  * it should in each script. A `detail` is language-neutral evidence.
  */
 import type { Card, House } from '../cards';
-import { localSignature, localSignatureWords, saidLocalName } from './echo';
+import { localSignature, localSignatureWords, saidLocalName, wordKey } from './echo';
 import { baseLang, rulesFor, unitKey } from './lang';
 import { msg, type Msg } from './msg';
 import { rhymeChecked, rhymes } from './rhyme';
@@ -145,9 +145,11 @@ export const DEVICES: Record<string, Device> = {
     (lang) => msg(unitKey('device.ring.brief', lang)),
   ),
   invocation: d('invocation', (v, ctx) => {
-    const said = new Set(wordsOf(v, langOf(ctx)).map(fold));
+    const lang = langOf(ctx);
+    // wordKey is fold() in every language but Vietnamese, where it keeps the tone: màn is not "Man" (./echo).
+    const said = new Set(wordsOf(v, lang).map((w) => wordKey(w, lang)));
     // The character's name as the duel's language writes it counts as well (./echo).
-    const hit = (ctx.names ?? []).find((n) => said.has(fold(n))) ?? saidLocalName(v, langOf(ctx));
+    const hit = (ctx.names ?? []).find((n) => said.has(wordKey(n, lang))) ?? saidLocalName(v, lang);
     return { met: !!hit, detail: hit ?? '' };
   }),
   grandeur: d(

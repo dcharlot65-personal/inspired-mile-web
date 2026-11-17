@@ -24,11 +24,11 @@ async function switchTo(page: Page, locale: string) {
   await expect(page.locator('html')).toHaveAttribute('lang', locale);
 }
 
-async function begin(page: Page) {
+async function begin(page: Page, card = 'DC-001') {
   await page.click('#start-duel');
   await expect(page.locator('#battle-arena')).toBeVisible();
   await expect(page.locator('#opponent-verse')).toHaveAttribute('data-source', 'written');
-  await page.click('[data-char-id="DC-001"]');
+  await page.click(`[data-char-id="${card}"]`);
 }
 
 test.describe('Card names and lines per language', () => {
@@ -86,5 +86,30 @@ test.describe('Card names and lines per language', () => {
     // The English word still counts for a player who writes it.
     await page.fill('#verse-input', 'だれが私の舞台に立つのか？\nquestion');
     await expect(signature).toHaveText('✓');
+  });
+
+  test('Japanese: an echo of Tsubouchi’s 薔薇の花 is an echo, not a quotation', async ({ page }) => {
+    await open(page);
+    await switchTo(page, 'ja');
+    await begin(page, 'CA-001');
+    const row = page.locator('#live-checks li', { hasText: 'シグネチャー' });
+    // Four of the segmenter's "words" (薔薇 の 花 は) are five letters, not a recital of the line (2026-11-16 check).
+    await page.fill('#verse-input', 'だれが私の舞台に立つのか？\n薔薇の花は夜に眠る');
+    await expect(row.locator('span').first()).toHaveText('✓');
+    await expect(row).toContainText('「薔薇」を響かせました');
+    await expect(row).not.toContainText('そのまま引用しています');
+    // Reciting the line still is one.
+    await page.fill('#verse-input', 'だれが私の舞台に立つのか？\n薔薇の花は、他の名で呼んでも、同じやうに善い香がする');
+    await expect(row).toContainText('そのまま引用しています');
+  });
+
+  test('German: the echoed noun is shown as the line writes it (Rose, not rose)', async ({ page }) => {
+    await open(page);
+    await switchTo(page, 'de');
+    await begin(page, 'CA-001');
+    const row = page.locator('#live-checks li', { hasText: 'Signatur' });
+    await page.fill('#verse-input', 'Wer wagt es, meine Bühne zu betreten?\nDie Rose blüht im Dunkeln');
+    await expect(row.locator('span').first()).toHaveText('✓');
+    await expect(row).toContainText('Anklang an „Rose“');
   });
 });

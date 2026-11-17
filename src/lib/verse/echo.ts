@@ -7,73 +7,305 @@
  * it; the invocation is earned by a character's name as that language writes it.
  * The English line and the English names keep counting too, as they always did.
  *
- * Other languages inflect, so a word is "said" when a verse word begins with it,
- * or (five letters or more) with all but its last letter: Polish "Hamleta" says
- * "Hamlet", Russian "Джульетту" says "Джульетта", Korean "햄릿이" says "햄릿".
- * Arabic attaches the article and prepositions in front, so there the word may
- * sit anywhere inside a verse word. Chinese, Japanese and Thai are written
- * unspaced: words come from Intl.Segmenter, and a word is said when its letters
- * appear in the verse's letters, because the segmenter may cut the same word
- * differently in a different sentence.
+ * What counts as the same word, by language:
+ * - Spanish, French, German, Italian, Portuguese, Polish, Russian, Arabic, Hindi and Indonesian: two words
+ *   are one when Snowball's stemmer for the language gives them one stem (./stem): Russian «Гамлета» says
+ *   «Гамлет», Spanish «rosas» says «rosa», Arabic «والوردة» says «الوردة»; «prosperidad» is not «Próspero»'s
+ *   name, because names are matched by stem only where names decline (Polish, Russian, German, Arabic).
+ * - Vietnamese: the same syllable with the same tone (ngủ "sleep" is not ngu "foolish", nor the start of người).
+ * - Korean: the same word, with or without the particles (josa) that follow a noun: 햄릿이 says 햄릿.
+ * - Chinese, Japanese and Thai are written unspaced: words come from Intl.Segmenter, as everywhere in the
+ *   engine. A word is said when whole words of the verse spell it (Japanese: when they begin with it, since a
+ *   verb's ending is often cut off as a word of its own).
+ *
+ * What is not a telling word: the language's stop words (stopwords-iso), every word Wiktionary gives as a
+ * pronoun, particle, conjunction, preposition, postposition, determiner or article (both lists are recorded in
+ * docs/language/sources/), a Korean word that is such a word plus its particle (나는, "I" + topic), a Chinese or
+ * Japanese word made only of stop characters (你的, "your"), and a Japanese word with no kanji or katakana
+ * (particles, auxiliaries and endings are written in hiragana: した, あなた).
+ *
+ * Reciting the line, which is refused: four of its words running, as in English, or the whole line when it has
+ * only two or three. Unspaced scripts count letters instead, because the segmenter's "words" are often single
+ * particles: a run as long as four English words of the game's lines are in that language (RECITE_LETTERS).
  *
  * English never comes through here: devices.ts keeps its own path for it.
  */
 import { CARD_CATALOG, type Card } from '../cards';
 import { getCardText, localEchoText, localQuote } from '../cards-i18n';
-import { baseLang } from './lang';
-import { contentWords, fold, hiragana, letterCount, wordsOf } from './text';
+import { baseLang, rulesFor } from './lang';
+import { stemmerFor } from './stem';
+import { fold, hiragana, letterCount, wordSpan, wordsOf } from './text';
 
 const UNSPACED = new Set(['zh', 'ja', 'th']);
+/** Languages whose names decline, so a name is matched by its stem there. */
+const NAMES_DECLINE = new Set(['ru', 'pl', 'de', 'ar']);
 
-/** Folded letters only, kana merged: what unspaced scripts are compared by. */
-function letters(text: string): string {
-  return hiragana(fold(text)).replace(/[^\p{L}\p{M}]/gu, '');
-}
+/**
+ * Letters of the line that make a recital in an unspaced script: four English words' worth, by the median
+ * number of letters per English word over the game's lines in that language (cards-i18n.test.ts measures it
+ * again and fails if the lines have moved away from these numbers).
+ */
+export const RECITE_LETTERS: Record<string, number> = { zh: 6, ja: 9, th: 19 };
 
-/** Is `word` (already a single word) said in the verse, allowing for the language's endings? */
-export function saysWord(word: string, verse: string, lang: string): boolean {
+// --- Comparing words ---
+
+/** Vietnamese tone marks: grave, acute, tilde, hook above, dot below. Circumflex, breve, horn and đ make other letters. */
+const VI_TONE = /[̣̀́̃̉]/gu;
+
+/**
+ * Thai SARA AM written as its two parts (nikhahit + sara aa, which is how its compatibility decomposition spells it
+ * and how stopwords-iso's Thai list writes ทํา and สําหรับ) is the one letter everyone types.
+ */
+const thaiAm = (s: string) => s.replace(/\u0E4D\u0E32/g, '\u0E33');
+
+/**
+ * A word as it is compared. Vietnamese keeps its tone wherever the mark is placed (hoà and hòa are one
+ * spelling). Elsewhere fold() (case, Latin accents, Arabic vowel marks), Japanese katakana as hiragana, Thai
+ * SARA AM in one piece.
+ */
+export function wordKey(word: string, lang: string): string {
   const b = baseLang(lang);
-  const w = fold(word);
-  if (!w) return false;
-  if (UNSPACED.has(b)) return letters(verse).includes(letters(word));
-  const said = wordsOf(verse, lang).map(fold);
-  if (b === 'ar') return said.some((s) => s.includes(w));
-  const ls = [...w];
-  const stem = ls.length >= 5 ? ls.slice(0, -1).join('') : w;
-  return said.some((s) => s.startsWith(stem));
-}
-
-const stops = new Map<string, Set<string>>();
-function stopWords(lang: string): Set<string> {
-  const b = baseLang(lang);
-  if (!stops.has(b)) stops.set(b, new Set((getCardText(b)?.stop ?? []).map(fold)));
-  return stops.get(b)!;
+  if (b === 'vi') {
+    const d = word.normalize('NFD').toLowerCase();
+    return d.replace(VI_TONE, '').normalize('NFC') + (d.match(VI_TONE) ?? []).join('');
+  }
+  const f = fold(word);
+  return b === 'ja' ? hiragana(f) : b === 'th' ? thaiAm(f) : f;
 }
 
 /**
- * The telling words of the card's quotation in this language; empty when the language has no line of its own.
- * Where the line has a modern spelling (a Japanese line printed in old character forms) its words come first,
- * since that is what a player types, and the printed words follow, so either spelling counts.
+ * French and Italian write an elided article or pronoun onto the next word with an apostrophe: l’amour, c’est,
+ * dell’alba. The word is what follows it. The elided forms are Apache Lucene's (FrenchAnalyzer and ItalianAnalyzer,
+ * DEFAULT_ARTICLES, Apache-2.0), which a search engine strips the same way.
+ */
+const ELIDED: Record<string, Set<string>> = {
+  fr: new Set(['l', 'm', 't', 'qu', 'n', 's', 'j', 'd', 'c', 'jusqu', 'quoiqu', 'lorsqu', 'puisqu']),
+  it: new Set(['c', 'l', 'all', 'dall', 'dell', 'nell', 'sull', 'coll', 'pell', 'gl', 'agl', 'dagl', 'degl', 'negl', 'sugl', 'un', 'm', 't', 's', 'v', 'd']),
+};
+export function unElide(word: string, lang: string): string {
+  const set = ELIDED[baseLang(lang)];
+  if (!set) return word;
+  const m = /^(\p{L}+)['’](\p{L}.*)$/u.exec(word);
+  return m && set.has(m[1].toLowerCase()) ? m[2] : word;
+}
+
+/** The words of a text as echo.ts reads them: wordsOf, with French and Italian elisions taken off. */
+function wordsIn(text: string, lang: string): string[] {
+  return wordsOf(text, lang).map((w) => unElide(w, lang));
+}
+
+/** Letters only (marks kept), kana merged: how runs of an unspaced script are compared. */
+function letters(text: string): string {
+  return thaiAm(hiragana(fold(text))).replace(/[^\p{L}\p{M}]/gu, '');
+}
+
+/** The stems a word is matched by where Snowball has the language: as written and as folded, so unaccented typing still finds it. */
+function stems(word: string, lang: string): string[] {
+  const stem = stemmerFor(lang);
+  const key = wordKey(word, lang);
+  if (!stem) return [key];
+  return [...new Set([fold(stem(word)), fold(stem(key))])];
+}
+
+function sameStem(a: string, b: string, lang: string): boolean {
+  const sa = stems(a, lang);
+  return stems(b, lang).some((s) => sa.includes(s));
+}
+
+// --- Per-language lists: stop words, stop characters, Korean particles ---
+
+interface Lists {
+  stop: Set<string>;
+  /** Single characters on the stop list (Chinese, Japanese). */
+  stopChars: Set<string>;
+  /** Korean particles, longest first. */
+  particles: string[];
+  /** Korean particles that follow only a vowel (를; also ㄹ: 로) or only a consonant (을). */
+  afterVowel: Set<string>;
+  afterConsonant: Set<string>;
+  alsoAfterL: Set<string>;
+  /** Name words that are ordinary words of the language (Hunspell), which do not count as a name by themselves. */
+  common: Set<string>;
+}
+const lists = new Map<string, Lists>();
+function listsFor(lang: string): Lists {
+  const b = baseLang(lang);
+  const have = lists.get(b);
+  if (have) return have;
+  const pack = getCardText(b);
+  const stop = new Set((pack?.stop ?? []).map((w) => wordKey(w, b)));
+  const l: Lists = {
+    stop,
+    stopChars: new Set([...stop].filter((w) => [...w].length === 1)),
+    particles: [...new Set((pack?.particles ?? []).map((p) => fold(p)))].sort((x, y) => y.length - x.length),
+    afterVowel: new Set(pack?.particleForms?.afterVowel ?? []),
+    afterConsonant: new Set(pack?.particleForms?.afterConsonant ?? []),
+    alsoAfterL: new Set(pack?.particleForms?.alsoAfterL ?? []),
+    common: new Set((pack?.common ?? []).map((w) => wordKey(w, b))),
+  };
+  if (pack) lists.set(b, l);
+  return l;
+}
+
+/**
+ * Korean: may particle `p` follow `before`? A noun that ends in a vowel takes 를, 는, 가, 와; one that ends in a
+ * consonant takes 을, 은, 이, 과; 로 also follows ㄹ, where 으로 does not (Wiktionary's allomorph pairs). So 아이,
+ * "child", is not 아 with the particle 이, and 오필리아 is not 오필리 with the vocative 아.
+ */
+function particleFits(p: string, before: string, l: Lists): boolean {
+  const code = before.charCodeAt(before.length - 1) - 0xac00;
+  if (code < 0 || code >= 11172) return true;
+  const fin = code % 28; // 0: no final consonant; 8: ㄹ
+  if (l.afterVowel.has(p)) return fin === 0 || (fin === 8 && l.alsoAfterL.has(p));
+  if (l.afterConsonant.has(p)) return fin !== 0 && !(fin === 8 && p.startsWith('으') && l.alsoAfterL.has(p.slice(1)));
+  return true;
+}
+
+/** Korean: is `tail` one particle, or two in a row (에서 + 는), after `before`? */
+function particlesOnly(tail: string, before: string, l: Lists): boolean {
+  if (!tail) return true;
+  for (const p of l.particles) {
+    if (!tail.startsWith(p) || !particleFits(p, before, l)) continue;
+    const rest = tail.slice(p.length);
+    if (!rest || (l.particles.includes(rest) && particleFits(rest, p, l))) return true;
+  }
+  return false;
+}
+
+/** Korean: a word without the particles after it, keeping at least two syllables (석 is not a stem of 석양). */
+function koStem(word: string, l: Lists): string {
+  let w = fold(word);
+  for (let round = 0; round < 2; round++) {
+    const p = l.particles.find((x) => w.endsWith(x) && [...w].length - [...x].length >= 2 && particleFits(x, w.slice(0, w.length - x.length), l));
+    if (!p) break;
+    w = w.slice(0, w.length - p.length);
+  }
+  return w;
+}
+
+/**
+ * Korean case and topic particles (격조사, and the 보조사 은/는, 도, 만): the ones a one-syllable pronoun takes in 나는,
+ * 너를, 저도. A longer pronoun with any particles is a pronoun too (우리에게는); a one-syllable one only with these, so
+ * that 아들 ("son") is not 아 + the plural 들.
+ */
+const KO_CASE = new Set(['이', '가', '을', '를', '은', '는', '의', '에', '에게', '와', '과', '로', '으로', '도', '만']);
+
+/** Is this word a function word of the language (or, in Korean, one followed by its particle)? */
+function isStop(word: string, lang: string): boolean {
+  const b = baseLang(lang);
+  const l = listsFor(b);
+  const k = wordKey(word, b);
+  if (l.stop.has(k)) return true;
+  if (b === 'ko') {
+    for (let i = 1; i < k.length; i++) {
+      const stem = k.slice(0, i);
+      const tail = k.slice(i);
+      if (!l.stop.has(stem)) continue;
+      if (i >= 2 ? particlesOnly(tail, stem, l) : KO_CASE.has(tail) && particleFits(tail, stem, l)) return true;
+    }
+    if (l.stop.has(koStem(k, l))) return true;
+  }
+  if (b === 'zh' || b === 'ja') {
+    // A word made only of stop characters (你的 = 你 + 的). Katakana is compared as hiragana, as the stop list is.
+    const chars = [...fold(word)].filter((c) => /\p{L}/u.test(c));
+    if (chars.length > 1 && chars.every((c) => l.stopChars.has(b === 'ja' ? hiragana(c) : c))) return true;
+  }
+  return false;
+}
+
+/** Can this word of a line be a telling word? Long enough for its language and not a function word. */
+function telling(word: string, lang: string): boolean {
+  const b = baseLang(lang);
+  if (wordSpan(word) < rulesFor(b).content) return false;
+  // Japanese writes particles, auxiliaries and inflected endings in hiragana: a word with no kanji or katakana is one of those.
+  if (b === 'ja' && !/[\p{Script=Han}\p{Script=Katakana}]/u.test(word)) return false;
+  if (b === 'ko' && letterCount(koStem(word, listsFor(b))) < rulesFor(b).content) return false;
+  return !isStop(word, b);
+}
+
+/** The verse's words, with the run of letters each starts, for an unspaced script. */
+function segmentsOf(verse: string, lang: string): string[] {
+  return wordsOf(verse, lang).map(letters).filter(Boolean);
+}
+
+/** Do whole words of the verse, in a row, spell `target` (or, with `prefix`, begin with it)? */
+function spelledBySegments(target: string, segs: string[], prefix: boolean): boolean {
+  if (!target) return false;
+  for (let i = 0; i < segs.length; i++) {
+    let run = '';
+    for (let j = i; j < segs.length && run.length < target.length; j++) {
+      run += segs[j];
+      if (run === target || (prefix && run.startsWith(target))) return true;
+    }
+  }
+  return false;
+}
+
+/** Is `word` (a word of a line) said in the verse, as its language counts the same word? */
+export function saysWord(word: string, verse: string, lang: string): boolean {
+  const b = baseLang(lang);
+  if (UNSPACED.has(b)) return spelledBySegments(letters(word), segmentsOf(verse, b), b === 'ja');
+  const said = wordsIn(verse, b).filter((v) => !isStop(v, b));
+  if (b === 'ko') {
+    const l = listsFor(b);
+    const stem = koStem(word, l);
+    return said.some((v) => {
+      const f = fold(v);
+      return f.startsWith(stem) && particlesOnly(f.slice(stem.length), stem, l);
+    });
+  }
+  if (stemmerFor(b)) return said.some((v) => sameStem(v, word, b));
+  const k = wordKey(word, b);
+  return said.some((v) => wordKey(v, b) === k);
+}
+
+/**
+ * The telling words of the card's quotation in this language, as the line writes them; empty when the language
+ * has no line of its own. Where the line has a modern spelling (a Japanese line printed in old character forms)
+ * its words come first, since that is what a player types, and the printed words follow, so either counts.
  */
 export function localSignatureWords(card: Card, lang: string): string[] {
   const printed = localQuote(card, lang);
   if (!printed) return [];
   const modern = localEchoText(card, lang) ?? printed;
-  const stop = stopWords(lang);
-  const words = (text: string) => contentWords(text, lang).map(fold).filter((w) => !stop.has(w));
-  return [...new Set([...words(modern), ...(modern === printed ? [] : words(printed))])];
+  const out: string[] = [];
+  const keys = new Set<string>();
+  for (const text of modern === printed ? [printed] : [modern, printed]) {
+    for (const w of wordsIn(text, lang)) {
+      // wordsOf lower-cases; show the word as the line writes it (a German noun keeps its capital).
+      const shown = matchCase(w, text);
+      const k = wordKey(shown, lang);
+      if (keys.has(k) || !telling(shown, lang)) continue;
+      keys.add(k);
+      out.push(shown);
+    }
+  }
+  return out;
 }
 
-/** Does the verse recite the line: four of its words running? */
+/** The word as it is written in `text` (wordsOf lower-cases it). */
+function matchCase(word: string, text: string): string {
+  const i = text.toLowerCase().indexOf(word);
+  return i >= 0 && text.length === text.toLowerCase().length ? text.slice(i, i + word.length) : word;
+}
+
+/** Does the verse recite the line: four of its words running, or the whole of a line of two or three words? */
 function recites(quote: string, verse: string, lang: string): boolean {
-  const q = wordsOf(quote, lang).map(fold);
-  if (UNSPACED.has(baseLang(lang))) {
+  const b = baseLang(lang);
+  const q = wordsOf(quote, b);
+  if (q.length < 2) return false;
+  if (UNSPACED.has(b)) {
+    const line = letters(quote);
     const v = letters(verse);
-    for (let i = 0; i + 4 <= q.length; i++) if (v.includes(letters(q.slice(i, i + 4).join('')))) return true;
+    const n = Math.min(RECITE_LETTERS[b], [...line].length);
+    const ls = [...line];
+    for (let i = 0; i + n <= ls.length; i++) if (v.includes(ls.slice(i, i + n).join(''))) return true;
     return false;
   }
-  const spoken = ` ${wordsOf(verse, lang).map(fold).join(' ')} `;
-  for (let i = 0; i + 4 <= q.length; i++) if (spoken.includes(` ${q.slice(i, i + 4).join(' ')} `)) return true;
+  const run = Math.min(4, q.length);
+  const qk = q.map((w) => wordKey(w, b));
+  const spoken = ` ${wordsOf(verse, b).map((w) => wordKey(w, b)).join(' ')} `;
+  for (let i = 0; i + run <= qk.length; i++) if (spoken.includes(` ${qk.slice(i, i + run).join(' ')} `)) return true;
   return false;
 }
 
@@ -88,20 +320,23 @@ export interface LocalSignature {
  * it has none (English, a language not loaded, a card not translated): the
  * caller then judges by the English line alone, as before.
  *
- * `englishWords` are the English line's telling words, which still count.
+ * `englishWords` are the English line's telling words, which still count (a word of the duel's language that is
+ * spelled like one, Italian "dove" for "where", is a stop word there and does not).
  */
 export function localSignature(card: Card, verse: string, lang: string, englishWords: string[]): LocalSignature | null {
-  if (baseLang(lang) === 'en') return null;
-  const quote = localQuote(card, lang);
+  const b = baseLang(lang);
+  if (b === 'en') return null;
+  const quote = localQuote(card, b);
   if (!quote) return null;
-  const local = localSignatureWords(card, lang);
+  const local = localSignatureWords(card, b);
   if (!local.length) return null;
-  const saidEn = new Set(wordsOf(verse, 'en').map(fold));
-  const echoed = local.find((w) => saysWord(w, verse, lang)) ?? englishWords.find((w) => saidEn.has(w));
+  // Compared as the duel's language compares words: a Vietnamese word keeps its tone, so it is not a toneless English word.
+  const saidEn = new Set(wordsOf(verse, 'en').filter((w) => !isStop(w, b)).map((w) => wordKey(w, b)));
+  const echoed = local.find((w) => saysWord(w, verse, b)) ?? englishWords.find((w) => saidEn.has(w));
   if (!echoed) return { met: false, detail: local.slice(0, 4).join(', '), code: 'hint' };
   // Reciting the line is refused as printed and in its modern spelling, and so is reciting the English line.
-  const modern = localEchoText(card, lang);
-  if (recites(quote, verse, lang) || (modern && modern !== quote && recites(modern, verse, lang)) || recites(card.quote, verse, 'en')) {
+  const modern = localEchoText(card, b);
+  if (recites(quote, verse, b) || (modern && modern !== quote && recites(modern, verse, b)) || recites(card.quote, verse, 'en')) {
     return { met: false, detail: '', code: 'quoted' };
   }
   return { met: true, detail: echoed, code: 'echoed' };
@@ -113,10 +348,12 @@ const SPLIT = /[\s・·‧]+/u;
 const nameCache = new Map<string, string[]>();
 
 /**
- * Names that count as an invocation in a language, beyond the English ones:
- * each word of every character's name in that language, and its one-word
- * aliases. Words on the language's stop list, and words of fewer than three
- * letters (two where a letter is a syllable or a character), do not count.
+ * Names that count as an invocation in a language, beyond the English ones: every character's full name in that
+ * language, each word of it, and its aliases. A word of a longer name, or an alias, does not count by itself when
+ * it is an ordinary word of the language (a title: Russian «граф», Vietnamese «Phu nhân»; Russian «Кора», bark,
+ * for Persephone), as Hunspell's dictionary tells (pack.common; the rule is in build_card_text.py,
+ * common_name_words), nor when it is a stop word or shorter than three letters (two where a letter is a syllable
+ * or a character).
  */
 export function localCharacterNames(lang: string): string[] {
   const b = baseLang(lang);
@@ -125,15 +362,23 @@ export function localCharacterNames(lang: string): string[] {
   const have = nameCache.get(b);
   if (have) return have;
   const min = ['zh', 'ja', 'ko', 'th', 'hi'].includes(b) ? 2 : 3;
-  const stop = stopWords(b);
+  const { common } = listsFor(b);
+  const clean = (s: string) => s.replace(/^[^\p{L}]+|[^\p{L}\p{M}]+$/gu, '');
   const out = new Set<string>();
   for (const c of CARD_CATALOG) {
     if (c.type !== 'Character') continue;
     const text = pack.cards[c.id];
-    if (!text?.name) continue;
-    for (const part of [...text.name.split(SPLIT), ...(text.aliases ?? [])]) {
-      const w = part.replace(/^[^\p{L}]+|[^\p{L}\p{M}]+$/gu, '');
-      if (letterCount(w) >= min && !stop.has(fold(w))) out.add(w);
+    if (!text?.name || text.nameSource === 'missing') continue;
+    const full = clean(text.name.replace(/,.*$/u, ''));
+    if (full && letterCount(full) >= min) out.add(full);
+    // The product name ("The Sonnet Man") counts whole; its words are English and count as English counts them.
+    if (text.nameSource === 'kept') continue;
+    const parts = full.split(SPLIT).map(clean).filter(Boolean);
+    const single = [...(parts.length > 1 ? parts : []), ...(text.aliases ?? []).map(clean)];
+    for (const w of single) {
+      if (letterCount(w) < min || isStop(w, b)) continue;
+      if (!w.match(SPLIT) && common.has(wordKey(w, b))) continue;
+      out.add(w);
     }
   }
   const names = [...out];
@@ -141,8 +386,30 @@ export function localCharacterNames(lang: string): string[] {
   return names;
 }
 
+/** Is one word of a name said by one word of the verse? */
+function saysNameWord(name: string, verseWord: string, lang: string): boolean {
+  const b = baseLang(lang);
+  if (b === 'ko') {
+    const n = fold(name);
+    const v = fold(verseWord);
+    return v.startsWith(n) && particlesOnly(v.slice(n.length), n, listsFor(b));
+  }
+  if (NAMES_DECLINE.has(b) && stemmerFor(b)) return sameStem(name, verseWord, b);
+  return wordKey(name, b) === wordKey(verseWord, b);
+}
+
+/** Does the verse say this name (one or more words, in a row)? */
+function saysName(name: string, verse: string, lang: string): boolean {
+  const b = baseLang(lang);
+  if (UNSPACED.has(b)) return spelledBySegments(letters(name), segmentsOf(verse, b), false);
+  const n = wordsOf(name, b);
+  const v = wordsIn(verse, b);
+  for (let i = 0; i + n.length <= v.length; i++) if (n.every((w, j) => saysNameWord(w, v[i + j], b))) return true;
+  return false;
+}
+
 /** The first localised name the verse says, or undefined. */
 export function saidLocalName(verse: string, lang: string): string | undefined {
   if (baseLang(lang) === 'en') return undefined;
-  return localCharacterNames(lang).find((n) => saysWord(n, verse, lang));
+  return localCharacterNames(lang).find((n) => saysName(n, verse, lang));
 }

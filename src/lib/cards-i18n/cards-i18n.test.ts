@@ -3,7 +3,7 @@ import { beforeAll, describe, expect, it } from 'vitest';
 import { CARD_CATALOG, getCardById, type Card } from '../cards';
 import { DEVICES, checkSignature, signatureWords } from '../verse/devices';
 import { createDuel, scoreVerse } from '../verse/duel';
-import { localCharacterNames, localSignatureWords, saysWord } from '../verse/echo';
+import { localCharacterNames, localSignatureWords, saysWord, wordKey } from '../verse/echo';
 import { getForm } from '../verse/forms';
 import { loadAllPacks, PACK_LANGS } from '../verse/packs';
 import { wordsOf } from '../verse/text';
@@ -15,7 +15,7 @@ interface Provenance {
 const provenance: Provenance = JSON.parse(readFileSync('docs/language/card-text.provenance.json', 'utf8'));
 const record = readFileSync('docs/language/NAMES-AND-QUOTATIONS.md', 'utf8');
 
-const NAME_SOURCES = ['wikidata', 'wikipedia', 'derived', 'translated', 'missing'];
+const NAME_SOURCES = ['wikidata', 'wikipedia', 'derived', 'translated', 'kept', 'missing'];
 
 /** Everything wrong with one language's card text. Empty means sound. Kept as a function so it can be shown to fail. */
 function problems(pack: CardTextPack, prov: Provenance['langs'][string], doc: string): string[] {
@@ -220,20 +220,24 @@ describe('the signature in the language of the duel', () => {
   it('every card with a line in a language has telling words in it, none of them a stop word', () => {
     const none: string[] = [];
     for (const p of packs) {
-      const stop = new Set(p.stop);
+      const stop = new Set(p.stop.map((w) => wordKey(w, p.lang)));
       for (const c of CARD_CATALOG) {
         if (!p.cards[c.id].quote) continue;
         const words = localSignatureWords(c, p.lang);
         if (!words.length) none.push(`${p.lang} ${c.id}`);
-        for (const w of words) expect([p.lang, c.id, w, stop.has(w)]).toEqual([p.lang, c.id, w, false]);
+        for (const w of words) expect([p.lang, c.id, w, stop.has(wordKey(w, p.lang))]).toEqual([p.lang, c.id, w, false]);
       }
     }
     // A line whose every word is short or on the stop list has no telling word of its own ("I am not what I am" has none
     // in English either); the English words then decide, as before. These are few, and each is reported by name.
     if (none.length) console.warn(`[cards-i18n] lines with no telling word of their own: ${none.join(', ')}`);
-    // Where the English line has telling words, the line in another language should too: at most a handful may not.
+    // Where the English line has telling words, the line in another language should too. These seven have none of their
+    // own, and the English words decide there. Their words are function words (pronouns, particles, "how"), or too
+    // short for the language's measure (Hindi छह, सदा; Thai รัก, วิธี; Vietnamese hè), or single characters, which do not
+    // count in Chinese and Japanese (花 "flower", 草, 愛, 力; the segmenter also cuts Tsubouchi's rare 齷齬 into two).
+    // Pinned, so a change to the stop lists that takes the words of another line shows here.
     const lost = none.filter((key) => signatureWords(card(key.split(' ')[1])).length > 0);
-    expect([lost.length <= 3, lost]).toEqual([true, lost]);
+    expect(lost).toEqual(['hi UW-002', 'zh LD-004', 'ja VC-003', 'ja PT-005', 'ja OL-004', 'vi SM-001', 'th LD-004']);
     expect(none.length).toBeLessThanOrEqual(20);
     for (const key of none) {
       const [lang, id] = key.split(' ');
@@ -283,7 +287,7 @@ describe('the signature in the language of the duel', () => {
     // The English word still lands in any language, and reciting the English line is still refused.
     expect(checkSignature(hamlet, 'I put the question to the dark', 'ja').met).toBe(true);
     expect(checkSignature(hamlet, 'To be, or not to be, that is the question', 'ja').met).toBe(false);
-    // Endings: a word says another when it begins with it, or with all but its last letter (five letters or more).
+    // Endings: two forms of one word have one stem (Snowball); Korean particles follow a noun; Arabic prefixes join it.
     expect(saysWord('Гамлет', 'Слушай Гамлета', 'ru')).toBe(true);
     expect(saysWord('Джульетта', 'Зову Джульетту', 'ru')).toBe(true);
     expect(saysWord('Julia', 'Wołam Julię', 'pl')).toBe(true);

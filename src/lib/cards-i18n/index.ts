@@ -13,6 +13,7 @@
  *          'wikipedia'   the title of this language's Wikipedia article
  *          'derived'     cut by rule from a sourced label (the title of the play, a longer name)
  *          'translated'  the game's own invention, translated for the game; no published source
+ *          'kept'        the product name (SM-001, "The Sonnet Man"), the same in every language
  *          'missing'     no source has this name in this language; the English name is shown
  *   quote  'published'   copied from a published translation that is in the public domain
  *          'new'         translated for the game; no usable published translation was found
@@ -20,8 +21,9 @@
  * The full record (item ids, translators, URLs, licences) is docs/language/NAMES-AND-QUOTATIONS.md.
  */
 import type { Card } from '../cards';
+import { loadStemmer } from '../verse/stem';
 
-export type NameSource = 'wikidata' | 'wikipedia' | 'derived' | 'translated' | 'missing';
+export type NameSource = 'wikidata' | 'wikipedia' | 'derived' | 'translated' | 'kept' | 'missing';
 export type QuoteSource = 'published' | 'new' | 'missing';
 
 export interface CardText {
@@ -49,8 +51,17 @@ export interface CardTextPack {
   elements: Record<string, string>;
   rarities: Record<string, string>;
   types: Record<string, string>;
-  /** Words too common to count as an echo of a quotation (from an open stop-word list; see the docs). */
+  /**
+   * Words too common to count as an echo of a quotation: the open stop-word list, and the function words
+   * (pronouns, particles, conjunctions, adpositions, determiners, articles) Wiktionary lists for the language.
+   */
   stop: string[];
+  /** Korean only: the particles (josa) a noun may carry, from Wiktionary. */
+  particles?: string[];
+  /** Korean only: particles with one form after a vowel and another after a consonant (를 / 을; 로 also after ㄹ), from Wiktionary. */
+  particleForms?: { afterVowel: string[]; afterConsonant: string[]; alsoAfterL: string[] };
+  /** Words of a character's longer name, or aliases, that are ordinary words of the language (Hunspell): not a name by themselves. */
+  common?: string[];
 }
 
 export const CARD_TEXT_LANGS = ['es', 'fr', 'de', 'it', 'pt', 'pl', 'ru', 'ar', 'hi', 'zh', 'ja', 'ko', 'vi', 'th', 'id'] as const;
@@ -77,14 +88,18 @@ const LOADERS: Record<CardTextLang, () => Promise<{ default: CardTextPack }>> = 
 const loaded = new Map<string, CardTextPack>();
 const base = (lang: string) => lang.toLowerCase().split('-')[0];
 
-/** Load a language's card text. English, and a language that has none, resolve to null. */
+/**
+ * Load a language's card text, and the stemmer the signature and the invocation read it with (../verse/stem).
+ * English, and a language that has none, resolve to null.
+ */
 export async function loadCardText(lang: string): Promise<CardTextPack | null> {
   const b = base(lang);
   const have = loaded.get(b);
   if (have) return have;
   const loader = (LOADERS as Record<string, (() => Promise<{ default: CardTextPack }>) | undefined>)[b];
   if (!loader) return null;
-  const pack = (await loader()).default;
+  const [mod] = await Promise.all([loader(), loadStemmer(b)]);
+  const pack = mod.default;
   loaded.set(b, pack);
   return pack;
 }

@@ -7,6 +7,10 @@ Inputs, all in the repository:
   docs/language/sources/wikidata-names.json    labels fetched from Wikidata (fetch_names.py)
   docs/language/sources/quotes-<lang>.json     lines copied from published translations (extract.py)
   docs/language/sources/stopwords-iso.json     stop words (stopwords-iso, MIT)
+  docs/language/sources/wiktionary-closed-class.json   function words by part of speech (Wiktionary via kaikki.org;
+                                               scripts/language/fetch/closed_class.py), added to the stop words
+  docs/language/checks/name-words.json         which words of a longer character name are ordinary words (Hunspell;
+                                               run.sh names), so they do not count as a name by themselves
   scripts/language/published.json              who translated each published text, and its copyright status
   scripts/language/translated/<lang>.txt       what was translated for the game (no published source)
   src/i18n/locales/<lang>.ts                   rarity names, so a rarity is called one thing everywhere
@@ -191,7 +195,20 @@ def _label(ent, lang):
 SPLIT = re.compile(r'[\s・·‧]+')
 
 
+# A sourced label spelled as another word of the language, where that language's Wikipedia writes the name otherwise:
+# (entity key, language) -> (name, the source file in docs/language/sources/, why).
+SPELLING = {
+    ('prospero', 'pt'): ('Próspero', 'ptwiki-a-tempestade.json',
+                         'pt.wikipedia.org "A Tempestade", revision 72539005, writes Próspero (17 times, Prospero once); Wikidata\'s pt '
+                         'and pt-br label "Prospero" is the verb prospero, "I prosper" (LanguageTool LP_PARONYMS)'),
+}
+
+
 def name_for(key, lang, ents):
+    if (key, lang) in SPELLING:
+        text, src_file, why = SPELLING[(key, lang)]
+        assert os.path.exists(os.path.join(SRC, src_file)), src_file
+        return text, 'wikipedia', f'{why} ({ents[key]["id"]})'
     text, src, detail = label(ents.get(key), lang)
     if text and key in TOKEN:
         idx, n = TOKEN[key]
@@ -218,6 +235,81 @@ def aliases(key, lang, ents, name):
         if a and a != name and not SPLIT.search(a) and a not in out:
             out.append(a)
     return out[:4]
+
+
+ONE_WORD = r"\p{L}[\p{L}\p{M}'’\-]*"
+
+
+def stop_words(lang, iso, closed):
+    """stopwords-iso's list for the language, and every single-word headword Wiktionary gives as one of its function
+    words (closed_class.py): both are used as published, except the words in NOT_STOP. Chinese headwords are also
+    added in Simplified characters, which the game's Chinese uses."""
+    import regex
+    words = set(w for w in iso.get(lang, []) if re.search(r'[^\W\d_]', w))
+    for pos in closed[lang].values():
+        for w in pos['words']:
+            if regex.fullmatch(ONE_WORD, w):
+                words.add(w)
+                if lang == 'zh':
+                    words.add(simplified(w))
+    return sorted(words - set(NOT_STOP.get(lang, [])))
+
+
+def ko_particles(closed):
+    """Korean particles (josa) in standard use, as Wiktionary lists them (headwords written "-가"), Hangul syllables only."""
+    return sorted(set(w.lstrip('-') for w in closed['ko']['particle']['standard'] if re.fullmatch(r'-?[\uac00-\ud7a3]+', w)))
+
+
+CASED = set('es fr it pt pl ru vi id'.split())  # as in check/check.py: where Hunspell was asked in lower case
+
+
+def _bare(w):
+    import unicodedata
+    return ''.join(ch for ch in unicodedata.normalize('NFD', w) if not unicodedata.combining(ch)).lower()
+
+
+def common_name_words(lang, CARDS, pack, name_words):
+    """Words of a character's longer name, and one-word aliases, that are ordinary words of the language and so do not
+    count as an invocation by themselves (src/lib/verse/echo.ts): Russian «граф», Vietnamese «Phu nhân», Russian «Кора»
+    (bark) for Persephone. Decided from Hunspell's verdicts (docs/language/checks/name-words.json, run.sh names):
+      - where the script has case, Hunspell was asked in lower case, so its verdict stands;
+      - in German, and in Arabic, Hindi and Thai, which have no case, Hunspell also knows many names (Hamlet, कीट्स
+        Keats): there a word Hunspell knows is taken for a title only before the last word of the name, where these
+        languages put titles (Prinz Hamlet, الأمير هاملت), so a surname still counts by itself; Korean puts the title
+        after the name (맥베스 부인), so there any word Hunspell knows is taken for one;
+      - a word that is also a word of an English character name (Romeo, Lady, William) counts as it does in English."""
+    import regex
+    verdict = name_words.get(lang, {})
+    acc = set(verdict.get('accepted', []))
+    if not acc:
+        return []
+    english = {_bare(w) for c in CARDS if c['type'] == 'Character' for w in re.sub(r'^The ', '', c['name']).split()}
+    clean = lambda t: regex.sub(r'^[^\p{L}]+|[^\p{L}\p{M}]+$', '', t)
+    out = set()
+    for c in CARDS:
+        e = pack['cards'][c['id']]
+        if c['type'] != 'Character' or not e.get('name') or e['nameSource'] in ('missing', 'kept'):
+            continue
+        parts = [w for w in (clean(x) for x in regex.split(r'[\s・·‧]+', clean(re.sub(r',.*$', '', e['name'])))) if w]
+        if len(parts) > 1:
+            for i, w in enumerate(parts):
+                if w in acc and _bare(w) not in english and (lang in CASED or lang == 'ko' or i < len(parts) - 1):
+                    out.add(w)
+        for a in e.get('aliases', []):
+            a = clean(a)
+            if a in acc and _bare(a) not in english:
+                out.add(a)
+    return sorted(out)
+
+
+def ko_particle_forms(closed):
+    """Which Korean particles follow a vowel and which a consonant (를 / 을; 로 also after ㄹ), from Wiktionary's glosses
+    (closed_class.py, ko_allomorphs). Hangul syllables only."""
+    syl = lambda w: bool(re.fullmatch(r'[\uac00-\ud7a3]+', w))
+    pairs = [p for p in closed['ko']['particle']['allomorphs'] if syl(p['after_vowel']) and syl(p['after_consonant'])]
+    return {'afterVowel': sorted(set(p['after_vowel'] for p in pairs)),
+            'afterConsonant': sorted(set(p['after_consonant'] for p in pairs)),
+            'alsoAfterL': sorted(set(p['after_vowel'] for p in pairs if p['after_l']))}
 
 
 def clean_quote(t):
@@ -247,6 +339,9 @@ def main():
         if b.get('aliases'):
             e.setdefault('aliases', {})['pt-br'] = b['aliases']
     stop = json.loads(read('docs/language/sources/stopwords-iso.json'))['words']
+    closed = json.loads(read('docs/language/sources/wiktionary-closed-class.json'))['languages']
+    nw_path = os.path.join(ROOT, 'docs/language/checks/name-words.json')
+    name_words = json.load(open(nw_path, encoding='utf8'))['languages'] if os.path.exists(nw_path) else {}
     published = json.loads(read('scripts/language/published.json'))
     CARDS = cards()
     assert len(CARDS) == 71, len(CARDS)
@@ -256,7 +351,10 @@ def main():
         qpath = os.path.join(SRC, f'quotes-{lang}.json')
         pub = json.load(open(qpath, encoding='utf8')) if os.path.exists(qpath) else {}
         pack = {'lang': lang, 'cards': {}, 'houses': {}, 'elements': dict(zip(ELEMENTS, tr['elements'])), 'rarities': rarity_names(lang),
-                'types': dict(zip(TYPES, tr['types'])), 'stop': sorted(set(w for w in stop.get(lang, []) if re.search(r'[^\W\d_]', w) and w not in NOT_STOP.get(lang, [])))}
+                'types': dict(zip(TYPES, tr['types'])), 'stop': stop_words(lang, stop, closed)}
+        if lang == 'ko':
+            pack['particles'] = ko_particles(closed)
+            pack['particleForms'] = ko_particle_forms(closed)
         p = prov['langs'][lang] = {'cards': {}, 'houses': {}}
         for h, t in zip(HOUSES_T, tr['houses']):
             pack['houses'][h] = t
@@ -270,10 +368,13 @@ def main():
         for c in CARDS:
             cid = c['id']
             entry, rec = {}, {}
-            if cid in own:
+            if cid == 'SM-001':
+                # The product name is the same in every language: neither sourced nor translated.
+                entry['name'], entry['nameSource'] = own[cid], 'kept'
+                rec['name'] = {'text': own[cid], 'source': 'kept', 'detail': 'the product name, the same in every language'}
+            elif cid in own:
                 entry['name'], entry['nameSource'] = own[cid], 'translated'
-                rec['name'] = {'text': own[cid], 'source': 'translated',
-                               'detail': 'the product name, kept as it is' if cid == 'SM-001' else "the game's own name, translated for the game"}
+                rec['name'] = {'text': own[cid], 'source': 'translated', 'detail': "the game's own name, translated for the game"}
             else:
                 key = ENTITY[cid]
                 text, src, detail = name_for(key, lang, ents)
@@ -309,6 +410,9 @@ def main():
             rec['scene'] = 'translated' if cid in tr['scenes'] else 'missing'
             pack['cards'][cid] = entry
             p['cards'][cid] = rec
+        common = common_name_words(lang, CARDS, pack, name_words)
+        if common:
+            pack['common'] = common
         body = json.dumps(pack, ensure_ascii=False, indent=1)
         ts = ("// GENERATED by scripts/language/build_card_text.py. Do not edit: change the sources and run it again.\n"
               "// Where every name and line comes from: docs/language/NAMES-AND-QUOTATIONS.md\n"
@@ -572,8 +676,9 @@ def write_doc(CARDS, ents, prov, published):
         miss = [c['id'] for c in CARDS if prov['langs'][lang]['cards'][c['id']]['quote']['source'] == 'missing']
         L.append(f"- **{lang}** new ({len(new)}): " + (', '.join(new) if new else 'none') + (f". Not translated ({len(miss)}): {', '.join(miss)}" if miss else ''))
     L.append('\n## Names translated for the game, not sourced\n')
-    L.append('In every language: ' + ', '.join(OWN_NAMES) + ' (SM-001 is the product name and is kept as it is), the house labels ' + ', '.join(HOUSES_T) +
-             ', all element labels and the three card types. Rarity names are the ones already in src/i18n/locales. Scene descriptions are translated wherever present.\n')
+    L.append('In every language: ' + ', '.join(OWN_NAMES[1:]) + ', the house labels ' + ', '.join(HOUSES_T) +
+             ', all element labels and the three card types. Rarity names are the ones already in src/i18n/locales. Scene descriptions are translated wherever present. '
+             'SM-001, "The Sonnet Man", is the product name: it is the same in every language and recorded as kept, neither sourced nor translated.\n')
     write_checks(L, CARDS, prov)
     L.append('## Wikidata items\n')
     L.append('| Key | Item | English label | Used for |')
