@@ -1254,6 +1254,41 @@ async function emailAccount(ageTier: 'adult' | 'teen' = 'adult', email = uniqueE
   return { email, user: (await verified.json()).user, cookie: `im_token=${token}` };
 }
 
+/**
+ * A real WebSocket handshake to the game socket, with this cookie, as this client. Resolves
+ * with the status: 101 when the server takes the connection (which is then closed at once).
+ */
+function wsHandshake(base: string, cookie: string, ip: string): Promise<number> {
+  const url = new URL(`${base}/multiplayer/ws`);
+  return new Promise<number>((resolve, reject) => {
+    const req = http.request({
+      host: url.hostname,
+      port: url.port,
+      path: url.pathname,
+      method: 'GET',
+      headers: {
+        Connection: 'Upgrade',
+        Upgrade: 'websocket',
+        'Sec-WebSocket-Version': '13',
+        'Sec-WebSocket-Key': randomBytes(16).toString('base64'),
+        Cookie: cookie,
+        'CF-Connecting-IP': ip,
+      },
+    });
+    req.on('upgrade', (res, socket) => {
+      socket.destroy();
+      resolve(res.statusCode ?? 0);
+    });
+    req.on('response', (res) => {
+      res.resume();
+      resolve(res.statusCode ?? 0);
+    });
+    req.on('error', reject);
+    req.setTimeout(15000, () => req.destroy(new Error('no answer to the WebSocket handshake')));
+    req.end();
+  });
+}
+
 /** Any request from inside the page, with the page's own cookies. */
 async function fetchFromPage(page: Page, method: string, route: string, body?: unknown) {
   return page.evaluate(async ([m, url, data]) => {
@@ -1537,14 +1572,17 @@ test.describe('Hardening: sessions end on the server', () => {
     const { user, cookie } = await emailAccount();
     expect(await meStatus(cookie)).toBe(200);
     expect((await call('GET', `${API}/credits`, { cookie })).status()).toBe(200);
+    expect((await call('GET', `${API}/multiplayer/rooms`, { cookie })).status()).toBe(200);
 
     const out = await call('POST', `${API}/auth/logout`, { cookie, headers: { 'Content-Type': 'application/json' } });
     expect(out.status()).toBe(200);
     expect(out.headers()['set-cookie']).toMatch(/im_token=;.*Max-Age=0/);
 
-    // The cookie value was never thrown away by this "browser": it must be dead anyway.
+    // The cookie value was never thrown away by this "browser": it must be dead anyway,
+    // on the multiplayer routes too (their socket: multiplayer.spec.ts).
     expect(await meStatus(cookie)).toBe(401);
     expect((await call('GET', `${API}/credits`, { cookie })).status()).toBe(401);
+    expect((await call('GET', `${API}/multiplayer/rooms`, { cookie })).status()).toBe(401);
     expect(sql(`SELECT revoked_at IS NOT NULL FROM auth_sessions WHERE user_id = '${user.id}'`)).toBe('t');
   });
 
@@ -1940,6 +1978,32 @@ test.describe('Hardening: client address and limits by network', () => {
       }
       await new Promise((r) => setTimeout(r, 500));
       expect(api.log().match(/ignored CF-Connecting-IP/g)).toHaveLength(1);
+    } finally {
+      await api.stop();
+    }
+  });
+
+  test('the request limit covers the multiplayer routes and the game socket\'s handshake, one allowance per client', async () => {
+    // Four requests a minute for each client address, on the same database as the standing
+    // API, so a session made there is good here too.
+    const api = await startApi({ RATE_LIMIT_PER_MINUTE: '4' });
+    try {
+      const { cookie } = await emailAccount();
+      const greedy = uniqueIp();
+      let other = uniqueIp();
+      while (other === greedy) other = uniqueIp();
+      const rooms = (ip: string) => call('GET', `${api.base}/multiplayer/rooms`, { cookie, headers: { 'CF-Connecting-IP': ip } }).then((r) => r.status());
+      // Two ordinary requests and two real handshakes: this client's four.
+      expect(await rooms(greedy)).toBe(200);
+      expect(await rooms(greedy)).toBe(200);
+      expect(await wsHandshake(api.base, cookie, greedy)).toBe(101);
+      expect(await wsHandshake(api.base, cookie, greedy)).toBe(101);
+      // The fifth is refused before it reaches the socket, and so is any other route.
+      expect(await wsHandshake(api.base, cookie, greedy)).toBe(429);
+      expect(await rooms(greedy)).toBe(429);
+      // Another visitor through the same trusted proxy (loopback) has an allowance of their own.
+      expect(await wsHandshake(api.base, cookie, other)).toBe(101);
+      expect(await rooms(other)).toBe(200);
     } finally {
       await api.stop();
     }

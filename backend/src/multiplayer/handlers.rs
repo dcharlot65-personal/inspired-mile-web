@@ -601,6 +601,86 @@ mod tests {
             .expect("a lazy pool")
     }
 
+    fn someone() -> Claims {
+        Claims { sub: Uuid::new_v4(), username: "player".into(), sid: Uuid::new_v4(), exp: i64::MAX, iat: 0 }
+    }
+
+    fn claiming(ip: &str, secret: Option<&str>) -> HeaderMap {
+        let mut headers = HeaderMap::new();
+        headers.insert("cf-connecting-ip", ip.parse().unwrap());
+        headers.insert("x-forwarded-for", ip.parse().unwrap());
+        if let Some(secret) = secret {
+            headers.insert("x-proxy-secret", secret.parse().unwrap());
+        }
+        headers
+    }
+
+    async fn open_private(rooms: &Arc<RoomManager>, config: &Config, peer: SocketAddr, headers: HeaderMap) -> Result<(), StatusCode> {
+        create_private_room(
+            Extension(someone()),
+            Extension(rooms.clone()),
+            State((unreachable_database(), config.clone())),
+            ConnectInfo(peer),
+            headers,
+        )
+        .await
+        .map(|_| ())
+        .map_err(|(status, _)| status)
+    }
+
+    /// The per-network room limit finds the client as every other limit does
+    /// (`auth::client_addr`): a forwarding header counts only from a trusted proxy, and only
+    /// with the proxy's secret when one is set.
+    #[tokio::test]
+    async fn the_room_limit_believes_a_forwarding_header_only_from_a_trusted_proxy() {
+        use super::super::game_room::MAX_ROOMS_PER_ADDRESS;
+        // Production's defaults: loopback and the fleet's proxies are trusted.
+        let production = config(&[]);
+        let lan: SocketAddr = "192.168.4.77:50000".parse().unwrap();
+        let proxy: SocketAddr = "100.98.101.113:443".parse().unwrap();
+
+        // A device that talks to the API port directly (the LAN, the tailnet) is not a proxy:
+        // it is counted as itself, whatever it claims. Its network fills up...
+        let rooms = Arc::new(RoomManager::new());
+        for i in 0..MAX_ROOMS_PER_ADDRESS {
+            let opened = open_private(&rooms, &production, lan, claiming(&format!("203.0.113.{i}"), None)).await;
+            assert_eq!(opened, Ok(()), "room {i} from the LAN device");
+        }
+        // ...and claiming yet another address does not get it past the limit.
+        assert_eq!(open_private(&rooms, &production, lan, claiming("198.51.100.1", None)).await, Err(StatusCode::TOO_MANY_REQUESTS));
+        // Nor does asking for a quick match from there.
+        let queued = join_queue(
+            Extension(someone()),
+            Extension(Arc::new(MatchmakingQueue::new())),
+            Extension(rooms.clone()),
+            State((unreachable_database(), production.clone())),
+            ConnectInfo(lan),
+            claiming("198.51.100.2", None),
+        )
+        .await;
+        assert_eq!(queued.err().map(|(status, _)| status), Some(StatusCode::TOO_MANY_REQUESTS));
+
+        // Through the site's proxy the header names the visitor: more visitors than one
+        // network may hold, each on their own network, are all served.
+        let rooms = Arc::new(RoomManager::new());
+        for i in 0..=MAX_ROOMS_PER_ADDRESS {
+            let opened = open_private(&rooms, &production, proxy, claiming(&format!("198.51.100.{i}"), None)).await;
+            assert_eq!(opened, Ok(()), "visitor {i} through the proxy");
+        }
+
+        // With PROXY_SECRET set, the proxy's header counts only with the secret: without it
+        // every request is the proxy's own address, which fills up like any other network.
+        let secret = "a-proxy-secret-of-forty-characters-0123456";
+        let guarded = config(&[("PROXY_SECRET", secret)]);
+        let rooms = Arc::new(RoomManager::new());
+        for i in 0..MAX_ROOMS_PER_ADDRESS {
+            let opened = open_private(&rooms, &guarded, proxy, claiming(&format!("198.51.100.{i}"), None)).await;
+            assert_eq!(opened, Ok(()), "room {i} without the secret");
+        }
+        assert_eq!(open_private(&rooms, &guarded, proxy, claiming("192.0.2.1", None)).await, Err(StatusCode::TOO_MANY_REQUESTS));
+        assert_eq!(open_private(&rooms, &guarded, proxy, claiming("192.0.2.1", Some(secret))).await, Ok(()));
+    }
+
     #[tokio::test]
     async fn a_session_that_cannot_be_checked_is_not_taken_for_a_sign_out() {
         // The database cannot be reached: the connection is kept, and asked about again later.

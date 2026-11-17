@@ -705,4 +705,23 @@ test.describe('Online duel', () => {
       await bob.context.close();
     }
   });
+
+  test('a connection that sends more than its share of messages is closed', async ({ browser }) => {
+    const { open, next, closed } = raw;
+    const ann = await newPlayer(browser);
+    try {
+      expect(await open(ann.page)).toBe(true);
+      // Thirty messages in ten seconds are answered (handlers.rs MESSAGES_PER_WINDOW); the
+      // thirty-first closes the connection.
+      await ann.page.evaluate(() => {
+        const ws = (window as unknown as { mp: { ws: WebSocket } }).mp.ws;
+        for (let i = 0; i < 31; i++) ws.send('not a message');
+      });
+      expect((await next(ann.page, 'error', 30)).code).toBe('bad_message');
+      expect((await next(ann.page, 'error', 31)).code).toBe('too_many_messages');
+      await expect.poll(() => closed(ann.page), { message: 'the connection is closed', timeout: 10000 }).toBe(true);
+    } finally {
+      await ann.context.close();
+    }
+  });
 });
