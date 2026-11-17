@@ -136,6 +136,15 @@ test('Arabic: an English line in a story scene keeps its question mark at its en
   expect(Math.abs(at.mark.top - at.r.top), 'the question mark is on the line of "sir"').toBeLessThan(3);
   expect(at.mark.left, 'the question mark is drawn right after "sir", not at the far end of the line').toBeGreaterThanOrEqual(at.r.right - 1);
   expect(at.mark.left - at.r.right).toBeLessThan(6);
+  // And a count out of a total reads left to right: "0/19", the count left of the total (with spaces round the
+  // slash the two numbers were laid out right to left and read 19 / 0).
+  const order = await page.evaluate(() => {
+    const node = document.getElementById('progress-text')!.firstChild as Text;
+    const box = (i: number, n: number) => { const r = document.createRange(); r.setStart(node, i); r.setEnd(node, i + n); return r.getBoundingClientRect().left; };
+    const m = node.data.match(/(\d+)\s*\/\s*(\d+)/)!;
+    return { count: box(m.index!, m[1].length), total: box(node.data.indexOf(m[2], m.index! + m[1].length), m[2].length) };
+  });
+  expect(order.count, 'the count stands left of the total').toBeLessThan(order.total);
 });
 
 /**

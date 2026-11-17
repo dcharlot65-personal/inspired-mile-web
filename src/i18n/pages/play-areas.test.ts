@@ -689,6 +689,8 @@ describe('these checks can fail', () => {
     expect(bidiProblems('k', 'من يقول «\u2068Et tu, Brute?\u2069» وهو يموت؟')).toEqual([]);
     expect(bidiProblems('k', 'شخصية \u200EPuck؟').length).toBe(2); // a left-to-right mark is not an isolate
     expect(isolateLatin('السؤال {n} / {total}')).toBe('السؤال {n} / {total}'); // a placeholder's name is not text
+    expect(bidiProblems('k', 'السؤال {n} / {total}').length).toBe(1); // 1 / 5 would read 5 / 1
+    expect(bidiProblems('k', 'السؤال {n}/{total}')).toEqual([]);
   });
 
   it('cjkSpaceProblems objects to the space zh trivia 100 had after a name, and not to one beside a number or Latin letters', () => {

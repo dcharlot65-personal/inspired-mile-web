@@ -36,5 +36,8 @@ export function bidiProblems(key, s) {
   if (opened !== closed) out.push(`${key}: ${opened} isolates opened, ${closed} closed`);
   if (isolateLatin(stripIsolates(s)) !== s) out.push(`${key}: Latin text not isolated: ${stripIsolates(s).match(RUN)?.join(' | ')}`);
   if (/[\u200E\u200F\u202A-\u202E]/u.test(s)) out.push(`${key}: a direction mark or embedding other than an isolate`);
+  // "{n} / {total}": with spaces round the slash the two numbers are laid out right to left, and 1 / 5 reads 5 / 1
+  // (found on lang/pages-core's pages on 2026-11-16). Written {n}/{total}, the slash joins them into one number.
+  if (/(?:\{\w+\}|\d)\s+\/\s*(?:\{\w+\}|\d)|(?:\{\w+\}|\d)\s*\/\s+(?:\{\w+\}|\d)/u.test(s)) out.push(`${key}: a count and its total with a space by the slash, which right to left reads reversed`);
   return out;
 }

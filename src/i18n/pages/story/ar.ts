@@ -6,7 +6,7 @@ const messages: Record<string, string> = {
   'story.title': "وضع القصة",
   'story.intro': "ارتحل عبر 5 فصول بين أعظم أعمال شكسبير. واجه شخصيات خالدة في نزالات شعرية واكشف أسرار مسرح جلوب.",
   'story.journey': "رحلتك",
-  'story.progress': "أُنجز {done} / {total} من المواجهات",
+  'story.progress': "أُنجز {done}/{total} من المواجهات",
   'story.stars': "النجوم",
   'story.difficulty.easy': "سهل",
   'story.difficulty.medium': "متوسط",
