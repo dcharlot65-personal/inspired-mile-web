@@ -2,8 +2,10 @@ import { test, expect, type Browser, type Page } from '@playwright/test';
 
 /**
  * The English pronunciation table (pron-en, about 0.5 MB compressed) is fetched only when an
- * English duel needs it: never for a visitor who does not start a duel, nor for a duel in
- * another language. The review of 2026-11-16 found /battle fetching it on every visit.
+ * English duel needs it: never for a first visitor who leaves the duel's settings alone, nor for a
+ * duel in another language. The review of 2026-11-16 found /battle fetching it on every visit. A
+ * visitor about to duel gets it ahead of the start (battle.astro warm()): one who touches the duel's
+ * settings, and a returning player whose duel language is stored, once the page is idle.
  *
  * Each case also prints what the page received (MEASURE ...): the body bytes of every response,
  * each case in a browser context of its own so nothing comes from another case's cache. Set
@@ -37,9 +39,10 @@ function bytes(page: Page) {
   };
 }
 
-async function fresh(browser: Browser): Promise<Page> {
+async function fresh(browser: Browser, duelLang?: string): Promise<Page> {
   const ctx = await browser.newContext({ serviceWorkers: 'block' });
   await ctx.addInitScript(() => localStorage.setItem('inspired-mile-age-verified', 'adult'));
+  if (duelLang) await ctx.addInitScript((l) => localStorage.setItem('inspired-mile-duel-lang', l), duelLang);
   return ctx.newPage();
 }
 
@@ -77,4 +80,27 @@ test('an English duel fetches it', async ({ browser }) => {
   await duel(page, 'en');
   console.log(`MEASURE battle-bytes en-duel ${JSON.stringify(await seen.measure('en-duel'))}`);
   expect(seen.urls.filter((u) => /pron-en/.test(u)).length).toBeGreaterThan(0);
+});
+
+test('a first visitor who touches the duel\'s settings gets the English table before the start', async ({ browser }) => {
+  const page = await fresh(browser);
+  const seen = bytes(page);
+  await page.goto(`${BASE}/battle?brain=rules`, { waitUntil: 'networkidle' });
+  await expect(page.locator('#start-duel')).toBeEnabled();
+  await page.waitForTimeout(1000);
+  expect(seen.urls.filter((u) => /pron-en/.test(u))).toEqual([]);
+  await page.locator('#difficulty').focus();
+  await expect.poll(() => seen.urls.filter((u) => /pron-en/.test(u)).length, { timeout: 30_000 }).toBeGreaterThan(0);
+});
+
+test('a returning player whose duel language is stored gets its data once the page is idle, and no other', async ({ browser }) => {
+  for (const [lang, want, not] of [['en', /pron-en/, /\.dat\.gz/], ['ja', /\.dat\.gz/, /pron-en/]] as const) {
+    const page = await fresh(browser, lang);
+    const seen = bytes(page);
+    await page.goto(`${BASE}/battle?brain=rules`, { waitUntil: 'load' });
+    await expect.poll(() => seen.urls.filter((u) => want.test(u)).length, { timeout: 60_000 }).toBeGreaterThan(0);
+    await page.waitForLoadState('networkidle');
+    expect([lang, seen.urls.filter((u) => not.test(u))]).toEqual([lang, []]);
+    await page.context().close();
+  }
 });

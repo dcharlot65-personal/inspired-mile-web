@@ -6,7 +6,7 @@
  * This one is kuromoji.js 0.1.2 (Apache-2.0) with the mecab-ipadic 2.7.0
  * dictionary (NAIST licence), the same pair on every device, fetched once by
  * loadJapanese() before a Japanese duel and never otherwise (the battle page
- * starts the fetch as soon as Japanese is chosen). The analysis is a Viterbi
+ * starts the fetch as soon as a Japanese duel is in view: battle.astro warm()). The analysis is a Viterbi
  * search over that fixed dictionary, so the same line always reads the same way.
  *
  * The dictionary is kuromoji's own, cut down to what the engine reads

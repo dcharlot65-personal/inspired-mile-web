@@ -310,14 +310,44 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       }
       langSelect.value = offered.includes(want) ? want : offered.includes('en') ? 'en' : offered[0];
     }
+    // A duel language's verse data and sound data (the Japanese analyser's dictionary is 4.7 MB,
+    // the English table 0.5 MB) start loading as soon as the visitor shows they are about to duel in
+    // it, not when the duel starts, so the opponent's first verse need not wait for them: when they
+    // pick the language, touch the duel's settings or point at the start button; and, once the page is
+    // idle, when they chose this duel language on an earlier visit or followed a link that names it
+    // (?lang=), unless the browser asks to save data. A first visit fetches none of it until then
+    // (tests/battle-bytes.spec.ts). start() loads the same data again, so a failure here is only
+    // logged: the duel reports its own.
+    const warmed = new Set<string>();
+    function warm(lang: string) {
+      if (session || !lang || warmed.has(lang)) return;
+      warmed.add(lang);
+      Promise.all([loadPack(lang), loadSound(lang)]).catch((err) => {
+        warmed.delete(lang);
+        console.warn(`[battle] the data for ${lang} could not be loaded ahead of the duel`, err);
+      });
+    }
     langSelect.addEventListener('change', () => {
       localStorage.setItem('inspired-mile-duel-lang', langSelect.value);
       loadDeck();
-      // A player who picks a language is about to duel in it: its verse data and sound data
-      // (the Japanese analyser's dictionary is 13 MB) start loading now, not when the duel starts,
-      // so the opponent's first verse need not wait for them. A page load alone fetches none.
-      if (!session) void Promise.all([loadPack(langSelect.value), loadSound(langSelect.value)]);
+      warm(langSelect.value);
     });
+    for (const type of ['pointerdown', 'keydown', 'focusin'] as const) $('duel-setup').addEventListener(type, () => warm(langSelect.value), { passive: true });
+    $('start-duel').addEventListener('pointerenter', () => warm(langSelect.value), { passive: true });
+    /** The duel language came from the visitor's own earlier choice or from the link, not from the interface language. */
+    function chosenBefore(): boolean {
+      try {
+        return !!params.get('lang') || !!localStorage.getItem('inspired-mile-duel-lang');
+      } catch {
+        return false;
+      }
+    }
+    function warmWhenIdle() {
+      if ((navigator as Navigator & { connection?: { saveData?: boolean } }).connection?.saveData || !chosenBefore()) return;
+      const go = () => ('requestIdleCallback' in window ? requestIdleCallback(() => warm(langSelect.value), { timeout: 2000 }) : setTimeout(() => warm(langSelect.value), 500));
+      if (document.readyState === 'complete') go();
+      else addEventListener('load', go, { once: true });
+    }
 
     // --- World card ---
     function renderEquipped() {
@@ -983,8 +1013,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       updateSubmit();
       mountStorageNote($('brain-status'));
       initBrain();
-      // The English pronunciation table is fetched when an English duel starts (start(), and
-      // DuelSession.beginRound), never for a visitor who does not start one or duels in another language.
+      warmWhenIdle();
+      // The English pronunciation table is fetched when an English duel is about to start (warm(), start()
+      // and DuelSession.beginRound), never for a first visitor who leaves the duel's settings alone, nor for
+      // a duel in another language.
       onLocaleChange((l) => {
         // A visitor who changes the interface language most likely wants to duel in it:
         // make it the duel's language too, where it is on offer and no duel is under way.
