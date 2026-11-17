@@ -42,7 +42,7 @@ const messages: Record<string, string> = {
   'pg.trivia.body': "Rispondi a 5 domande su Shakespeare. Con 3 o più risposte esatte guadagni una carta.",
   'pg.trivia.start': "Inizia il quiz",
   'pg.trivia.progress': "Domanda {n} / {total}",
-  'pg.trivia.correct': "{n} esatte",
+  'pg.trivia.correct': "Risposte esatte: {n}",
   'pg.trivia.complete': "Completato!",
   'pg.trivia.generating': "Generazione delle domande...",
   'pg.trivia.aiBadge': "Generata dall'IA",

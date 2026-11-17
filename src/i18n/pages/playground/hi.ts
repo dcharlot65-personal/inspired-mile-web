@@ -42,7 +42,7 @@ const messages: Record<string, string> = {
   'pg.trivia.body': "शेक्सपीयर के बारे में 5 प्रश्नों के उत्तर दें। 3 या अधिक सही उत्तर देने पर एक कार्ड मिलेगा।",
   'pg.trivia.start': "प्रश्नोत्तरी शुरू करें",
   'pg.trivia.progress': "प्रश्न {n} / {total}",
-  'pg.trivia.correct': "{n} सही",
+  'pg.trivia.correct': "सही उत्तर: {n}",
   'pg.trivia.complete': "पूरा हुआ!",
   'pg.trivia.generating': "प्रश्न बनाए जा रहे हैं...",
   'pg.trivia.aiBadge': "AI द्वारा बनाया गया",
