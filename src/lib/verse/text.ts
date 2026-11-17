@@ -1215,12 +1215,14 @@ export interface CopyMeasure {
    * whatever order the verse puts its lines in: the source line's words (`source`), how many of
    * them that verse line says in order (`said`), that verse line's words (`verse`), whether it
    * says the source line's last word (`end`: the word a rhyme stands on), and which line of the
-   * verse it is (`line`, an index into linesOf(verse); -1 when no line says any of it). A copy
+   * verse it is (`line`, an index into linesOf(verse); -1 when no line says any of it), and how many
+   * of the source line's words that verse line says in any order (`any`, each of its words used once).
+   * A copy
    * carries each line over into a line of its own, rhyme and all, with a word dropped and a few
    * put in; an answer throws words back into one line or two, and its little words seldom fall in
    * the other's order.
    */
-  carry: Array<{ source: number; said: number; verse: number; end: boolean; line: number }>;
+  carry: Array<{ source: number; said: number; verse: number; end: boolean; line: number; any: number }>;
   /** Lines of the verse (linesOf), to tell a verse that adds lines of its own from one that has only the source's. */
   verseLines: number;
 }
@@ -1375,15 +1377,29 @@ function lineCarry(verse: string, source: string, lang: string, known: Set<strin
     }),
   );
   pairs.sort((x, y) => y[0] - x[0] || x[1] - y[1] || x[2] - y[2]);
-  const out = theirs.map((s) => ({ source: s.length, said: 0, verse: 0, end: false, line: -1 }));
+  const out = theirs.map((s) => ({ source: s.length, said: 0, verse: 0, end: false, line: -1, any: 0 }));
   const taken = new Set<number>();
   for (const [said, i, j] of pairs) {
     if (out[i].said || taken.has(j)) continue;
     const last = theirs[i].at(-1)!;
-    out[i] = { source: theirs[i].length, said, verse: mine[j].ws.length, end: mine[j].ws.some((w) => eq(w, last)), line: mine[j].at };
+    out[i] = { source: theirs[i].length, said, verse: mine[j].ws.length, end: mine[j].ws.some((w) => eq(w, last)), line: mine[j].at, any: saidAnyOrder(theirs[i], mine[j].ws, eq) };
     taken.add(j);
   }
   return out;
+}
+
+/** How many of `source`'s words `verse` says in any order: each source word, in turn, takes the first unused word of `verse` that is the same word. */
+function saidAnyOrder(source: string[], verse: string[], eq: (a: string, b: string) => boolean): number {
+  const used = new Array<boolean>(verse.length).fill(false);
+  let n = 0;
+  for (const w of source) {
+    const k = verse.findIndex((v, j) => !used[j] && eq(w, v));
+    if (k >= 0) {
+      used[k] = true;
+      n++;
+    }
+  }
+  return n;
 }
 
 /** copyOf(verse, source, lang).share: how much of `verse` is taken from `source`, from 0 to 1. */

@@ -60,7 +60,10 @@ export const JUDGE_POOL = 24;
  *     swaps each line's rhyme word for another rhyme keeps the form and is still the other's verse:
  *     the third check's blocker). Or, when the verse has no line of its own beyond the other's
  *     (no more lines than it), COPY_LINE_NEAR of each line's words in order, whatever the line ends
- *     on (each line's last word swapped for any other, in a form that asks no rhyme). Words dropped
+ *     on (each line's last word swapped for any other, in a form that asks no rhyme), or
+ *     COPY_LINE_SHARE of every one of its lines, none left out (the last word and one more swapped in
+ *     every line of a haiku), or COPY_LINE_ANY of every one in any order (its inner words moved about).
+ *     Words dropped
  *     from each line, a few put in, neighbours swapped and the lines moved however the form allows
  *     leave this whole; an answer throws words back into one line or two, and its little words
  *     seldom fall in the other's order. Only for a verse of COPY_LINE_SOURCE words or more: in a
@@ -101,6 +104,13 @@ export const COPY_LINE_SOURCE = 7;
  * 0.67 none, measured in review3.test.ts.)
  */
 export const COPY_LINE_NEAR = 0.67;
+/**
+ * Share of a line's words, in any order, that the line of the verse carrying it says, in every line
+ * of a verse with no line of its own beyond the other's: the line's inner words cut in two halves that
+ * change places, and its last word swapped (the engine check's "half" family, which kept under 0.6 of
+ * a line of seven in order). Measured in review4.test.ts against every honest set.
+ */
+export const COPY_LINE_ANY = 0.8;
 /**
  * Content words of its own, beyond those that land its device and signature, that a verse
  * needs per line its form asks for before its multiplier's bonuses apply in full (scoreVerse).
@@ -400,9 +410,15 @@ export function carriesLines(c: CopyMeasure, rhymed: (l: CarriedLine, i: number)
   const need = counted.length >= 3 ? counted.length - 1 : counted.length;
   const kept = (l: CarriedLine, i: number) => l.said >= 2 && l.said >= Math.ceil(COPY_LINE_SHARE * l.source) && rhymed(l, i);
   if (counted.filter(([l, i]) => kept(l, i)).length >= need) return true;
-  // Nothing of its own beyond the other's lines: each line nearly whole, whatever it now ends on.
+  // Nothing of its own beyond the other's lines: each line nearly whole, whatever it now ends on;
+  // or every one of them carried over, a word or two of each changed or moved (a haiku or a crescendo
+  // with each line's last word and one more swapped, a word dropped and one put in, or the inner
+  // words cut in halves that change places: the engine check's copy residue, review4.test.ts).
   if (c.verseLines > c.carry.length) return false;
-  return counted.filter(([l, i]) => kept(l, i) || (l.said >= 2 && l.said >= Math.ceil(COPY_LINE_NEAR * l.source))).length >= need;
+  if (counted.filter(([l, i]) => kept(l, i) || (l.said >= 2 && l.said >= Math.ceil(COPY_LINE_NEAR * l.source))).length >= need) return true;
+  // Every one of them, none left out: COPY_LINE_SHARE of it in order, or COPY_LINE_ANY of it in any
+  // order (its inner words moved about), whatever it now ends on.
+  return counted.every(([l]) => l.said >= 2 && (l.said >= Math.ceil(COPY_LINE_SHARE * l.source) || l.any >= Math.ceil(COPY_LINE_ANY * l.source)));
 }
 
 /** Is `verse` a copy of `answered` (see COPY_THRESHOLD)? */

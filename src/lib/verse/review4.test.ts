@@ -338,3 +338,152 @@ describe('engine check, blocker 2: ad-libs and names in a phrase count as words'
   }, 900_000);
 });
 
+// --- Concern: copies in forms of short lines that ask no rhyme ---
+
+describe('engine check, concern: a copy of a haiku or a crescendo with a word or two of each line swapped or moved is void', () => {
+  /** The checker's generators (zz-e1-ex): replacement words of the same syllables, from the table's listed words or the pack. */
+  const ADJ: Record<string, string[]> = {
+    en: ['pale', 'cold', 'proud', 'faint', 'grim', 'vain', 'sly', 'stale', 'rash', 'dull'],
+    es: ['pálido', 'frío', 'vano', 'triste', 'torpe', 'gris', 'necio', 'flojo'],
+    fr: ['pâle', 'froid', 'vain', 'triste', 'gris', 'sot', 'mou', 'lourd'],
+  };
+  const pools = new Map<string, { byKey: Map<string, string[]>; all: string[] }>();
+  function poolFor(lang: string) {
+    let p = pools.get(lang);
+    if (p) return p;
+    const words = new Set<string>();
+    if (lang === 'en') {
+      for (const line of PRON.split('\n')) {
+        if (!line || line.startsWith('#')) continue;
+        const tab = line.indexOf('\t');
+        if (tab < 1) continue;
+        for (const e of line.slice(tab + 1).split(' ')) {
+          const m = /^([a-z]{3,9})(\d+)$/.exec(e);
+          if (m && !isStopWord(m[1], 'en') && lexiconHas(m[1], 'en') === true) words.add(m[1]);
+        }
+      }
+    } else {
+      const pack = getPack(lang);
+      for (const group of [pack.written, pack.spare ?? {}]) for (const vs of Object.values(group)) for (const v of vs as string[]) for (const w of wordsOf(v, lang)) if (/^\p{L}{3,}$/u.test(w)) words.add(w.toLowerCase());
+    }
+    const byKey = new Map<string, string[]>();
+    for (const w of words) {
+      const k = rhymeKey(w, lang);
+      if (k) byKey.set(k, [...(byKey.get(k) ?? []), w]);
+    }
+    p = { byKey, all: [...words].filter((w) => isContentWord(w, lang)) };
+    pools.set(lang, p);
+    return p;
+  }
+  function swapFor(w: string, lang: string, source: string, seed: number): string | null {
+    const { all } = poolFor(lang);
+    const fw = fold(w);
+    const syl = syllablesInWord(w, lang);
+    const inSource = new Set(wordsOf(source, lang).map(fold));
+    const cands = all.filter((c) => {
+      const fc = fold(c);
+      return fc !== fw && fc.slice(0, 4) !== fw.slice(0, 4) && !inSource.has(fc) && (syl === null || syllablesInWord(c, lang) === syl);
+    });
+    return cands.length ? cands[(seed * 7919 + fw.length * 31) % cands.length] : null;
+  }
+  const TOKEN = /^([^\p{L}]*)([\p{L}\p{M}'’-]+)([^\p{L}]*)$/u;
+  const cased = (orig: string, r: string) => (orig[0] === orig[0].toUpperCase() && orig[0] !== orig[0].toLowerCase() ? r[0].toUpperCase() + r.slice(1) : r);
+  function endSwap(verse: string, lang: string, seed: number): string | null {
+    const map = new Map<string, string | null>();
+    const ls = linesOf(verse);
+    let swapped = 0;
+    const out = ls.map((l) => {
+      const m = /(\p{L}[\p{L}\p{M}'’-]*)([^\p{L}]*)$/u.exec(l);
+      if (!m) return l;
+      const k = fold(m[1]);
+      if (!map.has(k)) map.set(k, swapFor(m[1], lang, verse, seed));
+      const r = map.get(k);
+      if (!r) return l;
+      swapped++;
+      return l.slice(0, m.index) + cased(m[1], r) + m[2];
+    });
+    return swapped === ls.length ? out.join('\n') : null;
+  }
+  function innerSyn(verse: string, source: string, lang: string, seed: number): string | null {
+    let n = seed;
+    let all = true;
+    const out = linesOf(verse).map((l) => {
+      const toks = l.split(' ');
+      const idx: number[] = [];
+      for (let i = 1; i < toks.length - 1; i++) {
+        const m = TOKEN.exec(toks[i]);
+        if (m && isContentWord(m[2], lang) && /^\p{L}{3,}$/u.test(m[2])) idx.push(i);
+      }
+      if (!idx.length) all = false;
+      else {
+        const at = idx[n % idx.length];
+        const m = TOKEN.exec(toks[at])!;
+        const r = swapFor(m[2], lang, source, n++);
+        if (r) toks[at] = m[1] + cased(m[2], r) + m[3];
+        else all = false;
+      }
+      return toks.join(' ');
+    });
+    return all ? out.join('\n') : null;
+  }
+  function dropAddMid(verse: string, lang: string, seed: number): string {
+    let n = seed;
+    return linesOf(verse)
+      .map((l) => {
+        const toks = l.split(' ');
+        if (toks.length >= 5) toks.splice(1 + (n++ % (toks.length - 2)), 1);
+        toks.splice(1 + (n++ % Math.max(1, toks.length - 1)), 0, ADJ[lang][n % ADJ[lang].length]);
+        return toks.join(' ');
+      })
+      .join('\n');
+  }
+  function halves(verse: string): string {
+    return linesOf(verse)
+      .map((l) => {
+        const toks = l.split(' ');
+        if (toks.length < 5) return l;
+        const inner = toks.slice(1, -1);
+        const h = Math.floor(inner.length / 2);
+        return [toks[0], ...inner.slice(h), ...inner.slice(0, h), toks[toks.length - 1]].join(' ');
+      })
+      .join('\n');
+  }
+
+  it("the checker's families in English, Spanish and French haiku and crescendo rounds (14 houses x 20 seeds in English, x 10 in the others, 3 rounds)", async () => {
+    const rows: Record<string, { n: number; voided: number; wins: number; wordplay: number }> = {};
+    for (const lang of ['en', 'es', 'fr']) {
+      for (const house of HOUSES) {
+        const deck = houseDeck(house);
+        for (let seed = 1; seed <= (lang === 'en' ? 20 : 10); seed++) {
+          const d = createDuel(seed, lang, deck);
+          for (let round = 0; round < 3; round++) {
+            const plan = d.rounds[round];
+            if (plan.formId !== 'haiku' && plan.formId !== 'crescendo') continue;
+            const opp = (await writeOpponentVerse({ duel: d, roundIndex: round, difficulty: 'player' })).verse;
+            const sw = endSwap(opp, lang, seed + round);
+            if (!sw) continue;
+            const honest = [0, 1, 2, 3, 4, 5].flatMap((k) => writtenCandidates(getForm(plan.formId), plan.ctx, seed * 31 + round + k * 101)).find((v) => v !== opp && !isCopy(v, opp, lang)) ?? null;
+            const kinds: Record<string, string | null> = { honest, syn1: innerSyn(sw, opp, lang, seed + round), dropAddMid: dropAddMid(sw, lang, seed + round), half: halves(sw) };
+            for (const [kind, v] of Object.entries(kinds)) {
+              if (!v) continue;
+              const judge = rulesJudge(v, opp, lang, lex());
+              const res = resolveRound(d, round, { charId: deck.characters[round] }, v, opp, judge);
+              const row = (rows[`${lang}:${plan.formId}:${kind}`] ??= { n: 0, voided: 0, wins: 0, wordplay: 0 });
+              row.n++;
+              if (res.player.voided) row.voided++;
+              if (res.winner === 'player') row.wins++;
+              if (judge.criteria.wordplay === 'player') row.wordplay++;
+            }
+          }
+        }
+      }
+    }
+    log('engine check: copies in haiku and crescendo rounds (rows, void, won, wordplay to the copy)', rows);
+    // Every family at most 10% won in every form and language, and nearly all of it void. Not void: a
+    // Spanish haiku whose lines are three words, two of them replaced (14 rounds, 1 won).
+    const copies = Object.entries(rows).filter(([k]) => !k.endsWith(':honest'));
+    for (const [k, r] of copies) expect([k, r.wins / r.n <= 0.1]).toEqual([k, true]);
+    expect(copies.reduce((n, [, r]) => n + r.voided, 0) / copies.reduce((n, [, r]) => n + r.n, 0)).toBeGreaterThanOrEqual(0.95);
+    for (const lang of ['en', 'es', 'fr']) expect([lang, Object.entries(rows).some(([k, r]) => k.startsWith(lang) && k.endsWith(':honest') && r.wins > 0)]).toEqual([lang, true]);
+  }, 900_000);
+});
