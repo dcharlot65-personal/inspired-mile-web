@@ -132,8 +132,9 @@ is away. The page stops asking for a quick match after `QUICK_MATCH_LIMIT_MS` (3
 so. Nobody is paired with a player who has gone: every request runs to its end
 (`backend/src/request_task.rs`, so a transaction is never cut off part-way), but a request is
 told when its client has gone (`ClientGone`), and a quick-match request then gives up its place;
-the page also leaves the queue on `pagehide` (a keepalive `DELETE /queue`), for a proxy that
-does not pass the close on. Only a handler that holds no transaction may stop early on
+the page also leaves the queue on `beforeunload` and `pagehide` (a keepalive `DELETE /queue`,
+sent BEFORE the waiting request is aborted: with the service worker in control, Chromium never
+delivered one sent after the abort), for a proxy that does not pass the close on. Only a handler that holds no transaction may stop early on
 `ClientGone`. A reconnect keeps the verse being written and the character chosen while the round is the
 same; the client keeps trying for `RECONNECT_WINDOW_MS` (60 s, longer than the 45 s grace); a
 reload, a visit to another page or a back/forward-cache restore (`pageshow`) takes the seat back

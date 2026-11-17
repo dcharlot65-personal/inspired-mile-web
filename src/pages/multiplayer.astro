@@ -900,9 +900,32 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       renderChecks();
     });
 
+    /**
+     * A page left while it waits for a quick match leaves the queue, so the next player is not
+     * paired with a closed tab. The server also gives up a request whose connection has gone
+     * (handlers.rs join_queue); this covers a proxy that does not pass the close on.
+     *
+     * The leaving request goes BEFORE the waiting one is aborted. Measured in headless Chromium
+     * with the site's service worker controlling the page and the server's own give-up turned
+     * off (2026-11-17, the leave-page test in tests/multiplayer.spec.ts): aborted first, the
+     * keepalive DELETE made at pagehide never reached the API (8 runs of 8); sent first, it did
+     * (4 of 4 at pagehide alone, 4 of 4 as here), and so it did, aborted first, with the service
+     * worker blocked (1 run). It is sent at beforeunload, while
+     * the page is whole, and at pagehide for a browser that skips beforeunload (the first that
+     * runs takes the page out of the queue, so it is sent once). This page asks nothing at
+     * beforeunload while it waits (only mid-match), so the leaving is never taken back.
+     */
+    function leaveQueueOnExit() {
+      if (!queueAbort) return;
+      void leaveQueue({ keepalive: true });
+      queueAbort.abort();
+      resetQueue();
+    }
+
     // A closed tab is a disconnect: the server gives this player time to come back, and this
     // tab takes its seat again when it loads (SEAT_KEY). Leaving mid-match is still a risk: say so.
     window.addEventListener('beforeunload', (e) => {
+      leaveQueueOnExit();
       if (start && !over) {
         e.preventDefault();
         e.returnValue = '';
@@ -910,14 +933,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     });
     window.addEventListener('pagehide', (e) => {
       client?.disconnect();
-      // A page left while it waits for a quick match leaves the queue, so the next player is
-      // not paired with a closed tab. The server also gives up a request whose connection has
-      // gone (handlers.rs join_queue); this covers a proxy that does not pass the close on.
-      if (queueAbort) {
-        queueAbort.abort();
-        resetQueue();
-        void leaveQueue({ keepalive: true });
-      }
+      leaveQueueOnExit();
       // Kept in the back/forward cache: if the page is shown again, it takes its seat again.
       if (e.persisted) {
         client = null;
