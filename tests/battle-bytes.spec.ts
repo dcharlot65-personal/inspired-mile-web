@@ -23,9 +23,15 @@ function bytes(page: Page) {
   });
   return {
     urls,
-    measure: async () => {
+    measure: async (name?: string) => {
       const all = await Promise.all(sizes);
       const largest = [...all].sort((a, b) => b[1] - a[1]).slice(0, 5).map(([u, n]) => [new URL(u).pathname.split('/').pop() || u, n]);
+      // BYTES_OUT: every path and its body bytes, for working out what they weigh compressed (scripts/compressed-bytes.mjs).
+      if (name && process.env.BYTES_OUT) {
+        const fs = await import('node:fs');
+        fs.mkdirSync(process.env.BYTES_OUT, { recursive: true });
+        fs.writeFileSync(`${process.env.BYTES_OUT}/${name}.json`, JSON.stringify(all.map(([u, n]) => [new URL(u).pathname, n])));
+      }
       return { bytes: all.reduce((t, [, n]) => t + n, 0), responses: all.length, largest };
     },
   };
@@ -53,7 +59,7 @@ test('a visitor who never starts a duel does not fetch the English table', async
   await page.goto(`${BASE}/battle?brain=rules`, { waitUntil: 'networkidle' });
   await expect(page.locator('#start-duel')).toBeEnabled();
   await page.waitForTimeout(2000);
-  console.log(`MEASURE battle-bytes no-duel ${JSON.stringify(await seen.measure())}`);
+  console.log(`MEASURE battle-bytes no-duel ${JSON.stringify(await seen.measure('no-duel'))}`);
   expect(seen.urls.filter((u) => /pron-en/.test(u))).toEqual([]);
 });
 
@@ -61,7 +67,7 @@ test('a Japanese duel does not fetch the English table', async ({ browser }) => 
   const page = await fresh(browser);
   const seen = bytes(page);
   await duel(page, 'ja');
-  console.log(`MEASURE battle-bytes ja-duel ${JSON.stringify(await seen.measure())}`);
+  console.log(`MEASURE battle-bytes ja-duel ${JSON.stringify(await seen.measure('ja-duel'))}`);
   expect(seen.urls.filter((u) => /pron-en/.test(u))).toEqual([]);
 });
 
@@ -69,6 +75,6 @@ test('an English duel fetches it', async ({ browser }) => {
   const page = await fresh(browser);
   const seen = bytes(page);
   await duel(page, 'en');
-  console.log(`MEASURE battle-bytes en-duel ${JSON.stringify(await seen.measure())}`);
+  console.log(`MEASURE battle-bytes en-duel ${JSON.stringify(await seen.measure('en-duel'))}`);
   expect(seen.urls.filter((u) => /pron-en/.test(u)).length).toBeGreaterThan(0);
 });

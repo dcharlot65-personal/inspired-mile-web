@@ -18,7 +18,7 @@ import { PACK_LANGS, getPack, loadAllPacks } from './packs';
 import { installPronunciation, loadPronunciation, pronounce } from './pronounce';
 import { allusionLexicon } from './referee';
 import { loadSound } from './sound';
-import { FULL_KNOWN_SHARE, MIN_KNOWN_SHARE, STOP_WORDS, TELLING_PER_LINE, cleanVerse, copyOf, fold, isContentWord, linesOf, segmentedWords, substance, wordParts, wordsOf } from './text';
+import { FULL_KNOWN_SHARE, MIN_KNOWN_SHARE, STOP_WORDS, TELLING_PER_LINE, cleanVerse, copyOf, fold, isContentWord, lexiconHas, linesOf, segmentedWords, substance, wordParts, wordsOf } from './text';
 
 const cp = (...c: number[]) => String.fromCodePoint(...c);
 const log = (k: string, v: unknown) => console.log(`MEASURE ${k} ${JSON.stringify(v)}`);
@@ -412,6 +412,8 @@ describe('finding 24: a copied verse, however it is dressed, is void; an answer 
     expect([COPY_COVERAGE, COPY_COVERAGE_ALONE, COPY_COVERAGE_ENDS]).toEqual([0.85, 0.9, 0.6]);
     // The checker's (P7): an answer that quotes a line and echoes two words more carries 0.8 of a short verse and is an answer.
     expect(isCopy('Thy verse is dull? So says the fool\nWhose hollow skull was never taught in school', 'Thy verse is dull\nAn empty, hollow skull', 'en')).toBe(false);
+    // A changed ending does not make a word new: endings come off until none is left ("limpings", "limping", "limp").
+    expect(copyOf('The stages are limpings, the crowds are begging', 'The stage is limping, the crowd is begging', 'en').coverage).toBe(1);
     // The same verse with two words added to each line carries all of it.
     expect(isCopy('Thy verse is truly dull\nAn empty, hollow, ancient, hollow skull', 'Thy verse is dull\nAn empty, hollow skull', 'en')).toBe(true);
     // Three thrown words with nothing else of one's own is not a verse of one's own; with one word of one's own it is an answer.
@@ -747,6 +749,15 @@ describe('finding 25: tokens laid out in a form are not a verse, and a chant can
       expect([k, row.wordplay]).toEqual([k, 0]);
     }
   }, 900_000);
+
+  it('the English lexicon is the table less what a dictionary of words does not list', () => {
+    // Names, abbreviations said as words and fragments, which the CMU table lists (SCOWL marks, "^").
+    for (const w of ['oz', 'mt', 'dr', 'ul', 'fsi', 'ed', 'ab', 'tv']) expect([w, lexiconHas(w, 'en')]).toEqual([w, false]);
+    for (const w of ['night', 'rose', 'ah', 'ox', 'thee', "o'er", 'methinks', 'juliet', 'prospero']) expect([w, lexiconHas(w, 'en')]).toEqual([w, true]);
+    // So the checker's acrostic of table tokens is not words at all, and is void before it is scored.
+    expect(substance('mt ti\noz ax\nom lu\nni ha', 'en').known).toBeLessThan(MIN_KNOWN_SHARE);
+    expect(substance('su ul ti\nms li tv\nuh te', 'en').ok).toBe(false);
+  });
 
   it("the checker's probe Q4: hand-made token verses earn no form points, and one try a round wins nothing", async () => {
     const hand: Array<[string, string, string | undefined, string[], string]> = [
