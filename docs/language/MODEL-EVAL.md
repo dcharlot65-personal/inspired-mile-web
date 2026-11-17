@@ -111,13 +111,21 @@ written as soon as it finished.
   construction. It shows the readings are symmetric and that the harness reports a split as a
   split; it does not show that a judge is any good. The pairs do that.
 - **Repeat control.** `MEVAL_CONTROL=repeat` judges the real pairs again and compares the
-  verdicts with the cells. It has **not been run** on the code as it now stands: the matrix
-  was still running when this page was written, and two evaluations must not run at once.
-  What is established instead, by comparing files (blob hashes), not by running a model:
-  - Every cell but one ran from one snapshot of the code, `f32a0aff` (commit `673338e` plus
-    the files then uncommitted); LFM2.5 350M judging English ran from `64c18105`, which differs
-    from it only in `scripts/model-eval/run.mjs`.
-  - Between that snapshot and this branch, `src/lib/verse/` (the judge's and the opponent's
+  verdicts with the cells. Run on 2026-11-17 on the Studio, from snapshot `1c5a85e7` (this
+  branch, with the site's own model runtime), for all three models in English and Thai: in all
+  six, 0 of 12 pairs got a different verdict on any criterion, and the judge points of every pair
+  were the same ([`control/repeat.*`](model-eval/control/)). The English cells had run from the
+  older snapshots, with onnxruntime-web's files from cdn.jsdelivr.net; the Thai ones from
+  `01f7ebf7`. The comparison can fail: Gemma's repeat set against LFM3's cell of the same
+  language differs in 9 of 12 pairs (English) and 11 of 12 (Thai). Judging reads next-token
+  scores and samples nothing, so this is the expected result; it shows the runtime change below
+  the game's code left the verdicts as they were, on this machine. What the code comparison
+  adds:
+  - The cells ran from three snapshots of the code: `f32a0aff` (commit `673338e` plus the files
+    then uncommitted) for most; `64c18105` for LFM2.5 350M judging English, which differs from it
+    only in `scripts/model-eval/run.mjs`; `01f7ebf7` for Vietnamese (but Gemma's writing), Thai
+    and Indonesian; and Gemma's Vietnamese writing, run again, from `1c5a85e7`.
+  - Between those snapshots and this branch, `src/lib/verse/` (the judge's and the opponent's
     prompts, the rules, the scoring), the language packs, `package.json` and
     `package-lock.json` are unchanged.
   - `src/lib/brain.ts` changed in two ways. The new offer logic (`modelsToOffer`) does not
@@ -160,7 +168,7 @@ written as soon as it finished.
     in its `judgesIn` and writes only in its `writesIn`, and nothing is asked of it elsewhere. Other
     branches change `referee.ts` and `session.ts`; a merge that drops the gate turns it red.
 
-  To run once the matrix has finished (on the build host, one run at a time):
+  To run it again (on the build host, one run at a time):
   `MEVAL_CONTROL=repeat TIERS=grand,standard,lite LANGS=en,th MEVAL_DIR=$M memguard --max-gb 24 -- node scripts/model-eval/run.mjs`.
 - **The language detector** was run on real verse before any model output: the first table
   below.
@@ -178,16 +186,18 @@ written as soon as it finished.
   "He visto sombras sin par" English; it is not used. An English line inside a verse in
   another Latin-script language is therefore caught only when it tips the whole verse.
 - **Mutations.** `node scripts/model-eval/mutate.mjs` breaks the decision code, the lists, the
-  checkers, the result files, the game's scoring, prompt and tidy-up (for the replay test) and
-  this page 29 ways, and requires the tests to go red each time. Run on the iMac Pro build host
-  at `e1c6f18`: all 29 caught. An earlier run caught 26 of 27: one mutation (the backtick taken
-  out of the tidy-up's markup rule) changed no stored draft, so the replay test was right to stay
-  green; it was replaced by one that changes 34 drafts, which the test catches (58 plays differ).
-  The re-score was also run against a changed scoring rule: the replay test went red, the
-  re-score rewrote all 18 writing cells then present, the replay test went green; against a
-  changed prompt the re-score refused and wrote nothing. `tests/duel.spec.ts`'s picker test was
-  run against two mutations of `battle.astro` (no language marked; the judging line dropped) and
-  failed on both.
+  checkers, the result files, the game's scoring, prompt and tidy-up (for the replay test), the
+  judge's prompt, a fingerprint and the gate in `referee.ts` and `session.ts` (for
+  `model-eval.judge.test.ts`), and this page, 35 ways, and requires the tests to go red each time.
+  Run on the iMac Pro build host on 2026-11-17 at `2008f79`: all 35 caught. (Earlier: 29 of 29 at
+  `e1c6f18`; before that 26 of 27, where one mutation, the backtick taken out of the tidy-up's
+  markup rule, changed no stored draft, so the replay test was right to stay green; it was
+  replaced by one that changes 34 drafts.) The re-score was also run against a changed scoring
+  rule: the replay test went red, the re-score rewrote the cells, the replay test went green.
+  `node scripts/model-eval/mutate-picker.mjs` breaks the language picker in `battle.astro` six
+  ways (the note back in the label, no `aria-describedby`, the lines joined with a space, no
+  grouping, "Written opponent" back beside the name, a language under the wrong heading); on the
+  iMac all six turned the picker tests red.
 
 ## The thresholds
 
@@ -757,8 +767,9 @@ which is stated per tool; no tool certifies tone.
   unsupported for that model, not assumed to work. `scripts/model-eval/run.mjs` skips finished
   cells and measures set-aside ones; after it, `judge-code.mjs` and the fingerprint (CLAUDE.md),
   `analyze.mjs`, `copy-lists.mjs`, then the tests.
-- **The repeat control on the current code** (above). Until it runs, that the cells still
-  describe judging rests on the code comparison, not on a measurement.
+- **The repeat control covers two languages.** It was run in English and Thai, not in all
+  sixteen; that the other judging cells still describe the game rests on the same code (the
+  fingerprints) and on those two.
 - **How well a model ranks two decent verses.** The worse verse of each pair is plainly worse:
   prose, an interface string, shuffled letters or an injection. Passing shows a judge can tell
   real verse from text that is not verse at all. In the game it compares two players' attempts,
