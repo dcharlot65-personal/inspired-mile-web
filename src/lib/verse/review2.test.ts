@@ -310,8 +310,8 @@ describe('second check, concerns', () => {
     for (const w of ['oz', 'mt', 'ul', 'ab', 'fsi']) expect([w, lexiconHas(w, 'en')]).toEqual([w, false]);
     // A word no list has counts toward the floor inside a phrase, and tells nothing.
     const v = "Shawty, I'm finna flex, my drip is too clean\nYour opps be trippin, lil bruh, you ain't never been seen";
-    // (The third check's pass also asks such a word to be spelled as English spells; this verse keeps
-    // 0.85 of its words and its full form points: FULL_KNOWN_SHARE is 0.7.)
+    // (Since the third check such a word must also be one that can be said, text.ts sayable; this
+    // verse keeps 0.85 of its words or more and its full form points: FULL_KNOWN_SHARE is 0.7.)
     expect(substance(v, 'en').known).toBeGreaterThanOrEqual(0.85);
     expect(scoreForm(getForm('couplet'), v, { lang: 'en' }).scale).toBe(1);
     expect(substance('qwer asdf zxcv\nsdfg xcvb hjkl', 'en').known).toBe(0);

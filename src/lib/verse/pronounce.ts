@@ -68,16 +68,19 @@ let trigrams: Set<string> | null = null;
 let trigramsOf: Map<string, Pronunciation> | null = null;
 
 /**
- * Every run of three letters the table's listed words hold, a word's start and end marked "^" and
- * "$" ("^th", "the", "he$"): how English spells. Null while the table is not loaded.
+ * Every run of three letters the table's words hold, apostrophes left out and a word's start and end
+ * marked "^" and "$" ("^th", "the", "he$"): how English spells, and how the names it has spell (the
+ * dictionary holds some 76,000 names that SCOWL does not list, from every language that settled in
+ * America: Mwangi's "^mw", Tlaloc's "^tl", Szczecin's "szc"). The words it only says letter by letter
+ * are left out. Null while the table is not loaded.
  */
-export function listedTrigrams(): Set<string> | null {
+export function spellingTrigrams(): Set<string> | null {
   if (!table) return null;
   if (trigramsOf !== table) {
     const t = new Set<string>();
     for (const [w, p] of table) {
-      if (p.spelled || p.unlisted) continue;
-      const s = `^${w}$`;
+      if (p.spelled) continue;
+      const s = `^${w.replace(/'/g, '')}$`;
       for (let i = 0; i + 3 <= s.length; i++) t.add(s.slice(i, i + 3));
     }
     trigrams = t;

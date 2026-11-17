@@ -23,7 +23,7 @@ import { baseLang, rulesFor } from './lang';
 import { CARD_CATALOG } from '../cards';
 import { functionKey, functionWords } from './function-words';
 import { getPack } from './packs';
-import { listedTrigrams, pronounce, pronunciationLoaded } from './pronounce';
+import { pronounce, pronunciationLoaded, spellingTrigrams } from './pronounce';
 import { soundOf, soundReady } from './sound';
 import { japaneseMorae, japaneseWords } from './sound/kana';
 import { countOverride, frenchSound, germanSound, hindiSyllablesByRule, thaiSyllables } from './sound/lookup';
@@ -770,27 +770,50 @@ export const UNLISTED_SPAN = 4;
 
 /**
  * Letters a word the lexicon lacks needs to count toward the substance floor inside a phrase (a
- * line that holds one of the language's little words): the vernacular, the stage's English and
- * names no word list keeps up with ("Shawty, I'm finna flex", "Sirrah, thou varlet"), used as words
- * in a sentence. It still tells nothing (isTellingWord asks the lexicon). Such a word must be spelled
- * as English spells (spelledAsEnglish): keyboard mash between "the" and one real word ("The qwrt
- * sdfg zxcv night", the third check's probe) is not a phrase of the language, and letter pairs, with
- * no little word between them, stay what they are.
+ * line that holds one of the language's little words): the vernacular, the stage's English, the
+ * ad-libs of a rap and names no word list keeps up with ("Shawty, I'm finna flex", "Sirrah, thou
+ * varlet", "Skrrt skrrt, brrr, the bass go boom", "Mwangi, Njeri, Wanjiru and Kamau"), used as words
+ * in a sentence. It still tells nothing (isTellingWord asks the lexicon). Such a word must be one
+ * that can be said (sayable): keyboard mash between "the" and one real word ("The qwrt sdfg zxcv
+ * night", the third check's probe) is not a phrase of the language, and letter pairs, with no little
+ * word between them, stay what they are.
  */
 export const PHRASE_SPAN = 4;
 
+/** The vowel letters of English spelling, y among them ("rhythm", "Thuy"). */
+const VOWEL_LETTER = /[aeiouy]/;
 /**
- * Is this string spelled as English spells: every run of three of its letters, its start and end
- * marked, found in a word the table lists (pronounce.ts listedTrigrams)? "finna", "shawty",
- * "varlet" and "coxcomb" are; "qwrt", "sdfg" and "asdf" are not.
+ * A word without a vowel letter that is said as one held sound, the way ad-libs and hushes are
+ * written: an m, r, s or z written two or more times, after at most a b, g, h, k, p or t or one of
+ * sk, ps, ts, bz and mh, and before at most a closing k or t ("brrr", "grrr", "skrrt", "pssst",
+ * "tsss", "bzzzt", "zzzz", "hmmm", "mhmm"); or "pfft" and "shhh" (an f or an h held). Keyboard mash
+ * ("qwrt", "sdfg", "zxcv", "hjkl") holds no sound; of the 160,000 strings of four consonants 107 have
+ * this shape. A wider first version (f, h, l, n and v held after any consonant, h closing) let one
+ * such string in about three hundred count, and the checker's MASH earned full form in 17 rounds of
+ * 280 (review3.test.ts).
  */
-function spelledAsEnglish(word: string): boolean {
-  const t = listedTrigrams();
+const HELD_SOUND = /^(?:(?:[bghkpt]|sk|ps|ts|bz|mh)?([mrsz])\1+[kt]?|p?ff+t?|shh+t?)$/;
+
+/**
+ * Can this string the lexicon lacks be said as a word? A string with a vowel letter is spelled as
+ * the pronunciation table's words and names spell (every run of three of its letters, its start and
+ * end marked, found in one of them: pronounce.ts spellingTrigrams), as written or with a letter a
+ * player drew out said once ("ayyy", "brrrap", "yuhh"); a string without one is a held sound
+ * (HELD_SOUND). "finna", "shawty", "varlet", "Mwangi", "Tlaloc", "skrrt" and "pssst" can; "qwrt",
+ * "sdfg", "asdf" and "zxcv" cannot. Apostrophes are left out ("trippin'", "y'all").
+ */
+export function sayable(word: string): boolean {
+  const t = spellingTrigrams();
   if (!t) return true;
-  const s = `^${fold(word).replace(/[^a-z']/g, '')}$`;
-  if (s.length < 3) return false;
-  for (let i = 0; i + 3 <= s.length; i++) if (!t.has(s.slice(i, i + 3))) return false;
-  return true;
+  const w = fold(word).replace(/[^a-z]/g, '');
+  if (!VOWEL_LETTER.test(w)) return HELD_SOUND.test(w);
+  for (const v of new Set([w, w.replace(/(.)\1{2,}/g, '$1$1'), w.replace(/(.)\1+/g, '$1')])) {
+    const s = `^${v}$`;
+    let ok = s.length >= 3;
+    for (let i = 0; ok && i + 3 <= s.length; i++) ok = t.has(s.slice(i, i + 3));
+    if (ok) return true;
+  }
+  return false;
 }
 
 /**
@@ -798,7 +821,7 @@ function spelledAsEnglish(word: string): boolean {
  * language has no lexicon loaded. Chinese and Japanese are measured in characters: a
  * character counts when the reading tables know it (Chinese) or when the dictionary
  * recognises the word it is part of (Japanese). `japaneseVerse`: in Japanese, whether the verse
- * the line belongs to is read as Japanese (japaneseLine on at least half of its lines).
+ * the line belongs to is read as Japanese (japaneseLine on one of its lines at least).
  */
 function knownUnits(line: string, lang: string, japaneseVerse = false): boolean[] | null {
   const b = baseLang(lang);
@@ -846,12 +869,23 @@ function knownUnits(line: string, lang: string, japaneseVerse = false): boolean[
     return flags.length === units.length ? flags : null;
   }
   if (!LEXICON_LANGS.has(b)) return null;
-  const phrase = units.some((u) => isStopWord(u, b));
+  // A phrase: the line holds a little word, or it is a roll call, every word of it written with a
+  // capital as names are ("Nkechi, Ngozi, Chiamaka, Oluwaseun"). Either way its words must be sayable;
+  // a little word is no harder to put in than a capital, so the second costs the floor nothing.
+  // The words as written (wordParts lowers their case), hyphenated ones in their parts.
+  const parts = (line.match(WORD_RE) ?? []).flatMap((w) => w.split('-')).filter((w) => letterCount(fold(w)) > 0);
+  const phrase = units.some((u) => isStopWord(u, b)) || (parts.length > 0 && parts.every(writtenAsName));
   const flags = units.map((u) => {
     const has = lexiconHas(u, b);
-    return has === false && phrase && wordSpan(u) >= PHRASE_SPAN && spelledAsEnglish(u) ? true : has;
+    return has === false && phrase && wordSpan(u) >= PHRASE_SPAN && sayable(u) ? true : has;
   });
   return flags.some((f) => f === null) ? null : (flags as boolean[]);
+}
+
+/** Does the word open with a capital letter, as a name is written? (Its first alphabetic character is uppercase.) */
+function writtenAsName(word: string): boolean {
+  const first = [...word].find((c) => /\p{Alphabetic}/u.test(c));
+  return !!first && /\p{Uppercase}/u.test(first);
 }
 
 /** A word written in katakana alone (long-vowel marks included): the script of loanwords and names. */
@@ -986,9 +1020,11 @@ export const TELLING_PER_LINE = 0.5;
 export function substance(verse: string, lang = 'en'): Substance {
   const ls = linesOf(verse);
   const perLine = ls.map((l) => unitsOf(l, lang).filter((u) => letterCount(u) > 0));
-  // A verse is read as Japanese when at least half its lines hold a word the dictionary has that is
-  // not written in katakana; then its lines of loanwords count (knownUnits).
-  const japaneseVerse = baseLang(lang) === 'ja' && ls.filter(japaneseLine).length * 2 >= ls.length;
+  // A verse is read as Japanese when one of its lines holds a word the dictionary has that is not
+  // written in katakana; then its lines of loanwords count (knownUnits). One line, not half of them:
+  // a haiku of two loanword lines and one line of Japanese (ニューヨーク / ブルックリン ブリッジ / 雨の朝)
+  // is as Japanese as one of two, and random katakana is kept out by the run rule, not by this.
+  const japaneseVerse = baseLang(lang) === 'ja' && ls.some(japaneseLine);
   const flags = ls.map((l, i) => knownUnits(l, lang, japaneseVerse) ?? perLine[i].map(() => true));
   const real = perLine.flatMap((units, i) => units.filter((_, k) => flags[i][k]));
   const all = perLine.flat();
