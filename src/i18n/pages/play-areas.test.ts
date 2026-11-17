@@ -23,6 +23,10 @@ async function area(name: string, l: string): Promise<Messages | undefined> {
   return load ? (await load()).default : undefined;
 }
 
+/** A string without its bidirectional isolates (scripts/lang-content/bidi.mjs): what the reader sees, for comparing. */
+const unbidi = (s: string) => s.replace(/[\u2066-\u2069]/gu, '');
+const unbidiAll = (m: Messages): Messages => Object.fromEntries(Object.entries(m).map(([k, v]) => [k, unbidi(v)]));
+
 const placeholders = (s: string) => [...s.matchAll(/\{([a-zA-Z_]+)\}/g)].map((m) => m[1]).sort().join(',');
 
 /** Same keys as English, nothing empty, the same {placeholders}, no stray brace. */
@@ -49,8 +53,9 @@ const NOT_A_QUOTATION = new Set(['The Scottish Play', 'Seven Ages of Man']);
 const roman = (n: number) => [['M', 1000], ['CM', 900], ['D', 500], ['CD', 400], ['C', 100], ['XC', 90], ['L', 50], ['XL', 40], ['X', 10], ['IX', 9], ['V', 5], ['IV', 4], ['I', 1]].reduce((acc, [r, v]) => { while (n >= (v as number)) { acc += r; n -= v as number; } return acc; }, '');
 
 /** A language's trivia: every question and option present, options distinct, quotations and numbers intact. */
-export function triviaProblems(l: string, m: Messages | undefined): string[] {
-  if (!m) return [`${l}: no trivia file`];
+export function triviaProblems(l: string, raw: Messages | undefined): string[] {
+  if (!raw) return [`${l}: no trivia file`];
+  const m = unbidiAll(raw);
   const out: string[] = [];
   const expected = TRIVIA_BANK.reduce((n, q) => n + 1 + q.options.length, 0);
   if (Object.keys(m).length !== expected) out.push(`${l}: ${Object.keys(m).length} trivia keys, English has ${expected}`);
@@ -86,11 +91,65 @@ async function namesTable(): Promise<{ optionKeys: OptionKeys; nameOf: NameOf; u
   return { optionKeys, nameOf: lib.nameOf, ucfirst: lib.ucfirst };
 }
 
+/** scripts/lang-content/bidi.mjs: English isolated inside right-to-left text. */
+async function bidi(): Promise<{ RTL: Set<string>; bidiProblems: (key: string, s: string) => string[]; isolateLatin: (s: string) => string; stripIsolates: (s: string) => string }> {
+  // @ts-ignore -- a build script in plain JavaScript, without type declarations
+  return import('../../../scripts/lang-content/bidi.mjs');
+}
+
+type RowProblems = (row: string[]) => string[];
+/** The rules of scripts/lang-content/evidence.mjs: is each line of names-evidence.tsv read where it says? */
+async function evidence(): Promise<{ rowProblems: RowProblems }> {
+  // @ts-ignore -- a build script in plain JavaScript, without type declarations
+  return import('../../../scripts/lang-content/evidence.mjs');
+}
+const evidenceLines = () => readFileSync(join(process.cwd(), 'scripts/lang-content/names-evidence.tsv'), 'utf8').split('\n').filter((l) => l.trim() && !l.startsWith('#')).map((l) => l.split('\t'));
+
 /** trivia-option-forms.tsv: a name option written otherwise than the names table, reviewed, with the reason. */
 function optionForms(): Set<string> {
   const rows = readFileSync(join(process.cwd(), 'scripts/lang-content/trivia-option-forms.tsv'), 'utf8').split('\n').filter((r) => r.trim() && !r.startsWith('#'));
   return new Set(rows.map((r) => r.split('\t').slice(0, 4).join('\t')));
 }
+const readTsvFile = (f: string) => readFileSync(join(process.cwd(), f), 'utf8').split('\n').filter((r) => r.trim() && !r.startsWith('#')).map((r) => r.split('\t'));
+/** The places three King Lear characters are named after: their Wikidata labels (fetch-places.py). */
+const PLACE_OF: Record<string, string> = { 'x.kent': 'l.kent', 'x.gloucester': 'l.gloucester', 'x.cornwall': 'l.cornwall' };
+type SourcesFor = (key: string, l: string) => string[];
+/** Every form a source gives an entity in a language: the names table, Wikidata labels and aliases, names-evidence.tsv, the place it is named after. */
+async function sourcesTable(): Promise<SourcesFor> {
+  // @ts-ignore -- a build script in plain JavaScript, without type declarations
+  const lib = await import('../../../scripts/lang-content/lib.mjs');
+  const evidence = evidenceLines();
+  const places = JSON.parse(readFileSync(join(process.cwd(), 'scripts/lang-content/wikidata-places.json'), 'utf8')).entities;
+  return (key, l) => {
+    const out = evidence.filter((r) => r[0] === key && r[1] === l).map((r) => r[2]);
+    if (lib.entities[key]) out.push(lib.nameOf(key, l).name, ...lib.sourcesOf(key, l).map((x: { value: string }) => x.value));
+    const place = places[PLACE_OF[key]];
+    for (const c of place ? (l === 'zh' ? ['zh-hans', 'zh-cn', 'zh'] : l === 'pt' ? ['pt-br', 'pt'] : [l]) : []) out.push(...(place.labels[c] ? [place.labels[c]] : []), ...(place.aliases[c] ?? []));
+    return out;
+  };
+}
+
+/**
+ * A name option written by hand in a language's trivia (trivia-option-handnames.tsv): each name in it is a
+ * form a source gives for that character in that language, or the English name. A stem is enough in Polish
+ * and Russian (Montekich, of Monteki); any other form must be listed in trivia-option-forms.tsv with its reason.
+ */
+export function handNameProblems(l: string, m: Messages, rows: string[][], sourcesFor: SourcesFor, forms = optionForms()): string[] {
+  const out: string[] = [];
+  const stem = (w: string) => (['ru', 'pl'].includes(l) && w.length > 4 ? w.slice(0, Math.ceil(w.length * 0.7)) : w);
+  for (const [n, i, keys, names] of rows) {
+    const have = unbidi(m[`trivia.${n}.o${i}`] ?? '');
+    if (forms.has([l, n, i, have].join('\t'))) continue;
+    const low = have.toLocaleLowerCase(l);
+    const english = names.split('|');
+    keys.split(',').forEach((key, j) => {
+      const sources = [english[j], ...sourcesFor(key, l)].filter(Boolean);
+      if (!sources.some((f) => low.includes(stem(f.toLocaleLowerCase(l))))) out.push(`${l}: question ${n} option ${i} is "${have}", and no source gives ${key} so (${[...new Set(sources)].join(' / ')})`);
+    });
+  }
+  return out;
+}
+
 const TITLE_WORDS = /^(?:King|Queen|Prince|Princess|Duke|Lord|Lady|Sir|Captain|Friar|Sonnet|Sonnets|The|Saint|Earl)$/;
 
 /**
@@ -108,7 +167,7 @@ export function nameOptionProblems(l: string, m: Messages, optionKeys: OptionKey
     const ent = optionKeys[n]?.[i];
     if (!ent) return;
     const want = ucfirst(nameOf(ent.key, l, ent.which).name);
-    const have = m[`trivia.${n}.o${i}`] ?? '';
+    const have = unbidi(m[`trivia.${n}.o${i}`] ?? '');
     const core = want.split(/\s+/).filter((w) => !TITLE_WORDS.test(w)).join(' ');
     // An English name in brackets beside a translation is a gloss: it does not make the translation a source's.
     const shown = have.replace(/\s*[(（][^)）]*[)）]\s*$/u, '');
@@ -119,7 +178,8 @@ export function nameOptionProblems(l: string, m: Messages, optionKeys: OptionKey
 }
 
 const NOT_LATIN = ['ru', 'ar', 'hi', 'zh', 'ja', 'ko', 'th'];
-const inLatin = (s: string) => /^[\p{Script=Latin}\p{N}\p{P}\p{S}\p{Zs}]+$/u.test(s.replace(/\s*[(（][^)）]*[)）]/gu, '') || s);
+/** The script of an option's names: a gloss in brackets and the word joining two names (और, و, と, 와, และ, 和) left out. */
+const inLatin = (s: string) => /^[\p{Script=Latin}\p{N}\p{P}\p{S}\p{Zs}]+$/u.test((s.replace(/\s*[(（][^)）]*[)）]/gu, '') || s).replace(/\s+(?:और|و|และ)\s+|(?<=\p{Script=Latin})(?:와|과|と|和)(?=\s|\p{Script=Latin})/gu, ' '));
 
 /**
  * A name with no source in a script stays in Latin letters; a famous one has a label. If the right
@@ -129,7 +189,7 @@ const inLatin = (s: string) => /^[\p{Script=Latin}\p{N}\p{P}\p{S}\p{Zs}]+$/u.tes
 export function scriptTells(l: string, m: Messages): string[] {
   const out: string[] = [];
   TRIVIA_BANK.forEach((q, n) => {
-    const latin = q.options.map((_, i) => inLatin(m[`trivia.${n}.o${i}`] ?? ''));
+    const latin = q.options.map((_, i) => inLatin(unbidi(m[`trivia.${n}.o${i}`] ?? '')));
     if (latin.filter((x) => x === latin[q.correctIndex]).length === 1) out.push(`${l}: question ${n}: the right answer is the only option ${latin[q.correctIndex] ? 'in Latin letters' : 'in its script'}`);
   });
   return out;
@@ -230,19 +290,93 @@ export function europeanPortuguese(m: Messages): string[] {
  * Read over the whole string, quoted speech included: a character speaking to the player is
  * speaking to someone of either sex.
  */
-const GENDERED_YOU: Record<string, RegExp> = {
-  pl: /(?<!\p{L})\p{L}+(?:łeś|łaś)(?!\p{L})/u,
-  ru: /(?<!\p{L})[Тт]ы(?!\p{L})(?:\s+\p{L}+){0,3}?\s+\p{L}+(?:ал|ял|ил|ел|ла)(?!\p{L})/u,
+/**
+ * Besides the past tense: the words a character calls the player by. The English says "Young one",
+ * "stranger" and "mortal"; where the language's word for these is male or female (forastero,
+ * étranger, mortel, straniero, Fremder, Sterblicher, przybyszu, śmiertelniku, чужестранец, смертный),
+ * the play text uses one of common gender (visitante, enfant des hommes, viandante, Fremdling,
+ * Menschenkind, ludzkie dziecię, дитя человеческое) or none. Hindi marks the gender of तुम on the verb
+ * (ढूँढ रहे हो / रही हो, गा सकते हो / सकती हो, चले आए / आईं). These lists are the forms found by reading
+ * every line that speaks to the player on 2026-11-16, not a grammar of the language.
+ */
+const vocative = (...w: string[]) => new RegExp(`(?<![\\p{L}\\p{M}])(?:${w.join('|')})(?![\\p{L}\\p{M}])`, 'iu');
+const GENDERED_YOU: Record<string, RegExp[]> = {
+  pl: [/(?<!\p{L})\p{L}+(?:łeś|łaś)(?!\p{L})/u, vocative('przybyszu', 'przybyszko', 'śmiertelniku', 'śmiertelniczko', 'nieznajomy', 'nieznajoma')],
+  ru: [/(?<!\p{L})[Тт]ы(?!\p{L})(?:\s+\p{L}+){0,3}?\s+\p{L}+(?:ал|ял|ил|ел|ла)(?!\p{L})/u, vocative('чужестранец', 'чужестранка', 'смертный', 'смертная', 'незнакомец', 'незнакомка')],
+  es: [vocative('jovencit[oa]', 'foraster[oa]', 'extranjer[oa]', 'muchach[oa]', 'invitad[oa]')],
+  fr: [vocative('mon petit', 'ma petite', 'étranger', 'étrangère', 'mortel', 'mortelle', 'invitée?', 'rusée?')],
+  it: [vocative('stranier[oa]', 'forestier[oa]', 'invitat[oa]')],
+  pt: [vocative('meu jovem', 'minha jovem', 'forasteir[oa]', 'convidad[oa]', 'espert[oa]', 'eu [oa] levarei')],
+  de: [vocative('junges Ding', 'Fremder', 'Sterblicher')],
+  hi: [/(?:रहे|सकते|चुके|गए|आए) हो(?![\p{L}\p{M}])/u, /(?:चले|नाचते) आए(?![\p{L}\p{M}])/u],
+  ar: [vocative('يا فتى', 'يا فتاة')],
 };
 export function genderedYou(l: string, m: Messages): string[] {
-  const rx = GENDERED_YOU[l];
-  if (!rx) return [];
   const out: string[] = [];
-  for (const [k, v] of Object.entries(m)) {
+  for (const rx of GENDERED_YOU[l] ?? []) for (const [k, v] of Object.entries(m)) {
     const hit = v.match(rx);
     if (hit) out.push(`${l}: ${k} says "${hit[0]}", which makes the player a man or a woman`);
   }
   return out;
+}
+
+/**
+ * The counts these areas show, and every value each can take, as the pages fill them in: the trivia
+ * score in a round of five (playground.astro), the story's progress over its encounters, and the
+ * streak and event countdowns (streaks.ts, weekly-events.ts).
+ */
+const STORY_TOTAL = ACTS.reduce((n, a) => n + a.encounters.length, 0);
+const upTo = (n: number, from = 0) => Array.from({ length: n - from + 1 }, (_, i) => from + i);
+export const COUNTS: Record<string, Record<string, number[]>> = {
+  'pg.trivia.correct': { n: upTo(5) },
+  'story.progress': { done: upTo(STORY_TOTAL), total: [STORY_TOTAL] },
+  'countdown.hm': { h: upTo(23, 1), m: upTo(59) },
+  'countdown.m': { m: upTo(59) },
+};
+const UNIT: Record<string, string> = { h: 'hour', m: 'minute' };
+
+/** CLDR's short and narrow words for a unit in a language, where CLDR writes one form for every one of these counts. */
+export function unitWords(l: string, unit: string, values: number[]): string[] {
+  return (['short', 'narrow'] as const).flatMap((unitDisplay) => {
+    const f = new Intl.NumberFormat(l, { style: 'unit', unit, unitDisplay });
+    const forms = new Set(values.map((v) => f.formatToParts(v).filter((p) => p.type === 'unit').map((p) => p.value).join('').trim()));
+    return forms.size === 1 ? [...forms] : [];
+  });
+}
+
+/**
+ * A count is never followed by a word that changes with it. Where the values a count takes fall in
+ * more than one of the language's CLDR plural categories (Intl.PluralRules: Spanish 1 is "one",
+ * Arabic 0, 1 and 2 are "zero", "one" and "two"), one form of a noun or adjective after it is wrong
+ * for some of them ("1 aciertos", "2 إجابات صحيحة"). Such a string puts the count after a label
+ * ("Aciertos: {n}"). A unit is allowed after it only where it is CLDR's own unit word and CLDR
+ * writes it the same for every value ("{h} ч", "{m} min").
+ */
+export function countProblems(l: string, m: Messages): string[] {
+  const out: string[] = [];
+  const rules = new Intl.PluralRules(l);
+  for (const [k, vars] of Object.entries(COUNTS)) {
+    const s = m[k];
+    if (s === undefined) continue;
+    for (const [p, values] of Object.entries(vars)) {
+      const cats = [...new Set(values.map((v) => rules.select(v)))];
+      if (cats.length < 2) continue;
+      const at = s.indexOf(`{${p}}`);
+      if (at < 0) continue;
+      const word = s.slice(at + p.length + 2).trimStart().match(/^[\p{L}\p{M}][\p{L}\p{M}.]*/u)?.[0];
+      if (!word || (UNIT[p] && unitWords(l, UNIT[p], values).includes(word))) continue;
+      out.push(`${l}: ${k} writes "{${p}} ${word}", but {${p}} takes values in the plural categories ${cats.join(', ')}`);
+    }
+  }
+  return out;
+}
+
+/** Chinese and Japanese put no space between two of their own characters (one stood after a name in zh trivia 100 and 135). */
+const CJK = '[\\p{Script=Han}\\p{Script=Hiragana}\\p{Script=Katakana}ー]';
+export function cjkSpaceProblems(l: string, m: Messages): string[] {
+  if (l !== 'zh' && l !== 'ja') return [];
+  const rx = new RegExp(`${CJK} +${CJK}`, 'u');
+  return Object.entries(m).flatMap(([k, v]) => { const hit = v.match(rx); return hit ? [`${l}: ${k} has a space inside "${hit[0]}"`] : []; });
 }
 
 /** Strings a language writes exactly as English does. Each is a decision, not an oversight. */
@@ -301,9 +435,35 @@ describe('page areas of the play content', () => {
     expect(problems).toEqual([]);
   });
 
-  it('assumes no gender for the player in Polish and Russian', async () => {
+  it('assumes no gender for the player (past tenses, vocatives, Hindi verbs)', async () => {
     const problems: string[] = [];
-    for (const l of ['pl', 'ru']) for (const name of ['playground', 'story']) problems.push(...genderedYou(l, (await area(name, l))!));
+    for (const l of Object.keys(GENDERED_YOU)) for (const name of ['playground', 'story']) problems.push(...genderedYou(l, (await area(name, l))!));
+    expect(problems).toEqual([]);
+  });
+
+  it('in Arabic, English inside a sentence is a bidirectional isolate, so its punctuation stays at its end', async () => {
+    const { RTL, bidiProblems } = await bidi();
+    const problems: string[] = [];
+    for (const l of RTL) for (const name of ['playground', 'story', 'trivia', 'challenges']) {
+      const m = await area(name, l);
+      for (const [k, v] of Object.entries(m ?? {})) problems.push(...bidiProblems(`${l} ${k}`, v));
+    }
+    expect(problems).toEqual([]);
+  });
+
+  it('Chinese and Japanese have no space between two of their characters', async () => {
+    const problems: string[] = [];
+    // Trivia questions only: an option that is a name is its source's ("ヘンリー四世 第1部" is the label and the article title).
+    for (const l of ['zh', 'ja']) for (const name of ['playground', 'story', 'trivia']) {
+      const m = (await area(name, l))!;
+      problems.push(...cjkSpaceProblems(l, name === 'trivia' ? Object.fromEntries(Object.entries(m).filter(([k]) => k.endsWith('.q'))) : m));
+    }
+    expect(problems).toEqual([]);
+  });
+
+  it('a count is followed by no word that changes with it (CLDR plural categories)', async () => {
+    const problems: string[] = [];
+    for (const l of LOCALES) for (const name of ['playground', 'story']) problems.push(...countProblems(l, (await area(name, l))!));
     expect(problems).toEqual([]);
   });
 
@@ -353,6 +513,21 @@ describe('trivia in every language', () => {
     // And the right answer is one of them often enough for this to matter.
     const named = TRIVIA_BANK.filter((q, n) => optionKeys[n][q.correctIndex]).length;
     expect(named).toBeGreaterThan(80);
+  });
+
+  it("every name read in a Wikipedia article was read in its play's own article, beside the character and not somebody else", async () => {
+    const { rowProblems } = await evidence();
+    const problems = evidenceLines().flatMap((row) => rowProblems(row).map((p) => `${row.slice(0, 3).join(' ')}: ${p}`));
+    expect(problems).toEqual([]);
+  });
+
+  it('a name option written by hand is a form a source gives, or the English name (trivia-option-handnames.tsv)', async () => {
+    const sourcesFor = await sourcesTable();
+    const rows = readTsvFile('scripts/lang-content/trivia-option-handnames.tsv');
+    expect(rows.length).toBeGreaterThan(45);
+    const problems: string[] = [];
+    for (const l of LOCALES) if (l !== 'en') problems.push(...handNameProblems(l, (await area('trivia', l))!, rows, sourcesFor));
+    expect(problems).toEqual([]);
   });
 
   it('in a language not written in Latin letters, the right answer is never the one option in its script', async () => {
@@ -454,12 +629,28 @@ describe('these checks can fail', () => {
     expect(nameOptionProblems('ja', { ...ja, 'trivia.1.o0': 'ハムレット' }, optionKeys, nameOf, ucfirst)[0]).toContain('the correct answer');
   });
 
+  it('handNameProblems objects to the forms the checker and this pass found unsourced, and not to sourced ones', async () => {
+    const sourcesFor = await sourcesTable();
+    const rows = readTsvFile('scripts/lang-content/trivia-option-handnames.tsv');
+    const ja = (await area('trivia', 'ja'))!, es = (await area('trivia', 'es'))!, hi = (await area('trivia', 'hi'))!;
+    expect(handNameProblems('ja', ja, rows, sourcesFor)).toEqual([]);
+    // As shipped at d6ee2eb: アーロン (read beside the dramatist Aaron Hill), Escalo (es.wikipedia says Escala), ग्लॉस्टर (hi.wikipedia says ग्लस्टर).
+    expect(handNameProblems('ja', { ...ja, 'trivia.50.o3': 'アーロン' }, rows, sourcesFor).length).toBe(1);
+    expect(handNameProblems('es', { ...es, 'trivia.33.o0': 'Escalo' }, rows, sourcesFor).length).toBe(1);
+    expect(handNameProblems('hi', { ...hi, 'trivia.131.o1': 'ग्लॉस्टर के अर्ल' }, rows, sourcesFor).length).toBe(1);
+    expect(handNameProblems('es', { ...es, 'trivia.33.o0': 'Escalus' }, rows, sourcesFor)).toEqual([]); // the English name
+  });
+
   it('scriptTells objects to a right answer that is the one option in Thai, or the one in Latin letters', async () => {
     const th = (await area('trivia', 'th'))!;
     expect(scriptTells('th', th)).toEqual([]);
     // Question 12 (Macbeth is the right answer): the Thai label for him alone, the others in Latin letters.
     expect(scriptTells('th', { ...th, 'trivia.12.o0': 'แม็คเบ็ธ', 'trivia.12.o1': 'Duncan', 'trivia.12.o2': 'Malcolm', 'trivia.12.o3': 'Banquo' })).toEqual(['th: question 12: the right answer is the only option in its script']);
     expect(scriptTells('th', { ...th, 'trivia.12.o0': 'Macbeth', 'trivia.12.o1': 'ดันแคน', 'trivia.12.o2': 'มัลคอล์ม', 'trivia.12.o3': 'แบงโคว' })).toEqual(['th: question 12: the right answer is the only option in Latin letters']);
+    // Two names joined by a word of the language: the names' script is what shows.
+    const hi = (await area('trivia', 'hi'))!;
+    expect(scriptTells('hi', hi)).toEqual([]);
+    expect(scriptTells('hi', { ...hi, 'trivia.83.o0': 'ब्रूटस और कैसियस' })).toEqual(['hi: question 83: the right answer is the only option in its script']);
   });
 
   it('challengeProblems objects to a word that is not in the line, a blank too many, a missing translator', () => {
@@ -487,6 +678,38 @@ describe('these checks can fail', () => {
     expect(addressProblems('de', { k: 'Sie lachen. Du bist dran.' })).toEqual([]); // "Sie" opening a sentence is "they"
   });
 
+  it('bidiProblems objects to English left bare in Arabic, to an isolate left open, and not to an isolated line', async () => {
+    const { bidiProblems, isolateLatin } = await bidi();
+    const bare = 'خادم يعترض طريقك. "Do you bite your thumb at me, sir?"';
+    expect(bidiProblems('k', bare).length).toBe(1);
+    const fixed = isolateLatin(bare);
+    expect(fixed).toBe('خادم يعترض طريقك. "\u2068Do you bite your thumb at me, sir?\u2069"');
+    expect(bidiProblems('k', fixed)).toEqual([]);
+    expect(bidiProblems('k', fixed.replace('\u2069', '')).length).toBe(2); // opened, never closed
+    expect(bidiProblems('k', 'من يقول «\u2068Et tu, Brute?\u2069» وهو يموت؟')).toEqual([]);
+    expect(bidiProblems('k', 'شخصية \u200EPuck؟').length).toBe(2); // a left-to-right mark is not an isolate
+    expect(isolateLatin('السؤال {n} / {total}')).toBe('السؤال {n} / {total}'); // a placeholder's name is not text
+  });
+
+  it('cjkSpaceProblems objects to the space zh trivia 100 had after a name, and not to one beside a number or Latin letters', () => {
+    expect(cjkSpaceProblems('zh', { k: '在《冬天的故事》中，珀迪塔 是哪个王国的公主？' }).length).toBe(1);
+    expect(cjkSpaceProblems('zh', { k: '在《冬天的故事》中，珀迪塔是哪个王国的公主？' })).toEqual([]);
+    expect(cjkSpaceProblems('zh', { k: '{h} 小时 {m} 分钟', j: '穿越 5 幕', i: '在 Hamlet 中' })).toEqual([]);
+  });
+
+  it('countProblems objects to a noun after a count whose values take two plural forms, and not to a label or a CLDR unit', () => {
+    // The checker's cases: Spanish 1 is "one", French 0 and 1 are "one", Arabic 0, 1, 2 are zero, one, two.
+    expect(countProblems('es', { 'pg.trivia.correct': '{n} aciertos' }).length).toBe(1);
+    expect(countProblems('fr', { 'pg.trivia.correct': '{n} bonnes réponses' }).length).toBe(1);
+    expect(countProblems('ar', { 'pg.trivia.correct': '{n} إجابات صحيحة' }).length).toBe(1);
+    expect(countProblems('es', { 'pg.trivia.correct': 'Aciertos: {n}' })).toEqual([]);
+    expect(countProblems('ja', { 'pg.trivia.correct': '正解{n}問' })).toEqual([]); // Japanese has one category
+    expect(countProblems('ru', { 'countdown.hm': '{h} ч {m} мин' })).toEqual([]);
+    expect(countProblems('ru', { 'countdown.hm': '{h} часов {m} минут' }).length).toBe(2);
+    expect(countProblems('pl', { 'story.progress': 'Ukończone spotkania: {done} / {total}' })).toEqual([]);
+    expect(countProblems('pl', { 'story.progress': '{done} spotkań z {total}' }).length).toBe(1);
+  });
+
   it('europeanPortuguese objects to the European spellings this branch replaced, and not to Brazilian ones', () => {
     for (const s of ['Marco António', 'Polónio', 'na Boémia', 'Octávia', 'no Egipto', 'o ecrã']) expect([s, europeanPortuguese({ k: s }).length]).toEqual([s, 1]);
     for (const s of ['Marco Antônio', 'Polônio', 'na Boêmia', 'Otávia', 'no Egito', 'a tela', 'Desdêmona']) expect([s, europeanPortuguese({ k: s })]).toEqual([s, []]);
@@ -500,6 +723,31 @@ describe('these checks can fail', () => {
     expect(genderedYou('ru', { k: '«Ты незваным протанцевал по моим владениям.»' }).length).toBe(1);
     expect(genderedYou('ru', { k: '«Ты без приглашения танцуешь по моим владениям.» Твоя роль сыграна хорошо.' })).toEqual([]);
     expect(genderedYou('de', { k: 'Du hast gut gespielt.' })).toEqual([]); // German past tense has no gender
+    // The checker's lines (story 1-2 at d6ee2eb) and the vocatives read after it.
+    expect(genderedYou('es', { k: '«Jovencito, si buscas a Romeo…»' }).length).toBe(1);
+    expect(genderedYou('pt', { k: '“Meu jovem, se procura Romeu…”' }).length).toBe(1);
+    expect(genderedYou('fr', { k: '« Mon petit, si tu cherches Roméo… »' }).length).toBe(1);
+    expect(genderedYou('de', { k: '„Junges Ding, wenn du Romeo suchst…“' }).length).toBe(1);
+    expect(genderedYou('hi', { k: '"बच्चे, अगर तुम रोमियो को ढूँढ रहे हो"' }).length).toBe(1);
+    expect(genderedYou('de', { k: '„Fang mich, Sterblicher.“' }).length).toBe(1);
+    expect(genderedYou('ru', { k: '«Убеди меня, чужестранец.»' }).length).toBe(1);
+    expect(genderedYou('es', { k: '«Criatura, si buscas a Romeo…» «Convénceme, visitante.»' })).toEqual([]);
+    expect(genderedYou('de', { k: '„Kind, wenn du Romeo suchst…“ „Fang mich, Menschenkind.“' })).toEqual([]);
+    expect(genderedYou('hi', { k: '"बच्चे, रोमियो की तलाश हो तो पहले साबित करो"' })).toEqual([]);
+  });
+
+  it("evidence's rowProblems objects to each line the checker found naming somebody else, and to a namesake's article", async () => {
+    const { rowProblems } = await evidence();
+    // The six lines as they were committed at d6ee2eb: an actress, two directors, Laurence Olivier, Aaron Hill, and
+    // Measure for Measure's Escalus given for the Prince of Verona.
+    const bad = readFileSync(join(process.cwd(), 'scripts/lang-content/qa/evidence-known-bad.tsv'), 'utf8').split('\n').filter(Boolean).map((l) => l.split('\t'));
+    expect(bad.length).toBe(6);
+    for (const row of bad) expect([row.slice(0, 3).join(' '), rowProblems(row).length > 0]).toEqual([row.slice(0, 3).join(' '), true]);
+    // The same name read in the play's own cast list passes; moved to another play's article, it does not.
+    const kent = ['x.kent', 'ru', 'Кент', 'https://ru.wikipedia.org/w/index.php?title=%D0%9A%D0%BE%D1%80%D0%BE%D0%BB%D1%8C_%D0%9B%D0%B8%D1%80&oldid=155321368', '2026-11-16', '1 mentions', 'т её наследство пополам между старшими дочерьми. Граф Глостер и граф Кент замечают, что таким образом королевство'];
+    expect(rowProblems(kent)).toEqual([]);
+    expect(rowProblems([...kent.slice(0, 3), kent[3].replace('%D0%9A%D0%BE%D1%80%D0%BE%D0%BB%D1%8C_%D0%9B%D0%B8%D1%80', '%D0%91%D1%83%D1%80%D1%8F'), ...kent.slice(4)]).length).toBe(1);
+    expect(rowProblems([...kent.slice(0, 6), 'режиссёр Дон Кент, в главной роли']).length).toBe(1);
   });
 
   it('triviaBankFrom falls back to English for a question a language lacks, and no further', () => {
