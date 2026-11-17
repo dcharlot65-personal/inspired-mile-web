@@ -702,8 +702,11 @@ function loneLetter(unit: string, lang: string): boolean {
 // English the CMU table (./pronounce) less what a dictionary of words does not list (its
 // names, abbreviations and fragments, marked from SCOWL when the table is built:
 // Pronunciation.unlisted), the readings of Chinese characters (Unihan and CC-CEDICT,
-// ./sound), and kuromoji's dictionary for Japanese, where a word in katakana counts too (the
-// script loanwords are written in, which a dictionary cannot keep up with: スマホ, バズる).
+// ./sound), and kuromoji's dictionary for Japanese, where a word in katakana counts when a word of
+// the dictionary's written otherwise stands beside it, whether the dictionary has the katakana word
+// or not (the script loanwords are written in, which a dictionary cannot keep up with: スマホの,
+// インフルエンサーは), and not among other katakana ("ヤラナ セスルリ", the second check's probe).
+// In English a word the table lacks counts toward the floor inside a phrase (PHRASE_SPAN).
 // Nothing extra is fetched: these are the data the duel's rhyme and syllable rules already loaded. The other tables are not
 // lexicons: Spanish, Italian, Portuguese, Hindi and Indonesian list only the words their
 // spelling rule gets wrong, and the French, German and Russian tables, measured against the
@@ -749,11 +752,31 @@ export function lexiconHas(word: string, lang = 'en'): boolean | null {
   if (gameWords(b).has(w)) return true;
   const parts = w.split('-').filter((part) => HAS_LETTER.test(part));
   if (parts.length > 1) return parts.every((part) => lexiconHas(part, b) === true);
-  // An abbreviation the dictionary only spells out ("cd", "tv") is not a word, nor a name, an
-  // abbreviation said as a word or a fragment that a dictionary of words does not list ("dr", "ul").
+  // An abbreviation the dictionary only spells out ("cd", "tv") is not a word, nor a string of two or
+  // three letters that a dictionary of words does not list: an abbreviation said as a word or a
+  // fragment ("dr", "oz", "ul"). Longer strings the table has are words though SCOWL lacks them:
+  // names (Toussaint, Haiti, Antonio), the stage's old forms, words newer than its lists.
   const p = pronounce(w);
-  return !!p && !p.spelled && !p.unlisted;
+  return !!p && !p.spelled && (!p.unlisted || wordSpan(w) >= UNLISTED_SPAN);
 }
+
+/**
+ * Letters a string of the English table needs to count as a word when SCOWL does not list it
+ * (lexiconHas). Below it the unlisted strings are abbreviations and fragments (of the table's 147
+ * strings of two letters SCOWL lists 37); from it, names and old or new words (the second check's
+ * lists: Toussaint, Christophe, Haiti, Antonio, Regan). Measured in review.test.ts.
+ */
+export const UNLISTED_SPAN = 4;
+
+/**
+ * Letters a word the lexicon lacks needs to count toward the substance floor inside a phrase (a
+ * line that holds one of the language's little words): the vernacular, the stage's English and
+ * names no word list keeps up with ("Shawty, I'm finna flex", "Prithee, sirrah"), used as words in
+ * a sentence. It still tells nothing (isTellingWord asks the lexicon): a phrase of made-up words
+ * keeps the floor and earns no form points. Keyboard mash and letter pairs, with no little word
+ * between them, stay what they are.
+ */
+export const PHRASE_SPAN = 4;
 
 /**
  * For each unit of a line (unitsOf), whether it is a word of the language: null where the
@@ -772,17 +795,29 @@ function knownUnits(line: string, lang: string): boolean[] | null {
     const words = japaneseWords(line);
     if (!words) return null;
     const flags: boolean[] = [];
-    // A word in katakana is a loanword or a name, written in the script for them: a word.
-    for (const w of words) for (const ch of lettersOf(hiragana(fold(w.surface)))) flags.push(w.known || KATAKANA_WORD.test(w.surface));
+    // A word in katakana is a loanword or a name when the sentence uses it as one: a word of the
+    // dictionary's written otherwise (a particle, an auxiliary, a verb, a noun in kanji) stands beside
+    // it (スマホの, インフルエンサーは, ガチで, …のフロー), whether the dictionary has the katakana word
+    // or not; or the dictionary has it and it is the whole line (サクラ). A run of katakana among other
+    // katakana is letters, not words, even where the dictionary finds one of its nouns inside (ココア, テツ).
+    const anchor = (w: (typeof words)[number] | undefined) => !!w && w.known && !KATAKANA_ONLY.test(w.surface);
+    words.forEach((w, i) => {
+      const word = KATAKANA_ONLY.test(w.surface) ? anchor(words[i - 1]) || anchor(words[i + 1]) || (w.known && words.length === 1) : w.known;
+      flags.push(...lettersOf(hiragana(fold(w.surface))).map(() => word));
+    });
     return flags.length === units.length ? flags : null;
   }
   if (!LEXICON_LANGS.has(b)) return null;
-  const flags = units.map((u) => lexiconHas(u, b));
+  const phrase = units.some((u) => isStopWord(u, b));
+  const flags = units.map((u) => {
+    const has = lexiconHas(u, b);
+    return has === false && phrase && wordSpan(u) >= PHRASE_SPAN ? true : has;
+  });
   return flags.some((f) => f === null) ? null : (flags as boolean[]);
 }
 
-/** A word of two katakana or more (a long-vowel mark may follow one): the script of loanwords. */
-const KATAKANA_WORD = /^(?:[ァ-ヺ][ァ-ヺー]+|[ァ-ヺ]ー+)$/u;
+/** A word written in katakana alone (long-vowel marks included): the script of loanwords and names. */
+const KATAKANA_ONLY = /^[ァ-ヺー]+$/u;
 
 /** Chinese particles that make a word a modifier or mark its aspect: "我的" is "my", "不过" is "but". */
 const ZH_PARTICLE_END = /[的地得了着过]$/u;
@@ -814,25 +849,42 @@ export function isContentWord(word: string, lang = 'en'): boolean {
 /**
  * A word that tells: one that carries meaning (isContentWord) and is a word of the language where
  * it has a lexicon (lexiconHas). In English it must also be long enough to tell (lang.ts `content`,
- * four letters, as the devices count a strong word), because the English list of little words is
- * short and made by hand: "the", "ab", "ed" and "pig" do not tell; "rise", "night" and "Romeo" do.
+ * four letters, as the devices count a strong word), or SHORT_TELLING letters inside a phrase
+ * (`inPhrase`: its line holds a little word), because the English list of little words is short and
+ * made by hand: "the", "ab" and "ed" never tell, "pig" tells in "the pig is fat" and not in "gum bet
+ * pig"; "rise", "night" and "Romeo" always do.
  * The other languages' lists (stopwords-iso) are long enough to say alone what does not tell; a
  * length rule there would take honest words ("मंच", stage, is two letters and two marks).
  */
-export function isTellingWord(word: string, lang = 'en'): boolean {
+export function isTellingWord(word: string, lang = 'en', inPhrase = false): boolean {
   if (!isContentWord(word, lang) || lexiconHas(word, lang) === false) return false;
-  return baseLang(lang) !== 'en' || wordSpan(word) >= rulesFor(lang).content;
+  if (baseLang(lang) !== 'en') return true;
+  const span = wordSpan(word);
+  return span >= rulesFor(lang).content || (inPhrase && span >= SHORT_TELLING);
 }
+
+/**
+ * Letters an English word needs to tell inside a phrase (isTellingWord): "cat", "sad", "God" and
+ * "son" say something in "My cat is fat" or "I am a son"; strung together with nothing to join them
+ * ("gum bet pig", "sun lad vat") they are a list of tokens. A phrase is a line that holds one of the
+ * language's little words (STOP_WORDS). Two letters never tell ("ox", "ah", "ab"). Measured in
+ * review.test.ts (finding 25 and the second check's short-word verses).
+ */
+export const SHORT_TELLING = 3;
 
 /** The engine's words of a line: its word parts, or where words run together the best segmentation (segmentedWords). */
 function readWords(line: string, lang: string): string[] {
   return UNSPACED.has(baseLang(lang)) ? segmentedWords(line, lang) : wordParts(line, lang);
 }
 
-/** The different telling words of a text (isTellingWord), folded. */
+/** The different telling words of a text (isTellingWord, each line read as a phrase when it holds a little word), folded. */
 export function tellingWords(text: string, lang = 'en'): Set<string> {
   const out = new Set<string>();
-  for (const line of linesOf(text)) for (const w of readWords(line, lang)) if (isTellingWord(w, lang)) out.add(fold(w));
+  for (const line of linesOf(text)) {
+    const ws = readWords(line, lang);
+    const phrase = ws.some((w) => isStopWord(w, lang));
+    for (const w of ws) if (isTellingWord(w, lang, phrase)) out.add(fold(w));
+  }
   return out;
 }
 
