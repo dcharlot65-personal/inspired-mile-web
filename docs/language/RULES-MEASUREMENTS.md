@@ -389,6 +389,127 @@ Studio):
 | now | 4,676,238 (4 responses) | 4.7 s | 0.17 s |
 | an English duel (both) | | 1.0 s | 0.1 s |
 
+## Engine pass, second round (after the engine check, 2026-11-17)
+
+The engine check refused the merge with two blockers (honest Japanese haiku with two loanword lines
+still void; ad-libs and names the table lacks voided or pushed toward the floor by the spelling
+test) and concerns (copy residue in forms of short lines, honest flips, the golden corpus, the
+compare wording's claims, the Japanese page cost). Its probes and this round's are `review4.test.ts`;
+runs on the Studio and the iMac Pro through `rb`, the base 91db84e and the previous head d56f5c8 in
+worktrees of their own.
+
+**A Japanese verse is one with a line of Japanese** (blocker 1). The previous rule read a verse as
+Japanese only when half its lines held a dictionary word not in katakana, so a haiku of two loanword
+lines and one line of Japanese never had its loanwords counted. kuromoji reads every one of the
+checker's sixteen lines into dictionary words (スマート|フォン, チョコレート|ケーキ, ブルックリン|ブリッジ,
+コーヒー|カップ, ステージ|ライト) except ワンツー. Now one line is enough. The checker's sixteen haiku:
+15 keep `ok`, known 1, full form (9 were void at the base, 8 at the previous head); this round's
+nineteen: all 19 (9 void at the base, 8 at the previous head). Still void, and listed in the test:
+lines whose loanword the dictionary lacks and cannot spell from words of its own (ワンツー, スイートドリーム,
+フライドポテト, ワンダーランド, トーキョー, ノーモアウォー). Spelling such a word from dictionary words of
+two characters or more was measured and dropped: IPADIC lacks the parts (ワン, ツー, スイート, ワンダー),
+while random katakana is spelled by its katakana names and native words (ウケ|マス|コム: 19 of 3,000
+random lines through an unknown word, 0 of the honest ones). Random katakana stays out: KATA-ONE (one
+real line, random katakana for the rest, best of 60, 14 houses x 20 seeds) 0 of 280 won in each of
+three alphabets (basic kana, with long marks, with voiced and small kana and ン); KATA-MIX 10 and 6 of
+280 (unchanged); KATA 0 of 280.
+
+**A word the table lacks counts when it can be said** (blocker 2). The previous head asked every three
+letters of such a word to occur in a word SCOWL lists, which no ad-lib (skrrt, brrr, pfft, pssst) and
+few African, Nahuatl, Polish or Irish names pass. Now (`text.ts sayable`): a word with a vowel letter
+passes when every three of its letters occur in a word or a name of the pronunciation table (its
+76,000 names come from every language that settled in America), as written or with a drawn-out letter
+said once (ayyy, brrrap); a word with none passes when it is a held sound (`HELD_SOUND`: brrr, skrrt,
+pssst, shhh, zzzz, hmmm, pfft). The checker's sixteen ad-lib and name couplets: every one keeps at
+least the base's share and full form (the ad-lib couplet the previous head voided: 0.857, as at the
+base). Of 91 names with a vowel letter listed for this round (Haitian, Yoruba, Igbo, Kikuyu, Zulu, Nahuatl,
+Polish, Irish, Welsh, Vietnamese), the table's words pass 38, its words and names 81; of random strings of four to six letters with a vowel (MASH-V's), 9% and 23%. A first held-sound rule (f, h, l, n and v
+held after any consonant, h closing) passed one string of four consonants in about three hundred, and
+the checker's MASH earned full form in 17 rounds of 280; the rule kept passes 107 of 160,000.
+
+| probe (best of 60, 14 houses x 20 seeds) | base 91db84e | previous head d56f5c8 | now |
+|---|---|---|---|
+| MASH (consonant mash in a phrase): won / full form | not run (26 / 240 at 501ebb1) | 1 / 2 | 0 / 2 |
+| MASH-V (random letters with a vowel): won / full form | 21 / 245 | 5 / 100 | 12 / 192 |
+
+MASH-V is the price of counting names: random letters with a vowel cannot be told from a name the
+table has never seen by their spelling, and the floor now leans toward the name. Such a verse tells
+nothing (no word of it is a telling word) and wins 12 rounds of 280, against 21 at the base.
+
+**Copies of short lines** (concern: copy residue). The check's families (`zz-e1-copy`, `zz-e1-ex`:
+each line's last word swapped, for a rhyme where the form asks one, with one or two inner words
+replaced by words of the same syllables, a word dropped and one put in, the inner words cut in halves
+that change places, the pronouns changed, the lines moved, a line of one's own added) still won in the
+forms that ask no rhyme: at d56f5c8, 129 of 140 English haiku rounds with one inner word replaced and
+128 with a word dropped and one put in, every crescendo round with the latter, 215 of 476 with the
+halves. `duel.ts carriesLines` now also calls a copy a verse with no line of its own beyond the
+other's whose every counted line is carried over by a line of its own with `COPY_LINE_SHARE` (0.6) of
+its words in order, or `COPY_LINE_ANY` (0.8) of them in any order (`copyOf().carry[i].any`, new),
+whatever the line now ends on. The near rule it adds to let one line of three escape and asked 0.67
+of the rest; the halves keep under 0.6 of a line of seven in order (4 of 7), and 6 of 7 in any order.
+
+The check's families (`zz-e1-copy`: 14 houses x 20 seeds x 3 rounds in English, x 10 in Spanish,
+French, German, Italian and Portuguese), rounds void and won, summed over the six languages, at d56f5c8
+and now (the Studio, the same probe):
+
+| family | rounds | void, d56f5c8 | won, d56f5c8 | void, now | won, now |
+|---|---|---|---|---|---|
+| any word at each line's end, a word dropped and one put in | 1,666 | 980 | 528 | 1,652 | 3 |
+| any end word, the inner words in halves that change places | 1,666 | 812 | 687 | 1,666 | 0 |
+| any end word, one inner word replaced | 1,078 | 784 | 201 | 1,022 | 19 |
+| any end word, two inner words replaced | 364 | 56 | 232 | 112 | 197 |
+| any end word, the pronouns changed, one inner word replaced | 672 | 98 | 304 | 280 | 248 |
+| any end word, the pronouns changed | 1,148 | 924 | 192 | 924 | 192 |
+| any end word, a line of one's own added | 2,940 | 672 | 65 | 672 | 65 |
+| the same with one inner word replaced | 1,078 | 0 | 145 | 0 | 145 |
+| rhyme swap, the inner words in halves | 490 | 378 | 77 | 490 | 0 |
+| rhyme swap, the pronouns changed, one inner word replaced | 448 | 308 | 31 | 308 | 31 |
+| the other families (rhyme swaps with one or two words replaced, moved, a word dropped, the pronouns, a line added; any end word with the lines moved) | 3,318 | 3,290 | 0 | 3,290 | 0 |
+| honest bank verse (control) | 2,940 | 0 | 1,664 | 0 | 1,664 |
+
+What still wins is a copy with two of each line's words changed or a line of the player's own added
+(the every-line rule asks for no line beyond the other's): two words of a haiku line of four or five
+are half of it. The honest sets: no bank or pack pair flagged in sixteen languages (0 of 14,914), no
+Riposte answer flagged (1,003 tried), every mechanical copy void, the published couplets flagged as before (the same
+4 pairs and 2 ripostes); the check's 67 honest verses in sixteen languages all keep the floor, its 21
+hand copies 20 void (the Portuguese one is not, as before), and of its 17 honest ripostes the same 3
+void as at the base (the flips, below). `review4.test.ts` runs the families in English, Spanish and
+French haiku and crescendo rounds: 98.6% void; the one row not void is a Spanish haiku whose lines are
+three words, two of them replaced (14 rounds, 1 won). The rule judge's accuracy is unchanged (the
+table above). Wordplay counting only the telling words the other verse does not say was measured and
+dropped: when both verses have as many lines, taking the shared words from both sides leaves the
+difference between them as it was (no copy's wordplay changed: 140 of 140 haiku rounds still to the
+copy), and when they differ a line added past the other's length took the other's words from it and
+moved wordplay to the player in 28 of the 882 rounds of the third check's added-line test.
+
+**Honest flips** (concern). The check's three ripostes that throw four or five of the opponent's
+content words back ("Mis versos son la llama que no agoniza / Y tu cirio, compadre, ya es ceniza") are
+void, as at the base: they take four or more of the other's content words in order and add one or two
+of their own, which `COPY_MIN_TAKEN` and `COPY_THRESHOLD` call a copy (`review.test.ts`: "Four thrown
+back with one word of one's own is past a Riposte"). Main voids none. Not changed: how many thrown
+words make a copy is the game's rule (the Riposte asks for two or three), and a scramble of the other's
+words with one of one's own is the same measure.
+
+**The Japanese page cost** (concern). The battle page started loading a language's data only when the
+language was picked from the list; a visitor whose duel language was already set waited for it at the
+start, and a failed fetch was an unhandled rejection. Now (`battle.astro warm()`) it also starts when
+the duel's settings are touched or the start button pointed at, and once the page is idle when the duel
+language was stored on an earlier visit or named by `?lang=` (not with Save-Data); failures are caught.
+A first visitor who leaves the settings alone still fetches nothing (`battle-bytes.spec.ts`, two new
+cases). Built site, first visit, service worker blocked, DevTools Fast 4G and CPU 4x
+(`battle-ja-cost.spec.ts`), on the M4 (the Studio was running this round's suites), first verse after
+the start:
+
+| | ja, picked, start at once | ja, picked, start 10 s later | ja, stored, at once | ja, stored, 10 s after the page | en, stored, 10 s after |
+|---|---|---|---|---|---|
+| previous head d56f5c8 | 4.56 s | 0.10 s | 4.51 s | 4.55 s | 0.92 s |
+| now | 4.62 s | 0.11 s | 4.49 s | 0.10 s | 0.10 s |
+
+Dictionary bytes 4,676,238 in 4 responses in every Japanese case. A duel started at once still waits
+for the dictionary (about 4.5 s here; the check measured 5.1 s on the loaded Studio, main 0.39 s):
+fetching it for every visitor whose interface is Japanese would undo the 2026-11-16 finding that
+/battle fetched data for visitors who never duel, so that is left to the owner.
+
 ## Mutation runs
 
 First pass: each defence broken in turn, on a build host (22 mutations): every one turned at least
@@ -462,3 +583,20 @@ tests meant to catch it run; the baseline (the same tests, unbroken) passed.
 
 In the Rust port, each broken alone (no rhyme branch, no near branch, any string in a phrase,
 anaphora on any word, wordplay over every line) turned `verse_parity` red; restored, 8 of 8.
+
+Engine pass, second round (M4 for TypeScript, 2026-11-17; scripts not kept): each new defence broken
+alone; the baseline (`review4.test.ts` and `review3.test.ts`'s MASH and KATA tests, unbroken) passed
+11 of 11.
+
+| broken | went red |
+|---|---|
+| Japanese: half the lines must be Japanese (as at d56f5c8) | the Japanese loanword haiku |
+| floor: trigrams of SCOWL's words only (as at d56f5c8) | the ad-lib and name couplets, word by word, the roll call |
+| floor: no held sound | the ad-lib couplets, word by word |
+| floor: the wider held sound tried first | MASH (full form past 5%) |
+| floor: no drawn-out letter said once | word by word |
+| floor: no roll call | the roll call |
+| copy: no every-line rule | the copy families |
+| copy: no any-order share | the copy families |
+
+RUSTMUT

@@ -221,10 +221,14 @@ export function judgeLines(verse: string, lang = 'en'): { text: string; left: nu
  * The compare path's prompt: both verses whole (cleaned, length-capped), as data (see "What the
  * grading model reads"), and the language they are in named beside them, not in the instructions.
  * Measured with the real models on labelled pairs in all sixteen languages
- * (tests/model/judge-compare.spec.ts, docs/language/JUDGE-INJECTION.md): of seven wordings, this one
- * left LFM3 least below chance where it is worst (es, ar, hi), with the best mean of Gemma 4 E2B
- * (0.94 or more in en, es, ja, ar and hi). The language sentence in the instructions, as main had
- * it, cost LFM3 in English; without any language named, LFM3 fell further in Arabic and Hindi.
+ * (tests/model/judge-compare.spec.ts, docs/language/JUDGE-INJECTION.md), seven wordings. Against
+ * main's wording (the language named in the instructions) this one is a trade inside the noise, not
+ * a clear gain: a language has 28 to 52 labelled criteria, and an independent run reproduced every
+ * figure. For LFM3 the mean is 0.720 against 0.714 and the lowest language 0.43 against 0.38: Hindi
+ * (0.48 against 0.38), Spanish, English, Japanese and Russian rise; Arabic (0.43 against 0.44),
+ * German, Italian, Polish, Chinese, Korean and Indonesian fall. For Gemma 4 E2B the mean is 0.965
+ * against 0.953, with Hindi 0.94 against 1. Without any language named, LFM3 fell further in Arabic
+ * and Hindi.
  */
 export function compareMessages(verseA: string, verseB: string, criterion: Criterion, langName: string) {
   return [

@@ -251,7 +251,8 @@ usable dictionary word, with no table loaded.
 
 ### Japanese (ja)
 - **Engine, not a table**: kuromoji.js 0.1.2 with the mecab-ipadic 2.7.0 dictionary, run in
-  the browser, loaded only for a Japanese duel (from the moment the player picks Japanese).
+  the browser, loaded only for a Japanese duel (from the moment the visitor shows they are about to
+  play one: battle.astro warm(), RULES-MEASUREMENTS.md).
   The dictionary is kuromoji's, cut to what the engine reads (`scripts/sound/build-ipadic.mjs`,
   `src/lib/verse/sound/ipadic/`): its 325,871 words in a sorted list (each written with how much
   it shares with the one before) in place of kuromoji's double-array trie and its map from trie
@@ -265,6 +266,9 @@ usable dictionary word, with no table loaded.
   (2,014 texts and 9,804 words, 0 different). On a throttled phone (DevTools' Fast 4G, CPU 4x,
   `tests/battle-ja-cost.spec.ts`, built site) the opponent's first verse came 4.7 s after the
   start instead of 16.2 s, and 0.17 s when the duel started ten seconds after Japanese was picked.
+  A returning player whose duel language is stored now gets the dictionary once the page is idle:
+  0.10 s to the first verse ten seconds after the page is up, 4.55 s before (the M4, 2026-11-17;
+  RULES-MEASUREMENTS.md). A duel started at once still waits for it (about 4.5 s there).
 - **Syllables**: morae of the reading, so a haiku may be written in kanji.
 - **Rhyme**: the vowels of the last two morae of each line agree, as Japanese lyric writing
   rhymes; lines that close on the same word are compared on the word before.

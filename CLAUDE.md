@@ -33,8 +33,9 @@ what the rule-based judge splits, by `GRADE_MARGIN` (`boundedByRules`). The comp
 (standard, grand) reads both verses whole: leaving lines out there let a digit in every line empty
 a verse, which LFM3 then preferred. Its wording names the duel's language beside the verses, chosen
 from seven measured with the real models on labelled pairs in sixteen languages
-(`tests/model/judge-compare.spec.ts`); LFM3 stays near or below chance in Spanish, Arabic and Hindi
-under every wording (docs/language/JUDGE-INJECTION.md). The live checklist tells a lite-tier player which lines the
+(`tests/model/judge-compare.spec.ts`): the best mean for both models, but against main's wording a
+trade inside the noise, better in some languages and worse in others; LFM3 stays near or below
+chance in Spanish, Arabic and Hindi under every wording (docs/language/JUDGE-INJECTION.md). The live checklist tells a lite-tier player which lines the
 grader will not read and the word that left each out (`DuelSession.judgeUnread`). Keep all three
 if the grade path changes, and measure with `tests/model/grade-injection.spec.ts` and
 `tests/model/judge-hide.spec.ts` (real models; results in `docs/language/JUDGE-INJECTION.md`) and
@@ -49,13 +50,18 @@ copy is measured from both sides (`copyOf`: how much of the player's verse is th
 much of the opponent's it carries), so words added to every line do not hide one; and line by line
 (`copyOf().carry`, `duel.ts carriesLines`: each of the opponent's lines carried into a line of its
 own that keeps its rhyme, the same last word or one that rhymes with it; or, when the verse has no
-line of its own beyond the other's, nearly whole whatever it ends on), so moving the lines the way
-the form allows, or swapping each rhyme word for another rhyme, does not hide one either. A word the
-lexicon lacks counts toward the floor inside a phrase (its line holds a little word) when it is
-spelled as English spells (every three letters of it found in a listed word: `pronounce.ts
-listedTrigrams`), so "finna" and "varlet" count and keyboard mash does not; in Japanese a katakana
-word counts beside a word written otherwise, and in a verse read as Japanese the dictionary's own
-katakana words count in a run of two or more (サッカーボール); neither tells anything. The rule
+line of its own beyond the other's, nearly whole whatever it ends on, or every line of it with
+COPY_LINE_SHARE of its words in order or COPY_LINE_ANY of them in any order), so moving the lines
+the way the form allows, swapping each rhyme word for another rhyme, or each line's last word and
+one more in a haiku, or its inner words about, does not hide one either. A word the
+lexicon lacks counts toward the floor inside a phrase (its line holds a little word, or every word
+of it has a capital: a roll call of names) when it can be said (`text.ts sayable`): with a vowel letter, every three letters of it found in a word or a name of
+the pronunciation table (`pronounce.ts spellingTrigrams`; a drawn-out letter is also tried once);
+without one, a held sound (`HELD_SOUND`: brrr, skrrt, pssst, shhh, hmmm). So "finna", "varlet",
+"Mwangi" and "skrrt" count and keyboard mash does not; random letters with a vowel can, as a name
+can (`review4.test.ts` MASH-V). In Japanese a katakana word counts beside a word written otherwise,
+and in a verse with one line of Japanese or more the dictionary's own katakana words count in a run
+of two or more (サッカーボール) or alone; neither tells anything. The rule
 judge's wordplay is a count of different telling words over as many lines as both verses have (a
 line added past the other's length adds nothing), its flow is rhyme, lines opening on the same
 word that carries meaning (not a line that says the one before again: a chant), lines that grow and
@@ -79,7 +85,9 @@ neither as a word). `pronounce.ts` loads it on demand, so it is a chunk of its
 own (1.46 MB; 0.56 MB gzip, 0.47 MB brotli) and never in a page's first load; the licence
 notice is the data's first lines (`#`), since a build strips comments; `DuelSession.beginRound`
 awaits it (through `loadSound(lang)`, which loads every language's data) and the battle page
-fetches it only when an English duel starts (`tests/battle-bytes.spec.ts`); unit tests must
+fetches it only when an English duel is about to start (`battle.astro warm()`: the language picked,
+the duel's settings touched, the start button pointed at, or a duel language stored from an earlier
+visit or named by `?lang=` once the page is idle; `tests/battle-bytes.spec.ts`); unit tests must
 `await loadPronunciation()` first. Both duel
 screens draw a `DuelSession`; do not score a round anywhere else.
 
@@ -322,9 +330,11 @@ left behind by a killed run is found by its port: `lsof -nP -iTCP:<port> -sTCP:L
   CC-CEDICT) and a Japanese analyser (kuromoji, with its dictionary cut to what the engine reads:
   `sound/ipadic`, 4.7 MB compressed and 16 MB unpacked where kuromoji's own was 17.8 and 100;
   rebuild with `node scripts/sound/build-ipadic.mjs` after `npm ci`). `loadSound(lang)` goes beside
-  `loadPack(lang)` before `createDuel`; the battle page also starts it when the player picks a
-  language, so a Japanese duel need not wait for the dictionary when it starts (a page load alone
-  fetches nothing). Chinese, Japanese and Thai offer rhyming forms only
+  `loadPack(lang)` before `createDuel`; the battle page also starts it ahead of the duel when the
+  visitor shows they are about to play (`battle.astro warm()`, above), so a Japanese duel need not
+  wait for the dictionary when it starts. A first visitor who leaves the duel's settings alone
+  fetches none of it, and one who starts at once still waits for it (about 5 s on a throttled
+  phone: `tests/battle-ja-cost.spec.ts`). Chinese, Japanese and Thai offer rhyming forms only
   once their data is loaded; Arabic and Thai offer no syllable forms. Sources, licences,
   measured accuracy and how to rebuild: `docs/language/PHONETICS.md`. After changing a rule
   or a table, run `scripts/sound/measure.mjs --write` (it records the digests the unit and
