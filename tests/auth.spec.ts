@@ -1,9 +1,10 @@
 import { test, expect, type APIRequestContext, type CDPSession, type Page } from '@playwright/test';
 import { execFileSync, spawn, spawnSync } from 'node:child_process';
 import { createHash, createHmac, randomBytes } from 'node:crypto';
-import { existsSync, readFileSync } from 'node:fs';
+import { appendFileSync, copyFileSync, existsSync, mkdtempSync, readFileSync, readdirSync, rmSync } from 'node:fs';
 import http from 'node:http';
 import net from 'node:net';
+import os from 'node:os';
 import path from 'node:path';
 import { E2E } from './e2e-env';
 
@@ -2980,5 +2981,53 @@ test.describe('Hardening: email codes', () => {
     // A day later the misses no longer count.
     sql(`UPDATE email_code_failures SET created_at = NOW() - INTERVAL '25 hours' WHERE email = '${email}'`);
     expect((await requestCode(request, email, { browser: 'other', ip: fresh })).status()).toBe(200);
+  });
+});
+
+// ---------------------------------------------------------------------------
+// Deploying: what the database has applied, against the folder about to be put beside it
+// ---------------------------------------------------------------------------
+
+test.describe('Deploying: scripts/check-migrations.sh', () => {
+  // The integration checker's concern (2026-11-17): two migrations were changed after their
+  // first commit, and sqlx refuses to start (VersionMismatch) if prod applied an earlier text.
+  // The script says so before the binary is swapped. It is held here to what sqlx itself
+  // recorded when the standing API migrated this database.
+  test('agrees with what the API applied, and finds a changed file or a missing one', () => {
+    const migrations = 'backend/migrations';
+    const files = readdirSync(migrations).filter((f) => f.endsWith('.sql')).sort();
+    const run = (dir: string) =>
+      spawnSync('bash', ['scripts/check-migrations.sh', dir, '-h', '127.0.0.1', '-p', String(E2E.pgPort), '-U', E2E.dbUser, '-d', E2E.dbName], {
+        encoding: 'utf8',
+        env: { ...process.env, PSQL: psqlBinary() },
+      });
+    const copy = (leave: string | null) => {
+      const dir = mkdtempSync(path.join(os.tmpdir(), 'im-migrations-'));
+      for (const f of files) if (f !== leave) copyFileSync(path.join(migrations, f), path.join(dir, f));
+      return dir;
+    };
+
+    const same = run(migrations);
+    expect(same.status, `${same.stdout}${same.stderr}`).toBe(0);
+    expect(same.stdout.match(/^same /gm), same.stdout).toHaveLength(files.length);
+    expect(same.stdout).toContain('every applied migration has its file, unchanged');
+
+    // One byte more at the end of an early migration: sqlx would refuse it, and so does the check.
+    const changed = copy(null);
+    const missing = copy(files[files.length - 1]);
+    try {
+      appendFileSync(path.join(changed, files[4]), '\n');
+      const one = run(changed);
+      expect(one.status, one.stdout).toBe(1);
+      expect(one.stdout).toMatch(new RegExp(`^CHANGED +5 +${files[4].replace('.', '\\.')}`, 'm'));
+      expect(one.stdout).toContain('would refuse to start');
+
+      const two = run(missing);
+      expect(two.status, two.stdout).toBe(1);
+      expect(two.stdout).toMatch(new RegExp(`^NO FILE +${files.length} `, 'm'));
+    } finally {
+      rmSync(changed, { recursive: true, force: true });
+      rmSync(missing, { recursive: true, force: true });
+    }
   });
 });

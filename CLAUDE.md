@@ -337,6 +337,11 @@ left behind by a killed run is found by its port: `lsof -nP -iTCP:<port> -sTCP:L
 - Replace the binary by writing a new file and renaming it, then
   `launchctl bootout` + `bootstrap` (not an in-place copy). Prod is arm64 macOS: build the
   release binary on an Apple Silicon build host (the Studio, or the M4), never the Intel iMac.
+- **Before swapping the binary**, run `scripts/check-migrations.sh <the new migrations folder>
+  -d inspired_mile` on prod (any psql connection arguments after the folder). It compares
+  `_sqlx_migrations` with the files the way sqlx does (SHA-384 of each file) and exits 1 when the
+  new API would refuse to start: a migration changed after it was applied (`VersionMismatch`), an
+  applied one left out (`VersionMissing`), or one that failed half-way (`Dirty`).
 - **Rolling back keeps the newer migrations.** sqlx refuses to start when the database has a
   migration its folder lacks (`VersionMissing`), so to go back to an older binary, put the old
   binary in place and leave `./migrations` as it is (every migration here only adds, and keeps
