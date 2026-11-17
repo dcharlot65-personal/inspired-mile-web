@@ -38,6 +38,15 @@ const CONTEXT = [
   [/^stats\./, 'Label of a statistic on the player\'s record.'],
   [/^theatre\./, 'The Theatre: the same duel on a 3D stage, for VR/AR headsets or a screen.'],
 ];
+/**
+ * The strings whose {rule} the page fills with a curse's rule as told to the one who cast it
+ * (curseRuleTheirs: "Their verse may not…"), not to the one under it (curseRule: "Your verse may
+ * not…"). Until 2026-11-16 the tools filled every {rule} with the second, so LanguageTool, the
+ * back-translation and the reviewer judged sentences no player sees (es "Maldice a tu rival:
+ * Ninguna de tus palabras…"). A unit test holds this list to the calls in src/.
+ */
+export const RULE_TOLD_TO_CASTER = ['hand.curses', 'hand.potionNote'];
+
 export function contextOf(key) {
   for (const [re, text] of CONTEXT) if (re.test(key)) return text;
   return 'Interface text of the game.';

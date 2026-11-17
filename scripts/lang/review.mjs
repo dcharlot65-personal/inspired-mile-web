@@ -5,7 +5,13 @@
  * as a native-speaking localisation reviewer: it sees the English, where the
  * string appears, and the translation, and returns corrections with reasons.
  *
- *   LLAMA_URL=http://127.0.0.1:18732 node scripts/lang/review.mjs --out review.json [--lang xx,yy] [--batch 12]
+ *   LLAMA_URL=http://127.0.0.1:18732 node scripts/lang/review.mjs --out review.json [--lang xx,yy] [--batch 12] [--no-pack]
+ *
+ * What it reads: every interface string, and (unless --no-pack) the language pack's player-facing
+ * text: each relic's power words beside the English word they translate, and each line of the
+ * written opponent's verses, which have no English source (they were written in the language to keep
+ * a form), so for those it judges the language only. Until 2026-11-16 only interface strings were
+ * reviewed.
  *
  * This is one generative model checking another: what it returns is a proposal.
  * Nothing it says is adopted until scripts/lang/adopt.mjs has put the correction
@@ -29,6 +35,7 @@ const URL_ = process.env.LLAMA_URL ?? 'http://127.0.0.1:18732';
 const OUT = resolve(opt('--out', `${ROOT}.langqa/review.json`));
 const BATCH = Number(opt('--batch', '20'));
 const only = opt('--lang', '').split(',').filter(Boolean);
+const PACK = !args.includes('--no-pack');
 const NAME = { es: 'Spanish (neutral, European spelling)', fr: 'French', de: 'German', it: 'Italian', pt: 'Brazilian Portuguese', pl: 'Polish', ru: 'Russian', ar: 'Modern Standard Arabic', hi: 'Hindi', zh: 'Simplified Chinese', ja: 'Japanese', ko: 'Korean', vi: 'Vietnamese', th: 'Thai', id: 'Indonesian' };
 const glossary = readJson(`${ROOT}docs/language/glossary.json`, { terms: {} });
 
@@ -154,14 +161,34 @@ await Promise.all(Array.from({ length: PARALLEL }, async () => {
 result.finished = new Date().toISOString();
 writeFileSync(OUT, JSON.stringify(result, null, 1) + '\n');
 
+// What each item is: interface strings with their English, then the pack's words and lines.
+function itemsOf(lang) {
+  const out = [];
+  for (const [key, text] of Object.entries(strings[lang].ui)) if (!(key in HOUSE_QUOTES)) out.push({ key, where: contextOf(key), english: strings.en.ui[key], translation: text });
+  if (!PACK) return out;
+  for (const [id, text] of Object.entries(strings[lang].pack)) {
+    const key = `pack:${id}`;
+    if (id.startsWith('relics.')) out.push({ key, where: 'A power word lent by a relic card: one word (a noun where it can be) that the player works into a verse for bonus points; an inflected form counts. It translates the English word.', english: strings.en.pack[id], translation: text });
+    else if (id.startsWith('written.')) out.push({ key, where: 'One line of a verse that the computer opponent plays. It was written in this language to keep a verse form, not translated: there is no English. Judge only whether it is correct, natural verse in this language.', english: '(none: an original line in this language)', translation: text });
+  }
+  return out;
+}
+
 async function reviewLanguage(lang) {
   const done = (result.languages[lang] ??= { control: null, reviewed: {}, failedBatches: 0 });
+  // Counted per run: a batch that failed on an earlier run is asked again on this one (its strings
+  // have no verdict), so the old count no longer says anything. (de kept "1 failed batch" from a
+  // run whose strings were all answered on the next.)
+  done.failedBatches = 0;
   if (!done.control) done.control = await control(lang);
   console.log(`${lang} control: ${JSON.stringify({ ...done.control, raw: undefined })}`);
   // On a resume, a string is asked about again if its text has changed since its review.
-  const keys = Object.keys(strings[lang].ui).filter((k) => !(k in HOUSE_QUOTES) && (done.reviewed[k]?.translation !== strings[lang].ui[k] || done.reviewed[k].verdict === 'no answer'));
+  const all = itemsOf(lang);
+  const pending = all.filter((i) => done.reviewed[i.key]?.translation !== i.translation || done.reviewed[i.key].verdict === 'no answer');
+  const keys = pending.map((i) => i.key);
+  const byKey = new Map(all.map((i) => [i.key, i]));
   for (let i = 0; i < keys.length; i += BATCH) {
-    const batch = keys.slice(i, i + BATCH).map((key) => ({ key, where: contextOf(key), english: strings.en.ui[key], translation: strings[lang].ui[key] }));
+    const batch = keys.slice(i, i + BATCH).map((key) => byKey.get(key));
     const got = await ask(lang, batch);
     if (!got) {
       done.failedBatches++;

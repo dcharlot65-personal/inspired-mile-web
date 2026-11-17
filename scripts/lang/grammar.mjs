@@ -25,7 +25,7 @@
 import { spawnSync } from 'node:child_process';
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
-import { allStrings, renderSamples, readJson, ROOT, HOUSE_QUOTES, LOCALES } from './lib/strings.mjs';
+import { allStrings, checkedTexts, grammarItems, readJson, ROOT, HOUSE_QUOTES, LOCALES } from './lib/strings.mjs';
 
 const args = process.argv.slice(2);
 // The last occurrence wins: run.sh puts its default --out first, and an --out given to run.sh after it
@@ -191,12 +191,7 @@ for (const lang of langs) {
   const ltCode = LT_CODE[lang] && supported.has(LT_CODE[lang]) ? LT_CODE[lang] : null;
   const dicts = dictPaths(lang);
   // Every sentence to check: interface strings as rendered samples, pack text as written.
-  const items = [];
-  for (const [key, template] of Object.entries(strings[lang].ui)) {
-    if (key in HOUSE_QUOTES || (onlyKeys && !onlyKeys[lang].has(key))) continue;
-    for (const s of await renderSamples(lang, template, { key })) items.push({ id: `ui:${key}`, text: s.text, filled: s.filled, category: s.category });
-  }
-  for (const [id, text] of Object.entries(strings[lang].pack)) if (!onlyKeys || onlyKeys[lang].has(`pack:${id}`)) items.push({ id: `pack:${id}`, text, filled: [], category: null });
+  const items = await grammarItems(lang, strings[lang], onlyKeys ? new Set([...onlyKeys[lang]].map((k) => (k.startsWith('pack:') ? k : k.replace(/^ui:/, '')))) : null);
 
   const hits = [];
   // --- LanguageTool ---
@@ -279,6 +274,9 @@ for (const lang of langs) {
       open: unique.filter((h) => !h.allowed).length,
     },
     hits: unique,
+    // What was read, sentence by sentence: scripts/lang/fresh.mjs compares it with the strings as they
+    // are, so a result older than a change is noticed (before 2026-11-16 nothing kept the text).
+    checked: checkedTexts(items),
   };
   console.log(`${lang}\tLT ${ltCode ?? '—'}: ${result.languages[lang].counts.languagetool}\tHunspell ${dicts.join('+') || '—'}: ${result.languages[lang].counts.hunspell}\topen ${result.languages[lang].counts.open}`);
 }

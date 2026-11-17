@@ -12,9 +12,10 @@
  */
 import './ts-hooks.mjs';
 import { readFileSync } from 'node:fs';
+import { RULE_TOLD_TO_CASTER } from './context.mjs';
 import { fileURLToPath } from 'node:url';
 
-const { parseMessage, formatNumber, formatList, pluralCategory, PLURAL_CATEGORIES } = await import('../../../src/lib/verse/msg.ts');
+const { parseMessage, formatNumber, formatList, pluralCategory, PLURAL_CATEGORIES, koreanParticleAfter } = await import('../../../src/lib/verse/msg.ts');
 const { LOCALES, loadMessages } = await import('../../../src/i18n/index.ts');
 const { loadPack } = await import('../../../src/lib/verse/packs/index.ts');
 const { HOUSE_QUOTES } = await import('../../../src/lib/verse/english.ts');
@@ -69,7 +70,8 @@ async function fillers(lang) {
   return {
     card: 'Hamlet',
     name: 'Ariel',
-    model: 'Gemma',
+    // The label the page shows (src/lib/brain.ts): a Korean particle after it is chosen by its last letter.
+    model: 'Gemma 4 E2B',
     email: 'a@example.com',
     city: 'Verona',
     size: `${formatNumber(3.1, lang)} GB`,
@@ -78,6 +80,11 @@ async function fillers(lang) {
     word: words[0],
     words: formatList(words.slice(0, 3), lang),
     rule: r('curse.short-words.brief', { n: 5 }),
+    ruleTheirs: r('curse.short-words.theirs', { n: 5 }),
+    curseName: ui['curse.short-words.name'],
+    // The links a sentence holds in its slots (age.consent, age.agree, auth.legal: fillSlots, src/i18n).
+    terms: ui['footer.terms'],
+    privacy: ui['footer.privacy'],
     brief: r('device.exclaim.brief', {}),
     label: r('check.lines', { n: 4 }),
     criterion: ui['criterion.wit'],
@@ -90,14 +97,16 @@ async function fillers(lang) {
 function plain(template, vars, lang) {
   let out = '';
   const walk = (parts, pound) => {
+    let last = null; // the value just written: a Korean particle after it takes its form, as msg.ts renders
     for (const p of parts) {
-      if (p.type === 'text') out += p.value;
+      if (p.type === 'text') out += lang === 'ko' && last !== null ? koreanParticleAfter(last, p.value) : p.value;
       else if (p.type === 'pound') out += pound;
       else if (p.type === 'arg') out += p.name in vars ? (typeof vars[p.name] === 'number' ? formatNumber(vars[p.name], lang) : vars[p.name]) : `{${p.name}}`;
       else {
         const n = Number(vars[p.name]);
         walk(p.options[`=${n}`] ?? p.options[pluralCategory(n, lang)] ?? p.options.other, formatNumber(n, lang));
       }
+      last = p.type === 'arg' && p.name in vars ? (typeof vars[p.name] === 'number' ? formatNumber(vars[p.name], lang) : vars[p.name]) : null;
     }
   };
   walk(parseMessage(template), '#');
@@ -119,6 +128,10 @@ export async function renderSamples(lang, template, opts = {}) {
   if (!fillerCache.has(lang)) fillerCache.set(lang, await fillers(lang));
   const own = BY_KEY[opts.key] ?? {};
   const fill = { ...fillerCache.get(lang), ...Object.fromEntries(Object.entries(own).map(([k, v]) => [k, formatNumber(v, lang)])) };
+  // {rule} as the page fills it: told to the caster in these strings (lib/context.mjs).
+  if (RULE_TOLD_TO_CASTER.includes(opts.key)) fill.rule = fill.ruleTheirs;
+  // {name} is a curse's name, in the language, where the page passes curseName() (battle.astro).
+  if (opts.key === 'round.cursesYou') fill.name = fill.curseName;
   const parts = parseMessage(template);
   const counted = new Set();
   const collect = (ps) => ps.forEach((p) => { if (p.type === 'plural') { counted.add(p.name); Object.values(p.options).forEach(collect); } });
@@ -138,8 +151,9 @@ export async function renderSamples(lang, template, opts = {}) {
     const filled = [];
     const put = (s, name) => { filled.push([text.length, text.length + s.length, name]); text += s; };
     const walk = (ps, pound) => {
+      let last = null; // the value just put: a Korean particle after it takes its form, as msg.ts renders
       for (const p of ps) {
-        if (p.type === 'text') text += p.value;
+        if (p.type === 'text') text += lang === 'ko' && last !== null ? koreanParticleAfter(last, p.value) : p.value;
         else if (p.type === 'pound') put(pound, '#');
         else if (p.type === 'arg') {
           if (NUMERIC.has(p.name)) put(formatNumber(counted.has(p.name) && run.n !== null ? run.n : TYPICAL[p.name], lang), p.name);
@@ -149,6 +163,7 @@ export async function renderSamples(lang, template, opts = {}) {
           const n = run.n ?? TYPICAL[p.name] ?? 3;
           walk(p.options[`=${n}`] ?? p.options[pluralCategory(n, lang)] ?? p.options.other, formatNumber(n, lang));
         }
+        last = p.type === 'arg' ? text.slice(filled.at(-1)[0]) : null;
       }
     };
     walk(parts, '#');
@@ -172,6 +187,30 @@ export async function meaningTexts(lang, s) {
   const out = {};
   for (const [key, template] of Object.entries(s.ui)) if (!(key in HOUSE_QUOTES)) out[key] = (await renderSamples(lang, template, { typical: true, key }))[0].text;
   for (const [id, text] of Object.entries(s.pack)) if (id.startsWith('relics.')) out[`pack:${id}`] = text;
+  return out;
+}
+
+/**
+ * What the grammar and spelling tools read, as [{ id, text, filled, category }]: every interface
+ * string as the sentences a player can see (one per plural form; the house quotations, which are the
+ * source text, left out) and every pack line as written. `onlyKeys`: a Set of ids ('ui:key',
+ * 'pack:id') to keep. scripts/lang/fresh.mjs rebuilds this list to see whether grammar.json is about
+ * the strings as they are now.
+ */
+export async function grammarItems(lang, s, onlyKeys = null) {
+  const items = [];
+  for (const [key, template] of Object.entries(s.ui)) {
+    if (key in HOUSE_QUOTES || (onlyKeys && !onlyKeys.has(key))) continue;
+    for (const x of await renderSamples(lang, template, { key })) items.push({ id: `ui:${key}`, text: x.text, filled: x.filled, category: x.category });
+  }
+  for (const [id, text] of Object.entries(s.pack)) if (!onlyKeys || onlyKeys.has(`pack:${id}`)) items.push({ id: `pack:${id}`, text, filled: [], category: null });
+  return items;
+}
+
+/** The sentences checked, per id: { id: [text, …] }, as grammar.json keeps them. */
+export function checkedTexts(items) {
+  const out = {};
+  for (const i of items) (out[i.id] ??= []).push(i.text);
   return out;
 }
 
