@@ -1071,8 +1071,21 @@ export interface CopyMeasure {
   lines: number[];
   /** Words each line of the verse takes in order (taken, line by line). */
   perLine: number[];
-  /** Lines of the verse that end on the word the source's line in the same place ends on: the rhymes a copy keeps. */
+  /**
+   * Lines of the verse that end on the word the source's line in the same place ends on. Kept as a
+   * measure; isCopy no longer reads it (moving the lines set it to 0, and it voided flips): `carry`.
+   */
   ends: number;
+  /**
+   * Each line of the source, every word counted (the little ones too), against the line of the
+   * verse that says most of it in its order, one line of the verse to a line of the source
+   * whatever order the verse puts its lines in: the source line's words (`source`), how many of
+   * them that verse line says in order (`said`), that verse line's words (`verse`), and whether it
+   * says the source line's last word (`end`: the word a rhyme stands on). A copy carries each line
+   * over into a line of its own, rhyme and all, with a word dropped and a few put in; an answer
+   * throws words back into one line or two, and its little words seldom fall in the other's order.
+   */
+  carry: Array<{ source: number; said: number; verse: number; end: boolean }>;
 }
 
 /**
@@ -1110,8 +1123,9 @@ export function copyOf(verse: string, source: string, lang = 'en', opts: { all?:
   const known = new Set(UNSPACED.has(baseLang(lang)) ? linesOf(source).flatMap((l) => segmentedWords(l, lang)).filter((w) => [...w].length >= 2) : []);
   const mine = linesOf(verse).map((l) => copyWords(l, lang, known, all)).filter((ws) => ws.length > 0);
   const theirs = linesOf(source).flatMap((l) => copyWords(l, lang, new Set(), all));
-  if (!mine.length || !theirs.length) return { taken: 0, own: 0, share: 0, source: theirs.length, coverage: 0, anyOrder: 0, lines: [], perLine: [], ends: 0 };
   const eq = sameWordFor(lang);
+  const carry = lineCarry(verse, source, lang, known, eq);
+  if (!mine.length || !theirs.length) return { taken: 0, own: 0, share: 0, source: theirs.length, coverage: 0, anyOrder: 0, lines: [], perLine: [], ends: 0, carry };
   const inSource = (w: string) => theirs.some((t) => eq(w, t));
   // Each word of the source is taken once: a verse that says the opponent's "stage" in every line took one word.
   const used = new Array<boolean>(theirs.length).fill(false);
@@ -1199,7 +1213,36 @@ export function copyOf(verse: string, source: string, lang = 'en', opts: { all?:
     lines,
     perLine,
     ends,
+    carry,
   };
+}
+
+/**
+ * CopyMeasure.carry: every line of `source`, all its words, matched one to one with the lines of
+ * `verse` that say most of each in order (the longest common subsequence, two neighbours swapped
+ * still matching both: takenInOrder), the largest first and, among equals, the earlier lines first,
+ * so the result does not depend on how the verse orders its lines.
+ */
+function lineCarry(verse: string, source: string, lang: string, known: Set<string>, eq: (a: string, b: string) => boolean): CopyMeasure['carry'] {
+  const theirs = linesOf(source).map((l) => copyWords(l, lang, new Set(), true));
+  const mine = linesOf(verse).map((l) => copyWords(l, lang, known, true)).filter((ws) => ws.length > 0);
+  const pairs: Array<[number, number, number]> = [];
+  theirs.forEach((s, i) =>
+    mine.forEach((v, j) => {
+      const said = takenInOrder(v, s, new Array<boolean>(s.length).fill(false), eq).at.length;
+      if (said > 0) pairs.push([said, i, j]);
+    }),
+  );
+  pairs.sort((x, y) => y[0] - x[0] || x[1] - y[1] || x[2] - y[2]);
+  const out = theirs.map((s) => ({ source: s.length, said: 0, verse: 0, end: false }));
+  const taken = new Set<number>();
+  for (const [said, i, j] of pairs) {
+    if (out[i].said || taken.has(j)) continue;
+    const last = theirs[i].at(-1)!;
+    out[i] = { source: theirs[i].length, said, verse: mine[j].length, end: mine[j].some((w) => eq(w, last)) };
+    taken.add(j);
+  }
+  return out;
 }
 
 /** copyOf(verse, source, lang).share: how much of `verse` is taken from `source`, from 0 to 1. */

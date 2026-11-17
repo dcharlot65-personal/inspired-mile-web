@@ -10,7 +10,7 @@
 import { beforeAll, describe, expect, it } from 'vitest';
 import { CARD_CATALOG, getCardById } from '../cards';
 import { CURSES, checkSignature, signatureNeeded, signatureWords } from './devices';
-import { COPY_COVERAGE, COPY_COVERAGE_ALONE, COPY_COVERAGE_ENDS, COPY_MIN_TAKEN, COPY_THRESHOLD, OWN_WORDS_PER_LINE, createDuel, isCopy, resolveRound, rng, scoreVerse, type DuelDeck } from './duel';
+import { COPY_ANY_ORDER_MIN, COPY_COVERAGE, COPY_COVERAGE_ALONE, COPY_LINE_SHARE, COPY_LINE_SOURCE, COPY_LINE_WORDS, COPY_MIN_TAKEN, COPY_THRESHOLD, OWN_WORDS_PER_LINE, createDuel, isCopy, resolveRound, rng, scoreVerse, type DuelDeck } from './duel';
 import { formsFor, getForm, scoreForm } from './forms';
 import { addressesJudge, judgeAddress, judgeLines, rulesJudge } from './judge';
 import { writeOpponentVerse, writtenCandidates } from './opponent';
@@ -280,8 +280,9 @@ describe('finding 24: a copied verse, however it is dressed, is void; an answer 
 
   it('a copy that drops a word of every line and adds one or two of its own wins at most 5% of rounds', async () => {
     // The edit that comes closest to an answer: it carries 0.6 to 0.9 of the verse, where the honest answers
-    // that throw words back reach 0.8, so it is void only where it also keeps two of the verse's line ends
-    // in place (COPY_COVERAGE_ENDS). Printed for docs/language/RULES-MEASUREMENTS.md.
+    // that throw words back reach 0.8. It is void where it carries the lines over with their last words
+    // (duel.ts carriesLines); here a random word of each line is dropped, its last word too, which no
+    // rhyming form keeps. Printed for docs/language/RULES-MEASUREMENTS.md.
     const row = { n: 0, voided: 0, wins: 0, winsWhenNotVoid: 0 };
     for (const house of HOUSES) {
       const deck = houseDeck(house);
@@ -409,7 +410,9 @@ describe('finding 24: a copied verse, however it is dressed, is void; an answer 
     expect(COPY_MIN_TAKEN).toBe(4);
     // Coverage: the honest answers that carry most of the verse they answer carry 0.8 of it (a Riposte of three words thrown
     // back at a verse of five content words, one more said by chance); copies with words added carry all of it.
-    expect([COPY_COVERAGE, COPY_COVERAGE_ALONE, COPY_COVERAGE_ENDS]).toEqual([0.85, 0.9, 0.6]);
+    expect([COPY_COVERAGE, COPY_COVERAGE_ALONE, COPY_ANY_ORDER_MIN]).toEqual([0.85, 0.9, 4]);
+    // Lines carried over (second check): the lowest share a mechanical copy keeps of a line is 0.6 (a word of three to five dropped).
+    expect([COPY_LINE_WORDS, COPY_LINE_SHARE, COPY_LINE_SOURCE]).toEqual([3, 0.6, 7]);
     // The checker's (P7): an answer that quotes a line and echoes two words more carries 0.8 of a short verse and is an answer.
     expect(isCopy('Thy verse is dull? So says the fool\nWhose hollow skull was never taught in school', 'Thy verse is dull\nAn empty, hollow skull', 'en')).toBe(false);
     // A changed ending does not make a word new: endings come off until none is left ("limpings", "limping", "limp").

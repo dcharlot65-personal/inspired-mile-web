@@ -41,7 +41,7 @@ import {
 } from './devices';
 import { formsFor, scoreForm, type Form, type FormContext, type FormScore } from './forms';
 import { getPack } from './packs';
-import { cleanVerse, copyOf, ownContent, wordsOf } from './text';
+import { cleanVerse, copyOf, ownContent, wordsOf, type CopyMeasure } from './text';
 
 export const ROUNDS = 3;
 export const START_INK = 2;
@@ -51,36 +51,49 @@ export const POTION_COST = 1;
 /** Points the judge shares between the two verses each round. */
 export const JUDGE_POOL = 24;
 /**
- * A verse is a copy, not an answer (isCopy), when it takes more than three of the other side's
- * content words in order (COPY_MIN_TAKEN: the Riposte asks for two or three thrown back) and
- * either
- *   - they are at least COPY_THRESHOLD of its own content words (it adds little), or
- *   - they are at least COPY_COVERAGE of the other verse's content words, two or more of them in
- *     each of two lines or more, or COPY_COVERAGE_ALONE of them however laid out (it carries the
- *     other verse over, whatever it adds: two words put into every line leave all of the other's
- *     in place); or COPY_COVERAGE_ENDS of them so laid out when two of its lines also end on the
- *     other verse's line ends (it keeps the other's rhymes: a word of every line dropped, one or
- *     two put in), or
- *   - it says COPY_COVERAGE_ALONE of the other verse's content words in any order (its lines
- *     shuffled word by word);
- * or it has no content word of its own and takes two. A verse with too few content words to
- * tell is measured on all its words, the little ones too, by the same rules: a short verse
- * retouched until one content word is left is still the other's verse. Set from measurement
- * (review.test.ts, finding 24): see docs/language/RULES-MEASUREMENTS.md for the copies and the
- * honest pairs and answers on either side of each threshold, in every language.
+ * A verse is a copy, not an answer (isCopy), when either
+ *   - it carries the other verse's lines over, each into a line of its own (text.ts copyOf
+ *     `carry`, every word counted): every line of COPY_LINE_WORDS words or more but one (all of
+ *     them in a couplet) has COPY_LINE_SHARE of its words said in its order by a line of the verse,
+ *     its last word, the one its rhyme stands on, among them. Words dropped from each line, a few
+ *     put in, neighbours swapped and the lines moved however the form allows leave this whole; an
+ *     answer throws words back into one line or two, and its little words seldom fall in the
+ *     other's order. Only for a verse of COPY_LINE_SOURCE words or more: in a shorter one a line of
+ *     three words is two thrown words and a little one. Or
+ *   - it takes more than three of the other side's content words in order (COPY_MIN_TAKEN: the
+ *     Riposte asks for two or three thrown back) and they are at least COPY_THRESHOLD of its own
+ *     content words (it adds little), or at least COPY_COVERAGE_ALONE of the other verse's content
+ *     words however laid out, or COPY_COVERAGE of them with two or more in each of two lines or
+ *     more (it carries the other verse over, whatever it adds: words put into every line leave all
+ *     of the other's in place), or
+ *   - it says COPY_ANY_ORDER_MIN or more of the other verse's content words in any order, and
+ *     COPY_COVERAGE_ALONE of them, and COPY_THRESHOLD of all its words, the little ones too (its
+ *     lines shuffled word by word; a Riposte's thrown words and one more said by chance leave the
+ *     other's little words behind), or COPY_COVERAGE_ALONE of all the words of a verse of
+ *     COPY_LINE_SOURCE words or more, in any order, or
+ *   - it has no content word of its own and COPY_THRESHOLD of all its words, three or more, are the
+ *     other's in order (the other verse with words deleted).
+ * Set from measurement (review.test.ts, finding 24): see docs/language/RULES-MEASUREMENTS.md for the
+ * copies and the honest pairs and answers on either side of each threshold, in every language.
  */
 export const COPY_THRESHOLD = 0.7;
 export const COPY_COVERAGE = 0.85;
 export const COPY_COVERAGE_ALONE = 0.9;
-/** With the other verse's line ends kept in two lines or more (its rhymes), this much of it in order is enough. */
-export const COPY_COVERAGE_ENDS = 0.6;
+export const COPY_MIN_TAKEN = 4;
+/** Content words said in any order that a shuffled copy must carry: more than a Riposte's three. */
+export const COPY_ANY_ORDER_MIN = 4;
+/** Words a line of the other verse needs before the line rule counts it (shorter lines are a word or two). */
+export const COPY_LINE_WORDS = 3;
+/** Share of a line's words, its last among them, that a line of the verse says in order when it carries that line over. */
+export const COPY_LINE_SHARE = 0.6;
+/** Words the other verse needs before the line rule applies at all. */
+export const COPY_LINE_SOURCE = 7;
 /**
  * Content words of its own, beyond those that land its device and signature, that a verse
  * needs per line its form asks for before its multiplier's bonuses apply in full (scoreVerse).
  * Measured in review.test.ts (finding 25) against the bank's honest verses.
  */
 export const OWN_WORDS_PER_LINE = 1.5;
-export const COPY_MIN_TAKEN = 4;
 
 export interface DuelDeck {
   characters: string[];
@@ -358,26 +371,35 @@ export interface ScoreInput {
 
 const CHARACTER_NAMES = invocationNames(CARD_CATALOG.filter((c) => c.type === 'Character').map((c) => c.name));
 
+/** Does `c` carry the other verse's lines over, each into a line of its own (see COPY_LINE_SHARE)? */
+export function carriesLines(c: CopyMeasure): boolean {
+  const words = c.carry.reduce((n, l) => n + l.source, 0);
+  const lines = c.carry.filter((l) => l.source >= COPY_LINE_WORDS);
+  if (lines.length < 2 || words < COPY_LINE_SOURCE) return false;
+  const carried = lines.filter((l) => l.end && l.said >= 2 && l.said >= Math.ceil(COPY_LINE_SHARE * l.source)).length;
+  return carried >= (lines.length >= 3 ? lines.length - 1 : lines.length);
+}
+
 /** Is `verse` a copy of `answered` (see COPY_THRESHOLD)? */
 export function isCopy(verse: string, answered: string, lang: string): boolean {
   if (!answered) return false;
-  const rule = (c: ReturnType<typeof copyOf>) => {
-    if (c.own === 0 && c.taken >= 2 && c.share >= COPY_THRESHOLD) return true;
-    // Said in any order, as often as the source says them.
-    if (Math.round(c.anyOrder * c.source) >= COPY_MIN_TAKEN && c.anyOrder >= COPY_COVERAGE_ALONE) return true;
-    if (c.taken < COPY_MIN_TAKEN) return false;
-    const spread = c.perLine.filter((n) => n >= 2).length >= 2;
-    return (
-      c.share >= COPY_THRESHOLD ||
-      c.coverage >= COPY_COVERAGE_ALONE ||
-      (spread && c.coverage >= COPY_COVERAGE) ||
-      (spread && c.ends >= 2 && c.coverage >= COPY_COVERAGE_ENDS)
-    );
-  };
-  const content = copyOf(verse, answered, lang);
-  if (rule(content)) return true;
-  // Too few content words taken to tell: every word counts, the little ones too.
-  return content.taken < COPY_MIN_TAKEN && rule(copyOf(verse, answered, lang, { all: true }));
+  const c = copyOf(verse, answered, lang);
+  if (carriesLines(c)) return true;
+  // Every word counted, the little ones too: asked only when the content words leave it open.
+  let all: CopyMeasure | undefined;
+  const allWords = () => (all ??= copyOf(verse, answered, lang, { all: true }));
+  // Nothing of its own: every content word is the other's, and so are nearly all its little words
+  // (a short verse with words deleted, or two of the other's words said with "so" between them).
+  if (c.own === 0 && allWords().taken >= 3 && allWords().share >= COPY_THRESHOLD) return true;
+  // Said in any order, as often as the source says them, and most of the source's little words with them
+  // (a Riposte's thrown words and one more said by chance leave the little words behind); or nearly
+  // every word of a verse of COPY_LINE_SOURCE words or more, the little ones too, in any order (where
+  // a shuffle leaves too few content words to count: a Chinese line cut into single characters).
+  if (Math.round(c.anyOrder * c.source) >= COPY_ANY_ORDER_MIN && c.anyOrder >= COPY_COVERAGE_ALONE && allWords().anyOrder >= COPY_THRESHOLD) return true;
+  if (allWords().source >= COPY_LINE_SOURCE && allWords().anyOrder >= COPY_COVERAGE_ALONE) return true;
+  if (c.taken < COPY_MIN_TAKEN) return false;
+  const spread = c.perLine.filter((n) => n >= 2).length >= 2;
+  return c.share >= COPY_THRESHOLD || c.coverage >= COPY_COVERAGE_ALONE || (spread && c.coverage >= COPY_COVERAGE);
 }
 
 /** Why a verse earns nothing, or undefined when it is a verse of the writer's own. */
