@@ -42,6 +42,14 @@ result files; the rest of the page is written by hand.
   Where no model the device can run is left, the model panel says so ("No model this device
   can run has shown that it writes or judges verse well, so you face the written opponent and
   the judging is by rule"). `?brain=<tier>` still loads any model; the tests use it.
+- **With the real models**, on the Studio on 2026-11-17 (`playwright.model.config.ts`, all three
+  models, fresh browser profiles): each loaded and played a round; the opening verse was the
+  model's own only for Gemma, the one that writes English; LFM3's and LFM2.5's verdicts said
+  "English: judged by rule, because LFM3 1.7B (LFM2.5 350M) has not shown it is a good judge of
+  verse in this language", and Gemma's "Judged by Gemma 4 E2B on this device, reading the verses
+  in both orders". The picker test passed for all three once a fault in the test itself was
+  fixed (it compared the heading with a pattern, not the model's name). The microphone test was
+  skipped: it needs a recorded file, and none was given.
 - `src/lib/model-eval.test.ts` fails when a list in `brain.ts` differs from
   `decisions.json`, when `decisions.json` no longer follows from the result files and the
   thresholds, or when a language without a result file is in a list.
