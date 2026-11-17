@@ -10,14 +10,15 @@ use std::path::PathBuf;
 
 use inspired_mile_api::verse::cards::{card_by_id, CARDS, CHARACTER_NAMES};
 use inspired_mile_api::verse::devices::{
-    check_device, check_power_words, check_signature, curse_violations, device_for_house, device_in_play,
+    check_device, check_power_words, check_signature_words, curse_violations, device_for_house, device_in_play,
     signature_needed, signature_words, DeviceContext, CURSE_IDS, CURSE_PENALTY, CURSE_PENALTY_CAP, DEVICE_IDS,
     FORBIDDEN_LETTERS, HOUSE_DEVICE, POTION_CURSE, POWER_WORDS_NEEDED, POWER_WORD_BONUS, RELIC_WORDS,
 };
 use inspired_mile_api::verse::duel::{
-    match_winner, online_match_winner, online_plan, resolve_online_round, resolve_round, score_verse, settle_verse, Curse,
-    DuelSide, MatchWinner, OnlineSide, Rng, RoundPlan, RoundWinner, ScoreInput, VerseScore, Voided, COPY_THRESHOLD, ROUNDS,
-    SETTLE_PASSES,
+    carries_lines, is_copy, match_winner, online_match_winner, online_plan, resolve_online_round, resolve_round,
+    score_verse, settle_verse, Curse, DuelSide, MatchWinner, OnlineSide, Rng, RoundPlan, RoundWinner, ScoreInput,
+    VerseScore, Voided, COPY_ANY_ORDER_MIN, COPY_COVERAGE, COPY_COVERAGE_ALONE, COPY_LINE_SHARE, COPY_LINE_SOURCE,
+    COPY_LINE_WORDS, COPY_MIN_TAKEN, COPY_THRESHOLD, OWN_WORDS_PER_LINE, ROUNDS, SETTLE_PASSES,
 };
 use inspired_mile_api::verse::forms::{
     forms_for_english, get_form, score_form, FormContext, FormScore, ACROSTIC_WORDS, FORMS, FORM_POINTS,
@@ -25,10 +26,13 @@ use inspired_mile_api::verse::forms::{
 use inspired_mile_api::verse::judge::{rules_judge, JudgeSplit, Verdict, CRITERIA, JUDGE_POOL, LEXICON};
 use inspired_mile_api::verse::pronounce::{pronounce, table_len};
 use inspired_mile_api::verse::text::{
-    clean_verse, content_words, first_unit, first_word, fold, initial, last_unit, last_word, letter_as_read,
-    letter_count, line_length, lines_of, rhyme_ends, rhyme_key, rhymes, rules, similarity, substance, syllable_counts,
-    syllable_span, syllables_in_line, syllables_in_word, word_lengths_as_read, word_parts, word_span, words_as_read,
-    words_of, MAX_VERSE_CHARS, MAX_VERSE_LINES, MIN_DISTINCT_WORDS, STOP_WORDS,
+    clean_verse, clean_verse_with, content_words, copy_of, first_unit, first_word, fold, initial, is_content_word,
+    is_telling_word, last_unit, last_word, letter_as_read, letter_count, lexicon_has, line_length, lines_of, own_content,
+    prototype_of, rhyme_ends, rhyme_key, rhymes, rules, script_of, similarity, substance, syllable_counts, syllable_span,
+    syllables_in_line, syllables_in_word, telling_words, unknown_character, word_lengths_as_read, word_parts, word_span,
+    words_as_read,
+    words_of, CopyMeasure, FULL_KNOWN_SHARE, MAX_VERSE_CHARS, MAX_VERSE_LINES, MIN_DISTINCT_WORDS, MIN_KNOWN_SHARE,
+    PHRASE_SPAN, SHORT_TELLING, STOP_WORDS, TELLING_PER_LINE, UNLISTED_SPAN,
 };
 use serde_json::{json, Value};
 
@@ -58,6 +62,13 @@ impl Report {
         }
     }
 
+    /// Two JSON values compared exactly, every number as the IEEE 754 double it is: JSON
+    /// writes the double 2 as "2" and serde_json reads it back as an integer, which would not
+    /// equal the f64 2.0 the Rust computed.
+    fn same_json(&mut self, what: impl FnOnce() -> String, rust: &Value, typescript: &Value) {
+        self.same(what, &numbers_as_doubles(rust), &numbers_as_doubles(typescript));
+    }
+
     /// Fails unless everything agreed and at least `at_least` values were compared (an
     /// empty or truncated golden file must not pass).
     fn finish(self, at_least: usize) {
@@ -78,6 +89,15 @@ impl Report {
             self.file,
             self.compared
         );
+    }
+}
+
+fn numbers_as_doubles(v: &Value) -> Value {
+    match v {
+        Value::Number(n) => json!(n.as_f64().expect("a JSON number is a double")),
+        Value::Array(items) => Value::Array(items.iter().map(numbers_as_doubles).collect()),
+        Value::Object(map) => Value::Object(map.iter().map(|(k, x)| (k.clone(), numbers_as_doubles(x))).collect()),
+        other => other.clone(),
     }
 }
 
@@ -105,21 +125,23 @@ fn form_json(f: &FormScore) -> Value {
         "earned": f.earned,
         "kept": f.kept,
         "thin": f.thin,
+        "scale": f.scale,
         "checks": f.checks.iter().map(|c| json!({ "id": c.id, "points": c.points, "earned": c.earned, "met": c.met })).collect::<Vec<_>>(),
     })
 }
 
-/// A score in the shape the golden files use. The multiplier is carried in quarters on
-/// both sides, so that 2 (an integer in JSON) and 2.0 compare as the same number.
+/// A score in the shape the golden files use. The multiplier and the substance are doubles,
+/// compared exactly (see `Report::same_json`).
 fn score_json(s: &VerseScore) -> Value {
     json!({
         "form": form_json(&s.form),
         "device": { "id": s.device.id, "met": s.device.met },
         "signature": s.signature,
         "synergy": s.synergy,
-        "multiplier_quarters": quarters(s.multiplier),
+        "multiplier": s.multiplier,
         "power": s.power_words.as_ref().map(|p| json!({ "used": p.used, "met": p.met, "bonus": p.bonus })),
         "curse": s.curse.as_ref().map(|c| json!({ "id": c.id, "violations": c.violations, "penalty": c.penalty })),
+        "substance": s.substance,
         "craft": s.craft,
         "voided": s.voided.map(|v| match v {
             Voided::Empty => "empty",
@@ -129,19 +151,24 @@ fn score_json(s: &VerseScore) -> Value {
     })
 }
 
-fn quarters(multiplier: f64) -> u64 {
-    let q = multiplier * 4.0;
-    assert_eq!(q.fract(), 0.0, "a multiplier is a whole number of quarters, not {multiplier}");
-    q as u64
+fn expected_score(expect: &Value) -> Value {
+    expect.clone()
 }
 
-fn expected_score(expect: &Value) -> Value {
-    let mut e = expect.clone();
-    let m = e["multiplier"].as_f64().expect("multiplier");
-    let map = e.as_object_mut().expect("score object");
-    map.remove("multiplier");
-    map.insert("multiplier_quarters".into(), json!(quarters(m)));
-    e
+fn copy_json(c: &CopyMeasure) -> Value {
+    json!({
+        "taken": c.taken,
+        "own": c.own,
+        "share": c.share,
+        "source": c.source,
+        "coverage": c.coverage,
+        "anyOrder": c.any_order,
+        "lines": c.lines,
+        "perLine": c.per_line,
+        "ends": c.ends,
+        "carry": c.carry.iter().map(|l| json!({ "source": l.source, "said": l.said, "verse": l.verse, "end": l.end })).collect::<Vec<_>>(),
+        "carries": carries_lines(c),
+    })
 }
 
 fn verdict_name(v: Verdict) -> &'static str {
@@ -260,7 +287,44 @@ fn tables_and_constants_match() {
         "shortLine": rules::SHORT_LINE,
     });
     r.same(|| "the English thresholds".into(), &english_rules, &t["rules"]);
-    r.same(|| "COPY_THRESHOLD".into(), &Some(COPY_THRESHOLD), &c["COPY_THRESHOLD"].as_f64());
+    for (name, rust) in [
+        ("COPY_THRESHOLD", COPY_THRESHOLD),
+        ("COPY_COVERAGE", COPY_COVERAGE),
+        ("COPY_COVERAGE_ALONE", COPY_COVERAGE_ALONE),
+        ("COPY_MIN_TAKEN", COPY_MIN_TAKEN as f64),
+        ("COPY_ANY_ORDER_MIN", COPY_ANY_ORDER_MIN),
+        ("COPY_LINE_WORDS", COPY_LINE_WORDS as f64),
+        ("COPY_LINE_SHARE", COPY_LINE_SHARE),
+        ("COPY_LINE_SOURCE", COPY_LINE_SOURCE as f64),
+        ("OWN_WORDS_PER_LINE", OWN_WORDS_PER_LINE),
+        ("MIN_KNOWN_SHARE", MIN_KNOWN_SHARE),
+        ("FULL_KNOWN_SHARE", FULL_KNOWN_SHARE),
+        ("TELLING_PER_LINE", TELLING_PER_LINE),
+        ("SHORT_TELLING", SHORT_TELLING as f64),
+        ("UNLISTED_SPAN", UNLISTED_SPAN as f64),
+        ("PHRASE_SPAN", PHRASE_SPAN as f64),
+    ] {
+        r.same(|| format!("constant {name}"), &Some(rust), &c[name].as_f64());
+    }
+    // Unicode's confusable letters: the same file, read the same way (a letter's prototype and script).
+    let confusables = t["confusables"].as_array().expect("confusables");
+    assert!(confusables.len() >= 500, "tables.json has only {} confusable letters", confusables.len());
+    // A letter newer than this binary's Unicode tables cannot be read the same way; the room
+    // refuses any verse that holds one (text::unknown_character), so it is never scored.
+    let mut newer = Vec::new();
+    for entry in confusables {
+        let ch = text(&entry[0]).chars().next().expect("a letter");
+        if unknown_character(&ch.to_string()).is_some() {
+            newer.push(ch);
+            continue;
+        }
+        r.same(|| format!("prototypeOf({ch:?})"), &prototype_of(ch).to_string(), &text(&entry[1]).to_string());
+        r.same(|| format!("scriptOf({ch:?})"), &script_of(ch).to_string(), &text(&entry[2]).to_string());
+    }
+    if !newer.is_empty() {
+        println!("tables.json: {} confusable letters are newer than this build's Unicode tables and are refused: {newer:?}", newer.len());
+    }
+    assert!(newer.len() * 10 < confusables.len(), "most confusable letters must be readable: {newer:?}");
     let mut stop: Vec<String> = STOP_WORDS.iter().map(|w| w.to_string()).collect();
     stop.sort();
     let mut want = strings(&t["stopWords"]);
@@ -322,12 +386,23 @@ fn text_measurement_matches() {
         let lengths: Vec<u64> = word_lengths_as_read(&clean).into_iter().map(|n| n as u64).collect();
         let want: Vec<u64> = v["asReadLengths"].as_array().expect("asReadLengths").iter().map(|n| n.as_u64().expect("length")).collect();
         r.same(|| format!("wordLengthsAsRead({})", at()), &lengths, &want);
+        // As typed: cleaned without reading look-alike letters, which is what a curse reads.
+        let typed = clean_verse_with(raw, false);
+        r.same(|| format!("cleanVerse({}, {{ unmix: false }})", at()), &typed.as_str(), &text(&v["typed"]));
+        r.same(|| format!("wordsAsRead(typed {})", at()), &words_as_read(&typed), &strings(&v["typedAsRead"]));
+        let lengths: Vec<u64> = word_lengths_as_read(&typed).into_iter().map(|n| n as u64).collect();
+        let want: Vec<u64> =
+            v["typedAsReadLengths"].as_array().expect("typedAsReadLengths").iter().map(|n| n.as_u64().expect("length")).collect();
+        r.same(|| format!("wordLengthsAsRead(typed {})", at()), &lengths, &want);
         let body = substance(&clean);
-        r.same(
+        r.same_json(
             || format!("substance({})", at()),
-            &json!({ "ok": body.ok, "distinct": body.distinct, "needed": body.needed }),
+            &json!({ "ok": body.ok, "distinct": body.distinct, "needed": body.needed, "known": body.known, "telling": body.telling }),
             &v["substance"],
         );
+        let mut telling = telling_words(&clean);
+        telling.sort();
+        r.same(|| format!("tellingWords({})", at()), &telling, &strings(&v["telling"]));
         let spans: Vec<Value> = lines
             .iter()
             .map(|l| match syllable_span(l, "en") {
@@ -349,8 +424,15 @@ fn text_measurement_matches() {
         let counts = syllable_counts(word, "en").map(|c| c.into_iter().map(u64::from).collect::<Vec<_>>());
         let want = w["counts"].as_array().map(|c| c.iter().map(|n| n.as_u64().expect("count")).collect::<Vec<_>>());
         r.same(|| format!("syllableCounts({word:?})"), &counts, &want);
-        let known = pronounce(word).map(|p| json!({ "counts": p.counts, "keys": p.keys }));
+        let known = pronounce(word).map(|p| json!({ "counts": p.counts, "keys": p.keys, "spelled": p.spelled, "unlisted": p.unlisted }));
         r.same(|| format!("pronounce({word:?})"), &known.unwrap_or(Value::Null), &w["pron"]);
+        r.same(|| format!("lexiconHas({word:?})"), &Some(lexicon_has(word)), &w["lexicon"].as_bool());
+        r.same(|| format!("isContentWord({word:?})"), &Some(is_content_word(word)), &w["content"].as_bool());
+        r.same(
+            || format!("isTellingWord({word:?}, alone and in a phrase)"),
+            &json!([is_telling_word(word, false), is_telling_word(word, true)]),
+            &w["telling"],
+        );
         r.same(|| format!("letterAsRead({word:?})"), &letter_as_read(word).as_str(), &text(&w["asRead"]));
         let key: Vec<u64> = rhyme_key(word).into_iter().map(u64::from).collect();
         let want: Vec<u64> = w["key"].as_array().expect("key").iter().map(|u| u.as_u64().expect("unit")).collect();
@@ -361,10 +443,17 @@ fn text_measurement_matches() {
         let (a, b) = (text(&p["a"]), text(&p["b"]));
         r.same(|| format!("rhymes({a:?}, {b:?})"), &rhymes(a, b), &p["rhymes"].as_bool().expect("rhymes"));
     }
-    for p in t["similar"].as_array().expect("similar") {
+    let similar = t["similar"].as_array().expect("similar");
+    assert!(similar.iter().filter(|p| p["copy"].as_bool() == Some(true)).count() >= 50, "too few copies in text.json");
+    assert!(similar.iter().filter(|p| p["copy"].as_bool() == Some(false)).count() >= 200, "too few honest pairs in text.json");
+    for p in similar {
         let (a, b) = (text(&p["verse"]), text(&p["source"]));
         // Exactly: both sides divide the same two whole numbers in IEEE 754 doubles.
         r.same(|| format!("similarity({}, {})", short(a), short(b)), &Some(similarity(a, b)), &p["similarity"].as_f64());
+        let (va, vb) = (clean_verse(a), clean_verse(b));
+        r.same_json(|| format!("copyOf({}, {})", short(a), short(b)), &copy_json(&copy_of(&va, &vb, false)), &p["content"]);
+        r.same_json(|| format!("copyOf({}, {}, {{ all: true }})", short(a), short(b)), &copy_json(&copy_of(&va, &vb, true)), &p["all"]);
+        r.same(|| format!("isCopy({}, {})", short(a), short(b)), &Some(is_copy(&va, &vb)), &p["copy"].as_bool());
     }
     for p in t["ends"].as_array().expect("ends") {
         let (a, b) = (text(&p["a"]), text(&p["b"]));
@@ -382,8 +471,12 @@ fn devices_curses_signatures_power_words_and_forms_match() {
     for c in t["devices"].as_array().expect("devices") {
         let (id, verse) = (text(&c["id"]), text(&c["verse"]));
         let opponent_verse = opt_text(&c["opponentVerse"]);
-        let met = check_device(id, verse, &DeviceContext { opponent_verse, names }).expect("device exists");
-        r.same(|| format!("device {id} on {} (opponent: {:?})", short(verse), opponent_verse.map(short)), &met, &c["met"].as_bool().expect("met"));
+        let d = check_device(id, verse, &DeviceContext { opponent_verse, names }).expect("device exists");
+        r.same(
+            || format!("device {id} on {} (opponent: {:?})", short(verse), opponent_verse.map(short)),
+            &(d.met, d.words),
+            &(c["met"].as_bool().expect("met"), strings(&c["words"])),
+        );
     }
     for c in t["curses"].as_array().expect("curses") {
         let (id, param, verse) = (text(&c["id"]), text(&c["param"]), text(&c["verse"]));
@@ -393,7 +486,12 @@ fn devices_curses_signatures_power_words_and_forms_match() {
     for c in t["signature"].as_array().expect("signature") {
         let card = card_by_id(text(&c["cardId"])).expect("card exists");
         let verse = text(&c["verse"]);
-        r.same(|| format!("signature of {} on {}", card.id, short(verse)), &check_signature(card, verse), &c["met"].as_bool().expect("met"));
+        let sig = check_signature_words(card, verse);
+        r.same(
+            || format!("signature of {} on {}", card.id, short(verse)),
+            &(sig.is_some(), sig.unwrap_or_default()),
+            &(c["met"].as_bool().expect("met"), strings(&c["words"])),
+        );
     }
     for c in t["power"].as_array().expect("power") {
         let verse = text(&c["verse"]);
@@ -405,8 +503,13 @@ fn devices_curses_signatures_power_words_and_forms_match() {
         let acrostic = opt_text(&c["acrostic"]);
         let verse = text(&c["verse"]);
         let s = score_form(form, verse, &FormContext { lang: "en", acrostic });
-        let want = json!({ "earned": c["earned"], "kept": c["kept"], "thin": c["thin"], "checks": c["checks"] });
-        r.same(|| format!("form {} (acrostic {acrostic:?}) on {}", form.id, short(verse)), &form_json(&s), &want);
+        let want = json!({ "earned": c["earned"], "kept": c["kept"], "thin": c["thin"], "scale": c["scale"], "checks": c["checks"] });
+        r.same_json(|| format!("form {} (acrostic {acrostic:?}) on {}", form.id, short(verse)), &form_json(&s), &want);
+    }
+    for c in t["own"].as_array().expect("own") {
+        let verse = text(&c["verse"]);
+        let used = strings(&c["used"]);
+        r.same(|| format!("ownContent({}, {used:?})", short(verse)), &(own_content(verse, &used) as u64), &c["own"].as_u64().expect("own"));
     }
     r.finish(5000);
 }
@@ -431,7 +534,7 @@ fn score_verse_matches() {
             lent: s.lent.as_deref(),
             trusted: c["trusted"].as_bool().expect("trusted"),
         });
-        r.same(
+        r.same_json(
             || format!("scoreVerse: form {} ({acrostic:?}), card {}, deck {:?}, curse {:?}, lent {:?}, trusted {}, answering {:?}, verse {}",
                 form.id, s.card_id, s.deck, s.curse, s.lent, c["trusted"], opponent_verse.map(short), short(&s.verse)),
             &score_json(&score),
@@ -514,7 +617,7 @@ fn single_player_rounds_match() {
             "winner": e["winner"],
             "matchWinner": e["matchWinner"],
         });
-        r.same(|| format!("resolveRound case {i}: form {}, {} against {}", form.id, short(&p.verse), short(&o.verse)), &got, &want);
+        r.same_json(|| format!("resolveRound case {i}: form {}, {} against {}", form.id, short(&p.verse), short(&o.verse)), &got, &want);
     }
     r.finish(200);
 }
@@ -583,7 +686,7 @@ fn online_plans_rounds_and_matches_match() {
         let e = &c["expect"];
         let want_side = |s: &Value| json!({ "verse": s["verse"], "score": expected_score(&s["score"]), "judge": s["judge"], "total": s["total"] });
         let want = json!({ "a": want_side(&e["a"]), "b": want_side(&e["b"]), "criteria": e["criteria"], "winner": e["winner"] });
-        r.same(|| format!("resolveOnlineRound case {i}: form {}, {} against {}", plan.form_id, short(&a.2), short(&b.2)), &got, &want);
+        r.same_json(|| format!("resolveOnlineRound case {i}: form {}, {} against {}", plan.form_id, short(&a.2), short(&b.2)), &got, &want);
     }
     for m in t["matches"].as_array().expect("matches") {
         let rounds: Vec<(RoundWinner, u32, u32)> = m["rounds"]

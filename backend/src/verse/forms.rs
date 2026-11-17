@@ -6,8 +6,8 @@ use std::sync::LazyLock;
 use serde::Serialize;
 
 use super::text::{
-    first_unit, fold, hiragana, is_js_space, js_trim, line_length, lines_of, rhyme_ends, rhymes, substance,
-    syllable_span,
+    first_unit, fold, hiragana, is_js_space, js_round, js_trim, line_length, lines_of, rhyme_ends, rhymes, substance,
+    syllable_span, FULL_KNOWN_SHARE, TELLING_PER_LINE,
 };
 
 pub const FORM_POINTS: u32 = 20;
@@ -44,6 +44,19 @@ pub struct Form {
     /// Needs syllable counting, so only offered where syllables can be counted.
     pub needs_syllables: bool,
     pub requirements: Vec<Requirement>,
+}
+
+impl Form {
+    /// Lines the form asks for (`Form.lines(ctx)`): what a multiplier's substance is measured
+    /// against. An acrostic asks for a line per unit of its word.
+    pub fn lines(&self, ctx: &FormContext) -> usize {
+        match self.id {
+            "couplet" | "heroic-couplet" => 2,
+            "quatrain-aabb" | "quatrain-abab" => 4,
+            "acrostic" => acrostic_units(ctx.acrostic.unwrap_or("")).len(),
+            _ => 3,
+        }
+    }
 }
 
 fn lines(n: usize, points: u32) -> Requirement {
@@ -134,7 +147,7 @@ pub struct CheckResult {
     pub met: bool,
 }
 
-#[derive(Debug, Clone, PartialEq, Eq, Serialize)]
+#[derive(Debug, Clone, PartialEq, Serialize)]
 pub struct FormScore {
     pub form_id: String,
     pub checks: Vec<CheckResult>,
@@ -144,6 +157,10 @@ pub struct FormScore {
     /// The text is too thin to be a verse (`text::substance`): no requirement is met and
     /// nothing is earned.
     pub thin: bool,
+    /// The share of the points kept: 1 when the verse is words of its language
+    /// (`FULL_KNOWN_SHARE` and above) and says something in each line (`TELLING_PER_LINE`
+    /// telling words a line), less when it falls short of either.
+    pub scale: f64,
 }
 
 /// What each line of an acrostic must open with: one letter per line, or, for a phrase
@@ -183,11 +200,11 @@ fn check(rule: &Rule, lines: &[&str], ctx: &FormContext) -> bool {
                 return false;
             }
             // A word can be said more than one way, so a line has a range of counts and keeps
-            // the form when the target is inside it. A line with a word the pronunciation
-            // table lacks, counted by a guess from its spelling, is allowed one either way.
+            // the form when the target is inside it. A word the pronunciation table lacks is
+            // counted by its spelling and buys no slack, or any made-up word would.
             match syllable_span(lines[*index], ctx.lang) {
                 Some(span) => {
-                    let slack = (*tolerance).max(i64::from(span.guessed > 0));
+                    let slack = *tolerance;
                     *target >= i64::from(span.min) - slack && *target <= i64::from(span.max) + slack
                 }
                 None => false,
@@ -218,7 +235,8 @@ fn check(rule: &Rule, lines: &[&str], ctx: &FormContext) -> bool {
 pub fn score_form(form: &Form, verse: &str, ctx: &FormContext) -> FormScore {
     let lines = lines_of(verse);
     // A form is kept by a verse, not by tokens laid out in its shape.
-    let thin = !lines.is_empty() && !substance(verse).ok;
+    let body = substance(verse);
+    let thin = !lines.is_empty() && !body.ok;
     let checks: Vec<CheckResult> = form
         .requirements
         .iter()
@@ -227,9 +245,18 @@ pub fn score_form(form: &Form, verse: &str, ctx: &FormContext) -> FormScore {
             CheckResult { id: r.id.clone(), points: r.points, earned: if met { r.points } else { 0 }, met }
         })
         .collect();
-    let earned = checks.iter().map(|c| c.earned).sum();
+    if thin {
+        return FormScore { form_id: form.id.to_string(), checks, earned: 0, kept: false, thin, scale: 0.0 };
+    }
+    // Points are for words that say something: the part of the verse that is not words earns
+    // nothing, and a verse of words too slight to tell anything earns for the lines it fills
+    // with telling words, not for the lines it lays out.
+    let told = body.telling as f64 / (TELLING_PER_LINE * lines.len() as f64);
+    let scale = if lines.is_empty() { 1.0 } else { 1f64.min(body.known / FULL_KNOWN_SHARE).min(told) };
+    let sum: u32 = checks.iter().map(|c| c.earned).sum();
+    let earned = js_round(f64::from(sum) * scale) as u32;
     let kept = checks.iter().all(|c| c.met);
-    FormScore { form_id: form.id.to_string(), checks, earned, kept, thin }
+    FormScore { form_id: form.id.to_string(), checks, earned, kept, thin, scale }
 }
 
 #[cfg(test)]

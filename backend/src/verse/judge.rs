@@ -8,10 +8,10 @@ use std::sync::LazyLock;
 use serde::Serialize;
 
 use super::cards::{CARDS, CHARACTER_NAMES};
-use super::devices::{signature_words, POINTED_END};
+use super::devices::signature_words;
 use super::text::{
-    clean_verse, fold, is_stop_word, letter_count, line_length, lines_of, rhyme_ends, rhymes, rules, substance,
-    syllables_in_line, word_parts, word_span, words_of, STOP_WORDS,
+    clean_verse, fold, is_stop_word, letter_count, lexicon_has, line_length, lines_of, rhyme_ends, rhymes, rules,
+    substance, syllables_in_line, word_parts, word_span, words_of, STOP_WORDS,
 };
 
 /// Points the judge shares between the two verses each round.
@@ -59,7 +59,8 @@ pub static LEXICON: LazyLock<HashSet<String>> = LazyLock::new(|| {
     }
     for card in CARDS.iter() {
         for w in signature_words(card) {
-            if letter_count(&w) >= 4 && !STOP_WORDS.contains(w.as_str()) {
+            // A signature phrase (Viola's "not what") is not a word.
+            if !w.contains(' ') && letter_count(&w) >= 4 && !STOP_WORDS.contains(w.as_str()) {
                 lexicon.insert(w);
             }
         }
@@ -73,14 +74,20 @@ pub static LEXICON: LazyLock<HashSet<String>> = LazyLock::new(|| {
 // The arithmetic below is written in the same order as the TypeScript, operation for
 // operation: both sides compute in IEEE 754 doubles, so the same order gives the same bits.
 
-/// Wordplay: how many different words that carry meaning, for the verse's length.
+/// Most different telling words wordplay counts: past this a verse is long, not varied.
+const MAX_VARIETY: usize = 30;
+
+/// Wordplay: how many different words that carry meaning (long enough, not the little words,
+/// and words of the language: the lexicon). Only how many: a share of the verse's words
+/// rewarded stuffing, and words strung with nothing between them won it outright.
 fn variety(verse: &str) -> f64 {
-    let all: Vec<String> = word_parts(verse).iter().map(|w| fold(w)).collect();
-    if all.is_empty() {
-        return 0.0;
-    }
-    let telling = all.iter().filter(|w| letter_count(w) > 0 && !is_stop_word(w)).collect::<HashSet<_>>().len();
-    telling as f64 / all.len() as f64 + telling.min(30) as f64 / 60.0
+    let telling = word_parts(verse)
+        .iter()
+        .map(|w| fold(w))
+        .filter(|w| word_span(w) >= rules::CONTENT && !is_stop_word(w) && lexicon_has(w))
+        .collect::<HashSet<_>>()
+        .len();
+    telling.min(MAX_VARIETY) as f64
 }
 
 /// Below anything a verse of two lines or more can score: one line has no flow to judge.
@@ -119,18 +126,14 @@ fn allusion_score(verse: &str, lexicon: &HashSet<String>) -> f64 {
 /// Most words thrown back that count: past this it is repetition, not wit.
 const MAX_THROWN: usize = 3;
 
-/// Wit: a comeback. Telling words, long enough, taken from the verse being answered
-/// (`answered`: nothing for a verse that opens). A line that ends in a question or an
-/// outcry breaks a tie and no more.
-fn wit_score(verse: &str, answered: Option<&str>) -> f64 {
-    let theirs: HashSet<String> = words_of(answered.unwrap_or(""))
-        .iter()
-        .filter(|w| word_span(w) >= rules::RIPOSTE && !is_stop_word(w))
-        .map(|w| fold(w))
-        .collect();
+/// Wit: a comeback. Telling words, long enough, taken from the verse being answered.
+/// Punctuation counts for nothing: an "!" at the end of a line decided wit whenever no words
+/// were thrown, which is every first round.
+fn wit_score(verse: &str, answered: &str) -> f64 {
+    let theirs: HashSet<String> =
+        words_of(answered).iter().filter(|w| word_span(w) >= rules::RIPOSTE && !is_stop_word(w)).map(|w| fold(w)).collect();
     let thrown = words_of(verse).iter().map(|w| fold(w)).filter(|w| theirs.contains(w)).collect::<HashSet<_>>().len();
-    let pointed = lines_of(verse).iter().filter(|l| POINTED_END.is_match(l) && line_length(l) >= 2).count();
-    thrown.min(MAX_THROWN) as f64 + pointed.min(2) as f64 * 0.1
+    thrown.min(MAX_THROWN) as f64
 }
 
 /// Turn the four pairs of scores into a split. Text too thin to be a verse
@@ -159,25 +162,26 @@ fn decide(scores: [(f64, f64); 4], real: (bool, bool)) -> JudgeSplit {
     JudgeSplit { player, opponent: JUDGE_POOL - player, criteria }
 }
 
-/// The four criterion scores for each verse, before they are compared. `answered_by_player`
-/// and `answered_by_opponent` are the verses each side's comeback is read against.
-fn scores(p: &str, o: &str, lang: &str, lexicon: &HashSet<String>, answered: (Option<&str>, Option<&str>)) -> [(f64, f64); 4] {
+/// The four criterion scores for each verse, before they are compared. `answered` is the
+/// pair of verses each side's comeback is read against, when both sides answered one; with
+/// none, wit is level (a split): neither side could do the thing it measures.
+fn scores(p: &str, o: &str, lang: &str, lexicon: &HashSet<String>, answered: Option<(&str, &str)>) -> [(f64, f64); 4] {
     [
         (variety(p), variety(o)),
         (allusion_score(p, lexicon), allusion_score(o, lexicon)),
         (sound_score(p, lang), sound_score(o, lang)),
-        (wit_score(p, answered.0), wit_score(o, answered.1)),
+        match answered {
+            Some((by_p, by_o)) => (wit_score(p, by_p), wit_score(o, by_o)),
+            None => (0.0, 0.0),
+        },
     ]
 }
 
-/// A previous verse as the judge reads it: cleaned, and nothing if there is none.
-fn earlier(verse: Option<&str>) -> Option<String> {
-    verse.filter(|v| !v.is_empty()).map(clean_verse)
-}
-
 /// Compare two verses by measurable features alone (`rulesJudge`), as the single-player
-/// duel does: the player answers the opponent's verse of this round; the opponent answers
-/// `previous_player_verse`, the player's verse of the round before.
+/// duel does. The player answers the opponent's verse of this round; `previous_player_verse`
+/// is given when the opponent's verse answers the player's verse of the round before (a
+/// model wrote it to), and only then are the comebacks of both compared. An empty previous
+/// verse is still one that was given (`!== undefined`).
 pub fn rules_judge(
     player_verse: &str,
     opponent_verse: &str,
@@ -187,13 +191,16 @@ pub fn rules_judge(
 ) -> JudgeSplit {
     let p = clean_verse(player_verse);
     let o = clean_verse(opponent_verse);
-    let before = earlier(previous_player_verse);
-    decide(scores(&p, &o, lang, lexicon, (Some(&o), before.as_deref())), (substance(&p).ok, substance(&o).ok))
+    let before = previous_player_verse.map(clean_verse);
+    let answered = before.as_deref().map(|b| (o.as_str(), b));
+    decide(scores(&p, &o, lang, lexicon, answered), (substance(&p).ok, substance(&o).ok))
 }
 
 /// The same comparison for an online round, where both verses are written at once and
 /// neither side has seen the other's: each side's comeback is read against the other
-/// side's verse of the round before (`onlineJudge` in multiplayer-rules.ts).
+/// side's verse of the round before (`onlineJudge` in multiplayer-rules.ts). Comebacks are
+/// compared only when both sides had a verse to answer (from the second round on, unless
+/// one side's verse of the round before was empty); otherwise wit is a split.
 pub fn online_judge(
     verse_a: &str,
     verse_b: &str,
@@ -204,8 +211,12 @@ pub fn online_judge(
 ) -> JudgeSplit {
     let a = clean_verse(verse_a);
     let b = clean_verse(verse_b);
-    let (before_b, before_a) = (earlier(previous_b), earlier(previous_a));
-    decide(scores(&a, &b, lang, lexicon, (before_b.as_deref(), before_a.as_deref())), (substance(&a).ok, substance(&b).ok))
+    let before = match (previous_b.filter(|v| !v.is_empty()), previous_a.filter(|v| !v.is_empty())) {
+        (Some(pb), Some(pa)) => Some((clean_verse(pb), clean_verse(pa))),
+        _ => None,
+    };
+    let answered = before.as_ref().map(|(pb, pa)| (pb.as_str(), pa.as_str()));
+    decide(scores(&a, &b, lang, lexicon, answered), (substance(&a).ok, substance(&b).ok))
 }
 
 #[cfg(test)]
@@ -254,13 +265,17 @@ mod tests {
     }
 
     #[test]
-    fn wit_is_a_word_thrown_back_and_punctuation_only_breaks_a_tie() {
-        assert_eq!(wit_score("Thy candle gutters", Some("My candle burns")), 1.0);
-        assert_eq!(wit_score("Thy candle gutters", None), 0.0);
-        assert_eq!(wit_score("What is this?\nWhat now!\nAgain, why?", None), 0.2);
-        assert_eq!(wit_score("?\n!", None), 0.0);
+    fn wit_is_a_word_thrown_back_and_punctuation_counts_for_nothing() {
+        assert_eq!(wit_score("Thy candle gutters", "My candle burns"), 1.0);
+        assert_eq!(wit_score("Thy candle gutters", ""), 0.0);
+        assert_eq!(wit_score("What is this?\nWhat now!\nAgain, why?", ""), 0.0);
         // Little words thrown back are not wit.
-        assert_eq!(wit_score("There where it was", Some("Where there is nothing")), 0.0);
+        assert_eq!(wit_score("There where it was", "Where there is nothing"), 0.0);
+        // With nothing answered on either side, wit is a split, however pointed a verse is.
+        let pointed = "What is this tower?\nWho dares the night!";
+        let plain = "The tower stands tonight\nThe night is long and bright";
+        assert_eq!(rules_judge(pointed, plain, "en", &LEXICON, None).criteria[3], Verdict::Split);
+        assert_eq!(online_judge(pointed, plain, "en", &LEXICON, Some("A candle"), None).criteria[3], Verdict::Split);
     }
 
     #[test]

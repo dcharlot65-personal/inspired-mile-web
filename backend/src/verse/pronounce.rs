@@ -26,6 +26,12 @@ pub struct Pronunciation {
     pub counts: Vec<u32>,
     /// Rhyme keys: the sounds from the last stressed vowel on, one per pronunciation.
     pub keys: Vec<&'static str>,
+    /// The dictionary only says it letter by letter ("cd", "tv"): an abbreviation, not a word
+    /// (marked "*" in the table).
+    pub spelled: bool,
+    /// A dictionary of words (SCOWL) does not list it: a name, an abbreviation said as a word or
+    /// a fragment (marked "^"). Rhyme and syllables still use it.
+    pub unlisted: bool,
 }
 
 /// The table's data: what the module exports, between the back-ticks of its template
@@ -51,9 +57,13 @@ static TABLE: LazyLock<HashMap<&'static str, Pronunciation>> = LazyLock::new(|| 
         }
         let key = &line[..tab];
         for entry in line[tab + 1..].split(' ') {
-            // /^(.*?)(\d+)$/: the word, then every digit the entry ends in.
-            let word = entry.trim_end_matches(|c: char| c.is_ascii_digit());
-            let digits = &entry[word.len()..];
+            // /^(.*?)(\d+)([*^]?)$/: the word, every digit after it, and at most one mark.
+            let (rest, mark) = match entry.strip_suffix(['*', '^']) {
+                Some(rest) => (rest, &entry[rest.len()..]),
+                None => (entry, ""),
+            };
+            let word = rest.trim_end_matches(|c: char| c.is_ascii_digit());
+            let digits = &rest[word.len()..];
             if digits.is_empty() {
                 continue;
             }
@@ -61,7 +71,7 @@ static TABLE: LazyLock<HashMap<&'static str, Pronunciation>> = LazyLock::new(|| 
                 Some(p) => p.keys.push(key),
                 None => {
                     let counts = digits.bytes().map(|b| u32::from(b - b'0')).collect();
-                    table.insert(word, Pronunciation { counts, keys: vec![key] });
+                    table.insert(word, Pronunciation { counts, keys: vec![key], spelled: mark == "*", unlisted: mark == "^" });
                 }
             }
         }
@@ -141,6 +151,11 @@ mod tests {
             assert!(pronounce(word).is_some(), "{word}");
         }
         assert!(pronounce("zzyzxqq").is_none());
+        // The marks: an abbreviation said letter by letter, and a string SCOWL does not list.
+        assert!(pronounce("cia").is_some_and(|p| p.spelled) && pronounce("dna").is_some_and(|p| p.spelled));
+        assert!(pronounce("tv").is_some_and(|p| p.unlisted && !p.spelled));
+        assert!(pronounce("night").is_some_and(|p| !p.spelled && !p.unlisted));
+        assert!(TABLE.values().filter(|p| p.unlisted).count() > 10_000);
     }
 
     #[test]

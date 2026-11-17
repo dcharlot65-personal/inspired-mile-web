@@ -23,6 +23,22 @@ pub struct DeviceContext<'a> {
     pub names: &'a [String],
 }
 
+/// Whether a verse lands a device, and the verse's words that landed it, folded (`DeviceResult`
+/// without its `detail`): the repeated word, the rhyming pair, the name. What the verse says
+/// beyond them is what a multiplier multiplies. Empty for a device of shape (a question, a
+/// line length).
+#[derive(Debug, Clone, PartialEq, Eq, Default)]
+pub struct DeviceResult {
+    pub met: bool,
+    pub words: Vec<String>,
+}
+
+impl DeviceResult {
+    fn shape(met: bool) -> Self {
+        Self { met, words: Vec::new() }
+    }
+}
+
 /// Every device id, in the order of `DEVICES` in devices.ts.
 pub const DEVICE_IDS: [&str; 13] = [
     "question", "exclaim", "alliteration", "repetition", "internal-rhyme", "riposte", "brevity", "swell", "balance",
@@ -39,8 +55,6 @@ fn ending(marks: &str) -> Regex {
 
 static QUESTION_END: LazyLock<Regex> = LazyLock::new(|| ending("?？؟"));
 static EXCLAIM_END: LazyLock<Regex> = LazyLock::new(|| ending("!！"));
-/// A question or an outcry: what the judge's wit score counts as a pointed line.
-pub(super) static POINTED_END: LazyLock<Regex> = LazyLock::new(|| ending("?!？！؟"));
 static HAS_LETTER: LazyLock<Regex> = LazyLock::new(|| Regex::new(r"\p{L}").expect("letter pattern"));
 
 /// A line ending in the mark that has a word in it (`lineEnding`): punctuation alone asks
@@ -53,41 +67,72 @@ fn line_lengths(verse: &str) -> Vec<usize> {
     lines_of(verse).iter().map(|l| line_length(l)).collect()
 }
 
-/// Whether a verse lands a device. `None` for a device id that does not exist.
-pub fn check_device(id: &str, verse: &str, ctx: &DeviceContext) -> Option<bool> {
-    let min = rules::CONTENT.min(3);
-    let met = match id {
-        "question" => line_ends(verse, &QUESTION_END),
-        "exclaim" => line_ends(verse, &EXCLAIM_END),
-        "alliteration" => lines_of(verse).iter().any(|line| {
-            // Three different words, and not the little ones.
-            let distinct: HashSet<String> = words_of(line).iter().map(|w| fold(w)).collect();
-            let mut counts: HashMap<String, usize> = HashMap::new();
-            for w in distinct {
-                if word_span(&w) < min || is_stop_word(&w) {
-                    continue;
-                }
-                *counts.entry(initial(&w)).or_default() += 1;
-            }
-            counts.values().any(|n| *n >= 3)
-        }),
-        "repetition" => {
-            let mut counts: HashMap<String, usize> = HashMap::new();
-            for w in content_words(verse) {
-                if !is_stop_word(&w) {
-                    *counts.entry(fold(&w)).or_default() += 1;
-                }
-            }
-            counts.values().any(|n| *n >= 3)
+/// Distinct items in the order they first appear, as a JavaScript `Set` keeps them.
+fn distinct_in_order(items: impl IntoIterator<Item = String>) -> Vec<String> {
+    let mut seen = HashSet::new();
+    items.into_iter().filter(|w| seen.insert(w.clone())).collect()
+}
+
+/// Counts in the order each key first appears, as a JavaScript `Map` keeps them.
+fn counts_in_order(keys: impl IntoIterator<Item = String>) -> Vec<(String, usize)> {
+    let mut out: Vec<(String, usize)> = Vec::new();
+    for k in keys {
+        match out.iter_mut().find(|(have, _)| *have == k) {
+            Some((_, n)) => *n += 1,
+            None => out.push((k, 1)),
         }
-        "internal-rhyme" => lines_of(verse).iter().any(|line| {
-            let ws: Vec<String> =
-                words_of(line).into_iter().filter(|w| word_span(w) >= min && !is_stop_word(w)).collect();
-            (0..ws.len()).any(|i| (i + 1..ws.len()).any(|j| rhymes(&ws[i], &ws[j])))
-        }),
+    }
+    out
+}
+
+/// Whether a verse lands a device, and with which words. `None` for a device id that does
+/// not exist.
+pub fn check_device(id: &str, verse: &str, ctx: &DeviceContext) -> Option<DeviceResult> {
+    let min = rules::CONTENT.min(3);
+    let result = match id {
+        "question" => DeviceResult::shape(line_ends(verse, &QUESTION_END)),
+        "exclaim" => DeviceResult::shape(line_ends(verse, &EXCLAIM_END)),
+        "alliteration" => {
+            let mut found = DeviceResult::default();
+            for line in lines_of(verse) {
+                // Three different words, and not the little ones.
+                let distinct = distinct_in_order(words_of(line).iter().map(|w| fold(w)));
+                let keep = |w: &String| word_span(w) >= min && !is_stop_word(w);
+                let counts = counts_in_order(distinct.iter().filter(|w| keep(w)).map(|w| initial(w)));
+                if let Some((k, _)) = counts.into_iter().find(|(_, n)| *n >= 3) {
+                    let words = distinct.iter().filter(|w| keep(w) && initial(w) == k).cloned().collect();
+                    found = DeviceResult { met: true, words };
+                    break;
+                }
+            }
+            found
+        }
+        "repetition" => {
+            let counts = counts_in_order(content_words(verse).into_iter().filter(|w| !is_stop_word(w)).map(|w| fold(&w)));
+            match counts.into_iter().find(|(_, n)| *n >= 3) {
+                Some((w, _)) => DeviceResult { met: true, words: vec![w] },
+                None => DeviceResult::default(),
+            }
+        }
+        "internal-rhyme" => {
+            let mut found = DeviceResult::default();
+            'lines: for line in lines_of(verse) {
+                let ws: Vec<String> =
+                    words_of(line).into_iter().filter(|w| word_span(w) >= min && !is_stop_word(w)).collect();
+                for i in 0..ws.len() {
+                    for j in i + 1..ws.len() {
+                        if rhymes(&ws[i], &ws[j]) {
+                            found = DeviceResult { met: true, words: vec![fold(&ws[i]), fold(&ws[j])] };
+                            break 'lines;
+                        }
+                    }
+                }
+            }
+            found
+        }
         "riposte" => match ctx.opponent_verse {
             // An empty opponent verse is no verse to answer, as in JavaScript.
-            None | Some("") => false,
+            None | Some("") => DeviceResult::default(),
             Some(theirs) => {
                 let theirs: HashSet<String> = words_of(theirs)
                     .iter()
@@ -95,24 +140,27 @@ pub fn check_device(id: &str, verse: &str, ctx: &DeviceContext) -> Option<bool> 
                     .map(|w| fold(w))
                     .collect();
                 // `!!hit`: a word that folds to nothing is not a hit even if it is "found".
-                words_of(verse).iter().map(|w| fold(w)).find(|w| theirs.contains(w)).is_some_and(|w| !w.is_empty())
+                match words_of(verse).iter().map(|w| fold(w)).find(|w| theirs.contains(w)) {
+                    Some(hit) if !hit.is_empty() => DeviceResult { met: true, words: vec![hit] },
+                    _ => DeviceResult::default(),
+                }
             }
         },
         "brevity" => {
             let counts = line_lengths(verse);
             let longest = counts.iter().copied().max().unwrap_or(0);
-            !counts.is_empty() && longest <= rules::BREVITY && longest > 0
+            DeviceResult::shape(!counts.is_empty() && longest <= rules::BREVITY && longest > 0)
         }
         "swell" => {
             let counts = line_lengths(verse);
-            match counts.split_last() {
+            DeviceResult::shape(match counts.split_last() {
                 Some((last, rest)) if !rest.is_empty() => rest.iter().all(|c| c < last),
                 _ => false,
-            }
+            })
         }
         "balance" => {
             let counts = line_lengths(verse);
-            counts.len() >= 2 && counts.iter().all(|c| *c == counts[0] && *c > 0)
+            DeviceResult::shape(counts.len() >= 2 && counts.iter().all(|c| *c == counts[0] && *c > 0))
         }
         "ring" => {
             let ls = lines_of(verse);
@@ -122,9 +170,11 @@ pub fn check_device(id: &str, verse: &str, ctx: &DeviceContext) -> Option<bool> 
                     let b = last_unit(last);
                     // The TypeScript counts the verse's words with its line breaks read as spaces;
                     // a word never runs across a line break, so the count is the same.
-                    !a.is_empty() && a == b && line_length(verse) > 2
+                    let met = !a.is_empty() && a == b && line_length(verse) > 2;
+                    // The opening word, whether or not the ring closed on it.
+                    DeviceResult { met, words: if a.is_empty() { Vec::new() } else { vec![a] } }
                 }
-                _ => false,
+                _ => DeviceResult::default(),
             }
         }
         "invocation" => {
@@ -132,21 +182,28 @@ pub fn check_device(id: &str, verse: &str, ctx: &DeviceContext) -> Option<bool> 
             let spaced = |text: &str| format!(" {} ", words_of(text).iter().map(|w| fold(w)).collect::<Vec<_>>().join(" "));
             let said = spaced(verse);
             // `!!hit`: an empty name is never a hit.
-            ctx.names.iter().find(|n| said.contains(&spaced(n))).is_some_and(|n| !n.is_empty())
+            match ctx.names.iter().find(|n| said.contains(&spaced(n))) {
+                Some(hit) if !hit.is_empty() => {
+                    DeviceResult { met: true, words: words_of(hit).iter().map(|w| fold(w)).collect() }
+                }
+                _ => DeviceResult::default(),
+            }
         }
         "grandeur" => {
             // Each part of a hyphenated chain is its own word.
-            let big: HashSet<String> =
-                word_parts(verse).iter().filter(|w| letter_count(w) >= rules::GRAND).map(|w| fold(w)).collect();
-            big.len() >= 2
+            let big = distinct_in_order(
+                word_parts(verse).iter().filter(|w| letter_count(w) >= rules::GRAND).map(|w| fold(w)),
+            );
+            DeviceResult { met: big.len() >= 2, words: big.into_iter().take(2).collect() }
         }
         "monorhyme" => {
             let ends: Vec<String> = lines_of(verse).iter().map(|l| last_word(l)).collect();
-            ends.len() >= 2 && ends.iter().skip(1).all(|w| rhymes(&ends[0], w))
+            let met = ends.len() >= 2 && ends.iter().skip(1).all(|w| rhymes(&ends[0], w));
+            DeviceResult { met, words: if met { ends.iter().map(|w| fold(w)).collect() } else { Vec::new() } }
         }
         _ => return None,
     };
-    Some(met)
+    Some(result)
 }
 
 /// Which device each house fights with (`HOUSE_DEVICE`).
@@ -232,57 +289,74 @@ fn quote_words(card: &Card) -> Vec<String> {
     word_parts(&card.quote).iter().map(|w| stem(w)).collect()
 }
 
-fn distinct(words: impl IntoIterator<Item = String>) -> Vec<String> {
-    let mut seen = HashSet::new();
-    words.into_iter().filter(|w| seen.insert(w.clone())).collect()
-}
-
 fn telling_words(card: &Card) -> Vec<String> {
-    distinct(quote_words(card).into_iter().filter(|w| letter_count(w) >= 4 && !STOP_WORDS.contains(w.as_str())))
+    distinct_in_order(quote_words(card).into_iter().filter(|w| letter_count(w) >= 4 && !STOP_WORDS.contains(w.as_str())))
 }
 
 /// The words of a card's line that a verse can echo (`signatureWords`): those of four
-/// letters or more that are not everyday grammar. A line with none falls back to its two
-/// longest words, and then both are needed.
+/// letters or more that are not everyday grammar. A line with none of those (Viola's "I am
+/// not what I am.") is all little words, and no single one of them is an echo: a verse echoes
+/// it by its longest two words said together, in the line's order, as one phrase ("not
+/// what"). A signature is never one stop word.
 pub fn signature_words(card: &Card) -> Vec<String> {
     let telling = telling_words(card);
     if !telling.is_empty() {
         return telling;
     }
-    let mut fallback: Vec<String> = distinct(quote_words(card)).into_iter().filter(|w| letter_count(w) >= 3).collect();
-    // Longest first; words of equal length keep the order of the line (a stable sort, as in JavaScript).
-    fallback.sort_by(|a, b| letter_count(b).cmp(&letter_count(a)));
-    fallback.truncate(2);
-    fallback
+    let quote = quote_words(card);
+    let mut best: i64 = -1;
+    let mut at: Option<usize> = None;
+    for i in 0..quote.len().saturating_sub(1) {
+        let n = (letter_count(&quote[i]) + letter_count(&quote[i + 1])) as i64;
+        if quote[i] != quote[i + 1] && n > best {
+            best = n;
+            at = Some(i);
+        }
+    }
+    match at {
+        Some(i) => vec![format!("{} {}", quote[i], quote[i + 1])],
+        None => Vec::new(),
+    }
 }
 
-/// How many signature words a verse must use (`signatureNeeded`).
+/// How many signature words a verse must use (`signatureNeeded`): two of a line's three
+/// telling words or more, else one (a phrase counts as one).
 pub fn signature_needed(card: &Card) -> usize {
     let sig = signature_words(card);
-    if telling_words(card).is_empty() {
-        sig.len()
-    } else if sig.len() >= 3 {
-        2
-    } else {
-        sig.len().min(1)
-    }
+    if sig.len() >= 3 { 2 } else { sig.len().min(1) }
 }
 
 /// The signature lands when the verse uses enough telling words from the card's line but
-/// does not simply recite it: four words running from the quote is a quotation.
-pub fn check_signature(card: &Card, verse: &str) -> bool {
+/// does not simply recite it: four words running from the quote is a quotation. A phrase is
+/// echoed when its words are said together, in its order, within a line. Returns the words
+/// that landed it (each word of an echoed phrase), or `None` when it does not land.
+pub fn check_signature_words(card: &Card, verse: &str) -> Option<Vec<String>> {
     let sig = signature_words(card);
     if sig.is_empty() {
-        return false;
+        return None;
     }
     let spoken: Vec<String> = word_parts(verse).iter().map(|w| stem(w)).collect();
     let said: HashSet<String> = words_of(verse).iter().map(|w| stem(w)).chain(spoken.iter().cloned()).collect();
-    if sig.iter().filter(|w| said.contains(*w)).count() < signature_needed(card) {
-        return false;
+    let lines: Vec<String> =
+        lines_of(verse).iter().map(|l| format!(" {} ", word_parts(l).iter().map(|w| stem(w)).collect::<Vec<_>>().join(" "))).collect();
+    let echoed: Vec<&String> = sig
+        .iter()
+        .filter(|w| if w.contains(' ') { lines.iter().any(|l| l.contains(&format!(" {w} "))) } else { said.contains(*w) })
+        .collect();
+    if echoed.len() < signature_needed(card) {
+        return None;
     }
     // A quotation is four of the quote's words in a row, compared word by word.
     let quote = quote_words(card);
-    !quote.windows(4).any(|run| spoken.windows(4).any(|said| said == run))
+    if quote.windows(4).any(|run| spoken.windows(4).any(|said| said == run)) {
+        return None;
+    }
+    Some(echoed.iter().flat_map(|w| w.split(' ').map(String::from)).collect())
+}
+
+/// Whether the signature lands (`checkSignature(...).met`).
+pub fn check_signature(card: &Card, verse: &str) -> bool {
+    check_signature_words(card, verse).is_some()
 }
 
 // --- Curses (potions) ---
@@ -392,7 +466,11 @@ mod tests {
     use super::*;
 
     fn lands(id: &str, verse: &str) -> bool {
-        check_device(id, verse, &DeviceContext { opponent_verse: None, names: &CHARACTER_NAMES }).expect("device exists")
+        check_device(id, verse, &DeviceContext { opponent_verse: None, names: &CHARACTER_NAMES }).expect("device exists").met
+    }
+
+    fn words(id: &str, verse: &str) -> Vec<String> {
+        check_device(id, verse, &DeviceContext { opponent_verse: None, names: &CHARACTER_NAMES }).expect("device exists").words
     }
 
     #[test]
@@ -419,6 +497,17 @@ mod tests {
     }
 
     #[test]
+    fn a_device_names_the_words_that_landed_it() {
+        assert_eq!(words("repetition", "Tomorrow and tomorrow and tomorrow"), ["tomorrow"]);
+        assert_eq!(words("alliteration", "With blade, with bloody blameful blade"), ["blade", "bloody", "blameful"]);
+        assert_eq!(words("internal-rhyme", "The night is bright with borrowed light"), ["night", "bright"]);
+        assert_eq!(words("monorhyme", "I take the stage\nI turn the page\nI feed my rage"), ["stage", "page", "rage"]);
+        assert_eq!(words("invocation", "Hear me, Mark Antony"), ["antony"]);
+        assert_eq!(words("grandeur", "Incarnadine the multitudinous seas"), ["incarnadine", "multitudinous"]);
+        assert!(words("question", "Is this a dagger which I see?").is_empty());
+    }
+
+    #[test]
     fn devices_are_not_landed_by_accident() {
         // Three "the"s alliterate nothing; punctuation alone asks nothing.
         assert!(!lands("alliteration", "The king and the queen and the fool"));
@@ -439,12 +528,14 @@ mod tests {
     #[test]
     fn a_riposte_needs_a_long_word_of_the_opponents() {
         let ctx = |theirs| DeviceContext { opponent_verse: theirs, names: &[] };
-        assert_eq!(check_device("riposte", "Thy candle is out", &ctx(Some("My candle burns"))), Some(true));
-        assert_eq!(check_device("riposte", "Thy lamp is out", &ctx(Some("My candle burns"))), Some(false));
-        assert_eq!(check_device("riposte", "Thy candle is out", &ctx(None)), Some(false));
-        assert_eq!(check_device("riposte", "Thy candle is out", &ctx(Some(""))), Some(false));
+        let met = |verse: &str, theirs| check_device("riposte", verse, &ctx(theirs)).map(|r| r.met);
+        assert_eq!(met("Thy candle is out", Some("My candle burns")), Some(true));
+        assert_eq!(check_device("riposte", "Thy candle is out", &ctx(Some("My candle burns"))).unwrap().words, ["candle"]);
+        assert_eq!(met("Thy lamp is out", Some("My candle burns")), Some(false));
+        assert_eq!(met("Thy candle is out", None), Some(false));
+        assert_eq!(met("Thy candle is out", Some("")), Some(false));
         // A little word thrown back is no riposte.
-        assert_eq!(check_device("riposte", "Where there is nothing", &ctx(Some("There where it was"))), Some(false));
+        assert_eq!(met("Where there is nothing", Some("There where it was")), Some(false));
     }
 
     #[test]
@@ -475,11 +566,14 @@ mod tests {
         assert!(!check_signature(hamlet, "Nothing of his line here"));
         // "maybe or not today" does not contain "be or not to".
         assert!(check_signature(hamlet, "Maybe or not today, that is my question"));
-        // Viola's line has no telling word: both of its two longest are needed.
+        // Viola's line ("I am not what I am") has no telling word: its longest two words, said
+        // together in its order, are the echo.
         let viola = card_by_id("IL-001").expect("Viola");
-        assert_eq!(signature_needed(viola), 2);
+        assert_eq!(signature_words(viola), ["not what"]);
+        assert_eq!(signature_needed(viola), 1);
         assert!(!check_signature(viola, "What a day"));
-        assert!(check_signature(viola, "What thou seest is not the whole of me"));
+        assert!(!check_signature(viola, "What thou seest is not the whole of me"));
+        assert_eq!(check_signature_words(viola, "It is not what it seems"), Some(vec!["not".to_string(), "what".to_string()]));
     }
 
     #[test]

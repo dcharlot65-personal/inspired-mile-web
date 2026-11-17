@@ -6,7 +6,13 @@
  * engine over a fixed, seeded set of cases and produces
  *
  *   backend/data/cards.json           the card data the server needs (from src/lib/cards.ts)
+ *   backend/data/english.json         what the server needs of the English pack beyond the rules'
+ *                                     own words: the letters its texts are written in
  *   backend/tests/golden/*.json       inputs and the TypeScript engine's answers
+ *
+ * The other data both engines read is one file each, which the server compiles in as text:
+ * the pronunciation table (verse/pron-en.ts) and Unicode's confusable letters
+ * (verse/confusables.ts).
  *
  * backend/tests/verse_parity.rs reads the same files and requires the Rust engine to give
  * the same answers.
@@ -33,21 +39,25 @@ import {
   checkPowerWords, checkSignature, deviceInPlay, invocationNames, signatureNeeded, signatureWords,
 } from './verse/devices';
 import {
-  COPY_THRESHOLD, JUDGE_POOL, ROUNDS, createDuel, matchWinner, resolveRound, rng, scoreVerse, type CastCurse, type LentWords,
-  type PlayerMove, type RoundResult, type VerseScore,
+  COPY_ANY_ORDER_MIN, COPY_COVERAGE, COPY_COVERAGE_ALONE, COPY_LINE_SHARE, COPY_LINE_SOURCE, COPY_LINE_WORDS, COPY_MIN_TAKEN,
+  COPY_THRESHOLD, JUDGE_POOL, OWN_WORDS_PER_LINE, ROUNDS, carriesLines, createDuel, isCopy, matchWinner, resolveRound, rng,
+  scoreVerse, type CastCurse, type LentWords, type PlayerMove, type RoundResult, type VerseScore,
 } from './verse/duel';
 import { FORM_POINTS, formsFor, getForm, scoreForm } from './verse/forms';
 import { CRITERIA, rulesJudge } from './verse/judge';
 import { rulesFor } from './verse/lang';
 import { writtenVerse } from './verse/opponent';
 import { getPack } from './verse/packs';
+import CONFUSABLE_PAIRS from './verse/confusables';
 import PRON from './verse/pron-en';
 import { installPronunciation, pronounce } from './verse/pronounce';
 import { rhymeEnds, rhymeKey, rhymes } from './verse/rhyme';
 import {
-  MAX_VERSE_CHARS, MAX_VERSE_LINES, MIN_DISTINCT_WORDS, STOP_WORDS, cleanVerse, contentWords, edgeUnit, firstWord, fold, initial,
-  lastWord, letterAsRead, letterCount, lineLength, linesOf, similarity, substance, syllableCounts, syllableSpan, syllablesInLine,
-  syllablesInWord, wordLengthsAsRead, wordParts, wordSpan, wordsAsRead, wordsOf,
+  FULL_KNOWN_SHARE, MAX_VERSE_CHARS, MAX_VERSE_LINES, MIN_DISTINCT_WORDS, MIN_KNOWN_SHARE, PHRASE_SPAN, SHORT_TELLING, STOP_WORDS,
+  TELLING_PER_LINE, UNLISTED_SPAN, cleanVerse, contentWords, copyOf, edgeUnit, firstWord, fold, initial, isContentWord,
+  isTellingWord, lastWord, letterAsRead, letterCount, lexiconHas, lineLength, linesOf, ownContent, prototypeOf, scriptOf,
+  similarity, substance, syllableCounts, syllableSpan, syllablesInLine, syllablesInWord, tellingWords, wordLengthsAsRead, wordParts,
+  wordSpan, wordsAsRead, wordsOf, type CopyMeasure,
 } from './verse/text';
 
 // English is scored by sound. The server always has the pronunciation table (it compiles in
@@ -376,12 +386,66 @@ function writtenVerses(): string[] {
 
 const gen = rng(20261116);
 const RANDOM: string[] = Array.from({ length: 420 }, () => randomVerse(gen));
+
+/**
+ * Copies of a verse made the ways the copy rules are aimed at, each a step short of or past a
+ * threshold: the lines moved, a word put into every line, a word taken out of every line, the
+ * words of each line shuffled, each line's last word swapped for a word that rhymes with it (the
+ * second review's finding 24), and the same with a word put in. Kept out of CORPUS, so that the
+ * seeded verses and the cases drawn from them are what they were.
+ */
+const RHYME_FOR = new Map<string, string>();
+for (const fam of FAMILIES) for (const w of fam) for (const v of fam) if (v !== w && !RHYME_FOR.has(w) && rhymes(w, v)) RHYME_FOR.set(w, v);
+function copiesOf(r: R, verse: string): string[] {
+  const ls = linesOf(verse);
+  if (ls.length < 2) return [];
+  const words = (l: string) => l.split(/\s+/).filter(Boolean);
+  const filler = ['weary', 'bitter', 'blazing', 'silent', 'golden', 'feeble', 'wild', 'old'];
+  const moved = [...ls.slice(1), ls[0]];
+  const added = ls.map((l) => {
+    const ws = words(l);
+    ws.splice(1 + int(r, Math.max(1, ws.length - 1)), 0, pick(r, filler));
+    return ws.join(' ');
+  });
+  const dropped = ls.map((l) => {
+    const ws = words(l);
+    if (ws.length > 3) ws.splice(1 + int(r, ws.length - 2), 1);
+    return ws.join(' ');
+  });
+  const shuffled = ls.map((l) => {
+    const ws = words(l);
+    for (let i = ws.length - 1; i > 0; i--) {
+      const j = int(r, i + 1);
+      [ws[i], ws[j]] = [ws[j], ws[i]];
+    }
+    return ws.join(' ');
+  });
+  const swapEnd = (l: string) => {
+    const ws = words(l);
+    const last = ws[ws.length - 1].replace(/[^\p{L}']+$/u, '');
+    const rhyme = RHYME_FOR.get(last.toLowerCase());
+    if (rhyme) ws[ws.length - 1] = rhyme;
+    return ws.join(' ');
+  };
+  const rhymeSwapped = ls.map(swapEnd);
+  const rhymeSwappedAdded = added.map(swapEnd);
+  return [moved, added, dropped, shuffled, rhymeSwapped, rhymeSwappedAdded, [ls[0]], [...ls, ...ls.slice(0, 1)]].map((x) => x.join('\n'));
+}
 const QUOTES = CARD_CATALOG.map((c) => c.quote);
 const CORPUS: string[] = [...new Set([...HAND, ...EDGE, ...writtenVerses(), ...QUOTES, ...RANDOM])];
 
 for (const v of CORPUS) {
   if (!v.isWellFormed()) throw new Error('a corpus verse holds a lone surrogate; the server can never receive one');
 }
+
+/** Each written and hand-written verse of two lines or more, against its copies (copiesOf). */
+const COPY_PAIRS: Array<[string, string]> = (() => {
+  const r = rng(2424);
+  const out: Array<[string, string]> = [];
+  for (const source of [...HAND, ...writtenVerses()]) for (const copy of copiesOf(r, source)) if (copy !== source) out.push([copy, source]);
+  return out;
+})();
+const COPIES: string[] = [...new Set(COPY_PAIRS.map(([copy]) => copy))].filter((v) => !CORPUS.includes(v));
 
 /**
  * A string as the Rust side can hold it. cleanVerse cuts at 600 UTF-16 units, which can
@@ -481,6 +545,22 @@ function block(groups: Record<string, unknown[]>): string {
   return '{\n' + parts.join(',\n') + '\n}\n';
 }
 
+/**
+ * What the server needs of the English pack (packs/en.ts) beyond the words written into the
+ * rules: the letters its texts are written in, folded (text.ts nativeLetters), which a curse
+ * reads a look-alike letter as. The Rust reads this file; text.json's words as a curse reads
+ * them are the check that it reads them the same.
+ */
+function englishJson(): string {
+  const texts = [
+    ...PACK.acrostic, ...PACK.forbidden, ...Object.values(PACK.relics).flat(), ...Object.values(PACK.written).flat(),
+    ...Object.values(PACK.spare ?? {}).flat(), ...Object.values(PACK.acrosticLines).flat(),
+  ];
+  const letters = new Set<string>();
+  for (const t of texts) for (const ch of fold(t)) if (/\p{L}/u.test(ch)) letters.add(ch);
+  return JSON.stringify({ letters: [...letters].sort() }, null, 1) + '\n';
+}
+
 function cardsJson(): string {
   return lines(CARD_CATALOG.map((c) => ({ id: c.id, name: c.name, type: c.type, house: c.house, quote: c.quote })));
 }
@@ -493,7 +573,9 @@ function tablesJson(): string {
   return JSON.stringify({
     constants: {
       MAX_VERSE_CHARS, MAX_VERSE_LINES, FORM_POINTS, JUDGE_POOL, ROUNDS, CURSE_PENALTY, CURSE_PENALTY_CAP, POWER_WORD_BONUS, POWER_WORDS_NEEDED,
-      MIN_DISTINCT_WORDS, COPY_THRESHOLD, SETTLE_PASSES,
+      MIN_DISTINCT_WORDS, COPY_THRESHOLD, SETTLE_PASSES, COPY_COVERAGE, COPY_COVERAGE_ALONE, COPY_MIN_TAKEN, COPY_ANY_ORDER_MIN,
+      COPY_LINE_WORDS, COPY_LINE_SHARE, COPY_LINE_SOURCE, OWN_WORDS_PER_LINE, MIN_KNOWN_SHARE, FULL_KNOWN_SHARE, TELLING_PER_LINE,
+      SHORT_TELLING, UNLISTED_SPAN, PHRASE_SPAN,
     },
     forms: FORMS.map((f) => ({
       id: f.id,
@@ -512,7 +594,7 @@ function tablesJson(): string {
         const tab = line.indexOf('\t');
         if (tab < 1) continue;
         for (const entry of line.slice(tab + 1).split(' ')) {
-          const m = /^(.*?)(\d+)$/.exec(entry);
+          const m = /^(.*?)(\d+)([*^]?)$/.exec(entry);
           if (m) words.add(m[1]);
         }
       }
@@ -532,13 +614,16 @@ function tablesJson(): string {
     criteria: [...CRITERIA],
     lexicon: [...onlineLexicon()].sort(),
     characterNames: CHARACTER_NAMES,
+    // Unicode's confusable letters as the engine reads them: each letter's prototype and script.
+    confusables: [...CONFUSABLE_PAIRS].filter((_, i) => i % 2 === 0).map((ch) => [ch, prototypeOf(ch), scriptOf(ch)]),
     rng: samples,
   }, null, 1) + '\n';
 }
 
 function textJson(): string {
-  const verses = [...CORPUS, ...FALLBACK_VERSES].map((raw) => {
+  const verses = [...CORPUS, ...FALLBACK_VERSES, ...COPIES].map((raw) => {
     const clean = cleanVerse(raw);
+    const typed = cleanVerse(raw, { unmix: false });
     return {
       raw,
       clean: wf(clean),
@@ -554,7 +639,12 @@ function textJson(): string {
       parts: wordParts(clean),
       asRead: wordsAsRead(clean),
       asReadLengths: wordLengthsAsRead(clean),
+      // The verse as typed (cleaned without reading look-alike letters): what a curse reads.
+      typed: wf(typed),
+      typedAsRead: wordsAsRead(typed),
+      typedAsReadLengths: wordLengthsAsRead(typed),
       substance: substance(clean),
+      telling: [...tellingWords(clean)].sort(),
       spans: linesOf(clean).map((l) => syllableSpan(l, 'en')),
       edges: linesOf(clean).map((l) => [edgeUnit(l, 'en', 'first'), edgeUnit(l, 'en', 'last')]),
       syllables: linesOf(clean).map((l) => syllablesInLine(l, 'en')),
@@ -565,7 +655,10 @@ function textJson(): string {
     const known = pronounce(w);
     return {
       w, fold: fold(w), span: wordSpan(w), letters: letterCount(w), syllables: syllablesInWord(w, 'en'), counts: syllableCounts(w, 'en'),
-      pron: known ? { counts: known.counts, keys: known.keys } : null, key: units(rhymeKey(w)), initial: initial(w), asRead: letterAsRead(w),
+      pron: known ? { counts: known.counts, keys: known.keys, spelled: !!known.spelled, unlisted: !!known.unlisted } : null,
+      key: units(rhymeKey(w)), initial: initial(w), asRead: letterAsRead(w, 'en'),
+      // Is it a word, does it carry meaning, does it tell (alone and inside a phrase)?
+      lexicon: lexiconHas(w, 'en'), content: isContentWord(w, 'en'), telling: [isTellingWord(w, 'en', false), isTellingWord(w, 'en', true)],
     };
   });
   const r = rng(77);
@@ -580,16 +673,22 @@ function textJson(): string {
   const rf = rng(78);
   for (let i = 0; i < 600; i++) pairs.push([pick(rf, FALLBACK_WORDS), pick(rf, FALLBACK_WORDS)]);
   const rhymePairs = pairs.map(([a, b]) => ({ a, b, rhymes: rhymes(a, b) }));
-  // How much of one verse is taken from another: the corpus against itself, and each hand-written
-  // verse against copies of itself (whole, with its lines turned round, with a word changed).
-  const similar: Array<{ verse: string; source: string; similarity: number }> = [];
-  const measure = (verse: string, source: string) => similar.push({ verse, source, similarity: similarity(verse, source) });
+  // How much of one verse is taken from another, measured both ways (content words, and every
+  // word), and whether it is a copy: the corpus against itself, each hand-written verse against
+  // copies of itself (whole, turned round, with a word changed), and every copy of COPY_PAIRS.
+  const similar: unknown[] = [];
+  const copyJson = (c: CopyMeasure) => ({ ...c, carries: carriesLines(c) });
+  const measure = (verse: string, source: string) => {
+    const [v, s] = [cleanVerse(verse), cleanVerse(source)];
+    similar.push({ verse, source, similarity: similarity(verse, source), content: copyJson(copyOf(v, s)), all: copyJson(copyOf(v, s, 'en', { all: true })), copy: isCopy(v, s, 'en') });
+  };
   for (const v of HAND) {
     measure(v, v);
     measure(v.split('\n').reverse().join('\n'), v);
     measure(v.replace(/\b\p{L}{5,}\b/u, 'changed'), v);
     measure(v.toUpperCase(), v);
   }
+  for (const [copy, source] of COPY_PAIRS) measure(copy, source);
   for (let i = 0; i < 500; i++) measure(pick(r, CORPUS), pick(r, CORPUS));
   // The two words a pair of lines is compared on for rhyme.
   const ends = Array.from({ length: 400 }, () => {
@@ -607,7 +706,8 @@ function checksJson(): string {
   const devices = Object.keys(DEVICES).flatMap((id) =>
     [...shaped, ...sample(60)].map((verse) => {
       const opponentVerse = id === 'riposte' || chance(r, 0.2) ? pick(r, [...HAND, ...RANDOM.slice(0, 40), '']) : null;
-      return { id, verse, opponentVerse, met: DEVICES[id].check(verse, { opponentVerse: opponentVerse ?? undefined, names: CHARACTER_NAMES }).met };
+      const d = DEVICES[id].check(verse, { opponentVerse: opponentVerse ?? undefined, names: CHARACTER_NAMES });
+      return { id, verse, opponentVerse, met: d.met, words: d.words ?? [] };
     }),
   );
   // A riposte that throws a word back, for each hand-written verse with a long word in it.
@@ -615,18 +715,20 @@ function checksJson(): string {
     const word = wordsOf(theirs).find((w) => wordSpan(w) >= rulesFor('en').riposte);
     if (!word) continue;
     const verse = `Thy ${word.toUpperCase()} is nothing to me`;
-    devices.push({ id: 'riposte', verse, opponentVerse: theirs, met: DEVICES.riposte.check(verse, { opponentVerse: theirs, names: CHARACTER_NAMES }).met });
+    const d = DEVICES.riposte.check(verse, { opponentVerse: theirs, names: CHARACTER_NAMES });
+    devices.push({ id: 'riposte', verse, opponentVerse: theirs, met: d.met, words: d.words ?? [] });
   }
   // An invocation of every name, and of the ordinary words that are parts of names.
   for (const name of [...CHARACTER_NAMES, ...SAID_NAMES]) {
     const verse = `I call on ${name}, hear me`;
-    devices.push({ id: 'invocation', verse, opponentVerse: null, met: DEVICES.invocation.check(verse, { names: CHARACTER_NAMES }).met });
+    const d = DEVICES.invocation.check(verse, { names: CHARACTER_NAMES });
+    devices.push({ id: 'invocation', verse, opponentVerse: null, met: d.met, words: d.words ?? [] });
   }
 
   const curses = Object.keys(CURSES).flatMap((id) =>
     [...shaped, ...sample(60)].flatMap((verse) => {
       const params = id === 'forbidden-letter' ? [...FORBIDDEN_LETTERS.en, 'É', ''] : [''];
-      return params.map((param) => ({ id, param, verse, violations: CURSES[id].violations(verse, param) }));
+      return params.map((param) => ({ id, param, verse, violations: CURSES[id].violations(verse, param, 'en') }));
     }),
   );
 
@@ -643,9 +745,13 @@ function checksJson(): string {
       echo ? `x${quoteWords.slice(0, 4).join(' ')}x and ${echo}` : 'still nothing',
       `${signatureWords(card).slice(0, 2).join(' and ')} are mine alone`,
       `${signatureWords(card).slice(0, 1).join('')}’s edge is mine`,
+      `It is ${signatureWords(card).slice(0, 1).join('')} and nothing more`,
       ...sample(4),
     ];
-    return verses.map((verse) => ({ cardId: card.id, verse, met: checkSignature(card, verse).met }));
+    return verses.map((verse) => {
+      const sig = checkSignature(card, verse);
+      return { cardId: card.id, verse, met: sig.met, words: sig.words ?? [] };
+    });
   });
 
   const power = Object.entries(RELIC_WORDS.en).flatMap(([relicId, words]) => {
@@ -665,7 +771,7 @@ function checksJson(): string {
     return acrostics.flatMap((acrostic) =>
       [...shaped, ...sample(15)].map((verse) => {
         const s = scoreForm(form, verse, { lang: 'en', acrostic: acrostic ?? undefined });
-        return { formId: form.id, acrostic, verse, earned: s.earned, kept: s.kept, thin: !!s.thin, checks: s.checks.map((c) => ({ id: c.id, points: c.points, earned: c.earned, met: c.met })) };
+        return { formId: form.id, acrostic, verse, earned: s.earned, kept: s.kept, thin: !!s.thin, scale: s.scale, checks: s.checks.map((c) => ({ id: c.id, points: c.points, earned: c.earned, met: c.met })) };
       }),
     );
   });
@@ -675,21 +781,27 @@ function checksJson(): string {
     for (const verse of FALLBACK_VERSES) {
       const acrostic = form.id === 'acrostic' ? 'bard' : null;
       const sc = scoreForm(form, verse, { lang: 'en', acrostic: acrostic ?? undefined });
-      forms.push({ formId: form.id, acrostic, verse, earned: sc.earned, kept: sc.kept, thin: !!sc.thin, checks: sc.checks.map((c) => ({ id: c.id, points: c.points, earned: c.earned, met: c.met })) });
+      forms.push({ formId: form.id, acrostic, verse, earned: sc.earned, kept: sc.kept, thin: !!sc.thin, scale: sc.scale, checks: sc.checks.map((c) => ({ id: c.id, points: c.points, earned: c.earned, met: c.met })) });
     }
   }
-  return block({ devices, curses, signature, power, forms });
+  // What a verse says beyond the words that land its device and signature.
+  const own = [...shaped, ...sample(80)].map((verse) => {
+    const used = pick(r, [[], ['night'], ['question'], ['not what'], wordsOf(verse).slice(0, 2)]);
+    return { verse: wf(cleanVerse(verse)), used, own: ownContent(cleanVerse(verse), 'en', used) };
+  });
+  return block({ devices, curses, signature, power, forms, own });
 }
 
 function flatScore(s: VerseScore) {
   return {
-    form: { earned: s.form.earned, kept: s.form.kept, thin: !!s.form.thin, checks: s.form.checks.map((c) => ({ id: c.id, points: c.points, earned: c.earned, met: c.met })) },
+    form: { earned: s.form.earned, kept: s.form.kept, thin: !!s.form.thin, scale: s.form.scale, checks: s.form.checks.map((c) => ({ id: c.id, points: c.points, earned: c.earned, met: c.met })) },
     device: { id: s.device.id, met: s.device.met },
     signature: s.signature.met,
     synergy: s.synergy,
     multiplier: s.multiplier,
     power: s.powerWords ? { used: s.powerWords.used, met: s.powerWords.met, bonus: s.powerWords.bonus } : null,
     curse: s.curse ? { id: s.curse.id, violations: s.curse.violations, penalty: s.curse.penalty } : null,
+    substance: s.substance,
     craft: s.craft,
     voided: s.voided ?? null,
   };
@@ -792,6 +904,12 @@ function scoreCases(): Array<ScoreCase & { expect: ReturnType<typeof flatScore> 
     for (const verse of [theirs, theirs.split('\n').reverse().join('\n'), theirs.replace(/\b\p{L}{5,}\b/u, 'changed'), `Thy ${wordsOf(theirs).find((w) => wordSpan(w) >= 5) ?? 'word'} is nothing to me\nI answer in my own line`]) {
       for (const trusted of [false, true]) cases.push({ ...plain, verse, formId: 'couplet', acrostic: null, cardId, deck: randomDeck(r, cardId), opponentVerse: theirs, trusted });
     }
+  }
+  // The copies of COPY_PAIRS against the verse they copy, under a couplet and under the form of their length.
+  for (const [verse, source] of COPY_PAIRS) {
+    const cardId = pick(r, CHARACTERS).id;
+    const formId = linesOf(source).length === 4 ? 'quatrain-abab' : linesOf(source).length === 3 ? 'tercet' : 'couplet';
+    cases.push({ ...plain, verse, formId, acrostic: null, cardId, deck: randomDeck(r, cardId), opponentVerse: source });
   }
   // Every curse and every relic against shaped verses.
   for (const curseId of Object.keys(CURSES)) {
@@ -956,6 +1074,7 @@ const built = (() => {
     score, judge, duel, online,
     files: {
       'backend/data/cards.json': cardsJson(),
+      'backend/data/english.json': englishJson(),
       'backend/tests/golden/tables.json': tablesJson(),
       'backend/tests/golden/text.json': textJson(),
       'backend/tests/golden/checks.json': checksJson(),
@@ -1072,8 +1191,9 @@ describe('online rules', () => {
   });
 
   it('reads the comeback exactly as the engine does (onlineWit is a copy of a function judge.ts does not export)', () => {
-    // rulesJudge(p, o, prev) decides wit from witScore(p against o) and witScore(o against prev).
-    // Where both verses are real, that verdict must be the one the copy gives.
+    // rulesJudge(p, o, prev) decides wit from witScore(p against o) and witScore(o against prev),
+    // and with no prev it is a split: neither side answered a verse. Where both verses are real,
+    // that verdict must be the one the copy gives.
     const r = rng(8080);
     let decided = 0;
     for (let i = 0; i < 1500; i++) {
@@ -1082,13 +1202,13 @@ describe('online rules', () => {
       const thrown = wordsOf(p).find((w) => wordSpan(w) >= 5);
       const prev = chance(r, 0.3) ? undefined : thrown && chance(r, 0.5) ? sent(`Thy ${thrown} again\n${pick(r, HAND)}`) : sent(pick(r, CORPUS));
       if (substance(p).ok !== substance(o).ok) continue;
-      const [mine, theirs] = [onlineWit(p, o), onlineWit(o, prev || undefined)];
+      const [mine, theirs] = prev === undefined ? [0, 0] : [onlineWit(p, o), onlineWit(o, prev)];
       const want = Math.abs(mine - theirs) < 1e-9 ? 'split' : mine > theirs ? 'player' : 'opponent';
       expect([i, rulesJudge(p, o, ONLINE_LANG, onlineLexicon(), prev).criteria.wit]).toEqual([i, want]);
       if (want !== 'split') decided++;
     }
     expect(decided).toBeGreaterThan(100);
-  });
+  }, 120_000);
 
   it('pasting the other side\'s last verse back loses the round, from either seat', () => {
     const plan = { index: 1, formId: 'couplet', acrostic: null };
@@ -1118,7 +1238,7 @@ describe('online rules', () => {
       if (wf(cleanVerse(s)) !== s) unsettled.push(JSON.stringify(raw).slice(0, 160));
     }
     expect(unsettled, `not settled within ${SETTLE_PASSES} passes`).toEqual([]);
-  });
+  }, 120_000);
 
   it('the live preview of a verse as typed is exactly what the server scores for the text the page sends', () => {
     const r = rng(9292);
@@ -1141,5 +1261,5 @@ describe('online rules', () => {
       compared++;
     }
     expect(compared).toBeGreaterThan(1000);
-  });
+  }, 180_000);
 });

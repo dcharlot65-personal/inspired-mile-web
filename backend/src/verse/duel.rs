@@ -6,8 +6,13 @@
 //!   judge = this side's share of `JUDGE_POOL`, from comparing the two verses by rule
 //!
 //! A verse that is empty, too thin to be a verse (`text::substance`) or taken from the
-//! verse it answers (`text::similarity`) is void: it lands nothing and its craft is 0. A
-//! copied verse also forfeits the judge.
+//! verse it answers ([`is_copy`], from `text::copy_of`) is void: it lands nothing and its
+//! craft is 0. A copied verse also forfeits the judge.
+//!
+//! Form points scale with the share of the verse that is words of its language
+//! (`FormScore.scale`), and the multiplier's bonuses with what the verse says beyond the
+//! words that land its device and signature (`VerseScore.substance`), so tokens laid out in
+//! a form's shape, or a chant that is only its device, cannot multiply themselves.
 //!
 //! Everything here is pure: the same seed, cards and verses always give the same numbers.
 
@@ -15,17 +20,85 @@ use serde::Serialize;
 
 use super::cards::{card_by_id, Card, CHARACTER_NAMES};
 use super::devices::{
-    check_device, check_power_words, check_signature, curse_violations, device_in_play, DeviceContext, CURSE_PENALTY,
-    CURSE_PENALTY_CAP, POWER_WORD_BONUS,
+    check_device, check_power_words, check_signature_words, curse_violations, device_in_play, DeviceContext,
+    CURSE_PENALTY, CURSE_PENALTY_CAP, POWER_WORD_BONUS,
 };
 use super::forms::{forms_for_english, get_form, score_form, Form, FormContext, FormScore, ACROSTIC_WORDS};
 use super::judge::{online_judge, rules_judge, JudgeSplit, Verdict, CRITERIA, LEXICON};
-use super::text::{clean_verse, similarity, words_of};
+use super::text::{clean_verse, clean_verse_with, copy_of, js_round, own_content, words_of, CopyMeasure};
 use super::LANG;
 
 pub const ROUNDS: usize = 3;
-/// A verse this similar to the one it answers (`text::similarity`) is a copy, not an answer.
-pub const COPY_THRESHOLD: f64 = 0.5;
+
+// What counts as a copy (`isCopy` and its constants in duel.ts, set from measurement in
+// review.test.ts and docs/language/RULES-MEASUREMENTS.md).
+pub const COPY_THRESHOLD: f64 = 0.7;
+pub const COPY_COVERAGE: f64 = 0.85;
+pub const COPY_COVERAGE_ALONE: f64 = 0.9;
+pub const COPY_MIN_TAKEN: usize = 4;
+/// Content words said in any order that a shuffled copy must carry: more than a Riposte's three.
+pub const COPY_ANY_ORDER_MIN: f64 = 4.0;
+/// Words a line of the other verse needs before the line rule counts it.
+pub const COPY_LINE_WORDS: usize = 3;
+/// Share of a line's words, its last among them, that a line of the verse says in order when it carries that line over.
+pub const COPY_LINE_SHARE: f64 = 0.6;
+/// Words the other verse needs before the line rule applies at all.
+pub const COPY_LINE_SOURCE: usize = 7;
+/// Content words of its own, beyond those that land its device and signature, that a verse
+/// needs per line its form asks for before its multiplier's bonuses apply in full.
+pub const OWN_WORDS_PER_LINE: f64 = 1.5;
+
+/// Does `c` carry the other verse's lines over, each into a line of its own (`carriesLines`)?
+/// Every line of `COPY_LINE_WORDS` words or more but one (all of them in a couplet) has
+/// `COPY_LINE_SHARE` of its words said in its order by a line of the verse, its last word
+/// among them; only for a verse of `COPY_LINE_SOURCE` words or more.
+pub fn carries_lines(c: &CopyMeasure) -> bool {
+    let words: usize = c.carry.iter().map(|l| l.source).sum();
+    let lines: Vec<_> = c.carry.iter().filter(|l| l.source >= COPY_LINE_WORDS).collect();
+    if lines.len() < 2 || words < COPY_LINE_SOURCE {
+        return false;
+    }
+    let carried = lines
+        .iter()
+        .filter(|l| l.end && l.said >= 2 && l.said as f64 >= (COPY_LINE_SHARE * l.source as f64).ceil())
+        .count();
+    carried >= if lines.len() >= 3 { lines.len() - 1 } else { lines.len() }
+}
+
+/// Is `verse` a copy of `answered` (`isCopy`)? Both are cleaned verses.
+pub fn is_copy(verse: &str, answered: &str) -> bool {
+    if answered.is_empty() {
+        return false;
+    }
+    let c = copy_of(verse, answered, false);
+    if carries_lines(&c) {
+        return true;
+    }
+    // Every word counted, the little ones too: asked only when the content words leave it open.
+    let mut all: Option<CopyMeasure> = None;
+    let mut all_words = || all.get_or_insert_with(|| copy_of(verse, answered, true)).clone();
+    if c.own == 0 {
+        let a = all_words();
+        if a.taken >= 3 && a.share >= COPY_THRESHOLD {
+            return true;
+        }
+    }
+    if js_round(c.any_order * c.source as f64) >= COPY_ANY_ORDER_MIN
+        && c.any_order >= COPY_COVERAGE_ALONE
+        && all_words().any_order >= COPY_THRESHOLD
+    {
+        return true;
+    }
+    let a = all_words();
+    if a.source >= COPY_LINE_SOURCE && a.any_order >= COPY_COVERAGE_ALONE {
+        return true;
+    }
+    if c.taken < COPY_MIN_TAKEN {
+        return false;
+    }
+    let spread = c.per_line.iter().filter(|n| **n >= 2).count() >= 2;
+    c.share >= COPY_THRESHOLD || c.coverage >= COPY_COVERAGE_ALONE || (spread && c.coverage >= COPY_COVERAGE)
+}
 
 // --- Seeded randomness ---
 
@@ -133,10 +206,15 @@ pub struct VerseScore {
     pub device: DeviceScore,
     pub signature: bool,
     pub synergy: bool,
-    /// 1, plus a half for the device, a half for the signature and a quarter for synergy.
+    /// 1, plus a half for the device, a half for the signature and a quarter for synergy,
+    /// those bonuses scaled by `substance` and rounded to hundredths.
     pub multiplier: f64,
     pub power_words: Option<PowerScore>,
     pub curse: Option<CurseScore>,
+    /// How far the multiplier's bonuses apply, from 0 to 1: the verse's own telling words
+    /// beyond those that land its device and signature, `OWN_WORDS_PER_LINE` a line the form
+    /// asks for (`text::own_content`).
+    pub substance: f64,
     pub craft: u32,
     /// Set when the verse earns nothing.
     pub voided: Option<Voided>,
@@ -144,6 +222,8 @@ pub struct VerseScore {
 
 pub fn score_verse(input: &ScoreInput) -> VerseScore {
     let verse = clean_verse(input.verse);
+    // A curse reads the verse as typed: a word that mixes alphabets is itself the trick.
+    let typed = clean_verse_with(input.verse, false);
     let form = score_form(input.form, &verse, &input.ctx);
     let answered = input.opponent_verse.filter(|v| !v.is_empty()).map(clean_verse).unwrap_or_default();
 
@@ -151,7 +231,7 @@ pub fn score_verse(input: &ScoreInput) -> VerseScore {
         Some(Voided::Empty)
     } else if form.thin {
         Some(Voided::Thin)
-    } else if !input.trusted && !answered.is_empty() && similarity(&verse, &answered) >= COPY_THRESHOLD {
+    } else if !input.trusted && is_copy(&verse, &answered) {
         Some(Voided::Copied)
     } else {
         None
@@ -160,23 +240,38 @@ pub fn score_verse(input: &ScoreInput) -> VerseScore {
     // A Riposte house with nothing to answer is held to its opening device instead.
     let device_id = device_in_play(&input.card.house, !answered.is_empty());
     // A void verse lands nothing: devices and signatures are for verses.
-    let device_met = voided.is_none()
-        && check_device(
+    let device = if voided.is_none() {
+        check_device(
             device_id,
             &verse,
             &DeviceContext { opponent_verse: (!answered.is_empty()).then_some(answered.as_str()), names: &CHARACTER_NAMES },
         )
-        .expect("every house device exists");
-    let signature = voided.is_none() && check_signature(input.card, &verse);
+        .expect("every house device exists")
+    } else {
+        Default::default()
+    };
+    let signature = if voided.is_none() { check_signature_words(input.card, &verse) } else { None };
 
     let same_house = input
         .deck_characters
         .iter()
         .filter(|id| card_by_id(id).is_some_and(|c| c.house == input.card.house))
         .count();
-    let synergy = device_met && same_house >= 2;
-    // The multiplier in quarters, so the rounding below is exact integer arithmetic.
-    let quarters: u32 = 4 + if device_met { 2 } else { 0 } + if signature { 2 } else { 0 } + if synergy { 1 } else { 0 };
+    let synergy = device.met && same_house >= 2;
+    // A multiplier multiplies what the verse says: its own telling words beyond those that land
+    // the device and the signature, OWN_WORDS_PER_LINE a line the form asks for.
+    let mut used: Vec<String> = if device.met { device.words.clone() } else { Vec::new() };
+    if let Some(words) = &signature {
+        used.extend(words.iter().cloned());
+    }
+    let substance = if voided.is_some() {
+        0.0
+    } else {
+        let lines = input.form.lines(&input.ctx).max(1) as f64;
+        1f64.min(own_content(&verse, &used) as f64 / (OWN_WORDS_PER_LINE * lines))
+    };
+    let bonus = (if device.met { 0.5 } else { 0.0 }) + (if signature.is_some() { 0.5 } else { 0.0 }) + (if synergy { 0.25 } else { 0.0 });
+    let multiplier = 1.0 + js_round(bonus * substance * 100.0) / 100.0;
 
     let power_words = input.lent.map(|words| {
         let p = check_power_words(words, &verse);
@@ -184,23 +279,24 @@ pub fn score_verse(input: &ScoreInput) -> VerseScore {
     });
 
     let curse = input.curse.map(|c| {
-        let violations = curse_violations(c.curse_id, &verse, c.param).expect("the curse exists");
+        let violations = curse_violations(c.curse_id, &typed, c.param).expect("the curse exists");
         CurseScore { id: c.curse_id.to_string(), violations, penalty: CURSE_PENALTY_CAP.min(violations * CURSE_PENALTY) }
     });
 
     // A void verse earns nothing, whatever the cards say.
     let base = if voided.is_some() { 0 } else { form.earned + power_words.as_ref().map_or(0, |p| p.bonus) };
-    // Math.round(base * multiplier): halves round up.
-    let rounded = (base * quarters + 2) / 4;
+    // Math.max(0, Math.round(base * multiplier) - penalty).
+    let rounded = js_round(f64::from(base) * multiplier) as u32;
     let craft = rounded.saturating_sub(curse.as_ref().map_or(0, |c| c.penalty));
     VerseScore {
         form,
-        device: DeviceScore { id: device_id.to_string(), met: device_met },
-        signature,
+        device: DeviceScore { id: device_id.to_string(), met: device.met },
+        signature: signature.is_some(),
         synergy,
-        multiplier: f64::from(quarters) / 4.0,
+        multiplier,
         power_words,
         curse,
+        substance,
         craft,
         voided,
     }
@@ -247,7 +343,8 @@ pub fn resolve_round(
     let opponent_verse = clean_verse(opponent.verse);
     let judged = rules_judge(player.verse, opponent.verse, ctx.lang, &LEXICON, previous_player_verse);
     let player_score = score_verse(&ScoreInput {
-        verse: &player_verse,
+        // As typed, so a curse can see a word that mixes alphabets; score_verse cleans it.
+        verse: player.verse,
         form,
         ctx,
         card: player.card,

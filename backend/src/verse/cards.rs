@@ -37,6 +37,25 @@ pub fn card_by_id(id: &str) -> Option<&'static Card> {
     BY_ID.get(id).copied()
 }
 
+/// What the server needs of the English language pack (`src/lib/verse/packs/en.ts`) beyond
+/// the words written into the rules: the letters its texts are written in, which a curse
+/// reads a look-alike letter as (`nativeLetters('en')` in text.ts). Generated with
+/// `cards.json` by `scripts/gen-verse-golden.sh`; a vitest test fails when it is out of date.
+#[derive(Debug, Deserialize)]
+struct EnglishPack {
+    letters: Vec<char>,
+}
+
+const ENGLISH_JSON: &str = include_str!("../../data/english.json");
+
+static ENGLISH: LazyLock<EnglishPack> =
+    LazyLock::new(|| serde_json::from_str(ENGLISH_JSON).expect("backend/data/english.json is valid pack data"));
+
+/// The letters of the English pack's texts, folded.
+pub fn english_letters() -> &'static [char] {
+    &ENGLISH.letters
+}
+
 /// Names that count as an invocation (`CHARACTER_NAMES` in duel.ts): each character's
 /// full name, and its last part alone when that is a name and not an ordinary word.
 pub static CHARACTER_NAMES: LazyLock<Vec<String>> = LazyLock::new(|| {

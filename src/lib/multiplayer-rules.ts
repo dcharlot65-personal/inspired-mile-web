@@ -17,12 +17,21 @@
  * before it previews or audits, or its numbers are the spelling rules' and can
  * differ from the server's.
  *
+ * Online duels are fought in English only (ONLINE_LANG): the server's port of the
+ * engine is the English path, read from the same data as the browser (the
+ * pronunciation table, the confusables, the card catalogue and the English pack).
+ * The other fifteen languages are read by sound tables, a Japanese analyser and
+ * the platform's word segmenter (Chinese, Thai), which the server does not have and
+ * could not reproduce exactly; a server that scored them would score them differently
+ * from the preview. The page says so, and the server refuses any other language.
+ *
  * How an online round differs from the single-player duel in duel.ts:
  *   - both players write at once, under the same form, without seeing the
  *     other's verse. So everything that "answers" is read against the other
  *     side's verse of the round BEFORE: the Riposte, the judge's comeback (wit)
  *     and the test for a copied verse. In round one there is nothing to answer:
- *     a Riposte house is held to its opening device, as in the duel;
+ *     a Riposte house is held to its opening device, as in the duel, and wit is
+ *     a split (comebacks are compared only when both sides had a verse to answer);
  *   - no relics, potions or ink in this first version;
  *   - the judge share is always the rule-based comparison: no language model
  *     takes part;
@@ -36,7 +45,7 @@ import { formsFor, getForm } from './verse/forms';
 import { CRITERIA, rulesJudge } from './verse/judge';
 import { rulesFor } from './verse/lang';
 import { getPack } from './verse/packs';
-import { STOP_WORDS, cleanVerse, fold, isStopWord, letterCount, lineLength, linesOf, substance, wordSpan, wordsOf } from './verse/text';
+import { STOP_WORDS, cleanVerse, fold, isStopWord, letterCount, substance, wordSpan, wordsOf } from './verse/text';
 
 /** The one language online play is scored in, for now. */
 export const ONLINE_LANG = 'en';
@@ -85,7 +94,8 @@ export function onlineLexicon(): Set<string> {
     const names = invocationNames(CARD_CATALOG.filter((c) => c.type === 'Character').map((c) => c.name));
     for (const n of names) if (!n.includes(' ') && letterCount(n) >= 4) lexicon.add(fold(n));
     for (const c of CARD_CATALOG) {
-      for (const w of signatureWords(c)) if (letterCount(w) >= 4 && !STOP_WORDS.has(w)) lexicon.add(w);
+      // A signature phrase (Viola's "not what") is not a word.
+      for (const w of signatureWords(c)) if (!w.includes(' ') && letterCount(w) >= 4 && !STOP_WORDS.has(w)) lexicon.add(w);
     }
   }
   return lexicon;
@@ -178,15 +188,14 @@ const MAX_THROWN = 3;
 /**
  * The judge's comeback score for one verse: witScore in verse/judge.ts, which is
  * not exported. A copy, kept honest by a test that compares it with the engine's
- * own verdicts (multiplayer-golden.test.ts).
+ * own verdicts (multiplayer-golden.test.ts). Punctuation counts for nothing.
  */
 export function onlineWit(verse: string, answered?: string): number {
   const lang = ONLINE_LANG;
   const min = rulesFor(lang).riposte;
   const theirs = new Set(wordsOf(answered ?? '', lang).filter((w) => wordSpan(w) >= min && !isStopWord(w, lang)).map(fold));
   const thrown = new Set(wordsOf(verse, lang).map(fold).filter((w) => theirs.has(w))).size;
-  const pointed = linesOf(verse).filter((l) => /[?!？！؟]\s*["'”’)»」』]*$/.test(l) && lineLength(l, lang) >= 2).length;
-  return Math.min(thrown, MAX_THROWN) + Math.min(pointed, 2) * 0.1;
+  return Math.min(thrown, MAX_THROWN);
 }
 
 /**
@@ -194,7 +203,9 @@ export function onlineWit(verse: string, answered?: string): number {
  * are the engine's own verdicts (rulesJudge). Wit, the comeback, is read for
  * each side against the other's verse of the round before, where the engine
  * reads the player's against the opponent's verse of this round, which online
- * nobody has seen. Text too thin to be a verse loses every criterion to a real one.
+ * nobody has seen; and, as in the engine, only when both sides had a verse to
+ * answer (an empty one is none): otherwise neither could do what wit measures,
+ * and it is a split. Text too thin to be a verse loses every criterion to a real one.
  */
 export function onlineJudge(verseA: string, verseB: string, previousB?: string, previousA?: string): OnlineJudge {
   const a = cleanVerse(verseA);
@@ -203,8 +214,9 @@ export function onlineJudge(verseA: string, verseB: string, previousB?: string, 
   const criteria: Record<string, OnlineVerdict> = {};
   for (const c of CRITERIA) criteria[c] = engine.criteria[c] === 'player' ? 'a' : engine.criteria[c] === 'opponent' ? 'b' : 'split';
   const real = [substance(a, ONLINE_LANG).ok, substance(b, ONLINE_LANG).ok];
-  const witA = onlineWit(a, previousB ? cleanVerse(previousB) : undefined);
-  const witB = onlineWit(b, previousA ? cleanVerse(previousA) : undefined);
+  const both = !!previousA && !!previousB;
+  const witA = both ? onlineWit(a, cleanVerse(previousB!)) : 0;
+  const witB = both ? onlineWit(b, cleanVerse(previousA!)) : 0;
   criteria.wit = real[0] !== real[1] ? (real[0] ? 'a' : 'b') : Math.abs(witA - witB) < 1e-9 ? 'split' : witA > witB ? 'a' : 'b';
   const each = JUDGE_POOL / CRITERIA.length;
   let pointsA = 0;

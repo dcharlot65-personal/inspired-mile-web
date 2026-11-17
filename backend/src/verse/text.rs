@@ -1,5 +1,6 @@
-//! Text measurement for verse: cleaning, lines, words, letters, syllables, rhyme, and the
-//! floor every verse must clear.
+//! Text measurement for verse: cleaning, lines, words, letters, syllables, rhyme, the
+//! floor every verse must clear, the measure of a copied verse, and words as a curse
+//! reads them.
 //!
 //! A port, for English, of `src/lib/verse/text.ts` and of the English rule in
 //! `src/lib/verse/rhyme.ts`. The TypeScript measures sixteen languages; the server scores
@@ -7,25 +8,30 @@
 //! thresholds are those of `rulesFor('en')` in `lang.ts` ([`rules`]).
 //!
 //! English is measured by sound where it can be: the pronunciation table
-//! ([`super::pronounce`]) gives a word its syllable counts and rhyme keys, and the spelling
-//! rules here are the fallback for a word the table lacks.
+//! ([`super::pronounce`]) gives a word its syllable counts and rhyme keys and says whether it
+//! is a word at all (the lexicon), and the spelling rules here are the fallback for a word
+//! the table lacks. Which letters are drawn alike is Unicode's data (UTS #39 confusables),
+//! read from the same generated file the browser imports, `src/lib/verse/confusables.ts`.
 //!
 //! Where JavaScript and Rust differ, this file follows JavaScript, because the browser's
 //! preview and the server's score must be the same number:
 //!
-//! - JavaScript strings are UTF-16. `cleanVerse` caps a verse at 600 UTF-16 units and the
-//!   spelled rhyme key measures and slices in UTF-16 units, so lengths here are counted that
-//!   way and rhyme keys are `Vec<u16>`.
+//! - JavaScript strings are UTF-16. `cleanVerse` caps a verse at 600 UTF-16 units, the
+//!   spelled rhyme key measures and slices in UTF-16 units, and so does the English stem of
+//!   the copy measure, so lengths here are counted that way and rhyme keys are `Vec<u16>`.
 //! - "White space" means what JavaScript's `\s` and `trim()` mean ([`is_js_space`]), which is
 //!   not Rust's `char::is_whitespace`.
 //! - Lower-casing is `toLowerCase()`: full Unicode case mapping, which `str::to_lowercase`
 //!   also implements (final sigma included).
+//! - `Math.round` rounds a half up, towards +∞ ([`js_round`]), and every ratio is computed in
+//!   IEEE 754 doubles in the same order of operations as the TypeScript.
 //!
 //! One thing cannot be made the same by code: the Unicode tables. Normalisation and the
 //! character classes come from this binary's crates and from the browser's engine, and a
 //! character assigned in a newer Unicode version than one side knows may be read
 //! differently. The golden vectors hold the two together for everything in their corpus.
 
+use std::cell::RefCell;
 use std::collections::{HashMap, HashSet};
 use std::sync::LazyLock;
 
@@ -78,6 +84,39 @@ fn has_letter(text: &str) -> bool {
     LETTER_RE.is_match(text)
 }
 
+/// Characters this binary's Unicode tables do not assign (`\p{Cn}`): assigned in a newer
+/// Unicode version than the server knows (the browser's engine may know it), or not at all.
+static UNASSIGNED: LazyLock<Regex> = LazyLock::new(|| re(r"\p{Cn}"));
+
+/// The first character of `text` that this binary's Unicode tables do not assign, if any.
+///
+/// The rules read letters, marks, scripts and normal forms from Unicode's tables, and the
+/// browser's tables can be newer than the server's (a character added in Unicode 17 is a
+/// letter of the Latin script to Node 26 and unassigned to this build). The server could
+/// not score such a verse the way the page previews it, so it refuses it instead
+/// (`game_room` `submit`), and the golden vectors leave such characters out of the
+/// comparison only because the server never scores them.
+pub fn unknown_character(text: &str) -> Option<char> {
+    UNASSIGNED.find(text).and_then(|m| m.as_str().chars().next())
+}
+
+/// Length in UTF-16 code units: JavaScript's `.length`.
+fn utf16_len(s: &str) -> usize {
+    s.chars().map(char::len_utf16).sum()
+}
+
+/// JavaScript's `Math.round`: the nearest integer, a half rounded up (towards +∞).
+/// `(x + 0.5).floor()` is not the same: it rounds 0.49999999999999994 to 1.
+pub fn js_round(x: f64) -> f64 {
+    let f = x.floor();
+    if x - f >= 0.5 { f + 1.0 } else { f }
+}
+
+/// `toLowerCase()` of one character, as a string (it can be longer: "İ" is "i̇").
+fn lower_char(c: char) -> String {
+    c.to_lowercase().collect()
+}
+
 // --- Cleaning ---
 //
 // A verse is normalised once, here, before anything measures it, so that what the rules
@@ -89,7 +128,8 @@ fn has_letter(text: &str) -> bool {
 //      private-use code points and the other default-ignorables;
 //   5. combining marks with no letter under them are removed, and a pile of them is cut short;
 //   6. inside a word that mixes alphabets, a letter of another alphabet that is drawn like
-//      one of the word's own is read as that letter.
+//      one of the word's own is read as that letter (UTS #39 confusables).
+// Cleaning is repeated until it changes nothing (`cleanVerse`), so a clean verse is left as it is.
 
 /// `BLANKS`: tab, the Hangul fillers, the Braille blank and every space separator.
 static BLANKS: LazyLock<Regex> = LazyLock::new(|| re(r"[\t\x{115f}\x{1160}\x{3164}\x{ffa0}\x{2800}\p{Zs}]"));
@@ -100,69 +140,171 @@ static ORPHAN_MARKS: LazyLock<Regex> = LazyLock::new(|| re(r"(^|[^\p{L}\p{N}\p{M
 static MARK_PILE: LazyLock<Regex> = LazyLock::new(|| re(r"(\p{M}{4})\p{M}+"));
 static WORD_RUN: LazyLock<Regex> = LazyLock::new(|| re(r"[\p{L}\p{M}]+"));
 
-/// Cyrillic and Greek letters that are drawn like a Latin letter, with the Latin letter
-/// they look like (`TO_LATIN`). Generated from text.ts, in its order.
-const TO_LATIN: [(char, char); 51] = [
-    ('\u{0430}', 'a'), ('\u{0435}', 'e'), ('\u{043e}', 'o'), ('\u{0440}', 'p'), ('\u{0441}', 'c'), ('\u{0445}', 'x'),
-    ('\u{0443}', 'y'), ('\u{0456}', 'i'), ('\u{0458}', 'j'), ('\u{0455}', 's'), ('\u{0501}', 'd'), ('\u{04bb}', 'h'),
-    ('\u{04cf}', 'l'), ('\u{051b}', 'q'), ('\u{051d}', 'w'), ('\u{0410}', 'A'), ('\u{0412}', 'B'), ('\u{0415}', 'E'),
-    ('\u{041a}', 'K'), ('\u{041c}', 'M'), ('\u{041d}', 'H'), ('\u{041e}', 'O'), ('\u{0420}', 'P'), ('\u{0421}', 'C'),
-    ('\u{0422}', 'T'), ('\u{0425}', 'X'), ('\u{0423}', 'Y'), ('\u{0405}', 'S'), ('\u{0406}', 'I'), ('\u{0408}', 'J'),
-    ('\u{03b1}', 'a'), ('\u{03bf}', 'o'), ('\u{03bd}', 'v'), ('\u{03c1}', 'p'), ('\u{03b9}', 'i'), ('\u{03ba}', 'k'),
-    ('\u{03c5}', 'u'), ('\u{0391}', 'A'), ('\u{0392}', 'B'), ('\u{0395}', 'E'), ('\u{0396}', 'Z'), ('\u{0397}', 'H'),
-    ('\u{0399}', 'I'), ('\u{039a}', 'K'), ('\u{039c}', 'M'), ('\u{039d}', 'N'), ('\u{039f}', 'O'), ('\u{03a1}', 'P'),
-    ('\u{03a4}', 'T'), ('\u{03a5}', 'Y'), ('\u{03a7}', 'X'),
+// --- Letters drawn alike (UTS #39) ---
+
+/// The generated module of confusable letters, as text: the browser imports the same file.
+const CONFUSABLES_SOURCE: &str =
+    include_str!(concat!(env!("CARGO_MANIFEST_DIR"), "/../src/lib/verse/confusables.ts"));
+
+/// The data of `confusables.ts`: a letter and its Latin prototype, one after the other, in the
+/// string the module exports by default. The string holds no quote and no backslash (the
+/// generator writes letters only), so its text is the string itself.
+fn confusable_pairs() -> &'static str {
+    const OPEN: &str = "export default \"";
+    let start = CONFUSABLES_SOURCE.find(OPEN).expect("confusables.ts exports a string") + OPEN.len();
+    let end = start + CONFUSABLES_SOURCE[start..].find('"').expect("confusables.ts closes its string");
+    let data = &CONFUSABLES_SOURCE[start..end];
+    assert!(!data.contains('\\'), "confusables.ts holds an escape the server would read as text");
+    data
+}
+
+/// Each letter of the confusables and the Latin letter Unicode gives as its prototype (`PROTOTYPE`).
+static PROTOTYPE: LazyLock<HashMap<char, char>> = LazyLock::new(|| {
+    let cs: Vec<char> = confusable_pairs().chars().collect();
+    let mut map = HashMap::new();
+    let mut i = 0;
+    while i + 1 < cs.len() {
+        map.insert(cs[i], cs[i + 1]);
+        i += 2;
+    }
+    map
+});
+
+/// The letters of the confusables, in the order of the file (`PROTOTYPE.keys()`): the order
+/// in which `BY_PROTOTYPE` meets their scripts.
+static PROTOTYPE_ORDER: LazyLock<Vec<char>> = LazyLock::new(|| {
+    let cs: Vec<char> = confusable_pairs().chars().collect();
+    let mut seen = HashSet::new();
+    let mut out = Vec::new();
+    let mut i = 0;
+    while i + 1 < cs.len() {
+        if seen.insert(cs[i]) {
+            out.push(cs[i]);
+        }
+        i += 2;
+    }
+    out
+});
+
+/// The prototype of a letter: what Unicode says it is drawn like (itself, for most letters).
+pub fn prototype_of(letter: char) -> char {
+    PROTOTYPE.get(&letter).copied().unwrap_or(letter)
+}
+
+/// Scripts a letter can be in, for telling a word that mixes alphabets (`SCRIPTS`). The rest are "Other".
+const SCRIPTS: [&str; 48] = [
+    "Latin", "Cyrillic", "Greek", "Armenian", "Coptic", "Georgian", "Cherokee", "Hebrew", "Arabic", "Lisu",
+    "Canadian_Aboriginal", "Tifinagh", "Vai", "Ethiopic", "Han", "Hiragana", "Katakana", "Hangul", "Bopomofo", "Thai",
+    "Lao", "Devanagari", "Bengali", "Gurmukhi", "Gujarati", "Oriya", "Tamil", "Telugu", "Kannada", "Malayalam",
+    "Sinhala", "Myanmar", "Khmer", "Tibetan", "Mongolian", "Syriac", "Thaana", "Nko", "Osage", "Adlam", "Deseret",
+    "Glagolitic", "Gothic", "Runic", "Ogham", "Old_Italic", "Javanese", "Yi",
 ];
 
-static TO_LATIN_MAP: LazyLock<HashMap<char, char>> = LazyLock::new(|| TO_LATIN.iter().copied().collect());
+static SCRIPT_RES: LazyLock<Vec<(&'static str, Regex)>> =
+    LazyLock::new(|| SCRIPTS.iter().map(|name| (*name, re(&format!(r"^\p{{Script={name}}}$")))).collect());
 
-/// The same pairs the other way, Cyrillic only: the first Cyrillic letter listed for each
-/// Latin one (`TO_CYRILLIC`).
-static TO_CYRILLIC_MAP: LazyLock<HashMap<char, char>> = LazyLock::new(|| {
-    let mut map = HashMap::new();
-    for (from, to) in TO_LATIN {
-        if is_class(&CYRILLIC_RE, from) {
-            map.entry(to).or_insert(from);
+thread_local! {
+    static SCRIPT_CACHE: RefCell<HashMap<char, &'static str>> = RefCell::new(HashMap::new());
+}
+
+/// The script of one character: a name from `SCRIPTS`, "Mark" for a combining mark, "Other"
+/// for anything else (`scriptOf`).
+pub fn script_of(ch: char) -> &'static str {
+    if let Some(s) = SCRIPT_CACHE.with(|c| c.borrow().get(&ch).copied()) {
+        return s;
+    }
+    let s = if is_class(&MARK_RE, ch) {
+        "Mark"
+    } else {
+        let mut buf = [0u8; 4];
+        let text = ch.encode_utf8(&mut buf);
+        SCRIPT_RES.iter().find(|(_, r)| r.is_match(text)).map(|(name, _)| *name).unwrap_or("Other")
+    };
+    SCRIPT_CACHE.with(|c| c.borrow_mut().insert(ch, s));
+    s
+}
+
+/// Letters by prototype and script (`BY_PROTOTYPE`): which letter of a given alphabet is drawn
+/// like a given one. The scripts of each prototype are kept in the order they were met, as a
+/// JavaScript `Map` keeps them; each list is sorted by code point, the plainest first.
+type ByScript = Vec<(&'static str, Vec<char>)>;
+
+static BY_PROTOTYPE: LazyLock<HashMap<char, ByScript>> = LazyLock::new(|| {
+    let mut map: HashMap<char, ByScript> = HashMap::new();
+    let mut add = |letter: char| {
+        let by_script = map.entry(prototype_of(letter)).or_default();
+        let script = script_of(letter);
+        match by_script.iter_mut().find(|(s, _)| *s == script) {
+            Some((_, list)) => {
+                if !list.contains(&letter) {
+                    list.push(letter);
+                }
+            }
+            None => by_script.push((script, vec![letter])),
+        }
+    };
+    for c in (b'A'..=b'Z').chain(b'a'..=b'z') {
+        add(char::from(c));
+    }
+    for letter in PROTOTYPE_ORDER.iter() {
+        add(*letter);
+    }
+    for by_script in map.values_mut() {
+        for (_, list) in by_script.iter_mut() {
+            list.sort_unstable();
         }
     }
     map
 });
 
-/// A word as its look-alike letters read in Latin (`latinised`).
-fn latinised(word: &str) -> String {
-    word.chars().map(|c| TO_LATIN_MAP.get(&c).copied().unwrap_or(c)).collect()
+/// The letter of `script` that is drawn like `letter`, in the same case where there is a
+/// choice; or `None` (`twinIn`).
+fn twin_in(letter: char, script: &str) -> Option<char> {
+    let list = BY_PROTOTYPE.get(&prototype_of(letter))?.iter().find(|(s, _)| *s == script).map(|(_, l)| l)?;
+    if list.is_empty() {
+        return None;
+    }
+    let upper = lower_char(letter) != letter.to_string();
+    list.iter().copied().find(|l| (lower_char(*l) != l.to_string()) == upper).or(Some(list[0]))
 }
 
 /// In a word that mixes alphabets, read the strays as letters of the word's own alphabet
-/// (`unmixScripts`).
+/// (`unmixScripts`). Which alphabet that is, is told by the letters that could not be strays:
+/// those with no look-alike in the other alphabets present. Where those do not settle it, the
+/// alphabet most of the word's letters are in; and Latin if that is even. A stray with no
+/// look-alike in the word's alphabet is left as it is.
 fn unmix_scripts(line: &str) -> String {
     WORD_RUN
         .replace_all(line, |caps: &Captures| {
             let word = &caps[0];
             let letters: Vec<char> = word.chars().collect();
-            let of = |class: &Regex| letters.iter().copied().filter(|c| is_class(class, *c)).collect::<Vec<char>>();
-            let (latin, cyrillic, greek) = (of(&LATIN_RE), of(&CYRILLIC_RE), of(&GREEK_RE));
-            let alphabets = [&latin, &cyrillic, &greek].iter().filter(|a| !a.is_empty()).count();
-            if alphabets < 2 {
+            let scripts: Vec<&'static str> = letters.iter().map(|c| script_of(*c)).collect();
+            let mut present: Vec<&'static str> = Vec::new();
+            for s in &scripts {
+                if *s != "Mark" && *s != "Other" && !present.contains(s) {
+                    present.push(s);
+                }
+            }
+            if present.len() < 2 {
                 return word.to_string();
             }
-            let own_latin = latin.iter().filter(|c| !TO_CYRILLIC_MAP.contains_key(c)).count();
-            let own_cyrillic = cyrillic.iter().filter(|c| !TO_LATIN_MAP.contains_key(c)).count();
-            let to_cyrillic =
-                if own_cyrillic != own_latin { own_cyrillic > own_latin } else { cyrillic.len() > latin.len() };
-            if to_cyrillic && cyrillic.len() >= greek.len() {
-                return letters
-                    .iter()
-                    .map(|c| {
-                        let as_latin = TO_LATIN_MAP.get(c).copied().unwrap_or(*c);
-                        TO_CYRILLIC_MAP.get(&as_latin).copied().unwrap_or(*c)
-                    })
-                    .collect();
+            let mut main = present[0];
+            let mut best: (i64, i64, i64) = (-1, -1, -1);
+            for s in &present {
+                let mine: Vec<char> = letters.iter().zip(&scripts).filter(|(_, t)| *t == s).map(|(c, _)| *c).collect();
+                let own = mine.iter().filter(|ch| present.iter().all(|t| t == s || twin_in(**ch, t).is_none())).count();
+                let score = (own as i64, mine.len() as i64, i64::from(*s == "Latin"));
+                // Compared element by element, as the TypeScript does.
+                if score > best {
+                    main = s;
+                    best = score;
+                }
             }
-            if latin.len() >= greek.len() || cyrillic.is_empty() {
-                return if latin.is_empty() { word.to_string() } else { latinised(word) };
-            }
-            word.to_string()
+            letters
+                .iter()
+                .zip(&scripts)
+                .map(|(ch, s)| if *s == main || *s == "Mark" || *s == "Other" { *ch } else { twin_in(*ch, main).unwrap_or(*ch) })
+                .collect()
         })
         .into_owned()
 }
@@ -181,31 +323,26 @@ pub fn js_trim(s: &str) -> &str {
     s.trim_matches(is_js_space)
 }
 
-/// The first `max` UTF-16 units of a string (`s.slice(0, max)`).
-///
-/// JavaScript can cut an astral character in two and keep the first half. A Rust string
-/// cannot hold that half, so it is written as U+FFFD, which is what JavaScript's
-/// `toWellFormed()` makes of it. Neither is a letter, a space or a mark the rules read.
-fn slice_utf16(s: &str, max: usize) -> String {
-    let mut out = String::with_capacity(s.len().min(max * 3));
-    let mut units = 0;
-    for c in s.chars() {
-        let n = c.len_utf16();
-        if units + n > max {
-            if units < max {
-                out.push('\u{fffd}');
-            }
-            break;
+/// NFKC over every run that is not Thai or Lao (`.replace(NOT_THAI_LAO, run => run.normalize('NFKC'))`).
+fn nfkc_outside_thai_lao(text: &str) -> String {
+    let thai_or_lao = |c: char| ('\u{0e00}'..='\u{0eff}').contains(&c);
+    let mut out = String::with_capacity(text.len());
+    let mut run = String::new();
+    for c in text.chars() {
+        if thai_or_lao(c) {
+            out.extend(run.nfkc());
+            run.clear();
+            out.push(c);
+        } else {
+            run.push(c);
         }
-        out.push(c);
-        units += n;
     }
+    out.extend(run.nfkc());
     out
 }
 
-/// Steps 1 and 2: line breaks, then NFKC over every run that is not Thai or Lao.
-fn breaks_and_forms(raw: &str) -> String {
-    // /\r\n?|[\u000b\u000c\u0085  ]/g
+/// Step 1: every kind of line break becomes "\n" (`/\r\n?|[\u000b\u000c\u0085  ]/g`).
+fn line_breaks(raw: &str) -> String {
     let mut broken = String::with_capacity(raw.len());
     let mut chars = raw.chars().peekable();
     while let Some(c) = chars.next() {
@@ -220,46 +357,42 @@ fn breaks_and_forms(raw: &str) -> String {
             _ => broken.push(c),
         }
     }
-    let thai_or_lao = |c: char| ('\u{0e00}'..='\u{0eff}').contains(&c);
-    let mut out = String::with_capacity(broken.len());
-    let mut run = String::new();
-    for c in broken.chars() {
-        if thai_or_lao(c) {
-            out.extend(run.nfkc());
-            run.clear();
-            out.push(c);
+    broken
+}
+
+/// `.replace(/\s+/g, ' ')`.
+fn collapse_spaces(text: &str) -> String {
+    let mut out = String::with_capacity(text.len());
+    let mut in_space = false;
+    for c in text.chars() {
+        if is_js_space(c) {
+            if !in_space {
+                out.push(' ');
+            }
+            in_space = true;
         } else {
-            run.push(c);
+            out.push(c);
+            in_space = false;
         }
     }
-    out.extend(run.nfkc());
     out
 }
 
-/// Normalise a verse (see above), collapse blank lines and runs of space, cap the length.
-pub fn clean_verse(raw: &str) -> String {
-    let formed = breaks_and_forms(raw);
+/// One pass of cleaning (`cleanOnce`).
+fn clean_once(raw: &str, unmix: bool) -> String {
+    let formed = nfkc_outside_thai_lao(&line_breaks(raw));
     let spaced = BLANKS.replace_all(&formed, " ");
     let mut lines: Vec<String> = Vec::new();
     for line in spaced.split('\n') {
         let visible = INVISIBLE.replace_all(line, "");
         let rooted = ORPHAN_MARKS.replace_all(&visible, "${1}");
-        let trimmed_marks = MARK_PILE.replace_all(&rooted, "${1}");
-        let unmixed = unmix_scripts(&trimmed_marks);
-        let mut collapsed = String::with_capacity(unmixed.len());
-        let mut in_space = false;
-        for c in unmixed.chars() {
-            if is_js_space(c) {
-                if !in_space {
-                    collapsed.push(' ');
-                }
-                in_space = true;
-            } else {
-                collapsed.push(c);
-                in_space = false;
-            }
+        let mut l = MARK_PILE.replace_all(&rooted, "${1}").into_owned();
+        if unmix {
+            l = unmix_scripts(&l);
         }
-        let trimmed = js_trim(&collapsed);
+        // Removing a character can bring a letter and its mark together; compose them as NFKC would.
+        let composed = collapse_spaces(&nfkc_outside_thai_lao(&l));
+        let trimmed = js_trim(&composed);
         if !trimmed.is_empty() {
             lines.push(trimmed.to_string());
             if lines.len() == MAX_VERSE_LINES {
@@ -267,7 +400,42 @@ pub fn clean_verse(raw: &str) -> String {
             }
         }
     }
-    slice_utf16(&lines.join("\n"), MAX_VERSE_CHARS)
+    let out = lines.join("\n");
+    if utf16_len(&out) <= MAX_VERSE_CHARS {
+        return out;
+    }
+    // Cut between characters, never inside a surrogate pair.
+    let mut kept = String::with_capacity(out.len());
+    let mut units = 0;
+    for c in out.chars() {
+        if units + c.len_utf16() > MAX_VERSE_CHARS {
+            break;
+        }
+        units += c.len_utf16();
+        kept.push(c);
+    }
+    kept
+}
+
+/// Normalise a verse (see above), collapse blank lines and runs of space, cap the length,
+/// and pass again until nothing changes (`cleanVerse`).
+pub fn clean_verse(raw: &str) -> String {
+    clean_verse_with(raw, true)
+}
+
+/// `cleanVerse(raw, { unmix })`. With `unmix` false the letters of other alphabets are left as
+/// typed: that is how a curse reads a verse ([`words_as_read`]), since a word that mixes
+/// alphabets is itself the trick.
+pub fn clean_verse_with(raw: &str, unmix: bool) -> String {
+    let mut v = clean_once(raw, unmix);
+    for _ in 0..4 {
+        let again = clean_once(&v, unmix);
+        if again == v {
+            break;
+        }
+        v = again;
+    }
+    v
 }
 
 pub fn lines_of(verse: &str) -> Vec<&str> {
@@ -682,74 +850,483 @@ fn lone_letter(unit: &str) -> bool {
         && unit.chars().next().is_some_and(|c| is_class(&LATIN_RE, c) || is_class(&CYRILLIC_RE, c) || is_class(&GREEK_RE, c))
 }
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+// --- Is it a word? ---
+//
+// The substance floor and the rule judge count words, not strings, so they ask the English
+// lexicon: the pronunciation table less what a dictionary of words does not list (its names,
+// abbreviations and fragments, marked from SCOWL when the table is built). A word the table
+// lacks counts toward the floor inside a phrase (`PHRASE_SPAN`). Names from the cards and the
+// game's own words (the acrostic and power words) always count.
+
+/// Letters a string of the English table needs to count as a word when SCOWL does not list
+/// it (`UNLISTED_SPAN`).
+pub const UNLISTED_SPAN: usize = 4;
+
+/// Letters a word the lexicon lacks needs to count toward the substance floor inside a phrase
+/// (a line that holds one of the little words) (`PHRASE_SPAN`).
+pub const PHRASE_SPAN: usize = 4;
+
+/// Letters an English word needs to tell inside a phrase (`SHORT_TELLING`).
+pub const SHORT_TELLING: usize = 3;
+
+/// Words that count whatever the lexicon says (`gameWords('en')`): the parts of every card's
+/// name, and the English acrostic and power words.
+static GAME_WORDS: LazyLock<HashSet<String>> = LazyLock::new(|| {
+    let mut words: HashSet<String> = HashSet::new();
+    for card in super::cards::CARDS.iter() {
+        for part in word_parts(&card.name) {
+            words.insert(fold(&part));
+        }
+    }
+    let power = super::devices::RELIC_WORDS.iter().flat_map(|(_, ws)| ws.iter().copied());
+    for w in super::forms::ACROSTIC_WORDS.iter().copied().chain(power) {
+        for part in word_parts(w) {
+            words.insert(fold(&part));
+        }
+    }
+    words
+});
+
+/// Is this a word of the language, as far as the lexicon can say (`lexiconHas(word, 'en')`)?
+/// The server always has the table, so the answer is never "unknown". A hyphenated word is a
+/// word when each part is.
+pub fn lexicon_has(word: &str) -> bool {
+    let w = fold(word);
+    if GAME_WORDS.contains(&w) {
+        return true;
+    }
+    let parts: Vec<&str> = w.split('-').filter(|part| has_letter(part)).collect();
+    if parts.len() > 1 {
+        return parts.iter().all(|part| lexicon_has(part));
+    }
+    // An abbreviation the dictionary only spells out is not a word, nor a short string a
+    // dictionary of words does not list; longer strings the table has are words (names).
+    match pronounce(&w) {
+        Some(p) => !p.spelled && (!p.unlisted || word_span(&w) >= UNLISTED_SPAN),
+        None => false,
+    }
+}
+
+/// For each unit of a line, whether it is a word of the language (`knownUnits(line, 'en')`).
+fn known_units(line: &str) -> Vec<bool> {
+    let units: Vec<String> = units_of(line).into_iter().filter(|u| letter_count(u) > 0).collect();
+    let phrase = units.iter().any(|u| is_stop_word(u));
+    units
+        .iter()
+        .map(|u| {
+            let has = lexicon_has(u);
+            if !has && phrase && word_span(u) >= PHRASE_SPAN { true } else { has }
+        })
+        .collect()
+}
+
+/// A word that carries meaning (`isContentWord(word, 'en')`): not a letter alone, not one of
+/// the little words.
+pub fn is_content_word(word: &str) -> bool {
+    if !has_letter(word) {
+        return false;
+    }
+    if letter_count(word) < 2 {
+        return false;
+    }
+    !STOP_WORDS.contains(fold(word).as_str())
+}
+
+/// A word that tells (`isTellingWord(word, 'en', inPhrase)`): it carries meaning, the lexicon
+/// has it, and it is four letters or more, or `SHORT_TELLING` inside a phrase.
+pub fn is_telling_word(word: &str, in_phrase: bool) -> bool {
+    if !is_content_word(word) || !lexicon_has(word) {
+        return false;
+    }
+    let span = word_span(word);
+    span >= rules::CONTENT || (in_phrase && span >= SHORT_TELLING)
+}
+
+/// The different telling words of a text, folded (`tellingWords(text, 'en')`), in the order
+/// they first appear.
+pub fn telling_words(text: &str) -> Vec<String> {
+    let mut out: Vec<String> = Vec::new();
+    let mut seen: HashSet<String> = HashSet::new();
+    for line in lines_of(text) {
+        let ws = word_parts(line);
+        let phrase = ws.iter().any(|w| is_stop_word(w));
+        for w in &ws {
+            if is_telling_word(w, phrase) {
+                let f = fold(w);
+                if seen.insert(f.clone()) {
+                    out.push(f);
+                }
+            }
+        }
+    }
+    out
+}
+
+#[derive(Debug, Clone, Copy, PartialEq)]
 pub struct Substance {
     pub ok: bool,
-    /// Different words found, and how many the verse needs.
+    /// Different words found that are words of the language, and how many the verse needs.
     pub distinct: usize,
     pub needed: usize,
+    /// Share of the verse's words that are words of its language.
+    pub known: f64,
+    /// Different telling words: what the verse says, as against how it is laid out.
+    pub telling: usize,
 }
 
 /// Fewest different words anything that calls itself a verse can have.
 pub const MIN_DISTINCT_WORDS: usize = 3;
+/// Below this share of real words a verse is tokens, not verse, and is void.
+pub const MIN_KNOWN_SHARE: f64 = 0.6;
+/// At and above this share of real words a verse keeps its full form points.
+pub const FULL_KNOWN_SHARE: f64 = 0.7;
+/// Different telling words a verse needs per line before it keeps its full form points.
+pub const TELLING_PER_LINE: f64 = 0.5;
 
-/// Is this a verse, or tokens arranged to satisfy a checker (`substance`)? Every line holds
-/// at least one word, and the verse has at least as many different words as it has lines,
-/// and never fewer than three. Lone letters count as one word between them. More than half
-/// of its lines are different lines: a line said again (the same words, whatever the case
-/// and punctuation) counts once, so a refrain may return but one line said over and over
-/// is one line.
+/// Is this a verse, or tokens arranged to satisfy a checker (`substance`)? Counting only
+/// words of the language: every line holds at least one; the verse has at least as many
+/// different words as it has lines, and never fewer than three (lone letters count as one
+/// word between them); more than half of its lines are different lines; and at least
+/// `MIN_KNOWN_SHARE` of what it is made of are words.
 pub fn substance(verse: &str) -> Substance {
     let ls = lines_of(verse);
     let per_line: Vec<Vec<String>> =
         ls.iter().map(|l| units_of(l).into_iter().filter(|u| letter_count(u) > 0).collect()).collect();
+    let flags: Vec<Vec<bool>> = ls.iter().map(|l| known_units(l)).collect();
+    debug_assert!(per_line.iter().zip(&flags).all(|(u, f)| u.len() == f.len()));
     let mut words: HashSet<&str> = HashSet::new();
     let mut any_lone = false;
-    for unit in per_line.iter().flatten() {
-        if lone_letter(unit) {
-            any_lone = true;
-        } else {
-            words.insert(unit.as_str());
+    let mut real = 0usize;
+    let mut all = 0usize;
+    for (units, f) in per_line.iter().zip(&flags) {
+        for (unit, known) in units.iter().zip(f) {
+            all += 1;
+            if !known {
+                continue;
+            }
+            real += 1;
+            if lone_letter(unit) {
+                any_lone = true;
+            } else {
+                words.insert(unit.as_str());
+            }
         }
     }
     let distinct = words.len() + usize::from(any_lone);
     let needed = ls.len().max(MIN_DISTINCT_WORDS);
     let different_lines = per_line.iter().map(|units| units.join(" ")).collect::<HashSet<String>>().len();
+    let known = if all > 0 { real as f64 / all as f64 } else { 0.0 };
     let ok = !ls.is_empty()
-        && per_line.iter().all(|units| !units.is_empty())
+        && flags.iter().all(|f| f.iter().any(|k| *k))
         && distinct >= needed
-        && different_lines * 2 > ls.len();
-    Substance { ok, distinct, needed }
+        && different_lines * 2 > ls.len()
+        && known >= MIN_KNOWN_SHARE;
+    Substance { ok, distinct, needed, known, telling: telling_words(verse).len() }
 }
 
-/// How much of `verse` is taken from `source`, from 0 (nothing) to 1 (all of it)
-/// (`similarity`): the share of the verse's word pairs that also run together in the
-/// source; a whole line of three words or more repeated from the source counts as 1.
-pub fn similarity(verse: &str, source: &str) -> f64 {
-    let seq = |text: &str| -> Vec<Vec<String>> {
-        lines_of(text).iter().map(|l| units_of(l)).filter(|u| !u.is_empty()).collect()
+/// Distinct telling words of the verse that are not among `used` (`ownContent`): what the
+/// verse says beyond the words that land its device and signature.
+pub fn own_content(verse: &str, used: &[String]) -> usize {
+    let mut taken: HashSet<String> = HashSet::new();
+    for u in used {
+        let f = fold(u);
+        for part in f.split(' ') {
+            taken.insert(part.to_string());
+        }
+        taken.insert(f);
+    }
+    telling_words(verse).iter().filter(|w| !taken.contains(*w)).count()
+}
+
+// --- Copying ---
+
+/// The words of a line, in order, for the copy measure (`copyWords` for English): its content
+/// words (or, with `all`, every word), folded.
+fn copy_words(line: &str, all: bool) -> Vec<String> {
+    word_parts(line).into_iter().filter(|w| has_letter(w) && (all || is_content_word(w))).map(|w| fold(&w)).collect()
+}
+
+/// English endings a copy can change without making a word its own (`englishStem`). Lengths
+/// are UTF-16 units, as JavaScript counts them.
+fn english_stem(w: &str) -> String {
+    let mut s = w.strip_suffix("'s").unwrap_or(w).to_string();
+    let len = |s: &str| utf16_len(s);
+    let drop = |s: &str, n: usize| -> String {
+        // Only ever an ASCII ending: n bytes are n characters.
+        s[..s.len() - n].to_string()
     };
-    let mine = seq(verse);
-    let theirs = seq(source);
+    for _ in 0..3 {
+        let before = s.clone();
+        let n = len(&s);
+        if n > 5 && s.ends_with("ies") {
+            s = format!("{}y", drop(&s, 3));
+        } else if n > 5 && (s.ends_with("eth") || s.ends_with("est")) {
+            s = drop(&s, 3);
+        } else if n > 5 && s.ends_with("ing") {
+            s = drop(&s, 3);
+        } else if n > 4 && s.ends_with("ed") {
+            s = drop(&s, 2);
+        } else if n > 4 && ["sses", "xes", "zes", "ches", "shes"].iter().any(|e| s.ends_with(e)) {
+            s = drop(&s, 2);
+        } else if n > 3 && s.ends_with('s') && {
+            // /[^su]s$/: the character before the s is neither s nor u (in UTF-16 units, so
+            // the low half of an astral letter counts as "neither").
+            let mut cs = s.chars().rev();
+            cs.next();
+            cs.next().is_some_and(|c| c != 's' && c != 'u')
+        } {
+            s = drop(&s, 1);
+        }
+        if s == before {
+            break;
+        }
+    }
+    // /([^aeiouls])\1$/ in UTF-16 units: the last two characters the same, and not a vowel, l
+    // or s. Two units at the end of a string that ends in an astral letter are its two halves,
+    // which are never the same, so only a doubled letter of the basic plane counts.
+    let cs: Vec<char> = s.chars().collect();
+    if cs.len() >= 2 {
+        let (a, b) = (cs[cs.len() - 2], cs[cs.len() - 1]);
+        if a == b && b.len_utf16() == 1 && !"aeiouls".contains(b) {
+            s.pop();
+        }
+    }
+    if len(&s) > 3 { s.strip_suffix('e').map(String::from).unwrap_or(s) } else { s }
+}
+
+thread_local! {
+    static STEMS: RefCell<HashMap<String, String>> = RefCell::new(HashMap::new());
+}
+
+/// Do two folded words of a copy measure count as the same word (`sameWordFor('en')`)? The
+/// same spelling, or the same stem.
+fn same_word(a: &str, b: &str) -> bool {
+    if a == b {
+        return true;
+    }
+    let stem = |w: &str| {
+        STEMS.with(|cache| {
+            if let Some(s) = cache.borrow().get(w) {
+                return s.clone();
+            }
+            let s = english_stem(w);
+            let mut c = cache.borrow_mut();
+            if c.len() > 50_000 {
+                c.clear();
+            }
+            c.insert(w.to_string(), s.clone());
+            s
+        })
+    };
+    stem(a) == stem(b)
+}
+
+/// What `takenInOrder` returns: which items of `a` it takes, and which items of `b` they are.
+struct Taken {
+    taken: Vec<bool>,
+    at: Vec<usize>,
+}
+
+/// The longest common subsequence of `a` in `b0`, where two neighbours of `a` swapped still
+/// match both (`takenInOrder`). Items of `b0` already `used` are not available.
+fn taken_in_order(a: &[String], b0: &[String], used: &[bool]) -> Taken {
+    let at0: Vec<usize> = (0..b0.len()).filter(|j| !used[*j]).collect();
+    let b: Vec<&String> = at0.iter().map(|j| &b0[*j]).collect();
+    let (n, m) = (a.len(), b.len());
+    let e: Vec<Vec<bool>> = a.iter().map(|x| b.iter().map(|y| same_word(x, y)).collect()).collect();
+    let swap = |i: usize, j: usize| i > 1 && j > 1 && e[i - 1][j - 2] && e[i - 2][j - 1] && a[i - 1] != a[i - 2];
+    let mut l = vec![vec![0usize; m + 1]; n + 1];
+    for i in 1..=n {
+        for j in 1..=m {
+            let mut v = l[i - 1][j].max(l[i][j - 1]);
+            if e[i - 1][j - 1] {
+                v = v.max(l[i - 1][j - 1] + 1);
+            }
+            if swap(i, j) {
+                v = v.max(l[i - 2][j - 2] + 2);
+            }
+            l[i][j] = v;
+        }
+    }
+    let mut taken = vec![false; n];
+    let mut at = Vec::new();
+    let (mut i, mut j) = (n, m);
+    while i > 0 && j > 0 {
+        if e[i - 1][j - 1] && l[i][j] == l[i - 1][j - 1] + 1 {
+            taken[i - 1] = true;
+            at.push(at0[j - 1]);
+            i -= 1;
+            j -= 1;
+        } else if swap(i, j) && l[i][j] == l[i - 2][j - 2] + 2 {
+            taken[i - 1] = true;
+            taken[i - 2] = true;
+            at.push(at0[j - 1]);
+            at.push(at0[j - 2]);
+            i -= 2;
+            j -= 2;
+        } else if l[i - 1][j] >= l[i][j - 1] {
+            i -= 1;
+        } else {
+            j -= 1;
+        }
+    }
+    Taken { taken, at }
+}
+
+/// One line of the source against the line of the verse that says most of it (`CopyMeasure.carry`).
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub struct LineCarry {
+    /// The source line's words.
+    pub source: usize,
+    /// How many of them that verse line says in order.
+    pub said: usize,
+    /// That verse line's words.
+    pub verse: usize,
+    /// It says the source line's last word.
+    pub end: bool,
+}
+
+/// How much of a verse is taken from another (`CopyMeasure`).
+#[derive(Debug, Clone, PartialEq)]
+pub struct CopyMeasure {
+    pub taken: usize,
+    pub own: usize,
+    pub share: f64,
+    pub source: usize,
+    pub coverage: f64,
+    pub any_order: f64,
+    pub lines: Vec<f64>,
+    pub per_line: Vec<usize>,
+    pub ends: usize,
+    pub carry: Vec<LineCarry>,
+}
+
+/// `lineCarry`: every line of `source`, all its words, matched one to one with the lines of
+/// `verse` that say most of each in order, the largest first and, among equals, the earlier
+/// lines first.
+fn line_carry(verse: &str, source: &str) -> Vec<LineCarry> {
+    let theirs: Vec<Vec<String>> = lines_of(source).iter().map(|l| copy_words(l, true)).collect();
+    let mine: Vec<Vec<String>> = lines_of(verse).iter().map(|l| copy_words(l, true)).filter(|ws| !ws.is_empty()).collect();
+    let mut pairs: Vec<(usize, usize, usize)> = Vec::new();
+    for (i, s) in theirs.iter().enumerate() {
+        for (j, v) in mine.iter().enumerate() {
+            let said = taken_in_order(v, s, &vec![false; s.len()]).at.len();
+            if said > 0 {
+                pairs.push((said, i, j));
+            }
+        }
+    }
+    pairs.sort_by(|x, y| y.0.cmp(&x.0).then(x.1.cmp(&y.1)).then(x.2.cmp(&y.2)));
+    let mut out: Vec<LineCarry> = theirs.iter().map(|s| LineCarry { source: s.len(), said: 0, verse: 0, end: false }).collect();
+    let mut taken: HashSet<usize> = HashSet::new();
+    for (said, i, j) in pairs {
+        if out[i].said > 0 || taken.contains(&j) {
+            continue;
+        }
+        let last = theirs[i].last().expect("a line that says something has a last word");
+        out[i] = LineCarry { source: theirs[i].len(), said, verse: mine[j].len(), end: mine[j].iter().any(|w| same_word(w, last)) };
+        taken.insert(j);
+    }
+    out
+}
+
+/// How much of `verse` is taken from `source`, seen from both sides (`copyOf(verse, source,
+/// 'en', { all })`). With `all` every word counts, the little ones too.
+pub fn copy_of(verse: &str, source: &str, all: bool) -> CopyMeasure {
+    let mine: Vec<Vec<String>> = lines_of(verse).iter().map(|l| copy_words(l, all)).filter(|ws| !ws.is_empty()).collect();
+    let theirs: Vec<String> = lines_of(source).iter().flat_map(|l| copy_words(l, all)).collect();
+    let carry = line_carry(verse, source);
     if mine.is_empty() || theirs.is_empty() {
-        return 0.0;
+        return CopyMeasure {
+            taken: 0,
+            own: 0,
+            share: 0.0,
+            source: theirs.len(),
+            coverage: 0.0,
+            any_order: 0.0,
+            lines: Vec::new(),
+            per_line: Vec::new(),
+            ends: 0,
+            carry,
+        };
     }
-    let their_lines: HashSet<String> = theirs.iter().map(|u| u.join(" ")).collect();
-    if mine.iter().any(|u| u.len() >= 3 && their_lines.contains(&u.join(" "))) {
-        return 1.0;
+    let in_source = |w: &str| theirs.iter().any(|t| same_word(w, t));
+    // Each word of the source is taken once.
+    let mut used = vec![false; theirs.len()];
+    let mut taken = 0usize;
+    let mut own: HashSet<&str> = HashSet::new();
+    let mut per_line = Vec::new();
+    for line in &mine {
+        let t = taken_in_order(line, &theirs, &used);
+        for j in &t.at {
+            used[*j] = true;
+        }
+        per_line.push(t.at.len());
+        for (k, w) in line.iter().enumerate() {
+            if t.taken[k] {
+                taken += 1;
+            } else if !in_source(w) {
+                own.insert(w.as_str());
+            }
+        }
     }
-    let pairs = |ls: &[Vec<String>]| -> Vec<String> {
-        ls.iter().flat_map(|u| u.windows(2).map(|p| format!("{} {}", p[0], p[1])).collect::<Vec<_>>()).collect()
+    // In any order: each word of the source is matched by one word of the verse at most.
+    let mut said = 0usize;
+    let mut free = vec![true; theirs.len()];
+    for w in mine.iter().flatten() {
+        if let Some(j) = (0..theirs.len()).find(|k| free[*k] && same_word(w, &theirs[*k])) {
+            free[j] = false;
+            said += 1;
+        }
+    }
+    // Line by line: how much of each line of the source one line of the verse says.
+    let said1 = |src: &[String], line: &[String]| -> f64 {
+        let mut open = vec![true; line.len()];
+        let mut n = 0usize;
+        for w in src {
+            if let Some(k) = (0..line.len()).find(|i| open[*i] && same_word(&line[*i], w)) {
+                open[k] = false;
+                n += 1;
+            }
+        }
+        n as f64 / src.len() as f64
     };
-    let my_pairs = pairs(&mine);
-    if my_pairs.is_empty() {
-        // One-word lines have no pairs; fall back to the words themselves.
-        let their_words: HashSet<&String> = theirs.iter().flatten().collect();
-        let my_words: Vec<&String> = mine.iter().flatten().collect();
-        return my_words.iter().filter(|w| their_words.contains(**w)).count() as f64 / my_words.len() as f64;
+    let source_lines: Vec<Vec<String>> = lines_of(source).iter().map(|l| copy_words(l, all)).collect();
+    let lines: Vec<f64> = source_lines
+        .iter()
+        .filter(|ws| ws.len() >= 2)
+        .map(|ws| mine.iter().map(|line| said1(ws, line)).fold(f64::NEG_INFINITY, f64::max))
+        .collect();
+    // Line ends: the last word of each line, against the source's line in the same place.
+    let line_end = |l: &str| copy_words(l, true).pop();
+    let their_ends: Vec<Option<String>> = lines_of(source).iter().map(|l| line_end(l)).collect();
+    let mut ends = 0usize;
+    for (i, l) in lines_of(verse).iter().enumerate() {
+        // `w && e && eq(w, e)`: an empty word (one that folds to nothing) is no end.
+        if let (Some(w), Some(Some(e))) = (line_end(l), their_ends.get(i)) {
+            if !w.is_empty() && !e.is_empty() && same_word(&w, e) {
+                ends += 1;
+            }
+        }
     }
-    let their_pairs: HashSet<String> = pairs(&theirs).into_iter().collect();
-    my_pairs.iter().filter(|p| their_pairs.contains(*p)).count() as f64 / my_pairs.len() as f64
+    let own_n = own.len();
+    CopyMeasure {
+        taken,
+        own: own_n,
+        share: if taken + own_n > 0 { taken as f64 / (taken + own_n) as f64 } else { 0.0 },
+        source: theirs.len(),
+        coverage: taken as f64 / theirs.len() as f64,
+        any_order: said as f64 / theirs.len() as f64,
+        lines,
+        per_line,
+        ends,
+        carry,
+    }
+}
+
+/// `copyOf(verse, source).share` (`similarity`): how much of `verse` is taken from `source`.
+pub fn similarity(verse: &str, source: &str) -> f64 {
+    copy_of(verse, source, false).share
 }
 
 // --- Words as a curse reads them ---
@@ -777,23 +1354,111 @@ fn stand_in(c: char) -> Option<char> {
 
 static DISGUISED_RE: LazyLock<Regex> =
     LazyLock::new(|| re(r"[\p{L}\p{M}\p{N}$@€£|+]+(?:['\x{2019}\-!][\p{L}\p{M}\p{N}$@€£|+]+)*"));
+/// A number with a short ending of letters: "2nd", "6pm", "1990s", "3D" (`NUMBER_THEN_LETTERS`).
+static NUMBER_THEN_LETTERS: LazyLock<Regex> = LazyLock::new(|| re(r"^\p{N}+(?:[.,:]\p{N}+)*['\x{2019}\-]?\p{L}{1,3}$"));
+/// Letters, then a number: "ke-2", "No.5" (`LETTERS_THEN_NUMBER`).
+static LETTERS_THEN_NUMBER: LazyLock<Regex> = LazyLock::new(|| re(r"^\p{L}{1,3}['\x{2019}\-]\p{N}+$"));
+static LEADING_DIGITS: LazyLock<Regex> = LazyLock::new(|| re(r"^\p{N}+"));
 static COUNTED_AS_LETTER: LazyLock<Regex> = LazyLock::new(|| re(r"[\p{L}\p{N}$@€£|+!]"));
+static KEPT_AS_READ: LazyLock<Regex> = LazyLock::new(|| re(r"[\p{L}\p{M}'\-?]"));
 
-/// Words as a curse reads them (`wordsAsRead`): folded, look-alike letters read as Latin,
-/// and a digit or sign written in place of a letter read as the letter it stands for. A
-/// stand-in that stands for nothing, or one inside a word not in Latin letters, is "?".
+/// Is this token an honest number, not a word with digits standing in for its letters
+/// (`honestNumber`)? One digit that reads as a letter and so spells a word of four letters
+/// or more the lexicon knows ("1ove") is a disguise.
+fn honest_number(token: &str) -> bool {
+    if LETTERS_THEN_NUMBER.is_match(token) {
+        return true;
+    }
+    if !NUMBER_THEN_LETTERS.is_match(token) {
+        return false;
+    }
+    let digits = LEADING_DIGITS.find(token).expect("the token starts with digits").as_str();
+    let mut ds = digits.chars();
+    let only = match (ds.next(), ds.next()) {
+        (Some(d), None) if d.len_utf16() == 1 => stand_in(d),
+        _ => None,
+    };
+    let Some(letter) = only else { return true };
+    let rest = &token[digits.len()..];
+    let rest = rest.strip_prefix(['\'', '’', '-']).unwrap_or(rest);
+    let read = format!("{letter}{rest}");
+    !(letter_count(&read) >= 4 && lexicon_has(&read))
+}
+
+/// The letters of the English pack, folded (`nativeLetters('en')`), from the generated
+/// `backend/data/english.json` (written from `src/lib/verse/packs/en.ts`).
+static NATIVE_LETTERS: LazyLock<HashSet<char>> = LazyLock::new(|| super::cards::english_letters().iter().copied().collect());
+
+/// A folded letter as it reads in the English alphabet (`readLetter`): itself, or the letter
+/// of the alphabet it is drawn like (UTS #39).
+fn read_letter(ch: char) -> String {
+    let native = &*NATIVE_LETTERS;
+    if native.contains(&ch) {
+        return ch.to_string();
+    }
+    let proto = prototype_of(ch);
+    let lower = lower_char(proto);
+    if native.contains(&proto) {
+        return proto.to_string();
+    }
+    let mut lower_chars = lower.chars();
+    let lower_one = match (lower_chars.next(), lower_chars.next()) {
+        (Some(c), None) => Some(c),
+        _ => None,
+    };
+    if let Some(l) = lower_one {
+        if native.contains(&l) {
+            return l.to_string();
+        }
+    }
+    let by_lower = lower_one.and_then(|l| BY_PROTOTYPE.get(&l));
+    for by_script in [BY_PROTOTYPE.get(&proto), by_lower].into_iter().flatten() {
+        for (_, list) in by_script {
+            if let Some(l) = list.iter().find(|l| native.contains(l)) {
+                return l.to_string();
+            }
+        }
+    }
+    ch.to_string()
+}
+
+/// Does a word mix alphabets (`mixesScripts(word, 'en')`)?
+fn mixes_scripts(word: &str) -> bool {
+    let scripts: HashSet<&'static str> = word.chars().filter(|c| is_letter(*c)).map(script_of).collect();
+    scripts.len() > 1
+}
+
+/// A word, folded, each letter read in the English alphabet, and "?" after it when it mixes
+/// alphabets (`read` in `wordsAsRead`).
+fn read_word(w: &str) -> String {
+    let mut out: String = fold(w).chars().map(|c| if is_letter(c) { read_letter(c) } else { c.to_string() }).collect();
+    if mixes_scripts(w) {
+        out.push('?');
+    }
+    out
+}
+
+/// Words as a curse reads them (`wordsAsRead(text, 'en')`): `text` is the verse as typed
+/// ([`clean_verse_with`] without unmixing). Each word folded and read in the English alphabet;
+/// a word that mixes alphabets gets a "?"; a digit or sign written in place of a letter is read
+/// as the letter it stands for, and one that stands for nothing, or one inside a word not in
+/// Latin letters, is "?"; an honest number keeps its digits.
 pub fn words_as_read(text: &str) -> Vec<String> {
     let mut out = Vec::new();
     for token in DISGUISED_RE.find_iter(text).map(|m| m.as_str()) {
         if !has_letter(token) {
             continue;
         }
-        let seen: Vec<char> = latinised(&fold(token)).chars().collect();
+        if honest_number(token) {
+            out.push(read_word(token));
+            continue;
+        }
+        let seen: Vec<char> = read_word(token).chars().collect();
         let latin = seen.iter().all(|c| !is_letter(*c) || is_class(&LATIN_RE, *c));
         out.push(
             seen.iter()
                 .map(|c| {
-                    if is_letter(*c) || is_class(&MARK_RE, *c) || *c == '\'' || *c == '-' {
+                    if is_class(&KEPT_AS_READ, *c) {
                         *c
                     } else if latin {
                         stand_in(*c).unwrap_or('?')
@@ -808,19 +1473,25 @@ pub fn words_as_read(text: &str) -> Vec<String> {
 }
 
 /// The length of each word as a curse reads it (`wordLengthsAsRead`): its letters, and any
-/// digit or sign written inside it in place of one.
+/// digit or sign written inside it in place of one. An honest number is as long as its letters.
 pub fn word_lengths_as_read(text: &str) -> Vec<usize> {
     DISGUISED_RE
         .find_iter(text)
         .map(|m| m.as_str())
         .filter(|token| has_letter(token))
-        .map(|token| token.nfc().filter(|c| is_class(&COUNTED_AS_LETTER, *c)).count())
+        .map(|token| {
+            if honest_number(token) {
+                letter_count(token)
+            } else {
+                token.nfc().filter(|c| is_class(&COUNTED_AS_LETTER, *c)).count()
+            }
+        })
         .collect()
 }
 
-/// A letter as a curse compares it: folded and read as Latin where it has a Latin look-alike.
+/// A letter as a curse compares it: folded and read in the English alphabet (`letterAsRead`).
 pub fn letter_as_read(letter: &str) -> String {
-    latinised(&fold(letter))
+    fold(letter).chars().map(|c| if is_letter(c) { read_letter(c) } else { c.to_string() }).collect()
 }
 
 #[cfg(test)]
@@ -837,12 +1508,20 @@ mod tests {
 
     #[test]
     fn the_cap_counts_utf16_units_and_never_splits_a_character() {
-        // 599 units, then a character of two units: JavaScript keeps half of it.
+        // 599 units, then a character of two units: it does not fit, and is not cut in half.
         let v = clean_verse(&format!("{}😀 after", "a".repeat(599)));
-        assert_eq!(v.encode_utf16().count(), 600);
-        assert!(v.ends_with('\u{fffd}'));
+        assert_eq!(v.encode_utf16().count(), 599);
+        assert!(!v.contains('\u{fffd}'));
         let whole = clean_verse(&format!("{}😀 after", "a".repeat(598)));
         assert!(whole.ends_with('😀'));
+    }
+
+    #[test]
+    fn cleaning_a_clean_verse_changes_nothing() {
+        for raw in ["Step upe\u{200b}\u{301}, poor player", "a\u{200b}\u{301}b", &format!("{} b", "a".repeat(599))] {
+            let once = clean_verse(raw);
+            assert_eq!(clean_verse(&once), once, "{raw:?}");
+        }
     }
 
     #[test]
@@ -862,12 +1541,26 @@ mod tests {
         // Marks with no letter under them go; a pile on one letter is cut to four.
         assert_eq!(clean_verse("\u{301}\u{301} a"), "a");
         assert_eq!(clean_verse("e\u{301}\u{302}\u{303}\u{304}\u{305}\u{306}").chars().count(), 5);
-        // "rose" with a Cyrillic о is the word "rose".
+        // "rose" with a Cyrillic о is the word "rose"; typed, it is left as it was.
         assert_eq!(clean_verse("r\u{43e}se"), "rose");
+        assert_eq!(clean_verse_with("r\u{43e}se", false), "r\u{43e}se");
         // A Cyrillic word with one Latin letter in it stays Cyrillic.
         assert_eq!(clean_verse("м\u{6f}л\u{6f}к\u{6f}"), "молоко");
         // Thai is left as typed.
         assert_eq!(clean_verse("น้ำ"), "น้ำ");
+    }
+
+    #[test]
+    fn the_confusables_are_unicodes_and_complete() {
+        // 586 letters in the generated file (its header says so).
+        assert_eq!(PROTOTYPE.len(), 586);
+        assert_eq!(prototype_of('\u{43e}'), 'o');
+        assert_eq!(prototype_of('ø'), 'o');
+        assert_eq!(prototype_of('q'), 'q');
+        assert_eq!(script_of('a'), "Latin");
+        assert_eq!(script_of('\u{43e}'), "Cyrillic");
+        assert_eq!(script_of('\u{301}'), "Mark");
+        assert_eq!(script_of('😀'), "Other");
     }
 
     #[test]
@@ -916,29 +1609,57 @@ mod tests {
 
     #[test]
     fn a_verse_needs_substance() {
-        for thin in ["Never\nNever\nNever", "a\na a\na a a", "w\ni\nt", "word", "?!\n..."] {
+        for thin in ["Never\nNever\nNever", "a\na a\na a a", "w\ni\nt", "word", "?!\n...", "ab cd ga\nef gh ha"] {
             assert!(!substance(thin).ok, "{thin:?}");
         }
         for real in ["Never fear\nNever yield\nNever kneel", "I\nI rise\nI rise again", "Bold\nAnd\nRhymes\nDown"] {
             assert!(substance(real).ok, "{real:?}");
         }
+        // The lexicon: a name of the cards counts, an abbreviation the dictionary only spells does not.
+        assert!(lexicon_has("Hamlet") && lexicon_has("night") && !lexicon_has("zorblat"));
+        assert!(is_telling_word("night", false) && !is_telling_word("the", true) && is_telling_word("cat", true) && !is_telling_word("cat", false));
     }
 
     #[test]
-    fn a_copy_is_measured_by_its_word_pairs() {
+    fn a_copy_is_measured_from_both_sides_and_line_by_line() {
         let theirs = "Who dares to stand upon my stage?\nI put the question to thy rage";
         assert_eq!(similarity(theirs, theirs), 1.0);
-        assert_eq!(similarity("I put the question to thy rage\nWho dares to stand upon my stage?", theirs), 1.0);
-        assert!(similarity("Who dares to stand upon my page?\nI put a question to thy rage", theirs) >= 0.5);
-        assert!(similarity("Thy question is a candle in the wind\nI throw thy question back", theirs) < 0.5);
+        let moved = copy_of("I put the question to thy rage\nWho dares to stand upon my stage?", theirs, false);
+        assert_eq!(moved.coverage, 1.0);
+        assert!(moved.carry.iter().all(|c| c.end));
+        let answer = copy_of("Thy question is a candle in the wind\nI throw thy question back", theirs, false);
+        assert!(answer.share < 0.7 && answer.coverage < 0.85);
         assert_eq!(similarity("", theirs), 0.0);
+        assert_eq!(english_stem("limpings"), "limp");
+        assert_eq!(english_stem("hoped"), "hop");
+        assert!(same_word("hears", "hear"));
     }
 
     #[test]
     fn a_curse_reads_a_word_as_a_person_does() {
-        assert_eq!(words_as_read("r0se ro$e R\u{43e}se"), ["rose", "rose", "rose"]);
+        assert_eq!(words_as_read("r0se ro$e rose"), ["rose", "rose", "rose"]);
+        // Typed with a Cyrillic letter, the word mixes alphabets: taken at its worst.
+        assert_eq!(words_as_read("r\u{43e}se"), ["rose?"]);
         assert_eq!(words_as_read("ca9e"), ["ca?e"]);
-        assert_eq!(word_lengths_as_read("w0nd3rful it's"), [9, 3]);
+        // An honest number is a number.
+        assert_eq!(words_as_read("the 2nd act"), ["the", "2nd", "act"]);
+        assert_eq!(word_lengths_as_read("w0nd3rful it's 1990s"), [9, 3, 1]);
         assert_eq!(letter_as_read("\u{41e}"), "o");
+    }
+
+    #[test]
+    fn a_character_the_server_cannot_read_is_named() {
+        assert_eq!(unknown_character("plain words, café, 古池, 😀"), None);
+        // Unassigned in every version, and a noncharacter.
+        assert_eq!(unknown_character("a\u{0378}b"), Some('\u{0378}'));
+        assert_eq!(unknown_character("a\u{FFFF}"), Some('\u{FFFF}'));
+    }
+
+    #[test]
+    fn math_round_rounds_a_half_up_and_nothing_else() {
+        assert_eq!(js_round(0.49999999999999994), 0.0);
+        assert_eq!(js_round(2.5), 3.0);
+        assert_eq!(js_round(7.4999), 7.0);
+        assert_eq!(js_round(-2.5), -2.0);
     }
 }
