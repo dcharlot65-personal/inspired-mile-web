@@ -31,7 +31,10 @@ from CLDR and Wiktionary); a round in which either verse has such a line is not 
 the rules decide it (`referee`: a verse of empty lines must not win); and the model decides only
 what the rule-based judge splits, by `GRADE_MARGIN` (`boundedByRules`). The compare path
 (standard, grand) reads both verses whole: leaving lines out there let a digit in every line empty
-a verse, which LFM3 then preferred. The live checklist tells a lite-tier player which lines the
+a verse, which LFM3 then preferred. Its wording names the duel's language beside the verses, chosen
+from seven measured with the real models on labelled pairs in sixteen languages
+(`tests/model/judge-compare.spec.ts`); LFM3 stays near or below chance in Spanish, Arabic and Hindi
+under every wording (docs/language/JUDGE-INJECTION.md). The live checklist tells a lite-tier player which lines the
 grader will not read and the word that left each out (`DuelSession.judgeUnread`). Keep all three
 if the grade path changes, and measure with `tests/model/grade-injection.spec.ts` and
 `tests/model/judge-hide.spec.ts` (real models; results in `docs/language/JUDGE-INJECTION.md`) and

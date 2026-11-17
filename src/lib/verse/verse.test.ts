@@ -293,10 +293,13 @@ describe('judge', () => {
     const [system, user] = compareMessages(attack, 'An honest line', 'wit', 'English');
     expect(system.content).toMatch(/untrusted/);
     const lines = user.content.split('\n');
-    expect(lines).toHaveLength(4);
+    expect(lines).toHaveLength(5);
     expect(lines[0].startsWith('VERSE A = "')).toBe(true);
     expect(JSON.parse(lines[0].slice('VERSE A = '.length))).toBe(attack);
     expect(lines[1]).toBe('VERSE B = "An honest line"');
+    // The language is named beside the verses (judge.ts compareMessages, measured), not in the instructions.
+    expect(lines[2]).toBe('(Both verses are in English.)');
+    expect(system.content).not.toMatch(/English/);
   });
   it('turns answer scores into a grade and grades into a verdict', () => {
     expect(expectedGrade([0, 0, 0, 0, 0])).toBeCloseTo(3);

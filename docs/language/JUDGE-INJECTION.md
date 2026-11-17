@@ -219,8 +219,64 @@ compare-path injection (10 seeds x 3 weak verses, judge points): LFM3 weak 13.6,
 **The opponent prompt**: LFM3 obeyed 8 of 24 drafts (3 of 12 verses played by the model), Gemma 4
 3 of 24 (11 of 12 played); a played verse still carries an injection, so the test fails as before.
 
+## The compare path's prompt (engine pass, 2026-11-17)
+
+The decision-judge spike found LFM3 (the standard tier) at 17 of 32 on `scripts/judge-eval.mjs`'s
+own eight pairs under the prompt the game ships, against 27 of 32 under that script's prompt, and
+below chance in Spanish, Arabic and Hindi. `tests/model/judge-compare.spec.ts` now measures the
+compare path with the real models on the Studio's GPU (headless Chromium, Metal, a browser profile
+with the models cached), through the game's own `brain.ts`, on judge-eval.mjs's pairs and on the
+labelled pairs of `src/lib/verse/judge-pairs/pairs.json` (sets A and B, at most 20 pairs a language,
+every labelled criterion asked in both orders; forced accuracy: the sign of the lean once the order
+is cancelled). Seven wordings, all with the same verses-as-data and reply instruction:
+
+- *shipped* (main's): "The verses are in X; judge them as verse in that language." in the instructions;
+- *plain*: no language named (judge-eval.mjs's wording);
+- *userLang*: "(Both verses are in X.)" beside the verses, in the user message;
+- *langLast*: "The verses are in X." after the reply instruction;
+- *craft*, *craftUserLang*: a sentence saying what craft is and that a plain statement is weaker;
+- *noSafe*: without the sentence that defends against instructions in a verse (diagnostic only).
+
+LFM3 1.7B (judge-eval's 32; then en, es, ja, ar, hi; the other eleven languages' mean; all sixteen's mean and lowest):
+
+| wording | judge-eval | en | es | ja | ar | hi | other 11 | mean | lowest |
+|---|---|---|---|---|---|---|---|---|---|
+| shipped | 16/32 | 0.635 | 0.44 | 0.565 | 0.44 | 0.38 | 0.82 | 0.714 | 0.38 |
+| plain | 27/32 | 0.798 | 0.58 | 0.467 | 0.32 | 0.28 | 0.76 | 0.678 | 0.28 |
+| userLang | 18/32 | 0.712 | 0.51 | 0.674 | 0.43 | 0.48 | 0.79 | 0.720 | 0.43 |
+| langLast | 22/32 | 0.75 | 0.42 | 0.435 | 0.44 | 0.40 | 0.83 | 0.723 | 0.40 |
+| craft | 17/32 | 0.519 | 0.42 | 0.50 | 0.26 | 0.32 | 0.76 | 0.648 | 0.26 |
+| craftUserLang | 11/32 | 0.481 | 0.50 | 0.739 | 0.42 | 0.58 | 0.75 | 0.683 | 0.42 |
+| noSafe | 19/32 | 0.558 | 0.44 | 0.435 | 0.36 | 0.34 | 0.68 | 0.602 | 0.34 |
+
+Gemma 4 E2B (the grand tier), the three wordings that led on LFM3:
+
+| wording | judge-eval | en | es | ja | ar | hi | lowest of the 16 | mean |
+|---|---|---|---|---|---|---|---|---|
+| shipped | 31/32 | 0.981 | 1 | 0.935 | 0.92 | 1 | 0.833 (ko) | 0.953 |
+| userLang | 31/32 | 0.981 | 1 | 1 | 0.94 | 0.94 | 0.847 (ru) | 0.965 |
+| langLast | 31/32 | 0.981 | 1 | 0.913 | 0.92 | 0.98 | 0.889 (ko, ru) | 0.964 |
+
+Chosen: *userLang*. It leaves LFM3 least below chance where it is worst (es 0.51, ar 0.43, hi 0.48,
+against 0.44, 0.44, 0.38), with a mean equal to the best within the noise (a language has 28 to 52
+labelled criteria here), and gives Gemma the best mean, 0.94 or more in all five of the spike's
+languages. judge-eval.mjs's own wording is the best in English (27 of 32 on its pairs, 0.80 on the
+labelled ones) and the worst in Arabic and Hindi: the spike's 27 against 17 was an English result.
+
+**No wording makes LFM3 a fair judge in Spanish, Arabic and Hindi.** On those pairs it prefers the
+weak verse (short, plain) about as often as the better one under every wording tried, including one
+that says outright that a plain statement is weaker. That is the model, not the prompt; it remains
+the owner's call whether the standard tier should judge in those languages, or leave them to the
+rules (the rule judge measures 0.74 to 0.79 there) or to Gemma 4.
+
+The spec now asserts the shipped prompt's floor: Gemma 4 0.8 or more in every language and 0.93 on
+average; LFM3 0.68 on average (it has no per-language floor that its own measurements would pass).
+Run again with the shipped `compareMessages` itself (TIERS=standard,grand, PROMPTS=shipped,
+PER_LANG=20, 22.9 minutes): every language's figure equal to the userLang rows above, for both
+models; 2 passed.
+
 ## Not measured
 
 - Injections in the other eleven languages with the real model (the vocabulary covers them).
 - A larger grader than LFM2.5 on the grade path (only the lite tier grades).
-- The compare path's honest accuracy: it reads whole verses as on main, with the same prompt.
+- Injections against the new compare wording with the real models (the hide probe and judgeLines are unchanged; the compare path still reads both verses whole).
