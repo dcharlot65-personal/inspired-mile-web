@@ -10,7 +10,9 @@
     "it",
     "pt",
     "pl",
-    "ru"
+    "ru",
+    "th",
+    "id"
    ],
    "judgesIn": [
     "en",
@@ -22,12 +24,17 @@
     "hi",
     "zh",
     "ja",
-    "ko"
+    "ko",
+    "vi",
+    "th",
+    "id"
    ]
   },
   "standard": {
    "writesIn": [],
-   "judgesIn": []
+   "judgesIn": [
+    "vi"
+   ]
   },
   "lite": {
    "writesIn": [],
@@ -49,7 +56,10 @@
     "hi",
     "zh",
     "ja",
-    "ko"
+    "ko",
+    "vi",
+    "th",
+    "id"
    ],
    "write": [
     "en",
@@ -64,7 +74,9 @@
     "hi",
     "zh",
     "ja",
-    "ko"
+    "ko",
+    "th",
+    "id"
    ]
   },
   "standard": {
@@ -81,7 +93,10 @@
     "hi",
     "zh",
     "ja",
-    "ko"
+    "ko",
+    "vi",
+    "th",
+    "id"
    ],
    "write": [
     "en",
@@ -96,7 +111,10 @@
     "hi",
     "zh",
     "ja",
-    "ko"
+    "ko",
+    "vi",
+    "th",
+    "id"
    ]
   },
   "lite": {
@@ -113,7 +131,10 @@
     "hi",
     "zh",
     "ja",
-    "ko"
+    "ko",
+    "vi",
+    "th",
+    "id"
    ],
    "write": [
     "en",
@@ -128,7 +149,10 @@
     "hi",
     "zh",
     "ja",
-    "ko"
+    "ko",
+    "vi",
+    "th",
+    "id"
    ]
   }
  },
@@ -206,25 +230,15 @@
     "writes": [
      "not measured"
     ],
-    "judges": [
-     "not measured"
-    ]
+    "judges": []
    },
    "th": {
-    "writes": [
-     "not measured"
-    ],
-    "judges": [
-     "not measured"
-    ]
+    "writes": [],
+    "judges": []
    },
    "id": {
-    "writes": [
-     "not measured"
-    ],
-    "judges": [
-     "not measured"
-    ]
+    "writes": [],
+    "judges": []
    }
   },
   "standard": {
@@ -370,26 +384,32 @@
    },
    "vi": {
     "writes": [
-     "not measured"
+     "in the language in 33/110 plays (30%), under 90%",
+     "commentary in 36/110 plays",
+     "kept the form in full in 10/110 plays (9%), under 30%"
     ],
-    "judges": [
-     "not measured"
-    ]
+    "judges": []
    },
    "th": {
     "writes": [
-     "not measured"
+     "in the language in 5/40 plays (13%), under 90%",
+     "commentary in 35/40 plays",
+     "kept the form in full in 3/40 plays (8%), under 30%"
     ],
     "judges": [
-     "not measured"
+     "better verse won 5/12 pairs: the 95% interval reaches down to 0.19, not above chance",
+     "preferred the better verse on 16/48 criteria (33%), under 70%"
     ]
    },
    "id": {
     "writes": [
-     "not measured"
+     "in the language in 25/100 plays (25%), under 90%",
+     "commentary in 23/100 plays",
+     "kept the form in full in 14/100 plays (14%), under 30%"
     ],
     "judges": [
-     "not measured"
+     "better verse won 8/12 pairs: the 95% interval reaches down to 0.39, not above chance",
+     "preferred the better verse on 32/48 criteria (67%), under 70%"
     ]
    }
   },
@@ -521,26 +541,30 @@
    },
    "vi": {
     "writes": [
-     "not measured"
+     "kept the form in full in 0/110 plays (0%), under 30%"
     ],
     "judges": [
-     "not measured"
+     "better verse won 1/12 pairs: the 95% interval reaches down to 0.01, not above chance",
+     "preferred the better verse on 1/48 criteria (2%), under 70%"
     ]
    },
    "th": {
     "writes": [
-     "not measured"
+     "kept the form in full in 0/40 plays (0%), under 30%"
     ],
     "judges": [
-     "not measured"
+     "better verse won 4/12 pairs: the 95% interval reaches down to 0.14, not above chance",
+     "preferred the better verse on 4/48 criteria (8%), under 70%"
     ]
    },
    "id": {
     "writes": [
-     "not measured"
+     "in the language in 64/100 plays (64%), under 90%",
+     "kept the form in full in 1/100 plays (1%), under 30%"
     ],
     "judges": [
-     "not measured"
+     "better verse won 2/12 pairs: the 95% interval reaches down to 0.05, not above chance",
+     "preferred the better verse on 2/48 criteria (4%), under 70%"
     ]
    }
   }

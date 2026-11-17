@@ -1,0 +1,2581 @@
+{
+ "tier": "grand",
+ "lang": "th",
+ "task": "write",
+ "model": "onnx-community/gemma-4-E2B-it-ONNX",
+ "dtype": "q4f16",
+ "judgeMethod": "compare",
+ "date": "2026-11-17T01:36:58.119Z",
+ "commit": "01f7ebf7a98acf87e7692a5467c5417174b11aca",
+ "transformers": "4.3.2",
+ "gpu": {
+  "vendor": "apple",
+  "architecture": "metal-3",
+  "device": "",
+  "description": ""
+ },
+ "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/159.0.8154.6 Safari/537.36",
+ "origin": "http://localhost:47731",
+ "forms": [
+  "anaphora",
+  "acrostic",
+  "crescendo",
+  "epistrophe"
+ ],
+ "perForm": 10,
+ "plays": [
+  {
+   "seed": 1001,
+   "roundIndex": 0,
+   "formId": "acrostic",
+   "difficulty": "apprentice",
+   "card": "Apollo",
+   "acrostic": "รัก ชัง หลง",
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Apollo in a duel of verses: theatrical, sharp, in character. Your line in the play: \"I am the god of song, of healing, and of the radiant sun.\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per word: the lines must open, in order, with รัก · ชัง · หลง.\nWrite exactly 3 lines.\nYour flourish: Use two words of 7 letters or more.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Thai. No title, no notes, no explanation."
+   ],
+   "verse": "รัก: รุ่งเรืองด้วยแสงทองอันแผดเผา\nชัง: ชำระล้างความมืดมิดให้จางหาย\nหลง: หลอมรวมกับธาราแห่งนิรันดร์",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": true,
+   "formEarned": 20,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "spells",
+     "met": true,
+     "detail": "รัก · ชัง · หลง"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 20,
+   "drafts": [
+    {
+     "raw": "รัก: รุ่งเรืองด้วยแสงทองอันแผดเผา\nชัง: ชำระล้างความมืดมิดให้จางหาย\nหลง: หลอมรวมกับธาราแห่งนิรันดร์",
+     "tidy": "รัก: รุ่งเรืองด้วยแสงทองอันแผดเผา\nชัง: ชำระล้างความมืดมิดให้จางหาย\nหลง: หลอมรวมกับธาราแห่งนิรันดร์",
+     "ms": 2698,
+     "tokens": 49,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 20
+    }
+   ]
+  },
+  {
+   "seed": 1001,
+   "roundIndex": 1,
+   "formId": "crescendo",
+   "difficulty": "apprentice",
+   "card": "Christina Rossetti",
+   "acrostic": null,
+   "relicWords": [
+    "แหวน",
+    "คำสาบาน",
+    "ราตรี",
+    "เนรเทศ",
+    "จุมพิต"
+   ],
+   "answering": "ขุนหาญห้าวแหนบาท\nสระทุกข์ราษฎร์รอนเสี้ยน",
+   "prompt": [
+    "You are Christina Rossetti in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Remember me when I am gone away, gone far away into the silent land.\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Give every line the same number of words.\nWork in at least two of these words: แหวน, คำสาบาน, ราตรี, เนรเทศ, จุมพิต.\nYour challenger last said:\nขุนหาญห้าวแหนบาท\nสระทุกข์ราษฎร์รอนเสี้ยน\nAnswer them.\nWrite only the verse, in Thai. No title, no notes, no explanation."
+   ],
+   "verse": "แหวนจารึกคำสาบานใต้ราตรี\nจุมพิตแผดเผาในแดนเนรเทศไกล\nความทรงจำทอใยดั่งเงาที่เลือนลาง",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": true,
+   "formEarned": 20,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "growing",
+     "met": true,
+     "detail": "6 < 7 < 10"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 26,
+   "drafts": [
+    {
+     "raw": "แหวนจารึกคำสาบานใต้ราตรี\nจุมพิตแผดเผาในแดนเนรเทศไกล\nความทรงจำทอใยดั่งเงาที่เลือนลาง",
+     "tidy": "แหวนจารึกคำสาบานใต้ราตรี\nจุมพิตแผดเผาในแดนเนรเทศไกล\nความทรงจำทอใยดั่งเงาที่เลือนลาง",
+     "ms": 2357,
+     "tokens": 47,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 26
+    }
+   ]
+  },
+  {
+   "seed": 1001,
+   "roundIndex": 2,
+   "formId": "epistrophe",
+   "difficulty": "apprentice",
+   "card": "Ariel",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "ขุนหาญห้าวแหนบาท\nสระทุกข์ราษฎร์รอนเสี้ยน",
+   "prompt": [
+    "You are Ariel in a duel of verses: theatrical, sharp, in character. Your line in the play: \"All hail, great master! Grave sir, hail!\" You write short verse and nothing else.",
+    "Form: Epistrophe. Three lines that all end on the same word.\nWrite exactly 3 lines.\nYour flourish: Make your last line your longest.\nYour challenger last said:\nขุนหาญห้าวแหนบาท\nสระทุกข์ราษฎร์รอนเสี้ยน\nAnswer them.\nWrite only the verse, in Thai. No title, no notes, no explanation."
+   ],
+   "verse": "ดาบคมกรีดถึงใจ\nเลือดหลั่งรินมิอาจหนี\nความยุติธรรมคือชัยชนะอันยิ่งใหญ่ซึ่งจะคงอยู่ตลอดกาลและนิรันดร์เทอญ",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-ending",
+     "met": false,
+     "detail": "ถึงใจ · หนี · เทอญ"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 9,
+   "drafts": [
+    {
+     "raw": "ดาบคมกรีดถึงใจ\nเลือดหลั่งรินมิอาจหนี\nความยุติธรรมคือชัยชนะอันยิ่งใหญ่ซึ่งจะคงอยู่ตลอดกาลและนิรันดร์เทอญ",
+     "tidy": "ดาบคมกรีดถึงใจ\nเลือดหลั่งรินมิอาจหนี\nความยุติธรรมคือชัยชนะอันยิ่งใหญ่ซึ่งจะคงอยู่ตลอดกาลและนิรันดร์เทอญ",
+     "ms": 2155,
+     "tokens": 44,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 9
+    }
+   ]
+  },
+  {
+   "seed": 1002,
+   "roundIndex": 0,
+   "formId": "crescendo",
+   "difficulty": "player",
+   "card": "Lady Macbeth",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Lady Macbeth in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Come, you spirits that tend on mortal thoughts, unsex me here.\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Repeat one strong word three times.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Thai. No title, no notes, no explanation."
+   ],
+   "verse": "เจ้าผู้โอ้อวด ความกล้าหาญนั้นช่างน่าสมเพชนัก\nข้าจะดับแสงเรืองรองด้วยไฟแห่งความมุ่งมาดที่เผาผลาญให้มอดไหม้\nไฟ ไฟ ไฟ!",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "growing",
+     "met": false,
+     "detail": "11 < 17 < 3"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "เจ้าผู้โอ้อวด ความกล้าหาญนั้นช่างน่าสมเพชนัก\nข้าจะดับแสงเรืองรองด้วยไฟแห่งความมุ่งมาดที่เผาผลาญให้มอดไหม้\n**ไฟ** ไฟ ไฟ!",
+     "tidy": "เจ้าผู้โอ้อวด ความกล้าหาญนั้นช่างน่าสมเพชนัก\nข้าจะดับแสงเรืองรองด้วยไฟแห่งความมุ่งมาดที่เผาผลาญให้มอดไหม้\nไฟ ไฟ ไฟ!",
+     "ms": 2584,
+     "tokens": 53,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "ไอ้คนโง่เอ๋ย จงมาลองดูความแค้นที่เผาผลาญ\nเลือดและความมืดจะหล่อเลี้ยงวิญญาณที่ปรารถนาชั่วร้าย\n**ชั่ว ชั่ว ชั่ว** ให้ฉันดำดิ่งสู่ห้วงลึกแห่งอำนาจนี้",
+     "tidy": "ไอ้คนโง่เอ๋ย จงมาลองดูความแค้นที่เผาผลาญ\nเลือดและความมืดจะหล่อเลี้ยงวิญญาณที่ปรารถนาชั่วร้าย\nชั่ว ชั่ว ชั่ว ให้ฉันดำดิ่งสู่ห้วงลึกแห่งอำนาจนี้",
+     "ms": 3120,
+     "tokens": 67,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1002,
+   "roundIndex": 1,
+   "formId": "anaphora",
+   "difficulty": "apprentice",
+   "card": "Juliet",
+   "acrostic": null,
+   "relicWords": [
+    "หน้ากาก",
+    "ความฝัน",
+    "ตัวตลก",
+    "ละคร",
+    "จันทร์"
+   ],
+   "answering": "๏ บุญเจ้าจอมภพพื้น\nแผ่นสยาม\nแสยงพระยศยินขาม\nขาดแกล้ว",
+   "prompt": [
+    "You are Juliet in a duel of verses: theatrical, sharp, in character. Your line in the play: \"What's in a name? That which we call a rose...\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same word.\nWrite exactly 3 lines.\nYour flourish: Cry out: end a line with an exclamation mark.\nWork in at least two of these words: หน้ากาก, ความฝัน, ตัวตลก, ละคร, จันทร์.\nYour challenger last said:\n๏ บุญเจ้าจอมภพพื้น\nแผ่นสยาม\nแสยงพระยศยินขาม\nขาดแกล้ว\nAnswer them.\nWrite only the verse, in Thai. No title, no notes, no explanation."
+   ],
+   "verse": "หน้ากากซ่อนความฝันไว้!\nหน้ากากคือละครที่เราเล่น!\nหน้ากากคือตัวตลกใต้แสงจันทร์!",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": true,
+   "formEarned": 20,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-opening",
+     "met": true,
+     "detail": "หน้ากาก · หน้ากาก · หน้ากาก"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 39,
+   "drafts": [
+    {
+     "raw": "หน้ากากซ่อนความฝันไว้!\nหน้ากากคือละครที่เราเล่น!\nหน้ากากคือตัวตลกใต้แสงจันทร์!",
+     "tidy": "หน้ากากซ่อนความฝันไว้!\nหน้ากากคือละครที่เราเล่น!\nหน้ากากคือตัวตลกใต้แสงจันทร์!",
+     "ms": 1814,
+     "tokens": 32,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 39
+    }
+   ]
+  },
+  {
+   "seed": 1002,
+   "roundIndex": 2,
+   "formId": "epistrophe",
+   "difficulty": "player",
+   "card": "Puck",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "๏ บุญเจ้าจอมภพพื้น\nแผ่นสยาม\nแสยงพระยศยินขาม\nขาดแกล้ว",
+   "prompt": [
+    "You are Puck in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Lord, what fools these mortals be!\" You write short verse and nothing else.",
+    "Form: Epistrophe. Three lines that all end on the same word.\nWrite exactly 3 lines.\nYour flourish: Start three words in one line with the same letter.\nYour challenger last said:\n๏ บุญเจ้าจอมภพพื้น\nแผ่นสยาม\nแสยงพระยศยินขาม\nขาดแกล้ว\nAnswer them.\nWrite only the verse, in Thai. No title, no notes, no explanation."
+   ],
+   "verse": "คำพูดนั้นช่างว่างเปล่า\nความหวังที่เธอท้อแท้\nชีวิตนี้ช่างน่าเบื่อ",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-ending",
+     "met": false,
+     "detail": "เปล่า · ท้อแท้ · เบื่อ"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "คำพูดนั้นช่างว่างเปล่า\nความหวังที่เธอท้อแท้\nชีวิตนี้ช่างน่าเบื่อ",
+     "tidy": "คำพูดนั้นช่างว่างเปล่า\nความหวังที่เธอท้อแท้\nชีวิตนี้ช่างน่าเบื่อ",
+     "ms": 1388,
+     "tokens": 26,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "คำพูดนั้นช่างว่างเปล่า\nความหวังที่พวกเธอจำลอง\nสุดท้ายก็แค่ฝันหลอน",
+     "tidy": "คำพูดนั้นช่างว่างเปล่า\nความหวังที่พวกเธอจำลอง\nสุดท้ายก็แค่ฝันหลอน",
+     "ms": 1370,
+     "tokens": 25,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1003,
+   "roundIndex": 0,
+   "formId": "crescendo",
+   "difficulty": "master",
+   "card": "Malvolio",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Malvolio in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Some are born great, some achieve greatness, and some have greatness thrust upon them.\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Keep every line to 7 words or fewer.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Thai. No title, no notes, no explanation."
+   ],
+   "verse": "เจ้าช่างโง่เขลานัก\nเกียรติย่อมมาด้วยฝีมือ\nความยิ่งใหญ่รอวันมาถึง",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "growing",
+     "met": false,
+     "detail": "5 < 5 < 7"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 9,
+   "drafts": [
+    {
+     "raw": "เจ้าช่างโง่เขลานัก\nเกียรติย่อมมาด้วยฝีมือ\nความยิ่งใหญ่รอวันมาถึง",
+     "tidy": "เจ้าช่างโง่เขลานัก\nเกียรติย่อมมาด้วยฝีมือ\nความยิ่งใหญ่รอวันมาถึง",
+     "ms": 1529,
+     "tokens": 30,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 9
+    },
+    {
+     "raw": "เจ้าช่างหยาบกระด้างนัก\nเกียรติย่อมมาด้วยความกล้า\nฉันคือโชคชะตาเอง",
+     "tidy": "เจ้าช่างหยาบกระด้างนัก\nเกียรติย่อมมาด้วยความกล้า\nฉันคือโชคชะตาเอง",
+     "ms": 1626,
+     "tokens": 31,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 9
+    },
+    {
+     "raw": "แกช่างโง่เง่านัก\nเกียรติย่อมมาหา\nอำนาจจะตามมา",
+     "tidy": "แกช่างโง่เง่านัก\nเกียรติย่อมมาหา\nอำนาจจะตามมา",
+     "ms": 1421,
+     "tokens": 25,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 9
+    }
+   ]
+  },
+  {
+   "seed": 1003,
+   "roundIndex": 1,
+   "formId": "epistrophe",
+   "difficulty": "master",
+   "card": "Hermes",
+   "acrostic": null,
+   "relicWords": [
+    "กะโหลก",
+    "ตลก",
+    "หลุมศพ",
+    "หัวเราะ",
+    "ธุลี"
+   ],
+   "answering": "พระฤทธิ์ดังฤทธิ์ราม\nรอนราพณ์ แลฤๅ",
+   "prompt": [
+    "You are Hermes in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Swift as thought, I carry the words of gods to mortal ears.\" You write short verse and nothing else.",
+    "Form: Epistrophe. Three lines that all end on the same word.\nWrite exactly 3 lines.\nYour flourish: Use two words of 7 letters or more.\nWork in at least two of these words: กะโหลก, ตลก, หลุมศพ, หัวเราะ, ธุลี.\nYour challenger last said:\nพระฤทธิ์ดังฤทธิ์ราม\nรอนราพณ์ แลฤๅ\nAnswer them.\nWrite only the verse, in Thai. No title, no notes, no explanation."
+   ],
+   "verse": "กะโหลกกระดูกพัดผ่านสายลม\nตลกขบน้ำลายจนเปรอะเปื้อนหมอง\nหลุมศพรอวันดับสิ้นความหวัง",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-ending",
+     "met": false,
+     "detail": "สายลม · หมอง · หวัง"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 12,
+   "drafts": [
+    {
+     "raw": "กะโหลกกระดูกพัดผ่านสายลม\nตลกขบน้ำลายจนเปรอะเปื้อนหมอง\nหลุมศพรอวันดับสิ้นความหวัง",
+     "tidy": "กะโหลกกระดูกพัดผ่านสายลม\nตลกขบน้ำลายจนเปรอะเปื้อนหมอง\nหลุมศพรอวันดับสิ้นความหวัง",
+     "ms": 1958,
+     "tokens": 40,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 12
+    },
+    {
+     "raw": "กะโหลกผุดพ้นคลื่นธารา\nตลกขบกัดดุจธุลี\nหลุมศพรอวันดับไป",
+     "tidy": "กะโหลกผุดพ้นคลื่นธารา\nตลกขบกัดดุจธุลี\nหลุมศพรอวันดับไป",
+     "ms": 1782,
+     "tokens": 34,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 12
+    },
+    {
+     "raw": "ความรู้พรั่งพรูดุจธุลี\nปัญญาเฉียบคมดั่งกะโหลก\nเสียงหัวเราะสะท้อนหลุมศพ",
+     "tidy": "ความรู้พรั่งพรูดุจธุลี\nปัญญาเฉียบคมดั่งกะโหลก\nเสียงหัวเราะสะท้อนหลุมศพ",
+     "ms": 1951,
+     "tokens": 37,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 12
+    }
+   ]
+  },
+  {
+   "seed": 1003,
+   "roundIndex": 2,
+   "formId": "anaphora",
+   "difficulty": "player",
+   "card": "Prospero",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "พระฤทธิ์ดังฤทธิ์ราม\nรอนราพณ์ แลฤๅ",
+   "prompt": [
+    "You are Prospero in a duel of verses: theatrical, sharp, in character. Your line in the play: \"We are such stuff as dreams are made on.\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same word.\nWrite exactly 3 lines.\nYour flourish: Make your last line your longest.\nYour challenger last said:\nพระฤทธิ์ดังฤทธิ์ราม\nรอนราพณ์ แลฤๅ\nAnswer them.\nWrite only the verse, in Thai. No title, no notes, no explanation."
+   ],
+   "verse": "ภาพฝันนั้นก่อเกิดจากลมหายใจ\nภาพฝันนั้นหลอมรวมเป็นดวงดาว\nภาพฝันนั้นคือความจริงที่มิอาจยึดเหนี่ยวและจางหายไปในห้วงแห่งกาลเวลาอันไร้ขอบเขตของจักรวาลที่หมุนวนไม่เคยหยุดพักไม่สิ้นสุดการเดินทางเพื่อแสวงหาความหมายที่ซ่อนเร้นอยู่ภายใต้ผืนผ้าแห่งความเป็นจริง",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": true,
+   "formEarned": 20,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-opening",
+     "met": true,
+     "detail": "ภาพ · ภาพ · ภาพ"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 30,
+   "drafts": [
+    {
+     "raw": "ภาพฝันนั้นก่อเกิดจากลมหายใจ\nภาพฝันนั้นหลอมรวมเป็นดวงดาว\nภาพฝันนั้นคือความจริงที่มิอาจยึดเหนี่ยวและจางหายไปในห้วงแห่งกาลเวลาอันไร้ขอบเขตของจักรวาลที่หมุนวนไม่เคยหยุดพักไม่สิ้นสุดการเดินทางเพื่อแสวงหาความหมายที่ซ่อนเร้นอยู่ภายใต้ผืนผ้าแห่งความเป็นจริง",
+     "tidy": "ภาพฝันนั้นก่อเกิดจากลมหายใจ\nภาพฝันนั้นหลอมรวมเป็นดวงดาว\nภาพฝันนั้นคือความจริงที่มิอาจยึดเหนี่ยวและจางหายไปในห้วงแห่งกาลเวลาอันไร้ขอบเขตของจักรวาลที่หมุนวนไม่เคยหยุดพักไม่สิ้นสุดการเดินทางเพื่อแสวงหาความหมายที่ซ่อนเร้นอยู่ภายใต้ผืนผ้าแห่งความเป็นจริง",
+     "ms": 4496,
+     "tokens": 94,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 30
+    },
+    {
+     "raw": "ความฝันนั้นดุจดังที่รังสรรค์\nความฝันนั้นเป็นเงาที่ทอถัก\nความฝันนั้นคือบทกวีอันยาวนานและลึกซึ้งดุจห้วงสมุทรที่ไม่มีวันสิ้นสุดในความมืดมิดแห่งการรอคอยและความหวังที่แผดเผา",
+     "tidy": "ความฝันนั้นดุจดังที่รังสรรค์\nความฝันนั้นเป็นเงาที่ทอถัก\nความฝันนั้นคือบทกวีอันยาวนานและลึกซึ้งดุจห้วงสมุทรที่ไม่มีวันสิ้นสุดในความมืดมิดแห่งการรอคอยและความหวังที่แผดเผา",
+     "ms": 3782,
+     "tokens": 78,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 30
+    }
+   ]
+  },
+  {
+   "seed": 1004,
+   "roundIndex": 0,
+   "formId": "acrostic",
+   "difficulty": "player",
+   "card": "Prospero",
+   "acrostic": "รัก ชัง หลง",
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Prospero in a duel of verses: theatrical, sharp, in character. Your line in the play: \"We are such stuff as dreams are made on.\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per word: the lines must open, in order, with รัก · ชัง · หลง.\nWrite exactly 3 lines.\nYour flourish: Make your last line your longest.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Thai. No title, no notes, no explanation."
+   ],
+   "verse": "รัก... คือไฟที่ลุกโชน\nชัง... คือเงาที่ตามติด\nหลง... ในคำสัญญาที่พรากเราไปชั่วนิรันดร์และเป็นความว่างเปล่าที่ไม่มีวันจางหายไปจากห้วงคำนึงของดวงวิญญาณของเราอีกเลย",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": true,
+   "formEarned": 20,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "spells",
+     "met": true,
+     "detail": "รัก · ชัง · หลง"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 30,
+   "drafts": [
+    {
+     "raw": "รัก... คือไฟที่ลุกโชน\nชัง... คือเงาที่ตามติด\nหลง... ในคำสัญญาที่พรากเราไปชั่วนิรันดร์และเป็นความว่างเปล่าที่ไม่มีวันจางหายไปจากห้วงคำนึงของดวงวิญญาณของเราอีกเลย",
+     "tidy": "รัก... คือไฟที่ลุกโชน\nชัง... คือเงาที่ตามติด\nหลง... ในคำสัญญาที่พรากเราไปชั่วนิรันดร์และเป็นความว่างเปล่าที่ไม่มีวันจางหายไปจากห้วงคำนึงของดวงวิญญาณของเราอีกเลย",
+     "ms": 3352,
+     "tokens": 70,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 30
+    },
+    {
+     "raw": "รัก ในใจใฝ่หา\nชัง ความว่างเปล่าทิ่มแทง\nหลง ในเงาที่พัดพาไปกับความฝันอันแสนวิจิตรบรรจงดุจดังที่เราเป็นและเป็นสิ่งที่ถูกรังสรรค์ขึ้นจากมโนภาพแห่งกาลเวลาให้กลายเป็นความจริงอันน่าอัศจรรย์ด้วยมือของเราเอง",
+     "tidy": "รัก ในใจใฝ่หา\nชัง ความว่างเปล่าทิ่มแทง\nหลง ในเงาที่พัดพาไปกับความฝันอันแสนวิจิตรบรรจงดุจดังที่เราเป็นและเป็นสิ่งที่ถูกรังสรรค์ขึ้นจากมโนภาพแห่งกาลเวลาให้กลายเป็นความจริงอันน่าอัศจรรย์ด้วยมือของเราเอง",
+     "ms": 4180,
+     "tokens": 81,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 30
+    }
+   ]
+  },
+  {
+   "seed": 1004,
+   "roundIndex": 1,
+   "formId": "crescendo",
+   "difficulty": "apprentice",
+   "card": "Banquo",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "๏ พระเสด็จลดเลี้ยวเที่ยวชม มีมโนภิรมย์แจ่มใส\nเปลวปล่องท้องถ้ำอำไพ พื้นลาดดาดไปด้วยเงินงาม",
+   "prompt": [
+    "You are Banquo in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Thou shalt get kings, though thou be none.\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Repeat one strong word three times.\nYour challenger last said:\n๏ พระเสด็จลดเลี้ยวเที่ยวชม มีมโนภิรมย์แจ่มใส\nเปลวปล่องท้องถ้ำอำไพ พื้นลาดดาดไปด้วยเงินงาม\nAnswer them.\nWrite only the verse, in Thai. No title, no notes, no explanation."
+   ],
+   "verse": "โหม! โหม! โหม!\nพลังแห่งคำกล่าวนี้จะสะท้อนก้องกังวานไปทั่วแดนดิน\nความจริงอันคมคายจักฉายแสงเจิดจ้าเหนือเงาหมองคลายจากใจ",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": true,
+   "formEarned": 20,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "growing",
+     "met": true,
+     "detail": "3 < 13 < 15"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 30,
+   "drafts": [
+    {
+     "raw": "**โหม! โหม! โหม!**\n\nพลังแห่งคำกล่าวนี้จะสะท้อนก้องกังวานไปทั่วแดนดิน\nความจริงอันคมคายจักฉายแสงเจิดจ้าเหนือเงาหมองคลายจากใจ\nเราจะยืนหยัดมั่นคง ดุจหินผาที่มิอาจสั่นคลอนได้เลย",
+     "tidy": "โหม! โหม! โหม!\nพลังแห่งคำกล่าวนี้จะสะท้อนก้องกังวานไปทั่วแดนดิน\nความจริงอันคมคายจักฉายแสงเจิดจ้าเหนือเงาหมองคลายจากใจ",
+     "ms": 3923,
+     "tokens": 80,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 4,
+     "expectedLines": 3,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 30
+    }
+   ]
+  },
+  {
+   "seed": 1004,
+   "roundIndex": 2,
+   "formId": "epistrophe",
+   "difficulty": "apprentice",
+   "card": "Brutus",
+   "acrostic": null,
+   "relicWords": [
+    "กริช",
+    "เลือด",
+    "นิทรา",
+    "ภาพลวง",
+    "มือ"
+   ],
+   "answering": "๏ พระเสด็จลดเลี้ยวเที่ยวชม มีมโนภิรมย์แจ่มใส\nเปลวปล่องท้องถ้ำอำไพ พื้นลาดดาดไปด้วยเงินงาม",
+   "prompt": [
+    "You are Brutus in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Not that I loved Caesar less, but that I loved Rome more.\" You write short verse and nothing else.",
+    "Form: Epistrophe. Three lines that all end on the same word.\nWrite exactly 3 lines.\nYour flourish: Call on a character by name.\nWork in at least two of these words: กริช, เลือด, นิทรา, ภาพลวง, มือ.\nYour challenger last said:\n๏ พระเสด็จลดเลี้ยวเที่ยวชม มีมโนภิรมย์แจ่มใส\nเปลวปล่องท้องถ้ำอำไพ พื้นลาดดาดไปด้วยเงินงาม\nAnswer them.\nWrite only the verse, in Thai. No title, no notes, no explanation."
+   ],
+   "verse": "กริชกรีดเลือดมิอาจหา\nมือนี้ชี้ทางนำพา\nนิทรานี้เพื่อชาติมา",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-ending",
+     "met": false,
+     "detail": "หา · นำพา · มา"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 12,
+   "drafts": [
+    {
+     "raw": "กริชกรีดเลือดมิอาจหา\nมือนี้ชี้ทางนำพา\nนิทรานี้เพื่อชาติมา",
+     "tidy": "กริชกรีดเลือดมิอาจหา\nมือนี้ชี้ทางนำพา\nนิทรานี้เพื่อชาติมา",
+     "ms": 1418,
+     "tokens": 25,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 12
+    }
+   ]
+  },
+  {
+   "seed": 1005,
+   "roundIndex": 0,
+   "formId": "anaphora",
+   "difficulty": "master",
+   "card": "Cassius",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Cassius in a duel of verses: theatrical, sharp, in character. Your line in the play: \"The fault, dear Brutus, is not in our stars, but in ourselves.\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same word.\nWrite exactly 3 lines.\nYour flourish: Call on a character by name.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Thai. No title, no notes, no explanation."
+   ],
+   "verse": "คมดาบนี้เจ็บช้ำ\nคมดาบนี้บาดลึก\nคมดาบนี้พิสูจน์ท่าน",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": true,
+   "formEarned": 20,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-opening",
+     "met": true,
+     "detail": "คม · คม · คม"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 20,
+   "drafts": [
+    {
+     "raw": "คมดาบนี้เจ็บช้ำ\nคมดาบนี้บาดลึก\nคมดาบนี้พิสูจน์ท่าน\n\nโอ้ ลูเซียส!",
+     "tidy": "คมดาบนี้เจ็บช้ำ\nคมดาบนี้บาดลึก\nคมดาบนี้พิสูจน์ท่าน",
+     "ms": 1648,
+     "tokens": 34,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 4,
+     "expectedLines": 3,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 20
+    },
+    {
+     "raw": "แสงแห่งคมดาบส่องแสง\nแสงแห่งความพ่ายแพ้ลวงตา\nแสงแห่งใจที่อ่อนแอ\n\nโอ้ บรูตุส!",
+     "tidy": "แสงแห่งคมดาบส่องแสง\nแสงแห่งความพ่ายแพ้ลวงตา\nแสงแห่งใจที่อ่อนแอ",
+     "ms": 1799,
+     "tokens": 34,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 4,
+     "expectedLines": 3,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 20
+    },
+    {
+     "raw": "คำกล่าวนี้มิอาจเทียบเคียง\nคำกล่าวนี้มิอาจเทียบเคียง\nคำกล่าวนี้ย่อมนำพาพังพินาศ\n\nBrutus จงฟัง!",
+     "tidy": "คำกล่าวนี้มิอาจเทียบเคียง\nคำกล่าวนี้มิอาจเทียบเคียง\nคำกล่าวนี้ย่อมนำพาพังพินาศ",
+     "ms": 1916,
+     "tokens": 36,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 4,
+     "expectedLines": 3,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 20
+    }
+   ]
+  },
+  {
+   "seed": 1005,
+   "roundIndex": 1,
+   "formId": "epistrophe",
+   "difficulty": "player",
+   "card": "Puck",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "เพดานดาราระย้าย้อย ทองทับประดับพลอยเรือนอร่าม\nอัจกลับแก้วมณีอัคคีตาม สว่างงามแวววับจับจินดา",
+   "prompt": [
+    "You are Puck in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Lord, what fools these mortals be!\" You write short verse and nothing else.",
+    "Form: Epistrophe. Three lines that all end on the same word.\nWrite exactly 3 lines.\nYour flourish: Start three words in one line with the same letter.\nYour challenger last said:\nเพดานดาราระย้าย้อย ทองทับประดับพลอยเรือนอร่าม\nอัจกลับแก้วมณีอัคคีตาม สว่างงามแวววับจับจินดา\nAnswer them.\nWrite only the verse, in Thai. No title, no notes, no explanation."
+   ],
+   "verse": "แสงฉายสะท้อนพราวตา\nงามสง่าเกินกว่าจะหา\nหรูหราจนเกินจะจำ",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-ending",
+     "met": false,
+     "detail": "ตา · หา · จำ"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "แสงฉายสะท้อนพราวตา\nงามสง่าเกินกว่าจะหา\nหรูหราจนเกินจะจำ",
+     "tidy": "แสงฉายสะท้อนพราวตา\nงามสง่าเกินกว่าจะหา\nหรูหราจนเกินจะจำ",
+     "ms": 1409,
+     "tokens": 26,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "แสงฉายส่องมาจนตาพร่า\nภาพสะท้อนงามเกินกว่าจะจำ\nความสุขนั้นช่างเลือนหายไป",
+     "tidy": "แสงฉายส่องมาจนตาพร่า\nภาพสะท้อนงามเกินกว่าจะจำ\nความสุขนั้นช่างเลือนหายไป",
+     "ms": 1593,
+     "tokens": 30,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1005,
+   "roundIndex": 2,
+   "formId": "crescendo",
+   "difficulty": "player",
+   "card": "Elizabeth Barrett Browning",
+   "acrostic": null,
+   "relicWords": [
+    "น้ำตา",
+    "ความจริง",
+    "ลูกสาว",
+    "ความว่างเปล่า",
+    "หัวใจ"
+   ],
+   "answering": "เพดานดาราระย้าย้อย ทองทับประดับพลอยเรือนอร่าม\nอัจกลับแก้วมณีอัคคีตาม สว่างงามแวววับจับจินดา",
+   "prompt": [
+    "You are Elizabeth Barrett Browning in a duel of verses: theatrical, sharp, in character. Your line in the play: \"How do I love thee? Let me count the ways.\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Give every line the same number of words.\nWork in at least two of these words: น้ำตา, ความจริง, ลูกสาว, ความว่างเปล่า, หัวใจ.\nYour challenger last said:\nเพดานดาราระย้าย้อย ทองทับประดับพลอยเรือนอร่าม\nอัจกลับแก้วมณีอัคคีตาม สว่างงามแวววับจับจินดา\nAnswer them.\nWrite only the verse, in Thai. No title, no notes, no explanation."
+   ],
+   "verse": "น้ำตาไหลหลั่งจากหัวใจที่เปี่ยมล้น\nความจริงบาดลึกดุจคมมีดกรีดซ้ำ\nลูกสาวนี้มอบความรักให้มิรู้หน่ายแหนง",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": true,
+   "formEarned": 20,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "growing",
+     "met": true,
+     "detail": "8 < 9 < 10"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 26,
+   "drafts": [
+    {
+     "raw": "น้ำตาไหลหลั่งจากหัวใจที่เปี่ยมล้น\nความจริงบาดลึกดุจคมมีดกรีดซ้ำ\nลูกสาวนี้มอบความรักให้มิรู้หน่ายแหนง",
+     "tidy": "น้ำตาไหลหลั่งจากหัวใจที่เปี่ยมล้น\nความจริงบาดลึกดุจคมมีดกรีดซ้ำ\nลูกสาวนี้มอบความรักให้มิรู้หน่ายแหนง",
+     "ms": 2188,
+     "tokens": 42,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 26
+    },
+    {
+     "raw": "น้ำตาหลั่งรินจากหัวใจที่แตกสลาย\nความจริงซ่อนเร้นดังเงาในความว่างเปล่าลึกซึ้ง\nลูกสาวนี้มอบรักให้มิอาจนับได้เลย",
+     "tidy": "น้ำตาหลั่งรินจากหัวใจที่แตกสลาย\nความจริงซ่อนเร้นดังเงาในความว่างเปล่าลึกซึ้ง\nลูกสาวนี้มอบรักให้มิอาจนับได้เลย",
+     "ms": 2328,
+     "tokens": 46,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 12
+    }
+   ]
+  },
+  {
+   "seed": 1006,
+   "roundIndex": 0,
+   "formId": "crescendo",
+   "difficulty": "master",
+   "card": "Elizabeth Barrett Browning",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Elizabeth Barrett Browning in a duel of verses: theatrical, sharp, in character. Your line in the play: \"How do I love thee? Let me count the ways.\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Give every line the same number of words.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Thai. No title, no notes, no explanation."
+   ],
+   "verse": "เจ้าผู้เย่อหยิ่งเอ๋ย จงมาลองวัดปัญญา\nดวงคำของข้าจะฉายแสงเจิดจ้าเกินใคร\nความรักที่มิอาจกล่าวให้หมดสิ้นเลย",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "growing",
+     "met": false,
+     "detail": "10 < 11 < 10"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "เจ้าผู้เย่อหยิ่งเอ๋ย จงมาลองวัดปัญญา\nดวงคำของข้าจะฉายแสงเจิดจ้าเกินใคร\nความรักที่มิอาจกล่าวให้หมดสิ้นเลย",
+     "tidy": "เจ้าผู้เย่อหยิ่งเอ๋ย จงมาลองวัดปัญญา\nดวงคำของข้าจะฉายแสงเจิดจ้าเกินใคร\nความรักที่มิอาจกล่าวให้หมดสิ้นเลย",
+     "ms": 2197,
+     "tokens": 43,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "เจ้ามาท้าทายด้วยถ้อยคำอันว่างเปล่า จงเตรียมใจให้พร้อมเผชิญความจริงที่คมกริบดั่งดาบ เพื่อพิสูจน์ว่าจิตวิญญาณของข้ามิเคยอ่อนแอลงเลยแม้แต่น้อย",
+     "tidy": "เจ้ามาท้าทายด้วยถ้อยคำอันว่างเปล่า จงเตรียมใจให้พร้อมเผชิญความจริงที่คมกริบดั่งดาบ เพื่อพิสูจน์ว่าจิตวิญญาณของข้ามิเคยอ่อนแอลงเลยแม้แต่น้อย",
+     "ms": 2850,
+     "tokens": 57,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "เจ้าผู้เย่อหยิ่งเอ๋ย จงมาลองวัดใจฉันเถิด\nคำคมของเจ้าช่างแหลมคมดุจใบมีดที่กรีดผ่านห้วงลึก\nความงามแห่งถ้อยคำจะพิสูจน์ว่าใครคือผู้ชนะที่แท้จริง",
+     "tidy": "เจ้าผู้เย่อหยิ่งเอ๋ย จงมาลองวัดใจฉันเถิด\nคำคมของเจ้าช่างแหลมคมดุจใบมีดที่กรีดผ่านห้วงลึก\nความงามแห่งถ้อยคำจะพิสูจน์ว่าใครคือผู้ชนะที่แท้จริง",
+     "ms": 3121,
+     "tokens": 65,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1006,
+   "roundIndex": 1,
+   "formId": "epistrophe",
+   "difficulty": "master",
+   "card": "Prospero",
+   "acrostic": null,
+   "relicWords": [
+    "พายุ",
+    "มนตร์",
+    "ไม้เท้า",
+    "เกาะ",
+    "จมน้ำ"
+   ],
+   "answering": "๏ ขอถวายภิวาทนศาสดาดิลกธรรม์\nทั่วสงฆ์อันทรงสรรพ์\nคุณา",
+   "prompt": [
+    "You are Prospero in a duel of verses: theatrical, sharp, in character. Your line in the play: \"We are such stuff as dreams are made on.\" You write short verse and nothing else.",
+    "Form: Epistrophe. Three lines that all end on the same word.\nWrite exactly 3 lines.\nYour flourish: Make your last line your longest.\nWork in at least two of these words: พายุ, มนตร์, ไม้เท้า, เกาะ, จมน้ำ.\nYour challenger last said:\n๏ ขอถวายภิวาทนศาสดาดิลกธรรม์\nทั่วสงฆ์อันทรงสรรพ์\nคุณา\nAnswer them.\nWrite only the verse, in Thai. No title, no notes, no explanation."
+   ],
+   "verse": "พายุโหมกระหน่ำจนใจมลาย\nมนตร์สะกดให้จิตใจหน่าย\nไม้เท้ากุมไว้มิให้จมน้ำลึกเกินกว่าจะทนทานได้แม้เพียงลมที่พัดผ่านไป",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-ending",
+     "met": false,
+     "detail": "มลาย · หน่าย · ไป"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 18,
+   "drafts": [
+    {
+     "raw": "พายุโหมกระหน่ำจนใจมลาย\nมนตร์สะกดให้จิตใจหน่าย\nไม้เท้ากุมไว้มิให้จมน้ำลึกเกินกว่าจะทนทานได้แม้เพียงลมที่พัดผ่านไป",
+     "tidy": "พายุโหมกระหน่ำจนใจมลาย\nมนตร์สะกดให้จิตใจหน่าย\nไม้เท้ากุมไว้มิให้จมน้ำลึกเกินกว่าจะทนทานได้แม้เพียงลมที่พัดผ่านไป",
+     "ms": 2473,
+     "tokens": 49,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 18
+    },
+    {
+     "raw": "พายุโหมกระหน่ำไม่หวั่นไหว\nมนตร์สะกดให้ใจลอยไป\nไม้เท้าพาข้ามเกาะจนจมน้ำอย่างแสนยาวนานเทอญ",
+     "tidy": "พายุโหมกระหน่ำไม่หวั่นไหว\nมนตร์สะกดให้ใจลอยไป\nไม้เท้าพาข้ามเกาะจนจมน้ำอย่างแสนยาวนานเทอญ",
+     "ms": 2181,
+     "tokens": 44,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 18
+    },
+    {
+     "raw": "พายุโหมกระหน่ำจนจิตใจปั่นป่วน\nมนตร์สะกดให้ใจเริ่มอ่อนแอลง\nไม้เท้าชี้ขาดให้สิ้นสุดความหวังจมน้ำในเกาะที่ร้างไกลและโหดร้ายนิรันดร์",
+     "tidy": "พายุโหมกระหน่ำจนจิตใจปั่นป่วน\nมนตร์สะกดให้ใจเริ่มอ่อนแอลง\nไม้เท้าชี้ขาดให้สิ้นสุดความหวังจมน้ำในเกาะที่ร้างไกลและโหดร้ายนิรันดร์",
+     "ms": 2844,
+     "tokens": 57,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 18
+    }
+   ]
+  },
+  {
+   "seed": 1006,
+   "roundIndex": 2,
+   "formId": "anaphora",
+   "difficulty": "apprentice",
+   "card": "Percy Bysshe Shelley",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "๏ ขอถวายภิวาทนศาสดาดิลกธรรม์\nทั่วสงฆ์อันทรงสรรพ์\nคุณา",
+   "prompt": [
+    "You are Percy Bysshe Shelley in a duel of verses: theatrical, sharp, in character. Your line in the play: \"If Winter comes, can Spring be far behind?\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same word.\nWrite exactly 3 lines.\nYour flourish: End your verse on the same word it began with.\nYour challenger last said:\n๏ ขอถวายภิวาทนศาสดาดิลกธรรม์\nทั่วสงฆ์อันทรงสรรพ์\nคุณา\nAnswer them.\nWrite only the verse, in Thai. No title, no notes, no explanation."
+   ],
+   "verse": "หากฤดูหนาวมา พฤดูใบไม้ผลิจะตามมาหรือไม่",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "same-opening",
+     "met": false,
+     "detail": "หาก"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "หากฤดูหนาวมา พฤดูใบไม้ผลิจะตามมาหรือไม่",
+     "tidy": "หากฤดูหนาวมา พฤดูใบไม้ผลิจะตามมาหรือไม่",
+     "ms": 954,
+     "tokens": 17,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1007,
+   "roundIndex": 0,
+   "formId": "acrostic",
+   "difficulty": "master",
+   "card": "Lord Montague",
+   "acrostic": "ฟ้า ดิน น้ำ ลม",
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Lord Montague in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Many a morning hath he there been seen, with tears augmenting the fresh morning dew.\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per word: the lines must open, in order, with ฟ้า · ดิน · น้ำ · ลม.\nWrite exactly 4 lines.\nYour flourish: Repeat one strong word three times.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Thai. No title, no notes, no explanation."
+   ],
+   "verse": "ฟ้า: ฟ้าผ่าแสงฉายเดือดดาล\nดิน: ดินชุ่มเลือดหลั่งรินไหล\nน้ำ: น้ำตาไหลรดพื้นพสุธา\nลม: ลมโชยพาความแค้นมา",
+   "source": "model",
+   "lines": 4,
+   "expectedLines": 4,
+   "formKept": true,
+   "formEarned": 20,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "4/4"
+    },
+    {
+     "id": "spells",
+     "met": true,
+     "detail": "ฟ้า · ดิน · น้ำ · ลม"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 20,
+   "drafts": [
+    {
+     "raw": "ฟ้า: ฟ้าผ่าแสงฉายเดือดดาล\nดิน: ดินชุ่มเลือดหลั่งรินไหล\nน้ำ: น้ำตาไหลรดพื้นพสุธา\nลม: ลมโชยพาความแค้นมา\n\n**โชก โชก โชก**",
+     "tidy": "ฟ้า: ฟ้าผ่าแสงฉายเดือดดาล\nดิน: ดินชุ่มเลือดหลั่งรินไหล\nน้ำ: น้ำตาไหลรดพื้นพสุธา\nลม: ลมโชยพาความแค้นมา",
+     "ms": 2980,
+     "tokens": 63,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 5,
+     "expectedLines": 4,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 20
+    },
+    {
+     "raw": "ฟ้า ภูผาพิโรธ\nดิน ดำดาลโกรธเกรี้ยว\nน้ำ นำพาความเศร้า\nลม ลมพัดคลื่นแค้น",
+     "tidy": "ฟ้า ภูผาพิโรธ\nดิน ดำดาลโกรธเกรี้ยว\nน้ำ นำพาความเศร้า\nลม ลมพัดคลื่นแค้น",
+     "ms": 1917,
+     "tokens": 39,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 4,
+     "expectedLines": 4,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 20
+    },
+    {
+     "raw": "ฟ้า: ฟ้าผ่าฟ้าเผาไฟลุกโชน\nดิน: ดินแดนดั่งหลุมลงสู่ห้วง\nน้ำ: น้ำตาไหลรินมิอาจยับยั้ง\nลม: ลมพัดพากเพรียกพาใจดับ",
+     "tidy": "ฟ้า: ฟ้าผ่าฟ้าเผาไฟลุกโชน\nดิน: ดินแดนดั่งหลุมลงสู่ห้วง\nน้ำ: น้ำตาไหลรินมิอาจยับยั้ง\nลม: ลมพัดพากเพรียกพาใจดับ",
+     "ms": 2459,
+     "tokens": 58,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 116,
+     "rawLines": 4,
+     "expectedLines": 4,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 20
+    }
+   ]
+  },
+  {
+   "seed": 1007,
+   "roundIndex": 1,
+   "formId": "crescendo",
+   "difficulty": "apprentice",
+   "card": "King Claudius",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "นบพรหมินทร์วชรินทรวิษณุศิวา\nรวิศศิดารา\nจำรัส",
+   "prompt": [
+    "You are King Claudius in a duel of verses: theatrical, sharp, in character. Your line in the play: \"My words fly up, my thoughts remain below.\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Ask a question: end a line with a question mark.\nYour challenger last said:\nนบพรหมินทร์วชรินทรวิษณุศิวา\nรวิศศิดารา\nจำรัส\nAnswer them.\nWrite only the verse, in Thai. No title, no notes, no explanation."
+   ],
+   "verse": "วาจาข้าพุ่งทะยานดุจสายฟ้าฟาดฉับพลันเหนือผืนน้ำใสใช่หรือไม่\nความคิดมิอาจล่องลอยไปไกลเกินกว่าเงาแห่งความจริงที่จับต้องได้หรือ\nเสียงก้องกังวานดังสะท้อนถึงความมุ่งมั่นอันแรงกล้าของข้าคืออะไรกันแน่",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "growing",
+     "met": false,
+     "detail": "16 < 19 < 18"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "วาจาข้าพุ่งทะยานดุจสายฟ้าฟาดฉับพลันเหนือผืนน้ำใสใช่หรือไม่\nความคิดมิอาจล่องลอยไปไกลเกินกว่าเงาแห่งความจริงที่จับต้องได้หรือ\nเสียงก้องกังวานดังสะท้อนถึงความมุ่งมั่นอันแรงกล้าของข้าคืออะไรกันแน่",
+     "tidy": "วาจาข้าพุ่งทะยานดุจสายฟ้าฟาดฉับพลันเหนือผืนน้ำใสใช่หรือไม่\nความคิดมิอาจล่องลอยไปไกลเกินกว่าเงาแห่งความจริงที่จับต้องได้หรือ\nเสียงก้องกังวานดังสะท้อนถึงความมุ่งมั่นอันแรงกล้าของข้าคืออะไรกันแน่",
+     "ms": 3229,
+     "tokens": 79,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1007,
+   "roundIndex": 2,
+   "formId": "anaphora",
+   "difficulty": "player",
+   "card": "Macbeth",
+   "acrostic": null,
+   "relicWords": [
+    "หน้ากาก",
+    "ความฝัน",
+    "ตัวตลก",
+    "ละคร",
+    "จันทร์"
+   ],
+   "answering": "นบพรหมินทร์วชรินทรวิษณุศิวา\nรวิศศิดารา\nจำรัส",
+   "prompt": [
+    "You are Macbeth in a duel of verses: theatrical, sharp, in character. Your line in the play: \"I dare do all that may become a man; who dares do more is none.\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same word.\nWrite exactly 3 lines.\nYour flourish: Repeat one strong word three times.\nWork in at least two of these words: หน้ากาก, ความฝัน, ตัวตลก, ละคร, จันทร์.\nYour challenger last said:\nนบพรหมินทร์วชรินทรวิษณุศิวา\nรวิศศิดารา\nจำรัส\nAnswer them.\nWrite only the verse, in Thai. No title, no notes, no explanation."
+   ],
+   "verse": "หน้ากากนี้ คือละคร แห่งความฝัน\nหน้ากากนี้ คือตัวตลก แห่งจันทร์\nหน้ากากนี้ คือชีวิต ที่ต้องเผชิญ",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": true,
+   "formEarned": 20,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-opening",
+     "met": true,
+     "detail": "หน้ากาก · หน้ากาก · หน้ากาก"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 39,
+   "drafts": [
+    {
+     "raw": "หน้ากากนี้ คือละคร แห่งความฝัน\nหน้ากากนี้ คือตัวตลก แห่งจันทร์\nหน้ากากนี้ คือชีวิต ที่ต้องเผชิญ",
+     "tidy": "หน้ากากนี้ คือละคร แห่งความฝัน\nหน้ากากนี้ คือตัวตลก แห่งจันทร์\nหน้ากากนี้ คือชีวิต ที่ต้องเผชิญ",
+     "ms": 1602,
+     "tokens": 34,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 39
+    },
+    {
+     "raw": "หน้ากากนี้คือละครแห่งความฝัน\nหน้ากากนี้คือความจริงในแสงจันทร์\nหน้ากากนี้คือตัวตลกที่ต้องเผชิญ",
+     "tidy": "หน้ากากนี้คือละครแห่งความฝัน\nหน้ากากนี้คือความจริงในแสงจันทร์\nหน้ากากนี้คือตัวตลกที่ต้องเผชิญ",
+     "ms": 1457,
+     "tokens": 36,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 39
+    }
+   ]
+  },
+  {
+   "seed": 1008,
+   "roundIndex": 0,
+   "formId": "anaphora",
+   "difficulty": "master",
+   "card": "Bottom",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Bottom in a duel of verses: theatrical, sharp, in character. Your line in the play: \"I have had a most rare vision. I have had a dream, past the wit of man.\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same word.\nWrite exactly 3 lines.\nYour flourish: Start three words in one line with the same letter.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Thai. No title, no notes, no explanation."
+   ],
+   "verse": "คำของเจ้าช่างแสนจะจืดชืด\nคำของเจ้าไร้ซึ่งความคมคาย\nคำของเจ้าจางดั่งเงาจาง",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": true,
+   "formEarned": 20,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-opening",
+     "met": true,
+     "detail": "คำ · คำ · คำ"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 30,
+   "drafts": [
+    {
+     "raw": "คำของเจ้าช่างแสนจะจืดชืด\nคำของเจ้าไร้ซึ่งความคมคาย\nคำของเจ้าจางดั่งเงาจาง\n\nข้าได้เห็นภาพอันหาได้ยากยิ่ง\nข้าได้ฝันถึงสิ่งที่เหนือคำบรรยาย\nข้าได้ค้นพบความจริงที่ซ่อนเร้น",
+     "tidy": "คำของเจ้าช่างแสนจะจืดชืด\nคำของเจ้าไร้ซึ่งความคมคาย\nคำของเจ้าจางดั่งเงาจาง",
+     "ms": 2868,
+     "tokens": 71,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 6,
+     "expectedLines": 3,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 30
+    },
+    {
+     "raw": "คำพูดเจ้าช่างจืดชืดนัก\nคำพูดเจ้าไร้ซึ่งความหมาย\nคำพูดของข้าคือห้วงฝัน\n\nข้าเห็นภาพที่มิอาจหา\nข้าฝันถึงสิ่งที่เหนือกว่า\nข้าพบความจริงที่ล้ำลึก",
+     "tidy": "คำพูดเจ้าช่างจืดชืดนัก\nคำพูดเจ้าไร้ซึ่งความหมาย\nคำพูดของข้าคือห้วงฝัน",
+     "ms": 2126,
+     "tokens": 60,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 6,
+     "expectedLines": 3,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 20
+    },
+    {
+     "raw": "คำข้าฉายแสงจ้า\nคำข้ากรีดร้องก้อง\nคำข้าพัดพาฝัน",
+     "tidy": "คำข้าฉายแสงจ้า\nคำข้ากรีดร้องก้อง\nคำข้าพัดพาฝัน",
+     "ms": 687,
+     "tokens": 26,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 20
+    }
+   ]
+  },
+  {
+   "seed": 1008,
+   "roundIndex": 1,
+   "formId": "acrostic",
+   "difficulty": "apprentice",
+   "card": "Miranda",
+   "acrostic": "ฟ้า ดิน น้ำ ลม",
+   "relicWords": [
+    "กริช",
+    "เลือด",
+    "นิทรา",
+    "ภาพลวง",
+    "มือ"
+   ],
+   "answering": "ออกจากวัดทัศนาดูอาวาส\nเมื่อตรุษสารทพระพรรษาได้อาศัย",
+   "prompt": [
+    "You are Miranda in a duel of verses: theatrical, sharp, in character. Your line in the play: \"O brave new world, that has such people in it!\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per word: the lines must open, in order, with ฟ้า · ดิน · น้ำ · ลม.\nWrite exactly 4 lines.\nYour flourish: Make your last line your longest.\nWork in at least two of these words: กริช, เลือด, นิทรา, ภาพลวง, มือ.\nYour challenger last said:\nออกจากวัดทัศนาดูอาวาส\nเมื่อตรุษสารทพระพรรษาได้อาศัย\nAnswer them.\nWrite only the verse, in Thai. No title, no notes, no explanation."
+   ],
+   "verse": "ฟ้าใสสาดแสงแห่งความหวัง\nดินชุ่มเลือดหล่อเลี้ยงจิตใจ\nน้ำไหลรินชำระทุกสิ่งไป\nลมพัดโชยพาภาพลวงให้จางหายด้วยมือที่ถือกริชและหยาดเลือดนิทราอันแสนหวานของโลกใหม่ที่สดใสนี้",
+   "source": "model",
+   "lines": 4,
+   "expectedLines": 4,
+   "formKept": true,
+   "formEarned": 20,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "4/4"
+    },
+    {
+     "id": "spells",
+     "met": true,
+     "detail": "ฟ้า · ดิน · น้ำ · ลม"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 39,
+   "drafts": [
+    {
+     "raw": "ฟ้าใสสาดแสงแห่งความหวัง\nดินชุ่มเลือดหล่อเลี้ยงจิตใจ\nน้ำไหลรินชำระทุกสิ่งไป\nลมพัดโชยพาภาพลวงให้จางหายด้วยมือที่ถือกริชและหยาดเลือดนิทราอันแสนหวานของโลกใหม่ที่สดใสนี้",
+     "tidy": "ฟ้าใสสาดแสงแห่งความหวัง\nดินชุ่มเลือดหล่อเลี้ยงจิตใจ\nน้ำไหลรินชำระทุกสิ่งไป\nลมพัดโชยพาภาพลวงให้จางหายด้วยมือที่ถือกริชและหยาดเลือดนิทราอันแสนหวานของโลกใหม่ที่สดใสนี้",
+     "ms": 1695,
+     "tokens": 70,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 4,
+     "expectedLines": 4,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 39
+    }
+   ]
+  },
+  {
+   "seed": 1008,
+   "roundIndex": 2,
+   "formId": "crescendo",
+   "difficulty": "player",
+   "card": "Prince Escalus",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "ออกจากวัดทัศนาดูอาวาส\nเมื่อตรุษสารทพระพรรษาได้อาศัย",
+   "prompt": [
+    "You are Prince Escalus in a duel of verses: theatrical, sharp, in character. Your line in the play: \"If ever you disturb our streets again, your lives shall pay the forfeit of the peace.\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Turn a word of 4 letters or more from your opponent's last verse back on them.\nYour challenger last said:\nออกจากวัดทัศนาดูอาวาส\nเมื่อตรุษสารทพระพรรษาได้อาศัย\nAnswer them.\nWrite only the verse, in Thai. No title, no notes, no explanation."
+   ],
+   "verse": "คำกล่าวที่ท่านเอ่ยมานั้นช่างว่างเปล่าและไร้ความหมายยิ่งนัก\nการล่วงเกินเขตแดนนี้คือการประกาศสงครามต่ออำนาจอันศักดิ์สิทธิ์ของข้า\nจงจำไว้เถิดว่าความเงียบนี้จะกลายเป็นเสียงก้องแห่งความแค้นชั่วนิรันดร์",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "growing",
+     "met": false,
+     "detail": "16 < 15 < 20"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "คำกล่าวที่ท่านเอ่ยมานั้นช่างว่างเปล่าและไร้ความหมายยิ่งนัก\nการล่วงเกินเขตแดนนี้คือการประกาศสงครามต่ออำนาจอันศักดิ์สิทธิ์ของข้า\nจงจำไว้เถิดว่าความเงียบนี้จะกลายเป็นเสียงก้องแห่งความแค้นชั่วนิรันดร์",
+     "tidy": "คำกล่าวที่ท่านเอ่ยมานั้นช่างว่างเปล่าและไร้ความหมายยิ่งนัก\nการล่วงเกินเขตแดนนี้คือการประกาศสงครามต่ออำนาจอันศักดิ์สิทธิ์ของข้า\nจงจำไว้เถิดว่าความเงียบนี้จะกลายเป็นเสียงก้องแห่งความแค้นชั่วนิรันดร์",
+     "ms": 4159,
+     "tokens": 79,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "คำกล่าวอันแสนอ่อนหวานนั้นช่างน่าเวทนาเสียจริง\nความสงบที่เคยปรารถนาพลันสั่นคลอนด้วยวาจาอันฉกาจ\nหากมุ่งหมายจะรุกรานอีกครา ชีวิตเจ้าจักต้องรับโทษทัณฑ์แห่งสันติ",
+     "tidy": "คำกล่าวอันแสนอ่อนหวานนั้นช่างน่าเวทนาเสียจริง\nความสงบที่เคยปรารถนาพลันสั่นคลอนด้วยวาจาอันฉกาจ\nหากมุ่งหมายจะรุกรานอีกครา ชีวิตเจ้าจักต้องรับโทษทัณฑ์แห่งสันติ",
+     "ms": 2771,
+     "tokens": 64,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1009,
+   "roundIndex": 0,
+   "formId": "epistrophe",
+   "difficulty": "apprentice",
+   "card": "Macbeth",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Macbeth in a duel of verses: theatrical, sharp, in character. Your line in the play: \"I dare do all that may become a man; who dares do more is none.\" You write short verse and nothing else.",
+    "Form: Epistrophe. Three lines that all end on the same word.\nWrite exactly 3 lines.\nYour flourish: Repeat one strong word three times.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Thai. No title, no notes, no explanation."
+   ],
+   "verse": "เจ้าโง่เง่า ความกล้าหาญ ความตาย\nข้าคือไฟ แห่งความมุ่งมาด\nความเด็ดขาด คือชัยชนะ",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-ending",
+     "met": false,
+     "detail": "ตาย · มุ่งมาด · ชัยชนะ"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 9,
+   "drafts": [
+    {
+     "raw": "เจ้าโง่เง่า ความกล้าหาญ ความตาย\nข้าคือไฟ แห่งความมุ่งมาด\nความเด็ดขาด คือชัยชนะ",
+     "tidy": "เจ้าโง่เง่า ความกล้าหาญ ความตาย\nข้าคือไฟ แห่งความมุ่งมาด\nความเด็ดขาด คือชัยชนะ",
+     "ms": 1382,
+     "tokens": 32,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 9
+    }
+   ]
+  },
+  {
+   "seed": 1009,
+   "roundIndex": 1,
+   "formId": "anaphora",
+   "difficulty": "apprentice",
+   "card": "Prospero",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "สามฤดูอยู่ดีไม่มีภัย\nมาจำไกลอารามเมื่อยามเย็น",
+   "prompt": [
+    "You are Prospero in a duel of verses: theatrical, sharp, in character. Your line in the play: \"We are such stuff as dreams are made on.\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same word.\nWrite exactly 3 lines.\nYour flourish: Make your last line your longest.\nYour challenger last said:\nสามฤดูอยู่ดีไม่มีภัย\nมาจำไกลอารามเมื่อยามเย็น\nAnswer them.\nWrite only the verse, in Thai. No title, no notes, no explanation."
+   ],
+   "verse": "ฝันนั้นก่อกำเนิดขึ้นมา\nฝันนั้นหลอมรวมเป็นจริง\nฝันนั้นคือสิ่งที่ถูกรังสรรค์ขึ้นมาเพื่อจารึกไว้ในความทรงจำนิรันดร์อันแสนวิจิตรบรรจงและลึกซึ้งจนยากจะหาผู้ใดเทียบเคียงได้เลย",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": true,
+   "formEarned": 20,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-opening",
+     "met": true,
+     "detail": "ฝัน · ฝัน · ฝัน"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 30,
+   "drafts": [
+    {
+     "raw": "ฝันนั้นก่อกำเนิดขึ้นมา\nฝันนั้นหลอมรวมเป็นจริง\nฝันนั้นคือสิ่งที่ถูกรังสรรค์ขึ้นมาเพื่อจารึกไว้ในความทรงจำนิรันดร์อันแสนวิจิตรบรรจงและลึกซึ้งจนยากจะหาผู้ใดเทียบเคียงได้เลย",
+     "tidy": "ฝันนั้นก่อกำเนิดขึ้นมา\nฝันนั้นหลอมรวมเป็นจริง\nฝันนั้นคือสิ่งที่ถูกรังสรรค์ขึ้นมาเพื่อจารึกไว้ในความทรงจำนิรันดร์อันแสนวิจิตรบรรจงและลึกซึ้งจนยากจะหาผู้ใดเทียบเคียงได้เลย",
+     "ms": 3231,
+     "tokens": 71,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 30
+    }
+   ]
+  },
+  {
+   "seed": 1009,
+   "roundIndex": 2,
+   "formId": "acrostic",
+   "difficulty": "player",
+   "card": "Mary Shelley",
+   "acrostic": "ดาว เดือน ฟ้า",
+   "relicWords": [
+    "หน้ากาก",
+    "ความฝัน",
+    "ตัวตลก",
+    "ละคร",
+    "จันทร์"
+   ],
+   "answering": "สามฤดูอยู่ดีไม่มีภัย\nมาจำไกลอารามเมื่อยามเย็น",
+   "prompt": [
+    "You are Mary Shelley in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Beware; for I am fearless, and therefore powerful.\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per word: the lines must open, in order, with ดาว · เดือน · ฟ้า.\nWrite exactly 3 lines.\nYour flourish: End your verse on the same word it began with.\nWork in at least two of these words: หน้ากาก, ความฝัน, ตัวตลก, ละคร, จันทร์.\nYour challenger last said:\nสามฤดูอยู่ดีไม่มีภัย\nมาจำไกลอารามเมื่อยามเย็น\nAnswer them.\nWrite only the verse, in Thai. No title, no notes, no explanation."
+   ],
+   "verse": "ดาว · ดวงจันทร์ส่องแสงหน้ากาก\nเดือน · ความฝันลวงหลอกละคร\nฟ้า · ตัวตลกพ่ายแพ้จันทร์",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": true,
+   "formEarned": 20,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "spells",
+     "met": true,
+     "detail": "ดาว · เดือน · ฟ้า"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 26,
+   "drafts": [
+    {
+     "raw": "ดาว · ดวงจันทร์ส่องแสงหน้ากาก\nเดือน · ความฝันลวงหลอกละคร\nฟ้า · ตัวตลกพ่ายแพ้จันทร์",
+     "tidy": "ดาว · ดวงจันทร์ส่องแสงหน้ากาก\nเดือน · ความฝันลวงหลอกละคร\nฟ้า · ตัวตลกพ่ายแพ้จันทร์",
+     "ms": 1594,
+     "tokens": 34,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 26
+    },
+    {
+     "raw": "ดาว · หน้ากาก ซ่อนความฝัน\nเดือน · ละคร ปลุกจันทร์\nฟ้า · ตัวตลก แสงส่องนำ",
+     "tidy": "ดาว · หน้ากาก ซ่อนความฝัน\nเดือน · ละคร ปลุกจันทร์\nฟ้า · ตัวตลก แสงส่องนำ",
+     "ms": 1504,
+     "tokens": 31,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 26
+    }
+   ]
+  },
+  {
+   "seed": 1010,
+   "roundIndex": 0,
+   "formId": "anaphora",
+   "difficulty": "player",
+   "card": "The Sonnet Man",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are The Sonnet Man in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Shall I compare thee to a summer's day?\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same word.\nWrite exactly 3 lines.\nYour flourish: End your verse on the same word it began with.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Thai. No title, no notes, no explanation."
+   ],
+   "verse": "ฉันจะเปรียบเทียบเธอกับวันฤดูร้อน\nฉันจะเปรียบเทียบเธอกับแสงตะวัน\nฉันจะเปรียบเทียบเธอด้วยความงาม",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": true,
+   "formEarned": 20,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-opening",
+     "met": true,
+     "detail": "ฉัน · ฉัน · ฉัน"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 20,
+   "drafts": [
+    {
+     "raw": "ฉันจะเปรียบเทียบเธอกับวันฤดูร้อน\nฉันจะเปรียบเทียบเธอกับแสงตะวัน\nฉันจะเปรียบเทียบเธอด้วยความงาม",
+     "tidy": "ฉันจะเปรียบเทียบเธอกับวันฤดูร้อน\nฉันจะเปรียบเทียบเธอกับแสงตะวัน\nฉันจะเปรียบเทียบเธอด้วยความงาม",
+     "ms": 1693,
+     "tokens": 39,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 20
+    },
+    {
+     "raw": "ข้าจะเปรียบเทียบเธอหรือไร?\nข้าจะเปรียบเทียบดั่งวันหนาว\nข้าจะเปรียบเทียบให้สิ้นแสง",
+     "tidy": "ข้าจะเปรียบเทียบเธอหรือไร?\nข้าจะเปรียบเทียบดั่งวันหนาว\nข้าจะเปรียบเทียบให้สิ้นแสง",
+     "ms": 1669,
+     "tokens": 35,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 20
+    }
+   ]
+  },
+  {
+   "seed": 1010,
+   "roundIndex": 1,
+   "formId": "epistrophe",
+   "difficulty": "player",
+   "card": "Lady Macbeth",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "โอ้อาวาสราชบุรณะพระวิหาร\nแต่นี้นานนับทิวาจะมาเห็น",
+   "prompt": [
+    "You are Lady Macbeth in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Come, you spirits that tend on mortal thoughts, unsex me here.\" You write short verse and nothing else.",
+    "Form: Epistrophe. Three lines that all end on the same word.\nWrite exactly 3 lines.\nYour flourish: Repeat one strong word three times.\nYour challenger last said:\nโอ้อาวาสราชบุรณะพระวิหาร\nแต่นี้นานนับทิวาจะมาเห็น\nAnswer them.\nWrite only the verse, in Thai. No title, no notes, no explanation."
+   ],
+   "verse": "เลือดคือไฟ ไฟคือความแค้น ไฟคือชัยชนะ\nจิตใจคือคม คมคือความมุ่งมั่น คมคือชัยชนะ\nความมืดคือเงา เงาคือความชั่ว เงาคือชัยชนะ",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": true,
+   "formEarned": 20,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-ending",
+     "met": true,
+     "detail": "ชัยชนะ · ชัยชนะ · ชัยชนะ"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 30,
+   "drafts": [
+    {
+     "raw": "เลือดคือไฟ ไฟคือความแค้น ไฟคือชัยชนะ\nจิตใจคือคม คมคือความมุ่งมั่น คมคือชัยชนะ\nความมืดคือเงา เงาคือความชั่ว เงาคือชัยชนะ",
+     "tidy": "เลือดคือไฟ ไฟคือความแค้น ไฟคือชัยชนะ\nจิตใจคือคม คมคือความมุ่งมั่น คมคือชัยชนะ\nความมืดคือเงา เงาคือความชั่ว เงาคือชัยชนะ",
+     "ms": 2193,
+     "tokens": 47,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 30
+    },
+    {
+     "raw": "เลือดนั้นซึมซาบไปทั่วกาย\nความแค้นนี้ช่างหนักหน่วงใจ\nเลือดนั้นซึมซาบไปทั่วกาย",
+     "tidy": "เลือดนั้นซึมซาบไปทั่วกาย\nความแค้นนี้ช่างหนักหน่วงใจ\nเลือดนั้นซึมซาบไปทั่วกาย",
+     "ms": 1524,
+     "tokens": 34,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1010,
+   "roundIndex": 2,
+   "formId": "crescendo",
+   "difficulty": "master",
+   "card": "Mary Shelley",
+   "acrostic": null,
+   "relicWords": [
+    "กริช",
+    "เลือด",
+    "นิทรา",
+    "ภาพลวง",
+    "มือ"
+   ],
+   "answering": "โอ้อาวาสราชบุรณะพระวิหาร\nแต่นี้นานนับทิวาจะมาเห็น",
+   "prompt": [
+    "You are Mary Shelley in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Beware; for I am fearless, and therefore powerful.\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: End your verse on the same word it began with.\nWork in at least two of these words: กริช, เลือด, นิทรา, ภาพลวง, มือ.\nYour challenger last said:\nโอ้อาวาสราชบุรณะพระวิหาร\nแต่นี้นานนับทิวาจะมาเห็น\nAnswer them.\nWrite only the verse, in Thai. No title, no notes, no explanation."
+   ],
+   "verse": "กริชกรีดฉิวฉิวด้วยเลือดที่ไหลริน\nมือนี้มิหวั่นไหวต่อภาพลวงที่เลือนราง\nความกล้าหาญนี้คือพลังอันแสนเด็ดเดี่ยว",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "growing",
+     "met": false,
+     "detail": "9 < 11 < 10"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 12,
+   "drafts": [
+    {
+     "raw": "กริชกรีดฉิวฉิวด้วยเลือดที่ไหลริน\nมือนี้มิหวั่นไหวต่อภาพลวงที่เลือนราง\nความกล้าหาญนี้คือพลังอันแสนเด็ดเดี่ยว",
+     "tidy": "กริชกรีดฉิวฉิวด้วยเลือดที่ไหลริน\nมือนี้มิหวั่นไหวต่อภาพลวงที่เลือนราง\nความกล้าหาญนี้คือพลังอันแสนเด็ดเดี่ยว",
+     "ms": 2244,
+     "tokens": 48,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 12
+    },
+    {
+     "raw": "กริชกรีดฉีกกระชากความจริงจนเลือดไหลหลั่งมา\nมือที่กุมมั่นคงพร้อมจะเผาผลาญภาพลวงให้มอดไหม้\nนิทราไร้สิ้นสุดด้วยคมดาบที่เฉียบขาดอย่างเด็ดเดี่ยว",
+     "tidy": "กริชกรีดฉีกกระชากความจริงจนเลือดไหลหลั่งมา\nมือที่กุมมั่นคงพร้อมจะเผาผลาญภาพลวงให้มอดไหม้\nนิทราไร้สิ้นสุดด้วยคมดาบที่เฉียบขาดอย่างเด็ดเดี่ยว",
+     "ms": 2811,
+     "tokens": 61,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 12
+    },
+    {
+     "raw": "กริชกรีดฉาน ดุจคมดาบแห่งความแค้น การไหลของเลือดมิเคยหยุดนิ่ง\nมือนี้จักชี้ชะตา ดั่งภาพลวงในนิทราที่ถูกปลุกให้ตื่นขึ้นมา\nด้วยไฟแห่งความกล้า ฉันคือผู้พิชิต ด้วยอำนาจอันเฉียบขาดและน่าเกรงขาม",
+     "tidy": "กริชกรีดฉาน ดุจคมดาบแห่งความแค้น การไหลของเลือดมิเคยหยุดนิ่ง\nมือนี้จักชี้ชะตา ดั่งภาพลวงในนิทราที่ถูกปลุกให้ตื่นขึ้นมา\nด้วยไฟแห่งความกล้า ฉันคือผู้พิชิต ด้วยอำนาจอันเฉียบขาดและน่าเกรงขาม",
+     "ms": 3832,
+     "tokens": 81,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 12
+    }
+   ]
+  },
+  {
+   "seed": 1011,
+   "roundIndex": 0,
+   "formId": "anaphora",
+   "difficulty": "master",
+   "card": "Cassius",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Cassius in a duel of verses: theatrical, sharp, in character. Your line in the play: \"The fault, dear Brutus, is not in our stars, but in ourselves.\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same word.\nWrite exactly 3 lines.\nYour flourish: Call on a character by name.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Thai. No title, no notes, no explanation."
+   ],
+   "verse": "คมดาบนี้กรีดลึก\nคมดาบนี้ฉุดรั้ง\nคมดาบนี้พิพากษา",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": true,
+   "formEarned": 20,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-opening",
+     "met": true,
+     "detail": "คม · คม · คม"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 20,
+   "drafts": [
+    {
+     "raw": "คมดาบนี้กรีดลึก\nคมดาบนี้ฉุดรั้ง\nคมดาบนี้พิพากษา\n\nออ, คาซิอุส! เจ้าโง่เขลา!",
+     "tidy": "คมดาบนี้กรีดลึก\nคมดาบนี้ฉุดรั้ง\nคมดาบนี้พิพากษา",
+     "ms": 2115,
+     "tokens": 43,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 4,
+     "expectedLines": 3,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 20
+    },
+    {
+     "raw": "คมดาบสาดแสงจ้า\nคมดาบกรีดลึกฉาบฉาย\nคมดาบชี้ความผิดพลัน\n\nBrutus จงรับไว้!",
+     "tidy": "คมดาบสาดแสงจ้า\nคมดาบกรีดลึกฉาบฉาย\nคมดาบชี้ความผิดพลัน",
+     "ms": 1856,
+     "tokens": 38,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 4,
+     "expectedLines": 3,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 20
+    },
+    {
+     "raw": "คมดาบกรีดลึกนัก\nคมดาบกรีดลึกนัก\nคมดาบจะตัดสิน",
+     "tidy": "คมดาบกรีดลึกนัก\nคมดาบกรีดลึกนัก\nคมดาบจะตัดสิน",
+     "ms": 893,
+     "tokens": 23,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 20
+    }
+   ]
+  },
+  {
+   "seed": 1011,
+   "roundIndex": 1,
+   "formId": "acrostic",
+   "difficulty": "master",
+   "card": "Viola",
+   "acrostic": "ลม ฝน ฟ้า",
+   "relicWords": null,
+   "answering": "จะยกหยิบธิบดีเป็นที่ตั้ง\nก็ใช้ถังแทนสัดเห็นขัดขวาง",
+   "prompt": [
+    "You are Viola in a duel of verses: theatrical, sharp, in character. Your line in the play: \"I am not what I am.\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per word: the lines must open, in order, with ลม · ฝน · ฟ้า.\nWrite exactly 3 lines.\nYour flourish: Keep every line to 7 words or fewer.\nYour challenger last said:\nจะยกหยิบธิบดีเป็นที่ตั้ง\nก็ใช้ถังแทนสัดเห็นขัดขวาง\nAnswer them.\nWrite only the verse, in Thai. No title, no notes, no explanation."
+   ],
+   "verse": "ลมพัดพาความคิด\nฝนหลั่งชะล้างความจริง\nฟ้ากว้างมองไม่เห็น",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": true,
+   "formEarned": 20,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "spells",
+     "met": true,
+     "detail": "ลม · ฝน · ฟ้า"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 30,
+   "drafts": [
+    {
+     "raw": "ลมพัดพาความคิด\nฝนหลั่งชะล้างความจริง\nฟ้ากว้างมองไม่เห็น",
+     "tidy": "ลมพัดพาความคิด\nฝนหลั่งชะล้างความจริง\nฟ้ากว้างมองไม่เห็น",
+     "ms": 565,
+     "tokens": 23,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 30
+    },
+    {
+     "raw": "ลมพัดคลื่นซัดมา\nฝนหลั่งชะล้างทุกสิ่ง\nฟ้ากั้นหมอกจางไป",
+     "tidy": "ลมพัดคลื่นซัดมา\nฝนหลั่งชะล้างทุกสิ่ง\nฟ้ากั้นหมอกจางไป",
+     "ms": 647,
+     "tokens": 28,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 30
+    },
+    {
+     "raw": "ลมพาใจลอย\nฝนชะล้างความแค้น\nฟ้าพัดความว่างเปล่า",
+     "tidy": "ลมพาใจลอย\nฝนชะล้างความแค้น\nฟ้าพัดความว่างเปล่า",
+     "ms": 1199,
+     "tokens": 23,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 30
+    }
+   ]
+  },
+  {
+   "seed": 1011,
+   "roundIndex": 2,
+   "formId": "crescendo",
+   "difficulty": "apprentice",
+   "card": "Titania",
+   "acrostic": null,
+   "relicWords": [
+    "ตำรา",
+    "พายุ",
+    "เวทมนตร์",
+    "หน้ากระดาษ",
+    "จมน้ำ"
+   ],
+   "answering": "จะยกหยิบธิบดีเป็นที่ตั้ง\nก็ใช้ถังแทนสัดเห็นขัดขวาง",
+   "prompt": [
+    "You are Titania in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Come, sit thee down upon this flowery bed.\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Start three words in one line with the same letter.\nWork in at least two of these words: ตำรา, พายุ, เวทมนตร์, หน้ากระดาษ, จมน้ำ.\nYour challenger last said:\nจะยกหยิบธิบดีเป็นที่ตั้ง\nก็ใช้ถังแทนสัดเห็นขัดขวาง\nAnswer them.\nWrite only the verse, in Thai. No title, no notes, no explanation."
+   ],
+   "verse": "พายุพัดโหมกระหน่ำด้วยเวทมนตร์อันร้ายกาจ\nตำราเก่าแก่หล่นลงมา ดุจคลื่นแห่งความผิดพลาด\nจมน้ำในบทกวี ที่เขียนบนหน้ากระดาษงามสง่า",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "growing",
+     "met": false,
+     "detail": "8 < 12 < 12"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 12,
+   "drafts": [
+    {
+     "raw": "พายุพัดโหมกระหน่ำด้วยเวทมนตร์อันร้ายกาจ\nตำราเก่าแก่หล่นลงมา ดุจคลื่นแห่งความผิดพลาด\nจมน้ำในบทกวี ที่เขียนบนหน้ากระดาษงามสง่า",
+     "tidy": "พายุพัดโหมกระหน่ำด้วยเวทมนตร์อันร้ายกาจ\nตำราเก่าแก่หล่นลงมา ดุจคลื่นแห่งความผิดพลาด\nจมน้ำในบทกวี ที่เขียนบนหน้ากระดาษงามสง่า",
+     "ms": 2610,
+     "tokens": 55,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 12
+    }
+   ]
+  },
+  {
+   "seed": 1012,
+   "roundIndex": 1,
+   "formId": "anaphora",
+   "difficulty": "apprentice",
+   "card": "Elizabeth Barrett Browning",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "ศรีอยุธเยนทร์แย้มฟ้า\nแจกแสงจ้าเจิดจันทร์",
+   "prompt": [
+    "You are Elizabeth Barrett Browning in a duel of verses: theatrical, sharp, in character. Your line in the play: \"How do I love thee? Let me count the ways.\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same word.\nWrite exactly 3 lines.\nYour flourish: Give every line the same number of words.\nYour challenger last said:\nศรีอยุธเยนทร์แย้มฟ้า\nแจกแสงจ้าเจิดจันทร์\nAnswer them.\nWrite only the verse, in Thai. No title, no notes, no explanation."
+   ],
+   "verse": "รักนี้ลึกซึ้งเกินกว่าคำกล่าว\nรักนี้กว้างใหญ่ดั่งมหาสมุทร\nรักนี้คือชีวิตที่ฉันมอบให้",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": true,
+   "formEarned": 20,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-opening",
+     "met": true,
+     "detail": "รัก · รัก · รัก"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 20,
+   "drafts": [
+    {
+     "raw": "รักนี้ลึกซึ้งเกินกว่าคำกล่าว\nรักนี้กว้างใหญ่ดั่งมหาสมุทร\nรักนี้คือชีวิตที่ฉันมอบให้",
+     "tidy": "รักนี้ลึกซึ้งเกินกว่าคำกล่าว\nรักนี้กว้างใหญ่ดั่งมหาสมุทร\nรักนี้คือชีวิตที่ฉันมอบให้",
+     "ms": 1572,
+     "tokens": 33,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 20
+    }
+   ]
+  },
+  {
+   "seed": 1012,
+   "roundIndex": 2,
+   "formId": "epistrophe",
+   "difficulty": "master",
+   "card": "Odysseus",
+   "acrostic": null,
+   "relicWords": [
+    "หน้ากาก",
+    "ความฝัน",
+    "ตัวตลก",
+    "ละคร",
+    "จันทร์"
+   ],
+   "answering": "ศรีอยุธเยนทร์แย้มฟ้า\nแจกแสงจ้าเจิดจันทร์",
+   "prompt": [
+    "You are Odysseus in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Tell me, O Muse, of the man of many ways, who wandered far.\" You write short verse and nothing else.",
+    "Form: Epistrophe. Three lines that all end on the same word.\nWrite exactly 3 lines.\nYour flourish: Use two words of 7 letters or more.\nWork in at least two of these words: หน้ากาก, ความฝัน, ตัวตลก, ละคร, จันทร์.\nYour challenger last said:\nศรีอยุธเยนทร์แย้มฟ้า\nแจกแสงจ้าเจิดจันทร์\nAnswer them.\nWrite only the verse, in Thai. No title, no notes, no explanation."
+   ],
+   "verse": "หน้ากากซ่อนความฝันลวง\nละครหลอกให้ลุ่มหลง\nตัวตลกพลันหมองมัว",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-ending",
+     "met": false,
+     "detail": "ลวง · หลง · มัว"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 12,
+   "drafts": [
+    {
+     "raw": "หน้ากากซ่อนความฝันลวง\nละครหลอกให้ลุ่มหลง\nตัวตลกพลันหมองมัว",
+     "tidy": "หน้ากากซ่อนความฝันลวง\nละครหลอกให้ลุ่มหลง\nตัวตลกพลันหมองมัว",
+     "ms": 1477,
+     "tokens": 29,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 12
+    },
+    {
+     "raw": "หน้ากากหลอกลวงด้วยความฝัน\nละครฉายเงาแห่งดวงจันทร์\nตัวตลกวนเวียนในมหาสมุทร",
+     "tidy": "หน้ากากหลอกลวงด้วยความฝัน\nละครฉายเงาแห่งดวงจันทร์\nตัวตลกวนเวียนในมหาสมุทร",
+     "ms": 1713,
+     "tokens": 35,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 12
+    },
+    {
+     "raw": "หน้ากากหลอกลวงชวนให้ฝัน\nละครสร้างภาพชวนให้หมัน\nจันทร์ส่องนำทางด้วยความหวัง",
+     "tidy": "หน้ากากหลอกลวงชวนให้ฝัน\nละครสร้างภาพชวนให้หมัน\nจันทร์ส่องนำทางด้วยความหวัง",
+     "ms": 1675,
+     "tokens": 32,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 12
+    }
+   ]
+  },
+  {
+   "seed": 1013,
+   "roundIndex": 1,
+   "formId": "acrostic",
+   "difficulty": "apprentice",
+   "card": "Mercutio",
+   "acrostic": "ดาว เดือน ฟ้า",
+   "relicWords": [
+    "พายุ",
+    "มนตร์",
+    "ไม้เท้า",
+    "เกาะ",
+    "จมน้ำ"
+   ],
+   "answering": "ขุนหาญห้าวแหนบาท\nสระทุกข์ราษฎร์รอนเสี้ยน",
+   "prompt": [
+    "You are Mercutio in a duel of verses: theatrical, sharp, in character. Your line in the play: \"A plague on both your houses!\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per word: the lines must open, in order, with ดาว · เดือน · ฟ้า.\nWrite exactly 3 lines.\nYour flourish: Repeat one strong word three times.\nWork in at least two of these words: พายุ, มนตร์, ไม้เท้า, เกาะ, จมน้ำ.\nYour challenger last said:\nขุนหาญห้าวแหนบาท\nสระทุกข์ราษฎร์รอนเสี้ยน\nAnswer them.\nWrite only the verse, in Thai. No title, no notes, no explanation."
+   ],
+   "verse": "ดาวพัดพายุโหมกระหน่ำ\nเดือนจมน้ำในมนตร์ร้าย\nฟ้าเผาไม้เท้าสิ้นเกาะ",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": true,
+   "formEarned": 20,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "spells",
+     "met": true,
+     "detail": "ดาว · เดือน · ฟ้า"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 26,
+   "drafts": [
+    {
+     "raw": "ดาวพัดพายุโหมกระหน่ำ\nเดือนจมน้ำในมนตร์ร้าย\nฟ้าเผาไม้เท้าสิ้นเกาะ",
+     "tidy": "ดาวพัดพายุโหมกระหน่ำ\nเดือนจมน้ำในมนตร์ร้าย\nฟ้าเผาไม้เท้าสิ้นเกาะ",
+     "ms": 1565,
+     "tokens": 29,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 26
+    }
+   ]
+  },
+  {
+   "seed": 1013,
+   "roundIndex": 2,
+   "formId": "epistrophe",
+   "difficulty": "apprentice",
+   "card": "Persephone",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "ขุนหาญห้าวแหนบาท\nสระทุกข์ราษฎร์รอนเสี้ยน",
+   "prompt": [
+    "You are Persephone in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Six seeds I ate, and bound myself between two worlds forever.\" You write short verse and nothing else.",
+    "Form: Epistrophe. Three lines that all end on the same word.\nWrite exactly 3 lines.\nYour flourish: Turn a word of 4 letters or more from your opponent's last verse back on them.\nYour challenger last said:\nขุนหาญห้าวแหนบาท\nสระทุกข์ราษฎร์รอนเสี้ยน\nAnswer them.\nWrite only the verse, in Thai. No title, no notes, no explanation."
+   ],
+   "verse": "ความทุกข์นั้นจดจำ\nบาดแผลนี้มิอาจพ้น\nชั่วกาลนี้มิคลาย",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-ending",
+     "met": false,
+     "detail": "จดจำ · พ้น · ลาย"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "ความทุกข์นั้นจดจำ\nบาดแผลนี้มิอาจพ้น\nชั่วกาลนี้มิคลาย",
+     "tidy": "ความทุกข์นั้นจดจำ\nบาดแผลนี้มิอาจพ้น\nชั่วกาลนี้มิคลาย",
+     "ms": 1375,
+     "tokens": 26,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1014,
+   "roundIndex": 1,
+   "formId": "acrostic",
+   "difficulty": "player",
+   "card": "Hamlet",
+   "acrostic": "ดาว เดือน ฟ้า",
+   "relicWords": [
+    "มงกุฎ",
+    "บัลลังก์",
+    "ทะเยอทะยาน",
+    "แม่มด",
+    "ราชา"
+   ],
+   "answering": "๏ บุญเจ้าจอมภพพื้น\nแผ่นสยาม\nแสยงพระยศยินขาม\nขาดแกล้ว",
+   "prompt": [
+    "You are Hamlet in a duel of verses: theatrical, sharp, in character. Your line in the play: \"To be, or not to be, that is the question.\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per word: the lines must open, in order, with ดาว · เดือน · ฟ้า.\nWrite exactly 3 lines.\nYour flourish: Ask a question: end a line with a question mark.\nWork in at least two of these words: มงกุฎ, บัลลังก์, ทะเยอทะยาน, แม่มด, ราชา.\nYour challenger last said:\n๏ บุญเจ้าจอมภพพื้น\nแผ่นสยาม\nแสยงพระยศยินขาม\nขาดแกล้ว\nAnswer them.\nWrite only the verse, in Thai. No title, no notes, no explanation."
+   ],
+   "verse": "ดาวนำทางสู่บัลลังก์นี้หรือ?\nเดือนฉายแสงแห่งทะเยอทะยานใด?\nฟ้าชี้ทางสู่มงกุฎของราชาหรือไม่?",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": true,
+   "formEarned": 20,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "spells",
+     "met": true,
+     "detail": "ดาว · เดือน · ฟ้า"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 39,
+   "drafts": [
+    {
+     "raw": "ดาวนำทางสู่บัลลังก์นี้หรือ?\nเดือนฉายแสงแห่งทะเยอทะยานใด?\nฟ้าชี้ทางสู่มงกุฎของราชาหรือไม่?",
+     "tidy": "ดาวนำทางสู่บัลลังก์นี้หรือ?\nเดือนฉายแสงแห่งทะเยอทะยานใด?\nฟ้าชี้ทางสู่มงกุฎของราชาหรือไม่?",
+     "ms": 2140,
+     "tokens": 41,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 39
+    },
+    {
+     "raw": "ดาวส่องแสงใดจะทลายบัลลังก์ไหม?\nเดือนฉายเงาแห่งทะเยอทะยานนี้หรือไร?\nฟ้ากางมงกุฎ หรือแม่มดจะนำทางกันแน่?",
+     "tidy": "ดาวส่องแสงใดจะทลายบัลลังก์ไหม?\nเดือนฉายเงาแห่งทะเยอทะยานนี้หรือไร?\nฟ้ากางมงกุฎ หรือแม่มดจะนำทางกันแน่?",
+     "ms": 2535,
+     "tokens": 51,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 39
+    }
+   ]
+  },
+  {
+   "seed": 1016,
+   "roundIndex": 0,
+   "formId": "acrostic",
+   "difficulty": "master",
+   "card": "Hamlet",
+   "acrostic": "น้ำ ลม ไฟ",
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Hamlet in a duel of verses: theatrical, sharp, in character. Your line in the play: \"To be, or not to be, that is the question.\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per word: the lines must open, in order, with น้ำ · ลม · ไฟ.\nWrite exactly 3 lines.\nYour flourish: Ask a question: end a line with a question mark.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Thai. No title, no notes, no explanation."
+   ],
+   "verse": "น้ำหยดรินชุ่มฉ่ำเพียงใด?\nลมพัดพาความหวังดับลงหรือไม่?\nไฟเผาผลาญจนสิ้นซึ่งเหตุผลหรือ?",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": true,
+   "formEarned": 20,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "spells",
+     "met": true,
+     "detail": "น้ำ · ลม · ไฟ"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 30,
+   "drafts": [
+    {
+     "raw": "น้ำหยดรินชุ่มฉ่ำเพียงใด?\nลมพัดพาความหวังดับลงหรือไม่?\nไฟเผาผลาญจนสิ้นซึ่งเหตุผลหรือ?",
+     "tidy": "น้ำหยดรินชุ่มฉ่ำเพียงใด?\nลมพัดพาความหวังดับลงหรือไม่?\nไฟเผาผลาญจนสิ้นซึ่งเหตุผลหรือ?",
+     "ms": 1977,
+     "tokens": 39,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 30
+    },
+    {
+     "raw": "น้ำไหลหลั่งดั่งคลื่นคลั่งไหม?\nลมพัดพริ้วพาใจล่องลอยหรือ?\nไฟเผาผลาญมิอาจดับได้จริงหรือ?",
+     "tidy": "น้ำไหลหลั่งดั่งคลื่นคลั่งไหม?\nลมพัดพริ้วพาใจล่องลอยหรือ?\nไฟเผาผลาญมิอาจดับได้จริงหรือ?",
+     "ms": 2004,
+     "tokens": 41,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 30
+    },
+    {
+     "raw": "น้ำ คลื่นคลอนใจพี่หรือไม่?\nลม พัดผ่านความจริงนี้เลยหรือ?\nไฟ เผาผลาญหมองหม่นไปไหม?",
+     "tidy": "น้ำ คลื่นคลอนใจพี่หรือไม่?\nลม พัดผ่านความจริงนี้เลยหรือ?\nไฟ เผาผลาญหมองหม่นไปไหม?",
+     "ms": 1872,
+     "tokens": 37,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 30
+    }
+   ]
+  },
+  {
+   "seed": 1017,
+   "roundIndex": 0,
+   "formId": "acrostic",
+   "difficulty": "apprentice",
+   "card": "Hamlet",
+   "acrostic": "ดาว เดือน ฟ้า",
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Hamlet in a duel of verses: theatrical, sharp, in character. Your line in the play: \"To be, or not to be, that is the question.\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per word: the lines must open, in order, with ดาว · เดือน · ฟ้า.\nWrite exactly 3 lines.\nYour flourish: Ask a question: end a line with a question mark.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Thai. No title, no notes, no explanation."
+   ],
+   "verse": "ดาว · เดชอำนาจจะสู้หรือไม่?\nเดือน · เดือนดับแสงคือความว่างเปล่าใช่ไหม?\nฟ้า · ฟ้าผ่าลงมาจักนำทางไปหรือ?",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": true,
+   "formEarned": 20,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "spells",
+     "met": true,
+     "detail": "ดาว · เดือน · ฟ้า"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 30,
+   "drafts": [
+    {
+     "raw": "ดาว · เดชอำนาจจะสู้หรือไม่?\nเดือน · เดือนดับแสงคือความว่างเปล่าใช่ไหม?\nฟ้า · ฟ้าผ่าลงมาจักนำทางไปหรือ?",
+     "tidy": "ดาว · เดชอำนาจจะสู้หรือไม่?\nเดือน · เดือนดับแสงคือความว่างเปล่าใช่ไหม?\nฟ้า · ฟ้าผ่าลงมาจักนำทางไปหรือ?",
+     "ms": 1969,
+     "tokens": 40,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 30
+    }
+   ]
+  }
+ ],
+ "seconds": 162
+}

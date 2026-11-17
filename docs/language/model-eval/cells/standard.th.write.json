@@ -1,0 +1,2581 @@
+{
+ "tier": "standard",
+ "lang": "th",
+ "task": "write",
+ "model": "onnx-community/LFM3-1.7B-ONNX",
+ "dtype": "q4f16",
+ "judgeMethod": "compare",
+ "date": "2026-11-17T01:39:22.187Z",
+ "commit": "01f7ebf7a98acf87e7692a5467c5417174b11aca",
+ "transformers": "4.3.2",
+ "gpu": {
+  "vendor": "apple",
+  "architecture": "metal-3",
+  "device": "",
+  "description": ""
+ },
+ "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/159.0.8154.6 Safari/537.36",
+ "origin": "http://localhost:47731",
+ "forms": [
+  "anaphora",
+  "acrostic",
+  "crescendo",
+  "epistrophe"
+ ],
+ "perForm": 10,
+ "plays": [
+  {
+   "seed": 1001,
+   "roundIndex": 0,
+   "formId": "acrostic",
+   "difficulty": "apprentice",
+   "card": "Apollo",
+   "acrostic": "รัก ชัง หลง",
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Apollo in a duel of verses: theatrical, sharp, in character. Your line in the play: \"I am the god of song, of healing, and of the radiant sun.\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per word: the lines must open, in order, with รัก · ชัง · หลง.\nWrite exactly 3 lines.\nYour flourish: Use two words of 7 letters or more.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Thai. No title, no notes, no explanation."
+   ],
+   "verse": "Curtain rises on this rhyme,\nLove and light, I claim tonight's time.\nChaos of sound you call—",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "spells",
+     "met": false,
+     "detail": "CURTAIN · LOVE · CHAOS"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 9,
+   "drafts": [
+    {
+     "raw": "# Curtain rises on this rhyme,\n**Love** and **light**, I claim tonight's time.\n**Chaos** of sound you call—  \nmy voice shatters each dark wall.\n\n*Acrostic form? Let's parse:*\n\nThe instruction: \"Form: Acrostic. One line per word: the lines must open, in order, with รัก · ชัง · หลง.\"\nThai characters for love (รัก), ch",
+     "tidy": "Curtain rises on this rhyme,\nLove and light, I claim tonight's time.\nChaos of sound you call—",
+     "ms": 1780,
+     "tokens": 94,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 7,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 9
+    }
+   ]
+  },
+  {
+   "seed": 1001,
+   "roundIndex": 1,
+   "formId": "crescendo",
+   "difficulty": "apprentice",
+   "card": "Christina Rossetti",
+   "acrostic": null,
+   "relicWords": [
+    "แหวน",
+    "คำสาบาน",
+    "ราตรี",
+    "เนรเทศ",
+    "จุมพิต"
+   ],
+   "answering": "ขุนหาญห้าวแหนบาท\nสระทุกข์ราษฎร์รอนเสี้ยน",
+   "prompt": [
+    "You are Christina Rossetti in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Remember me when I am gone away, gone far away into the silent land.\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Give every line the same number of words.\nWork in at least two of these words: แหวน, คำสาบาน, ราตรี, เนรเทศ, จุมพิต.\nYour challenger last said:\nขุนหาญห้าวแหนบาท\nสระทุกข์ราษฎร์รอนเสี้ยน\nAnswer them.\nWrite only the verse, in Thai. No title, no notes, no explanation."
+   ],
+   "verse": "Remember me when I am gone away,\nGone far away into the silent land,\nWith my heart bound by oath, dear friend,",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "growing",
+     "met": false,
+     "detail": "7 < 7 < 8"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "Remember me when I am gone away,\nGone far away into the silent land,\nWith my heart bound by oath, dear friend,\n\nIn twilight's hush, where shadows fall,\nMy name will echo through the night,\nAnd none shall claim the crown I bear—\nIn exile's glow, my spirit stays.\n\nBut wait—need to check word count per line:\n\nLine 1: \"Remember me when I am gone away,\" (7 words?) Let's",
+     "tidy": "Remember me when I am gone away,\nGone far away into the silent land,\nWith my heart bound by oath, dear friend,",
+     "ms": 1832,
+     "tokens": 94,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 9,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1001,
+   "roundIndex": 2,
+   "formId": "epistrophe",
+   "difficulty": "apprentice",
+   "card": "Ariel",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "ขุนหาญห้าวแหนบาท\nสระทุกข์ราษฎร์รอนเสี้ยน",
+   "prompt": [
+    "You are Ariel in a duel of verses: theatrical, sharp, in character. Your line in the play: \"All hail, great master! Grave sir, hail!\" You write short verse and nothing else.",
+    "Form: Epistrophe. Three lines that all end on the same word.\nWrite exactly 3 lines.\nYour flourish: Make your last line your longest.\nYour challenger last said:\nขุนหาญห้าวแหนบาท\nสระทุกข์ราษฎร์รอนเสี้ยน\nAnswer them.\nWrite only the verse, in Thai. No title, no notes, no explanation."
+   ],
+   "verse": "All hail, master, from this form of epistrophe three lines where every line ends with the same word\nI raise my voice upon the syllables of each term as they echo like stones in rain\nThe blade of each move is a thread that binds and releases within the circle of our contest",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-ending",
+     "met": false,
+     "detail": "word · rain · contest"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": true,
+   "craft": 9,
+   "drafts": [
+    {
+     "raw": "All hail, master, from this form of epistrophe three lines where every line ends with the same word\n\nI raise my voice upon the syllables of each term as they echo like stones in rain  \nThe blade of each move is a thread that binds and releases within the circle of our contest  \nHail!\n\nBut we need three lines ending with the same word, not that phrase.\n\nLet me craft:\n\nLine one ends with \"shavin\" perhaps",
+     "tidy": "All hail, master, from this form of epistrophe three lines where every line ends with the same word\nI raise my voice upon the syllables of each term as they echo like stones in rain\nThe blade of each move is a thread that binds and releases within the circle of our contest",
+     "ms": 1773,
+     "tokens": 94,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 7,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 9
+    }
+   ]
+  },
+  {
+   "seed": 1002,
+   "roundIndex": 0,
+   "formId": "crescendo",
+   "difficulty": "player",
+   "card": "Lady Macbeth",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Lady Macbeth in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Come, you spirits that tend on mortal thoughts, unsex me here.\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Repeat one strong word three times.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Thai. No title, no notes, no explanation."
+   ],
+   "verse": "<think>We need to understand the user's request.\nThe user is asking (in a somewhat complicated way) something about forming a crescendo, three lines, each longer than the previous. They want exactly 3 lines, and their flourish: repeat one strong word three times. Open the duel: taunt your challenger. Write only the verse, in Thai. No title, no notes, no explanation.\nWe have to interpret the context: The user mentions \"",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "growing",
+     "met": false,
+     "detail": "8 < 52 < 9"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 9,
+   "drafts": [
+    {
+     "raw": "<think>We need to understand the user's request.\n\nThe user is asking (in a somewhat complicated way) something about forming a crescendo, three lines, each longer than the previous. They want exactly 3 lines, and their flourish: repeat one strong word three times. Open the duel: taunt your challenger. Write only the verse, in Thai. No title, no notes, no explanation.\n\nWe have to interpret the context: The user mentions \"",
+     "tidy": "<think>We need to understand the user's request.\nThe user is asking (in a somewhat complicated way) something about forming a crescendo, three lines, each longer than the previous. They want exactly 3 lines, and their flourish: repeat one strong word three times. Open the duel: taunt your challenger. Write only the verse, in Thai. No title, no notes, no explanation.\nWe have to interpret the context: The user mentions \"",
+     "ms": 1750,
+     "tokens": 94,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 9
+    },
+    {
+     "raw": "Come forth my fire and strike it fair,\nThorough as the night's own dark veil,  \nSpirit, I am bound to crown thy might.\n\nI shall not bend, nor sway, nor yield—  \nThree times 'treat' this task with fierce desire.\n\nFear my words now, for they will not fail.  \n\n\n\nWe must go on, or be defeated by fate! (Repeat: **faithful**, **fated**,",
+     "tidy": "Come forth my fire and strike it fair,\nThorough as the night's own dark veil,\nSpirit, I am bound to crown thy might.",
+     "ms": 1828,
+     "tokens": 94,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 7,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1002,
+   "roundIndex": 1,
+   "formId": "anaphora",
+   "difficulty": "apprentice",
+   "card": "Juliet",
+   "acrostic": null,
+   "relicWords": [
+    "หน้ากาก",
+    "ความฝัน",
+    "ตัวตลก",
+    "ละคร",
+    "จันทร์"
+   ],
+   "answering": "๏ บุญเจ้าจอมภพพื้น\nแผ่นสยาม\nแสยงพระยศยินขาม\nขาดแกล้ว",
+   "prompt": [
+    "You are Juliet in a duel of verses: theatrical, sharp, in character. Your line in the play: \"What's in a name? That which we call a rose...\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same word.\nWrite exactly 3 lines.\nYour flourish: Cry out: end a line with an exclamation mark.\nWork in at least two of these words: หน้ากาก, ความฝัน, ตัวตลก, ละคร, จันทร์.\nYour challenger last said:\n๏ บุญเจ้าจอมภพพื้น\nแผ่นสยาม\nแสยงพระยศยินขาม\nขาดแกล้ว\nAnswer them.\nWrite only the verse, in Thai. No title, no notes, no explanation."
+   ],
+   "verse": "What's in a name?! That which we call a rose,\nหน้ากาก ใส่ไว้ ข้างเดี๋ยว...\nความฝัน มีอยู่ในหัวใจ กอดด้วยจันทร์",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-opening",
+     "met": false,
+     "detail": "what's · หน้ากาก · ความ"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 12,
+   "drafts": [
+    {
+     "raw": "What's in a name?! That which we call a rose,\nหน้ากาก ใส่ไว้ ข้างเดี๋ยว...\nความฝัน มีอยู่ในหัวใจ กอดด้วยจันทร์\nตัวตลก ยิ้มออกมา ในบนท้องเรื่องย่าน\n\nWait, need exclamation marks on each line.\n\nLet me rewrite:\n\nLine 1: What's in a name?! That which we call a rose",
+     "tidy": "What's in a name?! That which we call a rose,\nหน้ากาก ใส่ไว้ ข้างเดี๋ยว...\nความฝัน มีอยู่ในหัวใจ กอดด้วยจันทร์",
+     "ms": 1835,
+     "tokens": 93,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 7,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 12
+    }
+   ]
+  },
+  {
+   "seed": 1002,
+   "roundIndex": 2,
+   "formId": "epistrophe",
+   "difficulty": "player",
+   "card": "Puck",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "๏ บุญเจ้าจอมภพพื้น\nแผ่นสยาม\nแสยงพระยศยินขาม\nขาดแกล้ว",
+   "prompt": [
+    "You are Puck in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Lord, what fools these mortals be!\" You write short verse and nothing else.",
+    "Form: Epistrophe. Three lines that all end on the same word.\nWrite exactly 3 lines.\nYour flourish: Start three words in one line with the same letter.\nYour challenger last said:\n๏ บุญเจ้าจอมภพพื้น\nแผ่นสยาม\nแสยงพระยศยินขาม\nขาดแกล้ว\nAnswer them.\nWrite only the verse, in Thai. No title, no notes, no explanation."
+   ],
+   "verse": "Lord, what fools these mortals be!\nEpistrophe, three lines, each ends with the word \"shine.\"\nI cast my blade and let the moon shine.",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-ending",
+     "met": false,
+     "detail": "be · shine · shine"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 9,
+   "drafts": [
+    {
+     "raw": "Lord, what fools these mortals be!\n\nEpistrophe, three lines, each ends with the word \"shine.\"\n\nI cast my blade and let the moon shine.\n\nMy sword is steel and I will make you shine.\n\nThe echo of death will cause this world to fade away from its own shine.\n\nThree lines ending with \"shine\". (Oops—need exact epiphora? Let's rewrite.)\n\nLet me craft:\n\nLine A: …\nLine B",
+     "tidy": "Lord, what fools these mortals be!\nEpistrophe, three lines, each ends with the word \"shine.\"\nI cast my blade and let the moon shine.",
+     "ms": 1830,
+     "tokens": 94,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 9,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 9
+    },
+    {
+     "raw": "Epistrophe form:\n\nI am but a humble blade,\nI seek the blade's bright name;\nThe blade we find is hard.\n\nLord — what fools these mortals be!\n[Wait, need to answer. I'll produce three lines ending with same word, first letters start same? Actually \"Start three words in one line with the same letter.\" Means in one line, start three words with same letter.]\n\nWe need to write exactly 3 lines",
+     "tidy": "Epistrophe form:\nI am but a humble blade,\nI seek the blade's bright name;",
+     "ms": 928,
+     "tokens": 94,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 7,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1003,
+   "roundIndex": 0,
+   "formId": "crescendo",
+   "difficulty": "master",
+   "card": "Malvolio",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Malvolio in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Some are born great, some achieve greatness, and some have greatness thrust upon them.\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Keep every line to 7 words or fewer.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Thai. No title, no notes, no explanation."
+   ],
+   "verse": "Crowned by fate I come with pride,\nBut you shall meet this stormed giant's eye—\nYour words will break like shells across me tide.",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": true,
+   "formEarned": 20,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "growing",
+     "met": true,
+     "detail": "7 < 8 < 9"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 20,
+   "drafts": [
+    {
+     "raw": "<think>We need to parse the user's request carefully.\n\nThe user says:\n\n\"Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Keep every line to 8? Actually they say 7 words or fewer.\"\n\nLet's read all instructions:\n\n- They want a duel of verses. As Malvolio (the persona). His line in the play: \"Some are born great, some",
+     "tidy": "<think>We need to parse the user's request carefully.\nThe user says:\n\"Form: Crescendo. Three lines, each longer than the one before.",
+     "ms": 893,
+     "tokens": 94,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 7,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "Some claim it's destiny, fate's decree on stage,\nThen I command my voice to blaze with fire,\nYour folly meets the drum when night is drawn.\n\nChallenger crows, but note thy trembling tone:\nI'll mock thee now, and let wit be mine throne.\n\n\"Some are born great...\" — yet I show you why not!  \n(Three lines, each ≤7 words.) Wait—count carefully.\n\nLine1: \"Some claim",
+     "tidy": "Some claim it's destiny, fate's decree on stage,\nThen I command my voice to blaze with fire,\nYour folly meets the drum when night is drawn.",
+     "ms": 1033,
+     "tokens": 94,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 8,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "Crowned by fate I come with pride,  \nBut you shall meet this stormed giant's eye—  \nYour words will break like shells across me tide.\n\nYOU! THOSE WHO STAND TO SEEK VICTORY—  \nI CHANT THE ROAR OF MY OWN DYNASTY,  \nSHOULDER ON SHOULDERS, WE SHATTER THIS DAY!",
+     "tidy": "Crowned by fate I come with pride,\nBut you shall meet this stormed giant's eye—\nYour words will break like shells across me tide.",
+     "ms": 2529,
+     "tokens": 81,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 6,
+     "expectedLines": 3,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 20
+    }
+   ]
+  },
+  {
+   "seed": 1003,
+   "roundIndex": 1,
+   "formId": "epistrophe",
+   "difficulty": "master",
+   "card": "Hermes",
+   "acrostic": null,
+   "relicWords": [
+    "กะโหลก",
+    "ตลก",
+    "หลุมศพ",
+    "หัวเราะ",
+    "ธุลี"
+   ],
+   "answering": "พระฤทธิ์ดังฤทธิ์ราม\nรอนราพณ์ แลฤๅ",
+   "prompt": [
+    "You are Hermes in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Swift as thought, I carry the words of gods to mortal ears.\" You write short verse and nothing else.",
+    "Form: Epistrophe. Three lines that all end on the same word.\nWrite exactly 3 lines.\nYour flourish: Use two words of 7 letters or more.\nWork in at least two of these words: กะโหลก, ตลก, หลุมศพ, หัวเราะ, ธุลี.\nYour challenger last said:\nพระฤทธิ์ดังฤทธิ์ราม\nรอนราพณ์ แลฤๅ\nAnswer them.\nWrite only the verse, in Thai. No title, no notes, no explanation."
+   ],
+   "verse": "Epistrophe in Thai:\nผู้กล่าว ร้องเสียง แก้วต่าง? (no) Wait must match each line ends with same word.\nWe need three lines, each ending with same word. That word could be \"ศาล\"? Choose \"ร้าย\"? Let's pick \"ต่อ\" maybe. But also need to work in at least two Thai words: กะโหลก, ตลก, หลุมศพ, หัว",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-ending",
+     "met": false,
+     "detail": "thai · word · หัว"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": true,
+   "craft": 18,
+   "drafts": [
+    {
+     "raw": "<think>The user wants:\n\n- Write exactly 3 lines (short verse). The line (the prompt includes \"Swift as thought, I carry the words of gods to mortal ears.\") maybe we need to incorporate that? But they also gave specific constraints.\n\nConstraints:\n\n\"Form: Epistrophe. Three lines that all end on the same word.\nWrite exactly 3 lines.\nYour flourish: Use two words of 7 letters or more.\nWork in at least",
+     "tidy": "<think>The user wants:\nWrite exactly 3 lines (short verse). The line (the prompt includes \"Swift as thought, I carry the words of gods to mortal ears.\") maybe we need to incorporate that? But they also gave specific constraints.\nConstraints:",
+     "ms": 1945,
+     "tokens": 94,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 7,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 9
+    },
+    {
+     "raw": "```plaintext\nSwift as thought, I ride the wind,\nWord forged in fire, bold as fate's own,\nThe thunder rolls when it knows its tone—\nแต่ละครั้งเรียกลือและหัวเราะ,\n..\n```\nWait — must be three lines, each ending with same word. Also need two words of 7+ letters (Thai characters count? Need at least two tokens/words length >=7). And incorporate at least",
+     "tidy": "plaintext\nSwift as thought, I ride the wind,\nWord forged in fire, bold as fate's own,",
+     "ms": 1825,
+     "tokens": 93,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 8,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 9
+    },
+    {
+     "raw": "Epistrophe in Thai:\n\nผู้กล่าว ร้องเสียง แก้วต่าง? (no) Wait must match each line ends with same word.\n\nWe need three lines, each ending with same word. That word could be \"ศาล\"? Choose \"ร้าย\"? Let's pick \"ต่อ\" maybe. But also need to work in at least two Thai words: กะโหลก, ตลก, หลุมศพ, หัว",
+     "tidy": "Epistrophe in Thai:\nผู้กล่าว ร้องเสียง แก้วต่าง? (no) Wait must match each line ends with same word.\nWe need three lines, each ending with same word. That word could be \"ศาล\"? Choose \"ร้าย\"? Let's pick \"ต่อ\" maybe. But also need to work in at least two Thai words: กะโหลก, ตลก, หลุมศพ, หัว",
+     "ms": 1851,
+     "tokens": 94,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 18
+    }
+   ]
+  },
+  {
+   "seed": 1003,
+   "roundIndex": 2,
+   "formId": "anaphora",
+   "difficulty": "player",
+   "card": "Prospero",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "พระฤทธิ์ดังฤทธิ์ราม\nรอนราพณ์ แลฤๅ",
+   "prompt": [
+    "You are Prospero in a duel of verses: theatrical, sharp, in character. Your line in the play: \"We are such stuff as dreams are made on.\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same word.\nWrite exactly 3 lines.\nYour flourish: Make your last line your longest.\nYour challenger last said:\nพระฤทธิ์ดังฤทธิ์ราม\nรอนราพณ์ แลฤๅ\nAnswer them.\nWrite only the verse, in Thai. No title, no notes, no explanation."
+   ],
+   "verse": "We are such stuff as dreams are made upon,\nAnd every star is but a flicker, fleeting, bright—\nSo let the world be wired by our will, not by night.",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-opening",
+     "met": false,
+     "detail": "we · and · so"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 9,
+   "drafts": [
+    {
+     "raw": "We are such stuff as dreams are made upon,\nAnd every star is but a flicker, fleeting, bright—\nSo let the world be wired by our will, not by night.\n\nBut hold on—your phrase is in Thai; I need to match its meaning.\n\nThe user asks: \"Write exactly 3 lines. Your flourish: Make your last line your longest. Write only the verse, in Thai. No title, no notes, no explanation",
+     "tidy": "We are such stuff as dreams are made upon,\nAnd every star is but a flicker, fleeting, bright—\nSo let the world be wired by our will, not by night.",
+     "ms": 1801,
+     "tokens": 94,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 5,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 9
+    },
+    {
+     "raw": "<think>The user says:\n\n\"Form: Anaphora. Three lines that all begin with the same word.\nWrite exactly 3 lines.\nYour flourish: Make your last line your longest.\nYour challenger last said:\nพระฤทธิ์ดังฤทธิ์ราม\nรอนราพณ์ แลฤๅ\nAnswer them.\nWrite only the verse, in Thai. No title, no notes, no explanation.\"\n\nInterpretation: The user wants",
+     "tidy": "<think>The user says:\n\"Form: Anaphora. Three lines that all begin with the same word.\nWrite exactly 3 lines.",
+     "ms": 2033,
+     "tokens": 94,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 10,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1004,
+   "roundIndex": 0,
+   "formId": "acrostic",
+   "difficulty": "player",
+   "card": "Prospero",
+   "acrostic": "รัก ชัง หลง",
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Prospero in a duel of verses: theatrical, sharp, in character. Your line in the play: \"We are such stuff as dreams are made on.\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per word: the lines must open, in order, with รัก · ชัง · หลง.\nWrite exactly 3 lines.\nYour flourish: Make your last line your longest.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Thai. No title, no notes, no explanation."
+   ],
+   "verse": "We stand upon what dreams of love have spun,\nCheng? (must be)... Wait, need words open each line with the letters รัก ชัง หลง.\nLet's craft Thai acrostic where first character of each line is the corresponding letter? But they said one line per word: the lines must open, in order, with รัก · ชัง · หลง. That seems like three lines starting with those Thai",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "spells",
+     "met": false,
+     "detail": "WE · CHENG · LET'S"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": true,
+   "craft": 12,
+   "drafts": [
+    {
+     "raw": "(Verse — three lines)\n\nWe stand upon what dreams of love have spun,\nCheng? (must be)... Wait, need words open each line with the letters รัก ชัง หลง.\n\nLet's craft Thai acrostic where first character of each line is the corresponding letter? But they said one line per word: the lines must open, in order, with รัก · ชัง · หลง. That seems like three lines starting with those Thai",
+     "tidy": "We stand upon what dreams of love have spun,\nCheng? (must be)... Wait, need words open each line with the letters รัก ชัง หลง.\nLet's craft Thai acrostic where first character of each line is the corresponding letter? But they said one line per word: the lines must open, in order, with รัก · ชัง · หลง. That seems like three lines starting with those Thai",
+     "ms": 1842,
+     "tokens": 93,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 4,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 12
+    },
+    {
+     "raw": "We rise like fire beneath the moonlit dome,\nYour pride shall crumble when love ignites my flame,\nLord of darkness you, beware the chain I cast —\nThus ends this match, where truth will finally last.\n\nBut fear not, for I declare—my words have spun:\nIn every echo of sighs, my power has won.\n---\n\n**Last line (longest):**  \n*In every echo of sighs, my power has won.* \n\nWait",
+     "tidy": "We rise like fire beneath the moonlit dome,\nYour pride shall crumble when love ignites my flame,\nLord of darkness you, beware the chain I cast —",
+     "ms": 1752,
+     "tokens": 94,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 10,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1004,
+   "roundIndex": 1,
+   "formId": "crescendo",
+   "difficulty": "apprentice",
+   "card": "Banquo",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "๏ พระเสด็จลดเลี้ยวเที่ยวชม มีมโนภิรมย์แจ่มใส\nเปลวปล่องท้องถ้ำอำไพ พื้นลาดดาดไปด้วยเงินงาม",
+   "prompt": [
+    "You are Banquo in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Thou shalt get kings, though thou be none.\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Repeat one strong word three times.\nYour challenger last said:\n๏ พระเสด็จลดเลี้ยวเที่ยวชม มีมโนภิรมย์แจ่มใส\nเปลวปล่องท้องถ้ำอำไพ พื้นลาดดาดไปด้วยเงินงาม\nAnswer them.\nWrite only the verse, in Thai. No title, no notes, no explanation."
+   ],
+   "verse": "text\nRise as king or fall as clay,\nYet crowns may crown without your name;",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "growing",
+     "met": false,
+     "detail": "1 < 7 < 7"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "```text\nRise as king or fall as clay,\nYet crowns may crown without your name;\nIn silence shout and claim the throne.\n```\nWait—need three lines, each longer than previous, and repeat one strong word three times. Need to craft properly.\n\nLet's design:\n\nLine1 (shortest)\nLine2 (longer)\nLine3 (longest)\n\nEach line > previous length. Also need to include a flourish: \"Repeat one strong",
+     "tidy": "text\nRise as king or fall as clay,\nYet crowns may crown without your name;",
+     "ms": 1803,
+     "tokens": 94,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 11,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1004,
+   "roundIndex": 2,
+   "formId": "epistrophe",
+   "difficulty": "apprentice",
+   "card": "Brutus",
+   "acrostic": null,
+   "relicWords": [
+    "กริช",
+    "เลือด",
+    "นิทรา",
+    "ภาพลวง",
+    "มือ"
+   ],
+   "answering": "๏ พระเสด็จลดเลี้ยวเที่ยวชม มีมโนภิรมย์แจ่มใส\nเปลวปล่องท้องถ้ำอำไพ พื้นลาดดาดไปด้วยเงินงาม",
+   "prompt": [
+    "You are Brutus in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Not that I loved Caesar less, but that I loved Rome more.\" You write short verse and nothing else.",
+    "Form: Epistrophe. Three lines that all end on the same word.\nWrite exactly 3 lines.\nYour flourish: Call on a character by name.\nWork in at least two of these words: กริช, เลือด, นิทรา, ภาพลวง, มือ.\nYour challenger last said:\n๏ พระเสด็จลดเลี้ยวเที่ยวชม มีมโนภิรมย์แจ่มใส\nเปลวปล่องท้องถ้ำอำไพ พื้นลาดดาดไปด้วยเงินงาม\nAnswer them.\nWrite only the verse, in Thai. No title, no notes, no explanation."
+   ],
+   "verse": "Call upon Severo, brave poet of fire.\nIn thy gaze, the blade of คริสต์ (กริช) glints,\nAnd th’ eyes that bleed, the night’s fierce blood,",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-ending",
+     "met": false,
+     "detail": "fire · glints · blood"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "Call upon Severo, brave poet of fire.\n\nIn thy gaze, the blade of คริสต์ (กริช) glints,\nAnd th’ eyes that bleed, the night’s fierce blood,\nReveal the mask of Niroda in light,\n\nA phantom image, shimmering on the hill,\nWhere sweat drips, my hand—the iron will—\nForces the foe to taste his own fate’s glow.\n\n---\n\nBut wait",
+     "tidy": "Call upon Severo, brave poet of fire.\nIn thy gaze, the blade of คริสต์ (กริช) glints,\nAnd th’ eyes that bleed, the night’s fierce blood,",
+     "ms": 1869,
+     "tokens": 92,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 9,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1005,
+   "roundIndex": 0,
+   "formId": "anaphora",
+   "difficulty": "master",
+   "card": "Cassius",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Cassius in a duel of verses: theatrical, sharp, in character. Your line in the play: \"The fault, dear Brutus, is not in our stars, but in ourselves.\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same word.\nWrite exactly 3 lines.\nYour flourish: Call on a character by name.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Thai. No title, no notes, no explanation."
+   ],
+   "verse": "From the mantle I will strike,\nFor Brutus dares to test my mind,\nAnd yet I hear his heart may turn—",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-opening",
+     "met": false,
+     "detail": "from · for · and"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": true,
+   "craft": 12,
+   "drafts": [
+    {
+     "raw": "From the mantle I will strike,  \nFor Brutus dares to test my mind,  \nAnd yet I hear his heart may turn—  \n\nFrom the moment he raised his sword,\nHis poisoned breath on air I sought,\nBut truth remains within his own soul.\n\nTai, Cassius, you smile at me now—\nI see the flaw you hide from view!",
+     "tidy": "From the mantle I will strike,\nFor Brutus dares to test my mind,\nAnd yet I hear his heart may turn—",
+     "ms": 1399,
+     "tokens": 75,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 8,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 12
+    },
+    {
+     "raw": "Cassius steps forward, fathomless stare,\n\"Say, dear Brutus, what's wrong within?\nIt lies deep inside—none shall escape,\nWhen we confront truth as it was forged;\nOh, how thy heart's own treach'ty design stains\nThis cause! The fault is not in the stars, Brutus—\nBut in us, like poison we invite:\nFor I shall end thee where reckon'd be.\"\n\nWait",
+     "tidy": "Cassius steps forward, fathomless stare,\n\"Say, dear Brutus, what's wrong within?\nIt lies deep inside—none shall escape,",
+     "ms": 1705,
+     "tokens": 94,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 9,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 12
+    },
+    {
+     "raw": "<think>We need to parse the user's request carefully.\n\nUser says:\n\n\"Form: Anaphora. Three lines that all begin with the same word.\nWrite exactly 3 lines.\nYour flourish: Call on a character by name.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Thai. No title, no notes, no explanation.\"\n\nThey also mention: \"You (as Cassius) in a duel of verses:",
+     "tidy": "<think>We need to parse the user's request carefully.\nUser says:\n\"Form: Anaphora. Three lines that all begin with the same word.",
+     "ms": 1725,
+     "tokens": 94,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 8,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1005,
+   "roundIndex": 1,
+   "formId": "epistrophe",
+   "difficulty": "player",
+   "card": "Puck",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "เพดานดาราระย้าย้อย ทองทับประดับพลอยเรือนอร่าม\nอัจกลับแก้วมณีอัคคีตาม สว่างงามแวววับจับจินดา",
+   "prompt": [
+    "You are Puck in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Lord, what fools these mortals be!\" You write short verse and nothing else.",
+    "Form: Epistrophe. Three lines that all end on the same word.\nWrite exactly 3 lines.\nYour flourish: Start three words in one line with the same letter.\nYour challenger last said:\nเพดานดาราระย้าย้อย ทองทับประดับพลอยเรือนอร่าม\nอัจกลับแก้วมณีอัคคีตาม สว่างงามแวววับจับจินดา\nAnswer them.\nWrite only the verse, in Thai. No title, no notes, no explanation."
+   ],
+   "verse": "Lord, I stand before the fray of words, my voice a blade of fire,\nAnd here the rhyme we wield, as epistrophy is done, in triune refrain, each line ends where it should begin—on the word \"gleam\" when twilight comes to claim,\nThe third must share that final note; but first, three lines, short and swift.",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-ending",
+     "met": false,
+     "detail": "fire · claim · swift"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 9,
+   "drafts": [
+    {
+     "raw": "Lord, I stand before the fray of words, my voice a blade of fire,\nAnd here the rhyme we wield, as epistrophy is done, in triune refrain, each line ends where it should begin—on the word \"gleam\" when twilight comes to claim,\nThe third must share that final note; but first, three lines, short and swift.\n\nNow, your challenge: Write exactly three lines. Start three words in one",
+     "tidy": "Lord, I stand before the fray of words, my voice a blade of fire,\nAnd here the rhyme we wield, as epistrophy is done, in triune refrain, each line ends where it should begin—on the word \"gleam\" when twilight comes to claim,\nThe third must share that final note; but first, three lines, short and swift.",
+     "ms": 1702,
+     "tokens": 94,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 4,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 9
+    },
+    {
+     "raw": "<think>We need to parse the user's request.\n\nUser says:\n\n\"Form: Epistrophe. Three lines that all end on the same word.\nWrite exactly 3 lines.\nYour flourish: Start three words in one line with the same letter.\nYour challenger last said:\nเพดานดาราระย้าย้อย ทองทับประดับพลอยเรือนอร่าม\nอัจกลบแก้วมณีอัคคีตาม สว",
+     "tidy": "<think>We need to parse the user's request.\nUser says:\n\"Form: Epistrophe. Three lines that all end on the same word.",
+     "ms": 1787,
+     "tokens": 94,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 8,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 9
+    }
+   ]
+  },
+  {
+   "seed": 1005,
+   "roundIndex": 2,
+   "formId": "crescendo",
+   "difficulty": "player",
+   "card": "Elizabeth Barrett Browning",
+   "acrostic": null,
+   "relicWords": [
+    "น้ำตา",
+    "ความจริง",
+    "ลูกสาว",
+    "ความว่างเปล่า",
+    "หัวใจ"
+   ],
+   "answering": "เพดานดาราระย้าย้อย ทองทับประดับพลอยเรือนอร่าม\nอัจกลับแก้วมณีอัคคีตาม สว่างงามแวววับจับจินดา",
+   "prompt": [
+    "You are Elizabeth Barrett Browning in a duel of verses: theatrical, sharp, in character. Your line in the play: \"How do I love thee? Let me count the ways.\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Give every line the same number of words.\nWork in at least two of these words: น้ำตา, ความจริง, ลูกสาว, ความว่างเปล่า, หัวใจ.\nYour challenger last said:\nเพดานดาราระย้าย้อย ทองทับประดับพลอยเรือนอร่าม\nอัจกลับแก้วมณีอัคคีตาม สว่างงามแวววับจับจินดา\nAnswer them.\nWrite only the verse, in Thai. No title, no notes, no explanation."
+   ],
+   "verse": "How do I love thee?\nLet me count the ways—my heart a raging tide, my soul drenched in night’s own lullaby, unbound from loss, where น้ำตา fall like pearls upon my trembling skin.\nI adore thee with ความจริง, the truth that splits the moonlit sky; I’ll speak the ลูกสาว’s sigh as if it were my own breath on",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "growing",
+     "met": false,
+     "detail": "5 < 29 < 26"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 12,
+   "drafts": [
+    {
+     "raw": "How do I love thee?\nLet me count the ways—\nIn every beat of my heart,\nThe tears that flow like oceans,\nThe truth I confess, pure—  \nMy soul, unchosen, I whisper.\n\nBut he wrote in a riddle's tongue:\n\"Peak floors moved, the gates of night— / My glassy jade glows so bright; /\"\nI answer not with soundless chuckle,\nYet feel the hollow space between",
+     "tidy": "How do I love thee?\nLet me count the ways—\nIn every beat of my heart,",
+     "ms": 1714,
+     "tokens": 93,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 10,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "How do I love thee?  \nLet me count the ways—my heart a raging tide, my soul drenched in night’s own lullaby, unbound from loss, where **น้ำตา** fall like pearls upon my trembling skin.  \n\nI adore thee with **ความจริง**, the truth that splits the moonlit sky; I’ll speak the **ลูกสาว**’s sigh as if it were my own breath on",
+     "tidy": "How do I love thee?\nLet me count the ways—my heart a raging tide, my soul drenched in night’s own lullaby, unbound from loss, where น้ำตา fall like pearls upon my trembling skin.\nI adore thee with ความจริง, the truth that splits the moonlit sky; I’ll speak the ลูกสาว’s sigh as if it were my own breath on",
+     "ms": 1831,
+     "tokens": 94,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 12
+    }
+   ]
+  },
+  {
+   "seed": 1006,
+   "roundIndex": 0,
+   "formId": "crescendo",
+   "difficulty": "master",
+   "card": "Elizabeth Barrett Browning",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Elizabeth Barrett Browning in a duel of verses: theatrical, sharp, in character. Your line in the play: \"How do I love thee? Let me count the ways.\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Give every line the same number of words.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Thai. No title, no notes, no explanation."
+   ],
+   "verse": "Of thy heart’s soft sigh I vow my love,\nTwo towers rise like volleyed swords in the night,\nA kiss of venom from thee I’ll not cease.",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "growing",
+     "met": false,
+     "detail": "9 < 9 < 9"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": true,
+   "craft": 12,
+   "drafts": [
+    {
+     "raw": "Of thy heart’s soft sigh I vow my love,\nTwo towers rise like volleyed swords in the night,\nA kiss of venom from thee I’ll not cease.\n\n(Three lines; each line has six words?) Wait—need equal word count.\n\nLet me recount.\n\nLine1: \"Of thy heart’s soft sigh I vow my love,\" — that's 8? Let's count precisely.\n\nI'll rewrite with exact counts.\n\nFirst line (6 words):",
+     "tidy": "Of thy heart’s soft sigh I vow my love,\nTwo towers rise like volleyed swords in the night,\nA kiss of venom from thee I’ll not cease.",
+     "ms": 1745,
+     "tokens": 94,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 8,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 12
+    },
+    {
+     "raw": "But I am none to speak or call thy name,\nThy heart's own measure beats where angels roam,\nAnd in my vow I pledge the endless flame.\n\nWait—three lines? First line has many words; need equal word counts per line. Must be Thai. Hmm.\n\nLet's craft three lines in Thai, each with same number of words (counting spaces?). In Thai, spacing is flexible but we can assume word separation by spaces. Need exactly three lines",
+     "tidy": "But I am none to speak or call thy name,\nThy heart's own measure beats where angels roam,\nAnd in my vow I pledge the endless flame.",
+     "ms": 1675,
+     "tokens": 94,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 5,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "Crisp and clear, my lord, hear this tone so true,\nA river's swell across the hills I feel today,\nAnd let me speak in rhyme while I give you every view.\n\nYour breath is soft, my lady, like dawn's first light,\nI trace its curve with hand, but no more to be sight—\n(Repeat third line unchanged)\n\nPardon, fair brow, yet hear me sing these parts:\nA love that danced",
+     "tidy": "Crisp and clear, my lord, hear this tone so true,\nA river's swell across the hills I feel today,\nAnd let me speak in rhyme while I give you every view.",
+     "ms": 1763,
+     "tokens": 94,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 8,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1006,
+   "roundIndex": 1,
+   "formId": "epistrophe",
+   "difficulty": "master",
+   "card": "Prospero",
+   "acrostic": null,
+   "relicWords": [
+    "พายุ",
+    "มนตร์",
+    "ไม้เท้า",
+    "เกาะ",
+    "จมน้ำ"
+   ],
+   "answering": "๏ ขอถวายภิวาทนศาสดาดิลกธรรม์\nทั่วสงฆ์อันทรงสรรพ์\nคุณา",
+   "prompt": [
+    "You are Prospero in a duel of verses: theatrical, sharp, in character. Your line in the play: \"We are such stuff as dreams are made on.\" You write short verse and nothing else.",
+    "Form: Epistrophe. Three lines that all end on the same word.\nWrite exactly 3 lines.\nYour flourish: Make your last line your longest.\nWork in at least two of these words: พายุ, มนตร์, ไม้เท้า, เกาะ, จมน้ำ.\nYour challenger last said:\n๏ ขอถวายภิวาทนศาสดาดิลกธรรม์\nทั่วสงฆ์อันทรงสรรพ์\nคุณา\nAnswer them.\nWrite only the verse, in Thai. No title, no notes, no explanation."
+   ],
+   "verse": "We shall meet our match with skill so fine,\nAnd hold fast to truth through stormy skies of fire—\nLet each shout rise like thunder, fierce as fate’s own voice.",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-ending",
+     "met": false,
+     "detail": "fine · fire · voice"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 9,
+   "drafts": [
+    {
+     "raw": "We shall meet our match with skill so fine,\nAnd hold fast to truth through stormy skies of fire—\nLet each shout rise like thunder, fierce as fate’s own voice.\n\nWe are such stuff as dreams are made on,\nA whisper where the sea will swallow silent stone,\nBut here we stand upon shore, not lost nor jailed,\nOur hearts aloft, though wave may crash us one.\n\nEpistrophe repeats \"wave\" thrice,\nWith my charms",
+     "tidy": "We shall meet our match with skill so fine,\nAnd hold fast to truth through stormy skies of fire—\nLet each shout rise like thunder, fierce as fate’s own voice.",
+     "ms": 1876,
+     "tokens": 94,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 9,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 9
+    },
+    {
+     "raw": "We stand upon form's epistroph,\nEach line a rising wave of hope—\nNow this, the final blow,\nA storm of fate from shore, my thread.\n\nพายุ บ่มพระลอยแล้วหม่าน,\nมนตร ปล่อยแสงสีธรรม,\nไม้เท้า เกลื่งน้ำไปแล้ว,\nเกาะ สะท้อนฟืนอีกไม่ใด,\nจมน้ำ เป็นสรัพยус",
+     "tidy": "We stand upon form's epistroph,\nEach line a rising wave of hope—\nNow this, the final blow,",
+     "ms": 1924,
+     "tokens": 90,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 9,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "We stand as dreams take shape upon the stage,\nOur fate like waves upon a distant shore,\nYet we will wield the blade's own spirit within\n— the storm we face calls us to be more than still,\nAnd when the tide may drown our resolve, we rise anew.\n\nBut I must add: Let this epytraph (echo?) maybe you meant epistrophe with \"storm\" in Thai... We knowพายุ, มนตร°, ไม",
+     "tidy": "We stand as dreams take shape upon the stage,\nOur fate like waves upon a distant shore,\nYet we will wield the blade's own spirit within",
+     "ms": 1804,
+     "tokens": 94,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 6,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 9
+    }
+   ]
+  },
+  {
+   "seed": 1006,
+   "roundIndex": 2,
+   "formId": "anaphora",
+   "difficulty": "apprentice",
+   "card": "Percy Bysshe Shelley",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "๏ ขอถวายภิวาทนศาสดาดิลกธรรม์\nทั่วสงฆ์อันทรงสรรพ์\nคุณา",
+   "prompt": [
+    "You are Percy Bysshe Shelley in a duel of verses: theatrical, sharp, in character. Your line in the play: \"If Winter comes, can Spring be far behind?\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same word.\nWrite exactly 3 lines.\nYour flourish: End your verse on the same word it began with.\nYour challenger last said:\n๏ ขอถวายภิวาทนศาสดาดิลกธรรม์\nทั่วสงฆ์อันทรงสรรพ์\nคุณา\nAnswer them.\nWrite only the verse, in Thai. No title, no notes, no explanation."
+   ],
+   "verse": "If winter comes, spring's delay feels deep,\nAnd autumn leaves will fall before,\nWhen dawn breaks—will you claim the bloom?",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-opening",
+     "met": false,
+     "detail": "if · and · when"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": true,
+   "craft": 9,
+   "drafts": [
+    {
+     "raw": "If winter comes, spring's delay feels deep,\nAnd autumn leaves will fall before,\nWhen dawn breaks—will you claim the bloom?\n\nBut I raise my voice to echo our fight:\nSpring awakes when shadows fade away,\nIf Winter’s cold does linger long.\n\n**Answer ends with \"If\"?** Wait—the prompt says end on the same word it began with. Let me adjust:\n\n*Revised line 1 begins with \"If\", line 2 must",
+     "tidy": "If winter comes, spring's delay feels deep,\nAnd autumn leaves will fall before,\nWhen dawn breaks—will you claim the bloom?",
+     "ms": 1716,
+     "tokens": 94,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 8,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 9
+    }
+   ]
+  },
+  {
+   "seed": 1007,
+   "roundIndex": 0,
+   "formId": "acrostic",
+   "difficulty": "master",
+   "card": "Lord Montague",
+   "acrostic": "ฟ้า ดิน น้ำ ลม",
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Lord Montague in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Many a morning hath he there been seen, with tears augmenting the fresh morning dew.\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per word: the lines must open, in order, with ฟ้า · ดิน · น้ำ · ลม.\nWrite exactly 4 lines.\nYour flourish: Repeat one strong word three times.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Thai. No title, no notes, no explanation."
+   ],
+   "verse": "Feathered winds may break the dawn\nCloudless sky above the town\nMorning dew upon silent stone\nLightning strikes tonight's plain",
+   "source": "model",
+   "lines": 4,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "4/4"
+    },
+    {
+     "id": "spells",
+     "met": false,
+     "detail": "FEATHERED · CLOUDLESS · MORNING · LIGHTNING"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": true,
+   "craft": 9,
+   "drafts": [
+    {
+     "raw": "FATHOMEN'S VOW\n\nฟ้า ดิน น้ำ ลม\n\nยิ้ม เสียง หัวใจ ทั้ง—\n\nไม่—\nสวัสดี!\n\n******\n\nRepeat one strong word three times.\n\nWe need to craft four lines (one line per word? The prompt says: \"Acrostic. One line per word: the lines must open, in order, with ฟ้า · ดิน · น้ำ · ลม.\" That's weird: \"One line per word\" - maybe they want each line to be a single word? But",
+     "tidy": "FATHOMEN'S VOW\nฟ้า ดิน น้ำ ลม\nยิ้ม เสียง หัวใจ ทั้ง—\nไม่—",
+     "ms": 2086,
+     "tokens": 116,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 8,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "```\nฟ้า ดิน น้ำ ลม,\nการรับจดด้วยหัวใจอย่างโอ้อวด\nยืนหยัดตามพื้นผิวของความว่าง\nแต่ใจมีแสนหลงโถลอยลงมาดัง\nฟ้า ดิน น้ำ ลม...\nฟ้า ดิน น้ำ ลม...\n```\n\n*Repeat:* \"แสน\" repeated three times? Wait, need strong word repeated three times—let's pick \"ฟ้า\". But each line starts with ФА! So use",
+     "tidy": "ฟ้า ดิน น้ำ ลม,\nการรับจดด้วยหัวใจอย่างโอ้อวด\nยืนหยัดตามพื้นผิวของความว่าง\nแต่ใจมีแสนหลงโถลอยลงมาดัง",
+     "ms": 2113,
+     "tokens": 115,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 9,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "Feathered winds may break the dawn  \nCloudless sky above the town  \nMorning dew upon silent stone  \nLightning strikes tonight's plain\n\nThe sun ascends for our duel, dear foe—  \n\nBut I shall answer when you draw near,\nLet thy words be soft; let thine heart feel tear.\n\nLord Montague:\n\"Many a morning hath he there been seen,\nwith tears augmenting the fresh morning dew.\"\nRepeat strong word three times?\n\nActually here the acrostic:\n\n**ฟ้า** — Cloud\n**ดิน** — Earth",
+     "tidy": "Feathered winds may break the dawn\nCloudless sky above the town\nMorning dew upon silent stone\nLightning strikes tonight's plain",
+     "ms": 2110,
+     "tokens": 116,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 116,
+     "rawLines": 14,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 9
+    }
+   ]
+  },
+  {
+   "seed": 1007,
+   "roundIndex": 1,
+   "formId": "crescendo",
+   "difficulty": "apprentice",
+   "card": "King Claudius",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "นบพรหมินทร์วชรินทรวิษณุศิวา\nรวิศศิดารา\nจำรัส",
+   "prompt": [
+    "You are King Claudius in a duel of verses: theatrical, sharp, in character. Your line in the play: \"My words fly up, my thoughts remain below.\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Ask a question: end a line with a question mark.\nYour challenger last said:\nนบพรหมินทร์วชรินทรวิษณุศิวา\nรวิศศิดารา\nจำรัส\nAnswer them.\nWrite only the verse, in Thai. No title, no notes, no explanation."
+   ],
+   "verse": "<think>We need to understand the request.\nUser says:\n\"Form: Crescendo. Three lines, each longer than the one before.",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "growing",
+     "met": false,
+     "detail": "7 < 2 < 10"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "<think>We need to understand the request.\n\nUser says:\n\n\"Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Ask a question: end a line with a question mark.\nYour challenger last said:\nนบพรหมินทร์วชรินทรวิษณุศิวา\nรวิศศิดารา\nจำรัส\nAnswer them.\nWrite only the verse, in Thai. No",
+     "tidy": "<think>We need to understand the request.\nUser says:\n\"Form: Crescendo. Three lines, each longer than the one before.",
+     "ms": 1701,
+     "tokens": 94,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 11,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1007,
+   "roundIndex": 2,
+   "formId": "anaphora",
+   "difficulty": "player",
+   "card": "Macbeth",
+   "acrostic": null,
+   "relicWords": [
+    "หน้ากาก",
+    "ความฝัน",
+    "ตัวตลก",
+    "ละคร",
+    "จันทร์"
+   ],
+   "answering": "นบพรหมินทร์วชรินทรวิษณุศิวา\nรวิศศิดารา\nจำรัส",
+   "prompt": [
+    "You are Macbeth in a duel of verses: theatrical, sharp, in character. Your line in the play: \"I dare do all that may become a man; who dares do more is none.\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same word.\nWrite exactly 3 lines.\nYour flourish: Repeat one strong word three times.\nWork in at least two of these words: หน้ากาก, ความฝัน, ตัวตลก, ละคร, จันทร์.\nYour challenger last said:\nนบพรหมินทร์วชรินทรวิษณุศิวา\nรวิศศิดารา\nจำรัส\nAnswer them.\nWrite only the verse, in Thai. No title, no notes, no explanation."
+   ],
+   "verse": "<think>We need to parse the user's request carefully.\nThe user says: \"Form: Anaphora. Three lines that all begin with the same word. Write exactly 3 lines. Your flourish: Repeat one strong word three times. Work in at least two of these words: หน้ากาก, ความฝัน, ตัวตลก, ละคร, จันทร์. Your challenger last said:\nนบพรหมินทร์วชรินทรวิษ",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-opening",
+     "met": false,
+     "detail": "think · the · นบ"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 18,
+   "drafts": [
+    {
+     "raw": "<think>We need to parse the user's request carefully.\n\nThe user says: \"Form: Anaphora. Three lines that all begin with the same word. Write exactly 3 lines. Your flourish: Repeat one strong word three times. Work in at least two of these words: หน้ากาก, ความฝัน, ตัวตลก, ละคร, จันทร์. Your challenger last said:\n\nนบพรหมินทร์วชรินทรวิษ",
+     "tidy": "<think>We need to parse the user's request carefully.\nThe user says: \"Form: Anaphora. Three lines that all begin with the same word. Write exactly 3 lines. Your flourish: Repeat one strong word three times. Work in at least two of these words: หน้ากาก, ความฝัน, ตัวตลก, ละคร, จันทร์. Your challenger last said:\nนบพรหมินทร์วชรินทรวิษ",
+     "ms": 1795,
+     "tokens": 94,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 18
+    },
+    {
+     "raw": "<think>We need to produce exactly 3 lines, each beginning with the same word (anaphora). The line is about \"Macbeth\" presumably? The user says: \"Form: Anaphora. Three lines that all begin with the same word. Write exactly 3 lines. Your flourish: Repeat one strong word three times. Work in at least two of these words: หน้ากาก, ความฝัน, ตัวตลก, ละคร, จ",
+     "tidy": "<think>We need to produce exactly 3 lines, each beginning with the same word (anaphora). The line is about \"Macbeth\" presumably? The user says: \"Form: Anaphora. Three lines that all begin with the same word. Write exactly 3 lines. Your flourish: Repeat one strong word three times. Work in at least two of these words: หน้ากาก, ความฝัน, ตัวตลก, ละคร, จ",
+     "ms": 1785,
+     "tokens": 94,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 9
+    }
+   ]
+  },
+  {
+   "seed": 1008,
+   "roundIndex": 0,
+   "formId": "anaphora",
+   "difficulty": "master",
+   "card": "Bottom",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Bottom in a duel of verses: theatrical, sharp, in character. Your line in the play: \"I have had a most rare vision. I have had a dream, past the wit of man.\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same word.\nWrite exactly 3 lines.\nYour flourish: Start three words in one line with the same letter.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Thai. No title, no notes, no explanation."
+   ],
+   "verse": "“แม้ว่าเงินจะค่อยๆ ไหล สายตาอันกลับไป”\n“I am not yet ready to speak, but my eyes see the flow of coins.”\nWait—needs anaphora: three lines beginning with same word.",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-opening",
+     "met": false,
+     "detail": "แม้ว่า · i · wait"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 9,
+   "drafts": [
+    {
+     "raw": "Verse (Thai):\n“แม้ว่าเงินจะค่อยๆ ไหล สายตาอันกลับไป”\n“I am not yet ready to speak, but my eyes see the flow of coins.”\n\nWait—needs anaphora: three lines beginning with same word.\n\nLet me rewrite properly:\n\nLine1 starts with **K**...\nLine2 starts with **K**...\nLine3 starts with **K**...\n\nIn Thai, same starting letter?",
+     "tidy": "“แม้ว่าเงินจะค่อยๆ ไหล สายตาอันกลับไป”\n“I am not yet ready to speak, but my eyes see the flow of coins.”\nWait—needs anaphora: three lines beginning with same word.",
+     "ms": 1791,
+     "tokens": 94,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 9,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 9
+    },
+    {
+     "raw": "# In front of you lies a truth so vast,\nI've seen the heavens through my eyes,\nand now I whisper, \"Shall we end this fray?\"\n\nFirst line starts with L.\n\n— (my pen)  \n\nBut here is my claim, dear foe,\n\n*Three words start with S:*  \n\"Shadows sway as I am drawn near, / Silence rings when swords do clash, / My spirit's fire burns bright across the sky",
+     "tidy": "In front of you lies a truth so vast,\nI've seen the heavens through my eyes,\nand now I whisper, \"Shall we end this fray?\"",
+     "ms": 1851,
+     "tokens": 94,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 8,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "Sorrow sips my wine, yet bitter skies betray me;\nDespair drapes the hall where shadows softly sway;\nFate's grim flicker paints my tragic tale afar.\n\nStart three words in one line with the same letter:\nFirst line starts with \"S\", second with \"D\"? Wait—same letter across each start:\n\nActually requirement: *All three lines begin with the same word.* And within that line first three letters? Or start three",
+     "tidy": "Sorrow sips my wine, yet bitter skies betray me;\nDespair drapes the hall where shadows softly sway;\nFate's grim flicker paints my tragic tale afar.",
+     "ms": 1731,
+     "tokens": 94,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 6,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 9
+    }
+   ]
+  },
+  {
+   "seed": 1008,
+   "roundIndex": 1,
+   "formId": "acrostic",
+   "difficulty": "apprentice",
+   "card": "Miranda",
+   "acrostic": "ฟ้า ดิน น้ำ ลม",
+   "relicWords": [
+    "กริช",
+    "เลือด",
+    "นิทรา",
+    "ภาพลวง",
+    "มือ"
+   ],
+   "answering": "ออกจากวัดทัศนาดูอาวาส\nเมื่อตรุษสารทพระพรรษาได้อาศัย",
+   "prompt": [
+    "You are Miranda in a duel of verses: theatrical, sharp, in character. Your line in the play: \"O brave new world, that has such people in it!\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per word: the lines must open, in order, with ฟ้า · ดิน · น้ำ · ลม.\nWrite exactly 4 lines.\nYour flourish: Make your last line your longest.\nWork in at least two of these words: กริช, เลือด, นิทรา, ภาพลวง, มือ.\nYour challenger last said:\nออกจากวัดทัศนาดูอาวาส\nเมื่อตรุษสารทพระพรรษาได้อาศัย\nAnswer them.\nWrite only the verse, in Thai. No title, no notes, no explanation."
+   ],
+   "verse": "F้า ดิน น้ำ ลม\nกริช เลือด นิทรา ภาพลวง มือ\nอยู่ในแสงแดดตอนเช้า เสียงหัวเราะ กลัวไม่กลัว\nฉันพร้อมรับดuelนี้คุณทั้งสองท่าน",
+   "source": "model",
+   "lines": 4,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "4/4"
+    },
+    {
+     "id": "spells",
+     "met": false,
+     "detail": "F้า · กริช · อยู่ · ฉัน"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 12,
+   "drafts": [
+    {
+     "raw": "F้า ดิน น้ำ ลม\n\nกริช เลือด นิทรา ภาพลวง มือ\n\nอยู่ในแสงแดดตอนเช้า เสียงหัวเราะ กลัวไม่กลัว\n\nฉันพร้อมรับดuelนี้คุณทั้งสองท่าน\n\nยินดีที่จะนำฟ้าและดินมาเป็นพยาน\n\n(My flourish is the longest line.)",
+     "tidy": "F้า ดิน น้ำ ลม\nกริช เลือด นิทรา ภาพลวง มือ\nอยู่ในแสงแดดตอนเช้า เสียงหัวเราะ กลัวไม่กลัว\nฉันพร้อมรับดuelนี้คุณทั้งสองท่าน",
+     "ms": 1679,
+     "tokens": 91,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 6,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 12
+    }
+   ]
+  },
+  {
+   "seed": 1008,
+   "roundIndex": 2,
+   "formId": "crescendo",
+   "difficulty": "player",
+   "card": "Prince Escalus",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "ออกจากวัดทัศนาดูอาวาส\nเมื่อตรุษสารทพระพรรษาได้อาศัย",
+   "prompt": [
+    "You are Prince Escalus in a duel of verses: theatrical, sharp, in character. Your line in the play: \"If ever you disturb our streets again, your lives shall pay the forfeit of the peace.\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Turn a word of 4 letters or more from your opponent's last verse back on them.\nYour challenger last said:\nออกจากวัดทัศนาดูอาวาส\nเมื่อตรุษสารทพระพรรษาได้อาศัย\nAnswer them.\nWrite only the verse, in Thai. No title, no notes, no explanation."
+   ],
+   "verse": "I stand upon these ground where shadows fall,\nAnd shout that my sword is sharper than the rain,\nFor I will make the chanters turn their heads.",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "growing",
+     "met": false,
+     "detail": "8 < 10 < 9"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "I stand upon these ground where shadows fall,\nAnd shout that my sword is sharper than the rain,\nFor I will make the chanters turn their heads.\n\nThe phrase \"ออกจากวัดทัศนาดูอาวาส\" rises—\nLet me return it whole, as if I had stolen its thread:\n\nออกจากวัดทัศนาดูอาวาส\nเมื่อตรุษสารทพระพรษณะพระพรสารได้อาศัย",
+     "tidy": "I stand upon these ground where shadows fall,\nAnd shout that my sword is sharper than the rain,\nFor I will make the chanters turn their heads.",
+     "ms": 1746,
+     "tokens": 93,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 7,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "<think>We need to understand the user request.\n\nThe user says: \"Prince Escalus in a duel of verses: theatrical, sharp, in character. Your line in the play: 'If ever you disturb our streets again, your lives shall pay the forfeit of the peace.' You write short verse and nothing else.\"\n\nThen further: \"Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour",
+     "tidy": "<think>We need to understand the user request.\nThe user says: \"Prince Escalus in a duel of verses: theatrical, sharp, in character. Your line in the play: 'If ever you disturb our streets again, your lives shall pay the forfeit of the peace.' You write short verse and nothing else.\"\nThen further: \"Form: Crescendo. Three lines, each longer than the one before.",
+     "ms": 1821,
+     "tokens": 94,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 5,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1009,
+   "roundIndex": 0,
+   "formId": "epistrophe",
+   "difficulty": "apprentice",
+   "card": "Macbeth",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Macbeth in a duel of verses: theatrical, sharp, in character. Your line in the play: \"I dare do all that may become a man; who dares do more is none.\" You write short verse and nothing else.",
+    "Form: Epistrophe. Three lines that all end on the same word.\nWrite exactly 3 lines.\nYour flourish: Repeat one strong word three times.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Thai. No title, no notes, no explanation."
+   ],
+   "verse": "<think>We need to produce exactly 3 lines, in Thai (Thai script). The user gives a task:\nForm: Epistrophe. Three lines that all end on the same word.\nWrite exactly 3 lines.",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-ending",
+     "met": false,
+     "detail": "task · word · lines"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 9,
+   "drafts": [
+    {
+     "raw": "<think>We need to produce exactly 3 lines, in Thai (Thai script). The user gives a task:\n\n- Form: Epistrophe. Three lines that all end on the same word.\n- Write exactly 3 lines.\n- Flourish: Repeat one strong word three times.\n- Open the duel: taunt your challenger.\n- Write only the verse, in Thai. No title, no notes, no explanation.\n\nWe must also incorporate \"I",
+     "tidy": "<think>We need to produce exactly 3 lines, in Thai (Thai script). The user gives a task:\nForm: Epistrophe. Three lines that all end on the same word.\nWrite exactly 3 lines.",
+     "ms": 1773,
+     "tokens": 94,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 7,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 9
+    }
+   ]
+  },
+  {
+   "seed": 1009,
+   "roundIndex": 1,
+   "formId": "anaphora",
+   "difficulty": "apprentice",
+   "card": "Prospero",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "สามฤดูอยู่ดีไม่มีภัย\nมาจำไกลอารามเมื่อยามเย็น",
+   "prompt": [
+    "You are Prospero in a duel of verses: theatrical, sharp, in character. Your line in the play: \"We are such stuff as dreams are made on.\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same word.\nWrite exactly 3 lines.\nYour flourish: Make your last line your longest.\nYour challenger last said:\nสามฤดูอยู่ดีไม่มีภัย\nมาจำไกลอารามเมื่อยามเย็น\nAnswer them.\nWrite only the verse, in Thai. No title, no notes, no explanation."
+   ],
+   "verse": "We are such stuff as dreams are made upon,\nBut one may yet see what is within our own eyes;\nAnd so we meet, two hearts, as if to make it.",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-opening",
+     "met": false,
+     "detail": "we · but · and"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "We are such stuff as dreams are made upon,\nBut one may yet see what is within our own eyes;\nAnd so we meet, two hearts, as if to make it.\n\nThree lines, anaphora (same opening word), three lines total, last line longest.\nIn Thai:\n\nฉันเรียนว่านี้...\nNeed to craft: each line starts with identical word, e.g., \"We\" but in Thai. Use anaphora: first words",
+     "tidy": "We are such stuff as dreams are made upon,\nBut one may yet see what is within our own eyes;\nAnd so we meet, two hearts, as if to make it.",
+     "ms": 1817,
+     "tokens": 94,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 7,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1009,
+   "roundIndex": 2,
+   "formId": "acrostic",
+   "difficulty": "player",
+   "card": "Mary Shelley",
+   "acrostic": "ดาว เดือน ฟ้า",
+   "relicWords": [
+    "หน้ากาก",
+    "ความฝัน",
+    "ตัวตลก",
+    "ละคร",
+    "จันทร์"
+   ],
+   "answering": "สามฤดูอยู่ดีไม่มีภัย\nมาจำไกลอารามเมื่อยามเย็น",
+   "prompt": [
+    "You are Mary Shelley in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Beware; for I am fearless, and therefore powerful.\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per word: the lines must open, in order, with ดาว · เดือน · ฟ้า.\nWrite exactly 3 lines.\nYour flourish: End your verse on the same word it began with.\nWork in at least two of these words: หน้ากาก, ความฝัน, ตัวตลก, ละคร, จันทร์.\nYour challenger last said:\nสามฤดูอยู่ดีไม่มีภัย\nมาจำไกลอารามเมื่อยามเย็น\nAnswer them.\nWrite only the verse, in Thai. No title, no notes, no explanation."
+   ],
+   "verse": "Dาว เดือน ฟ้า\nหน้ากาก อิสระ ในความฝัน ที่ลูกหลาน รู้ว่า\nตัวตลก ทำไมถึงอยู่ในครั้ง นินนิ้ว คิดถึงจันทร์ ที่ฟื้นฟู",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "spells",
+     "met": false,
+     "detail": "Dาว · หน้ากาก · ตัว"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 12,
+   "drafts": [
+    {
+     "raw": "Dาว เดือน ฟ้า\n\nหน้ากาก อิสระ ในความฝัน ที่ลูกหลาน รู้ว่า\n\nตัวตลก ทำไมถึงอยู่ในครั้ง นินนิ้ว คิดถึงจันทร์ ที่ฟื้นฟู\n\nบ้าน ละคร เป็นบ้าน ที่ค่อยๆ ร้อง เพราะฉัน\n\nสามฤดู อยู่ดี ไม่มีภ",
+     "tidy": "Dาว เดือน ฟ้า\nหน้ากาก อิสระ ในความฝัน ที่ลูกหลาน รู้ว่า\nตัวตลก ทำไมถึงอยู่ในครั้ง นินนิ้ว คิดถึงจันทร์ ที่ฟื้นฟู",
+     "ms": 1831,
+     "tokens": 93,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 5,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 12
+    },
+    {
+     "raw": "Dาว\nเดือน\nฟ้า\nหน้ากาก\nความฝัน\nตัวตลก\nละคร\nจันทร์\nเรื่องราวคือความกล้าหาญที่ไม่หวัง ความกลัว? لا ฉันตื่นเต้นอย่างกล้าหาญ และ powerful คือ... ดาว\n\nWait, need to meet constraints:\n\n- Short verse (exactly 3 lines).\n- Acrostic: one line per word?",
+     "tidy": "Dาว\nเดือน\nฟ้า",
+     "ms": 1804,
+     "tokens": 93,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 12,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1010,
+   "roundIndex": 0,
+   "formId": "anaphora",
+   "difficulty": "player",
+   "card": "The Sonnet Man",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are The Sonnet Man in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Shall I compare thee to a summer's day?\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same word.\nWrite exactly 3 lines.\nYour flourish: End your verse on the same word it began with.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Thai. No title, no notes, no explanation."
+   ],
+   "verse": "Eternal night descends upon the stage,\nStars ignite the heavens with my own fire,\nLights flicker brightly as I declare defeat.",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-opening",
+     "met": false,
+     "detail": "eternal · stars · lights"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "Eternal night descends upon the stage,\nStars ignite the heavens with my own fire,\nLights flicker brightly as I declare defeat.\n\nBut you must respond or I shall strike tonight—  \nLet us see whose voice is louder when the echo fades?  \nSpeak, challenger, will you answer with strength or sigh?\n\nWait—no! The challenge is yours, but here lies the line:\n\nSilence falls like thunder over the",
+     "tidy": "Eternal night descends upon the stage,\nStars ignite the heavens with my own fire,\nLights flicker brightly as I declare defeat.",
+     "ms": 1830,
+     "tokens": 94,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 8,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "Summer? \nLet me ask not a question,\nbut challenge you to outshine—\nthe sun’s own blaze, my son!\n\nBut wait—my words must start with 'Summer' again.\n\nOh! I begin, yet cannot match:\n\n'the fire of thy eyes will melt—'\n\nNo! I misplaced the opening.  \nFrom anaphora three lines start the same word; each ends on \"Summer\".  \nWrite in Thai.  \n\n---\n\nWe need",
+     "tidy": "Summer?\nLet me ask not a question,\nbut challenge you to outshine—",
+     "ms": 1806,
+     "tokens": 94,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 12,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1010,
+   "roundIndex": 1,
+   "formId": "epistrophe",
+   "difficulty": "player",
+   "card": "Lady Macbeth",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "โอ้อาวาสราชบุรณะพระวิหาร\nแต่นี้นานนับทิวาจะมาเห็น",
+   "prompt": [
+    "You are Lady Macbeth in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Come, you spirits that tend on mortal thoughts, unsex me here.\" You write short verse and nothing else.",
+    "Form: Epistrophe. Three lines that all end on the same word.\nWrite exactly 3 lines.\nYour flourish: Repeat one strong word three times.\nYour challenger last said:\nโอ้อาวาสราชบุรณะพระวิหาร\nแต่นี้นานนับทิวาจะมาเห็น\nAnswer them.\nWrite only the verse, in Thai. No title, no notes, no explanation."
+   ],
+   "verse": "Come, you spirits that tend on mortal thoughts,\nUnsex me, O, death,—let your eyes be my guide;\nLet fate's unsteady hand do my will, or my— [no]",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-ending",
+     "met": false,
+     "detail": "thoughts · guide · no"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "Come, you spirits that tend on mortal thoughts,\nUnsex me, O, **death**,—let your eyes be my guide;\nLet fate's unsteady hand do **my** will, or **my**— *[no]*\n\nWait I must obey the instruction: three lines, each ending with the same word (epitaph? epistrophe? they want all three lines to end with the same word). Also include flourish: repeat one",
+     "tidy": "Come, you spirits that tend on mortal thoughts,\nUnsex me, O, death,—let your eyes be my guide;\nLet fate's unsteady hand do my will, or my— [no]",
+     "ms": 1790,
+     "tokens": 94,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 4,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "<think>We need to parse the user's request.\n\nUser says:\n\n\"Form: Epistrophe. Three lines that all end on the same word.\nWrite exactly 3 lines.\nYour flourish: Repeat one strong word three times.\nYour challenger last said:\nโอ้อาวาสราชบุรณะพระวิหาร\nแต่นี้นานนับทิวาจะมาเห็น\nAnswer them.\nWrite only the verse, in Thai. No title, no notes,",
+     "tidy": "<think>We need to parse the user's request.\nUser says:\n\"Form: Epistrophe. Three lines that all end on the same word.",
+     "ms": 1757,
+     "tokens": 94,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 10,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1010,
+   "roundIndex": 2,
+   "formId": "crescendo",
+   "difficulty": "master",
+   "card": "Mary Shelley",
+   "acrostic": null,
+   "relicWords": [
+    "กริช",
+    "เลือด",
+    "นิทรา",
+    "ภาพลวง",
+    "มือ"
+   ],
+   "answering": "โอ้อาวาสราชบุรณะพระวิหาร\nแต่นี้นานนับทิวาจะมาเห็น",
+   "prompt": [
+    "You are Mary Shelley in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Beware; for I am fearless, and therefore powerful.\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: End your verse on the same word it began with.\nWork in at least two of these words: กริช, เลือด, นิทรา, ภาพลวง, มือ.\nYour challenger last said:\nโอ้อาวาสราชบุรณะพระวิหาร\nแต่นี้นานนับทิวาจะมาเห็น\nAnswer them.\nWrite only the verse, in Thai. No title, no notes, no explanation."
+   ],
+   "verse": "Beware, my brave challenge dares to rise,\nWith power that turns the heavens into fire,\nI stand as ghost of pain—my gaze is not yet to fray.",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": true,
+   "formEarned": 20,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "growing",
+     "met": true,
+     "detail": "7 < 8 < 13"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": true,
+   "craft": 30,
+   "drafts": [
+    {
+     "raw": "Beware; for I am fearless,\nand power flows like blood,\na vision that never wanes—fearless.\n\nBut you must meet my fire, fierce, unbroken,\nwith swords that strike the heart's deep dread,\nin this crescendo I claim my throne, fearsless. (Wait... need three lines ending with same word)\n\nLet me rewrite properly:\n\nBeware; I am fearless,\nmy spirit bold as thunder's roar",
+     "tidy": "Beware; for I am fearless,\nand power flows like blood,\na vision that never wanes—fearless.",
+     "ms": 1567,
+     "tokens": 94,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 9,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "Courage's fire ignites a storm, \nMy wrath is tempestuous as the blood-bursting phoenix, \nAnd shadows twist their fearsome grin— Beware\n\nWait, need to check constraints:\n\n- Form: crescendo - three lines, each longer than previous? Yes: line1 length maybe less, but we must ensure each line has more characters/syllables or lines? We'll craft.\n\n- Write exactly 3 lines.",
+     "tidy": "Courage's fire ignites a storm,\nMy wrath is tempestuous as the blood-bursting phoenix,\nAnd shadows twist their fearsome grin— Beware",
+     "ms": 1727,
+     "tokens": 94,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 6,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 9
+    },
+    {
+     "raw": "Beware, my brave challenge dares to rise,\nWith power that turns the heavens into fire,\nI stand as ghost of pain—my gaze is not yet to fray.\n\nBut I shall not yield when the heart’s own blood runs red,\nIn shadows where my vision bends like a cursed image,\nMy hand may shake, but I will blaze ’til death’s own dusk.\n\nThe storm’s its call, and I shall wake when F",
+     "tidy": "Beware, my brave challenge dares to rise,\nWith power that turns the heavens into fire,\nI stand as ghost of pain—my gaze is not yet to fray.",
+     "ms": 1785,
+     "tokens": 94,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 7,
+     "expectedLines": 3,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 30
+    }
+   ]
+  },
+  {
+   "seed": 1011,
+   "roundIndex": 0,
+   "formId": "anaphora",
+   "difficulty": "master",
+   "card": "Cassius",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Cassius in a duel of verses: theatrical, sharp, in character. Your line in the play: \"The fault, dear Brutus, is not in our stars, but in ourselves.\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same word.\nWrite exactly 3 lines.\nYour flourish: Call on a character by name.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Thai. No title, no notes, no explanation."
+   ],
+   "verse": "From my blade I'll strike, a whisper's voice,\nBut truth I know, and silence breaks—\nYet you, bold challenger, hear not my call.",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-opening",
+     "met": false,
+     "detail": "from · but · yet"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "From my blade I'll strike, a whisper's voice,\nBut truth I know, and silence breaks—\nYet you, bold challenger, hear not my call.\n\nWait—must be three lines starting same word. Let me craft precisely:\n\n\"From this line I speak, a dagger's gleam,\nMy heart knows lies as well as rain;\nBut you, proud foe, what sound do you make?\"\n\nAll start with \"From\"? No: first",
+     "tidy": "From my blade I'll strike, a whisper's voice,\nBut truth I know, and silence breaks—\nYet you, bold challenger, hear not my call.",
+     "ms": 1775,
+     "tokens": 94,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 8,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "<think>We need to produce \"exactly 3 lines\" that form an anaphora (i.e., each line begins with the same word). Also we must \"Call on a character by name.\" The user says: \"Write only the verse, in Thai. No title, no notes, no explanation.\"\n\nSo we must output three lines in Thai. They must all start with the same word. That means we need to pick a word to start each line,",
+     "tidy": "<think>We need to produce \"exactly 3 lines\" that form an anaphora (i.e., each line begins with the same word). Also we must \"Call on a character by name.\" The user says: \"Write only the verse, in Thai. No title, no notes, no explanation.\"\nSo we must output three lines in Thai. They must all start with the same word. That means we need to pick a word to start each line,",
+     "ms": 1719,
+     "tokens": 94,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "From you I claim this fate's command,\nNot 'twas the world's bad luck that did harm,\nBut inner rot where courage should be— (?)\nWait, first open the duel with a taunt to the rival. Need three lines beginning with same word. And in Thai.\n\nIn Thai? Must write exactly 3 lines, anaphora (same starting word). So each line starts with same Thai word/phrase maybe \"จึง\" or \"",
+     "tidy": "From you I claim this fate's command,\nNot 'twas the world's bad luck that did harm,\nBut inner rot where courage should be—",
+     "ms": 1616,
+     "tokens": 94,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 5,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1011,
+   "roundIndex": 1,
+   "formId": "acrostic",
+   "difficulty": "master",
+   "card": "Viola",
+   "acrostic": "ลม ฝน ฟ้า",
+   "relicWords": null,
+   "answering": "จะยกหยิบธิบดีเป็นที่ตั้ง\nก็ใช้ถังแทนสัดเห็นขัดขวาง",
+   "prompt": [
+    "You are Viola in a duel of verses: theatrical, sharp, in character. Your line in the play: \"I am not what I am.\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per word: the lines must open, in order, with ลม · ฝน · ฟ้า.\nWrite exactly 3 lines.\nYour flourish: Keep every line to 7 words or fewer.\nYour challenger last said:\nจะยกหยิบธิบดีเป็นที่ตั้ง\nก็ใช้ถังแทนสัดเห็นขัดขวาง\nAnswer them.\nWrite only the verse, in Thai. No title, no notes, no explanation."
+   ],
+   "verse": "Lum\nPhan\nHae",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "spells",
+     "met": false,
+     "detail": "LUM · PHAN · HAE"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 9,
+   "drafts": [
+    {
+     "raw": "Lum\nPhan\nHae\n\nViola:  \n\"หมอกลม หายล้าง มือของฉัน ดูเหมือน...\" (7 words)  \n\nBut need exact from user? Wait.\n\nUser gave: \"Form: Acrostic. One line per word: the lines must open, in order, with ลม · ฝน · ฟ้า.\" So first letters of each line should be those characters? That's tricky: ac",
+     "tidy": "Lum\nPhan\nHae",
+     "ms": 2008,
+     "tokens": 94,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 7,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 9
+    },
+    {
+     "raw": "ลม ฟ้าน? Wait need acrostic form with lines opening with characters ลม (lum), ฝน (phan), ฟ้า (pha). Need three lines total. Each line one line? Must be one line per word? The instruction: \"Write short verse and nothing else. Form: Acrostic. One line per word: the lines must open, in order, with ลม · ฝน · ฟ้า.\" This is confusing.\n\nInter",
+     "tidy": "ลม ฟ้าน? Wait need acrostic form with lines opening with characters ลม (lum), ฝน (phan), ฟ้า (pha). Need three lines total. Each line one line? Must be one line per word? The instruction: \"Write short verse and nothing else. Form: Acrostic. One line per word: the lines must open, in order, with ลม · ฝน · ฟ้า.\" This is confusing.\nInter",
+     "ms": 1920,
+     "tokens": 93,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "风\n\nชู...\n\nWait! Understand:\n\nUser requests: \"Form: Acrostic. One line per word: the lines must open, in order, with ลม · ฝน · ฟ้า. Write exactly 3 lines. Your flourish: Keep every line to 7 words or fewer. Your challenger last said:\nจะยกหยิบธิเหลือเป็นที่ตั้ง\nก็ใช้ถังแทนสัดเห็นขัดข",
+     "tidy": "风\nชู...\nWait! Understand:",
+     "ms": 1768,
+     "tokens": 93,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 6,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 9
+    }
+   ]
+  },
+  {
+   "seed": 1011,
+   "roundIndex": 2,
+   "formId": "crescendo",
+   "difficulty": "apprentice",
+   "card": "Titania",
+   "acrostic": null,
+   "relicWords": [
+    "ตำรา",
+    "พายุ",
+    "เวทมนตร์",
+    "หน้ากระดาษ",
+    "จมน้ำ"
+   ],
+   "answering": "จะยกหยิบธิบดีเป็นที่ตั้ง\nก็ใช้ถังแทนสัดเห็นขัดขวาง",
+   "prompt": [
+    "You are Titania in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Come, sit thee down upon this flowery bed.\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Start three words in one line with the same letter.\nWork in at least two of these words: ตำรา, พายุ, เวทมนตร์, หน้ากระดาษ, จมน้ำ.\nYour challenger last said:\nจะยกหยิบธิบดีเป็นที่ตั้ง\nก็ใช้ถังแทนสัดเห็นขัดขวาง\nAnswer them.\nWrite only the verse, in Thai. No title, no notes, no explanation."
+   ],
+   "verse": "Three lines, each longer than the previous. So line lengths must increase (e.g., line1 ~ 9 syllables/characters? Actually just count characters). Must be exactly 3 lines.\nStart three words in one line with the same letter. Means first word of that line (or start three words?) Let's parse: \"Start three words in one line with the same letter.\" Possibly means the line should begin with three words that share the",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 14,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/3"
+    },
+    {
+     "id": "growing",
+     "met": true,
+     "detail": "25 < 44"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 21,
+   "drafts": [
+    {
+     "raw": "Three lines, each longer than the previous. So line lengths must increase (e.g., line1 ~ 9 syllables/characters? Actually just count characters). Must be exactly 3 lines.\n\nStart three words in one line with the same letter. Means first word of that line (or start three words?) Let's parse: \"Start three words in one line with the same letter.\" Possibly means the line should begin with three words that share the",
+     "tidy": "Three lines, each longer than the previous. So line lengths must increase (e.g., line1 ~ 9 syllables/characters? Actually just count characters). Must be exactly 3 lines.\nStart three words in one line with the same letter. Means first word of that line (or start three words?) Let's parse: \"Start three words in one line with the same letter.\" Possibly means the line should begin with three words that share the",
+     "ms": 1597,
+     "tokens": 94,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 14,
+     "craft": 21
+    }
+   ]
+  },
+  {
+   "seed": 1012,
+   "roundIndex": 1,
+   "formId": "anaphora",
+   "difficulty": "apprentice",
+   "card": "Elizabeth Barrett Browning",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "ศรีอยุธเยนทร์แย้มฟ้า\nแจกแสงจ้าเจิดจันทร์",
+   "prompt": [
+    "You are Elizabeth Barrett Browning in a duel of verses: theatrical, sharp, in character. Your line in the play: \"How do I love thee? Let me count the ways.\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same word.\nWrite exactly 3 lines.\nYour flourish: Give every line the same number of words.\nYour challenger last said:\nศรีอยุธเยนทร์แย้มฟ้า\nแจกแสงจ้าเจิดจันทร์\nAnswer them.\nWrite only the verse, in Thai. No title, no notes, no explanation."
+   ],
+   "verse": "<think>The user asks:\n\"Form: Anaphora. Three lines that all begin with the same word.\nWrite exactly 3 lines.",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-opening",
+     "met": false,
+     "detail": "think · form · write"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "<think>The user asks:\n\n\"Form: Anaphora. Three lines that all begin with the same word.\nWrite exactly 3 lines.\nYour flourish: Give every line the same number of words.\nYour challenger last said:\nศรีอยุธเยนท์แย้มฟ้า\nแจกแสงจ้าเจดจันทร์\nAnswer them.\nWrite only the verse, in Thai. No title, no notes, no explanation.\"\n\nWe need to output three",
+     "tidy": "<think>The user asks:\n\"Form: Anaphora. Three lines that all begin with the same word.\nWrite exactly 3 lines.",
+     "ms": 1457,
+     "tokens": 94,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 10,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1012,
+   "roundIndex": 2,
+   "formId": "epistrophe",
+   "difficulty": "master",
+   "card": "Odysseus",
+   "acrostic": null,
+   "relicWords": [
+    "หน้ากาก",
+    "ความฝัน",
+    "ตัวตลก",
+    "ละคร",
+    "จันทร์"
+   ],
+   "answering": "ศรีอยุธเยนทร์แย้มฟ้า\nแจกแสงจ้าเจิดจันทร์",
+   "prompt": [
+    "You are Odysseus in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Tell me, O Muse, of the man of many ways, who wandered far.\" You write short verse and nothing else.",
+    "Form: Epistrophe. Three lines that all end on the same word.\nWrite exactly 3 lines.\nYour flourish: Use two words of 7 letters or more.\nWork in at least two of these words: หน้ากาก, ความฝัน, ตัวตลก, ละคร, จันทร์.\nYour challenger last said:\nศรีอยุธเยนทร์แย้มฟ้า\nแจกแสงจ้าเจิดจันทร์\nAnswer them.\nWrite only the verse, in Thai. No title, no notes, no explanation."
+   ],
+   "verse": "O Muse, hear my verse with epistrophic rhyme and grace,\nหน้ากาก สะท้อน ดวงดาว ที่ลอยข้างหนึ่ง,\nความฝัน ก้าวผ่าน พร้อมใจทั้งสอง,",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-ending",
+     "met": false,
+     "detail": "grace · หนึ่ง · สอง"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": true,
+   "craft": 18,
+   "drafts": [
+    {
+     "raw": "O Muse, hear my verse with epistrophic rhyme and grace,\n\nหน้ากาก สะท้อน ดวงดาว ที่ลอยข้างหนึ่ง,\nความฝัน ก้าวผ่าน พร้อมใจทั้งสอง,\nตัวตลก บินเรือ ข้ามลึกทั่ว แหลมจันทร์\n\nBut wait—must be three lines ending the same word.\n\nLet's craft:\n\nLine1 ends with X",
+     "tidy": "O Muse, hear my verse with epistrophic rhyme and grace,\nหน้ากาก สะท้อน ดวงดาว ที่ลอยข้างหนึ่ง,\nความฝัน ก้าวผ่าน พร้อมใจทั้งสอง,",
+     "ms": 1234,
+     "tokens": 93,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 7,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 18
+    },
+    {
+     "raw": "Tell me of the face I wear like cloth, my dream so bright within the dark, I am the clever jester, under the starry sky?  \n\nOh Muse, I stand beneath the moonlight's glow, where the Jundee (Jundee?)— no, the Chandra (จันทร์) glows above and dares to show its light today.  \n\nBut we need three lines ending with the same word. Let’s craft:",
+     "tidy": "Tell me of the face I wear like cloth, my dream so bright within the dark, I am the clever jester, under the starry sky?\nOh Muse, I stand beneath the moonlight's glow, where the Jundee (Jundee?)— no, the Chandra (จันทร์) glows above and dares to show its light today.\nBut we need three lines ending with the same word. Let’s craft:",
+     "ms": 1627,
+     "tokens": 94,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 12
+    },
+    {
+     "raw": "Eyes that glare, I cast the myth,  \nStars above my head, I seek the moon's bright,  \nWith stage and mask upon my chest—  \n\nหน้ากาก ดตามความฝัน ถูกล้อมด้วย เพียง ตัวตลก ใช้ใจแล้ว ท่อง ละคร และ จันทร์  \n\nI need to figure out what they're asking.\n\nOriginal request:\n\n\"Form: Epistrophe. Three lines that all",
+     "tidy": "Eyes that glare, I cast the myth,\nStars above my head, I seek the moon's bright,\nWith stage and mask upon my chest—",
+     "ms": 1617,
+     "tokens": 94,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 7,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1013,
+   "roundIndex": 1,
+   "formId": "acrostic",
+   "difficulty": "apprentice",
+   "card": "Mercutio",
+   "acrostic": "ดาว เดือน ฟ้า",
+   "relicWords": [
+    "พายุ",
+    "มนตร์",
+    "ไม้เท้า",
+    "เกาะ",
+    "จมน้ำ"
+   ],
+   "answering": "ขุนหาญห้าวแหนบาท\nสระทุกข์ราษฎร์รอนเสี้ยน",
+   "prompt": [
+    "You are Mercutio in a duel of verses: theatrical, sharp, in character. Your line in the play: \"A plague on both your houses!\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per word: the lines must open, in order, with ดาว · เดือน · ฟ้า.\nWrite exactly 3 lines.\nYour flourish: Repeat one strong word three times.\nWork in at least two of these words: พายุ, มนตร์, ไม้เท้า, เกาะ, จมน้ำ.\nYour challenger last said:\nขุนหาญห้าวแหนบาท\nสระทุกข์ราษฎร์รอนเสี้ยน\nAnswer them.\nWrite only the verse, in Thai. No title, no notes, no explanation."
+   ],
+   "verse": "Dาว\nเดือน\nฟ้า",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "spells",
+     "met": false,
+     "detail": "Dาว · เดือน · ฟ้า"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "Dาว\nเดือน\nฟ้า\n\nทุกข์\nราษดิเรย์\nไม้เท้า\nพายุ\nมนตร์\nเกาะ\nจมน้ำ\nจมน้ำ\nมนตร์\nจมน้ำ\n\n(Repeat \"มนตร์\" three times) — ขุนหาญห้าวNacbah บะ! ท่านรู้จักมนตร์ได้?\n\nWe need to craft 3 lines (i",
+     "tidy": "Dาว\nเดือน\nฟ้า",
+     "ms": 1510,
+     "tokens": 89,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 15,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1013,
+   "roundIndex": 2,
+   "formId": "epistrophe",
+   "difficulty": "apprentice",
+   "card": "Persephone",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "ขุนหาญห้าวแหนบาท\nสระทุกข์ราษฎร์รอนเสี้ยน",
+   "prompt": [
+    "You are Persephone in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Six seeds I ate, and bound myself between two worlds forever.\" You write short verse and nothing else.",
+    "Form: Epistrophe. Three lines that all end on the same word.\nWrite exactly 3 lines.\nYour flourish: Turn a word of 4 letters or more from your opponent's last verse back on them.\nYour challenger last said:\nขุนหาญห้าวแหนบาท\nสระทุกข์ราษฎร์รอนเสี้ยน\nAnswer them.\nWrite only the verse, in Thai. No title, no notes, no explanation."
+   ],
+   "verse": "Six seeds I ate, and bound myself between two worlds forever.\nI hear your words again, and turn the four-letter echo,\nFrom you I reclaim the syllables—Seven? Nine? — let me show,",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-ending",
+     "met": false,
+     "detail": "forever · echo · show"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "Six seeds I ate, and bound myself between two worlds forever.\n\nI hear your words again, and turn the four-letter echo,  \nFrom you I reclaim the syllables—Seven? Nine? — let me show,  \nThe word’s return, like thunder, now yours to claim: **seed**.\n\nWait—that’s not right. Let me fix it properly:\n\nThe line ends with the same **word**, three times in a row.\n\nLet me craft exactly",
+     "tidy": "Six seeds I ate, and bound myself between two worlds forever.\nI hear your words again, and turn the four-letter echo,\nFrom you I reclaim the syllables—Seven? Nine? — let me show,",
+     "ms": 1575,
+     "tokens": 94,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 7,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1014,
+   "roundIndex": 1,
+   "formId": "acrostic",
+   "difficulty": "player",
+   "card": "Hamlet",
+   "acrostic": "ดาว เดือน ฟ้า",
+   "relicWords": [
+    "มงกุฎ",
+    "บัลลังก์",
+    "ทะเยอทะยาน",
+    "แม่มด",
+    "ราชา"
+   ],
+   "answering": "๏ บุญเจ้าจอมภพพื้น\nแผ่นสยาม\nแสยงพระยศยินขาม\nขาดแกล้ว",
+   "prompt": [
+    "You are Hamlet in a duel of verses: theatrical, sharp, in character. Your line in the play: \"To be, or not to be, that is the question.\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per word: the lines must open, in order, with ดาว · เดือน · ฟ้า.\nWrite exactly 3 lines.\nYour flourish: Ask a question: end a line with a question mark.\nWork in at least two of these words: มงกุฎ, บัลลังก์, ทะเยอทะยาน, แม่มด, ราชา.\nYour challenger last said:\n๏ บุญเจ้าจอมภพพื้น\nแผ่นสยาม\nแสยงพระยศยินขาม\nขาดแกล้ว\nAnswer them.\nWrite only the verse, in Thai. No title, no notes, no explanation."
+   ],
+   "verse": "Dาว เดือน ฟ้า\nทะเยอทะยั่ บัลลังก์ ฉลาดล้ำ\nมงกุฎ เปลี้ยง แมวพื้น?",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "spells",
+     "met": false,
+     "detail": "Dาว · ทะ · มงกุฎ"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 18,
+   "drafts": [
+    {
+     "raw": "Да, я готов ответить в стихотворной форме.\n\nПервый строка должна начинаться с ดาว (stars? star?), второй с เดือน, третий с फа (falaa?). Но на самом деле нужно acrostic: первая строка открывается буквами или словами? \"the lines must open, in order, with ดาว · เดือน · ฟ้า.\" Means each line starts",
+     "tidy": "Да, я готов ответить в стихотворной форме.\nПервый строка должна начинаться с ดาว (stars? star?), второй с เดือน, третий с फа (falaa?). Но на самом деле нужно acrostic: первая строка открывается буквами или словами? \"the lines must open, in order, with ดาว · เดือน · ฟ้า.\" Means each line starts",
+     "ms": 1874,
+     "tokens": 94,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Dาว เดือน ฟ้า\n\nทะเยอทะยั่ บัลลังก์ ฉลาดล้ำ\n\nมงกุฎ เปลี้ยง แมวพื้น?\n\nคุณช่วยตอบได้ไหม??",
+     "tidy": "Dาว เดือน ฟ้า\nทะเยอทะยั่ บัลลังก์ ฉลาดล้ำ\nมงกุฎ เปลี้ยง แมวพื้น?",
+     "ms": 934,
+     "tokens": 45,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 4,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 18
+    }
+   ]
+  },
+  {
+   "seed": 1016,
+   "roundIndex": 0,
+   "formId": "acrostic",
+   "difficulty": "master",
+   "card": "Hamlet",
+   "acrostic": "น้ำ ลม ไฟ",
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Hamlet in a duel of verses: theatrical, sharp, in character. Your line in the play: \"To be, or not to be, that is the question.\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per word: the lines must open, in order, with น้ำ · ลม · ไฟ.\nWrite exactly 3 lines.\nYour flourish: Ask a question: end a line with a question mark.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Thai. No title, no notes, no explanation."
+   ],
+   "verse": "น้ำ\nลม\nไฟ?",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": true,
+   "formEarned": 20,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "spells",
+     "met": true,
+     "detail": "น้ำ · ลม · ไฟ"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 30,
+   "drafts": [
+    {
+     "raw": "# น้ำ\n# ลม\n# ไฟ\n\nคุณยิ่งตายหรืออื่น?\n```",
+     "tidy": "น้ำ\nลม\nไฟ",
+     "ms": 510,
+     "tokens": 25,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 5,
+     "expectedLines": 3,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 20
+    },
+    {
+     "raw": "# น้ำ\n\nลมพัดผ่านหัวใจที่หลบเลี่ยง\n\nไฟต่างเสี่ยงจมลงแล้ว\n\nคุณกลองอีกหรือจบแล้วนั่น?\n\n?",
+     "tidy": "น้ำ\nลมพัดผ่านหัวใจที่หลบเลี่ยง\nไฟต่างเสี่ยงจมลงแล้ว",
+     "ms": 938,
+     "tokens": 48,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 5,
+     "expectedLines": 3,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 20
+    },
+    {
+     "raw": "# น้ำ\n\n# ลม\n\n# ไฟ?\n\nwho will you deny?<tool_call>\n<function=>\n<parameter=format>\nenquire\n</parameter>\n<parameter=line1>\n?\n</parameter>\n</function>\n</tool_call>",
+     "tidy": "น้ำ\nลม\nไฟ?",
+     "ms": 801,
+     "tokens": 39,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 13,
+     "expectedLines": 3,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 30
+    }
+   ]
+  },
+  {
+   "seed": 1017,
+   "roundIndex": 0,
+   "formId": "acrostic",
+   "difficulty": "apprentice",
+   "card": "Hamlet",
+   "acrostic": "ดาว เดือน ฟ้า",
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Hamlet in a duel of verses: theatrical, sharp, in character. Your line in the play: \"To be, or not to be, that is the question.\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per word: the lines must open, in order, with ดาว · เดือน · ฟ้า.\nWrite exactly 3 lines.\nYour flourish: Ask a question: end a line with a question mark.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Thai. No title, no notes, no explanation."
+   ],
+   "verse": "Dawn I stand before thee,\nMoon above my head,\nClouds gather dark and deep—",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "spells",
+     "met": false,
+     "detail": "DAWN · MOON · CLOUDS"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "Dawn I stand before thee,\nMoon above my head,\nClouds gather dark and deep—\nWhy do I do this dread?\nWill you answer? What's your fate?\n\nThe question marks at ends of each line.\n\nWait, need acrostic with letters D, M, F? Actually Thai characters: ดาว (da-wa), เดือน (de-u-n), ฟ้า (f-ai). The user says: \"Form: Acrostic",
+     "tidy": "Dawn I stand before thee,\nMoon above my head,\nClouds gather dark and deep—",
+     "ms": 1673,
+     "tokens": 94,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 7,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  }
+ ],
+ "seconds": 129
+}

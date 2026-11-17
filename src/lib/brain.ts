@@ -60,16 +60,16 @@ export const MODELS: Record<Exclude<Tier, 'none'>, ModelSpec> = {
   grand: {
     tier: 'grand', id: 'onnx-community/gemma-4-E2B-it-ONNX', dtype: 'q4f16', label: 'Gemma 4 E2B', megabytes: 3100, judge: 'compare',
     // docs/language/model-eval/cells/grand.<lang>.write.json
-    writesIn: ['en', 'es', 'fr', 'de', 'it', 'pt', 'pl', 'ru'],
+    writesIn: ['en', 'es', 'fr', 'de', 'it', 'pt', 'pl', 'ru', 'th', 'id'],
     // docs/language/model-eval/cells/grand.<lang>.judge.json
-    judgesIn: ['en', 'fr', 'de', 'pt', 'ru', 'ar', 'hi', 'zh', 'ja', 'ko'],
+    judgesIn: ['en', 'fr', 'de', 'pt', 'ru', 'ar', 'hi', 'zh', 'ja', 'ko', 'vi', 'th', 'id'],
   },
   standard: {
     tier: 'standard', id: 'onnx-community/LFM3-1.7B-ONNX', dtype: 'q4f16', label: 'LFM3 1.7B', megabytes: 1090, judge: 'compare',
     // docs/language/model-eval/cells/standard.<lang>.write.json
     writesIn: [],
     // docs/language/model-eval/cells/standard.<lang>.judge.json
-    judgesIn: [],
+    judgesIn: ['vi'],
   },
   lite: {
     tier: 'lite', id: 'LiquidAI/LFM2.5-350M-ONNX', dtype: 'q4', label: 'LFM2.5 350M', megabytes: 295, judge: 'grade',
