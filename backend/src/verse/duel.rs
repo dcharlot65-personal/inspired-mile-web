@@ -49,6 +49,9 @@ pub const COPY_LINE_SOURCE: usize = 7;
 /// its last word changed for one that does not rhyme; counted only for a verse with no line of its
 /// own beyond the other's (`COPY_LINE_NEAR`).
 pub const COPY_LINE_NEAR: f64 = 0.67;
+/// Share of a line's words, in any order, that the line carrying it says, in every line of a verse
+/// with no line of its own beyond the other's (`COPY_LINE_ANY`).
+pub const COPY_LINE_ANY: f64 = 0.8;
 /// Content words of its own, beyond those that land its device and signature, that a verse
 /// needs per line its form asks for before its multiplier's bonuses apply in full.
 pub const OWN_WORDS_PER_LINE: f64 = 1.5;
@@ -74,11 +77,20 @@ pub fn carries_lines_with(c: &CopyMeasure, rhymed: impl Fn(&LineCarry, usize) ->
     if c.verse_lines > c.carry.len() {
         return false;
     }
-    counted
+    if counted
         .iter()
         .filter(|(i, l)| kept(l, *i) || (l.said >= 2 && l.said as f64 >= (COPY_LINE_NEAR * l.source as f64).ceil()))
         .count()
         >= need
+    {
+        return true;
+    }
+    // Or every one of them, none left out: COPY_LINE_SHARE of it in order, or COPY_LINE_ANY of it in
+    // any order, whatever it now ends on.
+    counted.iter().all(|(_, l)| {
+        l.said >= 2
+            && (l.said as f64 >= (COPY_LINE_SHARE * l.source as f64).ceil() || l.any as f64 >= (COPY_LINE_ANY * l.source as f64).ceil())
+    })
 }
 
 /// `carriesLines(c)`: the line rule with only the measure to go on, a line keeping its rhyme

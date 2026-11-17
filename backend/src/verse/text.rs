@@ -863,19 +863,73 @@ fn lone_letter(unit: &str) -> bool {
 pub const UNLISTED_SPAN: usize = 4;
 
 /// Letters a word the lexicon lacks needs to count toward the substance floor inside a phrase
-/// (a line that holds one of the little words) (`PHRASE_SPAN`). It must also be spelled as
-/// English spells (`spelled_as_english`).
+/// (a line that holds one of the little words) (`PHRASE_SPAN`). It must also be a word that can
+/// be said (`sayable`).
 pub const PHRASE_SPAN: usize = 4;
 
-/// Is this string spelled as English spells: every run of three of its letters, its start and
-/// end marked, found in a word the table lists (`spelledAsEnglish`)?
-fn spelled_as_english(word: &str) -> bool {
-    let letters: String = fold(word).chars().filter(|c| c.is_ascii_lowercase() || *c == '\'').collect();
-    let s: Vec<char> = format!("^{letters}$").chars().collect();
-    if s.len() < 3 {
-        return false;
+/// The vowel letters of English spelling, y among them (`VOWEL_LETTER`).
+fn has_vowel_letter(w: &str) -> bool {
+    w.chars().any(|c| matches!(c, 'a' | 'e' | 'i' | 'o' | 'u' | 'y'))
+}
+
+/// A word without a vowel letter said as one held sound (`HELD_SOUND`): an m, r, s or z written
+/// two or more times, after at most a b, g, h, k, p or t or one of sk, ps, ts, bz and mh, and before
+/// at most a closing k or t; or "pfft" and "shhh". The TypeScript writes it as the regular
+/// expression `^(?:(?:[bghkpt]|sk|ps|ts|bz|mh)?([mrsz])\1+[kt]?|p?ff+t?|shh+t?)$`; the `regex`
+/// crate has no back-references, so here each opening is tried in turn.
+fn held_sound(w: &str) -> bool {
+    let cs: Vec<char> = w.chars().collect();
+    // One letter of `letters` written two or more times, then at most one of `codas`.
+    let held = |rest: &[char], letters: &str, codas: &str| {
+        (0..=1usize).any(|coda| {
+            if rest.len() < coda + 2 || (coda == 1 && !codas.contains(rest[rest.len() - 1])) {
+                return false;
+            }
+            let run = &rest[..rest.len() - coda];
+            letters.contains(run[0]) && run.iter().all(|c| *c == run[0])
+        })
+    };
+    let after = |open: &str, letters: &str, codas: &str| {
+        let o: Vec<char> = open.chars().collect();
+        cs.starts_with(&o) && held(&cs[o.len()..], letters, codas)
+    };
+    ["", "b", "g", "h", "k", "p", "t", "sk", "ps", "ts", "bz", "mh"].iter().any(|o| after(o, "mrsz", "kt"))
+        || ["", "p"].iter().any(|o| after(o, "f", "t"))
+        || after("s", "h", "t")
+}
+
+/// Every run of one letter longer than `max` cut to `max` letters (`/(.)\1{2,}/` to `$1$1` for 2,
+/// `/(.)\1+/` to `$1` for 1).
+fn collapse_runs(w: &str, max: usize) -> String {
+    let mut out = String::with_capacity(w.len());
+    let mut last: Option<char> = None;
+    let mut run = 0;
+    for c in w.chars() {
+        if Some(c) == last {
+            run += 1;
+        } else {
+            last = Some(c);
+            run = 1;
+        }
+        if run <= max {
+            out.push(c);
+        }
     }
-    (0..s.len() - 2).all(|i| super::pronounce::listed_trigram(&s[i..i + 3].iter().collect::<String>()))
+    out
+}
+
+/// Can this string the lexicon lacks be said as a word (`sayable`)? With a vowel letter, every run
+/// of three of its letters, its start and end marked, is one the table's words hold, as written or
+/// with a drawn-out letter said once; without one, it is a held sound. Apostrophes are left out.
+fn sayable(word: &str) -> bool {
+    let w: String = fold(word).chars().filter(|c| c.is_ascii_lowercase()).collect();
+    if !has_vowel_letter(&w) {
+        return held_sound(&w);
+    }
+    [w.clone(), collapse_runs(&w, 2), collapse_runs(&w, 1)].iter().any(|v| {
+        let s: Vec<char> = format!("^{v}$").chars().collect();
+        s.len() >= 3 && (0..s.len() - 2).all(|i| super::pronounce::spelling_trigram(&s[i..i + 3].iter().collect::<String>()))
+    })
 }
 
 /// Letters an English word needs to tell inside a phrase (`SHORT_TELLING`).
@@ -919,15 +973,24 @@ pub fn lexicon_has(word: &str) -> bool {
     }
 }
 
+/// Does the word open with a capital letter, as a name is written (`writtenAsName`)? Its first
+/// alphabetic character is uppercase.
+fn written_as_name(word: &str) -> bool {
+    word.chars().find(|c| c.is_alphabetic()).is_some_and(|c| c.is_uppercase())
+}
+
 /// For each unit of a line, whether it is a word of the language (`knownUnits(line, 'en')`).
 fn known_units(line: &str) -> Vec<bool> {
     let units: Vec<String> = units_of(line).into_iter().filter(|u| letter_count(u) > 0).collect();
-    let phrase = units.iter().any(|u| is_stop_word(u));
+    // A little word, or a roll call: every word written with a capital, as names are (`knownUnits`).
+    // The words as written (`word_parts` lowers their case), hyphenated ones in their parts.
+    let parts: Vec<&str> = WORD_RE.find_iter(line).flat_map(|m| m.as_str().split('-')).filter(|w| letter_count(&fold(w)) > 0).collect();
+    let phrase = units.iter().any(|u| is_stop_word(u)) || (!parts.is_empty() && parts.iter().all(|w| written_as_name(w)));
     units
         .iter()
         .map(|u| {
             let has = lexicon_has(u);
-            if !has && phrase && word_span(u) >= PHRASE_SPAN && spelled_as_english(u) { true } else { has }
+            if !has && phrase && word_span(u) >= PHRASE_SPAN && sayable(u) { true } else { has }
         })
         .collect()
 }
@@ -1199,6 +1262,8 @@ pub struct LineCarry {
     /// Which line of the verse it is (an index into `lines_of(verse)`); `None` when no line
     /// says any of it (`line: -1`).
     pub line: Option<usize>,
+    /// How many of the source line's words that verse line says in any order (`any`).
+    pub any: usize,
 }
 
 /// How much of a verse is taken from another (`CopyMeasure`).
@@ -1235,7 +1300,7 @@ fn line_carry(verse: &str, source: &str) -> Vec<LineCarry> {
         }
     }
     pairs.sort_by(|x, y| y.0.cmp(&x.0).then(x.1.cmp(&y.1)).then(x.2.cmp(&y.2)));
-    let mut out: Vec<LineCarry> = theirs.iter().map(|s| LineCarry { source: s.len(), said: 0, verse: 0, end: false, line: None }).collect();
+    let mut out: Vec<LineCarry> = theirs.iter().map(|s| LineCarry { source: s.len(), said: 0, verse: 0, end: false, line: None, any: 0 }).collect();
     let mut taken: HashSet<usize> = HashSet::new();
     for (said, i, j) in pairs {
         if out[i].said > 0 || taken.contains(&j) {
@@ -1243,10 +1308,31 @@ fn line_carry(verse: &str, source: &str) -> Vec<LineCarry> {
         }
         let last = theirs[i].last().expect("a line that says something has a last word");
         let (at, ws) = &mine[j];
-        out[i] = LineCarry { source: theirs[i].len(), said, verse: ws.len(), end: ws.iter().any(|w| same_word(w, last)), line: Some(*at) };
+        out[i] = LineCarry {
+            source: theirs[i].len(),
+            said,
+            verse: ws.len(),
+            end: ws.iter().any(|w| same_word(w, last)),
+            line: Some(*at),
+            any: said_any_order(&theirs[i], ws),
+        };
         taken.insert(j);
     }
     out
+}
+
+/// How many of `source`'s words `verse` says in any order (`saidAnyOrder`): each source word, in
+/// turn, takes the first unused word of `verse` that is the same word.
+fn said_any_order(source: &[String], verse: &[String]) -> usize {
+    let mut used = vec![false; verse.len()];
+    let mut n = 0;
+    for w in source {
+        if let Some(k) = (0..verse.len()).find(|&j| !used[j] && same_word(w, &verse[j])) {
+            used[k] = true;
+            n += 1;
+        }
+    }
+    n
 }
 
 /// How much of `verse` is taken from `source`, seen from both sides (`copyOf(verse, source,

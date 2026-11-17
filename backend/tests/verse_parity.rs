@@ -17,7 +17,7 @@ use inspired_mile_api::verse::devices::{
 use inspired_mile_api::verse::duel::{
     carries_lines, is_copy, match_winner, online_match_winner, online_plan, resolve_online_round, resolve_round,
     score_verse, settle_verse, Curse, DuelSide, MatchWinner, OnlineSide, Rng, RoundPlan, RoundWinner, ScoreInput,
-    VerseScore, Voided, COPY_ANY_ORDER_MIN, COPY_COVERAGE, COPY_COVERAGE_ALONE, COPY_LINE_NEAR, COPY_LINE_SHARE, COPY_LINE_SOURCE,
+    VerseScore, Voided, COPY_ANY_ORDER_MIN, COPY_COVERAGE, COPY_COVERAGE_ALONE, COPY_LINE_ANY, COPY_LINE_NEAR, COPY_LINE_SHARE, COPY_LINE_SOURCE,
     COPY_LINE_WORDS, COPY_MIN_TAKEN, COPY_THRESHOLD, OWN_WORDS_PER_LINE, ROUNDS, SETTLE_PASSES,
 };
 use inspired_mile_api::verse::forms::{
@@ -166,7 +166,7 @@ fn copy_json(c: &CopyMeasure) -> Value {
         "lines": c.lines,
         "perLine": c.per_line,
         "ends": c.ends,
-        "carry": c.carry.iter().map(|l| json!({ "source": l.source, "said": l.said, "verse": l.verse, "end": l.end, "line": l.line.map_or(-1, |j| j as i64) })).collect::<Vec<_>>(),
+        "carry": c.carry.iter().map(|l| json!({ "source": l.source, "said": l.said, "verse": l.verse, "end": l.end, "line": l.line.map_or(-1, |j| j as i64), "any": l.any })).collect::<Vec<_>>(),
         "verseLines": c.verse_lines,
         "carries": carries_lines(c),
     })
@@ -299,6 +299,7 @@ fn tables_and_constants_match() {
         ("COPY_LINE_SHARE", COPY_LINE_SHARE),
         ("COPY_LINE_SOURCE", COPY_LINE_SOURCE as f64),
         ("COPY_LINE_NEAR", COPY_LINE_NEAR),
+        ("COPY_LINE_ANY", COPY_LINE_ANY),
         ("OWN_WORDS_PER_LINE", OWN_WORDS_PER_LINE),
         ("MIN_KNOWN_SHARE", MIN_KNOWN_SHARE),
         ("FULL_KNOWN_SHARE", FULL_KNOWN_SHARE),

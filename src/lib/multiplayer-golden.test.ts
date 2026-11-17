@@ -39,7 +39,7 @@ import {
   checkPowerWords, checkSignature, deviceInPlay, invocationNames, signatureNeeded, signatureWords,
 } from './verse/devices';
 import {
-  COPY_ANY_ORDER_MIN, COPY_COVERAGE, COPY_COVERAGE_ALONE, COPY_LINE_NEAR, COPY_LINE_SHARE, COPY_LINE_SOURCE, COPY_LINE_WORDS, COPY_MIN_TAKEN,
+  COPY_ANY_ORDER_MIN, COPY_COVERAGE, COPY_COVERAGE_ALONE, COPY_LINE_ANY, COPY_LINE_NEAR, COPY_LINE_SHARE, COPY_LINE_SOURCE, COPY_LINE_WORDS, COPY_MIN_TAKEN,
   COPY_THRESHOLD, JUDGE_POOL, OWN_WORDS_PER_LINE, ROUNDS, carriesLines, createDuel, isCopy, matchWinner, resolveRound, rng,
   scoreVerse, type CastCurse, type LentWords, type PlayerMove, type RoundResult, type VerseScore,
 } from './verse/duel';
@@ -134,10 +134,23 @@ const HAND: string[] = [
   // Words no dictionary has: counted and rhymed by spelling.
   'The zorblat sat upon a splat\nA quixing thing, a mimsy tove',
   'Blorptions of the frabjous glimbo\nSlithy in the borogove',
-  // Words no list has, inside a phrase: counted when spelled as English spells, not when mashed.
+  // Words no list has, inside a phrase: counted when they can be said (text.ts sayable), not when mashed.
   "Shawty, I'm finna flex, my drip is too clean\nYour opps be trippin, lil bruh, you ain't never been seen",
   'Sirrah, thou varlet, verily thy wit is spent\nThou strumpet muse, thou cuckold, coxcomb, recreant',
   'The qwrt sdfg zxcv night\nThe hjkl wrtp dfgh light',
+  // Ad-libs and names no list has, inside a phrase: a held sound, a drawn-out letter, a name spelled as the table's names spell.
+  'Skrrt skrrt, brrr, the bass go boom\nPfft, hmm, tsk, I own the room',
+  'Pssst, shhh, the baby is asleep\nZzz, hmm, not a peep',
+  'Ayyy, yuhh, the crowd go wild\nSkrrt, brrt, I run it like a child',
+  'Brrrap, the drums are rolling in the street\nSkrrrt, the tires sing beneath my feet\nBrrrah, the boooom is in the beat',
+  'Mwangi, Njeri, Wanjiru and Kamau\nSing in Nairobi, sing it now',
+  'Tlaloc, Xochitl, Nezahualcoyotl too\nThe old gods dance the whole night through',
+  'Szczecin, Wrocław, Bydgoszcz and Przemyśl\nI rap through Poland on a single wish',
+  'Nkechi, Ngozi, Chiamaka, Oluwaseun\nAdaeze, Chukwuemeka, under the sun',
+  // Held sounds and near misses: an h, g or l to close, an f held once, a pair that opens no word.
+  'The brrh pssh mhhg night\nThe tssk hmmm mhmm light\nThe pfft pft ffff shht flight\nThe zzzz bzzt ssss grrrt sight',
+  'The hllt mvvk dhhh rrrr kite\nThe sksss pfff tsss bzzzzt bite\nThe qrrt mrrk shhhh hmmmk white',
+  "The trippin' y'all nothin' night\nThe gon' fam'ly lovin' light",
   // Flow: lines that open alike on a little word, a chant that says the line before again, and lines that grow.
   'The night\nThe day is long\nThe end of all of it is near',
   'Dare\nDare me\nDare me, who dares',
@@ -436,7 +449,13 @@ function copiesOf(r: R, verse: string): string[] {
   };
   const rhymeSwapped = ls.map(swapEnd);
   const rhymeSwappedAdded = added.map(swapEnd);
-  return [moved, added, dropped, shuffled, rhymeSwapped, rhymeSwappedAdded, [ls[0]], [...ls, ...ls.slice(0, 1)]].map((x) => x.join('\n'));
+  // The lines moved as well: the verse line that carries each source line is not the one in its place
+  // (the engine check's parity fuzz: is_copy must ask the matched line whether it rhymes).
+  const movedSwapped = [...rhymeSwapped.slice(1), rhymeSwapped[0]];
+  const movedSwappedAdded = [...rhymeSwappedAdded.slice(1), rhymeSwappedAdded[0]];
+  return [moved, added, dropped, shuffled, rhymeSwapped, rhymeSwappedAdded, movedSwapped, movedSwappedAdded, [ls[0]], [...ls, ...ls.slice(0, 1)]].map((x) =>
+    x.join('\n'),
+  );
 }
 const QUOTES = CARD_CATALOG.map((c) => c.quote);
 const CORPUS: string[] = [...new Set([...HAND, ...EDGE, ...writtenVerses(), ...QUOTES, ...RANDOM])];
@@ -599,7 +618,7 @@ function tablesJson(): string {
     constants: {
       MAX_VERSE_CHARS, MAX_VERSE_LINES, FORM_POINTS, JUDGE_POOL, ROUNDS, CURSE_PENALTY, CURSE_PENALTY_CAP, POWER_WORD_BONUS, POWER_WORDS_NEEDED,
       MIN_DISTINCT_WORDS, COPY_THRESHOLD, SETTLE_PASSES, COPY_COVERAGE, COPY_COVERAGE_ALONE, COPY_MIN_TAKEN, COPY_ANY_ORDER_MIN,
-      COPY_LINE_WORDS, COPY_LINE_SHARE, COPY_LINE_SOURCE, COPY_LINE_NEAR, OWN_WORDS_PER_LINE, MIN_KNOWN_SHARE, FULL_KNOWN_SHARE, TELLING_PER_LINE,
+      COPY_LINE_WORDS, COPY_LINE_SHARE, COPY_LINE_SOURCE, COPY_LINE_NEAR, COPY_LINE_ANY, OWN_WORDS_PER_LINE, MIN_KNOWN_SHARE, FULL_KNOWN_SHARE, TELLING_PER_LINE,
       SHORT_TELLING, UNLISTED_SPAN, PHRASE_SPAN,
     },
     forms: FORMS.map((f) => ({

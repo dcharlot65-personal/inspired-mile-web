@@ -85,15 +85,16 @@ pub fn table_len() -> usize {
     TABLE.len()
 }
 
-/// Every run of three letters the table's listed words hold, a word's start and end marked `^`
-/// and `$` (`listedTrigrams`): how English spells.
+/// Every run of three letters the table's words hold, apostrophes left out and a word's start and
+/// end marked `^` and `$` (`spellingTrigrams`): how English spells, and how the names it has spell.
+/// The words it only says letter by letter are left out.
 static TRIGRAMS: LazyLock<HashSet<String>> = LazyLock::new(|| {
     let mut t = HashSet::new();
     for (w, p) in TABLE.iter() {
-        if p.spelled || p.unlisted {
+        if p.spelled {
             continue;
         }
-        let s: Vec<char> = format!("^{w}$").chars().collect();
+        let s: Vec<char> = format!("^{}$", w.replace('\'', "")).chars().collect();
         for i in 0..s.len().saturating_sub(2) {
             t.insert(s[i..i + 3].iter().collect::<String>());
         }
@@ -101,8 +102,8 @@ static TRIGRAMS: LazyLock<HashSet<String>> = LazyLock::new(|| {
     t
 });
 
-/// Is this run of three letters one the table's listed words hold (`listedTrigrams().has`)?
-pub fn listed_trigram(tri: &str) -> bool {
+/// Is this run of three letters one the table's words hold (`spellingTrigrams().has`)?
+pub fn spelling_trigram(tri: &str) -> bool {
     TRIGRAMS.contains(tri)
 }
 
