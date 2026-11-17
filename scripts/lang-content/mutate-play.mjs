@@ -13,7 +13,7 @@ const MUTATIONS = [
   { name: 'a raw key shown as text', file: 'src/i18n/pages/story/de.ts', from: `'story.act.1.name': "Die Straßen von Verona"`, to: `'story.act.1.name': "story.act.1.name"`, grep: 'story page in de' },
   { name: 'English trivia served to a German player', file: 'src/lib/play-content.ts', from: `if (l === 'en') return TRIVIA_BANK;`, to: `if (l) return TRIVIA_BANK;`, grep: 'relabels the open playground' },
   // The story file writes the isolates as escapes: the text searched for here is a backslash and u2068, not the character.
-  { name: 'an English line left bare in an Arabic scene', file: 'src/i18n/pages/story/ar.ts', from: '\\"\\u2068Do you bite your thumb at me, sir?\\u2069\\"', to: '\\"Do you bite your thumb at me, sir?\\"', grep: 'keeps its question mark' },
+  { name: 'an English line left bare in an Arabic scene', file: 'src/i18n/pages/story/ar.ts', from: '\\u2068\\"Do you bite your thumb at me, sir?\\"\\u2069', to: '\\"Do you bite your thumb at me, sir?\\"', grep: 'keeps its question mark' },
   { name: 'the onboarding tooltip placed in page coordinates again', file: 'src/pages/playground.astro', from: 'tooltip.style.top = `${top}px`;', to: 'tooltip.style.top = `${rect.top + window.scrollY - pad - 140}px`;', grep: 'onboarding at phone width in en' },
   { name: 'English trivia in the German playground test itself', file: 'src/lib/play-content.ts', from: `if (l === 'en') return TRIVIA_BANK;`, to: `if (l) return TRIVIA_BANK;`, grep: 'playground in de' },
 ];

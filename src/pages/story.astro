@@ -51,7 +51,7 @@ const DIFFICULTY = { easy: 'text-emerald-400', medium: 'text-amber-400', hard: '
           <div class={`card-glass p-6 rounded-2xl border-s-4 ${LOOK[act.id].border}`}>
             <div class="flex items-center justify-between mb-3">
               <div>
-                <span class={`text-xs ${LOOK[act.id].text} font-mono uppercase tracking-wider rtl:tracking-normal`} data-i18n={`story.act.${act.id}.label`}>Act {ROMAN[act.id - 1]}</span>
+                <span class={`text-xs ${LOOK[act.id].text} font-mono rtl:font-sans uppercase tracking-wider rtl:tracking-normal`} data-i18n={`story.act.${act.id}.label`}>Act {ROMAN[act.id - 1]}</span>
                 <h3 class="text-lg font-display font-bold text-obsidian-200" data-i18n={`story.act.${act.id}.name`}>{act.name}</h3>
               </div>
               <span class="text-2xl" set:html={LOOK[act.id].icon}></span>

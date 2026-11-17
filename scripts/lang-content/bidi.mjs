@@ -19,12 +19,22 @@ const RUN = /[A-Za-z\u00C0-\u024F][^\u0590-\u08FF\uFB50-\uFDFF\uFE70-\uFEFF«»"
 /** A {placeholder}: its name is not text, and what fills it is not known here. */
 const PLACEHOLDER = /(\{[a-zA-Z_]+\})/;
 
+/**
+ * An English line in straight quotation marks ("Do you bite your thumb at me, sir?"): the marks are English
+ * ones and go inside the isolate with the line, so where the line wraps they stay at its own two ends. Arabic
+ * guillemets («…») are the Arabic sentence's marks and stay outside.
+ */
+const QUOTED = /"[A-Za-z\u00C0-\u024F][^"\u0590-\u08FF\uFB50-\uFDFF\uFE70-\uFEFF\u2066-\u2069]*"/gu;
+const ISOLATED = /(\u2068[^\u2069]*\u2069)/u;
+
 /** The text with each run of Latin letters isolated, the spaces after it left outside; placeholders untouched. */
 export function isolateLatin(s) {
-  return s.split(PLACEHOLDER).map((part, i) => (i % 2 ? part : part.replace(RUN, (run) => {
-    const text = run.replace(/\s+$/u, '');
-    return FSI + text + PDI + run.slice(text.length);
-  }))).join('');
+  const runs = (text) => text.replace(RUN, (run) => {
+    const t = run.replace(/\s+$/u, '');
+    return FSI + t + PDI + run.slice(t.length);
+  });
+  return s.split(PLACEHOLDER).map((part, i) => (i % 2 ? part
+    : part.replace(QUOTED, (q) => FSI + q + PDI).split(ISOLATED).map((p, j) => (j % 2 ? p : runs(p))).join(''))).join('');
 }
 
 export const stripIsolates = (s) => s.replace(/[\u2066-\u2069]/gu, '');

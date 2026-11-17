@@ -683,7 +683,8 @@ describe('these checks can fail', () => {
     const bare = 'خادم يعترض طريقك. "Do you bite your thumb at me, sir?"';
     expect(bidiProblems('k', bare).length).toBe(1);
     const fixed = isolateLatin(bare);
-    expect(fixed).toBe('خادم يعترض طريقك. "\u2068Do you bite your thumb at me, sir?\u2069"');
+    expect(fixed).toBe('خادم يعترض طريقك. \u2068"Do you bite your thumb at me, sir?"\u2069'); // English marks inside, with the line
+    expect(isolateLatin('يقول «Et tu, Brute?»')).toBe('يقول «\u2068Et tu, Brute?\u2069»'); // Arabic marks outside
     expect(bidiProblems('k', fixed)).toEqual([]);
     expect(bidiProblems('k', fixed.replace('\u2069', '')).length).toBe(2); // opened, never closed
     expect(bidiProblems('k', 'من يقول «\u2068Et tu, Brute?\u2069» وهو يموت؟')).toEqual([]);
