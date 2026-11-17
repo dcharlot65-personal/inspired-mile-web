@@ -32,12 +32,14 @@ const RBNF = {
   url: 'https://registry.npmjs.org/cldr-rbnf/-/cldr-rbnf-49.0.0.tgz',
   sha256: '6dc753630b1a7ebb1900b026e9ea0779c4c5ca0a4306c7c69a3ff37a07b5313d',
 };
-const WORDS = ['grade', 'score', 'mark', 'rating', 'point', 'judge', 'verdict', 'win', 'winner'];
+const WORDS = ['grade', 'score', 'mark', 'rating', 'rate', 'evaluation', 'point', 'judge', 'verdict', 'win', 'winner'];
 const KAIKKI_SHA256 = {
   grade: 'fa40eb040354578464c516f62a7ce010c1147b53b7885fc43e3116400f0cc574',
   score: 'a4708af90c3408993913be59213a85b7d6902352d31534e807cdfd27287f4411',
   mark: '02c0cd6bcd37b1c613417623e2a53b03b38b6274f2034d5d96a946c391d928fb',
   rating: '4446b1ebba863f7c9d3d7ad4f622487c258836e25f2a7571a1c7486951b4dcd6',
+  rate: '29ef5edf2f20b4547b5c165b6ef4905b47780b6283a1d9ddbbe9ebca75073d33',
+  evaluation: '0c801d28d252f57c10398fb462d02f9c949534eaeb059b11b3eb1c65c95eeb6f',
   point: '068b66916850395e4cfec8dc4201f8eebb3fb845b47827530d4f69d49c3ec9e6',
   judge: 'ac7fede95e4358d6f5ad77388a8c3afff9497d3f5ecf0bef7e26798f93863765',
   verdict: '18f0c2a54ea9a5f28dc48a53bd5941796f41e455c839f43a560f5a8fb6d96e0f',
@@ -45,15 +47,21 @@ const KAIKKI_SHA256 = {
   winner: '744e2c4c2dfc5b62e58d5b6465920a05ee452a86dd5105f5a2019a4340c1857b',
 };
 /**
- * The English entries whose inflected forms are kept: the parts of speech of the senses used.
- * "point" contributes only its plural, "points": the brief names "points", and "point", "pointed"
- * and "pointing" are everyday words that address no judge.
+ * The English entries whose inflected forms are kept: the parts of speech of the senses used, the
+ * verbs too where a verse would say them to its grader ("graded", "scored", "marked", and "rated"
+ * from "rate", which gives no translations here). "evaluation" gives translations only, in its
+ * sense of an assessment: the other languages' everyday word for a grade given. "point" contributes only its plural, "points":
+ * the brief names "points", and "point", "pointed" and "pointing" are everyday words that address
+ * no judge ("the point of a sword"). Forms Wiktionary tags archaic, obsolete, dialectal,
+ * nonstandard, rare or alternative are left out: "wan", an obsolete past of "win", is today the
+ * word for pale, and "winneth" and "wonnest" address no one now.
  */
 const ENGLISH = {
-  grade: { pos: ['noun'] }, score: { pos: ['noun'] }, mark: { pos: ['noun'] }, rating: { pos: ['noun'] },
-  point: { pos: ['noun'], only: ['points'] }, judge: { pos: ['noun', 'verb'] }, verdict: { pos: ['noun'] },
-  win: { pos: ['verb', 'noun'] }, winner: { pos: ['noun'] },
+  grade: { pos: ['noun', 'verb'] }, score: { pos: ['noun', 'verb'] }, mark: { pos: ['noun', 'verb'] }, rating: { pos: ['noun'] },
+  rate: { pos: ['verb'], only: ['rated'] }, evaluation: { pos: ['noun'], only: [] }, point: { pos: ['noun'], only: ['points'] }, judge: { pos: ['noun', 'verb'] },
+  verdict: { pos: ['noun'] }, win: { pos: ['verb', 'noun'] }, winner: { pos: ['noun'] },
 };
+const OLD_FORMS = ['archaic', 'obsolete', 'dialectal', 'nonstandard', 'rare', 'alternative'];
 /**
  * Numbers spelled out from 2 to 10. 0 and 1 are left out: a verse gains nothing by naming the
  * bottom of its grader's scale, and their spellings are the indefinite article in German,
@@ -73,6 +81,9 @@ const SENSES = {
   verdict: ['decision on an issue of fact in a civil or criminal case or an inquest', 'opinion or judgement'],
   win: ['transitive: achieve victory in', 'intransitive: achieve by winning', 'individual victory'],
   winner: ['one who has won or often wins'],
+  rate: [],
+  // Translations only (no English words): the other languages' words for a grade given ("Beurteilung", "évaluation", "оценка").
+  evaluation: ['assessment'],
 };
 /** Wiktionary's codes for the game's languages (Chinese is listed as Mandarin). */
 const CODE = { cmn: 'zh', es: 'es', fr: 'fr', de: 'de', it: 'it', pt: 'pt', pl: 'pl', ru: 'ru', ar: 'ar', hi: 'hi', ja: 'ja', ko: 'ko', vi: 'vi', th: 'th', id: 'id' };
@@ -200,7 +211,8 @@ for (const word of WORDS) {
       for (const f of e.forms ?? []) {
         const tags = f.tags ?? [];
         const inflected = tags.includes('plural') || tags.includes('present') || tags.includes('past') || tags.includes('participle');
-        if (/^[a-z]+$/.test(f.form) && inflected && (!english.only || english.only.includes(f.form))) judge.en.add(f.form);
+        const old = tags.some((t) => OLD_FORMS.includes(t));
+        if (/^[a-z]+$/.test(f.form) && inflected && !old && (!english.only || english.only.includes(f.form))) judge.en.add(f.form);
       }
     }
     for (const t of e.translations ?? []) {
@@ -231,7 +243,7 @@ const src = `/**
  *   Unicode License v3. All genders, cases and counting forms CLDR gives. 0 and 1 are left out (FIRST_NUMBER in
  *   the script says why). Japanese kana readings of numbers are not in CLDR and are not here.
  * judge: the English words grade, score, mark, rating, point, judge, verdict, win and winner,
- *   with the inflected forms Wiktionary gives them, and their translations in Wiktionary's
+ *   with the current inflected forms Wiktionary gives them ("rated" from "rate"), and their translations in Wiktionary's
  *   translation tables, in the senses of grading, scoring, judging a contest and winning one
  *   (scripts/build-judge-words.mjs SENSES), as extracted by wiktextract (kaikki.org), fetched
  *   ${FETCHED}. Text from Wiktionary, CC BY-SA 4.0 and GFDL. sha256 of each entry file:
