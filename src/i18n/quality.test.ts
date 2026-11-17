@@ -16,14 +16,14 @@ import { argumentNames, interpolate, parseMessage, pluralBlocks, pluralCategory,
 // @ts-expect-error a plain JavaScript module shared with the command-line tools
 import { applyAllowlist, checkLanguage, untranslated } from '../../scripts/lang/lib/mechanical.mjs';
 // @ts-expect-error as above
-import { checkCitations, checkGlossary } from '../../scripts/lang/lib/glossary.mjs';
+import { checkCitations, checkGlossary, checkNameExceptions } from '../../scripts/lang/lib/glossary.mjs';
 
 const read = (path: string) => JSON.parse(readFileSync(new URL(`../../${path}`, import.meta.url), 'utf8'));
 const cldr = read('docs/language/sources/cldr.json');
 const allow = read('docs/language/allow/mechanical.json');
 const same = read('docs/language/allow/untranslated.json');
 const glossary = read('docs/language/glossary.json');
-const SOURCE_FILES = ['aosp-terms', 'mozilla-terms', 'google-help', 'apple-passkeys', 'wikidata-names', 'wikidata-terms', 'wikidata-titles'];
+const SOURCE_FILES = ['aosp-terms', 'mozilla-terms', 'google-help', 'apple-passkeys', 'wikidata-names', 'wikidata-terms', 'wikidata-titles', 'wiktionary-translations', 'wiktionary-words'];
 const sources = Object.fromEntries(SOURCE_FILES.map((f) => [f, read(`docs/language/sources/${f}.json`)]));
 const helpers = { parseMessage, argumentNames, pluralBlocks };
 
@@ -139,12 +139,16 @@ describe('every locale passes the mechanical checks', () => {
     expect(show(problems)).toEqual([]);
   });
 
-  it('every word the glossary quotes from a fetched source is in that source file', () => {
+  it('every citation in the glossary is true of the fetched source files, and every form name says where it comes from', () => {
     const { problems, count } = checkCitations(glossary, sources);
     expect(show(problems)).toEqual([]);
-    // The patterns must still be finding the citations (139 vendor and label quotations and 90
-    // Wikipedia article titles on 2026-11-16), or this passes on nothing.
-    expect(count).toBeGreaterThan(200);
+    // 509 cites on 2026-11-16: if they stop being read, this passes on nothing.
+    expect(count).toBeGreaterThan(500);
+  });
+
+  it('an exception for a form name, or for a word of one, says what the glossary says about its source', () => {
+    const allowFiles = { meaning: read('docs/language/allow/meaning.json').entries, spelling: read('docs/language/allow/spelling.json').words, grammar: read('docs/language/allow/grammar.json').entries };
+    expect(show(checkNameExceptions(glossary, allowFiles, LOCALES))).toEqual([]);
   });
 });
 
@@ -246,37 +250,83 @@ describe('the checks can fail', () => {
     expect(checkGlossary('fr', { a: 'x' }, { a: 'Not enough ink.' }, tiny).map((p: Problem) => p.rule)).toEqual(['glossary-missing']);
   });
 
-  it('the citation check names a quotation its source file does not hold, and a file that is not there', () => {
+  it('the citation check names a citation its source file does not bear out', () => {
     const fake = {
       terms: {
         x: {
           langs: {
-            es: { source: 'Google Help, Gmail answer 8154 (sources/google-help.json): Cerrar la sesión de Gmail.' },
-            fr: { source: 'Android (AOSP core, kg_login_submit_button): Connexion; Mozilla Firefox (sources/mozilla-terms.json, fxa-menu-sign-out): Se déconnecter…' },
-            de: { source: 'Mozilla Firefox (sources/nowhere.json): Abmelden' },
+            es: { source: 'Google Help', cite: [{ google: 'sign-out', text: 'Cerrar la sesión de Gmail' }] },
+            fr: { source: 'Android and Mozilla', cite: [{ aosp: 'kg_login_submit_button', text: 'Connexion' }, { mozilla: 'fxa-menu-sign-out', text: 'Se déconnecter…' }] },
+            de: { source: 'Mozilla Firefox (sources/nowhere.json)', cite: [{ nowhere: 'x', text: 'Abmelden' }] },
+            it: { source: 'Android (AOSP core, screen_lock): Blocco schermo' },
+            pt: { source: 'Android', cite: [{ aosp: 'passkey', text: 'chave' }] },
+            ja: { source: 'Apple', cite: [{ apple: true, text: 'サインイン' }] },
           },
         },
       },
       names: {
         'form.couplet.name': {
           langs: {
-            it: { source: 'it Wikipedia article Distico (Wikidata Q4779829)' },
-            pt: { source: 'pt Wikipedia article Dístico (Wikidata Q4779829)' },
-            hi: { source: 'दोहा is the rhymed couplet (hi Wikipedia article दोहा, Wikidata Q5288532)' },
+            fr: { value: 'Distique', status: 'sourced', source: 'fr Wikipedia article Distique (littérature)', cite: [{ wikipedia: 'fr', title: 'Distique (littérature)', qid: 'Q4779829' }] },
+            // The checker's probe: one title changed.
+            it: { value: 'Distico', status: 'sourced', source: 'it Wikipedia article Distich', cite: [{ wikipedia: 'it', title: 'Distich', qid: 'Q4779829' }] },
+            pl: { value: 'Dwuwiersz', status: 'sourced', source: 'Wiktionary', cite: [{ wiktionary: 'couplet', text: 'dwuwiersz' }] },
+            ru: { value: 'Двустишие', status: 'sourced', source: 'Wiktionary', cite: [{ wiktionary: 'couplet', text: 'двустих' }] },
+            // Says it is sourced, cites a true fact, but not one that gives this name.
+            pt: { value: 'Parelha', status: 'sourced', source: 'pt Wikipedia article Dístico', cite: [{ wikipedia: 'pt', title: 'Dístico', qid: 'Q4779829' }] },
+            // Status and prose disagree.
+            ko: { value: '쿠플레', status: 'not-sourced', source: 'ko Wikipedia article 쿠플레', cite: [{ wikipedia: 'ko', title: '쿠플레', qid: 'Q4779829' }] },
+            th: { value: 'กลอนคู่', status: 'sourced', source: 'Not sourced.' },
+            vi: { value: 'Câu đối vần', status: 'coined', source: 'Not sourced.' },
           },
         },
       },
     };
     const src = {
-      'google-help': { pages: { 'sign-out': { text: { es: { title: null, heading: null } } } } },
-      'aosp-terms': { t: 'Connexion' },
-      'mozilla-terms': { t: 'Se déconnecter…' },
-      'wikidata-terms': { concepts: { couplet: { qid: 'Q4779829', langs: { it: { sitelink: 'Distico' }, pt: { sitelink: 'Parelha' } } } } },
+      'google-help': { pages: { 'sign-out': { text: { es: { title: 'Cerrar sesión o eliminar una cuenta de Gmail', heading: 'Cerrar la sesión de Gmail en el ordenador' } } } } },
+      'aosp-terms': { terms: { kg_login_submit_button: { text: { fr: 'Connexion' } }, passkey: { text: { pt: 'chave de acesso' } } } },
+      'mozilla-terms': { terms: { 'fxa-menu-sign-out': { text: { fr: 'Se déconnecter…' } } } },
+      'apple-passkeys': { pages: { ja: { firstSentence: 'パスキーはパスワードに代わるものとして設計されました。' } } },
+      'wikidata-terms': { concepts: { couplet: { qid: 'Q4779829', langs: { fr: { sitelink: 'Distique (littérature)' }, it: { sitelink: 'Distico' }, pt: { sitelink: 'Dístico' }, ko: { sitelink: '쿠플레' } } } } },
       'wikidata-titles': { languages: {} },
+      'wiktionary-translations': { concepts: { couplet: { tables: [{ sense: 'in poetry', langs: { pl: ['dwuwiersz', 'dystych'], ru: ['куплет', 'двустишие'] } }] } } },
     };
     const { problems, count } = checkCitations(fake, src);
-    expect(count).toBe(6);
-    expect(problems.map((p: Problem) => `${p.lang} ${p.rule}`)).toEqual(['es citation-not-in-source', 'de citation-no-file', 'pt citation-not-in-source']);
+    expect(count).toBe(12);
+    expect(problems.map((p: Problem) => `${p.lang} ${p.rule}`)).toEqual([
+      'es citation-not-in-source', // a near-quotation is not the heading
+      'de citation-not-in-source', // a cite of no known kind
+      'it citation-missing', // prose that names Android, and no cite
+      'pt citation-not-in-source', // a substring of Android's string is not the string
+      'ja citation-not-in-source', // Apple's sentence does not contain it
+      'it citation-not-in-source', // the changed title
+      'ru citation-not-in-source',
+      'it name-unbacked', // its only cite is false
+      'ru name-unbacked',
+      'pt name-unbacked',
+      'ko name-status',
+      'th name-status',
+      'th name-unbacked',
+      'vi name-status',
+    ]);
+  });
+
+  it('the name-exception check names a reason that claims a source the glossary denies', () => {
+    const g = { names: { 'form.quatrain-aabb.name': { langs: { ko: { value: '짝운 4행시', status: 'not-sourced', source: 'Not sourced.' }, es: { value: 'Cuarteta de pareados', status: 'head', head: 'Cuarteta', source: 'x' } } } } };
+    const bad = {
+      meaning: [
+        { lang: 'ko', key: 'form.quatrain-aabb.name', text: '짝운 4행시', reason: 'The name of a verse form as glossary.json records it.' },
+        { lang: 'es', key: 'form.quatrain-aabb.name', text: 'Cuarteta de pareados', reason: 'Head word sourced: Cuarteta.' },
+      ],
+      spelling: { ko: { '짝운': "A word of a verse form's or device's name, taken from a published source (docs/language/glossary.json, 'names')." }, es: { Cuarteta: "A verse form's name: not sourced." } },
+      grammar: [{ lang: 'ko', rule: 'X', id: '*', at: '짝운', reason: "A verse form's name sourced in docs/language/glossary.json." }],
+    };
+    expect((checkNameExceptions(g, bad, ['ko', 'es']) as Problem[]).map((p) => `${p.lang} ${p.key}`)).toEqual([
+      'ko form.quatrain-aabb.name',
+      'ko spelling:짝운',
+      'es spelling:Cuarteta',
+      'ko grammar X:짝운',
+    ]);
   });
 
   it('a string left in English is caught unless it is on the list', () => {

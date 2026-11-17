@@ -59,7 +59,7 @@
    "lang": "ar",
    "key": "device.alliteration.name",
    "text": "الجناس الاستهلالي",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “Introductory”."
+   "reason": "Sourced name: الجناس الاستهلالي is Wikidata's alias “الجناس الاستهلالي” (Q484495) (glossary.json). Back-translated on its own the name reads “Introductory”; a name alone scores low whatever its quality."
   },
   {
    "lang": "ar",
@@ -101,43 +101,43 @@
    "lang": "ar",
    "key": "form.acrostic.name",
    "text": "التطريز",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “Embroidery”."
+   "reason": "Sourced name: التطريز is the ar Wikipedia article “تطريز (شعر)” (Q40376349) (glossary.json). Back-translated on its own the name reads “Embroidery”; a name alone scores low whatever its quality."
   },
   {
    "lang": "ar",
    "key": "form.anaphora.name",
    "text": "تكرار الصدارة",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “Repetition of the forefront”."
+   "reason": "Sourced name: تكرار الصدارة is the ar Wikipedia article “تكرار الصدارة” (Q486050) (glossary.json). Back-translated on its own the name reads “Repetition of the forefront”; a name alone scores low whatever its quality."
   },
   {
    "lang": "ar",
    "key": "form.couplet.name",
    "text": "بيتان مقفّيان",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “2 standing”."
+   "reason": "Not sourced: the translator's name for the form; no article, label or dictionary entry found gives one in this language (glossary.json says so). Back-translated on its own the name reads “2 standing”; a name alone scores low whatever its quality. Read and kept as a plain description, “two rhymed lines”, which is what the form is. Read by a language model, not a native speaker: listed in HUMAN-REVIEW.md."
   },
   {
    "lang": "ar",
    "key": "form.epistrophe.name",
    "text": "تكرار النهاية",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “End repeat”."
+   "reason": "Sourced name: تكرار النهاية is the ar Wikipedia article “تكرار النهاية” (Q963102) (glossary.json). Back-translated on its own the name reads “End repeat”; a name alone scores low whatever its quality."
   },
   {
    "lang": "ar",
    "key": "form.heroic-couplet.name",
    "text": "دوبيت ملحمي",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “An epic duet.”."
+   "reason": "Sourced name: دوبيت ملحمي is the ar Wikipedia article “دوبيت ملحمي” (Q2714966) (glossary.json). Back-translated on its own the name reads “An epic duet.”; a name alone scores low whatever its quality."
   },
   {
    "lang": "ar",
    "key": "form.luc-bat.name",
    "text": "ستة-ثمانية",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “Six-eight”."
+   "reason": "Not sourced: the translator's name for the form; no article, label or dictionary entry found gives one in this language (glossary.json says so). Back-translated on its own the name reads “Six-eight”; a name alone scores low whatever its quality. Read and kept as “six-eight”, the syllable counts of the form's two lines, as the English name once said. Read by a language model, not a native speaker: listed in HUMAN-REVIEW.md."
   },
   {
    "lang": "ar",
    "key": "form.quatrain-aabb.name",
    "text": "رباعية مزدوجة القافية",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “Double-stroke quartet”."
+   "reason": "Head word sourced: رباعية is the ar Wikipedia article “رباعية (شعر)” (Q570948); the words for the rhyme pattern (مزدوجة القافية) are the translator's, not sourced (glossary.json). Back-translated on its own the name reads “Double-stroke quartet”; a name alone scores low whatever its quality."
   },
   {
    "lang": "ar",
@@ -275,19 +275,19 @@
    "lang": "de",
    "key": "form.couplet.name",
    "text": "Zweizeiler",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “Two-line”."
+   "reason": "Sourced name: Zweizeiler is the de Wikipedia article “Zweizeiler (Verslehre)” (Q4779829) (glossary.json). Back-translated on its own the name reads “Two-line”; a name alone scores low whatever its quality."
   },
   {
    "lang": "de",
    "key": "form.quatrain-aabb.name",
    "text": "Vierzeiler im Paarreim",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “Four lines in a pair rhyme”."
+   "reason": "Head word sourced: Vierzeiler is the de Wikipedia article “Vierzeiler” (Q570948); the words for the rhyme pattern (im Paarreim) are the translator's, not sourced (glossary.json). Back-translated on its own the name reads “Four lines in a pair rhyme”; a name alone scores low whatever its quality."
   },
   {
    "lang": "de",
    "key": "form.quatrain-abab.name",
    "text": "Vierzeiler im Kreuzreim",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “Four lines in a crossword”."
+   "reason": "Head word sourced: Vierzeiler is the de Wikipedia article “Vierzeiler” (Q570948); the words for the rhyme pattern (im Kreuzreim) are the translator's, not sourced (glossary.json). Back-translated on its own the name reads “Four lines in a crossword”; a name alone scores low whatever its quality."
   },
   {
    "lang": "de",
@@ -401,13 +401,13 @@
    "lang": "es",
    "key": "form.couplet.name",
    "text": "Pareado",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “Pareado”."
+   "reason": "Sourced name: Pareado is the es Wikipedia article “Pareado” (Q4779829) (glossary.json). Back-translated on its own the name reads “Pareado”; a name alone scores low whatever its quality."
   },
   {
    "lang": "es",
    "key": "form.quatrain-aabb.name",
    "text": "Cuarteta de pareados",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “Quartet of pairs”."
+   "reason": "Head word sourced: Cuarteta is the es Wikipedia article “Cuarteta” (Q8352204); the words for the rhyme pattern (de pareados) are the translator's, not sourced (glossary.json). Back-translated on its own the name reads “Quartet of pairs”; a name alone scores low whatever its quality."
   },
   {
    "lang": "es",
@@ -551,13 +551,13 @@
    "lang": "fr",
    "key": "form.couplet.name",
    "text": "Distique",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “Distique”."
+   "reason": "Sourced name: Distique is the fr Wikipedia article “Distique (littérature)” (Q4779829) (glossary.json). Back-translated on its own the name reads “Distique”; a name alone scores low whatever its quality."
   },
   {
    "lang": "fr",
    "key": "form.quatrain-aabb.name",
    "text": "Quatrain à rimes plates",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “Quatrain à rimes plates”."
+   "reason": "Head word sourced: Quatrain is the fr Wikipedia article “Quatrain” (Q570948); the words for the rhyme pattern (à rimes plates) are the translator's, not sourced (glossary.json). Back-translated on its own the name reads “Quatrain à rimes plates”; a name alone scores low whatever its quality."
   },
   {
    "lang": "fr",
@@ -671,7 +671,7 @@
    "lang": "hi",
    "key": "device.alliteration.name",
    "text": "अनुप्रास",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “Phrase”."
+   "reason": "Sourced name: अनुप्रास is the hi Wikipedia article “अनुप्रास” (Q484495) (glossary.json). Back-translated on its own the name reads “Phrase”; a name alone scores low whatever its quality."
   },
   {
    "lang": "hi",
@@ -707,13 +707,13 @@
    "lang": "hi",
    "key": "form.anaphora.name",
    "text": "आदि-आवृत्ति",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “Pre-recurrence”."
+   "reason": "Not sourced: the translator's name for the form; no article, label or dictionary entry found gives one in this language (glossary.json says so). Back-translated on its own the name reads “Pre-recurrence”; a name alone scores low whatever its quality. Read and kept as आदि (beginning) + आवृत्ति (repetition): repetition at the start, as the device asks. Read by a language model, not a native speaker: listed in HUMAN-REVIEW.md."
   },
   {
    "lang": "hi",
    "key": "form.couplet.name",
    "text": "दोहा",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “Doha”."
+   "reason": "Sourced name: दोहा is the hi Wikipedia article “दोहा” (Q5288532) (glossary.json). Back-translated on its own the name reads “Doha”; a name alone scores low whatever its quality."
   },
   {
    "lang": "hi",
@@ -725,31 +725,31 @@
    "lang": "hi",
    "key": "form.epistrophe.name",
    "text": "अंत-आवृत्ति",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “End-frequency”."
+   "reason": "Not sourced: the translator's name for the form; no article, label or dictionary entry found gives one in this language (glossary.json says so). Back-translated on its own the name reads “End-frequency”; a name alone scores low whatever its quality. Read and kept as अंत (end) + आवृत्ति (repetition), the pair of आदि-आवृत्ति. Read by a language model, not a native speaker: listed in HUMAN-REVIEW.md."
   },
   {
    "lang": "hi",
    "key": "form.luc-bat.name",
    "text": "छह-आठ",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “Six-eight”."
+   "reason": "Not sourced: the translator's name for the form; no article, label or dictionary entry found gives one in this language (glossary.json says so). Back-translated on its own the name reads “Six-eight”; a name alone scores low whatever its quality. Read and kept as “six-eight”, the syllable counts of the form's two lines. Read by a language model, not a native speaker: listed in HUMAN-REVIEW.md."
   },
   {
    "lang": "hi",
    "key": "form.quatrain-aabb.name",
    "text": "जोड़ीदार चौपदी",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “Matching Squares”."
+   "reason": "Not sourced: the translator's name for the form; no article, label or dictionary entry found gives one in this language (glossary.json says so). Back-translated on its own the name reads “Matching Squares”; a name alone scores low whatever its quality. Read and kept as चौपदी (four-line stanza) with जोड़ीदार (paired); MADLAD read चौपदी as “square”. Read by a language model, not a native speaker: listed in HUMAN-REVIEW.md."
   },
   {
    "lang": "hi",
    "key": "form.quatrain-abab.name",
    "text": "एकांतर चौपदी",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “Parallel Square”."
+   "reason": "Not sourced: the translator's name for the form; no article, label or dictionary entry found gives one in this language (glossary.json says so). Back-translated on its own the name reads “Parallel Square”; a name alone scores low whatever its quality. Read and kept as चौपदी (four-line stanza) with एकांतर (alternating); MADLAD read चौपदी as “square”. Read by a language model, not a native speaker: listed in HUMAN-REVIEW.md."
   },
   {
    "lang": "hi",
    "key": "form.tercet.name",
    "text": "त्रिपदी",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “Triptych”."
+   "reason": "Not sourced: the translator's name for the form; no article, label or dictionary entry found gives one in this language (glossary.json says so). Back-translated on its own the name reads “Triptych”; a name alone scores low whatever its quality. Read and kept as त्रि (three) + पदी (lines); the hi Wikipedia article of that title is the algebraic trinomial, so the name is not sourced. Read by a language model, not a native speaker: listed in HUMAN-REVIEW.md."
   },
   {
    "lang": "hi",
@@ -887,7 +887,7 @@
    "lang": "id",
    "key": "device.alliteration.name",
    "text": "Aliterasi",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “Aliterasi”."
+   "reason": "Sourced name: Aliterasi is the id Wikipedia article “Aliterasi” (Q484495) (glossary.json). Back-translated on its own the name reads “Aliterasi”; a name alone scores low whatever its quality."
   },
   {
    "lang": "id",
@@ -941,19 +941,19 @@
    "lang": "id",
    "key": "form.quatrain-aabb.name",
    "text": "Sajak empat baris berpasangan",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “Four-line pairs”."
+   "reason": "Head word sourced: Sajak empat baris is the id Wikipedia article “Sajak empat baris” (Q570948); the words for the rhyme pattern (berpasangan) are the translator's, not sourced (glossary.json). Back-translated on its own the name reads “Four-line pairs”; a name alone scores low whatever its quality."
   },
   {
    "lang": "id",
    "key": "form.quatrain-abab.name",
    "text": "Sajak empat baris bersilang",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “Four-row crossover”."
+   "reason": "Head word sourced: Sajak empat baris is the id Wikipedia article “Sajak empat baris” (Q570948); the words for the rhyme pattern (bersilang) are the translator's, not sourced (glossary.json). Back-translated on its own the name reads “Four-row crossover”; a name alone scores low whatever its quality."
   },
   {
    "lang": "id",
    "key": "form.tercet.name",
    "text": "Terzina",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “Terzina”."
+   "reason": "Not sourced: the translator's name for the form; no article, label or dictionary entry found gives one in this language (glossary.json says so). Back-translated on its own the name reads “Terzina”; a name alone scores low whatever its quality. Read and kept as the Italian name Terzina, used for three-line stanzas; the id Wikipedia has no article. Read by a language model, not a native speaker: listed in HUMAN-REVIEW.md."
   },
   {
    "lang": "id",
@@ -1097,25 +1097,25 @@
    "lang": "it",
    "key": "form.couplet.name",
    "text": "Distico",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “Distico”."
+   "reason": "Sourced name: Distico is the it Wikipedia article “Distico” (Q4779829) (glossary.json). Back-translated on its own the name reads “Distico”; a name alone scores low whatever its quality."
   },
   {
    "lang": "it",
    "key": "form.quatrain-aabb.name",
    "text": "Quartina a rima baciata",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “Quartina a rima baciata”."
+   "reason": "Head word sourced: Quartina is the it Wikipedia article “Quartina (metrica)” (Q570948); the words for the rhyme pattern (a rima baciata) are the translator's, not sourced (glossary.json). Back-translated on its own the name reads “Quartina a rima baciata”; a name alone scores low whatever its quality."
   },
   {
    "lang": "it",
    "key": "form.quatrain-abab.name",
    "text": "Quartina a rima alternata",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “Quartina a rima alternata”."
+   "reason": "Head word sourced: Quartina is the it Wikipedia article “Quartina (metrica)” (Q570948); the words for the rhyme pattern (a rima alternata) are the translator's, not sourced (glossary.json). Back-translated on its own the name reads “Quartina a rima alternata”; a name alone scores low whatever its quality."
   },
   {
    "lang": "it",
    "key": "form.tercet.name",
    "text": "Terzina",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “Terzina”."
+   "reason": "Sourced name: Terzina is the it Wikipedia article “Terzina (metrica)” (Q1353779) (glossary.json). Back-translated on its own the name reads “Terzina”; a name alone scores low whatever its quality."
   },
   {
    "lang": "it",
@@ -1253,7 +1253,7 @@
    "lang": "ja",
    "key": "device.alliteration.name",
    "text": "頭韻",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “Head rhyme”."
+   "reason": "Sourced name: 頭韻 is Wikidata's alias “頭韻” (Q484495) (glossary.json). Back-translated on its own the name reads “Head rhyme”; a name alone scores low whatever its quality."
   },
   {
    "lang": "ja",
@@ -1271,7 +1271,7 @@
    "lang": "ja",
    "key": "device.internal-rhyme.name",
    "text": "中間韻",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “Intervowel”."
+   "reason": "Sourced name: 中間韻 is the ja Wikipedia article “中間韻” (Q2098331) (glossary.json). Back-translated on its own the name reads “Intervowel”; a name alone scores low whatever its quality."
   },
   {
    "lang": "ja",
@@ -1301,61 +1301,61 @@
    "lang": "ja",
    "key": "form.acrostic.name",
    "text": "折句",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “Conjugation”."
+   "reason": "Sourced name: 折句 is the ja Wikipedia article “折句” (Q173287) (glossary.json). Back-translated on its own the name reads “Conjugation”; a name alone scores low whatever its quality."
   },
   {
    "lang": "ja",
    "key": "form.anaphora.name",
    "text": "首句反復",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “First sentence repetition”."
+   "reason": "Sourced name: 首句反復 is the ja Wikipedia article “首句反復” (Q486050) (glossary.json). Back-translated on its own the name reads “First sentence repetition”; a name alone scores low whatever its quality."
   },
   {
    "lang": "ja",
    "key": "form.couplet.name",
    "text": "二行連",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “Bilinear”."
+   "reason": "Sourced name: 二行連 is the ja Wikipedia article “二行連” (Q4779829) (glossary.json). Back-translated on its own the name reads “Bilinear”; a name alone scores low whatever its quality."
   },
   {
    "lang": "ja",
    "key": "form.epistrophe.name",
    "text": "結句反復",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “Repetition at the end”."
+   "reason": "Sourced name: 結句反復 is the ja Wikipedia article “結句反復” (Q963102) (glossary.json). Back-translated on its own the name reads “Repetition at the end”; a name alone scores low whatever its quality."
   },
   {
    "lang": "ja",
    "key": "form.heroic-couplet.name",
    "text": "ヒロイック・カプレット",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “Heroic Caplet”."
+   "reason": "Sourced name: ヒロイック・カプレット is the ja Wikipedia article “ヒロイック・カプレット” (Q2714966) (glossary.json). Back-translated on its own the name reads “Heroic Caplet”; a name alone scores low whatever its quality."
   },
   {
    "lang": "ja",
    "key": "form.jueju.name",
    "text": "絶句",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “Absolutely.”."
+   "reason": "Sourced name: 絶句 is the ja Wikipedia article “絶句” (Q537198) (glossary.json). Back-translated on its own the name reads “Absolutely.”; a name alone scores low whatever its quality."
   },
   {
    "lang": "ja",
    "key": "form.luc-bat.name",
    "text": "六八体",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “Six-eight”."
+   "reason": "Not sourced: the translator's name for the form; no article, label or dictionary entry found gives one in this language (glossary.json says so). Back-translated on its own the name reads “Six-eight”; a name alone scores low whatever its quality. Read and kept as 六八 (six-eight) + 体 (form), as the zh Wikipedia names it (六八體); no ja article. Read by a language model, not a native speaker: listed in HUMAN-REVIEW.md."
   },
   {
    "lang": "ja",
    "key": "form.quatrain-aabb.name",
    "text": "対韻の四行連",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “Four-line contradiction”."
+   "reason": "Head word sourced: 四行連 is the ja Wikipedia article “四行連” (Q570948); the words for the rhyme pattern (対韻の) are the translator's, not sourced (glossary.json). Back-translated on its own the name reads “Four-line contradiction”; a name alone scores low whatever its quality."
   },
   {
    "lang": "ja",
    "key": "form.quatrain-abab.name",
    "text": "交差韻の四行連",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “Four-line cross rhyme”."
+   "reason": "Head word sourced: 四行連 is the ja Wikipedia article “四行連” (Q570948); the words for the rhyme pattern (交差韻の) are the translator's, not sourced (glossary.json). Back-translated on its own the name reads “Four-line cross rhyme”; a name alone scores low whatever its quality."
   },
   {
    "lang": "ja",
    "key": "form.tercet.name",
    "text": "三行連",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “Triangle”."
+   "reason": "Sourced name: 三行連 is the ja Wikipedia article “三行連” (Q1353779) (glossary.json). Back-translated on its own the name reads “Triangle”; a name alone scores low whatever its quality."
   },
   {
    "lang": "ja",
@@ -1475,7 +1475,7 @@
    "lang": "ko",
    "key": "device.alliteration.name",
    "text": "두운",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “Dark.”."
+   "reason": "Sourced name: 두운 is the ko Wikipedia article “두운” (Q484495) (glossary.json). Back-translated on its own the name reads “Dark.”; a name alone scores low whatever its quality."
   },
   {
    "lang": "ko",
@@ -1487,7 +1487,7 @@
    "lang": "ko",
    "key": "device.internal-rhyme.name",
    "text": "행 안의 운",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “The fortune in the row”."
+   "reason": "Not sourced: the translator's name for the form; no article, label or dictionary entry found gives one in this language (glossary.json says so). Back-translated on its own the name reads “The fortune in the row”; a name alone scores low whatever its quality. Read and kept as 행 (line) 안의 (inside) 운 (rhyme), a rhyme inside the line; MADLAD read 운 as “fortune”. Read by a language model, not a native speaker: listed in HUMAN-REVIEW.md."
   },
   {
    "lang": "ko",
@@ -1517,13 +1517,13 @@
    "lang": "ko",
    "key": "form.acrostic.name",
    "text": "이합체시",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “Ishikawa Prefecture”."
+   "reason": "Sourced name: 이합체시 is the ko Wikipedia article “이합체시” (Q173287) (glossary.json). Back-translated on its own the name reads “Ishikawa Prefecture”; a name alone scores low whatever its quality."
   },
   {
    "lang": "ko",
    "key": "form.anaphora.name",
    "text": "첫말 반복",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “Repeat first word.”."
+   "reason": "Not sourced: the translator's name for the form; no article, label or dictionary entry found gives one in this language (glossary.json says so). Back-translated on its own the name reads “Repeat first word.”; a name alone scores low whatever its quality. Read and kept as 첫말 (first word) 반복 (repetition): what the device asks, said plainly. Read by a language model, not a native speaker: listed in HUMAN-REVIEW.md."
   },
   {
    "lang": "ko",
@@ -1535,43 +1535,43 @@
    "lang": "ko",
    "key": "form.epistrophe.name",
    "text": "끝말 반복",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “End repeat”."
+   "reason": "Not sourced: the translator's name for the form; no article, label or dictionary entry found gives one in this language (glossary.json says so). Back-translated on its own the name reads “End repeat”; a name alone scores low whatever its quality. Read and kept as 끝말 (last word) 반복 (repetition), the pair of 첫말 반복. Read by a language model, not a native speaker: listed in HUMAN-REVIEW.md."
   },
   {
    "lang": "ko",
    "key": "form.heroic-couplet.name",
    "text": "영웅시체 쿠플레",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “Couple of Heroes.”."
+   "reason": "Not sourced: the translator's name for the form; no article, label or dictionary entry found gives one in this language (glossary.json says so). Back-translated on its own the name reads “Couple of Heroes.”; a name alone scores low whatever its quality. Read and kept as 영웅시체 (heroic verse) + 쿠플레, the ko article title for the couplet. Read by a language model, not a native speaker: listed in HUMAN-REVIEW.md."
   },
   {
    "lang": "ko",
    "key": "form.jueju.name",
    "text": "절구",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “Cut.”."
+   "reason": "Not sourced: the translator's name for the form; no article, label or dictionary entry found gives one in this language (glossary.json says so). Back-translated on its own the name reads “Cut.”; a name alone scores low whatever its quality. Read and kept as 絶句 read in Korean (절구); the ko Wikipedia article 절구 is the mortar, a homograph, so MADLAD read “Cut”. Read by a language model, not a native speaker: listed in HUMAN-REVIEW.md."
   },
   {
    "lang": "ko",
    "key": "form.luc-bat.name",
    "text": "육팔체",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “Hexagon”."
+   "reason": "Not sourced: the translator's name for the form; no article, label or dictionary entry found gives one in this language (glossary.json says so). Back-translated on its own the name reads “Hexagon”; a name alone scores low whatever its quality. Read and kept as 육팔 (six-eight) + 체 (form), as Chinese names it (六八體). Read by a language model, not a native speaker: listed in HUMAN-REVIEW.md."
   },
   {
    "lang": "ko",
    "key": "form.quatrain-aabb.name",
    "text": "짝운 4행시",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “The Fourth Act.”."
+   "reason": "Not sourced: the translator's name for the form; no article, label or dictionary entry found gives one in this language (glossary.json says so). Back-translated on its own the name reads “The Fourth Act.”; a name alone scores low whatever its quality. Read and kept as 짝운 (paired rhyme) + 4행시 (four-line poem). Read by a language model, not a native speaker: listed in HUMAN-REVIEW.md."
   },
   {
    "lang": "ko",
    "key": "form.quatrain-abab.name",
    "text": "교차운 4행시",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “Crossroads 4”."
+   "reason": "Not sourced: the translator's name for the form; no article, label or dictionary entry found gives one in this language (glossary.json says so). Back-translated on its own the name reads “Crossroads 4”; a name alone scores low whatever its quality. Read and kept as 교차운 (crossed rhyme) + 4행시 (four-line poem). Read by a language model, not a native speaker: listed in HUMAN-REVIEW.md."
   },
   {
    "lang": "ko",
    "key": "form.tercet.name",
    "text": "3행 연",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “3-line string”."
+   "reason": "Not sourced: the translator's name for the form; no article, label or dictionary entry found gives one in this language (glossary.json says so). Back-translated on its own the name reads “3-line string”; a name alone scores low whatever its quality. Read and kept as 3행 (three lines) + 연 (stanza). Read by a language model, not a native speaker: listed in HUMAN-REVIEW.md."
   },
   {
    "lang": "ko",
@@ -1793,13 +1793,13 @@
    "lang": "pl",
    "key": "form.couplet.name",
    "text": "Dystych",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “Dystych”."
+   "reason": "Sourced name: Dystych is the pl Wikipedia article “Dystych” (Q906442) (glossary.json). Back-translated on its own the name reads “Dystych”; a name alone scores low whatever its quality."
   },
   {
    "lang": "pl",
    "key": "form.quatrain-aabb.name",
    "text": "Czterowiersz parzysty",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “Even quadrivium”."
+   "reason": "Head word sourced: Czterowiersz is English Wiktionary's translation of “quatrain”, “czterowiersz”; the words for the rhyme pattern (parzysty) are the translator's, not sourced (glossary.json). Back-translated on its own the name reads “Even quadrivium”; a name alone scores low whatever its quality."
   },
   {
    "lang": "pl",
@@ -1949,19 +1949,19 @@
    "lang": "pt",
    "key": "form.couplet.name",
    "text": "Dístico",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “Dístico”."
+   "reason": "Sourced name: Dístico is the pt Wikipedia article “Dístico” (Q4779829) (glossary.json). Back-translated on its own the name reads “Dístico”; a name alone scores low whatever its quality."
   },
   {
    "lang": "pt",
    "key": "form.quatrain-aabb.name",
    "text": "Quadra de rimas emparelhadas",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “Square of Paired Rhymes”."
+   "reason": "Head word sourced: Quadra is Wikidata's alias “quadra” (Q570948); the words for the rhyme pattern (de rimas emparelhadas) are the translator's, not sourced (glossary.json). Back-translated on its own the name reads “Square of Paired Rhymes”; a name alone scores low whatever its quality."
   },
   {
    "lang": "pt",
    "key": "form.quatrain-abab.name",
    "text": "Quadra de rimas cruzadas",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “Square of cross rhymes”."
+   "reason": "Head word sourced: Quadra is Wikidata's alias “quadra” (Q570948); the words for the rhyme pattern (de rimas cruzadas) are the translator's, not sourced (glossary.json). Back-translated on its own the name reads “Square of cross rhymes”; a name alone scores low whatever its quality."
   },
   {
    "lang": "pt",
@@ -2105,19 +2105,19 @@
    "lang": "ru",
    "key": "form.couplet.name",
    "text": "Двустишие",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “Double verse”."
+   "reason": "Sourced name: Двустишие is the ru Wikipedia article “Двустишие” (Q4779829) (glossary.json). Back-translated on its own the name reads “Double verse”; a name alone scores low whatever its quality."
   },
   {
    "lang": "ru",
    "key": "form.luc-bat.name",
    "text": "Шесть-восемь",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “Six to eight”."
+   "reason": "Not sourced: the translator's name for the form; no article, label or dictionary entry found gives one in this language (glossary.json says so). Back-translated on its own the name reads “Six to eight”; a name alone scores low whatever its quality. Read and kept as «шесть-восемь», the syllable counts of the form's two lines. Read by a language model, not a native speaker: listed in HUMAN-REVIEW.md."
   },
   {
    "lang": "ru",
    "key": "form.quatrain-aabb.name",
    "text": "Катрен с парной рифмой",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “Catren with pair rhyme”."
+   "reason": "Head word sourced: Катрен is the ru Wikipedia article “Катрен” (Q570948); the words for the rhyme pattern (с парной рифмой) are the translator's, not sourced (glossary.json). Back-translated on its own the name reads “Catren with pair rhyme”; a name alone scores low whatever its quality."
   },
   {
    "lang": "ru",
@@ -2255,7 +2255,7 @@
    "lang": "th",
    "key": "device.alliteration.name",
    "text": "สัมผัสอักษร",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “Touch the letter.”."
+   "reason": "Not sourced: the translator's name for the form; no article, label or dictionary entry found gives one in this language (glossary.json says so). Back-translated on its own the name reads “Touch the letter.”; a name alone scores low whatever its quality. Read and kept as สัมผัสอักษร, the consonant rhyme of Thai prosody (a sound repeated at the start of syllables); MADLAD read สัมผัส as “touch”. Read by a language model, not a native speaker: listed in HUMAN-REVIEW.md."
   },
   {
    "lang": "th",
@@ -2273,7 +2273,7 @@
    "lang": "th",
    "key": "device.internal-rhyme.name",
    "text": "สัมผัสใน",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “Touch in.”."
+   "reason": "Sourced name: สัมผัสใน is Wikidata's alias “สัมผัสใน” (Q178715) (glossary.json). Back-translated on its own the name reads “Touch in.”; a name alone scores low whatever its quality."
   },
   {
    "lang": "th",
@@ -2309,13 +2309,13 @@
    "lang": "th",
    "key": "form.acrostic.name",
    "text": "กลอนกระทู้",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “Poems.”."
+   "reason": "Not sourced: the translator's name for the form; no article, label or dictionary entry found gives one in this language (glossary.json says so). Back-translated on its own the name reads “Poems.”; a name alone scores low whatever its quality. Read and kept as กลอนกระทู้, the Thai verse form in which each line opens with a given word, which is how the game's Thai acrostic works. Read by a language model, not a native speaker: listed in HUMAN-REVIEW.md."
   },
   {
    "lang": "th",
    "key": "form.anaphora.name",
    "text": "ซ้ำคำขึ้นต้น",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “Duplicate Initial”."
+   "reason": "Not sourced: the translator's name for the form; no article, label or dictionary entry found gives one in this language (glossary.json says so). Back-translated on its own the name reads “Duplicate Initial”; a name alone scores low whatever its quality. Read and kept as ซ้ำคำ (repeat the word) ขึ้นต้น (at the start). Read by a language model, not a native speaker: listed in HUMAN-REVIEW.md."
   },
   {
    "lang": "th",
@@ -2327,7 +2327,7 @@
    "lang": "th",
    "key": "form.couplet.name",
    "text": "กลอนคู่",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “Double poetry.”."
+   "reason": "Not sourced: the translator's name for the form; no article, label or dictionary entry found gives one in this language (glossary.json says so). Back-translated on its own the name reads “Double poetry.”; a name alone scores low whatever its quality. Read and kept as กลอน (verse) + คู่ (pair). Read by a language model, not a native speaker: listed in HUMAN-REVIEW.md."
   },
   {
    "lang": "th",
@@ -2339,37 +2339,37 @@
    "lang": "th",
    "key": "form.epistrophe.name",
    "text": "ซ้ำคำลงท้าย",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “Repeat at the end”."
+   "reason": "Not sourced: the translator's name for the form; no article, label or dictionary entry found gives one in this language (glossary.json says so). Back-translated on its own the name reads “Repeat at the end”; a name alone scores low whatever its quality. Read and kept as ซ้ำคำ (repeat the word) ลงท้าย (at the end), the pair of ซ้ำคำขึ้นต้น. Read by a language model, not a native speaker: listed in HUMAN-REVIEW.md."
   },
   {
    "lang": "th",
    "key": "form.heroic-couplet.name",
    "text": "กลอนคู่วีรกรรม",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “Heroic poems.”."
+   "reason": "Not sourced: the translator's name for the form; no article, label or dictionary entry found gives one in this language (glossary.json says so). Back-translated on its own the name reads “Heroic poems.”; a name alone scores low whatever its quality. Read and kept as กลอนคู่ (couplet) + วีรกรรม (heroic deeds). Read by a language model, not a native speaker: listed in HUMAN-REVIEW.md."
   },
   {
    "lang": "th",
    "key": "form.luc-bat.name",
    "text": "หก-แปด",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “Six-eight.”."
+   "reason": "Not sourced: the translator's name for the form; no article, label or dictionary entry found gives one in this language (glossary.json says so). Back-translated on its own the name reads “Six-eight.”; a name alone scores low whatever its quality. Read and kept as “six-eight”, the syllable counts of the form's two lines. Read by a language model, not a native speaker: listed in HUMAN-REVIEW.md."
   },
   {
    "lang": "th",
    "key": "form.quatrain-aabb.name",
    "text": "กลอนสี่สัมผัสคู่",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “Four poems, two touches.”."
+   "reason": "Not sourced: the translator's name for the form; no article, label or dictionary entry found gives one in this language (glossary.json says so). Back-translated on its own the name reads “Four poems, two touches.”; a name alone scores low whatever its quality. Read and kept as กลอนสี่ (four-line verse) + สัมผัสคู่ (paired rhyme); MADLAD read สัมผัส as “touch”. Read by a language model, not a native speaker: listed in HUMAN-REVIEW.md."
   },
   {
    "lang": "th",
    "key": "form.quatrain-abab.name",
    "text": "กลอนสี่สัมผัสไขว้",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “Four poems touch the heart .”."
+   "reason": "Not sourced: the translator's name for the form; no article, label or dictionary entry found gives one in this language (glossary.json says so). Back-translated on its own the name reads “Four poems touch the heart .”; a name alone scores low whatever its quality. Read and kept as กลอนสี่ (four-line verse) + สัมผัสไขว้ (crossed rhyme). Read by a language model, not a native speaker: listed in HUMAN-REVIEW.md."
   },
   {
    "lang": "th",
    "key": "form.tercet.name",
    "text": "กลอนสาม",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “Poem three.”."
+   "reason": "Not sourced: the translator's name for the form; no article, label or dictionary entry found gives one in this language (glossary.json says so). Back-translated on its own the name reads “Poem three.”; a name alone scores low whatever its quality. Read and kept as กลอน (verse) + สาม (three). Read by a language model, not a native speaker: listed in HUMAN-REVIEW.md."
   },
   {
    "lang": "th",
@@ -2579,7 +2579,7 @@
    "lang": "vi",
    "key": "device.alliteration.name",
    "text": "Điệp phụ âm",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “Consonants”."
+   "reason": "Not sourced: the translator's name for the form; no article, label or dictionary entry found gives one in this language (glossary.json says so). Back-translated on its own the name reads “Consonants”; a name alone scores low whatever its quality. Read and kept as điệp (repetition) + phụ âm (consonant): a repeated consonant. Read by a language model, not a native speaker: listed in HUMAN-REVIEW.md."
   },
   {
    "lang": "vi",
@@ -2597,7 +2597,7 @@
    "lang": "vi",
    "key": "device.internal-rhyme.name",
    "text": "Vần lưng",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “Backspace”."
+   "reason": "Not sourced: the translator's name for the form; no article, label or dictionary entry found gives one in this language (glossary.json says so). Back-translated on its own the name reads “Backspace”; a name alone scores low whatever its quality. Read and kept as vần lưng, Vietnamese prosody's term for a rhyme inside the line (the “waist” rhyme), as against vần chân, the end rhyme; MADLAD gave “Backspace”. Read by a language model, not a native speaker: listed in HUMAN-REVIEW.md."
   },
   {
    "lang": "vi",
@@ -2627,49 +2627,49 @@
    "lang": "vi",
    "key": "form.acrostic.name",
    "text": "Thơ khoán thủ",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “Poetry for the poor.”."
+   "reason": "Not sourced: the translator's name for the form; no article, label or dictionary entry found gives one in this language (glossary.json says so). Back-translated on its own the name reads “Poetry for the poor.”; a name alone scores low whatever its quality. Read and kept as thơ khoán thủ, the Vietnamese name for verse whose lines open with given words or letters; MADLAD gave “Poetry for the poor”. Read by a language model, not a native speaker: listed in HUMAN-REVIEW.md."
   },
   {
    "lang": "vi",
    "key": "form.anaphora.name",
    "text": "Điệp đầu",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “First message”."
+   "reason": "Not sourced: the translator's name for the form; no article, label or dictionary entry found gives one in this language (glossary.json says so). Back-translated on its own the name reads “First message”; a name alone scores low whatever its quality. Read and kept as điệp (repetition) + đầu (start). Read by a language model, not a native speaker: listed in HUMAN-REVIEW.md."
   },
   {
    "lang": "vi",
    "key": "form.couplet.name",
    "text": "Câu đối vần",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “Grammar”."
+   "reason": "Not sourced: the translator's name for the form; no article, label or dictionary entry found gives one in this language (glossary.json says so). Back-translated on its own the name reads “Grammar”; a name alone scores low whatever its quality. Read and kept as câu đối (couplet, the antithetical one) + vần (rhyme): a rhymed couplet. Read by a language model, not a native speaker: listed in HUMAN-REVIEW.md."
   },
   {
    "lang": "vi",
    "key": "form.epistrophe.name",
    "text": "Điệp cuối",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “Last message.”."
+   "reason": "Not sourced: the translator's name for the form; no article, label or dictionary entry found gives one in this language (glossary.json says so). Back-translated on its own the name reads “Last message.”; a name alone scores low whatever its quality. Read and kept as điệp (repetition) + cuối (end), the pair of Điệp đầu. Read by a language model, not a native speaker: listed in HUMAN-REVIEW.md."
   },
   {
    "lang": "vi",
    "key": "form.jueju.name",
    "text": "Tuyệt cú",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “Awesome.”."
+   "reason": "Sourced name: Tuyệt cú is the vi Wikipedia article “Tuyệt cú” (Q537198) (glossary.json). Back-translated on its own the name reads “Awesome.”; a name alone scores low whatever its quality."
   },
   {
    "lang": "vi",
    "key": "form.quatrain-aabb.name",
    "text": "Thơ bốn câu vần liền",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “Four-line poem.”."
+   "reason": "Head word sourced: Thơ bốn câu is English Wiktionary's translation of “quatrain”, “thơ bốn câu”; the words for the rhyme pattern (vần liền) are the translator's, not sourced (glossary.json). Back-translated on its own the name reads “Four-line poem.”; a name alone scores low whatever its quality."
   },
   {
    "lang": "vi",
    "key": "form.quatrain-abab.name",
    "text": "Thơ bốn câu vần chéo",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “Four-line crossword”."
+   "reason": "Head word sourced: Thơ bốn câu is English Wiktionary's translation of “quatrain”, “thơ bốn câu”; the words for the rhyme pattern (vần chéo) are the translator's, not sourced (glossary.json). Back-translated on its own the name reads “Four-line crossword”; a name alone scores low whatever its quality."
   },
   {
    "lang": "vi",
    "key": "form.tercet.name",
    "text": "Khổ ba dòng",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “Three-line width”."
+   "reason": "Not sourced: the translator's name for the form; no article, label or dictionary entry found gives one in this language (glossary.json says so). Back-translated on its own the name reads “Three-line width”; a name alone scores low whatever its quality. Read and kept as khổ (stanza) + ba dòng (three lines). Read by a language model, not a native speaker: listed in HUMAN-REVIEW.md."
   },
   {
    "lang": "vi",
@@ -2831,7 +2831,7 @@
    "lang": "zh",
    "key": "device.alliteration.name",
    "text": "头韵法",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “Head Rhythm”."
+   "reason": "Sourced name: 头韵法 is the zh Wikipedia article “頭韻法” (Q484495), the same word in simplified characters (OpenCC: 頭→头, 韻→韵) (glossary.json). Back-translated on its own the name reads “Head Rhythm”; a name alone scores low whatever its quality."
   },
   {
    "lang": "zh",
@@ -2867,19 +2867,19 @@
    "lang": "zh",
    "key": "form.acrostic.name",
    "text": "藏头诗",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “Hidden head poem”."
+   "reason": "Sourced name: 藏头诗 is English Wiktionary's translation of “acrostic”, “藏頭詩”, the same word in simplified characters (OpenCC: 頭→头, 詩→诗) (glossary.json). Back-translated on its own the name reads “Hidden head poem”; a name alone scores low whatever its quality."
   },
   {
    "lang": "zh",
    "key": "form.anaphora.name",
    "text": "首语重复",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “Repetition of introductory words”."
+   "reason": "Not sourced: the translator's name for the form; no article, label or dictionary entry found gives one in this language (glossary.json says so). Back-translated on its own the name reads “Repetition of introductory words”; a name alone scores low whatever its quality. Read and kept as 首 (head) 语 (word) 重复 (repetition); Wikidata's zh label is the longer 句首照应反复. Read by a language model, not a native speaker: listed in HUMAN-REVIEW.md."
   },
   {
    "lang": "zh",
    "key": "form.couplet.name",
    "text": "对句",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “Conjunctions”."
+   "reason": "Sourced name: 对句 is the zh Wikipedia article “对句” (Q4779829) (glossary.json). Back-translated on its own the name reads “Conjunctions”; a name alone scores low whatever its quality."
   },
   {
    "lang": "zh",
@@ -2891,37 +2891,31 @@
    "lang": "zh",
    "key": "form.epistrophe.name",
    "text": "尾语重复",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “Repetition of endings”."
+   "reason": "Not sourced: the translator's name for the form; no article, label or dictionary entry found gives one in this language (glossary.json says so). Back-translated on its own the name reads “Repetition of endings”; a name alone scores low whatever its quality. Read and kept as 尾 (tail) 语 (word) 重复 (repetition), the pair of 首语重复. Read by a language model, not a native speaker: listed in HUMAN-REVIEW.md."
   },
   {
    "lang": "zh",
    "key": "form.jueju.name",
    "text": "绝句",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “Absolutely.”."
+   "reason": "Sourced name: 绝句 is the zh Wikipedia article “绝句” (Q537198) (glossary.json). Back-translated on its own the name reads “Absolutely.”; a name alone scores low whatever its quality."
   },
   {
    "lang": "zh",
    "key": "form.luc-bat.name",
    "text": "六八体",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “Six-eight”."
+   "reason": "Sourced name: 六八体 is the zh Wikipedia article “六八體” (Q1755587), the same name in simplified characters (OpenCC: 體→体) (glossary.json). Back-translated on its own the name reads “Six-eight”; a name alone scores low whatever its quality."
   },
   {
    "lang": "zh",
    "key": "form.quatrain-aabb.name",
    "text": "连韵四行诗",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “Four-line poems”."
+   "reason": "Head word sourced: 四行诗 is the zh Wikipedia article “四行诗” (Q570948); the words for the rhyme pattern (连韵) are the translator's, not sourced (glossary.json). Back-translated on its own the name reads “Four-line poems”; a name alone scores low whatever its quality."
   },
   {
    "lang": "zh",
    "key": "form.quatrain-abab.name",
    "text": "交韵四行诗",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “Four-line poems”."
-  },
-  {
-   "lang": "zh",
-   "key": "form.tercet.name",
-   "text": "三行诗",
-   "reason": "The name of a verse form or device as glossary.json records it for this language (taken from that language's Wikipedia or Wiktionary through Wikidata, or marked there as not sourced). A name back-translated on its own scores low whatever its quality: MADLAD gave “Trilogy”."
+   "reason": "Head word sourced: 四行诗 is the zh Wikipedia article “四行诗” (Q570948); the words for the rhyme pattern (交韵) are the translator's, not sourced (glossary.json). Back-translated on its own the name reads “Four-line poems”; a name alone scores low whatever its quality."
   },
   {
    "lang": "zh",

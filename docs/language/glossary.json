@@ -14,9 +14,15 @@
      "accept": [
       "estrof"
      ],
-     "source": "game term (no outside source)",
+     "source": "English Wiktionary's “verse” table lists estrofa (sources/wiktionary-words.json)",
      "skip": [
       "brain.noWebgpu"
+     ],
+     "cite": [
+      {
+       "dictionary": "verse",
+       "text": "estrofa"
+      }
      ]
     },
     "fr": {
@@ -31,14 +37,26 @@
      "accept": [
       "stroph"
      ],
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “verse” table lists Strophe (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "verse",
+       "text": "Strophe"
+      }
+     ]
     },
     "it": {
      "term": "strofa",
      "accept": [
       "strof"
      ],
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “verse” table lists strofa (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "verse",
+       "text": "strofa"
+      }
+     ]
     },
     "pt": {
      "term": "estrofe",
@@ -59,7 +77,13 @@
      "accept": [
       "строф"
      ],
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “verse” table lists строфа (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "verse",
+       "text": "строфа"
+      }
+     ]
     },
     "ar": {
      "term": "أبيات",
@@ -74,7 +98,13 @@
     },
     "zh": {
      "term": "诗",
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “verse” table lists 詩 (诗) (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "verse",
+       "text": "詩"
+      }
+     ]
     },
     "ja": {
      "term": "詩",
@@ -375,7 +405,13 @@
    "langs": {
     "es": {
      "term": "ronda",
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “round” table lists ronda (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "round",
+       "text": "ronda"
+      }
+     ]
     },
     "fr": {
      "term": "manche",
@@ -383,7 +419,13 @@
     },
     "de": {
      "term": "Runde",
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “round” table lists Runde (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "round",
+       "text": "Runde"
+      }
+     ]
     },
     "it": {
      "term": "round",
@@ -391,25 +433,49 @@
     },
     "pt": {
      "term": "rodada",
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “round” table lists rodada (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "round",
+       "text": "rodada"
+      }
+     ]
     },
     "pl": {
      "term": "runda",
      "accept": [
       "rund"
      ],
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “round” table lists runda (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "round",
+       "text": "runda"
+      }
+     ]
     },
     "ru": {
      "term": "раунд",
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “round” table lists раунд (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "round",
+       "text": "раунд"
+      }
+     ]
     },
     "ar": {
      "term": "جولة",
      "accept": [
       "جولات"
      ],
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “round” table lists جَوْلَة (جولة) (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "round",
+       "text": "جَوْلَة"
+      }
+     ]
     },
     "hi": {
      "term": "दौर",
@@ -417,11 +483,23 @@
     },
     "zh": {
      "term": "回合",
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “round” table lists 回合 (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "round",
+       "text": "回合"
+      }
+     ]
     },
     "ja": {
      "term": "ラウンド",
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “round” table lists ラウンド (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "round",
+       "text": "ラウンド"
+      }
+     ]
     },
     "ko": {
      "term": "라운드",
@@ -437,7 +515,13 @@
     },
     "id": {
      "term": "ronde",
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “round” table lists ronde (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "round",
+       "text": "ronde"
+      }
+     ]
     }
    }
   },
@@ -448,66 +532,156 @@
    "langs": {
     "es": {
      "term": "tinta",
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “ink” table lists tinta (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "ink",
+       "text": "tinta"
+      }
+     ]
     },
     "fr": {
      "term": "encre",
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “ink” table lists encre (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "ink",
+       "text": "encre"
+      }
+     ]
     },
     "de": {
      "term": "Tinte",
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “ink” table lists Tinte (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "ink",
+       "text": "Tinte"
+      }
+     ]
     },
     "it": {
      "term": "inchiostro",
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “ink” table lists inchiostro (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "ink",
+       "text": "inchiostro"
+      }
+     ]
     },
     "pt": {
      "term": "tinta",
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “ink” table lists tinta (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "ink",
+       "text": "tinta"
+      }
+     ]
     },
     "pl": {
      "term": "atrament",
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “ink” table lists atrament (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "ink",
+       "text": "atrament"
+      }
+     ]
     },
     "ru": {
      "term": "чернила",
      "accept": [
       "чернил"
      ],
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “ink” table lists чернила (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "ink",
+       "text": "чернила"
+      }
+     ]
     },
     "ar": {
      "term": "حبر",
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “ink” table lists حِبْر (حبر) (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "ink",
+       "text": "حِبْر"
+      }
+     ]
     },
     "hi": {
      "term": "स्याही",
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “ink” table lists स्याही (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "ink",
+       "text": "स्याही"
+      }
+     ]
     },
     "zh": {
      "term": "墨水",
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “ink” table lists 墨水 (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "ink",
+       "text": "墨水"
+      }
+     ]
     },
     "ja": {
      "term": "インク",
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “ink” table lists インク (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "ink",
+       "text": "インク"
+      }
+     ]
     },
     "ko": {
      "term": "잉크",
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “ink” table lists 잉크 (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "ink",
+       "text": "잉크"
+      }
+     ]
     },
     "vi": {
      "term": "mực",
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “ink” table lists mực (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "ink",
+       "text": "mực"
+      }
+     ]
     },
     "th": {
      "term": "หมึก",
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “ink” table lists หมึก (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "ink",
+       "text": "หมึก"
+      }
+     ]
     },
     "id": {
      "term": "tinta",
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “ink” table lists tinta (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "ink",
+       "text": "tinta"
+      }
+     ]
     }
    }
   },
@@ -522,7 +696,13 @@
       "maldi",
       "maldec"
      ],
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “curse” table lists maldición (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "curse",
+       "text": "maldición"
+      }
+     ]
     },
     "fr": {
      "term": "malédiction",
@@ -530,7 +710,13 @@
       "maudi",
       "malédi"
      ],
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “curse” table lists malédiction (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "curse",
+       "text": "malédiction"
+      }
+     ]
     },
     "de": {
      "term": "Fluch",
@@ -538,14 +724,26 @@
       "fluch",
       "flüch"
      ],
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “curse” table lists Fluch (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "curse",
+       "text": "Fluch"
+      }
+     ]
     },
     "it": {
      "term": "maledizione",
      "accept": [
       "maledi"
      ],
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “curse” table lists maledizione (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "curse",
+       "text": "maledizione"
+      }
+     ]
     },
     "pt": {
      "term": "maldição",
@@ -553,7 +751,13 @@
       "maldi",
       "amaldiço"
      ],
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “curse” table lists maldição (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "curse",
+       "text": "maldição"
+      }
+     ]
     },
     "pl": {
      "term": "klątwa",
@@ -561,54 +765,108 @@
       "klątw",
       "przekl"
      ],
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “curse” table lists klątwa (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "curse",
+       "text": "klątwa"
+      }
+     ]
     },
     "ru": {
      "term": "проклятие",
      "accept": [
       "прокл"
      ],
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “curse” table lists проклятие (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "curse",
+       "text": "проклятие"
+      }
+     ]
     },
     "ar": {
      "term": "لعنة",
      "accept": [
       "لعن"
      ],
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “curse” table lists لَعْنَة (لعنة) (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "curse",
+       "text": "لَعْنَة"
+      }
+     ]
     },
     "hi": {
      "term": "शाप",
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “curse” table lists शाप (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "curse",
+       "text": "शाप"
+      }
+     ]
     },
     "zh": {
      "term": "诅咒",
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “curse” table lists 詛咒 (诅咒) (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "curse",
+       "text": "詛咒"
+      }
+     ]
     },
     "ja": {
      "term": "呪い",
      "accept": [
       "呪"
      ],
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “curse” table lists 呪い (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "curse",
+       "text": "呪い"
+      }
+     ]
     },
     "ko": {
      "term": "저주",
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “curse” table lists 저주(詛呪) (저주) (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "curse",
+       "text": "저주(詛呪)"
+      }
+     ]
     },
     "vi": {
      "term": "lời nguyền",
      "accept": [
       "nguyền"
      ],
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “curse” table lists lời nguyền (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "curse",
+       "text": "lời nguyền"
+      }
+     ]
     },
     "th": {
      "term": "คำสาป",
      "accept": [
       "สาป"
      ],
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “curse” table lists คำสาป (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "curse",
+       "text": "คำสาป"
+      }
+     ]
     },
     "id": {
      "term": "kutukan",
@@ -627,47 +885,95 @@
    "langs": {
     "es": {
      "term": "reliquia",
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “relic” table lists reliquia (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "relic",
+       "text": "reliquia"
+      }
+     ]
     },
     "fr": {
      "term": "relique",
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “relic” table lists relique (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "relic",
+       "text": "relique"
+      }
+     ]
     },
     "de": {
      "term": "Relikt",
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “relic” table lists Relikt (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "relic",
+       "text": "Relikt"
+      }
+     ]
     },
     "it": {
      "term": "reliquia",
      "accept": [
       "reliqui"
      ],
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “relic” table lists reliquia (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "relic",
+       "text": "reliquia"
+      }
+     ]
     },
     "pt": {
      "term": "relíquia",
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “relic” table lists relíquia (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "relic",
+       "text": "relíquia"
+      }
+     ]
     },
     "pl": {
      "term": "relikwia",
      "accept": [
       "relikwi"
      ],
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “relic” table lists relikwia (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "relic",
+       "text": "relikwia"
+      }
+     ]
     },
     "ru": {
      "term": "реликвия",
      "accept": [
       "реликви"
      ],
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “relic” table lists реликвия (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "relic",
+       "text": "реликвия"
+      }
+     ]
     },
     "ar": {
      "term": "أثر",
      "accept": [
       "آثار"
      ],
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “relic” table lists أَثَر (أثر) (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "relic",
+       "text": "أَثَر"
+      }
+     ]
     },
     "hi": {
      "term": "अवशेष",
@@ -679,11 +985,23 @@
     },
     "ja": {
      "term": "遺物",
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “relic” table lists 遺物 (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "relic",
+       "text": "遺物"
+      }
+     ]
     },
     "ko": {
      "term": "유물",
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “relic” table lists 유물(遺物) (유물) (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "relic",
+       "text": "유물(遺物)"
+      }
+     ]
     },
     "vi": {
      "term": "bảo vật",
@@ -695,7 +1013,13 @@
     },
     "id": {
      "term": "relik",
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “relic” table lists relik (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "relic",
+       "text": "relik"
+      }
+     ]
     }
    }
   },
@@ -709,64 +1033,124 @@
      "accept": [
       "poci"
      ],
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “potion” table lists poción (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "potion",
+       "text": "poción"
+      }
+     ]
     },
     "fr": {
      "term": "potion",
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “potion” table lists potion (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "potion",
+       "text": "potion"
+      }
+     ]
     },
     "de": {
      "term": "Trank",
      "accept": [
       "tränk"
      ],
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “potion” table lists Trank (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "potion",
+       "text": "Trank"
+      }
+     ]
     },
     "it": {
      "term": "pozione",
      "accept": [
       "pozion"
      ],
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “potion” table lists pozione (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "potion",
+       "text": "pozione"
+      }
+     ]
     },
     "pt": {
      "term": "poção",
      "accept": [
       "poções"
      ],
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “potion” table lists poção (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "potion",
+       "text": "poção"
+      }
+     ]
     },
     "pl": {
      "term": "mikstura",
      "accept": [
       "mikstur"
      ],
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “potion” table lists mikstura (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "potion",
+       "text": "mikstura"
+      }
+     ]
     },
     "ru": {
      "term": "зелье",
      "accept": [
       "зель"
      ],
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “potion” table lists зелье (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "potion",
+       "text": "зелье"
+      }
+     ]
     },
     "ar": {
      "term": "جرعة",
      "accept": [
       "جرع"
      ],
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “potion” table lists جُرْعَة (جرعة) (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "potion",
+       "text": "جُرْعَة"
+      }
+     ]
     },
     "hi": {
      "term": "काढ़ा",
      "accept": [
       "काढ़े"
      ],
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “potion” table lists काढ़ा (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "potion",
+       "text": "काढ़ा"
+      }
+     ]
     },
     "zh": {
      "term": "药水",
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “potion” table lists 藥水 (药水) (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "potion",
+       "text": "藥水"
+      }
+     ]
     },
     "ja": {
      "term": "薬",
@@ -774,7 +1158,13 @@
     },
     "ko": {
      "term": "물약",
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “potion” table lists 물약 (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "potion",
+       "text": "물약"
+      }
+     ]
     },
     "vi": {
      "term": "thuốc phép",
@@ -805,29 +1195,59 @@
     },
     "de": {
      "term": "Deck",
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “deck” table lists Deck (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "deck",
+       "text": "Deck"
+      }
+     ]
     },
     "it": {
      "term": "mazzo",
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “deck” table lists mazzo (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "deck",
+       "text": "mazzo"
+      }
+     ]
     },
     "pt": {
      "term": "baralho",
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “deck” table lists baralho (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "deck",
+       "text": "baralho"
+      }
+     ]
     },
     "pl": {
      "term": "talia",
      "accept": [
       "tali"
      ],
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “deck” table lists talia (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "deck",
+       "text": "talia"
+      }
+     ]
     },
     "ru": {
      "term": "колода",
      "accept": [
       "колод"
      ],
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “deck” table lists колода (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "deck",
+       "text": "колода"
+      }
+     ]
     },
     "ar": {
      "term": "رزمة",
@@ -846,7 +1266,13 @@
     },
     "ja": {
      "term": "デッキ",
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “deck” table lists デッキ (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "deck",
+       "text": "デッキ"
+      }
+     ]
     },
     "ko": {
      "term": "덱",
@@ -858,7 +1284,13 @@
     },
     "th": {
      "term": "สำรับ",
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “deck” table lists สำรับ (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "deck",
+       "text": "สำรับ"
+      }
+     ]
     },
     "id": {
      "term": "dek",
@@ -873,47 +1305,95 @@
    "langs": {
     "es": {
      "term": "duelo",
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “duel” table lists duelo (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "duel",
+       "text": "duelo"
+      }
+     ]
     },
     "fr": {
      "term": "duel",
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “duel” table lists duel (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "duel",
+       "text": "duel"
+      }
+     ]
     },
     "de": {
      "term": "Duell",
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “duel” table lists Duell (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "duel",
+       "text": "Duell"
+      }
+     ]
     },
     "it": {
      "term": "duello",
      "accept": [
       "duell"
      ],
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “duel” table lists duello (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "duel",
+       "text": "duello"
+      }
+     ]
     },
     "pt": {
      "term": "duelo",
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “duel” table lists duelo (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "duel",
+       "text": "duelo"
+      }
+     ]
     },
     "pl": {
      "term": "pojedynek",
      "accept": [
       "pojedyn"
      ],
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “duel” table lists pojedynek (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "duel",
+       "text": "pojedynek"
+      }
+     ]
     },
     "ru": {
      "term": "дуэль",
      "accept": [
       "дуэл"
      ],
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “duel” table lists дуэль (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "duel",
+       "text": "дуэль"
+      }
+     ]
     },
     "ar": {
      "term": "مبارزة",
      "accept": [
       "مبارز"
      ],
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “duel” table lists مُبَارَزَة (مبارزة) (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "duel",
+       "text": "مُبَارَزَة"
+      }
+     ]
     },
     "hi": {
      "term": "द्वंद्व",
@@ -928,11 +1408,23 @@
     },
     "ja": {
      "term": "決闘",
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “duel” table lists 決闘 (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "duel",
+       "text": "決闘"
+      }
+     ]
     },
     "ko": {
      "term": "결투",
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “duel” table lists 결투(決鬪) (결투) (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "duel",
+       "text": "결투(決鬪)"
+      }
+     ]
     },
     "vi": {
      "term": "trận đấu",
@@ -962,23 +1454,53 @@
    "langs": {
     "es": {
      "term": "oficio",
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “craft” table lists oficio (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "craft",
+       "text": "oficio"
+      }
+     ]
     },
     "fr": {
      "term": "métier",
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “craft” table lists métier (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "craft",
+       "text": "métier"
+      }
+     ]
     },
     "de": {
      "term": "Handwerk",
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “craft” table lists Handwerk (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "craft",
+       "text": "Handwerk"
+      }
+     ]
     },
     "it": {
      "term": "mestiere",
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “craft” table lists mestiere (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "craft",
+       "text": "mestiere"
+      }
+     ]
     },
     "pt": {
      "term": "ofício",
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “craft” table lists ofício (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "craft",
+       "text": "ofício"
+      }
+     ]
     },
     "pl": {
      "term": "kunszt",
@@ -993,7 +1515,13 @@
     },
     "ar": {
      "term": "صنعة",
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “craft” table lists صَنْعَة (صنعة) (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "craft",
+       "text": "صَنْعَة"
+      }
+     ]
     },
     "hi": {
      "term": "शिल्प",
@@ -1032,44 +1560,92 @@
    "langs": {
     "es": {
      "term": "juez",
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “judge” table lists juez (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "judge",
+       "text": "juez"
+      }
+     ]
     },
     "fr": {
      "term": "juge",
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “judge” table lists juge (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "judge",
+       "text": "juge"
+      }
+     ]
     },
     "de": {
      "term": "Richter",
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “judge” table lists Richter (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "judge",
+       "text": "Richter"
+      }
+     ]
     },
     "it": {
      "term": "giudice",
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “judge” table lists giudice (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "judge",
+       "text": "giudice"
+      }
+     ]
     },
     "pt": {
      "term": "juiz",
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “judge” table lists juiz (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "judge",
+       "text": "juiz"
+      }
+     ]
     },
     "pl": {
      "term": "sędzia",
      "accept": [
       "sędzi"
      ],
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “judge” table lists sędzia (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "judge",
+       "text": "sędzia"
+      }
+     ]
     },
     "ru": {
      "term": "судья",
      "accept": [
       "судь"
      ],
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “judge” table lists судья (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "judge",
+       "text": "судья"
+      }
+     ]
     },
     "ar": {
      "term": "حَكَم",
      "accept": [
       "الحكم"
      ],
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “judge” table lists حَكَمَ (حَكَم) (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "judge",
+       "text": "حَكَمَ"
+      }
+     ]
     },
     "hi": {
      "term": "निर्णायक",
@@ -1077,15 +1653,33 @@
     },
     "zh": {
      "term": "裁判",
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “judge” table lists 裁判 (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "judge",
+       "text": "裁判"
+      }
+     ]
     },
     "ja": {
      "term": "審判",
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “judge” table lists 審判 (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "judge",
+       "text": "審判"
+      }
+     ]
     },
     "ko": {
      "term": "심판",
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “judge” table lists 심판(審判) (심판) (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "judge",
+       "text": "심판(審判)"
+      }
+     ]
     },
     "vi": {
      "term": "giám khảo",
@@ -1097,7 +1691,13 @@
     },
     "id": {
      "term": "juri",
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “judge” table lists juri (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "judge",
+       "text": "juri"
+      }
+     ]
     }
    }
   },
@@ -1112,18 +1712,36 @@
     },
     "fr": {
      "term": "adversaire",
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “opponent” table lists adversaire (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "opponent",
+       "text": "adversaire"
+      }
+     ]
     },
     "de": {
      "term": "Gegner",
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “opponent” table lists Gegner (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "opponent",
+       "text": "Gegner"
+      }
+     ]
     },
     "it": {
      "term": "avversario",
      "accept": [
       "avversari"
      ],
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “opponent” table lists avversario (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "opponent",
+       "text": "avversario"
+      }
+     ]
     },
     "pt": {
      "term": "adversário",
@@ -1139,7 +1757,13 @@
     },
     "ar": {
      "term": "خصم",
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “opponent” table lists خَصْم (خصم) (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "opponent",
+       "text": "خَصْم"
+      }
+     ]
     },
     "hi": {
      "term": "प्रतिद्वंद्वी",
@@ -1147,15 +1771,33 @@
     },
     "zh": {
      "term": "对手",
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “opponent” table lists 對手 (对手) (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "opponent",
+       "text": "對手"
+      }
+     ]
     },
     "ja": {
      "term": "相手",
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “opponent” table lists 相手 (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "opponent",
+       "text": "相手"
+      }
+     ]
     },
     "ko": {
      "term": "상대",
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “opponent” table lists 상대(相對) (상대) (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "opponent",
+       "text": "상대(相對)"
+      }
+     ]
     },
     "vi": {
      "term": "đối thủ",
@@ -1163,7 +1805,13 @@
     },
     "th": {
      "term": "คู่ต่อสู้",
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “opponent” table lists คู่ต่อสู้ (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "opponent",
+       "text": "คู่ต่อสู้"
+      }
+     ]
     },
     "id": {
      "term": "lawan",
@@ -1178,49 +1826,109 @@
    "langs": {
     "es": {
      "term": "firma",
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “signature” table lists firma (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "signature",
+       "text": "firma"
+      }
+     ]
     },
     "fr": {
      "term": "signature",
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “signature” table lists signature (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "signature",
+       "text": "signature"
+      }
+     ]
     },
     "de": {
      "term": "Signatur",
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “signature” table lists Signatur (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "signature",
+       "text": "Signatur"
+      }
+     ]
     },
     "it": {
      "term": "firma",
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “signature” table lists firma (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "signature",
+       "text": "firma"
+      }
+     ]
     },
     "pt": {
      "term": "assinatura",
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “signature” table lists assinatura (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "signature",
+       "text": "assinatura"
+      }
+     ]
     },
     "pl": {
      "term": "sygnatura",
      "accept": [
       "sygnatur"
      ],
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “signature” table lists sygnatura (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "signature",
+       "text": "sygnatura"
+      }
+     ]
     },
     "ru": {
      "term": "подпись",
      "accept": [
       "подпис"
      ],
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “signature” table lists подпись (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "signature",
+       "text": "подпись"
+      }
+     ]
     },
     "ar": {
      "term": "توقيع",
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “signature” table lists تَوْقِيع (توقيع) (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "signature",
+       "text": "تَوْقِيع"
+      }
+     ]
     },
     "hi": {
      "term": "हस्ताक्षर",
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “signature” table lists हस्ताक्षर (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "signature",
+       "text": "हस्ताक्षर"
+      }
+     ]
     },
     "zh": {
      "term": "签名",
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “signature” table lists 簽名 (签名) (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "signature",
+       "text": "簽名"
+      }
+     ]
     },
     "ja": {
      "term": "シグネチャー",
@@ -1236,11 +1944,23 @@
     },
     "th": {
      "term": "ลายเซ็น",
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “signature” table lists ลายเซ็น (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "signature",
+       "text": "ลายเซ็น"
+      }
+     ]
     },
     "id": {
      "term": "tanda tangan",
-     "source": "game term (no outside source)"
+     "source": "English Wiktionary's “signature” table lists tanda tangan (sources/wiktionary-words.json)",
+     "cite": [
+      {
+       "dictionary": "signature",
+       "text": "tanda tangan"
+      }
+     ]
     }
    }
   },
@@ -1318,75 +2038,180 @@
    "langs": {
     "es": {
      "term": "sílaba",
-     "source": "Wikidata Q8188 (docs/language/sources/wikidata-terms.json)"
+     "source": "Wikidata's es label for the syllable (Q8188), sources/wikidata-terms.json",
+     "cite": [
+      {
+       "wikidata": "label",
+       "qid": "Q8188",
+       "text": "sílaba"
+      }
+     ]
     },
     "fr": {
      "term": "syllabe",
-     "source": "Wikidata Q8188 (docs/language/sources/wikidata-terms.json)"
+     "source": "Wikidata's fr label for the syllable (Q8188), sources/wikidata-terms.json",
+     "cite": [
+      {
+       "wikidata": "label",
+       "qid": "Q8188",
+       "text": "syllabe"
+      }
+     ]
     },
     "de": {
      "term": "Silbe",
-     "source": "Wikidata Q8188 (docs/language/sources/wikidata-terms.json)"
+     "source": "Wikidata's de label for the syllable (Q8188), sources/wikidata-terms.json",
+     "cite": [
+      {
+       "wikidata": "label",
+       "qid": "Q8188",
+       "text": "Silbe"
+      }
+     ]
     },
     "it": {
      "term": "sillaba",
      "accept": [
       "sillabe"
      ],
-     "source": "Wikidata Q8188 (docs/language/sources/wikidata-terms.json)"
+     "source": "Wikidata's it label for the syllable (Q8188), sources/wikidata-terms.json",
+     "cite": [
+      {
+       "wikidata": "label",
+       "qid": "Q8188",
+       "text": "sillaba"
+      }
+     ]
     },
     "pt": {
      "term": "sílaba",
-     "source": "Wikidata Q8188 (docs/language/sources/wikidata-terms.json)"
+     "source": "Wikidata's pt label for the syllable (Q8188), sources/wikidata-terms.json",
+     "cite": [
+      {
+       "wikidata": "label",
+       "qid": "Q8188",
+       "text": "sílaba"
+      }
+     ]
     },
     "pl": {
      "term": "sylaba",
      "accept": [
       "sylab"
      ],
-     "source": "Wikidata Q8188 (docs/language/sources/wikidata-terms.json)"
+     "source": "Wikidata's pl label for the syllable (Q8188), sources/wikidata-terms.json",
+     "cite": [
+      {
+       "wikidata": "label",
+       "qid": "Q8188",
+       "text": "sylaba"
+      }
+     ]
     },
     "ru": {
      "term": "слог",
-     "source": "Wikidata Q8188 (docs/language/sources/wikidata-terms.json)"
+     "source": "Wikidata's ru label for the syllable (Q8188), sources/wikidata-terms.json",
+     "cite": [
+      {
+       "wikidata": "label",
+       "qid": "Q8188",
+       "text": "слог"
+      }
+     ]
     },
     "ar": {
      "term": "مقطع",
      "accept": [
       "مقاطع"
      ],
-     "source": "Wikidata Q8188 (docs/language/sources/wikidata-terms.json)"
+     "source": "A Wikidata ar alias of the syllable (Q8188), whose label is مقطع لفظي (sources/wikidata-terms.json)",
+     "cite": [
+      {
+       "wikidata": "alias",
+       "qid": "Q8188",
+       "text": "مقطع"
+      }
+     ]
     },
     "hi": {
      "term": "शब्दांश",
-     "source": "Wikidata Q8188 (docs/language/sources/wikidata-terms.json)"
+     "source": "Wikidata's hi label for the syllable (Q8188), sources/wikidata-terms.json",
+     "cite": [
+      {
+       "wikidata": "label",
+       "qid": "Q8188",
+       "text": "शब्दांश"
+      }
+     ]
     },
     "zh": {
      "term": "音节",
-     "source": "Wikidata Q8188 (docs/language/sources/wikidata-terms.json)"
+     "source": "Wikidata's zh label for the syllable (Q8188), sources/wikidata-terms.json",
+     "cite": [
+      {
+       "wikidata": "label",
+       "qid": "Q8188",
+       "text": "音节"
+      }
+     ]
     },
     "ja": {
      "term": "音節",
-     "source": "Wikidata Q8188 (docs/language/sources/wikidata-terms.json)"
+     "source": "Wikidata's ja label for the syllable (Q8188), sources/wikidata-terms.json",
+     "cite": [
+      {
+       "wikidata": "label",
+       "qid": "Q8188",
+       "text": "音節"
+      }
+     ]
     },
     "ko": {
      "term": "음절",
-     "source": "Wikidata Q8188 (docs/language/sources/wikidata-terms.json)"
+     "source": "Wikidata's ko label for the syllable (Q8188), sources/wikidata-terms.json",
+     "cite": [
+      {
+       "wikidata": "label",
+       "qid": "Q8188",
+       "text": "음절"
+      }
+     ]
     },
     "vi": {
      "term": "âm tiết",
      "accept": [
       "tiếng"
      ],
-     "source": "Wikidata Q8188 (docs/language/sources/wikidata-terms.json)"
+     "source": "Wikidata's vi label for the syllable (Q8188), sources/wikidata-terms.json",
+     "cite": [
+      {
+       "wikidata": "label",
+       "qid": "Q8188",
+       "text": "âm tiết"
+      }
+     ]
     },
     "th": {
      "term": "พยางค์",
-     "source": "Wikidata Q8188 (docs/language/sources/wikidata-terms.json)"
+     "source": "Wikidata's th label for the syllable (Q8188), sources/wikidata-terms.json",
+     "cite": [
+      {
+       "wikidata": "label",
+       "qid": "Q8188",
+       "text": "พยางค์"
+      }
+     ]
     },
     "id": {
      "term": "suku kata",
-     "source": "Wikidata Q8188 (docs/language/sources/wikidata-terms.json)"
+     "source": "Wikidata's id label for the syllable (Q8188), sources/wikidata-terms.json",
+     "cite": [
+      {
+       "wikidata": "label",
+       "qid": "Q8188",
+       "text": "suku kata"
+      }
+     ]
     }
    }
   },
@@ -1400,46 +2225,95 @@
      "accept": [
       "rim"
      ],
-     "source": "Wikidata Q178715 (docs/language/sources/wikidata-terms.json); verb forms by the translator"
+     "source": "Wikidata's es label for rhyme (Q178715), sources/wikidata-terms.json; verb forms by the translator",
+     "cite": [
+      {
+       "wikidata": "label",
+       "qid": "Q178715",
+       "text": "rima"
+      }
+     ]
     },
     "fr": {
      "term": "rime",
      "accept": [
       "rim"
      ],
-     "source": "Wikidata Q178715 (docs/language/sources/wikidata-terms.json); verb forms by the translator"
+     "source": "Wikidata's fr label for rhyme (Q178715), sources/wikidata-terms.json; verb forms by the translator",
+     "cite": [
+      {
+       "wikidata": "label",
+       "qid": "Q178715",
+       "text": "rime"
+      }
+     ]
     },
     "de": {
      "term": "Reim",
      "accept": [
       "reim"
      ],
-     "source": "Wikidata Q178715 (docs/language/sources/wikidata-terms.json); verb forms by the translator"
+     "source": "Wikidata's de label for rhyme (Q178715), sources/wikidata-terms.json; verb forms by the translator",
+     "cite": [
+      {
+       "wikidata": "label",
+       "qid": "Q178715",
+       "text": "Reim"
+      }
+     ]
     },
     "it": {
      "term": "rima",
      "accept": [
       "rim"
      ],
-     "source": "Wikidata Q178715 (docs/language/sources/wikidata-terms.json); verb forms by the translator"
+     "source": "Wikidata's it label for rhyme (Q178715), sources/wikidata-terms.json; verb forms by the translator",
+     "cite": [
+      {
+       "wikidata": "label",
+       "qid": "Q178715",
+       "text": "rima"
+      }
+     ]
     },
     "pt": {
      "term": "rima",
      "accept": [
       "rim"
      ],
-     "source": "Wikidata Q178715 (docs/language/sources/wikidata-terms.json); verb forms by the translator"
+     "source": "Wikidata's pt label for rhyme (Q178715), sources/wikidata-terms.json; verb forms by the translator",
+     "cite": [
+      {
+       "wikidata": "label",
+       "qid": "Q178715",
+       "text": "rima"
+      }
+     ]
     },
     "pl": {
      "term": "rym",
-     "source": "Wikidata Q178715 (docs/language/sources/wikidata-terms.json); verb forms by the translator"
+     "source": "Wikidata's pl label for rhyme (Q178715), sources/wikidata-terms.json; verb forms by the translator",
+     "cite": [
+      {
+       "wikidata": "label",
+       "qid": "Q178715",
+       "text": "rym"
+      }
+     ]
     },
     "ru": {
      "term": "рифма",
      "accept": [
       "рифм"
      ],
-     "source": "Wikidata Q178715 (docs/language/sources/wikidata-terms.json); verb forms by the translator"
+     "source": "Wikidata's ru label for rhyme (Q178715), sources/wikidata-terms.json; verb forms by the translator",
+     "cite": [
+      {
+       "wikidata": "label",
+       "qid": "Q178715",
+       "text": "рифма"
+      }
+     ]
     },
     "ar": {
      "term": "قافية",
@@ -1448,41 +2322,92 @@
       "يقفّي",
       "مقفّ"
      ],
-     "source": "Wikidata Q178715 (docs/language/sources/wikidata-terms.json); verb forms by the translator"
+     "source": "Wikidata's ar label for rhyme (Q178715), sources/wikidata-terms.json; verb forms by the translator",
+     "cite": [
+      {
+       "wikidata": "label",
+       "qid": "Q178715",
+       "text": "قافية"
+      }
+     ]
     },
     "hi": {
      "term": "तुक",
-     "source": "Wikidata Q178715 (docs/language/sources/wikidata-terms.json); verb forms by the translator"
+     "source": "English Wiktionary's “rhyme” table lists तुक (sources/wiktionary-words.json); Wikidata's hi label for rhyme (Q178715) is क़ाफ़िया; verb forms by the translator",
+     "cite": [
+      {
+       "dictionary": "rhyme",
+       "text": "तुक"
+      }
+     ]
     },
     "zh": {
      "term": "押韵",
      "accept": [
       "韵"
      ],
-     "source": "Wikidata Q178715 (docs/language/sources/wikidata-terms.json); verb forms by the translator"
+     "source": "English Wiktionary's “rhyme” table lists 押韻 (押韵) (sources/wiktionary-words.json); Wikidata's zh label for rhyme (Q178715) is 押韻; verb forms by the translator",
+     "cite": [
+      {
+       "dictionary": "rhyme",
+       "text": "押韻"
+      }
+     ]
     },
     "ja": {
      "term": "韻",
-     "source": "Wikidata Q178715 (docs/language/sources/wikidata-terms.json); verb forms by the translator"
+     "source": "English Wiktionary's “rhyme” table lists 韻 (sources/wiktionary-words.json); Wikidata's ja label for rhyme (Q178715) is 韻文; verb forms by the translator",
+     "cite": [
+      {
+       "dictionary": "rhyme",
+       "text": "韻"
+      }
+     ]
     },
     "ko": {
      "term": "운",
-     "source": "Wikidata Q178715 (docs/language/sources/wikidata-terms.json); verb forms by the translator"
+     "source": "English Wiktionary's “rhyme” table lists 운(韻) (운) (sources/wiktionary-words.json); Wikidata's ko label for rhyme (Q178715) is 압운; verb forms by the translator",
+     "cite": [
+      {
+       "dictionary": "rhyme",
+       "text": "운(韻)"
+      }
+     ]
     },
     "vi": {
      "term": "vần",
      "accept": [
       "vận"
      ],
-     "source": "Wikidata Q178715 (docs/language/sources/wikidata-terms.json); verb forms by the translator"
+     "source": "Wikidata's vi label for rhyme (Q178715), sources/wikidata-terms.json; verb forms by the translator",
+     "cite": [
+      {
+       "wikidata": "label",
+       "qid": "Q178715",
+       "text": "vần"
+      }
+     ]
     },
     "th": {
      "term": "สัมผัส",
-     "source": "Wikidata Q178715 (docs/language/sources/wikidata-terms.json); verb forms by the translator"
+     "source": "English Wiktionary's “rhyme” table lists สัมผัส (sources/wiktionary-words.json); Wikidata's th label for rhyme (Q178715) is คำคล้องจอง; verb forms by the translator",
+     "cite": [
+      {
+       "dictionary": "rhyme",
+       "text": "สัมผัส"
+      }
+     ]
     },
     "id": {
      "term": "rima",
-     "source": "Wikidata Q178715 (docs/language/sources/wikidata-terms.json); verb forms by the translator"
+     "source": "Wikidata's id label for rhyme (Q178715), sources/wikidata-terms.json; verb forms by the translator",
+     "cite": [
+      {
+       "wikidata": "label",
+       "qid": "Q178715",
+       "text": "Rima"
+      }
+     ]
     }
    }
   },
@@ -1567,22 +2492,62 @@
       "llaves de acceso",
       "llave"
      ],
-     "source": "Android (AOSP CredentialManager): llave de acceso / llaves de acceso"
+     "source": "Android (AOSP CredentialManager): llave de acceso / llaves de acceso",
+     "cite": [
+      {
+       "aosp": "passkey",
+       "text": "llave de acceso"
+      },
+      {
+       "aosp": "passkeys",
+       "text": "llaves de acceso"
+      }
+     ]
     },
     "fr": {
      "term": "clé d’accès",
      "accept": [
       "clés d’accès"
      ],
-     "source": "Android (AOSP CredentialManager): clé d'accès / clés d'accès"
+     "source": "Android (AOSP CredentialManager): clé d'accès / clés d'accès",
+     "cite": [
+      {
+       "aosp": "passkey",
+       "text": "clé d'accès"
+      },
+      {
+       "aosp": "passkeys",
+       "text": "clés d'accès"
+      }
+     ]
     },
     "de": {
      "term": "Passkey",
-     "source": "Android (AOSP CredentialManager): Passkey / Passkeys"
+     "source": "Android (AOSP CredentialManager): Passkey / Passkeys",
+     "cite": [
+      {
+       "aosp": "passkey",
+       "text": "Passkey"
+      },
+      {
+       "aosp": "passkeys",
+       "text": "Passkeys"
+      }
+     ]
     },
     "it": {
      "term": "passkey",
-     "source": "Android (AOSP CredentialManager): passkey / passkey"
+     "source": "Android (AOSP CredentialManager): passkey / passkey",
+     "cite": [
+      {
+       "aosp": "passkey",
+       "text": "passkey"
+      },
+      {
+       "aosp": "passkeys",
+       "text": "passkey"
+      }
+     ]
     },
     "pt": {
      "term": "chave de acesso",
@@ -1590,21 +2555,51 @@
       "chaves de acesso",
       "chave"
      ],
-     "source": "Android (AOSP CredentialManager): chave de acesso / chaves de acesso"
+     "source": "Android (AOSP CredentialManager): chave de acesso / chaves de acesso",
+     "cite": [
+      {
+       "aosp": "passkey",
+       "text": "chave de acesso"
+      },
+      {
+       "aosp": "passkeys",
+       "text": "chaves de acesso"
+      }
+     ]
     },
     "pl": {
      "term": "klucz dostępu",
      "accept": [
       "klucz"
      ],
-     "source": "Android (AOSP CredentialManager): klucz / klucze dostępu"
+     "source": "Android (AOSP CredentialManager): klucz / klucze dostępu",
+     "cite": [
+      {
+       "aosp": "passkey",
+       "text": "klucz"
+      },
+      {
+       "aosp": "passkeys",
+       "text": "klucze dostępu"
+      }
+     ]
     },
     "ru": {
      "term": "ключ доступа",
      "accept": [
       "ключ"
      ],
-     "source": "Android (AOSP CredentialManager): ключ доступа / ключи доступа"
+     "source": "Android (AOSP CredentialManager): ключ доступа / ключи доступа",
+     "cite": [
+      {
+       "aosp": "passkey",
+       "text": "ключ доступа"
+      },
+      {
+       "aosp": "passkeys",
+       "text": "ключи доступа"
+      }
+     ]
     },
     "ar": {
      "term": "مفتاح المرور",
@@ -1614,38 +2609,122 @@
       "مفاتيح مرور",
       "مفتاح"
      ],
-     "source": "Android (AOSP CredentialManager): مفتاح المرور / مفاتيح المرور"
+     "source": "Android (AOSP CredentialManager): مفتاح المرور / مفاتيح المرور",
+     "cite": [
+      {
+       "aosp": "passkey",
+       "text": "مفتاح المرور"
+      },
+      {
+       "aosp": "passkeys",
+       "text": "مفاتيح المرور"
+      }
+     ]
     },
     "hi": {
      "term": "पासकी",
-     "source": "Android (AOSP CredentialManager): पासकी / पासकी"
+     "source": "Android (AOSP CredentialManager): पासकी / पासकी",
+     "cite": [
+      {
+       "aosp": "passkey",
+       "text": "पासकी"
+      },
+      {
+       "aosp": "passkeys",
+       "text": "पासकी"
+      }
+     ]
     },
     "zh": {
      "term": "通行密钥",
      "forbid": [
       "把通行密钥"
      ],
-     "source": "Android (AOSP CredentialManager): 通行密钥 / 通行密钥. Counted with 个, as Android counts them: Android (AOSP CredentialManager, more_options_usage_passkeys): %1$s 个通行密钥. The game had written 一把 / 这把 (the measure word of a key with a handle); the reviewer model objected in two strings, and all fifteen now take 个."
+     "source": "Android (AOSP CredentialManager): 通行密钥 / 通行密钥. Counted with 个, as Android counts them: Android (AOSP CredentialManager, more_options_usage_passkeys): %1$s 个通行密钥. The game had written 一把 / 这把 (the measure word of a key with a handle); the reviewer model objected in two strings, and all fifteen now take 个.",
+     "cite": [
+      {
+       "aosp": "passkey",
+       "text": "通行密钥"
+      },
+      {
+       "aosp": "passkeys",
+       "text": "通行密钥"
+      },
+      {
+       "aosp": "more_options_usage_passkeys",
+       "text": "%1$s 个通行密钥"
+      }
+     ]
     },
     "ja": {
      "term": "パスキー",
-     "source": "Android (AOSP CredentialManager): パスキー / パスキー"
+     "source": "Android (AOSP CredentialManager): パスキー / パスキー",
+     "cite": [
+      {
+       "aosp": "passkey",
+       "text": "パスキー"
+      },
+      {
+       "aosp": "passkeys",
+       "text": "パスキー"
+      }
+     ]
     },
     "ko": {
      "term": "패스키",
-     "source": "Android (AOSP CredentialManager): 패스키 / 패스키"
+     "source": "Android (AOSP CredentialManager): 패스키 / 패스키",
+     "cite": [
+      {
+       "aosp": "passkey",
+       "text": "패스키"
+      },
+      {
+       "aosp": "passkeys",
+       "text": "패스키"
+      }
+     ]
     },
     "vi": {
      "term": "khoá truy cập",
-     "source": "Android (AOSP CredentialManager): khoá đăng nhập / khoá truy cập. Written with Android's tone-mark placement (khoá, not khóa), which the LibreOffice vi_VN dictionary also uses."
+     "source": "Android (AOSP CredentialManager): khoá đăng nhập / khoá truy cập. Written with Android's tone-mark placement (khoá, not khóa), which the LibreOffice vi_VN dictionary also uses.",
+     "cite": [
+      {
+       "aosp": "passkey",
+       "text": "khoá đăng nhập"
+      },
+      {
+       "aosp": "passkeys",
+       "text": "khoá truy cập"
+      }
+     ]
     },
     "th": {
      "term": "พาสคีย์",
-     "source": "Android (AOSP CredentialManager): พาสคีย์ / พาสคีย์"
+     "source": "Android (AOSP CredentialManager): พาสคีย์ / พาสคีย์",
+     "cite": [
+      {
+       "aosp": "passkey",
+       "text": "พาสคีย์"
+      },
+      {
+       "aosp": "passkeys",
+       "text": "พาสคีย์"
+      }
+     ]
     },
     "id": {
      "term": "kunci sandi",
-     "source": "Android (AOSP CredentialManager): kunci sandi / kunci sandi"
+     "source": "Android (AOSP CredentialManager): kunci sandi / kunci sandi",
+     "cite": [
+      {
+       "aosp": "passkey",
+       "text": "kunci sandi"
+      },
+      {
+       "aosp": "passkeys",
+       "text": "kunci sandi"
+      }
+     ]
     }
    }
   },
@@ -1662,14 +2741,26 @@
       "entra",
       "sesión"
      ],
-     "source": "Android (AOSP core, kg_login_submit_button): Iniciar sesión"
+     "source": "Android (AOSP core, kg_login_submit_button): Iniciar sesión",
+     "cite": [
+      {
+       "aosp": "kg_login_submit_button",
+       "text": "Iniciar sesión"
+      }
+     ]
     },
     "fr": {
      "term": "connexion",
      "accept": [
       "connect"
      ],
-     "source": "Android (AOSP core, kg_login_submit_button): Connexion"
+     "source": "Android (AOSP core, kg_login_submit_button): Connexion",
+     "cite": [
+      {
+       "aosp": "kg_login_submit_button",
+       "text": "Connexion"
+      }
+     ]
     },
     "de": {
      "term": "anmelden",
@@ -1677,7 +2768,13 @@
       "anmeld",
       "meld"
      ],
-     "source": "Android (AOSP core, kg_login_submit_button): Anmelden"
+     "source": "Android (AOSP core, kg_login_submit_button): Anmelden",
+     "cite": [
+      {
+       "aosp": "kg_login_submit_button",
+       "text": "Anmelden"
+      }
+     ]
     },
     "it": {
      "term": "accedi",
@@ -1685,7 +2782,13 @@
       "acced",
       "accesso"
      ],
-     "source": "Android (AOSP core, kg_login_submit_button): Accedi"
+     "source": "Android (AOSP core, kg_login_submit_button): Accedi",
+     "cite": [
+      {
+       "aosp": "kg_login_submit_button",
+       "text": "Accedi"
+      }
+     ]
     },
     "pt": {
      "term": "entrar",
@@ -1694,7 +2797,13 @@
       "entre",
       "conectado"
      ],
-     "source": "Mozilla Firefox (sources/mozilla-terms.json, fxa-menu-sign-in-promo-button): Entrar. Android (kg_login_submit_button) and Google's help write Fazer login; the game keeps Mozilla's Entrar."
+     "source": "Mozilla Firefox (sources/mozilla-terms.json, fxa-menu-sign-in-promo-button): Entrar. Android (kg_login_submit_button) and Google's help write Fazer login; the game keeps Mozilla's Entrar.",
+     "cite": [
+      {
+       "mozilla": "fxa-menu-sign-in-promo-button",
+       "text": "Entrar"
+      }
+     ]
     },
     "pl": {
      "term": "zaloguj",
@@ -1703,7 +2812,13 @@
       "logując",
       "loguj"
      ],
-     "source": "Android (AOSP core, kg_login_submit_button): Zaloguj się"
+     "source": "Android (AOSP core, kg_login_submit_button): Zaloguj się",
+     "cite": [
+      {
+       "aosp": "kg_login_submit_button",
+       "text": "Zaloguj się"
+      }
+     ]
     },
     "ru": {
      "term": "войти",
@@ -1712,7 +2827,13 @@
       "войд",
       "входи"
      ],
-     "source": "Android (AOSP core, kg_login_submit_button): Войти"
+     "source": "Android (AOSP core, kg_login_submit_button): Войти",
+     "cite": [
+      {
+       "aosp": "kg_login_submit_button",
+       "text": "Войти"
+      }
+     ]
     },
     "ar": {
      "term": "تسجيل الدخول",
@@ -1722,35 +2843,103 @@
       "ادخل",
       "تدخل"
      ],
-     "source": "Android (AOSP core, kg_login_submit_button): تسجيل الدخول"
+     "source": "Android (AOSP core, kg_login_submit_button): تسجيل الدخول",
+     "cite": [
+      {
+       "aosp": "kg_login_submit_button",
+       "text": "تسجيل الدخول"
+      }
+     ]
     },
     "hi": {
      "term": "साइन इन",
-     "source": "Android (AOSP core, kg_login_submit_button): साइन इन करें"
+     "source": "Android (AOSP core, kg_login_submit_button): साइन इन करें",
+     "cite": [
+      {
+       "aosp": "kg_login_submit_button",
+       "text": "साइन इन करें"
+      }
+     ]
     },
     "zh": {
      "term": "登录",
-     "source": "Android (AOSP core, kg_login_submit_button): 登录"
+     "source": "Android (AOSP core, kg_login_submit_button): 登录",
+     "cite": [
+      {
+       "aosp": "kg_login_submit_button",
+       "text": "登录"
+      }
+     ]
     },
     "ja": {
      "term": "サインイン",
-     "source": "Apple's word (sources/apple-passkeys.json). Android (kg_login_submit_button: ログイン), Google Help (ログイン) and Mozilla (ログイン) all write ログイン; the game keeps Apple's サインイン. For a native reader."
+     "source": "Apple's word: Apple's Japanese passkey article writes サインイン (sources/apple-passkeys.json). Android (kg_login_submit_button: ログイン), Google Help (ログイン) and Mozilla (ログイン) all write ログイン; the game keeps Apple's サインイン. For a native reader.",
+     "cite": [
+      {
+       "apple": true,
+       "text": "サインイン"
+      },
+      {
+       "aosp": "kg_login_submit_button",
+       "text": "ログイン"
+      },
+      {
+       "google": "sign-in",
+       "text": "ログイン"
+      },
+      {
+       "mozilla": "fxa-menu-sign-in-promo-button",
+       "text": "ログイン"
+      }
+     ]
     },
     "ko": {
      "term": "로그인",
-     "source": "Android (AOSP core, kg_login_submit_button): 로그인"
+     "source": "Android (AOSP core, kg_login_submit_button): 로그인",
+     "cite": [
+      {
+       "aosp": "kg_login_submit_button",
+       "text": "로그인"
+      }
+     ]
     },
     "vi": {
      "term": "đăng nhập",
-     "source": "Android (AOSP core, kg_login_submit_button): Đăng nhập"
+     "source": "Android (AOSP core, kg_login_submit_button): Đăng nhập",
+     "cite": [
+      {
+       "aosp": "kg_login_submit_button",
+       "text": "Đăng nhập"
+      }
+     ]
     },
     "th": {
      "term": "ลงชื่อเข้าใช้",
-     "source": "Android (AOSP core, kg_login_submit_button): ลงชื่อเข้าใช้; Google Help, Gmail answer 8494 (sources/google-help.json): ลงชื่อเข้าใช้. (The game had written เข้าสู่ระบบ, which no vendor fetched uses; Mozilla writes ลงชื่อเข้า.) Pairs with ออกจากระบบ, Google's sign out."
+     "source": "Android (AOSP core, kg_login_submit_button): ลงชื่อเข้าใช้; Google Help, Gmail answer 8494 (sources/google-help.json): ลงชื่อเข้าใช้. (The game had written เข้าสู่ระบบ, which no vendor fetched uses; Mozilla writes ลงชื่อเข้า.) Pairs with ออกจากระบบ, Google's sign out.",
+     "cite": [
+      {
+       "aosp": "kg_login_submit_button",
+       "text": "ลงชื่อเข้าใช้"
+      },
+      {
+       "google": "sign-in",
+       "text": "ลงชื่อเข้าใช้"
+      }
+     ]
     },
     "id": {
      "term": "masuk",
-     "source": "Not vendor-sourced: Android (kg_login_submit_button) and Google Help (answer 8494) write the loanword Login; Mozilla has no Indonesian sign-in string. The game keeps the Indonesian word Masuk, paired with Keluar, Mozilla's sign out. For a native reader."
+     "source": "Not vendor-sourced: Android (kg_login_submit_button) and Google Help (answer 8494) write the loanword Login; Mozilla has no Indonesian sign-in string. The game keeps the Indonesian word Masuk, paired with Keluar, Mozilla's sign out. For a native reader.",
+     "cite": [
+      {
+       "aosp": "kg_login_submit_button",
+       "text": "Login"
+      },
+      {
+       "google": "sign-in",
+       "text": "Login"
+      }
+     ]
     }
    }
   },
@@ -1764,81 +2953,239 @@
      "accept": [
       "cierra sesión"
      ],
-     "source": "Mozilla Firefox (sources/mozilla-terms.json, fxa-menu-sign-out): Cerrar sesión…; Google Help, Gmail answer 8154 (sources/google-help.json): Cerrar la sesión de Gmail."
+     "source": "Mozilla Firefox (sources/mozilla-terms.json, fxa-menu-sign-out): Cerrar sesión…; Google Help, Gmail answer 8154 (sources/google-help.json): Cerrar la sesión de Gmail.",
+     "cite": [
+      {
+       "mozilla": "fxa-menu-sign-out",
+       "text": "Cerrar sesión…"
+      },
+      {
+       "google": "sign-out",
+       "text": "Cerrar la sesión de Gmail"
+      }
+     ]
     },
     "fr": {
      "term": "se déconnecter",
      "accept": [
       "déconnect"
      ],
-     "source": "Mozilla Firefox (sources/mozilla-terms.json, fxa-menu-sign-out): Se déconnecter…; Google Help, Gmail answer 8154 (sources/google-help.json): Se déconnecter de Gmail."
+     "source": "Mozilla Firefox (sources/mozilla-terms.json, fxa-menu-sign-out): Se déconnecter…; Google Help, Gmail answer 8154 (sources/google-help.json): Se déconnecter de Gmail.",
+     "cite": [
+      {
+       "mozilla": "fxa-menu-sign-out",
+       "text": "Se déconnecter…"
+      },
+      {
+       "google": "sign-out",
+       "text": "Se déconnecter de Gmail"
+      }
+     ]
     },
     "de": {
      "term": "abmelden",
      "accept": [
       "melde dich ab"
      ],
-     "source": "Mozilla Firefox (sources/mozilla-terms.json, fxa-menu-sign-out): Abmelden…; Google Help, Gmail answer 8154 (sources/google-help.json): Aus Gmail abmelden."
+     "source": "Mozilla Firefox (sources/mozilla-terms.json, fxa-menu-sign-out): Abmelden…; Google Help, Gmail answer 8154 (sources/google-help.json): Aus Gmail abmelden.",
+     "cite": [
+      {
+       "mozilla": "fxa-menu-sign-out",
+       "text": "Abmelden…"
+      },
+      {
+       "google": "sign-out",
+       "text": "Aus Gmail abmelden"
+      }
+     ]
     },
     "it": {
      "term": "esci",
      "accept": [
       "uscire"
      ],
-     "source": "Mozilla Firefox (sources/mozilla-terms.json, fxa-menu-sign-out): Disconnetti…; Google Help, Gmail answer 8154 (sources/google-help.json): Uscire da Gmail. Mozilla writes Disconnetti; Google’s uscire (imperative Esci) is kept."
+     "source": "Mozilla Firefox (sources/mozilla-terms.json, fxa-menu-sign-out): Disconnetti…; Google Help, Gmail answer 8154 (sources/google-help.json): Uscire da Gmail. Mozilla writes Disconnetti; Google’s uscire (imperative Esci) is kept.",
+     "cite": [
+      {
+       "mozilla": "fxa-menu-sign-out",
+       "text": "Disconnetti…"
+      },
+      {
+       "google": "sign-out",
+       "text": "Uscire da Gmail"
+      }
+     ]
     },
     "pt": {
      "term": "sair",
      "accept": [
       "saia"
      ],
-     "source": "Mozilla Firefox (sources/mozilla-terms.json, fxa-menu-sign-out): Desconectar…; Google Help, Gmail answer 8154 (sources/google-help.json): Sair do Gmail. Mozilla writes Desconectar; Google’s Sair is kept."
+     "source": "Mozilla Firefox (sources/mozilla-terms.json, fxa-menu-sign-out): Desconectar…; Google Help, Gmail answer 8154 (sources/google-help.json): Sair do Gmail. Mozilla writes Desconectar; Google’s Sair is kept.",
+     "cite": [
+      {
+       "mozilla": "fxa-menu-sign-out",
+       "text": "Desconectar…"
+      },
+      {
+       "google": "sign-out",
+       "text": "Sair do Gmail"
+      }
+     ]
     },
     "pl": {
      "term": "wyloguj",
-     "source": "Mozilla Firefox (sources/mozilla-terms.json, fxa-menu-sign-out): Wyloguj się…; Google Help, Gmail answer 8154 (sources/google-help.json): Wylogowywanie się z Gmaila."
+     "source": "Mozilla Firefox (sources/mozilla-terms.json, fxa-menu-sign-out): Wyloguj się…; Google Help, Gmail answer 8154 (sources/google-help.json): Wylogowywanie się z Gmaila.",
+     "cite": [
+      {
+       "mozilla": "fxa-menu-sign-out",
+       "text": "Wyloguj się…"
+      },
+      {
+       "google": "sign-out",
+       "text": "Wylogowywanie się z Gmaila"
+      }
+     ]
     },
     "ru": {
      "term": "выйти",
      "accept": [
       "выйди"
      ],
-     "source": "Mozilla Firefox (sources/mozilla-terms.json, fxa-menu-sign-out): Выйти…; Google Help, Gmail answer 8154 (sources/google-help.json): Как выйти из аккаунта Gmail."
+     "source": "Mozilla Firefox (sources/mozilla-terms.json, fxa-menu-sign-out): Выйти…; Google Help, Gmail answer 8154 (sources/google-help.json): Как выйти из аккаунта Gmail.",
+     "cite": [
+      {
+       "mozilla": "fxa-menu-sign-out",
+       "text": "Выйти…"
+      },
+      {
+       "google": "sign-out",
+       "text": "Как выйти из аккаунта Gmail"
+      }
+     ]
     },
     "ar": {
      "term": "تسجيل الخروج",
      "accept": [
       "الخروج"
      ],
-     "source": "Mozilla Firefox (sources/mozilla-terms.json, fxa-menu-sign-out): اخرج…; Google Help, Gmail answer 8154 (sources/google-help.json): تسجيل الخروج من Gmail. Mozilla writes the imperative اخرج; Google’s تسجيل الخروج is kept."
+     "source": "Mozilla Firefox (sources/mozilla-terms.json, fxa-menu-sign-out): اخرج…; Google Help, Gmail answer 8154 (sources/google-help.json): تسجيل الخروج من Gmail. Mozilla writes the imperative اخرج; Google’s تسجيل الخروج is kept.",
+     "cite": [
+      {
+       "mozilla": "fxa-menu-sign-out",
+       "text": "اخرج…"
+      },
+      {
+       "google": "sign-out",
+       "text": "تسجيل الخروج من Gmail"
+      }
+     ]
     },
     "hi": {
      "term": "साइन आउट",
-     "source": "Mozilla Firefox (sources/mozilla-terms.json, fxa-menu-sign-out): साइन आउट…; Google Help, Gmail answer 8154 (sources/google-help.json): Gmail से साइन आउट करना."
+     "source": "Mozilla Firefox (sources/mozilla-terms.json, fxa-menu-sign-out): साइन आउट…; Google Help, Gmail answer 8154 (sources/google-help.json): Gmail से साइन आउट करना.",
+     "cite": [
+      {
+       "mozilla": "fxa-menu-sign-out",
+       "text": "साइन आउट…"
+      },
+      {
+       "google": "sign-out",
+       "text": "Gmail से साइन आउट करना"
+      }
+     ]
     },
     "zh": {
      "term": "退出登录",
-     "source": "Mozilla Firefox (sources/mozilla-terms.json, fxa-menu-sign-out): 退出登录…; Google Help, Gmail answer 8154 (sources/google-help.json): 退出 Gmail."
+     "source": "Mozilla Firefox (sources/mozilla-terms.json, fxa-menu-sign-out): 退出登录…; Google Help, Gmail answer 8154 (sources/google-help.json): 退出 Gmail.",
+     "cite": [
+      {
+       "mozilla": "fxa-menu-sign-out",
+       "text": "退出登录…"
+      },
+      {
+       "google": "sign-out",
+       "text": "退出 Gmail"
+      }
+     ]
     },
     "ja": {
      "term": "サインアウト",
-     "source": "Mozilla Firefox (sources/mozilla-terms.json, fxa-menu-sign-out): ログアウト...; Google Help, Gmail answer 8154 (sources/google-help.json): Gmail からログアウトする. Both vendors here write ログアウト. The game keeps サインアウト to pair with サインイン, Apple’s word for sign in (sources/apple-passkeys.json). For a native reader."
+     "source": "Mozilla Firefox (sources/mozilla-terms.json, fxa-menu-sign-out): ログアウト...; Google Help, Gmail answer 8154 (sources/google-help.json): Gmail からログアウトする. Both vendors here write ログアウト. The game keeps サインアウト to pair with サインイン, Apple’s word for sign in (sources/apple-passkeys.json). For a native reader.",
+     "cite": [
+      {
+       "mozilla": "fxa-menu-sign-out",
+       "text": "ログアウト..."
+      },
+      {
+       "google": "sign-out",
+       "text": "Gmail からログアウトする"
+      },
+      {
+       "apple": true,
+       "text": "サインイン"
+      },
+      {
+       "apple": true,
+       "text": "サインイン"
+      }
+     ]
     },
     "ko": {
      "term": "로그아웃",
-     "source": "Mozilla Firefox (sources/mozilla-terms.json, fxa-menu-sign-out): 로그아웃…; Google Help, Gmail answer 8154 (sources/google-help.json): Gmail에서 로그아웃하기."
+     "source": "Mozilla Firefox (sources/mozilla-terms.json, fxa-menu-sign-out): 로그아웃…; Google Help, Gmail answer 8154 (sources/google-help.json): Gmail에서 로그아웃하기.",
+     "cite": [
+      {
+       "mozilla": "fxa-menu-sign-out",
+       "text": "로그아웃…"
+      },
+      {
+       "google": "sign-out",
+       "text": "Gmail에서 로그아웃하기"
+      }
+     ]
     },
     "vi": {
      "term": "đăng xuất",
-     "source": "Mozilla Firefox (sources/mozilla-terms.json, fxa-menu-sign-out): Đăng xuất…; Google Help, Gmail answer 8154 (sources/google-help.json): Đăng xuất khỏi Gmail."
+     "source": "Mozilla Firefox (sources/mozilla-terms.json, fxa-menu-sign-out): Đăng xuất…; Google Help, Gmail answer 8154 (sources/google-help.json): Đăng xuất khỏi Gmail.",
+     "cite": [
+      {
+       "mozilla": "fxa-menu-sign-out",
+       "text": "Đăng xuất…"
+      },
+      {
+       "google": "sign-out",
+       "text": "Đăng xuất khỏi Gmail"
+      }
+     ]
     },
     "th": {
      "term": "ออกจากระบบ",
-     "source": "Mozilla Firefox (sources/mozilla-terms.json, fxa-menu-sign-out): ลงชื่อออก…; Google Help, Gmail answer 8154 (sources/google-help.json): ออกจากระบบ Gmail. Mozilla writes ลงชื่อออก; Google’s ออกจากระบบ is kept: Google’s help pairs it with ลงชื่อเข้าใช้, the game’s sign in (answer 8494)."
+     "source": "Mozilla Firefox (sources/mozilla-terms.json, fxa-menu-sign-out): ลงชื่อออก…; Google Help, Gmail answer 8154 (sources/google-help.json): ออกจากระบบ Gmail. Mozilla writes ลงชื่อออก; Google’s ออกจากระบบ is kept: Google’s help pairs it with ลงชื่อเข้าใช้, the game’s sign in (answer 8494).",
+     "cite": [
+      {
+       "mozilla": "fxa-menu-sign-out",
+       "text": "ลงชื่อออก…"
+      },
+      {
+       "google": "sign-out",
+       "text": "ออกจากระบบ Gmail"
+      }
+     ]
     },
     "id": {
      "term": "keluar",
-     "source": "Mozilla Firefox (sources/mozilla-terms.json, fxa-menu-sign-out): Keluar…; Google Help, Gmail answer 8154 (sources/google-help.json): Logout dari Gmail. Google’s help writes the loanword Logout; Mozilla’s Keluar is kept (it pairs with Masuk, the game’s sign in)."
+     "source": "Mozilla Firefox (sources/mozilla-terms.json, fxa-menu-sign-out): Keluar…; Google Help, Gmail answer 8154 (sources/google-help.json): Logout dari Gmail. Google’s help writes the loanword Logout; Mozilla’s Keluar is kept (it pairs with Masuk, the game’s sign in).",
+     "cite": [
+      {
+       "mozilla": "fxa-menu-sign-out",
+       "text": "Keluar…"
+      },
+      {
+       "google": "sign-out",
+       "text": "Logout dari Gmail"
+      }
+     ]
     }
    }
   },
@@ -1849,63 +3196,157 @@
    "langs": {
     "es": {
      "term": "micrófono",
-     "source": "Android (AOSP core, permgrouplab_microphone): Micrófono"
+     "source": "Android (AOSP core, permgrouplab_microphone): Micrófono",
+     "cite": [
+      {
+       "aosp": "permgrouplab_microphone",
+       "text": "Micrófono"
+      }
+     ]
     },
     "fr": {
      "term": "micro",
-     "source": "Android (AOSP core, permgrouplab_microphone): Micro"
+     "source": "Android (AOSP core, permgrouplab_microphone): Micro",
+     "cite": [
+      {
+       "aosp": "permgrouplab_microphone",
+       "text": "Micro"
+      }
+     ]
     },
     "de": {
      "term": "Mikrofon",
-     "source": "Android (AOSP core, permgrouplab_microphone): Mikrofon"
+     "source": "Android (AOSP core, permgrouplab_microphone): Mikrofon",
+     "cite": [
+      {
+       "aosp": "permgrouplab_microphone",
+       "text": "Mikrofon"
+      }
+     ]
     },
     "it": {
      "term": "microfono",
-     "source": "Android (AOSP core, permgrouplab_microphone): Microfono"
+     "source": "Android (AOSP core, permgrouplab_microphone): Microfono",
+     "cite": [
+      {
+       "aosp": "permgrouplab_microphone",
+       "text": "Microfono"
+      }
+     ]
     },
     "pt": {
      "term": "microfone",
-     "source": "Android (AOSP core, permgrouplab_microphone): Microfone"
+     "source": "Android (AOSP core, permgrouplab_microphone): Microfone",
+     "cite": [
+      {
+       "aosp": "permgrouplab_microphone",
+       "text": "Microfone"
+      }
+     ]
     },
     "pl": {
      "term": "mikrofon",
-     "source": "Android (AOSP core, permgrouplab_microphone): Mikrofon"
+     "source": "Android (AOSP core, permgrouplab_microphone): Mikrofon",
+     "cite": [
+      {
+       "aosp": "permgrouplab_microphone",
+       "text": "Mikrofon"
+      }
+     ]
     },
     "ru": {
      "term": "микрофон",
-     "source": "Android (AOSP core, permgrouplab_microphone): Микрофон"
+     "source": "Android (AOSP core, permgrouplab_microphone): Микрофон",
+     "cite": [
+      {
+       "aosp": "permgrouplab_microphone",
+       "text": "Микрофон"
+      }
+     ]
     },
     "ar": {
      "term": "ميكروفون",
-     "source": "Android (AOSP core, permgrouplab_microphone): الميكروفون"
+     "source": "Android (AOSP core, permgrouplab_microphone): الميكروفون",
+     "cite": [
+      {
+       "aosp": "permgrouplab_microphone",
+       "text": "الميكروفون"
+      }
+     ]
     },
     "hi": {
      "term": "माइक्रोफ़ोन",
-     "source": "Android (AOSP core, permgrouplab_microphone): माइक्रोफ़ोन"
+     "source": "Android (AOSP core, permgrouplab_microphone): माइक्रोफ़ोन",
+     "cite": [
+      {
+       "aosp": "permgrouplab_microphone",
+       "text": "माइक्रोफ़ोन"
+      }
+     ]
     },
     "zh": {
      "term": "麦克风",
-     "source": "Android (AOSP core, permgrouplab_microphone): 麦克风"
+     "source": "Android (AOSP core, permgrouplab_microphone): 麦克风",
+     "cite": [
+      {
+       "aosp": "permgrouplab_microphone",
+       "text": "麦克风"
+      }
+     ]
     },
     "ja": {
      "term": "マイク",
-     "source": "Android (AOSP core, permgrouplab_microphone): マイク"
+     "source": "Android (AOSP core, permgrouplab_microphone): マイク",
+     "cite": [
+      {
+       "aosp": "permgrouplab_microphone",
+       "text": "マイク"
+      }
+     ]
     },
     "ko": {
      "term": "마이크",
-     "source": "Android (AOSP core, permgrouplab_microphone): 마이크"
+     "source": "Android (AOSP core, permgrouplab_microphone): 마이크",
+     "cite": [
+      {
+       "aosp": "permgrouplab_microphone",
+       "text": "마이크"
+      }
+     ]
     },
     "vi": {
      "term": "micrô",
-     "source": "Android (AOSP core, permgrouplab_microphone, and SystemUI, screenrecord_mic_label): Micrô. The game had written micro. (The LibreOffice vi_VN Hunspell list knows neither spelling: it holds Vietnamese syllables only.)"
+     "source": "Android (AOSP core, permgrouplab_microphone, and SystemUI, screenrecord_mic_label): Micrô. The game had written micro. (The LibreOffice vi_VN Hunspell list knows neither spelling: it holds Vietnamese syllables only.)",
+     "cite": [
+      {
+       "aosp": "permgrouplab_microphone",
+       "text": "Micrô"
+      },
+      {
+       "aosp": "screenrecord_mic_label",
+       "text": "Micrô"
+      }
+     ]
     },
     "th": {
      "term": "ไมโครโฟน",
-     "source": "Android (AOSP core, permgrouplab_microphone): ไมโครโฟน"
+     "source": "Android (AOSP core, permgrouplab_microphone): ไมโครโฟน",
+     "cite": [
+      {
+       "aosp": "permgrouplab_microphone",
+       "text": "ไมโครโฟน"
+      }
+     ]
     },
     "id": {
      "term": "mikrofon",
-     "source": "Android (AOSP core, permgrouplab_microphone): Mikrofon"
+     "source": "Android (AOSP core, permgrouplab_microphone): Mikrofon",
+     "cite": [
+      {
+       "aosp": "permgrouplab_microphone",
+       "text": "Mikrofon"
+      }
+     ]
     }
    }
   },
@@ -1916,11 +3357,23 @@
    "langs": {
     "es": {
      "term": "descarg",
-     "source": "Android (AOSP core, install_carrier_app_notification_button): Descargar aplicación"
+     "source": "Android (AOSP core, install_carrier_app_notification_button): Descargar aplicación",
+     "cite": [
+      {
+       "aosp": "install_carrier_app_notification_button",
+       "text": "Descargar aplicación"
+      }
+     ]
     },
     "fr": {
      "term": "télécharg",
-     "source": "Android (AOSP core, install_carrier_app_notification_button): Télécharger l'application"
+     "source": "Android (AOSP core, install_carrier_app_notification_button): Télécharger l'application",
+     "cite": [
+      {
+       "aosp": "install_carrier_app_notification_button",
+       "text": "Télécharger l'application"
+      }
+     ]
     },
     "de": {
      "term": "Download",
@@ -1929,21 +3382,39 @@
       "geladen",
       "lädt"
      ],
-     "source": "Android (AOSP core, install_carrier_app_notification_button): App herunterladen"
+     "source": "Android (AOSP core, install_carrier_app_notification_button): App herunterladen",
+     "cite": [
+      {
+       "aosp": "install_carrier_app_notification_button",
+       "text": "App herunterladen"
+      }
+     ]
     },
     "it": {
      "term": "scaric",
      "accept": [
       "download"
      ],
-     "source": "Android (AOSP core, install_carrier_app_notification_button): Scarica app"
+     "source": "Android (AOSP core, install_carrier_app_notification_button): Scarica app",
+     "cite": [
+      {
+       "aosp": "install_carrier_app_notification_button",
+       "text": "Scarica app"
+      }
+     ]
     },
     "pt": {
      "term": "baix",
      "accept": [
       "download"
      ],
-     "source": "Android (AOSP core, install_carrier_app_notification_button): Baixar o app"
+     "source": "Android (AOSP core, install_carrier_app_notification_button): Baixar o app",
+     "cite": [
+      {
+       "aosp": "install_carrier_app_notification_button",
+       "text": "Baixar o app"
+      }
+     ]
     },
     "pl": {
      "term": "pobier",
@@ -1951,7 +3422,13 @@
       "pobran",
       "pobra"
      ],
-     "source": "Android (AOSP core, install_carrier_app_notification_button): Pobierz aplikację"
+     "source": "Android (AOSP core, install_carrier_app_notification_button): Pobierz aplikację",
+     "cite": [
+      {
+       "aosp": "install_carrier_app_notification_button",
+       "text": "Pobierz aplikację"
+      }
+     ]
     },
     "ru": {
      "term": "загруз",
@@ -1959,7 +3436,13 @@
       "загруж",
       "скач"
      ],
-     "source": "Android (AOSP core, install_carrier_app_notification_button): Скачать приложение"
+     "source": "Android (AOSP core, install_carrier_app_notification_button): Скачать приложение",
+     "cite": [
+      {
+       "aosp": "install_carrier_app_notification_button",
+       "text": "Скачать приложение"
+      }
+     ]
     },
     "ar": {
      "term": "تنزيل",
@@ -1969,38 +3452,86 @@
       "نزَّل",
       "تحميل"
      ],
-     "source": "Android (AOSP core, install_carrier_app_notification_button): تنزيل التطبيق"
+     "source": "Android (AOSP core, install_carrier_app_notification_button): تنزيل التطبيق",
+     "cite": [
+      {
+       "aosp": "install_carrier_app_notification_button",
+       "text": "تنزيل التطبيق"
+      }
+     ]
     },
     "hi": {
      "term": "डाउनलोड",
-     "source": "Android (AOSP core, install_carrier_app_notification_button): ऐप्लिकेशन डाउनलोड करें"
+     "source": "Android (AOSP core, install_carrier_app_notification_button): ऐप्लिकेशन डाउनलोड करें",
+     "cite": [
+      {
+       "aosp": "install_carrier_app_notification_button",
+       "text": "ऐप्लिकेशन डाउनलोड करें"
+      }
+     ]
     },
     "zh": {
      "term": "下载",
-     "source": "Android (AOSP core, install_carrier_app_notification_button): 下载应用"
+     "source": "Android (AOSP core, install_carrier_app_notification_button): 下载应用",
+     "cite": [
+      {
+       "aosp": "install_carrier_app_notification_button",
+       "text": "下载应用"
+      }
+     ]
     },
     "ja": {
      "term": "ダウンロード",
-     "source": "Android (AOSP core, install_carrier_app_notification_button): アプリをダウンロード"
+     "source": "Android (AOSP core, install_carrier_app_notification_button): アプリをダウンロード",
+     "cite": [
+      {
+       "aosp": "install_carrier_app_notification_button",
+       "text": "アプリをダウンロード"
+      }
+     ]
     },
     "ko": {
      "term": "다운로드",
-     "source": "Android (AOSP core, install_carrier_app_notification_button): 앱 다운로드"
+     "source": "Android (AOSP core, install_carrier_app_notification_button): 앱 다운로드",
+     "cite": [
+      {
+       "aosp": "install_carrier_app_notification_button",
+       "text": "앱 다운로드"
+      }
+     ]
     },
     "vi": {
      "term": "tải",
-     "source": "Android (AOSP core, install_carrier_app_notification_button): Tải xuống ứng dụng"
+     "source": "Android (AOSP core, install_carrier_app_notification_button): Tải xuống ứng dụng",
+     "cite": [
+      {
+       "aosp": "install_carrier_app_notification_button",
+       "text": "Tải xuống ứng dụng"
+      }
+     ]
     },
     "th": {
      "term": "ดาวน์โหลด",
-     "source": "Android (AOSP core, install_carrier_app_notification_button): ดาวน์โหลดแอป"
+     "source": "Android (AOSP core, install_carrier_app_notification_button): ดาวน์โหลดแอป",
+     "cite": [
+      {
+       "aosp": "install_carrier_app_notification_button",
+       "text": "ดาวน์โหลดแอป"
+      }
+     ]
     },
     "id": {
      "term": "unduh",
      "accept": [
       "mengunduh"
      ],
-     "source": "Android (AOSP core, install_carrier_app_notification_button): Download aplikasi"
+     "source": "Android (AOSP core, install_carrier_app_notification_button): Download aplikasi",
+     "cite": [
+      {
+       "aosp": "install_carrier_app_notification_button",
+       "text": "Download aplikasi"
+      }
+     ]
     }
    }
   },
@@ -2011,75 +3542,172 @@
    "langs": {
     "es": {
      "term": "bloqueo de pantalla",
-     "source": "Android (AOSP core, screen_lock): Bloqueo de pantalla"
+     "source": "Android (AOSP core, screen_lock): Bloqueo de pantalla",
+     "cite": [
+      {
+       "aosp": "screen_lock",
+       "text": "Bloqueo de pantalla"
+      }
+     ]
     },
     "fr": {
      "term": "verrouillage de l’écran",
      "accept": [
       "verrouillage"
      ],
-     "source": "Android (AOSP core, screen_lock): Verrouillage de l'écran"
+     "source": "Android (AOSP core, screen_lock): Verrouillage de l'écran",
+     "cite": [
+      {
+       "aosp": "screen_lock",
+       "text": "Verrouillage de l'écran"
+      }
+     ]
     },
     "de": {
      "term": "Displaysperre",
-     "source": "Android (AOSP core, screen_lock; CredentialManager, passkey_creation_intro_body_fingerprint): Displaysperre. (The game had written Bildschirmsperre, which no vendor string fetched uses.)"
+     "source": "Android (AOSP core, screen_lock; CredentialManager, passkey_creation_intro_body_fingerprint): Displaysperre. (The game had written Bildschirmsperre, which no vendor string fetched uses.)",
+     "cite": [
+      {
+       "aosp": "screen_lock",
+       "text": "Displaysperre"
+      },
+      {
+       "aosp": "passkey_creation_intro_body_fingerprint",
+       "text": "Displaysperre",
+       "within": true
+      }
+     ]
     },
     "it": {
      "term": "blocco schermo",
      "accept": [
       "blocco dello schermo"
      ],
-     "source": "Android (AOSP core, screen_lock): Blocco schermo"
+     "source": "Android (AOSP core, screen_lock): Blocco schermo",
+     "cite": [
+      {
+       "aosp": "screen_lock",
+       "text": "Blocco schermo"
+      }
+     ]
     },
     "pt": {
      "term": "bloqueio de tela",
-     "source": "Android (AOSP CredentialManager, passkey_creation_intro_body_fingerprint): 'o bloqueio de tela' (core screen_lock is the verb phrase Bloquear tela)."
+     "source": "Android (AOSP CredentialManager, passkey_creation_intro_body_fingerprint): 'o bloqueio de tela' (core screen_lock is the verb phrase Bloquear tela).",
+     "cite": [
+      {
+       "aosp": "passkey_creation_intro_body_fingerprint",
+       "text": "o bloqueio de tela",
+       "within": true
+      }
+     ]
     },
     "pl": {
      "term": "blokada ekranu",
      "accept": [
       "blokad"
      ],
-     "source": "Android (AOSP core, screen_lock): Blokada ekranu"
+     "source": "Android (AOSP core, screen_lock): Blokada ekranu",
+     "cite": [
+      {
+       "aosp": "screen_lock",
+       "text": "Blokada ekranu"
+      }
+     ]
     },
     "ru": {
      "term": "блокировка экрана",
      "accept": [
       "блокировк"
      ],
-     "source": "Android (AOSP core, screen_lock): Блокировка экрана"
+     "source": "Android (AOSP core, screen_lock): Блокировка экрана",
+     "cite": [
+      {
+       "aosp": "screen_lock",
+       "text": "Блокировка экрана"
+      }
+     ]
     },
     "ar": {
      "term": "قفل الشاشة",
-     "source": "Android (AOSP core, screen_lock): قفل الشاشة"
+     "source": "Android (AOSP core, screen_lock): قفل الشاشة",
+     "cite": [
+      {
+       "aosp": "screen_lock",
+       "text": "قفل الشاشة"
+      }
+     ]
     },
     "hi": {
      "term": "स्क्रीन लॉक",
-     "source": "Android (AOSP core, screen_lock): स्‍क्रीन लॉक (Android's spelling carries a zero-width joiner, स्‍क्रीन; the same word.)"
+     "source": "Android (AOSP core, screen_lock): स्‍क्रीन लॉक (Android's spelling carries a zero-width joiner, स्‍क्रीन; the same word.)",
+     "cite": [
+      {
+       "aosp": "screen_lock",
+       "text": "स्‍क्रीन लॉक"
+      }
+     ]
     },
     "zh": {
      "term": "屏幕锁",
-     "source": "Android (AOSP core, screen_lock): 屏幕锁定"
+     "source": "Android (AOSP core, screen_lock): 屏幕锁定",
+     "cite": [
+      {
+       "aosp": "screen_lock",
+       "text": "屏幕锁定"
+      }
+     ]
     },
     "ja": {
      "term": "画面ロック",
-     "source": "Android (AOSP CredentialManager, passkey_creation_intro_body_fingerprint): 画面ロック (core screen_lock is the verb phrase 画面をロック)."
+     "source": "Android (AOSP CredentialManager, passkey_creation_intro_body_fingerprint): 画面ロック (core screen_lock is the verb phrase 画面をロック).",
+     "cite": [
+      {
+       "aosp": "passkey_creation_intro_body_fingerprint",
+       "text": "画面ロック",
+       "within": true
+      }
+     ]
     },
     "ko": {
      "term": "화면 잠금",
-     "source": "Android (AOSP core, screen_lock): 화면 잠금"
+     "source": "Android (AOSP core, screen_lock): 화면 잠금",
+     "cite": [
+      {
+       "aosp": "screen_lock",
+       "text": "화면 잠금"
+      }
+     ]
     },
     "vi": {
      "term": "khoá màn hình",
-     "source": "Android (AOSP core, screen_lock): Phương thức khoá màn hình"
+     "source": "Android (AOSP core, screen_lock): Phương thức khoá màn hình",
+     "cite": [
+      {
+       "aosp": "screen_lock",
+       "text": "Phương thức khoá màn hình"
+      }
+     ]
     },
     "th": {
      "term": "ล็อกหน้าจอ",
-     "source": "Android (AOSP core, screen_lock): ล็อกหน้าจอ"
+     "source": "Android (AOSP core, screen_lock): ล็อกหน้าจอ",
+     "cite": [
+      {
+       "aosp": "screen_lock",
+       "text": "ล็อกหน้าจอ"
+      }
+     ]
     },
     "id": {
      "term": "kunci layar",
-     "source": "Android (AOSP core, screen_lock): Kunci layar"
+     "source": "Android (AOSP core, screen_lock): Kunci layar",
+     "cite": [
+      {
+       "aosp": "screen_lock",
+       "text": "Kunci layar"
+      }
+     ]
     }
    }
   },
@@ -2090,63 +3718,208 @@
    "langs": {
     "es": {
      "term": "Shakespeare",
-     "source": "The name as the es Wikipedia article title writes it (William Shakespeare; Wikidata Q692, which has no separate es label)."
+     "source": "The name as the es Wikipedia article title writes it (William Shakespeare; Wikidata Q692, which has no separate es label).",
+     "cite": [
+      {
+       "wikipedia": "es",
+       "title": "William Shakespeare",
+       "qid": "Q692"
+      }
+     ]
     },
     "fr": {
      "term": "Shakespeare",
-     "source": "The name as the fr Wikipedia article title writes it (William Shakespeare; Wikidata Q692, which has no separate fr label)."
+     "source": "The name as the fr Wikipedia article title writes it (William Shakespeare; Wikidata Q692, which has no separate fr label).",
+     "cite": [
+      {
+       "wikipedia": "fr",
+       "title": "William Shakespeare",
+       "qid": "Q692"
+      }
+     ]
     },
     "de": {
      "term": "Shakespeare",
-     "source": "The name as the de Wikipedia article title writes it (William Shakespeare; Wikidata Q692, which has no separate de label)."
+     "source": "The name as the de Wikipedia article title writes it (William Shakespeare; Wikidata Q692, which has no separate de label).",
+     "cite": [
+      {
+       "wikipedia": "de",
+       "title": "William Shakespeare",
+       "qid": "Q692"
+      }
+     ]
     },
     "it": {
      "term": "Shakespeare",
-     "source": "The name as the it Wikipedia article title writes it (William Shakespeare; Wikidata Q692, which has no separate it label)."
+     "source": "The name as the it Wikipedia article title writes it (William Shakespeare; Wikidata Q692, which has no separate it label).",
+     "cite": [
+      {
+       "wikipedia": "it",
+       "title": "William Shakespeare",
+       "qid": "Q692"
+      }
+     ]
     },
     "pt": {
      "term": "Shakespeare",
-     "source": "The name as the pt Wikipedia article title writes it (William Shakespeare; Wikidata Q692, which has no separate pt label)."
+     "source": "The name as the pt Wikipedia article title writes it (William Shakespeare; Wikidata Q692, which has no separate pt label).",
+     "cite": [
+      {
+       "wikipedia": "pt",
+       "title": "William Shakespeare",
+       "qid": "Q692"
+      }
+     ]
     },
     "pl": {
      "term": "Szekspir",
-     "source": "Wikidata alias (Q692): Szekspir; the label is William Shakespeare."
+     "source": "Wikidata alias (Q692): Szekspir; the label is William Shakespeare.",
+     "cite": [
+      {
+       "wikidata": "alias",
+       "qid": "Q692",
+       "text": "Szekspir"
+      }
+     ]
     },
     "ru": {
      "term": "Шекспир",
-     "source": "Wikidata label (Q692): Уильям Шекспир; Wikipedia article Шекспир, Уильям."
+     "source": "Wikidata label (Q692): Уильям Шекспир; Wikipedia article Шекспир, Уильям.",
+     "cite": [
+      {
+       "wikidata": "label",
+       "qid": "Q692",
+       "text": "Уильям Шекспир"
+      },
+      {
+       "wikipedia": "ru",
+       "title": "Шекспир, Уильям",
+       "qid": "Q692"
+      }
+     ]
     },
     "ar": {
      "term": "شكسبير",
-     "source": "Wikidata label (Q692): وليم شكسبير; Wikipedia article وليم شكسبير."
+     "source": "Wikidata label (Q692): وليم شكسبير; Wikipedia article وليم شكسبير.",
+     "cite": [
+      {
+       "wikidata": "label",
+       "qid": "Q692",
+       "text": "وليم شكسبير"
+      },
+      {
+       "wikipedia": "ar",
+       "title": "وليم شكسبير",
+       "qid": "Q692"
+      }
+     ]
     },
     "hi": {
      "term": "शेक्सपीयर",
-     "source": "Wikidata label (Q692): विलियम शेक्सपीयर; Wikipedia article विलियम शेक्सपीयर. Changed from शेक्सपियर to the label."
+     "source": "Wikidata label (Q692): विलियम शेक्सपीयर; Wikipedia article विलियम शेक्सपीयर. Changed from शेक्सपियर to the label.",
+     "cite": [
+      {
+       "wikidata": "label",
+       "qid": "Q692",
+       "text": "विलियम शेक्सपीयर"
+      },
+      {
+       "wikipedia": "hi",
+       "title": "विलियम शेक्सपीयर",
+       "qid": "Q692"
+      }
+     ]
     },
     "zh": {
      "term": "莎士比亚",
-     "source": "Wikidata label (Q692): 威廉·莎士比亚; Wikipedia article 威廉·莎士比亚."
+     "source": "Wikidata label (Q692): 威廉·莎士比亚; Wikipedia article 威廉·莎士比亚.",
+     "cite": [
+      {
+       "wikidata": "label",
+       "qid": "Q692",
+       "text": "威廉·莎士比亚"
+      },
+      {
+       "wikipedia": "zh",
+       "title": "威廉·莎士比亚",
+       "qid": "Q692"
+      }
+     ]
     },
     "ja": {
      "term": "シェイクスピア",
-     "source": "Wikidata label (Q692): ウィリアム・シェイクスピア; Wikipedia article ウィリアム・シェイクスピア."
+     "source": "Wikidata label (Q692): ウィリアム・シェイクスピア; Wikipedia article ウィリアム・シェイクスピア.",
+     "cite": [
+      {
+       "wikidata": "label",
+       "qid": "Q692",
+       "text": "ウィリアム・シェイクスピア"
+      },
+      {
+       "wikipedia": "ja",
+       "title": "ウィリアム・シェイクスピア",
+       "qid": "Q692"
+      }
+     ]
     },
     "ko": {
      "term": "셰익스피어",
-     "source": "Wikidata label (Q692): 윌리엄 셰익스피어; Wikipedia article 윌리엄 셰익스피어."
+     "source": "Wikidata label (Q692): 윌리엄 셰익스피어; Wikipedia article 윌리엄 셰익스피어.",
+     "cite": [
+      {
+       "wikidata": "label",
+       "qid": "Q692",
+       "text": "윌리엄 셰익스피어"
+      },
+      {
+       "wikipedia": "ko",
+       "title": "윌리엄 셰익스피어",
+       "qid": "Q692"
+      }
+     ]
     },
     "vi": {
      "term": "Shakespeare",
-     "source": "Wikidata label (Q692): William Shakespeare; Wikipedia article William Shakespeare."
+     "source": "Wikidata label (Q692): William Shakespeare; Wikipedia article William Shakespeare.",
+     "cite": [
+      {
+       "wikidata": "label",
+       "qid": "Q692",
+       "text": "William Shakespeare"
+      },
+      {
+       "wikipedia": "vi",
+       "title": "William Shakespeare",
+       "qid": "Q692"
+      }
+     ]
     },
     "th": {
      "term": "เชกสเปียร์",
-     "source": "Wikidata label (Q692): วิลเลียม เชกสเปียร์; Wikipedia article วิลเลียม เชกสเปียร์."
+     "source": "Wikidata label (Q692): วิลเลียม เชกสเปียร์; Wikipedia article วิลเลียม เชกสเปียร์.",
+     "cite": [
+      {
+       "wikidata": "label",
+       "qid": "Q692",
+       "text": "วิลเลียม เชกสเปียร์"
+      },
+      {
+       "wikipedia": "th",
+       "title": "วิลเลียม เชกสเปียร์",
+       "qid": "Q692"
+      }
+     ]
     },
     "id": {
      "term": "Shakespeare",
-     "source": "The name as the id Wikipedia article title writes it (William Shakespeare; Wikidata Q692, which has no separate id label)."
+     "source": "The name as the id Wikipedia article title writes it (William Shakespeare; Wikidata Q692, which has no separate id label).",
+     "cite": [
+      {
+       "wikipedia": "id",
+       "title": "William Shakespeare",
+       "qid": "Q692"
+      }
+     ]
     }
    }
   },
@@ -2157,19 +3930,67 @@
    "langs": {
     "es": {
      "term": "Mercucio",
-     "source": "Wikidata label (Q1767900): Mercucio; Wikipedia article Mercucio."
+     "source": "Wikidata label (Q1767900): Mercucio; Wikipedia article Mercucio.",
+     "cite": [
+      {
+       "wikidata": "label",
+       "qid": "Q1767900",
+       "text": "Mercucio"
+      },
+      {
+       "wikipedia": "es",
+       "title": "Mercucio",
+       "qid": "Q1767900"
+      }
+     ]
     },
     "fr": {
      "term": "Mercutio",
-     "source": "Wikidata label (Q1767900): Mercutio; Wikipedia article Mercutio."
+     "source": "Wikidata label (Q1767900): Mercutio; Wikipedia article Mercutio.",
+     "cite": [
+      {
+       "wikidata": "label",
+       "qid": "Q1767900",
+       "text": "Mercutio"
+      },
+      {
+       "wikipedia": "fr",
+       "title": "Mercutio",
+       "qid": "Q1767900"
+      }
+     ]
     },
     "de": {
      "term": "Mercutio",
-     "source": "Wikidata label (Q1767900): Mercutio; Wikipedia article Mercutio."
+     "source": "Wikidata label (Q1767900): Mercutio; Wikipedia article Mercutio.",
+     "cite": [
+      {
+       "wikidata": "label",
+       "qid": "Q1767900",
+       "text": "Mercutio"
+      },
+      {
+       "wikipedia": "de",
+       "title": "Mercutio",
+       "qid": "Q1767900"
+      }
+     ]
     },
     "it": {
      "term": "Mercuzio",
-     "source": "Wikidata label (Q1767900): Mercuzio; Wikipedia article Mercuzio."
+     "source": "Wikidata label (Q1767900): Mercuzio; Wikipedia article Mercuzio.",
+     "cite": [
+      {
+       "wikidata": "label",
+       "qid": "Q1767900",
+       "text": "Mercuzio"
+      },
+      {
+       "wikipedia": "it",
+       "title": "Mercuzio",
+       "qid": "Q1767900"
+      }
+     ]
     },
     "pt": {
      "term": "Mercúcio",
@@ -2177,23 +3998,73 @@
     },
     "pl": {
      "term": "Merkuc",
-     "source": "Wikidata label (Q1767900): Merkucjo; Wikipedia article Merkucjo. Stem Merkuc, so the genitive Merkucja passes."
+     "source": "Wikidata label (Q1767900): Merkucjo; Wikipedia article Merkucjo. Stem Merkuc, so the genitive Merkucja passes.",
+     "cite": [
+      {
+       "wikidata": "label",
+       "qid": "Q1767900",
+       "text": "Merkucjo"
+      },
+      {
+       "wikipedia": "pl",
+       "title": "Merkucjo",
+       "qid": "Q1767900"
+      }
+     ]
     },
     "ru": {
      "term": "Меркуцио",
-     "source": "Wikidata label (Q1767900): Меркуцио; Wikipedia article Меркуцио."
+     "source": "Wikidata label (Q1767900): Меркуцио; Wikipedia article Меркуцио.",
+     "cite": [
+      {
+       "wikidata": "label",
+       "qid": "Q1767900",
+       "text": "Меркуцио"
+      },
+      {
+       "wikipedia": "ru",
+       "title": "Меркуцио",
+       "qid": "Q1767900"
+      }
+     ]
     },
     "ar": {
      "term": "ماركيشيو",
-     "source": "Wikidata label (Q1767900): ماركيشيو; Wikipedia article ماركيشيو. Changed from مركوشيو to the label."
+     "source": "Wikidata label (Q1767900): ماركيشيو; Wikipedia article ماركيشيو. Changed from مركوشيو to the label.",
+     "cite": [
+      {
+       "wikidata": "label",
+       "qid": "Q1767900",
+       "text": "ماركيشيو"
+      },
+      {
+       "wikipedia": "ar",
+       "title": "ماركيشيو",
+       "qid": "Q1767900"
+      }
+     ]
     },
     "hi": {
      "term": "मरकूशियो",
-     "source": "Wikidata label (Q1767900): मरकूशियो. Changed from मर्क्यूशियो to the label."
+     "source": "Wikidata label (Q1767900): मरकूशियो. Changed from मर्क्यूशियो to the label.",
+     "cite": [
+      {
+       "wikidata": "label",
+       "qid": "Q1767900",
+       "text": "मरकूशियो"
+      }
+     ]
     },
     "zh": {
      "term": "茂丘西奥",
-     "source": "Wikidata alias (Q1767900): 茂丘西奧, written in simplified characters; kept over the label 莫枯修, which has no Simplified-Chinese (zh-hans) counterpart, because it is the form the game already used. For a native reader."
+     "source": "Wikidata alias (Q1767900): 茂丘西奧, written in simplified characters; kept over the label 莫枯修, which has no Simplified-Chinese (zh-hans) counterpart, because it is the form the game already used. For a native reader.",
+     "cite": [
+      {
+       "wikidata": "alias",
+       "qid": "Q1767900",
+       "text": "茂丘西奧"
+      }
+     ]
     },
     "ja": {
      "term": "マキューシオ",
@@ -2201,7 +4072,14 @@
     },
     "ko": {
      "term": "머큐시오",
-     "source": "Wikidata label (Q1767900): 머큐시오. Changed from the alias 머큐쇼 to the label."
+     "source": "Wikidata label (Q1767900): 머큐시오. Changed from the alias 머큐쇼 to the label.",
+     "cite": [
+      {
+       "wikidata": "label",
+       "qid": "Q1767900",
+       "text": "머큐시오"
+      }
+     ]
     },
     "vi": {
      "term": "Mercutio",
@@ -2226,63 +4104,207 @@
    "langs": {
     "es": {
      "value": "Pareado",
-     "source": "es Wikipedia article Pareado (Wikidata Q4779829)"
+     "status": "sourced",
+     "source": "es Wikipedia article Pareado (Wikidata Q4779829)",
+     "cite": [
+      {
+       "wikipedia": "es",
+       "title": "Pareado",
+       "qid": "Q4779829"
+      }
+     ]
     },
     "fr": {
      "value": "Distique",
-     "source": "fr Wikipedia article Distique (littérature) (Wikidata Q4779829)"
+     "status": "sourced",
+     "source": "fr Wikipedia article Distique (littérature) (Wikidata Q4779829)",
+     "cite": [
+      {
+       "wikipedia": "fr",
+       "title": "Distique (littérature)",
+       "qid": "Q4779829"
+      }
+     ]
     },
     "de": {
      "value": "Zweizeiler",
-     "source": "de Wikipedia article Zweizeiler (Verslehre) (Wikidata Q4779829)"
+     "status": "sourced",
+     "source": "de Wikipedia article Zweizeiler (Verslehre) (Wikidata Q4779829)",
+     "cite": [
+      {
+       "wikipedia": "de",
+       "title": "Zweizeiler (Verslehre)",
+       "qid": "Q4779829"
+      }
+     ]
     },
     "it": {
      "value": "Distico",
-     "source": "it Wikipedia article Distico (Wikidata Q4779829)"
+     "status": "sourced",
+     "source": "it Wikipedia article Distico (Wikidata Q4779829)",
+     "cite": [
+      {
+       "wikipedia": "it",
+       "title": "Distico",
+       "qid": "Q4779829"
+      }
+     ]
     },
     "pt": {
      "value": "Dístico",
-     "source": "pt Wikipedia article Dístico (Wikidata Q4779829) (English Wiktionary's translation table gives parelha; the Wikipedia title is kept.)"
+     "status": "sourced",
+     "source": "pt Wikipedia article Dístico (Wikidata Q4779829) (English Wiktionary's translation table gives parelha; the Wikipedia title is kept.)",
+     "cite": [
+      {
+       "wikipedia": "pt",
+       "title": "Dístico",
+       "qid": "Q4779829"
+      },
+      {
+       "wiktionary": "couplet",
+       "text": "parelha"
+      }
+     ]
     },
     "pl": {
      "value": "Dystych",
-     "source": "Title of the pl Wikipedia article Dystych (Wikidata Q906442, distich); the couplet item itself has no Polish article. (English Wiktionary's translation table gives dwuwiersz; the Wikipedia title is kept.)"
+     "status": "sourced",
+     "source": "Title of the pl Wikipedia article Dystych (Wikidata Q906442, distich); the couplet item itself has no Polish article. (English Wiktionary's translation table gives dwuwiersz; the Wikipedia title is kept.)",
+     "cite": [
+      {
+       "wikipedia": "pl",
+       "title": "Dystych",
+       "qid": "Q906442"
+      },
+      {
+       "wiktionary": "couplet",
+       "text": "dwuwiersz"
+      }
+     ]
     },
     "ru": {
      "value": "Двустишие",
-     "source": "ru Wikipedia article Двустишие (Wikidata Q4779829)"
+     "status": "sourced",
+     "source": "ru Wikipedia article Двустишие (Wikidata Q4779829)",
+     "cite": [
+      {
+       "wikipedia": "ru",
+       "title": "Двустишие",
+       "qid": "Q4779829"
+      }
+     ]
     },
     "ar": {
      "value": "بيتان مقفّيان",
-     "source": "A description (two rhymed lines), not a term. Wikidata links the Arabic article مربع (شعر) to this concept; it was not adopted because, to the translator's knowledge, مربع names a four-part stanza in Arabic prosody. Not verified: for a native reader."
+     "status": "not-sourced",
+     "source": "Not sourced. A description (two rhymed lines), not a term. Wikidata links the Arabic article مربع (شعر) to this concept; it was not adopted because, to the translator's knowledge, مربع names a four-part stanza in Arabic prosody. Not verified: for a native reader.",
+     "cite": [
+      {
+       "wikipedia": "ar",
+       "title": "مربع (شعر)",
+       "qid": "Q4779829"
+      }
+     ]
     },
     "hi": {
      "value": "दोहा",
-     "source": "दोहा is the rhymed couplet of the Hindi tradition (hi Wikipedia article दोहा, Wikidata Q5288532). A doha also has a fixed metre, which the game does not check. Replaces the coined दोहा-युग्म."
+     "status": "sourced",
+     "source": "दोहा is the rhymed couplet of the Hindi tradition (hi Wikipedia article दोहा, Wikidata Q5288532). A doha also has a fixed metre, which the game does not check. Replaces the coined दोहा-युग्म.",
+     "cite": [
+      {
+       "wikipedia": "hi",
+       "title": "दोहा",
+       "qid": "Q5288532"
+      }
+     ]
     },
     "zh": {
      "value": "对句",
-     "source": "zh Wikipedia article 对句 (Wikidata Q4779829)"
+     "status": "sourced",
+     "source": "zh Wikipedia article 对句 (Wikidata Q4779829)",
+     "cite": [
+      {
+       "wikipedia": "zh",
+       "title": "对句",
+       "qid": "Q4779829"
+      }
+     ]
     },
     "ja": {
      "value": "二行連",
-     "source": "ja Wikipedia article 二行連 (Wikidata Q4779829) (English Wiktionary's translation table gives 対句; the Wikipedia title is kept.)"
+     "status": "sourced",
+     "source": "ja Wikipedia article 二行連 (Wikidata Q4779829) (English Wiktionary's translation table gives 対句; the Wikipedia title is kept.)",
+     "cite": [
+      {
+       "wikipedia": "ja",
+       "title": "二行連",
+       "qid": "Q4779829"
+      },
+      {
+       "wiktionary": "couplet",
+       "text": "対句"
+      }
+     ]
     },
     "ko": {
      "value": "쿠플레",
-     "source": "ko Wikipedia article 쿠플레 (Wikidata Q4779829) (English Wiktionary's translation table gives 대구(對句); the Wikipedia title is kept.)"
+     "status": "sourced",
+     "source": "ko Wikipedia article 쿠플레 (Wikidata Q4779829) (English Wiktionary's translation table gives 대구(對句); the Wikipedia title is kept.)",
+     "cite": [
+      {
+       "wikipedia": "ko",
+       "title": "쿠플레",
+       "qid": "Q4779829"
+      },
+      {
+       "wiktionary": "couplet",
+       "text": "대구(對句)"
+      }
+     ]
     },
     "vi": {
      "value": "Câu đối vần",
-     "source": "No article for this concept. Câu đối (vi Wikipedia, Q1168671) is the antithetical couplet, a different form; the name here adds vần (rhyme). Coined: for a native reader."
+     "status": "not-sourced",
+     "source": "Not sourced. No article for this concept. Câu đối (vi Wikipedia, Q1168671) is the antithetical couplet, a different form; the name here adds vần (rhyme). Coined: for a native reader.",
+     "cite": [
+      {
+       "wikipedia": "vi",
+       "title": "Câu đối",
+       "qid": "Q1168671"
+      }
+     ]
     },
     "th": {
      "value": "กลอนคู่",
+     "status": "not-sourced",
      "source": "No article for this concept and none titled กลอนคู่. Not sourced: for a native reader."
     },
     "id": {
      "value": "Kuplet",
-     "source": "English Wiktionary (docs/language/sources/wiktionary-translations.json), couplet, sense 'in poetry, a pair of lines with rhyming end words': Indonesian bait, kuplet, untai. Kuplet is taken because bait is also the everyday word for a stanza, which is what Wikidata's link (the id article Bait (sastra)) is about."
+     "status": "sourced",
+     "source": "English Wiktionary (docs/language/sources/wiktionary-translations.json), couplet, sense 'in poetry, a pair of lines with rhyming end words': Indonesian bait, kuplet, untai. Kuplet is taken because bait is also the everyday word for a stanza, which is what Wikidata's link (the id article Bait (sastra)) is about.",
+     "cite": [
+      {
+       "wikipedia": "id",
+       "title": "Bait (sastra)",
+       "qid": "Q4779829"
+      },
+      {
+       "wiktionary": "couplet",
+       "sense": "in poetry, a pair of lines with rhyming end words",
+       "text": "bait"
+      },
+      {
+       "wiktionary": "couplet",
+       "sense": "in poetry, a pair of lines with rhyming end words",
+       "text": "kuplet"
+      },
+      {
+       "wiktionary": "couplet",
+       "sense": "in poetry, a pair of lines with rhyming end words",
+       "text": "untai"
+      }
+     ]
     }
    }
   },
@@ -2293,63 +4315,184 @@
    "langs": {
     "es": {
      "value": "Cuarteta de pareados",
-     "source": "Cuarteta + the rhyme pattern. Cuarteta: es Wikipedia article Cuarteta (Q8352204)"
+     "status": "head",
+     "head": "Cuarteta",
+     "source": "Cuarteta + the rhyme pattern. Cuarteta: es Wikipedia article Cuarteta (Q8352204)",
+     "cite": [
+      {
+       "wikipedia": "es",
+       "title": "Cuarteta",
+       "qid": "Q8352204"
+      }
+     ]
     },
     "fr": {
      "value": "Quatrain à rimes plates",
-     "source": "Quatrain + the rhyme pattern. Quatrain: fr Wikipedia article Quatrain (Wikidata Q570948)"
+     "status": "head",
+     "head": "Quatrain",
+     "source": "Quatrain + the rhyme pattern. Quatrain: fr Wikipedia article Quatrain (Wikidata Q570948)",
+     "cite": [
+      {
+       "wikipedia": "fr",
+       "title": "Quatrain",
+       "qid": "Q570948"
+      }
+     ]
     },
     "de": {
      "value": "Vierzeiler im Paarreim",
-     "source": "Vierzeiler + the rhyme pattern. Vierzeiler: de Wikipedia article Vierzeiler (Wikidata Q570948)"
+     "status": "head",
+     "head": "Vierzeiler",
+     "source": "Vierzeiler + the rhyme pattern. Vierzeiler: de Wikipedia article Vierzeiler (Wikidata Q570948)",
+     "cite": [
+      {
+       "wikipedia": "de",
+       "title": "Vierzeiler",
+       "qid": "Q570948"
+      }
+     ]
     },
     "it": {
      "value": "Quartina a rima baciata",
-     "source": "Quartina + the rhyme pattern. Quartina: it Wikipedia article Quartina (metrica) (Wikidata Q570948)"
+     "status": "head",
+     "head": "Quartina",
+     "source": "Quartina + the rhyme pattern. Quartina: it Wikipedia article Quartina (metrica) (Wikidata Q570948)",
+     "cite": [
+      {
+       "wikipedia": "it",
+       "title": "Quartina (metrica)",
+       "qid": "Q570948"
+      }
+     ]
     },
     "pt": {
      "value": "Quadra de rimas emparelhadas",
-     "source": "Quadra + the rhyme pattern. Quadra: Wikidata alias quadra"
+     "status": "head",
+     "head": "Quadra",
+     "source": "Quadra + the rhyme pattern. Quadra: Wikidata alias quadra",
+     "cite": [
+      {
+       "wikidata": "alias",
+       "qid": "Q570948",
+       "text": "quadra"
+      }
+     ]
     },
     "pl": {
      "value": "Czterowiersz parzysty",
-     "source": "Czterowiersz + the rhyme pattern. Czterowiersz: English Wiktionary (docs/language/sources/wiktionary-translations.json), quatrain, 'a stanza of four lines': Polish czterowiersz (also tetrastych, kwartyna). The rhyme-pattern words are not sourced."
+     "status": "head",
+     "head": "Czterowiersz",
+     "source": "Czterowiersz + the rhyme pattern. Czterowiersz: English Wiktionary (docs/language/sources/wiktionary-translations.json), quatrain, 'a stanza of four lines': Polish czterowiersz (also tetrastych, kwartyna). The rhyme-pattern words are not sourced.",
+     "cite": [
+      {
+       "wiktionary": "quatrain",
+       "sense": "a stanza of four lines",
+       "text": "czterowiersz"
+      },
+      {
+       "wiktionary": "quatrain",
+       "sense": "a stanza of four lines",
+       "text": "tetrastych"
+      },
+      {
+       "wiktionary": "quatrain",
+       "sense": "a stanza of four lines",
+       "text": "kwartyna"
+      }
+     ]
     },
     "ru": {
      "value": "Катрен с парной рифмой",
-     "source": "Катрен + the rhyme pattern. Катрен: ru Wikipedia article Катрен (Wikidata Q570948)"
+     "status": "head",
+     "head": "Катрен",
+     "source": "Катрен + the rhyme pattern. Катрен: ru Wikipedia article Катрен (Wikidata Q570948)",
+     "cite": [
+      {
+       "wikipedia": "ru",
+       "title": "Катрен",
+       "qid": "Q570948"
+      }
+     ]
     },
     "ar": {
      "value": "رباعية مزدوجة القافية",
-     "source": "رباعية + the rhyme pattern. رباعية: ar Wikipedia article رباعية (شعر) (Wikidata Q570948)"
+     "status": "head",
+     "head": "رباعية",
+     "source": "رباعية + the rhyme pattern. رباعية: ar Wikipedia article رباعية (شعر) (Wikidata Q570948)",
+     "cite": [
+      {
+       "wikipedia": "ar",
+       "title": "رباعية (شعر)",
+       "qid": "Q570948"
+      }
+     ]
     },
     "hi": {
      "value": "जोड़ीदार चौपदी",
-     "source": "चौपदी + the rhyme pattern. चौपदी: not sourced: for a native reader"
+     "status": "not-sourced",
+     "source": "Not sourced. चौपदी + the rhyme pattern. चौपदी: not sourced: for a native reader"
     },
     "zh": {
      "value": "连韵四行诗",
-     "source": "四行诗 + the rhyme pattern. 四行诗: zh Wikipedia article 四行诗 (Wikidata Q570948)"
+     "status": "head",
+     "head": "四行诗",
+     "source": "四行诗 + the rhyme pattern. 四行诗: zh Wikipedia article 四行诗 (Wikidata Q570948)",
+     "cite": [
+      {
+       "wikipedia": "zh",
+       "title": "四行诗",
+       "qid": "Q570948"
+      }
+     ]
     },
     "ja": {
      "value": "対韻の四行連",
-     "source": "四行連 + the rhyme pattern. 四行連: ja Wikipedia article 四行連 (Wikidata Q570948)"
+     "status": "head",
+     "head": "四行連",
+     "source": "四行連 + the rhyme pattern. 四行連: ja Wikipedia article 四行連 (Wikidata Q570948)",
+     "cite": [
+      {
+       "wikipedia": "ja",
+       "title": "四行連",
+       "qid": "Q570948"
+      }
+     ]
     },
     "ko": {
      "value": "짝운 4행시",
-     "source": "4행시 + the rhyme pattern. 4행시: not sourced"
+     "status": "not-sourced",
+     "source": "Not sourced. 4행시 + the rhyme pattern. 4행시: not sourced"
     },
     "vi": {
      "value": "Thơ bốn câu vần liền",
-     "source": "Thơ bốn câu + the rhyme pattern (vần liền, consecutive rhyme). Thơ bốn câu: English Wiktionary (docs/language/sources/wiktionary-translations.json), quatrain, 'a stanza of four lines': Vietnamese thơ bốn câu. Replaces Tứ tuyệt, which names the Chinese four-line jueju (the game's own Tuyệt cú form, whose brief calls it bài tứ tuyệt). The rhyme-pattern words are not sourced."
+     "status": "head",
+     "head": "Thơ bốn câu",
+     "source": "Thơ bốn câu + the rhyme pattern (vần liền, consecutive rhyme). Thơ bốn câu: English Wiktionary (docs/language/sources/wiktionary-translations.json), quatrain, 'a stanza of four lines': Vietnamese thơ bốn câu. Replaces Tứ tuyệt, which names the Chinese four-line jueju (the game's own Tuyệt cú form, whose brief calls it bài tứ tuyệt). The rhyme-pattern words are not sourced.",
+     "cite": [
+      {
+       "wiktionary": "quatrain",
+       "sense": "a stanza of four lines",
+       "text": "thơ bốn câu"
+      }
+     ]
     },
     "th": {
      "value": "กลอนสี่สัมผัสคู่",
-     "source": "กลอนสี่ + the rhyme pattern. กลอนสี่: not an article title; not sourced"
+     "status": "not-sourced",
+     "source": "Not sourced. กลอนสี่ + the rhyme pattern. กลอนสี่: not an article title; not sourced"
     },
     "id": {
      "value": "Sajak empat baris berpasangan",
-     "source": "Sajak empat baris + the rhyme pattern. Sajak empat baris: id Wikipedia article Sajak empat baris (Wikidata Q570948)"
+     "status": "head",
+     "head": "Sajak empat baris",
+     "source": "Sajak empat baris + the rhyme pattern. Sajak empat baris: id Wikipedia article Sajak empat baris (Wikidata Q570948)",
+     "cite": [
+      {
+       "wikipedia": "id",
+       "title": "Sajak empat baris",
+       "qid": "Q570948"
+      }
+     ]
     }
    }
   },
@@ -2360,63 +4503,184 @@
    "langs": {
     "es": {
      "value": "Cuarteta cruzada",
-     "source": "Cuarteta + the rhyme pattern. Cuarteta: es Wikipedia article Cuarteta (Q8352204)"
+     "status": "head",
+     "head": "Cuarteta",
+     "source": "Cuarteta + the rhyme pattern. Cuarteta: es Wikipedia article Cuarteta (Q8352204)",
+     "cite": [
+      {
+       "wikipedia": "es",
+       "title": "Cuarteta",
+       "qid": "Q8352204"
+      }
+     ]
     },
     "fr": {
      "value": "Quatrain à rimes croisées",
-     "source": "Quatrain + the rhyme pattern. Quatrain: fr Wikipedia article Quatrain (Wikidata Q570948)"
+     "status": "head",
+     "head": "Quatrain",
+     "source": "Quatrain + the rhyme pattern. Quatrain: fr Wikipedia article Quatrain (Wikidata Q570948)",
+     "cite": [
+      {
+       "wikipedia": "fr",
+       "title": "Quatrain",
+       "qid": "Q570948"
+      }
+     ]
     },
     "de": {
      "value": "Vierzeiler im Kreuzreim",
-     "source": "Vierzeiler + the rhyme pattern. Vierzeiler: de Wikipedia article Vierzeiler (Wikidata Q570948)"
+     "status": "head",
+     "head": "Vierzeiler",
+     "source": "Vierzeiler + the rhyme pattern. Vierzeiler: de Wikipedia article Vierzeiler (Wikidata Q570948)",
+     "cite": [
+      {
+       "wikipedia": "de",
+       "title": "Vierzeiler",
+       "qid": "Q570948"
+      }
+     ]
     },
     "it": {
      "value": "Quartina a rima alternata",
-     "source": "Quartina + the rhyme pattern. Quartina: it Wikipedia article Quartina (metrica) (Wikidata Q570948)"
+     "status": "head",
+     "head": "Quartina",
+     "source": "Quartina + the rhyme pattern. Quartina: it Wikipedia article Quartina (metrica) (Wikidata Q570948)",
+     "cite": [
+      {
+       "wikipedia": "it",
+       "title": "Quartina (metrica)",
+       "qid": "Q570948"
+      }
+     ]
     },
     "pt": {
      "value": "Quadra de rimas cruzadas",
-     "source": "Quadra + the rhyme pattern. Quadra: Wikidata alias quadra"
+     "status": "head",
+     "head": "Quadra",
+     "source": "Quadra + the rhyme pattern. Quadra: Wikidata alias quadra",
+     "cite": [
+      {
+       "wikidata": "alias",
+       "qid": "Q570948",
+       "text": "quadra"
+      }
+     ]
     },
     "pl": {
      "value": "Czterowiersz krzyżowy",
-     "source": "Czterowiersz + the rhyme pattern. Czterowiersz: English Wiktionary (docs/language/sources/wiktionary-translations.json), quatrain, 'a stanza of four lines': Polish czterowiersz (also tetrastych, kwartyna). The rhyme-pattern words are not sourced."
+     "status": "head",
+     "head": "Czterowiersz",
+     "source": "Czterowiersz + the rhyme pattern. Czterowiersz: English Wiktionary (docs/language/sources/wiktionary-translations.json), quatrain, 'a stanza of four lines': Polish czterowiersz (also tetrastych, kwartyna). The rhyme-pattern words are not sourced.",
+     "cite": [
+      {
+       "wiktionary": "quatrain",
+       "sense": "a stanza of four lines",
+       "text": "czterowiersz"
+      },
+      {
+       "wiktionary": "quatrain",
+       "sense": "a stanza of four lines",
+       "text": "tetrastych"
+      },
+      {
+       "wiktionary": "quatrain",
+       "sense": "a stanza of four lines",
+       "text": "kwartyna"
+      }
+     ]
     },
     "ru": {
      "value": "Катрен с перекрёстной рифмой",
-     "source": "Катрен + the rhyme pattern. Катрен: ru Wikipedia article Катрен (Wikidata Q570948)"
+     "status": "head",
+     "head": "Катрен",
+     "source": "Катрен + the rhyme pattern. Катрен: ru Wikipedia article Катрен (Wikidata Q570948)",
+     "cite": [
+      {
+       "wikipedia": "ru",
+       "title": "Катрен",
+       "qid": "Q570948"
+      }
+     ]
     },
     "ar": {
      "value": "رباعية متقاطعة القافية",
-     "source": "رباعية + the rhyme pattern. رباعية: ar Wikipedia article رباعية (شعر) (Wikidata Q570948)"
+     "status": "head",
+     "head": "رباعية",
+     "source": "رباعية + the rhyme pattern. رباعية: ar Wikipedia article رباعية (شعر) (Wikidata Q570948)",
+     "cite": [
+      {
+       "wikipedia": "ar",
+       "title": "رباعية (شعر)",
+       "qid": "Q570948"
+      }
+     ]
     },
     "hi": {
      "value": "एकांतर चौपदी",
-     "source": "चौपदी + the rhyme pattern. चौपदी: not sourced: for a native reader"
+     "status": "not-sourced",
+     "source": "Not sourced. चौपदी + the rhyme pattern. चौपदी: not sourced: for a native reader"
     },
     "zh": {
      "value": "交韵四行诗",
-     "source": "四行诗 + the rhyme pattern. 四行诗: zh Wikipedia article 四行诗 (Wikidata Q570948)"
+     "status": "head",
+     "head": "四行诗",
+     "source": "四行诗 + the rhyme pattern. 四行诗: zh Wikipedia article 四行诗 (Wikidata Q570948)",
+     "cite": [
+      {
+       "wikipedia": "zh",
+       "title": "四行诗",
+       "qid": "Q570948"
+      }
+     ]
     },
     "ja": {
      "value": "交差韻の四行連",
-     "source": "四行連 + the rhyme pattern. 四行連: ja Wikipedia article 四行連 (Wikidata Q570948)"
+     "status": "head",
+     "head": "四行連",
+     "source": "四行連 + the rhyme pattern. 四行連: ja Wikipedia article 四行連 (Wikidata Q570948)",
+     "cite": [
+      {
+       "wikipedia": "ja",
+       "title": "四行連",
+       "qid": "Q570948"
+      }
+     ]
     },
     "ko": {
      "value": "교차운 4행시",
-     "source": "4행시 + the rhyme pattern. 4행시: not sourced"
+     "status": "not-sourced",
+     "source": "Not sourced. 4행시 + the rhyme pattern. 4행시: not sourced"
     },
     "vi": {
      "value": "Thơ bốn câu vần chéo",
-     "source": "Thơ bốn câu + the rhyme pattern (vần chéo, crossed rhyme). Thơ bốn câu: English Wiktionary (docs/language/sources/wiktionary-translations.json), quatrain, 'a stanza of four lines': Vietnamese thơ bốn câu. Replaces Tứ tuyệt, which names the Chinese four-line jueju (the game's own Tuyệt cú form). The rhyme-pattern words are not sourced."
+     "status": "head",
+     "head": "Thơ bốn câu",
+     "source": "Thơ bốn câu + the rhyme pattern (vần chéo, crossed rhyme). Thơ bốn câu: English Wiktionary (docs/language/sources/wiktionary-translations.json), quatrain, 'a stanza of four lines': Vietnamese thơ bốn câu. Replaces Tứ tuyệt, which names the Chinese four-line jueju (the game's own Tuyệt cú form). The rhyme-pattern words are not sourced.",
+     "cite": [
+      {
+       "wiktionary": "quatrain",
+       "sense": "a stanza of four lines",
+       "text": "thơ bốn câu"
+      }
+     ]
     },
     "th": {
      "value": "กลอนสี่สัมผัสไขว้",
-     "source": "กลอนสี่ + the rhyme pattern. กลอนสี่: not an article title; not sourced"
+     "status": "not-sourced",
+     "source": "Not sourced. กลอนสี่ + the rhyme pattern. กลอนสี่: not an article title; not sourced"
     },
     "id": {
      "value": "Sajak empat baris bersilang",
-     "source": "Sajak empat baris + the rhyme pattern. Sajak empat baris: id Wikipedia article Sajak empat baris (Wikidata Q570948)"
+     "status": "head",
+     "head": "Sajak empat baris",
+     "source": "Sajak empat baris + the rhyme pattern. Sajak empat baris: id Wikipedia article Sajak empat baris (Wikidata Q570948)",
+     "cite": [
+      {
+       "wikipedia": "id",
+       "title": "Sajak empat baris",
+       "qid": "Q570948"
+      }
+     ]
     }
    }
   },
@@ -2427,62 +4691,151 @@
    "langs": {
     "es": {
      "value": "Terceto",
-     "source": "es Wikipedia article Terceto (Wikidata Q1353779)"
+     "status": "sourced",
+     "source": "es Wikipedia article Terceto (Wikidata Q1353779)",
+     "cite": [
+      {
+       "wikipedia": "es",
+       "title": "Terceto",
+       "qid": "Q1353779"
+      }
+     ]
     },
     "fr": {
      "value": "Tercet",
-     "source": "fr Wikipedia article Tercet (Wikidata Q1353779)"
+     "status": "sourced",
+     "source": "fr Wikipedia article Tercet (Wikidata Q1353779)",
+     "cite": [
+      {
+       "wikipedia": "fr",
+       "title": "Tercet",
+       "qid": "Q1353779"
+      }
+     ]
     },
     "de": {
      "value": "Terzett",
-     "source": "de Wikipedia article Terzett (Verslehre) (Wikidata Q1353779)"
+     "status": "sourced",
+     "source": "de Wikipedia article Terzett (Verslehre) (Wikidata Q1353779)",
+     "cite": [
+      {
+       "wikipedia": "de",
+       "title": "Terzett (Verslehre)",
+       "qid": "Q1353779"
+      }
+     ]
     },
     "it": {
      "value": "Terzina",
-     "source": "it Wikipedia article Terzina (metrica) (Wikidata Q1353779)"
+     "status": "sourced",
+     "source": "it Wikipedia article Terzina (metrica) (Wikidata Q1353779)",
+     "cite": [
+      {
+       "wikipedia": "it",
+       "title": "Terzina (metrica)",
+       "qid": "Q1353779"
+      }
+     ]
     },
     "pt": {
      "value": "Terceto",
-     "source": "pt Wikipedia article Terceto (Wikidata Q1353779)"
+     "status": "sourced",
+     "source": "pt Wikipedia article Terceto (Wikidata Q1353779)",
+     "cite": [
+      {
+       "wikipedia": "pt",
+       "title": "Terceto",
+       "qid": "Q1353779"
+      }
+     ]
     },
     "pl": {
      "value": "Tercet",
-     "source": "pl Wikipedia article Tercet (literatura) (Wikidata Q1353779) (English Wiktionary's translation table gives tercyna; the Wikipedia title is kept.)"
+     "status": "sourced",
+     "source": "pl Wikipedia article Tercet (literatura) (Wikidata Q1353779) (English Wiktionary's translation table gives tercyna; the Wikipedia title is kept.)",
+     "cite": [
+      {
+       "wikipedia": "pl",
+       "title": "Tercet (literatura)",
+       "qid": "Q1353779"
+      },
+      {
+       "wiktionary": "tercet",
+       "text": "tercyna"
+      }
+     ]
     },
     "ru": {
      "value": "Терцет",
-     "source": "ru Wikipedia article Терцет (Wikidata Q1353779)"
+     "status": "sourced",
+     "source": "ru Wikipedia article Терцет (Wikidata Q1353779)",
+     "cite": [
+      {
+       "wikipedia": "ru",
+       "title": "Терцет",
+       "qid": "Q1353779"
+      }
+     ]
     },
     "ar": {
      "value": "ثلاثية",
+     "status": "not-sourced",
      "source": "Not sourced: no article for this concept in this language. For a native reader."
     },
     "hi": {
      "value": "त्रिपदी",
-     "source": "No article for this concept. The hi Wikipedia article त्रिपदी is about the trinomial in algebra. Not sourced: for a native reader."
+     "status": "not-sourced",
+     "source": "No article for this concept. The hi Wikipedia article त्रिपदी is about the trinomial in algebra. Not sourced: for a native reader.",
+     "cite": [
+      {
+       "wikipedia": "hi",
+       "title": "त्रिपदी",
+       "qid": "Q1670509"
+      }
+     ]
     },
     "zh": {
-     "value": "三行诗",
-     "source": "No zh article for this concept; Wikidata's zh label is 三行体. Not sourced: for a native reader."
+     "value": "三行体",
+     "status": "sourced",
+     "source": "Wikidata's zh label for the tercet (Q1353779): 三行体. No zh article. Replaces 三行诗, which was not sourced.",
+     "cite": [
+      {
+       "wikidata": "label",
+       "qid": "Q1353779",
+       "text": "三行体"
+      }
+     ]
     },
     "ja": {
      "value": "三行連",
-     "source": "ja Wikipedia article 三行連 (Wikidata Q1353779)"
+     "status": "sourced",
+     "source": "ja Wikipedia article 三行連 (Wikidata Q1353779)",
+     "cite": [
+      {
+       "wikipedia": "ja",
+       "title": "三行連",
+       "qid": "Q1353779"
+      }
+     ]
     },
     "ko": {
      "value": "3행 연",
+     "status": "not-sourced",
      "source": "Not sourced: no article for this concept in this language. For a native reader."
     },
     "vi": {
      "value": "Khổ ba dòng",
+     "status": "not-sourced",
      "source": "Not sourced: no article for this concept in this language. For a native reader."
     },
     "th": {
      "value": "กลอนสาม",
+     "status": "not-sourced",
      "source": "Not sourced: no article for this concept in this language. For a native reader."
     },
     "id": {
      "value": "Terzina",
+     "status": "not-sourced",
      "source": "Not sourced: no article for this concept in this language. For a native reader."
     }
    }
@@ -2494,63 +4847,167 @@
    "langs": {
     "es": {
      "value": "Anáfora",
-     "source": "es Wikipedia article Anáfora (retórica) (Wikidata Q486050)"
+     "status": "sourced",
+     "source": "es Wikipedia article Anáfora (retórica) (Wikidata Q486050)",
+     "cite": [
+      {
+       "wikipedia": "es",
+       "title": "Anáfora (retórica)",
+       "qid": "Q486050"
+      }
+     ]
     },
     "fr": {
      "value": "Anaphore",
-     "source": "fr Wikipedia article Anaphore (rhétorique) (Wikidata Q486050)"
+     "status": "sourced",
+     "source": "fr Wikipedia article Anaphore (rhétorique) (Wikidata Q486050)",
+     "cite": [
+      {
+       "wikipedia": "fr",
+       "title": "Anaphore (rhétorique)",
+       "qid": "Q486050"
+      }
+     ]
     },
     "de": {
      "value": "Anapher",
-     "source": "de Wikipedia article Anapher (Wikidata Q486050)"
+     "status": "sourced",
+     "source": "de Wikipedia article Anapher (Wikidata Q486050)",
+     "cite": [
+      {
+       "wikipedia": "de",
+       "title": "Anapher",
+       "qid": "Q486050"
+      }
+     ]
     },
     "it": {
      "value": "Anafora",
-     "source": "it Wikipedia article Anafora (figura retorica) (Wikidata Q486050)"
+     "status": "sourced",
+     "source": "it Wikipedia article Anafora (figura retorica) (Wikidata Q486050)",
+     "cite": [
+      {
+       "wikipedia": "it",
+       "title": "Anafora (figura retorica)",
+       "qid": "Q486050"
+      }
+     ]
     },
     "pt": {
      "value": "Anáfora",
-     "source": "pt Wikipedia article Anáfora (Wikidata Q486050)"
+     "status": "sourced",
+     "source": "pt Wikipedia article Anáfora (Wikidata Q486050)",
+     "cite": [
+      {
+       "wikipedia": "pt",
+       "title": "Anáfora",
+       "qid": "Q486050"
+      }
+     ]
     },
     "pl": {
      "value": "Anafora",
-     "source": "pl Wikipedia article Anafora (środek stylistyczny) (Wikidata Q486050)"
+     "status": "sourced",
+     "source": "pl Wikipedia article Anafora (środek stylistyczny) (Wikidata Q486050)",
+     "cite": [
+      {
+       "wikipedia": "pl",
+       "title": "Anafora (środek stylistyczny)",
+       "qid": "Q486050"
+      }
+     ]
     },
     "ru": {
      "value": "Анафора",
-     "source": "ru Wikipedia article Анафора (Wikidata Q486050)"
+     "status": "sourced",
+     "source": "ru Wikipedia article Анафора (Wikidata Q486050)",
+     "cite": [
+      {
+       "wikipedia": "ru",
+       "title": "Анафора",
+       "qid": "Q486050"
+      }
+     ]
     },
     "ar": {
      "value": "تكرار الصدارة",
-     "source": "ar Wikipedia article تكرار الصدارة (Wikidata Q486050)"
+     "status": "sourced",
+     "source": "ar Wikipedia article تكرار الصدارة (Wikidata Q486050)",
+     "cite": [
+      {
+       "wikipedia": "ar",
+       "title": "تكرار الصدارة",
+       "qid": "Q486050"
+      }
+     ]
     },
     "hi": {
      "value": "आदि-आवृत्ति",
+     "status": "not-sourced",
      "source": "Not sourced: no article for this concept in this language. For a native reader."
     },
     "zh": {
      "value": "首语重复",
-     "source": "No zh article; Wikidata's zh label is 句首照应反复. 首语重复 is not sourced: for a native reader."
+     "status": "not-sourced",
+     "source": "Not sourced. No zh article; Wikidata's zh label is 句首照应反复. 首语重复 is not sourced: for a native reader.",
+     "cite": [
+      {
+       "wikidata": "label",
+       "qid": "Q486050",
+       "text": "句首照应反复"
+      }
+     ]
     },
     "ja": {
      "value": "首句反復",
-     "source": "ja Wikipedia article 首句反復 (Wikidata Q486050)"
+     "status": "sourced",
+     "source": "ja Wikipedia article 首句反復 (Wikidata Q486050)",
+     "cite": [
+      {
+       "wikipedia": "ja",
+       "title": "首句反復",
+       "qid": "Q486050"
+      }
+     ]
     },
     "ko": {
      "value": "첫말 반복",
+     "status": "not-sourced",
      "source": "No ko article. A plain description (repeat the first word), chosen over the earlier 두운 반복, which used the word for alliteration. Not sourced."
     },
     "vi": {
      "value": "Điệp đầu",
-     "source": "Wikidata's vi sitelink is the untranslated 'Anaphora (tu từ học)'. Điệp đầu is not sourced: for a native reader."
+     "status": "not-sourced",
+     "source": "Not sourced. Wikidata's vi sitelink is the untranslated 'Anaphora (tu từ học)'. Điệp đầu is not sourced: for a native reader.",
+     "cite": [
+      {
+       "wikipedia": "vi",
+       "title": "Anaphora (tu từ học)",
+       "qid": "Q486050"
+      }
+     ]
     },
     "th": {
      "value": "ซ้ำคำขึ้นต้น",
+     "status": "not-sourced",
      "source": "Not sourced: no article for this concept in this language. For a native reader."
     },
     "id": {
      "value": "Anafora",
-     "source": "English Wiktionary (docs/language/sources/wiktionary-translations.json), anaphora, sense 'rhetoric: repetition of a phrase used for emphasis': Indonesian anafora. (The id Wikipedia article Anafora, Q262575, is about the eucharistic prayer, so Wikidata gives no sitelink for the rhetorical sense.)"
+     "status": "sourced",
+     "source": "English Wiktionary (docs/language/sources/wiktionary-translations.json), anaphora, sense 'rhetoric: repetition of a phrase used for emphasis': Indonesian anafora. (The id Wikipedia article Anafora, Q262575, is about the eucharistic prayer, so Wikidata gives no sitelink for the rhetorical sense.)",
+     "cite": [
+      {
+       "wikipedia": "id",
+       "title": "Anafora",
+       "qid": "Q262575"
+      },
+      {
+       "wiktionary": "anaphora",
+       "sense": "rhetoric: repetition of a phrase used for emphasis",
+       "text": "anafora"
+      }
+     ]
     }
    }
   },
@@ -2561,63 +5018,197 @@
    "langs": {
     "es": {
      "value": "Acróstico",
-     "source": "es Wikipedia article Acróstico (Wikidata Q173287)"
+     "status": "sourced",
+     "source": "es Wikipedia article Acróstico (Wikidata Q173287)",
+     "cite": [
+      {
+       "wikipedia": "es",
+       "title": "Acróstico",
+       "qid": "Q173287"
+      }
+     ]
     },
     "fr": {
      "value": "Acrostiche",
-     "source": "fr Wikipedia article Acrostiche (Wikidata Q173287)"
+     "status": "sourced",
+     "source": "fr Wikipedia article Acrostiche (Wikidata Q173287)",
+     "cite": [
+      {
+       "wikipedia": "fr",
+       "title": "Acrostiche",
+       "qid": "Q173287"
+      }
+     ]
     },
     "de": {
      "value": "Akrostichon",
-     "source": "de Wikipedia article Akrostichon (Wikidata Q173287)"
+     "status": "sourced",
+     "source": "de Wikipedia article Akrostichon (Wikidata Q173287)",
+     "cite": [
+      {
+       "wikipedia": "de",
+       "title": "Akrostichon",
+       "qid": "Q173287"
+      }
+     ]
     },
     "it": {
      "value": "Acrostico",
-     "source": "it Wikipedia article Acrostico (Wikidata Q173287)"
+     "status": "sourced",
+     "source": "it Wikipedia article Acrostico (Wikidata Q173287)",
+     "cite": [
+      {
+       "wikipedia": "it",
+       "title": "Acrostico",
+       "qid": "Q173287"
+      }
+     ]
     },
     "pt": {
      "value": "Acróstico",
-     "source": "pt Wikipedia article Acróstico (Wikidata Q173287)"
+     "status": "sourced",
+     "source": "pt Wikipedia article Acróstico (Wikidata Q173287)",
+     "cite": [
+      {
+       "wikipedia": "pt",
+       "title": "Acróstico",
+       "qid": "Q173287"
+      }
+     ]
     },
     "pl": {
      "value": "Akrostych",
-     "source": "pl Wikipedia article Akrostych (Wikidata Q173287)"
+     "status": "sourced",
+     "source": "pl Wikipedia article Akrostych (Wikidata Q173287)",
+     "cite": [
+      {
+       "wikipedia": "pl",
+       "title": "Akrostych",
+       "qid": "Q173287"
+      }
+     ]
     },
     "ru": {
      "value": "Акростих",
-     "source": "ru Wikipedia article Акростих (Wikidata Q173287)"
+     "status": "sourced",
+     "source": "ru Wikipedia article Акростих (Wikidata Q173287)",
+     "cite": [
+      {
+       "wikipedia": "ru",
+       "title": "Акростих",
+       "qid": "Q173287"
+      }
+     ]
     },
     "ar": {
      "value": "التطريز",
-     "source": "Title of the ar Wikipedia article تطريز (شعر) (Wikidata Q40376349). Wikidata links a different article, تتويج (شعر), to the acrostic item. Which is the better name is for a native reader."
+     "status": "sourced",
+     "source": "Title of the ar Wikipedia article تطريز (شعر) (Wikidata Q40376349). Wikidata links a different article, تتويج (شعر), to the acrostic item. Which is the better name is for a native reader.",
+     "cite": [
+      {
+       "wikipedia": "ar",
+       "title": "تطريز (شعر)",
+       "qid": "Q40376349"
+      },
+      {
+       "wikipedia": "ar",
+       "title": "تتويج (شعر)",
+       "qid": "Q173287"
+      }
+     ]
     },
     "hi": {
      "value": "एक्रोस्टिक कविता",
-     "source": "hi Wikipedia article एक्रोस्टिक कविता (Wikidata Q173287)"
+     "status": "sourced",
+     "source": "hi Wikipedia article एक्रोस्टिक कविता (Wikidata Q173287)",
+     "cite": [
+      {
+       "wikipedia": "hi",
+       "title": "एक्रोस्टिक कविता",
+       "qid": "Q173287"
+      }
+     ]
     },
     "zh": {
      "value": "藏头诗",
-     "source": "English Wiktionary (docs/language/sources/wiktionary-translations.json), acrostic, sense 'poem or text in which certain letters spell out a name or message': Mandarin 藏頭詩, written 藏头诗 in simplified characters. The zh Wikipedia article is 離合詩 (离合诗), with 離合藏頭詩 among Wikidata's aliases."
+     "status": "sourced",
+     "cited": "藏頭詩",
+     "citedNote": "the same word in simplified characters (OpenCC: 頭→头, 詩→诗)",
+     "source": "English Wiktionary (docs/language/sources/wiktionary-translations.json), acrostic, sense 'poem or text in which certain letters spell out a name or message': Mandarin 藏頭詩, written 藏头诗 in simplified characters. The zh Wikipedia article is 離合詩 (离合诗), with 離合藏頭詩 among Wikidata's aliases.",
+     "cite": [
+      {
+       "wiktionary": "acrostic",
+       "sense": "poem or text in which certain letters spell out a name or message",
+       "text": "藏頭詩"
+      },
+      {
+       "wikipedia": "zh",
+       "title": "離合詩",
+       "qid": "Q173287"
+      },
+      {
+       "wikidata": "alias",
+       "qid": "Q173287",
+       "text": "離合藏頭詩"
+      }
+     ]
     },
     "ja": {
      "value": "折句",
-     "source": "ja Wikipedia article 折句 (Wikidata Q173287)"
+     "status": "sourced",
+     "source": "ja Wikipedia article 折句 (Wikidata Q173287)",
+     "cite": [
+      {
+       "wikipedia": "ja",
+       "title": "折句",
+       "qid": "Q173287"
+      }
+     ]
     },
     "ko": {
      "value": "이합체시",
-     "source": "ko Wikipedia article 이합체시 (Wikidata Q173287) (English Wiktionary's translation table gives 아크로스틱; the Wikipedia title is kept.)"
+     "status": "sourced",
+     "source": "ko Wikipedia article 이합체시 (Wikidata Q173287) (English Wiktionary's translation table gives 아크로스틱; the Wikipedia title is kept.)",
+     "cite": [
+      {
+       "wikipedia": "ko",
+       "title": "이합체시",
+       "qid": "Q173287"
+      },
+      {
+       "wiktionary": "acrostic",
+       "text": "아크로스틱"
+      }
+     ]
     },
     "vi": {
      "value": "Thơ khoán thủ",
+     "status": "not-sourced",
      "source": "No vi article for this concept and none titled Thơ khoán thủ. Not sourced: for a native reader."
     },
     "th": {
      "value": "กลอนกระทู้",
-     "source": "Wikidata links the Thai article อักษรกล. The game's Thai acrostic is word by word, which is the กระทู้ form of Thai verse; กลอนกระทู้ is not an article title: for a native reader."
+     "status": "not-sourced",
+     "source": "Not sourced. Wikidata links the Thai article อักษรกล. The game's Thai acrostic is word by word, which is the กระทู้ form of Thai verse; กลอนกระทู้ is not an article title: for a native reader.",
+     "cite": [
+      {
+       "wikipedia": "th",
+       "title": "อักษรกล",
+       "qid": "Q173287"
+      }
+     ]
     },
     "id": {
      "value": "Akrostik",
-     "source": "id Wikipedia article Akrostik (Wikidata Q173287)"
+     "status": "sourced",
+     "source": "id Wikipedia article Akrostik (Wikidata Q173287)",
+     "cite": [
+      {
+       "wikipedia": "id",
+       "title": "Akrostik",
+       "qid": "Q173287"
+      }
+     ]
     }
    }
   },
@@ -2628,63 +5219,160 @@
    "langs": {
     "es": {
      "value": "Epífora",
-     "source": "es Wikipedia article Epífora (retórica) (Wikidata Q963102)"
+     "status": "sourced",
+     "source": "es Wikipedia article Epífora (retórica) (Wikidata Q963102)",
+     "cite": [
+      {
+       "wikipedia": "es",
+       "title": "Epífora (retórica)",
+       "qid": "Q963102"
+      }
+     ]
     },
     "fr": {
      "value": "Épiphore",
-     "source": "fr Wikipedia article Épiphore (Wikidata Q963102)"
+     "status": "sourced",
+     "source": "fr Wikipedia article Épiphore (Wikidata Q963102)",
+     "cite": [
+      {
+       "wikipedia": "fr",
+       "title": "Épiphore",
+       "qid": "Q963102"
+      }
+     ]
     },
     "de": {
      "value": "Epiphora",
-     "source": "de Wikipedia article Epiphora (Rhetorik) (Wikidata Q963102)"
+     "status": "sourced",
+     "source": "de Wikipedia article Epiphora (Rhetorik) (Wikidata Q963102)",
+     "cite": [
+      {
+       "wikipedia": "de",
+       "title": "Epiphora (Rhetorik)",
+       "qid": "Q963102"
+      }
+     ]
     },
     "it": {
      "value": "Epifora",
-     "source": "it Wikipedia article Epifora (figura retorica) (Wikidata Q963102)"
+     "status": "sourced",
+     "source": "it Wikipedia article Epifora (figura retorica) (Wikidata Q963102)",
+     "cite": [
+      {
+       "wikipedia": "it",
+       "title": "Epifora (figura retorica)",
+       "qid": "Q963102"
+      }
+     ]
     },
     "pt": {
      "value": "Epístrofe",
-     "source": "Article title. The earlier Epífora is, in pt Wikipedia, the medical term (Q1347256, excessive tearing)."
+     "status": "sourced",
+     "source": "Article title. The earlier Epífora is, in pt Wikipedia, the medical term (Q1347256, excessive tearing).",
+     "cite": [
+      {
+       "wikipedia": "pt",
+       "title": "Epístrofe",
+       "qid": "Q963102"
+      },
+      {
+       "wikipedia": "pt",
+       "title": "Epífora",
+       "qid": "Q1347256"
+      }
+     ]
     },
     "pl": {
      "value": "Epifora",
-     "source": "pl Wikipedia article Epifora (Wikidata Q963102)"
+     "status": "sourced",
+     "source": "pl Wikipedia article Epifora (Wikidata Q963102)",
+     "cite": [
+      {
+       "wikipedia": "pl",
+       "title": "Epifora",
+       "qid": "Q963102"
+      }
+     ]
     },
     "ru": {
      "value": "Эпифора",
-     "source": "ru Wikipedia article Эпифора (риторика) (Wikidata Q963102)"
+     "status": "sourced",
+     "source": "ru Wikipedia article Эпифора (риторика) (Wikidata Q963102)",
+     "cite": [
+      {
+       "wikipedia": "ru",
+       "title": "Эпифора (риторика)",
+       "qid": "Q963102"
+      }
+     ]
     },
     "ar": {
      "value": "تكرار النهاية",
-     "source": "ar Wikipedia article تكرار النهاية (Wikidata Q963102)"
+     "status": "sourced",
+     "source": "ar Wikipedia article تكرار النهاية (Wikidata Q963102)",
+     "cite": [
+      {
+       "wikipedia": "ar",
+       "title": "تكرار النهاية",
+       "qid": "Q963102"
+      }
+     ]
     },
     "hi": {
      "value": "अंत-आवृत्ति",
+     "status": "not-sourced",
      "source": "Not sourced: no article for this concept in this language. For a native reader."
     },
     "zh": {
      "value": "尾语重复",
+     "status": "not-sourced",
      "source": "Not sourced: no article for this concept in this language. For a native reader."
     },
     "ja": {
      "value": "結句反復",
-     "source": "ja Wikipedia article 結句反復 (Wikidata Q963102)"
+     "status": "sourced",
+     "source": "ja Wikipedia article 結句反復 (Wikidata Q963102)",
+     "cite": [
+      {
+       "wikipedia": "ja",
+       "title": "結句反復",
+       "qid": "Q963102"
+      }
+     ]
     },
     "ko": {
      "value": "끝말 반복",
+     "status": "not-sourced",
      "source": "No ko article. A plain description (repeat the last word), chosen over the earlier 각운 반복, which used the word for end rhyme. Not sourced."
     },
     "vi": {
      "value": "Điệp cuối",
-     "source": "Not sourced: no article for this concept in this language (Wikidata label: Epistrophe). For a native reader."
+     "status": "not-sourced",
+     "source": "Not sourced: no article for this concept in this language (Wikidata label: Epistrophe). For a native reader.",
+     "cite": [
+      {
+       "wikidata": "label",
+       "qid": "Q963102",
+       "text": "Epistrophe"
+      }
+     ]
     },
     "th": {
      "value": "ซ้ำคำลงท้าย",
+     "status": "not-sourced",
      "source": "Not sourced: no article for this concept in this language. For a native reader."
     },
     "id": {
      "value": "Epifora",
-     "source": "id Wikipedia article Epifora (Wikidata Q963102)"
+     "status": "sourced",
+     "source": "id Wikipedia article Epifora (Wikidata Q963102)",
+     "cite": [
+      {
+       "wikipedia": "id",
+       "title": "Epifora",
+       "qid": "Q963102"
+      }
+     ]
     }
    }
   },
@@ -2695,63 +5383,183 @@
    "langs": {
     "es": {
      "value": "Haiku",
-     "source": "es Wikipedia article Haiku (Wikidata Q37707)"
+     "status": "sourced",
+     "source": "es Wikipedia article Haiku (Wikidata Q37707)",
+     "cite": [
+      {
+       "wikipedia": "es",
+       "title": "Haiku",
+       "qid": "Q37707"
+      }
+     ]
     },
     "fr": {
      "value": "Haïku",
-     "source": "fr Wikipedia article Haïku (Wikidata Q37707)"
+     "status": "sourced",
+     "source": "fr Wikipedia article Haïku (Wikidata Q37707)",
+     "cite": [
+      {
+       "wikipedia": "fr",
+       "title": "Haïku",
+       "qid": "Q37707"
+      }
+     ]
     },
     "de": {
      "value": "Haiku",
-     "source": "de Wikipedia article Haiku (Wikidata Q37707)"
+     "status": "sourced",
+     "source": "de Wikipedia article Haiku (Wikidata Q37707)",
+     "cite": [
+      {
+       "wikipedia": "de",
+       "title": "Haiku",
+       "qid": "Q37707"
+      }
+     ]
     },
     "it": {
      "value": "Haiku",
-     "source": "it Wikipedia article Haiku (Wikidata Q37707)"
+     "status": "sourced",
+     "source": "it Wikipedia article Haiku (Wikidata Q37707)",
+     "cite": [
+      {
+       "wikipedia": "it",
+       "title": "Haiku",
+       "qid": "Q37707"
+      }
+     ]
     },
     "pt": {
      "value": "Haicai",
-     "source": "Wikidata alias; the usual Brazilian name. The pt article is titled Haiku."
+     "status": "sourced",
+     "source": "Wikidata alias; the usual Brazilian name. The pt article is titled Haiku.",
+     "cite": [
+      {
+       "wikidata": "alias",
+       "qid": "Q37707",
+       "text": "Haicai"
+      }
+     ]
     },
     "pl": {
      "value": "Haiku",
-     "source": "pl Wikipedia article Haiku (Wikidata Q37707)"
+     "status": "sourced",
+     "source": "pl Wikipedia article Haiku (Wikidata Q37707)",
+     "cite": [
+      {
+       "wikipedia": "pl",
+       "title": "Haiku",
+       "qid": "Q37707"
+      }
+     ]
     },
     "ru": {
      "value": "Хайку",
-     "source": "ru Wikipedia article Хайку (Wikidata Q37707)"
+     "status": "sourced",
+     "source": "ru Wikipedia article Хайку (Wikidata Q37707)",
+     "cite": [
+      {
+       "wikipedia": "ru",
+       "title": "Хайку",
+       "qid": "Q37707"
+      }
+     ]
     },
     "ar": {
      "value": "هايكو",
-     "source": "ar Wikipedia article هايكو (Wikidata Q37707)"
+     "status": "sourced",
+     "source": "ar Wikipedia article هايكو (Wikidata Q37707)",
+     "cite": [
+      {
+       "wikipedia": "ar",
+       "title": "هايكو",
+       "qid": "Q37707"
+      }
+     ]
     },
     "hi": {
      "value": "हाइकु",
-     "source": "hi Wikipedia article हाइकु (Wikidata Q37707)"
+     "status": "sourced",
+     "source": "hi Wikipedia article हाइकु (Wikidata Q37707)",
+     "cite": [
+      {
+       "wikipedia": "hi",
+       "title": "हाइकु",
+       "qid": "Q37707"
+      }
+     ]
     },
     "zh": {
      "value": "俳句",
-     "source": "zh Wikipedia article 俳句 (Wikidata Q37707)"
+     "status": "sourced",
+     "source": "zh Wikipedia article 俳句 (Wikidata Q37707)",
+     "cite": [
+      {
+       "wikipedia": "zh",
+       "title": "俳句",
+       "qid": "Q37707"
+      }
+     ]
     },
     "ja": {
      "value": "俳句",
-     "source": "ja Wikipedia article 俳句 (Wikidata Q37707)"
+     "status": "sourced",
+     "source": "ja Wikipedia article 俳句 (Wikidata Q37707)",
+     "cite": [
+      {
+       "wikipedia": "ja",
+       "title": "俳句",
+       "qid": "Q37707"
+      }
+     ]
     },
     "ko": {
      "value": "하이쿠",
-     "source": "ko Wikipedia article 하이쿠 (Wikidata Q37707)"
+     "status": "sourced",
+     "source": "ko Wikipedia article 하이쿠 (Wikidata Q37707)",
+     "cite": [
+      {
+       "wikipedia": "ko",
+       "title": "하이쿠",
+       "qid": "Q37707"
+      }
+     ]
     },
     "vi": {
      "value": "Haiku",
-     "source": "vi Wikipedia article Haiku (Wikidata Q37707)"
+     "status": "sourced",
+     "source": "vi Wikipedia article Haiku (Wikidata Q37707)",
+     "cite": [
+      {
+       "wikipedia": "vi",
+       "title": "Haiku",
+       "qid": "Q37707"
+      }
+     ]
     },
     "th": {
      "value": "ไฮกุ",
-     "source": "th Wikipedia article ไฮกุ (Wikidata Q37707)"
+     "status": "sourced",
+     "source": "th Wikipedia article ไฮกุ (Wikidata Q37707)",
+     "cite": [
+      {
+       "wikipedia": "th",
+       "title": "ไฮกุ",
+       "qid": "Q37707"
+      }
+     ]
     },
     "id": {
      "value": "Haiku",
-     "source": "id Wikipedia article Haiku (Wikidata Q37707)"
+     "status": "sourced",
+     "source": "id Wikipedia article Haiku (Wikidata Q37707)",
+     "cite": [
+      {
+       "wikipedia": "id",
+       "title": "Haiku",
+       "qid": "Q37707"
+      }
+     ]
     }
    }
   },
@@ -2762,62 +5570,119 @@
    "langs": {
     "es": {
      "value": "Dístico heroico",
-     "source": "es Wikipedia article Dístico heroico (Wikidata Q2714966)"
+     "status": "sourced",
+     "source": "es Wikipedia article Dístico heroico (Wikidata Q2714966)",
+     "cite": [
+      {
+       "wikipedia": "es",
+       "title": "Dístico heroico",
+       "qid": "Q2714966"
+      }
+     ]
     },
     "fr": {
      "value": "Distique héroïque",
+     "status": "not-sourced",
      "source": "Not sourced: no article for this concept in this language. For a native reader."
     },
     "de": {
      "value": "Heroisches Reimpaar",
+     "status": "not-sourced",
      "source": "Not sourced: no article for this concept in this language. For a native reader."
     },
     "it": {
      "value": "Distico eroico",
-     "source": "it Wikipedia article Distico eroico (Wikidata Q2714966)"
+     "status": "sourced",
+     "source": "it Wikipedia article Distico eroico (Wikidata Q2714966)",
+     "cite": [
+      {
+       "wikipedia": "it",
+       "title": "Distico eroico",
+       "qid": "Q2714966"
+      }
+     ]
     },
     "pt": {
      "value": "Dístico heroico",
+     "status": "not-sourced",
      "source": "Not sourced: no article for this concept in this language. For a native reader."
     },
     "pl": {
      "value": "Dystych bohaterski",
+     "status": "not-sourced",
      "source": "Not sourced: no article for this concept in this language. For a native reader."
     },
     "ru": {
      "value": "Героический стих",
-     "source": "ru Wikipedia article Героический стих (Wikidata Q2714966)"
+     "status": "sourced",
+     "source": "ru Wikipedia article Героический стих (Wikidata Q2714966)",
+     "cite": [
+      {
+       "wikipedia": "ru",
+       "title": "Героический стих",
+       "qid": "Q2714966"
+      }
+     ]
     },
     "ar": {
      "value": "دوبيت ملحمي",
-     "source": "ar Wikipedia article دوبيت ملحمي (Wikidata Q2714966)"
+     "status": "sourced",
+     "source": "ar Wikipedia article دوبيت ملحمي (Wikidata Q2714966)",
+     "cite": [
+      {
+       "wikipedia": "ar",
+       "title": "دوبيت ملحمي",
+       "qid": "Q2714966"
+      }
+     ]
     },
     "hi": {
      "value": "वीर युग्म",
+     "status": "not-sourced",
      "source": "No hi article. Not sourced: for a native reader."
     },
     "zh": {
      "value": "英雄双行体",
-     "source": "zh Wikipedia article 英雄双行体 (Wikidata Q2714966)"
+     "status": "sourced",
+     "source": "zh Wikipedia article 英雄双行体 (Wikidata Q2714966)",
+     "cite": [
+      {
+       "wikipedia": "zh",
+       "title": "英雄双行体",
+       "qid": "Q2714966"
+      }
+     ]
     },
     "ja": {
      "value": "ヒロイック・カプレット",
-     "source": "ja Wikipedia article ヒロイック・カプレット (Wikidata Q2714966)"
+     "status": "sourced",
+     "source": "ja Wikipedia article ヒロイック・カプレット (Wikidata Q2714966)",
+     "cite": [
+      {
+       "wikipedia": "ja",
+       "title": "ヒロイック・カプレット",
+       "qid": "Q2714966"
+      }
+     ]
     },
     "ko": {
      "value": "영웅시체 쿠플레",
+     "status": "not-sourced",
      "source": "No ko article. 영웅시체 (heroic verse) plus the article title for couplet, 쿠플레. Not sourced."
     },
     "vi": {
      "value": "Song cú anh hùng",
+     "status": "not-sourced",
      "source": "Not sourced: no article for this concept in this language. For a native reader."
     },
     "th": {
      "value": "กลอนคู่วีรกรรม",
+     "status": "not-sourced",
      "source": "Not sourced: no article for this concept in this language. For a native reader."
     },
     "id": {
      "value": "Kuplet heroik",
+     "status": "not-sourced",
      "source": "Not sourced: no article for this concept in this language. For a native reader."
     }
    }
@@ -2829,63 +5694,227 @@
    "langs": {
     "es": {
      "value": "Jueju",
-     "source": "Pinyin name, as the English, German and Indonesian Wikipedias title it (Wikidata Q537198); no article in this language."
+     "status": "own-name",
+     "source": "Pinyin name, as the English, German and Indonesian Wikipedias title it (Wikidata Q537198); no article in this language.",
+     "cite": [
+      {
+       "wikipedia": "en",
+       "title": "Jueju",
+       "qid": "Q537198",
+       "lang": "en"
+      },
+      {
+       "wikipedia": "de",
+       "title": "Jueju",
+       "qid": "Q537198",
+       "lang": "de"
+      },
+      {
+       "wikipedia": "id",
+       "title": "Jueju",
+       "qid": "Q537198",
+       "lang": "id"
+      }
+     ]
     },
     "fr": {
      "value": "Jueju",
-     "source": "Pinyin name, as the English, German and Indonesian Wikipedias title it (Wikidata Q537198); no article in this language."
+     "status": "own-name",
+     "source": "Pinyin name, as the English, German and Indonesian Wikipedias title it (Wikidata Q537198); no article in this language.",
+     "cite": [
+      {
+       "wikipedia": "en",
+       "title": "Jueju",
+       "qid": "Q537198",
+       "lang": "en"
+      },
+      {
+       "wikipedia": "de",
+       "title": "Jueju",
+       "qid": "Q537198",
+       "lang": "de"
+      },
+      {
+       "wikipedia": "id",
+       "title": "Jueju",
+       "qid": "Q537198",
+       "lang": "id"
+      }
+     ]
     },
     "de": {
      "value": "Jueju",
-     "source": "de Wikipedia article Jueju (Wikidata Q537198)"
+     "status": "sourced",
+     "source": "de Wikipedia article Jueju (Wikidata Q537198)",
+     "cite": [
+      {
+       "wikipedia": "de",
+       "title": "Jueju",
+       "qid": "Q537198"
+      }
+     ]
     },
     "it": {
      "value": "Jueju",
-     "source": "Pinyin name, as the English, German and Indonesian Wikipedias title it (Wikidata Q537198); no article in this language."
+     "status": "own-name",
+     "source": "Pinyin name, as the English, German and Indonesian Wikipedias title it (Wikidata Q537198); no article in this language.",
+     "cite": [
+      {
+       "wikipedia": "en",
+       "title": "Jueju",
+       "qid": "Q537198",
+       "lang": "en"
+      },
+      {
+       "wikipedia": "de",
+       "title": "Jueju",
+       "qid": "Q537198",
+       "lang": "de"
+      },
+      {
+       "wikipedia": "id",
+       "title": "Jueju",
+       "qid": "Q537198",
+       "lang": "id"
+      }
+     ]
     },
     "pt": {
      "value": "Jueju",
-     "source": "Pinyin name, as the English, German and Indonesian Wikipedias title it (Wikidata Q537198); no article in this language."
+     "status": "own-name",
+     "source": "Pinyin name, as the English, German and Indonesian Wikipedias title it (Wikidata Q537198); no article in this language.",
+     "cite": [
+      {
+       "wikipedia": "en",
+       "title": "Jueju",
+       "qid": "Q537198",
+       "lang": "en"
+      },
+      {
+       "wikipedia": "de",
+       "title": "Jueju",
+       "qid": "Q537198",
+       "lang": "de"
+      },
+      {
+       "wikipedia": "id",
+       "title": "Jueju",
+       "qid": "Q537198",
+       "lang": "id"
+      }
+     ]
     },
     "pl": {
      "value": "Jueju",
-     "source": "Pinyin name, as the English, German and Indonesian Wikipedias title it (Wikidata Q537198); no article in this language."
+     "status": "own-name",
+     "source": "Pinyin name, as the English, German and Indonesian Wikipedias title it (Wikidata Q537198); no article in this language.",
+     "cite": [
+      {
+       "wikipedia": "en",
+       "title": "Jueju",
+       "qid": "Q537198",
+       "lang": "en"
+      },
+      {
+       "wikipedia": "de",
+       "title": "Jueju",
+       "qid": "Q537198",
+       "lang": "de"
+      },
+      {
+       "wikipedia": "id",
+       "title": "Jueju",
+       "qid": "Q537198",
+       "lang": "id"
+      }
+     ]
     },
     "ru": {
      "value": "Цзюэцзюй",
-     "source": "Wikidata alias (цзюэцзюй); no ru article."
+     "status": "sourced",
+     "source": "Wikidata alias (цзюэцзюй); no ru article.",
+     "cite": [
+      {
+       "wikidata": "alias",
+       "qid": "Q537198",
+       "text": "цзюэцзюй"
+      }
+     ]
     },
     "ar": {
      "value": "جويجو",
+     "status": "not-sourced",
      "source": "Not sourced: no article for this concept in this language. For a native reader."
     },
     "hi": {
      "value": "जुएजु",
+     "status": "not-sourced",
      "source": "Not sourced: no article for this concept in this language. For a native reader."
     },
     "zh": {
      "value": "绝句",
-     "source": "zh Wikipedia article 绝句 (Wikidata Q537198)"
+     "status": "sourced",
+     "source": "zh Wikipedia article 绝句 (Wikidata Q537198)",
+     "cite": [
+      {
+       "wikipedia": "zh",
+       "title": "绝句",
+       "qid": "Q537198"
+      }
+     ]
     },
     "ja": {
      "value": "絶句",
-     "source": "ja Wikipedia article 絶句 (Wikidata Q537198)"
+     "status": "sourced",
+     "source": "ja Wikipedia article 絶句 (Wikidata Q537198)",
+     "cite": [
+      {
+       "wikipedia": "ja",
+       "title": "絶句",
+       "qid": "Q537198"
+      }
+     ]
     },
     "ko": {
      "value": "절구",
-     "source": "絶句 read in Korean. The ko Wikipedia article 절구 (Q30020756) is about the mortar, a homograph; the poem has no article. Not sourced."
+     "status": "not-sourced",
+     "source": "絶句 read in Korean. The ko Wikipedia article 절구 (Q30020756) is about the mortar, a homograph; the poem has no article. Not sourced.",
+     "cite": [
+      {
+       "wikipedia": "ko",
+       "title": "절구",
+       "qid": "Q30020756"
+      }
+     ]
     },
     "vi": {
      "value": "Tuyệt cú",
-     "source": "vi Wikipedia article Tuyệt cú (Wikidata Q537198)"
+     "status": "sourced",
+     "source": "vi Wikipedia article Tuyệt cú (Wikidata Q537198)",
+     "cite": [
+      {
+       "wikipedia": "vi",
+       "title": "Tuyệt cú",
+       "qid": "Q537198"
+      }
+     ]
     },
     "th": {
      "value": "เจวี๋ยจวี้",
+     "status": "not-sourced",
      "source": "Not sourced: no article for this concept in this language. For a native reader."
     },
     "id": {
      "value": "Jueju",
-     "source": "id Wikipedia article Jueju (Wikidata Q537198)"
+     "status": "sourced",
+     "source": "id Wikipedia article Jueju (Wikidata Q537198)",
+     "cite": [
+      {
+       "wikipedia": "id",
+       "title": "Jueju",
+       "qid": "Q537198"
+      }
+     ]
     }
    }
   },
@@ -2896,63 +5925,208 @@
    "langs": {
     "es": {
      "value": "Lục bát",
-     "source": "es Wikipedia article Lục bát (Wikidata Q1755587)"
+     "status": "sourced",
+     "source": "es Wikipedia article Lục bát (Wikidata Q1755587)",
+     "cite": [
+      {
+       "wikipedia": "es",
+       "title": "Lục bát",
+       "qid": "Q1755587"
+      }
+     ]
     },
     "fr": {
      "value": "Lục bát",
-     "source": "fr Wikipedia article Lục bát (Wikidata Q1755587)"
+     "status": "sourced",
+     "source": "fr Wikipedia article Lục bát (Wikidata Q1755587)",
+     "cite": [
+      {
+       "wikipedia": "fr",
+       "title": "Lục bát",
+       "qid": "Q1755587"
+      }
+     ]
     },
     "de": {
      "value": "Lục bát",
-     "source": "The form's own Vietnamese name, as the English, Spanish and French Wikipedias title it (Wikidata Q1755587); no article in this language."
+     "status": "own-name",
+     "source": "The form's own Vietnamese name, as the English, Spanish and French Wikipedias title it (Wikidata Q1755587); no article in this language.",
+     "cite": [
+      {
+       "wikipedia": "en",
+       "title": "Lục bát",
+       "qid": "Q1755587",
+       "lang": "en"
+      },
+      {
+       "wikipedia": "es",
+       "title": "Lục bát",
+       "qid": "Q1755587",
+       "lang": "es"
+      },
+      {
+       "wikipedia": "fr",
+       "title": "Lục bát",
+       "qid": "Q1755587",
+       "lang": "fr"
+      }
+     ]
     },
     "it": {
      "value": "Lục bát",
-     "source": "The form's own Vietnamese name, as the English, Spanish and French Wikipedias title it (Wikidata Q1755587); no article in this language."
+     "status": "own-name",
+     "source": "The form's own Vietnamese name, as the English, Spanish and French Wikipedias title it (Wikidata Q1755587); no article in this language.",
+     "cite": [
+      {
+       "wikipedia": "en",
+       "title": "Lục bát",
+       "qid": "Q1755587",
+       "lang": "en"
+      },
+      {
+       "wikipedia": "es",
+       "title": "Lục bát",
+       "qid": "Q1755587",
+       "lang": "es"
+      },
+      {
+       "wikipedia": "fr",
+       "title": "Lục bát",
+       "qid": "Q1755587",
+       "lang": "fr"
+      }
+     ]
     },
     "pt": {
      "value": "Lục bát",
-     "source": "The form's own Vietnamese name, as the English, Spanish and French Wikipedias title it (Wikidata Q1755587); no article in this language."
+     "status": "own-name",
+     "source": "The form's own Vietnamese name, as the English, Spanish and French Wikipedias title it (Wikidata Q1755587); no article in this language.",
+     "cite": [
+      {
+       "wikipedia": "en",
+       "title": "Lục bát",
+       "qid": "Q1755587",
+       "lang": "en"
+      },
+      {
+       "wikipedia": "es",
+       "title": "Lục bát",
+       "qid": "Q1755587",
+       "lang": "es"
+      },
+      {
+       "wikipedia": "fr",
+       "title": "Lục bát",
+       "qid": "Q1755587",
+       "lang": "fr"
+      }
+     ]
     },
     "pl": {
      "value": "Lục bát",
-     "source": "The form's own Vietnamese name, as the English, Spanish and French Wikipedias title it (Wikidata Q1755587); no article in this language."
+     "status": "own-name",
+     "source": "The form's own Vietnamese name, as the English, Spanish and French Wikipedias title it (Wikidata Q1755587); no article in this language.",
+     "cite": [
+      {
+       "wikipedia": "en",
+       "title": "Lục bát",
+       "qid": "Q1755587",
+       "lang": "en"
+      },
+      {
+       "wikipedia": "es",
+       "title": "Lục bát",
+       "qid": "Q1755587",
+       "lang": "es"
+      },
+      {
+       "wikipedia": "fr",
+       "title": "Lục bát",
+       "qid": "Q1755587",
+       "lang": "fr"
+      }
+     ]
     },
     "ru": {
      "value": "Шесть-восемь",
+     "status": "not-sourced",
      "source": "Not sourced: no article for this concept in this language. For a native reader."
     },
     "ar": {
      "value": "ستة-ثمانية",
+     "status": "not-sourced",
      "source": "Not sourced: no article for this concept in this language. For a native reader."
     },
     "hi": {
      "value": "छह-आठ",
+     "status": "not-sourced",
      "source": "Not sourced: no article for this concept in this language. For a native reader."
     },
     "zh": {
      "value": "六八体",
-     "source": "The zh article 六八體, in simplified characters."
+     "status": "sourced",
+     "cited": "六八體",
+     "citedNote": "the same name in simplified characters (OpenCC: 體→体)",
+     "source": "The zh article 六八體, in simplified characters.",
+     "cite": [
+      {
+       "wikipedia": "zh",
+       "title": "六八體",
+       "qid": "Q1755587"
+      }
+     ]
     },
     "ja": {
      "value": "六八体",
+     "status": "not-sourced",
      "source": "Not sourced: no article for this concept in this language. For a native reader."
     },
     "ko": {
      "value": "육팔체",
+     "status": "not-sourced",
      "source": "Not sourced: no article for this concept in this language. For a native reader."
     },
     "vi": {
      "value": "Lục bát",
-     "source": "vi Wikipedia article Lục bát (thể thơ) (Wikidata Q1755587)"
+     "status": "sourced",
+     "source": "vi Wikipedia article Lục bát (thể thơ) (Wikidata Q1755587)",
+     "cite": [
+      {
+       "wikipedia": "vi",
+       "title": "Lục bát (thể thơ)",
+       "qid": "Q1755587"
+      }
+     ]
     },
     "th": {
      "value": "หก-แปด",
+     "status": "not-sourced",
      "source": "Not sourced: no article for this concept in this language. For a native reader."
     },
     "id": {
      "value": "Lục bát",
-     "source": "The form's own Vietnamese name, as the English, Spanish and French Wikipedias title it (Wikidata Q1755587); no article in this language."
+     "status": "own-name",
+     "source": "The form's own Vietnamese name, as the English, Spanish and French Wikipedias title it (Wikidata Q1755587); no article in this language.",
+     "cite": [
+      {
+       "wikipedia": "en",
+       "title": "Lục bát",
+       "qid": "Q1755587",
+       "lang": "en"
+      },
+      {
+       "wikipedia": "es",
+       "title": "Lục bát",
+       "qid": "Q1755587",
+       "lang": "es"
+      },
+      {
+       "wikipedia": "fr",
+       "title": "Lục bát",
+       "qid": "Q1755587",
+       "lang": "fr"
+      }
+     ]
     }
    }
   },
@@ -2963,63 +6137,181 @@
    "langs": {
     "es": {
      "value": "Aliteración",
-     "source": "es Wikipedia article Aliteración (Wikidata Q484495)"
+     "status": "sourced",
+     "source": "es Wikipedia article Aliteración (Wikidata Q484495)",
+     "cite": [
+      {
+       "wikipedia": "es",
+       "title": "Aliteración",
+       "qid": "Q484495"
+      }
+     ]
     },
     "fr": {
      "value": "Allitération",
-     "source": "fr Wikipedia article Allitération (Wikidata Q484495)"
+     "status": "sourced",
+     "source": "fr Wikipedia article Allitération (Wikidata Q484495)",
+     "cite": [
+      {
+       "wikipedia": "fr",
+       "title": "Allitération",
+       "qid": "Q484495"
+      }
+     ]
     },
     "de": {
      "value": "Alliteration",
-     "source": "de Wikipedia article Alliteration (Wikidata Q484495)"
+     "status": "sourced",
+     "source": "de Wikipedia article Alliteration (Wikidata Q484495)",
+     "cite": [
+      {
+       "wikipedia": "de",
+       "title": "Alliteration",
+       "qid": "Q484495"
+      }
+     ]
     },
     "it": {
      "value": "Allitterazione",
-     "source": "it Wikipedia article Allitterazione (Wikidata Q484495)"
+     "status": "sourced",
+     "source": "it Wikipedia article Allitterazione (Wikidata Q484495)",
+     "cite": [
+      {
+       "wikipedia": "it",
+       "title": "Allitterazione",
+       "qid": "Q484495"
+      }
+     ]
     },
     "pt": {
      "value": "Aliteração",
-     "source": "pt Wikipedia article Aliteração (Wikidata Q484495)"
+     "status": "sourced",
+     "source": "pt Wikipedia article Aliteração (Wikidata Q484495)",
+     "cite": [
+      {
+       "wikipedia": "pt",
+       "title": "Aliteração",
+       "qid": "Q484495"
+      }
+     ]
     },
     "pl": {
      "value": "Aliteracja",
-     "source": "pl Wikipedia article Aliteracja (Wikidata Q484495)"
+     "status": "sourced",
+     "source": "pl Wikipedia article Aliteracja (Wikidata Q484495)",
+     "cite": [
+      {
+       "wikipedia": "pl",
+       "title": "Aliteracja",
+       "qid": "Q484495"
+      }
+     ]
     },
     "ru": {
      "value": "Аллитерация",
-     "source": "ru Wikipedia article Аллитерация (Wikidata Q484495)"
+     "status": "sourced",
+     "source": "ru Wikipedia article Аллитерация (Wikidata Q484495)",
+     "cite": [
+      {
+       "wikipedia": "ru",
+       "title": "Аллитерация",
+       "qid": "Q484495"
+      }
+     ]
     },
     "ar": {
      "value": "الجناس الاستهلالي",
-     "source": "Wikidata alias (الجناس الاستهلالي). The article is titled سجع ابتدائي."
+     "status": "sourced",
+     "source": "Wikidata alias (الجناس الاستهلالي). The article is titled سجع ابتدائي.",
+     "cite": [
+      {
+       "wikipedia": "ar",
+       "title": "سجع ابتدائي",
+       "qid": "Q484495"
+      },
+      {
+       "wikidata": "alias",
+       "qid": "Q484495",
+       "text": "الجناس الاستهلالي"
+      }
+     ]
     },
     "hi": {
      "value": "अनुप्रास",
-     "source": "hi Wikipedia article अनुप्रास (Wikidata Q484495)"
+     "status": "sourced",
+     "source": "hi Wikipedia article अनुप्रास (Wikidata Q484495)",
+     "cite": [
+      {
+       "wikipedia": "hi",
+       "title": "अनुप्रास",
+       "qid": "Q484495"
+      }
+     ]
     },
     "zh": {
      "value": "头韵法",
-     "source": "The zh article 頭韻法, in simplified characters."
+     "status": "sourced",
+     "cited": "頭韻法",
+     "citedNote": "the same word in simplified characters (OpenCC: 頭→头, 韻→韵)",
+     "source": "The zh article 頭韻法, in simplified characters.",
+     "cite": [
+      {
+       "wikipedia": "zh",
+       "title": "頭韻法",
+       "qid": "Q484495"
+      }
+     ]
     },
     "ja": {
      "value": "頭韻",
-     "source": "Wikidata alias (頭韻); the article is 頭韻法."
+     "status": "sourced",
+     "source": "Wikidata alias (頭韻); the article is 頭韻法.",
+     "cite": [
+      {
+       "wikipedia": "ja",
+       "title": "頭韻法",
+       "qid": "Q484495"
+      },
+      {
+       "wikidata": "alias",
+       "qid": "Q484495",
+       "text": "頭韻"
+      }
+     ]
     },
     "ko": {
      "value": "두운",
-     "source": "ko Wikipedia article 두운 (Wikidata Q484495)"
+     "status": "sourced",
+     "source": "ko Wikipedia article 두운 (Wikidata Q484495)",
+     "cite": [
+      {
+       "wikipedia": "ko",
+       "title": "두운",
+       "qid": "Q484495"
+      }
+     ]
     },
     "vi": {
      "value": "Điệp phụ âm",
+     "status": "not-sourced",
      "source": "Not sourced: no article for this concept in this language. For a native reader."
     },
     "th": {
      "value": "สัมผัสอักษร",
+     "status": "not-sourced",
      "source": "Not sourced: no article for this concept in this language. For a native reader."
     },
     "id": {
      "value": "Aliterasi",
-     "source": "id Wikipedia article Aliterasi (Wikidata Q484495)"
+     "status": "sourced",
+     "source": "id Wikipedia article Aliterasi (Wikidata Q484495)",
+     "cite": [
+      {
+       "wikipedia": "id",
+       "title": "Aliterasi",
+       "qid": "Q484495"
+      }
+     ]
     }
    }
   },
@@ -3030,62 +6322,140 @@
    "langs": {
     "es": {
      "value": "Rima interna",
-     "source": "es Wikipedia article Rima interna (Wikidata Q2098331)"
+     "status": "sourced",
+     "source": "es Wikipedia article Rima interna (Wikidata Q2098331)",
+     "cite": [
+      {
+       "wikipedia": "es",
+       "title": "Rima interna",
+       "qid": "Q2098331"
+      }
+     ]
     },
     "fr": {
      "value": "Rime intérieure",
+     "status": "not-sourced",
      "source": "Not sourced: no article for this concept in this language. For a native reader."
     },
     "de": {
      "value": "Binnenreim",
-     "source": "de Wikipedia article Binnenreim (Wikidata Q2098331)"
+     "status": "sourced",
+     "source": "de Wikipedia article Binnenreim (Wikidata Q2098331)",
+     "cite": [
+      {
+       "wikipedia": "de",
+       "title": "Binnenreim",
+       "qid": "Q2098331"
+      }
+     ]
     },
     "it": {
      "value": "Rima interna",
-     "source": "it Wikipedia article Rima interna (Wikidata Q2098331)"
+     "status": "sourced",
+     "source": "it Wikipedia article Rima interna (Wikidata Q2098331)",
+     "cite": [
+      {
+       "wikipedia": "it",
+       "title": "Rima interna",
+       "qid": "Q2098331"
+      }
+     ]
     },
     "pt": {
      "value": "Rima interna",
+     "status": "not-sourced",
      "source": "Not sourced: no article for this concept in this language. For a native reader."
     },
     "pl": {
      "value": "Rym wewnętrzny",
-     "source": "Title of the pl Wikipedia article Rym wewnętrzny (Wikidata Q30912590)."
+     "status": "sourced",
+     "source": "Title of the pl Wikipedia article Rym wewnętrzny (Wikidata Q30912590).",
+     "cite": [
+      {
+       "wikipedia": "pl",
+       "title": "Rym wewnętrzny",
+       "qid": "Q30912590"
+      }
+     ]
     },
     "ru": {
      "value": "Внутренняя рифма",
-     "source": "Wikidata label (внутренняя рифма); no ru article."
+     "status": "sourced",
+     "source": "Wikidata label (внутренняя рифма); no ru article.",
+     "cite": [
+      {
+       "wikidata": "label",
+       "qid": "Q2098331",
+       "text": "внутренняя рифма"
+      }
+     ]
     },
     "ar": {
      "value": "القافية الداخلية",
-     "source": "Not sourced: no article for this concept in this language (Wikidata label: السجع في الشعر). For a native reader."
+     "status": "not-sourced",
+     "source": "Not sourced: no article for this concept in this language (Wikidata label: السجع في الشعر). For a native reader.",
+     "cite": [
+      {
+       "wikidata": "label",
+       "qid": "Q2098331",
+       "text": "السجع في الشعر"
+      }
+     ]
     },
     "hi": {
      "value": "भीतरी तुक",
+     "status": "not-sourced",
      "source": "Not sourced: no article for this concept in this language. For a native reader."
     },
     "zh": {
-     "value": "行内韵",
-     "source": "Not sourced: no article for this concept in this language (Wikidata label: 内韵). For a native reader."
+     "value": "内韵",
+     "status": "sourced",
+     "source": "Wikidata's zh label for internal rhyme (Q2098331): 内韵. No zh article. Replaces 行内韵, which was not sourced.",
+     "cite": [
+      {
+       "wikidata": "label",
+       "qid": "Q2098331",
+       "text": "内韵"
+      }
+     ]
     },
     "ja": {
      "value": "中間韻",
-     "source": "ja Wikipedia article 中間韻 (Wikidata Q2098331)"
+     "status": "sourced",
+     "source": "ja Wikipedia article 中間韻 (Wikidata Q2098331)",
+     "cite": [
+      {
+       "wikipedia": "ja",
+       "title": "中間韻",
+       "qid": "Q2098331"
+      }
+     ]
     },
     "ko": {
      "value": "행 안의 운",
+     "status": "not-sourced",
      "source": "Not sourced: no article for this concept in this language. For a native reader."
     },
     "vi": {
      "value": "Vần lưng",
+     "status": "not-sourced",
      "source": "Not sourced: no article for this concept in this language. For a native reader."
     },
     "th": {
      "value": "สัมผัสใน",
-     "source": "A standard term of Thai prosody; Wikidata lists สัมผัสใน among the aliases of the Thai rhyme article. No article of its own."
+     "status": "sourced",
+     "source": "A standard term of Thai prosody; Wikidata lists สัมผัสใน among the aliases of the Thai rhyme article. No article of its own.",
+     "cite": [
+      {
+       "wikidata": "alias",
+       "qid": "Q178715",
+       "text": "สัมผัสใน"
+      }
+     ]
     },
     "id": {
      "value": "Rima dalam",
+     "status": "not-sourced",
      "source": "Not sourced: no article for this concept in this language. For a native reader."
     }
    }

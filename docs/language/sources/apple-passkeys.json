@@ -1,6 +1,6 @@
 {
  "source": "https://support.apple.com/<locale>/102195",
- "fetched": "2026-11-16T17:20:34.987Z",
+ "fetched": "2026-11-17T00:28:34.050Z",
  "note": "First sentence of the article body, as evidence of the vendor term. Where Apple has no translation the page is English and is recorded as such.",
  "pages": {
   "en": {
@@ -61,7 +61,10 @@
   "ja": {
    "url": "https://support.apple.com/ja-jp/102195",
    "pageLocale": "ja_JP",
-   "firstSentence": "パスキーはパスワードに代わるものとして設計されました。"
+   "firstSentence": "パスキーはパスワードに代わるものとして設計されました。",
+   "termSentences": {
+    "サインイン": "Web サイトやアプリにパスワードなしでサインインできるようになり、便利なだけでなく安全面も強化されます。"
+   }
   },
   "ko": {
    "url": "https://support.apple.com/ko-kr/102195",

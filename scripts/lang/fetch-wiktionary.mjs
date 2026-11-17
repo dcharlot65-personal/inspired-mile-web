@@ -52,7 +52,8 @@ export function tables(text) {
   const out = [];
   let cur = null;
   for (const line of text.split('\n')) {
-    const top = line.match(/\{\{trans-top\|([^}]*)\}\}/);
+    // {{trans-top|sense}}, and {{trans-top-see|sense|other pages}} (a table that also points elsewhere).
+    const top = line.match(/\{\{trans-top\|([^}]*)\}\}/) ?? line.match(/\{\{trans-top-(?:see|also)\|([^|}]*)/);
     if (top) {
       cur = { sense: top[1].replace(/''/g, ''), langs: {} };
       out.push(cur);
@@ -63,7 +64,8 @@ export function tables(text) {
       continue;
     }
     if (!cur) continue;
-    for (const m of line.matchAll(/\{\{t(?:\+|-check)?\|([a-z-]+)\|([^|}]+)/g)) {
+    // {{t}}, {{t+}}, {{t-check}}, and the {{tt}} / {{tt+}} forms some tables use.
+    for (const m of line.matchAll(/\{\{tt?(?:\+|-check)?\|([a-z-]+)\|([^|}]+)/g)) {
       const ours = Object.entries(LANGS).find(([, w]) => w === m[1])?.[0];
       // Wiktionary marks stress in Russian with a combining acute; the word as written has none.
       // Only there: in Spanish or Vietnamese the acute is part of the spelling (anáfora, bốn).

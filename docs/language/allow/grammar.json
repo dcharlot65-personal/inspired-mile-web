@@ -146,7 +146,7 @@
    "rule": "HUNSPELL_RULE_AR",
    "id": "*",
    "at": "جويجو",
-   "reason": "A word of a verse form's or device's name, taken from a published source (docs/language/glossary.json, 'names'), which the speller does not know."
+   "reason": "A word of a verse form's or device's name that the translator chose: not sourced (docs/language/glossary.json marks the Arabic jueju, جويجو, so). The speller does not know it; it is kept as the name, for a native reader to judge."
   },
   {
    "lang": "ar",
@@ -1764,7 +1764,7 @@
    "rule": "MORFOLOGIK_RULE_RU_RU",
    "id": "*",
    "at": "Шесть-восемь",
-   "reason": "A word of a verse form's or device's name, taken from a published source (docs/language/glossary.json, 'names'), which the speller does not know."
+   "reason": "A word of a verse form's or device's name that the translator chose: not sourced (docs/language/glossary.json marks the Russian lục bát, Шесть-восемь, so). The speller does not know it; it is kept as the name, for a native reader to judge."
   },
   {
    "lang": "ru",
