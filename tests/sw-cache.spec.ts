@@ -36,7 +36,10 @@ async function signInByEmail(page: Page, email: string) {
   await expect.poll(() => (codes = loggedCodes(email)).length, { message: `a code for ${email} in ${API_LOG}`, timeout: 10000 }).toBeGreaterThan(0);
   await page.locator('#auth-code-input').fill(codes[codes.length - 1]);
   await page.locator('#auth-code-verify').click();
-  await expect(page.locator('#user-badge')).toBeVisible();
+  // A loaded build host's Postgres can take several seconds over a sign-up (as in
+  // multiplayer.spec.ts); the default 5 s failed here twice on the iMac Pro with the code
+  // request still in flight. How fast sign-in is is not what this file tests.
+  await expect(page.locator('#user-badge')).toBeVisible({ timeout: 20000 });
 }
 
 /** The page is loaded, and the worker has it. */
