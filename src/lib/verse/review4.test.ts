@@ -210,8 +210,11 @@ describe('engine check, blocker 2: ad-libs and names in a phrase count as words'
 
   it('word by word: held sounds, drawn-out letters and the names of the table can be said; keyboard mash and near misses cannot', () => {
     // Each list fails under one of the rule's parts taken away: the table's names (these 21 fail when only
-    // SCOWL's words are read), a drawn-out letter said once (ayyy, brrrap, grrah) and the held sounds.
-    const SAID = 'skrrt brrr pfft pssst shhh bzzzt grrr brrt hmmm mmmm zzzz mhmm ayyy yuhh brrrap grrah shawty bruh finna varlet mwangi wanjiru kamau tlaloc xochitl nezahualcoyotl szczecin przemyśl nkechi ngozi oluwaseun kwame nkrumah siobhan niamh caoimhe aoife wojciech zbigniew thandiwe babatunde'.split(' ');
+    // SCOWL's words are read), a drawn-out letter said once (ayyy, brrrap, grrah) or twice where the word
+    // doubles it (dizzzy, fluffffy: "dizy" and "flufy" are not spelled as words are), contractions typed
+    // without their apostrophe (the table's "wasn't" spells "snt" only with the apostrophe left out) and
+    // the held sounds.
+    const SAID = 'skrrt brrr pfft pssst shhh bzzzt grrr brrt hmmm mmmm zzzz mhmm ayyy yuhh brrrap grrah dizzzy fluffffy wasnt doesnt didnt shawty bruh finna varlet mwangi wanjiru kamau tlaloc xochitl nezahualcoyotl szczecin przemyśl nkechi ngozi oluwaseun kwame nkrumah siobhan niamh caoimhe aoife wojciech zbigniew thandiwe babatunde'.split(' ');
     const NOT = 'qwrt sdfg zxcv hjkl wrtp dfgh asdf brrh pssh mhhg hllt mvvk dhhh pft'.split(' ');
     expect(SAID.filter((w) => !sayable(w))).toEqual([]);
     expect(NOT.filter((w) => sayable(w))).toEqual([]);

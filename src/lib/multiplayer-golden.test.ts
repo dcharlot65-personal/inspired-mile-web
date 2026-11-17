@@ -151,6 +151,12 @@ const HAND: string[] = [
   'The brrh pssh mhhg night\nThe tssk hmmm mhmm light\nThe pfft pft ffff shht flight\nThe zzzz bzzt ssss grrrt sight',
   'The hllt mvvk dhhh rrrr kite\nThe sksss pfff tsss bzzzzt bite\nThe qrrt mrrk shhhh hmmmk white',
   "The trippin' y'all nothin' night\nThe gon' fam'ly lovin' light",
+  // Drawn out where the word has a double letter of its own: said again only with the double kept (dizzy, not dizy).
+  'The dizzzy fluffffy myrrrh night\nThe offfhand egggplant tizzzy light',
+  // Contractions typed without their apostrophe, which the table keeps only with it.
+  'I wasnt there and you didnt see\nShe doesnt know what they shouldnt be',
+  // Names whose only vowel letter is y.
+  'Dafydd and Gwyneth sang in Llanfair hall\nAnd Rhys and Bryn and Glyn were dancing through it all',
   // Flow: lines that open alike on a little word, a chant that says the line before again, and lines that grow.
   'The night\nThe day is long\nThe end of all of it is near',
   'Dare\nDare me\nDare me, who dares',
@@ -453,7 +459,10 @@ function copiesOf(r: R, verse: string): string[] {
   // (the engine check's parity fuzz: is_copy must ask the matched line whether it rhymes).
   const movedSwapped = [...rhymeSwapped.slice(1), rhymeSwapped[0]];
   const movedSwappedAdded = [...rhymeSwappedAdded.slice(1), rhymeSwappedAdded[0]];
-  return [moved, added, dropped, shuffled, rhymeSwapped, rhymeSwappedAdded, movedSwapped, movedSwappedAdded, [ls[0]], [...ls, ...ls.slice(0, 1)]].map((x) =>
+  // And a line of the player's own after them: then only the rhyme of each carried line tells (the
+  // every-line rule asks for no line beyond the other's), read from the line that carries it.
+  const movedSwappedPlus = [...movedSwapped, 'And so I end my verse tonight'];
+  return [moved, added, dropped, shuffled, rhymeSwapped, rhymeSwappedAdded, movedSwapped, movedSwappedAdded, movedSwappedPlus, [ls[0]], [...ls, ...ls.slice(0, 1)]].map((x) =>
     x.join('\n'),
   );
 }
