@@ -205,6 +205,18 @@ async function pageWrite({ lang, slots, replies }) {
 
 // --- The run ---
 try {
+  // A cell the repository set aside (a change to the game its drafts cannot be re-scored under,
+  // src/lib/model-eval.rescore.test.ts) is measured again: this host's copy of it goes aside too.
+  const REPO_ASIDE = join(ROOT, 'docs', 'language', 'model-eval', 'set-aside');
+  if (existsSync(REPO_ASIDE)) for (const f of readdirSync(REPO_ASIDE).filter((x) => x.endsWith('.json'))) {
+    const here = join(OUT, f);
+    if (!existsSync(here)) continue;
+    if (JSON.parse(readFileSync(here, 'utf8')).date !== JSON.parse(readFileSync(join(REPO_ASIDE, f), 'utf8')).date) continue;
+    mkdirSync(join(OUT, 'set-aside'), { recursive: true });
+    cpSync(here, join(OUT, 'set-aside', f));
+    rmSync(here);
+    log(`${f}: set aside in the repository, so measured again`);
+  }
   // Results from an earlier run that reached the repository but not this host's store.
   if (existsSync(REPO_CELLS)) for (const f of readdirSync(REPO_CELLS)) if (f.endsWith('.json') && !existsSync(join(OUT, f))) cpSync(join(REPO_CELLS, f), join(OUT, f));
 

@@ -88,7 +88,8 @@ describe('the measured language lists', () => {
         plays++;
         const where = `${cell.tier}.${cell.lang} seed ${p.seed} round ${p.roundIndex} (${p.formId})`;
         const r = await replayPlay(cell.lang, p);
-        if (r.drawn !== p.formId) { problems.push(`${where}: the duel now draws ${r.drawn}`); continue; }
+        // Neither can be re-scored: the cell needs the model again (MEVAL_SET_ASIDE=1 with the re-score sets it aside meanwhile).
+        if (r.drawn !== p.formId) { problems.push(`${where}: the duel now draws ${r.drawn} (the cell needs the model again)`); continue; }
         if (JSON.stringify(r.prompt) !== JSON.stringify(p.prompt)) { problems.push(`${where}: the prompt is not the one the model was given (the cell needs the model again)`); continue; }
         const [was, now] = [scoredFields(p), scoredFields(r.play)];
         for (const k of Object.keys(was) as (keyof typeof was)[]) {
