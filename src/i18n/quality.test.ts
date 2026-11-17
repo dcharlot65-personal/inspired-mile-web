@@ -17,6 +17,8 @@ import { argumentNames, interpolate, parseMessage, pluralBlocks, pluralCategory,
 import { applyAllowlist, checkLanguage, untranslated } from '../../scripts/lang/lib/mechanical.mjs';
 // @ts-expect-error as above
 import { checkCitations, checkGlossary, checkNameExceptions } from '../../scripts/lang/lib/glossary.mjs';
+// @ts-expect-error as above
+import { checkWords, wordsToCheck } from '../../scripts/lang/lib/words.mjs';
 
 const read = (path: string) => JSON.parse(readFileSync(new URL(`../../${path}`, import.meta.url), 'utf8'));
 const cldr = read('docs/language/sources/cldr.json');
@@ -159,6 +161,49 @@ describe('relic power words translate the English list word for word', () => {
     const en = await loadPack('en');
     const shape = (p: { relics: Record<string, string[]> }) => Object.fromEntries(Object.entries(p.relics).map(([id, ws]) => [id, ws.length]));
     for (const l of PACK_LANGS) expect([l, shape(await loadPack(l))]).toEqual([l, shape(en)]);
+  });
+});
+
+describe('single words against a published dictionary', () => {
+  // Relic power words, the judge's criteria and the glossary's core terms, against English Wiktionary's
+  // translation tables (scripts/lang/lib/words.mjs). Back-translation cannot judge a lone word: Hindi
+  // लालसा (greed) for "ambition" passed the meaning check with LaBSE 0.72.
+  const wikt = read('docs/language/sources/wiktionary-words.json');
+  const ts = read('docs/language/sources/opencc-ts.json').map;
+  const allowWords = read('docs/language/allow/words.json').entries;
+  async function inputs() {
+    const packs: Record<string, unknown> = {};
+    const ui: Record<string, Record<string, string>> = {};
+    for (const l of LOCALES) {
+      packs[l] = await loadPack(l);
+      ui[l] = await loadMessages(l);
+    }
+    return { packs, ui };
+  }
+
+  it('every word is listed under its English word, or was read and kept with a reason', async () => {
+    const { packs, ui } = await inputs();
+    const { rows, open, stale } = checkWords(wordsToCheck(LOCALES, packs, ui, glossary), wikt, allowWords, ts);
+    expect(open.map((r: { lang: string; id: string; word: string }) => `${r.lang} ${r.id} ${r.word}`)).toEqual([]);
+    expect(stale).toEqual([]);
+    // 945 words on 2026-11-16 (63 in each of 15 languages): 695 listed, 229 read and kept, 21 with no entry.
+    expect(rows.length).toBe(945);
+    expect(rows.filter((r: { state: string }) => r.state === 'listed').length).toBeGreaterThan(650);
+  });
+
+  it('names a word the dictionary does not give, unless it was read and kept', async () => {
+    const { packs, ui } = await inputs();
+    const hi = structuredClone(packs.hi) as { relics: Record<string, string[]> };
+    hi.relics['RL-006'][2] = 'लालसा';
+    const pt = { ...ui.pt, 'criterion.wit': 'engenho' };
+    const { open } = checkWords(wordsToCheck(['hi', 'pt'], { ...packs, hi }, { ...ui, pt }, glossary), wikt, allowWords, ts);
+    expect(open.map((r: { lang: string; id: string; word: string }) => `${r.lang} ${r.id} ${r.word}`)).toEqual(['hi relics.RL-006.2 लालसा', 'pt criterion.wit engenho']);
+    // A reason names the exact word: a changed word is a new finding, and the old reason goes stale.
+    const es = structuredClone(packs.es) as { relics: Record<string, string[]> };
+    es.relics['RL-001'][1] = 'chanza';
+    const r = checkWords(wordsToCheck(['es'], { ...packs, es }, ui, glossary), wikt, allowWords, ts);
+    expect(r.open.map((x: { word: string }) => x.word)).toEqual(['chanza']);
+    expect(r.stale.map((x: { word: string }) => x.word)).toContain('burla');
   });
 });
 

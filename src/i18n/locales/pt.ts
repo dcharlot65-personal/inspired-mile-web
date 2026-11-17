@@ -397,7 +397,7 @@ const pt: Record<string, string> = {
   'criterion.wordplay': 'jogo de palavras',
   'criterion.allusion': 'alusão',
   'criterion.flow': 'fluência',
-  'criterion.wit': 'engenho',
+  'criterion.wit': 'agudeza',
   'end.over': 'O duelo acabou',
   'end.victory': 'Vitória',
   'end.defeat': 'Derrota',

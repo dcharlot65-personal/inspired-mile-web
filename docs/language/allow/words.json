@@ -1,0 +1,1608 @@
+{
+ "about": "Single words the dictionary check (scripts/lang/lib/words.mjs) found not listed in English Wiktionary's translation table for their English word, each read and kept with the reason. Read by the engineer doing this work, a language model, not by a native speaker. An entry names the exact word: change the word and it stops matching.",
+ "entries": [
+  {
+   "lang": "es",
+   "id": "relics.RL-001.1",
+   "english": "jest",
+   "word": "burla",
+   "reason": "burla (mockery, jest) is an ordinary word for this, beside the table's broma."
+  },
+  {
+   "lang": "es",
+   "id": "relics.RL-001.2",
+   "english": "grave",
+   "word": "tumba",
+   "reason": "tumba (grave, tomb) is an ordinary word for this, beside the table's sepultura, fosa."
+  },
+  {
+   "lang": "es",
+   "id": "relics.RL-002.4",
+   "english": "drown",
+   "word": "naufragio",
+   "reason": "“drown” is given as a noun, naufragio (shipwreck), so that a line can hold it as a thing; the table lists only the verb. The relic's words are themes (The Tempest), not a word-for-word list."
+  },
+  {
+   "lang": "es",
+   "id": "relics.RL-004.1",
+   "english": "vow",
+   "word": "juramento",
+   "reason": "juramento (oath) is an ordinary word for this, beside the table's voto, promesa."
+  },
+  {
+   "lang": "es",
+   "id": "relics.RL-004.3",
+   "english": "banished",
+   "word": "destierro",
+   "reason": "“banished” is given as the noun destierro (exile, banishment), the table lists the participles exiliado, desterrado."
+  },
+  {
+   "lang": "es",
+   "id": "relics.RL-005.1",
+   "english": "choice",
+   "word": "elección",
+   "reason": "elección (choice) is an ordinary word for this, beside the table's escogimiento."
+  },
+  {
+   "lang": "es",
+   "id": "relics.RL-005.2",
+   "english": "mercy",
+   "word": "clemencia",
+   "reason": "clemencia (clemency, mercy) is an ordinary word for this, beside the table's misericordia, piedad."
+  },
+  {
+   "lang": "es",
+   "id": "relics.RL-005.4",
+   "english": "casket",
+   "word": "cofre",
+   "reason": "cofre (chest, casket) is an ordinary word for this, beside the table's cofrecito, joyero, urna."
+  },
+  {
+   "lang": "es",
+   "id": "relics.RL-007.4",
+   "english": "drown",
+   "word": "naufragio",
+   "reason": "“drown” is given as a noun, naufragio (shipwreck), so that a line can hold it as a thing; the table lists only the verb. The relic's words are themes (The Tempest), not a word-for-word list."
+  },
+  {
+   "lang": "es",
+   "id": "relics.RL-008.0",
+   "english": "tears",
+   "word": "lágrimas",
+   "reason": "lágrimas is the plural, as the English “tears” is; the table lists the singular lágrima."
+  },
+  {
+   "lang": "es",
+   "id": "relics.RL-009.3",
+   "english": "play",
+   "word": "comedia",
+   "reason": "The stage play, the sense of this relic (A Midsummer Night's Dream): comedia (in Golden Age Spanish, any stage play). The table's senses are mostly the verb."
+  },
+  {
+   "lang": "es",
+   "id": "deck",
+   "english": "deck",
+   "word": "mazo",
+   "reason": "mazo (a deck of cards) is the word card and video games use in this language; the table covers other senses."
+  },
+  {
+   "lang": "es",
+   "id": "opponent",
+   "english": "opponent",
+   "word": "rival",
+   "reason": "The glossary's word for this term: rival (rival, opponent); see docs/language/glossary.json."
+  },
+  {
+   "lang": "es",
+   "id": "criterion.flow",
+   "english": "flow",
+   "word": "fluidez",
+   "reason": "fluidez (fluency, smoothness of verse) is an ordinary word for this, beside the table's flujo, fluir (physical flow)."
+  },
+  {
+   "lang": "es",
+   "id": "criterion.wit",
+   "english": "wit",
+   "word": "ingenio",
+   "reason": "ingenio (wit, ingenuity) is an ordinary word for this, beside the table's gracejo, donaire."
+  },
+  {
+   "lang": "fr",
+   "id": "relics.RL-001.1",
+   "english": "jest",
+   "word": "farce",
+   "reason": "farce (farce, practical joke) is an ordinary word for this, beside the table's blague, plaisanter."
+  },
+  {
+   "lang": "fr",
+   "id": "relics.RL-002.1",
+   "english": "spell",
+   "word": "sortilège",
+   "reason": "sortilège (spell, sorcery) is an ordinary word for this, beside the table's charme, sort, maléfice."
+  },
+  {
+   "lang": "fr",
+   "id": "relics.RL-002.4",
+   "english": "drown",
+   "word": "naufrage",
+   "reason": "“drown” is given as a noun, naufrage (shipwreck), so that a line can hold it as a thing; the table lists only the verb. The relic's words are themes (The Tempest), not a word-for-word list."
+  },
+  {
+   "lang": "fr",
+   "id": "relics.RL-003.0",
+   "english": "dagger",
+   "word": "dague",
+   "reason": "dague (dagger) is an ordinary word for this, beside the table's poignard."
+  },
+  {
+   "lang": "fr",
+   "id": "relics.RL-004.1",
+   "english": "vow",
+   "word": "serment",
+   "reason": "serment (oath) is an ordinary word for this, beside the table's vœu."
+  },
+  {
+   "lang": "fr",
+   "id": "relics.RL-004.3",
+   "english": "banished",
+   "word": "exil",
+   "reason": "“banished” is given as the noun exil; its own entry glosses it “exile”."
+  },
+  {
+   "lang": "fr",
+   "id": "relics.RL-005.2",
+   "english": "mercy",
+   "word": "clémence",
+   "reason": "clémence (clemency) is an ordinary word for this, beside the table's miséricorde, pitié."
+  },
+  {
+   "lang": "fr",
+   "id": "relics.RL-007.4",
+   "english": "drown",
+   "word": "naufrage",
+   "reason": "“drown” is given as a noun, naufrage (shipwreck), so that a line can hold it as a thing; the table lists only the verb. The relic's words are themes (The Tempest), not a word-for-word list."
+  },
+  {
+   "lang": "fr",
+   "id": "relics.RL-008.0",
+   "english": "tears",
+   "word": "larmes",
+   "reason": "larmes is the plural, as the English “tears” is; the table lists the singular larme."
+  },
+  {
+   "lang": "fr",
+   "id": "relics.RL-009.3",
+   "english": "play",
+   "word": "comédie",
+   "reason": "The stage play, the sense of this relic (A Midsummer Night's Dream): comédie (in classical French, a stage play). The table's senses are mostly the verb."
+  },
+  {
+   "lang": "fr",
+   "id": "verse",
+   "english": "verse",
+   "word": "strophe",
+   "reason": "strophe (stanza): the glossary keeps vers, the table's word, for a line, so a verse of several lines is a strophe."
+  },
+  {
+   "lang": "fr",
+   "id": "round",
+   "english": "round",
+   "word": "manche",
+   "reason": "manche (a round of a game) is the word card and video games use in this language; the table covers other senses."
+  },
+  {
+   "lang": "fr",
+   "id": "deck",
+   "english": "deck",
+   "word": "jeu",
+   "reason": "jeu (a pack of cards, jeu de cartes, which the table lists) is the word card and video games use in this language; the table covers other senses."
+  },
+  {
+   "lang": "fr",
+   "id": "criterion.flow",
+   "english": "flow",
+   "word": "fluidité",
+   "reason": "fluidité (fluency of style) is an ordinary word for this, beside the table's écoulement, flux (physical flow)."
+  },
+  {
+   "lang": "fr",
+   "id": "criterion.wit",
+   "english": "wit",
+   "word": "esprit",
+   "reason": "esprit is wit (avoir de l'esprit); the table lists mot d'esprit, a witticism."
+  },
+  {
+   "lang": "it",
+   "id": "relics.RL-001.1",
+   "english": "jest",
+   "word": "burla",
+   "reason": "burla (jest, prank) is an ordinary word for this, beside the table's scherzo, facezia."
+  },
+  {
+   "lang": "it",
+   "id": "relics.RL-002.1",
+   "english": "spell",
+   "word": "incanto",
+   "reason": "incanto (enchantment, spell) is an ordinary word for this, beside the table's incantesimo."
+  },
+  {
+   "lang": "it",
+   "id": "relics.RL-002.4",
+   "english": "drown",
+   "word": "naufragio",
+   "reason": "“drown” is given as a noun, naufragio (shipwreck), so that a line can hold it as a thing; the table lists only the verb. The relic's words are themes (The Tempest), not a word-for-word list."
+  },
+  {
+   "lang": "it",
+   "id": "relics.RL-004.1",
+   "english": "vow",
+   "word": "giuramento",
+   "reason": "giuramento (oath) is an ordinary word for this, beside the table's voto."
+  },
+  {
+   "lang": "it",
+   "id": "relics.RL-004.3",
+   "english": "banished",
+   "word": "esilio",
+   "reason": "“banished” is given as the noun esilio; its own entry glosses it “exile (state)”."
+  },
+  {
+   "lang": "it",
+   "id": "relics.RL-005.2",
+   "english": "mercy",
+   "word": "clemenza",
+   "reason": "clemenza (clemency) is an ordinary word for this, beside the table's misericordia, pietà."
+  },
+  {
+   "lang": "it",
+   "id": "relics.RL-007.4",
+   "english": "drown",
+   "word": "naufragio",
+   "reason": "“drown” is given as a noun, naufragio (shipwreck), so that a line can hold it as a thing; the table lists only the verb. The relic's words are themes (The Tempest), not a word-for-word list."
+  },
+  {
+   "lang": "it",
+   "id": "relics.RL-008.0",
+   "english": "tears",
+   "word": "lacrime",
+   "reason": "lacrime is the plural, as the English “tears” is; the table lists the singular lacrima."
+  },
+  {
+   "lang": "it",
+   "id": "relics.RL-009.3",
+   "english": "play",
+   "word": "commedia",
+   "reason": "The stage play, the sense of this relic (A Midsummer Night's Dream): commedia (a comedy, a stage play). The table's senses are mostly the verb."
+  },
+  {
+   "lang": "it",
+   "id": "round",
+   "english": "round",
+   "word": "round",
+   "reason": "round (the English loan Italian games and sport use) is the word card and video games use in this language; the table covers other senses."
+  },
+  {
+   "lang": "it",
+   "id": "criterion.wordplay",
+   "english": "wordplay",
+   "word": "gioco di parole",
+   "reason": "gioco di parole: its own entry glosses it “pun; play on words”."
+  },
+  {
+   "lang": "it",
+   "id": "criterion.flow",
+   "english": "flow",
+   "word": "scorrevolezza",
+   "reason": "scorrevolezza (smoothness of a text) is an ordinary word for this, beside the table's fluidità."
+  },
+  {
+   "lang": "pt",
+   "id": "relics.RL-002.4",
+   "english": "drown",
+   "word": "naufrágio",
+   "reason": "“drown” is given as a noun, naufrágio (shipwreck), so that a line can hold it as a thing; the table lists only the verb. The relic's words are themes (The Tempest), not a word-for-word list."
+  },
+  {
+   "lang": "pt",
+   "id": "relics.RL-004.1",
+   "english": "vow",
+   "word": "jura",
+   "reason": "jura is the noun of jurar, an oath; its stem also meets jurar, juro, juramento. The table lists voto."
+  },
+  {
+   "lang": "pt",
+   "id": "relics.RL-004.3",
+   "english": "banished",
+   "word": "exílio",
+   "reason": "“banished” is given as the noun exílio; its own entry glosses it “exile”."
+  },
+  {
+   "lang": "pt",
+   "id": "relics.RL-005.2",
+   "english": "mercy",
+   "word": "clemência",
+   "reason": "clemência (clemency) is an ordinary word for this, beside the table's misericórdia, piedade."
+  },
+  {
+   "lang": "pt",
+   "id": "relics.RL-005.4",
+   "english": "casket",
+   "word": "cofre",
+   "reason": "cofre (chest, casket) is an ordinary word for this, beside the table's porta-joias, urna."
+  },
+  {
+   "lang": "pt",
+   "id": "relics.RL-007.4",
+   "english": "drown",
+   "word": "naufrágio",
+   "reason": "“drown” is given as a noun, naufrágio (shipwreck), so that a line can hold it as a thing; the table lists only the verb. The relic's words are themes (The Tempest), not a word-for-word list."
+  },
+  {
+   "lang": "pt",
+   "id": "relics.RL-008.0",
+   "english": "tears",
+   "word": "lágrimas",
+   "reason": "lágrimas is the plural, as the English “tears” is; the table lists the singular lágrima."
+  },
+  {
+   "lang": "pt",
+   "id": "relics.RL-009.3",
+   "english": "play",
+   "word": "comédia",
+   "reason": "The stage play, the sense of this relic (A Midsummer Night's Dream): comédia (a comedy, a stage play). The table's senses are mostly the verb."
+  },
+  {
+   "lang": "pt",
+   "id": "verse",
+   "english": "verse",
+   "word": "estrofe",
+   "reason": "estrofe (stanza): the glossary keeps verso, the table's word, for a line, so a verse of several lines is an estrofe."
+  },
+  {
+   "lang": "pt",
+   "id": "criterion.flow",
+   "english": "flow",
+   "word": "fluência",
+   "reason": "fluência (fluency) is an ordinary word for this, beside the table's fluidez."
+  },
+  {
+   "lang": "pl",
+   "id": "relics.RL-001.1",
+   "english": "jest",
+   "word": "żart",
+   "reason": "żart: its own entry glosses it “joke”."
+  },
+  {
+   "lang": "pl",
+   "id": "relics.RL-002.4",
+   "english": "drown",
+   "word": "toń",
+   "reason": "“drown” is given as a noun, toń (the deep water), so that a line can hold it as a thing; the table lists only the verb. The relic's words are themes (The Tempest), not a word-for-word list."
+  },
+  {
+   "lang": "pl",
+   "id": "relics.RL-003.3",
+   "english": "vision",
+   "word": "widmo",
+   "reason": "Macbeth's “vision”, the dagger he sees that is not there: widmo (a phantom). The table lists the senses sight and goal."
+  },
+  {
+   "lang": "pl",
+   "id": "relics.RL-004.3",
+   "english": "banished",
+   "word": "wygnanie",
+   "reason": "“banished” is given as the noun wygnanie; its own entry glosses it “exile”."
+  },
+  {
+   "lang": "pl",
+   "id": "relics.RL-005.2",
+   "english": "mercy",
+   "word": "łaska",
+   "reason": "łaska (grace, mercy) is an ordinary word for this, beside the table's miłosierdzie, litość."
+  },
+  {
+   "lang": "pl",
+   "id": "relics.RL-005.4",
+   "english": "casket",
+   "word": "szkatuła",
+   "reason": "szkatuła (casket) is an ordinary word for this, beside the table's szkatułka (its diminutive)."
+  },
+  {
+   "lang": "pl",
+   "id": "relics.RL-007.3",
+   "english": "page",
+   "word": "karta",
+   "reason": "karta (a leaf of a book, karta książki) is an ordinary word for this, beside the table's strona, stronica."
+  },
+  {
+   "lang": "pl",
+   "id": "relics.RL-007.4",
+   "english": "drown",
+   "word": "toń",
+   "reason": "“drown” is given as a noun, toń (the deep water), so that a line can hold it as a thing; the table lists only the verb. The relic's words are themes (The Tempest), not a word-for-word list."
+  },
+  {
+   "lang": "pl",
+   "id": "relics.RL-008.0",
+   "english": "tears",
+   "word": "łzy",
+   "reason": "łzy is the plural, as the English “tears” is; the table's Polish words for “tear” are the verb (drzeć, rwać)."
+  },
+  {
+   "lang": "pl",
+   "id": "verse",
+   "english": "verse",
+   "word": "strofa",
+   "reason": "strofa (stanza): the glossary keeps wers for a line and wiersz is a whole poem, so a verse of several lines is a strofa."
+  },
+  {
+   "lang": "pl",
+   "id": "craft",
+   "english": "craft",
+   "word": "kunszt",
+   "reason": "kunszt (artistry, craft) is an ordinary word for this, beside the table's rzemiosło (a trade)."
+  },
+  {
+   "lang": "pl",
+   "id": "opponent",
+   "english": "opponent",
+   "word": "rywal",
+   "reason": "The glossary's word for this term: rywal (rival, opponent); see docs/language/glossary.json."
+  },
+  {
+   "lang": "pl",
+   "id": "criterion.flow",
+   "english": "flow",
+   "word": "płynność",
+   "reason": "płynność (fluency) is an ordinary word for this, beside the table's przepływ (physical flow)."
+  },
+  {
+   "lang": "ru",
+   "id": "relics.RL-001.1",
+   "english": "jest",
+   "word": "шутка",
+   "reason": "шутка (joke, jest) is an ordinary word for this, beside the table's насмешка, острота."
+  },
+  {
+   "lang": "ru",
+   "id": "relics.RL-002.1",
+   "english": "spell",
+   "word": "чары",
+   "reason": "чары (spell, enchantment) is an ordinary word for this, beside the table's заклинание."
+  },
+  {
+   "lang": "ru",
+   "id": "relics.RL-002.4",
+   "english": "drown",
+   "word": "пучина",
+   "reason": "“drown” is given as a noun, пучина (the deep of the sea), so that a line can hold it as a thing; the table lists only the verb. The relic's words are themes (The Tempest), not a word-for-word list."
+  },
+  {
+   "lang": "ru",
+   "id": "relics.RL-004.3",
+   "english": "banished",
+   "word": "изгнание",
+   "reason": "“banished” is given as the noun изгнание; its own entry glosses it “exile, banishment”."
+  },
+  {
+   "lang": "ru",
+   "id": "relics.RL-005.4",
+   "english": "casket",
+   "word": "ларец",
+   "reason": "ларец (casket) is an ordinary word for this, beside the table's шкатулка."
+  },
+  {
+   "lang": "ru",
+   "id": "relics.RL-007.4",
+   "english": "drown",
+   "word": "пучина",
+   "reason": "“drown” is given as a noun, пучина (the deep of the sea), so that a line can hold it as a thing; the table lists only the verb. The relic's words are themes (The Tempest), not a word-for-word list."
+  },
+  {
+   "lang": "ru",
+   "id": "relics.RL-008.0",
+   "english": "tears",
+   "word": "слёзы",
+   "reason": "слёзы is the plural, as the English “tears” is; the table's Russian words for “tear” are the verb (рвать)."
+  },
+  {
+   "lang": "ru",
+   "id": "craft",
+   "english": "craft",
+   "word": "мастерство",
+   "reason": "мастерство (mastery, craft) is an ordinary word for this, beside the table's ремесло, умение."
+  },
+  {
+   "lang": "ru",
+   "id": "opponent",
+   "english": "opponent",
+   "word": "соперник",
+   "reason": "The glossary's word for this term: соперник (rival, opponent); see docs/language/glossary.json."
+  },
+  {
+   "lang": "ar",
+   "id": "relics.RL-001.4",
+   "english": "dust",
+   "word": "تراب",
+   "reason": "تراب (earth, dust) is the dust of burial, the sense of Yorick's skull; the table lists غبار, dust in the air."
+  },
+  {
+   "lang": "ar",
+   "id": "relics.RL-002.1",
+   "english": "spell",
+   "word": "سحر",
+   "reason": "سحر (magic, a spell) is an ordinary word for this, beside the table's تعويذة."
+  },
+  {
+   "lang": "ar",
+   "id": "relics.RL-002.2",
+   "english": "staff",
+   "word": "عصا",
+   "reason": "عصا is a staff (Prospero's); the table lists only طاقم, staff as personnel."
+  },
+  {
+   "lang": "ar",
+   "id": "relics.RL-003.3",
+   "english": "vision",
+   "word": "رؤيا",
+   "reason": "Macbeth's “vision”, the dagger he sees that is not there: رؤيا (a vision seen). The table lists the senses sight and goal."
+  },
+  {
+   "lang": "ar",
+   "id": "relics.RL-004.1",
+   "english": "vow",
+   "word": "عهد",
+   "reason": "عهد (a pledge, a covenant) is an ordinary word for this, beside the table's نذر (a religious vow)."
+  },
+  {
+   "lang": "ar",
+   "id": "relics.RL-004.3",
+   "english": "banished",
+   "word": "منفى",
+   "reason": "“banished” is given as the noun منفى; its own entry glosses it “exile”."
+  },
+  {
+   "lang": "ar",
+   "id": "relics.RL-005.4",
+   "english": "casket",
+   "word": "صندوق",
+   "reason": "صندوق: its own entry glosses it “chest, box”: the casket of The Merchant of Venice."
+  },
+  {
+   "lang": "ar",
+   "id": "relics.RL-006.2",
+   "english": "ambition",
+   "word": "طموح",
+   "reason": "طموح (ambition) is an ordinary word for this, beside the table's مطمح."
+  },
+  {
+   "lang": "ar",
+   "id": "relics.RL-007.1",
+   "english": "tempest",
+   "word": "عاصفة",
+   "reason": "عاصفة: its own entry glosses it “storm”: the tempest."
+  },
+  {
+   "lang": "ar",
+   "id": "relics.RL-008.0",
+   "english": "tears",
+   "word": "دموع",
+   "reason": "دموع is the plural of دمع, which the table lists."
+  },
+  {
+   "lang": "ar",
+   "id": "relics.RL-009.2",
+   "english": "fool",
+   "word": "مهرج",
+   "reason": "Shakespeare's Fool, the jester: مهرج (clown, jester). The table gives only “fool” as an idiot."
+  },
+  {
+   "lang": "ar",
+   "id": "verse",
+   "english": "verse",
+   "word": "أبيات",
+   "reason": "أبيات is the plural of بيت, which the table lists; the glossary accepts both."
+  },
+  {
+   "lang": "ar",
+   "id": "deck",
+   "english": "deck",
+   "word": "رزمة",
+   "reason": "رزمة (a pack of cards) is the word card and video games use in this language; the table covers other senses."
+  },
+  {
+   "lang": "ar",
+   "id": "criterion.flow",
+   "english": "flow",
+   "word": "الانسياب",
+   "reason": "الانسياب (smooth flow) is an ordinary word for this, beside the table's تدفق."
+  },
+  {
+   "lang": "ar",
+   "id": "criterion.wit",
+   "english": "wit",
+   "word": "الظُّرف",
+   "reason": "الظُّرف is wit, refinement of speech; the table covers only wit as mind (وعي)."
+  },
+  {
+   "lang": "hi",
+   "id": "relics.RL-001.0",
+   "english": "skull",
+   "word": "खोपड़ी",
+   "reason": "खोपड़ी (skull) is an ordinary word for this, beside the table's कपाल."
+  },
+  {
+   "lang": "hi",
+   "id": "relics.RL-001.3",
+   "english": "laugh",
+   "word": "हँसी",
+   "reason": "हँसी is the noun, laughter; the table lists the verb हँसना."
+  },
+  {
+   "lang": "hi",
+   "id": "relics.RL-002.0",
+   "english": "storm",
+   "word": "तूफ़ान",
+   "reason": "तूफ़ान (storm) is an ordinary word for this, beside the table's आँधी."
+  },
+  {
+   "lang": "hi",
+   "id": "relics.RL-002.1",
+   "english": "spell",
+   "word": "जादू",
+   "reason": "जादू: its own entry glosses it “magic; witchcraft; incantation; charm”."
+  },
+  {
+   "lang": "hi",
+   "id": "relics.RL-002.2",
+   "english": "staff",
+   "word": "छड़ी",
+   "reason": "छड़ी: its own entry glosses it “stick; cane, walking stick”: Prospero's staff."
+  },
+  {
+   "lang": "hi",
+   "id": "relics.RL-004.1",
+   "english": "vow",
+   "word": "क़सम",
+   "reason": "क़सम (oath, vow) is an ordinary word for this, beside the table's वचन, प्रण."
+  },
+  {
+   "lang": "hi",
+   "id": "relics.RL-004.3",
+   "english": "banished",
+   "word": "निर्वासन",
+   "reason": "निर्वासन is the noun, banishment; the table lists the participle निर्वासित."
+  },
+  {
+   "lang": "hi",
+   "id": "relics.RL-004.4",
+   "english": "kiss",
+   "word": "चुंबन",
+   "reason": "चुंबन is the table's चुम्बन written with anusvara for the conjunct, the common modern spelling."
+  },
+  {
+   "lang": "hi",
+   "id": "relics.RL-006.3",
+   "english": "witch",
+   "word": "डायन",
+   "reason": "डायन is the common spelling of the table's डाइन."
+  },
+  {
+   "lang": "hi",
+   "id": "relics.RL-007.1",
+   "english": "tempest",
+   "word": "तूफ़ान",
+   "reason": "तूफ़ान (storm, tempest) is an ordinary word for this, beside the table's आँधी."
+  },
+  {
+   "lang": "hi",
+   "id": "relics.RL-009.2",
+   "english": "fool",
+   "word": "मसखरा",
+   "reason": "Shakespeare's Fool, the jester: मसखरा (jester, buffoon). The table gives only “fool” as an idiot."
+  },
+  {
+   "lang": "hi",
+   "id": "round",
+   "english": "round",
+   "word": "दौर",
+   "reason": "The glossary's word for this term: दौर (a round, a phase); see docs/language/glossary.json."
+  },
+  {
+   "lang": "hi",
+   "id": "relic",
+   "english": "relic",
+   "word": "अवशेष",
+   "reason": "अवशेष (remains, remnant) is the Hindi for a relic in the religious sense (बुद्ध के अवशेष); the game's relic is an object left by a play. The glossary's word."
+  },
+  {
+   "lang": "hi",
+   "id": "duel",
+   "english": "duel",
+   "word": "द्वंद्व",
+   "reason": "द्वंद्व is the table's द्वंद्वयुद्ध without युद्ध (battle): a contest of two."
+  },
+  {
+   "lang": "hi",
+   "id": "judge",
+   "english": "judge",
+   "word": "निर्णायक",
+   "reason": "निर्णायक is the judge of a contest; the table's words are judges of a court."
+  },
+  {
+   "lang": "hi",
+   "id": "opponent",
+   "english": "opponent",
+   "word": "प्रतिद्वंद्वी",
+   "reason": "The glossary's word for this term: प्रतिद्वंद्वी (rival, opponent); see docs/language/glossary.json."
+  },
+  {
+   "lang": "hi",
+   "id": "criterion.allusion",
+   "english": "allusion",
+   "word": "संकेत",
+   "reason": "संकेत (hint, indication): an allusion as an indirect pointer. The glossary's word, for a native reader."
+  },
+  {
+   "lang": "hi",
+   "id": "criterion.wit",
+   "english": "wit",
+   "word": "हाज़िरजवाबी",
+   "reason": "हाज़िरजवाबी: its own entry glosses it “quickwittedness”."
+  },
+  {
+   "lang": "zh",
+   "id": "relics.RL-001.1",
+   "english": "jest",
+   "word": "戏谑",
+   "reason": "戏谑: its own entry glosses it “to banter; to joke”."
+  },
+  {
+   "lang": "zh",
+   "id": "relics.RL-002.2",
+   "english": "staff",
+   "word": "魔杖",
+   "reason": "魔杖 (magic staff) is Prospero's staff; the table lists 杖 (staff) without its magic."
+  },
+  {
+   "lang": "zh",
+   "id": "relics.RL-002.3",
+   "english": "island",
+   "word": "孤岛",
+   "reason": "孤岛 (lone island) is The Tempest's island; the table lists 岛."
+  },
+  {
+   "lang": "zh",
+   "id": "relics.RL-003.1",
+   "english": "blood",
+   "word": "鲜血",
+   "reason": "鲜血 (fresh blood) is the table's 血 as Chinese writes it in verse."
+  },
+  {
+   "lang": "zh",
+   "id": "relics.RL-003.3",
+   "english": "vision",
+   "word": "幻象",
+   "reason": "Macbeth's “vision”, the dagger he sees that is not there: 幻象 (an illusion, an apparition). The table lists the senses sight and goal."
+  },
+  {
+   "lang": "zh",
+   "id": "relics.RL-003.4",
+   "english": "hand",
+   "word": "双手",
+   "reason": "双手 (both hands): the table's 手, as Macbeth's hands."
+  },
+  {
+   "lang": "zh",
+   "id": "relics.RL-004.2",
+   "english": "night",
+   "word": "黑夜",
+   "reason": "黑夜 (dark night): the table's 夜."
+  },
+  {
+   "lang": "zh",
+   "id": "relics.RL-004.3",
+   "english": "banished",
+   "word": "放逐",
+   "reason": "放逐: its own entry glosses it “to send into exile; to banish”."
+  },
+  {
+   "lang": "zh",
+   "id": "relics.RL-005.1",
+   "english": "choice",
+   "word": "抉择",
+   "reason": "抉择 (a hard choice) is an ordinary word for this, beside the table's 选择."
+  },
+  {
+   "lang": "zh",
+   "id": "relics.RL-005.2",
+   "english": "mercy",
+   "word": "仁慈",
+   "reason": "仁慈 (mercy, kindness) is an ordinary word for this, beside the table's 慈悲."
+  },
+  {
+   "lang": "zh",
+   "id": "relics.RL-005.4",
+   "english": "casket",
+   "word": "匣子",
+   "reason": "匣子: its own entry glosses it “small box; small case”: the casket."
+  },
+  {
+   "lang": "zh",
+   "id": "relics.RL-006.2",
+   "english": "ambition",
+   "word": "野心",
+   "reason": "野心 (ambition (often ruthless, as Macbeth's)) is an ordinary word for this, beside the table's 抱负, 志向."
+  },
+  {
+   "lang": "zh",
+   "id": "relics.RL-007.0",
+   "english": "book",
+   "word": "魔法书",
+   "reason": "魔法书 (book of magic): Prospero's book; the table lists 书."
+  },
+  {
+   "lang": "zh",
+   "id": "relics.RL-007.1",
+   "english": "tempest",
+   "word": "风暴",
+   "reason": "风暴 (storm, tempest) is an ordinary word for this, beside the table's 暴风雨."
+  },
+  {
+   "lang": "zh",
+   "id": "relics.RL-007.3",
+   "english": "page",
+   "word": "书页",
+   "reason": "书页 (page of a book): the table lists 页."
+  },
+  {
+   "lang": "zh",
+   "id": "relics.RL-008.1",
+   "english": "truth",
+   "word": "真相",
+   "reason": "真相 (the truth of the matter) is an ordinary word for this, beside the table's 真理, 事实."
+  },
+  {
+   "lang": "zh",
+   "id": "relics.RL-008.3",
+   "english": "nothing",
+   "word": "虚无",
+   "reason": "虚无 (nothingness): Lear's “nothing” as a noun; the table lists 没什么, the everyday phrase."
+  },
+  {
+   "lang": "zh",
+   "id": "relics.RL-008.4",
+   "english": "heart",
+   "word": "真心",
+   "reason": "真心 (true heart): Cordelia's heart; the table lists 心."
+  },
+  {
+   "lang": "zh",
+   "id": "relics.RL-009.2",
+   "english": "fool",
+   "word": "丑角",
+   "reason": "Shakespeare's Fool, the jester: 丑角 (clown, jester). The table gives only “fool” as an idiot."
+  },
+  {
+   "lang": "zh",
+   "id": "relics.RL-009.3",
+   "english": "play",
+   "word": "戏",
+   "reason": "The stage play, the sense of this relic (A Midsummer Night's Dream): 戏 (a play, drama). The table's senses are mostly the verb."
+  },
+  {
+   "lang": "zh",
+   "id": "relic",
+   "english": "relic",
+   "word": "圣物",
+   "reason": "The glossary's word for this term: 圣物 (a sacred object, a relic); see docs/language/glossary.json."
+  },
+  {
+   "lang": "zh",
+   "id": "deck",
+   "english": "deck",
+   "word": "牌组",
+   "reason": "牌组 (a deck of cards) is the word card and video games use in this language; the table covers other senses."
+  },
+  {
+   "lang": "zh",
+   "id": "duel",
+   "english": "duel",
+   "word": "对决",
+   "reason": "对决 (a showdown, a duel) is an ordinary word for this, beside the table's 决斗."
+  },
+  {
+   "lang": "zh",
+   "id": "craft",
+   "english": "craft",
+   "word": "技艺",
+   "reason": "技艺: its own entry glosses it “skill; art; artistry”."
+  },
+  {
+   "lang": "zh",
+   "id": "criterion.allusion",
+   "english": "allusion",
+   "word": "用典",
+   "reason": "用典 (to use an allusion, the term of Chinese poetics) is an ordinary word for this, beside the table's 暗指."
+  },
+  {
+   "lang": "zh",
+   "id": "criterion.flow",
+   "english": "flow",
+   "word": "韵律",
+   "reason": "韵律 (rhythm, metre of verse) is an ordinary word for this, beside the table's 流 (physical flow)."
+  },
+  {
+   "lang": "ja",
+   "id": "relics.RL-001.0",
+   "english": "skull",
+   "word": "骸骨",
+   "reason": "骸骨 (skeleton, bones; Yorick's skull) is an ordinary word for this, beside the table's 頭蓋骨, 髑髏."
+  },
+  {
+   "lang": "ja",
+   "id": "relics.RL-001.1",
+   "english": "jest",
+   "word": "冗談",
+   "reason": "冗談: its own entry glosses it “a joke”."
+  },
+  {
+   "lang": "ja",
+   "id": "relics.RL-001.4",
+   "english": "dust",
+   "word": "塵",
+   "reason": "塵 (dust) is an ordinary word for this, beside the table's 埃, ほこり."
+  },
+  {
+   "lang": "ja",
+   "id": "relics.RL-002.4",
+   "english": "drown",
+   "word": "溺れ",
+   "reason": "溺れ is the stem of the table's 溺れる (to drown); Japanese is matched anywhere in the line, so the stem meets every form of the verb."
+  },
+  {
+   "lang": "ja",
+   "id": "relics.RL-003.3",
+   "english": "vision",
+   "word": "幻",
+   "reason": "Macbeth's “vision”, the dagger he sees that is not there: 幻 (a phantom, an illusion). The table lists the senses sight and goal."
+  },
+  {
+   "lang": "ja",
+   "id": "relics.RL-004.3",
+   "english": "banished",
+   "word": "追放",
+   "reason": "“banished” is given as the noun 追放; its own entry glosses it “banishment, deportation, exile”."
+  },
+  {
+   "lang": "ja",
+   "id": "relics.RL-004.4",
+   "english": "kiss",
+   "word": "口づけ",
+   "reason": "口づけ is the table's 口付け written with kana."
+  },
+  {
+   "lang": "ja",
+   "id": "relics.RL-005.4",
+   "english": "casket",
+   "word": "小箱",
+   "reason": "小箱: its own entry glosses it “little box”: the casket."
+  },
+  {
+   "lang": "ja",
+   "id": "relics.RL-007.0",
+   "english": "book",
+   "word": "書物",
+   "reason": "書物 (a book, a volume) is an ordinary word for this, beside the table's 本, 書籍."
+  },
+  {
+   "lang": "ja",
+   "id": "relics.RL-007.4",
+   "english": "drown",
+   "word": "溺れ",
+   "reason": "溺れ is the stem of the table's 溺れる (to drown); Japanese is matched anywhere in the line, so the stem meets every form of the verb."
+  },
+  {
+   "lang": "ja",
+   "id": "relics.RL-008.3",
+   "english": "nothing",
+   "word": "無",
+   "reason": "無 (nothingness): Lear's “nothing” as a noun; the table lists the phrase 何もない."
+  },
+  {
+   "lang": "ja",
+   "id": "relics.RL-009.2",
+   "english": "fool",
+   "word": "道化",
+   "reason": "道化 (jester), the table's 道化師 without 師: Shakespeare's Fool."
+  },
+  {
+   "lang": "ja",
+   "id": "relics.RL-009.3",
+   "english": "play",
+   "word": "芝居",
+   "reason": "The stage play, the sense of this relic (A Midsummer Night's Dream): 芝居 (a play, theatre). The table's senses are mostly the verb."
+  },
+  {
+   "lang": "ja",
+   "id": "verse",
+   "english": "verse",
+   "word": "詩",
+   "reason": "The glossary's word for this term: 詩 (poem, verse); see docs/language/glossary.json."
+  },
+  {
+   "lang": "ja",
+   "id": "potion",
+   "english": "potion",
+   "word": "薬",
+   "reason": "薬 (medicine, a draught) is the glossary's word; the table lists 水薬 and the loan ポーション, which Japanese games often use. For a native reader."
+  },
+  {
+   "lang": "ja",
+   "id": "craft",
+   "english": "craft",
+   "word": "技巧",
+   "reason": "技巧 (technique, craftsmanship) is an ordinary word for this, beside the table's 職業 (a trade)."
+  },
+  {
+   "lang": "ja",
+   "id": "signature",
+   "english": "signature",
+   "word": "シグネチャー",
+   "reason": "シグネチャー: the game's “signature” bonus is a name, not a written signature (署名), so the loanword is kept."
+  },
+  {
+   "lang": "ja",
+   "id": "criterion.allusion",
+   "english": "allusion",
+   "word": "引喩",
+   "reason": "引喩 (allusion, the rhetorical term) is an ordinary word for this, beside the table's 仄めかし, 暗示."
+  },
+  {
+   "lang": "ko",
+   "id": "relics.RL-001.0",
+   "english": "skull",
+   "word": "해골",
+   "reason": "해골 (skull, skeleton) is an ordinary word for this, beside the table's 두개골."
+  },
+  {
+   "lang": "ko",
+   "id": "relics.RL-002.2",
+   "english": "staff",
+   "word": "지팡이",
+   "reason": "지팡이 (a staff, a walking stick) is an ordinary word for this, beside the table's 막대기."
+  },
+  {
+   "lang": "ko",
+   "id": "relics.RL-002.4",
+   "english": "drown",
+   "word": "난파",
+   "reason": "“drown” is given as a noun, 난파 (shipwreck), so that a line can hold it as a thing; the table lists only the verb. The relic's words are themes (The Tempest), not a word-for-word list."
+  },
+  {
+   "lang": "ko",
+   "id": "relics.RL-003.3",
+   "english": "vision",
+   "word": "환영",
+   "reason": "Macbeth's “vision”, the dagger he sees that is not there: 환영 (a phantom, an apparition). The table lists the senses sight and goal."
+  },
+  {
+   "lang": "ko",
+   "id": "relics.RL-004.3",
+   "english": "banished",
+   "word": "추방",
+   "reason": "“banished” is given as the noun 추방 (expulsion, banishment)."
+  },
+  {
+   "lang": "ko",
+   "id": "relics.RL-005.4",
+   "english": "casket",
+   "word": "상자",
+   "reason": "상자: its own entry glosses it “box; case”: the casket."
+  },
+  {
+   "lang": "ko",
+   "id": "relics.RL-007.3",
+   "english": "page",
+   "word": "책장",
+   "reason": "책장 (冊張) is a page of a book, as in 책장을 넘기다; it is also a homograph of 冊欌, a bookshelf. The table lists 페이지, 쪽. For a native reader."
+  },
+  {
+   "lang": "ko",
+   "id": "relics.RL-007.4",
+   "english": "drown",
+   "word": "난파",
+   "reason": "“drown” is given as a noun, 난파 (shipwreck), so that a line can hold it as a thing; the table lists only the verb. The relic's words are themes (The Tempest), not a word-for-word list."
+  },
+  {
+   "lang": "ko",
+   "id": "relics.RL-008.3",
+   "english": "nothing",
+   "word": "허무",
+   "reason": "허무 (nothingness): Lear's “nothing” as a noun; the table lists the phrase 아무것도 없다."
+  },
+  {
+   "lang": "ko",
+   "id": "verse",
+   "english": "verse",
+   "word": "시",
+   "reason": "시 here is 詩, a poem; the own entry fetched glosses the homographs 時 (hour) and 市 (city). The glossary's word."
+  },
+  {
+   "lang": "ko",
+   "id": "round",
+   "english": "round",
+   "word": "라운드",
+   "reason": "라운드 (a round of a game) is the word card and video games use in this language; the table covers other senses."
+  },
+  {
+   "lang": "ko",
+   "id": "deck",
+   "english": "deck",
+   "word": "덱",
+   "reason": "덱 (a deck of cards) is the word card and video games use in this language; the table covers other senses."
+  },
+  {
+   "lang": "ko",
+   "id": "signature",
+   "english": "signature",
+   "word": "시그니처",
+   "reason": "시그니처: the game's “signature” bonus is a name, not a written signature (서명), so the loanword is kept."
+  },
+  {
+   "lang": "ko",
+   "id": "criterion.wordplay",
+   "english": "wordplay",
+   "word": "말재간",
+   "reason": "말재간 (verbal wit, wordplay) is an ordinary word for this, beside the table's 언어유희."
+  },
+  {
+   "lang": "ko",
+   "id": "criterion.allusion",
+   "english": "allusion",
+   "word": "인유",
+   "reason": "인유 (allusion, the rhetorical term (引喩)) is an ordinary word for this, beside the table's 암시."
+  },
+  {
+   "lang": "ko",
+   "id": "criterion.wit",
+   "english": "wit",
+   "word": "재치",
+   "reason": "재치 (wit, quickness) is an ordinary word for this, beside the table's 눈치."
+  },
+  {
+   "lang": "vi",
+   "id": "relics.RL-001.1",
+   "english": "jest",
+   "word": "trò hề",
+   "reason": "trò hề: its own entry glosses it “buffoonery, antic, farce”: the jester's jest."
+  },
+  {
+   "lang": "vi",
+   "id": "relics.RL-001.2",
+   "english": "grave",
+   "word": "nấm mồ",
+   "reason": "nấm mồ: the noun mồ that the table lists, with the classifier or second syllable Vietnamese gives it. Kept as two syllables: the engine folds tone marks (text.ts fold), so a bare one-syllable power word would be met by unrelated syllables (vua by vừa, tim by tìm)."
+  },
+  {
+   "lang": "vi",
+   "id": "relics.RL-001.4",
+   "english": "dust",
+   "word": "cát bụi",
+   "reason": "cát bụi (sand and dust), the Vietnamese compound for the dust we return to; the table lists bụi."
+  },
+  {
+   "lang": "vi",
+   "id": "relics.RL-002.1",
+   "english": "spell",
+   "word": "bùa chú",
+   "reason": "bùa chú (charm and spell), the compound for a spell; the table lists thần chú."
+  },
+  {
+   "lang": "vi",
+   "id": "relics.RL-002.2",
+   "english": "staff",
+   "word": "cây gậy",
+   "reason": "cây gậy, a staff (Prospero's), with its classifier; the table lists only staff as personnel."
+  },
+  {
+   "lang": "vi",
+   "id": "relics.RL-002.3",
+   "english": "island",
+   "word": "hòn đảo",
+   "reason": "hòn đảo: the noun đảo that the table lists, with the classifier or second syllable Vietnamese gives it. Kept as two syllables: the engine folds tone marks (text.ts fold), so a bare one-syllable power word would be met by unrelated syllables (vua by vừa, tim by tìm)."
+  },
+  {
+   "lang": "vi",
+   "id": "relics.RL-002.4",
+   "english": "drown",
+   "word": "chết chìm",
+   "reason": "“drown” is given as a noun, chết chìm (to die by drowning), so that a line can hold it as a thing; the table lists only the verb. The relic's words are themes (The Tempest), not a word-for-word list."
+  },
+  {
+   "lang": "vi",
+   "id": "relics.RL-003.3",
+   "english": "vision",
+   "word": "ảo ảnh",
+   "reason": "Macbeth's “vision”, the dagger he sees that is not there: ảo ảnh (an illusion, a mirage). The table lists the senses sight and goal."
+  },
+  {
+   "lang": "vi",
+   "id": "relics.RL-003.4",
+   "english": "hand",
+   "word": "bàn tay",
+   "reason": "bàn tay: the noun tay that the table lists, with the classifier or second syllable Vietnamese gives it. Kept as two syllables: the engine folds tone marks (text.ts fold), so a bare one-syllable power word would be met by unrelated syllables (vua by vừa, tim by tìm)."
+  },
+  {
+   "lang": "vi",
+   "id": "relics.RL-004.0",
+   "english": "ring",
+   "word": "chiếc nhẫn",
+   "reason": "chiếc nhẫn: the noun nhẫn that the table lists, with the classifier or second syllable Vietnamese gives it. Kept as two syllables: the engine folds tone marks (text.ts fold), so a bare one-syllable power word would be met by unrelated syllables (vua by vừa, tim by tìm)."
+  },
+  {
+   "lang": "vi",
+   "id": "relics.RL-004.3",
+   "english": "banished",
+   "word": "lưu đày",
+   "reason": "lưu đày: its own entry glosses it “to exile”."
+  },
+  {
+   "lang": "vi",
+   "id": "relics.RL-005.1",
+   "english": "choice",
+   "word": "lựa chọn",
+   "reason": "lựa chọn (choice) is an ordinary word for this, beside the table's quyết định."
+  },
+  {
+   "lang": "vi",
+   "id": "relics.RL-005.2",
+   "english": "mercy",
+   "word": "khoan dung",
+   "reason": "khoan dung (clemency, tolerance) is an ordinary word for this, beside the table's lòng thương."
+  },
+  {
+   "lang": "vi",
+   "id": "relics.RL-006.4",
+   "english": "king",
+   "word": "nhà vua",
+   "reason": "nhà vua: the noun vua that the table lists, with the classifier or second syllable Vietnamese gives it. Kept as two syllables: the engine folds tone marks (text.ts fold), so a bare one-syllable power word would be met by unrelated syllables (vua by vừa, tim by tìm)."
+  },
+  {
+   "lang": "vi",
+   "id": "relics.RL-007.0",
+   "english": "book",
+   "word": "cuốn sách",
+   "reason": "cuốn sách: the noun sách that the table lists, with the classifier or second syllable Vietnamese gives it. Kept as two syllables: the engine folds tone marks (text.ts fold), so a bare one-syllable power word would be met by unrelated syllables (vua by vừa, tim by tìm)."
+  },
+  {
+   "lang": "vi",
+   "id": "relics.RL-007.1",
+   "english": "tempest",
+   "word": "bão tố",
+   "reason": "bão tố: its own entry glosses it “storms”: the tempest."
+  },
+  {
+   "lang": "vi",
+   "id": "relics.RL-007.3",
+   "english": "page",
+   "word": "trang giấy",
+   "reason": "trang giấy: the noun trang that the table lists, with the classifier or second syllable Vietnamese gives it. Kept as two syllables: the engine folds tone marks (text.ts fold), so a bare one-syllable power word would be met by unrelated syllables (vua by vừa, tim by tìm)."
+  },
+  {
+   "lang": "vi",
+   "id": "relics.RL-007.4",
+   "english": "drown",
+   "word": "chết chìm",
+   "reason": "“drown” is given as a noun, chết chìm (to die by drowning), so that a line can hold it as a thing; the table lists only the verb. The relic's words are themes (The Tempest), not a word-for-word list."
+  },
+  {
+   "lang": "vi",
+   "id": "relics.RL-008.3",
+   "english": "nothing",
+   "word": "hư không",
+   "reason": "hư không (emptiness, the void): Lear's “nothing” as a noun; the table lists the phrase không có gì."
+  },
+  {
+   "lang": "vi",
+   "id": "relics.RL-008.4",
+   "english": "heart",
+   "word": "trái tim",
+   "reason": "trái tim: the noun tim that the table lists, with the classifier or second syllable Vietnamese gives it. Kept as two syllables: the engine folds tone marks (text.ts fold), so a bare one-syllable power word would be met by unrelated syllables (vua by vừa, tim by tìm)."
+  },
+  {
+   "lang": "vi",
+   "id": "relics.RL-009.2",
+   "english": "fool",
+   "word": "thằng hề",
+   "reason": "Shakespeare's Fool, the jester: thằng hề (clown, jester). The table gives only “fool” as an idiot."
+  },
+  {
+   "lang": "vi",
+   "id": "relics.RL-009.4",
+   "english": "moon",
+   "word": "vầng trăng",
+   "reason": "vầng trăng: the noun trăng that the table lists, with the classifier or second syllable Vietnamese gives it. Kept as two syllables: the engine folds tone marks (text.ts fold), so a bare one-syllable power word would be met by unrelated syllables (vua by vừa, tim by tìm)."
+  },
+  {
+   "lang": "vi",
+   "id": "verse",
+   "english": "verse",
+   "word": "bài thơ",
+   "reason": "bài thơ: its own entry glosses it “poem”."
+  },
+  {
+   "lang": "vi",
+   "id": "round",
+   "english": "round",
+   "word": "hiệp",
+   "reason": "hiệp (a round, as of a bout) is the word card and video games use in this language; the table covers other senses."
+  },
+  {
+   "lang": "vi",
+   "id": "relic",
+   "english": "relic",
+   "word": "bảo vật",
+   "reason": "The glossary's word for this term: bảo vật (a treasured object); see docs/language/glossary.json."
+  },
+  {
+   "lang": "vi",
+   "id": "potion",
+   "english": "potion",
+   "word": "thuốc phép",
+   "reason": "The glossary's word for this term: thuốc phép (a magic draught); see docs/language/glossary.json."
+  },
+  {
+   "lang": "vi",
+   "id": "deck",
+   "english": "deck",
+   "word": "bộ bài",
+   "reason": "bộ bài (a deck of cards) is an ordinary word for this, beside the table's cỗ bài."
+  },
+  {
+   "lang": "vi",
+   "id": "duel",
+   "english": "duel",
+   "word": "trận đấu",
+   "reason": "trận đấu (a match) is the glossary's word; the table lists quyết đấu and đấu tay đôi, the duel proper. For a native reader."
+  },
+  {
+   "lang": "vi",
+   "id": "judge",
+   "english": "judge",
+   "word": "giám khảo",
+   "reason": "giám khảo is the judge of a contest; the table's words are judges of a court."
+  },
+  {
+   "lang": "vi",
+   "id": "signature",
+   "english": "signature",
+   "word": "dấu ấn",
+   "reason": "dấu ấn (a hallmark): the game's “signature” bonus is a mark of a card's line, not a written signature (chữ ký)."
+  },
+  {
+   "lang": "vi",
+   "id": "criterion.allusion",
+   "english": "allusion",
+   "word": "điển tích",
+   "reason": "điển tích: its own entry glosses it “a tale of old happenings, often the basis of sayings”: the classical allusion of Vietnamese poetics."
+  },
+  {
+   "lang": "vi",
+   "id": "criterion.flow",
+   "english": "flow",
+   "word": "nhịp điệu",
+   "reason": "nhịp điệu (rhythm) is an ordinary word for this, beside the table's dòng chảy (physical flow)."
+  },
+  {
+   "lang": "vi",
+   "id": "criterion.wit",
+   "english": "wit",
+   "word": "sắc sảo",
+   "reason": "sắc sảo: its own entry glosses it “sharp-witted”."
+  },
+  {
+   "lang": "th",
+   "id": "relics.RL-001.1",
+   "english": "jest",
+   "word": "ตลก",
+   "reason": "ตลก: its own entry glosses it “to joke; funny”."
+  },
+  {
+   "lang": "th",
+   "id": "relics.RL-002.1",
+   "english": "spell",
+   "word": "มนตร์",
+   "reason": "มนตร์ is a spell, an incantation; the table lists only สะกด, to spell a word."
+  },
+  {
+   "lang": "th",
+   "id": "relics.RL-002.2",
+   "english": "staff",
+   "word": "ไม้เท้า",
+   "reason": "ไม้เท้า (a staff, a walking stick) is an ordinary word for this, beside the table's ตะพด."
+  },
+  {
+   "lang": "th",
+   "id": "relics.RL-002.4",
+   "english": "drown",
+   "word": "จมน้ำ",
+   "reason": "จมน้ำ (to sink in water, to drown): the table's จมน้ำตาย without ตาย (to die)."
+  },
+  {
+   "lang": "th",
+   "id": "relics.RL-003.3",
+   "english": "vision",
+   "word": "ภาพลวง",
+   "reason": "Macbeth's “vision”, the dagger he sees that is not there: ภาพลวง (an illusion). The table lists the senses sight and goal."
+  },
+  {
+   "lang": "th",
+   "id": "relics.RL-004.1",
+   "english": "vow",
+   "word": "คำสาบาน",
+   "reason": "คำสาบาน: its own entry glosses it “oath”."
+  },
+  {
+   "lang": "th",
+   "id": "relics.RL-004.3",
+   "english": "banished",
+   "word": "เนรเทศ",
+   "reason": "เนรเทศ: its own entry glosses it “to banish; to exile”."
+  },
+  {
+   "lang": "th",
+   "id": "relics.RL-004.4",
+   "english": "kiss",
+   "word": "จุมพิต",
+   "reason": "จุมพิต (a kiss, the literary word) is an ordinary word for this, beside the table's จูบ."
+  },
+  {
+   "lang": "th",
+   "id": "relics.RL-006.2",
+   "english": "ambition",
+   "word": "ทะเยอทะยาน",
+   "reason": "ทะเยอทะยาน: its own entry glosses it “to be ambitious”; Thai is matched anywhere in the line, so it also meets the noun ความทะเยอทะยาน."
+  },
+  {
+   "lang": "th",
+   "id": "relics.RL-007.0",
+   "english": "book",
+   "word": "ตำรา",
+   "reason": "ตำรา (a book of learning; Prospero's book) is an ordinary word for this, beside the table's หนังสือ."
+  },
+  {
+   "lang": "th",
+   "id": "relics.RL-007.3",
+   "english": "page",
+   "word": "หน้ากระดาษ",
+   "reason": "หน้ากระดาษ (a page of paper): the table lists หน้า."
+  },
+  {
+   "lang": "th",
+   "id": "relics.RL-007.4",
+   "english": "drown",
+   "word": "จมน้ำ",
+   "reason": "จมน้ำ (to sink in water, to drown): the table's จมน้ำตาย without ตาย (to die)."
+  },
+  {
+   "lang": "th",
+   "id": "relics.RL-008.3",
+   "english": "nothing",
+   "word": "ความว่างเปล่า",
+   "reason": "ความว่างเปล่า (emptiness): Lear's “nothing” as a noun; the table lists the phrase ไม่มีอะไร."
+  },
+  {
+   "lang": "th",
+   "id": "relics.RL-009.2",
+   "english": "fool",
+   "word": "ตัวตลก",
+   "reason": "Shakespeare's Fool, the jester: ตัวตลก (clown, jester). The table gives only “fool” as an idiot."
+  },
+  {
+   "lang": "th",
+   "id": "craft",
+   "english": "craft",
+   "word": "ฝีมือ",
+   "reason": "ฝีมือ: its own entry glosses it “manual skills”, as craft is."
+  },
+  {
+   "lang": "th",
+   "id": "judge",
+   "english": "judge",
+   "word": "กรรมการ",
+   "reason": "กรรมการ is the judge of a contest; the table's words are judges of a court."
+  },
+  {
+   "lang": "th",
+   "id": "criterion.flow",
+   "english": "flow",
+   "word": "ความลื่นไหล",
+   "reason": "ความลื่นไหล (fluency) is an ordinary word for this, beside the table's ไหล (physical flow)."
+  },
+  {
+   "lang": "th",
+   "id": "criterion.wit",
+   "english": "wit",
+   "word": "ไหวพริบ",
+   "reason": "ไหวพริบ: its own entry glosses it “alertness, astuteness, ability to make quick judgments”."
+  },
+  {
+   "lang": "id",
+   "id": "relics.RL-003.3",
+   "english": "vision",
+   "word": "bayangan",
+   "reason": "Macbeth's “vision”, the dagger he sees that is not there: bayangan (an image, a phantom). The table lists the senses sight and goal."
+  },
+  {
+   "lang": "id",
+   "id": "relics.RL-004.3",
+   "english": "banished",
+   "word": "terbuang",
+   "reason": "terbuang (cast out), the participle of buang as in dibuang, exiled; its own entry glosses only “wasted, useless”. For a native reader."
+  },
+  {
+   "lang": "id",
+   "id": "relics.RL-005.2",
+   "english": "mercy",
+   "word": "ampun",
+   "reason": "ampun (mercy, pardon) is an ordinary word for this, beside the table's pinta."
+  },
+  {
+   "lang": "id",
+   "id": "relics.RL-005.4",
+   "english": "casket",
+   "word": "peti",
+   "reason": "peti: its own entry glosses it “box, chest”: the casket."
+  },
+  {
+   "lang": "id",
+   "id": "relics.RL-007.1",
+   "english": "tempest",
+   "word": "badai",
+   "reason": "badai: its own entry glosses it “storm”: the tempest."
+  },
+  {
+   "lang": "id",
+   "id": "relics.RL-008.3",
+   "english": "nothing",
+   "word": "hampa",
+   "reason": "hampa (empty, void): Lear's “nothing”; the table lists nol (zero)."
+  },
+  {
+   "lang": "id",
+   "id": "relics.RL-009.2",
+   "english": "fool",
+   "word": "badut",
+   "reason": "Shakespeare's Fool, the jester: badut (clown, jester). The table gives only “fool” as an idiot."
+  },
+  {
+   "lang": "id",
+   "id": "relics.RL-009.3",
+   "english": "play",
+   "word": "sandiwara",
+   "reason": "The stage play, the sense of this relic (A Midsummer Night's Dream): sandiwara (a stage play). The table's senses are mostly the verb."
+  },
+  {
+   "lang": "id",
+   "id": "verse",
+   "english": "verse",
+   "word": "syair",
+   "reason": "syair: its own entry glosses it “poem”, and a Malay verse form."
+  },
+  {
+   "lang": "id",
+   "id": "curse",
+   "english": "curse",
+   "word": "kutukan",
+   "reason": "kutukan is the noun of the table's kutuk."
+  },
+  {
+   "lang": "id",
+   "id": "craft",
+   "english": "craft",
+   "word": "keahlian",
+   "reason": "keahlian: its own entry glosses it “skill”."
+  }
+ ]
+}

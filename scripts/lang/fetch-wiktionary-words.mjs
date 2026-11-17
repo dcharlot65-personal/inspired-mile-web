@@ -20,9 +20,11 @@ import './lib/ts-hooks.mjs';
 import { writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { tables } from './fetch-wiktionary.mjs';
-import { WORD_PAGES } from './lib/words.mjs';
+import { readFileSync } from 'node:fs';
+import { GLOSS_WORDS, LANGUAGE_NAMES, WORD_PAGES, lookUp, wordsToCheck } from './lib/words.mjs';
 
 const { loadPack } = await import('../../src/lib/verse/packs/index.ts');
+const { LOCALES, loadMessages } = await import('../../src/i18n/index.ts');
 const UA = 'language-qa-script/1.0 (terminology lookup)';
 
 async function raw(title) {
@@ -87,6 +89,40 @@ for (const word of [...words].sort()) {
   const langs = new Set(t.flatMap((x) => Object.keys(x.langs)));
   console.log(`${word}: ${page.text === null ? 'no page' : `${t.length} tables, ${langs.size} of our languages${sub ? ' (subpage)' : ''}`}`);
   await new Promise((res) => setTimeout(res, 400));
+}
+// The other way round: a foreign word's own entry, and the English glosses of its definitions, for
+// every word whose English word's table does not cover its language, and the words in GLOSS_WORDS.
+const glossary = JSON.parse(readFileSync(new URL('../../docs/language/glossary.json', import.meta.url), 'utf8'));
+const ts = JSON.parse(readFileSync(new URL('../../docs/language/sources/opencc-ts.json', import.meta.url), 'utf8')).map;
+const packs = {};
+const ui = {};
+for (const l of LOCALES) {
+  packs[l] = await loadPack(l);
+  ui[l] = await loadMessages(l);
+}
+const wanted = Object.fromEntries(Object.entries(GLOSS_WORDS).map(([l, ws]) => [l, new Set(ws)]));
+for (const x of wordsToCheck(LOCALES, packs, ui, glossary)) if (x.word && lookUp(result, x.english, x.lang, x.word, ts).state === 'not-covered') (wanted[x.lang] ??= new Set()).add(x.word);
+const plain = (line) => line.replace(/^#\s*/, '').replace(/\{\{(?:lb|lbl)\|[^}]*\}\}\s*/g, '').replace(/\{\{gloss\|([^}]*)\}\}/g, '($1)').replace(/\[\[(?:[^\]|]*\|)?([^\]]*)\]\]/g, '$1').replace(/\{\{[^}]*\}\}/g, '').trim();
+result.glosses = {};
+const sectionOf = (text, name) => {
+  const start = text ? text.search(new RegExp(`^==${name}==\\s*$`, 'm')) : -1;
+  if (start < 0) return '';
+  const rest = text.slice(start + name.length + 4);
+  const next = rest.search(/^==[^=].*==\s*$/m);
+  return next < 0 ? rest : rest.slice(0, next);
+};
+for (const [lang, ws] of Object.entries(wanted)) {
+  for (const w of [...ws].sort()) {
+    const name = LANGUAGE_NAMES[lang];
+    let section = sectionOf((await raw(w)).text, name);
+    // A simplified Chinese page that sends the reader to the traditional one ({{zh-see|骷髏}}).
+    const see = section.match(/\{\{zh-see\|([^|}]+)/);
+    if (see) section = sectionOf((await raw(see[1])).text, name);
+    const lines = section.split('\n').filter((l) => /^# /.test(l)).map(plain).filter(Boolean);
+    (result.glosses[lang] ??= {})[w] = lines.slice(0, 12);
+    console.log(`${lang} ${w}: ${lines.slice(0, 3).join(' / ') || 'no entry'}`);
+    await new Promise((res) => setTimeout(res, 400));
+  }
 }
 const out = fileURLToPath(new URL('../../docs/language/sources/wiktionary-words.json', import.meta.url));
 writeFileSync(out, JSON.stringify(result, null, 1) + '\n');

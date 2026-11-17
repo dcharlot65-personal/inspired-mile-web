@@ -14488,5 +14488,345 @@
     }
    ]
   }
+ },
+ "glosses": {
+  "hi": {
+   "अवशेष": [
+    "remain, remnant, leftover",
+    "residue"
+   ],
+   "कविता": [
+    "poetry; a poem"
+   ],
+   "छड़ी": [
+    "stick",
+    "cane, walking stick"
+   ],
+   "जादू": [
+    "jadoo; magic; witchcraft",
+    "incantation",
+    "charm"
+   ],
+   "डेक": [],
+   "पद": [
+    "foot",
+    "footstep",
+    "footprint",
+    "mark",
+    "sign",
+    "home, abode",
+    "degree, rank",
+    "office",
+    "verse, line",
+    "head, title"
+   ],
+   "मज़ाक": [],
+   "महत्वाकांक्षा": [
+    "ambition, aspiration"
+   ],
+   "लालसा": [
+    "desire, want",
+    "greed"
+   ],
+   "शब्द-क्रीड़ा": [],
+   "शिल्प": [
+    "craft, skill, art"
+   ],
+   "संकेत": [
+    "signal, indication, hint",
+    "a sign",
+    "mark, indication"
+   ],
+   "संदूक": [],
+   "हाज़िरजवाबी": [
+    "quickwittedness, readiness"
+   ]
+  },
+  "pt": {
+   "adversário": [
+    "adversary",
+    "opponent",
+    "enemy, foe"
+   ],
+   "agudeza": [
+    "wit (ability to think quickly)",
+    "pitch (perceived frequency of sound)"
+   ],
+   "engenho": [
+    "ingenuity (the quality of being ingenious)",
+    "astuteness (the quality of being astute)",
+    "machine (mechanical device)",
+    "factory (industrial facility)",
+    "sugar mill (machine for pressing out the juice of the sugar cane)",
+    "sugar mill (factory that processes sugar cane)",
+    "factory that processes yerba maté leaves"
+   ],
+   "exílio": [
+    "exile"
+   ]
+  },
+  "id": {
+   "badai": [
+    "storm",
+    "fantastic, cool, amazing"
+   ],
+   "dek": [
+    "deck",
+    "deck, library (a set of cards owned by each individual player and from which they draw when playing)",
+    "because of"
+   ],
+   "duel": [],
+   "keahlian": [
+    "skill: capacity to do something well; technique, ability. Skills are usually acquired or learned, as opposed to abilities, which are often thought of as innate",
+    "expertise (great skill or knowledge)"
+   ],
+   "kecerdikan": [],
+   "lawan": [
+    "rival; opponent",
+    "to face; to be in a match against",
+    "to fight"
+   ],
+   "lelucon": [],
+   "permainan kata": [],
+   "peti": [
+    "box, chest"
+   ],
+   "pilihan": [
+    "choice, selection:",
+    "selected, handpicked",
+    "elective"
+   ],
+   "ramuan": [
+    "potion",
+    "materials or ingredients to make something"
+   ],
+   "rima": [
+    "rhyme"
+   ],
+   "sumpah": [
+    "oath, vow",
+    "curse",
+    "swear",
+    "seriously, no joke, I swear, on God -"
+   ],
+   "syair": [
+    "poet",
+    ": a Malay poetry that is made up of four-line stanzas",
+    "poem",
+    "lyric"
+   ],
+   "terbuang": [
+    "vain",
+    "useless",
+    "wasted"
+   ],
+   "timah": [
+    "tin"
+   ],
+   "timbal": [
+    "balance, equilibrium",
+    "balanced, equal, appropriate",
+    "to balance, equate",
+    "lead (chemical element)"
+   ]
+  },
+  "fr": {
+   "exil": [
+    "exile"
+   ]
+  },
+  "de": {
+   "verbannt": [
+    "banned, banished"
+   ]
+  },
+  "it": {
+   "esilio": [
+    "exile (state)"
+   ],
+   "gioco di parole": [
+    "pun; play on words"
+   ]
+  },
+  "pl": {
+   "dowcip": [
+    "joke",
+    "joke",
+    "wit",
+    "reason, cleverness, wit"
+   ],
+   "wygnanie": [
+    "exile"
+   ],
+   "żart": [
+    "joke",
+    "joke",
+    "joke"
+   ]
+  },
+  "ru": {
+   "игра слов": [
+    "pun, wordplay"
+   ],
+   "изгнание": [
+    "exile, deportation",
+    "expulsion, ejection",
+    "banishment, proscription",
+    "expelling",
+    "ostracism",
+    "eviction",
+    "excommunication",
+    "extrusion"
+   ]
+  },
+  "ar": {
+   "التلاعب بالألفاظ": [],
+   "صندوق": [
+    "chest, box, trunk, crate",
+    "safe, money box, till",
+    "treasurer's office, public fund"
+   ],
+   "عاصفة": [
+    "storm"
+   ],
+   "مزحة": [],
+   "منفى": [
+    "exile"
+   ]
+  },
+  "zh": {
+   "匣子": [
+    "small box; small case",
+    "radio"
+   ],
+   "戏谑": [
+    "to banter; to prank; to joke"
+   ],
+   "技艺": [
+    "skill; art; artistry; technology"
+   ],
+   "放逐": [
+    "to send into exile; to banish"
+   ],
+   "文字游戏": [],
+   "机锋": []
+  },
+  "ja": {
+   "冗談": [
+    "a joke"
+   ],
+   "小箱": [
+    "little box"
+   ],
+   "機知": [
+    "wit"
+   ],
+   "追放": [
+    "expulsion",
+    "banishment, deportation, exile",
+    "to expel",
+    "to banish, to deport, to exile"
+   ]
+  },
+  "ko": {
+   "기교": [],
+   "농담": [
+    "joke, jest",
+    "a shade of color"
+   ],
+   "상자": [
+    "box; case"
+   ],
+   "시": [
+    "hour",
+    "time",
+    "town, city",
+    "an administrative region, a division of a province having a population of over 150,000",
+    "poem, poetry",
+    "si (seventh note in the solfège major scale)",
+    "treating as; viewing as"
+   ],
+   "추방": [
+    "expulsion"
+   ]
+  },
+  "vi": {
+   "bài thơ": [
+    "poem"
+   ],
+   "bão tố": [
+    "storms"
+   ],
+   "chiếc hộp": [],
+   "lưu đày": [
+    "to exile"
+   ],
+   "sắc sảo": [
+    "sharp-witted; fine; sharp",
+    "upright"
+   ],
+   "tay nghề": [],
+   "tham vọng": [
+    "ambition; aspiration"
+   ],
+   "trò hề": [
+    "buffoonery, antic, farce"
+   ],
+   "điển tích": [
+    "a tale of old happenings, often the basis of sayings or moral lessons"
+   ],
+   "đối thủ": [
+    "opponent; rival; competitor"
+   ]
+  },
+  "th": {
+   "การประชัน": [],
+   "การอ้างถึง": [],
+   "การเล่นคำ": [],
+   "ของวิเศษ": [],
+   "คำสาบาน": [
+    "oath"
+   ],
+   "ตลก": [
+    "to joke",
+    "funny"
+   ],
+   "ทะเยอทะยาน": [
+    "to be ambitious."
+   ],
+   "บทกลอน": [],
+   "ฝีมือ": [
+    "manual skills."
+   ],
+   "ยก": [
+    "a unit of measuring wooden boards, equal to 1 cubit wide, 16 ''wa'' long, and 1 inch thick",
+    "period of time; round",
+    "a round of flogging, consisting of 30 strokes",
+    "folio; signature",
+    "to raise; to lift",
+    "to raise; to erect; to build; to construct; to create<ref></ref>",
+    "to move; to cause to move",
+    "to deny, to dismiss; to cancel, to revoke",
+    "to prepare; to make",
+    "to give; to grant; to confer",
+    "to cite; to allude",
+    "all; entire; every"
+   ],
+   "ยาวิเศษ": [],
+   "หีบ": [
+    "box, chest, or similar container, especially one of a square shape and having a lid",
+    "coffin; casket",
+    "ballot box",
+    "to press; to squeeze"
+   ],
+   "เนรเทศ": [
+    "to banish; to expatriate; to exile",
+    "to deport (to expel from a country)"
+   ],
+   "ไหวพริบ": [
+    "alertness, astuteness, adroitness, ability to make quick judgments.",
+    "to be alert, to be astute, to be keen"
+   ]
+  }
  }
 }

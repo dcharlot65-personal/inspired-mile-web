@@ -93,8 +93,22 @@
      "source": "game term (no outside source)"
     },
     "hi": {
-     "term": "पद",
-     "source": "game term (no outside source)"
+     "term": "कविता",
+     "source": "English Wiktionary’s “verse” table lists कविता for the sense “poetic form in general” (sources/wiktionary-words.json). Replaces पद, which the table does not list and which reads as “post” or “foot” (Wiktionary’s Hindi entry for पद: foot, footstep, mark; MADLAD back-translated it as “position”).",
+     "cite": [
+      {
+       "dictionary": "verse",
+       "text": "कविता"
+      },
+      {
+       "gloss": "कविता",
+       "text": "a poem"
+      },
+      {
+       "gloss": "पद",
+       "text": "foot"
+      }
+     ]
     },
     "zh": {
      "term": "诗",
@@ -2449,8 +2463,11 @@
      "source": "game term (no outside source)"
     },
     "hi": {
-     "term": "लिखे",
-     "source": "game term (no outside source)"
+     "term": "लिखी",
+     "source": "game term (no outside source) Feminine since the verse became कविता: लिखी हुई कविताएँ.",
+     "accept": [
+      "लिखे"
+     ]
     },
     "zh": {
      "term": "预先写好",

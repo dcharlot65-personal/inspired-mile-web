@@ -53,6 +53,7 @@ export function checkGlossary(lang, strings, english, glossary) {
  *                                          within: true, a phrase inside that string
  *   { dictionary: <English word>, text }   a word in English Wiktionary's tables for that word, exactly
  *                                          (wiktionary-words.json)
+ *   { gloss: <word>, text }                an English gloss in that word's own Wiktionary entry (wiktionary-words.json)
  *   { mozilla: <string id>, text }         Firefox's string, exactly    (mozilla-terms.json)
  *   { google: <page>, text }               a Google Help page's title or heading, exactly (google-help.json)
  *   { apple: true, text }                  a word in Apple's passkey article: in its first sentence or in the
@@ -129,6 +130,11 @@ export function verifyCite(cite, lang, sources) {
     const page = sources['wiktionary-words']?.words?.[cite.dictionary];
     if (!page) return need('wiktionary-words') ?? `Wiktionary's “${cite.dictionary}” was not fetched`;
     return (page.tables ?? []).some((t) => (t.langs?.[l] ?? []).includes(cite.text)) ? null : `Wiktionary's “${cite.dictionary}” gives ${l} ${JSON.stringify([...new Set((page.tables ?? []).flatMap((t) => t.langs?.[l] ?? []))])}, not “${cite.text}”`;
+  }
+  if ('gloss' in cite) {
+    const lines = sources['wiktionary-words']?.glosses?.[l]?.[cite.gloss];
+    if (!lines) return need('wiktionary-words') ?? `Wiktionary's own entry for ${l} “${cite.gloss}” was not fetched`;
+    return lines.some((x) => x.includes(cite.text)) ? null : `Wiktionary's entry for ${l} “${cite.gloss}” glosses it ${JSON.stringify(lines.slice(0, 4))}, not “${cite.text}”`;
   }
   if ('wiktionary' in cite) {
     const page = sources['wiktionary-translations']?.concepts?.[cite.wiktionary];

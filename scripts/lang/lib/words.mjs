@@ -8,7 +8,8 @@
  *   - the glossary's core terms (verse, round, ink, …): the glossary's word for each.
  * A word is "listed" when one of the tables on its English word's page gives it for that language
  * (any sense; the sense that matched is reported), compared after removing what does not change the
- * word: letter case, Arabic short-vowel marks, the Devanagari nukta and candrabindu, Russian ё. It is
+ * word: letter case, Arabic short-vowel marks and the article al-, the Devanagari nukta and candrabindu,
+ * Russian ё. It is
  * "not covered" when the page has no translation for that language at all, which proves nothing either
  * way. A word that is not listed where the page does cover the language is a finding: it is changed to
  * a listed word, or accepted in docs/language/allow/words.json with the reason a reader kept it (a
@@ -43,12 +44,25 @@ export const WORD_PAGES = {
  * simplified characters, each traditional one mapped by OpenCC's table (`ts`, sources/opencc-ts.json):
  * Wiktionary writes Mandarin in traditional characters.
  */
+/**
+ * Words looked up the other way: the word's own English Wiktionary entry, whose definitions (glosses)
+ * are in English. Used where the English word's table does not cover the language (Hindi "ambition"),
+ * and as evidence about a word that was replaced (पद: foot, footstep, mark).
+ */
+export const GLOSS_WORDS = {
+  hi: ['महत्वाकांक्षा', 'लालसा', 'पद', 'कविता'],
+  pt: ['agudeza', 'engenho'],
+  id: ['timbal', 'timah'],
+};
+// The heading of each language's section on a Wiktionary page.
+export const LANGUAGE_NAMES = { es: 'Spanish', fr: 'French', de: 'German', it: 'Italian', pt: 'Portuguese', pl: 'Polish', ru: 'Russian', ar: 'Arabic', hi: 'Hindi', zh: 'Chinese', ja: 'Japanese', ko: 'Korean', vi: 'Vietnamese', th: 'Thai', id: 'Indonesian' };
+
 export function loose(word, lang, ts = {}) {
   let w = String(word).normalize('NFC').replace(/\[\[|\]\]/g, '').toLocaleLowerCase(lang).trim();
   if (lang === 'ko' || lang === 'vi') w = w.replace(/\s*\([^)]*\)$/, '');
   if (lang === 'zh') w = [...w].map((c) => ts[c] ?? c).join('');
-  if (lang === 'ar') w = w.replace(/[ً-ْٰـ]/g, '');
-  if (lang === 'hi') w = w.normalize('NFD').replace(/़/g, '').replace(/ँ/g, 'ं').normalize('NFC');
+  if (lang === 'ar') w = w.replace(/[\u064B-\u0652\u0670\u0640]/g, '').replace(/^ال(?=..)/, '');
+  if (lang === 'hi') w = w.normalize('NFD').replace(/\u093C/g, '').replace(/\u0901/g, '\u0902').normalize('NFC');
   if (lang === 'ru') w = w.replace(/ё/g, 'е');
   return w;
 }
@@ -62,6 +76,13 @@ export function lookUp(wikt, english, lang, word, ts) {
   const want = loose(word, lang, ts);
   for (const t of tables) if (t.langs[lang].some((w) => loose(w, lang, ts) === want)) return { state: 'listed', sense: t.sense };
   return { state: 'not-listed', offered: [...new Set(tables.flatMap((t) => t.langs[lang]))].slice(0, 12) };
+}
+
+/** Does the word's own entry gloss it with the English word? (A whole word of a gloss line.) */
+export function glossedAs(wikt, lang, word, english) {
+  const lines = wikt.glosses?.[lang]?.[word] ?? [];
+  const re = new RegExp(`(^|[^a-z])${english.replace(/s$/, '')}s?([^a-z]|$)`, 'i');
+  return lines.find((l) => re.test(l)) ?? null;
 }
 
 /**
@@ -83,7 +104,19 @@ export function wordsToCheck(langs, packs, ui, glossary) {
 
 /** The findings, with each accepted one marked; `allow` is allow/words.json's entries, `ts` OpenCC's table. */
 export function checkWords(items, wikt, allow, ts = {}) {
-  const rows = items.map((x) => ({ ...x, ...lookUp(wikt, x.english, x.lang, x.word, ts) }));
+  const rows = items.map((x) => {
+    const r = { ...x, ...lookUp(wikt, x.english, x.lang, x.word, ts) };
+    // The word's own entry may gloss it with the English word. Where the English word's table has
+    // nothing for the language, the own entry decides: a word whose entry glosses it otherwise
+    // (लालसा: desire, greed) is a finding; one with no entry stays "not covered".
+    if (r.state !== 'listed') {
+      const g = glossedAs(wikt, x.lang, x.word, x.english);
+      if (g) return { ...r, state: 'listed', sense: `its own entry: ${g}` };
+      const own = wikt.glosses?.[x.lang]?.[x.word];
+      if (r.state === 'not-covered' && own?.length) return { ...r, state: 'not-listed', offered: own.slice(0, 4).map((l) => `(its own entry) ${l}`) };
+    }
+    return r;
+  });
   const used = new Set();
   const open = [];
   for (const r of rows) {
