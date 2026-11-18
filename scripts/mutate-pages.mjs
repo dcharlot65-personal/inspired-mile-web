@@ -38,6 +38,8 @@ const MUTATIONS = [
   ['docs/language/pages-core/sourced-names.json', 'label \\"lục địa Á-Âu\\", first letter capitalised, as the CLDR 46.0.0 vi region names beside it are (Châu Á, Châu Âu)"', 'label"', 'variants.region.eurasia vi'],
   // A fetched source that no longer agrees with the record (Spanish Tokio).
   ['docs/language/pages-core/cldr-exemplar-cities.json', '"name": "Tokio"', '"name": "Tokyo"', 'variants.city.TKY es'],
+  // A number put before a noun that agrees with it.
+  ['src/i18n/pages/achievements/es.ts', "'achievements.wordsmith.description': 'Puntuación en una sola ronda: {n} o más'", "'achievements.wordsmith.description': 'Consigue {n} puntos o más en una sola ronda'", '{n} puntos'],
 ];
 
 let unnoticed = 0;

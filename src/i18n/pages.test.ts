@@ -61,6 +61,37 @@ function sourceProblems(entries: Record<string, Record<string, { value: string; 
   return out;
 }
 
+const COUNTS = ['n', 'total', 'owned', 'min', 'max', 'relics', 'potions', 'characters', 'bonus'];
+/**
+ * The words that may follow a count in the languages whose nouns change with the number (in the
+ * others a counter or a bare noun follows, and nothing agrees). None is a noun: "or", "to", "of
+ * them"… A noun there would have to agree with the number, and these strings have no plural forms.
+ */
+const AFTER_COUNT: Record<string, string[]> = {
+  en: ['or', 'to', 'of'],
+  es: ['o', 'a', 'de'],
+  fr: ['ou', 'à', 'pour', 'de'],
+  de: ['oder', 'bis', 'davon'],
+  it: ['o', 'a', 'per', 'di'],
+  pt: ['ou', 'a', 'delas', 'de'],
+  pl: ['lub', 'do', 'z'],
+  ru: ['или', 'до', 'из', 'к'],
+  ar: ['أو', 'إلى', 'منها', 'في', 'على'],
+  hi: ['या', 'से', 'का'],
+};
+/** A score added to a criterion, named after the number as the core's variant.bonus does ("+6 craft"): a mass noun, no plural. */
+const DELTA_LABEL: Record<string, string> = { en: 'craft', de: 'Handwerk', hi: 'शिल्प' };
+function countThenNoun(l: string, messages: Messages): string[] {
+  const out: string[] = [];
+  for (const [key, value] of Object.entries(messages)) {
+    for (const m of value.matchAll(/\{([a-zA-Z_]+)\}/g)) {
+      if (!COUNTS.includes(m[1])) continue;
+      const word = value.slice(m.index! + m[0].length).replace(/^(?:<\/b>|[\s  ])+/, '').match(/^\p{L}[\p{L}\p{M}]*/u)?.[0];
+      if (word && !AFTER_COUNT[l].includes(word) && !(m[1] === 'bonus' && DELTA_LABEL[l] === word)) out.push(`${l} ${key}: {${m[1]}} ${word}`);
+    }
+  }
+  return out;
+}
 
 describe('page areas', () => {
   it('has the nine areas in all sixteen languages, and every area (these or another page’s) has exactly the sixteen', () => {
@@ -161,6 +192,18 @@ describe('page areas', () => {
       // A description that shows a number needs the achievement to say which, and the other way round.
       expect([a.id, ach[`achievements.${a.id}.description`].includes('{n}')]).toEqual([a.id, a.goal !== undefined]);
     }
+  });
+});
+
+describe('a count', () => {
+  it('is never followed by a noun where nouns agree with the number: the strings have no plural forms', () => {
+    // "Consigue {n} puntos" read right for 35 and would read "1 puntos" for a goal of 1. Counts are
+    // written "label: number" instead, or followed by a word that does not agree ("or more", "of them").
+    const found = Object.keys(AFTER_COUNT).flatMap((l) => countThenNoun(l, Object.assign({}, ...AREAS.map((a) => area(a, l)))));
+    expect(found).toEqual([]);
+    // It bites: the Spanish and German descriptions as they were.
+    expect(countThenNoun('es', { 'achievements.wordsmith.description': 'Consigue {n} puntos o más en una sola ronda' })).toEqual(['es achievements.wordsmith.description: {n} puntos']);
+    expect(countThenNoun('de', { 'x.y': 'Erreiche <b>{n}</b> Punkte', 'x.z': '+{bonus} Handwerk', 'x.w': '+{n} Handwerk' })).toEqual(['de x.y: {n} Punkte', 'de x.w: {n} Handwerk']);
   });
 });
 

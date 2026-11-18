@@ -6,7 +6,7 @@
  */
 const messages: Record<string, string> = {
   'rules.landIt': 'Wykonaj go, a twój kunszt wzrośnie o połowę.',
-  'rules.relic': 'Użycza słów mocy: {words}. Użyj {n} z nich, aby zyskać +{bonus} kunsztu.',
+  'rules.relic': 'Użycza słów mocy: {words}. Użyj {n} z nich, aby zyskać +{bonus} do kunsztu.',
   'rules.potion': 'Rzuca na następną strofę rywala klątwę {name}: {rule}',
   'rules.potion.letter': 'Rzuca na następną strofę rywala klątwę {name}: jego strofa nie może zawierać jednej litery, którą mikstura wskazuje przy rozdaniu pojedynku.',
   'rules.cost': 'Koszt w atramencie: {n}.',
