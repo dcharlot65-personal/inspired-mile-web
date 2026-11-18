@@ -264,7 +264,8 @@ written as soon as it finished.
   verdict's sides swapped, `GRADE_MARGIN` 0.5 to 0.25) and each turned it red; the same script
   breaks the gates in `session.ts` and `referee.ts`, the verdict line, the badge (twice), the
   theatre's judging line, the fallback order and the remembered choice (on both pages), 14
-  mutations in all, every one caught, on the iMac Pro on 2026-11-18. (The checker's fourth,
+  mutations in all, every one caught, on the iMac Pro on 2026-11-18, first at
+  `b8d34618` and again at `8d18e56e` with the writing cells in. (The checker's fourth,
   `GRADE_SPLIT_BELOW`, no longer reaches any verdict: `combineGrades` is used only by tests since
   the integration's grade path.)
 - **The repeat control below was run on the cells before the integration.** It was not repeated on
@@ -355,8 +356,11 @@ written as soon as it finished.
 - **Mutations.** `node scripts/model-eval/mutate.mjs` breaks the decision code, the lists, the
   checkers, the result files, the game's scoring, prompt and tidy-up (for the replay test), the
   judge's prompt, a fingerprint and the gate in `referee.ts` and `session.ts` (for
-  `model-eval.judge.test.ts`), and this page, 35 ways, and requires the tests to go red each time.
-  Run on the iMac Pro build host on 2026-11-17 at `2008f79`: all 35 caught. (Earlier: 29 of 29 at
+  `model-eval.judge.test.ts`), how a play's model verse is read (`modelChoice`), the
+  challenger's-verse line of the integration's prompt, and this page, 37 ways, and requires the
+  tests to go red each time. Run on the iMac Pro build host on 2026-11-18 at `8d18e56e`, on the
+  cells after the integration: all 37 caught; `mutate-picker.mjs` 6 of 6. Before the integration,
+  on the iMac on 2026-11-17 at `2008f79`: all 35 caught. (Earlier: 29 of 29 at
   `e1c6f18`; before that 26 of 27, where one mutation, the backtick taken out of the tidy-up's
   markup rule, changed no stored draft, so the replay test was right to stay green; it was
   replaced by one that changes 34 drafts.) The re-score was also run against a changed scoring
