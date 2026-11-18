@@ -1521,6 +1521,12 @@ const pack: CardTextPack = {
   "Rô-mê-ô",
   "chúa",
   "nhân"
+ ],
+ "ordinary": [
+  "chúa",
+  "lãnh",
+  "nhân",
+  "phu"
  ]
 };
 

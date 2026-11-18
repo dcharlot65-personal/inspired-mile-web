@@ -1773,6 +1773,17 @@ const pack: CardTextPack = {
   "Pluton",
   "Ulisses"
  ],
+ "ordinary": [
+  "apollo",
+  "lady",
+  "marek",
+  "mary",
+  "meduza",
+  "pan",
+  "pani",
+  "pluton",
+  "romeo"
+ ],
  "forms": {
   "Achilles": [
    "Achillesa",

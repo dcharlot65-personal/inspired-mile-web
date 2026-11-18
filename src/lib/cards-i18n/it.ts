@@ -1504,6 +1504,24 @@ const pack: CardTextPack = {
   "Messer",
   "Montecchi",
   "Re"
+ ],
+ "ordinary": [
+  "apollo",
+  "banco",
+  "bruto",
+  "cassio",
+  "conte",
+  "erme",
+  "frate",
+  "gorgone",
+  "madonna",
+  "marco",
+  "medusa",
+  "miranda",
+  "prospero",
+  "re",
+  "romeo",
+  "rossetti"
  ]
 };
 

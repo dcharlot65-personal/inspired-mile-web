@@ -19,6 +19,10 @@ Inputs, all in the repository:
                                                newmm), check/segment.py
   docs/language/checks/name-forms.json         the forms a name takes in a Russian, Polish, German or Arabic sentence that
                                                the invocation accepts (check/declension.py, put to Hunspell; run.sh forms)
+  docs/language/sources/wiktionary-name-pos.json   which name words are also ordinary words of the language, by English
+                                               Wiktionary's parts of speech (fetch/name_pos.py)
+  docs/language/sources/name-containing-words.json  Chinese and Thai dictionary words that hold a name with more around it
+                                               (CC-CEDICT, jieba, PyThaiNLP; fetch/containing_words.py)
   scripts/language/published.json              who translated each published text, and its copyright status
   scripts/language/translated/<lang>.txt       what was translated for the game (no published source)
   src/i18n/locales/<lang>.ts                   rarity names, so a rarity is called one thing everywhere
@@ -427,6 +431,50 @@ def common_name_words(lang, CARDS, pack, name_words):
     return sorted(out)
 
 
+def ordinary_name_words(lang, CARDS, pack, name_words, name_pos):
+    """Words of a character's name, or whole names and aliases, that are also ordinary words of the language, as the
+    language writes the ordinary word (src/lib/verse/echo.ts reads the case of what is listed):
+      - where the script has capitals and Hunspell can say so (es fr it pt pl ru vi id): English Wiktionary lists the word
+        written small as an ordinary word (fetch/name_pos.py) AND Hunspell accepts it written small (run.sh names). Both
+        sources must agree: Polish Hunspell alone accepts «hamlet» and «zeus», Wiktionary alone has rare words such as
+        Italian «achille». Listed small: «bruto», «banco», «пак»;
+      - German, where Hunspell knows names as well as words: Wiktionary, a Noun under the word as written (listed with its
+        capital: «Zettel», «Puck») or any ordinary word written small («blake»);
+      - Arabic, Hindi, Chinese, Japanese, Korean and Thai (no capitals): Wiktionary («パック», «बैंको», «โพ»).
+    echo.ts: a name listed small counts by itself only written with a capital inside a sentence; one listed with a
+    capital (a German noun), or in a script without capitals, never by itself."""
+    import regex
+    pos = name_pos.get(lang, {})
+    acc = set(name_words.get(lang, {}).get('accepted', []))
+    out = set()
+    for w, row in pos.items():
+        o = row.get('ordinary')
+        if not o:
+            continue
+        if lang in CASED and w not in acc:
+            continue
+        out.add(o)
+    # Only what this pack's names hold.
+    have = set()
+    for c in CARDS:
+        e = pack['cards'][c['id']]
+        if c['type'] != 'Character' or not e.get('name') or e['nameSource'] in ('missing', 'kept'):
+            continue
+        for t in [re.sub(r',.*$', '', e['name'])] + e.get('aliases', []):
+            t = regex.sub(r'^[^\p{L}]+|[^\p{L}\p{M}]+$', '', t.strip())
+            have.add(t.lower())
+            have.update(x.lower() for x in regex.split(r'[\s・·‧]+', t) if x)
+    return sorted(w for w in out if w.lower() in have)
+
+
+def containing_words(lang, record):
+    """Chinese and Thai: for each name, the dictionary words that hold it with more around it and are not the character
+    (fetch/containing_words.py), where echo.ts refuses the name."""
+    rows = record.get('languages', {}).get(lang, {})
+    out = {u: sorted({r['word'] for r in rs if not r['same']}) for u, rs in rows.items()}
+    return {u: ws for u, ws in sorted(out.items()) if ws}
+
+
 def name_tokens(CARDS, pack):
     """Every word of every character's name and alias in this pack, as check/collect.mjs gives them to check.py forms."""
     import regex
@@ -482,6 +530,8 @@ def main():
     name_words = json.load(open(nw_path, encoding='utf8'))['languages'] if os.path.exists(nw_path) else {}
     nf_path = os.path.join(ROOT, 'docs/language/checks/name-forms.json')
     name_forms = json.load(open(nf_path, encoding='utf8'))['languages'] if os.path.exists(nf_path) else {}
+    name_pos = json.loads(read('docs/language/sources/wiktionary-name-pos.json'))['languages']
+    containing = json.loads(read('docs/language/sources/name-containing-words.json'))
     sg_path = os.path.join(ROOT, 'docs/language/checks/line-segments.json')
     segments = json.load(open(sg_path, encoding='utf8')) if os.path.exists(sg_path) else None
     published = json.loads(read('scripts/language/published.json'))
@@ -574,6 +624,12 @@ def main():
         common = common_name_words(lang, CARDS, pack, name_words)
         if common:
             pack['common'] = common
+        ordinary = ordinary_name_words(lang, CARDS, pack, name_words, name_pos)
+        if ordinary:
+            pack['ordinary'] = ordinary
+        held = containing_words(lang, containing)
+        if held:
+            pack['containing'] = held
         if lang in name_forms:
             # The forms a name takes in a sentence that the invocation accepts (check.py forms): made by declension.py's
             # paradigms, without the ones Hunspell knows as ordinary words. Only for the words of this pack's names.

@@ -1443,6 +1443,19 @@ const pack: CardTextPack = {
   "Marc",
   "Nourrice",
   "Seigneur"
+ ],
+ "ordinary": [
+  "apollon",
+  "comte",
+  "dame",
+  "frère",
+  "la",
+  "lady",
+  "marc",
+  "méduse",
+  "nourrice",
+  "seigneur",
+  "viola"
  ]
 };
 

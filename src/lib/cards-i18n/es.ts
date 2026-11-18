@@ -1514,6 +1514,23 @@ const pack: CardTextPack = {
   "Señor",
   "Señora",
   "de"
+ ],
+ "ordinary": [
+  "bruto",
+  "conde",
+  "de",
+  "fray",
+  "lady",
+  "marco",
+  "medusa",
+  "nodriza",
+  "palas",
+  "prospero",
+  "príncipe",
+  "próspero",
+  "rey",
+  "señor",
+  "señora"
  ]
 };
 

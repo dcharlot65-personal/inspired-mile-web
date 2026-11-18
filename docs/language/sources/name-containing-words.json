@@ -1,0 +1,1795 @@
+{
+ "built": "scripts/language/fetch/containing_words.py",
+ "languages": {
+  "zh": {
+   "伊丽莎白": [
+    {
+     "word": "伊丽莎白港",
+     "source": "jieba (ns)",
+     "same": false
+    }
+   ],
+   "哈姆雷特": [
+    {
+     "word": "哈姆雷特式",
+     "source": "jieba (nrt)",
+     "same": true,
+     "why": "Hamlet-like (jieba, nrt): about Hamlet"
+    }
+   ],
+   "塞缪尔": [
+    {
+     "word": "塞缪尔·约翰逊",
+     "source": "CC-CEDICT",
+     "gloss": "Samuel Johnson (1709–1784) or Dr Johnson, English writer and lexicographer",
+     "same": true
+    }
+   ],
+   "威廉": [
+    {
+     "word": "威廉·福克納",
+     "source": "CC-CEDICT",
+     "gloss": "William Faulkner (1897-1962), American novelist and poet",
+     "same": true
+    },
+    {
+     "word": "威廉·福克纳",
+     "source": "CC-CEDICT",
+     "gloss": "William Faulkner (1897-1962), American novelist and poet",
+     "same": true
+    },
+    {
+     "word": "威廉·莎士比亚",
+     "source": "CC-CEDICT",
+     "gloss": "William Shakespeare (1564-1616), poet and playwright",
+     "same": true
+    },
+    {
+     "word": "威廉·莎士比亞",
+     "source": "CC-CEDICT",
+     "gloss": "William Shakespeare (1564-1616), poet and playwright",
+     "same": true
+    },
+    {
+     "word": "威廉姆斯",
+     "source": "jieba (nrt)",
+     "same": false
+    },
+    {
+     "word": "威廉斯",
+     "source": "jieba (nrt)",
+     "same": false
+    },
+    {
+     "word": "威廉斯堡",
+     "source": "CC-CEDICT",
+     "gloss": "Williamsburg, Virginia",
+     "same": false
+    },
+    {
+     "word": "威廉森",
+     "source": "jieba (nrt)",
+     "same": false
+    },
+    {
+     "word": "威廉法尔",
+     "source": "jieba (nrt)",
+     "same": false
+    },
+    {
+     "word": "威廉法爾",
+     "source": "jieba (nrt)",
+     "same": false
+    },
+    {
+     "word": "威廉港",
+     "source": "jieba (ns)",
+     "same": false
+    }
+   ],
+   "安东尼": [
+    {
+     "word": "圣安东尼奥",
+     "source": "CC-CEDICT",
+     "gloss": "San Antonio, Texas",
+     "same": false
+    },
+    {
+     "word": "安东尼与克莉奥佩特拉",
+     "source": "CC-CEDICT",
+     "gloss": "Anthony and Cleopatra, 1606 tragedy by William Shakespeare 莎士比亞|莎士比亚",
+     "same": true,
+     "why": "Shakespeare's Antony and Cleopatra (CC-CEDICT spells it 'Anthony')"
+    },
+    {
+     "word": "安东尼奥",
+     "source": "jieba (nrt)",
+     "same": false
+    },
+    {
+     "word": "安东尼斯",
+     "source": "jieba (ns)",
+     "same": false
+    }
+   ],
+   "宙斯": [
+    {
+     "word": "宙斯盾战斗系统",
+     "source": "CC-CEDICT",
+     "gloss": "Aegis Combat System (weapons system developed for the US Navy)",
+     "same": false
+    },
+    {
+     "word": "宙斯盾戰鬥系統",
+     "source": "CC-CEDICT",
+     "gloss": "Aegis Combat System (weapons system developed for the US Navy)",
+     "same": false
+    }
+   ],
+   "布莱克": [
+    {
+     "word": "布莱克史密斯",
+     "source": "CC-CEDICT",
+     "gloss": "Blacksmith (name)",
+     "same": false
+    },
+    {
+     "word": "布莱克斯",
+     "source": "jieba (nrt)",
+     "same": false
+    },
+    {
+     "word": "布莱克本",
+     "source": "CC-CEDICT",
+     "gloss": "Blackburn",
+     "same": false
+    }
+   ],
+   "布鲁图": [
+    {
+     "word": "布鲁图斯",
+     "source": "CC-CEDICT",
+     "gloss": "Brutus (name)",
+     "same": true
+    }
+   ],
+   "帕克": [
+    {
+     "word": "卡尔帕克",
+     "source": "jieba (nrt)",
+     "same": false
+    },
+    {
+     "word": "卡帕克",
+     "source": "jieba (nrt)",
+     "same": false
+    },
+    {
+     "word": "卡拉卡尔帕克",
+     "source": "jieba (nrt)",
+     "same": false
+    },
+    {
+     "word": "卡拉卡爾帕克",
+     "source": "jieba (nrt)",
+     "same": false
+    },
+    {
+     "word": "卡爾帕克",
+     "source": "jieba (nrt)",
+     "same": false
+    },
+    {
+     "word": "斯帕克斯",
+     "source": "jieba (nrt)",
+     "same": false
+    },
+    {
+     "word": "斯瓦帕克",
+     "source": "jieba (nrt)",
+     "same": false
+    }
+   ],
+   "朱丽叶": [
+    {
+     "word": "罗密欧与朱丽叶",
+     "source": "CC-CEDICT",
+     "gloss": "Romeo and Juliet, 1594 tragedy by William Shakespeare 莎士比亞|莎士比亚",
+     "same": true
+    }
+   ],
+   "朱麗葉": [
+    {
+     "word": "羅密歐與朱麗葉",
+     "source": "CC-CEDICT",
+     "gloss": "Romeo and Juliet, 1594 tragedy by William Shakespeare 莎士比亞|莎士比亚",
+     "same": true
+    }
+   ],
+   "比希": [
+    {
+     "word": "珀西·比希·雪莱",
+     "source": "CC-CEDICT",
+     "gloss": "Percy Bysshe Shelley (1792-1822), English Romantic poet",
+     "same": true
+    },
+    {
+     "word": "珀西·比希·雪萊",
+     "source": "CC-CEDICT",
+     "gloss": "Percy Bysshe Shelley (1792-1822), English Romantic poet",
+     "same": true
+    }
+   ],
+   "爱伦": [
+    {
+     "word": "埃德加·爱伦·坡",
+     "source": "CC-CEDICT",
+     "gloss": "Edgar Allen Poe (1809-1849), American poet and novelist",
+     "same": true
+    },
+    {
+     "word": "爱伦堡",
+     "source": "jieba (ns)",
+     "same": false
+    }
+   ],
+   "爱伦·坡": [
+    {
+     "word": "埃德加·爱伦·坡",
+     "source": "CC-CEDICT",
+     "gloss": "Edgar Allen Poe (1809-1849), American poet and novelist",
+     "same": true
+    }
+   ],
+   "玛丽": [
+    {
+     "word": "万福玛丽亚",
+     "source": "CC-CEDICT",
+     "gloss": "Hail Mary/Ave Maria (religion)",
+     "same": true
+    },
+    {
+     "word": "圣玛丽亚",
+     "source": "jieba (ns)",
+     "same": false
+    },
+    {
+     "word": "圣玛丽斯",
+     "source": "jieba (nrt)",
+     "same": false
+    },
+    {
+     "word": "玛丽亚",
+     "source": "CC-CEDICT",
+     "gloss": "Maria (name)",
+     "same": false
+    },
+    {
+     "word": "玛丽娅",
+     "source": "CC-CEDICT",
+     "gloss": "Maria (name)/St Mary",
+     "same": true
+    },
+    {
+     "word": "玛丽苏",
+     "source": "CC-CEDICT",
+     "gloss": "(slang) Mary Sue (character type in fiction)",
+     "same": true
+    },
+    {
+     "word": "玛丽莲·梦露",
+     "source": "CC-CEDICT",
+     "gloss": "Marilyn Monroe (1926-1962), US actress",
+     "same": false
+    },
+    {
+     "word": "苏格兰女王玛丽",
+     "source": "CC-CEDICT",
+     "gloss": "Mary, Queen of Scots (1542-87)",
+     "same": true
+    },
+    {
+     "word": "血腥玛丽",
+     "source": "CC-CEDICT",
+     "gloss": "Bloody Mary",
+     "same": true
+    }
+   ],
+   "珀西": [
+    {
+     "word": "珀西·比希·雪莱",
+     "source": "CC-CEDICT",
+     "gloss": "Percy Bysshe Shelley (1792-1822), English Romantic poet",
+     "same": true
+    },
+    {
+     "word": "珀西·比希·雪萊",
+     "source": "CC-CEDICT",
+     "gloss": "Percy Bysshe Shelley (1792-1822), English Romantic poet",
+     "same": true
+    },
+    {
+     "word": "珀西瓦尔",
+     "source": "jieba (nrt)",
+     "same": false
+    },
+    {
+     "word": "珀西瓦爾",
+     "source": "jieba (nrt)",
+     "same": false
+    }
+   ],
+   "米兰达": [
+    {
+     "word": "米兰达州",
+     "source": "jieba (ns)",
+     "same": false
+    }
+   ],
+   "约翰": [
+    {
+     "word": "上海圣约翰大学",
+     "source": "jieba (nt)",
+     "same": false
+    },
+    {
+     "word": "圣约翰",
+     "source": "CC-CEDICT",
+     "gloss": "Saint John",
+     "same": true
+    },
+    {
+     "word": "圣约翰市",
+     "source": "jieba (ns)",
+     "same": false
+    },
+    {
+     "word": "圣约翰斯",
+     "source": "CC-CEDICT",
+     "gloss": "St John's, capital of Labrador and Newfoundland province, Canada",
+     "same": true
+    },
+    {
+     "word": "塞缪尔·约翰逊",
+     "source": "CC-CEDICT",
+     "gloss": "Samuel Johnson (1709–1784) or Dr Johnson, English writer and lexicographer",
+     "same": false
+    },
+    {
+     "word": "施洗约翰",
+     "source": "CC-CEDICT",
+     "gloss": "John the Baptist",
+     "same": true
+    },
+    {
+     "word": "施洗者约翰",
+     "source": "CC-CEDICT",
+     "gloss": "John the Baptist",
+     "same": true
+    },
+    {
+     "word": "棒约翰",
+     "source": "CC-CEDICT",
+     "gloss": "Papa John's (pizza chain)",
+     "same": true
+    },
+    {
+     "word": "约翰·厄普代克",
+     "source": "CC-CEDICT",
+     "gloss": "John Updike, US novelist (1932-2009), Pulitzer Prize winner",
+     "same": true
+    },
+    {
+     "word": "约翰·拉贝",
+     "source": "CC-CEDICT",
+     "gloss": "John Rabe (1882-1950), German who helped protect Chinese during the Nanking massacre period",
+     "same": true
+    },
+    {
+     "word": "约翰·本仁",
+     "source": "CC-CEDICT",
+     "gloss": "John Bunyan (1628-1688), English puritan writer, author of Pilgrim's Progress 天路歷程|天路历程",
+     "same": true
+    },
+    {
+     "word": "约翰·霍金斯",
+     "source": "CC-CEDICT",
+     "gloss": "John Hawkins (1532-1595), British seaman involved in sea war with Spain/Johns Hopkins (1795-1873), American entrepreneur, abolitionist and philanthropist",
+     "same": true
+    },
+    {
+     "word": "约翰·霍金斯大学",
+     "source": "CC-CEDICT",
+     "gloss": "Johns Hopkins University, Baltimore",
+     "same": false
+    },
+    {
+     "word": "约翰一书",
+     "source": "CC-CEDICT",
+     "gloss": "First epistle of St John",
+     "same": true
+    },
+    {
+     "word": "约翰三书",
+     "source": "CC-CEDICT",
+     "gloss": "Third epistle of St John",
+     "same": true
+    },
+    {
+     "word": "约翰二书",
+     "source": "CC-CEDICT",
+     "gloss": "Second epistle of St John",
+     "same": true
+    },
+    {
+     "word": "约翰保罗",
+     "source": "CC-CEDICT",
+     "gloss": "John Paul (name)/Pope John Paul II, Karol Józef Wojtyła (1920-2005), Pope 1978-2005",
+     "same": true
+    },
+    {
+     "word": "约翰内斯堡",
+     "source": "CC-CEDICT",
+     "gloss": "Johannesburg, South Africa",
+     "same": false
+    },
+    {
+     "word": "约翰壹书",
+     "source": "CC-CEDICT",
+     "gloss": "First epistle of St John/also written 約翰一書|约翰一书",
+     "same": true
+    },
+    {
+     "word": "约翰尼",
+     "source": "jieba (nrt)",
+     "same": false
+    },
+    {
+     "word": "约翰尼斯",
+     "source": "jieba (nrt)",
+     "same": false
+    },
+    {
+     "word": "约翰斯",
+     "source": "jieba (nrt)",
+     "same": false
+    },
+    {
+     "word": "约翰斯顿",
+     "source": "CC-CEDICT",
+     "gloss": "Johnston, Johnson, Johnstone etc, name",
+     "same": false
+    },
+    {
+     "word": "约翰松",
+     "source": "jieba (nrt)",
+     "same": false
+    },
+    {
+     "word": "约翰森",
+     "source": "jieba (nrt)",
+     "same": false
+    },
+    {
+     "word": "约翰生",
+     "source": "jieba (nrt)",
+     "same": false
+    },
+    {
+     "word": "约翰福音",
+     "source": "CC-CEDICT",
+     "gloss": "Gospel according to St John",
+     "same": true
+    },
+    {
+     "word": "约翰贰书",
+     "source": "CC-CEDICT",
+     "gloss": "Second epistle of St John/also written 約翰二書|约翰二书",
+     "same": true
+    },
+    {
+     "word": "约翰逊",
+     "source": "CC-CEDICT",
+     "gloss": "Johnson or Johnston (name)",
+     "same": false
+    },
+    {
+     "word": "约翰霍普金斯",
+     "source": "jieba (nrt)",
+     "same": false
+    }
+   ],
+   "罗密欧": [
+    {
+     "word": "罗密欧与朱丽叶",
+     "source": "CC-CEDICT",
+     "gloss": "Romeo and Juliet, 1594 tragedy by William Shakespeare 莎士比亞|莎士比亚",
+     "same": true
+    },
+    {
+     "word": "阿尔法·罗密欧",
+     "source": "CC-CEDICT",
+     "gloss": "Alfa Romeo",
+     "same": true
+    },
+    {
+     "word": "阿法罗密欧",
+     "source": "CC-CEDICT",
+     "gloss": "Alfa Romeo",
+     "same": true
+    }
+   ],
+   "阿波罗": [
+    {
+     "word": "阿波罗号",
+     "source": "jieba (nz)",
+     "same": true,
+     "why": "the Apollo spacecraft (jieba, nz), named for Apollo, as English \"Apollo\" counts in it"
+    },
+    {
+     "word": "阿波罗计划",
+     "source": "CC-CEDICT",
+     "gloss": "the Apollo project (1961-1975), the NASA moon landing project",
+     "same": true
+    }
+   ],
+   "阿波羅": [
+    {
+     "word": "阿波羅號",
+     "source": "jieba (nz)",
+     "same": true,
+     "why": "the Apollo spacecraft (jieba, nz), named for Apollo, as English \"Apollo\" counts in it"
+    },
+    {
+     "word": "阿波羅計劃",
+     "source": "CC-CEDICT",
+     "gloss": "the Apollo project (1961-1975), the NASA moon landing project",
+     "same": true
+    }
+   ],
+   "雪莱": [
+    {
+     "word": "珀西·比希·雪莱",
+     "source": "CC-CEDICT",
+     "gloss": "Percy Bysshe Shelley (1792-1822), English Romantic poet",
+     "same": true
+    }
+   ],
+   "雪萊": [
+    {
+     "word": "珀西·比希·雪萊",
+     "source": "CC-CEDICT",
+     "gloss": "Percy Bysshe Shelley (1792-1822), English Romantic poet",
+     "same": true
+    }
+   ],
+   "马克": [
+    {
+     "word": "乌尼马克",
+     "source": "jieba (ns)",
+     "same": false
+    },
+    {
+     "word": "五十马克",
+     "source": "jieba (nrt)",
+     "same": false
+    },
+    {
+     "word": "卡尔·马克思",
+     "source": "CC-CEDICT",
+     "gloss": "Karl Marx (1818-1883), German socialist philosopher, political activist and founder of Marxism",
+     "same": false
+    },
+    {
+     "word": "叶尔马克",
+     "source": "jieba (nrt)",
+     "same": false
+    },
+    {
+     "word": "圣马克",
+     "source": "jieba (nrt)",
+     "same": false
+    },
+    {
+     "word": "多马克",
+     "source": "jieba (nrt)",
+     "same": false
+    },
+    {
+     "word": "奥诺马克",
+     "source": "jieba (nrt)",
+     "same": false
+    },
+    {
+     "word": "巴尔马克",
+     "source": "jieba (nrt)",
+     "same": false
+    },
+    {
+     "word": "德国马克",
+     "source": "CC-CEDICT",
+     "gloss": "German mark",
+     "same": false
+    },
+    {
+     "word": "托克马克",
+     "source": "jieba (nrt)",
+     "same": false
+    },
+    {
+     "word": "托卡马克",
+     "source": "CC-CEDICT",
+     "gloss": "(physics) (loanword) tokamak",
+     "same": false
+    },
+    {
+     "word": "拉马克",
+     "source": "jieba (nrt)",
+     "same": false
+    },
+    {
+     "word": "施泰尔马克",
+     "source": "CC-CEDICT",
+     "gloss": "Styria (Steiermark), province of Austria",
+     "same": false
+    },
+    {
+     "word": "波多马克河",
+     "source": "CC-CEDICT",
+     "gloss": "see 波托馬克河|波托马克河[Bo1 tuo1 ma3 ke4 He2]",
+     "same": false
+    },
+    {
+     "word": "波托马克河",
+     "source": "CC-CEDICT",
+     "gloss": "Potomac River",
+     "same": false
+    },
+    {
+     "word": "芬兰马克",
+     "source": "jieba (nrt)",
+     "same": false
+    },
+    {
+     "word": "西德马克",
+     "source": "jieba (nrt)",
+     "same": false
+    },
+    {
+     "word": "见马克思",
+     "source": "CC-CEDICT",
+     "gloss": "to die/lit. to visit Marx/to pass away",
+     "same": false
+    },
+    {
+     "word": "马克·吐温",
+     "source": "CC-CEDICT",
+     "gloss": "Mark Twain (Samuel Langhorne Clemens 1835-1910), US writer, novelist and humorist, author of Adventures of Huckleberry Finn 哈克貝利·芬歷險記|哈克贝利·芬历险记[Ha1 ke4 bei4 li4",
+     "same": true
+    },
+    {
+     "word": "马克图姆",
+     "source": "jieba (nrt)",
+     "same": false
+    },
+    {
+     "word": "马克宏",
+     "source": "CC-CEDICT",
+     "gloss": "(Tw) Emmanuel Macron (1977-), president of France from 2017",
+     "same": false
+    },
+    {
+     "word": "马克思",
+     "source": "CC-CEDICT",
+     "gloss": "Marx (name)/Karl Marx (1818-1883), German revolutionary, economist and historian",
+     "same": false
+    },
+    {
+     "word": "马克思主义",
+     "source": "CC-CEDICT",
+     "gloss": "Marxism",
+     "same": false
+    },
+    {
+     "word": "马克思列宁主义",
+     "source": "CC-CEDICT",
+     "gloss": "Marxism-Leninism",
+     "same": false
+    },
+    {
+     "word": "马克斯·普朗克",
+     "source": "CC-CEDICT",
+     "gloss": "Max Planck (1858-1947), German physicist who first postulated quantization of energy",
+     "same": false
+    },
+    {
+     "word": "马克斯威尔",
+     "source": "CC-CEDICT",
+     "gloss": "James Clerk Maxwell (1831-1879)",
+     "same": false
+    },
+    {
+     "word": "马克杯",
+     "source": "CC-CEDICT",
+     "gloss": "(loanword) mug",
+     "same": false
+    },
+    {
+     "word": "马克沁",
+     "source": "CC-CEDICT",
+     "gloss": "Sir Hiram Maxim (1840-1916), American British inventor of the Maxim machine gun",
+     "same": false
+    },
+    {
+     "word": "马克沁机枪",
+     "source": "CC-CEDICT",
+     "gloss": "Maxim machine gun",
+     "same": false
+    },
+    {
+     "word": "马克笔",
+     "source": "CC-CEDICT",
+     "gloss": "marker (loanword)/felt marker",
+     "same": false
+    },
+    {
+     "word": "马克苏德",
+     "source": "jieba (nrt)",
+     "same": false
+    },
+    {
+     "word": "马克西姆",
+     "source": "jieba (nrt)",
+     "same": false
+    },
+    {
+     "word": "马克西米",
+     "source": "jieba (nrt)",
+     "same": false
+    },
+    {
+     "word": "马克西米利安",
+     "source": "jieba (ns)",
+     "same": false
+    },
+    {
+     "word": "马克西米连",
+     "source": "CC-CEDICT",
+     "gloss": "Maximilian or Maximilien (name)",
+     "same": false
+    },
+    {
+     "word": "马克西莫夫",
+     "source": "jieba (nrt)",
+     "same": false
+    },
+    {
+     "word": "马克西马",
+     "source": "jieba (ns)",
+     "same": false
+    },
+    {
+     "word": "马克龙",
+     "source": "CC-CEDICT",
+     "gloss": "Emmanuel Macron (1977-), president of France from 2017",
+     "same": false
+    },
+    {
+     "word": "麦科马克",
+     "source": "jieba (nrt)",
+     "same": false
+    }
+   ],
+   "麦克白": [
+    {
+     "word": "麦克白夫人",
+     "source": "CC-CEDICT",
+     "gloss": "Lady Macbeth",
+     "same": true
+    }
+   ]
+  },
+  "th": {
+   "ซุส": [
+    {
+     "word": "อัสซุส",
+     "source": "PyThaiNLP",
+     "same": false
+    }
+   ],
+   "มาร์ก": [
+    {
+     "word": "มาร์กซิสต์",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "มาร์กซิสม์",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "มาร์กซ์",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "มาร์กาเร็ต",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "เดนมาร์ก",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โครนเดนมาร์ก",
+     "source": "PyThaiNLP",
+     "same": false
+    }
+   ],
+   "แมรี": [
+    {
+     "word": "แมรีแลนด์",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "แมรี่",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "แมรี่แลนด์",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โรสแมรี",
+     "source": "PyThaiNLP",
+     "same": false
+    }
+   ],
+   "โพ": [
+    {
+     "word": "กลองตะโพน",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "กัมโพช",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "ขาวโพลน",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "ข้าวโพด",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "ข้าวโพดคั่ว",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "ควนโพธิ์",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "คันโพง",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "จุมโพล่",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "ชี้โพรงให้กระรอก",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "ซัลโพราเฟน",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "ดอกลำโพง",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "ดำโพง",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "ดิสโพรเซียม",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "ดิเอ็มโพเรียม",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "ตะโพก",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "ตะโพกสุดเสียงสังข์",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "ตะโพง",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "ตะโพน",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "ตาโพลง",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "ตีโพยตีพาย",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "ทุ่งโพธิ์",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "ท่าโพธิ์",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "นงโพธ",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "บรมโพธิสมภาร",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "บุพโพ",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "บ้านโพธิ์",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "บ้านโพนฮาด",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "บ้าลำโพง",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "ปฐมสมโพธิ",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "ปฐมโพธิกาล",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "ประโพธ",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "ปลิโพธ",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "ปัจเจกโพธิ",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "ปากลำโพง",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "ผีโพง",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "ผ้าโพกหัว",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "พระศรีอริยะเมตไตรยโพธิสัตว์",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "พระโพธิสัตว์",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "พระโพธิสัตว์กวนอิม",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "พิมโพหนะ",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "พี้โพ้",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "พูดโพล่ง",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "มูโคโพลีซัดคาไรค์",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "รอบสะโพก",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "ร่มโพธิ์ร่มไทร",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "ลำโพง",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "ลิโพ",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "วัดโพธิ์โชติการาม",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "สมโพธน์",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "สมโพธิ",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "สะแกโพรง",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "สะโพก",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "สัมโพธิ",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "หมูเทโพ",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "หลวมโพรก",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "อนุโพธ",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "อภิสมโพธิ",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "อภิสัมโพธิ",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "อภิสัมโพธิญาณ",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "อัพโพหาริก",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "อิมโพรไวเซชั่น",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "เดินโพย",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "เทโพ",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "เบิกโพลง",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "เปลือกข้าวโพด",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "เป็นโพรง",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "เพล้โพล้",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "เอ็กซ์โพเนนเชียล",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "เอ็มโพเรียม",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "แฉโพย",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "แตรลำโพง",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "แทรกโพน",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "แทรมโพลีน",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "แป้งข้าวโพด",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "แม่โพสพ",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โคกโพธิ์",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โทรโพสเฟียร์",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โทษโพย",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพก",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพกพาย",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพกหัว",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพขี้นก",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพง",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพงพาง",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพชฌงคปริตร",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพชฌงค์",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพซิตรอน",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพด",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพดำ",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพทะเล",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพธ",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพธาราม",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพธาวัฒนาเสนี",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพธิ",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพธิญาณ",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพธิบัลลังก์",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพธิปักขิยธรรม",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพธิสมภาร",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพธิสัตว์",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพธิสัมพันธ์",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพธิ์",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพธิ์ชัย",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพธิ์ทอง",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพธิ์อ้น",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพธิ์โชติการาม",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพน",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพนทะนา",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพนเพน",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพบาย",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพปราสาท",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพผัน",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพย",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพยก๊วน",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพยภัย",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพยม",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพยมยาน",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพยมัน",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพยมาน",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพรก",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพรง",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพรงจมูก",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพรงเยื่อหุ้มปอด",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพรงแสม",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพรงไม้",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพรทิสตา",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพรมีเทียม",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพระดก",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพรเจกไทล์",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพรเจสเทอโรน",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพรเซส",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพรเซสเซอร์",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพรเทคส์",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพรเบเนซิด",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพรโทคอล",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพรโทพลาสซึม",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพรโทแอกทิเนียม",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพรไฟล์",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพล",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพลง",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพลน",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพลล์",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพละ",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพลารอยด์",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพลาริส",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพลาร์",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพลาไรซ์",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพลิฟีนอลส์",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพลิเทคนิค",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพลิเมอร์",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพลิโนเมียล",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพลีคลินิค",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพลีน",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพลีพลัส",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพลีฟีนอล",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพลีอเซทิลีน",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพลีเอทิลีน",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพลีเอธีลิน",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพลี่ฟีนอล",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพล่",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพล่ง",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพล้ง",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพล้เพล้",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพศรีมหาโพธิ",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพส",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพสต์",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพสท์",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพสพ",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพเจสเตอโรล",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพแดง",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพแตสเซี่ยม",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพแทช",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพแทสเซียม",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพไซดอน",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพ้น",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "โพ้นทะเล",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "ใบโพ",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "ไกลโพ้น",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "ไทยโพสต์",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "ไม้ค้ำโพธิ์",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "ไม้โพ",
+     "source": "PyThaiNLP",
+     "same": false
+    },
+    {
+     "word": "ไอบูโพรเฟน",
+     "source": "PyThaiNLP",
+     "same": false
+    }
+   ]
+  }
+ },
+ "sources": {
+  "zh": [
+   {
+    "name": "CC-CEDICT",
+    "url": "https://www.mdbg.net/chinese/export/cedict/cedict_1_0_ts_utf-8_mdbg.txt.gz",
+    "date": "2026-11-18T03:25:44Z",
+    "entries": "125439",
+    "sha256": "d7fbcfb99159d27db22787f515fd5548356607f8d9d381cb5c90917e3e7e0547",
+    "licence": "CC BY-SA 4.0"
+   },
+   {
+    "name": "jieba dict.txt.big",
+    "url": "https://raw.githubusercontent.com/fxsjy/jieba/67fa2e36e72f69d9134b8a1037b83fbb070b9775/extra_dict/dict.txt.big",
+    "sha256": "b16011275c42955ccd81fc1adecc93a59dbb7926af69d93fc95d4943d40f6aad",
+    "licence": "MIT",
+    "tags": [
+     "nrt",
+     "ns",
+     "nt",
+     "nz"
+    ]
+   }
+  ],
+  "th": [
+   {
+    "name": "PyThaiNLP words_th.txt",
+    "version": "5.1.2",
+    "sha256": "397bb43d04c1af56286781693bf32f323d54a9a911e0651aed9ba21c6cd34e5f",
+    "licence": "CC0 1.0"
+   }
+  ]
+ }
+}

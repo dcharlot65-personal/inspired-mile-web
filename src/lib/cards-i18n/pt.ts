@@ -1304,6 +1304,15 @@ const pack: CardTextPack = {
   "Pítio",
   "Senhor",
   "Senhora"
+ ],
+ "ordinary": [
+  "bruto",
+  "marco",
+  "medusa",
+  "príncipe",
+  "próspero",
+  "senhor",
+  "senhora"
  ]
 };
 

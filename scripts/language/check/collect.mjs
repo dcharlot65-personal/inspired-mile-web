@@ -13,8 +13,9 @@ const words = (lang, text) => [...new Intl.Segmenter(lang, { granularity: 'word'
 const items = [];
 const names = {};
 const nameStrings = {};
-// Words of a character's longer name, and its one-word aliases: the words the invocation would count by themselves
-// (src/lib/verse/echo.ts, localCharacterNames). check.py names asks Hunspell which of them are ordinary words.
+// Every word of a character's name (a name of one word too) and its one-word aliases: the words the invocation would
+// count by themselves (src/lib/verse/echo.ts, localCharacterNames). check.py names asks Hunspell which of them are
+// ordinary words.
 const nameWords = {};
 const nameTokens = {};
 const DECLINING = ['ru', 'pl', 'de', 'ar'];
@@ -38,7 +39,7 @@ for (const lang of LANGS) {
     const e = pack.cards[c.id];
     if (c.type !== 'Character' || !e.name || e.nameSource === 'missing') continue;
     const parts = clean(e.name.replace(/,.*$/u, '')).split(SPLIT).map(clean).filter(Boolean);
-    for (const w of [...(parts.length > 1 ? parts : []), ...(e.aliases ?? []).map(clean)]) if (w && !SPLIT.test(w)) nw.add(w);
+    for (const w of [...parts, ...(e.aliases ?? []).map(clean)]) if (w && !SPLIT.test(w)) nw.add(w);
   }
   nameWords[lang] = [...nw].sort();
   // Every word of every character's name and alias, as the invocation compares them one by one (echo.ts saidName), in

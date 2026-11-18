@@ -65,6 +65,20 @@ export interface CardTextPack {
   /** Words of a character's longer name, or aliases, that are ordinary words of the language (Hunspell): not a name by themselves. */
   common?: string[];
   /**
+   * Names, words of a name and aliases that are also ordinary words of the language, written as the language writes the
+   * ordinary word: Spanish «bruto», German «Zettel», Japanese パック (scripts/language/build_card_text.py,
+   * ordinary_name_words: English Wiktionary, and Hunspell too where the script has capitals). One listed in small letters
+   * counts as a name by itself only written with a capital inside a sentence; one listed with a capital (a German noun),
+   * or in a script without capitals, never by itself (src/lib/verse/echo.ts).
+   */
+  ordinary?: string[];
+  /**
+   * Chinese and Thai: for a name, the dictionary words that hold it with more around it and are not the character
+   * (圣安东尼奥, "San Antonio", holds 安东尼; CC-CEDICT, jieba, PyThaiNLP: scripts/language/fetch/containing_words.py).
+   * The invocation refuses the name where the verse writes one of them around it.
+   */
+  containing?: Record<string, string[]>;
+  /**
    * Vietnamese: the words of two to four syllables (nouns, verbs, adjectives, from Wiktionary) that occur in the
    * lines, which the signature reads as one word («vấn đề», "problem", not «vấn» and «đề»). Thai: the lines' words as
    * PyThaiNLP's newmm reads them (scripts/language/check/segment.py), read as one word where ICU cuts them in pieces

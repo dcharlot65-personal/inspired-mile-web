@@ -1549,6 +1549,19 @@ const pack: CardTextPack = {
   "Prinz",
   "Taylor"
  ],
+ "ordinary": [
+  "Bruder",
+  "Graf",
+  "Gräfin",
+  "Kora",
+  "Kore",
+  "König",
+  "Lady",
+  "Prinz",
+  "Puck",
+  "Zettel",
+  "blake"
+ ],
  "forms": {
   "Achill": [
    "Achills"

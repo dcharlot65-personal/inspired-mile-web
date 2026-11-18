@@ -1499,6 +1499,11 @@ const pack: CardTextPack = {
   "Nyonya",
   "Pangeran",
   "Tuan"
+ ],
+ "ordinary": [
+  "nyonya",
+  "pangeran",
+  "tuan"
  ]
 };
 
