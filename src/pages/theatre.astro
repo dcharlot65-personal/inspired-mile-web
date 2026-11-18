@@ -53,7 +53,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   </section>
 
   <script>
-    import { brainInfo, chooseTier, detectCapability, loadBrain, modelJudges, MODELS, usedAnywhere } from '../lib/brain';
+    import { brainInfo, detectCapability, loadBrain, modelJudges, rememberedModel } from '../lib/brain';
     import { getActiveDeck } from '../lib/deck-manager';
     import { cancelListening, isListening, loadEar, startListening, stopListening } from '../lib/ear';
     import { getOwnedCardIds } from '../lib/inventory';
@@ -199,12 +199,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     async function init() {
       // A model is used only if the player has already chosen one on the battle page; the
       // theatre never starts a large download on its own, least of all inside a headset.
+      // Only the model they chose, while this device is still offered it (brain.ts rememberedModel):
+      // never a bigger download than theirs, nor a model used in no language (docs/language/MODEL-EVAL.md).
       const cap = await detectCapability();
-      const chosen = localStorage.getItem('inspired-mile-brain');
-      const tier = chooseTier(cap);
-      const want = chosen === 'grand' && !cap.handheld ? 'grand' : tier;
-      // Nor a model used in no language (docs/language/MODEL-EVAL.md): it would change nothing.
-      if (params.get('brain') !== 'rules' && want !== 'none' && usedAnywhere(MODELS[want]) && chosen && chosen !== 'rules') {
+      const want = rememberedModel(cap, localStorage.getItem('inspired-mile-brain'));
+      if (params.get('brain') !== 'rules' && want) {
         status('brain.summoning');
         useModel = await loadBrain(want, (p) => {
           // The loader reports its progress in English.

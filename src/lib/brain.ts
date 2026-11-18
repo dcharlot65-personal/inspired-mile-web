@@ -8,10 +8,13 @@
  *
  * Which model loads is decided by what the device can do, not by which
  * browser it is:
- *   grand     Gemma 4 E2B      desktops with memory to spare       ~3 GB    writes and judges best
- *   standard  LFM3-1.7B        any WebGPU desktop                  ~1.1 GB  writes and judges
- *   lite      LFM2.5-350M      phones and tablets, low memory      ~0.3 GB  judges only
+ *   grand     Gemma 4 E2B      desktops with memory to spare       ~3 GB
+ *   standard  LFM3-1.7B        any WebGPU desktop                  ~1.1 GB
+ *   lite      LFM2.5-350M      phones and tablets, low memory      ~0.3 GB
  *   none      no model         no WebGPU: the built-in rules run the opponent
+ *
+ * What each model does, and in which languages, is measured, not assumed: `writesIn` and
+ * `judgesIn` below (docs/language/MODEL-EVAL.md). A model used in no language is not offered.
  */
 
 import { loadTransformers } from './model-runtime';
@@ -94,8 +97,8 @@ export function modelJudges(spec: ModelSpec | null | undefined, lang: string): b
 
 /**
  * Is the model used in any language at all? One that is not would be a download that changes
- * nothing, so the pages never offer it and never load it on their own (only `?brain=<tier>`,
- * which the tests use, loads it anyway).
+ * nothing, so the pages never offer it, never load it on their own and never fall back to it
+ * (loadOrder); only `?brain=<tier>`, which the tests use, loads it anyway.
  */
 export function usedAnywhere(spec: ModelSpec | null | undefined): boolean {
   return !!spec && (spec.writesIn.length > 0 || spec.judgesIn.length > 0);
@@ -215,15 +218,35 @@ async function loadSpec(spec: ModelSpec, onProgress?: (p: LoadProgress) => void)
 }
 
 /**
- * Load the model for a tier. If the standard model fails (out of memory, a
- * driver fault), the lite model is tried before giving up.
+ * The models loadBrain tries for a tier, in order: the one asked for, then, if it fails, the
+ * smaller ones that are used in some language (usedAnywhere). A smaller model used in no language
+ * is never a fallback: it would be a download that changes nothing, and the page would say a model
+ * is running when every duel is the written opponent's and the rules'.
+ */
+export function loadOrder(tier: Exclude<Tier, 'none'>): ModelSpec[] {
+  const chain = tier === 'grand' ? [MODELS.grand, MODELS.standard, MODELS.lite] : tier === 'standard' ? [MODELS.standard, MODELS.lite] : [MODELS.lite];
+  return [chain[0], ...chain.slice(1).filter(usedAnywhere)];
+}
+
+/**
+ * The model a page may load without asking, for a visitor whose stored choice is `chosen` (the
+ * tier of the model they summoned before): that same model, and only while this device is still
+ * offered it (modelsToOffer). Never another one: a page that loads a model on its own loads only
+ * a download the visitor already chose, never a bigger one and never one used in no language.
+ */
+export function rememberedModel(cap: Capability, chosen: string | null): Exclude<Tier, 'none'> | null {
+  return modelsToOffer(cap).find((m) => m.tier === chosen)?.tier ?? null;
+}
+
+/**
+ * Load the model for a tier. If it fails (out of memory, a driver fault), the smaller models
+ * that are used in some language are tried before giving up (loadOrder).
  */
 export function loadBrain(tier: Exclude<Tier, 'none'>, onProgress?: (p: LoadProgress) => void): Promise<boolean> {
   if (loaded) return Promise.resolve(true);
   if (loading) return loading;
   loading = (async () => {
-    const order = tier === 'grand' ? [MODELS.grand, MODELS.standard, MODELS.lite] : tier === 'standard' ? [MODELS.standard, MODELS.lite] : [MODELS.lite];
-    for (const spec of order) {
+    for (const spec of loadOrder(tier)) {
       try {
         await loadSpec(spec, onProgress);
         onProgress?.({ percent: 100, text: `${spec.label} ready` });
