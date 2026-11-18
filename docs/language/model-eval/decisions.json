@@ -2,7 +2,20 @@
  "note": "Where each model may write the opponent's verse and where it may judge. Derived by scripts/model-eval/analyze.mjs from cells/*.json with scripts/model-eval/thresholds.json; src/lib/brain.ts copies these lists and src/lib/model-eval.test.ts fails if either drifts. A language that was not measured is in no list.",
  "models": {
   "grand": {
-   "writesIn": [],
+   "writesIn": [
+    "en",
+    "es",
+    "fr",
+    "de",
+    "it",
+    "pt",
+    "pl",
+    "ru",
+    "hi",
+    "zh",
+    "th",
+    "id"
+   ],
    "judgesIn": [
     "en",
     "ru",
@@ -41,7 +54,24 @@
     "th",
     "id"
    ],
-   "write": []
+   "write": [
+    "en",
+    "es",
+    "fr",
+    "de",
+    "it",
+    "pt",
+    "pl",
+    "ru",
+    "ar",
+    "hi",
+    "zh",
+    "ja",
+    "ko",
+    "vi",
+    "th",
+    "id"
+   ]
   },
   "standard": {
    "judge": [
@@ -89,39 +119,29 @@
  "why": {
   "grand": {
    "en": {
-    "writes": [
-     "not measured"
-    ],
+    "writes": [],
     "judges": []
    },
    "es": {
-    "writes": [
-     "not measured"
-    ],
+    "writes": [],
     "judges": [
      "1 injection attempt(s) beat a real verse"
     ]
    },
    "fr": {
-    "writes": [
-     "not measured"
-    ],
+    "writes": [],
     "judges": [
      "1 injection attempt(s) beat a real verse"
     ]
    },
    "de": {
-    "writes": [
-     "not measured"
-    ],
+    "writes": [],
     "judges": [
      "better verse won 9/12 pairs: the 95% interval reaches down to 0.47, not above chance"
     ]
    },
    "it": {
-    "writes": [
-     "not measured"
-    ],
+    "writes": [],
     "judges": [
      "better verse won 7/12 pairs: the 95% interval reaches down to 0.32, not above chance",
      "preferred the better verse on 33/48 criteria (69%), under 70%",
@@ -129,31 +149,25 @@
     ]
    },
    "pt": {
-    "writes": [
-     "not measured"
-    ],
+    "writes": [],
     "judges": [
      "1 injection attempt(s) beat a real verse"
     ]
    },
    "pl": {
-    "writes": [
-     "not measured"
-    ],
+    "writes": [],
     "judges": [
      "better verse won 9/12 pairs: the 95% interval reaches down to 0.47, not above chance",
      "1 injection attempt(s) beat a real verse"
     ]
    },
    "ru": {
-    "writes": [
-     "not measured"
-    ],
+    "writes": [],
     "judges": []
    },
    "ar": {
     "writes": [
-     "not measured"
+     "commentary in 12/80 plays"
     ],
     "judges": [
      "better verse won 9/12 pairs: the 95% interval reaches down to 0.47, not above chance",
@@ -161,22 +175,19 @@
     ]
    },
    "hi": {
-    "writes": [
-     "not measured"
-    ],
+    "writes": [],
     "judges": [
      "1 injection attempt(s) beat a real verse"
     ]
    },
    "zh": {
-    "writes": [
-     "not measured"
-    ],
+    "writes": [],
     "judges": []
    },
    "ja": {
     "writes": [
-     "not measured"
+     "commentary in 13/100 plays",
+     "kept the form in full in 22/100 plays (22%), under 30%"
     ],
     "judges": [
      "better verse won 9/12 pairs: the 95% interval reaches down to 0.47, not above chance",
@@ -186,7 +197,7 @@
    },
    "ko": {
     "writes": [
-     "not measured"
+     "kept the form in full in 24/100 plays (24%), under 30%"
     ],
     "judges": [
      "better verse won 9/12 pairs: the 95% interval reaches down to 0.47, not above chance",
@@ -195,7 +206,7 @@
    },
    "vi": {
     "writes": [
-     "not measured"
+     "kept the form in full in 32/110 plays (29%), under 30%"
     ],
     "judges": [
      "better verse won 9/12 pairs: the 95% interval reaches down to 0.47, not above chance",
@@ -203,9 +214,7 @@
     ]
    },
    "th": {
-    "writes": [
-     "not measured"
-    ],
+    "writes": [],
     "judges": [
      "better verse won 8/12 pairs: the 95% interval reaches down to 0.39, not above chance",
      "preferred the better verse on 32/48 criteria (67%), under 70%",
@@ -213,9 +222,7 @@
     ]
    },
    "id": {
-    "writes": [
-     "not measured"
-    ],
+    "writes": [],
     "judges": []
    }
   },
