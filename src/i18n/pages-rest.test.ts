@@ -143,6 +143,41 @@ describe('page areas: every language has every string', () => {
     expect(problems, problems.join('\n')).toEqual([]);
   });
 
+  it('joins the number to its noun as Unicode CLDR’s minimal pairs do (fr, es, it, pt "many": {n} de…, {n} di…)', () => {
+    // docs/language/sources/pages-rest-cldr-minimal-pairs.json (scripts/pages-rest/fetch-cldr-minimal-pairs.mjs):
+    // fr {0} jours (other), {0} de jours (many). A category whose pair is the "other" pair with words put
+    // in right after {0} needs those words after {n} too: 1 000 000 de crédits, never 1 000 000 crédits.
+    const saved = JSON.parse(readFileSync('docs/language/sources/pages-rest-cldr-minimal-pairs.json', 'utf8')) as { pairs: Record<string, Record<string, string>> };
+    const joiners: Record<string, Record<string, string>> = {};
+    for (const [l, saidPairs] of Object.entries(saved.pairs)) {
+      // CLDR writes a no-break space between the number and the word; the strings write a plain one.
+      const pairs = Object.fromEntries(Object.entries(saidPairs).map(([c, p]) => [c, p.replace(/[\u00a0\u202f]/g, ' ')]));
+      const other = pairs.other;
+      if (!other?.startsWith('{0} ')) continue;
+      const noun = other.slice('{0} '.length);
+      for (const [c, pair] of Object.entries(pairs)) {
+        if (c === 'other' || !pair.startsWith('{0} ') || !pair.endsWith(` ${noun}`)) continue;
+        const between = pair.slice('{0} '.length, pair.length - noun.length).trim();
+        if (between) (joiners[l] ??= {})[c] = between;
+      }
+    }
+    // The rule must find something to hold the strings to, or it proves nothing.
+    expect(joiners).toEqual({ es: { many: 'de' }, fr: { many: 'de' }, it: { many: 'di' }, pt: { many: 'de' } });
+    const problems: string[] = [];
+    for (const a of AREAS) {
+      for (const [l, byCategory] of Object.entries(joiners) as Array<[Locale, Record<string, string>]>) {
+        const m = area(a, l);
+        for (const [c, word] of Object.entries(byCategory)) {
+          for (const base of pluralBases(m)) {
+            const v = m[`${base}.${c}`];
+            if (v !== undefined && !v.includes(`{n} ${word} `)) problems.push(`${a}/${l}: ${base}.${c} must join the number to its noun with "${word}", as CLDR's pair "${saved.pairs[l][c]}" does: ${v}`);
+          }
+        }
+      }
+    }
+    expect(problems, problems.join('\n')).toEqual([]);
+  });
+
   it('is actually translated: nothing reads the same as English unless it is listed as shared', () => {
     const problems: string[] = [];
     for (const a of AREAS) {
@@ -494,6 +529,12 @@ describe('the install guidance and the storage note (src/lib/pwa.ts)', () => {
     expect(oneMb).toMatch(/^1\sMo$/);
     expect(formatBytes(10)).toBe(fr['pwa.storage.lessThan'].replace('{size}', oneMb));
     await setLocale('ru', { persist: false });
+      // An exact million is "many" in these four, and CLDR joins it to its noun with de/di.
+      ['fr', 1_000_000, 'credits', `${new Intl.NumberFormat('fr').format(1_000_000)} de crédits`],
+      ['es', 2_000_000, 'credits', `${new Intl.NumberFormat('es').format(2_000_000)} de créditos`],
+      ['it', 1_000_000, 'classroom.members', `${new Intl.NumberFormat('it').format(1_000_000)} di membri`],
+      ['pt', 1_000_000, 'classroom.members', `${new Intl.NumberFormat('pt').format(1_000_000)} de membros`],
+      ['pt', 1_000_001, 'classroom.members', `${new Intl.NumberFormat('pt').format(1_000_001)} membros`],
     await loadArea('pwa');
     expect(formatBytes(3.1e9)).toMatch(/^3,1\sГБ$/);
     expect(storageNote(true, null).text).toBe(area('pwa', 'ru')['pwa.storage.keptNoSize']);

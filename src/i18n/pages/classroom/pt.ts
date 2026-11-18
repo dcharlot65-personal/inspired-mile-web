@@ -42,7 +42,7 @@ const messages: Record<string, string> = {
   'classroom.mine.empty': 'Você ainda não entrou em nenhuma turma.',
   'classroom.mine.signIn': 'Entre na sua conta para ver suas turmas.',
   'classroom.members.one': '{n} membro',
-  'classroom.members.many': '{n} membros',
+  'classroom.members.many': '{n} de membros',
   'classroom.members.other': '{n} membros',
   'classroom.list.code': 'Código:',
   'classroom.detail.back': 'Voltar para minhas turmas',

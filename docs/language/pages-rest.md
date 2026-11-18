@@ -22,6 +22,7 @@ What did come from a source, and not from the model:
 | What | Source | Licence | Fetched |
 |---|---|---|---|
 | Which plural form a number takes, in every language | Unicode CLDR plural rules, through `Intl.PluralRules` (ICU in Node and in the browser; Node 26.13.1 on the build host reports ICU 79.1, CLDR 49.0) | Unicode License v3 | at run time |
+| How a noun reads after a number of each plural category: French, Spanish, Italian and Portuguese join an exact million to its noun with *de*/*di* (fr *1 000 000 de jours*), so their `many` form is not a copy of `other` | Unicode CLDR 49 plural minimal pairs (`<pluralMinimalPairs>` in `common/main/<lang>.xml`, tag release-49, commit 96e54b2), saved by `scripts/pages-rest/fetch-cldr-minimal-pairs.mjs` in `docs/language/sources/pages-rest-cldr-minimal-pairs.json` | Unicode License v3 | 2026-11-17 |
 | Digit grouping, date order, date ranges, "A, B and C" | Unicode CLDR, through `Intl.NumberFormat`, `Intl.DateTimeFormat`, `Intl.ListFormat` (`src/i18n/fmt.ts`) | Unicode License v3 | at run time |
 | The names of things in the term tables below (teacher, student, class, homework, tournament formats, bye, bracket, virtual and augmented reality, Gaussian splatting, multiple choice), **where a table says so**: many of these words have no source, and the tables say which | Wikidata labels and the titles of the Wikipedia articles they link to: `docs/language/sources/pages-rest-wikidata-terms-a.json`, `…-b.json` (the API answers as fetched); which word each language took, and how it stands to the label, is in `docs/language/pages-rest-terms.json` | CC0 (Wikidata); article titles are facts | 2026-11-16 |
 | The words for home, collection, battle arena and the tagline on the offline page and in the manifest | the game's own core locale (`src/i18n/locales`), copied, and held equal by a test | (ours) | 2026-11-16 |
@@ -338,9 +339,12 @@ branch only reads them:
 `src/i18n/pages-rest.test.ts`, 25 tests: every area has the keys of English in all sixteen
 languages, no empty value, the same `{placeholders}` (a plural form may write its number out,
 without `{n}`, only where its CLDR category stands for one number: Arabic "two" is 2, but
-Russian "one" is also 21, 31, 101 and French "one" is also 0), exactly the plural forms Unicode
+Russian "one" is also 21, 31, 101 and French "one" is also 0), exactly the plural categories Unicode
 CLDR gives the language (through `Intl.PluralRules`: none missing, and none it does not have,
-which `plural()` would never show), nothing left reading the same as English unless listed
+which `plural()` would never show), and the joining word CLDR's minimal pairs put between the number
+and the noun in a category (es, fr, it, pt `many`: *{n} de créditos*, *{n} di crediti*; the test
+derives the word from the saved pairs and fails if the pairs stop yielding it for exactly those four
+languages); the wording of any other form is not checked against CLDR, nothing left reading the same as English unless listed
 (the list, `SAME_AS_ENGLISH`, is in `tests/pages-rest.fixtures.mjs`, and the browser test reads
 it too), text in Unicode NFC with no hidden or directional character, and each language's own
 punctuation (French no-break spaces, Spanish ¿ ¡, full-width marks in Chinese and Japanese,

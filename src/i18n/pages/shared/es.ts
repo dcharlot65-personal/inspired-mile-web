@@ -48,7 +48,7 @@ const messages: Record<string, string> = {
   'activity.battle': 'Batalla',
   'activity.daily': 'Diario',
   'credits.one': '{n} crédito',
-  'credits.many': '{n} créditos',
+  'credits.many': '{n} de créditos',
   'credits.other': '{n} créditos',
   'boundary.message': 'No se ha podido mostrar esta parte de la página.',
   'boundary.retry': 'Reintentar',

@@ -327,7 +327,10 @@ left behind by a killed run is found by its port: `lsof -nP -iTCP:<port> -sTCP:L
   activity names, credits, error boundary, offline page, the manifest's names), `pwa` (install
   guidance and the storage note, `src/lib/pwa.ts`). Counted messages are
   `key.one`, `key.few`, … `key.other`, picked by `plural()` in `src/i18n/fmt.ts`; a language
-  has exactly the forms CLDR gives it. Numbers, dates and lists go through `fmt.ts` (Intl).
+  has exactly the forms CLDR gives it, and a form joins its number to its noun as CLDR's plural
+  minimal pairs do (fr, es, it, pt `many`: `{n} de crédits`; saved in
+  `docs/language/sources/pages-rest-cldr-minimal-pairs.json`). Numbers, dates and lists go through
+  `fmt.ts` (Intl).
   `src/i18n/pages-rest.test.ts` checks all of it; `docs/language/pages-rest.md` says what no
   tool has checked. One word per thing: `docs/language/pages-rest-terms.json` gives each
   language's word for 21 terms and how it stands to its source (Wikidata, Apple, Android, or
