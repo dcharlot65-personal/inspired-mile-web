@@ -432,7 +432,13 @@ describe('card names as the interface shows them', () => {
     expect(cardNameInText(card('VC-003'), 'de')).toBe('„Wärterin“');
     expect(cardNameInText(card('PT-001'), 'de')).toBe('„Liebestrank“');
     // Languages without articles before a name take it as it is.
-    for (const l of ['ru', 'pl', 'ar', 'hi', 'zh', 'ja', 'ko', 'vi', 'th', 'id']) for (const c of CARD_CATALOG) expect([l, c.id, cardNameInText(c, l)]).toEqual([l, c.id, cardName(c, l)]);
+    for (const l of ['ru', 'pl', 'zh', 'ja', 'ko', 'vi', 'th', 'id']) for (const c of CARD_CATALOG) expect([l, c.id, cardNameInText(c, l)]).toEqual([l, c.id, cardName(c, l)]);
+    // Hindi and Arabic: a character by its local name; a relic or a potion by its English one, since those sentences put
+    // the verb in the masculine and the local names are often feminine (योरिक की खोपड़ी आपको ये शब्द देता है would be wrong).
+    for (const l of ['hi', 'ar']) {
+      for (const c of CARD_CATALOG) expect([l, c.id, cardNameInText(c, l)]).toEqual([l, c.id, c.type === 'Character' ? cardName(c, l) : c.name]);
+    }
+    expect(cardName(card('RL-001'), 'hi')).toBe('योरिक की खोपड़ी');
   });
   it('standing alone, and at the start of a sentence, with a capital', async () => {
     const ru = (await import('../../i18n/locales/ru')).default;

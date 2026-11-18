@@ -165,10 +165,14 @@ const TITLE_QUOTES: Record<string, [string, string]> = {
  *     name's own first word in this language's spelling (it begins with the same three letters: Marco Antonio for
  *     Mark Antony, Julieta Capuleto for Juliet).
  * A plain name is left bare (Romeo se lleva la ronda), and so is a name shown in English because the language has
- * none. Every other language takes the name as it is.
+ * none. Every other language takes the name as it is, except one case: in Hindi and Arabic the sentences about a
+ * relic or a potion put its verb in the masculine (hi «{card} आपको ये शब्द देता है», ar «{card} يعيرك»), and many of
+ * those names are feminine there (योरिक की खोपड़ी, جمجمة يوريك), so the sentence keeps the English name, as it did
+ * before card names were translated, until those sentences are worded so that no verb agrees with the name.
  */
 export function cardNameInText(card: Card, lang: string): string {
   const b = base(lang);
+  if ((b === 'hi' || b === 'ar') && card.type !== 'Character') return card.name;
   const name = cardName(card, b);
   const quotes = TITLE_QUOTES[b];
   const pack = getCardText(b);
