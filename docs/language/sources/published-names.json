@@ -23,9 +23,14 @@
     "url": "https://fr.wikisource.org/w/index.php?oldid=15966892",
     "printed": "FRÈRE LAURENCE",
     "count": 1,
-    "alsoInText": 10,
+    "alsoInText": {
+     "frère Laurence": 15,
+     "Frère Laurence": 5,
+     "how": "counted on 2026-11-17 in the page as the MediaWiki API renders revision 15966892 (action=parse), which takes in its Page: transclusions as they are now; the record of 2026-11-17 said 10, a count that was not kept and that this one replaces (the third check counted the same 15 and 5)"
+    },
     "excerpt": "RCUTIO , parent du prince et ami de Roméo. TYBALT , neveu de Capulet. FRÈRE LAURENCE , moine franciscain. FRÈRE JEAN , religieux du même ordre. BALTHAZAR",
-    "rule": "the label in the list of characters, in title case; the text says «frère Laurence»"
+    "rule": "the label in the list of characters, in title case; the text says «frère Laurence»",
+    "count_how": "the same rendering: «FRÈRE LAURENCE» once (the list of characters); «LA NOURRICE» 101 times"
    }
   },
   "de": {

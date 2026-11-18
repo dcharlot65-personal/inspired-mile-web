@@ -339,11 +339,17 @@ left behind by a killed run is found by its port: `lsof -nP -iTCP:<port> -sTCP:L
   Wiktionary's function words, `scripts/language/fetch/closed_class.py`). `src/lib/cards-i18n/accidents.test.ts`
   measures how often verses written for no card land the signature or the invocation, per language, against
   English: keep it green. The signature follows the engine's English rule (a line with three or more telling
-  words needs two of them); a Vietnamese word of several syllables (Wiktionary's, `fetch/vi_compounds.py`) and a
-  Japanese katakana run are one word. A name declines only by the name's own letters (Russian and Polish case
-  endings with a capital, German -s), never by a stem alone (German «wartest» is not «Wärterin»).
-  `english.test.ts` holds an English duel to the same results whatever card text is loaded. After a character
-  name or alias changes, run `run.sh names` (Hunspell decides which words of a longer name are titles) before
+  words needs two of them); a Vietnamese word of several syllables (Wiktionary's, `fetch/vi_compounds.py`), a Thai
+  word ICU cuts into pieces (PyThaiNLP's, `check/segment.py`) and a Japanese katakana run are one word, and the Korean
+  lines' auxiliaries and bound nouns (Kiwi, same script) are stop words. After a Korean or Thai line changes, run
+  `segment.py` (venv `im-lang/names-quotes/venv-seg` on the iMac) before `build_card_text.py`. A name counts only as itself or as a form the card text lists for it
+  (`pack.forms`, Russian, Polish, German, Arabic): `scripts/language/check/declension.py` makes them (singular, one
+  paradigm per ending; «Банко» has none) and `run.sh forms` drops every one Hunspell knows as an ordinary word
+  («Банки», «Kora»); never a stem or an open case ending (the third check found «Дитя», «Банки», «Bańka», «بانكوك»
+  invoking that way). `accidents.test.ts` holds this against the subtitle lists' words near a name
+  (`fetch/near_names.py`). `english.test.ts` holds an English duel to the same results whatever card text is loaded.
+  After a character name or alias changes, run `run.sh names` (Hunspell decides which words of a longer name are
+  titles) and `run.sh forms` before
   `build_card_text.py`. On the battle page a local name inside an interface sentence goes through
   `cardNameInText` (es, fr, it, pt, de set a titled name, a role or a thing in quotation marks, since their
   sentences were written for a bare name) and a name standing alone through `cardTitle`.

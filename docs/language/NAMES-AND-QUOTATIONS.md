@@ -105,6 +105,10 @@ for the game in English. They can only ever be translated, never sourced.
 | Vietnamese words of more than one syllable (vấn đề, trái tim), read whole by the signature | English Wiktionary's Vietnamese nouns, verbs and adjectives, as Wiktextract extracts them (kaikki.org per-part-of-speech files, extracted 2026-10-30; `scripts/language/fetch/vi_compounds.py`, `docs/language/sources/wiktionary-vi-compounds.json`, which keeps each file's sha256 and the 105 that occur in the game's lines) | Wiktionary CC BY-SA 4.0 and GFDL (headwords only); Wiktextract MIT | 2026-11-17 |
 | French and Italian elided articles (l’, c’, dell’ …) | Apache Lucene, `FrenchAnalyzer.DEFAULT_ARTICLES` and `ItalianAnalyzer.DEFAULT_ARTICLES` (main branch, read 2026-11-16), copied into `src/lib/verse/echo.ts` | Apache-2.0 | 2026-11-16 |
 | Which words of a longer character name are ordinary words | Hunspell 1.7.2 with the same LibreOffice dictionaries (`run.sh names`, `docs/language/checks/name-words.json`) | as stated | 2026-11-16 |
+| Korean function words of the lines (auxiliaries, bound nouns, the copula, 있다) | Kiwi, kiwipiepy 0.24.1 with kiwipiepy_model 0.24.0 (`scripts/language/check/segment.py`, `docs/language/checks/line-segments.json`, which keeps each eojeol's first morpheme and tag) | Apache-2.0 | 2026-11-17 |
+| Thai words of the lines (โรสแมรี, not โรส and แมรี) | PyThaiNLP 5.1.2, its `newmm` tokenizer with its `words_th.txt` dictionary and the game's Thai card names (same files) | Apache-2.0 (code), CC0 (word list) | 2026-11-17 |
+| Which declined forms of a name are ordinary words | Hunspell 1.7.2's `stem()` and `spell()` with the same dictionaries (`scripts/language/check/hstem.cpp`, `run.sh forms`, `docs/language/checks/name-forms.json`); the forms themselves are made by `declension.py`'s paradigms, written by hand | as stated | 2026-11-17 |
+| Common words near a name, for the accident test | Hermit Dave, FrequencyWords, `content/2018/<lang>/<lang>_50k.txt` for ar de es fr id it ko pl pt ru vi (from OpenSubtitles 2018), commit 525f9b56, each file pinned by its sha256 (`scripts/language/fetch/near_names.py`; the selected words, without counts, in `docs/language/sources/opensubtitles-near-names.json`) | CC BY-SA 4.0 (content); MIT (code) | 2026-11-17 |
 | Portuguese spelling of Próspero | pt.wikipedia.org, "A Tempestade", revision 72539005 (`docs/language/sources/ptwiki-a-tempestade.json`) | CC BY-SA 4.0 (one name's spelling) | 2026-11-16 |
 | Spelling check | Hunspell 1.7.2 (LGPL/GPL/MPL) with LibreOffice's dictionaries at commit c0865a85 (each under its own licence, README kept beside it on the build host) | as stated | 2026-11-16 |
 | Grammar check | LanguageTool 6.6, run locally (LGPL-2.1) | LGPL-2.1 | 2026-11-16 |
@@ -157,6 +161,15 @@ have died within the last seventy years.
   the printed 歡樂 are one word), and one verse word counts once even when it says a word of the line and the
   same English word (German «Rose» and "rose"). The hint lists the words with the language's comma (、 in
   Chinese and Japanese, the Arabic comma in Arabic).
+- Korean and Thai lines are also read by analysers made for those languages (`scripts/language/check/segment.py`,
+  on a build host): Kiwi gives each Korean word's first morpheme and part of speech, and a word whose first
+  morpheme is a pronoun, an auxiliary (않은, 볼까요, 주세요), the copula, a determiner or a conjunctive adverb, a
+  bound noun not after a number (것이지요; but 한 바퀴, "one round", is a unit and counts), or a verb on the stop list
+  (있어요, of 있다) goes on the stop list; an interjection does not (만세 is "hail"). PyThaiNLP's newmm reads a Thai
+  line with its dictionary and the card names, and where ICU cuts one of its words into pieces the signature
+  takes the pieces together (โรสแมรี, "rosemary", which ICU reads as โรส, "rose", and แมรี, "Mary"), unless a piece
+  is a function word (ขอให้, "let", stays ขอ and ให้). The third check had found Ophelia's line landing on two
+  such fragments in both languages.
 - In Japanese a run of katakana is one word: ICU cuts a name or loanword it does not know into pieces
   (ヨリック into ヨ and リック, ホレイショー into ホレイ and ショー), and MeCab, the analyser the IPA dictionary was made
   for, groups such a run into one word (its `char.def` gives KATAKANA the GROUP flag), as this does.
@@ -179,12 +192,27 @@ have died within the last seventy years.
   German (whose nouns are capitalised) and in Arabic, Hindi and Thai (which have no case) a word Hunspell knows
   is taken for a title only before the last word of the name, where those languages put titles; Korean puts
   the title after the name (맥베스 부인), so there any word Hunspell knows is. A word that is also a word of an
-  English character name (Romeo, Lady, William) counts, as it does in English. Where names decline, a declined
-  form must keep the name: in Russian and Polish the name less its last vowel followed by a noun case ending,
-  written with a capital («Персефону», «Марка Антония», «Julię», «Antoniusza»; not «медузу», a jellyfish, nor
-  «марку», a stamp); in German the name with its genitive -s or by Snowball's stem with the name at its start
-  («Romeos», «Hamlets»; not «wartest» for «Wärterin», though both stem to "wart"); in Arabic by the stem with the
-  whole name inside the word («وروميو»; not «روما», Rome). Names match with particles in Korean, as whole words in
+  English character name (Romeo, Lady, William) counts, as it does in English. Where names decline (Russian,
+  Polish, German, Arabic), a name counts as itself or as one of the forms the card text lists for it (`forms`):
+  `scripts/language/check/declension.py` makes them by one paradigm per ending, singular only, written out by
+  hand (Russian «Джульетта»: Джульетты, Джульетте, Джульетту, Джульеттой; Polish «Hamlet»: Hamleta, Hamletowi,
+  Hamletem, Hamlecie; German the genitive -s; Arabic the conjunctions و and ف and the prepositions ب, ك and ل
+  before the name, as Snowball's Arabic stemmer strips them), and a Russian name in -о, -е, -и or -у, or a Polish
+  one in -e, has none («Банко», «Ромео», «Kore»). Then `run.sh forms` puts each to Hunspell (`hstem.cpp`, its
+  `stem()`), and a form the dictionary knows as an ordinary word is dropped: in Russian and Polish one it accepts
+  in lower case («Марка», "of a stamp"; Polish «Banku», "of a bank"), in German and Arabic one it takes for a form
+  of another word (Arabic «كبو», "stumbling", made of «بو» for Poe). A form that is also another proper noun is kept
+  and listed (Russian «Афины», Athens and Athena's genitive; «Клавдия», also the name Klavdiya; Polish «Ateny»),
+  as English keeps "Paris". Every form, kept or dropped, with Hunspell's entries for it, is in
+  `docs/language/checks/name-forms.json`. A declined form keeps the name's capital where the name has one
+  («Персефону», «Julię»; not «медузу», a jellyfish). Before this, a name took any case ending after its stem,
+  and the third check (2026-11-17) found common words invoking: Russian «Дитя» ("child", from the alias «Дит»),
+  «Банки» ("banks"), «Афинах» ("in Athens"), Polish «Banku», «Bańka» ("bubble"), «Kora» ("bark"), Arabic «بانكوك»
+  (Bangkok), «هادسون» (Hudson), «الأخيلة» ("imaginations"). `accidents.test.ts` now says each of the words of
+  the 50,000 commonest in film subtitles that come near a name (Hermit Dave's FrequencyWords, from OpenSubtitles
+  2018, in eleven languages: `scripts/language/fetch/near_names.py`, `docs/language/sources/opensubtitles-near-names.json`),
+  as written and with a capital, and only names and their listed forms invoke; the forms that occur there were
+  read one by one and are in the test. Names match with particles in Korean, as whole words in
   Chinese, Japanese and Thai, and exactly elsewhere («prosperidad» is not «Próspero», «marche» is not «Marc»),
   where a verse word with an accent the name does not have is another word (typed without accents, a name
   still counts). "The Sonnet Man" counts only whole. The English names count in every language, said as English
@@ -474,8 +502,9 @@ the lines used, each with the permanent link of the revision it was read from.
 
 An alias counts for the invocation (src/lib/verse/echo.ts). These were left out, by the rules of `alias_rejected` in `scripts/language/build_card_text.py` or, where named, by hand:
 
-- **de**: OL-003 «Abadonna» (the fallen angel of Klopstock's Messias (Abaddon), not a name of Apollo); OL-006 «Uthuce» (the Etruscan name of Odysseus, not a German one)
+- **de**: OL-003 «Abadonna» (the fallen angel of Klopstock's Messias (Abaddon), not a name of Apollo); OL-006 «Uthuce» (the Etruscan name of Odysseus, not a German one); OL-007 «Archill» (a misspelling: 3 de.wikipedia articles, against 416 for «Achill»); OL-007 «Archilles» (a misspelling: 17 de.wikipedia articles, against 416 for «Achill»; German writes Achilleus or Achilles)
 - **it**: OL-004 «Aφροδίτη» (mixes scripts)
+- **ru**: OL-004 «Афродиты» (the genitive of «Афродита», not another name of her); UW-001 «Дит» (Dis (Dis Pater), the Roman god of the dead whom Rome identified with Hades, not a name of Hades himself (Плутон, from the Greek Πλούτων, is one); three letters, and Russian «Дитя» ("child") begins with it); OL-007 «Ахилесс» (a misspelling: 2 ru.wikipedia articles, against 572 for «Ахиллес» and 19 for «Ахилес»)
 - **zh**: FA-003 «Oberon» (Latin letters in a language written in another script); LD-003 «济慈，J.» (not letters only); GC-001 «拜伦，G.G.» (not letters only); GC-002 «科學怪人之母：瑪麗雪萊» (not letters only); GC-003 «坡，E.A.» (not letters only); LD-004 «勃朗宁夫人» (the name or another alias with more added); OL-005 «Hermes» (Latin letters in a language written in another script); UW-001 «哈里斯» ("Harris"; no Chinese source gives it for Hades)
 - **ja**: RM-001 «ブルトゥス家» (the name or another alias with more added); GC-003 «エドガーアランポー» (the name or another alias with more added); GC-003 «アランポオ» (the name or another alias with more added); OL-001 «ゼウス神像» (the name or another alias with more added); OL-001 «ZEUS» (Latin letters in a language written in another script); OL-002 «アテナ女神» (the name or another alias with more added); OL-004 «アフロディーテー» (the name or another alias with more added)
 - **th**: OL-001 «เทพซูส» (the name or another alias with more added); OL-005 «Hermes» (Latin letters in a language written in another script); OL-005 «เทพเฮอร์มีส» (the name or another alias with more added); UW-001 «Hades» (Latin letters in a language written in another script); UW-002 «Persephone» (Latin letters in a language written in another script)
