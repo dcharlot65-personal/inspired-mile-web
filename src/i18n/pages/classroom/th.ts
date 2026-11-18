@@ -52,7 +52,7 @@ const messages: Record<string, string> = {
   'classroom.badge.student': 'นักเรียน',
   'classroom.assign.title': 'งานที่มอบหมาย',
   'classroom.assign.new': 'งานใหม่',
-  'classroom.assign.titlePlaceholder': 'ชื่องาน',
+  'classroom.assign.titlePlaceholder': 'ชื่องานที่มอบหมาย',
   'classroom.assign.typeLabel': 'ประเภทกิจกรรม',
   'classroom.assign.add': 'เพิ่ม',
   'classroom.assign.empty': 'ยังไม่มีงานที่มอบหมาย',

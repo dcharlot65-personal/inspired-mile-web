@@ -22,7 +22,7 @@ const messages: Record<string, string> = {
   'error.classroom_not_found': 'ไม่มีชั้นเรียนที่ใช้รหัสนั้น โปรดตรวจสอบกับครูของคุณ',
   'error.not_classroom_member': 'คุณไม่ได้เป็นสมาชิกของชั้นเรียนนี้',
   'error.teachers_only': 'เฉพาะครูเท่านั้นที่สร้างงานได้',
-  'error.assignment_title_invalid': 'ชื่องานต้องมี 1 ถึง 128 ตัวอักษร',
+  'error.assignment_title_invalid': 'ชื่องานที่มอบหมายต้องมี 1 ถึง 128 ตัวอักษร',
   'error.card_invalid': 'การ์ดนั้นไม่ถูกต้อง',
   'error.price_invalid': 'ราคาต้องอยู่ระหว่าง {min} ถึง {max} เครดิต',
   'error.card_not_owned': 'คุณไม่มีการ์ดใบนี้',

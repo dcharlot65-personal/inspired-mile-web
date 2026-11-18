@@ -98,7 +98,7 @@ area string that must follow.
 | ja | 教員 =. 先生 where a pupil speaks of their own teacher. | 生徒 = (Q48282) | クラス (from *教育におけるクラス*) | **課題**. Wikidata: label *宿題*, article *宿題*. An assignment, done at home or not. The model's choice; no recorded source. | 文字 = (Android) |
 | ko | 교사 =. 선생님 where a pupil speaks of their own teacher. | 학생 = (Q48282) | 학급 = | **과제**. Wikidata: label *숙제*, article *숙제*. An assignment, done at home or not. The model's choice; no recorded source. | **글자**: Android has another word. Android has 문자; 6글자 is the everyday count. The model’s choice; no recorded source. |
 | vi | giáo viên = | học sinh = (Q48942) | lớp học: **none**. | bài tập (from *Bài tập về nhà*) | ký tự = (Android) |
-| th | ครู = | นักเรียน = (Q48282) | ชั้นเรียน: **none**. | **งานที่มอบหมาย**. Wikidata: label *การบ้าน*, article *การบ้าน*. Work given out; งาน alone where the sentence already says who gives it. The model's choice; no recorded source. | อักขระ = (Android) |
+| th | ครู = | นักเรียน = (Q48282) | ชั้นเรียน: **none**. | **งานที่มอบหมาย**. Wikidata: label *การบ้าน*, article *การบ้าน*. Work given out. The model's choice; no recorded source. งาน alone only where the string itself says who gives the work, or sits under the heading งานที่มอบหมาย; each such string is listed in notIn. | อักขระ = (Android) |
 | id | guru = | siswa = (Q48942) | kelas = | **tugas**. Wikidata: label *Pekerjaan rumah*, article *Pekerjaan rumah*. An assignment, done at home or not. The model's choice; no recorded source. | karakter = (Android) |
 <!-- /terms:school -->
 

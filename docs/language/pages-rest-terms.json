@@ -476,11 +476,13 @@
     },
     "th": {
      "word": "งานที่มอบหมาย",
-     "spellings": [
-      "งาน"
-     ],
      "rel": "other",
-     "note": "Work given out; งาน alone where the sentence already says who gives it. The model's choice; no recorded source."
+     "note": "Work given out. The model's choice; no recorded source. งาน alone only where the string itself says who gives the work, or sits under the heading งานที่มอบหมาย; each such string is listed in notIn.",
+     "notIn": {
+      "classroom.assign.new": "The button sits beside the heading งานที่มอบหมาย (classroom.assign.title), which names what it makes: + งานใหม่.",
+      "classroom.wizard.s3.body": "The sentence says who gives the work: สร้างงานให้ชั้นเรียนของคุณ, the teacher makes it for the class.",
+      "error.teachers_only": "The sentence says who gives the work: เฉพาะครู… ที่สร้างงานได้, only the teacher makes it."
+     }
     },
     "id": {
      "word": "tugas",
