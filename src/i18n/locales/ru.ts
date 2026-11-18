@@ -344,7 +344,7 @@ const ru: Record<string, string> = {
   'illegal.potion-not-in-deck': 'Этого зелья нет в твоей колоде.',
   'illegal.relic-spent': 'Эта реликвия уже потрачена.',
   'illegal.potion-spent': 'Это зелье уже потрачено.',
-  'illegal.potion-last-round': 'Проклинать больше нечего: это последний раунд.',
+  'illegal.potion-last-round': 'Не осталось строфы, которую можно проклясть: это последний раунд.',
   'illegal.no-ink': 'Не хватает чернил.',
 
   // --- Дуэль: список на лету ---
