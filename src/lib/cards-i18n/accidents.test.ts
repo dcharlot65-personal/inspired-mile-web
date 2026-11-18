@@ -55,7 +55,7 @@ describe('controls: a real echo and a real name still land', () => {
     expect(landed('You lost, and I won tonight', 'en')).toEqual([]);
     expect(sig('MO-002', 'โรคร้ายจงตามไปถึงตระกูล', 'th').met).toBe(true); // โรค and ตระกูล, words of the line
     expect(sig('MO-002', 'โรคร้ายจงตามไป', 'th').code).toBe('hint-two');
-    expect(sig('DC-004', 'Trái tim ta không vỡ, ngủ ngon nhé', 'vi').met).toBe(true); // tim, ngủ, ngon
+    expect(sig('DC-004', 'Trái tim ta, hoàng tử, không vỡ', 'vi').met).toBe(true); // trái tim, hoàng tử
     expect(sig('MO-003', '평화를 원하느냐, 칼을 내려라', 'ko').met).toBe(true); // 평화를, 칼을
     expect(sig('MO-003', '平和はいらない、和睦などない', 'ja').met).toBe(true); // 和睦, the line's one telling word
     expect(sig('MO-003', '和平不属于你，收起刀吧', 'zh').met).toBe(true); // 和平, 收起
@@ -322,9 +322,9 @@ describe('given names, titles and accents count as English counts them', () => {
     expect(inv('앨런이 왔다', 'ko').met).toBe(false);
   });
   it('an English word of the line is said as English writes it: Vietnamese «rosé» is not "rose"', () => {
-    // Juliet's Vietnamese line has six telling words, so two are needed; hoa is one, and "rose" may be the other.
-    expect(sig('CA-001', 'hoa rose', 'vi').met).toBe(true);
-    expect(sig('CA-001', 'hoa rosé', 'vi').code).toBe('hint-two');
+    // Juliet's Vietnamese line has five telling words, so two are needed; tên ("name") is one, and "rose" may be the other.
+    expect(sig('CA-001', 'tên rose', 'vi').met).toBe(true);
+    expect(sig('CA-001', 'tên rosé', 'vi').code).toBe('hint-two');
   });
 });
 
@@ -407,6 +407,8 @@ describe('the rule judge reads a Vietnamese word with its tone', () => {
     for (const n of localCharacterNames('vi')) own.add(wordKey(n, 'vi'));
     for (const c of CARD_CATALOG) {
       for (const w of localSignatureWords(c, 'vi')) {
+        // A word of several syllables is not one the judge, which reads word by word, can meet.
+        if (/\s/.test(w)) continue;
         expect([c.id, w, vi.has(wordKey(w, 'vi'))]).toEqual([c.id, w, true]);
         if (wordKey(w, 'vi') !== fold(w) && !en.has(fold(w)) && !own.has(fold(w))) {
           toned++;
@@ -441,5 +443,21 @@ describe('what the player is shown', () => {
   it('the words that landed it come back for the multiplier, folded as the verse says them', () => {
     expect(sig('CA-001', 'Die Rose duftet im Dunkeln', 'de')).toMatchObject({ met: true, words: ['rose', 'duftet'] });
     expect(inv('Kocham Julię', 'pl').words).toEqual(['julie']);
+  });
+});
+
+describe('a Vietnamese word of several syllables is one telling word', () => {
+  it('«vấn đề» ("problem") is not said by «vấn an» ("to ask after"): the second check’s probe', () => {
+    expect(localSignatureWords(getCardById('DC-001')!, 'vi')).toEqual(['Tồn tại', 'vấn đề']);
+    expect(sig('DC-001', 'Tôi hỏi vấn an người xưa', 'vi').met).toBe(false);
+    expect(sig('DC-001', 'Vấn đề của ta là đêm nay', 'vi').met).toBe(true);
+    // Its syllables must come in a row, and the matched syllables come back for the multiplier.
+    expect(sig('DC-001', 'Đề nghị một vấn an', 'vi').met).toBe(false);
+    expect(sig('DC-001', 'Vấn đề của ta là đêm nay', 'vi').words).toEqual(['van', 'đe']);
+    // The words are Wiktionary's nouns, verbs and adjectives (docs/language/sources/wiktionary-vi-compounds.json).
+    const compounds = getCardText('vi')!.compounds ?? [];
+    expect(compounds.length).toBeGreaterThan(80);
+    for (const w of ['vấn đề', 'tồn tại', 'trái tim', 'hoa hồng', 'hoàng tử']) expect(compounds).toContain(w);
+    expect(localSignatureWords(getCardById('DC-004')!, 'vi')).toContain('trái tim');
   });
 });

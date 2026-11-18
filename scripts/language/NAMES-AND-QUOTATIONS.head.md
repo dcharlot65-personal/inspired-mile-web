@@ -102,6 +102,7 @@ for the game in English. They can only ever be translated, never sourced.
 | Stop words (words that never count as an echo) | stopwords-iso, commit 6e8e9a2 (`docs/language/sources/stopwords-iso.json`) | MIT, © 2020 Gene Diaz | 2026-11-16 |
 | Function words added to the stop words, and the Korean particles | English Wiktionary's headwords filed as pronoun, particle, conjunction, preposition, postposition, determiner or article, as Wiktextract extracts them (kaikki.org per-part-of-speech files, extracted 2026-10-30 from the dump of 2026-10-01, Wiktextract commit 19f9a30; `scripts/language/fetch/closed_class.py`, `docs/language/sources/wiktionary-closed-class.json`, which keeps each file's sha256). The Wiktionary API itself answered 429 (rate limited) that day | Wiktionary CC BY-SA 4.0 and GFDL (headwords only); Wiktextract MIT | 2026-11-16 |
 | Forms of one word (stems), for the signature and for names that decline | Snowball 3.2.0 stemmers, the project's generated JavaScript (jsstemmer-3.2.0.tar.gz from snowballstem.org/dist, sha256 1d3f3926…a15e5bd), copied unchanged into `src/lib/verse/stem/snowball/` for es, fr, de, it, pt, pl, ru, ar, hi, id; a unit test checks each file's sha256 | BSD 3-clause (`src/lib/verse/stem/snowball/COPYING`) | 2026-11-16 |
+| Vietnamese words of more than one syllable (vấn đề, trái tim), read whole by the signature | English Wiktionary's Vietnamese nouns, verbs and adjectives, as Wiktextract extracts them (kaikki.org per-part-of-speech files, extracted 2026-10-30; `scripts/language/fetch/vi_compounds.py`, `docs/language/sources/wiktionary-vi-compounds.json`, which keeps each file's sha256 and the 105 that occur in the game's lines) | Wiktionary CC BY-SA 4.0 and GFDL (headwords only); Wiktextract MIT | 2026-11-17 |
 | French and Italian elided articles (l’, c’, dell’ …) | Apache Lucene, `FrenchAnalyzer.DEFAULT_ARTICLES` and `ItalianAnalyzer.DEFAULT_ARTICLES` (main branch, read 2026-11-16), copied into `src/lib/verse/echo.ts` | Apache-2.0 | 2026-11-16 |
 | Which words of a longer character name are ordinary words | Hunspell 1.7.2 with the same LibreOffice dictionaries (`run.sh names`, `docs/language/checks/name-words.json`) | as stated | 2026-11-16 |
 | Portuguese spelling of Próspero | pt.wikipedia.org, "A Tempestade", revision 72539005 (`docs/language/sources/ptwiki-a-tempestade.json`) | CC BY-SA 4.0 (one name's spelling) | 2026-11-16 |
@@ -144,7 +145,9 @@ have died within the last seventy years.
 - A word of the verse echoes a telling word when it is the same word as the language counts it: the same
   Snowball stem in Spanish, French, German, Italian, Portuguese, Polish, Russian, Arabic, Hindi and
   Indonesian (Russian «Гамлета» and «Гамлет», Spanish «rosas» and «rosa»); in Vietnamese the same syllable
-  with the same tone (ngủ "sleep" is not ngu, nor the start of người; hoà and hòa are one spelling); in Korean
+  with the same tone (ngủ "sleep" is not ngu, nor the start of người; hoà and hòa are one spelling), and a word of
+  the line of more than one syllable that Wiktionary lists as a noun, verb or adjective is one telling word, said
+  when its syllables come in a row («vấn an», "to ask after", does not say «vấn đề», "problem"); in Korean
   the same word with or without its particles (햄릿이 says 햄릿); in Chinese, Japanese and Thai, whole words of
   the verse (`Intl.Segmenter`) that spell it in a row (Japanese: whose letters begin with it, since a verb's
   ending is often cut off as a word of its own). Thai SARA AM is compared in one piece (stopwords-iso writes

@@ -15,7 +15,9 @@
  * - Spanish, French, German, Italian, Portuguese, Polish, Russian, Arabic, Hindi and Indonesian: two words
  *   are one when Snowball's stemmer for the language gives them one stem (./stem): Russian «Гамлета» says
  *   «Гамлет», Spanish «rosas» says «rosa», Arabic «والوردة» says «الوردة».
- * - Vietnamese: the same syllable with the same tone (ngủ "sleep" is not ngu "foolish", nor the start of người).
+ * - Vietnamese: the same syllable with the same tone (ngủ "sleep" is not ngu "foolish", nor the start of người). A
+ *   word of the line of more than one syllable (Wiktionary's, pack.compounds: «vấn đề», "problem") is one telling
+ *   word, said when its syllables come in a row: «vấn an» ("to ask after") does not say «vấn đề».
  * - Korean: the same word, with or without the particles (josa) that follow a noun: 햄릿이 says 햄릿.
  * - Chinese, Japanese and Thai are written unspaced: words come from Intl.Segmenter, as everywhere in the
  *   engine. A word is said when whole words of the verse spell it (Japanese: when they begin with it, since a
@@ -206,6 +208,10 @@ interface Lists {
   alsoAfterL: Set<string>;
   /** Name words that are ordinary words of the language (Hunspell), which do not count as a name by themselves. */
   common: Set<string>;
+  /** Vietnamese: the line's words of more than one syllable, as the syllables' wordKeys joined by a space. */
+  compounds: Set<string>;
+  /** The most syllables of any of them. */
+  longest: number;
 }
 const lists = new Map<string, Lists>();
 function listsFor(lang: string): Lists {
@@ -222,6 +228,8 @@ function listsFor(lang: string): Lists {
     afterConsonant: new Set(pack?.particleForms?.afterConsonant ?? []),
     alsoAfterL: new Set(pack?.particleForms?.alsoAfterL ?? []),
     common: new Set((pack?.common ?? []).map((w) => wordKey(w, b))),
+    compounds: new Set((pack?.compounds ?? []).map((w) => syllableKeys(w, b).join(' '))),
+    longest: Math.max(1, ...(pack?.compounds ?? []).map((w) => syllableKeys(w, b).length)),
   };
   if (pack) lists.set(b, l);
   return l;
@@ -293,6 +301,32 @@ function isStop(word: string, lang: string): boolean {
   return false;
 }
 
+/** A Vietnamese word's syllables, as wordKey compares each (a hyphen joins syllables too: xi-rô). */
+function syllableKeys(word: string, lang: string): string[] {
+  return wordsOf(word.replace(/[-‐]/g, ' '), lang).map((w) => wordKey(w, lang));
+}
+
+/**
+ * The words of a line as the signature reads them: wordsIn, and in Vietnamese the syllables of a word of more than
+ * one syllable (pack.compounds) taken together, the longest first.
+ */
+function lineWords(text: string, lang: string): string[] {
+  const b = baseLang(lang);
+  const ws = wordsIn(text, b);
+  if (b !== 'vi') return ws;
+  const l = listsFor(b);
+  if (!l.compounds.size) return ws;
+  const keys = ws.map((w) => wordKey(w, b));
+  const out: string[] = [];
+  for (let i = 0; i < ws.length; ) {
+    let n = Math.min(l.longest, ws.length - i);
+    for (; n > 1; n--) if (l.compounds.has(keys.slice(i, i + n).join(' '))) break;
+    out.push(ws.slice(i, i + n).join(' '));
+    i += n;
+  }
+  return out;
+}
+
 /** Can this word of a line be a telling word? Long enough for its language and not a function word. */
 function telling(word: string, lang: string): boolean {
   const b = baseLang(lang);
@@ -335,6 +369,14 @@ function spelledBySegments(target: string, segs: Segment[], prefix: boolean): st
 export function saidBy(word: string, verse: string, lang: string): string[] | null {
   const b = baseLang(lang);
   if (UNSPACED.has(b)) return spelledBySegments(letters(word), segmentsOf(verse, b), b === 'ja');
+  if (b === 'vi' && /\s/.test(word)) {
+    // A word of several syllables is said when they come in a row.
+    const want = syllableKeys(word, b);
+    const said = wordsOf(verse, b);
+    const keys = said.map((w) => wordKey(w, b));
+    for (let i = 0; i + want.length <= keys.length; i++) if (want.every((k, j) => keys[i + j] === k)) return said.slice(i, i + want.length).map(fold);
+    return null;
+  }
   const said = wordsIn(verse, b).filter((v) => !isStop(v, b));
   let hit: string | undefined;
   if (b === 'ko') {
@@ -380,7 +422,7 @@ export function localSignatureWords(card: Card, lang: string, modernOnly = false
   const out: string[] = [];
   const keys = new Set<string>();
   for (const text of modern === printed || modernOnly ? [modern] : [modern, printed]) {
-    for (const w of wordsIn(text, lang)) {
+    for (const w of lineWords(text, lang)) {
       // wordsOf lower-cases; show the word as the line writes it (a German noun keeps its capital).
       const shown = matchCase(w, text);
       const k = wordKey(shown, lang);

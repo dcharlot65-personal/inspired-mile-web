@@ -64,6 +64,11 @@ export interface CardTextPack {
   particleForms?: { afterVowel: string[]; afterConsonant: string[]; alsoAfterL: string[] };
   /** Words of a character's longer name, or aliases, that are ordinary words of the language (Hunspell): not a name by themselves. */
   common?: string[];
+  /**
+   * Vietnamese only: the words of two to four syllables (nouns, verbs, adjectives, from Wiktionary) that occur in the
+   * lines, which the signature reads as one word («vấn đề», "problem", not «vấn» and «đề»).
+   */
+  compounds?: string[];
 }
 
 export const CARD_TEXT_LANGS = ['es', 'fr', 'de', 'it', 'pt', 'pl', 'ru', 'ar', 'hi', 'zh', 'ja', 'ko', 'vi', 'th', 'id'] as const;

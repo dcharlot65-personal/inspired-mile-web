@@ -11,6 +11,8 @@ Inputs, all in the repository:
                                                scripts/language/fetch/closed_class.py), added to the stop words
   docs/language/sources/published-names.json   a character's name as a published translation this branch quotes prints it,
                                                where Wikidata's label is wrong or English (Hugo's «La Nourrice»)
+  docs/language/sources/wiktionary-vi-compounds.json   Vietnamese nouns, verbs and adjectives of two to four syllables
+                                               in the game's lines (Wiktionary via kaikki.org; fetch/vi_compounds.py)
   docs/language/checks/name-words.json         which words of a longer character name are ordinary words (Hunspell;
                                                run.sh names), so they do not count as a name by themselves
   scripts/language/published.json              who translated each published text, and its copyright status
@@ -466,6 +468,13 @@ def main():
         if lang == 'ko':
             pack['particles'] = ko_particles(closed)
             pack['particleForms'] = ko_particle_forms(closed)
+        if lang == 'vi':
+            # Words of more than one syllable, which the signature reads whole (src/lib/verse/echo.ts lineWords). One that is
+            # also a function word (Wiktionary files «người ta», "one, people", as a pronoun too) stays whole, so «người» is
+            # not taken by itself, and goes on the stop list.
+            pack['compounds'] = [c['word'] for c in json.loads(read('docs/language/sources/wiktionary-vi-compounds.json'))['compounds']]
+            function = set(w for p in closed['vi'].values() for w in p['words']) | set(stop.get('vi', []))
+            pack['stop'] = sorted(set(pack['stop']) | {c for c in pack['compounds'] if c in function})
         p = prov['langs'][lang] = {'cards': {}, 'houses': {}}
         for h, t in zip(HOUSES_T, tr['houses']):
             pack['houses'][h] = t
