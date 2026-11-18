@@ -202,7 +202,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     import { PACK_LANGS, hasPack, loadPack } from '../lib/verse/packs';
     import { DuelSession } from '../lib/verse/session';
     import { loadSound } from '../lib/verse/sound';
-    import { initI18n, languageName, list, locale, num, onLocaleChange, t, tm } from '../i18n';
+    import { initI18n, languageName, locale, num, onLocaleChange, t, tm } from '../i18n';
     import { criterionName, curseName, curseRule, curseRuleTheirs, deviceBrief, deviceName, signatureText } from '../i18n/duel';
     import type { Msg } from '../lib/verse/msg';
 
@@ -610,7 +610,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       // A model grades verses one at a time: the lines it will not read, and the word that leaves each out.
       const unread = session.judgeUnread();
       if (written && unread.length) {
-        const row = checkRow(true, t('live.judgeUnread', { lines: list(unread.map((u) => t('live.judgeUnreadLine', { line: u.line, word: u.word }))) }), '', 'crimson');
+        const row = checkRow(true, t('live.judgeUnread', { lines: unread.map((u) => t('live.judgeUnreadLine', { line: u.line, word: u.word })) }), '', 'crimson');
         row.id = 'live-judge-unread';
         list.appendChild(row);
       }

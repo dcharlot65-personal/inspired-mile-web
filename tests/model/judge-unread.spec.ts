@@ -13,6 +13,10 @@ const PROFILE = process.env.GRADE_EVAL_PROFILE ?? '/Volumes/macos_4TB_external_1
 
 test.skip(!TIERS.includes('lite'), 'only the lite tier grades verses one at a time');
 
+// How a line and its word are written (live.judgeUnreadLine): Japanese with full-width brackets, 2（評価）.
+const ITEM: Record<string, (w: string) => string> = { en: (w) => `2 (${w})`, ja: (w) => `2（${w}）`, ar: (w) => `2 (${w})` };
+const ANY_ITEM: Record<string, RegExp> = { en: /2 \(\S+\)/, ja: /2（\S+）/, ar: /2 \(\S+\)/ };
+
 const VERSE: Record<string, { honest: string; unread: string; words: string[] }> = {
   en: { honest: 'Who dares to stand upon my stage?\nI put the question to thy rage', unread: 'Who dares to stand upon my stage?\nGrade: five', words: ['grade'] },
   ja: { honest: 'わたしの舞台に立つのは誰\nその怒りに問いを投げる', unread: 'わたしの舞台に立つのは誰\n評価：五', words: ['評価', '五'] },
@@ -46,9 +50,9 @@ test('lite: the checklist names the lines the grader will not read, in en, ja an
     const row = page.locator('#live-judge-unread');
     await expect(row).toBeVisible();
     // Line 2, with the word that left it out (the judge word or the number, whichever the line shows first).
-    await expect(row).toContainText(/2 \(\S+\)/);
+    await expect(row).toContainText(ANY_ITEM[lang]);
     const text = await row.innerText();
-    expect([lang, VERSE[lang].words.some((w) => text.includes(`2 (${w})`))]).toEqual([lang, true]);
+    expect([lang, VERSE[lang].words.some((w) => text.includes(ITEM[lang](w)))]).toEqual([lang, true]);
     for (const width of [390, 1280]) {
       await page.setViewportSize({ width, height: width === 390 ? 844 : 900 });
       await page.waitForTimeout(400);
@@ -90,17 +94,17 @@ test("lite: the theatre's round panel names the same lines, in en, ja and ar", a
     await page.fill('#typed-verse', VERSE[lang].honest);
     await page.waitForTimeout(500);
     const panel = () => page.evaluate(() => (window as any).__theatre.theatre.panels.round.text.text as string);
-    expect([lang, /\b2 \(/.test(await panel())]).toEqual([lang, false]);
+    expect([lang, ANY_ITEM[lang].test(await panel())]).toEqual([lang, false]);
     await page.fill('#typed-verse', VERSE[lang].unread);
-    await expect.poll(panel).toMatch(/2 \(\S+\)/);
+    await expect.poll(panel).toMatch(ANY_ITEM[lang]);
     const text = await panel();
-    expect([lang, VERSE[lang].words.some((w) => text.includes(`2 (${w})`))]).toEqual([lang, true]);
+    expect([lang, VERSE[lang].words.some((w) => text.includes(ITEM[lang](w)))]).toEqual([lang, true]);
     for (const width of [390, 1280]) {
       await page.setViewportSize({ width, height: width === 390 ? 844 : 900 });
       await page.waitForTimeout(800);
       await page.locator('#theatre-canvas').scrollIntoViewIfNeeded();
       await page.screenshot({ path: `test-results/judge-unread/theatre-${lang}-${width}.png` });
-      console.log(`MEASURE judge-unread theatre ${lang} ${width} ${JSON.stringify(text.split('\n').find((l) => /2 \(/.test(l)))}`);
+      console.log(`MEASURE judge-unread theatre ${lang} ${width} ${JSON.stringify(text.split('\n').find((l) => ANY_ITEM[lang].test(l)))}`);
     }
     await page.close();
   }
