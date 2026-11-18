@@ -2,21 +2,35 @@
  * The signature and the invocation in languages other than English.
  *
  * A card's quotation and name exist per language (src/lib/cards-i18n). In a duel
- * fought in such a language the signature is earned by echoing a telling word of
+ * fought in such a language the signature is earned by echoing telling words of
  * the quotation as it is published in that language, and refused for reciting
  * it; the invocation is earned by a character's name as that language writes it.
  * The English line and the English names keep counting too, as they always did.
  *
+ * How many words: as devices.ts asks of the English line (signatureNeeded), a line with three or more telling
+ * words needs two of them, a line with one or two needs one. One verse word counts once, even when it says both
+ * a word of the line and the same word of the English line (German «Rose» and "rose").
+ *
  * What counts as the same word, by language:
  * - Spanish, French, German, Italian, Portuguese, Polish, Russian, Arabic, Hindi and Indonesian: two words
  *   are one when Snowball's stemmer for the language gives them one stem (./stem): Russian «Гамлета» says
- *   «Гамлет», Spanish «rosas» says «rosa», Arabic «والوردة» says «الوردة»; «prosperidad» is not «Próspero»'s
- *   name, because names are matched by stem only where names decline (Polish, Russian, German, Arabic).
+ *   «Гамлет», Spanish «rosas» says «rosa», Arabic «والوردة» says «الوردة».
  * - Vietnamese: the same syllable with the same tone (ngủ "sleep" is not ngu "foolish", nor the start of người).
  * - Korean: the same word, with or without the particles (josa) that follow a noun: 햄릿이 says 햄릿.
  * - Chinese, Japanese and Thai are written unspaced: words come from Intl.Segmenter, as everywhere in the
  *   engine. A word is said when whole words of the verse spell it (Japanese: when they begin with it, since a
- *   verb's ending is often cut off as a word of its own).
+ *   verb's ending is often cut off as a word of its own). A run of Japanese katakana is one word (groupKatakana).
+ * - An English word of the line, or an English name, is said only as English writes it: a word with an accent or
+ *   a tone mark is the duel language's own (Portuguese «põe», "puts", is not Poe; Vietnamese «sáng» is not "sang").
+ *
+ * Names are stricter than the words of a line, because a stem is shared by words that name nobody:
+ * - where names decline (Polish, Russian, German, Arabic), a declined name must also keep the name's letters
+ *   (the whole name in German and Arabic, Romeos, والروميو; all but its last vowel in Russian and Polish,
+ *   Джульетту, Julię), and in Russian and Polish be written with a capital. So German «wartest» ("you wait") is
+ *   not «Wärterin» though Snowball stems both to "wart", Arabic «روما» (Rome) is not «روميو», and Russian «марку»
+ *   (a postage stamp) is not «Марк»;
+ * - elsewhere a name is the same word, compared as above (no stems: «prosperidad» is not «Próspero»), and a verse
+ *   word that carries an accent the name does not is another word (typed without accents, the name still counts).
  *
  * What is not a telling word: the language's stop words (stopwords-iso), every word Wiktionary gives as a
  * pronoun, particle, conjunction, preposition, postposition, determiner or article (both lists are recorded in
@@ -28,21 +42,22 @@
  * only two or three. Unspaced scripts count letters instead, because the segmenter's "words" are often single
  * particles: a run as long as four English words of the game's lines are in that language (RECITE_LETTERS).
  *
- * How many words: as devices.ts asks of the English line (signatureNeeded), a line with three or more telling
- * words needs two of them, a line with one or two needs one. One verse word counts once, even when it says both
- * a word of the line and the same word of the English line (German «Rose» and "rose").
- *
  * English never comes through here: devices.ts keeps its own path for it.
  */
 import { CARD_CATALOG, type Card } from '../cards';
 import { getCardText, localEchoText, localQuote } from '../cards-i18n';
 import { baseLang, rulesFor } from './lang';
 import { stemmerFor } from './stem';
-import { fold, hiragana, letterCount, wordSpan, wordsOf } from './text';
+import { fold, hiragana, letterCount, wordParts, wordSpan, wordsOf } from './text';
 
 const UNSPACED = new Set(['zh', 'ja', 'th']);
 /** Languages whose names decline, so a name is matched by its stem there. */
 const NAMES_DECLINE = new Set(['ru', 'pl', 'de', 'ar']);
+/**
+ * Of those, the ones whose script tells a name by its capital: a declined form written small is a common noun of
+ * the same stem (Russian «марку», a stamp, beside «Марку», to Mark). German writes every noun with a capital.
+ */
+const CAPITAL_TELLS = new Set(['ru', 'pl']);
 
 /**
  * Letters of the line that make a recital in an unspaced script: four English words' worth, by the median
@@ -51,16 +66,19 @@ const NAMES_DECLINE = new Set(['ru', 'pl', 'de', 'ar']);
  */
 export const RECITE_LETTERS: Record<string, number> = { zh: 6, ja: 9, th: 19 };
 
+/** The same pattern text.ts reads spaced words with (wordsOf), keeping the letters' case. */
+const WORD_RE = /[\p{L}\p{M}]+(?:['’\-][\p{L}\p{M}]+)*/gu;
+
 // --- Comparing words ---
 
 /** Vietnamese tone marks: grave, acute, tilde, hook above, dot below. Circumflex, breve, horn and đ make other letters. */
-const VI_TONE = /[̣̀́̃̉]/gu;
+const VI_TONE = /[̣̀́̃̉]/gu;
 
 /**
  * Thai SARA AM written as its two parts (nikhahit + sara aa, which is how its compatibility decomposition spells it
  * and how stopwords-iso's Thai list writes ทํา and สําหรับ) is the one letter everyone types.
  */
-const thaiAm = (s: string) => s.replace(/\u0E4D\u0E32/g, '\u0E33');
+const thaiAm = (s: string) => s.replace(/ํา/g, 'ำ');
 
 /**
  * A word as it is compared. Vietnamese keeps its tone wherever the mark is placed (hoà and hòa are one
@@ -78,6 +96,19 @@ export function wordKey(word: string, lang: string): string {
 }
 
 /**
+ * A verse word as an English word or name is compared with it in another language's duel: case and the kind of
+ * apostrophe folded, accents and tones kept. English writes none of the game's names or telling words with them,
+ * so a word that has one is the duel language's own (Portuguese «põe», "puts", is not Poe). In English, fold().
+ */
+export function englishKey(word: string, lang: string): string {
+  if (baseLang(lang) === 'en') return fold(word);
+  return word.normalize('NFC').toLowerCase().replace(/[’‘ʼ]/g, "'");
+}
+
+/** Does a Latin-script word carry a combining mark (an accent, a tone, a cedilla) once decomposed? */
+const hasLatinMark = (w: string) => /\p{Script=Latin}/u.test(w) && /[̀-ͯ]/.test(w.normalize('NFD'));
+
+/**
  * French and Italian write an elided article or pronoun onto the next word with an apostrophe: l’amour, c’est,
  * dell’alba. The word is what follows it. The elided forms are Apache Lucene's (FrenchAnalyzer and ItalianAnalyzer,
  * DEFAULT_ARTICLES, Apache-2.0), which a search engine strips the same way.
@@ -93,9 +124,44 @@ export function unElide(word: string, lang: string): string {
   return m && set.has(m[1].toLowerCase()) ? m[2] : word;
 }
 
-/** The words of a text as echo.ts reads them: wordsOf, with French and Italian elisions taken off. */
+const KATAKANA_RUN = /^[\p{Script=Katakana}ー]+$/u;
+let jaSegmenter: Intl.Segmenter | null | undefined;
+
+/**
+ * Japanese words, with a run of katakana kept as one word. ICU's dictionary cuts a name or a loanword it does not
+ * know into pieces (ヨリック into ヨ and リック, ホレイショー into ホレイ and ショー), and a piece is then a word of
+ * its own ("ショー", a show). MeCab, the analyser the IPA dictionary was made for, groups a run of unknown katakana
+ * into one word (its char.def gives KATAKANA the GROUP flag); this does the same with the pieces ICU gives, when
+ * they touch in the text. Each word comes with the pieces it was made of, lower-cased as wordsOf gives them.
+ */
+function groupKatakana(text: string): { word: string; pieces: string[] }[] {
+  if (jaSegmenter === undefined) jaSegmenter = typeof Intl !== 'undefined' && 'Segmenter' in Intl ? new Intl.Segmenter('ja', { granularity: 'word' }) : null;
+  if (!jaSegmenter) return wordsOf(text, 'ja').map((w) => ({ word: w, pieces: [w] }));
+  const out: { word: string; pieces: string[]; end: number }[] = [];
+  for (const s of jaSegmenter.segment(text)) {
+    if (!s.isWordLike || !/\p{L}/u.test(s.segment)) continue;
+    const w = s.segment.toLowerCase();
+    const prev = out[out.length - 1];
+    if (prev && prev.end === s.index && KATAKANA_RUN.test(prev.word) && KATAKANA_RUN.test(w)) {
+      prev.word += w;
+      prev.pieces.push(w);
+      prev.end = s.index + s.segment.length;
+    } else out.push({ word: w, pieces: [w], end: s.index + s.segment.length });
+  }
+  return out.map(({ word, pieces }) => ({ word, pieces }));
+}
+
+/** The words of a text as echo.ts reads them: wordsOf, with French and Italian elisions taken off, and Japanese katakana runs whole. */
 function wordsIn(text: string, lang: string): string[] {
-  return wordsOf(text, lang).map((w) => unElide(w, lang));
+  const b = baseLang(lang);
+  if (b === 'ja') return groupKatakana(text).map((w) => w.word);
+  return wordsOf(text, b).map((w) => unElide(w, b));
+}
+
+/** The same words as wordsIn, as the text writes them (with their capitals), for a spaced script. */
+function wordsWritten(text: string, lang: string): string[] {
+  const b = baseLang(lang);
+  return (text.match(WORD_RE) ?? []).map((w) => unElide(w, b));
 }
 
 /** Letters only (marks kept), kana merged: how runs of an unspaced script are compared. */
@@ -114,6 +180,15 @@ function stems(word: string, lang: string): string[] {
 function sameStem(a: string, b: string, lang: string): boolean {
   const sa = stems(a, lang);
   return stems(b, lang).some((s) => sa.includes(s));
+}
+
+/**
+ * The separator of a list of words shown to the player: the language's own comma. Chinese and Japanese list with
+ * the ideographic comma (CLDR's list patterns: 、), Arabic with the Arabic comma (U+060C), the others with ", ".
+ */
+export function listSeparator(lang: string): string {
+  const b = baseLang(lang);
+  return b === 'zh' || b === 'ja' ? '、' : b === 'ar' ? '، ' : ', ';
 }
 
 // --- Per-language lists: stop words, stop characters, Korean particles ---
@@ -227,14 +302,16 @@ function telling(word: string, lang: string): boolean {
   return !isStop(word, b);
 }
 
-/** A verse's words in an unspaced script: the letters each is compared by, and the word (as wordsOf gives it), folded. */
+/** A verse's words in an unspaced script: the letters each is compared by, and the words (as wordsOf gives them) it was made of. */
 interface Segment {
   key: string;
   pieces: string[];
 }
 
 function segmentsOf(verse: string, lang: string): Segment[] {
-  return wordsOf(verse, lang).map((w) => ({ key: letters(w), pieces: [fold(w)] })).filter((s) => s.key);
+  const b = baseLang(lang);
+  const words = b === 'ja' ? groupKatakana(verse) : wordsOf(verse, b).map((w) => ({ word: w, pieces: [w] }));
+  return words.map((w) => ({ key: letters(w.word), pieces: w.pieces.map(fold) })).filter((s) => s.key);
 }
 
 /** Whole words of the verse, in a row, that spell `target` (or, with `prefix`, begin with it): the words, or null. */
@@ -350,8 +427,8 @@ export interface EnglishEcho {
  * it has none (English, a language not loaded, a card not translated, a line with no telling word of its own):
  * the caller then judges by the English line alone, as before.
  *
- * The English line's words still count (a word of the duel's language that is spelled like one, Italian "dove" for
- * "where", is a stop word there and does not).
+ * The English line's words still count, said as English writes them (englishKey), and not when the word is a
+ * little word of the duel's language (Italian "dove" is "where").
  */
 export function localSignature(card: Card, verse: string, lang: string, english: EnglishEcho): LocalSignature | null {
   const b = baseLang(lang);
@@ -361,6 +438,7 @@ export function localSignature(card: Card, verse: string, lang: string, english:
   const local = localSignatureWords(card, b);
   if (!local.length) return null;
   const needed = local.length >= 3 ? 2 : 1;
+  const sep = listSeparator(b);
   const hits: { word: string; by: string[] }[] = [];
   const taken = new Set<string>();
   const add = (word: string, by: string[]) => {
@@ -372,33 +450,44 @@ export function localSignature(card: Card, verse: string, lang: string, english:
     const by = saidBy(w, verse, b);
     if (by) add(w, by);
   }
-  // Compared as the duel's language compares words: a Vietnamese word keeps its tone, so it is not a toneless English word.
-  const saidEn = new Set(wordsOf(verse, 'en').filter((w) => !isStop(w, b)).map((w) => wordKey(w, b)));
-  for (const w of english.echoed) {
-    const parts = w.split(' ');
-    if (parts.every((p) => saidEn.has(p))) add(w, parts);
+  if (english.echoed.length) {
+    // As English writes them: with their accents, a Spanish or Vietnamese word is that language's own.
+    const written = new Set([...wordsOf(verse, b), ...wordParts(verse, 'en')].map((w) => englishKey(w, b).replace(/'s$/, '')));
+    for (const w of english.echoed) {
+      const parts = w.split(' ');
+      if (parts.every((p) => written.has(p) && !isStop(p, b))) add(w, parts);
+    }
   }
-  if (hits.length < needed) return { met: false, detail: local.slice(0, 5).join(', '), code: needed > 1 ? 'hint-two' : 'hint' };
+  if (hits.length < needed) return { met: false, detail: local.slice(0, 5).join(sep), code: needed > 1 ? 'hint-two' : 'hint' };
   // Reciting the line is refused as printed and in its modern spelling, and so is reciting the English line.
   const modern = localEchoText(card, b);
   if (recites(quote, verse, b) || (modern && modern !== quote && recites(modern, verse, b)) || english.quoted) {
     return { met: false, detail: '', code: 'quoted' };
   }
-  return { met: true, detail: hits.slice(0, needed).map((h) => h.word).join(', '), code: 'echoed', words: [...new Set(hits.flatMap((h) => h.by))] };
+  return { met: true, detail: hits.slice(0, needed).map((h) => h.word).join(sep), code: 'echoed', words: [...new Set(hits.flatMap((h) => h.by))] };
 }
 
 // --- Invocation: character names as each language writes them ---
 
 const SPLIT = /[\s・·‧]+/u;
 const nameCache = new Map<string, string[]>();
+/** The titles the English card names begin with (cards.ts: Prince Escalus, Friar Lawrence, King Claudius, Lady Macbeth, Lord Byron). */
+const EN_TITLES = new Set(['prince', 'friar', 'king', 'lady', 'lord']);
 
 /**
  * Names that count as an invocation in a language, beyond the English ones: every character's full name in that
- * language, each word of it, and its aliases. A word of a longer name, or an alias, does not count by itself when
- * it is an ordinary word of the language (a title: Russian «граф», Vietnamese «Phu nhân»; Russian «Кора», bark,
- * for Persephone), as Hunspell's dictionary tells (pack.common; the rule is in build_card_text.py,
- * common_name_words), nor when it is a stop word or shorter than three letters (two where a letter is a syllable
- * or a character).
+ * language, and some single words of it, and its aliases.
+ *
+ * Which single words: devices.ts counts an English name's last part alone and never its titles or given names
+ * ("Mary", "Mark"). So where the English card has a longer name (Mary Shelley, Mark Antony, Lady Macbeth), only
+ * the last word of the local name counts alone; in Korean, which puts the title after the name (맥베스 부인 for Lady
+ * Macbeth), the last word that is not an ordinary word when the English name begins with a title. Where the English card has one name (Romeo, Hamlet), each word of the local
+ * label counts (Roméo Montaigu: Roméo, Montaigu), as English counts "Montague" for Lord Montague.
+ *
+ * In every case a word does not count by itself when it is an ordinary word of the language (a title: Russian
+ * «граф», Vietnamese «Phu nhân»; Russian «Кора», bark, for Persephone), as Hunspell's dictionary tells (pack.common;
+ * the rule is in build_card_text.py, common_name_words), nor when it is a stop word or shorter than three letters
+ * (two where a letter is a syllable or a character).
  */
 export function localCharacterNames(lang: string): string[] {
   const b = baseLang(lang);
@@ -409,6 +498,7 @@ export function localCharacterNames(lang: string): string[] {
   const min = ['zh', 'ja', 'ko', 'th', 'hi'].includes(b) ? 2 : 3;
   const { common } = listsFor(b);
   const clean = (s: string) => s.replace(/^[^\p{L}]+|[^\p{L}\p{M}]+$/gu, '');
+  const alone = (w: string) => letterCount(w) >= min && !isStop(w, b) && (!!w.match(SPLIT) || !common.has(wordKey(w, b)));
   const out = new Set<string>();
   for (const c of CARD_CATALOG) {
     if (c.type !== 'Character') continue;
@@ -419,19 +509,34 @@ export function localCharacterNames(lang: string): string[] {
     // The product name ("The Sonnet Man") counts whole; its words are English and count as English counts them.
     if (text.nameSource === 'kept') continue;
     const parts = full.split(SPLIT).map(clean).filter(Boolean);
-    const single = [...(parts.length > 1 ? parts : []), ...(text.aliases ?? []).map(clean)];
-    for (const w of single) {
-      if (letterCount(w) < min || isStop(w, b)) continue;
-      if (!w.match(SPLIT) && common.has(wordKey(w, b))) continue;
-      out.add(w);
+    let single: string[] = [];
+    if (parts.length > 1) {
+      if (c.name.trim().split(/\s+/).length === 1) single = parts;
+      else {
+        const titled = EN_TITLES.has(c.name.trim().split(/\s+/)[0].toLowerCase());
+        const last = b === 'ko' && titled ? [...parts].reverse().find((w) => !common.has(wordKey(w, b))) : parts[parts.length - 1];
+        if (last) single = [last];
+      }
     }
+    for (const w of [...single, ...(text.aliases ?? []).map(clean)]) if (alone(w)) out.add(w);
   }
   const names = [...out];
   nameCache.set(b, names);
   return names;
 }
 
-/** Is one word of a name said by one word of the verse? */
+/**
+ * Russian and Polish names change their last vowel as they decline (Джульетта, Джульетту; Julia, Julię; Polish
+ * also drops the e of -ek and -ec: Marek, Marka); what a declined form keeps is the rest. German and Arabic keep
+ * the whole name (Romeos; والروميو).
+ */
+function declensionBase(key: string, lang: string): string {
+  if (lang === 'ru') return key.replace(/[аяоеьйиыуюэ]$/u, '');
+  if (lang === 'pl') return key.replace(/[aeiouy]$/u, '').replace(/e([kc])$/u, '$1');
+  return key;
+}
+
+/** Is one word of a name said by one word of the verse (as the verse writes it)? */
 function saysNameWord(name: string, verseWord: string, lang: string): boolean {
   const b = baseLang(lang);
   if (b === 'ko') {
@@ -439,8 +544,16 @@ function saysNameWord(name: string, verseWord: string, lang: string): boolean {
     const v = fold(verseWord);
     return v.startsWith(n) && particlesOnly(v.slice(n.length), n, listsFor(b));
   }
-  if (NAMES_DECLINE.has(b) && stemmerFor(b)) return sameStem(name, verseWord, b);
-  return wordKey(name, b) === wordKey(verseWord, b);
+  const n = wordKey(name, b);
+  const v = wordKey(verseWord, b);
+  if (NAMES_DECLINE.has(b) && stemmerFor(b) && n !== v) {
+    if (!sameStem(name, verseWord, b)) return false;
+    if (b === 'ar' ? !v.includes(n) : !v.startsWith(declensionBase(n, b))) return false;
+    return !CAPITAL_TELLS.has(b) || /^\p{Lu}/u.test(verseWord);
+  }
+  if (n !== v) return false;
+  // Typed without accents the name still counts; with an accent the name does not have, it is another word.
+  return !hasLatinMark(verseWord) || verseWord.normalize('NFC').toLowerCase() === name.normalize('NFC').toLowerCase() || b === 'vi';
 }
 
 /** The verse's words that say this name (one or more words, in a row), folded; or null. */
@@ -448,7 +561,7 @@ function saidName(name: string, verse: string, lang: string): string[] | null {
   const b = baseLang(lang);
   if (UNSPACED.has(b)) return spelledBySegments(letters(name), segmentsOf(verse, b), false);
   const n = wordsOf(name, b);
-  const v = wordsIn(verse, b);
+  const v = wordsWritten(verse, b);
   for (let i = 0; i + n.length <= v.length; i++) if (n.every((w, j) => saysNameWord(w, v[i + j], b))) return v.slice(i, i + n.length).map(fold);
   return null;
 }

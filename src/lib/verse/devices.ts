@@ -14,7 +14,7 @@
  * it should in each script. A `detail` is language-neutral evidence.
  */
 import type { Card, House } from '../cards';
-import { localSignature, saidLocalName, wordKey } from './echo';
+import { englishKey, localSignature, saidLocalName } from './echo';
 import { baseLang, rulesFor, unitKey } from './lang';
 import { msg, type Msg } from './msg';
 import { rhymeChecked, rhymes } from './rhyme';
@@ -166,9 +166,10 @@ export const DEVICES: Record<string, Device> = {
   ),
   invocation: d('invocation', (v, ctx) => {
     const lang = langOf(ctx);
-    // Words run together with single spaces, so a phrase ("sonnet man") is found only as a phrase. wordKey is
-    // fold() in every language but Vietnamese, where it keeps the tone: màn is not "Man" (./echo).
-    const said = ` ${wordsOf(v, lang).map((w) => wordKey(w, lang)).join(' ')} `;
+    // Words run together with single spaces, so a phrase ("sonnet man") is found only as a phrase. In another
+    // language's duel an English name is said as English writes it (./echo englishKey): Portuguese «põe», "puts",
+    // is not Poe, and Vietnamese «màn» is not "Man".
+    const said = ` ${wordsOf(v, lang).map((w) => englishKey(w, lang)).join(' ')} `;
     const hit = (ctx.names ?? []).find((n) => said.includes(` ${wordsOf(n, 'en').map(fold).join(' ')} `));
     if (hit) return { met: true, detail: hit, words: wordsOf(hit, 'en').map(fold) };
     // The character's name as the duel's language writes it counts as well (./echo).
