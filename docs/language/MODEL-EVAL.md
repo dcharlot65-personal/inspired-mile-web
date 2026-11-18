@@ -194,6 +194,19 @@ id. Before the integration it wrote the same less Hindi and Chinese. What the pl
 - `src/lib/model-eval.test.ts` fails when a list in `brain.ts` differs from
   `decisions.json`, when `decisions.json` no longer follows from the result files and the
   thresholds, or when a language without a result file is in a list.
+- **Merging lang/names-quotes** (`6cf502a`, tried on a scratch merge with this branch at `f4fb540`,
+  never committed, 2026-11-18, Studio). It gives the signature, invocation and allusion lexicon the duel's language,
+  so it changes what the game makes of the stored plays and readings, not what the models wrote or
+  answered. `referee.ts` conflicts: keep this branch's `modelJudge` and `rulesSplit` and give
+  `rulesSplit` that branch's `allusionLexicon(lang)`. Then the replay test finds 512 differences over
+  the plays and the derivation 96 grade-path pairs. `MEVAL_RESCORE=1` on
+  `model-eval.rescore.test.ts` re-scored all fifteen of Gemma's non-English writing cells (4 to 23
+  plays each; none had to be set aside), `MEVAL_RESCORE=1` on `model-eval.judge.test.ts` derived
+  LFM2.5's fifteen non-English judging cells again (1 to 11 verdicts each), and after `analyze.mjs`
+  (with `LID_DIR`) and `copy-lists.mjs` every list was the same as above and the model-eval tests
+  passed. The integration's `findings.test.ts` case "Short Breath, Tongue-Tied and No Echoes…" ran
+  past vitest's 5 s limit in the whole run on that merge (5.8 s and 7.5 s on two hosts) and passed
+  alone in 1.6 s.
 
 ## How it was measured
 
@@ -276,8 +289,9 @@ written as soon as it finished.
   breaks the gates in `session.ts` and `referee.ts`, the verdict line, the badge (twice), the
   theatre's judging line, the fallback order and the remembered choice (on both pages), 14
   mutations in all, every one caught, on the iMac Pro on 2026-11-18, first at
-  `b8d34618`, again at `8d18e56e` with the writing cells in, and again at `6b952ee8` (the last
-  merge of `integrate/wave3`, at `5b7af1e`). At that head the checker's own probe of the fallback
+  `b8d34618`, again at `8d18e56e` with the writing cells in, and again at `6b952ee8` (after merging
+  `integrate/wave3` at `5b7af1e`); with the two `rulesSplit` mutations below, 16 of 16 at `4b5edd84`
+  (after merging it again at `8b2f30e`). At that head the checker's own probe of the fallback
   (a stand-in model library that fails the models it names) was green where it had been red: LFM3
   chosen and failing, nothing else is loaded and `loadBrain` reports the failure; Gemma chosen and
   failing, LFM3 (used in Vietnamese) is loaded; with `loadOrder` put back as it was, the probe went
@@ -385,7 +399,7 @@ written as soon as it finished.
   challenger's-verse line of the integration's prompt, and this page, 37 ways, and requires the
   tests to go red each time. Run on the iMac Pro build host on 2026-11-18 at `8d18e56e`, on the
   cells after the integration: all 37 caught; `mutate-picker.mjs` 6 of 6; both again at `6b952ee8`
-  (iMac Pro, 2026-11-18): 37 of 37 and 6 of 6. Before the integration,
+  (iMac Pro, 2026-11-18): 37 of 37 and 6 of 6, and again at `4b5edd84`. Before the integration,
   on the iMac on 2026-11-17 at `2008f79`: all 35 caught. (Earlier: 29 of 29 at
   `e1c6f18`; before that 26 of 27, where one mutation, the backtick taken out of the tidy-up's
   markup rule, changed no stored draft, so the replay test was right to stay green; it was
