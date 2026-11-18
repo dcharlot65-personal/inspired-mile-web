@@ -153,14 +153,11 @@ describe('no telling word is a function word', () => {
 });
 
 describe('the rate of accidental landings', () => {
-  // English, as it has always been: 2.2% of neutral verses land the signature on a given character card, and 3.8%
-  // land the invocation (the check of 2026-11-16 measured the same). Before this fix: vi 12.5%, th 10.4%, ko 4.7%,
-  // ja 3.9% for the signature, and vi 31% for the invocation.
-  // Vietnamese is held to three times English, not two: after the fix its rate is 6.0% against English 2.2%, and most
-  // of the rest is three adverbs, chẳng ("not"), hãy (the imperative) and giờ ("now"), which neither stopwords-iso nor
-  // Wiktionary's function-word classes list (Wiktionary files Vietnamese adverbs with content words). English lands
-  // on the same kind of word ("again", "only", "once"). Recorded as open in docs/language/NAMES-AND-QUOTATIONS.md.
-  it('is no worse than twice English in any language (Vietnamese: three times)', { timeout: 120000 }, () => {
+  // Measured on the Studio, 2026-11-17, with the two-word rule: English lands the signature on a given character card
+  // for 0.18% of neutral verses, and the invocation for none; every other language 0.33% or less (Vietnamese 0.27%,
+  // 6.0% before its words of several syllables were read whole), and the invocation for none. Before the 2026-11-16
+  // fixes: vi 12.5%, th 10.4%, ko 4.7%, ja 3.9% for the signature, and vi 31% for the invocation.
+  it('is no worse than twice English, or 1%, in any language', { timeout: 120000 }, () => {
     const en = rates('en');
     const rows = PACK_LANGS.map((l) => rates(l));
     console.log('ACCIDENT-RATES ' + JSON.stringify(rows.map((r) => ({ lang: r.lang, verses: r.verses, sig: +r.sig.toFixed(4), inv: +r.inv.toFixed(3) }))));
@@ -168,8 +165,8 @@ describe('the rate of accidental landings', () => {
       words: Object.entries(r.words).sort((a, b) => b[1] - a[1]).slice(0, 15), names: r.names,
     }]))));
     for (const r of rows) {
-      expect([r.lang, 'signature', r.sig <= Math.max((r.lang === 'vi' ? 3 : 2) * en.sig, 0.03)]).toEqual([r.lang, 'signature', true]);
-      expect([r.lang, 'invocation', r.inv <= Math.max(2 * en.inv, 0.08)]).toEqual([r.lang, 'invocation', true]);
+      expect([r.lang, 'signature', r.sig <= Math.max(2 * en.sig, 0.01)]).toEqual([r.lang, 'signature', true]);
+      expect([r.lang, 'invocation', r.inv <= Math.max(2 * en.inv, 0.02)]).toEqual([r.lang, 'invocation', true]);
     }
   });
 });
