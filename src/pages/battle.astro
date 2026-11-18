@@ -310,14 +310,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       }
       langSelect.value = offered.includes(want) ? want : offered.includes('en') ? 'en' : offered[0];
     }
-    // A duel language's verse data and sound data (the Japanese analyser's dictionary is 4.7 MB,
-    // the English table 0.5 MB) start loading as soon as the visitor shows they are about to duel in
-    // it, not when the duel starts, so the opponent's first verse need not wait for them: when they
-    // pick the language, touch the duel's settings or point at the start button; and, once the page is
-    // idle, when they chose this duel language on an earlier visit or followed a link that names it
-    // (?lang=), unless the browser asks to save data. A first visit fetches none of it until then
-    // (tests/battle-bytes.spec.ts). start() loads the same data again, so a failure here is only
-    // logged: the duel reports its own.
+    // A duel language's verse data and sound data (the Japanese analyser's dictionary and its
+    // loanword lists are 5.1 MB, the English table 0.5 MB) start loading as soon as the visitor shows
+    // they are about to duel in it, not when the duel starts, so the opponent's first verse need not
+    // wait for them: when they pick the language, touch the duel's settings or point at the start
+    // button; and, once the page is idle, when they chose this duel language on an earlier visit or
+    // followed a link that names it (?lang=), unless the browser asks to save data. A first visit
+    // fetches none of it until then (tests/battle-bytes.spec.ts). start() loads the same data again,
+    // so a failure here is only logged: the duel reports its own.
     const warmed = new Set<string>();
     function warm(lang: string) {
       if (session || !lang || warmed.has(lang)) return;
