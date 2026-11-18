@@ -1,5 +1,9 @@
 import { test, expect, type Page } from '@playwright/test';
 import { TRIVIA_BANK } from '../src/lib/trivia';
+import arTrivia from '../src/i18n/pages/trivia/ar';
+import arStory from '../src/i18n/pages/story/ar';
+import arPlayground from '../src/i18n/pages/playground/ar';
+import arChallenges from '../src/i18n/pages/challenges/ar';
 
 /**
  * The playground and the story page in all sixteen languages.
@@ -156,13 +160,20 @@ for (const locale of ['en', 'ar']) {
     await page.setViewportSize({ width: 390, height: 844 });
     await open(page, '/playground', locale);
     const tip = page.locator('#onboarding-tooltip');
+    const targets = ['#starter-pack-btn', '#trivia-start-btn', 'a[href="/battle"].btn-danger'];
     for (let step = 1; step <= 3; step++) {
       await expect(page.locator('#onboarding-step')).toHaveText(`${step} / 3`);
       await expect.poll(async () => {
         const b = await tip.boundingBox();
         return !!b && b.y >= 0 && b.y + b.height <= 844 && b.x >= 0 && b.x + b.width <= 390;
       }, { message: `step ${step}: the tooltip is inside the 390 x 844 viewport` }).toBe(true);
-      await page.locator('#onboarding-next').click();
+      // Beside its target: not over it (a tooltip over its target hid it, and the target, raised above the overlay,
+      // took the click meant for "Next"), and no further from it than the arrow's reach.
+      const [b, t] = [await tip.boundingBox(), await page.locator(targets[step - 1]).first().boundingBox()];
+      const gap = Math.max(t!.y - (b!.y + b!.height), b!.y - (t!.y + t!.height));
+      expect(gap, `step ${step}: the tooltip does not cover its target`).toBeGreaterThanOrEqual(0);
+      expect(gap, `step ${step}: the tooltip stands next to its target`).toBeLessThan(40);
+      await page.locator('#onboarding-next').click({ timeout: 10_000 });
     }
     await expect(page.locator('#onboarding-overlay')).toBeHidden();
   });
@@ -188,4 +199,133 @@ test('a change of language relabels the open playground', async ({ page }) => {
   // Arabic turns the page right to left.
   await page.selectOption('#locale-switch', 'ar');
   await expect(page.locator('html')).toHaveAttribute('dir', 'rtl');
+});
+
+/**
+ * Every Arabic string that holds English, drawn by the browser and measured: what the reader sees, whatever
+ * marks the text carries. This does not use scripts/lang-content/bidi.mjs, which writes the isolates: the
+ * checker of 2026-11-16 found that the unit test held the strings to that same function, so it passed the
+ * fault it shared ("King's Men))", a full stop between the Arabic and a name).
+ *  - a pair of brackets or quotation marks encloses the letters between them;
+ *  - a full stop, question or exclamation mark that ends the string, outside any pair, is drawn at the end of
+ *    the right-to-left line, the far left;
+ *  - English reads left to right, and the punctuation that ends a quoted English line ("…, sir?") is drawn
+ *    after its last letter, to its right.
+ */
+test('Arabic: every string with English in it is drawn in reading order (brackets, quotations, full stops)', async ({ page }) => {
+  const all = { ...arPlayground, ...arStory, ...arTrivia, ...arChallenges } as Record<string, string>;
+  const rows = Object.entries(all).filter(([, v]) => /[A-Za-z]/.test(v));
+  expect(rows.length).toBeGreaterThan(300);
+  await page.setContent('<!doctype html><html dir="rtl" lang="ar"><meta charset="utf-8"><body style="margin:16px;font:18px sans-serif"></body></html>');
+  const problems = await page.evaluate((rows) => {
+    const out: string[] = [];
+    const OPEN: Record<string, string> = { '(': ')', '[': ']', '«': '»', '“': '”' };
+    const CLOSE = new Set(Object.values(OPEN));
+    const latin = (c: string) => /[A-Za-z\u00C0-\u024F]/u.test(c);
+    for (const [k, v] of rows) {
+      const p = document.createElement('p');
+      p.style.whiteSpace = 'nowrap';
+      p.textContent = v;
+      document.body.append(p);
+      const t = p.firstChild as Text;
+      const x = (i: number) => { const r = document.createRange(); r.setStart(t, i); r.setEnd(t, i + 1); const b = r.getBoundingClientRect(); return (b.left + b.right) / 2; };
+      const pairs: [number, number][] = [];
+      const stack: number[] = [];
+      let straight = -1;
+      for (let i = 0; i < v.length; i++) {
+        if (v[i] in OPEN) stack.push(i);
+        else if (CLOSE.has(v[i])) { const j = stack.pop(); if (j !== undefined && OPEN[v[j]] === v[i]) pairs.push([j, i]); else out.push(`${k}: "${v[i]}" at ${i} closes nothing`); }
+        else if (v[i] === '"') { if (straight < 0) straight = i; else { pairs.push([straight, i]); straight = -1; } }
+      }
+      for (const [i, j] of pairs) {
+        const lo = Math.min(x(i), x(j)), hi = Math.max(x(i), x(j));
+        const outside = [...v.slice(i + 1, j)].findIndex((c, d) => /\p{L}/u.test(c) && (x(i + 1 + d) < lo || x(i + 1 + d) > hi));
+        if (outside >= 0) out.push(`${k}: "${v[i + 1 + outside]}" is drawn outside its pair ${v[i]}…${v[j]}`);
+        // A quoted English line: the punctuation after its last letter is drawn to that letter's right.
+        const inner = v.slice(i + 1, j);
+        const first = [...inner].findIndex((c) => /\p{L}/u.test(c));
+        if (first >= 0 && latin(inner[first])) {
+          let last = -1;
+          for (let d = inner.length - 1; d >= 0; d--) if (/[\p{L}\p{N}]/u.test(inner[d])) { last = d; break; }
+          for (let d = last + 1; d < inner.length; d++) if (/[.,;:!?…]/u.test(inner[d]) && x(i + 1 + d) < x(i + 1 + last)) out.push(`${k}: the "${inner[d]}" closing the English line is drawn before its last letter`);
+        }
+      }
+      // English reads left to right: within a run of Latin letters and what joins them, each letter right of the one before.
+      for (const run of v.matchAll(/[A-Za-z\u00C0-\u024F][A-Za-z\u00C0-\u024F'’ ,.\-]*[A-Za-z\u00C0-\u024F]/gu)) {
+        const at = run.index!;
+        const letters = [...run[0]].map((c, d) => [c, at + d] as const).filter(([c]) => latin(c));
+        for (let d = 1; d < letters.length; d++) if (x(letters[d][1]) < x(letters[d - 1][1])) { out.push(`${k}: "${run[0]}" is not drawn left to right`); break; }
+      }
+      // The sentence's own last mark.
+      let end = v.length - 1;
+      while (end >= 0 && /[\s\u2066-\u2069]/u.test(v[end])) end--;
+      if (end >= 0 && /[.!?؟]/u.test(v[end]) && !pairs.some(([i, j]) => i < end && end < j)) {
+        const letters = [...v].map((c, i) => [c, i] as const).filter(([c]) => /\p{L}/u.test(c)).map(([, i]) => x(i));
+        if (letters.length && x(end) > Math.min(...letters)) out.push(`${k}: the closing "${v[end]}" is not at the end of the line (its left end)`);
+      }
+      p.remove();
+    }
+    return out;
+  }, rows);
+  expect(problems, 'Arabic strings drawn out of reading order').toEqual([]);
+});
+
+/**
+ * dir="auto" takes its direction from the first letter, so an Arabic option that opens with a name in Latin
+ * letters ("Portia في تاجر البندقية", trivia 125 and 151) was laid out left to right (measured in Chromium by the
+ * checker of 2026-11-16). The question and its options take the direction of the language they are in.
+ */
+test('Arabic: a trivia question or option that opens with English is still laid out right to left', async ({ page }) => {
+  await open(page, '/playground', 'ar');
+  await skipOnboarding(page);
+  await page.click('#trivia-start-btn');
+  await expect(page.locator('.trivia-option')).toHaveCount(4);
+  const opensWithEnglish = (arTrivia as Record<string, string>)['trivia.151.o0'];
+  expect(opensWithEnglish.replace(/[\u2066-\u2069]/gu, '')).toMatch(/^[A-Za-z]/);
+  const rtl = await page.evaluate((s) => [...document.querySelectorAll('#trivia-question, .trivia-option')].map((el) => {
+    el.textContent = s;
+    return el.matches(':dir(rtl)');
+  }), opensWithEnglish);
+  expect(rtl, 'the question and every option are laid out right to left').toEqual([true, true, true, true, true]);
+});
+
+/** On a right-to-left page, every "count / total" on screen is drawn count first, on the left, as numbers are read. */
+async function reversedCounts(page: Page): Promise<string[]> {
+  return page.evaluate(() => {
+    const out: string[] = [];
+    const rx = /(\d+)\s*\/\s*(\d+)/u;
+    for (const el of document.querySelectorAll<HTMLElement>('body *')) {
+      if (el.matches('script, style') || !el.getClientRects().length) continue;
+      const m = (el.textContent ?? '').match(rx);
+      // The innermost element that holds the whole of it.
+      if (!m || [...el.children].some((c) => rx.test(c.textContent ?? ''))) continue;
+      const nodes: Text[] = [];
+      const walk = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+      while (walk.nextNode()) nodes.push(walk.currentNode as Text);
+      const at = (offset: number) => {
+        for (const n of nodes) { if (offset < n.data.length) { const r = document.createRange(); r.setStart(n, offset); r.setEnd(n, offset + 1); return r.getBoundingClientRect().left; } offset -= n.data.length; }
+        return NaN;
+      };
+      const count = m.index!, total = m.index! + m[0].lastIndexOf(m[2]);
+      if (!(at(count) < at(total))) out.push(`"${m[0]}" in <${el.tagName.toLowerCase()}${el.id ? ' id=' + el.id : ''}> is drawn total first`);
+    }
+    return out;
+  });
+}
+
+test('Arabic: a count out of a total on the playground reads count first (cards, spending, the trivia score)', async ({ page }) => {
+  await open(page, '/playground', 'ar');
+  await skipOnboarding(page);
+  // The spending line is shown to teen accounts only: shown here to be measured.
+  await page.evaluate(() => document.getElementById('spending-limit-banner')!.classList.remove('hidden'));
+  await expect(page.locator('#stat-cards')).toBeVisible();
+  expect(await reversedCounts(page), 'counts out of a total drawn total first').toEqual([]);
+  // A whole trivia round: at its end the header shows the score out of five.
+  await page.click('#trivia-start-btn');
+  for (let n = 1; n <= 5; n++) {
+    await expect(page.locator('#trivia-progress')).toContainText(`${n}/5`);
+    await page.locator('.trivia-option').first().click();
+  }
+  await expect(page.locator('#trivia-score-display')).toContainText('/ 5');
+  expect(await reversedCounts(page), 'counts out of a total drawn total first').toEqual([]);
 });

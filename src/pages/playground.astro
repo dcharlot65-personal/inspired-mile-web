@@ -23,8 +23,8 @@ import { CARD_CATALOG, RARITY_COLORS, type Card, type Rarity } from '../lib/card
         <div class="flex items-center gap-6 text-sm">
           <div>
             <span class="text-xs text-obsidian-500 block" data-i18n="pg.stat.cards">Cards Owned</span>
-            <span id="stat-cards" class="text-lg font-display font-bold text-gold-400">0</span>
-            <span class="text-xs text-obsidian-500"> / {CARD_CATALOG.length}</span>
+            <!-- A count out of a total reads left to right in every language: right to left, "0 / 71" was drawn 71 / 0. -->
+            <span dir="ltr"><span id="stat-cards" class="text-lg font-display font-bold text-gold-400">0</span><span class="text-xs text-obsidian-500"> / {CARD_CATALOG.length}</span></span>
           </div>
           <div class="w-px h-8 bg-obsidian-700"></div>
           <div>
@@ -44,7 +44,7 @@ import { CARD_CATALOG, RARITY_COLORS, type Card, type Rarity } from '../lib/card
       <div id="spending-limit-banner" class="hidden card-glass p-3 mb-6 border-gold-500/20 bg-gold-500/5 flex items-center justify-between gap-3">
         <div class="flex items-center gap-2 text-xs">
           <svg class="w-4 h-4 text-gold-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-          <span class="text-obsidian-300"><span data-i18n="pg.spending">Daily spending:</span> <strong id="spent-today" class="text-gold-400">0</strong> / <strong id="spend-limit" class="text-gold-400">200</strong> <span data-i18n="pg.credits">credits</span></span>
+          <span class="text-obsidian-300"><span data-i18n="pg.spending">Daily spending:</span> <span dir="ltr"><strong id="spent-today" class="text-gold-400">0</strong> / <strong id="spend-limit" class="text-gold-400">200</strong></span> <span data-i18n="pg.credits">credits</span></span>
         </div>
         <div class="h-1.5 flex-1 max-w-[120px] rounded-full bg-obsidian-800 overflow-hidden">
           <div id="spending-bar" class="h-full rounded-full bg-gold-400 transition-all duration-300" style="width: 0%"></div>
@@ -278,7 +278,7 @@ import { CARD_CATALOG, RARITY_COLORS, type Card, type Rarity } from '../lib/card
     } from '../lib/inventory';
     import { type TriviaQuestion } from '../lib/trivia';
     import { answersMatch, localRandomChallenge, localRandomQuestions, type LocalChallenge } from '../lib/play-content';
-    import { has, initI18n, loadArea, locale, onLocaleChange, applyTranslations, t } from '../i18n';
+    import { has, initI18n, isRtl, loadArea, locale, onLocaleChange, applyTranslations, t } from '../i18n';
     import { initAudio, isInitialized, playMusic, playSfx, playRarityFanfare, preloadSfx, type Rarity as AudioRarity } from '../lib/audio-manager';
     import { isContentGenAvailable, generateTriviaSet, generateChallenge } from '../lib/content-gen';
     import { incrementStat, syncCardStats, getPlayerStats } from '../lib/achievements';
@@ -461,7 +461,8 @@ import { CARD_CATALOG, RARITY_COLORS, type Card, type Rarity } from '../lib/card
       const total = triviaQuestions.length;
       if (total && triviaIndex >= total) {
         triviaProgress.textContent = t('pg.trivia.complete');
-        triviaScoreDisplay.textContent = `${triviaScore} / ${total}`;
+        // U+2066 LEFT-TO-RIGHT ISOLATE ... U+2069: the score out of the total reads left to right in a right-to-left page too.
+        triviaScoreDisplay.textContent = `\u2066${triviaScore} / ${total}\u2069`;
       } else {
         triviaProgress.textContent = t('pg.trivia.progress', { n: Math.min(triviaIndex + 1, total || 5), total: total || 5 });
         triviaScoreDisplay.textContent = t('pg.trivia.correct', { n: triviaScore });
@@ -525,12 +526,16 @@ import { CARD_CATALOG, RARITY_COLORS, type Card, type Rarity } from '../lib/card
         ? `<span class="inline-block px-2 py-0.5 text-xs rounded-full bg-purple-500/20 text-purple-400 border border-purple-500/20 ms-2" data-i18n="pg.trivia.aiBadge">${esc(t('pg.trivia.aiBadge'))}</span>`
         : '';
 
-      // dir="auto": a question keeps its own direction when the interface has since changed language.
+      // The direction of the question's own language, not dir="auto": a question keeps its direction when the
+      // interface has since changed language, and an Arabic option that opens with a name in Latin letters
+      // ("Portia في تاجر البندقية") is still right to left (dir="auto" took the first letter's: left to right).
+      const qLang = triviaFromModel.has(q) ? 'en' : triviaLocale;
+      const qDir = isRtl(qLang) ? 'rtl' : 'ltr';
       triviaContent.innerHTML = `
-        <p id="trivia-question" lang="${triviaFromModel.has(q) ? 'en' : triviaLocale}" dir="auto" class="text-sm text-obsidian-200 mb-4 leading-relaxed">${esc(q.question)}${aiBadge}</p>
-        <div class="space-y-2" lang="${triviaFromModel.has(q) ? 'en' : triviaLocale}">
+        <p id="trivia-question" lang="${qLang}" dir="${qDir}" class="text-sm text-obsidian-200 mb-4 leading-relaxed">${esc(q.question)}${aiBadge}</p>
+        <div class="space-y-2" lang="${qLang}" dir="${qDir}">
           ${q.options.map((opt, i) => `
-            <button dir="auto" class="trivia-option w-full text-start card-glass p-3 text-sm text-obsidian-200 hover:border-gold-500/30 transition-all" data-index="${i}">${esc(opt)}</button>
+            <button dir="${qDir}" class="trivia-option w-full text-start card-glass p-3 text-sm text-obsidian-200 hover:border-gold-500/30 transition-all" data-index="${i}">${esc(opt)}</button>
           `).join('')}
         </div>
       `;
@@ -659,13 +664,18 @@ import { CARD_CATALOG, RARITY_COLORS, type Card, type Rarity } from '../lib/card
       // A line in a language other than the interface's is Shakespeare's own English: say so.
       const original = challenge.lang === 'en' && locale() !== 'en';
       const source = `${esc(challenge.play)} — ${esc(challenge.character)}`;
+      // The heading's language can differ from the line's: an English original is headed in the interface language
+      // where the names table has the play and the speaker (src/lib/play-content.ts).
+      const sourceLang = challenge.headingLang ?? challenge.lang;
+      const sourceAttrs = `lang="${sourceLang}" dir="${isRtl(sourceLang) ? 'rtl' : 'ltr'}"`;
+      const lineAttrs = `lang="${challenge.lang}" dir="${isRtl(challenge.lang) ? 'rtl' : 'ltr'}"`;
       const credit = challenge.translator
         ? `<p class="text-xs text-obsidian-500 mt-1" data-challenge-credit>${esc(t('pg.challenge.translator', { translator: challenge.translator }))}</p>`
         : '';
 
       challengeContent.innerHTML = `
         <div class="mb-4">
-          <p class="text-xs text-obsidian-500 mb-1" lang="${challenge.lang}" dir="auto">${source}</p>
+          <p class="text-xs text-obsidian-500 mb-1" data-challenge-source ${sourceAttrs}>${source}</p>
           <span class="inline-block px-2 py-0.5 text-xs rounded-full ${
             challenge.difficulty === 'easy' ? 'bg-emerald-500/20 text-emerald-400' :
             challenge.difficulty === 'medium' ? 'bg-gold-500/20 text-gold-400' :
@@ -673,7 +683,7 @@ import { CARD_CATALOG, RARITY_COLORS, type Card, type Rarity } from '../lib/card
           }" data-i18n="pg.difficulty.${challenge.difficulty}">${esc(t(`pg.difficulty.${challenge.difficulty}`))}</span>
           ${original ? `<span class="inline-block px-2 py-0.5 text-xs rounded-full bg-obsidian-700/50 text-obsidian-300 ms-1" data-i18n="pg.challenge.original">${esc(t('pg.challenge.original'))}</span>` : ''}
         </div>
-        <p id="challenge-quote" lang="${challenge.lang}" dir="auto" class="text-lg text-obsidian-200 font-display leading-relaxed mb-2 italic">
+        <p id="challenge-quote" ${lineAttrs} class="text-lg text-obsidian-200 font-display leading-relaxed mb-2 italic">
           "${esc(challenge.displayQuote)}"
         </p>
         ${credit}
@@ -681,7 +691,7 @@ import { CARD_CATALOG, RARITY_COLORS, type Card, type Rarity } from '../lib/card
           ${challenge.missingWords.map((_, i) => `
             <div class="flex items-center gap-2">
               <span class="text-xs text-obsidian-500 w-16" data-blank="${i + 1}">${esc(t('pg.challenge.blank', { n: i + 1 }))}</span>
-              <input type="text" lang="${challenge.lang}" dir="auto" autocapitalize="off" autocomplete="off" spellcheck="false" class="challenge-input flex-1 bg-obsidian-800 border border-obsidian-700 rounded-lg px-3 py-2 text-sm text-obsidian-100 placeholder-obsidian-500 focus:outline-hidden focus:border-purple-500/50 transition-colors" placeholder="${esc(t('pg.challenge.placeholder'))}" data-i18n-placeholder="pg.challenge.placeholder" data-index="${i}" />
+              <input type="text" ${lineAttrs} autocapitalize="off" autocomplete="off" spellcheck="false" class="challenge-input flex-1 bg-obsidian-800 border border-obsidian-700 rounded-lg px-3 py-2 text-sm text-obsidian-100 placeholder-obsidian-500 focus:outline-hidden focus:border-purple-500/50 transition-colors" placeholder="${esc(t('pg.challenge.placeholder'))}" data-i18n-placeholder="pg.challenge.placeholder" data-index="${i}" />
             </div>
           `).join('')}
         </div>
@@ -709,7 +719,7 @@ import { CARD_CATALOG, RARITY_COLORS, type Card, type Rarity } from '../lib/card
             <div class="text-center">
               <div class="text-4xl mb-3">&#127881;</div>
               <p class="text-sm text-obsidian-400 mb-2" data-i18n="pg.challenge.full">${esc(t('pg.challenge.full'))}</p>
-              <p class="text-sm text-obsidian-200 italic mb-4" lang="${challenge.lang}" dir="auto">"${esc(challenge.fullQuote)}"</p>
+              <p class="text-sm text-obsidian-200 italic mb-4" ${lineAttrs}>"${esc(challenge.fullQuote)}"</p>
               <p class="text-lg font-display font-bold text-emerald-400 mb-4" data-i18n="pg.challenge.correct">${esc(t('pg.challenge.correct'))}</p>
               <div class="card-glass p-4 bg-linear-to-br ${card.gradient} ${card.border} inline-block">
                 ${card.image ? `<img src="${card.image}" alt="${card.name}" class="w-20 h-20 object-cover rounded-lg mx-auto mb-2">` : `<div class="text-3xl mb-2">${card.icon}</div>`}
@@ -726,8 +736,8 @@ import { CARD_CATALOG, RARITY_COLORS, type Card, type Rarity } from '../lib/card
               <div class="text-4xl mb-3">&#128172;</div>
               <p class="text-lg font-display font-bold text-crimson-400 mb-2" data-i18n="pg.challenge.wrong">${esc(t('pg.challenge.wrong'))}</p>
               <p class="text-sm text-obsidian-400 mb-2" data-i18n="pg.challenge.answer">${esc(t('pg.challenge.answer'))}</p>
-              <p class="text-sm text-obsidian-200 italic mb-4" lang="${challenge.lang}" dir="auto">"${esc(challenge.fullQuote)}"</p>
-              <p class="text-xs text-obsidian-500 mb-4" lang="${challenge.lang}" dir="auto">${source}</p>
+              <p class="text-sm text-obsidian-200 italic mb-4" ${lineAttrs}>"${esc(challenge.fullQuote)}"</p>
+              <p class="text-xs text-obsidian-500 mb-4" ${sourceAttrs}>${source}</p>
               <button class="btn-secondary w-full" onclick="document.getElementById('challenge-modal').classList.add('hidden')" data-i18n="pg.challenge.later">${esc(t('pg.challenge.later'))}</button>
             </div>
           `;

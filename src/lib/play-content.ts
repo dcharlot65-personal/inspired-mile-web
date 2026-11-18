@@ -24,6 +24,8 @@ export interface LocalChallenge extends QuoteChallenge {
   lang: Locale;
   /** Who translated the line, when it is a translation. */
   translator?: string;
+  /** The language the heading (play and speaker) is in: an English original's can be the interface language's. */
+  headingLang?: Locale;
 }
 
 function shuffle<T>(arr: readonly T[]): T[] {
@@ -104,11 +106,23 @@ export async function ownChallenges(l: Locale): Promise<LocalChallenge[]> {
   return challengesFrom(await own('challenges', l), l);
 }
 
+/** The English originals, each headed with its play and speaker in the language where its file names both. */
+export function originalsIn(m: Messages, l: Locale): LocalChallenge[] {
+  return CHALLENGE_BANK.map((c, id) => {
+    const play = m[`original.${id}.play`], character = m[`original.${id}.character`];
+    return play && character
+      ? { ...c, id, lang: 'en' as Locale, play, character, headingLang: l }
+      : { ...c, id, lang: 'en' as Locale, headingLang: 'en' as Locale };
+  });
+}
+
 /** The challenges to play in a language: its own if it has enough, else the English originals. */
 export async function localChallenges(l: Locale = locale()): Promise<LocalChallenge[]> {
   if (l !== 'en') {
-    const mine = await ownChallenges(l);
+    const m = await own('challenges', l);
+    const mine = challengesFrom(m, l);
     if (mine.length >= MIN_LOCAL_CHALLENGES) return mine;
+    return originalsIn(m, l);
   }
   return CHALLENGE_BANK.map((c, id) => ({ ...c, id, lang: 'en' as Locale }));
 }

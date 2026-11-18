@@ -6,6 +6,8 @@ import { fileURLToPath } from 'node:url';
 export const HERE = dirname(fileURLToPath(import.meta.url));
 export const ROOT = join(HERE, '..', '..');
 export const LANGS = ['es', 'fr', 'de', 'it', 'pt', 'pl', 'ru', 'ar', 'hi', 'zh', 'ja', 'ko', 'vi', 'th', 'id'];
+/** A language with fewer quote challenges of its own plays Shakespeare's English lines (src/lib/play-content.ts holds the same number; a test compares them). */
+export const MIN_LOCAL_CHALLENGES = 8;
 /** Languages written in the Latin alphabet: an English name can stand in one of these, never in the others. */
 export const LATIN = new Set(['es', 'fr', 'de', 'it', 'pt', 'pl', 'vi', 'id']);
 
@@ -58,6 +60,13 @@ export const ucfirst = (s) => s.charAt(0).toLocaleUpperCase() + s.slice(1);
  */
 const nameEvidence = readTsv(join(HERE, 'names-evidence.tsv'));
 
+/**
+ * namesakes.json (fetch-namesakes.py): the Wikidata item of the name a person bears (a given name), where the
+ * person's own item has nothing in a language. Its labels and aliases say how the language writes the name;
+ * they are a source for a pick of that name, never a label by themselves.
+ */
+const namesakes = existsSync(join(HERE, 'namesakes.json')) ? JSON.parse(readFileSync(join(HERE, 'namesakes.json'), 'utf8')).entities : {};
+
 /** Everything a source says this entity is called in a language. */
 export function sourcesOf(key, lang) {
   const e = entities[key];
@@ -70,6 +79,11 @@ export function sourcesOf(key, lang) {
   }
   add(e.sitelinks?.[lang], `${lang}.wikipedia title`);
   if (LATIN.has(lang)) add(e.labels.mul, 'label (mul)');
+  const n = namesakes[key];
+  if (n && !out.length) {
+    add(n.labels[lang], `label (${lang}) of ${n.id}, the ${n.description} (revision ${n.lastrevid})`);
+    for (const a of n.aliases[lang] ?? []) add(a, `alias (${lang}) of ${n.id}, the ${n.description} (revision ${n.lastrevid})`);
+  }
   return out;
 }
 
