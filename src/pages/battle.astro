@@ -192,7 +192,7 @@ import { t } from '../i18n';
     import { initAudio, isInitialized, playMusic, playRarityFanfare, playSfx, preloadSfx, duckMusic, unduckMusic, type Rarity as AudioRarity } from '../lib/audio-manager';
     import { getActiveDeck } from '../lib/deck-manager';
     import { holdWakeLock, mountStorageNote, releaseWakeLock } from '../lib/pwa';
-    import { CITY_CATALOG, decodeVariantId, getCityByCode, getOwnedVariants, type CityAbility } from '../lib/variants';
+    import { CITY_CATALOG, decodeVariantId, getCityByCode, getOwnedVariants, type CityAbility, type WorldCity } from '../lib/variants';
     import { isSpeaking, isVoiceLoaded, loadVoice, speak, stopSpeaking } from '../lib/thespian-voice';
     import { POTION_CURSE, POWER_WORD_BONUS, deviceForHouse, deviceInPlay, houseWhy } from '../lib/verse/devices';
     import { JUDGE_POOL, ROUNDS, normalizeSeed, starterDeck, type DuelDeck, type RoundResult, type VerseScore, type WorldCard } from '../lib/verse/duel';
@@ -203,8 +203,9 @@ import { t } from '../i18n';
     import { PACK_LANGS, hasPack, loadPack } from '../lib/verse/packs';
     import { DuelSession } from '../lib/verse/session';
     import { loadSound } from '../lib/verse/sound';
-    import { initI18n, languageName, locale, onLocaleChange, t, tm } from '../i18n';
+    import { initI18n, languageName, loadArea, locale, onLocaleChange, t, tm } from '../i18n';
     import { criterionName, curseName, curseRule, curseRuleTheirs, deviceBrief, deviceName, signatureText } from '../i18n/duel';
+    import { cityName } from '../i18n/pages/terms';
     import type { Msg } from '../lib/verse/msg';
 
     const $ = <T extends HTMLElement = HTMLElement>(id: string) => document.getElementById(id) as T;
@@ -354,7 +355,7 @@ import { t } from '../i18n';
     function renderEquipped() {
       const label = $('equipped-variant-label');
       if (variantAbility) {
-        label.textContent = `${equippedCity} (${t('variant.bonus', { n: variantAbility.bonus, criterion: criterionName(variantAbility.axis) })})`;
+        label.textContent = `${cityName(equippedCity as WorldCity)} (${t('variant.bonus', { n: variantAbility.bonus, criterion: criterionName(variantAbility.axis) })})`;
         label.className = 'ms-2 text-xs font-semibold text-gold-400';
       } else {
         label.textContent = t('battle.noneEquipped');
@@ -378,7 +379,7 @@ import { t } from '../i18n';
         const cfg = CITY_CATALOG[city];
         const b = el('button', 'variant-pick w-full text-start text-xs p-2 rounded-sm hover:bg-obsidian-800 text-obsidian-300 flex items-center justify-between');
         b.dataset.variantId = v.variantId;
-        b.appendChild(el('span', '', t('battle.cardInCity', { card: card.name, city })));
+        b.appendChild(el('span', '', t('battle.cardInCity', { card: card.name, city: cityName(city) })));
         b.appendChild(el('span', 'text-gold-500 text-[10px]', t('variant.bonus', { n: cfg.ability.bonus, criterion: criterionName(cfg.ability.axis) })));
         picker.appendChild(b);
       }
@@ -792,7 +793,8 @@ import { t } from '../i18n';
       // The world card's bonus is part of the round score, so it has a row of its own.
       if (bonus) {
         row(
-          t('verdict.worldCard', { city: bonus.label }),
+          // The engine carries the catalog's English key; the page shows the city's name in the language (CLDR or Wikidata).
+          t('verdict.worldCard', { city: bonus.label in CITY_CATALOG ? cityName(bonus.label as WorldCity) : bonus.label }),
           bonus.points ? t('variant.bonus', { n: bonus.points, criterion: criterionName(bonus.criterion) }) : t('verdict.notTaken', { criterion: criterionName(bonus.criterion) }),
           bonus.points ? 'text-gold-300 font-semibold' : 'text-obsidian-400',
         );
@@ -1011,6 +1013,9 @@ import { t } from '../i18n';
       fillLanguages([...PACK_LANGS]);
       loadDeck();
       renderVariantPicker();
+      // City names (the world card) are in the 'variants' page area: CLDR's and Wikidata's names in each
+      // language. The picker is drawn again when they arrive; a duel's verdict comes long after.
+      void loadArea('variants').then(renderVariantPicker);
       updateSubmit();
       mountStorageNote($('brain-status'));
       initBrain();
@@ -1023,6 +1028,8 @@ import { t } from '../i18n';
         // make it the duel's language too, where it is on offer and no duel is under way.
         if (!session && offered.includes(l)) langSelect.value = l;
         redraw();
+        // Then once more with the city names, when that language's area has come.
+        void loadArea('variants', l).then(() => locale() === l && redraw());
       });
     });
   </script>

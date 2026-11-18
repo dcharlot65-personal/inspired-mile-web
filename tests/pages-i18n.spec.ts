@@ -429,4 +429,21 @@ test.describe('Translated pages: what a script draws', () => {
       }
     }
   });
+
+  test('the battle page names a world card’s city in the language, as the world map does', async ({ page }) => {
+    // The integration's verdict row "World card: {city}" and the equip label were given the catalog's
+    // English key (Tokyo) on every page language.
+    await seed(page);
+    await page.goto('/battle?brain=rules');
+    for (const [l, tokyo] of [['ja', '東京'], ['ar', 'طوكيو'], ['en', 'Tokyo']] as const) {
+      await page.evaluate((code) => localStorage.setItem('inspired-mile-locale', code), l);
+      await page.goto('/battle?brain=rules');
+      await expect(page.locator('html')).toHaveAttribute('data-title-locale', l);
+      await page.click('#equip-variant-btn');
+      await expect(page.locator('#variant-picker'), l).toContainText(tokyo);
+      await page.click('.variant-pick[data-variant-id="MO-001-TKY-00-01-02"]');
+      await expect(page.locator('#equipped-variant-label'), l).toContainText(tokyo);
+      if (l !== 'en') await expect(page.locator('#variant-equip'), l).not.toContainText('Tokyo');
+    }
+  });
 });
