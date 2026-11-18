@@ -45,10 +45,18 @@
  * longer name in every language; one whose English name is a role with its article ("The Nurse") counts by its local
  * name as written (奶妈, «Кормилица»), as English counts "the nurse".
  *
- * Unspaced, a name is a name only as whole words: the segmenter cuts a word it does not know into pieces, and a piece can
- * be a name (安东尼奥, "Antonio", into 安东尼, Mark Antony, and 奥). A name in katakana is said only in katakana and only
- * as a whole run of it (ららぽーと, a shopping mall, is not ポー); a Chinese or Thai name is refused where the verse writes
- * around it a dictionary word that holds it (pack.containing: 圣安东尼奥, "San Antonio"; อัสซุส, Assus).
+ * Unspaced, a name is not a piece of a longer word. The segmenter cuts a word it does not know into pieces, and a piece
+ * can be a name (安东尼奥, "Antonio", into 安东尼, Mark Antony, and 奥), so its words do not settle it alone:
+ * - Japanese: a name in katakana is said only in katakana and only as a whole run of it (ららぽーと, a shopping mall, is
+ *   not ポー).
+ * - Chinese: a foreign name is spelled in the characters of Xinhua's transliteration tables (pack.transliteration), and a
+ *   name of the game with more such characters beside it is a piece of a longer foreign name (哈德斯菲尔德, Huddersfield;
+ *   迪帕克, Deepak; 安东尼娅, Antonia): see carriesOn. A common word written in them (当然, "of course") or a function
+ *   word ends the foreign name.
+ * - Thai: the letters beside the name must be words the invocation knows (the pronunciation table's and the card text's);
+ *   a piece of an unknown word (เพอร์ in เพอร์เซอุส, Perseus; ซาน in ซานแอนโทนีโอ, San Antonio) is not one: see thNameAt.
+ * - Chinese and Thai: a name is also refused where the verse writes around it a dictionary word that holds it
+ *   (pack.containing: 圣安东尼奥, "San Antonio"; อัสซุส, Assus), for words such as 宙斯盾 that no rule can tell.
  *
  * What is not a telling word: the language's stop words (stopwords-iso), every word Wiktionary gives as a
  * pronoun, particle, conjunction, preposition, postposition, determiner or article (both lists are recorded in
@@ -67,6 +75,7 @@ import { getCardText, localEchoText, localQuote } from '../cards-i18n';
 import { baseLang, rulesFor } from './lang';
 import { stemmerFor } from './stem';
 import { ORDINARY_NAME_PARTS } from './names-en';
+import { soundOf } from './sound';
 import { fold, hiragana, letterCount, wordParts, wordSpan, wordsOf } from './text';
 
 const UNSPACED = new Set(['zh', 'ja', 'th']);
@@ -255,6 +264,12 @@ interface Lists {
   ordinary: Map<string, string>;
   /** Chinese and Thai: the dictionary words that hold a name (pack.containing), by the name's nameLetters, as nameLetters' text. */
   containing: Map<string, string[]>;
+  /** Chinese: the characters foreign names are spelled with, those that are no word by themselves, and the common words written only in them (pack.transliteration). */
+  xlit: Set<string>;
+  bound: Set<string>;
+  native: Set<string>;
+  /** Thai: the card text's own words (stop words, the lines' words), which the invocation reads as words besides the pronunciation table's. */
+  thaiWords: Set<string>;
 }
 const lists = new Map<string, Lists>();
 function listsFor(lang: string): Lists {
@@ -277,6 +292,10 @@ function listsFor(lang: string): Lists {
     forms: new Map(Object.entries(pack?.forms ?? {}).map(([w, fs]) => [wordKey(w, b), fs])),
     ordinary: new Map((pack?.ordinary ?? []).map((w) => [wordKey(w, b), w])),
     containing: new Map(Object.entries(pack?.containing ?? {}).map(([n, ws]) => [nameLetters(n), ws.map((w) => thaiAm(fold(w)))])),
+    xlit: new Set([...(pack?.transliteration?.chars ?? '')]),
+    bound: new Set([...(pack?.transliteration?.bound ?? '')]),
+    native: new Set(pack?.transliteration?.native ?? []),
+    thaiWords: new Set(b === 'th' ? [...(pack?.stop ?? []), ...(pack?.compounds ?? [])].map((w) => thaiAm(fold(w))) : []),
   };
   if (pack) lists.set(b, l);
   return l;
@@ -748,23 +767,148 @@ function heldBy(text: string, at: number, target: string, around: string[]): boo
   return false;
 }
 
+/** Is a word of a Chinese verse written only in the characters foreign names are spelled with? */
+function spelledLikeAName(word: string, l: Lists): boolean {
+  return [...word].every((c) => l.xlit.has(c));
+}
+
 /**
- * Unspaced: whole words of the verse, in a row, that spell the name, kana as written; refused where the verse writes
- * around them a word of pack.containing that holds the name. The verse's words that say it, folded; or null.
+ * Chinese: does a foreign name go on beside a name of the game, so that the name is only a piece of it? `side` is the
+ * verse's segmenter words outward from the name, nearest first, as long as they touch. A foreign name is a run of the
+ * characters Xinhua's tables spell names with (pack.transliteration); ICU's dictionary does not know most of them and
+ * cuts them into single characters (哈德斯菲尔德 into 哈, 德, 斯, 菲, 尔, 德). It goes on when the nearest word is:
+ * - one such character that is no word by itself (菲, 迪, 娅, 尼: `bound`), even one the stop list has (尔 in 阿尔宙斯);
+ * - a longer word written only in such characters that is not a common word (海德, 罗斯, 尼亚; 当然, 东西 and 谢谢 are
+ *   common words and end it, as any word with another character does);
+ * - one such character that is a word by itself (特, 西; 多, 因, which the stop list has), when another piece of a
+ *   foreign name lies beyond it: a bound character, a longer word as above, a character that is no function word, or a
+ *   run of three such characters in all (塔克西多帕克, Tuxedo Park; 格罗斯波因特帕克, Grosse Pointe Park). A word alone (拉
+ *   in 拉朱丽叶的手, "pulls Juliet's hand"; 比 in 比宙斯更强) is that word.
+ */
+function carriesOn(side: Span[], l: Lists): boolean {
+  const [near, next] = side;
+  if (!near) return false;
+  const single = (x: Span) => [...x.word].length === 1;
+  const longer = (x: Span) => !single(x) && spelledLikeAName(x.word, l) && !l.stop.has(x.word) && !l.native.has(x.word);
+  if (single(near) && l.bound.has(near.word)) return true;
+  if (!spelledLikeAName(near.word, l)) return false;
+  if (!single(near)) return longer(near);
+  if (!next) return false;
+  if ((single(next) && l.bound.has(next.word)) || longer(next)) return true;
+  if (!l.stop.has(near.word) && single(next) && l.xlit.has(next.word) && !l.stop.has(next.word)) return true;
+  let run = 0;
+  while (run < side.length && single(side[run]) && l.xlit.has(side[run].word)) run++;
+  return run >= 3;
+}
+
+/**
+ * Chinese: is the name at [s, e) of the text a name there? It must be whole segmenter words, except that a function
+ * character the segmenter joined to it is not part of the name (修了 in 赫瑞修了); and no foreign name goes on beside it
+ * (carriesOn).
+ */
+function zhNameAt(text: string, spans: Span[], s: number, e: number, l: Lists): boolean {
+  const first = spans.find((x) => x.start <= s && s < x.end);
+  const last = spans.find((x) => x.start < e && e <= x.end);
+  if (!first || !last) return false;
+  const joined = (t: string) => [...t].every((c) => l.stopChars.has(c) && !l.bound.has(c));
+  if (first.start < s && !joined(text.slice(first.start, s))) return false;
+  if (last.end > e && !joined(text.slice(e, last.end))) return false;
+  const outward = (edge: number, dir: -1 | 1): Span[] => {
+    const out: Span[] = [];
+    for (let at = edge; ; ) {
+      const n = spans.find((x) => (dir < 0 ? x.end === at : x.start === at));
+      if (!n) return out;
+      out.push(n);
+      at = dir < 0 ? n.start : n.end;
+    }
+  };
+  return !carriesOn(first.start === s ? outward(s, -1) : [], l) && !carriesOn(last.end === e ? outward(e, 1) : [], l);
+}
+
+/**
+ * Thai: is this a word the invocation knows? The pronunciation table's words (Wiktionary's Thai, loaded with the duel's
+ * sound data, ./sound) and the card text's own (its stop words and the lines' words). A word of one letter is not one
+ * here: the table lists the letters themselves (น, ล), and a letter ends any piece.
+ */
+function thaiWord(w: string, l: Lists): boolean {
+  return [...w].length >= 2 && (soundOf('th', w) !== undefined || l.thaiWords.has(w));
+}
+
+/**
+ * Thai: does `t` end (or, with `fromStart`, begin) with known words, two in a row or as many as it holds? Before a name, a
+ * word of two letters (ที, ลา, เค: a piece of a foreign name is often one) counts only after a longer known word, never at
+ * the start of the letters: ทีซีอุส (Theseus) and เคลาซีอุส (Clausius) hold ซีอุส, Zeus. After a name it counts as any
+ * word (ซุสมา, "Zeus comes").
+ */
+function thaiEdge(t: string, l: Lists, fromStart: boolean, depth = 2, min = 2): boolean {
+  if (depth === 0 || (!t && min === 2)) return true;
+  const cs = [...t];
+  for (let n = Math.min(cs.length, 24); n >= min; n--) {
+    const w = (fromStart ? cs.slice(0, n) : cs.slice(cs.length - n)).join('');
+    const rest = (fromStart ? cs.slice(n) : cs.slice(0, cs.length - n)).join('');
+    if (thaiWord(w, l) && thaiEdge(rest, l, fromStart, depth - 1, !fromStart && n === 2 ? 3 : 2)) return true;
+  }
+  return false;
+}
+
+/** Letters a Thai stretch of words runs on through: not ๆ (repeat the word) or ฯ (abbreviation), which end a word. */
+const THAI_RUN = /(?![ๆฯ])[\p{L}\p{M}]/u;
+
+/**
+ * Thai: is the name at [s, e) of the text a name there? Thai is written without spaces between words, and ICU cuts a word
+ * its dictionary lacks into pieces, so the segmenter's words do not settle it (เพอร์เซอุส, Perseus, came back as เพ, อร์, เซ,
+ * อุ, ส, with เซอุส, Zeus, in it; คืนนี้ข้าเรียกซุสมา came back with ซุส cut as ซุ and สมา). The letters before the name, up
+ * to a space or a mark, must end with known words (thaiWord, thaiEdge), two in a row where there are that many letters,
+ * and the letters after it begin so: a piece of an unknown word beside the name (เพอร์, ซาน, พาราเซล) is not a word, so the name
+ * there is a piece too. Without the pronunciation table only the card text's own words are known, and fewer names count.
+ */
+function thNameAt(text: string, s: number, e: number, l: Lists): boolean {
+  let i = s;
+  while (i > 0 && THAI_RUN.test(text[i - 1])) i--;
+  let j = e;
+  while (j < text.length && THAI_RUN.test(text[j])) j++;
+  return thaiEdge(text.slice(i, s), l, false) && thaiEdge(text.slice(e, j), l, true);
+}
+
+/**
+ * Unspaced: where the verse spells the name. Japanese: whole words of the verse, in a row, kana as written (a katakana
+ * run is one word). Chinese and Thai: the name's letters anywhere, as zhNameAt and thNameAt allow. In Chinese and Thai,
+ * also refused where the verse writes around the name a word of pack.containing that holds it. The verse's words that say
+ * it, folded; or null.
  */
 function saidNameUnspaced(name: string, verse: string, lang: string): string[] | null {
   const target = nameLetters(name);
   if (!target) return null;
   const text = thaiAm(fold(verse));
-  const spans = wordSpans(text, lang).map((s) => ({ ...s, key: nameLetters(s.word) })).filter((s) => s.key);
-  const around = listsFor(lang).containing.get(target) ?? [];
-  for (let i = 0; i < spans.length; i++) {
-    let run = '';
-    for (let j = i; j < spans.length && run.length < target.length; j++) {
-      run += spans[j].key;
-      if (run !== target) continue;
-      if (!heldBy(text, spans[i].start, target, around)) return spans.slice(i, j + 1).flatMap((s) => s.pieces.map(fold));
+  const l = listsFor(lang);
+  const around = l.containing.get(target) ?? [];
+  if (lang === 'ja') {
+    const spans = wordSpans(text, lang).map((x) => ({ ...x, key: nameLetters(x.word) })).filter((x) => x.key);
+    for (let i = 0; i < spans.length; i++) {
+      let run = '';
+      for (let j = i; j < spans.length && run.length < target.length; j++) {
+        run += spans[j].key;
+        if (run === target && !heldBy(text, spans[i].start, target, around)) return spans.slice(i, j + 1).flatMap((x) => x.pieces.map(fold));
+      }
     }
+    return null;
+  }
+  // The text's letters, each with where it stands, so a name written with a space or a dot (马克·安东尼) is found either way.
+  const at: number[] = [];
+  let letters = '';
+  for (let k = 0; k < text.length; k++) {
+    if (!/[\p{L}\p{M}]/u.test(text[k])) continue;
+    letters += text[k];
+    at.push(k);
+  }
+  const spans = wordSpans(text, lang);
+  for (let k = letters.indexOf(target); k >= 0; k = letters.indexOf(target, k + 1)) {
+    const s = at[k];
+    const e = at[k + target.length - 1] + 1;
+    if (heldBy(text, s, target, around)) continue;
+    if (lang === 'zh' ? !zhNameAt(text, spans, s, e, l) : !thNameAt(text, s, e, l)) continue;
+    // The verse's words that say it, as the segmenter gives them (the words a multiplier does not multiply).
+    return spans.filter((x) => x.start < e && x.end > s).map((x) => x.word);
   }
   return null;
 }

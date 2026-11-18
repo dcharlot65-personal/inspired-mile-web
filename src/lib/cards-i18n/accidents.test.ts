@@ -9,6 +9,7 @@ import { scoreVerse } from '../verse/duel';
 import { getForm } from '../verse/forms';
 import { capitalOnlyNames, localCharacterNames, localSignatureWords, RECITE_LETTERS, saidLocalName, saysWord, wordKey } from '../verse/echo';
 import { getPack, loadAllPacks, PACK_LANGS } from '../verse/packs';
+import { installSound, loadSound } from '../verse/sound';
 import { wordsOf } from '../verse/text';
 import { CARD_TEXT_LANGS, getCardText, loadAllCardText, localEchoText, localQuote } from './index';
 
@@ -21,6 +22,8 @@ const NEAR_WF = JSON.parse(readFileSync('docs/language/sources/wordfreq-near-nam
 beforeAll(async () => {
   await loadAllPacks();
   await loadAllCardText();
+  // The Thai invocation reads the words beside a name against the pronunciation table, as a Thai duel loads it.
+  await loadSound('th');
 });
 
 const sig = (id: string, verse: string, lang: string) => checkSignature(getCardById(id)!, verse, lang);
@@ -648,6 +651,68 @@ describe('a name is not read out of a piece of another word (Chinese, Japanese, 
     }
     expect(strays).toEqual([]);
     expect(read).toBeGreaterThan(600);
+  });
+});
+
+// The third check of round 3 (2026-11-18, at 6cf502ab) found Chinese and Thai names still read out of longer foreign names:
+// ICU cuts a name it does not know into single characters (Chinese) or pieces (Thai), and a name of the game is one such run
+// (哈德斯 in 哈德斯菲尔德, Huddersfield). The rules: Chinese, a name with another piece of a foreign name beside it, spelled
+// in Xinhua's transliteration characters, is a piece too (echo.ts carriesOn); Thai, the letters beside a name must be words
+// the invocation knows (thNameAt).
+describe('a name inside a longer foreign name is a piece of it (Chinese, Thai)', () => {
+  const localName = (verse: string, lang: string) => saidLocalName(verse, lang)?.name;
+  it('the third check’s verses: Huddersfield, Deepak, Hyde Park, Antonia, Blackpool, Apollonius, Perseus, San Antonio, Paracelsus', () => {
+    for (const [l, v] of [
+      ['zh', '哈德斯菲尔德下着雨'], ['zh', '迪帕克在台上唱歌'], ['zh', '我们在海德帕克散步'], ['zh', '安东尼娅是我的妹妹'],
+      ['zh', '他在布莱克浦度假'], ['zh', '罗德岛的阿波罗尼奥斯写了史诗'],
+      ['th', 'เพอร์เซอุสขี่ม้าบินข้ามทะเล'], ['th', 'กลุ่มดาวเปอร์เซอุสสว่างคืนนี้'], ['th', 'ฉันบินไปซานแอนโทนีโอเมื่อวาน'],
+      ['th', 'พาราเซลซุสเป็นแพทย์'],
+    ] as const) expect([l, v, inv(v, l).met]).toEqual([l, v, false]);
+  });
+  it('more of the class, names the check did not try: Paxton, Antonioni, Blackwood, Apollonia, Tuxedo Park, Arceus, Hippasus, Clausius, Theseus', () => {
+    for (const [l, v] of [
+      ['zh', '帕克斯顿是个小镇'], ['zh', '安东尼奥尼拍了很多电影'], ['zh', '布莱克伍德写了恐怖小说'], ['zh', '阿波罗尼亚是一座古城'],
+      ['zh', '我们去塔克西多帕克'], ['zh', '格罗斯波因特帕克在湖边'], ['zh', '蒙特罗斯帕克下雪了'], ['zh', '卡尔弗顿帕克很安静'],
+      ['zh', '阿尔宙斯是神奇宝贝'], ['zh', '拜伦斯的老板'],
+      ['th', 'ฮิปปาซุสเป็นนักคณิตศาสตร์'], ['th', 'อาร์เซอุสเป็นโปเกมอน'], ['th', 'รูด็อล์ฟ เคลาซีอุส'], ['th', 'วีนีซีอุสยิงประตู'],
+      ['th', 'ทีซีอุสฆ่ามิโนทอร์'], ['th', 'อัสซูสเป็นเมืองโบราณ'],
+    ] as const) expect([l, v, localName(v, l)]).toEqual([l, v, undefined]);
+  });
+  it('a name beside a common word, a function word or a word it was joined to still lands', () => {
+    for (const [l, v, n] of [
+      ['zh', '哈姆雷特当然知道', '哈姆雷特'], ['zh', '拉朱丽叶的手', '朱丽叶'], ['zh', '莫枯修了', '莫枯修'], ['zh', '赫瑞修了', '赫瑞修'],
+      ['zh', '我爱朱丽叶', '朱丽叶'], ['zh', '天神宙斯', '宙斯'], ['zh', '梦里朱丽叶在哭', '朱丽叶'], ['zh', '马克安东尼来了', '马克·安东尼'],
+      ['th', 'คืนนี้ข้าเรียกซุสมา', 'ซุส'], ['th', 'ฉันกับสมชายเห็นซุส', 'ซุส'], ['th', 'โรเมโอรักจูเลียต', 'จูเลียต'],
+    ] as const) expect([l, v, localName(v, l)]).toEqual([l, v, n]);
+  });
+  it('every name lands in neutral sentences, with a word joined straight to it', () => {
+    const frames: Record<string, string[]> = {
+      zh: ['我看见{N}了', '{N}说', '比{N}更强', '{N}来了', '{N}了', '哦，{N}！'],
+      th: ['คืนนี้ข้าเรียก{N}มา', 'ฉันเห็น{N}แล้ว', '{N}โกรธมาก', 'ข้าคิดถึง{N}'],
+    };
+    const miss: string[] = [];
+    for (const [lang, fs] of Object.entries(frames)) {
+      for (const f of fs) for (const n of localCharacterNames(lang)) if (!inv(f.replace('{N}', n), lang).met) miss.push(`${lang} ${f.replace('{N}', n)}`);
+    }
+    expect(miss).toEqual([]);
+  });
+  it('the Chinese lists are what their sources say (fetch/transliteration.py)', () => {
+    const t = getCardText('zh')!.transliteration!;
+    for (const c of '迪娅菲斯尔帕尼浦') expect([c, t.chars.includes(c), t.bound.includes(c)]).toEqual([c, true, true]);
+    for (const c of '多特拉比') expect([c, t.chars.includes(c), t.bound.includes(c)]).toEqual([c, true, false]);
+    for (const w of ['当然', '东西', '谢谢', '高兴']) expect([w, t.native.includes(w)]).toEqual([w, true]);
+    for (const w of ['帕克', '罗斯', '尼亚', '日本']) expect([w, t.native.includes(w)]).toEqual([w, false]);
+  });
+  it('without the Thai pronunciation table fewer Thai names count, and none of the pieces', async () => {
+    installSound('th', null);
+    try {
+      expect(inv('ซุส', 'th').met).toBe(true);
+      expect(inv('ฉันเห็นซุสแล้ว', 'th').met).toBe(true); // เห็น and แล้ว are on the stop list
+      for (const v of ['เพอร์เซอุสขี่ม้าบินข้ามทะเล', 'พาราเซลซุสเป็นแพทย์', 'ฮิปปาซุสเป็นนักคณิตศาสตร์']) expect([v, inv(v, 'th').met]).toEqual([v, false]);
+    } finally {
+      await loadSound('th');
+    }
+    expect(inv('คืนนี้ข้าเรียกซุสมา', 'th').met).toBe(true);
   });
 });
 
