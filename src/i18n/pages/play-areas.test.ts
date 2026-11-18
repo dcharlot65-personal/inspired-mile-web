@@ -322,8 +322,9 @@ const GENDERED_YOU: Record<string, RegExp[]> = {
     /[\p{L}\p{M}]+(?:ते|े) हो(?![\p{L}\p{M}])/u, /(?:चले|नाचते) आए(?![\p{L}\p{M}])/u,
     // आप with a masculine verb, as the Hindi core locale writes it (checker, 2026-11-16: "क्या आप ... कर सकते हैं?").
     /(?<![\p{L}\p{M}])आप(?![\p{L}\p{M}])(?:\s+[^\s।?!"]+){0,8}?\s+[\p{L}\p{M}]+(?:ते|गे|े) (?:हैं|थे)(?![\p{L}\p{M}])/u,
-    // A sentence with no subject but the player, ending in a masculine past: "समझ गए!", "थोड़ा-सा चूक गए!".
-    /(?:^|["“\s])(?:[\p{L}\p{M}-]+\s+){0,2}(?:गए|गये|आए)[!?।]/u,
+    // A sentence with no subject but the player, ending in a masculine past: "समझ गए!", "थोड़ा-सा चूक गए!". From the
+    // sentence's start, so a passive with its own subject ("... ग़लत कोड डाले गए।", codes were entered) is not one.
+    /(?:^|[।!?.]\s+|["“])(?:[\p{L}\p{M}-]+\s+){0,2}(?:गए|गये|आए)[!?।]/u,
   ],
   ar: [vocative('يا فتى', 'يا فتاة')],
 };
@@ -830,6 +831,8 @@ describe('these checks can fail', () => {
     expect(genderedYou('hi', { k: 'बस थोड़ी-सी कसर रह गई!' })).toEqual([]);
     expect(genderedYou('hi', { k: 'दिखाओ कि तुम्हारा हथियार तलवार नहीं, शब्द हैं' })).toEqual([]);
     expect(genderedYou('hi', { k: 'राजकुमार आपको महल में बुलाते हैं।' })).toEqual([]); // the prince, honorific, not the player
+    expect(genderedYou('hi', { k: 'इस पते के लिए बहुत ज़्यादा ग़लत कोड डाले गए।' })).toEqual([]); // the codes, not the player
+    expect(genderedYou('hi', { k: 'कोड सही है। समझ गए!' }).length).toBe(1);
   });
 
   it("evidence's rowProblems objects to each line the checker found naming somebody else, and to a namesake's article", async () => {
