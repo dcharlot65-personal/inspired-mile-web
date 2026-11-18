@@ -269,6 +269,17 @@ usable dictionary word, with no table loaded.
   A returning player whose duel language is stored now gets the dictionary once the page is idle:
   0.10 s to the first verse ten seconds after the page is up, 4.55 s before (the M4, 2026-11-17;
   RULES-MEASUREMENTS.md). A duel started at once still waits for it (about 4.5 s there).
+- **Loanwords IPADIC lacks** (2026-11-18): IPADIC is from 2007 and reads a quarter of today's
+  common loanwords and names as letters it guessed at (スマホ, インスタグラム, ユーチューブ, ラッパー,
+  ポケモン, レノン, ビヨンセ: 31 of the engine check's 135). Two lists sit beside it,
+  `src/lib/verse/sound/jmdict/` (`scripts/sound/build-loanwords.mjs`): the katakana spellings of
+  JMdict's words (45,117) and JMnedict's names (69,026) that IPADIC does not have, 0.38 MB as
+  fetched; they come with the analyser and are indexed at the first word asked of them (45 to 80 ms
+  on the Studio; the opponent's verses ask nothing of them). They read nothing; the substance
+  floor asks them whether a run of katakana is a word (`text.ts knownUnits`, `review5.test.ts`). A
+  sound model of IPADIC's own katakana was measured first and does not tell loanwords from random
+  katakana. Still void alone on a line: words in none of the three as written (トーキョー; names written
+  together without the middle dot that JMnedict lacks whole, ウサインボルト, マイルスデイビス).
 - **Syllables**: morae of the reading, so a haiku may be written in kanji.
 - **Rhyme**: the vowels of the last two morae of each line agree, as Japanese lyric writing
   rhymes; lines that close on the same word are compared on the word before.
@@ -501,6 +512,7 @@ Everything below was fetched on 2026-11-16.
 | kuromoji.js | Japanese analyser | npm `kuromoji` | 0.1.2 | Apache-2.0 |
 | mecab-ipadic | the analyser's dictionary, inside the kuromoji package | - | 2.7.0-20070801 | NAIST licence (free use and redistribution with the notice) |
 | JMdict | test set ja (60 words) | ftp.edrdg.org/pub/Nihongo/JMdict_e.gz | created 2026-11-16 | CC BY-SA 4.0 (EDRDG) |
+| JMdict and JMnedict, katakana spellings | `sound/jmdict/words.dat.gz`, `names.dat.gz` (the substance floor's loanwords; shipped) | jmdict-simplified, github.com/scriptin/jmdict-simplified, release 3.6.2+20261109214828: `jmdict-eng-….json.tgz` (sha256 acf4beb6…), `jmnedict-all-….json.tgz` (sha256 6996354f…); fetched 2026-11-18 | dictionaries dated 2026-11-09 | CC BY-SA 4.0 (EDRDG); each list says so in its header |
 | Wikisource texts | rhyme test sets | the page of each poem; URL and date in each `corpus/<lang>.json` | - | texts public domain (every author died over a century ago); transcriptions CC BY-SA 4.0 |
 
 Poems: es.wikisource Redondillas and Canción del pirata; fr.wikisource Boileau, L'Art
@@ -512,7 +524,7 @@ ar.wikisource معلقة امرئ القيس; hi.wikisource कबीर ग्�
 th.wikisource นิราศภูเขาทอง; id.wikisource Gurindam Dua Belas.
 
 **Licence consequence for shipping.** The tables are derived from CC BY-SA 4.0 data
-(Wiktionary, CC-CEDICT). Shipping them requires attribution to those sources on the site
+(Wiktionary, CC-CEDICT, and since 2026-11-18 JMdict and JMnedict). Shipping them requires attribution to those sources on the site
 and that the tables themselves stay under CC BY-SA 4.0; each generated module names its
 source and licence in its header. The site has no such credit yet. The mecab-ipadic notice
 must travel with its dictionary files. This is the owner's call before deployment.

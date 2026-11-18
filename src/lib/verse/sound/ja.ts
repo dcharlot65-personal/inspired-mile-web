@@ -96,7 +96,7 @@ export async function loadJapanese(): Promise<boolean> {
   await Promise.all([...FILES, ...LISTS].map(async (f) => (b[f] = await dictFile(f))));
   const dic = new DynamicDictionaries();
   const words = new SortedWords(new TextDecoder().decode(b.lex));
-  const listed = { words: frontCoded(new TextDecoder().decode(b.words)), names: frontCoded(new TextDecoder().decode(b.names)) };
+  const lists = { words: new TextDecoder().decode(b.words), names: new TextDecoder().decode(b.names) };
   // An empty target map for kuromoji to read; the words' entries come from the list (see SortedWords).
   dic.loadTokenInfoDictionaries(new Uint8Array(b.tid), new Uint8Array(b.tid_pos), new Uint8Array(4));
   dic.trie = words;
@@ -104,7 +104,16 @@ export async function loadJapanese(): Promise<boolean> {
   dic.loadConnectionCosts(new Int16Array(b.cc));
   dic.loadUnknownDictionaries(new Uint8Array(b.unk), new Uint8Array(b.unk_pos), new Uint8Array(b.unk_map), new Uint8Array(b.unk_char), new Uint32Array(b.unk_compat), new Uint8Array(b.unk_invoke));
   tokenizer = readingTokenizer(new Tokenizer(dic));
-  lexicon = (word) => (words.has(word) ? 'ipadic' : listed.words.has(word) ? 'word' : listed.names.has(word) ? 'name' : null);
+  // The lists are indexed at the first word asked of them, not here: indexing their 114,000 words
+  // takes 45 to 80 ms on a desktop (the Studio, 2026-11-18) and about four times that on a slow
+  // phone, and the opponent's first verse asks nothing of them. They hold the same words whenever
+  // they are indexed, so no answer depends on when.
+  let listed: { words: Set<string>; names: Set<string> } | null = null;
+  lexicon = (word) => {
+    if (words.has(word)) return 'ipadic';
+    listed ??= { words: frontCoded(lists.words), names: frontCoded(lists.names) };
+    return listed.words.has(word) ? 'word' : listed.names.has(word) ? 'name' : null;
+  };
   setJapaneseAnalyser((text) => tokenizer!.tokenize(text));
   setJapaneseLexicon(lexicon);
   return true;
