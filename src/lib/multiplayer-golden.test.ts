@@ -501,6 +501,188 @@ const COPY_PAIRS: Array<[string, string]> = (() => {
 const COPIES: string[] = [...new Set(COPY_PAIRS.map(([copy]) => copy))].filter((v) => !CORPUS.includes(v));
 
 /**
+ * The engine check's second round fuzzed the newest rules (sayable and its held sounds and drawn-out
+ * letters, the roll call of capitalised names, the every-line copy rule) and found two Rust mutations
+ * the goldens above let pass: the roll call read without splitting hyphenated words (Jean-luc), and
+ * COPY_LINE_ANY rounded down. Its generators, cut to a third, are kept here, with copies near the
+ * every-line rule and flips that keep only the other's little words (each content word swapped, or
+ * all but one a line: the content clause of carriesLines). Seeded on their own and kept out of
+ * CORPUS, so nothing drawn from CORPUS changes.
+ */
+const FUZZ = rng(909090);
+const FUZZ_TABLE = (() => {
+  const unlisted: string[] = [];
+  const plain: string[] = [];
+  for (const line of PRON.split('\n')) {
+    if (!line || line.startsWith('#')) continue;
+    const tab = line.indexOf('\t');
+    if (tab < 1) continue;
+    for (const e of line.slice(tab + 1).split(' ')) {
+      const m = /^([a-z']{3,12})(\d+)([\^*]?)$/.exec(e);
+      if (!m) continue;
+      if (m[3] === '^') unlisted.push(m[1]);
+      else if (m[3] === '') plain.push(m[1]);
+    }
+  }
+  return { unlisted: Array.from({ length: 1000 }, () => pick(FUZZ, unlisted)), plain: Array.from({ length: 1000 }, () => pick(FUZZ, plain)) };
+})();
+const FUZZ_STOP = ['the', 'a', 'and', 'of', 'my', 'in', 'to', 'I', 'you', 'is', 'with', 'for', 'on', 'but'];
+const FUZZ_ODD = [
+  'Émile', 'Ōtsuka', 'Łódź', 'Ærøskøbing', 'İstanbul', 'ǅemal', 'ǈubljana', 'Ꮳherokee', 'Ωmega', 'Привет', 'Ⓢkrrt', 'Ⅻth', 'ẞtraße', 'ﬁnna', 'Ｍｗａｎｇｉ',
+  '𝐍𝐠𝐨𝐳𝐢', "O'Brien", "'Twas", "d'Artagnan", "D'Angelo", 'McQueen', 'DeShawn', 'iPhone', 'eBay', '2Pac', 'B-Boy', 'X-Men', 'Jean-Luc', 'jean-Luc', 'Jean-luc',
+  'Al-Hakim', 'al-Hakim', 'Okonjo-iweala', 'Okonjo-Iweala', 'Ibn', 'von', 'Van', 'de', 'La', 'Mbappé', 'Nguyễn', 'Thủy', 'Rhys', 'Bryn', 'Glyn', 'Llwyd', 'Cwm', 'Crwth', 'Hwyl', 'Myrrh', 'Sphynx',
+  'Pssst', 'SKRRT', 'Brrrrr', 'Hmmmm', 'Mhmm', 'Shhhh', 'Pffft', 'Bzzzt', 'Tsss', 'Grrrah', 'Ayyyy', 'Yuhhh', 'Sooooo', 'Nooooo', 'Whyyyy', 'Yesss', 'Dizzzy', 'Fluffffy',
+  'Wasnt', 'Doesnt', 'Didnt', 'Cant', 'Wont', 'Shouldnt', 'Yall', "Y'all", "Trippin'", "Nothin'", 'Qwrt', 'Sdfg', 'Zxcv', 'Hjkl', 'Asdf', 'Mnbv', 'Pft', 'Hmh', 'Shh', 'Mm',
+];
+function fuzzMash(r: R, vowel: boolean): string {
+  const V = 'aeiouy';
+  const C = 'bcdfghjklmnpqrstvwxz';
+  const n = 3 + int(r, 7);
+  let s = '';
+  for (let i = 0; i < n; i++) s += vowel && (i % 2 === 1 || chance(r, 0.2)) ? pick(r, [...V]) : pick(r, [...C]);
+  return s;
+}
+/** Shapes near HELD_SOUND, inside and outside it. */
+function fuzzHeld(r: R): string {
+  const open = pick(r, ['', '', 'b', 'g', 'h', 'k', 'p', 't', 'sk', 'ps', 'ts', 'bz', 'mh', 'f', 'l', 'n', 'v', 'sh', 'ch', 'pf', 'tr', 'st']);
+  const held = pick(r, [...'bghkptmrszfhlnvwx']);
+  const coda = pick(r, ['', '', 'k', 't', 'p', 'h', 's', 'z']);
+  return open + held.repeat(1 + int(r, 5)) + coda;
+}
+function fuzzDrawn(r: R): string {
+  const w = pick(r, chance(r, 0.5) ? FUZZ_TABLE.plain : FUZZ_TABLE.unlisted);
+  const i = int(r, w.length);
+  return w.slice(0, i) + w[i].repeat(2 + int(r, 5)) + w.slice(i + 1);
+}
+function fuzzToken(r: R): string {
+  const k = r();
+  if (k < 0.2) return pick(r, FUZZ_TABLE.unlisted);
+  if (k < 0.3) return pick(r, FUZZ_TABLE.plain);
+  if (k < 0.42) return fuzzMash(r, true);
+  if (k < 0.5) return fuzzMash(r, false);
+  if (k < 0.62) return fuzzHeld(r);
+  if (k < 0.7) return fuzzDrawn(r);
+  if (k < 0.86) return pick(r, FUZZ_ODD);
+  return pick(r, FUZZ_STOP);
+}
+function fuzzLine(r: R): string {
+  const n = 1 + int(r, 6);
+  const style = int(r, 5);
+  const cap = (w: string) => w.charAt(0).toUpperCase() + w.slice(1);
+  const ws = Array.from({ length: n }, () => fuzzToken(r)).map((w) => {
+    if (style === 0) return cap(w);
+    if (style === 1) return chance(r, 0.8) ? cap(w) : w;
+    if (style === 2) return w.toUpperCase();
+    if (style === 3) return w.toLowerCase();
+    return casing(r, w);
+  });
+  let line = ws.join(pick(r, [' ', ' ', ', ', ' and ', ' - ', '-', ' & ']));
+  if (chance(r, 0.15)) line = pick(r, ['(', '“', '"', "'", '¡', '¿', '-', '…', '*']) + line;
+  return line + pick(r, ENDINGS);
+}
+const FUZZ_VERSES: string[] = [...new Set(Array.from({ length: 300 }, () => Array.from({ length: 1 + int(FUZZ, 5) }, () => fuzzLine(FUZZ)).join('\n')))].filter((v) => v.isWellFormed());
+/** A copy made to sit near the every-line rule: each line's words shuffled, a word or two changed, dropped or added. */
+function fuzzCopy(r: R, src: string): string {
+  const ls = linesOf(src).map((l) => l.split(/\s+/).filter(Boolean));
+  const out = ls.map((ws0) => {
+    let ws = [...ws0];
+    const ops = int(r, 4);
+    for (let o = 0; o < ops && ws.length; o++) {
+      const op = int(r, 8);
+      if (op === 0) {
+        for (let i = ws.length - 1; i > 0; i--) {
+          const j = int(r, i + 1);
+          [ws[i], ws[j]] = [ws[j], ws[i]];
+        }
+      } else if (op === 1) ws.reverse();
+      else if (op === 2) ws[int(r, ws.length)] = pick(r, FUZZ_TABLE.plain);
+      else if (op === 3 && ws.length > 2) ws.splice(int(r, ws.length), 1);
+      else if (op === 4) ws.splice(int(r, ws.length + 1), 0, pick(r, [...FUZZ_TABLE.plain.slice(0, 50), ...FUZZ_STOP]));
+      else if (op === 5) ws = [...ws.slice(1), ws[0]];
+      else if (op === 6) ws.push(ws[int(r, ws.length)]);
+      else if (op === 7 && ws.length > 1) {
+        const i = int(r, ws.length - 1);
+        [ws[i], ws[i + 1]] = [ws[i + 1], ws[i]];
+      }
+    }
+    return ws;
+  });
+  if (chance(r, 0.25) && out.length > 1) {
+    const i = int(r, out.length);
+    const j = int(r, out.length);
+    [out[i], out[j]] = [out[j], out[i]];
+  }
+  if (chance(r, 0.15)) out.push(pick(r, FUZZ_VERSES).split('\n')[0].split(/\s+/));
+  if (chance(r, 0.1) && out.length > 1) out.splice(int(r, out.length), 1);
+  return out
+    .map((ws) => ws.join(' '))
+    .filter(Boolean)
+    .join('\n');
+}
+/** A flip: every content word of each line swapped for another (all but the first `keep` of a line), the little words kept in place. */
+function fuzzFlip(r: R, src: string, keep: number): string {
+  return linesOf(src)
+    .map((l) => {
+      let kept = 0;
+      return l
+        .split(/\s+/)
+        .filter(Boolean)
+        .map((t) => {
+          const core = t.replace(/^[^\p{L}]+|[^\p{L}]+$/gu, '');
+          if (!core || !isContentWord(core, 'en')) return t;
+          if (kept++ < keep) return t;
+          return t.replace(core, pick(r, FUZZ_TABLE.plain));
+        })
+        .join(' ');
+    })
+    .join('\n');
+}
+const FUZZ_PAIRS: Array<[string, string]> = (() => {
+  const r = rng(909092);
+  const out: Array<[string, string]> = [];
+  for (const source of [...HAND, ...writtenVerses()]) {
+    if (linesOf(source).length < 2) continue;
+    for (const copy of [fuzzCopy(r, source), fuzzCopy(r, source), fuzzFlip(r, source, 0), fuzzFlip(r, source, 1)]) if (copy && copy !== source && copy.isWellFormed()) out.push([copy, source]);
+  }
+  return out;
+})();
+/**
+ * What the fuzz reaches only by chance, each pinning a reading that a Rust mutation got past in the
+ * engine check's second round (N1, N9, N11, N14): a roll call with a word in a caseless script or
+ * opening with a titlecase letter (uppercase, not "not lowercase"); a word opening with a mark that a
+ * digit before it kept (its first letter decides, not its first character); a mark standing alone as
+ * a word (no letter: not a word of the roll call); and copies with every line turned round (carried in
+ * any order with one word in order: the every-line rule asks two).
+ */
+const FUZZ_EDGE: string[] = [
+  'Mwangi 東京 Okafor\nAdaeze محمد Chukwuemeka',
+  'Ngozi שלום Mwangi\nOkafor 李 Adaeze',
+  'ǅemal Mwangi Okafor\nǈubljana Adaeze Chiamaka',
+  'Adaeze Mwangi 2\u0301\nOkafor Chiamaka 7\u0301',
+  '2\u0301Mwangi Okafor Adaeze\n9\u0301Ngozi Chukwuemeka',
+];
+const FUZZ_TURNED: Array<[string, string]> = [...HAND.slice(0, 12), ...writtenVerses().slice(0, 12)]
+  .filter((source) => linesOf(source).length >= 2)
+  .map((source) => [linesOf(source).map((l) => l.split(/\s+/).reverse().join(' ')).join('\n'), source]);
+FUZZ_PAIRS.push(...FUZZ_TURNED);
+/**
+ * The content clause of the every-line rule at its edge (duel.ts carriesLines): a source whose lines
+ * keep 5 little words of 8 (each past COPY_LINE_SHARE, none nearly whole), answered with every content
+ * word changed, then with one kept in one line, in two lines, in every line; and a source of little
+ * words alone copied with one changed a line (its lines have no content word to keep).
+ */
+const CLAUSE_SOURCE = 'the king of the river is in winter\nand my candle is on the silver mountain\nso you carried it to the stone garden\nbut I was a tiger with copper wings';
+const CLAUSE_LITTLE = 'and so it is with you and me\nand all of it was not for you\nso be it as it was with me';
+FUZZ_PAIRS.push(
+  ['the queen of the harbor is in autumn\nand my lantern is on the golden valley\nso you brought it to the iron temple\nbut I was a dragon with marble horns', CLAUSE_SOURCE],
+  ['the queen of the harbor is in autumn\nand your candle is on the golden valley\nso you brought it to the iron temple\nbut I was a dragon with marble horns', CLAUSE_SOURCE],
+  ['a king of the harbor is in autumn\nand your candle is on the golden valley\nso you brought it to the iron temple\nbut I was a dragon with marble horns', CLAUSE_SOURCE],
+  ['a king of the harbor is in autumn\nand your candle is on the golden valley\nso we carried it to the iron temple\nbut I was the tiger with marble horns', CLAUSE_SOURCE],
+  ['and so it is with them and me\nand all of it was not for them\nso be it as it is with me', CLAUSE_LITTLE],
+);
+const FUZZ_TEXT: string[] = [...new Set([...FUZZ_VERSES, ...FUZZ_EDGE, ...FUZZ_PAIRS.map(([copy]) => copy)])].filter((v) => !CORPUS.includes(v) && !COPIES.includes(v));
+
+/**
  * A string as the Rust side can hold it. cleanVerse cuts at 600 UTF-16 units, which can
  * leave half of a surrogate pair at the very end; Rust strings cannot hold that half, and
  * the Rust port writes U+FFFD in its place. toWellFormed() does exactly that substitution.
@@ -676,7 +858,7 @@ function tablesJson(): string {
 }
 
 function textJson(): string {
-  const verses = [...CORPUS, ...FALLBACK_VERSES, ...COPIES].map((raw) => {
+  const verses = [...CORPUS, ...FALLBACK_VERSES, ...COPIES, ...FUZZ_TEXT].map((raw) => {
     const clean = cleanVerse(raw);
     const typed = cleanVerse(raw, { unmix: false });
     return {
@@ -744,6 +926,7 @@ function textJson(): string {
     measure(v.toUpperCase(), v);
   }
   for (const [copy, source] of COPY_PAIRS) measure(copy, source);
+  for (const [copy, source] of FUZZ_PAIRS) measure(copy, source);
   // Words that differ only by an ending a copy may change (sameWordFor: the English stem), each
   // ending the stem takes off, and words it must leave alone: line by line, so the copy measure
   // (taken, own, carry) shows whether two words were read as one.
@@ -1006,6 +1189,13 @@ function scoreCases(): Array<ScoreCase & { expect: ReturnType<typeof flatScore> 
       lent: chance(r, 0.3) ? pick(r, Object.values(RELIC_WORDS.en)) : null,
       trusted: chance(r, 0.15),
     });
+  }
+  // The fuzz's copies and flips against the verse they answer (seeded on their own: nothing above moves).
+  const rf = rng(909093);
+  for (const [verse, source] of FUZZ_PAIRS) {
+    const cardId = pick(rf, CHARACTERS).id;
+    const formId = linesOf(source).length === 4 ? 'quatrain-abab' : linesOf(source).length === 3 ? 'tercet' : 'couplet';
+    cases.push({ ...plain, verse, formId, acrostic: null, cardId, deck: randomDeck(rf, cardId), opponentVerse: source });
   }
   return cases.map((c) => ({ ...c, expect: flatScore(runScore(c)) }));
 }

@@ -1264,6 +1264,10 @@ pub struct LineCarry {
     pub line: Option<usize>,
     /// How many of the source line's words that verse line says in any order (`any`).
     pub any: usize,
+    /// The source line's content words (`content`).
+    pub content: usize,
+    /// How many of them that verse line says in any order (`contentSaid`).
+    pub content_said: usize,
 }
 
 /// How much of a verse is taken from another (`CopyMeasure`).
@@ -1288,6 +1292,7 @@ pub struct CopyMeasure {
 /// lines first.
 fn line_carry(verse: &str, source: &str) -> Vec<LineCarry> {
     let theirs: Vec<Vec<String>> = lines_of(source).iter().map(|l| copy_words(l, true)).collect();
+    let their_content: Vec<Vec<String>> = lines_of(source).iter().map(|l| copy_words(l, false)).collect();
     let mine: Vec<(usize, Vec<String>)> =
         lines_of(verse).iter().enumerate().map(|(at, l)| (at, copy_words(l, true))).filter(|(_, ws)| !ws.is_empty()).collect();
     let mut pairs: Vec<(usize, usize, usize)> = Vec::new();
@@ -1300,7 +1305,11 @@ fn line_carry(verse: &str, source: &str) -> Vec<LineCarry> {
         }
     }
     pairs.sort_by(|x, y| y.0.cmp(&x.0).then(x.1.cmp(&y.1)).then(x.2.cmp(&y.2)));
-    let mut out: Vec<LineCarry> = theirs.iter().map(|s| LineCarry { source: s.len(), said: 0, verse: 0, end: false, line: None, any: 0 }).collect();
+    let mut out: Vec<LineCarry> = theirs
+        .iter()
+        .zip(&their_content)
+        .map(|(s, c)| LineCarry { source: s.len(), said: 0, verse: 0, end: false, line: None, any: 0, content: c.len(), content_said: 0 })
+        .collect();
     let mut taken: HashSet<usize> = HashSet::new();
     for (said, i, j) in pairs {
         if out[i].said > 0 || taken.contains(&j) {
@@ -1315,6 +1324,8 @@ fn line_carry(verse: &str, source: &str) -> Vec<LineCarry> {
             end: ws.iter().any(|w| same_word(w, last)),
             line: Some(*at),
             any: said_any_order(&theirs[i], ws),
+            content: their_content[i].len(),
+            content_said: said_any_order(&their_content[i], ws),
         };
         taken.insert(j);
     }

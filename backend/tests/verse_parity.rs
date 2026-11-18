@@ -166,7 +166,7 @@ fn copy_json(c: &CopyMeasure) -> Value {
         "lines": c.lines,
         "perLine": c.per_line,
         "ends": c.ends,
-        "carry": c.carry.iter().map(|l| json!({ "source": l.source, "said": l.said, "verse": l.verse, "end": l.end, "line": l.line.map_or(-1, |j| j as i64), "any": l.any })).collect::<Vec<_>>(),
+        "carry": c.carry.iter().map(|l| json!({ "source": l.source, "said": l.said, "verse": l.verse, "end": l.end, "line": l.line.map_or(-1, |j| j as i64), "any": l.any, "content": l.content, "contentSaid": l.content_said })).collect::<Vec<_>>(),
         "verseLines": c.verse_lines,
         "carries": carries_lines(c),
     })

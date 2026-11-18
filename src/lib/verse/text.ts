@@ -1259,13 +1259,17 @@ export interface CopyMeasure {
    * them that verse line says in order (`said`), that verse line's words (`verse`), whether it
    * says the source line's last word (`end`: the word a rhyme stands on), and which line of the
    * verse it is (`line`, an index into linesOf(verse); -1 when no line says any of it), and how many
-   * of the source line's words that verse line says in any order (`any`, each of its words used once).
+   * of the source line's words that verse line says in any order (`any`, each of its words used once),
+   * and how many content words the source line has (`content`, isContentWord) and how many of them
+   * that verse line says in any order (`contentSaid`): a line that keeps only the other's little words
+   * in their places ("Mes vers sont des pierres" for "Tes vers sont des feuilles") carries its frame,
+   * not what it says.
    * A copy
    * carries each line over into a line of its own, rhyme and all, with a word dropped and a few
    * put in; an answer throws words back into one line or two, and its little words seldom fall in
    * the other's order.
    */
-  carry: Array<{ source: number; said: number; verse: number; end: boolean; line: number; any: number }>;
+  carry: Array<{ source: number; said: number; verse: number; end: boolean; line: number; any: number; content: number; contentSaid: number }>;
   /** Lines of the verse (linesOf), to tell a verse that adds lines of its own from one that has only the source's. */
   verseLines: number;
 }
@@ -1409,6 +1413,7 @@ export function copyOf(verse: string, source: string, lang = 'en', opts: { all?:
  */
 function lineCarry(verse: string, source: string, lang: string, known: Set<string>, eq: (a: string, b: string) => boolean): CopyMeasure['carry'] {
   const theirs = linesOf(source).map((l) => copyWords(l, lang, new Set(), true));
+  const theirContent = linesOf(source).map((l) => copyWords(l, lang, new Set()));
   const mine = linesOf(verse)
     .map((l, at) => ({ at, ws: copyWords(l, lang, known, true) }))
     .filter((m) => m.ws.length > 0);
@@ -1420,12 +1425,21 @@ function lineCarry(verse: string, source: string, lang: string, known: Set<strin
     }),
   );
   pairs.sort((x, y) => y[0] - x[0] || x[1] - y[1] || x[2] - y[2]);
-  const out = theirs.map((s) => ({ source: s.length, said: 0, verse: 0, end: false, line: -1, any: 0 }));
+  const out = theirs.map((s, i) => ({ source: s.length, said: 0, verse: 0, end: false, line: -1, any: 0, content: theirContent[i].length, contentSaid: 0 }));
   const taken = new Set<number>();
   for (const [said, i, j] of pairs) {
     if (out[i].said || taken.has(j)) continue;
     const last = theirs[i].at(-1)!;
-    out[i] = { source: theirs[i].length, said, verse: mine[j].ws.length, end: mine[j].ws.some((w) => eq(w, last)), line: mine[j].at, any: saidAnyOrder(theirs[i], mine[j].ws, eq) };
+    out[i] = {
+      source: theirs[i].length,
+      said,
+      verse: mine[j].ws.length,
+      end: mine[j].ws.some((w) => eq(w, last)),
+      line: mine[j].at,
+      any: saidAnyOrder(theirs[i], mine[j].ws, eq),
+      content: theirContent[i].length,
+      contentSaid: saidAnyOrder(theirContent[i], mine[j].ws, eq),
+    };
     taken.add(j);
   }
   return out;

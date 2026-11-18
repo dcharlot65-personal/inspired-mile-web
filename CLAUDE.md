@@ -57,7 +57,8 @@ much of the opponent's it carries), so words added to every line do not hide one
 (`copyOf().carry`, `duel.ts carriesLines`: each of the opponent's lines carried into a line of its
 own that keeps its rhyme, the same last word or one that rhymes with it; or, when the verse has no
 line of its own beyond the other's, nearly whole whatever it ends on, or every line of it with
-COPY_LINE_SHARE of its words in order or COPY_LINE_ANY of them in any order), so moving the lines
+COPY_LINE_SHARE of its words in order or COPY_LINE_ANY of them in any order, one of its content words
+kept somewhere: a verse that keeps only the other's little words in place is a flip, its own), so moving the lines
 the way the form allows, swapping each rhyme word for another rhyme, or each line's last word and
 one more in a haiku, or its inner words about, does not hide one either. A word the
 lexicon lacks counts toward the floor inside a phrase (its line holds a little word, or every word
@@ -66,8 +67,11 @@ the pronunciation table (`pronounce.ts spellingTrigrams`; a drawn-out letter is 
 without one, a held sound (`HELD_SOUND`: brrr, skrrt, pssst, shhh, hmmm). So "finna", "varlet",
 "Mwangi" and "skrrt" count and keyboard mash does not; random letters with a vowel can, as a name
 can (`review4.test.ts` MASH-V). In Japanese a katakana word counts beside a word written otherwise,
-and in a verse with one line of Japanese or more the dictionary's own katakana words count in a run
-of two or more (サッカーボール) or alone; neither tells anything. The rule
+and in a verse with one line of Japanese or more a dictionary's katakana words count in a run of two
+or more (サッカーボール) or alone: the analyser's (IPADIC), or a run as written that IPADIC, JMdict's words
+or JMnedict's names have whole (ユーチューブ, ワンツー, レノン) or as two words of IPADIC's or JMdict's of
+LOANWORD_PART characters or more (スイートドリーム; `text.ts katakanaListed`, `review5.test.ts`); neither
+tells anything. The rule
 judge's wordplay is a count of different telling words over as many lines as both verses have (a
 line added past the other's length adds nothing), its flow is rhyme, lines opening on the same
 word that carries meaning (not a line that says the one before again: a chant), lines that grow and
@@ -78,7 +82,8 @@ sha256 (the script refuses a different file): `confusables.ts` (UTS #39, `build-
 `function-words/<lang>.ts` (stopwords-iso, `build-function-words.mjs`, loaded with the pack),
 `judge-words.ts` (above), `pron-en.ts` (below), `sound/ipadic/*.dat.gz` (kuromoji 0.1.2's IPADIC cut
 to what the engine reads, `scripts/sound/build-ipadic.mjs`; `sound/ipadic.test.ts` requires the same
-readings as the full dictionary).
+readings as the full dictionary), `sound/jmdict/*.dat.gz` (JMdict's words and JMnedict's names in
+katakana that IPADIC lacks, from jmdict-simplified, EDRDG, CC BY-SA 4.0: `scripts/sound/build-loanwords.mjs`).
 
 English rhyme and syllables are read from a pronunciation table, not guessed from spelling:
 `src/lib/verse/pron-en.ts` is GENERATED from the CMU Pronouncing Dictionary by
@@ -335,7 +340,8 @@ left behind by a killed run is found by its port: `lsof -nP -iTCP:<port> -sTCP:L
   character readings; built by `scripts/sound/build.mjs` from Wiktionary, Unihan and
   CC-CEDICT) and a Japanese analyser (kuromoji, with its dictionary cut to what the engine reads:
   `sound/ipadic`, 4.7 MB compressed and 16 MB unpacked where kuromoji's own was 17.8 and 100;
-  rebuild with `node scripts/sound/build-ipadic.mjs` after `npm ci`). `loadSound(lang)` goes beside
+  rebuild with `node scripts/sound/build-ipadic.mjs` after `npm ci`), and beside it the katakana
+  words and names it lacks (`sound/jmdict`, 0.38 MB, loaded with it). `loadSound(lang)` goes beside
   `loadPack(lang)` before `createDuel`; the battle page also starts it ahead of the duel when the
   visitor shows they are about to play (`battle.astro warm()`, above), so a Japanese duel need not
   wait for the dictionary when it starts. A first visitor who leaves the duel's settings alone
