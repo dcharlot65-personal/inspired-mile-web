@@ -38,8 +38,9 @@ export function allusionLexicon(lang = 'en'): Set<string> {
     for (const w of signatureWords(c)) if (!w.includes(' ') && letterCount(w) >= 4 && !STOP_WORDS.has(w)) lexicon.add(w);
   }
   if (b !== 'en') {
-    // The judge reads a verse word by word: a Vietnamese word of several syllables (vấn đề) is not one it can meet.
-    for (const c of CARD_CATALOG) for (const w of localSignatureWords(c, b)) if (!/\s/.test(w)) lexicon.add(wordKey(w, b));
+    // The judge reads a verse word by word: a Vietnamese word of several syllables (vấn đề), or a Thai one ICU cuts in
+    // pieces (โรสแมรี), is not one it can meet.
+    for (const c of CARD_CATALOG) for (const w of localSignatureWords(c, b)) if (wordsOf(w, b).length === 1) lexicon.add(wordKey(w, b));
     // One-word names only: a longer name's titles (Russian «граф») are not allusions by themselves.
     for (const n of localCharacterNames(b)) if (wordsOf(n, b).length === 1) lexicon.add(wordKey(n, b));
   }

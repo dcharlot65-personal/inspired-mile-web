@@ -1772,7 +1772,354 @@ const pack: CardTextPack = {
   "Pani",
   "Pluton",
   "Ulisses"
- ]
+ ],
+ "forms": {
+  "Achilles": [
+   "Achillesa",
+   "Achillesem",
+   "Achillesie",
+   "Achillesowi"
+  ],
+  "Afrodyta": [
+   "Afrodycie",
+   "Afrodyto",
+   "Afrodyty",
+   "Afrodytą",
+   "Afrodytę"
+  ],
+  "Agesandros": [
+   "Agesandrosa",
+   "Agesandrosem",
+   "Agesandrosie",
+   "Agesandrosowi"
+  ],
+  "Allan": [
+   "Allana",
+   "Allanem",
+   "Allanie",
+   "Allanowi"
+  ],
+  "Antoniusz": [
+   "Antoniusza",
+   "Antoniuszem",
+   "Antoniuszowi",
+   "Antoniuszu"
+  ],
+  "Apollo": [
+   "Apolla",
+   "Apollem",
+   "Apollowi",
+   "Apollu"
+  ],
+  "Ariel": [
+   "Ariela",
+   "Arielem",
+   "Arielowi",
+   "Arielu"
+  ],
+  "Atena": [
+   "Atenie",
+   "Ateno",
+   "Ateny",
+   "Ateną",
+   "Atenę"
+  ],
+  "Bajron": [
+   "Bajrona",
+   "Bajronem",
+   "Bajronie",
+   "Bajronowi"
+  ],
+  "Barrett": [
+   "Barretcie",
+   "Barretta",
+   "Barrettem",
+   "Barrettowi"
+  ],
+  "Benvolio": [
+   "Benvolia",
+   "Benvoliem",
+   "Benvoliowi",
+   "Benvoliu"
+  ],
+  "Blake": [
+   "Blake'a",
+   "Blake'owi",
+   "Blake'em",
+   "Blake'u"
+  ],
+  "Browning": [
+   "Browninga",
+   "Browningiem",
+   "Browningowi",
+   "Browningu"
+  ],
+  "Brutus": [
+   "Brutusa",
+   "Brutusem",
+   "Brutusie",
+   "Brutusowi"
+  ],
+  "Byron": [
+   "Byrona",
+   "Byronem",
+   "Byronie",
+   "Byronowi"
+  ],
+  "Bysshe": [
+   "Bysshe'a",
+   "Bysshe'owi",
+   "Bysshe'em",
+   "Bysshe'u"
+  ],
+  "Christina": [
+   "Christinie",
+   "Christino",
+   "Christiny",
+   "Christiną",
+   "Christinę"
+  ],
+  "Coleridge": [
+   "Coleridge'a",
+   "Coleridge'owi",
+   "Coleridge'em",
+   "Coleridge'u"
+  ],
+  "Cypryda": [
+   "Cyprydo",
+   "Cyprydy",
+   "Cyprydzie",
+   "Cyprydą",
+   "Cyprydę"
+  ],
+  "Dioneja": [
+   "Dionei",
+   "Dioneję",
+   "Dioneją",
+   "Dionejo"
+  ],
+  "Dzeus": [
+   "Dzeusa",
+   "Dzeusem",
+   "Dzeusie",
+   "Dzeusowi"
+  ],
+  "Edgar": [
+   "Edgara",
+   "Edgarem",
+   "Edgarowi",
+   "Edgarze"
+  ],
+  "Elizabeth": [
+   "Elizabetha",
+   "Elizabethem",
+   "Elizabethowi",
+   "Elizabethu"
+  ],
+  "Gordon": [
+   "Gordona",
+   "Gordonem",
+   "Gordonowi"
+  ],
+  "Hades": [
+   "Hadesa",
+   "Hadesem",
+   "Hadesie",
+   "Hadesowi"
+  ],
+  "Hamlet": [
+   "Hamlecie",
+   "Hamleta",
+   "Hamletem",
+   "Hamletowi"
+  ],
+  "Hermes": [
+   "Hermesa",
+   "Hermesem",
+   "Hermesie",
+   "Hermesowi"
+  ],
+  "Horacy": [
+   "Horacego",
+   "Horacemu",
+   "Horacym"
+  ],
+  "Horkios": [
+   "Horkiosa",
+   "Horkiosem",
+   "Horkiosie",
+   "Horkiosowi"
+  ],
+  "John": [
+   "Johna",
+   "Johnem",
+   "Johnie",
+   "Johnowi"
+  ],
+  "Julia": [
+   "Julii",
+   "Julię",
+   "Julią",
+   "Julio"
+  ],
+  "Kapulet": [
+   "Kapulecie",
+   "Kapuleta",
+   "Kapuletem",
+   "Kapuletowi"
+  ],
+  "Kasjusz": [
+   "Kasjusza",
+   "Kasjuszem",
+   "Kasjuszowi",
+   "Kasjuszu"
+  ],
+  "Keats": [
+   "Keatsa",
+   "Keatsem",
+   "Keatsie",
+   "Keatsowi"
+  ],
+  "Kipryda": [
+   "Kiprydo",
+   "Kiprydy",
+   "Kiprydzie",
+   "Kiprydą",
+   "Kiprydę"
+  ],
+  "Klaudiusz": [
+   "Klaudiusza",
+   "Klaudiuszem",
+   "Klaudiuszowi",
+   "Klaudiuszu"
+  ],
+  "Król": [
+   "Króla",
+   "Królem",
+   "Królowi",
+   "Królu"
+  ],
+  "Makbet": [
+   "Makbecie",
+   "Makbeta",
+   "Makbetem",
+   "Makbetowi"
+  ],
+  "Meduza": [
+   "Meduzie",
+   "Meduzo",
+   "Meduzy",
+   "Meduzą",
+   "Meduzę"
+  ],
+  "Merkucjo": [
+   "Merkucja",
+   "Merkucjem",
+   "Merkucjowi",
+   "Merkucju"
+  ],
+  "Miranda": [
+   "Mirando",
+   "Mirandy",
+   "Mirandzie",
+   "Mirandą",
+   "Mirandę"
+  ],
+  "Odys": [
+   "Odysa",
+   "Odysem",
+   "Odysie",
+   "Odysowi"
+  ],
+  "Odyseusz": [
+   "Odyseusza",
+   "Odyseuszem",
+   "Odyseuszowi",
+   "Odyseuszu"
+  ],
+  "Ofelia": [
+   "Ofelii",
+   "Ofelię",
+   "Ofelią",
+   "Ofelio"
+  ],
+  "Pallas": [
+   "Pallasa",
+   "Pallasem",
+   "Pallasie",
+   "Pallasowi"
+  ],
+  "Pan": [
+   "Panowi"
+  ],
+  "Persefona": [
+   "Persefonie",
+   "Persefono",
+   "Persefony",
+   "Persefoną",
+   "Persefonę"
+  ],
+  "Pluton": [
+   "Plutona",
+   "Plutonem",
+   "Plutonie",
+   "Plutonowi"
+  ],
+  "Prospero": [
+   "Prospera",
+   "Prosperem",
+   "Prosperowi",
+   "Prosperze"
+  ],
+  "Romeo": [
+   "Romea",
+   "Romeem",
+   "Romeowi",
+   "Romeu"
+  ],
+  "Samuel": [
+   "Samuela",
+   "Samuelem",
+   "Samuelowi",
+   "Samuelu"
+  ],
+  "Taylor": [
+   "Taylora",
+   "Taylorem",
+   "Taylorowi",
+   "Taylorze"
+  ],
+  "Tybalt": [
+   "Tybalcie",
+   "Tybalta",
+   "Tybaltem",
+   "Tybaltowi"
+  ],
+  "Ulisses": [
+   "Ulissesa",
+   "Ulissesem",
+   "Ulissesie",
+   "Ulissesowi"
+  ],
+  "William": [
+   "Williama",
+   "Williamem",
+   "Williamie",
+   "Williamowi"
+  ],
+  "Wordsworth": [
+   "Wordswortha",
+   "Wordsworthem",
+   "Wordsworthowi",
+   "Wordsworthu"
+  ],
+  "Zeus": [
+   "Zeusa",
+   "Zeusem",
+   "Zeusie",
+   "Zeusowi"
+  ]
+ }
 };
 
 export default pack;

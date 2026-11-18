@@ -25,15 +25,15 @@
  * - An English word of the line, or an English name, is said only as English writes it: a word with an accent or
  *   a tone mark is the duel language's own (Portuguese «põe», "puts", is not Poe; Vietnamese «sáng» is not "sang").
  *
- * Names are stricter than the words of a line, because a stem is shared by words that name nobody:
- * - where names decline, a declined form must keep the name's letters: in Russian and Polish, all but the name's
- *   last vowel, followed by one of the language's noun case endings (Джульетту, Julię, Antoniusza), and written with
- *   a capital; in German the name with its genitive -s or what Snowball's stem allows (Romeos, Hamlets); in Arabic
- *   the whole name with what Snowball's stem allows (والروميو). So German «wartest» ("you wait") is not «Wärterin»
- *   though Snowball stems both to "wart", Arabic «روما» (Rome) is not «روميو», and Russian «медузу» (a jellyfish) is
- *   not «Медузу»;
- * - elsewhere a name is the same word, compared as above (no stems: «prosperidad» is not «Próspero»), and a verse
- *   word that carries an accent the name does not is another word (typed without accents, the name still counts).
+ * Names are stricter than the words of a line: a name is the name, compared as above but never by a stem («prosperidad»
+ * is not «Próspero»), or, where names decline (Russian, Polish, German, Arabic), one of the forms the card text lists for
+ * it (pack.forms: Джульетту, Julię, Romeos, وروميو). Those come from one paradigm per ending, singular only
+ * (scripts/language/check/declension.py: an indeclinable name such as «Банко» has none), and Hunspell has dropped
+ * every form it knows as an ordinary word («Марку», to a stamp; Polish «Banku», of a bank). Matching by a stem and
+ * any case ending let common words in: Russian «Банки» ("banks"), «Дитя» ("child"), Polish «Kora» ("bark"), Arabic
+ * «بانكوك» (Bangkok), German «wartest» ("you wait") for «Wärterin». A declined form keeps the name's capital, where
+ * the name has one (Russian «марку», a stamp, is not «Марку»). A verse word that carries an accent the name or the
+ * form does not is another word (Polish «Bańka», "bubble"; typed without accents, the name still counts).
  *
  * What is not a telling word: the language's stop words (stopwords-iso), every word Wiktionary gives as a
  * pronoun, particle, conjunction, preposition, postposition, determiner or article (both lists are recorded in
@@ -54,13 +54,8 @@ import { stemmerFor } from './stem';
 import { fold, hiragana, letterCount, wordParts, wordSpan, wordsOf } from './text';
 
 const UNSPACED = new Set(['zh', 'ja', 'th']);
-/** Languages whose names decline, so a name is matched by its stem there. */
+/** Languages whose names change in a sentence; their forms are listed in the card text (pack.forms). */
 const NAMES_DECLINE = new Set(['ru', 'pl', 'de', 'ar']);
-/**
- * Of those, the ones whose script tells a name by its capital: a declined form written small is a common noun of
- * the same stem (Russian «марку», a stamp, beside «Марку», to Mark). German writes every noun with a capital.
- */
-const CAPITAL_TELLS = new Set(['ru', 'pl']);
 
 /**
  * Letters of the line that make a recital in an unspaced script: four English words' worth, by the median
@@ -208,10 +203,15 @@ interface Lists {
   alsoAfterL: Set<string>;
   /** Name words that are ordinary words of the language (Hunspell), which do not count as a name by themselves. */
   common: Set<string>;
-  /** Vietnamese: the line's words of more than one syllable, as the syllables' wordKeys joined by a space. */
+  /**
+   * Vietnamese: the line's words of more than one syllable, as the syllables' wordKeys joined by a space. Thai: the
+   * line's words as PyThaiNLP reads them, as their wordKeys (ICU's pieces of one, joined, make it).
+   */
   compounds: Set<string>;
-  /** The most syllables of any of them. */
+  /** The most syllables (Vietnamese) or ICU pieces (Thai) of any of them. */
   longest: number;
+  /** Russian, Polish, German, Arabic: the listed forms of each name word (pack.forms), by the word's wordKey. */
+  forms: Map<string, string[]>;
 }
 const lists = new Map<string, Lists>();
 function listsFor(lang: string): Lists {
@@ -228,8 +228,10 @@ function listsFor(lang: string): Lists {
     afterConsonant: new Set(pack?.particleForms?.afterConsonant ?? []),
     alsoAfterL: new Set(pack?.particleForms?.alsoAfterL ?? []),
     common: new Set((pack?.common ?? []).map((w) => wordKey(w, b))),
-    compounds: new Set((pack?.compounds ?? []).map((w) => syllableKeys(w, b).join(' '))),
-    longest: Math.max(1, ...(pack?.compounds ?? []).map((w) => syllableKeys(w, b).length)),
+    compounds: new Set((pack?.compounds ?? []).map((w) => compoundParts(w, b).join(COMPOUND_JOIN[b] ?? ' '))),
+    // One more than the most pieces, since ICU may cut a word in a line otherwise than alone.
+    longest: Math.max(1, ...(pack?.compounds ?? []).map((w) => compoundParts(w, b).length + (b === 'th' ? 1 : 0))),
+    forms: new Map(Object.entries(pack?.forms ?? {}).map(([w, fs]) => [wordKey(w, b), fs])),
   };
   if (pack) lists.set(b, l);
   return l;
@@ -306,22 +308,35 @@ function syllableKeys(word: string, lang: string): string[] {
   return wordsOf(word.replace(/[-‐]/g, ' '), lang).map((w) => wordKey(w, lang));
 }
 
+/** How the parts of a word of pack.compounds are written together: Vietnamese syllables with a space, Thai pieces with nothing. */
+const COMPOUND_JOIN: Record<string, string> = { vi: ' ', th: '' };
+
+/** The parts of a word of pack.compounds, as wordKey compares each: Vietnamese syllables, Thai ICU pieces. */
+function compoundParts(word: string, lang: string): string[] {
+  return lang === 'th' ? wordsOf(word, lang).map((w) => wordKey(w, lang)) : syllableKeys(word, lang);
+}
+
 /**
- * The words of a line as the signature reads them: wordsIn, and in Vietnamese the syllables of a word of more than
- * one syllable (pack.compounds) taken together, the longest first.
+ * The words of a line as the signature reads them: wordsIn, and the parts of a word of pack.compounds taken together,
+ * the longest first: in Vietnamese the syllables of a word of more than one (vấn đề), in Thai the pieces ICU cuts a
+ * word into (โรสแมรี, "rosemary", which ICU reads as โรส, "rose", and แมรี, "Mary").
  */
 function lineWords(text: string, lang: string): string[] {
   const b = baseLang(lang);
   const ws = wordsIn(text, b);
-  if (b !== 'vi') return ws;
+  const join = COMPOUND_JOIN[b];
+  if (join === undefined) return ws;
   const l = listsFor(b);
   if (!l.compounds.size) return ws;
   const keys = ws.map((w) => wordKey(w, b));
   const out: string[] = [];
+  // A Thai word one of whose pieces is a function word is a phrase that holds one (ขอให้, "let", is ขอ and ให้): the
+  // stop list decides its pieces, as before.
+  const whole = (i: number, n: number) => l.compounds.has(keys.slice(i, i + n).join(join)) && (b !== 'th' || !ws.slice(i, i + n).some((w) => isStop(w, b)));
   for (let i = 0; i < ws.length; ) {
     let n = Math.min(l.longest, ws.length - i);
-    for (; n > 1; n--) if (l.compounds.has(keys.slice(i, i + n).join(' '))) break;
-    out.push(ws.slice(i, i + n).join(' '));
+    for (; n > 1; n--) if (whole(i, n)) break;
+    out.push(ws.slice(i, i + n).join(join));
     i += n;
   }
   return out;
@@ -584,26 +599,9 @@ export function localCharacterNames(lang: string): string[] {
 }
 
 /**
- * Russian and Polish names change their last vowel as they decline (Джульетта, Джульетту; Julia, Julię; Polish
- * also drops the e of -ek and -ec: Marek, Marka); what a declined form keeps is the rest.
+ * Is one word of a name (as the name writes it) said by one word of the verse (as the verse writes it)? The word
+ * itself, or in Russian, Polish, German and Arabic one of its listed forms (pack.forms).
  */
-function declensionBase(key: string, lang: string): string {
-  if (lang === 'ru') return key.replace(/[аяоеьйиыуюэ]$/u, '');
-  if (lang === 'pl') return key.replace(/[aeiouy]$/u, '').replace(/e([kc])$/u, '$1');
-  return key;
-}
-
-/**
- * The case endings of Russian and Polish nouns, singular and plural, folded as wordKey folds them (ё as е; Polish
- * ę, ą and ó as e, a and o): the endings of the standard declension paradigms, written out here by hand (no file
- * was fetched for them). A declined name is its base and one of these.
- */
-const CASE_ENDINGS: Record<string, Set<string>> = {
-  ru: new Set(['а', 'я', 'у', 'ю', 'ом', 'ем', 'ой', 'ей', 'ою', 'ею', 'е', 'и', 'ы', 'ам', 'ям', 'ами', 'ями', 'ах', 'ях', 'ов', 'ев']),
-  pl: new Set(['a', 'u', 'owi', 'em', 'ie', 'y', 'i', 'e', 'o', 'om', 'ami', 'ach', 'ow']),
-};
-
-/** Is one word of a name said by one word of the verse (as the verse writes it)? */
 function saysNameWord(name: string, verseWord: string, lang: string): boolean {
   const b = baseLang(lang);
   if (b === 'ko') {
@@ -613,25 +611,22 @@ function saysNameWord(name: string, verseWord: string, lang: string): boolean {
   }
   const n = wordKey(name, b);
   const v = wordKey(verseWord, b);
-  if (NAMES_DECLINE.has(b) && n !== v) {
-    if (CAPITAL_TELLS.has(b)) {
-      const base = declensionBase(n, b);
-      return v.startsWith(base) && CASE_ENDINGS[b].has(v.slice(base.length)) && /^\p{Lu}/u.test(verseWord);
-    }
-    if (b === 'de' && v === `${n}s`) return true;
-    if (!stemmerFor(b) || !sameStem(name, verseWord, b)) return false;
-    return b === 'ar' ? v.includes(n) : v.startsWith(n);
-  }
-  if (n !== v) return false;
-  // Typed without accents the name still counts; with an accent the name does not have, it is another word.
-  return !hasLatinMark(verseWord) || verseWord.normalize('NFC').toLowerCase() === name.normalize('NFC').toLowerCase() || b === 'vi';
+  // Typed without accents the name still counts; with an accent the name (or its form) does not have, it is another word.
+  const asWritten = (w: string) => b === 'vi' || !hasLatinMark(verseWord) || verseWord.normalize('NFC').toLowerCase() === w.normalize('NFC').toLowerCase();
+  if (n === v) return asWritten(name);
+  if (!NAMES_DECLINE.has(b)) return false;
+  const form = listsFor(b).forms.get(n)?.find((f) => wordKey(f, b) === v);
+  if (!form || !asWritten(form)) return false;
+  // A declined name keeps its capital (Russian «марку», a stamp, is not «Марку», to Mark); Arabic has no capitals.
+  return !/^\p{Lu}/u.test(name) || /^\p{Lu}/u.test(verseWord);
 }
 
 /** The verse's words that say this name (one or more words, in a row), folded; or null. */
 function saidName(name: string, verse: string, lang: string): string[] | null {
   const b = baseLang(lang);
   if (UNSPACED.has(b)) return spelledBySegments(letters(name), segmentsOf(verse, b), false);
-  const n = wordsOf(name, b);
+  // The name's words as it writes them (wordsOf lower-cases), so a declined form can be held to the name's capital.
+  const n = name.match(WORD_RE) ?? [];
   const v = wordsWritten(verse, b);
   for (let i = 0; i + n.length <= v.length; i++) if (n.every((w, j) => saysNameWord(w, v[i + j], b))) return v.slice(i, i + n.length).map(fold);
   return null;

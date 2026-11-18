@@ -1,9 +1,12 @@
 // The signature and the invocation must not land by accident: on a pronoun, a particle, a piece of a word, a
 // toneless prefix or a title. These are the verses an independent check found landing (2026-11-16), and the rate
 // at which verses that were not written for any card land on a character card, in every language.
+import { readFileSync } from 'node:fs';
 import { beforeAll, describe, expect, it } from 'vitest';
 import { CARD_CATALOG, getCardById } from '../cards';
 import { DEVICES, checkSignature, invocationNames } from '../verse/devices';
+import { scoreVerse } from '../verse/duel';
+import { getForm } from '../verse/forms';
 import { localCharacterNames, localSignatureWords, RECITE_LETTERS, saysWord, wordKey } from '../verse/echo';
 import { getPack, loadAllPacks, PACK_LANGS } from '../verse/packs';
 import { wordsOf } from '../verse/text';
@@ -293,13 +296,108 @@ describe('a name is not invoked by a word that only shares its stem', () => {
     expect(Object.keys(rates('de').names)).not.toContain('Wärterin');
   });
   it('a declined name still invokes, and so does the name however it is written', () => {
+    // «Марка» and Polish «Marka» are also forms of "a stamp", "a brand" (марка, marka), so Hunspell dropped them: Mark
+    // Antony is invoked there by his last name, as in English.
     const cases = [
       ['Ich rufe Romeo', 'de', 'Romeo'], ['Romeos Ring glänzt', 'de', 'Romeo'], ['Hamlets Frage', 'de', 'Hamlet'], ['Julias Brief', 'de', 'Julia'],
-      ['أنا وروميو', 'ar', 'روميو'], ['Я вижу Марка Антония', 'ru', 'Марк Антоний'], ['Зову Джульетту', 'ru', 'Джульетта'],
-      ['Я видел Медузу', 'ru', 'Медуза'], ['Медуза спит', 'ru', 'Медуза'],
-      ['Kocham Julię', 'pl', 'Julia'], ['Widzę Marka Antoniusza', 'pl', 'Marek Antoniusz'], ['Widzę Antoniusza', 'pl', 'Antoniusz'],
+      ['أنا وروميو', 'ar', 'روميو'], ['Я вижу Марка Антония', 'ru', 'Антоний'], ['Зову Джульетту', 'ru', 'Джульетта'],
+      ['Я видел Медузу', 'ru', 'Медуза'], ['Медуза спит', 'ru', 'Медуза'], ['Вот Марк Антоний', 'ru', 'Марк Антоний'],
+      ['Kocham Julię', 'pl', 'Julia'], ['Widzę Marka Antoniusza', 'pl', 'Antoniusz'], ['Widzę Antoniusza', 'pl', 'Antoniusz'],
+      ['O Hamlecie śnię', 'pl', 'Hamlet'], ['Pieśń Blake\'a', 'pl', 'Blake'], ['Zeusowi chwała', 'pl', 'Zeus'],
     ] as const;
     for (const [v, l, name] of cases) expect([l, v, inv(v, l).detail]).toEqual([l, v, name]);
+  });
+});
+
+// The third check (2026-11-17) found the case-ending rule above still letting common words in: every name took every
+// noun ending. A name now takes only the forms its paradigm has, less those Hunspell knows as ordinary words
+// (pack.forms, docs/language/checks/name-forms.json).
+describe('no ordinary word invokes a character, however it declines', () => {
+  /** A Rome-house card, whose device is the Invocation, on the couplet form: what the duel itself scores. */
+  const device = (verse: string, lang: string) =>
+    scoreVerse({ verse, form: getForm('couplet'), ctx: { lang }, card: getCardById('RM-001')!, deckCharacters: ['RM-001', 'RM-002', 'RM-003'] }).device;
+  it('the third check’s verses: child, banks, Athens, bubble, bark, imaginations and Bangkok name nobody', () => {
+    const cases = [
+      ['ru', 'Дитя моё, усни под шум дождя\nЛуна плывёт над тихою рекой'], // Дит (Dis) + я
+      ['ru', 'Банки закрыты, город спит\nИ ветер в окна мне стучит'], // Банко does not decline in Russian
+      ['ru', 'В Афинах ночь темна и холодна\nИ над морем светит мне луна'], // Athens; a name has no plural forms
+      ['pl', 'W Atenach noc jest ciemna i zła\nA nad morzem świeci gwiazda ma'],
+      ['pl', 'Banku nie ma, miasto śpi\nWiatr do okna puka mi'], // of a bank (Hunspell), not of Banquo
+      ['pl', 'Bańka pękła, miasto śpi\nWiatr do okna puka mi'], // a bubble: ń is not n
+      ['pl', 'Kora drzewa, miasto śpi\nWiatr do okna puka mi'], // bark; Kore does not decline
+      ['ar', 'تسكنني الأخيلة في الليل\nوالقمر يضيء الطريق'], // "imaginations", not Achilles
+      ['ar', 'سافرت إلى بانكوك\nوالقمر يضيء الطريق'], // Bangkok, not Banquo
+    ] as const;
+    for (const [l, v] of cases) {
+      const d = device(v, l);
+      expect([l, v, d.id, d.met]).toEqual([l, v, 'invocation', false]);
+    }
+    // And the names themselves still land it.
+    for (const [l, v] of [['ru', 'Брут, ты предал всё, что знал\nИ нож в руке твоей дрожал'], ['ru', 'Я вижу Марка Антония\nИ нож в руке твоей дрожал'],
+      ['pl', 'Widzę Marka Antoniusza\nWiatr do okna puka mi'], ['ar', 'أنا وروميو\nوالقمر يضيء الطريق']] as const) {
+      expect([l, v, device(v, l).met]).toEqual([l, v, true]);
+    }
+  });
+
+  const NEAR = JSON.parse(readFileSync('docs/language/sources/opensubtitles-near-names.json', 'utf8')) as { words: Record<string, string[]> };
+  const capital = (w: string) => w.charAt(0).toLocaleUpperCase() + w.slice(1);
+  /** Every word of the subtitle lists near a name (scripts/language/fetch/near_names.py), as written and with a capital, that invokes. */
+  const scan = () => {
+    const hits: { lang: string; word: string; name: string }[] = [];
+    for (const [lang, words] of Object.entries(NEAR.words)) {
+      for (const w of words) for (const s of new Set([w, capital(w)])) {
+        const r = inv(s, lang);
+        if (r.met) hits.push({ lang, word: s, name: r.detail });
+      }
+    }
+    return hits;
+  };
+  let hits: ReturnType<typeof scan> = [];
+  beforeAll(() => {
+    hits = scan();
+  }, 600_000);
+
+  it('the 50,000 commonest words in film subtitles: only a name, or a form listed for it, invokes', () => {
+    // A name or a listed form, in any case; the English names count in every language as English writes them.
+    const nameWord = (lang: string, word: string, name: string) => {
+      const k = wordKey(word, lang).replace(/[.]$/u, '');
+      const words = (name.match(/[\p{L}\p{M}'’\-]+/gu) ?? []).map((w) => wordKey(w, lang));
+      const forms = Object.entries(getCardText(lang)?.forms ?? {}).filter(([w]) => words.includes(wordKey(w, lang))).flatMap(([, fs]) => fs.map((f) => wordKey(f, lang)));
+      return words.includes(k) || forms.includes(k) || words.includes(k.replace(/-.*$/u, '')) || (lang === 'ko' && words.some((w) => k.startsWith(w)));
+    };
+    const strays = hits.filter((h) => !nameWord(h.lang, h.word, h.name)).map((h) => `${h.lang} ${h.word} -> ${h.name}`);
+    expect(strays).toEqual([]);
+    expect(hits.length).toBeGreaterThan(500); // the scan reads the names it should
+  });
+
+  it('the declined forms that occur in subtitles are forms of the name (read one by one); two are also other names', () => {
+    const declined = hits.filter((h) => ['ru', 'pl', 'de', 'ar'].includes(h.lang) && wordKey(h.word, h.lang) !== wordKey(h.name.split(/\s+/).pop()!, h.lang));
+    expect(declined.map((h) => `${h.lang} ${h.word}`).sort()).toEqual([
+      'ar لباريس', // "to Paris"
+      'de Blakes', 'de Julias', 'de Mirandas',
+      'pl Ateny', // also Athens (Hunspell: a proper noun), kept as English keeps Paris
+      'pl Hamleta', 'pl Julie', /* Julię typed without its ogonek */ 'pl Julii', 'pl Julio', 'pl Julię', 'pl Meduzy', 'pl Mirandy', 'pl Mirando', 'pl Mirandę',
+      'pl Romea', 'pl Zeusa',
+      'ru Аида', // also Aida (not in Hunspell's dictionary), the genitive of Аид
+      'ru Антония', 'ru Афины', /* also Athens, as Polish Ateny */ 'ru Байрона', 'ru Блейка', 'ru Гамлета', 'ru Джульетте', 'ru Джульетту', 'ru Джульетты',
+      'ru Зевса', 'ru Клавдия', /* also the name Klavdiya (Hunspell) */ 'ru Медузы', 'ru Миранды', 'ru Миранду', 'ru Оливией', 'ru Оливии', 'ru Оливию', 'ru Пака',
+    ].sort());
+  });
+
+  it('every word of every name has its forms on record (run.sh forms after a name changes)', () => {
+    const rec = JSON.parse(readFileSync('docs/language/checks/name-forms.json', 'utf8')).languages as Record<string, Record<string, unknown>>;
+    for (const lang of ['ru', 'pl', 'de', 'ar']) {
+      const pack = getCardText(lang)!;
+      for (const c of CHARACTERS) {
+        const e = pack.cards[c.id];
+        if (!e.name || e.nameSource === 'missing' || e.nameSource === 'kept') continue;
+        for (const t of [e.name.replace(/,.*$/u, ''), ...(e.aliases ?? [])]) {
+          for (const w of t.match(/[\p{L}\p{M}]+(?:['’\-][\p{L}\p{M}]+)*/gu) ?? []) expect([lang, c.id, w, w in rec[lang]]).toEqual([lang, c.id, w, true]);
+        }
+      }
+      // Every form in the card text is one the record kept.
+      for (const [w, fs] of Object.entries(pack.forms ?? {})) expect([lang, w, fs]).toEqual([lang, w, (rec[lang][w] as { forms: string[] }).forms]);
+    }
   });
 });
 
@@ -440,6 +538,33 @@ describe('what the player is shown', () => {
   it('the words that landed it come back for the multiplier, folded as the verse says them', () => {
     expect(sig('CA-001', 'Die Rose duftet im Dunkeln', 'de')).toMatchObject({ met: true, words: ['rose', 'duftet'] });
     expect(inv('Kocham Julię', 'pl').words).toEqual(['julie']);
+  });
+});
+
+// The third check (2026-11-17): Ophelia's line landed on two fragments, Korean 있어요 ("there is") with 위한 or
+// 것이지요, and Thai โรส and แมรี, the two pieces ICU cuts โรสแมรี ("rosemary") into.
+describe('Korean and Thai lines are read by analysers made for them', () => {
+  it('Korean: an auxiliary, a bound noun or the verb "to be" is not a telling word (Kiwi); a unit after a number is', () => {
+    const ko = localSignatureWords(getCardById('DC-002')!, 'ko');
+    expect(ko).not.toContain('있어요');
+    expect(ko).not.toContain('것이지요');
+    expect(ko).toEqual(expect.arrayContaining(['로즈메리가', '기억을']));
+    expect(sig('DC-002', '나를 위한 노래가 여기 있어요', 'ko').met).toBe(false);
+    expect(sig('DC-002', '밤은 깊어요\n당신은 여기 있어요, 그런 것이지요', 'ko').met).toBe(false);
+    expect(sig('DC-002', '로즈메리를 들고 기억을 되새긴다', 'ko').met).toBe(true);
+    // 한 바퀴 is "one round": 바퀴 after a number is a unit, and a word of Puck's line; 적, in 순탄한 적이 없었다 ("never
+    // did run smooth"), is a bound noun of grammar.
+    expect(localSignatureWords(getCardById('PT-003')!, 'ko')).toContain('바퀴');
+    expect(localSignatureWords(getCardById('PT-001')!, 'ko')).not.toContain('적이');
+  });
+  it('Thai: โรสแมรี is one word, not "rose" and "Mary" (PyThaiNLP newmm)', () => {
+    const th = localSignatureWords(getCardById('DC-002')!, 'th');
+    expect(th).toContain('โรสแมรี');
+    expect(th).not.toContain('โรส');
+    expect(th).not.toContain('แมรี');
+    expect(sig('DC-002', 'แมรีกับโรสเดินไปตลาด', 'th').met).toBe(false);
+    expect(sig('DC-002', 'แมรีเดินไปตลาด', 'th').met).toBe(false);
+    expect(sig('DC-002', 'กลิ่นโรสแมรีปลุกความทรงจำ', 'th').met).toBe(true);
   });
 });
 

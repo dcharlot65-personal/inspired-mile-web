@@ -1,7 +1,7 @@
 #!/bin/bash
 # Tool checks of the card text written for the game, on a build host.
 #
-#   ~/kani-logs/remote/rb . -- 'bash scripts/language/check/run.sh [setup|selftest|spell|grammar|meaning|names|all|detach <step>|status]'
+#   ~/kani-logs/remote/rb . -- 'bash scripts/language/check/run.sh [setup|selftest|selftest-light|spell|grammar|meaning|names|forms|all|detach <step>|status]'
 #
 # The tools live in $CHECK_HOME, this task's own directory on the host: LanguageTool 6.6, Hunspell
 # 1.7.2 with LibreOffice's dictionaries, MADLAD-400 3B (CTranslate2 int8), all-MiniLM-L6-v2 and LaBSE,
@@ -20,10 +20,10 @@ CHECK_HOME=${CHECK_HOME:-$ROOT_DEFAULT/im-lang/names-quotes}
 MEMGUARD=${MEMGUARD:-$ROOT_DEFAULT/bin/memguard}
 for j in /opt/homebrew/opt/openjdk/bin /usr/local/opt/openjdk/bin; do [ -x "$j/java" ] && export PATH=$j:$PATH; done
 export PATH=/opt/homebrew/bin:/usr/local/bin:$PATH
-export HSPELL=$CHECK_HOME/hunspell/bin/hspell DICT_DIR=$CHECK_HOME/dict
+export HSPELL=$CHECK_HOME/hunspell/bin/hspell HSTEM=$CHECK_HOME/hunspell/bin/hstem DICT_DIR=$CHECK_HOME/dict
 export MADLAD_DIR=$CHECK_HOME/models/madlad400-3b-mt-ct2-int8 MINILM_DIR=$CHECK_HOME/models/all-MiniLM-L6-v2 LABSE_DIR=$CHECK_HOME/models/LaBSE
 export HF_HOME=$CHECK_HOME/cache/hf TMPDIR=$CHECK_HOME/tmp HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 TOKENIZERS_PARALLELISM=false
-export PY=$CHECK_HOME/venv/bin/python
+export PY=$CHECK_HOME/venv/bin/python PYTHONDONTWRITEBYTECODE=1
 # torch and ctranslate2 each bring their own copy of Intel's OpenMP runtime (libiomp5) on an Intel Mac; with both
 # loaded, the process hung in an OpenMP barrier while LaBSE's weights loaded (iMac Pro, 2026-11-16). One OpenMP
 # thread for torch avoids it; ctranslate2 keeps its own threads (BT_THREADS).
@@ -59,6 +59,10 @@ build_hspell() {
   if [ ! -x "$HSPELL" ] || [ scripts/language/check/hspell.cpp -nt "$HSPELL" ]; then
     clang++ -std=c++17 -O1 -I"$CHECK_HOME/hunspell/include" scripts/language/check/hspell.cpp "$CHECK_HOME"/hunspell/lib/libhunspell-1.7.a -liconv -o "$HSPELL"
   fi
+  # hstem (Hunspell's stems of a word, for the forms of names) is built the same way.
+  if [ ! -x "$HSTEM" ] || [ scripts/language/check/hstem.cpp -nt "$HSTEM" ]; then
+    clang++ -std=c++17 -O1 -I"$CHECK_HOME/hunspell/include" scripts/language/check/hstem.cpp "$CHECK_HOME"/hunspell/lib/libhunspell-1.7.a -liconv -o "$HSTEM"
+  fi
 }
 
 case "$STEP" in
@@ -70,6 +74,9 @@ case "$STEP" in
   selftest) build_hspell; bt_script_ok; start_lt; "$MEMGUARD" --max-gb 14 -- "$PY" scripts/language/check/check.py selftest ;;
   spell) build_hspell; "$PY" scripts/language/check/check.py spell "$TMPDIR/card-items.json" "$OUT/spelling.json" ;;
   names) build_hspell; "$PY" scripts/language/check/check.py names "$TMPDIR/card-items.json" "$OUT/name-words.json" ;;
+  # The spelling, name-word and name-form self-tests alone (no LanguageTool server, no translation model).
+  selftest-light) build_hspell; env -u MADLAD_DIR -u LT_URL "$PY" scripts/language/check/check.py selftest ;;
+  forms) build_hspell; "$PY" scripts/language/check/check.py forms "$TMPDIR/card-items.json" "$OUT/name-forms.json" ;;
   grammar) start_lt; "$PY" scripts/language/check/check.py grammar "$TMPDIR/card-items.json" "$OUT/grammar.json" ;;
   meaning) bt_script_ok; "$MEMGUARD" --max-gb 14 -- "$PY" scripts/language/check/check.py meaning "$TMPDIR/card-items.json" "$OUT/backtranslation.json" ;;
   all)
@@ -77,6 +84,7 @@ case "$STEP" in
     "$MEMGUARD" --max-gb 14 -- "$PY" scripts/language/check/check.py selftest
     "$PY" scripts/language/check/check.py spell "$TMPDIR/card-items.json" "$OUT/spelling.json"
     "$PY" scripts/language/check/check.py names "$TMPDIR/card-items.json" "$OUT/name-words.json"
+    "$PY" scripts/language/check/check.py forms "$TMPDIR/card-items.json" "$OUT/name-forms.json"
     "$PY" scripts/language/check/check.py grammar "$TMPDIR/card-items.json" "$OUT/grammar.json"
     "$MEMGUARD" --max-gb 14 -- "$PY" scripts/language/check/check.py meaning "$TMPDIR/card-items.json" "$OUT/backtranslation.json" ;;
   detach)

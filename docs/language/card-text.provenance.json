@@ -3737,7 +3737,17 @@
      "name": {
       "text": "Achilleus",
       "source": "wikidata",
-      "detail": "Q41746 label (de)"
+      "detail": "Q41746 label (de)",
+      "aliasesNotTaken": [
+       {
+        "alias": "Archill",
+        "why": "a misspelling: 3 de.wikipedia articles, against 416 for «Achill»"
+       },
+       {
+        "alias": "Archilles",
+        "why": "a misspelling: 17 de.wikipedia articles, against 416 for «Achill»; German writes Achilleus or Achilles"
+       }
+      ]
      },
      "quote": {
       "text": "Lieber lebe ich ein kurzes Leben voll Ruhm als ein langes in Vergessenheit.",
@@ -8372,7 +8382,13 @@
      "name": {
       "text": "Афродита",
       "source": "wikidata",
-      "detail": "Q35500 label (ru)"
+      "detail": "Q35500 label (ru)",
+      "aliasesNotTaken": [
+       {
+        "alias": "Афродиты",
+        "why": "the genitive of «Афродита», not another name of her"
+       }
+      ]
      },
      "quote": {
       "text": "Даже боги не могут устоять перед силой любви.",
@@ -8398,7 +8414,13 @@
      "name": {
       "text": "Аид",
       "source": "wikidata",
-      "detail": "Q41410 label (ru)"
+      "detail": "Q41410 label (ru)",
+      "aliasesNotTaken": [
+       {
+        "alias": "Дит",
+        "why": "Dis (Dis Pater), the Roman god of the dead whom Rome identified with Hades, not a name of Hades himself (Плутон, from the Greek Πλούτων, is one); three letters, and Russian «Дитя» (\"child\") begins with it"
+       }
+      ]
      },
      "quote": {
       "text": "Все души в конце приходят ко мне. Я терпелив.",
@@ -8450,7 +8472,13 @@
      "name": {
       "text": "Ахилл",
       "source": "wikidata",
-      "detail": "Q41746 label (ru)"
+      "detail": "Q41746 label (ru)",
+      "aliasesNotTaken": [
+       {
+        "alias": "Ахилесс",
+        "why": "a misspelling: 2 ru.wikipedia articles, against 572 for «Ахиллес» and 19 for «Ахилес»"
+       }
+      ]
      },
      "quote": {
       "text": "Лучше прожить короткую жизнь в славе, чем долгую в забвении.",

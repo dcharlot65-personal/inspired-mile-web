@@ -530,10 +530,10 @@ const pack: CardTextPack = {
    "nameSource": "wikidata",
    "name": "Achilleus",
    "aliases": [
-    "Archill",
     "Achill",
     "Pelide",
-    "Archilles"
+    "Archilleus",
+    "Αχιλλέας"
    ],
    "quote": "Lieber lebe ich ein kurzes Leben voll Ruhm als ein langes in Vergessenheit.",
    "quoteSource": "new",
@@ -1548,7 +1548,198 @@ const pack: CardTextPack = {
   "Marcus",
   "Prinz",
   "Taylor"
- ]
+ ],
+ "forms": {
+  "Achill": [
+   "Achills"
+  ],
+  "Afrodite": [
+   "Afrodites"
+  ],
+  "Allan": [
+   "Allans"
+  ],
+  "Aphrodite": [
+   "Aphrodites"
+  ],
+  "Apoll": [
+   "Apolls"
+  ],
+  "Apollon": [
+   "Apollons"
+  ],
+  "Ariel": [
+   "Ariels"
+  ],
+  "Athene": [
+   "Athenes"
+  ],
+  "Banquo": [
+   "Banquos"
+  ],
+  "Barrett": [
+   "Barretts"
+  ],
+  "Benvolio": [
+   "Benvolios"
+  ],
+  "Blake": [
+   "Blakes"
+  ],
+  "Browning": [
+   "Brownings"
+  ],
+  "Bruder": [
+   "Bruders"
+  ],
+  "Byron": [
+   "Byrons"
+  ],
+  "Bysshe": [
+   "Bysshes"
+  ],
+  "Caliban": [
+   "Calibans"
+  ],
+  "Capulet": [
+   "Capulets"
+  ],
+  "Christina": [
+   "Christinas"
+  ],
+  "Coleridge": [
+   "Coleridges"
+  ],
+  "Droll": [
+   "Drolls"
+  ],
+  "Edgar": [
+   "Edgars"
+  ],
+  "Elizabeth": [
+   "Elizabeths"
+  ],
+  "Gordon": [
+   "Gordons"
+  ],
+  "Graf": [
+   "Grafs"
+  ],
+  "Gräfin": [
+   "Gräfins"
+  ],
+  "Hamlet": [
+   "Hamlets"
+  ],
+  "Horatio": [
+   "Horatios"
+  ],
+  "John": [
+   "Johns"
+  ],
+  "Julia": [
+   "Julias"
+  ],
+  "Kora": [
+   "Koras"
+  ],
+  "Kore": [
+   "Kores"
+  ],
+  "Kronion": [
+   "Kronions"
+  ],
+  "Lady": [
+   "Ladys"
+  ],
+  "Lorenzo": [
+   "Lorenzos"
+  ],
+  "Macbeth": [
+   "Macbeths"
+  ],
+  "Malvolio": [
+   "Malvolios"
+  ],
+  "Mary": [
+   "Marys"
+  ],
+  "Medusa": [
+   "Medusas"
+  ],
+  "Mercutio": [
+   "Mercutios"
+  ],
+  "Miranda": [
+   "Mirandas"
+  ],
+  "Montague": [
+   "Montagues"
+  ],
+  "Oberon": [
+   "Oberons"
+  ],
+  "Ophelia": [
+   "Ophelias"
+  ],
+  "Pelide": [
+   "Pelides"
+  ],
+  "Percy": [
+   "Percys"
+  ],
+  "Persephone": [
+   "Persephones"
+  ],
+  "Poe": [
+   "Poes"
+  ],
+  "Prospero": [
+   "Prosperos"
+  ],
+  "Psychagog": [
+   "Psychagogs"
+  ],
+  "Puck": [
+   "Pucks"
+  ],
+  "Puk": [
+   "Puks"
+  ],
+  "Romeo": [
+   "Romeos"
+  ],
+  "Rossetti": [
+   "Rossettis"
+  ],
+  "Samuel": [
+   "Samuels"
+  ],
+  "Shelley": [
+   "Shelleys"
+  ],
+  "Taylor": [
+   "Taylors"
+  ],
+  "Tybalt": [
+   "Tybalts"
+  ],
+  "William": [
+   "Williams"
+  ],
+  "Wordsworth": [
+   "Wordsworths"
+  ],
+  "Wärterin": [
+   "Wärterins"
+  ],
+  "Zettel": [
+   "Zettels"
+  ],
+  "Αχιλλέας": [
+   "Αχιλλέαςs"
+  ]
+ }
 };
 
 export default pack;

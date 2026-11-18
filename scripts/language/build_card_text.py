@@ -15,6 +15,10 @@ Inputs, all in the repository:
                                                in the game's lines (Wiktionary via kaikki.org; fetch/vi_compounds.py)
   docs/language/checks/name-words.json         which words of a longer character name are ordinary words (Hunspell;
                                                run.sh names), so they do not count as a name by themselves
+  docs/language/checks/line-segments.json      the Korean lines' function words (Kiwi) and the Thai lines' words (PyThaiNLP
+                                               newmm), check/segment.py
+  docs/language/checks/name-forms.json         the forms a name takes in a Russian, Polish, German or Arabic sentence that
+                                               the invocation accepts (check/declension.py, put to Hunspell; run.sh forms)
   scripts/language/published.json              who translated each published text, and its copyright status
   scripts/language/translated/<lang>.txt       what was translated for the game (no published source)
   src/i18n/locales/<lang>.ts                   rarity names, so a rarity is called one thing everywhere
@@ -303,6 +307,14 @@ NOT_ALIAS = {
     ('de', 'Abadonna'): 'the fallen angel of Klopstock\'s Messias (Abaddon), not a name of Apollo',
     ('de', 'Uthuce'): 'the Etruscan name of Odysseus, not a German one',
     ('zh', '哈里斯'): '"Harris"; no Chinese source gives it for Hades',
+    # Found by the second check (2026-11-17). The counts are articles ru.wikipedia's or de.wikipedia's search finds the
+    # spelling in, quoted ("…"), on 2026-11-17.
+    ('ru', 'Афродиты'): 'the genitive of «Афродита», not another name of her',
+    ('ru', 'Ахилесс'): 'a misspelling: 2 ru.wikipedia articles, against 572 for «Ахиллес» and 19 for «Ахилес»',
+    ('ru', 'Дит'): 'Dis (Dis Pater), the Roman god of the dead whom Rome identified with Hades, not a name of Hades himself '
+                   '(Плутон, from the Greek Πλούτων, is one); three letters, and Russian «Дитя» ("child") begins with it',
+    ('de', 'Archill'): 'a misspelling: 3 de.wikipedia articles, against 416 for «Achill»',
+    ('de', 'Archilles'): 'a misspelling: 17 de.wikipedia articles, against 416 for «Achill»; German writes Achilleus or Achilles',
 }
 LETTERS_ONLY = r'[\p{L}\p{M}]+(?:[\-‐][\p{L}\p{M}]+)*'
 
@@ -415,6 +427,19 @@ def common_name_words(lang, CARDS, pack, name_words):
     return sorted(out)
 
 
+def name_tokens(CARDS, pack):
+    """Every word of every character's name and alias in this pack, as check/collect.mjs gives them to check.py forms."""
+    import regex
+    out = set()
+    for c in CARDS:
+        e = pack['cards'][c['id']]
+        if c['type'] != 'Character' or not e.get('name') or e['nameSource'] in ('missing', 'kept'):
+            continue
+        for t in [re.sub(r',.*$', '', e['name'])] + e.get('aliases', []):
+            out.update(regex.findall(r"[\p{L}\p{M}]+(?:['’\-][\p{L}\p{M}]+)*", t))
+    return out
+
+
 def ko_particle_forms(closed):
     """Which Korean particles follow a vowel and which a consonant (를 / 을; 로 also after ㄹ), from Wiktionary's glosses
     (closed_class.py, ko_allomorphs). Hangul syllables only."""
@@ -455,6 +480,10 @@ def main():
     closed = json.loads(read('docs/language/sources/wiktionary-closed-class.json'))['languages']
     nw_path = os.path.join(ROOT, 'docs/language/checks/name-words.json')
     name_words = json.load(open(nw_path, encoding='utf8'))['languages'] if os.path.exists(nw_path) else {}
+    nf_path = os.path.join(ROOT, 'docs/language/checks/name-forms.json')
+    name_forms = json.load(open(nf_path, encoding='utf8'))['languages'] if os.path.exists(nf_path) else {}
+    sg_path = os.path.join(ROOT, 'docs/language/checks/line-segments.json')
+    segments = json.load(open(sg_path, encoding='utf8')) if os.path.exists(sg_path) else None
     published = json.loads(read('scripts/language/published.json'))
     CARDS = cards()
     assert len(CARDS) == 71, len(CARDS)
@@ -468,6 +497,13 @@ def main():
         if lang == 'ko':
             pack['particles'] = ko_particles(closed)
             pack['particleForms'] = ko_particle_forms(closed)
+        if lang == 'ko' and segments:
+            # Eojeols of the lines whose first morpheme Kiwi tags as a function word (check/segment.py): 있어요, 것이지요.
+            pack['stop'] = sorted(set(pack['stop']) | {r['word'] for rows in segments['ko'].values() for r in rows if r['function']})
+        if lang == 'th' and segments:
+            # The lines' words as PyThaiNLP's newmm reads them (check/segment.py), which echo.ts reads whole where ICU cuts
+            # them into pieces: โรสแมรี, not โรส ("rose") and แมรี ("Mary").
+            pack['compounds'] = sorted({w for words in segments['th'].values() for w in words if len(w) > 1})
         if lang == 'vi':
             # Words of more than one syllable, which the signature reads whole (src/lib/verse/echo.ts lineWords). One that is
             # also a function word (Wiktionary files «người ta», "one, people", as a pronoun too) stays whole, so «người» is
@@ -538,6 +574,11 @@ def main():
         common = common_name_words(lang, CARDS, pack, name_words)
         if common:
             pack['common'] = common
+        if lang in name_forms:
+            # The forms a name takes in a sentence that the invocation accepts (check.py forms): made by declension.py's
+            # paradigms, without the ones Hunspell knows as ordinary words. Only for the words of this pack's names.
+            words = name_tokens(CARDS, pack)
+            pack['forms'] = {w: v['forms'] for w, v in name_forms[lang].items() if v['forms'] and w in words}
         body = json.dumps(pack, ensure_ascii=False, indent=1)
         ts = ("// GENERATED by scripts/language/build_card_text.py. Do not edit: change the sources and run it again.\n"
               "// Where every name and line comes from: docs/language/NAMES-AND-QUOTATIONS.md\n"

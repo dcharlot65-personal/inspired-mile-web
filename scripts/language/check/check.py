@@ -7,6 +7,8 @@
                                   backtranslate.py); MiniLM cosine, chrF and LaBSE against the English
   check.py names   ITEMS OUT      Hunspell: which words of a character's longer name (and which one-word aliases)
                                   are ordinary words of the language, so that they do not count as a name alone
+  check.py forms   ITEMS OUT      the forms a name takes in Russian, Polish, German and Arabic (declension.py), each put to
+                                  Hunspell (hstem.cpp): one the dictionary knows as an ordinary word is not a name
   check.py selftest               each check is fed a known-bad input and must flag it
 
 ITEMS is the output of collect.mjs. Nothing here changes any text: it writes findings, and a person
@@ -253,9 +255,110 @@ def names(items_path, out_path):
     json.dump(out, open(out_path, 'w', encoding='utf8'), ensure_ascii=False, indent=1)
 
 
+def hunspell_stems(lang, words):
+    """For each word: does Hunspell accept it, and which dictionary entries is it a form of (hstem.cpp)."""
+    d = os.path.join(os.environ['DICT_DIR'], HUNSPELL_DICT[lang])
+    r = subprocess.run([os.environ['HSTEM'], d + '.aff', d + '.dic'], input='\n'.join(words) + '\n', capture_output=True, text=True, check=True)
+    out = {}
+    for line in r.stdout.split('\n'):
+        if line:
+            w, ok, st = line.split('\t')
+            out[w] = (ok == '1', [s for s in st.split('|') if s])
+    return out
+
+
+DECLINING = ('ru', 'pl', 'de', 'ar')
+# The adjective a Polish dictionary makes of a name (Achilles, achillesowy: ścięgno Achillesa, the Achilles tendon), whose
+# plural masculine-personal form is spelt as the name's dative (Achillesowi): an entry of the name's own, not another word.
+NAME_ADJECTIVE = {'pl': ('owy',)}
+
+
+def _low(a):
+    return a.lower().replace('ё', 'е')
+
+
+def judge_forms(lang, word, candidates, st, own=()):
+    """Which candidate forms of a name word stand. A form is dropped when Hunspell knows it as an ordinary word: in
+    Russian and Polish, where a dictionary writes its proper nouns with a capital, when it accepts the form in lower case
+    (Банки, "banks"; Kora, "bark"), unless every entry it is a form of is the name itself; in German and Arabic, when it
+    accepts the form as a form of anything but the name. An entry made from the name (Polish «achillesowy», the
+    adjective of Achilles) is the name's; in Arabic so is any entry Hunspell gives for the name alone (`own`), because
+    its dictionary parses an unknown name too (روميو as رومي and و), and the prefix then adds nothing. A form that is
+    also another proper noun (Russian «Афины», Athens and Athena's genitive) is kept and listed as a homograph."""
+    kept, dropped, homographs, confirmed = [], [], [], []
+    mine = {_low(word)} | {_low(s) for s in own} | {_low(word) + a for a in NAME_ADJECTIVE.get(lang, ())}
+    other = lambda s: _low(s) not in mine
+    for f in candidates:
+        ok, stems = st.get(f, (False, []))
+        others = [s for s in stems if other(s)]
+        if lang in ('ru', 'pl'):
+            low_ok, low_stems = st.get(f.lower(), (False, []))
+            low_others = [s for s in low_stems if other(s)]
+            if low_ok and (low_others or not low_stems):
+                dropped.append({'form': f, 'stems': sorted(set(low_stems + stems)), 'why': 'an ordinary word (accepted in lower case)'})
+                continue
+        elif ok and others:
+            dropped.append({'form': f, 'stems': sorted(set(stems)), 'why': 'a form of another word'})
+            continue
+        kept.append(f)
+        if ok and others:
+            homographs.append({'form': f, 'stems': sorted(set(stems))})
+        elif ok:
+            confirmed.append(f)
+    return {'forms': kept, 'dictionaryConfirms': confirmed, 'homographs': homographs, 'dropped': dropped}
+
+
+def forms(items_path, out_path):
+    import declension
+    data = json.load(open(items_path, encoding='utf8'))
+    out = {'tool': 'Hunspell 1.7.2 library, stem() and spell() (hstem.cpp), LibreOffice dictionaries at commit c0865a85',
+           'paradigms': 'scripts/language/check/declension.py (singular, by the word\'s ending; written by hand, not fetched)',
+           'rule': judge_forms.__doc__.split('\n')[0] + ' ' + ' '.join(l.strip() for l in judge_forms.__doc__.split('\n')[1:]),
+           'use': 'build_card_text.py writes the forms that stand into the card text (pack.forms); src/lib/verse/echo.ts counts a '
+                  'verse word as a name when it is the name or one of them',
+           'languages': {}}
+    for lang in DECLINING:
+        toks = data['nameTokens'][lang]
+        made = {t['word']: declension.forms(lang, t['word'], t['english']) for t in toks}
+        asked = {f for fs in made.values() for f in fs} | set(made)
+        if lang in ('ru', 'pl'):
+            asked |= {f.lower() for f in asked}
+        st = hunspell_stems(lang, sorted(asked))
+        own = lambda w: st.get(w, (False, []))[1] if lang == 'ar' else []
+        rec = {w: judge_forms(lang, w, fs, st, own(w)) for w, fs in sorted(made.items())}
+        out['languages'][lang] = rec
+        n = sum(len(v['forms']) for v in rec.values())
+        d = [x['form'] for v in rec.values() for x in v['dropped']]
+        print(f'forms {lang}: {len(toks)} words, {n} forms kept, {len(d)} dropped: {" ".join(d)}', file=sys.stderr)
+    json.dump(out, open(out_path, 'w', encoding='utf8'), ensure_ascii=False, indent=1)
+
+
 def selftest():
     """Each check must flag a known-bad input; a check that cannot fail is not a check."""
     ok = True
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    import declension
+    d_ok = declension.selftest()
+    print('declension paradigms', 'ok' if d_ok else 'WRONG'); ok &= d_ok
+    if os.environ.get('HSTEM') and os.path.exists(os.environ['HSTEM']):
+        # A Banquo that declined would be "banks"; a Juliet that declines is still Juliet.
+        # «Марка» is also "a stamp" (марка), a word that begins with the name: still another word.
+        cands = ['Банки', 'Банку', 'Марка', 'Джульетты', 'Джульетту']
+        st = hunspell_stems('ru', cands + [c.lower() for c in cands])
+        got = (judge_forms('ru', 'Банко', cands[:2], st)['dropped'] + judge_forms('ru', 'Марк', cands[2:3], st)['dropped']
+               + judge_forms('ru', 'Джульетта', cands[3:], st)['dropped'])
+        print('forms ru drops', [x['form'] for x in got]); ok &= [x['form'] for x in got] == ['Банки', 'Банку', 'Марка']
+        # The adjective of a name is the name's own (Achillesowi); bark is not Persephone's.
+        cands = ['Kora', 'Kory', 'Julię', 'Achillesowi']
+        st = hunspell_stems('pl', cands + [c.lower() for c in cands])
+        got = (judge_forms('pl', 'Kore', cands[:2], st)['dropped'] + judge_forms('pl', 'Julia', cands[2:3], st)['dropped']
+               + judge_forms('pl', 'Achilles', cands[3:], st)['dropped'])
+        print('forms pl drops', [x['form'] for x in got]); ok &= [x['form'] for x in got] == ['Kora', 'Kory']
+        # Arabic: «كبو» ("stumbling") is a word; the prefix on Romeo adds nothing to what the dictionary makes of the name.
+        cands = ['كبو', 'وروميو']
+        st = hunspell_stems('ar', cands + ['بو', 'روميو'])
+        got = judge_forms('ar', 'بو', cands[:1], st, st['بو'][1])['dropped'] + judge_forms('ar', 'روميو', cands[1:], st, st['روميو'][1])['dropped']
+        print('forms ar drops', [x['form'] for x in got]); ok &= [x['form'] for x in got] == ['كبو']
     bad = hunspell_unknown('fr', ['château', 'chatteau', 'lumière', 'lumiaire'])
     print('spell fr flags', sorted(bad)); ok &= bad == {'chatteau', 'lumiaire'}
     bad = elided_unknown('it', hunspell_unknown('it', ['dell’alba', 'dell’allba', 'un’isola']))
@@ -297,4 +400,4 @@ def selftest():
 if __name__ == '__main__':
     cmd = sys.argv[1]
     {'spell': lambda: spell(*sys.argv[2:4]), 'grammar': lambda: grammar(*sys.argv[2:4]), 'meaning': lambda: meaning(*sys.argv[2:4]),
-     'names': lambda: names(*sys.argv[2:4]), 'selftest': selftest}[cmd]()
+     'names': lambda: names(*sys.argv[2:4]), 'forms': lambda: forms(*sys.argv[2:4]), 'selftest': selftest}[cmd]()

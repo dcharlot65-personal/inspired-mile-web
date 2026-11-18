@@ -65,10 +65,19 @@ export interface CardTextPack {
   /** Words of a character's longer name, or aliases, that are ordinary words of the language (Hunspell): not a name by themselves. */
   common?: string[];
   /**
-   * Vietnamese only: the words of two to four syllables (nouns, verbs, adjectives, from Wiktionary) that occur in the
-   * lines, which the signature reads as one word («vấn đề», "problem", not «vấn» and «đề»).
+   * Vietnamese: the words of two to four syllables (nouns, verbs, adjectives, from Wiktionary) that occur in the
+   * lines, which the signature reads as one word («vấn đề», "problem", not «vấn» and «đề»). Thai: the lines' words as
+   * PyThaiNLP's newmm reads them (scripts/language/check/segment.py), read as one word where ICU cuts them in pieces
+   * (โรสแมรี, "rosemary", not โรส and แมรี).
    */
   compounds?: string[];
+  /**
+   * Russian, Polish, German and Arabic: the forms each word of a character's name takes in a sentence, which the
+   * invocation accepts besides the name itself (Джульетту, Julię, Romeos, وروميو). Made by the paradigms of
+   * scripts/language/check/declension.py and put to Hunspell, which drops a form it knows as an ordinary word
+   * (docs/language/checks/name-forms.json): no other declined word counts.
+   */
+  forms?: Record<string, string[]>;
 }
 
 export const CARD_TEXT_LANGS = ['es', 'fr', 'de', 'it', 'pt', 'pl', 'ru', 'ar', 'hi', 'zh', 'ja', 'ko', 'vi', 'th', 'id'] as const;
