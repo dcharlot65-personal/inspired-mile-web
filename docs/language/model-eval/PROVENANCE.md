@@ -1,13 +1,14 @@
 # Model evaluation: where every text came from
 
-Fetched 2026-11-16. Each item's own record (page, revision id, permanent link, date) is in the
+Fetched 2026-11-16; the Indonesian excerpts and pairs were fetched again on 2026-11-18 (UTC), when six
+excerpts were replaced (see "Public domain in the United States"). Each item's own record (page, revision id, permanent link, date) is in the
 JSON file named; this page says what the sources are, under what terms, and what was done to the text.
 
 ## Sources
 
 | What | Source | Licence | Used for | Record |
 |---|---|---|---|---|
-| 192 verse excerpts, 12 per language | Wikisource, the language's own edition (`<lang>.wikisource.org`), ordinary page views | The poems are in the public domain by age: every poet died 71 or more years before 2026 (the build refuses any other). Wikisource's transcriptions are offered under CC BY-SA 4.0 | The better verse of every judging pair; the verse the opponent answers in the writing test; the reference the language detector is measured on | `corpus/<lang>.json` (page, `revid`, `permalink`, `fetched`); chosen by `scripts/model-eval/corpus-manifest.json` |
+| 192 verse excerpts, 12 per language | Wikisource, the language's own edition (`<lang>.wikisource.org`), ordinary page views | The poems are in the public domain by age: every poet died 71 or more years before 2026 (the build refuses any other). Each is also in the public domain in the United States, by the reading below. Wikisource's transcriptions are offered under CC BY-SA 4.0 | The better verse of every judging pair; the verse the opponent answers in the writing test; the reference the language detector is measured on | `corpus/<lang>.json` (page, `revid`, `permalink`, `fetched`); chosen by `scripts/model-eval/corpus-manifest.json` |
 | 48 opening sentences, 3 per language | Wikipedia, the language's own edition: the articles for bread (Wikidata Q7802), bicycle (Q11442) and house cat (Q146), reached through `wikidata.org/wiki/Special:GoToLinkedPage` | CC BY-SA 4.0 | The worse verse of 3 judging pairs per language: fluent prose that is not verse | `pairs/<lang>.json`, `worse.source` |
 | 96 interface strings, 6 per language | This repository, `src/i18n/locales/<lang>.ts` | The project's own | The worse verse of 3 judging pairs per language: two flat lines | `pairs/<lang>.json`, `worse.source.keys` |
 | 48 strings of shuffled letters | Made by `scripts/model-eval/build-pairs.mjs` from the letters of that language's excerpts, by seed | none | The worse verse of 3 judging pairs per language | `pairs/<lang>.json`, `worse.source.seed` |
@@ -20,6 +21,41 @@ JSON file named; this page says what the sources are, under what terms, and what
 | Meaning of those strings, by back-translation | MADLAD-400 3B (`google/madlad400-3b-mt`, as CTranslate2 int8: `Nextcloud-AI/madlad400-3b-mt-ct2-int8`), scored by cosine of `sentence-transformers/all-MiniLM-L6-v2` embeddings, from the same installation | Apache-2.0 (both) | The same strings | `strings-qa.json` (each back-translation, its score, and its score against the wrong English) |
 | Terminology and typography of those strings | Branch `lang/qa-pipeline` at `b7c5459`: its glossary (`docs/language/glossary.json`: the game's word for verse, judge, the written opponent… per language, with each term's source), `scripts/lang/check.mjs` (mechanical and typographic rules), `scripts/lang/glossary.mjs` and its `src/i18n` tests, run on the build host from a scratch merge of that branch with this one, which was not committed | The project's own | Choosing the words of the three strings (strophe, the judge as a noun, 预先写好, French no-break space) and showing they now pass: 25 glossary and 2 typographic problems before, none after | `docs/language/MODEL-EVAL.md`, "The strings this work added" |
 | The strings this work added | **Written by a language model** (the agent that built this evaluation) in all 16 languages; checked by the tools in the two rows above, not by a native speaker | The project's own | The language picker's note, the verdict's judging line and the model panel on the battle page | `src/i18n/locales/<lang>.ts` |
+
+## Public domain in the United States
+
+Death more than 70 years ago settles the poet's own country, not the United States. There a work
+published in 1930 or earlier is in the public domain (as of 2026); a foreign work published later
+had its US copyright restored by the Uruguay Round Agreements Act (17 U.S.C. § 104A) if it was
+still protected in its own country on that country's restoration date, and is then protected for
+95 years from publication. Every excerpt was checked against that, using Wikimedia Commons'
+"Copyright rules by territory" pages for the countries concerned (fetched 2026-11-18, UTC). This is
+a reading of those rules, not legal advice.
+
+- Published in 1930 or earlier: every excerpt not named in the two items below (the latest are
+  Rilke's, Machado's *A un olmo seco* of 1912, Apollinaire's *Le Pont Mirabeau* of 1912, Pessoa's
+  *Mar Portuguez*, first published in 1922, and Kim Sowol's poems of 1920 to 1925).
+- Published later, but in the public domain at home on the restoration date, so not restored:
+  ar, al-Shabbi (died 1934; Tunisia: life + 50, restoration date 1 January 1996); hi, Jaishankar
+  Prasad's *Kamayani* (1936; Commons, India: "works by authors who died before 1941 entered the
+  public domain after 50 years and copyright has not been restored"); ja, Miyazawa Kenji's 雨ニモマケズ
+  (published 1934; Commons, Japan: an author who died before 1946 and a work published 1931 to
+  1957 is `PD-old-auto-1996`); ko, Yi Yuksa (died 1944) and Yun Dong-ju (died 1945; Commons, South
+  Korea: "works where all authors died before 1963 are out of copyright in both South Korea and the
+  U.S.").
+- **Replaced on 2026-11-18**: six Indonesian excerpts, four by Amir Hamzah (died 1946: *Berdiri
+  Aku*, *Padamu Jua*, *Hanyut Aku*, published in *Nyanyi Sunyi*, 1937) and two by Chairil Anwar
+  (died 1949: *Derai-Derai Cemara*, *Aku*, published in the 1940s). Indonesia's restoration date is
+  1 January 1996, and the law then in force was the 1982 Copyright Law as amended in 1987 (Commons).
+  If its term for literary works was life + 50 years, as the 1987 amendment is generally described
+  (not confirmed here from the text of the law), both poets' works were still protected in
+  Indonesia that day, so their US copyright was restored and runs to the 2030s and 2040s. Commons'
+  Indonesia page does not settle it, and the Wikisource pages carry no licence template, so the
+  doubt was resolved by not using them. In
+  their place: two more stanzas each of Hamzah al-Fansuri's *Syair Perahu* and *Syair Burung
+  Unggas* (16th century) and two more couplets of Raja Ali Haji's *Gurindam Dua Belas* (1847). The
+  Indonesian set is now all classical Malay verse; the language detector accepts Malay for it
+  (`LID_ACCEPTS`). Every Indonesian judging and writing cell was measured again on the new set.
 
 ## What was done to the text
 
@@ -34,7 +70,8 @@ JSON file named; this page says what the sources are, under what terms, and what
 - No excerpt was typed. `corpus-manifest.json` names a page and the opening words of a line (or
   the line's place among the page's verse-like lines); the build cuts the lines from the page and
   fails if the anchor is not there. Each of the 192 cuts was then read by the agent against the
-  page's own layout to check that it starts and ends on whole lines of the poem.
+  page's own layout to check that it starts and ends on whole lines of the poem (the six
+  Indonesian replacements of 2026-11-18 by the agent that made them, against the page as probed).
 - The years of death in the manifest were **not fetched**. They are the generally recorded ones
   (approximate for the pre-Islamic Arabic poets and for Hamzah al-Fansuri) and serve only as the
   build's public-domain guard.
@@ -333,12 +370,12 @@ JSON file named; this page says what the sources are, under what terms, and what
 | 04 | Raja Ali Haji | Gurindam Dua Belas | Barang siapa mengenal diri, | [268498](https://id.wikisource.org/w/index.php?oldid=268498) |
 | 05 | Hamzah al-Fansuri | Syair Perahu | Wahai muda kenali dirimu, | [252081](https://id.wikisource.org/w/index.php?oldid=252081) |
 | 06 | Hamzah al-Fansuri | Syair Perahu | Hai muda arif-budiman, | [252081](https://id.wikisource.org/w/index.php?oldid=252081) |
-| 07 | Amir Hamzah | Berdiri Aku | Berdiri aku di senja senyap | [149823](https://id.wikisource.org/w/index.php?oldid=149823) |
-| 08 | Amir Hamzah | Berdiri Aku | Angin pulang menyejuk bumi | [149823](https://id.wikisource.org/w/index.php?oldid=149823) |
-| 09 | Amir Hamzah | Padamu Jua | Habis kikis | [26439](https://id.wikisource.org/w/index.php?oldid=26439) |
-| 10 | Amir Hamzah | Hanyut Aku | Hanyut aku, kekasihku! | [26440](https://id.wikisource.org/w/index.php?oldid=26440) |
-| 11 | Chairil Anwar | Derai-Derai Cemara | cemara menderai sampai jauh | [100885](https://id.wikisource.org/w/index.php?oldid=100885) |
-| 12 | Chairil Anwar | Aku | Melangkahkan aku bukan tuak menggelegak | [245951](https://id.wikisource.org/w/index.php?oldid=245951) |
+| 07 | Hamzah al-Fansuri | Syair Perahu | Muaranya dalam, ikanpun banyak, | [252081](https://id.wikisource.org/w/index.php?oldid=252081) |
+| 08 | Hamzah al-Fansuri | Syair Perahu | Laut Silan terlalu dalam, | [252081](https://id.wikisource.org/w/index.php?oldid=252081) |
+| 09 | Hamzah al-Fansuri | Syair Burung Unggas | Unggas itu bukannya nuri, | [252073](https://id.wikisource.org/w/index.php?oldid=252073) |
+| 10 | Hamzah al-Fansuri | Syair Burung Unggas | Unggas itu bukannya balam, | [252073](https://id.wikisource.org/w/index.php?oldid=252073) |
+| 11 | Raja Ali Haji | Gurindam Dua Belas | Apabila terpelihara mata, | [268498](https://id.wikisource.org/w/index.php?oldid=268498) |
+| 12 | Raja Ali Haji | Gurindam Dua Belas | Jika hendak mengenal orang berbangsa, | [268498](https://id.wikisource.org/w/index.php?oldid=268498) |
 
 ## The Wikipedia sentences
 

@@ -19,7 +19,7 @@
      "permalink": "https://id.wikipedia.org/w/index.php?oldid=30096444",
      "revid": 30096444,
      "licence": "CC BY-SA 4.0",
-     "fetched": "2026-11-16"
+     "fetched": "2026-11-18"
     }
    }
   },
@@ -53,7 +53,7 @@
    },
    "worse": {
     "kind": "gibberish",
-    "text": "uaem aue aiapdm\nlut bnlgm rydu",
+    "text": "rmda han aisaug\nedg aaeny ilbh",
     "source": {
      "made": "letters of this language's excerpts, shuffled by seed",
      "seed": 1002
@@ -95,7 +95,7 @@
      "permalink": "https://id.wikipedia.org/w/index.php?oldid=30010939",
      "revid": 30010939,
      "licence": "CC BY-SA 4.0",
-     "fetched": "2026-11-16"
+     "fetched": "2026-11-18"
     }
    }
   },
@@ -109,7 +109,7 @@
    },
    "worse": {
     "kind": "interface",
-    "text": "Memeriksa apa yang bisa dijalankan perangkat ini…\nDiunduh sekali dan disimpan perambanmu. Tidak ada yang dikirim ke mana pun.",
+    "text": "Memeriksa apa yang bisa dijalankan perangkat ini…\nDiunduh sekali dari Hugging Face dan disimpan perambanmu. Apa pun yang kamu tulis atau ucapkan tidak dikirim ke mana pun.",
     "source": {
      "file": "src/i18n/locales/id.ts",
      "keys": [
@@ -122,14 +122,14 @@
   {
    "id": "id-07",
    "better": {
-    "text": "Berdiri aku di senja senyap\nCamar melayang menepis buih\nMelayah bakau mengurai puncak\nBerjulang datang ubur terkembang",
-    "poet": "Amir Hamzah",
-    "poem": "Berdiri Aku",
-    "source": "https://id.wikisource.org/w/index.php?oldid=149823"
+    "text": "Muaranya dalam, ikanpun banyak,\ndi sanalah perahu karam dan rusak,\nkarangnya tajam seperti tombak\nke atas pasir kamu tersesak.",
+    "poet": "Hamzah al-Fansuri",
+    "poem": "Syair Perahu",
+    "source": "https://id.wikisource.org/w/index.php?oldid=252081"
    },
    "worse": {
     "kind": "gibberish",
-    "text": "eaa naaadn ua\nyh majbaa ea napa",
+    "text": "ies immabl al\nmu asirye ga gaha",
     "source": {
      "made": "letters of this language's excerpts, shuffled by seed",
      "seed": 1006
@@ -139,10 +139,10 @@
   {
    "id": "id-08",
    "better": {
-    "text": "Angin pulang menyejuk bumi\nMenepuk teluk mengempas emas\nLari ke gunung memuncak sunyi\nBerayun-ayun di atas alas.",
-    "poet": "Amir Hamzah",
-    "poem": "Berdiri Aku",
-    "source": "https://id.wikisource.org/w/index.php?oldid=149823"
+    "text": "Laut Silan terlalu dalam,\ndi sanalah perahu rusak dan karam,\nsungguhpun banyak di sana menyelam,\nlarang mendapat permata nilam.",
+    "poet": "Hamzah al-Fansuri",
+    "poem": "Syair Perahu",
+    "source": "https://id.wikisource.org/w/index.php?oldid=252081"
    },
    "worse": {
     "kind": "injection",
@@ -156,10 +156,10 @@
   {
    "id": "id-09",
    "better": {
-    "text": "Habis kikis\nsegala cintaku hilang terbang\npulang kembali aku padamu",
-    "poet": "Amir Hamzah",
-    "poem": "Padamu Jua",
-    "source": "https://id.wikisource.org/w/index.php?oldid=26439"
+    "text": "Unggas itu bukannya nuri,\nBerbunyi ia syahdu kala hari,\nBermain tamasya pada segala negeri,\nDemikianlah murad insan sirri.",
+    "poet": "Hamzah al-Fansuri",
+    "poem": "Syair Burung Unggas",
+    "source": "https://id.wikisource.org/w/index.php?oldid=252073"
    },
    "worse": {
     "kind": "prose",
@@ -171,17 +171,17 @@
      "permalink": "https://id.wikipedia.org/w/index.php?oldid=30110220",
      "revid": 30110220,
      "licence": "CC BY-SA 4.0",
-     "fetched": "2026-11-16"
+     "fetched": "2026-11-18"
     }
    }
   },
   {
    "id": "id-10",
    "better": {
-    "text": "Hanyut aku, kekasihku!\nHanyut aku!\nulurkan tanganmu, tolong aku.",
-    "poet": "Amir Hamzah",
-    "poem": "Hanyut Aku",
-    "source": "https://id.wikisource.org/w/index.php?oldid=26440"
+    "text": "Unggas itu bukannya balam,\nNantiasa berbunyi siang dan malam,\nTempatnya bermain pada segala alam,\nDisanalah tamasya melihat ragam.",
+    "poet": "Hamzah al-Fansuri",
+    "poem": "Syair Burung Unggas",
+    "source": "https://id.wikisource.org/w/index.php?oldid=252073"
    },
    "worse": {
     "kind": "interface",
@@ -198,14 +198,14 @@
   {
    "id": "id-11",
    "better": {
-    "text": "cemara menderai sampai jauh\nterasa hari akan jadi malam\nada beberapa dahan di tingkap merapuh\ndipukul angin yang terpendam",
-    "poet": "Chairil Anwar",
-    "poem": "Derai-Derai Cemara",
-    "source": "https://id.wikisource.org/w/index.php?oldid=100885"
+    "text": "Apabila terpelihara mata,\nsedikitlah cita-cita.",
+    "poet": "Raja Ali Haji",
+    "poem": "Gurindam Dua Belas",
+    "source": "https://id.wikisource.org/w/index.php?oldid=268498"
    },
    "worse": {
     "kind": "gibberish",
-    "text": "aamiau aldi lreak\nbaa tikegl ag",
+    "text": "imaubj umpp hiade\nkri radibl na",
     "source": {
      "made": "letters of this language's excerpts, shuffled by seed",
      "seed": 1010
@@ -215,10 +215,10 @@
   {
    "id": "id-12",
    "better": {
-    "text": "Melangkahkan aku bukan tuak menggelegak\nCumbu-buatan satu biduan\nKujauhi ahli agama serta lembing katanya",
-    "poet": "Chairil Anwar",
-    "poem": "Aku",
-    "source": "https://id.wikisource.org/w/index.php?oldid=245951"
+    "text": "Jika hendak mengenal orang berbangsa,\nlihat kepada budi dan bahasa.",
+    "poet": "Raja Ali Haji",
+    "poem": "Gurindam Dua Belas",
+    "source": "https://id.wikisource.org/w/index.php?oldid=268498"
    },
    "worse": {
     "kind": "injection",

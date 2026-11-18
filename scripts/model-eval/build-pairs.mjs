@@ -1,6 +1,7 @@
 // The judging test set: 12 pairs per language, one verse clearly better than the other.
 //
-//   node scripts/model-eval/build-pairs.mjs      writes docs/language/model-eval/pairs/<lang>.json
+//   node scripts/model-eval/build-pairs.mjs [lang…]   writes docs/language/model-eval/pairs/<lang>.json
+//                                                   (every language, or only those named)
 //
 // The better verse is real: an excerpt of public-domain poetry from Wikisource
 // (docs/language/model-eval/corpus/<lang>.json, built by corpus-fetch.mjs).
@@ -105,7 +106,9 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const injections = JSON.parse(readFileSync(join(ROOT, 'scripts', 'model-eval', 'injections.json'), 'utf8')).texts;
   const today = new Date().toISOString().slice(0, 10);
   mkdirSync(join(DIR, 'pairs'), { recursive: true });
-  for (const lang of LANGS) {
+  const only = process.argv.slice(2);
+  for (const bad of only) if (!LANGS.includes(bad)) throw new Error(`no such language: ${bad}`);
+  for (const lang of LANGS.filter((l) => !only.length || only.includes(l))) {
     const corpus = JSON.parse(readFileSync(join(DIR, 'corpus', `${lang}.json`), 'utf8')).excerpts;
     if (corpus.length < 12) throw new Error(`${lang}: ${corpus.length} excerpts, 12 needed`);
     const letters = corpus.map((e) => e.text).join(' ');
