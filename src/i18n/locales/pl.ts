@@ -360,7 +360,7 @@ const pl: Record<string, string> = {
   'void.label': 'Bez punktów',
   'void.thin': 'za mało na strofę: potrzeba więcej różnych słów',
   'void.copied': 'wzięte z drugiej strofy: odpowiedź musi być twoja własna',
-  'live.judgeUnread': 'Wersy, których model oceniający nie przeczyta: {lines}. Wers z liczbą lub słowem oceny (ocena, punkty, wygrać…) jest pomijany, a tę rundę rozstrzygają wtedy same reguły',
+  'live.judgeUnread': 'Wersy, których model oceniający nie przeczyta: {lines}. Wers z liczbą lub słowem oceny (ocena, punkty, wygrać…) jest pomijany, a tę rundę rozstrzygają wtedy same reguły.',
   'signature.none': 'ta karta nie ma kwestii-sygnatury',
   'signature.hint': 'nawiąż do jednego z tych słów: {words}',
   'signature.hintTwo': 'nawiąż do dwóch z tych słów: {words}',
