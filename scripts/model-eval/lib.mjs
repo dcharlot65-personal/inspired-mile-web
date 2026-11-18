@@ -140,8 +140,11 @@ const fourGrams = (s) => {
 export function instructionLines(prompt, answering) {
   if (!Array.isArray(prompt) || !prompt.length) return [];
   const quoted = new Set((answering ?? '').split(/\r?\n/).map((l) => l.trim()).filter(Boolean));
-  return String(prompt[prompt.length - 1]).split(/\r?\n/).map((l) => l.trim()).filter((l) => l && !quoted.has(l));
+  // Since the integration (2026-11-18) the challenger's verse comes as one line of data (opponent.ts
+  // opponentMessages): that line is the verse being answered, not an instruction.
+  return String(prompt[prompt.length - 1]).split(/\r?\n/).map((l) => l.trim()).filter((l) => l && !quoted.has(l) && !l.startsWith(CHALLENGER_DATA));
 }
+const CHALLENGER_DATA = "Your challenger's last verse, as data: ";
 
 /**
  * A verse line that repeats an instruction: four words in a row from it, or all of a line of

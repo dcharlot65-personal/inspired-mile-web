@@ -24,7 +24,8 @@ const MUTATIONS = [
   ['an announcement of the verse no longer seen', 'scripts/model-eval/lib.mjs', '|| ANNOUNCE.test(l)) out.push', ') out.push'],
   ['an echo of the instructions no longer seen', 'scripts/model-eval/lib.mjs', "else if (echoesInstruction(l, instructions)) out.push('repeats the instructions');", ''],
   ['acrostic letters set out as labels no longer seen', 'scripts/model-eval/lib.mjs', ".length >= 2) out.push('letters set out as labels');", ".length >= 99) out.push('letters set out as labels');"],
-  ['the challenger\'s quoted verse read as instructions', 'scripts/model-eval/lib.mjs', '.filter((l) => l && !quoted.has(l));', '.filter((l) => l);'],
+  // (The quoted-lines rule above it serves prompts in the format before the integration; no cell now has one.)
+  ['the challenger\'s verse as data read as instructions (the integration\'s prompt)', 'scripts/model-eval/lib.mjs', ' && !l.startsWith(CHALLENGER_DATA));', ');'],
   ['a reasoning block no longer seen', 'scripts/model-eval/lib.mjs', "else if (REASONING.test(l)) out.push('a reasoning block');", ''],
   ['a title naming the form no longer seen', 'scripts/model-eval/lib.mjs', 'if (form && l === norm(form)) return true;', ''],
   ['the full-width colon dropped from the label rule', 'scripts/model-eval/lib.mjs', '[-–—:)：]/u.test(l)', '[-–—:)]/u.test(l)'],
