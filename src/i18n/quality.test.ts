@@ -21,7 +21,7 @@ import { checkCitations, checkGlossary, checkNameExceptions } from '../../script
 import { checkWords, wordsToCheck } from '../../scripts/lang/lib/words.mjs';
 // @ts-expect-error as above
 import { RULE_TOLD_TO_CASTER } from '../../scripts/lang/lib/context.mjs';
-import { readsRtl, startsRtl, wrapUnits } from '../lib/xr/text-wrap';
+import { readsRtl, wrapUnits } from '../lib/xr/text-wrap';
 
 const read = (path: string) => JSON.parse(readFileSync(new URL(`../../${path}`, import.meta.url), 'utf8'));
 const cldr = read('docs/language/sources/cldr.json');
@@ -211,30 +211,42 @@ describe('the tools read what the player reads', () => {
 
 describe('the theatre draws text in every script', () => {
   // src/lib/xr/text-wrap.ts: the pieces Babylon's TextBlock may break a line between (it broke only at
-  // spaces, so Japanese ran off its panel), and the direction marks a right-to-left line needs.
-  const RLM = String.fromCharCode(0x200f);
+  // spaces, so Japanese ran off its panel; src/lib/xr/line-break.test.ts holds the line-break rules), and
+  // the right-to-left embedding each piece of a right-to-left line is put in. How the browser then lays
+  // such a line out is tested by drawing it: tests/theatre-bidi.spec.ts.
+  const RLE = String.fromCharCode(0x202b);
+  const PDF = String.fromCharCode(0x202c);
+  const bare = (s: string) => s.split(RLE).join('').split(PDF).join('');
   it('breaks Japanese, Chinese and Thai between words, never before closing punctuation, and gives each line back whole', async () => {
     for (const l of ['ja', 'zh', 'th', 'de', 'ar'] as Locale[]) {
       const m = await loadMessages(l);
       for (const key of ['theatre.versePrompt', 'theatre.intro']) {
         const line = m[key];
-        const units = wrapUnits(line);
-        expect([l, key, units.join('').split(RLM).join('')]).toEqual([l, key, line]);
+        const units = wrapUnits(line, l === 'ar');
+        expect([l, key, bare(units.join(''))]).toEqual([l, key, line]);
         expect([l, key, units.length > 4]).toEqual([l, key, true]);
-        for (const u of units) expect([l, u, /^[\p{Pe}\p{Pf}\p{Po}]/u.test(u.split(RLM).join(''))]).toEqual([l, u, false]);
+        for (const u of units) expect([l, u, /^[\p{Pe}\p{Pf}\p{Po}]/u.test(bare(u))]).toEqual([l, u, false]);
       }
     }
-    expect(wrapUnits('「詩」を書く')).toEqual(['「詩」', 'を', '書く']);
+    expect(wrapUnits('「詩」を書く', false)).toEqual(['「詩」', 'を', '書く']);
   });
 
-  it('marks a right-to-left line, and only such a line', () => {
-    expect(startsRtl('سيظهر بيتك هنا.')).toBe(true);
-    expect(startsRtl('Your verse')).toBe(false);
-    expect(wrapUnits('هنا.').every((u) => u.startsWith(RLM) && u.endsWith(RLM))).toBe(true);
-    expect(wrapUnits('Here.').some((u) => u.includes(RLM))).toBe(false);
-    // A panel is aligned by most of its letters: a Latin card name above an Arabic verse reads right to left.
-    expect(readsRtl('Apollo\nالفخامة\n\nأعرتك سمعي فأضعت الوقت')).toBe(true);
-    expect(readsRtl('Apollo\nVerse in English, with one word عربي')).toBe(false);
+  it('puts every piece of a right-to-left line, and only of such a line, in a right-to-left embedding', () => {
+    const embedded = (units: string[]) => units.every((u) => u.startsWith(RLE) && u.endsWith(PDF) && !bare(u).includes(RLE));
+    expect(embedded(wrapUnits('سيظهر بيتك هنا.', true))).toBe(true);
+    // A line that opens with a card's Latin name is still Arabic in an Arabic interface (it was left
+    // unmarked while the first letter decided).
+    expect(embedded(wrapUnits('Hamlet يكسب الجولة.', true))).toBe(true);
+    expect(embedded(wrapUnits('حكم Gemma 4 E2B على هذا الجهاز.', true))).toBe(true);
+    // An Arabic verse in an English interface, by its letters; English text never.
+    expect(embedded(wrapUnits('أعرتك سمعي فأضعت الوقت', false))).toBe(true);
+    expect(wrapUnits('Hamlet wins the round.', true).some((u) => u.includes(RLE) || u.includes(PDF))).toBe(false);
+    expect(wrapUnits('Hamlet يكسب', false).some((u) => u.includes(RLE))).toBe(false);
+    // A panel is aligned the same way: a Latin card name above an Arabic verse reads right to left.
+    expect(readsRtl('Apollo\nالفخامة\n\nأعرتك سمعي فأضعت الوقت', false)).toBe(true);
+    expect(readsRtl('Apollo\nVerse in English, with one word عربي', false)).toBe(false);
+    expect(readsRtl('Apollo\nVerse in English, with one word عربي', true)).toBe(true);
+    expect(readsRtl('Apollo', true)).toBe(false);
   });
 });
 

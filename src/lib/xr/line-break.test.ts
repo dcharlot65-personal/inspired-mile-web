@@ -66,6 +66,16 @@ describe('theatre line breaking', () => {
     for (const l of Object.values(en)) expect(faults(l, breakPoints(l))).toEqual([]);
   });
 
+  it('Arabic and Hindi punctuation stays with the word before it', () => {
+    // Seen on 2026-11-17: the Arabic comma, which these rules did not list, stood alone as a piece and
+    // could open a line.
+    for (const line of ['الجولة لك، والدور لي؛ هل تكتب؟ نعم ٪ تم۔', 'यह पंक्ति है। वह भी॥']) {
+      const pieces = breakPoints(line);
+      expect(pieces.join('')).toBe(line);
+      for (const p of pieces.slice(1)) expect([p, /^[،؛؟٪۔।॥]/u.test(p)]).toEqual([p, false]);
+    }
+  });
+
   it('lineBreakFault reads a pair of drawn lines the same way', () => {
     expect(lineBreakFault('お前の詩は細い', '。舞台')).not.toBeNull();
     expect(lineBreakFault('相手の詩を写すと（', '無効）')).not.toBeNull();

@@ -19,6 +19,7 @@ const { parseMessage, formatNumber, formatList, pluralCategory, PLURAL_CATEGORIE
 const { LOCALES, loadMessages } = await import('../../../src/i18n/index.ts');
 const { loadPack } = await import('../../../src/lib/verse/packs/index.ts');
 const { HOUSE_QUOTES } = await import('../../../src/lib/verse/english.ts');
+const { default: JUDGE_WORDS } = await import('../../../src/lib/verse/judge-words.ts');
 
 export { LOCALES, HOUSE_QUOTES, parseMessage, PLURAL_CATEGORIES, pluralCategory };
 
@@ -91,6 +92,9 @@ async function fillers(lang) {
     who: ui['verdict.who.player'],
     you: ui['battle.you'],
     them: ui['battle.opponent'],
+    // The lines the grading model will not read, as battle.astro and theatre.ts list them: "2 (word)",
+    // the word being one of the language's judge words (src/lib/verse/judge-words.ts).
+    lines: formatList([2, 4].map((n, i) => `${formatNumber(n, lang)} (${JUDGE_WORDS[lang].judge[i]})`), lang),
   };
 }
 
