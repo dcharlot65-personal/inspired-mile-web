@@ -21,6 +21,7 @@
     "@tailwindcss/vite": "^4.3.5",
     "astro": "^7.4.12",
     "kokoro-js": "^1.2.1",
+    "kuromoji": "0.1.2",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
     "tailwindcss": "^4.3.5"

@@ -11,10 +11,10 @@
  * model's prompt. The `detail` of a check is data that reads the same in any
  * language: the words compared, a count such as "3/4".
  */
-import { baseLang, unitKey } from './lang';
+import { baseLang, rulesFor, unitKey } from './lang';
 import { msg, type Msg } from './msg';
 import { rhymeChecked, rhymeEnds, rhymes } from './rhyme';
-import { countsSyllables, edgeUnit, fold, graphemes, hiragana, lineLength, linesOf, syllablesInLine, wordsOf } from './text';
+import { FULL_KNOWN_SHARE, TELLING_PER_LINE, countsSyllables, edgeUnit, fold, graphemes, hiragana, lineLength, linesOf, substance, syllableSpan, wordsOf } from './text';
 
 export { countsSyllables };
 
@@ -93,6 +93,16 @@ function syllableKey(key: string, lang: string): string {
   return b === 'zh' ? `${key}.char` : b === 'ja' ? `${key}.kana` : key;
 }
 
+/**
+ * A line of `target` syllables. `tolerance` widens the target by design ("about ten").
+ *
+ * In English a word can be said more than one way ("fire" in one syllable or
+ * two, "every" in two or three), so a line has a range of counts and keeps the
+ * form when the target is inside it. A word the pronunciation table does not
+ * have is counted by its spelling, and the detail then starts with "~"; it buys
+ * no slack, or any made-up word would ("Zorblatt is long gone now" is six by
+ * spelling, not five). The game's own names are in the table.
+ */
 function syllables(index: number, target: number, tolerance: number, points: number): Requirement {
   return {
     id: `syllables-${index + 1}`,
@@ -100,10 +110,12 @@ function syllables(index: number, target: number, tolerance: number, points: num
     points,
     check: (lines, ctx) => {
       if (lines.length <= index) return { met: false, detail: MISSING };
-      const n = syllablesInLine(lines[index], ctx.lang);
+      const span = syllableSpan(lines[index], ctx.lang);
       // "?": this line holds something that cannot be counted (kanji in a Japanese haiku, a foreign script).
-      if (n === null) return { met: false, detail: '?' };
-      return { met: Math.abs(n - target) <= tolerance, detail: `${n}/${target}` };
+      if (span === null) return { met: false, detail: '?' };
+      const slack = tolerance;
+      const count = span.min === span.max ? `${span.min}` : `${span.min}–${span.max}`;
+      return { met: target >= span.min - slack && target <= span.max + slack, detail: `${span.guessed ? '~' : ''}${count}/${target}` };
     },
   };
 }
@@ -356,14 +368,32 @@ export interface FormScore {
   earned: number;
   /** Every requirement met. */
   kept: boolean;
+  /** The text is too thin to be a verse (text.ts `substance`): no requirement is met and nothing is earned. */
+  thin?: boolean;
+  /**
+   * The share of the points kept: 1 when the verse is words of its language (text.ts substance
+   * `known`, FULL_KNOWN_SHARE and above) and says something in each line (`telling`, TELLING_PER_LINE
+   * telling words a line), less when it falls short of either.
+   */
+  scale: number;
 }
 
 export function scoreForm(form: Form, verse: string, ctx: FormContext): FormScore {
   const lines = linesOf(verse);
+  // A form is kept by a verse, not by tokens laid out in its shape.
+  const body = substance(verse, ctx.lang);
+  const thin = lines.length > 0 && !body.ok;
   const checks: CheckResult[] = form.requirements.map((r) => {
-    const { met, detail } = lines.length === 0 ? { met: false, detail: '' } : r.check(lines, ctx);
+    // A thin verse shows why: how many different words it has against how many it needs.
+    const { met, detail } = lines.length === 0 ? { met: false, detail: '' } : thin ? { met: false, detail: `${body.distinct}/${body.needed}` } : r.check(lines, ctx);
     return { id: r.id, label: r.label(ctx), points: r.points, earned: met ? r.points : 0, met, detail };
   });
-  const earned = checks.reduce((s, c) => s + c.earned, 0);
-  return { formId: form.id, checks, earned, kept: checks.every((c) => c.met) };
+  if (thin) return { formId: form.id, checks, earned: 0, kept: false, thin, scale: 0 };
+  // Points are for words that say something: where a lexicon says part of the verse is not words,
+  // that part earns nothing, and a verse of words too slight to tell anything ("ab ed ma ti",
+  // "oh ha lo") earns for the lines it fills with telling words, not for the lines it lays out.
+  const told = rulesFor(ctx.lang).unit === 'char' ? 1 : body.telling / (TELLING_PER_LINE * lines.length);
+  const scale = lines.length === 0 ? 1 : Math.min(1, body.known / FULL_KNOWN_SHARE, told);
+  const earned = Math.round(checks.reduce((s, c) => s + c.earned, 0) * scale);
+  return { formId: form.id, checks, earned, kept: checks.every((c) => c.met), scale };
 }
