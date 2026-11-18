@@ -4186,16 +4186,20 @@
     "pl": {
      "value": "Dystych",
      "status": "sourced",
-     "source": "Title of the pl Wikipedia article Dystych (Wikidata Q906442, distich); the couplet item itself has no Polish article. (English Wiktionary's translation table gives dwuwiersz; the Wikipedia title is kept.)",
+     "source": "English Wiktionary's couplet table (poetic sense) gives dwuwiersz and dystych. Dystych is also the title of the pl Wikipedia article on the distich (Q906442); the couplet item itself has no Polish article.",
      "cite": [
       {
-       "wikipedia": "pl",
-       "title": "Dystych",
-       "qid": "Q906442"
+       "wiktionary": "couplet",
+       "text": "dystych"
       },
       {
        "wiktionary": "couplet",
        "text": "dwuwiersz"
+      },
+      {
+       "wikipedia": "pl",
+       "title": "Dystych",
+       "qid": "Q906442"
       }
      ]
     },
@@ -4225,8 +4229,8 @@
     },
     "hi": {
      "value": "दोहा",
-     "status": "sourced",
-     "source": "दोहा is the rhymed couplet of the Hindi tradition (hi Wikipedia article दोहा, Wikidata Q5288532). A doha also has a fixed metre, which the game does not check. Replaces the coined दोहा-युग्म.",
+     "status": "not-sourced",
+     "source": "Not sourced: no Hindi article, label or dictionary entry names the couplet (Q4779829). दोहा is the hi Wikipedia article of the doha (Q5288532), a rhymed couplet with a fixed metre (13 and 11 mātrās) that the game does not check, so the name points to a stricter form. Kept for a native reader to confirm or replace; it replaced the coined दोहा-युग्म.",
      "cite": [
       {
        "wikipedia": "hi",
@@ -4334,8 +4338,13 @@
      "value": "Cuarteta de pareados",
      "status": "head",
      "head": "Cuarteta",
-     "source": "Cuarteta + the rhyme pattern. Cuarteta: es Wikipedia article Cuarteta (Q8352204)",
+     "source": "Cuarteta + the rhyme pattern. Cuarteta: English Wiktionary's quatrain table ('a stanza of four lines') gives cuarteto, cuarteta, redondilla and serventesio; Wikidata's es article for the quatrain item is Cuarteto (poesía), and the es article Cuarteta is another item (Q8352204). The rhyme-pattern words are not sourced.",
      "cite": [
+      {
+       "wiktionary": "quatrain",
+       "sense": "a stanza of four lines",
+       "text": "cuarteta"
+      },
       {
        "wikipedia": "es",
        "title": "Cuarteta",
@@ -4386,8 +4395,13 @@
      "value": "Quadra de rimas emparelhadas",
      "status": "head",
      "head": "Quadra",
-     "source": "Quadra + the rhyme pattern. Quadra: Wikidata alias quadra",
+     "source": "Quadra + the rhyme pattern. Quadra: English Wiktionary's quatrain table ('a stanza of four lines') gives quarteto and quadra, and Wikidata has quadra as an alias of the quatrain item (its pt label is quadra poética). The rhyme-pattern words are not sourced.",
      "cite": [
+      {
+       "wiktionary": "quatrain",
+       "sense": "a stanza of four lines",
+       "text": "quadra"
+      },
       {
        "wikidata": "alias",
        "qid": "Q570948",
@@ -4522,8 +4536,13 @@
      "value": "Cuarteta cruzada",
      "status": "head",
      "head": "Cuarteta",
-     "source": "Cuarteta + the rhyme pattern. Cuarteta: es Wikipedia article Cuarteta (Q8352204)",
+     "source": "Cuarteta + the rhyme pattern. Cuarteta: English Wiktionary's quatrain table ('a stanza of four lines') gives cuarteto, cuarteta, redondilla and serventesio; Wikidata's es article for the quatrain item is Cuarteto (poesía), and the es article Cuarteta is another item (Q8352204). The rhyme-pattern words are not sourced.",
      "cite": [
+      {
+       "wiktionary": "quatrain",
+       "sense": "a stanza of four lines",
+       "text": "cuarteta"
+      },
       {
        "wikipedia": "es",
        "title": "Cuarteta",
@@ -4574,8 +4593,13 @@
      "value": "Quadra de rimas cruzadas",
      "status": "head",
      "head": "Quadra",
-     "source": "Quadra + the rhyme pattern. Quadra: Wikidata alias quadra",
+     "source": "Quadra + the rhyme pattern. Quadra: English Wiktionary's quatrain table ('a stanza of four lines') gives quarteto and quadra, and Wikidata has quadra as an alias of the quatrain item (its pt label is quadra poética). The rhyme-pattern words are not sourced.",
      "cite": [
+      {
+       "wiktionary": "quatrain",
+       "sense": "a stanza of four lines",
+       "text": "quadra"
+      },
       {
        "wikidata": "alias",
        "qid": "Q570948",
@@ -5118,19 +5142,24 @@
      ]
     },
     "ar": {
-     "value": "التطريز",
+     "value": "تتويج",
      "status": "sourced",
-     "source": "Title of the ar Wikipedia article تطريز (شعر) (Wikidata Q40376349). Wikidata links a different article, تتويج (شعر), to the acrostic item. Which is the better name is for a native reader.",
+     "source": "Wikidata label of the acrostic item (تتويج) and its ar Wikipedia article تتويج (شعر) (Q173287). Until 2026-11-17 the name was التطريز, taken from the article تطريز (شعر), which is another item (Q40376349) and defines another figure (words of equal measure in consecutive lines); the article تتويج (شعر) calls the acrostic poem المتوجة or المطرزة.",
      "cite": [
       {
-       "wikipedia": "ar",
-       "title": "تطريز (شعر)",
-       "qid": "Q40376349"
+       "wikidata": "label",
+       "qid": "Q173287",
+       "text": "تتويج"
       },
       {
        "wikipedia": "ar",
        "title": "تتويج (شعر)",
        "qid": "Q173287"
+      },
+      {
+       "wikipedia": "ar",
+       "title": "تطريز (شعر)",
+       "qid": "Q40376349"
       }
      ]
     },
@@ -5449,8 +5478,13 @@
     "pt": {
      "value": "Haicai",
      "status": "sourced",
-     "source": "Wikidata alias; the usual Brazilian name. The pt article is titled Haiku.",
+     "source": "English Wiktionary's haiku table gives haiku and haicai, and Wikidata has Haicai as an alias of the haiku item; the usual Brazilian name. The pt article is titled Haiku, and the pt label is haikai.",
      "cite": [
+      {
+       "wiktionary": "haiku",
+       "sense": "Japanese poem of a specific form",
+       "text": "haicai"
+      },
       {
        "wikidata": "alias",
        "qid": "Q37707",
@@ -5632,7 +5666,7 @@
     "ru": {
      "value": "Героический стих",
      "status": "sourced",
-     "source": "ru Wikipedia article Героический стих (Wikidata Q2714966)",
+     "source": "ru Wikipedia article Героический стих, Wikidata's sitelink and label for the heroic-couplet item (Q2714966). That article defines heroic verse, a metre (hexameter, alexandrine, iambic pentameter), not a rhymed couplet: a native reader should say whether a Russian reader takes it for the couplet (HUMAN-REVIEW.md).",
      "cite": [
       {
        "wikipedia": "ru",
@@ -5849,14 +5883,15 @@
     "ru": {
      "value": "Цзюэцзюй",
      "status": "sourced",
-     "source": "Wikidata alias (цзюэцзюй); no ru article.",
+     "source": "Wikidata alias of the jueju item (цзюэцзюй); no ru article.",
      "cite": [
       {
        "wikidata": "alias",
        "qid": "Q537198",
        "text": "цзюэцзюй"
       }
-     ]
+     ],
+     "aliasNote": "The item's ru label, «оборванные строки» ('broken-off lines'), is a description in quotation marks, not a name; цзюэцзюй, the alias, is the Chinese name in Russian transcription."
     },
     "ar": {
      "value": "جويجو",
@@ -6237,10 +6272,15 @@
      ]
     },
     "ar": {
-     "value": "الجناس الاستهلالي",
+     "value": "سجع ابتدائي",
      "status": "sourced",
-     "source": "Wikidata alias (الجناس الاستهلالي). The article is titled سجع ابتدائي.",
+     "source": "Wikidata label of the alliteration item and the title of its ar Wikipedia article, سجع ابتدائي (Q484495). Until 2026-11-17 the name was the alias الجناس الاستهلالي, which that article says is used for the acrostic (التتويج).",
      "cite": [
+      {
+       "wikidata": "label",
+       "qid": "Q484495",
+       "text": "سجع ابتدائي"
+      },
       {
        "wikipedia": "ar",
        "title": "سجع ابتدائي",
@@ -6282,8 +6322,12 @@
     "ja": {
      "value": "頭韻",
      "status": "sourced",
-     "source": "Wikidata alias (頭韻); the article is 頭韻法.",
+     "source": "English Wiktionary's alliteration table gives 頭韻, which Wikidata also has as an alias of the item; the ja article is titled 頭韻法 (the -法 'method' form).",
      "cite": [
+      {
+       "wiktionary": "alliteration",
+       "text": "頭韻"
+      },
       {
        "wikipedia": "ja",
        "title": "頭韻法",
@@ -6369,12 +6413,12 @@
     "it": {
      "value": "Rima interna",
      "status": "sourced",
-     "source": "it Wikipedia article Rima interna (Wikidata Q2098331)",
+     "source": "Wikidata's it label of the internal-rhyme item (rima interna). Its it sitelink, Rima interna, is a redirect to the article Rima (Wikidata badges it as a sitelink to a redirect), so it is not an article title.",
      "cite": [
       {
-       "wikipedia": "it",
-       "title": "Rima interna",
-       "qid": "Q2098331"
+       "wikidata": "label",
+       "qid": "Q2098331",
+       "text": "rima interna"
       }
      ]
     },
@@ -6385,8 +6429,8 @@
     },
     "pl": {
      "value": "Rym wewnętrzny",
-     "status": "sourced",
-     "source": "Title of the pl Wikipedia article Rym wewnętrzny (Wikidata Q30912590).",
+     "status": "not-sourced",
+     "source": "Not sourced: the internal-rhyme item (Q2098331) has no Polish label or article. The pl Wikipedia article Rym wewnętrzny exists, but Wikidata keeps it on an item of its own (Q30912590, with no statements), not on internal rhyme; that the two are the same is the translator's reading. For a native reader.",
      "cite": [
       {
        "wikipedia": "pl",
@@ -6460,8 +6504,8 @@
     },
     "th": {
      "value": "สัมผัสใน",
-     "status": "sourced",
-     "source": "A standard term of Thai prosody; Wikidata lists สัมผัสใน among the aliases of the Thai rhyme article. No article of its own.",
+     "status": "not-sourced",
+     "source": "Not sourced: the internal-rhyme item (Q2098331) has no Thai label or article. สัมผัสใน appears among the aliases of the Thai rhyme item (Q178715, คำคล้องจอง), which shows the word is in use, not that it names this device; the translator's reading is that it is the Thai prosody term for rhyme within a line. For a native reader.",
      "cite": [
       {
        "wikidata": "alias",

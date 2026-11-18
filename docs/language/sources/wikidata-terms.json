@@ -1,5 +1,5 @@
 {
-  "fetched": "2026-11-16T17:02:41.717Z",
+  "fetched": "2026-11-18T00:21:57.194Z",
   "source": "https://www.wikidata.org/w/api.php (wbgetentities)",
   "licence": "CC0 1.0 (Wikidata)",
   "concepts": {
@@ -1130,6 +1130,7 @@
         },
         "it": {
           "sitelink": "Rima interna",
+          "redirect": true,
           "label": "rima interna",
           "aliases": [
             "rima al mezzo"
@@ -1796,6 +1797,7 @@
         },
         "th": {
           "sitelink": "บาท (ฉันทลักษณ์)",
+          "redirect": true,
           "label": "บาท (ฉันทลักษณ์)",
           "aliases": []
         },
@@ -1948,6 +1950,7 @@
         },
         "de": {
           "sitelink": "Kana (Schrift)",
+          "redirect": true,
           "label": "Kana",
           "aliases": [
             "Hrkt"
@@ -2489,6 +2492,7 @@
         },
         "it": {
           "sitelink": "Schema rimico",
+          "redirect": true,
           "label": "schema rimico",
           "aliases": [
             "schema di rime",

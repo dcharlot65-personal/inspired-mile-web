@@ -395,6 +395,8 @@ describe('the checks can fail', () => {
       },
       names: {
         'form.couplet.name': {
+          wikidata: 'Q4779829',
+          concept: 'couplet',
           langs: {
             fr: { value: 'Distique', status: 'sourced', source: 'fr Wikipedia article Distique (littérature)', cite: [{ wikipedia: 'fr', title: 'Distique (littérature)', qid: 'Q4779829' }] },
             // The checker's probe: one title changed.
@@ -409,6 +411,22 @@ describe('the checks can fail', () => {
             vi: { value: 'Câu đối vần', status: 'coined', source: 'Not sourced.' },
           },
         },
+        // Cites that are true and spell the name, but are not about the form (the check of 2026-11-17).
+        'form.acrostic.name': {
+          wikidata: 'Q173287',
+          concept: 'acrostic',
+          langs: {
+            // The checker's probe: the Arabic acrostic named and cited after the haiku article. Until
+            // then this passed, as التطريز had, cited to the article of another figure (Q40376349).
+            ar: { value: 'هايكو', status: 'sourced', source: 'ar Wikipedia article هايكو', cite: [{ wikipedia: 'ar', title: 'هايكو', qid: 'Q37707' }] },
+            // Only an alias, while the item has a label: الجناس الاستهلالي for alliteration, which its article gives to the acrostic.
+            de: { value: 'Akrostichon', status: 'sourced', source: 'Wikidata alias', cite: [{ wikidata: 'alias', qid: 'Q173287', text: 'Akrostichon' }] },
+            // A sitelink badged as a redirect is not an article title (it.wikipedia's Rima interna leads to Rima).
+            it: { value: 'Acrostico', status: 'sourced', source: 'it Wikipedia article Acrostico', cite: [{ wikipedia: 'it', title: 'Acrostico', qid: 'Q173287' }] },
+            // A Wiktionary table on another word's page.
+            pl: { value: 'Dystych', status: 'sourced', source: 'Wiktionary', cite: [{ wiktionary: 'couplet', text: 'dystych' }] },
+          },
+        },
       },
     };
     const src = {
@@ -416,12 +434,18 @@ describe('the checks can fail', () => {
       'aosp-terms': { terms: { kg_login_submit_button: { text: { fr: 'Connexion' } }, passkey: { text: { pt: 'chave de acesso' } } } },
       'mozilla-terms': { terms: { 'fxa-menu-sign-out': { text: { fr: 'Se déconnecter…' } } } },
       'apple-passkeys': { pages: { ja: { firstSentence: 'パスキーはパスワードに代わるものとして設計されました。' } } },
-      'wikidata-terms': { concepts: { couplet: { qid: 'Q4779829', langs: { fr: { sitelink: 'Distique (littérature)' }, it: { sitelink: 'Distico' }, pt: { sitelink: 'Dístico' }, ko: { sitelink: '쿠플레' } } } } },
+      'wikidata-terms': {
+        concepts: {
+          couplet: { qid: 'Q4779829', langs: { fr: { sitelink: 'Distique (littérature)' }, it: { sitelink: 'Distico' }, pt: { sitelink: 'Dístico' }, ko: { sitelink: '쿠플레' } } },
+          acrostic: { qid: 'Q173287', langs: { de: { sitelink: 'Akrostichon (Gedicht)', label: 'Akrostichon-Gedicht', aliases: ['Akrostichon'] }, it: { sitelink: 'Acrostico', redirect: true } } },
+          haiku: { qid: 'Q37707', langs: { ar: { sitelink: 'هايكو' } } },
+        },
+      },
       'wikidata-titles': { languages: {} },
       'wiktionary-translations': { concepts: { couplet: { tables: [{ sense: 'in poetry', langs: { pl: ['dwuwiersz', 'dystych'], ru: ['куплет', 'двустишие'] } }] } } },
     };
     const { problems, count } = checkCitations(fake, src);
-    expect(count).toBe(12);
+    expect(count).toBe(16);
     expect(problems.map((p: Problem) => `${p.lang} ${p.rule}`)).toEqual([
       'es citation-not-in-source', // a near-quotation is not the heading
       'de citation-not-in-source', // a cite of no known kind
@@ -430,6 +454,7 @@ describe('the checks can fail', () => {
       'ja citation-not-in-source', // Apple's sentence does not contain it
       'it citation-not-in-source', // the changed title
       'ru citation-not-in-source',
+      'it citation-not-in-source', // the redirect
       'it name-unbacked', // its only cite is false
       'ru name-unbacked',
       'pt name-unbacked',
@@ -437,7 +462,13 @@ describe('the checks can fail', () => {
       'th name-status',
       'th name-unbacked',
       'vi name-status',
+      'ar name-unbacked', // the haiku's article
+      'de name-alias',
+      'it name-unbacked', // the redirect backs nothing
+      'pl name-unbacked', // the couplet's page
     ]);
+    const ar = problems.find((p: Problem) => p.lang === 'ar')!;
+    expect(ar.detail).toContain('Q37707');
   });
 
   it('the name-exception check names a reason that claims a source the glossary denies', () => {

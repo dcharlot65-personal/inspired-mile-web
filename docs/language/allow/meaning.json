@@ -57,12 +57,6 @@
   },
   {
    "lang": "ar",
-   "key": "device.alliteration.name",
-   "text": "الجناس الاستهلالي",
-   "reason": "Sourced name: الجناس الاستهلالي is Wikidata's alias “الجناس الاستهلالي” (Q484495) (glossary.json). Back-translated on its own the name reads “Introductory”; a name alone scores low whatever its quality."
-  },
-  {
-   "lang": "ar",
    "key": "device.brevity.name",
    "text": "الإيجاز",
    "reason": "The game's own name for a device or curse, “الإيجاز”, rendered with an image of the language's own rather than word for word; a short name back-translated alone scores low (MADLAD gave “Summary”). Whether it is the best name is for a native reader."
@@ -96,12 +90,6 @@
    "key": "end.victory",
    "text": "نصر",
    "reason": "نصر is Victory; MADLAD read it as the name Nasr."
-  },
-  {
-   "lang": "ar",
-   "key": "form.acrostic.name",
-   "text": "التطريز",
-   "reason": "Sourced name: التطريز is the ar Wikipedia article “تطريز (شعر)” (Q40376349) (glossary.json). Back-translated on its own the name reads “Embroidery”; a name alone scores low whatever its quality."
   },
   {
    "lang": "ar",
@@ -701,7 +689,7 @@
    "lang": "hi",
    "key": "form.couplet.name",
    "text": "दोहा",
-   "reason": "Sourced name: दोहा is the hi Wikipedia article “दोहा” (Q5288532) (glossary.json). Back-translated on its own the name reads “Doha”; a name alone scores low whatever its quality."
+   "reason": "Not sourced: no Hindi source names the couplet; दोहा is the name of the doha (Q5288532), a rhymed couplet with a fixed metre (glossary.json). Back-translated on its own it reads “Doha”, that form's name, as expected of a name alone. Kept on the translator's reading, a language model's, for a native reader (HUMAN-REVIEW.md)."
   },
   {
    "lang": "hi",
@@ -2201,7 +2189,7 @@
    "lang": "th",
    "key": "device.internal-rhyme.name",
    "text": "สัมผัสใน",
-   "reason": "Sourced name: สัมผัสใน is Wikidata's alias “สัมผัสใน” (Q178715) (glossary.json). Back-translated on its own the name reads “Touch in.”; a name alone scores low whatever its quality."
+   "reason": "Not sourced: no Thai source names internal rhyme; สัมผัสใน is among Wikidata's aliases of the Thai rhyme item (Q178715) (glossary.json). Back-translated on its own it reads “Touch in.”, the word-for-word sense of สัมผัส ใน ('rhyme within'). Kept on the translator's reading, a language model's, for a native reader (HUMAN-REVIEW.md)."
   },
   {
    "lang": "th",

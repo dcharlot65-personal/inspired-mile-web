@@ -112,9 +112,12 @@ export function verifyCite(cite, lang, sources) {
   }
   if ('wikipedia' in cite) {
     const w = cite.wikipedia;
-    const sitelink = items(sources).some((c) => c.qid === cite.qid && c.langs?.[w]?.sitelink === cite.title);
+    const link = items(sources).find((c) => c.qid === cite.qid && c.langs?.[w]?.sitelink === cite.title);
+    // A sitelink badged as a link to a redirect is a title that leads to another article (it.wikipedia's
+    // Rima interna leads to Rima), not an article of that name.
+    if (link?.langs[w].redirect) return `the ${w} Wikipedia title “${cite.title}” of ${cite.qid} is a redirect (Wikidata badges the sitelink so), not an article`;
     const reverse = sources['wikidata-titles']?.languages?.[w]?.[cite.title]?.qid === cite.qid;
-    return sitelink || reverse ? null : `the ${w} Wikipedia article “${cite.title}” is not recorded as ${cite.qid} in the fetched Wikidata files`;
+    return link || reverse ? null : `the ${w} Wikipedia article “${cite.title}” is not recorded as ${cite.qid} in the fetched Wikidata files`;
   }
   if ('wikidata' in cite) {
     const found = items(sources).filter((c) => c.qid === cite.qid);
@@ -149,6 +152,26 @@ export function verifyCite(cite, lang, sources) {
 /** The text a cite vouches for: the article title, the label or alias, the vendor's string. */
 const citedText = (c) => c.title ?? c.text;
 
+/**
+ * Is a cite about the form's own item? A Wikipedia title or a Wikidata label or alias must be of the
+ * item glossary.json gives the form (`wikidata`), and a Wiktionary table must be on the page of the
+ * form's English word (`concept`, or `wiktionary` where the page has another name). Until 2026-11-17
+ * any confirmed cite that spelled the name would do: the Arabic acrostic was 'sourced' by the article
+ * تطريز (شعر), which is another item (Q40376349) and defines another figure, and a name cited to the
+ * haiku article would have passed as the acrostic's.
+ */
+export function aboutItem(cite, item) {
+  if ('wikipedia' in cite || 'wikidata' in cite) return cite.qid === item.wikidata;
+  if ('wiktionary' in cite) return cite.wiktionary === (item.wiktionary ?? item.concept);
+  return false;
+}
+
+/** The item's own label and article title in a language, from the fetched Wikidata files. */
+function ownNames(item, lang, sources) {
+  const c = items(sources).find((x) => x.qid === item.wikidata)?.langs?.[lang];
+  return [c?.label, c?.redirect ? null : c?.sitelink].filter(Boolean);
+}
+
 export const NAME_STATUSES = ['sourced', 'head', 'own-name', 'not-sourced'];
 
 /**
@@ -160,7 +183,11 @@ export const NAME_STATUSES = ['sourced', 'head', 'own-name', 'not-sourced'];
  *   own-name     the form's own name, as other languages' Wikipedias title it (Jueju, Lục bát);
  *   not-sourced  the translator's name: no article or dictionary entry in this language names the form.
  * The prose says "Not sourced" exactly when the status is not-sourced, and a status that claims a source
- * must be backed by a cite that the files confirm and that gives that very name.
+ * must be backed by a cite that the files confirm, that gives that very name, and that is about the
+ * form's own item (aboutItem). A cite about another item may stay as context; it backs nothing.
+ * A name backed only by a Wikidata alias, where the item has a label or an article in the language,
+ * must say in `aliasNote` why the label was not used: the Arabic alliteration was the alias
+ * الجناس الاستهلالي, which the item's own article (سجع ابتدائي) says names the acrostic.
  */
 function checkNames(glossary, sources, problems) {
   for (const [id, item] of Object.entries(glossary.names ?? {})) {
@@ -173,16 +200,32 @@ function checkNames(glossary, sources, problems) {
       }
       const saysNot = /Not sourced/.test(e.source ?? '');
       if (saysNot !== (e.status === 'not-sourced')) say('name-status', `status ${e.status}, but the prose ${saysNot ? 'says' : 'does not say'} “Not sourced”: ${e.source}`);
-      const good = (e.cite ?? []).filter((c) => !verifyCite(c, lang, sources));
+      const confirmed = (e.cite ?? []).filter((c) => !verifyCite(c, lang, sources));
+      const good = confirmed.filter((c) => aboutItem(c, item));
+      // A cite that spells the name but is about another item: say which, since that is how a name gets misread as sourced.
+      const elsewhere = (want, l) => confirmed.filter((c) => !aboutItem(c, item) && (c.lang ?? lang) === l && bare(citedText(c), l) === want).map((c) => c.qid ?? `Wiktionary “${c.wiktionary}”`);
+      const unbacked = (what, want, l = lang) => {
+        const other = elsewhere(bare(want, l), l);
+        say('name-unbacked', `marked ${what}, but no confirmed ${l} cite about the form's item (${item.wikidata}) gives “${want}”${other.length ? `; the cite that gives it is about ${other.join(', ')}` : ''}`);
+      };
+      const aliasOnly = (want) => {
+        const backing = good.filter((c) => (c.lang ?? lang) === lang && bare(citedText(c), lang) === bare(want, lang));
+        if (backing.length && backing.every((c) => c.wikidata === 'alias') && !e.aliasNote) {
+          const own = ownNames(item, lang, sources);
+          if (own.length) say('name-alias', `“${want}” is only a Wikidata alias of ${item.wikidata}, whose ${lang} label or article is “${own.join('”, “')}”; say why the alias is used (aliasNote)`);
+        }
+      };
       if (e.status === 'sourced') {
-        const want = bare(e.cited ?? e.value, lang);
-        if (!good.some((c) => (c.lang ?? lang) === lang && bare(citedText(c), lang) === want)) say('name-unbacked', `marked sourced, but no confirmed ${lang} cite gives “${e.cited ?? e.value}”`);
+        const want = e.cited ?? e.value;
+        if (!good.some((c) => (c.lang ?? lang) === lang && bare(citedText(c), lang) === bare(want, lang))) unbacked('sourced', want);
+        else aliasOnly(want);
         if (e.cited && bare(e.cited, lang) !== bare(e.value, lang) && !e.citedNote) say('name-unbacked', `cites “${e.cited}” for “${e.value}” without saying how one becomes the other (citedNote)`);
       } else if (e.status === 'head') {
         if (!e.head || !fold(e.value, lang).includes(fold(e.head, lang))) say('name-unbacked', `marked head-sourced, but its head “${e.head}” is not part of “${e.value}”`);
-        else if (!good.some((c) => (c.lang ?? lang) === lang && bare(citedText(c), lang) === bare(e.head, lang))) say('name-unbacked', `marked head-sourced, but no confirmed ${lang} cite gives “${e.head}”`);
+        else if (!good.some((c) => (c.lang ?? lang) === lang && bare(citedText(c), lang) === bare(e.head, lang))) unbacked('head-sourced', e.head);
+        else aliasOnly(e.head);
       } else if (e.status === 'own-name') {
-        if (!good.some((c) => c.lang && c.lang !== lang && bare(citedText(c), c.lang) === bare(e.value, c.lang))) say('name-unbacked', `marked as the form's own name, but no confirmed cite in another language gives “${e.value}”`);
+        if (!good.some((c) => c.lang && c.lang !== lang && bare(citedText(c), c.lang) === bare(e.value, c.lang))) say('name-unbacked', `marked as the form's own name, but no confirmed cite about the form's item (${item.wikidata}) in another language gives “${e.value}”`);
       }
     }
   }

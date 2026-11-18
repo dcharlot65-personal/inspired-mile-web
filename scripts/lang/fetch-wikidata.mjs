@@ -11,6 +11,9 @@
  * label gets null, and the locale then needs a human decision (recorded in
  * docs/language/GLOSSARY.md).
  *
+ * A sitelink that Wikidata badges as a link to a redirect (Q70893996, or Q70894304 when intended) is
+ * kept with redirect: true: the title is then not an article, only a name that leads to one.
+ *
  * Wikidata is CC0; Wikipedia titles are facts taken through its sitelinks.
  */
 import { writeFileSync } from 'node:fs';
@@ -46,6 +49,7 @@ const CONCEPTS = {
 };
 
 const UA = 'language-qa-script/1.0 (terminology lookup)';
+const REDIRECT_BADGES = ['Q70893996', 'Q70894304'];
 /** One request, retried when the API says it is busy (it rate-limits by address, and this machine shares one). */
 async function api(params) {
   const url = 'https://www.wikidata.org/w/api.php?' + new URLSearchParams({ format: 'json', origin: '*', ...params });
@@ -73,8 +77,10 @@ for (const [id, title] of Object.entries(CONCEPTS)) {
   }
   const row = { enwiki: title, qid: ent.id, description: ent.descriptions?.en?.value ?? null, langs: {} };
   for (const l of LANGS) {
+    const link = ent.sitelinks?.[`${l}wiki`];
     row.langs[l] = {
-      sitelink: ent.sitelinks?.[`${l}wiki`]?.title ?? null,
+      sitelink: link?.title ?? null,
+      ...(link?.badges?.some((b) => REDIRECT_BADGES.includes(b)) ? { redirect: true } : {}),
       label: ent.labels?.[l]?.value ?? null,
       aliases: (ent.aliases?.[l] ?? []).map((a) => a.value),
     };
