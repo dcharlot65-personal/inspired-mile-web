@@ -410,3 +410,32 @@ h.octavius	hi	Octavius	the label is the emperor Augustus; no source here names t
 h.octavius	ko	Octavius	the label is the emperor Augustus; ko.wikipedia's 줄리어스 시저 (희곡) does not name him, so the English name stands
 h.octavius	vi	Octavius	the label is the emperor Augustus; no source here names the play's Octavius in Vietnamese, so the English name stands
 h.octavius	th	Octavius	the label is the emperor Augustus; no source here names the play's Octavius in Thai, so the English name stands
+h.cornelia	de	Cornelia	the label is the full historical name (Cornelia die Jüngere); the play's other women are named plainly
+h.cornelia	it	Cornelia	the label is the full historical name (Cornelia Cinna minore)
+h.cornelia	id	Cornelia	the label is the full historical name (Cornelia Cinna minor)
+h.cornelia	ja	コルネリア	no Japanese label for Caesar's wife; the given name's item (namesakes.json) has this Latin reading, as 小オクタウィア has
+h.octavia	id	Octavia	the label is the full historical name (Octavia Minor)
+h.octavia	ar	أوكتيفيا	the label adds الصغرى (the Younger), which the other options do not carry
+h.octavia	ja	オクタウィア	the label adds 小 (the Younger), which the other options do not carry
+h.john	es	Juan sin Tierra	the label is the full regnal name (Juan I de Inglaterra) beside Enrique V; Spanish calls him by this name, as de, fr, ru and pl do
+o.queens	es	Queen Elizabeth's Men	no Spanish label; the company's own name (mul label), without the English "The", as the other two Spanish labels have it
+o.leicester	es	Leicester's Men	no Spanish label; the company's own name (mul label), without the English "The"
+h.henry5	pt	Henrique V	trivia 99 names four kings: every one by its short name, as the others in this question
+h.henry4	pt	Henrique IV	trivia 99 names four kings: every one by its short name, as the others in this question
+h.john	pt	João Sem-Terra	trivia 99 names four kings: every one by its short name, as the others in this question (the epithet, as de, fr, ru, pl and es call him)
+h.henry5	id	Henry V	trivia 99 names four kings: every one by its short name, as the others in this question
+h.henry4	id	Henry IV	trivia 99 names four kings: every one by its short name, as the others in this question
+h.john	id	John	trivia 99 names four kings: every one by its short name, as the others in this question (ja, zh, ko and vi labels also write him by the name alone)
+h.henry5	ar	هنري الخامس	trivia 99 names four kings: every one by its short name, as the others in this question
+h.henry4	ar	هنري الرابع	trivia 99 names four kings: every one by its short name, as the others in this question
+h.henry5	vi	Henry V	trivia 99 names four kings: every one by its short name, as the others in this question
+h.henry4	vi	Henry IV	trivia 99 names four kings: every one by its short name, as the others in this question
+h.richard3	vi	Richard III	trivia 99 names four kings: every one by its short name, as the others in this question
+h.henry5	th	พระเจ้าเฮนรีที่ 5	trivia 99 names four kings: every one by its short name, as the others in this question
+h.henry4	th	พระเจ้าเฮนรีที่ 4	trivia 99 names four kings: every one by its short name, as the others in this question
+h.john	th	พระเจ้าจอห์น	trivia 99 names four kings: every one by its short name, as the others in this question
+h.henry4	hi	हेनरी चतुर्थ	trivia 99 names four kings: every one by its short name, as the others in this question
+h.richard3	hi	रिचर्ड तृतीय	trivia 99 names four kings: every one by its short name, as the others in this question (the label writes the numeral as a digit, ३, where the other kings have the ordinal word)
+h.john	hi	जॉन	trivia 99 names four kings: every one by its short name, as the others in this question
+h.henry5	pl	Henryk V	trivia 99 names four kings: every one by its short name, as the others in this question
+h.henry4	pl	Henryk IV	trivia 99 names four kings: every one by its short name, as the others in this question

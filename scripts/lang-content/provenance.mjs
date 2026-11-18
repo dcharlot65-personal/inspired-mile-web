@@ -37,6 +37,7 @@ const sources = readTsv(join(HERE, 'challenges', 'sources.tsv'));
 const nameOptions = Object.values(optionKeys).flat().filter(Boolean).length;
 const handNames = readTsv(join(HERE, 'trivia-option-handnames.tsv'));
 const places = JSON.parse(readFileSync(join(HERE, 'wikidata-places.json'), 'utf8'));
+const namesakes = JSON.parse(readFileSync(join(HERE, 'namesakes.json'), 'utf8'));
 const out = [];
 const P = (...s) => out.push(...s);
 
@@ -56,6 +57,7 @@ P('# Play content: where every title, name and quotation comes from', '',
   "- **Wikipedia article titles**, as Wikidata's sitelinks give them, where an item has no label in a language. A title is a name, not text.",
   `- **Wikipedia articles** (text CC BY-SA 4.0; only names are taken from them, never text), fetched 2026-11-16 by \`wikipedia.py\`: the articles on the plays, on Shakespeare and on the Globe, one revision each, read through \`index.php\` (the API was refusing this address with HTTP 429). A name Wikidata has no label for is taken from an article only where the article is the play's own (its Wikidata sitelink; for a person, place or work, the articles \`evidence.mjs\` lists), and the name stands there as the character: in the cast list, the plot, or with the English beside it ("愛麗兒（Ariel）", "Пигва (Peter Quince)"), not as part of somebody else's name (Барри Эдгар, Laurence Olivier, アーロン・ヒル) and not among film credits. Each such name is a line of \`scripts/lang-content/names-evidence.tsv\`: the item, the language, the name, the URL of the article revision, the date, and the words around it, which must be one of those sound occurrences. ${evidence.length} lines. \`node scripts/lang-content/evidence.mjs audit\` checks every line against the cached revision; \`play-areas.test.ts\` checks the article and the recorded words of every line. Before 2026-11-16 these rules did not exist, and the lines were only required to hold the word: an independent checker found six that named somebody else, and the audit 48 that broke a rule (see **Checks**). A line accepted by hand despite a rule is listed in \`evidence.mjs\` (ACCEPTED) with the reason.`,
   `- **Wikidata labels of three places** (CC0), fetched ${places.fetched} by \`fetch-places.py\` (\`wikidata-places.json\`): Kent (${places.entities['l.kent'].id}), Cornwall (${places.entities['l.cornwall'].id}), Gloucester (${places.entities['l.gloucester'].id}). The Earl of Kent, the Duke of Cornwall and the Earl of Gloucester are named after them; in a language with no article on *King Lear* the place's label is the source for the name in their title.`,
+  `- **Wikidata labels of a name** (CC0), fetched ${namesakes.fetched} by \`fetch-namesakes.py\` (\`namesakes.json\`): ${Object.entries(namesakes.entities).map(([k, e]) => `for ${k}, ${e.id}, the ${e.description} (revision ${e.lastrevid})`).join('; ')}. Used only where the person's own item has nothing in a language: the Japanese for Caesar's wife Cornelia, a decoy option of trivia 133 and 166, is the given name's alias コルネリア (its label コーネリア is the English reading; the alias is the Latin one, as 小オクタウィア beside it).`,
   "- **Chinese**: labels and titles in Traditional characters were converted to Simplified by MediaWiki's own converter on zh.wikipedia.org (`zh-simplify.py`; marked `zh-hans:from` in the JSON); Chinese articles and Zhu Shenghao's translation were read as zh.wikipedia and zh.wikisource serve them in Simplified (`variant=zh-cn` / `zh-hans`).",
   '- **Wikisource** and **Aozora Bunko** (public-domain translations), fetched 2026-11-16. An Aozora file has no revision id: the evidence records the SHA-256 of the bytes read.', '');
 P('| Source id | Language | Work | Translator (died) | Page | Status |', '|---|---|---|---|---|---|');
@@ -170,7 +172,8 @@ if (bt) {
     '| Language | Engine | Strings | Threshold | Flagged (trivia) | Controls caught | Median similarity |', '|---|---|---|---|---|---|---|');
   for (const [eng, langs] of Object.entries(bt.engines)) for (const [l, s] of Object.entries(langs)) if (!s.status) P(`| ${l} | ${eng} | ${s.strings} (${s.covered}) | ${s.threshold} | ${s.flagged} (${s.flaggedTrivia}) | ${s.controlsCaught}/${s.controls} | ${s.medianCos} |`);
   const notRun = Object.entries(bt.engines).flatMap(([eng, langs]) => Object.entries(langs).filter(([, s]) => s.status).map(([l]) => `${l} (${eng})`));
-  if (notRun.length) P('', `Not run: ${notRun.join(', ')}.`);
+  // Not over every string: MADLAD-400 was run only over the strings a pass changed (its own paragraph below), never in this table's full run.
+  if (notRun.length) P('', `Not run over every string: ${notRun.join(', ')}. MADLAD-400 was run over the strings each pass changed instead (below).`);
   P('', `Models: ${bt.models}. Threshold: ${bt.thresholdRule}, at most ${bt.threshold}. A threshold under the controls' scores would flag nothing they could not; where a model translates a language poorly, the threshold falls to what an unrelated sentence scores, and below it a string cannot be told from one.`, '');
 } else P('**Back-translation**: not run to completion; see the report of this branch.', '');
 if (al) {
