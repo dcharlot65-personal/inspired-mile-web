@@ -674,6 +674,141 @@ with its lines swapped in 2 of 2 pairs; too few to move a rule on. The check's p
 figures to the digit (the committed pairs at or above main in all sixteen languages; de:B3 0.625 and
 ja:B3 0.25 against main's 0.75 and 0.5).
 
+## Engine pass, fourth round (after the engine check's third round, 2026-11-18)
+
+The check refused b082b33b over the loanword lists: they let random katakana of two characters count.
+Probes on the Studio and the M4 through `rb` put 0346ee1, b082b33b and each candidate rule side by side
+in one vitest run (each engine a copy of `src/lib/verse`, its own analyser and lists); the committed
+tests are in `review5.test.ts` ("engine check 3").
+
+**Short random katakana** (blocker). At b082b33b any word or name of JMdict's lists counted whole from
+two characters. The lists hold 1,039 of the 4,761 pairs of the 69 plain katakana (426 words, 613
+names), so a line of short runs of random katakana counted far more often than at 0346ee1. A word of
+the lists now counts whole at `LISTED_WHOLE` (3) full-size kana or `LISTED_LONG` (4) characters; a
+full-size kana is one that is not small (ャ, ッ, ァ) and not the long mark, which a typist adds to
+anything. Rules measured (F: characters from three, the check's suggestion; P3: full-size kana from
+three; P34: full-size kana from three or characters from four, kept):
+
+| alone on the first line of a haiku, the check's seed | lines | 0346ee1 | b082b33b | F | P3 | P34 (now) |
+|---|---|---|---|---|---|---|
+| random pairs of plain kana | 3,497 | 619 | 1,366 | 624 | 624 | 624 |
+| random pairs, a small kana or a long mark after some | 5,123 | 495 | 1,208 | 738 | 501 | 522 |
+| random threes | 7,907 | 53 | 197 | 197 | 197 | 197 |
+| random threes, marked | 7,986 | 88 | 153 | 153 | 153 | 153 |
+| random fours | 7,998 | 253 | - | - | - | 258 |
+| random fours, marked | 8,000 | 81 | - | 84 | - | 84 |
+| every pair of the 69 plain kana | 4,761 | 852 | 1,897 | 858 | - | 858 |
+
+The 5 or 6 more than 0346ee1 in the plain rows are IPADIC's own words as written, which its analyser
+split (オフ, タル). With IPADIC alone (the lists taken away, the same rule), the pairs count 858, so the
+lists add none at two kana. Threes: the lists spell 144 of 7,907 (イトコ, ラノベ, ミノリ: words and
+names, by chance), as at b082b33b; three kana is where most short loanwords live (スマホ, アプリ, レノン).
+
+At the scale of a verse (tercets of one to four runs a line around 君を待つ夜, 3,000 each, counted; one
+seed for every column; "IPADIC alone" is the rule now with the lists taken away). At b082b33b, on the
+check's seed, four runs of two kana a line counted in 763 tercets where 0346ee1 counted 61.
+
+| runs a line | 0346ee1 | F | P34 (now) | IPADIC alone |
+|---|---|---|---|---|
+| two kana, 1 | 83 | 84 | 84 | 84 |
+| two kana, 4 | 71 | 72 | 72 | 72 |
+| two kana marked, 1 | 39 | 72 | 42 | 40 |
+| two kana marked, 3 | 6 | 19 | 7 | 6 |
+| two kana marked, 4 | 2 | 16 | 2 | 2 |
+| two or three kana, 1 | 29 | 36 | 36 | 30 |
+| two or three kana, 3 | 2 | 5 | 5 | 2 |
+| two or three kana marked, 1 | 15 | 30 | 17 | 15 |
+| four kana, 1 to 4 | 2, 7, 0, 0 | - | 2, 7, 0, 0 | 2, 7, 0, 0 |
+
+A duel: one real line of an honest verse and random runs for the other lines, the best of 60 tries by
+craft, 14 houses x 20 seeds, round 1 (280 rounds; wins; the same tries for every column):
+
+| runs a line | 0346ee1 | b082b33b | F | P3 | P34 (now) |
+|---|---|---|---|---|---|
+| 2 to 4 runs of two kana | 5 | 39 | 5 | 5 | 5 |
+| 2 or 3 runs of two kana, marked | 0 | 17 | 3 | 0 | 0 |
+| 2 or 3 runs of two or three kana | 2 | 12 | 2 | 2 | 2 |
+| the same, marked | 4 | - | 6 | 5 | 5 |
+| 1 to 3 runs of four kana | 0 | - | - | - | 0 |
+| 1 or 2 runs of four kana, marked | 3 | - | - | - | 3 |
+| 2 or 3 runs of three or four kana | 3 | - | - | - | 3 |
+| 2 or 3 runs of two to four kana | 5 | - | - | - | 5 |
+| a run of four and one of two | 0 | - | - | - | 0 |
+
+Haiku rounds with the first and last lines mash (two runs of two kana and one kana, 5 morae) and
+君を待つ夜 between (1,064 rounds, written opponent, rule judge), not void: 0346ee1 2, b082b33b 28, F 2;
+with marked runs, 0346ee1 0, b082b33b 7, F 3. P34 was not run on these; it lists a subset of what F
+lists (three full-size kana, or four characters, are three characters or more).
+
+What the length rule costs, alone on a line (with a particle after it, every one of the 666 counts):
+
+| words | void alone now | at b082b33b | at 0346ee1 | void now and counted at b082b33b |
+|---|---|---|---|---|
+| the second check's 135 | 2 | 1 | 31 | フェス |
+| the cut-off pass's 165 | 10 | 7 | 75 | バズ, ボバ, フォー |
+| the third check's 211 | 16 | 15 | 52 | レゴ |
+| this round's 155, written before any was looked up and on no earlier list | 17 | 15 | 45 | アキー, ラーラ |
+
+P3 (full-size kana alone) would also lose ラッパー, タトゥー, ミュート, ゲーマー, フーディー, コービー,
+カービィ, バービー, ブードゥー, ウェーブ and フェード. Every one void now is in no dictionary at the length
+counted. The third check's 16: names and brands written together (アデル, ルイアームストロング,
+スポティファイ, エリカバドゥ, ウータンクラン, ミッシーエリオット, ...), レディー・ガガ (ガガ is two kana),
+バチャータ, ズーク, ソカ, and クラウトン. This round's 17: Haitian places and dishes (ジャクメル,
+カパイシャン, ペチョンビル, ゴナイーヴ, シタデル, ピクリズ, ラーラ, コンパディレクト), names written
+together (ハリエットタブマン, ニッキーミナージュ, ドクタードレー, アリシアキーズ), ニュージャックスウィング,
+ファンドレイザー, フェイダウェイ, アリウープ, アキー. The earlier round's "4 of 106" was that round's own
+words; across the four sets 45 of 666 are void alone (7%).
+
+**Two katakana words on a line, one no dictionary has** (concern). At 0346ee1 and b082b33b one
+katakana word no dictionary has left every katakana word of its line void (プレイリスト スポティファイ):
+a run of katakana counts when it holds two loanwords or is one. Now a word written apart (katakana on
+neither side) that a dictionary has whole counts on its own from `APART_WHOLE` (4) full-size kana. Of
+18 such lines, 4 count now (プレイリスト スポティファイ, ビギー スモールズ, マイルスデイビス トランペット,
+ソカ カーニバル); アデル ハロー, ネオン ズーク, ルイアームストロング ジャズ stay void, the listed word
+being shorter. Counted in characters, on top of F, the rule let a duel's best of 60 with marked
+two-kana runs win 14 rounds of 280 (from three characters) and 6 (from four) where F won 3; from two
+characters, 294 of 3,000 tercets of two runs of two kana counted where 1 did, and from three, 9 of
+3,000 of two runs of three kana where none did. From four full-size kana it changed no count, in any
+table above, from the same rule without it (probe 6).
+
+**The check's own probes at this head** (`zz-e3-mash2`, `zz-e3-variant`, `zz-e3-ja`, the Studio, against
+0346ee1 copied in): every pair of the 69 plain kana, 858 count (852 at 0346ee1, 1,897 at b082b33b; the 6
+are IPADIC's words as written); four runs of two kana a line, 68 tercets of 3,000 (65; b082b33b 824);
+haiku rounds with mash first and last lines, 2 of 1,064 not void (2; b082b33b 28); its variant probe's
+tercets 68 (67; b082b33b 796); random marked pairs alone 522 of 5,123 (495; b082b33b 1,208); repeated
+kana 43 of 355 (33; b082b33b 67: アアア, ハハハ, ラララ stay); rows of the kana chart 16 of 272 (15;
+b082b33b 45: アイウエオ stays). As at b082b33b, where the run has three full-size kana or more: random
+threes 197 of 7,907 (53 at 0346ee1), marked threes 153 (88), alternations 718 of 3,960 (614: ウネウネ,
+イソイソ, words of JMdict), three keys of the kana keyboard 8 of 74 (3). Its 211 words: 16 void (15 at
+b082b33b, 52 at 0346ee1; レゴ is the one more).
+
+**Each rule broken** (TypeScript, the iMac Pro; `review3`, `review4` and `review5`'s loanword and
+random-katakana tests; the baseline 15 passed before and after):
+
+| broken in `text.ts` | went red |
+|---|---|
+| a list's word at any length (b082b33b) | the check's 135, the 211 and 155, the pairs, random runs alone, tercets, the best of 60 |
+| characters from three (the check's suggestion) | the check's 135 (フェス counts), the 211 and 155, random runs alone (marked pairs), tercets |
+| full-size kana alone | the check's 135 (ラッパー, タトゥー), the cut-off pass's 165, the 211 and 155 |
+| two full-size kana | the check's 135, the 211 and 155, the pairs, random runs alone, tercets, the best of 60 |
+| names at any length | the 211 and 155, the pairs, random runs alone, tercets, the best of 60 |
+| no written-apart rule | the two-word lines |
+| written apart from three full-size kana | the two-word lines (アデル ハロー counts) |
+| written apart counted in characters | the best of 60 |
+| no lists | the check's 135, the 165, the 211 and 155, the void haiku, the two-word lines |
+
+**sound.spec's gap** (concern). A warm-up for every visitor three seconds after load passed both
+`sound.spec.ts:25` and `battle-bytes`, which waited 2.5 s and 2 s. `battle-bytes`' no-duel case now
+runs ten minutes of the page's clock (Playwright's `clock.install` and `runFor`) and refuses the English
+table and any sound data alike. On the Studio, unmutated, `sound.spec.ts:25` and `battle-bytes` passed
+18 of 18 (three times each); every visitor warmed at idle, 3 s and 45 s after load, Japanese for every
+visitor at idle and 20 s after load: each red; restored, 6 of 6.
+
+As committed (the code of 236115bd, the Studio, ports 47561 to 47565): `npx vitest run` 342 of 342 (20
+files), `npm run build`, `scripts/gen-verse-golden.sh` with no file changed (online play is English; the
+Rust engine reads no Japanese), `cargo test --release` 49 + 135 + 8, `npx playwright test` 234 passed and
+8 skipped.
+
 ## Mutation runs
 
 First pass: each defence broken in turn, on a build host (22 mutations): every one turned at least
