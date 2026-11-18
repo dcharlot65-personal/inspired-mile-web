@@ -79,6 +79,14 @@ export interface CardTextPack {
    */
   containing?: Record<string, string[]>;
   /**
+   * Chinese only: how a foreign name is spelled, so the invocation can see where one goes on around a name of the game
+   * (哈德斯菲尔德, Huddersfield, holds 哈德斯, Hades): `chars`, every character Xinhua's transliteration tables use (Chinese
+   * Wikipedia, Wikipedia:外語譯音表); `bound`, those that are no word by themselves (jieba: 迪, 娅, 菲, 斯); `native`, the
+   * common words written only in such characters (wordfreq: 当然, 东西), which end a foreign name rather than carry it on
+   * (scripts/language/fetch/transliteration.py).
+   */
+  transliteration?: { chars: string; bound: string; native: string[] };
+  /**
    * Vietnamese: the words of two to four syllables (nouns, verbs, adjectives, from Wiktionary) that occur in the
    * lines, which the signature reads as one word («vấn đề», "problem", not «vấn» and «đề»). Thai: the lines' words as
    * PyThaiNLP's newmm reads them (scripts/language/check/segment.py), read as one word where ICU cuts them in pieces

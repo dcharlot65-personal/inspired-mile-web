@@ -23,6 +23,9 @@ Inputs, all in the repository:
                                                Wiktionary's parts of speech (fetch/name_pos.py)
   docs/language/sources/name-containing-words.json  Chinese and Thai dictionary words that hold a name with more around it
                                                (CC-CEDICT, jieba, PyThaiNLP; fetch/containing_words.py)
+  docs/language/sources/zh-transliteration.json  the characters Chinese spells foreign names with (Xinhua's tables via
+                                               Chinese Wikipedia), which of them are not words by themselves (jieba), and
+                                               the common words written only in them (wordfreq; fetch/transliteration.py)
   scripts/language/published.json              who translated each published text, and its copyright status
   scripts/language/translated/<lang>.txt       what was translated for the game (no published source)
   src/i18n/locales/<lang>.ts                   rarity names, so a rarity is called one thing everywhere
@@ -532,6 +535,7 @@ def main():
     name_forms = json.load(open(nf_path, encoding='utf8'))['languages'] if os.path.exists(nf_path) else {}
     name_pos = json.loads(read('docs/language/sources/wiktionary-name-pos.json'))['languages']
     containing = json.loads(read('docs/language/sources/name-containing-words.json'))
+    translit = json.loads(read('docs/language/sources/zh-transliteration.json'))
     sg_path = os.path.join(ROOT, 'docs/language/checks/line-segments.json')
     segments = json.load(open(sg_path, encoding='utf8')) if os.path.exists(sg_path) else None
     published = json.loads(read('scripts/language/published.json'))
@@ -630,6 +634,10 @@ def main():
         held = containing_words(lang, containing)
         if held:
             pack['containing'] = held
+        if lang == 'zh':
+            # Where a foreign name goes on around a name of the game (echo.ts carriesOn): the characters foreign names are
+            # spelled with, those that are no word by themselves, and the common words written only in them.
+            pack['transliteration'] = {k: translit[k] for k in ('chars', 'bound', 'native')}
         if lang in name_forms:
             # The forms a name takes in a sentence that the invocation accepts (check.py forms): made by declension.py's
             # paradigms, without the ones Hunspell knows as ordinary words. Only for the words of this pack's names.
