@@ -446,4 +446,16 @@ test.describe('Translated pages: what a script draws', () => {
       if (l !== 'en') await expect(page.locator('#variant-equip'), l).not.toContainText('Tokyo');
     }
   });
+
+  test('scripts with no italic are not slanted: no italic is made up for them', async ({ page }) => {
+    // The play titles on the Arabic home page are set in italic; Arabic fonts have no italic face, and
+    // the browser slanted the letters. Latin pages keep their italic.
+    await page.goto('/');
+    for (const [l, synthesis] of [['ar', 'none'], ['ja', 'none'], ['hi', 'none'], ['en', 'auto'], ['de', 'auto']] as const) {
+      await show(page, '/', l);
+      const title = page.locator('p.italic[data-i18n-html^="card-terms.work."]').first();
+      await expect(title, l).toBeVisible();
+      expect([l, await title.evaluate((e) => getComputedStyle(e).fontSynthesisStyle)]).toEqual([l, synthesis]);
+    }
+  });
 });

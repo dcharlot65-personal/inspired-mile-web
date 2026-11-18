@@ -110,6 +110,14 @@
   display: inline-block;
 }
 
+/* Arabic, Devanagari, Thai, Chinese, Japanese and Korean have no italic of their own: their fonts
+   ship no italic face, so `italic` made the browser slant the upright letters (the play titles on
+   the Arabic home page leaned). No slant is made up for them; a font with a real italic face (a
+   Latin name inside such a page, where the font has one) still shows it. */
+html:is(:lang(ar), :lang(hi), :lang(th), :lang(zh), :lang(ja), :lang(ko)) {
+  font-synthesis-style: none;
+}
+
 @utility section-padding {
   @apply px-4 sm:px-6 lg:px-8 py-16 sm:py-24;
 }
