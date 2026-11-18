@@ -62,7 +62,9 @@ export const JUDGE_POOL = 24;
  *     (no more lines than it), COPY_LINE_NEAR of each line's words in order, whatever the line ends
  *     on (each line's last word swapped for any other, in a form that asks no rhyme), or
  *     COPY_LINE_SHARE of every one of its lines, none left out (the last word and one more swapped in
- *     every line of a haiku), or COPY_LINE_ANY of every one in any order (its inner words moved about).
+ *     every line of a haiku), or COPY_LINE_ANY of every one in any order (its inner words moved about),
+ *     with one of their content words at least (a verse that keeps only the other's little words is
+ *     its own).
  *     Words dropped
  *     from each line, a few put in, neighbours swapped and the lines moved however the form allows
  *     leave this whole; an answer throws words back into one line or two, and its little words
@@ -417,8 +419,14 @@ export function carriesLines(c: CopyMeasure, rhymed: (l: CarriedLine, i: number)
   if (c.verseLines > c.carry.length) return false;
   if (counted.filter(([l, i]) => kept(l, i) || (l.said >= 2 && l.said >= Math.ceil(COPY_LINE_NEAR * l.source))).length >= need) return true;
   // Every one of them, none left out: COPY_LINE_SHARE of it in order, or COPY_LINE_ANY of it in any
-  // order (its inner words moved about), whatever it now ends on.
-  return counted.every(([l]) => l.said >= 2 && (l.said >= Math.ceil(COPY_LINE_SHARE * l.source) || l.any >= Math.ceil(COPY_LINE_ANY * l.source)));
+  // order (its inner words moved about), whatever it now ends on; and one of their content words at
+  // least (where they have any). A verse that keeps only the other's little words in place, every word
+  // that means something changed, answers it in its own frame: counting little words alone, this
+  // voided such verses (the engine check's second round: es 112 of 238, de 56, pt 70). Asking a content
+  // word of every line, or of half of them, freed more copies whose lines' only content word is the
+  // last, swapped, or was dropped (review5.test.ts; RULES-MEASUREMENTS.md, "Engine pass, third round").
+  if (!counted.every(([l]) => l.said >= 2 && (l.said >= Math.ceil(COPY_LINE_SHARE * l.source) || l.any >= Math.ceil(COPY_LINE_ANY * l.source)))) return false;
+  return counted.every(([l]) => l.content === 0) || counted.some(([l]) => l.contentSaid >= 1);
 }
 
 /** Is `verse` a copy of `answered` (see COPY_THRESHOLD)? */
