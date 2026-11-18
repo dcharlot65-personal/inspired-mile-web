@@ -86,7 +86,7 @@ async fn get_leaderboard(
     )
     .fetch_all(&pool)
     .await
-    .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?;
+    .map_err(crate::error::internal)?;
 
     let entries: Vec<LeaderboardEntry> = rows
         .iter()
@@ -122,7 +122,7 @@ async fn get_stats(
     .bind(claims.sub)
     .fetch_optional(&pool)
     .await
-    .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?
+    .map_err(crate::error::internal)?
     .ok_or((StatusCode::NOT_FOUND, "No stats found".into()))?;
 
     Ok(Json(PlayerStats {
@@ -185,7 +185,7 @@ async fn update_stats(
     .bind(body.packs_opened)
     .fetch_one(&pool)
     .await
-    .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?;
+    .map_err(crate::error::internal)?;
 
     Ok(Json(PlayerStats {
         battle_wins: row.get("battle_wins"),
@@ -215,7 +215,7 @@ async fn list_achievements(
     .bind(claims.sub)
     .fetch_all(&pool)
     .await
-    .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?;
+    .map_err(crate::error::internal)?;
 
     let achievements: Vec<UnlockedAchievement> = rows
         .iter()
@@ -256,7 +256,7 @@ async fn check_achievements(
         .bind(achievement_id)
         .fetch_optional(&pool)
         .await
-        .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?;
+        .map_err(crate::error::internal)?;
 
         if let Some(row) = result {
             newly_unlocked.push(row.get::<String, _>("achievement_id"));

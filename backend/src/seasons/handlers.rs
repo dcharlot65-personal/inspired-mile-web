@@ -76,7 +76,7 @@ async fn get_current_season(
     )
     .fetch_optional(&pool)
     .await
-    .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?
+    .map_err(crate::error::internal)?
     .ok_or((StatusCode::NOT_FOUND, "No active season".into()))?;
 
     let season_id: i32 = season.get("id");
@@ -88,7 +88,7 @@ async fn get_current_season(
     .bind(season_id)
     .fetch_optional(&pool)
     .await
-    .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?;
+    .map_err(crate::error::internal)?;
 
     let (xp, level) = progress
         .map(|r| (r.get::<i32, _>("xp"), r.get::<i32, _>("level")))
@@ -119,7 +119,7 @@ async fn add_xp(
     let season = sqlx::query("SELECT id, name, start_date, end_date, max_level FROM seasons WHERE active = TRUE LIMIT 1")
         .fetch_optional(&pool)
         .await
-        .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?
+        .map_err(crate::error::internal)?
         .ok_or((StatusCode::NOT_FOUND, "No active season".into()))?;
 
     let season_id: i32 = season.get("id");
@@ -144,7 +144,7 @@ async fn add_xp(
     .bind(xp_earned)
     .fetch_one(&pool)
     .await
-    .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?;
+    .map_err(crate::error::internal)?;
 
     let xp: i32 = row.get("xp");
     let mut level: i32 = row.get("level");
@@ -163,7 +163,7 @@ async fn add_xp(
             .bind(level)
             .execute(&pool)
             .await
-            .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?;
+            .map_err(crate::error::internal)?;
     }
 
     let xp_to_next = if level >= max_level { 0 } else { xp_for_level(level + 1) - xp };
@@ -189,7 +189,7 @@ async fn get_rewards(
     let season = sqlx::query("SELECT id FROM seasons WHERE active = TRUE LIMIT 1")
         .fetch_optional(&pool)
         .await
-        .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?
+        .map_err(crate::error::internal)?
         .ok_or((StatusCode::NOT_FOUND, "No active season".into()))?;
 
     let season_id: i32 = season.get("id");
@@ -202,7 +202,7 @@ async fn get_rewards(
     .bind(season_id)
     .fetch_all(&pool)
     .await
-    .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?;
+    .map_err(crate::error::internal)?;
 
     let rewards: Vec<SeasonReward> = rows
         .iter()
@@ -226,7 +226,7 @@ async fn claim_reward(
     let season = sqlx::query("SELECT id FROM seasons WHERE active = TRUE LIMIT 1")
         .fetch_optional(&pool)
         .await
-        .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?
+        .map_err(crate::error::internal)?
         .ok_or((StatusCode::NOT_FOUND, "No active season".into()))?;
 
     let season_id: i32 = season.get("id");
@@ -239,7 +239,7 @@ async fn claim_reward(
     .bind(season_id)
     .fetch_optional(&pool)
     .await
-    .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?
+    .map_err(crate::error::internal)?
     .ok_or((StatusCode::BAD_REQUEST, "No season progress found".into()))?;
 
     let player_level: i32 = progress.get("level");
@@ -257,7 +257,7 @@ async fn claim_reward(
     .bind(level)
     .fetch_optional(&pool)
     .await
-    .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?
+    .map_err(crate::error::internal)?
     .ok_or((StatusCode::BAD_REQUEST, "Reward already claimed or not found".into()))?;
 
     let reward_type: String = result.get("reward_type");

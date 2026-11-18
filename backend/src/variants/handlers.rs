@@ -52,7 +52,7 @@ async fn list_variants(
     .bind(claims.sub)
     .fetch_all(&pool)
     .await
-    .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?;
+    .map_err(crate::error::internal)?;
 
     let variants: Vec<OwnedVariant> = rows
         .iter()
@@ -81,7 +81,7 @@ async fn unlock_variant(
     .bind(&body.base_card_id)
     .fetch_one(&pool)
     .await
-    .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?;
+    .map_err(crate::error::internal)?;
 
     let owns_base: bool = owns_row.get("exists");
     if !owns_base {
@@ -100,7 +100,7 @@ async fn unlock_variant(
     .bind(&body.source)
     .fetch_optional(&pool)
     .await
-    .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?
+    .map_err(crate::error::internal)?
     .ok_or((StatusCode::CONFLICT, "Variant already unlocked".into()))?;
 
     update_variant_counts(&pool, claims.sub).await;
@@ -124,7 +124,7 @@ async fn eligible_variants(
     .bind(claims.sub)
     .fetch_all(&pool)
     .await
-    .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?;
+    .map_err(crate::error::internal)?;
 
     let eligible: Vec<EligibleVariant> = rows
         .iter()

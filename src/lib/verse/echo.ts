@@ -28,6 +28,10 @@
  * only two or three. Unspaced scripts count letters instead, because the segmenter's "words" are often single
  * particles: a run as long as four English words of the game's lines are in that language (RECITE_LETTERS).
  *
+ * How many words: as devices.ts asks of the English line (signatureNeeded), a line with three or more telling
+ * words needs two of them, a line with one or two needs one. One verse word counts once, even when it says both
+ * a word of the line and the same word of the English line (German «Rose» and "rose").
+ *
  * English never comes through here: devices.ts keeps its own path for it.
  */
 import { CARD_CATALOG, type Card } from '../cards';
@@ -223,40 +227,56 @@ function telling(word: string, lang: string): boolean {
   return !isStop(word, b);
 }
 
-/** The verse's words, with the run of letters each starts, for an unspaced script. */
-function segmentsOf(verse: string, lang: string): string[] {
-  return wordsOf(verse, lang).map(letters).filter(Boolean);
+/** A verse's words in an unspaced script: the letters each is compared by, and the word (as wordsOf gives it), folded. */
+interface Segment {
+  key: string;
+  pieces: string[];
 }
 
-/** Do whole words of the verse, in a row, spell `target` (or, with `prefix`, begin with it)? */
-function spelledBySegments(target: string, segs: string[], prefix: boolean): boolean {
-  if (!target) return false;
+function segmentsOf(verse: string, lang: string): Segment[] {
+  return wordsOf(verse, lang).map((w) => ({ key: letters(w), pieces: [fold(w)] })).filter((s) => s.key);
+}
+
+/** Whole words of the verse, in a row, that spell `target` (or, with `prefix`, begin with it): the words, or null. */
+function spelledBySegments(target: string, segs: Segment[], prefix: boolean): string[] | null {
+  if (!target) return null;
   for (let i = 0; i < segs.length; i++) {
     let run = '';
     for (let j = i; j < segs.length && run.length < target.length; j++) {
-      run += segs[j];
-      if (run === target || (prefix && run.startsWith(target))) return true;
+      run += segs[j].key;
+      if (run === target || (prefix && run.startsWith(target))) return segs.slice(i, j + 1).flatMap((s) => s.pieces);
     }
   }
-  return false;
+  return null;
+}
+
+/**
+ * The verse's words that say `word` (a word of a line), as its language counts the same word, folded; or null
+ * when none does. These are the words a multiplier does not multiply (duel.ts, text.ts ownContent).
+ */
+export function saidBy(word: string, verse: string, lang: string): string[] | null {
+  const b = baseLang(lang);
+  if (UNSPACED.has(b)) return spelledBySegments(letters(word), segmentsOf(verse, b), b === 'ja');
+  const said = wordsIn(verse, b).filter((v) => !isStop(v, b));
+  let hit: string | undefined;
+  if (b === 'ko') {
+    const l = listsFor(b);
+    const stem = koStem(word, l);
+    hit = said.find((v) => {
+      const f = fold(v);
+      return f.startsWith(stem) && particlesOnly(f.slice(stem.length), stem, l);
+    });
+  } else if (stemmerFor(b)) hit = said.find((v) => sameStem(v, word, b));
+  else {
+    const k = wordKey(word, b);
+    hit = said.find((v) => wordKey(v, b) === k);
+  }
+  return hit === undefined ? null : [fold(hit)];
 }
 
 /** Is `word` (a word of a line) said in the verse, as its language counts the same word? */
 export function saysWord(word: string, verse: string, lang: string): boolean {
-  const b = baseLang(lang);
-  if (UNSPACED.has(b)) return spelledBySegments(letters(word), segmentsOf(verse, b), b === 'ja');
-  const said = wordsIn(verse, b).filter((v) => !isStop(v, b));
-  if (b === 'ko') {
-    const l = listsFor(b);
-    const stem = koStem(word, l);
-    return said.some((v) => {
-      const f = fold(v);
-      return f.startsWith(stem) && particlesOnly(f.slice(stem.length), stem, l);
-    });
-  }
-  if (stemmerFor(b)) return said.some((v) => sameStem(v, word, b));
-  const k = wordKey(word, b);
-  return said.some((v) => wordKey(v, b) === k);
+  return saidBy(word, verse, lang) !== null;
 }
 
 /**
@@ -312,34 +332,59 @@ function recites(quote: string, verse: string, lang: string): boolean {
 export interface LocalSignature {
   met: boolean;
   detail: string;
-  code: 'hint' | 'quoted' | 'echoed';
+  code: 'hint' | 'hint-two' | 'quoted' | 'echoed';
+  /** The verse's words that landed it, folded (see saidBy). */
+  words?: string[];
+}
+
+/** What the English line's measure (devices.ts) found in the verse. */
+export interface EnglishEcho {
+  /** The English line's signature words (or phrase) the verse says, as devices.ts compares them. */
+  echoed: string[];
+  /** Does the verse recite the English line (four of its words running)? */
+  quoted: boolean;
 }
 
 /**
  * The signature in a language that has its own line for this card, or null when
- * it has none (English, a language not loaded, a card not translated): the
- * caller then judges by the English line alone, as before.
+ * it has none (English, a language not loaded, a card not translated, a line with no telling word of its own):
+ * the caller then judges by the English line alone, as before.
  *
- * `englishWords` are the English line's telling words, which still count (a word of the duel's language that is
- * spelled like one, Italian "dove" for "where", is a stop word there and does not).
+ * The English line's words still count (a word of the duel's language that is spelled like one, Italian "dove" for
+ * "where", is a stop word there and does not).
  */
-export function localSignature(card: Card, verse: string, lang: string, englishWords: string[]): LocalSignature | null {
+export function localSignature(card: Card, verse: string, lang: string, english: EnglishEcho): LocalSignature | null {
   const b = baseLang(lang);
   if (b === 'en') return null;
   const quote = localQuote(card, b);
   if (!quote) return null;
   const local = localSignatureWords(card, b);
   if (!local.length) return null;
+  const needed = local.length >= 3 ? 2 : 1;
+  const hits: { word: string; by: string[] }[] = [];
+  const taken = new Set<string>();
+  const add = (word: string, by: string[]) => {
+    if (by.some((w) => taken.has(w))) return;
+    for (const w of by) taken.add(w);
+    hits.push({ word, by });
+  };
+  for (const w of local) {
+    const by = saidBy(w, verse, b);
+    if (by) add(w, by);
+  }
   // Compared as the duel's language compares words: a Vietnamese word keeps its tone, so it is not a toneless English word.
   const saidEn = new Set(wordsOf(verse, 'en').filter((w) => !isStop(w, b)).map((w) => wordKey(w, b)));
-  const echoed = local.find((w) => saysWord(w, verse, b)) ?? englishWords.find((w) => saidEn.has(w));
-  if (!echoed) return { met: false, detail: local.slice(0, 4).join(', '), code: 'hint' };
+  for (const w of english.echoed) {
+    const parts = w.split(' ');
+    if (parts.every((p) => saidEn.has(p))) add(w, parts);
+  }
+  if (hits.length < needed) return { met: false, detail: local.slice(0, 5).join(', '), code: needed > 1 ? 'hint-two' : 'hint' };
   // Reciting the line is refused as printed and in its modern spelling, and so is reciting the English line.
   const modern = localEchoText(card, b);
-  if (recites(quote, verse, b) || (modern && modern !== quote && recites(modern, verse, b)) || recites(card.quote, verse, 'en')) {
+  if (recites(quote, verse, b) || (modern && modern !== quote && recites(modern, verse, b)) || english.quoted) {
     return { met: false, detail: '', code: 'quoted' };
   }
-  return { met: true, detail: echoed, code: 'echoed' };
+  return { met: true, detail: hits.slice(0, needed).map((h) => h.word).join(', '), code: 'echoed', words: [...new Set(hits.flatMap((h) => h.by))] };
 }
 
 // --- Invocation: character names as each language writes them ---
@@ -398,18 +443,22 @@ function saysNameWord(name: string, verseWord: string, lang: string): boolean {
   return wordKey(name, b) === wordKey(verseWord, b);
 }
 
-/** Does the verse say this name (one or more words, in a row)? */
-function saysName(name: string, verse: string, lang: string): boolean {
+/** The verse's words that say this name (one or more words, in a row), folded; or null. */
+function saidName(name: string, verse: string, lang: string): string[] | null {
   const b = baseLang(lang);
   if (UNSPACED.has(b)) return spelledBySegments(letters(name), segmentsOf(verse, b), false);
   const n = wordsOf(name, b);
   const v = wordsIn(verse, b);
-  for (let i = 0; i + n.length <= v.length; i++) if (n.every((w, j) => saysNameWord(w, v[i + j], b))) return true;
-  return false;
+  for (let i = 0; i + n.length <= v.length; i++) if (n.every((w, j) => saysNameWord(w, v[i + j], b))) return v.slice(i, i + n.length).map(fold);
+  return null;
 }
 
-/** The first localised name the verse says, or undefined. */
-export function saidLocalName(verse: string, lang: string): string | undefined {
+/** The first localised name the verse says, with the verse's words that say it; or undefined. */
+export function saidLocalName(verse: string, lang: string): { name: string; words: string[] } | undefined {
   if (baseLang(lang) === 'en') return undefined;
-  return localCharacterNames(lang).find((n) => saysName(n, verse, lang));
+  for (const name of localCharacterNames(lang)) {
+    const words = saidName(name, verse, lang);
+    if (words) return { name, words };
+  }
+  return undefined;
 }
