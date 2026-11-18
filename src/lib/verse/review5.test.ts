@@ -363,6 +363,16 @@ describe('engine check 2, concern: a flip that keeps only the little words of a 
     // an inner word dropped or replaced (review4's families; RULES-MEASUREMENTS.md, third round).
     expect([carriesLines(copyOf(flip, source, 'fr')), isCopy(flip, source, 'fr')]).toEqual([false, false]);
     expect([carriesLines(copyOf(one, source, 'fr')), isCopy(one, source, 'fr')]).toEqual([true, true]);
+    // A source of little words alone has no content word to keep: a copy of it with 5 of each line's
+    // 8 words kept in order is carried still.
+    const little = 'and so it is with you and me\nand all of it was not for you\nso be it as it was with me';
+    const littleCopy = 'and so it is with them or him\nand all of us was not by them\nso be it as they were with him';
+    expect(copyOf(littleCopy, little, 'en').carry.map((l) => [l.source, l.said, l.content])).toEqual([
+      [8, 5, 0],
+      [8, 5, 0],
+      [8, 5, 0],
+    ]);
+    expect(carriesLines(copyOf(littleCopy, little, 'en'))).toBe(true);
   });
 
   it("the checker's 18 hand copies: the same verdicts as at d56f5c8 (8 void)", () => {

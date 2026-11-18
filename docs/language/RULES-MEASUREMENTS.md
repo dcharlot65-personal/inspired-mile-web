@@ -510,6 +510,170 @@ for the dictionary (about 4.5 s here; the check measured 5.1 s on the loaded Stu
 fetching it for every visitor whose interface is Japanese would undo the 2026-11-16 finding that
 /battle fetched data for visitors who never duel, so that is left to the owner.
 
+## Engine pass, third round (after the engine check's second round, 2026-11-18)
+
+The check refused the merge with two blockers (the full Playwright suite red on the Studio at
+`sound.spec.ts:25`; 31 of 135 common katakana words void alone on a line of a Japanese haiku) and
+concerns (copy residue, flips voided by the every-line rule, hand copies, a golden gap on the Rust
+side, the Japanese page cost, the rule judge on a tiny hold-out). A pass cut off by a network failure
+had cherry-picked the sound.spec fix and committed the loanword lists (eed3380d, 5b7af1e8) and left
+an uncommitted content clause; this round measured that clause against the alternatives, kept a
+different one, and finished the rest. Probes on the Studio, the iMac Pro and the M4 through `rb`.
+
+**sound.spec** (blocker 1). `tests/sound.spec.ts` opened `/battle?lang=fr` and asserted that nothing
+of the sound data was fetched, which the battle page's idle warm-up for a language named by `?lang=`
+or stored from an earlier visit (942519e) does by design. The warm-up was kept: a link naming a
+duel language is a visitor about to duel in it, a returning Japanese player gets the first verse in
+0.25 to 0.3 s instead of 5 s (below), and Save-Data turns it off. The test now visits with no
+language named or stored, waits past the warm-up's own 2 s deadline, counts the English table too,
+then picks French; the same commit as on lang/model-eval (fd6ffc3a, cherry-picked as eed3380d).
+
+**Loanwords IPADIC lacks** (blocker 2). IPADIC (2007) reads a quarter of today's common loanwords as
+letters it guessed at. Two lists now sit beside it (PHONETICS.md): JMdict's katakana words and
+JMnedict's katakana names that it lacks. A run of katakana as written counts as a loanword in a
+Japanese verse when one of the three has it whole, or as two words of IPADIC's or JMdict's of
+`LOANWORD_PART` (3) characters or more. Alone on the first line of a haiku whose other lines are
+Japanese (the check's frame):
+
+| words | void alone | which |
+|---|---|---|
+| the check's 135 | 1 (31 at 0346ee1) | トーキョー (every dictionary writes Tokyo 東京) |
+| the cut-off pass's own 165 | 7 | パスキー, ガパオ, ドレッド, ナズ, スヌープドッグ, ブラザーフッド, モッシュ: in none of the three |
+| this round's own 106, written before any was looked up | 4 | ウサインボルト, リアーナ, ビギー, マイルスデイビス: names written together that JMnedict lacks whole |
+
+With a particle after the word, none of the 406 is void. Random katakana and the kana keyboard
+(`review5.test.ts`, 20,000 lines in each of three alphabets): the lists add 6, 9 and 0 lines to the
+322, 122 and 48 that IPADIC's own words already let count, and none of 290 keyboard runs. KATA-ONE
+(`review4.test.ts`) still loses at least 95% in each alphabet.
+
+**The Japanese page cost** (concern). The lists add 376,250 bytes (5,052,488 against 4,676,238) and
+114,143 words to index. Built site, first visit, service worker blocked, DevTools Fast 4G and CPU 4x
+(the check's `zz-e2-cost.spec.ts`), the Studio under load (100 to 120), first verse after the start,
+each commit's site built and measured in turn:
+
+| | ja, picked, at once | ja, stored, at once | ja, stored, 10 s later | ja, locale, at once | ja, locale, 10 s later | ja, ?lang=, at once | ja, ?lang=, 10 s later | en, picked, at once |
+|---|---|---|---|---|---|---|---|---|
+| 0346ee1 | 5.01, 5.15 s | 4.74, 4.87 s | 0.30, 0.27 s | 5.43, 5.39 s | 5.01, 4.95 s | 4.91, 4.71 s | 0.24, 0.26 s | 1.23, 1.18 s |
+| 5b7af1e8 (lists indexed as they load) | 5.69, 5.94, 5.79 s | 5.43, 5.59, 5.36 s | 0.25, 0.29, 0.27 s | 5.92, 6.16, 6.02 s | 5.58, 5.76, 5.52 s | 5.48, 5.70, 5.30 s | 0.30, 0.27, 0.23 s | 1.22, 1.36, 1.18 s |
+| a54e972f (indexed at the first word asked) | 5.54, 5.53 s | 5.08, 5.23 s | 1.21, 0.25 s | 5.69, 5.70 s | 5.48, 5.37 s | 5.03, 5.20 s | 0.23, 0.23 s | 1.21, 1.24 s |
+
+Run in the order 5b7af1e8, 0346ee1, 5b7af1e8, then a54e972f, 5b7af1e8, 0346ee1, a54e972f. On the means,
+the lists cost a duel started at once 0.6 to 0.7 s over 0346ee1 when indexed as they load, and 0.3 to
+0.45 s when indexed at the first word asked; the rest is their 0.38 MB on the throttled line. A duel
+started ten seconds after the page is up is as before (one run of 1.21 s, the other 0.25 s).
+
+A visitor who touches nothing for 15 s fetches no sound data at any of them. A Japanese duel started at once
+transferred 10.67 MB in all at 0346ee1 and 6.48 MB at 5b7af1e8; why it was 4 MB more there was not
+looked into.
+
+Indexing the lists takes 45 to 80 ms on the Studio unthrottled (four times as long under the CPU 4x
+here). Writing the opponent's verse asks nothing of them (1,260 verses, no lookup; one katakana verse
+scored makes one), so a54e972f indexes them at the first word asked. A Japanese visitor whose interface
+language is Japanese (the locale) still waits about as long as one who starts at once: the page does
+not fetch the dictionary for a visitor who has not shown they will duel (2026-11-16), left to the owner.
+
+**The content clause** (concern). The every-line rule (8ac4784: when the verse has no line of its own,
+every counted line carried with COPY_LINE_SHARE of its words in order or COPY_LINE_ANY in any order)
+counted little words, so an answer in the other's frame with every word that means something changed
+was a copy. `copyOf().carry[i]` now says how many content words the source line has (`content`) and
+how many its matched line keeps in any order (`contentSaid`). Four ways to ask for content were
+measured on the check's families (its generators: the written opponent's verse of each round with each
+line's last word swapped, then a second change; 14 houses x 10 seeds x 3 rounds in each of en, es, fr,
+de, it and pt; rounds void as copies):
+
+| family | rounds | no clause (0346ee1) | one content word kept somewhere (now) | in half the lines (the cut-off pass) | in every line |
+|---|---|---|---|---|---|
+| frame answer, every content word changed | 1,442 | 308 | 98 | 84 | 56 |
+| frame answer, one content word kept a line | 1,442 | 868 | 868 | 868 | 756 |
+| each line's last word swapped | 1,442 | 1,442 | 1,442 | 1,442 | 1,386 |
+| and its first word | 1,442 | 1,120 | 1,120 | 1,120 | 1,120 |
+| and its little words swapped | 1,414 | 1,106 | 1,106 | 1,106 | 994 |
+| and the persons flipped | 1,330 | 1,134 | 1,134 | 1,134 | 1,120 |
+| and its inner words reversed | 1,428 | 1,428 | 1,428 | 1,428 | 1,176 |
+| and one inner word replaced | 910 | 854 | 854 | 854 | 742 |
+| and two inner words dropped | 1,442 | 770 | 770 | 714 | 546 |
+| and two dropped, two added | 1,442 | 322 | 294 | 252 | 112 |
+| and two replaced, the lines moved | 140 | 28 | 28 | 14 | 14 |
+| and inner words reversed, one replaced | 910 | 14 | 14 | 14 | 0 |
+| and little words swapped, one replaced | 882 | 56 | 56 | 56 | 56 |
+
+The first two rows are answers in the other's frame (every content word changed; all but one a line);
+the rest are copies. Now frees 210 of the 308 frame answers (es 112 to 0, de 56 to 0, pt 70 to 28;
+Italian keeps 70, where elided words such as "dell'anima" keep a content word) and 28 copies (two words
+dropped and two added). Asking it of half the lines frees 140 copies and turns review4's families test
+red (a run of the whole suite under each rule, the iMac Pro); asking it of every line frees 1,008.
+The forms that ask for a rhyme do not move under any of the four. With one content word kept a line,
+the frame answers stay void as at 0346ee1 (868 of 1,442): one of the other's content words in every
+line is what the copies with the last word and one more swapped keep too.
+
+The check's French haiku flip ("Mes vers sont des pierres / Nul ne se penche sans peur / Le vent les
+redoute", for "Tes vers sont des feuilles / Nul ne se penche pour eux / Le vent les emporte") stays
+void. Line by line it keeps the content words the copy keeps that swaps each line's last word and
+flips the persons, the check's own personFlip family ("penche" and "vent"; "vers" is a little word in
+French), with one little word more changed (pour -> sans): no rule of words frees the one and not the
+other (`review5.test.ts`). The other 19 hand flips and the 68 honest verses are as at d56f5c8.
+
+**The golden gap** (concern). The check's fuzz caught two Rust mutations the goldens let pass (N7, N10)
+and four survived it (N1, N9, N11, N14). `multiplayer-golden.test.ts` now writes the fuzz (cut to a
+third), roll calls with a caseless or a titlecase word, a word opening with a mark a digit kept, a
+mark alone as a word, copies with every line turned round, and the content clause at its edge (an
+English source of 5 little words in 8 a line, answered with no content word kept, one in one line, in
+two, in every line). Each mutation, against the new goldens:
+
+N1, N9, N11 and N14 passed both the committed goldens and the check's fuzz at 0346ee1; N7 and N10
+passed the committed ones. Against this round's goldens:
+
+| broken (Rust, the M4) | `verse_parity` comparisons that disagree |
+|---|---|
+| N1: a caseless or titlecase first letter taken for a capital (`!is_lowercase`) | 2 |
+| N7: hyphenated words not split in the roll call | 10 |
+| N9: the every-line rule asks one word in order | 0 at 5dea6c24; 2 at 5dae8854 (lines turned round, a word between) |
+| N10: COPY_LINE_ANY rounded down | 2 |
+| N11: a mark alone counted as a word of the roll call | 1 |
+| N14: a word's first character, not its first letter | 1 |
+| content clause left out | 36 |
+| `content_said` counting every word, little ones too | 4,218 |
+| no exemption for lines without a content word | 0 at 5dea6c24; 4 at 5dae8854 |
+| two content words asked | 126 |
+| a content word asked of every line | 18 |
+| a content word asked of half the lines | 4 |
+| `content` counting every word | 4,266 |
+
+Unbroken, 8 of 8 at each step; `cargo test --release` 49 + 135 + 8.
+
+In TypeScript (the iMac Pro; `review3`, `review4` and `review5`, the tests meant to catch each run),
+the baseline passing:
+
+| broken | went red |
+|---|---|
+| content clause left out (as at 0346ee1) | the clause's edge (the French quatrain), the flips of every pack verse |
+| `contentSaid` counting every word | the check's 21 flips, the clause's edge, the flips of every pack verse |
+| a content word asked of every line | the check's 21 flips, the clause's edge, review4's families |
+| a content word asked of half the lines (the cut-off pass's rule) | the clause's edge, review4's families |
+| no exemption for lines without a content word | the clause's edge (its copy of little words) |
+| Japanese: no list asked of a run as written | the check's 135, this pass's own 165, the haiku the check found void |
+| Japanese: no compound of two words | the own 165, the void haiku, ノーモアウォー |
+| Japanese: names not asked | the check's 135, the own 165, the void haiku |
+| Japanese: compounds of parts of two characters | random katakana (more than 1 in 1,000 added) |
+| Japanese: every verse read as Japanese | loanword lines alone, the check's Japanese verses |
+| Japanese: a listed run counts among other katakana | the check's Japanese verses (random katakana) |
+| Japanese: the lazy index loses the words list | the check's 135, the own 165, the void haiku, ノーモアウォー |
+
+The first run of these used a test filter that missed the loanword tests (the Japanese rows passed
+for want of their tests); the rows above are the second run, with the filter fixed. Separately, on the
+iMac Pro: with the battle page's idle warm-up made to run for every visitor, `sound.spec.ts:25` and three
+`battle-bytes` cases go red (`pron-en.ts` fetched); as committed, the full Playwright suite on the Studio
+passed 234 with 8 skipped, and `sound.spec` with `battle-bytes`, six times each, 126 of 126.
+
+**Not changed** (concerns). Copy residue: one more mechanical step defeats the any-order share in
+lines under ten words (the check's figures stand; it is word overlap, and a line's last word and one
+more changed in a haiku line of four is half the line). Hand copies with synonyms: 8 of 18 void as
+at d56f5c8; synonyms are outside what word overlap measures. The rule judge's hold-out (4 criteria a
+language): de:B3 and ja:B3 below main; the check found flow going to the Japanese haiku
+with its lines swapped in 2 of 2 pairs; too few to move a rule on. The check's probe at this head gives its
+figures to the digit (the committed pairs at or above main in all sixteen languages; de:B3 0.625 and
+ja:B3 0.25 against main's 0.75 and 0.5).
+
 ## Mutation runs
 
 First pass: each defence broken in turn, on a build host (22 mutations): every one turned at least

@@ -345,9 +345,10 @@ left behind by a killed run is found by its port: `lsof -nP -iTCP:<port> -sTCP:L
   `loadPack(lang)` before `createDuel`; the battle page also starts it ahead of the duel when the
   visitor shows they are about to play (`battle.astro warm()`, above), so a Japanese duel need not
   wait for the dictionary when it starts. A first visitor who leaves the duel's settings alone
-  fetches none of it, and one who starts at once still waits for it (about 5 s on a throttled
-  phone: `tests/battle-ja-cost.spec.ts`). Chinese, Japanese and Thai offer rhyming forms only
-  once their data is loaded; Arabic and Thai offer no syllable forms. Sources, licences,
+  fetches none of it, and one who starts at once still waits for it (5 to 5.7 s on a throttled
+  phone, 0.3 to 0.45 s of it the loanword lists: `tests/battle-ja-cost.spec.ts`,
+  RULES-MEASUREMENTS.md). Chinese, Japanese and Thai offer rhyming forms only once their data is
+  loaded; Arabic and Thai offer no syllable forms. Sources, licences,
   measured accuracy and how to rebuild: `docs/language/PHONETICS.md`. After changing a rule
   or a table, run `scripts/sound/measure.mjs --write` (it records the digests the unit and
   browser tests must reproduce). `node scripts/sound/mutate-sound.mjs` (build host) proves

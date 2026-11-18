@@ -666,19 +666,22 @@ const FUZZ_TURNED: Array<[string, string]> = [...HAND.slice(0, 12), ...writtenVe
   .map((source) => [linesOf(source).map((l) => l.split(/\s+/).reverse().join(' ')).join('\n'), source]);
 FUZZ_PAIRS.push(...FUZZ_TURNED);
 /**
- * The content clause of the every-line rule at its edge (duel.ts carriesLines): a source whose lines
- * keep 5 little words of 8 (each past COPY_LINE_SHARE, none nearly whole), answered with every content
- * word changed, then with one kept in one line, in two lines, in every line; and a source of little
- * words alone copied with one changed a line (its lines have no content word to keep).
+ * The every-line rule at its edges (duel.ts carriesLines): a source whose lines keep 5 little words of
+ * 8 (each past COPY_LINE_SHARE, none nearly whole), answered with every content word changed, then
+ * with one kept in one line, in two lines, in every line; a source of little words alone, copied with
+ * 5 of each line's 8 kept in order (its lines have no content word to keep); and lines carried in any
+ * order with only one word in order, each turned round with a word between (said 1: the rule asks 2).
  */
 const CLAUSE_SOURCE = 'the king of the river is in winter\nand my candle is on the silver mountain\nso you carried it to the stone garden\nbut I was a tiger with copper wings';
 const CLAUSE_LITTLE = 'and so it is with you and me\nand all of it was not for you\nso be it as it was with me';
+const CLAUSE_SHORT = 'wolves hunt deer\nrivers carve stone\nwinds bend trees';
 FUZZ_PAIRS.push(
   ['the queen of the harbor is in autumn\nand my lantern is on the golden valley\nso you brought it to the iron temple\nbut I was a dragon with marble horns', CLAUSE_SOURCE],
   ['the queen of the harbor is in autumn\nand your candle is on the golden valley\nso you brought it to the iron temple\nbut I was a dragon with marble horns', CLAUSE_SOURCE],
   ['a king of the harbor is in autumn\nand your candle is on the golden valley\nso you brought it to the iron temple\nbut I was a dragon with marble horns', CLAUSE_SOURCE],
   ['a king of the harbor is in autumn\nand your candle is on the golden valley\nso we carried it to the iron temple\nbut I was the tiger with marble horns', CLAUSE_SOURCE],
-  ['and so it is with them and me\nand all of it was not for them\nso be it as it is with me', CLAUSE_LITTLE],
+  ['and so it is with them or him\nand all of us was not by them\nso be it as they were with him', CLAUSE_LITTLE],
+  ['deer and hunt and wolves\nstone and carve and rivers\ntrees and bend and winds', CLAUSE_SHORT],
 );
 const FUZZ_TEXT: string[] = [...new Set([...FUZZ_VERSES, ...FUZZ_EDGE, ...FUZZ_PAIRS.map(([copy]) => copy)])].filter((v) => !CORPUS.includes(v) && !COPIES.includes(v));
 
