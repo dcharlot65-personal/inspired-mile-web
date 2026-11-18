@@ -3,7 +3,7 @@ import { beforeAll, describe, expect, it } from 'vitest';
 import { CARD_CATALOG, getCardById, type Card } from '../cards';
 import { DEVICES, checkSignature, signatureNeeded, signatureWords } from '../verse/devices';
 import { createDuel, scoreVerse } from '../verse/duel';
-import { localCharacterNames, localSignatureWords, saysWord, wordKey } from '../verse/echo';
+import { capitalOnlyNames, localCharacterNames, localSignatureWords, saysWord, wordKey } from '../verse/echo';
 import { getForm } from '../verse/forms';
 import { loadAllPacks, PACK_LANGS } from '../verse/packs';
 import { wordsOf } from '../verse/text';
@@ -369,18 +369,34 @@ describe('the signature in the language of the duel', () => {
   });
 });
 
+/** Card names that are one ordinary word (pack.ordinary) or Bottom's, which count only inside a longer name. */
+const NOT_ALONE: string[] = [
+  // Bottom, whom English calls on only as "Nick Bottom", "Bully Bottom" or "Bottom the weaver" (devices.ts NAME_PHRASES).
+  'es Bottom', 'fr Bottom', 'it Bottom', 'id Bottom', 'de Zettel', 'hi बॉटम', 'zh 波顿', 'ja ボトム',
+  // Ordinary words of the language (Wiktionary): a puck, a pack, "I imagine", banks (typed without the nasal mark).
+  'de Puck', 'ja パック', 'ar أخيل', 'hi बैंको',
+];
+
 describe('the invocation in the language of the duel', () => {
   it('lands with each character’s name as the language writes it', () => {
+    // A name that is also an ordinary word counts as English counts "Bottom" (echo.ts): written with a capital inside a
+    // sentence where the language writes its ordinary words small, and otherwise only by a longer name.
+    const alone: string[] = [];
     for (const p of packs) {
       const names = localCharacterNames(p.lang);
+      const capital = capitalOnlyNames(p.lang);
       for (const c of CARD_CATALOG) {
         const name = p.cards[c.id].name;
         if (c.type !== 'Character' || !name || c.id === 'SM-001') continue;
-        const r = DEVICES.invocation.check(name, { lang: p.lang, names: [] });
-        expect([p.lang, c.id, name, r.met]).toEqual([p.lang, c.id, name, true]);
+        const counts = names.includes(name);
+        if (!counts) alone.push(`${p.lang} ${name}`);
+        const r = DEVICES.invocation.check(capital.includes(name) ? `x, ${name}` : name, { lang: p.lang, names: [] });
+        expect([p.lang, c.id, name, r.met]).toEqual([p.lang, c.id, name, counts]);
       }
       expect([p.lang, names.length > 20]).toEqual([p.lang, true]);
     }
+    // The names that count only inside a longer name (or, for Bottom, in English's phrases): ordinary words of the language.
+    expect(alone.sort()).toEqual(NOT_ALONE.sort());
   });
 
   it('takes inflected and unspaced names, keeps the English ones, and is not met by nothing', () => {

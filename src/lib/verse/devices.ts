@@ -15,6 +15,7 @@
  */
 import type { Card, House } from '../cards';
 import { englishKey, localSignature, saidLocalName } from './echo';
+import { NAME_PHRASES, ORDINARY_NAME_PARTS } from './names-en';
 import { baseLang, rulesFor, unitKey } from './lang';
 import { msg, type Msg } from './msg';
 import { rhymeChecked, rhymes } from './rhyme';
@@ -238,11 +239,6 @@ export function deviceInPlay(house: House | string, lang: string, answering: boo
   const device = deviceForHouse(house, lang);
   return device.id === 'riposte' && !answering ? DEVICES[OPENING_DEVICE] : device;
 }
-
-/** Parts of a character's name that are ordinary words: said alone they name nobody. */
-const ORDINARY_NAME_PARTS = new Set(['the', 'man', 'sonnet', 'nurse', 'bottom']);
-/** How a character whose whole name is an ordinary word is called on. */
-const NAME_PHRASES: Record<string, string[]> = { Bottom: ['Nick Bottom', 'Bully Bottom', 'Bottom the weaver'] };
 
 /**
  * What counts as calling on a character: the full name ("Mark Antony", "the

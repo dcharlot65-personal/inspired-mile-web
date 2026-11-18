@@ -7,14 +7,16 @@ import { CARD_CATALOG, getCardById } from '../cards';
 import { DEVICES, checkSignature, invocationNames } from '../verse/devices';
 import { scoreVerse } from '../verse/duel';
 import { getForm } from '../verse/forms';
-import { localCharacterNames, localSignatureWords, RECITE_LETTERS, saysWord, wordKey } from '../verse/echo';
+import { capitalOnlyNames, localCharacterNames, localSignatureWords, RECITE_LETTERS, saidLocalName, saysWord, wordKey } from '../verse/echo';
 import { getPack, loadAllPacks, PACK_LANGS } from '../verse/packs';
 import { wordsOf } from '../verse/text';
-import { getCardText, loadAllCardText, localEchoText, localQuote } from './index';
+import { CARD_TEXT_LANGS, getCardText, loadAllCardText, localEchoText, localQuote } from './index';
 
 // As duel.ts builds it (CHARACTER_NAMES): the full names, and the last part of each where it is a name.
 const NAMES = invocationNames(CARD_CATALOG.filter((c) => c.type === 'Character').map((c) => c.name));
 const CHARACTERS = CARD_CATALOG.filter((c) => c.type === 'Character');
+/** wordfreq's 40,000 commonest words of each language (the Thai National Corpus for Thai) that come near a name (fetch/wordfreq_near_names.py). */
+const NEAR_WF = JSON.parse(readFileSync('docs/language/sources/wordfreq-near-names.json', 'utf8')) as { words: Record<string, string[]> };
 
 beforeAll(async () => {
   await loadAllPacks();
@@ -65,7 +67,9 @@ describe('controls: a real echo and a real name still land', () => {
     expect(sig('MO-003', '和平不属于你', 'zh').code).toBe('hint-two');
     expect(inv('Marc Antoine parle', 'fr').met).toBe(true);
     expect(inv('Antoine parle', 'fr').met).toBe(true);
-    expect(inv('Próspero alza las manos', 'es').met).toBe(true);
+    // «próspero» is also "prosperous": the name counts written with a capital inside a sentence (round 3, second check).
+    expect(inv('Y Próspero alza las manos', 'es').met).toBe(true);
+    expect(inv('Próspero alza las manos', 'es').met).toBe(false);
     expect(inv('Персефона спит', 'ru').met).toBe(true);
     expect(inv('Зову Персефону', 'ru').met).toBe(true);
     expect(inv('Lãnh chúa Montague đã đến', 'vi').met).toBe(true);
@@ -266,7 +270,8 @@ describe('names', () => {
         const e = pack.cards[c.id];
         if (!e.name || e.nameSource === 'missing' || e.nameSource === 'kept') continue;
         const parts = clean(e.name.replace(/,.*$/u, '')).split(SPLIT).map(clean).filter(Boolean);
-        for (const w of [...(parts.length > 1 ? parts : []), ...(e.aliases ?? []).map(clean)]) {
+        // A name of one word too: it may also be an ordinary word (Spanish «Bruto»), which needs Hunspell's verdict as well as Wiktionary's.
+        for (const w of [...parts, ...(e.aliases ?? []).map(clean)]) {
           if (w && !SPLIT.test(w)) expect([lang, c.id, w, have.has(w)]).toEqual([lang, c.id, w, true]);
         }
       }
@@ -301,7 +306,7 @@ describe('a name is not invoked by a word that only shares its stem', () => {
     const cases = [
       ['Ich rufe Romeo', 'de', 'Romeo'], ['Romeos Ring glänzt', 'de', 'Romeo'], ['Hamlets Frage', 'de', 'Hamlet'], ['Julias Brief', 'de', 'Julia'],
       ['أنا وروميو', 'ar', 'روميو'], ['Я вижу Марка Антония', 'ru', 'Антоний'], ['Зову Джульетту', 'ru', 'Джульетта'],
-      ['Я видел Медузу', 'ru', 'Медуза'], ['Медуза спит', 'ru', 'Медуза'], ['Вот Марк Антоний', 'ru', 'Марк Антоний'],
+      ['Я видел Медузу', 'ru', 'Медуза'], ['А Медуза спит', 'ru', 'Медуза'], ['Вот Марк Антоний', 'ru', 'Марк Антоний'],
       ['Kocham Julię', 'pl', 'Julia'], ['Widzę Marka Antoniusza', 'pl', 'Antoniusz'], ['Widzę Antoniusza', 'pl', 'Antoniusz'],
       ['O Hamlecie śnię', 'pl', 'Hamlet'], ['Pieśń Blake\'a', 'pl', 'Blake'], ['Zeusowi chwała', 'pl', 'Zeus'],
     ] as const;
@@ -374,13 +379,15 @@ describe('no ordinary word invokes a character, however it declines', () => {
     const declined = hits.filter((h) => ['ru', 'pl', 'de', 'ar'].includes(h.lang) && wordKey(h.word, h.lang) !== wordKey(h.name.split(/\s+/).pop()!, h.lang));
     expect(declined.map((h) => `${h.lang} ${h.word}`).sort()).toEqual([
       'ar لباريس', // "to Paris"
-      'de Blakes', 'de Julias', 'de Mirandas',
+      // Gone since the second check of round 3: the forms of a name that is also an ordinary word (Blake, «blake»; Meduza,
+      // a jellyfish; Polish «romeo»; Пак, pack ice; Медуза), which open a line here: de Blakes, pl Meduzy, pl Romea, ru Медузы, ru Пака.
+      'de Julias', 'de Mirandas',
       'pl Ateny', // also Athens (Hunspell: a proper noun), kept as English keeps Paris
-      'pl Hamleta', 'pl Julie', /* Julię typed without its ogonek */ 'pl Julii', 'pl Julio', 'pl Julię', 'pl Meduzy', 'pl Mirandy', 'pl Mirando', 'pl Mirandę',
-      'pl Romea', 'pl Zeusa',
+      'pl Hamleta', 'pl Julie', /* Julię typed without its ogonek */ 'pl Julii', 'pl Julio', 'pl Julię', 'pl Mirandy', 'pl Mirando', 'pl Mirandę',
+      'pl Zeusa',
       'ru Аида', // also Aida (not in Hunspell's dictionary), the genitive of Аид
       'ru Антония', 'ru Афины', /* also Athens, as Polish Ateny */ 'ru Байрона', 'ru Блейка', 'ru Гамлета', 'ru Джульетте', 'ru Джульетту', 'ru Джульетты',
-      'ru Зевса', 'ru Клавдия', /* also the name Klavdiya (Hunspell) */ 'ru Медузы', 'ru Миранды', 'ru Миранду', 'ru Оливией', 'ru Оливии', 'ru Оливию', 'ru Пака',
+      'ru Зевса', 'ru Клавдия', /* also the name Klavdiya (Hunspell) */ 'ru Миранды', 'ru Миранду', 'ru Оливией', 'ru Оливии', 'ru Оливию',
     ].sort());
   });
 
@@ -420,6 +427,17 @@ describe('given names, titles and accents count as English counts them', () => {
     // Juliet's Vietnamese line has five telling words, so two are needed; tên ("name") is one, and "rose" may be the other.
     expect(sig('CA-001', 'tên rose', 'vi').met).toBe(true);
     expect(sig('CA-001', 'tên rosé', 'vi').code).toBe('hint-two');
+  });
+});
+
+describe('a verse word with an accent the name lacks is another word', () => {
+  it('Spanish «París» is the city; Count Paris is «Paris» in Spanish, and still lands; typed without accents a name still counts', () => {
+    // The concern of the second check of round 3: nothing held this rule. The Spanish card text names him «Conde Paris»
+    // (Wikidata), and Spanish writes the Trojan and Shakespeare's Paris without the accent, the city with it.
+    expect(inv('Me voy a París esta noche', 'es').met).toBe(false);
+    expect(inv('El conde Paris llega', 'es').detail).toBe('Paris');
+    expect(saidLocalName('Y Prospero alza las manos', 'es')?.name).toBe('Próspero'); // «Próspero» typed without its accent
+    expect(saidLocalName('Je vois Ophelie', 'fr')?.name).toBe('Ophélie');
   });
 });
 
@@ -581,5 +599,145 @@ describe('a Vietnamese word of several syllables is one telling word', () => {
     expect(compounds.length).toBeGreaterThan(80);
     for (const w of ['vấn đề', 'tồn tại', 'trái tim', 'hoa hồng', 'hoàng tử']) expect(compounds).toContain(w);
     expect(localSignatureWords(getCardById('DC-004')!, 'vi')).toContain('trái tim');
+  });
+});
+
+// The second check of round 3 (2026-11-17, at a52bece2) found two classes still landing the invocation: a name read out
+// of a piece of another word in Chinese, Japanese and Thai, and a name that is also an ordinary word counting by itself,
+// which English never allows ("Bottom", devices.ts ORDINARY_NAME_PARTS).
+describe('a name is not read out of a piece of another word (Chinese, Japanese, Thai)', () => {
+  const localName = (verse: string, lang: string) => saidLocalName(verse, lang)?.name;
+  it('the check’s verses: positive, polar bear, Polaroid, protocol, podium, the Bodhi tree, a mall, San Antonio, Antonio', () => {
+    for (const [l, v] of [
+      ['th', 'คิดโพสิทีฟเข้าไว้ คืนนี้เวทีเป็นของข้า'], ['th', 'หมีโพลาร์เดินบนน้ำแข็งยามค่ำ'], ['th', 'ฉันถ่ายรูปด้วยกล้องโพลารอยด์'],
+      ['th', 'เครือข่ายใช้โพรโทคอลใหม่'], ['th', 'เขายืนบนโพเดียมอย่างภูมิใจ'], ['th', 'นั่งสมาธิใต้ต้นโพ'],
+      ['ja', 'ららぽーとで買い物'], ['zh', '我在圣安东尼奥过夜'], ['zh', '安东尼奥是威尼斯商人'],
+    ] as const) expect([l, v, inv(v, l).met]).toEqual([l, v, false]);
+  });
+  it('more of the class: Aegis, Blackburn, Assus, Poland, sports, a name in hiragana', () => {
+    for (const [l, v] of [
+      ['zh', '宙斯盾战斗系统很强'], // Aegis (CC-CEDICT), not Zeus
+      ['zh', '他住在布莱克本'], // Blackburn (CC-CEDICT), not Blake
+      ['zh', '安东尼斯来了'], // jieba (ns), not Antony
+      ['th', 'เมืองอัสซุสโบราณ'], // Assus (PyThaiNLP), not Zeus
+      ['ja', 'ポーランドへ行く'], // a whole katakana run is one word: Poland, not Poe
+      ['ja', 'スポーツが好き'],
+      ['ja', 'ろみおが来た'], // a name written in katakana is said in katakana
+    ] as const) expect([l, v, localName(v, l)]).toEqual([l, v, undefined]);
+  });
+  it('the names themselves still land, alone and among other words', () => {
+    for (const [l, v, n] of [
+      ['zh', '安东尼说话', '安东尼'], ['zh', '马克·安东尼说话', '马克·安东尼'], ['zh', '比宙斯更强', '宙斯'], ['zh', '我爱罗密欧与朱丽叶', '罗密欧'],
+      ['ja', 'ポーの詩を読む', 'ポー'], ['ja', 'ロミオとジュリエット', 'ロミオ'], ['ja', 'マクベス夫人が来た', 'マクベス'],
+      ['th', 'เอดการ์ แอลลัน โพ เขียนกลอน', 'เอดการ์ แอลลัน โพ'], ['th', 'ซุสโกรธมาก', 'ซุส'],
+    ] as const) expect([l, v, localName(v, l)]).toEqual([l, v, n]);
+  });
+
+  // Words of the lists that are the character after all (a name in a phrase, read one by one).
+  const HELD_AND_NAMED: Record<string, string[]> = { zh: [], ja: [], th: [] };
+  it('the 40,000 commonest words of each (wordfreq, the Thai National Corpus): none says a name it only holds', () => {
+    const strays: string[] = [];
+    let read = 0;
+    for (const lang of ['zh', 'ja', 'th']) {
+      const names = new Set(localCharacterNames(lang).map((n) => wordKey(n, lang)));
+      for (const w of NEAR_WF.words[lang]) {
+        read++;
+        const n = localName(w, lang);
+        if (n && !names.has(wordKey(w, lang)) && !HELD_AND_NAMED[lang].includes(w)) strays.push(`${lang} ${w} -> ${n}`);
+      }
+    }
+    expect(strays).toEqual([]);
+    expect(read).toBeGreaterThan(600);
+  });
+});
+
+describe('a name that is also an ordinary word counts as English counts "Bottom"', () => {
+  const localName = (verse: string, lang: string) => saidLocalName(verse, lang)?.name;
+  it('the check’s verses: Bottom, a note, a pack, a break, gross, a bench, banks name nobody', () => {
+    for (const [l, v] of [
+      ['fr', 'Bottom tisse la nuit'], ['it', 'Bottom tesse la notte'], ['es', 'Bottom teje la noche'], ['id', 'Bottom menenun malam'],
+      ['de', 'Zettel webt die Nacht'], ['de', 'Ich schrieb einen Zettel'], ['ja', 'ボトムが夜を織る'], ['ja', 'パック旅行に行こう'],
+      ['ja', 'パックで顔を洗う'], ['ja', 'ブレイクの時間だ'], ['es', 'Bruto es el sueldo antes de impuestos'], ['pt', 'Bruto é o salário antes dos impostos'],
+      ['it', 'Il banco del mercato'], ['it', 'Il peso bruto'], ['hi', 'बैंको में पैसा जमा है'],
+    ] as const) expect([l, v, inv(v, l).met]).toEqual([l, v, false]);
+  });
+  it('more of the class: Pucks on ice, sherry, a Russian pack of ice, a jellyfish, a sentence that opens on the word', () => {
+    for (const [l, v] of [
+      ['de', 'Pucks fliegen über das Eis'], ['de', 'Des Pucks Weg ist kurz'], ['ja', 'シェリーを飲む'], ['ru', 'Пак льда на реке'],
+      // (Spanish «Medusa» opening a line still lands, by the English name, as English counts "medusa".)
+      ['pl', 'Meduza w morzu'], ['th', 'โพ'], ['hi', 'बैंको'],
+      ['es', 'Es tarde. Bruto es el sueldo'], ['es', '¡Bruto!'], ['it', '«Banco» c’è scritto'], ['ru', 'Ночь. Пак льда плывёт'],
+      ['ar', 'اخيل كل ليلة'], // "I imagine every night": أخيل with its hamza typed as a bare alif (fold() drops the hamza)
+    ] as const) expect([l, v, inv(v, l).met]).toEqual([l, v, false]);
+  });
+  it('such a name lands with a capital inside a sentence, where the language writes its ordinary words small; a longer name lands anywhere', () => {
+    for (const [l, v, n] of [
+      ['es', 'Y Bruto alzó el puñal', 'Bruto'], ['pt', 'e Bruto ergueu o punhal', 'Bruto'], ['it', 'e Banco cadde nel bosco', 'Banco'],
+      ['ru', 'и Пак смеётся в лесу', 'Пак'], ['es', 'Oh, Medusa, tu mirada', 'Medusa'],
+      ['ja', 'メアリー・シェリーが書く', 'メアリー・シェリー'], ['ja', 'ウィリアム・ブレイクの詩', 'ウィリアム・ブレイク'],
+    ] as const) expect([l, v, localName(v, l)]).toEqual([l, v, n]);
+    // Bottom is called on only in a phrase in English, and so everywhere: the English phrase counts in any language.
+    expect(inv('Nick Bottom tisse la nuit', 'fr').detail).toBe('Nick Bottom');
+    expect(inv('Bottom the weaver', 'de').met).toBe(true);
+    // A role with its article in English ("The Nurse") counts by its local name, as English counts "the nurse".
+    for (const [l, v, n] of [['zh', '奶妈抱着孩子', '奶妈'], ['ru', 'Кормилица держит ребёнка', 'Кормилица'], ['de', 'Die Wärterin hält das Kind', 'Wärterin']] as const) {
+      expect([l, v, localName(v, l)]).toEqual([l, v, n]);
+    }
+  });
+  it('the card text lists the ordinary words the check found, from Wiktionary (and Hunspell where the script has capitals)', () => {
+    const has = (l: string, w: string) => (getCardText(l)!.ordinary ?? []).includes(w);
+    for (const [l, w] of [['es', 'bruto'], ['pt', 'bruto'], ['it', 'bruto'], ['it', 'banco'], ['de', 'Zettel'], ['de', 'Puck'], ['ja', 'パック'],
+      ['ja', 'ブレイク'], ['ja', 'シェリー'], ['ja', 'ボトム'], ['hi', 'बैंको'], ['th', 'โพ'], ['ru', 'пак']] as const) expect([l, w, has(l, w)]).toEqual([l, w, true]);
+    // Both sources must agree where there are two: Polish Hunspell accepts «hamlet» in small letters, Wiktionary does not list it.
+    expect(has('pl', 'hamlet')).toBe(false);
+    expect(localName('Hamlet patrzy w noc', 'pl')).toBe('Hamlet');
+  });
+  it('in every language, no listed ordinary word counts by itself written small, or opening a line or a sentence', () => {
+    let checked = 0;
+    for (const lang of CARD_TEXT_LANGS) {
+      const ordinary = new Set((getCardText(lang)!.ordinary ?? []).map((w) => wordKey(w, lang)));
+      const capital = new Set(capitalOnlyNames(lang));
+      // The Nurse's local names are that role, which English counts as "the nurse" (an ordinary phrase) whole.
+      const roles = new Set(CHARACTERS.filter((c) => /^The\s/.test(c.name) && getCardText(lang)!.cards[c.id].nameSource !== 'kept')
+        .flatMap((c) => [getCardText(lang)!.cards[c.id].name, ...(getCardText(lang)!.cards[c.id].aliases ?? [])]).filter(Boolean));
+      for (const name of localCharacterNames(lang)) {
+        if (/[\s・·‧]/u.test(name) || !ordinary.has(wordKey(name, lang)) || roles.has(name)) continue;
+        checked++;
+        const small = name.toLocaleLowerCase(lang);
+        const unspaced = ['zh', 'ja', 'th'].includes(lang);
+        const sep = unspaced ? '' : ' ';
+        for (const v of [name, `${name}${sep}`, `x${sep}${small}`, `${sep}. ${name}`].filter((x) => !unspaced || !x.includes('.'))) {
+          expect([lang, v, localName(v, lang) === name]).toEqual([lang, v, false]);
+        }
+        // Only a name the language writes with a capital where its ordinary word is small lands inside a sentence.
+        const smallListed = (getCardText(lang)!.ordinary ?? []).some((o) => wordKey(o, lang) === wordKey(name, lang) && o === o.toLowerCase() && o !== o.toUpperCase());
+        expect([lang, name, capital.has(name)]).toEqual([lang, name, /^\p{Lu}/u.test(name) && smallListed]);
+        if (capital.has(name)) expect([lang, name, !!localName(`x, ${name}`, lang)]).toEqual([lang, name, true]);
+      }
+    }
+    expect(checked).toBeGreaterThan(20);
+  });
+  it('the 40,000 commonest words of each spaced language (wordfreq), opening a line, written small or not: only a name that is no ordinary word, or its form', () => {
+    const strays: string[] = [];
+    let read = 0;
+    for (const lang of CARD_TEXT_LANGS.filter((l) => !['zh', 'ja', 'th'].includes(l))) {
+      const ordinary = new Set((getCardText(lang)!.ordinary ?? []).map((w) => wordKey(w, lang)));
+      const forms = getCardText(lang)!.forms ?? {};
+      const formOf = new Map(Object.entries(forms).flatMap(([w, fs]) => fs.map((f) => [wordKey(f, lang), wordKey(w, lang)] as const)));
+      for (const w of NEAR_WF.words[lang]) {
+        for (const v of new Set([w, w.charAt(0).toLocaleUpperCase(lang) + w.slice(1)])) {
+          read++;
+          const n = saidLocalName(v, lang);
+          if (!n) continue;
+          const k = wordKey(v, lang);
+          const base = formOf.get(k) ?? k;
+          const nameWords = (n.name.match(/[\p{L}\p{M}'’\-]+/gu) ?? []).map((x) => wordKey(x, lang));
+          const isName = nameWords.includes(base) || nameWords.includes(k) || (lang === 'ko' && nameWords.some((x) => k.startsWith(x)));
+          if (!isName || ordinary.has(base)) strays.push(`${lang} ${v} -> ${n.name}`);
+        }
+      }
+    }
+    expect(strays).toEqual([]);
+    expect(read).toBeGreaterThan(2500);
   });
 });

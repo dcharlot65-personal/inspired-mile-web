@@ -33,7 +33,22 @@
  * any case ending let common words in: Russian «Банки» ("banks"), «Дитя» ("child"), Polish «Kora» ("bark"), Arabic
  * «بانكوك» (Bangkok), German «wartest» ("you wait") for «Wärterin». A declined form keeps the name's capital, where
  * the name has one (Russian «марку», a stamp, is not «Марку»). A verse word that carries an accent the name or the
- * form does not is another word (Polish «Bańka», "bubble"; typed without accents, the name still counts).
+ * form does not is another word (Polish «Bańka», "bubble"; Spanish «París», the city, is not «Paris»; typed without
+ * accents, the name still counts).
+ *
+ * A name that is also an ordinary word of the language counts as English counts "Bottom" and "Nurse" (devices.ts): not
+ * by itself. The card text lists those (pack.ordinary: English Wiktionary, with Hunspell where the script has capitals):
+ * Spanish «bruto», Italian «banco», German «Zettel», Japanese パック, Hindi बैंको, Thai โพ. In a language that writes its
+ * ordinary words small, such a name counts by itself only written with a capital inside a sentence («y Bruto alzó el
+ * puñal», not «Bruto es el sueldo»); in German (whose nouns all take a capital) and in scripts without capitals, never
+ * by itself, only inside a longer name. A character English calls on only in a phrase (Bottom) is called on only in a
+ * longer name in every language; one whose English name is a role with its article ("The Nurse") counts by its local
+ * name as written (奶妈, «Кормилица»), as English counts "the nurse".
+ *
+ * Unspaced, a name is a name only as whole words: the segmenter cuts a word it does not know into pieces, and a piece can
+ * be a name (安东尼奥, "Antonio", into 安东尼, Mark Antony, and 奥). A name in katakana is said only in katakana and only
+ * as a whole run of it (ららぽーと, a shopping mall, is not ポー); a Chinese or Thai name is refused where the verse writes
+ * around it a dictionary word that holds it (pack.containing: 圣安东尼奥, "San Antonio"; อัสซุส, Assus).
  *
  * What is not a telling word: the language's stop words (stopwords-iso), every word Wiktionary gives as a
  * pronoun, particle, conjunction, preposition, postposition, determiner or article (both lists are recorded in
@@ -51,6 +66,7 @@ import { CARD_CATALOG, type Card } from '../cards';
 import { getCardText, localEchoText, localQuote } from '../cards-i18n';
 import { baseLang, rulesFor } from './lang';
 import { stemmerFor } from './stem';
+import { ORDINARY_NAME_PARTS } from './names-en';
 import { fold, hiragana, letterCount, wordParts, wordSpan, wordsOf } from './text';
 
 const UNSPACED = new Set(['zh', 'ja', 'th']);
@@ -132,10 +148,10 @@ let jaSegmenter: Intl.Segmenter | null | undefined;
  * into one word (its char.def gives KATAKANA the GROUP flag); this does the same with the pieces ICU gives, when
  * they touch in the text. Each word comes with the pieces it was made of, lower-cased as wordsOf gives them.
  */
-function groupKatakana(text: string): { word: string; pieces: string[] }[] {
+function groupKatakana(text: string): Span[] {
   if (jaSegmenter === undefined) jaSegmenter = typeof Intl !== 'undefined' && 'Segmenter' in Intl ? new Intl.Segmenter('ja', { granularity: 'word' }) : null;
-  if (!jaSegmenter) return wordsOf(text, 'ja').map((w) => ({ word: w, pieces: [w] }));
-  const out: { word: string; pieces: string[]; end: number }[] = [];
+  if (!jaSegmenter) return wordsOf(text, 'ja').map((w) => ({ word: w, pieces: [w], start: -1, end: -1 }));
+  const out: Span[] = [];
   for (const s of jaSegmenter.segment(text)) {
     if (!s.isWordLike || !/\p{L}/u.test(s.segment)) continue;
     const w = s.segment.toLowerCase();
@@ -144,9 +160,33 @@ function groupKatakana(text: string): { word: string; pieces: string[] }[] {
       prev.word += w;
       prev.pieces.push(w);
       prev.end = s.index + s.segment.length;
-    } else out.push({ word: w, pieces: [w], end: s.index + s.segment.length });
+    } else out.push({ word: w, pieces: [w], start: s.index, end: s.index + s.segment.length });
   }
-  return out.map(({ word, pieces }) => ({ word, pieces }));
+  return out;
+}
+
+/** A word of a text with the pieces the segmenter gave it in and where it stands in the text (-1 without a segmenter). */
+interface Span {
+  word: string;
+  pieces: string[];
+  start: number;
+  end: number;
+}
+
+const segmenters = new Map<string, Intl.Segmenter | null>();
+/** The words of an unspaced text with where each stands: Japanese with its katakana runs whole (groupKatakana). */
+function wordSpans(text: string, lang: string): Span[] {
+  if (lang === 'ja') return groupKatakana(text);
+  if (!segmenters.has(lang)) segmenters.set(lang, typeof Intl !== 'undefined' && 'Segmenter' in Intl ? new Intl.Segmenter(lang, { granularity: 'word' }) : null);
+  const seg = segmenters.get(lang);
+  if (!seg) return wordsOf(text, lang).map((w) => ({ word: w, pieces: [w], start: -1, end: -1 }));
+  const out: Span[] = [];
+  for (const s of seg.segment(text)) {
+    if (!s.isWordLike || !/\p{L}/u.test(s.segment)) continue;
+    const w = s.segment.toLowerCase();
+    out.push({ word: w, pieces: [w], start: s.index, end: s.index + s.segment.length });
+  }
+  return out;
 }
 
 /** The words of a text as echo.ts reads them: wordsOf, with French and Italian elisions taken off, and Japanese katakana runs whole. */
@@ -156,15 +196,14 @@ function wordsIn(text: string, lang: string): string[] {
   return wordsOf(text, b).map((w) => unElide(w, b));
 }
 
-/** The same words as wordsIn, as the text writes them (with their capitals), for a spaced script. */
-function wordsWritten(text: string, lang: string): string[] {
-  const b = baseLang(lang);
-  return (text.match(WORD_RE) ?? []).map((w) => unElide(w, b));
-}
-
 /** Letters only (marks kept), kana merged: how runs of an unspaced script are compared. */
 function letters(text: string): string {
   return thaiAm(hiragana(fold(text))).replace(/[^\p{L}\p{M}]/gu, '');
+}
+
+/** Letters only, as a name is compared in an unspaced script: as letters(), but kana kept as written (a name in katakana is said in katakana). */
+function nameLetters(text: string): string {
+  return thaiAm(fold(text)).replace(/[^\p{L}\p{M}]/gu, '');
 }
 
 /** The stems a word is matched by where Snowball has the language: as written and as folded, so unaccented typing still finds it. */
@@ -212,6 +251,10 @@ interface Lists {
   longest: number;
   /** Russian, Polish, German, Arabic: the listed forms of each name word (pack.forms), by the word's wordKey. */
   forms: Map<string, string[]>;
+  /** Names that are also ordinary words (pack.ordinary): the ordinary word as the language writes it, by its wordKey. */
+  ordinary: Map<string, string>;
+  /** Chinese and Thai: the dictionary words that hold a name (pack.containing), by the name's nameLetters, as nameLetters' text. */
+  containing: Map<string, string[]>;
 }
 const lists = new Map<string, Lists>();
 function listsFor(lang: string): Lists {
@@ -232,6 +275,8 @@ function listsFor(lang: string): Lists {
     // One more than the most pieces, since ICU may cut a word in a line otherwise than alone.
     longest: Math.max(1, ...(pack?.compounds ?? []).map((w) => compoundParts(w, b).length + (b === 'th' ? 1 : 0))),
     forms: new Map(Object.entries(pack?.forms ?? {}).map(([w, fs]) => [wordKey(w, b), fs])),
+    ordinary: new Map((pack?.ordinary ?? []).map((w) => [wordKey(w, b), w])),
+    containing: new Map(Object.entries(pack?.containing ?? {}).map(([n, ws]) => [nameLetters(n), ws.map((w) => thaiAm(fold(w)))])),
   };
   if (pack) lists.set(b, l);
   return l;
@@ -543,9 +588,27 @@ export function localSignature(card: Card, verse: string, lang: string, english:
 // --- Invocation: character names as each language writes them ---
 
 const SPLIT = /[\s・·‧]+/u;
-const nameCache = new Map<string, string[]>();
+/** A name that counts by itself, and whether only written with a capital inside a sentence (an ordinary word too). */
+interface LocalName {
+  name: string;
+  capital: boolean;
+}
+const nameCache = new Map<string, LocalName[]>();
 /** The titles the English card names begin with (cards.ts: Prince Escalus, Friar Lawrence, King Claudius, Lady Macbeth, Lord Byron). */
 const EN_TITLES = new Set(['prince', 'friar', 'king', 'lady', 'lord']);
+
+/**
+ * How a word of a name that is also an ordinary word (pack.ordinary) counts by itself: 'free' when it is no ordinary
+ * word; 'capital' when the language writes the ordinary word small and the name with a capital (Spanish «bruto»,
+ * «Bruto»): only written so, inside a sentence; 'never' when the ordinary word takes a capital too (a German noun,
+ * «Zettel») or the script has no capitals (パック).
+ */
+function ordinaryKind(word: string, lang: string): 'free' | 'capital' | 'never' {
+  const o = listsFor(lang).ordinary.get(wordKey(word, lang));
+  if (o === undefined) return 'free';
+  if (o.toLowerCase() === o.toUpperCase()) return 'never';
+  return o === o.toLowerCase() && /^\p{Lu}/u.test(word) ? 'capital' : 'never';
+}
 
 /**
  * Names that count as an invocation in a language, beyond the English ones: every character's full name in that
@@ -557,12 +620,15 @@ const EN_TITLES = new Set(['prince', 'friar', 'king', 'lady', 'lord']);
  * Macbeth), the last word that is not an ordinary word when the English name begins with a title. Where the English card has one name (Romeo, Hamlet), each word of the local
  * label counts (Roméo Montaigu: Roméo, Montaigu), as English counts "Montague" for Lord Montague.
  *
- * In every case a word does not count by itself when it is an ordinary word of the language (a title: Russian
- * «граф», Vietnamese «Phu nhân»; Russian «Кора», bark, for Persephone), as Hunspell's dictionary tells (pack.common;
- * the rule is in build_card_text.py, common_name_words), nor when it is a stop word or shorter than three letters
- * (two where a letter is a syllable or a character).
+ * In every case a word does not count by itself when it is a title or a word of a longer name that is an ordinary word
+ * (Russian «граф», Vietnamese «Phu nhân»), as Hunspell's dictionary tells (pack.common; build_card_text.py,
+ * common_name_words), nor when it is a stop word or shorter than three letters (two where a letter is a syllable or a
+ * character). A name of one word, a word of a name or an alias that is an ordinary word of the language (pack.ordinary)
+ * counts by itself only as ordinaryKind says. As devices.ts has it for English, a character whose English name is an
+ * ordinary word (Bottom) counts only by a longer name, and one whose English name is a role with its article (The
+ * Nurse) by its local name and aliases as written.
  */
-export function localCharacterNames(lang: string): string[] {
+function localNames(lang: string): LocalName[] {
   const b = baseLang(lang);
   const pack = getCardText(b);
   if (!pack) return [];
@@ -571,31 +637,67 @@ export function localCharacterNames(lang: string): string[] {
   const min = ['zh', 'ja', 'ko', 'th', 'hi'].includes(b) ? 2 : 3;
   const { common } = listsFor(b);
   const clean = (s: string) => s.replace(/^[^\p{L}]+|[^\p{L}\p{M}]+$/gu, '');
-  const alone = (w: string) => letterCount(w) >= min && !isStop(w, b) && (!!w.match(SPLIT) || !common.has(wordKey(w, b)));
-  const out = new Set<string>();
+  const oneWord = (w: string) => !SPLIT.test(w);
+  const out = new Map<string, boolean>();
+  const add = (name: string, capital: boolean) => out.set(name, (out.get(name) ?? true) && capital);
   for (const c of CARD_CATALOG) {
     if (c.type !== 'Character') continue;
     const text = pack.cards[c.id];
     if (!text?.name || text.nameSource === 'missing') continue;
+    const en = c.name.trim();
+    // English counts this character only in a phrase ("Nick Bottom"): so here, only by a longer name.
+    const phraseOnly = oneWord(en) && ORDINARY_NAME_PARTS.has(en.toLowerCase());
+    // English counts "The Nurse", an ordinary phrase, whole: the local name of such a card is that phrase.
+    const role = /^The\s/.test(en) && text.nameSource !== 'kept';
+    /** May this name or word count by itself, and how? null: not. */
+    const alone = (w: string, whole: boolean): boolean | null => {
+      if (letterCount(w) < min) return null;
+      if (!oneWord(w)) return whole || !isStop(w, b) ? false : null;
+      if (role && whole) return false;
+      if (phraseOnly || isStop(w, b) || (!whole && common.has(wordKey(w, b)))) return null;
+      const k = ordinaryKind(w, b);
+      return k === 'never' ? null : k === 'capital';
+    };
     const full = clean(text.name.replace(/,.*$/u, ''));
-    if (full && letterCount(full) >= min) out.add(full);
+    if (full) {
+      const a = alone(full, true);
+      if (a !== null) add(full, a);
+    }
     // The product name ("The Sonnet Man") counts whole; its words are English and count as English counts them.
     if (text.nameSource === 'kept') continue;
     const parts = full.split(SPLIT).map(clean).filter(Boolean);
     let single: string[] = [];
     if (parts.length > 1) {
-      if (c.name.trim().split(/\s+/).length === 1) single = parts;
+      if (oneWord(en)) single = parts;
       else {
-        const titled = EN_TITLES.has(c.name.trim().split(/\s+/)[0].toLowerCase());
+        const titled = EN_TITLES.has(en.split(/\s+/)[0].toLowerCase());
         const last = b === 'ko' && titled ? [...parts].reverse().find((w) => !common.has(wordKey(w, b))) : parts[parts.length - 1];
         if (last) single = [last];
       }
     }
-    for (const w of [...single, ...(text.aliases ?? []).map(clean)]) if (alone(w)) out.add(w);
+    for (const w of single) {
+      const a = alone(w, false);
+      if (a !== null) add(w, a);
+    }
+    // An alias of a role (奶媽 beside 奶妈) is that role, whole; any other is held to the rules for a single word.
+    for (const w of (text.aliases ?? []).map(clean)) {
+      const a = alone(w, role);
+      if (a !== null) add(w, a);
+    }
   }
-  const names = [...out];
+  const names = [...out].map(([name, capital]) => ({ name, capital }));
   nameCache.set(b, names);
   return names;
+}
+
+/** The names localNames gives, as written. */
+export function localCharacterNames(lang: string): string[] {
+  return localNames(lang).map((n) => n.name);
+}
+
+/** The names that count by themselves only written with a capital inside a sentence (ordinaryKind 'capital'). */
+export function capitalOnlyNames(lang: string): string[] {
+  return localNames(lang).filter((n) => n.capital).map((n) => n.name);
 }
 
 /**
@@ -621,22 +723,73 @@ function saysNameWord(name: string, verseWord: string, lang: string): boolean {
   return !/^\p{Lu}/u.test(name) || /^\p{Lu}/u.test(verseWord);
 }
 
-/** The verse's words that say this name (one or more words, in a row), folded; or null. */
-function saidName(name: string, verse: string, lang: string): string[] | null {
+/** What may stand before a word that opens a sentence: its end, an opening quotation mark or bracket, a dash. */
+const OPENS = /[.!?…¡¿:;«»"“”„‟‹›「」『』()[\]{}—–‐-]/u;
+
+/** The words of a spaced text as it writes them (with their capitals), each with whether it opens a line or a sentence. */
+function wordsWrittenAt(text: string, lang: string): { word: string; opens: boolean }[] {
   const b = baseLang(lang);
-  if (UNSPACED.has(b)) return spelledBySegments(letters(name), segmentsOf(verse, b), false);
+  const out: { word: string; opens: boolean }[] = [];
+  for (const m of text.matchAll(WORD_RE)) {
+    const before = text.slice(0, m.index).replace(/[^\S\n]+$/u, '');
+    out.push({ word: unElide(m[0], b), opens: !before || before.endsWith('\n') || OPENS.test(before.slice(-1)) });
+  }
+  return out;
+}
+
+/** Does the text write, around the name found at `at`, a word of `around` that holds it? */
+function heldBy(text: string, at: number, target: string, around: string[]): boolean {
+  if (at < 0) return false;
+  for (const w of around) {
+    for (let o = w.indexOf(target); o >= 0; o = w.indexOf(target, o + 1)) {
+      if (at - o >= 0 && text.startsWith(w, at - o)) return true;
+    }
+  }
+  return false;
+}
+
+/**
+ * Unspaced: whole words of the verse, in a row, that spell the name, kana as written; refused where the verse writes
+ * around them a word of pack.containing that holds the name. The verse's words that say it, folded; or null.
+ */
+function saidNameUnspaced(name: string, verse: string, lang: string): string[] | null {
+  const target = nameLetters(name);
+  if (!target) return null;
+  const text = thaiAm(fold(verse));
+  const spans = wordSpans(text, lang).map((s) => ({ ...s, key: nameLetters(s.word) })).filter((s) => s.key);
+  const around = listsFor(lang).containing.get(target) ?? [];
+  for (let i = 0; i < spans.length; i++) {
+    let run = '';
+    for (let j = i; j < spans.length && run.length < target.length; j++) {
+      run += spans[j].key;
+      if (run !== target) continue;
+      if (!heldBy(text, spans[i].start, target, around)) return spans.slice(i, j + 1).flatMap((s) => s.pieces.map(fold));
+    }
+  }
+  return null;
+}
+
+/** The verse's words that say this name (one or more words, in a row), folded; or null. */
+function saidName(name: string, verse: string, lang: string, capital = false): string[] | null {
+  const b = baseLang(lang);
+  if (UNSPACED.has(b)) return saidNameUnspaced(name, verse, b);
   // The name's words as it writes them (wordsOf lower-cases), so a declined form can be held to the name's capital.
   const n = name.match(WORD_RE) ?? [];
-  const v = wordsWritten(verse, b);
-  for (let i = 0; i + n.length <= v.length; i++) if (n.every((w, j) => saysNameWord(w, v[i + j], b))) return v.slice(i, i + n.length).map(fold);
+  const v = wordsWrittenAt(verse, b);
+  for (let i = 0; i + n.length <= v.length; i++) {
+    if (!n.every((w, j) => saysNameWord(w, v[i + j].word, b))) continue;
+    // A name that is also an ordinary word counts only written as a name: with a capital, not opening a sentence.
+    if (capital && (v[i].opens || !/^\p{Lu}/u.test(v[i].word))) continue;
+    return v.slice(i, i + n.length).map((x) => fold(x.word));
+  }
   return null;
 }
 
 /** The first localised name the verse says, with the verse's words that say it; or undefined. */
 export function saidLocalName(verse: string, lang: string): { name: string; words: string[] } | undefined {
   if (baseLang(lang) === 'en') return undefined;
-  for (const name of localCharacterNames(lang)) {
-    const words = saidName(name, verse, lang);
+  for (const { name, capital } of localNames(lang)) {
+    const words = saidName(name, verse, lang, capital);
     if (words) return { name, words };
   }
   return undefined;
