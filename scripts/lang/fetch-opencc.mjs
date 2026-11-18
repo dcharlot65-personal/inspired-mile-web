@@ -18,6 +18,8 @@ const r = await fetch(url);
 if (!r.ok) throw new Error(`${r.status} ${url}`);
 const map = {};
 for (const line of (await r.text()).split('\n')) {
+  // The file opens with comment lines ("# Format: key<TAB>value(s)"), which are not characters.
+  if (line.startsWith('#')) continue;
   const [trad, simp] = line.split('\t');
   if (trad && simp) map[trad] = simp.split(' ')[0];
 }

@@ -18,11 +18,11 @@ language model, whose opinion is only ever a proposal.
 | 1. Plurals and numbers | The form of a counted noun, by CLDR plural rule (`Intl.PluralRules`); numbers by `Intl.NumberFormat`; lists by `Intl.ListFormat`. Every count has exactly the forms its language has. | `npx vitest run` (`src/i18n/quality.test.ts`) | yes |
 | 7. Mechanical checks | Same keys and placeholders everywhere, nothing left in English, spacing, punctuation and quotation marks by language, hidden and bidirectional characters, script. | `npx vitest run`; `node scripts/lang/check.mjs` | yes |
 | 5. Terminology | One word per game term per language; platform terms as the vendors publish them. | `npx vitest run`; `node scripts/lang/glossary.mjs` | yes |
-| 6. Form names | The name of each verse form is the one recorded in the glossary. Each has a status (sourced, head word sourced, the form's own name, not sourced) that its cited evidence must bear out, and an exception about a name (meaning, spelling, grammar) must say the same. | `npx vitest run` | yes |
+| 6. Form names | The name of each verse form is the one recorded in the glossary. Each has a status (sourced, head word sourced, the form's own name, not sourced) that its cited evidence must bear out: a cite counts only when it is about the form's own Wikidata item (or on the Wiktionary page of the form's English word), a name resting on an alias alone says why the label was not used, and a sitelink to a redirect is not an article title. An exception about a name (meaning, spelling, grammar) must say the same. | `npx vitest run` | yes |
 | 5b. Citations | Every `cite` in `docs/language/glossary.json` is true of the fetched file it names, exactly (an Android or Firefox string, a Google Help title or heading, a Wikipedia title as item Q…, a Wikidata label or alias, a Wiktionary word); prose that names a source has cites. | `npx vitest run` | yes |
 | 3b. Single words | Relic power words, the four criteria and the glossary's core terms against English Wiktionary's translation tables for the English word (or the word's own entry where the table has nothing for the language). Not listed: changed, or kept with a reason in `allow/words.json`. | `npx vitest run` | yes |
 | 2. Grammar and spelling | LanguageTool and Hunspell over every string as a rendered sentence, each string on its own (joined into one text, LanguageTool's text-level rules judged a string by its neighbours). Thai is cut into words by ICU first, and a rejected piece counts only if no join with the pieces touching it is a known word. | build host: `run.sh grammar` | yes (exit 1 on an unlisted hit, or on an exception that no longer matches anything) |
-| 3. Meaning | Back-translation with MADLAD-400 scored against the English (MiniLM cosine), and LaBSE scoring the translation against the English directly. Flagged when both are under 0.6; a control scores each against the wrong English sentence with the same rule. | build host: `run.sh meaning`, then `node scripts/lang/meaning.mjs` | yes (exit 1 on an unreviewed flag or a string changed since it was scored) |
+| 3. Meaning | Back-translation with MADLAD-400 scored against the English (MiniLM cosine), and LaBSE scoring the translation against the English directly. Flagged when both are under 0.6; a control scores each against the wrong English sentence with the same rule. Every plural form of a counted string is read (`<key>@<category>`, against the English at the same number); until 2026-11-17 only the typical one was. | build host: `run.sh meaning`, then `node scripts/lang/meaning.mjs` | yes (exit 1 on an unreviewed flag or a string changed since it was scored) |
 | 4. Second opinion | A different model, run locally, reviews each string as a native-speaking reviewer. | build host: `run.sh review` | no: it proposes, steps 2 and 3 decide |
 
 Steps 1, 5, 6 and 7 need nothing but Node and run with the unit tests, so they
@@ -131,7 +131,8 @@ licences, and the tools and models with their versions.
 
 ## Files
 
-- `lib/strings.mjs`: every string, and `renderSamples()`, which turns a template into the sentences a player reads (one per plural form).
+- `lib/strings.mjs`: every string (the interface, and the packs' words and verses, `spare` included), and `renderSamples()`, which turns a template into the sentences a player reads (one per plural form).
+- `samples.mjs <lang>`: those sentences for one language, as JSON; `tests/theatre-bidi.spec.ts` draws every Arabic one on a canvas.
 - `lib/mechanical.mjs`, `lib/glossary.mjs`: the rules, shared with the unit tests.
 - `lib/context.mjs`: where a string appears, from its key (given to the reviewer).
 - `grammar.mjs`, `backtranslate.py`, `meaning.mjs`, `review.mjs`, `adopt.mjs`, `report.mjs`, `apply.mjs`, `extract.mjs`.
