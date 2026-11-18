@@ -42,6 +42,9 @@ async function open(page: Page, path: string, locale: string) {
 
 /** The tooltip is placed beside what it points at, which can be outside a headless viewport: click it from the page. */
 async function skipOnboarding(page: Page) {
+  // Shown once the page has started it, on a first visit: skipped before that, it would still come up afterwards and
+  // take every click (seen on a loaded host, 2026-11-17).
+  await expect(page.locator('#onboarding-overlay')).toBeVisible();
   await page.evaluate(() => (document.getElementById('onboarding-skip') as HTMLElement).click());
   await expect(page.locator('#onboarding-overlay')).toBeHidden();
 }
@@ -163,16 +166,16 @@ for (const locale of ['en', 'ar']) {
     const targets = ['#starter-pack-btn', '#trivia-start-btn', 'a[href="/battle"].btn-danger'];
     for (let step = 1; step <= 3; step++) {
       await expect(page.locator('#onboarding-step')).toHaveText(`${step} / 3`);
+      // Where the tooltip comes to rest (it slides there over half a second, transition-all duration-500): inside the
+      // viewport, and beside its target, not over it (a tooltip over its target hid it, and the target, raised above
+      // the overlay, took the click meant for "Next"), and no further from it than the arrow's reach.
       await expect.poll(async () => {
-        const b = await tip.boundingBox();
-        return !!b && b.y >= 0 && b.y + b.height <= 844 && b.x >= 0 && b.x + b.width <= 390;
-      }, { message: `step ${step}: the tooltip is inside the 390 x 844 viewport` }).toBe(true);
-      // Beside its target: not over it (a tooltip over its target hid it, and the target, raised above the overlay,
-      // took the click meant for "Next"), and no further from it than the arrow's reach.
-      const [b, t] = [await tip.boundingBox(), await page.locator(targets[step - 1]).first().boundingBox()];
-      const gap = Math.max(t!.y - (b!.y + b!.height), b!.y - (t!.y + t!.height));
-      expect(gap, `step ${step}: the tooltip does not cover its target`).toBeGreaterThanOrEqual(0);
-      expect(gap, `step ${step}: the tooltip stands next to its target`).toBeLessThan(40);
+        const [b, t] = [await tip.boundingBox(), await page.locator(targets[step - 1]).first().boundingBox()];
+        if (!b || !t) return 'not laid out';
+        if (b.y < 0 || b.y + b.height > 844 || b.x < 0 || b.x + b.width > 390) return 'outside the viewport';
+        const gap = Math.max(t.y - (b.y + b.height), b.y - (t.y + t.height));
+        return gap < 0 ? `over its target by ${-gap} px` : gap >= 40 ? `${gap} px from its target` : 'beside its target';
+      }, { message: `step ${step}: the tooltip comes to rest inside the 390 x 844 viewport, beside its target`, timeout: 15_000 }).toBe('beside its target');
       await page.locator('#onboarding-next').click({ timeout: 10_000 });
     }
     await expect(page.locator('#onboarding-overlay')).toBeHidden();
