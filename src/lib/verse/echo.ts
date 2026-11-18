@@ -73,7 +73,7 @@ const WORD_RE = /[\p{L}\p{M}]+(?:['’\-][\p{L}\p{M}]+)*/gu;
 // --- Comparing words ---
 
 /** Vietnamese tone marks: grave, acute, tilde, hook above, dot below. Circumflex, breve, horn and đ make other letters. */
-const VI_TONE = /[̣̀́̃̉]/gu;
+const VI_TONE = /[\u0300\u0301\u0303\u0309\u0323]/gu;
 
 /**
  * Thai SARA AM written as its two parts (nikhahit + sara aa, which is how its compatibility decomposition spells it
@@ -103,11 +103,11 @@ export function wordKey(word: string, lang: string): string {
  */
 export function englishKey(word: string, lang: string): string {
   if (baseLang(lang) === 'en') return fold(word);
-  return word.normalize('NFC').toLowerCase().replace(/[’‘ʼ]/g, "'");
+  return word.normalize('NFC').toLowerCase().replace(/[\u2019\u2018\u02bc]/g, "'");
 }
 
 /** Does a Latin-script word carry a combining mark (an accent, a tone, a cedilla) once decomposed? */
-const hasLatinMark = (w: string) => /\p{Script=Latin}/u.test(w) && /[̀-ͯ]/.test(w.normalize('NFD'));
+const hasLatinMark = (w: string) => /\p{Script=Latin}/u.test(w) && /[\u0300-\u036f]/.test(w.normalize('NFD'));
 
 /**
  * French and Italian write an elided article or pronoun onto the next word with an apostrophe: l’amour, c’est,
@@ -125,7 +125,7 @@ export function unElide(word: string, lang: string): string {
   return m && set.has(m[1].toLowerCase()) ? m[2] : word;
 }
 
-const KATAKANA_RUN = /^[\p{Script=Katakana}ー]+$/u;
+const KATAKANA_RUN = /^[\p{Script=Katakana}\u30fc]+$/u;
 let jaSegmenter: Intl.Segmenter | null | undefined;
 
 /**
