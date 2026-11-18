@@ -1,5 +1,5 @@
 {
- "ran": "2026-11-17T01:06:04.445Z",
+ "ran": "2026-11-18T01:20:41.258Z",
  "languagetool": {
   "version": "6.6",
   "buildDate": "2025-03-27 20:50:25 +0100",
@@ -190,18 +190,18 @@
  "languages": {
   "en": {
    "strings": {
-    "ui": 411,
-    "pack": 139,
-    "sentences": 568
+    "ui": 428,
+    "pack": 189,
+    "sentences": 635
    },
    "languagetool": "en-US",
    "hunspell": [
     "en"
    ],
    "counts": {
-    "languagetool": 21,
+    "languagetool": 24,
     "hunspell": 17,
-    "allowed": 38,
+    "allowed": 41,
     "open": 0
    },
    "hits": [
@@ -305,6 +305,32 @@
     },
     {
      "tool": "languagetool",
+     "id": "ui:void.thin",
+     "rule": "UPPERCASE_SENTENCE_START",
+     "category": "CASING",
+     "text": "too little to be a verse: it needs more different words",
+     "at": "too",
+     "message": "This sentence does not start with an uppercase letter.",
+     "replacements": [
+      "Too"
+     ],
+     "allowed": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+    },
+    {
+     "tool": "languagetool",
+     "id": "ui:void.copied",
+     "rule": "UPPERCASE_SENTENCE_START",
+     "category": "CASING",
+     "text": "taken from the other verse: an answer must be your own",
+     "at": "taken",
+     "message": "This sentence does not start with an uppercase letter.",
+     "replacements": [
+      "Taken"
+     ],
+     "allowed": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+    },
+    {
+     "tool": "languagetool",
      "id": "ui:signature.none",
      "rule": "UPPERCASE_SENTENCE_START",
      "category": "CASING",
@@ -322,6 +348,19 @@
      "rule": "UPPERCASE_SENTENCE_START",
      "category": "CASING",
      "text": "echo one of: skull, jest, and grave",
+     "at": "echo",
+     "message": "This sentence does not start with an uppercase letter.",
+     "replacements": [
+      "Echo"
+     ],
+     "allowed": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+    },
+    {
+     "tool": "languagetool",
+     "id": "ui:signature.hintTwo",
+     "rule": "UPPERCASE_SENTENCE_START",
+     "category": "CASING",
+     "text": "echo two of: skull, jest, and grave",
      "at": "echo",
      "message": "This sentence does not start with an uppercase letter.",
      "replacements": [
@@ -1332,6 +1371,12 @@
     "ui:auth.signOut": [
      "Sign Out"
     ],
+    "ui:auth.signOutEverywhere": [
+     "Sign out on every device"
+    ],
+    "ui:auth.legacyAccountNote": [
+     "Signed in here before with Google or an email address? That way in is switched off for now, so an older account cannot be opened yet. Creating an account here makes a new, empty one."
+    ],
     "ui:auth.working": [
      "One moment…"
     ],
@@ -1373,6 +1418,18 @@
     ],
     "ui:auth.error.passkey_not_accepted": [
      "That passkey was not accepted. Sign in with an emailed code, then add a new passkey."
+    ],
+    "ui:auth.error.passkey_not_accepted_no_email": [
+     "That passkey was not accepted. It may have been removed from the account, or the account may no longer exist."
+    ],
+    "ui:auth.error.reauth_required": [
+     "Confirm it is you first: sign out, sign in again, then try once more."
+    ],
+    "ui:auth.error.reauth_unavailable": [
+     "To do this, sign out and sign in again with an emailed code first."
+    ],
+    "ui:auth.error.too_many_attempts": [
+     "Too many wrong codes for this address. Try again tomorrow, or sign in with a passkey."
     ],
     "ui:auth.error.passkey_failed": [
      "The passkey did not work. Please try again."
@@ -1590,6 +1647,9 @@
     "ui:hand.potionLastRound": [
      "Hamlet would curse the opponent's next verse, but this is the last round."
     ],
+    "ui:hand.potionGamble": [
+     "If this round settles the match, the potion is spent for nothing."
+    ],
     "ui:variant.bonus": [
      "+3 wit"
     ],
@@ -1610,6 +1670,9 @@
     ],
     "ui:illegal.potion-spent": [
      "That potion is spent."
+    ],
+    "ui:illegal.potion-last-round": [
+     "No verse is left to curse: this is the last round."
     ],
     "ui:illegal.no-ink": [
      "Not enough ink."
@@ -1641,11 +1704,29 @@
     "ui:live.curseHolding": [
      "holding"
     ],
+    "ui:void.label": [
+     "Scores nothing"
+    ],
+    "ui:void.thin": [
+     "too little to be a verse: it needs more different words"
+    ],
+    "ui:void.copied": [
+     "taken from the other verse: an answer must be your own"
+    ],
+    "ui:live.judgeUnread": [
+     "Lines the grading model will not read: 2 (grade) and 4 (graded). A line holding a number or a judging word (grade, score, win…) is left out, and this round is then judged by the rules alone."
+    ],
+    "ui:live.judgeUnreadLine": [
+     "2 (skull)"
+    ],
     "ui:signature.none": [
      "this card has no signature line"
     ],
     "ui:signature.hint": [
      "echo one of: skull, jest, and grave"
+    ],
+    "ui:signature.hintTwo": [
+     "echo two of: skull, jest, and grave"
     ],
     "ui:signature.quoted": [
      "quoted outright; an echo must be your own line"
@@ -1734,6 +1815,12 @@
     "ui:verdict.judge": [
      "Judge"
     ],
+    "ui:verdict.worldCard": [
+     "World card: Verona"
+    ],
+    "ui:verdict.notTaken": [
+     "wit not taken"
+    ],
     "ui:verdict.roundScore": [
      "Round score"
     ],
@@ -1757,6 +1844,9 @@
     ],
     "ui:verdict.judgedRules": [
      "Judged by rule (variety, allusion, sound, and comeback), because no model is running."
+    ],
+    "ui:verdict.copyForfeits": [
+     "A copied verse forfeits the judge."
     ],
     "ui:verdict.next": [
      "Next round"
@@ -2241,6 +2331,156 @@
     "pack:written.heroic-couplet.1.1": [
      "And thou hast brought a candle to the game"
     ],
+    "pack:spare.couplet.0.0": [
+     "Thy verse is dull"
+    ],
+    "pack:spare.couplet.0.1": [
+     "An empty, hollow skull"
+    ],
+    "pack:spare.couplet.1.0": [
+     "Hear me, fool, and weep"
+    ],
+    "pack:spare.couplet.1.1": [
+     "My lyric cuts deep"
+    ],
+    "pack:spare.couplet.2.0": [
+     "Be gone, thou clumsy mime"
+    ],
+    "pack:spare.couplet.2.1": [
+     "I waste no more time"
+    ],
+    "pack:spare.quatrain-aabb.0.0": [
+     "Thy verse is dull"
+    ],
+    "pack:spare.quatrain-aabb.0.1": [
+     "An empty, hollow skull"
+    ],
+    "pack:spare.quatrain-aabb.0.2": [
+     "Hear me, fool, and weep"
+    ],
+    "pack:spare.quatrain-aabb.0.3": [
+     "My lyric cuts deep"
+    ],
+    "pack:spare.quatrain-aabb.1.0": [
+     "Be gone, thou clumsy mime"
+    ],
+    "pack:spare.quatrain-aabb.1.1": [
+     "I waste no more time"
+    ],
+    "pack:spare.quatrain-aabb.1.2": [
+     "Thy muse fled the hall"
+    ],
+    "pack:spare.quatrain-aabb.1.3": [
+     "Left thee here to fall"
+    ],
+    "pack:spare.quatrain-abab.0.0": [
+     "Thy verse is dull"
+    ],
+    "pack:spare.quatrain-abab.0.1": [
+     "Hear me, fool, and weep"
+    ],
+    "pack:spare.quatrain-abab.0.2": [
+     "An empty, hollow skull"
+    ],
+    "pack:spare.quatrain-abab.0.3": [
+     "My lyric cuts deep"
+    ],
+    "pack:spare.quatrain-abab.1.0": [
+     "Be gone, thou clumsy mime"
+    ],
+    "pack:spare.quatrain-abab.1.1": [
+     "Thy muse fled the hall"
+    ],
+    "pack:spare.quatrain-abab.1.2": [
+     "I waste no more time"
+    ],
+    "pack:spare.quatrain-abab.1.3": [
+     "Left thee here to fall"
+    ],
+    "pack:spare.tercet.0.0": [
+     "Thy verse is dull"
+    ],
+    "pack:spare.tercet.0.1": [
+     "A candle in the rain"
+    ],
+    "pack:spare.tercet.0.2": [
+     "An empty, hollow skull"
+    ],
+    "pack:spare.tercet.1.0": [
+     "Be gone, thou clumsy mime"
+    ],
+    "pack:spare.tercet.1.1": [
+     "Thy muse fled the hall"
+    ],
+    "pack:spare.tercet.1.2": [
+     "I waste no more time"
+    ],
+    "pack:spare.anaphora.0.0": [
+     "Lo, my verse cuts deep"
+    ],
+    "pack:spare.anaphora.0.1": [
+     "Lo, thy muse has fled"
+    ],
+    "pack:spare.anaphora.0.2": [
+     "Lo, the hall is mine"
+    ],
+    "pack:spare.anaphora.1.0": [
+     "Now hear my blade sing"
+    ],
+    "pack:spare.anaphora.1.1": [
+     "Now feel thy muse flee"
+    ],
+    "pack:spare.anaphora.1.2": [
+     "Now kneel, and be gone"
+    ],
+    "pack:spare.crescendo.0.0": [
+     "Kneel"
+    ],
+    "pack:spare.crescendo.0.1": [
+     "Weep, fool"
+    ],
+    "pack:spare.crescendo.0.2": [
+     "Thy doom has come"
+    ],
+    "pack:spare.crescendo.1.0": [
+     "Bah"
+    ],
+    "pack:spare.crescendo.1.1": [
+     "Feeble cub"
+    ],
+    "pack:spare.crescendo.1.2": [
+     "Flee my keen blade"
+    ],
+    "pack:spare.haiku.0.0": [
+     "Thy verse is a moth"
+    ],
+    "pack:spare.haiku.0.1": [
+     "Bitter candle, hungry flame"
+    ],
+    "pack:spare.haiku.0.2": [
+     "Ash upon the wind"
+    ],
+    "pack:spare.haiku.1.0": [
+     "Listen, little fool"
+    ],
+    "pack:spare.haiku.1.1": [
+     "Silver arrows, silent hall"
+    ],
+    "pack:spare.haiku.1.2": [
+     "No one claps for thee"
+    ],
+    "pack:spare.heroic-couplet.0.0": [
+     "Bitter candle, feeble little flame"
+    ],
+    "pack:spare.heroic-couplet.0.1": [
+     "Hollow echo, sorry empty name"
+    ],
+    "pack:spare.heroic-couplet.1.0": [
+     "Silver arrows, silent, deadly, bright"
+    ],
+    "pack:spare.heroic-couplet.1.1": [
+     "Sorrow, hunger, exile, bitter night"
+    ],
     "pack:acrosticLines.a.0": [
      "And still thou standest, waiting to be beaten"
     ],
@@ -2353,18 +2593,18 @@
   },
   "es": {
    "strings": {
-    "ui": 411,
+    "ui": 428,
     "pack": 128,
-    "sentences": 557
+    "sentences": 574
    },
    "languagetool": "es",
    "hunspell": [
     "es"
    ],
    "counts": {
-    "languagetool": 22,
-    "hunspell": 41,
-    "allowed": 63,
+    "languagetool": 25,
+    "hunspell": 42,
+    "allowed": 67,
     "open": 0
    },
    "hits": [
@@ -2540,6 +2780,32 @@
     },
     {
      "tool": "languagetool",
+     "id": "ui:void.thin",
+     "rule": "UPPERCASE_SENTENCE_START",
+     "category": "CASING",
+     "text": "demasiado poco para ser una estrofa: hacen falta más palabras distintas",
+     "at": "demasiado",
+     "message": "Esta frase no empieza con mayúscula.",
+     "replacements": [
+      "Demasiado"
+     ],
+     "allowed": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+    },
+    {
+     "tool": "languagetool",
+     "id": "ui:void.copied",
+     "rule": "UPPERCASE_SENTENCE_START",
+     "category": "CASING",
+     "text": "tomada de la otra estrofa: una respuesta debe ser tuya",
+     "at": "tomada",
+     "message": "Esta frase no empieza con mayúscula.",
+     "replacements": [
+      "Tomada"
+     ],
+     "allowed": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+    },
+    {
+     "tool": "languagetool",
      "id": "ui:signature.none",
      "rule": "UPPERCASE_SENTENCE_START",
      "category": "CASING",
@@ -2557,6 +2823,19 @@
      "rule": "UPPERCASE_SENTENCE_START",
      "category": "CASING",
      "text": "evoca una de: calavera, burla y tumba",
+     "at": "evoca",
+     "message": "Esta frase no empieza con mayúscula.",
+     "replacements": [
+      "Evoca"
+     ],
+     "allowed": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+    },
+    {
+     "tool": "languagetool",
+     "id": "ui:signature.hintTwo",
+     "rule": "UPPERCASE_SENTENCE_START",
+     "category": "CASING",
+     "text": "evoca dos de: calavera, burla y tumba",
      "at": "evoca",
      "message": "Esta frase no empieza con mayúscula.",
      "replacements": [
@@ -3020,6 +3299,17 @@
      "message": "not in the es dictionary",
      "replacements": [],
      "allowed": "The ending of the placeholder address tu@ejemplo.com."
+    },
+    {
+     "tool": "hunspell",
+     "id": "ui:auth.legacyAccountNote",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "¿Entraste aquí antes con Google o con una dirección de correo? Esa forma de entrar está desactivada por ahora, así que una cuenta antigua todavía no se puede abrir. Si creas una cuenta aquí, será nueva y estará vacía.",
+     "at": "Google",
+     "message": "not in the es dictionary",
+     "replacements": [],
+     "allowed": "A proper name (a product, platform, browser, model, person or character, or a verse form's name sourced in docs/language/glossary.json), not a word of the language."
     },
     {
      "tool": "hunspell",
@@ -3773,6 +4063,12 @@
     "ui:auth.signOut": [
      "Cerrar sesión"
     ],
+    "ui:auth.signOutEverywhere": [
+     "Cerrar sesión en todos los dispositivos"
+    ],
+    "ui:auth.legacyAccountNote": [
+     "¿Entraste aquí antes con Google o con una dirección de correo? Esa forma de entrar está desactivada por ahora, así que una cuenta antigua todavía no se puede abrir. Si creas una cuenta aquí, será nueva y estará vacía."
+    ],
     "ui:auth.working": [
      "Un momento…"
     ],
@@ -3814,6 +4110,18 @@
     ],
     "ui:auth.error.passkey_not_accepted": [
      "Esa llave de acceso no ha sido aceptada. Entra con un código por correo y añade una llave nueva."
+    ],
+    "ui:auth.error.passkey_not_accepted_no_email": [
+     "Esa llave de acceso no ha sido aceptada. Puede que se haya quitado de la cuenta, o que la cuenta ya no exista."
+    ],
+    "ui:auth.error.reauth_required": [
+     "Primero confirma que eres tú: cierra sesión, vuelve a entrar e inténtalo otra vez."
+    ],
+    "ui:auth.error.reauth_unavailable": [
+     "Para hacer esto, primero cierra sesión y vuelve a entrar con un código por correo."
+    ],
+    "ui:auth.error.too_many_attempts": [
+     "Demasiados códigos incorrectos para esta dirección. Inténtalo mañana, o entra con una llave de acceso."
     ],
     "ui:auth.error.passkey_failed": [
      "La llave de acceso no ha funcionado. Inténtalo de nuevo."
@@ -4031,6 +4339,9 @@
     "ui:hand.potionLastRound": [
      "Hamlet maldeciría la próxima estrofa del rival, pero esta es la última ronda."
     ],
+    "ui:hand.potionGamble": [
+     "Si esta ronda decide el duelo, la poción se gasta en vano."
+    ],
     "ui:variant.bonus": [
      "+3 en ingenio"
     ],
@@ -4051,6 +4362,9 @@
     ],
     "ui:illegal.potion-spent": [
      "Esa poción ya está gastada."
+    ],
+    "ui:illegal.potion-last-round": [
+     "No queda estrofa que maldecir: esta es la última ronda."
     ],
     "ui:illegal.no-ink": [
      "No queda tinta suficiente."
@@ -4082,11 +4396,29 @@
     "ui:live.curseHolding": [
      "se cumple"
     ],
+    "ui:void.label": [
+     "No puntúa"
+    ],
+    "ui:void.thin": [
+     "demasiado poco para ser una estrofa: hacen falta más palabras distintas"
+    ],
+    "ui:void.copied": [
+     "tomada de la otra estrofa: una respuesta debe ser tuya"
+    ],
+    "ui:live.judgeUnread": [
+     "Versos que el modelo evaluador no leerá: 2 (adjudicarse) y 4 (calificación). Se omite todo verso con un número o una palabra de evaluación (nota, puntuación, ganar…), y esta ronda la deciden entonces solo las reglas."
+    ],
+    "ui:live.judgeUnreadLine": [
+     "2 (calavera)"
+    ],
     "ui:signature.none": [
      "esta carta no tiene frase de firma"
     ],
     "ui:signature.hint": [
      "evoca una de: calavera, burla y tumba"
+    ],
+    "ui:signature.hintTwo": [
+     "evoca dos de: calavera, burla y tumba"
     ],
     "ui:signature.quoted": [
      "citada tal cual; un eco debe ser un verso tuyo"
@@ -4175,6 +4507,12 @@
     "ui:verdict.judge": [
      "Juez"
     ],
+    "ui:verdict.worldCard": [
+     "Carta del mundo: Verona"
+    ],
+    "ui:verdict.notTaken": [
+     "ingenio: no ganado"
+    ],
     "ui:verdict.roundScore": [
      "Puntos de la ronda"
     ],
@@ -4198,6 +4536,9 @@
     ],
     "ui:verdict.judgedRules": [
      "Juzgado por reglas (variedad, alusión, sonido y réplica), porque no hay ningún modelo en marcha."
+    ],
+    "ui:verdict.copyForfeits": [
+     "Una estrofa copiada pierde los puntos del juez."
     ],
     "ui:verdict.next": [
      "Siguiente ronda"
@@ -4761,18 +5102,18 @@
   },
   "fr": {
    "strings": {
-    "ui": 411,
+    "ui": 428,
     "pack": 128,
-    "sentences": 557
+    "sentences": 574
    },
    "languagetool": "fr",
    "hunspell": [
     "fr"
    ],
    "counts": {
-    "languagetool": 33,
+    "languagetool": 38,
     "hunspell": 16,
-    "allowed": 49,
+    "allowed": 54,
     "open": 0
    },
    "hits": [
@@ -4916,6 +5257,20 @@
     },
     {
      "tool": "languagetool",
+     "id": "ui:auth.error.too_many_attempts",
+     "rule": "OU",
+     "category": "CAT_HOMONYMES_PARONYMES",
+     "text": "Trop de codes erronés pour cette adresse. Réessayez demain, ou connectez-vous avec une clé d’accès.",
+     "at": "ou",
+     "message": "Le mot « où » indique un lieu, un temps ou une situation.",
+     "replacements": [
+      "où",
+      "ou bien"
+     ],
+     "allowed": "« ou » here is 'or' (try again tomorrow, or sign in with a passkey); the rule takes it for « où »."
+    },
+    {
+     "tool": "languagetool",
      "id": "ui:brain.kept",
      "rule": "ETRE_VPPA_OU_ADJ",
      "category": "CAT_GRAMMAIRE",
@@ -4955,6 +5310,45 @@
     },
     {
      "tool": "languagetool",
+     "id": "ui:void.thin",
+     "rule": "UPPERCASE_SENTENCE_START",
+     "category": "CASING",
+     "text": "trop peu pour faire une strophe : il faut davantage de mots différents",
+     "at": "trop",
+     "message": "Cette phrase ne commence pas par une majuscule.",
+     "replacements": [
+      "Trop"
+     ],
+     "allowed": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+    },
+    {
+     "tool": "languagetool",
+     "id": "ui:void.thin",
+     "rule": "PLACE_ADJ",
+     "category": "CAT_TOURS_CRITIQUES",
+     "text": "trop peu pour faire une strophe : il faut davantage de mots différents",
+     "at": "de mots différents",
+     "message": "Cet adjectif précède généralement le nom.",
+     "replacements": [
+      "différents mots"
+     ],
+     "allowed": "« mots différents » (distinct words) is what is meant: the verse needs more distinct words; « différents mots » before the noun would mean 'various words'."
+    },
+    {
+     "tool": "languagetool",
+     "id": "ui:void.copied",
+     "rule": "UPPERCASE_SENTENCE_START",
+     "category": "CASING",
+     "text": "reprise de l’autre strophe : une réponse doit être la vôtre",
+     "at": "reprise",
+     "message": "Cette phrase ne commence pas par une majuscule.",
+     "replacements": [
+      "Reprise"
+     ],
+     "allowed": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+    },
+    {
+     "tool": "languagetool",
      "id": "ui:signature.none",
      "rule": "UPPERCASE_SENTENCE_START",
      "category": "CASING",
@@ -4972,6 +5366,19 @@
      "rule": "UPPERCASE_SENTENCE_START",
      "category": "CASING",
      "text": "faites écho à l’un de ces mots : crâne, farce et tombe",
+     "at": "faites",
+     "message": "Cette phrase ne commence pas par une majuscule.",
+     "replacements": [
+      "Faites"
+     ],
+     "allowed": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+    },
+    {
+     "tool": "languagetool",
+     "id": "ui:signature.hintTwo",
+     "rule": "UPPERCASE_SENTENCE_START",
+     "category": "CASING",
+     "text": "faites écho à deux de ces mots : crâne, farce et tombe",
      "at": "faites",
      "message": "Cette phrase ne commence pas par une majuscule.",
      "replacements": [
@@ -6048,6 +6455,12 @@
     "ui:auth.signOut": [
      "Se déconnecter"
     ],
+    "ui:auth.signOutEverywhere": [
+     "Se déconnecter sur tous les appareils"
+    ],
+    "ui:auth.legacyAccountNote": [
+     "Vous vous connectiez ici avec Google ou une adresse e-mail ? Ce moyen d’accès est désactivé pour l’instant : un ancien compte ne peut donc pas encore être ouvert. Un compte créé ici sera un nouveau compte, vide."
+    ],
     "ui:auth.working": [
      "Un instant…"
     ],
@@ -6089,6 +6502,18 @@
     ],
     "ui:auth.error.passkey_not_accepted": [
      "Cette clé d’accès n’a pas été acceptée. Connectez-vous avec un code par e-mail, puis ajoutez une nouvelle clé."
+    ],
+    "ui:auth.error.passkey_not_accepted_no_email": [
+     "Cette clé d’accès n’a pas été acceptée. Elle a peut-être été retirée du compte, ou le compte n’existe plus."
+    ],
+    "ui:auth.error.reauth_required": [
+     "Confirmez d’abord que c’est bien vous : déconnectez-vous, reconnectez-vous, puis réessayez."
+    ],
+    "ui:auth.error.reauth_unavailable": [
+     "Pour cela, déconnectez-vous d’abord, puis reconnectez-vous avec un code par e-mail."
+    ],
+    "ui:auth.error.too_many_attempts": [
+     "Trop de codes erronés pour cette adresse. Réessayez demain, ou connectez-vous avec une clé d’accès."
     ],
     "ui:auth.error.passkey_failed": [
      "La clé d’accès n’a pas fonctionné. Veuillez réessayer."
@@ -6306,6 +6731,9 @@
     "ui:hand.potionLastRound": [
      "Hamlet maudirait la prochaine strophe de l’adversaire, mais c’est la dernière manche."
     ],
+    "ui:hand.potionGamble": [
+     "Si cette manche décide du duel, la potion est dépensée pour rien."
+    ],
     "ui:variant.bonus": [
      "+3 en esprit"
     ],
@@ -6326,6 +6754,9 @@
     ],
     "ui:illegal.potion-spent": [
      "Cette potion a déjà servi."
+    ],
+    "ui:illegal.potion-last-round": [
+     "Il ne reste aucune strophe à maudire : c’est la dernière manche."
     ],
     "ui:illegal.no-ink": [
      "Pas assez d’encre."
@@ -6357,11 +6788,29 @@
     "ui:live.curseHolding": [
      "respectée"
     ],
+    "ui:void.label": [
+     "Ne rapporte rien"
+    ],
+    "ui:void.thin": [
+     "trop peu pour faire une strophe : il faut davantage de mots différents"
+    ],
+    "ui:void.copied": [
+     "reprise de l’autre strophe : une réponse doit être la vôtre"
+    ],
+    "ui:live.judgeUnread": [
+     "Vers que le modèle notateur ne lira pas : 2 (arbitre) et 4 (gagnant). Tout vers contenant un nombre ou un mot de notation (note, score, gagner…) est laissé de côté, et cette manche est alors jugée par les seules règles."
+    ],
+    "ui:live.judgeUnreadLine": [
+     "2 (crâne)"
+    ],
     "ui:signature.none": [
      "cette carte n’a pas de réplique de signature"
     ],
     "ui:signature.hint": [
      "faites écho à l’un de ces mots : crâne, farce et tombe"
+    ],
+    "ui:signature.hintTwo": [
+     "faites écho à deux de ces mots : crâne, farce et tombe"
     ],
     "ui:signature.quoted": [
      "citée telle quelle ; un écho doit être un vers à vous"
@@ -6450,6 +6899,12 @@
     "ui:verdict.judge": [
      "Juge"
     ],
+    "ui:verdict.worldCard": [
+     "Carte Monde : Verona"
+    ],
+    "ui:verdict.notTaken": [
+     "esprit : non remporté"
+    ],
     "ui:verdict.roundScore": [
      "Score de la manche"
     ],
@@ -6473,6 +6928,9 @@
     ],
     "ui:verdict.judgedRules": [
      "Jugé par règles (variété, allusion, sonorité et repartie), car aucun modèle ne tourne."
+    ],
+    "ui:verdict.copyForfeits": [
+     "Une strophe copiée perd les points du juge."
     ],
     "ui:verdict.next": [
      "Manche suivante"
@@ -7036,18 +7494,18 @@
   },
   "de": {
    "strings": {
-    "ui": 411,
+    "ui": 428,
     "pack": 132,
-    "sentences": 561
+    "sentences": 578
    },
    "languagetool": "de-DE",
    "hunspell": [
     "de"
    ],
    "counts": {
-    "languagetool": 36,
-    "hunspell": 83,
-    "allowed": 119,
+    "languagetool": 39,
+    "hunspell": 85,
+    "allowed": 124,
     "open": 0
    },
    "hits": [
@@ -7196,6 +7654,32 @@
     },
     {
      "tool": "languagetool",
+     "id": "ui:void.thin",
+     "rule": "UPPERCASE_SENTENCE_START",
+     "category": "CASING",
+     "text": "zu wenig für eine Strophe: Sie braucht mehr verschiedene Wörter",
+     "at": "zu",
+     "message": "Dieser Satz fängt nicht mit einem großgeschriebenen Wort an.",
+     "replacements": [
+      "Zu"
+     ],
+     "allowed": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+    },
+    {
+     "tool": "languagetool",
+     "id": "ui:void.copied",
+     "rule": "UPPERCASE_SENTENCE_START",
+     "category": "CASING",
+     "text": "aus der anderen Strophe übernommen: Eine Antwort muss deine eigene sein",
+     "at": "aus",
+     "message": "Dieser Satz fängt nicht mit einem großgeschriebenen Wort an.",
+     "replacements": [
+      "Aus"
+     ],
+     "allowed": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+    },
+    {
+     "tool": "languagetool",
      "id": "ui:signature.none",
      "rule": "UPPERCASE_SENTENCE_START",
      "category": "CASING",
@@ -7213,6 +7697,19 @@
      "rule": "UPPERCASE_SENTENCE_START",
      "category": "CASING",
      "text": "lass eines davon anklingen: Schädel, Scherz und Grab",
+     "at": "lass",
+     "message": "Dieser Satz fängt nicht mit einem großgeschriebenen Wort an.",
+     "replacements": [
+      "Lass"
+     ],
+     "allowed": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+    },
+    {
+     "tool": "languagetool",
+     "id": "ui:signature.hintTwo",
+     "rule": "UPPERCASE_SENTENCE_START",
+     "category": "CASING",
+     "text": "lass zwei davon anklingen: Schädel, Scherz und Grab",
      "at": "lass",
      "message": "Dieser Satz fängt nicht mit einem großgeschriebenen Wort an.",
      "replacements": [
@@ -8129,6 +8626,28 @@
      "rule": "SPELLING",
      "category": "SPELLING",
      "text": "Dieser Passkey wurde nicht akzeptiert. Melde dich mit einem Code per E-Mail an und füge dann einen neuen Passkey hinzu.",
+     "at": "Passkey",
+     "message": "not in the de dictionary",
+     "replacements": [],
+     "allowed": "Passkey: Android's German term (AOSP CredentialManager, recorded in docs/language/glossary.json)."
+    },
+    {
+     "tool": "hunspell",
+     "id": "ui:auth.error.passkey_not_accepted_no_email",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "Dieser Passkey wurde nicht akzeptiert. Vielleicht wurde er aus dem Konto entfernt, oder das Konto gibt es nicht mehr.",
+     "at": "Passkey",
+     "message": "not in the de dictionary",
+     "replacements": [],
+     "allowed": "Passkey: Android's German term (AOSP CredentialManager, recorded in docs/language/glossary.json)."
+    },
+    {
+     "tool": "hunspell",
+     "id": "ui:auth.error.too_many_attempts",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "Zu viele falsche Codes für diese Adresse. Versuch es morgen noch einmal oder melde dich mit einem Passkey an.",
      "at": "Passkey",
      "message": "not in the de dictionary",
      "replacements": [],
@@ -9128,6 +9647,12 @@
     "ui:auth.signOut": [
      "Abmelden"
     ],
+    "ui:auth.signOutEverywhere": [
+     "Auf allen Geräten abmelden"
+    ],
+    "ui:auth.legacyAccountNote": [
+     "Hast du dich hier früher mit Google oder einer E-Mail-Adresse angemeldet? Dieser Weg ist vorerst abgeschaltet, ein älteres Konto lässt sich deshalb noch nicht öffnen. Wenn du hier ein Konto erstellst, ist es ein neues, leeres."
+    ],
     "ui:auth.working": [
      "Einen Moment …"
     ],
@@ -9169,6 +9694,18 @@
     ],
     "ui:auth.error.passkey_not_accepted": [
      "Dieser Passkey wurde nicht akzeptiert. Melde dich mit einem Code per E-Mail an und füge dann einen neuen Passkey hinzu."
+    ],
+    "ui:auth.error.passkey_not_accepted_no_email": [
+     "Dieser Passkey wurde nicht akzeptiert. Vielleicht wurde er aus dem Konto entfernt, oder das Konto gibt es nicht mehr."
+    ],
+    "ui:auth.error.reauth_required": [
+     "Bestätige zuerst, dass du es bist: Melde dich ab, melde dich wieder an und versuch es dann noch einmal."
+    ],
+    "ui:auth.error.reauth_unavailable": [
+     "Dafür musst du dich zuerst abmelden und dann mit einem Code per E-Mail wieder anmelden."
+    ],
+    "ui:auth.error.too_many_attempts": [
+     "Zu viele falsche Codes für diese Adresse. Versuch es morgen noch einmal oder melde dich mit einem Passkey an."
     ],
     "ui:auth.error.passkey_failed": [
      "Der Passkey hat nicht funktioniert. Bitte versuch es noch einmal."
@@ -9386,6 +9923,9 @@
     "ui:hand.potionLastRound": [
      "Hamlet würde die nächste Strophe des Gegners verfluchen, aber dies ist die letzte Runde."
     ],
+    "ui:hand.potionGamble": [
+     "Entscheidet diese Runde das Duell, ist der Trank umsonst verbraucht."
+    ],
     "ui:variant.bonus": [
      "+3 Witz"
     ],
@@ -9406,6 +9946,9 @@
     ],
     "ui:illegal.potion-spent": [
      "Dieser Trank ist verbraucht."
+    ],
+    "ui:illegal.potion-last-round": [
+     "Es bleibt keine Strophe zu verfluchen: Dies ist die letzte Runde."
     ],
     "ui:illegal.no-ink": [
      "Nicht genug Tinte."
@@ -9437,11 +9980,29 @@
     "ui:live.curseHolding": [
      "eingehalten"
     ],
+    "ui:void.label": [
+     "Bringt keine Punkte"
+    ],
+    "ui:void.thin": [
+     "zu wenig für eine Strophe: Sie braucht mehr verschiedene Wörter"
+    ],
+    "ui:void.copied": [
+     "aus der anderen Strophe übernommen: Eine Antwort muss deine eigene sein"
+    ],
+    "ui:live.judgeUnread": [
+     "Zeilen, die das bewertende Modell nicht liest: 2 (beurteilung) und 4 (einzelsieg). Eine Zeile mit einer Zahl oder einem Wort zur Bewertung (Note, Punkte, gewinnen …) wird ausgelassen, und diese Runde entscheiden dann allein die Regeln."
+    ],
+    "ui:live.judgeUnreadLine": [
+     "2 (Schädel)"
+    ],
     "ui:signature.none": [
      "diese Karte hat keine Signaturzeile"
     ],
     "ui:signature.hint": [
      "lass eines davon anklingen: Schädel, Scherz und Grab"
+    ],
+    "ui:signature.hintTwo": [
+     "lass zwei davon anklingen: Schädel, Scherz und Grab"
     ],
     "ui:signature.quoted": [
      "wörtlich zitiert; ein Anklang muss deine eigene Zeile sein"
@@ -9530,6 +10091,12 @@
     "ui:verdict.judge": [
      "Richter"
     ],
+    "ui:verdict.worldCard": [
+     "Welt-Spielkarte: Verona"
+    ],
+    "ui:verdict.notTaken": [
+     "Witz: nicht gewonnen"
+    ],
     "ui:verdict.roundScore": [
      "Rundenwertung"
     ],
@@ -9553,6 +10120,9 @@
     ],
     "ui:verdict.judgedRules": [
      "Nach Regeln bewertet (Vielfalt, Anspielung, Klang und Konter), weil kein Modell läuft."
+    ],
+    "ui:verdict.copyForfeits": [
+     "Eine kopierte Strophe verliert die Punkte des Richters."
     ],
     "ui:verdict.next": [
      "Nächste Runde"
@@ -10128,18 +10698,18 @@
   },
   "it": {
    "strings": {
-    "ui": 411,
+    "ui": 428,
     "pack": 128,
-    "sentences": 557
+    "sentences": 574
    },
    "languagetool": "it",
    "hunspell": [
     "it"
    ],
    "counts": {
-    "languagetool": 78,
-    "hunspell": 73,
-    "allowed": 151,
+    "languagetool": 84,
+    "hunspell": 75,
+    "allowed": 159,
     "open": 0
    },
    "hits": [
@@ -10886,6 +11456,32 @@
     },
     {
      "tool": "languagetool",
+     "id": "ui:auth.error.passkey_not_accepted_no_email",
+     "rule": "MORFOLOGIK_RULE_IT_IT",
+     "category": "TYPOS",
+     "text": "Quella passkey non è stata accettata. Forse è stata rimossa dall’account, oppure l’account non esiste più.",
+     "at": "passkey",
+     "message": "Trovato un probabile errore di battitura.",
+     "replacements": [
+      "passe"
+     ],
+     "allowed": "Passkey: Android's Italian term (AOSP CredentialManager, recorded in docs/language/glossary.json); the dictionaries predate it."
+    },
+    {
+     "tool": "languagetool",
+     "id": "ui:auth.error.too_many_attempts",
+     "rule": "MORFOLOGIK_RULE_IT_IT",
+     "category": "TYPOS",
+     "text": "Troppi codici sbagliati per questo indirizzo. Riprova domani, oppure accedi con una passkey.",
+     "at": "passkey",
+     "message": "Trovato un probabile errore di battitura.",
+     "replacements": [
+      "passe"
+     ],
+     "allowed": "Passkey: Android's Italian term (AOSP CredentialManager, recorded in docs/language/glossary.json); the dictionaries predate it."
+    },
+    {
+     "tool": "languagetool",
      "id": "ui:auth.error.passkey_failed",
      "rule": "MORFOLOGIK_RULE_IT_IT",
      "category": "TYPOS",
@@ -11003,6 +11599,45 @@
     },
     {
      "tool": "languagetool",
+     "id": "ui:void.thin",
+     "rule": "UPPERCASE_SENTENCE_START",
+     "category": "CASING",
+     "text": "troppo poco per essere una strofa: servono più parole diverse",
+     "at": "troppo",
+     "message": "Questa frase non inizia con una maiuscola",
+     "replacements": [
+      "Troppo"
+     ],
+     "allowed": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+    },
+    {
+     "tool": "languagetool",
+     "id": "ui:void.copied",
+     "rule": "UPPERCASE_SENTENCE_START",
+     "category": "CASING",
+     "text": "presa dall’altra strofa: una risposta dev’essere tua",
+     "at": "presa",
+     "message": "Questa frase non inizia con una maiuscola",
+     "replacements": [
+      "Presa"
+     ],
+     "allowed": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+    },
+    {
+     "tool": "languagetool",
+     "id": "ui:live.judgeUnread",
+     "rule": "UPPERCASE_SENTENCE_START",
+     "category": "CASING",
+     "text": "Versi che il modello valutatore non leggerà: 2 (arbitro) e 4 (giudice). Ogni verso con un numero o una parola di giudizio (voto, punteggio, vincere…) viene tralasciato, e questo round lo decidono allora solo le regole.",
+     "at": "viene",
+     "message": "Questa frase non inizia con una maiuscola",
+     "replacements": [
+      "Viene"
+     ],
+     "allowed": "The ellipsis inside the brackets closes a list of examples, not a sentence; « viene » goes on with the same sentence."
+    },
+    {
+     "tool": "languagetool",
      "id": "ui:signature.none",
      "rule": "UPPERCASE_SENTENCE_START",
      "category": "CASING",
@@ -11020,6 +11655,19 @@
      "rule": "UPPERCASE_SENTENCE_START",
      "category": "CASING",
      "text": "riecheggia una di queste: teschio, burla e tomba",
+     "at": "riecheggia",
+     "message": "Questa frase non inizia con una maiuscola",
+     "replacements": [
+      "Riecheggia"
+     ],
+     "allowed": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+    },
+    {
+     "tool": "languagetool",
+     "id": "ui:signature.hintTwo",
+     "rule": "UPPERCASE_SENTENCE_START",
+     "category": "CASING",
+     "text": "riecheggia due di queste: teschio, burla e tomba",
      "at": "riecheggia",
      "message": "Questa frase non inizia con una maiuscola",
      "replacements": [
@@ -11803,6 +12451,28 @@
      "rule": "SPELLING",
      "category": "SPELLING",
      "text": "Quella passkey non è stata accettata. Accedi con un codice via email, poi aggiungi una nuova passkey.",
+     "at": "passkey",
+     "message": "not in the it dictionary",
+     "replacements": [],
+     "allowed": "Passkey: Android's Italian term (AOSP CredentialManager, recorded in docs/language/glossary.json); the dictionaries predate it."
+    },
+    {
+     "tool": "hunspell",
+     "id": "ui:auth.error.passkey_not_accepted_no_email",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "Quella passkey non è stata accettata. Forse è stata rimossa dall’account, oppure l’account non esiste più.",
+     "at": "passkey",
+     "message": "not in the it dictionary",
+     "replacements": [],
+     "allowed": "Passkey: Android's Italian term (AOSP CredentialManager, recorded in docs/language/glossary.json); the dictionaries predate it."
+    },
+    {
+     "tool": "hunspell",
+     "id": "ui:auth.error.too_many_attempts",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "Troppi codici sbagliati per questo indirizzo. Riprova domani, oppure accedi con una passkey.",
      "at": "passkey",
      "message": "not in the it dictionary",
      "replacements": [],
@@ -12648,6 +13318,12 @@
     "ui:auth.signOut": [
      "Esci"
     ],
+    "ui:auth.signOutEverywhere": [
+     "Esci da tutti i dispositivi"
+    ],
+    "ui:auth.legacyAccountNote": [
+     "Avevi già fatto l’accesso qui con Google o con un indirizzo email? Quel modo di entrare per ora è disattivato, quindi un account più vecchio non si può ancora aprire. Se crei un account qui, sarà nuovo e vuoto."
+    ],
     "ui:auth.working": [
      "Un momento…"
     ],
@@ -12689,6 +13365,18 @@
     ],
     "ui:auth.error.passkey_not_accepted": [
      "Quella passkey non è stata accettata. Accedi con un codice via email, poi aggiungi una nuova passkey."
+    ],
+    "ui:auth.error.passkey_not_accepted_no_email": [
+     "Quella passkey non è stata accettata. Forse è stata rimossa dall’account, oppure l’account non esiste più."
+    ],
+    "ui:auth.error.reauth_required": [
+     "Prima conferma che sei tu: esci, accedi di nuovo e riprova."
+    ],
+    "ui:auth.error.reauth_unavailable": [
+     "Per farlo, prima esci e accedi di nuovo con un codice via email."
+    ],
+    "ui:auth.error.too_many_attempts": [
+     "Troppi codici sbagliati per questo indirizzo. Riprova domani, oppure accedi con una passkey."
     ],
     "ui:auth.error.passkey_failed": [
      "La passkey non ha funzionato. Riprova."
@@ -12906,6 +13594,9 @@
     "ui:hand.potionLastRound": [
      "Hamlet maledirebbe la prossima strofa dell’avversario, ma questo è l’ultimo round."
     ],
+    "ui:hand.potionGamble": [
+     "Se questo round decide il duello, la pozione è spesa per niente."
+    ],
     "ui:variant.bonus": [
      "+3 in arguzia"
     ],
@@ -12926,6 +13617,9 @@
     ],
     "ui:illegal.potion-spent": [
      "Quella pozione è già stata usata."
+    ],
+    "ui:illegal.potion-last-round": [
+     "Non resta alcuna strofa da maledire: questo è l’ultimo round."
     ],
     "ui:illegal.no-ink": [
      "Inchiostro insufficiente."
@@ -12957,11 +13651,29 @@
     "ui:live.curseHolding": [
      "rispettata"
     ],
+    "ui:void.label": [
+     "Non dà punti"
+    ],
+    "ui:void.thin": [
+     "troppo poco per essere una strofa: servono più parole diverse"
+    ],
+    "ui:void.copied": [
+     "presa dall’altra strofa: una risposta dev’essere tua"
+    ],
+    "ui:live.judgeUnread": [
+     "Versi che il modello valutatore non leggerà: 2 (arbitro) e 4 (giudice). Ogni verso con un numero o una parola di giudizio (voto, punteggio, vincere…) viene tralasciato, e questo round lo decidono allora solo le regole."
+    ],
+    "ui:live.judgeUnreadLine": [
+     "2 (teschio)"
+    ],
     "ui:signature.none": [
      "questa carta non ha una battuta di firma"
     ],
     "ui:signature.hint": [
      "riecheggia una di queste: teschio, burla e tomba"
+    ],
+    "ui:signature.hintTwo": [
+     "riecheggia due di queste: teschio, burla e tomba"
     ],
     "ui:signature.quoted": [
      "citata alla lettera; un’eco dev’essere un verso tuo"
@@ -13050,6 +13762,12 @@
     "ui:verdict.judge": [
      "Giudice"
     ],
+    "ui:verdict.worldCard": [
+     "Carta del mondo: Verona"
+    ],
+    "ui:verdict.notTaken": [
+     "arguzia: non conquistato"
+    ],
     "ui:verdict.roundScore": [
      "Punteggio del round"
     ],
@@ -13073,6 +13791,9 @@
     ],
     "ui:verdict.judgedRules": [
      "Giudicato secondo regole (varietà, allusione, suono e replica), perché nessun modello è in funzione."
+    ],
+    "ui:verdict.copyForfeits": [
+     "Una strofa copiata perde i punti del giudice."
     ],
     "ui:verdict.next": [
      "Round successivo"
@@ -13636,18 +14357,18 @@
   },
   "pt": {
    "strings": {
-    "ui": 411,
+    "ui": 428,
     "pack": 130,
-    "sentences": 559
+    "sentences": 576
    },
    "languagetool": "pt-BR",
    "hunspell": [
     "pt-BR"
    ],
    "counts": {
-    "languagetool": 124,
-    "hunspell": 33,
-    "allowed": 157,
+    "languagetool": 128,
+    "hunspell": 34,
+    "allowed": 162,
     "open": 0
    },
    "hits": [
@@ -14081,6 +14802,21 @@
     },
     {
      "tool": "languagetool",
+     "id": "ui:auth.signOutEverywhere",
+     "rule": "FINAL_STOPS",
+     "category": "PUNCTUATION",
+     "text": "Sair de todos os dispositivos",
+     "at": "dispositivos",
+     "message": "Se não é um título, falta um ponto no final da frase.",
+     "replacements": [
+      "dispositivos.",
+      "dispositivos?",
+      "dispositivos!"
+     ],
+     "allowed": "An interface label, button, heading or checklist line, written without a closing full stop, as its English is. The mechanical check 'ending' (src/i18n/quality.test.ts) already holds every string's closing punctuation to the English's."
+    },
+    {
+     "tool": "languagetool",
      "id": "ui:brain.playNow",
      "rule": "FINAL_STOPS",
      "category": "PUNCTUATION",
@@ -14178,6 +14914,32 @@
     },
     {
      "tool": "languagetool",
+     "id": "ui:void.thin",
+     "rule": "UPPERCASE_SENTENCE_START",
+     "category": "CASING",
+     "text": "pouco demais para ser uma estrofe: é preciso ter mais palavras diferentes",
+     "at": "pouco",
+     "message": "Esta frase não inicia com um letra maiúscula",
+     "replacements": [
+      "Pouco"
+     ],
+     "allowed": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+    },
+    {
+     "tool": "languagetool",
+     "id": "ui:void.copied",
+     "rule": "UPPERCASE_SENTENCE_START",
+     "category": "CASING",
+     "text": "tirada da outra estrofe: uma resposta precisa ser sua",
+     "at": "tirada",
+     "message": "Esta frase não inicia com um letra maiúscula",
+     "replacements": [
+      "Tirada"
+     ],
+     "allowed": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+    },
+    {
+     "tool": "languagetool",
      "id": "ui:signature.none",
      "rule": "UPPERCASE_SENTENCE_START",
      "category": "CASING",
@@ -14195,6 +14957,19 @@
      "rule": "UPPERCASE_SENTENCE_START",
      "category": "CASING",
      "text": "ecoe uma destas: caveira, gracejo e túmulo",
+     "at": "ecoe",
+     "message": "Esta frase não inicia com um letra maiúscula",
+     "replacements": [
+      "Ecoe"
+     ],
+     "allowed": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+    },
+    {
+     "tool": "languagetool",
+     "id": "ui:signature.hintTwo",
+     "rule": "UPPERCASE_SENTENCE_START",
+     "category": "CASING",
+     "text": "ecoe duas destas: caveira, gracejo e túmulo",
      "at": "ecoe",
      "message": "Esta frase não inicia com um letra maiúscula",
      "replacements": [
@@ -15683,6 +16458,17 @@
     },
     {
      "tool": "hunspell",
+     "id": "ui:auth.legacyAccountNote",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "Você já entrou aqui com o Google ou com um endereço de e-mail? Essa forma de entrar está desativada por enquanto, então uma conta antiga ainda não pode ser aberta. Uma conta criada aqui será nova e vazia.",
+     "at": "Google",
+     "message": "not in the pt-BR dictionary",
+     "replacements": [],
+     "allowed": "A proper name (a product, platform, browser, model, person or character, or a verse form's name sourced in docs/language/glossary.json), not a word of the language."
+    },
+    {
+     "tool": "hunspell",
      "id": "ui:brain.kept",
      "rule": "SPELLING",
      "category": "SPELLING",
@@ -16477,6 +17263,12 @@
     "ui:auth.signOut": [
      "Sair"
     ],
+    "ui:auth.signOutEverywhere": [
+     "Sair de todos os dispositivos"
+    ],
+    "ui:auth.legacyAccountNote": [
+     "Você já entrou aqui com o Google ou com um endereço de e-mail? Essa forma de entrar está desativada por enquanto, então uma conta antiga ainda não pode ser aberta. Uma conta criada aqui será nova e vazia."
+    ],
     "ui:auth.working": [
      "Um momento…"
     ],
@@ -16518,6 +17310,18 @@
     ],
     "ui:auth.error.passkey_not_accepted": [
      "Essa chave de acesso não foi aceita. Entre com um código por e-mail e depois adicione uma nova chave."
+    ],
+    "ui:auth.error.passkey_not_accepted_no_email": [
+     "Essa chave de acesso não foi aceita. Ela pode ter sido removida da conta, ou a conta pode não existir mais."
+    ],
+    "ui:auth.error.reauth_required": [
+     "Primeiro confirme que é você: saia, entre de novo e tente outra vez."
+    ],
+    "ui:auth.error.reauth_unavailable": [
+     "Para fazer isso, primeiro saia e entre de novo com um código por e-mail."
+    ],
+    "ui:auth.error.too_many_attempts": [
+     "Códigos errados demais para este endereço. Tente de novo amanhã, ou entre com uma chave de acesso."
     ],
     "ui:auth.error.passkey_failed": [
      "A chave de acesso não funcionou. Tente de novo."
@@ -16735,6 +17539,9 @@
     "ui:hand.potionLastRound": [
      "Hamlet amaldiçoaria a próxima estrofe do adversário, mas esta é a última rodada."
     ],
+    "ui:hand.potionGamble": [
+     "Se esta rodada decidir o duelo, a poção terá sido gasta à toa."
+    ],
     "ui:variant.bonus": [
      "+3 em agudeza"
     ],
@@ -16755,6 +17562,9 @@
     ],
     "ui:illegal.potion-spent": [
      "Essa poção já foi gasta."
+    ],
+    "ui:illegal.potion-last-round": [
+     "Não resta estrofe para amaldiçoar: esta é a última rodada."
     ],
     "ui:illegal.no-ink": [
      "Tinta insuficiente."
@@ -16786,11 +17596,29 @@
     "ui:live.curseHolding": [
      "cumprida"
     ],
+    "ui:void.label": [
+     "Não pontua"
+    ],
+    "ui:void.thin": [
+     "pouco demais para ser uma estrofe: é preciso ter mais palavras diferentes"
+    ],
+    "ui:void.copied": [
+     "tirada da outra estrofe: uma resposta precisa ser sua"
+    ],
+    "ui:live.judgeUnread": [
+     "Versos que o modelo avaliador não vai ler: 2 (avaliação) e 4 (conceito). Todo verso com um número ou uma palavra de avaliação (nota, pontuação, vencer…) fica de fora, e esta rodada passa a ser decidida só pelas regras."
+    ],
+    "ui:live.judgeUnreadLine": [
+     "2 (caveira)"
+    ],
     "ui:signature.none": [
      "esta carta não tem fala de assinatura"
     ],
     "ui:signature.hint": [
      "ecoe uma destas: caveira, gracejo e túmulo"
+    ],
+    "ui:signature.hintTwo": [
+     "ecoe duas destas: caveira, gracejo e túmulo"
     ],
     "ui:signature.quoted": [
      "citada ao pé da letra; um eco precisa ser um verso seu"
@@ -16879,6 +17707,12 @@
     "ui:verdict.judge": [
      "Juiz"
     ],
+    "ui:verdict.worldCard": [
+     "Carta do mundo: Verona"
+    ],
+    "ui:verdict.notTaken": [
+     "agudeza: não conquistado"
+    ],
     "ui:verdict.roundScore": [
      "Pontos da rodada"
     ],
@@ -16902,6 +17736,9 @@
     ],
     "ui:verdict.judgedRules": [
      "Julgado por regras (variedade, alusão, som e réplica), porque nenhum modelo está rodando."
+    ],
+    "ui:verdict.copyForfeits": [
+     "Uma estrofe copiada perde os pontos do juiz."
     ],
     "ui:verdict.next": [
      "Próxima rodada"
@@ -17471,18 +18308,18 @@
   },
   "pl": {
    "strings": {
-    "ui": 411,
+    "ui": 428,
     "pack": 126,
-    "sentences": 591
+    "sentences": 608
    },
    "languagetool": "pl-PL",
    "hunspell": [
     "pl"
    ],
    "counts": {
-    "languagetool": 183,
+    "languagetool": 189,
     "hunspell": 16,
-    "allowed": 199,
+    "allowed": 205,
     "open": 0
    },
    "hits": [
@@ -18279,6 +19116,19 @@
     },
     {
      "tool": "languagetool",
+     "id": "ui:auth.signOutEverywhere",
+     "rule": "BRAK_KROPKI",
+     "category": "PUNCTUATION",
+     "text": "Wyloguj się na wszystkich urządzeniach",
+     "at": "urządzeniach",
+     "message": "To zdanie nie kończy się kropką ani innym znakiem interpunkcyjnym. Powinno być: \"urządzeniach.\"",
+     "replacements": [
+      "urządzeniach."
+     ],
+     "allowed": "An interface label, button, heading or checklist line, written without a closing full stop, as its English is. The mechanical check 'ending' (src/i18n/quality.test.ts) already holds every string's closing punctuation to the English's."
+    },
+    {
+     "tool": "languagetool",
      "id": "ui:battle.prepare",
      "rule": "BRAK_KROPKI",
      "category": "PUNCTUATION",
@@ -18539,6 +19389,58 @@
     },
     {
      "tool": "languagetool",
+     "id": "ui:void.thin",
+     "rule": "UPPERCASE_SENTENCE_START",
+     "category": "CASING",
+     "text": "za mało na strofę: potrzeba więcej różnych słów",
+     "at": "za",
+     "message": "To zdanie nie zaczyna się wielką literą",
+     "replacements": [
+      "Za"
+     ],
+     "allowed": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+    },
+    {
+     "tool": "languagetool",
+     "id": "ui:void.thin",
+     "rule": "BRAK_KROPKI",
+     "category": "PUNCTUATION",
+     "text": "za mało na strofę: potrzeba więcej różnych słów",
+     "at": "słów",
+     "message": "To zdanie nie kończy się kropką ani innym znakiem interpunkcyjnym. Powinno być: \"słów.\"",
+     "replacements": [
+      "słów."
+     ],
+     "allowed": "An interface label, button, heading or checklist line, written without a closing full stop, as its English is. The mechanical check 'ending' (src/i18n/quality.test.ts) already holds every string's closing punctuation to the English's."
+    },
+    {
+     "tool": "languagetool",
+     "id": "ui:void.copied",
+     "rule": "UPPERCASE_SENTENCE_START",
+     "category": "CASING",
+     "text": "wzięte z drugiej strofy: odpowiedź musi być twoja własna",
+     "at": "wzięte",
+     "message": "To zdanie nie zaczyna się wielką literą",
+     "replacements": [
+      "Wzięte"
+     ],
+     "allowed": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+    },
+    {
+     "tool": "languagetool",
+     "id": "ui:void.copied",
+     "rule": "BRAK_KROPKI",
+     "category": "PUNCTUATION",
+     "text": "wzięte z drugiej strofy: odpowiedź musi być twoja własna",
+     "at": "własna",
+     "message": "To zdanie nie kończy się kropką ani innym znakiem interpunkcyjnym. Powinno być: \"własna.\"",
+     "replacements": [
+      "własna."
+     ],
+     "allowed": "An interface label, button, heading or checklist line, written without a closing full stop, as its English is. The mechanical check 'ending' (src/i18n/quality.test.ts) already holds every string's closing punctuation to the English's."
+    },
+    {
+     "tool": "languagetool",
      "id": "ui:signature.none",
      "rule": "UPPERCASE_SENTENCE_START",
      "category": "CASING",
@@ -18569,6 +19471,19 @@
      "rule": "UPPERCASE_SENTENCE_START",
      "category": "CASING",
      "text": "nawiąż do jednego z tych słów: czaszka, żart i grób",
+     "at": "nawiąż",
+     "message": "To zdanie nie zaczyna się wielką literą",
+     "replacements": [
+      "Nawiąż"
+     ],
+     "allowed": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+    },
+    {
+     "tool": "languagetool",
+     "id": "ui:signature.hintTwo",
+     "rule": "UPPERCASE_SENTENCE_START",
+     "category": "CASING",
+     "text": "nawiąż do dwóch z tych słów: czaszka, żart i grób",
      "at": "nawiąż",
      "message": "To zdanie nie zaczyna się wielką literą",
      "replacements": [
@@ -18646,11 +19561,11 @@
      "id": "ui:mic.failed",
      "rule": "BRAK_KROPKI",
      "category": "PUNCTUATION",
-     "text": "Nie udało się zapisać",
-     "at": "zapisać",
-     "message": "To zdanie nie kończy się kropką ani innym znakiem interpunkcyjnym. Powinno być: \"zapisać.\"",
+     "text": "Nie udało się rozpoznać mowy",
+     "at": "mowy",
+     "message": "To zdanie nie kończy się kropką ani innym znakiem interpunkcyjnym. Powinno być: \"mowy.\"",
      "replacements": [
-      "zapisać."
+      "mowy."
      ],
      "allowed": "An interface label, button, heading or checklist line, written without a closing full stop, as its English is. The mechanical check 'ending' (src/i18n/quality.test.ts) already holds every string's closing punctuation to the English's."
     },
@@ -20728,6 +21643,12 @@
     "ui:auth.signOut": [
      "Wyloguj się"
     ],
+    "ui:auth.signOutEverywhere": [
+     "Wyloguj się na wszystkich urządzeniach"
+    ],
+    "ui:auth.legacyAccountNote": [
+     "Masz tu starsze konto, do którego logowanie odbywało się przez Google albo adres e-mail? Ten sposób logowania jest na razie wyłączony, więc starszego konta nie da się jeszcze otworzyć. Konto założone tutaj będzie nowe i puste."
+    ],
     "ui:auth.working": [
      "Chwileczkę…"
     ],
@@ -20769,6 +21690,18 @@
     ],
     "ui:auth.error.passkey_not_accepted": [
      "Ten klucz dostępu nie został przyjęty. Zaloguj się kodem z e-maila, a potem dodaj nowy klucz."
+    ],
+    "ui:auth.error.passkey_not_accepted_no_email": [
+     "Ten klucz dostępu nie został przyjęty. Mógł zostać usunięty z konta albo konto już nie istnieje."
+    ],
+    "ui:auth.error.reauth_required": [
+     "Najpierw potwierdź, że to ty: wyloguj się, zaloguj ponownie i spróbuj jeszcze raz."
+    ],
+    "ui:auth.error.reauth_unavailable": [
+     "Aby to zrobić, najpierw wyloguj się i zaloguj ponownie kodem z e-maila."
+    ],
+    "ui:auth.error.too_many_attempts": [
+     "Zbyt wiele błędnych kodów dla tego adresu. Spróbuj jutro albo zaloguj się kluczem dostępu."
     ],
     "ui:auth.error.passkey_failed": [
      "Klucz dostępu nie zadziałał. Spróbuj ponownie."
@@ -20986,6 +21919,9 @@
     "ui:hand.potionLastRound": [
      "Hamlet: klątwa spadłaby na następną strofę rywala, ale to ostatnia runda."
     ],
+    "ui:hand.potionGamble": [
+     "Jeśli ta runda rozstrzygnie pojedynek, mikstura pójdzie na marne."
+    ],
     "ui:variant.bonus": [
      "+3: dowcip"
     ],
@@ -21006,6 +21942,9 @@
     ],
     "ui:illegal.potion-spent": [
      "Ta mikstura jest już zużyta."
+    ],
+    "ui:illegal.potion-last-round": [
+     "Nie ma już strofy do przeklęcia: to ostatnia runda."
     ],
     "ui:illegal.no-ink": [
      "Za mało atramentu."
@@ -21037,11 +21976,29 @@
     "ui:live.curseHolding": [
      "dotrzymana"
     ],
+    "ui:void.label": [
+     "Bez punktów"
+    ],
+    "ui:void.thin": [
+     "za mało na strofę: potrzeba więcej różnych słów"
+    ],
+    "ui:void.copied": [
+     "wzięte z drugiej strofy: odpowiedź musi być twoja własna"
+    ],
+    "ui:live.judgeUnread": [
+     "Wersy, których model oceniający nie przeczyta: 2 (arbiter) i 4 (ocena). Wers z liczbą lub słowem oceny (ocena, punkty, wygrać…) jest pomijany, a tę rundę rozstrzygają wtedy same reguły."
+    ],
+    "ui:live.judgeUnreadLine": [
+     "2 (czaszka)"
+    ],
     "ui:signature.none": [
      "ta karta nie ma kwestii-sygnatury"
     ],
     "ui:signature.hint": [
      "nawiąż do jednego z tych słów: czaszka, żart i grób"
+    ],
+    "ui:signature.hintTwo": [
+     "nawiąż do dwóch z tych słów: czaszka, żart i grób"
     ],
     "ui:signature.quoted": [
      "zacytowana dosłownie; nawiązanie musi być twoim własnym wersem"
@@ -21053,13 +22010,13 @@
      "Powiedz na głos"
     ],
     "ui:mic.transcribing": [
-     "Zapisuję…"
+     "Rozpoznaję mowę…"
     ],
     "ui:mic.heardNothing": [
      "Nic nie słychać; spróbuj ponownie"
     ],
     "ui:mic.failed": [
-     "Nie udało się zapisać"
+     "Nie udało się rozpoznać mowy"
     ],
     "ui:mic.none": [
      "Nie ma tu mikrofonu"
@@ -21130,6 +22087,12 @@
     "ui:verdict.judge": [
      "Sędzia"
     ],
+    "ui:verdict.worldCard": [
+     "Karta świata: Verona"
+    ],
+    "ui:verdict.notTaken": [
+     "dowcip: niezdobyte"
+    ],
     "ui:verdict.roundScore": [
      "Wynik rundy"
     ],
@@ -21153,6 +22116,9 @@
     ],
     "ui:verdict.judgedRules": [
      "Oceniono według reguł (różnorodność, aluzja, brzmienie i riposta), bo nie działa żaden model."
+    ],
+    "ui:verdict.copyForfeits": [
+     "Skopiowana strofa traci punkty sędziego."
     ],
     "ui:verdict.next": [
      "Następna runda"
@@ -21710,18 +22676,18 @@
   },
   "ru": {
    "strings": {
-    "ui": 411,
+    "ui": 428,
     "pack": 130,
-    "sentences": 595
+    "sentences": 612
    },
    "languagetool": "ru-RU",
    "hunspell": [
     "ru"
    ],
    "counts": {
-    "languagetool": 28,
-    "hunspell": 44,
-    "allowed": 72,
+    "languagetool": 31,
+    "hunspell": 45,
+    "allowed": 76,
     "open": 0
    },
    "hits": [
@@ -21902,6 +22868,32 @@
     },
     {
      "tool": "languagetool",
+     "id": "ui:void.thin",
+     "rule": "UPPERCASE_SENTENCE_START",
+     "category": "CASING",
+     "text": "слишком мало для строфы: нужно больше разных слов",
+     "at": "слишком",
+     "message": "Это предложение не начинается с заглавной буквы.",
+     "replacements": [
+      "Слишком"
+     ],
+     "allowed": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+    },
+    {
+     "tool": "languagetool",
+     "id": "ui:void.copied",
+     "rule": "UPPERCASE_SENTENCE_START",
+     "category": "CASING",
+     "text": "взято из чужой строфы: ответ должен быть твоим",
+     "at": "взято",
+     "message": "Это предложение не начинается с заглавной буквы.",
+     "replacements": [
+      "Взято"
+     ],
+     "allowed": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+    },
+    {
+     "tool": "languagetool",
      "id": "ui:signature.none",
      "rule": "UPPERCASE_SENTENCE_START",
      "category": "CASING",
@@ -21930,6 +22922,19 @@
      "rule": "UPPERCASE_SENTENCE_START",
      "category": "CASING",
      "text": "отзовись на одно из слов: череп, шутка и могила",
+     "at": "отзовись",
+     "message": "Это предложение не начинается с заглавной буквы.",
+     "replacements": [
+      "Отзовись"
+     ],
+     "allowed": "A status shown inside a row or after a label (the live checklist, the signature line, a criterion's name inside a sentence), written in lower case as its English is."
+    },
+    {
+     "tool": "languagetool",
+     "id": "ui:signature.hintTwo",
+     "rule": "UPPERCASE_SENTENCE_START",
+     "category": "CASING",
+     "text": "отзовись на два из слов: череп, шутка и могила",
      "at": "отзовись",
      "message": "Это предложение не начинается с заглавной буквы.",
      "replacements": [
@@ -22477,6 +23482,17 @@
      "message": "not in the ru dictionary",
      "replacements": [],
      "allowed": "Part of the placeholder address you@example.com."
+    },
+    {
+     "tool": "hunspell",
+     "id": "ui:auth.legacyAccountNote",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "Есть старая учётная запись со входом через Google или по адресу почты? Этот способ входа пока отключён, поэтому старую учётную запись ещё нельзя открыть. Учётная запись, созданная здесь, будет новой и пустой.",
+     "at": "Google",
+     "message": "not in the ru dictionary",
+     "replacements": [],
+     "allowed": "A proper name (a product, platform, browser, model, person or character, or a verse form's name sourced in docs/language/glossary.json), not a word of the language."
     },
     {
      "tool": "hunspell",
@@ -23255,6 +24271,12 @@
     "ui:auth.signOut": [
      "Выйти"
     ],
+    "ui:auth.signOutEverywhere": [
+     "Выйти на всех устройствах"
+    ],
+    "ui:auth.legacyAccountNote": [
+     "Есть старая учётная запись со входом через Google или по адресу почты? Этот способ входа пока отключён, поэтому старую учётную запись ещё нельзя открыть. Учётная запись, созданная здесь, будет новой и пустой."
+    ],
     "ui:auth.working": [
      "Минутку…"
     ],
@@ -23296,6 +24318,18 @@
     ],
     "ui:auth.error.passkey_not_accepted": [
      "Этот ключ доступа не принят. Войди по коду из письма, а затем добавь новый ключ."
+    ],
+    "ui:auth.error.passkey_not_accepted_no_email": [
+     "Этот ключ доступа не принят. Возможно, его удалили из учётной записи или учётной записи больше нет."
+    ],
+    "ui:auth.error.reauth_required": [
+     "Сначала подтверди, что это ты: выйди, войди снова и попробуй ещё раз."
+    ],
+    "ui:auth.error.reauth_unavailable": [
+     "Для этого сначала выйди и войди снова по коду из письма."
+    ],
+    "ui:auth.error.too_many_attempts": [
+     "Слишком много неверных кодов для этого адреса. Попробуй завтра или войди по ключу доступа."
     ],
     "ui:auth.error.passkey_failed": [
      "Ключ доступа не сработал. Попробуй ещё раз."
@@ -23513,6 +24547,9 @@
     "ui:hand.potionLastRound": [
      "Hamlet: проклятие легло бы на следующую строфу соперника, но это последний раунд."
     ],
+    "ui:hand.potionGamble": [
+     "Если этот раунд решит дуэль, зелье пропадёт зря."
+    ],
     "ui:variant.bonus": [
      "+3: остроумие"
     ],
@@ -23533,6 +24570,9 @@
     ],
     "ui:illegal.potion-spent": [
      "Это зелье уже потрачено."
+    ],
+    "ui:illegal.potion-last-round": [
+     "Не осталось строфы, которую можно проклясть: это последний раунд."
     ],
     "ui:illegal.no-ink": [
      "Не хватает чернил."
@@ -23564,11 +24604,29 @@
     "ui:live.curseHolding": [
      "соблюдено"
     ],
+    "ui:void.label": [
+     "Очков не приносит"
+    ],
+    "ui:void.thin": [
+     "слишком мало для строфы: нужно больше разных слов"
+    ],
+    "ui:void.copied": [
+     "взято из чужой строфы: ответ должен быть твоим"
+    ],
+    "ui:live.judgeUnread": [
+     "Строки, которые оценивающая модель не прочтёт: 2 (арбитр) и 4 (балл). Строка с числом или словом об оценке (оценка, очки, победа…) пропускается, и этот раунд тогда решают только правила."
+    ],
+    "ui:live.judgeUnreadLine": [
+     "2 (череп)"
+    ],
     "ui:signature.none": [
      "у этой карты нет реплики-подписи"
     ],
     "ui:signature.hint": [
      "отзовись на одно из слов: череп, шутка и могила"
+    ],
+    "ui:signature.hintTwo": [
+     "отзовись на два из слов: череп, шутка и могила"
     ],
     "ui:signature.quoted": [
      "процитировано дословно; отзвук должен быть твоей собственной строкой"
@@ -23657,6 +24715,12 @@
     "ui:verdict.judge": [
      "Судья"
     ],
+    "ui:verdict.worldCard": [
+     "Игральная карта мира: Verona"
+    ],
+    "ui:verdict.notTaken": [
+     "остроумие: не взято"
+    ],
     "ui:verdict.roundScore": [
      "Счёт раунда"
     ],
@@ -23680,6 +24744,9 @@
     ],
     "ui:verdict.judgedRules": [
      "Судили по правилам (разнообразие, аллюзия, звучание и ответный выпад), потому что модель не запущена."
+    ],
+    "ui:verdict.copyForfeits": [
+     "Скопированная строфа теряет очки судьи."
     ],
     "ui:verdict.next": [
      "Следующий раунд"
@@ -24249,18 +25316,18 @@
   },
   "ar": {
    "strings": {
-    "ui": 411,
+    "ui": 428,
     "pack": 115,
-    "sentences": 616
+    "sentences": 633
    },
    "languagetool": "ar",
    "hunspell": [
     "ar"
    ],
    "counts": {
-    "languagetool": 173,
-    "hunspell": 38,
-    "allowed": 211,
+    "languagetool": 179,
+    "hunspell": 39,
+    "allowed": 218,
     "open": 0
    },
    "hits": [
@@ -25686,6 +26753,21 @@
     },
     {
      "tool": "languagetool",
+     "id": "ui:auth.legacyAccountNote",
+     "rule": "grammar_0011_notjazem_lam_nafia",
+     "category": "GRAMMAR_ERROR",
+     "text": "هل سجّلت الدخول هنا من قبل عبر Google أو بعنوان بريد إلكتروني؟ طريقة الدخول هذه متوقفة حاليًا، ولذلك لا يمكن فتح حساب قديم بعد. أي حساب يُنشأ هنا سيكون جديدًا وفارغًا.",
+     "at": "لا يمكن",
+     "message": "\nالفرق بين لا الناهية ولا النافية، لا الناهية تأتي مع ضمائر المخاطب فقط. لذا فإن لا النافية لا تجزم الفعل المضارع أتقصد؟\n\n        \"لا يماه\", \"لا يمك\", \"لا يمكن\", \"لا يمكون\", \"لا يمه\", \"لا يمهو\", \"لا يمهون\", \"لا يمهى\", \"لا يمهي\", \"لا يميه\"\n\n      ",
+     "replacements": [
+      "لا يماه",
+      "لا يمك",
+      "لا يمكن"
+     ],
+     "allowed": "لا here negates a present-tense verb (لا يجوز، لا يدعم، لا نطلب، لا يُرسَل), a correct negation; the rule's lā of prohibition, which would change the verb's ending, does not apply."
+    },
+    {
+     "tool": "languagetool",
      "id": "ui:auth.error.age_required",
      "rule": "wrong_adj_use",
      "category": "COMMON_ERRORS_ON_ADJECTIVES",
@@ -26058,6 +27140,62 @@
     },
     {
      "tool": "languagetool",
+     "id": "ui:void.label",
+     "rule": "AR_DIACRITICS_REPLACE",
+     "category": "STYLE",
+     "text": "لا نقاط",
+     "at": "نقاط",
+     "message": "نُقَط بضم النون|نِقَاط بكسر النون",
+     "replacements": [
+      "نُقَط",
+      "نِقَاط"
+     ],
+     "allowed": "The rule only asks for vowel marks (تشكيل) to fix how an ambiguous word is read (مَعْرِض, الخَصْم, حَلَبة); Arabic interface text is written unvocalised, and the context decides."
+    },
+    {
+     "tool": "languagetool",
+     "id": "ui:void.copied",
+     "rule": "AR_DIACRITICS_REPLACE",
+     "category": "STYLE",
+     "text": "مأخوذة من أبيات الخصم: الرد يجب أن يكون من عندك",
+     "at": "الخصم",
+     "message": "الخَصْم كقوله تعالى: \"وهل أتاك نبأ الخصم إذ تسوروا المحراب\"",
+     "replacements": [
+      "الخَصْم"
+     ],
+     "allowed": "The rule only asks for vowel marks (تشكيل) to fix how an ambiguous word is read (مَعْرِض, الخَصْم, حَلَبة); Arabic interface text is written unvocalised, and the context decides."
+    },
+    {
+     "tool": "languagetool",
+     "id": "ui:live.judgeUnread",
+     "rule": "syntax_0002_as_ka_1",
+     "category": "TEST_NEW_FEATURES",
+     "text": "أسطر لن يقرأها نموذج التقييم: 2 (إصابة) و4 (تقدير). يُستبعد كل سطر فيه رقم أو كلمة تقييم (درجة، تقييم، فائز…)، وتُحسم هذه الجولة حينها بالقواعد وحدها.",
+     "at": "فيه رقم أو كلمة",
+     "message": "استخدام الكاف للصفة استخدام أجنبي أدخله المترجمون، إذ يستعملون\n            \"as\"\n            بمعنى الكاف، فالأَوْلَى النصب على الحالية مثل  \" أعمل مديرًا \" أو على الاختصاص في: \"نحن المسلمين\".\n        \"فيه رقم أو كلمة\", \"فيه رقم أو كلمتة\", \"فيه رقم أو لمة\", \"فيه رقم أو لمتة\"\n        \"فيه رقم أو بصفة لمة\"\n\n      ",
+     "replacements": [
+      "فيه رقم أو كلمة",
+      "فيه رقم أو كلمتة",
+      "فيه رقم أو لمة"
+     ],
+     "allowed": "The rule misreads a word that begins with ك as the particle كـ joined to the rest: كلمة (word) as كـ + لمة, and in one verse line كريم (generous) as كـ + ريم; its suggestions (كلمتة) are not words."
+    },
+    {
+     "tool": "languagetool",
+     "id": "ui:signature.hintTwo",
+     "rule": "syntax_0002_as_ka_2",
+     "category": "TEST_NEW_FEATURES",
+     "text": "ردّد صدى كلمتين من هذه: جمجمة ومزحة وقبر",
+     "at": "ردّد صدى كلمتين",
+     "message": "استخدام الكاف للصفة استخدام أجنبي أدخله المترجمون، إذ يستعملون\n            \"as\"\n            بمعنى الكاف، فالأَوْلَى النصب على الحالية مثل  \" أعمل مديرًا \" أو على الاختصاص في: \"نحن المسلمين\".\n        \"ردّد صدى لمتين\"\n        \"ردّد صدى بصفة لمتين\"\n\n      ",
+     "replacements": [
+      "ردّد صدى لمتين",
+      "ردّد صدى بصفة لمتين"
+     ],
+     "allowed": "The rule misreads كلمات and كلمتين (words) as the particle كـ joined to the rest; its suggestions (لمات، لمتين) are not words."
+    },
+    {
+     "tool": "languagetool",
      "id": "ui:verdict.who.opponent",
      "rule": "AR_DIACRITICS_REPLACE",
      "category": "STYLE",
@@ -26081,6 +27219,20 @@
       "بالقواعد حُكم"
      ],
      "allowed": "The rule forbids opening a sentence with an indefinite noun; these are labels and headings (سطران على قافية واحدة، سطران بالضبط، حُكم بالقواعد، ملتزَم بها، لعنة عليك) or begin with an imperative verb (عُد، تحقق) that the rule took for a noun."
+    },
+    {
+     "tool": "languagetool",
+     "id": "ui:verdict.copyForfeits",
+     "rule": "AR_DIACRITICS_REPLACE",
+     "category": "STYLE",
+     "text": "الأبيات المنسوخة تخسر نقاط الحَكَم.",
+     "at": "نقاط",
+     "message": "نُقَط بضم النون|نِقَاط بكسر النون",
+     "replacements": [
+      "نُقَط",
+      "نِقَاط"
+     ],
+     "allowed": "The rule only asks for vowel marks (تشكيل) to fix how an ambiguous word is read (مَعْرِض, الخَصْم, حَلَبة); Arabic interface text is written unvocalised, and the context decides."
     },
     {
      "tool": "languagetool",
@@ -26900,6 +28052,17 @@
     },
     {
      "tool": "hunspell",
+     "id": "ui:auth.legacyAccountNote",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "هل سجّلت الدخول هنا من قبل عبر Google أو بعنوان بريد إلكتروني؟ طريقة الدخول هذه متوقفة حاليًا، ولذلك لا يمكن فتح حساب قديم بعد. أي حساب يُنشأ هنا سيكون جديدًا وفارغًا.",
+     "at": "Google",
+     "message": "not in the ar dictionary",
+     "replacements": [],
+     "allowed": "A proper name (a product, platform, browser, model, person or character, or a verse form's name sourced in docs/language/glossary.json), not a word of the language."
+    },
+    {
+     "tool": "hunspell",
      "id": "ui:brain.kept",
      "rule": "SPELLING",
      "category": "SPELLING",
@@ -27033,7 +28196,7 @@
      "ثلاثة أسطر تبدأ كلها بالحرف نفسه."
     ],
     "ui:form.acrostic.name": [
-     "التطريز"
+     "تتويج"
     ],
     "ui:form.acrostic.brief": [
      "سطر لكل حرف: الحروف الأولى من الأسطر يجب أن تكوّن كلمة جمجمة."
@@ -27172,7 +28335,7 @@
      "اهتف: اختم سطرًا بعلامة تعجب."
     ],
     "ui:device.alliteration.name": [
-     "الجناس الاستهلالي"
+     "سجع ابتدائي"
     ],
     "ui:device.alliteration.brief": [
      "ابدأ ثلاث كلمات في سطر واحد بالحرف نفسه."
@@ -27722,6 +28885,12 @@
     "ui:auth.signOut": [
      "تسجيل الخروج"
     ],
+    "ui:auth.signOutEverywhere": [
+     "تسجيل الخروج من كل الأجهزة"
+    ],
+    "ui:auth.legacyAccountNote": [
+     "هل سجّلت الدخول هنا من قبل عبر Google أو بعنوان بريد إلكتروني؟ طريقة الدخول هذه متوقفة حاليًا، ولذلك لا يمكن فتح حساب قديم بعد. أي حساب يُنشأ هنا سيكون جديدًا وفارغًا."
+    ],
     "ui:auth.working": [
      "لحظة…"
     ],
@@ -27763,6 +28932,18 @@
     ],
     "ui:auth.error.passkey_not_accepted": [
      "لم يُقبل مفتاح المرور هذا. سجّل الدخول باستخدام رمز مرسل عبر البريد الإلكتروني، ثم أضف مفتاح مرور جديدًا."
+    ],
+    "ui:auth.error.passkey_not_accepted_no_email": [
+     "لم يُقبل مفتاح المرور هذا. ربما أُزيل من الحساب، أو لم يعد الحساب موجودًا."
+    ],
+    "ui:auth.error.reauth_required": [
+     "أكِّد أولًا أنه أنت: سجّل الخروج، ثم سجّل الدخول من جديد، ثم حاول مرة أخرى."
+    ],
+    "ui:auth.error.reauth_unavailable": [
+     "لفعل ذلك، سجّل الخروج أولًا ثم سجّل الدخول من جديد باستخدام رمز مرسل عبر البريد الإلكتروني."
+    ],
+    "ui:auth.error.too_many_attempts": [
+     "أُدخلت رموز خاطئة كثيرة لهذا العنوان. حاول مرة أخرى غدًا، أو سجّل الدخول بمفتاح مرور."
     ],
     "ui:auth.error.passkey_failed": [
      "لم يعمل مفتاح المرور. حاول مرة أخرى."
@@ -27980,6 +29161,9 @@
     "ui:hand.potionLastRound": [
      "Hamlet كان سيلعن أبيات الخصم القادمة، لكن هذه هي الجولة الأخيرة."
     ],
+    "ui:hand.potionGamble": [
+     "إذا حسمت هذه الجولة المبارزة ذهبت الجرعة سدى."
+    ],
     "ui:variant.bonus": [
      "+3 في الظُّرف"
     ],
@@ -28000,6 +29184,9 @@
     ],
     "ui:illegal.potion-spent": [
      "هذه الجرعة استُهلكت."
+    ],
+    "ui:illegal.potion-last-round": [
+     "لم تبقَ أبيات تُلعن: هذه هي الجولة الأخيرة."
     ],
     "ui:illegal.no-ink": [
      "الحبر لا يكفي."
@@ -28031,11 +29218,29 @@
     "ui:live.curseHolding": [
      "ملتزَم بها"
     ],
+    "ui:void.label": [
+     "لا نقاط"
+    ],
+    "ui:void.thin": [
+     "أقل من أن تكون أبياتًا: يلزم مزيد من الكلمات المختلفة"
+    ],
+    "ui:void.copied": [
+     "مأخوذة من أبيات الخصم: الرد يجب أن يكون من عندك"
+    ],
+    "ui:live.judgeUnread": [
+     "أسطر لن يقرأها نموذج التقييم: 2 (إصابة) و4 (تقدير). يُستبعد كل سطر فيه رقم أو كلمة تقييم (درجة، تقييم، فائز…)، وتُحسم هذه الجولة حينها بالقواعد وحدها."
+    ],
+    "ui:live.judgeUnreadLine": [
+     "2 (جمجمة)"
+    ],
     "ui:signature.none": [
      "ليس لهذه البطاقة عبارة توقيع"
     ],
     "ui:signature.hint": [
      "ردّد صدى إحدى هذه الكلمات: جمجمة ومزحة وقبر"
+    ],
+    "ui:signature.hintTwo": [
+     "ردّد صدى كلمتين من هذه: جمجمة ومزحة وقبر"
     ],
     "ui:signature.quoted": [
      "اقتباس حرفي؛ الصدى يجب أن يكون سطرًا من عندك"
@@ -28124,6 +29329,12 @@
     "ui:verdict.judge": [
      "الحَكَم"
     ],
+    "ui:verdict.worldCard": [
+     "بطاقة العالم: Verona"
+    ],
+    "ui:verdict.notTaken": [
+     "الظُّرف: لم يُكسَب"
+    ],
     "ui:verdict.roundScore": [
      "نتيجة الجولة"
     ],
@@ -28147,6 +29358,9 @@
     ],
     "ui:verdict.judgedRules": [
      "حُكم بالقواعد (التنوع والتلميح والإيقاع والردّ) لأنه لا نموذج يعمل."
+    ],
+    "ui:verdict.copyForfeits": [
+     "الأبيات المنسوخة تخسر نقاط الحَكَم."
     ],
     "ui:verdict.next": [
      "الجولة التالية"
@@ -28671,9 +29885,9 @@
   },
   "hi": {
    "strings": {
-    "ui": 411,
-    "pack": 120,
-    "sentences": 549
+    "ui": 428,
+    "pack": 130,
+    "sentences": 576
    },
    "languagetool": null,
    "hunspell": [
@@ -28681,8 +29895,8 @@
    ],
    "counts": {
     "languagetool": 0,
-    "hunspell": 107,
-    "allowed": 107,
+    "hunspell": 111,
+    "allowed": 111,
     "open": 0
    },
    "hits": [
@@ -29403,6 +30617,17 @@
     },
     {
      "tool": "hunspell",
+     "id": "ui:auth.legacyAccountNote",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "क्या आपने यहाँ पहले Google या ईमेल पते से साइन इन किया था? वह रास्ता अभी बंद है, इसलिए पुराना खाता अभी नहीं खोला जा सकता। यहाँ खाता बनाने पर एक नया, खाली खाता बनेगा।",
+     "at": "Google",
+     "message": "not in the hi dictionary",
+     "replacements": [],
+     "allowed": "A proper name (a product, platform, browser, model, person or character, or a verse form's name sourced in docs/language/glossary.json), not a word of the language."
+    },
+    {
+     "tool": "hunspell",
      "id": "ui:auth.error.invalid_code",
      "rule": "SPELLING",
      "category": "SPELLING",
@@ -29440,6 +30665,28 @@
      "rule": "SPELLING",
      "category": "SPELLING",
      "text": "वह पासकी स्वीकार नहीं हुई। ईमेल कोड से साइन इन करें, फिर नई पासकी जोड़ें।",
+     "at": "पासकी",
+     "message": "not in the hi dictionary",
+     "replacements": [],
+     "allowed": "पासकी: Android's Hindi term for passkey (AOSP CredentialManager; docs/language/glossary.json)."
+    },
+    {
+     "tool": "hunspell",
+     "id": "ui:auth.error.passkey_not_accepted_no_email",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "वह पासकी स्वीकार नहीं हुई। हो सकता है उसे खाते से हटा दिया गया हो, या खाता अब मौजूद न हो।",
+     "at": "पासकी",
+     "message": "not in the hi dictionary",
+     "replacements": [],
+     "allowed": "पासकी: Android's Hindi term for passkey (AOSP CredentialManager; docs/language/glossary.json)."
+    },
+    {
+     "tool": "hunspell",
+     "id": "ui:auth.error.too_many_attempts",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "इस पते के लिए बहुत ज़्यादा ग़लत कोड डाले गए। कल फिर कोशिश करें, या पासकी से साइन इन करें।",
      "at": "पासकी",
      "message": "not in the hi dictionary",
      "replacements": [],
@@ -29818,6 +31065,17 @@
      "message": "not in the hi dictionary",
      "replacements": [],
      "allowed": "A polite imperative in -एँ, written with the chandrabindu as the game's Hindi does throughout (27 times, never with the anusvara); checked, the hi_IN list knows neither spelling (सुनाएँ, सुनाएं)."
+    },
+    {
+     "tool": "hunspell",
+     "id": "pack:written.heroic-couplet.1.0",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "मेरी हर पंक्ति जलता हुआ दीपक",
+     "at": "जलता",
+     "message": "not in the hi dictionary",
+     "replacements": [],
+     "allowed": "An inflected form of जलना (to burn), जलता (burning), which the hi_IN list lacks; in a line of the written opponent's verse."
     },
     {
      "tool": "hunspell",
@@ -30516,6 +31774,12 @@
     "ui:auth.signOut": [
      "साइन आउट"
     ],
+    "ui:auth.signOutEverywhere": [
+     "हर डिवाइस से साइन आउट करें"
+    ],
+    "ui:auth.legacyAccountNote": [
+     "क्या आपने यहाँ पहले Google या ईमेल पते से साइन इन किया था? वह रास्ता अभी बंद है, इसलिए पुराना खाता अभी नहीं खोला जा सकता। यहाँ खाता बनाने पर एक नया, खाली खाता बनेगा।"
+    ],
     "ui:auth.working": [
      "एक क्षण…"
     ],
@@ -30557,6 +31821,18 @@
     ],
     "ui:auth.error.passkey_not_accepted": [
      "वह पासकी स्वीकार नहीं हुई। ईमेल कोड से साइन इन करें, फिर नई पासकी जोड़ें।"
+    ],
+    "ui:auth.error.passkey_not_accepted_no_email": [
+     "वह पासकी स्वीकार नहीं हुई। हो सकता है उसे खाते से हटा दिया गया हो, या खाता अब मौजूद न हो।"
+    ],
+    "ui:auth.error.reauth_required": [
+     "पहले पुष्टि करें कि यह आप ही हैं: साइन आउट करें, फिर साइन इन करें, और दोबारा कोशिश करें।"
+    ],
+    "ui:auth.error.reauth_unavailable": [
+     "इसके लिए पहले साइन आउट करें और ईमेल कोड से फिर साइन इन करें।"
+    ],
+    "ui:auth.error.too_many_attempts": [
+     "इस पते के लिए बहुत ज़्यादा ग़लत कोड डाले गए। कल फिर कोशिश करें, या पासकी से साइन इन करें।"
     ],
     "ui:auth.error.passkey_failed": [
      "पासकी काम नहीं कर पाई। कृपया फिर कोशिश करें।"
@@ -30774,6 +32050,9 @@
     "ui:hand.potionLastRound": [
      "Hamlet प्रतिद्वंद्वी की अगली कविता पर शाप डालता, पर यह आख़िरी दौर है।"
     ],
+    "ui:hand.potionGamble": [
+     "अगर इसी दौर में द्वंद्व का फ़ैसला हो गया, तो काढ़ा बेकार जाएगा।"
+    ],
     "ui:variant.bonus": [
      "हाज़िरजवाबी +3"
     ],
@@ -30794,6 +32073,9 @@
     ],
     "ui:illegal.potion-spent": [
      "वह काढ़ा इस्तेमाल हो चुका है।"
+    ],
+    "ui:illegal.potion-last-round": [
+     "शाप देने को कोई कविता नहीं बची: यह आख़िरी दौर है।"
     ],
     "ui:illegal.no-ink": [
      "स्याही काफ़ी नहीं है।"
@@ -30825,11 +32107,29 @@
     "ui:live.curseHolding": [
      "निभ रहा है"
     ],
+    "ui:void.label": [
+     "कोई अंक नहीं"
+    ],
+    "ui:void.thin": [
+     "कविता कहलाने के लिए बहुत कम: और अलग-अलग शब्द चाहिए"
+    ],
+    "ui:void.copied": [
+     "दूसरी कविता से ली गई: जवाब आपका अपना होना चाहिए"
+    ],
+    "ui:live.judgeUnread": [
+     "वे पंक्तियाँ जिन्हें अंक देने वाला मॉडल नहीं पढ़ेगा: 2 (अंक) और 4 (ग़ालिब)। जिस पंक्ति में कोई संख्या या अंकन का शब्द (अंक, ग्रेड, विजेता…) हो, वह छोड़ दी जाती है, और तब यह दौर केवल नियमों से तय होता है।"
+    ],
+    "ui:live.judgeUnreadLine": [
+     "2 (खोपड़ी)"
+    ],
     "ui:signature.none": [
      "इस कार्ड का कोई हस्ताक्षर-संवाद नहीं है"
     ],
     "ui:signature.hint": [
      "इनमें से किसी एक की गूँज लाएँ: खोपड़ी, मज़ाक और क़ब्र"
+    ],
+    "ui:signature.hintTwo": [
+     "इनमें से दो की गूँज लाएँ: खोपड़ी, मज़ाक और क़ब्र"
     ],
     "ui:signature.quoted": [
      "ज्यों का त्यों उद्धृत; गूँज आपकी अपनी पंक्ति होनी चाहिए"
@@ -30918,6 +32218,12 @@
     "ui:verdict.judge": [
      "निर्णायक"
     ],
+    "ui:verdict.worldCard": [
+     "विश्व कार्ड: Verona"
+    ],
+    "ui:verdict.notTaken": [
+     "हाज़िरजवाबी: नहीं जीता"
+    ],
     "ui:verdict.roundScore": [
      "दौर का स्कोर"
     ],
@@ -30941,6 +32247,9 @@
     ],
     "ui:verdict.judgedRules": [
      "निर्णय नियमों से हुआ (विविधता, संकेत, ध्वनि और पलटवार), क्योंकि कोई मॉडल नहीं चल रहा।"
+    ],
+    "ui:verdict.copyForfeits": [
+     "नक़ल की गई कविता निर्णायक के अंक खो देती है।"
     ],
     "ui:verdict.next": [
      "अगला दौर"
@@ -31272,6 +32581,36 @@
     "pack:relics.RL-009.4": [
      "चाँद"
     ],
+    "pack:written.haiku.0.0": [
+     "तेरी कविता"
+    ],
+    "pack:written.haiku.0.1": [
+     "सूखे पत्ते की तरह"
+    ],
+    "pack:written.haiku.0.2": [
+     "हवा में उड़ी"
+    ],
+    "pack:written.haiku.1.0": [
+     "दूर कहीं आवाज़"
+    ],
+    "pack:written.haiku.1.1": [
+     "मैंने कान लगाया तो"
+    ],
+    "pack:written.haiku.1.2": [
+     "बस हवा ही थी"
+    ],
+    "pack:written.heroic-couplet.0.0": [
+     "यह मंच सदा से मेरा ही घर है"
+    ],
+    "pack:written.heroic-couplet.0.1": [
+     "बोल ज़रा, तुझको किसका डर है"
+    ],
+    "pack:written.heroic-couplet.1.0": [
+     "मेरी हर पंक्ति जलता हुआ दीपक"
+    ],
+    "pack:written.heroic-couplet.1.1": [
+     "तेरी हर पंक्ति अधूरा नाटक"
+    ],
     "pack:written.couplet.0.0": [
      "तेरी तुकबंदी रात में उजड़ी हुई बस्ती है"
     ],
@@ -31480,9 +32819,9 @@
   },
   "zh": {
    "strings": {
-    "ui": 411,
-    "pack": 107,
-    "sentences": 518
+    "ui": 428,
+    "pack": 137,
+    "sentences": 565
    },
    "languagetool": "zh-CN",
    "hunspell": null,
@@ -32207,6 +33546,12 @@
     "ui:auth.signOut": [
      "退出登录"
     ],
+    "ui:auth.signOutEverywhere": [
+     "在所有设备上退出登录"
+    ],
+    "ui:auth.legacyAccountNote": [
+     "以前在这里用 Google 或邮箱地址登录过？这种登录方式目前已关闭，所以旧账户暂时无法打开。在这里创建的账户是一个全新的空账户。"
+    ],
     "ui:auth.working": [
      "请稍候…"
     ],
@@ -32248,6 +33593,18 @@
     ],
     "ui:auth.error.passkey_not_accepted": [
      "这个通行密钥未被接受。请用邮件验证码登录，然后添加新的通行密钥。"
+    ],
+    "ui:auth.error.passkey_not_accepted_no_email": [
+     "这个通行密钥未被接受。它可能已从账户中移除，或者账户已不存在。"
+    ],
+    "ui:auth.error.reauth_required": [
+     "请先确认是你本人：退出登录，重新登录，然后再试一次。"
+    ],
+    "ui:auth.error.reauth_unavailable": [
+     "要进行此操作，请先退出登录，再用邮件验证码重新登录。"
+    ],
+    "ui:auth.error.too_many_attempts": [
+     "这个地址的错误验证码太多了。请明天再试，或用通行密钥登录。"
     ],
     "ui:auth.error.passkey_failed": [
      "通行密钥没有起作用。请再试一次。"
@@ -32465,6 +33822,9 @@
     "ui:hand.potionLastRound": [
      "Hamlet 本会诅咒对手的下一首诗，但这已是最后一回合。"
     ],
+    "ui:hand.potionGamble": [
+     "如果这一回合就决出胜负，药水就白用了。"
+    ],
     "ui:variant.bonus": [
      "机锋 +3"
     ],
@@ -32485,6 +33845,9 @@
     ],
     "ui:illegal.potion-spent": [
      "这瓶药水已经用过了。"
+    ],
+    "ui:illegal.potion-last-round": [
+     "已没有可诅咒的诗：这是最后一回合。"
     ],
     "ui:illegal.no-ink": [
      "墨水不够。"
@@ -32516,11 +33879,29 @@
     "ui:live.curseHolding": [
      "未触犯"
     ],
+    "ui:void.label": [
+     "不得分"
+    ],
+    "ui:void.thin": [
+     "内容太少，算不上一首诗：需要更多不同的字词"
+    ],
+    "ui:void.copied": [
+     "取自对方的诗：回应必须是你自己写的"
+    ],
+    "ui:live.judgeUnread": [
+     "评分模型不会读的诗行：2（优胜者）和4（優勝者）。含有数字或评分用语（得分、评价、赢家……）的诗行会被略去，这一回合便只按规则判定。"
+    ],
+    "ui:live.judgeUnreadLine": [
+     "2（骷髅）"
+    ],
     "ui:signature.none": [
      "这张牌没有签名台词"
     ],
     "ui:signature.hint": [
      "呼应其中之一：骷髅、戏谑和坟墓"
+    ],
+    "ui:signature.hintTwo": [
+     "呼应其中两个：骷髅、戏谑和坟墓"
     ],
     "ui:signature.quoted": [
      "照搬了原句；呼应必须是你自己的句子"
@@ -32609,6 +33990,12 @@
     "ui:verdict.judge": [
      "裁判"
     ],
+    "ui:verdict.worldCard": [
+     "世界卡：Verona"
+    ],
+    "ui:verdict.notTaken": [
+     "机锋：未拿下"
+    ],
     "ui:verdict.roundScore": [
      "回合得分"
     ],
@@ -32632,6 +34019,9 @@
     ],
     "ui:verdict.judgedRules": [
      "按规则评判（丰富度、用典、音韵和还击），因为没有模型在运行。"
+    ],
+    "ui:verdict.copyForfeits": [
+     "照抄的诗得不到裁判的分数。"
     ],
     "ui:verdict.next": [
      "下一回合"
@@ -32960,6 +34350,96 @@
     "pack:relics.RL-009.4": [
      "月亮"
     ],
+    "pack:written.couplet.0.0": [
+     "你的诗句轻如一缕烟"
+    ],
+    "pack:written.couplet.0.1": [
+     "我一开口它就散在天边"
+    ],
+    "pack:written.couplet.1.0": [
+     "台下的看客早已睡着"
+    ],
+    "pack:written.couplet.1.1": [
+     "只有我的句子还在燃烧"
+    ],
+    "pack:written.quatrain-aabb.0.0": [
+     "你借来的词句没有分量"
+    ],
+    "pack:written.quatrain-aabb.0.1": [
+     "像纸糊的刀剑不堪一挡"
+    ],
+    "pack:written.quatrain-aabb.0.2": [
+     "我见过君王也见过小丑"
+    ],
+    "pack:written.quatrain-aabb.0.3": [
+     "你连做配角都还不够"
+    ],
+    "pack:written.quatrain-aabb.1.0": [
+     "观众来这里想看一场好戏"
+    ],
+    "pack:written.quatrain-aabb.1.1": [
+     "你却只带来一口残羹冷气"
+    ],
+    "pack:written.quatrain-aabb.1.2": [
+     "再说一遍吧，大声一点"
+    ],
+    "pack:written.quatrain-aabb.1.3": [
+     "我连风暴都敢当面翻脸"
+    ],
+    "pack:written.quatrain-abab.0.0": [
+     "这座舞台我早已熟悉"
+    ],
+    "pack:written.quatrain-abab.0.1": [
+     "你的声音只像蚊子哼吟"
+    ],
+    "pack:written.quatrain-abab.0.2": [
+     "幕布落下，你该休息"
+    ],
+    "pack:written.quatrain-abab.0.3": [
+     "留下的只有我的回音"
+    ],
+    "pack:written.quatrain-abab.1.0": [
+     "你的诗瘸着一条腿走来"
+    ],
+    "pack:written.quatrain-abab.1.1": [
+     "向观众讨一点可怜"
+    ],
+    "pack:written.quatrain-abab.1.2": [
+     "我不忍心把它踢开"
+    ],
+    "pack:written.quatrain-abab.1.3": [
+     "就让它坐到天黑以前"
+    ],
+    "pack:written.tercet.0.0": [
+     "你有舌头，却没有本领"
+    ],
+    "pack:written.tercet.0.1": [
+     "它像醉汉在黑夜里乱撞"
+    ],
+    "pack:written.tercet.0.2": [
+     "敲不开任何人的心灵"
+    ],
+    "pack:written.tercet.1.0": [
+     "这也叫诗？我说是失误"
+    ],
+    "pack:written.tercet.1.1": [
+     "一句跛脚的话想找地方歇"
+    ],
+    "pack:written.tercet.1.2": [
+     "我心肠好，送它一条归路"
+    ],
+    "pack:written.heroic-couplet.0.0": [
+     "舞台从来只认我的声音"
+    ],
+    "pack:written.heroic-couplet.0.1": [
+     "你的词句不过一阵烟尘"
+    ],
+    "pack:written.heroic-couplet.1.0": [
+     "我的诗是照亮长夜的灯"
+    ],
+    "pack:written.heroic-couplet.1.1": [
+     "你的诗是没人理会的风"
+    ],
     "pack:written.anaphora.0.0": [
      "从未听过如此多的话说如此少的事"
     ],
@@ -33132,9 +34612,9 @@
   },
   "ja": {
    "strings": {
-    "ui": 411,
-    "pack": 103,
-    "sentences": 514
+    "ui": 428,
+    "pack": 133,
+    "sentences": 561
    },
    "languagetool": "ja-JP",
    "hunspell": null,
@@ -33779,6 +35259,12 @@
     "ui:auth.signOut": [
      "サインアウト"
     ],
+    "ui:auth.signOutEverywhere": [
+     "すべてのデバイスでサインアウト"
+    ],
+    "ui:auth.legacyAccountNote": [
+     "以前、Google またはメールアドレスでここにサインインしましたか？その方法は現在停止中のため、以前のアカウントはまだ開けません。ここでアカウントを作成すると、新しい空のアカウントになります。"
+    ],
     "ui:auth.working": [
      "少々お待ちください…"
     ],
@@ -33820,6 +35306,18 @@
     ],
     "ui:auth.error.passkey_not_accepted": [
      "そのパスキーは受け付けられませんでした。メールのコードでサインインしてから、新しいパスキーを追加してください。"
+    ],
+    "ui:auth.error.passkey_not_accepted_no_email": [
+     "そのパスキーは受け付けられませんでした。アカウントから削除されたか、アカウントがもう存在しない可能性があります。"
+    ],
+    "ui:auth.error.reauth_required": [
+     "まずご本人であることを確認してください。サインアウトしてもう一度サインインし、やり直してください。"
+    ],
+    "ui:auth.error.reauth_unavailable": [
+     "これを行うには、いったんサインアウトして、メールのコードでサインインし直してください。"
+    ],
+    "ui:auth.error.too_many_attempts": [
+     "このアドレスへの誤ったコードが多すぎます。明日もう一度試すか、パスキーでサインインしてください。"
     ],
     "ui:auth.error.passkey_failed": [
      "パスキーがうまく動作しませんでした。もう一度お試しください。"
@@ -34037,6 +35535,9 @@
     "ui:hand.potionLastRound": [
      "Hamletは相手の次の詩に呪いをかけるものですが、これが最後のラウンドです。"
     ],
+    "ui:hand.potionGamble": [
+     "このラウンドで勝負が決まると、薬は無駄になります。"
+    ],
     "ui:variant.bonus": [
      "機知 +3"
     ],
@@ -34057,6 +35558,9 @@
     ],
     "ui:illegal.potion-spent": [
      "その薬はもう使いました。"
+    ],
+    "ui:illegal.potion-last-round": [
+     "呪いをかける詩がもうありません。これが最後のラウンドです。"
     ],
     "ui:illegal.no-ink": [
      "インクが足りません。"
@@ -34088,11 +35592,29 @@
     "ui:live.curseHolding": [
      "守っている"
     ],
+    "ui:void.label": [
+     "得点なし"
+    ],
+    "ui:void.thin": [
+     "詩と呼ぶには少なすぎます。もっと多くの異なる語が必要です"
+    ],
+    "ui:void.copied": [
+     "相手の詩から取ったものです。返しは自分の言葉で書いてください"
+    ],
+    "ui:live.judgeUnread": [
+     "採点モデルが読まない行：2（ウィナー）、4（スコア）。数字や採点の言葉（点数、評価、勝つ…）を含む行は除かれ、このラウンドはルールだけで判定されます。"
+    ],
+    "ui:live.judgeUnreadLine": [
+     "2（骸骨）"
+    ],
     "ui:signature.none": [
      "このカードにはシグネチャーの台詞がありません"
     ],
     "ui:signature.hint": [
      "次のどれかを響かせてください：骸骨、冗談、墓"
+    ],
+    "ui:signature.hintTwo": [
+     "次のうち二つを響かせてください：骸骨、冗談、墓"
     ],
     "ui:signature.quoted": [
      "そのまま引用しています。自分の行で響かせてください"
@@ -34181,6 +35703,12 @@
     "ui:verdict.judge": [
      "審判"
     ],
+    "ui:verdict.worldCard": [
+     "ワールドカード：Verona"
+    ],
+    "ui:verdict.notTaken": [
+     "機知：取れませんでした"
+    ],
     "ui:verdict.roundScore": [
      "ラウンドの得点"
     ],
@@ -34204,6 +35732,9 @@
     ],
     "ui:verdict.judgedRules": [
      "モデルが動いていないため、規則（多様さ、引喩、響き、切り返し）で審査しました。"
+    ],
+    "ui:verdict.copyForfeits": [
+     "写した詩は審判の得点を失います。"
     ],
     "ui:verdict.next": [
      "次のラウンド"
@@ -34532,6 +36063,96 @@
     "pack:relics.RL-009.4": [
      "月"
     ],
+    "pack:written.couplet.0.0": [
+     "お前の言葉は風に散る花"
+    ],
+    "pack:written.couplet.0.1": [
+     "わたしの詩こそ闇を裂く刀"
+    ],
+    "pack:written.couplet.1.0": [
+     "客はもう出口を数える"
+    ],
+    "pack:written.couplet.1.1": [
+     "残るのはわたしの声だけ、それが冴える"
+    ],
+    "pack:written.quatrain-aabb.0.0": [
+     "借りものの知恵で舞台に立ち"
+    ],
+    "pack:written.quatrain-aabb.0.1": [
+     "それで勝てると思った過ち"
+    ],
+    "pack:written.quatrain-aabb.0.2": [
+     "王も道化も見てきたところ"
+    ],
+    "pack:written.quatrain-aabb.0.3": [
+     "お前には動かせぬ客のこころ"
+    ],
+    "pack:written.quatrain-aabb.1.0": [
+     "客が見に来たのは真剣勝負"
+    ],
+    "pack:written.quatrain-aabb.1.1": [
+     "お前の詩は崩れかけの豆腐"
+    ],
+    "pack:written.quatrain-aabb.1.2": [
+     "もう一度言え、ここは満員の客"
+    ],
+    "pack:written.quatrain-aabb.1.3": [
+     "お前にはまだ早いこの役"
+    ],
+    "pack:written.quatrain-abab.0.0": [
+     "この舞台はわたしの古い庭"
+    ],
+    "pack:written.quatrain-abab.0.1": [
+     "お前の声はただの雑音"
+    ],
+    "pack:written.quatrain-abab.0.2": [
+     "幕が下りるのは、まさに今"
+    ],
+    "pack:written.quatrain-abab.0.3": [
+     "舞台に響くのはわたしの轟音"
+    ],
+    "pack:written.quatrain-abab.1.0": [
+     "片足で歩くお前の詩"
+    ],
+    "pack:written.quatrain-abab.1.1": [
+     "客に情けを乞うその声"
+    ],
+    "pack:written.quatrain-abab.1.2": [
+     "蹴るのも哀れ、もう抜けた腰"
+    ],
+    "pack:written.quatrain-abab.1.3": [
+     "そこで見ていろ、勝つのは俺"
+    ],
+    "pack:written.tercet.0.0": [
+     "舌はあっても技のない口"
+    ],
+    "pack:written.tercet.0.1": [
+     "酔いどれのように闇をさまよい"
+    ],
+    "pack:written.tercet.0.2": [
+     "どの胸にも届かず沈む月"
+    ],
+    "pack:written.tercet.1.0": [
+     "これが詩だと？ わたしは呼ぶ、過ち"
+    ],
+    "pack:written.tercet.1.1": [
+     "足を引きずる一行が休みを乞う"
+    ],
+    "pack:written.tercet.1.2": [
+     "情けだ、手向けてやろう、ひとすじの光"
+    ],
+    "pack:written.heroic-couplet.0.0": [
+     "闇を裂くわたしの声"
+    ],
+    "pack:written.heroic-couplet.0.1": [
+     "塵となるお前の骨"
+    ],
+    "pack:written.heroic-couplet.1.0": [
+     "舞台はわたしの城"
+    ],
+    "pack:written.heroic-couplet.1.1": [
+     "お前はただの人"
+    ],
     "pack:written.anaphora.0.0": [
      "これほど中身のない言葉を、これほど聞かされたことはない"
     ],
@@ -34692,9 +36313,9 @@
   },
   "ko": {
    "strings": {
-    "ui": 411,
+    "ui": 428,
     "pack": 127,
-    "sentences": 538
+    "sentences": 555
    },
    "languagetool": null,
    "hunspell": [
@@ -34702,8 +36323,8 @@
    ],
    "counts": {
     "languagetool": 0,
-    "hunspell": 82,
-    "allowed": 82,
+    "hunspell": 85,
+    "allowed": 85,
     "open": 0
    },
    "hits": [
@@ -35160,6 +36781,17 @@
     },
     {
      "tool": "hunspell",
+     "id": "ui:auth.error.passkey_not_accepted_no_email",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "그 패스키는 받아들여지지 않았어요. 계정에서 삭제됐거나 계정이 더는 없을 수 있어요.",
+     "at": "받아들여지지",
+     "message": "not in the ko dictionary",
+     "replacements": [],
+     "allowed": "A word with its particle or ending attached, as Korean writes it (덱+에, 세션+을, 셰익스피어+가, 동기화하+ㄹ까요); the ko_KR list lacks the word or this combination."
+    },
+    {
+     "tool": "hunspell",
      "id": "ui:auth.error.not_signed_in",
      "rule": "SPELLING",
      "category": "SPELLING",
@@ -35369,6 +37001,17 @@
     },
     {
      "tool": "hunspell",
+     "id": "ui:live.judgeUnread",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "채점 모델이 읽지 않는 행: 2 (득점) 및 4 (등급). 숫자나 채점에 쓰는 말(점수, 평가, 이기다…)이 든 행은 빠지고, 이번 라운드는 규칙만으로 판정돼요.",
+     "at": "규칙만으로",
+     "message": "not in the ko dictionary",
+     "replacements": [],
+     "allowed": "규칙 (rule) + 만 (only) + 으로 (by): an established word with its particles, which the ko_KR list does not inflect."
+    },
+    {
+     "tool": "hunspell",
      "id": "ui:signature.none",
      "rule": "SPELLING",
      "category": "SPELLING",
@@ -35396,6 +37039,17 @@
      "category": "SPELLING",
      "text": "시그니처",
      "at": "시그니처",
+     "message": "not in the ko dictionary",
+     "replacements": [],
+     "allowed": "A loanword in ordinary Korean use for games, headsets or the web, written as the 외래어 표기법 transcribes it."
+    },
+    {
+     "tool": "hunspell",
+     "id": "ui:verdict.worldCard",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "월드 카드: Verona",
+     "at": "월드",
      "message": "not in the ko dictionary",
      "replacements": [],
      "allowed": "A loanword in ordinary Korean use for games, headsets or the web, written as the 외래어 표기법 transcribes it."
@@ -36244,6 +37898,12 @@
     "ui:auth.signOut": [
      "로그아웃"
     ],
+    "ui:auth.signOutEverywhere": [
+     "모든 기기에서 로그아웃"
+    ],
+    "ui:auth.legacyAccountNote": [
+     "예전에 Google이나 이메일 주소로 여기에 로그인한 적이 있나요? 그 방법은 지금 꺼져 있어서 예전 계정은 아직 열 수 없어요. 여기서 계정을 만들면 새 빈 계정이 생겨요."
+    ],
     "ui:auth.working": [
      "잠시만요…"
     ],
@@ -36285,6 +37945,18 @@
     ],
     "ui:auth.error.passkey_not_accepted": [
      "그 패스키는 받아들여지지 않았어요. 이메일 코드로 로그인한 뒤 새 패스키를 추가하세요."
+    ],
+    "ui:auth.error.passkey_not_accepted_no_email": [
+     "그 패스키는 받아들여지지 않았어요. 계정에서 삭제됐거나 계정이 더는 없을 수 있어요."
+    ],
+    "ui:auth.error.reauth_required": [
+     "먼저 본인인지 확인해 주세요. 로그아웃하고 다시 로그인한 뒤 한 번 더 시도하세요."
+    ],
+    "ui:auth.error.reauth_unavailable": [
+     "이 작업을 하려면 먼저 로그아웃한 뒤 이메일 코드로 다시 로그인하세요."
+    ],
+    "ui:auth.error.too_many_attempts": [
+     "이 주소에 틀린 코드가 너무 많이 입력됐어요. 내일 다시 시도하거나 패스키로 로그인하세요."
     ],
     "ui:auth.error.passkey_failed": [
      "패스키가 작동하지 않았어요. 다시 시도해 주세요."
@@ -36502,6 +38174,9 @@
     "ui:hand.potionLastRound": [
      "Hamlet은(는) 상대의 다음 시에 저주를 걸 수 있지만, 지금이 마지막 라운드예요."
     ],
+    "ui:hand.potionGamble": [
+     "이번 라운드에서 승부가 나면 물약은 헛되이 쓰게 돼요."
+    ],
     "ui:variant.bonus": [
      "재치 +3"
     ],
@@ -36522,6 +38197,9 @@
     ],
     "ui:illegal.potion-spent": [
      "그 물약은 이미 썼어요."
+    ],
+    "ui:illegal.potion-last-round": [
+     "저주를 걸 시가 남아 있지 않아요. 지금이 마지막 라운드예요."
     ],
     "ui:illegal.no-ink": [
      "잉크가 모자라요."
@@ -36553,11 +38231,29 @@
     "ui:live.curseHolding": [
      "지키는 중"
     ],
+    "ui:void.label": [
+     "점수 없음"
+    ],
+    "ui:void.thin": [
+     "시라고 하기엔 너무 적어요. 서로 다른 낱말이 더 있어야 해요"
+    ],
+    "ui:void.copied": [
+     "상대의 시에서 가져왔어요. 답은 내가 지은 것이어야 해요"
+    ],
+    "ui:live.judgeUnread": [
+     "채점 모델이 읽지 않는 행: 2 (득점) 및 4 (등급). 숫자나 채점에 쓰는 말(점수, 평가, 이기다…)이 든 행은 빠지고, 이번 라운드는 규칙만으로 판정돼요."
+    ],
+    "ui:live.judgeUnreadLine": [
+     "2 (해골)"
+    ],
     "ui:signature.none": [
      "이 카드에는 시그니처 대사가 없어요"
     ],
     "ui:signature.hint": [
      "다음 중 하나를 떠올리게 하세요: 해골, 농담 및 무덤"
+    ],
+    "ui:signature.hintTwo": [
+     "다음 중 둘을 떠올리게 하세요: 해골, 농담 및 무덤"
     ],
     "ui:signature.quoted": [
      "그대로 인용했어요. 내가 지은 행으로 떠올리게 해야 해요"
@@ -36646,6 +38342,12 @@
     "ui:verdict.judge": [
      "심판"
     ],
+    "ui:verdict.worldCard": [
+     "월드 카드: Verona"
+    ],
+    "ui:verdict.notTaken": [
+     "재치: 얻지 못함"
+    ],
     "ui:verdict.roundScore": [
      "라운드 점수"
     ],
@@ -36669,6 +38371,9 @@
     ],
     "ui:verdict.judgedRules": [
      "실행 중인 모델이 없어서 규칙(다양성, 인유, 소리, 되받아치기)으로 심사했어요."
+    ],
+    "ui:verdict.copyForfeits": [
+     "베낀 시는 심판 점수를 잃어요."
     ],
     "ui:verdict.next": [
      "다음 라운드"
@@ -37229,9 +38934,9 @@
   },
   "vi": {
    "strings": {
-    "ui": 411,
+    "ui": 428,
     "pack": 131,
-    "sentences": 560
+    "sentences": 577
    },
    "languagetool": null,
    "hunspell": [
@@ -37239,8 +38944,8 @@
    ],
    "counts": {
     "languagetool": 0,
-    "hunspell": 36,
-    "allowed": 36,
+    "hunspell": 37,
+    "allowed": 37,
     "open": 0
    },
    "hits": [
@@ -37507,6 +39212,17 @@
      "message": "not in the vi dictionary",
      "replacements": [],
      "allowed": "Part of the placeholder address ban@vidu.com (an address carries no diacritics)."
+    },
+    {
+     "tool": "hunspell",
+     "id": "ui:auth.legacyAccountNote",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "Trước đây bạn đã đăng nhập ở đây bằng Google hoặc địa chỉ email? Cách đăng nhập đó hiện đang tắt, nên tài khoản cũ chưa thể mở được. Tạo tài khoản ở đây sẽ ra một tài khoản mới, trống.",
+     "at": "Google",
+     "message": "not in the vi dictionary",
+     "replacements": [],
+     "allowed": "A proper name (a product, platform, browser, model, person or character, or a verse form's name sourced in docs/language/glossary.json), not a word of the language."
     },
     {
      "tool": "hunspell",
@@ -38293,6 +40009,12 @@
     "ui:auth.signOut": [
      "Đăng xuất"
     ],
+    "ui:auth.signOutEverywhere": [
+     "Đăng xuất trên mọi thiết bị"
+    ],
+    "ui:auth.legacyAccountNote": [
+     "Trước đây bạn đã đăng nhập ở đây bằng Google hoặc địa chỉ email? Cách đăng nhập đó hiện đang tắt, nên tài khoản cũ chưa thể mở được. Tạo tài khoản ở đây sẽ ra một tài khoản mới, trống."
+    ],
     "ui:auth.working": [
      "Chờ một chút…"
     ],
@@ -38334,6 +40056,18 @@
     ],
     "ui:auth.error.passkey_not_accepted": [
      "Khoá truy cập đó không được chấp nhận. Hãy đăng nhập bằng mã email, rồi thêm một khoá mới."
+    ],
+    "ui:auth.error.passkey_not_accepted_no_email": [
+     "Khoá truy cập đó không được chấp nhận. Có thể nó đã bị gỡ khỏi tài khoản, hoặc tài khoản không còn nữa."
+    ],
+    "ui:auth.error.reauth_required": [
+     "Trước hết hãy xác nhận đó là bạn: đăng xuất, đăng nhập lại, rồi thử lần nữa."
+    ],
+    "ui:auth.error.reauth_unavailable": [
+     "Để làm việc này, trước hết hãy đăng xuất rồi đăng nhập lại bằng mã email."
+    ],
+    "ui:auth.error.too_many_attempts": [
+     "Quá nhiều mã sai cho địa chỉ này. Hãy thử lại vào ngày mai, hoặc đăng nhập bằng khoá truy cập."
     ],
     "ui:auth.error.passkey_failed": [
      "Khoá truy cập không hoạt động. Vui lòng thử lại."
@@ -38551,6 +40285,9 @@
     "ui:hand.potionLastRound": [
      "Hamlet lẽ ra sẽ nguyền bài thơ kế tiếp của đối thủ, nhưng đây là hiệp cuối."
     ],
+    "ui:hand.potionGamble": [
+     "Nếu hiệp này định đoạt trận đấu, thuốc phép sẽ bị dùng phí."
+    ],
     "ui:variant.bonus": [
      "+3 sắc sảo"
     ],
@@ -38571,6 +40308,9 @@
     ],
     "ui:illegal.potion-spent": [
      "Thuốc phép đó đã dùng rồi."
+    ],
+    "ui:illegal.potion-last-round": [
+     "Không còn bài thơ nào để nguyền: đây là hiệp cuối."
     ],
     "ui:illegal.no-ink": [
      "Không đủ mực."
@@ -38602,11 +40342,29 @@
     "ui:live.curseHolding": [
      "chưa phạm"
     ],
+    "ui:void.label": [
+     "Không được điểm"
+    ],
+    "ui:void.thin": [
+     "quá ít để thành một bài thơ: cần thêm những từ khác nhau"
+    ],
+    "ui:void.copied": [
+     "lấy từ bài thơ của đối thủ: câu đáp phải là của chính bạn"
+    ],
+    "ui:live.judgeUnread": [
+     "Những dòng mô hình chấm điểm sẽ không đọc: 2 (bản án) và 4 (chiến thắng). Dòng nào có con số hay từ chấm điểm (điểm, số điểm, thắng…) đều bị bỏ qua, và hiệp này khi đó chỉ do luật phân định."
+    ],
+    "ui:live.judgeUnreadLine": [
+     "2 (đầu lâu)"
+    ],
     "ui:signature.none": [
      "lá bài này không có câu thoại dấu ấn"
     ],
     "ui:signature.hint": [
      "gợi lại một trong các từ: đầu lâu, trò hề và nấm mồ"
+    ],
+    "ui:signature.hintTwo": [
+     "gợi lại hai trong các từ: đầu lâu, trò hề và nấm mồ"
     ],
     "ui:signature.quoted": [
      "trích nguyên văn; tiếng vọng phải là câu của chính bạn"
@@ -38695,6 +40453,12 @@
     "ui:verdict.judge": [
      "Giám khảo"
     ],
+    "ui:verdict.worldCard": [
+     "Lá bài thế giới: Verona"
+    ],
+    "ui:verdict.notTaken": [
+     "sắc sảo: chưa giành được"
+    ],
     "ui:verdict.roundScore": [
      "Điểm của hiệp"
     ],
@@ -38718,6 +40482,9 @@
     ],
     "ui:verdict.judgedRules": [
      "Chấm theo quy tắc (độ đa dạng, điển tích, âm điệu và lời đáp trả), vì không có mô hình nào đang chạy."
+    ],
+    "ui:verdict.copyForfeits": [
+     "Bài thơ chép lại sẽ mất điểm của giám khảo."
     ],
     "ui:verdict.next": [
      "Hiệp tiếp theo"
@@ -39290,9 +41057,9 @@
   },
   "th": {
    "strings": {
-    "ui": 411,
-    "pack": 91,
-    "sentences": 502
+    "ui": 428,
+    "pack": 117,
+    "sentences": 545
    },
    "languagetool": null,
    "hunspell": [
@@ -39300,8 +41067,8 @@
    ],
    "counts": {
     "languagetool": 0,
-    "hunspell": 46,
-    "allowed": 46,
+    "hunspell": 49,
+    "allowed": 49,
     "open": 0
    },
    "hits": [
@@ -39703,6 +41470,28 @@
     },
     {
      "tool": "hunspell",
+     "id": "ui:auth.error.passkey_not_accepted_no_email",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "พาสคีย์นั้นไม่ได้รับการยอมรับ อาจถูกลบออกจากบัญชีแล้ว หรือบัญชีอาจไม่มีอยู่แล้ว",
+     "at": "พาส",
+     "message": "not in the th dictionary (between “” and “คีย์”)",
+     "replacements": [],
+     "allowed": "A piece of a word the ICU segmenter cut apart (Thai is written without spaces): พาส + คีย์ = พาสคีย์, Android's Thai word for passkey (docs/language/glossary.json). The joins with its neighbours were tried and the dictionary knows none of them; the whole word is a loanword or a name the th_TH list lacks."
+    },
+    {
+     "tool": "hunspell",
+     "id": "ui:auth.error.too_many_attempts",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "ใส่รหัสผิดสำหรับที่อยู่นี้มากเกินไป โปรดลองใหม่พรุ่งนี้ หรือลงชื่อเข้าใช้ด้วยพาสคีย์",
+     "at": "พาส",
+     "message": "not in the th dictionary (between “ด้วย” and “คีย์”)",
+     "replacements": [],
+     "allowed": "A piece of a word the ICU segmenter cut apart (Thai is written without spaces): พาส + คีย์ = พาสคีย์, Android's Thai word for passkey (docs/language/glossary.json). The joins with its neighbours were tried and the dictionary knows none of them; the whole word is a loanword or a name the th_TH list lacks."
+    },
+    {
+     "tool": "hunspell",
      "id": "ui:auth.error.passkey_failed",
      "rule": "SPELLING",
      "category": "SPELLING",
@@ -39777,6 +41566,17 @@
      "message": "not in the th dictionary (between “” and “ของ”)",
      "replacements": [],
      "allowed": "เซสชัน (session): a loanword in ordinary Thai interface use, missing from the th_TH list."
+    },
+    {
+     "tool": "hunspell",
+     "id": "ui:illegal.potion-last-round",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "ไม่เหลือบทกลอนให้สาปแล้ว นี่คือยกสุดท้าย",
+     "at": "ทก",
+     "message": "not in the th dictionary (between “เหลือบ” and “ลอน”)",
+     "replacements": [],
+     "allowed": "A piece the ICU segmenter cut from เหลือบทกลอน (เหลือ + บทกลอน, 'left' + 'verse'), read as เหลือบ + ทก + ลอน; the text holds no such word."
     },
     {
      "tool": "hunspell",
@@ -40446,6 +42246,12 @@
     "ui:auth.signOut": [
      "ออกจากระบบ"
     ],
+    "ui:auth.signOutEverywhere": [
+     "ออกจากระบบในทุกอุปกรณ์"
+    ],
+    "ui:auth.legacyAccountNote": [
+     "เคยลงชื่อเข้าใช้ที่นี่ด้วย Google หรือที่อยู่อีเมลมาก่อนใช่ไหม ตอนนี้ช่องทางนั้นปิดอยู่ บัญชีเก่าจึงยังเปิดไม่ได้ การสร้างบัญชีที่นี่จะได้บัญชีใหม่ที่ว่างเปล่า"
+    ],
     "ui:auth.working": [
      "สักครู่…"
     ],
@@ -40487,6 +42293,18 @@
     ],
     "ui:auth.error.passkey_not_accepted": [
      "พาสคีย์นั้นไม่ได้รับการยอมรับ โปรดลงชื่อเข้าใช้ด้วยรหัสทางอีเมล แล้วเพิ่มพาสคีย์ใหม่"
+    ],
+    "ui:auth.error.passkey_not_accepted_no_email": [
+     "พาสคีย์นั้นไม่ได้รับการยอมรับ อาจถูกลบออกจากบัญชีแล้ว หรือบัญชีอาจไม่มีอยู่แล้ว"
+    ],
+    "ui:auth.error.reauth_required": [
+     "โปรดยืนยันก่อนว่าเป็นคุณ: ออกจากระบบ ลงชื่อเข้าใช้อีกครั้ง แล้วลองใหม่"
+    ],
+    "ui:auth.error.reauth_unavailable": [
+     "หากต้องการทำสิ่งนี้ โปรดออกจากระบบก่อน แล้วลงชื่อเข้าใช้อีกครั้งด้วยรหัสทางอีเมล"
+    ],
+    "ui:auth.error.too_many_attempts": [
+     "ใส่รหัสผิดสำหรับที่อยู่นี้มากเกินไป โปรดลองใหม่พรุ่งนี้ หรือลงชื่อเข้าใช้ด้วยพาสคีย์"
     ],
     "ui:auth.error.passkey_failed": [
      "พาสคีย์ใช้งานไม่ได้ โปรดลองอีกครั้ง"
@@ -40704,6 +42522,9 @@
     "ui:hand.potionLastRound": [
      "Hamlet จะสาปบทกลอนถัดไปของคู่ต่อสู้ แต่นี่คือยกสุดท้ายแล้ว"
     ],
+    "ui:hand.potionGamble": [
+     "ถ้ายกนี้ตัดสินผลการประชัน ยาวิเศษจะเสียเปล่า"
+    ],
     "ui:variant.bonus": [
      "ไหวพริบ +3"
     ],
@@ -40724,6 +42545,9 @@
     ],
     "ui:illegal.potion-spent": [
      "ยาวิเศษนั้นใช้ไปแล้ว"
+    ],
+    "ui:illegal.potion-last-round": [
+     "ไม่เหลือบทกลอนให้สาปแล้ว นี่คือยกสุดท้าย"
     ],
     "ui:illegal.no-ink": [
      "หมึกไม่พอ"
@@ -40755,11 +42579,29 @@
     "ui:live.curseHolding": [
      "ยังไม่ผิด"
     ],
+    "ui:void.label": [
+     "ไม่ได้คะแนน"
+    ],
+    "ui:void.thin": [
+     "น้อยเกินกว่าจะเป็นบทกลอน ต้องมีคำที่ต่างกันมากกว่านี้"
+    ],
+    "ui:void.copied": [
+     "นำมาจากบทกลอนของอีกฝ่าย คำตอบต้องเป็นของคุณเอง"
+    ],
+    "ui:live.judgeUnread": [
+     "บรรทัดที่โมเดลให้คะแนนจะไม่อ่าน: 2 (คะแนน)และ4 (คำพิพากษา) บรรทัดที่มีตัวเลขหรือคำเกี่ยวกับการให้คะแนน (คะแนน, ชนะ…) จะถูกตัดออก และยกนี้จะตัดสินด้วยกติกาเท่านั้น"
+    ],
+    "ui:live.judgeUnreadLine": [
+     "2 (กะโหลก)"
+    ],
     "ui:signature.none": [
      "การ์ดใบนี้ไม่มีบทพูดลายเซ็น"
     ],
     "ui:signature.hint": [
      "สะท้อนคำใดคำหนึ่งต่อไปนี้: กะโหลก ตลก และหลุมศพ"
+    ],
+    "ui:signature.hintTwo": [
+     "สะท้อนสองคำจากต่อไปนี้: กะโหลก ตลก และหลุมศพ"
     ],
     "ui:signature.quoted": [
      "ยกมาตรง ๆ เสียงสะท้อนต้องเป็นบรรทัดของคุณเอง"
@@ -40848,6 +42690,12 @@
     "ui:verdict.judge": [
      "กรรมการ"
     ],
+    "ui:verdict.worldCard": [
+     "การ์ดโลก: Verona"
+    ],
+    "ui:verdict.notTaken": [
+     "ไหวพริบ: ชิงไม่ได้"
+    ],
     "ui:verdict.roundScore": [
      "คะแนนของยก"
     ],
@@ -40871,6 +42719,9 @@
     ],
     "ui:verdict.judgedRules": [
      "ตัดสินด้วยกฎ (ความหลากหลาย การอ้างถึง เสียง และการย้อนศร) เพราะไม่มีโมเดลทำงานอยู่"
+    ],
+    "ui:verdict.copyForfeits": [
+     "บทกลอนที่ลอกมาจะเสียคะแนนจากกรรมการ"
     ],
     "ui:verdict.next": [
      "ยกถัดไป"
@@ -41199,6 +43050,84 @@
     "pack:relics.RL-009.4": [
      "จันทร์"
     ],
+    "pack:written.couplet.0.0": [
+     "กลอนของเจ้าเบาเหมือนควันไฟ"
+    ],
+    "pack:written.couplet.0.1": [
+     "ข้าเอ่ยคำเดียวมันก็ลอยไป"
+    ],
+    "pack:written.couplet.1.0": [
+     "ผู้ชมหลับไปตั้งนานแล้ว"
+    ],
+    "pack:written.couplet.1.1": [
+     "เหลือแต่คำข้าที่ยังใสดั่งแก้ว"
+    ],
+    "pack:written.quatrain-aabb.0.0": [
+     "เจ้ายืมปัญญาเขามาทั้งนั้น"
+    ],
+    "pack:written.quatrain-aabb.0.1": [
+     "แล้วยังสงสัยว่าทำไมไม่มีใครหวั่น"
+    ],
+    "pack:written.quatrain-aabb.0.2": [
+     "ข้าเห็นทั้งราชาและตัวตลกมาแล้ว"
+    ],
+    "pack:written.quatrain-aabb.0.3": [
+     "คำของเจ้าเป็นได้แค่เศษแก้ว"
+    ],
+    "pack:written.quatrain-aabb.1.0": [
+     "ผู้ชมมาเพื่อดูศึกใหญ่"
+    ],
+    "pack:written.quatrain-aabb.1.1": [
+     "แต่กลอนของเจ้าไม่มีอะไร"
+    ],
+    "pack:written.quatrain-aabb.1.2": [
+     "พูดอีกทีสิ ให้ดังกว่าเดิม"
+    ],
+    "pack:written.quatrain-aabb.1.3": [
+     "ข้าตอบได้แม้พายุที่โหมเสริม"
+    ],
+    "pack:written.quatrain-abab.0.0": [
+     "เวทีนี้ข้ารู้จักมานาน"
+    ],
+    "pack:written.quatrain-abab.0.1": [
+     "เสียงของเจ้าเป็นเพียงสายลม"
+    ],
+    "pack:written.quatrain-abab.0.2": [
+     "ม่านกำลังลง เจ้าหมดงาน"
+    ],
+    "pack:written.quatrain-abab.0.3": [
+     "เวทีต้องการคำที่คม"
+    ],
+    "pack:written.quatrain-abab.1.0": [
+     "กลอนของเจ้าเดินกะเผลกมา"
+    ],
+    "pack:written.quatrain-abab.1.1": [
+     "ขอความสงสารจากผู้คน"
+    ],
+    "pack:written.quatrain-abab.1.2": [
+     "ข้าไม่อยากเตะซ้ำให้เสียเวลา"
+    ],
+    "pack:written.quatrain-abab.1.3": [
+     "ปล่อยให้มันนั่งอยู่กลางสายฝน"
+    ],
+    "pack:written.tercet.0.0": [
+     "เจ้ามีลิ้น แต่ไม่มีฝีมือ"
+    ],
+    "pack:written.tercet.0.1": [
+     "มันเดินโซเซเหมือนคนเมาในความมืด"
+    ],
+    "pack:written.tercet.0.2": [
+     "และไม่เคยไปถึงใจใครเลยหรือ"
+    ],
+    "pack:written.tercet.1.0": [
+     "นี่หรือกลอน ข้าขอเรียกว่าความผิดพลาด"
+    ],
+    "pack:written.tercet.1.1": [
+     "บรรทัดขาเป๋ที่ร้องขอที่พัก"
+    ],
+    "pack:written.tercet.1.2": [
+     "ข้าใจดี จึงส่งมันไปเสียให้ขาด"
+    ],
     "pack:written.anaphora.0.0": [
      "ไม่เคย ได้ยินใครพูดมากถึงเพียงนี้ ในเรื่องเล็กถึงเพียงนี้"
     ],
@@ -41323,9 +43252,9 @@
   },
   "id": {
    "strings": {
-    "ui": 411,
+    "ui": 428,
     "pack": 129,
-    "sentences": 540
+    "sentences": 557
    },
    "languagetool": null,
    "hunspell": [
@@ -41333,8 +43262,8 @@
    ],
    "counts": {
     "languagetool": 0,
-    "hunspell": 124,
-    "allowed": 124,
+    "hunspell": 127,
+    "allowed": 127,
     "open": 0
    },
    "hits": [
@@ -42088,6 +44017,17 @@
     },
     {
      "tool": "hunspell",
+     "id": "ui:auth.legacyAccountNote",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "Dulu pernah masuk di sini dengan Google atau alamat email? Cara masuk itu sedang dimatikan, jadi akun lama belum bisa dibuka. Membuat akun di sini menghasilkan akun baru yang kosong.",
+     "at": "Google",
+     "message": "not in the id dictionary",
+     "replacements": [],
+     "allowed": "A proper name (a product, platform, browser, model, person or character, or a verse form's name sourced in docs/language/glossary.json), not a word of the language."
+    },
+    {
+     "tool": "hunspell",
      "id": "ui:auth.error.age_required",
      "rule": "SPELLING",
      "category": "SPELLING",
@@ -42129,6 +44069,17 @@
      "message": "not in the id dictionary",
      "replacements": [],
      "allowed": "A regular form of masuk (with a clitic such as -mu, -nya, -ku, ku-, -lah, or an affix such as -kan, -i, ter-, se-), which the id_ID list does not generate; checked: the list accepts masuk."
+    },
+    {
+     "tool": "hunspell",
+     "id": "ui:auth.error.passkey_not_accepted_no_email",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "Kunci sandi itu tidak diterima. Mungkin sudah dihapus dari akun, atau akunnya sudah tidak ada.",
+     "at": "akunnya",
+     "message": "not in the id dictionary",
+     "replacements": [],
+     "allowed": "A regular form of akun (with a clitic such as -mu, -nya, -ku, ku-, -lah, or an affix such as -kan, -i, ter-, se-), which the id_ID list does not generate; checked: the list accepts akun."
     },
     {
      "tool": "hunspell",
@@ -42323,6 +44274,17 @@
      "rule": "SPELLING",
      "category": "SPELLING",
      "text": "gemakan salah satu dari: tengkorak, lelucon, dan kubur",
+     "at": "gemakan",
+     "message": "not in the id dictionary",
+     "replacements": [],
+     "allowed": "A regular form of gema (with a clitic such as -mu, -nya, -ku, ku-, -lah, or an affix such as -kan, -i, ter-, se-), which the id_ID list does not generate; checked: the list accepts gema."
+    },
+    {
+     "tool": "hunspell",
+     "id": "ui:signature.hintTwo",
+     "rule": "SPELLING",
+     "category": "SPELLING",
+     "text": "gemakan dua dari: tengkorak, lelucon, dan kubur",
      "at": "gemakan",
      "message": "not in the id dictionary",
      "replacements": [],
@@ -43337,6 +45299,12 @@
     "ui:auth.signOut": [
      "Keluar"
     ],
+    "ui:auth.signOutEverywhere": [
+     "Keluar di semua perangkat"
+    ],
+    "ui:auth.legacyAccountNote": [
+     "Dulu pernah masuk di sini dengan Google atau alamat email? Cara masuk itu sedang dimatikan, jadi akun lama belum bisa dibuka. Membuat akun di sini menghasilkan akun baru yang kosong."
+    ],
     "ui:auth.working": [
      "Sebentar…"
     ],
@@ -43378,6 +45346,18 @@
     ],
     "ui:auth.error.passkey_not_accepted": [
      "Kunci sandi itu tidak diterima. Masuklah dengan kode email, lalu tambahkan kunci sandi baru."
+    ],
+    "ui:auth.error.passkey_not_accepted_no_email": [
+     "Kunci sandi itu tidak diterima. Mungkin sudah dihapus dari akun, atau akunnya sudah tidak ada."
+    ],
+    "ui:auth.error.reauth_required": [
+     "Pastikan dulu bahwa ini kamu: keluar, masuk lagi, lalu coba sekali lagi."
+    ],
+    "ui:auth.error.reauth_unavailable": [
+     "Untuk melakukannya, keluar dulu lalu masuk lagi dengan kode email."
+    ],
+    "ui:auth.error.too_many_attempts": [
+     "Terlalu banyak kode salah untuk alamat ini. Coba lagi besok, atau masuk dengan kunci sandi."
     ],
     "ui:auth.error.passkey_failed": [
      "Kunci sandinya tidak berfungsi. Silakan coba lagi."
@@ -43595,6 +45575,9 @@
     "ui:hand.potionLastRound": [
      "Hamlet akan mengutuk syair lawan berikutnya, tetapi ini ronde terakhir."
     ],
+    "ui:hand.potionGamble": [
+     "Jika ronde ini menentukan duel, ramuan terbuang sia-sia."
+    ],
     "ui:variant.bonus": [
      "+3 kecerdikan"
     ],
@@ -43615,6 +45598,9 @@
     ],
     "ui:illegal.potion-spent": [
      "Ramuan itu sudah terpakai."
+    ],
+    "ui:illegal.potion-last-round": [
+     "Tidak ada syair lagi untuk dikutuk: ini ronde terakhir."
     ],
     "ui:illegal.no-ink": [
      "Tinta tidak cukup."
@@ -43646,11 +45632,29 @@
     "ui:live.curseHolding": [
      "terjaga"
     ],
+    "ui:void.label": [
+     "Tanpa nilai"
+    ],
+    "ui:void.thin": [
+     "terlalu sedikit untuk disebut syair: perlu lebih banyak kata yang berbeda"
+    ],
+    "ui:void.copied": [
+     "diambil dari syair lawan: jawaban harus buatanmu sendiri"
+    ],
+    "ui:live.judgeUnread": [
+     "Baris yang tidak akan dibaca model penilai: 2 (evaluasi) dan 4 (hakim). Baris yang memuat angka atau kata penilaian (hakim, pemenang, menang…) dilewati, dan ronde ini lalu diputuskan oleh aturan saja."
+    ],
+    "ui:live.judgeUnreadLine": [
+     "2 (tengkorak)"
+    ],
     "ui:signature.none": [
      "kartu ini tidak punya dialog tanda tangan"
     ],
     "ui:signature.hint": [
      "gemakan salah satu dari: tengkorak, lelucon, dan kubur"
+    ],
+    "ui:signature.hintTwo": [
+     "gemakan dua dari: tengkorak, lelucon, dan kubur"
     ],
     "ui:signature.quoted": [
      "dikutip mentah-mentah; gema harus berupa barismu sendiri"
@@ -43739,6 +45743,12 @@
     "ui:verdict.judge": [
      "Juri"
     ],
+    "ui:verdict.worldCard": [
+     "Kartu dunia: Verona"
+    ],
+    "ui:verdict.notTaken": [
+     "kecerdikan: tidak direbut"
+    ],
     "ui:verdict.roundScore": [
      "Nilai ronde"
     ],
@@ -43762,6 +45772,9 @@
     ],
     "ui:verdict.judgedRules": [
      "Dinilai dengan aturan (keragaman, alusi, bunyi, dan balasan), karena tidak ada model yang berjalan."
+    ],
+    "ui:verdict.copyForfeits": [
+     "Syair salinan kehilangan nilai dari juri."
     ],
     "ui:verdict.next": [
      "Ronde berikutnya"

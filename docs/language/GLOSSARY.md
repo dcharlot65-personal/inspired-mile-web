@@ -609,10 +609,10 @@ A character's name, as Wikidata records it in the language (sources/wikidata-nam
 | de | Zweizeiler | de Wikipedia article Zweizeiler (Verslehre) (Wikidata Q4779829) |
 | it | Distico | it Wikipedia article Distico (Wikidata Q4779829) |
 | pt | Dístico | pt Wikipedia article Dístico (Wikidata Q4779829) (English Wiktionary's translation table gives parelha; the Wikipedia title is kept.) |
-| pl | Dystych | Title of the pl Wikipedia article Dystych (Wikidata Q906442, distich); the couplet item itself has no Polish article. (English Wiktionary's translation table gives dwuwiersz; the Wikipedia title is kept.) |
+| pl | Dystych | English Wiktionary's couplet table (poetic sense) gives dwuwiersz and dystych. Dystych is also the title of the pl Wikipedia article on the distich (Q906442); the couplet item itself has no Polish article. |
 | ru | Двустишие | ru Wikipedia article Двустишие (Wikidata Q4779829) |
 | ar | بيتان مقفّيان | Not sourced. A description (two rhymed lines), not a term. Wikidata links the Arabic article مربع (شعر) to this concept; it was not adopted because, to the translator's knowledge, مربع names a four-part stanza in Arabic prosody. Not verified: for a native reader. |
-| hi | दोहा | दोहा is the rhymed couplet of the Hindi tradition (hi Wikipedia article दोहा, Wikidata Q5288532). A doha also has a fixed metre, which the game does not check. Replaces the coined दोहा-युग्म. |
+| hi | दोहा | Not sourced: no Hindi article, label or dictionary entry names the couplet (Q4779829). दोहा is the hi Wikipedia article of the doha (Q5288532), a rhymed couplet with a fixed metre (13 and 11 mātrās) that the game does not check, so the name points to a stricter form. Kept for a native reader to confirm or replace; it replaced the coined दोहा-युग्म. |
 | zh | 对句 | zh Wikipedia article 对句 (Wikidata Q4779829) |
 | ja | 二行連 | ja Wikipedia article 二行連 (Wikidata Q4779829) (English Wiktionary's translation table gives 対句; the Wikipedia title is kept.) |
 | ko | 쿠플레 | ko Wikipedia article 쿠플레 (Wikidata Q4779829) (English Wiktionary's translation table gives 대구(對句); the Wikipedia title is kept.) |
@@ -624,11 +624,11 @@ A character's name, as Wikidata records it in the language (sources/wikidata-nam
 
 | Language | Name | Where it comes from |
 |---|---|---|
-| es | Cuarteta de pareados | Cuarteta + the rhyme pattern. Cuarteta: es Wikipedia article Cuarteta (Q8352204) |
+| es | Cuarteta de pareados | Cuarteta + the rhyme pattern. Cuarteta: English Wiktionary's quatrain table ('a stanza of four lines') gives cuarteto, cuarteta, redondilla and serventesio; Wikidata's es article for the quatrain item is Cuarteto (poesía), and the es article Cuarteta is another item (Q8352204). The rhyme-pattern words are not sourced. |
 | fr | Quatrain à rimes plates | Quatrain + the rhyme pattern. Quatrain: fr Wikipedia article Quatrain (Wikidata Q570948) |
 | de | Vierzeiler im Paarreim | Vierzeiler + the rhyme pattern. Vierzeiler: de Wikipedia article Vierzeiler (Wikidata Q570948) |
 | it | Quartina a rima baciata | Quartina + the rhyme pattern. Quartina: it Wikipedia article Quartina (metrica) (Wikidata Q570948) |
-| pt | Quadra de rimas emparelhadas | Quadra + the rhyme pattern. Quadra: Wikidata alias quadra |
+| pt | Quadra de rimas emparelhadas | Quadra + the rhyme pattern. Quadra: English Wiktionary's quatrain table ('a stanza of four lines') gives quarteto and quadra, and Wikidata has quadra as an alias of the quatrain item (its pt label is quadra poética). The rhyme-pattern words are not sourced. |
 | pl | Czterowiersz parzysty | Czterowiersz + the rhyme pattern. Czterowiersz: English Wiktionary (docs/language/sources/wiktionary-translations.json), quatrain, 'a stanza of four lines': Polish czterowiersz (also tetrastych, kwartyna). The rhyme-pattern words are not sourced. |
 | ru | Катрен с парной рифмой | Катрен + the rhyme pattern. Катрен: ru Wikipedia article Катрен (Wikidata Q570948) |
 | ar | رباعية مزدوجة القافية | رباعية + the rhyme pattern. رباعية: ar Wikipedia article رباعية (شعر) (Wikidata Q570948) |
@@ -644,11 +644,11 @@ A character's name, as Wikidata records it in the language (sources/wikidata-nam
 
 | Language | Name | Where it comes from |
 |---|---|---|
-| es | Cuarteta cruzada | Cuarteta + the rhyme pattern. Cuarteta: es Wikipedia article Cuarteta (Q8352204) |
+| es | Cuarteta cruzada | Cuarteta + the rhyme pattern. Cuarteta: English Wiktionary's quatrain table ('a stanza of four lines') gives cuarteto, cuarteta, redondilla and serventesio; Wikidata's es article for the quatrain item is Cuarteto (poesía), and the es article Cuarteta is another item (Q8352204). The rhyme-pattern words are not sourced. |
 | fr | Quatrain à rimes croisées | Quatrain + the rhyme pattern. Quatrain: fr Wikipedia article Quatrain (Wikidata Q570948) |
 | de | Vierzeiler im Kreuzreim | Vierzeiler + the rhyme pattern. Vierzeiler: de Wikipedia article Vierzeiler (Wikidata Q570948) |
 | it | Quartina a rima alternata | Quartina + the rhyme pattern. Quartina: it Wikipedia article Quartina (metrica) (Wikidata Q570948) |
-| pt | Quadra de rimas cruzadas | Quadra + the rhyme pattern. Quadra: Wikidata alias quadra |
+| pt | Quadra de rimas cruzadas | Quadra + the rhyme pattern. Quadra: English Wiktionary's quatrain table ('a stanza of four lines') gives quarteto and quadra, and Wikidata has quadra as an alias of the quatrain item (its pt label is quadra poética). The rhyme-pattern words are not sourced. |
 | pl | Czterowiersz krzyżowy | Czterowiersz + the rhyme pattern. Czterowiersz: English Wiktionary (docs/language/sources/wiktionary-translations.json), quatrain, 'a stanza of four lines': Polish czterowiersz (also tetrastych, kwartyna). The rhyme-pattern words are not sourced. |
 | ru | Катрен с перекрёстной рифмой | Катрен + the rhyme pattern. Катрен: ru Wikipedia article Катрен (Wikidata Q570948) |
 | ar | رباعية متقاطعة القافية | رباعية + the rhyme pattern. رباعية: ar Wikipedia article رباعية (شعر) (Wikidata Q570948) |
@@ -711,7 +711,7 @@ A character's name, as Wikidata records it in the language (sources/wikidata-nam
 | pt | Acróstico | pt Wikipedia article Acróstico (Wikidata Q173287) |
 | pl | Akrostych | pl Wikipedia article Akrostych (Wikidata Q173287) |
 | ru | Акростих | ru Wikipedia article Акростих (Wikidata Q173287) |
-| ar | التطريز | Title of the ar Wikipedia article تطريز (شعر) (Wikidata Q40376349). Wikidata links a different article, تتويج (شعر), to the acrostic item. Which is the better name is for a native reader. |
+| ar | تتويج | Wikidata label of the acrostic item (تتويج) and its ar Wikipedia article تتويج (شعر) (Q173287). Until 2026-11-17 the name was التطريز, taken from the article تطريز (شعر), which is another item (Q40376349) and defines another figure (words of equal measure in consecutive lines); the article تتويج (شعر) calls the acrostic poem المتوجة or المطرزة. |
 | hi | एक्रोस्टिक कविता | hi Wikipedia article एक्रोस्टिक कविता (Wikidata Q173287) |
 | zh | 藏头诗 | English Wiktionary (docs/language/sources/wiktionary-translations.json), acrostic, sense 'poem or text in which certain letters spell out a name or message': Mandarin 藏頭詩, written 藏头诗 in simplified characters. The zh Wikipedia article is 離合詩 (离合诗), with 離合藏頭詩 among Wikidata's aliases. |
 | ja | 折句 | ja Wikipedia article 折句 (Wikidata Q173287) |
@@ -748,7 +748,7 @@ A character's name, as Wikidata records it in the language (sources/wikidata-nam
 | fr | Haïku | fr Wikipedia article Haïku (Wikidata Q37707) |
 | de | Haiku | de Wikipedia article Haiku (Wikidata Q37707) |
 | it | Haiku | it Wikipedia article Haiku (Wikidata Q37707) |
-| pt | Haicai | Wikidata alias; the usual Brazilian name. The pt article is titled Haiku. |
+| pt | Haicai | English Wiktionary's haiku table gives haiku and haicai, and Wikidata has Haicai as an alias of the haiku item; the usual Brazilian name. The pt article is titled Haiku, and the pt label is haikai. |
 | pl | Haiku | pl Wikipedia article Haiku (Wikidata Q37707) |
 | ru | Хайку | ru Wikipedia article Хайку (Wikidata Q37707) |
 | ar | هايكو | ar Wikipedia article هايكو (Wikidata Q37707) |
@@ -770,7 +770,7 @@ A character's name, as Wikidata records it in the language (sources/wikidata-nam
 | it | Distico eroico | it Wikipedia article Distico eroico (Wikidata Q2714966) |
 | pt | Dístico heroico | Not sourced: no article for this concept in this language. For a native reader. |
 | pl | Dystych bohaterski | Not sourced: no article for this concept in this language. For a native reader. |
-| ru | Героический стих | ru Wikipedia article Героический стих (Wikidata Q2714966) |
+| ru | Героический стих | ru Wikipedia article Героический стих, Wikidata's sitelink and label for the heroic-couplet item (Q2714966). That article defines heroic verse, a metre (hexameter, alexandrine, iambic pentameter), not a rhymed couplet: a native reader should say whether a Russian reader takes it for the couplet (HUMAN-REVIEW.md). |
 | ar | دوبيت ملحمي | ar Wikipedia article دوبيت ملحمي (Wikidata Q2714966) |
 | hi | वीर युग्म | No hi article. Not sourced: for a native reader. |
 | zh | 英雄双行体 | zh Wikipedia article 英雄双行体 (Wikidata Q2714966) |
@@ -790,7 +790,7 @@ A character's name, as Wikidata records it in the language (sources/wikidata-nam
 | it | Jueju | Pinyin name, as the English, German and Indonesian Wikipedias title it (Wikidata Q537198); no article in this language. |
 | pt | Jueju | Pinyin name, as the English, German and Indonesian Wikipedias title it (Wikidata Q537198); no article in this language. |
 | pl | Jueju | Pinyin name, as the English, German and Indonesian Wikipedias title it (Wikidata Q537198); no article in this language. |
-| ru | Цзюэцзюй | Wikidata alias (цзюэцзюй); no ru article. |
+| ru | Цзюэцзюй | Wikidata alias of the jueju item (цзюэцзюй); no ru article. |
 | ar | جويجو | Not sourced: no article for this concept in this language. For a native reader. |
 | hi | जुएजु | Not sourced: no article for this concept in this language. For a native reader. |
 | zh | 绝句 | zh Wikipedia article 绝句 (Wikidata Q537198) |
@@ -831,10 +831,10 @@ A character's name, as Wikidata records it in the language (sources/wikidata-nam
 | pt | Aliteração | pt Wikipedia article Aliteração (Wikidata Q484495) |
 | pl | Aliteracja | pl Wikipedia article Aliteracja (Wikidata Q484495) |
 | ru | Аллитерация | ru Wikipedia article Аллитерация (Wikidata Q484495) |
-| ar | الجناس الاستهلالي | Wikidata alias (الجناس الاستهلالي). The article is titled سجع ابتدائي. |
+| ar | سجع ابتدائي | Wikidata label of the alliteration item and the title of its ar Wikipedia article, سجع ابتدائي (Q484495). Until 2026-11-17 the name was the alias الجناس الاستهلالي, which that article says is used for the acrostic (التتويج). |
 | hi | अनुप्रास | hi Wikipedia article अनुप्रास (Wikidata Q484495) |
 | zh | 头韵法 | The zh article 頭韻法, in simplified characters. |
-| ja | 頭韻 | Wikidata alias (頭韻); the article is 頭韻法. |
+| ja | 頭韻 | English Wiktionary's alliteration table gives 頭韻, which Wikidata also has as an alias of the item; the ja article is titled 頭韻法 (the -法 'method' form). |
 | ko | 두운 | ko Wikipedia article 두운 (Wikidata Q484495) |
 | vi | Điệp phụ âm | Not sourced: no article for this concept in this language. For a native reader. |
 | th | สัมผัสอักษร | Not sourced: no article for this concept in this language. For a native reader. |
@@ -847,9 +847,9 @@ A character's name, as Wikidata records it in the language (sources/wikidata-nam
 | es | Rima interna | es Wikipedia article Rima interna (Wikidata Q2098331) |
 | fr | Rime intérieure | Not sourced: no article for this concept in this language. For a native reader. |
 | de | Binnenreim | de Wikipedia article Binnenreim (Wikidata Q2098331) |
-| it | Rima interna | it Wikipedia article Rima interna (Wikidata Q2098331) |
+| it | Rima interna | Wikidata's it label of the internal-rhyme item (rima interna). Its it sitelink, Rima interna, is a redirect to the article Rima (Wikidata badges it as a sitelink to a redirect), so it is not an article title. |
 | pt | Rima interna | Not sourced: no article for this concept in this language. For a native reader. |
-| pl | Rym wewnętrzny | Title of the pl Wikipedia article Rym wewnętrzny (Wikidata Q30912590). |
+| pl | Rym wewnętrzny | Not sourced: the internal-rhyme item (Q2098331) has no Polish label or article. The pl Wikipedia article Rym wewnętrzny exists, but Wikidata keeps it on an item of its own (Q30912590, with no statements), not on internal rhyme; that the two are the same is the translator's reading. For a native reader. |
 | ru | Внутренняя рифма | Wikidata label (внутренняя рифма); no ru article. |
 | ar | القافية الداخلية | Not sourced: no article for this concept in this language (Wikidata label: السجع في الشعر). For a native reader. |
 | hi | भीतरी तुक | Not sourced: no article for this concept in this language. For a native reader. |
@@ -857,6 +857,6 @@ A character's name, as Wikidata records it in the language (sources/wikidata-nam
 | ja | 中間韻 | ja Wikipedia article 中間韻 (Wikidata Q2098331) |
 | ko | 행 안의 운 | Not sourced: no article for this concept in this language. For a native reader. |
 | vi | Vần lưng | Not sourced: no article for this concept in this language. For a native reader. |
-| th | สัมผัสใน | A standard term of Thai prosody; Wikidata lists สัมผัสใน among the aliases of the Thai rhyme article. No article of its own. |
+| th | สัมผัสใน | Not sourced: the internal-rhyme item (Q2098331) has no Thai label or article. สัมผัสใน appears among the aliases of the Thai rhyme item (Q178715, คำคล้องจอง), which shows the word is in use, not that it names this device; the translator's reading is that it is the Thai prosody term for rhyme within a line. For a native reader. |
 | id | Rima dalam | Not sourced: no article for this concept in this language. For a native reader. |
 
