@@ -36,7 +36,8 @@ export async function uiStrings(lang) {
 
 /**
  * The player-facing text of a language pack: { id: text }. Verses are split
- * into lines (a verse is not a sentence); words are given one by one.
+ * into lines (a verse is not a sentence); words are given one by one. The
+ * written opponent's verses: `written`, and `spare`, those it keeps for a curse.
  */
 export async function packStrings(lang) {
   const pack = await loadPack(lang);
@@ -44,6 +45,8 @@ export async function packStrings(lang) {
   pack.acrostic.forEach((w, i) => (out[`acrostic.${i}`] = w));
   for (const [id, words] of Object.entries(pack.relics)) words.forEach((w, i) => (out[`relics.${id}.${i}`] = w));
   for (const [form, verses] of Object.entries(pack.written)) verses.forEach((v, i) => v.split('\n').forEach((line, j) => (out[`written.${form}.${i}.${j}`] = line)));
+  // The verses held back for a cursed opponent (packs/index.ts `spare`; English only, since 2026-11-17).
+  for (const [form, verses] of Object.entries(pack.spare ?? {})) verses.forEach((v, i) => v.split('\n').forEach((line, j) => (out[`spare.${form}.${i}.${j}`] = line)));
   for (const [unit, lines] of Object.entries(pack.acrosticLines)) lines.forEach((l, i) => (out[`acrosticLines.${unit}.${i}`] = l));
   return out;
 }
