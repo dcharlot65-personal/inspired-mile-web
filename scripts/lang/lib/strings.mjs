@@ -145,12 +145,14 @@ export async function renderSamples(lang, template, opts = {}) {
   collect(parts);
   const cats = categorySamples(lang);
   // opts.typical: one sentence only, every count at a number the game really shows.
-  const runs = counted.size && !opts.typical ? Object.entries(cats).map(([cat, n]) => ({ cat, n })) : [{ cat: null, n: null }];
+  // opts.n: one sentence only, every count at that number (the English beside a plural form).
+  const one = opts.typical || opts.n !== undefined;
+  const runs = counted.size && !one ? Object.entries(cats).map(([cat, n]) => ({ cat, n })) : [{ cat: null, n: opts.n ?? null }];
   // Exact-number branches (=0, =1) are sentences too.
   const exact = new Set();
   const collectExact = (ps) => ps.forEach((p) => { if (p.type === 'plural') { for (const [sel, o] of Object.entries(p.options)) { if (sel[0] === '=') exact.add(Number(sel.slice(1))); collectExact(o); } } });
   collectExact(parts);
-  if (!opts.typical) for (const n of exact) runs.push({ cat: `=${n}`, n });
+  if (!one) for (const n of exact) runs.push({ cat: `=${n}`, n });
 
   const out = [];
   for (const run of runs) {
@@ -174,7 +176,7 @@ export async function renderSamples(lang, template, opts = {}) {
       }
     };
     walk(parts, '#');
-    out.push({ text, filled, category: run.cat });
+    out.push({ text, filled, category: run.cat, n: run.n });
   }
   // Two categories that give the same sentence need checking once.
   const seen = new Set();
@@ -189,11 +191,31 @@ export async function renderSamples(lang, template, opts = {}) {
  * word i; src/i18n/quality.test.ts holds the lists to the same length). The written opponent's
  * verses and the acrostic words are not here: each language's were written to keep a form, not
  * translated line by line, so there is no English line to compare them with.
+ *
+ * A string with a count also gives each of its other plural forms, keyed '<key>@<category>' (Arabic
+ * zero, one, two, few, many; Polish and Russian few and many; …), each at the number that selects
+ * it, and meaningEnglish() gives the English at that same number. Until 2026-11-17 only the typical
+ * form was back-translated, so a wrong Arabic dual or Polish genitive plural was never read.
  */
 export async function meaningTexts(lang, s) {
   const out = {};
-  for (const [key, template] of Object.entries(s.ui)) if (!(key in HOUSE_QUOTES)) out[key] = (await renderSamples(lang, template, { typical: true, key }))[0].text;
+  for (const [key, template] of Object.entries(s.ui)) {
+    if (key in HOUSE_QUOTES) continue;
+    const typical = (out[key] = (await renderSamples(lang, template, { typical: true, key }))[0].text);
+    for (const x of await renderSamples(lang, template, { key })) if (x.category && x.text !== typical) out[`${key}@${x.category}`] = x.text;
+  }
   for (const [id, text] of Object.entries(s.pack)) if (id.startsWith('relics.')) out[`pack:${id}`] = text;
+  return out;
+}
+
+/** The English each of meaningTexts(lang)'s plural forms is compared with: { '<key>@<category>': text }. */
+export async function meaningEnglish(lang, s, en) {
+  const out = {};
+  for (const [key, template] of Object.entries(s.ui)) {
+    if (key in HOUSE_QUOTES || !(key in en.ui)) continue;
+    const typical = (await renderSamples(lang, template, { typical: true, key }))[0].text;
+    for (const x of await renderSamples(lang, template, { key })) if (x.category && x.text !== typical) out[`${key}@${x.category}`] = (await renderSamples('en', en.ui[key], { key, n: x.n }))[0].text;
+  }
   return out;
 }
 

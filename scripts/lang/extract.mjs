@@ -8,7 +8,7 @@
  */
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
-import { allStrings, meaningTexts, renderSamples, ROOT, HOUSE_QUOTES } from './lib/strings.mjs';
+import { allStrings, meaningEnglish, meaningTexts, renderSamples, ROOT, HOUSE_QUOTES } from './lib/strings.mjs';
 
 const args = process.argv.slice(2);
 const withSamples = args.includes('--samples');
@@ -21,8 +21,10 @@ if (withSamples) {
       if (key in HOUSE_QUOTES) continue;
       s.samples[key] = await renderSamples(lang, template, { key });
     }
-    // What back-translation compares with the English: see meaningTexts().
+    // What back-translation compares with the English: see meaningTexts(). The English for each
+    // further plural form, at the same number, is in typicalEnglish.
     s.typical = await meaningTexts(lang, s);
+    if (lang !== 'en') s.typicalEnglish = await meaningEnglish(lang, s, strings.en);
   }
 }
 mkdirSync(dirname(out), { recursive: true });

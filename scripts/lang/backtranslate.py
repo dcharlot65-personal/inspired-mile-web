@@ -113,24 +113,34 @@ for lang in data:
     if lang == 'en' or (only and lang not in only):
         continue
     old = result['languages'].get(lang, {})
+    # This language's own keys: the English ones, and each further plural form of a string with a
+    # count ('<key>@<category>'), compared with the English at the same number (typicalEnglish).
+    E = {**en, **data[lang].get('typicalEnglish', {})}
+    keys = [k for k in data[lang]['typical'] if k in E]
     # Resume, string by string: a score is kept only while both the translation and the English
     # it was scored against are exactly what they were. Anything else is translated again.
-    todo = [k for k in keys if not (k in old and old[k]['text'] == data[lang]['typical'][k] and old[k]['english'] == en[k])]
+    todo = [k for k in keys if not (k in old and old[k]['text'] == data[lang]['typical'][k] and old[k]['english'] == E[k])]
     # LaBSE scores are added to strings scored before it was used, without translating them again.
     unx = [k for k in keys if k not in todo and k in old and 'xcos' not in old[k]] if bitext else []
     if not todo and not unx and set(old) == set(keys):
         continue
     texts = [data[lang]['typical'][k] for k in todo]
     bts = back(texts, lang) if todo else []
-    right = score(bts, [en[k] for k in todo]) if todo else []
-    # the control: the same back-translations against the next key's English
-    nxt = {k: en[keys[(i + 1) % len(keys)]] for i, k in enumerate(keys)}
+    right = score(bts, [E[k] for k in todo]) if todo else []
+    # the control: the same back-translations against the next string's English (not another plural
+    # form of the same string, which differs from it only in the number)
+    def other(i):
+        j = (i + 1) % len(keys)
+        while keys[j].split('@')[0] == keys[i].split('@')[0] and j != i:
+            j = (j + 1) % len(keys)
+        return E[keys[j]]
+    nxt = {k: other(i) for i, k in enumerate(keys)}
     wrong = score(bts, [nxt[k] for k in todo]) if todo else []
-    fresh = {k: {'text': t, 'english': en[k], 'back': bt, **s, 'controlCos': w['cos']} for k, t, bt, s, w in zip(todo, texts, bts, right, wrong)}
+    fresh = {k: {'text': t, 'english': E[k], 'back': bt, **s, 'controlCos': w['cos']} for k, t, bt, s, w in zip(todo, texts, bts, right, wrong)}
     merged = {k: fresh.get(k) or old[k] for k in keys}
     if bitext:
         nk = [k for k in keys if 'xcos' not in merged[k]]
-        xs = xscore([merged[k]['text'] for k in nk], [en[k] for k in nk])
+        xs = xscore([merged[k]['text'] for k in nk], [E[k] for k in nk])
         xw = xscore([merged[k]['text'] for k in nk], [nxt[k] for k in nk])
         for k, x, w in zip(nk, xs, xw):
             merged[k]['xcos'] = x
