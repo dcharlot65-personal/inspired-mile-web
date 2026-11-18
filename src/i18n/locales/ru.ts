@@ -241,7 +241,7 @@ const ru: Record<string, string> = {
   'auth.viewProfile': 'Открыть профиль',
   'auth.signOut': 'Выйти',
   'auth.signOutEverywhere': 'Выйти на всех устройствах',
-  'auth.legacyAccountNote': 'Раньше ты входил сюда через Google или по адресу почты? Этот способ входа пока отключён, поэтому старую учётную запись ещё нельзя открыть. Если создать учётную запись здесь, она будет новой и пустой.',
+  'auth.legacyAccountNote': 'Есть старая учётная запись со входом через Google или по адресу почты? Этот способ входа пока отключён, поэтому старую учётную запись ещё нельзя открыть. Учётная запись, созданная здесь, будет новой и пустой.',
   'auth.working': 'Минутку…',
   'auth.error.age_required': 'Сначала подтверди возраст на главной странице. Учётные записи доступны игрокам от 13 лет.',
   'auth.error.email_in_use': 'Этот адрес уже принадлежит другой учётной записи. Выйди и войди с ним.',
@@ -344,7 +344,7 @@ const ru: Record<string, string> = {
   'illegal.potion-not-in-deck': 'Этого зелья нет в твоей колоде.',
   'illegal.relic-spent': 'Эта реликвия уже потрачена.',
   'illegal.potion-spent': 'Это зелье уже потрачено.',
-  'illegal.potion-last-round': 'Проклинать больше нечего: это последний раунд.',
+  'illegal.potion-last-round': 'Не осталось строфы, которую можно проклясть: это последний раунд.',
   'illegal.no-ink': 'Не хватает чернил.',
 
   // --- Дуэль: список на лету ---
@@ -397,7 +397,7 @@ const ru: Record<string, string> = {
   'verdict.held': 'соблюдено',
   'verdict.craft': 'Мастерство',
   'verdict.judge': 'Судья',
-  'verdict.worldCard': 'Карта мира: {city}',
+  'verdict.worldCard': 'Игральная карта мира: {city}',
   'verdict.notTaken': '{criterion}: не взято',
   'verdict.roundScore': 'Счёт раунда',
   'verdict.criterion': '{criterion}: {who}',

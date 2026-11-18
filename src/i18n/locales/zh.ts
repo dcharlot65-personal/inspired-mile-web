@@ -256,7 +256,7 @@ const zh: Record<string, string> = {
   'auth.error.passkey_unsupported': '这个浏览器无法使用通行密钥。',
   'auth.error.passkey_cancelled': '没有使用通行密钥。准备好后请再试。',
   'auth.error.passkey_not_accepted': '这把通行密钥未被接受。请用邮件验证码登录，然后添加新的通行密钥。',
-  'auth.error.passkey_not_accepted_no_email': '这把通行密钥未被接受。它可能已从账户中移除，或者账户已不存在。',
+  'auth.error.passkey_not_accepted_no_email': '这个通行密钥未被接受。它可能已从账户中移除，或者账户已不存在。',
   'auth.error.reauth_required': '请先确认是你本人：退出登录，重新登录，然后再试一次。',
   'auth.error.reauth_unavailable': '要进行此操作，请先退出登录，再用邮件验证码重新登录。',
   'auth.error.too_many_attempts': '这个地址的错误验证码太多了。请明天再试，或用通行密钥登录。',
