@@ -1,0 +1,2300 @@
+{
+ "about": "The 16 core-locale keys that the merge of integrate/wave3 (0346ee1) brought in (src/i18n/locales/*.ts), checked in all 15 languages with branch lang/qa-pipeline's tools as they stand at fa198bc (scripts/lang: check.mjs, glossary.mjs, grammar.mjs with LanguageTool 6.6 and Hunspell, backtranslate.py with MADLAD-400 + MiniLM + LaBSE, meaning.mjs), run on a scratch merge of fa198bc with 0346ee1 (qa-pipeline's text for every older key, the integration's for the 16 new ones). The only change to the tools was a sample value for {lines} in lib/strings.mjs, which they had none for. 'reading' is the engineer's own reading (a language model, not a native speaker). This branch does not edit the core locale (its brief); 'proposal' is a suggested new text in lang/qa-pipeline's apply.mjs format, checked by the same tools (proposalCheck).",
+ "ran": "2026-11-17, Mac Studio (rb), LanguageTool on 127.0.0.1:46341 under memguard; selftest in the same run flagged known-bad sentences (en, es, fr, de 4 of 4; see grammar.selftest of that run)",
+ "keys": [
+  "auth.error.passkey_not_accepted_no_email",
+  "auth.error.reauth_required",
+  "auth.error.reauth_unavailable",
+  "auth.error.too_many_attempts",
+  "auth.legacyAccountNote",
+  "auth.signOutEverywhere",
+  "hand.potionGamble",
+  "illegal.potion-last-round",
+  "live.judgeUnread",
+  "signature.hintTwo",
+  "verdict.copyForfeits",
+  "verdict.notTaken",
+  "verdict.worldCard",
+  "void.copied",
+  "void.label",
+  "void.thin"
+ ],
+ "languages": {
+  "es": {
+   "auth.error.passkey_not_accepted_no_email": {
+    "text": "Esa llave de acceso no ha sido aceptada. Puede que se haya quitado de la cuenta, o que la cuenta ya no exista.",
+    "english": "That passkey was not accepted. It may have been removed from the account, or the account may no longer exist.",
+    "back": "That passkey has not been accepted, it may have been removed from the account or the account no longer exists.",
+    "cos": 0.98,
+    "labse": 0.919
+   },
+   "auth.error.reauth_required": {
+    "text": "Primero confirma que eres tú: cierra sesión, vuelve a entrar e inténtalo otra vez.",
+    "english": "Confirm it is you first: sign out, sign in again, then try once more.",
+    "back": "First confirm that it's you: sign out, re-sign in and try again.",
+    "cos": 0.921,
+    "labse": 0.913
+   },
+   "auth.error.reauth_unavailable": {
+    "text": "Para hacer esto, primero cierra sesión y vuelve a entrar con un código por correo.",
+    "english": "To do this, sign out and sign in again with an emailed code first.",
+    "back": "To do this, first log out and re-enter with a code mailed to you.",
+    "cos": 0.91,
+    "labse": 0.906
+   },
+   "auth.error.too_many_attempts": {
+    "text": "Demasiados códigos incorrectos para esta dirección. Inténtalo mañana, o entra con una llave de acceso.",
+    "english": "Too many wrong codes for this address. Try again tomorrow, or sign in with a passkey.",
+    "back": "Too many incorrect codes for this address, please try again tomorrow or log in with an access key.",
+    "cos": 0.934,
+    "labse": 0.916
+   },
+   "auth.legacyAccountNote": {
+    "text": "¿Entraste aquí antes con Google o con una dirección de correo? Esa forma de entrar está desactivada por ahora, así que una cuenta antigua todavía no se puede abrir. Si creas una cuenta aquí, será nueva y estará vacía.",
+    "english": "Signed in here before with Google or an email address? That way in is switched off for now, so an older account cannot be opened yet. Creating an account here makes a new, empty one.",
+    "back": "Did you sign in here before with Google or an email address? That way of signing in is disabled for now, so an old account can't be opened yet. If you create an account here, it will be new and empty.",
+    "cos": 0.89,
+    "labse": 0.94,
+    "tools": [
+     {
+      "tool": "hunspell",
+      "rule": "SPELLING",
+      "at": "Google",
+      "reading": "A name."
+     }
+    ]
+   },
+   "auth.signOutEverywhere": {
+    "text": "Cerrar sesión en todos los dispositivos",
+    "english": "Sign out on every device",
+    "back": "Sign out on all devices",
+    "cos": 0.97,
+    "labse": 0.835
+   },
+   "hand.potionGamble": {
+    "text": "Si esta ronda decide el duelo, la poción se gasta en vano.",
+    "english": "If this round settles the match, the potion is spent for nothing.",
+    "back": "If this round decides the duel, the potion is spent in vain.",
+    "cos": 0.802,
+    "labse": 0.81
+   },
+   "illegal.potion-last-round": {
+    "text": "No queda estrofa que maldecir: esta es la última ronda.",
+    "english": "No verse is left to curse: this is the last round.",
+    "back": "No stanza left to curse: this is the last round.",
+    "cos": 0.919,
+    "labse": 0.89
+   },
+   "live.judgeUnread": {
+    "text": "Líneas que el modelo evaluador no leerá: 2 (calavera), 4 (burla). Se omite toda línea con un número o una palabra de puntuación (nota, puntuación, ganar…), y esta ronda la deciden entonces solo las reglas",
+    "english": "Lines the grading model will not read: 2 (skull), 4 (jest). A line holding a number or a judging word (grade, score, win…) is left out, and this round is then judged by the rules alone",
+    "back": "Lines that the evaluator model will not read: 2 (skull), 4 (mockery) Any line with a number or a scoring word (note, score, win…) is omitted, and this round is then decided only by the rules",
+    "cos": 0.777,
+    "labse": 0.895,
+    "glossary": [
+     "\"line\" should be verso (vers): Líneas que el modelo evaluador no leerá: {lines}. Se omite toda línea con un número o una palabra de puntuación (nota, puntuación, ganar…), y esta ronda la deciden entonces solo las reglas"
+    ],
+    "proposal": "Versos que el modelo evaluador no leerá: {lines}. Se omite todo verso con un número o una palabra de puntuación (nota, puntuación, ganar…), y esta ronda la deciden entonces solo las reglas",
+    "proposalCheck": {
+     "back": "Verses that the evaluating model will not read: 2 (skull), 4 (mockery) All verses with a number or a scoring word (note, score, win…) are omitted, and this round is then decided only by the rules",
+     "cos": 0.747,
+     "labse": 0.889,
+     "tools": []
+    }
+   },
+   "signature.hintTwo": {
+    "text": "evoca dos de: calavera, burla y tumba",
+    "english": "echo two of: skull, jest, and grave",
+    "back": "evokes two of: skull, mockery and tomb",
+    "cos": 0.634,
+    "labse": 0.842,
+    "tools": [
+     {
+      "tool": "languagetool",
+      "rule": "UPPERCASE_SENTENCE_START",
+      "at": "evoca",
+      "reading": "A fragment shown after a label, lower-case in English too."
+     }
+    ]
+   },
+   "verdict.copyForfeits": {
+    "text": "Una estrofa copiada pierde los puntos del juez.",
+    "english": "A copied verse forfeits the judge.",
+    "back": "A copied stanza loses the judge's points.",
+    "cos": 0.723,
+    "labse": 0.795
+   },
+   "verdict.notTaken": {
+    "text": "ingenio: no ganado",
+    "english": "wit not taken",
+    "back": "ingenuity: not won",
+    "cos": 0.236,
+    "labse": 0.606
+   },
+   "verdict.worldCard": {
+    "text": "Carta del mundo: Verona",
+    "english": "World card: Verona",
+    "back": "Map of the world: Verona",
+    "cos": 0.7,
+    "labse": 0.92
+   },
+   "void.copied": {
+    "text": "tomada de la otra estrofa: una respuesta debe ser tuya",
+    "english": "taken from the other verse: an answer must be your own",
+    "back": "taken from the other stanza: one answer must be yours",
+    "cos": 0.808,
+    "labse": 0.926,
+    "tools": [
+     {
+      "tool": "languagetool",
+      "rule": "UPPERCASE_SENTENCE_START",
+      "at": "tomada",
+      "reading": "A fragment shown after a label, lower-case in English too."
+     }
+    ]
+   },
+   "void.label": {
+    "text": "No puntúa",
+    "english": "Scores nothing",
+    "back": "Do not score",
+    "cos": 0.707,
+    "labse": 0.619
+   },
+   "void.thin": {
+    "text": "demasiado poco para ser una estrofa: hacen falta más palabras distintas",
+    "english": "too little to be a verse: it needs more different words",
+    "back": "too little to be a stanza: it takes more different words",
+    "cos": 0.879,
+    "labse": 0.927,
+    "tools": [
+     {
+      "tool": "languagetool",
+      "rule": "UPPERCASE_SENTENCE_START",
+      "at": "demasiado",
+      "reading": "A fragment shown after a label, lower-case in English too."
+     }
+    ]
+   }
+  },
+  "fr": {
+   "auth.error.passkey_not_accepted_no_email": {
+    "text": "Cette clé d’accès n’a pas été acceptée. Elle a peut-être été retirée du compte, ou le compte n’existe plus.",
+    "english": "That passkey was not accepted. It may have been removed from the account, or the account may no longer exist.",
+    "back": "This access key was not accepted, it may have been removed from the account or the account no longer exists.",
+    "cos": 0.77,
+    "labse": 0.888
+   },
+   "auth.error.reauth_required": {
+    "text": "Confirmez d’abord que c’est bien vous : déconnectez-vous, reconnectez-vous, puis réessayez.",
+    "english": "Confirm it is you first: sign out, sign in again, then try once more.",
+    "back": "First confirm that it is you: log out, log in again and try again.",
+    "cos": 0.842,
+    "labse": 0.874,
+    "mechanical": [
+     "\" :\" needs a no-break space before :"
+    ]
+   },
+   "auth.error.reauth_unavailable": {
+    "text": "Pour cela, déconnectez-vous d’abord, puis reconnectez-vous avec un code par e-mail.",
+    "english": "To do this, sign out and sign in again with an emailed code first.",
+    "back": "To do this, log out first and then sign in again with an email code.",
+    "cos": 0.937,
+    "labse": 0.876
+   },
+   "auth.error.too_many_attempts": {
+    "text": "Trop de codes erronés pour cette adresse. Réessayez demain, ou connectez-vous avec une clé d’accès.",
+    "english": "Too many wrong codes for this address. Try again tomorrow, or sign in with a passkey.",
+    "back": "Too many wrong codes for this address, please try again tomorrow or log in with an access key.",
+    "cos": 0.942,
+    "labse": 0.925,
+    "tools": [
+     {
+      "tool": "languagetool",
+      "rule": "OU",
+      "at": "ou",
+      "reading": "False alarm: ou (or) is meant, not où (where)."
+     }
+    ]
+   },
+   "auth.legacyAccountNote": {
+    "text": "Vous vous êtes déjà connecté ici avec Google ou une adresse e-mail ? Ce moyen d’accès est désactivé pour l’instant : un ancien compte ne peut donc pas encore être ouvert. Créer un compte ici en fait un nouveau, vide.",
+    "english": "Signed in here before with Google or an email address? That way in is switched off for now, so an older account cannot be opened yet. Creating an account here makes a new, empty one.",
+    "back": "Have you already logged in here with Google or an e-mail address? This means of access is currently deactivated, so an old account cannot be opened yet.Creating an account here makes it a new, empty one.",
+    "cos": 0.843,
+    "labse": 0.918,
+    "mechanical": [
+     "\" ?\" needs a no-break space before ?",
+     "\" :\" needs a no-break space before :"
+    ],
+    "proposal": "Vous avez déjà utilisé Google ou une adresse e-mail pour vous connecter ici ? Ce moyen d’accès est désactivé pour l’instant : un ancien compte ne peut donc pas encore être ouvert. Un compte créé ici sera nouveau et vide.",
+    "proposalCheck": {
+     "back": "If you have already used Google or an e-mail address to log in here, please note that this means of access is currently deactivated, so an old account cannot be opened yet. An account created here will be new and empty.",
+     "cos": 0.827,
+     "labse": 0.902,
+     "tools": []
+    }
+   },
+   "auth.signOutEverywhere": {
+    "text": "Se déconnecter sur tous les appareils",
+    "english": "Sign out on every device",
+    "back": "Sign out on all devices",
+    "cos": 0.97,
+    "labse": 0.854
+   },
+   "hand.potionGamble": {
+    "text": "Si cette manche décide du duel, la potion est dépensée pour rien.",
+    "english": "If this round settles the match, the potion is spent for nothing.",
+    "back": "If this round decides the duel, the potion is spent for nothing.",
+    "cos": 0.878,
+    "labse": 0.836
+   },
+   "illegal.potion-last-round": {
+    "text": "Il ne reste aucune strophe à maudire : c’est la dernière manche.",
+    "english": "No verse is left to curse: this is the last round.",
+    "back": "There is no stanza left to curse: this is the last round.",
+    "cos": 0.906,
+    "labse": 0.871,
+    "mechanical": [
+     "\" :\" needs a no-break space before :"
+    ]
+   },
+   "live.judgeUnread": {
+    "text": "Lignes que le modèle notateur ne lira pas : 2 (crâne), 4 (farce). Toute ligne contenant un nombre ou un mot de notation (note, score, gagner…) est laissée de côté, et cette manche est alors jugée par les seules règles",
+    "english": "Lines the grading model will not read: 2 (skull), 4 (jest). A line holding a number or a judging word (grade, score, win…) is left out, and this round is then judged by the rules alone",
+    "back": "Lines that the scoring model will not read: 2 (skull), 4 (stuffing) Any line containing a number or a scoring word (note, score, win…) is left aside, and this round is then judged only by the rules",
+    "cos": 0.822,
+    "labse": 0.903,
+    "tools": [
+     {
+      "tool": "languagetool",
+      "rule": "POINT",
+      "at": "règles",
+      "reading": "A checklist line; the English has no full stop either."
+     }
+    ],
+    "glossary": [
+     "\"line\" should be vers: Lignes que le modèle notateur ne lira pas : {lines}. Toute ligne contenant un nombre ou un mot de notation (note, score, gagner…) est laissée de côté, et cette manche est alors jugée par les seules règles"
+    ],
+    "mechanical": [
+     "\" :\" needs a no-break space before :"
+    ],
+    "proposal": "Vers que le modèle notateur ne lira pas : {lines}. Tout vers contenant un nombre ou un mot de notation (note, score, gagner…) est laissé de côté, et cette manche est alors jugée par les seules règles",
+    "proposalCheck": {
+     "back": "Verses that the scoring model will not read: 2 (skull), 4 (stuffing) Any verse containing a number or word of notation (note, score, win…) is left aside, and this round is then judged only by the rules",
+     "cos": 0.714,
+     "labse": 0.898,
+     "tools": [
+      "languagetool POINT «règles»"
+     ]
+    }
+   },
+   "signature.hintTwo": {
+    "text": "faites écho à deux de ces mots : crâne, farce et tombe",
+    "english": "echo two of: skull, jest, and grave",
+    "back": "echo two of these words : skull , farce and tomb",
+    "cos": 0.727,
+    "labse": 0.793,
+    "tools": [
+     {
+      "tool": "languagetool",
+      "rule": "UPPERCASE_SENTENCE_START",
+      "at": "faites",
+      "reading": "A fragment shown after a label, lower-case in English too."
+     }
+    ],
+    "mechanical": [
+     "\" :\" needs a no-break space before :"
+    ]
+   },
+   "verdict.copyForfeits": {
+    "text": "Une strophe copiée perd les points du juge.",
+    "english": "A copied verse forfeits the judge.",
+    "back": "A copied verse loses the judge's points.",
+    "cos": 0.807,
+    "labse": 0.825
+   },
+   "verdict.notTaken": {
+    "text": "esprit : non remporté",
+    "english": "wit not taken",
+    "back": "spirit: not won",
+    "cos": 0.293,
+    "labse": 0.685,
+    "mechanical": [
+     "\" :\" needs a no-break space before :"
+    ]
+   },
+   "verdict.worldCard": {
+    "text": "Carte du monde : Verona",
+    "english": "World card: Verona",
+    "back": "Map of the world: Verona",
+    "cos": 0.7,
+    "labse": 0.9,
+    "mechanical": [
+     "\" :\" needs a no-break space before :"
+    ]
+   },
+   "void.copied": {
+    "text": "reprise de l’autre strophe : une réponse doit être de vous",
+    "english": "taken from the other verse: an answer must be your own",
+    "back": "reprise of the other stanza: an answer must be from you",
+    "cos": 0.669,
+    "labse": 0.873,
+    "tools": [
+     {
+      "tool": "languagetool",
+      "rule": "UPPERCASE_SENTENCE_START",
+      "at": "reprise",
+      "reading": "A fragment shown after a label, lower-case in English too."
+     }
+    ],
+    "mechanical": [
+     "\" :\" needs a no-break space before :"
+    ]
+   },
+   "void.label": {
+    "text": "Ne rapporte rien",
+    "english": "Scores nothing",
+    "back": "Does not report anything",
+    "cos": 0.398,
+    "labse": 0.794
+   },
+   "void.thin": {
+    "text": "trop peu pour faire une strophe : il faut davantage de mots différents",
+    "english": "too little to be a verse: it needs more different words",
+    "back": "too little to make a stanza : you need more different words",
+    "cos": 0.827,
+    "labse": 0.91,
+    "tools": [
+     {
+      "tool": "languagetool",
+      "rule": "UPPERCASE_SENTENCE_START",
+      "at": "trop",
+      "reading": "A fragment shown after a label, lower-case in English too."
+     },
+     {
+      "tool": "languagetool",
+      "rule": "PLACE_ADJ",
+      "at": "de mots différents",
+      "reading": "False alarm: davantage de mots différents (distinct words) is meant; différents mots would mean various words."
+     }
+    ],
+    "mechanical": [
+     "\" :\" needs a no-break space before :"
+    ]
+   }
+  },
+  "de": {
+   "auth.error.passkey_not_accepted_no_email": {
+    "text": "Dieser Passkey wurde nicht akzeptiert. Vielleicht wurde er aus dem Konto entfernt, oder das Konto gibt es nicht mehr.",
+    "english": "That passkey was not accepted. It may have been removed from the account, or the account may no longer exist.",
+    "back": "This passkey was not accepted, it may have been removed from the account or the account no longer exists.",
+    "cos": 0.982,
+    "labse": 0.891
+   },
+   "auth.error.reauth_required": {
+    "text": "Bestätige zuerst, dass du es bist: Melde dich ab, melde dich wieder an und versuch es dann noch einmal.",
+    "english": "Confirm it is you first: sign out, sign in again, then try once more.",
+    "back": "First confirm that it's you: sign out, sign in again, and then try again.",
+    "cos": 0.941,
+    "labse": 0.927
+   },
+   "auth.error.reauth_unavailable": {
+    "text": "Melde dich dafür zuerst ab und dann mit einem Code per E-Mail wieder an.",
+    "english": "To do this, sign out and sign in again with an emailed code first.",
+    "back": "To do this, log out first and then sign in again with a code sent to you by email.",
+    "cos": 0.954,
+    "labse": 0.849,
+    "glossary": [
+     "\"sign-out\" should be abmelden (melde dich ab): Melde dich dafür zuerst ab und dann mit einem Code per E-Mail wieder an."
+    ]
+   },
+   "auth.error.too_many_attempts": {
+    "text": "Zu viele falsche Codes für diese Adresse. Versuch es morgen noch einmal oder melde dich mit einem Passkey an.",
+    "english": "Too many wrong codes for this address. Try again tomorrow, or sign in with a passkey.",
+    "back": "Too many wrong codes for this address, please try again tomorrow or sign in with a passkey.",
+    "cos": 0.973,
+    "labse": 0.929
+   },
+   "auth.legacyAccountNote": {
+    "text": "Hast du dich hier früher mit Google oder einer E-Mail-Adresse angemeldet? Dieser Weg ist vorerst abgeschaltet, ein älteres Konto lässt sich deshalb noch nicht öffnen. Wenn du hier ein Konto erstellst, ist es ein neues, leeres.",
+    "english": "Signed in here before with Google or an email address? That way in is switched off for now, so an older account cannot be opened yet. Creating an account here makes a new, empty one.",
+    "back": "If you've previously signed up with Google or an email address, this option is currently disabled so you can't open an older account yet. When you create an account here, it will be a new, empty one.",
+    "cos": 0.85,
+    "labse": 0.938
+   },
+   "auth.signOutEverywhere": {
+    "text": "Auf allen Geräten abmelden",
+    "english": "Sign out on every device",
+    "back": "Sign out on all devices",
+    "cos": 0.97,
+    "labse": 0.891
+   },
+   "hand.potionGamble": {
+    "text": "Entscheidet diese Runde das Duell, ist der Trank umsonst verbraucht.",
+    "english": "If this round settles the match, the potion is spent for nothing.",
+    "back": "If this round decides the duel, the potion is used for nothing.",
+    "cos": 0.801,
+    "labse": 0.819
+   },
+   "illegal.potion-last-round": {
+    "text": "Es bleibt keine Strophe zu verfluchen: Dies ist die letzte Runde.",
+    "english": "No verse is left to curse: this is the last round.",
+    "back": "There is no stanza left to curse: this is the last round.",
+    "cos": 0.906,
+    "labse": 0.852
+   },
+   "live.judgeUnread": {
+    "text": "Zeilen, die das bewertende Modell nicht liest: 2 (Schädel), 4 (Scherz). Eine Zeile mit einer Zahl oder einem Wertungswort (Note, Punkte, gewinnen …) wird ausgelassen, und diese Runde entscheiden dann allein die Regeln",
+    "english": "Lines the grading model will not read: 2 (skull), 4 (jest). A line holding a number or a judging word (grade, score, win…) is left out, and this round is then judged by the rules alone",
+    "back": "Lines that the evaluating model does not read: 2 (Skull), 4 (Joke) A line with a number or a rating word (note, points, win …) is omitted and this round will be decided by the rules alone",
+    "cos": 0.83,
+    "labse": 0.912,
+    "tools": [
+     {
+      "tool": "languagetool",
+      "rule": "PUNCTUATION_PARAGRAPH_END",
+      "at": "Regeln",
+      "reading": "A checklist line; the English has no full stop either."
+     },
+     {
+      "tool": "hunspell",
+      "rule": "SPELLING",
+      "at": "Wertungswort",
+      "reading": "A regular German compound (Wertung + Wort) the dictionary lacks."
+     }
+    ]
+   },
+   "signature.hintTwo": {
+    "text": "lass zwei davon anklingen: Schädel, Scherz und Grab",
+    "english": "echo two of: skull, jest, and grave",
+    "back": "let two of them ring: skull, joke and grave",
+    "cos": 0.626,
+    "labse": 0.817,
+    "tools": [
+     {
+      "tool": "languagetool",
+      "rule": "UPPERCASE_SENTENCE_START",
+      "at": "lass",
+      "reading": "A fragment shown after a label, lower-case in English too."
+     }
+    ]
+   },
+   "verdict.copyForfeits": {
+    "text": "Eine kopierte Strophe verliert die Punkte des Richters.",
+    "english": "A copied verse forfeits the judge.",
+    "back": "A copied stanza loses the judge's points.",
+    "cos": 0.723,
+    "labse": 0.7
+   },
+   "verdict.notTaken": {
+    "text": "Witz: nicht gewonnen",
+    "english": "wit not taken",
+    "back": "Joke: not won",
+    "cos": 0.266,
+    "labse": 0.595,
+    "meaningFlag": "both under 0.6",
+    "meaningReading": "Kept. The criterion's name is the core's own word (criterion.wit) and the rest says it was not won; the round trip fails on the one-word name (Joke, Attendance, Airfield, Notification, Witchcraft…), not on the sentence."
+   },
+   "verdict.worldCard": {
+    "text": "Weltkarte: Verona",
+    "english": "World card: Verona",
+    "back": "World map: Verona",
+    "cos": 0.705,
+    "labse": 0.948
+   },
+   "void.copied": {
+    "text": "aus der anderen Strophe übernommen: Eine Antwort muss deine eigene sein",
+    "english": "taken from the other verse: an answer must be your own",
+    "back": "taken from the other stanza: An answer must be your own",
+    "cos": 0.866,
+    "labse": 0.908,
+    "tools": [
+     {
+      "tool": "languagetool",
+      "rule": "UPPERCASE_SENTENCE_START",
+      "at": "aus",
+      "reading": "A fragment shown after a label, lower-case in English too."
+     }
+    ]
+   },
+   "void.label": {
+    "text": "Bringt keine Punkte",
+    "english": "Scores nothing",
+    "back": "Does not bring points",
+    "cos": 0.473,
+    "labse": 0.8
+   },
+   "void.thin": {
+    "text": "zu wenig für eine Strophe: Sie braucht mehr verschiedene Wörter",
+    "english": "too little to be a verse: it needs more different words",
+    "back": "too little for a stanza: it needs more different words",
+    "cos": 0.872,
+    "labse": 0.875,
+    "tools": [
+     {
+      "tool": "languagetool",
+      "rule": "UPPERCASE_SENTENCE_START",
+      "at": "zu",
+      "reading": "A fragment shown after a label, lower-case in English too."
+     }
+    ]
+   }
+  },
+  "it": {
+   "auth.error.passkey_not_accepted_no_email": {
+    "text": "Quella passkey non è stata accettata. Forse è stata rimossa dall’account, oppure l’account non esiste più.",
+    "english": "That passkey was not accepted. It may have been removed from the account, or the account may no longer exist.",
+    "back": "That passkey has not been accepted, it may have been removed from the account or the account no longer exists.",
+    "cos": 0.98,
+    "labse": 0.923
+   },
+   "auth.error.reauth_required": {
+    "text": "Prima conferma che sei tu: esci, accedi di nuovo e riprova.",
+    "english": "Confirm it is you first: sign out, sign in again, then try once more.",
+    "back": "First confirm that it's you: log out, sign in again and try again.",
+    "cos": 0.88,
+    "labse": 0.902
+   },
+   "auth.error.reauth_unavailable": {
+    "text": "Per farlo, prima esci e accedi di nuovo con un codice via email.",
+    "english": "To do this, sign out and sign in again with an emailed code first.",
+    "back": "To do this, first log out and then sign in again with an email code.",
+    "cos": 0.945,
+    "labse": 0.944
+   },
+   "auth.error.too_many_attempts": {
+    "text": "Troppi codici sbagliati per questo indirizzo. Riprova domani, oppure accedi con una passkey.",
+    "english": "Too many wrong codes for this address. Try again tomorrow, or sign in with a passkey.",
+    "back": "Too many wrong codes for this address. Try again tomorrow, or log in with a passkey.",
+    "cos": 0.992,
+    "labse": 0.956
+   },
+   "auth.legacyAccountNote": {
+    "text": "Avevi già fatto l’accesso qui con Google o con un indirizzo email? Quel modo di entrare per ora è disattivato, quindi un account più vecchio non si può ancora aprire. Se crei un account qui, sarà nuovo e vuoto.",
+    "english": "Signed in here before with Google or an email address? That way in is switched off for now, so an older account cannot be opened yet. Creating an account here makes a new, empty one.",
+    "back": "Did you already log in here with Google or an email address? That way of logging in is disabled for now, so an older account can not be opened yet.If you create an account here, it will be new and empty.",
+    "cos": 0.856,
+    "labse": 0.94
+   },
+   "auth.signOutEverywhere": {
+    "text": "Esci da tutti i dispositivi",
+    "english": "Sign out on every device",
+    "back": "Sign out from all devices",
+    "cos": 0.954,
+    "labse": 0.811
+   },
+   "hand.potionGamble": {
+    "text": "Se questo round decide il duello, la pozione è spesa per niente.",
+    "english": "If this round settles the match, the potion is spent for nothing.",
+    "back": "If this round decides the duel, the potion is spent for nothing.",
+    "cos": 0.878,
+    "labse": 0.829
+   },
+   "illegal.potion-last-round": {
+    "text": "Non resta alcuna strofa da maledire: questo è l’ultimo round.",
+    "english": "No verse is left to curse: this is the last round.",
+    "back": "There is no stanza left to curse: this is the last round.",
+    "cos": 0.906,
+    "labse": 0.886
+   },
+   "live.judgeUnread": {
+    "text": "Righe che il modello valutatore non leggerà: 2 (teschio), 4 (burla). Ogni riga con un numero o una parola di giudizio (voto, punteggio, vincere…) viene tralasciata, e questo round lo decidono allora solo le regole",
+    "english": "Lines the grading model will not read: 2 (skull), 4 (jest). A line holding a number or a judging word (grade, score, win…) is left out, and this round is then judged by the rules alone",
+    "back": "Lines that the evaluator model will not read: 2 (skull), 4 (joke).Every line with a number or a word of judgment (vote, score, win…) is omitted, and this round is then decided only by the rules",
+    "cos": 0.771,
+    "labse": 0.907,
+    "glossary": [
+     "\"line\" should be verso (vers): Righe che il modello valutatore non leggerà: {lines}. Ogni riga con un numero o una parola di giudizio (voto, punteggio, vincere…) viene tralasciata, e questo round lo decidono allora solo le regole"
+    ],
+    "proposal": "Versi che il modello valutatore non leggerà: {lines}. Ogni verso con un numero o una parola di giudizio (voto, punteggio, vincere…) viene tralasciato, e questo round lo decidono allora solo le regole",
+    "proposalCheck": {
+     "back": "Verses that the evaluator model will not read: 2 (skull), 4 (joke).Every verse with a number or a word of judgment (vote, score, win…) is omitted, and this round is then decided only by the rules",
+     "cos": 0.674,
+     "labse": 0.889,
+     "tools": []
+    }
+   },
+   "signature.hintTwo": {
+    "text": "riecheggia due di queste: teschio, burla e tomba",
+    "english": "echo two of: skull, jest, and grave",
+    "back": "echoes two of these: skull, mockery and tomb",
+    "cos": 0.716,
+    "labse": 0.839,
+    "tools": [
+     {
+      "tool": "languagetool",
+      "rule": "UPPERCASE_SENTENCE_START",
+      "at": "riecheggia",
+      "reading": "A fragment shown after a label, lower-case in English too."
+     }
+    ]
+   },
+   "verdict.copyForfeits": {
+    "text": "Una strofa copiata perde i punti del giudice.",
+    "english": "A copied verse forfeits the judge.",
+    "back": "A copied verse loses the judge's points.",
+    "cos": 0.807,
+    "labse": 0.81
+   },
+   "verdict.notTaken": {
+    "text": "arguzia: non conquistato",
+    "english": "wit not taken",
+    "back": "arguzia: not conquered",
+    "cos": 0.157,
+    "labse": 0.603
+   },
+   "verdict.worldCard": {
+    "text": "Carta del mondo: Verona",
+    "english": "World card: Verona",
+    "back": "Map of the world: Verona",
+    "cos": 0.7,
+    "labse": 0.929
+   },
+   "void.copied": {
+    "text": "presa dall’altra strofa: una risposta dev’essere tua",
+    "english": "taken from the other verse: an answer must be your own",
+    "back": "taken from the other stanza: an answer must be yours",
+    "cos": 0.81,
+    "labse": 0.911,
+    "tools": [
+     {
+      "tool": "languagetool",
+      "rule": "UPPERCASE_SENTENCE_START",
+      "at": "presa",
+      "reading": "A fragment shown after a label, lower-case in English too."
+     }
+    ]
+   },
+   "void.label": {
+    "text": "Non dà punti",
+    "english": "Scores nothing",
+    "back": "Does not give points",
+    "cos": 0.478,
+    "labse": 0.761
+   },
+   "void.thin": {
+    "text": "troppo poco per essere una strofa: servono più parole diverse",
+    "english": "too little to be a verse: it needs more different words",
+    "back": "too little to be a stanza: you need more different words",
+    "cos": 0.867,
+    "labse": 0.939,
+    "tools": [
+     {
+      "tool": "languagetool",
+      "rule": "UPPERCASE_SENTENCE_START",
+      "at": "troppo",
+      "reading": "A fragment shown after a label, lower-case in English too."
+     }
+    ]
+   }
+  },
+  "pt": {
+   "auth.error.passkey_not_accepted_no_email": {
+    "text": "Essa chave de acesso não foi aceita. Ela pode ter sido removida da conta, ou a conta pode não existir mais.",
+    "english": "That passkey was not accepted. It may have been removed from the account, or the account may no longer exist.",
+    "back": "This passkey was not accepted, it may have been removed from the account, or the account may no longer exist.",
+    "cos": 0.985,
+    "labse": 0.877
+   },
+   "auth.error.reauth_required": {
+    "text": "Primeiro confirme que é você: saia, entre de novo e tente outra vez.",
+    "english": "Confirm it is you first: sign out, sign in again, then try once more.",
+    "back": "First confirm that it's you: log out, sign in again and try again.",
+    "cos": 0.88,
+    "labse": 0.88
+   },
+   "auth.error.reauth_unavailable": {
+    "text": "Para fazer isso, primeiro saia e entre de novo com um código por e-mail.",
+    "english": "To do this, sign out and sign in again with an emailed code first.",
+    "back": "To do this, first log out and then sign in again with an email code.",
+    "cos": 0.945,
+    "labse": 0.91
+   },
+   "auth.error.too_many_attempts": {
+    "text": "Códigos errados demais para este endereço. Tente de novo amanhã, ou entre com uma chave de acesso.",
+    "english": "Too many wrong codes for this address. Try again tomorrow, or sign in with a passkey.",
+    "back": "Too many wrong codes for this address. Try again tomorrow, or sign in with an access key.",
+    "cos": 0.958,
+    "labse": 0.904
+   },
+   "auth.legacyAccountNote": {
+    "text": "Você já entrou aqui antes com o Google ou com um endereço de e-mail? Essa forma de entrar está desativada por enquanto, então uma conta antiga ainda não pode ser aberta. Criar uma conta aqui faz uma conta nova e vazia.",
+    "english": "Signed in here before with Google or an email address? That way in is switched off for now, so an older account cannot be opened yet. Creating an account here makes a new, empty one.",
+    "back": "Have you ever signed in here before with Google or an email address? This way of signing in is disabled for now, so an old account cannot be opened yet.Creating an account here makes a new and empty account.",
+    "cos": 0.94,
+    "labse": 0.907,
+    "tools": [
+     {
+      "tool": "hunspell",
+      "rule": "SPELLING",
+      "at": "Google",
+      "reading": "A name."
+     }
+    ]
+   },
+   "auth.signOutEverywhere": {
+    "text": "Sair em todos os dispositivos",
+    "english": "Sign out on every device",
+    "back": "Sign out on all devices",
+    "cos": 0.97,
+    "labse": 0.834
+   },
+   "hand.potionGamble": {
+    "text": "Se esta rodada decidir o duelo, a poção terá sido gasta à toa.",
+    "english": "If this round settles the match, the potion is spent for nothing.",
+    "back": "If this round decides the duel, the potion will have been spent in vain.",
+    "cos": 0.79,
+    "labse": 0.765
+   },
+   "illegal.potion-last-round": {
+    "text": "Não resta estrofe para amaldiçoar: esta é a última rodada.",
+    "english": "No verse is left to curse: this is the last round.",
+    "back": "There is no stanza left to curse: this is the last round.",
+    "cos": 0.906,
+    "labse": 0.886
+   },
+   "live.judgeUnread": {
+    "text": "Linhas que o modelo avaliador não vai ler: 2 (caveira), 4 (gracejo). Toda linha com um número ou uma palavra de avaliação (nota, pontuação, vencer…) fica de fora, e esta rodada passa a ser decidida só pelas regras",
+    "english": "Lines the grading model will not read: 2 (skull), 4 (jest). A line holding a number or a judging word (grade, score, win…) is left out, and this round is then judged by the rules alone",
+    "back": "Lines that the evaluator model will not read: 2 (skull), 4 (joke) Any line with a number or an evaluation word (grade, score, win…) is left out, and this round is decided only by the rules",
+    "cos": 0.834,
+    "labse": 0.874,
+    "tools": [
+     {
+      "tool": "languagetool",
+      "rule": "PUNCTUATION_PARAGRAPH_END",
+      "at": "regras",
+      "reading": "A checklist line; the English has no full stop either."
+     }
+    ],
+    "glossary": [
+     "\"line\" should be verso (vers): Linhas que o modelo avaliador não vai ler: {lines}. Toda linha com um número ou uma palavra de avaliação (nota, pontuação, vencer…) fica de fora, e esta rodada passa a ser decidida só pelas regras"
+    ],
+    "proposal": "Versos que o modelo avaliador não vai ler: {lines}. Todo verso com um número ou uma palavra de avaliação (nota, pontuação, vencer…) fica de fora, e esta rodada passa a ser decidida só pelas regras",
+    "proposalCheck": {
+     "back": "Verses that the model evaluator will not read: 2 (skull), 4 (joke) Any verse with a number or an evaluation word (note, score, win…) is left out, and this round is decided only by the rules",
+     "cos": 0.731,
+     "labse": 0.869,
+     "tools": [
+      "languagetool PUNCTUATION_PARAGRAPH_END «regras»"
+     ]
+    }
+   },
+   "signature.hintTwo": {
+    "text": "ecoe duas destas: caveira, gracejo e túmulo",
+    "english": "echo two of: skull, jest, and grave",
+    "back": "echoes two of these: skull, prank and tomb",
+    "cos": 0.71,
+    "labse": 0.836,
+    "tools": [
+     {
+      "tool": "languagetool",
+      "rule": "UPPERCASE_SENTENCE_START",
+      "at": "ecoe",
+      "reading": "A fragment shown after a label, lower-case in English too."
+     }
+    ]
+   },
+   "verdict.copyForfeits": {
+    "text": "Uma estrofe copiada perde os pontos do juiz.",
+    "english": "A copied verse forfeits the judge.",
+    "back": "A copied stanza loses the judge's points.",
+    "cos": 0.723,
+    "labse": 0.794
+   },
+   "verdict.notTaken": {
+    "text": "agudeza: não conquistado",
+    "english": "wit not taken",
+    "back": "acuity: not conquered",
+    "cos": 0.242,
+    "labse": 0.633
+   },
+   "verdict.worldCard": {
+    "text": "Carta do mundo: Verona",
+    "english": "World card: Verona",
+    "back": "Map of the world: Verona",
+    "cos": 0.7,
+    "labse": 0.925
+   },
+   "void.copied": {
+    "text": "tirada da outra estrofe: uma resposta precisa ser sua",
+    "english": "taken from the other verse: an answer must be your own",
+    "back": "taken from the other stanza: one answer needs to be yours",
+    "cos": 0.782,
+    "labse": 0.886,
+    "tools": [
+     {
+      "tool": "languagetool",
+      "rule": "UPPERCASE_SENTENCE_START",
+      "at": "tirada",
+      "reading": "A fragment shown after a label, lower-case in English too."
+     }
+    ]
+   },
+   "void.label": {
+    "text": "Não pontua",
+    "english": "Scores nothing",
+    "back": "Does not score",
+    "cos": 0.81,
+    "labse": 0.681
+   },
+   "void.thin": {
+    "text": "pouco demais para ser uma estrofe: é preciso ter mais palavras diferentes",
+    "english": "too little to be a verse: it needs more different words",
+    "back": "too little to be a stanza: you need more different words",
+    "cos": 0.867,
+    "labse": 0.926,
+    "tools": [
+     {
+      "tool": "languagetool",
+      "rule": "UPPERCASE_SENTENCE_START",
+      "at": "pouco",
+      "reading": "A fragment shown after a label, lower-case in English too."
+     }
+    ]
+   }
+  },
+  "pl": {
+   "auth.error.passkey_not_accepted_no_email": {
+    "text": "Ten klucz dostępu nie został przyjęty. Mógł zostać usunięty z konta albo konto już nie istnieje.",
+    "english": "That passkey was not accepted. It may have been removed from the account, or the account may no longer exist.",
+    "back": "This access key has not been accepted, it may have been deleted from the account or the account no longer exists.",
+    "cos": 0.737,
+    "labse": 0.861
+   },
+   "auth.error.reauth_required": {
+    "text": "Najpierw potwierdź, że to ty: wyloguj się, zaloguj ponownie i spróbuj jeszcze raz.",
+    "english": "Confirm it is you first: sign out, sign in again, then try once more.",
+    "back": "First confirm that it's you: log out, log in again and try again.",
+    "cos": 0.825,
+    "labse": 0.905
+   },
+   "auth.error.reauth_unavailable": {
+    "text": "Aby to zrobić, najpierw wyloguj się i zaloguj ponownie kodem z e-maila.",
+    "english": "To do this, sign out and sign in again with an emailed code first.",
+    "back": "To do this, first log out and log in again with the code from your email.",
+    "cos": 0.912,
+    "labse": 0.921
+   },
+   "auth.error.too_many_attempts": {
+    "text": "Zbyt wiele błędnych kodów dla tego adresu. Spróbuj jutro albo zaloguj się kluczem dostępu.",
+    "english": "Too many wrong codes for this address. Try again tomorrow, or sign in with a passkey.",
+    "back": "Too many bad codes for this address. Try again tomorrow or log in with your access key.",
+    "cos": 0.922,
+    "labse": 0.906
+   },
+   "auth.legacyAccountNote": {
+    "text": "Logowałeś się tu wcześniej przez Google albo adresem e-mail? Ten sposób jest na razie wyłączony, więc starszego konta nie da się jeszcze otworzyć. Konto założone tutaj będzie nowe i puste.",
+    "english": "Signed in here before with Google or an email address? That way in is switched off for now, so an older account cannot be opened yet. Creating an account here makes a new, empty one.",
+    "back": "Have you logged in here before with Google or an email address? This method is currently disabled, so the older account cannot be opened yet.The account created here will be new and empty.",
+    "cos": 0.842,
+    "labse": 0.935,
+    "proposal": "Zdarzało ci się logować tu przez Google albo adresem e-mail? Ten sposób jest na razie wyłączony, więc starszego konta nie da się jeszcze otworzyć. Konto założone tutaj będzie nowe i puste.",
+    "proposalCheck": {
+     "back": "Have you ever logged in here with Google or an email address? This method is currently disabled, so the older account cannot be opened yet.The account created here will be new and empty.",
+     "cos": 0.84,
+     "labse": 0.934,
+     "tools": []
+    }
+   },
+   "auth.signOutEverywhere": {
+    "text": "Wyloguj się na wszystkich urządzeniach",
+    "english": "Sign out on every device",
+    "back": "Sign out on all devices",
+    "cos": 0.97,
+    "labse": 0.86
+   },
+   "hand.potionGamble": {
+    "text": "Jeśli ta runda rozstrzygnie pojedynek, mikstura pójdzie na marne.",
+    "english": "If this round settles the match, the potion is spent for nothing.",
+    "back": "If this round decides the duel, the potion will go to waste.",
+    "cos": 0.831,
+    "labse": 0.732
+   },
+   "illegal.potion-last-round": {
+    "text": "Nie ma już strofy do przeklęcia: to ostatnia runda.",
+    "english": "No verse is left to curse: this is the last round.",
+    "back": "There is no more stanza to curse: this is the last round.",
+    "cos": 0.901,
+    "labse": 0.856
+   },
+   "live.judgeUnread": {
+    "text": "Wersy, których model oceniający nie przeczyta: 2 (czaszka), 4 (żart). Wers z liczbą lub słowem oceny (ocena, punkty, wygrać…) jest pomijany, a tę rundę rozstrzygają wtedy same reguły",
+    "english": "Lines the grading model will not read: 2 (skull), 4 (jest). A line holding a number or a judging word (grade, score, win…) is left out, and this round is then judged by the rules alone",
+    "back": "Verses that the evaluating model does not read: 2 (skull), 4 (joke) The verse with a number or word of evaluation (evaluation, points, win…) is skipped and this round is decided by the rules themselves",
+    "cos": 0.718,
+    "labse": 0.877
+   },
+   "signature.hintTwo": {
+    "text": "nawiąż do dwóch z tych słów: czaszka, żart i grób",
+    "english": "echo two of: skull, jest, and grave",
+    "back": "tie to two of these words: skull, joke and grave",
+    "cos": 0.666,
+    "labse": 0.745,
+    "tools": [
+     {
+      "tool": "languagetool",
+      "rule": "UPPERCASE_SENTENCE_START",
+      "at": "nawiąż",
+      "reading": "A fragment shown after a label, lower-case in English too."
+     }
+    ]
+   },
+   "verdict.copyForfeits": {
+    "text": "Skopiowana strofa traci punkty sędziego.",
+    "english": "A copied verse forfeits the judge.",
+    "back": "The copied verse loses judge points.",
+    "cos": 0.768,
+    "labse": 0.724
+   },
+   "verdict.notTaken": {
+    "text": "dowcip: niezdobyte",
+    "english": "wit not taken",
+    "back": "joke: unearned",
+    "cos": 0.23,
+    "labse": 0.495,
+    "meaningFlag": "both under 0.6",
+    "meaningReading": "Kept. The criterion's name is the core's own word (criterion.wit) and the rest says it was not won; the round trip fails on the one-word name (Joke, Attendance, Airfield, Notification, Witchcraft…), not on the sentence."
+   },
+   "verdict.worldCard": {
+    "text": "Karta świata: Verona",
+    "english": "World card: Verona",
+    "back": "World Map: Verona",
+    "cos": 0.705,
+    "labse": 0.919
+   },
+   "void.copied": {
+    "text": "wzięte z drugiej strofy: odpowiedź musi być twoja własna",
+    "english": "taken from the other verse: an answer must be your own",
+    "back": "taken from the second stanza: the answer must be your own",
+    "cos": 0.83,
+    "labse": 0.905,
+    "tools": [
+     {
+      "tool": "languagetool",
+      "rule": "UPPERCASE_SENTENCE_START",
+      "at": "wzięte",
+      "reading": "A fragment shown after a label, lower-case in English too."
+     }
+    ]
+   },
+   "void.label": {
+    "text": "Bez punktów",
+    "english": "Scores nothing",
+    "back": "No points",
+    "cos": 0.498,
+    "labse": 0.759
+   },
+   "void.thin": {
+    "text": "za mało na strofę: potrzeba więcej różnych słów",
+    "english": "too little to be a verse: it needs more different words",
+    "back": "not enough for a verse: need more different words",
+    "cos": 0.896,
+    "labse": 0.886,
+    "tools": [
+     {
+      "tool": "languagetool",
+      "rule": "UPPERCASE_SENTENCE_START",
+      "at": "za",
+      "reading": "A fragment shown after a label, lower-case in English too."
+     }
+    ]
+   }
+  },
+  "ru": {
+   "auth.error.passkey_not_accepted_no_email": {
+    "text": "Этот ключ доступа не принят. Возможно, его удалили из учётной записи или учётной записи больше нет.",
+    "english": "That passkey was not accepted. It may have been removed from the account, or the account may no longer exist.",
+    "back": "This access key is not accepted. It may have been deleted from the account, or the account may no longer exist.",
+    "cos": 0.742,
+    "labse": 0.868
+   },
+   "auth.error.reauth_required": {
+    "text": "Сначала подтверди, что это ты: выйди, войди снова и попробуй ещё раз.",
+    "english": "Confirm it is you first: sign out, sign in again, then try once more.",
+    "back": "Confirm that it's you first by logging out, signing in again and trying again.",
+    "cos": 0.947,
+    "labse": 0.89
+   },
+   "auth.error.reauth_unavailable": {
+    "text": "Для этого сначала выйди и войди снова по коду из письма.",
+    "english": "To do this, sign out and sign in again with an emailed code first.",
+    "back": "To do this, first log out and log in again using the code from the email.",
+    "cos": 0.889,
+    "labse": 0.855
+   },
+   "auth.error.too_many_attempts": {
+    "text": "Слишком много неверных кодов для этого адреса. Попробуй завтра или войди по ключу доступа.",
+    "english": "Too many wrong codes for this address. Try again tomorrow, or sign in with a passkey.",
+    "back": "There are too many incorrect codes for this address. Try again tomorrow or log in with your access key.",
+    "cos": 0.905,
+    "labse": 0.905
+   },
+   "auth.legacyAccountNote": {
+    "text": "Раньше ты входил сюда через Google или по адресу почты? Этот способ входа пока отключён, поэтому старую учётную запись ещё нельзя открыть. Если создать учётную запись здесь, она будет новой и пустой.",
+    "english": "Signed in here before with Google or an email address? That way in is switched off for now, so an older account cannot be opened yet. Creating an account here makes a new, empty one.",
+    "back": "Did you log in with Google or your email address before? This login method is currently disabled, so the old account cannot be opened yet. If you create an account here, it will be new and empty.",
+    "cos": 0.804,
+    "labse": 0.918,
+    "tools": [
+     {
+      "tool": "hunspell",
+      "rule": "SPELLING",
+      "at": "Google",
+      "reading": "A name."
+     }
+    ],
+    "proposal": "Есть старая учётная запись с входом через Google или по адресу почты? Этот способ входа пока отключён, поэтому её ещё нельзя открыть. Если создать учётную запись здесь, она будет новой и пустой.",
+    "proposalCheck": {
+     "back": "Do you have an old Google or email account? This is not supported at the moment, so you can't open it yet. If you create an account here, it will be new and empty.",
+     "cos": 0.664,
+     "labse": 0.902,
+     "tools": [
+      "hunspell SPELLING «Google»"
+     ]
+    }
+   },
+   "auth.signOutEverywhere": {
+    "text": "Выйти на всех устройствах",
+    "english": "Sign out on every device",
+    "back": "Sign out on all devices",
+    "cos": 0.97,
+    "labse": 0.85
+   },
+   "hand.potionGamble": {
+    "text": "Если этот раунд решит дуэль, зелье пропадёт зря.",
+    "english": "If this round settles the match, the potion is spent for nothing.",
+    "back": "If this round decides the duel, the potion is lost in vain.",
+    "cos": 0.761,
+    "labse": 0.81
+   },
+   "illegal.potion-last-round": {
+    "text": "Проклинать больше нечего: это последний раунд.",
+    "english": "No verse is left to curse: this is the last round.",
+    "back": "No more cursing: this is the last round.",
+    "cos": 0.763,
+    "labse": 0.784,
+    "glossary": [
+     "\"verse\" should be строфа (строф): Проклинать больше нечего: это последний раунд."
+    ]
+   },
+   "live.judgeUnread": {
+    "text": "Строки, которые оценивающая модель не прочтёт: 2 (череп), 4 (шутка). Строка с числом или словом об оценке (оценка, очки, победа…) пропускается, и этот раунд тогда решают только правила",
+    "english": "Lines the grading model will not read: 2 (skull), 4 (jest). A line holding a number or a judging word (grade, score, win…) is left out, and this round is then judged by the rules alone",
+    "back": "Lines that the evaluating model will not read: 2 (skull), 4 (joke). The line with a number or word about the evaluation (evaluation, points, victory…) is skipped and this round is then decided only by the rules",
+    "cos": 0.82,
+    "labse": 0.883
+   },
+   "signature.hintTwo": {
+    "text": "отзовись на два из слов: череп, шутка и могила",
+    "english": "echo two of: skull, jest, and grave",
+    "back": "answer two of the words: skull, joke and grave",
+    "cos": 0.663,
+    "labse": 0.789,
+    "tools": [
+     {
+      "tool": "languagetool",
+      "rule": "UPPERCASE_SENTENCE_START",
+      "at": "отзовись",
+      "reading": "A fragment shown after a label, lower-case in English too."
+     }
+    ]
+   },
+   "verdict.copyForfeits": {
+    "text": "Скопированная строфа теряет очки судьи.",
+    "english": "A copied verse forfeits the judge.",
+    "back": "The copied verse loses the judge's points.",
+    "cos": 0.797,
+    "labse": 0.691
+   },
+   "verdict.notTaken": {
+    "text": "остроумие: не взято",
+    "english": "wit not taken",
+    "back": "wit: not taken",
+    "cos": 0.908,
+    "labse": 0.767
+   },
+   "verdict.worldCard": {
+    "text": "Карта мира: Verona",
+    "english": "World card: Verona",
+    "back": "World Map: Verona",
+    "cos": 0.705,
+    "labse": 0.908
+   },
+   "void.copied": {
+    "text": "взято из чужой строфы: ответ должен быть твоим",
+    "english": "taken from the other verse: an answer must be your own",
+    "back": "taken from someone else's verse: the answer must be yours",
+    "cos": 0.89,
+    "labse": 0.88,
+    "tools": [
+     {
+      "tool": "languagetool",
+      "rule": "UPPERCASE_SENTENCE_START",
+      "at": "взято",
+      "reading": "A fragment shown after a label, lower-case in English too."
+     }
+    ]
+   },
+   "void.label": {
+    "text": "Очков не приносит",
+    "english": "Scores nothing",
+    "back": "Does not bring points",
+    "cos": 0.473,
+    "labse": 0.702
+   },
+   "void.thin": {
+    "text": "слишком мало для строфы: нужно больше разных слов",
+    "english": "too little to be a verse: it needs more different words",
+    "back": "too little for a stanza: you need more different words",
+    "cos": 0.843,
+    "labse": 0.879,
+    "tools": [
+     {
+      "tool": "languagetool",
+      "rule": "UPPERCASE_SENTENCE_START",
+      "at": "слишком",
+      "reading": "A fragment shown after a label, lower-case in English too."
+     }
+    ]
+   }
+  },
+  "ar": {
+   "auth.error.passkey_not_accepted_no_email": {
+    "text": "لم يُقبل مفتاح المرور هذا. ربما أُزيل من الحساب، أو لم يعد الحساب موجودًا.",
+    "english": "That passkey was not accepted. It may have been removed from the account, or the account may no longer exist.",
+    "back": "This passkey was not accepted. It may have been removed from the account, or the account no longer exists.",
+    "cos": 0.983,
+    "labse": 0.927
+   },
+   "auth.error.reauth_required": {
+    "text": "أكِّد أولًا أنه أنت: سجّل الخروج، ثم سجّل الدخول من جديد، ثم حاول مرة أخرى.",
+    "english": "Confirm it is you first: sign out, sign in again, then try once more.",
+    "back": "First verify that it's you: log out, then log in again, and try again.",
+    "cos": 0.812,
+    "labse": 0.942
+   },
+   "auth.error.reauth_unavailable": {
+    "text": "لفعل ذلك، سجّل الخروج أولًا ثم ادخل من جديد برمز بريدي.",
+    "english": "To do this, sign out and sign in again with an emailed code first.",
+    "back": "To do so, log out first and then re-log in with your postcode.",
+    "cos": 0.725,
+    "labse": 0.825
+   },
+   "auth.error.too_many_attempts": {
+    "text": "رموز خاطئة كثيرة لهذا العنوان. حاول غدًا، أو ادخل بمفتاح مرور.",
+    "english": "Too many wrong codes for this address. Try again tomorrow, or sign in with a passkey.",
+    "back": "Too many incorrect codes for this address. Try tomorrow, or enter with a password.",
+    "cos": 0.908,
+    "labse": 0.896
+   },
+   "auth.legacyAccountNote": {
+    "text": "هل دخلت هنا من قبل عبر Google أو بعنوان بريد إلكتروني؟ طريقة الدخول هذه متوقفة حاليًا، ولذلك لا يمكن فتح حساب قديم بعد. إنشاء حساب هنا يصنع حسابًا جديدًا فارغًا.",
+    "english": "Signed in here before with Google or an email address? That way in is switched off for now, so an older account cannot be opened yet. Creating an account here makes a new, empty one.",
+    "back": "Have you signed in here before with Google or an email address? This login method is currently discontinued, so it is not possible to open an old account yet. Creating an account here creates a new empty account.",
+    "cos": 0.857,
+    "labse": 0.949,
+    "tools": [
+     {
+      "tool": "languagetool",
+      "rule": "grammar_0011_notjazem_lam_nafia",
+      "at": "لا يمكن",
+      "reading": "False alarm: لا يمكن (cannot) is لا النافية before a present verb, as it should be."
+     },
+     {
+      "tool": "hunspell",
+      "rule": "SPELLING",
+      "at": "Google",
+      "reading": "A name."
+     }
+    ]
+   },
+   "auth.signOutEverywhere": {
+    "text": "تسجيل الخروج من كل الأجهزة",
+    "english": "Sign out on every device",
+    "back": "Record exits from all devices",
+    "cos": 0.452,
+    "labse": 0.846
+   },
+   "hand.potionGamble": {
+    "text": "إذا حسمت هذه الجولة المبارزة ذهبت الجرعة سدى.",
+    "english": "If this round settles the match, the potion is spent for nothing.",
+    "back": "If this round is decided, the dose will be wasted.",
+    "cos": 0.546,
+    "labse": 0.748
+   },
+   "illegal.potion-last-round": {
+    "text": "لم تبقَ أبيات تُلعَن: هذه هي الجولة الأخيرة.",
+    "english": "No verse is left to curse: this is the last round.",
+    "back": "No more cursing verses: this is the last round.",
+    "cos": 0.861,
+    "labse": 0.748,
+    "glossary": [
+     "\"curse\" should be لعنة (لعن): لم تبقَ أبيات تُلعَن: هذه هي الجولة الأخيرة."
+    ]
+   },
+   "live.judgeUnread": {
+    "text": "أسطر لن يقرأها نموذج التقييم: 2 (جمجمة), 4 (مزحة). يُستبعد كل سطر فيه رقم أو كلمة تقييم (درجة، تقييم، فائز…)، ويُحسم هذا الشوط حينها بالقواعد وحدها",
+    "english": "Lines the grading model will not read: 2 (skull), 4 (jest). A line holding a number or a judging word (grade, score, win…) is left out, and this round is then judged by the rules alone",
+    "back": "Lines not read by the evaluation model: 2 (Skull), 4 (Joke). Each line containing a number or an evaluation word (grade, rating, winner...) is discarded, and this round is then decided by rules only.",
+    "cos": 0.871,
+    "labse": 0.903,
+    "tools": [
+     {
+      "tool": "languagetool",
+      "rule": "syntax_0002_as_ka_1",
+      "at": "فيه رقم أو كلمة",
+      "reading": "False alarm: the sentence has no كاف of comparison."
+     }
+    ],
+    "glossary": [
+     "\"round\" should be جولة (جولات): أسطر لن يقرأها نموذج التقييم: {lines}. يُستبعد كل سطر فيه رقم أو كلمة تقييم (درجة، تقييم، فائز…)، ويُحسم هذا الشوط حينها بالقواعد وحدها"
+    ],
+    "proposal": "أسطر لن يقرأها نموذج التقييم: {lines}. يُستبعد كل سطر فيه رقم أو كلمة تقييم (درجة، تقييم، فائز…)، وتُحسم هذه الجولة حينها بالقواعد وحدها",
+    "proposalCheck": {
+     "back": "Lines not read by the evaluation module: 2 (Skull), 4 (Joke). Any line containing a number or an evaluation word (grade, rating, winner...) is discarded and this round is then settled by rules only.",
+     "cos": 0.854,
+     "labse": 0.907,
+     "tools": [
+      "languagetool syntax_0002_as_ka_1 «فيه رقم أو كلمة»"
+     ]
+    }
+   },
+   "signature.hintTwo": {
+    "text": "ردّد صدى كلمتين من هذه: جمجمة ومزحة وقبر",
+    "english": "echo two of: skull, jest, and grave",
+    "back": "Echo two of these words: skull, joke and grave.",
+    "cos": 0.805,
+    "labse": 0.745,
+    "tools": [
+     {
+      "tool": "languagetool",
+      "rule": "syntax_0002_as_ka_2",
+      "at": "ردّد صدى كلمتين",
+      "reading": "False alarm: the sentence has no كاف of comparison."
+     }
+    ]
+   },
+   "verdict.copyForfeits": {
+    "text": "الأبيات المنسوخة تخسر نقاط الحَكَم.",
+    "english": "A copied verse forfeits the judge.",
+    "back": "Scanned verses lose referee points.",
+    "cos": 0.456,
+    "labse": 0.429,
+    "meaningFlag": "both under 0.6",
+    "tools": [
+     {
+      "tool": "languagetool",
+      "rule": "AR_DIACRITICS_REPLACE",
+      "at": "نقاط",
+      "reading": "Only a vowel-mark suggestion; نقاط is the right plural."
+     }
+    ],
+    "meaningReading": "Kept. It says a copied verse loses the judge's points, which is what forfeiting the judge means here (the judge's part of the round's score). hi पद is verse here (MADLAD took it for 'position'); ar says it of copied verses in the plural, a general statement."
+   },
+   "verdict.notTaken": {
+    "text": "الظُّرف: لم يُكسَب",
+    "english": "wit not taken",
+    "back": "Status: Unearned",
+    "cos": 0.195,
+    "labse": 0.435,
+    "meaningFlag": "both under 0.6",
+    "meaningReading": "Kept. The criterion's name is the core's own word (criterion.wit) and the rest says it was not won; the round trip fails on the one-word name (Joke, Attendance, Airfield, Notification, Witchcraft…), not on the sentence."
+   },
+   "verdict.worldCard": {
+    "text": "بطاقة العالم: Verona",
+    "english": "World card: Verona",
+    "back": "World Card: Verona",
+    "cos": 1.0,
+    "labse": 0.946
+   },
+   "void.copied": {
+    "text": "مأخوذة من أبيات الخصم: الرد يجب أن يكون من عندك",
+    "english": "taken from the other verse: an answer must be your own",
+    "back": "The answer must come from you.",
+    "cos": 0.267,
+    "labse": 0.738
+   },
+   "void.label": {
+    "text": "لا نقاط",
+    "english": "Scores nothing",
+    "back": "No points.",
+    "cos": 0.382,
+    "labse": 0.781,
+    "tools": [
+     {
+      "tool": "languagetool",
+      "rule": "AR_DIACRITICS_REPLACE",
+      "at": "نقاط",
+      "reading": "Only a vowel-mark suggestion; نقاط is the right plural."
+     }
+    ]
+   },
+   "void.thin": {
+    "text": "أقل من أن تكون أبياتًا: يلزم مزيد من الكلمات المختلفة",
+    "english": "too little to be a verse: it needs more different words",
+    "back": "Less than verses: more different words are needed.",
+    "cos": 0.789,
+    "labse": 0.876
+   }
+  },
+  "hi": {
+   "auth.error.passkey_not_accepted_no_email": {
+    "text": "वह पासकी स्वीकार नहीं हुई। हो सकता है उसे खाते से हटा दिया गया हो, या खाता अब मौजूद न हो।",
+    "english": "That passkey was not accepted. It may have been removed from the account, or the account may no longer exist.",
+    "back": "The passkey was not accepted. It may have been removed from the account, or the account no longer exists.",
+    "cos": 0.982,
+    "labse": 0.862
+   },
+   "auth.error.reauth_required": {
+    "text": "पहले पुष्टि करें कि यह आप ही हैं: साइन आउट करें, फिर साइन इन करें, और दोबारा कोशिश करें।",
+    "english": "Confirm it is you first: sign out, sign in again, then try once more.",
+    "back": "Confirm that it's you first: sign out, then sign in, and try again.",
+    "cos": 0.962,
+    "labse": 0.901
+   },
+   "auth.error.reauth_unavailable": {
+    "text": "इसके लिए पहले साइन आउट करें और ईमेल कोड से फिर साइन इन करें।",
+    "english": "To do this, sign out and sign in again with an emailed code first.",
+    "back": "To do this, sign out first and then sign in again with the email code.",
+    "cos": 0.946,
+    "labse": 0.884
+   },
+   "auth.error.too_many_attempts": {
+    "text": "इस पते के लिए बहुत ज़्यादा ग़लत कोड डाले गए। कल फिर कोशिश करें, या पासकी से साइन इन करें।",
+    "english": "Too many wrong codes for this address. Try again tomorrow, or sign in with a passkey.",
+    "back": "Too many incorrect codes were entered for this address. Try again tomorrow, or sign in with a passkey.",
+    "cos": 0.977,
+    "labse": 0.9
+   },
+   "auth.legacyAccountNote": {
+    "text": "क्या आपने यहाँ पहले Google या ईमेल पते से साइन इन किया था? वह रास्ता अभी बंद है, इसलिए पुराना खाता अभी नहीं खोला जा सकता। यहाँ खाता बनाने पर एक नया, खाली खाता बनेगा।",
+    "english": "Signed in here before with Google or an email address? That way in is switched off for now, so an older account cannot be opened yet. Creating an account here makes a new, empty one.",
+    "back": "Did you sign in here with a Google or email address before? That way is currently closed, so the old account cannot be opened yet. Creating an account here will create a new, empty account.",
+    "cos": 0.859,
+    "labse": 0.9,
+    "tools": [
+     {
+      "tool": "hunspell",
+      "rule": "SPELLING",
+      "at": "Google",
+      "reading": "A name."
+     }
+    ]
+   },
+   "auth.signOutEverywhere": {
+    "text": "हर डिवाइस से साइन आउट करें",
+    "english": "Sign out on every device",
+    "back": "Sign out from every device",
+    "cos": 0.983,
+    "labse": 0.919
+   },
+   "hand.potionGamble": {
+    "text": "अगर इसी दौर में द्वंद्व का फ़ैसला हो गया, तो काढ़ा बेकार जाएगा।",
+    "english": "If this round settles the match, the potion is spent for nothing.",
+    "back": "If the duel is decided in this round, then the decoction will be useless.",
+    "cos": 0.411,
+    "labse": 0.632
+   },
+   "illegal.potion-last-round": {
+    "text": "शाप देने को कोई पद नहीं बचा: यह आख़िरी दौर है।",
+    "english": "No verse is left to curse: this is the last round.",
+    "back": "There is no place left to curse: this is the final round.",
+    "cos": 0.822,
+    "labse": 0.849,
+    "glossary": [
+     "\"verse\" should be कविता: शाप देने को कोई पद नहीं बचा: यह आख़िरी दौर है।"
+    ]
+   },
+   "live.judgeUnread": {
+    "text": "वे पंक्तियाँ जिन्हें अंक देने वाला मॉडल नहीं पढ़ेगा: 2 (खोपड़ी), 4 (मज़ाक)। जिस पंक्ति में कोई संख्या या अंकन का शब्द (अंक, ग्रेड, विजेता…) हो, वह छोड़ दी जाती है, और तब यह दौर केवल नियमों से तय होता है",
+    "english": "Lines the grading model will not read: 2 (skull), 4 (jest). A line holding a number or a judging word (grade, score, win…) is left out, and this round is then judged by the rules alone",
+    "back": "The lines that the scoring model will not read: 2 (skull), 4 (joke). Lines containing a number or score word (number, grade, winner…) are omitted, and then this round is determined only by rules",
+    "cos": 0.875,
+    "labse": 0.888
+   },
+   "signature.hintTwo": {
+    "text": "इनमें से दो की गूँज लाएँ: खोपड़ी, मज़ाक और क़ब्र",
+    "english": "echo two of: skull, jest, and grave",
+    "back": "Bring the sound of two of them: skull, joke and grave",
+    "cos": 0.707,
+    "labse": 0.711
+   },
+   "verdict.copyForfeits": {
+    "text": "नक़ल किया गया पद निर्णायक के अंक खो देता है।",
+    "english": "A copied verse forfeits the judge.",
+    "back": "The duplicated position loses the judge's points.",
+    "cos": 0.526,
+    "labse": 0.519,
+    "meaningFlag": "both under 0.6",
+    "glossary": [
+     "\"verse\" should be कविता: नक़ल किया गया पद निर्णायक के अंक खो देता है।"
+    ],
+    "meaningReading": "Kept. It says a copied verse loses the judge's points, which is what forfeiting the judge means here (the judge's part of the round's score). hi पद is verse here (MADLAD took it for 'position'); ar says it of copied verses in the plural, a general statement."
+   },
+   "verdict.notTaken": {
+    "text": "हाज़िरजवाबी: नहीं जीता",
+    "english": "wit not taken",
+    "back": "Attendance: Not won",
+    "cos": 0.181,
+    "labse": 0.478,
+    "meaningFlag": "both under 0.6",
+    "meaningReading": "Kept. The criterion's name is the core's own word (criterion.wit) and the rest says it was not won; the round trip fails on the one-word name (Joke, Attendance, Airfield, Notification, Witchcraft…), not on the sentence."
+   },
+   "verdict.worldCard": {
+    "text": "विश्व कार्ड: Verona",
+    "english": "World card: Verona",
+    "back": "World Map: Verona",
+    "cos": 0.705,
+    "labse": 0.96
+   },
+   "void.copied": {
+    "text": "दूसरे पद से लिया गया: जवाब आपका अपना होना चाहिए",
+    "english": "taken from the other verse: an answer must be your own",
+    "back": "From the second position: The answer must be yours",
+    "cos": 0.328,
+    "labse": 0.893,
+    "glossary": [
+     "\"verse\" should be कविता: दूसरे पद से लिया गया: जवाब आपका अपना होना चाहिए"
+    ]
+   },
+   "void.label": {
+    "text": "कोई अंक नहीं",
+    "english": "Scores nothing",
+    "back": "No score",
+    "cos": 0.862,
+    "labse": 0.772
+   },
+   "void.thin": {
+    "text": "पद कहलाने के लिए बहुत कम: और अलग-अलग शब्द चाहिए",
+    "english": "too little to be a verse: it needs more different words",
+    "back": "Too little to be called a verse: and different words are needed",
+    "cos": 0.91,
+    "labse": 0.879,
+    "glossary": [
+     "\"verse\" should be कविता: पद कहलाने के लिए बहुत कम: और अलग-अलग शब्द चाहिए"
+    ]
+   }
+  },
+  "zh": {
+   "auth.error.passkey_not_accepted_no_email": {
+    "text": "这把通行密钥未被接受。它可能已从账户中移除，或者账户已不存在。",
+    "english": "That passkey was not accepted. It may have been removed from the account, or the account may no longer exist.",
+    "back": "This passkey was not accepted. It may have been removed from the account, or the account may no longer exist.",
+    "cos": 0.985,
+    "labse": 0.913,
+    "glossary": [
+     "\"把通行密钥\" is not this game's word for \"passkey\" (通行密钥): 这把通行密钥未被接受。它可能已从账户中移除，或者账户已不存在。"
+    ],
+    "proposal": "这个通行密钥未被接受。它可能已从账户中移除，或者账户已不存在。",
+    "proposalCheck": {
+     "back": "The passkey was not accepted. It may have been removed from the account, or the account may no longer exist.",
+     "cos": 0.982,
+     "labse": 0.908,
+     "tools": []
+    }
+   },
+   "auth.error.reauth_required": {
+    "text": "请先确认是你本人：退出登录，重新登录，然后再试一次。",
+    "english": "Confirm it is you first: sign out, sign in again, then try once more.",
+    "back": "Please verify that you are the person: log out, log in again and try again.",
+    "cos": 0.738,
+    "labse": 0.895
+   },
+   "auth.error.reauth_unavailable": {
+    "text": "要进行此操作，请先退出登录，再用邮件验证码重新登录。",
+    "english": "To do this, sign out and sign in again with an emailed code first.",
+    "back": "To do so, please log out and re-log in with the verification code you received by email.",
+    "cos": 0.725,
+    "labse": 0.832
+   },
+   "auth.error.too_many_attempts": {
+    "text": "这个地址的错误验证码太多了。请明天再试，或用通行密钥登录。",
+    "english": "Too many wrong codes for this address. Try again tomorrow, or sign in with a passkey.",
+    "back": "There are too many error codes for this address. Please try again tomorrow or log in with your passkey.",
+    "cos": 0.92,
+    "labse": 0.929
+   },
+   "auth.legacyAccountNote": {
+    "text": "以前在这里用 Google 或邮箱地址登录过？这种登录方式目前已关闭，所以旧账户暂时无法打开。在这里创建的账户是一个全新的空账户。",
+    "english": "Signed in here before with Google or an email address? That way in is switched off for now, so an older account cannot be opened yet. Creating an account here makes a new, empty one.",
+    "back": "Have you previously logged in here with Google or an email address? This login method is currently closed, so the old account cannot be opened temporarily. The account created here is a brand new empty account.",
+    "cos": 0.829,
+    "labse": 0.934
+   },
+   "auth.signOutEverywhere": {
+    "text": "在所有设备上退出登录",
+    "english": "Sign out on every device",
+    "back": "Sign out on all devices",
+    "cos": 0.97,
+    "labse": 0.82
+   },
+   "hand.potionGamble": {
+    "text": "如果这一回合就决出胜负，药水就白用了。",
+    "english": "If this round settles the match, the potion is spent for nothing.",
+    "back": "If this round is decisive, the medicine will be in vain.",
+    "cos": 0.454,
+    "labse": 0.739
+   },
+   "illegal.potion-last-round": {
+    "text": "已没有可诅咒的诗：这是最后一回合。",
+    "english": "No verse is left to curse: this is the last round.",
+    "back": "There are no more poems to curse: this is the last round.",
+    "cos": 0.797,
+    "labse": 0.842
+   },
+   "live.judgeUnread": {
+    "text": "评分模型不会读的诗行：2 (骷髅), 4 (戏谑)。含有数字或评分用语（得分、评价、赢家……）的诗行会被略去，这一回合便只按规则判定",
+    "english": "Lines the grading model will not read: 2 (skull), 4 (jest). A line holding a number or a judging word (grade, score, win…) is left out, and this round is then judged by the rules alone",
+    "back": "Lines not read by the scoring model: 2 (skeleton), 4 (joke). Lines containing numbers or scoring terms (scores, ratings, winners...) are omitted and this round is judged only by rules",
+    "cos": 0.775,
+    "labse": 0.866
+   },
+   "signature.hintTwo": {
+    "text": "呼应其中两个：骷髅、戏谑和坟墓",
+    "english": "echo two of: skull, jest, and grave",
+    "back": "Echoing two of them: skeletons, jokes and graves",
+    "cos": 0.696,
+    "labse": 0.835
+   },
+   "verdict.copyForfeits": {
+    "text": "照抄的诗得不到裁判的分数。",
+    "english": "A copied verse forfeits the judge.",
+    "back": "A copy of the poem does not get a judge's score.",
+    "cos": 0.554,
+    "labse": 0.633
+   },
+   "verdict.notTaken": {
+    "text": "机锋：未拿下",
+    "english": "wit not taken",
+    "back": "Airfield: not taken",
+    "cos": 0.383,
+    "labse": 0.475,
+    "meaningFlag": "both under 0.6",
+    "meaningReading": "Kept. The criterion's name is the core's own word (criterion.wit) and the rest says it was not won; the round trip fails on the one-word name (Joke, Attendance, Airfield, Notification, Witchcraft…), not on the sentence."
+   },
+   "verdict.worldCard": {
+    "text": "世界卡：Verona",
+    "english": "World card: Verona",
+    "back": "World Map: Verona",
+    "cos": 0.705,
+    "labse": 0.958
+   },
+   "void.copied": {
+    "text": "取自对方的诗：回应必须是你自己写的",
+    "english": "taken from the other verse: an answer must be your own",
+    "back": "From the other person's poem: The reply must be your own",
+    "cos": 0.667,
+    "labse": 0.73
+   },
+   "void.label": {
+    "text": "不得分",
+    "english": "Scores nothing",
+    "back": "No score.",
+    "cos": 0.811,
+    "labse": 0.67
+   },
+   "void.thin": {
+    "text": "内容太少，算不上一首诗：需要更多不同的字词",
+    "english": "too little to be a verse: it needs more different words",
+    "back": "Too little to count as a poem: more different words needed",
+    "cos": 0.762,
+    "labse": 0.807
+   }
+  },
+  "ja": {
+   "auth.error.passkey_not_accepted_no_email": {
+    "text": "そのパスキーは受け付けられませんでした。アカウントから削除されたか、アカウントがもう存在しない可能性があります。",
+    "english": "That passkey was not accepted. It may have been removed from the account, or the account may no longer exist.",
+    "back": "The passkey was not accepted. It may have been deleted from the account, or the account no longer exists.",
+    "cos": 0.975,
+    "labse": 0.912
+   },
+   "auth.error.reauth_required": {
+    "text": "まずご本人であることを確認してください。サインアウトしてもう一度サインインし、やり直してください。",
+    "english": "Confirm it is you first: sign out, sign in again, then try once more.",
+    "back": "First make sure you are yourself. Sign out, sign in again and try again.",
+    "cos": 0.826,
+    "labse": 0.807
+   },
+   "auth.error.reauth_unavailable": {
+    "text": "これを行うには、いったんサインアウトして、メールのコードでサインインし直してください。",
+    "english": "To do this, sign out and sign in again with an emailed code first.",
+    "back": "To do this, once you have signed out, sign in again with the code from your email.",
+    "cos": 0.935,
+    "labse": 0.875
+   },
+   "auth.error.too_many_attempts": {
+    "text": "このアドレスへの誤ったコードが多すぎます。明日もう一度試すか、パスキーでサインインしてください。",
+    "english": "Too many wrong codes for this address. Try again tomorrow, or sign in with a passkey.",
+    "back": "There are too many incorrect codes for this address. Please try again tomorrow or sign in with your passkey.",
+    "cos": 0.98,
+    "labse": 0.911
+   },
+   "auth.legacyAccountNote": {
+    "text": "以前、Google またはメールアドレスでここにサインインしましたか？その方法は現在停止中のため、以前のアカウントはまだ開けません。ここでアカウントを作成すると、新しい空のアカウントになります。",
+    "english": "Signed in here before with Google or an email address? That way in is switched off for now, so an older account cannot be opened yet. Creating an account here makes a new, empty one.",
+    "back": "Have you previously signed in here with a Google or email address? Since that method is currently discontinued, you cannot open your old account yet. If you create an account here, it will be a new empty account.",
+    "cos": 0.829,
+    "labse": 0.904
+   },
+   "auth.signOutEverywhere": {
+    "text": "すべてのデバイスでサインアウト",
+    "english": "Sign out on every device",
+    "back": "Sign out on all devices",
+    "cos": 0.97,
+    "labse": 0.882
+   },
+   "hand.potionGamble": {
+    "text": "このラウンドで勝負が決まると、薬は無駄になります。",
+    "english": "If this round settles the match, the potion is spent for nothing.",
+    "back": "If the match is decided in this round, the medicine will be wasted.",
+    "cos": 0.609,
+    "labse": 0.74
+   },
+   "illegal.potion-last-round": {
+    "text": "呪いをかける詩がもうありません。これが最後のラウンドです。",
+    "english": "No verse is left to curse: this is the last round.",
+    "back": "There are no more poems to curse. This is the last round.",
+    "cos": 0.775,
+    "labse": 0.793
+   },
+   "live.judgeUnread": {
+    "text": "採点モデルが読まない行：2 (骸骨), 4 (冗談)。数字や採点の言葉（点数、評価、勝つ…）を含む行は除かれ、この回はルールだけで判定されます",
+    "english": "Lines the grading model will not read: 2 (skull), 4 (jest). A line holding a number or a judging word (grade, score, win…) is left out, and this round is then judged by the rules alone",
+    "back": "Lines not read by the scoring model: 2 (skeleton), 4 (joke). Lines containing numbers or scoring words (scores, ratings, win...) are excluded and will be determined only by the rules.",
+    "cos": 0.73,
+    "labse": 0.888,
+    "glossary": [
+     "\"round\" should be ラウンド: 採点モデルが読まない行：{lines}。数字や採点の言葉（点数、評価、勝つ…）を含む行は除かれ、この回はルールだけで判定されます"
+    ],
+    "proposal": "採点モデルが読まない行：{lines}。数字や採点の言葉（点数、評価、勝つ…）を含む行は除かれ、このラウンドはルールだけで判定されます",
+    "proposalCheck": {
+     "back": "Lines not read by the scoring model: 2 (skeleton), 4 (joke). Except for lines containing numbers or scoring words (scores, ratings, wins...), this round will be decided only by rules",
+     "cos": 0.745,
+     "labse": 0.897,
+     "tools": []
+    }
+   },
+   "signature.hintTwo": {
+    "text": "次のうち二つを響かせてください：骸骨、冗談、墓",
+    "english": "echo two of: skull, jest, and grave",
+    "back": "Let me play two of the following: skeleton, joke, tomb",
+    "cos": 0.497,
+    "labse": 0.786
+   },
+   "verdict.copyForfeits": {
+    "text": "写した詩は審判の得点を失います。",
+    "english": "A copied verse forfeits the judge.",
+    "back": "Poems that are copied will lose the judge's score.",
+    "cos": 0.678,
+    "labse": 0.708
+   },
+   "verdict.notTaken": {
+    "text": "機知：取れませんでした",
+    "english": "wit not taken",
+    "back": "Notification: Failed.",
+    "cos": 0.099,
+    "labse": 0.579,
+    "meaningFlag": "both under 0.6",
+    "meaningReading": "Kept. The criterion's name is the core's own word (criterion.wit) and the rest says it was not won; the round trip fails on the one-word name (Joke, Attendance, Airfield, Notification, Witchcraft…), not on the sentence."
+   },
+   "verdict.worldCard": {
+    "text": "ワールドカード：Verona",
+    "english": "World card: Verona",
+    "back": "World Card: Verona",
+    "cos": 1.0,
+    "labse": 0.954
+   },
+   "void.copied": {
+    "text": "相手の詩から取ったものです。返しは自分の言葉で書いてください",
+    "english": "taken from the other verse: an answer must be your own",
+    "back": "It's taken from the poem of the other person. Write back in your own words.",
+    "cos": 0.565,
+    "labse": 0.688
+   },
+   "void.label": {
+    "text": "得点なし",
+    "english": "Scores nothing",
+    "back": "No goals",
+    "cos": 0.584,
+    "labse": 0.821
+   },
+   "void.thin": {
+    "text": "詩と呼ぶには少なすぎます。もっと多くの異なる語が必要です",
+    "english": "too little to be a verse: it needs more different words",
+    "back": "It's too little to be poetry. We need more different words.",
+    "cos": 0.778,
+    "labse": 0.836
+   }
+  },
+  "ko": {
+   "auth.error.passkey_not_accepted_no_email": {
+    "text": "그 패스키는 받아들여지지 않았어요. 계정에서 삭제됐거나 계정이 더는 없을 수 있어요.",
+    "english": "That passkey was not accepted. It may have been removed from the account, or the account may no longer exist.",
+    "back": "The passkey wasn't accepted. It may have been deleted from the account or it might no longer exist.",
+    "cos": 0.975,
+    "labse": 0.898
+   },
+   "auth.error.reauth_required": {
+    "text": "먼저 본인인지 확인해 주세요. 로그아웃하고 다시 로그인한 뒤 한 번 더 시도하세요.",
+    "english": "Confirm it is you first: sign out, sign in again, then try once more.",
+    "back": "Please verify that you are the user, log out, log in again and try again.",
+    "cos": 0.719,
+    "labse": 0.853
+   },
+   "auth.error.reauth_unavailable": {
+    "text": "이 작업을 하려면 먼저 로그아웃한 뒤 이메일 코드로 다시 로그인하세요.",
+    "english": "To do this, sign out and sign in again with an emailed code first.",
+    "back": "To do this, log out first and then sign in again with your email code.",
+    "cos": 0.938,
+    "labse": 0.92
+   },
+   "auth.error.too_many_attempts": {
+    "text": "이 주소에 틀린 코드가 너무 많이 입력됐어요. 내일 다시 시도하거나 패스키로 로그인하세요.",
+    "english": "Too many wrong codes for this address. Try again tomorrow, or sign in with a passkey.",
+    "back": "You entered too many incorrect codes at this address. Please try again tomorrow or log in with your passkey.",
+    "cos": 0.925,
+    "labse": 0.914
+   },
+   "auth.legacyAccountNote": {
+    "text": "예전에 Google이나 이메일 주소로 여기에 로그인한 적이 있나요? 그 방법은 지금 꺼져 있어서 예전 계정은 아직 열 수 없어요. 여기서 계정을 만들면 새 빈 계정이 생겨요.",
+    "english": "Signed in here before with Google or an email address? That way in is switched off for now, so an older account cannot be opened yet. Creating an account here makes a new, empty one.",
+    "back": "Have you ever signed in here with your Google or email address before? We've turned that off now, so you can't open the old account yet. If you create an account here, it will be a new empty one.",
+    "cos": 0.865,
+    "labse": 0.903
+   },
+   "auth.signOutEverywhere": {
+    "text": "모든 기기에서 로그아웃",
+    "english": "Sign out on every device",
+    "back": "Sign out from all devices",
+    "cos": 0.954,
+    "labse": 0.886
+   },
+   "hand.potionGamble": {
+    "text": "이번 라운드에서 승부가 나면 물약은 헛되이 쓰게 돼요.",
+    "english": "If this round settles the match, the potion is spent for nothing.",
+    "back": "If you win this round, your water will be wasted.",
+    "cos": 0.433,
+    "labse": 0.727
+   },
+   "illegal.potion-last-round": {
+    "text": "저주를 걸 시가 남아 있지 않아요. 지금이 마지막 라운드예요.",
+    "english": "No verse is left to curse: this is the last round.",
+    "back": "There's no poem left to curse, this is the last round.",
+    "cos": 0.809,
+    "labse": 0.755
+   },
+   "live.judgeUnread": {
+    "text": "채점 모델이 읽지 않는 줄: 2 (해골), 4 (농담). 숫자나 채점에 쓰는 말(점수, 평가, 이기다…)이 든 줄은 빠지고, 이번 라운드는 규칙만으로 판정돼요",
+    "english": "Lines the grading model will not read: 2 (skull), 4 (jest). A line holding a number or a judging word (grade, score, win…) is left out, and this round is then judged by the rules alone",
+    "back": "Lines not read by the scoring model: 2 (skull), 4 (joke). Lines with numbers or words used to score (scores, ratings, wins...) are omitted and this round is decided only by the rules.",
+    "cos": 0.802,
+    "labse": 0.902,
+    "tools": [
+     {
+      "tool": "hunspell",
+      "rule": "SPELLING",
+      "at": "규칙만으로",
+      "reading": "규칙 + 만 + 으로 (by the rules alone): a word with its particles, which the word list lacks."
+     }
+    ],
+    "glossary": [
+     "\"line\" should be 행: 채점 모델이 읽지 않는 줄: {lines}. 숫자나 채점에 쓰는 말(점수, 평가, 이기다…)이 든 줄은 빠지고, 이번 라운드는 규칙만으로 판정돼요"
+    ],
+    "proposal": "채점 모델이 읽지 않는 행: {lines}. 숫자나 채점에 쓰는 말(점수, 평가, 이기다…)이 든 행은 빠지고, 이번 라운드는 규칙만으로 판정돼요",
+    "proposalCheck": {
+     "back": "Rows not read by the scoring model: 2 (Skull), 4 (Joke). Rows containing numbers or words used in scoring (score, rating, win...) are omitted and this round is decided only by the rules.",
+     "cos": 0.655,
+     "labse": 0.899,
+     "tools": [
+      "hunspell SPELLING «규칙만으로»"
+     ]
+    }
+   },
+   "signature.hintTwo": {
+    "text": "다음 중 둘을 떠올리게 하세요: 해골, 농담 및 무덤",
+    "english": "echo two of: skull, jest, and grave",
+    "back": "Make them think of two of the following: skulls, jokes and tombs",
+    "cos": 0.524,
+    "labse": 0.753
+   },
+   "verdict.copyForfeits": {
+    "text": "베낀 시는 심판 점수를 잃어요.",
+    "english": "A copied verse forfeits the judge.",
+    "back": "Copy poems lose their judge score.",
+    "cos": 0.642,
+    "labse": 0.613
+   },
+   "verdict.notTaken": {
+    "text": "재치: 얻지 못함",
+    "english": "wit not taken",
+    "back": "Witchcraft: Not obtained",
+    "cos": 0.246,
+    "labse": 0.555,
+    "meaningFlag": "both under 0.6",
+    "meaningReading": "Kept. The criterion's name is the core's own word (criterion.wit) and the rest says it was not won; the round trip fails on the one-word name (Joke, Attendance, Airfield, Notification, Witchcraft…), not on the sentence."
+   },
+   "verdict.worldCard": {
+    "text": "월드 카드: Verona",
+    "english": "World card: Verona",
+    "back": "World Card: Verona",
+    "cos": 1.0,
+    "labse": 0.955
+   },
+   "void.copied": {
+    "text": "상대의 시에서 가져왔어요. 답은 내가 지은 것이어야 해요",
+    "english": "taken from the other verse: an answer must be your own",
+    "back": "I took it from the other person's poem, and the answer must be my own.",
+    "cos": 0.62,
+    "labse": 0.686
+   },
+   "void.label": {
+    "text": "점수 없음",
+    "english": "Scores nothing",
+    "back": "No score",
+    "cos": 0.862,
+    "labse": 0.808
+   },
+   "void.thin": {
+    "text": "시라고 하기엔 너무 적어요. 서로 다른 낱말이 더 있어야 해요",
+    "english": "too little to be a verse: it needs more different words",
+    "back": "It's too little to be poetry.",
+    "cos": 0.704,
+    "labse": 0.835
+   }
+  },
+  "vi": {
+   "auth.error.passkey_not_accepted_no_email": {
+    "text": "Khóa truy cập đó không được chấp nhận. Có thể nó đã bị gỡ khỏi tài khoản, hoặc tài khoản không còn nữa.",
+    "english": "That passkey was not accepted. It may have been removed from the account, or the account may no longer exist.",
+    "back": "That access key is not accepted. It may have been removed from the account, or the account no longer exists.",
+    "cos": 0.755,
+    "labse": 0.885,
+    "tools": [
+     {
+      "tool": "hunspell",
+      "rule": "SPELLING",
+      "at": "Khóa",
+      "reading": "The old tone-mark style (khóa), which main's core locale writes 49 times; the dictionary has the new style. Follows main; wrong only once lang/qa-pipeline moves the core to khoá."
+     }
+    ],
+    "glossary": [
+     "\"passkey\" should be khoá truy cập: Khóa truy cập đó không được chấp nhận. Có thể nó đã bị gỡ khỏi tài khoản, hoặc tài khoản không còn nữa."
+    ],
+    "mechanical": [
+     "\"Khóa\": the game writes the tone on the second vowel (khoá, not khóa)"
+    ]
+   },
+   "auth.error.reauth_required": {
+    "text": "Trước hết hãy xác nhận đó là bạn: đăng xuất, đăng nhập lại, rồi thử lần nữa.",
+    "english": "Confirm it is you first: sign out, sign in again, then try once more.",
+    "back": "First verify that it's you: log out, log in again, and try again.",
+    "cos": 0.794,
+    "labse": 0.909
+   },
+   "auth.error.reauth_unavailable": {
+    "text": "Để làm việc này, trước hết hãy đăng xuất rồi đăng nhập lại bằng mã email.",
+    "english": "To do this, sign out and sign in again with an emailed code first.",
+    "back": "To do this, first log out and then log back in with your email.",
+    "cos": 0.811,
+    "labse": 0.867
+   },
+   "auth.error.too_many_attempts": {
+    "text": "Quá nhiều mã sai cho địa chỉ này. Hãy thử lại vào ngày mai, hoặc đăng nhập bằng khóa truy cập.",
+    "english": "Too many wrong codes for this address. Try again tomorrow, or sign in with a passkey.",
+    "back": "Too many bad codes for this address. Please try again tomorrow, or log in with your passkey.",
+    "cos": 0.955,
+    "labse": 0.909,
+    "tools": [
+     {
+      "tool": "hunspell",
+      "rule": "SPELLING",
+      "at": "khóa",
+      "reading": "The old tone-mark style (khóa), which main's core locale writes 49 times; the dictionary has the new style. Follows main; wrong only once lang/qa-pipeline moves the core to khoá."
+     }
+    ],
+    "glossary": [
+     "\"passkey\" should be khoá truy cập: Quá nhiều mã sai cho địa chỉ này. Hãy thử lại vào ngày mai, hoặc đăng nhập bằng khóa truy cập."
+    ],
+    "mechanical": [
+     "\"khóa\": the game writes the tone on the second vowel (khoá, not khóa)"
+    ]
+   },
+   "auth.legacyAccountNote": {
+    "text": "Trước đây bạn đã đăng nhập ở đây bằng Google hoặc địa chỉ email? Cách đăng nhập đó hiện đang tắt, nên tài khoản cũ chưa thể mở được. Tạo tài khoản ở đây sẽ ra một tài khoản mới, trống.",
+    "english": "Signed in here before with Google or an email address? That way in is switched off for now, so an older account cannot be opened yet. Creating an account here makes a new, empty one.",
+    "back": "Have you previously logged in here with Google or an email address? That login method is currently disabled, so the old account cannot be opened. Creating an account here will create a new, empty account.",
+    "cos": 0.823,
+    "labse": 0.912,
+    "tools": [
+     {
+      "tool": "hunspell",
+      "rule": "SPELLING",
+      "at": "Google",
+      "reading": "A name."
+     }
+    ]
+   },
+   "auth.signOutEverywhere": {
+    "text": "Đăng xuất trên mọi thiết bị",
+    "english": "Sign out on every device",
+    "back": "Sign out on all devices",
+    "cos": 0.97,
+    "labse": 0.873
+   },
+   "hand.potionGamble": {
+    "text": "Nếu hiệp này định đoạt trận đấu, thuốc phép sẽ bị dùng phí.",
+    "english": "If this round settles the match, the potion is spent for nothing.",
+    "back": "If this round decides the match, the magic will be used.",
+    "cos": 0.566,
+    "labse": 0.702
+   },
+   "illegal.potion-last-round": {
+    "text": "Không còn bài thơ nào để nguyền: đây là hiệp cuối.",
+    "english": "No verse is left to curse: this is the last round.",
+    "back": "No more poems to curse: this is the final act.",
+    "cos": 0.642,
+    "labse": 0.851
+   },
+   "live.judgeUnread": {
+    "text": "Những dòng mô hình chấm điểm sẽ không đọc: 2 (đầu lâu), 4 (trò hề). Dòng nào có con số hay từ chấm điểm (điểm, số điểm, thắng…) đều bị bỏ qua, và vòng này khi đó chỉ do luật phân định",
+    "english": "Lines the grading model will not read: 2 (skull), 4 (jest). A line holding a number or a judging word (grade, score, win…) is left out, and this round is then judged by the rules alone",
+    "back": "Lines with score patterns will not be read: 2 (long head), 4 (short head). Any lines containing numbers or points (points, total points, wins...) are ignored, and the round is then determined only by rules.",
+    "cos": 0.67,
+    "labse": 0.841,
+    "glossary": [
+     "\"round\" should be hiệp: Những dòng mô hình chấm điểm sẽ không đọc: {lines}. Dòng nào có con số hay từ chấm điểm (điểm, số điểm, thắng…) đều bị bỏ qua, và vòng này khi đó chỉ do luật phân định"
+    ],
+    "proposal": "Những dòng mô hình chấm điểm sẽ không đọc: {lines}. Dòng nào có con số hay từ chấm điểm (điểm, số điểm, thắng…) đều bị bỏ qua, và hiệp này khi đó chỉ do luật phân định",
+    "proposalCheck": {
+     "back": "Lines with score patterns will not be read: 2 (long head), 4 (short head). Any line containing a number or a score word (point, total points, win...) is ignored, and the round is then determined only by the rules.",
+     "cos": 0.698,
+     "labse": 0.836,
+     "tools": []
+    }
+   },
+   "signature.hintTwo": {
+    "text": "gợi lại hai trong các từ: đầu lâu, trò hề và nấm mồ",
+    "english": "echo two of: skull, jest, and grave",
+    "back": "reminds me of two of the words: longhead, joke and mushroom.",
+    "cos": 0.333,
+    "labse": 0.662
+   },
+   "verdict.copyForfeits": {
+    "text": "Bài thơ chép lại sẽ mất điểm của giám khảo.",
+    "english": "A copied verse forfeits the judge.",
+    "back": "The re-written poem will lose the judge's points.",
+    "cos": 0.595,
+    "labse": 0.671
+   },
+   "verdict.notTaken": {
+    "text": "sắc sảo: chưa giành được",
+    "english": "wit not taken",
+    "back": "Dexterity: not won",
+    "cos": 0.196,
+    "labse": 0.573,
+    "meaningFlag": "both under 0.6",
+    "meaningReading": "Kept. The criterion's name is the core's own word (criterion.wit) and the rest says it was not won; the round trip fails on the one-word name (Joke, Attendance, Airfield, Notification, Witchcraft…), not on the sentence."
+   },
+   "verdict.worldCard": {
+    "text": "Lá bài thế giới: Verona",
+    "english": "World card: Verona",
+    "back": "World Card: Verona",
+    "cos": 1.0,
+    "labse": 0.908
+   },
+   "void.copied": {
+    "text": "lấy từ bài thơ của đối thủ: câu đáp phải là của chính bạn",
+    "english": "taken from the other verse: an answer must be your own",
+    "back": "From the opponent's poem: The answer must be your own.",
+    "cos": 0.641,
+    "labse": 0.752
+   },
+   "void.label": {
+    "text": "Không được điểm",
+    "english": "Scores nothing",
+    "back": "No points.",
+    "cos": 0.382,
+    "labse": 0.727
+   },
+   "void.thin": {
+    "text": "quá ít để thành một bài thơ: cần thêm những từ khác nhau",
+    "english": "too little to be a verse: it needs more different words",
+    "back": "It's too little to be a poem: it needs different words.",
+    "cos": 0.76,
+    "labse": 0.882
+   }
+  },
+  "th": {
+   "auth.error.passkey_not_accepted_no_email": {
+    "text": "พาสคีย์นั้นไม่ได้รับการยอมรับ อาจถูกลบออกจากบัญชีแล้ว หรือบัญชีอาจไม่มีอยู่แล้ว",
+    "english": "That passkey was not accepted. It may have been removed from the account, or the account may no longer exist.",
+    "back": "Paskey wasn't accepted, may have been deleted from the account, or the account might no longer exist.",
+    "cos": 0.707,
+    "labse": 0.869
+   },
+   "auth.error.reauth_required": {
+    "text": "โปรดยืนยันก่อนว่าเป็นคุณ: ออกจากระบบ เข้าสู่ระบบอีกครั้ง แล้วลองใหม่",
+    "english": "Confirm it is you first: sign out, sign in again, then try once more.",
+    "back": "Please verify that it is you: Log out, log in again and try again",
+    "cos": 0.74,
+    "labse": 0.867,
+    "glossary": [
+     "\"sign-in\" should be ลงชื่อเข้าใช้: โปรดยืนยันก่อนว่าเป็นคุณ: ออกจากระบบ เข้าสู่ระบบอีกครั้ง แล้วลองใหม่"
+    ]
+   },
+   "auth.error.reauth_unavailable": {
+    "text": "หากต้องการทำสิ่งนี้ โปรดออกจากระบบก่อน แล้วเข้าสู่ระบบอีกครั้งด้วยรหัสทางอีเมล",
+    "english": "To do this, sign out and sign in again with an emailed code first.",
+    "back": "If you want to do this, please log out and login again with your email password.",
+    "cos": 0.694,
+    "labse": 0.849,
+    "glossary": [
+     "\"sign-in\" should be ลงชื่อเข้าใช้: หากต้องการทำสิ่งนี้ โปรดออกจากระบบก่อน แล้วเข้าสู่ระบบอีกครั้งด้วยรหัสทางอีเมล"
+    ]
+   },
+   "auth.error.too_many_attempts": {
+    "text": "ใส่รหัสผิดสำหรับที่อยู่นี้มากเกินไป โปรดลองใหม่พรุ่งนี้ หรือเข้าสู่ระบบด้วยพาสคีย์",
+    "english": "Too many wrong codes for this address. Try again tomorrow, or sign in with a passkey.",
+    "back": "There are too many incorrect passwords for this address. Please try again tomorrow, or log in with a passkey.",
+    "cos": 0.882,
+    "labse": 0.821,
+    "glossary": [
+     "\"sign-in\" should be ลงชื่อเข้าใช้: ใส่รหัสผิดสำหรับที่อยู่นี้มากเกินไป โปรดลองใหม่พรุ่งนี้ หรือเข้าสู่ระบบด้วยพาสคีย์"
+    ]
+   },
+   "auth.legacyAccountNote": {
+    "text": "เคยเข้าสู่ระบบที่นี่ด้วย Google หรือที่อยู่อีเมลมาก่อนใช่ไหม ตอนนี้ช่องทางนั้นปิดอยู่ บัญชีเก่าจึงยังเปิดไม่ได้ การสร้างบัญชีที่นี่จะได้บัญชีใหม่ที่ว่างเปล่า",
+    "english": "Signed in here before with Google or an email address? That way in is switched off for now, so an older account cannot be opened yet. Creating an account here makes a new, empty one.",
+    "back": "Did you ever log in here with Google or an email address before? Now that the channel is closed, the old account can't be opened. Creating a new account here will leave an empty one.",
+    "cos": 0.645,
+    "labse": 0.856,
+    "glossary": [
+     "\"sign-in\" should be ลงชื่อเข้าใช้: เคยเข้าสู่ระบบที่นี่ด้วย Google หรือที่อยู่อีเมลมาก่อนใช่ไหม ตอนนี้ช่องทางนั้นปิดอยู่ บัญชีเก่าจึงยังเปิดไม่ได้ การสร้างบัญชีที่นี่จะได้บัญชีใหม่ที่ว่างเปล่า"
+    ]
+   },
+   "auth.signOutEverywhere": {
+    "text": "ออกจากระบบในทุกอุปกรณ์",
+    "english": "Sign out on every device",
+    "back": "Sign out on all devices.",
+    "cos": 0.895,
+    "labse": 0.771
+   },
+   "hand.potionGamble": {
+    "text": "ถ้ายกนี้ตัดสินผลการประชัน ยาวิเศษจะเสียเปล่า",
+    "english": "If this round settles the match, the potion is spent for nothing.",
+    "back": "If this round decides the match, the magic will be lost.",
+    "cos": 0.521,
+    "labse": 0.617
+   },
+   "illegal.potion-last-round": {
+    "text": "ไม่เหลือบทกลอนให้สาปแล้ว นี่คือยกสุดท้าย",
+    "english": "No verse is left to curse: this is the last round.",
+    "back": "There's no poem left to curse. This is the last move.",
+    "cos": 0.697,
+    "labse": 0.706,
+    "tools": [
+     {
+      "tool": "hunspell",
+      "rule": "SPELLING",
+      "at": "ทก",
+      "reading": "A cut made by the word segmenter inside บทกลอน; not a word of the string."
+     }
+    ]
+   },
+   "live.judgeUnread": {
+    "text": "บรรทัดที่โมเดลให้คะแนนจะไม่อ่าน: 2 (กะโหลก), 4 (ตลก) บรรทัดที่มีตัวเลขหรือคำเกี่ยวกับการให้คะแนน (คะแนน, ชนะ…) จะถูกตัดออก และรอบนี้จะตัดสินด้วยกติกาเท่านั้น",
+    "english": "Lines the grading model will not read: 2 (skull), 4 (jest). A line holding a number or a judging word (grade, score, win…) is left out, and this round is then judged by the rules alone",
+    "back": "Lines where the model scores will not be read: 2 (Skull), 4 (Funny) Lines with numbers or words about scoring (points, win…) will be cut off and this round will only be judged by rules.",
+    "cos": 0.765,
+    "labse": 0.853
+   },
+   "signature.hintTwo": {
+    "text": "สะท้อนสองคำจากต่อไปนี้: กะโหลก ตลก และหลุมศพ",
+    "english": "echo two of: skull, jest, and grave",
+    "back": "Reflects two of the following words: skull, funny and grave.",
+    "cos": 0.699,
+    "labse": 0.677
+   },
+   "verdict.copyForfeits": {
+    "text": "บทกลอนที่ลอกมาจะเสียคะแนนจากกรรมการ",
+    "english": "A copied verse forfeits the judge.",
+    "back": "Copy poems will lose points from the jury.",
+    "cos": 0.55,
+    "labse": 0.541,
+    "meaningFlag": "both under 0.6",
+    "meaningReading": "Kept. It says a copied verse loses the judge's points, which is what forfeiting the judge means here (the judge's part of the round's score). hi पद is verse here (MADLAD took it for 'position'); ar says it of copied verses in the plural, a general statement."
+   },
+   "verdict.notTaken": {
+    "text": "ไหวพริบ: ไม่ได้มา",
+    "english": "wit not taken",
+    "back": "He didn't come.",
+    "cos": 0.246,
+    "labse": 0.534,
+    "meaningFlag": "both under 0.6",
+    "meaningReading": "Kept. The criterion's name is the core's own word (criterion.wit) and the rest says it was not won; the round trip fails on the one-word name (Joke, Attendance, Airfield, Notification, Witchcraft…), not on the sentence."
+   },
+   "verdict.worldCard": {
+    "text": "การ์ดโลก: Verona",
+    "english": "World card: Verona",
+    "back": "World Card: Verona",
+    "cos": 1.0,
+    "labse": 0.927
+   },
+   "void.copied": {
+    "text": "นำมาจากบทกลอนของอีกฝ่าย คำตอบต้องเป็นของคุณเอง",
+    "english": "taken from the other verse: an answer must be your own",
+    "back": "From the other party's poem. The answer must be your own.",
+    "cos": 0.538,
+    "labse": 0.756
+   },
+   "void.label": {
+    "text": "ไม่ได้คะแนน",
+    "english": "Scores nothing",
+    "back": "No score.",
+    "cos": 0.811,
+    "labse": 0.687
+   },
+   "void.thin": {
+    "text": "น้อยเกินกว่าจะเป็นบทกลอน ต้องมีคำที่ต่างกันมากกว่านี้",
+    "english": "too little to be a verse: it needs more different words",
+    "back": "Too little to be a poem. There must be more than this difference in words.",
+    "cos": 0.698,
+    "labse": 0.769
+   }
+  },
+  "id": {
+   "auth.error.passkey_not_accepted_no_email": {
+    "text": "Kunci sandi itu tidak diterima. Mungkin sudah dihapus dari akun, atau akunnya sudah tidak ada.",
+    "english": "That passkey was not accepted. It may have been removed from the account, or the account may no longer exist.",
+    "back": "The password key was not accepted. It may have been deleted from the account, or the account no longer exists.",
+    "cos": 0.802,
+    "labse": 0.867
+   },
+   "auth.error.reauth_required": {
+    "text": "Pastikan dulu bahwa ini kamu: keluar, masuk lagi, lalu coba sekali lagi.",
+    "english": "Confirm it is you first: sign out, sign in again, then try once more.",
+    "back": "Make sure it's you first: get out, get back in, and try again.",
+    "cos": 0.649,
+    "labse": 0.897
+   },
+   "auth.error.reauth_unavailable": {
+    "text": "Untuk melakukannya, keluar dulu lalu masuk lagi dengan kode email.",
+    "english": "To do this, sign out and sign in again with an emailed code first.",
+    "back": "To do this, log out first and then log in again with your email code.",
+    "cos": 0.917,
+    "labse": 0.901
+   },
+   "auth.error.too_many_attempts": {
+    "text": "Terlalu banyak kode salah untuk alamat ini. Coba lagi besok, atau masuk dengan kunci sandi.",
+    "english": "Too many wrong codes for this address. Try again tomorrow, or sign in with a passkey.",
+    "back": "Too many bad codes for this address. Try again tomorrow, or log in with a passkey.",
+    "cos": 0.978,
+    "labse": 0.928
+   },
+   "auth.legacyAccountNote": {
+    "text": "Dulu pernah masuk di sini dengan Google atau alamat email? Cara masuk itu sedang dimatikan, jadi akun lama belum bisa dibuka. Membuat akun di sini menghasilkan akun baru yang kosong.",
+    "english": "Signed in here before with Google or an email address? That way in is switched off for now, so an older account cannot be opened yet. Creating an account here makes a new, empty one.",
+    "back": "Did you ever log in here with Google or an email address? That login method is currently disabled, so the old account cannot be opened. Creating an account here will result in a new empty account.",
+    "cos": 0.825,
+    "labse": 0.941,
+    "tools": [
+     {
+      "tool": "hunspell",
+      "rule": "SPELLING",
+      "at": "Google",
+      "reading": "A name."
+     }
+    ]
+   },
+   "auth.signOutEverywhere": {
+    "text": "Keluar di semua perangkat",
+    "english": "Sign out on every device",
+    "back": "Sign out on all devices",
+    "cos": 0.97,
+    "labse": 0.841
+   },
+   "hand.potionGamble": {
+    "text": "Jika ronde ini menentukan duel, ramuan terbuang sia-sia.",
+    "english": "If this round settles the match, the potion is spent for nothing.",
+    "back": "If this round decides the duel, the spice is wasted.",
+    "cos": 0.53,
+    "labse": 0.749
+   },
+   "illegal.potion-last-round": {
+    "text": "Tidak ada syair lagi untuk dikutuk: ini ronde terakhir.",
+    "english": "No verse is left to curse: this is the last round.",
+    "back": "No more poems to curse: this is the last round.",
+    "cos": 0.788,
+    "labse": 0.886
+   },
+   "live.judgeUnread": {
+    "text": "Baris yang tidak akan dibaca model penilai: 2 (tengkorak), 4 (lelucon). Baris yang memuat angka atau kata penilaian (hakim, pemenang, menang…) dilewati, dan babak ini lalu diputuskan oleh aturan saja",
+    "english": "Lines the grading model will not read: 2 (skull), 4 (jest). A line holding a number or a judging word (grade, score, win…) is left out, and this round is then judged by the rules alone",
+    "back": "Lines not to be read by the judge model: 2 (skull), 4 (joke). Lines containing numbers or judging words (judge, winner, won…) are skipped, and this round is then decided by rules alone",
+    "cos": 0.787,
+    "labse": 0.873,
+    "glossary": [
+     "\"round\" should be ronde: Baris yang tidak akan dibaca model penilai: {lines}. Baris yang memuat angka atau kata penilaian (hakim, pemenang, menang…) dilewati, dan babak ini lalu diputuskan oleh aturan saja"
+    ],
+    "proposal": "Baris yang tidak akan dibaca model penilai: {lines}. Baris yang memuat angka atau kata penilaian (hakim, pemenang, menang…) dilewati, dan ronde ini lalu diputuskan oleh aturan saja",
+    "proposalCheck": {
+     "back": "Lines not to be read by the judge model: 2 (skull), 4 (joke). Lines containing numbers or judging words (judge, winner, won…) are skipped, and this round is then decided by rules alone",
+     "cos": 0.787,
+     "labse": 0.874,
+     "tools": []
+    }
+   },
+   "signature.hintTwo": {
+    "text": "gemakan dua dari: tengkorak, lelucon, dan kubur",
+    "english": "echo two of: skull, jest, and grave",
+    "back": "Echo two of: skulls, jokes, and graves.",
+    "cos": 0.82,
+    "labse": 0.882
+   },
+   "verdict.copyForfeits": {
+    "text": "Syair salinan kehilangan nilai dari juri.",
+    "english": "A copied verse forfeits the judge.",
+    "back": "Copy poems lose value from the jury.",
+    "cos": 0.617,
+    "labse": 0.695
+   },
+   "verdict.notTaken": {
+    "text": "kecerdikan: tidak direbut",
+    "english": "wit not taken",
+    "back": "skill: not captured",
+    "cos": 0.302,
+    "labse": 0.641
+   },
+   "verdict.worldCard": {
+    "text": "Kartu dunia: Verona",
+    "english": "World card: Verona",
+    "back": "World map: Verona",
+    "cos": 0.705,
+    "labse": 0.965
+   },
+   "void.copied": {
+    "text": "diambil dari syair lawan: jawaban harus buatanmu sendiri",
+    "english": "taken from the other verse: an answer must be your own",
+    "back": "taken from the opponent's poem: the answer must be your own",
+    "cos": 0.651,
+    "labse": 0.841
+   },
+   "void.label": {
+    "text": "Tanpa nilai",
+    "english": "Scores nothing",
+    "back": "No value",
+    "cos": 0.547,
+    "labse": 0.691
+   },
+   "void.thin": {
+    "text": "terlalu sedikit untuk disebut syair: perlu lebih banyak kata yang berbeda",
+    "english": "too little to be a verse: it needs more different words",
+    "back": "Too little to be called poetry: it needs more different words.",
+    "cos": 0.782,
+    "labse": 0.882
+   }
+  }
+ }
+}

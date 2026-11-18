@@ -663,6 +663,82 @@ does not group four digits, as CLDR says). Not this branch's: in Japanese and Ar
 header's sign-in button wraps its words on a phone (the shared layout; branch lang/pages-core
 works on the navigation).
 
+## Third pass: the merge of integrate/wave3, and the second checker (2026-11-17)
+
+### What changed in the areas
+
+| | key | was | now | why |
+|---|---|---|---|---|
+| es | `credits.many`, `classroom.members.many` | {n} créditos, {n} miembros | {n} de créditos, {n} de miembros | CLDR 49's minimal pair for "many": {0} de días |
+| fr | the same two | {n} crédits, {n} membres | {n} de crédits, {n} de membres | {0} de jours |
+| it | the same two | {n} crediti, {n} membri | {n} di crediti, {n} di membri | {0} di giorni |
+| pt | the same two | {n} créditos, {n} membros | {n} de créditos, {n} de membros | {0} de dias |
+| ko | `classroom.teacher.check3After` | 을(를) 읽었으며, … | 을 읽었으며, … | follows 개인정보 처리방침, whose 침 ends in a consonant |
+| es, fr, pt | 8 viewer strings each (`viewer.ar`, `viewer.card.ar.*`, `vr.enter`, `vr.status.*`, `vr.card.quest.body`) | RV, RA | VR, AR | the core's `nav.vr` (Galería VR, Galerie VR, Galeria VR) |
+| th | `error.assignment_title_invalid`, `classroom.assign.titlePlaceholder` | ชื่องาน… | ชื่องานที่มอบหมาย… | the terms record's word; bare งาน only where the string says who gives the work |
+| all 16 | `error.age_tier_locked`, `error.age_tier_changed`, `error.invalid_age_tier`, `error.cross_site_request` | (none) | new | codes the merged server answers (`backend/src/auth/age.rs`, `sessions.rs`) |
+
+Checked as the earlier passes were: `bt-merge.mjs stale` found 95 strings; MADLAD-400 and LaBSE
+scored them, the whole file was ranked again, and Hunspell and LanguageTool ran over every string
+(Studio, 2026-11-17). `summarise.mjs --strict` exits 0: none of the 95 is flagged. What the
+tools said about them, and how it was read:
+
+- LanguageTool: fr `REP_VOULOIR` on *Veuillez réessayer* and *Veuillez répondre* (a style
+  suggestion; the core locale says *Veuillez* too); ar `collo_0086` on *أثناء حفظها* (it prefers
+  *في أثناء*; both are standard). Nothing else new.
+- Hunspell: it *sull’età* (an elision with the typographic apostrophe, which the Italian list does
+  not know: the same gap as before) and hi *रहेगा* (the future of रहना; the Hindi list is thin).
+- Back-translation: fr `error.cross_site_request` came back as "The requested URL was not found
+  on this server" while LaBSE scored the French 0.92 against its own English: MADLAD made that up.
+  The French says the request did not come from this site and was refused.
+
+### What the merge brought into the core locale
+
+The merge added 16 keys to every core locale file (`auth.signOutEverywhere`,
+`auth.legacyAccountNote`, `auth.error.passkey_not_accepted_no_email`, `auth.error.reauth_required`,
+`auth.error.reauth_unavailable`, `auth.error.too_many_attempts`, `hand.potionGamble`,
+`illegal.potion-last-round`, `void.label`, `void.thin`, `void.copied`, `live.judgeUnread`,
+`signature.hintTwo`, `verdict.worldCard`, `verdict.notTaken`, `verdict.copyForfeits`), written by
+the engineers of the merged branches and read by no tool. They are lang/qa-pipeline's files, not
+this branch's, so they were checked with that branch's pipeline as it stands (`fa198bc`), on a
+scratch merge of it with the integration, and not changed here. Every result, with a reading
+of each, is in `docs/language/results/pages-rest/wave3-core.json`; 13 proposed texts, in that
+branch's `apply.mjs` format, are in `wave3-core-proposals.json`.
+
+- **Mechanical** (`check.mjs`): 12 findings, all in the new keys. fr: 10 strings with a plain space
+  before a colon or question mark; vi: *khóa* in 2. Both follow main's core, which writes them that
+  way throughout (67 plain spaces before : ? ! ; in fr); they are wrong only against that branch's
+  core, which moves to the no-break space and *khoá*.
+- **Grammar and spelling** (LanguageTool, Hunspell; the run's self-test flagged known-bad
+  sentences as before): 52 hits, every one read. None is an error of the text: fragments that begin
+  in lower case as their English does, checklist lines with no full stop as in English, *Google*,
+  three LanguageTool false alarms in fr and ar, a German compound, a Korean word with its
+  particles, and *khóa* as above.
+- **Meaning** (MADLAD-400, MiniLM, LaBSE; `meaning.mjs`): 12 flagged, `verdict.notTaken` in 10
+  languages and `verdict.copyForfeits` in ar, hi, th. Read: right. The one-word criterion name
+  does not survive a round trip ("Witchcraft", "Airfield"); the sentence does.
+- **Terminology** (`glossary.mjs`): 23 findings. Against main's core, which is what this branch
+  has, ten are real and were found only by this run:
+  - `live.judgeUnread` says *línea*, *ligne*, *riga*, *linha*, 줄 for a line of verse, where the
+    core says *verso*, *vers*, *verso*, *verso*, 행; and ja この回, vi *vòng*, id *babak*, ar
+    *الشوط* for the round, where the core says ラウンド, *hiệp*, *ronde*, *الجولة*.
+  - zh *这把通行密钥*: that branch's glossary forbids 把 as the measure word of a passkey; the
+    core says *这个通行密钥*.
+  The others: hi पद for verse, th เข้าสู่ระบบ for sign in, vi *khóa* (main's spellings, which
+  that branch changes); de *Melde dich … ab* split by other words, and ar *تُلعَن* written with
+  vowel marks (two misses of the glossary's matcher); ru `illegal.potion-last-round`, which says
+  "nothing left to curse" with no word for verse (right in meaning).
+- **Read, not found by a tool:** `auth.legacyAccountNote` addresses the reader in one gender in fr
+  (*Vous vous êtes déjà connecté*), pl (*Logowałeś się*) and ru (*ты входил*). And the battle page
+  joins the lines of `live.judgeUnread`'s {lines} with ", " in every language (`battle.astro`), so
+  Arabic shows a Latin comma; that is the page's code, not a string.
+
+The 13 proposals fix the ten terminology findings, the passkey measure word and the three gendered
+sentences. With them laid over the strings (`LANGQA_OVERLAY`), that branch's tools found: glossary
+23 → 13 (the 13 left are the ones above that are not errors against main's core), grammar no new
+hit (the same false alarms), and back-translation of each proposal at cos 0.66 to 0.98 and LaBSE
+0.84 to 0.93, none flagged.
+
 ## Proof that the checks can fail
 
 `node scripts/pages-rest/mutate.mjs --browser` breaks one thing at a time on the build host,
@@ -695,6 +771,16 @@ against the checks.
 - **Last run** (iMac Pro, 2026-11-16, 19:03 to 19:12 US Eastern, after every change of the
   second pass): **65 of 65 caught**, 54 against the unit tests (the three files green before any
   mutation) and 11 against the browser tests.
+- **Third pass** (Studio, 2026-11-17): twelve mutations added for the second checker's findings
+  and the merge (French and Portuguese "many" copied from "other", a saved CLDR pair that stops
+  joining with *de*, the Korean particle hedge and the wrong particle after the link, Spanish RV
+  and French RA beside the core's VR, bare งาน in the Thai error, a merged sign-in code without its
+  Japanese sentence, the "DB error" text back in the table, Japanese lines breaking anywhere).
+  **77 of 77 caught**: 65 unit, 12 browser. The API error test, run on the bare merge commit,
+  was red and named all 64 missing sentences and the stale "DB error" entry. The Japanese line
+  test, run with the stylesheet rule taken out, named six breaks at 390 px (among them チャ|レンジ
+  in the classroom intro) and three at 1280 px (カ|ード in the marketplace intro, the checker's
+  two examples).
 
 The meaning check was shown to fail twice on real data before its record was complete:
 `summarise.mjs --strict` named 17 strings changed after the back-translation run had copied
@@ -753,3 +839,18 @@ rank. Its control is described under "Meaning".
   when even `offline.html` is not cached); the Theatre page's own tab title "The Theatre"
   (`theatre.astro`, done on another branch) — the manifest's shortcut uses the page's heading
   instead.
+- **Japanese line breaks** are kept whole by `word-break: auto-phrase`, which only Chromium has;
+  Safari and Firefox get `line-break: strict` alone (no ー or small kana opening a line), and may
+  still break inside a word. The browser test runs in Chromium only, and only on this branch's
+  pages, and it knows two kinds of bad break (a line opening with ー or a small kana, a break
+  between two katakana), not every one.
+- **Plural wording**: the minimal-pair test holds a form to the joining word CLDR's pair puts
+  after the number (es, fr, it, pt "many"). It does not compare the rest of any form with CLDR.
+- **VR or RV**: the areas follow the core's *VR* in es, fr and pt; no source settles which a
+  language should use (see "Terms").
+- **The 16 core keys the merge brought** were checked with lang/qa-pipeline's tools but are not
+  changed here (they are that branch's files); until the 13 proposals are applied, the defects in
+  "Third pass" stand on the page.
+- **Multiplayer**: `src/pages/multiplayer.astro` is outside this branch's brief and is mostly
+  English; its four plain-text API answers (`backend/src/multiplayer`) have no sentence in any
+  language, and the API error test skips that folder.

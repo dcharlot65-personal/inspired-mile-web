@@ -4,7 +4,7 @@
   "en": {
    "checked": true,
    "dictionary": "en",
-   "words": 507,
+   "words": 520,
    "rejected": {
     "Cancelled": [
      "market.status.cancelled"
@@ -242,6 +242,10 @@
     "error.unavailable": "The service is not available right now. Please try again shortly.",
     "error.generic": "Something went wrong. Please try again.",
     "error.passkey_not_found": "That passkey was not found on this account.",
+    "error.age_tier_locked": "This account was made for someone under 18, and it stays that way.",
+    "error.age_tier_changed": "Your age answer changed while it was being saved. Please try again.",
+    "error.invalid_age_tier": "That age answer was not understood. Please answer the age question again.",
+    "error.cross_site_request": "This request did not come from this site, so it was refused. Reload the page and try again.",
     "error.classroom_name_invalid": "A classroom name must have between 1 and 128 characters.",
     "error.join_code_invalid": "That is not a valid join code. It has 6 characters: letters and digits.",
     "error.classroom_not_found": "No classroom has that code. Check it with your teacher.",
@@ -313,7 +317,7 @@
   "es": {
    "checked": true,
    "dictionary": "es",
-   "words": 574,
+   "words": 590,
    "rejected": {
     "B": [
      "classroom.wizard.s1.body"
@@ -379,7 +383,7 @@
     "classroom.mine.empty": "Todavía no te has unido a ninguna clase.",
     "classroom.mine.signIn": "Inicia sesión para ver tus clases.",
     "classroom.members.one": "1 miembro",
-    "classroom.members.many": "1.000.000 miembros",
+    "classroom.members.many": "1.000.000 de miembros",
     "classroom.members.other": "0 miembros",
     "classroom.list.code": "Código:",
     "classroom.detail.back": "Volver a mis clases",
@@ -529,29 +533,29 @@
     "viewer.error.init": "El visor 3D no ha podido iniciarse.",
     "viewer.error.glbViewer": "No se ha podido cargar la vista GLB.",
     "viewer.fps": "3 fps",
-    "viewer.ar": "Ver en RA",
+    "viewer.ar": "Ver en AR",
     "viewer.card.splat.title": "Vista splat",
     "viewer.card.splat.body": "Splats gaussianos dibujados con Babylon.js. Gira, acerca y desplaza una imagen 3D realista del modelo.",
     "viewer.card.glb.title": "Vista GLB",
     "viewer.card.glb.body": "Una malla corriente mostrada con model-viewer. En un móvil puede colocar el modelo en tu habitación con realidad aumentada.",
-    "viewer.card.ar.title": "RA en el móvil",
-    "viewer.card.ar.body": "En la vista GLB de un móvil, toca «Ver en RA» para ver la carta en tu habitación.",
+    "viewer.card.ar.title": "AR en el móvil",
+    "viewer.card.ar.body": "En la vista GLB de un móvil, toca «Ver en AR» para ver la carta en tu habitación.",
     "vr.meta.description": "Recorre tu colección de cartas de Shakespeare en realidad virtual.",
     "vr.badge": "Realidad virtual",
     "vr.intro": "Recorre tu colección en 3D. Funciona en Quest 3 y Vision Pro mediante WebXR, y con ratón en un ordenador.",
-    "vr.enter": "Entrar en RV",
+    "vr.enter": "Entrar en VR",
     "vr.status.loading": "Cargando el motor 3D…",
     "vr.status.gallery": "La galería 3D está cargada. Arrastra para mirar alrededor y usa la rueda para acercarte.",
-    "vr.status.noHeadset": "No se ha encontrado ningún visor de RV. La galería se muestra en 3D.",
-    "vr.status.ready": "WebXR está listo. Pulsa «Entrar en RV».",
+    "vr.status.noHeadset": "No se ha encontrado ningún visor de VR. La galería se muestra en 3D.",
+    "vr.status.ready": "WebXR está listo. Pulsa «Entrar en VR».",
     "vr.status.selected": "Seleccionada: Hamlet (DC-001)",
-    "vr.status.useButton": "Usa el botón de RV que hay en la esquina de la imagen.",
+    "vr.status.useButton": "Usa el botón de VR que hay en la esquina de la imagen.",
     "vr.error.webxr": "WebXR no está disponible aquí.",
     "vr.error.init": "La galería 3D no ha podido iniciarse.",
     "vr.fallback": "WebXR no está disponible en este dispositivo. La galería se muestra en 3D: arrastra para mirar alrededor y usa la rueda para acercarte.",
     "vr.card.desktop.title": "Ordenador",
     "vr.card.desktop.body": "Haz clic y arrastra para mirar alrededor. Usa la rueda para acercarte. Haz clic en una carta para seleccionarla.",
-    "vr.card.quest.body": "Pulsa «Entrar en RV» para meterte dentro. Usa los mandos para moverte y elegir cartas.",
+    "vr.card.quest.body": "Pulsa «Entrar en VR» para meterte dentro. Usa los mandos para moverte y elegir cartas.",
     "vr.card.vision.body": "Se abre en WebXR. Mira una carta y, a continuación, toca el dedo índice con el pulgar para seleccionarla.",
     "error.network": "No hemos podido conectar con el servidor. Comprueba tu conexión e inténtalo de nuevo.",
     "error.not_signed_in": "Inicia sesión primero.",
@@ -564,6 +568,10 @@
     "error.unavailable": "El servicio no está disponible ahora mismo. Inténtalo de nuevo dentro de un momento.",
     "error.generic": "Algo ha salido mal. Inténtalo de nuevo.",
     "error.passkey_not_found": "Esa llave de acceso no está en esta cuenta.",
+    "error.age_tier_locked": "Esta cuenta se creó para una persona menor de 18 años y así seguirá.",
+    "error.age_tier_changed": "Tu respuesta sobre la edad cambió mientras se guardaba. Inténtalo de nuevo.",
+    "error.invalid_age_tier": "No se ha entendido esa respuesta sobre la edad. Vuelve a responder a la pregunta de la edad.",
+    "error.cross_site_request": "Esta solicitud no procede de este sitio, así que se ha rechazado. Vuelve a cargar la página e inténtalo de nuevo.",
     "error.classroom_name_invalid": "El nombre de la clase debe tener entre 1 y 128 caracteres.",
     "error.join_code_invalid": "Ese código de acceso no es válido. Tiene 6 caracteres, entre letras y números.",
     "error.classroom_not_found": "Ninguna clase tiene ese código. Compruébalo con tu docente.",
@@ -595,7 +603,7 @@
     "activity.battle": "Batalla",
     "activity.daily": "Diario",
     "credits.one": "1 crédito",
-    "credits.many": "1.000.000 créditos",
+    "credits.many": "1.000.000 de créditos",
     "credits.other": "0 créditos",
     "boundary.message": "No se ha podido mostrar esta parte de la página.",
     "boundary.retry": "Reintentar",
@@ -636,7 +644,7 @@
   "fr": {
    "checked": true,
    "dictionary": "fr",
-   "words": 629,
+   "words": 645,
    "rejected": {
     "battle": [
      "app.description"
@@ -687,7 +695,7 @@
     "classroom.mine.empty": "Vous n’avez encore rejoint aucune classe.",
     "classroom.mine.signIn": "Connectez-vous pour voir vos classes.",
     "classroom.members.one": "0 membre",
-    "classroom.members.many": "1 000 000 membres",
+    "classroom.members.many": "1 000 000 de membres",
     "classroom.members.other": "2 membres",
     "classroom.list.code": "Code :",
     "classroom.detail.back": "Retour à mes classes",
@@ -837,29 +845,29 @@
     "viewer.error.init": "La visionneuse 3D n’a pas pu démarrer.",
     "viewer.error.glbViewer": "La vue GLB n’a pas pu être chargée.",
     "viewer.fps": "3 i/s",
-    "viewer.ar": "Voir en RA",
+    "viewer.ar": "Voir en AR",
     "viewer.card.splat.title": "Vue splat",
     "viewer.card.splat.body": "Des splats gaussiens affichés par Babylon.js. Tournez, zoomez et déplacez une image 3D réaliste du modèle.",
     "viewer.card.glb.title": "Vue GLB",
     "viewer.card.glb.body": "Un maillage classique affiché avec model-viewer. Sur un téléphone, il peut placer le modèle dans votre pièce en réalité augmentée.",
-    "viewer.card.ar.title": "RA sur téléphone",
-    "viewer.card.ar.body": "Dans la vue GLB, sur un téléphone, touchez « Voir en RA » pour voir la carte dans votre pièce.",
+    "viewer.card.ar.title": "AR sur téléphone",
+    "viewer.card.ar.body": "Dans la vue GLB, sur un téléphone, touchez « Voir en AR » pour voir la carte dans votre pièce.",
     "vr.meta.description": "Parcourez votre collection de cartes Shakespeare en réalité virtuelle.",
     "vr.badge": "Réalité virtuelle",
     "vr.intro": "Parcourez votre collection en 3D. Elle fonctionne sur Quest 3 et Vision Pro grâce à WebXR, et à la souris sur un ordinateur.",
-    "vr.enter": "Entrer en RV",
+    "vr.enter": "Entrer en VR",
     "vr.status.loading": "Chargement du moteur 3D…",
     "vr.status.gallery": "La galerie 3D est chargée. Faites glisser pour regarder autour de vous, utilisez la molette pour zoomer.",
-    "vr.status.noHeadset": "Aucun casque de RV détecté. La galerie est affichée en 3D.",
-    "vr.status.ready": "WebXR est prêt. Appuyez sur « Entrer en RV ».",
+    "vr.status.noHeadset": "Aucun casque de VR détecté. La galerie est affichée en 3D.",
+    "vr.status.ready": "WebXR est prêt. Appuyez sur « Entrer en VR ».",
     "vr.status.selected": "Sélection : Hamlet (DC-001)",
-    "vr.status.useButton": "Utilisez le bouton RV situé dans le coin de l’image.",
+    "vr.status.useButton": "Utilisez le bouton VR situé dans le coin de l’image.",
     "vr.error.webxr": "WebXR n’est pas disponible ici.",
     "vr.error.init": "La galerie 3D n’a pas pu démarrer.",
     "vr.fallback": "WebXR n’est pas disponible sur cet appareil. La galerie est affichée en 3D : faites glisser pour regarder autour de vous, utilisez la molette pour zoomer.",
     "vr.card.desktop.title": "Ordinateur",
     "vr.card.desktop.body": "Cliquez et faites glisser pour regarder autour de vous. Utilisez la molette pour zoomer. Cliquez sur une carte pour la sélectionner.",
-    "vr.card.quest.body": "Appuyez sur « Entrer en RV » pour y entrer. Utilisez les manettes pour vous déplacer et choisir des cartes.",
+    "vr.card.quest.body": "Appuyez sur « Entrer en VR » pour y entrer. Utilisez les manettes pour vous déplacer et choisir des cartes.",
     "vr.card.vision.body": "S’ouvre en WebXR. Regardez une carte, puis faites se toucher votre index et votre pouce pour la sélectionner.",
     "error.network": "Impossible de joindre le serveur. Vérifiez votre connexion et réessayez.",
     "error.not_signed_in": "Connectez-vous d’abord.",
@@ -872,6 +880,10 @@
     "error.unavailable": "Le service n’est pas disponible pour le moment. Veuillez réessayer dans un instant.",
     "error.generic": "Une erreur est survenue. Veuillez réessayer.",
     "error.passkey_not_found": "Cette clé d’accès ne figure pas sur ce compte.",
+    "error.age_tier_locked": "Ce compte a été créé pour une personne de moins de 18 ans, et il le reste.",
+    "error.age_tier_changed": "Votre réponse sur l’âge a changé pendant son enregistrement. Veuillez réessayer.",
+    "error.invalid_age_tier": "Cette réponse sur l’âge n’a pas été comprise. Veuillez répondre de nouveau à la question sur l’âge.",
+    "error.cross_site_request": "Cette requête ne vient pas de ce site, elle a donc été refusée. Rechargez la page et réessayez.",
     "error.classroom_name_invalid": "Le nom d’une classe doit compter entre 1 et 128 caractères.",
     "error.join_code_invalid": "Ce code d’accès n’est pas valide. Il comporte six caractères : lettres et chiffres.",
     "error.classroom_not_found": "Aucune classe n’a ce code. Vérifiez-le auprès de votre enseignant.",
@@ -903,7 +915,7 @@
     "activity.battle": "Combat",
     "activity.daily": "Quotidien",
     "credits.one": "0 crédit",
-    "credits.many": "1 000 000 crédits",
+    "credits.many": "1 000 000 de crédits",
     "credits.other": "2 crédits",
     "boundary.message": "Cette partie de la page n’a pas pu s’afficher.",
     "boundary.retry": "Réessayer",
@@ -944,7 +956,7 @@
   "de": {
    "checked": true,
    "dictionary": "de",
-   "words": 600,
+   "words": 617,
    "rejected": {
     "Battle-Raps": [
      "app.description"
@@ -1241,6 +1253,10 @@
     "error.unavailable": "Der Dienst ist gerade nicht verfügbar. Bitte versuch es gleich noch einmal.",
     "error.generic": "Etwas ist schiefgegangen. Bitte versuch es noch einmal.",
     "error.passkey_not_found": "Dieser Passkey gehört nicht zu diesem Konto.",
+    "error.age_tier_locked": "Dieses Konto wurde für eine Person unter 18 Jahren angelegt, und dabei bleibt es.",
+    "error.age_tier_changed": "Deine Altersangabe hat sich beim Speichern geändert. Bitte versuch es noch einmal.",
+    "error.invalid_age_tier": "Diese Altersangabe wurde nicht verstanden. Bitte beantworte die Frage nach deinem Alter noch einmal.",
+    "error.cross_site_request": "Diese Anfrage kam nicht von dieser Website und wurde deshalb abgelehnt. Lade die Seite neu und versuch es noch einmal.",
     "error.classroom_name_invalid": "Der Name einer Klasse muss 1 bis 128 Zeichen lang sein.",
     "error.join_code_invalid": "Dieser Beitrittscode ist ungültig. Er hat 6 Zeichen: Buchstaben und Ziffern.",
     "error.classroom_not_found": "Keine Klasse hat diesen Code. Frag deine Lehrkraft danach.",
@@ -1312,7 +1328,7 @@
   "it": {
    "checked": true,
    "dictionary": "it",
-   "words": 609,
+   "words": 625,
    "rejected": {
     "Bye": [
      "tour.bye"
@@ -1397,6 +1413,10 @@
     "passkey": [
      "error.passkey_not_found"
     ],
+    "sull’età": [
+     "error.age_tier_changed",
+     "error.invalid_age_tier"
+    ],
     "sull’uso": [
      "classroom.teacher.check3"
     ],
@@ -1448,7 +1468,7 @@
     "classroom.mine.empty": "Non fai ancora parte di nessuna classe.",
     "classroom.mine.signIn": "Accedi per vedere le tue classi.",
     "classroom.members.one": "1 membro",
-    "classroom.members.many": "1.000.000 membri",
+    "classroom.members.many": "1.000.000 di membri",
     "classroom.members.other": "0 membri",
     "classroom.list.code": "Codice:",
     "classroom.detail.back": "Torna alle mie classi",
@@ -1633,6 +1653,10 @@
     "error.unavailable": "Il servizio non è disponibile in questo momento. Riprova tra poco.",
     "error.generic": "Qualcosa è andato storto. Riprova.",
     "error.passkey_not_found": "Quella passkey non è presente in questo account.",
+    "error.age_tier_locked": "Questo account è stato creato per una persona con meno di 18 anni e resta tale.",
+    "error.age_tier_changed": "La tua risposta sull’età è cambiata mentre veniva salvata. Riprova.",
+    "error.invalid_age_tier": "Questa risposta sull’età non è stata compresa. Rispondi di nuovo alla domanda sull’età.",
+    "error.cross_site_request": "Questa richiesta non proviene da questo sito, quindi è stata rifiutata. Ricarica la pagina e riprova.",
     "error.classroom_name_invalid": "Il nome di una classe deve avere da 1 a 128 caratteri.",
     "error.join_code_invalid": "Quel codice di accesso non è valido. Ha 6 caratteri, tra lettere e cifre.",
     "error.classroom_not_found": "Nessuna classe ha quel codice. Controllalo con il tuo insegnante.",
@@ -1664,7 +1688,7 @@
     "activity.battle": "Battaglia",
     "activity.daily": "Giornaliero",
     "credits.one": "1 credito",
-    "credits.many": "1.000.000 crediti",
+    "credits.many": "1.000.000 di crediti",
     "credits.other": "0 crediti",
     "boundary.message": "Non è stato possibile mostrare questa parte della pagina.",
     "boundary.retry": "Riprova",
@@ -1705,7 +1729,7 @@
   "pt": {
    "checked": true,
    "dictionary": "pt-BR",
-   "words": 579,
+   "words": 597,
    "rejected": {
     "Premium": [
      "season.reward.premium"
@@ -1770,7 +1794,7 @@
     "classroom.mine.empty": "Você ainda não entrou em nenhuma turma.",
     "classroom.mine.signIn": "Entre na sua conta para ver suas turmas.",
     "classroom.members.one": "0 membro",
-    "classroom.members.many": "1.000.000 membros",
+    "classroom.members.many": "1.000.000 de membros",
     "classroom.members.other": "2 membros",
     "classroom.list.code": "Código:",
     "classroom.detail.back": "Voltar para minhas turmas",
@@ -1920,29 +1944,29 @@
     "viewer.error.init": "Não foi possível iniciar o visualizador 3D.",
     "viewer.error.glbViewer": "Não foi possível carregar a visão GLB.",
     "viewer.fps": "3 fps",
-    "viewer.ar": "Ver em RA",
+    "viewer.ar": "Ver em AR",
     "viewer.card.splat.title": "Visão splat",
     "viewer.card.splat.body": "Splats gaussianos desenhados com Babylon.js. Gire, aproxime e mova uma imagem 3D realista do modelo.",
     "viewer.card.glb.title": "Visão GLB",
     "viewer.card.glb.body": "Uma malha comum exibida com model-viewer. No celular, ela pode colocar o modelo no seu cômodo em realidade aumentada.",
-    "viewer.card.ar.title": "RA no celular",
-    "viewer.card.ar.body": "Na visão GLB, no celular, toque em “Ver em RA” para ver a carta no seu cômodo.",
+    "viewer.card.ar.title": "AR no celular",
+    "viewer.card.ar.body": "Na visão GLB, no celular, toque em “Ver em AR” para ver a carta no seu cômodo.",
     "vr.meta.description": "Caminhe pela sua coleção de cartas de Shakespeare em realidade virtual.",
     "vr.badge": "Realidade virtual",
     "vr.intro": "Caminhe pela sua coleção em 3D. Funciona no Quest 3 e no Vision Pro por meio do WebXR, e com o mouse no computador.",
-    "vr.enter": "Entrar em RV",
+    "vr.enter": "Entrar em VR",
     "vr.status.loading": "Carregando o motor 3D…",
     "vr.status.gallery": "A galeria 3D foi carregada. Arraste para olhar ao redor e role para dar zoom.",
-    "vr.status.noHeadset": "Nenhum headset de RV encontrado. A galeria é exibida em 3D.",
-    "vr.status.ready": "O WebXR está pronto. Pressione “Entrar em RV”.",
+    "vr.status.noHeadset": "Nenhum headset de VR encontrado. A galeria é exibida em 3D.",
+    "vr.status.ready": "O WebXR está pronto. Pressione “Entrar em VR”.",
     "vr.status.selected": "Selecionada: Hamlet (DC-001)",
-    "vr.status.useButton": "Use o botão de RV no canto da imagem.",
+    "vr.status.useButton": "Use o botão de VR no canto da imagem.",
     "vr.error.webxr": "O WebXR não está disponível aqui.",
     "vr.error.init": "Não foi possível iniciar a galeria 3D.",
     "vr.fallback": "O WebXR não está disponível neste dispositivo. A galeria é exibida em 3D: arraste para olhar ao redor e role para dar zoom.",
     "vr.card.desktop.title": "Computador",
     "vr.card.desktop.body": "Clique e arraste para olhar ao redor. Role para dar zoom. Clique em uma carta para selecioná-la.",
-    "vr.card.quest.body": "Pressione “Entrar em RV” para entrar. Use os controles para se mover e escolher cartas.",
+    "vr.card.quest.body": "Pressione “Entrar em VR” para entrar. Use os controles para se mover e escolher cartas.",
     "vr.card.vision.body": "Abre em WebXR. Olhe para uma carta e faça o gesto de pinça para selecioná-la.",
     "error.network": "Não conseguimos falar com o servidor. Verifique sua conexão e tente de novo.",
     "error.not_signed_in": "Entre na sua conta primeiro.",
@@ -1955,6 +1979,10 @@
     "error.unavailable": "O serviço não está disponível agora. Tente de novo daqui a pouco.",
     "error.generic": "Algo deu errado. Tente de novo.",
     "error.passkey_not_found": "Essa chave de acesso não está nesta conta.",
+    "error.age_tier_locked": "Esta conta foi criada para uma pessoa com menos de 18 anos e continua assim.",
+    "error.age_tier_changed": "Sua resposta sobre a idade mudou enquanto era salva. Tente de novo.",
+    "error.invalid_age_tier": "Essa resposta sobre a idade não foi entendida. Responda de novo à pergunta sobre a idade.",
+    "error.cross_site_request": "Esta solicitação não veio deste site e por isso foi recusada. Recarregue a página e tente de novo.",
     "error.classroom_name_invalid": "O nome da turma deve ter de 1 a 128 caracteres.",
     "error.join_code_invalid": "Esse código de acesso é inválido. Ele tem 6 caracteres, entre letras e números.",
     "error.classroom_not_found": "Nenhuma turma tem esse código. Confira com seu professor.",
@@ -1986,7 +2014,7 @@
     "activity.battle": "Batalha",
     "activity.daily": "Diário",
     "credits.one": "0 crédito",
-    "credits.many": "1.000.000 créditos",
+    "credits.many": "1.000.000 de créditos",
     "credits.other": "2 créditos",
     "boundary.message": "Não foi possível mostrar esta parte da página.",
     "boundary.retry": "Tentar de novo",
@@ -2027,7 +2055,7 @@
   "pl": {
    "checked": true,
    "dictionary": "pl",
-   "words": 663,
+   "words": 683,
    "rejected": {
     "Splaty": [
      "viewer.card.splat.body"
@@ -2273,6 +2301,10 @@
     "error.unavailable": "Usługa jest teraz niedostępna. Spróbuj ponownie za chwilę.",
     "error.generic": "Coś poszło nie tak. Spróbuj ponownie.",
     "error.passkey_not_found": "Tego klucza dostępu nie ma na tym koncie.",
+    "error.age_tier_locked": "To konto założono dla osoby poniżej 18 lat i tak już zostanie.",
+    "error.age_tier_changed": "Twoja odpowiedź o wieku zmieniła się podczas zapisywania. Spróbuj ponownie.",
+    "error.invalid_age_tier": "Nie udało się odczytać tej odpowiedzi o wieku. Odpowiedz ponownie na pytanie o wiek.",
+    "error.cross_site_request": "To żądanie nie pochodzi z tej witryny, więc zostało odrzucone. Odśwież stronę i spróbuj ponownie.",
     "error.classroom_name_invalid": "Nazwa klasy musi mieć od 1 do 128 znaków.",
     "error.join_code_invalid": "Ten kod dołączenia jest nieprawidłowy. Kod ma 6 znaków: litery i cyfry.",
     "error.classroom_not_found": "Żadna klasa nie ma takiego kodu. Sprawdź go u nauczyciela.",
@@ -2346,7 +2378,7 @@
   "ru": {
    "checked": true,
    "dictionary": "ru",
-   "words": 681,
+   "words": 702,
    "rejected": {
     "D": [
      "vr.intro",
@@ -2636,6 +2668,10 @@
     "error.unavailable": "Сервис сейчас недоступен. Попробуй ещё раз чуть позже.",
     "error.generic": "Что-то пошло не так. Попробуй ещё раз.",
     "error.passkey_not_found": "Этого ключа доступа нет в этой учётной записи.",
+    "error.age_tier_locked": "Эта учётная запись создана для человека младше 18 лет и такой останется.",
+    "error.age_tier_changed": "Ответ о возрасте изменился во время сохранения. Попробуй ещё раз.",
+    "error.invalid_age_tier": "Этот ответ о возрасте не удалось распознать. Ответь на вопрос о возрасте ещё раз.",
+    "error.cross_site_request": "Этот запрос пришёл не с этого сайта, поэтому он отклонён. Обнови страницу и попробуй ещё раз.",
     "error.classroom_name_invalid": "В названии класса должно быть от 1 до 128 символов.",
     "error.join_code_invalid": "Такой код класса не подходит. В коде 6 символов: буквы и цифры.",
     "error.classroom_not_found": "Класса с таким кодом нет. Уточни код у учителя.",
@@ -2709,7 +2745,7 @@
   "ar": {
    "checked": true,
    "dictionary": "ar",
-   "words": 631,
+   "words": 650,
    "rejected": {
     "model-viewer": [
      "viewer.card.glb.body"
@@ -2953,6 +2989,10 @@
     "error.unavailable": "الخدمة غير متاحة الآن. حاول مجددًا بعد قليل.",
     "error.generic": "حدث خطأ ما. حاول مرة أخرى.",
     "error.passkey_not_found": "مفتاح المرور هذا غير موجود في هذا الحساب.",
+    "error.age_tier_locked": "أُنشئ هذا الحساب لشخص دون 18 عامًا، وسيبقى كذلك.",
+    "error.age_tier_changed": "تغيّرت إجابتك عن العمر أثناء حفظها. حاول مجددًا.",
+    "error.invalid_age_tier": "لم تُفهم هذه الإجابة عن العمر. أجب عن سؤال العمر مرة أخرى.",
+    "error.cross_site_request": "لم يصدر هذا الطلب عن هذا الموقع، لذا رُفض. أعد تحميل الصفحة وحاول مجددًا.",
     "error.classroom_name_invalid": "يجب أن يتكوّن اسم الصف من 1 إلى 128 حرفًا.",
     "error.join_code_invalid": "رمز الانضمام هذا غير صالح. يتكوّن الرمز من 6 أحرف وأرقام.",
     "error.classroom_not_found": "لا يوجد صف بهذا الرمز. تحقق منه مع معلّمك.",
@@ -3028,7 +3068,7 @@
   "hi": {
    "checked": true,
    "dictionary": "hi",
-   "words": 487,
+   "words": 502,
    "rejected": {
     "model-viewer": [
      "viewer.card.glb.body"
@@ -3083,6 +3123,9 @@
      "viewer.meta.description",
      "viewer.intro",
      "viewer.card.glb.body"
+    ],
+    "रहेगा": [
+     "error.age_tier_locked"
     ],
     "रीफ़्रेश": [
      "market.refresh",
@@ -3336,6 +3379,10 @@
     "error.unavailable": "सेवा अभी उपलब्ध नहीं है। कृपया थोड़ी देर में फिर कोशिश करें।",
     "error.generic": "कुछ गड़बड़ हो गई। कृपया फिर कोशिश करें।",
     "error.passkey_not_found": "वह पासकी इस खाते में नहीं है।",
+    "error.age_tier_locked": "यह खाता 18 वर्ष से कम आयु के व्यक्ति के लिए बनाया गया था, और ऐसा ही रहेगा।",
+    "error.age_tier_changed": "सहेजे जाते समय आयु के बारे में आपका उत्तर बदल गया। कृपया फिर कोशिश करें।",
+    "error.invalid_age_tier": "आयु के बारे में यह उत्तर समझा नहीं जा सका। कृपया आयु वाले प्रश्न का उत्तर फिर से दें।",
+    "error.cross_site_request": "यह अनुरोध इस साइट से नहीं आया, इसलिए इसे अस्वीकार कर दिया गया। पेज फिर से लोड करके दोबारा कोशिश करें।",
     "error.classroom_name_invalid": "कक्षा का नाम 1 से 128 अक्षरों का होना चाहिए।",
     "error.join_code_invalid": "वह कक्षा कोड मान्य नहीं है। कोड में 6 वर्ण होते हैं: अक्षर और अंक।",
     "error.classroom_not_found": "इस कोड की कोई कक्षा नहीं है। अपने शिक्षक से कोड जाँच लें।",
@@ -3415,7 +3462,7 @@
   "ko": {
    "checked": true,
    "dictionary": "ko",
-   "words": 637,
+   "words": 660,
    "rejected": {
     "가우시안": [
      "viewer.meta.description",
@@ -3755,6 +3802,10 @@
     "error.unavailable": "지금은 서비스를 이용할 수 없어요. 잠시 뒤에 다시 시도해 주세요.",
     "error.generic": "문제가 생겼어요. 다시 시도해 주세요.",
     "error.passkey_not_found": "그 패스키는 이 계정에 없어요.",
+    "error.age_tier_locked": "이 계정은 만 18세 미만인 사람을 위해 만들어졌으며, 앞으로도 그대로 유지돼요.",
+    "error.age_tier_changed": "저장하는 동안 나이 답변이 바뀌었어요. 다시 시도해 주세요.",
+    "error.invalid_age_tier": "나이 답변을 인식하지 못했어요. 나이 질문에 다시 답해 주세요.",
+    "error.cross_site_request": "이 요청은 이 사이트에서 보낸 것이 아니어서 거부되었어요. 페이지를 다시 불러온 뒤 다시 시도해 주세요.",
     "error.classroom_name_invalid": "학급 이름은 1~128자여야 해요.",
     "error.join_code_invalid": "그 참여 코드는 올바르지 않아요. 코드는 영문과 숫자로 된 6글자예요.",
     "error.classroom_not_found": "그 코드의 학급이 없어요. 선생님께 확인해 보세요.",
@@ -3814,7 +3865,7 @@
     "pwa.storage.atRiskNoSize": "내려받은 데이터가 저장되어 있지만, 기기 공간이 부족하거나 한동안 들어오지 않으면 브라우저가 지울 수 있어요.",
     "pwa.storage.installHint": "앱을 설치하면 보관하는 데 도움이 돼요.",
     "pwa.storage.lessThan": "1.1GB 미만",
-    "classroom.teacher.check3": "저는 서비스 약관 및 개인정보 처리방침을(를) 읽었으며, 수업 및 교육 목적의 이용과 FERPA에 관한 항목을 포함하여 이에 동의합니다.",
+    "classroom.teacher.check3": "저는 서비스 약관 및 개인정보 처리방침을 읽었으며, 수업 및 교육 목적의 이용과 FERPA에 관한 항목을 포함하여 이에 동의합니다.",
     "vr.play": "플레이하고 싶나요? 더 극장에서는 결투 전체가 헤드셋 안에서 펼쳐져요.",
     "market.title": "카드 마켓",
     "tour.title": "토너먼트 아레나",
@@ -3825,7 +3876,7 @@
   "vi": {
    "checked": true,
    "dictionary": "vi",
-   "words": 526,
+   "words": 537,
    "rejected": {
     "D": [
      "viewer.meta.description",
@@ -4082,6 +4133,10 @@
     "error.unavailable": "Dịch vụ hiện không dùng được. Vui lòng thử lại sau ít phút.",
     "error.generic": "Đã có lỗi xảy ra. Vui lòng thử lại.",
     "error.passkey_not_found": "Khóa truy cập đó không có trong tài khoản này.",
+    "error.age_tier_locked": "Tài khoản này được tạo cho người dưới 18 tuổi và sẽ giữ nguyên như vậy.",
+    "error.age_tier_changed": "Câu trả lời về tuổi của bạn đã thay đổi trong lúc lưu. Hãy thử lại.",
+    "error.invalid_age_tier": "Không hiểu được câu trả lời về tuổi này. Hãy trả lời lại câu hỏi về tuổi.",
+    "error.cross_site_request": "Yêu cầu này không đến từ trang web này nên đã bị từ chối. Hãy tải lại trang rồi thử lại.",
     "error.classroom_name_invalid": "Tên lớp học phải có từ 1 đến 128 ký tự.",
     "error.join_code_invalid": "Mã tham gia đó không hợp lệ. Mã gồm 6 ký tự, có cả chữ cái và chữ số.",
     "error.classroom_not_found": "Không có lớp học nào dùng mã đó. Hãy hỏi lại giáo viên của bạn.",
@@ -4153,7 +4208,7 @@
   "th": {
    "checked": true,
    "dictionary": "th",
-   "words": 409,
+   "words": 415,
    "rejected": {
     "Babylon.js": [
      "viewer.card.splat.body"
@@ -4285,7 +4340,7 @@
     "classroom.badge.student": "นักเรียน",
     "classroom.assign.title": "งานที่มอบหมาย",
     "classroom.assign.new": "งานใหม่",
-    "classroom.assign.titlePlaceholder": "ชื่องาน",
+    "classroom.assign.titlePlaceholder": "ชื่องานที่มอบหมาย",
     "classroom.assign.typeLabel": "ประเภทกิจกรรม",
     "classroom.assign.add": "เพิ่ม",
     "classroom.assign.empty": "ยังไม่มีงานที่มอบหมาย",
@@ -4458,12 +4513,16 @@
     "error.unavailable": "บริการยังใช้ไม่ได้ในขณะนี้ โปรดลองอีกครั้งในอีกสักครู่",
     "error.generic": "เกิดข้อผิดพลาดบางอย่าง โปรดลองอีกครั้ง",
     "error.passkey_not_found": "ไม่พบพาสคีย์นั้นในบัญชีนี้",
+    "error.age_tier_locked": "บัญชีนี้สร้างขึ้นสำหรับผู้ที่อายุต่ำกว่า 18 ปี และจะคงเป็นเช่นนั้น",
+    "error.age_tier_changed": "คำตอบเรื่องอายุของคุณเปลี่ยนไประหว่างการบันทึก โปรดลองอีกครั้ง",
+    "error.invalid_age_tier": "ไม่เข้าใจคำตอบเรื่องอายุนี้ โปรดตอบคำถามเรื่องอายุอีกครั้ง",
+    "error.cross_site_request": "คำขอนี้ไม่ได้มาจากเว็บไซต์นี้ จึงถูกปฏิเสธ โปรดโหลดหน้านี้ใหม่แล้วลองอีกครั้ง",
     "error.classroom_name_invalid": "ชื่อชั้นเรียนต้องมี 1 ถึง 128 ตัวอักษร",
     "error.join_code_invalid": "รหัสเข้าร่วมนั้นไม่ถูกต้อง รหัสมี 6 อักขระ ทั้งตัวอักษรและตัวเลข",
     "error.classroom_not_found": "ไม่มีชั้นเรียนที่ใช้รหัสนั้น โปรดตรวจสอบกับครูของคุณ",
     "error.not_classroom_member": "คุณไม่ได้เป็นสมาชิกของชั้นเรียนนี้",
     "error.teachers_only": "เฉพาะครูเท่านั้นที่สร้างงานได้",
-    "error.assignment_title_invalid": "ชื่องานต้องมี 1 ถึง 128 ตัวอักษร",
+    "error.assignment_title_invalid": "ชื่องานที่มอบหมายต้องมี 1 ถึง 128 ตัวอักษร",
     "error.card_invalid": "การ์ดนั้นไม่ถูกต้อง",
     "error.price_invalid": "ราคาต้องอยู่ระหว่าง 1 ถึง 100,000 เครดิต",
     "error.card_not_owned": "คุณไม่มีการ์ดใบนี้",
@@ -4528,7 +4587,7 @@
   "id": {
    "checked": true,
    "dictionary": "id",
-   "words": 520,
+   "words": 535,
    "rejected": {
     "Aplikasinya": [
      "pwa.install.promptBody"
@@ -4878,6 +4937,10 @@
     "error.unavailable": "Layanan sedang tidak tersedia. Silakan coba lagi sebentar lagi.",
     "error.generic": "Ada yang tidak beres. Silakan coba lagi.",
     "error.passkey_not_found": "Kunci sandi itu tidak ada di akun ini.",
+    "error.age_tier_locked": "Akun ini dibuat untuk seseorang di bawah 18 tahun dan akan tetap begitu.",
+    "error.age_tier_changed": "Jawaban usiamu berubah saat sedang disimpan. Coba lagi.",
+    "error.invalid_age_tier": "Jawaban usia itu tidak dapat dipahami. Jawab lagi pertanyaan tentang usia.",
+    "error.cross_site_request": "Permintaan ini tidak berasal dari situs ini, jadi ditolak. Muat ulang halaman dan coba lagi.",
     "error.classroom_name_invalid": "Nama kelas harus terdiri atas 1 sampai 128 karakter.",
     "error.join_code_invalid": "Kode gabung itu tidak valid. Kodenya terdiri atas 6 karakter, berupa huruf dan angka.",
     "error.classroom_not_found": "Tidak ada kelas dengan kode itu. Tanyakan kepada gurumu.",

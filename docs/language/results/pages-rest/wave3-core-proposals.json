@@ -1,0 +1,39 @@
+{
+ "es": {
+  "live.judgeUnread": "Versos que el modelo evaluador no leerá: {lines}. Se omite todo verso con un número o una palabra de puntuación (nota, puntuación, ganar…), y esta ronda la deciden entonces solo las reglas"
+ },
+ "fr": {
+  "live.judgeUnread": "Vers que le modèle notateur ne lira pas : {lines}. Tout vers contenant un nombre ou un mot de notation (note, score, gagner…) est laissé de côté, et cette manche est alors jugée par les seules règles",
+  "auth.legacyAccountNote": "Vous avez déjà utilisé Google ou une adresse e-mail pour vous connecter ici ? Ce moyen d’accès est désactivé pour l’instant : un ancien compte ne peut donc pas encore être ouvert. Un compte créé ici sera nouveau et vide."
+ },
+ "it": {
+  "live.judgeUnread": "Versi che il modello valutatore non leggerà: {lines}. Ogni verso con un numero o una parola di giudizio (voto, punteggio, vincere…) viene tralasciato, e questo round lo decidono allora solo le regole"
+ },
+ "pt": {
+  "live.judgeUnread": "Versos que o modelo avaliador não vai ler: {lines}. Todo verso com um número ou uma palavra de avaliação (nota, pontuação, vencer…) fica de fora, e esta rodada passa a ser decidida só pelas regras"
+ },
+ "ko": {
+  "live.judgeUnread": "채점 모델이 읽지 않는 행: {lines}. 숫자나 채점에 쓰는 말(점수, 평가, 이기다…)이 든 행은 빠지고, 이번 라운드는 규칙만으로 판정돼요"
+ },
+ "ja": {
+  "live.judgeUnread": "採点モデルが読まない行：{lines}。数字や採点の言葉（点数、評価、勝つ…）を含む行は除かれ、このラウンドはルールだけで判定されます"
+ },
+ "vi": {
+  "live.judgeUnread": "Những dòng mô hình chấm điểm sẽ không đọc: {lines}. Dòng nào có con số hay từ chấm điểm (điểm, số điểm, thắng…) đều bị bỏ qua, và hiệp này khi đó chỉ do luật phân định"
+ },
+ "id": {
+  "live.judgeUnread": "Baris yang tidak akan dibaca model penilai: {lines}. Baris yang memuat angka atau kata penilaian (hakim, pemenang, menang…) dilewati, dan ronde ini lalu diputuskan oleh aturan saja"
+ },
+ "ar": {
+  "live.judgeUnread": "أسطر لن يقرأها نموذج التقييم: {lines}. يُستبعد كل سطر فيه رقم أو كلمة تقييم (درجة، تقييم، فائز…)، وتُحسم هذه الجولة حينها بالقواعد وحدها"
+ },
+ "pl": {
+  "auth.legacyAccountNote": "Zdarzało ci się logować tu przez Google albo adresem e-mail? Ten sposób jest na razie wyłączony, więc starszego konta nie da się jeszcze otworzyć. Konto założone tutaj będzie nowe i puste."
+ },
+ "ru": {
+  "auth.legacyAccountNote": "Есть старая учётная запись с входом через Google или по адресу почты? Этот способ входа пока отключён, поэтому её ещё нельзя открыть. Если создать учётную запись здесь, она будет новой и пустой."
+ },
+ "zh": {
+  "auth.error.passkey_not_accepted_no_email": "这个通行密钥未被接受。它可能已从账户中移除，或者账户已不存在。"
+ }
+}
