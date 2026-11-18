@@ -119,7 +119,7 @@ test.describe('Interface languages', () => {
     await expectNoLeaks(page);
   });
 
-  test('Japanese: the duel is in Japanese and no rhyming form is drawn', async ({ page }) => {
+  test('Japanese: the duel is in Japanese, and draws from every form Japanese is offered', async ({ page }) => {
     await open(page);
     await switchTo(page, 'ja');
     await expect(page.locator('#start-duel')).toHaveText('決闘を始める');
@@ -128,7 +128,8 @@ test.describe('Interface languages', () => {
     await expect(page.locator('#round-label')).toHaveText('ラウンド 1 / 3');
     await expect(page.locator('#opponent-verse')).toHaveAttribute('lang', 'ja');
     expect(await page.locator('#opponent-verse').innerText()).toMatch(/[぀-ヿ一-鿿]/);
-    expect(['首句反復', '折句', 'クレッシェンド', '結句反復', '俳句']).toContain((await page.locator('#form-name').innerText()).trim());
+    // The rhyming forms are offered in Japanese since lines can be read (src/lib/verse/sound, 2026-11-16).
+    expect(['首句反復', '折句', 'クレッシェンド', '結句反復', '俳句', '二行連句', '対韻の四行詩', '交差韻の四行詩', '三行連', '英雄対句']).toContain((await page.locator('#form-name').innerText()).trim());
     await page.click('#submit-verse');
     await expect(page.locator('#verdict')).toContainText('ラウンドの得点');
     await expectNoLeaks(page);

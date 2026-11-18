@@ -34,6 +34,8 @@ export function signatureText(sig: DeviceResult): string {
   switch (sig.code) {
     case 'hint':
       return t('signature.hint', { words: sig.detail });
+    case 'hint-two':
+      return t('signature.hintTwo', { words: sig.detail });
     case 'quoted':
       return t('signature.quoted');
     case 'echoed':

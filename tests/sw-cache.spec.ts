@@ -36,7 +36,10 @@ async function signInByEmail(page: Page, email: string) {
   await expect.poll(() => (codes = loggedCodes(email)).length, { message: `a code for ${email} in ${API_LOG}`, timeout: 10000 }).toBeGreaterThan(0);
   await page.locator('#auth-code-input').fill(codes[codes.length - 1]);
   await page.locator('#auth-code-verify').click();
-  await expect(page.locator('#user-badge')).toBeVisible();
+  // A loaded build host's Postgres can take several seconds over a sign-up (as in
+  // multiplayer.spec.ts); the default 5 s failed here twice on the iMac Pro with the code
+  // request still in flight. How fast sign-in is is not what this file tests.
+  await expect(page.locator('#user-badge')).toBeVisible({ timeout: 20000 });
 }
 
 /** The page is loaded, and the worker has it. */
@@ -136,6 +139,37 @@ test('signed in, then signed out: nothing user-specific is in Cache Storage at e
   await page.goto('/battle?brain=rules');
   await underWorker(page);
   await expect(page.locator('#start-duel')).toBeEnabled();
+  expect(userSpecific(await cacheStorage(page), needles)).toEqual([]);
+});
+
+test('signed out on every device: the account\'s data leaves Cache Storage too', async ({ page }) => {
+  test.setTimeout(90_000);
+  const email = `swall-${Date.now().toString(36)}${Math.random().toString(36).slice(2, 8)}@example.test`;
+  await page.goto('/');
+  await underWorker(page);
+  await signInByEmail(page, email);
+  // A fresh page: right after sign-in the menu shows the passkey offer, not the account.
+  await page.goto('/');
+  await underWorker(page);
+  await expect(page.locator('#user-badge')).toBeVisible();
+  const meBody = await page.evaluate(() => fetch('/api/v1/auth/me', { credentials: 'include' }).then((r) => r.text()));
+  expect(meBody).toContain(email);
+  const user = JSON.parse(meBody).user;
+  const needles = [email, user.id, user.username].filter((s) => typeof s === 'string' && s.length >= 6);
+
+  // What an older worker kept of this player, as in the test above.
+  await page.evaluate(async (body) => {
+    const json = () => new Response(body, { headers: { 'content-type': 'application/json' } });
+    await (await caches.open('inspired-mile-v3')).put('/api/v1/auth/me', json());
+    await (await caches.open('inspired-mile-v3')).put('/api/v1/auth/passkeys', json());
+  }, meBody);
+  expect(userSpecific(await cacheStorage(page), needles)).toHaveLength(2);
+
+  // "Sign out on every device" (not the plain sign-out).
+  if (await page.locator('#auth-dropdown').isHidden()) await page.locator('#user-badge').click();
+  await page.locator('#auth-logout-all-btn').click();
+  await expect(page.locator('#auth-btn')).toBeVisible();
+  expect(await page.evaluate(() => fetch('/api/v1/auth/me', { credentials: 'include' }).then((r) => r.status))).toBe(401);
   expect(userSpecific(await cacheStorage(page), needles)).toEqual([]);
 });
 

@@ -91,7 +91,7 @@ async fn list_tournaments(
     )
     .fetch_all(&pool)
     .await
-    .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?;
+    .map_err(crate::error::internal)?;
 
     let tournaments = rows.iter().map(|r| TournamentResponse {
         id: r.get("id"),
@@ -121,7 +121,7 @@ async fn get_tournament(
     .bind(id)
     .fetch_optional(&pool)
     .await
-    .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?
+    .map_err(crate::error::internal)?
     .ok_or((StatusCode::NOT_FOUND, "Tournament not found".into()))?;
 
     Ok(Json(TournamentResponse {
@@ -169,7 +169,7 @@ async fn create_tournament(
     .bind(claims.sub)
     .fetch_one(&pool)
     .await
-    .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?;
+    .map_err(crate::error::internal)?;
 
     Ok(Json(TournamentResponse {
         id: row.get("id"),
@@ -194,7 +194,7 @@ async fn register_tournament(
         .bind(id)
         .fetch_optional(&pool)
         .await
-        .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?
+        .map_err(crate::error::internal)?
         .ok_or((StatusCode::NOT_FOUND, "Tournament not found".into()))?;
 
     let status: String = tournament.get("status");
@@ -207,7 +207,7 @@ async fn register_tournament(
         .bind(id)
         .fetch_one(&pool)
         .await
-        .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?;
+        .map_err(crate::error::internal)?;
 
     if count >= max as i64 {
         return Err((StatusCode::BAD_REQUEST, "Tournament is full".into()));
@@ -223,7 +223,7 @@ async fn register_tournament(
     .bind((count + 1) as i32)
     .execute(&pool)
     .await
-    .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?;
+    .map_err(crate::error::internal)?;
 
     Ok(Json(serde_json::json!({ "registered": true })))
 }
@@ -244,7 +244,7 @@ async fn get_bracket(
     .bind(id)
     .fetch_all(&pool)
     .await
-    .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?;
+    .map_err(crate::error::internal)?;
 
     let matches = rows.iter().map(|r| BracketMatch {
         id: r.get("id"),
@@ -281,7 +281,7 @@ async fn get_leaderboard(
     .bind(id)
     .fetch_all(&pool)
     .await
-    .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?;
+    .map_err(crate::error::internal)?;
 
     let entries = rows.iter().map(|r| LeaderboardEntry {
         user_id: r.get("user_id"),
@@ -308,7 +308,7 @@ async fn complete_match(
     .bind(tournament_id)
     .fetch_optional(&pool)
     .await
-    .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?
+    .map_err(crate::error::internal)?
     .ok_or((StatusCode::NOT_FOUND, "Match not found".into()))?;
 
     let status: String = m.get("status");
@@ -345,7 +345,7 @@ async fn complete_match(
     .bind(match_id)
     .execute(&pool)
     .await
-    .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?;
+    .map_err(crate::error::internal)?;
 
     // Mark loser as eliminated
     if let Some(loser) = loser_id {
@@ -357,7 +357,7 @@ async fn complete_match(
         .bind(loser)
         .execute(&pool)
         .await
-        .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?;
+        .map_err(crate::error::internal)?;
     }
 
     // Bracket advancement: slot winner into next round
@@ -375,7 +375,7 @@ async fn complete_match(
     .bind(next_match_order)
     .fetch_optional(&pool)
     .await
-    .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?;
+    .map_err(crate::error::internal)?;
 
     let next_match_id: Option<Uuid> = if let Some(nm) = next_match {
         let nm_id: Uuid = nm.get("id");
@@ -390,7 +390,7 @@ async fn complete_match(
         .bind(nm_id)
         .execute(&pool)
         .await
-        .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?;
+        .map_err(crate::error::internal)?;
         Some(nm_id)
     } else {
         // Check if this was the final match (no more matches expected in next round)
@@ -402,7 +402,7 @@ async fn complete_match(
         .bind(round)
         .fetch_one(&pool)
         .await
-        .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?;
+        .map_err(crate::error::internal)?;
 
         if matches_in_round > 1 {
             // More matches in this round → create next-round match
@@ -424,7 +424,7 @@ async fn complete_match(
             .bind(p2_val)
             .fetch_one(&pool)
             .await
-            .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?;
+            .map_err(crate::error::internal)?;
             Some(row.get("id"))
         } else {
             None // This was the final — no next match
@@ -439,7 +439,7 @@ async fn complete_match(
     .bind(tournament_id)
     .fetch_one(&pool)
     .await
-    .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?;
+    .map_err(crate::error::internal)?;
 
     let tournament_completed = remaining == 0;
     if tournament_completed {
@@ -449,7 +449,7 @@ async fn complete_match(
         .bind(tournament_id)
         .execute(&pool)
         .await
-        .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?;
+        .map_err(crate::error::internal)?;
     }
 
     Ok(Json(MatchCompletionResponse {

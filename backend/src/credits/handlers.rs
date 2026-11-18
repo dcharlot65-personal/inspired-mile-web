@@ -37,7 +37,11 @@ pub struct AgeTierRequest {
 
 #[derive(Serialize)]
 pub struct AgeTierResponse {
+    /// "ok" when the stored tier equals the one sent; "unchanged" when it does not. Either
+    /// way nothing was written.
     pub status: String,
+    /// The account's tier.
+    pub age_tier: String,
 }
 
 #[derive(Serialize)]
@@ -74,7 +78,7 @@ async fn get_credits(
         .bind(claims.sub)
         .fetch_optional(&pool)
         .await
-        .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?;
+        .map_err(crate::error::internal)?;
 
     let credits = row.map(|r| r.get::<i32, _>("credits")).unwrap_or(0);
     Ok(Json(CreditsResponse { credits }))
@@ -99,7 +103,7 @@ async fn earn_credits(
     .bind(amount)
     .fetch_one(&pool)
     .await
-    .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?;
+    .map_err(crate::error::internal)?;
 
     // Log transaction
     log_transaction(&pool, claims.sub, amount, "earn", &body.source).await;
@@ -122,11 +126,12 @@ async fn spend_credits(
         .bind(claims.sub)
         .fetch_optional(&pool)
         .await
-        .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?
+        .map_err(crate::error::internal)?
         .unwrap_or_else(|| "unknown".into());
 
     if age_tier == "teen" {
-        let spent_today = get_spent_today(&pool, claims.sub).await;
+        // If today's spending cannot be read, the limit cannot be checked: refuse.
+        let spent_today = get_spent_today(&pool, claims.sub).await.map_err(crate::error::internal)?;
         if spent_today + body.amount > TEEN_DAILY_SPEND_LIMIT {
             return Err((
                 StatusCode::FORBIDDEN,
@@ -147,7 +152,7 @@ async fn spend_credits(
     .bind(body.amount)
     .fetch_optional(&pool)
     .await
-    .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?
+    .map_err(crate::error::internal)?
     .ok_or((StatusCode::BAD_REQUEST, "Insufficient credits".into()))?;
 
     // Log transaction
@@ -161,25 +166,30 @@ async fn spend_credits(
 // Age tier verification
 // ---------------------------------------------------------------------------
 
+/// The old automatic sync. Until 2026-11-16 the page posted the browser's stored age-gate
+/// answer here on every load, and this wrote it to the account: on a shared browser,
+/// whoever answered the gate last decided the tier of every account signed in there.
+///
+/// It no longer writes anything. It stays, answering with the account's tier, because a
+/// page cached before the change (the service worker keeps pages) still calls it on every
+/// load. Only the signed-in user's explicit answer changes a tier: `POST /auth/age-tier`,
+/// with the rules in `auth/age.rs`.
 async fn age_verify(
     Extension(claims): Extension<Claims>,
     State((pool, _)): State<(PgPool, Config)>,
     Json(body): Json<AgeTierRequest>,
 ) -> Result<Json<AgeTierResponse>, (StatusCode, String)> {
-    let tier = match body.age_tier.as_str() {
-        "adult" | "teen" => &body.age_tier,
-        _ => return Err((StatusCode::BAD_REQUEST, "Invalid age tier".into())),
-    };
-
-    sqlx::query("UPDATE users SET age_tier = $2 WHERE id = $1")
+    if !matches!(body.age_tier.as_str(), "adult" | "teen") {
+        return Err((StatusCode::BAD_REQUEST, "Invalid age tier".into()));
+    }
+    let stored: String = sqlx::query_scalar("SELECT age_tier FROM users WHERE id = $1")
         .bind(claims.sub)
-        .bind(tier)
-        .execute(&pool)
+        .fetch_optional(&pool)
         .await
-        .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?;
-
-    tracing::info!(user_id = %claims.sub, age_tier = %tier, "Age tier updated");
-    Ok(Json(AgeTierResponse { status: "ok".into() }))
+        .map_err(crate::error::internal)?
+        .ok_or((StatusCode::UNAUTHORIZED, "Sign in first.".to_string()))?;
+    let status = if stored == body.age_tier { "ok" } else { "unchanged" };
+    Ok(Json(AgeTierResponse { status: status.into(), age_tier: stored }))
 }
 
 // ---------------------------------------------------------------------------
@@ -194,10 +204,10 @@ async fn get_limits(
         .bind(claims.sub)
         .fetch_optional(&pool)
         .await
-        .map_err(|e| (StatusCode::INTERNAL_SERVER_ERROR, format!("DB error: {e}")))?
+        .map_err(crate::error::internal)?
         .unwrap_or_else(|| "unknown".into());
 
-    let spent_today = get_spent_today(&pool, claims.sub).await;
+    let spent_today = get_spent_today(&pool, claims.sub).await.map_err(crate::error::internal)?;
 
     let daily_limit = if age_tier == "teen" {
         Some(TEEN_DAILY_SPEND_LIMIT)
@@ -212,15 +222,15 @@ async fn get_limits(
 // Helpers
 // ---------------------------------------------------------------------------
 
-async fn get_spent_today(pool: &PgPool, user_id: uuid::Uuid) -> i32 {
-    sqlx::query_scalar(
+async fn get_spent_today(pool: &PgPool, user_id: uuid::Uuid) -> Result<i32, sqlx::Error> {
+    let spent: i64 = sqlx::query_scalar(
         "SELECT COALESCE(SUM(amount), 0) FROM credit_transactions
          WHERE user_id = $1 AND direction = 'spend' AND created_at >= CURRENT_DATE",
     )
     .bind(user_id)
     .fetch_one(pool)
-    .await
-    .unwrap_or(0i64) as i32
+    .await?;
+    Ok(spent.min(i64::from(i32::MAX)) as i32)
 }
 
 async fn log_transaction(pool: &PgPool, user_id: uuid::Uuid, amount: i32, direction: &str, source: &str) {
@@ -234,3 +244,4 @@ async fn log_transaction(pool: &PgPool, user_id: uuid::Uuid, amount: i32, direct
     .execute(pool)
     .await;
 }
+
