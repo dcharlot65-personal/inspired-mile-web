@@ -30,9 +30,15 @@ test('a page load fetches no sound data, and a duel fetches only its own languag
     localStorage.setItem('inspired-mile-active-deck', deck.name);
   }, DECK);
   await page.goto('/');
-  await page.goto('/battle?seed=11&brain=rules&lang=fr');
+  // No duel language named or stored: a link with ?lang=, or a language chosen on an earlier visit,
+  // has its data fetched once the page is idle, by design (battle.astro warm(), tests/battle-bytes.spec.ts).
+  await page.goto('/battle?seed=11&brain=rules');
   await expect(page.locator('#start-duel')).toBeEnabled();
-  expect(requests.filter((u) => SOUND.test(u))).toEqual([]);
+  // Past the idle warm-up's own deadline (2 s), so a page that warmed with nothing named or stored
+  // would show it here; the English table counts too.
+  await page.waitForTimeout(2500);
+  expect(requests.filter((u) => SOUND.test(u) || /pron-en/.test(u))).toEqual([]);
+  await page.selectOption('#language', 'fr');
   await page.click('#start-duel');
   await expect(page.locator('#battle-arena')).toBeVisible();
   const sound = requests.filter((u) => SOUND.test(u));
