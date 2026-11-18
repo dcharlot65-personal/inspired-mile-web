@@ -347,7 +347,14 @@ left behind by a killed run is found by its port: `lsof -nP -iTCP:<port> -sTCP:L
   paradigm per ending; «Банко» has none) and `run.sh forms` drops every one Hunspell knows as an ordinary word
   («Банки», «Kora»); never a stem or an open case ending (the third check found «Дитя», «Банки», «Bańka», «بانكوك»
   invoking that way). `accidents.test.ts` holds this against the subtitle lists' words near a name
-  (`fetch/near_names.py`). `english.test.ts` holds an English duel to the same results whatever card text is loaded.
+  (`fetch/near_names.py`). A name that is also an ordinary word (`pack.ordinary`: English Wiktionary's part of speech,
+  `fetch/name_pos.py`, and Hunspell too where the script has capitals) counts as English counts "Bottom": by itself
+  only with a capital inside a sentence where the language writes its ordinary words small («y Bruto alzó»), never
+  by itself in German or a script without capitals (パック, बैंको, โพ); Bottom counts in no language by one word, the
+  Nurse by her local name as written. Unspaced, a katakana name counts only as a whole katakana run, and a Chinese
+  or Thai name not where a dictionary word holding it surrounds it (`pack.containing`, `fetch/containing_words.py`:
+  圣安东尼奥, อัสซุส); the tests read wordfreq's and the Thai National Corpus's commonest words for both
+  (`fetch/wordfreq_near_names.py`). After a name changes, run those fetch scripts too (record's "How to rebuild"). `english.test.ts` holds an English duel to the same results whatever card text is loaded.
   After a character name or alias changes, run `run.sh names` (Hunspell decides which words of a longer name are
   titles) and `run.sh forms` before
   `build_card_text.py`. On the battle page a local name inside an interface sentence goes through

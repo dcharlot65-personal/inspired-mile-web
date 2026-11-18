@@ -108,6 +108,9 @@ for the game in English. They can only ever be translated, never sourced.
 | Korean function words of the lines (auxiliaries, bound nouns, the copula, 있다) | Kiwi, kiwipiepy 0.24.1 with kiwipiepy_model 0.24.0 (`scripts/language/check/segment.py`, `docs/language/checks/line-segments.json`, which keeps each eojeol's first morpheme and tag) | Apache-2.0 | 2026-11-17 |
 | Thai words of the lines (โรสแมรี, not โรส and แมรี) | PyThaiNLP 5.1.2, its `newmm` tokenizer with its `words_th.txt` dictionary and the game's Thai card names (same files) | Apache-2.0 (code), CC0 (word list) | 2026-11-17 |
 | Which declined forms of a name are ordinary words | Hunspell 1.7.2's `stem()` and `spell()` with the same dictionaries (`scripts/language/check/hstem.cpp`, `run.sh forms`, `docs/language/checks/name-forms.json`); the forms themselves are made by `declension.py`'s paradigms, written by hand | as stated | 2026-11-17 |
+| Which names are also ordinary words of their language (Spanish «bruto», German «Zettel», Japanese パック, Thai โพ) | English Wiktionary through the MediaWiki API: the page of each name word under the language's heading, written small where the script has capitals (German: as written for a Noun, small for any other), each pinned by its revision id with the verdict on each definition (`scripts/language/fetch/name_pos.py`, `docs/language/sources/wiktionary-name-pos.json`); in es fr it pt pl ru vi id Hunspell must also accept it written small (`run.sh names`, which now asks for one-word names too) | Wiktionary CC BY-SA 4.0 and GFDL (titles, revision ids, headings and verdicts only) | 2026-11-18 |
+| Chinese and Thai words that hold a name with more around it (圣安东尼奥 "San Antonio" holds 安东尼; อัสซุส, Assus, holds ซุส) | CC-CEDICT, MDBG export dated 2026-11-18T03:25:44Z (sha256 d7fbcfb9…0547), its English gloss deciding whether the word is the character; jieba's `extra_dict/dict.txt.big` at commit 67fa2e36 (sha256 b1601127…6aad), its entries tagged nrt, ns, nt and nz; PyThaiNLP 5.1.2's `words_th.txt` (`scripts/language/fetch/containing_words.py`, `docs/language/sources/name-containing-words.json`, which keeps every word with its source and verdict, and the five read by hand as the character) | CC BY-SA 4.0 (CC-CEDICT); MIT (jieba); CC0 (PyThaiNLP word list) | 2026-11-18 |
+| Common words near a name in all fifteen languages, for the accident tests (not used to build anything) | wordfreq 3.1.1, the 40,000 most frequent words of each language in its 'best' list, each data file pinned by its sha256; Thai from the Thai National Corpus frequency list PyThaiNLP 5.1.2 ships (`scripts/language/fetch/wordfreq_near_names.py`, `docs/language/sources/wordfreq-near-names.json`, the selected words without their frequencies) | wordfreq data CC BY-SA 4.0 (code Apache-2.0); TNC list CC0 | 2026-11-18 |
 | Common words near a name, for the accident test | Hermit Dave, FrequencyWords, `content/2018/<lang>/<lang>_50k.txt` for ar de es fr id it ko pl pt ru vi (from OpenSubtitles 2018), commit 525f9b56, each file pinned by its sha256 (`scripts/language/fetch/near_names.py`; the selected words, without counts, in `docs/language/sources/opensubtitles-near-names.json`) | CC BY-SA 4.0 (content); MIT (code) | 2026-11-17 |
 | Portuguese spelling of Próspero | pt.wikipedia.org, "A Tempestade", revision 72539005 (`docs/language/sources/ptwiki-a-tempestade.json`) | CC BY-SA 4.0 (one name's spelling) | 2026-11-16 |
 | Spelling check | Hunspell 1.7.2 (LGPL/GPL/MPL) with LibreOffice's dictionaries at commit c0865a85 (each under its own licence, README kept beside it on the build host) | as stated | 2026-11-16 |
@@ -215,7 +218,32 @@ have died within the last seventy years.
   read one by one and are in the test. Names match with particles in Korean, as whole words in
   Chinese, Japanese and Thai, and exactly elsewhere («prosperidad» is not «Próspero», «marche» is not «Marc»),
   where a verse word with an accent the name does not have is another word (typed without accents, a name
-  still counts). "The Sonnet Man" counts only whole. The English names count in every language, said as English
+  still counts; Spanish «París» is the city, Count Paris is «Paris»). "The Sonnet Man" counts only whole.
+- A name that is also an ordinary word of its language counts as English counts "Bottom" and "Nurse" (round 3,
+  second check, which found Spanish and Italian «Bruto», Italian «Banco», German «Zettel», Japanese パック and
+  ブレイク, Hindi बैंको and Thai โพ invoking by themselves). The card text lists them (`ordinary`): English
+  Wiktionary's part of speech for the word (`fetch/name_pos.py`: a Noun, Verb, Adjective or the like with a
+  definition of its own or a form of another word, not only the character's English name, as German «Brutus» is
+  filed, nor only another spelling), and where the script has capitals Hunspell's acceptance of the word written
+  small as well: the two must agree, because Polish Hunspell alone accepts «hamlet» and «zeus» and Wiktionary alone
+  has rare words such as Italian «achille». Where a language writes its ordinary words small (es fr it pt pl ru vi
+  id), such a name counts by itself only written with a capital inside a sentence («y Bruto alzó el puñal», not
+  «Bruto es el sueldo», «¡Bruto!» or a line that opens on it); German writes its nouns with a capital, and Arabic,
+  Hindi, Chinese, Japanese, Korean and Thai have no capitals, so there it never counts by itself, only inside a
+  longer name (ウィリアム・ブレイク, メアリー・シェリー). Bottom, whom English calls on only as "Nick Bottom", "Bully
+  Bottom" or "Bottom the weaver", counts in no language by one word (French «Bottom», German «Zettel», 波顿);
+  English's phrases still count everywhere. The Nurse, whom English counts as "the Nurse", counts by her local name
+  as written (奶妈, «Кормилица», «Wärterin»). The cost is plain: Puck in German and Japanese, Banquo in Hindi and
+  Achilles in Arabic (أخيل is also "I imagine") are now invoked only by their English names there, and a Spanish,
+  Italian, Portuguese, Polish or Russian line that opens on «Bruto», «Banco», «Próspero», «Medusa», «Пак» or
+  «Одиссей» invokes no one.
+- Chinese, Japanese and Thai are read by ICU's segmenter, which cuts a word it does not know into pieces, and a
+  piece could be a name (安东尼奥, "Antonio", into 安东尼 and 奥; ららぽーと, a mall, into pieces one of which, as
+  katakana, was ポー). A name in katakana now counts only as a whole run of katakana written in katakana, and a
+  Chinese or Thai name is refused where the verse writes around it a dictionary word that holds it (`containing`,
+  from CC-CEDICT, jieba and PyThaiNLP: 圣安东尼奥, 安东尼奥, 宙斯盾战斗系统, 布莱克本, อัสซุส). `accidents.test.ts` reads
+  the commonest words of wordfreq (Chinese, Japanese) and of the Thai National Corpus that hold a name, lists that
+  built nothing here, and none says a name it only holds. The English names count in every language, said as English
   writes them: Portuguese «põe», "puts", is not Poe, and Vietnamese «màn» is not "Man".
 - On the battle page a card's name stands as a title with a capital (Russian «граф Парис» from Wikidata is
   shown «Граф Парис»). Inside a sentence ("{card} takes the round"), in Spanish, French, Italian, Portuguese and
@@ -374,6 +402,11 @@ python3 scripts/language/build_card_text.py
 ~/kani-logs/remote/rb . -- 'bash scripts/language/check/run.sh setup && bash scripts/language/check/run.sh selftest'
 ~/kani-logs/remote/rb . -- 'bash scripts/language/check/run.sh spell && bash scripts/language/check/run.sh grammar'
 ~/kani-logs/remote/rb . -- 'bash scripts/language/check/run.sh names'   # after a name or alias changes; then build_card_text.py
+# After a name or alias changes, also (light, from the repository root; pip install regex wordfreq==3.1.1 pythainlp==5.1.2):
+NAME_POS_CACHE=<a file outside the repository> python3 -I scripts/language/fetch/name_pos.py   # Wiktionary: names that are ordinary words
+python3 -I scripts/language/fetch/containing_words.py <dir with cedict.txt.gz and jieba's dict.txt.big>   # zh and th words that hold a name
+python3 -I scripts/language/fetch/wordfreq_near_names.py   # the accident tests' word lists
+python3 scripts/language/build_card_text.py
 ~/kani-logs/remote/rb . -- 'bash scripts/language/check/run.sh detach meaning'   # about 2.5 s an item on the iMac's CPU; resumes
 ~/kani-logs/remote/rb . -- 'bash scripts/language/check/run.sh status'
 # copy spelling.json, grammar.json and work/meaning/docs/language/checks/backtranslation.json back into docs/language/checks/;
