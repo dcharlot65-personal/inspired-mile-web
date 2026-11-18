@@ -233,8 +233,9 @@ have died within the last seventy years.
   longer name (ウィリアム・ブレイク, メアリー・シェリー). Bottom, whom English calls on only as "Nick Bottom", "Bully
   Bottom" or "Bottom the weaver", counts in no language by one word (French «Bottom», German «Zettel», 波顿);
   English's phrases still count everywhere. The Nurse, whom English counts as "the Nurse", counts by her local name
-  as written (奶妈, «Кормилица», «Wärterin»). The cost is plain: Puck in German and Japanese, Banquo in Hindi and
-  Achilles in Arabic (أخيل is also "I imagine") are now invoked only by their English names there, and a Spanish,
+  as written (奶妈, «Кормилица», «Wärterin»). The cost is plain: Puck in Japanese, Banquo in Hindi and Achilles in
+  Arabic (أخيل is also "I imagine") are now invoked only by their English names there (Puck in German by «Puk», «Droll»
+  or "Puck"), and a Spanish,
   Italian, Portuguese, Polish or Russian line that opens on «Bruto», «Banco», «Próspero», «Medusa», «Пак» or
   «Одиссей» invokes no one.
 - Chinese, Japanese and Thai are read by ICU's segmenter, which cuts a word it does not know into pieces, and a

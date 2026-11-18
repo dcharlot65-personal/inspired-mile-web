@@ -272,7 +272,8 @@ describe('the signature in the language of the duel', () => {
     expect(lines).toBeGreaterThan(1000);
   });
 
-  it('lands for a verse that echoes the translated line, and is refused for one that quotes it outright', () => {
+  // Over a thousand lines, five checks each: 3 s alone on the Studio, past vitest's 5 s default when the host is loaded.
+  it('lands for a verse that echoes the translated line, and is refused for one that quotes it outright', { timeout: 60_000 }, () => {
     let two = 0;
     for (const p of packs) {
       for (const c of CARD_CATALOG) {
