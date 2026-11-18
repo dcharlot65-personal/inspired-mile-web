@@ -15,7 +15,7 @@
 import { existsSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
-import { CRITERIA, LABEL, LANGS, TIERS, derive, narrowFlips, narrowLine, narrowNote, wilson } from './lib.mjs';
+import { CRITERIA, LABEL, LANGS, TIERS, derive, modelChoice, narrowFlips, narrowLine, narrowNote, wilson } from './lib.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
 const DIR = join(ROOT, 'docs', 'language', 'model-eval');
@@ -36,7 +36,7 @@ for (const lang of LANGS) {
 // --- The language identifier's answers ---
 const lidFile = join(DIR, 'lid.json');
 const lid = existsSync(lidFile) ? read(lidFile).answers : {};
-const wanted = new Set([...Object.values(reference).flat(), ...cells.filter((c) => c.task === 'write').flatMap((c) => c.plays.map((p) => p.verse))].filter(Boolean));
+const wanted = new Set([...Object.values(reference).flat(), ...cells.filter((c) => c.task === 'write').flatMap((c) => c.plays.map((p) => modelChoice(p)?.verse))].filter(Boolean));
 const missing = [...wanted].filter((t) => !(t in lid));
 if (missing.length) {
   if (!process.env.LID_DIR) { console.error(`${missing.length} verses have no language-identifier answer yet; set LID_DIR (see the top of this file).`); process.exit(2); }
@@ -83,11 +83,11 @@ for (const tier of TIERS) {
     out.push(j ? `| ${l} | ${CRITERIA.map((c) => `${j.byCriterion[c].better}/${j.byCriterion[c].n}${ci(wilson(j.byCriterion[c].better, j.byCriterion[c].n))}`).join(' | ')} |` : `| ${l} | not measured | | | |`);
   }
   out.push('', '</details>');
-  out.push('', `### ${LABEL[tier]}: writing`, '', '| Language | Plays | A verse came back | In the language | Form kept in full | Mean form points (of 20) | Mean craft | Commentary (narrow rules) | Tokens/s | Writes? |', '|---|---|---|---|---|---|---|---|---|---|');
+  out.push('', `### ${LABEL[tier]}: writing`, '', '| Language | Plays | A verse came back (played by the game) | In the language | Form kept in full | Mean form points (of 20) | Mean craft | Commentary (narrow rules) | Tokens/s | Writes? |', '|---|---|---|---|---|---|---|---|---|---|');
   for (const l of LANGS) {
     const { write: w, writes: d } = table[tier][l];
     out.push(w
-      ? `| ${l} | ${w.plays} | ${w.modelSourced} | ${w.inLanguage} = ${pct(w.inLanguage, w.plays)}${ci(w.inLanguageWilson)} | ${w.formKept} = ${pct(w.formKept, w.plays)}${ci(w.formKeptWilson)} | ${w.meanFormPoints?.toFixed(1) ?? '–'} | ${w.meanCraft?.toFixed(1) ?? '–'} | ${w.commentary} (${w.commentaryNarrow}) | ${w.tokensPerSecond?.toFixed(1) ?? '–'} | ${d.ok ? '**yes**' : `no: ${d.why.join('; ')}`} |`
+      ? `| ${l} | ${w.plays} | ${w.modelSourced} (${w.playedModel ?? w.modelSourced}) | ${w.inLanguage} = ${pct(w.inLanguage, w.plays)}${ci(w.inLanguageWilson)} | ${w.formKept} = ${pct(w.formKept, w.plays)}${ci(w.formKeptWilson)} | ${w.meanFormPoints?.toFixed(1) ?? '–'} | ${w.meanCraft?.toFixed(1) ?? '–'} | ${w.commentary} (${w.commentaryNarrow}) | ${w.tokensPerSecond?.toFixed(1) ?? '–'} | ${d.ok ? '**yes**' : `no: ${d.why.join('; ')}`} |`
       : `| ${l} | not measured | | | | | | | | no: not measured |`);
   }
   out.push('', `<details><summary>${LABEL[tier]}: form kept in full, by form and by difficulty</summary>`, '');

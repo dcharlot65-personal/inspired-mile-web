@@ -220,6 +220,23 @@ export function summarizeJudge(cell) {
 const mean = (xs) => (xs.length ? xs.reduce((a, b) => a + b, 0) / xs.length : null);
 
 /**
+ * What the model itself wrote in one play: the draft the opponent picks, the first with the highest
+ * craft among those the tidy-up left a verse in (opponent.ts writeOpponentVerse), or null when no
+ * draft left one. Before the integration (2026-11-18) that draft was always the verse played, so a
+ * play's `verse` and `source` said what the model wrote. Since, the written verse is played instead
+ * when that draft is void or worth less than half of it (opponent.ts), so the verse played no
+ * longer does. The bars in thresholds.json are about what the model writes, so they read this; how
+ * often the game played it is counted beside (`playedModel`). On the cells measured before the
+ * integration the two readings are the same play for play (src/lib/model-eval.test.ts).
+ */
+export function modelChoice(p) {
+  if (p.source === 'model') return { verse: p.verse, formKept: !!p.formKept, formEarned: p.formEarned ?? 0, craft: p.craft ?? 0, checks: p.checks ?? null };
+  let best = null;
+  for (const d of p.drafts ?? []) if (d.tidy && (!best || d.craft > best.craft)) best = d;
+  return best ? { verse: best.tidy, formKept: !!best.formKept, formEarned: best.formEarned ?? 0, craft: best.craft ?? 0, checks: null } : null;
+}
+
+/**
  * One writing cell. `lidOf(text)` is the language identifier's answer for a text.
  * A play is one call of the opponent (one verse on the table); a draft is one
  * generation inside it.
@@ -227,11 +244,12 @@ const mean = (xs) => (xs.length ? xs.reduce((a, b) => a + b, 0) / xs.length : nu
 export function summarizeWrite(cell, lidOf) {
   const lang = cell.lang;
   const plays = cell.plays.map((p) => {
-    const model = p.source === 'model';
-    const inLang = model && inLanguage(p.verse, lang, lidOf(p.verse));
-    const comment = model ? commentary(p.verse, lang, { instructions: instructionLines(p.prompt, p.answering) }) : [];
-    const commentNarrow = model ? commentary(p.verse, lang, { narrow: true }) : [];
-    return { ...p, model, inLang, comment, commentNarrow };
+    const c = modelChoice(p);
+    const model = !!c;
+    const inLang = model && inLanguage(c.verse, lang, lidOf(c.verse));
+    const comment = model ? commentary(c.verse, lang, { instructions: instructionLines(p.prompt, p.answering) }) : [];
+    const commentNarrow = model ? commentary(c.verse, lang, { narrow: true }) : [];
+    return { ...p, model, played: p.source === 'model', inLang, comment, commentNarrow, formKept: !!c?.formKept, formEarned: c?.formEarned ?? 0, craft: c?.craft ?? 0, checks: c?.checks ?? null };
   });
   const group = (rows) => {
     const n = rows.length;
@@ -239,6 +257,8 @@ export function summarizeWrite(cell, lidOf) {
     return {
       plays: n,
       modelSourced: m.length,
+      // How often the game played the model's verse (the rest: the written verse, by the integration's rule).
+      playedModel: rows.filter((r) => r.played).length,
       formKept: m.filter((r) => r.formKept).length,
       formKeptWilson: wilson(m.filter((r) => r.formKept).length, n),
       meanCraft: mean(m.map((r) => r.craft)),
@@ -249,7 +269,8 @@ export function summarizeWrite(cell, lidOf) {
       commentaryNarrow: m.filter((r) => r.commentNarrow.length).length,
       // An upper bound for the game's rhyme check, which is by spelling and misses some real
       // rhymes ("hear / cheer"): the plays that kept everything but rhyme.
-      formKeptIfRhymeWaived: m.filter((r) => r.formKept || (r.checks ?? []).every((c) => c.met || /^rhyme-/.test(c.id))).length,
+      // A draft the game did not play has no checks stored: it counts only if it kept the form.
+      formKeptIfRhymeWaived: m.filter((r) => r.formKept || (r.checks ? r.checks.every((c) => c.met || /^rhyme-/.test(c.id)) : false)).length,
     };
   };
   const drafts = cell.plays.flatMap((p) => p.drafts);

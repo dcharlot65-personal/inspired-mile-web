@@ -30,6 +30,9 @@ const MUTATIONS = [
   ['the full-width colon dropped from the label rule', 'scripts/model-eval/lib.mjs', '[-–—:)：]/u.test(l)', '[-–—:)]/u.test(l)'],
   ['vowel signs stripped before comparing words again', 'scripts/model-eval/lib.mjs', '.replace(/[^\\p{L}\\p{M}\\p{N}\\s]/gu', '.replace(/[^\\p{L}\\p{N}\\s]/gu'],
   ['a model used in no language offered for download', 'src/lib/brain.ts', 'return runnable.filter(usedAnywhere);', 'return runnable;'],
+  // What the model wrote, since the integration's rule plays the written verse over a weak draft.
+  ['a play given to the written verse counted as the model writing nothing again', 'scripts/model-eval/lib.mjs', 'for (const d of p.drafts ?? []) if (d.tidy && (!best || d.craft > best.craft)) best = d;', ''],
+  ['the model\'s pick taken as its last draft, not its best', 'scripts/model-eval/lib.mjs', 'if (d.tidy && (!best || d.craft > best.craft)) best = d;', 'if (d.tidy) best = d;'],
   // The cells against the game as it is now (the replay test).
   ['a score in a cell edited', 'docs/language/model-eval/cells/grand.en.write.json', '"formKept": true', '"formKept": false'],
   ['a scoring rule changed after the cells ran', 'src/lib/verse/duel.ts', 'const bonus = (device.met ? 0.5 : 0)', 'const bonus = (device.met ? 0.6 : 0)'],

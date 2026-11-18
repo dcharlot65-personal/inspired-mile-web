@@ -17,7 +17,7 @@ import { MODELS, modelJudges, modelsToOffer, modelWrites, usedAnywhere, type Cap
 import { replayPlay, scoredFields, type StoredPlay } from './model-eval-replay';
 import { PACK_LANGS, loadAllPacks } from './verse/packs';
 // @ts-expect-error a plain module, shared with the scripts that run the evaluation
-import { LANGS, TIERS, commentary, decideJudge, decideWrite, derive, inLanguage, instructionLines, narrowFlips, narrowLine, narrowNote, scriptOk, summarizeJudge, summarizeWrite, wilson } from '../../scripts/model-eval/lib.mjs';
+import { LANGS, TIERS, commentary, decideJudge, decideWrite, derive, inLanguage, instructionLines, modelChoice, narrowFlips, narrowLine, narrowNote, scriptOk, summarizeJudge, summarizeWrite, wilson } from '../../scripts/model-eval/lib.mjs';
 
 const DIR = join(process.cwd(), 'docs', 'language', 'model-eval');
 const read = (...p: string[]) => JSON.parse(readFileSync(join(DIR, ...p), 'utf8'));
@@ -411,7 +411,7 @@ describe('the commentary check', () => {
 });
 
 describe('the writing decision', () => {
-  const play = (o: Partial<{ source: string; verse: string; formKept: boolean; formId: string; difficulty: string }>) => ({
+  const play = (o: Partial<{ source: string; verse: string; formKept: boolean; formId: string; difficulty: string; drafts: object[] }>) => ({
     source: 'model', verse: 'Who dares to stand upon my stage?\nI put the question to thy rage', formKept: true, formEarned: 20, craft: 30, formId: 'couplet', difficulty: 'player',
     drafts: [{ tokens: 20, ms: 1000, formKept: true, rawLines: 2, expectedLines: 2, tidy: 'x' }], ...o,
   });
@@ -447,8 +447,46 @@ describe('the writing decision', () => {
   });
   it('fails a writer that rarely keeps the form, one that returns nothing, and one measured too little', () => {
     expect(decideWrite(summarizeWrite(cell(Array.from({ length: 10 }, (_, i) => play({ formKept: i < 2 }))), en), thresholds.write, 1).ok).toBe(false);
-    expect(decideWrite(summarizeWrite(cell(Array.from({ length: 10 }, (_, i) => play(i < 3 ? { source: 'written' } : {}))), en), thresholds.write, 1).ok).toBe(false);
+    // Returns nothing: no draft the tidy-up left a verse in, so the written opponent played.
+    const nothing = { source: 'written', drafts: [{ tokens: 20, ms: 1000, formKept: false, rawLines: 0, expectedLines: 2, tidy: '', craft: 0 }] };
+    expect(decideWrite(summarizeWrite(cell(Array.from({ length: 10 }, (_, i) => play(i < 3 ? nothing : {}))), en), thresholds.write, 1).ok).toBe(false);
     expect(decideWrite(summarizeWrite(cell(Array.from({ length: 9 }, () => play({}))), en), thresholds.write, 1).ok).toBe(false);
     expect(decideWrite(null, thresholds.write, 1)).toEqual({ ok: false, why: ['not measured'] });
+  });
+  it('reads what the model wrote when the game played the written verse instead (the integration\'s rule)', () => {
+    const verse = (t: string) => `${t} dares to stand upon my stage?\nI put the question to thy rage`;
+    const drafts = [
+      { tokens: 20, ms: 1000, rawLines: 2, expectedLines: 2, tidy: verse('One'), craft: 5, formKept: false, formEarned: 5 },
+      { tokens: 20, ms: 1000, rawLines: 2, expectedLines: 2, tidy: verse('Two'), craft: 9, formKept: true, formEarned: 20 },
+      { tokens: 20, ms: 1000, rawLines: 2, expectedLines: 2, tidy: verse('Three'), craft: 9, formKept: false, formEarned: 10 },
+    ];
+    // The opponent picks the first draft of the highest craft, as writeOpponentVerse does.
+    expect(modelChoice({ source: 'written', verse: 'a written verse', drafts })).toMatchObject({ verse: verse('Two'), formKept: true, craft: 9 });
+    expect(modelChoice({ source: 'written', verse: 'a written verse', drafts: [{ ...drafts[0], tidy: '' }] })).toBeNull();
+    const s = summarizeWrite(cell([play({ source: 'written', verse: 'a written verse', formKept: true, drafts }), play({})]), en);
+    expect([s.modelSourced, s.playedModel, s.formKept]).toEqual([2, 1, 2]);
+  });
+});
+
+describe('what the model wrote is what the cells read', () => {
+  // The claim modelChoice rests on: before the integration's rule (2026-11-18) the written verse was
+  // played only when no draft left a verse, and otherwise the verse played was the draft the opponent
+  // picked. Every writing cell measured then (set-aside/) must bear that out, play for play.
+  const old = ['set-aside', 'set-aside/before-wave3'].flatMap((d) => existsSync(join(DIR, d)) ? readdirSync(join(DIR, d)).filter((f) => f.endsWith('.write.json')).map((f) => join(d, f)) : []);
+  it('on every writing cell measured before the integration, the model\'s pick was the verse played', () => {
+    const wrong: string[] = [];
+    let plays = 0;
+    for (const f of old) {
+      const c = read(f);
+      if (c.date >= '2026-11-18') continue;
+      for (const p of c.plays) {
+        plays++;
+        let best: { tidy: string; craft: number } | null = null;
+        for (const d of p.drafts) if (d.tidy && (!best || d.craft > best.craft)) best = d;
+        if (p.source === 'written' ? best !== null : best?.tidy !== p.verse) wrong.push(`${f} seed ${p.seed} round ${p.roundIndex}: ${p.source}, pick ${JSON.stringify(best?.tidy ?? null).slice(0, 60)}`);
+      }
+    }
+    expect(wrong.slice(0, 8), `${wrong.length} of ${plays} plays`).toEqual([]);
+    if (old.length) expect(plays).toBeGreaterThan(4000);
   });
 });
