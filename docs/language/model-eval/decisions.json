@@ -92,7 +92,9 @@
     "th",
     "id"
    ],
-   "write": []
+   "write": [
+    "en"
+   ]
   },
   "lite": {
    "judge": [
@@ -113,7 +115,9 @@
     "th",
     "id"
    ],
-   "write": []
+   "write": [
+    "en"
+   ]
   }
  },
  "why": {
@@ -229,7 +233,7 @@
   "standard": {
    "en": {
     "writes": [
-     "not measured"
+     "kept the form in full in 16/90 plays (18%), under 30%"
     ],
     "judges": [
      "preferred the better verse on 30/48 criteria (63%), under 70%"
@@ -371,7 +375,8 @@
   "lite": {
    "en": {
     "writes": [
-     "not measured"
+     "commentary in 29/90 plays",
+     "kept the form in full in 0/90 plays (0%), under 30%"
     ],
     "judges": [
      "4 pair(s) went to the rules because a line was left unread (the grade path's defence)",

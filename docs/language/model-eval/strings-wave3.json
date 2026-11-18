@@ -849,5 +849,6 @@
    "pipeline": "rejected: further from the English than the text it would replace: cosine 0.9063 → 0.8205, LaBSE 0.876 → 0.8374 (“Play against an opponent with a written poem. Call the model on the battle page to face him here.”)",
    "applied": false
   }
- ]
+ ],
+ "finalCheck": "After the 17 adopted strings were applied: a second scratch merge, into lang/qa-pipeline at 7c8e7479 (newer than 06e2cb6), resolved line by line against the merge base so that this branch's own three keys and the 17 strings it changed are its own text. src/i18n: 33 passed; check.mjs: 71 findings, 39 allowlisted, 0 open; glossary.mjs: 0 problems. Run on the iMac Pro on 2026-11-18 (UTC). Where lang/qa-pipeline has changed an integration string again since 06e2cb6 (live.judgeUnread in fifteen languages, fr void.copied, th verdict.notTaken), that branch's newer text is what was checked."
 }
