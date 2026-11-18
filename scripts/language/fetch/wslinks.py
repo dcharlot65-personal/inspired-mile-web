@@ -1,6 +1,6 @@
 import json,urllib.parse
 from search import get
-d=json.load(open('wikidata-names.json'))['entities']
+d=json.load(open('wikidata-card-names.json'))['entities']
 ws={k:v['id'] for k,v in d.items() if k.startswith('w_')}
 LANGS='es fr de it pt pl ru ar hi zh ja ko vi th id en'.split()
 r=get('https://www.wikidata.org/w/api.php?'+urllib.parse.urlencode(dict(action='wbgetentities',ids='|'.join(ws.values()),props='sitelinks',sitefilter='|'.join(l+'wikisource' for l in LANGS),format='json')))

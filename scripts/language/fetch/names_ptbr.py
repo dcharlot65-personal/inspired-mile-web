@@ -1,15 +1,15 @@
-"""names_ptbr.py: the Brazilian Portuguese labels (pt-br) and aliases of the items in wikidata-names.json.
+"""names_ptbr.py: the Brazilian Portuguese labels (pt-br) and aliases of the items in wikidata-card-names.json.
 
 The game's Portuguese is Brazilian (the interface, src/i18n/locales/pt.ts), while Wikidata's `pt` label is
 often the European form ("Marco António"). This fetches only `pt-br`, for the same items, so that no other
 language's labels move with it. Writes wikidata-pt-br.json; copy it to docs/language/sources/.
-Run from the directory that holds wikidata-names.json:  python3 names_ptbr.py
+Run from the directory that holds wikidata-card-names.json:  python3 names_ptbr.py
 """
 import json, os, sys, time, urllib.parse
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from search import get
 
-ents = json.load(open('wikidata-names.json', encoding='utf8'))['entities']
+ents = json.load(open('wikidata-card-names.json', encoding='utf8'))['entities']
 ids = sorted({e['id'] for e in ents.values() if e.get('id')})
 out = {}
 for i in range(0, len(ids), 50):

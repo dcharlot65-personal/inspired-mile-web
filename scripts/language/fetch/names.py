@@ -25,7 +25,7 @@ for k,t in T.items():
       'labels':{l:v['value'] for l,v in e.get('labels',{}).items()},
       'aliases':{l:[a['value'] for a in v] for l,v in e.get('aliases',{}).items() if l in LANGS},
       'sitelinks':{s[:-4]:v['title'] for s,v in e.get('sitelinks',{}).items()}}
-json.dump({'fetched':time.strftime('%Y-%m-%d'),'api':'https://www.wikidata.org/w/api.php?action=wbgetentities','licence':'Wikidata labels and aliases: CC0 1.0. Wikipedia article titles: used as names only.','entities':out},open('wikidata-names.json','w'),ensure_ascii=False,indent=1)
+json.dump({'fetched':time.strftime('%Y-%m-%d'),'api':'https://www.wikidata.org/w/api.php?action=wbgetentities','licence':'Wikidata labels and aliases: CC0 1.0. Wikipedia article titles: used as names only.','entities':out},open('wikidata-card-names.json','w'),ensure_ascii=False,indent=1)
 for k,v in out.items():
     if v.get('missing'): print('MISSING',k,v['enwikiTitle']); continue
     lab=v['labels']; miss=[l for l in LANGS if l not in lab and not (l=='zh' and ('zh-hans' in lab or 'zh-cn' in lab)) and not (l in 'es fr de it pt pl vi id en'.split() and 'mul' in lab) and l not in v['sitelinks']]

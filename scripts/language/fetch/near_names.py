@@ -63,7 +63,7 @@ def name_words(lang, p, ents):
 def main():
     dl = sys.argv[1]
     os.makedirs(dl, exist_ok=True)
-    ents = json.load(open(os.path.join(ROOT, 'docs/language/sources/wikidata-names.json'), encoding='utf8'))['entities']
+    ents = json.load(open(os.path.join(ROOT, 'docs/language/sources/wikidata-card-names.json'), encoding='utf8'))['entities']
     out = {'source': 'Hermit Dave, FrequencyWords, content/2018/<lang>/<lang>_50k.txt (from OpenSubtitles 2018, opus.nlpl.eu)',
            'commit': COMMIT, 'licence': 'CC BY-SA 4.0 (content); only the selected words are kept, without counts',
            'sha256': SHA256,

@@ -4,7 +4,7 @@
 
 Inputs, all in the repository:
   src/lib/cards.ts                             the English cards (ids, names, quotations)
-  docs/language/sources/wikidata-names.json    labels fetched from Wikidata (fetch_names.py)
+  docs/language/sources/wikidata-card-names.json    labels fetched from Wikidata (fetch_names.py)
   docs/language/sources/quotes-<lang>.json     lines copied from published translations (extract.py)
   docs/language/sources/stopwords-iso.json     stop words (stopwords-iso, MIT)
   docs/language/sources/wiktionary-closed-class.json   function words by part of speech (Wiktionary via kaikki.org;
@@ -515,7 +515,7 @@ def rarity_names(lang):
 
 
 def main():
-    ents = json.loads(read('docs/language/sources/wikidata-names.json'))['entities']
+    ents = json.loads(read('docs/language/sources/wikidata-card-names.json'))['entities']
     # Brazilian Portuguese labels, fetched separately (scripts/language/fetch/names_ptbr.py) so no other language's labels moved.
     ptbr = json.loads(read('docs/language/sources/wikidata-pt-br.json'))['items']
     for e in ents.values():

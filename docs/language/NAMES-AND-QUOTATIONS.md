@@ -92,7 +92,7 @@ for the game in English. They can only ever be translated, never sourced.
 
 | What | Source | Licence | Fetched |
 |---|---|---|---|
-| Names of characters, authors, gods, places, works | Wikidata API, `wbgetentities` (`docs/language/sources/wikidata-names.json` keeps the item id, the revision id and every label read) | CC0 1.0 | 2026-11-16 |
+| Names of characters, authors, gods, places, works | Wikidata API, `wbgetentities` (`docs/language/sources/wikidata-card-names.json` keeps the item id, the revision id and every label read) | CC0 1.0 | 2026-11-16 |
 | Brazilian Portuguese labels | Wikidata API, `wbgetentities` with `languages=pt-br\|pt` (`scripts/language/fetch/names_ptbr.py`; `docs/language/sources/wikidata-pt-br.json` keeps each item's revision id) | CC0 1.0 | 2026-11-16 |
 | Wikipedia article titles (fallback for names) | Wikidata sitelinks | titles are used as names only | 2026-11-16 |
 | French quotations | fr.wikisource.org, translations by François-Victor Hugo, and Mallarmé, Saladin and Rabbe for the poems and Frankenstein (`docs/language/sources/quotes-fr.json` keeps the page, revision and matching pattern for each line) | public domain (see the table below); Wikisource transcription CC BY-SA 4.0 for its own additions | 2026-11-16 |
@@ -387,7 +387,7 @@ Read this before treating any language as finished.
 
 ```
 # names (Wikidata), texts (Wikisource) and lines (patterns): scripts/language/fetch/
-python3 scripts/language/fetch/names.py            # writes wikidata-names.json
+python3 scripts/language/fetch/names.py            # writes wikidata-card-names.json
 python3 scripts/language/fetch/names_ptbr.py       # writes wikidata-pt-br.json (Brazilian Portuguese labels of the same items)
 python3 scripts/language/fetch/aozora.py ja rj 42773   # an Aozora Bunko text, pinned by the sha256 of its file
 python3 -I scripts/language/fetch/closed_class.py <empty dir>   # Wiktionary function words (kaikki.org) -> wiktionary-closed-class.json
