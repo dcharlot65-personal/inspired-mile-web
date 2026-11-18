@@ -3,14 +3,14 @@
 // at which verses that were not written for any card land on a character card, in every language.
 import { beforeAll, describe, expect, it } from 'vitest';
 import { CARD_CATALOG, getCardById } from '../cards';
-import { DEVICES, checkSignature } from '../verse/devices';
+import { DEVICES, checkSignature, invocationNames } from '../verse/devices';
 import { localCharacterNames, localSignatureWords, RECITE_LETTERS, saysWord, wordKey } from '../verse/echo';
 import { getPack, loadAllPacks, PACK_LANGS } from '../verse/packs';
 import { wordsOf } from '../verse/text';
 import { getCardText, loadAllCardText, localEchoText, localQuote } from './index';
 
-// As duel.ts builds it: every word of every character's English name.
-const NAMES = CARD_CATALOG.filter((c) => c.type === 'Character').flatMap((c) => c.name.replace(/^The /, '').split(/\s+/));
+// As duel.ts builds it (CHARACTER_NAMES): the full names, and the last part of each where it is a name.
+const NAMES = invocationNames(CARD_CATALOG.filter((c) => c.type === 'Character').map((c) => c.name));
 const CHARACTERS = CARD_CATALOG.filter((c) => c.type === 'Character');
 
 beforeAll(async () => {
@@ -49,13 +49,17 @@ function rates(lang: string) {
 
 describe('controls: a real echo and a real name still land', () => {
   it('in English, and in each language below', () => {
-    expect(sig('CA-001', 'a rose would bloom upon the stage tonight', 'en').met).toBe(true);
+    // A line with three or more telling words needs two of them (devices.ts signatureNeeded), in every language.
+    expect(sig('CA-001', 'my rose has no name tonight', 'en').met).toBe(true);
+    expect(sig('CA-001', 'a rose would bloom upon the stage tonight', 'en').code).toBe('hint-two');
     expect(landed('You lost, and I won tonight', 'en')).toEqual([]);
-    expect(sig('MO-002', 'โรคร้ายจงตามไป', 'th').met).toBe(true); // โรค, a word of the line
-    expect(sig('DC-004', 'Trái tim ta không vỡ', 'vi').met).toBe(true); // trái tim
-    expect(sig('MO-003', '평화를 원하느냐', 'ko').met).toBe(true); // 평화를
-    expect(sig('MO-003', '平和はいらない、和睦などない', 'ja').met).toBe(true); // 和睦
-    expect(sig('MO-003', '和平不属于你', 'zh').met).toBe(true); // 和平
+    expect(sig('MO-002', 'โรคร้ายจงตามไปถึงตระกูล', 'th').met).toBe(true); // โรค and ตระกูล, words of the line
+    expect(sig('MO-002', 'โรคร้ายจงตามไป', 'th').code).toBe('hint-two');
+    expect(sig('DC-004', 'Trái tim ta không vỡ, ngủ ngon nhé', 'vi').met).toBe(true); // tim, ngủ, ngon
+    expect(sig('MO-003', '평화를 원하느냐, 칼을 내려라', 'ko').met).toBe(true); // 평화를, 칼을
+    expect(sig('MO-003', '平和はいらない、和睦などない', 'ja').met).toBe(true); // 和睦, the line's one telling word
+    expect(sig('MO-003', '和平不属于你，收起刀吧', 'zh').met).toBe(true); // 和平, 收起
+    expect(sig('MO-003', '和平不属于你', 'zh').code).toBe('hint-two');
     expect(inv('Marc Antoine parle', 'fr').met).toBe(true);
     expect(inv('Antoine parle', 'fr').met).toBe(true);
     expect(inv('Próspero alza las manos', 'es').met).toBe(true);
@@ -72,9 +76,10 @@ describe('verses that echo no line and name nobody land nothing', () => {
   });
   it('vi "O people, tonight the stage is mine": ngủ is not the start of người; tones tell words apart', () => {
     // Before: DC-004 and PT-004 on "ngu" (ngủ, "sleep", without its tone), PT-008 on "san", GC-001, GC-003 and LD-004 on
-    // "đem" (đêm and đem, "bring", folded together). What is left is the word đêm, "night", which this verse does say
-    // (đêm nay, "tonight") and which is in Byron's line (như đêm, "like the night") and Poe's (nửa đêm, "midnight").
-    expect(landed('Người ơi, đêm nay sân khấu là của ta', 'vi')).toEqual(['GC-001:đêm', 'GC-003:đêm']);
+    // "đem" (đêm and đem, "bring", folded together). Until the two-word rule, đêm ("night", which this verse says in
+    // đêm nay, "tonight") landed Byron's and Poe's lines; each of those has more than two telling words, so one is not enough.
+    expect(landed('Người ơi, đêm nay sân khấu là của ta', 'vi')).toEqual([]);
+    expect(sig('GC-001', 'Người ơi, đêm nay sân khấu là của ta', 'vi').code).toBe('hint-two');
     expect(saysWord('ngủ', 'Người ơi', 'vi')).toBe(false);
     expect(saysWord('đem', 'đêm nay', 'vi')).toBe(false);
     expect(saysWord('đêm', 'đêm nay', 'vi')).toBe(true);
@@ -83,9 +88,11 @@ describe('verses that echo no line and name nobody land nothing', () => {
     expect(wordKey('ngủ', 'vi')).not.toBe(wordKey('ngu', 'vi'));
   });
   it('ko "I am the master of the stage tonight": 나는 is "I" with its particle', () => {
-    // Before: eleven cards on 나는. What is left is 주인이다, "is the master", which Zeus's line also says
-    // (넓은 하늘의 주인이다, "master of the wide heavens"): a real echo.
-    expect(landed('나는 오늘 밤 무대의 주인이다', 'ko')).toEqual(['OL-001:주인이다']);
+    // Before: eleven cards on 나는. Then 주인이다, "is the master", which Zeus's line also says (넓은 하늘의 주인이다,
+    // "master of the wide heavens"): a real echo, but one word of five, and the line needs two.
+    expect(landed('나는 오늘 밤 무대의 주인이다', 'ko')).toEqual([]);
+    expect(sig('OL-001', '나는 오늘 밤 무대의 주인이다', 'ko').code).toBe('hint-two');
+    expect(sig('OL-001', '나는 넓은 무대의 주인이다', 'ko').met).toBe(true);
   });
   it('ja "You lost. I won.": あなた and した are not telling words', () => {
     expect(landed('あなたは負けました。私が勝ちました。', 'ja')).toEqual([]);
@@ -108,9 +115,10 @@ describe('verses that echo no line and name nobody land nothing', () => {
     expect(inv('Кора старого дуба', 'ru').met).toBe(false);
     expect(inv('Старый граф спит', 'ru').met).toBe(false);
     expect(inv('I march into the night', 'en').met).toBe(false);
-    // The English names count in every language, but a Vietnamese word with a tone is not one: màn is not "Man".
+    // The English names count in every language, but a Vietnamese word with a tone is not one: màn is not "Man" (which,
+    // since the integration, counts only inside "Sonnet Man" anyway).
     expect(inv('Bức màn khép lại', 'vi').met).toBe(false);
-    expect(inv('Man ơi', 'vi').met).toBe(true);
+    expect(inv('Hamlet ơi', 'vi').met).toBe(true);
   });
 });
 
@@ -171,8 +179,10 @@ const marked = (t: string) => [...t.normalize('NFC').replace(/[^\p{L}\p{M}]/gu, 
 
 describe('an echo in Chinese or Japanese is not taken for a quotation', () => {
   it('the check’s verse: 薔薇の花は is an echo, not Tsubouchi’s line', () => {
-    expect(sig('CA-001', 'だれが私の舞台に立つのか？\n薔薇の花は夜に眠る', 'ja').code).toBe('echoed');
-    expect(sig('CA-001', '薔薇が夜に眠る', 'ja').code).toBe('echoed');
+    // Tsubouchi's line has four telling words (薔薇, 他の, 同じ, 善い), so two are needed.
+    expect(sig('CA-001', 'だれが私の舞台に立つのか？\n薔薇の花は同じ夜に眠る', 'ja').code).toBe('echoed');
+    expect(sig('CA-001', '薔薇が同じ夜に眠る', 'ja').code).toBe('echoed');
+    expect(sig('CA-001', 'だれが私の舞台に立つのか？\n薔薇の花は夜に眠る', 'ja').code).toBe('hint-two');
     expect(sig('CA-001', localQuote(getCardById('CA-001')!, 'ja')!, 'ja').code).toBe('quoted');
   });
   it('four of the segmenter’s words that are only a few letters are not a recital; a run of the line as long as four English words is', () => {
@@ -193,8 +203,8 @@ describe('an echo in Chinese or Japanese is not taken for a quotation', () => {
         if (letters.length > RECITE_LETTERS[lang]) {
           const run = letters.slice(0, RECITE_LETTERS[lang] + 2).join('');
           const r = checkSignature(c, run, lang);
-          // A run with no telling word in it is told what to echo ('hint'), and a card with none has none ('none').
-          if (r.code !== 'hint' && r.code !== 'none') expect([lang, c.id, run, r.code]).toEqual([lang, c.id, run, 'quoted']);
+          // A run with too few telling words in it is told what to echo ('hint', 'hint-two'), and a card with none has none ('none').
+          if (!['hint', 'hint-two', 'none'].includes(r.code ?? '')) expect([lang, c.id, run, r.code]).toEqual([lang, c.id, run, 'quoted']);
         }
       }
     }
@@ -270,5 +280,166 @@ describe('the German signature shows a noun as the line writes it', () => {
     expect(words.some((w) => /^\p{Lu}/u.test(w))).toBe(true);
     const juliet = localSignatureWords(getCardById('CA-001')!, 'de');
     expect(juliet.filter((w) => w.toLowerCase() === 'rose')).toEqual(juliet.filter((w) => w.toLowerCase() === 'rose').map(() => 'Rose'));
+  });
+});
+
+// The second check (2026-11-17) found names landing through Snowball stems that words naming nobody share.
+describe('a name is not invoked by a word that only shares its stem', () => {
+  it('German «wartest» is not the Nurse, Arabic Rome and the Romans are not Romeo nor «بلى» Blake, a Russian stamp or jellyfish is no one', () => {
+    const cases = [
+      ['Ich warte auf den Morgen', 'de'], ['Am Ende stehst du da und wartest auf die Niederlage', 'de'],
+      ['أحببت روما أكثر', 'ar'], ['أيها الرومان', 'ar'], ['بلى، سأبقى', 'ar'],
+      ['Я наклеил марку на конверт', 'ru'], ['Я видел медузу в море', 'ru'],
+    ] as const;
+    for (const [v, l] of cases) expect([l, v, inv(v, l).met]).toEqual([l, v, false]);
+    // German's own verses: the 2.3% the record put down to the Nurse's name was «wartest».
+    expect(Object.keys(rates('de').names)).not.toContain('Wärterin');
+  });
+  it('a declined name still invokes, and so does the name however it is written', () => {
+    const cases = [
+      ['Ich rufe Romeo', 'de', 'Romeo'], ['Romeos Ring glänzt', 'de', 'Romeo'], ['Hamlets Frage', 'de', 'Hamlet'], ['Julias Brief', 'de', 'Julia'],
+      ['أنا وروميو', 'ar', 'روميو'], ['Я вижу Марка Антония', 'ru', 'Марк Антоний'], ['Зову Джульетту', 'ru', 'Джульетта'],
+      ['Я видел Медузу', 'ru', 'Медуза'], ['Медуза спит', 'ru', 'Медуза'],
+      ['Kocham Julię', 'pl', 'Julia'], ['Widzę Marka Antoniusza', 'pl', 'Marek Antoniusz'], ['Widzę Antoniusza', 'pl', 'Antoniusz'],
+    ] as const;
+    for (const [v, l, name] of cases) expect([l, v, inv(v, l).detail]).toEqual([l, v, name]);
+  });
+});
+
+describe('given names, titles and accents count as English counts them', () => {
+  it('Thai «แมรี» (Mary) alone is not Mary Shelley; Portuguese «põe» is not Poe; French «prince» is no one', () => {
+    expect(localCharacterNames('th')).not.toContain('แมรี');
+    expect(localCharacterNames('th')).toContain('เชลลีย์');
+    expect(inv('แมรีเดินไป', 'th').met).toBe(false);
+    expect(inv('แมรี เชลลีย์ เขียน', 'th').detail).toBe('แมรี เชลลีย์');
+    expect(inv('Ele põe a mesa', 'pt').met).toBe(false);
+    expect(inv('Poe escreve', 'pt').met).toBe(true);
+    expect(inv('Le prince arrive', 'fr').met).toBe(false);
+    // Korean puts a title after the name: Lady Macbeth (맥베스 부인) is called by 맥베스. Poe's 포 is also a word (a cannon),
+    // so it counts only in the full name, and Allan alone is no one, as in English.
+    expect(inv('맥베스가 왔다', 'ko').met).toBe(true);
+    expect(inv('에드거 앨런 포', 'ko').met).toBe(true);
+    expect(inv('앨런이 왔다', 'ko').met).toBe(false);
+  });
+  it('an English word of the line is said as English writes it: Vietnamese «rosé» is not "rose"', () => {
+    // Juliet's Vietnamese line has six telling words, so two are needed; hoa is one, and "rose" may be the other.
+    expect(sig('CA-001', 'hoa rose', 'vi').met).toBe(true);
+    expect(sig('CA-001', 'hoa rosé', 'vi').code).toBe('hint-two');
+  });
+});
+
+describe('a Japanese run of katakana is one word', () => {
+  it('Yorick and Horatio are not cut into リック and ショー ("a show")', () => {
+    const words = localSignatureWords(getCardById('RL-001')!, 'ja');
+    expect(words).toContain('ヨリック');
+    expect(words).toContain('ホレイショー');
+    expect(words).not.toContain('リック');
+    expect(words).not.toContain('ショー');
+    expect(sig('RL-001', '今夜のショーは素晴らしい', 'ja').met).toBe(false);
+    expect(sig('RL-001', '哀れなヨリック', 'ja').met).toBe(true);
+  });
+});
+
+describe('aliases are names of the character', () => {
+  it('no alias with punctuation in it, two scripts, Latin letters in another script, or, unspaced, the name with more added', () => {
+    const LATIN = ['es', 'fr', 'de', 'it', 'pt', 'pl', 'vi', 'id'];
+    let n = 0;
+    for (const l of PACK_LANGS) {
+      if (l === 'en') continue;
+      for (const c of CHARACTERS) {
+        const e = getCardText(l)!.cards[c.id];
+        for (const a of e.aliases ?? []) {
+          n++;
+          expect([l, c.id, a, /^[\p{L}\p{M}]+(?:[-‐][\p{L}\p{M}]+)*$/u.test(a)]).toEqual([l, c.id, a, true]);
+          expect([l, c.id, a, /\p{Script=Latin}/u.test(a) && !LATIN.includes(l)]).toEqual([l, c.id, a, false]);
+          expect([l, c.id, a, /\p{Script=Latin}/u.test(a) && /\p{Script=Greek}/u.test(a)]).toEqual([l, c.id, a, false]);
+          if (['zh', 'ja', 'th'].includes(l) && e.name) expect([l, c.id, a, a !== e.name && a.includes(e.name)]).toEqual([l, c.id, a, false]);
+        }
+      }
+    }
+    expect(n).toBeGreaterThan(200);
+    const all = (l: string) => CHARACTERS.flatMap((c) => getCardText(l)!.cards[c.id].aliases ?? []);
+    for (const [l, a] of [['de', 'Abadonna'], ['de', 'Uthuce'], ['zh', '哈里斯'], ['zh', '科學怪人之母：瑪麗雪萊'], ['ja', 'ゼウス神像'], ['ja', 'ブルトゥス家'], ['it', 'Aφροδίτη']] as const) {
+      expect([l, a, all(l).includes(a)]).toEqual([l, a, false]);
+    }
+    // A longer spelling in a spaced script is a variant of the name, and stays.
+    expect(all('ru')).toContain('Ахиллес');
+    // Byron's Thai and Vietnamese labels add his peerage ("6th Baron Byron"); the card has his name.
+    expect(getCardText('th')!.cards['GC-001'].name).toBe('จอร์จ กอร์ดอน ไบรอน');
+    expect(getCardText('vi')!.cards['GC-001'].name).toBe('George Gordon Byron');
+    expect(localCharacterNames('th').some((x) => x.includes('บารอน'))).toBe(false);
+  });
+});
+
+describe('names that Wikidata gave wrong or in English', () => {
+  it('the Nurse is «La Nourrice» (Hugo) and 奶妈; the Friar «Frère Laurence» (Hugo) and «Bruder Lorenzo» (Schlegel)', () => {
+    expect(getCardText('fr')!.cards['VC-003']).toMatchObject({ name: 'La Nourrice', nameSource: 'published' });
+    expect(getCardText('fr')!.cards['VC-002']).toMatchObject({ name: 'Frère Laurence', nameSource: 'published' });
+    expect(getCardText('de')!.cards['VC-002']).toMatchObject({ name: 'Bruder Lorenzo', nameSource: 'published' });
+    expect(getCardText('zh')!.cards['VC-003']).toMatchObject({ name: '奶妈', nameSource: 'wikidata' });
+    expect(getCardText('es')!.cards['VC-004'].name).toBe('Conde Paris');
+    expect(getCardText('ru')!.cards['DC-004'].name).toBe('Горацио');
+    expect(getCardText('pl')!.cards['SC-003'].name).toBe('Banko');
+    expect(getCardText('it')!.cards['OL-006'].name).toBe('Ulisse');
+    // No card in a language written in Latin letters is named with an English role or title.
+    for (const l of ['es', 'fr', 'de', 'it', 'pt', 'pl', 'vi', 'id']) {
+      for (const c of CHARACTERS) {
+        const name = getCardText(l)!.cards[c.id].name ?? '';
+        expect([l, c.id, name, /\b(Friar|Nurse|Prince|King)\b/.test(name)]).toEqual([l, c.id, name, false]);
+      }
+    }
+    expect(inv('Frère Laurence prie', 'fr').detail).toBe('Frère Laurence');
+    expect(inv('La Nourrice arrive', 'fr').detail).toBe('La Nourrice');
+    expect(inv('Lorenzo betet', 'de').detail).toBe('Lorenzo');
+    expect(inv('奶妈来了', 'zh').detail).toBe('奶妈');
+  });
+});
+
+describe('the rule judge reads a Vietnamese word with its tone', () => {
+  it('a telling word with a tone is in the allusion lexicon only with its tone; the share of the pack’s words it takes is near English’s', async () => {
+    const { allusionLexicon } = await import('../verse/referee');
+    const { fold } = await import('../verse/text');
+    const vi = allusionLexicon('vi');
+    const en = allusionLexicon('en');
+    let toned = 0;
+    // A toneless spelling may be a word of its own in another line (tình "love", tinh "essence"): those are left aside.
+    const own = new Set(CARD_CATALOG.flatMap((c) => localSignatureWords(c, 'vi')).map((w) => wordKey(w, 'vi')));
+    for (const n of localCharacterNames('vi')) own.add(wordKey(n, 'vi'));
+    for (const c of CARD_CATALOG) {
+      for (const w of localSignatureWords(c, 'vi')) {
+        expect([c.id, w, vi.has(wordKey(w, 'vi'))]).toEqual([c.id, w, true]);
+        if (wordKey(w, 'vi') !== fold(w) && !en.has(fold(w)) && !own.has(fold(w))) {
+          toned++;
+          expect([c.id, w, vi.has(fold(w))]).toEqual([c.id, w, false]);
+        }
+      }
+    }
+    expect(toned).toBeGreaterThan(50);
+    const share = (l: string) => {
+      const lex = allusionLexicon(l);
+      let n = 0;
+      let hit = 0;
+      for (const v of neutral(l)) for (const w of wordsOf(v, l)) { n++; if (lex.has(wordKey(w, l))) hit++; }
+      return hit / n;
+    };
+    const rows = ['en', 'vi', 'fr', 'ko', 'th'].map((l) => [l, +share(l).toFixed(3)]);
+    console.log('ALLUSION-SHARE ' + JSON.stringify(rows));
+    // The second check measured 35.4% for Vietnamese before, against 19.2% for English (its own count).
+    expect(share('vi')).toBeLessThan(0.2);
+  });
+});
+
+describe('what the player is shown', () => {
+  it('the Arabic hint lists its words with the Arabic comma, Japanese with 、', () => {
+    const ar = sig('DC-001', 'القمر هادئ', 'ar');
+    expect(ar.code).toBe('hint');
+    expect(ar.detail).toContain('، ');
+    expect(ar.detail).not.toContain(', ');
+    const ja = sig('DC-001', '月は静かに沈む', 'ja');
+    expect(ja.detail).toContain('、');
+  });
+  it('the words that landed it come back for the multiplier, folded as the verse says them', () => {
+    expect(sig('CA-001', 'Die Rose duftet im Dunkeln', 'de')).toMatchObject({ met: true, words: ['rose', 'duftet'] });
+    expect(inv('Kocham Julię', 'pl').words).toEqual(['julie']);
   });
 });

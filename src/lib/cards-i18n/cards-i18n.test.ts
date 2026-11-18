@@ -1,13 +1,16 @@
 import { readFileSync } from 'node:fs';
 import { beforeAll, describe, expect, it } from 'vitest';
 import { CARD_CATALOG, getCardById, type Card } from '../cards';
-import { DEVICES, checkSignature, signatureWords } from '../verse/devices';
+import { DEVICES, checkSignature, signatureNeeded, signatureWords } from '../verse/devices';
 import { createDuel, scoreVerse } from '../verse/duel';
 import { localCharacterNames, localSignatureWords, saysWord, wordKey } from '../verse/echo';
 import { getForm } from '../verse/forms';
 import { loadAllPacks, PACK_LANGS } from '../verse/packs';
 import { wordsOf } from '../verse/text';
-import { CARD_TEXT_LANGS, cardName, cardQuote, cardScene, elementName, getCardText, houseName, loadAllCardText, rarityName, typeName, type CardTextPack } from './index';
+import {
+  CARD_TEXT_LANGS, capitalised, cardName, cardNameInText, cardQuote, cardScene, cardTitle, elementName, getCardText, houseName, loadAllCardText, rarityName, typeName,
+  type CardTextPack,
+} from './index';
 
 interface Provenance {
   langs: Record<string, { houses?: Record<string, { source: string }>; cards: Record<string, { name: { text: string | null; source: string; detail?: string }; quote: Record<string, string | number | null>; scene: string }> }>;
@@ -15,7 +18,9 @@ interface Provenance {
 const provenance: Provenance = JSON.parse(readFileSync('docs/language/card-text.provenance.json', 'utf8'));
 const record = readFileSync('docs/language/NAMES-AND-QUOTATIONS.md', 'utf8');
 
-const NAME_SOURCES = ['wikidata', 'wikipedia', 'derived', 'translated', 'kept', 'missing'];
+const NAME_SOURCES = ['wikidata', 'wikipedia', 'published', 'derived', 'translated', 'kept', 'missing'];
+const publishedNames: Record<string, Record<string, { name: string; revid: number; printed: string; count: number; url: string }>> =
+  JSON.parse(readFileSync('docs/language/sources/published-names.json', 'utf8')).names;
 
 /** Everything wrong with one language's card text. Empty means sound. Kept as a function so it can be shown to fail. */
 function problems(pack: CardTextPack, prov: Provenance['langs'][string], doc: string): string[] {
@@ -33,8 +38,15 @@ function problems(pack: CardTextPack, prov: Provenance['langs'][string], doc: st
       if (!missingLine.includes(`${c.id} ${c.name}`)) out.push(`${l} ${c.id}: missing name not listed in the record`);
     } else if (!e.name || !e.name.trim()) out.push(`${l} ${c.id}: empty name with source ${e.nameSource}`);
     if (p.name.source !== e.nameSource || (p.name.text ?? undefined) !== e.name) out.push(`${l} ${c.id}: name differs from its provenance record`);
-    if ((e.nameSource === 'wikidata' || e.nameSource === 'wikipedia' || e.nameSource === 'derived') && !/Q\d+/.test(p.name.detail ?? '')) {
+    if (['wikidata', 'wikipedia', 'derived', 'published'].includes(e.nameSource) && !/Q\d+/.test(p.name.detail ?? '')) {
       out.push(`${l} ${c.id}: sourced name without a Wikidata item id`);
+    }
+    // A name taken from a published translation: recorded with the revision it was read in, and printed there.
+    if (e.nameSource === 'published') {
+      const r = publishedNames[l]?.[c.id];
+      if (!r || r.name !== e.name || !(r.count > 0) || !/oldid=\d+$/.test(r.url) || !String(p.name.detail ?? '').includes(`revision ${r.revid}`)) {
+        out.push(`${l} ${c.id}: name from a published translation without its record`);
+      }
     }
     if (e.quoteSource === 'published') {
       if (!e.quote) out.push(`${l} ${c.id}: published line is empty`);
@@ -95,6 +107,9 @@ describe('card text in fifteen languages', () => {
     expect(broken((p) => { delete p.cards['DC-001']; })).toEqual(['fr DC-001: no entry']);
     expect(broken((p) => { p.cards['DC-001'].name = ''; }).some((m) => m.includes('DC-001: empty name'))).toBe(true);
     expect(broken((p) => { p.cards['DC-001'].name = 'Amleth'; })).toEqual(['fr DC-001: name differs from its provenance record']);
+    expect(broken((p) => { p.cards['DC-001'].nameSource = 'published'; })).toEqual([
+      'fr DC-001: name differs from its provenance record', 'fr DC-001: name from a published translation without its record',
+    ]);
     expect(broken((p) => { p.cards['DC-001'].nameSource = 'missing'; delete p.cards['DC-001'].name; }).some((m) => m.includes('not listed in the record'))).toBe(true);
     expect(broken((p) => { p.cards['DC-001'].quote = 'Être ou ne pas être'; })).toEqual(['fr DC-001: line differs from its provenance record']);
     expect(broken((p) => { p.cards['DC-001'].quote = card('DC-001').quote; }).some((m) => m.includes('is the English line'))).toBe(true);
@@ -231,19 +246,24 @@ describe('the signature in the language of the duel', () => {
     // A line whose every word is short or on the stop list has no telling word of its own ("I am not what I am" has none
     // in English either); the English words then decide, as before. These are few, and each is reported by name.
     if (none.length) console.warn(`[cards-i18n] lines with no telling word of their own: ${none.join(', ')}`);
-    // Where the English line has telling words, the line in another language should too. These seven have none of their
+    // Where the English line has telling words, the line in another language should too. These have none of their
     // own, and the English words decide there. Their words are function words (pronouns, particles, "how"), or too
     // short for the language's measure (Hindi छह, सदा; Thai รัก, วิธี; Vietnamese hè), or single characters, which do not
     // count in Chinese and Japanese (花 "flower", 草, 愛, 力; the segmenter also cuts Tsubouchi's rare 齷齬 into two).
+    // Viola's IL-001, "I am not what I am", is little words in every language; since the integration the English line
+    // has a phrase to echo ("not what"), so its lines are listed here too, and the English phrase decides.
     // Pinned, so a change to the stop lists that takes the words of another line shows here.
     const lost = none.filter((key) => signatureWords(card(key.split(' ')[1])).length > 0);
-    expect(lost).toEqual(['hi UW-002', 'zh LD-004', 'ja VC-003', 'ja PT-005', 'ja OL-004', 'vi SM-001', 'th LD-004']);
+    expect(lost).toEqual([
+      'es IL-001', 'fr IL-001', 'de IL-001', 'pt IL-001', 'hi UW-002', 'zh LD-004', 'ja VC-003', 'ja IL-001', 'ja PT-005', 'ja OL-004',
+      'vi SM-001', 'vi IL-001', 'th LD-004', 'id IL-001',
+    ]);
     expect(none.length).toBeLessThanOrEqual(20);
     for (const key of none) {
       const [lang, id] = key.split(' ');
       const c = card(id);
-      const english = signatureWords(c)[0];
-      if (english) expect([key, checkSignature(c, `one ${english} here`, lang).met]).toEqual([key, true]);
+      const english = signatureWords(c).slice(0, signatureNeeded(c));
+      if (english.length) expect([key, checkSignature(c, `one ${english.join(' and ')} here`, lang).met]).toEqual([key, true]);
       else expect([key, checkSignature(c, 'anything at all', lang).code]).toEqual([key, 'none']);
     }
     // The measure is not vacuous: nearly every line does have telling words.
@@ -252,22 +272,33 @@ describe('the signature in the language of the duel', () => {
   });
 
   it('lands for a verse that echoes the translated line, and is refused for one that quotes it outright', () => {
+    let two = 0;
     for (const p of packs) {
       for (const c of CARD_CATALOG) {
         const quote = p.cards[c.id].quote;
         if (!quote) continue;
         const words = localSignatureWords(c, p.lang);
         if (!words.length) continue;
-        const echo = checkSignature(c, words[0], p.lang);
-        expect([p.lang, c.id, words[0], echo.met, echo.code]).toEqual([p.lang, c.id, words[0], true, 'echoed']);
+        // As in English (signatureNeeded), a line with three or more telling words needs two of them: its first and its last.
+        const needed = localSignatureWords(c, p.lang, true).length >= 3 ? 2 : 1;
+        const said = needed === 2 ? [words[0], localSignatureWords(c, p.lang, true).at(-1)!] : [words[0]];
+        const echo = checkSignature(c, said.join(' / '), p.lang);
+        expect([p.lang, c.id, said, echo.met, echo.code]).toEqual([p.lang, c.id, said, true, 'echoed']);
+        if (needed === 2) {
+          two++;
+          const one = checkSignature(c, words[0], p.lang);
+          expect([p.lang, c.id, words[0], one.met, one.code]).toEqual([p.lang, c.id, words[0], false, 'hint-two']);
+        }
         if (wordsOf(quote, p.lang).length >= 4) {
           const recited = checkSignature(c, quote, p.lang);
           expect([p.lang, c.id, recited.met, recited.code]).toEqual([p.lang, c.id, false, 'quoted']);
         }
         const silent = checkSignature(c, '0', p.lang);
-        expect([p.lang, c.id, silent.met, silent.code, silent.detail.split(', ')[0]]).toEqual([p.lang, c.id, false, 'hint', words[0]]);
+        expect([p.lang, c.id, silent.met, silent.code]).toEqual([p.lang, c.id, false, needed === 2 ? 'hint-two' : 'hint']);
+        expect([p.lang, c.id, silent.detail.startsWith(words[0])]).toEqual([p.lang, c.id, true]);
       }
     }
+    expect(two).toBeGreaterThan(400);
   });
 
   it('reads real verses: French, Japanese, and the endings of other languages', () => {
@@ -278,14 +309,17 @@ describe('the signature in the language of the duel', () => {
     // As in English, a verse that echoes no telling word is told what to echo, whatever else it recites.
     expect(checkSignature(hamlet, 'Je dis : être, ou ne pas être, voilà tout', 'fr').code).toBe('hint');
     expect(checkSignature(hamlet, 'Rien de lui ici', 'fr').code).toBe('hint');
-    // Japanese has no spaces: the word is found inside the line.
+    // Japanese has no spaces: the words are found inside the line. Its line has three telling words, so two are needed.
     const ja = localSignatureWords(hamlet, 'ja');
-    expect(ja.length).toBeGreaterThan(0);
-    expect(checkSignature(hamlet, `闇に向かって${ja[0]}を投げる`, 'ja').met).toBe(true);
+    expect(ja).toEqual(['生きる', '死ぬ', '問題']);
+    expect(checkSignature(hamlet, `闇に向かって${ja[0]}と${ja[2]}を投げる`, 'ja').met).toBe(true);
+    expect(checkSignature(hamlet, `闇に向かって${ja[2]}を投げる`, 'ja').code).toBe('hint-two');
     expect(checkSignature(hamlet, cardQuote(hamlet, 'ja'), 'ja').code).toBe('quoted');
-    expect(checkSignature(hamlet, '月は静かに沈む', 'ja').code).toBe('hint');
-    // The English word still lands in any language, and reciting the English line is still refused.
-    expect(checkSignature(hamlet, 'I put the question to the dark', 'ja').met).toBe(true);
+    expect(checkSignature(hamlet, '月は静かに沈む', 'ja').code).toBe('hint-two');
+    // The English word still lands in any language, as one of the words, and reciting the English line is still refused.
+    expect(checkSignature(hamlet, 'I put the question to the dark', 'it').met).toBe(true);
+    expect(checkSignature(hamlet, 'I put the question to the dark, 問題', 'ja').met).toBe(true);
+    expect(checkSignature(hamlet, 'I put the question to the dark', 'ja').code).toBe('hint-two');
     expect(checkSignature(hamlet, 'To be, or not to be, that is the question', 'ja').met).toBe(false);
     // Endings: two forms of one word have one stem (Snowball); Korean particles follow a noun; Arabic prefixes join it.
     expect(saysWord('Гамлет', 'Слушай Гамлета', 'ru')).toBe(true);
@@ -318,6 +352,7 @@ describe('the signature in the language of the duel', () => {
     expect(checkSignature(friar, '夜の歡樂よ、さらば', 'ja').met).toBe(true);
     expect(checkSignature(friar, cardQuote(friar, 'ja'), 'ja').code).toBe('quoted');
     expect(checkSignature(friar, 'さうした過激の歓楽は、とかく過激の終を遂ぐる。', 'ja').code).toBe('quoted');
+    // Two spellings of one word are one word: the line has two telling words, 過激 and 歓楽, so one is enough.
     expect(checkSignature(friar, '月は静かに沈む', 'ja').code).toBe('hint');
   });
 
@@ -360,29 +395,65 @@ describe('the invocation in the language of the duel', () => {
 });
 
 describe('an English duel is as it was', () => {
-  const COMMON = 'that this with from have what when where which thou thee thy your their there these those shall will would should could been were upon into then than them they more most some such very much come here hath doth lord'.split(' ');
-
-  it('telling words of every card are exactly the old measure, with every language loaded', () => {
-    for (const c of CARD_CATALOG) {
-      const old = [...new Set(wordsOf(c.quote, 'en').filter((w) => [...w].length >= 4).map((w) => w.normalize('NFD').replace(/[̀-ͯ]/g, '')).filter((w) => !COMMON.includes(w)))];
-      expect([c.id, signatureWords(c)]).toEqual([c.id, old]);
-      expect([c.id, signatureWords(c, 'en')]).toEqual([c.id, old]);
-    }
-  });
-
-  it('the signature and the invocation judge English verses as before', () => {
+  // That loading every language's card text changes nothing in English is english.test.ts; these pin what the
+  // engine gives English verses, as the integration's rules have it (two words for a line with three or more).
+  it('the signature and the invocation judge English verses as the engine does', () => {
     const hamlet = card('DC-001');
-    expect(checkSignature(hamlet, 'I put the question to the dark')).toEqual({ met: true, detail: 'question', code: 'echoed' });
+    expect(checkSignature(hamlet, 'I put the question to the dark')).toEqual({ met: true, detail: 'question', code: 'echoed', words: ['question'] });
     expect(checkSignature(hamlet, 'To be, or not to be, that is the question')).toEqual({ met: false, detail: '', code: 'quoted' });
     expect(checkSignature(hamlet, 'Nothing of his here')).toEqual({ met: false, detail: 'question', code: 'hint' });
     // A French word of Hugo's line does not land in an English duel.
     expect(checkSignature(card('MO-001'), 'la lumière', 'en').met).toBe(false);
-    expect(DEVICES.invocation.check('Hear me, Hamlet', { names: ['Hamlet'] })).toEqual({ met: true, detail: 'Hamlet' });
+    expect(DEVICES.invocation.check('Hear me, Hamlet', { names: ['Hamlet'] })).toEqual({ met: true, detail: 'Hamlet', words: ['hamlet'] });
     expect(DEVICES.invocation.check('Écoute, Roméo', { lang: 'en', names: ['Hamlet'] }).met).toBe(false);
     expect(DEVICES.invocation.check('ハムレットよ', { lang: 'en', names: ['Hamlet'] }).met).toBe(false);
     for (const c of CARD_CATALOG as Card[]) {
-      const first = signatureWords(c)[0];
-      if (first) expect([c.id, checkSignature(c, `one ${first} here`, 'en').code]).toEqual([c.id, 'echoed']);
+      const words = signatureWords(c).slice(0, signatureNeeded(c));
+      if (words.length) expect([c.id, checkSignature(c, `one ${words.join(' and ')} here`, 'en').code]).toEqual([c.id, 'echoed']);
     }
+  });
+});
+
+describe('card names as the interface shows them', () => {
+  it('inside a sentence, set off as a title where the language needs an article, and bare otherwise', async () => {
+    const es = (await import('../../i18n/locales/es')).default;
+    expect(es['live.signature'].replace('{card}', cardNameInText(card('DC-001'), 'es'))).toBe('Firma (+½ de oficio): evoca la frase de «Príncipe Hamlet» sin citarla');
+    expect(es['verdict.roundTheirs'].replace('{card}', cardNameInText(card('VC-004'), 'es'))).toBe('«Conde Paris» se lleva la ronda.');
+    expect(es['verdict.roundTheirs'].replace('{card}', cardNameInText(card('MO-001'), 'es'))).toBe('Romeo se lleva la ronda.');
+    expect(cardNameInText(card('PT-008'), 'es')).toBe('«Lágrimas de sirena»');
+    expect(cardNameInText(card('RM-003'), 'es')).toBe('Marco Antonio');
+    expect(cardNameInText(card('SC-002'), 'es')).toBe('Lady Macbeth');
+    expect(cardNameInText(card('VC-003'), 'fr')).toBe('«\u00a0La Nourrice\u00a0»');
+    expect(cardNameInText(card('VC-004'), 'fr')).toBe('«\u00a0Comte Pâris\u00a0»');
+    expect(cardNameInText(card('DC-003'), 'it')).toBe('«Re Claudio»');
+    expect(cardNameInText(card('DC-001'), 'pt')).toBe('“Príncipe Hamlet”');
+    // German puts no article before a title with a name (Prinz Hamlet gewinnt), only before a role or a thing.
+    expect(cardNameInText(card('DC-001'), 'de')).toBe('Prinz Hamlet');
+    expect(cardNameInText(card('VC-003'), 'de')).toBe('„Wärterin“');
+    expect(cardNameInText(card('PT-001'), 'de')).toBe('„Liebestrank“');
+    // Languages without articles before a name take it as it is.
+    for (const l of ['ru', 'pl', 'ar', 'hi', 'zh', 'ja', 'ko', 'vi', 'th', 'id']) for (const c of CARD_CATALOG) expect([l, c.id, cardNameInText(c, l)]).toEqual([l, c.id, cardName(c, l)]);
+  });
+  it('standing alone, and at the start of a sentence, with a capital', async () => {
+    const ru = (await import('../../i18n/locales/ru')).default;
+    expect(cardName(card('VC-004'), 'ru')).toBe('граф Парис');
+    expect(cardTitle(card('VC-004'), 'ru')).toBe('Граф Парис');
+    expect(capitalised(ru['round.composing'].replace('{card}', cardNameInText(card('VC-004'), 'ru')), 'ru')).toBe('Граф Парис сочиняет…');
+    expect(ru['verdict.roundTheirs'].replace('{card}', cardNameInText(card('VC-004'), 'ru'))).toBe('Раунд забирает граф Парис.');
+  });
+  it('a published line its edition begins mid-sentence is shown after an ellipsis', () => {
+    expect(cardQuote(card('RL-007'), 'fr')).toBe('… je noierai mon livre');
+    expect(cardQuote(card('DC-001'), 'fr')).toBe('Être, ou ne pas être, c’est là la question.');
+  });
+});
+
+describe('a published line whose copyright is in doubt is not used', () => {
+  it('Gumilyov’s Russian Rime: the record keeps it and says why; the card has the game’s own line, marked new', () => {
+    const ld = getCardText('ru')!.cards['LD-002'];
+    expect(ld.quoteSource).toBe('new');
+    const rec = provenance.langs.ru.cards['LD-002'] as unknown as { publishedNotUsed?: { url: string; why: string } };
+    expect(rec.publishedNotUsed?.url).toMatch(/ru\.wikisource\.org\/.+oldid=5058375$/);
+    expect(rec.publishedNotUsed?.why).toMatch(/rehabilitated/);
+    expect(record).toContain('## Published lines found and not used');
   });
 });

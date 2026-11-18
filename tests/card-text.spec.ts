@@ -83,8 +83,11 @@ test.describe('Card names and lines per language', () => {
     await expect(signature).not.toHaveText('✓');
     await page.fill('#verse-input', 'だれが私の舞台に立つのか？\n生きることも死ぬことも、私の問題だ');
     await expect(signature).toHaveText('✓');
-    // The English word still counts for a player who writes it.
-    await page.fill('#verse-input', 'だれが私の舞台に立つのか？\nquestion');
+    // Tsubouchi's line has three telling words, so one is not enough (as in English, signatureNeeded).
+    await page.fill('#verse-input', 'だれが私の舞台に立つのか？\n私の問題だ');
+    await expect(signature).not.toHaveText('✓');
+    // The English word still counts for a player who writes it, as one of the two.
+    await page.fill('#verse-input', 'だれが私の舞台に立つのか？\nquestion、私の問題だ');
     await expect(signature).toHaveText('✓');
   });
 
@@ -94,9 +97,10 @@ test.describe('Card names and lines per language', () => {
     await begin(page, 'CA-001');
     const row = page.locator('#live-checks li', { hasText: 'シグネチャー' });
     // Four of the segmenter's "words" (薔薇 の 花 は) are five letters, not a recital of the line (2026-11-16 check).
-    await page.fill('#verse-input', 'だれが私の舞台に立つのか？\n薔薇の花は夜に眠る');
+    // The line has four telling words (薔薇, 他の, 同じ, 善い), so the verse says two.
+    await page.fill('#verse-input', 'だれが私の舞台に立つのか？\n薔薇の花は同じ夜に眠る');
     await expect(row.locator('span').first()).toHaveText('✓');
-    await expect(row).toContainText('「薔薇」を響かせました');
+    await expect(row).toContainText('「薔薇、同じ」を響かせました');
     await expect(row).not.toContainText('そのまま引用しています');
     // Reciting the line still is one.
     await page.fill('#verse-input', 'だれが私の舞台に立つのか？\n薔薇の花は、他の名で呼んでも、同じやうに善い香がする');
@@ -108,8 +112,30 @@ test.describe('Card names and lines per language', () => {
     await switchTo(page, 'de');
     await begin(page, 'CA-001');
     const row = page.locator('#live-checks li', { hasText: 'Signatur' });
-    await page.fill('#verse-input', 'Wer wagt es, meine Bühne zu betreten?\nDie Rose blüht im Dunkeln');
+    await page.fill('#verse-input', 'Wer wagt es, meine Bühne zu betreten?\nDie Rose duftet im Dunkeln');
     await expect(row.locator('span').first()).toHaveText('✓');
-    await expect(row).toContainText('Anklang an „Rose“');
+    await expect(row).toContainText('Anklang an „Rose, duften“');
+  });
+
+  test('Spanish: a titled name in a sentence is set off as the card’s title (2026-11-17 check: «de Príncipe Hamlet»)', async ({ page }) => {
+    await open(page);
+    await switchTo(page, 'es');
+    await expect(page.locator('#deck-cards')).toContainText('Príncipe Hamlet');
+    await begin(page);
+    const row = page.locator('#live-checks li', { hasText: 'Firma' });
+    await expect(row).toContainText('evoca la frase de «Príncipe Hamlet» sin citarla');
+    await expect(row).not.toContainText('de Príncipe Hamlet');
+  });
+
+  test('Russian: a name Wikidata writes small stands with a capital on the card', async ({ page }) => {
+    await page.addInitScript(() => {
+      const deck = { name: 'Paris deck', characters: ['VC-004', 'MO-001', 'CA-001'], relics: [], potions: [] };
+      localStorage.setItem('inspired-mile-decks', JSON.stringify([deck]));
+      localStorage.setItem('inspired-mile-active-deck', deck.name);
+    });
+    await page.goto('/battle?seed=11&brain=rules');
+    await switchTo(page, 'ru');
+    await expect(page.locator('#deck-cards')).toContainText('Граф Парис');
+    await expect(page.locator('#deck-cards')).not.toContainText('граф Парис');
   });
 });
