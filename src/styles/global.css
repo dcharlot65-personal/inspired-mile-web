@@ -121,6 +121,15 @@
   letter-spacing: 0;
 }
 
+/* Japanese puts no space between words, so a browser may end a line between any two characters:
+   inside a word (カ|ード, チャ|レンジ), or before the long-vowel mark ー, which must not open a line.
+   auto-phrase (Chromium 119 on) breaks between phrases instead; strict keeps ー and the small kana
+   off the start of a line in every browser. A phrase wider than its line still breaks. */
+:lang(ja) {
+  word-break: auto-phrase;
+  line-break: strict;
+}
+
 @layer base {
   @font-face {
     font-family: 'Inter';

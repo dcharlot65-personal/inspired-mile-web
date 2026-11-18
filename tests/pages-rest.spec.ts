@@ -162,6 +162,59 @@ test.describe('The remaining pages in sixteen languages', () => {
   }
 });
 
+/**
+ * Where the lines of the page's Japanese text break, as pairs "last character of a line | first
+ * character of the next". Flagged: a line that opens with ー or a small kana (Japanese line-breaking
+ * rules forbid it), and a break between two katakana, which is inside a word (カ|ード). Read from
+ * the rendered text, character by character, within each block.
+ */
+async function japaneseBreaks(page: Page): Promise<string[]> {
+  return page.evaluate(() => {
+    const OPENS_NOT = /[ーぁぃぅぇぉっゃゅょゎゕゖァィゥェォッャュョヮヵヶㇰ-ㇿ]/u;
+    const KATAKANA = /[\u30a1-\u30fa\u30fc]/u;
+    const out: string[] = [];
+    const range = document.createRange();
+    const walker = document.createTreeWalker(document.querySelector('main')!, NodeFilter.SHOW_TEXT);
+    let prev: { ch: string; top: number; height: number; block: Element } | null = null;
+    for (let node = walker.nextNode(); node; node = walker.nextNode()) {
+      const block = node.parentElement?.closest('p, li, h1, h2, h3, h4, label, button, a, td, th, dd, dt, div');
+      if (!block) continue;
+      const text = node.textContent ?? '';
+      for (let i = 0; i < text.length; i++) {
+        const ch = text[i];
+        if (/\s/.test(ch)) continue;
+        range.setStart(node, i);
+        range.setEnd(node, i + 1);
+        const r = range.getClientRects()[0];
+        if (!r || r.width === 0) continue;
+        if (prev && prev.block === block && r.top > prev.top + prev.height * 0.6) {
+          if (OPENS_NOT.test(ch) || (KATAKANA.test(prev.ch) && KATAKANA.test(ch))) {
+            out.push(`${(block.textContent ?? '').trim().slice(0, 30)}…: ${prev.ch}|${ch}`);
+          }
+        }
+        prev = { ch, top: r.top, height: r.height, block };
+      }
+    }
+    return out;
+  });
+}
+
+test.describe('Japanese text breaks between words', () => {
+  for (const width of [390, 1280]) {
+    test(`at ${width} px, no line opens with ー or a small kana, and none breaks inside a katakana word`, async ({ page }) => {
+      test.setTimeout(120_000);
+      await page.setViewportSize({ width, height: 900 });
+      const found: string[] = [];
+      for (const spec of PAGES as PageSpec[]) {
+        await open(page, spec, 'ja');
+        await expect(page.locator(spec.ready).first()).toBeAttached();
+        for (const b of await japaneseBreaks(page)) found.push(`${spec.name}: ${b}`);
+      }
+      expect(found, found.join('\n')).toEqual([]);
+    });
+  }
+});
+
 test.describe('What the pages build in script', () => {
   test('classroom: the list counts members with the language’s plural forms and opens a classroom', async ({ page }) => {
     const spec = (PAGES as PageSpec[])[0];
