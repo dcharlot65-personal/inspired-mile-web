@@ -331,6 +331,10 @@ left behind by a killed run is found by its port: `lsof -nP -iTCP:<port> -sTCP:L
   minimal pairs do (fr, es, it, pt `many`: `{n} de crédits`; saved in
   `docs/language/sources/pages-rest-cldr-minimal-pairs.json`). Numbers, dates and lists go through
   `fmt.ts` (Intl).
+  Line breaks: `global.css` sets `word-break: auto-phrase` and `line-break: strict` on `:lang(ja)`
+  (Chromium breaks Japanese between phrases, not inside カード) and `word-break: keep-all` on
+  `:lang(ko)` (Korean breaks at its spaces); `tests/pages-rest.spec.ts` reads where the lines of
+  this branch's pages break in both and fails on a break inside a word.
   `src/i18n/pages-rest.test.ts` checks all of it; `docs/language/pages-rest.md` says what no
   tool has checked. One word per thing: `docs/language/pages-rest-terms.json` gives each
   language's word for 21 terms and how it stands to its source (Wikidata, Apple, Android, or
