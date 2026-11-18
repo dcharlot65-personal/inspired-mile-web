@@ -27,10 +27,39 @@ const PLACEHOLDER = /(\{[a-zA-Z_]+\})/;
 const QUOTED = /"[A-Za-z\u00C0-\u024F][^"\u0590-\u08FF\uFB50-\uFDFF\uFE70-\uFEFF\u2066-\u2069]*"/gu;
 const ISOLATED = /(\u2068[^\u2069]*\u2069)/u;
 
-/** The text with each run of Latin letters isolated, the spaces after it left outside; placeholders untouched. */
+/** A closing quotation mark: punctuation right before one ends the quoted English line, and is the line's own. */
+const CLOSING_QUOTE = /^["»“”’]/u;
+/** Punctuation that ends a sentence or a clause. */
+const STOP = /[.,;:!?…]+$/u;
+
+/**
+ * How much of a run of Latin text is the English's own, and so goes inside the isolate. The run, as RUN finds it,
+ * goes on to the next Arabic letter, so it can end with what belongs to the Arabic sentence around it:
+ *  - a closing bracket whose opening bracket stands before the run ("رجال الملك (King's Men)"). Inside the isolate
+ *    it was cut off from its partner, and Chromium drew the two side by side: "King's Men))" (checker, 2026-11-16).
+ *    The pair stays together outside, and the bidirectional algorithm's bracket rule (UAX #9 N0) draws it round
+ *    the isolate;
+ *  - the Arabic sentence's full stop or comma after a name ("أمام الأمير Escalus."): inside the isolate it was
+ *    drawn between the Arabic and the name. It stays outside, unless a closing quotation mark follows it: then it
+ *    ends the quoted English line («Et tu, Brute?») and is the line's own.
+ */
+function own(run, next) {
+  let t = run.replace(/\s+$/u, '');
+  // Closing brackets with no opening one in the run are the sentence's.
+  let depth = 0, cut = t.length;
+  for (let i = 0; i < t.length; i++) {
+    if ('([{'.includes(t[i])) depth++;
+    else if (')]}'.includes(t[i])) { if (depth === 0) { cut = i; break; } depth--; }
+  }
+  t = t.slice(0, cut).replace(/\s+$/u, '');
+  if (cut === run.replace(/\s+$/u, '').length && CLOSING_QUOTE.test(next)) return t;
+  return t.replace(STOP, '');
+}
+
+/** The text with each run of Latin letters isolated, the spaces and the sentence's punctuation after it left outside; placeholders untouched. */
 export function isolateLatin(s) {
-  const runs = (text) => text.replace(RUN, (run) => {
-    const t = run.replace(/\s+$/u, '');
+  const runs = (text) => text.replace(RUN, (run, at, whole) => {
+    const t = own(run, whole.slice(at + run.length));
     return FSI + t + PDI + run.slice(t.length);
   });
   return s.split(PLACEHOLDER).map((part, i) => (i % 2 ? part
