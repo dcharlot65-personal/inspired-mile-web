@@ -4,7 +4,7 @@ const messages: Record<string, string> = {
   'story.meta.description': "Recorre los mundos de Shakespeare en esta campaña para un jugador.",
   'story.badge': "Campaña",
   'story.title': "Modo historia",
-  'story.intro': "Recorre 5 actos por las grandes obras de Shakespeare. Enfréntate a personajes legendarios en batallas de versos y descubre los secretos de The Globe.",
+  'story.intro': "Recorre 5 actos por las grandes obras de Shakespeare. Enfréntate a personajes legendarios en batallas de versos y descubre los secretos del Globe.",
   'story.journey': "Tu viaje",
   'story.progress': "{done} / {total} encuentros completados",
   'story.stars': "Estrellas",
@@ -72,7 +72,7 @@ const messages: Record<string, string> = {
   'story.enc.4-4.desc': "Enfréntate al mismísimo rey hechicero.",
   'story.enc.4-4.narrative': "Próspero está en la cima de la isla, con la vara en alto. \"Every third thought shall be my grave.\" «Pero antes, demuéstrame que la lengua misma es magia suficiente».",
   'story.act.5.label': "Acto V",
-  'story.act.5.name': "El teatro The Globe",
+  'story.act.5.name': "El teatro Globe",
   'story.act.5.desc': "El acto final. Enfréntate a los grandes personajes de Shakespeare en el escenario del mundo.",
   'story.enc.5-1.name': "El rey escocés",
   'story.enc.5-1.desc': "Enfréntate al sanguinario Macbeth.",
@@ -82,7 +82,7 @@ const messages: Record<string, string> = {
   'story.enc.5-2.narrative': "\"Not that I loved Caesar less, but that I loved Rome more.\" Bruto se vuelve hacia ti desde la escalinata del Senado. «Convénceme, visitante, de que las palabras pueden reparar lo que rompieron las dagas».",
   'story.enc.5-3.name': "La última reverencia",
   'story.enc.5-3.desc': "Enfréntate a The Sonnet Man en la batalla definitiva.",
-  'story.enc.5-3.narrative': "The Globe enmudece. Un solo foco ilumina al mismísimo Sonnet Man. \"All the world's a stage.\" «Has hecho bien tu papel. Ahora, una última estrofa, y cae el telón».",
+  'story.enc.5-3.narrative': "El Globe enmudece. Un solo foco ilumina al mismísimo Sonnet Man. \"All the world's a stage.\" «Has hecho bien tu papel. Ahora, una última estrofa, y cae el telón».",
 };
 
 export default messages;

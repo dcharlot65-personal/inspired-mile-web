@@ -41,7 +41,7 @@ const messages: Record<string, string> = {
   'pg.trivia.sub': "知識を試してカードを獲得",
   'pg.trivia.body': "シェイクスピアに関する5問に答えましょう。3問以上正解でカードを1枚獲得できます。",
   'pg.trivia.start': "クイズを始める",
-  'pg.trivia.progress': "第{n}問 / {total}",
+  'pg.trivia.progress': "第{n}問（全{total}問）",
   'pg.trivia.correct': "正解{n}問",
   'pg.trivia.complete': "終了！",
   'pg.trivia.generating': "問題を作成しています…",

@@ -76,7 +76,7 @@ const messages: Record<string, string> = {
   'story.act.5.desc': "最終幕。世界という舞台で、シェイクスピアの最も偉大な登場人物たちと対決しましょう。",
   'story.enc.5-1.name': "スコットランドの王",
   'story.enc.5-1.desc': "血にまみれたマクベスと対決しましょう。",
-  'story.enc.5-1.narrative': "悲劇の舞台は整った。マクベスが血まみれで立ち、王冠は傾いている。\"Tomorrow, and tomorrow, and tomorrow...\" 彼の絶望の重みに、あなたは並べるか。",
+  'story.enc.5-1.narrative': "悲劇の舞台は整った。マクベスが血まみれで立ち、王冠は傾いている。\"Tomorrow, and tomorrow, and tomorrow...\" 彼の絶望の重みに匹敵する詩を、あなたは書けるか。",
   'story.enc.5-2.name': "ローマの裏切り",
   'story.enc.5-2.desc': "ブルータスその人と論じ合いましょう。",
   'story.enc.5-2.narrative': "\"Not that I loved Caesar less, but that I loved Rome more.\" ブルータスが元老院の階段からあなたのほうを向く。「よそ者よ、短剣が壊したものを言葉が繕えると、わたしを納得させてみよ」",
