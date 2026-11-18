@@ -179,7 +179,7 @@ id. Before the integration it wrote the same less Hindi and Chinese. What the pl
   model's own only for Gemma, the one that writes English; LFM3's and LFM2.5's verdicts said
   "English: judged by rule, because LFM3 1.7B (LFM2.5 350M) has not shown it is a good judge of
   verse in this language", and Gemma's "Judged by Gemma 4 E2B on this device, reading the verses
-  in both orders". Not run again after the integration (see "What is not established").
+  in both orders".
   **Again on 2026-11-18, after the integration** (`tests/model/duel-model.spec.ts`, Studio, real
   models, the lists above): the first run failed for Gemma, because the test required the opening
   verse to be the model's wherever the model writes English. Since the integration the game plays
@@ -276,7 +276,12 @@ written as soon as it finished.
   breaks the gates in `session.ts` and `referee.ts`, the verdict line, the badge (twice), the
   theatre's judging line, the fallback order and the remembered choice (on both pages), 14
   mutations in all, every one caught, on the iMac Pro on 2026-11-18, first at
-  `b8d34618` and again at `8d18e56e` with the writing cells in. (The checker's fourth,
+  `b8d34618`, again at `8d18e56e` with the writing cells in, and again at `6b952ee8` (the last
+  merge of `integrate/wave3`, at `5b7af1e`). At that head the checker's own probe of the fallback
+  (a stand-in model library that fails the models it names) was green where it had been red: LFM3
+  chosen and failing, nothing else is loaded and `loadBrain` reports the failure; Gemma chosen and
+  failing, LFM3 (used in Vietnamese) is loaded; with `loadOrder` put back as it was, the probe went
+  red again, LFM2.5 350M loaded. (The checker's fourth,
   `GRADE_SPLIT_BELOW`, no longer reaches any verdict: `combineGrades` is used only by tests since
   the integration's grade path.)
 - **The repeat control below was run on the cells before the integration.** It was not repeated on
@@ -370,7 +375,8 @@ written as soon as it finished.
   `model-eval.judge.test.ts`), how a play's model verse is read (`modelChoice`), the
   challenger's-verse line of the integration's prompt, and this page, 37 ways, and requires the
   tests to go red each time. Run on the iMac Pro build host on 2026-11-18 at `8d18e56e`, on the
-  cells after the integration: all 37 caught; `mutate-picker.mjs` 6 of 6. Before the integration,
+  cells after the integration: all 37 caught; `mutate-picker.mjs` 6 of 6; both again at `6b952ee8`
+  (iMac Pro, 2026-11-18): 37 of 37 and 6 of 6. Before the integration,
   on the iMac on 2026-11-17 at `2008f79`: all 35 caught. (Earlier: 29 of 29 at
   `e1c6f18`; before that 26 of 27, where one mutation, the backtick taken out of the tidy-up's
   markup rule, changed no stored draft, so the replay test was right to stay green; it was
@@ -923,6 +929,23 @@ pipeline ran on the Studio, with its tools, glossary and allowlists unchanged:
   with 3,950 plays where it needs 4,000; a cell set aside again now moves the earlier one to
   `set-aside/before-<day>/` (`src/lib/model-eval-aside.ts`), and on the same scratch merge the
   flow was green after `analyze.mjs` and `copy-lists.mjs`.
+
+**And once more at this branch's last head (`6b952ee8`, 2026-11-18)**, after the last merge of
+`integrate/wave3` (`5b7af1e`, which changed how Japanese lines are read and brought no interface
+string) and the Hindi change above, on a fresh scratch merge with lang/qa-pipeline, still at
+`7c8e747`, resolved the same way; the same 319 strings, 302 as this branch has them and the same
+17 as that branch has them. Record: the `finalHead` entry of
+[`model-eval/strings-wave3c.json`](model-eval/strings-wave3c.json). Its unit tests (33),
+`check.mjs` (71 findings, 39 allowlisted, 0 open) and `glossary.mjs` (0 problems) pass; the
+tools' self-test reads as before (LanguageTool 0 of 4 known-bad sentences in it and pl). Grammar
+over every string: 1 open, the same Hindi सकने, now in the new wording of `brain.noneShown`;
+`fresh.mjs`: every result is about the text as it is. Meaning: 1 open, the same Thai
+`badge.written`; the new Hindi `brain.noneShown` comes back as "No model that can run on this
+device has shown to write good poetry or be a good judge of poetry, so you will face an opponent
+with written poems and the decision will be made by rules" (0.70, LaBSE 0.76), which is right.
+The same known-bad versions as before were caught (the French no-break space, German "Verse",
+the Japanese `{model}`, and in the grammar step 10 of 10), and the English phrase in Arabic again
+was not.
 
 **Before the integration (2026-11-17):**
 Three interface strings, in all sixteen languages: `battle.lang.written` and `battle.lang.rules`
