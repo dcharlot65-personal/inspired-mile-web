@@ -118,9 +118,67 @@ export function cardName(card: Card, lang: string): string {
   return getCardText(lang)?.cards[card.id]?.name ?? card.name;
 }
 
-/** A card's quotation in a language; the English line where the language has none. */
+/**
+ * A card's name standing alone (on the card, as a heading, in a label), which starts with a capital as a title
+ * does. Wikidata writes a label as it reads inside a sentence (Russian «граф Парис»); ru.wikipedia titles the same
+ * article «Граф Парис».
+ */
+export function cardTitle(card: Card, lang: string): string {
+  return capitalised(cardName(card, lang), lang);
+}
+
+/** The text with its first letter a capital, as a sentence or a title begins. */
+export function capitalised(text: string, lang: string): string {
+  return text.replace(/^\p{Ll}/u, (c) => c.toLocaleUpperCase(base(lang)));
+}
+
+/**
+ * Quotation marks that set a card's name off as a title inside a sentence: CLDR's (version 49, cldr-misc-full
+ * delimiters) for French, Italian, Portuguese and German, with the no-break space French puts inside « »; for
+ * Spanish the angular quotes the Royal Spanish Academy puts first, which the Spanish interface already uses.
+ */
+const TITLE_QUOTES: Record<string, [string, string]> = {
+  es: ['«', '»'],
+  fr: ['« ', ' »'],
+  it: ['«', '»'],
+  pt: ['“', '”'],
+  de: ['„', '“'],
+};
+
+/**
+ * A card's name inside a sentence of the interface ("{card} takes the round", "echo {card}'s line"). Those
+ * sentences were written for a bare name, as English puts one. Spanish, French, Italian, Portuguese and German
+ * put an article before a common noun, a role or (except German) a title: es «el príncipe Hamlet», de «die
+ * Wärterin», and fr «de le» is «du». So in those languages a name that is not a plain personal name is set off as
+ * the card's title, in the language's quotation marks, which needs no article and agrees as one singular name:
+ *   - a relic's or a potion's name (es «Lágrimas de sirena» maldice…);
+ *   - a role: the English card has an article ("The Nurse");
+ *   - outside German, a name whose first word is an ordinary word of the language, as Hunspell tells (pack.common:
+ *     Príncipe, Conde, Señora, Comte, Re), which is how a title is written there.
+ * A plain name is left bare (Romeo se lleva la ronda), and so is a name shown in English because the language has
+ * none. Every other language takes the name as it is.
+ */
+export function cardNameInText(card: Card, lang: string): string {
+  const b = base(lang);
+  const name = cardName(card, b);
+  const quotes = TITLE_QUOTES[b];
+  const pack = getCardText(b);
+  const text = pack?.cards[card.id];
+  if (!quotes || !pack || !text?.name || text.nameSource === 'missing') return /^The\s/.test(name) && quotes ? quotes[0] + name + quotes[1] : name;
+  const words = name.split(/\s+/);
+  const titled = b !== 'de' && words.length > 1 && (pack.common ?? []).includes(words[0]);
+  return card.type !== 'Character' || /^The\s/.test(card.name) || titled ? quotes[0] + name + quotes[1] : name;
+}
+
+/**
+ * A card's quotation in a language, as it is shown; the English line where the language has none. A published
+ * line that the edition begins in the middle of a sentence (its first letter is small: «je noierai mon livre»)
+ * is shown after an ellipsis, which marks what was left out before it; its words are the edition's.
+ */
 export function cardQuote(card: Card, lang: string): string {
-  return getCardText(lang)?.cards[card.id]?.quote ?? card.quote;
+  const text = getCardText(lang)?.cards[card.id];
+  if (!text?.quote) return card.quote;
+  return text.quoteSource === 'published' && /^\p{Ll}/u.test(text.quote) ? `… ${text.quote}` : text.quote;
 }
 
 /** The quotation in a language only if that language has its own; null otherwise. */
