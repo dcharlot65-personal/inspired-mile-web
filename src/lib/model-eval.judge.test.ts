@@ -47,11 +47,11 @@ vi.mock('./brain', async (importOriginal) => {
 });
 
 const { MODELS } = await import('./brain');
-const { allusionLexicon, modelJudge, referee, verdictOf } = await import('./verse/referee');
+const { modelJudge, referee, rulesSplit, verdictOf } = await import('./verse/referee');
 const { DuelSession } = await import('./verse/session');
 const { starterDeck } = await import('./verse/duel');
 const { loadAllPacks, loadPack } = await import('./verse/packs');
-const { judgeLines, rulesJudge } = await import('./verse/judge');
+const { judgeLines } = await import('./verse/judge');
 // The language's data, loaded as the game has loaded it by the time a round is judged (its pack, with
 // the function words the grade path's filter reads, and its sound data, which the rule judge's flow
 // reads); run.mjs loads the same before judging. Absent on a branch without the phonetics work.
@@ -154,8 +154,9 @@ describe('the judging cells', () => {
         let now;
         if (r.method === 'compare') now = verdictOf(r);
         else {
-          // The grade path is bounded by the rules: those are derived again too, from the verses.
-          const rules = rulesJudge(mine, theirs, cell.lang, allusionLexicon());
+          // The grade path is bounded by the rules: those are derived again too, from the verses, by
+          // the referee's own function (its lexicon is the game's, whatever a merge makes it).
+          const rules = rulesSplit(mine, theirs, cell.lang);
           const unread = judgeLines(mine, cell.lang).left.length > 0 || judgeLines(theirs, cell.lang).left.length > 0;
           if (unread !== !!r.unread) { differ.push(`${f} ${p.id}: the grader would now ${unread ? 'not read' : 'read'} a line it ${r.unread ? 'did not read' : 'read'}: judge it again`); continue; }
           now = verdictOf(r.unread ? { method: 'grade', unread: true, rules } : { method: 'grade', player: r.player, opponent: r.opponent, rules });
@@ -245,7 +246,7 @@ describe('a loaded model is used only in the languages it was measured in', () =
     expect(seen).toHaveLength(1);
     const r = seen[0] as { method: string; rules: { criteria: Record<string, string> } };
     expect(r.method).toBe('grade');
-    expect(r.rules).toEqual(rulesJudge(a, b, 'de', allusionLexicon(), 'Wer reitet so spät durch Nacht und Wind?'));
+    expect(r.rules).toEqual(rulesSplit(a, b, 'de', 'Wer reitet so spät durch Nacht und Wind?'));
   });
 
   it('uses no model when none is loaded, and none when the player chose the written opponent', async () => {

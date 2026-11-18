@@ -36,6 +36,11 @@ const MUTATIONS = [
   ['judge: a margin under 0.2 read as a split (SPLIT_BELOW 0.1 -> 0.2)', 'src/lib/verse/judge.ts', 'export const SPLIT_BELOW = 0.1;', 'export const SPLIT_BELOW = 0.2;', [READ]],
   ['judge: the verdict sides swapped', 'src/lib/verse/judge.ts', "lean > 0 ? 'player' : 'opponent'", "lean > 0 ? 'opponent' : 'player'", [READ]],
   ['judge: the grade margin halved (GRADE_MARGIN 0.5 -> 0.25)', 'src/lib/verse/judge.ts', 'export const GRADE_MARGIN = 0.5;', 'export const GRADE_MARGIN = 0.25;', [READ]],
+  // The rules that bound the grade path, as the referee computes them (rulesSplit): the evaluation
+  // must derive them with the game's own function, so a merge that changes them (lang/names-quotes
+  // gives the lexicon a language) shows against the stored cells.
+  ['referee: the rules\' split read the other way round', 'src/lib/verse/referee.ts', 'return rulesJudge(playerVerse, opponentVerse, lang, allusionLexicon(), previousPlayerVerse);', 'return rulesJudge(opponentVerse, playerVerse, lang, allusionLexicon(), previousPlayerVerse);', [READ]],
+  ['referee: the rules read with no allusion lexicon', 'src/lib/verse/referee.ts', 'return rulesJudge(playerVerse, opponentVerse, lang, allusionLexicon(), previousPlayerVerse);', 'return rulesJudge(playerVerse, opponentVerse, lang, new Set<string>(), previousPlayerVerse);', [READ]],
 ];
 
 const only = process.argv[2];

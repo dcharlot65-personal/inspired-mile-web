@@ -33,6 +33,16 @@ export function allusionLexicon(): Set<string> {
   return lexicon;
 }
 
+/**
+ * The rule-based judge's split of a round, as the referee reads it: what decides when no model
+ * judges, and what bounds the grade path (modelJudge). One function, so that the evaluation derives
+ * a stored reading's rules with the code the game runs (src/lib/model-eval.judge.test.ts), and a
+ * change here (the lexicon, what the opponent answered) shows against the stored judging cells.
+ */
+export function rulesSplit(playerVerse: string, opponentVerse: string, lang: string, previousPlayerVerse?: string): JudgeSplit {
+  return rulesJudge(playerVerse, opponentVerse, lang, allusionLexicon(), previousPlayerVerse);
+}
+
 async function margins(verseA: string, verseB: string, lang: string): Promise<Margins> {
   const out = {} as Margins;
   for (const c of CRITERIA) {
@@ -81,7 +91,7 @@ export async function modelJudge(
   if (brainInfo()?.judge === 'grade') {
     // Graded alone, a verse can tell the grader what to answer: the grader never reads such a
     // line, and decides only what the rules split, by a measured margin (judge.ts gradeMessages).
-    const rules = rulesJudge(playerVerse, opponentVerse, lang, allusionLexicon(), previousPlayerVerse);
+    const rules = rulesSplit(playerVerse, opponentVerse, lang, previousPlayerVerse);
     // A line left out must not help its verse (an empty verse is not a better one): a round
     // with a line the grader would not read is decided by the rules alone, for both sides.
     if (judgeLines(playerVerse, lang).left.length || judgeLines(opponentVerse, lang).left.length) reading = { method: 'grade', unread: true, rules };
@@ -111,5 +121,5 @@ export async function referee(playerVerse: string, opponentVerse: string, lang: 
       console.error('[referee] model judging failed; using the rules', err);
     }
   }
-  return rulesJudge(playerVerse, opponentVerse, lang, allusionLexicon(), previousPlayerVerse);
+  return rulesSplit(playerVerse, opponentVerse, lang, previousPlayerVerse);
 }

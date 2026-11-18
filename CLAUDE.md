@@ -380,7 +380,8 @@ left behind by a killed run is found by its port: `lsof -nP -iTCP:<port> -sTCP:L
   Each judged pair also keeps the model's raw reading (`referee.ts JudgeReading`), and
   "every verdict follows from the reading…" derives each stored verdict again with the code now,
   so a change to how an answer is read (`SPLIT_BELOW`, `GRADE_MARGIN`, `combineMargins`,
-  `boundedByRules`) turns it red as a prompt change turns the fingerprint red.
+  `boundedByRules`, and the rules' split that bounds the grade path, `referee.ts rulesSplit`, which the
+  test calls itself) turns it red as a prompt change turns the fingerprint red.
   `node scripts/model-eval/mutate-gates.mjs` (build host) proves the gates, the pages' lines
   (badge, note, verdict, theatre), the loading rules and the reading are all held by a test;
   the page tests use a stand-in model library (`tests/stand-in-model.ts`).
