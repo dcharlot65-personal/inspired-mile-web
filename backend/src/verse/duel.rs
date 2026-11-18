@@ -86,11 +86,12 @@ pub fn carries_lines_with(c: &CopyMeasure, rhymed: impl Fn(&LineCarry, usize) ->
         return true;
     }
     // Or every one of them, none left out: COPY_LINE_SHARE of it in order, or COPY_LINE_ANY of it in
-    // any order, whatever it now ends on.
-    counted.iter().all(|(_, l)| {
-        l.said >= 2
-            && (l.said as f64 >= (COPY_LINE_SHARE * l.source as f64).ceil() || l.any as f64 >= (COPY_LINE_ANY * l.source as f64).ceil())
-    })
+    // any order, whatever it now ends on; and one of their content words at least, where they have
+    // any (a verse that keeps only the other's little words is its own).
+    let each = counted.iter().all(|(_, l)| {
+        l.said >= 2 && (l.said as f64 >= (COPY_LINE_SHARE * l.source as f64).ceil() || l.any as f64 >= (COPY_LINE_ANY * l.source as f64).ceil())
+    });
+    each && (counted.iter().all(|(_, l)| l.content == 0) || counted.iter().any(|(_, l)| l.content_said >= 1))
 }
 
 /// `carriesLines(c)`: the line rule with only the measure to go on, a line keeping its rhyme
