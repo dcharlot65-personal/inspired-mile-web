@@ -60,9 +60,13 @@ English is the source of truth (`src/lib/cards.ts`) and is not repeated in the p
 language, except those the build leaves out by rule (`alias_rejected`): one with anything but letters in it
 (a description: 科學怪人之母：瑪麗雪萊, "mother of Frankenstein: Mary Shelley"; 济慈，J.), one in two scripts (Italian
 «Aφροδίτη», a Latin A and Greek letters) or in Latin letters in a language written otherwise (the English name
-counts anyway), and, in Chinese, Japanese and Thai, the name or another alias with more added (ゼウス神像, "statue
-of Zeus"; ブルトゥス家, "the Brutus family"). Three were left out by hand, each with its reason in `NOT_ALIAS`:
-German «Abadonna» and «Uthuce», Chinese «哈里斯». Every alias left out is listed under "Wikidata aliases not taken
+counts anyway) or wholly in another script than the language's own (Greek «Ἀΐδης» in Russian), the name of the
+Roman god Wikidata says is this Greek one (P460, a Roman deity) where English names the two differently (Vietnamese
+«Jupiter» and «Venus», Russian «Плутон» and «Меркурий», Polish «Pluton», Korean 플루톤, Spanish «Pluto»; not Apollo),
+and, in Chinese, Japanese and Thai, the name or another alias with more added (ゼウス神像, "statue of Zeus";
+ブルトゥス家, "the Brutus family"). Others were left out by hand, each with its reason in `NOT_ALIAS`: German
+«Abadonna» and «Uthuce», Chinese «哈里斯», Russian «Дит» (Dis Pater) and «Орк» (Orcus, whom Wikidata does not link to
+Hades; «орк» is also an orc), and the misspellings. Every alias left out is listed under "Wikidata aliases not taken
 as names".
 
 **Quotations**
@@ -110,6 +114,10 @@ for the game in English. They can only ever be translated, never sourced.
 | Which declined forms of a name are ordinary words | Hunspell 1.7.2's `stem()` and `spell()` with the same dictionaries (`scripts/language/check/hstem.cpp`, `run.sh forms`, `docs/language/checks/name-forms.json`); the forms themselves are made by `declension.py`'s paradigms, written by hand | as stated | 2026-11-17 |
 | Which names are also ordinary words of their language (Spanish «bruto», German «Zettel», Japanese パック, Thai โพ) | English Wiktionary through the MediaWiki API: the page of each name word under the language's heading, written small where the script has capitals (German: as written for a Noun, small for any other), each pinned by its revision id with the verdict on each definition (`scripts/language/fetch/name_pos.py`, `docs/language/sources/wiktionary-name-pos.json`); in es fr it pt pl ru vi id Hunspell must also accept it written small (`run.sh names`, which now asks for one-word names too) | Wiktionary CC BY-SA 4.0 and GFDL (titles, revision ids, headings and verdicts only) | 2026-11-18 |
 | Chinese and Thai words that hold a name with more around it (圣安东尼奥 "San Antonio" holds 安东尼; อัสซุส, Assus, holds ซุส) | CC-CEDICT, MDBG export dated 2026-11-18T03:25:44Z (sha256 d7fbcfb9…0547), its English gloss deciding whether the word is the character; jieba's `extra_dict/dict.txt.big` at commit 67fa2e36 (sha256 b1601127…6aad), its entries tagged nrt, ns, nt and nz; PyThaiNLP 5.1.2's `words_th.txt` (`scripts/language/fetch/containing_words.py`, `docs/language/sources/name-containing-words.json`, which keeps every word with its source and verdict, and the five read by hand as the character) | CC BY-SA 4.0 (CC-CEDICT); MIT (jieba); CC0 (PyThaiNLP word list) | 2026-11-18 |
+| Chinese and Thai words no rule can tell that hold a name and are another thing (宙斯盾, the Aegis; 严济慈, a physicist; 帕克城, Park City; เพอร์เซอุส, Perseus) | The titles of Chinese and Thai Wikipedia (the dumps' `all-titles-in-ns0` lists of 2026-11-01, Last-Modified 2026-11-02, sha256 08d47489…5b0c and 681938e9…7dd2), cut at every non-letter; a piece that holds a name that counts by itself with more letters around it, and no function word touching it, is another word unless the article's Wikidata item has an English label or alias that names the character (`containing_words.py` again; each row keeps its title, item and label) | titles CC BY-SA 4.0; Wikidata CC0 | 2026-11-18 |
+| The characters Chinese spells foreign names with; which of them are no word by themselves; the common words written only in them | Chinese Wikipedia's `Wikipedia:外語譯音表/<language>` pages (Xinhua's transliteration tables), 57 of the 63 pages, each pinned by its revision id (the tables for Thai, Lao, Burmese, Khmer and Mongolian, which use everyday characters, and the page on joining names are left out): 623 characters; jieba's `dict.txt.big` (as above), the tag it gives a character alone (nr nrt nrfg ns nt nz j x g zg ng vg ag tg dg rg mg k h, or no entry: not a word by itself): 346; wordfreq 3.1.1's Chinese words of two or more such characters at Zipf 3 or more that CC-CEDICT gives a common sense (a gloss beginning with a small letter), with CC-CEDICT's Traditional spellings: 1,195 (`scripts/language/fetch/transliteration.py`, `docs/language/sources/zh-transliteration.json`) | Wikipedia CC BY-SA 4.0 (characters only); jieba MIT; wordfreq data and CC-CEDICT CC BY-SA 4.0 (words only) | 2026-11-18 |
+| The Roman gods a Greek god's item says it is the same as (Jupiter for Zeus, Pluto for Hades), whose names are not taken as aliases | Wikidata, each character item's P460 ("said to be the same as") whose target is a Roman deity (P31 Q11688446), with their labels (`scripts/language/fetch/counterparts.py`, `docs/language/sources/wikidata-roman-counterparts.json`) | CC0 | 2026-11-18 |
+| German's definite articles, after which the Nurse's one-word German name counts, as "the nurse" does | English Wiktionary, the German Article sections of the articles Wiktionary lists (der, die, das, den, dem, des; ein and its forms are "a, an"), each pinned by its revision id (`scripts/language/fetch/definite_articles.py`, `docs/language/sources/wiktionary-definite-articles.json`) | CC BY-SA 4.0 and GFDL (verdicts only) | 2026-11-18 |
 | Common words near a name in all fifteen languages, for the accident tests (not used to build anything) | wordfreq 3.1.1, the 40,000 most frequent words of each language in its 'best' list, each data file pinned by its sha256; Thai from the Thai National Corpus frequency list PyThaiNLP 5.1.2 ships (`scripts/language/fetch/wordfreq_near_names.py`, `docs/language/sources/wordfreq-near-names.json`, the selected words without their frequencies) | wordfreq data CC BY-SA 4.0 (code Apache-2.0); TNC list CC0 | 2026-11-18 |
 | Common words near a name, for the accident test | Hermit Dave, FrequencyWords, `content/2018/<lang>/<lang>_50k.txt` for ar de es fr id it ko pl pt ru vi (from OpenSubtitles 2018), commit 525f9b56, each file pinned by its sha256 (`scripts/language/fetch/near_names.py`; the selected words, without counts, in `docs/language/sources/opensubtitles-near-names.json`) | CC BY-SA 4.0 (content); MIT (code) | 2026-11-17 |
 | Portuguese spelling of Próspero | pt.wikipedia.org, "A Tempestade", revision 72539005 (`docs/language/sources/ptwiki-a-tempestade.json`) | CC BY-SA 4.0 (one name's spelling) | 2026-11-16 |
@@ -232,17 +240,44 @@ have died within the last seventy years.
   Hindi, Chinese, Japanese, Korean and Thai have no capitals, so there it never counts by itself, only inside a
   longer name (ウィリアム・ブレイク, メアリー・シェリー). Bottom, whom English calls on only as "Nick Bottom", "Bully
   Bottom" or "Bottom the weaver", counts in no language by one word (French «Bottom», German «Zettel», 波顿);
-  English's phrases still count everywhere. The Nurse, whom English counts as "the Nurse", counts by her local name
-  as written (奶妈, «Кормилица», «Wärterin»). The cost is plain: Puck in Japanese, Banquo in Hindi and Achilles in
+  English's phrases still count everywhere. The Nurse, whom English counts as "the nurse" and never "a nurse" or
+  "nurse", counts by her whole local name: in German only after a definite article («die Wärterin», «der Wärterin»;
+  not «eine Wärterin»), in Russian only with a capital inside a sentence («и Кормилица»; not «наша кормилица», "our
+  breadwinner"), in Chinese as written (奶妈), in French as «La Nourrice», and never by a word of a longer name
+  (French «Nourrice», Spanish «Nodriza»). In another language's duel an English name that is an ordinary word there
+  counts as that language's own name does: Italian, Spanish and Portuguese «medusa» (a jellyfish), Italian «rossetti»
+  and French «viola» only with a capital inside a sentence, German "Puck" (the ice-hockey puck) not by itself. Italian
+  «viola» ("purple") still counts for Viola through her English name, because Italian has no name for her here and so
+  no verdict on the word. The cost is plain: Puck in Japanese, Banquo in Hindi and Achilles in
   Arabic (أخيل is also "I imagine") are now invoked only by their English names there (Puck in German by «Puk», «Droll»
   or "Puck"), and a Spanish,
   Italian, Portuguese, Polish or Russian line that opens on «Bruto», «Banco», «Próspero», «Medusa», «Пак» or
   «Одиссей» invokes no one.
 - Chinese, Japanese and Thai are read by ICU's segmenter, which cuts a word it does not know into pieces, and a
   piece could be a name (安东尼奥, "Antonio", into 安东尼 and 奥; ららぽーと, a mall, into pieces one of which, as
-  katakana, was ポー). A name in katakana now counts only as a whole run of katakana written in katakana, and a
-  Chinese or Thai name is refused where the verse writes around it a dictionary word that holds it (`containing`,
-  from CC-CEDICT, jieba and PyThaiNLP: 圣安东尼奥, 安东尼奥, 宙斯盾战斗系统, 布莱克本, อัสซุส). `accidents.test.ts` reads
+  katakana, was ポー). A name in katakana now counts only as a whole run of katakana written in katakana.
+  A Chinese name is not one inside a longer foreign name: Chinese spells a foreign name in the characters of Xinhua's
+  transliteration tables, and ICU cuts one it does not know into single characters (哈德斯菲尔德, Huddersfield, into
+  哈, 德, 斯, 菲, 尔, 德, with 哈德斯, Hades, in it). A name is a piece of a longer one when the word beside it is such a
+  character that is no word by itself (菲, 迪, 娅), a longer word of them that is not a common word (海德, 罗斯), or a
+  character that is a word (多, 特) with more pieces beyond it (塔克西多帕克, Tuxedo Park); a common word (当然, 东西),
+  a function word or any other character ends the foreign name. A function character the segmenter joined to the name
+  (修了 in 赫瑞修了) is not part of it. A Thai name counts only where the letters beside it are words the invocation
+  knows, two in a row where there are that many (the pronunciation table's 17,219 Wiktionary words, loaded with the
+  duel's sound data, and the card text's own; one letter is never a word, though the table lists the letters), and a
+  two-letter word before it only after another word: เพอร์ in เพอร์เซอุส (Perseus) and ซาน in ซานแอนโทนีโอ (San Antonio)
+  are not words, and ที opens ทีซีอุส (Theseus), so the name there is a piece; ผมพบซุส ("I met Zeus") is the name. Without the pronunciation table only the card text's words are known, and fewer Thai names count. A Chinese
+  or Thai name is also refused where the verse writes around it a dictionary word that holds it (`containing`, from
+  CC-CEDICT, jieba, PyThaiNLP and the two Wikipedias' titles: 圣安东尼奥, 宙斯盾, 严济慈, 帕克城, อัสซุส), for the
+  words no rule can tell (宙斯盾 is 宙斯 and 盾, "shield"). The rules' cost, measured with the engine itself on the
+  Tatoeba sentences (seeded sample of the third check) that hold Tom, Mary or John, those names added as aliases for the
+  run: Chinese refuses 38 of 2,144; 27 of them are a longer name, rightly refused (Maria 玛丽亚 and 瑪麗婭, Johnson 约翰逊,
+  Thomas 汤姆斯, Tom Sawyer 湯姆索亞, John Cabot 约翰卡博特), and 11 are a name the segmenter joined to the word before it in
+  Traditional script (給湯, ten times; 連湯姆 once), which the Simplified stop list does not cover. Thai refuses 13 of 896:
+  three are «เทอม» ("term"), rightly; two are «จอห์น», which the card text lists as a common given name, so the run never
+  added it; the other eight are a name beside a misspelling (แแก, อยูใน, เมรี่), beside a word the pronunciation table
+  lacks (เกลี้ยกล่อม, โซเซ, พาสเวิร์ด twice), or after a two-letter word that opens the letters (หาทอม). Every name of the
+  game lands in six neutral Chinese sentences and four Thai ones, a word joined straight to it. `accidents.test.ts` reads
   the commonest words of wordfreq (Chinese, Japanese) and of the Thai National Corpus that hold a name, lists that
   built nothing here, and none says a name it only holds. The English names count in every language, said as English
   writes them: Portuguese «põe», "puts", is not Poe, and Vietnamese «màn» is not "Man".
@@ -405,7 +440,9 @@ python3 scripts/language/build_card_text.py
 ~/kani-logs/remote/rb . -- 'bash scripts/language/check/run.sh names'   # after a name or alias changes; then build_card_text.py
 # After a name or alias changes, also (light, from the repository root; pip install regex wordfreq==3.1.1 pythainlp==5.1.2):
 NAME_POS_CACHE=<a file outside the repository> python3 -I scripts/language/fetch/name_pos.py   # Wiktionary: names that are ordinary words
-python3 -I scripts/language/fetch/containing_words.py <dir with cedict.txt.gz and jieba's dict.txt.big>   # zh and th words that hold a name
+WIKI_ITEMS_CACHE=<a file outside the repository> python3 -I scripts/language/fetch/containing_words.py <dir with cedict.txt.gz, dict.txt.big, zhwiki-titles.gz, thwiki-titles.gz>   # zh and th words that hold a name
+TRANSLIT_CACHE=<a file outside the repository> python3 -I scripts/language/fetch/transliteration.py <same dir>   # zh transliteration characters (rarely changes)
+python3 -I scripts/language/fetch/counterparts.py   # Roman gods whose names are not aliases (after wikidata-card-names.json changes)
 python3 -I scripts/language/fetch/wordfreq_near_names.py   # the accident tests' word lists
 python3 scripts/language/build_card_text.py
 ~/kani-logs/remote/rb . -- 'bash scripts/language/check/run.sh detach meaning'   # about 2.5 s an item on the iMac's CPU; resumes

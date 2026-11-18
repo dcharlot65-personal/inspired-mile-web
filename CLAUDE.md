@@ -351,10 +351,17 @@ left behind by a killed run is found by its port: `lsof -nP -iTCP:<port> -sTCP:L
   `fetch/name_pos.py`, and Hunspell too where the script has capitals) counts as English counts "Bottom": by itself
   only with a capital inside a sentence where the language writes its ordinary words small («y Bruto alzó»), never
   by itself in German or a script without capitals (パック, बैंको, โพ); Bottom counts in no language by one word, the
-  Nurse by her local name as written. Unspaced, a katakana name counts only as a whole katakana run, and a Chinese
-  or Thai name not where a dictionary word holding it surrounds it (`pack.containing`, `fetch/containing_words.py`:
-  圣安东尼奥, อัสซุส); the tests read wordfreq's and the Thai National Corpus's commonest words for both
-  (`fetch/wordfreq_near_names.py`). After a name changes, run those fetch scripts too (record's "How to rebuild"). `english.test.ts` holds an English duel to the same results whatever card text is loaded.
+  Nurse as English counts "the nurse" (German after a definite article, `pack.definite`; Russian with a capital inside a
+  sentence; never a word of a longer role name). An English name that is an ordinary word of the duel's language
+  (Italian «medusa», German "Puck") counts as that language's own does (`englishNameCounts`, the one call in
+  devices.ts). Unspaced, a katakana name counts only as a whole katakana run; a Chinese name not beside another piece
+  of a foreign name (`carriesOn`: Xinhua's transliteration characters, `pack.transliteration`,
+  `fetch/transliteration.py`: 哈德斯菲尔德, 迪帕克); a Thai name only where the letters beside it are words the
+  invocation knows (`thNameAt`: the Thai pronunciation table, so tests that read Thai invocations `loadSound('th')`);
+  and a Chinese or Thai name not where a dictionary word or a Wikipedia title holding it surrounds it
+  (`pack.containing`, `fetch/containing_words.py`: 圣安东尼奥, 宙斯盾, อัสซุส). No alias is the Roman god Wikidata says
+  is the Greek one (`fetch/counterparts.py`: Jupiter, Плутон). The tests read wordfreq's and the Thai National
+  Corpus's commonest words for both (`fetch/wordfreq_near_names.py`). After a name changes, run those fetch scripts too (record's "How to rebuild"). `english.test.ts` holds an English duel to the same results whatever card text is loaded.
   After a character name or alias changes, run `run.sh names` (Hunspell decides which words of a longer name are
   titles) and `run.sh forms` before
   `build_card_text.py`. On the battle page a local name inside an interface sentence goes through
