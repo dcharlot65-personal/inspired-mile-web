@@ -894,6 +894,34 @@ function thNameAt(text: string, s: number, e: number, l: Lists): boolean {
 }
 
 /**
+ * A Chinese or Thai text as saidNameUnspaced reads it: its letters, each with where it stands (so a name written with a
+ * space or a dot, 马克·安东尼, is found either way), and its segmenter words, made when first asked for. Kept for the last
+ * text, since every name is looked for in the same verse.
+ */
+let lastUnspaced: { key: string; letters: string; at: number[]; words: Span[] | null } | null = null;
+function unspacedText(text: string, lang: string): { letters: string; at: number[]; readonly spans: Span[] } {
+  const key = `${lang}\u0000${text}`;
+  if (lastUnspaced?.key !== key) {
+    const at: number[] = [];
+    let letters = '';
+    for (let k = 0; k < text.length; k++) {
+      if (!/[\p{L}\p{M}]/u.test(text[k])) continue;
+      letters += text[k];
+      at.push(k);
+    }
+    lastUnspaced = { key, letters, at, words: null };
+  }
+  const t = lastUnspaced!;
+  return {
+    letters: t.letters,
+    at: t.at,
+    get spans() {
+      return (t.words ??= wordSpans(text, lang));
+    },
+  };
+}
+
+/**
  * Unspaced: where the verse spells the name. Japanese: whole words of the verse, in a row, kana as written (a katakana
  * run is one word). Chinese and Thai: the name's letters anywhere, as zhNameAt and thNameAt allow. In Chinese and Thai,
  * also refused where the verse writes around the name a word of pack.containing that holds it. The verse's words that say
@@ -916,15 +944,8 @@ function saidNameUnspaced(name: string, verse: string, lang: string): string[] |
     }
     return null;
   }
-  // The text's letters, each with where it stands, so a name written with a space or a dot (马克·安东尼) is found either way.
-  const at: number[] = [];
-  let letters = '';
-  for (let k = 0; k < text.length; k++) {
-    if (!/[\p{L}\p{M}]/u.test(text[k])) continue;
-    letters += text[k];
-    at.push(k);
-  }
-  const spans = wordSpans(text, lang);
+  const u = unspacedText(text, lang);
+  const { letters, at } = u;
   // A name of one word is written in one piece: 宙，斯 is not 宙斯.
   const onePiece = !SPLIT.test(name);
   for (let k = letters.indexOf(target); k >= 0; k = letters.indexOf(target, k + 1)) {
@@ -932,9 +953,9 @@ function saidNameUnspaced(name: string, verse: string, lang: string): string[] |
     const e = at[k + target.length - 1] + 1;
     if (onePiece && e - s !== target.length) continue;
     if (heldBy(text, s, target, around)) continue;
-    if (lang === 'zh' ? !zhNameAt(text, spans, s, e, l) : !thNameAt(text, s, e, l)) continue;
+    if (lang === 'zh' ? !zhNameAt(text, u.spans, s, e, l) : !thNameAt(text, s, e, l)) continue;
     // The verse's words that say it, as the segmenter gives them (the words a multiplier does not multiply).
-    return spans.filter((x) => x.start < e && x.end > s).map((x) => x.word);
+    return u.spans.filter((x) => x.start < e && x.end > s).map((x) => x.word);
   }
   return null;
 }
