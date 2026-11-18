@@ -79,19 +79,13 @@ describe('engine check, blocker 1: a haiku of two loanword lines and one line of
     'ブルックリン\nヒップホップ\n俺の街',
   ];
   /**
-   * Still void, measured and not wanted: a line whose loanword the dictionary (IPADIC, 2007) lacks
-   * and cannot spell from its own words (ワンツー: neither ワン nor ツー is in it; スイートドリーム,
-   * フライドポテト, ワンダーランド, トーキョー). Counting katakana the dictionary lacks for its
-   * spelling let random katakana win (review3.test.ts, ノーモアウォー); the dictionary's coverage of
-   * loanwords is the limit.
+   * Still void, measured and not wanted: a line whose loanword no dictionary the engine has lists
+   * (トーキョー: IPADIC, JMdict and JMnedict write Tokyo 東京). Counting katakana for its spelling
+   * let random katakana win (review3.test.ts, ノーモアウォー). Until the engine check's second round
+   * this list also held the lines whose loanword only IPADIC (2007) lacks (ワンツー, スイートドリーム,
+   * フライドポテト, ワンダーランド); JMdict's and JMnedict's katakana count now (review5.test.ts).
    */
-  const LACKED = [
-    'マイクチェック\nワンツー ワンツー\n俺の番だ',
-    'グッドナイト\nスイートドリーム\nまた明日',
-    'フライドポテト\nケチャップ マヨネーズ\n腹ぺこだ',
-    'メリーゴーランド\nワンダーランド\n子供の夢',
-    'トーキョー\nネオンサイン\n眠らない',
-  ];
+  const LACKED = ['トーキョー\nネオンサイン\n眠らない'];
 
   it("the checker's verses and this pass's are words of the language at full share; those whose loanword the dictionary lacks are not", () => {
     const rows = [...CHECKER, ...MINE].map((v) => {

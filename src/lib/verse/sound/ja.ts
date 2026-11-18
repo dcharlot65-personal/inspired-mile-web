@@ -16,6 +16,13 @@
  * kuromoji's were 17.8 MB and 100 MB. ./ipadic.test.ts requires the same words,
  * readings and known flags from both.
  *
+ * Beside it, two lists of words in katakana that IPADIC (2007) lacks: JMdict's words
+ * (スマホ, アプリ, ユーチューブ) and JMnedict's names (レノン, ビヨンセ), from the EDRDG's
+ * dictionaries under CC BY-SA 4.0 (./jmdict, scripts/sound/build-loanwords.mjs; 0.38 MB
+ * compressed). They read nothing; the engine asks them whether a run of katakana is a
+ * word (text.ts knownUnits). Both are installed together, so a duel never sees one without
+ * the other.
+ *
  * Only kuromoji's tokenizer is used, loaded from its source modules; its own
  * dictionary loader needs Node's `path` and a fixed folder layout, so the
  * files are fetched here instead (bundler asset URLs in a browser, the file
@@ -28,15 +35,18 @@
 import DynamicDictionaries from 'kuromoji/src/dict/DynamicDictionaries.js';
 // @ts-expect-error kuromoji ships no types for its source modules
 import Tokenizer from 'kuromoji/src/Tokenizer.js';
-import { setJapaneseAnalyser, type KuromojiToken } from './kana';
+import { setJapaneseAnalyser, setJapaneseLexicon, type JapaneseListing, type KuromojiToken } from './kana';
 
 
 let tokenizer: KuromojiInternals | null = null;
+let lexicon: ((word: string) => JapaneseListing) | null = null;
 
 const FILES = ['lex', 'tid', 'tid_pos', 'cc', 'unk', 'unk_pos', 'unk_map', 'unk_char', 'unk_compat', 'unk_invoke'] as const;
+/** JMdict's words and JMnedict's names in katakana that IPADIC lacks (./jmdict, scripts/sound/build-loanwords.mjs). */
+const LISTS = ['words', 'names'] as const;
 
 // The bundler turns each dictionary file into an asset and gives its URL; nothing is fetched until asked.
-const DICT_URLS = import.meta.glob('./ipadic/*.dat.gz', { query: '?url', import: 'default' }) as Record<string, () => Promise<string>>;
+const DICT_URLS = import.meta.glob(['./ipadic/*.dat.gz', './jmdict/*.dat.gz'], { query: '?url', import: 'default' }) as Record<string, () => Promise<string>>;
 
 async function gunzip(bytes: Uint8Array): Promise<ArrayBuffer> {
   // A server may already have undone the compression (Content-Encoding: gzip); the two magic bytes tell.
@@ -76,15 +86,17 @@ async function dictFile(name: string): Promise<ArrayBuffer> {
 
 /** Build the analyser. Resolves true when it is ready; throws if a dictionary file cannot be had. */
 export async function loadJapanese(): Promise<boolean> {
-  if (tokenizer) {
+  if (tokenizer && lexicon) {
     const ready = tokenizer;
     setJapaneseAnalyser((text) => ready.tokenize(text));
+    setJapaneseLexicon(lexicon);
     return true;
   }
   const b: Record<string, ArrayBuffer> = {};
-  await Promise.all(FILES.map(async (f) => (b[f] = await dictFile(f))));
+  await Promise.all([...FILES, ...LISTS].map(async (f) => (b[f] = await dictFile(f))));
   const dic = new DynamicDictionaries();
   const words = new SortedWords(new TextDecoder().decode(b.lex));
+  const listed = { words: frontCoded(new TextDecoder().decode(b.words)), names: frontCoded(new TextDecoder().decode(b.names)) };
   // An empty target map for kuromoji to read; the words' entries come from the list (see SortedWords).
   dic.loadTokenInfoDictionaries(new Uint8Array(b.tid), new Uint8Array(b.tid_pos), new Uint8Array(4));
   dic.trie = words;
@@ -92,8 +104,23 @@ export async function loadJapanese(): Promise<boolean> {
   dic.loadConnectionCosts(new Int16Array(b.cc));
   dic.loadUnknownDictionaries(new Uint8Array(b.unk), new Uint8Array(b.unk_pos), new Uint8Array(b.unk_map), new Uint8Array(b.unk_char), new Uint32Array(b.unk_compat), new Uint8Array(b.unk_invoke));
   tokenizer = readingTokenizer(new Tokenizer(dic));
+  lexicon = (word) => (words.has(word) ? 'ipadic' : listed.words.has(word) ? 'word' : listed.names.has(word) ? 'name' : null);
   setJapaneseAnalyser((text) => tokenizer!.tokenize(text));
+  setJapaneseLexicon(lexicon);
   return true;
+}
+
+/** The words of a list written as build-loanwords.mjs writes it: (48 + characters shared with the word before) and the rest, one a line; "#" lines are its header. */
+function frontCoded(text: string): Set<string> {
+  const out = new Set<string>();
+  let prev = '';
+  for (const line of text.split('\n')) {
+    if (!line || line.startsWith('#')) continue;
+    const word = prev.slice(0, line.charCodeAt(0) - 48) + line.slice(1);
+    out.add(word);
+    prev = word;
+  }
+  return out;
 }
 
 /**
@@ -136,6 +163,12 @@ class SortedWords {
         return out;
       },
     });
+  }
+
+  /** Is this exactly one of the dictionary's words? */
+  has(word: string): boolean {
+    const i = this.lowerBound(word, 0);
+    return i < this.words.length && this.words[i] === word;
   }
 
   /** The first index in [lo, words.length) whose word is not less than `key`. */
@@ -204,5 +237,7 @@ function readingTokenizer(t: KuromojiInternals): KuromojiInternals {
 /** Forget the analyser (tests). */
 export function unloadJapanese(): void {
   tokenizer = null;
+  lexicon = null;
   setJapaneseAnalyser(null);
+  setJapaneseLexicon(null);
 }
