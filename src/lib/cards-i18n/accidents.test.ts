@@ -679,6 +679,7 @@ describe('a name inside a longer foreign name is a piece of it (Chinese, Thai)',
       ['th', 'ทีซีอุสฆ่ามิโนทอร์'], ['th', 'อัสซูสเป็นเมืองโบราณ'],
       ['th', 'ข้าพบนาร์ซิสซุสริมน้ำ'], // Narcissus: no list has it; the table's one-letter entries (ส) are letters, not words
       ['th', 'เทเซอุสฆ่ามิโนทอร์'], // Theseus spelled otherwise
+      ['zh', '宙，斯'], ['th', 'ซุ ส'], // a one-word name is written in one piece
     ] as const) expect([l, v, localName(v, l)]).toEqual([l, v, undefined]);
   });
   it('a name beside a common word, a function word or a word it was joined to still lands', () => {

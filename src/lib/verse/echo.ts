@@ -925,9 +925,12 @@ function saidNameUnspaced(name: string, verse: string, lang: string): string[] |
     at.push(k);
   }
   const spans = wordSpans(text, lang);
+  // A name of one word is written in one piece: 宙，斯 is not 宙斯.
+  const onePiece = !SPLIT.test(name);
   for (let k = letters.indexOf(target); k >= 0; k = letters.indexOf(target, k + 1)) {
     const s = at[k];
     const e = at[k + target.length - 1] + 1;
+    if (onePiece && e - s !== target.length) continue;
     if (heldBy(text, s, target, around)) continue;
     if (lang === 'zh' ? !zhNameAt(text, spans, s, e, l) : !thNameAt(text, s, e, l)) continue;
     // The verse's words that say it, as the segmenter gives them (the words a multiplier does not multiply).
