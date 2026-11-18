@@ -23,9 +23,10 @@
  * unmeasured language). run.mjs does not see the set-aside folder, so it measures those cells again.
  */
 import { execFileSync } from 'node:child_process';
-import { mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
+import { mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
+import { setAsideCell } from './model-eval-aside';
 import { replayPlay, scoredFields, type StoredPlay } from './model-eval-replay';
 import { loadAllPacks } from './verse/packs';
 
@@ -67,9 +68,8 @@ describe('re-scoring the writing cells', () => {
       for (const r of refused) {
         const cell = JSON.parse(readFileSync(r.file, 'utf8'));
         cell.setAside = { date: new Date().toISOString(), commit, why: `${r.why.length} of ${cell.plays.length} plays cannot be re-scored with the code now; run the cell again (scripts/model-eval/run.mjs)`, plays: r.why };
-        writeFileSync(join(ASIDE, r.f), JSON.stringify(cell, null, 1) + '\n');
-        rmSync(r.file);
-        console.log(`${r.f}: set aside; it counts as not measured`);
+        const kept = setAsideCell(ASIDE, r.f, cell, r.file);
+        console.log(`${r.f}: set aside; it counts as not measured${kept ? ` (the one set aside before is kept in ${kept})` : ''}`);
       }
       return;
     }

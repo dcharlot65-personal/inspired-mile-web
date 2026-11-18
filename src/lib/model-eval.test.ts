@@ -471,8 +471,10 @@ describe('the writing decision', () => {
 describe('what the model wrote is what the cells read', () => {
   // The claim modelChoice rests on: before the integration's rule (2026-11-18) the written verse was
   // played only when no draft left a verse, and otherwise the verse played was the draft the opponent
-  // picked. Every writing cell measured then (set-aside/) must bear that out, play for play.
-  const old = ['set-aside', 'set-aside/before-wave3'].flatMap((d) => existsSync(join(DIR, d)) ? readdirSync(join(DIR, d)).filter((f) => f.endsWith('.write.json')).map((f) => join(d, f)) : []);
+  // picked. Every writing cell measured then (set-aside/, and the folders in it where a cell set
+  // aside again keeps the one before: model-eval-aside.ts) must bear that out, play for play.
+  const asideDirs = existsSync(join(DIR, 'set-aside')) ? ['set-aside', ...readdirSync(join(DIR, 'set-aside'), { withFileTypes: true }).filter((d) => d.isDirectory()).map((d) => `set-aside/${d.name}`)] : [];
+  const old = asideDirs.flatMap((d) => readdirSync(join(DIR, d)).filter((f) => f.endsWith('.write.json')).map((f) => join(d, f)));
   it('on every writing cell measured before the integration, the model\'s pick was the verse played', () => {
     const wrong: string[] = [];
     let plays = 0;

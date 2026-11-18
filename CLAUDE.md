@@ -372,7 +372,8 @@ left behind by a killed run is found by its port: `lsof -nP -iTCP:<port> -sTCP:L
   again (no model), cell by cell, then `analyze.mjs` and `copy-lists.mjs`. A cell it cannot
   re-score (its prompt changed, or the duel now draws other forms) needs the model: run it again,
   or meanwhile add `MEVAL_SET_ASIDE=1` to move it to `docs/language/model-eval/set-aside/`, where
-  it counts as not measured. The same variable with `model-eval.judge.test.ts` sets aside judging
+  it counts as not measured (a cell of that name set aside before is kept, moved to
+  `set-aside/before-<day>/`: `src/lib/model-eval-aside.ts`). The same variable with `model-eval.judge.test.ts` sets aside judging
   cells whose prompts changed. `run.mjs` measures set-aside cells again. New cells: copy them into
   `cells/`, then `node scripts/model-eval/judge-code.mjs` (git only) and
   `MEVAL_FINGERPRINT=1 npx vitest run src/lib/model-eval.judge.test.ts` before `analyze.mjs`.

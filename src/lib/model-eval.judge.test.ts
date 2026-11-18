@@ -26,12 +26,13 @@
  */
 import { createHash } from 'node:crypto';
 import { execFileSync } from 'node:child_process';
-import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import type { ModelSpec } from './brain';
 // @ts-expect-error a plain module, shared with the scripts that run the evaluation
 import { judgingCode } from '../../scripts/model-eval/lib.mjs';
+import { setAsideCell } from './model-eval-aside';
 
 const stand = vi.hoisted(() => ({ info: null as unknown, requests: [] as unknown[], generated: 0 }));
 vi.mock('./brain', async (importOriginal) => {
@@ -120,9 +121,8 @@ describe('the judging cells', () => {
       if (cell.judgePrompts && (await fingerprint(cell)).sha256 === cell.judgePrompts.sha256) continue;
       const at = (() => { try { return execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim(); } catch { return null; } })();
       cell.setAside = { date: new Date().toISOString(), commit: at, why: cell.judgePrompts ? 'the judge\'s prompts changed since this cell ran; judge it again (scripts/model-eval/run.mjs)' : 'no fingerprint of the judge\'s prompts; judge it again (scripts/model-eval/run.mjs)' };
-      writeFileSync(join(aside, f), JSON.stringify(cell, null, 1) + '\n');
-      rmSync(file);
-      console.log(`${f}: set aside; it counts as not measured`);
+      const kept = setAsideCell(aside, f, cell, file);
+      console.log(`${f}: set aside; it counts as not measured${kept ? ` (the one set aside before is kept in ${kept})` : ''}`);
     }
   }, 120_000);
 
