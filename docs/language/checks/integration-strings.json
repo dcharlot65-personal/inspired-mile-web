@@ -1,0 +1,817 @@
+{
+ "what": "The 16 interface keys the wave-3 integration (0346ee1) added in every locale, written by the engineers who added them and reviewed by no one, put through the language QA pipeline as it is on lang/qa-pipeline at 06e2cb6 (scripts/lang: check.mjs, grammar.mjs --keys, extract.mjs --samples, backtranslate.py --pairs), with the strings given as an overlay (LANGQA_OVERLAY). Run on the Mac Studio, 2026-11-17, with this task's own copies of the tools (LanguageTool 6.6, Hunspell 1.7.2 with LibreOffice's dictionaries, MADLAD-400 3B int8, all-MiniLM-L6-v2, LaBSE).",
+ "selftest": "grammar.mjs --selftest: LanguageTool flags 4 of 4 known-bad sentences in en, es, fr, de; 3 in pt, ru; 2 in ar; 1 in zh, ja; 0 in it, pl (LanguageTool finds little there); no LanguageTool module for hi, ko, vi, th, id. Hunspell rejects the planted misspelling in every language with a dictionary.",
+ "keys": [
+  "auth.signOutEverywhere",
+  "auth.legacyAccountNote",
+  "auth.error.passkey_not_accepted_no_email",
+  "auth.error.reauth_required",
+  "auth.error.reauth_unavailable",
+  "auth.error.too_many_attempts",
+  "hand.potionGamble",
+  "illegal.potion-last-round",
+  "void.label",
+  "void.thin",
+  "void.copied",
+  "live.judgeUnread",
+  "signature.hintTwo",
+  "verdict.worldCard",
+  "verdict.notTaken",
+  "verdict.copyForfeits"
+ ],
+ "mechanical": [
+  {
+   "lang": "fr",
+   "key": "auth.legacyAccountNote",
+   "rule": "fr-nbsp",
+   "detail": "\" ?\" needs a no-break space before ?",
+   "decision": "fixed",
+   "reason": "written in lang/qa-pipeline's convention (a no-break space, as \\u00a0, before : ? in French; the tone on the second vowel, khoá, in Vietnamese)"
+  },
+  {
+   "lang": "fr",
+   "key": "auth.legacyAccountNote",
+   "rule": "fr-nbsp",
+   "detail": "\" :\" needs a no-break space before :",
+   "decision": "fixed",
+   "reason": "written in lang/qa-pipeline's convention (a no-break space, as \\u00a0, before : ? in French; the tone on the second vowel, khoá, in Vietnamese)"
+  },
+  {
+   "lang": "fr",
+   "key": "auth.error.reauth_required",
+   "rule": "fr-nbsp",
+   "detail": "\" :\" needs a no-break space before :",
+   "decision": "fixed",
+   "reason": "written in lang/qa-pipeline's convention (a no-break space, as \\u00a0, before : ? in French; the tone on the second vowel, khoá, in Vietnamese)"
+  },
+  {
+   "lang": "fr",
+   "key": "illegal.potion-last-round",
+   "rule": "fr-nbsp",
+   "detail": "\" :\" needs a no-break space before :",
+   "decision": "fixed",
+   "reason": "written in lang/qa-pipeline's convention (a no-break space, as \\u00a0, before : ? in French; the tone on the second vowel, khoá, in Vietnamese)"
+  },
+  {
+   "lang": "fr",
+   "key": "void.thin",
+   "rule": "fr-nbsp",
+   "detail": "\" :\" needs a no-break space before :",
+   "decision": "fixed",
+   "reason": "written in lang/qa-pipeline's convention (a no-break space, as \\u00a0, before : ? in French; the tone on the second vowel, khoá, in Vietnamese)"
+  },
+  {
+   "lang": "fr",
+   "key": "void.copied",
+   "rule": "fr-nbsp",
+   "detail": "\" :\" needs a no-break space before :",
+   "decision": "fixed",
+   "reason": "written in lang/qa-pipeline's convention (a no-break space, as \\u00a0, before : ? in French; the tone on the second vowel, khoá, in Vietnamese)"
+  },
+  {
+   "lang": "fr",
+   "key": "live.judgeUnread",
+   "rule": "fr-nbsp",
+   "detail": "\" :\" needs a no-break space before :",
+   "decision": "fixed",
+   "reason": "written in lang/qa-pipeline's convention (a no-break space, as \\u00a0, before : ? in French; the tone on the second vowel, khoá, in Vietnamese)"
+  },
+  {
+   "lang": "fr",
+   "key": "signature.hintTwo",
+   "rule": "fr-nbsp",
+   "detail": "\" :\" needs a no-break space before :",
+   "decision": "fixed",
+   "reason": "written in lang/qa-pipeline's convention (a no-break space, as \\u00a0, before : ? in French; the tone on the second vowel, khoá, in Vietnamese)"
+  },
+  {
+   "lang": "fr",
+   "key": "verdict.worldCard",
+   "rule": "fr-nbsp",
+   "detail": "\" :\" needs a no-break space before :",
+   "decision": "fixed",
+   "reason": "written in lang/qa-pipeline's convention (a no-break space, as \\u00a0, before : ? in French; the tone on the second vowel, khoá, in Vietnamese)"
+  },
+  {
+   "lang": "fr",
+   "key": "verdict.notTaken",
+   "rule": "fr-nbsp",
+   "detail": "\" :\" needs a no-break space before :",
+   "decision": "fixed",
+   "reason": "written in lang/qa-pipeline's convention (a no-break space, as \\u00a0, before : ? in French; the tone on the second vowel, khoá, in Vietnamese)"
+  },
+  {
+   "lang": "vi",
+   "key": "auth.error.passkey_not_accepted_no_email",
+   "rule": "vi-tone-placement",
+   "detail": "\"Khóa\": the game writes the tone on the second vowel (khoá, not khóa)",
+   "decision": "fixed",
+   "reason": "written in lang/qa-pipeline's convention (a no-break space, as \\u00a0, before : ? in French; the tone on the second vowel, khoá, in Vietnamese)"
+  },
+  {
+   "lang": "vi",
+   "key": "auth.error.too_many_attempts",
+   "rule": "vi-tone-placement",
+   "detail": "\"khóa\": the game writes the tone on the second vowel (khoá, not khóa)",
+   "decision": "fixed",
+   "reason": "written in lang/qa-pipeline's convention (a no-break space, as \\u00a0, before : ? in French; the tone on the second vowel, khoá, in Vietnamese)"
+  }
+ ],
+ "grammar": [
+  {
+   "lang": "es",
+   "key": "void.thin",
+   "tool": "languagetool",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "found": "demasiado",
+   "decision": "accepted",
+   "reason": "a clause shown after a label or a colon, lower-case in every language as in English (like signature.hint, which the QA allowlists accept)"
+  },
+  {
+   "lang": "es",
+   "key": "void.copied",
+   "tool": "languagetool",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "found": "tomada",
+   "decision": "accepted",
+   "reason": "a clause shown after a label or a colon, lower-case in every language as in English (like signature.hint, which the QA allowlists accept)"
+  },
+  {
+   "lang": "es",
+   "key": "signature.hintTwo",
+   "tool": "languagetool",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "found": "evoca",
+   "decision": "accepted",
+   "reason": "a clause shown after a label or a colon, lower-case in every language as in English (like signature.hint, which the QA allowlists accept)"
+  },
+  {
+   "lang": "es",
+   "key": "auth.legacyAccountNote",
+   "tool": "hunspell",
+   "rule": "SPELLING",
+   "found": "Google",
+   "decision": "accepted",
+   "reason": "a brand name"
+  },
+  {
+   "lang": "fr",
+   "key": "auth.error.too_many_attempts",
+   "tool": "languagetool",
+   "rule": "OU",
+   "found": "ou",
+   "decision": "accepted",
+   "reason": "«ou» is \"or\" here; LanguageTool proposes «où» (\"where\")"
+  },
+  {
+   "lang": "fr",
+   "key": "void.thin",
+   "tool": "languagetool",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "found": "trop",
+   "decision": "accepted",
+   "reason": "a clause shown after a label or a colon, lower-case in every language as in English (like signature.hint, which the QA allowlists accept)"
+  },
+  {
+   "lang": "fr",
+   "key": "void.thin",
+   "tool": "languagetool",
+   "rule": "PLACE_ADJ",
+   "found": "de mots différents",
+   "decision": "accepted",
+   "reason": "«davantage de mots différents» means \"more distinct words\", which is meant; «différents mots» would mean \"various words\""
+  },
+  {
+   "lang": "fr",
+   "key": "void.copied",
+   "tool": "languagetool",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "found": "reprise",
+   "decision": "accepted",
+   "reason": "a clause shown after a label or a colon, lower-case in every language as in English (like signature.hint, which the QA allowlists accept)"
+  },
+  {
+   "lang": "fr",
+   "key": "live.judgeUnread",
+   "tool": "languagetool",
+   "rule": "POINT",
+   "found": "règles",
+   "decision": "accepted",
+   "reason": "a status line with no final stop, as the English has none"
+  },
+  {
+   "lang": "fr",
+   "key": "signature.hintTwo",
+   "tool": "languagetool",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "found": "faites",
+   "decision": "accepted",
+   "reason": "a clause shown after a label or a colon, lower-case in every language as in English (like signature.hint, which the QA allowlists accept)"
+  },
+  {
+   "lang": "de",
+   "key": "void.thin",
+   "tool": "languagetool",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "found": "zu",
+   "decision": "accepted",
+   "reason": "a clause shown after a label or a colon, lower-case in every language as in English (like signature.hint, which the QA allowlists accept)"
+  },
+  {
+   "lang": "de",
+   "key": "void.copied",
+   "tool": "languagetool",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "found": "aus",
+   "decision": "accepted",
+   "reason": "a clause shown after a label or a colon, lower-case in every language as in English (like signature.hint, which the QA allowlists accept)"
+  },
+  {
+   "lang": "de",
+   "key": "live.judgeUnread",
+   "tool": "languagetool",
+   "rule": "PUNCTUATION_PARAGRAPH_END",
+   "found": "Regeln",
+   "decision": "accepted",
+   "reason": "a status line with no final stop, as the English has none"
+  },
+  {
+   "lang": "de",
+   "key": "signature.hintTwo",
+   "tool": "languagetool",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "found": "lass",
+   "decision": "accepted",
+   "reason": "a clause shown after a label or a colon, lower-case in every language as in English (like signature.hint, which the QA allowlists accept)"
+  },
+  {
+   "lang": "de",
+   "key": "live.judgeUnread",
+   "tool": "hunspell",
+   "rule": "SPELLING",
+   "found": "Wertungswort",
+   "decision": "accepted",
+   "reason": "a regular German compound (Wertung + Wort), \"judging word\""
+  },
+  {
+   "lang": "it",
+   "key": "void.thin",
+   "tool": "languagetool",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "found": "troppo",
+   "decision": "accepted",
+   "reason": "a clause shown after a label or a colon, lower-case in every language as in English (like signature.hint, which the QA allowlists accept)"
+  },
+  {
+   "lang": "it",
+   "key": "void.copied",
+   "tool": "languagetool",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "found": "presa",
+   "decision": "accepted",
+   "reason": "a clause shown after a label or a colon, lower-case in every language as in English (like signature.hint, which the QA allowlists accept)"
+  },
+  {
+   "lang": "it",
+   "key": "signature.hintTwo",
+   "tool": "languagetool",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "found": "riecheggia",
+   "decision": "accepted",
+   "reason": "a clause shown after a label or a colon, lower-case in every language as in English (like signature.hint, which the QA allowlists accept)"
+  },
+  {
+   "lang": "pt",
+   "key": "void.thin",
+   "tool": "languagetool",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "found": "pouco",
+   "decision": "accepted",
+   "reason": "a clause shown after a label or a colon, lower-case in every language as in English (like signature.hint, which the QA allowlists accept)"
+  },
+  {
+   "lang": "pt",
+   "key": "void.copied",
+   "tool": "languagetool",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "found": "tirada",
+   "decision": "accepted",
+   "reason": "a clause shown after a label or a colon, lower-case in every language as in English (like signature.hint, which the QA allowlists accept)"
+  },
+  {
+   "lang": "pt",
+   "key": "live.judgeUnread",
+   "tool": "languagetool",
+   "rule": "PUNCTUATION_PARAGRAPH_END",
+   "found": "regras",
+   "decision": "accepted",
+   "reason": "a status line with no final stop, as the English has none"
+  },
+  {
+   "lang": "pt",
+   "key": "signature.hintTwo",
+   "tool": "languagetool",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "found": "ecoe",
+   "decision": "accepted",
+   "reason": "a clause shown after a label or a colon, lower-case in every language as in English (like signature.hint, which the QA allowlists accept)"
+  },
+  {
+   "lang": "pt",
+   "key": "auth.legacyAccountNote",
+   "tool": "hunspell",
+   "rule": "SPELLING",
+   "found": "Google",
+   "decision": "accepted",
+   "reason": "a brand name"
+  },
+  {
+   "lang": "pl",
+   "key": "void.thin",
+   "tool": "languagetool",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "found": "za",
+   "decision": "accepted",
+   "reason": "a clause shown after a label or a colon, lower-case in every language as in English (like signature.hint, which the QA allowlists accept)"
+  },
+  {
+   "lang": "pl",
+   "key": "void.copied",
+   "tool": "languagetool",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "found": "wzięte",
+   "decision": "accepted",
+   "reason": "a clause shown after a label or a colon, lower-case in every language as in English (like signature.hint, which the QA allowlists accept)"
+  },
+  {
+   "lang": "pl",
+   "key": "signature.hintTwo",
+   "tool": "languagetool",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "found": "nawiąż",
+   "decision": "accepted",
+   "reason": "a clause shown after a label or a colon, lower-case in every language as in English (like signature.hint, which the QA allowlists accept)"
+  },
+  {
+   "lang": "ru",
+   "key": "void.thin",
+   "tool": "languagetool",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "found": "слишком",
+   "decision": "accepted",
+   "reason": "a clause shown after a label or a colon, lower-case in every language as in English (like signature.hint, which the QA allowlists accept)"
+  },
+  {
+   "lang": "ru",
+   "key": "void.copied",
+   "tool": "languagetool",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "found": "взято",
+   "decision": "accepted",
+   "reason": "a clause shown after a label or a colon, lower-case in every language as in English (like signature.hint, which the QA allowlists accept)"
+  },
+  {
+   "lang": "ru",
+   "key": "signature.hintTwo",
+   "tool": "languagetool",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "found": "отзовись",
+   "decision": "accepted",
+   "reason": "a clause shown after a label or a colon, lower-case in every language as in English (like signature.hint, which the QA allowlists accept)"
+  },
+  {
+   "lang": "ru",
+   "key": "auth.legacyAccountNote",
+   "tool": "hunspell",
+   "rule": "SPELLING",
+   "found": "Google",
+   "decision": "accepted",
+   "reason": "a brand name"
+  },
+  {
+   "lang": "ar",
+   "key": "auth.legacyAccountNote",
+   "tool": "languagetool",
+   "rule": "grammar_0011_notjazem_lam_nafia",
+   "found": "لا يمكن",
+   "decision": "accepted",
+   "reason": "false alarm: the rule proposes «لا يمكن», which is what the sentence has"
+  },
+  {
+   "lang": "ar",
+   "key": "void.label",
+   "tool": "languagetool",
+   "rule": "AR_DIACRITICS_REPLACE",
+   "found": "نقاط",
+   "decision": "accepted",
+   "reason": "a style rule asking for vowel marks; the interface writes Arabic unvocalised"
+  },
+  {
+   "lang": "ar",
+   "key": "live.judgeUnread",
+   "tool": "languagetool",
+   "rule": "syntax_0002_as_ka_1",
+   "found": "فيه رقم أو كلمة",
+   "decision": "accepted",
+   "reason": "false alarm: the rule takes the first letter of «كلمة» (\"word\") for the preposition ك (\"as\")"
+  },
+  {
+   "lang": "ar",
+   "key": "signature.hintTwo",
+   "tool": "languagetool",
+   "rule": "syntax_0002_as_ka_2",
+   "found": "ردّد صدى كلمتين",
+   "decision": "accepted",
+   "reason": "false alarm: the rule takes the first letter of «كلمتين» (\"two words\") for the preposition ك (\"as\")"
+  },
+  {
+   "lang": "ar",
+   "key": "verdict.copyForfeits",
+   "tool": "languagetool",
+   "rule": "AR_DIACRITICS_REPLACE",
+   "found": "نقاط",
+   "decision": "accepted",
+   "reason": "a style rule asking for vowel marks; the interface writes Arabic unvocalised"
+  },
+  {
+   "lang": "ar",
+   "key": "auth.legacyAccountNote",
+   "tool": "hunspell",
+   "rule": "SPELLING",
+   "found": "Google",
+   "decision": "accepted",
+   "reason": "a brand name"
+  },
+  {
+   "lang": "hi",
+   "key": "auth.legacyAccountNote",
+   "tool": "hunspell",
+   "rule": "SPELLING",
+   "found": "Google",
+   "decision": "accepted",
+   "reason": "a brand name"
+  },
+  {
+   "lang": "ko",
+   "key": "live.judgeUnread",
+   "tool": "hunspell",
+   "rule": "SPELLING",
+   "found": "규칙만으로",
+   "decision": "accepted",
+   "reason": "규칙 (\"rule\") with the particles 만 and 으로"
+  },
+  {
+   "lang": "vi",
+   "key": "auth.legacyAccountNote",
+   "tool": "hunspell",
+   "rule": "SPELLING",
+   "found": "Google",
+   "decision": "accepted",
+   "reason": "a brand name"
+  },
+  {
+   "lang": "vi",
+   "key": "auth.error.passkey_not_accepted_no_email",
+   "tool": "hunspell",
+   "rule": "SPELLING",
+   "found": "Khóa",
+   "decision": "fixed",
+   "reason": "fixed: the game writes khoá"
+  },
+  {
+   "lang": "vi",
+   "key": "auth.error.too_many_attempts",
+   "tool": "hunspell",
+   "rule": "SPELLING",
+   "found": "khóa",
+   "decision": "fixed",
+   "reason": "fixed: the game writes khoá"
+  },
+  {
+   "lang": "th",
+   "key": "illegal.potion-last-round",
+   "tool": "hunspell",
+   "rule": "SPELLING",
+   "found": "ทก",
+   "decision": "accepted",
+   "reason": "not a word of the text: the checker cut «เหลือบทกลอน» as «เหลือบ»+«ทก»+«ลอน»; the text is «เหลือ» (\"left\") + «บทกลอน» (\"verse\")"
+  },
+  {
+   "lang": "id",
+   "key": "auth.legacyAccountNote",
+   "tool": "hunspell",
+   "rule": "SPELLING",
+   "found": "Google",
+   "decision": "accepted",
+   "reason": "a brand name"
+  }
+ ],
+ "meaning": {
+  "rule": "flagged when the back-translation scores under 0.6 (MiniLM cosine against the English) and LaBSE scores the text under 0.6",
+  "firstRun": {
+   "items": 240,
+   "flagged": 12,
+   "controlsCaught": "235 of 240",
+   "flags": [
+    {
+     "lang": "de",
+     "key": "verdict.notTaken",
+     "text": "Witz: nicht gewonnen",
+     "back": "Joke: not won",
+     "cos": 0.266,
+     "labse": 0.595,
+     "reason": "a one-word criterion name filled in for the sample ({criterion}: Witz, dowcip, 機知…); the back-translation reads the single word otherwise; the sentence is right"
+    },
+    {
+     "lang": "pl",
+     "key": "verdict.notTaken",
+     "text": "dowcip: niezdobyte",
+     "back": "joke: unearned",
+     "cos": 0.23,
+     "labse": 0.495,
+     "reason": "a one-word criterion name filled in for the sample ({criterion}: Witz, dowcip, 機知…); the back-translation reads the single word otherwise; the sentence is right"
+    },
+    {
+     "lang": "ar",
+     "key": "verdict.notTaken",
+     "text": "الظُّرف: لم يُكسَب",
+     "back": "Status: Unearned",
+     "cos": 0.195,
+     "labse": 0.435,
+     "reason": "a one-word criterion name filled in for the sample ({criterion}: Witz, dowcip, 機知…); the back-translation reads the single word otherwise; the sentence is right"
+    },
+    {
+     "lang": "ar",
+     "key": "verdict.copyForfeits",
+     "text": "الأبيات المنسوخة تخسر نقاط الحَكَم.",
+     "back": "Scanned verses lose referee points.",
+     "cos": 0.456,
+     "labse": 0.429,
+     "reason": "read as right: «copied verses lose the judge's points»; the back-translation reads the participle otherwise (ar «scanned», hi «duplicated item», th «copy poems»)"
+    },
+    {
+     "lang": "hi",
+     "key": "verdict.notTaken",
+     "text": "हाज़िरजवाबी: नहीं जीता",
+     "back": "Attendance: Not won",
+     "cos": 0.181,
+     "labse": 0.478,
+     "reason": "a one-word criterion name filled in for the sample ({criterion}: Witz, dowcip, 機知…); the back-translation reads the single word otherwise; the sentence is right"
+    },
+    {
+     "lang": "hi",
+     "key": "verdict.copyForfeits",
+     "text": "नक़ल किया गया पद निर्णायक के अंक खो देता है।",
+     "back": "The duplicated item loses the judge's score.",
+     "cos": 0.574,
+     "labse": 0.519,
+     "reason": "read as right: «copied verses lose the judge's points»; the back-translation reads the participle otherwise (ar «scanned», hi «duplicated item», th «copy poems»)"
+    },
+    {
+     "lang": "zh",
+     "key": "verdict.notTaken",
+     "text": "机锋：未拿下",
+     "back": "Airfield: Not taken",
+     "cos": 0.383,
+     "labse": 0.475,
+     "reason": "a one-word criterion name filled in for the sample ({criterion}: Witz, dowcip, 機知…); the back-translation reads the single word otherwise; the sentence is right"
+    },
+    {
+     "lang": "ja",
+     "key": "verdict.notTaken",
+     "text": "機知：取れませんでした",
+     "back": "Notification: Failed to get",
+     "cos": 0.069,
+     "labse": 0.579,
+     "reason": "a one-word criterion name filled in for the sample ({criterion}: Witz, dowcip, 機知…); the back-translation reads the single word otherwise; the sentence is right"
+    },
+    {
+     "lang": "ko",
+     "key": "verdict.notTaken",
+     "text": "재치: 얻지 못함",
+     "back": "Witchcraft: Not obtained",
+     "cos": 0.246,
+     "labse": 0.555,
+     "reason": "a one-word criterion name filled in for the sample ({criterion}: Witz, dowcip, 機知…); the back-translation reads the single word otherwise; the sentence is right"
+    },
+    {
+     "lang": "vi",
+     "key": "verdict.notTaken",
+     "text": "sắc sảo: chưa giành được",
+     "back": "refinement: not won",
+     "cos": 0.139,
+     "labse": 0.573,
+     "reason": "a one-word criterion name filled in for the sample ({criterion}: Witz, dowcip, 機知…); the back-translation reads the single word otherwise; the sentence is right"
+    },
+    {
+     "lang": "th",
+     "key": "verdict.notTaken",
+     "text": "ไหวพริบ: ไม่ได้มา",
+     "back": "He didn't come.",
+     "cos": 0.246,
+     "labse": 0.534,
+     "reason": "a one-word criterion name filled in for the sample ({criterion}: Witz, dowcip, 機知…); the back-translation reads the single word otherwise; the sentence is right"
+    },
+    {
+     "lang": "th",
+     "key": "verdict.copyForfeits",
+     "text": "บทกลอนที่ลอกมาจะเสียคะแนนจากกรรมการ",
+     "back": "Copy poems will lose points from the jury.",
+     "cos": 0.55,
+     "labse": 0.541,
+     "reason": "read as right: «copied verses lose the judge's points»; the back-translation reads the participle otherwise (ar «scanned», hi «duplicated item», th «copy poems»)"
+    }
+   ]
+  },
+  "afterFixes": {
+   "items": 21,
+   "flagged": 0,
+   "controlsCaught": "18 of 21",
+   "rows": [
+    {
+     "lang": "fr",
+     "key": "auth.legacyAccountNote",
+     "text": "Vous avez déjà utilisé Google ou une adresse e-mail pour vous connecter ici ? Ce moyen d’accès est désactivé pour l’instant : un ancien compte ne peut donc pas encore être ouvert. Un compte créé ici sera nouveau et vide.",
+     "back": "Have you already used Google or an e-mail address to log in here? This means of access is currently disabled, so an old account cannot be opened yet. An account created here will be new and empty.",
+     "cos": 0.853,
+     "labse": 0.902
+    },
+    {
+     "lang": "fr",
+     "key": "auth.error.reauth_required",
+     "text": "Confirmez d’abord que c’est bien vous : déconnectez-vous, reconnectez-vous, puis réessayez.",
+     "back": "Confirm first that it's you: log out, log in again, and try again.",
+     "cos": 0.879,
+     "labse": 0.874
+    },
+    {
+     "lang": "fr",
+     "key": "illegal.potion-last-round",
+     "text": "Il ne reste aucune strophe à maudire : c’est la dernière manche.",
+     "back": "There is no stanza left to curse: this is the last round.",
+     "cos": 0.906,
+     "labse": 0.871
+    },
+    {
+     "lang": "fr",
+     "key": "void.thin",
+     "text": "trop peu pour faire une strophe : il faut davantage de mots différents",
+     "back": "too little to make a stanza: more different words are needed",
+     "cos": 0.854,
+     "labse": 0.91
+    },
+    {
+     "lang": "fr",
+     "key": "void.copied",
+     "text": "reprise de l’autre strophe : une réponse doit être de vous",
+     "back": "repeat of the other stanza: an answer must be from you",
+     "cos": 0.638,
+     "labse": 0.873
+    },
+    {
+     "lang": "fr",
+     "key": "live.judgeUnread",
+     "text": "Lignes que le modèle notateur ne lira pas : 2 (arbitre) et 4 (gagnant). Toute ligne contenant un nombre ou un mot de notation (note, score, gagner…) est laissée de côté, et cette manche est alors jugée par les seules règles",
+     "back": "Lines that the scoring model will not read: 2 (umpire) and 4 (winner). Any line containing a number or score word (note, score, win...) is left out, and this round is then judged by the rules only.",
+     "cos": 0.754,
+     "labse": 0.889
+    },
+    {
+     "lang": "fr",
+     "key": "signature.hintTwo",
+     "text": "faites écho à deux de ces mots : crâne, farce et tombe",
+     "back": "echo two of these words: skull, farce and tomb",
+     "cos": 0.727,
+     "labse": 0.793
+    },
+    {
+     "lang": "fr",
+     "key": "verdict.worldCard",
+     "text": "Carte Monde : Verona",
+     "back": "Map of Verona",
+     "cos": 0.624,
+     "labse": 0.916
+    },
+    {
+     "lang": "fr",
+     "key": "verdict.notTaken",
+     "text": "esprit : non remporté",
+     "back": "esprit : not won",
+     "cos": 0.218,
+     "labse": 0.685
+    },
+    {
+     "lang": "fr",
+     "key": "battle.worldCard",
+     "text": "Carte Monde",
+     "back": "Map of the World",
+     "cos": 0.464,
+     "labse": 0.854
+    },
+    {
+     "lang": "fr",
+     "key": "battle.noWorldCard",
+     "text": "Sans carte Monde",
+     "back": "Without card World",
+     "cos": 0.8,
+     "labse": 0.866
+    },
+    {
+     "lang": "de",
+     "key": "verdict.worldCard",
+     "text": "Welt-Spielkarte: Verona",
+     "back": "World game map: Verona",
+     "cos": 0.72,
+     "labse": 0.945
+    },
+    {
+     "lang": "de",
+     "key": "battle.worldCard",
+     "text": "Welt-Spielkarte",
+     "back": "World playing card",
+     "cos": 0.866,
+     "labse": 0.853
+    },
+    {
+     "lang": "de",
+     "key": "battle.noWorldCard",
+     "text": "Keine Welt-Spielkarte",
+     "back": "No world playing card",
+     "cos": 0.867,
+     "labse": 0.884
+    },
+    {
+     "lang": "pl",
+     "key": "auth.legacyAccountNote",
+     "text": "Masz tu wcześniejsze konto z logowaniem przez Google albo adres e-mail? Ten sposób logowania jest na razie wyłączony, więc starszego konta nie da się jeszcze otworzyć. Konto założone tutaj będzie nowe i puste.",
+     "back": "Do you have a previous account here with Google login or email address? This login method is currently disabled, so the older account cannot be opened yet.The account created here will be new and empty.",
+     "cos": 0.836,
+     "labse": 0.914
+    },
+    {
+     "lang": "ru",
+     "key": "auth.legacyAccountNote",
+     "text": "У тебя уже есть здесь учётная запись со входом через Google или по адресу почты? Этот способ входа пока отключён, поэтому старую учётную запись ещё нельзя открыть. Если создать учётную запись здесь, она будет новой и пустой.",
+     "back": "Do you already have an account here with Google or email login? This method of login is currently disabled, so the old account cannot be opened yet. If you create an account here, it will be new and empty.",
+     "cos": 0.845,
+     "labse": 0.915
+    },
+    {
+     "lang": "ru",
+     "key": "verdict.worldCard",
+     "text": "Игральная карта мира: Verona",
+     "back": "World Playing Card: Verona",
+     "cos": 0.934,
+     "labse": 0.914
+    },
+    {
+     "lang": "ru",
+     "key": "battle.worldCard",
+     "text": "Игральная карта мира",
+     "back": "Playing map of the world",
+     "cos": 0.484,
+     "labse": 0.811
+    },
+    {
+     "lang": "ru",
+     "key": "battle.noWorldCard",
+     "text": "Без игральной карты мира",
+     "back": "No playing world map",
+     "cos": 0.547,
+     "labse": 0.866
+    },
+    {
+     "lang": "vi",
+     "key": "auth.error.passkey_not_accepted_no_email",
+     "text": "Khoá truy cập đó không được chấp nhận. Có thể nó đã bị gỡ khỏi tài khoản, hoặc tài khoản không còn nữa.",
+     "back": "That access key was not accepted. It may have been removed from the account, or the account no longer exists.",
+     "cos": 0.767,
+     "labse": 0.859
+    },
+    {
+     "lang": "vi",
+     "key": "auth.error.too_many_attempts",
+     "text": "Quá nhiều mã sai cho địa chỉ này. Hãy thử lại vào ngày mai, hoặc đăng nhập bằng khoá truy cập.",
+     "back": "Too many bad codes for this address. Please try again tomorrow, or log in with your access key.",
+     "cos": 0.919,
+     "labse": 0.912
+    }
+   ]
+  }
+ },
+ "reading": [
+  {
+   "lang": "de fr ru",
+   "key": "verdict.worldCard",
+   "decision": "fixed",
+   "reason": "«Weltkarte», «Carte du monde», «Карта мира» say \"world map\", which is also nav.worldMap; written with lang/qa-pipeline's term for battle.worldCard (Welt-Spielkarte, Carte Monde, Игральная карта мира), and battle.worldCard and battle.noWorldCard brought to that branch's text in this branch too. Back-translation still reads fr «Carte Monde» and ru «Игральная карта мира» as a map (cos 0.46, 0.48; LaBSE 0.85, 0.81): for a native reader."
+  },
+  {
+   "lang": "fr pl ru",
+   "key": "auth.legacyAccountNote",
+   "decision": "fixed",
+   "reason": "addressed a man only («Vous vous êtes déjà connecté», «Logowałeś się», «ты входил»); reworded without a gendered form, and fr «Créer un compte ici en fait un nouveau, vide» as «Un compte créé ici sera nouveau et vide»"
+  }
+ ],
+ "notChecked": "No native speaker has read these strings. The rewordings are a language model's, checked by the tools above."
+}

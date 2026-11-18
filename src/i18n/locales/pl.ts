@@ -241,7 +241,7 @@ const pl: Record<string, string> = {
   'auth.viewProfile': 'Zobacz profil',
   'auth.signOut': 'Wyloguj się',
   'auth.signOutEverywhere': 'Wyloguj się na wszystkich urządzeniach',
-  'auth.legacyAccountNote': 'Logowałeś się tu wcześniej przez Google albo adresem e-mail? Ten sposób jest na razie wyłączony, więc starszego konta nie da się jeszcze otworzyć. Konto założone tutaj będzie nowe i puste.',
+  'auth.legacyAccountNote': 'Masz tu wcześniejsze konto z logowaniem przez Google albo adres e-mail? Ten sposób logowania jest na razie wyłączony, więc starszego konta nie da się jeszcze otworzyć. Konto założone tutaj będzie nowe i puste.',
   'auth.working': 'Chwileczkę…',
   'auth.error.age_required': 'Najpierw potwierdź swój wiek na stronie głównej. Konta są dla graczy od 13 lat.',
   'auth.error.email_in_use': 'Ten adres należy już do innego konta. Wyloguj się i zaloguj właśnie nim.',
