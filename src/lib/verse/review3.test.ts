@@ -295,12 +295,14 @@ describe('third check, blocker 2: a line of katakana loanwords in a Japanese ver
     for (const [name, v] of RANDOM) expect([name, substance(v, 'ja').ok]).toEqual([name, false]);
   });
 
-  it('still void: a loanword the dictionary lacks, alone on its line (ノーモアウォー)', () => {
-    // Measured, not wanted: the dictionary has no ノーモアウォー, and counting katakana it lacks for its
-    // spelling (a long-vowel mark) let random katakana with long marks win 89 rounds of 280 (KATA-MIX).
+  it('a loanword the analyser lacks, alone on its line, counts when the dictionaries spell it (ノーモアウォー: ノーモア + ウォー)', () => {
+    // Void until the engine check's second round: the analyser (IPADIC) has no ノーモアウォー, and
+    // counting katakana it lacks for its spelling (a long-vowel mark) let random katakana with long
+    // marks win 89 rounds of 280 (KATA-MIX). Now IPADIC's ノーモア and JMdict's ウォー written together
+    // count (text.ts katakanaListed, LOANWORD_PART), and KATA-MIX below still loses at least 95%.
     const s = substance('八月の\n空に祈りを\nノーモアウォー', 'ja');
     log('third check: ノーモアウォー', s);
-    expect(s.ok).toBe(false);
+    expect([s.ok, s.known >= 0.7]).toEqual([true, true]);
   });
 
   it('KATA-MIX: half a verse of real lines and random katakana for the rest, best of 60, 14 houses x 20 seeds, loses at least 95%', async () => {
