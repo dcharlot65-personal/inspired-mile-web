@@ -1,0 +1,853 @@
+{
+ "note": "The interface strings the integration (integrate/wave3, 0346ee1) brought into this branch, and this branch's own, checked with lang/qa-pipeline's pipeline as it is at 06e2cb6, on a scratch merge of this branch into that one (not committed to either). Tools: LanguageTool 6.6 and Hunspell (the dictionaries qa-pipeline installed), MADLAD-400 3B back-translation scored with MiniLM and LaBSE, qa-pipeline's mechanical, glossary and quality checks. Run on the Studio on 2026-11-18 (UTC) from a LANGQA_HOME of this branch's own that links qa-pipeline's installed tools read-only. One fixture was added on the scratch copy: a sample value for {language} in scripts/lang/lib/strings.mjs (toShip).",
+ "strings": {
+  "checked": 308,
+  "keys": 19,
+  "languages": 16,
+  "sameAsQaPipeline": 218,
+  "copiedFromQaPipeline": 42,
+  "thisBranchOwn": 48
+ },
+ "unitTests": "src/i18n (i18n.test.ts, quality.test.ts): 33 passed. check.mjs: 71 findings, 39 allowlisted, 0 open. glossary.mjs: 0 problems.",
+ "selftest": {
+  "en": {
+   "lang": "en",
+   "languagetool": "flags 4 of 4 known-bad sentences",
+   "hunspell": "rejects the misspelling, accepts the word",
+   "languagetoolCaught": 4,
+   "languagetoolTried": 4,
+   "hunspellWorks": true
+  },
+  "es": {
+   "lang": "es",
+   "languagetool": "flags 4 of 4 known-bad sentences",
+   "hunspell": "rejects the misspelling, accepts the word",
+   "languagetoolCaught": 4,
+   "languagetoolTried": 4,
+   "hunspellWorks": true
+  },
+  "fr": {
+   "lang": "fr",
+   "languagetool": "flags 4 of 4 known-bad sentences",
+   "hunspell": "rejects the misspelling, accepts the word",
+   "languagetoolCaught": 4,
+   "languagetoolTried": 4,
+   "hunspellWorks": true
+  },
+  "de": {
+   "lang": "de",
+   "languagetool": "flags 4 of 4 known-bad sentences",
+   "hunspell": "rejects the misspelling, accepts the word",
+   "languagetoolCaught": 4,
+   "languagetoolTried": 4,
+   "hunspellWorks": true
+  },
+  "it": {
+   "lang": "it",
+   "languagetool": "flags 0 of 4 known-bad sentences",
+   "hunspell": "rejects the misspelling, accepts the word",
+   "languagetoolCaught": 0,
+   "languagetoolTried": 4,
+   "hunspellWorks": true
+  },
+  "pt": {
+   "lang": "pt",
+   "languagetool": "flags 3 of 4 known-bad sentences",
+   "hunspell": "rejects the misspelling, accepts the word",
+   "languagetoolCaught": 3,
+   "languagetoolTried": 4,
+   "hunspellWorks": true
+  },
+  "pl": {
+   "lang": "pl",
+   "languagetool": "flags 0 of 4 known-bad sentences",
+   "hunspell": "rejects the misspelling, accepts the word",
+   "languagetoolCaught": 0,
+   "languagetoolTried": 4,
+   "hunspellWorks": true
+  },
+  "ru": {
+   "lang": "ru",
+   "languagetool": "flags 3 of 4 known-bad sentences",
+   "hunspell": "rejects the misspelling, accepts the word",
+   "languagetoolCaught": 3,
+   "languagetoolTried": 4,
+   "hunspellWorks": true
+  },
+  "ar": {
+   "lang": "ar",
+   "languagetool": "flags 2 of 4 known-bad sentences",
+   "hunspell": "rejects the misspelling, accepts the word",
+   "languagetoolCaught": 2,
+   "languagetoolTried": 4,
+   "hunspellWorks": true
+  },
+  "hi": {
+   "lang": "hi",
+   "languagetool": "no module",
+   "hunspell": "rejects the misspelling, accepts the word",
+   "hunspellWorks": true
+  },
+  "zh": {
+   "lang": "zh",
+   "languagetool": "flags 1 of 4 known-bad sentences",
+   "hunspell": "no dictionary",
+   "languagetoolCaught": 1,
+   "languagetoolTried": 4
+  },
+  "ja": {
+   "lang": "ja",
+   "languagetool": "flags 1 of 4 known-bad sentences",
+   "hunspell": "no dictionary",
+   "languagetoolCaught": 1,
+   "languagetoolTried": 4
+  },
+  "ko": {
+   "lang": "ko",
+   "languagetool": "no module",
+   "hunspell": "rejects the misspelling, accepts the word",
+   "hunspellWorks": true
+  },
+  "vi": {
+   "lang": "vi",
+   "languagetool": "no module",
+   "hunspell": "rejects the misspelling, accepts the word",
+   "hunspellWorks": true
+  },
+  "th": {
+   "lang": "th",
+   "languagetool": "no module",
+   "hunspell": "rejects the misspelling, accepts the word",
+   "hunspellWorks": true
+  },
+  "id": {
+   "lang": "id",
+   "languagetool": "no module",
+   "hunspell": "rejects the misspelling, accepts the word",
+   "hunspellWorks": true
+  }
+ },
+ "grammarHits": [
+  {
+   "lang": "en",
+   "key": "void.thin",
+   "tool": "languagetool",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "at": "too",
+   "text": "too little to be a verse: it needs more different words",
+   "ownedBy": "integrate/wave3 (same text in lang/qa-pipeline)",
+   "decision": "exception",
+   "reason": "A status shown after a label (void.label's 'Scores nothing:', the signature line), written in lower case as its English is: the category lang/qa-pipeline already allowlists for signature.hint and live.powerUsed."
+  },
+  {
+   "lang": "en",
+   "key": "void.copied",
+   "tool": "languagetool",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "at": "taken",
+   "text": "taken from the other verse: an answer must be your own",
+   "ownedBy": "integrate/wave3 (same text in lang/qa-pipeline)",
+   "decision": "exception",
+   "reason": "A status shown after a label (void.label's 'Scores nothing:', the signature line), written in lower case as its English is: the category lang/qa-pipeline already allowlists for signature.hint and live.powerUsed."
+  },
+  {
+   "lang": "en",
+   "key": "live.judgeUnread",
+   "tool": "languagetool",
+   "rule": "PUNCTUATION_PARAGRAPH_END",
+   "at": "alone",
+   "text": "Lines the grading model will not read: 2 (grade) and 4 (graded). A line holding a number or a judging word (grade, score, win…) is left out, and this round is then judged by the rules alone",
+   "ownedBy": "integrate/wave3 (same text in lang/qa-pipeline)",
+   "decision": "exception",
+   "reason": "The live checklist's rows end without a full stop (live.device, live.power, live.signature); this row, the integration's, does the same. Left as it is in all sixteen languages; for lang/qa-pipeline to decide with the other rows."
+  },
+  {
+   "lang": "en",
+   "key": "signature.hintTwo",
+   "tool": "languagetool",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "at": "echo",
+   "text": "echo two of: skull, jest, and grave",
+   "ownedBy": "integrate/wave3 (same text in lang/qa-pipeline)",
+   "decision": "exception",
+   "reason": "A status shown after a label (void.label's 'Scores nothing:', the signature line), written in lower case as its English is: the category lang/qa-pipeline already allowlists for signature.hint and live.powerUsed."
+  },
+  {
+   "lang": "es",
+   "key": "void.thin",
+   "tool": "languagetool",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "at": "demasiado",
+   "text": "demasiado poco para ser una estrofa: hacen falta más palabras distintas",
+   "ownedBy": "integrate/wave3 (same text in lang/qa-pipeline)",
+   "decision": "exception",
+   "reason": "A status shown after a label (void.label's 'Scores nothing:', the signature line), written in lower case as its English is: the category lang/qa-pipeline already allowlists for signature.hint and live.powerUsed."
+  },
+  {
+   "lang": "es",
+   "key": "void.copied",
+   "tool": "languagetool",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "at": "tomada",
+   "text": "tomada de la otra estrofa: una respuesta debe ser tuya",
+   "ownedBy": "integrate/wave3 (same text in lang/qa-pipeline)",
+   "decision": "exception",
+   "reason": "A status shown after a label (void.label's 'Scores nothing:', the signature line), written in lower case as its English is: the category lang/qa-pipeline already allowlists for signature.hint and live.powerUsed."
+  },
+  {
+   "lang": "es",
+   "key": "signature.hintTwo",
+   "tool": "languagetool",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "at": "evoca",
+   "text": "evoca dos de: calavera, burla y tumba",
+   "ownedBy": "integrate/wave3 (same text in lang/qa-pipeline)",
+   "decision": "exception",
+   "reason": "A status shown after a label (void.label's 'Scores nothing:', the signature line), written in lower case as its English is: the category lang/qa-pipeline already allowlists for signature.hint and live.powerUsed."
+  },
+  {
+   "lang": "es",
+   "key": "auth.legacyAccountNote",
+   "tool": "hunspell",
+   "rule": "SPELLING",
+   "at": "Google",
+   "text": "¿Entraste aquí antes con Google o con una dirección de correo? Esa forma de entrar está desactivada por ahora, así que una cuenta antigua todavía no se puede abrir. Si creas una cuenta aquí, será nueva y estará vacía.",
+   "ownedBy": "integrate/wave3 (same text in lang/qa-pipeline)",
+   "decision": "exception",
+   "reason": "A brand name."
+  },
+  {
+   "lang": "fr",
+   "key": "auth.error.too_many_attempts",
+   "tool": "languagetool",
+   "rule": "OU",
+   "at": "ou",
+   "text": "Trop de codes erronés pour cette adresse. Réessayez demain, ou connectez-vous avec une clé d’accès.",
+   "ownedBy": "integrate/wave3 (same text in lang/qa-pipeline)",
+   "decision": "exception",
+   "reason": "'ou' (or) is right: 'Réessayez demain, ou connectez-vous'. LanguageTool takes it for où."
+  },
+  {
+   "lang": "fr",
+   "key": "void.thin",
+   "tool": "languagetool",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "at": "trop",
+   "text": "trop peu pour faire une strophe : il faut davantage de mots différents",
+   "ownedBy": "integrate/wave3 (same text in lang/qa-pipeline)",
+   "decision": "exception",
+   "reason": "A status shown after a label (void.label's 'Scores nothing:', the signature line), written in lower case as its English is: the category lang/qa-pipeline already allowlists for signature.hint and live.powerUsed."
+  },
+  {
+   "lang": "fr",
+   "key": "void.thin",
+   "tool": "languagetool",
+   "rule": "PLACE_ADJ",
+   "at": "de mots différents",
+   "text": "trop peu pour faire une strophe : il faut davantage de mots différents",
+   "ownedBy": "integrate/wave3 (same text in lang/qa-pipeline)",
+   "decision": "exception",
+   "reason": "'davantage de mots différents' means more distinct words, which is the meaning; 'différents mots' would mean various words."
+  },
+  {
+   "lang": "fr",
+   "key": "void.copied",
+   "tool": "languagetool",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "at": "reprise",
+   "text": "reprise de l’autre strophe : une réponse doit être de vous",
+   "ownedBy": "integrate/wave3 (same text in lang/qa-pipeline)",
+   "decision": "exception",
+   "reason": "A status shown after a label (void.label's 'Scores nothing:', the signature line), written in lower case as its English is: the category lang/qa-pipeline already allowlists for signature.hint and live.powerUsed."
+  },
+  {
+   "lang": "fr",
+   "key": "live.judgeUnread",
+   "tool": "languagetool",
+   "rule": "POINT",
+   "at": "règles",
+   "text": "Vers que le modèle notateur ne lira pas : 2 (arbitre) et 4 (gagnant). Tout vers contenant un nombre ou un mot de notation (note, score, gagner…) est laissé de côté, et cette manche est alors jugée par les seules règles",
+   "ownedBy": "integrate/wave3 (same text in lang/qa-pipeline)",
+   "decision": "exception",
+   "reason": "The live checklist's rows end without a full stop (live.device, live.power, live.signature); this row, the integration's, does the same. Left as it is in all sixteen languages; for lang/qa-pipeline to decide with the other rows."
+  },
+  {
+   "lang": "fr",
+   "key": "signature.hintTwo",
+   "tool": "languagetool",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "at": "faites",
+   "text": "faites écho à deux de ces mots : crâne, farce et tombe",
+   "ownedBy": "integrate/wave3 (same text in lang/qa-pipeline)",
+   "decision": "exception",
+   "reason": "A status shown after a label (void.label's 'Scores nothing:', the signature line), written in lower case as its English is: the category lang/qa-pipeline already allowlists for signature.hint and live.powerUsed."
+  },
+  {
+   "lang": "de",
+   "key": "void.thin",
+   "tool": "languagetool",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "at": "zu",
+   "text": "zu wenig für eine Strophe: Sie braucht mehr verschiedene Wörter",
+   "ownedBy": "integrate/wave3 (same text in lang/qa-pipeline)",
+   "decision": "exception",
+   "reason": "A status shown after a label (void.label's 'Scores nothing:', the signature line), written in lower case as its English is: the category lang/qa-pipeline already allowlists for signature.hint and live.powerUsed."
+  },
+  {
+   "lang": "de",
+   "key": "void.copied",
+   "tool": "languagetool",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "at": "aus",
+   "text": "aus der anderen Strophe übernommen: Eine Antwort muss deine eigene sein",
+   "ownedBy": "integrate/wave3 (same text in lang/qa-pipeline)",
+   "decision": "exception",
+   "reason": "A status shown after a label (void.label's 'Scores nothing:', the signature line), written in lower case as its English is: the category lang/qa-pipeline already allowlists for signature.hint and live.powerUsed."
+  },
+  {
+   "lang": "de",
+   "key": "live.judgeUnread",
+   "tool": "languagetool",
+   "rule": "PUNCTUATION_PARAGRAPH_END",
+   "at": "Regeln",
+   "text": "Zeilen, die das bewertende Modell nicht liest: 2 (beurteilung) und 4 (einzelsieg). Eine Zeile mit einer Zahl oder einem Wertungswort (Note, Punkte, gewinnen …) wird ausgelassen, und diese Runde entscheiden dann allein die Regeln",
+   "ownedBy": "integrate/wave3 (same text in lang/qa-pipeline)",
+   "decision": "exception",
+   "reason": "The live checklist's rows end without a full stop (live.device, live.power, live.signature); this row, the integration's, does the same. Left as it is in all sixteen languages; for lang/qa-pipeline to decide with the other rows."
+  },
+  {
+   "lang": "de",
+   "key": "signature.hintTwo",
+   "tool": "languagetool",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "at": "lass",
+   "text": "lass zwei davon anklingen: Schädel, Scherz und Grab",
+   "ownedBy": "integrate/wave3 (same text in lang/qa-pipeline)",
+   "decision": "exception",
+   "reason": "A status shown after a label (void.label's 'Scores nothing:', the signature line), written in lower case as its English is: the category lang/qa-pipeline already allowlists for signature.hint and live.powerUsed."
+  },
+  {
+   "lang": "de",
+   "key": "live.judgeUnread",
+   "tool": "hunspell",
+   "rule": "SPELLING",
+   "at": "Wertungswort",
+   "text": "Zeilen, die das bewertende Modell nicht liest: 2 (beurteilung) und 4 (einzelsieg). Eine Zeile mit einer Zahl oder einem Wertungswort (Note, Punkte, gewinnen …) wird ausgelassen, und diese Runde entscheiden dann allein die Regeln",
+   "ownedBy": "integrate/wave3 (same text in lang/qa-pipeline)",
+   "decision": "exception",
+   "reason": "A German compound (Wertung + Wort) the dictionary does not list."
+  },
+  {
+   "lang": "it",
+   "key": "void.thin",
+   "tool": "languagetool",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "at": "troppo",
+   "text": "troppo poco per essere una strofa: servono più parole diverse",
+   "ownedBy": "integrate/wave3 (same text in lang/qa-pipeline)",
+   "decision": "exception",
+   "reason": "A status shown after a label (void.label's 'Scores nothing:', the signature line), written in lower case as its English is: the category lang/qa-pipeline already allowlists for signature.hint and live.powerUsed."
+  },
+  {
+   "lang": "it",
+   "key": "void.copied",
+   "tool": "languagetool",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "at": "presa",
+   "text": "presa dall’altra strofa: una risposta dev’essere tua",
+   "ownedBy": "integrate/wave3 (same text in lang/qa-pipeline)",
+   "decision": "exception",
+   "reason": "A status shown after a label (void.label's 'Scores nothing:', the signature line), written in lower case as its English is: the category lang/qa-pipeline already allowlists for signature.hint and live.powerUsed."
+  },
+  {
+   "lang": "it",
+   "key": "signature.hintTwo",
+   "tool": "languagetool",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "at": "riecheggia",
+   "text": "riecheggia due di queste: teschio, burla e tomba",
+   "ownedBy": "integrate/wave3 (same text in lang/qa-pipeline)",
+   "decision": "exception",
+   "reason": "A status shown after a label (void.label's 'Scores nothing:', the signature line), written in lower case as its English is: the category lang/qa-pipeline already allowlists for signature.hint and live.powerUsed."
+  },
+  {
+   "lang": "pt",
+   "key": "void.thin",
+   "tool": "languagetool",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "at": "pouco",
+   "text": "pouco demais para ser uma estrofe: é preciso ter mais palavras diferentes",
+   "ownedBy": "integrate/wave3 (same text in lang/qa-pipeline)",
+   "decision": "exception",
+   "reason": "A status shown after a label (void.label's 'Scores nothing:', the signature line), written in lower case as its English is: the category lang/qa-pipeline already allowlists for signature.hint and live.powerUsed."
+  },
+  {
+   "lang": "pt",
+   "key": "void.copied",
+   "tool": "languagetool",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "at": "tirada",
+   "text": "tirada da outra estrofe: uma resposta precisa ser sua",
+   "ownedBy": "integrate/wave3 (same text in lang/qa-pipeline)",
+   "decision": "exception",
+   "reason": "A status shown after a label (void.label's 'Scores nothing:', the signature line), written in lower case as its English is: the category lang/qa-pipeline already allowlists for signature.hint and live.powerUsed."
+  },
+  {
+   "lang": "pt",
+   "key": "live.judgeUnread",
+   "tool": "languagetool",
+   "rule": "PUNCTUATION_PARAGRAPH_END",
+   "at": "regras",
+   "text": "Versos que o modelo avaliador não vai ler: 2 (avaliação) e 4 (conceito). Todo verso com um número ou uma palavra de avaliação (nota, pontuação, vencer…) fica de fora, e esta rodada passa a ser decidida só pelas regras",
+   "ownedBy": "integrate/wave3 (same text in lang/qa-pipeline)",
+   "decision": "exception",
+   "reason": "The live checklist's rows end without a full stop (live.device, live.power, live.signature); this row, the integration's, does the same. Left as it is in all sixteen languages; for lang/qa-pipeline to decide with the other rows."
+  },
+  {
+   "lang": "pt",
+   "key": "signature.hintTwo",
+   "tool": "languagetool",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "at": "ecoe",
+   "text": "ecoe duas destas: caveira, gracejo e túmulo",
+   "ownedBy": "integrate/wave3 (same text in lang/qa-pipeline)",
+   "decision": "exception",
+   "reason": "A status shown after a label (void.label's 'Scores nothing:', the signature line), written in lower case as its English is: the category lang/qa-pipeline already allowlists for signature.hint and live.powerUsed."
+  },
+  {
+   "lang": "pt",
+   "key": "auth.legacyAccountNote",
+   "tool": "hunspell",
+   "rule": "SPELLING",
+   "at": "Google",
+   "text": "Você já entrou aqui com o Google ou com um endereço de e-mail? Essa forma de entrar está desativada por enquanto, então uma conta antiga ainda não pode ser aberta. Uma conta criada aqui será nova e vazia.",
+   "ownedBy": "integrate/wave3 (same text in lang/qa-pipeline)",
+   "decision": "exception",
+   "reason": "A brand name."
+  },
+  {
+   "lang": "pl",
+   "key": "void.thin",
+   "tool": "languagetool",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "at": "za",
+   "text": "za mało na strofę: potrzeba więcej różnych słów",
+   "ownedBy": "integrate/wave3 (same text in lang/qa-pipeline)",
+   "decision": "exception",
+   "reason": "A status shown after a label (void.label's 'Scores nothing:', the signature line), written in lower case as its English is: the category lang/qa-pipeline already allowlists for signature.hint and live.powerUsed."
+  },
+  {
+   "lang": "pl",
+   "key": "void.copied",
+   "tool": "languagetool",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "at": "wzięte",
+   "text": "wzięte z drugiej strofy: odpowiedź musi być twoja własna",
+   "ownedBy": "integrate/wave3 (same text in lang/qa-pipeline)",
+   "decision": "exception",
+   "reason": "A status shown after a label (void.label's 'Scores nothing:', the signature line), written in lower case as its English is: the category lang/qa-pipeline already allowlists for signature.hint and live.powerUsed."
+  },
+  {
+   "lang": "pl",
+   "key": "signature.hintTwo",
+   "tool": "languagetool",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "at": "nawiąż",
+   "text": "nawiąż do dwóch z tych słów: czaszka, żart i grób",
+   "ownedBy": "integrate/wave3 (same text in lang/qa-pipeline)",
+   "decision": "exception",
+   "reason": "A status shown after a label (void.label's 'Scores nothing:', the signature line), written in lower case as its English is: the category lang/qa-pipeline already allowlists for signature.hint and live.powerUsed."
+  },
+  {
+   "lang": "ru",
+   "key": "void.thin",
+   "tool": "languagetool",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "at": "слишком",
+   "text": "слишком мало для строфы: нужно больше разных слов",
+   "ownedBy": "integrate/wave3 (same text in lang/qa-pipeline)",
+   "decision": "exception",
+   "reason": "A status shown after a label (void.label's 'Scores nothing:', the signature line), written in lower case as its English is: the category lang/qa-pipeline already allowlists for signature.hint and live.powerUsed."
+  },
+  {
+   "lang": "ru",
+   "key": "void.copied",
+   "tool": "languagetool",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "at": "взято",
+   "text": "взято из чужой строфы: ответ должен быть твоим",
+   "ownedBy": "integrate/wave3 (same text in lang/qa-pipeline)",
+   "decision": "exception",
+   "reason": "A status shown after a label (void.label's 'Scores nothing:', the signature line), written in lower case as its English is: the category lang/qa-pipeline already allowlists for signature.hint and live.powerUsed."
+  },
+  {
+   "lang": "ru",
+   "key": "signature.hintTwo",
+   "tool": "languagetool",
+   "rule": "UPPERCASE_SENTENCE_START",
+   "at": "отзовись",
+   "text": "отзовись на два из слов: череп, шутка и могила",
+   "ownedBy": "integrate/wave3 (same text in lang/qa-pipeline)",
+   "decision": "exception",
+   "reason": "A status shown after a label (void.label's 'Scores nothing:', the signature line), written in lower case as its English is: the category lang/qa-pipeline already allowlists for signature.hint and live.powerUsed."
+  },
+  {
+   "lang": "ru",
+   "key": "auth.legacyAccountNote",
+   "tool": "hunspell",
+   "rule": "SPELLING",
+   "at": "Google",
+   "text": "Есть старая учётная запись со входом через Google или по адресу почты? Этот способ входа пока отключён, поэтому старую учётную запись ещё нельзя открыть. Учётная запись, созданная здесь, будет новой и пустой.",
+   "ownedBy": "integrate/wave3 (same text in lang/qa-pipeline)",
+   "decision": "exception",
+   "reason": "A brand name."
+  },
+  {
+   "lang": "ar",
+   "key": "auth.legacyAccountNote",
+   "tool": "languagetool",
+   "rule": "grammar_0011_notjazem_lam_nafia",
+   "at": "لا يمكن",
+   "text": "هل سجّلت الدخول هنا من قبل عبر Google أو بعنوان بريد إلكتروني؟ طريقة الدخول هذه متوقفة حاليًا، ولذلك لا يمكن فتح حساب قديم بعد. أي حساب يُنشأ هنا سيكون جديدًا وفارغًا.",
+   "ownedBy": "integrate/wave3 (same text in lang/qa-pipeline)",
+   "decision": "exception",
+   "reason": "لا here is the negative particle (لا النافية) before يمكن, as written; the rule is about the prohibitive."
+  },
+  {
+   "lang": "ar",
+   "key": "void.label",
+   "tool": "languagetool",
+   "rule": "AR_DIACRITICS_REPLACE",
+   "at": "نقاط",
+   "text": "لا نقاط",
+   "ownedBy": "integrate/wave3 (same text in lang/qa-pipeline)",
+   "decision": "exception",
+   "reason": "The interface writes Arabic without short vowels; LanguageTool asks which vowelling of نقاط is meant (نِقَاط, points), as with the known خصم."
+  },
+  {
+   "lang": "ar",
+   "key": "live.judgeUnread",
+   "tool": "languagetool",
+   "rule": "syntax_0002_as_ka_1",
+   "at": "فيه رقم أو كلمة",
+   "text": "أسطر لن يقرأها نموذج التقييم: 2 (إصابة) و4 (تقدير). يُستبعد كل سطر فيه رقم أو كلمة تقييم (درجة، تقييم، فائز…)، وتُحسم هذه الجولة حينها بالقواعد وحدها",
+   "ownedBy": "integrate/wave3 (same text in lang/qa-pipeline)",
+   "decision": "exception",
+   "reason": "LanguageTool reads the كـ of كلمة / كلمتين as the comparative particle ka (\"as\"); it is the first letter of the word."
+  },
+  {
+   "lang": "ar",
+   "key": "signature.hintTwo",
+   "tool": "languagetool",
+   "rule": "syntax_0002_as_ka_2",
+   "at": "ردّد صدى كلمتين",
+   "text": "ردّد صدى كلمتين من هذه: جمجمة ومزحة وقبر",
+   "ownedBy": "integrate/wave3 (same text in lang/qa-pipeline)",
+   "decision": "exception",
+   "reason": "LanguageTool reads the كـ of كلمة / كلمتين as the comparative particle ka (\"as\"); it is the first letter of the word."
+  },
+  {
+   "lang": "ar",
+   "key": "verdict.copyForfeits",
+   "tool": "languagetool",
+   "rule": "AR_DIACRITICS_REPLACE",
+   "at": "نقاط",
+   "text": "الأبيات المنسوخة تخسر نقاط الحَكَم.",
+   "ownedBy": "integrate/wave3 (same text in lang/qa-pipeline)",
+   "decision": "exception",
+   "reason": "The interface writes Arabic without short vowels; LanguageTool asks which vowelling of نقاط is meant (نِقَاط, points), as with the known خصم."
+  },
+  {
+   "lang": "ar",
+   "key": "auth.legacyAccountNote",
+   "tool": "hunspell",
+   "rule": "SPELLING",
+   "at": "Google",
+   "text": "هل سجّلت الدخول هنا من قبل عبر Google أو بعنوان بريد إلكتروني؟ طريقة الدخول هذه متوقفة حاليًا، ولذلك لا يمكن فتح حساب قديم بعد. أي حساب يُنشأ هنا سيكون جديدًا وفارغًا.",
+   "ownedBy": "integrate/wave3 (same text in lang/qa-pipeline)",
+   "decision": "exception",
+   "reason": "A brand name."
+  },
+  {
+   "lang": "hi",
+   "key": "auth.legacyAccountNote",
+   "tool": "hunspell",
+   "rule": "SPELLING",
+   "at": "Google",
+   "text": "क्या आपने यहाँ पहले Google या ईमेल पते से साइन इन किया था? वह रास्ता अभी बंद है, इसलिए पुराना खाता अभी नहीं खोला जा सकता। यहाँ खाता बनाने पर एक नया, खाली खाता बनेगा।",
+   "ownedBy": "integrate/wave3 (same text in lang/qa-pipeline)",
+   "decision": "exception",
+   "reason": "A brand name."
+  },
+  {
+   "lang": "hi",
+   "key": "brain.noneShown",
+   "tool": "hunspell",
+   "rule": "SPELLING",
+   "at": "सकने",
+   "text": "इस डिवाइस पर चल सकने वाले किसी भी मॉडल ने यह नहीं दिखाया है कि वह अच्छी कविता लिखता है या कविता का ठीक निर्णय करता है, इसलिए आपका सामना लिखी हुई कविताओं वाले प्रतिद्वंद्वी से होगा और निर्णय नियमों से होगा।",
+   "ownedBy": "lang/model-eval",
+   "decision": "exception",
+   "reason": "The oblique form of सकना in चल सकने वाले (\"that can run\"); the dictionary lists the verb, not this form."
+  },
+  {
+   "lang": "ko",
+   "key": "live.judgeUnread",
+   "tool": "hunspell",
+   "rule": "SPELLING",
+   "at": "규칙만으로",
+   "text": "채점 모델이 읽지 않는 행: 2 (득점) 및 4 (등급). 숫자나 채점에 쓰는 말(점수, 평가, 이기다…)이 든 행은 빠지고, 이번 라운드는 규칙만으로 판정돼요",
+   "ownedBy": "integrate/wave3 (same text in lang/qa-pipeline)",
+   "decision": "exception",
+   "reason": "규칙 + the particles 만 and 으로; the dictionary does not list particle combinations."
+  },
+  {
+   "lang": "vi",
+   "key": "auth.legacyAccountNote",
+   "tool": "hunspell",
+   "rule": "SPELLING",
+   "at": "Google",
+   "text": "Trước đây bạn đã đăng nhập ở đây bằng Google hoặc địa chỉ email? Cách đăng nhập đó hiện đang tắt, nên tài khoản cũ chưa thể mở được. Tạo tài khoản ở đây sẽ ra một tài khoản mới, trống.",
+   "ownedBy": "integrate/wave3 (same text in lang/qa-pipeline)",
+   "decision": "exception",
+   "reason": "A brand name."
+  },
+  {
+   "lang": "th",
+   "key": "illegal.potion-last-round",
+   "tool": "hunspell",
+   "rule": "SPELLING",
+   "at": "ทก",
+   "text": "ไม่เหลือบทกลอนให้สาปแล้ว นี่คือยกสุดท้าย",
+   "ownedBy": "integrate/wave3 (same text in lang/qa-pipeline)",
+   "decision": "exception",
+   "reason": "A piece of บทกลอน as ICU cut it (บ|ทก|ลอน); the check joins two neighbouring pieces, not three. lang/qa-pipeline's own string."
+  },
+  {
+   "lang": "id",
+   "key": "auth.legacyAccountNote",
+   "tool": "hunspell",
+   "rule": "SPELLING",
+   "at": "Google",
+   "text": "Dulu pernah masuk di sini dengan Google atau alamat email? Cara masuk itu sedang dimatikan, jadi akun lama belum bisa dibuka. Membuat akun di sini menghasilkan akun baru yang kosong.",
+   "ownedBy": "integrate/wave3 (same text in lang/qa-pipeline)",
+   "decision": "exception",
+   "reason": "A brand name."
+  }
+ ],
+ "meaningFlags": [
+  {
+   "key": "verdict.notTaken",
+   "langs": [
+    "de",
+    "pl",
+    "ar",
+    "hi",
+    "zh",
+    "ja",
+    "ko",
+    "vi"
+   ],
+   "reading": "Read against the English ('{criterion} not taken', shown as 'wit: not taken'): the pattern '<criterion>: not won/taken' holds in each. MADLAD misreads the criterion's own word, which is lang/qa-pipeline's glossary term (Witz, dowcip, الظُّرف, हाज़िरजवाबी, 机锋, 機知, 재치, sắc sảo): 'joke', 'status', 'attendance', 'airfield', 'notification', 'witchcraft', 'refinement'.",
+   "decision": "meaning holds by my reading; for a native reader"
+  },
+  {
+   "key": "verdict.notTaken",
+   "langs": [
+    "th"
+   ],
+   "reading": "'ไหวพริบ: ไม่ได้มา' came back as 'He didn't come.' ไม่ได้มา can be read as 'did not come' as well as 'not obtained'. Not changed: I cannot tell which a Thai reader takes first.",
+   "decision": "open: for a native reader"
+  },
+  {
+   "key": "verdict.copyForfeits",
+   "langs": [
+    "ar",
+    "th"
+   ],
+   "reading": "ar 'الأبيات المنسوخة تخسر نقاط الحَكَم' (copied verses lose the judge's points; MADLAD read المنسوخة as 'scanned'); th 'บทกลอนที่ลอกมาจะเสียคะแนนจากกรรมการ' (back: 'Copy poems will lose points from the jury'). Both say what the English says.",
+   "decision": "meaning holds by my reading; for a native reader"
+  }
+ ],
+ "meaningSummary": "Over every string of the scratch merge, the meaning check left 11 open flags on the strings in question (the rows above) and 4 on others (ar form.acrostic.name, ar device.alliteration.name: lang/qa-pipeline form names, not this work).",
+ "proposals": [
+  {
+   "lang": "ar",
+   "key": "battle.lang.written",
+   "old": "{language}: تواجه خصم الأبيات المكتوبة، لأن {model} لم يُثبت أنه يجيد كتابة الشعر بهذه اللغة.",
+   "new": "{language}: تواجه خصم الأبيات المكتوبة، لأن {model} لم يُثبت أنه يجيد كتابة الأبيات بهذه اللغة.",
+   "pipeline": "adopted",
+   "back": "Thai: faces the challenge of written verse, as Gemma 4 E2B has not proven to be proficient in writing verse in this language.",
+   "applied": true
+  },
+  {
+   "lang": "ar",
+   "key": "brain.noneShown",
+   "old": "لم يُثبت أيّ نموذج يستطيع هذا الجهاز تشغيله أنه يجيد كتابة الشعر أو الحكم عليه، لذا تواجه خصم الأبيات المكتوبة ويكون الحكم بالقواعد.",
+   "new": "لم يُثبت أيّ نموذج يستطيع هذا الجهاز تشغيله أنه يجيد كتابة الأبيات أو الحكم عليها، لذا تواجه خصم الأبيات المكتوبة ويكون الحكم بالقواعد.",
+   "pipeline": "adopted",
+   "back": "No model that can be operated by this device has proven to write or judge verses, so it faces the counterpart of written verses and rules are judged.",
+   "applied": true
+  },
+  {
+   "lang": "ja",
+   "key": "badge.writtenJudged",
+   "old": "書かれた詩を出す相手・審査は{model}",
+   "new": "あらかじめ書かれた詩を出す相手・審査は{model}",
+   "pipeline": "adopted",
+   "back": "Gemma 4 E2B is the contestant who submits a pre-written poem.",
+   "applied": false
+  },
+  {
+   "lang": "ja",
+   "key": "badge.written",
+   "old": "書かれた詩を出す相手",
+   "new": "あらかじめ書かれた詩を出す相手",
+   "pipeline": "rejected: the meaning check flags it: back-translation cosine 0.4413, LaBSE 0.4858 (“A person who gives you a pre-written poem.”)",
+   "applied": false
+  },
+  {
+   "lang": "th",
+   "key": "brain.failed",
+   "old": "โมเดลเริ่มทำงานบนอุปกรณ์เครื่องนี้ไม่ได้ คุณยังเล่นกับคู่ต่อสู้ที่ใช้บทกลอนเขียนไว้แล้วได้",
+   "new": "โมเดลเริ่มทำงานบนอุปกรณ์เครื่องนี้ไม่ได้ คุณยังเล่นกับคู่ต่อสู้ที่ใช้บทกลอนที่เขียนไว้แล้วได้",
+   "pipeline": "adopted",
+   "back": "The model can't start working on this device. You can still play with an opponent who has already written a poem.",
+   "applied": true
+  },
+  {
+   "lang": "th",
+   "key": "brain.written",
+   "old": "กำลังเล่นกับคู่ต่อสู้ที่ใช้บทกลอนเขียนไว้แล้ว",
+   "new": "กำลังเล่นกับคู่ต่อสู้ที่ใช้บทกลอนที่เขียนไว้แล้ว",
+   "pipeline": "adopted",
+   "back": "Playing with an opponent who's already written a poem.",
+   "applied": true
+  },
+  {
+   "lang": "th",
+   "key": "brain.writtenReload",
+   "old": "กำลังเล่นกับคู่ต่อสู้ที่ใช้บทกลอนเขียนไว้แล้ว คุณอัญเชิญโมเดลได้ทุกเมื่อด้วยการโหลดหน้านี้ใหม่",
+   "new": "กำลังเล่นกับคู่ต่อสู้ที่ใช้บทกลอนที่เขียนไว้แล้ว คุณอัญเชิญโมเดลได้ทุกเมื่อด้วยการโหลดหน้านี้ใหม่",
+   "pipeline": "adopted",
+   "back": "Playing with an opponent who uses the poem you've already written. You can invite a model at any time by reloading this page.",
+   "applied": true
+  },
+  {
+   "lang": "th",
+   "key": "badge.writtenJudged",
+   "old": "คู่ต่อสู้ที่ใช้บทกลอนเขียนไว้แล้ว · ตัดสินโดย {model}",
+   "new": "คู่ต่อสู้ที่ใช้บทกลอนที่เขียนไว้แล้ว · ตัดสินโดย {model}",
+   "pipeline": "adopted",
+   "back": "Fighter using a pre-written poem · Judged by Gemma 4 E2B",
+   "applied": true
+  },
+  {
+   "lang": "th",
+   "key": "badge.written",
+   "old": "คู่ต่อสู้ที่ใช้บทกลอนเขียนไว้แล้ว",
+   "new": "คู่ต่อสู้ที่ใช้บทกลอนที่เขียนไว้แล้ว",
+   "pipeline": "adopted",
+   "back": "The opponent who uses a pre-written poem",
+   "applied": true
+  },
+  {
+   "lang": "th",
+   "key": "theatre.writtenHint",
+   "old": "กำลังเล่นกับคู่ต่อสู้ที่ใช้บทกลอนเขียนไว้แล้ว อัญเชิญโมเดลที่หน้าประชันเพื่อเผชิญหน้ากับมันที่นี่",
+   "new": "กำลังเล่นกับคู่ต่อสู้ที่ใช้บทกลอนที่เขียนไว้แล้ว อัญเชิญโมเดลที่หน้าประชันเพื่อเผชิญหน้ากับมันที่นี่",
+   "pipeline": "adopted",
+   "back": "Playing with an opponent who uses a pre-written poem, inviting the model to face it here.",
+   "applied": true
+  },
+  {
+   "lang": "th",
+   "key": "battle.lang.written",
+   "old": "{language}: คุณจะพบกับคู่ต่อสู้ที่ใช้บทกลอนเขียนไว้แล้ว เพราะ {model} ยังไม่ได้แสดงให้เห็นว่าเขียนบทกลอนภาษานี้ได้ดี",
+   "new": "{language}: คุณจะพบกับคู่ต่อสู้ที่ใช้บทกลอนที่เขียนไว้แล้ว เพราะ {model} ยังไม่ได้แสดงให้เห็นว่าเขียนบทกลอนภาษานี้ได้ดี",
+   "pipeline": "adopted",
+   "back": "Japan: You're going to encounter an opponent who uses already written poetry, because Gemma 4 E2B hasn't yet shown that she is good at writing poems in this language.",
+   "applied": true
+  },
+  {
+   "lang": "th",
+   "key": "brain.noneShown",
+   "old": "ยังไม่มีโมเดลใดที่อุปกรณ์นี้ใช้งานได้แสดงให้เห็นว่าเขียนหรือตัดสินบทกลอนได้ดี คุณจึงจะพบกับคู่ต่อสู้ที่ใช้บทกลอนเขียนไว้แล้ว และตัดสินด้วยกฎ",
+   "new": "ยังไม่มีโมเดลใดที่อุปกรณ์นี้ใช้งานได้แสดงให้เห็นว่าเขียนหรือตัดสินบทกลอนได้ดี คุณจึงจะพบกับคู่ต่อสู้ที่ใช้บทกลอนที่เขียนไว้แล้ว และตัดสินด้วยกฎ",
+   "pipeline": "adopted",
+   "back": "There's no working model of this device that's shown to be good at writing or judging poems, so you're going to have a contestant who uses an already-written poem and judges by rules.",
+   "applied": true
+  },
+  {
+   "lang": "id",
+   "key": "brain.failed",
+   "old": "Model tidak bisa berjalan di perangkat ini. Kamu tetap bisa bermain melawan lawan bersyair tertulis.",
+   "new": "Model tidak bisa berjalan di perangkat ini. Kamu tetap bisa bermain melawan lawan dengan syair tertulis.",
+   "pipeline": "adopted",
+   "back": "Models can't run on this device, but you can still play against opponents with written poems.",
+   "applied": true
+  },
+  {
+   "lang": "id",
+   "key": "brain.written",
+   "old": "Bermain melawan lawan bersyair tertulis.",
+   "new": "Bermain melawan lawan dengan syair tertulis.",
+   "pipeline": "adopted",
+   "back": "Play against an opponent with a written poem.",
+   "applied": true
+  },
+  {
+   "lang": "id",
+   "key": "brain.writtenReload",
+   "old": "Bermain melawan lawan bersyair tertulis. Kamu bisa memanggil model kapan saja dengan memuat ulang halaman.",
+   "new": "Bermain melawan lawan dengan syair tertulis. Kamu bisa memanggil model kapan saja dengan memuat ulang halaman.",
+   "pipeline": "adopted",
+   "back": "Play against an opponent with a written poem. You can call the model at any time by reloading the page.",
+   "applied": true
+  },
+  {
+   "lang": "id",
+   "key": "badge.writtenJudged",
+   "old": "Lawan bersyair tertulis · dinilai {model}",
+   "new": "Lawan dengan syair tertulis · dinilai {model}",
+   "pipeline": "adopted",
+   "back": "Opponent with written poem · rated Gemma 4 E2B",
+   "applied": true
+  },
+  {
+   "lang": "id",
+   "key": "badge.written",
+   "old": "Lawan bersyair tertulis",
+   "new": "Lawan dengan syair tertulis",
+   "pipeline": "adopted",
+   "back": "Opponents with written poetry",
+   "applied": true
+  },
+  {
+   "lang": "id",
+   "key": "battle.lang.written",
+   "old": "{language}: kamu berhadapan dengan lawan bersyair tertulis, karena {model} belum terbukti mampu menulis syair dengan baik dalam bahasa ini.",
+   "new": "{language}: lawanmu memakai syair tertulis, karena {model} belum terbukti mampu menulis syair dengan baik dalam bahasa ini.",
+   "pipeline": "adopted",
+   "back": "Thai: your opponent uses written poetry, because Gemma 4 E2B has not proven to be able to write poetry well in this language.",
+   "applied": true
+  },
+  {
+   "lang": "id",
+   "key": "brain.noneShown",
+   "old": "Belum ada model yang bisa dijalankan perangkat ini yang terbukti mampu menulis atau menilai syair dengan baik, jadi kamu berhadapan dengan lawan bersyair tertulis dan penilaian dilakukan dengan aturan.",
+   "new": "Belum ada model yang bisa dijalankan perangkat ini yang terbukti mampu menulis atau menilai syair dengan baik, jadi lawanmu memakai syair tertulis dan penilaian dilakukan dengan aturan.",
+   "pipeline": "adopted",
+   "back": "There's no running model of this device that's proven to write or evaluate poetry well, so your opponent uses written poetry and the evaluation is done by rules.",
+   "applied": true
+  },
+  {
+   "lang": "id",
+   "key": "theatre.writtenHint",
+   "old": "Bermain melawan lawan bersyair tertulis. Panggil model di halaman pertarungan untuk menghadapinya di sini.",
+   "new": "Bermain melawan lawan dengan syair tertulis. Panggil model di halaman pertarungan untuk menghadapinya di sini.",
+   "pipeline": "rejected: further from the English than the text it would replace: cosine 0.9063 → 0.8205, LaBSE 0.876 → 0.8374 (“Play against an opponent with a written poem. Call the model on the battle page to face him here.”)",
+   "applied": false
+  }
+ ]
+}

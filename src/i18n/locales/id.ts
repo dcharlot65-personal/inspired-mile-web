@@ -302,14 +302,14 @@ const id: Record<string, string> = {
   'brain.ready': '{model} siap',
   'brain.loaded': '{model} sudah dimuat dan berjalan di perangkat ini.',
   'brain.loadedJudgeOnly': '{model} sudah dimuat di perangkat ini. Modelnya kecil: ia menilai syair, sedangkan lawan memainkan syair yang sudah ditulis.',
-  'brain.failed': 'Model tidak bisa berjalan di perangkat ini. Kamu tetap bisa bermain melawan lawan bersyair tertulis.',
+  'brain.failed': 'Model tidak bisa berjalan di perangkat ini. Kamu tetap bisa bermain melawan lawan dengan syair tertulis.',
   'brain.noModel': 'Bermain tanpa model.',
-  'brain.written': 'Bermain melawan lawan bersyair tertulis.',
+  'brain.written': 'Bermain melawan lawan dengan syair tertulis.',
   'brain.noWebgpu': 'Peramban ini tidak punya WebGPU, jadi lawan memainkan syair yang sudah ditulis dan penilaian memakai aturan. Selebihnya berjalan seperti biasa.',
   'brain.canRun': 'Perangkat ini bisa menjalankan {model} di peramban. Unduhan pertamanya {size}, sesudah itu tersimpan.',
   'brain.summon': 'Panggil {model} ({size})',
   'brain.summonLighter': 'Panggil {model} ({size}): unduhan yang lebih ringan',
-  'brain.writtenReload': 'Bermain melawan lawan bersyair tertulis. Kamu bisa memanggil model kapan saja dengan memuat ulang halaman.',
+  'brain.writtenReload': 'Bermain melawan lawan dengan syair tertulis. Kamu bisa memanggil model kapan saja dengan memuat ulang halaman.',
 
   // --- Duel: satu ronde ---
   'round.label': 'Ronde {n} dari {total}',
@@ -428,8 +428,8 @@ const id: Record<string, string> = {
   'rarity.epic': 'Epik',
   'rarity.legendary': 'Legendaris',
   'badge.onDevice': '{model} · di perangkat ini',
-  'badge.writtenJudged': 'Lawan bersyair tertulis · dinilai {model}',
-  'badge.written': 'Lawan bersyair tertulis',
+  'badge.writtenJudged': 'Lawan dengan syair tertulis · dinilai {model}',
+  'badge.written': 'Lawan dengan syair tertulis',
   'stats.rounds': 'Ronde dimainkan',
   'stats.duels': 'Duel',
   'stats.won': 'Ronde dimenangi',
@@ -470,9 +470,9 @@ const id: Record<string, string> = {
   'theatre.judging': 'Menilai…',
   // The language picker and the verdict, when the loaded model is not used in the duel's language
   // (measured: docs/language/MODEL-EVAL.md).
-  'battle.lang.written': '{language}: kamu berhadapan dengan lawan bersyair tertulis, karena {model} belum terbukti mampu menulis syair dengan baik dalam bahasa ini.',
+  'battle.lang.written': '{language}: lawanmu memakai syair tertulis, karena {model} belum terbukti mampu menulis syair dengan baik dalam bahasa ini.',
   'battle.lang.rules': '{language}: dinilai dengan aturan, karena {model} belum terbukti mampu menjadi juri syair yang baik dalam bahasa ini.',
-  'brain.noneShown': 'Belum ada model yang bisa dijalankan perangkat ini yang terbukti mampu menulis atau menilai syair dengan baik, jadi kamu berhadapan dengan lawan bersyair tertulis dan penilaian dilakukan dengan aturan.',
+  'brain.noneShown': 'Belum ada model yang bisa dijalankan perangkat ini yang terbukti mampu menulis atau menilai syair dengan baik, jadi lawanmu memakai syair tertulis dan penilaian dilakukan dengan aturan.',
 };
 
 export default id;
