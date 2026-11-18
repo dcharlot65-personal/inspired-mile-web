@@ -41,7 +41,7 @@ English is the source of truth (`src/lib/cards.ts`) and is not repeated in the p
   Nurse (the label 護士 is a hospital nurse; the alias is 奶媽), and Spanish «Conde Paris» (the label's
   «París» is the city, stressed on its last syllable; Menéndez y Pelayo prints the character «Páris», stressed
   on the first, which today's spelling writes Paris).
-- `derived`: cut by a fixed rule from a sourced label. Two rules exist. (1) The card shows one word of a
+- `derived`: cut by a fixed rule from a sourced label. Three rules exist. (1) The card shows one word of a
   longer name ("Brutus" from "Marcus Junius Brutus", "Cassius", "Bottom"): the word in the same position is
   taken when the label in that language has the same number of words, otherwise the whole label is used.
   (2) A title character whose own item has no label in the language takes the name from the title of the
@@ -209,11 +209,19 @@ Read this before treating any language as finished.
   of 1858–1859, all eleven plays, and Ragazzoni's Raven), French 51 (Hugo; Mallarmé's Raven, Saladin's
   Frankenstein, Rabbe's Shelley), German 50 (Schlegel's Romeo, Dream, Merchant and Julius Caesar; Dorothea
   Tieck's Macbeth; Wieland's 1762–1766 prose for Hamlet, the Tempest, Twelfth Night, Othello, Lear and Henry
-  IV; Lachmann's Raven, Strodtmann's Shelley), Russian 35 (Mikhalovsky's Romeo, Gnedich's Hamlet, Satin's Tempest,
+  IV; Lachmann's Raven, Strodtmann's Shelley), Russian 34 (Mikhalovsky's Romeo, Gnedich's Hamlet, Satin's Tempest,
   Kozlov's Julius Caesar, Weinberg's Othello and Merchant, Kroneberg's Twelfth Night, and the poems), Spanish 29,
   Polish 28, Japanese 13 (Romeo and Juliet only), Portuguese 6. Arabic, Hindi, Chinese, Korean, Vietnamese, Thai and Indonesian have none. Every
   other line is `NEW, unsourced`.
-- **Where a published translation exists but was not used**, and why:
+- **Where a published translation exists but was not used**, and why (also listed under "Published lines found
+  and not used" below): Russian LD-002, Gumilyov's Rime of 1919, set aside in the third pass while its Russian
+  copyright is in doubt. He was executed in 1921 and rehabilitated in 1992; the Civil Code counts a rehabilitated
+  author's term from the year after rehabilitation (art. 1281 p. 5), and whether that reaches a work whose term had
+  already run out is a matter of how art. 6 of the law that put part IV into force is read. Two readings in this
+  project disagreed and neither is a lawyer's. ru.wikisource carries the text as public domain. Apollon
+  Korinfsky's version of 1894 (ru.wikisource «Старый моряк (Кольридж)») was looked at as a replacement: it is too
+  free to give the line ("Water, water, every where"). The card has the game's own line, marked new, until a
+  lawyer settles it. Earlier rounds:
   - German: Schlegel–Tieck's Hamlet, Tempest, Twelfth Night, Othello and Lear are in the public domain, but
     Project Gutenberg's German files for those plays (its index GUTINDEX.ALL, read from the official mirror
     gutenberg.pglaf.org because www.gutenberg.org answered HTTP 503 all day on 2026-11-16) are Wieland's
@@ -279,20 +287,19 @@ Read this before treating any language as finished.
   of the telling words with them: Thai เวลา (time; also "when"), หน้า (face; "in front of"), เพื่อน (friend; an
   old pronoun), Vietnamese thần (god; an old "I"), trái (fruit, left; "contrary to"), thành (city; "into"),
   German "fern", Polish "dobra". Otherwise the lists are used as published. A line with no telling word of its
-  own leaves the English words to decide, as before. Seven lines have none although the English line has some:
-  hi UW-002, zh LD-004, ja VC-003, ja PT-005, ja OL-004, vi SM-001 and th LD-004 (their words are function
-  words, or shorter than the language's measure, or single Chinese or Japanese characters, which do not count:
-  花, 草, 愛, 力); a test pins that list.
+  own leaves the English words to decide, as before. Seven lines have none although the English line has some
+  telling words: hi UW-002, zh LD-004, ja VC-003, ja PT-005, ja OL-004, vi SM-001 and th LD-004 (their words are
+  function words, or shorter than the language's measure, or single Chinese or Japanese characters, which do not
+  count: 花, 草, 愛, 力); and Viola's IL-001 ("I am not what I am") in es, fr, de, pt, ja, vi and id, whose English
+  line, all little words, the engine now echoes by its phrase "not what". A test pins that list.
 - **Accidental landings** were measured over every pack's written-opponent and acrostic verses, which were
-  not written for any card, against every character card (`accidents.test.ts`). English: the signature lands
-  on 2.2% of verse–card pairs and the invocation on 3.8% of verses. After this round every other language is
-  at or under 2.6% for the signature and 2.3% for the invocation (German "Wärterin", the Nurse's whole name, as
-  English counts "Nurse"), except the Vietnamese signature, 6.0%: most of it is three
-  adverbs, chẳng ("not"), hãy (the imperative) and giờ ("now"), which neither stopwords-iso nor Wiktionary's
-  function-word classes list (Wiktionary files Vietnamese adverbs with content words, so that class could not
-  be added). English lands on the same kind of word ("again", "only", "once"). Before this round: Vietnamese
-  12.5% and 31%, Thai 10.4%, Korean 4.7%, Japanese 3.9% (the independent check's own probe, re-run on the old
-  code at 83e17c4, gave the same numbers).
+  not written for any card, against every character card (`accidents.test.ts`). In the third pass (Mac Studio,
+  2026-11-17), with the engine's two-word rule: English lands the signature on 0.18% of verse–card pairs and the
+  invocation on none; every other language is at or under 0.33% for the signature (Arabic; Vietnamese 0.27%)
+  and none for the invocation. The second pass measured English at 2.2% and 3.8% under the old one-word rule,
+  with Vietnamese at 6.0% and a German 2.3% that the check showed to be «wartest» invoking the Nurse through a
+  shared stem, not the Nurse's name. Before the second pass: Vietnamese 12.5% and 31%, Thai 10.4%, Korean
+  4.7%, Japanese 3.9%. These are the packs' own 34 to 53 verses per language; no player verses were measured.
 - **German Hamlet is Wieland's.** "Seyn oder nicht seyn—Das ist die Frage" is Wieland's 1766 prose (Gutenberg
   #7276), where the file has "Seyn oder nicht seyn--Das ist die Frage"; "--" is Gutenberg's plain-text dash and
   is shown as "—". Schlegel's canonical "Sein oder Nichtsein, das ist hier die Frage" was looked for again
