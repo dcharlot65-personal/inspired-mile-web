@@ -3,7 +3,7 @@ import { beforeAll, describe, expect, it } from 'vitest';
 import { CARD_CATALOG, getCardById, type Card } from '../cards';
 import { DEVICES, checkSignature, signatureNeeded, signatureWords } from '../verse/devices';
 import { createDuel, scoreVerse } from '../verse/duel';
-import { capitalOnlyNames, localCharacterNames, localSignatureWords, saysWord, wordKey } from '../verse/echo';
+import { articleOnlyNames, capitalOnlyNames, localCharacterNames, localSignatureWords, saysWord, wordKey } from '../verse/echo';
 import { getForm } from '../verse/forms';
 import { loadAllPacks, PACK_LANGS } from '../verse/packs';
 import { wordsOf } from '../verse/text';
@@ -386,12 +386,15 @@ describe('the invocation in the language of the duel', () => {
     for (const p of packs) {
       const names = localCharacterNames(p.lang);
       const capital = capitalOnlyNames(p.lang);
+      // A role counts after a definite article in German, as English counts "the nurse" (articleOnlyNames).
+      const article = articleOnlyNames(p.lang);
       for (const c of CARD_CATALOG) {
         const name = p.cards[c.id].name;
         if (c.type !== 'Character' || !name || c.id === 'SM-001') continue;
         const counts = names.includes(name);
         if (!counts) alone.push(`${p.lang} ${name}`);
-        const r = DEVICES.invocation.check(capital.includes(name) ? `x, ${name}` : name, { lang: p.lang, names: [] });
+        const verse = capital.includes(name) ? `x, ${name}` : article.includes(name) ? `${p.definite![0]} ${name}` : name;
+        const r = DEVICES.invocation.check(verse, { lang: p.lang, names: [] });
         expect([p.lang, c.id, name, r.met]).toEqual([p.lang, c.id, name, counts]);
       }
       expect([p.lang, names.length > 20]).toEqual([p.lang, true]);

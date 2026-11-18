@@ -42,8 +42,9 @@
  * ordinary words small, such a name counts by itself only written with a capital inside a sentence («y Bruto alzó el
  * puñal», not «Bruto es el sueldo»); in German (whose nouns all take a capital) and in scripts without capitals, never
  * by itself, only inside a longer name. A character English calls on only in a phrase (Bottom) is called on only in a
- * longer name in every language; one whose English name is a role with its article ("The Nurse") counts by its local
- * name as written (奶妈, «Кормилица»), as English counts "the nurse".
+ * longer name in every language; one whose English name is a role with its article ("The Nurse") counts by its whole
+ * local name as English counts "the nurse": after a definite article in German («die Wärterin»), with a capital inside
+ * a sentence in Russian («Кормилица»), as written in Chinese (奶妈); never by a word of a longer one (French «Nourrice»).
  *
  * Unspaced, a name is not a piece of a longer word. The segmenter cuts a word it does not know into pieces, and a piece
  * can be a name (安东尼奥, "Antonio", into 安东尼, Mark Antony, and 奥), so its words do not settle it alone:
@@ -270,6 +271,8 @@ interface Lists {
   native: Set<string>;
   /** Thai: the card text's own words (stop words, the lines' words), which the invocation reads as words besides the pronunciation table's. */
   thaiWords: Set<string>;
+  /** German: the definite articles (pack.definite), folded. */
+  definite: Set<string>;
 }
 const lists = new Map<string, Lists>();
 function listsFor(lang: string): Lists {
@@ -296,6 +299,7 @@ function listsFor(lang: string): Lists {
     bound: new Set([...(pack?.transliteration?.bound ?? '')]),
     native: new Set(pack?.transliteration?.native ?? []),
     thaiWords: new Set(b === 'th' ? [...(pack?.stop ?? []), ...(pack?.compounds ?? [])].map((w) => thaiAm(fold(w))) : []),
+    definite: new Set((pack?.definite ?? []).map((w) => fold(w))),
   };
   if (pack) lists.set(b, l);
   return l;
@@ -607,10 +611,14 @@ export function localSignature(card: Card, verse: string, lang: string, english:
 // --- Invocation: character names as each language writes them ---
 
 const SPLIT = /[\s・·‧]+/u;
-/** A name that counts by itself, and whether only written with a capital inside a sentence (an ordinary word too). */
+/**
+ * A name that counts by itself; whether only written with a capital inside a sentence (an ordinary word too); and whether
+ * only after a definite article (a role, as English counts "the nurse").
+ */
 interface LocalName {
   name: string;
   capital: boolean;
+  article: boolean;
 }
 const nameCache = new Map<string, LocalName[]>();
 /** The titles the English card names begin with (cards.ts: Prince Escalus, Friar Lawrence, King Claudius, Lady Macbeth, Lord Byron). */
@@ -645,7 +653,11 @@ function ordinaryKind(word: string, lang: string): 'free' | 'capital' | 'never' 
  * character). A name of one word, a word of a name or an alias that is an ordinary word of the language (pack.ordinary)
  * counts by itself only as ordinaryKind says. As devices.ts has it for English, a character whose English name is an
  * ordinary word (Bottom) counts only by a longer name, and one whose English name is a role with its article (The
- * Nurse) by its local name and aliases as written.
+ * Nurse) by its whole local name and aliases, never a word of them ("Nurse"; French «Nourrice» of «La Nourrice»): where
+ * that name is one word, as English counts "the nurse" and not "a nurse", after a definite article where the language
+ * writes the noun with a capital anyway (German «die Wärterin», not «eine Wärterin»: pack.definite), only with a capital
+ * inside a sentence where it writes the noun small («Кормилица», not «наша кормилица», "our breadwinner"), and as
+ * written in a script without capitals or articles (奶妈).
  */
 function localNames(lang: string): LocalName[] {
   const b = baseLang(lang);
@@ -657,8 +669,12 @@ function localNames(lang: string): LocalName[] {
   const { common } = listsFor(b);
   const clean = (s: string) => s.replace(/^[^\p{L}]+|[^\p{L}\p{M}]+$/gu, '');
   const oneWord = (w: string) => !SPLIT.test(w);
-  const out = new Map<string, boolean>();
-  const add = (name: string, capital: boolean) => out.set(name, (out.get(name) ?? true) && capital);
+  const out = new Map<string, { capital: boolean; article: boolean }>();
+  const add = (name: string, how: { capital: boolean; article: boolean }) => {
+    const o = out.get(name);
+    out.set(name, o ? { capital: o.capital && how.capital, article: o.article && how.article } : how);
+  };
+  const free = { capital: false, article: false };
   for (const c of CARD_CATALOG) {
     if (c.type !== 'Character') continue;
     const text = pack.cards[c.id];
@@ -669,13 +685,14 @@ function localNames(lang: string): LocalName[] {
     // English counts "The Nurse", an ordinary phrase, whole: the local name of such a card is that phrase.
     const role = /^The\s/.test(en) && text.nameSource !== 'kept';
     /** May this name or word count by itself, and how? null: not. */
-    const alone = (w: string, whole: boolean): boolean | null => {
+    const alone = (w: string, whole: boolean): { capital: boolean; article: boolean } | null => {
       if (letterCount(w) < min) return null;
-      if (!oneWord(w)) return whole || !isStop(w, b) ? false : null;
-      if (role && whole) return false;
+      if (role && !whole) return null;
+      if (!oneWord(w)) return whole || !isStop(w, b) ? free : null;
+      if (role) return listsFor(b).definite.size ? { capital: false, article: true } : { capital: /^\p{Lu}/u.test(w), article: false };
       if (phraseOnly || isStop(w, b) || (!whole && common.has(wordKey(w, b)))) return null;
       const k = ordinaryKind(w, b);
-      return k === 'never' ? null : k === 'capital';
+      return k === 'never' ? null : { capital: k === 'capital', article: false };
     };
     const full = clean(text.name.replace(/,.*$/u, ''));
     if (full) {
@@ -704,7 +721,7 @@ function localNames(lang: string): LocalName[] {
       if (a !== null) add(w, a);
     }
   }
-  const names = [...out].map(([name, capital]) => ({ name, capital }));
+  const names = [...out].map(([name, how]) => ({ name, ...how }));
   nameCache.set(b, names);
   return names;
 }
@@ -717,6 +734,11 @@ export function localCharacterNames(lang: string): string[] {
 /** The names that count by themselves only written with a capital inside a sentence (ordinaryKind 'capital'). */
 export function capitalOnlyNames(lang: string): string[] {
   return localNames(lang).filter((n) => n.capital).map((n) => n.name);
+}
+
+/** The names that count only after a definite article (a role in German, as English counts "the nurse"). */
+export function articleOnlyNames(lang: string): string[] {
+  return localNames(lang).filter((n) => n.article).map((n) => n.name);
 }
 
 /**
@@ -914,7 +936,7 @@ function saidNameUnspaced(name: string, verse: string, lang: string): string[] |
 }
 
 /** The verse's words that say this name (one or more words, in a row), folded; or null. */
-function saidName(name: string, verse: string, lang: string, capital = false): string[] | null {
+function saidName(name: string, verse: string, lang: string, capital = false, article = false): string[] | null {
   const b = baseLang(lang);
   if (UNSPACED.has(b)) return saidNameUnspaced(name, verse, b);
   // The name's words as it writes them (wordsOf lower-cases), so a declined form can be held to the name's capital.
@@ -924,16 +946,35 @@ function saidName(name: string, verse: string, lang: string, capital = false): s
     if (!n.every((w, j) => saysNameWord(w, v[i + j].word, b))) continue;
     // A name that is also an ordinary word counts only written as a name: with a capital, not opening a sentence.
     if (capital && (v[i].opens || !/^\p{Lu}/u.test(v[i].word))) continue;
+    // A role counts after a definite article, as English counts "the nurse".
+    if (article && !(i > 0 && listsFor(b).definite.has(fold(v[i - 1].word)))) continue;
     return v.slice(i, i + n.length).map((x) => fold(x.word));
   }
   return null;
 }
 
+/**
+ * In another language's duel, does an English name the verse says (devices.ts, said as English writes it) count? A name
+ * that is also an ordinary word of the duel's language (pack.ordinary) counts as that language's own such name does
+ * (ordinaryKind): Italian, Spanish and Portuguese «medusa» (a jellyfish) and Italian «rossetti» (lipsticks) only as
+ * «Medusa» or «Rossetti» inside a sentence; French «viola» ("raped") likewise; German «Puck» (the ice-hockey puck) not by
+ * itself. Any other English name counts as before, and so does every name in an English duel.
+ */
+export function englishNameCounts(name: string, verse: string, lang: string): boolean {
+  const b = baseLang(lang);
+  if (b === 'en' || /\s/.test(name.trim())) return true;
+  const kind = ordinaryKind(name, b);
+  if (kind === 'free') return true;
+  if (kind === 'never' || UNSPACED.has(b)) return false;
+  const k = englishKey(name, b);
+  return wordsWrittenAt(verse, b).some((w) => englishKey(w.word, b) === k && !w.opens && /^\p{Lu}/u.test(w.word));
+}
+
 /** The first localised name the verse says, with the verse's words that say it; or undefined. */
 export function saidLocalName(verse: string, lang: string): { name: string; words: string[] } | undefined {
   if (baseLang(lang) === 'en') return undefined;
-  for (const { name, capital } of localNames(lang)) {
-    const words = saidName(name, verse, lang, capital);
+  for (const { name, capital, article } of localNames(lang)) {
+    const words = saidName(name, verse, lang, capital, article);
     if (words) return { name, words };
   }
   return undefined;

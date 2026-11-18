@@ -661,8 +661,9 @@ describe('a name is not read out of a piece of another word (Chinese, Japanese, 
 // the invocation knows (thNameAt).
 describe('a name inside a longer foreign name is a piece of it (Chinese, Thai)', () => {
   const localName = (verse: string, lang: string) => saidLocalName(verse, lang)?.name;
-  it('the third check’s verses: Huddersfield, Deepak, Hyde Park, Antonia, Blackpool, Apollonius, Perseus, San Antonio, Paracelsus', () => {
+  it('the third check’s verses: Aegis, Huddersfield, Deepak, Hyde Park, Antonia, Blackpool, Apollonius, Yan Jici, Perseus, San Antonio, Paracelsus', () => {
     for (const [l, v] of [
+      ['zh', '宙斯盾舰在海上巡航'], ['zh', '美国的宙斯盾舰驶入港口'], ['zh', '严济慈是物理学家'], // words no rule tells: Wikipedia's titles
       ['zh', '哈德斯菲尔德下着雨'], ['zh', '迪帕克在台上唱歌'], ['zh', '我们在海德帕克散步'], ['zh', '安东尼娅是我的妹妹'],
       ['zh', '他在布莱克浦度假'], ['zh', '罗德岛的阿波罗尼奥斯写了史诗'],
       ['th', 'เพอร์เซอุสขี่ม้าบินข้ามทะเล'], ['th', 'กลุ่มดาวเปอร์เซอุสสว่างคืนนี้'], ['th', 'ฉันบินไปซานแอนโทนีโอเมื่อวาน'],
@@ -696,6 +697,15 @@ describe('a name inside a longer foreign name is a piece of it (Chinese, Thai)',
     }
     expect(miss).toEqual([]);
   });
+  it('a word that holds a name and names something else is on the list from its source; one that names the character is not', () => {
+    const held = (l: string, n: string) => getCardText(l)!.containing?.[n] ?? [];
+    for (const [l, n, w] of [['zh', '宙斯', '宙斯盾'], ['zh', '济慈', '严济慈'], ['zh', '帕克', '帕克城'], ['th', 'เซอุส', 'เพอร์เซอุส'], ['th', 'ซุส', 'พาราเซลซุส']] as const) {
+      expect([l, n, w, held(l, n).includes(w)]).toEqual([l, n, w, true]);
+    }
+    // «宙斯神像» is the Statue of Zeus (Wikidata), «宙斯之子» a phrase ("son of Zeus"): both name him.
+    for (const [l, n, w] of [['zh', '宙斯', '宙斯神像'], ['zh', '宙斯', '宙斯之子']] as const) expect([l, n, w, held(l, n).includes(w)]).toEqual([l, n, w, false]);
+    expect(localName('宙斯神像很高', 'zh')).toBe('宙斯');
+  });
   it('the Chinese lists are what their sources say (fetch/transliteration.py)', () => {
     const t = getCardText('zh')!.transliteration!;
     for (const c of '迪娅菲斯尔帕尼浦') expect([c, t.chars.includes(c), t.bound.includes(c)]).toEqual([c, true, true]);
@@ -713,6 +723,53 @@ describe('a name inside a longer foreign name is a piece of it (Chinese, Thai)',
       await loadSound('th');
     }
     expect(inv('คืนนี้ข้าเรียกซุสมา', 'th').met).toBe(true);
+  });
+});
+
+// The third check also found the Nurse counting where English would not: German «Eine Wärterin» ("a nurse") and Russian
+// «наша кормилица» ("our breadwinner"). English counts "the nurse", never "a nurse" or "nurse" (devices.ts).
+describe('a role counts as English counts "the nurse"', () => {
+  const localName = (verse: string, lang: string) => saidLocalName(verse, lang)?.name;
+  it('German after a definite article; Russian with a capital inside a sentence; never a word of a longer role name', () => {
+    for (const [l, v, n] of [
+      ['de', 'Die Wärterin schloss die Tür', 'Wärterin'], ['de', 'Ich sah der Wärterin nach', 'Wärterin'],
+      ['ru', 'и Кормилица держит ребёнка', 'Кормилица'], ['fr', 'La Nourrice arrive', 'La Nourrice'], ['zh', '奶妈来了', '奶妈'],
+      ['de', 'Eine Wärterin schloss die Tür', undefined], ['de', 'Wärterin, komm', undefined], ['ru', 'Корова — наша кормилица', undefined],
+      ['ru', 'Кормилица держит ребёнка', undefined], ['fr', 'et Nourrice dit', undefined], ['es', 'y Nodriza dijo', undefined],
+    ] as const) expect([l, v, localName(v, l)]).toEqual([l, v, n]);
+  });
+  it('the German definite articles are Wiktionary’s', () => {
+    expect([...(getCardText('de')!.definite ?? [])].sort()).toEqual(['das', 'dem', 'den', 'der', 'des', 'die']);
+    expect(getCardText('fr')!.definite).toBeUndefined();
+  });
+});
+
+// The third check's other concerns: an English name that is an ordinary word of the duel's language (Italian, Spanish and
+// Portuguese «medusa», a jellyfish; French «viola»; German «Puck»), and aliases that are another god's name (Vietnamese
+// «Jupiter» for Zeus; Russian «Плутон», «Меркурий»; «Орк», an orc, for Hades).
+describe('another language’s ordinary words and other gods’ names do not invoke', () => {
+  it('an English name that is an ordinary word of the duel’s language counts as that language’s own name does', () => {
+    for (const [l, v, met] of [
+      ['it', 'Una medusa mi ha punto', false], ['es', 'Vi una medusa en la playa', false], ['pt', 'Vi uma medusa na praia', false],
+      ['it', 'Ho comprato due rossetti', false], ['fr', 'Il la viola cette nuit', false], ['de', 'Der Puck flog ins Tor', false],
+      ['es', 'y Medusa miró', true], ['it', 'e Medusa guardò', true], ['fr', 'et Viola chante', true], ['de', 'Puk lacht im Wald', true],
+      ['en', 'a medusa in the sea', true], ['en', 'the puck flew', true],
+    ] as const) expect([l, v, inv(v, l).met]).toEqual([l, v, met]);
+  });
+  it('no alias is the name of the Roman god Wikidata says is this Greek one, nor Orcus', () => {
+    for (const [l, v] of [
+      ['vi', 'Jupiter là hành tinh lớn nhất'], ['vi', 'Venus sáng nhất'], ['ru', 'Плутон — карликовая планета'], ['ru', 'Меркурий ближе всех к Солнцу'],
+      ['ru', 'Злой орк вышел из леса'], ['ru', 'Орка плывёт в холодном море'], ['pl', 'Pluton jest daleko'], ['ko', '플루톤이 왔다'],
+    ] as const) expect([l, v, inv(v, l).met]).toEqual([l, v, false]);
+    for (const [l, v] of [['ru', 'и Аид молчит'], ['ru', 'и Гермес бежит'], ['vi', 'Zeus giận dữ'], ['ru', 'Я видел Афину-Палладу'], ['ru', 'и Паллада смотрит']] as const) {
+      expect([l, v, inv(v, l).met]).toEqual([l, v, true]);
+    }
+    const aliases = (l: string, id: string) => getCardText(l)!.cards[id].aliases ?? [];
+    expect(aliases('ru', 'UW-001')).not.toContain('Плутон');
+    expect(aliases('ru', 'UW-001')).not.toContain('Орк');
+    expect(aliases('vi', 'OL-001')).not.toContain('Jupiter');
+    // Apollo is the Roman god's name too, and English counts it.
+    expect(localCharacterNames('ru')).toContain('Аполлон');
   });
 });
 
@@ -745,7 +802,7 @@ describe('a name that is also an ordinary word counts as English counts "Bottom"
     expect(inv('Nick Bottom tisse la nuit', 'fr').detail).toBe('Nick Bottom');
     expect(inv('Bottom the weaver', 'de').met).toBe(true);
     // A role with its article in English ("The Nurse") counts by its local name, as English counts "the nurse".
-    for (const [l, v, n] of [['zh', '奶妈抱着孩子', '奶妈'], ['ru', 'Кормилица держит ребёнка', 'Кормилица'], ['de', 'Die Wärterin hält das Kind', 'Wärterin']] as const) {
+    for (const [l, v, n] of [['zh', '奶妈抱着孩子', '奶妈'], ['ru', 'и Кормилица держит ребёнка', 'Кормилица'], ['de', 'Die Wärterin hält das Kind', 'Wärterin']] as const) {
       expect([l, v, localName(v, l)]).toEqual([l, v, n]);
     }
   });

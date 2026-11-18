@@ -14,7 +14,7 @@
  * it should in each script. A `detail` is language-neutral evidence.
  */
 import type { Card, House } from '../cards';
-import { englishKey, localSignature, saidLocalName } from './echo';
+import { englishKey, englishNameCounts, localSignature, saidLocalName } from './echo';
 import { NAME_PHRASES, ORDINARY_NAME_PARTS } from './names-en';
 import { baseLang, rulesFor, unitKey } from './lang';
 import { msg, type Msg } from './msg';
@@ -171,7 +171,8 @@ export const DEVICES: Record<string, Device> = {
     // language's duel an English name is said as English writes it (./echo englishKey): Portuguese «põe», "puts",
     // is not Poe, and Vietnamese «màn» is not "Man".
     const said = ` ${wordsOf(v, lang).map((w) => englishKey(w, lang)).join(' ')} `;
-    const hit = (ctx.names ?? []).find((n) => said.includes(` ${wordsOf(n, 'en').map(fold).join(' ')} `));
+    // A name that is also an ordinary word of the duel's language counts as that language's own does (./echo).
+    const hit = (ctx.names ?? []).find((n) => said.includes(` ${wordsOf(n, 'en').map(fold).join(' ')} `) && englishNameCounts(n, v, lang));
     if (hit) return { met: true, detail: hit, words: wordsOf(hit, 'en').map(fold) };
     // The character's name as the duel's language writes it counts as well (./echo).
     const local = saidLocalName(v, lang);
