@@ -306,7 +306,7 @@ describe('a name is not invoked by a word that only shares its stem', () => {
     const cases = [
       ['Ich rufe Romeo', 'de', 'Romeo'], ['Romeos Ring glänzt', 'de', 'Romeo'], ['Hamlets Frage', 'de', 'Hamlet'], ['Julias Brief', 'de', 'Julia'],
       ['أنا وروميو', 'ar', 'روميو'], ['Я вижу Марка Антония', 'ru', 'Антоний'], ['Зову Джульетту', 'ru', 'Джульетта'],
-      ['Я видел Медузу', 'ru', 'Медуза'], ['А Медуза спит', 'ru', 'Медуза'], ['Вот Марк Антоний', 'ru', 'Марк Антоний'],
+      ['Я видел Медузу', 'ru', 'Медуза'], ['А Медуза спит', 'ru', 'Медуза'], ['Я видел Афину-Палладу', 'ru', 'Афина-Паллада'], ['Вот Марк Антоний', 'ru', 'Марк Антоний'],
       ['Kocham Julię', 'pl', 'Julia'], ['Widzę Marka Antoniusza', 'pl', 'Antoniusz'], ['Widzę Antoniusza', 'pl', 'Antoniusz'],
       ['O Hamlecie śnię', 'pl', 'Hamlet'], ['Pieśń Blake\'a', 'pl', 'Blake'], ['Zeusowi chwała', 'pl', 'Zeus'],
     ] as const;

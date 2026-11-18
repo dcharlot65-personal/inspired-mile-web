@@ -149,9 +149,20 @@ def ar_forms(w):
     return out
 
 
+def ru_hyphenated(word):
+    """A Russian name of two names joined by a hyphen declines in both («Афина-Паллада»: Афины-Паллады, Афине-Палладе),
+    when both follow one paradigm, case by case; otherwise it is left as written. Before, only the last part declined
+    («Афина-Паллады»), which the second check of round 3 pointed out is not Russian."""
+    parts = word.split('-')
+    each = [ru_forms(p) for p in parts]
+    if not all(each) or len({len(f) for f in each}) != 1:
+        return []
+    return ['-'.join(fs) for fs in zip(*each)]
+
+
 def forms(lang, word, english=False):
     if lang == 'ru':
-        return ru_forms(word)
+        return ru_hyphenated(word) if '-' in word else ru_forms(word)
     if lang == 'pl':
         return pl_forms(word, english)
     if lang == 'de':
@@ -172,6 +183,7 @@ def selftest():
         ('ru', 'Кормилица', False, ['Кормилицы', 'Кормилице', 'Кормилицу', 'Кормилицой', 'Кормилицою', 'Кормилицей', 'Кормилицею']),
         ('ru', 'Пак', False, ['Пака', 'Паку', 'Паке', 'Паком']),
         ('ru', 'Банко', False, []), ('ru', 'Ромео', False, []), ('ru', 'Монтекки', False, []),
+        ('ru', 'Афина-Паллада', False, ['Афины-Паллады', 'Афине-Палладе', 'Афину-Палладу', 'Афиной-Палладой', 'Афиною-Палладою']),
         ('pl', 'Julia', False, ['Julii', 'Julię', 'Julią', 'Julio']),
         ('pl', 'Hamlet', False, ['Hamleta', 'Hamlecie', 'Hamletem', 'Hamletowi']),
         ('pl', 'Marek', False, ['Marka', 'Markiem', 'Markowi', 'Marku']),
