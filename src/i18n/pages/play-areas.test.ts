@@ -6,6 +6,7 @@ import { LOCALES, loadMessages, type Locale, type Messages } from '../index';
 import { TRIVIA_BANK } from '../../lib/trivia';
 import { CHALLENGE_BANK } from '../../lib/challenges';
 import { ACTS } from '../../lib/story-mode';
+import { CITY_CATALOG } from '../../lib/variants';
 import { MIN_LOCAL_CHALLENGES, answersMatch, challengesFrom, localChallenges, localRandomQuestions, localTriviaBank, ownChallenges, triviaBankFrom } from '../../lib/play-content';
 
 /**
@@ -222,7 +223,15 @@ export function challengeProblems(l: string, m: Messages | undefined): string[] 
   const perChallenge = l === 'en' ? 5 : 6; // full, display, missing, play, character; and the translator in a translation
   const stray = Object.keys(m).filter((k) => k.startsWith('challenge.') && !ids.includes(k.split('.')[1]));
   if (stray.length) out.push(`${l}: keys for challenges not listed in challenges.ids: ${stray.slice(0, 3).join(', ')}`);
-  if (Object.keys(m).length !== 1 + ids.length * perChallenge) out.push(`${l}: ${Object.keys(m).length} keys for ${ids.length} challenges`);
+  // The headings of the English originals, in a language that plays them: a play and a speaker for each, never one alone.
+  const originals = Object.keys(m).filter((k) => k.startsWith('original.'));
+  if (originals.length && ids.length >= MIN_LOCAL_CHALLENGES) out.push(`${l}: headings for the English originals, but the language plays its own lines`);
+  for (const k of originals) {
+    const [, id, what] = k.split('.');
+    const other = what === 'play' ? 'character' : what === 'character' ? 'play' : null;
+    if (!CHALLENGE_BANK[Number(id)] || !other || !m[`original.${id}.${other}`]?.trim() || !m[k].trim()) out.push(`${l}: ${k} is not half of a play and speaker for a challenge of the bank`);
+  }
+  if (Object.keys(m).length !== 1 + ids.length * perChallenge + originals.length) out.push(`${l}: ${Object.keys(m).length} keys for ${ids.length} challenges`);
   return out;
 }
 
@@ -308,7 +317,14 @@ const GENDERED_YOU: Record<string, RegExp[]> = {
   it: [vocative('stranier[oa]', 'forestier[oa]', 'invitat[oa]')],
   pt: [vocative('meu jovem', 'minha jovem', 'forasteir[oa]', 'convidad[oa]', 'espert[oa]', 'eu [oa] levarei')],
   de: [vocative('junges Ding', 'Fremder', 'Sterblicher')],
-  hi: [/(?:रहे|सकते|चुके|गए|आए) हो(?![\p{L}\p{M}])/u, /(?:चले|नाचते) आए(?![\p{L}\p{M}])/u],
+  hi: [
+    // तुम with a masculine participle or habitual: ढूँढ रहे हो, गा सकते हो, चलाते हो (feminine: रही, सकती, चलाती).
+    /[\p{L}\p{M}]+(?:ते|े) हो(?![\p{L}\p{M}])/u, /(?:चले|नाचते) आए(?![\p{L}\p{M}])/u,
+    // आप with a masculine verb, as the Hindi core locale writes it (checker, 2026-11-16: "क्या आप ... कर सकते हैं?").
+    /(?<![\p{L}\p{M}])आप(?![\p{L}\p{M}])(?:\s+[^\s।?!"]+){0,8}?\s+[\p{L}\p{M}]+(?:ते|गे|े) (?:हैं|थे)(?![\p{L}\p{M}])/u,
+    // A sentence with no subject but the player, ending in a masculine past: "समझ गए!", "थोड़ा-सा चूक गए!".
+    /(?:^|["“\s])(?:[\p{L}\p{M}-]+\s+){0,2}(?:गए|गये|आए)[!?।]/u,
+  ],
   ar: [vocative('يا فتى', 'يا فتاة')],
 };
 export function genderedYou(l: string, m: Messages): string[] {
@@ -322,17 +338,38 @@ export function genderedYou(l: string, m: Messages): string[] {
 
 /**
  * The counts these areas show, and every value each can take, as the pages fill them in: the trivia
- * score in a round of five (playground.astro), the story's progress over its encounters, and the
- * streak and event countdowns (streaks.ts, weekly-events.ts).
+ * score in a round of five (playground.astro: won at 3 or more, lost below), the question being asked,
+ * a challenge's blanks, the World Card's bonus (variants.ts), the story's progress over its encounters,
+ * and the streak and event countdowns (streaks.ts, weekly-events.ts). Every placeholder of the two
+ * areas is either here or in NOT_COUNTS (a test holds that), so a new count cannot be left unchecked:
+ * the checker of 2026-11-16 found pg.trivia.lost, which this table had left out, wrong in Hindi for 1.
  */
 const STORY_TOTAL = ACTS.reduce((n, a) => n + a.encounters.length, 0);
+const TRIVIA_ROUND = 5;
+const TRIVIA_TO_WIN = 3;
 const upTo = (n: number, from = 0) => Array.from({ length: n - from + 1 }, (_, i) => from + i);
+const MOST_BLANKS = Math.max(...CHALLENGE_BANK.map((c) => c.missingWords.length));
 export const COUNTS: Record<string, Record<string, number[]>> = {
-  'pg.trivia.correct': { n: upTo(5) },
+  'pg.trivia.correct': { n: upTo(TRIVIA_ROUND) },
+  'pg.trivia.won': { n: upTo(TRIVIA_ROUND, TRIVIA_TO_WIN), total: [TRIVIA_ROUND] },
+  'pg.trivia.lost': { n: upTo(TRIVIA_TO_WIN - 1), total: [TRIVIA_ROUND] },
+  'pg.trivia.progress': { n: upTo(TRIVIA_ROUND, 1), total: [TRIVIA_ROUND] },
+  'pg.challenge.blank': { n: upTo(MOST_BLANKS, 1) },
+  'pg.worldCard': { bonus: [...new Set(Object.values(CITY_CATALOG).map((c) => c.ability.bonus))] },
   'story.progress': { done: upTo(STORY_TOTAL), total: [STORY_TOTAL] },
   'countdown.hm': { h: upTo(23, 1), m: upTo(59) },
   'countdown.m': { m: upTo(59) },
 };
+/**
+ * Words that may follow a count because they are the same for every count, each with the reason. Kept short:
+ * a string that needs another entry is better rephrased as a label ("Aciertos: {n}").
+ */
+const AFTER_A_COUNT: Record<string, Record<string, string>> = {
+  de: { richtig: 'predicative ("Du hast 1 von 5 richtig"): a German adjective used as a predicate or an adverb takes no ending' },
+};
+
+/** Placeholders that hold no number: a city's name, a criterion's name, a translator's name. */
+export const NOT_COUNTS = new Set(['city', 'axis', 'translator']);
 const UNIT: Record<string, string> = { h: 'hour', m: 'minute' };
 
 /** CLDR's short and narrow words for a unit in a language, where CLDR writes one form for every one of these counts. */
@@ -363,9 +400,23 @@ export function countProblems(l: string, m: Messages): string[] {
       if (cats.length < 2) continue;
       const at = s.indexOf(`{${p}}`);
       if (at < 0) continue;
-      const word = s.slice(at + p.length + 2).trimStart().match(/^[\p{L}\p{M}][\p{L}\p{M}.]*/u)?.[0];
-      if (!word || (UNIT[p] && unitWords(l, UNIT[p], values).includes(word))) continue;
-      out.push(`${l}: ${k} writes "{${p}} ${word}", but {${p}} takes values in the plural categories ${cats.join(', ')}`);
+      // Every word after the count up to the end of its sentence, not only the next: a word that agrees with the
+      // count can come later (Hindi puts the verb last: "{n} उत्तर सही रहे", where रहे is wrong for 1).
+      let rest = s.slice(at + p.length + 2).trimStart();
+      // "{n} de {total}", "{n} von {total}", "{n} из {total}": one word joining the count to a total of a single
+      // value is the "out of", which no count changes; the sentence goes on after the total. Otherwise the next
+      // placeholder starts what belongs to it ("{h} Std. {m} Min.").
+      const joiner = rest.match(/^[\p{L}\p{M}]+\s+\{(\w+)\}/u);
+      if (joiner && vars[joiner[1]]?.length === 1) rest = rest.slice(joiner[0].length);
+      else rest = rest.split(/\{\w+\}/u)[0];
+      rest = rest.replace(/\{\w+\}/gu, ' ');
+      // Words with their abbreviation dots ("Std."), and the punctuation that ends the sentence.
+      const tokens = rest.match(/[\p{L}\p{M}][\p{L}\p{M}.]*|[.!?।。！？]/gu) ?? [];
+      const end = tokens.findIndex((w) => /^[.!?।。！？]$/u.test(w));
+      const units = UNIT[p] ? unitWords(l, UNIT[p], values) : [];
+      const word = (end < 0 ? tokens : tokens.slice(0, end)).find((w) => !units.includes(w) && !(w in (AFTER_A_COUNT[l] ?? {})));
+      if (!word) continue;
+      out.push(`${l}: ${k} writes "{${p}} … ${word}", but {${p}} takes values in the plural categories ${cats.join(', ')}`);
     }
   }
   return out;
@@ -465,6 +516,14 @@ describe('page areas of the play content', () => {
     const problems: string[] = [];
     for (const l of LOCALES) for (const name of ['playground', 'story']) problems.push(...countProblems(l, (await area(name, l))!));
     expect(problems).toEqual([]);
+  });
+
+  it('every placeholder of these areas is a count the count check reads, or one that holds no number', async () => {
+    const unread: string[] = [];
+    for (const name of ['playground', 'story']) for (const [k, v] of Object.entries((await area(name, 'en'))!)) {
+      for (const [, p] of v.matchAll(/\{(\w+)\}/g)) if (!NOT_COUNTS.has(p) && !COUNTS[k]?.[p]) unread.push(`${k} {${p}}`);
+    }
+    expect(unread).toEqual([]);
   });
 
   it('says a thing the way the core locale says it', async () => {
@@ -580,6 +639,22 @@ describe('quote challenges in every language', () => {
       const played = await localChallenges(l);
       if (l !== 'en' && own.length >= MIN_LOCAL_CHALLENGES) expect([l, played.every((c) => c.lang === l && !!c.translator)]).toEqual([l, true]);
       else expect([l, played.length, played.every((c) => c.lang === 'en')]).toEqual([l, CHALLENGE_BANK.length, true]);
+    }
+  });
+
+  it("an English original is headed with the play and speaker in the player's language where the names table has both", async () => {
+    // @ts-ignore -- a build script in plain JavaScript, without type declarations
+    const lib = await import('../../../scripts/lang-content/lib.mjs');
+    expect(lib.MIN_LOCAL_CHALLENGES).toBe(MIN_LOCAL_CHALLENGES);
+    const { nameOf } = await namesTable();
+    const ar = await localChallenges('ar');
+    const juliet = ar.find((c) => CHALLENGE_BANK[c.id].play === 'Romeo and Juliet' && CHALLENGE_BANK[c.id].character === 'Juliet')!;
+    expect([juliet.lang, juliet.headingLang, juliet.play, juliet.character]).toEqual(['en', 'ar', nameOf('p.romeo', 'ar').name, nameOf('c.juliet', 'ar').name]);
+    // A speaker that is a description and in no source ("Second Witch", "Stage Direction") keeps the whole heading in English.
+    const witch = ar.find((c) => CHALLENGE_BANK[c.id].character === 'Second Witch')!;
+    expect([witch.headingLang, witch.play, witch.character]).toEqual(['en', CHALLENGE_BANK[witch.id].play, 'Second Witch']);
+    for (const l of LOCALES) for (const c of await localChallenges(l)) {
+      if (c.lang === 'en' && c.headingLang && c.headingLang !== 'en') expect([l, c.id, c.headingLang]).toEqual([l, c.id, l]);
     }
   });
 
@@ -711,6 +786,15 @@ describe('these checks can fail', () => {
     expect(countProblems('ru', { 'countdown.hm': '{h} часов {m} минут' }).length).toBe(2);
     expect(countProblems('pl', { 'story.progress': 'Ukończone spotkania: {done} / {total}' })).toEqual([]);
     expect(countProblems('pl', { 'story.progress': '{done} spotkań z {total}' }).length).toBe(1);
+    // The checker's find of 2026-11-16: Hindi's verb comes last, and रहे is wrong for a score of 1.
+    expect(countProblems('hi', { 'pg.trivia.lost': 'आपके {total} में से {n} उत्तर सही रहे' }).length).toBe(1);
+    expect(countProblems('hi', { 'pg.trivia.lost': 'आपका स्कोर: {n} / {total}' })).toEqual([]);
+    expect(countProblems('es', { 'pg.trivia.lost': 'Has acertado {n} preguntas de {total}' }).length).toBe(1);
+    expect(countProblems('es', { 'pg.trivia.lost': 'Has acertado {n} de {total}' })).toEqual([]); // "de": the out-of
+    expect(countProblems('de', { 'pg.trivia.lost': 'Du hast {n} von {total} richtig' })).toEqual([]); // AFTER_A_COUNT
+    expect(countProblems('de', { 'pg.trivia.lost': 'Du hast {n} von {total} richtige Antworten' }).length).toBe(1);
+    expect(countProblems('de', { 'countdown.hm': '{h} Std. {m} Min.' })).toEqual([]); // CLDR's short units, with their dots
+    expect(countProblems('es', { 'pg.trivia.correct': 'Aciertos: {n}. Muy bien' })).toEqual([]); // a new sentence
   });
 
   it('europeanPortuguese objects to the European spellings this branch replaced, and not to Brazilian ones', () => {
@@ -737,6 +821,15 @@ describe('these checks can fail', () => {
     expect(genderedYou('es', { k: '«Criatura, si buscas a Romeo…» «Convénceme, visitante.»' })).toEqual([]);
     expect(genderedYou('de', { k: '„Kind, wenn du Romeo suchst…“ „Fang mich, Menschenkind.“' })).toEqual([]);
     expect(genderedYou('hi', { k: '"बच्चे, रोमियो की तलाश हो तो पहले साबित करो"' })).toEqual([]);
+    // The checker's Hindi of 2026-11-16, and what replaced it.
+    expect(genderedYou('hi', { k: 'क्या आप उसकी निराशा के बोझ की बराबरी कर सकते हैं?' }).length).toBe(1);
+    expect(genderedYou('hi', { k: 'थोड़ा-सा चूक गए!' }).length).toBe(1);
+    expect(genderedYou('hi', { k: 'समझ गए!' }).length).toBe(1);
+    expect(genderedYou('hi', { k: 'दिखाओ कि तुम तलवार नहीं, शब्द चलाते हो' }).length).toBe(1);
+    expect(genderedYou('hi', { k: 'क्या आपके पद्य उसकी निराशा के बोझ की बराबरी कर पाएँगे?' })).toEqual([]);
+    expect(genderedYou('hi', { k: 'बस थोड़ी-सी कसर रह गई!' })).toEqual([]);
+    expect(genderedYou('hi', { k: 'दिखाओ कि तुम्हारा हथियार तलवार नहीं, शब्द हैं' })).toEqual([]);
+    expect(genderedYou('hi', { k: 'राजकुमार आपको महल में बुलाते हैं।' })).toEqual([]); // the prince, honorific, not the player
   });
 
   it("evidence's rowProblems objects to each line the checker found naming somebody else, and to a namesake's article", async () => {
