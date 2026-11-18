@@ -28,7 +28,12 @@ RESULTS.md, beside this file, says what those tools found.
 
 `sourced-names.json` lists every value taken from a source, per language, with the source it
 came from. `src/i18n/pages.test.ts` fails if a module and that record disagree, so a name cannot
-be "corrected" from memory without the record being changed too.
+be "corrected" from memory without the record being changed too, and (since 2026-11-17) if the
+record disagrees with the fetched file it cites (`wikidata-labels.json`, `cldr-exemplar-cities.json`),
+so a value cannot be recorded as a source's when it is not. That second test found one: Vietnamese
+Eurasia ships "Lục địa Á-Âu", recorded as the Wikidata label, which is "lục địa Á-Âu". The record now
+says the first letter was capitalised, as the CLDR Vietnamese region names beside it are (Châu Á,
+Châu Âu); that is the only change made to a sourced value.
 
 ### Licences and dates
 
@@ -41,6 +46,9 @@ be "corrected" from memory without the record being changed too.
   `https://raw.githubusercontent.com/unicode-org/cldr-json/49.0.0/cldr-json/cldr-misc-full/main/<lang>/delimiters.json`
   (`node scripts/pages-lang/fetch-cldr-quotes.mjs`). The same values as `docs/language/sources/cldr.json`
   on branch `lang/qa-pipeline`.
+- Unicode CLDR 46.0.0, Unicode License v3. Month context transforms fetched 2026-11-17 from
+  `https://cdn.jsdelivr.net/npm/cldr-misc-full@46.0.0/main/<locale>/contextTransforms.json`
+  (`cldr-context-transforms.json`; ar, hi, zh, ja, ko and th have no such file in CLDR 46).
 - Wikidata, CC0 1.0. Labels fetched 2026-11-16 with `wbgetentities` for the item ids recorded in
   `wikidata-labels.json`. For Chinese the `zh-cn` label is used, then `zh-hans`, then `zh`; for
   Portuguese `pt-br`, then `pt`. The file says which was used for each item.
@@ -108,6 +116,11 @@ strings. Classroom, season and story have no navigation entry and pass no key ye
   wide for a phone breaks before the accent rather than inside it.
 - Dates on the about page's timeline are not set in the monospace font in Arabic: it has no Arabic,
   and the fallback pulled the letters apart.
+- Pages in Arabic, Hindi, Thai, Chinese, Japanese and Korean synthesise no italic
+  (`font-synthesis-style: none`, `global.css`): their fonts have no italic face, and the play titles
+  set in italic on the Arabic home page came out as slanted Arabic letters.
+- The battle page names a world card's city as the world map does (`cityName()`, the `variants`
+  area); the integration's "World card: {city}" row had been given the catalog's English key.
 
 ## How the strings are built
 
@@ -115,7 +128,17 @@ strings. Classroom, season and story have no navigation entry and pass no key ye
   noun, so no language has to choose a noun form after a number. Achievement descriptions were
   reworded the same way ("Battles won: 25"); the number comes from the achievement's `goal`.
   If the runtime's plural support (branch `lang/qa-pipeline`) is preferred later, these keys are
-  the ones to convert; nothing concatenates a number with a noun.
+  the ones to convert. Until 2026-11-17 two did not hold to this: the Wordsmith and Virtuoso
+  descriptions put the goal before a plural noun in es, fr, de, it, pt and vi ("Consigue {n}
+  puntos"), right for 35 and 45 and wrong for a goal of 1; they now read "Puntuación en una sola
+  ronda: {n} o más". `pages.test.ts` ("a count") now holds the rule: in the ten languages whose
+  nouns agree with a number (en es fr de it pt pl ru ar hi), the word after a count must be one of a
+  closed list of words that do not agree ("or", "to", "of them"…), or the criterion named after a
+  score bonus as the core's `variant.bonus` names it ("+6 craft", a mass noun). In zh, ja, ko, vi, th
+  and id a counter or a bare noun follows and nothing agrees.
+- A month standing alone (the about page's timeline) is capitalised where CLDR 46's
+  contextTransforms say a stand-alone month name is (es, fr, it, pl, ru: "Abr 2025"); Intl itself
+  applies no capitalisation context. The record is `cldr-context-transforms.json`.
 - A sentence is never assembled from pieces across a language boundary. What a card does is
   shown as separate lines (the device's brief, "Land it to…", the house's line), each a whole
   message.
@@ -136,13 +159,18 @@ Taken from the core locale files; these pages introduce no second word for any o
 | pl | strofa | runda | talia | karta | relikwia | mikstura | pojedynek | bitwa | kunszt | dom |
 | ru | строфа | раунд | колода | карта | реликвия | зелье | дуэль | битва | мастерство | дом |
 | ar | أبيات | جولة | رزمة | بطاقة | أثر | جرعة | مبارزة | نزال | صنعة | بيت |
-| hi | पद | दौर | डेक | कार्ड | अवशेष | काढ़ा | द्वंद्व | युद्ध | शिल्प | घराना |
+| hi | कविता | दौर | डेक | कार्ड | अवशेष | काढ़ा | द्वंद्व | युद्ध | शिल्प | घराना |
 | zh | 诗 | 回合 | 牌组 | 卡牌 | 圣物 | 药水 | 对决 | 对战 | 技艺 | 家族 |
 | ja | 詩 | ラウンド | デッキ | カード | 遺物 | 薬 | 決闘 | バトル | 技巧 | 家門 |
 | ko | 시 | 라운드 | 덱 | 카드 | 유물 | 물약 | 결투 | 배틀 | 기교 | 가문 |
 | vi | bài thơ | hiệp | bộ bài | lá bài | bảo vật | thuốc phép | trận đấu | trận đấu | tay nghề | gia tộc |
 | th | บทกลอน | ยก | สำรับ | การ์ด | ของวิเศษ | ยาวิเศษ | การประชัน | การประชัน | ฝีมือ | ตระกูล |
 | id | syair | ronde | dek | kartu | relik | ramuan | duel | pertarungan | keahlian | wangsa |
+
+Hindi's verse was पद, as main's core files have it; lang/qa-pipeline (fa198bc) changed it to कविता
+from English Wiktionary's "verse" table (पद reads as "post" or "foot"), and these pages followed on
+2026-11-17. Until that branch is in main, main's core Hindi still says पद (see RESULTS.md, "Order of
+merging").
 
 Also from the core files, and held to them by `scripts/pages-lang/mechanical.mjs` (its
 `CORE_TERMS`, each with the key it was read from): trivia (es **el Trivial**, fr/de/it/pt/pl
@@ -217,6 +245,7 @@ node scripts/page-shots.mjs http://localhost:<port> <outDir> ar,de,ja,es
 
 `scripts/pages-lang/` is a stand-in: when the pipeline of `lang/qa-pipeline` is in main, point
 it at `src/i18n/pages/` and delete these scripts. The meaning check already runs that pipeline's
-own `backtranslate.py` (taken from the branch at b7c5459); `meaning.mjs` applies its rule (MiniLM
+own `backtranslate.py` (taken from the branch at b7c5459, and at fa198bc for the strings changed on
+2026-11-17; the file is the same at both); `meaning.mjs` applies its rule (MiniLM
 and LaBSE both under 0.6) and adds a check of the back-translation's words (negation, bounds,
 numbers) that the scores were shown to miss (RESULTS.md).

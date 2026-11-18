@@ -325,13 +325,20 @@ left behind by a killed run is found by its port: `lsof -nP -iTCP:<port> -sTCP:L
   fills `data-i18n` before a language's areas have arrived. A message may carry `<b>` and `<a>`
   marks. Numbers, dates and lists come from `Intl` (`num`, `day`, `list`); names of places are
   CLDR's or Wikidata's, kept in the areas (Chromium's ICU has no names for sub-regions, so
-  `Intl.DisplayNames` is not used for them); a count is written "label: number", never number + noun. Card, city and
+  `Intl.DisplayNames` is not used for them); a count is written "label: number", never number + noun
+  (`pages.test.ts` "a count" lists the only words allowed after a count where nouns agree with it). A
+  month standing alone (`monthOfYear`) is capitalised where CLDR's contextTransforms say so (es fr it
+  pl ru). `sourced-names.json` is held both to the areas and to the fetched files it cites: change a
+  sourced name only with its source. Card, city and
   achievement data is named by `src/i18n/pages/terms.ts`, card rules by `rules-text.ts`.
   A quotation goes through `quoted()` (the language's marks from CLDR, the line in `<bdi>` so
   an English line keeps its punctuation on the Arabic page). A list of words goes through `list()`
   (never Intl's "unit" lists: Chinese and Japanese put nothing between their items). `tn()` and
   `rich()` isolate a signed number on a right-to-left page (`signedLtr()`: Arabic showed +50 as
-  50+); in an Arabic message write a count out of a total as `{n}/{total}`, without spaces.
+  50+); in an Arabic message write a count out of a total as `{n}/{total}`, without spaces. Pages in
+  ar, hi, th, zh, ja and ko synthesise no italic (`global.css`: their fonts have none, and Arabic came
+  out slanted). The battle page names a world card's city with `cityName()` (area `variants`); the
+  engine still gets the catalog's English key.
   The layout takes `titleKey`, `descriptionKey` and `i18nAreas` for the document title and
   description. Translated so far: home, about, collection, profile, world map (areas `home`,
   `about`, `collection`, `profile`, `world-map`, `variants`, `card-terms`, `rules`,
