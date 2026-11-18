@@ -841,15 +841,19 @@ function knownUnits(line: string, lang: string, japaneseVerse = false): boolean[
     // (japaneseVerse), loanwords a dictionary has, of two characters or more, in a run of katakana
     // count when the run holds two of them or more, or is one of them: a line of them alone
     // (サッカーボール, ジェットコースター, ヒップホップ ドリーム, ユーチューブ) or a compound inside a
-    // sentence (コーヒーカップに); the rest of such a run counts only as the other rules let it.
+    // sentence (コーヒーカップに); the rest of such a run counts only as the other rules let it. One
+    // written apart (no katakana on either side) that a dictionary has whole, of APART_WHOLE
+    // full-size kana or more, counts on its own beside katakana no dictionary has (プレイリスト
+    // スポティファイ); a shorter one does not (アデル ハロー), as random katakana spells one.
     // Elsewhere a run of katakana among other katakana is letters, not words, even where the
     // dictionary finds one of its nouns inside (ココア, テツ): a verse of katakana alone is not read
     // as Japanese, and one noun found by chance in random katakana is not a run of loanwords.
     //
     // "A dictionary has it": the analyser's own (IPADIC) has the word it read, or one of the three
     // has the katakana as written between other characters, whole (IPADIC; JMdict's words: スマホ,
-    // ワンツー; JMdict's names: レノン, ビヨンセ), or as two words of IPADIC's or JMdict's of
-    // LOANWORD_PART characters or more written together (スイートドリーム, ビートメイカー). The
+    // ワンツー; JMdict's names: レノン, ビヨンセ; those two of LISTED_WHOLE full-size kana or
+    // LISTED_LONG characters or more), or as two words of IPADIC's or JMdict's of LOANWORD_PART
+    // characters or more written together (スイートドリーム, ビートメイカー). The
     // analyser (2007) lacks a quarter of today's common loanwords (the engine's second check: 31 of
     // 135) and reads them as letters it guessed at; spelling them from its own katakana does not tell
     // them from random katakana (review5.test.ts), a list does.
@@ -881,6 +885,8 @@ function knownUnits(line: string, lang: string, japaneseVerse = false): boolean[
         // The run is one loanword: one word of the analyser's, or one run as written that a dictionary has.
         const one = (j - i === 1 && found === 1) || (runs.size === 1 && at.every((k) => listedRun[k] >= 0));
         if (found >= 2 || (found >= 1 && one)) for (const k of at) inLoanRun[k] = loanword(words[k]) || listedRun[k] >= 0;
+        // A run written apart that a dictionary has, long enough that random katakana is seldom one.
+        for (const k of at) if (listedRun[k] >= 0 && fullKana(text.slice(written[listedRun[k]].from, written[listedRun[k]].to)) >= APART_WHOLE) inLoanRun[k] = true;
         i = j;
       }
     }
@@ -918,14 +924,48 @@ const KATAKANA_ONLY = /^[ァ-ヺー]+$/u;
  * katakana strings were spelled by the dictionaries' words; with three, 0.02 to 0.07%.
  */
 export const LOANWORD_PART = 3;
+/** Small kana and the long mark: they lengthen or bend the sound before them, and a typist adds them to anything. */
+const KANA_MARK = /[ァィゥェォッャュョヮヵヶー]/u;
+/** Kana written full size in a run of katakana: its sounds as a typist chose them (ラッパー 2, タトゥー 2, スマホ 3). */
+function fullKana(run: string): number {
+  let n = 0;
+  for (const c of run) if (!KANA_MARK.test(c)) n++;
+  return n;
+}
+/**
+ * How long a word of JMdict's lists (its words, or JMnedict's names; not IPADIC's) must be before it
+ * counts whole (katakanaListed): LISTED_WHOLE full-size kana, or LISTED_LONG characters with the
+ * marks. Two full-size kana are too few: the lists hold 1,039 of the 4,761 pairs of the 69 plain
+ * katakana, so a line of short runs of random katakana counted thirteen times as often as at 0346ee1
+ * (the engine's third check, 2026-11-18) and a duel's best of 60 such tries won 39 rounds of 280
+ * against 5 (the fourth pass). Counted in characters from three, random pairs with a small kana or a
+ * long mark after one (ゴーロ, キャロ) still counted 237 times in 5,123 more than with IPADIC alone;
+ * now 21.
+ * Measured (review5.test.ts, RULES-MEASUREMENTS.md) on 666 loanwords written before they were looked
+ * up: alone on a line it costs レゴ, バズ, ボバ, フェス, フォー, アキー and ラーラ (with a particle they
+ * count), and keeps ラッパー, タトゥー, コービー, バービー and ウェーブ, which full-size kana alone
+ * would lose.
+ */
+export const LISTED_WHOLE = 3;
+export const LISTED_LONG = 4;
+/**
+ * Full-size kana a katakana word written apart (katakana on neither side) needs to count on its own,
+ * whatever katakana stands beside it on the line (knownUnits). Counted in characters (three or four,
+ * marks included), it let a duel's best of 60 lines of random two-kana runs with marks win 14 and 6
+ * rounds of 280 where 3 were won without it; from four full-size kana it let nothing count, in any
+ * shape of random runs measured, that did not count without it (RULES-MEASUREMENTS.md).
+ */
+export const APART_WHOLE = 4;
 
 /**
- * Does a dictionary have this katakana, as written: whole (IPADIC, JMdict's words, JMdict's
- * names), or as two words of IPADIC's or JMdict's (not names) of LOANWORD_PART characters or more?
+ * Does a dictionary have this katakana, as written: whole (IPADIC; JMdict's words and JMnedict's
+ * names of LISTED_WHOLE full-size kana or LISTED_LONG characters), or as two words of IPADIC's or
+ * JMdict's (not names) of LOANWORD_PART characters or more?
  */
 function katakanaListed(run: string): boolean {
   if (run.length < 2) return false;
-  if (japaneseListed(run)) return true;
+  const whole = japaneseListed(run);
+  if (whole === 'ipadic' || (whole !== null && (fullKana(run) >= LISTED_WHOLE || run.length >= LISTED_LONG))) return true;
   const word = (w: string) => {
     const l = japaneseListed(w);
     return l === 'ipadic' || l === 'word';

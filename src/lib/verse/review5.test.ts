@@ -7,16 +7,17 @@
  * docs/language/RULES-MEASUREMENTS.md.
  */
 import { beforeAll, describe, expect, it } from 'vitest';
-import { CARD_CATALOG } from '../cards';
-import { carriesLines, createDuel, isCopy, resolveRound, rng, type DuelDeck } from './duel';
+import { CARD_CATALOG, getCardById } from '../cards';
+import { carriesLines, createDuel, isCopy, resolveRound, rng, scoreVerse, type DuelDeck } from './duel';
 import { getForm, scoreForm } from './forms';
 import { rulesJudge } from './judge';
+import { writeOpponentVerse, writtenCandidates } from './opponent';
 import { PACK_LANGS, getPack, loadAllPacks } from './packs';
 import { loadPronunciation } from './pronounce';
 import { allusionLexicon } from './referee';
 import { loadSound } from './sound';
 import { japaneseLexicon, japaneseListed, setJapaneseLexicon } from './sound/kana';
-import { copyOf, isContentWord, linesOf, substance, wordsOf } from './text';
+import { APART_WHOLE, LISTED_LONG, LISTED_WHOLE, LOANWORD_PART, copyOf, isContentWord, linesOf, substance, wordsOf } from './text';
 
 const log = (k: string, v: unknown) => console.log(`MEASURE ${k} ${JSON.stringify(v)}`);
 
@@ -29,6 +30,12 @@ beforeAll(async () => {
 /** A line alone, then two lines of Japanese: the checker's frame. */
 const haiku = (first: string) => `${first}\n夜の街を\n歩いてく`;
 const counts = (v: string) => substance(v, 'ja').ok && !scoreForm(getForm('haiku'), v, { lang: 'ja' }).thin;
+
+/** What the third check's 211 and the fourth pass's 155 leave void alone on a line (review5, engine check 3). */
+const VOID3 = ['アデル', 'ルイアームストロング', 'レゴ', 'レディー・ガガ', 'スポティファイ', 'クラウトン', 'バチャータ', 'ズーク', 'ソカ', 'エリカバドゥ', 'ウータンクラン', 'チャンスザラッパー', 'バスタライムス', 'ミッシーエリオット', 'ラキム', 'ケーアールエスワン'];
+const VOID4 = ['ピクリズ', 'アキー', 'ハリエットタブマン', 'ニッキーミナージュ', 'ドクタードレー', 'アリシアキーズ', 'ジャクメル', 'カパイシャン', 'シタデル', 'ペチョンビル', 'ゴナイーヴ', 'ラーラ', 'コンパディレクト', 'ニュージャックスウィング', 'ファンドレイザー', 'フェイダウェイ', 'アリウープ'];
+/** Kana written full size (text.ts fullKana): not a small kana or the long mark. */
+const fullKana = (w: string) => [...w].filter((c) => !/[ァィゥェォッャュョヮヵヶー]/u.test(c)).length;
 
 // --- Blocker 2: loanwords and names IPADIC lacks, alone on a line ---
 
@@ -65,11 +72,61 @@ describe('engine check 2, blocker 2: a loanword or a name a dictionary has count
     'ミックステープ ターンテーブル グラフィティ スプレー ブレイクビーツ ビートジャック クラブ ラウンジ ネオン シティポップ ' +
     'ミュージックビデオ プレイリスト ヘッドフォン スピーカー アンプ ジャムセッション ステージダイブ モッシュ アンコール ソールドアウト'
   ).split(' ');
-  /** Are all the words of this katakana in a dictionary the engine has (whole, a compound of two, or each part between middle dots)? */
+  /**
+   * The engine's third check (2026-11-18), its own 211, written before it looked any up: the home, food,
+   * music, sport, places and people, brands and apps, and the music of the diaspora.
+   */
+  const CHECKER3 = (
+    'テーブル ソファ カーテン ベッド シャワー キッチン リモコン ビデオ バイオリン ヴァイオリン トランペット ステーキ サラダ スープ クッキー キャンディ ヨーグルト バター チーズ ' +
+    'ソーセージ ベーコン ジュース レモネード グミ マシュマロ チャット モニター プリンター バグ シュート ピッチャー バッター ヨガ ジム トレーニング ストレッチ スプリント ' +
+    'ハーフタイム オーバータイム マイクロフォン スタジオ レコード シングル アルバム ミックス マスタリング ドロップ ビーフ ギャング ストリートアート マドリード モスクワ ' +
+    'ジャカルタ ハノイ リオデジャネイロ ラスベガス ハリウッド ファルスタッフ モーツァルト ベートーヴェン ピカソ ゴッホ アインシュタイン ネルソンマンデラ テイラースウィフト ' +
+    'アデル ブルーノマーズ ホイットニー スティービーワンダー マイケルジャクソン ルイアームストロング デュークエリントン ウータン ローリンヒル ナイキ アディダス グッチ ' +
+    'シャネル レゴ バービー スーパーマン バットマン スパイダーマン アイアンマン ウルトラマン トトロ テトリス パックマン ボブ・ディラン レディー・ガガ ' +
+    'マーティン・ルーサー・キング ヴィーナス ハイキング キャンプ バケーション パスポート スーツケース チケット ホテルマン レストラン ウェイター シェフ レシピ オーブン ' +
+    'フライパン ナイフ フォーク スプーン ボトル カクテル ウイスキー ポケットモンスター ニンテンドースイッチ プレイステーション エックスボックス ゲームボーイ スマブラ ' +
+    'マリオカート ストリートファイター ウーバー エアビーアンドビー マイクロソフト テスラ スポティファイ ペイペイ ラインペイ メルカリ ズームミーティング リール ヴァイブス ' +
+    'フレックス クラウトン ブラックミュージック ネオソウル アールアンドビー パンク メタル カントリー ミュージカル サンバ ボサノバ サルサ メレンゲ バチャータ コンパ ズーク ' +
+    'カリプソ ソカ ハイチアン クレオール ブードゥー ラム コーヒーショップ ストリートフード タコトラック アフロヘア ブレイド ロックス ウェーブ フェード スキンフェード ' +
+    'ラインアップ ラグビー クリケット ゴルフ ボウリング ビリヤード ダーツ カーリング フェンシング ホーチミン メルボルン バンクーバー ケベック ダブリン エディンバラ ' +
+    'リバプール アムステルダム ブリュッセル プラハ ワルシャワ ブダペスト テルアビブ カサブランカ エリカバドゥ ディアンジェロ アウトキャスト ウータンクラン ジェイコール ' +
+    'チャンスザラッパー バスタライムス ミッシーエリオット ラキム ケーアールエスワン オルタナティブ ミニマル サイケデリック ノスタルジー ヴィンテージ レトロ アンティーク ' +
+    'モダン クラシック バースデー アニバーサリー サプライズ ディナー ランチ ブランチ デート プロポーズ'
+  ).split(' ');
+  /**
+   * The fourth pass's own, written before any was looked up and kept only where no earlier list, test
+   * or document of the project had the word: the net, food (Haitian among it), music, sport, places,
+   * Shakespeare's people and others, plain loanwords.
+   */
+  const MINE4 = (
+    'ニュースレター ハンドルネーム バイラル ホットケーキ ミルクシェイク ラザニア グラタン コロッケ トンカツ オムレツ ハヤシライス ' +
+    'プリン ゼリー キムチ ビビンバ プランテン グリオ ピクリズ アキー ループ バラード ソウルミュージック ジャズクラブ オーケストラ ' +
+    'シンフォニー コンサート コラボ ハーフパイプ ストライカー ダブルダッチ パルクール キックボクシング キューバ トリニダード バルバドス ' +
+    'セネガル エチオピア ケニア ガンジー マルコムエックス ハリエットタブマン ローザパークス ミシェル ジョーダン ウィルスミス ' +
+    'ニッキーミナージュ ドクタードレー ファレル アリシアキーズ ジョンレジェンド エルヴィス ビートルズ クイーン ボウイ スピード ホープ ' +
+    'ラブ ムーン スカイ レイン ストーム サンダー ファイヤー シャドウ ドア ゲート タワー タウン ビレッジ トンネル トレイン ' +
+    'ステーション エアポート フライト ネイルサロン バーバーショップ ヘアカット ドライヤー ローション シャンプー タオル スリッパ ' +
+    'パジャマ マットレス カーペット クッション ランプ キャンドル ガム ジャム メモ カナル ジャクメル カパイシャン ラバディ シタデル ' +
+    'ペチョンビル ゴナイーヴ ラーラ コンパディレクト ラスタ ジャンカヌー スティールパン マルディグラ ジュークボックス ブギウギ ' +
+    'ドゥーワップ モータウン フィラデルフィアソウル ニュージャックスウィング ボルチモア オーランド ナッシュビル フェニックス シアトル ' +
+    'デンバー クリーブランド ミネアポリス ブルックリンブリッジ ゴールデンゲート オスカー ネットワーク セキュリティ アップロード ' +
+    'ヘッドライン パンデミック ワクチン ソーシャルディスタンス ウェビナー インターン キャリア ポートフォリオ スタートアップ ベンチャー ' +
+    'ピッチ マーケティング ブランディング ロゴ スローガン キャッチコピー フリーランス ボランティア チャリティ ファンドレイザー ' +
+    'カフェテリア ジムバッグ ロッカールーム スコアボード タイムアウト オーバーヘッド クロスオーバー フェイダウェイ アリウープ ' +
+    'ゴールポスト ハットトリック'
+  ).split(' ');
+  /**
+   * Are all the words of this katakana in a dictionary the engine counts (whole: IPADIC's, or JMdict's
+   * or JMnedict's of LISTED_WHOLE full-size kana or LISTED_LONG characters; a compound of two words of
+   * IPADIC's or JMdict's of LOANWORD_PART or more; or each part between middle dots so)?
+   */
+  /** What each set leaves void alone on a line, as measured (the fourth pass, 2026-11-18): names written together, places and spellings no dictionary has, and the short words LISTED_WHOLE leaves out. */
+  const VOID_ALONE: Record<string, string[]> = { checker3: VOID3, mine4: VOID4 };
   const inDictionary = (w: string) =>
     w.split('・').every((part) => {
-      if (japaneseListed(part)) return true;
-      for (let k = 3; k + 3 <= part.length; k++) {
+      const whole = japaneseListed(part);
+      if (whole === 'ipadic' || (whole && (fullKana(part) >= LISTED_WHOLE || part.length >= LISTED_LONG))) return true;
+      for (let k = LOANWORD_PART; k + LOANWORD_PART <= part.length; k++) {
         const a = japaneseListed(part.slice(0, k));
         const b = japaneseListed(part.slice(k));
         if ((a === 'ipadic' || a === 'word') && (b === 'ipadic' || b === 'word')) return true;
@@ -77,15 +134,17 @@ describe('engine check 2, blocker 2: a loanword or a name a dictionary has count
       return false;
     });
 
-  it("the checker's 135: every one a dictionary has counts alone on the line (31 were void at 0346ee1); with a particle, all do", () => {
+  it("the checker's 135: every one a dictionary has at the length counted counts alone on the line (31 were void at 0346ee1); with a particle, all do", () => {
     const rows = CHECKER.map((w) => ({ w, alone: counts(haiku(w)), particle: counts(haiku(`${w}の`)), listed: inDictionary(w) }));
     const voidAlone = rows.filter((r) => !r.alone).map((r) => r.w);
     log('engine check 2: the checker\'s 135 loanwords alone on a line (void, not in any dictionary)', { words: rows.length, voidAlone, notListed: rows.filter((r) => !r.listed).map((r) => r.w) });
     expect(rows.length).toBe(135);
     expect(rows.filter((r) => !r.particle).map((r) => r.w)).toEqual([]);
-    // Void alone only when no dictionary has it: トーキョー (IPADIC, JMdict and JMnedict spell Tokyo 東京).
+    // Void alone only when no dictionary has it at the length counted: トーキョー (IPADIC, JMdict and
+    // JMnedict spell Tokyo 東京), and フェス (JMdict's, two full-size kana in three characters: the
+    // engine's third check, text.ts LISTED_WHOLE).
     expect(rows.filter((r) => !r.alone && r.listed).map((r) => r.w)).toEqual([]);
-    expect(voidAlone).toEqual(['トーキョー']);
+    expect(voidAlone).toEqual(['フェス', 'トーキョー']);
   });
 
   it("this pass's own words, none on the checker's list: at least 90% count alone on the line, and each one that does not is in no dictionary", () => {
@@ -96,6 +155,21 @@ describe('engine check 2, blocker 2: a loanword or a name a dictionary has count
     expect(rows.length).toBeGreaterThanOrEqual(150);
     expect(rows.filter((r) => !r.alone && r.listed).map((r) => r.w)).toEqual([]);
     expect(voidAlone.length / rows.length).toBeLessThanOrEqual(0.1);
+  });
+
+  it("the third check's 211 and the fourth pass's 155, none on an earlier list: each void alone is in no dictionary at the length counted, these and no others; with a particle all count", () => {
+    const sets = { checker3: CHECKER3, mine4: MINE4 };
+    expect([CHECKER3.length, MINE4.length]).toEqual([211, 155]);
+    expect(MINE4.filter((w) => [...CHECKER, ...MINE, ...CHECKER3].includes(w))).toEqual([]);
+    for (const [name, ws] of Object.entries(sets)) {
+      const rows = ws.map((w) => ({ w, alone: counts(haiku(w)), middle: counts(`雨上がり\n${w}\n君を待つ`), particle: counts(haiku(`${w}の`)), listed: inDictionary(w) }));
+      const voidAlone = rows.filter((r) => !r.alone).map((r) => r.w);
+      log(`engine check 3: ${name}, loanwords alone on a line (words, void alone, of them listed at two characters)`, { words: rows.length, voidAlone, listedShort: voidAlone.filter((w) => japaneseListed(w)) });
+      expect([name, rows.filter((r) => !r.alone && r.listed).map((r) => r.w)]).toEqual([name, []]);
+      expect([name, rows.filter((r) => r.alone !== r.middle).map((r) => r.w)]).toEqual([name, []]);
+      expect([name, rows.filter((r) => !r.particle).map((r) => r.w)]).toEqual([name, []]);
+      expect([name, voidAlone]).toEqual([name, VOID_ALONE[name]]);
+    }
   });
 
   it("the checker's three void haiku and the earlier pass's lacked ones count; one whose loanword no dictionary has does not", () => {
@@ -172,6 +246,164 @@ describe('engine check 2, blocker 2: random katakana and keyboard mash alone on 
     log('engine check 2: random katakana and kana-keyboard runs alone on a line (lines, counted now, counted without the lists, added by them)', rows);
     for (const [kind, row] of Object.entries(rows)) expect([kind, row.added / row.lines <= 0.001, row.counted >= row.withoutLists]).toEqual([kind, true, true]);
   }, 600_000);
+});
+
+// --- The engine's third check: short random katakana ---
+
+/**
+ * The readings with the lists taken away and IPADIC kept, whole runs included: what the analyser's own
+ * dictionary lets count, so a difference is the lists' alone. (Taking the lexicon away altogether also
+ * drops IPADIC's whole runs; that reading is 0346ee1's, to the line, in the third check's probe.)
+ */
+function ipadicOnly<T>(f: () => T): T {
+  const all = japaneseLexicon();
+  setJapaneseLexicon(all && ((w) => (all(w) === 'ipadic' ? 'ipadic' : null)));
+  try {
+    return f();
+  } finally {
+    setJapaneseLexicon(all);
+  }
+}
+
+describe('engine check 3, blocker: a word or a name of the lists counts whole only at LISTED_WHOLE full-size kana or LISTED_LONG characters, so short random katakana stays out', () => {
+  const PLAIN = [...'アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワガギグゲゴザジズゼゾダヂヅデドバビブベボパピプペポ'];
+  /** The third check's alphabet for random runs: the plain kana with ン and ヴ, a small kana or a long mark after some. */
+  const KANA = [...PLAIN, 'ン', 'ヴ'];
+  const SMALL = [...'ャュョァィゥェォッ'];
+  function run(r: () => number, n: number, marked: boolean): string {
+    let x = '';
+    for (let k = 0; k < n; k++) {
+      x += KANA[Math.floor(r() * KANA.length)];
+      if (marked) {
+        const t = r();
+        if (t < 0.12) x += SMALL[Math.floor(r() * SMALL.length)];
+        else if (t < 0.3) x += 'ー';
+      }
+    }
+    return x;
+  }
+  /** Shapes of a line of random runs, spaces between: the third check's and the fourth pass's. */
+  const SHAPES: Record<string, (r: () => number) => string> = {
+    two: (r) => run(r, 2, false),
+    twoMarked: (r) => run(r, 2, true),
+    twoOrThree: (r) => run(r, 2 + Math.floor(r() * 2), false),
+    twoOrThreeMarked: (r) => run(r, 2 + Math.floor(r() * 2), true),
+    four: (r) => run(r, 4, false),
+  };
+
+  it('every pair of the 69 plain katakana alone on a line: the lists add none (at b082b33b they added 1,039: 426 words and 613 names)', () => {
+    const pairs = PLAIN.flatMap((a) => PLAIN.map((b) => a + b));
+    const now = pairs.filter((x) => counts(haiku(x)));
+    const before = ipadicOnly(() => pairs.filter((x) => counts(haiku(x))));
+    log('engine check 3: pairs of plain katakana alone on a line (pairs, count now, with IPADIC alone)', [pairs.length, now.length, before.length]);
+    expect(pairs.length).toBe(4761);
+    expect(now).toEqual(before);
+  });
+
+  it('random katakana alone on a line: the lists add none at two kana, few with a mark, and at three what is recorded', () => {
+    const r = rng(20261119);
+    const sets: Record<string, string[]> = { two: [], twoMarked: [], three: [], threeMarked: [] };
+    for (let i = 0; i < 6000; i++) sets.two.push(run(r, 2, false));
+    for (let i = 0; i < 6000; i++) sets.twoMarked.push(run(r, 2, true));
+    for (let i = 0; i < 8000; i++) sets.three.push(run(r, 3, false));
+    for (let i = 0; i < 8000; i++) sets.threeMarked.push(run(r, 3, true));
+    const rows = Object.fromEntries(
+      Object.entries(sets).map(([k, xs]) => {
+        const lines = [...new Set(xs)];
+        const now = lines.filter((x) => counts(haiku(x)));
+        const before = new Set(ipadicOnly(() => lines.filter((x) => counts(haiku(x)))));
+        const added = now.filter((x) => !before.has(x));
+        return [k, { lines: lines.length, counted: now.length, withIpadicAlone: before.size, added: added.length, addedExamples: added.slice(0, 12) }];
+      }),
+    );
+    log('engine check 3: random katakana alone on a line (lines, counted, with IPADIC alone, added by the lists)', rows);
+    expect(rows.two.added).toBe(0);
+    // Measured at this rule (the fourth pass's probe, the third check's seed): 21 of 5,123 marked pairs,
+    // 144 of 7,907 threes (イトコ, ラノベ, ミノリ: words and names, by chance), 65 of 7,986 marked threes.
+    // At b082b33b the marked pairs were 713 of 5,123; counting characters alone (no full-size kana), 237.
+    for (const [k, bound] of [['twoMarked', 0.008], ['three', 0.025], ['threeMarked', 0.012]] as const) expect([k, rows[k].added / rows[k].lines <= bound]).toEqual([k, true]);
+  }, 600_000);
+
+  it('mash at the scale of a verse: tercets of one to four random runs a line around one line of Japanese: the lists let at most 1 in 200 more count', () => {
+    const rows: Record<string, { verses: number; counted: number; withIpadicAlone: number }> = {};
+    const ok = (v: string) => substance(v, 'ja').ok && !scoreForm(getForm('tercet'), v, { lang: 'ja' }).thin;
+    for (const [shape, gen] of Object.entries(SHAPES))
+      for (const k of [1, 2, 3, 4]) {
+        const r = rng(99173 + k * 17 + shape.length);
+        const verses = Array.from({ length: 1500 }, () => {
+          const line = () => Array.from({ length: k }, () => gen(r)).join(' ');
+          return `${line()}\n君を待つ夜\n${line()}`;
+        });
+        rows[`${shape} x${k}`] = { verses: verses.length, counted: verses.filter(ok).length, withIpadicAlone: ipadicOnly(() => verses.filter(ok).length) };
+      }
+    log('engine check 3: mash tercets around one line of Japanese (verses, counted, with IPADIC alone)', rows);
+    for (const [k, row] of Object.entries(rows)) expect([k, (row.counted - row.withIpadicAlone) / row.verses <= 0.005]).toEqual([k, true]);
+  }, 600_000);
+
+  it('a duel: one real line and random runs for the rest, the best of 60 tries by craft, 14 houses x 10 seeds: the lists win at most one round more than the analyser alone, in every shape', async () => {
+    const lines: Record<string, (r: () => number) => string> = {
+      two: (r) => Array.from({ length: 2 + Math.floor(r() * 3) }, () => run(r, 2, false)).join(' '),
+      twoMarked: (r) => Array.from({ length: 2 + Math.floor(r() * 2) }, () => run(r, 2, true)).join(' '),
+      twoOrThree: (r) => Array.from({ length: 2 + Math.floor(r() * 2) }, () => run(r, 2 + Math.floor(r() * 2), false)).join(' '),
+      twoOrThreeMarked: (r) => Array.from({ length: 2 + Math.floor(r() * 2) }, () => run(r, 2 + Math.floor(r() * 2), true)).join(' '),
+      four: (r) => Array.from({ length: 1 + Math.floor(r() * 3) }, () => run(r, 4, false)).join(' '),
+    };
+    const HOUSES = [...new Set(CARD_CATALOG.filter((c) => c.type === 'Character').map((c) => c.house))];
+    const chars = CARD_CATALOG.filter((c) => c.type === 'Character');
+    const rows: Record<string, { rounds: number; wins: number; voided: number }> = {};
+    for (const house of HOUSES) {
+      const deck: DuelDeck = { characters: [...chars.filter((c) => c.house === house), ...chars.filter((c) => c.house !== house)].slice(0, 3).map((c) => c.id), relics: [], potions: [] };
+      const card = getCardById(deck.characters[0])!;
+      for (let seed = 1; seed <= 10; seed++) {
+        const d = createDuel(seed, 'ja', deck);
+        const plan = d.rounds[0];
+        const form = getForm(plan.formId);
+        const opp = (await writeOpponentVerse({ duel: d, roundIndex: 0, difficulty: 'player' })).verse;
+        const real = linesOf(writtenCandidates(form, plan.ctx, seed * 31).find((v) => v !== opp)!);
+        for (const [shape, gen] of Object.entries(lines))
+          for (const [reading, cut] of [['lists', false], ['ipadic', true]] as const) {
+            const r = rng(seed * 7001 + house.length * 13 + shape.length);
+            const play = () => {
+              let best = '';
+              let bestCraft = -1;
+              for (let t = 0; t < 60; t++) {
+                const v = real.map((l, i) => (i === 0 ? l : gen(r))).join('\n');
+                const sc = scoreVerse({ verse: v, form, ctx: plan.ctx, card, deckCharacters: deck.characters, opponentVerse: opp });
+                if (sc.craft > bestCraft) [best, bestCraft] = [v, sc.craft];
+              }
+              return resolveRound(d, 0, { charId: deck.characters[0] }, best, opp, rulesJudge(best, opp, 'ja', allusionLexicon()));
+            };
+            const res = cut ? ipadicOnly(play) : play();
+            const row = (rows[`${shape} ${reading}`] ??= { rounds: 0, wins: 0, voided: 0 });
+            row.rounds++;
+            if (res.winner === 'player') row.wins++;
+            if (res.player.voided) row.voided++;
+          }
+      }
+    }
+    log('engine check 3: best of 60 with random runs (shape and reading: rounds, wins, void)', rows);
+    for (const shape of Object.keys(lines)) expect([shape, rows[`${shape} lists`].wins <= rows[`${shape} ipadic`].wins + 1]).toEqual([shape, true]);
+  }, 900_000);
+});
+
+describe('engine check 3, concern: a word a dictionary has, written apart, counts beside one no dictionary has, from APART_WHOLE full-size kana', () => {
+  it('two katakana words on a line, one no dictionary has: the long listed word counts, a short one does not', () => {
+    const line = (l: string) => counts(haiku(l));
+    // Counted now (void at b082b33b and at 0346ee1): the listed word has APART_WHOLE full-size kana or more.
+    const NOW = ['プレイリスト スポティファイ', 'ビギー スモールズ', 'マイルスデイビス トランペット', 'ソカ カーニバル'];
+    // Still void: the listed word is shorter (ジャズ, ハロー: three full-size kana; a random run of three is a
+    // dictionary's word about one time in forty).
+    const STILL = ['ルイアームストロング ジャズ', 'アデル ハロー', 'ネオン ズーク', 'ラキム フロー', 'ピクリズ キムチ'];
+    log('engine check 3: two katakana words, one no dictionary has (line, counts)', [...NOW, ...STILL].map((l) => [l, line(l)]));
+    /** The most full-size kana of a word on the line that a dictionary has whole. */
+    const longest = (l: string) => Math.max(0, ...l.split(' ').filter((w) => japaneseListed(w)).map(fullKana));
+    for (const l of NOW) expect([l, line(l), longest(l) >= APART_WHOLE]).toEqual([l, true, true]);
+    for (const l of STILL) expect([l, line(l), longest(l) > 0 && longest(l) < APART_WHOLE]).toEqual([l, false, true]);
+    // Both listed, as before: two loanwords count.
+    for (const l of ['スマホ アプリ', 'インスタ ストーリー']) expect([l, line(l)]).toEqual([l, true]);
+    // In a verse with no line of Japanese the rule does not apply.
+    expect(substance('プレイリスト スポティファイ\nビギー スモールズ\nソカ カーニバル', 'ja').ok).toBe(false);
+  });
 });
 
 // --- Concern: frame flips the every-line copy rule voided ---
