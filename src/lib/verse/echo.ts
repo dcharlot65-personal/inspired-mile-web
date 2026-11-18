@@ -24,11 +24,12 @@
  *   a tone mark is the duel language's own (Portuguese «põe», "puts", is not Poe; Vietnamese «sáng» is not "sang").
  *
  * Names are stricter than the words of a line, because a stem is shared by words that name nobody:
- * - where names decline (Polish, Russian, German, Arabic), a declined name must also keep the name's letters
- *   (the whole name in German and Arabic, Romeos, والروميو; all but its last vowel in Russian and Polish,
- *   Джульетту, Julię), and in Russian and Polish be written with a capital. So German «wartest» ("you wait") is
- *   not «Wärterin» though Snowball stems both to "wart", Arabic «روما» (Rome) is not «روميو», and Russian «марку»
- *   (a postage stamp) is not «Марк»;
+ * - where names decline, a declined form must keep the name's letters: in Russian and Polish, all but the name's
+ *   last vowel, followed by one of the language's noun case endings (Джульетту, Julię, Antoniusza), and written with
+ *   a capital; in German the name with its genitive -s or what Snowball's stem allows (Romeos, Hamlets); in Arabic
+ *   the whole name with what Snowball's stem allows (والروميو). So German «wartest» ("you wait") is not «Wärterin»
+ *   though Snowball stems both to "wart", Arabic «روما» (Rome) is not «روميو», and Russian «медузу» (a jellyfish) is
+ *   not «Медузу»;
  * - elsewhere a name is the same word, compared as above (no stems: «prosperidad» is not «Próspero»), and a verse
  *   word that carries an accent the name does not is another word (typed without accents, the name still counts).
  *
@@ -527,14 +528,23 @@ export function localCharacterNames(lang: string): string[] {
 
 /**
  * Russian and Polish names change their last vowel as they decline (Джульетта, Джульетту; Julia, Julię; Polish
- * also drops the e of -ek and -ec: Marek, Marka); what a declined form keeps is the rest. German and Arabic keep
- * the whole name (Romeos; والروميو).
+ * also drops the e of -ek and -ec: Marek, Marka); what a declined form keeps is the rest.
  */
 function declensionBase(key: string, lang: string): string {
   if (lang === 'ru') return key.replace(/[аяоеьйиыуюэ]$/u, '');
   if (lang === 'pl') return key.replace(/[aeiouy]$/u, '').replace(/e([kc])$/u, '$1');
   return key;
 }
+
+/**
+ * The case endings of Russian and Polish nouns, singular and plural, folded as wordKey folds them (ё as е; Polish
+ * ę, ą and ó as e, a and o): the endings of the standard declension paradigms, written out here by hand (no file
+ * was fetched for them). A declined name is its base and one of these.
+ */
+const CASE_ENDINGS: Record<string, Set<string>> = {
+  ru: new Set(['а', 'я', 'у', 'ю', 'ом', 'ем', 'ой', 'ей', 'ою', 'ею', 'е', 'и', 'ы', 'ам', 'ям', 'ами', 'ями', 'ах', 'ях', 'ов', 'ев']),
+  pl: new Set(['a', 'u', 'owi', 'em', 'ie', 'y', 'i', 'e', 'o', 'om', 'ami', 'ach', 'ow']),
+};
 
 /** Is one word of a name said by one word of the verse (as the verse writes it)? */
 function saysNameWord(name: string, verseWord: string, lang: string): boolean {
@@ -546,10 +556,14 @@ function saysNameWord(name: string, verseWord: string, lang: string): boolean {
   }
   const n = wordKey(name, b);
   const v = wordKey(verseWord, b);
-  if (NAMES_DECLINE.has(b) && stemmerFor(b) && n !== v) {
-    if (!sameStem(name, verseWord, b)) return false;
-    if (b === 'ar' ? !v.includes(n) : !v.startsWith(declensionBase(n, b))) return false;
-    return !CAPITAL_TELLS.has(b) || /^\p{Lu}/u.test(verseWord);
+  if (NAMES_DECLINE.has(b) && n !== v) {
+    if (CAPITAL_TELLS.has(b)) {
+      const base = declensionBase(n, b);
+      return v.startsWith(base) && CASE_ENDINGS[b].has(v.slice(base.length)) && /^\p{Lu}/u.test(verseWord);
+    }
+    if (b === 'de' && v === `${n}s`) return true;
+    if (!stemmerFor(b) || !sameStem(name, verseWord, b)) return false;
+    return b === 'ar' ? v.includes(n) : v.startsWith(n);
   }
   if (n !== v) return false;
   // Typed without accents the name still counts; with an accent the name does not have, it is another word.
