@@ -10,8 +10,10 @@ Astro static site + Rust API (`backend/`, axum + sqlx + Postgres).
   `src/lib/brain.ts` knows three models: Gemma 4 E2B (3.1 GB), LFM3 1.7B (1.1 GB) and
   LFM2.5 350M (295 MB). Which the device can run decides what is offered, and each model
   writes and judges only in the languages it was measured to handle (`writesIn`, `judgesIn`);
-  one used in no language is never offered (`modelsToOffer`). Otherwise: the written opponent
-  and rule judging.
+  one used in no language is never offered (`modelsToOffer`) and never a fallback when the one
+  asked for fails to load (`loadOrder`); a page loads a model on its own only when it is the one
+  the visitor chose before and is still offered (`rememberedModel`). Otherwise: the written
+  opponent and rule judging.
 - Speech: Whisper base on WebAssembly (`src/lib/ear.ts`); Kokoro for English voice.
   The browser's Web Speech recognition is NOT used: it sends audio to a server.
 - Babylon.js 9 for the Theatre (`src/lib/xr/theatre.ts`, `/theatre`) and the VR gallery
@@ -374,6 +376,13 @@ left behind by a killed run is found by its port: `lsof -nP -iTCP:<port> -sTCP:L
   cells whose prompts changed. `run.mjs` measures set-aside cells again. New cells: copy them into
   `cells/`, then `node scripts/model-eval/judge-code.mjs` (git only) and
   `MEVAL_FINGERPRINT=1 npx vitest run src/lib/model-eval.judge.test.ts` before `analyze.mjs`.
+  Each judged pair also keeps the model's raw reading (`referee.ts JudgeReading`), and
+  "every verdict follows from the reading…" derives each stored verdict again with the code now,
+  so a change to how an answer is read (`SPLIT_BELOW`, `GRADE_MARGIN`, `combineMargins`,
+  `boundedByRules`) turns it red as a prompt change turns the fingerprint red.
+  `node scripts/model-eval/mutate-gates.mjs` (build host) proves the gates, the pages' lines
+  (badge, note, verdict, theatre), the loading rules and the reading are all held by a test;
+  the page tests use a stand-in model library (`tests/stand-in-model.ts`).
   The replay, the re-score and `run.mjs` load a language's sound data (`src/lib/verse/sound`,
   from the phonetics work) wherever the game does.
 - Every verse in every pack must keep its form as the code checks it (`verse.test.ts`).

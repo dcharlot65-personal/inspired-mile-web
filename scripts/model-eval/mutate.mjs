@@ -32,7 +32,7 @@ const MUTATIONS = [
   ['a model used in no language offered for download', 'src/lib/brain.ts', 'return runnable.filter(usedAnywhere);', 'return runnable;'],
   // The cells against the game as it is now (the replay test).
   ['a score in a cell edited', 'docs/language/model-eval/cells/grand.en.write.json', '"formKept": true', '"formKept": false'],
-  ['a scoring rule changed after the cells ran', 'src/lib/verse/duel.ts', '1 + (device.met ? 0.5 : 0)', '1 + (device.met ? 0.6 : 0)'],
+  ['a scoring rule changed after the cells ran', 'src/lib/verse/duel.ts', 'const bonus = (device.met ? 0.5 : 0)', 'const bonus = (device.met ? 0.6 : 0)'],
   ['the opponent\'s prompt changed after the cells ran', 'src/lib/verse/opponent.ts', 'No title, no notes, no explanation.', 'No title, no notes.'],
   // A rule the stored drafts use: 34 of them had a note in brackets cut off a kept line ("(needs 5)").
   // (Dropping the backtick from the markup rule changed no stored draft, and survived: the wrong mutation, not a weak test.)
