@@ -23,6 +23,17 @@
  * verse's grade), and the test "every verdict follows from…" derives each verdict again from it
  * with the code now (verdictOf, and the rule-based judge the grade path is bounded by): a change
  * to SPLIT_BELOW, GRADE_MARGIN, combineMargins or boundedByRules turns it red.
+ *
+ * Such a change alters nothing the model answered, only what the game makes of it, so the stored
+ * readings give the new verdicts exactly, as the re-score does for writing cells:
+ *
+ *   MEVAL_RESCORE=1 npx vitest run src/lib/model-eval.judge.test.ts
+ *
+ * rewrites each stored verdict from its reading with the code now, and records it under
+ * `rederived`. A pair it cannot derive (no reading stored, or a grade-path pair whose verses the
+ * grader would now read differently, so the model would have been asked other questions) leaves
+ * its cell to the model: the run fails and names it, and MEVAL_SET_ASIDE=1 beside it moves such a
+ * cell to set-aside/. Then scripts/model-eval/analyze.mjs and copy-lists.mjs.
  */
 import { createHash } from 'node:crypto';
 import { execFileSync } from 'node:child_process';
@@ -30,6 +41,7 @@ import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 
 import { join } from 'node:path';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import type { ModelSpec } from './brain';
+import type { JudgeSplit } from './verse/duel';
 // @ts-expect-error a plain module, shared with the scripts that run the evaluation
 import { judgingCode } from '../../scripts/model-eval/lib.mjs';
 import { setAsideCell } from './model-eval-aside';
@@ -83,6 +95,26 @@ async function fingerprint(cell: JudgeCell): Promise<{ sha256: string; requests:
   const requests = stand.requests.length;
   return { sha256: createHash('sha256').update(JSON.stringify(stand.requests)).digest('hex'), requests };
 }
+
+/**
+ * The verdict a stored pair's reading gives with the code now, or why it cannot be derived. The
+ * grade path is bounded by the rules: those are derived again too, from the verses, by the
+ * referee's own function (rulesSplit: its lexicon is the game's, whatever a merge makes it).
+ */
+function derive(lang: string, p: StoredPair, texts: Map<string, { better: { text: string }; worse: { text: string } }>): { now: JudgeSplit } | { cannot: string } {
+  if (!p.reading) return { cannot: 'no raw reading stored (judge the cell again: scripts/model-eval/run.mjs)' };
+  const pair = texts.get(p.id);
+  if (!pair) return { cannot: `the pair is no longer in pairs/${lang}.json` };
+  const [mine, theirs] = p.betterIsPlayer ? [pair.better.text, pair.worse.text] : [pair.worse.text, pair.better.text];
+  const r = p.reading;
+  if (r.method === 'compare') return { now: verdictOf(r) };
+  const rules = rulesSplit(mine, theirs, lang);
+  const unread = judgeLines(mine, lang).left.length > 0 || judgeLines(theirs, lang).left.length > 0;
+  if (unread !== !!r.unread) return { cannot: `the grader would now ${unread ? 'not read' : 'read'} a line it ${r.unread ? 'did not read' : 'read'}: judge it again` };
+  return { now: verdictOf(r.unread ? { method: 'grade', unread: true, rules } : { method: 'grade', player: r.player, opponent: r.opponent, rules }) };
+}
+const verdictFields = (v: { criteria: unknown; player: number; source: string; reason?: string }) => JSON.stringify({ criteria: v.criteria, player: v.player, source: v.source, reason: v.reason });
+const pairTexts = (lang: string) => new Map((read('pairs', `${lang}.json`).pairs as { id: string; better: { text: string }; worse: { text: string } }[]).map((p) => [p.id, p]));
 
 beforeEach(() => { stand.info = null; stand.requests = []; stand.generated = 0; });
 
@@ -139,32 +171,63 @@ describe('the judging cells', () => {
     if (cellFiles.length) expect(cellFiles.length).toBeGreaterThan(10);
   }, 120_000);
 
+  // After a change to how a model's answer is read (above): every verdict derived again from its
+  // reading, written back, cell by cell. Opt-in, like the re-score of the writing cells.
+  it.runIf(process.env.MEVAL_RESCORE === '1')('re-derives each stored verdict from its reading with the code now', async () => {
+    const at = (() => { try { return execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim(); } catch { return null; } })();
+    const refused: { f: string; file: string; why: string[] }[] = [];
+    let rewritten = 0;
+    for (const f of cellFiles) {
+      const file = join(DIR, 'cells', f);
+      if (!existsSync(file)) continue;
+      const cell = JSON.parse(readFileSync(file, 'utf8')) as JudgeCell & { rederived?: unknown[] };
+      const texts = pairTexts(cell.lang);
+      await prepare(cell.lang);
+      const why: string[] = [];
+      let changed = 0;
+      const pairs = cell.pairs.map((p) => {
+        const d = derive(cell.lang, p, texts);
+        if ('cannot' in d) { why.push(`${p.id}: ${d.cannot}`); return p; }
+        if (verdictFields(p) === verdictFields(d.now)) return p;
+        changed++;
+        const { reason: _old, ...rest } = p;
+        return { ...rest, criteria: d.now.criteria, player: d.now.player, opponent: d.now.opponent, source: d.now.source, ...(d.now.reason ? { reason: d.now.reason } : {}) };
+      });
+      if (why.length) { refused.push({ f, file, why }); console.log(`${f}: ${why.length} of ${cell.pairs.length} pairs cannot be derived again`); continue; }
+      console.log(`${f}: ${changed} of ${cell.pairs.length} verdicts differ now`);
+      if (!changed) continue;
+      const rederived = [...(cell.rederived ?? []), { date: new Date().toISOString(), commit: at, pairsChanged: changed, how: 'stored readings read again by src/lib/model-eval.judge.test.ts; the model was not run' }];
+      writeFileSync(file, JSON.stringify({ ...cell, pairs, rederived }, null, 1) + '\n');
+      rewritten++;
+    }
+    console.log(`${rewritten} judging cell file(s) re-derived`);
+    if (process.env.MEVAL_SET_ASIDE === '1') {
+      const aside = join(DIR, 'set-aside');
+      mkdirSync(aside, { recursive: true });
+      for (const r of refused) {
+        const cell = JSON.parse(readFileSync(r.file, 'utf8'));
+        cell.setAside = { date: new Date().toISOString(), commit: at, why: `${r.why.length} of ${cell.pairs.length} pairs cannot be derived again from their readings with the code now; judge it again (scripts/model-eval/run.mjs)`, pairs: r.why };
+        const kept = setAsideCell(aside, r.f, cell, r.file);
+        console.log(`${r.f}: set aside; it counts as not measured${kept ? ` (the one set aside before is kept in ${kept})` : ''}`);
+      }
+      return;
+    }
+    expect(refused.map((r) => `${r.f}: ${r.why[0]}${r.why.length > 1 ? ` (and ${r.why.length - 1} more)` : ''}`), 'judging cells that cannot be derived again; judge them again, or set them aside with MEVAL_SET_ASIDE=1').toEqual([]);
+  }, 600_000);
+
   it.skipIf(process.env.MEVAL_SET_ASIDE === '1')('every verdict follows from the reading the cell stores, by the code that reads a model now', async () => {
     const differ: string[] = [];
     let checked = 0;
     for (const f of cellFiles) {
+      if (!existsSync(join(DIR, 'cells', f))) continue;
       const cell = read('cells', f) as JudgeCell;
-      const texts = new Map((read('pairs', `${cell.lang}.json`).pairs as { id: string; better: { text: string }; worse: { text: string } }[]).map((p) => [p.id, p]));
+      const texts = pairTexts(cell.lang);
       await prepare(cell.lang);
       for (const p of cell.pairs) {
-        if (!p.reading) { differ.push(`${f} ${p.id}: no raw reading stored (judge the cell again: scripts/model-eval/run.mjs)`); continue; }
-        const pair = texts.get(p.id)!;
-        const [mine, theirs] = p.betterIsPlayer ? [pair.better.text, pair.worse.text] : [pair.worse.text, pair.better.text];
-        const r = p.reading;
-        let now;
-        if (r.method === 'compare') now = verdictOf(r);
-        else {
-          // The grade path is bounded by the rules: those are derived again too, from the verses, by
-          // the referee's own function (its lexicon is the game's, whatever a merge makes it).
-          const rules = rulesSplit(mine, theirs, cell.lang);
-          const unread = judgeLines(mine, cell.lang).left.length > 0 || judgeLines(theirs, cell.lang).left.length > 0;
-          if (unread !== !!r.unread) { differ.push(`${f} ${p.id}: the grader would now ${unread ? 'not read' : 'read'} a line it ${r.unread ? 'did not read' : 'read'}: judge it again`); continue; }
-          now = verdictOf(r.unread ? { method: 'grade', unread: true, rules } : { method: 'grade', player: r.player, opponent: r.opponent, rules });
-        }
+        const d = derive(cell.lang, p, texts);
+        if ('cannot' in d) { differ.push(`${f} ${p.id}: ${d.cannot}`); continue; }
         checked++;
-        const stored = { criteria: p.criteria, player: p.player, source: p.source, reason: p.reason };
-        const derived = { criteria: now.criteria, player: now.player, source: now.source, reason: now.reason };
-        if (JSON.stringify(stored) !== JSON.stringify(derived)) differ.push(`${f} ${p.id}: stored ${JSON.stringify(stored)}, the reading gives ${JSON.stringify(derived)} now`);
+        if (verdictFields(p) !== verdictFields(d.now)) differ.push(`${f} ${p.id}: stored ${verdictFields(p)}, the reading gives ${verdictFields(d.now)} now (MEVAL_RESCORE=1 derives them again)`);
       }
     }
     expect(differ.slice(0, 12), `${differ.length} of the stored pairs`).toEqual([]);

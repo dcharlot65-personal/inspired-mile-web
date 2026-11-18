@@ -381,7 +381,10 @@ left behind by a killed run is found by its port: `lsof -nP -iTCP:<port> -sTCP:L
   "every verdict follows from the reading…" derives each stored verdict again with the code now,
   so a change to how an answer is read (`SPLIT_BELOW`, `GRADE_MARGIN`, `combineMargins`,
   `boundedByRules`, and the rules' split that bounds the grade path, `referee.ts rulesSplit`, which the
-  test calls itself) turns it red as a prompt change turns the fingerprint red.
+  test calls itself) turns it red as a prompt change turns the fingerprint red. Such a change
+  alters nothing the model answered, so `MEVAL_RESCORE=1 npx vitest run src/lib/model-eval.judge.test.ts`
+  derives every stored verdict again from its reading and writes it back (a cell it cannot derive
+  fails the run, or with `MEVAL_SET_ASIDE=1` is set aside); then `analyze.mjs` and `copy-lists.mjs`.
   `node scripts/model-eval/mutate-gates.mjs` (build host) proves the gates, the pages' lines
   (badge, note, verdict, theatre), the loading rules and the reading are all held by a test;
   the page tests use a stand-in model library (`tests/stand-in-model.ts`).
