@@ -362,13 +362,13 @@ export function saysWord(word: string, verse: string, lang: string): boolean {
  * has no line of its own. Where the line has a modern spelling (a Japanese line printed in old character forms)
  * its words come first, since that is what a player types, and the printed words follow, so either counts.
  */
-export function localSignatureWords(card: Card, lang: string): string[] {
+export function localSignatureWords(card: Card, lang: string, modernOnly = false): string[] {
   const printed = localQuote(card, lang);
   if (!printed) return [];
   const modern = localEchoText(card, lang) ?? printed;
   const out: string[] = [];
   const keys = new Set<string>();
-  for (const text of modern === printed ? [printed] : [modern, printed]) {
+  for (const text of modern === printed || modernOnly ? [modern] : [modern, printed]) {
     for (const w of wordsIn(text, lang)) {
       // wordsOf lower-cases; show the word as the line writes it (a German noun keeps its capital).
       const shown = matchCase(w, text);
@@ -438,7 +438,8 @@ export function localSignature(card: Card, verse: string, lang: string, english:
   if (!quote) return null;
   const local = localSignatureWords(card, b);
   if (!local.length) return null;
-  const needed = local.length >= 3 ? 2 : 1;
+  // Counted in the spelling players type: 歓楽 and its printed form 歡樂 are one word of the line.
+  const needed = localSignatureWords(card, b, true).length >= 3 ? 2 : 1;
   const sep = listSeparator(b);
   const hits: { word: string; by: string[] }[] = [];
   const taken = new Set<string>();
