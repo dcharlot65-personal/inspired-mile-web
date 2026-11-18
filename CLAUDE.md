@@ -62,10 +62,13 @@ without one, a held sound (`HELD_SOUND`: brrr, skrrt, pssst, shhh, hmmm). So "fi
 "Mwangi" and "skrrt" count and keyboard mash does not; random letters with a vowel can, as a name
 can (`review4.test.ts` MASH-V). In Japanese a katakana word counts beside a word written otherwise,
 and in a verse with one line of Japanese or more a dictionary's katakana words count in a run of two
-or more (サッカーボール) or alone: the analyser's (IPADIC), or a run as written that IPADIC, JMdict's words
-or JMnedict's names have whole (ユーチューブ, ワンツー, レノン) or as two words of IPADIC's or JMdict's of
-LOANWORD_PART characters or more (スイートドリーム; `text.ts katakanaListed`, `review5.test.ts`); neither
-tells anything. The rule
+or more (サッカーボール) or alone: the analyser's (IPADIC), or a run as written that IPADIC has whole, or
+JMdict's words or JMnedict's names have whole at LISTED_WHOLE full-size kana or LISTED_LONG characters
+(ユーチューブ, ワンツー, レノン, ラッパー; with two full-size kana the lists spell a fifth of random pairs,
+so レゴ, バズ and フェス stay void alone), or as two words of IPADIC's or JMdict's of LOANWORD_PART
+characters or more (スイートドリーム; `text.ts katakanaListed`, `review5.test.ts`); one written apart
+with APART_WHOLE full-size kana counts beside katakana no dictionary has (プレイリスト スポティファイ);
+neither tells anything. The rule
 judge's wordplay is a count of different telling words over as many lines as both verses have (a
 line added past the other's length adds nothing), its flow is rhyme, lines opening on the same
 word that carries meaning (not a line that says the one before again: a chant), lines that grow and

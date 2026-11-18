@@ -278,8 +278,16 @@ usable dictionary word, with no table loaded.
   on the Studio; the opponent's verses ask nothing of them). They read nothing; the substance
   floor asks them whether a run of katakana is a word (`text.ts knownUnits`, `review5.test.ts`). A
   sound model of IPADIC's own katakana was measured first and does not tell loanwords from random
-  katakana. Still void alone on a line: words in none of the three as written (トーキョー; names written
-  together without the middle dot that JMnedict lacks whole, ウサインボルト, マイルスデイビス).
+  katakana. A word of the lists counts whole only at three full-size kana (small kana and the long
+  mark left out) or four characters (`text.ts LISTED_WHOLE`, `LISTED_LONG`): the lists hold 1,039 of
+  the 4,761 pairs of plain katakana, and counting them let lines of short random runs count thirteen
+  times as often as before the lists (the engine's third check, 2026-11-18). One written apart beside
+  katakana no dictionary has counts on its own from four full-size kana (`APART_WHOLE`: プレイリスト
+  スポティファイ). Still void alone on a line: words in none of the three as written (トーキョー; names
+  written together that JMnedict lacks whole, ウサインボルト, マイルスデイビス, アデル, ルイアームストロング;
+  Haitian places, ジャクメル, ペチョンビル), and short ones the length rule leaves out (レゴ, バズ, フェス,
+  フォー). Of 666 loanwords written before they were looked up, 45 are void alone; with a particle
+  after them none is (RULES-MEASUREMENTS.md, engine pass, fourth round).
 - **Syllables**: morae of the reading, so a haiku may be written in kanji.
 - **Rhyme**: the vowels of the last two morae of each line agree, as Japanese lyric writing
   rhymes; lines that close on the same word are compared on the word before.
