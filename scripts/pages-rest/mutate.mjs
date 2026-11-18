@@ -76,6 +76,17 @@ const UNIT_MUTATIONS = [
   ['the Japanese bye’s verdict claiming Wikidata again', 'docs/language/pages-rest-meaning.json', "the bye, 不戦勝: the model's word, no source in this language (terms record)", 'the bye, as Wikidata labels it (Q1268659) or, where it has no usable label, a description (Tournaments table)', TERMS, 'which the terms record says is the model\'s word'],
   ['a saved Wikidata answer that no longer has the Thai label the record cites', 'docs/language/sources/pages-rest-wikidata-terms-b.json', `"th":{"language":"th","value":"${asciiJson('ความเป็นจริงเสมือน')}"}`, `"th":{"language":"th","value":"${asciiJson('ความจริงเสมือน')}"}`, TERMS, 'vr/th: "ความเป็นจริงเสมือน" is said to be Wikidata'],
   ['a term table of the doc edited by hand', 'docs/language/pages-rest.md', '| th | ครู =', '| th | ครู (Wikidata) =', TERMS, 'the term tables are stale'],
+  // Found by the second checker of 2026-11-16, or by the merge of integrate/wave3 (2026-11-17).
+  ['the French "many" form a copy of "other" again', 'src/i18n/pages/shared/fr.ts', "'credits.many': '{n} de crédits'", "'credits.many': '{n} crédits'", UNIT, 'credits.many must join the number to its noun with "de"'],
+  ['the Portuguese "many" form a copy of "other" again', 'src/i18n/pages/classroom/pt.ts', "'classroom.members.many': '{n} de membros'", "'classroom.members.many': '{n} membros'", UNIT, 'classroom.members.many must join the number to its noun with "de"'],
+  ['a saved CLDR pair that no longer joins the million with de', 'docs/language/sources/pages-rest-cldr-minimal-pairs.json', '"many": "{0}\u00a0de jours"', '"many": "{0}\u00a0jours"', UNIT, 'minimal pairs do'],
+  ['a Korean particle hedge after the privacy link again', 'src/i18n/pages/classroom/ko.ts', "'을 읽었으며,", "'을(를) 읽었으며,", UNIT, 'a Korean particle hedge in brackets'],
+  ['the Korean particle a vowel takes, after a link that ends in a consonant', 'src/i18n/pages/classroom/ko.ts', "'을 읽었으며,", "'를 읽었으며,", UNIT, 'which takes 을, not 를'],
+  ['Spanish RV beside the core’s Galería VR', 'src/i18n/pages/viewer/es.ts', "'vr.enter': 'Entrar en VR'", "'vr.enter': 'Entrar en RV'", UNIT, 'vr.enter writes RV'],
+  ['French RA beside VR', 'src/i18n/pages/viewer/fr.ts', "'viewer.ar': 'Voir en AR'", "'viewer.ar': 'Voir en RA'", UNIT, 'viewer.ar writes RA'],
+  ['Thai bare งาน for an assignment in an error sentence', 'src/i18n/pages/shared/th.ts', "'error.assignment_title_invalid': 'ชื่องานที่มอบหมายต้องมี", "'error.assignment_title_invalid': 'ชื่องานต้องมี", TERMS, 'assignment/th: error.assignment_title_invalid does not say'],
+  ['a sign-in code of the merged server loses its Japanese sentence', 'src/i18n/pages/shared/ja.ts', /^  'error\.cross_site_request': .*\n/m, '', ERRORS, 'ja: no message for "cross_site_request"'],
+  ['a server text the merged server no longer says, back in the table', 'src/lib/api-errors.ts', "  ['Something went wrong on our side. Please try again.', 'server_error'],\n", "  ['Something went wrong on our side. Please try again.', 'server_error'],\n  [/^DB error: /, 'server_error'],\n", ERRORS, '/^DB error: /'],
   ['the Rust scan stops finding anything', 'src/lib/api-errors.test.ts', "const SKIP_DIRS = ['multiplayer'];", "const SKIP_DIRS = ['multiplayer', 'classroom', 'marketplace', 'tournaments', 'seasons', 'credits', 'auth', 'stats', 'referral', 'variants', 'inventory', 'migration'];", ERRORS, 'toBeGreaterThan'],
 ];
 
@@ -102,6 +113,7 @@ const BROWSER_MUTATIONS = [
   ['the server’s text shown when the API fails', 'src/i18n/page.ts', '  return apiErrorMessage(e, t, has, num);', "  return (e as any)?.body || apiErrorMessage(e, t, has, num);", 'a broken server is reported'],
   ['a classroom name run as markup', 'src/pages/classroom.astro', '<bdi>${esc(c.name)}</bdi>', '<bdi>${c.name}</bdi>', 'never run as markup'],
   ['the install box not drawn again when the language changes', 'src/lib/pwa.ts', "if (document.getElementById('pwa-install')) void showInstall();", 'void 0;', 'names Apple’s own buttons'],
+  ['Japanese lines break anywhere again', 'src/styles/global.css', '  word-break: auto-phrase;\n  line-break: strict;\n', '  word-break: normal;\n', 'no line opens with ー'],
   ['the status of a tournament shown as the server spells it', 'src/pages/tournaments.astro', "const statusName = (status: string) => (has(`tour.status.${status}`) ? t(`tour.status.${status}`) : status.replace(/_/g, ' '));", "const statusName = (status: string) => status.replace(/_/g, ' ');", 'tournaments: states, formats'],
 ];
 

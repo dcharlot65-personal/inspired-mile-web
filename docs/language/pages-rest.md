@@ -290,9 +290,14 @@ Each Arabic value is written as `{ "value": …, "dir": "rtl" }`, the text-local
 `*_localized` members (MDN, "*_localized", "Text localization"): the Arabic name begins with the
 Latin "Sonnet Man", and a browser left to infer the direction from the text could lay it out left
 to right. The other languages are left-to-right and stay plain strings. The shortcut "The
-Theatre" is the core locale's heading of the Theatre, held equal by a test: in Korean that is
-main's 더 극장, which branch lang/qa-pipeline changes to 입체 극장; after it lands, run
-`node scripts/pages-rest/build-static.mjs` and the manifest follows.
+Theatre" is the core locale's heading of the Theatre (`theatre.titleA` + `theatre.titleB`), held
+equal by a test so that the place has one name. That heading was written as two styled pieces, and
+in four languages it does not read well as a name on its own: ko 더 극장 (더 is the English
+"the" spelt in Hangul), id *Sang Teater*, pl *Nasz Teatr* and ru *Наш Театр* ("our theatre"; Russian
+writes a name with one capital, *Наш театр*). The fix belongs to the heading in the core locale,
+which this branch does not edit: branch lang/qa-pipeline changes the Korean to 입체 극장, and the
+others are listed for it. After the core changes, run `node scripts/pages-rest/build-static.mjs` and
+the manifest follows.
 
 ## Register
 
