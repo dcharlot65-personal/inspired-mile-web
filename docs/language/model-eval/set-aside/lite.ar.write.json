@@ -1,0 +1,5330 @@
+{
+ "tier": "lite",
+ "lang": "ar",
+ "task": "write",
+ "model": "LiquidAI/LFM2.5-350M-ONNX",
+ "dtype": "q4",
+ "judgeMethod": "grade",
+ "date": "2026-11-16T22:51:29.846Z",
+ "commit": "f32a0aff8a8ffcfd3a2589b046210ca7f46aebc4",
+ "transformers": "4.3.2",
+ "gpu": {
+  "vendor": "apple",
+  "architecture": "metal-3",
+  "device": "",
+  "description": ""
+ },
+ "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/159.0.8154.6 Safari/537.36",
+ "origin": "http://localhost:47731",
+ "forms": [
+  "couplet",
+  "quatrain-aabb",
+  "quatrain-abab",
+  "tercet",
+  "anaphora",
+  "acrostic",
+  "crescendo",
+  "epistrophe"
+ ],
+ "perForm": 10,
+ "plays": [
+  {
+   "seed": 1001,
+   "roundIndex": 0,
+   "formId": "acrostic",
+   "difficulty": "apprentice",
+   "card": "Ariel",
+   "acrostic": "قمر",
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Ariel in a duel of verses: theatrical, sharp, in character. Your line in the play: \"All hail, great master! Grave sir, hail!\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per letter: the first letters must spell قمر.\nWrite exactly 3 lines.\nYour flourish: Make your last line your longest.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Arabic. No title, no notes, no explanation."
+   ],
+   "verse": "القمر يصب في الماء رعداً\nطغم يتبع السماء بساعة\nرم يختبر الأرض قدوراً",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "spells",
+     "met": false,
+     "detail": "اطر"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "القمر يصب في الماء رعداً  \nطغم يتبع السماء بساعة  \nرم يختبر الأرض قدوراً",
+     "tidy": "القمر يصب في الماء رعداً\nطغم يتبع السماء بساعة\nرم يختبر الأرض قدوراً",
+     "ms": 1811,
+     "tokens": 39,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1001,
+   "roundIndex": 1,
+   "formId": "anaphora",
+   "difficulty": "apprentice",
+   "card": "Christina Rossetti",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "لخولة أطلالٌ ببرقة ثهمد\nتلوح كباقي الوشم في ظاهر اليد",
+   "prompt": [
+    "You are Christina Rossetti in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Remember me when I am gone away, gone far away into the silent land.\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same word.\nWrite exactly 3 lines.\nYour flourish: Give every line the same number of words.\nYour challenger last said:\nلخولة أطلالٌ ببرقة ثهمد\nتلوح كباقي الوشم في ظاهر اليد\nAnswer them.\nWrite only the verse, in Arabic. No title, no notes, no explanation."
+   ],
+   "verse": "لخولة طلالبروقة تلوانك يأسر",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "same-opening",
+     "met": false,
+     "detail": "لخولة"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "لخولة طلالبروقة تلوانك يأسر",
+     "tidy": "لخولة طلالبروقة تلوانك يأسر",
+     "ms": 915,
+     "tokens": 15,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1001,
+   "roundIndex": 2,
+   "formId": "tercet",
+   "difficulty": "apprentice",
+   "card": "Apollo",
+   "acrostic": null,
+   "relicWords": [
+    "خاتم",
+    "عهد",
+    "ليل",
+    "منفى",
+    "قبلة"
+   ],
+   "answering": "لخولة أطلالٌ ببرقة ثهمد\nتلوح كباقي الوشم في ظاهر اليد",
+   "prompt": [
+    "You are Apollo in a duel of verses: theatrical, sharp, in character. Your line in the play: \"I am the god of song, of healing, and of the radiant sun.\" You write short verse and nothing else.",
+    "Form: Tercet. Three lines; the first and last rhyme.\nWrite exactly 3 lines.\nYour flourish: Use two words of 7 letters or more.\nWork in at least two of these words: خاتم, عهد, ليل, منفى, قبلة.\nYour challenger last said:\nلخولة أطلالٌ ببرقة ثهمد\nتلوح كباقي الوشم في ظاهر اليد\nAnswer them.\nWrite only the verse, in Arabic. No title, no notes, no explanation."
+   ],
+   "verse": "قبلى نافذة تغلق\nمنفى جمال",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/3"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "قبلى نافذة تغلق\n\nمنفى جمال",
+     "tidy": "قبلى نافذة تغلق\nمنفى جمال",
+     "ms": 845,
+     "tokens": 16,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1002,
+   "roundIndex": 0,
+   "formId": "acrostic",
+   "difficulty": "player",
+   "card": "Lady Macbeth",
+   "acrostic": "ورد",
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Lady Macbeth in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Come, you spirits that tend on mortal thoughts, unsex me here.\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per letter: the first letters must spell ورد.\nWrite exactly 3 lines.\nYour flourish: Repeat one strong word three times.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Arabic. No title, no notes, no explanation."
+   ],
+   "verse": "الْوَرُدُّيُّ\nالَّذِيَ\nالَّذِكَ",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "spells",
+     "met": false,
+     "detail": "ااا"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "الوَرُدَ، فَأَنقَلتاً",
+     "tidy": "الوَرُدَ، فَأَنقَلتاً",
+     "ms": 1031,
+     "tokens": 18,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "الْوَرُدُّيُّ\n\nالَّذِيَ \n\nالَّذِكَ",
+     "tidy": "الْوَرُدُّيُّ\nالَّذِيَ\nالَّذِكَ",
+     "ms": 1244,
+     "tokens": 27,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1002,
+   "roundIndex": 1,
+   "formId": "couplet",
+   "difficulty": "apprentice",
+   "card": "Puck",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "أَلاَ هُبِّي بِصَحْنِكِ فَاصْبَحِيْنَا\nوَلاَ تُبْقِي خُمُوْرَ الأَنْدَرِيْنَا",
+   "prompt": [
+    "You are Puck in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Lord, what fools these mortals be!\" You write short verse and nothing else.",
+    "Form: Couplet. Two lines that rhyme.\nWrite exactly 2 lines.\nYour flourish: Start three words in one line with the same letter.\nYour challenger last said:\nأَلاَ هُبِّي بِصَحْنِكِ فَاصْبَحِيْنَا\nوَلاَ تُبْقِي خُمُوْرَ الأَنْدَرِيْنَا\nAnswer them.\nWrite only the verse, in Arabic. No title, no notes, no explanation."
+   ],
+   "verse": "الخفقة",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "الخفقة",
+     "tidy": "الخفقة",
+     "ms": 252,
+     "tokens": 4,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1002,
+   "roundIndex": 2,
+   "formId": "crescendo",
+   "difficulty": "apprentice",
+   "card": "Juliet",
+   "acrostic": null,
+   "relicWords": [
+    "قناع",
+    "حلم",
+    "مهرج",
+    "مسرحية",
+    "قمر"
+   ],
+   "answering": "أَلاَ هُبِّي بِصَحْنِكِ فَاصْبَحِيْنَا\nوَلاَ تُبْقِي خُمُوْرَ الأَنْدَرِيْنَا",
+   "prompt": [
+    "You are Juliet in a duel of verses: theatrical, sharp, in character. Your line in the play: \"What's in a name? That which we call a rose...\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Cry out: end a line with an exclamation mark.\nWork in at least two of these words: قناع, حلم, مهرج, مسرحية, قمر.\nYour challenger last said:\nأَلاَ هُبِّي بِصَحْنِكِ فَاصْبَحِيْنَا\nوَلاَ تُبْقِي خُمُوْرَ الأَنْدَرِيْنَا\nAnswer them.\nWrite only the verse, in Arabic. No title, no notes, no explanation."
+   ],
+   "verse": "قمر",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "growing",
+     "met": false,
+     "detail": "1"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "قمر",
+     "tidy": "قمر",
+     "ms": 165,
+     "tokens": 2,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1003,
+   "roundIndex": 0,
+   "formId": "crescendo",
+   "difficulty": "player",
+   "card": "Malvolio",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Malvolio in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Some are born great, some achieve greatness, and some have greatness thrust upon them.\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Keep every line to 5 words or fewer.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Arabic. No title, no notes, no explanation."
+   ],
+   "verse": "الرجل بس يا مدري، الله يعطيك العافية",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "growing",
+     "met": false,
+     "detail": "7"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "الرجل بس يا مدري، الله يعطيك العافية",
+     "tidy": "الرجل بس يا مدري، الله يعطيك العافية",
+     "ms": 825,
+     "tokens": 17,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "تنبأ القلوب، صوتها يشعل المثلام.",
+     "tidy": "تنبأ القلوب، صوتها يشعل المثلام.",
+     "ms": 678,
+     "tokens": 18,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1003,
+   "roundIndex": 1,
+   "formId": "couplet",
+   "difficulty": "player",
+   "card": "Hermes",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "عفتِ الديارُ محلُّها فمُقامُهَا\nبمنًى تأبَّدَ غَوْلُها فَرِجَامُهَا",
+   "prompt": [
+    "You are Hermes in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Swift as thought, I carry the words of gods to mortal ears.\" You write short verse and nothing else.",
+    "Form: Couplet. Two lines that rhyme.\nWrite exactly 2 lines.\nYour flourish: Use two words of 7 letters or more.\nYour challenger last said:\nعفتِ الديارُ محلُّها فمُقامُهَا\nبمنًى تأبَّدَ غَوْلُها فَرِجَامُهَا\nAnswer them.\nWrite only the verse, in Arabic. No title, no notes, no explanation."
+   ],
+   "verse": "الفن في العين يظهر بسطٍ",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "الفن في العين يظهر بسطٍ",
+     "tidy": "الفن في العين يظهر بسطٍ",
+     "ms": 622,
+     "tokens": 13,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "الفن بخطين، عادت الصباح",
+     "tidy": "الفن بخطين، عادت الصباح",
+     "ms": 398,
+     "tokens": 13,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1003,
+   "roundIndex": 2,
+   "formId": "tercet",
+   "difficulty": "player",
+   "card": "Prospero",
+   "acrostic": null,
+   "relicWords": [
+    "جمجمة",
+    "مزحة",
+    "قبر",
+    "ضحك",
+    "تراب"
+   ],
+   "answering": "عفتِ الديارُ محلُّها فمُقامُهَا\nبمنًى تأبَّدَ غَوْلُها فَرِجَامُهَا",
+   "prompt": [
+    "You are Prospero in a duel of verses: theatrical, sharp, in character. Your line in the play: \"We are such stuff as dreams are made on.\" You write short verse and nothing else.",
+    "Form: Tercet. Three lines; the first and last rhyme.\nWrite exactly 3 lines.\nYour flourish: Make your last line your longest.\nWork in at least two of these words: جمجمة, مزحة, قبر, ضحك, تراب.\nYour challenger last said:\nعفتِ الديارُ محلُّها فمُقامُهَا\nبمنًى تأبَّدَ غَوْلُها فَرِجَامُهَا\nAnswer them.\nWrite only the verse, in Arabic. No title, no notes, no explanation."
+   ],
+   "verse": "الإجابة: عفتِ الديارُ قبرِضَ",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "الإجابة: عفتِ الديارُ قبرِضَ",
+     "tidy": "الإجابة: عفتِ الديارُ قبرِضَ",
+     "ms": 487,
+     "tokens": 17,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "تراب",
+     "tidy": "تراب",
+     "ms": 128,
+     "tokens": 2,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1004,
+   "roundIndex": 0,
+   "formId": "anaphora",
+   "difficulty": "player",
+   "card": "Banquo",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Banquo in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Thou shalt get kings, though thou be none.\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same word.\nWrite exactly 3 lines.\nYour flourish: Repeat one strong word three times.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Arabic. No title, no notes, no explanation."
+   ],
+   "verse": "اللورداء تُنهَضون كُلمٗ\nلا يُمكَّنوا كما سافراً\nلا يُمسَت كُلمان كما كان",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-opening",
+     "met": false,
+     "detail": "اللورداء · لا · لا"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "اللورداء تُنهَضون كُلمٗ\n\nلا يُمكَّنوا كما سافراً\n\nلا يُمسَت كُلمان كما كان",
+     "tidy": "اللورداء تُنهَضون كُلمٗ\nلا يُمكَّنوا كما سافراً\nلا يُمسَت كُلمان كما كان",
+     "ms": 3084,
+     "tokens": 45,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "الْأَسْمَتُ نَهِيَةٌ تُرىٓ\n\nتَنْقِلُوا بِلِدٍ\n\nتَحَفَّتَبُوْ",
+     "tidy": "الْأَسْمَتُ نَهِيَةٌ تُرىٓ\nتَنْقِلُوا بِلِدٍ\nتَحَفَّتَبُوْ",
+     "ms": 2539,
+     "tokens": 55,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1004,
+   "roundIndex": 1,
+   "formId": "crescendo",
+   "difficulty": "master",
+   "card": "Prospero",
+   "acrostic": null,
+   "relicWords": [
+    "خنجر",
+    "دم",
+    "نوم",
+    "رؤيا",
+    "يد"
+   ],
+   "answering": "أصالةُ الرأي صانتْنِي عن الخَطَلِ\nوحِليةُ الفضلِ زانتني لدَى العَطَلِ",
+   "prompt": [
+    "You are Prospero in a duel of verses: theatrical, sharp, in character. Your line in the play: \"We are such stuff as dreams are made on.\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Make your last line your longest.\nWork in at least two of these words: خنجر, دم, نوم, رؤيا, يد.\nYour challenger last said:\nأصالةُ الرأي صانتْنِي عن الخَطَلِ\nوحِليةُ الفضلِ زانتني لدَى العَطَلِ\nAnswer them.\nWrite only the verse, in Arabic. No title, no notes, no explanation."
+   ],
+   "verse": "رؤيا اليد\nخنجر الدفء",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/3"
+    },
+    {
+     "id": "growing",
+     "met": false,
+     "detail": "2 < 2"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "الرؤيا تملك القدرة على الزمان",
+     "tidy": "الرؤيا تملك القدرة على الزمان",
+     "ms": 668,
+     "tokens": 13,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "رؤيا اليد  \n\nخنجر الدفء",
+     "tidy": "رؤيا اليد\nخنجر الدفء",
+     "ms": 489,
+     "tokens": 13,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    },
+    {
+     "raw": "خنجر دمواً نوماً رؤياناً",
+     "tidy": "خنجر دمواً نوماً رؤياناً",
+     "ms": 702,
+     "tokens": 16,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1004,
+   "roundIndex": 2,
+   "formId": "couplet",
+   "difficulty": "master",
+   "card": "Brutus",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "أصالةُ الرأي صانتْنِي عن الخَطَلِ\nوحِليةُ الفضلِ زانتني لدَى العَطَلِ",
+   "prompt": [
+    "You are Brutus in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Not that I loved Caesar less, but that I loved Rome more.\" You write short verse and nothing else.",
+    "Form: Couplet. Two lines that rhyme.\nWrite exactly 2 lines.\nYour flourish: Call on a character by name.\nYour challenger last said:\nأصالةُ الرأي صانتْنِي عن الخَطَلِ\nوحِليةُ الفضلِ زانتني لدَى العَطَلِ\nAnswer them.\nWrite only the verse, in Arabic. No title, no notes, no explanation."
+   ],
+   "verse": "الرَّبوسُ يا عَلَّمٍ\nزَانتيً تَرى بِدَياً",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "2/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "عَلَّمٍ / بِدَياً"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "الرَّبوسُ يا عَلَّمٍ  \nزَانتيً تَرى بِدَياً",
+     "tidy": "الرَّبوسُ يا عَلَّمٍ\nزَانتيً تَرى بِدَياً",
+     "ms": 676,
+     "tokens": 31,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 2,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "الفخرةً تعكس نجاحَ الفرد",
+     "tidy": "الفخرةً تعكس نجاحَ الفرد",
+     "ms": 384,
+     "tokens": 13,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "يا إمارة، أَرادت أن تُنشرُ\n\nزانتي جرفتُ إليها فَتحدثتُ بِخليقٍ",
+     "tidy": "يا إمارة، أَرادت أن تُنشرُ\nزانتي جرفتُ إليها فَتحدثتُ بِخليقٍ",
+     "ms": 1571,
+     "tokens": 38,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 72,
+     "rawLines": 2,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1005,
+   "roundIndex": 0,
+   "formId": "quatrain-aabb",
+   "difficulty": "apprentice",
+   "card": "Puck",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Puck in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Lord, what fools these mortals be!\" You write short verse and nothing else.",
+    "Form: Paired Quatrain. Four lines: the first two rhyme, and the last two rhyme.\nWrite exactly 4 lines.\nYour flourish: Start three words in one line with the same letter.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Arabic. No title, no notes, no explanation."
+   ],
+   "verse": "الرَجْلاً يُنالَ قَوءآً",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/4"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "rhyme-3-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "الرَجْلاً يُنالَ قَوءآً",
+     "tidy": "الرَجْلاً يُنالَ قَوءآً",
+     "ms": 739,
+     "tokens": 20,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1005,
+   "roundIndex": 1,
+   "formId": "acrostic",
+   "difficulty": "master",
+   "card": "Elizabeth Barrett Browning",
+   "acrostic": "نجم",
+   "relicWords": null,
+   "answering": "أَقِيمُوا بَنِي أُمِّي صُدُورَ مَطِيِّكُمْ\nفَإنِّي إلى قَوْمٍ سِوَاكُمْ لَأَمْيَلُ",
+   "prompt": [
+    "You are Elizabeth Barrett Browning in a duel of verses: theatrical, sharp, in character. Your line in the play: \"How do I love thee? Let me count the ways.\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per letter: the first letters must spell نجم.\nWrite exactly 3 lines.\nYour flourish: Give every line the same number of words.\nYour challenger last said:\nأَقِيمُوا بَنِي أُمِّي صُدُورَ مَطِيِّكُمْ\nفَإنِّي إلى قَوْمٍ سِوَاكُمْ لَأَمْيَلُ\nAnswer them.\nWrite only the verse, in Arabic. No title, no notes, no explanation."
+   ],
+   "verse": "العِلاً يا حكاية كيف تزداد طريقنا بناءً على الصورة\nالجَدَّا هم من رّباب، لا غائبين\nاللَيلَهما خاريكان معًا",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "spells",
+     "met": false,
+     "detail": "ااا"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "العنوان: نِهُمٌ تا خَرْمِر\n\nجسم: يَحصون بِنِذَةٍ",
+     "tidy": "العنوان: نِهُمٌ تا خَرْمِر\nجسم: يَحصون بِنِذَةٍ",
+     "ms": 987,
+     "tokens": 38,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "العِلاً يا حكاية كيف تزداد طريقنا بناءً على الصورة\n\nالجَدَّا هم من رّباب، لا غائبين\n\nاللَيلَهما خاريكان معًا",
+     "tidy": "العِلاً يا حكاية كيف تزداد طريقنا بناءً على الصورة\nالجَدَّا هم من رّباب، لا غائبين\nاللَيلَهما خاريكان معًا",
+     "ms": 1954,
+     "tokens": 59,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "العنصر الأول نجم، العنصر الثاني نوم يا شخص ذئب المظهر\n\nالعنصر الثالث نص يا شيء ينقسم",
+     "tidy": "العنصر الأول نجم، العنصر الثاني نوم يا شخص ذئب المظهر\nالعنصر الثالث نص يا شيء ينقسم",
+     "ms": 1532,
+     "tokens": 42,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1005,
+   "roundIndex": 2,
+   "formId": "couplet",
+   "difficulty": "apprentice",
+   "card": "Cassius",
+   "acrostic": null,
+   "relicWords": [
+    "دموع",
+    "حقيقة",
+    "ابنة",
+    "لا شيء",
+    "قلب"
+   ],
+   "answering": "أَقِيمُوا بَنِي أُمِّي صُدُورَ مَطِيِّكُمْ\nفَإنِّي إلى قَوْمٍ سِوَاكُمْ لَأَمْيَلُ",
+   "prompt": [
+    "You are Cassius in a duel of verses: theatrical, sharp, in character. Your line in the play: \"The fault, dear Brutus, is not in our stars, but in ourselves.\" You write short verse and nothing else.",
+    "Form: Couplet. Two lines that rhyme.\nWrite exactly 2 lines.\nYour flourish: Call on a character by name.\nWork in at least two of these words: دموع, حقيقة, ابنة, لا شيء, قلب.\nYour challenger last said:\nأَقِيمُوا بَنِي أُمِّي صُدُورَ مَطِيِّكُمْ\nفَإنِّي إلى قَوْمٍ سِوَاكُمْ لَأَمْيَلُ\nAnswer them.\nWrite only the verse, in Arabic. No title, no notes, no explanation."
+   ],
+   "verse": "الفقرة: \"لا شيء يختار، فالحقيقة الوحيدة هي الحب\"",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "الفقرة: \"لا شيء يختار، فالحقيقة الوحيدة هي الحب\"",
+     "tidy": "الفقرة: \"لا شيء يختار، فالحقيقة الوحيدة هي الحب\"",
+     "ms": 1625,
+     "tokens": 25,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1006,
+   "roundIndex": 0,
+   "formId": "crescendo",
+   "difficulty": "apprentice",
+   "card": "Percy Bysshe Shelley",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Percy Bysshe Shelley in a duel of verses: theatrical, sharp, in character. Your line in the play: \"If Winter comes, can Spring be far behind?\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: End your verse on the same word it began with.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Arabic. No title, no notes, no explanation."
+   ],
+   "verse": "لا تتقدم سرعة في السماء تختبر إمكاناتهما\nالفعل يصبح غير محلول",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/3"
+    },
+    {
+     "id": "growing",
+     "met": false,
+     "detail": "7 < 4"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "لا تتقدم سرعة في السماء تختبر إمكاناتهما\n\nالفعل يصبح غير محلول",
+     "tidy": "لا تتقدم سرعة في السماء تختبر إمكاناتهما\nالفعل يصبح غير محلول",
+     "ms": 1335,
+     "tokens": 31,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1006,
+   "roundIndex": 1,
+   "formId": "couplet",
+   "difficulty": "player",
+   "card": "Elizabeth Barrett Browning",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "أرَاكَ عَصِيَّ الدَّمْعِ شِيمَتُكَ الصَّبْرُ\nأمَا لِلْهَوَى نَهْيٌ عَلَيْكَ وَلا أمْر",
+   "prompt": [
+    "You are Elizabeth Barrett Browning in a duel of verses: theatrical, sharp, in character. Your line in the play: \"How do I love thee? Let me count the ways.\" You write short verse and nothing else.",
+    "Form: Couplet. Two lines that rhyme.\nWrite exactly 2 lines.\nYour flourish: Give every line the same number of words.\nYour challenger last said:\nأرَاكَ عَصِيَّ الدَّمْعِ شِيمَتُكَ الصَّبْرُ\nأمَا لِلْهَوَى نَهْيٌ عَلَيْكَ وَلا أمْر\nAnswer them.\nWrite only the verse, in Arabic. No title, no notes, no explanation."
+   ],
+   "verse": "القمر يغوص تحت النهر كالشام في الصباح، لا تسمع إلا قطرات النسيان.",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "القمر يغوص تحت النهر كالشام في الصباح، لا تسمع إلا قطرات النسيان.",
+     "tidy": "القمر يغوص تحت النهر كالشام في الصباح، لا تسمع إلا قطرات النسيان.",
+     "ms": 909,
+     "tokens": 30,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "الفارق بينما دامع العجيب شيمتك الصبرب نهوي لا أمير",
+     "tidy": "الفارق بينما دامع العجيب شيمتك الصبرب نهوي لا أمير",
+     "ms": 982,
+     "tokens": 24,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1006,
+   "roundIndex": 2,
+   "formId": "epistrophe",
+   "difficulty": "apprentice",
+   "card": "Prospero",
+   "acrostic": null,
+   "relicWords": [
+    "عاصفة",
+    "سحر",
+    "عصا",
+    "جزيرة",
+    "غرق"
+   ],
+   "answering": "أرَاكَ عَصِيَّ الدَّمْعِ شِيمَتُكَ الصَّبْرُ\nأمَا لِلْهَوَى نَهْيٌ عَلَيْكَ وَلا أمْر",
+   "prompt": [
+    "You are Prospero in a duel of verses: theatrical, sharp, in character. Your line in the play: \"We are such stuff as dreams are made on.\" You write short verse and nothing else.",
+    "Form: Epistrophe. Three lines that all end on the same word.\nWrite exactly 3 lines.\nYour flourish: Make your last line your longest.\nWork in at least two of these words: عاصفة, سحر, عصا, جزيرة, غرق.\nYour challenger last said:\nأرَاكَ عَصِيَّ الدَّمْعِ شِيمَتُكَ الصَّبْرُ\nأمَا لِلْهَوَى نَهْيٌ عَلَيْكَ وَلا أمْر\nAnswer them.\nWrite only the verse, in Arabic. No title, no notes, no explanation."
+   ],
+   "verse": "عَقَّةً تَحِبُّ\nجَزَيرةً بِالسَيِّ\nغَرقَةً يَغلبُ",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-ending",
+     "met": false,
+     "detail": "تحب · بالسي · يغلب"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 12,
+   "drafts": [
+    {
+     "raw": "عَقَّةً تَحِبُّ\n\nجَزَيرةً بِالسَيِّ\n\nغَرقَةً يَغلبُ",
+     "tidy": "عَقَّةً تَحِبُّ\nجَزَيرةً بِالسَيِّ\nغَرقَةً يَغلبُ",
+     "ms": 1708,
+     "tokens": 41,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 12
+    }
+   ]
+  },
+  {
+   "seed": 1007,
+   "roundIndex": 0,
+   "formId": "epistrophe",
+   "difficulty": "player",
+   "card": "Lord Montague",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Lord Montague in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Many a morning hath he there been seen, with tears augmenting the fresh morning dew.\" You write short verse and nothing else.",
+    "Form: Epistrophe. Three lines that all end on the same word.\nWrite exactly 3 lines.\nYour flourish: Rhyme two words inside a single line.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Arabic. No title, no notes, no explanation."
+   ],
+   "verse": "النهضة تلمع بين الليل\nتسهم الشمس الفجر بعد الظهر\nفما يكمن خلف الكنز الخائن",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-ending",
+     "met": false,
+     "detail": "الليل · الظهر · الخاين"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 9,
+   "drafts": [
+    {
+     "raw": "النهضة تلمع بين الليل\n\nتسهم الشمس الفجر بعد الظهر\n\nفما يكمن خلف الكنز الخائن",
+     "tidy": "النهضة تلمع بين الليل\nتسهم الشمس الفجر بعد الظهر\nفما يكمن خلف الكنز الخائن",
+     "ms": 1562,
+     "tokens": 37,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 9
+    },
+    {
+     "raw": "الله يعافي، وربي نماتُ\n\nبدأ قلبك، وقل قلبها",
+     "tidy": "الله يعافي، وربي نماتُ\nبدأ قلبك، وقل قلبها",
+     "ms": 939,
+     "tokens": 24,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1007,
+   "roundIndex": 1,
+   "formId": "anaphora",
+   "difficulty": "master",
+   "card": "King Claudius",
+   "acrostic": null,
+   "relicWords": [
+    "قناع",
+    "حلم",
+    "مهرج",
+    "مسرحية",
+    "قمر"
+   ],
+   "answering": "إذا الشّعْبُ يَوْمَاً أرَادَ الْحَيَاةَ\nفَلا بُدَّ أنْ يَسْتَجِيبَ القَدَر",
+   "prompt": [
+    "You are King Claudius in a duel of verses: theatrical, sharp, in character. Your line in the play: \"My words fly up, my thoughts remain below.\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same word.\nWrite exactly 3 lines.\nYour flourish: Ask a question: end a line with a question mark.\nWork in at least two of these words: قناع, حلم, مهرج, مسرحية, قمر.\nYour challenger last said:\nإذا الشّعْبُ يَوْمَاً أرَادَ الْحَيَاةَ\nفَلا بُدَّ أنْ يَسْتَجِيبَ القَدَر\nAnswer them.\nWrite only the verse, in Arabic. No title, no notes, no explanation."
+   ],
+   "verse": "قام بك",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "same-opening",
+     "met": false,
+     "detail": "قام"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "قام بك",
+     "tidy": "قام بك",
+     "ms": 261,
+     "tokens": 3,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "قَناعَةَأَنّواَأَ ظَهُرواَ  \nمسَرَحَةَقَتَا لَيوَ",
+     "tidy": "قَناعَةَأَنّواَأَ ظَهُرواَ\nمسَرَحَةَقَتَا لَيوَ",
+     "ms": 1500,
+     "tokens": 41,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "قام بأسرى الليل",
+     "tidy": "قام بأسرى الليل",
+     "ms": 305,
+     "tokens": 8,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1007,
+   "roundIndex": 2,
+   "formId": "tercet",
+   "difficulty": "master",
+   "card": "Macbeth",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "إذا الشّعْبُ يَوْمَاً أرَادَ الْحَيَاةَ\nفَلا بُدَّ أنْ يَسْتَجِيبَ القَدَر",
+   "prompt": [
+    "You are Macbeth in a duel of verses: theatrical, sharp, in character. Your line in the play: \"I dare do all that may become a man; who dares do more is none.\" You write short verse and nothing else.",
+    "Form: Tercet. Three lines; the first and last rhyme.\nWrite exactly 3 lines.\nYour flourish: Repeat one strong word three times.\nYour challenger last said:\nإذا الشّعْبُ يَوْمَاً أرَادَ الْحَيَاةَ\nفَلا بُدَّ أنْ يَسْتَجِيبَ القَدَر\nAnswer them.\nWrite only the verse, in Arabic. No title, no notes, no explanation."
+   ],
+   "verse": "الفن في التمسك يدور\nتذكر القلقة انهاء فجر\nأعتقد أنني لا شغوفة",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "يدور / شغوفة"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "الفن في التمسك يدور  \nتذكر القلقة انهاء فجر  \nأعتقد أنني لا شغوفة",
+     "tidy": "الفن في التمسك يدور\nتذكر القلقة انهاء فجر\nأعتقد أنني لا شغوفة",
+     "ms": 1377,
+     "tokens": 32,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "الفكر يدري الليل",
+     "tidy": "الفكر يدري الليل",
+     "ms": 375,
+     "tokens": 7,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "العنصر ثالث مأخذ\n\nيخاف الضارب وينهاك",
+     "tidy": "العنصر ثالث مأخذ\nيخاف الضارب وينهاك",
+     "ms": 595,
+     "tokens": 22,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1008,
+   "roundIndex": 0,
+   "formId": "quatrain-abab",
+   "difficulty": "apprentice",
+   "card": "Miranda",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Miranda in a duel of verses: theatrical, sharp, in character. Your line in the play: \"O brave new world, that has such people in it!\" You write short verse and nothing else.",
+    "Form: Crossed Quatrain. Four lines: line 1 rhymes with 3, line 2 with 4.\nWrite exactly 4 lines.\nYour flourish: Make your last line your longest.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Arabic. No title, no notes, no explanation."
+   ],
+   "verse": "النهار يغلب أماً",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/4"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "rhyme-2-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "النهار يغلب أماً",
+     "tidy": "النهار يغلب أماً",
+     "ms": 399,
+     "tokens": 10,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1008,
+   "roundIndex": 1,
+   "formId": "couplet",
+   "difficulty": "master",
+   "card": "Prince Escalus",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "قِفَا نَبْكِ مِنْ ذِكْرَى حَبِيبٍ ومَنْزِلِ\nبِسِقْطِ اللِّوَى بَيْنَ الدَّخُول فَحَوْملِ",
+   "prompt": [
+    "You are Prince Escalus in a duel of verses: theatrical, sharp, in character. Your line in the play: \"If ever you disturb our streets again, your lives shall pay the forfeit of the peace.\" You write short verse and nothing else.",
+    "Form: Couplet. Two lines that rhyme.\nWrite exactly 2 lines.\nYour flourish: Turn a word of 4 letters or more from your opponent's last verse back on them.\nYour challenger last said:\nقِفَا نَبْكِ مِنْ ذِكْرَى حَبِيبٍ ومَنْزِلِ\nبِسِقْطِ اللِّوَى بَيْنَ الدَّخُول فَحَوْملِ\nAnswer them.\nWrite only the verse, in Arabic. No title, no notes, no explanation."
+   ],
+   "verse": "قُفَتْ نَبْكِ مِنْ ذِكْرَى حَبِيبٍ مِنْزِلَ\nإمQuestion: What is the significance of the 'Sunrise' phase in relation to human evolution and understanding of natural phenomena?",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "2/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "مِنْزِلَ / phenomena"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 9,
+   "drafts": [
+    {
+     "raw": "قُفَتْ نَبْكِ مِنْ ذِكْرَى حَبِيبٍ مِنْزِلَ\n\nإم**Question:** What is the significance of the 'Sunrise' phase in relation to human evolution and understanding of natural phenomena?\n\n**Answer:** The",
+     "tidy": "قُفَتْ نَبْكِ مِنْ ذِكْرَى حَبِيبٍ مِنْزِلَ\nإمQuestion: What is the significance of the 'Sunrise' phase in relation to human evolution and understanding of natural phenomena?",
+     "ms": 2876,
+     "tokens": 70,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 3,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 9
+    },
+    {
+     "raw": "قِفَة نَبْكِ من ذِكْرَى حَبِيبٍ",
+     "tidy": "قِفَة نَبْكِ من ذِكْرَى حَبِيبٍ",
+     "ms": 771,
+     "tokens": 25,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "قِفَة نَبْكِ مِنْذْكرةِحَبُيبِمِنْزِلِ  \nبِسِقْطِالَ اللِوَاهِقْدَرَقِدَ",
+     "tidy": "قِفَة نَبْكِ مِنْذْكرةِحَبُيبِمِنْزِلِ\nبِسِقْطِالَ اللِوَاهِقْدَرَقِدَ",
+     "ms": 1864,
+     "tokens": 61,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 72,
+     "rawLines": 2,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1008,
+   "roundIndex": 2,
+   "formId": "epistrophe",
+   "difficulty": "master",
+   "card": "Bottom",
+   "acrostic": null,
+   "relicWords": [
+    "خنجر",
+    "دم",
+    "نوم",
+    "رؤيا",
+    "يد"
+   ],
+   "answering": "قِفَا نَبْكِ مِنْ ذِكْرَى حَبِيبٍ ومَنْزِلِ\nبِسِقْطِ اللِّوَى بَيْنَ الدَّخُول فَحَوْملِ",
+   "prompt": [
+    "You are Bottom in a duel of verses: theatrical, sharp, in character. Your line in the play: \"I have had a most rare vision. I have had a dream, past the wit of man.\" You write short verse and nothing else.",
+    "Form: Epistrophe. Three lines that all end on the same word.\nWrite exactly 3 lines.\nYour flourish: Start three words in one line with the same letter.\nWork in at least two of these words: خنجر, دم, نوم, رؤيا, يد.\nYour challenger last said:\nقِفَا نَبْكِ مِنْ ذِكْرَى حَبِيبٍ ومَنْزِلِ\nبِسِقْطِ اللِّوَى بَيْنَ الدَّخُول فَحَوْملِ\nAnswer them.\nWrite only the verse, in Arabic. No title, no notes, no explanation."
+   ],
+   "verse": "خنجر\\nدم\\nرؤيا",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "same-ending",
+     "met": false,
+     "detail": "nرويا"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "خنجر\\nدم\\nرؤيا",
+     "tidy": "خنجر\\nدم\\nرؤيا",
+     "ms": 424,
+     "tokens": 9,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    },
+    {
+     "raw": "العلم في ظهره ينام",
+     "tidy": "العلم في ظهره ينام",
+     "ms": 389,
+     "tokens": 9,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "النومُ يَريّ القَوَلِ",
+     "tidy": "النومُ يَريّ القَوَلِ",
+     "ms": 311,
+     "tokens": 13,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1009,
+   "roundIndex": 0,
+   "formId": "tercet",
+   "difficulty": "apprentice",
+   "card": "Prospero",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Prospero in a duel of verses: theatrical, sharp, in character. Your line in the play: \"We are such stuff as dreams are made on.\" You write short verse and nothing else.",
+    "Form: Tercet. Three lines; the first and last rhyme.\nWrite exactly 3 lines.\nYour flourish: Make your last line your longest.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Arabic. No title, no notes, no explanation."
+   ],
+   "verse": "َهَذّ الله يا فارسِ قَدّلتَ قَدُّ\nَمَلِّكَ النَفسِ كَيف تَرى؟",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/3"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "َهَذّ الله يا فارسِ قَدّلتَ قَدُّ\n\nَمَلِّكَ النَفسِ كَيف تَرى؟",
+     "tidy": "َهَذّ الله يا فارسِ قَدّلتَ قَدُّ\nَمَلِّكَ النَفسِ كَيف تَرى؟",
+     "ms": 1393,
+     "tokens": 44,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1009,
+   "roundIndex": 1,
+   "formId": "quatrain-aabb",
+   "difficulty": "player",
+   "card": "Macbeth",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "تَرَى بَعَرَ الأرْآمِ فِي عَرَصَاتِهَا\nوَقِيْعَانِهَا كَأنَّهُ حَبُّ فُلْفُلِ",
+   "prompt": [
+    "You are Macbeth in a duel of verses: theatrical, sharp, in character. Your line in the play: \"I dare do all that may become a man; who dares do more is none.\" You write short verse and nothing else.",
+    "Form: Paired Quatrain. Four lines: the first two rhyme, and the last two rhyme.\nWrite exactly 4 lines.\nYour flourish: Repeat one strong word three times.\nYour challenger last said:\nتَرَى بَعَرَ الأرْآمِ فِي عَرَصَاتِهَا\nوَقِيْعَانِهَا كَأنَّهُ حَبُّ فُلْفُلِ\nAnswer them.\nWrite only the verse, in Arabic. No title, no notes, no explanation."
+   ],
+   "verse": "النَداءَ يَخَذٌ لِما نَبْحُ\nإِذْ قَدْ ذَلَكَ مَن سَنَبَ",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/4"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "نَبْحُ / سَنَبَ"
+    },
+    {
+     "id": "rhyme-3-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "النَداءَ يَخَذٌ لِما نَبْحُ\n\nإِذْ قَدْ ذَلَكَ مَن سَنَبَ",
+     "tidy": "النَداءَ يَخَذٌ لِما نَبْحُ\nإِذْ قَدْ ذَلَكَ مَن سَنَبَ",
+     "ms": 1547,
+     "tokens": 45,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 2,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "تَرَى فِي رَيّ العَرُؤوس\n\nإِنِّي يا شفاف، فَلَقطٍ مألوفٌ",
+     "tidy": "تَرَى فِي رَيّ العَرُؤوس\nإِنِّي يا شفاف، فَلَقطٍ مألوفٌ",
+     "ms": 1786,
+     "tokens": 42,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 2,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1009,
+   "roundIndex": 2,
+   "formId": "couplet",
+   "difficulty": "apprentice",
+   "card": "Mary Shelley",
+   "acrostic": null,
+   "relicWords": [
+    "قناع",
+    "حلم",
+    "مهرج",
+    "مسرحية",
+    "قمر"
+   ],
+   "answering": "تَرَى بَعَرَ الأرْآمِ فِي عَرَصَاتِهَا\nوَقِيْعَانِهَا كَأنَّهُ حَبُّ فُلْفُلِ",
+   "prompt": [
+    "You are Mary Shelley in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Beware; for I am fearless, and therefore powerful.\" You write short verse and nothing else.",
+    "Form: Couplet. Two lines that rhyme.\nWrite exactly 2 lines.\nYour flourish: End your verse on the same word it began with.\nWork in at least two of these words: قناع, حلم, مهرج, مسرحية, قمر.\nYour challenger last said:\nتَرَى بَعَرَ الأرْآمِ فِي عَرَصَاتِهَا\nوَقِيْعَانِهَا كَأنَّهُ حَبُّ فُلْفُلِ\nAnswer them.\nWrite only the verse, in Arabic. No title, no notes, no explanation."
+   ],
+   "verse": "الزمان يا أرضا، صين في نسيان\nما سمعت بهما رجمة",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "2/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "نسيان / رجمة"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "الزمان يا أرضا، صين في نسيان\n\nما سمعت بهما رجمة",
+     "tidy": "الزمان يا أرضا، صين في نسيان\nما سمعت بهما رجمة",
+     "ms": 643,
+     "tokens": 25,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 2,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1010,
+   "roundIndex": 0,
+   "formId": "anaphora",
+   "difficulty": "apprentice",
+   "card": "Lady Macbeth",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Lady Macbeth in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Come, you spirits that tend on mortal thoughts, unsex me here.\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same word.\nWrite exactly 3 lines.\nYour flourish: Repeat one strong word three times.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Arabic. No title, no notes, no explanation."
+   ],
+   "verse": "التواصل يُصبر\nتنبقىَ الضعيفةٌ\nصَرغاماً",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-opening",
+     "met": false,
+     "detail": "التواصل · تنبقى · صرغاما"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "التواصل يُصبر  \nتنبقىَ الضعيفةٌ  \nصَرغاماً",
+     "tidy": "التواصل يُصبر\nتنبقىَ الضعيفةٌ\nصَرغاماً",
+     "ms": 750,
+     "tokens": 27,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1010,
+   "roundIndex": 1,
+   "formId": "quatrain-abab",
+   "difficulty": "player",
+   "card": "Mary Shelley",
+   "acrostic": null,
+   "relicWords": [
+    "خنجر",
+    "دم",
+    "نوم",
+    "رؤيا",
+    "يد"
+   ],
+   "answering": "عَلى قَدْرِ أهْلِ العَزْم تأتي العَزائِمُ\nوَتأتي علَى قَدْرِ الكِرامِ المَكارمُ",
+   "prompt": [
+    "You are Mary Shelley in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Beware; for I am fearless, and therefore powerful.\" You write short verse and nothing else.",
+    "Form: Crossed Quatrain. Four lines: line 1 rhymes with 3, line 2 with 4.\nWrite exactly 4 lines.\nYour flourish: End your verse on the same word it began with.\nWork in at least two of these words: خنجر, دم, نوم, رؤيا, يد.\nYour challenger last said:\nعَلى قَدْرِ أهْلِ العَزْم تأتي العَزائِمُ\nوَتأتي علَى قَدْرِ الكِرامِ المَكارمُ\nAnswer them.\nWrite only the verse, in Arabic. No title, no notes, no explanation."
+   ],
+   "verse": "النوم يغني الروح",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/4"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "rhyme-2-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "النوم يغني الروح",
+     "tidy": "النوم يغني الروح",
+     "ms": 383,
+     "tokens": 8,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "الرؤيا تغير القمر",
+     "tidy": "الرؤيا تغير القمر",
+     "ms": 478,
+     "tokens": 8,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1010,
+   "roundIndex": 2,
+   "formId": "epistrophe",
+   "difficulty": "apprentice",
+   "card": "The Sonnet Man",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "عَلى قَدْرِ أهْلِ العَزْم تأتي العَزائِمُ\nوَتأتي علَى قَدْرِ الكِرامِ المَكارمُ",
+   "prompt": [
+    "You are The Sonnet Man in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Shall I compare thee to a summer's day?\" You write short verse and nothing else.",
+    "Form: Epistrophe. Three lines that all end on the same word.\nWrite exactly 3 lines.\nYour flourish: End every line on the same rhyme.\nYour challenger last said:\nعَلى قَدْرِ أهْلِ العَزْم تأتي العَزائِمُ\nوَتأتي علَى قَدْرِ الكِرامِ المَكارمُ\nAnswer them.\nWrite only the verse, in Arabic. No title, no notes, no explanation."
+   ],
+   "verse": "العَلى قَدْرِ أهْلِ العَزْم تأتي العَزائِمُ\nوالعَلى كَرامِ المَكارمُ",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/3"
+    },
+    {
+     "id": "same-ending",
+     "met": false,
+     "detail": "العزايم · المكارم"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "العَلى قَدْرِ أهْلِ العَزْم تأتي العَزائِمُ  \nوالعَلى كَرامِ المَكارمُ",
+     "tidy": "العَلى قَدْرِ أهْلِ العَزْم تأتي العَزائِمُ\nوالعَلى كَرامِ المَكارمُ",
+     "ms": 1878,
+     "tokens": 45,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1011,
+   "roundIndex": 0,
+   "formId": "quatrain-abab",
+   "difficulty": "master",
+   "card": "Cassius",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Cassius in a duel of verses: theatrical, sharp, in character. Your line in the play: \"The fault, dear Brutus, is not in our stars, but in ourselves.\" You write short verse and nothing else.",
+    "Form: Crossed Quatrain. Four lines: line 1 rhymes with 3, line 2 with 4.\nWrite exactly 4 lines.\nYour flourish: Call on a character by name.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Arabic. No title, no notes, no explanation."
+   ],
+   "verse": "النَّهيم مِن كثافة، يا شخصٍ عاجلاً",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/4"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "rhyme-2-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "النَّهيم مِن كثافة، يا شخصٍ عاجلاً",
+     "tidy": "النَّهيم مِن كثافة، يا شخصٍ عاجلاً",
+     "ms": 1500,
+     "tokens": 22,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "الفَدَّ الْمُحَلَّنٌ هِيَ سَلمٗاً",
+     "tidy": "الفَدَّ الْمُحَلَّنٌ هِيَ سَلمٗاً",
+     "ms": 814,
+     "tokens": 26,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "إِنَّ قلوبنا تَحصىُنّا، ألا نَقصنْهوا كَما في الشاي",
+     "tidy": "إِنَّ قلوبنا تَحصىُنّا، ألا نَقصنْهوا كَما في الشاي",
+     "ms": 1502,
+     "tokens": 34,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1011,
+   "roundIndex": 1,
+   "formId": "couplet",
+   "difficulty": "player",
+   "card": "Titania",
+   "acrostic": null,
+   "relicWords": [
+    "كتاب",
+    "عاصفة",
+    "سحر",
+    "صفحة",
+    "غرق"
+   ],
+   "answering": "وَتَعْظُمُ في عَينِ الصّغيرِ صغارُها\nوَتَصْغُرُ في عَين العَظيمِ العَظائِمُ",
+   "prompt": [
+    "You are Titania in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Come, sit thee down upon this flowery bed.\" You write short verse and nothing else.",
+    "Form: Couplet. Two lines that rhyme.\nWrite exactly 2 lines.\nYour flourish: Start three words in one line with the same letter.\nWork in at least two of these words: كتاب, عاصفة, سحر, صفحة, غرق.\nYour challenger last said:\nوَتَعْظُمُ في عَينِ الصّغيرِ صغارُها\nوَتَصْغُرُ في عَين العَظيمِ العَظائِمُ\nAnswer them.\nWrite only the verse, in Arabic. No title, no notes, no explanation."
+   ],
+   "verse": "الملقية: صفحة غرق",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "الملقية: صفحة غرق",
+     "tidy": "الملقية: صفحة غرق",
+     "ms": 336,
+     "tokens": 10,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    },
+    {
+     "raw": "الخروجُ في لقطةٍ قريبةً",
+     "tidy": "الخروجُ في لقطةٍ قريبةً",
+     "ms": 189,
+     "tokens": 14,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1011,
+   "roundIndex": 2,
+   "formId": "tercet",
+   "difficulty": "player",
+   "card": "Viola",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "وَتَعْظُمُ في عَينِ الصّغيرِ صغارُها\nوَتَصْغُرُ في عَين العَظيمِ العَظائِمُ",
+   "prompt": [
+    "You are Viola in a duel of verses: theatrical, sharp, in character. Your line in the play: \"I am not what I am.\" You write short verse and nothing else.",
+    "Form: Tercet. Three lines; the first and last rhyme.\nWrite exactly 3 lines.\nYour flourish: Keep every line to 5 words or fewer.\nYour challenger last said:\nوَتَعْظُمُ في عَينِ الصّغيرِ صغارُها\nوَتَصْغُرُ في عَين العَظيمِ العَظائِمُ\nAnswer them.\nWrite only the verse, in Arabic. No title, no notes, no explanation."
+   ],
+   "verse": "وَتَعْظُمُ عيني، عينتي\nالنقب",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/3"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "وَتَعْظُمُ عيني، عينتي\n\nالنقب",
+     "tidy": "وَتَعْظُمُ عيني، عينتي\nالنقب",
+     "ms": 814,
+     "tokens": 22,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "وَتَعْظُمُ صَبابَ النَّدٍ صغارَةً  \nوَتَصْغُرُ ناءَ العَلماِ عيٓنَعائقَ",
+     "tidy": "وَتَعْظُمُ صَبابَ النَّدٍ صغارَةً\nوَتَصْغُرُ ناءَ العَلماِ عيٓنَعائقَ",
+     "ms": 1478,
+     "tokens": 54,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1012,
+   "roundIndex": 0,
+   "formId": "acrostic",
+   "difficulty": "apprentice",
+   "card": "Odysseus",
+   "acrostic": "ملك",
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Odysseus in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Tell me, O Muse, of the man of many ways, who wandered far.\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per letter: the first letters must spell ملك.\nWrite exactly 3 lines.\nYour flourish: Use two words of 7 letters or more.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Arabic. No title, no notes, no explanation."
+   ],
+   "verse": "العَقْرُبِيَّةَ اَلعُمانِيَّا",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "spells",
+     "met": false,
+     "detail": "ا"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "العَقْرُبِيَّةَ اَلعُمانِيَّا",
+     "tidy": "العَقْرُبِيَّةَ اَلعُمانِيَّا",
+     "ms": 957,
+     "tokens": 24,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1012,
+   "roundIndex": 1,
+   "formId": "couplet",
+   "difficulty": "master",
+   "card": "Elizabeth Barrett Browning",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "وَا حَرَّ قَلباهُ مِمَّن قَلْبُهُ شَبِمُ\nومَن بِجِسمي وَحالي عِنْدَهُ سَقَمُ",
+   "prompt": [
+    "You are Elizabeth Barrett Browning in a duel of verses: theatrical, sharp, in character. Your line in the play: \"How do I love thee? Let me count the ways.\" You write short verse and nothing else.",
+    "Form: Couplet. Two lines that rhyme.\nWrite exactly 2 lines.\nYour flourish: Give every line the same number of words.\nYour challenger last said:\nوَا حَرَّ قَلباهُ مِمَّن قَلْبُهُ شَبِمُ\nومَن بِجِسمي وَحالي عِنْدَهُ سَقَمُ\nAnswer them.\nWrite only the verse, in Arabic. No title, no notes, no explanation."
+   ],
+   "verse": "وعَا حَرَّ قَلباهُ مِمَّانَةً شَبَتُهُ",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "وعَا حَرَّ قَلباهُ مِمَّانَةً شَبَتُهُ",
+     "tidy": "وعَا حَرَّ قَلباهُ مِمَّانَةً شَبَتُهُ",
+     "ms": 1632,
+     "tokens": 28,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "وَا حَرَّ قَلباهُ مِمَّن قَلْبُهُ شَبِم١",
+     "tidy": "وَا حَرَّ قَلباهُ مِمَّن قَلْبُهُ شَبِم١",
+     "ms": 966,
+     "tokens": 31,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "الملك يغادر المدينة ويعود إلى راحة كتيل",
+     "tidy": "الملك يغادر المدينة ويعود إلى راحة كتيل",
+     "ms": 747,
+     "tokens": 17,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1012,
+   "roundIndex": 2,
+   "formId": "quatrain-aabb",
+   "difficulty": "master",
+   "card": "Lady Capulet",
+   "acrostic": null,
+   "relicWords": [
+    "قناع",
+    "حلم",
+    "مهرج",
+    "مسرحية",
+    "قمر"
+   ],
+   "answering": "وَا حَرَّ قَلباهُ مِمَّن قَلْبُهُ شَبِمُ\nومَن بِجِسمي وَحالي عِنْدَهُ سَقَمُ",
+   "prompt": [
+    "You are Lady Capulet in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Marry, that marry is the very theme I came to talk of.\" You write short verse and nothing else.",
+    "Form: Paired Quatrain. Four lines: the first two rhyme, and the last two rhyme.\nWrite exactly 4 lines.\nYour flourish: Cry out: end a line with an exclamation mark.\nWork in at least two of these words: قناع, حلم, مهرج, مسرحية, قمر.\nYour challenger last said:\nوَا حَرَّ قَلباهُ مِمَّن قَلْبُهُ شَبِمُ\nومَن بِجِسمي وَحالي عِنْدَهُ سَقَمُ\nAnswer them.\nWrite only the verse, in Arabic. No title, no notes, no explanation."
+   ],
+   "verse": "عامرةً\nقناع الحلم بمشرف\nمختبئاً في قمر سماوي\nإلى أي منها؟",
+   "source": "model",
+   "lines": 4,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "4/4"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "عامرةً / بمشرف"
+    },
+    {
+     "id": "rhyme-3-4",
+     "met": false,
+     "detail": "سماوي / منها"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 12,
+   "drafts": [
+    {
+     "raw": "الملك يصر على أن \"قمر\" هو الشخص المليء بالطبيعة، كيف تظهر أمام الجو؟",
+     "tidy": "الملك يصر على أن \"قمر\" هو الشخص المليء بالطبيعة، كيف تظهر أمام الجو؟",
+     "ms": 1012,
+     "tokens": 31,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "**عامرةً**  \nقناع الحلم بمشرف  \n\nمختبئاً في قمر سماوي  \n\nإلى أي منها؟",
+     "tidy": "عامرةً\nقناع الحلم بمشرف\nمختبئاً في قمر سماوي\nإلى أي منها؟",
+     "ms": 1032,
+     "tokens": 37,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 4,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 12
+    },
+    {
+     "raw": "قمر يُظلِّم وليذري",
+     "tidy": "قمر يُظلِّم وليذري",
+     "ms": 681,
+     "tokens": 13,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1013,
+   "roundIndex": 0,
+   "formId": "crescendo",
+   "difficulty": "player",
+   "card": "Mercutio",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Mercutio in a duel of verses: theatrical, sharp, in character. Your line in the play: \"A plague on both your houses!\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Rhyme two words inside a single line.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Arabic. No title, no notes, no explanation."
+   ],
+   "verse": "النقب يا أمسٍ\nرَقّقتُ توَظَّمتُ\nأمّا أَعيُها كَذاً",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "growing",
+     "met": false,
+     "detail": "3 < 2 < 3"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 9,
+   "drafts": [
+    {
+     "raw": "النقب يا أمسٍ\n\nرَقّقتُ توَظَّمتُ\n\nأمّا أَعيُها كَذاً",
+     "tidy": "النقب يا أمسٍ\nرَقّقتُ توَظَّمتُ\nأمّا أَعيُها كَذاً",
+     "ms": 2041,
+     "tokens": 40,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 9
+    },
+    {
+     "raw": "الرَغْمَةَ تُقتارٌ أَيِّ نَعيمٌ",
+     "tidy": "الرَغْمَةَ تُقتارٌ أَيِّ نَعيمٌ",
+     "ms": 1484,
+     "tokens": 27,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1013,
+   "roundIndex": 1,
+   "formId": "acrostic",
+   "difficulty": "player",
+   "card": "Persephone",
+   "acrostic": "ورد",
+   "relicWords": [
+    "عاصفة",
+    "سحر",
+    "عصا",
+    "جزيرة",
+    "غرق"
+   ],
+   "answering": "لخولة أطلالٌ ببرقة ثهمد\nتلوح كباقي الوشم في ظاهر اليد",
+   "prompt": [
+    "You are Persephone in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Six seeds I ate, and bound myself between two worlds forever.\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per letter: the first letters must spell ورد.\nWrite exactly 3 lines.\nYour flourish: Turn a word of 4 letters or more from your opponent's last verse back on them.\nWork in at least two of these words: عاصفة, سحر, عصا, جزيرة, غرق.\nYour challenger last said:\nلخولة أطلالٌ ببرقة ثهمد\nتلوح كباقي الوشم في ظاهر اليد\nAnswer them.\nWrite only the verse, in Arabic. No title, no notes, no explanation."
+   ],
+   "verse": "لوخولةأطلالبغرق",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "spells",
+     "met": false,
+     "detail": "ل"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "لوخولةأطلالبغرق",
+     "tidy": "لوخولةأطلالبغرق",
+     "ms": 460,
+     "tokens": 10,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "العصفوية تروج للبحر على برقهما تلوح الوشمة في ظاهر قيدها",
+     "tidy": "العصفوية تروج للبحر على برقهما تلوح الوشمة في ظاهر قيدها",
+     "ms": 906,
+     "tokens": 28,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1013,
+   "roundIndex": 2,
+   "formId": "quatrain-abab",
+   "difficulty": "apprentice",
+   "card": "William Blake",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "لخولة أطلالٌ ببرقة ثهمد\nتلوح كباقي الوشم في ظاهر اليد",
+   "prompt": [
+    "You are William Blake in a duel of verses: theatrical, sharp, in character. Your line in the play: \"To see a World in a Grain of Sand and a Heaven in a Wild Flower.\" You write short verse and nothing else.",
+    "Form: Crossed Quatrain. Four lines: line 1 rhymes with 3, line 2 with 4.\nWrite exactly 4 lines.\nYour flourish: End your verse on the same word it began with.\nYour challenger last said:\nلخولة أطلالٌ ببرقة ثهمد\nتلوح كباقي الوشم في ظاهر اليد\nAnswer them.\nWrite only the verse, in Arabic. No title, no notes, no explanation."
+   ],
+   "verse": "الله يصير إماماً",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/4"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "rhyme-2-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "الله يصير إماماً",
+     "tidy": "الله يصير إماماً",
+     "ms": 525,
+     "tokens": 10,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1014,
+   "roundIndex": 0,
+   "formId": "epistrophe",
+   "difficulty": "player",
+   "card": "Lord Montague",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Lord Montague in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Many a morning hath he there been seen, with tears augmenting the fresh morning dew.\" You write short verse and nothing else.",
+    "Form: Epistrophe. Three lines that all end on the same word.\nWrite exactly 3 lines.\nYour flourish: Rhyme two words inside a single line.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Arabic. No title, no notes, no explanation."
+   ],
+   "verse": "النهاية: نَهَجُّ مَوَادِحٌ",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "same-ending",
+     "met": false,
+     "detail": "موادح"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "النهاية: نَهَجُّ مَوَادِحٌ",
+     "tidy": "النهاية: نَهَجُّ مَوَادِحٌ",
+     "ms": 533,
+     "tokens": 21,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "الراوية: \"أَهْدَ الفَوقِ تُشْمَ،\"",
+     "tidy": "الراوية: \"أَهْدَ الفَوقِ تُشْمَ،\"",
+     "ms": 607,
+     "tokens": 24,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1014,
+   "roundIndex": 1,
+   "formId": "couplet",
+   "difficulty": "apprentice",
+   "card": "Oberon",
+   "acrostic": null,
+   "relicWords": [
+    "تاج",
+    "عرش",
+    "طموح",
+    "ساحرة",
+    "ملك"
+   ],
+   "answering": "أَلاَ هُبِّي بِصَحْنِكِ فَاصْبَحِيْنَا\nوَلاَ تُبْقِي خُمُوْرَ الأَنْدَرِيْنَا",
+   "prompt": [
+    "You are Oberon in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Ill met by moonlight, proud Titania.\" You write short verse and nothing else.",
+    "Form: Couplet. Two lines that rhyme.\nWrite exactly 2 lines.\nYour flourish: Start three words in one line with the same letter.\nWork in at least two of these words: تاج, عرش, طموح, ساحرة, ملك.\nYour challenger last said:\nأَلاَ هُبِّي بِصَحْنِكِ فَاصْبَحِيْنَا\nوَلاَ تُبْقِي خُمُوْرَ الأَنْدَرِيْنَا\nAnswer them.\nWrite only the verse, in Arabic. No title, no notes, no explanation."
+   ],
+   "verse": "تاجعطس",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "تاجعطس",
+     "tidy": "تاجعطس",
+     "ms": 221,
+     "tokens": 5,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1014,
+   "roundIndex": 2,
+   "formId": "tercet",
+   "difficulty": "master",
+   "card": "Hamlet",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "أَلاَ هُبِّي بِصَحْنِكِ فَاصْبَحِيْنَا\nوَلاَ تُبْقِي خُمُوْرَ الأَنْدَرِيْنَا",
+   "prompt": [
+    "You are Hamlet in a duel of verses: theatrical, sharp, in character. Your line in the play: \"To be, or not to be, that is the question.\" You write short verse and nothing else.",
+    "Form: Tercet. Three lines; the first and last rhyme.\nWrite exactly 3 lines.\nYour flourish: Ask a question: end a line with a question mark.\nYour challenger last said:\nأَلاَ هُبِّي بِصَحْنِكِ فَاصْبَحِيْنَا\nوَلاَ تُبْقِي خُمُوْرَ الأَنْدَرِيْنَا\nAnswer them.\nWrite only the verse, in Arabic. No title, no notes, no explanation."
+   ],
+   "verse": "الله يسلمني، الله يكسرني",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "الله يسلمني، الله يكسرني",
+     "tidy": "الله يسلمني، الله يكسرني",
+     "ms": 859,
+     "tokens": 12,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "aِلآهِبْتِفَخْا",
+     "tidy": "aِلآهِبْتِفَخْا",
+     "ms": 916,
+     "tokens": 16,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "أَلاَ هُِلِّيَ بَنَا فَصَحْنِكًَ\n\nالخاتمة: هَل جهتنا قريبًا؟",
+     "tidy": "أَلاَ هُِلِّيَ بَنَا فَصَحْنِكًَ\nالخاتمة: هَل جهتنا قريبًا؟",
+     "ms": 1512,
+     "tokens": 44,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1015,
+   "roundIndex": 0,
+   "formId": "anaphora",
+   "difficulty": "player",
+   "card": "Mercutio",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Mercutio in a duel of verses: theatrical, sharp, in character. Your line in the play: \"A plague on both your houses!\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same word.\nWrite exactly 3 lines.\nYour flourish: Rhyme two words inside a single line.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Arabic. No title, no notes, no explanation."
+   ],
+   "verse": "الفَرْبُوَةَ كَلاهِ يا بني",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "same-opening",
+     "met": false,
+     "detail": "الفربوة"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "الفَرْبُوَةَ كَلاهِ يا بني",
+     "tidy": "الفَرْبُوَةَ كَلاهِ يا بني",
+     "ms": 824,
+     "tokens": 20,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "رَبّا يَنهِمُ النَهْرِ\n\nالضَحْيُ",
+     "tidy": "رَبّا يَنهِمُ النَهْرِ\nالضَحْيُ",
+     "ms": 1016,
+     "tokens": 26,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1015,
+   "roundIndex": 2,
+   "formId": "acrostic",
+   "difficulty": "master",
+   "card": "Percy Bysshe Shelley",
+   "acrostic": "نور",
+   "relicWords": [
+    "تاج",
+    "عرش",
+    "طموح",
+    "ساحرة",
+    "ملك"
+   ],
+   "answering": "عفتِ الديارُ محلُّها فمُقامُهَا\nبمنًى تأبَّدَ غَوْلُها فَرِجَامُهَا",
+   "prompt": [
+    "You are Percy Bysshe Shelley in a duel of verses: theatrical, sharp, in character. Your line in the play: \"If Winter comes, can Spring be far behind?\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per letter: the first letters must spell نور.\nWrite exactly 3 lines.\nYour flourish: End your verse on the same word it began with.\nWork in at least two of these words: تاج, عرش, طموح, ساحرة, ملك.\nYour challenger last said:\nعفتِ الديارُ محلُّها فمُقامُهَا\nبمنًى تأبَّدَ غَوْلُها فَرِجَامُهَا\nAnswer them.\nWrite only the verse, in Arabic. No title, no notes, no explanation."
+   ],
+   "verse": "العبدُ ملك\nساحرة\nتاج",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "spells",
+     "met": false,
+     "detail": "است"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 12,
+   "drafts": [
+    {
+     "raw": "العبدُ ملك  \nساحرة  \nتاج",
+     "tidy": "العبدُ ملك\nساحرة\nتاج",
+     "ms": 639,
+     "tokens": 13,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 12
+    },
+    {
+     "raw": "الفودة تتأبّد غويلفف",
+     "tidy": "الفودة تتأبّد غويلفف",
+     "ms": 454,
+     "tokens": 13,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "العَنقْفَةَرَ مَلكةَ الفِيضَرَ",
+     "tidy": "العَنقْفَةَرَ مَلكةَ الفِيضَرَ",
+     "ms": 836,
+     "tokens": 24,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1016,
+   "roundIndex": 1,
+   "formId": "tercet",
+   "difficulty": "apprentice",
+   "card": "Hamlet",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "أصالةُ الرأي صانتْنِي عن الخَطَلِ\nوحِليةُ الفضلِ زانتني لدَى العَطَلِ",
+   "prompt": [
+    "You are Hamlet in a duel of verses: theatrical, sharp, in character. Your line in the play: \"To be, or not to be, that is the question.\" You write short verse and nothing else.",
+    "Form: Tercet. Three lines; the first and last rhyme.\nWrite exactly 3 lines.\nYour flourish: Ask a question: end a line with a question mark.\nYour challenger last said:\nأصالةُ الرأي صانتْنِي عن الخَطَلِ\nوحِليةُ الفضلِ زانتني لدَى العَطَلِ\nAnswer them.\nWrite only the verse, in Arabic. No title, no notes, no explanation."
+   ],
+   "verse": "أصالةُ الرأي صانتْنِي\nحليةُ الفضلِ زانتني دائم",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/3"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "أصالةُ الرأي صانتْنِي\n\nحليةُ الفضلِ زانتني دائم",
+     "tidy": "أصالةُ الرأي صانتْنِي\nحليةُ الفضلِ زانتني دائم",
+     "ms": 1027,
+     "tokens": 29,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1016,
+   "roundIndex": 2,
+   "formId": "quatrain-abab",
+   "difficulty": "player",
+   "card": "Olivia",
+   "acrostic": null,
+   "relicWords": [
+    "قناع",
+    "حلم",
+    "مهرج",
+    "مسرحية",
+    "قمر"
+   ],
+   "answering": "أصالةُ الرأي صانتْنِي عن الخَطَلِ\nوحِليةُ الفضلِ زانتني لدَى العَطَلِ",
+   "prompt": [
+    "You are Olivia in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Love sought is good, but given unsought, is better.\" You write short verse and nothing else.",
+    "Form: Crossed Quatrain. Four lines: line 1 rhymes with 3, line 2 with 4.\nWrite exactly 4 lines.\nYour flourish: Keep every line to 5 words or fewer.\nWork in at least two of these words: قناع, حلم, مهرج, مسرحية, قمر.\nYour challenger last said:\nأصالةُ الرأي صانتْنِي عن الخَطَلِ\nوحِليةُ الفضلِ زانتني لدَى العَطَلِ\nAnswer them.\nWrite only the verse, in Arabic. No title, no notes, no explanation."
+   ],
+   "verse": "قامُ بـُأذِن، وليمشُ خُلفٌ",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/4"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "rhyme-2-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "قامُ بـُأذِن، وليمشُ خُلفٌ",
+     "tidy": "قامُ بـُأذِن، وليمشُ خُلفٌ",
+     "ms": 710,
+     "tokens": 20,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "قمر",
+     "tidy": "قمر",
+     "ms": 167,
+     "tokens": 2,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1017,
+   "roundIndex": 0,
+   "formId": "tercet",
+   "difficulty": "player",
+   "card": "Hamlet",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Hamlet in a duel of verses: theatrical, sharp, in character. Your line in the play: \"To be, or not to be, that is the question.\" You write short verse and nothing else.",
+    "Form: Tercet. Three lines; the first and last rhyme.\nWrite exactly 3 lines.\nYour flourish: Ask a question: end a line with a question mark.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Arabic. No title, no notes, no explanation."
+   ],
+   "verse": "النَهيمُ يا شوخة\nما تبدل القمر، ما يدري\nطيب وصبقي",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "شوخة / وصبقي"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "النَهيمُ يا شوخة\n\nما تبدل القمر، ما يدري\n\nطيب وصبقي",
+     "tidy": "النَهيمُ يا شوخة\nما تبدل القمر، ما يدري\nطيب وصبقي",
+     "ms": 1330,
+     "tokens": 30,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "أَيْنِ مضيعُ في عينيكَ؟",
+     "tidy": "أَيْنِ مضيعُ في عينيكَ؟",
+     "ms": 725,
+     "tokens": 16,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1017,
+   "roundIndex": 1,
+   "formId": "acrostic",
+   "difficulty": "apprentice",
+   "card": "Juliet",
+   "acrostic": "قمر",
+   "relicWords": [
+    "ذهب",
+    "اختيار",
+    "رحمة",
+    "رصاص",
+    "صندوق"
+   ],
+   "answering": "أَقِيمُوا بَنِي أُمِّي صُدُورَ مَطِيِّكُمْ\nفَإنِّي إلى قَوْمٍ سِوَاكُمْ لَأَمْيَلُ",
+   "prompt": [
+    "You are Juliet in a duel of verses: theatrical, sharp, in character. Your line in the play: \"What's in a name? That which we call a rose...\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per letter: the first letters must spell قمر.\nWrite exactly 3 lines.\nYour flourish: Cry out: end a line with an exclamation mark.\nWork in at least two of these words: ذهب, اختيار, رحمة, رصاص, صندوق.\nYour challenger last said:\nأَقِيمُوا بَنِي أُمِّي صُدُورَ مَطِيِّكُمْ\nفَإنِّي إلى قَوْمٍ سِوَاكُمْ لَأَمْيَلُ\nAnswer them.\nWrite only the verse, in Arabic. No title, no notes, no explanation."
+   ],
+   "verse": "قتري الذهاب، اختير الرحمة، صندوق يبدوى",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "spells",
+     "met": false,
+     "detail": "ق"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "قتري الذهاب، اختير الرحمة، صندوق يبدوى",
+     "tidy": "قتري الذهاب، اختير الرحمة، صندوق يبدوى",
+     "ms": 1389,
+     "tokens": 20,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1017,
+   "roundIndex": 2,
+   "formId": "quatrain-abab",
+   "difficulty": "master",
+   "card": "Edgar Allan Poe",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "أَقِيمُوا بَنِي أُمِّي صُدُورَ مَطِيِّكُمْ\nفَإنِّي إلى قَوْمٍ سِوَاكُمْ لَأَمْيَلُ",
+   "prompt": [
+    "You are Edgar Allan Poe in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Once upon a midnight dreary, while I pondered, weak and weary.\" You write short verse and nothing else.",
+    "Form: Crossed Quatrain. Four lines: line 1 rhymes with 3, line 2 with 4.\nWrite exactly 4 lines.\nYour flourish: End your verse on the same word it began with.\nYour challenger last said:\nأَقِيمُوا بَنِي أُمِّي صُدُورَ مَطِيِّكُمْ\nفَإنِّي إلى قَوْمٍ سِوَاكُمْ لَأَمْيَلُ\nAnswer them.\nWrite only the verse, in Arabic. No title, no notes, no explanation."
+   ],
+   "verse": "الله يسكنه شوق",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/4"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "rhyme-2-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "الله يسكنه شوق",
+     "tidy": "الله يسكنه شوق",
+     "ms": 518,
+     "tokens": 8,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "الله يعذار",
+     "tidy": "الله يعذار",
+     "ms": 462,
+     "tokens": 5,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "الله يعافيه",
+     "tidy": "الله يعافيه",
+     "ms": 315,
+     "tokens": 5,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1018,
+   "roundIndex": 0,
+   "formId": "anaphora",
+   "difficulty": "master",
+   "card": "Brutus",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Brutus in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Not that I loved Caesar less, but that I loved Rome more.\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same word.\nWrite exactly 3 lines.\nYour flourish: Call on a character by name.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Arabic. No title, no notes, no explanation."
+   ],
+   "verse": "الفارق بين الألف والروح\nتذكروا الفارق بين العالم والأخلاق\nما أدري وراء العينين فقط",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-opening",
+     "met": false,
+     "detail": "الفارق · تذكروا · ما"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "الفارق بين الألف والروح\n\nتذكروا الفارق بين العالم والأخلاق\n\nما أدري وراء العينين فقط",
+     "tidy": "الفارق بين الألف والروح\nتذكروا الفارق بين العالم والأخلاق\nما أدري وراء العينين فقط",
+     "ms": 1814,
+     "tokens": 34,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "الله يعطيك العاف",
+     "tidy": "الله يعطيك العاف",
+     "ms": 448,
+     "tokens": 7,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "الزمان حاضرٌ في أيديكم\n\nالتأكيد تذكره\n\nالحجة قائمة",
+     "tidy": "الزمان حاضرٌ في أيديكم\nالتأكيد تذكره\nالحجة قائمة",
+     "ms": 1422,
+     "tokens": 28,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1018,
+   "roundIndex": 2,
+   "formId": "quatrain-aabb",
+   "difficulty": "apprentice",
+   "card": "Odysseus",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "أرَاكَ عَصِيَّ الدَّمْعِ شِيمَتُكَ الصَّبْرُ\nأمَا لِلْهَوَى نَهْيٌ عَلَيْكَ وَلا أمْر",
+   "prompt": [
+    "You are Odysseus in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Tell me, O Muse, of the man of many ways, who wandered far.\" You write short verse and nothing else.",
+    "Form: Paired Quatrain. Four lines: the first two rhyme, and the last two rhyme.\nWrite exactly 4 lines.\nYour flourish: Use two words of 7 letters or more.\nYour challenger last said:\nأرَاكَ عَصِيَّ الدَّمْعِ شِيمَتُكَ الصَّبْرُ\nأمَا لِلْهَوَى نَهْيٌ عَلَيْكَ وَلا أمْر\nAnswer them.\nWrite only the verse, in Arabic. No title, no notes, no explanation."
+   ],
+   "verse": "الفاعل يا هود، يا خروج\nامحسن نهي، يا لقاء",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/4"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "خروج / لقاء"
+    },
+    {
+     "id": "rhyme-3-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "الفاعل يا هود، يا خروج\n\nامحسن نهي، يا لقاء",
+     "tidy": "الفاعل يا هود، يا خروج\nامحسن نهي، يا لقاء",
+     "ms": 734,
+     "tokens": 27,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 2,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1019,
+   "roundIndex": 0,
+   "formId": "acrostic",
+   "difficulty": "player",
+   "card": "Viola",
+   "acrostic": "ورد",
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Viola in a duel of verses: theatrical, sharp, in character. Your line in the play: \"I am not what I am.\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per letter: the first letters must spell ورد.\nWrite exactly 3 lines.\nYour flourish: Keep every line to 5 words or fewer.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Arabic. No title, no notes, no explanation."
+   ],
+   "verse": "الاودة ريد\nتاوت تشر",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/3"
+    },
+    {
+     "id": "spells",
+     "met": false,
+     "detail": "ات"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "الاودة ريد\n\nتاوت تشر",
+     "tidy": "الاودة ريد\nتاوت تشر",
+     "ms": 581,
+     "tokens": 11,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "العَقُّتَا يُغلقُ بِنَهِ",
+     "tidy": "العَقُّتَا يُغلقُ بِنَهِ",
+     "ms": 888,
+     "tokens": 20,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1019,
+   "roundIndex": 1,
+   "formId": "tercet",
+   "difficulty": "master",
+   "card": "Titania",
+   "acrostic": null,
+   "relicWords": [
+    "كتاب",
+    "عاصفة",
+    "سحر",
+    "صفحة",
+    "غرق"
+   ],
+   "answering": "إذا الشّعْبُ يَوْمَاً أرَادَ الْحَيَاةَ\nفَلا بُدَّ أنْ يَسْتَجِيبَ القَدَر",
+   "prompt": [
+    "You are Titania in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Come, sit thee down upon this flowery bed.\" You write short verse and nothing else.",
+    "Form: Tercet. Three lines; the first and last rhyme.\nWrite exactly 3 lines.\nYour flourish: Start three words in one line with the same letter.\nWork in at least two of these words: كتاب, عاصفة, سحر, صفحة, غرق.\nYour challenger last said:\nإذا الشّعْبُ يَوْمَاً أرَادَ الْحَيَاةَ\nفَلا بُدَّ أنْ يَسْتَجِيبَ القَدَر\nAnswer them.\nWrite only the verse, in Arabic. No title, no notes, no explanation."
+   ],
+   "verse": "غرق صفحة",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "غرق صفحة",
+     "tidy": "غرق صفحة",
+     "ms": 392,
+     "tokens": 5,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    },
+    {
+     "raw": "الزهور تبدأ بحدوقة",
+     "tidy": "الزهور تبدأ بحدوقة",
+     "ms": 689,
+     "tokens": 11,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "صفحةغرق",
+     "tidy": "صفحةغرق",
+     "ms": 464,
+     "tokens": 4,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1019,
+   "roundIndex": 2,
+   "formId": "quatrain-abab",
+   "difficulty": "apprentice",
+   "card": "Tybalt",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "إذا الشّعْبُ يَوْمَاً أرَادَ الْحَيَاةَ\nفَلا بُدَّ أنْ يَسْتَجِيبَ القَدَر",
+   "prompt": [
+    "You are Tybalt in a duel of verses: theatrical, sharp, in character. Your line in the play: \"What, drawn, and talk of peace? I hate the word.\" You write short verse and nothing else.",
+    "Form: Crossed Quatrain. Four lines: line 1 rhymes with 3, line 2 with 4.\nWrite exactly 4 lines.\nYour flourish: Cry out: end a line with an exclamation mark.\nYour challenger last said:\nإذا الشّعْبُ يَوْمَاً أرَادَ الْحَيَاةَ\nفَلا بُدَّ أنْ يَسْتَجِيبَ القَدَر\nAnswer them.\nWrite only the verse, in Arabic. No title, no notes, no explanation."
+   ],
+   "verse": "كما في الساعات الصامتة، لا يظهر الحياة إلا يصبر",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/4"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "rhyme-2-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "كما في الساعات الصامتة، لا يظهر الحياة إلا يصبر",
+     "tidy": "كما في الساعات الصامتة، لا يظهر الحياة إلا يصبر",
+     "ms": 877,
+     "tokens": 21,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1020,
+   "roundIndex": 0,
+   "formId": "quatrain-aabb",
+   "difficulty": "player",
+   "card": "Prince Escalus",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Prince Escalus in a duel of verses: theatrical, sharp, in character. Your line in the play: \"If ever you disturb our streets again, your lives shall pay the forfeit of the peace.\" You write short verse and nothing else.",
+    "Form: Paired Quatrain. Four lines: the first two rhyme, and the last two rhyme.\nWrite exactly 4 lines.\nYour flourish: Turn a word of 4 letters or more from your opponent's last verse back on them.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Arabic. No title, no notes, no explanation."
+   ],
+   "verse": "الرمَّةَ إِنكَ تُقَطَّعُ",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/4"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "rhyme-3-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "الرمَّةَ إِنكَ تُقَطَّعُ",
+     "tidy": "الرمَّةَ إِنكَ تُقَطَّعُ",
+     "ms": 1102,
+     "tokens": 20,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "الرَّقُّ يا رَّيِّ  \nإذا جاء الفتى سيدتَ لا تخسر",
+     "tidy": "الرَّقُّ يا رَّيِّ\nإذا جاء الفتى سيدتَ لا تخسر",
+     "ms": 978,
+     "tokens": 30,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 2,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1020,
+   "roundIndex": 1,
+   "formId": "acrostic",
+   "difficulty": "master",
+   "card": "Bottom",
+   "acrostic": "ورد",
+   "relicWords": null,
+   "answering": "قِفَا نَبْكِ مِنْ ذِكْرَى حَبِيبٍ ومَنْزِلِ\nبِسِقْطِ اللِّوَى بَيْنَ الدَّخُول فَحَوْملِ",
+   "prompt": [
+    "You are Bottom in a duel of verses: theatrical, sharp, in character. Your line in the play: \"I have had a most rare vision. I have had a dream, past the wit of man.\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per letter: the first letters must spell ورد.\nWrite exactly 3 lines.\nYour flourish: Start three words in one line with the same letter.\nYour challenger last said:\nقِفَا نَبْكِ مِنْ ذِكْرَى حَبِيبٍ ومَنْزِلِ\nبِسِقْطِ اللِّوَى بَيْنَ الدَّخُول فَحَوْملِ\nAnswer them.\nWrite only the verse, in Arabic. No title, no notes, no explanation."
+   ],
+   "verse": "قِفَا نَبْكِ مِنْذِكَرَىحَبِيبِمَإِمَ",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "spells",
+     "met": false,
+     "detail": "ق"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "قِفَا نَبْكِ مِنْذِكَرَىحَبِيبِمَإِمَ",
+     "tidy": "قِفَا نَبْكِ مِنْذِكَرَىحَبِيبِمَإِمَ",
+     "ms": 813,
+     "tokens": 34,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "الفَوقَ الحَشَيمَ",
+     "tidy": "الفَوقَ الحَشَيمَ",
+     "ms": 387,
+     "tokens": 11,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "الوَرَدَ يا رَدُ",
+     "tidy": "الوَرَدَ يا رَدُ",
+     "ms": 420,
+     "tokens": 13,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1020,
+   "roundIndex": 2,
+   "formId": "quatrain-abab",
+   "difficulty": "player",
+   "card": "Apollo",
+   "acrostic": null,
+   "relicWords": [
+    "قناع",
+    "حلم",
+    "مهرج",
+    "مسرحية",
+    "قمر"
+   ],
+   "answering": "قِفَا نَبْكِ مِنْ ذِكْرَى حَبِيبٍ ومَنْزِلِ\nبِسِقْطِ اللِّوَى بَيْنَ الدَّخُول فَحَوْملِ",
+   "prompt": [
+    "You are Apollo in a duel of verses: theatrical, sharp, in character. Your line in the play: \"I am the god of song, of healing, and of the radiant sun.\" You write short verse and nothing else.",
+    "Form: Crossed Quatrain. Four lines: line 1 rhymes with 3, line 2 with 4.\nWrite exactly 4 lines.\nYour flourish: Use two words of 7 letters or more.\nWork in at least two of these words: قناع, حلم, مهرج, مسرحية, قمر.\nYour challenger last said:\nقِفَا نَبْكِ مِنْ ذِكْرَى حَبِيبٍ ومَنْزِلِ\nبِسِقْطِ اللِّوَى بَيْنَ الدَّخُول فَحَوْملِ\nAnswer them.\nWrite only the verse, in Arabic. No title, no notes, no explanation."
+   ],
+   "verse": "قَناعُ نَبْكِ مِنْذِيكِمَةِ",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/4"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "rhyme-2-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "قَناعُ نَبْكِ مِنْذِيكِمَةِ",
+     "tidy": "قَناعُ نَبْكِ مِنْذِيكِمَةِ",
+     "ms": 711,
+     "tokens": 23,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "قِمَّةٌ تُضِفَّ،  \nحَبِيبٌ تُشرَعَّ،  \nمسَرْحًِ داخلِ آذانِ",
+     "tidy": "قِمَّةٌ تُضِفَّ،\nحَبِيبٌ تُشرَعَّ،\nمسَرْحًِ داخلِ آذانِ",
+     "ms": 1110,
+     "tokens": 47,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 3,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1021,
+   "roundIndex": 1,
+   "formId": "acrostic",
+   "difficulty": "apprentice",
+   "card": "Aphrodite",
+   "acrostic": "نور",
+   "relicWords": null,
+   "answering": "تَرَى بَعَرَ الأرْآمِ فِي عَرَصَاتِهَا\nوَقِيْعَانِهَا كَأنَّهُ حَبُّ فُلْفُلِ",
+   "prompt": [
+    "You are Aphrodite in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Even the gods cannot resist the power of love.\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per letter: the first letters must spell نور.\nWrite exactly 3 lines.\nYour flourish: Use two words of 7 letters or more.\nYour challenger last said:\nتَرَى بَعَرَ الأرْآمِ فِي عَرَصَاتِهَا\nوَقِيْعَانِهَا كَأنَّهُ حَبُّ فُلْفُلِ\nAnswer them.\nWrite only the verse, in Arabic. No title, no notes, no explanation."
+   ],
+   "verse": "النور يشعر برغبة لا تملك\nمرأة تتساءل عن راحتها\nجزءان قريبان ينبضان مثل الري",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "spells",
+     "met": false,
+     "detail": "امج"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "النور يشعر برغبة لا تملك  \nمرأة تتساءل عن راحتها  \nجزءان قريبان ينبضان مثل الري",
+     "tidy": "النور يشعر برغبة لا تملك\nمرأة تتساءل عن راحتها\nجزءان قريبان ينبضان مثل الري",
+     "ms": 1868,
+     "tokens": 39,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1021,
+   "roundIndex": 2,
+   "formId": "quatrain-abab",
+   "difficulty": "master",
+   "card": "Samuel Coleridge",
+   "acrostic": null,
+   "relicWords": [
+    "تاج",
+    "عرش",
+    "طموح",
+    "ساحرة",
+    "ملك"
+   ],
+   "answering": "تَرَى بَعَرَ الأرْآمِ فِي عَرَصَاتِهَا\nوَقِيْعَانِهَا كَأنَّهُ حَبُّ فُلْفُلِ",
+   "prompt": [
+    "You are Samuel Coleridge in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Water, water, every where, nor any drop to drink.\" You write short verse and nothing else.",
+    "Form: Crossed Quatrain. Four lines: line 1 rhymes with 3, line 2 with 4.\nWrite exactly 4 lines.\nYour flourish: Give every line the same number of words.\nWork in at least two of these words: تاج, عرش, طموح, ساحرة, ملك.\nYour challenger last said:\nتَرَى بَعَرَ الأرْآمِ فِي عَرَصَاتِهَا\nوَقِيْعَانِهَا كَأنَّهُ حَبُّ فُلْفُلِ\nAnswer them.\nWrite only the verse, in Arabic. No title, no notes, no explanation."
+   ],
+   "verse": "تَرَى بَعَرَ الأَرْآمِ فِي عَرَصَاتِهَا",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/4"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "rhyme-2-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "تَرَى بَعَرَ الأَرْآمِ فِي عَرَصَاتِهَا",
+     "tidy": "تَرَى بَعَرَ الأَرْآمِ فِي عَرَصَاتِهَا",
+     "ms": 1728,
+     "tokens": 32,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "تَرَى بَعَرَ الأَرْأِمِ فِي عَرَصَاتِهَا",
+     "tidy": "تَرَى بَعَرَ الأَرْأِمِ فِي عَرَصَاتِهَا",
+     "ms": 1565,
+     "tokens": 33,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "تَرَى بَعَرَ الأرْآمِ فِي عَرَصَاتِهَا  \nوَقِيْعَانِهَا كَأنَّهُ حَبُّ فُلْفُلِ",
+     "tidy": "تَرَى بَعَرَ الأرْآمِ فِي عَرَصَاتِهَا\nوَقِيْعَانِهَا كَأنَّهُ حَبُّ فُلْفُلِ",
+     "ms": 1535,
+     "tokens": 64,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 116,
+     "rawLines": 2,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1022,
+   "roundIndex": 2,
+   "formId": "quatrain-aabb",
+   "difficulty": "master",
+   "card": "Lord Montague",
+   "acrostic": null,
+   "relicWords": [
+    "خاتم",
+    "عهد",
+    "ليل",
+    "منفى",
+    "قبلة"
+   ],
+   "answering": "عَلى قَدْرِ أهْلِ العَزْم تأتي العَزائِمُ\nوَتأتي علَى قَدْرِ الكِرامِ المَكارمُ",
+   "prompt": [
+    "You are Lord Montague in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Many a morning hath he there been seen, with tears augmenting the fresh morning dew.\" You write short verse and nothing else.",
+    "Form: Paired Quatrain. Four lines: the first two rhyme, and the last two rhyme.\nWrite exactly 4 lines.\nYour flourish: Rhyme two words inside a single line.\nWork in at least two of these words: خاتم, عهد, ليل, منفى, قبلة.\nYour challenger last said:\nعَلى قَدْرِ أهْلِ العَزْم تأتي العَزائِمُ\nوَتأتي علَى قَدْرِ الكِرامِ المَكارمُ\nAnswer them.\nWrite only the verse, in Arabic. No title, no notes, no explanation."
+   ],
+   "verse": "الله يحافظ علي، ويصل إلى القمر\nمنفى قبلة",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/4"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "القمر / قبلة"
+    },
+    {
+     "id": "rhyme-3-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 9,
+   "drafts": [
+    {
+     "raw": "القبلة",
+     "tidy": "القبلة",
+     "ms": 242,
+     "tokens": 4,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "قبل الظهر الخيل",
+     "tidy": "قبل الظهر الخيل",
+     "ms": 343,
+     "tokens": 7,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "الله يحافظ علي، ويصل إلى القمر\n\nمنفى قبلة",
+     "tidy": "الله يحافظ علي، ويصل إلى القمر\nمنفى قبلة",
+     "ms": 480,
+     "tokens": 18,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 116,
+     "rawLines": 2,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 9
+    }
+   ]
+  },
+  {
+   "seed": 1023,
+   "roundIndex": 2,
+   "formId": "tercet",
+   "difficulty": "apprentice",
+   "card": "Brutus",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "وَتَعْظُمُ في عَينِ الصّغيرِ صغارُها\nوَتَصْغُرُ في عَين العَظيمِ العَظائِمُ",
+   "prompt": [
+    "You are Brutus in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Not that I loved Caesar less, but that I loved Rome more.\" You write short verse and nothing else.",
+    "Form: Tercet. Three lines; the first and last rhyme.\nWrite exactly 3 lines.\nYour flourish: Call on a character by name.\nYour challenger last said:\nوَتَعْظُمُ في عَينِ الصّغيرِ صغارُها\nوَتَصْغُرُ في عَين العَظيمِ العَظائِمُ\nAnswer them.\nWrite only the verse, in Arabic. No title, no notes, no explanation."
+   ],
+   "verse": "وعَظُمِ العينِ هدىً أفقٌ صغيراً\nوَصَغُرِ العينِ نسخةٍ جديدة عالية\nالرجلُ يا أمهِ طيبَ القلبُ",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "صغيراً / القلبُ"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "وعَظُمِ العينِ هدىً أفقٌ صغيراً  \nوَصَغُرِ العينِ نسخةٍ جديدة عالية  \nالرجلُ يا أمهِ طيبَ القلبُ",
+     "tidy": "وعَظُمِ العينِ هدىً أفقٌ صغيراً\nوَصَغُرِ العينِ نسخةٍ جديدة عالية\nالرجلُ يا أمهِ طيبَ القلبُ",
+     "ms": 2412,
+     "tokens": 59,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1024,
+   "roundIndex": 1,
+   "formId": "crescendo",
+   "difficulty": "master",
+   "card": "Aphrodite",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "وَا حَرَّ قَلباهُ مِمَّن قَلْبُهُ شَبِمُ\nومَن بِجِسمي وَحالي عِنْدَهُ سَقَمُ",
+   "prompt": [
+    "You are Aphrodite in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Even the gods cannot resist the power of love.\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Use two words of 7 letters or more.\nYour challenger last said:\nوَا حَرَّ قَلباهُ مِمَّن قَلْبُهُ شَبِمُ\nومَن بِجِسمي وَحالي عِنْدَهُ سَقَمُ\nAnswer them.\nWrite only the verse, in Arabic. No title, no notes, no explanation."
+   ],
+   "verse": "ألِكَ يَعَلَّ صَقَمَ، نَشَطَتَ إِذْرَقاً",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "growing",
+     "met": false,
+     "detail": "5"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "ألِكَ يَعَلَّ صَقَمَ، نَشَطَتَ إِذْرَقاً",
+     "tidy": "ألِكَ يَعَلَّ صَقَمَ، نَشَطَتَ إِذْرَقاً",
+     "ms": 1194,
+     "tokens": 34,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "الزمان يخفف",
+     "tidy": "الزمان يخفف",
+     "ms": 219,
+     "tokens": 7,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "الرياض القوي",
+     "tidy": "الرياض القوي",
+     "ms": 262,
+     "tokens": 5,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1025,
+   "roundIndex": 1,
+   "formId": "quatrain-aabb",
+   "difficulty": "apprentice",
+   "card": "Malvolio",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "لخولة أطلالٌ ببرقة ثهمد\nتلوح كباقي الوشم في ظاهر اليد",
+   "prompt": [
+    "You are Malvolio in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Some are born great, some achieve greatness, and some have greatness thrust upon them.\" You write short verse and nothing else.",
+    "Form: Paired Quatrain. Four lines: the first two rhyme, and the last two rhyme.\nWrite exactly 4 lines.\nYour flourish: Keep every line to 5 words or fewer.\nYour challenger last said:\nلخولة أطلالٌ ببرقة ثهمد\nتلوح كباقي الوشم في ظاهر اليد\nAnswer them.\nWrite only the verse, in Arabic. No title, no notes, no explanation."
+   ],
+   "verse": "الله يذكرني أبًا، لكنه لا يسألني",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/4"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "rhyme-3-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "الله يذكرني أبًا، لكنه لا يسألني",
+     "tidy": "الله يذكرني أبًا، لكنه لا يسألني",
+     "ms": 465,
+     "tokens": 17,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1025,
+   "roundIndex": 2,
+   "formId": "crescendo",
+   "difficulty": "apprentice",
+   "card": "Titania",
+   "acrostic": null,
+   "relicWords": [
+    "ذهب",
+    "اختيار",
+    "رحمة",
+    "رصاص",
+    "صندوق"
+   ],
+   "answering": "لخولة أطلالٌ ببرقة ثهمد\nتلوح كباقي الوشم في ظاهر اليد",
+   "prompt": [
+    "You are Titania in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Come, sit thee down upon this flowery bed.\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Start three words in one line with the same letter.\nWork in at least two of these words: ذهب, اختيار, رحمة, رصاص, صندوق.\nYour challenger last said:\nلخولة أطلالٌ ببرقة ثهمد\nتلوح كباقي الوشم في ظاهر اليد\nAnswer them.\nWrite only the verse, in Arabic. No title, no notes, no explanation."
+   ],
+   "verse": "رفع الصناديق",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "growing",
+     "met": false,
+     "detail": "2"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "رفع الصناديق",
+     "tidy": "رفع الصناديق",
+     "ms": 343,
+     "tokens": 6,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1026,
+   "roundIndex": 0,
+   "formId": "epistrophe",
+   "difficulty": "master",
+   "card": "Cassius",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Cassius in a duel of verses: theatrical, sharp, in character. Your line in the play: \"The fault, dear Brutus, is not in our stars, but in ourselves.\" You write short verse and nothing else.",
+    "Form: Epistrophe. Three lines that all end on the same word.\nWrite exactly 3 lines.\nYour flourish: Call on a character by name.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Arabic. No title, no notes, no explanation."
+   ],
+   "verse": "النوايا: القرآن، يا نبوة\nالتأويل: التأكيد على الجودة\nالفعل: تَحِقُل",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-ending",
+     "met": false,
+     "detail": "نبوة · الجودة · تحقل"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "النوايا: القرآن، يا نبوة\n\nالتأويل: التأكيد على الجودة\n\nالفعل: تَحِقُل",
+     "tidy": "النوايا: القرآن، يا نبوة\nالتأويل: التأكيد على الجودة\nالفعل: تَحِقُل",
+     "ms": 1162,
+     "tokens": 40,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "الفق، حكايةَ الشجر\n\nتُطيل الظل فيها الأسماء\n\nتُعيش فيه العروض الصامتة",
+     "tidy": "الفق، حكايةَ الشجر\nتُطيل الظل فيها الأسماء\nتُعيش فيه العروض الصامتة",
+     "ms": 1436,
+     "tokens": 36,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "الفَعْمُ إِنّني مَحبتُ جَوِدًا",
+     "tidy": "الفَعْمُ إِنّني مَحبتُ جَوِدًا",
+     "ms": 1031,
+     "tokens": 23,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1026,
+   "roundIndex": 1,
+   "formId": "quatrain-abab",
+   "difficulty": "apprentice",
+   "card": "Banquo",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "أَلاَ هُبِّي بِصَحْنِكِ فَاصْبَحِيْنَا\nوَلاَ تُبْقِي خُمُوْرَ الأَنْدَرِيْنَا",
+   "prompt": [
+    "You are Banquo in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Thou shalt get kings, though thou be none.\" You write short verse and nothing else.",
+    "Form: Crossed Quatrain. Four lines: line 1 rhymes with 3, line 2 with 4.\nWrite exactly 4 lines.\nYour flourish: Repeat one strong word three times.\nYour challenger last said:\nأَلاَ هُبِّي بِصَحْنِكِ فَاصْبَحِيْنَا\nوَلاَ تُبْقِي خُمُوْرَ الأَنْدَرِيْنَا\nAnswer them.\nWrite only the verse, in Arabic. No title, no notes, no explanation."
+   ],
+   "verse": "الفورة قلب سماً",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/4"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "rhyme-2-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "الفورة قلب سماً",
+     "tidy": "الفورة قلب سماً",
+     "ms": 412,
+     "tokens": 8,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1026,
+   "roundIndex": 2,
+   "formId": "crescendo",
+   "difficulty": "player",
+   "card": "Odysseus",
+   "acrostic": null,
+   "relicWords": [
+    "خاتم",
+    "عهد",
+    "ليل",
+    "منفى",
+    "قبلة"
+   ],
+   "answering": "أَلاَ هُبِّي بِصَحْنِكِ فَاصْبَحِيْنَا\nوَلاَ تُبْقِي خُمُوْرَ الأَنْدَرِيْنَا",
+   "prompt": [
+    "You are Odysseus in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Tell me, O Muse, of the man of many ways, who wandered far.\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Use two words of 7 letters or more.\nWork in at least two of these words: خاتم, عهد, ليل, منفى, قبلة.\nYour challenger last said:\nأَلاَ هُبِّي بِصَحْنِكِ فَاصْبَحِيْنَا\nوَلاَ تُبْقِي خُمُوْرَ الأَنْدَرِيْنَا\nAnswer them.\nWrite only the verse, in Arabic. No title, no notes, no explanation."
+   ],
+   "verse": "خاتم عهد منفى",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "growing",
+     "met": false,
+     "detail": "3"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "خاتم عهد منفى",
+     "tidy": "خاتم عهد منفى",
+     "ms": 851,
+     "tokens": 8,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    },
+    {
+     "raw": "الخاتم عهد منفى",
+     "tidy": "الخاتم عهد منفى",
+     "ms": 534,
+     "tokens": 9,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1027,
+   "roundIndex": 0,
+   "formId": "crescendo",
+   "difficulty": "master",
+   "card": "Viola",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Viola in a duel of verses: theatrical, sharp, in character. Your line in the play: \"I am not what I am.\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Keep every line to 5 words or fewer.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Arabic. No title, no notes, no explanation."
+   ],
+   "verse": "الرَيّٗة يا عَلَى وُجوهِ\nكَما دُخَلنا نَطقًا في كتابٍ مُحْدَمٍ",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 14,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/3"
+    },
+    {
+     "id": "growing",
+     "met": true,
+     "detail": "4 < 6"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 14,
+   "drafts": [
+    {
+     "raw": "الرَيّٗة يا عَلَى وُجوهِ\n\nكَما دُخَلنا نَطقًا في كتابٍ مُحْدَمٍ",
+     "tidy": "الرَيّٗة يا عَلَى وُجوهِ\nكَما دُخَلنا نَطقًا في كتابٍ مُحْدَمٍ",
+     "ms": 1411,
+     "tokens": 45,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 14,
+     "craft": 14
+    },
+    {
+     "raw": "تذكرة دقة",
+     "tidy": "تذكرة دقة",
+     "ms": 262,
+     "tokens": 6,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "النفس لا تعظّم، فإنها تختبر\n\nكيف تُضيع الظلال، الحقيقة الوحيدة في الكون",
+     "tidy": "النفس لا تعظّم، فإنها تختبر\nكيف تُضيع الظلال، الحقيقة الوحيدة في الكون",
+     "ms": 1179,
+     "tokens": 35,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 14,
+     "craft": 14
+    }
+   ]
+  },
+  {
+   "seed": 1027,
+   "roundIndex": 1,
+   "formId": "quatrain-aabb",
+   "difficulty": "player",
+   "card": "Miranda",
+   "acrostic": null,
+   "relicWords": [
+    "دموع",
+    "حقيقة",
+    "ابنة",
+    "لا شيء",
+    "قلب"
+   ],
+   "answering": "عفتِ الديارُ محلُّها فمُقامُهَا\nبمنًى تأبَّدَ غَوْلُها فَرِجَامُهَا",
+   "prompt": [
+    "You are Miranda in a duel of verses: theatrical, sharp, in character. Your line in the play: \"O brave new world, that has such people in it!\" You write short verse and nothing else.",
+    "Form: Paired Quatrain. Four lines: the first two rhyme, and the last two rhyme.\nWrite exactly 4 lines.\nYour flourish: Make your last line your longest.\nWork in at least two of these words: دموع, حقيقة, ابنة, لا شيء, قلب.\nYour challenger last said:\nعفتِ الديارُ محلُّها فمُقامُهَا\nبمنًى تأبَّدَ غَوْلُها فَرِجَامُهَا\nAnswer them.\nWrite only the verse, in Arabic. No title, no notes, no explanation."
+   ],
+   "verse": "الله يا عبوية، أرضنا لديهم مثل القلب\nقالتأيب قلب",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 7,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/4"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": true,
+     "detail": "القلب / قلب"
+    },
+    {
+     "id": "rhyme-3-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 7,
+   "drafts": [
+    {
+     "raw": "الله يا عبوية، أرضنا لديهم مثل القلب\n\nقالتأيب قلب",
+     "tidy": "الله يا عبوية، أرضنا لديهم مثل القلب\nقالتأيب قلب",
+     "ms": 1157,
+     "tokens": 24,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 2,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 7,
+     "craft": 7
+    },
+    {
+     "raw": "قبل الشمس تظهر أول كلمة",
+     "tidy": "قبل الشمس تظهر أول كلمة",
+     "ms": 225,
+     "tokens": 12,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1027,
+   "roundIndex": 2,
+   "formId": "epistrophe",
+   "difficulty": "apprentice",
+   "card": "Elizabeth Barrett Browning",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "عفتِ الديارُ محلُّها فمُقامُهَا\nبمنًى تأبَّدَ غَوْلُها فَرِجَامُهَا",
+   "prompt": [
+    "You are Elizabeth Barrett Browning in a duel of verses: theatrical, sharp, in character. Your line in the play: \"How do I love thee? Let me count the ways.\" You write short verse and nothing else.",
+    "Form: Epistrophe. Three lines that all end on the same word.\nWrite exactly 3 lines.\nYour flourish: Give every line the same number of words.\nYour challenger last said:\nعفتِ الديارُ محلُّها فمُقامُهَا\nبمنًى تأبَّدَ غَوْلُها فَرِجَامُهَا\nAnswer them.\nWrite only the verse, in Arabic. No title, no notes, no explanation."
+   ],
+   "verse": "الفخرة تنتقل بين الكتيلين،\nوالله يا عبد الله، لا يناسبه كنز،\nالحب يسلك الطريق العاشق، فرج يغذي القلب.",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-ending",
+     "met": false,
+     "detail": "الكتيلين · كنز · القلب"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "الفخرة تنتقل بين الكتيلين،  \nوالله يا عبد الله، لا يناسبه كنز،  \nالحب يسلك الطريق العاشق، فرج يغذي القلب.",
+     "tidy": "الفخرة تنتقل بين الكتيلين،\nوالله يا عبد الله، لا يناسبه كنز،\nالحب يسلك الطريق العاشق، فرج يغذي القلب.",
+     "ms": 1271,
+     "tokens": 50,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1028,
+   "roundIndex": 1,
+   "formId": "anaphora",
+   "difficulty": "apprentice",
+   "card": "Lady Capulet",
+   "acrostic": null,
+   "relicWords": [
+    "خاتم",
+    "عهد",
+    "ليل",
+    "منفى",
+    "قبلة"
+   ],
+   "answering": "أصالةُ الرأي صانتْنِي عن الخَطَلِ\nوحِليةُ الفضلِ زانتني لدَى العَطَلِ",
+   "prompt": [
+    "You are Lady Capulet in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Marry, that marry is the very theme I came to talk of.\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same word.\nWrite exactly 3 lines.\nYour flourish: Cry out: end a line with an exclamation mark.\nWork in at least two of these words: خاتم, عهد, ليل, منفى, قبلة.\nYour challenger last said:\nأصالةُ الرأي صانتْنِي عن الخَطَلِ\nوحِليةُ الفضلِ زانتني لدَى العَطَلِ\nAnswer them.\nWrite only the verse, in Arabic. No title, no notes, no explanation."
+   ],
+   "verse": "القبلة تغلف، القطعة جزءاً",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "same-opening",
+     "met": false,
+     "detail": "القبلة"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "القبلة تغلف، القطعة جزءاً",
+     "tidy": "القبلة تغلف، القطعة جزءاً",
+     "ms": 763,
+     "tokens": 16,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1028,
+   "roundIndex": 2,
+   "formId": "crescendo",
+   "difficulty": "apprentice",
+   "card": "Romeo",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "أصالةُ الرأي صانتْنِي عن الخَطَلِ\nوحِليةُ الفضلِ زانتني لدَى العَطَلِ",
+   "prompt": [
+    "You are Romeo in a duel of verses: theatrical, sharp, in character. Your line in the play: \"But soft, what light through yonder window breaks?\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Rhyme two words inside a single line.\nYour challenger last said:\nأصالةُ الرأي صانتْنِي عن الخَطَلِ\nوحِليةُ الفضلِ زانتني لدَى العَطَلِ\nAnswer them.\nWrite only the verse, in Arabic. No title, no notes, no explanation."
+   ],
+   "verse": "الرهام، يا صاحتي، ما لبما\nزانتني، رجبي كلي",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/3"
+    },
+    {
+     "id": "growing",
+     "met": false,
+     "detail": "5 < 3"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "الرهام، يا صاحتي، ما لبما\n\nزانتني، رجبي كلي",
+     "tidy": "الرهام، يا صاحتي، ما لبما\nزانتني، رجبي كلي",
+     "ms": 1196,
+     "tokens": 26,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1029,
+   "roundIndex": 0,
+   "formId": "epistrophe",
+   "difficulty": "player",
+   "card": "Achilles",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Achilles in a duel of verses: theatrical, sharp, in character. Your line in the play: \"I would rather live a short life of glory than a long life forgotten.\" You write short verse and nothing else.",
+    "Form: Epistrophe. Three lines that all end on the same word.\nWrite exactly 3 lines.\nYour flourish: Use two words of 7 letters or more.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Arabic. No title, no notes, no explanation."
+   ],
+   "verse": "السفن تغادر الشاطئ\nالحجرة مأخوعة\nالقلم يدخل",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-ending",
+     "met": false,
+     "detail": "الشاطي · ماخوعة · يدخل"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "النهضة في اللقاء",
+     "tidy": "النهضة في اللقاء",
+     "ms": 392,
+     "tokens": 9,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "السفن تغادر الشاطئ\n\nالحجرة مأخوعة\n\nالقلم يدخل",
+     "tidy": "السفن تغادر الشاطئ\nالحجرة مأخوعة\nالقلم يدخل",
+     "ms": 1098,
+     "tokens": 25,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1029,
+   "roundIndex": 1,
+   "formId": "quatrain-aabb",
+   "difficulty": "master",
+   "card": "Lady Macbeth",
+   "acrostic": null,
+   "relicWords": [
+    "تاج",
+    "عرش",
+    "طموح",
+    "ساحرة",
+    "ملك"
+   ],
+   "answering": "أَقِيمُوا بَنِي أُمِّي صُدُورَ مَطِيِّكُمْ\nفَإنِّي إلى قَوْمٍ سِوَاكُمْ لَأَمْيَلُ",
+   "prompt": [
+    "You are Lady Macbeth in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Come, you spirits that tend on mortal thoughts, unsex me here.\" You write short verse and nothing else.",
+    "Form: Paired Quatrain. Four lines: the first two rhyme, and the last two rhyme.\nWrite exactly 4 lines.\nYour flourish: Repeat one strong word three times.\nWork in at least two of these words: تاج, عرش, طموح, ساحرة, ملك.\nYour challenger last said:\nأَقِيمُوا بَنِي أُمِّي صُدُورَ مَطِيِّكُمْ\nفَإنِّي إلى قَوْمٍ سِوَاكُمْ لَأَمْيَلُ\nAnswer them.\nWrite only the verse, in Arabic. No title, no notes, no explanation."
+   ],
+   "verse": "تاج عرش طموح\nملُ كُمْمِلَ",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/4"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "طموح / كُمْمِلَ"
+    },
+    {
+     "id": "rhyme-3-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "تاج   عرش   طموح  \nملُ كُمْمِلَ",
+     "tidy": "تاج عرش طموح\nملُ كُمْمِلَ",
+     "ms": 993,
+     "tokens": 21,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 2,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    },
+    {
+     "raw": "تاجاًعريسملكلوم",
+     "tidy": "تاجاًعريسملكلوم",
+     "ms": 461,
+     "tokens": 10,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    },
+    {
+     "raw": "تاجط\n\nملكساحرةاملي",
+     "tidy": "تاجط\nملكساحرةاملي",
+     "ms": 447,
+     "tokens": 10,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 116,
+     "rawLines": 2,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1030,
+   "roundIndex": 1,
+   "formId": "anaphora",
+   "difficulty": "player",
+   "card": "Juliet",
+   "acrostic": null,
+   "relicWords": [
+    "كتاب",
+    "عاصفة",
+    "سحر",
+    "صفحة",
+    "غرق"
+   ],
+   "answering": "أرَاكَ عَصِيَّ الدَّمْعِ شِيمَتُكَ الصَّبْرُ\nأمَا لِلْهَوَى نَهْيٌ عَلَيْكَ وَلا أمْر",
+   "prompt": [
+    "You are Juliet in a duel of verses: theatrical, sharp, in character. Your line in the play: \"What's in a name? That which we call a rose...\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same word.\nWrite exactly 3 lines.\nYour flourish: Cry out: end a line with an exclamation mark.\nWork in at least two of these words: كتاب, عاصفة, سحر, صفحة, غرق.\nYour challenger last said:\nأرَاكَ عَصِيَّ الدَّمْعِ شِيمَتُكَ الصَّبْرُ\nأمَا لِلْهَوَى نَهْيٌ عَلَيْكَ وَلا أمْر\nAnswer them.\nWrite only the verse, in Arabic. No title, no notes, no explanation."
+   ],
+   "verse": "الغرق تعلن",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "same-opening",
+     "met": false,
+     "detail": "الغرق"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "الغرق تعلن",
+     "tidy": "الغرق تعلن",
+     "ms": 350,
+     "tokens": 6,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "الغرق يغرب، اللحائ يصبر، الربيع ينبق",
+     "tidy": "الغرق يغرب، اللحائ يصبر، الربيع ينبق",
+     "ms": 1324,
+     "tokens": 19,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1031,
+   "roundIndex": 2,
+   "formId": "quatrain-aabb",
+   "difficulty": "apprentice",
+   "card": "Aphrodite",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "إذا الشّعْبُ يَوْمَاً أرَادَ الْحَيَاةَ\nفَلا بُدَّ أنْ يَسْتَجِيبَ القَدَر",
+   "prompt": [
+    "You are Aphrodite in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Even the gods cannot resist the power of love.\" You write short verse and nothing else.",
+    "Form: Paired Quatrain. Four lines: the first two rhyme, and the last two rhyme.\nWrite exactly 4 lines.\nYour flourish: Use two words of 7 letters or more.\nYour challenger last said:\nإذا الشّعْبُ يَوْمَاً أرَادَ الْحَيَاةَ\nفَلا بُدَّ أنْ يَسْتَجِيبَ القَدَر\nAnswer them.\nWrite only the verse, in Arabic. No title, no notes, no explanation."
+   ],
+   "verse": "الزهور تنبت في الأرض\nلا يجدون السوق\nلما تجلسين تحت النصر",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "3/4"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "الأرض / السوق"
+    },
+    {
+     "id": "rhyme-3-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "الزهور تنبت في الأرض\n\nلا يجدون السوق\n\nلما تجلسين تحت النصر",
+     "tidy": "الزهور تنبت في الأرض\nلا يجدون السوق\nلما تجلسين تحت النصر",
+     "ms": 1413,
+     "tokens": 25,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 3,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1032,
+   "roundIndex": 0,
+   "formId": "epistrophe",
+   "difficulty": "master",
+   "card": "Prince Escalus",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Prince Escalus in a duel of verses: theatrical, sharp, in character. Your line in the play: \"If ever you disturb our streets again, your lives shall pay the forfeit of the peace.\" You write short verse and nothing else.",
+    "Form: Epistrophe. Three lines that all end on the same word.\nWrite exactly 3 lines.\nYour flourish: Turn a word of 4 letters or more from your opponent's last verse back on them.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Arabic. No title, no notes, no explanation."
+   ],
+   "verse": "الهجرة تغلب عليك، تُحمل إلى الأمام",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "same-ending",
+     "met": false,
+     "detail": "الامام"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "الهجرة تغلب عليك، تُحمل إلى الأمام",
+     "tidy": "الهجرة تغلب عليك، تُحمل إلى الأمام",
+     "ms": 887,
+     "tokens": 17,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "الله يجعلنا نستريح",
+     "tidy": "الله يجعلنا نستريح",
+     "ms": 613,
+     "tokens": 10,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "الله يعافيك يا منى",
+     "tidy": "الله يعافيك يا منى",
+     "ms": 496,
+     "tokens": 9,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1033,
+   "roundIndex": 0,
+   "formId": "anaphora",
+   "difficulty": "master",
+   "card": "Lord Montague",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Lord Montague in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Many a morning hath he there been seen, with tears augmenting the fresh morning dew.\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same word.\nWrite exactly 3 lines.\nYour flourish: Rhyme two words inside a single line.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Arabic. No title, no notes, no explanation."
+   ],
+   "verse": "َيُغمِّجنَاً يَخْفَّنَاًَ،\nكَأَنَّهماَ قذائفٌ يَنتَبَتا,\nفَالضَباب٥٠َ",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-opening",
+     "met": false,
+     "detail": "يغمجنا · كانهما · فالضباب"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 9,
+   "drafts": [
+    {
+     "raw": "الرَحبُ يَنظرٌ إلى النَعيمة",
+     "tidy": "الرَحبُ يَنظرٌ إلى النَعيمة",
+     "ms": 803,
+     "tokens": 17,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "الرَمِّجُ نَهَضًا",
+     "tidy": "الرَمِّجُ نَهَضًا",
+     "ms": 690,
+     "tokens": 14,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "َيُغمِّجنَاً يَخْفَّنَاًَ،  \nكَأَنَّهماَ قذائفٌ يَنتَبَتا,  \nفَالضَباب٥٠َ",
+     "tidy": "َيُغمِّجنَاً يَخْفَّنَاًَ،\nكَأَنَّهماَ قذائفٌ يَنتَبَتا,\nفَالضَباب٥٠َ",
+     "ms": 1337,
+     "tokens": 64,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 9
+    }
+   ]
+  },
+  {
+   "seed": 1035,
+   "roundIndex": 1,
+   "formId": "epistrophe",
+   "difficulty": "apprentice",
+   "card": "Friar Lawrence",
+   "acrostic": null,
+   "relicWords": [
+    "قناع",
+    "حلم",
+    "مهرج",
+    "مسرحية",
+    "قمر"
+   ],
+   "answering": "وَتَعْظُمُ في عَينِ الصّغيرِ صغارُها\nوَتَصْغُرُ في عَين العَظيمِ العَظائِمُ",
+   "prompt": [
+    "You are Friar Lawrence in a duel of verses: theatrical, sharp, in character. Your line in the play: \"These violent delights have violent ends.\" You write short verse and nothing else.",
+    "Form: Epistrophe. Three lines that all end on the same word.\nWrite exactly 3 lines.\nYour flourish: Turn a word of 4 letters or more from your opponent's last verse back on them.\nWork in at least two of these words: قناع, حلم, مهرج, مسرحية, قمر.\nYour challenger last said:\nوَتَعْظُمُ في عَينِ الصّغيرِ صغارُها\nوَتَصْغُرُ في عَين العَظيمِ العَظائِمُ\nAnswer them.\nWrite only the verse, in Arabic. No title, no notes, no explanation."
+   ],
+   "verse": "قَنْعُ أَيسْبَطٍ ناقِضْ\nالإجابة: بَيْنِمُهُ خَلَفَة",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/3"
+    },
+    {
+     "id": "same-ending",
+     "met": false,
+     "detail": "ناقض · خلفة"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "قَنْعُ أَيسْبَطٍ ناقِضْ\n\nالإجابة: بَيْنِمُهُ خَلَفَة",
+     "tidy": "قَنْعُ أَيسْبَطٍ ناقِضْ\nالإجابة: بَيْنِمُهُ خَلَفَة",
+     "ms": 1424,
+     "tokens": 41,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1036,
+   "roundIndex": 2,
+   "formId": "anaphora",
+   "difficulty": "apprentice",
+   "card": "Friar Lawrence",
+   "acrostic": null,
+   "relicWords": [
+    "دموع",
+    "حقيقة",
+    "ابنة",
+    "لا شيء",
+    "قلب"
+   ],
+   "answering": "وَا حَرَّ قَلباهُ مِمَّن قَلْبُهُ شَبِمُ\nومَن بِجِسمي وَحالي عِنْدَهُ سَقَمُ",
+   "prompt": [
+    "You are Friar Lawrence in a duel of verses: theatrical, sharp, in character. Your line in the play: \"These violent delights have violent ends.\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same word.\nWrite exactly 3 lines.\nYour flourish: Turn a word of 4 letters or more from your opponent's last verse back on them.\nWork in at least two of these words: دموع, حقيقة, ابنة, لا شيء, قلب.\nYour challenger last said:\nوَا حَرَّ قَلباهُ مِمَّن قَلْبُهُ شَبِمُ\nومَن بِجِسمي وَحالي عِنْدَهُ سَقَمُ\nAnswer them.\nWrite only the verse, in Arabic. No title, no notes, no explanation."
+   ],
+   "verse": "الله لا يزالما يخاف\nلا تكبدوا ألم",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/3"
+    },
+    {
+     "id": "same-opening",
+     "met": false,
+     "detail": "الله · لا"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "الله لا يزالما يخاف\n\nلا تكبدوا ألم",
+     "tidy": "الله لا يزالما يخاف\nلا تكبدوا ألم",
+     "ms": 222,
+     "tokens": 18,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  }
+ ],
+ "seconds": 141,
+ "setAside": {
+  "date": "2026-11-18T00:36:06.655Z",
+  "commit": "9cec28a2afc5a8142ed2b21c9aaae5b44fbb8de7",
+  "why": "80 of 80 plays cannot be re-scored with the code now; run the cell again (scripts/model-eval/run.mjs)",
+  "plays": [
+   "seed 1001 round 0: the prompt changed",
+   "seed 1001 round 1: the prompt changed",
+   "seed 1001 round 2: the prompt changed",
+   "seed 1002 round 0: the prompt changed",
+   "seed 1002 round 1: the prompt changed",
+   "seed 1002 round 2: the prompt changed",
+   "seed 1003 round 0: the prompt changed",
+   "seed 1003 round 1: the prompt changed",
+   "seed 1003 round 2: the prompt changed",
+   "seed 1004 round 0: the prompt changed",
+   "seed 1004 round 1: the prompt changed",
+   "seed 1004 round 2: the prompt changed",
+   "seed 1005 round 0: the prompt changed",
+   "seed 1005 round 1: the prompt changed",
+   "seed 1005 round 2: the prompt changed",
+   "seed 1006 round 0: the prompt changed",
+   "seed 1006 round 1: the prompt changed",
+   "seed 1006 round 2: the prompt changed",
+   "seed 1007 round 0: the prompt changed",
+   "seed 1007 round 1: the prompt changed",
+   "seed 1007 round 2: the prompt changed",
+   "seed 1008 round 0: the prompt changed",
+   "seed 1008 round 1: the prompt changed",
+   "seed 1008 round 2: the prompt changed",
+   "seed 1009 round 0: the prompt changed",
+   "seed 1009 round 1: the prompt changed",
+   "seed 1009 round 2: the prompt changed",
+   "seed 1010 round 0: the prompt changed",
+   "seed 1010 round 1: the prompt changed",
+   "seed 1010 round 2: the prompt changed",
+   "seed 1011 round 0: the prompt changed",
+   "seed 1011 round 1: the prompt changed",
+   "seed 1011 round 2: the prompt changed",
+   "seed 1012 round 0: the prompt changed",
+   "seed 1012 round 1: the prompt changed",
+   "seed 1012 round 2: the prompt changed",
+   "seed 1013 round 0: the prompt changed",
+   "seed 1013 round 1: the prompt changed",
+   "seed 1013 round 2: the prompt changed",
+   "seed 1014 round 0: the prompt changed",
+   "seed 1014 round 1: the prompt changed",
+   "seed 1014 round 2: the prompt changed",
+   "seed 1015 round 0: the prompt changed",
+   "seed 1015 round 2: the prompt changed",
+   "seed 1016 round 1: the prompt changed",
+   "seed 1016 round 2: the prompt changed",
+   "seed 1017 round 0: the prompt changed",
+   "seed 1017 round 1: the prompt changed",
+   "seed 1017 round 2: the prompt changed",
+   "seed 1018 round 0: the prompt changed",
+   "seed 1018 round 2: the prompt changed",
+   "seed 1019 round 0: the prompt changed",
+   "seed 1019 round 1: the prompt changed",
+   "seed 1019 round 2: the prompt changed",
+   "seed 1020 round 0: the prompt changed",
+   "seed 1020 round 1: the prompt changed",
+   "seed 1020 round 2: the prompt changed",
+   "seed 1021 round 1: the prompt changed",
+   "seed 1021 round 2: the prompt changed",
+   "seed 1022 round 2: the prompt changed",
+   "seed 1023 round 2: the prompt changed",
+   "seed 1024 round 1: the prompt changed",
+   "seed 1025 round 1: the prompt changed",
+   "seed 1025 round 2: the prompt changed",
+   "seed 1026 round 0: the prompt changed",
+   "seed 1026 round 1: the prompt changed",
+   "seed 1026 round 2: the prompt changed",
+   "seed 1027 round 0: the prompt changed",
+   "seed 1027 round 1: the prompt changed",
+   "seed 1027 round 2: the prompt changed",
+   "seed 1028 round 1: the prompt changed",
+   "seed 1028 round 2: the prompt changed",
+   "seed 1029 round 0: the prompt changed",
+   "seed 1029 round 1: the prompt changed",
+   "seed 1030 round 1: the prompt changed",
+   "seed 1031 round 2: the prompt changed",
+   "seed 1032 round 0: the prompt changed",
+   "seed 1033 round 0: the prompt changed",
+   "seed 1035 round 1: the prompt changed",
+   "seed 1036 round 2: the prompt changed"
+  ]
+ }
+}

@@ -1,0 +1,6810 @@
+{
+ "tier": "lite",
+ "lang": "id",
+ "task": "write",
+ "model": "LiquidAI/LFM2.5-350M-ONNX",
+ "dtype": "q4",
+ "judgeMethod": "grade",
+ "date": "2026-11-17T01:55:45.381Z",
+ "commit": "01f7ebf7a98acf87e7692a5467c5417174b11aca",
+ "transformers": "4.3.2",
+ "gpu": {
+  "vendor": "apple",
+  "architecture": "metal-3",
+  "device": "",
+  "description": ""
+ },
+ "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/159.0.8154.6 Safari/537.36",
+ "origin": "http://localhost:47731",
+ "forms": [
+  "couplet",
+  "quatrain-aabb",
+  "quatrain-abab",
+  "tercet",
+  "anaphora",
+  "acrostic",
+  "crescendo",
+  "epistrophe",
+  "haiku",
+  "heroic-couplet"
+ ],
+ "perForm": 10,
+ "plays": [
+  {
+   "seed": 1001,
+   "roundIndex": 0,
+   "formId": "epistrophe",
+   "difficulty": "apprentice",
+   "card": "Apollo",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Apollo in a duel of verses: theatrical, sharp, in character. Your line in the play: \"I am the god of song, of healing, and of the radiant sun.\" You write short verse and nothing else.",
+    "Form: Epistrophe. Three lines that all end on the same word.\nWrite exactly 3 lines.\nYour flourish: Use two words of 10 letters or more.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Indonesian: Tiga kita, penuhan\nFusos: Taunt bera kebih",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/3"
+    },
+    {
+     "id": "same-ending",
+     "met": false,
+     "detail": "penuhan · kebih"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Indonesian: Tiga kita, penuhan\n\nFusos: Taunt bera kebih",
+     "tidy": "Indonesian: Tiga kita, penuhan\nFusos: Taunt bera kebih",
+     "ms": 283,
+     "tokens": 24,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1001,
+   "roundIndex": 1,
+   "formId": "heroic-couplet",
+   "difficulty": "apprentice",
+   "card": "Ariel",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "Hai muda arif-budiman,\nhasilkan kemudi dengan pedoman,\nalat perahumu jua kerjakan,\nitulah jalan membetuli insan.",
+   "prompt": [
+    "You are Ariel in a duel of verses: theatrical, sharp, in character. Your line in the play: \"All hail, great master! Grave sir, hail!\" You write short verse and nothing else.",
+    "Form: Heroic Couplet. Two rhyming lines of about ten syllables each, as Shakespeare closed his sonnets.\nWrite exactly 2 lines.\nYour flourish: Make your last line your longest.\nYour challenger last said:\nHai muda arif-budiman,\nhasilkan kemudi dengan pedoman,\nalat perahumu jua kerjakan,\nitulah jalan membetuli insan.\nAnswer them.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Kalau makna arif-budiman, hasilkan kemudi dengan pedoman\njalak perahumu jua kerjakan,itulah jalan membetuli insan",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 12,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "2/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": true,
+     "detail": "pedoman / insan"
+    },
+    {
+     "id": "syllables-1",
+     "met": false,
+     "detail": "20/10"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "22/10"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 18,
+   "drafts": [
+    {
+     "raw": "Kalau makna arif-budiman, hasilkan kemudi dengan pedoman  \njalak perahumu jua kerjakan,itulah jalan membetuli insan",
+     "tidy": "Kalau makna arif-budiman, hasilkan kemudi dengan pedoman\njalak perahumu jua kerjakan,itulah jalan membetuli insan",
+     "ms": 466,
+     "tokens": 43,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 2,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 12,
+     "craft": 18
+    }
+   ]
+  },
+  {
+   "seed": 1001,
+   "roundIndex": 2,
+   "formId": "acrostic",
+   "difficulty": "apprentice",
+   "card": "Christina Rossetti",
+   "acrostic": "bulan",
+   "relicWords": [
+    "cincin",
+    "sumpah",
+    "malam",
+    "terbuang",
+    "ciuman"
+   ],
+   "answering": "Hai muda arif-budiman,\nhasilkan kemudi dengan pedoman,\nalat perahumu jua kerjakan,\nitulah jalan membetuli insan.",
+   "prompt": [
+    "You are Christina Rossetti in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Remember me when I am gone away, gone far away into the silent land.\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per letter: the first letters must spell BULAN.\nWrite exactly 5 lines.\nYour flourish: Give every line the same number of words.\nWork in at least two of these words: cincin, sumpah, malam, terbuang, ciuman.\nYour challenger last said:\nHai muda arif-budiman,\nhasilkan kemudi dengan pedoman,\nalat perahumu jua kerjakan,\nitulah jalan membetuli insan.\nAnswer them.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Cincin sumpah malam beri terbuang\nitulah jalan membetuli insan",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 5,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/5"
+    },
+    {
+     "id": "spells",
+     "met": false,
+     "detail": "CI"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "Cincin sumpah malam beri terbuang  \nitulah jalan membetuli insan",
+     "tidy": "Cincin sumpah malam beri terbuang\nitulah jalan membetuli insan",
+     "ms": 252,
+     "tokens": 23,
+     "temperature": 0.7,
+     "maxTokens": 138,
+     "rawLines": 2,
+     "expectedLines": 5,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1002,
+   "roundIndex": 0,
+   "formId": "acrostic",
+   "difficulty": "player",
+   "card": "Lady Macbeth",
+   "acrostic": "raja",
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Lady Macbeth in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Come, you spirits that tend on mortal thoughts, unsex me here.\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per letter: the first letters must spell RAJA.\nWrite exactly 4 lines.\nYour flourish: Repeat one strong word three times.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Raju untuk bermyakan\nRei untuk tujuk\nNaja untuk satu",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "3/4"
+    },
+    {
+     "id": "spells",
+     "met": false,
+     "detail": "RRN"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Raju untuk bermyakan\n\nRei untuk tujuk\n\nNaja untuk satu",
+     "tidy": "Raju untuk bermyakan\nRei untuk tujuk\nNaja untuk satu",
+     "ms": 279,
+     "tokens": 24,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 3,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Rajam makrut\n\nTua tua\n\nMakra",
+     "tidy": "Rajam makrut\nTua tua\nMakra",
+     "ms": 169,
+     "tokens": 15,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 3,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1002,
+   "roundIndex": 1,
+   "formId": "haiku",
+   "difficulty": "apprentice",
+   "card": "Puck",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "Berdiri aku di senja senyap\nCamar melayang menepis buih\nMelayah bakau mengurai puncak\nBerjulang datang ubur terkembang",
+   "prompt": [
+    "You are Puck in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Lord, what fools these mortals be!\" You write short verse and nothing else.",
+    "Form: Haiku. Three lines of 5, 7 and 5 syllables.\nWrite exactly 3 lines.\nYour flourish: Start three words in one line with the same letter.\nYour challenger last said:\nBerdiri aku di senja senyap\nCamar melayang menepis buih\nMelayah bakau mengurai puncak\nBerjulang datang ubur terkembang\nAnswer them.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Berdiruai kean\nMenepisbuih",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/3"
+    },
+    {
+     "id": "syllables-1",
+     "met": false,
+     "detail": "6/5"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "5/7"
+    },
+    {
+     "id": "syllables-3",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Berdiruai kean\n\nMenepisbuih",
+     "tidy": "Berdiruai kean\nMenepisbuih",
+     "ms": 172,
+     "tokens": 14,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1002,
+   "roundIndex": 2,
+   "formId": "couplet",
+   "difficulty": "apprentice",
+   "card": "Juliet",
+   "acrostic": null,
+   "relicWords": [
+    "topeng",
+    "mimpi",
+    "badut",
+    "sandiwara",
+    "bulan"
+   ],
+   "answering": "Berdiri aku di senja senyap\nCamar melayang menepis buih\nMelayah bakau mengurai puncak\nBerjulang datang ubur terkembang",
+   "prompt": [
+    "You are Juliet in a duel of verses: theatrical, sharp, in character. Your line in the play: \"What's in a name? That which we call a rose...\" You write short verse and nothing else.",
+    "Form: Couplet. Two lines that rhyme.\nWrite exactly 2 lines.\nYour flourish: Cry out: end a line with an exclamation mark.\nWork in at least two of these words: topeng, mimpi, badut, sandiwara, bulan.\nYour challenger last said:\nBerdiri aku di senja senyap\nCamar melayang menepis buih\nMelayah bakau mengurai puncak\nBerjulang datang ubur terkembang\nAnswer them.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Sandiwara buurterker\nBulan oka menguru",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "2/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "buurterker / menguru"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 12,
+   "drafts": [
+    {
+     "raw": "Sandiwara buurterker\n\nBulan oka menguru",
+     "tidy": "Sandiwara buurterker\nBulan oka menguru",
+     "ms": 202,
+     "tokens": 15,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 2,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 12
+    }
+   ]
+  },
+  {
+   "seed": 1003,
+   "roundIndex": 0,
+   "formId": "couplet",
+   "difficulty": "player",
+   "card": "Hermes",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Hermes in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Swift as thought, I carry the words of gods to mortal ears.\" You write short verse and nothing else.",
+    "Form: Couplet. Two lines that rhyme.\nWrite exactly 2 lines.\nYour flourish: Use two words of 10 letters or more.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Salat yang cedi, cara mengirungan.",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Salat yang cedi, cara mengirungan.",
+     "tidy": "Salat yang cedi, cara mengirungan.",
+     "ms": 184,
+     "tokens": 14,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Salamat, temperisinan.",
+     "tidy": "Salamat, temperisinan.",
+     "ms": 151,
+     "tokens": 9,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1003,
+   "roundIndex": 1,
+   "formId": "acrostic",
+   "difficulty": "master",
+   "card": "Prospero",
+   "acrostic": "api",
+   "relicWords": [
+    "tengkorak",
+    "lelucon",
+    "kubur",
+    "tawa",
+    "debu"
+   ],
+   "answering": "Angin pulang menyejuk bumi\nMenepuk teluk mengempas emas\nLari ke gunung memuncak sunyi\nBerayun-ayun di atas alas.",
+   "prompt": [
+    "You are Prospero in a duel of verses: theatrical, sharp, in character. Your line in the play: \"We are such stuff as dreams are made on.\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per letter: the first letters must spell API.\nWrite exactly 3 lines.\nYour flourish: Make your last line your longest.\nWork in at least two of these words: tengkorak, lelucon, kubur, tawa, debu.\nYour challenger last said:\nAngin pulang menyejuk bumi\nMenepuk teluk mengempas emas\nLari ke gunung memuncak sunyi\nBerayun-ayun di atas alas.\nAnswer them.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Tawa debu",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "spells",
+     "met": false,
+     "detail": "T"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "Tawa debu",
+     "tidy": "Tawa debu",
+     "ms": 70,
+     "tokens": 4,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    },
+    {
+     "raw": "Tawa debu",
+     "tidy": "Tawa debu",
+     "ms": 101,
+     "tokens": 4,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    },
+    {
+     "raw": "Tawa debu",
+     "tidy": "Tawa debu",
+     "ms": 79,
+     "tokens": 4,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1003,
+   "roundIndex": 2,
+   "formId": "haiku",
+   "difficulty": "player",
+   "card": "Malvolio",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "Angin pulang menyejuk bumi\nMenepuk teluk mengempas emas\nLari ke gunung memuncak sunyi\nBerayun-ayun di atas alas.",
+   "prompt": [
+    "You are Malvolio in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Some are born great, some achieve greatness, and some have greatness thrust upon them.\" You write short verse and nothing else.",
+    "Form: Haiku. Three lines of 5, 7 and 5 syllables.\nWrite exactly 3 lines.\nYour flourish: Keep every line to 6 words or fewer.\nYour challenger last said:\nAngin pulang menyejuk bumi\nMenepuk teluk mengempas emas\nLari ke gunung memuncak sunyi\nBerayun-ayun di atas alas.\nAnswer them.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Lari memecaka sunyini",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "syllables-1",
+     "met": false,
+     "detail": "9/5"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "syllables-3",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Lari memecaka sunyini",
+     "tidy": "Lari memecaka sunyini",
+     "ms": 118,
+     "tokens": 8,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Lari munya",
+     "tidy": "Lari munya",
+     "ms": 84,
+     "tokens": 4,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1004,
+   "roundIndex": 0,
+   "formId": "acrostic",
+   "difficulty": "apprentice",
+   "card": "Brutus",
+   "acrostic": "raja",
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Brutus in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Not that I loved Caesar less, but that I loved Rome more.\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per letter: the first letters must spell RAJA.\nWrite exactly 4 lines.\nYour flourish: Call on a character by name.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Vertikai ada raja",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/4"
+    },
+    {
+     "id": "spells",
+     "met": false,
+     "detail": "V"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Vertikai ada raja",
+     "tidy": "Vertikai ada raja",
+     "ms": 132,
+     "tokens": 6,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1004,
+   "roundIndex": 1,
+   "formId": "crescendo",
+   "difficulty": "apprentice",
+   "card": "Prospero",
+   "acrostic": null,
+   "relicWords": [
+    "belati",
+    "darah",
+    "tidur",
+    "bayangan",
+    "tangan"
+   ],
+   "answering": "Habis kikis\nsegala cintaku hilang terbang\npulang kembali aku padamu",
+   "prompt": [
+    "You are Prospero in a duel of verses: theatrical, sharp, in character. Your line in the play: \"We are such stuff as dreams are made on.\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Make your last line your longest.\nWork in at least two of these words: belati, darah, tidur, bayangan, tangan.\nYour challenger last said:\nHabis kikis\nsegala cintaku hilang terbang\npulang kembali aku padamu\nAnswer them.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Belati, darah, tidur\npulang kembali aku padamu",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 14,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/3"
+    },
+    {
+     "id": "growing",
+     "met": true,
+     "detail": "3 < 4"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 30,
+   "drafts": [
+    {
+     "raw": "Belati, darah, tidur\n\npulang kembali aku padamu",
+     "tidy": "Belati, darah, tidur\npulang kembali aku padamu",
+     "ms": 247,
+     "tokens": 20,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 14,
+     "craft": 30
+    }
+   ]
+  },
+  {
+   "seed": 1004,
+   "roundIndex": 2,
+   "formId": "heroic-couplet",
+   "difficulty": "player",
+   "card": "Banquo",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "Habis kikis\nsegala cintaku hilang terbang\npulang kembali aku padamu",
+   "prompt": [
+    "You are Banquo in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Thou shalt get kings, though thou be none.\" You write short verse and nothing else.",
+    "Form: Heroic Couplet. Two rhyming lines of about ten syllables each, as Shakespeare closed his sonnets.\nWrite exactly 2 lines.\nYour flourish: Repeat one strong word three times.\nYour challenger last said:\nHabis kikis\nsegala cintaku hilang terbang\npulang kembali aku padamu\nAnswer them.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Pulang ada\nPasak",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 4,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "2/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "ada / pasak"
+    },
+    {
+     "id": "syllables-1",
+     "met": false,
+     "detail": "4/10"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "2/10"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 4,
+   "drafts": [
+    {
+     "raw": "Pulang kembali aku",
+     "tidy": "Pulang kembali aku",
+     "ms": 161,
+     "tokens": 8,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Pulang ada\n\nPasak",
+     "tidy": "Pulang ada\nPasak",
+     "ms": 108,
+     "tokens": 8,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 72,
+     "rawLines": 2,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 4,
+     "craft": 4
+    }
+   ]
+  },
+  {
+   "seed": 1005,
+   "roundIndex": 0,
+   "formId": "quatrain-abab",
+   "difficulty": "apprentice",
+   "card": "Puck",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Puck in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Lord, what fools these mortals be!\" You write short verse and nothing else.",
+    "Form: Crossed Quatrain. Four lines: line 1 rhymes with 3, line 2 with 4.\nWrite exactly 4 lines.\nYour flourish: Start three words in one line with the same letter.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Start mita",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/4"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "rhyme-2-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Start mita",
+     "tidy": "Start mita",
+     "ms": 100,
+     "tokens": 3,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1005,
+   "roundIndex": 1,
+   "formId": "acrostic",
+   "difficulty": "player",
+   "card": "Elizabeth Barrett Browning",
+   "acrostic": "nasib",
+   "relicWords": null,
+   "answering": "Hanyut aku, kekasihku!\nHanyut aku!\nulurkan tanganmu, tolong aku.",
+   "prompt": [
+    "You are Elizabeth Barrett Browning in a duel of verses: theatrical, sharp, in character. Your line in the play: \"How do I love thee? Let me count the ways.\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per letter: the first letters must spell NASIB.\nWrite exactly 5 lines.\nYour flourish: Give every line the same number of words.\nYour challenger last said:\nHanyut aku, kekasihku!\nHanyut aku!\nulurkan tanganmu, tolong aku.\nAnswer them.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "NASIB akukan",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 5,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/5"
+    },
+    {
+     "id": "spells",
+     "met": false,
+     "detail": "N"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "NASIB akukan",
+     "tidy": "NASIB akukan",
+     "ms": 97,
+     "tokens": 6,
+     "temperature": 0.7,
+     "maxTokens": 138,
+     "rawLines": 1,
+     "expectedLines": 5,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "NASIB untuk mana lain-an, kekasihku\n\nulurkan tanganmu tolongai",
+     "tidy": "NASIB untuk mana lain-an, kekasihku\nulurkan tanganmu tolongai",
+     "ms": 287,
+     "tokens": 26,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 138,
+     "rawLines": 2,
+     "expectedLines": 5,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1005,
+   "roundIndex": 2,
+   "formId": "haiku",
+   "difficulty": "master",
+   "card": "Cassius",
+   "acrostic": null,
+   "relicWords": [
+    "air mata",
+    "kebenaran",
+    "putri",
+    "hampa",
+    "hati"
+   ],
+   "answering": "Hanyut aku, kekasihku!\nHanyut aku!\nulurkan tanganmu, tolong aku.",
+   "prompt": [
+    "You are Cassius in a duel of verses: theatrical, sharp, in character. Your line in the play: \"The fault, dear Brutus, is not in our stars, but in ourselves.\" You write short verse and nothing else.",
+    "Form: Haiku. Three lines of 5, 7 and 5 syllables.\nWrite exactly 3 lines.\nYour flourish: Call on a character by name.\nWork in at least two of these words: air mata, kebenaran, putri, hampa, hati.\nYour challenger last said:\nHanyut aku, kekasihku!\nHanyut aku!\nulurkan tanganmu, tolong aku.\nAnswer them.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Hama hampa ulurkan",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "syllables-1",
+     "met": false,
+     "detail": "7/5"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "syllables-3",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Hama hampa ulurkan",
+     "tidy": "Hama hampa ulurkan",
+     "ms": 112,
+     "tokens": 7,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Hamta",
+     "tidy": "Hamta",
+     "ms": 77,
+     "tokens": 3,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Hati hati kakapana",
+     "tidy": "Hati hati kakapana",
+     "ms": 124,
+     "tokens": 8,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1006,
+   "roundIndex": 0,
+   "formId": "quatrain-abab",
+   "difficulty": "player",
+   "card": "Prospero",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Prospero in a duel of verses: theatrical, sharp, in character. Your line in the play: \"We are such stuff as dreams are made on.\" You write short verse and nothing else.",
+    "Form: Crossed Quatrain. Four lines: line 1 rhymes with 3, line 2 with 4.\nWrite exactly 4 lines.\nYour flourish: Make your last line your longest.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Penutungkan penukan",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/4"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "rhyme-2-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Penutungkan penukan",
+     "tidy": "Penutungkan penukan",
+     "ms": 115,
+     "tokens": 7,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Peniknya penokinan\n\nAku mengakban sementara",
+     "tidy": "Peniknya penokinan\nAku mengakban sementara",
+     "ms": 220,
+     "tokens": 18,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 2,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1006,
+   "roundIndex": 1,
+   "formId": "heroic-couplet",
+   "difficulty": "master",
+   "card": "Percy Bysshe Shelley",
+   "acrostic": null,
+   "relicWords": [
+    "badai",
+    "mantra",
+    "tongkat",
+    "pulau",
+    "tenggelam"
+   ],
+   "answering": "cemara menderai sampai jauh\nterasa hari akan jadi malam\nada beberapa dahan di tingkap merapuh\ndipukul angin yang terpendam",
+   "prompt": [
+    "You are Percy Bysshe Shelley in a duel of verses: theatrical, sharp, in character. Your line in the play: \"If Winter comes, can Spring be far behind?\" You write short verse and nothing else.",
+    "Form: Heroic Couplet. Two rhyming lines of about ten syllables each, as Shakespeare closed his sonnets.\nWrite exactly 2 lines.\nYour flourish: End your verse on the same word it began with.\nWork in at least two of these words: badai, mantra, tongkat, pulau, tenggelam.\nYour challenger last said:\ncemara menderai sampai jauh\nterasa hari akan jadi malam\nada beberapa dahan di tingkap merapuh\ndipukul angin yang terpendam\nAnswer them.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Tenggelam",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "syllables-1",
+     "met": false,
+     "detail": "3/10"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Tenggelam",
+     "tidy": "Tenggelam",
+     "ms": 89,
+     "tokens": 4,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Tenggelam",
+     "tidy": "Tenggelam",
+     "ms": 90,
+     "tokens": 4,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Tenggelam",
+     "tidy": "Tenggelam",
+     "ms": 107,
+     "tokens": 4,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1006,
+   "roundIndex": 2,
+   "formId": "haiku",
+   "difficulty": "apprentice",
+   "card": "Elizabeth Barrett Browning",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "cemara menderai sampai jauh\nterasa hari akan jadi malam\nada beberapa dahan di tingkap merapuh\ndipukul angin yang terpendam",
+   "prompt": [
+    "You are Elizabeth Barrett Browning in a duel of verses: theatrical, sharp, in character. Your line in the play: \"How do I love thee? Let me count the ways.\" You write short verse and nothing else.",
+    "Form: Haiku. Three lines of 5, 7 and 5 syllables.\nWrite exactly 3 lines.\nYour flourish: Give every line the same number of words.\nYour challenger last said:\ncemara menderai sampai jauh\nterasa hari akan jadi malam\nada beberapa dahan di tingkap merapuh\ndipukul angin yang terpendam\nAnswer them.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Dipukul angin yang terpendam",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "syllables-1",
+     "met": false,
+     "detail": "9/5"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "syllables-3",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Dipukul angin yang terpendam",
+     "tidy": "Dipukul angin yang terpendam",
+     "ms": 149,
+     "tokens": 10,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1007,
+   "roundIndex": 0,
+   "formId": "crescendo",
+   "difficulty": "player",
+   "card": "Macbeth",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Macbeth in a duel of verses: theatrical, sharp, in character. Your line in the play: \"I dare do all that may become a man; who dares do more is none.\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Repeat one strong word three times.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Recurso bertindakan\nNgul nga nga",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 14,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/3"
+    },
+    {
+     "id": "growing",
+     "met": true,
+     "detail": "2 < 3"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 14,
+   "drafts": [
+    {
+     "raw": "Recurso bertindakan\n\nNgul nga nga",
+     "tidy": "Recurso bertindakan\nNgul nga nga",
+     "ms": 185,
+     "tokens": 16,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 14,
+     "craft": 14
+    },
+    {
+     "raw": "Raka reku reku",
+     "tidy": "Raka reku reku",
+     "ms": 107,
+     "tokens": 6,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1007,
+   "roundIndex": 1,
+   "formId": "tercet",
+   "difficulty": "apprentice",
+   "card": "King Claudius",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "Melangkahkan aku bukan tuak menggelegak\nCumbu-buatan satu biduan\nKujauhi ahli agama serta lembing katanya",
+   "prompt": [
+    "You are King Claudius in a duel of verses: theatrical, sharp, in character. Your line in the play: \"My words fly up, my thoughts remain below.\" You write short verse and nothing else.",
+    "Form: Tercet. Three lines; the first and last rhyme.\nWrite exactly 3 lines.\nYour flourish: Ask a question: end a line with a question mark.\nYour challenger last said:\nMelangkahkan aku bukan tuak menggelegak\nCumbu-buatan satu biduan\nKujauhi ahli agama serta lembing katanya\nAnswer them.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Kujauhi bahu mahatam",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Kujauhi bahu mahatam",
+     "tidy": "Kujauhi bahu mahatam",
+     "ms": 142,
+     "tokens": 9,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1007,
+   "roundIndex": 2,
+   "formId": "quatrain-aabb",
+   "difficulty": "apprentice",
+   "card": "Lord Montague",
+   "acrostic": null,
+   "relicWords": [
+    "topeng",
+    "mimpi",
+    "badut",
+    "sandiwara",
+    "bulan"
+   ],
+   "answering": "Melangkahkan aku bukan tuak menggelegak\nCumbu-buatan satu biduan\nKujauhi ahli agama serta lembing katanya",
+   "prompt": [
+    "You are Lord Montague in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Many a morning hath he there been seen, with tears augmenting the fresh morning dew.\" You write short verse and nothing else.",
+    "Form: Paired Quatrain. Four lines: the first two rhyme, and the last two rhyme.\nWrite exactly 4 lines.\nYour flourish: Rhyme two words inside a single line.\nWork in at least two of these words: topeng, mimpi, badut, sandiwara, bulan.\nYour challenger last said:\nMelangkahkan aku bukan tuak menggelegak\nCumbu-buatan satu biduan\nKujauhi ahli agama serta lembing katanya\nAnswer them.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Sandiwara bukan tolang",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/4"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "rhyme-3-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Sandiwara bukan tolang",
+     "tidy": "Sandiwara bukan tolang",
+     "ms": 134,
+     "tokens": 7,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1008,
+   "roundIndex": 0,
+   "formId": "tercet",
+   "difficulty": "player",
+   "card": "Miranda",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Miranda in a duel of verses: theatrical, sharp, in character. Your line in the play: \"O brave new world, that has such people in it!\" You write short verse and nothing else.",
+    "Form: Tercet. Three lines; the first and last rhyme.\nWrite exactly 3 lines.\nYour flourish: Make your last line your longest.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Tertecini terek tetek\nTanakera danan",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/3"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Tertecini terek tetek\n\nTanakera danan",
+     "tidy": "Tertecini terek tetek\nTanakera danan",
+     "ms": 236,
+     "tokens": 14,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Cira cira diat\n\nPemenang-penang",
+     "tidy": "Cira cira diat\nPemenang-penang",
+     "ms": 142,
+     "tokens": 13,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1008,
+   "roundIndex": 1,
+   "formId": "heroic-couplet",
+   "difficulty": "apprentice",
+   "card": "Prince Escalus",
+   "acrostic": null,
+   "relicWords": [
+    "belati",
+    "darah",
+    "tidur",
+    "bayangan",
+    "tangan"
+   ],
+   "answering": "Barang siapa tiada memegang agama,\nsekali-kali tiada boleh dibilangkan nama.",
+   "prompt": [
+    "You are Prince Escalus in a duel of verses: theatrical, sharp, in character. Your line in the play: \"If ever you disturb our streets again, your lives shall pay the forfeit of the peace.\" You write short verse and nothing else.",
+    "Form: Heroic Couplet. Two rhyming lines of about ten syllables each, as Shakespeare closed his sonnets.\nWrite exactly 2 lines.\nYour flourish: Turn a word of 5 letters or more from your opponent's last verse back on them.\nWork in at least two of these words: belati, darah, tidur, bayangan, tangan.\nYour challenger last said:\nBarang siapa tiada memegang agama,\nsekali-kali tiada boleh dibilangkan nama.\nAnswer them.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Belati dan tidur",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "syllables-1",
+     "met": false,
+     "detail": "6/10"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "Belati dan tidur",
+     "tidy": "Belati dan tidur",
+     "ms": 73,
+     "tokens": 5,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1008,
+   "roundIndex": 2,
+   "formId": "quatrain-aabb",
+   "difficulty": "player",
+   "card": "Bottom",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "Barang siapa tiada memegang agama,\nsekali-kali tiada boleh dibilangkan nama.",
+   "prompt": [
+    "You are Bottom in a duel of verses: theatrical, sharp, in character. Your line in the play: \"I have had a most rare vision. I have had a dream, past the wit of man.\" You write short verse and nothing else.",
+    "Form: Paired Quatrain. Four lines: the first two rhyme, and the last two rhyme.\nWrite exactly 4 lines.\nYour flourish: Start three words in one line with the same letter.\nYour challenger last said:\nBarang siapa tiada memegang agama,\nsekali-kali tiada boleh dibilangkan nama.\nAnswer them.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Bahan saya beren bermudan",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/4"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "rhyme-3-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Bahan saya beren bermudan",
+     "tidy": "Bahan saya beren bermudan",
+     "ms": 191,
+     "tokens": 10,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Rekah mendigga",
+     "tidy": "Rekah mendigga",
+     "ms": 123,
+     "tokens": 7,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1009,
+   "roundIndex": 0,
+   "formId": "epistrophe",
+   "difficulty": "player",
+   "card": "Prospero",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Prospero in a duel of verses: theatrical, sharp, in character. Your line in the play: \"We are such stuff as dreams are made on.\" You write short verse and nothing else.",
+    "Form: Epistrophe. Three lines that all end on the same word.\nWrite exactly 3 lines.\nYour flourish: Make your last line your longest.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Temorungan pembalikan, penamuk-ram.",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "same-ending",
+     "met": false,
+     "detail": "penamuk-ram"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Temorungan pembalikan, penamuk-ram.",
+     "tidy": "Temorungan pembalikan, penamuk-ram.",
+     "ms": 225,
+     "tokens": 15,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Java sua rehana, penamakan\n\nKekupenkan kami",
+     "tidy": "Java sua rehana, penamakan\nKekupenkan kami",
+     "ms": 235,
+     "tokens": 18,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1009,
+   "roundIndex": 1,
+   "formId": "couplet",
+   "difficulty": "master",
+   "card": "Mary Shelley",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "Barang siapa mengenal yang empat,\nmaka ia itulah orang yang ma'rifat.",
+   "prompt": [
+    "You are Mary Shelley in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Beware; for I am fearless, and therefore powerful.\" You write short verse and nothing else.",
+    "Form: Couplet. Two lines that rhyme.\nWrite exactly 2 lines.\nYour flourish: End your verse on the same word it began with.\nYour challenger last said:\nBarang siapa mengenal yang empat,\nmaka ia itulah orang yang ma'rifat.\nAnswer them.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Selamat menggunakan bahasa Indonesia\nEnd menggunakan isu",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "2/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "indonesia / isu"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "Selamat menggunakan bahasa Indonesia\n\nEnd menggunakan isu",
+     "tidy": "Selamat menggunakan bahasa Indonesia\nEnd menggunakan isu",
+     "ms": 251,
+     "tokens": 21,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 2,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "End berkanya",
+     "tidy": "End berkanya",
+     "ms": 74,
+     "tokens": 4,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Beware; mama kami memaknya",
+     "tidy": "Beware; mama kami memaknya",
+     "ms": 143,
+     "tokens": 12,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1009,
+   "roundIndex": 2,
+   "formId": "haiku",
+   "difficulty": "player",
+   "card": "Macbeth",
+   "acrostic": null,
+   "relicWords": [
+    "topeng",
+    "mimpi",
+    "badut",
+    "sandiwara",
+    "bulan"
+   ],
+   "answering": "Barang siapa mengenal yang empat,\nmaka ia itulah orang yang ma'rifat.",
+   "prompt": [
+    "You are Macbeth in a duel of verses: theatrical, sharp, in character. Your line in the play: \"I dare do all that may become a man; who dares do more is none.\" You write short verse and nothing else.",
+    "Form: Haiku. Three lines of 5, 7 and 5 syllables.\nWrite exactly 3 lines.\nYour flourish: Repeat one strong word three times.\nWork in at least two of these words: topeng, mimpi, badut, sandiwara, bulan.\nYour challenger last said:\nBarang siapa mengenal yang empat,\nmaka ia itulah orang yang ma'rifat.\nAnswer them.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Topeng\nmika\nbadut",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 5,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "syllables-1",
+     "met": false,
+     "detail": "2/5"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "2/7"
+    },
+    {
+     "id": "syllables-3",
+     "met": false,
+     "detail": "2/5"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 11,
+   "drafts": [
+    {
+     "raw": "Topeng  \nmika  \n\nbadut  \n\nsandiwara",
+     "tidy": "Topeng\nmika\nbadut",
+     "ms": 199,
+     "tokens": 15,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 4,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 5,
+     "craft": 11
+    },
+    {
+     "raw": "Topeng mata  \nmimpi badut  \nsaniwara",
+     "tidy": "Topeng mata\nmimpi badut\nsaniwara",
+     "ms": 237,
+     "tokens": 14,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 5,
+     "craft": 11
+    }
+   ]
+  },
+  {
+   "seed": 1010,
+   "roundIndex": 0,
+   "formId": "tercet",
+   "difficulty": "master",
+   "card": "The Sonnet Man",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are The Sonnet Man in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Shall I compare thee to a summer's day?\" You write short verse and nothing else.",
+    "Form: Tercet. Three lines; the first and last rhyme.\nWrite exactly 3 lines.\nYour flourish: End every line on the same rhyme.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Tercet, kerusapa menghabekan tahan\nTaunt tu nga kehitungan maka\nKerusapa menghabekan hutan",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": true,
+   "formEarned": 20,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": true,
+     "detail": "tahan / hutan"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 20,
+   "drafts": [
+    {
+     "raw": "Tercet, kerusapa menghabekan tahan\n\nTaunt tu nga kehitungan maka\n\nKerusapa menghabekan hutan",
+     "tidy": "Tercet, kerusapa menghabekan tahan\nTaunt tu nga kehitungan maka\nKerusapa menghabekan hutan",
+     "ms": 385,
+     "tokens": 38,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 20
+    },
+    {
+     "raw": "Bersihi teknik",
+     "tidy": "Bersihi teknik",
+     "ms": 108,
+     "tokens": 7,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Tercenya ada keksi soja\n\nTercenya adanya",
+     "tidy": "Tercenya ada keksi soja\nTercenya adanya",
+     "ms": 231,
+     "tokens": 18,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1010,
+   "roundIndex": 1,
+   "formId": "heroic-couplet",
+   "difficulty": "player",
+   "card": "Lady Macbeth",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "Barang siapa mengenal Allah,\nsuruh dan tegahnya tiada ia menyalah.",
+   "prompt": [
+    "You are Lady Macbeth in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Come, you spirits that tend on mortal thoughts, unsex me here.\" You write short verse and nothing else.",
+    "Form: Heroic Couplet. Two rhyming lines of about ten syllables each, as Shakespeare closed his sonnets.\nWrite exactly 2 lines.\nYour flourish: Repeat one strong word three times.\nYour challenger last said:\nBarang siapa mengenal Allah,\nsuruh dan tegahnya tiada ia menyalah.\nAnswer them.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Repeat word: madam\nMindak masina",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 4,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "2/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "madam / masina"
+    },
+    {
+     "id": "syllables-1",
+     "met": false,
+     "detail": "6/10"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "5/10"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 4,
+   "drafts": [
+    {
+     "raw": "Recurre, bermusakan",
+     "tidy": "Recurre, bermusakan",
+     "ms": 131,
+     "tokens": 9,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Repeat word: madam\n\nMindak masina",
+     "tidy": "Repeat word: madam\nMindak masina",
+     "ms": 151,
+     "tokens": 11,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 72,
+     "rawLines": 2,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 4,
+     "craft": 4
+    }
+   ]
+  },
+  {
+   "seed": 1010,
+   "roundIndex": 2,
+   "formId": "crescendo",
+   "difficulty": "master",
+   "card": "Mary Shelley",
+   "acrostic": null,
+   "relicWords": [
+    "belati",
+    "darah",
+    "tidur",
+    "bayangan",
+    "tangan"
+   ],
+   "answering": "Barang siapa mengenal Allah,\nsuruh dan tegahnya tiada ia menyalah.",
+   "prompt": [
+    "You are Mary Shelley in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Beware; for I am fearless, and therefore powerful.\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: End your verse on the same word it began with.\nWork in at least two of these words: belati, darah, tidur, bayangan, tangan.\nYour challenger last said:\nBarang siapa mengenal Allah,\nsuruh dan tegahnya tiada ia menyalah.\nAnswer them.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Bayangan",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "growing",
+     "met": false,
+     "detail": "1"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Bayangan",
+     "tidy": "Bayangan",
+     "ms": 63,
+     "tokens": 3,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Bayangan",
+     "tidy": "Bayangan",
+     "ms": 86,
+     "tokens": 3,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Bayangan",
+     "tidy": "Bayangan",
+     "ms": 85,
+     "tokens": 3,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1011,
+   "roundIndex": 0,
+   "formId": "haiku",
+   "difficulty": "master",
+   "card": "Cassius",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Cassius in a duel of verses: theatrical, sharp, in character. Your line in the play: \"The fault, dear Brutus, is not in our stars, but in ourselves.\" You write short verse and nothing else.",
+    "Form: Haiku. Three lines of 5, 7 and 5 syllables.\nWrite exactly 3 lines.\nYour flourish: Call on a character by name.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Idiada: Cileng kami ayan rahai\nCall on Nen",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/3"
+    },
+    {
+     "id": "syllables-1",
+     "met": false,
+     "detail": "12/5"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "3/7"
+    },
+    {
+     "id": "syllables-3",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "**Idiada:** Cileng kami ayan rahai\n\nCall on **Nen**",
+     "tidy": "Idiada: Cileng kami ayan rahai\nCall on Nen",
+     "ms": 292,
+     "tokens": 20,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Call on Kali\n\nTaunt Kali",
+     "tidy": "Call on Kali\nTaunt Kali",
+     "ms": 117,
+     "tokens": 9,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "**Java Sutrisara**",
+     "tidy": "Java Sutrisara",
+     "ms": 144,
+     "tokens": 6,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1011,
+   "roundIndex": 1,
+   "formId": "anaphora",
+   "difficulty": "apprentice",
+   "card": "Viola",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "Barang siapa mengenal diri,\nmaka telah mengenal akan Tuhan yang bahri.",
+   "prompt": [
+    "You are Viola in a duel of verses: theatrical, sharp, in character. Your line in the play: \"I am not what I am.\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same word.\nWrite exactly 3 lines.\nYour flourish: Keep every line to 6 words or fewer.\nYour challenger last said:\nBarang siapa mengenal diri,\nmaka telah mengenal akan Tuhan yang bahri.\nAnswer them.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Kami tidak ada pembrana kek.",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "same-opening",
+     "met": false,
+     "detail": "kami"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Kami tidak ada pembrana kek.",
+     "tidy": "Kami tidak ada pembrana kek.",
+     "ms": 175,
+     "tokens": 12,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1011,
+   "roundIndex": 2,
+   "formId": "tercet",
+   "difficulty": "apprentice",
+   "card": "Titania",
+   "acrostic": null,
+   "relicWords": [
+    "kitab",
+    "badai",
+    "sihir",
+    "halaman",
+    "tenggelam"
+   ],
+   "answering": "Barang siapa mengenal diri,\nmaka telah mengenal akan Tuhan yang bahri.",
+   "prompt": [
+    "You are Titania in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Come, sit thee down upon this flowery bed.\" You write short verse and nothing else.",
+    "Form: Tercet. Three lines; the first and last rhyme.\nWrite exactly 3 lines.\nYour flourish: Start three words in one line with the same letter.\nWork in at least two of these words: kitab, badai, sihir, halaman, tenggelam.\nYour challenger last said:\nBarang siapa mengenal diri,\nmaka telah mengenal akan Tuhan yang bahri.\nAnswer them.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Tenggelam",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Tenggelam",
+     "tidy": "Tenggelam",
+     "ms": 74,
+     "tokens": 4,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1012,
+   "roundIndex": 0,
+   "formId": "heroic-couplet",
+   "difficulty": "master",
+   "card": "Odysseus",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Odysseus in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Tell me, O Muse, of the man of many ways, who wandered far.\" You write short verse and nothing else.",
+    "Form: Heroic Couplet. Two rhyming lines of about ten syllables each, as Shakespeare closed his sonnets.\nWrite exactly 2 lines.\nYour flourish: Use two words of 10 letters or more.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Parangka\nTiga batan",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 4,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "2/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "parangka / batan"
+    },
+    {
+     "id": "syllables-1",
+     "met": false,
+     "detail": "3/10"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "4/10"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 4,
+   "drafts": [
+    {
+     "raw": "Diaanat dumu lan",
+     "tidy": "Diaanat dumu lan",
+     "ms": 155,
+     "tokens": 8,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Saya juga bermain menjangan, beri-miandang.",
+     "tidy": "Saya juga bermain menjangan, beri-miandang.",
+     "ms": 214,
+     "tokens": 19,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Parangka\n\nTiga batan",
+     "tidy": "Parangka\nTiga batan",
+     "ms": 103,
+     "tokens": 8,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 72,
+     "rawLines": 2,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 4,
+     "craft": 4
+    }
+   ]
+  },
+  {
+   "seed": 1012,
+   "roundIndex": 1,
+   "formId": "epistrophe",
+   "difficulty": "master",
+   "card": "Elizabeth Barrett Browning",
+   "acrostic": null,
+   "relicWords": [
+    "topeng",
+    "mimpi",
+    "badut",
+    "sandiwara",
+    "bulan"
+   ],
+   "answering": "Wahai muda kenali dirimu,\nialah perahu tamsil tubuhmu,\ntiadalah berapa lama hidupmu,\nke akhirat jua kekal diammu.",
+   "prompt": [
+    "You are Elizabeth Barrett Browning in a duel of verses: theatrical, sharp, in character. Your line in the play: \"How do I love thee? Let me count the ways.\" You write short verse and nothing else.",
+    "Form: Epistrophe. Three lines that all end on the same word.\nWrite exactly 3 lines.\nYour flourish: Give every line the same number of words.\nWork in at least two of these words: topeng, mimpi, badut, sandiwara, bulan.\nYour challenger last said:\nWahai muda kenali dirimu,\nialah perahu tamsil tubuhmu,\ntiadalah berapa lama hidupmu,\nke akhirat jua kekal diammu.\nAnswer them.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Sandiwara",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "same-ending",
+     "met": false,
+     "detail": "sandiwara"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Sandiwara",
+     "tidy": "Sandiwara",
+     "ms": 66,
+     "tokens": 3,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Sandiwara",
+     "tidy": "Sandiwara",
+     "ms": 97,
+     "tokens": 3,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Wahai muda kanali",
+     "tidy": "Wahai muda kanali",
+     "ms": 115,
+     "tokens": 7,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1012,
+   "roundIndex": 2,
+   "formId": "couplet",
+   "difficulty": "apprentice",
+   "card": "Lady Capulet",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "Wahai muda kenali dirimu,\nialah perahu tamsil tubuhmu,\ntiadalah berapa lama hidupmu,\nke akhirat jua kekal diammu.",
+   "prompt": [
+    "You are Lady Capulet in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Marry, that marry is the very theme I came to talk of.\" You write short verse and nothing else.",
+    "Form: Couplet. Two lines that rhyme.\nWrite exactly 2 lines.\nYour flourish: Cry out: end a line with an exclamation mark.\nYour challenger last said:\nWahai muda kenali dirimu,\nialah perahu tamsil tubuhmu,\ntiadalah berapa lama hidupmu,\nke akhirat jua kekal diammu.\nAnswer them.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Cry out",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Cry out",
+     "tidy": "Cry out",
+     "ms": 87,
+     "tokens": 3,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1013,
+   "roundIndex": 0,
+   "formId": "crescendo",
+   "difficulty": "apprentice",
+   "card": "Mercutio",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Mercutio in a duel of verses: theatrical, sharp, in character. Your line in the play: \"A plague on both your houses!\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Rhyme two words inside a single line.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Naga ada dalam telah pencerkan\nRaja kereta untuk memperbarai\nBangkaan lain manjawa",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "growing",
+     "met": false,
+     "detail": "5 < 4 < 3"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 9,
+   "drafts": [
+    {
+     "raw": "Naga ada dalam telah pencerkan\n\nRaja kereta untuk memperbarai\n\nBangkaan lain manjawa",
+     "tidy": "Naga ada dalam telah pencerkan\nRaja kereta untuk memperbarai\nBangkaan lain manjawa",
+     "ms": 354,
+     "tokens": 32,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 9
+    }
+   ]
+  },
+  {
+   "seed": 1013,
+   "roundIndex": 1,
+   "formId": "quatrain-abab",
+   "difficulty": "master",
+   "card": "William Blake",
+   "acrostic": null,
+   "relicWords": [
+    "badai",
+    "mantra",
+    "tongkat",
+    "pulau",
+    "tenggelam"
+   ],
+   "answering": "Hai muda arif-budiman,\nhasilkan kemudi dengan pedoman,\nalat perahumu jua kerjakan,\nitulah jalan membetuli insan.",
+   "prompt": [
+    "You are William Blake in a duel of verses: theatrical, sharp, in character. Your line in the play: \"To see a World in a Grain of Sand and a Heaven in a Wild Flower.\" You write short verse and nothing else.",
+    "Form: Crossed Quatrain. Four lines: line 1 rhymes with 3, line 2 with 4.\nWrite exactly 4 lines.\nYour flourish: End your verse on the same word it began with.\nWork in at least two of these words: badai, mantra, tongkat, pulau, tenggelam.\nYour challenger last said:\nHai muda arif-budiman,\nhasilkan kemudi dengan pedoman,\nalat perahumu jua kerjakan,\nitulah jalan membetuli insan.\nAnswer them.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Badai mantra pulau",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/4"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "rhyme-2-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "Badai mantra pulau",
+     "tidy": "Badai mantra pulau",
+     "ms": 103,
+     "tokens": 7,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    },
+    {
+     "raw": "Badai mantra pulau",
+     "tidy": "Badai mantra pulau",
+     "ms": 103,
+     "tokens": 7,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    },
+    {
+     "raw": "Badai mantra  \nalaman tegang  \njakuan membetuli",
+     "tidy": "Badai mantra\nalaman tegang\njakuan membetuli",
+     "ms": 212,
+     "tokens": 16,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 116,
+     "rawLines": 3,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1013,
+   "roundIndex": 2,
+   "formId": "tercet",
+   "difficulty": "player",
+   "card": "Persephone",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "Hai muda arif-budiman,\nhasilkan kemudi dengan pedoman,\nalat perahumu jua kerjakan,\nitulah jalan membetuli insan.",
+   "prompt": [
+    "You are Persephone in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Six seeds I ate, and bound myself between two worlds forever.\" You write short verse and nothing else.",
+    "Form: Tercet. Three lines; the first and last rhyme.\nWrite exactly 3 lines.\nYour flourish: Turn a word of 5 letters or more from your opponent's last verse back on them.\nYour challenger last said:\nHai muda arif-budiman,\nhasilkan kemudi dengan pedoman,\nalat perahumu jua kerjakan,\nitulah jalan membetuli insan.\nAnswer them.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Tukak kami dalam bagaiman, batauan yang tidak mempengaruhi.",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Tukak kami dalam bagaiman, batauan yang tidak mempengaruhi.",
+     "tidy": "Tukak kami dalam bagaiman, batauan yang tidak mempengaruhi.",
+     "ms": 271,
+     "tokens": 24,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Tercet\n\nAlas kerjakan",
+     "tidy": "Tercet\nAlas kerjakan",
+     "ms": 135,
+     "tokens": 9,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1014,
+   "roundIndex": 0,
+   "formId": "couplet",
+   "difficulty": "player",
+   "card": "Oberon",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Oberon in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Ill met by moonlight, proud Titania.\" You write short verse and nothing else.",
+    "Form: Couplet. Two lines that rhyme.\nWrite exactly 2 lines.\nYour flourish: Start three words in one line with the same letter.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Start three words with la\nOla, la la",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "2/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "la / la"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "Start three words with la\n\nOla, la la",
+     "tidy": "Start three words with la\nOla, la la",
+     "ms": 154,
+     "tokens": 11,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 2,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "Start rau",
+     "tidy": "Start rau",
+     "ms": 80,
+     "tokens": 3,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1014,
+   "roundIndex": 1,
+   "formId": "quatrain-abab",
+   "difficulty": "apprentice",
+   "card": "Lord Montague",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "Berdiri aku di senja senyap\nCamar melayang menepis buih\nMelayah bakau mengurai puncak\nBerjulang datang ubur terkembang",
+   "prompt": [
+    "You are Lord Montague in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Many a morning hath he there been seen, with tears augmenting the fresh morning dew.\" You write short verse and nothing else.",
+    "Form: Crossed Quatrain. Four lines: line 1 rhymes with 3, line 2 with 4.\nWrite exactly 4 lines.\nYour flourish: Rhyme two words inside a single line.\nYour challenger last said:\nBerdiri aku di senja senyap\nCamar melayang menepis buih\nMelayah bakau mengurai puncak\nBerjulang datang ubur terkembang\nAnswer them.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Melayah",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/4"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "rhyme-2-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Melayah",
+     "tidy": "Melayah",
+     "ms": 77,
+     "tokens": 3,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1014,
+   "roundIndex": 2,
+   "formId": "acrostic",
+   "difficulty": "master",
+   "card": "Hamlet",
+   "acrostic": "laut",
+   "relicWords": [
+    "mahkota",
+    "takhta",
+    "ambisi",
+    "penyihir",
+    "raja"
+   ],
+   "answering": "Berdiri aku di senja senyap\nCamar melayang menepis buih\nMelayah bakau mengurai puncak\nBerjulang datang ubur terkembang",
+   "prompt": [
+    "You are Hamlet in a duel of verses: theatrical, sharp, in character. Your line in the play: \"To be, or not to be, that is the question.\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per letter: the first letters must spell LAUT.\nWrite exactly 4 lines.\nYour flourish: Ask a question: end a line with a question mark.\nWork in at least two of these words: mahkota, takhta, ambisi, penyihir, raja.\nYour challenger last said:\nBerdiri aku di senja senyap\nCamar melayang menepis buih\nMelayah bakau mengurai puncak\nBerjulang datang ubur terkembang\nAnswer them.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Raja berjulu",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/4"
+    },
+    {
+     "id": "spells",
+     "met": false,
+     "detail": "R"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Raja berjulu",
+     "tidy": "Raja berjulu",
+     "ms": 114,
+     "tokens": 5,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Raja berkurikan",
+     "tidy": "Raja berkurikan",
+     "ms": 156,
+     "tokens": 6,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Raja terkebunu",
+     "tidy": "Raja terkebunu",
+     "ms": 104,
+     "tokens": 7,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1015,
+   "roundIndex": 0,
+   "formId": "heroic-couplet",
+   "difficulty": "apprentice",
+   "card": "Mary Shelley",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Mary Shelley in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Beware; for I am fearless, and therefore powerful.\" You write short verse and nothing else.",
+    "Form: Heroic Couplet. Two rhyming lines of about ten syllables each, as Shakespeare closed his sonnets.\nWrite exactly 2 lines.\nYour flourish: End your verse on the same word it began with.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Adikibu baik\nKeputusan",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 4,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "2/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "baik / keputusan"
+    },
+    {
+     "id": "syllables-1",
+     "met": false,
+     "detail": "6/10"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "4/10"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 4,
+   "drafts": [
+    {
+     "raw": "Adikibu baik\n\nKeputusan",
+     "tidy": "Adikibu baik\nKeputusan",
+     "ms": 176,
+     "tokens": 12,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 2,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 4,
+     "craft": 4
+    }
+   ]
+  },
+  {
+   "seed": 1015,
+   "roundIndex": 1,
+   "formId": "anaphora",
+   "difficulty": "player",
+   "card": "Mercutio",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "Angin pulang menyejuk bumi\nMenepuk teluk mengempas emas\nLari ke gunung memuncak sunyi\nBerayun-ayun di atas alas.",
+   "prompt": [
+    "You are Mercutio in a duel of verses: theatrical, sharp, in character. Your line in the play: \"A plague on both your houses!\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same word.\nWrite exactly 3 lines.\nYour flourish: Rhyme two words inside a single line.\nYour challenger last said:\nAngin pulang menyejuk bumi\nMenepuk teluk mengempas emas\nLari ke gunung memuncak sunyi\nBerayun-ayun di atas alas.\nAnswer them.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Lakamane lanan tersebut\nKemenek danaman\nsukum sunyi",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-opening",
+     "met": false,
+     "detail": "lakamane · kemenek · sukum"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "Lari memuncak",
+     "tidy": "Lari memuncak",
+     "ms": 115,
+     "tokens": 5,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Lakamane lanan tersebut  \nKemenek danaman  \nsukum sunyi",
+     "tidy": "Lakamane lanan tersebut\nKemenek danaman\nsukum sunyi",
+     "ms": 302,
+     "tokens": 22,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1015,
+   "roundIndex": 2,
+   "formId": "couplet",
+   "difficulty": "master",
+   "card": "Percy Bysshe Shelley",
+   "acrostic": null,
+   "relicWords": [
+    "mahkota",
+    "takhta",
+    "ambisi",
+    "penyihir",
+    "raja"
+   ],
+   "answering": "Angin pulang menyejuk bumi\nMenepuk teluk mengempas emas\nLari ke gunung memuncak sunyi\nBerayun-ayun di atas alas.",
+   "prompt": [
+    "You are Percy Bysshe Shelley in a duel of verses: theatrical, sharp, in character. Your line in the play: \"If Winter comes, can Spring be far behind?\" You write short verse and nothing else.",
+    "Form: Couplet. Two lines that rhyme.\nWrite exactly 2 lines.\nYour flourish: End your verse on the same word it began with.\nWork in at least two of these words: mahkota, takhta, ambisi, penyihir, raja.\nYour challenger last said:\nAngin pulang menyejuk bumi\nMenepuk teluk mengempas emas\nLari ke gunung memuncak sunyi\nBerayun-ayun di atas alas.\nAnswer them.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Ambisi",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Ambisi",
+     "tidy": "Ambisi",
+     "ms": 82,
+     "tokens": 2,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Raja",
+     "tidy": "Raja",
+     "ms": 62,
+     "tokens": 2,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Raja",
+     "tidy": "Raja",
+     "ms": 148,
+     "tokens": 2,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1016,
+   "roundIndex": 0,
+   "formId": "couplet",
+   "difficulty": "apprentice",
+   "card": "Olivia",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Olivia in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Love sought is good, but given unsought, is better.\" You write short verse and nothing else.",
+    "Form: Couplet. Two lines that rhyme.\nWrite exactly 2 lines.\nYour flourish: Keep every line to 6 words or fewer.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Kam kusa tersedia\nTeknik bertujuan",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "2/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "tersedia / bertujuan"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 9,
+   "drafts": [
+    {
+     "raw": "Kam kusa tersedia\n\nTeknik bertujuan",
+     "tidy": "Kam kusa tersedia\nTeknik bertujuan",
+     "ms": 160,
+     "tokens": 15,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 2,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 9
+    }
+   ]
+  },
+  {
+   "seed": 1016,
+   "roundIndex": 1,
+   "formId": "acrostic",
+   "difficulty": "apprentice",
+   "card": "Hamlet",
+   "acrostic": "api",
+   "relicWords": null,
+   "answering": "Habis kikis\nsegala cintaku hilang terbang\npulang kembali aku padamu",
+   "prompt": [
+    "You are Hamlet in a duel of verses: theatrical, sharp, in character. Your line in the play: \"To be, or not to be, that is the question.\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per letter: the first letters must spell API.\nWrite exactly 3 lines.\nYour flourish: Ask a question: end a line with a question mark.\nYour challenger last said:\nHabis kikis\nsegala cintaku hilang terbang\npulang kembali aku padamu\nAnswer them.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Habis kikis segala cintaku hilang terbang",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "spells",
+     "met": false,
+     "detail": "H"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Habis kikis segala cintaku hilang terbang",
+     "tidy": "Habis kikis segala cintaku hilang terbang",
+     "ms": 236,
+     "tokens": 14,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1016,
+   "roundIndex": 2,
+   "formId": "tercet",
+   "difficulty": "master",
+   "card": "Mary Shelley",
+   "acrostic": null,
+   "relicWords": [
+    "topeng",
+    "mimpi",
+    "badut",
+    "sandiwara",
+    "bulan"
+   ],
+   "answering": "Habis kikis\nsegala cintaku hilang terbang\npulang kembali aku padamu",
+   "prompt": [
+    "You are Mary Shelley in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Beware; for I am fearless, and therefore powerful.\" You write short verse and nothing else.",
+    "Form: Tercet. Three lines; the first and last rhyme.\nWrite exactly 3 lines.\nYour flourish: End your verse on the same word it began with.\nWork in at least two of these words: topeng, mimpi, badut, sandiwara, bulan.\nYour challenger last said:\nHabis kikis\nsegala cintaku hilang terbang\npulang kembali aku padamu\nAnswer them.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Badut ikimwine",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Badut ikimwine",
+     "tidy": "Badut ikimwine",
+     "ms": 120,
+     "tokens": 6,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Sandiwara birinak\n\nPulang ada",
+     "tidy": "Sandiwara birinak\nPulang ada",
+     "ms": 173,
+     "tokens": 12,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Sandiwara",
+     "tidy": "Sandiwara",
+     "ms": 99,
+     "tokens": 3,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1017,
+   "roundIndex": 0,
+   "formId": "tercet",
+   "difficulty": "apprentice",
+   "card": "Hamlet",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Hamlet in a duel of verses: theatrical, sharp, in character. Your line in the play: \"To be, or not to be, that is the question.\" You write short verse and nothing else.",
+    "Form: Tercet. Three lines; the first and last rhyme.\nWrite exactly 3 lines.\nYour flourish: Ask a question: end a line with a question mark.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Tercet penyata\nMarka otono",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/3"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Tercet penyata\n\nMarka otono",
+     "tidy": "Tercet penyata\nMarka otono",
+     "ms": 145,
+     "tokens": 12,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1017,
+   "roundIndex": 1,
+   "formId": "epistrophe",
+   "difficulty": "apprentice",
+   "card": "Juliet",
+   "acrostic": null,
+   "relicWords": [
+    "emas",
+    "pilihan",
+    "ampun",
+    "timah",
+    "peti"
+   ],
+   "answering": "Hanyut aku, kekasihku!\nHanyut aku!\nulurkan tanganmu, tolong aku.",
+   "prompt": [
+    "You are Juliet in a duel of verses: theatrical, sharp, in character. Your line in the play: \"What's in a name? That which we call a rose...\" You write short verse and nothing else.",
+    "Form: Epistrophe. Three lines that all end on the same word.\nWrite exactly 3 lines.\nYour flourish: Cry out: end a line with an exclamation mark.\nWork in at least two of these words: emas, pilihan, ampun, timah, peti.\nYour challenger last said:\nHanyut aku, kekasihku!\nHanyut aku!\nulurkan tanganmu, tolong aku.\nAnswer them.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Cry aku, peti",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "same-ending",
+     "met": false,
+     "detail": "peti"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Cry aku, peti",
+     "tidy": "Cry aku, peti",
+     "ms": 118,
+     "tokens": 7,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1017,
+   "roundIndex": 2,
+   "formId": "acrostic",
+   "difficulty": "player",
+   "card": "Edgar Allan Poe",
+   "acrostic": "bulan",
+   "relicWords": null,
+   "answering": "Hanyut aku, kekasihku!\nHanyut aku!\nulurkan tanganmu, tolong aku.",
+   "prompt": [
+    "You are Edgar Allan Poe in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Once upon a midnight dreary, while I pondered, weak and weary.\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per letter: the first letters must spell BULAN.\nWrite exactly 5 lines.\nYour flourish: End your verse on the same word it began with.\nYour challenger last said:\nHanyut aku, kekasihku!\nHanyut aku!\nulurkan tanganmu, tolong aku.\nAnswer them.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Adu bulen",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 5,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/5"
+    },
+    {
+     "id": "spells",
+     "met": false,
+     "detail": "A"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Adu bulen",
+     "tidy": "Adu bulen",
+     "ms": 96,
+     "tokens": 4,
+     "temperature": 0.7,
+     "maxTokens": 138,
+     "rawLines": 1,
+     "expectedLines": 5,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Dunia berdasakta bukur",
+     "tidy": "Dunia berdasakta bukur",
+     "ms": 193,
+     "tokens": 10,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 138,
+     "rawLines": 1,
+     "expectedLines": 5,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1018,
+   "roundIndex": 0,
+   "formId": "acrostic",
+   "difficulty": "master",
+   "card": "Brutus",
+   "acrostic": "kata",
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Brutus in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Not that I loved Caesar less, but that I loved Rome more.\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per letter: the first letters must spell KATA.\nWrite exactly 4 lines.\nYour flourish: Call on a character by name.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Kata tapi kita",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/4"
+    },
+    {
+     "id": "spells",
+     "met": false,
+     "detail": "K"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Kata tapi kita",
+     "tidy": "Kata tapi kita",
+     "ms": 70,
+     "tokens": 6,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Karikat\n\nBali\n\nAda",
+     "tidy": "Karikat\nBali\nAda",
+     "ms": 109,
+     "tokens": 9,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 3,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Kataa toh",
+     "tidy": "Kataa toh",
+     "ms": 140,
+     "tokens": 5,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1018,
+   "roundIndex": 1,
+   "formId": "couplet",
+   "difficulty": "player",
+   "card": "Friar Lawrence",
+   "acrostic": null,
+   "relicWords": [
+    "air mata",
+    "kebenaran",
+    "putri",
+    "hampa",
+    "hati"
+   ],
+   "answering": "cemara menderai sampai jauh\nterasa hari akan jadi malam\nada beberapa dahan di tingkap merapuh\ndipukul angin yang terpendam",
+   "prompt": [
+    "You are Friar Lawrence in a duel of verses: theatrical, sharp, in character. Your line in the play: \"These violent delights have violent ends.\" You write short verse and nothing else.",
+    "Form: Couplet. Two lines that rhyme.\nWrite exactly 2 lines.\nYour flourish: Turn a word of 5 letters or more from your opponent's last verse back on them.\nWork in at least two of these words: air mata, kebenaran, putri, hampa, hati.\nYour challenger last said:\ncemara menderai sampai jauh\nterasa hari akan jadi malam\nada beberapa dahan di tingkap merapuh\ndipukul angin yang terpendam\nAnswer them.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Hamta",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Hamta",
+     "tidy": "Hamta",
+     "ms": 86,
+     "tokens": 3,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Hamina menerai sampai",
+     "tidy": "Hamina menerai sampai",
+     "ms": 168,
+     "tokens": 8,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1018,
+   "roundIndex": 2,
+   "formId": "haiku",
+   "difficulty": "apprentice",
+   "card": "Odysseus",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "cemara menderai sampai jauh\nterasa hari akan jadi malam\nada beberapa dahan di tingkap merapuh\ndipukul angin yang terpendam",
+   "prompt": [
+    "You are Odysseus in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Tell me, O Muse, of the man of many ways, who wandered far.\" You write short verse and nothing else.",
+    "Form: Haiku. Three lines of 5, 7 and 5 syllables.\nWrite exactly 3 lines.\nYour flourish: Use two words of 10 letters or more.\nYour challenger last said:\ncemara menderai sampai jauh\nterasa hari akan jadi malam\nada beberapa dahan di tingkap merapuh\ndipukul angin yang terpendam\nAnswer them.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Dipukul angin",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 5,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "syllables-1",
+     "met": true,
+     "detail": "5/5"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "syllables-3",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 5,
+   "drafts": [
+    {
+     "raw": "Dipukul angin",
+     "tidy": "Dipukul angin",
+     "ms": 91,
+     "tokens": 5,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 5,
+     "craft": 5
+    }
+   ]
+  },
+  {
+   "seed": 1019,
+   "roundIndex": 0,
+   "formId": "tercet",
+   "difficulty": "player",
+   "card": "Viola",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Viola in a duel of verses: theatrical, sharp, in character. Your line in the play: \"I am not what I am.\" You write short verse and nothing else.",
+    "Form: Tercet. Three lines; the first and last rhyme.\nWrite exactly 3 lines.\nYour flourish: Keep every line to 6 words or fewer.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Tara makan, serta tambur",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Tara makan, serta tambur",
+     "tidy": "Tara makan, serta tambur",
+     "ms": 148,
+     "tokens": 10,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Berdasara ke dalamat\n\nPada penulis",
+     "tidy": "Berdasara ke dalamat\nPada penulis",
+     "ms": 188,
+     "tokens": 14,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1019,
+   "roundIndex": 1,
+   "formId": "epistrophe",
+   "difficulty": "player",
+   "card": "Tybalt",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "Melangkahkan aku bukan tuak menggelegak\nCumbu-buatan satu biduan\nKujauhi ahli agama serta lembing katanya",
+   "prompt": [
+    "You are Tybalt in a duel of verses: theatrical, sharp, in character. Your line in the play: \"What, drawn, and talk of peace? I hate the word.\" You write short verse and nothing else.",
+    "Form: Epistrophe. Three lines that all end on the same word.\nWrite exactly 3 lines.\nYour flourish: Cry out: end a line with an exclamation mark.\nYour challenger last said:\nMelangkahkan aku bukan tuak menggelegak\nCumbu-buatan satu biduan\nKujauhi ahli agama serta lembing katanya\nAnswer them.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Kujauhi ahli agama serta lembing",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "same-ending",
+     "met": false,
+     "detail": "lembing"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Kujauhi ahli agama serta lembing",
+     "tidy": "Kujauhi ahli agama serta lembing",
+     "ms": 175,
+     "tokens": 13,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Cihangan bachana kek",
+     "tidy": "Cihangan bachana kek",
+     "ms": 150,
+     "tokens": 9,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1019,
+   "roundIndex": 2,
+   "formId": "quatrain-aabb",
+   "difficulty": "master",
+   "card": "Titania",
+   "acrostic": null,
+   "relicWords": [
+    "kitab",
+    "badai",
+    "sihir",
+    "halaman",
+    "tenggelam"
+   ],
+   "answering": "Melangkahkan aku bukan tuak menggelegak\nCumbu-buatan satu biduan\nKujauhi ahli agama serta lembing katanya",
+   "prompt": [
+    "You are Titania in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Come, sit thee down upon this flowery bed.\" You write short verse and nothing else.",
+    "Form: Paired Quatrain. Four lines: the first two rhyme, and the last two rhyme.\nWrite exactly 4 lines.\nYour flourish: Start three words in one line with the same letter.\nWork in at least two of these words: kitab, badai, sihir, halaman, tenggelam.\nYour challenger last said:\nMelangkahkan aku bukan tuak menggelegak\nCumbu-buatan satu biduan\nKujauhi ahli agama serta lembing katanya\nAnswer them.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Temgalekatak suatu",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/4"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "rhyme-3-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Temgalekatak suatu",
+     "tidy": "Temgalekatak suatu",
+     "ms": 162,
+     "tokens": 8,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Tenggelam",
+     "tidy": "Tenggelam",
+     "ms": 94,
+     "tokens": 4,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Tenggaleikan bukan",
+     "tidy": "Tenggaleikan bukan",
+     "ms": 124,
+     "tokens": 7,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1020,
+   "roundIndex": 0,
+   "formId": "epistrophe",
+   "difficulty": "master",
+   "card": "Prince Escalus",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Prince Escalus in a duel of verses: theatrical, sharp, in character. Your line in the play: \"If ever you disturb our streets again, your lives shall pay the forfeit of the peace.\" You write short verse and nothing else.",
+    "Form: Epistrophe. Three lines that all end on the same word.\nWrite exactly 3 lines.\nYour flourish: Turn a word of 5 letters or more from your opponent's last verse back on them.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Untukan untukan untuk\nBandung untuk\nSalam",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-ending",
+     "met": false,
+     "detail": "untuk · untuk · salam"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "Wilisan wijenkan wijen\n\n(Turn a word of 6 letters)",
+     "tidy": "Wilisan wijenkan wijen",
+     "ms": 272,
+     "tokens": 17,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Apakatao, hingga hari yang dapat mengukur",
+     "tidy": "Apakatao, hingga hari yang dapat mengukur",
+     "ms": 249,
+     "tokens": 17,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Untukan untukan untuk  \nBandung untuk  \n\nSalam",
+     "tidy": "Untukan untukan untuk\nBandung untuk\nSalam",
+     "ms": 225,
+     "tokens": 17,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1020,
+   "roundIndex": 1,
+   "formId": "heroic-couplet",
+   "difficulty": "player",
+   "card": "Apollo",
+   "acrostic": null,
+   "relicWords": [
+    "topeng",
+    "mimpi",
+    "badut",
+    "sandiwara",
+    "bulan"
+   ],
+   "answering": "Barang siapa tiada memegang agama,\nsekali-kali tiada boleh dibilangkan nama.",
+   "prompt": [
+    "You are Apollo in a duel of verses: theatrical, sharp, in character. Your line in the play: \"I am the god of song, of healing, and of the radiant sun.\" You write short verse and nothing else.",
+    "Form: Heroic Couplet. Two rhyming lines of about ten syllables each, as Shakespeare closed his sonnets.\nWrite exactly 2 lines.\nYour flourish: Use two words of 10 letters or more.\nWork in at least two of these words: topeng, mimpi, badut, sandiwara, bulan.\nYour challenger last said:\nBarang siapa tiada memegang agama,\nsekali-kali tiada boleh dibilangkan nama.\nAnswer them.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Badut saharaka\nsekali-kali nama",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 12,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "2/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": true,
+     "detail": "saharaka / nama"
+    },
+    {
+     "id": "syllables-1",
+     "met": false,
+     "detail": "6/10"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "7/10"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 12,
+   "drafts": [
+    {
+     "raw": "Sandiwara membasi",
+     "tidy": "Sandiwara membasi",
+     "ms": 158,
+     "tokens": 5,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Badut saharaka  \nsekali-kali nama",
+     "tidy": "Badut saharaka\nsekali-kali nama",
+     "ms": 183,
+     "tokens": 12,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 72,
+     "rawLines": 2,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 12,
+     "craft": 12
+    }
+   ]
+  },
+  {
+   "seed": 1020,
+   "roundIndex": 2,
+   "formId": "quatrain-abab",
+   "difficulty": "player",
+   "card": "Bottom",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "Barang siapa tiada memegang agama,\nsekali-kali tiada boleh dibilangkan nama.",
+   "prompt": [
+    "You are Bottom in a duel of verses: theatrical, sharp, in character. Your line in the play: \"I have had a most rare vision. I have had a dream, past the wit of man.\" You write short verse and nothing else.",
+    "Form: Crossed Quatrain. Four lines: line 1 rhymes with 3, line 2 with 4.\nWrite exactly 4 lines.\nYour flourish: Start three words in one line with the same letter.\nYour challenger last said:\nBarang siapa tiada memegang agama,\nsekali-kali tiada boleh dibilangkan nama.\nAnswer them.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Start kerjaan",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/4"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "rhyme-2-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Start kerjaan",
+     "tidy": "Start kerjaan",
+     "ms": 85,
+     "tokens": 4,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Start penganak\n\nBertihan",
+     "tidy": "Start penganak\nBertihan",
+     "ms": 167,
+     "tokens": 9,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 2,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1021,
+   "roundIndex": 0,
+   "formId": "couplet",
+   "difficulty": "master",
+   "card": "Aphrodite",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Aphrodite in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Even the gods cannot resist the power of love.\" You write short verse and nothing else.",
+    "Form: Couplet. Two lines that rhyme.\nWrite exactly 2 lines.\nYour flourish: Use two words of 10 letters or more.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Dua tidak\nDari kata",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "2/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "tidak / kata"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "Dua tidak\n\nDari kata",
+     "tidy": "Dua tidak\nDari kata",
+     "ms": 139,
+     "tokens": 9,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 2,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "Ara ada kerucan dalam cira dari lalu",
+     "tidy": "Ara ada kerucan dalam cira dari lalu",
+     "ms": 187,
+     "tokens": 15,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Banyakkan kitaa satu beribahap, beri miran",
+     "tidy": "Banyakkan kitaa satu beribahap, beri miran",
+     "ms": 225,
+     "tokens": 18,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1021,
+   "roundIndex": 1,
+   "formId": "anaphora",
+   "difficulty": "master",
+   "card": "Zeus",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "Barang siapa mengenal yang empat,\nmaka ia itulah orang yang ma'rifat.",
+   "prompt": [
+    "You are Zeus in a duel of verses: theatrical, sharp, in character. Your line in the play: \"I am the cloud-gatherer, lord of the wide heavens.\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same word.\nWrite exactly 3 lines.\nYour flourish: Use two words of 10 letters or more.\nYour challenger last said:\nBarang siapa mengenal yang empat,\nmaka ia itulah orang yang ma'rifat.\nAnswer them.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Ada ada berkaran yam\nNgakdrak makam",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/3"
+    },
+    {
+     "id": "same-opening",
+     "met": false,
+     "detail": "ada · ngakdrak"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Ada ada berkaran yam\n\nNgakdrak makam",
+     "tidy": "Ada ada berkaran yam\nNgakdrak makam",
+     "ms": 207,
+     "tokens": 18,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Buran barang makamri dhubu",
+     "tidy": "Buran barang makamri dhubu",
+     "ms": 165,
+     "tokens": 12,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Penjelasan: Barang mengembarnya  \nNama: Ambo  \nVerse: Hii menginik",
+     "tidy": "Penjelasan: Barang mengembarnya\nNama: Ambo",
+     "ms": 346,
+     "tokens": 27,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1021,
+   "roundIndex": 2,
+   "formId": "quatrain-aabb",
+   "difficulty": "apprentice",
+   "card": "Samuel Coleridge",
+   "acrostic": null,
+   "relicWords": [
+    "mahkota",
+    "takhta",
+    "ambisi",
+    "penyihir",
+    "raja"
+   ],
+   "answering": "Barang siapa mengenal yang empat,\nmaka ia itulah orang yang ma'rifat.",
+   "prompt": [
+    "You are Samuel Coleridge in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Water, water, every where, nor any drop to drink.\" You write short verse and nothing else.",
+    "Form: Paired Quatrain. Four lines: the first two rhyme, and the last two rhyme.\nWrite exactly 4 lines.\nYour flourish: Give every line the same number of words.\nWork in at least two of these words: mahkota, takhta, ambisi, penyihir, raja.\nYour challenger last said:\nBarang siapa mengenal yang empat,\nmaka ia itulah orang yang ma'rifat.\nAnswer them.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Mahankota takhta ambisi penyihir",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/4"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "rhyme-3-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "Mahankota takhta ambisi penyihir",
+     "tidy": "Mahankota takhta ambisi penyihir",
+     "ms": 192,
+     "tokens": 12,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1022,
+   "roundIndex": 0,
+   "formId": "couplet",
+   "difficulty": "apprentice",
+   "card": "Lord Montague",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Lord Montague in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Many a morning hath he there been seen, with tears augmenting the fresh morning dew.\" You write short verse and nothing else.",
+    "Form: Couplet. Two lines that rhyme.\nWrite exactly 2 lines.\nYour flourish: Rhyme two words inside a single line.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Ruku oka raku",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Ruku oka raku",
+     "tidy": "Ruku oka raku",
+     "ms": 136,
+     "tokens": 6,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1022,
+   "roundIndex": 1,
+   "formId": "quatrain-aabb",
+   "difficulty": "player",
+   "card": "John Keats",
+   "acrostic": null,
+   "relicWords": [
+    "cincin",
+    "sumpah",
+    "malam",
+    "terbuang",
+    "ciuman"
+   ],
+   "answering": "Barang siapa mengenal Allah,\nsuruh dan tegahnya tiada ia menyalah.",
+   "prompt": [
+    "You are John Keats in a duel of verses: theatrical, sharp, in character. Your line in the play: \"A thing of beauty is a joy for ever: its loveliness increases.\" You write short verse and nothing else.",
+    "Form: Paired Quatrain. Four lines: the first two rhyme, and the last two rhyme.\nWrite exactly 4 lines.\nYour flourish: Give every line the same number of words.\nWork in at least two of these words: cincin, sumpah, malam, terbuang, ciuman.\nYour challenger last said:\nBarang siapa mengenal Allah,\nsuruh dan tegahnya tiada ia menyalah.\nAnswer them.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "ciuman",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/4"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "rhyme-3-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "ciuman",
+     "tidy": "ciuman",
+     "ms": 55,
+     "tokens": 2,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "cuminan",
+     "tidy": "cuminan",
+     "ms": 89,
+     "tokens": 3,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1022,
+   "roundIndex": 2,
+   "formId": "epistrophe",
+   "difficulty": "apprentice",
+   "card": "Hades",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "Barang siapa mengenal Allah,\nsuruh dan tegahnya tiada ia menyalah.",
+   "prompt": [
+    "You are Hades in a duel of verses: theatrical, sharp, in character. Your line in the play: \"All souls come to me in the end. I am patient.\" You write short verse and nothing else.",
+    "Form: Epistrophe. Three lines that all end on the same word.\nWrite exactly 3 lines.\nYour flourish: Turn a word of 5 letters or more from your opponent's last verse back on them.\nYour challenger last said:\nBarang siapa mengenal Allah,\nsuruh dan tegahnya tiada ia menyalah.\nAnswer them.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Pemilan bari bertigan",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "same-ending",
+     "met": false,
+     "detail": "bertigan"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Pemilan bari bertigan",
+     "tidy": "Pemilan bari bertigan",
+     "ms": 143,
+     "tokens": 9,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1023,
+   "roundIndex": 0,
+   "formId": "crescendo",
+   "difficulty": "player",
+   "card": "Brutus",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Brutus in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Not that I loved Caesar less, but that I loved Rome more.\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Call on a character by name.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Callon rahi\nOra kami ada?",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 14,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/3"
+    },
+    {
+     "id": "growing",
+     "met": true,
+     "detail": "2 < 3"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 14,
+   "drafts": [
+    {
+     "raw": "Callon rahi\n\nOra kami ada?",
+     "tidy": "Callon rahi\nOra kami ada?",
+     "ms": 157,
+     "tokens": 12,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 14,
+     "craft": 14
+    },
+    {
+     "raw": "Call on Kempa\n\nOpen la risinya",
+     "tidy": "Call on Kempa\nOpen la risinya",
+     "ms": 158,
+     "tokens": 10,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1023,
+   "roundIndex": 1,
+   "formId": "quatrain-abab",
+   "difficulty": "master",
+   "card": "Elizabeth Barrett Browning",
+   "acrostic": null,
+   "relicWords": [
+    "tengkorak",
+    "lelucon",
+    "kubur",
+    "tawa",
+    "debu"
+   ],
+   "answering": "Barang siapa mengenal diri,\nmaka telah mengenal akan Tuhan yang bahri.",
+   "prompt": [
+    "You are Elizabeth Barrett Browning in a duel of verses: theatrical, sharp, in character. Your line in the play: \"How do I love thee? Let me count the ways.\" You write short verse and nothing else.",
+    "Form: Crossed Quatrain. Four lines: line 1 rhymes with 3, line 2 with 4.\nWrite exactly 4 lines.\nYour flourish: Give every line the same number of words.\nWork in at least two of these words: tengkorak, lelucon, kubur, tawa, debu.\nYour challenger last said:\nBarang siapa mengenal diri,\nmaka telah mengenal akan Tuhan yang bahri.\nAnswer them.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Tawa debu",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/4"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "rhyme-2-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "Tawa debu",
+     "tidy": "Tawa debu",
+     "ms": 85,
+     "tokens": 4,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    },
+    {
+     "raw": "Tawa debu",
+     "tidy": "Tawa debu",
+     "ms": 87,
+     "tokens": 4,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    },
+    {
+     "raw": "Tada pembal je, kerama keidrang",
+     "tidy": "Tada pembal je, kerama keidrang",
+     "ms": 215,
+     "tokens": 12,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1023,
+   "roundIndex": 2,
+   "formId": "epistrophe",
+   "difficulty": "player",
+   "card": "Prospero",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "Barang siapa mengenal diri,\nmaka telah mengenal akan Tuhan yang bahri.",
+   "prompt": [
+    "You are Prospero in a duel of verses: theatrical, sharp, in character. Your line in the play: \"We are such stuff as dreams are made on.\" You write short verse and nothing else.",
+    "Form: Epistrophe. Three lines that all end on the same word.\nWrite exactly 3 lines.\nYour flourish: Make your last line your longest.\nYour challenger last said:\nBarang siapa mengenal diri,\nmaka telah mengenal akan Tuhan yang bahri.\nAnswer them.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Barang mengasapekan\nTelah memengara",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/3"
+    },
+    {
+     "id": "same-ending",
+     "met": false,
+     "detail": "mengasapekan · memengara"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Barang mengasapekan  \nTelah memengara",
+     "tidy": "Barang mengasapekan\nTelah memengara",
+     "ms": 212,
+     "tokens": 13,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Murak ma kita mengacana",
+     "tidy": "Murak ma kita mengacana",
+     "ms": 147,
+     "tokens": 9,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1024,
+   "roundIndex": 1,
+   "formId": "heroic-couplet",
+   "difficulty": "master",
+   "card": "Aphrodite",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "Wahai muda kenali dirimu,\nialah perahu tamsil tubuhmu,\ntiadalah berapa lama hidupmu,\nke akhirat jua kekal diammu.",
+   "prompt": [
+    "You are Aphrodite in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Even the gods cannot resist the power of love.\" You write short verse and nothing else.",
+    "Form: Heroic Couplet. Two rhyming lines of about ten syllables each, as Shakespeare closed his sonnets.\nWrite exactly 2 lines.\nYour flourish: Use two words of 10 letters or more.\nYour challenger last said:\nWahai muda kenali dirimu,\nialah perahu tamsil tubuhmu,\ntiadalah berapa lama hidupmu,\nke akhirat jua kekal diammu.\nAnswer them.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Tidak ada wahi muda kenali",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 4,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "syllables-1",
+     "met": true,
+     "detail": "11/10"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 4,
+   "drafts": [
+    {
+     "raw": "Dari bir sihara, bami?",
+     "tidy": "Dari bir sihara, bami?",
+     "ms": 160,
+     "tokens": 10,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Tidak ada wahi muda kenali",
+     "tidy": "Tidak ada wahi muda kenali",
+     "ms": 181,
+     "tokens": 12,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 4,
+     "craft": 4
+    },
+    {
+     "raw": "Diriman kejawa",
+     "tidy": "Diriman kejawa",
+     "ms": 105,
+     "tokens": 5,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1024,
+   "roundIndex": 2,
+   "formId": "epistrophe",
+   "difficulty": "master",
+   "card": "Odysseus",
+   "acrostic": null,
+   "relicWords": [
+    "emas",
+    "pilihan",
+    "ampun",
+    "timah",
+    "peti"
+   ],
+   "answering": "Wahai muda kenali dirimu,\nialah perahu tamsil tubuhmu,\ntiadalah berapa lama hidupmu,\nke akhirat jua kekal diammu.",
+   "prompt": [
+    "You are Odysseus in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Tell me, O Muse, of the man of many ways, who wandered far.\" You write short verse and nothing else.",
+    "Form: Epistrophe. Three lines that all end on the same word.\nWrite exactly 3 lines.\nYour flourish: Use two words of 10 letters or more.\nWork in at least two of these words: emas, pilihan, ampun, timah, peti.\nYour challenger last said:\nWahai muda kenali dirimu,\nialah perahu tamsil tubuhmu,\ntiadalah berapa lama hidupmu,\nke akhirat jua kekal diammu.\nAnswer them.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "peti",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "same-ending",
+     "met": false,
+     "detail": "peti"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "peti",
+     "tidy": "peti",
+     "ms": 74,
+     "tokens": 2,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Timahpeti",
+     "tidy": "Timahpeti",
+     "ms": 65,
+     "tokens": 4,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "peti",
+     "tidy": "peti",
+     "ms": 80,
+     "tokens": 2,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1025,
+   "roundIndex": 0,
+   "formId": "crescendo",
+   "difficulty": "master",
+   "card": "Titania",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Titania in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Come, sit thee down upon this flowery bed.\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Start three words in one line with the same letter.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Start penakan\nBereita kami kuang\nKami berhasilkan",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "growing",
+     "met": false,
+     "detail": "2 < 3 < 2"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "Start penakan\n\nBereita kami kuang\n\nKami berhasilkan",
+     "tidy": "Start penakan\nBereita kami kuang\nKami berhasilkan",
+     "ms": 243,
+     "tokens": 19,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "Start rahat",
+     "tidy": "Start rahat",
+     "ms": 78,
+     "tokens": 3,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Barako, kami dikiribu.",
+     "tidy": "Barako, kami dikiribu.",
+     "ms": 150,
+     "tokens": 11,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1025,
+   "roundIndex": 1,
+   "formId": "epistrophe",
+   "difficulty": "apprentice",
+   "card": "Malvolio",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "Hai muda arif-budiman,\nhasilkan kemudi dengan pedoman,\nalat perahumu jua kerjakan,\nitulah jalan membetuli insan.",
+   "prompt": [
+    "You are Malvolio in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Some are born great, some achieve greatness, and some have greatness thrust upon them.\" You write short verse and nothing else.",
+    "Form: Epistrophe. Three lines that all end on the same word.\nWrite exactly 3 lines.\nYour flourish: Keep every line to 6 words or fewer.\nYour challenger last said:\nHai muda arif-budiman,\nhasilkan kemudi dengan pedoman,\nalat perahumu jua kerjakan,\nitulah jalan membetuli insan.\nAnswer them.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Arabi mata bertaka",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "same-ending",
+     "met": false,
+     "detail": "bertaka"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Arabi mata bertaka",
+     "tidy": "Arabi mata bertaka",
+     "ms": 133,
+     "tokens": 7,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1025,
+   "roundIndex": 2,
+   "formId": "haiku",
+   "difficulty": "player",
+   "card": "Brutus",
+   "acrostic": null,
+   "relicWords": [
+    "emas",
+    "pilihan",
+    "ampun",
+    "timah",
+    "peti"
+   ],
+   "answering": "Hai muda arif-budiman,\nhasilkan kemudi dengan pedoman,\nalat perahumu jua kerjakan,\nitulah jalan membetuli insan.",
+   "prompt": [
+    "You are Brutus in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Not that I loved Caesar less, but that I loved Rome more.\" You write short verse and nothing else.",
+    "Form: Haiku. Three lines of 5, 7 and 5 syllables.\nWrite exactly 3 lines.\nYour flourish: Call on a character by name.\nWork in at least two of these words: emas, pilihan, ampun, timah, peti.\nYour challenger last said:\nHai muda arif-budiman,\nhasilkan kemudi dengan pedoman,\nalat perahumu jua kerjakan,\nitulah jalan membetuli insan.\nAnswer them.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Peti emas",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "syllables-1",
+     "met": false,
+     "detail": "4/5"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "syllables-3",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "Peti",
+     "tidy": "Peti",
+     "ms": 64,
+     "tokens": 2,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Peti emas",
+     "tidy": "Peti emas",
+     "ms": 109,
+     "tokens": 4,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1026,
+   "roundIndex": 0,
+   "formId": "quatrain-aabb",
+   "difficulty": "master",
+   "card": "Cassius",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Cassius in a duel of verses: theatrical, sharp, in character. Your line in the play: \"The fault, dear Brutus, is not in our stars, but in ourselves.\" You write short verse and nothing else.",
+    "Form: Paired Quatrain. Four lines: the first two rhyme, and the last two rhyme.\nWrite exactly 4 lines.\nYour flourish: Call on a character by name.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Indonesian: Kurunangan tapi kita, yakitkan kami",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/4"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "rhyme-3-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Indonesian: Kurunangan tapi kita, yakitkan kami",
+     "tidy": "Indonesian: Kurunangan tapi kita, yakitkan kami",
+     "ms": 224,
+     "tokens": 19,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Babad dihati makna berteng",
+     "tidy": "Babad dihati makna berteng",
+     "ms": 156,
+     "tokens": 11,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Call on Gigi\n\nOpen the deception\n\nFragrances leave their scent in the air",
+     "tidy": "Call on Gigi\nOpen the deception\nFragrances leave their scent in the air",
+     "ms": 229,
+     "tokens": 20,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 116,
+     "rawLines": 3,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1026,
+   "roundIndex": 1,
+   "formId": "heroic-couplet",
+   "difficulty": "apprentice",
+   "card": "Banquo",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "Berdiri aku di senja senyap\nCamar melayang menepis buih\nMelayah bakau mengurai puncak\nBerjulang datang ubur terkembang",
+   "prompt": [
+    "You are Banquo in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Thou shalt get kings, though thou be none.\" You write short verse and nothing else.",
+    "Form: Heroic Couplet. Two rhyming lines of about ten syllables each, as Shakespeare closed his sonnets.\nWrite exactly 2 lines.\nYour flourish: Repeat one strong word three times.\nYour challenger last said:\nBerdiri aku di senja senyap\nCamar melayang menepis buih\nMelayah bakau mengurai puncak\nBerjulang datang ubur terkembang\nAnswer them.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Melayah",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 2,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/2"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "syllables-1",
+     "met": false,
+     "detail": "3/10"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Melayah",
+     "tidy": "Melayah",
+     "ms": 99,
+     "tokens": 3,
+     "temperature": 0.7,
+     "maxTokens": 72,
+     "rawLines": 1,
+     "expectedLines": 2,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1026,
+   "roundIndex": 2,
+   "formId": "tercet",
+   "difficulty": "master",
+   "card": "Odysseus",
+   "acrostic": null,
+   "relicWords": [
+    "cincin",
+    "sumpah",
+    "malam",
+    "terbuang",
+    "ciuman"
+   ],
+   "answering": "Berdiri aku di senja senyap\nCamar melayang menepis buih\nMelayah bakau mengurai puncak\nBerjulang datang ubur terkembang",
+   "prompt": [
+    "You are Odysseus in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Tell me, O Muse, of the man of many ways, who wandered far.\" You write short verse and nothing else.",
+    "Form: Tercet. Three lines; the first and last rhyme.\nWrite exactly 3 lines.\nYour flourish: Use two words of 10 letters or more.\nWork in at least two of these words: cincin, sumpah, malam, terbuang, ciuman.\nYour challenger last said:\nBerdiri aku di senja senyap\nCamar melayang menepis buih\nMelayah bakau mengurai puncak\nBerjulang datang ubur terkembang\nAnswer them.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Melayah",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Melayah",
+     "tidy": "Melayah",
+     "ms": 72,
+     "tokens": 3,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Cerpa dan bermin  \nKumu henti semanga",
+     "tidy": "Cerpa dan bermin\nKumu henti semanga",
+     "ms": 194,
+     "tokens": 13,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Melayah",
+     "tidy": "Melayah",
+     "ms": 88,
+     "tokens": 3,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1027,
+   "roundIndex": 0,
+   "formId": "tercet",
+   "difficulty": "apprentice",
+   "card": "Miranda",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Miranda in a duel of verses: theatrical, sharp, in character. Your line in the play: \"O brave new world, that has such people in it!\" You write short verse and nothing else.",
+    "Form: Tercet. Three lines; the first and last rhyme.\nWrite exactly 3 lines.\nYour flourish: Make your last line your longest.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Tertecai, kerucan tua soba, penampuo lain.",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Tertecai, kerucan tua soba, penampuo lain.",
+     "tidy": "Tertecai, kerucan tua soba, penampuo lain.",
+     "ms": 246,
+     "tokens": 18,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1027,
+   "roundIndex": 1,
+   "formId": "quatrain-aabb",
+   "difficulty": "apprentice",
+   "card": "Elizabeth Barrett Browning",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "Angin pulang menyejuk bumi\nMenepuk teluk mengempas emas\nLari ke gunung memuncak sunyi\nBerayun-ayun di atas alas.",
+   "prompt": [
+    "You are Elizabeth Barrett Browning in a duel of verses: theatrical, sharp, in character. Your line in the play: \"How do I love thee? Let me count the ways.\" You write short verse and nothing else.",
+    "Form: Paired Quatrain. Four lines: the first two rhyme, and the last two rhyme.\nWrite exactly 4 lines.\nYour flourish: Give every line the same number of words.\nYour challenger last said:\nAngin pulang menyejuk bumi\nMenepuk teluk mengempas emas\nLari ke gunung memuncak sunyi\nBerayun-ayun di atas alas.\nAnswer them.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Lari ke gunung memuncak",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/4"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "rhyme-3-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Lari ke gunung memuncak",
+     "tidy": "Lari ke gunung memuncak",
+     "ms": 145,
+     "tokens": 8,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1027,
+   "roundIndex": 2,
+   "formId": "haiku",
+   "difficulty": "master",
+   "card": "Viola",
+   "acrostic": null,
+   "relicWords": [
+    "air mata",
+    "kebenaran",
+    "putri",
+    "hampa",
+    "hati"
+   ],
+   "answering": "Angin pulang menyejuk bumi\nMenepuk teluk mengempas emas\nLari ke gunung memuncak sunyi\nBerayun-ayun di atas alas.",
+   "prompt": [
+    "You are Viola in a duel of verses: theatrical, sharp, in character. Your line in the play: \"I am not what I am.\" You write short verse and nothing else.",
+    "Form: Haiku. Three lines of 5, 7 and 5 syllables.\nWrite exactly 3 lines.\nYour flourish: Keep every line to 6 words or fewer.\nWork in at least two of these words: air mata, kebenaran, putri, hampa, hati.\nYour challenger last said:\nAngin pulang menyejuk bumi\nMenepuk teluk mengempas emas\nLari ke gunung memuncak sunyi\nBerayun-ayun di atas alas.\nAnswer them.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Air mata kebenaran hati",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "syllables-1",
+     "met": false,
+     "detail": "10/5"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "syllables-3",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 9,
+   "drafts": [
+    {
+     "raw": "Air mata kebenaran hati",
+     "tidy": "Air mata kebenaran hati",
+     "ms": 111,
+     "tokens": 8,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 9
+    },
+    {
+     "raw": "Air mata kebenaran\n\nhati gunung",
+     "tidy": "Air mata kebenaran\nhati gunung",
+     "ms": 148,
+     "tokens": 11,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 9
+    },
+    {
+     "raw": "Air mata kebenaran mitri  \nHampa hati gunung",
+     "tidy": "Air mata kebenaran mitri\nHampa hati gunung",
+     "ms": 190,
+     "tokens": 15,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 9
+    }
+   ]
+  },
+  {
+   "seed": 1028,
+   "roundIndex": 0,
+   "formId": "crescendo",
+   "difficulty": "apprentice",
+   "card": "Elizabeth Barrett Browning",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Elizabeth Barrett Browning in a duel of verses: theatrical, sharp, in character. Your line in the play: \"How do I love thee? Let me count the ways.\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Give every line the same number of words.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Gading gerengan, semua ada",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "growing",
+     "met": false,
+     "detail": "4"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Gading gerengan, semua ada",
+     "tidy": "Gading gerengan, semua ada",
+     "ms": 160,
+     "tokens": 10,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1028,
+   "roundIndex": 1,
+   "formId": "acrostic",
+   "difficulty": "apprentice",
+   "card": "Romeo",
+   "acrostic": "kata",
+   "relicWords": [
+    "cincin",
+    "sumpah",
+    "malam",
+    "terbuang",
+    "ciuman"
+   ],
+   "answering": "Habis kikis\nsegala cintaku hilang terbang\npulang kembali aku padamu",
+   "prompt": [
+    "You are Romeo in a duel of verses: theatrical, sharp, in character. Your line in the play: \"But soft, what light through yonder window breaks?\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per letter: the first letters must spell KATA.\nWrite exactly 4 lines.\nYour flourish: Rhyme two words inside a single line.\nWork in at least two of these words: cincin, sumpah, malam, terbuang, ciuman.\nYour challenger last said:\nHabis kikis\nsegala cintaku hilang terbang\npulang kembali aku padamu\nAnswer them.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Rhat kikis\nsegala cintaku\nhilang terbang\npulang kembali",
+   "source": "model",
+   "lines": 4,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "4/4"
+    },
+    {
+     "id": "spells",
+     "met": false,
+     "detail": "RSHP"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 9,
+   "drafts": [
+    {
+     "raw": "Rhat kikis  \nsegala cintaku  \nhilang terbang  \npulang kembali",
+     "tidy": "Rhat kikis\nsegala cintaku\nhilang terbang\npulang kembali",
+     "ms": 313,
+     "tokens": 23,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 4,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 9
+    }
+   ]
+  },
+  {
+   "seed": 1029,
+   "roundIndex": 0,
+   "formId": "quatrain-abab",
+   "difficulty": "apprentice",
+   "card": "Lady Macbeth",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Lady Macbeth in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Come, you spirits that tend on mortal thoughts, unsex me here.\" You write short verse and nothing else.",
+    "Form: Crossed Quatrain. Four lines: line 1 rhymes with 3, line 2 with 4.\nWrite exactly 4 lines.\nYour flourish: Repeat one strong word three times.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Tada, mempercepat.",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/4"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "rhyme-2-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Tada, mempercepat.",
+     "tidy": "Tada, mempercepat.",
+     "ms": 113,
+     "tokens": 8,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1030,
+   "roundIndex": 0,
+   "formId": "haiku",
+   "difficulty": "apprentice",
+   "card": "Odysseus",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Odysseus in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Tell me, O Muse, of the man of many ways, who wandered far.\" You write short verse and nothing else.",
+    "Form: Haiku. Three lines of 5, 7 and 5 syllables.\nWrite exactly 3 lines.\nYour flourish: Use two words of 10 letters or more.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Tiga kita di pernah, tiga sisa kami.\nPengalani hentipunan 10, penganada tahun.",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/3"
+    },
+    {
+     "id": "syllables-1",
+     "met": false,
+     "detail": "13/5"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "14/7"
+    },
+    {
+     "id": "syllables-3",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Tiga kita di pernah, tiga sisa kami.  \nPengalani hentipunan 10, penganada tahun.",
+     "tidy": "Tiga kita di pernah, tiga sisa kami.\nPengalani hentipunan 10, penganada tahun.",
+     "ms": 447,
+     "tokens": 35,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1030,
+   "roundIndex": 1,
+   "formId": "quatrain-aabb",
+   "difficulty": "player",
+   "card": "Lady Macbeth",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "cemara menderai sampai jauh\nterasa hari akan jadi malam\nada beberapa dahan di tingkap merapuh\ndipukul angin yang terpendam",
+   "prompt": [
+    "You are Lady Macbeth in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Come, you spirits that tend on mortal thoughts, unsex me here.\" You write short verse and nothing else.",
+    "Form: Paired Quatrain. Four lines: the first two rhyme, and the last two rhyme.\nWrite exactly 4 lines.\nYour flourish: Repeat one strong word three times.\nYour challenger last said:\ncemara menderai sampai jauh\nterasa hari akan jadi malam\nada beberapa dahan di tingkap merapuh\ndipukul angin yang terpendam\nAnswer them.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Dipukul angin yang terpendam",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/4"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "rhyme-3-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Dipukul angin yang terpendam",
+     "tidy": "Dipukul angin yang terpendam",
+     "ms": 153,
+     "tokens": 10,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Dipukul angin yang terpendam",
+     "tidy": "Dipukul angin yang terpendam",
+     "ms": 154,
+     "tokens": 10,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1031,
+   "roundIndex": 2,
+   "formId": "quatrain-aabb",
+   "difficulty": "master",
+   "card": "Aphrodite",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "Melangkahkan aku bukan tuak menggelegak\nCumbu-buatan satu biduan\nKujauhi ahli agama serta lembing katanya",
+   "prompt": [
+    "You are Aphrodite in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Even the gods cannot resist the power of love.\" You write short verse and nothing else.",
+    "Form: Paired Quatrain. Four lines: the first two rhyme, and the last two rhyme.\nWrite exactly 4 lines.\nYour flourish: Use two words of 10 letters or more.\nYour challenger last said:\nMelangkahkan aku bukan tuak menggelegak\nCumbu-buatan satu biduan\nKujauhi ahli agama serta lembing katanya\nAnswer them.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Kali kitaanah, kasabih ahli",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/4"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "rhyme-3-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Kali kitaanah, kasabih ahli",
+     "tidy": "Kali kitaanah, kasabih ahli",
+     "ms": 172,
+     "tokens": 12,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Lebih kewiren",
+     "tidy": "Lebih kewiren",
+     "ms": 136,
+     "tokens": 7,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Karaktera kami adaliah",
+     "tidy": "Karaktera kami adaliah",
+     "ms": 163,
+     "tokens": 8,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1032,
+   "roundIndex": 0,
+   "formId": "quatrain-aabb",
+   "difficulty": "apprentice",
+   "card": "Malvolio",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Malvolio in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Some are born great, some achieve greatness, and some have greatness thrust upon them.\" You write short verse and nothing else.",
+    "Form: Paired Quatrain. Four lines: the first two rhyme, and the last two rhyme.\nWrite exactly 4 lines.\nYour flourish: Keep every line to 6 words or fewer.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Tiga kami keji, kerangan menjan.",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/4"
+    },
+    {
+     "id": "rhyme-1-2",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "rhyme-3-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Tiga kami keji, kerangan menjan.",
+     "tidy": "Tiga kami keji, kerangan menjan.",
+     "ms": 192,
+     "tokens": 13,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1032,
+   "roundIndex": 2,
+   "formId": "crescendo",
+   "difficulty": "player",
+   "card": "Prince Escalus",
+   "acrostic": null,
+   "relicWords": [
+    "topeng",
+    "mimpi",
+    "badut",
+    "sandiwara",
+    "bulan"
+   ],
+   "answering": "Barang siapa tiada memegang agama,\nsekali-kali tiada boleh dibilangkan nama.",
+   "prompt": [
+    "You are Prince Escalus in a duel of verses: theatrical, sharp, in character. Your line in the play: \"If ever you disturb our streets again, your lives shall pay the forfeit of the peace.\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Turn a word of 5 letters or more from your opponent's last verse back on them.\nWork in at least two of these words: topeng, mimpi, badut, sandiwara, bulan.\nYour challenger last said:\nBarang siapa tiada memegang agama,\nsekali-kali tiada boleh dibilangkan nama.\nAnswer them.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Baraannumtiya memegang agama\nsekali-kalibolnama",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/3"
+    },
+    {
+     "id": "growing",
+     "met": false,
+     "detail": "3 < 1"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Baraannumtiya memegang agama  \nsekali-kalibolnama",
+     "tidy": "Baraannumtiya memegang agama\nsekali-kalibolnama",
+     "ms": 268,
+     "tokens": 20,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Baram bumi di taman memoggan  \nsekali-bulan membani nama",
+     "tidy": "Baram bumi di taman memoggan\nsekali-bulan membani nama",
+     "ms": 251,
+     "tokens": 20,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1033,
+   "roundIndex": 0,
+   "formId": "quatrain-abab",
+   "difficulty": "player",
+   "card": "Lord Montague",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Lord Montague in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Many a morning hath he there been seen, with tears augmenting the fresh morning dew.\" You write short verse and nothing else.",
+    "Form: Crossed Quatrain. Four lines: line 1 rhymes with 3, line 2 with 4.\nWrite exactly 4 lines.\nYour flourish: Rhyme two words inside a single line.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Ruhan mukungkung, tembang makna",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/4"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "rhyme-2-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Ruhan mukungkung, tembang makna",
+     "tidy": "Ruhan mukungkung, tembang makna",
+     "ms": 217,
+     "tokens": 15,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Rahu rau sahan",
+     "tidy": "Rahu rau sahan",
+     "ms": 87,
+     "tokens": 6,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1033,
+   "roundIndex": 2,
+   "formId": "crescendo",
+   "difficulty": "master",
+   "card": "Oberon",
+   "acrostic": null,
+   "relicWords": [
+    "tengkorak",
+    "lelucon",
+    "kubur",
+    "tawa",
+    "debu"
+   ],
+   "answering": "Barang siapa mengenal yang empat,\nmaka ia itulah orang yang ma'rifat.",
+   "prompt": [
+    "You are Oberon in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Ill met by moonlight, proud Titania.\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Start three words in one line with the same letter.\nWork in at least two of these words: tengkorak, lelucon, kubur, tawa, debu.\nYour challenger last said:\nBarang siapa mengenal yang empat,\nmaka ia itulah orang yang ma'rifat.\nAnswer them.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Tawa debu",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "growing",
+     "met": false,
+     "detail": "2"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "Tawa debu",
+     "tidy": "Tawa debu",
+     "ms": 104,
+     "tokens": 4,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    },
+    {
+     "raw": "Tawa debu",
+     "tidy": "Tawa debu",
+     "ms": 81,
+     "tokens": 4,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 6
+    },
+    {
+     "raw": "Taban da barang, maka ya itulah.",
+     "tidy": "Taban da barang, maka ya itulah.",
+     "ms": 186,
+     "tokens": 13,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1034,
+   "roundIndex": 1,
+   "formId": "anaphora",
+   "difficulty": "apprentice",
+   "card": "Medusa",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "Barang siapa mengenal Allah,\nsuruh dan tegahnya tiada ia menyalah.",
+   "prompt": [
+    "You are Medusa in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Look upon me, if you dare. My gaze is the last thing you will see.\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same word.\nWrite exactly 3 lines.\nYour flourish: Turn a word of 5 letters or more from your opponent's last verse back on them.\nYour challenger last said:\nBarang siapa mengenal Allah,\nsuruh dan tegahnya tiada ia menyalah.\nAnswer them.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Parang adanya",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "same-opening",
+     "met": false,
+     "detail": "parang"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Parang adanya",
+     "tidy": "Parang adanya",
+     "ms": 117,
+     "tokens": 4,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1035,
+   "roundIndex": 0,
+   "formId": "anaphora",
+   "difficulty": "player",
+   "card": "Cassius",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Cassius in a duel of verses: theatrical, sharp, in character. Your line in the play: \"The fault, dear Brutus, is not in our stars, but in ourselves.\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same word.\nWrite exactly 3 lines.\nYour flourish: Call on a character by name.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Call on Lana\nTaunt tu tua",
+   "source": "model",
+   "lines": 2,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "2/3"
+    },
+    {
+     "id": "same-opening",
+     "met": false,
+     "detail": "call · taunt"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Call on Lana\n\nTaunt tu tua",
+     "tidy": "Call on Lana\nTaunt tu tua",
+     "ms": 166,
+     "tokens": 10,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Call on la kami\n\nTaunt la nema",
+     "tidy": "Call on la kami\nTaunt la nema",
+     "ms": 164,
+     "tokens": 11,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 2,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1036,
+   "roundIndex": 0,
+   "formId": "quatrain-abab",
+   "difficulty": "master",
+   "card": "Friar Lawrence",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Friar Lawrence in a duel of verses: theatrical, sharp, in character. Your line in the play: \"These violent delights have violent ends.\" You write short verse and nothing else.",
+    "Form: Crossed Quatrain. Four lines: line 1 rhymes with 3, line 2 with 4.\nWrite exactly 4 lines.\nYour flourish: Turn a word of 5 letters or more from your opponent's last verse back on them.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Tiranan dari perit, penyanyakan peningkunganan.",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/4"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "rhyme-2-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Tiranan dari perit, penyanyakan peningkunganan.",
+     "tidy": "Tiranan dari perit, penyanyakan peningkunganan.",
+     "ms": 258,
+     "tokens": 19,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Tata hutan tersiran",
+     "tidy": "Tata hutan tersiran",
+     "ms": 115,
+     "tokens": 7,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Tercaïna yang bersedia dalam batik di taman kerajuran  \nBeresa kami terkini kitaikan",
+     "tidy": "Tercaïna yang bersedia dalam batik di taman kerajuran\nBeresa kami terkini kitaikan",
+     "ms": 421,
+     "tokens": 31,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 116,
+     "rawLines": 2,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1036,
+   "roundIndex": 1,
+   "formId": "crescendo",
+   "difficulty": "apprentice",
+   "card": "Paris",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "Wahai muda kenali dirimu,\nialah perahu tamsil tubuhmu,\ntiadalah berapa lama hidupmu,\nke akhirat jua kekal diammu.",
+   "prompt": [
+    "You are Paris in a duel of verses: theatrical, sharp, in character. Your line in the play: \"These times of woe afford no time to woo.\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Turn a word of 5 letters or more from your opponent's last verse back on them.\nYour challenger last said:\nWahai muda kenali dirimu,\nialah perahu tamsil tubuhmu,\ntiadalah berapa lama hidupmu,\nke akhirat jua kekal diammu.\nAnswer them.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Tidapakan berapa",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "growing",
+     "met": false,
+     "detail": "2"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Tidapakan berapa",
+     "tidy": "Tidapakan berapa",
+     "ms": 124,
+     "tokens": 7,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1037,
+   "roundIndex": 1,
+   "formId": "anaphora",
+   "difficulty": "master",
+   "card": "Lady Capulet",
+   "acrostic": null,
+   "relicWords": [
+    "cincin",
+    "sumpah",
+    "malam",
+    "terbuang",
+    "ciuman"
+   ],
+   "answering": "Hai muda arif-budiman,\nhasilkan kemudi dengan pedoman,\nalat perahumu jua kerjakan,\nitulah jalan membetuli insan.",
+   "prompt": [
+    "You are Lady Capulet in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Marry, that marry is the very theme I came to talk of.\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same word.\nWrite exactly 3 lines.\nYour flourish: Cry out: end a line with an exclamation mark.\nWork in at least two of these words: cincin, sumpah, malam, terbuang, ciuman.\nYour challenger last said:\nHai muda arif-budiman,\nhasilkan kemudi dengan pedoman,\nalat perahumu jua kerjakan,\nitulah jalan membetuli insan.\nAnswer them.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Cinyamin\nsumpah\nterbuang",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-opening",
+     "met": false,
+     "detail": "cinyamin · sumpah · terbuang"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 12,
+   "drafts": [
+    {
+     "raw": "Cirka terbuang",
+     "tidy": "Cirka terbuang",
+     "ms": 136,
+     "tokens": 6,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Cinyamin\n\nsumpah\n\nterbuang",
+     "tidy": "Cinyamin\nsumpah\nterbuang",
+     "ms": 192,
+     "tokens": 11,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 12
+    },
+    {
+     "raw": "Ciruk di arah budi\n\nterbuang jakit kecina\n\ntiahjalam",
+     "tidy": "Ciruk di arah budi\nterbuang jakit kecina\ntiahjalam",
+     "ms": 277,
+     "tokens": 22,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1038,
+   "roundIndex": 1,
+   "formId": "quatrain-abab",
+   "difficulty": "apprentice",
+   "card": "Percy Bysshe Shelley",
+   "acrostic": null,
+   "relicWords": [
+    "mahkota",
+    "takhta",
+    "ambisi",
+    "penyihir",
+    "raja"
+   ],
+   "answering": "Berdiri aku di senja senyap\nCamar melayang menepis buih\nMelayah bakau mengurai puncak\nBerjulang datang ubur terkembang",
+   "prompt": [
+    "You are Percy Bysshe Shelley in a duel of verses: theatrical, sharp, in character. Your line in the play: \"If Winter comes, can Spring be far behind?\" You write short verse and nothing else.",
+    "Form: Crossed Quatrain. Four lines: line 1 rhymes with 3, line 2 with 4.\nWrite exactly 4 lines.\nYour flourish: End your verse on the same word it began with.\nWork in at least two of these words: mahkota, takhta, ambisi, penyihir, raja.\nYour challenger last said:\nBerdiri aku di senja senyap\nCamar melayang menepis buih\nMelayah bakau mengurai puncak\nBerjulang datang ubur terkembang\nAnswer them.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Raja berjulang",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/4"
+    },
+    {
+     "id": "rhyme-1-3",
+     "met": false,
+     "detail": "—"
+    },
+    {
+     "id": "rhyme-2-4",
+     "met": false,
+     "detail": "—"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Raja berjulang",
+     "tidy": "Raja berjulang",
+     "ms": 131,
+     "tokens": 6,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 1,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1038,
+   "roundIndex": 2,
+   "formId": "anaphora",
+   "difficulty": "apprentice",
+   "card": "Miranda",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "Berdiri aku di senja senyap\nCamar melayang menepis buih\nMelayah bakau mengurai puncak\nBerjulang datang ubur terkembang",
+   "prompt": [
+    "You are Miranda in a duel of verses: theatrical, sharp, in character. Your line in the play: \"O brave new world, that has such people in it!\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same word.\nWrite exactly 3 lines.\nYour flourish: Make your last line your longest.\nYour challenger last said:\nBerdiri aku di senja senyap\nCamar melayang menepis buih\nMelayah bakau mengurai puncak\nBerjulang datang ubur terkembang\nAnswer them.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Melayah",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "same-opening",
+     "met": false,
+     "detail": "melayah"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Melayah",
+     "tidy": "Melayah",
+     "ms": 77,
+     "tokens": 3,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1040,
+   "roundIndex": 2,
+   "formId": "anaphora",
+   "difficulty": "player",
+   "card": "Mary Shelley",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "Habis kikis\nsegala cintaku hilang terbang\npulang kembali aku padamu",
+   "prompt": [
+    "You are Mary Shelley in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Beware; for I am fearless, and therefore powerful.\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same word.\nWrite exactly 3 lines.\nYour flourish: End your verse on the same word it began with.\nYour challenger last said:\nHabis kikis\nsegala cintaku hilang terbang\npulang kembali aku padamu\nAnswer them.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Habis kikis segala cintaku hilang terbang",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "same-opening",
+     "met": false,
+     "detail": "habis"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "Habis kikis segala cintaku hilang terbang",
+     "tidy": "Habis kikis segala cintaku hilang terbang",
+     "ms": 208,
+     "tokens": 14,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Habis kikis segala cintaku hilang terbang",
+     "tidy": "Habis kikis segala cintaku hilang terbang",
+     "ms": 204,
+     "tokens": 14,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1043,
+   "roundIndex": 0,
+   "formId": "anaphora",
+   "difficulty": "master",
+   "card": "Benvolio",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Benvolio in a duel of verses: theatrical, sharp, in character. Your line in the play: \"I do but keep the peace. Put up thy sword.\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same word.\nWrite exactly 3 lines.\nYour flourish: Rhyme two words inside a single line.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "Rumah adaan\nKita kami mengakambil\nTumbu kamui",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-opening",
+     "met": false,
+     "detail": "rumah · kita · tumbu"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "Rahu rau",
+     "tidy": "Rahu rau",
+     "ms": 98,
+     "tokens": 4,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Rek tapi penitensi",
+     "tidy": "Rek tapi penitensi",
+     "ms": 127,
+     "tokens": 7,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "Rumah adaan  \nKita kami mengakambil  \nTumbu kamui",
+     "tidy": "Rumah adaan\nKita kami mengakambil\nTumbu kamui",
+     "ms": 338,
+     "tokens": 21,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1054,
+   "roundIndex": 2,
+   "formId": "anaphora",
+   "difficulty": "apprentice",
+   "card": "Benvolio",
+   "acrostic": null,
+   "relicWords": [
+    "belati",
+    "darah",
+    "tidur",
+    "bayangan",
+    "tangan"
+   ],
+   "answering": "cemara menderai sampai jauh\nterasa hari akan jadi malam\nada beberapa dahan di tingkap merapuh\ndipukul angin yang terpendam",
+   "prompt": [
+    "You are Benvolio in a duel of verses: theatrical, sharp, in character. Your line in the play: \"I do but keep the peace. Put up thy sword.\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same word.\nWrite exactly 3 lines.\nYour flourish: Rhyme two words inside a single line.\nWork in at least two of these words: belati, darah, tidur, bayangan, tangan.\nYour challenger last said:\ncemara menderai sampai jauh\nterasa hari akan jadi malam\nada beberapa dahan di tingkap merapuh\ndipukul angin yang terpendam\nAnswer them.\nWrite only the verse, in Indonesian. No title, no notes, no explanation."
+   ],
+   "verse": "bayangan",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "same-opening",
+     "met": false,
+     "detail": "bayangan"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "bayangan",
+     "tidy": "bayangan",
+     "ms": 128,
+     "tokens": 3,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  }
+ ],
+ "seconds": 30,
+ "setAside": {
+  "date": "2026-11-18T00:36:06.671Z",
+  "commit": "9cec28a2afc5a8142ed2b21c9aaae5b44fbb8de7",
+  "why": "100 of 100 plays cannot be re-scored with the code now; run the cell again (scripts/model-eval/run.mjs)",
+  "plays": [
+   "seed 1001 round 0: the prompt changed",
+   "seed 1001 round 1: the prompt changed",
+   "seed 1001 round 2: the prompt changed",
+   "seed 1002 round 0: the prompt changed",
+   "seed 1002 round 1: the prompt changed",
+   "seed 1002 round 2: the prompt changed",
+   "seed 1003 round 0: the prompt changed",
+   "seed 1003 round 1: the prompt changed",
+   "seed 1003 round 2: the prompt changed",
+   "seed 1004 round 0: the prompt changed",
+   "seed 1004 round 1: the prompt changed",
+   "seed 1004 round 2: the prompt changed",
+   "seed 1005 round 0: the prompt changed",
+   "seed 1005 round 1: the prompt changed",
+   "seed 1005 round 2: the prompt changed",
+   "seed 1006 round 0: the prompt changed",
+   "seed 1006 round 1: the prompt changed",
+   "seed 1006 round 2: the prompt changed",
+   "seed 1007 round 0: the prompt changed",
+   "seed 1007 round 1: the prompt changed",
+   "seed 1007 round 2: the prompt changed",
+   "seed 1008 round 0: the prompt changed",
+   "seed 1008 round 1: the prompt changed",
+   "seed 1008 round 2: the prompt changed",
+   "seed 1009 round 0: the prompt changed",
+   "seed 1009 round 1: the prompt changed",
+   "seed 1009 round 2: the prompt changed",
+   "seed 1010 round 0: the prompt changed",
+   "seed 1010 round 1: the prompt changed",
+   "seed 1010 round 2: the prompt changed",
+   "seed 1011 round 0: the prompt changed",
+   "seed 1011 round 1: the prompt changed",
+   "seed 1011 round 2: the prompt changed",
+   "seed 1012 round 0: the prompt changed",
+   "seed 1012 round 1: the prompt changed",
+   "seed 1012 round 2: the prompt changed",
+   "seed 1013 round 0: the prompt changed",
+   "seed 1013 round 1: the prompt changed",
+   "seed 1013 round 2: the prompt changed",
+   "seed 1014 round 0: the prompt changed",
+   "seed 1014 round 1: the prompt changed",
+   "seed 1014 round 2: the prompt changed",
+   "seed 1015 round 0: the prompt changed",
+   "seed 1015 round 1: the prompt changed",
+   "seed 1015 round 2: the prompt changed",
+   "seed 1016 round 0: the prompt changed",
+   "seed 1016 round 1: the prompt changed",
+   "seed 1016 round 2: the prompt changed",
+   "seed 1017 round 0: the prompt changed",
+   "seed 1017 round 1: the prompt changed",
+   "seed 1017 round 2: the prompt changed",
+   "seed 1018 round 0: the prompt changed",
+   "seed 1018 round 1: the prompt changed",
+   "seed 1018 round 2: the prompt changed",
+   "seed 1019 round 0: the prompt changed",
+   "seed 1019 round 1: the prompt changed",
+   "seed 1019 round 2: the prompt changed",
+   "seed 1020 round 0: the prompt changed",
+   "seed 1020 round 1: the prompt changed",
+   "seed 1020 round 2: the prompt changed",
+   "seed 1021 round 0: the prompt changed",
+   "seed 1021 round 1: the prompt changed",
+   "seed 1021 round 2: the prompt changed",
+   "seed 1022 round 0: the prompt changed",
+   "seed 1022 round 1: the prompt changed",
+   "seed 1022 round 2: the prompt changed",
+   "seed 1023 round 0: the prompt changed",
+   "seed 1023 round 1: the prompt changed",
+   "seed 1023 round 2: the prompt changed",
+   "seed 1024 round 1: the prompt changed",
+   "seed 1024 round 2: the prompt changed",
+   "seed 1025 round 0: the prompt changed",
+   "seed 1025 round 1: the prompt changed",
+   "seed 1025 round 2: the prompt changed",
+   "seed 1026 round 0: the prompt changed",
+   "seed 1026 round 1: the prompt changed",
+   "seed 1026 round 2: the prompt changed",
+   "seed 1027 round 0: the prompt changed",
+   "seed 1027 round 1: the prompt changed",
+   "seed 1027 round 2: the prompt changed",
+   "seed 1028 round 0: the prompt changed",
+   "seed 1028 round 1: the prompt changed",
+   "seed 1029 round 0: the prompt changed",
+   "seed 1030 round 0: the prompt changed",
+   "seed 1030 round 1: the prompt changed",
+   "seed 1031 round 2: the prompt changed",
+   "seed 1032 round 0: the prompt changed",
+   "seed 1032 round 2: the prompt changed",
+   "seed 1033 round 0: the prompt changed",
+   "seed 1033 round 2: the prompt changed",
+   "seed 1034 round 1: the prompt changed",
+   "seed 1035 round 0: the prompt changed",
+   "seed 1036 round 0: the prompt changed",
+   "seed 1036 round 1: the prompt changed",
+   "seed 1037 round 1: the prompt changed",
+   "seed 1038 round 1: the prompt changed",
+   "seed 1038 round 2: the prompt changed",
+   "seed 1040 round 2: the prompt changed",
+   "seed 1043 round 0: the prompt changed",
+   "seed 1054 round 2: the prompt changed"
+  ]
+ }
+}

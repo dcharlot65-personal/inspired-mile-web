@@ -1,0 +1,4020 @@
+{
+ "tier": "grand",
+ "lang": "zh",
+ "task": "write",
+ "model": "onnx-community/gemma-4-E2B-it-ONNX",
+ "dtype": "q4f16",
+ "judgeMethod": "compare",
+ "date": "2026-11-16T23:27:31.892Z",
+ "commit": "f32a0aff8a8ffcfd3a2589b046210ca7f46aebc4",
+ "transformers": "4.3.2",
+ "gpu": {
+  "vendor": "apple",
+  "architecture": "metal-3",
+  "device": "",
+  "description": ""
+ },
+ "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/159.0.8154.6 Safari/537.36",
+ "origin": "http://localhost:47731",
+ "forms": [
+  "anaphora",
+  "acrostic",
+  "crescendo",
+  "epistrophe",
+  "haiku",
+  "jueju"
+ ],
+ "perForm": 10,
+ "plays": [
+  {
+   "seed": 1001,
+   "roundIndex": 0,
+   "formId": "crescendo",
+   "difficulty": "apprentice",
+   "card": "Ariel",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Ariel in a duel of verses: theatrical, sharp, in character. Your line in the play: \"All hail, great master! Grave sir, hail!\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Make your last line your longest.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "你这孱弱的言辞，如同枯叶，徒增嘲讽之声，\n我的剑锋已然灼热，足以熔化你虚妄的辩驳，\nall hail, great master! grave sir, hail! 吾之赞颂将穿透这无知的迷雾，直至你的灵魂彻底崩塌！",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": true,
+   "formEarned": 20,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "growing",
+     "met": true,
+     "detail": "17 < 18 < 53"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 30,
+   "drafts": [
+    {
+     "raw": "你这孱弱的言辞，如同枯叶，徒增嘲讽之声，\n我的剑锋已然灼热，足以熔化你虚妄的辩驳，\nall hail, great master! grave sir, hail! 吾之赞颂将穿透这无知的迷雾，直至你的灵魂彻底崩塌！",
+     "tidy": "你这孱弱的言辞，如同枯叶，徒增嘲讽之声，\n我的剑锋已然灼热，足以熔化你虚妄的辩驳，\nall hail, great master! grave sir, hail! 吾之赞颂将穿透这无知的迷雾，直至你的灵魂彻底崩塌！",
+     "ms": 15499,
+     "tokens": 71,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 30
+    }
+   ]
+  },
+  {
+   "seed": 1001,
+   "roundIndex": 1,
+   "formId": "haiku",
+   "difficulty": "apprentice",
+   "card": "Christina Rossetti",
+   "acrostic": null,
+   "relicWords": [
+    "戒指",
+    "誓言",
+    "黑夜",
+    "放逐",
+    "亲吻"
+   ],
+   "answering": "離離原上草，一歲一枯榮。\n野火燒不盡，春風吹又生。",
+   "prompt": [
+    "You are Christina Rossetti in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Remember me when I am gone away, gone far away into the silent land.\" You write short verse and nothing else.",
+    "Form: Haiku. Three lines of 5, 7 and 5 characters.\nWrite exactly 3 lines.\nYour flourish: Give every line the same number of characters.\nWork in at least two of these words: 戒指, 誓言, 黑夜, 放逐, 亲吻.\nYour challenger last said:\n離離原上草，一歲一枯榮。\n野火燒不盡，春風吹又生。\nAnswer them.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "戒指刻下盟,\n黑夜誓言深重,\n放逐远方去。",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 15,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "syllables-1",
+     "met": true,
+     "detail": "5/5"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "6/7"
+    },
+    {
+     "id": "syllables-3",
+     "met": true,
+     "detail": "5/5"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 21,
+   "drafts": [
+    {
+     "raw": "戒指刻下盟,\n黑夜誓言深重,\n放逐远方去。",
+     "tidy": "戒指刻下盟,\n黑夜誓言深重,\n放逐远方去。",
+     "ms": 5564,
+     "tokens": 20,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 15,
+     "craft": 21
+    }
+   ]
+  },
+  {
+   "seed": 1001,
+   "roundIndex": 2,
+   "formId": "epistrophe",
+   "difficulty": "apprentice",
+   "card": "Apollo",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "離離原上草，一歲一枯榮。\n野火燒不盡，春風吹又生。",
+   "prompt": [
+    "You are Apollo in a duel of verses: theatrical, sharp, in character. Your line in the play: \"I am the god of song, of healing, and of the radiant sun.\" You write short verse and nothing else.",
+    "Form: Epistrophe. Three lines that all end on the same character.\nWrite exactly 3 lines.\nYour flourish: Use two words of 3 letters or more.\nYour challenger last said:\n離離原上草，一歲一枯榮。\n野火燒不盡，春風吹又生。\nAnswer them.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "歌颂万物的光芒。\n治愈心灵的伤痛。\n照耀生命无疆。",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-ending",
+     "met": false,
+     "detail": "芒 · 痛 · 疆"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "歌颂万物的光芒。\n治愈心灵的伤痛。\n照耀生命无疆。",
+     "tidy": "歌颂万物的光芒。\n治愈心灵的伤痛。\n照耀生命无疆。",
+     "ms": 5396,
+     "tokens": 22,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1002,
+   "roundIndex": 0,
+   "formId": "haiku",
+   "difficulty": "player",
+   "card": "Lady Macbeth",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Lady Macbeth in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Come, you spirits that tend on mortal thoughts, unsex me here.\" You write short verse and nothing else.",
+    "Form: Haiku. Three lines of 5, 7 and 5 characters.\nWrite exactly 3 lines.\nYour flourish: Repeat one strong word three times.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "剑光闪烁，\n我将永不退缩，\n血色铸魂。",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 5,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "syllables-1",
+     "met": false,
+     "detail": "4/5"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "6/7"
+    },
+    {
+     "id": "syllables-3",
+     "met": false,
+     "detail": "4/5"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 5,
+   "drafts": [
+    {
+     "raw": "剑光闪烁，\n我将永不退缩，\n血色铸魂。",
+     "tidy": "剑光闪烁，\n我将永不退缩，\n血色铸魂。",
+     "ms": 4190,
+     "tokens": 19,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 5,
+     "craft": 5
+    },
+    {
+     "raw": "血！血！血！\n污秽入我身，\n不离！不离！不离！",
+     "tidy": "血！血！血！\n污秽入我身，\n不离！不离！不离！",
+     "ms": 5844,
+     "tokens": 23,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 5,
+     "craft": 5
+    }
+   ]
+  },
+  {
+   "seed": 1002,
+   "roundIndex": 1,
+   "formId": "anaphora",
+   "difficulty": "apprentice",
+   "card": "Juliet",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "松下問童子，言師採藥去。\n只在此山中，雲深不知處。",
+   "prompt": [
+    "You are Juliet in a duel of verses: theatrical, sharp, in character. Your line in the play: \"What's in a name? That which we call a rose...\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same character.\nWrite exactly 3 lines.\nYour flourish: Cry out: end a line with an exclamation mark.\nYour challenger last said:\n松下問童子，言師採藥去。\n只在此山中，雲深不知處。\nAnswer them.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "我问什么？ 那是玫瑰！\n我问什么？ 那是玫瑰！\n我问什么？ 那是玫瑰！",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": true,
+   "formEarned": 20,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-opening",
+     "met": true,
+     "detail": "我 · 我 · 我"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 30,
+   "drafts": [
+    {
+     "raw": "我问什么？ 那是玫瑰！\n我问什么？ 那是玫瑰！\n我问什么？ 那是玫瑰！",
+     "tidy": "我问什么？ 那是玫瑰！\n我问什么？ 那是玫瑰！\n我问什么？ 那是玫瑰！",
+     "ms": 7141,
+     "tokens": 26,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 30
+    }
+   ]
+  },
+  {
+   "seed": 1002,
+   "roundIndex": 2,
+   "formId": "epistrophe",
+   "difficulty": "player",
+   "card": "Puck",
+   "acrostic": null,
+   "relicWords": [
+    "面具",
+    "梦",
+    "丑角",
+    "戏",
+    "月亮"
+   ],
+   "answering": "松下問童子，言師採藥去。\n只在此山中，雲深不知處。",
+   "prompt": [
+    "You are Puck in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Lord, what fools these mortals be!\" You write short verse and nothing else.",
+    "Form: Epistrophe. Three lines that all end on the same character.\nWrite exactly 3 lines.\nYour flourish: Start three words in one line with the same letter.\nWork in at least two of these words: 面具, 梦, 丑角, 戏, 月亮.\nYour challenger last said:\n松下問童子，言師採藥去。\n只在此山中，雲深不知處。\nAnswer them.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "面具笑，梦碎，戏落。\n丑角舞，月亮，影作。\n这世事，皆是幻觉。",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-ending",
+     "met": false,
+     "detail": "落 · 作 · 觉"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 12,
+   "drafts": [
+    {
+     "raw": "面具笑，梦碎，戏落。\n丑角舞，月亮，影作。\n这世事，皆是幻觉。",
+     "tidy": "面具笑，梦碎，戏落。\n丑角舞，月亮，影作。\n这世事，皆是幻觉。",
+     "ms": 6004,
+     "tokens": 31,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 12
+    },
+    {
+     "raw": "面具笑，梦幻过，光阴逝去。\n丑角戏，月亮照，世事无非去。\n戏曲悲，梦碎了，徒留空虚。",
+     "tidy": "面具笑，梦幻过，光阴逝去。\n丑角戏，月亮照，世事无非去。\n戏曲悲，梦碎了，徒留空虚。",
+     "ms": 11458,
+     "tokens": 42,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 12
+    }
+   ]
+  },
+  {
+   "seed": 1003,
+   "roundIndex": 0,
+   "formId": "anaphora",
+   "difficulty": "player",
+   "card": "Hermes",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Hermes in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Swift as thought, I carry the words of gods to mortal ears.\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same character.\nWrite exactly 3 lines.\nYour flourish: Use two words of 3 letters or more.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "我以风，疾如电；\n我以光，照彻苍穹；\n我以影，遁入迷宫。",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": true,
+   "formEarned": 20,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-opening",
+     "met": true,
+     "detail": "我 · 我 · 我"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 20,
+   "drafts": [
+    {
+     "raw": "我以风，疾如电；\n我以光，照彻苍穹；\n我以影，遁入迷宫。",
+     "tidy": "我以风，疾如电；\n我以光，照彻苍穹；\n我以影，遁入迷宫。",
+     "ms": 7922,
+     "tokens": 28,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 20
+    },
+    {
+     "raw": "我以风，撕裂你的言语。\n我以光，照亮虚妄的迷宫。\n我以影，捕捉你脆弱的瞬间。",
+     "tidy": "我以风，撕裂你的言语。\n我以光，照亮虚妄的迷宫。\n我以影，捕捉你脆弱的瞬间。",
+     "ms": 8309,
+     "tokens": 34,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 20
+    }
+   ]
+  },
+  {
+   "seed": 1003,
+   "roundIndex": 1,
+   "formId": "haiku",
+   "difficulty": "master",
+   "card": "Malvolio",
+   "acrostic": null,
+   "relicWords": [
+    "骷髅",
+    "戏谑",
+    "坟墓",
+    "笑声",
+    "尘土"
+   ],
+   "answering": "前不見古人，後不見來者。\n念天地之悠悠，獨愴然而涕下。",
+   "prompt": [
+    "You are Malvolio in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Some are born great, some achieve greatness, and some have greatness thrust upon them.\" You write short verse and nothing else.",
+    "Form: Haiku. Three lines of 5, 7 and 5 characters.\nWrite exactly 3 lines.\nYour flourish: Keep every line to 7 characters or fewer.\nWork in at least two of these words: 骷髅, 戏谑, 坟墓, 笑声, 尘土.\nYour challenger last said:\n前不見古人，後不見來者。\n念天地之悠悠，獨愴然而涕下。\nAnswer them.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "骷髅风舞\n戏谑尘土飞\n笑声入坟墓",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 10,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "syllables-1",
+     "met": false,
+     "detail": "4/5"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "5/7"
+    },
+    {
+     "id": "syllables-3",
+     "met": true,
+     "detail": "5/5"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 24,
+   "drafts": [
+    {
+     "raw": "骷髅轻笑\n尘土覆坟墓\n戏谑无涯",
+     "tidy": "骷髅轻笑\n尘土覆坟墓\n戏谑无涯",
+     "ms": 4438,
+     "tokens": 15,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 5,
+     "craft": 17
+    },
+    {
+     "raw": "骷髅笑声\n尘土覆坟墓\n戏谑无常",
+     "tidy": "骷髅笑声\n尘土覆坟墓\n戏谑无常",
+     "ms": 4370,
+     "tokens": 15,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 5,
+     "craft": 17
+    },
+    {
+     "raw": "骷髅风舞\n戏谑尘土飞\n笑声入坟墓",
+     "tidy": "骷髅风舞\n戏谑尘土飞\n笑声入坟墓",
+     "ms": 3777,
+     "tokens": 16,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 10,
+     "craft": 24
+    }
+   ]
+  },
+  {
+   "seed": 1003,
+   "roundIndex": 2,
+   "formId": "jueju",
+   "difficulty": "apprentice",
+   "card": "Prospero",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "前不見古人，後不見來者。\n念天地之悠悠，獨愴然而涕下。",
+   "prompt": [
+    "You are Prospero in a duel of verses: theatrical, sharp, in character. Your line in the play: \"We are such stuff as dreams are made on.\" You write short verse and nothing else.",
+    "Form: Jueju. Four lines, all of five characters or all of seven, the shape of a classical quatrain.\nWrite exactly 4 lines.\nYour flourish: Make your last line your longest.\nYour challenger last said:\n前不見古人，後不見來者。\n念天地之悠悠，獨愴然而涕下。\nAnswer them.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "夢幻泡影成空，\n千載之間付與風，\n虛幻無常化塵土，\n我們皆是夢境所鑄的。",
+   "source": "model",
+   "lines": 4,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "4/4"
+    },
+    {
+     "id": "even-lines",
+     "met": false,
+     "detail": "6 · 7 · 7 · 9"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 9,
+   "drafts": [
+    {
+     "raw": "夢幻泡影成空，\n千載之間付與風，\n虛幻無常化塵土，\n我們皆是夢境所鑄的。",
+     "tidy": "夢幻泡影成空，\n千載之間付與風，\n虛幻無常化塵土，\n我們皆是夢境所鑄的。",
+     "ms": 7478,
+     "tokens": 34,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 4,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 9
+    }
+   ]
+  },
+  {
+   "seed": 1004,
+   "roundIndex": 0,
+   "formId": "anaphora",
+   "difficulty": "master",
+   "card": "Banquo",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Banquo in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Thou shalt get kings, though thou be none.\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same character.\nWrite exactly 3 lines.\nYour flourish: Repeat one strong word three times.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "我嘲笑你，无名之辈。\n我嘲笑你，虚妄之名。\n我嘲笑你，终将落败。",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": true,
+   "formEarned": 20,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-opening",
+     "met": true,
+     "detail": "我 · 我 · 我"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 30,
+   "drafts": [
+    {
+     "raw": "我嘲笑你，无名之辈。\n我嘲笑你，虚妄之名。\n我嘲笑你，终将落败。",
+     "tidy": "我嘲笑你，无名之辈。\n我嘲笑你，虚妄之名。\n我嘲笑你，终将落败。",
+     "ms": 5807,
+     "tokens": 32,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 30
+    },
+    {
+     "raw": "我嘲笑你的虚妄，\n我蔑视你的浅薄，\n我宣告这不平。",
+     "tidy": "我嘲笑你的虚妄，\n我蔑视你的浅薄，\n我宣告这不平。",
+     "ms": 3488,
+     "tokens": 22,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 20
+    },
+    {
+     "raw": "我嘲笑你的虚妄，\n我嘲笑你的贫乏，\n我嘲笑你的无能。",
+     "tidy": "我嘲笑你的虚妄，\n我嘲笑你的贫乏，\n我嘲笑你的无能。",
+     "ms": 2839,
+     "tokens": 23,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 30
+    }
+   ]
+  },
+  {
+   "seed": 1004,
+   "roundIndex": 1,
+   "formId": "crescendo",
+   "difficulty": "player",
+   "card": "Brutus",
+   "acrostic": null,
+   "relicWords": [
+    "匕首",
+    "鲜血",
+    "睡眠",
+    "幻象",
+    "双手"
+   ],
+   "answering": "君問歸期未有期\n巴山夜雨漲秋池",
+   "prompt": [
+    "You are Brutus in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Not that I loved Caesar less, but that I loved Rome more.\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Call on a character by name.\nWork in at least two of these words: 匕首, 鲜血, 睡眠, 幻象, 双手.\nYour challenger last said:\n君問歸期未有期\n巴山夜雨漲秋池\nAnswer them.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "我之匕首刺入，不求鲜血浸润此地，\n纵使沉沦于死亡的睡眠，我的信念永不褪色，\n当幻象消散，只剩我对罗马的爱，此为我的决心。",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": true,
+   "formEarned": 20,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "growing",
+     "met": true,
+     "detail": "14 < 18 < 19"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 26,
+   "drafts": [
+    {
+     "raw": "我之匕首刺入，不求鲜血浸润此地，\n纵使沉沦于死亡的睡眠，我的信念永不褪色，\n当幻象消散，只剩我对罗马的爱，此为我的决心。",
+     "tidy": "我之匕首刺入，不求鲜血浸润此地，\n纵使沉沦于死亡的睡眠，我的信念永不褪色，\n当幻象消散，只剩我对罗马的爱，此为我的决心。",
+     "ms": 5108,
+     "tokens": 52,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 26
+    },
+    {
+     "raw": "我之忠义，如匕首刺破迷惘，\n任凭鲜血淋漓，亦不曾畏惧沉酣；\n为这伟大的城邦，我愿奉献双手的睡眠。",
+     "tidy": "我之忠义，如匕首刺破迷惘，\n任凭鲜血淋漓，亦不曾畏惧沉酣；\n为这伟大的城邦，我愿奉献双手的睡眠。",
+     "ms": 3487,
+     "tokens": 45,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 26
+    }
+   ]
+  },
+  {
+   "seed": 1004,
+   "roundIndex": 2,
+   "formId": "epistrophe",
+   "difficulty": "master",
+   "card": "Prospero",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "君問歸期未有期\n巴山夜雨漲秋池",
+   "prompt": [
+    "You are Prospero in a duel of verses: theatrical, sharp, in character. Your line in the play: \"We are such stuff as dreams are made on.\" You write short verse and nothing else.",
+    "Form: Epistrophe. Three lines that all end on the same character.\nWrite exactly 3 lines.\nYour flourish: Make your last line your longest.\nYour challenger last said:\n君問歸期未有期\n巴山夜雨漲秋池\nAnswer them.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "夢幻皆是虛妄\n時光流逝如風\n我們是夢的實體，是夢的實體，是夢的實體。",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-ending",
+     "met": false,
+     "detail": "妄 · 風 · 體"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 9,
+   "drafts": [
+    {
+     "raw": "夢幻皆是虛妄\n時光流逝如風\n我們是夢的實體，是夢的實體，是夢的實體。",
+     "tidy": "夢幻皆是虛妄\n時光流逝如風\n我們是夢的實體，是夢的實體，是夢的實體。",
+     "ms": 3651,
+     "tokens": 33,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 9
+    },
+    {
+     "raw": "夢幻如夢，虛妄如夢，空虛如夢。",
+     "tidy": "夢幻如夢，虛妄如夢，空虛如夢。",
+     "ms": 3087,
+     "tokens": 15,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "夢幻皆是虛妄\n時光流逝如水流淌\n我們皆為幻夢鑄成。",
+     "tidy": "夢幻皆是虛妄\n時光流逝如水流淌\n我們皆為幻夢鑄成。",
+     "ms": 5195,
+     "tokens": 24,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1005,
+   "roundIndex": 0,
+   "formId": "anaphora",
+   "difficulty": "apprentice",
+   "card": "Elizabeth Barrett Browning",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Elizabeth Barrett Browning in a duel of verses: theatrical, sharp, in character. Your line in the play: \"How do I love thee? Let me count the ways.\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same character.\nWrite exactly 3 lines.\nYour flourish: Give every line the same number of characters.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "你之言如同冰冷的刀，\n我之情如烈火焚烧。\n我之爱可丈量无涯。",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-opening",
+     "met": false,
+     "detail": "你 · 我 · 我"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "你之言如同冰冷的刀，\n我之情如烈火焚烧。\n我之爱可丈量无涯。",
+     "tidy": "你之言如同冰冷的刀，\n我之情如烈火焚烧。\n我之爱可丈量无涯。",
+     "ms": 3846,
+     "tokens": 28,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1005,
+   "roundIndex": 1,
+   "formId": "haiku",
+   "difficulty": "apprentice",
+   "card": "Puck",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "葡萄美酒夜光杯，欲飲琵琶馬上催。\n醉臥沙場君莫笑，古來征戰幾人回。",
+   "prompt": [
+    "You are Puck in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Lord, what fools these mortals be!\" You write short verse and nothing else.",
+    "Form: Haiku. Three lines of 5, 7 and 5 characters.\nWrite exactly 3 lines.\nYour flourish: Start three words in one line with the same letter.\nYour challenger last said:\n葡萄美酒夜光杯，欲飲琵琶馬上催。\n醉臥沙場君莫笑，古來征戰幾人回。\nAnswer them.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "五五五花開\n七七七浪潮來\n五五五夢消亡",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 10,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "syllables-1",
+     "met": true,
+     "detail": "5/5"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "6/7"
+    },
+    {
+     "id": "syllables-3",
+     "met": false,
+     "detail": "6/5"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 10,
+   "drafts": [
+    {
+     "raw": "五五五花開\n七七七浪潮來\n五五五夢消亡",
+     "tidy": "五五五花開\n七七七浪潮來\n五五五夢消亡",
+     "ms": 3237,
+     "tokens": 19,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 10,
+     "craft": 10
+    }
+   ]
+  },
+  {
+   "seed": 1005,
+   "roundIndex": 2,
+   "formId": "acrostic",
+   "difficulty": "apprentice",
+   "card": "Cassius",
+   "acrostic": "清秋月",
+   "relicWords": [
+    "眼泪",
+    "真相",
+    "女儿",
+    "虚无",
+    "真心"
+   ],
+   "answering": "葡萄美酒夜光杯，欲飲琵琶馬上催。\n醉臥沙場君莫笑，古來征戰幾人回。",
+   "prompt": [
+    "You are Cassius in a duel of verses: theatrical, sharp, in character. Your line in the play: \"The fault, dear Brutus, is not in our stars, but in ourselves.\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per letter: the first letters must spell 清秋月.\nWrite exactly 3 lines.\nYour flourish: Call on a character by name.\nWork in at least two of these words: 眼泪, 真相, 女儿, 虚无, 真心.\nYour challenger last said:\n葡萄美酒夜光杯，欲飲琵琶馬上催。\n醉臥沙場君莫笑，古來征戰幾人回。\nAnswer them.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "清：心如止水，不為虛無。\n秋：眼淚流盡，映照真相。\n月：女兒之淚，是真心難測。",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": true,
+   "formEarned": 20,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "spells",
+     "met": true,
+     "detail": "清秋月"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 26,
+   "drafts": [
+    {
+     "raw": "清：心如止水，不為虛無。\n秋：眼淚流盡，映照真相。\n月：女兒之淚，是真心難測。\nCassius!",
+     "tidy": "清：心如止水，不為虛無。\n秋：眼淚流盡，映照真相。\n月：女兒之淚，是真心難測。",
+     "ms": 3883,
+     "tokens": 40,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 4,
+     "expectedLines": 3,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 26
+    }
+   ]
+  },
+  {
+   "seed": 1006,
+   "roundIndex": 0,
+   "formId": "anaphora",
+   "difficulty": "player",
+   "card": "Prospero",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Prospero in a duel of verses: theatrical, sharp, in character. Your line in the play: \"We are such stuff as dreams are made on.\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same character.\nWrite exactly 3 lines.\nYour flourish: Make your last line your longest.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "我嘲笑你的愚昧，\n我嘲笑你的孱弱，\n我嘲笑你徒劳的挣扎，这便是我们所铸造的梦境。",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": true,
+   "formEarned": 20,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-opening",
+     "met": true,
+     "detail": "我 · 我 · 我"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 30,
+   "drafts": [
+    {
+     "raw": "我嘲笑你的愚昧，\n我嘲笑你的孱弱，\n我嘲笑你徒劳的挣扎，这便是我们所铸造的梦境。",
+     "tidy": "我嘲笑你的愚昧，\n我嘲笑你的孱弱，\n我嘲笑你徒劳的挣扎，这便是我们所铸造的梦境。",
+     "ms": 3437,
+     "tokens": 36,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 30
+    },
+    {
+     "raw": "我嘲笑你这虚妄的言语，\n我嘲笑你那徒劳的辩驳，\n我嘲笑你终将消逝的幻影。",
+     "tidy": "我嘲笑你这虚妄的言语，\n我嘲笑你那徒劳的辩驳，\n我嘲笑你终将消逝的幻影。",
+     "ms": 3392,
+     "tokens": 36,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 30
+    }
+   ]
+  },
+  {
+   "seed": 1006,
+   "roundIndex": 1,
+   "formId": "haiku",
+   "difficulty": "player",
+   "card": "Elizabeth Barrett Browning",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "朝辭白帝彩雲間，\n千里江陵一日還。",
+   "prompt": [
+    "You are Elizabeth Barrett Browning in a duel of verses: theatrical, sharp, in character. Your line in the play: \"How do I love thee? Let me count the ways.\" You write short verse and nothing else.",
+    "Form: Haiku. Three lines of 5, 7 and 5 characters.\nWrite exactly 3 lines.\nYour flourish: Give every line the same number of characters.\nYour challenger last said:\n朝辭白帝彩雲間，\n千里江陵一日還。\nAnswer them.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "愛意無邊長\n數計千般情\n永恆不減量",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 15,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "syllables-1",
+     "met": true,
+     "detail": "5/5"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "5/7"
+    },
+    {
+     "id": "syllables-3",
+     "met": true,
+     "detail": "5/5"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 23,
+   "drafts": [
+    {
+     "raw": "愛意無窮如海\n計數無盡的篇章\n此情永不減",
+     "tidy": "愛意無窮如海\n計數無盡的篇章\n此情永不減",
+     "ms": 2561,
+     "tokens": 20,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 15,
+     "craft": 15
+    },
+    {
+     "raw": "愛意無邊長\n數計千般情\n永恆不減量",
+     "tidy": "愛意無邊長\n數計千般情\n永恆不減量",
+     "ms": 2257,
+     "tokens": 17,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 15,
+     "craft": 23
+    }
+   ]
+  },
+  {
+   "seed": 1006,
+   "roundIndex": 2,
+   "formId": "jueju",
+   "difficulty": "player",
+   "card": "Percy Bysshe Shelley",
+   "acrostic": null,
+   "relicWords": [
+    "风暴",
+    "咒语",
+    "魔杖",
+    "孤岛",
+    "溺水"
+   ],
+   "answering": "朝辭白帝彩雲間，\n千里江陵一日還。",
+   "prompt": [
+    "You are Percy Bysshe Shelley in a duel of verses: theatrical, sharp, in character. Your line in the play: \"If Winter comes, can Spring be far behind?\" You write short verse and nothing else.",
+    "Form: Jueju. Four lines, all of five characters or all of seven, the shape of a classical quatrain.\nWrite exactly 4 lines.\nYour flourish: End your verse on the same character it began with.\nWork in at least two of these words: 风暴, 咒语, 魔杖, 孤岛, 溺水.\nYour challenger last said:\n朝辭白帝彩雲間，\n千里江陵一日還。\nAnswer them.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "风暴席卷孤岛，\n魔杖咒语破长空，\n溺水之苦亦无忘，\n春光重现如初光。",
+   "source": "model",
+   "lines": 4,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "4/4"
+    },
+    {
+     "id": "even-lines",
+     "met": false,
+     "detail": "6 · 7 · 7 · 7"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 12,
+   "drafts": [
+    {
+     "raw": "风暴席卷孤岛，\n魔杖咒语破长空，\n溺水之苦亦无忘，\n春光重现如初光。",
+     "tidy": "风暴席卷孤岛，\n魔杖咒语破长空，\n溺水之苦亦无忘，\n春光重现如初光。",
+     "ms": 8027,
+     "tokens": 34,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 4,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 12
+    },
+    {
+     "raw": "风暴袭，魔杖挥舞，\n孤岛寂寞，咒语流。\n溺水之患，谁能救？\n风暴始，终将流。",
+     "tidy": "风暴袭，魔杖挥舞，\n孤岛寂寞，咒语流。\n溺水之患，谁能救？\n风暴始，终将流。",
+     "ms": 8844,
+     "tokens": 38,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 4,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 12
+    }
+   ]
+  },
+  {
+   "seed": 1007,
+   "roundIndex": 0,
+   "formId": "crescendo",
+   "difficulty": "master",
+   "card": "Macbeth",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Macbeth in a duel of verses: theatrical, sharp, in character. Your line in the play: \"I dare do all that may become a man; who dares do more is none.\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Repeat one strong word three times.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "你竟敢挑战这命运的洪流，愚蠢之辈！\n我将展露我存在的全部力量，无畏的决心！\n我敢做一切足以成就一个人的壮举，谁能更甚？",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": true,
+   "formEarned": 20,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "growing",
+     "met": true,
+     "detail": "15 < 17 < 19"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 20,
+   "drafts": [
+    {
+     "raw": "你竟敢挑战这命运的洪流，愚蠢之辈！\n我将展露我存在的全部力量，无畏的决心！\n我敢做一切足以成就一个人的壮举，谁能更甚？",
+     "tidy": "你竟敢挑战这命运的洪流，愚蠢之辈！\n我将展露我存在的全部力量，无畏的决心！\n我敢做一切足以成就一个人的壮举，谁能更甚？",
+     "ms": 17174,
+     "tokens": 47,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 20
+    },
+    {
+     "raw": "汝敢与我比试，徒增虚名；\n我将展现我全能的锋芒，足以令你汗流浃背。\n我敢做一切足以成就一个人的伟业，谁敢超越我？",
+     "tidy": "汝敢与我比试，徒增虚名；\n我将展现我全能的锋芒，足以令你汗流浃背。\n我敢做一切足以成就一个人的伟业，谁敢超越我？",
+     "ms": 12147,
+     "tokens": 48,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 20
+    },
+    {
+     "raw": "汝之言语不过是微尘，虚妄！\n吾之言语如同利刃，直刺心扉！\n我敢行万能，谁敢比我更强！",
+     "tidy": "汝之言语不过是微尘，虚妄！\n吾之言语如同利刃，直刺心扉！\n我敢行万能，谁敢比我更强！",
+     "ms": 9238,
+     "tokens": 40,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1007,
+   "roundIndex": 1,
+   "formId": "epistrophe",
+   "difficulty": "apprentice",
+   "card": "Lord Montague",
+   "acrostic": null,
+   "relicWords": [
+    "面具",
+    "梦",
+    "丑角",
+    "戏",
+    "月亮"
+   ],
+   "answering": "遠芳侵古道，晴翠接荒城。\n又送王孫去，萋萋滿別情。",
+   "prompt": [
+    "You are Lord Montague in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Many a morning hath he there been seen, with tears augmenting the fresh morning dew.\" You write short verse and nothing else.",
+    "Form: Epistrophe. Three lines that all end on the same character.\nWrite exactly 3 lines.\nYour flourish: Repeat one strong word three times.\nWork in at least two of these words: 面具, 梦, 丑角, 戏, 月亮.\nYour challenger last said:\n遠芳侵古道，晴翠接荒城。\n又送王孫去，萋萋滿別情。\nAnswer them.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "面具笑，梦醒，月亮。\n戏罢，泪流，愁肠。\n丑角叹，时光，无常。",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-ending",
+     "met": false,
+     "detail": "亮 · 肠 · 常"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 12,
+   "drafts": [
+    {
+     "raw": "面具笑，梦醒，月亮。\n戏罢，泪流，愁肠。\n丑角叹，时光，无常。",
+     "tidy": "面具笑，梦醒，月亮。\n戏罢，泪流，愁肠。\n丑角叹，时光，无常。",
+     "ms": 7872,
+     "tokens": 30,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 12
+    }
+   ]
+  },
+  {
+   "seed": 1007,
+   "roundIndex": 2,
+   "formId": "haiku",
+   "difficulty": "master",
+   "card": "King Claudius",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "遠芳侵古道，晴翠接荒城。\n又送王孫去，萋萋滿別情。",
+   "prompt": [
+    "You are King Claudius in a duel of verses: theatrical, sharp, in character. Your line in the play: \"My words fly up, my thoughts remain below.\" You write short verse and nothing else.",
+    "Form: Haiku. Three lines of 5, 7 and 5 characters.\nWrite exactly 3 lines.\nYour flourish: Ask a question: end a line with a question mark.\nYour challenger last said:\n遠芳侵古道，晴翠接荒城。\n又送王孫去，萋萋滿別情。\nAnswer them.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "风过古路，\n翠绿接荒城？\n情意随风去。",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 10,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "syllables-1",
+     "met": false,
+     "detail": "4/5"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "5/7"
+    },
+    {
+     "id": "syllables-3",
+     "met": true,
+     "detail": "5/5"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 15,
+   "drafts": [
+    {
+     "raw": "风过古路，\n翠绿接荒城？\n情意随风去。",
+     "tidy": "风过古路，\n翠绿接荒城？\n情意随风去。",
+     "ms": 4722,
+     "tokens": 19,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 10,
+     "craft": 15
+    },
+    {
+     "raw": "言如风起，\n心绪在下流？\n声光随逝。",
+     "tidy": "言如风起，\n心绪在下流？\n声光随逝。",
+     "ms": 3221,
+     "tokens": 18,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 5,
+     "craft": 8
+    },
+    {
+     "raw": "言语轻盈，\n思绪潜藏深处，\n何处能及？",
+     "tidy": "言语轻盈，\n思绪潜藏深处，\n何处能及？",
+     "ms": 3839,
+     "tokens": 19,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 5,
+     "craft": 8
+    }
+   ]
+  },
+  {
+   "seed": 1008,
+   "roundIndex": 0,
+   "formId": "acrostic",
+   "difficulty": "player",
+   "card": "Prince Escalus",
+   "acrostic": "清秋月",
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Prince Escalus in a duel of verses: theatrical, sharp, in character. Your line in the play: \"If ever you disturb our streets again, your lives shall pay the forfeit of the peace.\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per letter: the first letters must spell 清秋月.\nWrite exactly 3 lines.\nYour flourish: Turn a word of 2 letters or more from your opponent's last verse back on them.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "清：清风拂过剑芒，\n秋：秋意渐浓入骨，\n月：月色照不亮仇！",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": true,
+   "formEarned": 20,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "spells",
+     "met": true,
+     "detail": "清秋月"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 20,
+   "drafts": [
+    {
+     "raw": "清：清风拂过剑芒，\n秋：秋意渐浓入骨，\n月：月色照不亮仇！",
+     "tidy": "清：清风拂过剑芒，\n秋：秋意渐浓入骨，\n月：月色照不亮仇！",
+     "ms": 5539,
+     "tokens": 29,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 20
+    },
+    {
+     "raw": "清：清风拂过孤月影，\n秋：秋霜浸透不忠言，\n月：月色冷映你的行。",
+     "tidy": "清：清风拂过孤月影，\n秋：秋霜浸透不忠言，\n月：月色冷映你的行。",
+     "ms": 7031,
+     "tokens": 31,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 20
+    }
+   ]
+  },
+  {
+   "seed": 1008,
+   "roundIndex": 1,
+   "formId": "anaphora",
+   "difficulty": "master",
+   "card": "Miranda",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "千山鳥飛絕，萬徑人蹤滅。\n孤舟簑笠翁，獨釣寒江雪。",
+   "prompt": [
+    "You are Miranda in a duel of verses: theatrical, sharp, in character. Your line in the play: \"O brave new world, that has such people in it!\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same character.\nWrite exactly 3 lines.\nYour flourish: Make your last line your longest.\nYour challenger last said:\n千山鳥飛絕，萬徑人蹤滅。\n孤舟簑笠翁，獨釣寒江雪。\nAnswer them.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "我见新局，万象更新。\n我闻新风，旧态已散。\n我感新潮，这世界非凡，不！",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": true,
+   "formEarned": 20,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-opening",
+     "met": true,
+     "detail": "我 · 我 · 我"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 30,
+   "drafts": [
+    {
+     "raw": "我见新局，万象更新。\n我闻新风，旧态已散。\n我感新潮，这世界非凡，不！",
+     "tidy": "我见新局，万象更新。\n我闻新风，旧态已散。\n我感新潮，这世界非凡，不！",
+     "ms": 6157,
+     "tokens": 33,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 30
+    },
+    {
+     "raw": "我見了新景，\n我聞了新氣，\n我見了新世界，竟有如此奇觀！",
+     "tidy": "我見了新景，\n我聞了新氣，\n我見了新世界，竟有如此奇觀！",
+     "ms": 4638,
+     "tokens": 26,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 30
+    },
+    {
+     "raw": "我見新境，充滿了光芒。\n我聞新氣，驅散了迷惘。\n我感新樂，這世界如此精彩，如此無邊無際地閃耀著！",
+     "tidy": "我見新境，充滿了光芒。\n我聞新氣，驅散了迷惘。\n我感新樂，這世界如此精彩，如此無邊無際地閃耀著！",
+     "ms": 9997,
+     "tokens": 43,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 30
+    }
+   ]
+  },
+  {
+   "seed": 1008,
+   "roundIndex": 2,
+   "formId": "jueju",
+   "difficulty": "master",
+   "card": "Bottom",
+   "acrostic": null,
+   "relicWords": [
+    "匕首",
+    "鲜血",
+    "睡眠",
+    "幻象",
+    "双手"
+   ],
+   "answering": "千山鳥飛絕，萬徑人蹤滅。\n孤舟簑笠翁，獨釣寒江雪。",
+   "prompt": [
+    "You are Bottom in a duel of verses: theatrical, sharp, in character. Your line in the play: \"I have had a most rare vision. I have had a dream, past the wit of man.\" You write short verse and nothing else.",
+    "Form: Jueju. Four lines, all of five characters or all of seven, the shape of a classical quatrain.\nWrite exactly 4 lines.\nYour flourish: Start three words in one line with the same letter.\nWork in at least two of these words: 匕首, 鲜血, 睡眠, 幻象, 双手.\nYour challenger last said:\n千山鳥飛絕，萬徑人蹤滅。\n孤舟簑笠翁，獨釣寒江雪。\nAnswer them.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "血色染霜影幢幢，\n雙手執掌幻象光，\n唇舌輕吐匕首芒，\n夢中天地入寂寥。",
+   "source": "model",
+   "lines": 4,
+   "expectedLines": 4,
+   "formKept": true,
+   "formEarned": 20,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "4/4"
+    },
+    {
+     "id": "even-lines",
+     "met": true,
+     "detail": "7 · 7 · 7 · 7"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 26,
+   "drafts": [
+    {
+     "raw": "**幻**影**鲜**血**染**漓，\n**双**手**夺**取**梦**中**的**悲。\n**睡**觉**长**久**如**此**流，\n**匕**首**刺**入**空**虚**的**寂。",
+     "tidy": "幻影鲜血染漓，\n双手夺取梦中的悲。\n睡觉长久如此流，\n匕首刺入空虚的寂。",
+     "ms": 10820,
+     "tokens": 65,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 4,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 12
+    },
+    {
+     "raw": "血色染霜影幢幢，\n雙手執掌幻象光，\n唇舌輕吐匕首芒，\n夢中天地入寂寥。",
+     "tidy": "血色染霜影幢幢，\n雙手執掌幻象光，\n唇舌輕吐匕首芒，\n夢中天地入寂寥。",
+     "ms": 7000,
+     "tokens": 34,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 4,
+     "expectedLines": 4,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 26
+    },
+    {
+     "raw": "**幻**影入**睡**，**鲜血**浸琼枝；\n**双手**握空，**匕首**刺幽冥。\n千山倒，万径消，徒留残影，\n此番对饮，洞穿万古悲。",
+     "tidy": "幻影入睡，鲜血浸琼枝；\n双手握空，匕首刺幽冥。\n千山倒，万径消，徒留残影，\n此番对饮，洞穿万古悲。",
+     "ms": 10086,
+     "tokens": 58,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 116,
+     "rawLines": 4,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 12
+    }
+   ]
+  },
+  {
+   "seed": 1009,
+   "roundIndex": 0,
+   "formId": "anaphora",
+   "difficulty": "apprentice",
+   "card": "Prospero",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Prospero in a duel of verses: theatrical, sharp, in character. Your line in the play: \"We are such stuff as dreams are made on.\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same character.\nWrite exactly 3 lines.\nYour flourish: Make your last line your longest.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "我嘲笑你的虚妄，\n我嘲笑你徒劳的言辞，\n我嘲笑这无谓的争斗，让梦想铸成。",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": true,
+   "formEarned": 20,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-opening",
+     "met": true,
+     "detail": "我 · 我 · 我"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 30,
+   "drafts": [
+    {
+     "raw": "我嘲笑你的虚妄，\n我嘲笑你徒劳的言辞，\n我嘲笑这无谓的争斗，让梦想铸成。",
+     "tidy": "我嘲笑你的虚妄，\n我嘲笑你徒劳的言辞，\n我嘲笑这无谓的争斗，让梦想铸成。",
+     "ms": 9050,
+     "tokens": 34,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 30
+    }
+   ]
+  },
+  {
+   "seed": 1009,
+   "roundIndex": 1,
+   "formId": "crescendo",
+   "difficulty": "apprentice",
+   "card": "Mary Shelley",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "牀前看月光，\n疑是地上霜。\n舉頭望山月，\n低頭思故鄉。",
+   "prompt": [
+    "You are Mary Shelley in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Beware; for I am fearless, and therefore powerful.\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: End your verse on the same character it began with.\nYour challenger last said:\n牀前看月光，\n疑是地上霜。\n舉頭望山月，\n低頭思故鄉。\nAnswer them.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "月光如刀，切割黑暗的邊緣，銳利地劃破了虛妄的寂靜，揭示了潛藏在陰影深處的冷酷與不屈，強悍啊。",
+   "source": "model",
+   "lines": 1,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 0,
+   "checks": [
+    {
+     "id": "lines",
+     "met": false,
+     "detail": "1/3"
+    },
+    {
+     "id": "growing",
+     "met": false,
+     "detail": "41"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 0,
+   "drafts": [
+    {
+     "raw": "月光如刀，切割黑暗的邊緣，銳利地劃破了虛妄的寂靜，揭示了潛藏在陰影深處的冷酷與不屈，強悍啊。",
+     "tidy": "月光如刀，切割黑暗的邊緣，銳利地劃破了虛妄的寂靜，揭示了潛藏在陰影深處的冷酷與不屈，強悍啊。",
+     "ms": 6434,
+     "tokens": 44,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1009,
+   "roundIndex": 2,
+   "formId": "jueju",
+   "difficulty": "apprentice",
+   "card": "Macbeth",
+   "acrostic": null,
+   "relicWords": [
+    "面具",
+    "梦",
+    "丑角",
+    "戏",
+    "月亮"
+   ],
+   "answering": "牀前看月光，\n疑是地上霜。\n舉頭望山月，\n低頭思故鄉。",
+   "prompt": [
+    "You are Macbeth in a duel of verses: theatrical, sharp, in character. Your line in the play: \"I dare do all that may become a man; who dares do more is none.\" You write short verse and nothing else.",
+    "Form: Jueju. Four lines, all of five characters or all of seven, the shape of a classical quatrain.\nWrite exactly 4 lines.\nYour flourish: Repeat one strong word three times.\nWork in at least two of these words: 面具, 梦, 丑角, 戏, 月亮.\nYour challenger last said:\n牀前看月光，\n疑是地上霜。\n舉頭望山月，\n低頭思故鄉。\nAnswer them.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "面具，面具，面具。\n梦中幻影，谁能胜？\n丑角，丑角，丑角。\n戏终落，谁敢更强？",
+   "source": "model",
+   "lines": 4,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "4/4"
+    },
+    {
+     "id": "even-lines",
+     "met": false,
+     "detail": "6 · 7 · 6 · 7"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 18,
+   "drafts": [
+    {
+     "raw": "面具，面具，面具。\n梦中幻影，谁能胜？\n丑角，丑角，丑角。\n戏终落，谁敢更强？",
+     "tidy": "面具，面具，面具。\n梦中幻影，谁能胜？\n丑角，丑角，丑角。\n戏终落，谁敢更强？",
+     "ms": 7570,
+     "tokens": 39,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 4,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 18
+    }
+   ]
+  },
+  {
+   "seed": 1010,
+   "roundIndex": 0,
+   "formId": "jueju",
+   "difficulty": "player",
+   "card": "Mary Shelley",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Mary Shelley in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Beware; for I am fearless, and therefore powerful.\" You write short verse and nothing else.",
+    "Form: Jueju. Four lines, all of five characters or all of seven, the shape of a classical quatrain.\nWrite exactly 4 lines.\nYour flourish: End your verse on the same character it began with.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "汝之言语浅薄，\n我心如磐石坚，\n恐汝之锋刃伤，\nbeware; for i am fearless, and therefore powerful.",
+   "source": "model",
+   "lines": 4,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "4/4"
+    },
+    {
+     "id": "even-lines",
+     "met": false,
+     "detail": "6 · 6 · 6 · 40"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "汝之言语浅薄，\n我心如磐石坚，\n恐汝之锋刃伤，\n beware; for i am fearless, and therefore powerful.",
+     "tidy": "汝之言语浅薄，\n我心如磐石坚，\n恐汝之锋刃伤，\nbeware; for i am fearless, and therefore powerful.",
+     "ms": 6966,
+     "tokens": 35,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 4,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "汝之言辭如風，\n擊不中我心之堅，\n正視我，使你顫，\n懼我，是你的陷。",
+     "tidy": "汝之言辭如風，\n擊不中我心之堅，\n正視我，使你顫，\n懼我，是你的陷。",
+     "ms": 3863,
+     "tokens": 33,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 4,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1010,
+   "roundIndex": 1,
+   "formId": "anaphora",
+   "difficulty": "player",
+   "card": "The Sonnet Man",
+   "acrostic": null,
+   "relicWords": [
+    "匕首",
+    "鲜血",
+    "睡眠",
+    "幻象",
+    "双手"
+   ],
+   "answering": "月落烏啼霜滿天，江楓漁火對愁眠。\n姑蘇城外寒山寺，夜半鐘聲到客船。",
+   "prompt": [
+    "You are The Sonnet Man in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Shall I compare thee to a summer's day?\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same character.\nWrite exactly 3 lines.\nYour flourish: End your verse on the same character it began with.\nWork in at least two of these words: 匕首, 鲜血, 睡眠, 幻象, 双手.\nYour challenger last said:\n月落烏啼霜滿天，江楓漁火對愁眠。\n姑蘇城外寒山寺，夜半鐘聲到客船。\nAnswer them.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "我以匕首刺破这虚妄，\n我以鲜血浇灌这幻象，\n我以双手驱散这睡眠。",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": true,
+   "formEarned": 20,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-opening",
+     "met": true,
+     "detail": "我 · 我 · 我"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 26,
+   "drafts": [
+    {
+     "raw": "我以匕首刺破这虚妄，\n我以鲜血浇灌这幻象，\n我以双手驱散这睡眠。",
+     "tidy": "我以匕首刺破这虚妄，\n我以鲜血浇灌这幻象，\n我以双手驱散这睡眠。",
+     "ms": 5724,
+     "tokens": 30,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 26
+    },
+    {
+     "raw": "我将比拟那夏日，\n我将比拟那灼热，\n我将比拟那鲜血。",
+     "tidy": "我将比拟那夏日，\n我将比拟那灼热，\n我将比拟那鲜血。",
+     "ms": 4262,
+     "tokens": 26,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 20
+    }
+   ]
+  },
+  {
+   "seed": 1010,
+   "roundIndex": 2,
+   "formId": "acrostic",
+   "difficulty": "master",
+   "card": "Lady Macbeth",
+   "acrostic": "春花秋月",
+   "relicWords": null,
+   "answering": "月落烏啼霜滿天，江楓漁火對愁眠。\n姑蘇城外寒山寺，夜半鐘聲到客船。",
+   "prompt": [
+    "You are Lady Macbeth in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Come, you spirits that tend on mortal thoughts, unsex me here.\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per letter: the first letters must spell 春花秋月.\nWrite exactly 4 lines.\nYour flourish: Repeat one strong word three times.\nYour challenger last said:\n月落烏啼霜滿天，江楓漁火對愁眠。\n姑蘇城外寒山寺，夜半鐘聲到客船。\nAnswer them.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "春：春風吹不散我心\n花：花開凋零亦無懼\n秋：秋色沉淪入深淵\n月：月光照不醒我魂",
+   "source": "model",
+   "lines": 4,
+   "expectedLines": 4,
+   "formKept": true,
+   "formEarned": 20,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "4/4"
+    },
+    {
+     "id": "spells",
+     "met": true,
+     "detail": "春花秋月"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 20,
+   "drafts": [
+    {
+     "raw": "春：春風吹不散我心\n花：花開凋零亦無懼\n秋：秋色沉淪入深淵\n月：月光照不醒我魂\nCome, come, come!",
+     "tidy": "春：春風吹不散我心\n花：花開凋零亦無懼\n秋：秋色沉淪入深淵\n月：月光照不醒我魂",
+     "ms": 7401,
+     "tokens": 46,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 5,
+     "expectedLines": 4,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 20
+    },
+    {
+     "raw": "春：春風吹不散我心。\n花：花開凋零亦無懼。\n秋：秋霜染血洗淨污。\n月：月光照我永不屈。\n血 血 血。",
+     "tidy": "春：春風吹不散我心。\n花：花開凋零亦無懼。\n秋：秋霜染血洗淨污。\n月：月光照我永不屈。",
+     "ms": 6330,
+     "tokens": 48,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 5,
+     "expectedLines": 4,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 20
+    },
+    {
+     "raw": "春之氣，血淚**來**，\n花開時，妒火**燃**，\n秋風起，恨意**深**，\n月色下，亡魂**醒**。",
+     "tidy": "春之氣，血淚來，\n花開時，妒火燃，\n秋風起，恨意深，\n月色下，亡魂醒。",
+     "ms": 4686,
+     "tokens": 43,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 116,
+     "rawLines": 4,
+     "expectedLines": 4,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 20
+    }
+   ]
+  },
+  {
+   "seed": 1011,
+   "roundIndex": 0,
+   "formId": "acrostic",
+   "difficulty": "apprentice",
+   "card": "Titania",
+   "acrostic": "风花雪月",
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Titania in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Come, sit thee down upon this flowery bed.\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per letter: the first letters must spell 风花雪月.\nWrite exactly 4 lines.\nYour flourish: Start three words in one line with the same letter.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "风：风轻云淡入我心，\n花：花开繁盛亦如幻，\n雪：雪落清冷洗尘埃，\n月：月照霜华映眉间。",
+   "source": "model",
+   "lines": 4,
+   "expectedLines": 4,
+   "formKept": true,
+   "formEarned": 20,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "4/4"
+    },
+    {
+     "id": "spells",
+     "met": true,
+     "detail": "风花雪月"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 20,
+   "drafts": [
+    {
+     "raw": "风：风轻云淡入我心，\n花：花开繁盛亦如幻，\n雪：雪落清冷洗尘埃，\n月：月照霜华映眉间。",
+     "tidy": "风：风轻云淡入我心，\n花：花开繁盛亦如幻，\n雪：雪落清冷洗尘埃，\n月：月照霜华映眉间。",
+     "ms": 5151,
+     "tokens": 43,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 4,
+     "expectedLines": 4,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 20
+    }
+   ]
+  },
+  {
+   "seed": 1011,
+   "roundIndex": 1,
+   "formId": "anaphora",
+   "difficulty": "master",
+   "card": "Viola",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "清明時節雨紛紛，\n路上行人欲斷魂。\n借問酒家何處有？\n牧童遙指杏花村。",
+   "prompt": [
+    "You are Viola in a duel of verses: theatrical, sharp, in character. Your line in the play: \"I am not what I am.\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same character.\nWrite exactly 3 lines.\nYour flourish: Keep every line to 7 characters or fewer.\nYour challenger last said:\n清明時節雨紛紛，\n路上行人欲斷魂。\n借問酒家何處有？\n牧童遙指杏花村。\nAnswer them.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "我非我。\n我非我。\n我非我。",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": true,
+   "formEarned": 20,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-opening",
+     "met": true,
+     "detail": "我 · 我 · 我"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 30,
+   "drafts": [
+    {
+     "raw": "我非我。\n我非我。\n我非我。",
+     "tidy": "我非我。\n我非我。\n我非我。",
+     "ms": 2087,
+     "tokens": 14,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 30
+    },
+    {
+     "raw": "我非我。\n我非我。\n我非我。",
+     "tidy": "我非我。\n我非我。\n我非我。",
+     "ms": 1967,
+     "tokens": 14,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 30
+    },
+    {
+     "raw": "我非我。\n我非我。\n我非我。",
+     "tidy": "我非我。\n我非我。\n我非我。",
+     "ms": 1883,
+     "tokens": 14,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 30
+    }
+   ]
+  },
+  {
+   "seed": 1011,
+   "roundIndex": 2,
+   "formId": "crescendo",
+   "difficulty": "player",
+   "card": "Cassius",
+   "acrostic": null,
+   "relicWords": [
+    "魔法书",
+    "风暴",
+    "魔法",
+    "书页",
+    "溺水"
+   ],
+   "answering": "清明時節雨紛紛，\n路上行人欲斷魂。\n借問酒家何處有？\n牧童遙指杏花村。",
+   "prompt": [
+    "You are Cassius in a duel of verses: theatrical, sharp, in character. Your line in the play: \"The fault, dear Brutus, is not in our stars, but in ourselves.\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Call on a character by name.\nWork in at least two of these words: 魔法书, 风暴, 魔法, 书页, 溺水.\nYour challenger last said:\n清明時節雨紛紛，\n路上行人欲斷魂。\n借問酒家何處有？\n牧童遙指杏花村。\nAnswer them.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "吾等之争，非星辰之愆，乃自我之愚昧所致，如同风暴席卷了古老的魔法书页。\nBrutus，听我言，这份绝望的潮水，足以将我们一同淹没，这便是我们自身的败局。\n此番错失良机，正如那无情的魔法，使我们身陷泥淖，仿佛要溺水于这虚妄的幻象之中。",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "growing",
+     "met": false,
+     "detail": "31 < 35 < 35"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": true,
+   "craft": 24,
+   "drafts": [
+    {
+     "raw": "吾等之争，非星辰之愆，乃自我之愚昧所致，如同风暴席卷了古老的魔法书页。\nBrutus，听我言，这份绝望的潮水，足以将我们一同淹没，这便是我们自身的败局。\n此番错失良机，正如那无情的魔法，使我们身陷泥淖，仿佛要溺水于这虚妄的幻象之中。",
+     "tidy": "吾等之争，非星辰之愆，乃自我之愚昧所致，如同风暴席卷了古老的魔法书页。\nBrutus，听我言，这份绝望的潮水，足以将我们一同淹没，这便是我们自身的败局。\n此番错失良机，正如那无情的魔法，使我们身陷泥淖，仿佛要溺水于这虚妄的幻象之中。",
+     "ms": 12929,
+     "tokens": 94,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 24
+    },
+    {
+     "raw": "此番风暴，非星辰之罪，乃吾等心魔之深渊所在；\n纵使魔法书启，亦难抵这无形的洪流，如同风暴席卷乾坤；\n若不警醒，便皆陷于迷惘，如溺水之患，徒留空虚的书页。",
+     "tidy": "此番风暴，非星辰之罪，乃吾等心魔之深渊所在；\n纵使魔法书启，亦难抵这无形的洪流，如同风暴席卷乾坤；\n若不警醒，便皆陷于迷惘，如溺水之患，徒留空虚的书页。",
+     "ms": 16176,
+     "tokens": 71,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 12
+    }
+   ]
+  },
+  {
+   "seed": 1012,
+   "roundIndex": 0,
+   "formId": "anaphora",
+   "difficulty": "apprentice",
+   "card": "Odysseus",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Odysseus in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Tell me, O Muse, of the man of many ways, who wandered far.\" You write short verse and nothing else.",
+    "Form: Anaphora. Three lines that all begin with the same character.\nWrite exactly 3 lines.\nYour flourish: Use two words of 3 letters or more.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "我嘲笑你，胆小之徒，\n我嘲笑你，迷失方向，\n我嘲笑你，浪迹天涯。",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": true,
+   "formEarned": 20,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-opening",
+     "met": true,
+     "detail": "我 · 我 · 我"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 20,
+   "drafts": [
+    {
+     "raw": "我嘲笑你，胆小之徒，\n我嘲笑你，迷失方向，\n我嘲笑你，浪迹天涯。",
+     "tidy": "我嘲笑你，胆小之徒，\n我嘲笑你，迷失方向，\n我嘲笑你，浪迹天涯。",
+     "ms": 7441,
+     "tokens": 31,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 20
+    }
+   ]
+  },
+  {
+   "seed": 1012,
+   "roundIndex": 1,
+   "formId": "epistrophe",
+   "difficulty": "player",
+   "card": "Lady Capulet",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "煙籠寒水月籠沙\n夜泊秦淮近酒家\n商女不知亡國恨\n隔江猶唱後庭花",
+   "prompt": [
+    "You are Lady Capulet in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Marry, that marry is the very theme I came to talk of.\" You write short verse and nothing else.",
+    "Form: Epistrophe. Three lines that all end on the same character.\nWrite exactly 3 lines.\nYour flourish: Cry out: end a line with an exclamation mark.\nYour challenger last said:\n煙籠寒水月籠沙\n夜泊秦淮近酒家\n商女不知亡國恨\n隔江猶唱後庭花\nAnswer them.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "煙籠寒水月籠沙！\n夜泊秦淮近酒家！\n商女不知亡國恨！",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-ending",
+     "met": false,
+     "detail": "沙 · 家 · 恨"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 9,
+   "drafts": [
+    {
+     "raw": "煙籠寒水月籠沙！\n夜泊秦淮近酒家！\n商女不知亡國恨！",
+     "tidy": "煙籠寒水月籠沙！\n夜泊秦淮近酒家！\n商女不知亡國恨！",
+     "ms": 5143,
+     "tokens": 25,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 9
+    },
+    {
+     "raw": "詩歌是我的主題！\n文字是我的標誌！\n對決是我的舞台！",
+     "tidy": "詩歌是我的主題！\n文字是我的標誌！\n對決是我的舞台！",
+     "ms": 3749,
+     "tokens": 20,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 9
+    }
+   ]
+  },
+  {
+   "seed": 1012,
+   "roundIndex": 2,
+   "formId": "haiku",
+   "difficulty": "apprentice",
+   "card": "Elizabeth Barrett Browning",
+   "acrostic": null,
+   "relicWords": [
+    "面具",
+    "梦",
+    "丑角",
+    "戏",
+    "月亮"
+   ],
+   "answering": "煙籠寒水月籠沙\n夜泊秦淮近酒家\n商女不知亡國恨\n隔江猶唱後庭花",
+   "prompt": [
+    "You are Elizabeth Barrett Browning in a duel of verses: theatrical, sharp, in character. Your line in the play: \"How do I love thee? Let me count the ways.\" You write short verse and nothing else.",
+    "Form: Haiku. Three lines of 5, 7 and 5 characters.\nWrite exactly 3 lines.\nYour flourish: Give every line the same number of characters.\nWork in at least two of these words: 面具, 梦, 丑角, 戏, 月亮.\nYour challenger last said:\n煙籠寒水月籠沙\n夜泊秦淮近酒家\n商女不知亡國恨\n隔江猶唱後庭花\nAnswer them.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "面具笑嫣然\n梦里月光皎洁\n戏曲入长夜",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 15,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "syllables-1",
+     "met": true,
+     "detail": "5/5"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "6/7"
+    },
+    {
+     "id": "syllables-3",
+     "met": true,
+     "detail": "5/5"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 21,
+   "drafts": [
+    {
+     "raw": "面具笑嫣然\n梦里月光皎洁\n戏曲入长夜",
+     "tidy": "面具笑嫣然\n梦里月光皎洁\n戏曲入长夜",
+     "ms": 4538,
+     "tokens": 18,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 15,
+     "craft": 21
+    }
+   ]
+  },
+  {
+   "seed": 1013,
+   "roundIndex": 0,
+   "formId": "acrostic",
+   "difficulty": "player",
+   "card": "William Blake",
+   "acrostic": "月下花",
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are William Blake in a duel of verses: theatrical, sharp, in character. Your line in the play: \"To see a World in a Grain of Sand and a Heaven in a Wild Flower.\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per letter: the first letters must spell 月下花.\nWrite exactly 3 lines.\nYour flourish: End your verse on the same character it began with.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "月：光影劃破迷惘，月\n下：花開絢爛無邊，花\n花：詩篇鑄就永恆，花",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": true,
+   "formEarned": 20,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "spells",
+     "met": true,
+     "detail": "月下花"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 20,
+   "drafts": [
+    {
+     "raw": "月：光影劃破迷惘，月\n下：花開絢爛無邊，花\n花：詩篇鑄就永恆，花",
+     "tidy": "月：光影劃破迷惘，月\n下：花開絢爛無邊，花\n花：詩篇鑄就永恆，花",
+     "ms": 7404,
+     "tokens": 32,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 20
+    },
+    {
+     "raw": "月：夜空寂寥映星光，\n下：花開恣意向風狂，\n花：見萬物皆為神光。",
+     "tidy": "月：夜空寂寥映星光，\n下：花開恣意向風狂，\n花：見萬物皆為神光。",
+     "ms": 5724,
+     "tokens": 32,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 20
+    }
+   ]
+  },
+  {
+   "seed": 1013,
+   "roundIndex": 1,
+   "formId": "haiku",
+   "difficulty": "player",
+   "card": "Mercutio",
+   "acrostic": null,
+   "relicWords": [
+    "风暴",
+    "咒语",
+    "魔杖",
+    "孤岛",
+    "溺水"
+   ],
+   "answering": "離離原上草，一歲一枯榮。\n野火燒不盡，春風吹又生。",
+   "prompt": [
+    "You are Mercutio in a duel of verses: theatrical, sharp, in character. Your line in the play: \"A plague on both your houses!\" You write short verse and nothing else.",
+    "Form: Haiku. Three lines of 5, 7 and 5 characters.\nWrite exactly 3 lines.\nYour flourish: Repeat one strong word three times.\nWork in at least two of these words: 风暴, 咒语, 魔杖, 孤岛, 溺水.\nYour challenger last said:\n離離原上草，一歲一枯榮。\n野火燒不盡，春風吹又生。\nAnswer them.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "风暴来袭\n咒语噬心魂\n魔杖终逝",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 5,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "syllables-1",
+     "met": false,
+     "detail": "4/5"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "5/7"
+    },
+    {
+     "id": "syllables-3",
+     "met": false,
+     "detail": "4/5"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 11,
+   "drafts": [
+    {
+     "raw": "风暴来袭\n咒语噬心魂\n魔杖终逝",
+     "tidy": "风暴来袭\n咒语噬心魂\n魔杖终逝",
+     "ms": 3126,
+     "tokens": 15,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 5,
+     "craft": 11
+    },
+    {
+     "raw": "风暴来袭\n咒语伤心魂\n魔杖无声",
+     "tidy": "风暴来袭\n咒语伤心魂\n魔杖无声",
+     "ms": 3419,
+     "tokens": 15,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 5,
+     "craft": 11
+    }
+   ]
+  },
+  {
+   "seed": 1013,
+   "roundIndex": 2,
+   "formId": "epistrophe",
+   "difficulty": "master",
+   "card": "Persephone",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "離離原上草，一歲一枯榮。\n野火燒不盡，春風吹又生。",
+   "prompt": [
+    "You are Persephone in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Six seeds I ate, and bound myself between two worlds forever.\" You write short verse and nothing else.",
+    "Form: Epistrophe. Three lines that all end on the same character.\nWrite exactly 3 lines.\nYour flourish: Turn a word of 2 letters or more from your opponent's last verse back on them.\nYour challenger last said:\n離離原上草，一歲一枯榮。\n野火燒不盡，春風吹又生。\nAnswer them.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "草木凋零，生命易逝。\n榮華易逝，時光轉移。\n生滅易逝，我與你同。",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-ending",
+     "met": false,
+     "detail": "逝 · 移 · 同"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "草草了，荣荣了，我了。",
+     "tidy": "草草了，荣荣了，我了。",
+     "ms": 2447,
+     "tokens": 11,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    },
+    {
+     "raw": "草木凋零，生命易逝。\n榮華易逝，時光轉移。\n生滅易逝，我與你同。",
+     "tidy": "草木凋零，生命易逝。\n榮華易逝，時光轉移。\n生滅易逝，我與你同。",
+     "ms": 5976,
+     "tokens": 31,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "草木凋零，生命枯萎，此岸永无归宿。",
+     "tidy": "草木凋零，生命枯萎，此岸永无归宿。",
+     "ms": 2928,
+     "tokens": 16,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 1,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1014,
+   "roundIndex": 0,
+   "formId": "jueju",
+   "difficulty": "master",
+   "card": "Hamlet",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Hamlet in a duel of verses: theatrical, sharp, in character. Your line in the play: \"To be, or not to be, that is the question.\" You write short verse and nothing else.",
+    "Form: Jueju. Four lines, all of five characters or all of seven, the shape of a classical quatrain.\nWrite exactly 4 lines.\nYour flourish: Ask a question: end a line with a question mark.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "你何足轻重？\n此番对决谁胜谁？\n生命与虚无的诘问，\n存在或不存在，是疑问？",
+   "source": "model",
+   "lines": 4,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "4/4"
+    },
+    {
+     "id": "even-lines",
+     "met": false,
+     "detail": "5 · 7 · 8 · 9"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 9,
+   "drafts": [
+    {
+     "raw": "你何足轻重？\n此番对决谁胜谁？\n生命与虚无的诘问，\n存在或不存在，是疑问？",
+     "tidy": "你何足轻重？\n此番对决谁胜谁？\n生命与虚无的诘问，\n存在或不存在，是疑问？",
+     "ms": 6977,
+     "tokens": 32,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 4,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 9
+    },
+    {
+     "raw": "汝之言，何以凌我？\n生死抉擇，此為試探？\n存亡之問，誰能解達？\n此番詩戰，豈不盡我？",
+     "tidy": "汝之言，何以凌我？\n生死抉擇，此為試探？\n存亡之問，誰能解達？\n此番詩戰，豈不盡我？",
+     "ms": 7898,
+     "tokens": 41,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 4,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 9
+    },
+    {
+     "raw": "汝等言我何故爭鋒？\n此番比試何以無名？\n生命與虛無何為分？\n此生生死問誰成名？",
+     "tidy": "汝等言我何故爭鋒？\n此番比試何以無名？\n生命與虛無何為分？\n此生生死問誰成名？",
+     "ms": 7392,
+     "tokens": 37,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 116,
+     "rawLines": 4,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 9
+    }
+   ]
+  },
+  {
+   "seed": 1014,
+   "roundIndex": 1,
+   "formId": "acrostic",
+   "difficulty": "master",
+   "card": "Lord Montague",
+   "acrostic": "春花秋月",
+   "relicWords": [
+    "王冠",
+    "王座",
+    "野心",
+    "女巫",
+    "国王"
+   ],
+   "answering": "松下問童子，言師採藥去。\n只在此山中，雲深不知處。",
+   "prompt": [
+    "You are Lord Montague in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Many a morning hath he there been seen, with tears augmenting the fresh morning dew.\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per letter: the first letters must spell 春花秋月.\nWrite exactly 4 lines.\nYour flourish: Repeat one strong word three times.\nWork in at least two of these words: 王冠, 王座, 野心, 女巫, 国王.\nYour challenger last said:\n松下問童子，言師採藥去。\n只在此山中，雲深不知處。\nAnswer them.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "春 翩跹，泪浸晨露，\n花 开，悲怆如霜雪，\n秋 沉寂，野心如影，\n月 照冷，王冠易逝。",
+   "source": "model",
+   "lines": 4,
+   "expectedLines": 4,
+   "formKept": true,
+   "formEarned": 20,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "4/4"
+    },
+    {
+     "id": "spells",
+     "met": true,
+     "detail": "春花秋月"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 26,
+   "drafts": [
+    {
+     "raw": "春 翩跹，泪浸晨露，\n花 开，悲怆如霜雪，\n秋 沉寂，野心如影，\n月 照冷，王冠易逝。",
+     "tidy": "春 翩跹，泪浸晨露，\n花 开，悲怆如霜雪，\n秋 沉寂，野心如影，\n月 照冷，王冠易逝。",
+     "ms": 6112,
+     "tokens": 42,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 4,
+     "expectedLines": 4,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 26
+    },
+    {
+     "raw": "春：春風拂過，淚浸薄霜。\n花：花開凋零，夢幻消亡。\n秋：秋夜漫長，心如霜寒。\n月：月光灑落，無盡憂傷。\n**盛**烈**盛**烈**盛**烈",
+     "tidy": "春：春風拂過，淚浸薄霜。\n花：花開凋零，夢幻消亡。\n秋：秋夜漫長，心如霜寒。\n月：月光灑落，無盡憂傷。",
+     "ms": 11619,
+     "tokens": 64,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 5,
+     "expectedLines": 4,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 20
+    },
+    {
+     "raw": "春：春風拂過白茫茫，\n花：花開不勝流逝光，\n秋：秋夜星辰灑淚房，\n月：月色照不盡滄桑。\n\n**王冠**！**王冠**！**王冠**！",
+     "tidy": "春：春風拂過白茫茫，\n花：花開不勝流逝光，\n秋：秋夜星辰灑淚房，\n月：月色照不盡滄桑。",
+     "ms": 10591,
+     "tokens": 59,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 116,
+     "rawLines": 5,
+     "expectedLines": 4,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 20
+    }
+   ]
+  },
+  {
+   "seed": 1014,
+   "roundIndex": 2,
+   "formId": "crescendo",
+   "difficulty": "master",
+   "card": "Oberon",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "松下問童子，言師採藥去。\n只在此山中，雲深不知處。",
+   "prompt": [
+    "You are Oberon in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Ill met by moonlight, proud Titania.\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Start three words in one line with the same letter.\nYour challenger last said:\n松下問童子，言師採藥去。\n只在此山中，雲深不知處。\nAnswer them.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "金光刺破幽冥，照亮你傲慢的姿态，\n影曳长风拂过，卷起虚妄的幻影与嘲讽，\n寂静吞噬了喧嚣，只余下冷酷的蔑视。",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "growing",
+     "met": false,
+     "detail": "14 < 16 < 15"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "**金**光刺破幽冥，照亮你傲慢的姿态，\n**影**曳长风拂过，卷起虚妄的幻影与嘲讽，\n**寂**静吞噬了喧嚣，只余下冷酷的蔑视。",
+     "tidy": "金光刺破幽冥，照亮你傲慢的姿态，\n影曳长风拂过，卷起虚妄的幻影与嘲讽，\n寂静吞噬了喧嚣，只余下冷酷的蔑视。",
+     "ms": 11356,
+     "tokens": 59,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "霜雪如瀑，涤清了心扉，\n星河倒悬，映照了傲骨，\n光芒闪烁，胜过万千迷惘。",
+     "tidy": "霜雪如瀑，涤清了心扉，\n星河倒悬，映照了傲骨，\n光芒闪烁，胜过万千迷惘。",
+     "ms": 7774,
+     "tokens": 36,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "星光灑下，耀眼如鑽石，\n仙氣繚繞，萬古風霜不侵蝕，\n邂逅月影，驕傲的緹坦啊。",
+     "tidy": "星光灑下，耀眼如鑽石，\n仙氣繚繞，萬古風霜不侵蝕，\n邂逅月影，驕傲的緹坦啊。",
+     "ms": 7728,
+     "tokens": 38,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1015,
+   "roundIndex": 0,
+   "formId": "epistrophe",
+   "difficulty": "apprentice",
+   "card": "Mary Shelley",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Mary Shelley in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Beware; for I am fearless, and therefore powerful.\" You write short verse and nothing else.",
+    "Form: Epistrophe. Three lines that all end on the same character.\nWrite exactly 3 lines.\nYour flourish: End your verse on the same character it began with.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "你言之凿凿，虚妄的傲慢，\n我以真理为刃，刺破你的幻象，\n我的决心不屈，足以摧毁你的傲慢。",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-ending",
+     "met": false,
+     "detail": "慢 · 象 · 慢"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "你言之凿凿，虚妄的傲慢，\n我以真理为刃，刺破你的幻象，\n我的决心不屈，足以摧毁你的傲慢。",
+     "tidy": "你言之凿凿，虚妄的傲慢，\n我以真理为刃，刺破你的幻象，\n我的决心不屈，足以摧毁你的傲慢。",
+     "ms": 6291,
+     "tokens": 39,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1015,
+   "roundIndex": 2,
+   "formId": "crescendo",
+   "difficulty": "apprentice",
+   "card": "Mercutio",
+   "acrostic": null,
+   "relicWords": [
+    "王冠",
+    "王座",
+    "野心",
+    "女巫",
+    "国王"
+   ],
+   "answering": "前不見古人，後不見來者。\n念天地之悠悠，獨愴然而涕下。",
+   "prompt": [
+    "You are Mercutio in a duel of verses: theatrical, sharp, in character. Your line in the play: \"A plague on both your houses!\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Repeat one strong word three times.\nWork in at least two of these words: 王冠, 王座, 野心, 女巫, 国王.\nYour challenger last said:\n前不見古人，後不見來者。\n念天地之悠悠，獨愴然而涕下。\nAnswer them.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "王冠，王座，野心如火，灼烧了你虚妄的言语。\n王冠，王座，野心如火，将吞噬你所有的虚浮与谎言。\n王冠，王座，野心如火，此番对决，只为铸就真正的荣耀。",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": true,
+   "formEarned": 20,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "growing",
+     "met": true,
+     "detail": "17 < 20 < 21"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 39,
+   "drafts": [
+    {
+     "raw": "王冠，王座，野心如火，灼烧了你虚妄的言语。\n王冠，王座，野心如火，将吞噬你所有的虚浮与谎言。\n王冠，王座，野心如火，此番对决，只为铸就真正的荣耀。",
+     "tidy": "王冠，王座，野心如火，灼烧了你虚妄的言语。\n王冠，王座，野心如火，将吞噬你所有的虚浮与谎言。\n王冠，王座，野心如火，此番对决，只为铸就真正的荣耀。",
+     "ms": 12509,
+     "tokens": 68,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 39
+    }
+   ]
+  },
+  {
+   "seed": 1016,
+   "roundIndex": 0,
+   "formId": "epistrophe",
+   "difficulty": "player",
+   "card": "Mary Shelley",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Mary Shelley in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Beware; for I am fearless, and therefore powerful.\" You write short verse and nothing else.",
+    "Form: Epistrophe. Three lines that all end on the same character.\nWrite exactly 3 lines.\nYour flourish: End your verse on the same character it began with.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "你口出狂言，徒增虚名，失言。\n我心如磐石，不惧风霜，强。\n你的言辞脆弱，终将消亡，亡。",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-ending",
+     "met": false,
+     "detail": "言 · 强 · 亡"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "你口出狂言，徒增虚名，失言。\n我心如磐石，不惧风霜，强。\n你的言辞脆弱，终将消亡，亡。",
+     "tidy": "你口出狂言，徒增虚名，失言。\n我心如磐石，不惧风霜，强。\n你的言辞脆弱，终将消亡，亡。",
+     "ms": 10900,
+     "tokens": 41,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "你这虚张声势的家伙，\n我的风暴将吞噬你，\n我无畏，所以强大。",
+     "tidy": "你这虚张声势的家伙，\n我的风暴将吞噬你，\n我无畏，所以强大。",
+     "ms": 4965,
+     "tokens": 26,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1016,
+   "roundIndex": 1,
+   "formId": "crescendo",
+   "difficulty": "player",
+   "card": "Hamlet",
+   "acrostic": null,
+   "relicWords": [
+    "面具",
+    "梦",
+    "丑角",
+    "戏",
+    "月亮"
+   ],
+   "answering": "君問歸期未有期\n巴山夜雨漲秋池",
+   "prompt": [
+    "You are Hamlet in a duel of verses: theatrical, sharp, in character. Your line in the play: \"To be, or not to be, that is the question.\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Ask a question: end a line with a question mark.\nWork in at least two of these words: 面具, 梦, 丑角, 戏, 月亮.\nYour challenger last said:\n君問歸期未有期\n巴山夜雨漲秋池\nAnswer them.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "面具之下，是何等真实之梦？\n这月光下的戏码，是否只是丑角的嘲讽？\n当命运的谶语如波涛般涌来，我们能否挣脱这虚幻的局？",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": true,
+   "formEarned": 20,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "growing",
+     "met": true,
+     "detail": "11 < 16 < 23"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 39,
+   "drafts": [
+    {
+     "raw": "面具之下，是何等真实之梦？\n这月光下的戏码，是否只是丑角的嘲讽？\n当命运的谶语如波涛般涌来，我们能否挣脱这虚幻的局？",
+     "tidy": "面具之下，是何等真实之梦？\n这月光下的戏码，是否只是丑角的嘲讽？\n当命运的谶语如波涛般涌来，我们能否挣脱这虚幻的局？",
+     "ms": 10148,
+     "tokens": 49,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 39
+    },
+    {
+     "raw": "面具下的幻影是否便是这虚妄的梦境？\n如同丑角在月光下，上演着一场无尽的假戏云烟？\n当这悲怆的命运，怎能导向那永恒的抉择呢？",
+     "tidy": "面具下的幻影是否便是这虚妄的梦境？\n如同丑角在月光下，上演着一场无尽的假戏云烟？\n当这悲怆的命运，怎能导向那永恒的抉择呢？",
+     "ms": 11610,
+     "tokens": 54,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 18
+    }
+   ]
+  },
+  {
+   "seed": 1017,
+   "roundIndex": 0,
+   "formId": "jueju",
+   "difficulty": "apprentice",
+   "card": "Hamlet",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Hamlet in a duel of verses: theatrical, sharp, in character. Your line in the play: \"To be, or not to be, that is the question.\" You write short verse and nothing else.",
+    "Form: Jueju. Four lines, all of five characters or all of seven, the shape of a classical quatrain.\nWrite exactly 4 lines.\nYour flourish: Ask a question: end a line with a question mark.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "汝之言，休欲再争？\n此番比试，谁敢不敬？\n生命如影，是是或否？\n此生何求，或存或逝？",
+   "source": "model",
+   "lines": 4,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "4/4"
+    },
+    {
+     "id": "even-lines",
+     "met": false,
+     "detail": "7 · 8 · 8 · 8"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 9,
+   "drafts": [
+    {
+     "raw": "汝之言，休欲再争？\n此番比试，谁敢不敬？\n生命如影，是是或否？\n此生何求，或存或逝？",
+     "tidy": "汝之言，休欲再争？\n此番比试，谁敢不敬？\n生命如影，是是或否？\n此生何求，或存或逝？",
+     "ms": 10355,
+     "tokens": 41,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 4,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 9
+    }
+   ]
+  },
+  {
+   "seed": 1017,
+   "roundIndex": 1,
+   "formId": "epistrophe",
+   "difficulty": "master",
+   "card": "Juliet",
+   "acrostic": null,
+   "relicWords": [
+    "黄金",
+    "抉择",
+    "仁慈",
+    "铅",
+    "匣子"
+   ],
+   "answering": "葡萄美酒夜光杯，欲飲琵琶馬上催。\n醉臥沙場君莫笑，古來征戰幾人回。",
+   "prompt": [
+    "You are Juliet in a duel of verses: theatrical, sharp, in character. Your line in the play: \"What's in a name? That which we call a rose...\" You write short verse and nothing else.",
+    "Form: Epistrophe. Three lines that all end on the same character.\nWrite exactly 3 lines.\nYour flourish: Cry out: end a line with an exclamation mark.\nWork in at least two of these words: 黄金, 抉择, 仁慈, 铅, 匣子.\nYour challenger last said:\n葡萄美酒夜光杯，欲飲琵琶馬上催。\n醉臥沙場君莫笑，古來征戰幾人回。\nAnswer them.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "黄金流淌在手中！\n抉择之痛刻在心头！\n仁慈如铅，藏于匣子！",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-ending",
+     "met": false,
+     "detail": "中 · 头 · 子"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 18,
+   "drafts": [
+    {
+     "raw": "黄金流淌在手中！\n抉择之痛刻在心头！\n仁慈如铅，藏于匣子！",
+     "tidy": "黄金流淌在手中！\n抉择之痛刻在心头！\n仁慈如铅，藏于匣子！",
+     "ms": 5901,
+     "tokens": 27,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 18
+    },
+    {
+     "raw": "黄金的誓言，如铅般沉重！\n抉择的时刻，需仁慈去衡量！\n玫瑰的香气，藏在那个匣子里！",
+     "tidy": "黄金的誓言，如铅般沉重！\n抉择的时刻，需仁慈去衡量！\n玫瑰的香气，藏在那个匣子里！",
+     "ms": 7838,
+     "tokens": 35,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 18
+    },
+    {
+     "raw": "黄金如霜 抉择如铅！\n仁慈如光 铭刻在匣子！\n风雨皆过 留下印记！",
+     "tidy": "黄金如霜 抉择如铅！\n仁慈如光 铭刻在匣子！\n风雨皆过 留下印记！",
+     "ms": 5674,
+     "tokens": 31,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 18
+    }
+   ]
+  },
+  {
+   "seed": 1017,
+   "roundIndex": 2,
+   "formId": "crescendo",
+   "difficulty": "master",
+   "card": "Edgar Allan Poe",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "葡萄美酒夜光杯，欲飲琵琶馬上催。\n醉臥沙場君莫笑，古來征戰幾人回。",
+   "prompt": [
+    "You are Edgar Allan Poe in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Once upon a midnight dreary, while I pondered, weak and weary.\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: End your verse on the same character it began with.\nYour challenger last said:\n葡萄美酒夜光杯，欲飲琵琶馬上催。\n醉臥沙場君莫笑，古來征戰幾人回。\nAnswer them.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "昔日幽冥，心靈如潮水般洶湧澎湃，\n今夜孤寂，思緒如暗夜之星，綿延無盡的淒涼，\n此番對峙，如同無盡的黑夜，令人心神俱疲，迷惘。",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": true,
+   "formEarned": 20,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "growing",
+     "met": true,
+     "detail": "14 < 18 < 19"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 20,
+   "drafts": [
+    {
+     "raw": "昔日幽冥，心靈如潮水般洶湧澎湃，\n今夜孤寂，思緒如暗夜之星，綿延無盡的淒涼，\n此番對峙，如同無盡的黑夜，令人心神俱疲，迷惘。",
+     "tidy": "昔日幽冥，心靈如潮水般洶湧澎湃，\n今夜孤寂，思緒如暗夜之星，綿延無盡的淒涼，\n此番對峙，如同無盡的黑夜，令人心神俱疲，迷惘。",
+     "ms": 8613,
+     "tokens": 60,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 20
+    },
+    {
+     "raw": "当夜色幽暗，我扪心自叩，思绪如潮水般汹涌而至；\n沉湎于这空寂，身心俱疲，仿佛长夜的鬼魅正悄然临近。\n曾几何时，在无尽的迷惘之中，我独自伫立，万籁俱寂。",
+     "tidy": "当夜色幽暗，我扪心自叩，思绪如潮水般汹涌而至；\n沉湎于这空寂，身心俱疲，仿佛长夜的鬼魅正悄然临近。\n曾几何时，在无尽的迷惘之中，我独自伫立，万籁俱寂。",
+     "ms": 8937,
+     "tokens": 71,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "夜沉沉，心绪如幽冥深渊，\n思绪如潮水般汹涌，无法止渴，\n一次吧，在寂寥中徘徊。",
+     "tidy": "夜沉沉，心绪如幽冥深渊，\n思绪如潮水般汹涌，无法止渴，\n一次吧，在寂寥中徘徊。",
+     "ms": 8051,
+     "tokens": 37,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1018,
+   "roundIndex": 1,
+   "formId": "crescendo",
+   "difficulty": "apprentice",
+   "card": "Friar Lawrence",
+   "acrostic": null,
+   "relicWords": [
+    "眼泪",
+    "真相",
+    "女儿",
+    "虚无",
+    "真心"
+   ],
+   "answering": "朝辭白帝彩雲間，\n千里江陵一日還。",
+   "prompt": [
+    "You are Friar Lawrence in a duel of verses: theatrical, sharp, in character. Your line in the play: \"These violent delights have violent ends.\" You write short verse and nothing else.",
+    "Form: Crescendo. Three lines, each longer than the one before.\nWrite exactly 3 lines.\nYour flourish: Turn a word of 2 letters or more from your opponent's last verse back on them.\nWork in at least two of these words: 眼泪, 真相, 女儿, 虚无, 真心.\nYour challenger last said:\n朝辭白帝彩雲間，\n千里江陵一日還。\nAnswer them.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "眼泪浸湿了这华美的景象，\n真相如毒，在虚无的笑声中蔓延，\n女儿的泪水，映照出这虚妄的真心。",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": true,
+   "formEarned": 20,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "growing",
+     "met": true,
+     "detail": "11 < 13 < 14"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 26,
+   "drafts": [
+    {
+     "raw": "眼泪浸湿了这华美的景象，\n真相如毒，在虚无的笑声中蔓延，\n女儿的泪水，映照出这虚妄的真心。",
+     "tidy": "眼泪浸湿了这华美的景象，\n真相如毒，在虚无的笑声中蔓延，\n女儿的泪水，映照出这虚妄的真心。",
+     "ms": 6925,
+     "tokens": 40,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 26
+    }
+   ]
+  },
+  {
+   "seed": 1018,
+   "roundIndex": 2,
+   "formId": "epistrophe",
+   "difficulty": "apprentice",
+   "card": "Odysseus",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "朝辭白帝彩雲間，\n千里江陵一日還。",
+   "prompt": [
+    "You are Odysseus in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Tell me, O Muse, of the man of many ways, who wandered far.\" You write short verse and nothing else.",
+    "Form: Epistrophe. Three lines that all end on the same character.\nWrite exactly 3 lines.\nYour flourish: Use two words of 3 letters or more.\nYour challenger last said:\n朝辭白帝彩雲間，\n千里江陵一日還。\nAnswer them.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "身經百難歷險，\n故土多聞滄桑，\n心懷萬事如霜。",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "same-ending",
+     "met": false,
+     "detail": "險 · 桑 · 霜"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "身經百難歷險，\n故土多聞滄桑，\n心懷萬事如霜。",
+     "tidy": "身經百難歷險，\n故土多聞滄桑，\n心懷萬事如霜。",
+     "ms": 3343,
+     "tokens": 23,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1019,
+   "roundIndex": 0,
+   "formId": "acrostic",
+   "difficulty": "apprentice",
+   "card": "Tybalt",
+   "acrostic": "春花秋月",
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Tybalt in a duel of verses: theatrical, sharp, in character. Your line in the play: \"What, drawn, and talk of peace? I hate the word.\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per letter: the first letters must spell 春花秋月.\nWrite exactly 4 lines.\nYour flourish: Cry out: end a line with an exclamation mark.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "春：风起，剑已出！\n花：血溅，誓言未休！\n秋：霜雪，心已冷透！\n月：孤寒，终将破！",
+   "source": "model",
+   "lines": 4,
+   "expectedLines": 4,
+   "formKept": true,
+   "formEarned": 20,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "4/4"
+    },
+    {
+     "id": "spells",
+     "met": true,
+     "detail": "春花秋月"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 30,
+   "drafts": [
+    {
+     "raw": "春：风起，剑已出！\n花：血溅，誓言未休！\n秋：霜雪，心已冷透！\n月：孤寒，终将破！",
+     "tidy": "春：风起，剑已出！\n花：血溅，誓言未休！\n秋：霜雪，心已冷透！\n月：孤寒，终将破！",
+     "ms": 10417,
+     "tokens": 41,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 4,
+     "expectedLines": 4,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 30
+    }
+   ]
+  },
+  {
+   "seed": 1019,
+   "roundIndex": 2,
+   "formId": "jueju",
+   "difficulty": "player",
+   "card": "Titania",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "遠芳侵古道，晴翠接荒城。\n又送王孫去，萋萋滿別情。",
+   "prompt": [
+    "You are Titania in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Come, sit thee down upon this flowery bed.\" You write short verse and nothing else.",
+    "Form: Jueju. Four lines, all of five characters or all of seven, the shape of a classical quatrain.\nWrite exactly 4 lines.\nYour flourish: Start three words in one line with the same letter.\nYour challenger last said:\n遠芳侵古道，晴翠接荒城。\n又送王孫去，萋萋滿別情。\nAnswer them.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "花香旖旎，引君入懷，\n柔荑輕拂，醉臥錦榻。\n玉簟清涼，映照幽光，\n來坐此處，滌盡塵霜。",
+   "source": "model",
+   "lines": 4,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "4/4"
+    },
+    {
+     "id": "even-lines",
+     "met": false,
+     "detail": "8 · 8 · 8 · 8"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "花香旖旎，引君入懷，\n柔荑輕拂，醉臥錦榻。\n玉簟清涼，映照幽光，\n來坐此處，滌盡塵霜。",
+     "tidy": "花香旖旎，引君入懷，\n柔荑輕拂，醉臥錦榻。\n玉簟清涼，映照幽光，\n來坐此處，滌盡塵霜。",
+     "ms": 9801,
+     "tokens": 43,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 4,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "芳華侵舊路，翠色接荒城。\n送君去故園裡，萋萋滿別情。\n來坐此花榻上。",
+     "tidy": "芳華侵舊路，翠色接荒城。\n送君去故園裡，萋萋滿別情。\n來坐此花榻上。",
+     "ms": 6728,
+     "tokens": 34,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 3,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 0,
+     "craft": 0
+    }
+   ]
+  },
+  {
+   "seed": 1020,
+   "roundIndex": 0,
+   "formId": "acrostic",
+   "difficulty": "player",
+   "card": "Bottom",
+   "acrostic": "月下花",
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Bottom in a duel of verses: theatrical, sharp, in character. Your line in the play: \"I have had a most rare vision. I have had a dream, past the wit of man.\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per letter: the first letters must spell 月下花.\nWrite exactly 3 lines.\nYour flourish: Start three words in one line with the same letter.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "月：迷雾锁我心扉，\n下：下沉如海无底，\n花：花开凋零亦无期。",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": true,
+   "formEarned": 20,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "spells",
+     "met": true,
+     "detail": "月下花"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 20,
+   "drafts": [
+    {
+     "raw": "月：迷雾锁我心扉，\n下：下沉如海无底，\n花：花开凋零亦无期。\nI have had a most rare vision. I have had a dream, past the wit of man.",
+     "tidy": "月：迷雾锁我心扉，\n下：下沉如海无底，\n花：花开凋零亦无期。",
+     "ms": 9724,
+     "tokens": 51,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 4,
+     "expectedLines": 3,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 20
+    },
+    {
+     "raw": "月：冷光照我孤影，\n下：下沉心潮入血，\n花：化作虚幻无边。\n\n我曾见过奇景，有梦，超越人智。",
+     "tidy": "月：冷光照我孤影，\n下：下沉心潮入血，\n花：化作虚幻无边。",
+     "ms": 7917,
+     "tokens": 43,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 4,
+     "expectedLines": 3,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 20
+    }
+   ]
+  },
+  {
+   "seed": 1020,
+   "roundIndex": 2,
+   "formId": "jueju",
+   "difficulty": "master",
+   "card": "Apollo",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "千山鳥飛絕，萬徑人蹤滅。\n孤舟簑笠翁，獨釣寒江雪。",
+   "prompt": [
+    "You are Apollo in a duel of verses: theatrical, sharp, in character. Your line in the play: \"I am the god of song, of healing, and of the radiant sun.\" You write short verse and nothing else.",
+    "Form: Jueju. Four lines, all of five characters or all of seven, the shape of a classical quatrain.\nWrite exactly 4 lines.\nYour flourish: Use two words of 3 letters or more.\nYour challenger last said:\n千山鳥飛絕，萬徑人蹤滅。\n孤舟簑笠翁，獨釣寒江雪。\nAnswer them.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "流光灑碧波，\n溫柔照耀心。\n神聖光芒耀，\n生命永不สิ้น。",
+   "source": "model",
+   "lines": 4,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "4/4"
+    },
+    {
+     "id": "even-lines",
+     "met": false,
+     "detail": "5 · 5 · 5 · 6"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "流光灑碧波，\n溫柔照耀心。\n神聖光芒耀，\n生命永不สิ้น。",
+     "tidy": "流光灑碧波，\n溫柔照耀心。\n神聖光芒耀，\n生命永不สิ้น。",
+     "ms": 4972,
+     "tokens": 26,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 4,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "光耀萬物明，\n溫柔治癒心靈。\n旭日照耀乾坤，\n生命永存光陰。",
+     "tidy": "光耀萬物明，\n溫柔治癒心靈。\n旭日照耀乾坤，\n生命永存光陰。",
+     "ms": 5621,
+     "tokens": 29,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 116,
+     "rawLines": 4,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    },
+    {
+     "raw": "光影流轉入心扉，\n溫柔照耀驅散憂。\n生命之歌頌永不棄，\n神曦灑落慰我愁。",
+     "tidy": "光影流轉入心扉，\n溫柔照耀驅散憂。\n生命之歌頌永不棄，\n神曦灑落慰我愁。",
+     "ms": 7291,
+     "tokens": 35,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 116,
+     "rawLines": 4,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1022,
+   "roundIndex": 1,
+   "formId": "haiku",
+   "difficulty": "master",
+   "card": "Lord Montague",
+   "acrostic": null,
+   "relicWords": [
+    "戒指",
+    "誓言",
+    "黑夜",
+    "放逐",
+    "亲吻"
+   ],
+   "answering": "月落烏啼霜滿天，江楓漁火對愁眠。\n姑蘇城外寒山寺，夜半鐘聲到客船。",
+   "prompt": [
+    "You are Lord Montague in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Many a morning hath he there been seen, with tears augmenting the fresh morning dew.\" You write short verse and nothing else.",
+    "Form: Haiku. Three lines of 5, 7 and 5 characters.\nWrite exactly 3 lines.\nYour flourish: Repeat one strong word three times.\nWork in at least two of these words: 戒指, 誓言, 黑夜, 放逐, 亲吻.\nYour challenger last said:\n月落烏啼霜滿天，江楓漁火對愁眠。\n姑蘇城外寒山寺，夜半鐘聲到客船。\nAnswer them.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "戒指泪流淌\n誓言破黑夜光\n亲吻长凄凉",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 15,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "syllables-1",
+     "met": true,
+     "detail": "5/5"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "6/7"
+    },
+    {
+     "id": "syllables-3",
+     "met": true,
+     "detail": "5/5"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 21,
+   "drafts": [
+    {
+     "raw": "泪流黑夜湿\n誓言冰冷刺心\n吻下霜霜",
+     "tidy": "泪流黑夜湿\n誓言冰冷刺心\n吻下霜霜",
+     "ms": 2076,
+     "tokens": 17,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 10,
+     "craft": 16
+    },
+    {
+     "raw": "泪流霜雪,\n誓言重重铸,\n黑夜吻别。",
+     "tidy": "泪流霜雪,\n誓言重重铸,\n黑夜吻别。",
+     "ms": 1822,
+     "tokens": 18,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 5,
+     "craft": 11
+    },
+    {
+     "raw": "戒指泪流淌\n誓言破黑夜光\n亲吻长凄凉",
+     "tidy": "戒指泪流淌\n誓言破黑夜光\n亲吻长凄凉",
+     "ms": 1691,
+     "tokens": 17,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 15,
+     "craft": 21
+    }
+   ]
+  },
+  {
+   "seed": 1023,
+   "roundIndex": 0,
+   "formId": "jueju",
+   "difficulty": "apprentice",
+   "card": "Brutus",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": null,
+   "prompt": [
+    "You are Brutus in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Not that I loved Caesar less, but that I loved Rome more.\" You write short verse and nothing else.",
+    "Form: Jueju. Four lines, all of five characters or all of seven, the shape of a classical quatrain.\nWrite exactly 4 lines.\nYour flourish: Call on a character by name.\nOpen the duel: taunt your challenger.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "对手，你言辞轻佻，\n我爱城邦，心铭不忘。\n不憎凯撒，只爱罗马，\n此情胜过万古洪荒。",
+   "source": "model",
+   "lines": 4,
+   "expectedLines": 4,
+   "formKept": false,
+   "formEarned": 6,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "4/4"
+    },
+    {
+     "id": "even-lines",
+     "met": false,
+     "detail": "7 · 8 · 8 · 8"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 6,
+   "drafts": [
+    {
+     "raw": "对手，你言辞轻佻，\n我爱城邦，心铭不忘。\n不憎凯撒，只爱罗马，\n此情胜过万古洪荒。",
+     "tidy": "对手，你言辞轻佻，\n我爱城邦，心铭不忘。\n不憎凯撒，只爱罗马，\n此情胜过万古洪荒。",
+     "ms": 4536,
+     "tokens": 39,
+     "temperature": 0.7,
+     "maxTokens": 116,
+     "rawLines": 4,
+     "expectedLines": 4,
+     "formKept": false,
+     "formEarned": 6,
+     "craft": 6
+    }
+   ]
+  },
+  {
+   "seed": 1023,
+   "roundIndex": 2,
+   "formId": "acrostic",
+   "difficulty": "master",
+   "card": "Prospero",
+   "acrostic": "月下花",
+   "relicWords": [
+    "骷髅",
+    "戏谑",
+    "坟墓",
+    "笑声",
+    "尘土"
+   ],
+   "answering": "清明時節雨紛紛，\n路上行人欲斷魂。\n借問酒家何處有？\n牧童遙指杏花村。",
+   "prompt": [
+    "You are Prospero in a duel of verses: theatrical, sharp, in character. Your line in the play: \"We are such stuff as dreams are made on.\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per letter: the first letters must spell 月下花.\nWrite exactly 3 lines.\nYour flourish: Make your last line your longest.\nWork in at least two of these words: 骷髅, 戏谑, 坟墓, 笑声, 尘土.\nYour challenger last said:\n清明時節雨紛紛，\n路上行人欲斷魂。\n借問酒家何處有？\n牧童遙指杏花村。\nAnswer them.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "月：月色如霜，映照寂寥。\n下：下影如鬼，踱步无声。\n花：花开凋零，化为尘土，此番戏谑，如同骷髅在坟墓中低语，那笑声与泪水一同消散于这无尽的时光洪流之中，我们是如此，如同梦境铸就。",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": true,
+   "formEarned": 20,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "spells",
+     "met": true,
+     "detail": "月下花"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 39,
+   "drafts": [
+    {
+     "raw": "月：月色如霜，映照寂寥。\n下：下影如鬼，踱步无声。\n花：花开凋零，化为尘土，此番戏谑，如同骷髅在坟墓中低语，那笑声与泪水一同消散于这无尽的时光洪流之中，我们是如此，如同梦境铸就。",
+     "tidy": "月：月色如霜，映照寂寥。\n下：下影如鬼，踱步无声。\n花：花开凋零，化为尘土，此番戏谑，如同骷髅在坟墓中低语，那笑声与泪水一同消散于这无尽的时光洪流之中，我们是如此，如同梦境铸就。",
+     "ms": 23152,
+     "tokens": 82,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 39
+    },
+    {
+     "raw": "月：月影婆娑，\n下：下尘覆古墓，\n花：花开凋零如骷髅，笑声在坟墓中，此番戏谑的对饮，我们是何等短暂的幻梦，我们是这种由梦想铸成的、如同虚无的、只可被尘土侵蚀而消亡的，极致虚幻的存在的证明，流淌在这无尽的时光之中。",
+     "tidy": "月：月影婆娑，\n下：下尘覆古墓，\n花：花开凋零如骷髅，笑声在坟墓中，此番戏谑的对饮，我们是何等短暂的幻梦，我们是这种由梦想铸成的、如同虚无的、只可被尘土侵蚀而消亡的，极致虚幻的存在的证明，流淌在这无尽的时光之中。",
+     "ms": 29002,
+     "tokens": 92,
+     "temperature": 0.7999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 39
+    },
+    {
+     "raw": "月：月光下，花影迷離，\n下：下風蕭瑟，如骷髅倚，\n花：花開凋零，笑声入坟墓，尘土掩埋的时光长河，是这虚幻的生命在风中腐朽的无常啊。",
+     "tidy": "月：月光下，花影迷離，\n下：下風蕭瑟，如骷髅倚，\n花：花開凋零，笑声入坟墓，尘土掩埋的时光长河，是这虚幻的生命在风中腐朽的无常啊。",
+     "ms": 21682,
+     "tokens": 63,
+     "temperature": 0.8999999999999999,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 39
+    }
+   ]
+  },
+  {
+   "seed": 1024,
+   "roundIndex": 2,
+   "formId": "haiku",
+   "difficulty": "apprentice",
+   "card": "Odysseus",
+   "acrostic": null,
+   "relicWords": null,
+   "answering": "煙籠寒水月籠沙\n夜泊秦淮近酒家\n商女不知亡國恨\n隔江猶唱後庭花",
+   "prompt": [
+    "You are Odysseus in a duel of verses: theatrical, sharp, in character. Your line in the play: \"Tell me, O Muse, of the man of many ways, who wandered far.\" You write short verse and nothing else.",
+    "Form: Haiku. Three lines of 5, 7 and 5 characters.\nWrite exactly 3 lines.\nYour flourish: Use two words of 3 letters or more.\nYour challenger last said:\n煙籠寒水月籠沙\n夜泊秦淮近酒家\n商女不知亡國恨\n隔江猶唱後庭花\nAnswer them.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "多路行者\n漫游远方途\n故人相思深",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": false,
+   "formEarned": 10,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "syllables-1",
+     "met": false,
+     "detail": "4/5"
+    },
+    {
+     "id": "syllables-2",
+     "met": false,
+     "detail": "5/7"
+    },
+    {
+     "id": "syllables-3",
+     "met": true,
+     "detail": "5/5"
+    }
+   ],
+   "deviceMet": false,
+   "signatureMet": false,
+   "craft": 10,
+   "drafts": [
+    {
+     "raw": "多路行者\n漫游远方途\n故人相思深",
+     "tidy": "多路行者\n漫游远方途\n故人相思深",
+     "ms": 3856,
+     "tokens": 16,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": false,
+     "formEarned": 10,
+     "craft": 10
+    }
+   ]
+  },
+  {
+   "seed": 1027,
+   "roundIndex": 1,
+   "formId": "acrostic",
+   "difficulty": "apprentice",
+   "card": "Miranda",
+   "acrostic": "月下花",
+   "relicWords": null,
+   "answering": "前不見古人，後不見來者。\n念天地之悠悠，獨愴然而涕下。",
+   "prompt": [
+    "You are Miranda in a duel of verses: theatrical, sharp, in character. Your line in the play: \"O brave new world, that has such people in it!\" You write short verse and nothing else.",
+    "Form: Acrostic. One line per letter: the first letters must spell 月下花.\nWrite exactly 3 lines.\nYour flourish: Make your last line your longest.\nYour challenger last said:\n前不見古人，後不見來者。\n念天地之悠悠，獨愴然而涕下。\nAnswer them.\nWrite only the verse, in Chinese. No title, no notes, no explanation."
+   ],
+   "verse": "月：迷惘如影徘徊\n下：下沉心緒無邊際\n花：花開繁華萬千景象，這嶄新的世界竟有如此眾生，真是令人驚歎啊！",
+   "source": "model",
+   "lines": 3,
+   "expectedLines": 3,
+   "formKept": true,
+   "formEarned": 20,
+   "checks": [
+    {
+     "id": "lines",
+     "met": true,
+     "detail": "3/3"
+    },
+    {
+     "id": "spells",
+     "met": true,
+     "detail": "月下花"
+    }
+   ],
+   "deviceMet": true,
+   "signatureMet": false,
+   "craft": 30,
+   "drafts": [
+    {
+     "raw": "月：迷惘如影徘徊\n下：下沉心緒無邊際\n花：花開繁華萬千景象，這嶄新的世界竟有如此眾生，真是令人驚歎啊！",
+     "tidy": "月：迷惘如影徘徊\n下：下沉心緒無邊際\n花：花開繁華萬千景象，這嶄新的世界竟有如此眾生，真是令人驚歎啊！",
+     "ms": 12279,
+     "tokens": 45,
+     "temperature": 0.7,
+     "maxTokens": 94,
+     "rawLines": 3,
+     "expectedLines": 3,
+     "formKept": true,
+     "formEarned": 20,
+     "craft": 30
+    }
+   ]
+  }
+ ],
+ "seconds": 806,
+ "setAside": {
+  "date": "2026-11-18T00:36:06.652Z",
+  "commit": "9cec28a2afc5a8142ed2b21c9aaae5b44fbb8de7",
+  "why": "60 of 60 plays cannot be re-scored with the code now; run the cell again (scripts/model-eval/run.mjs)",
+  "plays": [
+   "seed 1001 round 0: the duel now draws jueju, not crescendo",
+   "seed 1001 round 1: the prompt changed",
+   "seed 1001 round 2: the duel now draws crescendo, not epistrophe",
+   "seed 1002 round 0: the duel now draws jueju, not haiku",
+   "seed 1002 round 1: the duel now draws heroic-couplet, not anaphora",
+   "seed 1002 round 2: the duel now draws quatrain-abab, not epistrophe",
+   "seed 1003 round 0: the duel now draws quatrain-aabb, not anaphora",
+   "seed 1003 round 1: the duel now draws couplet, not haiku",
+   "seed 1003 round 2: the duel now draws anaphora, not jueju",
+   "seed 1004 round 0: the duel now draws epistrophe, not anaphora",
+   "seed 1004 round 1: the prompt changed",
+   "seed 1004 round 2: the duel now draws jueju, not epistrophe",
+   "seed 1005 round 0: the duel now draws heroic-couplet, not anaphora",
+   "seed 1005 round 1: the duel now draws tercet, not haiku",
+   "seed 1005 round 2: the duel now draws quatrain-abab, not acrostic",
+   "seed 1006 round 0: the duel now draws heroic-couplet, not anaphora",
+   "seed 1006 round 1: the duel now draws anaphora, not haiku",
+   "seed 1006 round 2: the prompt changed",
+   "seed 1007 round 0: the duel now draws epistrophe, not crescendo",
+   "seed 1007 round 1: the duel now draws crescendo, not epistrophe",
+   "seed 1007 round 2: the duel now draws anaphora, not haiku",
+   "seed 1008 round 0: the prompt changed",
+   "seed 1008 round 1: the duel now draws jueju, not anaphora",
+   "seed 1008 round 2: the duel now draws quatrain-abab, not jueju",
+   "seed 1009 round 0: the duel now draws heroic-couplet, not anaphora",
+   "seed 1009 round 1: the duel now draws quatrain-abab, not crescendo",
+   "seed 1009 round 2: the duel now draws couplet, not jueju",
+   "seed 1010 round 0: the prompt changed",
+   "seed 1010 round 1: the duel now draws heroic-couplet, not anaphora",
+   "seed 1010 round 2: the prompt changed",
+   "seed 1011 round 0: the prompt changed",
+   "seed 1011 round 1: the prompt changed",
+   "seed 1011 round 2: the duel now draws tercet, not crescendo",
+   "seed 1012 round 0: the duel now draws haiku, not anaphora",
+   "seed 1012 round 1: the duel now draws jueju, not epistrophe",
+   "seed 1012 round 2: the duel now draws crescendo, not haiku",
+   "seed 1013 round 0: the duel now draws epistrophe, not acrostic",
+   "seed 1013 round 1: the duel now draws heroic-couplet, not haiku",
+   "seed 1013 round 2: the duel now draws tercet, not epistrophe",
+   "seed 1014 round 0: the duel now draws couplet, not jueju",
+   "seed 1014 round 1: the duel now draws tercet, not acrostic",
+   "seed 1014 round 2: the prompt changed",
+   "seed 1015 round 0: the duel now draws haiku, not epistrophe",
+   "seed 1015 round 2: the duel now draws jueju, not crescendo",
+   "seed 1016 round 0: the duel now draws crescendo, not epistrophe",
+   "seed 1016 round 1: the duel now draws couplet, not crescendo",
+   "seed 1017 round 0: the duel now draws anaphora, not jueju",
+   "seed 1017 round 1: the duel now draws heroic-couplet, not epistrophe",
+   "seed 1017 round 2: the duel now draws haiku, not crescendo",
+   "seed 1018 round 1: the duel now draws quatrain-aabb, not crescendo",
+   "seed 1018 round 2: the duel now draws couplet, not epistrophe",
+   "seed 1019 round 0: the duel now draws anaphora, not acrostic",
+   "seed 1019 round 2: the duel now draws quatrain-aabb, not jueju",
+   "seed 1020 round 0: the duel now draws jueju, not acrostic",
+   "seed 1020 round 2: the duel now draws quatrain-abab, not jueju",
+   "seed 1022 round 1: the duel now draws couplet, not haiku",
+   "seed 1023 round 0: the duel now draws acrostic, not jueju",
+   "seed 1023 round 2: the duel now draws haiku, not acrostic",
+   "seed 1024 round 2: the duel now draws heroic-couplet, not haiku",
+   "seed 1027 round 1: the duel now draws quatrain-aabb, not acrostic"
+  ]
+ }
+}
