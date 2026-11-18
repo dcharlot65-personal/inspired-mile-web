@@ -677,13 +677,17 @@ describe('a name inside a longer foreign name is a piece of it (Chinese, Thai)',
       ['zh', '阿尔宙斯是神奇宝贝'], ['zh', '拜伦斯的老板'],
       ['th', 'ฮิปปาซุสเป็นนักคณิตศาสตร์'], ['th', 'อาร์เซอุสเป็นโปเกมอน'], ['th', 'รูด็อล์ฟ เคลาซีอุส'], ['th', 'วีนีซีอุสยิงประตู'],
       ['th', 'ทีซีอุสฆ่ามิโนทอร์'], ['th', 'อัสซูสเป็นเมืองโบราณ'],
+      ['th', 'ข้าพบนาร์ซิสซุสริมน้ำ'], // Narcissus: no list has it; the table's one-letter entries (ส) are letters, not words
+      ['th', 'เทเซอุสฆ่ามิโนทอร์'], // Theseus spelled otherwise
     ] as const) expect([l, v, localName(v, l)]).toEqual([l, v, undefined]);
   });
   it('a name beside a common word, a function word or a word it was joined to still lands', () => {
     for (const [l, v, n] of [
       ['zh', '哈姆雷特当然知道', '哈姆雷特'], ['zh', '拉朱丽叶的手', '朱丽叶'], ['zh', '莫枯修了', '莫枯修'], ['zh', '赫瑞修了', '赫瑞修'],
       ['zh', '我爱朱丽叶', '朱丽叶'], ['zh', '天神宙斯', '宙斯'], ['zh', '梦里朱丽叶在哭', '朱丽叶'], ['zh', '马克安东尼来了', '马克·安东尼'],
+      ['zh', '谢谢罗密欧', '罗密欧'], ['zh', '朱丽叶高兴地笑', '朱丽叶'], // common words written in transliteration characters
       ['th', 'คืนนี้ข้าเรียกซุสมา', 'ซุส'], ['th', 'ฉันกับสมชายเห็นซุส', 'ซุส'], ['th', 'โรเมโอรักจูเลียต', 'จูเลียต'],
+      ['th', 'ผมพบซุสเมื่อวาน', 'ซุส'], ['th', 'ผมจะพาคุณไปหาซุส', 'ซุส'], // a two-letter word after another word
     ] as const) expect([l, v, localName(v, l)]).toEqual([l, v, n]);
   });
   it('every name lands in neutral sentences, with a word joined straight to it', () => {

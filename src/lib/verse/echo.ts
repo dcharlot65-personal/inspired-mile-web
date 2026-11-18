@@ -849,26 +849,27 @@ function zhNameAt(text: string, spans: Span[], s: number, e: number, l: Lists): 
 
 /**
  * Thai: is this a word the invocation knows? The pronunciation table's words (Wiktionary's Thai, loaded with the duel's
- * sound data, ./sound) and the card text's own (its stop words and the lines' words). A word of one letter is not one
- * here: the table lists the letters themselves (น, ล), and a letter ends any piece.
+ * sound data, ./sound) and the card text's own (its stop words and the lines' words).
  */
 function thaiWord(w: string, l: Lists): boolean {
-  return [...w].length >= 2 && (soundOf('th', w) !== undefined || l.thaiWords.has(w));
+  return soundOf('th', w) !== undefined || l.thaiWords.has(w);
 }
 
 /**
- * Thai: does `t` end (or, with `fromStart`, begin) with known words, two in a row or as many as it holds? Before a name, a
- * word of two letters (ที, ลา, เค: a piece of a foreign name is often one) counts only after a longer known word, never at
- * the start of the letters: ทีซีอุส (Theseus) and เคลาซีอุส (Clausius) hold ซีอุส, Zeus. After a name it counts as any
- * word (ซุสมา, "Zeus comes").
+ * Thai: does `t` end (or, with `fromStart`, begin) with known words, two in a row or as many as it holds? A word of one
+ * letter is not one here: the table lists the letters themselves (น, ล, ส), and a letter ends any piece (นาร์ซิส in
+ * นาร์ซิสซุส, Narcissus). Before a name, a word of two letters (ที, เท: a piece of a foreign name is often one) counts
+ * only after another known word, never at the start of the letters: ทีซีอุส and เทเซอุส (Theseus) hold ซีอุส and เซอุส,
+ * Zeus; ผมพบทอม ("I met Tom") does not. After a name it counts as any word (ซุสมา, "Zeus comes").
  */
-function thaiEdge(t: string, l: Lists, fromStart: boolean, depth = 2, min = 2): boolean {
-  if (depth === 0 || (!t && min === 2)) return true;
+function thaiEdge(t: string, l: Lists, fromStart: boolean, depth = 2, needWord = false): boolean {
+  if (depth === 0) return true;
+  if (!t) return !needWord;
   const cs = [...t];
-  for (let n = Math.min(cs.length, 24); n >= min; n--) {
+  for (let n = Math.min(cs.length, 24); n >= 2; n--) {
     const w = (fromStart ? cs.slice(0, n) : cs.slice(cs.length - n)).join('');
     const rest = (fromStart ? cs.slice(n) : cs.slice(0, cs.length - n)).join('');
-    if (thaiWord(w, l) && thaiEdge(rest, l, fromStart, depth - 1, !fromStart && n === 2 ? 3 : 2)) return true;
+    if (thaiWord(w, l) && thaiEdge(rest, l, fromStart, depth - 1, !fromStart && n === 2)) return true;
   }
   return false;
 }
