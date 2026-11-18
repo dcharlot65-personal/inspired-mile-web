@@ -256,6 +256,9 @@ describe('page areas: every language has every string', () => {
             if (same >= 2 && m[1] !== m[2]) bad(`a gender hedge "${m[0]}": rephrase so that the sentence is the same for anyone`);
           }
           if (/\p{L}\((?:a|а|ая|ась|ла|ła|e|o|ka|ica)\)/u.test(v)) bad('a gender hedge in brackets: rephrase so that the sentence is the same for anyone');
+          // A Korean particle hedge ("을(를)") leaves the reader to pick the particle; after fixed text the
+          // right one is known (see the test of fragments after a link below).
+          if (/\((?:을|를|이|가|은|는|과|와|으로|로|이나|나|이랑|랑)\)/u.test(v)) bad('a Korean particle hedge in brackets: write the one particle the word before it takes');
           // A word that mixes Latin with Cyrillic letters is a look-alike typo.
           for (const w of v.split(/[^\p{L}]+/u)) if (/\p{Script=Latin}/u.test(w) && /\p{Script=Cyrillic}/u.test(w)) bad(`"${w}" mixes Latin and Cyrillic letters`);
         }
@@ -317,6 +320,65 @@ describe('page areas: every language has every string', () => {
       expect([l, shared['error.network']]).toEqual([l, core['auth.error.network']]);
       expect([l, shared['error.generic']]).toEqual([l, core['auth.error.generic']]);
     }
+  });
+
+  it('in Korean, a fragment that follows a link takes the particle the link’s own text asks for', async () => {
+    // The teacher's declaration is built around two links (footer.terms, footer.privacy) whose text is
+    // fixed by the core locale, so the particle written on to each is known from its last syllable:
+    // 을/이/은/과/으로 after a final consonant, 를/가/는/와/로 after a vowel (로 also after ㄹ). Which
+    // fragment follows which link is read from the page's markup, so a moved link is followed too.
+    const PAIRS: Array<[afterConsonant: string, afterVowel: string]> = [['으로', '로'], ['이나', '나'], ['이랑', '랑'], ['을', '를'], ['이', '가'], ['은', '는'], ['과', '와']];
+    const ko = await loadMessages('ko');
+    const problems: string[] = [];
+    let seen = 0;
+    for (const [file, areas] of Object.entries(PAGES)) {
+      const source = readFileSync(file, 'utf8');
+      for (const m of source.matchAll(/data-i18n="([\w.]+)"[^>]*>[^<]*<\/a>\s*<span[^>]*data-i18n="([\w.]+)"/g)) {
+        const [, linkKey, fragmentKey] = m;
+        const owner = areas.find((a) => fragmentKey in area(a, 'ko'));
+        const fragment = owner ? area(owner, 'ko')[fragmentKey] : ko[fragmentKey];
+        const link = ko[linkKey];
+        if (typeof fragment !== 'string' || typeof link !== 'string') continue;
+        seen++;
+        // A fragment that starts with a space is a word of its own; one that does not is written on to the link's text.
+        if (!/^\p{Script=Hangul}/u.test(fragment)) continue;
+        const last = link.codePointAt(link.length - 1)!;
+        if (last < 0xac00 || last > 0xd7a3) continue; // not a Hangul syllable: the spelling does not say
+        const final = (last - 0xac00) % 28; // 0: no final consonant; 8: ㄹ
+        let found: { said: string; pair: [string, string] } | null = null;
+        for (const pair of PAIRS) for (const p of pair) if (fragment.startsWith(p) && (!found || p.length > found.said.length)) found = { said: p, pair };
+        if (!found) continue; // a particle that does not change (에, 의, 도)
+        const [withFinal, withoutFinal] = found.pair;
+        const right = final === 0 || (withFinal === '으로' && final === 8) ? withoutFinal : withFinal;
+        if (found.said !== right) problems.push(`${file}: ${fragmentKey} follows "${link}" (${linkKey}), which takes ${right}, not ${found.said}: ${fragment}`);
+      }
+    }
+    expect(seen, 'no fragment after a link was found in the markup: the pattern above has stopped matching').toBeGreaterThan(1);
+    expect(problems, problems.join('\n')).toEqual([]);
+  });
+
+  it('abbreviates virtual and augmented reality as the core locale names the VR gallery (nav.vr)', async () => {
+    // es, fr and pt can write their own order (RV, RA) or the English (VR, AR). The page's title and
+    // menu come from the core's nav.vr; the areas follow it, and pair AR with VR, RA with RV. A letter of
+    // another script may touch the abbreviation (VRギャラリー); a Latin letter or a digit may not.
+    const token = (s: string, abbr: string) => new RegExp(`(?<![\\p{Script=Latin}\\p{N}])${abbr}(?![\\p{Script=Latin}\\p{N}])`, 'u').test(s);
+    const problems: string[] = [];
+    let held = 0;
+    for (const l of LOCALES) {
+      const navVr = (await loadMessages(l))['nav.vr'];
+      const own = token(navVr, 'RV');
+      if (!own && !token(navVr, 'VR')) continue;
+      held++;
+      const [vr, ar, notVr, notAr] = own ? ['RV', 'RA', 'VR', 'AR'] : ['VR', 'AR', 'RV', 'RA'];
+      for (const a of AREAS) {
+        for (const [k, v] of Object.entries(area(a, l))) {
+          if (token(v, notVr)) problems.push(`${a}/${l}: ${k} writes ${notVr}, but the core names the gallery "${navVr}": write ${vr}: ${v}`);
+          if (token(v, notAr)) problems.push(`${a}/${l}: ${k} writes ${notAr}; beside ${vr} write ${ar}: ${v}`);
+        }
+      }
+    }
+    expect(held).toBeGreaterThan(10);
+    expect(problems, problems.join('\n')).toEqual([]);
   });
 });
 
@@ -467,6 +529,12 @@ describe('numbers, dates and counts come from Intl', () => {
       ['ar', 11, 'classroom.members', '11 عضوًا'],
       ['ar', 100, 'classroom.members', '100 عضو'],
       ['ja', 3, 'classroom.members', 'メンバー 3人'],
+      // An exact million is "many" in these four, and CLDR joins it to its noun with de/di.
+      ['fr', 1_000_000, 'credits', `${new Intl.NumberFormat('fr').format(1_000_000)} de crédits`],
+      ['es', 2_000_000, 'credits', `${new Intl.NumberFormat('es').format(2_000_000)} de créditos`],
+      ['it', 1_000_000, 'classroom.members', `${new Intl.NumberFormat('it').format(1_000_000)} di membri`],
+      ['pt', 1_000_000, 'classroom.members', `${new Intl.NumberFormat('pt').format(1_000_000)} de membros`],
+      ['pt', 1_000_001, 'classroom.members', `${new Intl.NumberFormat('pt').format(1_000_001)} membros`],
     ];
     for (const [l, n, key, want] of cases) {
       await setLocale(l, { persist: false });
@@ -529,12 +597,6 @@ describe('the install guidance and the storage note (src/lib/pwa.ts)', () => {
     expect(oneMb).toMatch(/^1\sMo$/);
     expect(formatBytes(10)).toBe(fr['pwa.storage.lessThan'].replace('{size}', oneMb));
     await setLocale('ru', { persist: false });
-      // An exact million is "many" in these four, and CLDR joins it to its noun with de/di.
-      ['fr', 1_000_000, 'credits', `${new Intl.NumberFormat('fr').format(1_000_000)} de crédits`],
-      ['es', 2_000_000, 'credits', `${new Intl.NumberFormat('es').format(2_000_000)} de créditos`],
-      ['it', 1_000_000, 'classroom.members', `${new Intl.NumberFormat('it').format(1_000_000)} di membri`],
-      ['pt', 1_000_000, 'classroom.members', `${new Intl.NumberFormat('pt').format(1_000_000)} de membros`],
-      ['pt', 1_000_001, 'classroom.members', `${new Intl.NumberFormat('pt').format(1_000_001)} membros`],
     await loadArea('pwa');
     expect(formatBytes(3.1e9)).toMatch(/^3,1\sГБ$/);
     expect(storageNote(true, null).text).toBe(area('pwa', 'ru')['pwa.storage.keptNoSize']);

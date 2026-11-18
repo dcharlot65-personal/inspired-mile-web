@@ -70,6 +70,16 @@ the order of both (*wirtualna rzeczywistość*, *rozszerzona rzeczywistość*; W
 wirtualna*, *rzeczywistość rozszerzona*). An independent checker found both; no test did. The
 Thai and Polish strings now use Wikidata's words, and the record is checked as above.
 
+The abbreviations are not in the record. Until 2026-11-17 the Spanish, French and Portuguese
+areas wrote the language's own order, *RV* and *RA* (*Entrar en RV*, *Voir en RA*), while the
+core locale names the page *Galería VR*, *Galerie VR*, *Galeria VR* (`nav.vr`): the page's title
+and its body disagreed (a second checker found it). The areas now write the core's *VR*, and *AR*
+beside it, and a unit test holds every area string to the abbreviation `nav.vr` uses (*VR* with
+*AR*, or *RV* with *RA*). Which of the two a language should use is not settled by a source:
+Wikidata's aliases (fetched 2026-11-17) list *VR* and *RA* in French, *VR* and *RV* in
+Portuguese (none for AR), and none in Spanish. If the core changes to *RV*, the test names each
+area string that must follow.
+
 ### School
 
 <!-- terms:school -->
@@ -706,7 +716,10 @@ rank. Its control is described under "Meaning".
   cannot tell which of two near-identical English strings a translation renders, and a wrong
   translation that LaBSE still places beside its own English passes it. On the control, the two
   rules together let 13 of 4,185 wrong pairings through (0.3 %).
-- **Gender**: the unit test refuses a hedge written with a slash or brackets. A sentence that
+- **Hedges**: the unit test refuses a gender hedge written with a slash or brackets, and a Korean
+  particle hedge (을(를), 이(가), 은(는), …). A Korean fragment that follows a link takes the particle
+  the link's own text asks for, computed from its last syllable (the teacher's declaration:
+  개인정보 처리방침**을**). It does not know hedges of other kinds. A sentence that
   simply takes one gender (a masculine participle, a masculine noun for the player) is not caught
   by any tool; the ones fixed in the second pass were found by reading, and others may remain.
 - **The Vision Pro gesture** follows Apple's own guide in eight languages; in the other seven

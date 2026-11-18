@@ -18,7 +18,7 @@ const messages: Record<string, string> = {
   'classroom.teacher.check2': '만 18세 미만 학생을 등록하기 전에 부모님이나 보호자의 동의를 받겠습니다.',
   'classroom.teacher.check3Before': '저는 ',
   'classroom.teacher.check3And': ' 및 ',
-  'classroom.teacher.check3After': '을(를) 읽었으며, 수업 및 교육 목적의 이용과 FERPA에 관한 항목을 포함하여 이에 동의합니다.',
+  'classroom.teacher.check3After': '을 읽었으며, 수업 및 교육 목적의 이용과 FERPA에 관한 항목을 포함하여 이에 동의합니다.',
   'classroom.teacher.continue': '교사로 계속하기',
   'classroom.student.title': '학생 동의',
   'classroom.student.intro': '학급에 참여하기 전에 다음 내용을 확인해 주세요.',
