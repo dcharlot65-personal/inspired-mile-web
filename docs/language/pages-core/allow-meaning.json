@@ -1844,10 +1844,10 @@
   {
    "lang": "hi",
    "key": "achievements.verse-veteran.name",
-   "text": "पद का पुराना खिलाड़ी",
-   "flag": "cos 0.1977, LaBSE 0.4967, chrF 8.8",
-   "back": "Old player of position",
-   "reason": "An achievement's title, a name made in the language for the English one (no published source); MADLAD reads its words literally or as a name. Read: it says what the English title says."
+   "text": "कविता का पुराना खिलाड़ी",
+   "flag": "cos 0.353, LaBSE 0.591, chrF 10.8",
+   "back": "Poet's Old Player",
+   "reason": "An achievement's title, a name made in the language for the English one (no published source). Read: पुराना खिलाड़ी is the Hindi idiom for an old hand, a veteran, and कविता का says of what; MADLAD reads कविता का as \"poet's\"."
   },
   {
    "lang": "hi",
@@ -2051,14 +2051,6 @@
   },
   {
    "lang": "hi",
-   "key": "home.feature.duel.title",
-   "text": "पदों का द्वंद्व",
-   "flag": "cos 0.5369, LaBSE 0.4143, chrF 15.8",
-   "back": "Duel of Positions",
-   "reason": "The verse duel, in the core terms for verse and duel; MADLAD calls it a poetry slam or reads the verse word in another sense."
-  },
-  {
-   "lang": "hi",
    "key": "home.ready.arena",
    "text": "अखाड़े में उतरें",
    "flag": "cos 0.2159, LaBSE 0.5654, chrF 12.3",
@@ -2135,14 +2127,6 @@
    "text": "जोज़ी की पंक्तियाँ",
    "flag": "cos 0.5989, LaBSE 0.5566, chrF 24.3",
    "back": "Jozi's Lines",
-   "reason": "A city ability's coined name; MADLAD reads it word for word or as a proper name. Read: it says what the English name says."
-  },
-  {
-   "lang": "hi",
-   "key": "variants.ability.IST.name",
-   "text": "चौराहे का पद",
-   "flag": "cos 0.3527, LaBSE 0.544, chrF 20.4",
-   "back": "Crossing position",
    "reason": "A city ability's coined name; MADLAD reads it word for word or as a proper name. Read: it says what the English name says."
   },
   {

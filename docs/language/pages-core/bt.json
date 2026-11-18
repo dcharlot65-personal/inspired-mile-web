@@ -320,20 +320,8 @@
   "cos": 1.0,
   "chrf": 100.0,
   "xcos": 0.8616,
-  "controlCos": 0.1553,
-  "xcontrol": 0.0689
- },
- {
-  "id": "about.tech.ai.body",
-  "lang": "hi",
-  "text": "खुले मॉडल (Gemma 4, Liquid LFM3) WebGPU के सहारे आपके ब्राउज़र में चलते हैं। एकल द्वंद्व में वे प्रतिद्वंद्वी का पद लिखते हैं और आपके डिवाइस पर ही द्वंद्व का निर्णय करते हैं, और कोई क्लाउड सेवा शामिल नहीं होती। मल्टीप्लेयर युद्धों के अंक हमारे सर्वर पर तय होते हैं।",
-  "english": "Open models (Gemma 4, Liquid LFM3) run in your browser on WebGPU. In a solo duel they write the opponent's verse and judge the duel on your device, and no cloud provider is involved. Multiplayer battles are scored on our server.",
-  "back": "Open models (Gemma 4, Liquid LFM3) run in your browser using a WebGPU. In single-player battles they write the opponent's position and decide the duel on your device, and no cloud service is involved. Multiplayer wars are scored on our servers.",
-  "cos": 0.9537,
-  "chrf": 78.7,
-  "xcos": 0.8892,
-  "controlCos": 0.1382,
-  "xcontrol": 0.085
+  "controlCos": 0.1394,
+  "xcontrol": 0.2639
  },
  {
   "id": "about.tech.theatre.title",
@@ -368,20 +356,8 @@
   "cos": 0.3979,
   "chrf": 19.8,
   "xcos": 0.6862,
-  "controlCos": 0.1334,
-  "xcontrol": 0.2993
- },
- {
-  "id": "about.tech.speech.body",
-  "lang": "hi",
-  "text": "अपना पद बोलें और Whisper उसे आपके ब्राउज़र में ही लिख देता है। रिकॉर्डिंग कभी आपके डिवाइस से बाहर नहीं जाती। Whisper मॉडल ख़ुद पहली बार इस्तेमाल करने पर Hugging Face से डाउनलोड होता है।",
-  "english": "Speak your verse and it is transcribed in your browser by Whisper. The recording never leaves your device. The Whisper model itself is downloaded from Hugging Face the first time you use it.",
-  "back": "Speak your sentence and Whisper writes it in your browser. The recording never leaves your device. The Whisper model itself is downloaded from Hugging Face on first use.",
-  "cos": 0.8172,
-  "chrf": 73.8,
-  "xcos": 0.8733,
-  "controlCos": 0.0387,
-  "xcontrol": 0.0381
+  "controlCos": -0.0003,
+  "xcontrol": 0.0808
  },
  {
   "id": "about.tech.market.title",
@@ -464,20 +440,8 @@
   "cos": 0.961,
   "chrf": 60.3,
   "xcos": 0.8294,
-  "controlCos": 0.0321,
-  "xcontrol": 0.1242
- },
- {
-  "id": "about.free.forever.l3",
-  "lang": "hi",
-  "text": "आपके अपने डिवाइस पर एआई से पदों के द्वंद्व",
-  "english": "Verse duels against an AI on your own device",
-  "back": "Duels of positions with AI on your own device",
-  "cos": 0.792,
-  "chrf": 50.4,
-  "xcos": 0.7337,
-  "controlCos": 0.3167,
-  "xcontrol": 0.0631
+  "controlCos": 0.1105,
+  "xcontrol": 0.1024
  },
  {
   "id": "about.free.forever.l5",
@@ -620,20 +584,8 @@
   "cos": 0.8993,
   "chrf": 63.3,
   "xcos": 0.8365,
-  "controlCos": 0.0959,
-  "xcontrol": 0.1258
- },
- {
-  "id": "about.free.safe.l3",
-  "lang": "hi",
-  "text": "मल्टीप्लेयर पदों पर शब्द-फ़िल्टर",
-  "english": "Word filter on multiplayer verses",
-  "back": "Word-filter on multiplayer positions",
-  "cos": 0.7514,
-  "chrf": 67.2,
-  "xcos": 0.7898,
-  "controlCos": -0.0426,
-  "xcontrol": 0.1917
+  "controlCos": 0.1477,
+  "xcontrol": 0.2739
  },
  {
   "id": "about.free.safe.l4",
@@ -980,20 +932,8 @@
   "cos": 0.7471,
   "chrf": 31.3,
   "xcos": 0.913,
-  "controlCos": 0.0642,
-  "xcontrol": -0.0177
- },
- {
-  "id": "achievements.verse-veteran.name",
-  "lang": "hi",
-  "text": "पद का पुराना खिलाड़ी",
-  "english": "Verse Veteran",
-  "back": "Old player of position",
-  "cos": 0.1977,
-  "chrf": 8.8,
-  "xcos": 0.4967,
-  "controlCos": 0.0434,
-  "xcontrol": 0.0946
+  "controlCos": 0.2829,
+  "xcontrol": 0.6077
  },
  {
   "id": "achievements.verse-veteran.description",
@@ -2924,20 +2864,8 @@
   "cos": 0.9495,
   "chrf": 91.1,
   "xcos": 0.8745,
-  "controlCos": 0.0266,
-  "xcontrol": 0.1416
- },
- {
-  "id": "home.feature.duel.title",
-  "lang": "hi",
-  "text": "पदों का द्वंद्व",
-  "english": "The Verse Duel",
-  "back": "Duel of Positions",
-  "cos": 0.5369,
-  "chrf": 15.8,
-  "xcos": 0.4143,
-  "controlCos": 0.3596,
-  "xcontrol": 0.0405
+  "controlCos": 0.3108,
+  "xcontrol": 0.1899
  },
  {
   "id": "home.feature.duel.body",
@@ -2984,20 +2912,8 @@
   "cos": 0.0779,
   "chrf": 7.6,
   "xcos": 0.645,
-  "controlCos": -0.0125,
-  "xcontrol": 0.0114
- },
- {
-  "id": "home.feature.private.body",
-  "lang": "hi",
-  "text": "एकल द्वंद्व में एआई प्रतिद्वंद्वी, निर्णायक और आवाज़ की पहचान, तीनों आपके डिवाइस पर चलते हैं, और आप जो लिखते या बोलते हैं, वह किसी सर्वर पर नहीं भेजा जाता। मल्टीप्लेयर युद्ध में आपके पद हमारे सर्वर पर भेजे जाते हैं।",
-  "english": "In a solo duel the AI opponent, the judge and speech recognition all run on your device, and nothing you write or say is sent to a server. Multiplayer battles do send your verses to our server.",
-  "back": "In single-player duels, the AI opponent, judge and voice recognition all run on your device, and what you type or speak is not sent to any server. In multiplayer battles, your positions are sent to our server.",
-  "cos": 0.9029,
-  "chrf": 61.2,
-  "xcos": 0.8181,
-  "controlCos": 0.0991,
-  "xcontrol": 0.2303
+  "controlCos": 0.124,
+  "xcontrol": 0.1217
  },
  {
   "id": "home.houses.cards",
@@ -3020,20 +2936,8 @@
   "cos": 0.7927,
   "chrf": 24.3,
   "xcos": 0.8587,
-  "controlCos": 0.0613,
-  "xcontrol": 0.32
- },
- {
-  "id": "home.ready.body",
-  "lang": "hi",
-  "text": "अपने कार्ड खेलें, अपना पद बोलें और मंच पर आएँ। स्क्रीन पर, या रंगशाला में Quest 3 या Vision Pro पहनकर।",
-  "english": "Play your cards, speak your verse, and take the stage. On a screen, or in a Quest 3 or Vision Pro in the Theatre.",
-  "back": "Play your cards, speak up and come on stage. On the screen, or in the arena wearing Quest 3 or Vision Pro.",
-  "cos": 0.8284,
-  "chrf": 60.4,
-  "xcos": 0.8871,
-  "controlCos": 0.5284,
-  "xcontrol": 0.394
+  "controlCos": 0.1179,
+  "xcontrol": 0.2539
  },
  {
   "id": "home.ready.arena",
@@ -3464,32 +3368,8 @@
   "cos": 0.8652,
   "chrf": 59.5,
   "xcos": 0.9014,
-  "controlCos": 0.2067,
-  "xcontrol": 0.1951
- },
- {
-  "id": "rules.potion",
-  "lang": "hi",
-  "text": "आपके प्रतिद्वंद्वी के अगले पद पर Hamlet का शाप डालता है: …",
-  "english": "Curses your opponent's next verse with Hamlet: …",
-  "back": "Put Hamlet's curse on your opponent's next position: …",
-  "cos": 0.8481,
-  "chrf": 55.1,
-  "xcos": 0.8765,
-  "controlCos": 0.6965,
-  "xcontrol": 0.6417
- },
- {
-  "id": "rules.potion.letter",
-  "lang": "hi",
-  "text": "आपके प्रतिद्वंद्वी के अगले पद पर Hamlet का शाप डालता है: उनके पद में एक अक्षर नहीं आ सकता, जिसे काढ़ा द्वंद्व बँटते समय बताता है।",
-  "english": "Curses your opponent's next verse with Hamlet: their verse may not contain one letter, which the potion names when the duel is dealt.",
-  "back": "Puts Hamlet's curse on your opponent's next position: they cannot have a single character in their position, which is indicated when the liqueur duel is dealt.",
-  "cos": 0.7442,
-  "chrf": 46.7,
-  "xcos": 0.8112,
-  "controlCos": -0.0394,
-  "xcontrol": 0.2266
+  "controlCos": 0.2212,
+  "xcontrol": 0.3265
  },
  {
   "id": "rules.cost",
@@ -3824,20 +3704,8 @@
   "cos": 1.0,
   "chrf": 100.0,
   "xcos": 0.8959,
-  "controlCos": 0.2952,
-  "xcontrol": 0.2546
- },
- {
-  "id": "variants.ability.PAR.name",
-  "lang": "hi",
-  "text": "ऊँचा पद",
-  "english": "Haute Verse",
-  "back": "High Post",
-  "cos": 0.0905,
-  "chrf": 5.2,
-  "xcos": 0.6538,
-  "controlCos": 0.0489,
-  "xcontrol": 0.0644
+  "controlCos": 0.3214,
+  "xcontrol": 0.5696
  },
  {
   "id": "variants.ability.PAR.why",
@@ -4064,20 +3932,8 @@
   "cos": 0.9628,
   "chrf": 64.0,
   "xcos": 0.7807,
-  "controlCos": 0.2355,
-  "xcontrol": -0.0099
- },
- {
-  "id": "variants.ability.IST.name",
-  "lang": "hi",
-  "text": "चौराहे का पद",
-  "english": "Crossroads Verse",
-  "back": "Crossing position",
-  "cos": 0.3527,
-  "chrf": 20.4,
-  "xcos": 0.544,
-  "controlCos": 0.1925,
-  "xcontrol": 0.1088
+  "controlCos": 0.2602,
+  "xcontrol": 0.1313
  },
  {
   "id": "variants.ability.IST.why",
@@ -4436,44 +4292,8 @@
   "cos": 0.8468,
   "chrf": 75.1,
   "xcos": 0.842,
-  "controlCos": 0.548,
-  "xcontrol": 0.4537
- },
- {
-  "id": "home.meta.description",
-  "lang": "hi",
-  "text": "Inspired Mile: एक कार्ड गेम जिसमें आपकी चाल एक पद है। शेक्सपीयर के पात्र इकट्ठा करें और ऐसे एआई से द्वंद्व करें जो पूरी तरह आपके ब्राउज़र में चलता है।",
-  "english": "Inspired Mile: a card game where your move is a verse. Collect Shakespeare's characters and duel an AI that runs entirely in your browser.",
-  "back": "Inspired Mile: A card game where your move is a piece. Collect Shakespearean characters and duel an AI that runs entirely in your browser.",
-  "cos": 0.9538,
-  "chrf": 87.3,
-  "xcos": 0.8503,
-  "controlCos": 0.7873,
-  "xcontrol": 0.6472
- },
- {
-  "id": "home.hero.body",
-  "lang": "hi",
-  "text": "एक कार्ड गेम जिसमें आपकी चाल एक पद है। कोई पात्र खेलें, छंद-रूप निभाएँ और ऐसे एआई से द्वंद्व करें जो आपके ब्राउज़र में चलता है। शेक्सपीयर के महानतम पात्र इकट्ठा करें और संग्रहणीय कार्ड गेमों के अगले दौर का हिस्सा बनें।",
-  "english": "A card game where your move is a verse. Play a character, keep the form, and duel an AI that runs in your browser. Collect Shakespeare's greatest characters, and join the next evolution of trading card games.",
-  "back": "A card game where your move is one piece. Play a character, play the rhyme and duel an AI that runs in your browser. Collect Shakespeare's greatest characters and be part of the next round of collectible card games.",
-  "cos": 0.9302,
-  "chrf": 73.0,
-  "xcos": 0.825,
-  "controlCos": 0.5567,
-  "xcontrol": 0.4474
- },
- {
-  "id": "home.feature.cards.body",
-  "lang": "hi",
-  "text": "शेक्सपीयर, रोमानी कवियों और मिथकों के पात्र। हर कार्ड बदल देता है कि आपके पद को क्या करना है।",
-  "english": "Characters from Shakespeare, the Romantics and myth. Each card changes what your verse has to do.",
-  "back": "Characters from Shakespeare, Romantic poets and myths. Each card changes what your position has to do.",
-  "cos": 0.8775,
-  "chrf": 76.8,
-  "xcos": 0.8415,
-  "controlCos": 0.343,
-  "xcontrol": 0.3921
+  "controlCos": 0.4105,
+  "xcontrol": 0.3508
  },
  {
   "id": "home.houses.title",
@@ -4532,8 +4352,188 @@
   "cos": 0.8506,
   "chrf": 47.3,
   "xcos": 0.8419,
-  "controlCos": 0.1676,
-  "xcontrol": 0.2086
+  "controlCos": 0.1443,
+  "xcontrol": 0.2546
+ },
+ {
+  "id": "about.tech.ai.body",
+  "lang": "hi",
+  "text": "खुले मॉडल (Gemma 4, Liquid LFM3) WebGPU के सहारे आपके ब्राउज़र में चलते हैं। एकल द्वंद्व में वे प्रतिद्वंद्वी की कविता लिखते हैं और आपके डिवाइस पर ही द्वंद्व का निर्णय करते हैं, और कोई क्लाउड सेवा शामिल नहीं होती। मल्टीप्लेयर युद्धों के अंक हमारे सर्वर पर तय होते हैं।",
+  "english": "Open models (Gemma 4, Liquid LFM3) run in your browser on WebGPU. In a solo duel they write the opponent's verse and judge the duel on your device, and no cloud provider is involved. Multiplayer battles are scored on our server.",
+  "back": "Open models (Gemma 4, Liquid LFM3) run in your browser using a WebGPU. In single-player duels they write the opponent's poem and decide the duel on your device, with no cloud service involved. Multiplayer battles score on our servers.",
+  "cos": 0.9431,
+  "chrf": 72.4,
+  "xcos": 0.9,
+  "controlCos": 0.1762,
+  "xcontrol": 0.3039
+ },
+ {
+  "id": "about.tech.speech.body",
+  "lang": "hi",
+  "text": "अपनी कविता बोलें और Whisper उसे आपके ब्राउज़र में ही लिख देता है। रिकॉर्डिंग कभी आपके डिवाइस से बाहर नहीं जाती। Whisper मॉडल ख़ुद पहली बार इस्तेमाल करने पर Hugging Face से डाउनलोड होता है।",
+  "english": "Speak your verse and it is transcribed in your browser by Whisper. The recording never leaves your device. The Whisper model itself is downloaded from Hugging Face the first time you use it.",
+  "back": "Speak your poem and Whisper will write it in your browser. The recording never leaves your device. The Whisper model itself is downloaded from Hugging Face on first use.",
+  "cos": 0.791,
+  "chrf": 73.0,
+  "xcos": 0.8737,
+  "controlCos": 0.2766,
+  "xcontrol": 0.3182
+ },
+ {
+  "id": "about.free.forever.l3",
+  "lang": "hi",
+  "text": "आपके अपने डिवाइस पर एआई से कविताओं के द्वंद्व",
+  "english": "Verse duels against an AI on your own device",
+  "back": "Duel poems with AI on your own device",
+  "cos": 0.8347,
+  "chrf": 49.6,
+  "xcos": 0.7755,
+  "controlCos": 0.333,
+  "xcontrol": 0.2871
+ },
+ {
+  "id": "about.free.safe.l3",
+  "lang": "hi",
+  "text": "मल्टीप्लेयर कविताओं पर शब्द-फ़िल्टर",
+  "english": "Word filter on multiplayer verses",
+  "back": "Word-filter on multiplayer poems",
+  "cos": 0.7989,
+  "chrf": 69.2,
+  "xcos": 0.8697,
+  "controlCos": 0.3055,
+  "xcontrol": 0.2974
+ },
+ {
+  "id": "achievements.verse-veteran.name",
+  "lang": "hi",
+  "text": "कविता का पुराना खिलाड़ी",
+  "english": "Verse Veteran",
+  "back": "Poet's Old Player",
+  "cos": 0.353,
+  "chrf": 10.8,
+  "xcos": 0.591,
+  "controlCos": 0.356,
+  "xcontrol": 0.2306
+ },
+ {
+  "id": "home.meta.description",
+  "lang": "hi",
+  "text": "Inspired Mile: एक कार्ड गेम जिसमें आपकी चाल एक कविता है। शेक्सपीयर के पात्र इकट्ठा करें और ऐसे एआई से द्वंद्व करें जो पूरी तरह आपके ब्राउज़र में चलता है।",
+  "english": "Inspired Mile: a card game where your move is a verse. Collect Shakespeare's characters and duel an AI that runs entirely in your browser.",
+  "back": "Inspired Mile: A card game where your move is a poem. Collect Shakespearean characters and duel an AI that runs entirely in your browser.",
+  "cos": 0.9535,
+  "chrf": 86.6,
+  "xcos": 0.8462,
+  "controlCos": 0.783,
+  "xcontrol": 0.64
+ },
+ {
+  "id": "home.hero.body",
+  "lang": "hi",
+  "text": "एक कार्ड गेम जिसमें आपकी चाल एक कविता है। कोई पात्र खेलें, छंद-रूप निभाएँ और ऐसे एआई से द्वंद्व करें जो आपके ब्राउज़र में चलता है। शेक्सपीयर के महानतम पात्र इकट्ठा करें और संग्रहणीय कार्ड गेमों के अगले दौर का हिस्सा बनें।",
+  "english": "A card game where your move is a verse. Play a character, keep the form, and duel an AI that runs in your browser. Collect Shakespeare's greatest characters, and join the next evolution of trading card games.",
+  "back": "A card game where your move is a poem. Play a character, play the rhyme and duel an AI that runs in your browser. Collect Shakespeare's greatest characters and be part of the next round of collectible card games.",
+  "cos": 0.9438,
+  "chrf": 72.9,
+  "xcos": 0.8124,
+  "controlCos": 0.5596,
+  "xcontrol": 0.4632
+ },
+ {
+  "id": "home.feature.cards.body",
+  "lang": "hi",
+  "text": "शेक्सपीयर, रोमानी कवियों और मिथकों के पात्र। हर कार्ड बदल देता है कि आपकी कविता को क्या करना है।",
+  "english": "Characters from Shakespeare, the Romantics and myth. Each card changes what your verse has to do.",
+  "back": "Shakespeare, Romantic poets and mythical characters. Each card changes what your poem has to do.",
+  "cos": 0.8668,
+  "chrf": 68.7,
+  "xcos": 0.823,
+  "controlCos": 0.3707,
+  "xcontrol": 0.085
+ },
+ {
+  "id": "home.feature.duel.title",
+  "lang": "hi",
+  "text": "कविताओं का द्वंद्व",
+  "english": "The Verse Duel",
+  "back": "Duel of Poems",
+  "cos": 0.7965,
+  "chrf": 18.4,
+  "xcos": 0.6465,
+  "controlCos": 0.4136,
+  "xcontrol": 0.0888
+ },
+ {
+  "id": "home.feature.private.body",
+  "lang": "hi",
+  "text": "एकल द्वंद्व में एआई प्रतिद्वंद्वी, निर्णायक और आवाज़ की पहचान, तीनों आपके डिवाइस पर चलते हैं, और आप जो लिखते या बोलते हैं, वह किसी सर्वर पर नहीं भेजा जाता। मल्टीप्लेयर युद्ध में आपकी कविताएँ हमारे सर्वर पर भेजी जाती हैं।",
+  "english": "In a solo duel the AI opponent, the judge and speech recognition all run on your device, and nothing you write or say is sent to a server. Multiplayer battles do send your verses to our server.",
+  "back": "In single-player battles, the AI opponent, judge and voice recognition all run on your device, and what you type or speak is not sent to any server. In multiplayer battles, your poems are sent to our server.",
+  "cos": 0.8496,
+  "chrf": 60.1,
+  "xcos": 0.8175,
+  "controlCos": 0.3218,
+  "xcontrol": 0.4415
+ },
+ {
+  "id": "home.ready.body",
+  "lang": "hi",
+  "text": "अपने कार्ड खेलें, अपनी कविता बोलें और मंच पर आएँ। स्क्रीन पर, या रंगशाला में Quest 3 या Vision Pro पहनकर।",
+  "english": "Play your cards, speak your verse, and take the stage. On a screen, or in a Quest 3 or Vision Pro in the Theatre.",
+  "back": "Play your cards, speak your poem and come on stage. On the screen, or in the arena wearing Quest 3 or Vision Pro.",
+  "cos": 0.8429,
+  "chrf": 64.0,
+  "xcos": 0.8972,
+  "controlCos": 0.3117,
+  "xcontrol": 0.1832
+ },
+ {
+  "id": "rules.potion",
+  "lang": "hi",
+  "text": "आपके प्रतिद्वंद्वी की अगली कविता पर Hamlet का शाप डालता है: …",
+  "english": "Curses your opponent's next verse with Hamlet: …",
+  "back": "Your opponent casts Hamlet's curse on the next poem: …",
+  "cos": 0.9144,
+  "chrf": 44.4,
+  "xcos": 0.8637,
+  "controlCos": 0.7636,
+  "xcontrol": 0.6284
+ },
+ {
+  "id": "rules.potion.letter",
+  "lang": "hi",
+  "text": "आपके प्रतिद्वंद्वी की अगली कविता पर Hamlet का शाप डालता है: उनकी कविता में एक अक्षर नहीं आ सकता, जिसे काढ़ा द्वंद्व बँटते समय बताता है।",
+  "english": "Curses your opponent's next verse with Hamlet: their verse may not contain one letter, which the potion names when the duel is dealt.",
+  "back": "Puts Hamlet's curse on your opponent's next poem: there cannot be a single letter in his poem, which the decoction tells you when the duel is split.",
+  "cos": 0.8041,
+  "chrf": 49.4,
+  "xcos": 0.78,
+  "controlCos": 0.2518,
+  "xcontrol": 0.2658
+ },
+ {
+  "id": "variants.ability.PAR.name",
+  "lang": "hi",
+  "text": "ऊँची कविता",
+  "english": "Haute Verse",
+  "back": "High Poem",
+  "cos": 0.3476,
+  "chrf": 3.5,
+  "xcos": 0.8515,
+  "controlCos": 0.3275,
+  "xcontrol": 0.4402
+ },
+ {
+  "id": "variants.ability.IST.name",
+  "lang": "hi",
+  "text": "चौराहे की कविता",
+  "english": "Crossroads Verse",
+  "back": "Crossroads Poem",
+  "cos": 0.8733,
+  "chrf": 61.3,
+  "xcos": 0.7659,
+  "controlCos": 0.0832,
+  "xcontrol": 0.076
  },
  {
   "id": "about.meta.description",
@@ -12692,20 +12692,8 @@
   "cos": 0.6038,
   "chrf": 35.7,
   "xcos": 0.7573,
-  "controlCos": 0.4719,
-  "xcontrol": 0.1703
- },
- {
-  "id": "rules.relic",
-  "lang": "ar",
-  "text": "يعيرك كلمات القوة: alas, jest. استخدم 3 منها لتنال +6 صنعة.",
-  "english": "Lends power words: alas, jest. Use 3 of them for +6 craft.",
-  "back": "Power words: alas, jest. Use 3 of them to get +6 skills.",
-  "cos": 0.8445,
-  "chrf": 65.2,
-  "xcos": 0.915,
-  "controlCos": 0.225,
-  "xcontrol": 0.2334
+  "controlCos": 0.1198,
+  "xcontrol": 0.1317
  },
  {
   "id": "rules.potion",
@@ -13604,8 +13592,20 @@
   "cos": 1.0,
   "chrf": 100.0,
   "xcos": 0.9742,
-  "controlCos": 0.129,
-  "xcontrol": 0.0967
+  "controlCos": 0.167,
+  "xcontrol": 0.1774
+ },
+ {
+  "id": "rules.relic",
+  "lang": "ar",
+  "text": "يعيرك كلمات القوة: alas, jest. استخدم 3 منها لتنال +6 في الصنعة.",
+  "english": "Lends power words: alas, jest. Use 3 of them for +6 craft.",
+  "back": "Use 3 of them to get +6 in Manufacturing.",
+  "cos": 0.5897,
+  "chrf": 23.1,
+  "xcos": 0.8869,
+  "controlCos": 0.0923,
+  "xcontrol": 0.0914
  },
  {
   "id": "about.meta.description",
@@ -14588,20 +14588,8 @@
   "cos": 0.4615,
   "chrf": 6.0,
   "xcos": 0.7583,
-  "controlCos": 0.0893,
-  "xcontrol": 0.0446
- },
- {
-  "id": "achievements.wordsmith.description",
-  "lang": "vi",
-  "text": "Đạt 3 điểm trở lên trong một hiệp",
-  "english": "Score 3 or higher in a single round",
-  "back": "Score 3 or more points in a set",
-  "cos": 0.7083,
-  "chrf": 33.9,
-  "xcos": 0.8464,
-  "controlCos": 0.0211,
-  "xcontrol": 0.083
+  "controlCos": 0.3377,
+  "xcontrol": 0.4761
  },
  {
   "id": "achievements.scholar.name",
@@ -14780,20 +14768,8 @@
   "cos": 0.1375,
   "chrf": 6.4,
   "xcos": 0.4007,
-  "controlCos": 0.0113,
-  "xcontrol": 0.0234
- },
- {
-  "id": "achievements.virtuoso.description",
-  "lang": "vi",
-  "text": "Đạt 3 điểm trở lên trong một hiệp",
-  "english": "Score 3 or higher in a single round",
-  "back": "Score 3 or more points in a set",
-  "cos": 0.7083,
-  "chrf": 33.9,
-  "xcos": 0.8464,
-  "controlCos": 0.0936,
-  "xcontrol": 0.0648
+  "controlCos": 0.0721,
+  "xcontrol": 0.2266
  },
  {
   "id": "achievements.hundred-rounds.name",
@@ -18140,8 +18116,32 @@
   "cos": 0.8419,
   "chrf": 50.7,
   "xcos": 0.7117,
-  "controlCos": 0.1867,
-  "xcontrol": 0.0906
+  "controlCos": -0.0398,
+  "xcontrol": 0.162
+ },
+ {
+  "id": "achievements.wordsmith.description",
+  "lang": "vi",
+  "text": "Điểm trong một hiệp: 3 trở lên",
+  "english": "Score 3 or higher in a single round",
+  "back": "Points per round: 3 or more",
+  "cos": 0.7369,
+  "chrf": 21.9,
+  "xcos": 0.7851,
+  "controlCos": 0.1127,
+  "xcontrol": 0.0935
+ },
+ {
+  "id": "achievements.virtuoso.description",
+  "lang": "vi",
+  "text": "Điểm trong một hiệp: 3 trở lên",
+  "english": "Score 3 or higher in a single round",
+  "back": "Points per round: 3 or more",
+  "cos": 0.7369,
+  "chrf": 21.9,
+  "xcos": 0.7851,
+  "controlCos": 0.1127,
+  "xcontrol": 0.0935
  },
  {
   "id": "about.meta.description",
@@ -35396,20 +35396,8 @@
   "cos": 0.5338,
   "chrf": 19.8,
   "xcos": 0.57,
-  "controlCos": 0.2629,
-  "xcontrol": 0.2717
- },
- {
-  "id": "rules.relic",
-  "lang": "pl",
-  "text": "Użycza słów mocy: alas, jest. Użyj 3 z nich, aby zyskać +6 kunsztu.",
-  "english": "Lends power words: alas, jest. Use 3 of them for +6 craft.",
-  "back": "Borrows power words: alas, is. Use 3 of them to gain +6 skill.",
-  "cos": 0.768,
-  "chrf": 55.0,
-  "xcos": 0.8923,
-  "controlCos": 0.2379,
-  "xcontrol": 0.2354
+  "controlCos": 0.1198,
+  "xcontrol": 0.1675
  },
  {
   "id": "rules.potion",
@@ -36284,8 +36272,20 @@
   "cos": 1.0,
   "chrf": 100.0,
   "xcos": 0.9362,
-  "controlCos": 0.1716,
-  "xcontrol": 0.0081
+  "controlCos": 0.0655,
+  "xcontrol": 0.1256
+ },
+ {
+  "id": "rules.relic",
+  "lang": "pl",
+  "text": "Użycza słów mocy: alas, jest. Użyj 3 z nich, aby zyskać +6 do kunsztu.",
+  "english": "Lends power words: alas, jest. Use 3 of them for +6 craft.",
+  "back": "Borrows power words: alas, is. Use 3 of them to gain +6 skill.",
+  "cos": 0.768,
+  "chrf": 55.0,
+  "xcos": 0.8897,
+  "controlCos": 0.1027,
+  "xcontrol": 0.1029
  },
  {
   "id": "about.meta.description",
@@ -46364,20 +46364,8 @@
   "cos": 0.5495,
   "chrf": 15.3,
   "xcos": 0.6956,
-  "controlCos": -0.0332,
-  "xcontrol": 0.1162
- },
- {
-  "id": "achievements.wordsmith.description",
-  "lang": "es",
-  "text": "Consigue 3 puntos o más en una sola ronda",
-  "english": "Score 3 or higher in a single round",
-  "back": "Get 3 points or more in a single round",
-  "cos": 0.8325,
-  "chrf": 51.3,
-  "xcos": 0.8844,
-  "controlCos": 0.0824,
-  "xcontrol": 0.1056
+  "controlCos": 0.3462,
+  "xcontrol": 0.3819
  },
  {
   "id": "achievements.scholar.name",
@@ -46556,20 +46544,8 @@
   "cos": 1.0,
   "chrf": 100.0,
   "xcos": 1.0,
-  "controlCos": 0.0112,
-  "xcontrol": 0.1261
- },
- {
-  "id": "achievements.virtuoso.description",
-  "lang": "es",
-  "text": "Consigue 3 puntos o más en una sola ronda",
-  "english": "Score 3 or higher in a single round",
-  "back": "Get 3 points or more in a single round",
-  "cos": 0.8325,
-  "chrf": 51.3,
-  "xcos": 0.8844,
-  "controlCos": 0.1408,
-  "xcontrol": 0.0619
+  "controlCos": 0.2715,
+  "xcontrol": 0.3958
  },
  {
   "id": "achievements.hundred-rounds.name",
@@ -49892,8 +49868,32 @@
   "cos": 1.0,
   "chrf": 100.0,
   "xcos": 0.9541,
-  "controlCos": 0.1716,
-  "xcontrol": 0.0033
+  "controlCos": 0.1371,
+  "xcontrol": 0.1208
+ },
+ {
+  "id": "achievements.wordsmith.description",
+  "lang": "es",
+  "text": "Puntuación en una sola ronda: 3 o más",
+  "english": "Score 3 or higher in a single round",
+  "back": "Score in a single round: 3 or more",
+  "cos": 0.9381,
+  "chrf": 59.6,
+  "xcos": 0.8716,
+  "controlCos": 0.039,
+  "xcontrol": 0.0488
+ },
+ {
+  "id": "achievements.virtuoso.description",
+  "lang": "es",
+  "text": "Puntuación en una sola ronda: 3 o más",
+  "english": "Score 3 or higher in a single round",
+  "back": "Score in a single round: 3 or more",
+  "cos": 0.9381,
+  "chrf": 59.6,
+  "xcos": 0.8716,
+  "controlCos": 0.039,
+  "xcontrol": 0.0488
  },
  {
   "id": "about.meta.description",
@@ -50900,20 +50900,8 @@
   "cos": 0.5548,
   "chrf": 54.6,
   "xcos": 0.7654,
-  "controlCos": 0.0148,
-  "xcontrol": 0.119
- },
- {
-  "id": "achievements.wordsmith.description",
-  "lang": "fr",
-  "text": "Marquez 3 points ou plus en une seule manche",
-  "english": "Score 3 or higher in a single round",
-  "back": "Score 3 or more points in a single round",
-  "cos": 0.8928,
-  "chrf": 65.8,
-  "xcos": 0.8679,
-  "controlCos": 0.0731,
-  "xcontrol": 0.0854
+  "controlCos": 0.3488,
+  "xcontrol": 0.3562
  },
  {
   "id": "achievements.scholar.name",
@@ -51092,20 +51080,8 @@
   "cos": 0.9006,
   "chrf": 79.7,
   "xcos": 0.6374,
-  "controlCos": 0.0209,
-  "xcontrol": 0.122
- },
- {
-  "id": "achievements.virtuoso.description",
-  "lang": "fr",
-  "text": "Marquez 3 points ou plus en une seule manche",
-  "english": "Score 3 or higher in a single round",
-  "back": "Score 3 or more points in a single round",
-  "cos": 0.8928,
-  "chrf": 65.8,
-  "xcos": 0.8679,
-  "controlCos": 0.0949,
-  "xcontrol": 0.0529
+  "controlCos": 0.3546,
+  "xcontrol": 0.3616
  },
  {
   "id": "achievements.hundred-rounds.name",
@@ -54428,8 +54404,32 @@
   "cos": 1.0,
   "chrf": 100.0,
   "xcos": 0.9329,
-  "controlCos": 0.1716,
-  "xcontrol": -0.0024
+  "controlCos": 0.1371,
+  "xcontrol": 0.1385
+ },
+ {
+  "id": "achievements.wordsmith.description",
+  "lang": "fr",
+  "text": "Score en une seule manche : 3 ou plus",
+  "english": "Score 3 or higher in a single round",
+  "back": "Score in a single round: 3 or more",
+  "cos": 0.9381,
+  "chrf": 59.6,
+  "xcos": 0.8456,
+  "controlCos": 0.039,
+  "xcontrol": 0.0678
+ },
+ {
+  "id": "achievements.virtuoso.description",
+  "lang": "fr",
+  "text": "Score en une seule manche : 3 ou plus",
+  "english": "Score 3 or higher in a single round",
+  "back": "Score in a single round: 3 or more",
+  "cos": 0.9381,
+  "chrf": 59.6,
+  "xcos": 0.8456,
+  "controlCos": 0.039,
+  "xcontrol": 0.0678
  },
  {
   "id": "about.meta.description",
@@ -55436,20 +55436,8 @@
   "cos": 1.0,
   "chrf": 100.0,
   "xcos": 0.7634,
-  "controlCos": 0.0003,
-  "xcontrol": 0.0586
- },
- {
-  "id": "achievements.wordsmith.description",
-  "lang": "de",
-  "text": "Erreiche in einer einzigen Runde 3 Punkte oder mehr",
-  "english": "Score 3 or higher in a single round",
-  "back": "Score 3 points or more in a single round",
-  "cos": 0.8964,
-  "chrf": 59.9,
-  "xcos": 0.906,
-  "controlCos": 0.097,
-  "xcontrol": 0.0994
+  "controlCos": 0.3767,
+  "xcontrol": 0.3601
  },
  {
   "id": "achievements.scholar.name",
@@ -55628,20 +55616,8 @@
   "cos": 0.9006,
   "chrf": 79.7,
   "xcos": 0.6374,
-  "controlCos": 0.0209,
-  "xcontrol": 0.122
- },
- {
-  "id": "achievements.virtuoso.description",
-  "lang": "de",
-  "text": "Erreiche in einer einzigen Runde 3 Punkte oder mehr",
-  "english": "Score 3 or higher in a single round",
-  "back": "Score 3 points or more in a single round",
-  "cos": 0.8964,
-  "chrf": 59.9,
-  "xcos": 0.906,
-  "controlCos": 0.0958,
-  "xcontrol": 0.0805
+  "controlCos": 0.3546,
+  "xcontrol": 0.3616
  },
  {
   "id": "achievements.hundred-rounds.name",
@@ -58964,8 +58940,32 @@
   "cos": 1.0,
   "chrf": 100.0,
   "xcos": 0.9396,
-  "controlCos": 0.1716,
-  "xcontrol": 0.0065
+  "controlCos": 0.1371,
+  "xcontrol": 0.1451
+ },
+ {
+  "id": "achievements.wordsmith.description",
+  "lang": "de",
+  "text": "Punkte in einer einzigen Runde: 3 oder mehr",
+  "english": "Score 3 or higher in a single round",
+  "back": "Points in a single round: 3 or more",
+  "cos": 0.7882,
+  "chrf": 52.8,
+  "xcos": 0.8471,
+  "controlCos": 0.1118,
+  "xcontrol": 0.0812
+ },
+ {
+  "id": "achievements.virtuoso.description",
+  "lang": "de",
+  "text": "Punkte in einer einzigen Runde: 3 oder mehr",
+  "english": "Score 3 or higher in a single round",
+  "back": "Points in a single round: 3 or more",
+  "cos": 0.7882,
+  "chrf": 52.8,
+  "xcos": 0.8471,
+  "controlCos": 0.1118,
+  "xcontrol": 0.0812
  },
  {
   "id": "about.meta.description",
@@ -59972,20 +59972,8 @@
   "cos": 0.6348,
   "chrf": 19.5,
   "xcos": 0.649,
-  "controlCos": -0.0007,
-  "xcontrol": 0.0613
- },
- {
-  "id": "achievements.wordsmith.description",
-  "lang": "it",
-  "text": "Ottieni 3 punti o più in un solo round",
-  "english": "Score 3 or higher in a single round",
-  "back": "Get 3 or more points in a single round",
-  "cos": 0.8006,
-  "chrf": 52.5,
-  "xcos": 0.8675,
-  "controlCos": 0.0499,
-  "xcontrol": 0.1109
+  "controlCos": 0.2974,
+  "xcontrol": 0.2895
  },
  {
   "id": "achievements.scholar.name",
@@ -60164,20 +60152,8 @@
   "cos": 1.0,
   "chrf": 100.0,
   "xcos": 1.0,
-  "controlCos": 0.0112,
-  "xcontrol": 0.1261
- },
- {
-  "id": "achievements.virtuoso.description",
-  "lang": "it",
-  "text": "Ottieni 3 punti o più in un solo round",
-  "english": "Score 3 or higher in a single round",
-  "back": "Get 3 or more points in a single round",
-  "cos": 0.8006,
-  "chrf": 52.5,
-  "xcos": 0.8675,
-  "controlCos": 0.1213,
-  "xcontrol": 0.0667
+  "controlCos": 0.2715,
+  "xcontrol": 0.3958
  },
  {
   "id": "achievements.hundred-rounds.name",
@@ -63500,8 +63476,32 @@
   "cos": 0.207,
   "chrf": 3.8,
   "xcos": 0.9565,
-  "controlCos": 0.0762,
-  "xcontrol": -0.0098
+  "controlCos": 0.0567,
+  "xcontrol": 0.1178
+ },
+ {
+  "id": "achievements.wordsmith.description",
+  "lang": "it",
+  "text": "Punteggio in un solo round: 3 o più",
+  "english": "Score 3 or higher in a single round",
+  "back": "Score in a single round: 3 or more",
+  "cos": 0.9381,
+  "chrf": 59.6,
+  "xcos": 0.8865,
+  "controlCos": 0.039,
+  "xcontrol": 0.0583
+ },
+ {
+  "id": "achievements.virtuoso.description",
+  "lang": "it",
+  "text": "Punteggio in un solo round: 3 o più",
+  "english": "Score 3 or higher in a single round",
+  "back": "Score in a single round: 3 or more",
+  "cos": 0.9381,
+  "chrf": 59.6,
+  "xcos": 0.8865,
+  "controlCos": 0.039,
+  "xcontrol": 0.0583
  },
  {
   "id": "about.meta.description",
@@ -64508,20 +64508,8 @@
   "cos": 0.6967,
   "chrf": 22.9,
   "xcos": 0.7079,
-  "controlCos": -0.0045,
-  "xcontrol": 0.1273
- },
- {
-  "id": "achievements.wordsmith.description",
-  "lang": "pt",
-  "text": "Faça 3 pontos ou mais em uma única rodada",
-  "english": "Score 3 or higher in a single round",
-  "back": "Score 3 points or more in a single round",
-  "cos": 0.8964,
-  "chrf": 59.9,
-  "xcos": 0.8764,
-  "controlCos": 0.097,
-  "xcontrol": 0.0929
+  "controlCos": 0.3022,
+  "xcontrol": 0.3415
  },
  {
   "id": "achievements.scholar.name",
@@ -64700,20 +64688,8 @@
   "cos": 1.0,
   "chrf": 100.0,
   "xcos": 1.0,
-  "controlCos": 0.0112,
-  "xcontrol": 0.1261
- },
- {
-  "id": "achievements.virtuoso.description",
-  "lang": "pt",
-  "text": "Faça 3 pontos ou mais em uma única rodada",
-  "english": "Score 3 or higher in a single round",
-  "back": "Score 3 points or more in a single round",
-  "cos": 0.8964,
-  "chrf": 59.9,
-  "xcos": 0.8764,
-  "controlCos": 0.0958,
-  "xcontrol": 0.0775
+  "controlCos": 0.2715,
+  "xcontrol": 0.3958
  },
  {
   "id": "achievements.hundred-rounds.name",
@@ -68036,7 +68012,31 @@
   "cos": 1.0,
   "chrf": 100.0,
   "xcos": 0.9429,
-  "controlCos": 0.1716,
-  "xcontrol": 0.0318
+  "controlCos": 0.1371,
+  "xcontrol": 0.1334
+ },
+ {
+  "id": "achievements.wordsmith.description",
+  "lang": "pt",
+  "text": "Pontuação em uma única rodada: 3 ou mais",
+  "english": "Score 3 or higher in a single round",
+  "back": "Score in a single round: 3 or more",
+  "cos": 0.9381,
+  "chrf": 59.6,
+  "xcos": 0.8786,
+  "controlCos": 0.039,
+  "xcontrol": 0.0679
+ },
+ {
+  "id": "achievements.virtuoso.description",
+  "lang": "pt",
+  "text": "Pontuação em uma única rodada: 3 ou mais",
+  "english": "Score 3 or higher in a single round",
+  "back": "Score in a single round: 3 or more",
+  "cos": 0.9381,
+  "chrf": 59.6,
+  "xcos": 0.8786,
+  "controlCos": 0.039,
+  "xcontrol": 0.0679
  }
 ]
