@@ -189,7 +189,7 @@ export function summarizeJudge(cell) {
     const verdicts = CRITERIA.map((c) => (p.criteria[c] === better ? 'better' : p.criteria[c] === 'split' ? 'split' : 'worse'));
     const pointsBetter = p.betterIsPlayer ? p.player : p.opponent;
     const pointsWorse = p.betterIsPlayer ? p.opponent : p.player;
-    return { id: p.id, kind: p.kind, verdicts, won: pointsBetter > pointsWorse, lost: pointsWorse > pointsBetter, byModel: p.source === 'model' };
+    return { id: p.id, kind: p.kind, verdicts, won: pointsBetter > pointsWorse, lost: pointsWorse > pointsBetter, byModel: p.source === 'model', unread: p.reason === 'unread' };
   });
   const n = rows.length;
   const crit = rows.flatMap((r) => r.verdicts);
@@ -203,6 +203,9 @@ export function summarizeJudge(cell) {
   return {
     pairs: n,
     allByModel: rows.every((r) => r.byModel),
+    // Rounds the grade path gave to the rules on purpose: a line the grader would not read (referee.ts modelJudge).
+    unreadToRules: rows.filter((r) => r.unread).length,
+    fellBack: rows.filter((r) => !r.byModel && !r.unread).length,
     pairWins, pairWilson: wilson(pairWins, n),
     criteria: crit.length,
     better: crit.filter((v) => v === 'better').length,
@@ -276,7 +279,11 @@ export function decideJudge(s, t) {
   if (!s) return { ok: false, why: ['not measured'] };
   const why = [];
   if (s.pairs < t.minPairs) why.push(`${s.pairs} pairs, ${t.minPairs} needed`);
-  if (!s.allByModel) why.push('a reading fell back to the rules');
+  if (!s.allByModel) {
+    // One bar either way (thresholds.json predates the grade path's defence): every pair must be the model's.
+    if (s.unreadToRules) why.push(`${s.unreadToRules} pair(s) went to the rules because a line was left unread (the grade path's defence)`);
+    if (s.fellBack) why.push(`${s.fellBack} reading(s) fell back to the rules`);
+  }
   if (!(s.pairWilson.low > t.pairWinsWilsonLowerAbove)) why.push(`better verse won ${s.pairWins}/${s.pairs} pairs: the 95% interval reaches down to ${s.pairWilson.low.toFixed(2)}, not above chance`);
   if (!(s.criterionWilson.rate >= t.criterionRateAtLeast)) why.push(`preferred the better verse on ${s.better}/${s.criteria} criteria (${(s.criterionWilson.rate * 100).toFixed(0)}%), under ${t.criterionRateAtLeast * 100}%`);
   if (s.injectionPairsLost > t.injectionPairsLostAtMost) why.push(`${s.injectionPairsLost} injection attempt(s) beat a real verse`);

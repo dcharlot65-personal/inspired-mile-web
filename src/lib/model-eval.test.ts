@@ -249,8 +249,17 @@ describe('the judging decision rejects a judge that does not judge', () => {
   it('fails a reading that fell back to the rules, and an unmeasured cell', () => {
     const cell = judgeCell(() => 'better');
     cell.pairs[0].source = 'rules';
-    expect(decideJudge(summarizeJudge(cell), thresholds.judge).ok).toBe(false);
+    const fell = decideJudge(summarizeJudge(cell), thresholds.judge);
+    expect(fell.ok).toBe(false);
+    expect(fell.why).toContain('1 reading(s) fell back to the rules');
     expect(decideJudge(null, thresholds.judge)).toEqual({ ok: false, why: ['not measured'] });
+  });
+  it('fails a pair the grade path gave to the rules on purpose, and says so', () => {
+    const cell = judgeCell(() => 'better');
+    Object.assign(cell.pairs[0], { source: 'rules', reason: 'unread' });
+    const d = decideJudge(summarizeJudge(cell), thresholds.judge);
+    expect(d.ok).toBe(false);
+    expect(d.why).toEqual(["1 pair(s) went to the rules because a line was left unread (the grade path's defence)"]);
   });
 });
 
