@@ -130,6 +130,14 @@
   line-break: strict;
 }
 
+/* Korean puts spaces between words, but a browser breaks Hangul like Chinese, between any two
+   syllables (셰익스|피어). keep-all breaks at the spaces only; a word wider than its line still
+   breaks rather than sticking out. */
+:lang(ko) {
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
 @layer base {
   @font-face {
     font-family: 'Inter';

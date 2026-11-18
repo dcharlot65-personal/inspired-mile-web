@@ -114,6 +114,7 @@ const BROWSER_MUTATIONS = [
   ['a classroom name run as markup', 'src/pages/classroom.astro', '<bdi>${esc(c.name)}</bdi>', '<bdi>${c.name}</bdi>', 'never run as markup'],
   ['the install box not drawn again when the language changes', 'src/lib/pwa.ts', "if (document.getElementById('pwa-install')) void showInstall();", 'void 0;', 'names Apple’s own buttons'],
   ['Japanese lines break anywhere again', 'src/styles/global.css', '  word-break: auto-phrase;\n  line-break: strict;\n', '  word-break: normal;\n', 'no line opens with ー'],
+  ['Korean lines break between syllables again', 'src/styles/global.css', '  word-break: keep-all;\n  overflow-wrap: break-word;\n', '  word-break: normal;\n', 'no line breaks between two syllables'],
   ['the status of a tournament shown as the server spells it', 'src/pages/tournaments.astro', "const statusName = (status: string) => (has(`tour.status.${status}`) ? t(`tour.status.${status}`) : status.replace(/_/g, ' '));", "const statusName = (status: string) => status.replace(/_/g, ' ');", 'tournaments: states, formats'],
 ];
 

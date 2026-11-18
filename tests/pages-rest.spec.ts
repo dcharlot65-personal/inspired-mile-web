@@ -163,40 +163,48 @@ test.describe('The remaining pages in sixteen languages', () => {
 });
 
 /**
- * Where the lines of the page's Japanese text break, as pairs "last character of a line | first
- * character of the next". Flagged: a line that opens with ー or a small kana (Japanese line-breaking
- * rules forbid it), and a break between two katakana, which is inside a word (カ|ード). Read from
- * the rendered text, character by character, within each block.
+ * Where the lines of the page's Japanese or Korean text break, as pairs "last character of a line |
+ * first character of the next". Flagged in Japanese: a line that opens with ー or a small kana
+ * (Japanese line-breaking rules forbid it), and a break between two katakana, which is inside a word
+ * (カ|ード). In Korean, which spaces its words: a break between two syllables with no space
+ * between them (셰익스|피어). Read from the rendered text, character by character, within each block.
  */
-async function japaneseBreaks(page: Page): Promise<string[]> {
-  return page.evaluate(() => {
+async function cjkBreaks(page: Page, lang: 'ja' | 'ko'): Promise<string[]> {
+  return page.evaluate((lang) => {
     const OPENS_NOT = /[ーぁぃぅぇぉっゃゅょゎゕゖァィゥェォッャュョヮヵヶㇰ-ㇿ]/u;
     const KATAKANA = /[\u30a1-\u30fa\u30fc]/u;
+    const HANGUL = /\p{Script=Hangul}/u;
     const out: string[] = [];
     const range = document.createRange();
     const walker = document.createTreeWalker(document.querySelector('main')!, NodeFilter.SHOW_TEXT);
     let prev: { ch: string; top: number; height: number; block: Element } | null = null;
+    let spaced = false;
     for (let node = walker.nextNode(); node; node = walker.nextNode()) {
       const block = node.parentElement?.closest('p, li, h1, h2, h3, h4, label, button, a, td, th, dd, dt, div');
       if (!block) continue;
       const text = node.textContent ?? '';
       for (let i = 0; i < text.length; i++) {
         const ch = text[i];
-        if (/\s/.test(ch)) continue;
+        if (/\s/.test(ch)) {
+          spaced = true;
+          continue;
+        }
         range.setStart(node, i);
         range.setEnd(node, i + 1);
         const r = range.getClientRects()[0];
         if (!r || r.width === 0) continue;
         if (prev && prev.block === block && r.top > prev.top + prev.height * 0.6) {
-          if (OPENS_NOT.test(ch) || (KATAKANA.test(prev.ch) && KATAKANA.test(ch))) {
-            out.push(`${(block.textContent ?? '').trim().slice(0, 30)}…: ${prev.ch}|${ch}`);
-          }
+          const bad = lang === 'ja'
+            ? OPENS_NOT.test(ch) || (KATAKANA.test(prev.ch) && KATAKANA.test(ch))
+            : !spaced && HANGUL.test(prev.ch) && HANGUL.test(ch);
+          if (bad) out.push(`${(block.textContent ?? '').trim().slice(0, 30)}…: ${prev.ch}|${ch}`);
         }
         prev = { ch, top: r.top, height: r.height, block };
+        spaced = false;
       }
     }
     return out;
-  });
+  }, lang);
 }
 
 test.describe('Japanese text breaks between words', () => {
@@ -208,7 +216,23 @@ test.describe('Japanese text breaks between words', () => {
       for (const spec of PAGES as PageSpec[]) {
         await open(page, spec, 'ja');
         await expect(page.locator(spec.ready).first()).toBeAttached();
-        for (const b of await japaneseBreaks(page)) found.push(`${spec.name}: ${b}`);
+        for (const b of await cjkBreaks(page, 'ja')) found.push(`${spec.name}: ${b}`);
+      }
+      expect(found, found.join('\n')).toEqual([]);
+    });
+  }
+});
+
+test.describe('Korean text breaks at spaces', () => {
+  for (const width of [390, 1280]) {
+    test(`at ${width} px, no line breaks between two syllables of one word`, async ({ page }) => {
+      test.setTimeout(120_000);
+      await page.setViewportSize({ width, height: 900 });
+      const found: string[] = [];
+      for (const spec of PAGES as PageSpec[]) {
+        await open(page, spec, 'ko');
+        await expect(page.locator(spec.ready).first()).toBeAttached();
+        for (const b of await cjkBreaks(page, 'ko')) found.push(`${spec.name}: ${b}`);
       }
       expect(found, found.join('\n')).toEqual([]);
     });

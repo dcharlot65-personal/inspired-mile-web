@@ -839,6 +839,12 @@ rank. Its control is described under "Meaning".
   when even `offline.html` is not cached); the Theatre page's own tab title "The Theatre"
   (`theatre.astro`, done on another branch) — the manifest's shortcut uses the page's heading
   instead.
+- **Korean line breaks**: Korean spaces its words, but browsers break Hangul between any two
+  syllables (셰익스|피어 in the classroom intro, seen in a screenshot of this pass). `:lang(ko)` now
+  sets `word-break: keep-all` (breaks at spaces only) with `overflow-wrap: break-word`. A browser
+  test fails on a break between two syllables with no space between them: without the rule it
+  named 12 breaks at 390 px and 4 at 1280 px on these pages; with it, none, and nothing sticks out
+  of a phone's screen in Korean.
 - **Japanese line breaks** are kept whole by `word-break: auto-phrase`, which only Chromium has;
   Safari and Firefox get `line-break: strict` alone (no ー or small kana opening a line), and may
   still break inside a word. The browser test runs in Chromium only, and only on this branch's
